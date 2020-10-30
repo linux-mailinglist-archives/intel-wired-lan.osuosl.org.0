@@ -2,60 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DD4C2A0FF1
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Oct 2020 22:04:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B0AA82A0FF4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Oct 2020 22:05:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 06EEB842DD;
-	Fri, 30 Oct 2020 21:04:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 75D61842DD;
+	Fri, 30 Oct 2020 21:05:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ua6v00KmAbDf; Fri, 30 Oct 2020 21:04:15 +0000 (UTC)
+	with ESMTP id pzX2iePrUisP; Fri, 30 Oct 2020 21:05:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6439D848FC;
-	Fri, 30 Oct 2020 21:04:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E87F784420;
+	Fri, 30 Oct 2020 21:05:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F6CD1BF294
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:04:03 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AB03F1BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:05:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F37B5230FE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:04:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A46398758D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:05:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jN3wVW57OGjO for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 Oct 2020 21:04:00 +0000 (UTC)
+ with ESMTP id uaeOua49h-Ks for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 30 Oct 2020 21:05:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 9F33C232D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:04:00 +0000 (UTC)
-IronPort-SDR: dBTBFSh/9IbK9cRhabFxj5C4/Hp8Lbri+3X9IQPfpYk2tXoyMgVpLDbXoj4lOOWNmRzgritBTf
- y7zbYFod0Vyw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="155645247"
-X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="155645247"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1992287323
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Oct 2020 21:05:45 +0000 (UTC)
+IronPort-SDR: 0wzd2h3TSeMGlXlzZxMWLTJdFQXg4JyWLGSOxS/aY+pMHsCGJGY+/voE4I9YBv/V0PDUMWSTPq
+ T/qnyU2YnFJA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="147951330"
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="147951330"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2020 14:03:59 -0700
-IronPort-SDR: /wxMm+i+dEOG73Zag2vp7AAiBoFrnH/wMyu2E21L/Z1FIKrYgyp0MFw/1lsbFTmEePshjfQUDK
- DxVxePK6VzaQ==
-X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="395592264"
-Received: from jesantos-mobl.amr.corp.intel.com ([10.209.106.15])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2020 14:03:59 -0700
-From: Andre Guedes <andre.guedes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 30 Oct 2020 14:03:51 -0700
-Message-Id: <20201030210351.46482-10-andre.guedes@intel.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201030210351.46482-1-andre.guedes@intel.com>
-References: <20201030210351.46482-1-andre.guedes@intel.com>
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 14:05:44 -0700
+IronPort-SDR: DWpjCGH5v3gmHh3gQF+g8Tz3a9VPeretRp259Lr3zHtEtImVuDSfxKhXEFjVZPtuoJ6ONcrnsV
+ 7997WPRrIOkg==
+X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="351402193"
+Received: from jesantos-mobl.amr.corp.intel.com (HELO localhost)
+ ([10.209.106.15])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2020 14:05:44 -0700
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v3 9/9] igc: Add support for XDP_REDIRECT
- action
+In-Reply-To: <160401600277.13680.18047091279684955908@sjaggi-mobl.amr.corp.intel.com>
+References: <20201028201943.93147-1-andre.guedes@intel.com>
+ <20201028201943.93147-8-andre.guedes@intel.com>
+ <20201029141346.GC890@ranger.igk.intel.com>
+ <160401600277.13680.18047091279684955908@sjaggi-mobl.amr.corp.intel.com>
+From: Andre Guedes <andre.guedes@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Fri, 30 Oct 2020 14:05:43 -0700
+Message-ID: <160409194362.46328.3373216075562216324@jesantos-mobl.amr.corp.intel.com>
+User-Agent: alot/0.9.1
+Subject: Re: [Intel-wired-lan] [PATCH v2 07/10] igc: Add initial XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,151 +71,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds support for the XDP_REDIRECT action which enables XDP
-programs to redirect packets arriving at I225 NIC. It also implements
-the ndo_xdp_xmit ops, enabling the igc driver to transmit packets
-forwarded to it by xdp programs running on other interfaces.
+Quoting Andre Guedes (2020-10-29 17:00:02)
+> Quoting Maciej Fijalkowski (2020-10-29 07:13:46)
+> > > diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> > > new file mode 100644
+> > > index 000000000000..faec0bedc550
+> > > --- /dev/null
+> > > +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> 
+> [...]
+> 
+> > > +struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
+> > > +                              struct xdp_buff *xdp)
+> > 
+> > I would suggest to either have it in igc_main.c or in the header so that
+> > compiler could take the decision whether to inline it or not. For control
+> > plane related functions it's fine to have them in the separate file.
+> 
+> Do you also mean to move all other xdp functions currently defined in igc_xdp.c
+> that are called from igc_xdp_run_prog()?
+> 
+>         igc_xdp_xmit_back()
+>         igc_xdp_get_tx_ring()
+>         igc_xdp_init_tx_descriptor()
+>         igc_xdp_init_tx_buffer()
 
-The patch tweaks the driver's page counting scheme (as described in
-'8ce29c679a6e i40e: tweak page counting for XDP_REDIRECT' and
-implemented by other Intel drivers) in order to properly support
-XDP_REDIRECT action.
+FYI, in the v3 I just posted, I moved those functions to igc_main.c as well
+since it makes more sense.
 
-This patch has been tested with the sample apps "xdp_redirect_cpu" and
-"xdp_redirect_map" located in samples/bpf/.
-
-Signed-off-by: Andre Guedes <andre.guedes@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 59 +++++++++++++++++++++--
- 1 file changed, 56 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index ae933982e239..33dab5976cbc 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -27,6 +27,7 @@
- #define IGC_XDP_PASS		0
- #define IGC_XDP_CONSUMED	BIT(0)
- #define IGC_XDP_TX		BIT(1)
-+#define IGC_XDP_REDIRECT	BIT(2)
- 
- static int debug = -1;
- 
-@@ -1720,8 +1721,8 @@ static bool igc_can_reuse_rx_page(struct igc_rx_buffer *rx_buffer)
- 	 * the pagecnt_bias and page count so that we fully restock the
- 	 * number of references the driver holds.
- 	 */
--	if (unlikely(!pagecnt_bias)) {
--		page_ref_add(page, USHRT_MAX);
-+	if (unlikely(pagecnt_bias == 1)) {
-+		page_ref_add(page, USHRT_MAX - 1);
- 		rx_buffer->pagecnt_bias = USHRT_MAX;
- 	}
- 
-@@ -1862,7 +1863,8 @@ static bool igc_alloc_mapped_page(struct igc_ring *rx_ring,
- 	bi->dma = dma;
- 	bi->page = page;
- 	bi->page_offset = igc_rx_offset(rx_ring);
--	bi->pagecnt_bias = 1;
-+	page_ref_add(page, USHRT_MAX - 1);
-+	bi->pagecnt_bias = USHRT_MAX;
- 
- 	return true;
- }
-@@ -2055,6 +2057,12 @@ static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
- 		else
- 			res = IGC_XDP_TX;
- 		break;
-+	case XDP_REDIRECT:
-+		if (xdp_do_redirect(adapter->netdev, xdp, prog) < 0)
-+			res = IGC_XDP_CONSUMED;
-+		else
-+			res = IGC_XDP_REDIRECT;
-+		break;
- 	default:
- 		bpf_warn_invalid_xdp_action(act);
- 		fallthrough;
-@@ -2096,6 +2104,9 @@ static void igc_finalize_xdp(struct igc_adapter *adapter, int status)
- 		igc_flush_tx_descriptors(ring);
- 		__netif_tx_unlock(nq);
- 	}
-+
-+	if (status & IGC_XDP_REDIRECT)
-+		xdp_do_flush();
- }
- 
- static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
-@@ -2164,6 +2175,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 				rx_buffer->pagecnt_bias++;
- 				break;
- 			case IGC_XDP_TX:
-+			case IGC_XDP_REDIRECT:
- 				igc_rx_buffer_flip(rx_buffer, truesize);
- 				xdp_status |= xdp_res;
- 				break;
-@@ -5129,6 +5141,46 @@ static int igc_bpf(struct net_device *dev, struct netdev_bpf *bpf)
- 	}
- }
- 
-+static int igc_xdp_xmit(struct net_device *dev, int num_frames,
-+			struct xdp_frame **frames, u32 flags)
-+{
-+	struct igc_adapter *adapter = netdev_priv(dev);
-+	int cpu = smp_processor_id();
-+	struct netdev_queue *nq;
-+	struct igc_ring *ring;
-+	int i, drops;
-+
-+	if (unlikely(test_bit(__IGC_DOWN, &adapter->state)))
-+		return -ENETDOWN;
-+
-+	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
-+		return -EINVAL;
-+
-+	ring = igc_xdp_get_tx_ring(adapter, cpu);
-+	nq = txring_txq(ring);
-+
-+	__netif_tx_lock(nq, cpu);
-+
-+	drops = 0;
-+	for (i = 0; i < num_frames; i++) {
-+		int err;
-+		struct xdp_frame *xdpf = frames[i];
-+
-+		err = igc_xdp_init_tx_descriptor(ring, xdpf);
-+		if (err) {
-+			xdp_return_frame_rx_napi(xdpf);
-+			drops++;
-+		}
-+	}
-+
-+	if (flags & XDP_XMIT_FLUSH)
-+		igc_flush_tx_descriptors(ring);
-+
-+	__netif_tx_unlock(nq);
-+
-+	return num_frames - drops;
-+}
-+
- static const struct net_device_ops igc_netdev_ops = {
- 	.ndo_open		= igc_open,
- 	.ndo_stop		= igc_close,
-@@ -5143,6 +5195,7 @@ static const struct net_device_ops igc_netdev_ops = {
- 	.ndo_do_ioctl		= igc_ioctl,
- 	.ndo_setup_tc		= igc_setup_tc,
- 	.ndo_bpf		= igc_bpf,
-+	.ndo_xdp_xmit		= igc_xdp_xmit,
- };
- 
- /* PCIe configuration access */
--- 
-2.28.0
-
+- Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
