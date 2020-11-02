@@ -1,74 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 847952A23A2
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Nov 2020 04:48:34 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 209792A2D75
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Nov 2020 15:55:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2DD42872D6;
-	Mon,  2 Nov 2020 03:48:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F2A920429;
+	Mon,  2 Nov 2020 14:55:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p2sc2G-PeXvo; Mon,  2 Nov 2020 03:48:33 +0000 (UTC)
+	with ESMTP id ITEw+7Hw+FdV; Mon,  2 Nov 2020 14:55:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2EEC3872D3;
-	Mon,  2 Nov 2020 03:48:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 848CE204CA;
+	Mon,  2 Nov 2020 14:55:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5A5031BF31A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 03:48:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C15E1BF325
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 13:18:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5257887437
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 03:48:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 129B820459
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 13:18:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vFxhjPlA4pmD for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Nov 2020 03:48:30 +0000 (UTC)
+ with ESMTP id RObTRkiS2GqM for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Nov 2020 13:18:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f48.google.com (mail-vs1-f48.google.com
- [209.85.217.48])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 24BDE8742E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 03:48:30 +0000 (UTC)
-Received: by mail-vs1-f48.google.com with SMTP id t8so3920682vsr.2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 01 Nov 2020 19:48:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3Am75USifbXcekFjspxQ+9KcoAQPpA5p+8S24attDO8=;
- b=kroDnF4bFlxxdgfqJjoTzd1TFwoMkCuaXrmDyTLXlB078+lPGzCMX7HpZl8a42FUzO
- uBpYdutaxVl0PHJcQR2UWrYtUVeq9s/HSX4Y8m2VZnGKPOqZLLo8geeeBKsslmnyH5yR
- MgDVbtD3MJjS/BejHV3DjKeqMZ13a5VIqSxLK0gVLv68IvA9tNnlOipP09KQPXP3zt/T
- jwGzbkg2H562E1nSuIyPKqwo3yVmU/xReUwxLIbAR1sHzucYm9jmLRWGxE6LbGl3WDxN
- gKt/r5KXIAbZLOHPLXBw7JcWiard64QrO0chsZO7VqWJ3mM66ftPD6AmG3qf4OuSeEuW
- lwXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3Am75USifbXcekFjspxQ+9KcoAQPpA5p+8S24attDO8=;
- b=lmfAy1m0kWmbI+V7uccxL409mlV73D/WWbT4ZgVOPcn4Qx6V+J4rWW0KZ24lPOMHC1
- wEkTuWqsw6L8Pq13Eb2B1yBKyJoFnAzfRoO6xHhH/jb4zHpMkfGn/sNg+mPEyGGqGDmP
- pUpPnpqdZWHo7z9r1lJ5I/w4bQyqsYTZJt2EgbC44ePfnRVtqZgGEhVV3PdMtce99tCv
- +3WWNATeX4mJhnV2JkaaTHHUdsIXuTR+Yg11Qmebf03hZNDyaiCx6hZ+h4J6wOl8qyBD
- 6B0ku2J8kdcthajTCO8mTuxuUzDeLC7qZAWlx+cyUw2ezSvT/rDorLvSzY9bhU+Rf3Xf
- 1AOA==
-X-Gm-Message-State: AOAM5334C6cQlI+8Q1kIpEoxwAGlh9KdQB88NATB2wOUD4oWnx1JxFCX
- a7VaKkIPAeRyzf09I3WbxAlLBPqk8Z5tYUWFgGY=
-X-Google-Smtp-Source: ABdhPJxTKP9sv705lswgnivc+AtE+9KMxs2yDd7JJ4/2eLtxYd///cdQ6mMlTHtN2KItxB0qcALn+C6RsF2/B9xUnNg=
-X-Received: by 2002:a67:f3d1:: with SMTP id j17mr7597598vsn.53.1604288909157; 
- Sun, 01 Nov 2020 19:48:29 -0800 (PST)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2F61620000
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 13:18:36 +0000 (UTC)
+IronPort-SDR: cq3pE3PIS5bqF+mic8j0pLZ80tJgDnSQfpKn3p7LMrKlkspJ3dUloLX5QD6tXLN02BCUfrhX0a
+ NNBm5HSjykzg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9792"; a="165376793"
+X-IronPort-AV: E=Sophos;i="5.77,445,1596524400"; d="scan'208";a="165376793"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Nov 2020 05:18:35 -0800
+IronPort-SDR: gXs2cRatzNWLtI1Kc93gxLyk5eZYzv6rjauVohxwDpwa51yIVRrhc2sN9aYH87I29DZ1vrObmi
+ j7AG2yaEj4aw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,445,1596524400"; d="scan'208";a="538016734"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.102.63])
+ by orsmga005.jf.intel.com with ESMTP; 02 Nov 2020 05:18:33 -0800
+From: Michal Swiatkowski <michal.swiatkowski@intel.com>
+To: netdev@vger.kernel.org,
+	bpf@vger.kernel.org
+Date: Mon,  2 Nov 2020 04:37:27 -0500
+Message-Id: <20201102093727.15388-1-michal.swiatkowski@intel.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <CAMnf+PhD9VJH-db8nssDr9RgyJY6JV7bBL-Yvn2U87gSxfp+mg@mail.gmail.com>
- <DM6PR11MB4657C3917162CED4AD9377769B130@DM6PR11MB4657.namprd11.prod.outlook.com>
-In-Reply-To: <DM6PR11MB4657C3917162CED4AD9377769B130@DM6PR11MB4657.namprd11.prod.outlook.com>
-From: JD <jdtxs00@gmail.com>
-Date: Sun, 1 Nov 2020 21:48:18 -0600
-Message-ID: <CAMnf+PgOmUX8QPXNiiQoYxyHW6vTLbsBL+Orb_-MzpY=oXdZpA@mail.gmail.com>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Subject: Re: [Intel-wired-lan] i40e/iavf bandwidth spikes to 500Gbps &
- returning IAVF_ERR_PARAM
+X-Mailman-Approved-At: Mon, 02 Nov 2020 14:55:27 +0000
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Remove xsk_buff_pool from
+ VSI structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,267 +68,228 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============4312044279401362149=="
+Cc: bjorn.topel@intel.com, intel-wired-lan@lists.osuosl.org,
+ Michal Swiatkowski <michal.swiatkowski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============4312044279401362149==
-Content-Type: multipart/alternative; boundary="0000000000008c278505b3179e99"
+Current implementation of netdev already contains xsk_buff_pools.
+We no longer have to contain these structures in ice_vsi.
 
---0000000000008c278505b3179e99
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Refactor the code to operate on netdev-provided xsk_buff_pools.
 
-Hello Arkadiusz, I suppose that makes sense. I didn't expect VF/PF
-communication issues to increment bandwidth counters in /proc/net/dev
-(which Prom reads).
+Move scheduling napi on each queue to a separate function to
+simplify setup function.
 
-I will get the i40e driver upgraded and hopefully the problem will go away
-for good.
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h      | 10 +---
+ drivers/net/ethernet/intel/ice/ice_main.c | 28 +++++----
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 71 +++--------------------
+ 3 files changed, 30 insertions(+), 79 deletions(-)
 
-Thank you very much for the reply, much appreciated!
-
-On Sun, Nov 1, 2020 at 1:35 PM Kubalewski, Arkadiusz <
-arkadiusz.kubalewski@intel.com> wrote:
-
-> Good day JD!
->
-> The message you have provided:
-> iavf 0000:00:05.0: PF returned error -5 (IAVF_ERR_PARAM) to our request 1=
-5
-> indicates that there was a failure while communicating with parent PF por=
-t.
-> In fact, failed command was trying to get statistics of a VF port from
-> parent PF.
-> Command have failed, so the stats returned shall be equal to 0.
-> Probably Prometheus considered them valid and that is why it shows
-> "impossible" stats.
->
-> About the command failure...
-> It is related to old issue, where PF and VF are out of sync on their
-> communication channel.
->
-> The issue was already fixed in 2.12.6, please use the latest driver to ge=
-t
-> rid of the issue
->
-> Hope this helps =F0=9F=98=8A
->
-> Best Regards,
->
-> Arkadiusz Kubalewski
-> Software Engineer
-> CG EPG SW ITP Linux base driver
->
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of J=
-D
-> Sent: pi=C4=85tek, 30 pa=C5=BAdziernika 2020 18:33
-> To: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-> Subject: [Intel-wired-lan] i40e/iavf bandwidth spikes to 500Gbps &
-> returning IAVF_ERR_PARAM
->
-> Hello,
->
-> Over the past month I've observed some KVM servers exhibiting extremely
-> high bandwidth activity (500gbit, which is impossible).
-> Please see the attached graphs from Prometheus. It starts small then
-> progressively gets worse over time.
->
-> During these spikes, I see the following appear on the KVM guest about
-> once every minute.
-> iavf 0000:00:05.0: PF returned error -5 (IAVF_ERR_PARAM) to our request 1=
-5
->
-> And on the KVM parent, I see this about once every minute:
-> i40e 0000:81:00.0: VF 20 failed opcode 15, retval: -5
->
-> This doesn't seem to happen with any obvious cause, the only other thing =
-I
-> see in dmesg that may be related is the following (which is repeated a fe=
-w
-> times over several hours, but not at the same rate)
->
-> vfio-pci 0000:81:0c.3: Event logged [IO_PAGE_FAULT domain=3D0x0000
-> address=3D0xfffffffdf8040000 flags=3D0x0008]
->
->
-> The KVM guest is running the iavf driver:
-> driver: iavf
-> version: 3.9.3
->
-> The KVM parent is running the i40e driver:
-> driver: i40e
-> version: 2.11.21
->
-> I'm running 2 of the following NIC's on the KVM parent in a bonded setup
-> (mode 4, hash policy 3+4, IEEE 802.3ad dynamic link aggregation)
-> :
-> Intel Corporation Ethernet Controller XXV710 for 25GbE SFP28 (rev 02)
->
-> Both the parent/guest are running the same kernel version of 4.19.107
->
-> I'm not sure whether this is a NIC issue, driver issue, or something else=
-.
-> I'm happy to provide any more information about the system on request if =
-it
-> is relevant (qemu versions, mobo/cpu/ram).  I've observed this issue on 3
-> different KVM parents/guests in different regions.
->
-> If this has already been fixed or is a known issue, then I apologize, but
-> I could not find anything by searching the mailing list w/ my codes from
-> dmesg.
->
-> If anyone can provide any information about this or any pointers on this
-> or how to narrow the issue down, I'd greatly appreciate it.
->
-> Thank you.
-> ---------------------------------------------------------------------
-> Intel Technology Poland sp. z o.o.
-> ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia
-> Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 |
-> Kapita zakadowy 200.000 PLN.
-> Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i
-> moe zawiera informacje poufne. W razie przypadkowego otrzymania tej
-> wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie;
-> jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-> This e-mail and any attachments may contain confidential material for the
-> sole use of the intended recipient(s). If you are not the intended
-> recipient, please contact the sender and delete all copies; any review or
-> distribution by others is strictly prohibited.
->
->
-
---0000000000008c278505b3179e99
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello=C2=A0Arkadiusz, I suppose=C2=A0that makes sense. I d=
-idn&#39;t expect VF/PF communication issues to increment bandwidth counters=
- in=C2=A0/proc/net/dev (which Prom reads).<br><br>I will get the i40e drive=
-r upgraded and hopefully the problem will go away for good.<br><br>Thank yo=
-u very much for the reply, much appreciated!</div><br><div class=3D"gmail_q=
-uote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Nov 1, 2020 at 1:35 PM =
-Kubalewski, Arkadiusz &lt;<a href=3D"mailto:arkadiusz.kubalewski@intel.com"=
->arkadiusz.kubalewski@intel.com</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">Good day JD!<br>
-<br>
-The message you have provided: <br>
-iavf 0000:00:05.0: PF returned error -5 (IAVF_ERR_PARAM) to our request 15<=
-br>
-indicates that there was a failure while communicating with parent PF port.=
-<br>
-In fact, failed command was trying to get statistics of a VF port from pare=
-nt PF.<br>
-Command have failed, so the stats returned shall be equal to 0.<br>
-Probably Prometheus considered them valid and that is why it shows &quot;im=
-possible&quot; stats.<br>
-<br>
-About the command failure...<br>
-It is related to old issue, where PF and VF are out of sync on their commun=
-ication channel.<br>
-<br>
-The issue was already fixed in 2.12.6, please use the latest driver to get =
-rid of the issue <br>
-<br>
-Hope this helps =F0=9F=98=8A<br>
-<br>
-Best Regards,<br>
-<br>
-Arkadiusz Kubalewski<br>
-Software Engineer<br>
-CG=C2=A0EPG SW ITP=C2=A0Linux=C2=A0base driver<br>
-<br>
------Original Message-----<br>
-From: Intel-wired-lan &lt;<a href=3D"mailto:intel-wired-lan-bounces@osuosl.=
-org" target=3D"_blank">intel-wired-lan-bounces@osuosl.org</a>&gt; On Behalf=
- Of JD<br>
-Sent: pi=C4=85tek, 30 pa=C5=BAdziernika 2020 18:33<br>
-To: intel-wired-lan &lt;<a href=3D"mailto:intel-wired-lan@lists.osuosl.org"=
- target=3D"_blank">intel-wired-lan@lists.osuosl.org</a>&gt;<br>
-Subject: [Intel-wired-lan] i40e/iavf bandwidth spikes to 500Gbps &amp; retu=
-rning IAVF_ERR_PARAM<br>
-<br>
-Hello,<br>
-<br>
-Over the past month I&#39;ve observed some KVM servers exhibiting extremely=
- high bandwidth activity (500gbit, which is impossible).<br>
-Please see the attached graphs from Prometheus. It starts small then progre=
-ssively gets worse over time.<br>
-<br>
-During these spikes, I see the following appear on the KVM guest about once=
- every minute.<br>
-iavf 0000:00:05.0: PF returned error -5 (IAVF_ERR_PARAM) to our request 15<=
-br>
-<br>
-And on the KVM parent, I see this about once every minute:<br>
-i40e 0000:81:00.0: VF 20 failed opcode 15, retval: -5<br>
-<br>
-This doesn&#39;t seem to happen with any obvious cause, the only other thin=
-g I see in dmesg that may be related is the following (which is repeated a =
-few times over several hours, but not at the same rate)<br>
-<br>
-vfio-pci 0000:81:0c.3: Event logged [IO_PAGE_FAULT domain=3D0x0000<br>
-address=3D0xfffffffdf8040000 flags=3D0x0008]<br>
-<br>
-<br>
-The KVM guest is running the iavf driver:<br>
-driver: iavf<br>
-version: 3.9.3<br>
-<br>
-The KVM parent is running the i40e driver:<br>
-driver: i40e<br>
-version: 2.11.21<br>
-<br>
-I&#39;m running 2 of the following NIC&#39;s on the KVM parent in a bonded =
-setup (mode 4, hash policy 3+4, IEEE 802.3ad dynamic link aggregation)<br>
-:<br>
-Intel Corporation Ethernet Controller XXV710 for 25GbE SFP28 (rev 02)<br>
-<br>
-Both the parent/guest are running the same kernel version of 4.19.107<br>
-<br>
-I&#39;m not sure whether this is a NIC issue, driver issue, or something el=
-se. I&#39;m happy to provide any more information about the system on reque=
-st if it is relevant (qemu versions, mobo/cpu/ram).=C2=A0 I&#39;ve observed=
- this issue on 3 different KVM parents/guests in different regions.<br>
-<br>
-If this has already been fixed or is a known issue, then I apologize, but I=
- could not find anything by searching the mailing list w/ my codes from dme=
-sg.<br>
-<br>
-If anyone can provide any information about this or any pointers on this or=
- how to narrow the issue down, I&#39;d greatly appreciate it.<br>
-<br>
-Thank you.<br>
----------------------------------------------------------------------<br>
-Intel Technology Poland sp. z o.o.<br>
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gos=
-podarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapi=
-ta zakadowy 200.000 PLN.<br>
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i mo=
-e zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci=
-, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek prz=
-egldanie lub rozpowszechnianie jest zabronione.<br>
-This e-mail and any attachments may contain confidential material for the s=
-ole use of the intended recipient(s). If you are not the intended recipient=
-, please contact the sender and delete all copies; any review or distributi=
-on by others is strictly prohibited.<br>
-<br>
-</blockquote></div>
-
---0000000000008c278505b3179e99--
-
---===============4312044279401362149==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index a0723831c4e4..c53cd2e84ef6 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -39,6 +39,7 @@
+ #include <net/devlink.h>
+ #include <net/ipv6.h>
+ #include <net/xdp_sock.h>
++#include <net/xdp_sock_drv.h>
+ #include <net/geneve.h>
+ #include <net/gre.h>
+ #include <net/udp_tunnel.h>
+@@ -325,9 +326,6 @@ struct ice_vsi {
+ 	struct ice_ring **xdp_rings;	 /* XDP ring array */
+ 	u16 num_xdp_txq;		 /* Used XDP queues */
+ 	u8 xdp_mapping_mode;		 /* ICE_MAP_MODE_[CONTIG|SCATTER] */
+-	struct xsk_buff_pool **xsk_pools;
+-	u16 num_xsk_pools_used;
+-	u16 num_xsk_pools;
+ } ____cacheline_internodealigned_in_smp;
+ 
+ /* struct that defines an interrupt vector */
+@@ -516,17 +514,15 @@ static inline void ice_set_ring_xdp(struct ice_ring *ring)
+  */
+ static inline struct xsk_buff_pool *ice_xsk_pool(struct ice_ring *ring)
+ {
+-	struct xsk_buff_pool **pools = ring->vsi->xsk_pools;
+ 	u16 qid = ring->q_index;
+ 
+ 	if (ice_ring_is_xdp(ring))
+ 		qid -= ring->vsi->num_xdp_txq;
+ 
+-	if (qid >= ring->vsi->num_xsk_pools || !pools || !pools[qid] ||
+-	    !ice_is_xdp_ena_vsi(ring->vsi))
++	if (!ice_is_xdp_ena_vsi(ring->vsi))
+ 		return NULL;
+ 
+-	return pools[qid];
++	return xsk_get_pool_from_qid(ring->vsi->netdev, qid);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 2dea4d0e9415..997bc37f7d2b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2481,6 +2481,22 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi)
+ 			       max_txqs);
+ }
+ 
++/**
++ * ice_vsi_rx_napi_schedule - Schedule napi on RX queues from VSI
++ * @vsi: VSI to schedule napi on
++ */
++static void ice_vsi_rx_napi_schedule(struct ice_vsi *vsi)
++{
++	int i;
++
++	ice_for_each_rxq(vsi, i) {
++		struct ice_ring *rx_ring = vsi->rx_rings[i];
++
++		if (rx_ring->xsk_pool)
++			napi_schedule(&rx_ring->q_vector->napi);
++	}
++}
++
+ /**
+  * ice_xdp_setup_prog - Add or remove XDP eBPF program
+  * @vsi: VSI to setup XDP for
+@@ -2525,16 +2541,8 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
+ 	if (if_running)
+ 		ret = ice_up(vsi);
+ 
+-	if (!ret && prog && vsi->xsk_pools) {
+-		int i;
+-
+-		ice_for_each_rxq(vsi, i) {
+-			struct ice_ring *rx_ring = vsi->rx_rings[i];
+-
+-			if (rx_ring->xsk_pool)
+-				napi_schedule(&rx_ring->q_vector->napi);
+-		}
+-	}
++	if (!ret && prog)
++		ice_vsi_rx_napi_schedule(vsi);
+ 
+ 	return (ret || xdp_ring_err) ? -ENOMEM : 0;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 797886524054..4d44431c71a0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -259,45 +259,6 @@ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
+ 	return err;
+ }
+ 
+-/**
+- * ice_xsk_alloc_pools - allocate a buffer pool for an XDP socket
+- * @vsi: VSI to allocate the buffer pool on
+- *
+- * Returns 0 on success, negative on error
+- */
+-static int ice_xsk_alloc_pools(struct ice_vsi *vsi)
+-{
+-	if (vsi->xsk_pools)
+-		return 0;
+-
+-	vsi->xsk_pools = kcalloc(vsi->num_xsk_pools, sizeof(*vsi->xsk_pools),
+-				 GFP_KERNEL);
+-
+-	if (!vsi->xsk_pools) {
+-		vsi->num_xsk_pools = 0;
+-		return -ENOMEM;
+-	}
+-
+-	return 0;
+-}
+-
+-/**
+- * ice_xsk_remove_pool - Remove an buffer pool for a certain ring/qid
+- * @vsi: VSI from which the VSI will be removed
+- * @qid: Ring/qid associated with the buffer pool
+- */
+-static void ice_xsk_remove_pool(struct ice_vsi *vsi, u16 qid)
+-{
+-	vsi->xsk_pools[qid] = NULL;
+-	vsi->num_xsk_pools_used--;
+-
+-	if (vsi->num_xsk_pools_used == 0) {
+-		kfree(vsi->xsk_pools);
+-		vsi->xsk_pools = NULL;
+-		vsi->num_xsk_pools = 0;
+-	}
+-}
+-
+ /**
+  * ice_xsk_pool_disable - disable a buffer pool region
+  * @vsi: Current VSI
+@@ -307,12 +268,12 @@ static void ice_xsk_remove_pool(struct ice_vsi *vsi, u16 qid)
+  */
+ static int ice_xsk_pool_disable(struct ice_vsi *vsi, u16 qid)
+ {
+-	if (!vsi->xsk_pools || qid >= vsi->num_xsk_pools ||
+-	    !vsi->xsk_pools[qid])
++	struct xsk_buff_pool *pool = xsk_get_pool_from_qid(vsi->netdev, qid);
++
++	if (!pool)
+ 		return -EINVAL;
+ 
+-	xsk_pool_dma_unmap(vsi->xsk_pools[qid], ICE_RX_DMA_ATTR);
+-	ice_xsk_remove_pool(vsi, qid);
++	xsk_pool_dma_unmap(pool, ICE_RX_DMA_ATTR);
+ 
+ 	return 0;
+ }
+@@ -333,22 +294,11 @@ ice_xsk_pool_enable(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+ 	if (vsi->type != ICE_VSI_PF)
+ 		return -EINVAL;
+ 
+-	if (!vsi->num_xsk_pools)
+-		vsi->num_xsk_pools = min_t(u16, vsi->num_rxq, vsi->num_txq);
+-	if (qid >= vsi->num_xsk_pools)
++	if (qid >= vsi->netdev->real_num_rx_queues ||
++	    qid >= vsi->netdev->real_num_tx_queues)
+ 		return -EINVAL;
+ 
+-	err = ice_xsk_alloc_pools(vsi);
+-	if (err)
+-		return err;
+-
+-	if (vsi->xsk_pools && vsi->xsk_pools[qid])
+-		return -EBUSY;
+-
+-	vsi->xsk_pools[qid] = pool;
+-	vsi->num_xsk_pools_used++;
+-
+-	err = xsk_pool_dma_map(vsi->xsk_pools[qid], ice_pf_to_dev(vsi->back),
++	err = xsk_pool_dma_map(pool, ice_pf_to_dev(vsi->back),
+ 			       ICE_RX_DMA_ATTR);
+ 	if (err)
+ 		return err;
+@@ -842,11 +792,8 @@ bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi)
+ {
+ 	int i;
+ 
+-	if (!vsi->xsk_pools)
+-		return false;
+-
+-	for (i = 0; i < vsi->num_xsk_pools; i++) {
+-		if (vsi->xsk_pools[i])
++	ice_for_each_rxq(vsi, i) {
++		if (xsk_get_pool_from_qid(vsi->netdev, i))
+ 			return true;
+ 	}
+ 
+-- 
+2.21.3
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============4312044279401362149==--
