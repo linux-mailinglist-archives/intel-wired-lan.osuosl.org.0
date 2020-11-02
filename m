@@ -2,60 +2,49 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67A422A3326
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Nov 2020 19:42:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1ACA02A36F5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Nov 2020 00:13:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 253468727E;
-	Mon,  2 Nov 2020 18:42:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 498FD87340;
+	Mon,  2 Nov 2020 23:13:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3LIEEbsAjLM9; Mon,  2 Nov 2020 18:42:32 +0000 (UTC)
+	with ESMTP id PnbWLr0GfBey; Mon,  2 Nov 2020 23:13:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C893087284;
-	Mon,  2 Nov 2020 18:42:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 16AD0872E3;
+	Mon,  2 Nov 2020 23:13:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 346D81BF37E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 18:42:31 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C7081BF343
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 23:13:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2F5EE8727E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 18:42:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4A46186B6E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 23:13:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6PgIiFQGqByB for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Nov 2020 18:42:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 33C0D8727B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 18:42:30 +0000 (UTC)
-IronPort-SDR: c28IVlAmKPIM7YqKmoytavFfmVomXBno/hbi6Rt0uxiOlMpy1UsTky+by2qz6ZuiaNay3KoP2B
- JY5pv9GwVrGQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9793"; a="169034772"
-X-IronPort-AV: E=Sophos;i="5.77,445,1596524400"; d="scan'208";a="169034772"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Nov 2020 10:42:29 -0800
-IronPort-SDR: lBHZd2nizd8fzrw0wGdk7ymBeuzP8DVqtgncb4aFl1+ZdXZcx/mWyEW6G36yNKIJhUpD0YjegV
- MxThSgqOfY9w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,445,1596524400"; d="scan'208";a="352905087"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga004.fm.intel.com with ESMTP; 02 Nov 2020 10:42:27 -0800
-Date: Mon, 2 Nov 2020 19:31:29 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201102183129.GM6427@ranger.igk.intel.com>
-References: <20201030210351.46482-1-andre.guedes@intel.com>
+ with ESMTP id PP7KSW9y6y5q for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Nov 2020 23:13:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D292E86B3B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Nov 2020 23:13:21 +0000 (UTC)
+Received: from localhost.localdomain (ip5f5af1d0.dynamic.kabel-deutschland.de
+ [95.90.241.208])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7108420646217;
+ Tue,  3 Nov 2020 00:13:18 +0100 (CET)
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Tue,  3 Nov 2020 00:13:05 +0100
+Message-Id: <20201102231307.13021-1-pmenzel@molgen.mpg.de>
+X-Mailer: git-send-email 2.29.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201030210351.46482-1-andre.guedes@intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH v3 0/9] igc: Add XDP support
+Subject: [Intel-wired-lan] [PATCH 0/2] Upstream ONL patch for PHY BCM5461S
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,71 +57,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Oct 30, 2020 at 02:03:42PM -0700, Andre Guedes wrote:
-> Hi all,
-> 
-> This is the third version of this series which adds XDP support to igc driver.
-> 
-> The main changes from v2 are:
-> 
->     - Moved functions that belong to the driver's hot path to igc_main.c to
->       allow the compiler to inline them if convenient.
->     - Squashed ndo_xdp_xmit patch into XDP_REDIRECT patch.
-> 
-> v2 is here:
-> 
->     https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201028201943.93147-1-andre.guedes@intel.com/
-> 
-> v1 is here:
-> 
->     https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201009025349.4037-1-andre.guedes@intel.com/
-> 
-> Cheers,
-> Andre
-
-I had only minor comments/questions for this version, so you can take my:
-
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-
-for series.
-
-> 
-> 
-> Andre Guedes (9):
->   igc: Fix igc_ptp_rx_pktstamp()
->   igc: Remove unused argument from igc_tx_cmd_type()
->   igc: Introduce igc_rx_buffer_flip() helper
->   igc: Introduce igc_get_rx_frame_truesize() helper
->   igc: Refactor rx timestamp handling
->   igc: Add set/clear large buffer helpers
->   igc: Add initial XDP support
->   igc: Add support for XDP_TX action
->   igc: Add support for XDP_REDIRECT action
-> 
->  drivers/net/ethernet/intel/igc/Makefile   |   2 +-
->  drivers/net/ethernet/intel/igc/igc.h      |  18 +-
->  drivers/net/ethernet/intel/igc/igc_main.c | 431 +++++++++++++++++++---
->  drivers/net/ethernet/intel/igc/igc_ptp.c  |  89 +++--
->  drivers/net/ethernet/intel/igc/igc_xdp.c  |  60 +++
->  drivers/net/ethernet/intel/igc/igc_xdp.h  |  13 +
->  6 files changed, 512 insertions(+), 101 deletions(-)
->  create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.c
->  create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.h
-> 
-> -- 
-> 2.28.0
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBMaW51eCBmb2xrcywKCgpMb29raW5nIGEgbGl0dGxlIGJpdCBhdCBPcGVuIE5ldHdvcmsg
+TGludXgsIHRoZXkgY2Fycnkgc29tZSBMaW51eApwYXRjaGVzLCBidXQgaGF2ZSBub3QgdXBzdHJl
+YW1lZCB0aGVtIHlldC4gVGhpcyB1cHN0cmVhbXMgc3VwcG9ydCBmb3IKdGhlIFBIWSBCQ001NDYx
+Uy4gSXTigJlkIGJlIGdyZWF0LCBpZiB5b3UgY291bGQgaGVscCByZXZpZXcgaXQuCgoKS2luZCBy
+ZWdhcmRzLAoKUGF1bAoKCkplZmZyZXkgVG93bnNlbmQgKDIpOgogIGV0aGVybmV0OiBpZ2I6IFN1
+cHBvcnQgUEhZIEJDTTU0NjFTCiAgZXRoZXJuZXQ6IGlnYjogZTEwMDBfcGh5OiBDaGVjayBmb3Ig
+b3BzLmZvcmNlX3NwZWVkX2R1cGxleCBleGlzdGVuY2UKCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pZ2IvZTEwMDBfODI1NzUuYyAgfCAyMyArKysrLQogLi4uL25ldC9ldGhlcm5ldC9pbnRl
+bC9pZ2IvZTEwMDBfZGVmaW5lcy5oICAgIHwgIDEgKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaWdiL2UxMDAwX2h3LmggICAgIHwgIDEgKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWdiL2UxMDAwX3BoeS5jICAgIHwgODkgKysrKysrKysrKysrKysrKystLQogZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWdiL2UxMDAwX3BoeS5oICAgIHwgIDIgKwogZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgICAgIHwgIDggKysKIDYgZmlsZXMgY2hhbmdlZCwg
+MTE4IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgotLSAKMi4yOS4xCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
