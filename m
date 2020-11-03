@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8285A2A4D5A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Nov 2020 18:43:42 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0996E2A4F14
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Nov 2020 19:39:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3ADC520BF8;
-	Tue,  3 Nov 2020 17:43:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 883FC8647F;
+	Tue,  3 Nov 2020 18:39:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pf1H9DVuDsq6; Tue,  3 Nov 2020 17:43:41 +0000 (UTC)
+	with ESMTP id fE6ezZSD-faV; Tue,  3 Nov 2020 18:39:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6215221507;
-	Tue,  3 Nov 2020 17:43:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E0AE1863DB;
+	Tue,  3 Nov 2020 18:39:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B9CA71BF352
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 17:43:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C5D1F1BF475
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 18:39:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id ADA9E20C45
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 17:43:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B9F2A86241
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 18:39:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hF6NAPBVwj7E for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Nov 2020 17:43:36 +0000 (UTC)
+ with ESMTP id evlAOjV8I3jJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Nov 2020 18:39:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id AA05520BF8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 17:43:36 +0000 (UTC)
-IronPort-SDR: HhwmWLvd3ilzVXtHzZaERMSC33zIxnNQ2CRkhvpnwhgw8+rjeHMVPjWCKROER9RJFrquW55/QP
- deRtGd5R5w8A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9794"; a="230723508"
-X-IronPort-AV: E=Sophos;i="5.77,448,1596524400"; d="scan'208";a="230723508"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2020 09:43:35 -0800
-IronPort-SDR: KHrIPlPayNqv008sA1ZerMaDxelJmQmSO0liVkaBgcZOYnQEJ7rZ63kbWjZCetljWMS0I3DU5h
- BKECa868yY6Q==
-X-IronPort-AV: E=Sophos;i="5.77,448,1596524400"; d="scan'208";a="538574273"
-Received: from wrjurinj-mobl.amr.corp.intel.com (HELO localhost)
- ([10.212.132.93])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2020 09:43:34 -0800
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5E6EC86191
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 18:39:42 +0000 (UTC)
+Received: from kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net (unknown
+ [163.114.132.5])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 996752074B;
+ Tue,  3 Nov 2020 18:39:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604428782;
+ bh=6Xps4bIUFtPepouNBqtps60Iy2leilNlFonhy3YWMkY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=h248a77653NHUhqb1KV9+o4A1pWMp00jHEw2F/2qy6d8aGuWyFbzs5I/e/VObpLu/
+ GLDn8k/OtOjSLHa+8/BmLvcd2b3BL/X1CPLxzFq2TflJocMmfFZdcyBR4SyeXFxm2C
+ 2u5QTZGEIChOwklxepD8Sg/3taUJAVzO3T3lSjkY=
+Date: Tue, 3 Nov 2020 10:39:40 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <20201103103940.2ed27fa2@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+In-Reply-To: <36ce1f2e-843c-4995-8bb2-2c2676f01b9d@molgen.mpg.de>
+References: <20201102231307.13021-1-pmenzel@molgen.mpg.de>
+ <20201102231307.13021-3-pmenzel@molgen.mpg.de>
+ <20201102161943.343586b1@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+ <36ce1f2e-843c-4995-8bb2-2c2676f01b9d@molgen.mpg.de>
 MIME-Version: 1.0
-In-Reply-To: <20201103143201.GA1477350@mwanda>
-References: <20201103143201.GA1477350@mwanda>
-From: Andre Guedes <andre.guedes@intel.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, jesus.sanchez-palencia@intel.com
-Date: Tue, 03 Nov 2020 09:43:32 -0800
-Message-ID: <160442541270.8198.8850590707916178617@wrjurinj-mobl.amr.corp.intel.com>
-User-Agent: alot/0.9.1
-Subject: Re: [Intel-wired-lan] [bug report] igb: Add support for ETF offload
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ethernet: igb: e1000_phy: Check
+ for ops.force_speed_duplex existence
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,64 +68,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Jeffrey Townsend <jeffrey.townsend@bigswitch.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ John W Linville <linville@tuxdriver.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Dan,
-
-Quoting Dan Carpenter (2020-11-03 06:32:01)
-> Hello Jesus Sanchez-Palencia,
-> 
-> The patch 3048cf84d152: "igb: Add support for ETF offload" from Jul
-> 3, 2018, leads to the following static checker warning:
-> 
->         drivers/net/ethernet/intel/igb/igb_main.c:1862 igb_save_txtime_params()
->         warn: array off by one? 'adapter->tx_ring[queue]'
-> 
-> drivers/net/ethernet/intel/igb/igb_main.c
->   1854  static int igb_save_txtime_params(struct igb_adapter *adapter, int queue,
->   1855                                    bool enable)
->   1856  {
->   1857          struct igb_ring *ring;
->   1858  
->   1859          if (queue < 0 || queue > adapter->num_tx_queues)
->                                        ^^
-> I feel like this should be >= instead.
-
-If queue == adapter->num_tx_queues we end up with an out-of-bounds index when
-accessing adapter->tx_ring[] in line 1862.
-> 
->   1860                  return -EINVAL;
->   1861  
->   1862          ring = adapter->tx_ring[queue];
-                                  ^^^^^^^^^^^^^^
-
-
->   1863          ring->launchtime_enable = enable;
->   1864  
->   1865          return 0;
->   1866  }
->   1867  
->   1868  static int igb_save_cbs_params(struct igb_adapter *adapter, int queue,
->   1869                                 bool enable, int idleslope, int sendslope,
->   1870                                 int hicredit, int locredit)
->   1871  {
->   1872          struct igb_ring *ring;
->   1873  
->   1874          if (queue < 0 || queue > adapter->num_tx_queues)
->                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> Here too.
-
-Same here as well.
-
-So it looks correct to me.
-
-Best,
-Andre
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVHVlLCAzIE5vdiAyMDIwIDA4OjM1OjA5ICswMTAwIFBhdWwgTWVuemVsIHdyb3RlOgo+IEFj
+Y29yZGluZyB0byAqRGV2ZWxvcGVyJ3MgQ2VydGlmaWNhdGUgb2YgT3JpZ2luIDEuMSogWzNdLCBp
+dOKAmXMgbXkgCj4gdW5kZXJzdGFuZGluZywgdGhhdCBpdCBpcyAqbm90KiByZXF1aXJlZC4gVGhl
+IGl0ZW1zIChhKSwgKGIpLCBhbmQgKGMpIAo+IGFyZSBjb25uZWN0ZWQgYnkgYW4gKm9yKi4KPiAK
+PiA+ICAgICAgICAgKGIpIFRoZSBjb250cmlidXRpb24gaXMgYmFzZWQgdXBvbiBwcmV2aW91cyB3
+b3JrIHRoYXQsIHRvIHRoZSBiZXN0Cj4gPiAgICAgICAgICAgICBvZiBteSBrbm93bGVkZ2UsIGlz
+IGNvdmVyZWQgdW5kZXIgYW4gYXBwcm9wcmlhdGUgb3BlbiBzb3VyY2UKPiA+ICAgICAgICAgICAg
+IGxpY2Vuc2UgYW5kIEkgaGF2ZSB0aGUgcmlnaHQgdW5kZXIgdGhhdCBsaWNlbnNlIHRvIHN1Ym1p
+dCB0aGF0Cj4gPiAgICAgICAgICAgICB3b3JrIHdpdGggbW9kaWZpY2F0aW9ucywgd2hldGhlciBj
+cmVhdGVkIGluIHdob2xlIG9yIGluIHBhcnQgCj4gPiAgICAgICAgICAgICBieSBtZSwgdW5kZXIg
+dGhlIHNhbWUgb3BlbiBzb3VyY2UgbGljZW5zZSAodW5sZXNzIEkgYW0KPiA+ICAgICAgICAgICAg
+IHBlcm1pdHRlZCB0byBzdWJtaXQgdW5kZXIgYSBkaWZmZXJlbnQgbGljZW5zZSksIGFzIGluZGlj
+YXRlZAo+ID4gICAgICAgICAgICAgaW4gdGhlIGZpbGU7IG9yICAKCkFjaywgYnV0IHRoZW4geW91
+IG5lZWQgdG8gcHV0IHlvdXJzZWxmIGFzIHRoZSBhdXRob3IsIGJlY2F1c2UgaXQncwp5b3UgY2Vy
+dGlmeWluZyB0aGF0IHRoZSBjb2RlIGZhbGxzIHVuZGVyIChiKS4KCkF0IGxlYXN0IHRoYXQncyBt
+eSB1bmRlcnN0YW5kaW5nLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vv
+c2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdp
+cmVkLWxhbgo=
