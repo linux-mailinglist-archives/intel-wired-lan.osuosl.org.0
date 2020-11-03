@@ -2,85 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E1DE2A3841
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Nov 2020 02:15:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92AF42A3DC0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Nov 2020 08:35:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D5E886079;
-	Tue,  3 Nov 2020 01:15:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 58236854AF;
+	Tue,  3 Nov 2020 07:35:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EMsyYw2Uan97; Tue,  3 Nov 2020 01:15:47 +0000 (UTC)
+	with ESMTP id 0Ex9dTHqw488; Tue,  3 Nov 2020 07:35:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 442E486073;
-	Tue,  3 Nov 2020 01:15:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B533485359;
+	Tue,  3 Nov 2020 07:35:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 997A41BF28A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 01:15:45 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 27A651BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 07:35:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6BD6320380
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 01:15:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2309186A35
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 07:35:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xIyTOsn3p36s for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Nov 2020 01:15:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 95E7B20013
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 01:15:44 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id w4so2123239pgg.13
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Nov 2020 17:15:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xoqgQuozW5oeUPf4CYzqwAx5luKyVrcBIWtsSxo//oc=;
- b=UmCR742pXZ95PhnyDUM9lNeaGk+t71ddOr/Yx/dQFgpdWP0wYj9dGespx893SrJz3/
- CIElnPy0jWEkYXgKkwpsx6+Y2weY+wVr80Ar9IqlD33xYsdS22QYmufYnuPaz/31IJPL
- IkMO1Wt5mG9GJ1enacxJxaOmSrBQF/afxOq8rGVmIivqI0KQi7WJexA2oi0J4OknILex
- uJKUD3clFAZUyLrPuQJnTjJkIy59rt/HsPDyuSug1JWX6inzelNTdriD0RNQ1JBnEEiq
- 32X96FFF9EhiEBINnmPqoIxWK8yDABWUkRUdNOpqWoDYmMLbH0ZlI91vUs/qwSBkPhuv
- aBsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xoqgQuozW5oeUPf4CYzqwAx5luKyVrcBIWtsSxo//oc=;
- b=eZ9IWTIyHHuMWwYu8GPscsVsnK5BLHHvpQ+4i2X5uq+0mt8v54sIGczP6k4cQbJo+1
- MunrA8HPlAOIDKSXwUGByXctVxnEr8nSMYkeKFrVsGF2wmXA2669fIep4Ea+jXgwwrOH
- +E/9LXKzzavoc1wIWH3+1UL4DOzeUf9kT7uqYpNZS7V/pjX3nzCGV0CuGPuci+Cp0F05
- fMglu6NTsSOmF3YUn7wUKrTzJUS6drltbpk/GAs4mBRb7CnGiq0E6D3JPbX4Ma8iBKKZ
- 3rvcMjwPtHO6n4FxZK8alW9BgD4vR+krjZmWBdMGymjrq3/vV/oh4eduaSGTkMDznypt
- P1Gg==
-X-Gm-Message-State: AOAM532lWWQrL8QWz9pTRX71CCUmf0vwD7TxCrp8Wjbm3LKO3z2yoB2m
- +ZnwFeO977pgMEt37PQrvpg=
-X-Google-Smtp-Source: ABdhPJwouVsRBWLk0ddYKFjXwCr+PGhhQ2IcQFjcccYAm3gpVedigxELC15fWgkEEj98ZAyxRed+ng==
-X-Received: by 2002:a17:90b:a05:: with SMTP id
- gg5mr985229pjb.214.1604366144028; 
- Mon, 02 Nov 2020 17:15:44 -0800 (PST)
-Received: from [10.230.28.234] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id e2sm14004100pgd.27.2020.11.02.17.15.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 17:15:43 -0800 (PST)
-To: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
+ with ESMTP id 6YTytv8DYfWw for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Nov 2020 07:35:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 649DC86A28
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Nov 2020 07:35:13 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5af1b7.dynamic.kabel-deutschland.de
+ [95.90.241.183])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 35C6020646DD7;
+ Tue,  3 Nov 2020 08:35:10 +0100 (CET)
+To: Jakub Kicinski <kuba@kernel.org>
 References: <20201102231307.13021-1-pmenzel@molgen.mpg.de>
- <20201102231307.13021-2-pmenzel@molgen.mpg.de>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Message-ID: <cdcaf9fa-4983-934f-0d9c-09588fe07901@gmail.com>
-Date: Mon, 2 Nov 2020 17:15:41 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.4.0
+ <20201102231307.13021-3-pmenzel@molgen.mpg.de>
+ <20201102161943.343586b1@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <36ce1f2e-843c-4995-8bb2-2c2676f01b9d@molgen.mpg.de>
+Date: Tue, 3 Nov 2020 08:35:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201102231307.13021-2-pmenzel@molgen.mpg.de>
+In-Reply-To: <20201102161943.343586b1@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] ethernet: igb: Support PHY
- BCM5461S
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ethernet: igb: e1000_phy: Check
+ for ops.force_speed_duplex existence
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,84 +64,68 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- John W Linville <linville@tuxdriver.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org,
  Jeffrey Townsend <jeffrey.townsend@bigswitch.com>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "David S . Miller" <davem@davemloft.net>,
+ John W Linville <linville@tuxdriver.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 11/2/2020 3:13 PM, Paul Menzel wrote:
-> From: Jeffrey Townsend <jeffrey.townsend@bigswitch.com>
-> 
-> The BCM5461S PHY is used in switches.
-> 
-> The patch is taken from Open Network Linux, and it was added there as
-> patch
-> 
->     packages/base/any/kernels/3.16+deb8/patches/driver-support-intel-igb-bcm5461X-phy.patch
-> 
-> in ONL commit f32316c63c (Support the BCM54616 and BCM5461S.) [1]. Part
-> of this commit was already upstreamed in Linux commit eeb0149660 (igb:
-> support BCM54616 PHY) in 2017.
-> 
-> I applied the forward-ported
-> 
->     packages/base/any/kernels/5.4-lts/patches/0002-driver-support-intel-igb-bcm5461S-phy.patch
-> 
-> added in ONL commit 5ace6bcdb3 (Add 5.4 LTS kernel build.) [2].
-> 
-> [1]: https://github.com/opencomputeproject/OpenNetworkLinux/commit/f32316c63ce3a64de125b7429115c6d45e942bd1
-> [2]: https://github.com/opencomputeproject/OpenNetworkLinux/commit/5ace6bcdb37cb8065dcd1d4404b3dcb6424f6331
-> 
-> Cc: Jeffrey Townsend <jeffrey.townsend@bigswitch.com>
-> Cc: John W Linville <linville@tuxdriver.com>
-> Signed-off-by: Paul Menzel <pmenzel@molgen.mpg.de>
-> ---
-
-[snip]
-
-> +
-> +/**
-> + *  igb_phy_init_script_5461s - Inits the BCM5461S PHY
-> + *  @hw: pointer to the HW structure
-> + *
-> + *  Initializes a Broadcom Gigabit PHY.
-> + **/
-> +s32 igb_phy_init_script_5461s(struct e1000_hw *hw)
-> +{
-> +	u16 mii_reg_led = 0;
-> +
-> +	/* 1. Speed LED (Set the Link LED mode), Shadow 00010, 0x1C.bit2=1 */
-> +	hw->phy.ops.write_reg(hw, 0x1C, 0x0800);
-> +	hw->phy.ops.read_reg(hw, 0x1C, &mii_reg_led);
-> +	mii_reg_led |= 0x0004;
-> +	hw->phy.ops.write_reg(hw, 0x1C, mii_reg_led | 0x8000);
-> +
-> +	/* 2. Active LED (Set the Link LED mode), Shadow 01001, 0x1C.bit4=1, 0x10.bit5=0 */
-> +	hw->phy.ops.write_reg(hw, 0x1C, 0x2400);
-> +	hw->phy.ops.read_reg(hw, 0x1C, &mii_reg_led);
-> +	mii_reg_led |= 0x0010;
-> +	hw->phy.ops.write_reg(hw, 0x1C, mii_reg_led | 0x8000);
-> +	hw->phy.ops.read_reg(hw, 0x10, &mii_reg_led);
-> +	mii_reg_led &= 0xffdf;
-> +	hw->phy.ops.write_reg(hw, 0x10, mii_reg_led);
-
-Please try at least to re-use the definitions from
-include/linux/brcmphy.h and add new ones where appropriate.
-
-It is already painful enough to see that Intel does not use the PHY
-library, there is no need to add insult to the injury by open coding all
-of these register addresses and values.
-
-Thanks
--- 
-Florian
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKYWt1YiwKCgpBbSAwMy4xMS4yMCB1bSAwMToxOSBzY2hyaWViIEpha3ViIEtpY2luc2tp
+Ogo+IE9uIFR1ZSwgIDMgTm92IDIwMjAgMDA6MTM6MDcgKzAxMDAgUGF1bCBNZW56ZWwgd3JvdGU6
+Cj4+IEZyb206IEplZmZyZXkgVG93bnNlbmQgPGplZmZyZXkudG93bnNlbmRAYmlnc3dpdGNoLmNv
+bT4KPj4KPj4gVGhlIG9wcyBmaWVsZCBtaWdodCBubyBiZSBkZWZpbmVkLCBzbyBhZGQgYSBjaGVj
+ay4KPiAKPiBUaGlzIGNoYW5nZSBzaG91bGQgYmUgZmlyc3QsIG90aGVyd2lzZSBBRkFJVSBpZiBz
+b21lb25lIGJ1aWxkcyB0aGUKPiBrZXJuZWwgaW4gYmV0d2VlbiB0aGUgY29tbWl0cyAoZS5nLiBm
+b3IgYmlzZWN0aW9uKSBpdCB3aWxsIGNyYXNoLgoKUGF0Y2ggYFtQQVRDSCAxLzJdIGV0aGVybmV0
+OiBpZ2I6IFN1cHBvcnQgUEhZIEJDTTU0NjFTYCBoYXMKCiAgICAgcGh5LT5vcHMuZm9yY2Vfc3Bl
+ZWRfZHVwbGV4ID0gaWdiX3BoeV9mb3JjZV9zcGVlZF9kdXBsZXhfODI1ODA7CgpzbyB0aGUgb3Jk
+ZXJpbmcgZG9lcyBub3QgbWF0dGVyLiBJIGRvIG5vdCBrbm93LCBpZiBKZWZmcmV5IGNhbiBjb21t
+ZW50LCAKYnV0IHByb2JhYmx5IHRoZSBjaGVjayB3YXMganVzdCBhZGRpbmcgZHVyaW5nIGRldmVs
+b3BtZW50LiBNYXliZSBhbiAKYXNzZXJ0IHNob3VsZCBiZSBhZGRlZCBpbnN0ZWFkPwoKPj4gVGhl
+IHBhdGNoIGlzIHRha2VuIGZyb20gT3BlbiBOZXR3b3JrIExpbnV4IChPTkwpLCBhbmQgaXQgd2Fz
+IGFkZGVkIHRoZXJlCj4+IGFzIHBhcnQgb2YgdGhlIHBhdGNoCj4+Cj4+ICAgICAgcGFja2FnZXMv
+YmFzZS9hbnkva2VybmVscy8zLjE2K2RlYjgvcGF0Y2hlcy9kcml2ZXItc3VwcG9ydC1pbnRlbC1p
+Z2ItYmNtNTQ2MVgtcGh5LnBhdGNoCj4+Cj4+IGluIE9OTCBjb21taXQgZjMyMzE2YzYzYyAoU3Vw
+cG9ydCB0aGUgQkNNNTQ2MTYgYW5kIEJDTTU0NjFTLikgWzFdLiBQYXJ0Cj4+IG9mIHRoaXMgY29t
+bWl0IHdhcyBhbHJlYWR5IHVwc3RyZWFtZWQgaW4gTGludXggY29tbWl0IGVlYjAxNDk2NjAgKGln
+YjoKPj4gc3VwcG9ydCBCQ001NDYxNiBQSFkpIGluIDIwMTcuCj4+Cj4+IEkgYXBwbGllZCB0aGUg
+Zm9yd2FyZC1wb3J0ZWQKPj4KPj4gICAgICBwYWNrYWdlcy9iYXNlL2FueS9rZXJuZWxzLzUuNC1s
+dHMvcGF0Y2hlcy8wMDAyLWRyaXZlci1zdXBwb3J0LWludGVsLWlnYi1iY201NDYxUy1waHkucGF0
+Y2gKPj4KPj4gYWRkZWQgaW4gT05MIGNvbW1pdCA1YWNlNmJjZGIzIChBZGQgNS40IExUUyBrZXJu
+ZWwgYnVpbGQuKSBbMl0uCj4+Cj4+IFsxXTogaHR0cHM6Ly9naXRodWIuY29tL29wZW5jb21wdXRl
+cHJvamVjdC9PcGVuTmV0d29ya0xpbnV4L2NvbW1pdC9mMzIzMTZjNjNjZTNhNjRkZTEyNWI3NDI5
+MTE1YzZkNDVlOTQyYmQxCj4+IFsyXTogaHR0cHM6Ly9naXRodWIuY29tL29wZW5jb21wdXRlcHJv
+amVjdC9PcGVuTmV0d29ya0xpbnV4L2NvbW1pdC81YWNlNmJjZGIzN2NiODA2NWRjZDFkNDQwNGIz
+ZGNiNjQyNGY2MzMxCj4gCj4gTm8gbmVlZCB0byBwdXQgdGhpcyBpbiBldmVyeSBjb21taXQgbWVz
+c2FnZS4KPiAKPiBXZSBwcmVzZXJ2ZSB0aGUgY292ZXIgbGV0dGVyIGluIHRyZWUgYXMgYSBtZXJn
+ZSBjb21taXQgbWVzc2FnZSwgc28KPiBleHBsYWluaW5nIHRoaW5ncyBvbmNlIGluIHRoZSBjb3Zl
+ciBsZXR0ZXIgaXMgc3VmZmljaWVudC4KCkkgcmVtZW1iZXIsIGJ1dCBzdGlsbCBmaW5kIGl0IGNv
+bmZ1c2luZy4gSWYgSSBsb29rIGF0IGEgY29tbWl0IHdpdGggYGdpdCAKc2hvdyDigKZgLCBJIG5v
+cm1hbGx5IGRvIG5vdCB0aGluayBvZiBhbHNvIGxvb2tpbmcgYXQgYSBwb3NzaWJsZSBjb3ZlciAK
+bGV0dGVyIGFzIG5vdCBtYW55IHN1YnN5c3RlbXMvcHJvamVjdHMgZG8gaXQsIGFuZCBJIGFzc3Vt
+ZSBhIGNvbW1pdCBpcyAKc2VsZi1jb250YWluZWQuCgpDb3VsZCB5b3Ugc2hhcmUgeW91ciBkZXZl
+bG9wbWVudCBwcm9jZXNzCgo+PiBDYzogSmVmZnJleSBUb3duc2VuZCA8amVmZnJleS50b3duc2Vu
+ZEBiaWdzd2l0Y2guY29tPgo+IAo+IEplZmZlcmV5IHdpbGwgbmVlZCB0byBwcm92aWRlIGEgc2ln
+bi1vZmYgYXMgdGhlIGF1dGhvci4KCkFjY29yZGluZyB0byAqRGV2ZWxvcGVyJ3MgQ2VydGlmaWNh
+dGUgb2YgT3JpZ2luIDEuMSogWzNdLCBpdOKAmXMgbXkgCnVuZGVyc3RhbmRpbmcsIHRoYXQgaXQg
+aXMgKm5vdCogcmVxdWlyZWQuIFRoZSBpdGVtcyAoYSksIChiKSwgYW5kIChjKSAKYXJlIGNvbm5l
+Y3RlZCBieSBhbiAqb3IqLgoKPiAgICAgICAgIChiKSBUaGUgY29udHJpYnV0aW9uIGlzIGJhc2Vk
+IHVwb24gcHJldmlvdXMgd29yayB0aGF0LCB0byB0aGUgYmVzdAo+ICAgICAgICAgICAgIG9mIG15
+IGtub3dsZWRnZSwgaXMgY292ZXJlZCB1bmRlciBhbiBhcHByb3ByaWF0ZSBvcGVuIHNvdXJjZQo+
+ICAgICAgICAgICAgIGxpY2Vuc2UgYW5kIEkgaGF2ZSB0aGUgcmlnaHQgdW5kZXIgdGhhdCBsaWNl
+bnNlIHRvIHN1Ym1pdCB0aGF0Cj4gICAgICAgICAgICAgd29yayB3aXRoIG1vZGlmaWNhdGlvbnMs
+IHdoZXRoZXIgY3JlYXRlZCBpbiB3aG9sZSBvciBpbiBwYXJ0IAo+ICAgICAgICAgICAgIGJ5IG1l
+LCB1bmRlciB0aGUgc2FtZSBvcGVuIHNvdXJjZSBsaWNlbnNlICh1bmxlc3MgSSBhbQo+ICAgICAg
+ICAgICAgIHBlcm1pdHRlZCB0byBzdWJtaXQgdW5kZXIgYSBkaWZmZXJlbnQgbGljZW5zZSksIGFz
+IGluZGljYXRlZAo+ICAgICAgICAgICAgIGluIHRoZSBmaWxlOyBvcgoKPj4gQ2M6IEpvaG4gVyBM
+aW52aWxsZSA8bGludmlsbGVAdHV4ZHJpdmVyLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogUGF1bCBN
+ZW56ZWwgPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKWzNd
+OiAKaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC92NS45L3Byb2Nlc3Mvc3VibWl0dGlu
+Zy1wYXRjaGVzLmh0bWwjc2lnbi15b3VyLXdvcmstdGhlLWRldmVsb3Blci1zLWNlcnRpZmljYXRl
+LW9mLW9yaWdpbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
+Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
+bgo=
