@@ -1,63 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F9482A70FF
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 00:12:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16CD82A71D8
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 00:33:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 462D385EC6;
-	Wed,  4 Nov 2020 23:12:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8D29C863D9;
+	Wed,  4 Nov 2020 23:33:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wLwcu9sxcTCX; Wed,  4 Nov 2020 23:12:46 +0000 (UTC)
+	with ESMTP id jxdqz4HGSfl1; Wed,  4 Nov 2020 23:33:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8019D85F0E;
-	Wed,  4 Nov 2020 23:12:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C75F9863E8;
+	Wed,  4 Nov 2020 23:33:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3BAD11BF2B7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:12:44 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 64E311BF2B7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 371BD85EC2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:12:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5B331203A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q-cuqUlR_TVF for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Nov 2020 23:12:43 +0000 (UTC)
+ with ESMTP id n+6f0VLtO2il for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Nov 2020 23:33:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 15EDD85EBF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:12:43 +0000 (UTC)
-IronPort-SDR: gSKJ18KxAo/pi/5P19hCEtHB6cfYDp7E7BrRdITgdg6OLTAFbLg8tt1zg8JkqM4+IyCyUQjHMH
- UCDdzUF2aVZA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9795"; a="169445115"
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="169445115"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2020 15:12:41 -0800
-IronPort-SDR: 1IwJ2htB4t7lZkGqGtSX6vZaxHLnyOl2ZfWsHfq3adFtyROZnJ6kFp5MqyiSc6GWucBmbeqWZd
- DgRU+zuQS8Lg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="354041579"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga004.fm.intel.com with ESMTP; 04 Nov 2020 15:12:38 -0800
-Date: Thu, 5 Nov 2020 00:01:22 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7F0C72014B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:22 +0000 (UTC)
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5AEA22074B;
+ Wed,  4 Nov 2020 23:33:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1604532802;
+ bh=pLgzlZcEoMWv2J4Mk1Xd7jOAN5YoKXgl49GtlZW2QNo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=JmQgCSoSsXOhiz82qHrpYSpMT86LMGk98P+q/NWFve+aj9dPapUGXW2jZtVpjbCl/
+ lBnZXOwQS4ULyHLXRG0cdVMt+bbLtxZ5Ttcj9SIMxFSEEBYU/jrGwVB/hTcaLzotjg
+ +b2z5paNfpiUwSq5ORfkMRu/7q+Vm9ROOGUecoZE=
+Date: Wed, 4 Nov 2020 15:33:20 -0800
+From: Jakub Kicinski <kuba@kernel.org>
 To: Magnus Karlsson <magnus.karlsson@gmail.com>
-Message-ID: <20201104230122.GA40117@ranger.igk.intel.com>
+Message-ID: <20201104153320.66cecba8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <1604498942-24274-2-git-send-email-magnus.karlsson@gmail.com>
 References: <1604498942-24274-1-git-send-email-magnus.karlsson@gmail.com>
- <1604498942-24274-7-git-send-email-magnus.karlsson@gmail.com>
+ <1604498942-24274-2-git-send-email-magnus.karlsson@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1604498942-24274-7-git-send-email-magnus.karlsson@gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/6] i40e: use batched xsk Tx
- interfaces to increase performance
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 1/6] i40e: introduce lazy Tx
+ completions for AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,294 +75,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Nov 04, 2020 at 03:09:02PM +0100, Magnus Karlsson wrote:
+On Wed,  4 Nov 2020 15:08:57 +0100 Magnus Karlsson wrote:
 > From: Magnus Karlsson <magnus.karlsson@intel.com>
 > 
-> Use the new batched xsk interfaces for the Tx path in the i40e driver
-> to improve performance. On my machine, this yields a throughput
-> increase of 4% for the l2fwd sample app in xdpsock. If we instead just
-> look at the Tx part, this patch set increases throughput with above
-> 20% for Tx.
+> Introduce lazy Tx completions when a queue is used for AF_XDP
+> zero-copy. In the current design, each time we get into the NAPI poll
+> loop we try to complete as many Tx packets as possible from the
+> NIC. This is performed by reading the head pointer register in the NIC
+> that tells us how many packets have been completed. Reading this
+> register is expensive as it is across PCIe, so let us try to limit the
+> number of times it is read by only completing Tx packets to user-space
+> when the number of available descriptors in the Tx HW ring is below
+> some threshold. This will decrease the number of reads issued to the
+> NIC and improves performance with 1.5% - 2% for the l2fwd xdpsock
+> microbenchmark.
 > 
-> Note that I had to explicitly loop unroll the inner loop to get to
-> this performance level, by using a pragma. It is honored by both clang
-> and gcc and should be ignored by versions that do not support
-> it. Using the -funroll-loops compiler command line switch on the
-> source file resulted in a loop unrolling on a higher level that
-> lead to a performance decrease instead of an increase.
+> The threshold is set to the minimum possible size that the HW ring can
+> have. This so that we do not run into a scenario where the threshold
+> is higher than the configured number of descriptors in the HW ring.
 > 
 > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c |   2 +-
->  drivers/net/ethernet/intel/i40e/i40e_main.c    |   4 +-
->  drivers/net/ethernet/intel/i40e/i40e_txrx.c    |  14 ++-
->  drivers/net/ethernet/intel/i40e/i40e_txrx.h    |   3 +-
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c     | 127 ++++++++++++++++++-------
->  5 files changed, 110 insertions(+), 40 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index 26ba1f3..dc34867 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -2025,7 +2025,7 @@ static int i40e_set_ringparam(struct net_device *netdev,
->  			 */
->  			tx_rings[i].desc = NULL;
->  			tx_rings[i].rx_bi = NULL;
-> -			err = i40e_setup_tx_descriptors(&tx_rings[i]);
-> +			err = i40e_setup_tx_descriptors(&tx_rings[i], false);
->  			if (err) {
->  				while (i) {
->  					i--;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 4f8a2154..c93774a 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -3030,13 +3030,13 @@ static int i40e_vsi_setup_tx_resources(struct i40e_vsi *vsi)
->  	int i, err = 0;
->  
->  	for (i = 0; i < vsi->num_queue_pairs && !err; i++)
-> -		err = i40e_setup_tx_descriptors(vsi->tx_rings[i]);
-> +		err = i40e_setup_tx_descriptors(vsi->tx_rings[i], false);
->  
->  	if (!i40e_enabled_xdp_vsi(vsi))
->  		return err;
->  
->  	for (i = 0; i < vsi->num_queue_pairs && !err; i++)
-> -		err = i40e_setup_tx_descriptors(vsi->xdp_rings[i]);
-> +		err = i40e_setup_tx_descriptors(vsi->xdp_rings[i], true);
 
-One last suggestion: I think that you could just call ring_is_xdp(tx_ring)
-within i40e_setup_tx_descriptors() and based on that allocate the
-xsk_descs array, instead of parametrizing the function. At the time of
-setting up tx descs the I40E_TXR_FLAGS_XDP flag is already set.
+I feel like this needs a big fat warning somewhere.
 
-I think this would be a cleaner way of doing it.
-
->  
->  	return err;
->  }
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index d43ce13..3e13e0e 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -676,6 +676,8 @@ void i40e_free_tx_resources(struct i40e_ring *tx_ring)
->  	i40e_clean_tx_ring(tx_ring);
->  	kfree(tx_ring->tx_bi);
->  	tx_ring->tx_bi = NULL;
-> +	kfree(tx_ring->xsk_descs);
-> +	tx_ring->xsk_descs = NULL;
->  
->  	if (tx_ring->desc) {
->  		dma_free_coherent(tx_ring->dev, tx_ring->size,
-> @@ -1259,10 +1261,11 @@ void i40e_clean_programming_status(struct i40e_ring *rx_ring, u64 qword0_raw,
->  /**
->   * i40e_setup_tx_descriptors - Allocate the Tx descriptors
->   * @tx_ring: the tx ring to set up
-> + * @xdp_ring: true if this is an XDP Tx ring
->   *
->   * Return 0 on success, negative on error
->   **/
-> -int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
-> +int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring, bool xdp_ring)
->  {
->  	struct device *dev = tx_ring->dev;
->  	int bi_size;
-> @@ -1277,6 +1280,13 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
->  	if (!tx_ring->tx_bi)
->  		goto err;
->  
-> +	if (xdp_ring) {
-> +		tx_ring->xsk_descs = kcalloc(I40E_MAX_NUM_DESCRIPTORS, sizeof(*tx_ring->xsk_descs),
-> +					     GFP_KERNEL);
-> +		if (!tx_ring->xsk_descs)
-> +			goto err;
-> +	}
-> +
->  	u64_stats_init(&tx_ring->syncp);
->  
->  	/* round up to nearest 4K */
-> @@ -1300,6 +1310,8 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
->  	return 0;
->  
->  err:
-> +	kfree(tx_ring->xsk_descs);
-> +	tx_ring->xsk_descs = NULL;
->  	kfree(tx_ring->tx_bi);
->  	tx_ring->tx_bi = NULL;
->  	return -ENOMEM;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> index 2feed92..628d5d7 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> @@ -389,6 +389,7 @@ struct i40e_ring {
->  	struct i40e_channel *ch;
->  	struct xdp_rxq_info xdp_rxq;
->  	struct xsk_buff_pool *xsk_pool;
-> +	struct xdp_desc *xsk_descs;      /* For storing descriptors in the AF_XDP ZC path */
->  } ____cacheline_internodealigned_in_smp;
->  
->  static inline bool ring_uses_build_skb(struct i40e_ring *ring)
-> @@ -451,7 +452,7 @@ bool i40e_alloc_rx_buffers(struct i40e_ring *rxr, u16 cleaned_count);
->  netdev_tx_t i40e_lan_xmit_frame(struct sk_buff *skb, struct net_device *netdev);
->  void i40e_clean_tx_ring(struct i40e_ring *tx_ring);
->  void i40e_clean_rx_ring(struct i40e_ring *rx_ring);
-> -int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring);
-> +int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring, bool xdp_ring);
->  int i40e_setup_rx_descriptors(struct i40e_ring *rx_ring);
->  void i40e_free_tx_resources(struct i40e_ring *tx_ring);
->  void i40e_free_rx_resources(struct i40e_ring *rx_ring);
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> index eabe1a3..515d856 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> @@ -383,6 +383,78 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
->  	return failure ? budget : (int)total_rx_packets;
->  }
->  
-> +static void i40e_xmit_pkt(struct i40e_ring *xdp_ring, struct xdp_desc *desc,
-> +			  unsigned int *total_bytes)
-> +{
-> +	struct i40e_tx_desc *tx_desc;
-> +	dma_addr_t dma;
-> +
-> +	dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc->addr);
-> +	xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, desc->len);
-> +
-> +	tx_desc = I40E_TX_DESC(xdp_ring, xdp_ring->next_to_use++);
-> +	tx_desc->buffer_addr = cpu_to_le64(dma);
-> +	tx_desc->cmd_type_offset_bsz = build_ctob(I40E_TX_DESC_CMD_ICRC | I40E_TX_DESC_CMD_EOP,
-> +						  0, desc->len, 0);
-> +
-> +	*total_bytes += desc->len;
-> +}
-> +
-> +/* This value should match the pragma below. Why 4? It is strictly
-> + * empirical. It seems to be a good compromise between the advantage
-> + * of having simultaneous outstanding reads to the DMA array that can
-> + * hide each others latency and the disadvantage of having a larger
-> + * code path.
-> + */
-> +#define PKTS_PER_BATCH 4
-> +
-> +static void i40e_xmit_pkt_batch(struct i40e_ring *xdp_ring, struct xdp_desc *desc,
-> +				unsigned int *total_bytes)
-> +{
-> +	u16 ntu = xdp_ring->next_to_use;
-> +	struct i40e_tx_desc *tx_desc;
-> +	dma_addr_t dma;
-> +	u32 i;
-> +
-> +#pragma GCC unroll 4
-> +	for (i = 0; i < PKTS_PER_BATCH; i++) {
-> +		dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc[i].addr);
-> +		xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, desc[i].len);
-> +
-> +		tx_desc = I40E_TX_DESC(xdp_ring, ntu++);
-> +		tx_desc->buffer_addr = cpu_to_le64(dma);
-> +		tx_desc->cmd_type_offset_bsz = build_ctob(I40E_TX_DESC_CMD_ICRC |
-> +							  I40E_TX_DESC_CMD_EOP,
-> +							  0, desc[i].len, 0);
-> +
-> +		*total_bytes += desc[i].len;
-> +	}
-> +
-> +	xdp_ring->next_to_use = ntu;
-> +}
-> +
-> +static void i40e_fill_tx_hw_ring(struct i40e_ring *xdp_ring, struct xdp_desc *descs, u32 nb_pkts,
-> +				 unsigned int *total_bytes)
-> +{
-> +	u32 batched, leftover, i;
-> +
-> +	batched = nb_pkts & ~(PKTS_PER_BATCH - 1);
-> +	leftover = nb_pkts & (PKTS_PER_BATCH - 1);
-> +	for (i = 0; i < batched; i += PKTS_PER_BATCH)
-> +		i40e_xmit_pkt_batch(xdp_ring, &descs[i], total_bytes);
-> +	for (i = batched; i < batched + leftover; i++)
-> +		i40e_xmit_pkt(xdp_ring, &descs[i], total_bytes);
-> +}
-> +
-> +static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
-> +{
-> +	u16 ntu = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : xdp_ring->count - 1;
-> +	struct i40e_tx_desc *tx_desc;
-> +
-> +	tx_desc = I40E_TX_DESC(xdp_ring, ntu);
-> +	tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
-> +}
-> +
->  /**
->   * i40e_xmit_zc - Performs zero-copy Tx AF_XDP
->   * @xdp_ring: XDP Tx ring
-> @@ -392,45 +464,30 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
->   **/
->  static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->  {
-> -	unsigned int sent_frames = 0, total_bytes = 0;
-> -	struct i40e_tx_desc *tx_desc = NULL;
-> -	struct xdp_desc desc;
-> -	dma_addr_t dma;
-> -
-> -	while (budget-- > 0) {
-> -		if (!xsk_tx_peek_desc(xdp_ring->xsk_pool, &desc))
-> -			break;
-> -
-> -		dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc.addr);
-> -		xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma,
-> -						 desc.len);
-> -
-> -		tx_desc = I40E_TX_DESC(xdp_ring, xdp_ring->next_to_use);
-> -		tx_desc->buffer_addr = cpu_to_le64(dma);
-> -		tx_desc->cmd_type_offset_bsz =
-> -			build_ctob(I40E_TX_DESC_CMD_ICRC
-> -				   | I40E_TX_DESC_CMD_EOP,
-> -				   0, desc.len, 0);
-> -
-> -		sent_frames++;
-> -		total_bytes += desc.len;
-> -
-> -		xdp_ring->next_to_use++;
-> -		if (xdp_ring->next_to_use == xdp_ring->count)
-> -			xdp_ring->next_to_use = 0;
-> +	struct xdp_desc *descs = xdp_ring->xsk_descs;
-> +	u32 nb_pkts, nb_processed = 0;
-> +	unsigned int total_bytes = 0;
-> +
-> +	nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, descs, budget);
-> +	if (!nb_pkts)
-> +		return false;
-> +
-> +	if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
-> +		nb_processed = xdp_ring->count - xdp_ring->next_to_use;
-> +		i40e_fill_tx_hw_ring(xdp_ring, descs, nb_processed, &total_bytes);
-> +		xdp_ring->next_to_use = 0;
->  	}
->  
-> -	if (tx_desc) {
-> -		/* Request an interrupt for the last frame and bump tail ptr. */
-> -		tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS <<
-> -						 I40E_TXD_QW1_CMD_SHIFT);
-> -		i40e_xdp_ring_update_tail(xdp_ring);
-> +	i40e_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed,
-> +			     &total_bytes);
->  
-> -		xsk_tx_release(xdp_ring->xsk_pool);
-> -		i40e_update_tx_stats(xdp_ring, sent_frames, total_bytes);
-> -	}
-> +	/* Request an interrupt for the last frame and bump tail ptr. */
-> +	i40e_set_rs_bit(xdp_ring);
-> +	i40e_xdp_ring_update_tail(xdp_ring);
-> +
-> +	i40e_update_tx_stats(xdp_ring, nb_pkts, total_bytes);
->  
-> -	return !!budget;
-> +	return true;
->  }
->  
->  /**
-> -- 
-> 2.7.4
-> 
+It's perfectly fine to never complete TCP packets, but AF_XDP could be
+used to implement protocols in user space. What if someone wants to
+implement something like TSQ?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
