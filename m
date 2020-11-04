@@ -2,55 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16CD82A71D8
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 00:33:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BB182A71DC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 00:35:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8D29C863D9;
-	Wed,  4 Nov 2020 23:33:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F399E86420;
+	Wed,  4 Nov 2020 23:35:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jxdqz4HGSfl1; Wed,  4 Nov 2020 23:33:29 +0000 (UTC)
+	with ESMTP id XxXgdE3RhgSa; Wed,  4 Nov 2020 23:35:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C75F9863E8;
-	Wed,  4 Nov 2020 23:33:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 58C4486439;
+	Wed,  4 Nov 2020 23:35:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 64E311BF2B7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7922F1BF2B7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:35:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5B331203A4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 70009203A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:35:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n+6f0VLtO2il for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Nov 2020 23:33:22 +0000 (UTC)
+ with ESMTP id csHInKH8Lo0Y for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Nov 2020 23:35:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 7F0C72014B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:33:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 0927E2014B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Nov 2020 23:35:10 +0000 (UTC)
 Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
  [163.114.132.4])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5AEA22074B;
- Wed,  4 Nov 2020 23:33:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0157C2074B;
+ Wed,  4 Nov 2020 23:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604532802;
- bh=pLgzlZcEoMWv2J4Mk1Xd7jOAN5YoKXgl49GtlZW2QNo=;
+ s=default; t=1604532909;
+ bh=8naRRfx/ql8v5jXWWzNqjjDh4gEicz1wVBuT8pBmvGo=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=JmQgCSoSsXOhiz82qHrpYSpMT86LMGk98P+q/NWFve+aj9dPapUGXW2jZtVpjbCl/
- lBnZXOwQS4ULyHLXRG0cdVMt+bbLtxZ5Ttcj9SIMxFSEEBYU/jrGwVB/hTcaLzotjg
- +b2z5paNfpiUwSq5ORfkMRu/7q+Vm9ROOGUecoZE=
-Date: Wed, 4 Nov 2020 15:33:20 -0800
+ b=X6t8lCuI55tDwvF4xAFFt3dR62b9AkC8FfySCd63sqbbrAjo/8P7fKnN4P5rrauc6
+ c0XPM/kp8kd0k64HLkJSHJtBi/ufoeIiJSm1cHJmUqPDo64P3Ir/vQgHS1jX5J1C2m
+ d6bZWt/C70vBy+WHF/k4Ip79ZP011z4Jd23d0tic=
+Date: Wed, 4 Nov 2020 15:35:07 -0800
 From: Jakub Kicinski <kuba@kernel.org>
 To: Magnus Karlsson <magnus.karlsson@gmail.com>
-Message-ID: <20201104153320.66cecba8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <1604498942-24274-2-git-send-email-magnus.karlsson@gmail.com>
+Message-ID: <20201104153507.5df7c8d6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20201104153320.66cecba8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 References: <1604498942-24274-1-git-send-email-magnus.karlsson@gmail.com>
  <1604498942-24274-2-git-send-email-magnus.karlsson@gmail.com>
+ <20201104153320.66cecba8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next 1/6] i40e: introduce lazy Tx
  completions for AF_XDP zero-copy
@@ -75,32 +76,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed,  4 Nov 2020 15:08:57 +0100 Magnus Karlsson wrote:
-> From: Magnus Karlsson <magnus.karlsson@intel.com>
+On Wed, 4 Nov 2020 15:33:20 -0800 Jakub Kicinski wrote:
+> I feel like this needs a big fat warning somewhere.
 > 
-> Introduce lazy Tx completions when a queue is used for AF_XDP
-> zero-copy. In the current design, each time we get into the NAPI poll
-> loop we try to complete as many Tx packets as possible from the
-> NIC. This is performed by reading the head pointer register in the NIC
-> that tells us how many packets have been completed. Reading this
-> register is expensive as it is across PCIe, so let us try to limit the
-> number of times it is read by only completing Tx packets to user-space
-> when the number of available descriptors in the Tx HW ring is below
-> some threshold. This will decrease the number of reads issued to the
-> NIC and improves performance with 1.5% - 2% for the l2fwd xdpsock
-> microbenchmark.
-> 
-> The threshold is set to the minimum possible size that the HW ring can
-> have. This so that we do not run into a scenario where the threshold
-> is higher than the configured number of descriptors in the HW ring.
-> 
-> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> It's perfectly fine to never complete TCP packets,
 
-I feel like this needs a big fat warning somewhere.
+s/TCP/normal XDP/, sorry
 
-It's perfectly fine to never complete TCP packets, but AF_XDP could be
-used to implement protocols in user space. What if someone wants to
-implement something like TSQ?
+> but AF_XDP could be used to implement protocols in user space. What
+> if someone wants to implement something like TSQ?
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
