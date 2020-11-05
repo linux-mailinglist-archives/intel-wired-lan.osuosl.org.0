@@ -2,75 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 273FA2A77DF
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 08:19:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C8762A7BB6
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Nov 2020 11:28:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DCD3A85608;
-	Thu,  5 Nov 2020 07:19:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A64D585766;
+	Thu,  5 Nov 2020 10:28:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gtBMKWwcGxBr; Thu,  5 Nov 2020 07:19:26 +0000 (UTC)
+	with ESMTP id 9eOSwcftgN1v; Thu,  5 Nov 2020 10:28:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C834B855C6;
-	Thu,  5 Nov 2020 07:19:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 059D78574B;
+	Thu,  5 Nov 2020 10:28:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4641BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 07:19:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9829D1BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 10:28:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8C7B520767
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 07:19:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8D5F78613C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 10:28:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eAKJWUqA0e1K for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Nov 2020 07:19:22 +0000 (UTC)
+ with ESMTP id B9VXnX+k3Cvz for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Nov 2020 10:28:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
- [209.85.210.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 9C6FB20373
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 07:19:22 +0000 (UTC)
-Received: by mail-pf1-f196.google.com with SMTP id 133so701767pfx.11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Nov 2020 23:19:22 -0800 (PST)
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 453EF86130
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Nov 2020 10:28:32 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id t14so1133185pgg.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 05 Nov 2020 02:28:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1TLgog7JBgHorKNM3wu5oUyqgLdnRdAs11pbRUNSTBw=;
- b=L3f1l1H1g9M6vyiNZZR4pDhuTZwnL5Q+PH/q7i9xri9FLJIIfMK4Sp6Ly3VPONYFcc
- bR8v0k17u3+8Fpqubf79f7dNaAXTg/0JBymxFMKkbPcCi2/pAgVaWYELG8iyW9FNBN1d
- Go1wwOVlaNnZwkC/kvp1FlE9V91LVhgxNwz0PyELvsrVYs+cc1A5TJf8KrmFVf3Q0Dxp
- HlPqCQsGcyUSe796N1DS/i1+ptTF/53LPJtjc7tYg5rrNf79EblAG8gjTdB2nSRL9vcM
- KDzewdwg6mbCQCSaEEQb5CvUgrvbP4vCr0nqc69ZUfprvdcUAWra2U41thsusWuqdevy
- oUjA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=u0SuH5WxErVbxB5qRSImEqAIuj5APGxU6dWKcRVt0qk=;
+ b=caanxCQBlEu2cfF0iUTiuGUEIPuL/+duvx4QZeS898zNc2K0XYSjbZWan/3WhI3OKY
+ jMO10Ijd00dXNiAG5NE5dkbGupPKSFYDQLKV6w5qGCMV+Yov3sCKaHtd0K2IsyR0X2hh
+ rXbFwlyifL59kJk2xw6DLRklElnXmoLRa1N5JuWMxn+OTmmlBjifPBkux86QgEcL1KQG
+ Qk5MY+F/6pfam2wVA0wsaypoAnl7x8CAITJMZEjdYcy3TIQrKt3Dg4IPMDhporQ4P9A6
+ Ar5SJcMo3o953mYwn/bqO7SmfTNNm3Sd0sP/3C+sEdUj3tY4v62fIKtODIOBZQ6M5mjM
+ qYDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1TLgog7JBgHorKNM3wu5oUyqgLdnRdAs11pbRUNSTBw=;
- b=d1mgm/tEvWEt+9SWReedambOM4X1HKRf7bhbJmVbR9AF6kO9tr4znfgI9woY/1ps8B
- gUs13nDZzeDBgwGNR3VxfbVUX1cfYCuWe4Iy+M/pQfTxFYofabG0m9MvneM267Y3ZyW1
- jU4Gx38HowDPE+KDFKgGA5UycG6EOVlo06DQhotmiM07T+VLB0Fqrq7qmuEQmIXO/UMv
- btmw0yowDTy6cAXw32LX87U88J8KulgomEfk1xCs9tSXCoWCKtM6IwOhVuh4kvsW/WHK
- +2fD84dINDRFbRybX4jlKYEVlo368Ig2MHt0yCnQgNHAq39Fq4TDZJ+/21FIgELVJcBR
- c8dQ==
-X-Gm-Message-State: AOAM530B0jJ9vZXQHPDgjq+QEEhjjJGnRFszbODfYHr2WR0Gb+CHOaCC
- u7bMqWzvAE9bLPAQNYtWl9KibkMZim5LZd1hMGk=
-X-Google-Smtp-Source: ABdhPJz3LEKOTubGfhWi7zbZ4YpD4hVn0AU2fTZyOc0OeVA0nJurOEQnwP6zmKj/hKmVz1OltWRPsV9CA71iIk9RYws=
-X-Received: by 2002:aa7:8428:0:b029:18b:b43:6cc with SMTP id
- q8-20020aa784280000b029018b0b4306ccmr1161992pfn.73.1604560762121; Wed, 04 Nov
- 2020 23:19:22 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=u0SuH5WxErVbxB5qRSImEqAIuj5APGxU6dWKcRVt0qk=;
+ b=tDlcM8IdqMho+shaxOws8ERKrUSz2VHmqu5sn6okm7tFxylnOEfjg7V8XsclJbXwgs
+ w/A7xvj2fYrfYp6idkrvU7hjhfPMNmfRtt9HEHOSEQ8NHk5+AhmG97NbUmadzEGtZgtw
+ iaM9c8tIM/dHiORoCimFkBj1EAVQw+A2aLyI75kgDwrdK6BArT6k5W2ZyJOa9JUoSbgL
+ xRLRapD5J+iTwgKru4E4803j0cEYEotLs9ZKtVah6d5iVnn4NlJ2jVUhn/kEyLEieAmO
+ I4NxaAqFgDOK2+Ehr32KSdSQ6t09i46zf2Sc3Hhhb7/4btpHzrzOVrsaNPLPaTqeuwo8
+ 6LAw==
+X-Gm-Message-State: AOAM532Gjwcp5eVOchUTKNuDIoYcYeE5kZ/O0WuTvjFBcOsml67ggKGT
+ iMFJcerHFgVjysYWeNYaLsc=
+X-Google-Smtp-Source: ABdhPJy4bJ3jwFN7YUvgBfvTZ/lfExQgZYzmYqOpAQLuwC08zuqua8Fq2/XYa5lmnSFah6tVL0NscA==
+X-Received: by 2002:a65:4107:: with SMTP id w7mr1705004pgp.361.1604572111799; 
+ Thu, 05 Nov 2020 02:28:31 -0800 (PST)
+Received: from btopel-mobl.ger.intel.com (fmdmzpr03-ext.fm.intel.com.
+ [192.55.54.38])
+ by smtp.gmail.com with ESMTPSA id 192sm2050117pfz.200.2020.11.05.02.28.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Nov 2020 02:28:30 -0800 (PST)
+From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
+To: netdev@vger.kernel.org,
+	bpf@vger.kernel.org
+Date: Thu,  5 Nov 2020 11:28:03 +0100
+Message-Id: <20201105102812.152836-1-bjorn.topel@gmail.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <1604498942-24274-1-git-send-email-magnus.karlsson@gmail.com>
- <1604498942-24274-7-git-send-email-magnus.karlsson@gmail.com>
- <20201104230122.GA40117@ranger.igk.intel.com>
-In-Reply-To: <20201104230122.GA40117@ranger.igk.intel.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Thu, 5 Nov 2020 08:19:11 +0100
-Message-ID: <CAJ8uoz1B8GSCSFoOWN8cM=qUczLRqELSjUsoG-K2AcOzKEzEyg@mail.gmail.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/6] i40e: use batched xsk Tx
- interfaces to increase performance
+Subject: [Intel-wired-lan] [RFC PATCH bpf-next v2 0/9] Introduce preferred
+ busy-polling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,312 +86,154 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Network Development <netdev@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>, Jonathan Lemon <jonathan.lemon@gmail.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf <bpf@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: daniel@iogearbox.net, qi.z.zhang@intel.com, ast@kernel.org,
+ edumazet@google.com, jonathan.lemon@gmail.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, bjorn.topel@intel.com,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Nov 5, 2020 at 12:12 AM Maciej Fijalkowski
-<maciej.fijalkowski@intel.com> wrote:
->
-> On Wed, Nov 04, 2020 at 03:09:02PM +0100, Magnus Karlsson wrote:
-> > From: Magnus Karlsson <magnus.karlsson@intel.com>
-> >
-> > Use the new batched xsk interfaces for the Tx path in the i40e driver
-> > to improve performance. On my machine, this yields a throughput
-> > increase of 4% for the l2fwd sample app in xdpsock. If we instead just
-> > look at the Tx part, this patch set increases throughput with above
-> > 20% for Tx.
-> >
-> > Note that I had to explicitly loop unroll the inner loop to get to
-> > this performance level, by using a pragma. It is honored by both clang
-> > and gcc and should be ignored by versions that do not support
-> > it. Using the -funroll-loops compiler command line switch on the
-> > source file resulted in a loop unrolling on a higher level that
-> > lead to a performance decrease instead of an increase.
-> >
-> > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/i40e/i40e_ethtool.c |   2 +-
-> >  drivers/net/ethernet/intel/i40e/i40e_main.c    |   4 +-
-> >  drivers/net/ethernet/intel/i40e/i40e_txrx.c    |  14 ++-
-> >  drivers/net/ethernet/intel/i40e/i40e_txrx.h    |   3 +-
-> >  drivers/net/ethernet/intel/i40e/i40e_xsk.c     | 127 ++++++++++++++++++-------
-> >  5 files changed, 110 insertions(+), 40 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> > index 26ba1f3..dc34867 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> > @@ -2025,7 +2025,7 @@ static int i40e_set_ringparam(struct net_device *netdev,
-> >                        */
-> >                       tx_rings[i].desc = NULL;
-> >                       tx_rings[i].rx_bi = NULL;
-> > -                     err = i40e_setup_tx_descriptors(&tx_rings[i]);
-> > +                     err = i40e_setup_tx_descriptors(&tx_rings[i], false);
-> >                       if (err) {
-> >                               while (i) {
-> >                                       i--;
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > index 4f8a2154..c93774a 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > @@ -3030,13 +3030,13 @@ static int i40e_vsi_setup_tx_resources(struct i40e_vsi *vsi)
-> >       int i, err = 0;
-> >
-> >       for (i = 0; i < vsi->num_queue_pairs && !err; i++)
-> > -             err = i40e_setup_tx_descriptors(vsi->tx_rings[i]);
-> > +             err = i40e_setup_tx_descriptors(vsi->tx_rings[i], false);
-> >
-> >       if (!i40e_enabled_xdp_vsi(vsi))
-> >               return err;
-> >
-> >       for (i = 0; i < vsi->num_queue_pairs && !err; i++)
-> > -             err = i40e_setup_tx_descriptors(vsi->xdp_rings[i]);
-> > +             err = i40e_setup_tx_descriptors(vsi->xdp_rings[i], true);
->
-> One last suggestion: I think that you could just call ring_is_xdp(tx_ring)
-> within i40e_setup_tx_descriptors() and based on that allocate the
-> xsk_descs array, instead of parametrizing the function. At the time of
-> setting up tx descs the I40E_TXR_FLAGS_XDP flag is already set.
->
-> I think this would be a cleaner way of doing it.
-
-Yes, good suggestion. Will do that.
-
-> >
-> >       return err;
-> >  }
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> > index d43ce13..3e13e0e 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> > @@ -676,6 +676,8 @@ void i40e_free_tx_resources(struct i40e_ring *tx_ring)
-> >       i40e_clean_tx_ring(tx_ring);
-> >       kfree(tx_ring->tx_bi);
-> >       tx_ring->tx_bi = NULL;
-> > +     kfree(tx_ring->xsk_descs);
-> > +     tx_ring->xsk_descs = NULL;
-> >
-> >       if (tx_ring->desc) {
-> >               dma_free_coherent(tx_ring->dev, tx_ring->size,
-> > @@ -1259,10 +1261,11 @@ void i40e_clean_programming_status(struct i40e_ring *rx_ring, u64 qword0_raw,
-> >  /**
-> >   * i40e_setup_tx_descriptors - Allocate the Tx descriptors
-> >   * @tx_ring: the tx ring to set up
-> > + * @xdp_ring: true if this is an XDP Tx ring
-> >   *
-> >   * Return 0 on success, negative on error
-> >   **/
-> > -int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
-> > +int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring, bool xdp_ring)
-> >  {
-> >       struct device *dev = tx_ring->dev;
-> >       int bi_size;
-> > @@ -1277,6 +1280,13 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
-> >       if (!tx_ring->tx_bi)
-> >               goto err;
-> >
-> > +     if (xdp_ring) {
-> > +             tx_ring->xsk_descs = kcalloc(I40E_MAX_NUM_DESCRIPTORS, sizeof(*tx_ring->xsk_descs),
-> > +                                          GFP_KERNEL);
-> > +             if (!tx_ring->xsk_descs)
-> > +                     goto err;
-> > +     }
-> > +
-> >       u64_stats_init(&tx_ring->syncp);
-> >
-> >       /* round up to nearest 4K */
-> > @@ -1300,6 +1310,8 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
-> >       return 0;
-> >
-> >  err:
-> > +     kfree(tx_ring->xsk_descs);
-> > +     tx_ring->xsk_descs = NULL;
-> >       kfree(tx_ring->tx_bi);
-> >       tx_ring->tx_bi = NULL;
-> >       return -ENOMEM;
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > index 2feed92..628d5d7 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > @@ -389,6 +389,7 @@ struct i40e_ring {
-> >       struct i40e_channel *ch;
-> >       struct xdp_rxq_info xdp_rxq;
-> >       struct xsk_buff_pool *xsk_pool;
-> > +     struct xdp_desc *xsk_descs;      /* For storing descriptors in the AF_XDP ZC path */
-> >  } ____cacheline_internodealigned_in_smp;
-> >
-> >  static inline bool ring_uses_build_skb(struct i40e_ring *ring)
-> > @@ -451,7 +452,7 @@ bool i40e_alloc_rx_buffers(struct i40e_ring *rxr, u16 cleaned_count);
-> >  netdev_tx_t i40e_lan_xmit_frame(struct sk_buff *skb, struct net_device *netdev);
-> >  void i40e_clean_tx_ring(struct i40e_ring *tx_ring);
-> >  void i40e_clean_rx_ring(struct i40e_ring *rx_ring);
-> > -int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring);
-> > +int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring, bool xdp_ring);
-> >  int i40e_setup_rx_descriptors(struct i40e_ring *rx_ring);
-> >  void i40e_free_tx_resources(struct i40e_ring *tx_ring);
-> >  void i40e_free_rx_resources(struct i40e_ring *rx_ring);
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > index eabe1a3..515d856 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > @@ -383,6 +383,78 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
-> >       return failure ? budget : (int)total_rx_packets;
-> >  }
-> >
-> > +static void i40e_xmit_pkt(struct i40e_ring *xdp_ring, struct xdp_desc *desc,
-> > +                       unsigned int *total_bytes)
-> > +{
-> > +     struct i40e_tx_desc *tx_desc;
-> > +     dma_addr_t dma;
-> > +
-> > +     dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc->addr);
-> > +     xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, desc->len);
-> > +
-> > +     tx_desc = I40E_TX_DESC(xdp_ring, xdp_ring->next_to_use++);
-> > +     tx_desc->buffer_addr = cpu_to_le64(dma);
-> > +     tx_desc->cmd_type_offset_bsz = build_ctob(I40E_TX_DESC_CMD_ICRC | I40E_TX_DESC_CMD_EOP,
-> > +                                               0, desc->len, 0);
-> > +
-> > +     *total_bytes += desc->len;
-> > +}
-> > +
-> > +/* This value should match the pragma below. Why 4? It is strictly
-> > + * empirical. It seems to be a good compromise between the advantage
-> > + * of having simultaneous outstanding reads to the DMA array that can
-> > + * hide each others latency and the disadvantage of having a larger
-> > + * code path.
-> > + */
-> > +#define PKTS_PER_BATCH 4
-> > +
-> > +static void i40e_xmit_pkt_batch(struct i40e_ring *xdp_ring, struct xdp_desc *desc,
-> > +                             unsigned int *total_bytes)
-> > +{
-> > +     u16 ntu = xdp_ring->next_to_use;
-> > +     struct i40e_tx_desc *tx_desc;
-> > +     dma_addr_t dma;
-> > +     u32 i;
-> > +
-> > +#pragma GCC unroll 4
-> > +     for (i = 0; i < PKTS_PER_BATCH; i++) {
-> > +             dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc[i].addr);
-> > +             xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, desc[i].len);
-> > +
-> > +             tx_desc = I40E_TX_DESC(xdp_ring, ntu++);
-> > +             tx_desc->buffer_addr = cpu_to_le64(dma);
-> > +             tx_desc->cmd_type_offset_bsz = build_ctob(I40E_TX_DESC_CMD_ICRC |
-> > +                                                       I40E_TX_DESC_CMD_EOP,
-> > +                                                       0, desc[i].len, 0);
-> > +
-> > +             *total_bytes += desc[i].len;
-> > +     }
-> > +
-> > +     xdp_ring->next_to_use = ntu;
-> > +}
-> > +
-> > +static void i40e_fill_tx_hw_ring(struct i40e_ring *xdp_ring, struct xdp_desc *descs, u32 nb_pkts,
-> > +                              unsigned int *total_bytes)
-> > +{
-> > +     u32 batched, leftover, i;
-> > +
-> > +     batched = nb_pkts & ~(PKTS_PER_BATCH - 1);
-> > +     leftover = nb_pkts & (PKTS_PER_BATCH - 1);
-> > +     for (i = 0; i < batched; i += PKTS_PER_BATCH)
-> > +             i40e_xmit_pkt_batch(xdp_ring, &descs[i], total_bytes);
-> > +     for (i = batched; i < batched + leftover; i++)
-> > +             i40e_xmit_pkt(xdp_ring, &descs[i], total_bytes);
-> > +}
-> > +
-> > +static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
-> > +{
-> > +     u16 ntu = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : xdp_ring->count - 1;
-> > +     struct i40e_tx_desc *tx_desc;
-> > +
-> > +     tx_desc = I40E_TX_DESC(xdp_ring, ntu);
-> > +     tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
-> > +}
-> > +
-> >  /**
-> >   * i40e_xmit_zc - Performs zero-copy Tx AF_XDP
-> >   * @xdp_ring: XDP Tx ring
-> > @@ -392,45 +464,30 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
-> >   **/
-> >  static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
-> >  {
-> > -     unsigned int sent_frames = 0, total_bytes = 0;
-> > -     struct i40e_tx_desc *tx_desc = NULL;
-> > -     struct xdp_desc desc;
-> > -     dma_addr_t dma;
-> > -
-> > -     while (budget-- > 0) {
-> > -             if (!xsk_tx_peek_desc(xdp_ring->xsk_pool, &desc))
-> > -                     break;
-> > -
-> > -             dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc.addr);
-> > -             xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma,
-> > -                                              desc.len);
-> > -
-> > -             tx_desc = I40E_TX_DESC(xdp_ring, xdp_ring->next_to_use);
-> > -             tx_desc->buffer_addr = cpu_to_le64(dma);
-> > -             tx_desc->cmd_type_offset_bsz =
-> > -                     build_ctob(I40E_TX_DESC_CMD_ICRC
-> > -                                | I40E_TX_DESC_CMD_EOP,
-> > -                                0, desc.len, 0);
-> > -
-> > -             sent_frames++;
-> > -             total_bytes += desc.len;
-> > -
-> > -             xdp_ring->next_to_use++;
-> > -             if (xdp_ring->next_to_use == xdp_ring->count)
-> > -                     xdp_ring->next_to_use = 0;
-> > +     struct xdp_desc *descs = xdp_ring->xsk_descs;
-> > +     u32 nb_pkts, nb_processed = 0;
-> > +     unsigned int total_bytes = 0;
-> > +
-> > +     nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, descs, budget);
-> > +     if (!nb_pkts)
-> > +             return false;
-> > +
-> > +     if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
-> > +             nb_processed = xdp_ring->count - xdp_ring->next_to_use;
-> > +             i40e_fill_tx_hw_ring(xdp_ring, descs, nb_processed, &total_bytes);
-> > +             xdp_ring->next_to_use = 0;
-> >       }
-> >
-> > -     if (tx_desc) {
-> > -             /* Request an interrupt for the last frame and bump tail ptr. */
-> > -             tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS <<
-> > -                                              I40E_TXD_QW1_CMD_SHIFT);
-> > -             i40e_xdp_ring_update_tail(xdp_ring);
-> > +     i40e_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed,
-> > +                          &total_bytes);
-> >
-> > -             xsk_tx_release(xdp_ring->xsk_pool);
-> > -             i40e_update_tx_stats(xdp_ring, sent_frames, total_bytes);
-> > -     }
-> > +     /* Request an interrupt for the last frame and bump tail ptr. */
-> > +     i40e_set_rs_bit(xdp_ring);
-> > +     i40e_xdp_ring_update_tail(xdp_ring);
-> > +
-> > +     i40e_update_tx_stats(xdp_ring, nb_pkts, total_bytes);
-> >
-> > -     return !!budget;
-> > +     return true;
-> >  }
-> >
-> >  /**
-> > --
-> > 2.7.4
-> >
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aHJlZSBuZXcgZmVhdHVyZXM6CgoxLiBBIG5ldyAiaGVh
+dnkgdHJhZmZpYyIgYnVzeS1wb2xsaW5nIHZhcmlhbnQgdGhhdCB3b3JrcyBpbiBjb25jZXJ0CiAg
+IHdpdGggdGhlIGV4aXN0aW5nIG5hcGlfZGVmZXJfaGFyZF9pcnFzIGFuZCBncm9fZmx1c2hfdGlt
+ZW91dCBrbm9icy4KCjIuIEEgbmV3IHNvY2tldCBvcHRpb24gdGhhdCBsZXQgYSB1c2VyIGNoYW5n
+ZSB0aGUgYnVzeS1wb2xsaW5nIE5BUEkKICAgYnVkZ2V0LgoKMy4gQWxsb3cgYnVzeS1wb2xsaW5n
+IHRvIGJlIHBlcmZvcm1lZCBvbiBYRFAgc29ja2V0cy4KClRoZSBleGlzdGluZyBidXN5LXBvbGxp
+bmcgbW9kZSwgZW5hYmxlZCBieSB0aGUgU09fQlVTWV9QT0xMIHNvY2tldApvcHRpb24gb3Igc3lz
+dGVtLXdpZGUgdXNpbmcgdGhlIC9wcm9jL3N5cy9uZXQvY29yZS9idXN5X3JlYWQga25vYiwgaXMK
+YW4gb3Bwb3J0dW5pc3RpYy4gVGhhdCBtZWFucyB0aGF0IGlmIHRoZSBOQVBJIGNvbnRleHQgaXMg
+bm90CnNjaGVkdWxlZCwgaXQgd2lsbCBwb2xsIGl0LiBJZiwgYWZ0ZXIgYnVzeS1wb2xsaW5nLCB0
+aGUgYnVkZ2V0IGlzCmV4Y2VlZGVkIHRoZSBidXN5LXBvbGxpbmcgbG9naWMgd2lsbCBzY2hlZHVs
+ZSB0aGUgTkFQSSBvbnRvIHRoZQpyZWd1bGFyIHNvZnRpcnEgaGFuZGxpbmcuCgpPbmUgaW1wbGlj
+YXRpb24gb2YgdGhlIGJlaGF2aW9yIGFib3ZlIGlzIHRoYXQgYSBidXN5L2hlYXZ5IGxvYWRlZCBO
+QVBJCmNvbnRleHQgd2lsbCBuZXZlciBlbnRlci9hbGxvdyBmb3IgYnVzeS1wb2xsaW5nLiBTb21l
+IGFwcGxpY2F0aW9ucwpwcmVmZXIgdGhhdCBtb3N0IE5BUEkgcHJvY2Vzc2luZyB3b3VsZCBiZSBk
+b25lIGJ5IGJ1c3ktcG9sbGluZy4KClRoaXMgc2VyaWVzIGFkZHMgYSBuZXcgc29ja2V0IG9wdGlv
+biwgU09fUFJFRkVSX0JVU1lfUE9MTCwgdGhhdCB3b3JrcwppbiBjb25jZXJ0IHdpdGggdGhlIG5h
+cGlfZGVmZXJfaGFyZF9pcnFzIGFuZCBncm9fZmx1c2hfdGltZW91dAprbm9icy4gVGhlIG5hcGlf
+ZGVmZXJfaGFyZF9pcnFzIGFuZCBncm9fZmx1c2hfdGltZW91dCBrbm9icyB3ZXJlCmludHJvZHVj
+ZWQgaW4gY29tbWl0IDZmOGIxMmQ2NjFkMCAoIm5ldDogbmFwaTogYWRkIGhhcmQgaXJxcyBkZWZl
+cnJhbApmZWF0dXJlIiksIGFuZCBhbGxvd3MgZm9yIGEgdXNlciB0byBkZWZlciBpbnRlcnJ1cHRz
+IHRvIGJlIGVuYWJsZWQgYW5kCmluc3RlYWQgc2NoZWR1bGUgdGhlIE5BUEkgY29udGV4dCBmcm9t
+IGEgd2F0Y2hkb2cgdGltZXIuIFdoZW4gYSB1c2VyCmVuYWJsZXMgdGhlIFNPX1BSRUZFUl9CVVNZ
+X1BPTEwsIGFnYWluIHdpdGggdGhlIG90aGVyIGtub2JzIGVuYWJsZWQsCmFuZCB0aGUgTkFQSSBj
+b250ZXh0IGlzIGJlaW5nIHByb2Nlc3NlZCBieSBhIHNvZnRpcnEsIHRoZSBzb2Z0aXJxIE5BUEkK
+cHJvY2Vzc2luZyB3aWxsIGV4aXQgZWFybHkgdG8gYWxsb3cgdGhlIGJ1c3ktcG9sbGluZyB0byBi
+ZSBwZXJmb3JtZWQuCgpJZiB0aGUgYXBwbGljYXRpb24gc3RvcHMgcGVyZm9ybWluZyBidXN5LXBv
+bGxpbmcgdmlhIGEgc3lzdGVtIGNhbGwsCnRoZSB3YXRjaGRvZyB0aW1lciBkZWZpbmVkIGJ5IGdy
+b19mbHVzaF90aW1lb3V0IHdpbGwgdGltZW91dCwgYW5kCnJlZ3VsYXIgc29mdGlycSBoYW5kbGlu
+ZyB3aWxsIHJlc3VtZS4KCkluIHN1bW1hcnk7IEhlYXZ5IHRyYWZmaWMgYXBwbGljYXRpb25zIHRo
+YXQgcHJlZmVyIGJ1c3ktcG9sbGluZyBvdmVyCnNvZnRpcnEgcHJvY2Vzc2luZyBzaG91bGQgdXNl
+IHRoaXMgb3B0aW9uLgoKRXhhbXBsZSB1c2FnZToKCiAgJCBlY2hvIDIgfCBzdWRvIHRlZSAvc3lz
+L2NsYXNzL25ldC9lbnM3ODVmMS9uYXBpX2RlZmVyX2hhcmRfaXJxcwogICQgZWNobyAyMDAwMDAg
+fCBzdWRvIHRlZSAvc3lzL2NsYXNzL25ldC9lbnM3ODVmMS9ncm9fZmx1c2hfdGltZW91dAoKTm90
+ZSB0aGF0IHRoZSB0aW1lb3V0IHNob3VsZCBiZSBsYXJnZXIgdGhhbiB0aGUgdXNlcnNwYWNlIHBy
+b2Nlc3NpbmcKd2luZG93LCBvdGhlcndpc2UgdGhlIHdhdGNoZG9nIHdpbGwgdGltZW91dCBhbmQg
+ZmFsbCBiYWNrIHRvIHJlZ3VsYXIKc29mdGlycSBwcm9jZXNzaW5nLgoKRW5hYmxlIHRoZSBTT19C
+VVNZX1BPTEwvU09fUFJFRkVSX0JVU1lfUE9MTCBvcHRpb25zIG9uIHlvdXIgc29ja2V0LgoKClBl
+cmZvcm1hbmNlIG5ldHBlcmYgVURQX1JSOgoKTm90ZSB0aGF0IG5ldHBlcmYgVURQX1JSIGlzIG5v
+dCBhIGhlYXZ5IHRyYWZmaWMgdGVzdHMsIGFuZCBwcmVmZXJyZWQKYnVzeS1wb2xsaW5nIGlzIG5v
+dCB0eXBpY2FsbHkgc29tZXRoaW5nIHdlIHdhbnQgdG8gdXNlIGhlcmUuCgogICQgZWNobyAyMCB8
+IHN1ZG8gdGVlIC9wcm9jL3N5cy9uZXQvY29yZS9idXN5X3JlYWQKICAkIG5ldHBlcmYgLUggMTky
+LjE2OC4xLjEgLWwgMzAgLXQgVURQX1JSIC12IDIgLS0gXAogICAgICAtbyBtaW5fbGF0ZW5jeSxt
+ZWFuX2xhdGVuY3ksbWF4X2xhdGVuY3ksc3RkZGV2X2xhdGVuY3ksdHJhbnNhY3Rpb25fcmF0ZQoK
+YnVzeS1wb2xsaW5nIGJsb2NraW5nIHNvY2tldHM6ICAgICAgICAgICAgMTIsMTMuMzMsMjI0LDAu
+NjMsNzQ3MzEuMTc3CgpJIGhhY2tlZCBuZXRwZXJmIHRvIHVzZSBub24tYmxvY2tpbmcgc29ja2V0
+cyBhbmQgcmUtcmFuOgoKYnVzeS1wb2xsaW5nIG5vbi1ibG9ja2luZyBzb2NrZXRzOiAgICAgICAg
+MTIsMTMuNDYsMjE4LDAuNzIsNzM5OTEuMTcyCnByZWZlciBidXN5LXBvbGxpbmcgbm9uLWJsb2Nr
+aW5nIHNvY2tldHM6IDEyLDEzLjYyLDIyMSwwLjU5LDczMTM4LjQ0OAoKVXNpbmcgdGhlIHByZWZl
+cnJlZCBidXN5LXBvbGxpbmcgbW9kZSBkb2VzIG5vdCBpbXBhY3QgcGVyZm9ybWFuY2UuCgoKUGVy
+Zm9ybWFuY2UgWERQIHNvY2tldHM6CgpUb2RheSwgcnVubmluZyBYRFAgc29ja2V0cyBzYW1wbGUg
+b24gdGhlIHNhbWUgY29yZSBhcyB0aGUgc29mdGlycQpoYW5kbGluZywgcGVyZm9ybWFuY2UgdGFu
+a3MgbWFpbmx5IGJlY2F1c2Ugd2UgZG8gbm90IHlpZWxkIHRvCnVzZXItc3BhY2Ugd2hlbiB0aGUg
+WERQIHNvY2tldCBSeCBxdWV1ZSBpcyBmdWxsLgoKICAjIHRhc2tzZXQgLWMgNSAuL3hkcHNvY2sg
+LWkgZW5zNzg1ZjEgLXEgNSAtbiAxIC1yCiAgUng6IDY0S3BwcwogIAogICMgIyBiaWFzZWQgYnVz
+eS1wb2xsaW5nLCBidWRnZXQgOAogICMgdGFza3NldCAtYyA1IC4veGRwc29jayAtaSBlbnM3ODVm
+MSAtcSA1IC1uIDEgLXIgLUIgLWIgOAogIFJ4IDkuOU1wcHMKICAjICMgYmlhc2VkIGJ1c3ktcG9s
+bGluZywgYnVkZ2V0IDY0CiAgIyB0YXNrc2V0IC1jIDUgLi94ZHBzb2NrIC1pIGVuczc4NWYxIC1x
+IDUgLW4gMSAtciAtQiAtYiA2NAogIFJ4OiAxOS4zTXBwcwogICMgIyBiaWFzZWQgYnVzeS1wb2xs
+aW5nLCBidWRnZXQgMjU2CiAgIyB0YXNrc2V0IC1jIDUgLi94ZHBzb2NrIC1pIGVuczc4NWYxIC1x
+IDUgLW4gMSAtciAtQiAtYiAyNTYKICBSeDogMjEuNE1wcHMKICAjICMgYmlhc2VkIGJ1c3ktcG9s
+bGluZywgYnVkZ2V0IDUxMgogICMgdGFza3NldCAtYyA1IC4veGRwc29jayAtaSBlbnM3ODVmMSAt
+cSA1IC1uIDEgLXIgLUIgLWIgNTEyCiAgUng6IDIxLjdNcHBzCgpDb21wYXJlZCB0byB0aGUgdHdv
+LWNvcmUgY2FzZToKICAjIHRhc2tzZXQgLWMgNCAuL3hkcHNvY2sgLWkgZW5zNzg1ZjEgLXEgMjAg
+LW4gMSAtcgogIFJ4OiAyMC43TXBwcwoKV2UncmUgZ2V0dGluZyBiZXR0ZXIgc2luZ2xlLWNvcmUg
+cGVyZm9ybWFuY2UgdGhhbiB0d28sIGZvciB0aGlzIG5hw692ZQpkcm9wIHNjZW5hcmlvLgoKVGhl
+IGFib3ZlIHRlc3RzIHdhcyBkb25lIGZvciB0aGUgJ2ljZScgZHJpdmVyLgoKVGhhbmtzIHRvIEph
+a3ViIGZvciBzdWdnZXN0aW5nIHRoaXMgYnVzeS1wb2xsaW5nIGFkZGl0aW9uIFsxXSwgYW5kCkVy
+aWMgZm9yIHRoZSBpbnB1dCBvbiB0aGUgdjEgUkZDLgoKClNvbWUgb3V0c3RhbmRpbmcgcXVlc3Rp
+b25zOgoKKiBDdXJyZW50bHkgYnVzeS1wb2xsaW5nIGZvciBVRFAvVENQIGlzIG9ubHkgd2lyZWQg
+dXAgaW4gdGhlIHJlY3Ztc2coKQogIHBhdGguIERvZXMgaXQgbWFrZSBzZW5zZSB0byBleHRlbmQg
+dGhhdCB0byBzZW5kbXNnKCkgYXMgd2VsbD8KCiogRXh0ZW5kaW5nIHhkcF9yeHFfaW5mb19yZWco
+KSB3aXRoIG5hcGlfaWQgdG91Y2hlcyBhIGxvdCBvZiBkcml2ZXJzLAogIGFuZCBJJ3ZlIG9ubHkg
+dmVyaWZpZWQgdGhlIEludGVsIG9uZXMuIFNvbWUgZHJpdmVycyBpbml0aWFsaXplIE5BUEkKICAo
+Z2VuZXJhdGluZyB0aGUgbmFwaV9pZCkgYWZ0ZXIgdGhlIHhkcF9yeHFfaW5mb19yZWcoKSBjYWxs
+LCB3aGljaAogIG1heWJlIHdvdWxkIG9wZW4gdXAgZm9yIGFub3RoZXIgQVBJLiBJIGRpZCBub3Qg
+c2VuZCB0aGlzIFJGQyB0byBhbGwKICB0aGUgZHJpdmVyIGF1dGhvcnMuIEknbGwgZG8gdGhhdCBm
+b3IgYSBwYXRjaCBwcm9wZXIgc2VyaWVzLgoKKiBUb2RheSwgZW5hYmxpbmcgYnVzeS1wb2xsaW5n
+IHJlcXVpcmUgQ0FQX05FVF9BRE1JTi4gRm9yIGEgTkFQSQogIGNvbnRleHQgdGhhdCBzZXJ2aWNl
+cyBtdWx0aXBsZSBzb2NrZXQsIHRoaXMgbWFrZXMgc2Vuc2UgYmVjYXVzZSBvbmUKICBzb2NrZXQg
+Y2FuIGFmZmVjdCBwZXJmb3JtYW5jZSBvZiBvdGhlciBzb2NrZXRzLiBOb3csIGZvciBhCiAgKmRl
+ZGljYXRlZCogcXVldWUgZm9yIHNheSBYRFAgc29ja2V0LCB3b3VsZCBpdCBiZSBPSyB0byBkcm9w
+CiAgQ0FQX05FVF9BRE1JTiwgYmVjYXVzZSBpdCBjYW5ub3QgYWZmZWN0IG90aGVyIHNvY2tldHMv
+dXNlcnMuCgoKQ2hhbmdlczoKCnJmYy12MSBbMl0gLT4gcmZjLXYyOgogICogQ2hhbmdlZCBuYW1l
+IGZyb20gYmlhcyB0byBwcmVmZXIuCiAgKiBCYXNlIHRoZSB3b3JrIG9uIEVyaWMncy9MdWlnaSdz
+IGRlZmVyIGlycS9ncm8gdGltZW91dCB3b3JrLgogICogUHJvcGVyIEdSTyBmbHVzaGluZy4KICAq
+IEJ1aWxkIGlzc3VlcyBmb3Igc29tZSBYRFAgZHJpdmVycy4KClsxXSBodHRwczovL2xvcmUua2Vy
+bmVsLm9yZy9uZXRkZXYvMjAyMDA5MjUxMjA2NTIuMTBiOGQ3YzVAa2ljaW5za2ktZmVkb3JhLXBj
+MWMwaGpuLmRoY3AudGhlZmFjZWJvb2suY29tLwpbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+YnBmLzIwMjAxMDI4MTMzNDM3LjIxMjUwMy0xLWJqb3JuLnRvcGVsQGdtYWlsLmNvbS8KCgpCasO2
+cm4gVMO2cGVsICg5KToKICBuZXQ6IGludHJvZHVjZSBwcmVmZXJyZWQgYnVzeS1wb2xsaW5nCiAg
+bmV0OiBhZGQgU09fQlVTWV9QT0xMX0JVREdFVCBzb2NrZXQgb3B0aW9uCiAgeHNrOiBhZGQgc3Vw
+cG9ydCBmb3IgcmVjdm1zZygpCiAgeHNrOiBjaGVjayBuZWVkIHdha2V1cCBmbGFnIGluIHNlbmRt
+c2coKQogIHhzazogYWRkIGJ1c3ktcG9sbCBzdXBwb3J0IGZvciB7cmVjdixzZW5kfW1zZygpCiAg
+eHNrOiBwcm9wYWdhdGUgbmFwaV9pZCB0byBYRFAgc29ja2V0IFJ4IHBhdGgKICBzYW1wbGVzL2Jw
+ZjogdXNlIHJlY3Zmcm9tKCkgaW4geGRwc29jawogIHNhbXBsZXMvYnBmOiBhZGQgYnVzeS1wb2xs
+IHN1cHBvcnQgdG8geGRwc29jawogIHNhbXBsZXMvYnBmOiBhZGQgb3B0aW9uIHRvIHNldCB0aGUg
+YnVzeS1wb2xsIGJ1ZGdldAoKIGFyY2gvYWxwaGEvaW5jbHVkZS91YXBpL2FzbS9zb2NrZXQuaCAg
+ICAgICAgICB8ICAzICsKIGFyY2gvbWlwcy9pbmNsdWRlL3VhcGkvYXNtL3NvY2tldC5oICAgICAg
+ICAgICB8ICAzICsKIGFyY2gvcGFyaXNjL2luY2x1ZGUvdWFwaS9hc20vc29ja2V0LmggICAgICAg
+ICB8ICAzICsKIGFyY2gvc3BhcmMvaW5jbHVkZS91YXBpL2FzbS9zb2NrZXQuaCAgICAgICAgICB8
+ICAzICsKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2FtYXpvbi9lbmEvZW5hX25ldGRldi5jICB8ICAy
+ICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9icm9hZGNvbS9ibnh0L2JueHQuYyAgICAgfCAgMiAr
+LQogLi4uL2V0aGVybmV0L2Nhdml1bS90aHVuZGVyL25pY3ZmX3F1ZXVlcy5jICAgIHwgIDIgKy0K
+IC4uLi9uZXQvZXRoZXJuZXQvZnJlZXNjYWxlL2RwYWEyL2RwYWEyLWV0aC5jICB8ICAyICstCiBk
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhyeC5jICAgfCAgMiArLQogZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9iYXNlLmMgICAgIHwgIDQgKy0KIGRyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeC5jICAgICB8ICAyICstCiBkcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYyAgICAgfCAgMiArLQogZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jIHwgIDIgKy0KIC4uLi9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYyB8ICAyICstCiBkcml2ZXJzL25ldC9l
+dGhlcm5ldC9tYXJ2ZWxsL212bmV0YS5jICAgICAgICAgfCAgMiArLQogLi4uL25ldC9ldGhlcm5l
+dC9tYXJ2ZWxsL212cHAyL212cHAyX21haW4uYyAgIHwgIDQgKy0KIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L21lbGxhbm94L21seDQvZW5fcnguYyAgICB8ICAyICstCiAuLi4vbmV0L2V0aGVybmV0L21l
+bGxhbm94L21seDUvY29yZS9lbl9tYWluLmMgfCAgMiArLQogLi4uL2V0aGVybmV0L25ldHJvbm9t
+ZS9uZnAvbmZwX25ldF9jb21tb24uYyAgIHwgIDIgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L3Fs
+b2dpYy9xZWRlL3FlZGVfbWFpbi5jICB8ICAyICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9zZmMv
+cnhfY29tbW9uLmMgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvc29jaW9u
+ZXh0L25ldHNlYy5jICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L3RpL2Nwc3df
+cHJpdi5jICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL25ldC9oeXBlcnYvbmV0dnNjLmMgICAg
+ICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9uZXQvdHVuLmMgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbmV0L3ZldGguYyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL25ldC92aXJ0aW9fbmV0LmMgICAgICAgICAgICAg
+ICAgICAgICAgfCAgMiArLQogZHJpdmVycy9uZXQveGVuLW5ldGZyb250LmMgICAgICAgICAgICAg
+ICAgICAgIHwgIDIgKy0KIGZzL2V2ZW50cG9sbC5jICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICB8ICAzICstCiBpbmNsdWRlL2xpbnV4L25ldGRldmljZS5oICAgICAgICAgICAgICAgICAg
+ICAgfCAzNSArKysrKy0tLQogaW5jbHVkZS9uZXQvYnVzeV9wb2xsLmggICAgICAgICAgICAgICAg
+ICAgICAgIHwgMjcgKysrKy0tCiBpbmNsdWRlL25ldC9zb2NrLmggICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgfCAgNCArCiBpbmNsdWRlL25ldC94ZHAuaCAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgfCAgMyArLQogaW5jbHVkZS91YXBpL2FzbS1nZW5lcmljL3NvY2tldC5oICAgICAgICAg
+ICAgIHwgIDMgKwogbmV0L2NvcmUvZGV2LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHwgODkgKysrKysrKysrKysrKystLS0tLQogbmV0L2NvcmUvc29jay5jICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHwgMTkgKysrKwogbmV0L2NvcmUveGRwLmMgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHwgIDMgKy0KIG5ldC94ZHAveHNrLmMgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICB8IDM2ICsrKysrKystCiBuZXQveGRwL3hza19idWZmX3Bvb2wuYyAgICAg
+ICAgICAgICAgICAgICAgICAgfCAxMyArKy0KIHNhbXBsZXMvYnBmL3hkcHNvY2tfdXNlci5jICAg
+ICAgICAgICAgICAgICAgICB8IDUzICsrKysrKysrLS0tCiA0MCBmaWxlcyBjaGFuZ2VkLCAyNjIg
+aW5zZXJ0aW9ucygrKSwgOTAgZGVsZXRpb25zKC0pCgoKYmFzZS1jb21taXQ6IGQwYjNkMmQ3ZTUw
+ZGU1Y2UxMjFmNzdhMTZkZjRjMTdlOTFiMDk0MjEKLS0gCjIuMjcuMAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
+bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
