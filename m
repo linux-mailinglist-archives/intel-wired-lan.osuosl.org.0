@@ -1,82 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD81B2AC617
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Nov 2020 21:44:00 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50A4E2AC627
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Nov 2020 21:47:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 287BD87330;
-	Mon,  9 Nov 2020 20:43:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EE323866AE;
+	Mon,  9 Nov 2020 20:47:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g4FiphBDRwjd; Mon,  9 Nov 2020 20:43:59 +0000 (UTC)
+	with ESMTP id 3eR1VXZ19ls3; Mon,  9 Nov 2020 20:47:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B3A42872FF;
-	Mon,  9 Nov 2020 20:43:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BC1F4866DE;
+	Mon,  9 Nov 2020 20:47:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 289941BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:43:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 619071BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:47:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 242E085F15
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:43:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 58B03872FA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:47:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NXM8MMdhFSdP for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Nov 2020 20:43:53 +0000 (UTC)
+ with ESMTP id GRlpe5VFsT6d for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Nov 2020 20:47:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f65.google.com (mail-ot1-f65.google.com
- [209.85.210.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4248E85F52
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:43:53 +0000 (UTC)
-Received: by mail-ot1-f65.google.com with SMTP id z16so10311158otq.6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 09 Nov 2020 12:43:53 -0800 (PST)
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com
+ [209.85.167.172])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 98A9B872FF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 20:47:40 +0000 (UTC)
+Received: by mail-oi1-f172.google.com with SMTP id t143so11687850oif.10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 09 Nov 2020 12:47:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:message-id:in-reply-to:references:subject
  :mime-version:content-transfer-encoding;
- bh=ATlrc71eVmMN7dt7E+P5qZNg9suPptLNbqRD/l6+6aY=;
- b=plXr8QvaQSlpxzLlNSm4+pzsXkkyAtKZPCwYM1aC0PJbEZilntIxAgGEhXWqcn6vLa
- 3Nqg/F9WarxyZrWos3e9JTl04CPbvzJ9FD5RJUNy7wPIdKbeRoEQOhZLBwyxcsbgm4iU
- 5iMNIOLsZWyJijwkwFJY7/h6Jbx+V7XNhISDK2BCeYSL+m5hBXatXdb60px3Yyv5ykx2
- 2+0dKIQZXbnfVAgLYWlDE1O+tjrX7dktDrDOSZ2O3bia7oakzgoD9cIhQy4enryWNy2d
- 9XocgYlNGh3KdWanoMFigemtxu6qRXdUBJdgmK+xI/6CRAXDbDJhIE2wcxptAKa8OEKL
- lZIg==
+ bh=Pu3jH2lz4/aHz11/lZmOnPGy2ngd1re4TGNzl/qDjng=;
+ b=pvBHxUjqoNi19gCKutnmqMrB7RPRgFUK4YePaHcl2A3nPiQLXQadfvn/RpvUClTiUk
+ uZuGDwlPaSYOorKS9Vha++wsz3MY+ysB5rS20spBy5ehwwFC0J5gjpUZnmyzNSayQKnQ
+ H/stTCPqEm34/KreDppUz2XIuOhYLh2A4fyrudnVqkEmcmDnKWJqy5ChZlmdUH/6JkAl
+ DRp6MtyvtBn530jiOUDlfjc+dwxZSORcju9MnYwGQPWjCiqymn/lXoR1lhjuZCzMjBYW
+ fdKwMg2XxKgkIVBEkJaXo6YstUKQM11hwMszW682xywrkfES6+wfKgFAo+AJGG/iQSA0
+ e4TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:message-id:in-reply-to
  :references:subject:mime-version:content-transfer-encoding;
- bh=ATlrc71eVmMN7dt7E+P5qZNg9suPptLNbqRD/l6+6aY=;
- b=hNi9TU+gdlGUV4IN8eMrr0GW22shgzLFaLgL/xTgHVYnM3Cyt3wESM1Qzs3d/yxVAt
- Ddx5/siybuMbUTvoaGOzLsw3q5otaW18NmYeVZiTomKAXFxE5UDsrH5pgqNWbED3UbXE
- yiTAC2uQfaWg1c2Uh0SdHDMm87dVNBhlf6b2aqF1edScJMcx04/eQ2vd2LpBY31Fg8pw
- N481fW8NmGeaq86oUshg2N3SLfKOcOyW2NSf38fgiEE5M7RD41kEqidqv3zNIMnocUBt
- P4Vsy0uhLLGdbhU68fQETRA9kTddqjUUd+yKrWQbA1Z/BI8upjQCJ/1njtwNDTHPzkHR
- huVg==
-X-Gm-Message-State: AOAM533/Bq8M/s4OCbBW46X6Tjf62jkBOVejy+CFN9Q82l4T66aTBAmP
- S0bKnnW57WzUcK9clb6lOaw=
-X-Google-Smtp-Source: ABdhPJz/wqdJcgTVIkfvCa6luKlYzRUqzWrUKz0KdQ0nLjlP9/+xq7vt01xn7VVeytUYno4ZOqkZxQ==
-X-Received: by 2002:a05:6830:22c9:: with SMTP id
- q9mr12509129otc.48.1604954632560; 
- Mon, 09 Nov 2020 12:43:52 -0800 (PST)
+ bh=Pu3jH2lz4/aHz11/lZmOnPGy2ngd1re4TGNzl/qDjng=;
+ b=A7zudkhDH9RAGdYKRpIe7l7NF8ulPGMue7d0Gd+Skzdm3tegxhNMPBkQwQMcywWNga
+ eBDkAbbdnLoaGRRm7h7Xu8VaiCrfWTOH3hcLaK73UGnviHv7XD8yo84kSJ2E8nXZlRzF
+ E4COyC5V9Y8atnZ29W//FvBzAFuhJtAWIOiUzmbQ8V8+0frLgE1cPYchUR704TPVNcRF
+ PGGYkmvwEqjoaOJb65VuQPNb1BG80NnkbtXx8VcHkqSr9p0kdaWRbYDwvOHLeAQI24Ya
+ lr3ruPO7/1AK4nqseP2WVGfuGaEH/+0PL9XcTUdBW3F84BiV9YW3ARavI4kWmBuR8f0G
+ r5OA==
+X-Gm-Message-State: AOAM530nB9HbHA6hkxdRYbQhlCIaBGZn/CnWB4dT7PCkXa8XXkXIKyuv
+ 70ZI6JW7Svhjucx+bYnXnet86jYGJzE4uQ==
+X-Google-Smtp-Source: ABdhPJwQu88ixW27YnfsTtPxhcBhyX/XDGy49u3xYIsO4KJMqsk1NkzGQdLdP1YzHxxg8uTrxCON4Q==
+X-Received: by 2002:aca:e187:: with SMTP id y129mr654712oig.61.1604954859874; 
+ Mon, 09 Nov 2020 12:47:39 -0800 (PST)
 Received: from localhost ([184.63.162.180])
- by smtp.gmail.com with ESMTPSA id r24sm2748068otq.77.2020.11.09.12.43.49
+ by smtp.gmail.com with ESMTPSA id j23sm2772770otr.80.2020.11.09.12.47.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 12:43:51 -0800 (PST)
-Date: Mon, 09 Nov 2020 12:43:43 -0800
+ Mon, 09 Nov 2020 12:47:39 -0800 (PST)
+Date: Mon, 09 Nov 2020 12:47:32 -0800
 From: John Fastabend <john.fastabend@gmail.com>
 To: Magnus Karlsson <magnus.karlsson@gmail.com>, magnus.karlsson@intel.com, 
  bjorn.topel@intel.com, ast@kernel.org, daniel@iogearbox.net, 
  netdev@vger.kernel.org, jonathan.lemon@gmail.com
-Message-ID: <5fa9a9ffc2ea3_8c0e208a2@john-XPS-13-9370.notmuch>
-In-Reply-To: <1604498942-24274-5-git-send-email-magnus.karlsson@gmail.com>
+Message-ID: <5fa9aae46c442_8c0e208b5@john-XPS-13-9370.notmuch>
+In-Reply-To: <1604498942-24274-3-git-send-email-magnus.karlsson@gmail.com>
 References: <1604498942-24274-1-git-send-email-magnus.karlsson@gmail.com>
- <1604498942-24274-5-git-send-email-magnus.karlsson@gmail.com>
+ <1604498942-24274-3-git-send-email-magnus.karlsson@gmail.com>
 Mime-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 4/6] xsk: introduce padding
- between more ring pointers
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 2/6] samples/bpf: increment
+ Tx stats at sending
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,48 +98,26 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 Magnus Karlsson wrote:
 > From: Magnus Karlsson <magnus.karlsson@intel.com>
 > 
-> Introduce one cache line worth of padding between the consumer pointer
-> and the flags field as well as between the flags field and the start
-> of the descriptors in all the lockless rings. This so that the x86 HW
-> adjacency prefetcher will not prefetch the adjacent pointer/field when
-> only one pointer/field is going to be used. This improves throughput
-> performance for the l2fwd sample app with 1% on my machine with HW
-> prefetching turned on in the BIOS.
+> Increment the statistics over how many Tx packets have been sent at
+> the time of sending instead of at the time of completion. This as a
+> completion event means that the buffer has been sent AND returned to
+> user space. The packet always gets sent shortly after sendto() is
+> called. The kernel might, for performance reasons, decide to not
+> return every single buffer to user space immediately after sending,
+> for example, only after a batch of packets have been
+> transmitted. Incrementing the number of packets sent at completion,
+> will in that case be confusing as if you send a single packet, the
+> counter might show zero for a while even though the packet has been
+> transmitted.
 > 
 > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 > ---
 
+LGTM. Just one question then if we wanted to know the old value, packet
+completion counter it looks like (tx_npkts - outstanding_tx) would give
+that value?
+
 Acked-by: John Fastabend <john.fastabend@gmail.com>
-
->  net/xdp/xsk_queue.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/net/xdp/xsk_queue.h b/net/xdp/xsk_queue.h
-> index cdb9cf3..74fac80 100644
-> --- a/net/xdp/xsk_queue.h
-> +++ b/net/xdp/xsk_queue.h
-> @@ -18,9 +18,11 @@ struct xdp_ring {
->  	/* Hinder the adjacent cache prefetcher to prefetch the consumer
->  	 * pointer if the producer pointer is touched and vice versa.
->  	 */
-> -	u32 pad ____cacheline_aligned_in_smp;
-> +	u32 pad1 ____cacheline_aligned_in_smp;
->  	u32 consumer ____cacheline_aligned_in_smp;
-> +	u32 pad2 ____cacheline_aligned_in_smp;
->  	u32 flags;
-> +	u32 pad3 ____cacheline_aligned_in_smp;
->  };
->  
->  /* Used for the RX and TX queues for packets */
-> -- 
-> 2.7.4
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
-
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
