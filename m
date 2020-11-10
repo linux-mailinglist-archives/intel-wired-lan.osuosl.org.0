@@ -2,59 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 061002ACF6D
+	by mail.lfdr.de (Postfix) with ESMTPS id 502192ACF6E
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 07:10:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B13F786610;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F06AC866C9;
 	Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KP0q9GQlkQxF; Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
+	with ESMTP id ozOzean4F5Vf; Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C964A86451;
-	Tue, 10 Nov 2020 06:10:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 20E8C862C1;
+	Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 93C5C1BF307
+ by ash.osuosl.org (Postfix) with ESMTP id B087E1BF97F
  for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8CC5486256
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AD264860FE
  for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H1OBV89999pF for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 3gV41PFnzFNK for <intel-wired-lan@lists.osuosl.org>;
  Tue, 10 Nov 2020 06:10:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DA74860FE
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5E797860E0
  for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:31 +0000 (UTC)
-IronPort-SDR: FX9c99rJ+IWPILG3iO1FwBYCGeubVc+fVfS3zyA43bNXsFVcxP7H8ZLl8xvz5PTXDP1nqD7JLP
- HeIzRF1WbofQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9800"; a="170035026"
-X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="170035026"
+IronPort-SDR: pWKkjSsf6T8OelAKcI0/s1LHoFIEEkqaiS+6my5FyTpYlRc1yZt7NAsDvBcrOFCo54Iw84VFJd
+ okd3wZ58fEEw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9800"; a="170035029"
+X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="170035029"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2020 22:10:29 -0800
-IronPort-SDR: teItR5/P0xCamLBtQwgKh6GvVvAS7WDiHEp7hq3MQAnhc2J1V+ci8XadyScA795iMiolu99EqE
- 684PKBYzdJTw==
-X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="365752844"
+ 09 Nov 2020 22:10:30 -0800
+IronPort-SDR: ixU8/TOHj72yFPDYg5Uuv4nE0mey6MHshR4KGVcs0j0Whiuupk6WizQFXSwIP0JMibFIpmrLRo
+ fqiYcJM6+SEg==
+X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="365752854"
 Received: from eevans-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.212.97.1])
  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2020 22:10:28 -0800
+ 09 Nov 2020 22:10:29 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 Nov 2020 22:10:16 -0800
-Message-Id: <20201110061019.519589-1-vinicius.gomes@intel.com>
+Date: Mon,  9 Nov 2020 22:10:17 -0800
+Message-Id: <20201110061019.519589-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.29.0
+In-Reply-To: <20201110061019.519589-1-vinicius.gomes@intel.com>
+References: <20201110061019.519589-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v2 0/3] igc: Add support for
- PCIe PTM
+Subject: [Intel-wired-lan] [PATCH next-queue v2 1/3] Revert "PCI: Make
+ pci_enable_ptm() private"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,56 +76,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Make pci_enable_ptm() accessible from the drivers.
 
-Changes from v1:
-  - This now should cross compile better, convert_art_ns_to_tsc() will
-    only be used if CONFIG_X86_TSC is enabled;
-  - PCIe PTM errors reported by the NIC are logged and PTM cycles are
-    restarted in case an error is detected;
+Even if PTM still works on the platform I am using without calling
+this function, it might be possible that it's not always the case.
 
-Original cover letter:
+Exposing this to the driver enables the driver to use the
+'ptm_enabled' field of 'pci_dev' to check if PTM is enabled or not.
 
-This adds support for PCIe PTM (Precision Time Measurement) to the igc
-driver. PCIe PTM allows the NIC and Host clocks to be compared more
-precisely, improving the clock synchronization accuracy.
+This reverts commit ac6c26da29c12fa511c877c273ed5c939dc9e96c.
 
-Patch 1/3 reverts a commit that made pci_enable_ptm() private to the
-PCI subsystem, reverting makes it possible for it to be called from
-the drivers.
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/pci/pci.h   | 3 ---
+ include/linux/pci.h | 7 +++++++
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-Patch 2/3 calls pci_enable_ptm() from the igc driver.
-
-Patch 3/3 implements the PCIe PTM support. It adds a workqueue that
-reads the PTM registers periodically and collects the information so a
-subsequent call to getcrosststamp() has all the timestamps needed.
-
-Some questions are raised (also pointed out in the commit message):
-
-1. Using convert_art_ns_to_tsc() is too x86 specific, there should be
-   a common way to create a 'system_counterval_t' from a timestamp.
-
-2. convert_art_ns_to_tsc() says that it should only be used when
-   X86_FEATURE_TSC_KNOWN_FREQ is true, but during tests it works even
-   when it returns false. Should that check be done?
-
-Cheers,
-
-
-Vinicius Costa Gomes (3):
-  Revert "PCI: Make pci_enable_ptm() private"
-  igc: Enable PCIe PTM
-  igc: Add support for PTP getcrosststamp()
-
- drivers/net/ethernet/intel/igc/igc.h         |   7 +
- drivers/net/ethernet/intel/igc/igc_defines.h |  27 +++
- drivers/net/ethernet/intel/igc/igc_main.c    |   7 +
- drivers/net/ethernet/intel/igc/igc_ptp.c     | 209 +++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |  23 ++
- drivers/pci/pci.h                            |   3 -
- include/linux/pci.h                          |   7 +
- 7 files changed, 280 insertions(+), 3 deletions(-)
-
+diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+index f86cae9aa1f4..548e93aca55b 100644
+--- a/drivers/pci/pci.h
++++ b/drivers/pci/pci.h
+@@ -581,11 +581,8 @@ static inline void pcie_ecrc_get_policy(char *str) { }
+ 
+ #ifdef CONFIG_PCIE_PTM
+ void pci_ptm_init(struct pci_dev *dev);
+-int pci_enable_ptm(struct pci_dev *dev, u8 *granularity);
+ #else
+ static inline void pci_ptm_init(struct pci_dev *dev) { }
+-static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
+-{ return -EINVAL; }
+ #endif
+ 
+ struct pci_dev_reset_methods {
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 22207a79762c..18ce0d3eaecc 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -1596,6 +1596,13 @@ static inline bool pci_aer_available(void) { return false; }
+ 
+ bool pci_ats_disabled(void);
+ 
++#ifdef CONFIG_PCIE_PTM
++int pci_enable_ptm(struct pci_dev *dev, u8 *granularity);
++#else
++static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
++{ return -EINVAL; }
++#endif
++
+ void pci_cfg_access_lock(struct pci_dev *dev);
+ bool pci_cfg_access_trylock(struct pci_dev *dev);
+ void pci_cfg_access_unlock(struct pci_dev *dev);
 -- 
 2.29.0
 
