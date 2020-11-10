@@ -1,79 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 134692AD451
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 12:02:15 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E18762AD456
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 12:02:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8CB518693B;
-	Tue, 10 Nov 2020 11:02:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7DB2620767;
+	Tue, 10 Nov 2020 11:02:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WTftOZKTo5Fz; Tue, 10 Nov 2020 11:02:13 +0000 (UTC)
+	with ESMTP id yZ8E26auz9kQ; Tue, 10 Nov 2020 11:02:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A0BD786A22;
-	Tue, 10 Nov 2020 11:02:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 26E9E2277A;
+	Tue, 10 Nov 2020 11:02:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E237A1BF298
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AC4C11BF298
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DAE3186477
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A34BA22636
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F1tjAru70yjk for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Nov 2020 11:02:07 +0000 (UTC)
+ with ESMTP id hNu+oZ4Noaii for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Nov 2020 11:02:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DAC4D8630A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:07 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id f27so6443412pgl.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 03:02:07 -0800 (PST)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id C85CC20767
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 11:02:12 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id a18so10917987pfl.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 03:02:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=+SbxyZahfMfXnU/FChOm2quTfC2gyIuFdUfnHAtZnoI=;
- b=HDo2tLvTPlUvSl/ynyu+g51F9cSukXV+T7MVRGwd/ECz1C+0G0+I2wcLPsSbC18oXd
- inwKKlEU3sDBIhLVNZk+P/sw4/DfsG0ikuc8rcDBubiB8nStQezh2QFpA9tVWy/mmYXm
- 0NGQm50exAolDD2y6mImHFcw8p691Yr8NaP+eFDCmJ+Ep0mHz2HmqPLgWqxyRjBm+x/2
- wrkiY0LtzeZvMJXty6GT15PD+2pZog2E2BfDbekl3yL+wTk6+IBdbl4rq/X3ialkWXa/
- D5nNSkCip85Tn6/xHsVoPBXLanXtl9GKLQslz/3j3gvSFeTCMeS6SxuMRQ5eomkKYJ/f
- Q2Vg==
+ bh=KQXOqU3sgAKcC6WLzuY/tSnBXRqhvqvJ7oAX30tadAw=;
+ b=J4S9UgYKANhxiw2JmO3tlzoy5UuSeHrXUJCm0oVAE7sN+LrVEDHg2UxiD99M5qNGGm
+ blEFWXeW+4xeniL2ggf6nJuaU80JpCYjGgRyZd9NFL3lxuEeWNZxvT5R6hfwLtL0Cpls
+ KORD1J0PVKV1/BVlcTJl+FGLs5/3cierBUEx8vNzJMrh8FAo0sAzgJAPVJddki2BFI5f
+ 7HB4QlCg6HpCmTX5j6CxeUycukZI+wz2j2ktrXwspHooEuNoDFkRw64brjF6z2bdL4WU
+ fT26VWnb8FrHnvlk410js1EX/LxlDFRUet0MOajNOPswMD2GVNFJBv4B9K8lsVDGpcQe
+ 7Xfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=+SbxyZahfMfXnU/FChOm2quTfC2gyIuFdUfnHAtZnoI=;
- b=ZAH+Ty1w/hwTzOj0l5cSGSvldAVGllPA/Fi4Oq+z0IJqzQQH1VfZwTrxJwx78sKhnX
- Px6KUSRtBEuW34fmtdkLDC6B/70jZgzcZYENsY3jDMWG7/tzr2r8poUNHgD/co01aRba
- rDzLY1nKJOQlrJX/5gRH7Q8Rkuro1Q4FLvDCQiZgAlD7HXSdPCC1p4U1qqG/XTW0yhz1
- JB3zZnx3WOaKsdIJ3G/Wtcs9qD9kfajXeAu3VYTxjxvbBtQ+hR2XzpyxaHupmWp3spmS
- Il7LGUBWOBK1+0ruxQv2dfyf3n8GM2ykhxDiCgbfoZohhjgz7S1i7It0ZT83eAlNjXsh
- Exhg==
-X-Gm-Message-State: AOAM530XP7Hy/Ss/D82wphux8GhWCuR+4GzHjyLC7xgSyXLDnuzxE3Wx
- EZXbnJiBvBffkaqHKet1UtM=
-X-Google-Smtp-Source: ABdhPJzxXLLj8wlpgU6Uci22CTaPUGpi5ulPRN9nH5GXepx6NeUX+461wyJD5OnMiToM2Fxo8oX5zQ==
-X-Received: by 2002:a63:4912:: with SMTP id w18mr17141230pga.131.1605006127544; 
- Tue, 10 Nov 2020 03:02:07 -0800 (PST)
+ bh=KQXOqU3sgAKcC6WLzuY/tSnBXRqhvqvJ7oAX30tadAw=;
+ b=QEtP3J/5qIjP46qntU9GgWA78Jolfl+klZrGX2NgkP4PFHaXA5eiJGCg7JHY9tvdqQ
+ nDvlnL41udyr0fJSRkog/4D1+b8odkorP6OA9qbEL2TUuO7x26VNGJdb/LuUlgjBgnIV
+ KDYggKme4/ofP3y9iOlytQzrj34sUSNGqej+Ziq0l8XOW3MF2liPR0aZJPsRk8QM3Hrv
+ AdQBDdEyFIzQkPz36VjvU3EJWOM0EpbmLYVIhm9dZfKIJVfsvUSlDSEWFy8gXKlkDQZz
+ UWPNHqFcDU2+x1G4UOmg9eLYD8BlFjdYRA+b9zaAKu7URzpsB2KO4BquHOngVKX6TYC3
+ oioQ==
+X-Gm-Message-State: AOAM532ZKRGJ9oCg+Jd/zKGfpNY43eCRanhWv1CVMQqtQpitGLVSZfOf
+ 4a/s5g3V3xJYu+HYe/DW/BQ=
+X-Google-Smtp-Source: ABdhPJwRGuwTsExWngoV4BxMxccDa3HVjgGDrCrK4lSaC31y1Ni9oHZqVYAKWALykQm97u8XgALuaw==
+X-Received: by 2002:a62:1901:0:b029:18c:659c:e55f with SMTP id
+ 1-20020a6219010000b029018c659ce55fmr469087pfz.51.1605006132418; 
+ Tue, 10 Nov 2020 03:02:12 -0800 (PST)
 Received: from VM.ger.corp.intel.com ([192.55.55.45])
- by smtp.gmail.com with ESMTPSA id 22sm3012024pjb.40.2020.11.10.03.02.02
+ by smtp.gmail.com with ESMTPSA id 22sm3012024pjb.40.2020.11.10.03.02.07
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 10 Nov 2020 03:02:06 -0800 (PST)
+ Tue, 10 Nov 2020 03:02:11 -0800 (PST)
 From: Magnus Karlsson <magnus.karlsson@gmail.com>
 To: magnus.karlsson@intel.com, bjorn.topel@intel.com, ast@kernel.org,
  daniel@iogearbox.net, netdev@vger.kernel.org, jonathan.lemon@gmail.com,
  kuba@kernel.org, john.fastabend@gmail.com
-Date: Tue, 10 Nov 2020 12:01:30 +0100
-Message-Id: <1605006094-31097-2-git-send-email-magnus.karlsson@gmail.com>
+Date: Tue, 10 Nov 2020 12:01:31 +0100
+Message-Id: <1605006094-31097-3-git-send-email-magnus.karlsson@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1605006094-31097-1-git-send-email-magnus.karlsson@gmail.com>
 References: <1605006094-31097-1-git-send-email-magnus.karlsson@gmail.com>
-Subject: [Intel-wired-lan] [PATCH bpf-next v2 1/5] samples/bpf: increment Tx
- stats at sending
+Subject: [Intel-wired-lan] [PATCH bpf-next v2 2/5] i40e: remove unnecessary
+ sw_ring access from xsk Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,69 +97,49 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Magnus Karlsson <magnus.karlsson@intel.com>
 
-Increment the statistics over how many Tx packets have been sent at
-the time of sending instead of at the time of completion. This as a
-completion event means that the buffer has been sent AND returned to
-user space. The packet always gets sent shortly after sendto() is
-called. The kernel might, for performance reasons, decide to not
-return every single buffer to user space immediately after sending,
-for example, only after a batch of packets have been
-transmitted. Incrementing the number of packets sent at completion,
-will in that case be confusing as if you send a single packet, the
-counter might show zero for a while even though the packet has been
-transmitted.
+Remove the unnecessary access to the software ring for the AF_XDP
+zero-copy driver. This was used to record the length of the packet so
+that the driver Tx completion code could sum this up to produce the
+total bytes sent. This is now performed during the transmission of the
+packet, so no need to record this in the software ring.
 
 Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 Acked-by: John Fastabend <john.fastabend@gmail.com>
 ---
- samples/bpf/xdpsock_user.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/samples/bpf/xdpsock_user.c b/samples/bpf/xdpsock_user.c
-index 1149e94..2567f0d 100644
---- a/samples/bpf/xdpsock_user.c
-+++ b/samples/bpf/xdpsock_user.c
-@@ -1146,7 +1146,6 @@ static inline void complete_tx_l2fwd(struct xsk_socket_info *xsk,
- 		xsk_ring_prod__submit(&xsk->umem->fq, rcvd);
- 		xsk_ring_cons__release(&xsk->umem->cq, rcvd);
- 		xsk->outstanding_tx -= rcvd;
--		xsk->ring_stats.tx_npkts += rcvd;
- 	}
- }
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 6acede0..61aa1fc 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -392,7 +392,6 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
+ {
+ 	unsigned int sent_frames = 0, total_bytes = 0;
+ 	struct i40e_tx_desc *tx_desc = NULL;
+-	struct i40e_tx_buffer *tx_bi;
+ 	struct xdp_desc desc;
+ 	dma_addr_t dma;
  
-@@ -1168,7 +1167,6 @@ static inline void complete_tx_only(struct xsk_socket_info *xsk,
- 	if (rcvd > 0) {
- 		xsk_ring_cons__release(&xsk->umem->cq, rcvd);
- 		xsk->outstanding_tx -= rcvd;
--		xsk->ring_stats.tx_npkts += rcvd;
- 	}
- }
+@@ -404,9 +403,6 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
+ 		xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma,
+ 						 desc.len);
  
-@@ -1260,6 +1258,7 @@ static void tx_only(struct xsk_socket_info *xsk, u32 *frame_nb, int batch_size)
- 	}
+-		tx_bi = &xdp_ring->tx_bi[xdp_ring->next_to_use];
+-		tx_bi->bytecount = desc.len;
+-
+ 		tx_desc = I40E_TX_DESC(xdp_ring, xdp_ring->next_to_use);
+ 		tx_desc->buffer_addr = cpu_to_le64(dma);
+ 		tx_desc->cmd_type_offset_bsz =
+@@ -415,7 +411,7 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
+ 				   0, desc.len, 0);
  
- 	xsk_ring_prod__submit(&xsk->tx, batch_size);
-+	xsk->ring_stats.tx_npkts += batch_size;
- 	xsk->outstanding_tx += batch_size;
- 	*frame_nb += batch_size;
- 	*frame_nb %= NUM_FRAMES;
-@@ -1348,6 +1347,7 @@ static void l2fwd(struct xsk_socket_info *xsk, struct pollfd *fds)
- 		}
- 		return;
- 	}
-+	xsk->ring_stats.rx_npkts += rcvd;
+ 		sent_frames++;
+-		total_bytes += tx_bi->bytecount;
++		total_bytes += desc.len;
  
- 	ret = xsk_ring_prod__reserve(&xsk->tx, rcvd, &idx_tx);
- 	while (ret != rcvd) {
-@@ -1379,7 +1379,7 @@ static void l2fwd(struct xsk_socket_info *xsk, struct pollfd *fds)
- 	xsk_ring_prod__submit(&xsk->tx, rcvd);
- 	xsk_ring_cons__release(&xsk->rx, rcvd);
- 
--	xsk->ring_stats.rx_npkts += rcvd;
-+	xsk->ring_stats.tx_npkts += rcvd;
- 	xsk->outstanding_tx += rcvd;
- }
- 
+ 		xdp_ring->next_to_use++;
+ 		if (xdp_ring->next_to_use == xdp_ring->count)
 -- 
 2.7.4
 
