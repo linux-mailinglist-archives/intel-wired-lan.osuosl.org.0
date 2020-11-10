@@ -1,82 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 261CD2AC6B1
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Nov 2020 22:11:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B85A6860C8;
-	Mon,  9 Nov 2020 21:11:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 60qEnSqzdrtB; Mon,  9 Nov 2020 21:11:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C799C860C4;
-	Mon,  9 Nov 2020 21:11:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 854E41BF2CA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 21:11:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E09112ACA40
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 02:15:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 638F02042D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 21:11:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7EAFE203D8;
+	Tue, 10 Nov 2020 01:15:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gS3vO1yzSsOA; Tue, 10 Nov 2020 01:15:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 88D972011A;
+	Tue, 10 Nov 2020 01:15:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F1FE71BF3E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E57D9868EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DN1Vv9UoJFQt for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Nov 2020 21:11:09 +0000 (UTC)
+ with ESMTP id s1LoKfxNCL0W for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
- [209.85.210.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 680A8203F2
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Nov 2020 21:11:09 +0000 (UTC)
-Received: by mail-ot1-f67.google.com with SMTP id 79so10370795otc.7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 09 Nov 2020 13:11:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:message-id:in-reply-to:references:subject
- :mime-version:content-transfer-encoding;
- bh=ffJlmLjI1LxmQKvS2WnW7bcoolnwblQDAh0y1MpPzfA=;
- b=Hp9lxi8B1/DgblzGap4loUDg1qIMW6662Rz2j5oJhF991vRI85wWL9W8hWuiBM8M84
- MDshGGRrejg7yviPamY0b6j1xg7/IUMF+/+2eOG6I/a0cDV661/m7ZT/tC1J3pToI8SH
- T6mjDLturs1Rb5BoXfOWeF2rpi7qNIJ4Nf4+QDHoCOrpKujjLjA2eFOfsJenllwWcALh
- 1gu4OAD+BibxUPyLFR5IHyymwGnIYHkRSUjnziE9ic1AbGi/Lq/q9BLFyrULhRuyO1d4
- ocYjRAg7WI2KaKQnoy0VDm7iHgp/nWjUNJLuBWOjPQO5GlOkwSAj79gq3y9rGyma34Tq
- CsYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:message-id:in-reply-to
- :references:subject:mime-version:content-transfer-encoding;
- bh=ffJlmLjI1LxmQKvS2WnW7bcoolnwblQDAh0y1MpPzfA=;
- b=H30VDR7oSNjjLEsOVy1wiNu7WNqYixktSPInn3iQFO1iIA+gDyzYgg3KDH/VRoXKM4
- 24FgcsFw5cFI61tLZdXoMLQLhVpnd7olHLnKBAIzL6kUiszV7vnIvpTwioH97CtumYEB
- c0UlVjnktQl96KRAQKWWzhLAhS4RLDuaQzyhX7r10Q/Tph2m3XTheUQEsesyCIrpA2Rz
- CMG4nAE1Ux6SBSiYogIgK0wfIXMbjywsAhMThozuCPKW21UT4IsQeM+OZQeGBn1Dh3E0
- qE4gm/JvdHwXBIZxO4+c+KPEsZusUnNz4Nps+oSqvWhs+HeLBu9k/mX139yZ1oOPA6Jg
- gdyg==
-X-Gm-Message-State: AOAM531vzMK763QVn5k3NgUpip15/kdQ2GhnvFlKzfcLCwXY6AWmwg8e
- DeNZboOzntpXwi4jhjeYRdM=
-X-Google-Smtp-Source: ABdhPJyMMb0vc7gpgYWoRFFDPQ7mMhV5sYo98bKd0BJL7Hd/IXx7fTrkqclB06EXCy3S/p6RFzySKQ==
-X-Received: by 2002:a05:6830:1015:: with SMTP id
- a21mr12378595otp.143.1604956268705; 
- Mon, 09 Nov 2020 13:11:08 -0800 (PST)
-Received: from localhost ([184.63.162.180])
- by smtp.gmail.com with ESMTPSA id 33sm2767395otr.25.2020.11.09.13.11.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Nov 2020 13:11:08 -0800 (PST)
-Date: Mon, 09 Nov 2020 13:10:59 -0800
-From: John Fastabend <john.fastabend@gmail.com>
-To: Magnus Karlsson <magnus.karlsson@gmail.com>, magnus.karlsson@intel.com, 
- bjorn.topel@intel.com, ast@kernel.org, daniel@iogearbox.net, 
- netdev@vger.kernel.org, jonathan.lemon@gmail.com
-Message-ID: <5fa9b06383a48_8c0e2087e@john-XPS-13-9370.notmuch>
-In-Reply-To: <1604498942-24274-7-git-send-email-magnus.karlsson@gmail.com>
-References: <1604498942-24274-1-git-send-email-magnus.karlsson@gmail.com>
- <1604498942-24274-7-git-send-email-magnus.karlsson@gmail.com>
-Mime-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/6] i40e: use batched xsk Tx
- interfaces to increase performance
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8792B868E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1604970836;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
+ b=DRjXCHfaWTV+37wSriT1BjBgrVPE6jdQ5QSgYOIapfxJkFIwaFOAyxB9axkmnF7jwFoYyj
+ IwVALzvZ0PuA7RxNph9leDCS6B9rTa4rL3nKcIBy/Am24PTMh01e/A2SQWp6LTkOQfBaj6
+ TPNYDFf29DCqNiv3sgD8nE6enYeIlsYkCGyKDzwB1FGN01/Y3vKoJQtpchwkYWrvNb9W70
+ 4PCnBA8S0oYM/XwkwwZotKzR9vmT9oC6FdGvh5lMI1bLUaS0qdB+ZPTGprUeJSBjnvH0Xv
+ xyRk7zOTS6b0OUuDBNt+X1xYcMB1KSB7gGowiPoSA5hPR5omsqQ5g20Kt4+uKg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1604970836;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
+ b=acv/dHWHYYmtT1/z0brDNSAmBtlvEk8c07ItXmS/RUDap25yEm8biO9jTMWItRsTlNRTeF
+ x/KI3sqvslL8SkDg==
+To: ira.weiny@intel.com, Andrew Morton <akpm@linux-foundation.org>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Andy Lutomirski <luto@kernel.org>, Peter Zijlstra <peterz@infradead.org>
+In-Reply-To: <20201009195033.3208459-6-ira.weiny@intel.com>
+References: <20201009195033.3208459-1-ira.weiny@intel.com>
+ <20201009195033.3208459-6-ira.weiny@intel.com>
+Date: Tue, 10 Nov 2020 02:13:56 +0100
+Message-ID: <87h7pyhv3f.fsf@nanos.tec.linutronix.de>
+MIME-Version: 1.0
+X-Mailman-Approved-At: Tue, 10 Nov 2020 01:15:38 +0000
+Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 05/58] kmap: Introduce
+ k[un]map_thread
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,43 +75,107 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciejromanfijalkowski@gmail.com, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-mmc@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, target-devel@vger.kernel.org,
+ linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
+ samba-technical@lists.samba.org, Ira Weiny <ira.weiny@intel.com>,
+ ceph-devel@vger.kernel.org, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
+ cluster-devel@redhat.com, linux-cachefs@redhat.com,
+ intel-wired-lan@lists.osuosl.org, xen-devel@lists.xenproject.org,
+ linux-ext4@vger.kernel.org, Fenghua Yu <fenghua.yu@intel.com>,
+ linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
+ reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-bcache@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
+ io-uring@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
+ Randy Dunlap <rdunlap@infradead.org>, kexec@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Magnus Karlsson wrote:
-> From: Magnus Karlsson <magnus.karlsson@intel.com>
-> 
-> Use the new batched xsk interfaces for the Tx path in the i40e driver
-> to improve performance. On my machine, this yields a throughput
-> increase of 4% for the l2fwd sample app in xdpsock. If we instead just
-> look at the Tx part, this patch set increases throughput with above
-> 20% for Tx.
-> 
-> Note that I had to explicitly loop unroll the inner loop to get to
-> this performance level, by using a pragma. It is honored by both clang
-> and gcc and should be ignored by versions that do not support
-> it. Using the -funroll-loops compiler command line switch on the
-> source file resulted in a loop unrolling on a higher level that
-> lead to a performance decrease instead of an increase.
-> 
-> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c |   2 +-
->  drivers/net/ethernet/intel/i40e/i40e_main.c    |   4 +-
->  drivers/net/ethernet/intel/i40e/i40e_txrx.c    |  14 ++-
->  drivers/net/ethernet/intel/i40e/i40e_txrx.h    |   3 +-
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c     | 127 ++++++++++++++++++-------
->  5 files changed, 110 insertions(+), 40 deletions(-)
-> 
+Ira,
 
-LGTM, although I mostly just reviewed the API usage. Maciej's seems like
-a nice cleanup.
+On Fri, Oct 09 2020 at 12:49, ira weiny wrote:
+> From: Ira Weiny <ira.weiny@intel.com>
+>
+> To correctly support the semantics of kmap() with Kernel protection keys
+> (PKS), kmap() may be required to set the protections on multiple
+> processors (globally).  Enabling PKS globally can be very expensive
+> depending on the requested operation.  Furthermore, enabling a domain
+> globally reduces the protection afforded by PKS.
+>
+> Most kmap() (Aprox 209 of 229) callers use the map within a single thread and
+> have no need for the protection domain to be enabled globally.  However, the
+> remaining callers do not follow this pattern and, as best I can tell, expect
+> the mapping to be 'global' and available to any thread who may access the
+> mapping.[1]
+>
+> We don't anticipate global mappings to pmem, however in general there is a
+> danger in changing the semantics of kmap().  Effectively, this would cause an
+> unresolved page fault with little to no information about why the failure
+> occurred.
+>
+> To resolve this a number of options were considered.
+>
+> 1) Attempt to change all the thread local kmap() calls to kmap_atomic()[2]
+> 2) Introduce a flags parameter to kmap() to indicate if the mapping should be
+>    global or not
+> 3) Change ~20 call sites to 'kmap_global()' to indicate that they require a
+>    global enablement of the pages.
+> 4) Change ~209 call sites to 'kmap_thread()' to indicate that the mapping is to
+>    be used within that thread of execution only
+>
+> Option 1 is simply not feasible.  Option 2 would require all of the call sites
+> of kmap() to change.  Option 3 seems like a good minimal change but there is a
+> danger that new code may miss the semantic change of kmap() and not get the
+> behavior the developer intended.  Therefore, #4 was chosen.
 
-Acked-by: John Fastabend <john.fastabend@gmail.com>
+There is Option #5:
+
+Convert the thread local kmap() invocations to the proposed kmap_local()
+interface which is coming along [1].
+
+That solves a couple of issues:
+
+ 1) It relieves the current kmap_atomic() usage sites from the implict
+    pagefault/preempt disable semantics which apply even when
+    CONFIG_HIGHMEM is disabled. kmap_local() still can be invoked from
+    atomic context.
+
+ 2) Due to #1 it allows to replace the conditional usage of kmap() and
+    kmap_atomic() for purely thread local mappings.
+
+ 3) It puts the burden on the HIGHMEM inflicted systems
+
+ 4) It is actually more efficient for most of the pure thread local use
+    cases on HIGHMEM inflicted systems because it avoids the overhead of
+    the global lock and the potential kmap slot exhaustion. A potential
+    preemption will be more expensive, but that's not really the case we
+    want to optimize for.
+
+ 5) It solves the RT issue vs. kmap_atomic()
+
+So instead of creating yet another variety of kmap() which is just
+scratching the particular PKRS itch, can we please consolidate all of
+that on the wider reaching kmap_local() approach?
+
+Thanks,
+
+        tglx
+     
+[1] https://lore.kernel.org/lkml/20201103092712.714480842@linutronix.de/
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
