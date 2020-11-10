@@ -1,68 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E09112ACA40
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 02:15:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 061002ACF6D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 07:10:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7EAFE203D8;
-	Tue, 10 Nov 2020 01:15:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B13F786610;
+	Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gS3vO1yzSsOA; Tue, 10 Nov 2020 01:15:42 +0000 (UTC)
+	with ESMTP id KP0q9GQlkQxF; Tue, 10 Nov 2020 06:10:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 88D972011A;
-	Tue, 10 Nov 2020 01:15:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C964A86451;
+	Tue, 10 Nov 2020 06:10:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F1FE71BF3E9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93C5C1BF307
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E57D9868EF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8CC5486256
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s1LoKfxNCL0W for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
+ with ESMTP id H1OBV89999pF for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Nov 2020 06:10:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8792B868E4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 01:14:00 +0000 (UTC)
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1604970836;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
- b=DRjXCHfaWTV+37wSriT1BjBgrVPE6jdQ5QSgYOIapfxJkFIwaFOAyxB9axkmnF7jwFoYyj
- IwVALzvZ0PuA7RxNph9leDCS6B9rTa4rL3nKcIBy/Am24PTMh01e/A2SQWp6LTkOQfBaj6
- TPNYDFf29DCqNiv3sgD8nE6enYeIlsYkCGyKDzwB1FGN01/Y3vKoJQtpchwkYWrvNb9W70
- 4PCnBA8S0oYM/XwkwwZotKzR9vmT9oC6FdGvh5lMI1bLUaS0qdB+ZPTGprUeJSBjnvH0Xv
- xyRk7zOTS6b0OUuDBNt+X1xYcMB1KSB7gGowiPoSA5hPR5omsqQ5g20Kt4+uKg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1604970836;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=UkwosGD4CNwpr5O4mn7FToWEjHCGounmVIqa5vjwzhQ=;
- b=acv/dHWHYYmtT1/z0brDNSAmBtlvEk8c07ItXmS/RUDap25yEm8biO9jTMWItRsTlNRTeF
- x/KI3sqvslL8SkDg==
-To: ira.weiny@intel.com, Andrew Morton <akpm@linux-foundation.org>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>, Peter Zijlstra <peterz@infradead.org>
-In-Reply-To: <20201009195033.3208459-6-ira.weiny@intel.com>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-6-ira.weiny@intel.com>
-Date: Tue, 10 Nov 2020 02:13:56 +0100
-Message-ID: <87h7pyhv3f.fsf@nanos.tec.linutronix.de>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DA74860FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 06:10:31 +0000 (UTC)
+IronPort-SDR: FX9c99rJ+IWPILG3iO1FwBYCGeubVc+fVfS3zyA43bNXsFVcxP7H8ZLl8xvz5PTXDP1nqD7JLP
+ HeIzRF1WbofQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9800"; a="170035026"
+X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="170035026"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Nov 2020 22:10:29 -0800
+IronPort-SDR: teItR5/P0xCamLBtQwgKh6GvVvAS7WDiHEp7hq3MQAnhc2J1V+ci8XadyScA795iMiolu99EqE
+ 684PKBYzdJTw==
+X-IronPort-AV: E=Sophos;i="5.77,465,1596524400"; d="scan'208";a="365752844"
+Received: from eevans-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.212.97.1])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Nov 2020 22:10:28 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  9 Nov 2020 22:10:16 -0800
+Message-Id: <20201110061019.519589-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 10 Nov 2020 01:15:38 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 05/58] kmap: Introduce
- k[un]map_thread
+Subject: [Intel-wired-lan] [PATCH next-queue v2 0/3] igc: Add support for
+ PCIe PTM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,106 +67,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-mmc@vger.kernel.org,
- Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
- linux-mm@kvack.org, target-devel@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
- samba-technical@lists.samba.org, Ira Weiny <ira.weiny@intel.com>,
- ceph-devel@vger.kernel.org, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
- cluster-devel@redhat.com, linux-cachefs@redhat.com,
- intel-wired-lan@lists.osuosl.org, xen-devel@lists.xenproject.org,
- linux-ext4@vger.kernel.org, Fenghua Yu <fenghua.yu@intel.com>,
- linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-bcache@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
- io-uring@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
- Randy Dunlap <rdunlap@infradead.org>, kexec@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: andre.guedes@intel.com, linux-pci@vger.kernel.org, netdev@vger.kernel.org,
+ bhelgaas@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ira,
+Hi,
 
-On Fri, Oct 09 2020 at 12:49, ira weiny wrote:
-> From: Ira Weiny <ira.weiny@intel.com>
->
-> To correctly support the semantics of kmap() with Kernel protection keys
-> (PKS), kmap() may be required to set the protections on multiple
-> processors (globally).  Enabling PKS globally can be very expensive
-> depending on the requested operation.  Furthermore, enabling a domain
-> globally reduces the protection afforded by PKS.
->
-> Most kmap() (Aprox 209 of 229) callers use the map within a single thread and
-> have no need for the protection domain to be enabled globally.  However, the
-> remaining callers do not follow this pattern and, as best I can tell, expect
-> the mapping to be 'global' and available to any thread who may access the
-> mapping.[1]
->
-> We don't anticipate global mappings to pmem, however in general there is a
-> danger in changing the semantics of kmap().  Effectively, this would cause an
-> unresolved page fault with little to no information about why the failure
-> occurred.
->
-> To resolve this a number of options were considered.
->
-> 1) Attempt to change all the thread local kmap() calls to kmap_atomic()[2]
-> 2) Introduce a flags parameter to kmap() to indicate if the mapping should be
->    global or not
-> 3) Change ~20 call sites to 'kmap_global()' to indicate that they require a
->    global enablement of the pages.
-> 4) Change ~209 call sites to 'kmap_thread()' to indicate that the mapping is to
->    be used within that thread of execution only
->
-> Option 1 is simply not feasible.  Option 2 would require all of the call sites
-> of kmap() to change.  Option 3 seems like a good minimal change but there is a
-> danger that new code may miss the semantic change of kmap() and not get the
-> behavior the developer intended.  Therefore, #4 was chosen.
+Changes from v1:
+  - This now should cross compile better, convert_art_ns_to_tsc() will
+    only be used if CONFIG_X86_TSC is enabled;
+  - PCIe PTM errors reported by the NIC are logged and PTM cycles are
+    restarted in case an error is detected;
 
-There is Option #5:
+Original cover letter:
 
-Convert the thread local kmap() invocations to the proposed kmap_local()
-interface which is coming along [1].
+This adds support for PCIe PTM (Precision Time Measurement) to the igc
+driver. PCIe PTM allows the NIC and Host clocks to be compared more
+precisely, improving the clock synchronization accuracy.
 
-That solves a couple of issues:
+Patch 1/3 reverts a commit that made pci_enable_ptm() private to the
+PCI subsystem, reverting makes it possible for it to be called from
+the drivers.
 
- 1) It relieves the current kmap_atomic() usage sites from the implict
-    pagefault/preempt disable semantics which apply even when
-    CONFIG_HIGHMEM is disabled. kmap_local() still can be invoked from
-    atomic context.
+Patch 2/3 calls pci_enable_ptm() from the igc driver.
 
- 2) Due to #1 it allows to replace the conditional usage of kmap() and
-    kmap_atomic() for purely thread local mappings.
+Patch 3/3 implements the PCIe PTM support. It adds a workqueue that
+reads the PTM registers periodically and collects the information so a
+subsequent call to getcrosststamp() has all the timestamps needed.
 
- 3) It puts the burden on the HIGHMEM inflicted systems
+Some questions are raised (also pointed out in the commit message):
 
- 4) It is actually more efficient for most of the pure thread local use
-    cases on HIGHMEM inflicted systems because it avoids the overhead of
-    the global lock and the potential kmap slot exhaustion. A potential
-    preemption will be more expensive, but that's not really the case we
-    want to optimize for.
+1. Using convert_art_ns_to_tsc() is too x86 specific, there should be
+   a common way to create a 'system_counterval_t' from a timestamp.
 
- 5) It solves the RT issue vs. kmap_atomic()
+2. convert_art_ns_to_tsc() says that it should only be used when
+   X86_FEATURE_TSC_KNOWN_FREQ is true, but during tests it works even
+   when it returns false. Should that check be done?
 
-So instead of creating yet another variety of kmap() which is just
-scratching the particular PKRS itch, can we please consolidate all of
-that on the wider reaching kmap_local() approach?
+Cheers,
 
-Thanks,
 
-        tglx
-     
-[1] https://lore.kernel.org/lkml/20201103092712.714480842@linutronix.de/
+Vinicius Costa Gomes (3):
+  Revert "PCI: Make pci_enable_ptm() private"
+  igc: Enable PCIe PTM
+  igc: Add support for PTP getcrosststamp()
+
+ drivers/net/ethernet/intel/igc/igc.h         |   7 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  27 +++
+ drivers/net/ethernet/intel/igc/igc_main.c    |   7 +
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 209 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  23 ++
+ drivers/pci/pci.h                            |   3 -
+ include/linux/pci.h                          |   7 +
+ 7 files changed, 280 insertions(+), 3 deletions(-)
+
+-- 
+2.29.0
 
 _______________________________________________
 Intel-wired-lan mailing list
