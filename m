@@ -1,68 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 837582AD9B5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 16:08:12 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 462AD2ADDCB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 19:07:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 080F9873F7;
-	Tue, 10 Nov 2020 15:08:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C417822C51;
+	Tue, 10 Nov 2020 18:07:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SUcRVQjLjCLH; Tue, 10 Nov 2020 15:08:08 +0000 (UTC)
+	with ESMTP id krHx4dM1B+sK; Tue, 10 Nov 2020 18:07:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08B038745D;
-	Tue, 10 Nov 2020 15:08:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B9D6222CCE;
+	Tue, 10 Nov 2020 18:07:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 638931BF28E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 08:48:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4E7BF1BF57C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 18:07:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5184D2001E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 08:48:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 40EF822C51
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 18:07:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CU8kxMQMTzy0 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Nov 2020 08:48:34 +0000 (UTC)
+ with ESMTP id AhH+phDy7Ig1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Nov 2020 18:07:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by silver.osuosl.org (Postfix) with ESMTPS id 56EDB20494
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 08:48:34 +0000 (UTC)
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1604998111;
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 983CC20104
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 18:07:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605031646;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=+lFM+Dy1hrzRRrrrA3qnbGkxEtyVqIh0g4peYrriLeU=;
- b=iuo8f+7vFglLggVRQElkiZ2WEkqCMbTG8xoMGtVyBk3DBfZOlzK9bn4iYE9n5TJlXEeyiw
- mK2AsUoeE727uJ+eyVgbEeyt2qz1CsngbkfMTC30zg6BSGbxrFxVJV/nTlcmtj9NHSMsJn
- sU38ljGJ30NJ8ooIZ53QTax6dO6NfnLLpRxklxBphTMVejdacYZZqkmCK8e4gkxhfN2Hq9
- zuGNw+h8VUH3NFZO14JlYgbkNPH833xVYFQ2lmqEAC35a4/baTqfi6uG7ey36+HQyygrEi
- Jy4I41umlX4stejJrRBLu7awPrfWhbLcelHNMzqQQSqRZrKTpO34TDntXU+02A==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1604998111;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=+lFM+Dy1hrzRRrrrA3qnbGkxEtyVqIh0g4peYrriLeU=;
- b=y7osrUd/437dzM5/Hc5G9cQ/HuZ2jh7vgX8EDHSswmJuPLkHyLG6iEX8rrCl2sg3XohELe
- 1aQhUu8PTNjq+DAw==
-To: Ira Weiny <ira.weiny@intel.com>
-In-Reply-To: <20201110045954.GL3976735@iweiny-DESK2.sc.intel.com>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-6-ira.weiny@intel.com>
- <87h7pyhv3f.fsf@nanos.tec.linutronix.de>
- <20201110045954.GL3976735@iweiny-DESK2.sc.intel.com>
-Date: Tue, 10 Nov 2020 09:48:31 +0100
-Message-ID: <87eel1iom8.fsf@nanos.tec.linutronix.de>
+ bh=DhGEWOUCw6Y5w7w85ABenFAQ6PkZ6O0n2/ot5sVRJt4=;
+ b=QAKaE8eLiOjiJPeFyIPGisaCpvSfgnvUBWk2e70hgvA2E/arOr0yUo+pbFH+xD+Q0w7HXj
+ jT4dcy0AMF8ObsiehMTDK44i34a1CrAwW7///FthAhS5LbdgNIHTxWpHJu/HhiRXdI/JhK
+ fjskjNTQfjU7sG7prxXwHFLNudOMHp8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-427-IyGqkGDQN26k-Y3d0MYp8w-1; Tue, 10 Nov 2020 13:07:24 -0500
+X-MC-Unique: IyGqkGDQN26k-Y3d0MYp8w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD5051074654;
+ Tue, 10 Nov 2020 18:07:22 +0000 (UTC)
+Received: from localhost (holly.tpb.lab.eng.brq.redhat.com [10.43.134.11])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5F1B55D9D2;
+ Tue, 10 Nov 2020 18:07:21 +0000 (UTC)
+Date: Tue, 10 Nov 2020 19:07:19 +0100
+From: Miroslav Lichvar <mlichvar@redhat.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Message-ID: <20201110180719.GA1559650@localhost>
+References: <20201110061019.519589-1-vinicius.gomes@intel.com>
+ <20201110061019.519589-4-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 10 Nov 2020 15:08:06 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 05/58] kmap: Introduce
- k[un]map_thread
+Content-Disposition: inline
+In-Reply-To: <20201110061019.519589-4-vinicius.gomes@intel.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
+ for PTP getcrosststamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,54 +78,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, samba-technical@lists.samba.org,
- ceph-devel@vger.kernel.org, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, io-uring@vger.kernel.org,
- cluster-devel@redhat.com, Ingo Molnar <mingo@redhat.com>,
- intel-wired-lan@lists.osuosl.org, xen-devel@lists.xenproject.org,
- linux-ext4@vger.kernel.org, Fenghua Yu <fenghua.yu@intel.com>,
- linux-afs@lists.infradead.org, linux-um@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
- netdev@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>,
- kexec@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
- bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-btrfs@vger.kernel.org
+Cc: bhelgaas@google.com, linux-pci@vger.kernel.org, andre.guedes@intel.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 09 2020 at 20:59, Ira Weiny wrote:
-> On Tue, Nov 10, 2020 at 02:13:56AM +0100, Thomas Gleixner wrote:
-> Also, we can convert the new memcpy_*_page() calls to kmap_local() as well.
-> [For now my patch just uses kmap_atomic().]
->
-> I've not looked at all of the patches in your latest version.  Have you
-> included converting any of the kmap() call sites?  I thought you were more
-> focused on converting the kmap_atomic() to kmap_local()?
+On Mon, Nov 09, 2020 at 10:10:19PM -0800, Vinicius Costa Gomes wrote:
+> i225 has support for PCIe PTM, which allows us to implement support
+> for the PTP_SYS_OFFSET_PRECISE ioctl(), implemented in the driver via
+> the getcrosststamp() function.
 
-I did not touch any of those yet, but it's a logical consequence to
-convert all kmap() instances which are _not_ creating a global mapping
-over to it.
+Would it be possible to provide the PTM measurements with the
+PTP_SYS_OFFSET_EXTENDED ioctl instead of PTP_SYS_OFFSET_PRECISE?
 
-Thanks,
+As I understand it, PTM is not cross timestamping. It's basically
+NTP over PCIe, which provides four timestamps with each "dialog". From
+the other constants added to the header file it looks like they could
+all be obtained and then they could be converted to the triplets
+returned by the EXTENDED ioctl.
 
-        tglx
+The main advantage would be that it would provide applications with
+the round trip time, which is important to estimate the maximum error
+in the measurement. As your example phc2sys output shows, with the
+PRECISE ioctl the delay is 0, which is misleading here.
+
+I suspect the estimate would be valid only when the NIC is connected
+directly to the PTM root (PCI root complex). Is it possible to get the
+timestamps or delay from PTM-capable switches on the path between CPU
+and NIC? Also, how frequent can be the PTM dialogs? Could they be
+performed synchronously in the ioctl?
+
+-- 
+Miroslav Lichvar
 
 _______________________________________________
 Intel-wired-lan mailing list
