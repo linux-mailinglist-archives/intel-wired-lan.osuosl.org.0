@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5E652AE861
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 06:48:43 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E43BE2AE863
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 06:49:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 85368864D0;
-	Wed, 11 Nov 2020 05:48:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5B20C276D4;
+	Wed, 11 Nov 2020 05:49:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aRmfGcSj-ugp; Wed, 11 Nov 2020 05:48:42 +0000 (UTC)
+	with ESMTP id TAZXlZjE5jG4; Wed, 11 Nov 2020 05:49:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6266D863E0;
-	Wed, 11 Nov 2020 05:48:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3A13D273E3;
+	Wed, 11 Nov 2020 05:49:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 997591BF863
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7FCB61BF863
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:49:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 942DE8747F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7B89286362
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:49:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jmYxRijrOLjf for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
+ with ESMTP id Qne_WTiLZEol for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Nov 2020 05:49:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 019568747A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:38 +0000 (UTC)
-IronPort-SDR: Ftu+MS54Ihz78TZ36lbWwIAxec83xX/OqLiGavpPaltkRJO4EKkSBbhNlcRxPrBOypPZsgKtQ4
- sq5ox2niSYIw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="149947752"
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="149947752"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AB918862FC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:49:10 +0000 (UTC)
+IronPort-SDR: gcowrlJ7bW2X1zZfvp0kcRGPz8oR67sBWhGXdmlX+zpM1oL9kje85Gk808bp7xZYUyMifpguF/
+ nVZimjx8umww==
+X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="157107017"
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="157107017"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 21:48:37 -0800
-IronPort-SDR: GQAn2AxdTbUNCmGj5XIbdbjeNUiJ+V1YnGDXRmBndF6GCSgxDLp4gIKWrZXO9h2G5Bw3LUXsoP
- FNlzG0sMSO0A==
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="308336271"
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2020 21:49:08 -0800
+IronPort-SDR: OWzgtDSwc83Sx2x0TyK831KhNCjvBKLd8K/TSF5eg6lkvgJRfiFlD5SJWGjJ+XrmkWdCxdOF34
+ d1cJFueasE+g==
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="308336366"
 Received: from chenyu-office.sh.intel.com ([10.239.158.173])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 21:48:34 -0800
+ 10 Nov 2020 21:49:05 -0800
 From: Chen Yu <yu.c.chen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 11 Nov 2020 13:51:00 +0800
-Message-Id: <7e68b2f6a9b0a6e03f6eeba8433bc532a3256830.1605073208.git.yu.c.chen@intel.com>
+Date: Wed, 11 Nov 2020 13:51:33 +0800
+Message-Id: <a0ed34e3486583770c6d0ee043a3ba9d7b08f504.1605073208.git.yu.c.chen@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1605073208.git.yu.c.chen@intel.com>
 References: <cover.1605073208.git.yu.c.chen@intel.com>
-Subject: [Intel-wired-lan] [PATCH 1/4][RFC] e1000e: save the return value of
- e1000e_reset()
+Subject: [Intel-wired-lan] [PATCH 2/4][RFC] PM: sleep: export
+ device_pm_remove() for driver use
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,65 +76,106 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Sometimes e1000e_reset() might fail during reume from S3 due to
-hardware/firmware issues. Actually the return value from e1000e_reset()
-can be used by the caller to verify if the NIC succeed to initialize or
-not.
-
-Introduce a static function _e1000e_reset() which is derived
-from e1000e_reset(), except that the former returns the result
-of this reset.
-
-No functional change expected.
+Export device_pm_remove() and move the declaration of device_pm_remove()
+into generic power header file so that the drivers could use this interface
+to disable power management on that device.
 
 Signed-off-by: Chen Yu <yu.c.chen@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/base/power/main.c  |  1 +
+ drivers/base/power/power.h |  8 --------
+ include/linux/pm.h         | 12 ++++++++++++
+ 3 files changed, 13 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index b30f00891c03..f7c08426c0d7 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -3998,7 +3998,7 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
-  * set/changed during runtime. After reset the device needs to be
-  * properly configured for Rx, Tx etc.
-  */
--void e1000e_reset(struct e1000_adapter *adapter)
-+static int _e1000e_reset(struct e1000_adapter *adapter)
- {
- 	struct e1000_mac_info *mac = &adapter->hw.mac;
- 	struct e1000_fc_info *fc = &adapter->hw.fc;
-@@ -4191,14 +4191,14 @@ void e1000e_reset(struct e1000_adapter *adapter)
- 		default:
- 			dev_err(&adapter->pdev->dev,
- 				"Invalid PHY type setting EEE advertisement\n");
--			return;
-+			return -EINVAL;
- 		}
- 
- 		ret_val = hw->phy.ops.acquire(hw);
- 		if (ret_val) {
- 			dev_err(&adapter->pdev->dev,
- 				"EEE advertisement - unable to acquire PHY\n");
--			return;
-+			return -EBUSY;
- 		}
- 
- 		e1000_write_emi_reg_locked(hw, adv_addr,
-@@ -4239,6 +4239,12 @@ void e1000e_reset(struct e1000_adapter *adapter)
- 		ew32(FEXTNVM9, reg);
- 	}
- 
-+	return 0;
-+}
-+
-+void e1000e_reset(struct e1000_adapter *adapter)
-+{
-+	_e1000e_reset(adapter);
+diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+index c7ac49042cee..4693da9d7d80 100644
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -164,6 +164,7 @@ void device_pm_remove(struct device *dev)
+ 	pm_runtime_remove(dev);
+ 	device_pm_check_callbacks(dev);
  }
++EXPORT_SYMBOL_GPL(device_pm_remove);
  
  /**
+  * device_pm_move_before - Move device in the PM core's list of active devices.
+diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
+index 54292cdd7808..8c2e45f3e5a9 100644
+--- a/drivers/base/power/power.h
++++ b/drivers/base/power/power.h
+@@ -20,7 +20,6 @@ static inline void pm_runtime_early_init(struct device *dev)
+ 
+ extern void pm_runtime_init(struct device *dev);
+ extern void pm_runtime_reinit(struct device *dev);
+-extern void pm_runtime_remove(struct device *dev);
+ extern u64 pm_runtime_active_time(struct device *dev);
+ 
+ #define WAKE_IRQ_DEDICATED_ALLOCATED	BIT(0)
+@@ -85,7 +84,6 @@ static inline void pm_runtime_early_init(struct device *dev)
+ 
+ static inline void pm_runtime_init(struct device *dev) {}
+ static inline void pm_runtime_reinit(struct device *dev) {}
+-static inline void pm_runtime_remove(struct device *dev) {}
+ 
+ static inline int dpm_sysfs_add(struct device *dev) { return 0; }
+ static inline void dpm_sysfs_remove(struct device *dev) {}
+@@ -109,7 +107,6 @@ static inline struct device *to_device(struct list_head *entry)
+ 
+ extern void device_pm_sleep_init(struct device *dev);
+ extern void device_pm_add(struct device *);
+-extern void device_pm_remove(struct device *);
+ extern void device_pm_move_before(struct device *, struct device *);
+ extern void device_pm_move_after(struct device *, struct device *);
+ extern void device_pm_move_last(struct device *);
+@@ -133,11 +130,6 @@ static inline void device_pm_sleep_init(struct device *dev) {}
+ 
+ static inline void device_pm_add(struct device *dev) {}
+ 
+-static inline void device_pm_remove(struct device *dev)
+-{
+-	pm_runtime_remove(dev);
+-}
+-
+ static inline void device_pm_move_before(struct device *deva,
+ 					 struct device *devb) {}
+ static inline void device_pm_move_after(struct device *deva,
+diff --git a/include/linux/pm.h b/include/linux/pm.h
+index 47aca6bac1d6..f9ceca6ac7ff 100644
+--- a/include/linux/pm.h
++++ b/include/linux/pm.h
+@@ -701,6 +701,11 @@ struct dev_pm_domain {
+  * be able to use wakeup events to exit from runtime low-power states,
+  * or from system low-power states such as standby or suspend-to-RAM.
+  */
++#ifdef CONFIG_PM
++extern void pm_runtime_remove(struct device *dev);
++#else
++static inline void pm_runtime_remove(struct device *dev) {}
++#endif
+ 
+ #ifdef CONFIG_PM_SLEEP
+ extern void device_pm_lock(void);
+@@ -753,6 +758,8 @@ extern void pm_generic_complete(struct device *dev);
+ extern bool dev_pm_skip_resume(struct device *dev);
+ extern bool dev_pm_skip_suspend(struct device *dev);
+ 
++extern void device_pm_remove(struct device *dev);
++
+ #else /* !CONFIG_PM_SLEEP */
+ 
+ #define device_pm_lock() do {} while (0)
+@@ -774,6 +781,11 @@ static inline void dpm_for_each_dev(void *data, void (*fn)(struct device *, void
+ {
+ }
+ 
++static inline void device_pm_remove(struct device *dev)
++{
++	pm_runtime_remove(dev);
++}
++
+ #define pm_generic_prepare		NULL
+ #define pm_generic_suspend_late		NULL
+ #define pm_generic_suspend_noirq	NULL
 -- 
 2.17.1
 
