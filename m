@@ -1,62 +1,136 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 070FB2ADF0F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Nov 2020 20:06:19 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8473A2AE82B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 06:31:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 950A08633E;
-	Tue, 10 Nov 2020 19:06:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 376EF87441;
+	Wed, 11 Nov 2020 05:31:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7SwtmEYd-Mos; Tue, 10 Nov 2020 19:06:17 +0000 (UTC)
+	with ESMTP id vjSLi5PtPezT; Wed, 11 Nov 2020 05:31:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B0E93865D0;
-	Tue, 10 Nov 2020 19:06:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 66E0487101;
+	Wed, 11 Nov 2020 05:31:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 014431BF34F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 19:06:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 63E631BF863
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:31:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ED2B285CC7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 19:06:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5A9D087101
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6wx+JBIIWGWw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Nov 2020 19:06:14 +0000 (UTC)
+ with ESMTP id xigWl6yI4R1N for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Nov 2020 05:31:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3E2FA8633E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Nov 2020 19:06:14 +0000 (UTC)
-IronPort-SDR: wLpCeE7+qtgfXwxSAvy8TQnv6RLVOT1qr2k5mPPCHEzoxl9f3JugPruYAgVZjjNQaoAYypLlKZ
- poqLHDBs0twQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="170140713"
-X-IronPort-AV: E=Sophos;i="5.77,467,1596524400"; d="scan'208";a="170140713"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5D396870F8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:31:16 +0000 (UTC)
+IronPort-SDR: ha4Q6Rvs6ZAnGtOeKEDXYFjd4cNHGEgHv6r2ZWFETJA6ktFVXW2iEmq4Cd7UaZdXYToFDZFO43
+ zq9jNh13Ec7w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="231721819"
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="231721819"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 11:06:08 -0800
-IronPort-SDR: IaH+HE9t2G22HUKSwkQNrsAy3VYHjiHjXMp84LqTsXtIfg056+X2yVvSGJ8dXpBXHYsHzqFGD0
- qlf2DwRiH7Bg==
-X-IronPort-AV: E=Sophos;i="5.77,467,1596524400"; d="scan'208";a="338816639"
-Received: from eevans-mobl1.amr.corp.intel.com (HELO ellie) ([10.212.97.1])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 11:06:07 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Miroslav Lichvar <mlichvar@redhat.com>
-In-Reply-To: <20201110180719.GA1559650@localhost>
-References: <20201110061019.519589-1-vinicius.gomes@intel.com>
- <20201110061019.519589-4-vinicius.gomes@intel.com>
- <20201110180719.GA1559650@localhost>
-Date: Tue, 10 Nov 2020 11:06:07 -0800
-Message-ID: <871rh19gm8.fsf@intel.com>
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2020 21:31:15 -0800
+IronPort-SDR: b11KHysW+ON/LUL+CzrsRxR4I5omu6kU/ST1wfQSasQ7qUpDt6D9Eft8KxzGSw2bkulP9qzyEe
+ jkUFI8iWdiDQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="308333970"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by fmsmga008.fm.intel.com with ESMTP; 10 Nov 2020 21:31:15 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 10 Nov 2020 21:31:14 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Tue, 10 Nov 2020 21:31:14 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.175)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Tue, 10 Nov 2020 21:31:14 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QBTYZjd1vYcvi29BQbLDWHnsnJjizMpM19f/UkDxlKqkJ3272r8dh1B1MZbK3samQPElsC1AkYVQlP1Ls7TSIy0/dP2mDOD5Sisb8DL+YBaSwpIEFrLAix7I8ymDBV7kJPuSiR6VeOhTMbbeGdpiCUKRID9yWfWf8QDW18huSnX4yGTalWjeyqY2nBNXZ7WLsJDT8pepH00Wh/jFs+3V/EcdHfPJOR8jjBb2ZUV+g2b7XUh9sRgo9SX8liMIwmrMKwEHi5JD1DWPsJTEOV3h9kSMFwcQWlU5PDaZuKE/m2j0ctCFGl3r3pAr2EnvRyZCnAYPXPdmzw/MXLmcyYRRSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ge8/FP5g/ZNqBr8VgU0/POyqHkTG9zFqUppau0XxqDE=;
+ b=EZkm1cdwRf7m6QoUEH6SEpA4bvZAU+4BvXM/p6e2SFuFKgsjUFGGupAa8LFfXxn+cY8nzmLGD1F14EY9KHGVC2v1KMcBNFVKox/WVDXfPkGroxcK91gHJlooj57YBbU2RpYM1/CUklUxV7r63IyaDCUx4UBWGefHlL8kPCiuORb2fvCRYhr5dagojLfzHC0Bix341qE3kggNiw6AYSIAADaaytILRnRJlCjqk946pmYgqMJxdZVqdZNxdRMn3fGHeIJkLZhGII+HoqZs/Jt4j516+dspIFcccd7Zd/En3SJ4AUg/K+lKfnF20IFKv2BSTNsxT/PGeUO6tZc9gnSxQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ge8/FP5g/ZNqBr8VgU0/POyqHkTG9zFqUppau0XxqDE=;
+ b=ozBkFcZXslIxPKhZFMrd2kcMreHyhE7slaxqDHvgBv5dauPSo93CTmIaCIvmjQTMlfOHPxHObYnytWpOfN7BX8SdQ4k1Zns1OiQ+viQHI7uOqn7A8GhrEMD4k5zS/znUsqIqnklkQt5nGvxEFOOMgGWo/8AoInVgAI6JIEfdZM8=
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com (2603:10b6:303:5d::7)
+ by CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.21; Wed, 11 Nov
+ 2020 05:31:10 +0000
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::7dc3:6311:ac6:7393]) by MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::7dc3:6311:ac6:7393%7]) with mapi id 15.20.3541.025; Wed, 11 Nov 2020
+ 05:31:10 +0000
+From: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
+To: "sven.auhagen@voleatech.de" <sven.auhagen@voleatech.de>, "Nguyen, Anthony
+ L" <anthony.l.nguyen@intel.com>, "Fijalkowski, Maciej"
+ <maciej.fijalkowski@intel.com>, "kuba@kernel.org" <kuba@kernel.org>
+Thread-Topic: [PATCH net v3 3/6] igb: XDP extack message on error
+Thread-Index: AQHWpe67sqkMB/n9FUu8Pd4UYlHfkanCixYw
+Date: Wed, 11 Nov 2020 05:31:10 +0000
+Message-ID: <MW3PR11MB45546AAC75C837E4C487873A9CE80@MW3PR11MB4554.namprd11.prod.outlook.com>
+References: <20201019080553.24353-1-sven.auhagen@voleatech.de>
+ <20201019080553.24353-4-sven.auhagen@voleatech.de>
+In-Reply-To: <20201019080553.24353-4-sven.auhagen@voleatech.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+authentication-results: voleatech.de; dkim=none (message not signed)
+ header.d=none;voleatech.de; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [106.51.234.17]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bbf7bbd1-140a-4306-0fa6-08d88602ff53
+x-ms-traffictypediagnostic: CO1PR11MB4914:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CO1PR11MB4914F0CB32A45DCD2F4B7AF39CE80@CO1PR11MB4914.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3826;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: xxrub96v9kqsW0ueEc5qZYZTU0fHxz3xqDRnLclmFTWlhA8WtrmNFx8bFOncQnfjhzIQpFKyFCCKMfJe9xyZZLNxSwvaVLcPpBjiMW29fWuR46JigvsG4MmBfbRCBCUwjYNm0AxaEjKr0mOQU10MEqK/H70HLWAsk0JPmvmbatl6pChJdjnr17XEv2Nbwj8J+sb5meL/W7Xc4GxJMucGGhVUzKId9euSbFvy6OJ26w1DItsMX4ReLap65zeBvr9T+sCt5phPVJsx4TVltG0RcvMsZsL0BmWEz7RAxS6CtNEhv1PnLN1sW9dWmkfM+jo3pS25GPhdjH9ap1miU7uGwQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW3PR11MB4554.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(346002)(136003)(376002)(396003)(366004)(76116006)(110136005)(4744005)(86362001)(54906003)(316002)(64756008)(15650500001)(4326008)(66476007)(66556008)(66446008)(55016002)(9686003)(66946007)(5660300002)(52536014)(83380400001)(7696005)(33656002)(8936002)(53546011)(478600001)(71200400001)(8676002)(55236004)(6506007)(186003)(26005)(2906002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: UKf8E9TGFLLbOU6HBhWFdc9W7cVNYHWZ76TdjdQP7wZuOtQCffolA7sIBtxOGbO0/GwPoLLRTvQHNz3G9kqe5Wfj/RM4QKewPYzrCd0p24GGodf4FaeFMnjUmWd5GOPDWNbdKz9QYYqoiv06FdV3YAZAKK/BdIBXA4a81/6d6RXvTQYGUbKpB+gFKI2z++KLeZNcesyjuXelvYz+9Wc6yKOIfSB21iKjLtdJaDdi3hGWNCj+J7LhMit1ljjpw9rSuTn1l13InJoE4J/PPXsqOV/5W3v+R66geMonJvmiWSp9P+Fe8uoKgXk4MDeUp7v7O5RAEG4BHLtL4P/QVpFWumz+0wwaUs/d4RwjJIIjrhJ0z1iUuE5UcO5pDyShK8s7zME4SYXJfdSAmdkaoNwmkS2kXRVNkeCtUVC4TY8lR4AeGNorbwb2Ln9HpWXB4Now2FhN4uaEgb+SZphQbj1ImVQ74BiJL2EXaBxoou96RRxKJZKewWLOIXmBVDZky+A/629M1mB9Lss9WZacT3r1LrWVnPZH2vmV4O/1UAux0OUATZhYwMquXpbWb1qgzxKAl7U0nzFtWeTmhlQy4C31R4kVp0e88rT7U4fTTC2PCQNlW05/HtVvkU8xAmmDshUlTD6POs4G+kDE3hQpAApyVdqe4qegQSYYxPqjCDeGt+LCEagdVXDhnwk840BSi6UnQ1khnOFmW5bWutEhEoWiF3d7op19dKusuKxFpF3iCfmnNKpe+hbdh54IPoS6NZ32/x917yTbPTu1vZBh2SDXKUSQzWhHK0JOkKrQn62loAqDWPnOeIMZZLvzBpJUD4EFhAZDN8u/VfcCQXWPwnOCEA07g6WuSGpEAGM1FrWoP0EYEMKeEXgnydcODfOtCea/elsdELZgAKHWu8+4oT+Ucg==
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
- for PTP getcrosststamp()
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4554.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bbf7bbd1-140a-4306-0fa6-08d88602ff53
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Nov 2020 05:31:10.2166 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: xKEPz6+uRGTgAQtrsuELzOTeMMn3nInyRMM7nnWLXlGMsctzcQO7c4tP8+zLchqFdQaFD9kkzDsn4t9XPl6/Wq3FnDVWjpmKIAQBvgQ+b1U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4914
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net v3 3/6] igb: XDP extack message on
+ error
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,71 +143,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bhelgaas@google.com, linux-pci@vger.kernel.org, andre.guedes@intel.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Cc: "nhorman@redhat.com" <nhorman@redhat.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "brouer@redhat.com" <brouer@redhat.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "sassmann@redhat.com" <sassmann@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Miroslav Lichvar <mlichvar@redhat.com> writes:
+From: sven.auhagen@voleatech.de <sven.auhagen@voleatech.de> 
+Sent: Monday, October 19, 2020 1:36 PM
+To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Fijalkowski, Maciej <maciej.fijalkowski@intel.com>; kuba@kernel.org
+Cc: davem@davemloft.net; intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; nhorman@redhat.com; sassmann@redhat.com; Penigalapati, Sandeep <sandeep.penigalapati@intel.com>; brouer@redhat.com
+Subject: [PATCH net v3 3/6] igb: XDP extack message on error
 
-> On Mon, Nov 09, 2020 at 10:10:19PM -0800, Vinicius Costa Gomes wrote:
->> i225 has support for PCIe PTM, which allows us to implement support
->> for the PTP_SYS_OFFSET_PRECISE ioctl(), implemented in the driver via
->> the getcrosststamp() function.
->
-> Would it be possible to provide the PTM measurements with the
-> PTP_SYS_OFFSET_EXTENDED ioctl instead of PTP_SYS_OFFSET_PRECISE?
+From: Sven Auhagen <sven.auhagen@voleatech.de>
 
-That's a very interesting idea. I am liking it, need to play with it a
-bit, though.
+Add an extack error message when the RX buffer size is too small for the frame size.
 
-The only "annoying" part would be retrieving multiple samples, see
-below.
+Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
->
-> As I understand it, PTM is not cross timestamping. It's basically
-> NTP over PCIe, which provides four timestamps with each "dialog". From
-> the other constants added to the header file it looks like they could
-> all be obtained and then they could be converted to the triplets
-> returned by the EXTENDED ioctl.
->
-> The main advantage would be that it would provide applications with
-> the round trip time, which is important to estimate the maximum error
-> in the measurement. As your example phc2sys output shows, with the
-> PRECISE ioctl the delay is 0, which is misleading here.
-
-I see your point, in my head the delay being 0 made sense, I took it to
-mean that both timestamps were obtained at the same time.
-
->
-> I suspect the estimate would be valid only when the NIC is connected
-> directly to the PTM root (PCI root complex). Is it possible to get the
-> timestamps or delay from PTM-capable switches on the path between CPU
-> and NIC? Also, how frequent can be the PTM dialogs? Could they be
-> performed synchronously in the ioctl?
-
-Reading the PTM specs, it could work over PCIe switches (if they also
-support PTM).
-
-The NIC I have supports PTM cycles from every ~1ms to ~512ms, and from
-my tests it wants to be kept running "in background" always, i.e. set
-the cycles to run, and only report the data when necessary. Trying to
-only enable the cycles "on demand" was unreliable.
-
-(so for the _EXTENDED case, I would need to accumulate multiple values
-in the driver, and report them later, a bit annoying, but not
-impossible)
-
-So, no, on my experiments triggering the PTM dialogs and retrieving
-information from potentially multiple cycles synchronously with the
-ioctl don't seem like it would work.
-
-
-Cheers,
--- 
-Vinicius
+Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
