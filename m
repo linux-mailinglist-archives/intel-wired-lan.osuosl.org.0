@@ -2,57 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE1822AE85F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 06:48:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C5E652AE861
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 06:48:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5ABC786360;
-	Wed, 11 Nov 2020 05:48:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 85368864D0;
+	Wed, 11 Nov 2020 05:48:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ydEeoxqbA0-O; Wed, 11 Nov 2020 05:48:24 +0000 (UTC)
+	with ESMTP id aRmfGcSj-ugp; Wed, 11 Nov 2020 05:48:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 08E4186388;
-	Wed, 11 Nov 2020 05:48:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6266D863E0;
+	Wed, 11 Nov 2020 05:48:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BB9401BF863
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 997591BF863
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B4C1486091
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 942DE8747F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oPb5kecwTJCH for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Nov 2020 05:48:21 +0000 (UTC)
+ with ESMTP id jmYxRijrOLjf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Nov 2020 05:48:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7792285C77
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:20 +0000 (UTC)
-IronPort-SDR: x4LNrRLTIK6hAxNUzCwi1lUx6Z1NwPWCPfbjuSSZ2hQ/LzObl6t4JUKQK5NB9/7NdWmvlePYUf
- TfVPT0uI3RZg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="149373284"
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="149373284"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 019568747A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 05:48:38 +0000 (UTC)
+IronPort-SDR: Ftu+MS54Ihz78TZ36lbWwIAxec83xX/OqLiGavpPaltkRJO4EKkSBbhNlcRxPrBOypPZsgKtQ4
+ sq5ox2niSYIw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9801"; a="149947752"
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="149947752"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 21:48:18 -0800
-IronPort-SDR: WYNzA27gZPv6wwbg7/TmB4OGBuaHUE33HXyvhRsDUZF6NyfNrUG7ydyd/ETie3vk/Hrn1K59nO
- 401vsZUTTOgw==
-X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="541641535"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2020 21:48:37 -0800
+IronPort-SDR: GQAn2AxdTbUNCmGj5XIbdbjeNUiJ+V1YnGDXRmBndF6GCSgxDLp4gIKWrZXO9h2G5Bw3LUXsoP
+ FNlzG0sMSO0A==
+X-IronPort-AV: E=Sophos;i="5.77,468,1596524400"; d="scan'208";a="308336271"
 Received: from chenyu-office.sh.intel.com ([10.239.158.173])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2020 21:48:15 -0800
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2020 21:48:34 -0800
 From: Chen Yu <yu.c.chen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 11 Nov 2020 13:50:35 +0800
-Message-Id: <cover.1605073208.git.yu.c.chen@intel.com>
+Date: Wed, 11 Nov 2020 13:51:00 +0800
+Message-Id: <7e68b2f6a9b0a6e03f6eeba8433bc532a3256830.1605073208.git.yu.c.chen@intel.com>
 X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH 0/4][RFC] Disable e1000e power management
- if hardware error is detected
+In-Reply-To: <cover.1605073208.git.yu.c.chen@intel.com>
+References: <cover.1605073208.git.yu.c.chen@intel.com>
+Subject: [Intel-wired-lan] [PATCH 1/4][RFC] e1000e: save the return value of
+ e1000e_reset()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,55 +76,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a trial patchset that aims to cope with an intermittently
-triggered hardware error during system resume.
+Sometimes e1000e_reset() might fail during reume from S3 due to
+hardware/firmware issues. Actually the return value from e1000e_reset()
+can be used by the caller to verify if the NIC succeed to initialize or
+not.
 
-On some platforms the NIC's hardware error was detected during
-resume from S3, causing the NIC to not fully initialize
-and remain in unstable state afterwards. As a consequence
-the system fails to suspend due to incorrect NIC status.
+Introduce a static function _e1000e_reset() which is derived
+from e1000e_reset(), except that the former returns the result
+of this reset.
 
-In theory if the NIC could not be initialized after resumed,
-it should not do system/runtime suspend/resume afterwards.
-There are two proposals to deal with this situation:
+No functional change expected.
 
-Either:
-1. Each time before the NIC going to suspend, check the status
-   of NIC by querying corresponding registers, bypass the suspend
-   callback on this NIC if it's unstable.
+Signed-off-by: Chen Yu <yu.c.chen@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-Or:
-2. During NIC resume, if the hardware error was detected, removes
-   the NIC from power management list entirely.
-
-Proposal 2 was chosen in this patch set because:
-1. Proposal 1 requires that the driver queries the status
-   of the NIC in e1000e driver. However there seems to be
-   no specific registers for the e1000e to query the result
-   of NIC initialization.
-2. Proposal 1 just bypass the suspend process but the power management
-   framework is still aware of this NIC, which might bring potential issue
-   in race condition.
-3. Approach 2 is a clean solution and it is platform independent
-   that, not only e1000e, but also other drivers could leverage
-   this generic mechanism in the future.
-
-Comments appreciated.
-
-Chen Yu (4):
-  e1000e: save the return value of e1000e_reset()
-  PM: sleep: export device_pm_remove() for driver use
-  e1000e: Introduce workqueue to disable the power management
-  e1000e: Disable the power management if hardware error detected during
-    resume
-
- drivers/base/power/main.c                  |  1 +
- drivers/base/power/power.h                 |  8 -------
- drivers/net/ethernet/intel/e1000e/e1000.h  |  1 +
- drivers/net/ethernet/intel/e1000e/netdev.c | 27 ++++++++++++++++++----
- include/linux/pm.h                         | 12 ++++++++++
- 5 files changed, 37 insertions(+), 12 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index b30f00891c03..f7c08426c0d7 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3998,7 +3998,7 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
+  * set/changed during runtime. After reset the device needs to be
+  * properly configured for Rx, Tx etc.
+  */
+-void e1000e_reset(struct e1000_adapter *adapter)
++static int _e1000e_reset(struct e1000_adapter *adapter)
+ {
+ 	struct e1000_mac_info *mac = &adapter->hw.mac;
+ 	struct e1000_fc_info *fc = &adapter->hw.fc;
+@@ -4191,14 +4191,14 @@ void e1000e_reset(struct e1000_adapter *adapter)
+ 		default:
+ 			dev_err(&adapter->pdev->dev,
+ 				"Invalid PHY type setting EEE advertisement\n");
+-			return;
++			return -EINVAL;
+ 		}
+ 
+ 		ret_val = hw->phy.ops.acquire(hw);
+ 		if (ret_val) {
+ 			dev_err(&adapter->pdev->dev,
+ 				"EEE advertisement - unable to acquire PHY\n");
+-			return;
++			return -EBUSY;
+ 		}
+ 
+ 		e1000_write_emi_reg_locked(hw, adv_addr,
+@@ -4239,6 +4239,12 @@ void e1000e_reset(struct e1000_adapter *adapter)
+ 		ew32(FEXTNVM9, reg);
+ 	}
+ 
++	return 0;
++}
++
++void e1000e_reset(struct e1000_adapter *adapter)
++{
++	_e1000e_reset(adapter);
+ }
+ 
+ /**
 -- 
 2.17.1
 
