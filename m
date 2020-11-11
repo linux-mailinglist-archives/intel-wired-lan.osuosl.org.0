@@ -1,55 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DBD92AEED0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 11:35:56 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EE672AEFD0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Nov 2020 12:41:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C8269862FC;
-	Wed, 11 Nov 2020 10:35:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1390B2A163;
+	Wed, 11 Nov 2020 11:41:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QOFRPy12kvbc; Wed, 11 Nov 2020 10:35:54 +0000 (UTC)
+	with ESMTP id 1Nl-xIDm9NaR; Wed, 11 Nov 2020 11:41:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4E57386396;
-	Wed, 11 Nov 2020 10:35:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EBC1C2D3FC;
+	Wed, 11 Nov 2020 11:41:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BEADE1BF576
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 10:35:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 749B31BF338
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 11:41:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B34BF27E4C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 10:35:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6C6B52BC43
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 11:41:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lntIz3nQMEg4 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Nov 2020 10:35:49 +0000 (UTC)
+ with ESMTP id YmnGCe2vy46X for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Nov 2020 11:41:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by silver.osuosl.org (Postfix) with ESMTPS id AAFB9228EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 10:35:48 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5af465.dynamic.kabel-deutschland.de
- [95.90.244.101])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2F28120646224;
- Wed, 11 Nov 2020 11:35:45 +0100 (CET)
-To: Sven Auhagen <sven.auhagen@voleatech.de>
+Received: from EUR05-DB8-obe.outbound.protection.outlook.com
+ (mail-db8eur05on2123.outbound.protection.outlook.com [40.107.20.123])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7883F2A163
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Nov 2020 11:41:24 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AwU3iRW6vPXNLtQQtiHFg43RZ2vCzM9efIGQZ2Er+/lRV2OAg5FCVQM+vAVpxK4DCz+DxY9VyttHjhj1C8eX96eSiFVzQ0ipRHRxLQD13qDRnka/dmgfGmjBBTVfqYf5YTPJNMHktrmu4A+fpXZotZOERajea+pxnDNP8VBzifwIvbgR0eB+VnFL4fEx1lj8MMROsnc++kzQxEO1g9NaKnrSX2Qf6stI7e4tsnidW0wj0BEbdEbTXSxJDq6QaeEQdDrNz1WfZIu+aUIBWJTNatiTeAROS7M3fyEFMKgqL/DpJyfk5jO8FND5R8UtVMcqvtr0yKw0HDYJtI4PDBOQvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cUuLxvjNnwDeAo91C7TEahavFAxen0sIEuYpK4Frjfk=;
+ b=bv/c513NuKjVM2UchdiNWWniAzPY/oycoqPhrroqOEhxFzAmxWpR3oKp8bAB7/AEpBWH7UbpsTPgwPz8psu/vFHU5ZautIC1Lypa5GlPU543uMiBM16i235ti4BE6YjaAOv3PqJOqOmaHBFs6BtbnHb3XmHe5dmpFX/jYpIFrlpDXHMxtybr/7vxs9Efx1DJuSRogc+E9MyxqMyZ7OAHb+HrLq1qKvsVAoWexqyE0TO09KlyS6WqFe33abJeHBGnaSFGLD675eItX+4WucsVBhYWdVf4HG3VyTAqtNYtcH3Beweulsz6wvX2Qe5f5RkfpwnJuEjnxp9aKpuIaQPnqA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=voleatech.de; dmarc=pass action=none header.from=voleatech.de;
+ dkim=pass header.d=voleatech.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=voleatech.de;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cUuLxvjNnwDeAo91C7TEahavFAxen0sIEuYpK4Frjfk=;
+ b=XK8rK0S9yvoT1ZT1HRlYpyw0mFDp16reC/fAdj66/0TmcEW77dJ8nu7XMiEskRklqARnjN5rECn88KUHujQCNh1o8ZK5DXQesdi7LHyLDNL4mak3OBwiKTG7X+v6QC8oRaF2jA+iZhiZSL1jD9CGT8jR7LNtLwbv4JYsi74qYvI=
+Authentication-Results: molgen.mpg.de; dkim=none (message not signed)
+ header.d=none; molgen.mpg.de; dmarc=none action=none header.from=voleatech.de; 
+Received: from AM8PR05MB7251.eurprd05.prod.outlook.com (2603:10a6:20b:1d4::23)
+ by AM0PR05MB5186.eurprd05.prod.outlook.com (2603:10a6:208:f3::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.21; Wed, 11 Nov
+ 2020 10:10:52 +0000
+Received: from AM8PR05MB7251.eurprd05.prod.outlook.com
+ ([fe80::f132:2cc:34f2:5e4]) by AM8PR05MB7251.eurprd05.prod.outlook.com
+ ([fe80::f132:2cc:34f2:5e4%7]) with mapi id 15.20.3541.025; Wed, 11 Nov 2020
+ 10:10:52 +0000
+Date: Wed, 11 Nov 2020 11:10:50 +0100
+From: Sven Auhagen <sven.auhagen@voleatech.de>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <20201111101050.ffvl7cy34nkin27d@SvensMacBookAir.hq.voleatech.com>
 References: <20201019080553.24353-1-sven.auhagen@voleatech.de>
  <20201019080553.24353-4-sven.auhagen@voleatech.de>
  <fc1f6aad-b587-25e2-0632-ea43f1032aad@molgen.mpg.de>
- <20201111101050.ffvl7cy34nkin27d@SvensMacBookAir.hq.voleatech.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <f54c2612-0d42-0422-3b0c-ecfdadd31dce@molgen.mpg.de>
-Date: Wed, 11 Nov 2020 11:35:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.1
+Content-Disposition: inline
+In-Reply-To: <fc1f6aad-b587-25e2-0632-ea43f1032aad@molgen.mpg.de>
+X-Originating-IP: [37.24.174.41]
+X-ClientProxiedBy: AM4PR0501CA0066.eurprd05.prod.outlook.com
+ (2603:10a6:200:68::34) To AM8PR05MB7251.eurprd05.prod.outlook.com
+ (2603:10a6:20b:1d4::23)
 MIME-Version: 1.0
-In-Reply-To: <20201111101050.ffvl7cy34nkin27d@SvensMacBookAir.hq.voleatech.com>
-Content-Language: en-US
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from SvensMacBookAir.hq.voleatech.com (37.24.174.41) by
+ AM4PR0501CA0066.eurprd05.prod.outlook.com (2603:10a6:200:68::34) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3541.21 via Frontend
+ Transport; Wed, 11 Nov 2020 10:10:51 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 102971d9-e889-42f2-18b8-08d8862a11d9
+X-MS-TrafficTypeDiagnostic: AM0PR05MB5186:
+X-Microsoft-Antispam-PRVS: <AM0PR05MB518602A20744E7E9A814D080EFE80@AM0PR05MB5186.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4502;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: deowtK0/Lb7r6SyFvb001oyssizE3zI4iwmRAHkpagn09GyaY3JHpw96NxSguftyuD5lwUiPFKh/8nszpSJLWbjllmKq96GBZSoMZ8HB0N9cvnRCSXIYLgKImzKo61+e12Q24wpVEpVejShOZIbuhUCglG5dGj8neANd7Qay1rpguQA7WYlMFHefdN19NM6GzQtDg8qziToynu8QXUV1MkLSNCh6VpFVf/UlVN8v03d8rb8LFLzfnoIkhnQWrPInm07yzBvZ31N5aRvyw1TBIJREBkE6qBUSfQkhlNa8S9DbZPpa83zqhn9W972/T3n1shnu9i6u/Hd/1UpbjPKuXd1cjGylE0spqKUv0ZbOX9Ck7jJ2rSrTp1DBpcIvUe6rZECpxQ3e1PASfC3QoqShUQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR05MB7251.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(376002)(39830400003)(396003)(136003)(366004)(45080400002)(86362001)(15650500001)(16526019)(6916009)(186003)(1076003)(8936002)(66556008)(2906002)(966005)(66946007)(52116002)(66476007)(956004)(55016002)(5660300002)(6506007)(9686003)(26005)(7416002)(83380400001)(8676002)(316002)(4326008)(44832011)(7696005)(478600001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: P3c7vX8CbZ/Y++lhXD8tNvwNODOGpMTHLWnaZn0C95OGDMpcSAaSzNUa+BLhdaBK22SnHtHmd5ONKnAuxi9Azqn3RPzx/Beprxx3dRF+GW7FWZXKk9EMElJR05Gsr0pstPKy/UdHN9VIQSH0YDvt8nlt5u+dw0TGhb6HiBGX5Pxw1X8tdWdL771JFyiTr6g0lEz1xpiVhDK43px6l0xlwlMrl+0VHz/zsz9Eo7BSehRpc2PZ/MMPtGgiAXaSZ/U9XH0H5qAuZCgXDYZyUlyPC3FTty4tLv0mX6j0ZLrj68I9+IhvS+h+Ug1RfBmvvvxxuR0qR28KT1rKp6Mq5dZt7trU93wMntMrjaDuF4hxHCoTaJ76slNAJCGY1ZYJdywc8snoP5AdpdNyqLPz5e1IdPACAP2MkQdxeKsiFAXik5zCrHp3HDB04Rkua1IY0Vd1mdTdczdqSgaP0Oyy19N722hOY1AlACxNcRmLLrjh7gvsSqcQ0bDOwj22KfGSvcjpXXOQeptgCZWGhvPqNO0VDfSo9mJxOkoLcX8W3h62cz4zh7jUbU/eUu9WW+JNv+TJl6IaWkz1QC928uQlAzz83fGx/IuqmRqRuEPc2zwpD3b6AT06kXIKJSVOCfRnS+ATIZgVlcgt5jrLVPt2xcbzww==
+X-OriginatorOrg: voleatech.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 102971d9-e889-42f2-18b8-08d8862a11d9
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR05MB7251.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Nov 2020 10:10:52.0856 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b82a99f6-7981-4a72-9534-4d35298f847b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XHEQ+RLkjFjc488/r+m7drq+U2dTK2YkYcBLogmxDUSM4iowJfh6IZxbo9/cbIaLjFLS5cl5749blbT2hBy3L4PVSabsIYWoOCKxKWHXsnQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB5186
 Subject: Re: [Intel-wired-lan] [PATCH net v3 3/6] igb: XDP extack message on
  error
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -67,80 +118,104 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: nhorman@redhat.com, netdev@vger.kernel.org, brouer@redhat.com,
  kuba@kernel.org, intel-wired-lan@lists.osuosl.org, davem@davemloft.net,
  sassmann@redhat.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTdmVuLAoKCkFtIDExLjExLjIwIHVtIDExOjEwIHNjaHJpZWIgU3ZlbiBBdWhhZ2VuOgo+
-IE9uIFdlZCwgTm92IDExLCAyMDIwIGF0IDA4OjExOjQ2QU0gKzAxMDAsIFBhdWwgTWVuemVsIHdy
-b3RlOgoKPj4gQW0gMTkuMTAuMjAgdW0gMTA6MDUgc2NocmllYiBzdmVuLmF1aGFnZW5Adm9sZWF0
-ZWNoLmRlOgo+Pj4gRnJvbTogU3ZlbiBBdWhhZ2VuIDxzdmVuLmF1aGFnZW5Adm9sZWF0ZWNoLmRl
-Pgo+Pj4KPj4+IEFkZCBhbiBleHRhY2sgZXJyb3IgbWVzc2FnZSB3aGVuIHRoZSBSWCBidWZmZXIg
-c2l6ZSBpcyB0b28gc21hbGwKPj4+IGZvciB0aGUgZnJhbWUgc2l6ZS4KPj4+Cj4+PiBTdWdnZXN0
-ZWQtYnk6IE1hY2llaiBGaWphbGtvd3NraSA8bWFjaWVqLmZpamFsa293c2tpQGludGVsLmNvbT4K
-Pj4+IFJldmlld2VkLWJ5OiBNYWNpZWogRmlqYWxrb3dza2kgPG1hY2llai5maWphbGtvd3NraUBp
-bnRlbC5jb20+Cj4+PiBBY2tlZC1ieTogTWFjaWVqIEZpamFsa293c2tpIDxtYWNpZWouZmlqYWxr
-b3dza2lAaW50ZWwuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogU3ZlbiBBdWhhZ2VuIDxzdmVuLmF1
-aGFnZW5Adm9sZWF0ZWNoLmRlPgo+Pj4gLS0tCj4+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pZ2IvaWdiX21haW4uYyB8IDEyICsrKysrKystLS0tLQo+Pj4gICAgMSBmaWxlIGNoYW5n
-ZWQsIDcgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgYi9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYwo+Pj4gaW5kZXggMGE5MTk4MDM3Yjk4Li4wODhm
-OWRkYjAwOTMgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2Iv
-aWdiX21haW4uYwo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9t
-YWluLmMKPj4+IEBAIC0yODI0LDIwICsyODI0LDIyIEBAIHN0YXRpYyBpbnQgaWdiX3NldHVwX3Rj
-KHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsIGVudW0gdGNfc2V0dXBfdHlwZSB0eXBlLAo+Pj4gICAg
-CX0KPj4+ICAgIH0KPj4+IC1zdGF0aWMgaW50IGlnYl94ZHBfc2V0dXAoc3RydWN0IG5ldF9kZXZp
-Y2UgKmRldiwgc3RydWN0IGJwZl9wcm9nICpwcm9nKQo+Pj4gK3N0YXRpYyBpbnQgaWdiX3hkcF9z
-ZXR1cChzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LCBzdHJ1Y3QgbmV0ZGV2X2JwZiAqYnBmKQo+Pj4g
-ICAgewo+Pj4gICAgCWludCBpLCBmcmFtZV9zaXplID0gZGV2LT5tdHUgKyBJR0JfRVRIX1BLVF9I
-RFJfUEFEOwo+Pj4gICAgCXN0cnVjdCBpZ2JfYWRhcHRlciAqYWRhcHRlciA9IG5ldGRldl9wcml2
-KGRldik7Cj4+PiArCXN0cnVjdCBicGZfcHJvZyAqcHJvZyA9IGJwZi0+cHJvZywgKm9sZF9wcm9n
-Owo+Pj4gICAgCWJvb2wgcnVubmluZyA9IG5ldGlmX3J1bm5pbmcoZGV2KTsKPj4+IC0Jc3RydWN0
-IGJwZl9wcm9nICpvbGRfcHJvZzsKPj4+ICAgIAlib29sIG5lZWRfcmVzZXQ7Cj4+PiAgICAJLyog
-dmVyaWZ5IGlnYiByaW5nIGF0dHJpYnV0ZXMgYXJlIHN1ZmZpY2llbnQgZm9yIFhEUCAqLwo+Pj4g
-ICAgCWZvciAoaSA9IDA7IGkgPCBhZGFwdGVyLT5udW1fcnhfcXVldWVzOyBpKyspIHsKPj4+ICAg
-IAkJc3RydWN0IGlnYl9yaW5nICpyaW5nID0gYWRhcHRlci0+cnhfcmluZ1tpXTsKPj4+IC0JCWlm
-IChmcmFtZV9zaXplID4gaWdiX3J4X2J1ZnN6KHJpbmcpKQo+Pj4gKwkJaWYgKGZyYW1lX3NpemUg
-PiBpZ2JfcnhfYnVmc3oocmluZykpIHsKPj4+ICsJCQlOTF9TRVRfRVJSX01TR19NT0QoYnBmLT5l
-eHRhY2ssICJUaGUgUlggYnVmZmVyIHNpemUgaXMgdG9vIHNtYWxsIGZvciB0aGUgZnJhbWUgc2l6
-ZSIpOwoKPiBqdXN0IHRvIHZlcmlmeSwgTkxfU0VUX0VSUl9NU0dfTU9EIGRvZXMgbm90IHRha2Ug
-YW55IHZhcmlhYmxlIGFyZ3VtZW50cwo+IGZvciB0aGUgdGV4dCB0byBwcmludC4KCkFoLCBKZXNw
-ZXIgcmVtYXJrZWQgdGhhdCB0b28uIENhbiB0aGUgbWFjcm8gYmUgZXh0ZW5kZWQ/Cgo+IFdoYXQg
-c2VlbXMgdG8gYmUgdGhlIGNvbW1vbiBwcmFjdGljZSBpcyB0byBhZGQgYSBzZWNvbmQgbG9nIGxp
-bmUKPiB3aXRoIG5ldGRldl93YXJuIHRvIHByaW50IG91dCB0aGUgc2l6ZXMuCj4gCj4gSXMgdGhh
-dCB3aGF0IHlvdSBhcmUgbG9va2luZyBmb3I/CgpZZXMsIHRob3VnaCBpdCBzb3VuZHMgdG8gY3Vt
-YmVyc29tZS4gU28sIHllcywgdGhhdOKAmWQgYmUgZ3JlYXQgZm9yIG1lLCAKYnV0IHVwIHRvIHlv
-dSwgaWYgeW91IHRoaW5rIGl04oCZcyB1c2VmdWwuCgoKS2luZCByZWdhcmRzLAoKUGF1bAoKCj4+
-IENvdWxkIHlvdSBwbGVhc2UgYWxzbyBhZGQgYm90aCBzaXplIHZhbHVlcyB0byB0aGUgZXJyb3Ig
-bWVzc2FnZT8KPj4KPj4+ICAgIAkJCXJldHVybiAtRUlOVkFMOwo+Pj4gKwkJfQo+Pj4gICAgCX0K
-Pj4+ICAgIAlvbGRfcHJvZyA9IHhjaGcoJmFkYXB0ZXItPnhkcF9wcm9nLCBwcm9nKTsKPj4+IEBA
-IC0yODY5LDcgKzI4NzEsNyBAQCBzdGF0aWMgaW50IGlnYl94ZHAoc3RydWN0IG5ldF9kZXZpY2Ug
-KmRldiwgc3RydWN0IG5ldGRldl9icGYgKnhkcCkKPj4+ICAgIHsKPj4+ICAgIAlzd2l0Y2ggKHhk
-cC0+Y29tbWFuZCkgewo+Pj4gICAgCWNhc2UgWERQX1NFVFVQX1BST0c6Cj4+PiAtCQlyZXR1cm4g
-aWdiX3hkcF9zZXR1cChkZXYsIHhkcC0+cHJvZyk7Cj4+PiArCQlyZXR1cm4gaWdiX3hkcF9zZXR1
-cChkZXYsIHhkcCk7Cj4+PiAgICAJZGVmYXVsdDoKPj4+ICAgIAkJcmV0dXJuIC1FSU5WQUw7Cj4+
-PiAgICAJfQo+Pj4gQEAgLTY0OTksNyArNjUwMSw3IEBAIHN0YXRpYyBpbnQgaWdiX2NoYW5nZV9t
-dHUoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgaW50IG5ld19tdHUpCj4+PiAgICAJCQlzdHJ1
-Y3QgaWdiX3JpbmcgKnJpbmcgPSBhZGFwdGVyLT5yeF9yaW5nW2ldOwo+Pj4gICAgCQkJaWYgKG1h
-eF9mcmFtZSA+IGlnYl9yeF9idWZzeihyaW5nKSkgewo+Pj4gLQkJCQluZXRkZXZfd2FybihhZGFw
-dGVyLT5uZXRkZXYsICJSZXF1ZXN0ZWQgTVRVIHNpemUgaXMgbm90IHN1cHBvcnRlZCB3aXRoIFhE
-UFxuIik7Cj4+PiArCQkJCW5ldGRldl93YXJuKGFkYXB0ZXItPm5ldGRldiwgIlJlcXVlc3RlZCBN
-VFUgc2l6ZSBpcyBub3Qgc3VwcG9ydGVkIHdpdGggWERQLiBNYXggZnJhbWUgc2l6ZSBpcyAlZFxu
-IiwgbWF4X2ZyYW1lKTsKPj4+ICAgIAkJCQlyZXR1cm4gLUVJTlZBTDsKPj4+ICAgIAkJCX0KPj4+
-ICAgIAkJfQo+Pj4KPj4KPj4KPj4gS2luZCByZWdhcmRzLAo+Pgo+PiBQYXVsCj4+Cj4+Cj4+IFBT
-OiBGb3IgY29tbWl0IG1lc3NhZ2Ugc3VtbWFyaWVzLCBzdGF0ZW1lbnRzIHdpdGggdmVyYnMgaW4g
-aW1wZXJhdGl2ZSBtb29kCj4+IGFyZSBxdWl0ZSBjb21tb24gWzFdLgo+Pgo+Pj4gaWdiOiBQcmlu
-dCBYRFAgZXh0YWNrIGVycm9yIG9uIHRvbyBiaWcgZnJhbWUgc2l6ZQo+Pgo+Pgo+PiBbMV06IGh0
-dHBzOi8vZXVyMDMuc2FmZWxpbmtzLnByb3RlY3Rpb24ub3V0bG9vay5jb20vP3VybD1odHRwcyUz
-QSUyRiUyRmNocmlzLmJlYW1zLmlvJTJGcG9zdHMlMkZnaXQtY29tbWl0JTJGJmFtcDtkYXRhPTA0
-JTdDMDElN0NzdmVuLmF1aGFnZW4lNDB2b2xlYXRlY2guZGUlN0NjMjkxNmU0Y2FmMzg0NTEyY2Rm
-ODA4ZDg4NjExMGRmOSU3Q2I4MmE5OWY2Nzk4MTRhNzI5NTM0NGQzNTI5OGY4NDdiJTdDMCU3QzAl
-N0M2Mzc0MDY3NTUxMTIyODc5NDMlN0NVbmtub3duJTdDVFdGcGJHWnNiM2Q4ZXlKV0lqb2lNQzR3
-TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazFoYVd3aUxDSlhWQ0k2TW4wJTNEJTdD
-MTAwMCZhbXA7c2RhdGE9d0J2WDZxNHRyTTdGUUxwNU54Y2NxcmJvJTJGb3J2RjVLRzFZRzdUUmM3
-Y0tRJTNEJmFtcDtyZXNlcnZlZD0wCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFu
-QG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50
-ZWwtd2lyZWQtbGFuCg==
+On Wed, Nov 11, 2020 at 08:11:46AM +0100, Paul Menzel wrote:
+> Dear Sven,
+> 
+> 
+> Am 19.10.20 um 10:05 schrieb sven.auhagen@voleatech.de:
+> > From: Sven Auhagen <sven.auhagen@voleatech.de>
+> > 
+> > Add an extack error message when the RX buffer size is too small
+> > for the frame size.
+> > 
+> > Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> > Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> > Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> > Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
+> > ---
+> >   drivers/net/ethernet/intel/igb/igb_main.c | 12 +++++++-----
+> >   1 file changed, 7 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> > index 0a9198037b98..088f9ddb0093 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > @@ -2824,20 +2824,22 @@ static int igb_setup_tc(struct net_device *dev, enum tc_setup_type type,
+> >   	}
+> >   }
+> > -static int igb_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+> > +static int igb_xdp_setup(struct net_device *dev, struct netdev_bpf *bpf)
+> >   {
+> >   	int i, frame_size = dev->mtu + IGB_ETH_PKT_HDR_PAD;
+> >   	struct igb_adapter *adapter = netdev_priv(dev);
+> > +	struct bpf_prog *prog = bpf->prog, *old_prog;
+> >   	bool running = netif_running(dev);
+> > -	struct bpf_prog *old_prog;
+> >   	bool need_reset;
+> >   	/* verify igb ring attributes are sufficient for XDP */
+> >   	for (i = 0; i < adapter->num_rx_queues; i++) {
+> >   		struct igb_ring *ring = adapter->rx_ring[i];
+> > -		if (frame_size > igb_rx_bufsz(ring))
+> > +		if (frame_size > igb_rx_bufsz(ring)) {
+> > +			NL_SET_ERR_MSG_MOD(bpf->extack, "The RX buffer size is too small for the frame size");
+
+Dear Paul,
+
+just to verify, NL_SET_ERR_MSG_MOD does not take any variable arguments
+for the text to print.
+What seems to be the common practive is to add a second log line
+with netdev_warn to print out the sizes.
+
+Is that what you are looking for?
+
+Best
+Sven
+
+> 
+> Could you please also add both size values to the error message?
+> 
+> >   			return -EINVAL;
+> > +		}
+> >   	}
+> >   	old_prog = xchg(&adapter->xdp_prog, prog);
+> > @@ -2869,7 +2871,7 @@ static int igb_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+> >   {
+> >   	switch (xdp->command) {
+> >   	case XDP_SETUP_PROG:
+> > -		return igb_xdp_setup(dev, xdp->prog);
+> > +		return igb_xdp_setup(dev, xdp);
+> >   	default:
+> >   		return -EINVAL;
+> >   	}
+> > @@ -6499,7 +6501,7 @@ static int igb_change_mtu(struct net_device *netdev, int new_mtu)
+> >   			struct igb_ring *ring = adapter->rx_ring[i];
+> >   			if (max_frame > igb_rx_bufsz(ring)) {
+> > -				netdev_warn(adapter->netdev, "Requested MTU size is not supported with XDP\n");
+> > +				netdev_warn(adapter->netdev, "Requested MTU size is not supported with XDP. Max frame size is %d\n", max_frame);
+> >   				return -EINVAL;
+> >   			}
+> >   		}
+> > 
+> 
+> 
+> Kind regards,
+> 
+> Paul
+> 
+> 
+> PS: For commit message summaries, statements with verbs in imperative mood
+> are quite common [1].
+> 
+> > igb: Print XDP extack error on too big frame size
+> 
+> 
+> [1]: https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchris.beams.io%2Fposts%2Fgit-commit%2F&amp;data=04%7C01%7Csven.auhagen%40voleatech.de%7Cc2916e4caf384512cdf808d886110df9%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637406755112287943%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=wBvX6q4trM7FQLp5Nxccqrbo%2ForvF5KG1YG7TRc7cKQ%3D&amp;reserved=0
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
