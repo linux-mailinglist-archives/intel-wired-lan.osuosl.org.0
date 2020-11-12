@@ -2,63 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3E8D2B1147
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 23:19:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5A8A2B11E6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 23:40:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6C43F20348;
-	Thu, 12 Nov 2020 22:19:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6048620369;
+	Thu, 12 Nov 2020 22:40:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 21FeDY5xLfAq; Thu, 12 Nov 2020 22:19:00 +0000 (UTC)
+	with ESMTP id LrTE8Lp43ApK; Thu, 12 Nov 2020 22:40:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6407C20370;
-	Thu, 12 Nov 2020 22:18:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA7222038D;
+	Thu, 12 Nov 2020 22:40:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A99951BF41F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:18:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3563A1BF41F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:38:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A543386E70
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:18:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2CBB687839
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:38:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0UEfhYIU8inv for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Nov 2020 22:18:56 +0000 (UTC)
+ with ESMTP id LdoKkjFm5bjq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Nov 2020 22:38:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2BC3686DD9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:18:56 +0000 (UTC)
-IronPort-SDR: ppVZkqSWMOku9fWl3CjcMV5xUk6R2Njr5EJXZDjU7GPiE2J9z6bgWJodCZ4TyDHQI9XYO1p4At
- jT9YKn+9SAFQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9803"; a="188397628"
-X-IronPort-AV: E=Sophos;i="5.77,473,1596524400"; d="scan'208";a="188397628"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 14:18:55 -0800
-IronPort-SDR: TWTXPJWtq5JimRJ7YHL/OlOiy/u++OxXwE3+ryFIcdstq/sosEJPOUbk/BSBT7K/Tumqd8a/z2
- GOVOB/w+bDog==
-X-IronPort-AV: E=Sophos;i="5.77,473,1596524400"; d="scan'208";a="530838760"
-Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
- ([10.209.132.156])
- by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 14:18:55 -0800
-Date: Thu, 12 Nov 2020 14:18:54 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201112141854.00001197@intel.com>
-In-Reply-To: <160521830157.29792.4388568942163519947@ngilbert-mobl1.amr.corp.intel.com>
-References: <20201104031210.27772-1-andre.guedes@intel.com>
- <20201104031210.27772-8-andre.guedes@intel.com>
- <5cec65f6-a155-57d8-623e-4308ac62ba0f@intel.com>
- <160521830157.29792.4388568942163519947@ngilbert-mobl1.amr.corp.intel.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+Received: from mail-pf1-f180.google.com (mail-pf1-f180.google.com
+ [209.85.210.180])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D369387837
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 22:38:44 +0000 (UTC)
+Received: by mail-pf1-f180.google.com with SMTP id w14so5885110pfd.7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 14:38:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=/7kSb4NjVEecqOcEpqWVXn3fzJoOdZMutr7tqTcoPE0=;
+ b=WTpJp7OkwSXn5pxNsZ/8p7lPR1MZA+FGFRoQJbIr0Adgh9sEpsQRyQGtsMx5RphZZ5
+ mSlO31k9UgUr5BEQkbLhesPS1iX45oF2NKLvbfQdC/MGMR2D/EfJav1WkvkeNlK9KZ2B
+ fidYDxm8XUYoPSagtHgAsCIVWZjIvWor8vOeH7Y8qlrQTbU3rwSgo5HWLDjDozB/Tkpm
+ hruEnlri+mz1+gM6DJ81Uyhq7y3I1MZyzBq46pkHSg8aixZrX6ZoSniJ2t5YuGrWqEAd
+ jIdlWO6fsesv7CBxv+/MRadsKv02vgO5t5+4CTP7mQfhMFX6HPsLyE3JzTN+/gbxvCAO
+ 0+DA==
+X-Gm-Message-State: AOAM533AfD6zkalK9r89Lb7YryIjgDzMPaHINobhAVZYBrVJdNMbjcHk
+ 77IDfcjUCOlPCyKF3J6c+W8=
+X-Google-Smtp-Source: ABdhPJwpQOtNqR82rm/Z71mcPK/Mt5O79eAy835UX8INoMEf5PtKGgLK2MZfh27gUnU14puUFWEddA==
+X-Received: by 2002:a17:90a:f492:: with SMTP id
+ bx18mr1425810pjb.123.1605220724465; 
+ Thu, 12 Nov 2020 14:38:44 -0800 (PST)
+Received: from 42.do-not-panic.com (42.do-not-panic.com. [157.230.128.187])
+ by smtp.gmail.com with ESMTPSA id r73sm7747094pfc.20.2020.11.12.14.38.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2020 14:38:40 -0800 (PST)
+Received: by 42.do-not-panic.com (Postfix, from userid 1000)
+ id 09C2940715; Thu, 12 Nov 2020 22:38:38 +0000 (UTC)
+Date: Thu, 12 Nov 2020 22:38:37 +0000
+From: Luis Chamberlain <mcgrof@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <20201112223837.GH4332@42.do-not-panic.com>
+References: <c21d1ef1ddb071eed868a96649b4edf0b61b4247.camel@codethink.co.uk>
+ <20201107152827.GA90705@kroah.com>
+ <CAB=NE6U=kTw_R+OkqLf0iT0Bwti8w=7RWjWgeQmVQssbZ4OL3w@mail.gmail.com>
+ <20201108091214.GB44749@kroah.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v4 7/9] igc: Add initial XDP support
+Content-Disposition: inline
+In-Reply-To: <20201108091214.GB44749@kroah.com>
+X-Mailman-Approved-At: Thu, 12 Nov 2020 22:40:30 +0000
+Subject: Re: [Intel-wired-lan] [4.14] Security fixes (blktrace, i40e)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,28 +82,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Sasha Levin <Alexander.Levin@microsoft.com>, Jens Axboe <axboe@kernel.dk>,
+ Ben Hutchings <ben.hutchings@codethink.co.uk>,
+ intel-wired-lan@lists.osuosl.org, stable <stable@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Andre Guedes wrote:
-
-> Quoting Neftin, Sasha (2020-11-12 01:13:27)
-> > > +#define IGC_XDP_PASS         0
-> > > +#define IGC_XDP_CONSUMED     BIT(0)
-> > > +
-> > Hello Andre, please, move these defines to igc_defines.h to bottom the 
-> > file under /* XDP defines */ comment.
+On Sun, Nov 08, 2020 at 10:12:14AM +0100, Greg Kroah-Hartman wrote:
+> On Sun, Nov 08, 2020 at 03:04:14AM -0600, Luis Chamberlain wrote:
+> > I'd like some more time for this, to review on older kernels. Don't think
+> > it's the best yet
 > 
-> Hi Sasha, looking at the macros defined in igc_defines.h, they seem to be
-> hardware-related (registers, fields, masks, etc) which is not the case of
-> the XDP macros defined here. In addition to that, note that these macros
-> are used only in igc_main.c so maybe it makes sense to leave them here?
+> What is "this" and what is "the best yet"?  Which patch(s) here are you
+> referring to in your context-less top-post?  :)
 
-FWIW, I agree with Andre here, I'd just leave them in the igc_main.c
-file.
+Sorry, I had to send the email as I did as I was not able to access a
+computer to properly reply on time (local hurricane cut power off and
+internet for a while), and in proper form, and so I figured it would be
+more prudent to request to *yield* merging until I do proper review.
+
+Given I am replying to patches which I authored I figured you could
+at least infer the email was about blktrace... so you are really
+exagerating contextless comment here.
+
+Anyway, you can carry on with the fix for blktrace to be merged,
+the concerne would be if you decide to backport the other important
+fix "block: revert back to synchronous request_queue removal".
+
+That is, do not merge that loosely, even if you don't see any issues.
+This requires a bit more work to backport.
+
+  Luis
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
