@@ -1,64 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B3D02B01D3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 10:13:44 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DC4D2B01FE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 10:32:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8AA588768E;
-	Thu, 12 Nov 2020 09:13:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C864D86E57;
+	Thu, 12 Nov 2020 09:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DvEElrNIVVEC; Thu, 12 Nov 2020 09:13:41 +0000 (UTC)
+	with ESMTP id 05-c0r5m-8_x; Thu, 12 Nov 2020 09:32:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 041C28768C;
-	Thu, 12 Nov 2020 09:13:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4371186E51;
+	Thu, 12 Nov 2020 09:32:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8EEB21BF329
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:13:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 968321BF276
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:32:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 83FC4228CA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:13:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 90DDF87690
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:32:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BkCdTf-PdKML for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Nov 2020 09:13:33 +0000 (UTC)
+ with ESMTP id OSuZvTkNNwOE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Nov 2020 09:32:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id CD1BD20463
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:13:33 +0000 (UTC)
-IronPort-SDR: rfUIONjzUI3gmvA4Yyv3Ijt2k6U8ftnJLV+ofzuKEKcEzFXsdjLKJ9e5XyhWMYHq95sAM9wC1G
- VC+uOMwcnUZg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9802"; a="157297902"
-X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="157297902"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 01:13:30 -0800
-IronPort-SDR: LoJDzA/A0d8hcgp6HyteHgqBxeRroJNxh0gXfrOxCUToJNKSAdxpkRzH0uT3DR34fvC/joo+iI
- pcKUEoPO1frQ==
-X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="542187562"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.251.161.207])
- ([10.251.161.207])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 01:13:29 -0800
-To: Andre Guedes <andre.guedes@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20201104031210.27772-1-andre.guedes@intel.com>
- <20201104031210.27772-8-andre.guedes@intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <5cec65f6-a155-57d8-623e-4308ac62ba0f@intel.com>
-Date: Thu, 12 Nov 2020 11:13:27 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.1
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C370C87697
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 09:32:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605173530;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to; bh=W4rr1GqJf/+uu0VkLhG4q2/u5hTt2/5s5Ib9+I3BFQE=;
+ b=RR+BQaQ+5tqBKD+Nd/KrYYoj/65jTvuy8gom/ZEjP+xz59eOqKR+5WSZGocCTCar+n5PoR
+ z6HV+SXR/iJ8VWIq3DpAnQGtd7qtQRAy9jD4b5WtICDy+e5h7s5ruPUE5qVZC6DSXCw2uH
+ 1Ec4Nekbl+RmPIwODwOtLq+3wtnCwLM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-541-WnWs5QdYMI-kUdMBsptDIg-1; Thu, 12 Nov 2020 04:32:08 -0500
+X-MC-Unique: WnWs5QdYMI-kUdMBsptDIg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 938375705D;
+ Thu, 12 Nov 2020 09:32:06 +0000 (UTC)
+Received: from localhost (holly.tpb.lab.eng.brq.redhat.com [10.43.134.11])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0B6A91A92A;
+ Thu, 12 Nov 2020 09:32:04 +0000 (UTC)
+Date: Thu, 12 Nov 2020 10:32:03 +0100
+From: Miroslav Lichvar <mlichvar@redhat.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Message-ID: <20201112093203.GH1559650@localhost>
 MIME-Version: 1.0
-In-Reply-To: <20201104031210.27772-8-andre.guedes@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v4 7/9] igc: Add initial XDP support
+Content-Disposition: inline
+In-Reply-To: <87imab8l53.fsf@intel.com>
+ <87tutv8rdr.fsf@intel.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
+ for PTP getcrosststamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,376 +76,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: andre.guedes@intel.com, linux-pci@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, bhelgaas@google.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/4/2020 05:12, Andre Guedes wrote:
-> This patch adds the initial XDP support to the igc driver. For now,
-> only XDP_PASS, XDP_DROP, XDP_ABORTED actions are supported. Upcoming
-> patches will add support for the remaining XDP actions.
+On Wed, Nov 11, 2020 at 02:23:28PM -0800, Vinicius Costa Gomes wrote:
+> Miroslav Lichvar <mlichvar@redhat.com> writes:
+> > On Tue, Nov 10, 2020 at 11:06:07AM -0800, Vinicius Costa Gomes wrote:
+> >> The NIC I have supports PTM cycles from every ~1ms to ~512ms, and from
+> >> my tests it wants to be kept running "in background" always, i.e. set
+> >> the cycles to run, and only report the data when necessary. Trying to
+> >> only enable the cycles "on demand" was unreliable.
+> >
+> > I see. It does makes sense if the clocks need to be are synchronized.
+> > For the case of this ioctl, I think it would be better if it we could
+> > just collect the measurements and leave the clocks free running.
 > 
-> XDP configuration helpers are defined in a new file, igc_xdp.c. These
-> helpers are utilized in igc_main.c to implement the ndo_bpf callback.
-> XDP-related code that belongs to the driver's hot path is landed in
-> igc_main.c.
+> Not sure if I understand. This is what this series does, it only adds
+> support for starting the PTM cycles and reporting the measurements.
+
+Ok, great. I meant that the apparent requirement to keep the
+measurements running periodically in background made sense if the
+clocks were synchronized by the hardware. Now I realize that wouldn't
+work for phc2sys unless there was a separate clock and something
+tracking the offset between the two clocks.
+
+Considering how the existing applications work, ideally the
+measurements would be performed on demand from the ioctl to minimize
+the delay. If that's not possible, maybe it would be better to provide
+the measurements on a descriptor at their own rate, which could be
+polled by the applications, similarly to how the PTP_EXTTS_REQUEST
+ioctl works?
+
+> > I suspect a bigger issue, for both the PRECISE and EXTENDED variants,
+> > is that it would return old data. I'm not sure if the existing
+> > applications are ready to deal with that. With high clock update
+> > rates, a delay of 50 milliseconds could cause an instability. You can
+> > try phc2sys -R 50 and see if it stays stable.
 > 
-> By default, the driver uses rx buffers with 2 KB size. When XDP is
-> enabled, it uses larger buffers so we have enough space to accommodate
-> the headroom and tailroom required by XDP infrastructure. Also, the
-> driver doesn't support XDP functionality with frames that span over
-> multiple buffers so jumbo frames are not allowed for now.
+> After a couple of hours of testing, with the current 50ms delay,
+> 'phc2sys -R 50' is stable, but I got the impression that it takes longer
+> (~10s) to get to ~10ns offset.
+
+That sounds like it could break in some specific conditions. Please
+try slightly different -R values and when it's running, try inserting
+a step with date -s '+0.1 sec' and see how reliable is the recovery.
+You can also test it with a different servo: phc2sys -E linreg.
+
+> There might be a problem, the PTM dialogs start from the device, the
+> protocol is more or less this:
 > 
-> The approach implemented by this patch follows the approach implemented
-> in other Intel drivers as much as possible for the sake of consistency
-> across the drivers.
+>  1. NIC sends "Request" message, takes T1 timestamp;
+>  2. Host receives "Request" message, takes T2 timestamp;
+>  3. Host sends "Response" message, takes T3 timestamp;
+>  4. NIC receives "Response" message, takes T4 timestamp;
 > 
-> Quick comment regarding igc_build_skb(): this patch doesn't touch it
-> because the function is never called. It seems its support is
-> incomplete/in progress. The function was added by commit 0507ef8a0372b
-> ("igc: Add transmit and receive fastpath and interrupt handlers") but
-> ring_uses_build_skb() always return False since the IGC_RING_FLAG_RX_
-> BUILD_SKB_ENABLED isn't set anywhere in the driver code.
+> So, T2 and T3 are "host" timestamps and T1 and T4 are NIC timestamps.
+
+Is that the case even when there is a PTM-enabled switch between the
+CPU and NIC? My understanding of the spec is that the switches are
+supposed to have their own clocks and have separate PTM dialogs on
+their upstream and downstream ports. In terms of PTP, are the switches
+boundary or transparent clocks?
+
+> That means that the timestamps I have "as is" are a bit different than
+> the expectations of the EXTENDED ioctl().
 > 
-> This patch has been tested with the sample app "xdp1" located in
-> samples/bpf/ dir.
+> Of course I could use T3 (as the "pre" timestamp), T4 as the device
+> timestamp, and calculate the delay[1], apply it to T3 and get something
+> T3' as the "post" timestamp (T3' = T3 + delay). But I feel that this
+> "massaging" would defeat the purpose of using the EXTENDED variant.
 > 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/Makefile   |   2 +-
->   drivers/net/ethernet/intel/igc/igc.h      |   2 +
->   drivers/net/ethernet/intel/igc/igc_main.c | 118 ++++++++++++++++++++--
->   drivers/net/ethernet/intel/igc/igc_xdp.c  |  33 ++++++
->   drivers/net/ethernet/intel/igc/igc_xdp.h  |  10 ++
->   5 files changed, 153 insertions(+), 12 deletions(-)
->   create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.c
->   create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.h
+> Does it make sense? Am I worrying too much?
 > 
-> diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
-> index 1c3051db9085..95d1e8c490a4 100644
-> --- a/drivers/net/ethernet/intel/igc/Makefile
-> +++ b/drivers/net/ethernet/intel/igc/Makefile
-> @@ -8,4 +8,4 @@
->   obj-$(CONFIG_IGC) += igc.o
->   
->   igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
-> -igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o
-> +igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o igc_xdp.o
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index e72f1fc772aa..5c2f363106ae 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -224,6 +224,8 @@ struct igc_adapter {
->   	struct mutex ptm_time_lock; /* protects host and device timestamps */
->   	ktime_t ptm_device_time;
->   	struct system_counterval_t ptm_host_time;
-> +
-> +	struct bpf_prog *xdp_prog;
->   };
->   
->   void igc_up(struct igc_adapter *adapter);
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 84ffde75e968..734a570bbadb 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -11,17 +11,22 @@
->   #include <linux/pm_runtime.h>
->   #include <net/pkt_sched.h>
->   #include <linux/pci.h>
-> +#include <linux/bpf_trace.h>
->   
->   #include <net/ipv6.h>
->   
->   #include "igc.h"
->   #include "igc_hw.h"
->   #include "igc_tsn.h"
-> +#include "igc_xdp.h"
->   
->   #define DRV_SUMMARY	"Intel(R) 2.5G Ethernet Linux Driver"
->   
->   #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV | NETIF_MSG_PROBE | NETIF_MSG_LINK)
->   
-> +#define IGC_XDP_PASS		0
-> +#define IGC_XDP_CONSUMED	BIT(0)
-> +
-Hello Andre, please, move these defines to igc_defines.h to bottom the 
-file under /* XDP defines */ comment.
->   static int debug = -1;
->   
->   MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
-> @@ -346,6 +351,8 @@ static void igc_clean_rx_ring(struct igc_ring *rx_ring)
->   {
->   	u16 i = rx_ring->next_to_clean;
->   
-> +	clear_ring_uses_large_buffer(rx_ring);
-> +
->   	dev_kfree_skb(rx_ring->skb);
->   	rx_ring->skb = NULL;
->   
-> @@ -498,6 +505,11 @@ static int igc_setup_all_rx_resources(struct igc_adapter *adapter)
->   	return err;
->   }
->   
-> +static bool igc_xdp_is_enabled(struct igc_adapter *adapter)
-> +{
-> +	return !!adapter->xdp_prog;
-> +}
-> +
->   /**
->    * igc_configure_rx_ring - Configure a receive ring after Reset
->    * @adapter: board private structure
-> @@ -514,6 +526,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
->   	u32 srrctl = 0, rxdctl = 0;
->   	u64 rdba = ring->dma;
->   
-> +	if (igc_xdp_is_enabled(adapter))
-> +		set_ring_uses_large_buffer(ring);
-> +
->   	/* disable the queue */
->   	wr32(IGC_RXDCTL(reg_idx), 0);
->   
-> @@ -1594,12 +1609,12 @@ static struct sk_buff *igc_build_skb(struct igc_ring *rx_ring,
->   
->   static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
->   					 struct igc_rx_buffer *rx_buffer,
-> -					 unsigned int size, int pkt_offset,
-> +					 struct xdp_buff *xdp,
->   					 ktime_t timestamp)
->   {
-> -	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset +
-> -		   pkt_offset;
-> +	unsigned int size = xdp->data_end - xdp->data;
->   	unsigned int truesize = igc_get_rx_frame_truesize(rx_ring, size);
-> +	void *va = xdp->data;
->   	unsigned int headlen;
->   	struct sk_buff *skb;
->   
-> @@ -1748,6 +1763,10 @@ static bool igc_cleanup_headers(struct igc_ring *rx_ring,
->   				union igc_adv_rx_desc *rx_desc,
->   				struct sk_buff *skb)
->   {
-> +	/* XDP packets use error pointer so abort at this point */
-> +	if (IS_ERR(skb))
-> +		return true;
-> +
->   	if (unlikely(igc_test_staterr(rx_desc, IGC_RXDEXT_STATERR_RXE))) {
->   		struct net_device *netdev = rx_ring->netdev;
->   
-> @@ -1787,7 +1806,14 @@ static void igc_put_rx_buffer(struct igc_ring *rx_ring,
->   
->   static inline unsigned int igc_rx_offset(struct igc_ring *rx_ring)
->   {
-> -	return ring_uses_build_skb(rx_ring) ? IGC_SKB_PAD : 0;
-> +	struct igc_adapter *adapter = rx_ring->q_vector->adapter;
-> +
-> +	if (ring_uses_build_skb(rx_ring))
-> +		return IGC_SKB_PAD;
-> +	if (igc_xdp_is_enabled(adapter))
-> +		return XDP_PACKET_HEADROOM;
-> +
-> +	return 0;
->   }
->   
->   static bool igc_alloc_mapped_page(struct igc_ring *rx_ring,
-> @@ -1901,6 +1927,42 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
->   	}
->   }
->   
-> +static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
-> +					struct xdp_buff *xdp)
-> +{
-> +	struct bpf_prog *prog;
-> +	int res;
-> +	u32 act;
-> +
-> +	rcu_read_lock();
-> +
-> +	prog = READ_ONCE(adapter->xdp_prog);
-> +	if (!prog) {
-> +		res = IGC_XDP_PASS;
-> +		goto unlock;
-> +	}
-> +
-> +	act = bpf_prog_run_xdp(prog, xdp);
-> +	switch (act) {
-> +	case XDP_PASS:
-> +		res = IGC_XDP_PASS;
-> +		break;
-> +	default:
-> +		bpf_warn_invalid_xdp_action(act);
-> +		fallthrough;
-> +	case XDP_ABORTED:
-> +		trace_xdp_exception(adapter->netdev, prog, act);
-> +		fallthrough;
-> +	case XDP_DROP:
-> +		res = IGC_XDP_CONSUMED;
-> +		break;
-> +	}
-> +
-> +unlock:
-> +	rcu_read_unlock();
-> +	return ERR_PTR(-res);
-> +}
-> +
->   static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   {
->   	unsigned int total_bytes = 0, total_packets = 0;
-> @@ -1912,8 +1974,10 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   		union igc_adv_rx_desc *rx_desc;
->   		struct igc_rx_buffer *rx_buffer;
->   		ktime_t timestamp = 0;
-> +		struct xdp_buff xdp;
->   		int pkt_offset = 0;
->   		unsigned int size;
-> +		void *pktbuf;
->   
->   		/* return some buffers to hardware, one at a time is too slow */
->   		if (cleaned_count >= IGC_RX_BUFFER_WRITE) {
-> @@ -1934,24 +1998,38 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   
->   		rx_buffer = igc_get_rx_buffer(rx_ring, size);
->   
-> -		if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
-> -			void *pktbuf = page_address(rx_buffer->page) +
-> -				       rx_buffer->page_offset;
-> +		pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
->   
-> +		if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
->   			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
->   							pktbuf);
->   			pkt_offset = IGC_TS_HDR_LEN;
->   			size -= IGC_TS_HDR_LEN;
->   		}
->   
-> -		/* retrieve a buffer from the ring */
-> -		if (skb)
-> +		if (!skb) {
-> +			struct igc_adapter *adapter = q_vector->adapter;
-> +
-> +			xdp.data = pktbuf + pkt_offset;
-> +			xdp.data_end = xdp.data + size;
-> +			xdp.data_hard_start = pktbuf - igc_rx_offset(rx_ring);
-> +			xdp_set_data_meta_invalid(&xdp);
-> +			xdp.frame_sz = igc_get_rx_frame_truesize(rx_ring, size);
-> +
-> +			skb = igc_xdp_run_prog(adapter, &xdp);
-> +		}
-> +
-> +		if (IS_ERR(skb)) {
-> +			rx_buffer->pagecnt_bias++;
-> +			total_packets++;
-> +			total_bytes += size;
-> +		} else if (skb)
->   			igc_add_rx_frag(rx_ring, rx_buffer, skb, size);
->   		else if (ring_uses_build_skb(rx_ring))
->   			skb = igc_build_skb(rx_ring, rx_buffer, rx_desc, size);
->   		else
-> -			skb = igc_construct_skb(rx_ring, rx_buffer, size,
-> -						pkt_offset, timestamp);
-> +			skb = igc_construct_skb(rx_ring, rx_buffer, &xdp,
-> +						timestamp);
->   
->   		/* exit if we failed to retrieve a buffer */
->   		if (!skb) {
-> @@ -3893,6 +3971,11 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
->   	int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
->   	struct igc_adapter *adapter = netdev_priv(netdev);
->   
-> +	if (igc_xdp_is_enabled(adapter) && new_mtu > ETH_DATA_LEN) {
-> +		netdev_dbg(netdev, "Jumbo frames not supported with XDP");
-> +		return -EINVAL;
-> +	}
-> +
->   	/* adjust max frame to be at least the size of a standard frame */
->   	if (max_frame < (ETH_FRAME_LEN + ETH_FCS_LEN))
->   		max_frame = ETH_FRAME_LEN + ETH_FCS_LEN;
-> @@ -4881,6 +4964,18 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
->   	}
->   }
->   
-> +static int igc_bpf(struct net_device *dev, struct netdev_bpf *bpf)
-> +{
-> +	struct igc_adapter *adapter = netdev_priv(dev);
-> +
-> +	switch (bpf->command) {
-> +	case XDP_SETUP_PROG:
-> +		return igc_xdp_set_prog(adapter, bpf->prog, bpf->extack);
-> +	default:
-> +		return -EOPNOTSUPP;
-> +	}
-> +}
-> +
->   static const struct net_device_ops igc_netdev_ops = {
->   	.ndo_open		= igc_open,
->   	.ndo_stop		= igc_close,
-> @@ -4894,6 +4989,7 @@ static const struct net_device_ops igc_netdev_ops = {
->   	.ndo_features_check	= igc_features_check,
->   	.ndo_do_ioctl		= igc_ioctl,
->   	.ndo_setup_tc		= igc_setup_tc,
-> +	.ndo_bpf		= igc_bpf,
->   };
->   
->   /* PCIe configuration access */
-> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> new file mode 100644
-> index 000000000000..27c886a254f1
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> @@ -0,0 +1,33 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/* Copyright (c) 2020, Intel Corporation. */
-> +
-> +#include "igc.h"
-> +#include "igc_xdp.h"
-> +
-> +int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
-> +		     struct netlink_ext_ack *extack)
-> +{
-> +	struct net_device *dev = adapter->netdev;
-> +	bool if_running = netif_running(dev);
-> +	struct bpf_prog *old_prog;
-> +
-> +	if (dev->mtu > ETH_DATA_LEN) {
-> +		/* For now, the driver doesn't support XDP functionality with
-> +		 * jumbo frames so we return error.
-> +		 */
-> +		NL_SET_ERR_MSG_MOD(extack, "Jumbo frames not supported");
-> +		return -EOPNOTSUPP;
-> +	}
-> +
-> +	if (if_running)
-> +		igc_close(dev);
-> +
-> +	old_prog = xchg(&adapter->xdp_prog, prog);
-> +	if (old_prog)
-> +		bpf_prog_put(old_prog);
-> +
-> +	if (if_running)
-> +		igc_open(dev);
-> +
-> +	return 0;
-> +}
-> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.h b/drivers/net/ethernet/intel/igc/igc_xdp.h
-> new file mode 100644
-> index 000000000000..8a410bcefe1a
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.h
-> @@ -0,0 +1,10 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/* Copyright (c) 2020, Intel Corporation. */
-> +
-> +#ifndef _IGC_XDP_H_
-> +#define _IGC_XDP_H_
-> +
-> +int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
-> +		     struct netlink_ext_ack *extack);
-> +
-> +#endif /* _IGC_XDP_H_ */
-> 
-Thanks,
-Sasha
+> [1] 
+> 	delay = ((T4 - T1) - (T3 - T2)) / 2
+
+Yes, I think that would work, except the delay would need to be
+doubled in the T3' calculation. The important thing is that the offset
+and delay calculated from the timestamps don't change. It might be
+better to shift the timestamps back to avoid the "post" timestamp
+coming from future, which applications could drop as invalid. To not
+shift the middlepoints in the conversion, this should work:
+
+T1' = (T2 + T3) / 2 - delay
+T2' = (T1 + T4) / 2
+T3' = (T2 + T3) / 2 + delay
+
+-- 
+Miroslav Lichvar
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
