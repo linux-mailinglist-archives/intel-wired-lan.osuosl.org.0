@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 690422AFBD4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 01:45:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2FAD2AFBD0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Nov 2020 01:45:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 24DF986C98;
-	Thu, 12 Nov 2020 00:45:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6516886191;
+	Thu, 12 Nov 2020 00:45:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gdZz-o9E4q5k; Thu, 12 Nov 2020 00:45:18 +0000 (UTC)
+	with ESMTP id o_PmPaSoKfDD; Thu, 12 Nov 2020 00:45:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 926B786C7F;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E619860D2;
 	Thu, 12 Nov 2020 00:45:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 08EA01BF9B6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 00:45:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E4D901BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 00:45:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 028C922BCC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 00:45:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E19DA2E0EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 00:45:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DJgmfyz2aOgY for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id n06EbWP6X51E for <intel-wired-lan@lists.osuosl.org>;
  Thu, 12 Nov 2020 00:45:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 374F32037A
+ by silver.osuosl.org (Postfix) with ESMTPS id 7128122BCC
  for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 00:45:09 +0000 (UTC)
-IronPort-SDR: JzyUV50vT2zlRX5GkCAcWk4i1HGNYfJIy7dG/zxDKDR39kgIsfpuzpeHgjDJx0poutdZHl0C0V
- 7xmPpmAbt3rQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9802"; a="170406219"
-X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="170406219"
+IronPort-SDR: wdTj5QkqzFY/5pDlBdVA8YrKwYaJsTdeqqIT17TCkumcY4UkLBDkRQcHOij2l0TwkaqYsy+iOe
+ 3VCgTlzegIvw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9802"; a="170406221"
+X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="170406221"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2020 16:45:05 -0800
-IronPort-SDR: VDCuRdKw+0RYQ3c+lw7+kd6l7b+RsaPJGnOpiWvPzkUovkOH2VsbyU5vlC1W0B7FT+0iDDTn4h
- qFzWlv/XuieQ==
-X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="309015599"
+ 11 Nov 2020 16:45:06 -0800
+IronPort-SDR: fkl3rIFnDNJe/ZHudT3PYe37m5pZoOV2EjecaNfhTQZre1R5r7ThMqQJ8l1X3eswGEkek8Ti5g
+ rmAZf78w4xwA==
+X-IronPort-AV: E=Sophos;i="5.77,471,1596524400"; d="scan'208";a="309015602"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  11 Nov 2020 16:45:05 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
  Anthony Nguyen <anthony.l.nguyen@intel.com>
-Date: Wed, 11 Nov 2020 16:43:24 -0800
-Message-Id: <20201112004330.2896993-2-jacob.e.keller@intel.com>
+Date: Wed, 11 Nov 2020 16:43:25 -0800
+Message-Id: <20201112004330.2896993-3-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.29.0
 In-Reply-To: <20201112004330.2896993-1-jacob.e.keller@intel.com>
 References: <20201112004330.2896993-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 1/7] ice: introduce context
- struct for info report
+Subject: [Intel-wired-lan] [net-next PATCH 2/7] ice: refactor interface for
+ ice_read_flash_module
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,337 +75,221 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice driver uses an array of structures which link an info name with
-a function that formats the associated version data into a string.
+The ice_read_flash_module interface for reading from the various NVM
+modules was introduced in commit 682fa08580ac ("ice: read security
+revision to ice_nvm_info and ice_orom_info")
 
-All existing format functions simply format already captured static data
-from the driver hw structure. Future changes will introduce format
-functions for reporting the versions of flash sections stored but not
-yet applied. This type of version data is not stored as a member of the
-hw structure. This is because (a) it might not yet exist in the case
-there is no pending flash update, and (b) even if it does, it might
-change such as if an update is canceled or replaced by a new update
-before finalizing.
+It's purpose is two-fold. First, it enables reading data from the CSS
+header, used to allow accessing the image security revisions. Second, it
+allowed reading from either the 1st or the 2nd NVM bank. This interface
+was necessary because the device has two copies of each module. Only one
+bank is active at a time, but it could be different for each module. The
+driver had to determine which bank was active and then use that to
+calculate the offset into the flash to read.
 
-We could simply have each format function gather its own data upon being
-called. However, in some cases the raw binary version data is
-a combination of multiple different reported fields. Additionally, the
-current interface doesn't have a way for the function to indicate that
-the version doesn't exist.
+Future plans include allowing access to read not just from the active
+flash bank, but also the inactive bank. This will be useful for enabling
+display of the version information for a pending flash update.
 
-Refactor this function interface to take a new ice_info_ctx structure
-instead of the buffer pointer and length. This context structure allows
-for future extensions to pre-gather version data that is stored within
-the context struct instead of the hw struct.
+The current abstraction in ice_read_flash_module is to specify the exact
+bank to read. This requires callers to know whether to read from the 1st
+or 2nd flash bank. This is the wrong abstraction level, since in most
+cases the decision point from a caller's perspective is whether to read
+from the active bank or the inactive bank.
 
-Allocate this context structure initially at the start of
-ice_devlink_info_get. We use dynamic allocation instead of a local stack
-variable in order to avoid using too much kernel stack once we extend it
-with additional data structures.
+Add a new ice_bank_select enumeration, used to indicate whether a flow
+wants to read from the active, or inactive flash bank. Refactor
+ice_read_flash_module to take this new enumeration instead of a raw
+flash bank.
 
-Modify the main loop that drives the info reporting so that the version
-buffer string is always cleared between each format. Explicitly check
-that the format function actually filled in a version string of non-zero
-length. If the string is not provided, simply skip this version without
-reporting an error. This allows for introducing format functions of
-versions which may or may not be present, such as the version of
-a pending update that has not yet been activated.
+Have ice_read_flash_module select which bank to read from based on the
+cached data we load during NVM initialization. With this change, it will
+be come easier to implement reading version data from the inactive flash
+banks in a future change.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_devlink.c | 117 ++++++++++++-------
- 1 file changed, 72 insertions(+), 45 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_nvm.c  | 116 +++++++++++++++-------
+ drivers/net/ethernet/intel/ice/ice_type.h |   9 ++
+ 2 files changed, 91 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 4fd117757ee9..31cbb0fbd429 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -6,144 +6,159 @@
- #include "ice_devlink.h"
- #include "ice_fw_update.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index ed4d6058a90d..0e949114359c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -233,6 +233,74 @@ void ice_release_nvm(struct ice_hw *hw)
+ 	ice_release_res(hw, ICE_NVM_RES_ID);
+ }
  
--static void ice_info_get_dsn(struct ice_pf *pf, char *buf, size_t len)
-+/* context for devlink info version reporting */
-+struct ice_info_ctx {
-+	char buf[128];
++/**
++ * ice_get_flash_bank_offset - Get offset into requested flash bank
++ * @hw: pointer to the HW structure
++ * @bank: whether to read from the active or inactive flash bank
++ * @module: the module to read from
++ *
++ * Based on the module, lookup the module offset from the beginning of the
++ * flash.
++ *
++ * Returns the flash offset. Note that a value of zero is invalid and must be
++ * treated as an error.
++ */
++static u32 ice_get_flash_bank_offset(struct ice_hw *hw, enum ice_bank_select bank, u16 module)
++{
++	struct ice_bank_info *banks = &hw->flash.banks;
++	enum ice_flash_bank active_bank;
++	bool second_bank_active;
++	u32 offset, size;
++
++	switch (module) {
++	case ICE_SR_1ST_NVM_BANK_PTR:
++		offset = banks->nvm_ptr;
++		size = banks->nvm_size;
++		active_bank = banks->nvm_bank;
++		break;
++	case ICE_SR_1ST_OROM_BANK_PTR:
++		offset = banks->orom_ptr;
++		size = banks->orom_size;
++		active_bank = banks->orom_bank;
++		break;
++	case ICE_SR_NETLIST_BANK_PTR:
++		offset = banks->netlist_ptr;
++		size = banks->netlist_size;
++		active_bank = banks->netlist_bank;
++		break;
++	default:
++		ice_debug(hw, ICE_DBG_NVM, "Unexpected value for flash module: 0x%04x\n", module);
++		return 0;
++	}
++
++	switch (active_bank) {
++	case ICE_1ST_FLASH_BANK:
++		second_bank_active = false;
++		break;
++	case ICE_2ND_FLASH_BANK:
++		second_bank_active = true;
++		break;
++	default:
++		ice_debug(hw, ICE_DBG_NVM, "Unexpected value for active flash bank: %u\n",
++			  active_bank);
++		return 0;
++	}
++
++	/* The second flash bank is stored immediately following the first
++	 * bank. Based on whether the 1st or 2nd bank is active, and whether
++	 * we want the active or inactive bank, calculate the desired offset.
++	 */
++	switch (bank) {
++	case ICE_ACTIVE_FLASH_BANK:
++		return offset + (second_bank_active ? size : 0);
++	case ICE_INACTIVE_FLASH_BANK:
++		return offset + (second_bank_active ? 0 : size);
++	}
++
++	ice_debug(hw, ICE_DBG_NVM, "Unexpected value for flash bank selection: %u\n", bank);
++	return 0;
++}
++
+ /**
+  * ice_read_flash_module - Read a word from one of the main NVM modules
+  * @hw: pointer to the HW structure
+@@ -241,47 +309,27 @@ void ice_release_nvm(struct ice_hw *hw)
+  * @offset: the offset into the module in words
+  * @data: storage for the word read from the flash
+  *
+- * Read a word from the specified bank of the module. The bank must be either
+- * the 1st or 2nd bank. The word will be read using flat NVM access, and
+- * relies on the hw->flash.banks data being setup by
+- * ice_determine_active_flash_banks() during initialization.
++ * Read a word from the specified flash module. The bank parameter indicates
++ * whether or not to read from the active bank or the inactive bank of that
++ * module.
++ *
++ * The word will be read using flat NVM access, and relies on the
++ * hw->flash.banks data being setup by ice_determine_active_flash_banks()
++ * during initialization.
+  */
+ static enum ice_status
+-ice_read_flash_module(struct ice_hw *hw, enum ice_flash_bank bank, u16 module,
++ice_read_flash_module(struct ice_hw *hw, enum ice_bank_select bank, u16 module,
+ 		      u32 offset, u16 *data)
+ {
+-	struct ice_bank_info *banks = &hw->flash.banks;
+ 	u32 bytes = sizeof(u16);
+ 	enum ice_status status;
+ 	__le16 data_local;
+-	bool second_bank;
+ 	u32 start;
+ 
+-	switch (bank) {
+-	case ICE_1ST_FLASH_BANK:
+-		second_bank = false;
+-		break;
+-	case ICE_2ND_FLASH_BANK:
+-		second_bank = true;
+-		break;
+-	case ICE_INVALID_FLASH_BANK:
+-	default:
+-		ice_debug(hw, ICE_DBG_NVM, "Unexpected flash bank %u\n", bank);
+-		return ICE_ERR_PARAM;
+-	}
+-
+-	switch (module) {
+-	case ICE_SR_1ST_NVM_BANK_PTR:
+-		start = banks->nvm_ptr + (second_bank ? banks->nvm_size : 0);
+-		break;
+-	case ICE_SR_1ST_OROM_BANK_PTR:
+-		start = banks->orom_ptr + (second_bank ? banks->orom_size : 0);
+-		break;
+-	case ICE_SR_NETLIST_BANK_PTR:
+-		start = banks->netlist_ptr + (second_bank ? banks->netlist_size : 0);
+-		break;
+-	default:
+-		ice_debug(hw, ICE_DBG_NVM, "Unexpected flash module 0x%04x\n", module);
++	start = ice_get_flash_bank_offset(hw, bank, module);
++	if (!start) {
++		ice_debug(hw, ICE_DBG_NVM, "Unable to calculate flash bank offset for module 0x%04x\n",
++			  module);
+ 		return ICE_ERR_PARAM;
+ 	}
+ 
+@@ -311,7 +359,7 @@ ice_read_flash_module(struct ice_hw *hw, enum ice_flash_bank bank, u16 module,
+ static enum ice_status
+ ice_read_active_nvm_module(struct ice_hw *hw, u32 offset, u16 *data)
+ {
+-	return ice_read_flash_module(hw, hw->flash.banks.nvm_bank,
++	return ice_read_flash_module(hw, ICE_ACTIVE_FLASH_BANK,
+ 				     ICE_SR_1ST_NVM_BANK_PTR, offset, data);
+ }
+ 
+@@ -328,7 +376,7 @@ ice_read_active_nvm_module(struct ice_hw *hw, u32 offset, u16 *data)
+ static enum ice_status
+ ice_read_active_orom_module(struct ice_hw *hw, u32 offset, u16 *data)
+ {
+-	return ice_read_flash_module(hw, hw->flash.banks.orom_bank,
++	return ice_read_flash_module(hw, ICE_ACTIVE_FLASH_BANK,
+ 				     ICE_SR_1ST_OROM_BANK_PTR, offset, data);
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 6217e8b22cc2..b9230c9158e1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -350,6 +350,15 @@ enum ice_flash_bank {
+ 	ICE_2ND_FLASH_BANK,
+ };
+ 
++/* Enumeration of which flash bank is desired to read from, either the active
++ * bank or the inactive bank. Used to abstract 1st and 2nd bank notion from
++ * code which just wants to read the active or inactive flash bank.
++ */
++enum ice_bank_select {
++	ICE_ACTIVE_FLASH_BANK,
++	ICE_INACTIVE_FLASH_BANK,
 +};
 +
-+/* The following functions are used to format specific strings for various
-+ * devlink info versions. The ctx parameter is used to provide the storage
-+ * buffer, as well as any ancillary information calculated when the info
-+ * request was made.
-+ *
-+ * If a version does not exist, for example a "stored" version that does not
-+ * exist because no update is pending, the function should leave the buffer in
-+ * the ctx structure empty and return 0.
-+ */
-+
-+static void ice_info_get_dsn(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	u8 dsn[8];
- 
- 	/* Copy the DSN into an array in Big Endian format */
- 	put_unaligned_be64(pci_get_dsn(pf->pdev), dsn);
- 
--	snprintf(buf, len, "%8phD", dsn);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%8phD", dsn);
- }
- 
--static int ice_info_pba(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_pba(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_hw *hw = &pf->hw;
- 	enum ice_status status;
- 
--	status = ice_read_pba_string(hw, (u8 *)buf, len);
-+	status = ice_read_pba_string(hw, (u8 *)ctx->buf, sizeof(ctx->buf));
- 	if (status)
- 		return -EIO;
- 
- 	return 0;
- }
- 
--static int ice_info_fw_mgmt(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_fw_mgmt(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_hw *hw = &pf->hw;
- 
--	snprintf(buf, len, "%u.%u.%u", hw->fw_maj_ver, hw->fw_min_ver,
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u", hw->fw_maj_ver, hw->fw_min_ver,
- 		 hw->fw_patch);
- 
- 	return 0;
- }
- 
--static int ice_info_fw_api(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_fw_api(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_hw *hw = &pf->hw;
- 
--	snprintf(buf, len, "%u.%u", hw->api_maj_ver, hw->api_min_ver);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u", hw->api_maj_ver, hw->api_min_ver);
- 
- 	return 0;
- }
- 
--static int ice_info_fw_build(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_fw_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_hw *hw = &pf->hw;
- 
--	snprintf(buf, len, "0x%08x", hw->fw_build);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", hw->fw_build);
- 
- 	return 0;
- }
- 
--static int ice_info_fw_srev(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_fw_srev(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_nvm_info *nvm = &pf->hw.flash.nvm;
- 
--	snprintf(buf, len, "%u", nvm->srev);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u", nvm->srev);
- 
- 	return 0;
- }
- 
--static int ice_info_orom_ver(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_orom_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_orom_info *orom = &pf->hw.flash.orom;
- 
--	snprintf(buf, len, "%u.%u.%u", orom->major, orom->build, orom->patch);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u", orom->major, orom->build, orom->patch);
- 
- 	return 0;
- }
- 
--static int ice_info_orom_srev(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_orom_srev(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_orom_info *orom = &pf->hw.flash.orom;
- 
--	snprintf(buf, len, "%u", orom->srev);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u", orom->srev);
- 
- 	return 0;
- }
- 
--static int ice_info_nvm_ver(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_nvm_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_nvm_info *nvm = &pf->hw.flash.nvm;
- 
--	snprintf(buf, len, "%x.%02x", nvm->major, nvm->minor);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x", nvm->major, nvm->minor);
- 
- 	return 0;
- }
- 
--static int ice_info_eetrack(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_eetrack(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_nvm_info *nvm = &pf->hw.flash.nvm;
- 
--	snprintf(buf, len, "0x%08x", nvm->eetrack);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm->eetrack);
- 
- 	return 0;
- }
- 
--static int ice_info_ddp_pkg_name(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_ddp_pkg_name(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_hw *hw = &pf->hw;
- 
--	snprintf(buf, len, "%s", hw->active_pkg_name);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%s", hw->active_pkg_name);
- 
- 	return 0;
- }
- 
--static int ice_info_ddp_pkg_version(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_ddp_pkg_version(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_pkg_ver *pkg = &pf->hw.active_pkg_ver;
- 
--	snprintf(buf, len, "%u.%u.%u.%u", pkg->major, pkg->minor, pkg->update,
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u.%u", pkg->major, pkg->minor, pkg->update,
- 		 pkg->draft);
- 
- 	return 0;
- }
- 
--static int ice_info_ddp_pkg_bundle_id(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_ddp_pkg_bundle_id(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
--	snprintf(buf, len, "0x%08x", pf->hw.active_track_id);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", pf->hw.active_track_id);
- 
- 	return 0;
- }
- 
--static int ice_info_netlist_ver(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_netlist_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_netlist_info *netlist = &pf->hw.flash.netlist;
- 
- 	/* The netlist version fields are BCD formatted */
--	snprintf(buf, len, "%x.%x.%x-%x.%x.%x", netlist->major, netlist->minor,
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x-%x.%x.%x", netlist->major, netlist->minor,
- 		 netlist->type >> 16, netlist->type & 0xFFFF, netlist->rev,
- 		 netlist->cust_ver);
- 
- 	return 0;
- }
- 
--static int ice_info_netlist_build(struct ice_pf *pf, char *buf, size_t len)
-+static int ice_info_netlist_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
- {
- 	struct ice_netlist_info *netlist = &pf->hw.flash.netlist;
- 
--	snprintf(buf, len, "0x%08x", netlist->hash);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", netlist->hash);
- 
- 	return 0;
- }
-@@ -160,7 +175,7 @@ enum ice_version_type {
- static const struct ice_devlink_version {
- 	enum ice_version_type type;
- 	const char *key;
--	int (*getter)(struct ice_pf *pf, char *buf, size_t len);
-+	int (*getter)(struct ice_pf *pf, struct ice_info_ctx *ctx);
- } ice_devlink_versions[] = {
- 	fixed(DEVLINK_INFO_VERSION_GENERIC_BOARD_ID, ice_info_pba),
- 	running(DEVLINK_INFO_VERSION_GENERIC_FW_MGMT, ice_info_fw_mgmt),
-@@ -194,60 +209,72 @@ static int ice_devlink_info_get(struct devlink *devlink,
- 				struct netlink_ext_ack *extack)
- {
- 	struct ice_pf *pf = devlink_priv(devlink);
--	char buf[100];
-+	struct ice_info_ctx *ctx;
- 	size_t i;
- 	int err;
- 
-+	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
-+		return -ENOMEM;
-+
- 	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
- 	if (err) {
- 		NL_SET_ERR_MSG_MOD(extack, "Unable to set driver name");
--		return err;
-+		goto out_free_ctx;
- 	}
- 
--	ice_info_get_dsn(pf, buf, sizeof(buf));
-+	ice_info_get_dsn(pf, ctx);
- 
--	err = devlink_info_serial_number_put(req, buf);
-+	err = devlink_info_serial_number_put(req, ctx->buf);
- 	if (err) {
- 		NL_SET_ERR_MSG_MOD(extack, "Unable to set serial number");
--		return err;
-+		goto out_free_ctx;
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(ice_devlink_versions); i++) {
- 		enum ice_version_type type = ice_devlink_versions[i].type;
- 		const char *key = ice_devlink_versions[i].key;
- 
--		err = ice_devlink_versions[i].getter(pf, buf, sizeof(buf));
-+		memset(ctx->buf, 0, sizeof(ctx->buf));
-+
-+		err = ice_devlink_versions[i].getter(pf, ctx);
- 		if (err) {
- 			NL_SET_ERR_MSG_MOD(extack, "Unable to obtain version info");
--			return err;
-+			goto out_free_ctx;
- 		}
- 
-+		/* Do not report missing versions */
-+		if (ctx->buf[0] == '\0')
-+			continue;
-+
- 		switch (type) {
- 		case ICE_VERSION_FIXED:
--			err = devlink_info_version_fixed_put(req, key, buf);
-+			err = devlink_info_version_fixed_put(req, key, ctx->buf);
- 			if (err) {
- 				NL_SET_ERR_MSG_MOD(extack, "Unable to set fixed version");
--				return err;
-+				goto out_free_ctx;
- 			}
- 			break;
- 		case ICE_VERSION_RUNNING:
--			err = devlink_info_version_running_put(req, key, buf);
-+			err = devlink_info_version_running_put(req, key, ctx->buf);
- 			if (err) {
- 				NL_SET_ERR_MSG_MOD(extack, "Unable to set running version");
--				return err;
-+				goto out_free_ctx;
- 			}
- 			break;
- 		case ICE_VERSION_STORED:
--			err = devlink_info_version_stored_put(req, key, buf);
-+			err = devlink_info_version_stored_put(req, key, ctx->buf);
- 			if (err) {
- 				NL_SET_ERR_MSG_MOD(extack, "Unable to set stored version");
--				return err;
-+				goto out_free_ctx;
- 			}
- 			break;
- 		}
- 	}
- 
--	return 0;
-+out_free_ctx:
-+	kfree(ctx);
-+	return err;
- }
- 
- enum ice_devlink_param_id {
+ /* information for accessing NVM, OROM, and Netlist flash banks */
+ struct ice_bank_info {
+ 	u32 nvm_ptr;				/* Pointer to 1st NVM bank */
 -- 
 2.29.0
 
