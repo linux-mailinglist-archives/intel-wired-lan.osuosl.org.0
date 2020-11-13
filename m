@@ -1,58 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 830862B12D9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Nov 2020 00:46:18 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A1BC2B14AA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Nov 2020 04:25:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F07287347;
-	Thu, 12 Nov 2020 23:46:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AFFD08789E;
+	Fri, 13 Nov 2020 03:24:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eEucOyvUiNEf; Thu, 12 Nov 2020 23:46:16 +0000 (UTC)
+	with ESMTP id kUBLSfPBS2Jr; Fri, 13 Nov 2020 03:24:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 631988721B;
-	Thu, 12 Nov 2020 23:46:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1008C87899;
+	Fri, 13 Nov 2020 03:24:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 756201BF376
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 23:46:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E04B1BF97F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 03:24:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6D24687088
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 23:46:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9804D8714D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 03:24:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZD1C9vCMR72K for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Nov 2020 23:46:14 +0000 (UTC)
+ with ESMTP id 6G0YDq7YRAIk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Nov 2020 03:24:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B163787083
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 23:46:14 +0000 (UTC)
-IronPort-SDR: jhznXmLVMfHInpe00RF6iCEsSXUyFnuH/HK86BP2vWhr4KAjfmdNb5ybMz+2gICVMviXkgq+fK
- M1bp1QcywQyA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9803"; a="166892272"
-X-IronPort-AV: E=Sophos;i="5.77,473,1596524400"; d="scan'208";a="166892272"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 15:46:13 -0800
-IronPort-SDR: jYVbLpAt3WxNi5IIIvZNfkVOuiGfuVOjBt5URs95iChHdOy3WkqwFELzs6IbfepfRv0yH2/YtA
- PKpyOq1OWRqQ==
-X-IronPort-AV: E=Sophos;i="5.77,473,1596524400"; d="scan'208";a="542450074"
-Received: from jlee24-mobl1.amr.corp.intel.com (HELO ellie) ([10.212.177.92])
- by orsmga005-auth.jf.intel.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Nov 2020 15:46:13 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Miroslav Lichvar <mlichvar@redhat.com>
-In-Reply-To: <20201112093203.GH1559650@localhost>
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2528C87360
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 03:24:55 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id x15so5115679pfm.9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Nov 2020 19:24:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=IrE75K0NizerR3Wqiaotbx/ZTvWDabFAa1OrR3pXQBM=;
+ b=tiqP62IaMm6SRIY34zK1I6Vd/AdYWXLclGpsFGDxzEfFmvIutxtBVS8EATJ3zTl1v6
+ iMT/9l21aMFpcbx/Zd22XI0meooOfiwQjMMXX5V4hDMKXVRBxmiqT693bbRnaRcZMcPB
+ cJUe4emdu6yTO1EOepN4hnPfht8E518Eg++8grjl+hqUlO33jxCx5Z9Ewp9VMxf8HZJ7
+ 2doCEx5PDUL4l+tpiloMAyeGBqQbluCKb8quaDFIZT1dCqN1nHzZ6OadfU5z2SMvYJ/t
+ dwr5IcM6rFyY2n08rG3whqdZZPimxVaSZTNEvEw//8DPm+darGuDtFXqeLcGC0PVK8Ec
+ C7GA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=IrE75K0NizerR3Wqiaotbx/ZTvWDabFAa1OrR3pXQBM=;
+ b=FSawC9CCXLSJYTZChOV2G49puEsrgXG3mXkPNdyk0uDCKmksO1t7yvq7sH81lML5lG
+ x7+69s7cvI49arWr/5UZMfHeb5BLTa7fsBaHlHe/d4ZtUBUz6+dUgfeLZEgbBlzgskQc
+ dM70oUbzz0OENZCHVBMMTLM1zsO1TELySi6YL05vG96+d+tYjFMeNgKr9TaVJUeuEU0/
+ H7C3lG57ht94vH+nX2LfBHYY4Du3l1023YtL98C3DGpHj1bimEcSK5uFZhAp7DogAF4/
+ 7cWITdP5rpE1TLd70GyLxT8sshk1Jgp0ks3oQh5M2UovJI2uzLRT/f6hvd6LdNyv7px6
+ Nk6Q==
+X-Gm-Message-State: AOAM532KCqoZcF1LCp3/hlI//9a5efHLMAQWwrugfDt2OD5evgNCrLDB
+ RWkWX2y4LVeznfMmc1aAcgo=
+X-Google-Smtp-Source: ABdhPJzcuTIzDajv93N7IQPN6QpZ/QfdtRcZ+OE7vEUpY+BoiTpWkaSmuDsIvd1J3W0wjx3m3Q5maQ==
+X-Received: by 2002:a65:590e:: with SMTP id f14mr456228pgu.58.1605237894762;
+ Thu, 12 Nov 2020 19:24:54 -0800 (PST)
+Received: from hoboy.vegasvil.org (c-73-241-114-122.hsd1.ca.comcast.net.
+ [73.241.114.122])
+ by smtp.gmail.com with ESMTPSA id v23sm8361002pjh.46.2020.11.12.19.24.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Nov 2020 19:24:54 -0800 (PST)
+Date: Thu, 12 Nov 2020 19:24:51 -0800
+From: Richard Cochran <richardcochran@gmail.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Message-ID: <20201113032451.GB32138@hoboy.vegasvil.org>
 References: <20201112093203.GH1559650@localhost>
-Date: Thu, 12 Nov 2020 15:46:12 -0800
-Message-ID: <87pn4i6svv.fsf@intel.com>
+ <87pn4i6svv.fsf@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87pn4i6svv.fsf@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
  for PTP getcrosststamp()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -68,69 +90,26 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: andre.guedes@intel.com, linux-pci@vger.kernel.org,
- Richard Cochran <richardcochran@gmail.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, bhelgaas@google.com
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, bhelgaas@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Miroslav Lichvar <mlichvar@redhat.com> writes:
+On Thu, Nov 12, 2020 at 03:46:12PM -0800, Vinicius Costa Gomes wrote:
+> I wanted it so using PCIe PTM was transparent to applications, so adding
+> another API wouldn't be my preference.
+> 
+> That being said, having a trigger from the application to start/stop the
+> PTM cycles doesn't sound too bad an idea. So, not too opposed to this
+> idea.
+> 
+> Richard, any opinions here?
 
-> Considering how the existing applications work, ideally the
-> measurements would be performed on demand from the ioctl to minimize
-> the delay. If that's not possible, maybe it would be better to provide
-> the measurements on a descriptor at their own rate, which could be
-> polled by the applications, similarly to how the PTP_EXTTS_REQUEST
-> ioctl works?
+Sorry, I only have the last two message from this thread, and so I'm
+missing the backstory.
 
-I wanted it so using PCIe PTM was transparent to applications, so adding
-another API wouldn't be my preference.
-
-That being said, having a trigger from the application to start/stop the
-PTM cycles doesn't sound too bad an idea. So, not too opposed to this
-idea.
-
-Richard, any opinions here?
-
-> That sounds like it could break in some specific conditions. Please
-> try slightly different -R values and when it's running, try inserting
-> a step with date -s '+0.1 sec' and see how reliable is the recovery.
-> You can also test it with a different servo: phc2sys -E linreg.
-
-Yeah, for some combinations, the disturbances make the recovery take
-more time. So, I have to increase the frequency that the PTM cycles are
-run. Thanks.
-
-> Is that the case even when there is a PTM-enabled switch between the
-> CPU and NIC? My understanding of the spec is that the switches are
-> supposed to have their own clocks and have separate PTM dialogs on
-> their upstream and downstream ports. In terms of PTP, are the switches
-> boundary or transparent clocks?
-
-Yeah, it seems that PCIe PTM switches are indeed more like boundary
-clocks i.e. they are Requesters for the Root Complex and Responders for
-the endpoints, and the Master time that they provide in their Responses
-are in relation to their own clocks.
-
->
-> Yes, I think that would work, except the delay would need to be
-> doubled in the T3' calculation. The important thing is that the offset
-> and delay calculated from the timestamps don't change. It might be
-> better to shift the timestamps back to avoid the "post" timestamp
-> coming from future, which applications could drop as invalid. To not
-> shift the middlepoints in the conversion, this should work:
->
-> T1' = (T2 + T3) / 2 - delay
-> T2' = (T1 + T4) / 2
-> T3' = (T2 + T3) / 2 + delay
-
-Makes total sense. Thanks a lot!
-
-
-Cheers,
--- 
-Vinicius
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
