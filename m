@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 323702B152C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Nov 2020 05:49:50 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9945820493;
-	Fri, 13 Nov 2020 04:49:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ncJnhwWXa+su; Fri, 13 Nov 2020 04:49:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D03820463;
-	Fri, 13 Nov 2020 04:49:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 523BF1BF30F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 04:49:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5AE42B15B4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Nov 2020 06:59:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 41BA787884
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 04:49:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D25F4878B2;
+	Fri, 13 Nov 2020 05:59:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NggOK7swuyYM; Fri, 13 Nov 2020 05:59:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5239C878B4;
+	Fri, 13 Nov 2020 05:59:51 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 76FCB1BF276
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 05:59:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 587DA873C8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 05:59:49 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T3yVGJbeujSZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Nov 2020 04:49:43 +0000 (UTC)
+ with ESMTP id h+GcFYS5mwIA for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Nov 2020 05:59:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F182B87827
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 04:49:42 +0000 (UTC)
-IronPort-SDR: WQNu2dUY0iQn5D/K+JCfobItBl4ndZqJtr2VYean3q+HBK8vWqwjYhA/+AObabV0SmBA4Q2eAK
- UtGiYoOoDYZg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9803"; a="234585849"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A2E5F8737E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Nov 2020 05:59:46 +0000 (UTC)
+IronPort-SDR: yY1Y42qHLZL7P6J2vz8x1rVTZXx3ZGh6oAm2GADWrrG1UTppEcSmll01cRjAX3IXhmHZ4LJwWA
+ Qr9NXbVcdwlQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9803"; a="167850248"
 X-IronPort-AV: E=Sophos;i="5.77,474,1596524400"; 
- d="gz'50?scan'50,208,50";a="234585849"
+ d="gz'50?scan'50,208,50";a="167850248"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2020 20:49:41 -0800
-IronPort-SDR: kCLU24e3cBLmlWl8dKAZoVmY7+Ux6NrYiDxkKa3xmRN54/OwopEicKmbXwSrbnKTJRYGdmKsoz
- 11olh+SQ2oHQ==
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Nov 2020 21:59:46 -0800
+IronPort-SDR: EirdNPFXz4OKqfi1ymtSvqUyPY+Lqys7xdcZb7CH6QpQ5V+zTkuTW5uSyQLRPPDRURXKNFCyVE
+ f0BJS+h7Au4g==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.77,474,1596524400"; 
- d="gz'50?scan'50,208,50";a="339645978"
+ d="gz'50?scan'50,208,50";a="361233375"
 Received: from lkp-server02.sh.intel.com (HELO 697932c29306) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 12 Nov 2020 20:49:38 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 12 Nov 2020 21:59:43 -0800
 Received: from kbuild by 697932c29306 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1kdR1m-00005L-7R; Fri, 13 Nov 2020 04:49:38 +0000
-Date: Fri, 13 Nov 2020 12:49:11 +0800
+ id 1kdS7b-00006n-B4; Fri, 13 Nov 2020 05:59:43 +0000
+Date: Fri, 13 Nov 2020 13:58:51 +0800
 From: kernel test robot <lkp@intel.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <202011131208.X8ZMYl5e-lkp@intel.com>
+To: Andre Guedes <andre.guedes@intel.com>
+Message-ID: <202011131348.852qYDiM-lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="VbJkn9YxBvnuCH5J"
+Content-Type: multipart/mixed; boundary="tKW2IUtsqtDRztdT"
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 50/96]
- drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to
- restricted __be32
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 73/96]
+ drivers/net/ethernet/intel/igc/igc_ptp.c:183:18: sparse: sparse: cast to
+ restricted __le32
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,22 +80,22 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---VbJkn9YxBvnuCH5J
+--tKW2IUtsqtDRztdT
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
 head:   3f69b6741396fada730c8a1ccc0bfa8c771b9dab
-commit: cf576c848e1829ce268474d0510dab01a4235e36 [50/96] igc: Add support for PTP getcrosststamp()
+commit: 44f0d25c501202f999773c94ee0a11d7e7376b76 [73/96] igc: Fix igc_ptp_rx_pktstamp()
 config: i386-randconfig-s002-20201113 (attached as .config)
 compiler: gcc-9 (Debian 9.3.0-15) 9.3.0
 reproduce:
         # apt-get install sparse
         # sparse version: v0.6.3-107-gaf3512a6-dirty
-        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=cf576c848e1829ce268474d0510dab01a4235e36
+        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=44f0d25c501202f999773c94ee0a11d7e7376b76
         git remote add tnguy-next-queue https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
         git fetch --no-tags tnguy-next-queue dev-queue
-        git checkout cf576c848e1829ce268474d0510dab01a4235e36
+        git checkout 44f0d25c501202f999773c94ee0a11d7e7376b76
         # save the attached .config to linux build tree
         make W=1 C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' ARCH=i386 
 
@@ -104,67 +104,83 @@ Reported-by: kernel test robot <lkp@intel.com>
 
 
 "sparse warnings: (new ones prefixed by >>)"
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
->> drivers/net/ethernet/intel/igc/igc_ptp.c:450:21: sparse: sparse: cast to restricted __be32
+>> drivers/net/ethernet/intel/igc/igc_ptp.c:183:18: sparse: sparse: cast to restricted __le32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:184:24: sparse: sparse: cast to restricted __le32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
+   drivers/net/ethernet/intel/igc/igc_ptp.c:458:21: sparse: sparse: cast to restricted __be32
 
-vim +450 drivers/net/ethernet/intel/igc/igc_ptp.c
+vim +183 drivers/net/ethernet/intel/igc/igc_ptp.c
 
-   434	
-   435	static void igc_ptm_gather_report(struct igc_adapter *adapter)
-   436	{
-   437		struct igc_hw *hw = &adapter->hw;
-   438		u32 t2_curr_h, t2_curr_l;
-   439		ktime_t t1, t2_curr;
-   440	
-   441		t1 = ktime_set(rd32(IGC_PTM_T1_TIM0_H),
-   442			       rd32(IGC_PTM_T1_TIM0_L));
-   443	
-   444		t2_curr_l = rd32(IGC_PTM_CURR_T2_L);
-   445		t2_curr_h = rd32(IGC_PTM_CURR_T2_H);
-   446	
-   447		/* FIXME: There's an ambiguity on what endianness some PCIe PTM
-   448		 * messages should use. Find a more robust way to handle this.
-   449		 */
- > 450		t2_curr_h = be32_to_cpu(t2_curr_h);
-   451	
-   452		t2_curr = ((s64)t2_curr_h << 32 | t2_curr_l);
-   453	
-   454		wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
-   455	
-   456		mutex_lock(&adapter->ptm_time_lock);
-   457	
-   458		/* Because get_device_system_crosststamp() requires that the
-   459		 * historic timestamp is before the PTM device/host
-   460		 * timestamps, we keep track of the current and previous
-   461		 * snapshot (historic timestamp).
-   462		 */
-   463		memcpy(&adapter->prev_snapshot,
-   464		       &adapter->curr_snapshot, sizeof(adapter->prev_snapshot));
-   465		ktime_get_snapshot(&adapter->curr_snapshot);
-   466	
-   467		adapter->ptm_device_time = t1;
-   468		adapter->ptm_host_time = igc_device_tstamp_to_system(t2_curr);
-   469		mutex_unlock(&adapter->ptm_time_lock);
-   470	
-   471		mod_delayed_work(system_wq, &adapter->ptm_report,
-   472				 msecs_to_jiffies(IGC_PTM_CYCLE_TIME_MSECS));
-   473	}
-   474	
+   155	
+   156	/**
+   157	 * igc_ptp_rx_pktstamp - Retrieve timestamp from Rx packet buffer
+   158	 * @q_vector: Pointer to interrupt specific structure
+   159	 * @va: Pointer to address containing Rx buffer
+   160	 * @skb: Buffer containing timestamp and packet
+   161	 *
+   162	 * This function retrieves the timestamp saved in the beginning of packet
+   163	 * buffer. While two timestamps are available, one in timer0 reference and the
+   164	 * other in timer1 reference, this function considers only the timestamp in
+   165	 * timer0 reference.
+   166	 */
+   167	void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, u32 *va,
+   168				 struct sk_buff *skb)
+   169	{
+   170		struct igc_adapter *adapter = q_vector->adapter;
+   171		u64 regval;
+   172		int adjust;
+   173	
+   174		/* Timestamps are saved in little endian at the beginning of the packet
+   175		 * buffer following the layout:
+   176		 *
+   177		 * DWORD: | 0              | 1              | 2              | 3              |
+   178		 * Field: | Timer1 SYSTIML | Timer1 SYSTIMH | Timer0 SYSTIML | Timer0 SYSTIMH |
+   179		 *
+   180		 * SYSTIML holds the nanoseconds part while SYSTIMH holds the seconds
+   181		 * part of the timestamp.
+   182		 */
+ > 183		regval = le32_to_cpu(va[2]);
+   184		regval |= (u64)le32_to_cpu(va[3]) << 32;
+   185		igc_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb), regval);
+   186	
+   187		/* Adjust timestamp for the RX latency based on link speed */
+   188		switch (adapter->link_speed) {
+   189		case SPEED_10:
+   190			adjust = IGC_I225_RX_LATENCY_10;
+   191			break;
+   192		case SPEED_100:
+   193			adjust = IGC_I225_RX_LATENCY_100;
+   194			break;
+   195		case SPEED_1000:
+   196			adjust = IGC_I225_RX_LATENCY_1000;
+   197			break;
+   198		case SPEED_2500:
+   199			adjust = IGC_I225_RX_LATENCY_2500;
+   200			break;
+   201		default:
+   202			adjust = 0;
+   203			netdev_warn_once(adapter->netdev, "Imprecise timestamp\n");
+   204			break;
+   205		}
+   206		skb_hwtstamps(skb)->hwtstamp =
+   207			ktime_sub_ns(skb_hwtstamps(skb)->hwtstamp, adjust);
+   208	}
+   209	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---VbJkn9YxBvnuCH5J
+--tKW2IUtsqtDRztdT
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICFcIrl8AAy5jb25maWcAjFxLc9w2Er7nV0w5l+SQrB621qktHUASnEGGIGgAnIcuLEUe
+H4sICHAWrl8AAy5jb25maWcAjFxLc9w2Er7nV0w5l+SQrB621qktHUASnEGGIGgAnIcuLEUe
 O6pYknckbeJ/v90ASAIgOEkOjgYNNF6N7q8bDX7/3fcL8vry9HD7cn93++XLt8Xnw+PhePty
 +Lj4dP/l8J9FIRa10AtaMP0zVK7uH1//+tf95furxbufz89+PvvpeHexWB+Oj4cvi/zp8dP9
 51dofv/0+N333+WiLtmyy/NuQ6Viou403enrN5/v7n76ZfFDcfjt/vZx8cvPl8Dm/N2P9q83
@@ -939,7 +955,7 @@ TbES7p0digeoWie/vrIORE2eKsHEx4/Cs6ykU+GkbDq9E5gZZ3R4+x6smtXgWN/lbqqAQOG0
 /qgxYxlMBs6ON8+i087VisyTGT8bap5ROOBpVuutD2fXgkb8wIy9O0+Q0a3iNP4HxBTTeWCO
 AgA=
 
---VbJkn9YxBvnuCH5J
+--tKW2IUtsqtDRztdT
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -950,4 +966,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---VbJkn9YxBvnuCH5J--
+--tKW2IUtsqtDRztdT--
