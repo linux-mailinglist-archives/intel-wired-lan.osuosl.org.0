@@ -1,79 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28DD72B370E
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 15 Nov 2020 18:24:34 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEC582B370F
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 15 Nov 2020 18:24:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B750687228;
-	Sun, 15 Nov 2020 17:24:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 62B7620369;
+	Sun, 15 Nov 2020 17:24:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QbBI8-5BM+N8; Sun, 15 Nov 2020 17:24:32 +0000 (UTC)
+	with ESMTP id cekp4E3uSyVb; Sun, 15 Nov 2020 17:24:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ABB528722E;
-	Sun, 15 Nov 2020 17:24:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8E62920385;
+	Sun, 15 Nov 2020 17:24:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC1971BF39C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Nov 2020 14:55:51 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 27B891BF2C0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Nov 2020 04:48:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A78C386C2B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Nov 2020 14:55:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 118478731E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Nov 2020 04:48:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cQeTnbLLw5O4 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Nov 2020 14:55:50 +0000 (UTC)
+ with ESMTP id QdWPOz57-sN0 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 15 Nov 2020 04:48:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
- [209.85.214.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4C56C86227
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Nov 2020 14:55:50 +0000 (UTC)
-Received: by mail-pl1-f196.google.com with SMTP id y22so5909574plr.6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Nov 2020 06:55:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=mgJIHW42nsS/z1sx4fpJMJA9O5TioT77D/sOkRQHJ6I=;
- b=eM6/M3MtrZoK/j86rf2ujJ0wFEdmBqQlzia+W3Afmbgl2xZdotx8I46PWtKPM71gRh
- j7iyaXuREmKlED7M8o35n2eyqTMUPQe34SeH3ur42rqIBANhrorxIhkYLlpau0eFgA1O
- 1lh3D8Obfjd+4N1EGGNLaL8/TmXgjHjLAnfD8KUF+k6iDXFWh5iEj9P5m8V2K/v9kteW
- jQWZRDAileAXs43EM1I8hR4Pea2HvmfQByajr3e0RFgV8e2TvdtmyvW4pDI4SccBtZzm
- 7jssxa2rdNLznSF/2mlD0vR7FhWZDDNPB7uDglRctEduTp/81xdEMZGkoiNDFGcJ4UPV
- mjsg==
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9D98187312
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Nov 2020 04:48:38 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id u12so7487619wrt.0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Nov 2020 20:48:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=1z3Klgi+UNsQizX/jU8tNiP98p7LLCRbWM8W3amBWTU=;
+ b=NjCu6ZFdG/CJ9fFsRmipIdWI0ni4uC3GyZRSgX+1K7hSTy4+5o8eORYTtrGtNfFUPB
+ taBUrC6vXhPN6bcbvB0ntjP8kOjRqIP9d8klPPSdZYKyjcDk84PwsokaFz50vAdL/+wo
+ 4W7+OWxTtpwW1Q8eA1XLwXZcfECHNl6SrTsHlR2DGTzZbZAb915ttxEwbw82YzdK75G4
+ coCx4pcr/9c1ldM/pYBdTsJ6iVa6Tl2oT5R5mCe3HCcemeMg/RmVVDQG1zACqrKo5hT7
+ DOr2UoICYF6XCVJwO22VXJWHvcCEbB6ypSEYhWSvHUxK/f3j3nNybHgUeXiiMsmrLOf5
+ VghA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=mgJIHW42nsS/z1sx4fpJMJA9O5TioT77D/sOkRQHJ6I=;
- b=HgaMs5dgwZSmpzirydXzQDcsK4o6y/l4j9kJ/W94hL1sC6wzSSprmp+61l7imNgIgT
- arqfWystEPrg6tIzkG5RNUBUxTit8J7lsCV2x38K+Weeo42AJ4ToT8ZV8t1npcLKLo4L
- uZNx4UJxr6Mm5dAP9+JkJQg0Rcfk5ii+uIaPUBh/YOeIfj8k+8dTTOXF27d+/Bmkc4AB
- oSa+4shJ/ZfZetAzoPErAC8rtP0AiywfyMi7OSjj/ownTgKR1BBI9lY7RJ+c5PH9erzl
- wAlDVFGjkxp0ZxHxupoY9oa7PUdxl4j8fRTmrU01NVdQte6bdyNbKtzK6gWigDX4pwQd
- 0Gmg==
-X-Gm-Message-State: AOAM533+rXmZ4NpzK7/BfLltYOqQwr/dD/N7BBfQnCgl0LOItRMHwGTL
- /nFd10p2amvM+I7XtD8LMQ==
-X-Google-Smtp-Source: ABdhPJxt82qXTu1pgZeffQyBTbkYCfV2KjvHuUI8000CDfN07Y29L3+AV6GGO9VotwUzvRSQAdDG4w==
-X-Received: by 2002:a17:90b:1496:: with SMTP id
- js22mr2213683pjb.140.1605365749965; 
- Sat, 14 Nov 2020 06:55:49 -0800 (PST)
-Received: from he-cluster.localdomain (67.216.221.250.16clouds.com.
- [67.216.221.250])
- by smtp.gmail.com with ESMTPSA id v191sm12753669pfc.19.2020.11.14.06.55.48
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 14 Nov 2020 06:55:48 -0800 (PST)
-From: xiakaixu1987@gmail.com
-X-Google-Original-From: kaixuxia@tencent.com
-To: jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com
-Date: Sat, 14 Nov 2020 22:55:39 +0800
-Message-Id: <1605365739-11642-1-git-send-email-kaixuxia@tencent.com>
-X-Mailer: git-send-email 1.8.3.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=1z3Klgi+UNsQizX/jU8tNiP98p7LLCRbWM8W3amBWTU=;
+ b=cp0mvLnnUXAPP6EKDAJfA/ynKCsLTw0qap2E7Y7viM0AurhUBC46bNus3N9Xy2FeEg
+ 1nUlitbzWxV3unYN7QOHGJ4EIk/owvyc3flqIa6pmZOEPAuziOd1Vc9b5CEm5/7QXRPy
+ lYsIyOgxJkj93klGrmq8gPajFh7LboHppz02DCiMl2t7nsWOPzs4PyAR0CH0xdhNo2fR
+ +RTTxGaPXbMPMNWzbovIiz/Wz5os9/w3HWXV1jENsmKnw+a72Wlc/DLyVeddO1N9w3ju
+ 8HBqLOiGLvzufy5aC+K+vgo+sRV9gYPQ633DBx8vEvCb+F9lIxxkY9ozWfLeq/DqgmKI
+ P/Bg==
+X-Gm-Message-State: AOAM533MImmK3UQWVbKlsV4xVT657n95Z3jczC+Yc41sg8L3nLoacK5I
+ +Qt+1pTGvjvGctj7v4zR1DJILw==
+X-Google-Smtp-Source: ABdhPJwpDd4WM6FwdwodUf2sRoeinFwrmGTHLWZnsRKj9w9luXNPQbO+J0nfwEIen5oBgqAJPcavgA==
+X-Received: by 2002:adf:e551:: with SMTP id z17mr12558344wrm.374.1605415716935; 
+ Sat, 14 Nov 2020 20:48:36 -0800 (PST)
+Received: from apalos.home (ppp-94-64-112-220.home.otenet.gr. [94.64.112.220])
+ by smtp.gmail.com with ESMTPSA id
+ 89sm17673023wrp.58.2020.11.14.20.48.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Nov 2020 20:48:36 -0800 (PST)
+Date: Sun, 15 Nov 2020 06:48:31 +0200
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
+Message-ID: <20201115044831.GA1304196@apalos.home>
+References: <20201112114041.131998-1-bjorn.topel@gmail.com>
+ <20201112114041.131998-7-bjorn.topel@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201112114041.131998-7-bjorn.topel@gmail.com>
 X-Mailman-Approved-At: Sun, 15 Nov 2020 17:24:29 +0000
-Subject: [Intel-wired-lan] [PATCH] i40e: remove the useless value assignment
- in i40e_clean_adminq_subtask
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/9] xsk: propagate napi_id
+ to XDP socket Rx path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,41 +90,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kaixu Xia <kaixuxia@tencent.com>, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mst@redhat.com, kda@linux-powerpc.org, ast@kernel.org, edumazet@google.com,
+ thomas.petazzoni@bootlin.com, ioana.ciornei@nxp.com, ecree@solarflare.com,
+ aelior@marvell.com, akiyano@amazon.com, sthemmin@microsoft.com,
+ ruxandra.radulescu@nxp.com, maximmi@nvidia.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>, sgoutham@marvell.com,
+ grygorii.strashko@ti.com, qi.z.zhang@intel.com, mcroce@microsoft.com,
+ michael.chan@broadcom.com, magnus.karlsson@intel.com, daniel@iogearbox.net,
+ netdev@vger.kernel.org, tariqt@nvidia.com, netanel@amazon.com,
+ jonathan.lemon@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Kaixu Xia <kaixuxia@tencent.com>
+On Thu, Nov 12, 2020 at 12:40:38PM +0100, Bj=F6rn T=F6pel wrote:
+> From: Bj=F6rn T=F6pel <bjorn.topel@intel.com>
+> =
 
-The variable ret is overwritten by the following call
-i40e_clean_arq_element() and the assignment is useless, so remove it.
+> Add napi_id to the xdp_rxq_info structure, and make sure the XDP
+> socket pick up the napi_id in the Rx path. The napi_id is used to find
+> the corresponding NAPI structure for socket busy polling.
+> =
 
-Reported-by: Tosk Robot <tencent_os_robot@tencent.com>
-Signed-off-by: Kaixu Xia <kaixuxia@tencent.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Signed-off-by: Bj=F6rn T=F6pel <bjorn.topel@intel.com>
+> ---
+>  drivers/net/ethernet/amazon/ena/ena_netdev.c  |  2 +-
+>  drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  2 +-
+>  .../ethernet/cavium/thunder/nicvf_queues.c    |  2 +-
+>  .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  |  2 +-
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  2 +-
+>  drivers/net/ethernet/intel/ice/ice_base.c     |  4 ++--
+>  drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
+>  drivers/net/ethernet/intel/igb/igb_main.c     |  2 +-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  2 +-
+>  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  2 +-
+>  drivers/net/ethernet/marvell/mvneta.c         |  2 +-
+>  .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  4 ++--
+>  drivers/net/ethernet/mellanox/mlx4/en_rx.c    |  2 +-
+>  .../net/ethernet/mellanox/mlx5/core/en_main.c |  2 +-
+>  .../ethernet/netronome/nfp/nfp_net_common.c   |  2 +-
+>  drivers/net/ethernet/qlogic/qede/qede_main.c  |  2 +-
+>  drivers/net/ethernet/sfc/rx_common.c          |  2 +-
+>  drivers/net/ethernet/socionext/netsec.c       |  2 +-
+>  drivers/net/ethernet/ti/cpsw_priv.c           |  2 +-
+>  drivers/net/hyperv/netvsc.c                   |  2 +-
+>  drivers/net/tun.c                             |  2 +-
+>  drivers/net/veth.c                            |  2 +-
+>  drivers/net/virtio_net.c                      |  2 +-
+>  drivers/net/xen-netfront.c                    |  2 +-
+>  include/net/busy_poll.h                       | 19 +++++++++++++++----
+>  include/net/xdp.h                             |  3 ++-
+>  net/core/dev.c                                |  2 +-
+>  net/core/xdp.c                                |  3 ++-
+>  net/xdp/xsk.c                                 |  1 +
+>  29 files changed, 47 insertions(+), 33 deletions(-)
+> =
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 4f8a2154b93f..7d59fc2eded6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -9356,7 +9356,7 @@ static void i40e_clean_adminq_subtask(struct i40e_pf *pf)
- 			dev_dbg(&pf->pdev->dev, "ARQ: Update LLDP MIB event received\n");
- #ifdef CONFIG_I40E_DCB
- 			rtnl_lock();
--			ret = i40e_handle_lldp_event(pf, &event);
-+			i40e_handle_lldp_event(pf, &event);
- 			rtnl_unlock();
- #endif /* CONFIG_I40E_DCB */
- 			break;
--- 
-2.20.0
+ =
 
+For the socionext driver
+
+Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
