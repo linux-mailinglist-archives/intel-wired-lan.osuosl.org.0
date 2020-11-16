@@ -1,97 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23CCC2B4637
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Nov 2020 15:49:55 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09E4E2B49BC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Nov 2020 16:46:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CA20C20526;
-	Mon, 16 Nov 2020 14:49:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A604386F93;
+	Mon, 16 Nov 2020 15:46:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pgTHE0Y4IlaS; Mon, 16 Nov 2020 14:49:46 +0000 (UTC)
+	with ESMTP id PHqLpDzSVsbn; Mon, 16 Nov 2020 15:46:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B94322051F;
-	Mon, 16 Nov 2020 14:49:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1FAF386FC4;
+	Mon, 16 Nov 2020 15:46:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA6B11BF2EC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 13:57:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 79E2E1BF47E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 15:46:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AB69A866E7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 13:57:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 74C4886F98
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 15:46:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hrgUfkKwI7bj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Nov 2020 13:57:06 +0000 (UTC)
+ with ESMTP id xD9ABs0OGYXK for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Nov 2020 15:46:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2D7C585456
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 13:57:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605535024;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mnt9QmtgbTVSg4YUJB2DK71IcybUSWPf1jFkgpJYRJQ=;
- b=ZXLLFAkNtd7pUJH+E7CxqfQsEMnIeng8jnEkiQ4LZXG0PF8Qdh4CNMGgVg4VC5QemWj1L8
- Pc94dT3YOnW9O2VsEkVHUujFW3sIYtlvK/VHPjAhMnknRszfx2WD/Mg5lmh3bNNTVvmKzI
- bMFagi5pAb+dAKnecve6N46W6+JMins=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-110-sob-PUW_Mj2vjherfsxBlw-1; Mon, 16 Nov 2020 08:57:03 -0500
-X-MC-Unique: sob-PUW_Mj2vjherfsxBlw-1
-Received: by mail-wr1-f72.google.com with SMTP id w5so8977564wrm.22
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 05:57:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=58JLtczfJC3BdQ8P9jCy+MkeQ5C3tOk88fmGaEiTy+E=;
- b=H8+NQ58LKFnGgP1gpzqLoI+PfX5zeVlLX2abtOjua+H2XthFvh7SAqyfSEL99ERMIq
- kHjNMO0hwmmgp2tibSKQMGUacNMoEZkEDhfGpj6F7qOXVXXLIJOkHM5TvuwbWszC+Sul
- TjQPrC6jpB+c9AwoFWwgEjG4mVVKVkLFZcawkCe0WsS3mpQDYoQaLkhauM/UBb2qDeNt
- vnYkWChaMmoefK8IS5dJ2VfzQTnsa91J9057XeyIGX7wAGiOuZqR/LKqsGQLa31cnHX8
- 9480+SLYqLKtBDBjtWeai0Asj6SYYbTPLkdfPvQC/kLjwH3FdNGhypqblMraM/d9dL5u
- zrKQ==
-X-Gm-Message-State: AOAM533YjS+IVmyEArR7ubmgAEukEQXrOQs7PuD1btXUJQBzt7kv9TDL
- 65wQW9S2uVbMo/vg2qCBVQU74o0089nYV6O/f32mFxy2UyVL4qjF4QfN1OypyIs+/uwlYG/pW37
- dgQRQchQHHwjIZgsB7lSfRZ0uTKEuFg==
-X-Received: by 2002:a5d:62c3:: with SMTP id o3mr19653219wrv.300.1605535022070; 
- Mon, 16 Nov 2020 05:57:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzAQd012oEHMVrl1W8LN6Xp/toEeL5/ngwJJSD3YTGsZHyeOFGyYa7S0sxojh5tC5FKwlvXAA==
-X-Received: by 2002:a5d:62c3:: with SMTP id o3mr19653170wrv.300.1605535021798; 
- Mon, 16 Nov 2020 05:57:01 -0800 (PST)
-Received: from redhat.com ([147.161.8.56])
- by smtp.gmail.com with ESMTPSA id u16sm22680107wrn.55.2020.11.16.05.56.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 05:57:00 -0800 (PST)
-Date: Mon, 16 Nov 2020 08:55:56 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>
-Message-ID: <20201116085548-mutt-send-email-mst@kernel.org>
-References: <20201116110416.10719-1-bjorn.topel@gmail.com>
- <20201116110416.10719-7-bjorn.topel@gmail.com>
- <20201116064953-mutt-send-email-mst@kernel.org>
- <614a7ce4-2b6b-129b-de7d-71428f7a71f6@intel.com>
- <20201116073848-mutt-send-email-mst@kernel.org>
- <585b011f-0817-a684-d1db-125bb55741fe@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <585b011f-0817-a684-d1db-125bb55741fe@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-X-Mailman-Approved-At: Mon, 16 Nov 2020 14:49:28 +0000
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v2 06/10] xsk: propagate
- napi_id to XDP socket Rx path
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 935C586F93
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 15:46:16 +0000 (UTC)
+IronPort-SDR: VBDdVzbpHSn1WHUgaEcVsdeZs6/JoMn71D5BXGBB8WO0RQrz66PZavsa35xFHfRSK5PBQCC4k5
+ i49+J4AyW8oA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9807"; a="170867348"
+X-IronPort-AV: E=Sophos;i="5.77,482,1596524400"; d="scan'208";a="170867348"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2020 07:46:14 -0800
+IronPort-SDR: QbzBW2uZ1okABYIuytWLjEdw5hpaR8TAp1X09n4xX8qBuHqtybq9GV34n+aJPOq4b/QNh36Lev
+ Q6tcztNcOvTw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,482,1596524400"; d="scan'208";a="367521083"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 16 Nov 2020 07:46:13 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 16 Nov 2020 15:45:59 +0000
+Message-Id: <20201116154559.23663-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Add EEE status
+ getting&setting implementation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,109 +65,187 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kda@linux-powerpc.org, ast@kernel.org, edumazet@google.com,
- netdev@vger.kernel.org, thomas.petazzoni@bootlin.com, ioana.ciornei@nxp.com,
- ecree@solarflare.com, aelior@marvell.com, akiyano@amazon.com,
- sthemmin@microsoft.com, ruxandra.radulescu@nxp.com, maximmi@nvidia.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, sgoutham@marvell.com,
- grygorii.strashko@ti.com, jonathan.lemon@gmail.com, qi.z.zhang@intel.com,
- mcroce@microsoft.com, michael.chan@broadcom.com, magnus.karlsson@intel.com,
- daniel@iogearbox.net, ilias.apalodimas@linaro.org, tariqt@nvidia.com,
- netanel@amazon.com, bpf@vger.kernel.org, saeedm@nvidia.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 16, 2020 at 02:24:56PM +0100, Bj=C3=B6rn T=C3=B6pel wrote:
-> On 2020-11-16 13:42, Michael S. Tsirkin wrote:
-> > On Mon, Nov 16, 2020 at 01:01:40PM +0100, Bj=C3=83=C2=B6rn T=C3=83=C2=
-=B6pel wrote:
-> > > =
+This patch implements EEE /*Energy Efficient Ethernet*/ status
+getting&setting.
+The i40e_get_eee() requesting PHY eee capabilities from firmware.
+The i40e_set_eee() function requests PHY eee capabilities
+from firmware and sets PHY eee advertising to full abilities or 0
+depending whether eee is to be enabled or disabled.
 
-> > > On 2020-11-16 12:55, Michael S. Tsirkin wrote:
-> > > > On Mon, Nov 16, 2020 at 12:04:12PM +0100, Bj=C3=83f=C3=82=C2=B6rn T=
-=C3=83f=C3=82=C2=B6pel wrote:
-> > > > > From: Bj=C3=83f=C3=82=C2=B6rn T=C3=83f=C3=82=C2=B6pel <bjorn.tope=
-l@intel.com>
-> > > > > =
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 123 +++++++++++++++++-
+ .../net/ethernet/intel/i40e/i40e_register.h   |   2 +
+ 2 files changed, 123 insertions(+), 2 deletions(-)
 
-> > > > > Add napi_id to the xdp_rxq_info structure, and make sure the XDP
-> > > > > socket pick up the napi_id in the Rx path. The napi_id is used to=
- find
-> > > > > the corresponding NAPI structure for socket busy polling.
-> > > > > =
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index e353c64..30f8bc1 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5435,12 +5435,131 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
+ 
+ static int i40e_get_eee(struct net_device *netdev, struct ethtool_eee *edata)
+ {
+-	return -EOPNOTSUPP;
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_aq_get_phy_abilities_resp phy_cfg;
++	enum i40e_status_code status = 0;
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_hw *hw = &pf->hw;
++
++	/* Get initial PHY capabilities */
++	status = i40e_aq_get_phy_capabilities(hw, false, true, &phy_cfg, NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Check whether NIC configuration is compatible with Energy Efficient
++	 * Ethernet (EEE) mode.
++	 */
++	if (phy_cfg.eee_capability == 0)
++		return -EOPNOTSUPP;
++
++	edata->supported = SUPPORTED_Autoneg;
++	edata->lp_advertised = edata->supported;
++
++	/* Get current configuration */
++	status = i40e_aq_get_phy_capabilities(hw, false, false, &phy_cfg, NULL);
++	if (status)
++		return -EAGAIN;
++
++	edata->advertised = phy_cfg.eee_capability ? SUPPORTED_Autoneg : 0U;
++	edata->eee_enabled = !!edata->advertised;
++	edata->tx_lpi_enabled = pf->stats.tx_lpi_status;
++
++	edata->eee_active = pf->stats.tx_lpi_status && pf->stats.rx_lpi_status;
++
++	return 0;
++}
++
++static int i40e_is_eee_param_supported(struct net_device *netdev,
++				       struct ethtool_eee *edata)
++{
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_ethtool_not_used {
++		u32 value;
++		const char *name;
++	} param[] = {
++		{edata->advertised & ~SUPPORTED_Autoneg, "advertise"},
++		{edata->tx_lpi_timer, "tx-timer"},
++		{edata->tx_lpi_enabled != pf->stats.tx_lpi_status, "tx-lpi"}
++	};
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(param); i++) {
++		if (param[i].value) {
++			netdev_info(netdev,
++				    "EEE setting %s not supported\n",
++				    param[i].name);
++			return -EOPNOTSUPP;
++		}
++	}
++
++	return 0;
+ }
+ 
+ static int i40e_set_eee(struct net_device *netdev, struct ethtool_eee *edata)
+ {
+-	return -EOPNOTSUPP;
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_aq_get_phy_abilities_resp abilities;
++	enum i40e_status_code status = I40E_SUCCESS;
++	struct i40e_aq_set_phy_config config;
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_hw *hw = &pf->hw;
++	__le16 eee_capability;
++
++	/* Deny parameters we don't support */
++	if (i40e_is_eee_param_supported(netdev, edata))
++		return -EOPNOTSUPP;
++
++	/* Get initial PHY capabilities */
++	status = i40e_aq_get_phy_capabilities(hw, false, true, &abilities,
++					      NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Check whether NIC configuration is compatible with Energy Efficient
++	 * Ethernet (EEE) mode.
++	 */
++	if (abilities.eee_capability == 0)
++		return -EOPNOTSUPP;
++
++	/* Cache initial EEE capability */
++	eee_capability = abilities.eee_capability;
++
++	/* Get current PHY configuration */
++	status = i40e_aq_get_phy_capabilities(hw, false, false, &abilities,
++					      NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Cache current PHY configuration */
++	config.phy_type = abilities.phy_type;
++	config.phy_type_ext = abilities.phy_type_ext;
++	config.link_speed = abilities.link_speed;
++	config.abilities = abilities.abilities |
++			   I40E_AQ_PHY_ENABLE_ATOMIC_LINK;
++	config.eeer = abilities.eeer_val;
++	config.low_power_ctrl = abilities.d3_lpan;
++	config.fec_config = abilities.fec_cfg_curr_mod_ext_info &
++			    I40E_AQ_PHY_FEC_CONFIG_MASK;
++
++	/* Set desired EEE state */
++	if (edata->eee_enabled) {
++		config.eee_capability = eee_capability;
++		config.eeer |= cpu_to_le32(I40E_PRTPM_EEER_TX_LPI_EN_MASK);
++	} else {
++		config.eee_capability = 0;
++		config.eeer &= cpu_to_le32(~I40E_PRTPM_EEER_TX_LPI_EN_MASK);
++	}
++
++	/* Apply modified PHY configuration */
++	status = i40e_aq_set_phy_config(hw, &config, NULL);
++	if (status)
++		return -EAGAIN;
++
++	return 0;
+ }
+ 
+ static const struct ethtool_ops i40e_ethtool_recovery_mode_ops = {
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index e97cc76..8d5c65b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -405,6 +405,8 @@
+ #define I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_SHIFT)
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT 31
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT)
++#define I40E_PRTPM_EEER_TX_LPI_EN_SHIFT 16
++#define I40E_PRTPM_EEER_TX_LPI_EN_MASK  I40E_MASK(0x1, I40E_PRTPM_EEER_TX_LPI_EN_SHIFT)
+ #define I40E_PRTPM_RLPIC 0x001E43A0 /* Reset: GLOBR */
+ #define I40E_PRTPM_TLPIC 0x001E43C0 /* Reset: GLOBR */
+ #define I40E_GLQF_FDCNT_0 0x00269BAC /* Reset: CORER */
+-- 
+2.17.1
 
-> > > > > Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-> > > > > Signed-off-by: Bj=C3=83f=C3=82=C2=B6rn T=C3=83f=C3=82=C2=B6pel <b=
-jorn.topel@intel.com>
-> > > > =
-
-> > > > A bunch of drivers just pass in 0. could you explain when
-> > > > is that ok? how bad is it if the wrong id is used?
-> > > > =
-
-> > > =
-
-> > > If zero is passed, which is a non-valid NAPI_ID, busy-polling will ne=
-ver
-> > > be performed.
-> > > =
-
-> > > Depending on the structure of the driver, napi might or might not be
-> > > initialized (napi_id !=3D 0) or even available. When it wasn't obviou=
-s, I
-> > > simply set it to zero.
-> > > =
-
-> > > So, short; No harm if zero, but busy-polling cannot be used in an XDP
-> > > context.
-> > > =
-
-> > > =
-
-> > > [...]
-> > > > > diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
-> > > > > index 21b71148c532..d71fe41595b7 100644
-> > > > > --- a/drivers/net/virtio_net.c
-> > > > > +++ b/drivers/net/virtio_net.c
-> > > > > @@ -1485,7 +1485,7 @@ static int virtnet_open(struct net_device *=
-dev)
-> > > > >    			if (!try_fill_recv(vi, &vi->rq[i], GFP_KERNEL))
-> > > > >    				schedule_delayed_work(&vi->refill, 0);
-> > > > > -		err =3D xdp_rxq_info_reg(&vi->rq[i].xdp_rxq, dev, i);
-> > > > > +		err =3D xdp_rxq_info_reg(&vi->rq[i].xdp_rxq, dev, i, 0);
-> > > > >    		if (err < 0)
-> > > > >    			return err;
-> > > > =
-
-> > > > Should this be rq.napi.napi_id ?
-> > > > =
-
-> > > =
-
-> > > Yes, if rq.napi.napi_id is valid here! Is it?
-> > =
-
-> > What initializes it? netif_napi_add? Then I think yes, it's
-> > initialized for all queues ...
-> > Needs to be tested naturally.
-> > =
-
-> =
-
-> Yeah, netid_napi_add does the id generation.
-> =
-
-> My idea was that driver would gradually move to a correct NAPI id (given
-> that it's hard to test w/o HW. Virtio however is simpler to test. :-)
-> =
-
-> =
-
-> Bj=C3=B6rn
-
-tun too ;)
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
 
 _______________________________________________
 Intel-wired-lan mailing list
