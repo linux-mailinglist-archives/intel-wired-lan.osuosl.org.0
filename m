@@ -1,65 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E3442B4636
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Nov 2020 15:49:47 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D65142B4633
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Nov 2020 15:49:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9213720522;
-	Mon, 16 Nov 2020 14:49:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 92FB185F43;
+	Mon, 16 Nov 2020 14:49:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gvjpiqIcCxWX; Mon, 16 Nov 2020 14:49:44 +0000 (UTC)
+	with ESMTP id Wk4T8bgyDPzj; Mon, 16 Nov 2020 14:49:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AD2D820518;
-	Mon, 16 Nov 2020 14:49:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03D5E85F5B;
+	Mon, 16 Nov 2020 14:49:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BBAF11BF2CA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:01:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D31B61BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:42:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A9E09870D0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:01:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CA0AE86802
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:42:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 06OmNJ8-2nhM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Nov 2020 12:01:54 +0000 (UTC)
+ with ESMTP id oZ9-MFkkGmry for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Nov 2020 12:42:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0891F87018
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:01:53 +0000 (UTC)
-IronPort-SDR: ob4Mw2kTmULFQrkD/Ggup6IcMzS69VECYvXi+g9uldZKAvPD2s5DbZtnCrze5fv2Kco+oRRsZV
- SMRGst6p/lzA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9806"; a="169951452"
-X-IronPort-AV: E=Sophos;i="5.77,482,1596524400"; d="scan'208";a="169951452"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2020 04:01:52 -0800
-IronPort-SDR: HF6lIwj5Ljczw1cQQ0gLhzVqEtLswe4P1qVPuAlfTMcb7Ax3VaRdVQKTPr7+0YprQv2g+u47Cj
- w14j+ADpJenQ==
-X-IronPort-AV: E=Sophos;i="5.77,482,1596524400"; d="scan'208";a="543578743"
-Received: from syeghiay-mobl.ger.corp.intel.com (HELO
- btopel-mobl.ger.intel.com) ([10.249.37.125])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2020 04:01:44 -0800
-To: "Michael S. Tsirkin" <mst@redhat.com>, =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?=
- <bjorn.topel@gmail.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2435286411
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 12:42:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605530571;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qEbpHcgw1tmnryDmccfjTomLDpsxLPelpNX7s8ClWec=;
+ b=e6iVMbe5neo5Qvd3KZdGnhIGAXU8cCe1WquXaPX6nOPobQ3iy14PwH2EgZOJBZoh/p6KUa
+ QhQeVnbkJSNHdL7bpfqGtG/Xu2D8cIm+uIDSfdjFsOknI4OPYF5E5sWB0m0a6r12C+nr3h
+ qz448frs18qVpKZnPsdDenKiaMbFLsE=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-485-PK-E7FDXMfe6_mHYXoj_fw-1; Mon, 16 Nov 2020 07:42:48 -0500
+X-MC-Unique: PK-E7FDXMfe6_mHYXoj_fw-1
+Received: by mail-wr1-f70.google.com with SMTP id f4so11072957wru.21
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Nov 2020 04:42:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=ebTze6DX+bt9ao6H/89yHeOnEFANqz0oC2+q+FvQf/4=;
+ b=gaorDWlTlIe8JEVCZRCDFvDGyxYdNqRpm43WOHwTff71s2Nvw/XOGd7nEuVjmLRIBv
+ QP5WsZ1yhTL7ERAqJX13e2iiYbn6GOUyFvtTEjES0RsrvevrcjWxdDJZwmIk4apXjRRE
+ 9+fAn0Uupt92ln03lSfewPnUE+0RqvOmcBu7lWm94nvtyGqSvMn4iog4Cr2Hcb2qP2ml
+ 8BKfTSfYGrbqqZdEZZtQAyHXvDxot9YwUMUaIAa8ANiQjmxc/elGChvz/0fAmXPqruuF
+ vOcuD2hWnV2QG4OdgqBcA2VMJcf7LiUAjcy3jAnnSDSjExI6Av34jq3T5u1DkiJZm8j9
+ rmZA==
+X-Gm-Message-State: AOAM530Zi9VaD/m8gEvDayiqaZ2yqDZOHZ3RKmbHmYHom52fDg1PPJUs
+ sAXJKsQbUQc5hDahzXb/Kt7GKCYXqCMX3u30MG3gO2rqVLz7pz4qujJoLf/bf+NjYVdrfczzoll
+ 4TN6JwcWJni9UKBR51GEvhjmyrMGjWg==
+X-Received: by 2002:adf:cd8d:: with SMTP id q13mr19546307wrj.61.1605530566835; 
+ Mon, 16 Nov 2020 04:42:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzvLNvqw2PCiGnQ/AnYIf9wyKk6yla1iwqBK5/HgTes54MIdQk05hIzkeOYR0tQ+cjEhCV+5Q==
+X-Received: by 2002:adf:cd8d:: with SMTP id q13mr19546248wrj.61.1605530566524; 
+ Mon, 16 Nov 2020 04:42:46 -0800 (PST)
+Received: from redhat.com ([147.161.8.56])
+ by smtp.gmail.com with ESMTPSA id w21sm19377559wmi.29.2020.11.16.04.42.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Nov 2020 04:42:45 -0800 (PST)
+Date: Mon, 16 Nov 2020 07:42:34 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>
+Message-ID: <20201116073848-mutt-send-email-mst@kernel.org>
 References: <20201116110416.10719-1-bjorn.topel@gmail.com>
  <20201116110416.10719-7-bjorn.topel@gmail.com>
  <20201116064953-mutt-send-email-mst@kernel.org>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
-Message-ID: <614a7ce4-2b6b-129b-de7d-71428f7a71f6@intel.com>
-Date: Mon, 16 Nov 2020 13:01:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
+ <614a7ce4-2b6b-129b-de7d-71428f7a71f6@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20201116064953-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
+In-Reply-To: <614a7ce4-2b6b-129b-de7d-71428f7a71f6@intel.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
 X-Mailman-Approved-At: Mon, 16 Nov 2020 14:49:28 +0000
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next v2 06/10] xsk: propagate
  napi_id to XDP socket Rx path
@@ -76,48 +103,90 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: kda@linux-powerpc.org, ast@kernel.org, edumazet@google.com,
- thomas.petazzoni@bootlin.com, ioana.ciornei@nxp.com, ecree@solarflare.com,
- aelior@marvell.com, akiyano@amazon.com, sthemmin@microsoft.com,
- ruxandra.radulescu@nxp.com, maximmi@nvidia.com,
+ netdev@vger.kernel.org, thomas.petazzoni@bootlin.com, ioana.ciornei@nxp.com,
+ ecree@solarflare.com, aelior@marvell.com, akiyano@amazon.com,
+ sthemmin@microsoft.com, ruxandra.radulescu@nxp.com, maximmi@nvidia.com,
  intel-wired-lan@lists.osuosl.org, kuba@kernel.org, sgoutham@marvell.com,
- grygorii.strashko@ti.com, qi.z.zhang@intel.com, mcroce@microsoft.com,
- michael.chan@broadcom.com, magnus.karlsson@intel.com, daniel@iogearbox.net,
- netdev@vger.kernel.org, ilias.apalodimas@linaro.org, tariqt@nvidia.com,
- netanel@amazon.com, jonathan.lemon@gmail.com, bpf@vger.kernel.org,
- saeedm@nvidia.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ grygorii.strashko@ti.com, jonathan.lemon@gmail.com, qi.z.zhang@intel.com,
+ mcroce@microsoft.com, michael.chan@broadcom.com, magnus.karlsson@intel.com,
+ daniel@iogearbox.net, ilias.apalodimas@linaro.org, tariqt@nvidia.com,
+ netanel@amazon.com, bpf@vger.kernel.org, saeedm@nvidia.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ck9uIDIwMjAtMTEtMTYgMTI6NTUsIE1pY2hhZWwgUy4gVHNpcmtpbiB3cm90ZToKPiBPbiBNb24s
-IE5vdiAxNiwgMjAyMCBhdCAxMjowNDoxMlBNICswMTAwLCBCasODwrZybiBUw4PCtnBlbCB3cm90
-ZToKPj4gRnJvbTogQmrDg8K2cm4gVMODwrZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNvbT4KPj4K
-Pj4gQWRkIG5hcGlfaWQgdG8gdGhlIHhkcF9yeHFfaW5mbyBzdHJ1Y3R1cmUsIGFuZCBtYWtlIHN1
-cmUgdGhlIFhEUAo+PiBzb2NrZXQgcGljayB1cCB0aGUgbmFwaV9pZCBpbiB0aGUgUnggcGF0aC4g
-VGhlIG5hcGlfaWQgaXMgdXNlZCB0byBmaW5kCj4+IHRoZSBjb3JyZXNwb25kaW5nIE5BUEkgc3Ry
-dWN0dXJlIGZvciBzb2NrZXQgYnVzeSBwb2xsaW5nLgo+Pgo+PiBBY2tlZC1ieTogSWxpYXMgQXBh
-bG9kaW1hcyA8aWxpYXMuYXBhbG9kaW1hc0BsaW5hcm8ub3JnPgo+PiBTaWduZWQtb2ZmLWJ5OiBC
-asODwrZybiBUw4PCtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgo+IAo+IEEgYnVuY2ggb2Yg
-ZHJpdmVycyBqdXN0IHBhc3MgaW4gMC4gY291bGQgeW91IGV4cGxhaW4gd2hlbgo+IGlzIHRoYXQg
-b2s/IGhvdyBiYWQgaXMgaXQgaWYgdGhlIHdyb25nIGlkIGlzIHVzZWQ/Cj4KCklmIHplcm8gaXMg
-cGFzc2VkLCB3aGljaCBpcyBhIG5vbi12YWxpZCBOQVBJX0lELCBidXN5LXBvbGxpbmcgd2lsbCBu
-ZXZlcgpiZSBwZXJmb3JtZWQuCgpEZXBlbmRpbmcgb24gdGhlIHN0cnVjdHVyZSBvZiB0aGUgZHJp
-dmVyLCBuYXBpIG1pZ2h0IG9yIG1pZ2h0IG5vdCBiZQppbml0aWFsaXplZCAobmFwaV9pZCAhPSAw
-KSBvciBldmVuIGF2YWlsYWJsZS4gV2hlbiBpdCB3YXNuJ3Qgb2J2aW91cywgSQpzaW1wbHkgc2V0
-IGl0IHRvIHplcm8uCgpTbywgc2hvcnQ7IE5vIGhhcm0gaWYgemVybywgYnV0IGJ1c3ktcG9sbGlu
-ZyBjYW5ub3QgYmUgdXNlZCBpbiBhbiBYRFAKY29udGV4dC4KCgpbLi4uXQo+PiAgIAo+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9uZXQvdmlydGlvX25ldC5jIGIvZHJpdmVycy9uZXQvdmlydGlvX25l
-dC5jCj4+IGluZGV4IDIxYjcxMTQ4YzUzMi4uZDcxZmU0MTU5NWI3IDEwMDY0NAo+PiAtLS0gYS9k
-cml2ZXJzL25ldC92aXJ0aW9fbmV0LmMKPj4gKysrIGIvZHJpdmVycy9uZXQvdmlydGlvX25ldC5j
-Cj4+IEBAIC0xNDg1LDcgKzE0ODUsNyBAQCBzdGF0aWMgaW50IHZpcnRuZXRfb3BlbihzdHJ1Y3Qg
-bmV0X2RldmljZSAqZGV2KQo+PiAgIAkJCWlmICghdHJ5X2ZpbGxfcmVjdih2aSwgJnZpLT5ycVtp
-XSwgR0ZQX0tFUk5FTCkpCj4+ICAgCQkJCXNjaGVkdWxlX2RlbGF5ZWRfd29yaygmdmktPnJlZmls
-bCwgMCk7Cj4+ICAgCj4+IC0JCWVyciA9IHhkcF9yeHFfaW5mb19yZWcoJnZpLT5ycVtpXS54ZHBf
-cnhxLCBkZXYsIGkpOwo+PiArCQllcnIgPSB4ZHBfcnhxX2luZm9fcmVnKCZ2aS0+cnFbaV0ueGRw
-X3J4cSwgZGV2LCBpLCAwKTsKPj4gICAJCWlmIChlcnIgPCAwKQo+PiAgIAkJCXJldHVybiBlcnI7
-Cj4+ICAgCj4gCj4gU2hvdWxkIHRoaXMgYmUgcnEubmFwaS5uYXBpX2lkID8KPgoKWWVzLCBpZiBy
-cS5uYXBpLm5hcGlfaWQgaXMgdmFsaWQgaGVyZSEgSXMgaXQ/CgoKQ2hlZXJzLApCasO2cm4KX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQt
-bGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3Rz
-Lm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Mon, Nov 16, 2020 at 01:01:40PM +0100, Bj=C3=B6rn T=C3=B6pel wrote:
+> =
+
+> On 2020-11-16 12:55, Michael S. Tsirkin wrote:
+> > On Mon, Nov 16, 2020 at 12:04:12PM +0100, Bj=C3=83=C2=B6rn T=C3=83=C2=
+=B6pel wrote:
+> > > From: Bj=C3=83=C2=B6rn T=C3=83=C2=B6pel <bjorn.topel@intel.com>
+> > > =
+
+> > > Add napi_id to the xdp_rxq_info structure, and make sure the XDP
+> > > socket pick up the napi_id in the Rx path. The napi_id is used to find
+> > > the corresponding NAPI structure for socket busy polling.
+> > > =
+
+> > > Acked-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+> > > Signed-off-by: Bj=C3=83=C2=B6rn T=C3=83=C2=B6pel <bjorn.topel@intel.c=
+om>
+> > =
+
+> > A bunch of drivers just pass in 0. could you explain when
+> > is that ok? how bad is it if the wrong id is used?
+> > =
+
+> =
+
+> If zero is passed, which is a non-valid NAPI_ID, busy-polling will never
+> be performed.
+> =
+
+> Depending on the structure of the driver, napi might or might not be
+> initialized (napi_id !=3D 0) or even available. When it wasn't obvious, I
+> simply set it to zero.
+> =
+
+> So, short; No harm if zero, but busy-polling cannot be used in an XDP
+> context.
+> =
+
+> =
+
+> [...]
+> > > diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
+> > > index 21b71148c532..d71fe41595b7 100644
+> > > --- a/drivers/net/virtio_net.c
+> > > +++ b/drivers/net/virtio_net.c
+> > > @@ -1485,7 +1485,7 @@ static int virtnet_open(struct net_device *dev)
+> > >   			if (!try_fill_recv(vi, &vi->rq[i], GFP_KERNEL))
+> > >   				schedule_delayed_work(&vi->refill, 0);
+> > > -		err =3D xdp_rxq_info_reg(&vi->rq[i].xdp_rxq, dev, i);
+> > > +		err =3D xdp_rxq_info_reg(&vi->rq[i].xdp_rxq, dev, i, 0);
+> > >   		if (err < 0)
+> > >   			return err;
+> > =
+
+> > Should this be rq.napi.napi_id ?
+> > =
+
+> =
+
+> Yes, if rq.napi.napi_id is valid here! Is it?
+
+What initializes it? netif_napi_add? Then I think yes, it's
+initialized for all queues ...
+Needs to be tested naturally.
+
+> =
+
+> Cheers,
+> Bj=C3=B6rn
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
