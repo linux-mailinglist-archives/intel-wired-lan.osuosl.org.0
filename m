@@ -1,70 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFAD72B6F4F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Nov 2020 20:50:51 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E15985784;
-	Tue, 17 Nov 2020 19:50:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 54Q1FQ2BoDVf; Tue, 17 Nov 2020 19:50:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D9B7585778;
-	Tue, 17 Nov 2020 19:50:48 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 48F3C1BF574
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 19:50:47 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 305C02B70D0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Nov 2020 22:21:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3F330844CD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 19:50:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB645857A4;
+	Tue, 17 Nov 2020 21:21:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R8vAL2fde27O; Tue, 17 Nov 2020 21:21:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0EC2F8461B;
+	Tue, 17 Nov 2020 21:21:45 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 80BE91BF2BD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 21:20:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7A94C86FAF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 21:20:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZulNA5Xqkx+L for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Nov 2020 19:50:46 +0000 (UTC)
+ with ESMTP id n4ADgoIR16-S for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Nov 2020 21:20:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 47D5F84237
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 19:50:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605642645;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=lE+FZheUZpti8mdkEGCCEVmsflsjl1KanhD5yFuSSVg=;
- b=eO8CK3bVrwiNSIVrh/nRG2xjip5RvfeszELc0OacJ70cZNLScwzQwQDMDhs5lFS+9hCgjb
- +O2dAQvZoGFqfcJ79upZeURiXFcQdXd4DDjA6qjtH9GjtZwijwaaRv7+pcK519Sjf/3A1r
- 9UiNuJg2+Cl9f7twNYxs5QEDx8PH+QM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-iCGLMcoNOuqaT5xaBk_Kwg-1; Tue, 17 Nov 2020 14:50:43 -0500
-X-MC-Unique: iCGLMcoNOuqaT5xaBk_Kwg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6BBB864142;
- Tue, 17 Nov 2020 19:50:42 +0000 (UTC)
-Received: from calimero.vinschen.de (ovpn-114-159.ams2.redhat.com
- [10.36.114.159])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BC106B8E1;
- Tue, 17 Nov 2020 19:50:42 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id ED2E9A80920; Tue, 17 Nov 2020 20:50:40 +0100 (CET)
-From: Corinna Vinschen <vinschen@redhat.com>
-To: intel-wired-lan@lists.osuosl.org,
-	netdev@vger.kernel.org
-Date: Tue, 17 Nov 2020 20:50:40 +0100
-Message-Id: <20201117195040.178651-1-vinschen@redhat.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 01F7586FAE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Nov 2020 21:20:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605648006;
+ bh=vvL09pv+PUiatC6tOx3OTbDVczBs3wy7hASTiHNjRog=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=ORN69zNJQEp34S/2K26auXAYHGry1w8ZitiSGVyS8jjWLgeNjg25UsX/g3CbSSv/O
+ 8lP01tJ1N2bahs11zjalxpK/wYaAeJr2FMUIR0Caz9OhYs++7tLt0H9udhcj5r62OC
+ Vk06PTjZu/Tk8uh0YMwT20KrzLUNVt8HRG/PzjJs=
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Subject: [Intel-wired-lan] igc: fix link speed advertising
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <160564800642.24253.1580711036123652762.git-patchwork-notify@kernel.org>
+Date: Tue, 17 Nov 2020 21:20:06 +0000
+References: <1605525167-14450-1-git-send-email-magnus.karlsson@gmail.com>
+In-Reply-To: <1605525167-14450-1-git-send-email-magnus.karlsson@gmail.com>
+To: Magnus Karlsson <magnus.karlsson@gmail.com>
+X-Mailman-Approved-At: Tue, 17 Nov 2020 21:21:44 +0000
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 0/5] xsk: i40e: Tx
+ performance improvements
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,79 +60,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: maciejromanfijalkowski@gmail.com, daniel@iogearbox.net,
+ netdev@vger.kernel.org, ast@kernel.org, jonathan.lemon@gmail.com,
+ kuba@kernel.org, bpf@vger.kernel.org, bjorn.topel@intel.com,
+ magnus.karlsson@intel.com, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Link speed advertising in igc has two problems:
+Hello:
 
-- When setting the advertisement via ethtool, the link speed is converted
-  to the legacy 32 bit representation for the intel PHY code.
-  This inadvertently drops ETHTOOL_LINK_MODE_2500baseT_Full_BIT (being
-  beyond bit 31).  As a result, any call to `ethtool -s ...' drops the
-  2500Mbit/s link speed from the PHY settings.  Only reloading the driver
-  alleviates that problem.
+This series was applied to bpf/bpf-next.git (refs/heads/master):
 
-  Fix this by converting the ETHTOOL_LINK_MODE_2500baseT_Full_BIT to the
-  Intel PHY ADVERTISE_2500_FULL bit explicitely.
+On Mon, 16 Nov 2020 12:12:42 +0100 you wrote:
+> This patch set improves the performance of mainly the Tx processing of
+> AF_XDP sockets. Though, patch 3 also improves the Rx path. All in all,
+> this patch set improves the throughput of the l2fwd xdpsock
+> application by around 11%. If we just take a look at Tx processing part,
+> it is improved by 35% to 40%.
+> 
+> Hopefully the new batched Tx interfaces should be of value to other
+> drivers implementing AF_XDP zero-copy support. But patch #3 is generic
+> and will improve performance of all drivers when using AF_XDP sockets
+> (under the premises explained in that patch).
+> 
+> [...]
 
-- Rather than checking the actual PHY setting, the .get_link_ksettings
-  function always fills link_modes.advertising with all link speeds
-  the device is capable of.
+Here is the summary with links:
+  - [bpf-next,v3,1/5] samples/bpf: increment Tx stats at sending
+    https://git.kernel.org/bpf/bpf-next/c/90da4b3208d3
+  - [bpf-next,v3,2/5] i40e: remove unnecessary sw_ring access from xsk Tx
+    https://git.kernel.org/bpf/bpf-next/c/f320460b9489
+  - [bpf-next,v3,3/5] xsk: introduce padding between more ring pointers
+    https://git.kernel.org/bpf/bpf-next/c/b8c7aece29bc
+  - [bpf-next,v3,4/5] xsk: introduce batched Tx descriptor interfaces
+    https://git.kernel.org/bpf/bpf-next/c/9349eb3a9d2a
+  - [bpf-next,v3,5/5] i40e: use batched xsk Tx interfaces to increase performance
+    https://git.kernel.org/bpf/bpf-next/c/3106c580fb7c
 
-  Fix this by checking the PHY autoneg_advertised settings and report
-  only the actually advertised speeds up to ethtool.
+You are awesome, thank you!
+--
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
----
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 24 +++++++++++++++-----
- 1 file changed, 18 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 61d331ce38cd..75cb4ca36bac 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1675,12 +1675,18 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
- 	cmd->base.phy_address = hw->phy.addr;
- 
- 	/* advertising link modes */
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Half);
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Full);
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Half);
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Full);
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 1000baseT_Full);
--	ethtool_link_ksettings_add_link_mode(cmd, advertising, 2500baseT_Full);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_10_HALF)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Half);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_10_FULL)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Full);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_100_HALF)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Half);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_100_FULL)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Full);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_1000_FULL)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 1000baseT_Full);
-+	if (hw->phy.autoneg_advertised & ADVERTISE_2500_FULL)
-+		ethtool_link_ksettings_add_link_mode(cmd, advertising, 2500baseT_Full);
- 
- 	/* set autoneg settings */
- 	if (hw->mac.autoneg == 1) {
-@@ -1792,6 +1798,12 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
- 
- 	ethtool_convert_link_mode_to_legacy_u32(&advertising,
- 						cmd->link_modes.advertising);
-+	/* Converting to legacy u32 drops ETHTOOL_LINK_MODE_2500baseT_Full_BIT.
-+	 * We have to check this and convert it to ADVERTISE_2500_FULL
-+	 * (aka ETHTOOL_LINK_MODE_2500baseX_Full_BIT) explicitely.
-+	 */
-+	if (ethtool_link_ksettings_test_link_mode(cmd, advertising, 2500baseT_Full))
-+		advertising |= ADVERTISE_2500_FULL;
- 
- 	if (cmd->base.autoneg == AUTONEG_ENABLE) {
- 		hw->mac.autoneg = 1;
--- 
-2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
