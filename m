@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA8DE2B813F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Nov 2020 16:55:59 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC4382B8903
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Nov 2020 01:22:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8E68A20023;
-	Wed, 18 Nov 2020 15:55:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 48D2086A8E;
+	Thu, 19 Nov 2020 00:22:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hnxE8Zq90GFN; Wed, 18 Nov 2020 15:55:57 +0000 (UTC)
+	with ESMTP id cBKouPgtGUrN; Thu, 19 Nov 2020 00:22:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 10E922044F;
-	Wed, 18 Nov 2020 15:55:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6BB9986A7D;
+	Thu, 19 Nov 2020 00:22:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 43C381BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Nov 2020 15:55:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B727A1BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Nov 2020 00:22:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3F21184B08
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Nov 2020 15:55:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AD89787283
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Nov 2020 00:22:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sJKRkKUgXJt7 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Nov 2020 15:55:36 +0000 (UTC)
+ with ESMTP id bodjk9NwHXk7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Nov 2020 00:22:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D759384A0F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Nov 2020 15:55:36 +0000 (UTC)
-Received: from kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net (unknown
- [163.114.132.5])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7D1A9247B3;
- Wed, 18 Nov 2020 15:55:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605714936;
- bh=r0CDRoFkB8BgLEPaa2ssyralnP0p6N+L5jBhaOttndg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=S9JnTs5f0QJFKzgr4+uG12DR9Qr/gWbsLxpvqU4dEzKQl32h8l4FGCWOQCE4rgoiY
- M8MH8Yy0aAw5aULGjQx4lSGrYy9xH1+s+58XL2ZZN+MtkBVsFpsHa1hSk7CO0Jhfnb
- O/q7DH9DjQa741gdG0QQFw9Wf1hDnUMCWBHyuyFg=
-Date: Wed, 18 Nov 2020 07:55:34 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20201118075534.2a5e63c4@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-In-Reply-To: <87d00b5uj7.fsf@intel.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 201D887281
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Nov 2020 00:22:40 +0000 (UTC)
+IronPort-SDR: cA2lCU9nMigVP9nCi0M0zZkyazmX0v1mrl3OePJqCn62X8NEIqcpQeEPuucCr/MZh4IhX6D3ZT
+ vaQz6B0ZDanA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9809"; a="158979725"
+X-IronPort-AV: E=Sophos;i="5.77,488,1596524400"; d="scan'208";a="158979725"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Nov 2020 16:22:39 -0800
+IronPort-SDR: WolBowoaeNrGJ0peStyiP01po1wnNwy2OasZK67igl9TNe+Fffxtkf9DoW7u78zFQ8bwu+eUWi
+ +fCfEpL8XUDA==
+X-IronPort-AV: E=Sophos;i="5.77,488,1596524400"; d="scan'208";a="532953743"
+Received: from prasadpr-mobl.amr.corp.intel.com (HELO ellie) ([10.212.21.86])
+ by fmsmga006-auth.fm.intel.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2020 16:22:38 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>
+In-Reply-To: <20201118125451.GC23320@hoboy.vegasvil.org>
 References: <20201114025704.GA15240@hoboy.vegasvil.org>
- <874klo7pwp.fsf@intel.com>
- <20201117014926.GA26272@hoboy.vegasvil.org>
- <87d00b5uj7.fsf@intel.com>
+ <874klo7pwp.fsf@intel.com> <20201117014926.GA26272@hoboy.vegasvil.org>
+ <87d00b5uj7.fsf@intel.com> <20201118125451.GC23320@hoboy.vegasvil.org>
+Date: Wed, 18 Nov 2020 16:22:37 -0800
+Message-ID: <87wnyi2o1e.fsf@intel.com>
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
  for PTP getcrosststamp()
@@ -69,22 +70,50 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: andre.guedes@intel.com, linux-pci@vger.kernel.org,
- Richard Cochran <richardcochran@gmail.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, bhelgaas@google.com
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, bhelgaas@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 17 Nov 2020 17:21:48 -0800 Vinicius Costa Gomes wrote:
-> > Also, what is the point of providing time measurements every 1
-> > millisecond?  
-> 
-> I sincerely have no idea. I had no power on how the hardware was
-> designed, and how PTM was implemented in HW.
+Hi Richard,
 
-Is the PTMed latency not dependent on how busy the bus is?
-That'd make 1ms more reasonable.
+Richard Cochran <richardcochran@gmail.com> writes:
+
+> On Tue, Nov 17, 2020 at 05:21:48PM -0800, Vinicius Costa Gomes wrote:
+>> Agreed that would be easiest/simplest. But what I have in hand seems to
+>> not like it, i.e. I have an earlier series implementing this "one shot" way
+>> and it's not reliable over long periods of time or against having the
+>> system time adjusted.
+>
+> Before we go inventing a new API, I think we should first understand
+> why the one shot thing fails.
+
+Talking with the hardware folks, they recommended using the periodic
+method, the one shot method was implemented as a debug/evaluation aid.
+
+The explanation I have is something along these lines: the hardware
+keeps track of the "delta" between the Master Time and its own clock,
+and uses it to calculate the timestamps exposed in the NIC registers. To
+have a better "delta" it needs more samples. And so it has improved
+stability when PTM dialogs happen more continuously, and that's the
+recommended way.
+
+The PCIe PTM specification doesn't suggest how the timestamps need to be
+exposed/calculated, and how long it needs to run, and it sounded to me
+that other implementations could have similar behavior.
+
+>
+> If there is problem with the system time being adjusted during PTM,
+> then that needs solving in any case!
+
+When PTM is running in the periodic mode, system clock adjustments are
+handled fine.
+
+
+Cheers,
+-- 
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
