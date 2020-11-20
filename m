@@ -1,84 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B8E62BABB2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 15:16:33 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B44AF2BB1D7
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 18:58:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AB91F20397;
-	Fri, 20 Nov 2020 14:16:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8C86E87640;
+	Fri, 20 Nov 2020 17:58:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1ZRdWSNoe5-K; Fri, 20 Nov 2020 14:16:31 +0000 (UTC)
+	with ESMTP id wLxJvgaGEtMy; Fri, 20 Nov 2020 17:58:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 037522E0EC;
-	Fri, 20 Nov 2020 14:16:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 22D03875F8;
+	Fri, 20 Nov 2020 17:58:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ABFC21BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 14:16:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6669F1BF332
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 17:58:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 959E22E0E3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 14:16:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 565B72E120
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 17:58:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3L7JYHUNdgat for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Nov 2020 14:16:25 +0000 (UTC)
+ with ESMTP id JSJDBrCBo3Ab for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Nov 2020 17:58:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f173.google.com (mail-pg1-f173.google.com
- [209.85.215.173])
- by silver.osuosl.org (Postfix) with ESMTPS id 0501B20397
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 14:16:24 +0000 (UTC)
-Received: by mail-pg1-f173.google.com with SMTP id v21so7411813pgi.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 06:16:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=KEjEGhmEzvhfjxAnQoE9R0iga9goTRtUqlUhzJyg2qQ=;
- b=rmu5CylR6oML6jLJKaGGZylZYDXpFUleODzdx8ODXqkwL5ZbtvJrM7cTSVI8T8uVxE
- P+Unb1Nhc/bMtsDzbttn263z0bjakrJ8R0D1Xcs16DM2HZUdYI/dUfeiJGJYY0P3hhu1
- odVny6iLsWsR70vTyW5khgYoMf8rap8qAD7SxwU3kSiCTcthD6k7fQDL2ZDYB1EWjzzx
- xlxXFTC9DpGqALn7JBUNdJHRlmo/MQtKB7pZ9yCvZSeNG7CAbG/hAFrUfByLlc+md6uw
- xprRB8DTj6TdDZRK/9q/8dpwUdawbsq6TK8Wj5qwnOt0SCObdL4cj3ciw3/jScClA8H1
- 9F6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=KEjEGhmEzvhfjxAnQoE9R0iga9goTRtUqlUhzJyg2qQ=;
- b=Me2H47i0i7Eeap9s2t9/q2eq8pvHbjrJlMJP/bnM3rcMJooYMvk+kIGOtaAPsHMXvH
- LnG/+nY2+vgJwKXeKYpvIpbTtNpFSQK+wruDfFzNDpbMTsgjEZ7LZXaRaTRzoyztFsId
- cEldEYQ1kwfO6FmaWPBwtzFGZnwvLk4qHZkWFowz03kB3oukS2nfjj3z1STdY0Ek6g8E
- q6cFjOmENnI9q4OicBmt+FhiWvDkOaXsBX6jnV0qb98K27XYQsliVVkD2jUCUW8LKSKc
- c9Ow79bd/Wpyi0Iub1kuyQgN81kFnm9OjVvsV+6AYNpSp3xbmKou6/1k0FC0MVscmDzY
- IJmg==
-X-Gm-Message-State: AOAM533n8hCT94MCfRijswoCqe+KCJIwMnQlemD/uCkseJFPWromnISE
- 7dwRzXLKNzFzVeauxiecxCU=
-X-Google-Smtp-Source: ABdhPJwSl/mRXdT+kWI2/PMGP7CwOB4vp2FCA92dJObq/nTTfL/VbZmWq8QnHEv9bdX+qhsZ+aCKxw==
-X-Received: by 2002:a63:ca0a:: with SMTP id n10mr17143580pgi.326.1605881784581; 
- Fri, 20 Nov 2020 06:16:24 -0800 (PST)
-Received: from hoboy.vegasvil.org (c-73-241-114-122.hsd1.ca.comcast.net.
- [73.241.114.122])
- by smtp.gmail.com with ESMTPSA id kr2sm3984871pjb.31.2020.11.20.06.16.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 06:16:23 -0800 (PST)
-Date: Fri, 20 Nov 2020 06:16:21 -0800
-From: Richard Cochran <richardcochran@gmail.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20201120141621.GC7027@hoboy.vegasvil.org>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2E2B22E107
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 17:58:16 +0000 (UTC)
+IronPort-SDR: BvhV50wqSmoZ5AZIoYF7BW/NJqEcTWrBjrvrvOp2jOTiqxp7z7nL/xtft/ONGs+bDc+g4QW5pp
+ dUAMQ2+iWD7g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="233131825"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="233131825"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2020 09:58:15 -0800
+IronPort-SDR: v/sTxd7qwryAj5uZni3OxkmBfo/XnOnKrjNiIsj/kIe4l7H2kfE8y+EXWppmTqEVaD5zeT1FPm
+ HwQPf1pIVoQw==
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331399391"
+Received: from deeppate-mobl1.amr.corp.intel.com (HELO ellie) ([10.212.22.160])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2020 09:58:14 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>
+In-Reply-To: <20201120141621.GC7027@hoboy.vegasvil.org>
 References: <20201114025704.GA15240@hoboy.vegasvil.org>
- <874klo7pwp.fsf@intel.com>
- <20201117014926.GA26272@hoboy.vegasvil.org>
- <87d00b5uj7.fsf@intel.com>
- <20201118125451.GC23320@hoboy.vegasvil.org>
- <87wnyi2o1e.fsf@intel.com>
+ <874klo7pwp.fsf@intel.com> <20201117014926.GA26272@hoboy.vegasvil.org>
+ <87d00b5uj7.fsf@intel.com> <20201118125451.GC23320@hoboy.vegasvil.org>
+ <87wnyi2o1e.fsf@intel.com> <20201120141621.GC7027@hoboy.vegasvil.org>
+Date: Fri, 20 Nov 2020 09:58:14 -0800
+Message-ID: <877dqf29mx.fsf@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87wnyi2o1e.fsf@intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
  for PTP getcrosststamp()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -100,50 +77,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Nov 18, 2020 at 04:22:37PM -0800, Vinicius Costa Gomes wrote:
+Hi Richard,
 
-> Talking with the hardware folks, they recommended using the periodic
-> method, the one shot method was implemented as a debug/evaluation aid.
+Richard Cochran <richardcochran@gmail.com> writes:
 
-I'm guessing ...
+> On Wed, Nov 18, 2020 at 04:22:37PM -0800, Vinicius Costa Gomes wrote:
+>
+>> Talking with the hardware folks, they recommended using the periodic
+>> method, the one shot method was implemented as a debug/evaluation aid.
+>
+> I'm guessing ...
+>
+> The HW generates pairs of time stamps, right?
 
-The HW generates pairs of time stamps, right?
+Not exactly.
 
-And these land in the device driver by means of an interrupt, right?
+On the PTM protocol there are four timestamps involved:
+ - T1, when the NIC sends the Request message;
+ - T2, when the PCIe root receives the Request message;
+ - T3, when the PCIe root sends the Response message;
+ - T4, when the NIC receives the Response message;
 
-If that is so, then maybe the best way to expose the pair to user
-space is to have a readable character device, like we have for the
-PTP_EXTTS_REQUEST2.  The ioctl to enable reporting could also set the
-message rate.
+The NIC registers expose these values (I am using ' to indicate
+timestamps captured on the previous cycle):
+ - T1 (on this cycle);
+ - T2 and T2' (on this and on the previous cycle);
+ - (T4 - T1) and (T4' - T1') (on this and on the previous cycle);
+ - (T3' - T2') (on the previous cycle).
 
-Although it will be a bit clunky, it looks like we have reserved room
-enough for a second, eight-byte time stamp.
+Yeah, applications would be most interested in a pair (host, device)
+timestamps, but as Miroslav said, a third value expressing the
+propagation delay from those values could be also useful.
+
+>
+> And these land in the device driver by means of an interrupt, right?
+
+Again, not exactly. I have to either poll for a "valid bit" on a status
+register or wait for a "fake" (all zeroes source and destination
+addresses) ethernet frame to arrive on a specific queue.
+
+Just for information the "fake" packet has different information:
+ - T1 (on this cycle);
+ - T2 (on this cycle);
+ - (T4' - T1') (on the previous cycle);
+ - (T3 - T2) (on this cycle);
+
+>
+> If that is so, then maybe the best way to expose the pair to user
+> space is to have a readable character device, like we have for the
+> PTP_EXTTS_REQUEST2.  The ioctl to enable reporting could also set the
+> message rate.
+
+Sounds reasonable.
+
+>
+> Although it will be a bit clunky, it looks like we have reserved room
+> enough for a second, eight-byte time stamp.
+
+The question is if we want to also expose some of the other values.
 
 
-	struct ptp_clock_time {
-		__s64 sec;  /* seconds */
-		__u32 nsec; /* nanoseconds */
-		__u32 reserved;
-// four here
-	};
-
-	struct ptp_extts_event {
-		struct ptp_clock_time t; /* Time event occured. */
-		unsigned int index;      /* Which channel produced the event. */
-		unsigned int flags;      /* Reserved for future use. */
-		unsigned int rsv[2];     /* Reserved for future use. */
-// eight here
-	};
-
-
-You could set 'flags' to mark this as a time stamp pair, and then
-stuff the system time stamp into rsv[2].
-
-Thoughts?
-
-Richard
-
-
+Cheers,
+-- 
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
