@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 291562BB294
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 19:25:37 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED6F72BB297
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 19:26:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B90B82E11B;
-	Fri, 20 Nov 2020 18:25:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A3CE38701D;
+	Fri, 20 Nov 2020 18:26:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MzB-Q1AhMNin; Fri, 20 Nov 2020 18:25:35 +0000 (UTC)
+	with ESMTP id mscy4RzpfXwm; Fri, 20 Nov 2020 18:26:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C2F292E124;
-	Fri, 20 Nov 2020 18:25:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 33DF18704F;
+	Fri, 20 Nov 2020 18:26:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E3ACA1BF327
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:30 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3887F1BF327
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D3C922E11B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3252A872EB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bn3kfq8fJLvM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Nov 2020 18:25:30 +0000 (UTC)
+ with ESMTP id t29uf9bNkSAp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Nov 2020 18:25:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id EB2242E117
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 901AE86D56
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 18:25:58 +0000 (UTC)
 Received: from embeddedor (187-162-31-110.static.axtel.net [187.162.31.110])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9FF6A2224C;
- Fri, 20 Nov 2020 18:25:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 33F332224C;
+ Fri, 20 Nov 2020 18:25:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605896729;
- bh=W0doVExi+7l5tGvbjfwECBr+mScLF6o8Q5o+wMEAbOQ=;
+ s=default; t=1605896758;
+ bh=dMsOIhXGuMLC9cmVk+Focv2+8LwcryL3ponccTcC2cU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=a8D/XtnmN3onvQ7+QylrGfLegFPEylbYocI6o4ld6v/HtHfOOwiQBKnNZKFmAHU/i
- 9bU8O21b6Msl6ofAQR0dy9g8IGiEbQHFpMI6zAZmMSefS8f/70a6mIvxHAXwMSE5Hk
- HJg8K5Zzu0NSdWOKKoxzzOlG5u/zpNuGHa9t3pIM=
-Date: Fri, 20 Nov 2020 12:25:35 -0600
+ b=vdoYk8zDjzIq4zK4+GavQCsqEvYIX+VZ0jtl62Y3MxYdgYnBybNhEf7E6qY/QkkRQ
+ fkZih2pMI0RVX33+kDfuDPbGl4/ysIHRpefnGqJcfop4MyvK60fxmEIkYkhjS2MMY4
+ ewF6r1BiOii/MbDXRXzHt1sn0KUhv18S5IKw7erg=
+Date: Fri, 20 Nov 2020 12:26:03 -0600
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Message-ID: <f4696db7798ce0efd9e1d10ce28f6413a09c3c57.1605896059.git.gustavoars@kernel.org>
+Message-ID: <a50df6c98bcda9454fa27b8d654b19528c5a8ae2.1605896059.git.gustavoars@kernel.org>
 References: <cover.1605896059.git.gustavoars@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1605896059.git.gustavoars@kernel.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-Subject: [Intel-wired-lan] [PATCH 009/141] igb: Fix fall-through warnings
+Subject: [Intel-wired-lan] [PATCH 012/141] ixgbe: Fix fall-through warnings
  for Clang
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -83,40 +83,61 @@ letting the code fall through to the next case.
 Link: https://github.com/KSPP/linux/issues/115
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/net/ethernet/intel/igb/e1000_phy.c   | 1 +
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 1 +
- drivers/net/ethernet/intel/igb/igb_ptp.c     | 1 +
- 3 files changed, 3 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c  | 2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_common.c | 1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c    | 1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c    | 1 +
+ 4 files changed, 5 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igb/e1000_phy.c b/drivers/net/ethernet/intel/igb/e1000_phy.c
-index 8c8eb82e6272..a018000f7db9 100644
---- a/drivers/net/ethernet/intel/igb/e1000_phy.c
-+++ b/drivers/net/ethernet/intel/igb/e1000_phy.c
-@@ -836,6 +836,7 @@ s32 igb_copper_link_setup_igp(struct e1000_hw *hw)
- 			break;
- 		case e1000_ms_auto:
- 			data &= ~CR_1000T_MS_ENABLE;
-+			break;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+index 8d3798a32f0e..cdfff510a27b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+@@ -1542,6 +1542,7 @@ s32 ixgbe_fdir_set_input_mask_82599(struct ixgbe_hw *hw,
+ 	switch (input_mask->formatted.vm_pool & 0x7F) {
+ 	case 0x0:
+ 		fdirm |= IXGBE_FDIRM_POOL;
++		break;
+ 	case 0x7F:
+ 		break;
+ 	default:
+@@ -1557,6 +1558,7 @@ s32 ixgbe_fdir_set_input_mask_82599(struct ixgbe_hw *hw,
+ 			hw_dbg(hw, " Error on src/dst port mask\n");
+ 			return IXGBE_ERR_CONFIG;
+ 		}
++		break;
+ 	case IXGBE_ATR_L4TYPE_MASK:
+ 		break;
+ 	default:
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
+index 62ddb452f862..8d5a01be1d99 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
+@@ -93,6 +93,7 @@ bool ixgbe_device_supports_autoneg_fc(struct ixgbe_hw *hw)
  		default:
  			break;
  		}
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 28baf203459a..486d3e67d3a9 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -3022,6 +3022,7 @@ static int igb_set_rxnfc(struct net_device *dev, struct ethtool_rxnfc *cmd)
- 		break;
- 	case ETHTOOL_SRXCLSRLDEL:
- 		ret = igb_del_ethtool_nfc_entry(adapter, cmd);
 +		break;
  	default:
  		break;
  	}
-diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
-index 7cc5428c3b3d..f3ff565da0a1 100644
---- a/drivers/net/ethernet/intel/igb/igb_ptp.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
-@@ -1008,6 +1008,7 @@ static int igb_ptp_set_timestamp_mode(struct igb_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+index df389a11d3af..0218f6c9b925 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+@@ -132,6 +132,7 @@ static void ixgbe_get_first_reg_idx(struct ixgbe_adapter *adapter, u8 tc,
+ 			else
+ 				*tx = (tc + 4) << 4;	/* 96, 112 */
+ 		}
++		break;
+ 	default:
+ 		break;
+ 	}
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+index 22a874eee2e8..23ddfd79fc8b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+@@ -999,6 +999,7 @@ static int ixgbe_ptp_set_timestamp_mode(struct ixgbe_adapter *adapter,
  	switch (config->tx_type) {
  	case HWTSTAMP_TX_OFF:
  		tsync_tx_ctl = 0;
