@@ -1,75 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 124AD2BB625
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 20:54:48 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ED722BB624
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Nov 2020 20:54:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A0DE28737B;
-	Fri, 20 Nov 2020 19:54:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E8EAE870EF;
+	Fri, 20 Nov 2020 19:54:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0aIIr7Kt+-5j; Fri, 20 Nov 2020 19:54:45 +0000 (UTC)
+	with ESMTP id FytoRpg0Wje6; Fri, 20 Nov 2020 19:54:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EE4D087377;
-	Fri, 20 Nov 2020 19:54:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C9C387075;
+	Fri, 20 Nov 2020 19:54:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 10AD71BF289
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:30:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A08FB1BF289
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:51:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 094CC8711F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:30:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 96B7E8706F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:51:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oo-XQKOuD6o8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Nov 2020 19:30:43 +0000 (UTC)
+ with ESMTP id 69tNA1Dot8vN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Nov 2020 19:51:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7344787041
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:30:43 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id w14so8826533pfd.7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 11:30:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
- b=GgFl3K9IS/lWsdMjkEVVAtTSDzsQ0sxEOabPKwuHzNJyTA7s1nVN/P5Py+wtAIOvbE
- i43RryzoLL4QMDFVI6bDxTe0ngekUN0rycJ/u5dixn0o4ZWxiMdHtnF6M1zgV7bxdmjG
- OxnZTS8PQwcd6ZCwnahaxVB8GYQEw6f4nxFx4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=3bv50j9tOMZCSWAChUvUk5K6TgooTRt3SRcQZBJ9fcA=;
- b=sbK1OfI6sFjU/HgHu6kyJAuSfaO3HcDEpDlvkaDhG4d2drtHAQoq9REcRyr8Q9NBkP
- GhtUpz+BrJEmw0AhiEuIjyj8y1KHdwbGB2qJXlKobxtk08uFNZ2YSB6vjGttpiYOEE/N
- ci0v0yEhcuhdQMdfAgpi9eXt89kxa6/SZWPQ4uvskxWKI7WkST01S+4vZH5csBJVNno8
- fkWQrlvLd65Q9YxQzNWBsWWfSO+6X8nZbVb18TArIWaAUEgn1tv+CGDrJhzDryvjdR/Q
- 5pqyzbytjqmFAzDGCkIIp0MwC8TiWxlCf4awpsilz47Vwg9ni0/7rXTBrlxJ6pinTAWJ
- g7rA==
-X-Gm-Message-State: AOAM531Tdcug4Vks540bR22yajHClvkqgkWX+W4XT0QiEAMhlH9ik2hL
- jPk4aB8c9V5DbOWTEqtF9cs30Q==
-X-Google-Smtp-Source: ABdhPJwl3VgOHP/MWhG5DtpaEL0Yyt6dBbRzpe/94BRgWnGkgcq6AJ5JXkZmDK0TJqDkyAhq9Y3Q+Q==
-X-Received: by 2002:a63:5043:: with SMTP id q3mr17907345pgl.137.1605900643099; 
- Fri, 20 Nov 2020 11:30:43 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id d10sm4785681pjj.38.2020.11.20.11.30.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 11:30:41 -0800 (PST)
-Date: Fri, 20 Nov 2020 11:30:40 -0800
-From: Kees Cook <keescook@chromium.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <202011201129.B13FDB3C@keescook>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9184C870B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Nov 2020 19:51:48 +0000 (UTC)
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.6])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ADA4D206B6;
+ Fri, 20 Nov 2020 19:51:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605901908;
+ bh=RBzOhaxiAPO90htsWQNreeN48VhmFALIIs8F+S8F2tg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=0HJ898xky9A4AiX47c8E/kv2vloKTCLDsa1B08r0Ns0UI6ViLC8sEEmzvLmSWmHDR
+ rh+QM7asV5JMfRqDaW/zMVHUMAG8pWVLOHT3LXTHM6aAp9QNwMcpVcVlrfF8wRUqJ9
+ pWgdeTKSVxQ+8c5KHivLBQCp2OjpIRpNZteZuQdk=
+Date: Fri, 20 Nov 2020 11:51:42 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Kees Cook <keescook@chromium.org>
+Message-ID: <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <202011201129.B13FDB3C@keescook>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011201129.B13FDB3C@keescook>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 X-Mailman-Approved-At: Fri, 20 Nov 2020 19:54:41 +0000
 Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
  Clang
@@ -128,40 +111,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
-> On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:
-> > This series aims to fix almost all remaining fall-through warnings in
-> > order to enable -Wimplicit-fallthrough for Clang.
+On Fri, 20 Nov 2020 11:30:40 -0800 Kees Cook wrote:
+> On Fri, Nov 20, 2020 at 10:53:44AM -0800, Jakub Kicinski wrote:
+> > On Fri, 20 Nov 2020 12:21:39 -0600 Gustavo A. R. Silva wrote:  
+> > > This series aims to fix almost all remaining fall-through warnings in
+> > > order to enable -Wimplicit-fallthrough for Clang.
+> > > 
+> > > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
+> > > add multiple break/goto/return/fallthrough statements instead of just
+> > > letting the code fall through to the next case.
+> > > 
+> > > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
+> > > change[1] is meant to be reverted at some point. So, this patch helps
+> > > to move in that direction.
+> > > 
+> > > Something important to mention is that there is currently a discrepancy
+> > > between GCC and Clang when dealing with switch fall-through to empty case
+> > > statements or to cases that only contain a break/continue/return
+> > > statement[2][3][4].  
 > > 
-> > In preparation to enable -Wimplicit-fallthrough for Clang, explicitly
-> > add multiple break/goto/return/fallthrough statements instead of just
-> > letting the code fall through to the next case.
+> > Are we sure we want to make this change? Was it discussed before?
 > > 
-> > Notice that in order to enable -Wimplicit-fallthrough for Clang, this
-> > change[1] is meant to be reverted at some point. So, this patch helps
-> > to move in that direction.
+> > Are there any bugs Clangs puritanical definition of fallthrough helped
+> > find?
 > > 
-> > Something important to mention is that there is currently a discrepancy
-> > between GCC and Clang when dealing with switch fall-through to empty case
-> > statements or to cases that only contain a break/continue/return
-> > statement[2][3][4].
+> > IMVHO compiler warnings are supposed to warn about issues that could
+> > be bugs. Falling through to default: break; can hardly be a bug?!  
 > 
-> Are we sure we want to make this change? Was it discussed before?
-> 
-> Are there any bugs Clangs puritanical definition of fallthrough helped
-> find?
-> 
-> IMVHO compiler warnings are supposed to warn about issues that could
-> be bugs. Falling through to default: break; can hardly be a bug?!
+> It's certainly a place where the intent is not always clear. I think
+> this makes all the cases unambiguous, and doesn't impact the machine
+> code, since the compiler will happily optimize away any behavioral
+> redundancy.
 
-It's certainly a place where the intent is not always clear. I think
-this makes all the cases unambiguous, and doesn't impact the machine
-code, since the compiler will happily optimize away any behavioral
-redundancy.
+If none of the 140 patches here fix a real bug, and there is no change
+to machine code then it sounds to me like a W=2 kind of a warning.
 
-
--- 
-Kees Cook
+I think clang is just being annoying here, but if I'm the only one who
+feels this way chances are I'm wrong :)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
