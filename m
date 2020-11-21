@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06D672BBB40
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:47:02 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04C342BBB36
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:46:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B62952E142;
-	Sat, 21 Nov 2020 00:47:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B78F087285;
+	Sat, 21 Nov 2020 00:46:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vscIblBAqeNp; Sat, 21 Nov 2020 00:46:49 +0000 (UTC)
+	with ESMTP id 6xhag+DiNPNx; Sat, 21 Nov 2020 00:46:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 423F42E146;
-	Sat, 21 Nov 2020 00:46:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C6774872D3;
+	Sat, 21 Nov 2020 00:46:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D59A81BF475
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:39 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A5FB1BF475
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D1F742E112
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 35B7987652
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YpoMLMws01xZ for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id XZ6sinGQxRB8 for <intel-wired-lan@lists.osuosl.org>;
  Sat, 21 Nov 2020 00:46:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id 3D28F2E110
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4E10887531
  for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:35 +0000 (UTC)
-IronPort-SDR: WvP6dWX5wkEwp94NGSlDR/+OEBhYzZbzt33Dq4fl7uvjqw0R3364XjNyUofhmV7KPh6Hs0HHPM
- q6NcR51in3ng==
-X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053543"
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053543"
+IronPort-SDR: QDyw21oKESa9wWRdBm2JTkslYoopKznFplYD3DBPz3f7ZZxCfEoQl8976gdowreHC2Ygp/ACET
+ cIy+kZXGxa1A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053544"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053544"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Nov 2020 16:46:33 -0800
-IronPort-SDR: FaAV3NP4gk+BKgNBmMjDVa7tOBsF9g5LnDUN4lKR6ruE7C+V8XH16KRPskOxJFYsXYNKQWiyHZ
- m4JCpCTKI+5Q==
+ 20 Nov 2020 16:46:34 -0800
+IronPort-SDR: dPaH/96iK/+B2fzsOJVfJ2g87JQ4UP3qq2CwOmQaLQRl6MoMpYLJwpqwcSzfzXgteLqQr0eH+Z
+ diaArVaaigRw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520160"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520161"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga006.jf.intel.com with ESMTP; 20 Nov 2020 16:46:33 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 20 Nov 2020 16:39:29 -0800
-Message-Id: <20201121003938.48514-5-anthony.l.nguyen@intel.com>
+Date: Fri, 20 Nov 2020 16:39:30 -0800
+Message-Id: <20201121003938.48514-6-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
 References: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S54 05/14] ice: Fix AF_XDP multi queue TX
- scaling issue
+Subject: [Intel-wired-lan] [PATCH S54 06/14] ice: Optimize AF_XDP zero-copy
+ TX completion path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,236 +75,160 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sridhar Samudrala <sridhar.samudrala@intel.com>
 
-Set Report Status(RS) bit less frequently allowing the hardware to
-reduce descriptor writebacks which in turn reduces contention between
-CPU and PCIe.
+Improve the performance of the AF_XDP zero-copy Tx completion path.
+When there are no XDP buffers being sent using XDP_TX or XDP_REDIRECT,
+we do not have go through the SW ring to clean up any entries since
+the AF_XDP path does not use these. In these cases, just fast forward
+the next-to-use counter and skip going through the SW ring.
 
-In ice_xmit_zc routine, RS bit is set only in the last descriptor, just
-before bumping the tail. A new field 'next_rs_idx' is introduced in
-struct ice_ring to store the index of the last descriptor where RS bit is
-set.
+Removed an unused 1bit field in struct ice_ring 'ring_active' and used
+the 16bit hole in the 2nd cache line for the newly introduced field
+'xdp_tx_active' to track XDP buffers that are being set using XDP_TX or
+XDP_REDIRECT.
 
-In the TX cleanup routine, DD bit is checked only in the descriptor
-corresponding to the next_rs_idx and used to figure out the frames that
-are ready to be cleaned.
+This is based on a similar patch for i40e by Magnus Karlsson.
 
-Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
 Signed-off-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx.h |  5 +-
- drivers/net/ethernet/intel/ice/ice_xsk.c  | 90 +++++++++++------------
- drivers/net/ethernet/intel/ice/ice_xsk.h  |  5 +-
- 4 files changed, 49 insertions(+), 53 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  2 --
+ drivers/net/ethernet/intel/ice/ice_main.c     |  1 -
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |  3 +--
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  1 +
+ drivers/net/ethernet/intel/ice/ice_xsk.c      | 17 ++++++++++++++---
+ 5 files changed, 16 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index d2493fa71336..884581a9c4c7 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1623,7 +1623,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
- 	 */
- 	ice_for_each_ring(ring, q_vector->tx) {
- 		bool wd = ring->xsk_pool ?
--			  ice_clean_tx_irq_zc(ring, budget) :
-+			  ice_clean_tx_irq_zc(ring) :
- 			  ice_clean_tx_irq(ring, budget);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 1288a7718f34..4a6ad5ca99e0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1263,7 +1263,6 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
  
- 		if (!wd)
+ 		ring->q_index = i;
+ 		ring->reg_idx = vsi->txq_map[i];
+-		ring->ring_active = false;
+ 		ring->vsi = vsi;
+ 		ring->dev = dev;
+ 		ring->count = vsi->num_tx_desc;
+@@ -1281,7 +1280,6 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
+ 
+ 		ring->q_index = i;
+ 		ring->reg_idx = vsi->rxq_map[i];
+-		ring->ring_active = false;
+ 		ring->vsi = vsi;
+ 		ring->netdev = vsi->netdev;
+ 		ring->dev = dev;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index fe2dd773902a..617e5c5f42cb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2279,7 +2279,6 @@ static int ice_xdp_alloc_setup_rings(struct ice_vsi *vsi)
+ 
+ 		xdp_ring->q_index = xdp_q_idx;
+ 		xdp_ring->reg_idx = vsi->txq_map[xdp_q_idx];
+-		xdp_ring->ring_active = false;
+ 		xdp_ring->vsi = vsi;
+ 		xdp_ring->netdev = NULL;
+ 		xdp_ring->dev = dev;
 diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index ff1a1cbd078e..d7ca82871b7c 100644
+index d7ca82871b7c..471c098b3dfb 100644
 --- a/drivers/net/ethernet/intel/ice/ice_txrx.h
 +++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -283,7 +283,10 @@ struct ice_ring {
- 	/* used in interrupt processing */
- 	u16 next_to_use;
- 	u16 next_to_clean;
--	u16 next_to_alloc;
-+	union {
-+		u16 next_to_alloc;
-+		u16 next_rs_idx;
-+	};
+@@ -275,8 +275,6 @@ struct ice_ring {
+ 	u16 q_index;			/* Queue number of ring */
+ 	u16 q_handle;			/* Queue handle per TC */
+ 
+-	u8 ring_active:1;		/* is ring online or not */
+-
+ 	u16 count;			/* Number of descriptors */
+ 	u16 reg_idx;			/* HW register index of the ring */
+ 
+@@ -287,6 +285,7 @@ struct ice_ring {
+ 		u16 next_to_alloc;
+ 		u16 next_rs_idx;
+ 	};
++	u16 xdp_tx_active;
  
  	/* stats structs */
  	struct ice_q_stats	stats;
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+index bc2f4390b51d..6da78be9ae8b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+@@ -240,6 +240,7 @@ int ice_xmit_xdp_ring(void *data, u16 size, struct ice_ring *xdp_ring)
+ 	 */
+ 	smp_wmb();
+ 
++	xdp_ring->xdp_tx_active++;
+ 	i++;
+ 	if (i == xdp_ring->count)
+ 		i = 0;
 diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 4d44431c71a0..d32a8c338366 100644
+index d32a8c338366..793e39e30d4c 100644
 --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
 +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -617,20 +617,14 @@ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget)
+@@ -616,6 +616,7 @@ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget)
+  */
  static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
  {
++	unsigned int sent_frames = 0, total_bytes = 0;
  	struct ice_tx_desc *tx_desc = NULL;
--	bool work_done = true;
-+	u16 ntu = xdp_ring->next_to_use;
+ 	u16 ntu = xdp_ring->next_to_use;
  	struct xdp_desc desc;
- 	dma_addr_t dma;
- 
- 	while (likely(budget-- > 0)) {
- 		struct ice_tx_buf *tx_buf;
- 
--		if (unlikely(!ICE_DESC_UNUSED(xdp_ring))) {
--			xdp_ring->tx_stats.tx_busy++;
--			work_done = false;
--			break;
--		}
--
--		tx_buf = &xdp_ring->tx_buf[xdp_ring->next_to_use];
-+		tx_buf = &xdp_ring->tx_buf[ntu];
- 
- 		if (!xsk_tx_peek_desc(xdp_ring->xsk_pool, &desc))
- 			break;
-@@ -641,22 +635,27 @@ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
- 
- 		tx_buf->bytecount = desc.len;
- 
--		tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
-+		tx_desc = ICE_TX_DESC(xdp_ring, ntu);
- 		tx_desc->buf_addr = cpu_to_le64(dma);
- 		tx_desc->cmd_type_offset_bsz =
--			ice_build_ctob(ICE_TXD_LAST_DESC_CMD, 0, desc.len, 0);
-+			ice_build_ctob(ICE_TX_DESC_CMD_EOP, 0, desc.len, 0);
- 
--		xdp_ring->next_to_use++;
--		if (xdp_ring->next_to_use == xdp_ring->count)
--			xdp_ring->next_to_use = 0;
-+		xdp_ring->next_rs_idx = ntu;
-+		ntu++;
-+		if (ntu == xdp_ring->count)
-+			ntu = 0;
+@@ -644,6 +645,8 @@ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
+ 		ntu++;
+ 		if (ntu == xdp_ring->count)
+ 			ntu = 0;
++		sent_frames++;
++		total_bytes += tx_buf->bytecount;
  	}
  
  	if (tx_desc) {
-+		xdp_ring->next_to_use = ntu;
-+		/* Set RS bit for the last frame and bump tail ptr */
-+		tx_desc->cmd_type_offset_bsz |=
-+			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+@@ -653,6 +656,7 @@ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
+ 			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
  		ice_xdp_ring_update_tail(xdp_ring);
  		xsk_tx_release(xdp_ring->xsk_pool);
++		ice_update_tx_ring_stats(xdp_ring, sent_frames, total_bytes);
  	}
  
--	return budget > 0 && work_done;
-+	return budget > 0;
- }
- 
- /**
-@@ -676,30 +675,34 @@ ice_clean_xdp_tx_buf(struct ice_ring *xdp_ring, struct ice_tx_buf *tx_buf)
- /**
-  * ice_clean_tx_irq_zc - Completes AF_XDP entries, and cleans XDP entries
-  * @xdp_ring: XDP Tx ring
-- * @budget: NAPI budget
-  *
-- * Returns true if cleanup/tranmission is done.
-+ * Returns true if cleanup/transmission is done.
-  */
--bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget)
-+bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring)
+ 	return budget > 0;
+@@ -667,6 +671,7 @@ static void
+ ice_clean_xdp_tx_buf(struct ice_ring *xdp_ring, struct ice_tx_buf *tx_buf)
  {
--	int total_packets = 0, total_bytes = 0;
--	s16 ntc = xdp_ring->next_to_clean;
--	struct ice_tx_desc *tx_desc;
-+	u16 next_rs_idx = xdp_ring->next_rs_idx;
-+	u16 ntc = xdp_ring->next_to_clean;
-+	struct ice_tx_desc *next_rs_desc;
- 	struct ice_tx_buf *tx_buf;
-+	u16 frames_ready = 0;
-+	u32 total_bytes = 0;
- 	u32 xsk_frames = 0;
--	bool xmit_done;
-+	u16 i;
+ 	xdp_return_frame((struct xdp_frame *)tx_buf->raw_buf);
++	xdp_ring->xdp_tx_active--;
+ 	dma_unmap_single(xdp_ring->dev, dma_unmap_addr(tx_buf, dma),
+ 			 dma_unmap_len(tx_buf, len), DMA_TO_DEVICE);
+ 	dma_unmap_len_set(tx_buf, len, 0);
+@@ -701,6 +706,11 @@ bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring)
+ 	if (!frames_ready)
+ 		goto out_xmit;
  
--	tx_desc = ICE_TX_DESC(xdp_ring, ntc);
--	tx_buf = &xdp_ring->tx_buf[ntc];
--	ntc -= xdp_ring->count;
-+	next_rs_desc = ICE_TX_DESC(xdp_ring, next_rs_idx);
-+	if (next_rs_desc->cmd_type_offset_bsz &
-+		cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)) {
-+		if (next_rs_idx >= ntc)
-+			frames_ready = next_rs_idx - ntc;
-+		else
-+			frames_ready = next_rs_idx + xdp_ring->count - ntc;
++	if (likely(!xdp_ring->xdp_tx_active)) {
++		xsk_frames = frames_ready;
++		goto skip;
 +	}
++
+ 	for (i = 0; i < frames_ready; i++) {
+ 		tx_buf = &xdp_ring->tx_buf[ntc];
  
--	do {
--		if (!(tx_desc->cmd_type_offset_bsz &
--		      cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)))
--			break;
-+	if (!frames_ready)
-+		goto out_xmit;
+@@ -718,13 +728,14 @@ bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring)
+ 			ntc = 0;
+ 	}
  
--		total_bytes += tx_buf->bytecount;
--		total_packets++;
-+	for (i = 0; i < frames_ready; i++) {
-+		tx_buf = &xdp_ring->tx_buf[ntc];
- 
- 		if (tx_buf->raw_buf) {
- 			ice_clean_xdp_tx_buf(xdp_ring, tx_buf);
-@@ -708,34 +711,25 @@ bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget)
- 			xsk_frames++;
- 		}
- 
--		tx_desc->cmd_type_offset_bsz = 0;
--		tx_buf++;
--		tx_desc++;
--		ntc++;
--
--		if (unlikely(!ntc)) {
--			ntc -= xdp_ring->count;
--			tx_buf = xdp_ring->tx_buf;
--			tx_desc = ICE_TX_DESC(xdp_ring, 0);
--		}
--
--		prefetch(tx_desc);
-+		total_bytes += tx_buf->bytecount;
- 
--	} while (likely(--budget));
-+		++ntc;
-+		if (ntc >= xdp_ring->count)
-+			ntc = 0;
-+	}
- 
--	ntc += xdp_ring->count;
- 	xdp_ring->next_to_clean = ntc;
+-	xdp_ring->next_to_clean = ntc;
++skip:
++	xdp_ring->next_to_clean += frames_ready;
++	if (unlikely(xdp_ring->next_to_clean >= xdp_ring->count))
++		xdp_ring->next_to_clean -= xdp_ring->count;
  
  	if (xsk_frames)
  		xsk_tx_completed(xdp_ring->xsk_pool, xsk_frames);
  
-+	ice_update_tx_ring_stats(xdp_ring, frames_ready, total_bytes);
-+
-+out_xmit:
+-	ice_update_tx_ring_stats(xdp_ring, frames_ready, total_bytes);
+-
+ out_xmit:
  	if (xsk_uses_need_wakeup(xdp_ring->xsk_pool))
  		xsk_set_tx_need_wakeup(xdp_ring->xsk_pool);
- 
--	ice_update_tx_ring_stats(xdp_ring, total_packets, total_bytes);
--	xmit_done = ice_xmit_zc(xdp_ring, ICE_DFLT_IRQ_WORK);
--
--	return budget > 0 && xmit_done;
-+	return ice_xmit_zc(xdp_ring, ICE_DESC_UNUSED(xdp_ring));
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
-index fad783690134..4aa84b9c2f90 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.h
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
-@@ -12,7 +12,7 @@ struct ice_vsi;
- int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool,
- 		       u16 qid);
- int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget);
--bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget);
-+bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring);
- int ice_xsk_wakeup(struct net_device *netdev, u32 queue_id, u32 flags);
- bool ice_alloc_rx_bufs_zc(struct ice_ring *rx_ring, u16 count);
- bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
-@@ -35,8 +35,7 @@ ice_clean_rx_irq_zc(struct ice_ring __always_unused *rx_ring,
- }
- 
- static inline bool
--ice_clean_tx_irq_zc(struct ice_ring __always_unused *xdp_ring,
--		    int __always_unused budget)
-+ice_clean_tx_irq_zc(struct ice_ring __always_unused *xdp_ring)
- {
- 	return false;
- }
 -- 
 2.20.1
 
