@@ -1,59 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFDFE2BBB41
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:47:06 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CD722BBB3C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:46:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 83C4B873FB;
-	Sat, 21 Nov 2020 00:47:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D6E886E7A;
+	Sat, 21 Nov 2020 00:46:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id enzuSMLOByI8; Sat, 21 Nov 2020 00:47:05 +0000 (UTC)
+	with ESMTP id JoLhPfhvlcDW; Sat, 21 Nov 2020 00:46:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 03CA88735C;
-	Sat, 21 Nov 2020 00:47:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5DFB486E95;
+	Sat, 21 Nov 2020 00:46:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1CB1F1BF475
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:47:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2446F1BF475
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 02F3C2E112
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:47:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 07FA92E147
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wc0NV5goftd6 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Nov 2020 00:46:34 +0000 (UTC)
+ with ESMTP id BYVbLNESAFxv for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Nov 2020 00:46:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id C1B5E20346
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:33 +0000 (UTC)
-IronPort-SDR: Qghx/yj4WHSTdJWkYZ3bQ8Lt24VX/YfV+SXqz78j0XQYei41V4ExecAi9v3mx/TNqUhasWHJoo
- UnBd7U1VJ4fg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053539"
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053539"
+ by silver.osuosl.org (Postfix) with ESMTPS id 0034F2E0E7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:34 +0000 (UTC)
+IronPort-SDR: vyZ1DZGui6tPdP+/SscYgWZ2NnioK0g/JL/msxr+oF3Jn6uaL/6G9jXt1J0gk+HiIOiTglA2tw
+ ufKA4hGcbY9g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053540"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053540"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  20 Nov 2020 16:46:33 -0800
-IronPort-SDR: VDAHElyAnCL5LdVVoZ/HZbqYTAgcNVCJxKpewOgslXNxnalsvaPV9FuSjOwSO0ERMOUdLGVMpY
- YNycjExtS86w==
+IronPort-SDR: fZcV18XXBBCO6dzCi+gb9LKLzJnRgJKSgQ0Xp20u89piLT/aRDTfwTdZpaR4HcATq2GhoFJWUE
+ D+8fqqI0v6Xg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520156"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520157"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga006.jf.intel.com with ESMTP; 20 Nov 2020 16:46:33 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 20 Nov 2020 16:39:25 -0800
-Message-Id: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
+Date: Fri, 20 Nov 2020 16:39:26 -0800
+Message-Id: <20201121003938.48514-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
+References: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S54 01/14] Documentation: ice: update
- documentation
+Subject: [Intel-wired-lan] [PATCH S54 02/14] ice: Add initial support
+ framework for LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,1072 +73,705 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice documentation has not been updated since the initial commits of the
-driver. Update the documentation with features and information that are now
-available.
+From: Dave Ertman <david.m.ertman@intel.com>
 
+Add the framework and initial implementation for receiving and processing
+netdev bonding events.  This is only the software support and the
+implementation of the HW offload for bonding support will be coming at a
+later time.  There are some architectural gaps that need to be closed
+before that happens.
+
+Because this is a software only solution that supports in kernel bonding,
+SR-IOV is not supported with this implementation.
+
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- .../device_drivers/ethernet/intel/ice.rst     | 1027 ++++++++++++++++-
- 1 file changed, 1006 insertions(+), 21 deletions(-)
+ drivers/net/ethernet/intel/ice/Makefile       |   1 +
+ drivers/net/ethernet/intel/ice/ice.h          |  22 +
+ drivers/net/ethernet/intel/ice/ice_lag.c      | 442 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lag.h      |  87 ++++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   2 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |   9 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |   4 +
+ 7 files changed, 567 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_lag.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_lag.h
 
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-index ee43ea57d443..ed6555c8b541 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-@@ -1,46 +1,1031 @@
- .. SPDX-License-Identifier: GPL-2.0+
+diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+index 36a787b5ad8d..9769f7a20b32 100644
+--- a/drivers/net/ethernet/intel/ice/Makefile
++++ b/drivers/net/ethernet/intel/ice/Makefile
+@@ -27,6 +27,7 @@ ice-y := ice_main.o	\
+ 	 ice_flow.o	\
+ 	 ice_devlink.o	\
+ 	 ice_fw_update.o \
++	 ice_lag.o	\
+ 	 ice_ethtool.o
+ ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o
+ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index ffa1d08767b3..baee27b8184c 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -57,6 +57,7 @@
+ #include "ice_fdir.h"
+ #include "ice_xsk.h"
+ #include "ice_arfs.h"
++#include "ice_lag.h"
  
--==================================================================
--Linux Base Driver for the Intel(R) Ethernet Connection E800 Series
--==================================================================
-+=================================================================
-+Linux Base Driver for the Intel(R) Ethernet Controller 800 Series
-+=================================================================
+ #define ICE_BAR0		0
+ #define ICE_REQ_DESC_MULTIPLE	32
+@@ -455,6 +456,7 @@ struct ice_pf {
+ 	__le64 nvm_phy_type_lo; /* NVM PHY type low */
+ 	__le64 nvm_phy_type_hi; /* NVM PHY type high */
+ 	struct ice_link_default_override_tlv link_dflt_override;
++	struct ice_lag *lag; /* Link Aggregation information */
+ };
  
- Intel ice Linux driver.
--Copyright(c) 2018 Intel Corporation.
-+Copyright(c) 2018-2020 Intel Corporation.
+ struct ice_netdev_priv {
+@@ -555,11 +557,31 @@ static inline struct ice_vsi *ice_get_ctrl_vsi(struct ice_pf *pf)
+ 	return pf->vsi[pf->ctrl_vsi_idx];
+ }
  
- Contents
- ========
++/**
++ * ice_set_sriov_cap - enable SRIOV in PF flags
++ * @pf: PF struct
++ */
++static inline void ice_set_sriov_cap(struct ice_pf *pf)
++{
++	if (pf->hw.func_caps.common_cap.sr_iov_1_1)
++		set_bit(ICE_FLAG_SRIOV_CAPABLE, pf->flags);
++}
++
++/**
++ * ice_clear_sriov_cap - disable SRIOV in PF flags
++ * @pf: PF struct
++ */
++static inline void ice_clear_sriov_cap(struct ice_pf *pf)
++{
++	clear_bit(ICE_FLAG_SRIOV_CAPABLE, pf->flags);
++}
++
+ #define ICE_FD_STAT_CTR_BLOCK_COUNT	256
+ #define ICE_FD_STAT_PF_IDX(base_idx) \
+ 			((base_idx) * ICE_FD_STAT_CTR_BLOCK_COUNT)
+ #define ICE_FD_SB_STAT_IDX(base_idx) ICE_FD_STAT_PF_IDX(base_idx)
  
--- Enabling the driver
--- Support
-+- Overview
-+- Identifying Your Adapter
-+- Important Notes
-+- Additional Features & Configurations
-+- Performance Optimization
++bool netif_is_ice(struct net_device *dev);
+ int ice_vsi_setup_tx_rings(struct ice_vsi *vsi);
+ int ice_vsi_setup_rx_rings(struct ice_vsi *vsi);
+ int ice_vsi_open_ctrl(struct ice_vsi *vsi);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+new file mode 100644
+index 000000000000..265455f74ad4
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -0,0 +1,442 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (C) 2018-2020, Intel Corporation. */
++
++/* Link Aggregation code */
++
++#include "ice.h"
++#include "ice_lag.h"
++
++/**
++ * ice_lag_nop_handler - no-op Rx handler to disable LAG
++ * @pskb: pointer to skb pointer
++ */
++rx_handler_result_t ice_lag_nop_handler(struct sk_buff __always_unused **pskb)
++{
++	return RX_HANDLER_PASS;
++}
++
++/**
++ * ice_lag_set_primary - set PF LAG state as Primary
++ * @lag: LAG info struct
++ */
++static void ice_lag_set_primary(struct ice_lag *lag)
++{
++	struct ice_pf *pf = lag->pf;
++
++	if (!pf)
++		return;
++
++	if (lag->role != ICE_LAG_UNSET && lag->role != ICE_LAG_BACKUP) {
++		dev_warn(ice_pf_to_dev(pf), "%s: Attempt to be Primary, but incompatible state.\n",
++			 netdev_name(lag->netdev));
++		return;
++	}
++
++	lag->role = ICE_LAG_PRIMARY;
++}
++
++/**
++ * ice_lag_set_backup - set PF LAG state to Backup
++ * @lag: LAG info struct
++ */
++static void ice_lag_set_backup(struct ice_lag *lag)
++{
++	struct ice_pf *pf = lag->pf;
++
++	if (!pf)
++		return;
++
++	if (lag->role != ICE_LAG_UNSET && lag->role != ICE_LAG_PRIMARY) {
++		dev_dbg(ice_pf_to_dev(pf), "%s: Attempt to be Backup, but incompatible state\n",
++			netdev_name(lag->netdev));
++		return;
++	}
++
++	lag->role = ICE_LAG_BACKUP;
++}
++
++/**
++ * ice_display_lag_info - print LAG info
++ * @lag: LAG info struct
++ */
++static void ice_display_lag_info(struct ice_lag *lag)
++{
++	const char *name, *peer, *upper, *role, *bonded, *master;
++	struct device *dev = &lag->pf->pdev->dev;
++
++	name = lag->netdev ? netdev_name(lag->netdev) : "unset";
++	peer = lag->peer_netdev ? netdev_name(lag->peer_netdev) : "unset";
++	upper = lag->upper_netdev ? netdev_name(lag->upper_netdev) : "unset";
++	master = lag->master ? "TRUE" : "FALSE";
++	bonded = lag->bonded ? "BONDED" : "UNBONDED";
++
++	switch (lag->role) {
++	case ICE_LAG_NONE:
++		role = "NONE";
++		break;
++	case ICE_LAG_PRIMARY:
++		role = "PRIMARY";
++		break;
++	case ICE_LAG_BACKUP:
++		role = "BACKUP";
++		break;
++	case ICE_LAG_UNSET:
++		role = "UNSET";
++		break;
++	default:
++		role = "ERROR";
++	}
++
++	dev_dbg(dev, "%s %s, peer:%s, upper:%s, role:%s, master:%s\n", name,
++		bonded, peer, upper, role, master);
++}
++
++/**
++ * ice_lag_info_event - handle NETDEV_BONDING_INFO event
++ * @lag: LAG info struct
++ * @ptr: opaque data pointer
++ *
++ * ptr is to be cast to (netdev_notifier_bonding_info *)
++ */
++static void ice_lag_info_event(struct ice_lag *lag, void *ptr)
++{
++	struct net_device *event_netdev, *netdev_tmp;
++	struct netdev_notifier_bonding_info *info;
++	struct netdev_bonding_info *bonding_info;
++	const char *lag_netdev_name;
++
++	event_netdev = netdev_notifier_info_to_dev(ptr);
++	info = ptr;
++	lag_netdev_name = netdev_name(lag->netdev);
++	bonding_info = &info->bonding_info;
++
++	if (event_netdev != lag->netdev || !lag->bonded || !lag->upper_netdev)
++		return;
++
++	if (bonding_info->master.bond_mode != BOND_MODE_ACTIVEBACKUP) {
++		netdev_dbg(lag->netdev, "Bonding event recv, but mode not active/backup\n");
++		goto lag_out;
++	}
++
++	if (strcmp(bonding_info->slave.slave_name, lag_netdev_name)) {
++		netdev_dbg(lag->netdev, "Bonding event recv, but slave info not for us\n");
++		goto lag_out;
++	}
++
++	rcu_read_lock();
++	for_each_netdev_in_bond_rcu(lag->upper_netdev, netdev_tmp) {
++		if (!netif_is_ice(netdev_tmp))
++			continue;
++
++		if (netdev_tmp && netdev_tmp != lag->netdev &&
++		    lag->peer_netdev != netdev_tmp) {
++			dev_hold(netdev_tmp);
++			lag->peer_netdev = netdev_tmp;
++		}
++	}
++	rcu_read_unlock();
++
++	if (bonding_info->slave.state)
++		ice_lag_set_backup(lag);
++	else
++		ice_lag_set_primary(lag);
++
++lag_out:
++	ice_display_lag_info(lag);
++}
++
++/**
++ * ice_lag_link - handle LAG link event
++ * @lag: LAG info struct
++ * @info: info from the netdev notifier
++ */
++static void
++ice_lag_link(struct ice_lag *lag, struct netdev_notifier_changeupper_info *info)
++{
++	struct net_device *netdev_tmp, *upper = info->upper_dev;
++	struct ice_pf *pf = lag->pf;
++	int peers = 0;
++
++	if (lag->bonded)
++		dev_warn(ice_pf_to_dev(pf), "%s Already part of a bond\n",
++			 netdev_name(lag->netdev));
++
++	rcu_read_lock();
++	for_each_netdev_in_bond_rcu(upper, netdev_tmp)
++		peers++;
++	rcu_read_unlock();
++
++	if (lag->upper_netdev != upper) {
++		dev_hold(upper);
++		lag->upper_netdev = upper;
++	}
++
++	ice_clear_sriov_cap(pf);
++
++	lag->bonded = true;
++	lag->role = ICE_LAG_UNSET;
++
++	/* if this is the first element in an LAG mark as master */
++	lag->master = !!(peers == 1);
++}
++
++/**
++ * ice_lag_unlink - handle unlink event
++ * @lag: LAG info struct
++ * @info: info from netdev notification
++ */
++static void
++ice_lag_unlink(struct ice_lag *lag,
++	       struct netdev_notifier_changeupper_info *info)
++{
++	struct net_device *netdev_tmp, *upper = info->upper_dev;
++	struct ice_pf *pf = lag->pf;
++	bool found = false;
++
++	if (!lag->bonded) {
++		netdev_dbg(lag->netdev, "bonding unlink event on non-LAG netdev\n");
++		return;
++	}
++
++	/* determine if we are in the new LAG config or not */
++	rcu_read_lock();
++	for_each_netdev_in_bond_rcu(upper, netdev_tmp) {
++		if (netdev_tmp == lag->netdev) {
++			found = true;
++			break;
++		}
++	}
++	rcu_read_unlock();
++
++	if (found)
++		return;
++
++	if (lag->upper_netdev) {
++		dev_put(lag->upper_netdev);
++		lag->upper_netdev = NULL;
++	}
++
++	if (lag->peer_netdev) {
++		dev_put(lag->peer_netdev);
++		lag->peer_netdev = NULL;
++	}
++
++	ice_set_sriov_cap(pf);
++	lag->bonded = false;
++	lag->role = ICE_LAG_NONE;
++}
++
++/**
++ * ice_lag_changeupper_event - handle LAG changeupper event
++ * @lag: LAG info struct
++ * @ptr: opaque pointer data
++ *
++ * ptr is to be cast into netdev_notifier_changeupper_info
++ */
++static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
++{
++	struct netdev_notifier_changeupper_info *info;
++	struct net_device *netdev;
++
++	info = ptr;
++	netdev = netdev_notifier_info_to_dev(ptr);
++
++	/* not for this netdev */
++	if (netdev != lag->netdev)
++		return;
++
++	if (!info->upper_dev) {
++		netdev_dbg(netdev, "changeupper rcvd, but no upper defined\n");
++		return;
++	}
++
++	netdev_dbg(netdev, "bonding %s\n", info->linking ? "LINK" : "UNLINK");
++
++	if (!netif_is_lag_master(info->upper_dev)) {
++		netdev_dbg(netdev, "changeupper rcvd, but not master. bail\n");
++		return;
++	}
++
++	if (info->linking)
++		ice_lag_link(lag, info);
++	else
++		ice_lag_unlink(lag, info);
++
++	ice_display_lag_info(lag);
++}
++
++/**
++ * ice_lag_changelower_event - handle LAG changelower event
++ * @lag: LAG info struct
++ * @ptr: opaque data pointer
++ *
++ * ptr to be cast to netdev_notifier_changelowerstate_info
++ */
++static void ice_lag_changelower_event(struct ice_lag *lag, void *ptr)
++{
++	struct net_device *netdev = netdev_notifier_info_to_dev(ptr);
++
++	if (netdev != lag->netdev)
++		return;
++
++	netdev_dbg(netdev, "bonding info\n");
++
++	if (!netif_is_lag_port(netdev))
++		netdev_dbg(netdev, "CHANGELOWER rcvd, but netdev not in LAG. Bail\n");
++}
++
++/**
++ * ice_lag_event_handler - handle LAG events from netdev
++ * @notif_blk: notifier block registered by this netdev
++ * @event: event type
++ * @ptr: opaque data containing notifier event
++ */
++static int
++ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
++		      void *ptr)
++{
++	struct net_device *netdev = netdev_notifier_info_to_dev(ptr);
++	struct ice_lag *lag;
++
++	lag = container_of(notif_blk, struct ice_lag, notif_block);
++
++	if (!lag->netdev)
++		return NOTIFY_DONE;
++
++	/* Check that the netdev is in the working namespace */
++	if (!net_eq(dev_net(netdev), &init_net))
++		return NOTIFY_DONE;
++
++	switch (event) {
++	case NETDEV_CHANGEUPPER:
++		ice_lag_changeupper_event(lag, ptr);
++		break;
++	case NETDEV_CHANGELOWERSTATE:
++		ice_lag_changelower_event(lag, ptr);
++		break;
++	case NETDEV_BONDING_INFO:
++		ice_lag_info_event(lag, ptr);
++		break;
++	default:
++		break;
++	}
++
++	return NOTIFY_DONE;
++}
++
++/**
++ * ice_register_lag_handler - register LAG handler on netdev
++ * @lag: LAG struct
++ */
++static int ice_register_lag_handler(struct ice_lag *lag)
++{
++	struct device *dev = ice_pf_to_dev(lag->pf);
++	struct notifier_block *notif_blk;
++
++	notif_blk = &lag->notif_block;
++
++	if (!notif_blk->notifier_call) {
++		notif_blk->notifier_call = ice_lag_event_handler;
++		if (register_netdevice_notifier(notif_blk)) {
++			notif_blk->notifier_call = NULL;
++			dev_err(dev, "FAIL register LAG event handler!\n");
++			return -EINVAL;
++		}
++		dev_dbg(dev, "LAG event handler registered\n");
++	}
++	return 0;
++}
++
++/**
++ * ice_unregister_lag_handler - unregister LAG handler on netdev
++ * @lag: LAG struct
++ */
++static void ice_unregister_lag_handler(struct ice_lag *lag)
++{
++	struct device *dev = ice_pf_to_dev(lag->pf);
++	struct notifier_block *notif_blk;
++
++	notif_blk = &lag->notif_block;
++	if (notif_blk->notifier_call) {
++		unregister_netdevice_notifier(notif_blk);
++		dev_dbg(dev, "LAG event handler unregistered\n");
++	}
++}
++
++/**
++ * ice_init_lag - initialize support for LAG
++ * @pf: PF struct
++ *
++ * Alloc memory for LAG structs and initialize the elements.
++ * Memory will be freed in ice_deinit_lag
++ */
++int ice_init_lag(struct ice_pf *pf)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++	struct ice_lag *lag;
++	struct ice_vsi *vsi;
++	int err;
++
++	pf->lag = kzalloc(sizeof(*lag), GFP_KERNEL);
++	if (!pf->lag)
++		return -ENOMEM;
++	lag = pf->lag;
++
++	vsi = ice_get_main_vsi(pf);
++	if (!vsi) {
++		dev_err(dev, "couldn't get main vsi, link aggregation init fail\n");
++		err = -EIO;
++		goto lag_error;
++	}
++
++	lag->pf = pf;
++	lag->netdev = vsi->netdev;
++	lag->role = ICE_LAG_NONE;
++	lag->bonded = false;
++	lag->peer_netdev = NULL;
++	lag->upper_netdev = NULL;
++	lag->notif_block.notifier_call = NULL;
++
++	err = ice_register_lag_handler(lag);
++	if (err) {
++		dev_warn(dev, "INIT LAG: Failed to register event handler\n");
++		goto lag_error;
++	}
++
++	ice_display_lag_info(lag);
++
++	dev_dbg(dev, "INIT LAG complete\n");
++	return 0;
++
++lag_error:
++	kfree(lag);
++	return err;
++}
++
++/**
++ * ice_deinit_lag - Clean up LAG
++ * @pf: PF struct
++ *
++ * Clean up kernel LAG info and free memory
++ * This function is meant to only be called on driver remove/shutdown
++ */
++void ice_deinit_lag(struct ice_pf *pf)
++{
++	struct ice_lag *lag;
++
++	lag = pf->lag;
++
++	if (!lag)
++		return;
++
++	if (lag->pf)
++		ice_unregister_lag_handler(lag);
++
++	if (lag->upper_netdev)
++		dev_put(lag->upper_netdev);
++
++	if (lag->peer_netdev)
++		dev_put(lag->peer_netdev);
++
++	kfree(lag);
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
+new file mode 100644
+index 000000000000..6d4578ce9d17
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_lag.h
+@@ -0,0 +1,87 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (C) 2018-2019, Intel Corporation. */
++
++#ifndef _ICE_LAG_H_
++#define _ICE_LAG_H_
++
++#include <linux/netdevice.h>
++
++/* LAG roles for netdev */
++enum ice_lag_role {
++	ICE_LAG_NONE,
++	ICE_LAG_PRIMARY,
++	ICE_LAG_BACKUP,
++	ICE_LAG_UNSET
++};
++
++struct ice_pf;
++
++/* LAG info struct */
++struct ice_lag {
++	struct ice_pf *pf; /* backlink to PF struct */
++	struct net_device *netdev; /* this PF's netdev */
++	struct net_device *peer_netdev;
++	struct net_device *upper_netdev; /* upper bonding netdev */
++	struct notifier_block notif_block;
++	u8 bonded:1; /* currently bonded */
++	u8 master:1; /* this is a master */
++	u8 handler:1; /* did we register a rx_netdev_handler */
++	/* each thing blocking bonding will increment this value by one.
++	 * If this value is zero, then bonding is allowed.
++	 */
++	u16 dis_lag;
++	u8 role;
++};
++
++int ice_init_lag(struct ice_pf *pf);
++void ice_deinit_lag(struct ice_pf *pf);
++rx_handler_result_t ice_lag_nop_handler(struct sk_buff **pskb);
++
++/**
++ * ice_disable_lag - increment LAG disable count
++ * @lag: LAG struct
++ */
++static inline void ice_disable_lag(struct ice_lag *lag)
++{
++	/* If LAG this PF is not already disabled, disable it */
++	rtnl_lock();
++	if (!netdev_is_rx_handler_busy(lag->netdev)) {
++		if (!netdev_rx_handler_register(lag->netdev,
++						ice_lag_nop_handler,
++						NULL))
++			lag->handler = true;
++	}
++	rtnl_unlock();
++	lag->dis_lag++;
++}
++
++/**
++ * ice_enable_lag - decrement disable count for a PF
++ * @lag: LAG struct
++ *
++ * Decrement the disable counter for a port, and if that count reaches
++ * zero, then remove the no-op Rx handler from that netdev
++ */
++static inline void ice_enable_lag(struct ice_lag *lag)
++{
++	if (lag->dis_lag)
++		lag->dis_lag--;
++	if (!lag->dis_lag && lag->handler) {
++		rtnl_lock();
++		netdev_rx_handler_unregister(lag->netdev);
++		rtnl_unlock();
++		lag->handler = false;
++	}
++}
++
++/**
++ * ice_is_lag_dis - is LAG disabled
++ * @lag: LAG struct
++ *
++ * Return true if bonding is disabled
++ */
++static inline bool ice_is_lag_dis(struct ice_lag *lag)
++{
++	return !!(lag->dis_lag);
++}
++#endif /* _ICE_LAG_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index f118d33e3a20..34fad02a653d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2353,6 +2353,8 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
+ unroll_get_qs:
+ 	ice_vsi_put_qs(vsi);
+ unroll_vsi_alloc:
++	if (vsi_type == ICE_VSI_VF)
++		ice_enable_lag(pf->lag);
+ 	ice_vsi_clear(vsi);
  
--The driver in this release supports Intel's E800 Series of products. For
--more information, visit Intel's support page at https://support.intel.com.
+ 	return NULL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 5692c9db5829..0b120d9b5a83 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -44,6 +44,11 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type);
  
--Enabling the driver
--===================
--The driver is enabled via the standard kernel configuration system,
--using the make command::
-+The associated Virtual Function (VF) driver for this driver is iavf.
+ static void ice_vsi_release_all(struct ice_pf *pf);
  
--  make oldconfig/menuconfig/etc.
-+Driver information can be obtained using ethtool and lspci.
++bool netif_is_ice(struct net_device *dev)
++{
++	return dev && (dev->netdev_ops == &ice_netdev_ops);
++}
++
+ /**
+  * ice_get_tx_pending - returns number of Tx descriptors not processed
+  * @ring: the ring of descriptors
+@@ -4295,6 +4300,9 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 		ice_cfg_lldp_mib_change(&pf->hw, true);
+ 	}
  
--The driver is located in the menu structure at:
-+For questions related to hardware requirements, refer to the documentation
-+supplied with your Intel adapter. All hardware requirements listed apply to use
-+with Linux.
-+
-+This driver supports XDP (Express Data Path) and AF_XDP zero-copy. Note that
-+XDP is blocked for frame sizes larger than 3KB.
-+
-+
-+Identifying Your Adapter
-+========================
-+For information on how to identify your adapter, and for the latest Intel
-+network drivers, refer to the Intel Support website:
-+https://www.intel.com/support
-+
-+
-+Important Notes
-+===============
-+
-+Packet drops may occur under receive stress
-+-------------------------------------------
-+Devices based on the Intel(R) Ethernet Controller 800 Series are designed to
-+tolerate a limited amount of system latency during PCIe and DMA transactions.
-+If these transactions take longer than the tolerated latency, it can impact the
-+length of time the packets are buffered in the device and associated memory,
-+which may result in dropped packets. These packets drops typically do not have
-+a noticeable impact on throughput and performance under standard workloads.
-+
-+If these packet drops appear to affect your workload, the following may improve
-+the situation:
-+
-+1) Make sure that your system's physical memory is in a high-performance
-+   configuration, as recommended by the platform vendor. A common
-+   recommendation is for all channels to be populated with a single DIMM
-+   module.
-+2) In your system's BIOS/UEFI settings, select the "Performance" profile.
-+3) Your distribution may provide tools like "tuned," which can help tweak
-+   kernel settings to achieve better standard settings for different workloads.
-+
-+
-+Configuring SR-IOV for improved network security
-+------------------------------------------------
-+In a virtualized environment, on Intel(R) Ethernet Network Adapters that
-+support SR-IOV, the virtual function (VF) may be subject to malicious behavior.
-+Software-generated layer two frames, like IEEE 802.3x (link flow control), IEEE
-+802.1Qbb (priority based flow-control), and others of this type, are not
-+expected and can throttle traffic between the host and the virtual switch,
-+reducing performance. To resolve this issue, and to ensure isolation from
-+unintended traffic streams, configure all SR-IOV enabled ports for VLAN tagging
-+from the administrative interface on the PF. This configuration allows
-+unexpected, and potentially malicious, frames to be dropped.
-+
-+See "Configuring VLAN Tagging on SR-IOV Enabled Adapter Ports" later in this
-+README for configuration instructions.
-+
-+
-+Do not unload port driver if VF with active VM is bound to it
-+-------------------------------------------------------------
-+Do not unload a port's driver if a Virtual Function (VF) with an active Virtual
-+Machine (VM) is bound to it. Doing so will cause the port to appear to hang.
-+Once the VM shuts down, or otherwise releases the VF, the command will
-+complete.
-+
-+
-+Important notes for SR-IOV and Link Aggregation
-+-----------------------------------------------
-+Link Aggregation is mutually exclusive with SR-IOV.
-+
-+- If Link Aggregation is active, SR-IOV VFs cannot be created on the PF.
-+- If SR-IOV is active, you cannot set up Link Aggregation on the interface.
-+
-+Bridging and MACVLAN are also affected by this. If you wish to use bridging or
-+MACVLAN with SR-IOV, you must set up bridging or MACVLAN before enabling
-+SR-IOV. If you are using bridging or MACVLAN in conjunction with SR-IOV, and
-+you want to remove the interface from the bridge or MACVLAN, you must follow
-+these steps:
-+
-+1. Destroy SR-IOV VFs if they exist
-+2. Remove the interface from the bridge or MACVLAN
-+3. Recreate SRIOV VFs as needed
-+
-+
-+Additional Features and Configurations
-+======================================
-+
-+ethtool
-+-------
-+The driver utilizes the ethtool interface for driver configuration and
-+diagnostics, as well as displaying statistical information. The latest ethtool
-+version is required for this functionality. Download it at:
-+https://kernel.org/pub/software/network/ethtool/
-+
-+NOTE: The rx_bytes value of ethtool does not match the rx_bytes value of
-+Netdev, due to the 4-byte CRC being stripped by the device. The difference
-+between the two rx_bytes values will be 4 x the number of Rx packets. For
-+example, if Rx packets are 10 and Netdev (software statistics) displays
-+rx_bytes as "X", then ethtool (hardware statistics) will display rx_bytes as
-+"X+40" (4 bytes CRC x 10 packets).
-+
-+
-+Viewing Link Messages
-+---------------------
-+Link messages will not be displayed to the console if the distribution is
-+restricting system messages. In order to see network driver link messages on
-+your console, set dmesg to eight by entering the following::
-+
-+  # dmesg -n 8
-+
-+NOTE: This setting is not saved across reboots.
-+
-+
-+Dynamic Device Personalization
-+------------------------------
-+Dynamic Device Personalization (DDP) allows you to change the packet processing
-+pipeline of a device by applying a profile package to the device at runtime.
-+Profiles can be used to, for example, add support for new protocols, change
-+existing protocols, or change default settings. DDP profiles can also be rolled
-+back without rebooting the system.
-+
-+The DDP package loads during device initialization. The driver looks for
-+``intel/ice/ddp/ice.pkg`` in your firmware root (typically ``/lib/firmware/``
-+or ``/lib/firmware/updates/``) and checks that it contains a valid DDP package
-+file.
-+
-+NOTE: Your distribution should likely have provided the latest DDP file, but if
-+ice.pkg is missing, you can find it in the linux-firmware repository or from
-+intel.com.
-+
-+If the driver is unable to load the DDP package, the device will enter Safe
-+Mode. Safe Mode disables advanced and performance features and supports only
-+basic traffic and minimal functionality, such as updating the NVM or
-+downloading a new driver or DDP package. Safe Mode only applies to the affected
-+physical function and does not impact any other PFs. See the "Intel(R) Ethernet
-+Adapters and Devices User Guide" for more details on DDP and Safe Mode.
-+
-+NOTES:
-+
-+- If you encounter issues with the DDP package file, you may need to download
-+  an updated driver or DDP package file. See the log messages for more
-+  information.
-+
-+- The ice.pkg file is a symbolic link to the default DDP package file.
-+
-+- You cannot update the DDP package if any PF drivers are already loaded. To
-+  overwrite a package, unload all PFs and then reload the driver with the new
-+  package.
-+
-+- Only the first loaded PF per device can download a package for that device.
-+
-+You can install specific DDP package files for different physical devices in
-+the same system. To install a specific DDP package file:
-+
-+1. Download the DDP package file you want for your device.
-+
-+2. Rename the file ice-xxxxxxxxxxxxxxxx.pkg, where 'xxxxxxxxxxxxxxxx' is the
-+   unique 64-bit PCI Express device serial number (in hex) of the device you
-+   want the package downloaded on. The filename must include the complete
-+   serial number (including leading zeros) and be all lowercase. For example,
-+   if the 64-bit serial number is b887a3ffffca0568, then the file name would be
-+   ice-b887a3ffffca0568.pkg.
-+
-+   To find the serial number from the PCI bus address, you can use the
-+   following command::
-+
-+     # lspci -vv -s af:00.0 | grep -i Serial
-+     Capabilities: [150 v1] Device Serial Number b8-87-a3-ff-ff-ca-05-68
-+
-+   You can use the following command to format the serial number without the
-+   dashes::
-+
-+     # lspci -vv -s af:00.0 | grep -i Serial | awk '{print $7}' | sed s/-//g
-+     b887a3ffffca0568
-+
-+3. Copy the renamed DDP package file to
-+   ``/lib/firmware/updates/intel/ice/ddp/``. If the directory does not yet
-+   exist, create it before copying the file.
-+
-+4. Unload all of the PFs on the device.
-+
-+5. Reload the driver with the new package.
-+
-+NOTE: The presence of a device-specific DDP package file overrides the loading
-+of the default DDP package file (ice.pkg).
-+
-+
-+Intel(R) Ethernet Flow Director
-+-------------------------------
-+The Intel Ethernet Flow Director performs the following tasks:
-+
-+- Directs receive packets according to their flows to different queues
-+- Enables tight control on routing a flow in the platform
-+- Matches flows and CPU cores for flow affinity
-+
-+NOTE: This driver supports the following flow types:
-+
-+- IPv4
-+- TCPv4
-+- UDPv4
-+- SCTPv4
-+- IPv6
-+- TCPv6
-+- UDPv6
-+- SCTPv6
-+
-+Each flow type supports valid combinations of IP addresses (source or
-+destination) and UDP/TCP/SCTP ports (source and destination). You can supply
-+only a source IP address, a source IP address and a destination port, or any
-+combination of one or more of these four parameters.
-+
-+NOTE: This driver allows you to filter traffic based on a user-defined flexible
-+two-byte pattern and offset by using the ethtool user-def and mask fields. Only
-+L3 and L4 flow types are supported for user-defined flexible filters. For a
-+given flow type, you must clear all Intel Ethernet Flow Director filters before
-+changing the input set (for that flow type).
-+
-+
-+Flow Director Filters
-+---------------------
-+Flow Director filters are used to direct traffic that matches specified
-+characteristics. They are enabled through ethtool's ntuple interface. To enable
-+or disable the Intel Ethernet Flow Director and these filters::
-+
-+  # ethtool -K <ethX> ntuple <off|on>
-+
-+NOTE: When you disable ntuple filters, all the user programmed filters are
-+flushed from the driver cache and hardware. All needed filters must be re-added
-+when ntuple is re-enabled.
-+
-+To display all of the active filters::
-+
-+  # ethtool -u <ethX>
-+
-+To add a new filter::
-+
-+  # ethtool -U <ethX> flow-type <type> src-ip <ip> [m <ip_mask>] dst-ip <ip>
-+  [m <ip_mask>] src-port <port> [m <port_mask>] dst-port <port> [m <port_mask>]
-+  action <queue>
-+
-+  Where:
-+    <ethX> - the Ethernet device to program
-+    <type> - can be ip4, tcp4, udp4, sctp4, ip6, tcp6, udp6, sctp6
-+    <ip> - the IP address to match on
-+    <ip_mask> - the IPv4 address to mask on
-+              NOTE: These filters use inverted masks.
-+    <port> - the port number to match on
-+    <port_mask> - the 16-bit integer for masking
-+              NOTE: These filters use inverted masks.
-+    <queue> - the queue to direct traffic toward (-1 discards the
-+              matched traffic)
-+
-+To delete a filter::
-+
-+  # ethtool -U <ethX> delete <N>
-+
-+  Where <N> is the filter ID displayed when printing all the active filters,
-+  and may also have been specified using "loc <N>" when adding the filter.
-+
-+EXAMPLES:
-+
-+To add a filter that directs packet to queue 2::
-+
-+  # ethtool -U <ethX> flow-type tcp4 src-ip 192.168.10.1 dst-ip \
-+  192.168.10.2 src-port 2000 dst-port 2001 action 2 [loc 1]
-+
-+To set a filter using only the source and destination IP address::
-+
-+  # ethtool -U <ethX> flow-type tcp4 src-ip 192.168.10.1 dst-ip \
-+  192.168.10.2 action 2 [loc 1]
-+
-+To set a filter based on a user-defined pattern and offset::
-+
-+  # ethtool -U <ethX> flow-type tcp4 src-ip 192.168.10.1 dst-ip \
-+  192.168.10.2 user-def 0x4FFFF action 2 [loc 1]
-+
-+  where the value of the user-def field contains the offset (4 bytes) and
-+  the pattern (0xffff).
-+
-+To match TCP traffic sent from 192.168.0.1, port 5300, directed to 192.168.0.5,
-+port 80, and then send it to queue 7::
-+
-+  # ethtool -U enp130s0 flow-type tcp4 src-ip 192.168.0.1 dst-ip 192.168.0.5
-+  src-port 5300 dst-port 80 action 7
-+
-+To add a TCPv4 filter with a partial mask for a source IP subnet::
-+
-+  # ethtool -U <ethX> flow-type tcp4 src-ip 192.168.0.0 m 0.255.255.255 dst-ip
-+  192.168.5.12 src-port 12600 dst-port 31 action 12
-+
-+NOTES:
-+
-+For each flow-type, the programmed filters must all have the same matching
-+input set. For example, issuing the following two commands is acceptable::
-+
-+  # ethtool -U enp130s0 flow-type ip4 src-ip 192.168.0.1 src-port 5300 action 7
-+  # ethtool -U enp130s0 flow-type ip4 src-ip 192.168.0.5 src-port 55 action 10
-+
-+Issuing the next two commands, however, is not acceptable, since the first
-+specifies src-ip and the second specifies dst-ip::
-+
-+  # ethtool -U enp130s0 flow-type ip4 src-ip 192.168.0.1 src-port 5300 action 7
-+  # ethtool -U enp130s0 flow-type ip4 dst-ip 192.168.0.5 src-port 55 action 10
-+
-+The second command will fail with an error. You may program multiple filters
-+with the same fields, using different values, but, on one device, you may not
-+program two tcp4 filters with different matching fields.
-+
-+The ice driver does not support matching on a subportion of a field, thus
-+partial mask fields are not supported.
-+
-+
-+Flex Byte Flow Director Filters
-+-------------------------------
-+The driver also supports matching user-defined data within the packet payload.
-+This flexible data is specified using the "user-def" field of the ethtool
-+command in the following way:
-+
-+.. table::
-+
-+    ============================== ============================
-+    ``31    28    24    20    16`` ``15    12    8    4    0``
-+    ``offset into packet payload`` ``2 bytes of flexible data``
-+    ============================== ============================
-+
-+For example,
-+
-+::
-+
-+  ... user-def 0x4FFFF ...
-+
-+tells the filter to look 4 bytes into the payload and match that value against
-+0xFFFF. The offset is based on the beginning of the payload, and not the
-+beginning of the packet. Thus
-+
-+::
-+
-+  flow-type tcp4 ... user-def 0x8BEAF ...
-+
-+would match TCP/IPv4 packets which have the value 0xBEAF 8 bytes into the
-+TCP/IPv4 payload.
-+
-+Note that ICMP headers are parsed as 4 bytes of header and 4 bytes of payload.
-+Thus to match the first byte of the payload, you must actually add 4 bytes to
-+the offset. Also note that ip4 filters match both ICMP frames as well as raw
-+(unknown) ip4 frames, where the payload will be the L3 payload of the IP4
-+frame.
-+
-+The maximum offset is 64. The hardware will only read up to 64 bytes of data
-+from the payload. The offset must be even because the flexible data is 2 bytes
-+long and must be aligned to byte 0 of the packet payload.
-+
-+The user-defined flexible offset is also considered part of the input set and
-+cannot be programmed separately for multiple filters of the same type. However,
-+the flexible data is not part of the input set and multiple filters may use the
-+same offset but match against different data.
-+
-+
-+RSS Hash Flow
-+-------------
-+Allows you to set the hash bytes per flow type and any combination of one or
-+more options for Receive Side Scaling (RSS) hash byte configuration.
-+
-+::
-+
-+  # ethtool -N <ethX> rx-flow-hash <type> <option>
-+
-+  Where <type> is:
-+    tcp4  signifying TCP over IPv4
-+    udp4  signifying UDP over IPv4
-+    tcp6  signifying TCP over IPv6
-+    udp6  signifying UDP over IPv6
-+  And <option> is one or more of:
-+    s     Hash on the IP source address of the Rx packet.
-+    d     Hash on the IP destination address of the Rx packet.
-+    f     Hash on bytes 0 and 1 of the Layer 4 header of the Rx packet.
-+    n     Hash on bytes 2 and 3 of the Layer 4 header of the Rx packet.
-+
-+
-+Accelerated Receive Flow Steering (aRFS)
-+----------------------------------------
-+Devices based on the Intel(R) Ethernet Controller 800 Series support
-+Accelerated Receive Flow Steering (aRFS) on the PF. aRFS is a load-balancing
-+mechanism that allows you to direct packets to the same CPU where an
-+application is running or consuming the packets in that flow.
-+
-+NOTES:
-+
-+- aRFS requires that ntuple filtering is enabled via ethtool.
-+- aRFS support is limited to the following packet types:
-+
-+    - TCP over IPv4 and IPv6
-+    - UDP over IPv4 and IPv6
-+    - Nonfragmented packets
-+
-+- aRFS only supports Flow Director filters, which consist of the
-+  source/destination IP addresses and source/destination ports.
-+- aRFS and ethtool's ntuple interface both use the device's Flow Director. aRFS
-+  and ntuple features can coexist, but you may encounter unexpected results if
-+  there's a conflict between aRFS and ntuple requests. See "Intel(R) Ethernet
-+  Flow Director" for additional information.
-+
-+To set up aRFS:
-+
-+1. Enable the Intel Ethernet Flow Director and ntuple filters using ethtool.
-+
-+::
-+
-+   # ethtool -K <ethX> ntuple on
-+
-+2. Set up the number of entries in the global flow table. For example:
-+
-+::
-+
-+   # NUM_RPS_ENTRIES=16384
-+   # echo $NUM_RPS_ENTRIES > /proc/sys/net/core/rps_sock_flow_entries
-+
-+3. Set up the number of entries in the per-queue flow table. For example:
-+
-+::
-+
-+   # NUM_RX_QUEUES=64
-+   # for file in /sys/class/net/$IFACE/queues/rx-*/rps_flow_cnt; do
-+   # echo $(($NUM_RPS_ENTRIES/$NUM_RX_QUEUES)) > $file;
-+   # done
-+
-+4. Disable the IRQ balance daemon (this is only a temporary stop of the service
-+   until the next reboot).
-+
-+::
-+
-+   # systemctl stop irqbalance
-+
-+5. Configure the interrupt affinity.
-+
-+   See ``/Documentation/core-api/irq/irq-affinity.rst``
-+
-+
-+To disable aRFS using ethtool::
-+
-+  # ethtool -K <ethX> ntuple off
-+
-+NOTE: This command will disable ntuple filters and clear any aRFS filters in
-+software and hardware.
-+
-+Example Use Case:
-+
-+1. Set the server application on the desired CPU (e.g., CPU 4).
-+
-+::
-+
-+   # taskset -c 4 netserver
-+
-+2. Use netperf to route traffic from the client to CPU 4 on the server with
-+   aRFS configured. This example uses TCP over IPv4.
-+
-+::
-+
-+   # netperf -H <Host IPv4 Address> -t TCP_STREAM
-+
-+
-+Enabling Virtual Functions (VFs)
-+--------------------------------
-+Use sysfs to enable virtual functions (VF).
-+
-+For example, you can create 4 VFs as follows::
-+
-+  # echo 4 > /sys/class/net/<ethX>/device/sriov_numvfs
-+
-+To disable VFs, write 0 to the same file::
-+
-+  # echo 0 > /sys/class/net/<ethX>/device/sriov_numvfs
-+
-+The maximum number of VFs for the ice driver is 256 total (all ports). To check
-+how many VFs each PF supports, use the following command::
-+
-+  # cat /sys/class/net/<ethX>/device/sriov_totalvfs
-+
-+Note: You cannot use SR-IOV when link aggregation (LAG)/bonding is active, and
-+vice versa. To enforce this, the driver checks for this mutual exclusion.
-+
-+
-+Displaying VF Statistics on the PF
-+----------------------------------
-+Use the following command to display the statistics for the PF and its VFs::
-+
-+  # ip -s link show dev <ethX>
-+
-+NOTE: The output of this command can be very large due to the maximum number of
-+possible VFs.
-+
-+The PF driver will display a subset of the statistics for the PF and for all
-+VFs that are configured. The PF will always print a statistics block for each
-+of the possible VFs, and it will show zero for all unconfigured VFs.
-+
-+
-+Configuring VLAN Tagging on SR-IOV Enabled Adapter Ports
-+--------------------------------------------------------
-+To configure VLAN tagging for the ports on an SR-IOV enabled adapter, use the
-+following command. The VLAN configuration should be done before the VF driver
-+is loaded or the VM is booted. The VF is not aware of the VLAN tag being
-+inserted on transmit and removed on received frames (sometimes called "port
-+VLAN" mode).
-+
-+::
-+
-+  # ip link set dev <ethX> vf <id> vlan <vlan id>
-+
-+For example, the following will configure PF eth0 and the first VF on VLAN 10::
-+
-+  # ip link set dev eth0 vf 0 vlan 10
-+
-+
-+Enabling a VF link if the port is disconnected
-+----------------------------------------------
-+If the physical function (PF) link is down, you can force link up (from the
-+host PF) on any virtual functions (VF) bound to the PF.
-+
-+For example, to force link up on VF 0 bound to PF eth0::
-+
-+  # ip link set eth0 vf 0 state enable
-+
-+Note: If the command does not work, it may not be supported by your system.
-+
-+
-+Setting the MAC Address for a VF
-+--------------------------------
-+To change the MAC address for the specified VF::
-+
-+  # ip link set <ethX> vf 0 mac <address>
-+
-+For example::
-+
-+  # ip link set <ethX> vf 0 mac 00:01:02:03:04:05
-+
-+This setting lasts until the PF is reloaded.
-+
-+NOTE: Assigning a MAC address for a VF from the host will disable any
-+subsequent requests to change the MAC address from within the VM. This is a
-+security feature. The VM is not aware of this restriction, so if this is
-+attempted in the VM, it will trigger MDD events.
-+
-+
-+Trusted VFs and VF Promiscuous Mode
-+-----------------------------------
-+This feature allows you to designate a particular VF as trusted and allows that
-+trusted VF to request selective promiscuous mode on the Physical Function (PF).
-+
-+To set a VF as trusted or untrusted, enter the following command in the
-+Hypervisor::
-+
-+  # ip link set dev <ethX> vf 1 trust [on|off]
-+
-+NOTE: It's important to set the VF to trusted before setting promiscuous mode.
-+If the VM is not trusted, the PF will ignore promiscuous mode requests from the
-+VF. If the VM becomes trusted after the VF driver is loaded, you must make a
-+new request to set the VF to promiscuous.
-+
-+Once the VF is designated as trusted, use the following commands in the VM to
-+set the VF to promiscuous mode.
-+
-+For promiscuous all::
-+
-+  # ip link set <ethX> promisc on
-+  Where <ethX> is a VF interface in the VM
-+
-+For promiscuous Multicast::
-+
-+  # ip link set <ethX> allmulticast on
-+  Where <ethX> is a VF interface in the VM
-+
-+NOTE: By default, the ethtool private flag vf-true-promisc-support is set to
-+"off," meaning that promiscuous mode for the VF will be limited. To set the
-+promiscuous mode for the VF to true promiscuous and allow the VF to see all
-+ingress traffic, use the following command::
-+
-+  # ethtool --set-priv-flags <ethX> vf-true-promisc-support on
-+
-+The vf-true-promisc-support private flag does not enable promiscuous mode;
-+rather, it designates which type of promiscuous mode (limited or true) you will
-+get when you enable promiscuous mode using the ip link commands above. Note
-+that this is a global setting that affects the entire device. However, the
-+vf-true-promisc-support private flag is only exposed to the first PF of the
-+device. The PF remains in limited promiscuous mode regardless of the
-+vf-true-promisc-support setting.
-+
-+Next, add a VLAN interface on the VF interface. For example::
-+
-+  # ip link add link eth2 name eth2.100 type vlan id 100
-+
-+Note that the order in which you set the VF to promiscuous mode and add the
-+VLAN interface does not matter (you can do either first). The result in this
-+example is that the VF will get all traffic that is tagged with VLAN 100.
-+
-+
-+Malicious Driver Detection (MDD) for VFs
-+----------------------------------------
-+Some Intel Ethernet devices use Malicious Driver Detection (MDD) to detect
-+malicious traffic from the VF and disable Tx/Rx queues or drop the offending
-+packet until a VF driver reset occurs. You can view MDD messages in the PF's
-+system log using the dmesg command.
-+
-+- If the PF driver logs MDD events from the VF, confirm that the correct VF
-+  driver is installed.
-+- To restore functionality, you can manually reload the VF or VM or enable
-+  automatic VF resets.
-+- When automatic VF resets are enabled, the PF driver will immediately reset
-+  the VF and reenable queues when it detects MDD events on the receive path.
-+- If automatic VF resets are disabled, the PF will not automatically reset the
-+  VF when it detects MDD events.
-+
-+To enable or disable automatic VF resets, use the following command::
-+
-+  # ethtool --set-priv-flags <ethX> mdd-auto-reset-vf on|off
-+
-+
-+MAC and VLAN Anti-Spoofing Feature for VFs
-+------------------------------------------
-+When a malicious driver on a Virtual Function (VF) interface attempts to send a
-+spoofed packet, it is dropped by the hardware and not transmitted.
-+
-+NOTE: This feature can be disabled for a specific VF::
-+
-+  # ip link set <ethX> vf <vf id> spoofchk {off|on}
-+
-+
-+Jumbo Frames
-+------------
-+Jumbo Frames support is enabled by changing the Maximum Transmission Unit (MTU)
-+to a value larger than the default value of 1500.
-+
-+Use the ifconfig command to increase the MTU size. For example, enter the
-+following where <ethX> is the interface number::
-+
-+  # ifconfig <ethX> mtu 9000 up
-+
-+Alternatively, you can use the ip command as follows::
-+
-+  # ip link set mtu 9000 dev <ethX>
-+  # ip link set up dev <ethX>
-+
-+This setting is not saved across reboots.
-+
-+
-+NOTE: The maximum MTU setting for jumbo frames is 9702. This corresponds to the
-+maximum jumbo frame size of 9728 bytes.
-+
-+NOTE: This driver will attempt to use multiple page sized buffers to receive
-+each jumbo packet. This should help to avoid buffer starvation issues when
-+allocating receive packets.
-+
-+NOTE: Packet loss may have a greater impact on throughput when you use jumbo
-+frames. If you observe a drop in performance after enabling jumbo frames,
-+enabling flow control may mitigate the issue.
-+
-+
-+Speed and Duplex Configuration
-+------------------------------
-+In addressing speed and duplex configuration issues, you need to distinguish
-+between copper-based adapters and fiber-based adapters.
-+
-+In the default mode, an Intel(R) Ethernet Network Adapter using copper
-+connections will attempt to auto-negotiate with its link partner to determine
-+the best setting. If the adapter cannot establish link with the link partner
-+using auto-negotiation, you may need to manually configure the adapter and link
-+partner to identical settings to establish link and pass packets. This should
-+only be needed when attempting to link with an older switch that does not
-+support auto-negotiation or one that has been forced to a specific speed or
-+duplex mode. Your link partner must match the setting you choose. 1 Gbps speeds
-+and higher cannot be forced. Use the autonegotiation advertising setting to
-+manually set devices for 1 Gbps and higher.
-+
-+Speed, duplex, and autonegotiation advertising are configured through the
-+ethtool utility. For the latest version, download and install ethtool from the
-+following website:
-+
-+   https://kernel.org/pub/software/network/ethtool/
-+
-+To see the speed configurations your device supports, run the following::
-+
-+  # ethtool <ethX>
-+
-+Caution: Only experienced network administrators should force speed and duplex
-+or change autonegotiation advertising manually. The settings at the switch must
-+always match the adapter settings. Adapter performance may suffer or your
-+adapter may not operate if you configure the adapter differently from your
-+switch.
-+
-+
-+Data Center Bridging (DCB)
-+--------------------------
-+NOTE: The kernel assumes that TC0 is available, and will disable Priority Flow
-+Control (PFC) on the device if TC0 is not available. To fix this, ensure TC0 is
-+enabled when setting up DCB on your switch.
-+
-+DCB is a configuration Quality of Service implementation in hardware. It uses
-+the VLAN priority tag (802.1p) to filter traffic. That means that there are 8
-+different priorities that traffic can be filtered into. It also enables
-+priority flow control (802.1Qbb) which can limit or eliminate the number of
-+dropped packets during network stress. Bandwidth can be allocated to each of
-+these priorities, which is enforced at the hardware level (802.1Qaz).
-+
-+DCB is normally configured on the network using the DCBX protocol (802.1Qaz), a
-+specialization of LLDP (802.1AB). The ice driver supports the following
-+mutually exclusive variants of DCBX support:
-+
-+1) Firmware-based LLDP Agent
-+2) Software-based LLDP Agent
-+
-+In firmware-based mode, firmware intercepts all LLDP traffic and handles DCBX
-+negotiation transparently for the user. In this mode, the adapter operates in
-+"willing" DCBX mode, receiving DCB settings from the link partner (typically a
-+switch). The local user can only query the negotiated DCB configuration. For
-+information on configuring DCBX parameters on a switch, please consult the
-+switch manufacturer's documentation.
-+
-+In software-based mode, LLDP traffic is forwarded to the network stack and user
-+space, where a software agent can handle it. In this mode, the adapter can
-+operate in either "willing" or "nonwilling" DCBX mode and DCB configuration can
-+be both queried and set locally. This mode requires the FW-based LLDP Agent to
-+be disabled.
-+
-+NOTE:
-+
-+- You can enable and disable the firmware-based LLDP Agent using an ethtool
-+  private flag. Refer to the "FW-LLDP (Firmware Link Layer Discovery Protocol)"
-+  section in this README for more information.
-+- In software-based DCBX mode, you can configure DCB parameters using software
-+  LLDP/DCBX agents that interface with the Linux kernel's DCB Netlink API. We
-+  recommend using OpenLLDP as the DCBX agent when running in software mode. For
-+  more information, see the OpenLLDP man pages and
-+  https://github.com/intel/openlldp.
-+- The driver implements the DCB netlink interface layer to allow the user space
-+  to communicate with the driver and query DCB configuration for the port.
-+- iSCSI with DCB is not supported.
-+
-+
-+FW-LLDP (Firmware Link Layer Discovery Protocol)
-+------------------------------------------------
-+Use ethtool to change FW-LLDP settings. The FW-LLDP setting is per port and
-+persists across boots.
-+
-+To enable LLDP::
-+
-+  # ethtool --set-priv-flags <ethX> fw-lldp-agent on
-+
-+To disable LLDP::
-+
-+  # ethtool --set-priv-flags <ethX> fw-lldp-agent off
-+
-+To check the current LLDP setting::
-+
-+  # ethtool --show-priv-flags <ethX>
-+
-+NOTE: You must enable the UEFI HII "LLDP Agent" attribute for this setting to
-+take effect. If "LLDP AGENT" is set to disabled, you cannot enable it from the
-+OS.
-+
-+
-+Flow Control
-+------------
-+Ethernet Flow Control (IEEE 802.3x) can be configured with ethtool to enable
-+receiving and transmitting pause frames for ice. When transmit is enabled,
-+pause frames are generated when the receive packet buffer crosses a predefined
-+threshold. When receive is enabled, the transmit unit will halt for the time
-+delay specified when a pause frame is received.
-+
-+NOTE: You must have a flow control capable link partner.
-+
-+Flow Control is disabled by default.
-+
-+Use ethtool to change the flow control settings.
-+
-+To enable or disable Rx or Tx Flow Control::
-+
-+  # ethtool -A <ethX> rx <on|off> tx <on|off>
-+
-+Note: This command only enables or disables Flow Control if auto-negotiation is
-+disabled. If auto-negotiation is enabled, this command changes the parameters
-+used for auto-negotiation with the link partner.
-+
-+Note: Flow Control auto-negotiation is part of link auto-negotiation. Depending
-+on your device, you may not be able to change the auto-negotiation setting.
-+
-+NOTE:
-+
-+- The ice driver requires flow control on both the port and link partner. If
-+  flow control is disabled on one of the sides, the port may appear to hang on
-+  heavy traffic.
-+- You may encounter issues with link-level flow control (LFC) after disabling
-+  DCB. The LFC status may show as enabled but traffic is not paused. To resolve
-+  this issue, disable and reenable LFC using ethtool::
-+
-+   # ethtool -A <ethX> rx off tx off
-+   # ethtool -A <ethX> rx on tx on
-+
-+
-+NAPI
-+----
-+This driver supports NAPI (Rx polling mode).
-+For more information on NAPI, see
-+https://www.linuxfoundation.org/collaborate/workgroups/networking/napi
-+
-+
-+MACVLAN
-+-------
-+This driver supports MACVLAN. Kernel support for MACVLAN can be tested by
-+checking if the MACVLAN driver is loaded. You can run 'lsmod | grep macvlan' to
-+see if the MACVLAN driver is loaded or run 'modprobe macvlan' to try to load
-+the MACVLAN driver.
-+
-+NOTE:
-+
-+- In passthru mode, you can only set up one MACVLAN device. It will inherit the
-+  MAC address of the underlying PF (Physical Function) device.
-+
-+
-+IEEE 802.1ad (QinQ) Support
-+---------------------------
-+The IEEE 802.1ad standard, informally known as QinQ, allows for multiple VLAN
-+IDs within a single Ethernet frame. VLAN IDs are sometimes referred to as
-+"tags," and multiple VLAN IDs are thus referred to as a "tag stack." Tag stacks
-+allow L2 tunneling and the ability to segregate traffic within a particular
-+VLAN ID, among other uses.
-+
-+NOTES:
-+
-+- Receive checksum offloads and VLAN acceleration are not supported for 802.1ad
-+  (QinQ) packets.
-+
-+- 0x88A8 traffic will not be received unless VLAN stripping is disabled with
-+  the following command::
-+
-+    # ethool -K <ethX> rxvlan off
-+
-+- 0x88A8/0x8100 double VLANs cannot be used with 0x8100 or 0x8100/0x8100 VLANS
-+  configured on the same port. 0x88a8/0x8100 traffic will not be received if
-+  0x8100 VLANs are configured.
-+
-+- The VF can only transmit 0x88A8/0x8100 (i.e., 802.1ad/802.1Q) traffic if:
-+
-+    1) The VF is not assigned a port VLAN.
-+    2) spoofchk is disabled from the PF. If you enable spoofchk, the VF will
-+       not transmit 0x88A8/0x8100 traffic.
-+
-+- The VF may not receive all network traffic based on the Inner VLAN header
-+  when VF true promiscuous mode (vf-true-promisc-support) and double VLANs are
-+  enabled in SR-IOV mode.
-+
-+The following are examples of how to configure 802.1ad (QinQ)::
-+
-+  # ip link add link eth0 eth0.24 type vlan proto 802.1ad id 24
-+  # ip link add link eth0.24 eth0.24.371 type vlan proto 802.1Q id 371
-+
-+  Where "24" and "371" are example VLAN IDs.
-+
-+
-+Tunnel/Overlay Stateless Offloads
-+---------------------------------
-+Supported tunnels and overlays include VXLAN, GENEVE, and others depending on
-+hardware and software configuration. Stateless offloads are enabled by default.
-+
-+To view the current state of all offloads::
-+
-+  # ethtool -k <ethX>
-+
-+
-+UDP Segmentation Offload
-+------------------------
-+Allows the adapter to offload transmit segmentation of UDP packets with
-+payloads up to 64K into valid Ethernet frames. Because the adapter hardware is
-+able to complete data segmentation much faster than operating system software,
-+this feature may improve transmission performance.
-+In addition, the adapter may use fewer CPU resources.
-+
-+NOTE:
-+
-+- The application sending UDP packets must support UDP segmentation offload.
-+
-+To enable/disable UDP Segmentation Offload, issue the following command::
-+
-+  # ethtool -K <ethX> tx-udp-segmentation [off|on]
-+
-+
-+Performance Optimization
-+========================
-+Driver defaults are meant to fit a wide variety of workloads, but if further
-+optimization is required, we recommend experimenting with the following
-+settings.
-+
-+
-+Rx Descriptor Ring Size
-+-----------------------
-+To reduce the number of Rx packet discards, increase the number of Rx
-+descriptors for each Rx ring using ethtool.
-+
-+  Check if the interface is dropping Rx packets due to buffers being full
-+  (rx_dropped.nic can mean that there is no PCIe bandwidth)::
-+
-+    # ethtool -S <ethX> | grep "rx_dropped"
-+
-+  If the previous command shows drops on queues, it may help to increase
-+  the number of descriptors using 'ethtool -G'::
-+
-+    # ethtool -G <ethX> rx <N>
-+    Where <N> is the desired number of ring entries/descriptors
-+
-+  This can provide temporary buffering for issues that create latency while
-+  the CPUs process descriptors.
-+
-+
-+Interrupt Rate Limiting
-+-----------------------
-+This driver supports an adaptive interrupt throttle rate (ITR) mechanism that
-+is tuned for general workloads. The user can customize the interrupt rate
-+control for specific workloads, via ethtool, adjusting the number of
-+microseconds between interrupts.
-+
-+To set the interrupt rate manually, you must disable adaptive mode::
-+
-+  # ethtool -C <ethX> adaptive-rx off adaptive-tx off
-+
-+For lower CPU utilization:
-+
-+  Disable adaptive ITR and lower Rx and Tx interrupts. The examples below
-+  affect every queue of the specified interface.
-+
-+  Setting rx-usecs and tx-usecs to 80 will limit interrupts to about
-+  12,500 interrupts per second per queue::
-+
-+    # ethtool -C <ethX> adaptive-rx off adaptive-tx off rx-usecs 80 tx-usecs 80
-+
-+For reduced latency:
-+
-+  Disable adaptive ITR and ITR by setting rx-usecs and tx-usecs to 0
-+  using ethtool::
-+
-+    # ethtool -C <ethX> adaptive-rx off adaptive-tx off rx-usecs 0 tx-usecs 0
-+
-+Per-queue interrupt rate settings:
-+
-+  The following examples are for queues 1 and 3, but you can adjust other
-+  queues.
-+
-+  To disable Rx adaptive ITR and set static Rx ITR to 10 microseconds or
-+  about 100,000 interrupts/second, for queues 1 and 3::
-+
-+    # ethtool --per-queue <ethX> queue_mask 0xa --coalesce adaptive-rx off
-+    rx-usecs 10
-+
-+  To show the current coalesce settings for queues 1 and 3::
-+
-+    # ethtool --per-queue <ethX> queue_mask 0xa --show-coalesce
-+
-+Bounding interrupt rates using rx-usecs-high:
-+
-+  :Valid Range: 0-236 (0=no limit)
-+
-+   The range of 0-236 microseconds provides an effective range of 4,237 to
-+   250,000 interrupts per second. The value of rx-usecs-high can be set
-+   independently of rx-usecs and tx-usecs in the same ethtool command, and is
-+   also independent of the adaptive interrupt moderation algorithm. The
-+   underlying hardware supports granularity in 4-microsecond intervals, so
-+   adjacent values may result in the same interrupt rate.
-+
-+  The following command would disable adaptive interrupt moderation, and allow
-+  a maximum of 5 microseconds before indicating a receive or transmit was
-+  complete. However, instead of resulting in as many as 200,000 interrupts per
-+  second, it limits total interrupts per second to 50,000 via the rx-usecs-high
-+  parameter.
-+
-+  ::
-+
-+    # ethtool -C <ethX> adaptive-rx off adaptive-tx off rx-usecs-high 20
-+    rx-usecs 5 tx-usecs 5
-+
-+
-+Virtualized Environments
-+------------------------
-+In addition to the other suggestions in this section, the following may be
-+helpful to optimize performance in VMs.
-+
-+  Using the appropriate mechanism (vcpupin) in the VM, pin the CPUs to
-+  individual LCPUs, making sure to use a set of CPUs included in the
-+  device's local_cpulist: ``/sys/class/net/<ethX>/device/local_cpulist``.
-+
-+  Configure as many Rx/Tx queues in the VM as available. (See the iavf driver
-+  documentation for the number of queues supported.) For example::
-+
-+    # ethtool -L <virt_interface> rx <max> tx <max>
++	if (ice_init_lag(pf))
++		dev_warn(dev, "Failed to init link aggregation support\n");
++
+ 	/* print PCI link speed and width */
+ 	pcie_print_link_status(pf->pdev);
  
--  -> Device Drivers
--    -> Network device support (NETDEVICES [=y])
--      -> Ethernet driver support
--        -> Intel devices
--          -> Intel(R) Ethernet Connection E800 Series Support
+@@ -4420,6 +4428,7 @@ static void ice_remove(struct pci_dev *pdev)
+ 	if (test_bit(ICE_FLAG_FD_ENA, pf->flags))
+ 		ice_deinit_acl(pf);
+ 	mutex_destroy(&(&pf->hw)->fdir_fltr_lock);
++	ice_deinit_lag(pf);
+ 	if (!ice_is_safe_mode(pf))
+ 		ice_remove_arfs(pf);
+ 	ice_setup_mc_magic_wake(pf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index aa19eb6190f9..2614de4dd36f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1679,6 +1679,8 @@ int ice_sriov_configure(struct pci_dev *pdev, int num_vfs)
+ 	if (!num_vfs) {
+ 		if (!pci_vfs_assigned(pdev)) {
+ 			ice_free_vfs(pf);
++			if (pf->lag)
++				ice_enable_lag(pf->lag);
+ 			return 0;
+ 		}
  
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
+@@ -1690,6 +1692,8 @@ int ice_sriov_configure(struct pci_dev *pdev, int num_vfs)
+ 	if (err)
+ 		return err;
  
- or the Intel Wired Networking project hosted by Sourceforge at:
--
- https://sourceforge.net/projects/e1000
++	if (pf->lag)
++		ice_disable_lag(pf->lag);
+ 	return num_vfs;
+ }
  
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to e1000-devel@lists.sf.net.
-+
-+
-+Trademarks
-+==========
-+Intel is a trademark or registered trademark of Intel Corporation or its
-+subsidiaries in the United States and/or other countries.
-+
-+* Other names and brands may be claimed as the property of others.
 -- 
 2.20.1
 
