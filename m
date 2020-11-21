@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CE142BBB39
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:46:43 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06D672BBB40
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 01:47:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 45DC481EB5;
-	Sat, 21 Nov 2020 00:46:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B62952E142;
+	Sat, 21 Nov 2020 00:47:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M4cx4PpFxf8d; Sat, 21 Nov 2020 00:46:42 +0000 (UTC)
+	with ESMTP id vscIblBAqeNp; Sat, 21 Nov 2020 00:46:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E9D2285772;
-	Sat, 21 Nov 2020 00:46:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 423F42E146;
+	Sat, 21 Nov 2020 00:46:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B22C41BF475
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:37 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D59A81BF475
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id AEC1B87531
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D1F742E112
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3Vzn1Cvbp73x for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id YpoMLMws01xZ for <intel-wired-lan@lists.osuosl.org>;
  Sat, 21 Nov 2020 00:46:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 29EBB874EF
+ by silver.osuosl.org (Postfix) with ESMTPS id 3D28F2E110
  for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 00:46:35 +0000 (UTC)
-IronPort-SDR: HuDrlKxbSeWutUdqVwZWXyycCBseExcnOkxfXW7y9N2lWQOOWA3Ah92Zbj2URzGszfgM9AAlWL
- rPeAgqTBn9gg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053542"
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053542"
+IronPort-SDR: WvP6dWX5wkEwp94NGSlDR/+OEBhYzZbzt33Dq4fl7uvjqw0R3364XjNyUofhmV7KPh6Hs0HHPM
+ q6NcR51in3ng==
+X-IronPort-AV: E=McAfee;i="6000,8403,9811"; a="168053543"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="168053543"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  20 Nov 2020 16:46:33 -0800
-IronPort-SDR: uPUxft3sJ5pPbf8ypHKppdZdWTMcWWRTWXKVk+DhXJV3FH+yu+0clgoNQTkXLrjbkCP75ThViX
- MhTo3txHCe1w==
+IronPort-SDR: FaAV3NP4gk+BKgNBmMjDVa7tOBsF9g5LnDUN4lKR6ruE7C+V8XH16KRPskOxJFYsXYNKQWiyHZ
+ m4JCpCTKI+5Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520159"
+X-IronPort-AV: E=Sophos;i="5.78,357,1599548400"; d="scan'208";a="331520160"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga006.jf.intel.com with ESMTP; 20 Nov 2020 16:46:33 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 20 Nov 2020 16:39:28 -0800
-Message-Id: <20201121003938.48514-4-anthony.l.nguyen@intel.com>
+Date: Fri, 20 Nov 2020 16:39:29 -0800
+Message-Id: <20201121003938.48514-5-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
 References: <20201121003938.48514-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S54 04/14] ice: Improve MSI-X vector
- enablement fallback logic
+Subject: [Intel-wired-lan] [PATCH S54 05/14] ice: Fix AF_XDP multi queue TX
+ scaling issue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,331 +73,238 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Sridhar Samudrala <sridhar.samudrala@intel.com>
 
-The current MSI-X enablement logic either tries to enable best-case
-MSI-X vectors and if that fails we only support a bare-minimum set.
-This is not very flexible and the current logic is broken when actually
-allocating and reserving MSI-X in the driver. Fix this by improving the
-fall-back logic and fixing the allocation/reservation of MSI-X when the
-best-case MSI-X vectors are not received from the OS.
+Set Report Status(RS) bit less frequently allowing the hardware to
+reduce descriptor writebacks which in turn reduces contention between
+CPU and PCIe.
 
-The new fall-back logic is described below with each [#] being an
-attempt at enabling a certain number of MSI-X. If any of the steps
-succeed, then return the number of MSI-X enabled from
-ice_ena_msix_range(). If any of the attempts fail, then goto the next
-step.
+In ice_xmit_zc routine, RS bit is set only in the last descriptor, just
+before bumping the tail. A new field 'next_rs_idx' is introduced in
+struct ice_ring to store the index of the last descriptor where RS bit is
+set.
 
-Attempt [0]: Enable the best-case scenario MSI-X vectors.
+In the TX cleanup routine, DD bit is checked only in the descriptor
+corresponding to the next_rs_idx and used to figure out the frames that
+are ready to be cleaned.
 
-Attempt [1]: Enable MSI-X vectors with the number of pf->num_lan_msix
-reduced by a factor of 2 from the previous attempts (i.e.
-num_online_cpus() / 2).
-
-Attempt [2]: Same as attempt [1], except reduce both by a factor of 4.
-
-Attempt [3]: Enable the bare-minimum MSI-X vectors.
-
-Also, if the adjusted_base_msix ever hits the minimum required for LAN,
-then just set the needed MSI-X for that feature to the minimum
-(similar to attempt [3]).
-
-To fix the allocation/reservation of MSI-X, the PF VSI needs to take
-into account the pf->num_lan_msix available and only allocate up to that
-many MSI-X vectors. To do this, limit the number of Tx and Rx queues
-based on pf->num_lan_msix. This is done because we don't want more than
-1 Tx/Rx queue per interrupt due to performance concerns. Also, limit the
-number of MSI-X based on pf->num_lan_msix available.
-
-Also, prevent users from enabling more combined queues than there are
-MSI-X available via ethtool.
-
-Fixes: 152b978a1f90 ("ice: Rework ice_ena_msix_range")
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
+Signed-off-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h         |   4 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c |   8 +-
- drivers/net/ethernet/intel/ice/ice_lib.c     |  15 +-
- drivers/net/ethernet/intel/ice/ice_main.c    | 161 ++++++++++---------
- 4 files changed, 102 insertions(+), 86 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.c |  2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.h |  5 +-
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 90 +++++++++++------------
+ drivers/net/ethernet/intel/ice/ice_xsk.h  |  5 +-
+ 4 files changed, 49 insertions(+), 53 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 855db84d4186..1dcb60e3c9cf 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -71,8 +71,10 @@
- #define ICE_INT_NAME_STR_LEN	(IFNAMSIZ + 16)
- #define ICE_AQ_LEN		64
- #define ICE_MBXSQ_LEN		64
--#define ICE_MIN_MSIX		2
- #define ICE_FDIR_MSIX		1
-+#define ICE_MIN_LAN_MSIX	1
-+#define ICE_OICR_MSIX		1
-+#define ICE_MIN_MSIX		(ICE_MIN_LAN_MSIX + ICE_OICR_MSIX)
- #define ICE_NO_VSI		0xffff
- #define ICE_VSI_MAP_CONTIG	0
- #define ICE_VSI_MAP_SCATTER	1
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 891c7271fdd6..771cb22b6b1b 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3267,8 +3267,8 @@ ice_set_rxfh(struct net_device *netdev, const u32 *indir, const u8 *key,
-  */
- static int ice_get_max_txq(struct ice_pf *pf)
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index d2493fa71336..884581a9c4c7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1623,7 +1623,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
+ 	 */
+ 	ice_for_each_ring(ring, q_vector->tx) {
+ 		bool wd = ring->xsk_pool ?
+-			  ice_clean_tx_irq_zc(ring, budget) :
++			  ice_clean_tx_irq_zc(ring) :
+ 			  ice_clean_tx_irq(ring, budget);
+ 
+ 		if (!wd)
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
+index ff1a1cbd078e..d7ca82871b7c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.h
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
+@@ -283,7 +283,10 @@ struct ice_ring {
+ 	/* used in interrupt processing */
+ 	u16 next_to_use;
+ 	u16 next_to_clean;
+-	u16 next_to_alloc;
++	union {
++		u16 next_to_alloc;
++		u16 next_rs_idx;
++	};
+ 
+ 	/* stats structs */
+ 	struct ice_q_stats	stats;
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 4d44431c71a0..d32a8c338366 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -617,20 +617,14 @@ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget)
+ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
  {
--	return min_t(int, num_online_cpus(),
--		     pf->hw.func_caps.common_cap.num_txq);
-+	return min3(pf->num_lan_msix, (u16)num_online_cpus(),
-+		    (u16)pf->hw.func_caps.common_cap.num_txq);
+ 	struct ice_tx_desc *tx_desc = NULL;
+-	bool work_done = true;
++	u16 ntu = xdp_ring->next_to_use;
+ 	struct xdp_desc desc;
+ 	dma_addr_t dma;
+ 
+ 	while (likely(budget-- > 0)) {
+ 		struct ice_tx_buf *tx_buf;
+ 
+-		if (unlikely(!ICE_DESC_UNUSED(xdp_ring))) {
+-			xdp_ring->tx_stats.tx_busy++;
+-			work_done = false;
+-			break;
+-		}
+-
+-		tx_buf = &xdp_ring->tx_buf[xdp_ring->next_to_use];
++		tx_buf = &xdp_ring->tx_buf[ntu];
+ 
+ 		if (!xsk_tx_peek_desc(xdp_ring->xsk_pool, &desc))
+ 			break;
+@@ -641,22 +635,27 @@ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
+ 
+ 		tx_buf->bytecount = desc.len;
+ 
+-		tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
++		tx_desc = ICE_TX_DESC(xdp_ring, ntu);
+ 		tx_desc->buf_addr = cpu_to_le64(dma);
+ 		tx_desc->cmd_type_offset_bsz =
+-			ice_build_ctob(ICE_TXD_LAST_DESC_CMD, 0, desc.len, 0);
++			ice_build_ctob(ICE_TX_DESC_CMD_EOP, 0, desc.len, 0);
+ 
+-		xdp_ring->next_to_use++;
+-		if (xdp_ring->next_to_use == xdp_ring->count)
+-			xdp_ring->next_to_use = 0;
++		xdp_ring->next_rs_idx = ntu;
++		ntu++;
++		if (ntu == xdp_ring->count)
++			ntu = 0;
+ 	}
+ 
+ 	if (tx_desc) {
++		xdp_ring->next_to_use = ntu;
++		/* Set RS bit for the last frame and bump tail ptr */
++		tx_desc->cmd_type_offset_bsz |=
++			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+ 		ice_xdp_ring_update_tail(xdp_ring);
+ 		xsk_tx_release(xdp_ring->xsk_pool);
+ 	}
+ 
+-	return budget > 0 && work_done;
++	return budget > 0;
  }
  
  /**
-@@ -3277,8 +3277,8 @@ static int ice_get_max_txq(struct ice_pf *pf)
-  */
- static int ice_get_max_rxq(struct ice_pf *pf)
- {
--	return min_t(int, num_online_cpus(),
--		     pf->hw.func_caps.common_cap.num_rxq);
-+	return min3(pf->num_lan_msix, (u16)num_online_cpus(),
-+		    (u16)pf->hw.func_caps.common_cap.num_rxq);
- }
- 
+@@ -676,30 +675,34 @@ ice_clean_xdp_tx_buf(struct ice_ring *xdp_ring, struct ice_tx_buf *tx_buf)
  /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index b71d9e1d9262..1288a7718f34 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -161,8 +161,10 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
- 
- 	switch (vsi->type) {
- 	case ICE_VSI_PF:
--		vsi->alloc_txq = min_t(int, ice_get_avail_txq_count(pf),
--				       num_online_cpus());
-+		/* default to 1 Tx queue per MSI-X to not hurt our performance */
-+		vsi->alloc_txq = min3(pf->num_lan_msix,
-+				      ice_get_avail_txq_count(pf),
-+				      (u16)num_online_cpus());
- 		if (vsi->req_txq) {
- 			vsi->alloc_txq = vsi->req_txq;
- 			vsi->num_txq = vsi->req_txq;
-@@ -174,8 +176,10 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
- 		if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
- 			vsi->alloc_rxq = 1;
- 		} else {
--			vsi->alloc_rxq = min_t(int, ice_get_avail_rxq_count(pf),
--					       num_online_cpus());
-+			/* default to 1 Rx queue per MSI-X to not hurt our performance */
-+			vsi->alloc_rxq = min3(pf->num_lan_msix,
-+					      ice_get_avail_rxq_count(pf),
-+					      (u16)num_online_cpus());
- 			if (vsi->req_rxq) {
- 				vsi->alloc_rxq = vsi->req_rxq;
- 				vsi->num_rxq = vsi->req_rxq;
-@@ -184,7 +188,8 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
- 
- 		pf->num_lan_rx = vsi->alloc_rxq;
- 
--		vsi->num_q_vectors = max_t(int, vsi->alloc_rxq, vsi->alloc_txq);
-+		vsi->num_q_vectors = min_t(int, pf->num_lan_msix,
-+					   max_t(int, vsi->alloc_rxq, vsi->alloc_txq));
- 		break;
- 	case ICE_VSI_VF:
- 		vf = &pf->vf[vsi->vf_id];
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 647f6c105c65..fe2dd773902a 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3382,95 +3382,105 @@ static int ice_init_pf(struct ice_pf *pf)
- 	return 0;
- }
- 
-+static int ice_alloc_msix_entries(struct ice_pf *pf, u16 num_entries)
-+{
-+	u16 i;
-+
-+	pf->msix_entries = devm_kcalloc(ice_pf_to_dev(pf), num_entries,
-+					sizeof(*pf->msix_entries), GFP_KERNEL);
-+	if (!pf->msix_entries)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < num_entries; i++)
-+		pf->msix_entries[i].entry = i;
-+
-+	return 0;
-+}
-+
-+static void ice_free_msix_entries(struct ice_pf *pf)
-+{
-+	devm_kfree(ice_pf_to_dev(pf), pf->msix_entries);
-+	pf->msix_entries = NULL;
-+}
-+
- /**
-- * ice_ena_msix_range - Request a range of MSIX vectors from the OS
-+ * ice_ena_msix_range - request a range of MSI-X vectors from the OS
-  * @pf: board private structure
+  * ice_clean_tx_irq_zc - Completes AF_XDP entries, and cleans XDP entries
+  * @xdp_ring: XDP Tx ring
+- * @budget: NAPI budget
   *
-- * compute the number of MSIX vectors required (v_budget) and request from
-- * the OS. Return the number of vectors reserved or negative on failure
-+ * The driver first tries to enable best-case scenario MSI-X vectors. If that
-+ * doesn't succeeed then a fall-back method is employed.
-+ *
-+ * The fall-back logic is described below with each [#] being an attempt at
-+ * enabling a certain number of MSI-X. If any of the steps succeed, then return
-+ * the number of MSI-X enabled from  pci_ena_msix_exact(). If any of the
-+ * attempts fail, then goto the next step.
-+ *
-+ * Attempt [0]: Enable the best-case scenario MSI-X vectors.
-+ *
-+ * Attempt [1]: Enable MSI-X vectors with the number of pf->num_lan_msix reduced
-+ * by a factor of 2 from the previous attempts (i.e. num_online_cpus() / 2).
-+ *
-+ * Attempt [2]: Same as attempt [2], except reduce both by a factor of 4.
-+ *
-+ * Attempt [3]: Enable the bare-minimum MSI-X vectors.
-+ *
-+ * Also, if the adjusted_base_msix ever hits the mimimum required for LAN, then
-+ * just set the needed MSI-X for that feature to the minimum (similar to
-+ * attempt [3]).
+- * Returns true if cleanup/tranmission is done.
++ * Returns true if cleanup/transmission is done.
   */
- static int ice_ena_msix_range(struct ice_pf *pf)
+-bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget)
++bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring)
  {
-+	int err = -ENOSPC, num_cpus, attempt, adjusted_msix_divisor = 1, needed;
- 	struct device *dev = ice_pf_to_dev(pf);
--	int v_left, v_actual, v_budget = 0;
--	int needed, err, i;
--
--	v_left = pf->hw.func_caps.common_cap.num_msix_vectors;
--
--	/* reserve one vector for miscellaneous handler */
--	needed = 1;
--	if (v_left < needed)
--		goto no_hw_vecs_left_err;
--	v_budget += needed;
--	v_left -= needed;
--
--	/* reserve vectors for LAN traffic */
--	needed = min_t(int, num_online_cpus(), v_left);
--	if (v_left < needed)
--		goto no_hw_vecs_left_err;
--	pf->num_lan_msix = needed;
--	v_budget += needed;
--	v_left -= needed;
--
--	/* reserve one vector for flow director */
--	if (test_bit(ICE_FLAG_FD_ENA, pf->flags)) {
--		needed = ICE_FDIR_MSIX;
--		if (v_left < needed)
--			goto no_hw_vecs_left_err;
--		v_budget += needed;
--		v_left -= needed;
--	}
--
--	pf->msix_entries = devm_kcalloc(dev, v_budget,
--					sizeof(*pf->msix_entries), GFP_KERNEL);
+-	int total_packets = 0, total_bytes = 0;
+-	s16 ntc = xdp_ring->next_to_clean;
+-	struct ice_tx_desc *tx_desc;
++	u16 next_rs_idx = xdp_ring->next_rs_idx;
++	u16 ntc = xdp_ring->next_to_clean;
++	struct ice_tx_desc *next_rs_desc;
+ 	struct ice_tx_buf *tx_buf;
++	u16 frames_ready = 0;
++	u32 total_bytes = 0;
+ 	u32 xsk_frames = 0;
+-	bool xmit_done;
++	u16 i;
  
--	if (!pf->msix_entries) {
--		err = -ENOMEM;
--		goto exit_err;
--	}
-+	num_cpus = num_online_cpus();
- 
--	for (i = 0; i < v_budget; i++)
--		pf->msix_entries[i].entry = i;
-+#define ICE_MAX_ENABLE_MSIX_ATTEMPTS 3
-+	/* make multiple passes at enabling MSI-X vectors in case there aren't
-+	 * enough available for the best-case scenario
-+	 */
-+	for (attempt = 0; attempt <= ICE_MAX_ENABLE_MSIX_ATTEMPTS; attempt++) {
-+		int adjusted_base_msix = num_cpus / adjusted_msix_divisor;
- 
--	/* actually reserve the vectors */
--	v_actual = pci_enable_msix_range(pf->pdev, pf->msix_entries,
--					 ICE_MIN_MSIX, v_budget);
--
--	if (v_actual < 0) {
--		dev_err(dev, "unable to reserve MSI-X vectors\n");
--		err = v_actual;
--		goto msix_err;
--	}
--
--	if (v_actual < v_budget) {
--		dev_warn(dev, "not enough OS MSI-X vectors. requested = %d, obtained = %d\n",
--			 v_budget, v_actual);
--/* 2 vectors each for LAN and RDMA (traffic + OICR), one for flow director */
--#define ICE_MIN_LAN_VECS 2
--#define ICE_MIN_RDMA_VECS 2
--#define ICE_MIN_VECS (ICE_MIN_LAN_VECS + ICE_MIN_RDMA_VECS + 1)
--
--		if (v_actual < ICE_MIN_LAN_VECS) {
--			/* error if we can't get minimum vectors */
--			pci_disable_msix(pf->pdev);
--			err = -ERANGE;
--			goto msix_err;
-+		/* attempt to enable minimum MSI-X range */
-+		if (attempt == ICE_MAX_ENABLE_MSIX_ATTEMPTS) {
-+			needed = ICE_MIN_MSIX;
-+			pf->num_lan_msix = ICE_MIN_LAN_MSIX;
- 		} else {
--			pf->num_lan_msix = ICE_MIN_LAN_VECS;
-+			if (adjusted_base_msix > ICE_MIN_LAN_MSIX)
-+				pf->num_lan_msix = adjusted_base_msix;
-+			else
-+				pf->num_lan_msix = ICE_MIN_LAN_MSIX;
-+
-+			needed = pf->num_lan_msix + ICE_OICR_MSIX;
- 		}
--	}
- 
--	return v_actual;
-+		if (test_bit(ICE_FLAG_FD_ENA, pf->flags))
-+			needed += ICE_FDIR_MSIX;
- 
--msix_err:
--	devm_kfree(dev, pf->msix_entries);
--	goto exit_err;
-+		err = ice_alloc_msix_entries(pf, needed);
-+		if (err)
-+			goto err_out;
-+
-+		dev_dbg(dev, "attempting to enable %d MSI-X vectors\n", needed);
-+		err = pci_enable_msix_exact(pf->pdev, pf->msix_entries, needed);
-+		if (err < 0) {
-+			ice_free_msix_entries(pf);
-+			dev_notice(dev, "Couldn't get %d MSI-X vectors due to OS, Platform, and/or PCI-function limitations. Reducing request and retrying.",
-+				   needed);
-+
-+			adjusted_msix_divisor *= 2;
-+		} else {
-+			if (pf->num_lan_msix != num_cpus)
-+				dev_notice(dev, "Enabled %d MSI-X vectors for LAN traffic.\n",
-+					   pf->num_lan_msix);
-+
-+			return needed;
-+		}
+-	tx_desc = ICE_TX_DESC(xdp_ring, ntc);
+-	tx_buf = &xdp_ring->tx_buf[ntc];
+-	ntc -= xdp_ring->count;
++	next_rs_desc = ICE_TX_DESC(xdp_ring, next_rs_idx);
++	if (next_rs_desc->cmd_type_offset_bsz &
++		cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)) {
++		if (next_rs_idx >= ntc)
++			frames_ready = next_rs_idx - ntc;
++		else
++			frames_ready = next_rs_idx + xdp_ring->count - ntc;
 +	}
  
--no_hw_vecs_left_err:
--	dev_err(dev, "not enough device MSI-X vectors. requested = %d, available = %d\n",
--		needed, v_left);
--	err = -ERANGE;
--exit_err:
-+err_out:
-+	dev_err(dev, "failed to enable MSI-X vectors\n");
- 	pf->num_lan_msix = 0;
- 	return err;
- }
-@@ -3482,8 +3492,7 @@ static int ice_ena_msix_range(struct ice_pf *pf)
- static void ice_dis_msix(struct ice_pf *pf)
- {
- 	pci_disable_msix(pf->pdev);
--	devm_kfree(ice_pf_to_dev(pf), pf->msix_entries);
--	pf->msix_entries = NULL;
-+	ice_free_msix_entries(pf);
+-	do {
+-		if (!(tx_desc->cmd_type_offset_bsz &
+-		      cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)))
+-			break;
++	if (!frames_ready)
++		goto out_xmit;
+ 
+-		total_bytes += tx_buf->bytecount;
+-		total_packets++;
++	for (i = 0; i < frames_ready; i++) {
++		tx_buf = &xdp_ring->tx_buf[ntc];
+ 
+ 		if (tx_buf->raw_buf) {
+ 			ice_clean_xdp_tx_buf(xdp_ring, tx_buf);
+@@ -708,34 +711,25 @@ bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget)
+ 			xsk_frames++;
+ 		}
+ 
+-		tx_desc->cmd_type_offset_bsz = 0;
+-		tx_buf++;
+-		tx_desc++;
+-		ntc++;
+-
+-		if (unlikely(!ntc)) {
+-			ntc -= xdp_ring->count;
+-			tx_buf = xdp_ring->tx_buf;
+-			tx_desc = ICE_TX_DESC(xdp_ring, 0);
+-		}
+-
+-		prefetch(tx_desc);
++		total_bytes += tx_buf->bytecount;
+ 
+-	} while (likely(--budget));
++		++ntc;
++		if (ntc >= xdp_ring->count)
++			ntc = 0;
++	}
+ 
+-	ntc += xdp_ring->count;
+ 	xdp_ring->next_to_clean = ntc;
+ 
+ 	if (xsk_frames)
+ 		xsk_tx_completed(xdp_ring->xsk_pool, xsk_frames);
+ 
++	ice_update_tx_ring_stats(xdp_ring, frames_ready, total_bytes);
++
++out_xmit:
+ 	if (xsk_uses_need_wakeup(xdp_ring->xsk_pool))
+ 		xsk_set_tx_need_wakeup(xdp_ring->xsk_pool);
+ 
+-	ice_update_tx_ring_stats(xdp_ring, total_packets, total_bytes);
+-	xmit_done = ice_xmit_zc(xdp_ring, ICE_DFLT_IRQ_WORK);
+-
+-	return budget > 0 && xmit_done;
++	return ice_xmit_zc(xdp_ring, ICE_DESC_UNUSED(xdp_ring));
  }
  
  /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
+index fad783690134..4aa84b9c2f90 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.h
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
+@@ -12,7 +12,7 @@ struct ice_vsi;
+ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool,
+ 		       u16 qid);
+ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget);
+-bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget);
++bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring);
+ int ice_xsk_wakeup(struct net_device *netdev, u32 queue_id, u32 flags);
+ bool ice_alloc_rx_bufs_zc(struct ice_ring *rx_ring, u16 count);
+ bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
+@@ -35,8 +35,7 @@ ice_clean_rx_irq_zc(struct ice_ring __always_unused *rx_ring,
+ }
+ 
+ static inline bool
+-ice_clean_tx_irq_zc(struct ice_ring __always_unused *xdp_ring,
+-		    int __always_unused budget)
++ice_clean_tx_irq_zc(struct ice_ring __always_unused *xdp_ring)
+ {
+ 	return false;
+ }
 -- 
 2.20.1
 
