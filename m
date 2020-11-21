@@ -1,62 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 265802BC04F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Nov 2020 16:47:45 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FC872BC8FC
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 22 Nov 2020 20:58:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 70BF286EBC;
-	Sat, 21 Nov 2020 15:47:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 09F9E20454;
+	Sun, 22 Nov 2020 19:58:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NojgDeqchcyK; Sat, 21 Nov 2020 15:47:43 +0000 (UTC)
+	with ESMTP id fiYXgD56a+vb; Sun, 22 Nov 2020 19:58:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 744C386EC6;
-	Sat, 21 Nov 2020 15:47:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CC79E20448;
+	Sun, 22 Nov 2020 19:58:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E81AB1BF2F9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 15:47:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9994D1BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 10:17:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E33FA872D6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 15:47:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 92DE28702D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 10:17:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gCnmLoktC7F1 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Nov 2020 15:47:40 +0000 (UTC)
+ with ESMTP id JS+7X-U-tPhn for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Nov 2020 10:17:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D93B4872B7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 15:47:39 +0000 (UTC)
-IronPort-SDR: cJmzsG9Tzsiqvx3N3lWdmD+m5txHHtH+ADKSSlBWLZv6h5rkFD6WiIGD7Inn4hqDFtNK/sqpqQ
- 4fxDdqKK6BJA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9812"; a="171762779"
-X-IronPort-AV: E=Sophos;i="5.78,359,1599548400"; d="scan'208";a="171762779"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Nov 2020 07:47:39 -0800
-IronPort-SDR: qocM1/C3xfcslvrjdW8lraIlC9SzMbdvwdnSu/lgVrVK10qRxk/2A51Gyl+Br9nvnC1tLMTJ3M
- VCbxpVUqmZcQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,359,1599548400"; d="scan'208";a="331677382"
-Received: from lkp-server01.sh.intel.com (HELO 00bc34107a07) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 21 Nov 2020 07:47:38 -0800
-Received: from kbuild by 00bc34107a07 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kgV6v-0000LJ-Ep; Sat, 21 Nov 2020 15:47:37 +0000
-Date: Sat, 21 Nov 2020 23:47:02 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5fb93676.tnVhjRUQroyAOmBM%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 337668e8debf2dbd32bc350c97054d5124da4e87
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4F4B887023
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 10:17:33 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id 10so10346722pfp.5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Nov 2020 02:17:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=YT+znqx5PpPmIZxX/FLP9CFfMwZHU4kV1tsIA7vkhsU=;
+ b=Eb8uZSVQ/Pp7j+L5qbCgkD3TkOBa8YoHyXBgMOr6lr4fvdRnKXQ1TyGwpLC6V/hktw
+ NsTyuW/95uh4lNc4acWKXYQXkyzLYEVCb23SY5qEr6bTedfgSBmCsBL7IMVBOGbgx9T2
+ w45LhvoCzfJ8plr/WgNDFyGootbBMdyo45riPdcOGIDkF5s6UngiTqDmyLDSqbmJZecv
+ zntgakaBAhIMmh/4ElFQGvey2dXrF3gtr9UdDXrQK3mlHhQ+1ptw+6vWLdUEjoyBYpBc
+ JjA+nZcgI6dXHxpwCBn20Fea+GzJ7DlPi2t5lc/no1gqBm1YdqHkndwHks8zM7wJhvw4
+ qimQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=YT+znqx5PpPmIZxX/FLP9CFfMwZHU4kV1tsIA7vkhsU=;
+ b=I+I8kutZ3tPl3fzt+qIopY/0Gcj8Z6DRD4BCoGn4btdV5UbXYhnKT5424aLrBZk+ZZ
+ NQ5yX4JDiZawS9I67axZmF6x64Gw5ENN7idr1oJBESgJyQSp1svf3fk/LV3ap4gKmEcg
+ bmh4LAuU614KU9g55agxRUDGzSZ3/YaLXpotNYo9r8v7IenNRtuGdup7EKqWRA1soDJn
+ PsOhdbIAoDYuLi5+xoX7s178OkS/4qT7CBNC6P312xeNsls0Wg6tYvm3ptY+mS9UVLuY
+ ousriQ9oZA07Zvmbqjcn/b618WCdbvY5r/FsNZq4S6jqZFpa/EqF+xFvShQ/8S06zXj5
+ bc4Q==
+X-Gm-Message-State: AOAM531EPt8myo9UT6/vmN6qRdfB1dmgaMHYFtlBT5pLYc2Nzs5Bl2+l
+ Axjb3M2FekAasa3sXntA5A==
+X-Google-Smtp-Source: ABdhPJyb2Wm1B6Kg1dH8CB+EuU10An/HhotkKgMdMm04yYUfOQZkC8eVM1m2UybrM2RVgFRGqggAbw==
+X-Received: by 2002:a63:db09:: with SMTP id e9mr20942894pgg.60.1605953853030; 
+ Sat, 21 Nov 2020 02:17:33 -0800 (PST)
+Received: from he-cluster.localdomain (67.216.221.250.16clouds.com.
+ [67.216.221.250])
+ by smtp.gmail.com with ESMTPSA id 198sm4530460pgd.31.2020.11.21.02.17.31
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 21 Nov 2020 02:17:32 -0800 (PST)
+From: xiakaixu1987@gmail.com
+X-Google-Original-From: kaixuxia@tencent.com
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
+ davem@davemloft.net
+Date: Sat, 21 Nov 2020 18:17:27 +0800
+Message-Id: <1605953847-12401-1-git-send-email-kaixuxia@tencent.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Mailman-Approved-At: Sun, 22 Nov 2020 19:58:21 +0000
+Subject: [Intel-wired-lan] [PATCH] e1000e: remove the redundant value
+ assignment in e1000_update_nvm_checksum_spt
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,117 +85,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Kaixu Xia <kaixuxia@tencent.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  dev-queue
-branch HEAD: 337668e8debf2dbd32bc350c97054d5124da4e87  ice: Fix state bits on LLDP mode switch
+From: Kaixu Xia <kaixuxia@tencent.com>
 
-elapsed time: 723m
+Both of the statements are value assignment of the variable act_offset.
+The first value assignment is overwritten by the second and is useless.
+Remove it.
 
-configs tested: 88
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arc                        vdk_hs38_defconfig
-sh                   sh7724_generic_defconfig
-powerpc                 mpc8540_ads_defconfig
-riscv                          rv32_defconfig
-powerpc                       holly_defconfig
-sh                           sh2007_defconfig
-arm                      integrator_defconfig
-sh                        sh7785lcr_defconfig
-sh                   rts7751r2dplus_defconfig
-xtensa                  cadence_csp_defconfig
-c6x                                 defconfig
-alpha                               defconfig
-sh                           se7705_defconfig
-powerpc                      tqm8xx_defconfig
-powerpc                      ppc6xx_defconfig
-arm                           sunxi_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20201120
-i386                 randconfig-a003-20201120
-i386                 randconfig-a002-20201120
-i386                 randconfig-a005-20201120
-i386                 randconfig-a001-20201120
-i386                 randconfig-a006-20201120
-i386                 randconfig-a012-20201121
-i386                 randconfig-a013-20201121
-i386                 randconfig-a011-20201121
-i386                 randconfig-a016-20201121
-i386                 randconfig-a014-20201121
-i386                 randconfig-a015-20201121
-x86_64               randconfig-a006-20201120
-x86_64               randconfig-a003-20201120
-x86_64               randconfig-a004-20201120
-x86_64               randconfig-a005-20201120
-x86_64               randconfig-a001-20201120
-x86_64               randconfig-a002-20201120
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a015-20201120
-x86_64               randconfig-a011-20201120
-x86_64               randconfig-a014-20201120
-x86_64               randconfig-a016-20201120
-x86_64               randconfig-a012-20201120
-x86_64               randconfig-a013-20201120
-
+Reported-by: Tosk Robot <tencent_os_robot@tencent.com>
+Signed-off-by: Kaixu Xia <kaixuxia@tencent.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index 9aa6fad8ed47..f05070ed18c9 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -3875,13 +3875,6 @@ static s32 e1000_update_nvm_checksum_spt(struct e1000_hw *hw)
+ 	if (ret_val)
+ 		goto release;
+ 
+-	/* And invalidate the previously valid segment by setting
+-	 * its signature word (0x13) high_byte to 0b. This can be
+-	 * done without an erase because flash erase sets all bits
+-	 * to 1's. We can write 1's to 0's without an erase
+-	 */
+-	act_offset = (old_bank_offset + E1000_ICH_NVM_SIG_WORD) * 2 + 1;
+-
+ 	/* offset in words but we read dword */
+ 	act_offset = old_bank_offset + E1000_ICH_NVM_SIG_WORD - 1;
+ 	ret_val = e1000_read_flash_dword_ich8lan(hw, act_offset, &dword);
+-- 
+2.20.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
