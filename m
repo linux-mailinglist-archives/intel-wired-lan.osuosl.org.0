@@ -1,65 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0E0B2C11D2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Nov 2020 18:22:21 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2799D2C11D0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Nov 2020 18:22:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7AFA1204B6;
-	Mon, 23 Nov 2020 17:22:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DBCBD85DC4;
+	Mon, 23 Nov 2020 17:22:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6yT0XCDRY2mZ; Mon, 23 Nov 2020 17:22:14 +0000 (UTC)
+	with ESMTP id pQ-OQJ2TBZhe; Mon, 23 Nov 2020 17:22:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 029EC20429;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D83985EB4;
 	Mon, 23 Nov 2020 17:22:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 08BF11BF980
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 14:20:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E22D1BF358
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 15:58:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 030C385F53
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 14:20:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1F1CA203F7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 15:58:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iJL8gRd1C0zm for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Nov 2020 14:20:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yb1-f194.google.com (mail-yb1-f194.google.com
- [209.85.219.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9B56484B82
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 14:20:06 +0000 (UTC)
-Received: by mail-yb1-f194.google.com with SMTP id v92so16085705ybi.4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 06:20:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WUYMqcUnfpAQa1YuH9tQ3ze5bp2bxaoGLXc9Sg/470Y=;
- b=b0LkeT2q71Z3peIccxL7MkU5QadaCN3igdEC89IE4ykmdOxIlhuoo/0+H7pQCoNmlh
- 0UX19Z7soasUpz2fDZHX56luUWrH4GLKAJ9K28HwPu9km7qlcvasqfBffaQW+LtXvh6a
- fVP4J8wQFxbi1QWFB10Wsq9dLONxRShLcqQtcaktrZCy3tSRV5R4FOw2MSdgwNuCxNwd
- cKQMyE/jYgmlc9Qm972BZKz9xJaasT5iW6gpZgai8YpCh1sxJNgZFzlfCpv21Fvd7rwb
- akOsznbnFT4mJT95mXFDUPnplTdAJirWAcm8YfzHFRAfOGn9Vk91PuRcq7JipLelDPMB
- VWgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WUYMqcUnfpAQa1YuH9tQ3ze5bp2bxaoGLXc9Sg/470Y=;
- b=lXZe6vqIWwP776kVmPKV8UfYITOa7YTXjz9AmN2JxGHZYadZHWc2cpJwdMWkNLs6db
- HRZ/T0P1jOGOsd1gYAeXy2iWg1rjXqMBdYBObqmXJu0pYquNzU+n+lFlkb3a/f4d0IOw
- W4DH1/esBhGWITGMFU00BEXmimDPz7C4KambWaCKXcFc8c0BJ2wZG8vAuRJ40NArAODy
- hv5r5SKyViTX6mQ55MErOsjUtmSvnkNiUelxp+Ox83vddOc+qlyfrMQM584gcZAn81B7
- Xzj/5kPn61oqmMkmFUVw33rEx//Z2Csx3c660vkcai0mBQ9UTSYunLXDCtdn1mTUS45e
- 7UKg==
-X-Gm-Message-State: AOAM531uPYBU7hRFllazc7iCW8W8xIF7rbS3UVhIXv2bfgw1QSfxZbsw
- bxDdTTa3tbz2d8xvxOOT0ECJEnbH1Eec4qLaLPo=
-X-Google-Smtp-Source: ABdhPJyiJqjBIpEzWlk5pyqpoGG3+KpoWdKnlyza2YA6ODhXnRhATytwh5Bq+iGOzNqc5gs+zuqHC8iB1cjfDTXU/ik=
-X-Received: by 2002:a25:bcc7:: with SMTP id l7mr32380985ybm.115.1606141205830; 
- Mon, 23 Nov 2020 06:20:05 -0800 (PST)
-MIME-Version: 1.0
+ with ESMTP id 5rp0zs2+6F-Y for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Nov 2020 15:58:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by silver.osuosl.org (Postfix) with ESMTPS id 554902039C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Nov 2020 15:58:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 8958812803A6;
+ Mon, 23 Nov 2020 07:58:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606147090;
+ bh=lBjYTVUJkmNX+Ql1BcMOHCS5uLgrfuyir/PBRp4vAgY=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=tw2BKkTzWzFWEQdrm6zgBKJtIh2PRfv5Mb0TfkjZKqSr5KeTmWZWgl8VEPx5No8bX
+ gdEQ1NYoCzrZ51ueWl3PIAwT19fSirwyiz4cqIKbNqhoqeMTMjHgs4jilQhkGLvH0x
+ +YA09wNIiuW9eCRS9chAzVTlxjJYgA69RXyn6sLU=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id pNOg0X0CRuCM; Mon, 23 Nov 2020 07:58:10 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 1690C12802D9;
+ Mon, 23 Nov 2020 07:58:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606147090;
+ bh=lBjYTVUJkmNX+Ql1BcMOHCS5uLgrfuyir/PBRp4vAgY=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=tw2BKkTzWzFWEQdrm6zgBKJtIh2PRfv5Mb0TfkjZKqSr5KeTmWZWgl8VEPx5No8bX
+ gdEQ1NYoCzrZ51ueWl3PIAwT19fSirwyiz4cqIKbNqhoqeMTMjHgs4jilQhkGLvH0x
+ +YA09wNIiuW9eCRS9chAzVTlxjJYgA69RXyn6sLU=
+Message-ID: <fc45750b6d0277c401015b7aa11e16cd15f32ab2.camel@HansenPartnership.com>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Date: Mon, 23 Nov 2020 07:58:06 -0800
+In-Reply-To: <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
@@ -68,11 +72,9 @@ References: <cover.1605896059.git.gustavoars@kernel.org>
  <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
  <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
  <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
-In-Reply-To: <1c7d7fde126bc0acf825766de64bf2f9b888f216.camel@HansenPartnership.com>
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Mon, 23 Nov 2020 15:19:55 +0100
-Message-ID: <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
-To: James Bottomley <James.Bottomley@hansenpartnership.com>
+ <CANiq72m22Jb5_+62NnwX8xds2iUdWDMAqD8PZw9cuxdHd95W0A@mail.gmail.com>
+User-Agent: Evolution 3.34.4 
+MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 23 Nov 2020 17:22:07 +0000
 Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
  Clang
@@ -135,41 +137,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Nov 22, 2020 at 11:36 PM James Bottomley
-<James.Bottomley@hansenpartnership.com> wrote:
->
-> Well, it seems to be three years of someone's time plus the maintainer
-> review time and series disruption of nearly a thousand patches.  Let's
-> be conservative and assume the producer worked about 30% on the series
-> and it takes about 5-10 minutes per patch to review, merge and for
-> others to rework existing series.  So let's say it's cost a person year
-> of a relatively junior engineer producing the patches and say 100h of
-> review and application time.  The latter is likely the big ticket item
-> because it's what we have in least supply in the kernel (even though
-> it's 20x vs the producer time).
+On Mon, 2020-11-23 at 15:19 +0100, Miguel Ojeda wrote:
+> On Sun, Nov 22, 2020 at 11:36 PM James Bottomley
+> <James.Bottomley@hansenpartnership.com> wrote:
+> > Well, it seems to be three years of someone's time plus the
+> > maintainer review time and series disruption of nearly a thousand
+> > patches.  Let's be conservative and assume the producer worked
+> > about 30% on the series and it takes about 5-10 minutes per patch
+> > to review, merge and for others to rework existing series.  So
+> > let's say it's cost a person year of a relatively junior engineer
+> > producing the patches and say 100h of review and application
+> > time.  The latter is likely the big ticket item because it's what
+> > we have in least supply in the kernel (even though it's 20x vs the
+> > producer time).
+> 
+> How are you arriving at such numbers? It is a total of ~200 trivial
+> lines.
 
-How are you arriving at such numbers? It is a total of ~200 trivial lines.
+Well, I used git.  It says that as of today in Linus' tree we have 889
+patches related to fall throughs and the first series went in in
+october 2017 ... ignoring a couple of outliers back to February.
 
-> It's not about the risk of the changes it's about the cost of
-> implementing them.  Even if you discount the producer time (which
-> someone gets to pay for, and if I were the engineering manager, I'd be
-> unhappy about), the review/merge/rework time is pretty significant in
-> exchange for six minor bug fixes.  Fine, when a new compiler warning
-> comes along it's certainly reasonable to see if we can benefit from it
-> and the fact that the compiler people think it's worthwhile is enough
-> evidence to assume this initially.  But at some point you have to ask
-> whether that assumption is supported by the evidence we've accumulated
-> over the time we've been using it.  And if the evidence doesn't support
-> it perhaps it is time to stop the experiment.
+> > It's not about the risk of the changes it's about the cost of
+> > implementing them.  Even if you discount the producer time (which
+> > someone gets to pay for, and if I were the engineering manager, I'd
+> > be unhappy about), the review/merge/rework time is pretty
+> > significant in exchange for six minor bug fixes.  Fine, when a new
+> > compiler warning comes along it's certainly reasonable to see if we
+> > can benefit from it and the fact that the compiler people think
+> > it's worthwhile is enough evidence to assume this initially.  But
+> > at some point you have to ask whether that assumption is supported
+> > by the evidence we've accumulated over the time we've been using
+> > it.  And if the evidence doesn't support it perhaps it is time to
+> > stop the experiment.
+> 
+> Maintainers routinely review 1-line trivial patches, not to mention
+> internal API changes, etc.
 
-Maintainers routinely review 1-line trivial patches, not to mention
-internal API changes, etc.
+We're also complaining about the inability to recruit maintainers:
 
-If some company does not want to pay for that, that's fine, but they
-don't get to be maintainers and claim `Supported`.
+https://www.theregister.com/2020/06/30/hard_to_find_linux_maintainers_says_torvalds/
 
-Cheers,
-Miguel
+And burn out:
+
+http://antirez.com/news/129
+
+The whole crux of your argument seems to be maintainers' time isn't
+important so we should accept all trivial patches ... I'm pushing back
+on that assumption in two places, firstly the valulessness of the time
+and secondly that all trivial patches are valuable.
+
+> If some company does not want to pay for that, that's fine, but they
+> don't get to be maintainers and claim `Supported`.
+
+What I'm actually trying to articulate is a way of measuring value of
+the patch vs cost ... it has nothing really to do with who foots the
+actual bill.
+
+One thesis I'm actually starting to formulate is that this continual
+devaluing of maintainers is why we have so much difficulty keeping and
+recruiting them.
+
+James
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
