@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CB6D2C2BF8
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73AF42C2BF9
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Nov 2020 16:53:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BC24C8553C;
-	Tue, 24 Nov 2020 15:53:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C3178621E;
+	Tue, 24 Nov 2020 15:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qScATdkg+3c8; Tue, 24 Nov 2020 15:53:48 +0000 (UTC)
+	with ESMTP id dYamAHVjuj97; Tue, 24 Nov 2020 15:53:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E87E786133;
-	Tue, 24 Nov 2020 15:53:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 55C2D8629B;
+	Tue, 24 Nov 2020 15:53:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B52811BF393
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 01:46:54 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D2B81BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 02:48:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A6474871E1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 01:46:54 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2D20886142
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 02:48:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id harg29r3hUf8 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Nov 2020 01:46:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 29AC587143
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 01:46:54 +0000 (UTC)
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D0FEE206FA;
- Tue, 24 Nov 2020 01:46:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1606182413;
- bh=l8PzaObySRRsk8Qr2VGSW2cE2KYLeZxGCFjBrnWF/Lc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=UW7qkn00cv0wKiMaPmt66xG3QkCT8bOVJt7eg3jDQbxlQGPJk4mx/VqCDN8ptUhlR
- dhn0h/4nyOm1M8zdsuA37E4QjM+7Riaqfpsc9IapZPm4KcMQtw7px4ieszGaMfwO0Z
- lfMGoIgQ4EohQhNLmkPGid0CCriQVWDtDbY9z+UQ=
-Date: Mon, 23 Nov 2020 17:46:48 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Nick Desaulniers <ndesaulniers@google.com>
-Message-ID: <20201123174648.6a22575b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
+ with ESMTP id tyJtdLbZT9L1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Nov 2020 02:48:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from kvm5.telegraphics.com.au (kvm5.telegraphics.com.au
+ [98.124.60.144])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE17E86141
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 02:48:38 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by kvm5.telegraphics.com.au (Postfix) with ESMTP id EF15F2AA0D;
+ Mon, 23 Nov 2020 21:48:35 -0500 (EST)
+Date: Tue, 24 Nov 2020 13:48:34 +1100 (AEDT)
+From: Finn Thain <fthain@telegraphics.com.au>
+To: Joe Perches <joe@perches.com>
+In-Reply-To: <e72a1aaef8673553a3ee9dfa033d6e893e00abcd.camel@perches.com>
+Message-ID: <alpine.LNX.2.23.453.2011241210310.7@nippy.intranet>
 References: <cover.1605896059.git.gustavoars@kernel.org>
  <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011201129.B13FDB3C@keescook>
  <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011220816.8B6591A@keescook>
- <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <CANiq72nZrHWTA4_Msg6MP9snTyenC6-eGfD27CyfNSu7QoVZbw@mail.gmail.com>
+ <alpine.LNX.2.23.453.2011230938390.7@nippy.intranet>
+ <CANiq72=z+tmuey9wj3Kk7wX5s0hTHpsQdLhAqcOVNrHon6xn5Q@mail.gmail.com>
+ <alpine.LNX.2.23.453.2011241036520.7@nippy.intranet>
+ <e72a1aaef8673553a3ee9dfa033d6e893e00abcd.camel@perches.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 24 Nov 2020 15:53:44 +0000
 Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
@@ -72,66 +68,74 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, dm-devel@redhat.com,
- keyrings@vger.kernel.org, GR-everest-linux-l2@marvell.com,
- "maintainer:X86"@osuosl.org, linux1394-devel@lists.sourceforge.net,
- linux-afs@lists.infradead.org, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- bridge@lists.linux-foundation.org,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, ARCHITECTURE@osuosl.org,
- cluster-devel@redhat.com, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, 32-BIT AND 64-BIT <" <x86@kernel.org>,
- xen-devel@lists.xenproject.org, linux-hardening@vger.kernel.org,
- Nathan  Chancellor <natechancellor@gmail.com>, Miguel Ojeda <ojeda@kernel.org>,
- Joe  Perches <joe@perches.com>"@osuosl.org>, Kees Cook <keescook@chromium.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, intel-gfx@lists.freedesktop.org,
- linux-can@vger.kernel.org, linux-block@vger.kernel.org,
- ceph-devel@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- GR-Linux-NIC-Dev@marvell.com, LKML <linux-kernel@vger.kernel.org>,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE\"
- <linux-crypto@vger.kernel.org>, linux-decnet-user@lists.sourceforge.net,
- linux-ext4@vger.kernel.org, linux-fbdev@vger.kernel.org,
- linux-geode@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-hams@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-i3c@lists.infradead.org, linux-ide@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-input@vger.kernel.org,
- linux-integrity@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
- Linux Memory Management List  <linux-mm@kvack.org>,
- linux-mtd@lists.infradead.org, linux-nfs@vger.kernel.org,
- linux-rdma@vger.kernel.org, Linux-Renesas  <linux-renesas-soc@vger.kernel.org>,
- linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-security-module@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-usb@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-wireless  <linux-wireless@vger.kernel.
- org>, Network Development  <netdev@vger.kernel.org>,
- netfilter-devel@vger.kernel.org, nouveau@lists.freedesktop.org,
- op-tee@lists.trustedfirmware.org, oss-drivers@netronome.com,
- patches@opensource.cirrus.com, rds-devel@oss.oracle.com,
- reiserfs-devel@vger.kernel.org, samba-technical@lists.samba.org,
- selinux@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, usb-storage@lists.one-eyed-alien.net,
- virtualization@lists.linux-foundation.org, wcn36xx@lists.infradead.org,
- "@osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ reiserfs-devel@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-kernel <linux-kernel@vger.kernel.org>,
+ James Bottomley <James.Bottomley@hansenpartnership.com>,
+ linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
+ wcn36xx@lists.infradead.org, samba-technical@lists.samba.org,
+ linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
+ linux-afs@lists.infradead.org, usb-storage@lists.one-eyed-alien.net,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-scsi@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
+ linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input <linux-input@vger.kernel.org>,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Ext4 Developers List <linux-ext4@vger.kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, nouveau@lists.freedesktop.org,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-hwmon@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, tipc-discussion@lists.sourceforge.net,
+ Linux-MM <linux-mm@kvack.org>, Network Development <netdev@vger.kernel.org>,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ linux-renesas-soc@vger.kernel.org,
+ Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>, linux-sctp@vger.kernel.org,
+ linux-usb@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ patches@opensource.cirrus.com, linux-integrity@vger.kernel.org,
+ target-devel@vger.kernel.org, linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gTW9uLCAyMyBOb3YgMjAyMCAxNzozMjo1MSAtMDgwMCBOaWNrIERlc2F1bG5pZXJzIHdyb3Rl
-Ogo+IE9uIFN1biwgTm92IDIyLCAyMDIwIGF0IDg6MTcgQU0gS2VlcyBDb29rIDxrZWVzY29va0Bj
-aHJvbWl1bS5vcmc+IHdyb3RlOgo+ID4gT24gRnJpLCBOb3YgMjAsIDIwMjAgYXQgMTE6NTE6NDJB
-TSAtMDgwMCwgSmFrdWIgS2ljaW5za2kgd3JvdGU6ICAKPiA+ID4gSWYgbm9uZSBvZiB0aGUgMTQw
-IHBhdGNoZXMgaGVyZSBmaXggYSByZWFsIGJ1ZywgYW5kIHRoZXJlIGlzIG5vIGNoYW5nZQo+ID4g
-PiB0byBtYWNoaW5lIGNvZGUgdGhlbiBpdCBzb3VuZHMgdG8gbWUgbGlrZSBhIFc9MiBraW5kIG9m
-IGEgd2FybmluZy4gIAo+ID4KPiA+IEZXSVcsIHRoaXMgc2VyaWVzIGhhcyBmb3VuZCBhdCBsZWFz
-dCBvbmUgYnVnIHNvIGZhcjoKPiA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvQ0FGQ3dm
-MTFpekhGPWcxbUdyeTFmRTVrdkZGRnJ4emhQU002cUtBTzhneFNwPUtyX0NRQG1haWwuZ21haWwu
-Y29tLyAgCj4gCj4gU28gbG9va3MgbGlrZSB0aGUgYnVsayBvZiB0aGVzZSBhcmU6Cj4gc3dpdGNo
-ICh4KSB7Cj4gICBjYXNlIDA6Cj4gICAgICsreDsKPiAgIGRlZmF1bHQ6Cj4gICAgIGJyZWFrOwo+
-IH0KPiAKPiBJIGhhdmUgYSBwYXRjaCB0aGF0IGZpeGVzIHRob3NlIHVwIGZvciBjbGFuZzoKPiBo
-dHRwczovL3Jldmlld3MubGx2bS5vcmcvRDkxODk1Cgrwn5iNCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+
+On Mon, 23 Nov 2020, Joe Perches wrote:
+
+> On Tue, 2020-11-24 at 11:58 +1100, Finn Thain wrote:
+> > it's not for me to prove that such patches don't affect code 
+> > generation. That's for the patch author and (unfortunately) for 
+> > reviewers.
+> 
+> Ideally, that proof would be provided by the compilation system itself 
+> and not patch authors nor reviewers nor maintainers.
+> 
+> Unfortunately gcc does not guarantee repeatability or deterministic 
+> output. To my knowledge, neither does clang.
+> 
+
+Yes, I've said the same thing myself. But having attempted it, I now think 
+this is a hard problem. YMMV.
+
+https://lore.kernel.org/linux-scsi/alpine.LNX.2.22.394.2004281017310.12@nippy.intranet/
+https://lore.kernel.org/linux-scsi/alpine.LNX.2.22.394.2005211358460.8@nippy.intranet/
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
