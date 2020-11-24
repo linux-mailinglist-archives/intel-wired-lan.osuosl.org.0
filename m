@@ -2,53 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B531D2C2BB3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Nov 2020 16:47:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9B022C2E43
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Nov 2020 18:17:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 69E3086088;
-	Tue, 24 Nov 2020 15:47:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 41AD1861A1;
+	Tue, 24 Nov 2020 17:17:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cKuYy9r_lo1X; Tue, 24 Nov 2020 15:47:37 +0000 (UTC)
+	with ESMTP id dNYsUTFQVsRq; Tue, 24 Nov 2020 17:17:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4ABBC86160;
-	Tue, 24 Nov 2020 15:47:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C91C862C7;
+	Tue, 24 Nov 2020 17:17:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 661B91BF44C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 15:47:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 49F471BF397
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 17:17:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 615C487298
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 15:47:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4247B86726
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 17:17:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1MNOweVqqo3F for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Nov 2020 15:47:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AE87B86FF7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 15:47:34 +0000 (UTC)
-Received: from [192.168.0.3] (ip5f5af1dc.dynamic.kabel-deutschland.de
- [95.90.241.220])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5A77420646221;
- Tue, 24 Nov 2020 16:47:31 +0100 (CET)
-To: Chen Yu <yu.c.chen@intel.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Len Brown <len.brown@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-References: <20201124153221.11265-1-yu.c.chen@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <a8058c17-141d-986e-903d-462dc72999f1@molgen.mpg.de>
-Date: Tue, 24 Nov 2020 16:47:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
-MIME-Version: 1.0
+ with ESMTP id VTVQ1mirqv8J for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Nov 2020 17:17:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DD68E864D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 17:17:35 +0000 (UTC)
+Received: from mail-pl1-f199.google.com ([209.85.214.199])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>) id 1khbwb-00011h-UC
+ for intel-wired-lan@lists.osuosl.org; Tue, 24 Nov 2020 17:17:34 +0000
+Received: by mail-pl1-f199.google.com with SMTP id u14so14157846plq.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 09:17:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=VRMiJUNLgr9M7h46m/eHssvcueu9oqfWJ7ck5ke8IpY=;
+ b=ne/Dg1Tp+F+eP/Ht7Kbi2F53wQIJbtmvFy8rLJBSIE7vEBwpmxCFGKsj1jTP+2XiJT
+ /lcrOY2fqb1H4BIYZw0SankJCrR27dMzGahZRMk6Tvy9q275PmCMowQaMfOe/RJMFY3a
+ ewsamZ7jLw8t1DI9iEcxSbjRkG6CLRUmKXt72+nc/18AjsxxZZWsPTAFwWncRHhP4HV3
+ jOiPQHesqSm88X6nYLO/bYqEml0D3tb3tCJ7GRUMl29mQk0NOXU+hwUM6WgD+8MCxstS
+ O87AbCm4QalzY1P7fBMRJbZKrvgO77f/dWVEf4KQSXISS7CWxCIG6LxnWz86eNyKd51/
+ XvOg==
+X-Gm-Message-State: AOAM533LZgSUVeY6bVDKXghfotpUUGGP4ob5Oojvh/lqAXEun9SQXTpQ
+ IS7wLPrIxFTLcBJhC7vszzGR03FTNRMh56HjySyuJHRqSw8FpjqCsxUvJ0ykeelVuBg8nisLqAs
+ HtfkmbDjt1s9u2eO8t/YipwdWuu5pT0h41UKUSbzsJoovKlk=
+X-Received: by 2002:a05:6a00:794:b029:197:e418:ac4d with SMTP id
+ g20-20020a056a000794b0290197e418ac4dmr4887486pfu.47.1606238252494; 
+ Tue, 24 Nov 2020 09:17:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIVyAqIJC5/bha05OEWX9Zk7sJdoBbnLioL22z3QEJ5PX0MShrmdxI3UM/mbFBfxGHgiS6Hg==
+X-Received: by 2002:a05:6a00:794:b029:197:e418:ac4d with SMTP id
+ g20-20020a056a000794b0290197e418ac4dmr4887455pfu.47.1606238252111; 
+ Tue, 24 Nov 2020 09:17:32 -0800 (PST)
+Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
+ [220.133.187.190])
+ by smtp.gmail.com with ESMTPSA id o132sm14969443pfg.100.2020.11.24.09.17.29
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 24 Nov 2020 09:17:31 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.20.0.2.21\))
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
 In-Reply-To: <20201124153221.11265-1-yu.c.chen@intel.com>
-Content-Language: en-US
+Date: Wed, 25 Nov 2020 01:17:28 +0800
+Message-Id: <8BA4D1E1-DACF-4E84-A5B8-75A7CEA65F98@canonical.com>
+References: <20201124153221.11265-1-yu.c.chen@intel.com>
+To: Chen Yu <yu.c.chen@intel.com>
+X-Mailer: Apple Mail (2.3654.20.0.2.21)
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Assign DPM_FLAG_SMART_SUSPEND
  and DPM_FLAG_MAY_SKIP_RESUME to speed up s2ram
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -63,79 +87,116 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kai-Heng Feng <kai.heng.feng@canonical.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Len Brown <len.brown@intel.com>, Linux PM list <linux-pm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBDaGVuLAoKClRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLgoKQW0gMjQuMTEuMjAgdW0gMTY6
-MzIgc2NocmllYiBDaGVuIFl1Ogo+IFRoZSBOSUMgaXMgcHV0IGluIHJ1bnRpbWUgc3VzcGVuZCBz
-dGF0dXMgd2hlbiB0aGVyZSBpcyBubyB3aXJlIGNvbm5lY3RlZC4KPiBBcyBhIHJlc3VsdCwgaXQg
-aXMgc2FmZSB0byBrZWVwIHRoaXMgTklDIGluIHJ1bnRpbWUgc3VzcGVuZGVkIGR1cmluZyBzMnJh
-bQo+IGJlY2F1c2UgdGhlIHN5c3RlbSBkb2VzIG5vdCByZWx5IG9uIHRoZSBOSUMgcGx1ZyBldmVu
-dCBub3IgV09MIHRvIHdha2UgdXAKPiB0aGUgc3lzdGVtLiBVbmxpa2UgdGhlIHMyaWRsZSwgczJy
-YW0gZG9lcyBub3QgbmVlZCB0byBtYW5pcHVsYXRlIFMwaXggc2V0dGluZ3MKPiBkdXJpbmcgc3Vz
-cGVuZC4KCndoYXQgaGFwcGVucywgd2hlbiBJIHBsdWcgaW4gYSBjYWJsZSwgd2hlbiB0aGUgc3Vz
-cGVuZCBpcyBpbiBBQ1BJIFMzIApzdGF0ZT8gSSBndWVzcyBpdOKAmXMgaWdub3JlZD8KCj4gVGhp
-cyBwYXRjaCBhc3NpZ25zIERQTV9GTEFHX1NNQVJUX1NVU1BFTkQgYW5kIERQTV9GTEFHX01BWV9T
-S0lQX1JFU1VNRQo+IHRvIHRoZSBlMTAwMGUgZHJpdmVyIHNvIHRoYXQgdGhlIHMycmFtIGNvdWxk
-IHNraXAgdGhlIC5zdXNwZW5kX2xhdGUoKSwKPiAuc3VzcGVuZF9ub2lycSgpIGFuZCAucmVzdW1l
-X25vaXJxKCkgLnJlc3VtZV9lYXJseSgpIHdoZW4gcG9zc2libGUuCj4gQWxzbyBza2lwIC5zdXNw
-ZW5kKCkgYW5kIC5yZXN1bWUoKSBpZiBkZXZfcG1fc2tpcF9zdXNwZW5kKCkgYW5kCj4gZGV2X3Bt
-X3NraXBfcmVzdW1lKCkgcmV0dXJuIHRydWUsIHNvIGFzIHRvIHNwZWVkIHVwIHRoZSBzMnJhbS4K
-CldoYXQgaXMgc3BlZCB1cD8gU3VzcGVuZCBvciByZXN1bWU/CgpQbGVhc2UgYWxzbyBkb2N1bWVu
-dCwgd2hhdCBzeXN0ZW0geW91IHRlc3RlZCB0aGlzIG9uLCBhbmQgd2hhdCB0aGUgCm51bWJlcnMg
-YmVmb3JlIGFuZCBhZnRlciBhcmUuCgpJZiB0aGVyZSBpcyBhIGJ1ZyByZXBvcnQsIHBsZWFzZSBu
-b3RlIGl0IHRvby4KCj4gU2lnbmVkLW9mZi1ieTogQ2hlbiBZdSA8eXUuYy5jaGVuQGludGVsLmNv
-bT4KPiAtLS0KPiAgIGRyaXZlcnMvYmFzZS9wb3dlci9tYWluLmMgICAgICAgICAgICAgICAgICB8
-ICAyICsrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMgfCAx
-NCArKysrKysrKysrKysrLQo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAx
-IGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvYmFzZS9wb3dlci9tYWluLmMg
-Yi9kcml2ZXJzL2Jhc2UvcG93ZXIvbWFpbi5jCj4gaW5kZXggYzdhYzQ5MDQyY2VlLi45Y2Q4YWJi
-YTg2MTIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9iYXNlL3Bvd2VyL21haW4uYwo+ICsrKyBiL2Ry
-aXZlcnMvYmFzZS9wb3dlci9tYWluLmMKPiBAQCAtNTgwLDYgKzU4MCw3IEBAIGJvb2wgZGV2X3Bt
-X3NraXBfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgIAo+ICAgCXJldHVybiAhZGV2LT5w
-b3dlci5tdXN0X3Jlc3VtZTsKPiAgIH0KPiArRVhQT1JUX1NZTUJPTF9HUEwoZGV2X3BtX3NraXBf
-cmVzdW1lKTsKPiAgIAo+ICAgLyoqCj4gICAgKiBkZXZpY2VfcmVzdW1lX25vaXJxIC0gRXhlY3V0
-ZSBhICJub2lycSByZXN1bWUiIGNhbGxiYWNrIGZvciBnaXZlbiBkZXZpY2UuCj4gQEAgLTIwMTAs
-MyArMjAxMSw0IEBAIGJvb2wgZGV2X3BtX3NraXBfc3VzcGVuZChzdHJ1Y3QgZGV2aWNlICpkZXYp
-Cj4gICAJcmV0dXJuIGRldl9wbV90ZXN0X2RyaXZlcl9mbGFncyhkZXYsIERQTV9GTEFHX1NNQVJU
-X1NVU1BFTkQpICYmCj4gICAJCXBtX3J1bnRpbWVfc3RhdHVzX3N1c3BlbmRlZChkZXYpOwo+ICAg
-fQo+ICtFWFBPUlRfU1lNQk9MX0dQTChkZXZfcG1fc2tpcF9zdXNwZW5kKTsKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gaW5kZXggYjMwZjAwODkxYzAzLi5k
-NzlmZGRhYmM1NTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEw
-MDBlL25ldGRldi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25l
-dGRldi5jCj4gQEAgLTY5NjUsNiArNjk2NSwxNCBAQCBzdGF0aWMgX19tYXliZV91bnVzZWQgaW50
-IGUxMDAwZV9wbV9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgIAlzdHJ1Y3QgZTEwMDBf
-aHcgKmh3ID0gJmFkYXB0ZXItPmh3Owo+ICAgCWludCByYzsKPiAgIAo+ICsJLyogUnVudGltZSBz
-dXNwZW5kZWQgbWVhbnMgdGhhdCB0aGVyZSBpcyBubyB3aXJlZCBjb25uZWN0aW9uCgpNYXliZSBl
-eHBsaWNpdGx5IHVzZSAqY2FibGUqIGluIGhlcmUgdG8gYXZvaWQgY29uZnVzaW9uPwoKPiArCSAq
-IGFuZCBpdCBoYXMgbm90aGluZyB0byBkbyB3aXRoIFdPTCB0aGF0LCB3ZSBkb24ndCBuZWVkIHRv
-CgpNb3ZlIHRoZSBjb21tYSBiZWZvcmUgKnRoYXQqPwoKPiArCSAqIGFkanVzdCB0aGUgV09MIHNl
-dHRpbmdzLiBTbyBpdCBpcyBzYWZlIHRvIHB1dCBOSUMgaW4KPiArCSAqIHJ1bnRpbWUgc3VzcGVu
-ZCB3aGlsZSBkb2luZyBzeXN0ZW0gc3VzcGVuZC4KCkkgdW5kZXJzdG9vZCwgdGhhdCB0aGUgTklD
-IGlzIGFscmVhZHkgaW4gcnVudGltZSBzdXNwZW5kPyBDb3VsZCB5b3UgCnBsZWFzZSBjbGFyaWZ5
-IHRoZSBjb21tZW50PwoKPiArCSAqLwo+ICsJaWYgKGRldl9wbV9za2lwX3N1c3BlbmQoZGV2KSkK
-PiArCQlyZXR1cm4gMDsKPiArCj4gICAJZTEwMDBlX2ZsdXNoX2xwaWMocGRldik7Cj4gICAKPiAg
-IAllMTAwMGVfcG1fZnJlZXplKGRldik7Cj4gQEAgLTY5ODksNiArNjk5Nyw5IEBAIHN0YXRpYyBf
-X21heWJlX3VudXNlZCBpbnQgZTEwMDBlX3BtX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4g
-ICAJc3RydWN0IGUxMDAwX2h3ICpodyA9ICZhZGFwdGVyLT5odzsKPiAgIAlpbnQgcmM7Cj4gICAK
-PiArCWlmIChkZXZfcG1fc2tpcF9yZXN1bWUoZGV2KSkKPiArCQlyZXR1cm4gMDsKPiArCj4gICAJ
-LyogSW50cm9kdWNlIFMwaXggaW1wbGVtZW50YXRpb24gKi8KPiAgIAlpZiAoaHctPm1hYy50eXBl
-ID49IGUxMDAwX3BjaF9jbnAgJiYKPiAgIAkgICAgIWUxMDAwZV9jaGVja19tZShody0+YWRhcHRl
-ci0+cGRldi0+ZGV2aWNlKSkKPiBAQCAtNzY2NSw3ICs3Njc2LDggQEAgc3RhdGljIGludCBlMTAw
-MF9wcm9iZShzdHJ1Y3QgcGNpX2RldiAqcGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQg
-KmVudCkKPiAgIAo+ICAgCWUxMDAwX3ByaW50X2RldmljZV9pbmZvKGFkYXB0ZXIpOwo+ICAgCj4g
-LQlkZXZfcG1fc2V0X2RyaXZlcl9mbGFncygmcGRldi0+ZGV2LCBEUE1fRkxBR19OT19ESVJFQ1Rf
-Q09NUExFVEUpOwo+ICsJZGV2X3BtX3NldF9kcml2ZXJfZmxhZ3MoJnBkZXYtPmRldiwgRFBNX0ZM
-QUdfTk9fRElSRUNUX0NPTVBMRVRFIHwKPiArCQkJCURQTV9GTEFHX1NNQVJUX1NVU1BFTkQgfCBE
-UE1fRkxBR19NQVlfU0tJUF9SRVNVTUUpOwo+ICAgCj4gICAJaWYgKHBjaV9kZXZfcnVuX3dha2Uo
-cGRldikgJiYgaHctPm1hYy50eXBlIDwgZTEwMDBfcGNoX2NucCkKPiAgIAkJcG1fcnVudGltZV9w
-dXRfbm9pZGxlKCZwZGV2LT5kZXYpOwoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
-bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hi Yu,
+
+> On Nov 24, 2020, at 23:32, Chen Yu <yu.c.chen@intel.com> wrote:
+> 
+> The NIC is put in runtime suspend status when there is no wire connected.
+> As a result, it is safe to keep this NIC in runtime suspended during s2ram
+> because the system does not rely on the NIC plug event nor WOL to wake up
+> the system. Unlike the s2idle, s2ram does not need to manipulate S0ix settings
+> during suspend.
+
+Please see below for the reason why I explicitly disable direct-complete in the driver.
+
+> 
+> This patch assigns DPM_FLAG_SMART_SUSPEND and DPM_FLAG_MAY_SKIP_RESUME
+> to the e1000e driver so that the s2ram could skip the .suspend_late(),
+> .suspend_noirq() and .resume_noirq() .resume_early() when possible.
+> Also skip .suspend() and .resume() if dev_pm_skip_suspend() and
+> dev_pm_skip_resume() return true, so as to speed up the s2ram.
+
+If we really want direct-complete here, maybe always set current WoL setting in runtime suspend routine?
+
+> 
+> Signed-off-by: Chen Yu <yu.c.chen@intel.com>
+> ---
+> drivers/base/power/main.c                  |  2 ++
+> drivers/net/ethernet/intel/e1000e/netdev.c | 14 +++++++++++++-
+> 2 files changed, 15 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+> index c7ac49042cee..9cd8abba8612 100644
+> --- a/drivers/base/power/main.c
+> +++ b/drivers/base/power/main.c
+> @@ -580,6 +580,7 @@ bool dev_pm_skip_resume(struct device *dev)
+> 
+> 	return !dev->power.must_resume;
+> }
+> +EXPORT_SYMBOL_GPL(dev_pm_skip_resume);
+
+I don't think it's a good idea to use this predicate out side of PM core, must_resume may change during suspend process.
+
+> 
+> /**
+>  * device_resume_noirq - Execute a "noirq resume" callback for given device.
+> @@ -2010,3 +2011,4 @@ bool dev_pm_skip_suspend(struct device *dev)
+> 	return dev_pm_test_driver_flags(dev, DPM_FLAG_SMART_SUSPEND) &&
+> 		pm_runtime_status_suspended(dev);
+> }
+> +EXPORT_SYMBOL_GPL(dev_pm_skip_suspend);
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index b30f00891c03..d79fddabc553 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -6965,6 +6965,14 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
+> 	struct e1000_hw *hw = &adapter->hw;
+> 	int rc;
+> 
+> +	/* Runtime suspended means that there is no wired connection
+> +	 * and it has nothing to do with WOL that, we don't need to
+> +	 * adjust the WOL settings. So it is safe to put NIC in
+> +	 * runtime suspend while doing system suspend.
+> +	 */
+
+What about plugging ethernet cable and using WoL after system is suspended?
+Commit "e1000e: Exclude device from suspend direct complete optimization" was to address that scenario.
+
+> +	if (dev_pm_skip_suspend(dev))
+> +		return 0;
+> +
+> 	e1000e_flush_lpic(pdev);
+> 
+> 	e1000e_pm_freeze(dev);
+> @@ -6989,6 +6997,9 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
+> 	struct e1000_hw *hw = &adapter->hw;
+> 	int rc;
+> 
+> +	if (dev_pm_skip_resume(dev))
+> +		return 0;
+> +
+> 	/* Introduce S0ix implementation */
+> 	if (hw->mac.type >= e1000_pch_cnp &&
+> 	    !e1000e_check_me(hw->adapter->pdev->device))
+> @@ -7665,7 +7676,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> 
+> 	e1000_print_device_info(adapter);
+> 
+> -	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+> +	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE |
+> +				DPM_FLAG_SMART_SUSPEND | DPM_FLAG_MAY_SKIP_RESUME);
+> 
+> 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+> 		pm_runtime_put_noidle(&pdev->dev);
+
+Also, most e1000e device on modern platforms doesn't runtime suspend at all after commit "e1000e: Disable runtime PM on CNP+".
+
+Kai-Heng
+
+> -- 
+> 2.25.1
+> 
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
