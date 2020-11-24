@@ -1,60 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 348202C1E66
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Nov 2020 07:38:53 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C51B2C1E64
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Nov 2020 07:38:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E018085A60;
-	Tue, 24 Nov 2020 06:38:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E4A898720D;
+	Tue, 24 Nov 2020 06:38:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A83OrS1UbS0d; Tue, 24 Nov 2020 06:38:50 +0000 (UTC)
+	with ESMTP id n5o-7drXixSe; Tue, 24 Nov 2020 06:38:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E465A85A6A;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7DA39871A6;
 	Tue, 24 Nov 2020 06:38:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 989DE1BF31B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9BE351BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9513384483
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 983D484900
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UAwVbmn8qy1O for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Nov 2020 06:38:38 +0000 (UTC)
+ with ESMTP id na5Hk47YIG1M for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Nov 2020 06:38:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3303283F66
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:38 +0000 (UTC)
-IronPort-SDR: YAxEfq+oNjOLOCiEQj5t9tlvgEhyl9r8AQJAOwx6nlrvBDgIqmpvcTxPVObKQU5U/CwY7IVA+L
- TTragSeuMMWw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="171994883"
-X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="171994883"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 629AB846AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Nov 2020 06:38:39 +0000 (UTC)
+IronPort-SDR: JtDpdZXoaKJeyIh18Y3n/1/mrVh4jkvFKkN3SA3G3Fsde1xHctppq9Fz+SXV1Jb5CsT0ZG37O7
+ KE3cpksN49Xw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9814"; a="171994885"
+X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="171994885"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2020 22:38:37 -0800
-IronPort-SDR: gaYgUuHKU4KC8JBD/WyfCxZ6MUDwI5aFvx6jlIaYB4dkt/UUXD83yTww2e7QSGgukcHbg6jYwl
- XY++ODEOx37A==
+ 23 Nov 2020 22:38:39 -0800
+IronPort-SDR: O3kBhBxiwX3iRNnt2mzLtWLr8v/H07TYCWI8iW666fBustLeUiZrOrVl950Nm9lxjXiiYxriJD
+ r3prVfcR8ccg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="361747291"
+X-IronPort-AV: E=Sophos;i="5.78,365,1599548400"; d="scan'208";a="361747304"
 Received: from npg-dpdk-haiyue-3.sh.intel.com ([10.67.118.203])
- by fmsmga004.fm.intel.com with ESMTP; 23 Nov 2020 22:38:33 -0800
+ by fmsmga004.fm.intel.com with ESMTP; 23 Nov 2020 22:38:36 -0800
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 24 Nov 2020 14:24:05 +0800
-Message-Id: <20201124062410.6824-16-haiyue.wang@intel.com>
+Date: Tue, 24 Nov 2020 14:24:06 +0800
+Message-Id: <20201124062410.6824-17-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201124062410.6824-1-haiyue.wang@intel.com>
 References: <20201124062410.6824-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC 15/20] ice: Check FDIR program status for AVF
+Subject: [Intel-wired-lan] [RFC 16/20] iavf: Add framework to enable ethtool
+ ntuple filters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,755 +68,419 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: cunming.liang@intel.com, Yahui Cao <yahui.cao@intel.com>,
- qi.z.zhang@intel.com, kuba@kernel.org, davem@davemloft.net
+Cc: cunming.liang@intel.com, qi.z.zhang@intel.com, kuba@kernel.org,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Qi Zhang <qi.z.zhang@intel.com>
+Enable ethtool ntuple filter support on the VF driver using the virtchnl
+interface to the PF driver and the Flow director functionality in the
+hardware.
 
-Enables returning FDIR completion status by checking the
-ctrl_vsi Rx queue descriptor value.
-
-To enable returning FDIR completion status from ctrl_vsi Rx queue,
-COMP_Queue and COMP_Report of FDIR filter programming descriptor
-needs to be properly configured. After program request sent to ctrl_vsi
-Tx queue, ctrl_vsi Rx queue interrupt will be triggered and
-completion status will be returned.
-
-Driver will first issue request in ice_vc_fdir_add_fltr(), then
-pass FDIR context to the background task in interrupt service routine
-ice_vc_fdir_irq_handler() and finally deal with them in
-ice_flush_fdir_ctx(). ice_flush_fdir_ctx() will check the descriptor's
-value, fdir context, and then send back virtual channel message to VF
-by calling ice_vc_add_fdir_fltr_post(). An additional timer will be
-setup in case of hardware interrupt timeout.
-
-Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |   1 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   3 +
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |  20 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   2 +
- drivers/net/ethernet/intel/ice/ice_txrx.c     |   5 +
- .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 494 +++++++++++++++++-
- .../ethernet/intel/ice/ice_virtchnl_fdir.h    |  27 +-
- 7 files changed, 536 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf.h        |  12 ++
+ drivers/net/ethernet/intel/iavf/iavf_fdir.h   |  33 ++++
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  27 +++
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 187 ++++++++++++++++++
+ 4 files changed, 259 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_fdir.h
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 3e6e48a139da..82227d87d84b 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -232,6 +232,7 @@ enum ice_state {
- 	__ICE_VF_RESETS_DISABLED,	/* disable resets during ice_remove */
- 	__ICE_LINK_DEFAULT_OVERRIDE_PENDING,
- 	__ICE_PHY_INIT_COMPLETE,
-+	__ICE_FD_VF_FLUSH_CTX,		/* set at FD Rx IRQ or timeout */
- 	__ICE_STATE_NBITS		/* must be last */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 8a65525a7c0d..bda2a900df8e 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -37,6 +37,7 @@
+ #include "iavf_type.h"
+ #include <linux/avf/virtchnl.h>
+ #include "iavf_txrx.h"
++#include "iavf_fdir.h"
+ 
+ #define DEFAULT_DEBUG_LEVEL_SHIFT 3
+ #define PFX "iavf: "
+@@ -300,6 +301,8 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_DISABLE_CHANNELS		BIT(22)
+ #define IAVF_FLAG_AQ_ADD_CLOUD_FILTER		BIT(23)
+ #define IAVF_FLAG_AQ_DEL_CLOUD_FILTER		BIT(24)
++#define IAVF_FLAG_AQ_ADD_FDIR_FILTER		BIT(25)
++#define IAVF_FLAG_AQ_DEL_FDIR_FILTER		BIT(26)
+ 
+ 	/* OS defined structs */
+ 	struct net_device *netdev;
+@@ -340,6 +343,8 @@ struct iavf_adapter {
+ 			  VIRTCHNL_VF_OFFLOAD_VLAN)
+ #define ADV_LINK_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
+ 			      VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
++#define FDIR_FLTR_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
++			       VIRTCHNL_VF_OFFLOAD_FDIR_PF)
+ 	struct virtchnl_vf_resource *vf_res; /* incl. all VSIs */
+ 	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
+ 	struct virtchnl_version_info pf_version;
+@@ -362,6 +367,11 @@ struct iavf_adapter {
+ 	/* lock to protect access to the cloud filter list */
+ 	spinlock_t cloud_filter_list_lock;
+ 	u16 num_cloud_filters;
++
++#define IAVF_MAX_FDIR_FILTERS 128	/* max allowed Flow Director filters */
++	u16 fdir_active_fltr;
++	struct list_head fdir_list_head;
++	spinlock_t fdir_fltr_lock;	/* protect the Flow Director filter list */
  };
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index bab05b3cf08f..e39afe3ffe57 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -382,6 +382,9 @@
- #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
- #define VSIQF_FD_CNT_FD_GCNT_S			0
- #define VSIQF_FD_CNT_FD_GCNT_M			ICE_M(0x3FFF, 0)
-+#define VSIQF_FD_CNT_FD_BCNT_S                  16
-+#define VSIQF_FD_CNT_FD_BCNT_M                  ICE_M(0x3FFF, 16)
-+#define VSIQF_FD_SIZE(_VSI)                     (0x00462000 + ((_VSI) * 4))
- #define VSIQF_HKEY_MAX_INDEX			12
- #define VSIQF_HLUT_MAX_INDEX			15
- #define PFPM_APM				0x000B8080
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index eee58a554b5d..a92277e9683b 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -140,6 +140,26 @@ struct ice_fltr_desc {
- 			(0xFFFFFFFFULL << ICE_FXD_FLTR_QW1_FDID_S)
- #define ICE_FXD_FLTR_QW1_FDID_ZERO	0x0ULL
  
-+/* definition for FD filter programming status descriptor WB format */
-+#define ICE_FXD_FLTR_WB_QW1_DD_S	0
-+#define ICE_FXD_FLTR_WB_QW1_DD_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_DD_S)
-+#define ICE_FXD_FLTR_WB_QW1_DD_YES	0x1ULL
+@@ -432,6 +442,8 @@ void iavf_enable_channels(struct iavf_adapter *adapter);
+ void iavf_disable_channels(struct iavf_adapter *adapter);
+ void iavf_add_cloud_filter(struct iavf_adapter *adapter);
+ void iavf_del_cloud_filter(struct iavf_adapter *adapter);
++void iavf_add_fdir_filter(struct iavf_adapter *adapter);
++void iavf_del_fdir_filter(struct iavf_adapter *adapter);
+ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
+ 					const u8 *macaddr);
+ #endif /* _IAVF_H_ */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.h b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
+new file mode 100644
+index 000000000000..429bc025d45a
+--- /dev/null
++++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
+@@ -0,0 +1,33 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2020, Intel Corporation. */
 +
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_S	1
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_M	\
-+				(0x3ULL << ICE_FXD_FLTR_WB_QW1_PROG_ID_S)
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ADD	0x0ULL
-+#define ICE_FXD_FLTR_WB_QW1_PROG_DEL	0x1ULL
++#ifndef _IAVF_FDIR_H_
++#define _IAVF_FDIR_H_
 +
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_S	4
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_YES	0x1ULL
++struct iavf_adapter;
 +
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S	5
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M	\
-+				(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES	0x1ULL
++/* State of Flow Director filter */
++enum iavf_fdir_fltr_state_t {
++	IAVF_FDIR_FLTR_ADD_REQUEST,	/* User requests to add Flow Director filter */
++	IAVF_FDIR_FLTR_ADD_PENDING,	/* Flow Director filter pending add by the PF */
++	IAVF_FDIR_FLTR_DEL_REQUEST,	/* User requests to delete Flow Director filter */
++	IAVF_FDIR_FLTR_DEL_PENDING,	/* Flow Director filter pending delete by the PF */
++	IAVF_FDIR_FLTR_ACTIVE,		/* Flow Director filter is active */
++};
 +
- struct ice_rx_ptype_decoded {
- 	u32 ptype:10;
- 	u32 known:1;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ff5940a9ce01..4bb7b3eeaed6 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2058,6 +2058,7 @@ static void ice_service_task(struct work_struct *work)
- 	ice_process_vflr_event(pf);
- 	ice_clean_mailboxq_subtask(pf);
- 	ice_sync_arfs_fltrs(pf);
-+	ice_flush_fdir_ctx(pf);
- 	/* Clear __ICE_SERVICE_SCHED flag to allow scheduling next event */
- 	ice_service_task_complete(pf);
- 
-@@ -2069,6 +2070,7 @@ static void ice_service_task(struct work_struct *work)
- 	    test_bit(__ICE_MDD_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_VFLR_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_MAILBOXQ_EVENT_PENDING, pf->state) ||
-+	    test_bit(__ICE_FD_VF_FLUSH_CTX, pf->state) ||
- 	    test_bit(__ICE_ADMINQ_EVENT_PENDING, pf->state))
- 		mod_timer(&pf->serv_tmr, jiffies);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index d2493fa71336..1bafd3ef47da 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1131,6 +1131,11 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		dma_rmb();
- 
- 		if (rx_desc->wb.rxdid == FDIR_DESC_RXDID || !rx_ring->netdev) {
-+			struct ice_vsi *ctrl_vsi = rx_ring->vsi;
++/* bookkeeping of Flow Director filters */
++struct iavf_fdir_fltr {
++	enum iavf_fdir_fltr_state_t state;
++	struct list_head list;
 +
-+			if (rx_desc->wb.rxdid == FDIR_DESC_RXDID &&
-+			    ctrl_vsi->vf_id != ICE_INVAL_VFID)
-+				ice_vc_fdir_irq_handler(ctrl_vsi, rx_desc);
- 			ice_put_rx_buf(rx_ring, NULL, 0);
- 			cleaned_count++;
- 			continue;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index 20cb1b525a46..6d66cddc60c9 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -45,6 +45,7 @@ struct virtchnl_fdir_fltr_conf {
- 	struct ice_fdir_fltr input;
- 	enum ice_fdir_tunnel_type ttype;
- 	u64 inset_flag;
 +	u32 flow_id;
- };
++
++	struct virtchnl_fdir_add vc_add_msg;
++};
++
++int iavf_fill_fdir_add_msg(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
++void iavf_print_fdir_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
++bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
++void iavf_fdir_list_add_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
++struct iavf_fdir_fltr *iavf_find_fdir_fltr_by_loc(struct iavf_adapter *adapter, u32 loc);
++#endif /* _IAVF_FDIR_H_ */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 814e59bf2c94..d9f9085421df 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -958,6 +958,7 @@ static void iavf_up_complete(struct iavf_adapter *adapter)
+ void iavf_down(struct iavf_adapter *adapter)
+ {
+ 	struct net_device *netdev = adapter->netdev;
++	struct iavf_fdir_fltr *fdir;
+ 	struct iavf_vlan_filter *vlf;
+ 	struct iavf_mac_filter *f;
+ 	struct iavf_cloud_filter *cf;
+@@ -996,6 +997,13 @@ void iavf_down(struct iavf_adapter *adapter)
+ 	}
+ 	spin_unlock_bh(&adapter->cloud_filter_list_lock);
  
- static enum virtchnl_proto_hdr_type vc_pattern_ether[] = {
-@@ -1486,7 +1487,7 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
++	/* remove all Flow Director filters */
++	spin_lock_bh(&adapter->fdir_fltr_lock);
++	list_for_each_entry(fdir, &adapter->fdir_list_head, list) {
++		fdir->state = IAVF_FDIR_FLTR_DEL_REQUEST;
++	}
++	spin_unlock_bh(&adapter->fdir_fltr_lock);
++
+ 	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) &&
+ 	    adapter->state != __IAVF_RESETTING) {
+ 		/* cancel any current operation */
+@@ -1007,6 +1015,7 @@ void iavf_down(struct iavf_adapter *adapter)
+ 		adapter->aq_required = IAVF_FLAG_AQ_DEL_MAC_FILTER;
+ 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_VLAN_FILTER;
+ 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_CLOUD_FILTER;
++		adapter->aq_required |= IAVF_FLAG_AQ_DEL_FDIR_FILTER;
+ 		adapter->aq_required |= IAVF_FLAG_AQ_DISABLE_QUEUES;
  	}
  
- 	input->dest_vsi = vsi->idx;
--	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW_FAIL;
-+	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW;
+@@ -1629,6 +1638,14 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
+ 		iavf_add_cloud_filter(adapter);
+ 		return 0;
+ 	}
++	if (adapter->aq_required & IAVF_FLAG_AQ_ADD_FDIR_FILTER) {
++		iavf_add_fdir_filter(adapter);
++		return IAVF_SUCCESS;
++	}
++	if (adapter->aq_required & IAVF_FLAG_AQ_DEL_FDIR_FILTER) {
++		iavf_del_fdir_filter(adapter);
++		return IAVF_SUCCESS;
++	}
+ 	return -EAGAIN;
+ }
  
- 	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
- 	if (!ctrl_vsi) {
-@@ -1518,6 +1519,455 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
- 	return ret;
+@@ -3739,10 +3756,12 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	spin_lock_init(&adapter->mac_vlan_list_lock);
+ 	spin_lock_init(&adapter->cloud_filter_list_lock);
++	spin_lock_init(&adapter->fdir_fltr_lock);
+ 
+ 	INIT_LIST_HEAD(&adapter->mac_filter_list);
+ 	INIT_LIST_HEAD(&adapter->vlan_filter_list);
+ 	INIT_LIST_HEAD(&adapter->cloud_filter_list);
++	INIT_LIST_HEAD(&adapter->fdir_list_head);
+ 
+ 	INIT_WORK(&adapter->reset_task, iavf_reset_task);
+ 	INIT_WORK(&adapter->adminq_task, iavf_adminq_task);
+@@ -3846,6 +3865,7 @@ static void iavf_remove(struct pci_dev *pdev)
+ {
+ 	struct net_device *netdev = pci_get_drvdata(pdev);
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
++	struct iavf_fdir_fltr *fdir, *fdirtmp;
+ 	struct iavf_vlan_filter *vlf, *vlftmp;
+ 	struct iavf_mac_filter *f, *ftmp;
+ 	struct iavf_cloud_filter *cf, *cftmp;
+@@ -3927,6 +3947,13 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	}
+ 	spin_unlock_bh(&adapter->cloud_filter_list_lock);
+ 
++	spin_lock_bh(&adapter->fdir_fltr_lock);
++	list_for_each_entry_safe(fdir, fdirtmp, &adapter->fdir_list_head, list) {
++		list_del(&fdir->list);
++		kfree(fdir);
++	}
++	spin_unlock_bh(&adapter->fdir_fltr_lock);
++
+ 	free_netdev(netdev);
+ 
+ 	pci_disable_pcie_error_reporting(pdev);
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index ed08ace4f05a..eb687081e94f 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -140,6 +140,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
+ 	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
+ 	       VIRTCHNL_VF_OFFLOAD_REQ_QUEUES |
+ 	       VIRTCHNL_VF_OFFLOAD_ADQ |
++	       VIRTCHNL_VF_OFFLOAD_FDIR_PF |
+ 	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
+ 
+ 	adapter->current_op = VIRTCHNL_OP_GET_VF_RESOURCES;
+@@ -1197,6 +1198,101 @@ void iavf_del_cloud_filter(struct iavf_adapter *adapter)
+ 	kfree(f);
  }
  
 +/**
-+ * ice_vf_fdir_timer - FDIR program waiting timer interrupt handler
-+ * @t: pointer to timer_list
-+ */
-+static void ice_vf_fdir_timer(struct timer_list *t)
++ * iavf_add_fdir_filter
++ * @adapter: the VF adapter structure
++ *
++ * Request that the PF add Flow Director filters as specified
++ * by the user via ethtool.
++ **/
++void iavf_add_fdir_filter(struct iavf_adapter *adapter)
 +{
-+	struct ice_vf_fdir_ctx *ctx_irq = from_timer(ctx_irq, t, rx_tmr);
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct ice_vf *vf;
-+	struct ice_pf *pf;
++	struct iavf_fdir_fltr *fdir;
++	struct virtchnl_fdir_add *f;
++	bool process_fltr = false;
++	int len;
 +
-+	fdir = container_of(ctx_irq, struct ice_vf_fdir, ctx_irq);
-+	vf = container_of(fdir, struct ice_vf, fdir);
-+	ctx_done = &fdir->ctx_done;
-+	pf = vf->pf;
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
++	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
++		/* bail because we already have a command pending */
++		dev_err(&adapter->pdev->dev, "Cannot add Flow Director filter, command %d pending\n",
++			adapter->current_op);
 +		return;
 +	}
 +
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
++	len = sizeof(struct virtchnl_fdir_add);
++	f = kzalloc(len, GFP_KERNEL);
++	if (!f)
++		return;
 +
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_TIMEOUT;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
++	spin_lock_bh(&adapter->fdir_fltr_lock);
++	list_for_each_entry(fdir, &adapter->fdir_list_head, list) {
++		if (fdir->state == IAVF_FDIR_FLTR_ADD_REQUEST) {
++			process_fltr = true;
++			fdir->state = IAVF_FDIR_FLTR_ADD_PENDING;
++			memcpy(f, &fdir->vc_add_msg, len);
++			break;
++		}
++	}
++	spin_unlock_bh(&adapter->fdir_fltr_lock);
 +
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
++	if (!process_fltr) {
++		/* prevent iavf_add_fdir_filter() from being called when there
++		 * are no filters to add
++		 */
++		adapter->aq_required &= ~IAVF_FLAG_AQ_ADD_FDIR_FILTER;
++		kfree(f);
++		return;
++	}
++	adapter->current_op = VIRTCHNL_OP_ADD_FDIR_FILTER;
++	iavf_send_pf_msg(adapter, VIRTCHNL_OP_ADD_FDIR_FILTER, (u8 *)f, len);
++	kfree(f);
 +}
 +
 +/**
-+ * ice_vc_fdir_irq_handler - ctrl_vsi Rx queue interrupt handler
-+ * @ctrl_vsi: pointer to a VF's CTRL VSI
-+ * @rx_desc: pointer to FDIR Rx queue descriptor
-+ */
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc)
++ * iavf_del_fdir_filter
++ * @adapter: the VF adapter structure
++ *
++ * Request that the PF delete Flow Director filters as specified
++ * by the user via ethtool.
++ **/
++void iavf_del_fdir_filter(struct iavf_adapter *adapter)
 +{
-+	struct ice_pf *pf = ctrl_vsi->back;
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir_ctx *ctx_irq;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct device *dev;
-+	struct ice_vf *vf;
-+	int ret;
++	struct iavf_fdir_fltr *fdir;
++	struct virtchnl_fdir_del f;
++	bool process_fltr = false;
++	int len;
 +
-+	vf = &pf->vf[ctrl_vsi->vf_id];
-+
-+	fdir = &vf->fdir;
-+	ctx_done = &fdir->ctx_done;
-+	ctx_irq = &fdir->ctx_irq;
-+	dev = ice_pf_to_dev(pf);
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
++	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
++		/* bail because we already have a command pending */
++		dev_err(&adapter->pdev->dev, "Cannot remove Flow Director filter, command %d pending\n",
++			adapter->current_op);
 +		return;
 +	}
 +
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
++	len = sizeof(struct virtchnl_fdir_del);
 +
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_IRQ;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	memcpy(&ctx_done->rx_desc, rx_desc, sizeof(*rx_desc));
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+
-+	ret = del_timer(&ctx_irq->rx_tmr);
-+	if (!ret)
-+		dev_err(dev, "VF %d: Unexpected inactive timer!\n", vf->vf_id);
-+
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
-+}
-+
-+/**
-+ * ice_vf_fdir_dump_info - dump FDIR information for diagnosis
-+ * @vf: pointer to the VF info
-+ */
-+static void ice_vf_fdir_dump_info(struct ice_vf *vf)
-+{
-+	struct ice_vsi *vf_vsi;
-+	u32 fd_size, fd_cnt;
-+	struct device *dev;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	u16 vsi_num;
-+
-+	pf = vf->pf;
-+	hw = &pf->hw;
-+	dev = ice_pf_to_dev(pf);
-+	vf_vsi = pf->vsi[vf->lan_vsi_idx];
-+	vsi_num = ice_get_hw_vsi_num(hw, vf_vsi->idx);
-+
-+	fd_size = rd32(hw, VSIQF_FD_SIZE(vsi_num));
-+	fd_cnt = rd32(hw, VSIQF_FD_CNT(vsi_num));
-+	dev_dbg(dev, "VF %d: space allocated: guar:0x%x, be:0x%x, space consumed: guar:0x%x, be:0x%x",
-+		vf->vf_id,
-+		(fd_size & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_size & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S);
-+}
-+
-+/**
-+ * ice_vf_verify_rx_desc - verify received FDIR programming status descriptor
-+ * @vf: pointer to the VF info
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vf_verify_rx_desc(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+		      enum virtchnl_fdir_prgm_status *status)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	u32 stat_err, error, prog_id;
-+	int ret;
-+
-+	stat_err = le16_to_cpu(ctx->rx_desc.wb.status_error0);
-+	if (((stat_err & ICE_FXD_FLTR_WB_QW1_DD_M) >>
-+	    ICE_FXD_FLTR_WB_QW1_DD_S) != ICE_FXD_FLTR_WB_QW1_DD_YES) {
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_err(dev, "VF %d: Desc Done not set\n", vf->vf_id);
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	prog_id = (stat_err & ICE_FXD_FLTR_WB_QW1_PROG_ID_M) >>
-+		ICE_FXD_FLTR_WB_QW1_PROG_ID_S;
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD &&
-+	    ctx->v_opcode != VIRTCHNL_OP_ADD_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show add, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_DEL &&
-+	    ctx->v_opcode != VIRTCHNL_OP_DEL_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show del, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_YES) {
-+		if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD) {
-+			dev_err(dev, "VF %d, Failed to add FDIR rule due to no space in the table",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		} else {
-+			dev_err(dev, "VF %d, Failed to remove FDIR rule, attempt to remove non-existent entry",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NONEXIST;
++	spin_lock_bh(&adapter->fdir_fltr_lock);
++	list_for_each_entry(fdir, &adapter->fdir_list_head, list) {
++		if (fdir->state == IAVF_FDIR_FLTR_DEL_REQUEST) {
++			process_fltr = true;
++			memset(&f, 0, len);
++			f.vsi_id = fdir->vc_add_msg.vsi_id;
++			f.flow_id = fdir->flow_id;
++			fdir->state = IAVF_FDIR_FLTR_DEL_PENDING;
++			break;
 +		}
-+		ret = -EINVAL;
-+		goto err_exit;
 +	}
++	spin_unlock_bh(&adapter->fdir_fltr_lock);
 +
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES) {
-+		dev_err(dev, "VF %d: Profile matching error", vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	*status = VIRTCHNL_FDIR_SUCCESS;
-+
-+	return 0;
-+
-+err_exit:
-+	ice_vf_fdir_dump_info(vf);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_add_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director add command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_add *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	resp->flow_id = conf->flow_id;
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_del_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director del command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_del *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	devm_kfree(dev, conf);
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	if (success)
-+		devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_flush_fdir_ctx
-+ * @pf: pointer to the PF structure
-+ *
-+ * Flush all the pending event on ctx_done list and process them.
-+ */
-+void ice_flush_fdir_ctx(struct ice_pf *pf)
-+{
-+	int i;
-+
-+	if (!test_and_clear_bit(__ICE_FD_VF_FLUSH_CTX, pf->state))
++	if (!process_fltr) {
++		adapter->aq_required &= ~IAVF_FLAG_AQ_DEL_FDIR_FILTER;
 +		return;
-+
-+	ice_for_each_vf(pf, i) {
-+		struct device *dev = ice_pf_to_dev(pf);
-+		enum virtchnl_fdir_prgm_status status;
-+		struct ice_vf *vf = &pf->vf[i];
-+		struct ice_vf_fdir_ctx *ctx;
-+		unsigned long flags;
-+		int ret;
-+
-+		if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
-+			continue;
-+
-+		if (vf->ctrl_vsi_idx == ICE_NO_VSI)
-+			continue;
-+
-+		ctx = &vf->fdir.ctx_done;
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		if (!(ctx->flags & ICE_VF_FDIR_CTX_VALID)) {
-+			spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+			continue;
-+		}
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+		WARN_ON(ctx->stat == ICE_FDIR_CTX_READY);
-+		if (ctx->stat == ICE_FDIR_CTX_TIMEOUT) {
-+			status = VIRTCHNL_FDIR_FAILURE_RULE_TIMEOUT;
-+			dev_err(dev, "VF %d: ctrl_vsi irq timeout\n",
-+				vf->vf_id);
-+			goto err_exit;
-+		}
-+
-+		ret = ice_vf_verify_rx_desc(vf, ctx, &status);
-+		if (ret)
-+			goto err_exit;
-+
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, true);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, true);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		continue;
-+err_exit:
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, false);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, false);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
 +	}
-+}
 +
-+/**
-+ * ice_vc_fdir_set_irq_ctx - set FDIR context info for later irq handler
-+ * @vf: pointer to the VF structure
-+ * @conf: FDIR configuration for each filter
-+ * @v_opcode: virtual channel operation code
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_fdir_set_irq_ctx(struct ice_vf *vf, struct virtchnl_fdir_fltr_conf *conf,
-+			enum virtchnl_ops v_opcode)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	struct ice_vf_fdir_ctx *ctx;
-+	unsigned long flags;
-+
-+	ctx = &vf->fdir.ctx_irq;
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	if ((vf->fdir.ctx_irq.flags & ICE_VF_FDIR_CTX_VALID) ||
-+	    (vf->fdir.ctx_done.flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		dev_dbg(dev, "VF %d: Last request is still in progress\n",
-+			vf->vf_id);
-+		return -EBUSY;
-+	}
-+	ctx->flags |= ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+	ctx->conf = conf;
-+	ctx->v_opcode = v_opcode;
-+	ctx->stat = ICE_FDIR_CTX_READY;
-+	timer_setup(&ctx->rx_tmr, ice_vf_fdir_timer, 0);
-+
-+	mod_timer(&ctx->rx_tmr,
-+		  round_jiffies(msecs_to_jiffies(10) + jiffies));
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_vc_fdir_clear_irq_ctx - clear FDIR context info for irq handler
-+ * @vf: pointer to the VF structure
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static void ice_vc_fdir_clear_irq_ctx(struct ice_vf *vf)
-+{
-+	struct ice_vf_fdir_ctx *ctx = &vf->fdir.ctx_irq;
-+	unsigned long flags;
-+
-+	del_timer(&ctx->rx_tmr);
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++	adapter->current_op = VIRTCHNL_OP_DEL_FDIR_FILTER;
++	iavf_send_pf_msg(adapter, VIRTCHNL_OP_DEL_FDIR_FILTER, (u8 *)&f, len);
 +}
 +
  /**
-  * ice_vc_add_fdir_fltr - add a FDIR filter for VF by the msg buffer
-  * @vf: pointer to the VF info
-@@ -1604,7 +2054,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
--	ret = ice_vc_fdir_insert_entry(vf, conf, &stat->flow_id);
-+	ret = ice_vc_fdir_insert_entry(vf, conf, &conf->flow_id);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-@@ -1612,6 +2062,14 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_ADD_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_free_conf;
-+	}
+  * iavf_request_reset
+  * @adapter: adapter structure
+@@ -1357,6 +1453,49 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			}
+ 			}
+ 			break;
++		case VIRTCHNL_OP_ADD_FDIR_FILTER: {
++			struct iavf_fdir_fltr *fdir, *fdir_tmp;
 +
- 	ret = ice_vc_fdir_write_fltr(vf, conf, true, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
-@@ -1621,18 +2079,13 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_rem_entry;
- 	}
- 
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
--
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
- exit:
--	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
--				    (u8 *)stat, len);
- 	kfree(stat);
- 	return ret;
- 
- err_rem_entry:
--	ice_vc_fdir_remove_entry(vf, conf, stat->flow_id);
-+	ice_vc_fdir_clear_irq_ctx(vf);
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
- err_free_conf:
- 	devm_kfree(dev, conf);
- err_exit:
-@@ -1696,22 +2149,29 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_exit;
- 	}
- 
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_DEL_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_exit;
-+	}
++			spin_lock_bh(&adapter->fdir_fltr_lock);
++			list_for_each_entry_safe(fdir, fdir_tmp,
++						 &adapter->fdir_list_head,
++						 list) {
++				if (fdir->state == IAVF_FDIR_FLTR_ADD_PENDING) {
++					dev_info(&adapter->pdev->dev, "Failed to add Flow Director filter, error %s\n",
++						 iavf_stat_str(&adapter->hw,
++							       v_retval));
++					if (msglen)
++						dev_err(&adapter->pdev->dev,
++							"%s\n", msg);
++					list_del(&fdir->list);
++					kfree(fdir);
++					adapter->fdir_active_fltr--;
++				}
++			}
++			spin_unlock_bh(&adapter->fdir_fltr_lock);
++			}
++			break;
++		case VIRTCHNL_OP_DEL_FDIR_FILTER: {
++			struct iavf_fdir_fltr *fdir;
 +
- 	ret = ice_vc_fdir_write_fltr(vf, conf, false, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
- 		dev_err(dev, "VF %d: writing FDIR rule failed, ret:%d\n",
- 			vf->vf_id, ret);
--		goto err_exit;
-+		goto err_del_tmr;
- 	}
- 
--	ice_vc_fdir_remove_entry(vf, conf, fltr->flow_id);
--	devm_kfree(dev, conf);
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+	kfree(stat);
- 
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
-+	return ret;
- 
-+err_del_tmr:
-+	ice_vc_fdir_clear_irq_ctx(vf);
- err_exit:
- 	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
- 				    (u8 *)stat, len);
-@@ -1729,6 +2189,10 @@ void ice_vf_fdir_init(struct ice_vf *vf)
- 
- 	idr_init(&fdir->fdir_rule_idr);
- 	INIT_LIST_HEAD(&fdir->fdir_rule_list);
++			spin_lock_bh(&adapter->fdir_fltr_lock);
++			list_for_each_entry(fdir, &adapter->fdir_list_head,
++					    list) {
++				if (fdir->state == IAVF_FDIR_FLTR_DEL_PENDING) {
++					fdir->state = IAVF_FDIR_FLTR_ACTIVE;
++					dev_info(&adapter->pdev->dev, "Failed to del Flow Director filter, error %s\n",
++						 iavf_stat_str(&adapter->hw,
++							       v_retval));
++				}
++			}
++			spin_unlock_bh(&adapter->fdir_fltr_lock);
++			}
++			break;
++		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
++		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
++			dev_warn(&adapter->pdev->dev,
++				 "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			break;
+ 		default:
+ 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
+ 				v_retval, iavf_stat_str(&adapter->hw, v_retval),
+@@ -1490,6 +1629,54 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		}
+ 		}
+ 		break;
++	case VIRTCHNL_OP_ADD_FDIR_FILTER: {
++		struct virtchnl_fdir_add *add_fltr = (struct virtchnl_fdir_add *)msg;
++		struct iavf_fdir_fltr *fdir, *fdir_tmp;
 +
-+	spin_lock_init(&fdir->ctx_lock);
-+	fdir->ctx_irq.flags = 0;
-+	fdir->ctx_done.flags = 0;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-index 676de402475e..53b78e866381 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-@@ -5,6 +5,24 @@
- #define _ICE_VIRTCHNL_FDIR_H_
- 
- struct ice_vf;
-+struct ice_pf;
++		spin_lock_bh(&adapter->fdir_fltr_lock);
++		list_for_each_entry_safe(fdir, fdir_tmp,
++					 &adapter->fdir_list_head,
++					 list) {
++			if (fdir->state == IAVF_FDIR_FLTR_ADD_PENDING) {
++				if (add_fltr->status == VIRTCHNL_FDIR_SUCCESS) {
++					fdir->state = IAVF_FDIR_FLTR_ACTIVE;
++					fdir->flow_id = add_fltr->flow_id;
++				} else {
++					dev_info(&adapter->pdev->dev,
++						 "Failed to add Flow Director filter with status : %d\n",
++						 add_fltr->status);
++					list_del(&fdir->list);
++					kfree(fdir);
++					adapter->fdir_active_fltr--;
++				}
++			}
++		}
++		spin_unlock_bh(&adapter->fdir_fltr_lock);
++		}
++		break;
++	case VIRTCHNL_OP_DEL_FDIR_FILTER: {
++		struct virtchnl_fdir_del *del_fltr = (struct virtchnl_fdir_del *)msg;
++		struct iavf_fdir_fltr *fdir, *fdir_tmp;
 +
-+enum ice_fdir_ctx_stat {
-+	ICE_FDIR_CTX_READY,
-+	ICE_FDIR_CTX_IRQ,
-+	ICE_FDIR_CTX_TIMEOUT,
-+};
-+
-+struct ice_vf_fdir_ctx {
-+	struct timer_list rx_tmr;
-+	enum virtchnl_ops v_opcode;
-+	enum ice_fdir_ctx_stat stat;
-+	union ice_32b_rx_flex_desc rx_desc;
-+#define ICE_VF_FDIR_CTX_VALID		BIT(0)
-+	u32 flags;
-+
-+	void *conf;
-+};
- 
- /* VF FDIR information structure */
- struct ice_vf_fdir {
-@@ -14,11 +32,18 @@ struct ice_vf_fdir {
- 
- 	struct idr fdir_rule_idr;
- 	struct list_head fdir_rule_list;
-+
-+	spinlock_t ctx_lock; /* protects FDIR context info */
-+	struct ice_vf_fdir_ctx ctx_irq;
-+	struct ice_vf_fdir_ctx ctx_done;
- };
- 
- int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg);
- int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg);
- void ice_vf_fdir_init(struct ice_vf *vf);
- void ice_vf_fdir_exit(struct ice_vf *vf);
--
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc);
-+void ice_flush_fdir_ctx(struct ice_pf *pf);
- #endif /* _ICE_VIRTCHNL_FDIR_H_ */
++		spin_lock_bh(&adapter->fdir_fltr_lock);
++		list_for_each_entry_safe(fdir, fdir_tmp, &adapter->fdir_list_head,
++					 list) {
++			if (fdir->state == IAVF_FDIR_FLTR_DEL_PENDING) {
++				if (del_fltr->status == VIRTCHNL_FDIR_SUCCESS) {
++					list_del(&fdir->list);
++					kfree(fdir);
++					adapter->fdir_active_fltr--;
++				} else {
++					fdir->state = IAVF_FDIR_FLTR_ACTIVE;
++					dev_info(&adapter->pdev->dev,
++						 "Failed to delete Flow Director filter with status : %d\n",
++						 del_fltr->status);
++				}
++			}
++		}
++		spin_unlock_bh(&adapter->fdir_fltr_lock);
++		}
++		break;
+ 	default:
+ 		if (adapter->current_op && (v_opcode != adapter->current_op))
+ 			dev_warn(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
 -- 
 2.29.2
 
