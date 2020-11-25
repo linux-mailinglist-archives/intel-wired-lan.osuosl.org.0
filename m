@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C44262C3D74
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Nov 2020 11:13:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B42EF2C3DB6
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Nov 2020 11:33:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3890E20404;
-	Wed, 25 Nov 2020 10:13:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B0CA82A0D9;
+	Wed, 25 Nov 2020 10:33:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H9h0riris4Eu; Wed, 25 Nov 2020 10:13:08 +0000 (UTC)
+	with ESMTP id vxD4VDODVP+9; Wed, 25 Nov 2020 10:33:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B582E274B0;
-	Wed, 25 Nov 2020 10:13:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3EFB02DE22;
+	Wed, 25 Nov 2020 10:33:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F1C241BF387
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:13:03 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A56C41BF387
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E51F986E08
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:13:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7A537874E8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kGkSMEm6Lw7C for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Nov 2020 10:13:03 +0000 (UTC)
+ with ESMTP id kk3awqkax31E for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Nov 2020 10:33:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DB01886E04
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:13:02 +0000 (UTC)
-IronPort-SDR: zyrtBL4X5tmerAL6rusLlzDmXYcpykfNRjUIzPf/32o9PJCiIZra+JIUSEI67BPmQKzXSlTm8I
- wphGXw/V9fLg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="236240192"
-X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="236240192"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 15B42874A6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:40 +0000 (UTC)
+IronPort-SDR: 7Jg83DvWCSThopQhXg6HDy9U48FfNg8ETeHfYgczvawDlD8OnXbKNFJXiG/j1ahIt0iAG4HnBQ
+ q0VH2Zx8KWNw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="172206721"
+X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="172206721"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2020 02:13:01 -0800
-IronPort-SDR: xZn2TKBeYx4B0eFw7r1mDWU87WQsNebzT6iwf0nY6fQw94McAIJpMLR5BqHIVTskeaM7QxION9
- MKiifc8AJzPA==
-X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="478866270"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Nov 2020 02:33:39 -0800
+IronPort-SDR: kgFdwzDjaCjTePqLtv3qM0zDyJMO97PGMrtspdJh6OVspNGe13kR7OS5Jg0x1x2zAXTMdTD81+
+ YOvIlbeTPNWA==
+X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="547221998"
 Received: from chenyu-office.sh.intel.com ([10.239.158.173])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2020 02:12:59 -0800
-Date: Wed, 25 Nov 2020 18:15:36 +0800
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Nov 2020 02:33:36 -0800
+Date: Wed, 25 Nov 2020 18:36:12 +0800
 From: Chen Yu <yu.c.chen@intel.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <20201125101534.GA17181@chenyu-office.sh.intel.com>
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Message-ID: <20201125103612.GA17700@chenyu-office.sh.intel.com>
 References: <20201124153221.11265-1-yu.c.chen@intel.com>
- <a8058c17-141d-986e-903d-462dc72999f1@molgen.mpg.de>
+ <8BA4D1E1-DACF-4E84-A5B8-75A7CEA65F98@canonical.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <a8058c17-141d-986e-903d-462dc72999f1@molgen.mpg.de>
+In-Reply-To: <8BA4D1E1-DACF-4E84-A5B8-75A7CEA65F98@canonical.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Assign DPM_FLAG_SMART_SUSPEND
  and DPM_FLAG_MAY_SKIP_RESUME to speed up s2ram
@@ -70,116 +70,138 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Len Brown <len.brown@intel.com>, linux-pm@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Len Brown <len.brown@intel.com>, Linux PM list <linux-pm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGkgUGF1bCwKT24gVHVlLCBOb3YgMjQsIDIwMjAgYXQgMDQ6NDc6MzBQTSArMDEwMCwgUGF1bCBN
-ZW56ZWwgd3JvdGU6Cj4gRGVhciBDaGVuLAo+IAo+IAo+IFRoYW5rIHlvdSBmb3IgdGhlIHBhdGNo
-Lgo+IApUaGFua3MgZm9yIHJldmlld2luZyB0aGlzIGNoYW5nZS4KPiBBbSAyNC4xMS4yMCB1bSAx
-NjozMiBzY2hyaWViIENoZW4gWXU6Cj4gPiBUaGUgTklDIGlzIHB1dCBpbiBydW50aW1lIHN1c3Bl
-bmQgc3RhdHVzIHdoZW4gdGhlcmUgaXMgbm8gd2lyZSBjb25uZWN0ZWQuCj4gPiBBcyBhIHJlc3Vs
-dCwgaXQgaXMgc2FmZSB0byBrZWVwIHRoaXMgTklDIGluIHJ1bnRpbWUgc3VzcGVuZGVkIGR1cmlu
-ZyBzMnJhbQo+ID4gYmVjYXVzZSB0aGUgc3lzdGVtIGRvZXMgbm90IHJlbHkgb24gdGhlIE5JQyBw
-bHVnIGV2ZW50IG5vciBXT0wgdG8gd2FrZSB1cAo+ID4gdGhlIHN5c3RlbS4gVW5saWtlIHRoZSBz
-MmlkbGUsIHMycmFtIGRvZXMgbm90IG5lZWQgdG8gbWFuaXB1bGF0ZSBTMGl4IHNldHRpbmdzCj4g
-PiBkdXJpbmcgc3VzcGVuZC4KPiAKPiB3aGF0IGhhcHBlbnMsIHdoZW4gSSBwbHVnIGluIGEgY2Fi
-bGUsIHdoZW4gdGhlIHN1c3BlbmQgaXMgaW4gQUNQSSBTMyBzdGF0ZT8KPiBJIGd1ZXNzIGl04oCZ
-cyBpZ25vcmVkPwo+IApJIHRoaW5rIGl0IGRlcGVuZHMgb24gdGhlIHBsYXRmb3JtKG9yIEJJT1Mg
-aW1wbGVtZW50YXRpb24pLgpPbiBteSBwbGF0Zm9ybSBpdCBpcyBpZ25vcmVkLiBXaGVuIHRoZSBz
-eXN0ZW0gaXMgcnVubmluZywKdGhlIHBsdWcgZXZlbnQgd291bGQgZ2VuZXJhdGUgYSBTQ0ksIGJ1
-dCBpZiBpdCBpcyBpbiBTMywKd2hldGhlciB0byBnZW5lcmF0ZSB3YWtlIHVwIGV2ZW50IG9yIG5v
-dCBkZXBlbmRzIG9uIHRoZSBCSU9TIGFuZAp0aGUgc3lzZnMgd2hldGhlciB0aGUgZGV2aWNlIGlz
-IGRldmljZV9tYXlfd2FrZXVwKCkuCkluIHN1bW1hcnksIHdoZXRoZXIgdGhlIE5JQyBpcyBpbiBy
-dW50aW1lX3N1c3BlbmQoKSBvciBzeXN0ZW1fc3VzcGVuZGVkCmRvZXMgbm90IGltcGFjdCB0aGUg
-d2FrZSB1cCBmcm9tIFMzIGJ5IHBsdWcgZXZlbnQuCj4gPiBUaGlzIHBhdGNoIGFzc2lnbnMgRFBN
-X0ZMQUdfU01BUlRfU1VTUEVORCBhbmQgRFBNX0ZMQUdfTUFZX1NLSVBfUkVTVU1FCj4gPiB0byB0
-aGUgZTEwMDBlIGRyaXZlciBzbyB0aGF0IHRoZSBzMnJhbSBjb3VsZCBza2lwIHRoZSAuc3VzcGVu
-ZF9sYXRlKCksCj4gPiAuc3VzcGVuZF9ub2lycSgpIGFuZCAucmVzdW1lX25vaXJxKCkgLnJlc3Vt
-ZV9lYXJseSgpIHdoZW4gcG9zc2libGUuCj4gPiBBbHNvIHNraXAgLnN1c3BlbmQoKSBhbmQgLnJl
-c3VtZSgpIGlmIGRldl9wbV9za2lwX3N1c3BlbmQoKSBhbmQKPiA+IGRldl9wbV9za2lwX3Jlc3Vt
-ZSgpIHJldHVybiB0cnVlLCBzbyBhcyB0byBzcGVlZCB1cCB0aGUgczJyYW0uCj4gCj4gV2hhdCBp
-cyBzcGVkIHVwPyBTdXNwZW5kIG9yIHJlc3VtZT8KPgpCb3RoIHN1c3BlbmQgYW5kIHJlc3VtZS4K
-PiBQbGVhc2UgYWxzbyBkb2N1bWVudCwgd2hhdCBzeXN0ZW0geW91IHRlc3RlZCB0aGlzIG9uLCBh
-bmQgd2hhdCB0aGUgbnVtYmVycwo+IGJlZm9yZSBhbmQgYWZ0ZXIgYXJlLgpUaGUgcGxhdGZvcm0g
-SSdtIHRlc3Rpbmcgb24gYSBsYXB0b3Agd2l0aCBpNS04MzAwSCBDUFUgYW5kIEkyMTktTE0gTklD
-LgoKQmVmb3JlIHRoaXMgY2hhbmdlOgpbICAyMDMuMzkxNDY1XSBlMTAwMGUgMDAwMDowMDoxZi42
-OiBwY2lfcG1fc3VzcGVuZCsweDAvMHgxNzAgcmV0dXJuZWQgMCBhZnRlciAzMjMxODYgdXNlY3MK
-WyAgMjAzLjU5ODMwN10gZTEwMDBlIDAwMDA6MDA6MWYuNjogcGNpX3BtX3N1c3BlbmRfbGF0ZSsw
-eDAvMHg0MCByZXR1cm5lZCAwIGFmdGVyIDQgdXNlY3MKWyAgMjAzLjY1NDAyNl0gZTEwMDBlIDAw
-MDA6MDA6MWYuNjogcGNpX3BtX3N1c3BlbmRfbm9pcnErMHgwLzB4MjkwIHJldHVybmVkIDAgYWZ0
-ZXIgMjA5MTUgdXNlY3MKWyAgMjAzLjcxNDQ2NF0gZTEwMDBlIDAwMDA6MDA6MWYuNjogcGNpX3Bt
-X3Jlc3VtZV9ub2lycSsweDAvMHgxMjAgcmV0dXJuZWQgMCBhZnRlciAxOTk1MiB1c2VjcwpbICAy
-MDMuNzE2MjA4XSBlMTAwMGUgMDAwMDowMDoxZi42OiBwY2lfcG1fcmVzdW1lX2Vhcmx5KzB4MC8w
-eDMwIHJldHVybmVkIDAgYWZ0ZXIgMCB1c2VjcwpbICAyMDMuOTM0Mzk5XSBlMTAwMGUgMDAwMDow
-MDoxZi42OiBwY2lfcG1fcmVzdW1lKzB4MC8weDkwIHJldHVybmVkIDAgYWZ0ZXIgMjExNDM3IHVz
-ZWNzCgpBZnRlciB0aGlzIGNoYW5nZToKWyAgMTUwLjQ1NTYxMl0gZTEwMDBlIDAwMDA6MDA6MWYu
-NjogcGNpX3BtX3N1c3BlbmQrMHgwLzB4MTcwIHJldHVybmVkIDAgYWZ0ZXIgMTQgdXNlY3MKWyAg
-MTUwLjk4NzYyN10gZTEwMDBlIDAwMDA6MDA6MWYuNjogcGNpX3BtX3N1c3BlbmRfbGF0ZSsweDAv
-MHg0MCByZXR1cm5lZCAwIGFmdGVyIDMgdXNlY3MKWyAgMTUxLjAyMTY1OV0gZTEwMDBlIDAwMDA6
-MDA6MWYuNjogcGNpX3BtX3N1c3BlbmRfbm9pcnErMHgwLzB4MjkwIHJldHVybmVkIDAgYWZ0ZXIg
-MSB1c2VjcwpbICAxNTEuMDg3MzAzXSBlMTAwMGUgMDAwMDowMDoxZi42OiBwY2lfcG1fcmVzdW1l
-X25vaXJxKzB4MC8weDEyMCByZXR1cm5lZCAwIGFmdGVyIDAgdXNlY3MKWyAgMTUxLjExMjA1Nl0g
-ZTEwMDBlIDAwMDA6MDA6MWYuNjogcGNpX3BtX3Jlc3VtZV9lYXJseSsweDAvMHgzMCByZXR1cm5l
-ZCAwIGFmdGVyIDAgdXNlY3MKWyAgMTUxLjEzNjUwOF0gZTEwMDBlIDAwMDA6MDA6MWYuNjogcGNp
-X3BtX3Jlc3VtZSsweDAvMHg5MCByZXR1cm5lZCAwIGFmdGVyIDMwMzAgdXNlY3MKPiAKPiBJZiB0
-aGVyZSBpcyBhIGJ1ZyByZXBvcnQsIHBsZWFzZSBub3RlIGl0IHRvby4KPiAKVGhpcyBpcyBhbiBv
-cHRpbWl6YXRpb24gZm9yIHNjZW5hcmlvIHdoZW4gY2FibGUgaXMgdW5wbHVnZWQsIHNvIHRoZXJl
-J3MKbm8gZGVkaWNhdGVkIGJ1ZyByZXBvcnQgb24gdGhpcy4KPiA+IFNpZ25lZC1vZmYtYnk6IENo
-ZW4gWXUgPHl1LmMuY2hlbkBpbnRlbC5jb20+Cj4gPiAtLS0KPiA+ICAgZHJpdmVycy9iYXNlL3Bv
-d2VyL21haW4uYyAgICAgICAgICAgICAgICAgIHwgIDIgKysKPiA+ICAgZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIHwgMTQgKysrKysrKysrKysrKy0KPiA+ICAgMiBm
-aWxlcyBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gPiAKPiA+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2Jhc2UvcG93ZXIvbWFpbi5jIGIvZHJpdmVycy9iYXNlL3Bvd2Vy
-L21haW4uYwo+ID4gaW5kZXggYzdhYzQ5MDQyY2VlLi45Y2Q4YWJiYTg2MTIgMTAwNjQ0Cj4gPiAt
-LS0gYS9kcml2ZXJzL2Jhc2UvcG93ZXIvbWFpbi5jCj4gPiArKysgYi9kcml2ZXJzL2Jhc2UvcG93
-ZXIvbWFpbi5jCj4gPiBAQCAtNTgwLDYgKzU4MCw3IEBAIGJvb2wgZGV2X3BtX3NraXBfcmVzdW1l
-KHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICAgCXJldHVybiAhZGV2LT5wb3dlci5tdXN0X3Jlc3Vt
-ZTsKPiA+ICAgfQo+ID4gK0VYUE9SVF9TWU1CT0xfR1BMKGRldl9wbV9za2lwX3Jlc3VtZSk7Cj4g
-PiAgIC8qKgo+ID4gICAgKiBkZXZpY2VfcmVzdW1lX25vaXJxIC0gRXhlY3V0ZSBhICJub2lycSBy
-ZXN1bWUiIGNhbGxiYWNrIGZvciBnaXZlbiBkZXZpY2UuCj4gPiBAQCAtMjAxMCwzICsyMDExLDQg
-QEAgYm9vbCBkZXZfcG1fc2tpcF9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICAgCXJl
-dHVybiBkZXZfcG1fdGVzdF9kcml2ZXJfZmxhZ3MoZGV2LCBEUE1fRkxBR19TTUFSVF9TVVNQRU5E
-KSAmJgo+ID4gICAJCXBtX3J1bnRpbWVfc3RhdHVzX3N1c3BlbmRlZChkZXYpOwo+ID4gICB9Cj4g
-PiArRVhQT1JUX1NZTUJPTF9HUEwoZGV2X3BtX3NraXBfc3VzcGVuZCk7Cj4gPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gPiBpbmRleCBiMzBmMDA4OTFjMDMu
-LmQ3OWZkZGFiYzU1MyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2UxMDAwZS9uZXRkZXYuYwo+ID4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEw
-MDBlL25ldGRldi5jCj4gPiBAQCAtNjk2NSw2ICs2OTY1LDE0IEBAIHN0YXRpYyBfX21heWJlX3Vu
-dXNlZCBpbnQgZTEwMDBlX3BtX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ID4gICAJc3Ry
-dWN0IGUxMDAwX2h3ICpodyA9ICZhZGFwdGVyLT5odzsKPiA+ICAgCWludCByYzsKPiA+ICsJLyog
-UnVudGltZSBzdXNwZW5kZWQgbWVhbnMgdGhhdCB0aGVyZSBpcyBubyB3aXJlZCBjb25uZWN0aW9u
-Cj4gCj4gTWF5YmUgZXhwbGljaXRseSB1c2UgKmNhYmxlKiBpbiBoZXJlIHRvIGF2b2lkIGNvbmZ1
-c2lvbj8KPiAKT2theS4KPiA+ICsJICogYW5kIGl0IGhhcyBub3RoaW5nIHRvIGRvIHdpdGggV09M
-IHRoYXQsIHdlIGRvbid0IG5lZWQgdG8KPiAKPiBNb3ZlIHRoZSBjb21tYSBiZWZvcmUgKnRoYXQq
-Pwo+IApPa2F5Lgo+ID4gKwkgKiBhZGp1c3QgdGhlIFdPTCBzZXR0aW5ncy4gU28gaXQgaXMgc2Fm
-ZSB0byBwdXQgTklDIGluCj4gPiArCSAqIHJ1bnRpbWUgc3VzcGVuZCB3aGlsZSBkb2luZyBzeXN0
-ZW0gc3VzcGVuZC4KPiAKPiBJIHVuZGVyc3Rvb2QsIHRoYXQgdGhlIE5JQyBpcyBhbHJlYWR5IGlu
-IHJ1bnRpbWUgc3VzcGVuZD8gQ291bGQgeW91IHBsZWFzZQo+IGNsYXJpZnkgdGhlIGNvbW1lbnQ/
-Cj4gClllcywgaXQgaXMgYWxyZWFkeSBydW50aW1lIHN1c3BlbmRlZCwgSSdsbCByZXZpc2UgdGhl
-IGNvbW1lbnQuCgpUaGFua3MsCkNoZW55dQo+ID4gKwkgKi8KPiA+ICsJaWYgKGRldl9wbV9za2lw
-X3N1c3BlbmQoZGV2KSkKPiA+ICsJCXJldHVybiAwOwo+ID4gKwo+ID4gICAJZTEwMDBlX2ZsdXNo
-X2xwaWMocGRldik7Cj4gPiAgIAllMTAwMGVfcG1fZnJlZXplKGRldik7Cj4gPiBAQCAtNjk4OSw2
-ICs2OTk3LDkgQEAgc3RhdGljIF9fbWF5YmVfdW51c2VkIGludCBlMTAwMGVfcG1fcmVzdW1lKHN0
-cnVjdCBkZXZpY2UgKmRldikKPiA+ICAgCXN0cnVjdCBlMTAwMF9odyAqaHcgPSAmYWRhcHRlci0+
-aHc7Cj4gPiAgIAlpbnQgcmM7Cj4gPiArCWlmIChkZXZfcG1fc2tpcF9yZXN1bWUoZGV2KSkKPiA+
-ICsJCXJldHVybiAwOwo+ID4gKwo+ID4gICAJLyogSW50cm9kdWNlIFMwaXggaW1wbGVtZW50YXRp
-b24gKi8KPiA+ICAgCWlmIChody0+bWFjLnR5cGUgPj0gZTEwMDBfcGNoX2NucCAmJgo+ID4gICAJ
-ICAgICFlMTAwMGVfY2hlY2tfbWUoaHctPmFkYXB0ZXItPnBkZXYtPmRldmljZSkpCj4gPiBAQCAt
-NzY2NSw3ICs3Njc2LDggQEAgc3RhdGljIGludCBlMTAwMF9wcm9iZShzdHJ1Y3QgcGNpX2RldiAq
-cGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmVudCkKPiA+ICAgCWUxMDAwX3ByaW50
-X2RldmljZV9pbmZvKGFkYXB0ZXIpOwo+ID4gLQlkZXZfcG1fc2V0X2RyaXZlcl9mbGFncygmcGRl
-di0+ZGV2LCBEUE1fRkxBR19OT19ESVJFQ1RfQ09NUExFVEUpOwo+ID4gKwlkZXZfcG1fc2V0X2Ry
-aXZlcl9mbGFncygmcGRldi0+ZGV2LCBEUE1fRkxBR19OT19ESVJFQ1RfQ09NUExFVEUgfAo+ID4g
-KwkJCQlEUE1fRkxBR19TTUFSVF9TVVNQRU5EIHwgRFBNX0ZMQUdfTUFZX1NLSVBfUkVTVU1FKTsK
-PiA+ICAgCWlmIChwY2lfZGV2X3J1bl93YWtlKHBkZXYpICYmIGh3LT5tYWMudHlwZSA8IGUxMDAw
-X3BjaF9jbnApCj4gPiAgIAkJcG1fcnVudGltZV9wdXRfbm9pZGxlKCZwZGV2LT5kZXYpOwo+IAo+
-IAo+IEtpbmQgcmVnYXJkcywKPiAKPiBQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
-ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
-Zm8vaW50ZWwtd2lyZWQtbGFuCg==
+Hi Kai-Heng,
+On Wed, Nov 25, 2020 at 01:17:28AM +0800, Kai-Heng Feng wrote:
+> Hi Yu,
+> 
+> > On Nov 24, 2020, at 23:32, Chen Yu <yu.c.chen@intel.com> wrote:
+> > 
+> > The NIC is put in runtime suspend status when there is no wire connected.
+> > As a result, it is safe to keep this NIC in runtime suspended during s2ram
+> > because the system does not rely on the NIC plug event nor WOL to wake up
+> > the system. Unlike the s2idle, s2ram does not need to manipulate S0ix settings
+> > during suspend.
+> 
+> Please see below for the reason why I explicitly disable direct-complete in the driver.
+> 
+Okay.
+> > 
+> > This patch assigns DPM_FLAG_SMART_SUSPEND and DPM_FLAG_MAY_SKIP_RESUME
+> > to the e1000e driver so that the s2ram could skip the .suspend_late(),
+> > .suspend_noirq() and .resume_noirq() .resume_early() when possible.
+> > Also skip .suspend() and .resume() if dev_pm_skip_suspend() and
+> > dev_pm_skip_resume() return true, so as to speed up the s2ram.
+> 
+> If we really want direct-complete here, maybe always set current WoL setting in runtime suspend routine?
+> 
+Indeed, that would be a choice.
+> > 
+> > Signed-off-by: Chen Yu <yu.c.chen@intel.com>
+> > ---
+> > drivers/base/power/main.c                  |  2 ++
+> > drivers/net/ethernet/intel/e1000e/netdev.c | 14 +++++++++++++-
+> > 2 files changed, 15 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+> > index c7ac49042cee..9cd8abba8612 100644
+> > --- a/drivers/base/power/main.c
+> > +++ b/drivers/base/power/main.c
+> > @@ -580,6 +580,7 @@ bool dev_pm_skip_resume(struct device *dev)
+> > 
+> > 	return !dev->power.must_resume;
+> > }
+> > +EXPORT_SYMBOL_GPL(dev_pm_skip_resume);
+> 
+> I don't think it's a good idea to use this predicate out side of PM core, must_resume may change during suspend process.
+> 
+The dev_pm_skip_resume() is used during system resume, not during suspend, so
+there would be no race condition I suppose?
+> > 
+> > /**
+> >  * device_resume_noirq - Execute a "noirq resume" callback for given device.
+> > @@ -2010,3 +2011,4 @@ bool dev_pm_skip_suspend(struct device *dev)
+> > 	return dev_pm_test_driver_flags(dev, DPM_FLAG_SMART_SUSPEND) &&
+> > 		pm_runtime_status_suspended(dev);
+> > }
+> > +EXPORT_SYMBOL_GPL(dev_pm_skip_suspend);
+> > diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> > index b30f00891c03..d79fddabc553 100644
+> > --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> > +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> > @@ -6965,6 +6965,14 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
+> > 	struct e1000_hw *hw = &adapter->hw;
+> > 	int rc;
+> > 
+> > +	/* Runtime suspended means that there is no wired connection
+> > +	 * and it has nothing to do with WOL that, we don't need to
+> > +	 * adjust the WOL settings. So it is safe to put NIC in
+> > +	 * runtime suspend while doing system suspend.
+> > +	 */
+> 
+> What about plugging ethernet cable and using WoL after system is suspended?
+> Commit "e1000e: Exclude device from suspend direct complete optimization" was to address that scenario.
+> 
+Yes, this is what I concerned previously. So in order to support this case,
+let's adjust this by checking
+	if (device_may_wakeup() && dev_pm_skip_suspend())
+
+so that if the user has disabled WOL via sysfs then we do not fall
+into this optimization
+commit 6bf6be1127f7 ("e1000e: Do not wake up the system via WOL if
+device wakeup is disabled")
+> > +	if (dev_pm_skip_suspend(dev))
+> > +		return 0;
+> > +
+> > 	e1000e_flush_lpic(pdev);
+> > 
+> > 	e1000e_pm_freeze(dev);
+> > @@ -6989,6 +6997,9 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
+> > 	struct e1000_hw *hw = &adapter->hw;
+> > 	int rc;
+> > 
+> > +	if (dev_pm_skip_resume(dev))
+> > +		return 0;
+> > +
+> > 	/* Introduce S0ix implementation */
+> > 	if (hw->mac.type >= e1000_pch_cnp &&
+> > 	    !e1000e_check_me(hw->adapter->pdev->device))
+> > @@ -7665,7 +7676,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> > 
+> > 	e1000_print_device_info(adapter);
+> > 
+> > -	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+> > +	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE |
+> > +				DPM_FLAG_SMART_SUSPEND | DPM_FLAG_MAY_SKIP_RESUME);
+> > 
+> > 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+> > 		pm_runtime_put_noidle(&pdev->dev);
+> 
+> Also, most e1000e device on modern platforms doesn't runtime suspend at all after commit "e1000e: Disable runtime PM on CNP+".
+>
+Yes, I did some hack on this to make runtime suspend work.
+As we do have more newer NICs to come, how about removing the
+restriction of runtime suspend and let the user determine whether
+to enable the runtime suspend via echo 'on' or 'auto' via
+sysfs's control.
+
+thanks,
+Chenyu
+> Kai-Heng
+> 
+> > -- 
+> > 2.25.1
+> > 
+> 
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
