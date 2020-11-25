@@ -1,63 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B42EF2C3DB6
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Nov 2020 11:33:50 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8171E2C45AB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Nov 2020 17:47:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B0CA82A0D9;
-	Wed, 25 Nov 2020 10:33:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BDD0287349;
+	Wed, 25 Nov 2020 16:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vxD4VDODVP+9; Wed, 25 Nov 2020 10:33:47 +0000 (UTC)
+	with ESMTP id MER+XMgz1Ojb; Wed, 25 Nov 2020 16:47:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3EFB02DE22;
-	Wed, 25 Nov 2020 10:33:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3D5B687322;
+	Wed, 25 Nov 2020 16:47:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A56C41BF387
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E14FF1BF2CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 07:05:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7A537874E8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DAAFF873D1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 07:05:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kk3awqkax31E for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Nov 2020 10:33:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 15B42874A6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 10:33:40 +0000 (UTC)
-IronPort-SDR: 7Jg83DvWCSThopQhXg6HDy9U48FfNg8ETeHfYgczvawDlD8OnXbKNFJXiG/j1ahIt0iAG4HnBQ
- q0VH2Zx8KWNw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9815"; a="172206721"
-X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="172206721"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2020 02:33:39 -0800
-IronPort-SDR: kgFdwzDjaCjTePqLtv3qM0zDyJMO97PGMrtspdJh6OVspNGe13kR7OS5Jg0x1x2zAXTMdTD81+
- YOvIlbeTPNWA==
-X-IronPort-AV: E=Sophos;i="5.78,368,1599548400"; d="scan'208";a="547221998"
-Received: from chenyu-office.sh.intel.com ([10.239.158.173])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2020 02:33:36 -0800
-Date: Wed, 25 Nov 2020 18:36:12 +0800
-From: Chen Yu <yu.c.chen@intel.com>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Message-ID: <20201125103612.GA17700@chenyu-office.sh.intel.com>
-References: <20201124153221.11265-1-yu.c.chen@intel.com>
- <8BA4D1E1-DACF-4E84-A5B8-75A7CEA65F98@canonical.com>
+ with ESMTP id CdQE1acXkUBB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Nov 2020 07:05:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
+ [96.44.175.130])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 24B48873CF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 07:05:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by bedivere.hansenpartnership.com (Postfix) with ESMTP id 313DE1280408;
+ Tue, 24 Nov 2020 23:05:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606287940;
+ bh=PpyvloC8ztllb7q8ndtGKJRs78ChiB3jg6tteM0zYL0=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=DUjk2u5mMxkvusJZ7TUknDmT+9jEkjAK5Du54VYrLnX3ZVAsqbXKInJF3+bjbWxe1
+ sPTOm9Jo8O4FiM37EcbSbGJ09Z6i3toRLj70BanOqmx/doOouqQw1ofRfirJ315HKN
+ ACp6UaCD/rMf1rqLOvr/v7W+FqOYQZREI5LkhaoU=
+Received: from bedivere.hansenpartnership.com ([127.0.0.1])
+ by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id 8AuMCu2vLv9Z; Tue, 24 Nov 2020 23:05:40 -0800 (PST)
+Received: from jarvis.int.hansenpartnership.com (unknown
+ [IPv6:2601:600:8280:66d1::527])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id A873112803EC;
+ Tue, 24 Nov 2020 23:05:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=hansenpartnership.com; s=20151216; t=1606287940;
+ bh=PpyvloC8ztllb7q8ndtGKJRs78ChiB3jg6tteM0zYL0=;
+ h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
+ b=DUjk2u5mMxkvusJZ7TUknDmT+9jEkjAK5Du54VYrLnX3ZVAsqbXKInJF3+bjbWxe1
+ sPTOm9Jo8O4FiM37EcbSbGJ09Z6i3toRLj70BanOqmx/doOouqQw1ofRfirJ315HKN
+ ACp6UaCD/rMf1rqLOvr/v7W+FqOYQZREI5LkhaoU=
+Message-ID: <a841536fe65bb33f1c72ce2455a6eb47a0107565.camel@HansenPartnership.com>
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+To: Kees Cook <keescook@chromium.org>
+Date: Tue, 24 Nov 2020 23:05:35 -0800
+In-Reply-To: <202011241327.BB28F12F6@keescook>
+References: <202011201129.B13FDB3C@keescook>
+ <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <202011220816.8B6591A@keescook>
+ <9b57fd4914b46f38d54087d75e072d6e947cb56d.camel@HansenPartnership.com>
+ <ca071decb87cc7e905411423c05a48f9fd2f58d7.camel@perches.com>
+ <0147972a72bc13f3629de8a32dee6f1f308994b5.camel@HansenPartnership.com>
+ <d8d1e9add08cdd4158405e77762d4946037208f8.camel@perches.com>
+ <dbd2cb703ed9eefa7dde9281ea26ab0f7acc8afe.camel@HansenPartnership.com>
+ <20201123130348.GA3119@embeddedor>
+ <8f5611bb015e044fa1c0a48147293923c2d904e4.camel@HansenPartnership.com>
+ <202011241327.BB28F12F6@keescook>
+User-Agent: Evolution 3.34.4 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8BA4D1E1-DACF-4E84-A5B8-75A7CEA65F98@canonical.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Assign DPM_FLAG_SMART_SUSPEND
- and DPM_FLAG_MAY_SKIP_RESUME to speed up s2ram
+X-Mailman-Approved-At: Wed, 25 Nov 2020 16:47:02 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
+ Clang
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,137 +92,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Len Brown <len.brown@intel.com>, Linux PM list <linux-pm@vger.kernel.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
+Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
+ target-devel@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>,
+ linux-iio@vger.kernel.org, samba-technical@lists.samba.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-fbdev@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linux-ide@vger.kernel.org, dm-devel@redhat.com, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, GR-everest-linux-l2@marvell.com,
+ wcn36xx@lists.infradead.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ linux-scsi@vger.kernel.org, linux-acpi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, oss-drivers@netronome.com,
+ linux-atm-general@lists.sourceforge.net, ceph-devel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ cluster-devel@redhat.com, usb-storage@lists.one-eyed-alien.net,
+ linux-mmc@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ linux-ext4@vger.kernel.org, virtualization@lists.linux-foundation.org,
+ netfilter-devel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-sctp@vger.kernel.org, reiserfs-devel@vger.kernel.org,
+ linux-geode@lists.infradead.org, linux-block@vger.kernel.org,
+ linux-gpio@vger.kernel.org, op-tee@lists.trustedfirmware.org,
+ linux-mediatek@lists.infradead.org, xen-devel@lists.xenproject.org,
+ nouveau@lists.freedesktop.org, linux-hams@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-can@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-nfs@vger.kernel.org,
+ GR-Linux-NIC-Dev@marvell.com, linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-decnet-user@lists.sourceforge.net, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, x86@kernel.org,
+ linux-hardening@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Kai-Heng,
-On Wed, Nov 25, 2020 at 01:17:28AM +0800, Kai-Heng Feng wrote:
-> Hi Yu,
+On Tue, 2020-11-24 at 13:32 -0800, Kees Cook wrote:
+> On Mon, Nov 23, 2020 at 08:31:30AM -0800, James Bottomley wrote:
+> > Really, no ... something which produces no improvement has no value
+> > at all ... we really shouldn't be wasting maintainer time with it
+> > because it has a cost to merge.  I'm not sure we understand where
+> > the balance lies in value vs cost to merge but I am confident in
+> > the zero value case.
 > 
-> > On Nov 24, 2020, at 23:32, Chen Yu <yu.c.chen@intel.com> wrote:
-> > 
-> > The NIC is put in runtime suspend status when there is no wire connected.
-> > As a result, it is safe to keep this NIC in runtime suspended during s2ram
-> > because the system does not rely on the NIC plug event nor WOL to wake up
-> > the system. Unlike the s2idle, s2ram does not need to manipulate S0ix settings
-> > during suspend.
-> 
-> Please see below for the reason why I explicitly disable direct-complete in the driver.
-> 
-Okay.
-> > 
-> > This patch assigns DPM_FLAG_SMART_SUSPEND and DPM_FLAG_MAY_SKIP_RESUME
-> > to the e1000e driver so that the s2ram could skip the .suspend_late(),
-> > .suspend_noirq() and .resume_noirq() .resume_early() when possible.
-> > Also skip .suspend() and .resume() if dev_pm_skip_suspend() and
-> > dev_pm_skip_resume() return true, so as to speed up the s2ram.
-> 
-> If we really want direct-complete here, maybe always set current WoL setting in runtime suspend routine?
-> 
-Indeed, that would be a choice.
-> > 
-> > Signed-off-by: Chen Yu <yu.c.chen@intel.com>
-> > ---
-> > drivers/base/power/main.c                  |  2 ++
-> > drivers/net/ethernet/intel/e1000e/netdev.c | 14 +++++++++++++-
-> > 2 files changed, 15 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
-> > index c7ac49042cee..9cd8abba8612 100644
-> > --- a/drivers/base/power/main.c
-> > +++ b/drivers/base/power/main.c
-> > @@ -580,6 +580,7 @@ bool dev_pm_skip_resume(struct device *dev)
-> > 
-> > 	return !dev->power.must_resume;
-> > }
-> > +EXPORT_SYMBOL_GPL(dev_pm_skip_resume);
-> 
-> I don't think it's a good idea to use this predicate out side of PM core, must_resume may change during suspend process.
-> 
-The dev_pm_skip_resume() is used during system resume, not during suspend, so
-there would be no race condition I suppose?
-> > 
-> > /**
-> >  * device_resume_noirq - Execute a "noirq resume" callback for given device.
-> > @@ -2010,3 +2011,4 @@ bool dev_pm_skip_suspend(struct device *dev)
-> > 	return dev_pm_test_driver_flags(dev, DPM_FLAG_SMART_SUSPEND) &&
-> > 		pm_runtime_status_suspended(dev);
-> > }
-> > +EXPORT_SYMBOL_GPL(dev_pm_skip_suspend);
-> > diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> > index b30f00891c03..d79fddabc553 100644
-> > --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> > +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> > @@ -6965,6 +6965,14 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
-> > 	struct e1000_hw *hw = &adapter->hw;
-> > 	int rc;
-> > 
-> > +	/* Runtime suspended means that there is no wired connection
-> > +	 * and it has nothing to do with WOL that, we don't need to
-> > +	 * adjust the WOL settings. So it is safe to put NIC in
-> > +	 * runtime suspend while doing system suspend.
-> > +	 */
-> 
-> What about plugging ethernet cable and using WoL after system is suspended?
-> Commit "e1000e: Exclude device from suspend direct complete optimization" was to address that scenario.
-> 
-Yes, this is what I concerned previously. So in order to support this case,
-let's adjust this by checking
-	if (device_may_wakeup() && dev_pm_skip_suspend())
+> What? We can't measure how many future bugs aren't introduced because
+> the kernel requires explicit case flow-control statements for all new
+> code.
 
-so that if the user has disabled WOL via sysfs then we do not fall
-into this optimization
-commit 6bf6be1127f7 ("e1000e: Do not wake up the system via WOL if
-device wakeup is disabled")
-> > +	if (dev_pm_skip_suspend(dev))
-> > +		return 0;
-> > +
-> > 	e1000e_flush_lpic(pdev);
-> > 
-> > 	e1000e_pm_freeze(dev);
-> > @@ -6989,6 +6997,9 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
-> > 	struct e1000_hw *hw = &adapter->hw;
-> > 	int rc;
-> > 
-> > +	if (dev_pm_skip_resume(dev))
-> > +		return 0;
-> > +
-> > 	/* Introduce S0ix implementation */
-> > 	if (hw->mac.type >= e1000_pch_cnp &&
-> > 	    !e1000e_check_me(hw->adapter->pdev->device))
-> > @@ -7665,7 +7676,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-> > 
-> > 	e1000_print_device_info(adapter);
-> > 
-> > -	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
-> > +	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE |
-> > +				DPM_FLAG_SMART_SUSPEND | DPM_FLAG_MAY_SKIP_RESUME);
-> > 
-> > 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
-> > 		pm_runtime_put_noidle(&pdev->dev);
-> 
-> Also, most e1000e device on modern platforms doesn't runtime suspend at all after commit "e1000e: Disable runtime PM on CNP+".
->
-Yes, I did some hack on this to make runtime suspend work.
-As we do have more newer NICs to come, how about removing the
-restriction of runtime suspend and let the user determine whether
-to enable the runtime suspend via echo 'on' or 'auto' via
-sysfs's control.
+No but we can measure how vulnerable our current coding habits are to
+the mistake this warning would potentially prevent.  I don't think it's
+wrong to extrapolate that if we had no instances at all of prior coding
+problems we likely wouldn't have any in future either making adopting
+the changes needed to enable the warning valueless ... that's the zero
+value case I was referring to above.
 
-thanks,
-Chenyu
-> Kai-Heng
+Now, what we have seems to be about 6 cases (at least what's been shown
+in this thread) where a missing break would cause potentially user
+visible issues.  That means the value of this isn't zero, but it's not
+a no-brainer massive win either.  That's why I think asking what we've
+invested vs the return isn't a useless exercise.
+
+> We already enable -Wimplicit-fallthrough globally, so that's not the
+> discussion. The issue is that Clang is (correctly) even more strict
+> than GCC for this, so these are the remaining ones to fix for full
+> Clang coverage too.
 > 
-> > -- 
-> > 2.25.1
-> > 
-> 
+> People have spent more time debating this already than it would have
+> taken to apply the patches. :)
+
+You mean we've already spent 90% of the effort to come this far so we
+might as well go the remaining 10% because then at least we get some
+return? It's certainly a clinching argument in defence procurement ...
+
+> This is about robustness and language wrangling. It's a big code-
+> base, and this is the price of our managing technical debt for
+> permanent robustness improvements. (The numbers I ran from Gustavo's
+> earlier patches were that about 10% of the places adjusted were
+> identified as legitimate bugs being fixed. This final series may be
+> lower, but there are still bugs being found from it -- we need to
+> finish this and shut the door on it for good.)
+
+I got my six patches by analyzing the lwn.net report of the fixes that
+was cited which had 21 of which 50% didn't actually change the emitted
+code, and 25% didn't have a user visible effect.
+
+But the broader point I'm making is just because the compiler people
+come up with a shiny new warning doesn't necessarily mean the problem
+it's detecting is one that causes us actual problems in the code base. 
+I'd really be happier if we had a theory about what classes of CVE or
+bug we could eliminate before we embrace the next new warning.
+
+James
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
