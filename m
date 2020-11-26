@@ -2,44 +2,44 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F250A2C4C4A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Nov 2020 01:48:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E48C42C4C4B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Nov 2020 01:48:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9B60387618;
-	Thu, 26 Nov 2020 00:48:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1731087619;
+	Thu, 26 Nov 2020 00:48:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aAVEM9GRVLVG; Thu, 26 Nov 2020 00:48:14 +0000 (UTC)
+	with ESMTP id K6o6ZJEL4MmD; Thu, 26 Nov 2020 00:48:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4AC85875C7;
+	by whitealder.osuosl.org (Postfix) with ESMTP id F1C988761B;
 	Thu, 26 Nov 2020 00:48:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 034E51BF869
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 23:22:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B54F1BF9B2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Nov 2020 00:30:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F1C0A870CF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 23:22:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 94F9287751
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Nov 2020 00:30:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pzN2r_3DFAuD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Nov 2020 23:21:59 +0000 (UTC)
+ with ESMTP id mAmq+V3Z+rXv for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Nov 2020 00:30:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from kvm5.telegraphics.com.au (kvm5.telegraphics.com.au
  [98.124.60.144])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EAD3286FFF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Nov 2020 23:21:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 812A58774D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Nov 2020 00:30:41 +0000 (UTC)
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by kvm5.telegraphics.com.au (Postfix) with ESMTP id 414EA2A490;
- Wed, 25 Nov 2020 18:21:54 -0500 (EST)
-Date: Thu, 26 Nov 2020 10:21:54 +1100 (AEDT)
+ by kvm5.telegraphics.com.au (Postfix) with ESMTP id 742A42A495;
+ Wed, 25 Nov 2020 19:30:37 -0500 (EST)
+Date: Thu, 26 Nov 2020 11:30:36 +1100 (AEDT)
 From: Finn Thain <fthain@telegraphics.com.au>
 To: Nick Desaulniers <ndesaulniers@google.com>
 In-Reply-To: <CAKwvOdna5Zj_O=sB7Q0jHZX0BJSaakX=ZyftwQ_3=L3-ZB54XQ@mail.gmail.com>
-Message-ID: <alpine.LNX.2.23.453.2011260918510.6@nippy.intranet>
+Message-ID: <alpine.LNX.2.23.453.2011261031290.6@nippy.intranet>
 References: <202011201129.B13FDB3C@keescook>
  <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <202011220816.8B6591A@keescook>
@@ -122,43 +122,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+
+
 On Wed, 25 Nov 2020, Nick Desaulniers wrote:
 
-> On Wed, Nov 25, 2020 at 1:33 PM Finn Thain <fthain@telegraphics.com.au> 
-> wrote:
+> On Wed, Nov 25, 2020 at 1:33 PM Finn Thain <fthain@telegraphics.com.au> wrote:
 > >
 > > Or do you think that a codebase can somehow satisfy multiple checkers 
 > > and their divergent interpretations of the language spec?
 > 
-> Have we found any cases yet that are divergent? I don't think so.
+> Have we found any cases yet that are divergent? I don't think so. 
 
-There are many implementations, so I think you are guaranteed to find more 
-divergence if you look. That's because the spec is full of language like 
-this: "implementations are encouraged not to emit a diagnostic" and 
-"implementations are encouraged to issue a diagnostic".
+You mean, aside from -Wimplicit-fallthrough? I'm glad you asked. How about 
+-Wincompatible-pointer-types and -Wframe-larger-than?
 
-Some implementations will decide to not emit (under the premise that vast 
-amounts of existing code would have to get patched until the compiler goes 
-quiet) whereas other implementations will decide to emit (under the 
-premise that the author is doing the checking and not the janitor or the 
-packager).
+All of the following files have been affected by divergent diagnostics 
+produced by clang and gcc.
 
-> It sounds to me like GCC's cases it warns for is a subset of Clang's. 
-> Having additional coverage with Clang then should ensure coverage for 
-> both.
-> 
+arch/arm64/include/asm/neon-intrinsics.h
+arch/powerpc/xmon/Makefile
+drivers/gpu/drm/i915/Makefile
+drivers/gpu/drm/i915/i915_utils.h
+drivers/staging/media/atomisp/pci/atomisp_subdev.c
+fs/ext4/super.c
+include/trace/events/qla.h
+net/mac80211/rate.c
+tools/lib/string.c
+tools/perf/util/setup.py
+tools/scripts/Makefile.include
 
-If that claim were true, the solution would be simple. (It's not.)
+And if I searched for 'smatch' or 'coverity' instead of 'clang' I'd 
+probably find more divergence.
 
-For the benefit of projects that enable -Werror and projects that 
-nominated gcc as their preferred compiler, clang would simply need a flag 
-to enable conformance with gcc by suppressing those additional warnings 
-that clang would normally produce.
+Here are some of the relevant commits.
 
-This simple solution is, of course, completely unworkable, since it would 
-force clang to copy some portion of gcc's logic (rewritten under LLVM's 
-unique license) and then to track future changes to that portion of gcc 
-indefinitely.
+0738c8b5915c7eaf1e6007b441008e8f3b460443
+9c87156cce5a63735d1218f0096a65c50a7a32aa
+babaab2f473817f173a2d08e410c25abf5ed0f6b
+065e5e559555e2f100bc95792a8ef1b609bbe130
+93f56de259376d7e4fff2b2d104082e1fa66e237
+6c4798d3f08b81c2c52936b10e0fa872590c96ae
+b7a313d84e853049062011d78cb04b6decd12f5c
+093b75ef5995ea35d7f6bdb6c7b32a42a1999813
+
+And before you object, "but -Wconstant-logical-operand is a clang-only 
+warning! it can't be divergent with gcc!", consider that the special cases 
+added to deal with clang-only warnings have to be removed when gcc catches 
+up, which is more churn. Now multiply that by the number of checkers you 
+care about.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
