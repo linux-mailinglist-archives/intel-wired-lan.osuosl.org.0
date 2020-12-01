@@ -2,96 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E4382CA736
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Dec 2020 16:40:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27B662CA717
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Dec 2020 16:31:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 50D2886F86;
-	Tue,  1 Dec 2020 15:40:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8F116878A8;
+	Tue,  1 Dec 2020 15:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZWyOjfRJnHRa; Tue,  1 Dec 2020 15:40:03 +0000 (UTC)
+	with ESMTP id qrnBlRqCXjIZ; Tue,  1 Dec 2020 15:31:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8281186EAC;
-	Tue,  1 Dec 2020 15:40:02 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8363C87854;
+	Tue,  1 Dec 2020 15:31:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9F80B1BF290
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 14:11:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E6251BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:31:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9A1FC869F7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 14:11:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 935D5877D0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:31:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iOBLWJLTufcL for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Dec 2020 14:11:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CE7F0869F4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 14:11:54 +0000 (UTC)
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1Dt8Jx186047;
- Tue, 1 Dec 2020 14:11:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=CVxJrJvszPiYRoVvo8QMoaANjq0rT1w3VAIVepGqitY=;
- b=Q8Pq03hifJp4hxcZYQuiJvbKTKZMKP2mLNTS1aHW6hAxlDpObu2xNteC6Yj/L36I1kmY
- WSfMJZMdSk8bN2J9+UmYiF9MWo5KvhVT37I7ctRf5KKEocNW4v8PFVCDeiU3k6pn404k
- Igra+V15xZpvhIpriUlAo6fac2mI985JVt4CqtU5vfkzzkfANqieFePUQJBzO6eRndXt
- r4RGB+aUeJDKgHUaSwwmUD5k/B0oZ1T+RFudNU+Upzz4yF4kbfdExpcaXwIzXbiJCqdd
- NFMbLYQpnYBf2dU4wooUhfeXNwTuWm/ESbR6RxVNN2eeS+ZfeOwZNtuQUXq4Dn72Z2fB vg== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 353c2attky-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 14:11:31 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1Du5hA003823;
- Tue, 1 Dec 2020 14:09:31 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by aserp3020.oracle.com with ESMTP id 3540ey0nwv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 01 Dec 2020 14:09:31 +0000
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B1E8IaF039759;
- Tue, 1 Dec 2020 14:09:29 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 3540ey0nvu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 01 Dec 2020 14:09:29 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0B1E9NOp018011;
- Tue, 1 Dec 2020 14:09:24 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 01 Dec 2020 06:09:23 -0800
-Date: Tue, 1 Dec 2020 17:08:49 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nick Desaulniers <ndesaulniers@google.com>
-Message-ID: <20201201140849.GH2767@kadam>
-References: <cover.1605896059.git.gustavoars@kernel.org>
- <20201120105344.4345c14e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011201129.B13FDB3C@keescook>
- <20201120115142.292999b2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <202011220816.8B6591A@keescook>
- <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
+ with ESMTP id P4lObRf1IsSR for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Dec 2020 15:31:21 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 31A5687765
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:31:21 +0000 (UTC)
+Received: from [192.168.0.4] (ip5f5af43d.dynamic.kabel-deutschland.de
+ [95.90.244.61])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id A9B7720225BD3;
+ Tue,  1 Dec 2020 16:31:19 +0100 (CET)
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Henry Tieman <henry.w.tieman@intel.com>
+References: <20201121003835.48424-1-anthony.l.nguyen@intel.com>
+ <20201121003835.48424-3-anthony.l.nguyen@intel.com>
+Message-ID: <446e74e7-5e33-0e68-a187-4b114389abef@molgen.mpg.de>
+Date: Tue, 1 Dec 2020 16:31:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAKwvOdntVfXj2WRR5n6Kw7BfG7FdKpTeHeh5nPu5AzwVMhOHTg@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- lowpriorityscore=0
- clxscore=1015 bulkscore=0 mlxlogscore=924 phishscore=0 malwarescore=0
- spamscore=0 adultscore=0 mlxscore=0 priorityscore=1501 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012010090
-X-Mailman-Approved-At: Tue, 01 Dec 2020 15:39:59 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
- Clang
+In-Reply-To: <20201121003835.48424-3-anthony.l.nguyen@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [net 3/6] ice: update the number of available
+ RSS queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,117 +63,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, bridge@lists.linux-foundation.org,
- target-devel@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-fbdev@vger.kernel.org,
- dri-devel <dri-devel@lists.freedesktop.org>,
- virtualization@lists.linux-foundation.org,
- Linux Memory Management List <linux-mm@kvack.org>, linux-ide@vger.kernel.org,
- dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
- GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
- linux-i3c@lists.infradead.org, linux1394-devel@lists.sourceforge.net,
- linux-afs@lists.infradead.org, linux-watchdog@vger.kernel.org,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- rds-devel@oss.oracle.com, linux-scsi@vger.kernel.org,
- linux-acpi@vger.kernel.org, linux-rdma@vger.kernel.org,
- oss-drivers@netronome.com, linux-atm-general@lists.sourceforge.net,
- ceph-devel@vger.kernel.org, amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
- usb-storage@lists.one-eyed-alien.net, linux-mmc@vger.kernel.org,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-input@vger.kernel.org,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- linux-ext4@vger.kernel.org, netfilter-devel@vger.kernel.org,
- linux-media@vger.kernel.org, Kees Cook <keescook@chromium.org>,
- selinux@vger.kernel.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- intel-gfx@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- reiserfs-devel@vger.kernel.org, linux-geode@lists.infradead.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, drbd-dev@tron.linbit.com,
- linux-hams@vger.kernel.org, Nathan Chancellor <natechancellor@gmail.com>,
- linux-can@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-hwmon@vger.kernel.org,
- "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
- linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- nouveau@lists.freedesktop.org, Network Development <netdev@vger.kernel.org>,
- linux-decnet-user@lists.sourceforge.net, samba-technical@lists.samba.org,
- LKML <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-security-module@vger.kernel.org, linux-usb@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>, patches@opensource.cirrus.com,
- Joe Perches <joe@perches.com>, linux-integrity@vger.kernel.org,
- linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 23, 2020 at 05:32:51PM -0800, Nick Desaulniers wrote:
-> On Sun, Nov 22, 2020 at 8:17 AM Kees Cook <keescook@chromium.org> wrote:
-> >
-> > On Fri, Nov 20, 2020 at 11:51:42AM -0800, Jakub Kicinski wrote:
-> > > If none of the 140 patches here fix a real bug, and there is no change
-> > > to machine code then it sounds to me like a W=2 kind of a warning.
-> >
-> > FWIW, this series has found at least one bug so far:
-> > https://lore.kernel.org/lkml/CAFCwf11izHF=g1mGry1fE5kvFFFrxzhPSM6qKAO8gxSp=Kr_CQ@mail.gmail.com/
+Dear Henry, dear Tony,
+
+
+Am 21.11.20 um 01:38 schrieb Tony Nguyen:
+> From: Henry Tieman <henry.w.tieman@intel.com>
 > 
-> So looks like the bulk of these are:
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     break;
-> }
-
-This should not generate a warning.
-
+> It was possible to have Rx queues that were not available for use
+> by RSS. This would happen when increasing the number of Rx queues
+> while there was a user defined RSS LUT.
 > 
-> I have a patch that fixes those up for clang:
-> https://reviews.llvm.org/D91895
+> Always update the number of available RSS queues when changing the
+> number of Rx queues.
 > 
-> There's 3 other cases that don't quite match between GCC and Clang I
-> observe in the kernel:
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     goto y;
-> }
-> y:;
-
-This should generate a warning.
-
+> Fixes: 87324e747fde ("ice: Implement ethtool ops for channels")
+> Signed-off-by: Henry Tieman <henry.w.tieman@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_ethtool.c | 31 ++++++++++++++------
+>   1 file changed, 22 insertions(+), 9 deletions(-)
 > 
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     return;
-> }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index 9e8e9531cd87..8515a3a7515f 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -3321,6 +3321,18 @@ ice_get_channels(struct net_device *dev, struct ethtool_channels *ch)
+>   	ch->max_other = ch->other_count;
+>   }
+>   
+> +/**
+> + * ice_get_valid_rss_size - return valid number of RSS queues
+> + * @hw: pointer to the HW structure
+> + * @new_size: requested RSS queues
+> + */
+> +static int ice_get_valid_rss_size(struct ice_hw *hw, int new_size)
+> +{
+> +	struct ice_hw_common_caps *caps = &hw->func_caps.common_cap;
+> +
+> +	return min_t(int, new_size, BIT(caps->rss_table_entry_width));
+> +}
+> +
+>   /**
+>    * ice_vsi_set_dflt_rss_lut - set default RSS LUT with requested RSS size
+>    * @vsi: VSI to reconfigure RSS LUT on
+> @@ -3348,14 +3360,10 @@ static int ice_vsi_set_dflt_rss_lut(struct ice_vsi *vsi, int req_rss_size)
+>   		return -ENOMEM;
+>   
+>   	/* set RSS LUT parameters */
+> -	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+> +	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags))
+>   		vsi->rss_size = 1;
+> -	} else {
+> -		struct ice_hw_common_caps *caps = &hw->func_caps.common_cap;
+> -
+> -		vsi->rss_size = min_t(int, req_rss_size,
+> -				      BIT(caps->rss_table_entry_width));
+> -	}
+> +	else
+> +		vsi->rss_size = ice_get_valid_rss_size(hw, req_rss_size);
+>   
+>   	/* create/set RSS LUT */
+>   	ice_fill_rss_lut(lut, vsi->rss_table_size, vsi->rss_size);
+> @@ -3434,8 +3442,13 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+>   
+>   	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
+>   
+> -	if (new_rx && !netif_is_rxfh_configured(dev))
+> -		return ice_vsi_set_dflt_rss_lut(vsi, new_rx);
+> +	if (new_rx) {
+> +		if (!netif_is_rxfh_configured(dev))
+> +			return ice_vsi_set_dflt_rss_lut(vsi, new_rx);
+> +
+> +		/* Update rss_size due to change in Rx queues */
+> +		vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
+> +	}
 
-Warn for this.
+Why not unconditionally call
+
+     vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
+
+as the function handles the case `new_rx = 0`, right?
+
+`ice_vsi_recfg_qs(vsi, new_rx, new_tx);` also does not check `new_tx` 
+for example.
+
+>   
+>   	return 0;
+>   }
 
 
-> 
-> switch (x) {
->   case 0:
->     ++x;
->   default:
->     ;
-> }
+Kind regards,
 
-Don't warn for this.
-
-If adding a break statement changes the flow of the code then warn about
-potentially missing break statements, but if it doesn't change anything
-then don't warn about it.
-
-regards,
-dan carpenter
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
