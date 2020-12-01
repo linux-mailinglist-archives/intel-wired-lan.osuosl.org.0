@@ -1,53 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81A6F2CA6C1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Dec 2020 16:15:33 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57E9A2CA738
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Dec 2020 16:40:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3378087543;
-	Tue,  1 Dec 2020 15:15:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D1222204BD;
+	Tue,  1 Dec 2020 15:40:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5PwaS6zXa9PO; Tue,  1 Dec 2020 15:15:31 +0000 (UTC)
+	with ESMTP id 0KNM0DIMEZXC; Tue,  1 Dec 2020 15:40:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9522787497;
-	Tue,  1 Dec 2020 15:15:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B55A8274B0;
+	Tue,  1 Dec 2020 15:40:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 512711BF38C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:15:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B0751BF385
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 05:53:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4CDA887534
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:15:30 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7B540874D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 05:53:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 01bN-ys+Dki2 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Dec 2020 15:15:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 97E5787497
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 15:15:28 +0000 (UTC)
-Received: from [192.168.0.4] (ip5f5af43d.dynamic.kabel-deutschland.de
- [95.90.244.61])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 6773720225BD1;
- Tue,  1 Dec 2020 16:15:25 +0100 (CET)
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <20201121003835.48424-1-anthony.l.nguyen@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <3c992278-b907-29f0-6679-8174df2250fa@molgen.mpg.de>
-Date: Tue, 1 Dec 2020 16:15:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+ with ESMTP id kynHRjTq85ZM for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Dec 2020 05:53:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2130.oracle.com (aserp2130.oracle.com [141.146.126.79])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3DEA1874BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Dec 2020 05:53:20 +0000 (UTC)
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B15n67q107471;
+ Tue, 1 Dec 2020 05:53:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : mime-version :
+ content-type; s=corp-2020-01-29;
+ bh=l9ihS9O8ty7fvCGsyg6t+FL2UWzq+Pp7wI7g9M3fu94=;
+ b=emDPbOhPomsDJ0NVhkgalKaWcDmTVt43uxmasZhRdsIKDAK5SyUn3ZBbDT0tfjc2Ub+G
+ pwnVB+2L6jYArSQUwoKsFjxw+gIeAIQd1agInCI9m5zu6sstYek99cFlGrF83pfAMoYp
+ 7h3VW08t/kH06cHx+UsVCvNai9zlonapT50haza8ExqU3V0ifCJ/7nW0lmA/qRSavM+P
+ eE0d7ezZdfPLepa71ISDd/u3VXj3GbiZhoaxq0dsKdiEuu46H687kMfk2k9ooRtVL0+n
+ yN1cC747fo++ObKGg9Es3E0DMkXRjQCXCIESHdIfuri0sdDNQNO6hiI2IHC3bOw+gche Nw== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by aserp2130.oracle.com with ESMTP id 353c2aru96-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 01 Dec 2020 05:53:05 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B15oGDF104852;
+ Tue, 1 Dec 2020 05:53:04 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3020.oracle.com with ESMTP id 3540arqfy6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 01 Dec 2020 05:53:04 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 0B15r2KY111063;
+ Tue, 1 Dec 2020 05:53:02 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 3540arqfwj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 01 Dec 2020 05:53:02 +0000
+Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0B15qbsa005213;
+ Tue, 1 Dec 2020 05:52:40 GMT
+Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 30 Nov 2020 21:52:37 -0800
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1h7p6gjkk.fsf@ca-mkp.ca.oracle.com>
+References: <cover.1605896059.git.gustavoars@kernel.org>
+Date: Tue, 01 Dec 2020 00:52:27 -0500
+In-Reply-To: <cover.1605896059.git.gustavoars@kernel.org> (Gustavo
+ A. R. Silva's message of "Fri, 20 Nov 2020 12:21:39 -0600")
 MIME-Version: 1.0
-In-Reply-To: <20201121003835.48424-1-anthony.l.nguyen@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [net 1/6] ice: fix FDir IPv6 flexbyte
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ lowpriorityscore=0
+ clxscore=1011 bulkscore=0 mlxlogscore=289 phishscore=0 malwarescore=0
+ spamscore=0 adultscore=0 mlxscore=0 priorityscore=1501 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012010039
+X-Mailman-Approved-At: Tue, 01 Dec 2020 15:39:59 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 000/141] Fix fall-through warnings for
+ Clang
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,44 +100,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: alsa-devel@alsa-project.org, linux-atm-general@lists.sourceforge.net,
+ reiserfs-devel@vger.kernel.org, nouveau@lists.freedesktop.org,
+ linux-iio@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org,
+ Nathan Chancellor <natechancellor@gmail.com>, linux-ide@vger.kernel.org,
+ dm-devel@redhat.com, keyrings@vger.kernel.org, linux-mtd@lists.infradead.org,
+ GR-everest-linux-l2@marvell.com, wcn36xx@lists.infradead.org,
+ samba-technical@lists.samba.org, linux-i3c@lists.infradead.org,
+ linux1394-devel@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ usb-storage@lists.one-eyed-alien.net, target-devel@vger.kernel.org,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ oss-drivers@netronome.com, bridge@lists.linux-foundation.org,
+ linux-security-module@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, cluster-devel@redhat.com,
+ linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ Miguel Ojeda <ojeda@kernel.org>, tipc-discussion@lists.sourceforge.net,
+ linux-ext4@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, selinux@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-geode@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
+ op-tee@lists.trustedfirmware.org, linux-mediatek@lists.infradead.org,
+ xen-devel@lists.xenproject.org, drbd-dev@tron.linbit.com,
+ linux-hams@vger.kernel.org, ceph-devel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ x86@kernel.org, linux-nfs@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
+ Kees Cook <keescook@chromium.org>, linux-mm@kvack.org, netdev@vger.kernel.org,
+ linux-decnet-user@lists.sourceforge.net, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-sctp@vger.kernel.org, linux-usb@vger.kernel.org,
+ netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
+ patches@opensource.cirrus.com, Joe Perches <joe@perches.com>,
+ linux-integrity@vger.kernel.org, linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBIZW5yeSwKCgpBbSAyMS4xMS4yMCB1bSAwMTozOCBzY2hyaWViIFRvbnkgTmd1eWVuOgo+
-IEZyb206IEhlbnJ5IFRpZW1hbiA8aGVucnkudy50aWVtYW5AaW50ZWwuY29tPgo+IAo+IFRoZSBw
-YWNrZXQgY2xhc3NpZmllciB3b3VsZCBvY2Nhc2lvbmFsbHkgbWlzcmVjb2duaXplIGFuIElQdjYg
-dHJhaW5pbmcKPiBwYWNrZXQgd2hlbiB0aGUgbmV4dCBwcm90b2NvbCBmaWVsZCB3YXMgMC4gVGhl
-IGNvcnJlY3QgdmFsdWUgZm9yCj4gdW5zcGVjaWZpZWQgcHJvdG9jb2wgaXMgSVBQUk9UT19OT05F
-Lgo+IAo+IEZpeGVzOiAxNjVkODBkNmFkYWIgKCJpY2U6IFN1cHBvcnQgSVB2NiBGbG93IERpcmVj
-dG9yIGZpbHRlcnMiKQo+IFNpZ25lZC1vZmYtYnk6IEhlbnJ5IFRpZW1hbiA8aGVucnkudy50aWVt
-YW5AaW50ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
-ZV9ldGh0b29sX2ZkaXIuYyB8IDggKysrKysrKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2Vy
-dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0b29sX2ZkaXIuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfZXRodG9vbF9mZGlyLmMKPiBpbmRleCAyZDI3ZjY2YWM4NTMuLjE5Mjcy
-OTU0NmJiZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X2V0aHRvb2xfZmRpci5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
-ZV9ldGh0b29sX2ZkaXIuYwo+IEBAIC0xNTc2LDcgKzE1NzYsMTMgQEAgaWNlX3NldF9mZGlyX2lu
-cHV0X3NldChzdHJ1Y3QgaWNlX3ZzaSAqdnNpLCBzdHJ1Y3QgZXRodG9vbF9yeF9mbG93X3NwZWMg
-KmZzcCwKPiAgIAkJICAgICAgIHNpemVvZihzdHJ1Y3QgaW42X2FkZHIpKTsKPiAgIAkJaW5wdXQt
-PmlwLnY2Lmw0X2hlYWRlciA9IGZzcC0+aF91LnVzcl9pcDZfc3BlYy5sNF80X2J5dGVzOwo+ICAg
-CQlpbnB1dC0+aXAudjYudGMgPSBmc3AtPmhfdS51c3JfaXA2X3NwZWMudGNsYXNzOwo+IC0JCWlu
-cHV0LT5pcC52Ni5wcm90byA9IGZzcC0+aF91LnVzcl9pcDZfc3BlYy5sNF9wcm90bzsKPiArCj4g
-KwkJLyogaWYgbm8gcHJvdG9jb2wgcmVxdWVzdGVkLCB1c2UgSVBQUk9UT19OT05FICovCj4gKwkJ
-aWYgKCFmc3AtPm1fdS51c3JfaXA2X3NwZWMubDRfcHJvdG8pCj4gKwkJCWlucHV0LT5pcC52Ni5w
-cm90byA9IElQUFJPVE9fTk9ORTsKPiArCQllbHNlCj4gKwkJCWlucHV0LT5pcC52Ni5wcm90byA9
-IGZzcC0+aF91LnVzcl9pcDZfc3BlYy5sNF9wcm90bzsKPiArCgpJIHByZWZlciBub24tbmVnYXRp
-b24gYW5kIHRoZSB0ZXJuYXJ5IG9wZXJhdG9yLCBidXQgaXTigJlzIHN1YmplY3RpdmUuCgogICAg
-IGlucHV0LT5pcC52Ni5wcm90byA9IGZzcC0+aF91LnVzcl9pcDZfc3BlYy5sNF9wcm90byA/IApm
-c3AtPmhfdS51c3JfaXA2X3NwZWMubDRfcHJvdG8gOiBJUFBST1RPX05PTkU7CgooR0NDIGV2ZW4g
-aGFzIHRoZSBleHRlbnNpb24gYGEgPzogYmAuKQoKPiAgIAkJbWVtY3B5KGlucHV0LT5tYXNrLnY2
-LmRzdF9pcCwgZnNwLT5tX3UudXNyX2lwNl9zcGVjLmlwNmRzdCwKPiAgIAkJICAgICAgIHNpemVv
-ZihzdHJ1Y3QgaW42X2FkZHIpKTsKPiAgIAkJbWVtY3B5KGlucHV0LT5tYXNrLnY2LnNyY19pcCwg
-ZnNwLT5tX3UudXNyX2lwNl9zcGVjLmlwNnNyYywKClJldmlld2VkLWJ5OiBQYXVsIE1lbnplbCA8
-cG1lbnplbEBtb2xnZW4ubXBnLmRlPgoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
-bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+
+Gustavo,
+
+> This series aims to fix almost all remaining fall-through warnings in
+> order to enable -Wimplicit-fallthrough for Clang.
+
+Applied 20-22,54,120-124 to 5.11/scsi-staging, thanks.
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
