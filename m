@@ -1,62 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF7FF2CBB5C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 12:15:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C7FD2CBDB7
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 14:06:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A6103870AA;
-	Wed,  2 Dec 2020 11:15:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C516E878EA;
+	Wed,  2 Dec 2020 13:06:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TFqYqGI3Pqox; Wed,  2 Dec 2020 11:15:19 +0000 (UTC)
+	with ESMTP id o01mB-Wj71vY; Wed,  2 Dec 2020 13:06:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EB07C870B3;
-	Wed,  2 Dec 2020 11:15:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 910AF87C12;
+	Wed,  2 Dec 2020 13:06:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A63671BF5A4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 885731BF2A2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 13:06:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9FC0286FE2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 83872870E3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 13:06:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e7FZ2f4k07LL for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 11:15:13 +0000 (UTC)
+ with ESMTP id RksE1B6SFx_L for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 13:06:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C9AC68705D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:13 +0000 (UTC)
-IronPort-SDR: tgS8C2o2+/dlgo4ndDth+PGGEVmPnFl9HmSsOxgRb0hD16PLJnkGT5TZgxtpt9sbD8SDEvyfKp
- +nBPHicwHg1Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="160054292"
-X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="160054292"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Dec 2020 03:15:13 -0800
-IronPort-SDR: 8wPr3Z2xKBAbeh5ch6mdYH+irJDae/2GykzROpZP9qQIifRzoJSmC66W1jqmzLBGswjcFLMylq
- wrY5sc2il/0Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="330398791"
-Received: from lkp-server01.sh.intel.com (HELO 54133fc185c3) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 02 Dec 2020 03:15:12 -0800
-Received: from kbuild by 54133fc185c3 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kkQ6J-00005T-B6; Wed, 02 Dec 2020 11:15:11 +0000
-Date: Wed, 02 Dec 2020 19:14:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5fc7771e.sYvKCXiXnNzsCSRC%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 8f2bb4501f5675fa2175632693a814fe7db3d7e3
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9B152870BE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 13:06:29 +0000 (UTC)
+Received: from mail-pg1-f200.google.com ([209.85.215.200])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>) id 1kkRpz-00048d-Df
+ for intel-wired-lan@lists.osuosl.org; Wed, 02 Dec 2020 13:06:27 +0000
+Received: by mail-pg1-f200.google.com with SMTP id m15so937795pgs.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Dec 2020 05:06:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=GrUGOpTpSp2pqBXebtTh/akmaDHoTwi3ZKp6lCKMafw=;
+ b=GRtmUt0gnINcAOIzIAP7XAzzmBWzixXE+wcdsuwgMRiDnmuP8GNlFLWPKHBi/WeRL+
+ HLbEcZsbi3JG/mtd3t+VBQWxyN2Z8JKNgK5ESb4/BuhszgirihTsTSkd7bWxWlVKZoJF
+ tvHvB1r719ejXs99XTEEQUk59hIG0fVi7VnVS9XzTw7n0LgVZS5GbgGoyik4KTaL2rQP
+ kUq4pbBtQh1giweaSc8pgUq5Z19EQn8UewB7vNVXsdyXUI5z/5/UJHnTe67VFd4LghjR
+ 5PmRGo+L2OCHtl/lQcdhAe40f8h2rhi+z3KCjz9+K9ojlYmZY9tzjyVPNN3zSptnt80r
+ CO2A==
+X-Gm-Message-State: AOAM533Ym3ZkCS44ZczH9Z+JuNvJ6QD/CjUKFjn7/wrDwd31MeGXzRCA
+ p3hHrMf3NQUI/XR5ko/KIDvZzksKTAwegtqaf6+ajQzqw92wfZfap5Wxz2u55gEMkc/u58kTys+
+ uc3cjpznG//wI6YoBJsvBbowhfpP1WUz3kP6A1KtQVEYC4Ls=
+X-Received: by 2002:a65:5302:: with SMTP id m2mr2524324pgq.231.1606914385333; 
+ Wed, 02 Dec 2020 05:06:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwhMGBtC/6GcEajV0sdiVtaR4pXRdCldIz7ymjMzJ/3J4tFYYxsodX9NzuDcueBTUHz4tK24g==
+X-Received: by 2002:a65:5302:: with SMTP id m2mr2524290pgq.231.1606914384979; 
+ Wed, 02 Dec 2020 05:06:24 -0800 (PST)
+Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
+ [220.133.187.190])
+ by smtp.gmail.com with ESMTPSA id b24sm2014203pjq.10.2020.12.02.05.06.21
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 02 Dec 2020 05:06:24 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.20.0.2.21\))
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <b8896b7748e516e9c440ab22e582e30f1389776c.1606757180.git.yu.c.chen@intel.com>
+Date: Wed, 2 Dec 2020 21:06:19 +0800
+Message-Id: <DF79FD96-31E6-4D9A-BF0D-40B7FC563C0B@canonical.com>
+References: <cover.1606757180.git.yu.c.chen@intel.com>
+ <b8896b7748e516e9c440ab22e582e30f1389776c.1606757180.git.yu.c.chen@intel.com>
+To: Chen Yu <yu.c.chen@intel.com>
+X-Mailer: Apple Mail (2.3654.20.0.2.21)
+Subject: Re: [Intel-wired-lan] [PATCH 1/2][v3] e1000e: Leverage
+ direct_complete to speed up s2ram
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,140 +86,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, Len Brown <len.brown@intel.com>,
+ netdev@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, "Brandt, Todd E" <todd.e.brandt@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git  dev-queue
-branch HEAD: 8f2bb4501f5675fa2175632693a814fe7db3d7e3  e1000e: Remove the runtime suspend restriction on CNP+
+Hi Yu,
 
-elapsed time: 720m
+> On Dec 1, 2020, at 09:21, Chen Yu <yu.c.chen@intel.com> wrote:
+> 
+> The NIC is put in runtime suspend status when there is no cable connected.
+> As a result, it is safe to keep non-wakeup NIC in runtime suspended during
+> s2ram because the system does not rely on the NIC plug event nor WoL to wake
+> up the system. Besides that, unlike the s2idle, s2ram does not need to
+> manipulate S0ix settings during suspend.
+> 
+> This patch introduces the .prepare() for e1000e so that if the NIC is runtime
+> suspended the subsequent suspend/resume hooks will be skipped so as to speed
+> up the s2ram. The pm core will check whether the NIC is a wake up device so
+> there's no need to check it again in .prepare(). DPM_FLAG_SMART_PREPARE flag
+> should be set during probe to ask the pci subsystem to honor the driver's
+> prepare() result. Besides, the NIC remains runtime suspended after resumed
+> from s2ram as there is no need to resume it.
+> 
+> Tested on i7-2600K with 82579V NIC
+> Before the patch:
+> e1000e 0000:00:19.0: pci_pm_suspend+0x0/0x160 returned 0 after 225146 usecs
+> e1000e 0000:00:19.0: pci_pm_resume+0x0/0x90 returned 0 after 140588 usecs
+> 
+> After the patch:
+> echo disabled > //sys/devices/pci0000\:00/0000\:00\:19.0/power/wakeup
+> becomes 0 usecs because the hooks will be skipped.
+> 
+> Suggested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+> Signed-off-by: Chen Yu <yu.c.chen@intel.com>
 
-configs tested: 111
-configs skipped: 2
+Well, I was intended to send it, but anyway :)
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> ---
+> v2: Added test data and some commit log revise(Paul Menzel)
+>    Only skip the suspend/resume if the NIC is not a wake up device specified
+>    by the user(Kai-Heng Feng)
+> v3: Leverage direct complete mechanism to skip all hooks(Kai-Heng Feng)
+> ---
+> drivers/net/ethernet/intel/e1000e/netdev.c | 10 +++++++++-
+> 1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index b30f00891c03..b210bba3f20a 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -25,6 +25,7 @@
+> #include <linux/pm_runtime.h>
+> #include <linux/aer.h>
+> #include <linux/prefetch.h>
+> +#include <linux/suspend.h>
+> 
+> #include "e1000.h"
+> 
+> @@ -6957,6 +6958,12 @@ static int __e1000_resume(struct pci_dev *pdev)
+> 	return 0;
+> }
+> 
+> +static int e1000e_pm_prepare(struct device *dev)
+> +{
+> +	return pm_runtime_suspended(dev) &&
+> +		pm_suspend_via_firmware();
+> +}
+> +
+> static __maybe_unused int e1000e_pm_suspend(struct device *dev)
+> {
+> 	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
+> @@ -7665,7 +7672,7 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> 
+> 	e1000_print_device_info(adapter);
+> 
+> -	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+> +	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_SMART_PREPARE);
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                         ps3_defconfig
-mips                malta_qemu_32r6_defconfig
-x86_64                           alldefconfig
-mips                          ath25_defconfig
-sh                          rsk7201_defconfig
-riscv                    nommu_k210_defconfig
-arm                          pxa3xx_defconfig
-c6x                        evmc6457_defconfig
-m68k                            q40_defconfig
-arc                        nsim_700_defconfig
-sh                           se7705_defconfig
-m68k                         apollo_defconfig
-powerpc               mpc834x_itxgp_defconfig
-arm                        realview_defconfig
-microblaze                          defconfig
-mips                           gcw0_defconfig
-xtensa                         virt_defconfig
-c6x                        evmc6678_defconfig
-sh                             shx3_defconfig
-m68k                       m5208evb_defconfig
-m68k                        mvme16x_defconfig
-m68k                          atari_defconfig
-arc                        nsimosci_defconfig
-arm                          pcm027_defconfig
-ia64                        generic_defconfig
-sh                        dreamcast_defconfig
-arm                            mps2_defconfig
-arm                     davinci_all_defconfig
-powerpc                 mpc834x_itx_defconfig
-powerpc                    mvme5100_defconfig
-sh                        apsh4ad0a_defconfig
-sh                  sh7785lcr_32bit_defconfig
-arm                          imote2_defconfig
-mips                      fuloong2e_defconfig
-sparc                            allyesconfig
-sparc                       sparc64_defconfig
-arm                        vexpress_defconfig
-powerpc                       eiger_defconfig
-c6x                        evmc6474_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a004-20201201
-i386                 randconfig-a005-20201201
-i386                 randconfig-a001-20201201
-i386                 randconfig-a002-20201201
-i386                 randconfig-a006-20201201
-i386                 randconfig-a003-20201201
-x86_64               randconfig-a016-20201201
-x86_64               randconfig-a012-20201201
-x86_64               randconfig-a014-20201201
-x86_64               randconfig-a013-20201201
-x86_64               randconfig-a015-20201201
-x86_64               randconfig-a011-20201201
-i386                 randconfig-a014-20201201
-i386                 randconfig-a013-20201201
-i386                 randconfig-a011-20201201
-i386                 randconfig-a015-20201201
-i386                 randconfig-a012-20201201
-i386                 randconfig-a016-20201201
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+This isn't required for pci_pm_prepare() to use driver's .prepare callback.
 
-clang tested configs:
-x86_64               randconfig-a004-20201201
-x86_64               randconfig-a006-20201201
-x86_64               randconfig-a001-20201201
-x86_64               randconfig-a002-20201201
-x86_64               randconfig-a005-20201201
-x86_64               randconfig-a003-20201201
+> 
+> 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+> 		pm_runtime_put_noidle(&pdev->dev);
+> @@ -7890,6 +7897,7 @@ MODULE_DEVICE_TABLE(pci, e1000_pci_tbl);
+> 
+> static const struct dev_pm_ops e1000_pm_ops = {
+> #ifdef CONFIG_PM_SLEEP
+> +	.prepare	= e1000e_pm_prepare,
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+How do we make sure a link change happened in S3 can be detect after resume, without a .complete callback which ask device to runtime resume?
+
+Kai-Heng
+
+> 	.suspend	= e1000e_pm_suspend,
+> 	.resume		= e1000e_pm_resume,
+> 	.freeze		= e1000e_pm_freeze,
+> -- 
+> 2.17.1
+> 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
