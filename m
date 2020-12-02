@@ -1,51 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B16D2CB5E6
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 08:50:41 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC8352CBB5D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 12:15:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2129686F05;
-	Wed,  2 Dec 2020 07:50:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5E2A22E1B4;
+	Wed,  2 Dec 2020 11:15:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XbWm3P-gVZFE; Wed,  2 Dec 2020 07:50:39 +0000 (UTC)
+	with ESMTP id TaIAEj+2MF91; Wed,  2 Dec 2020 11:15:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EDE6986F17;
-	Wed,  2 Dec 2020 07:50:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 836C42E261;
+	Wed,  2 Dec 2020 11:15:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1FA4D1BF5DF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 737361BF5A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1AF7186F05
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 635A387927
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FxTDqrod-Qyu for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 07:50:36 +0000 (UTC)
+ with ESMTP id cGtgPJWWvoY3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 11:15:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E88C086EF9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:35 +0000 (UTC)
-Received: from 1.general.khfeng.us.vpn ([10.172.68.174] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>)
- id 1kkMu6-0003KN-HJ; Wed, 02 Dec 2020 07:50:23 +0000
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-To: jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com
-Date: Wed,  2 Dec 2020 15:50:17 +0800
-Message-Id: <20201202075018.1717093-1-kai.heng.feng@canonical.com>
-X-Mailer: git-send-email 2.29.2
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8EB5687921
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 11:15:13 +0000 (UTC)
+IronPort-SDR: AdsKFROGss38nzfMLI6T7IP4qEFVff0UUozGitDQMexhqbeJkH7DL6ANKlEKyBohms+GmixZrj
+ YGV+E37NxKqA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="152253913"
+X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="152253913"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2020 03:15:13 -0800
+IronPort-SDR: Qbvlpq7Uhf7oZ1Q3ey1GR72bLelhTuWy4lCqB4zLLGRIlHwCt8c03x+jabU+1l3++Mu+3EwC40
+ 8oiwa4/TFjqw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,386,1599548400"; d="scan'208";a="481513398"
+Received: from lkp-server01.sh.intel.com (HELO 54133fc185c3) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 02 Dec 2020 03:15:12 -0800
+Received: from kbuild by 54133fc185c3 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kkQ6J-00005R-9u; Wed, 02 Dec 2020 11:15:11 +0000
+Date: Wed, 02 Dec 2020 19:14:32 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5fc77718.l/n0AVYziVk+0a1O%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] igc: Report speed and duplex as unknown
- when device is runtime suspended
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ 9e39394faef6d436f0c9900d2a5c690c13bc1cac
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,102 +69,197 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
- Kai-Heng Feng <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Similar to commit 165ae7a8feb5 ("igb: Report speed and duplex as unknown
-when device is runtime suspended"), if we try to read speed and duplex
-sysfs while the device is runtime suspeneded, igc will complain and
-stops working:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git  master
+branch HEAD: 9e39394faef6d436f0c9900d2a5c690c13bc1cac  net/ipv6: propagate user pointer annotation
 
-[  123.449883] igc 0000:03:00.0 enp3s0: PCIe link lost, device now detached
-[  123.450052] BUG: kernel NULL pointer dereference, address: 0000000000000008
-[  123.450056] #PF: supervisor read access in kernel mode
-[  123.450058] #PF: error_code(0x0000) - not-present page
-[  123.450059] PGD 0 P4D 0
-[  123.450064] Oops: 0000 [#1] SMP NOPTI
-[  123.450068] CPU: 0 PID: 2525 Comm: udevadm Tainted: G     U  W  OE     5.10.0-1002-oem #2+rkl2-Ubuntu
-[  123.450078] RIP: 0010:igc_rd32+0x1c/0x90 [igc]
-[  123.450080] Code: c0 5d c3 b8 fd ff ff ff c3 0f 1f 44 00 00 0f 1f 44 00 00 55 89 f0 48 89 e5 41 56 41 55 41 54 49 89 c4 53 48 8b 57 08 48 01 d0 <44> 8b 28 41 83 fd ff 74 0c 5b 44 89 e8 41 5c 41 5d 4
+elapsed time: 835m
 
-[  123.450083] RSP: 0018:ffffb0d100d6fcc0 EFLAGS: 00010202
-[  123.450085] RAX: 0000000000000008 RBX: ffffb0d100d6fd30 RCX: 0000000000000000
-[  123.450087] RDX: 0000000000000000 RSI: 0000000000000008 RDI: ffff945a12716c10
-[  123.450089] RBP: ffffb0d100d6fce0 R08: ffff945a12716550 R09: ffff945a09874000
-[  123.450090] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000008
-[  123.450092] R13: ffff945a12716000 R14: ffff945a037da280 R15: ffff945a037da290
-[  123.450094] FS:  00007f3b34c868c0(0000) GS:ffff945b89200000(0000) knlGS:0000000000000000
-[  123.450096] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  123.450098] CR2: 0000000000000008 CR3: 00000001144de006 CR4: 0000000000770ef0
-[  123.450100] PKRU: 55555554
-[  123.450101] Call Trace:
-[  123.450111]  igc_ethtool_get_link_ksettings+0xd6/0x1b0 [igc]
-[  123.450118]  __ethtool_get_link_ksettings+0x71/0xb0
-[  123.450123]  duplex_show+0x74/0xc0
-[  123.450129]  dev_attr_show+0x1d/0x40
-[  123.450134]  sysfs_kf_seq_show+0xa1/0x100
-[  123.450137]  kernfs_seq_show+0x27/0x30
-[  123.450142]  seq_read+0xb7/0x400
-[  123.450148]  ? common_file_perm+0x72/0x170
-[  123.450151]  kernfs_fop_read+0x35/0x1b0
-[  123.450155]  vfs_read+0xb5/0x1b0
-[  123.450157]  ksys_read+0x67/0xe0
-[  123.450160]  __x64_sys_read+0x1a/0x20
-[  123.450164]  do_syscall_64+0x38/0x90
-[  123.450168]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  123.450170] RIP: 0033:0x7f3b351fe142
-[  123.450173] Code: c0 e9 c2 fe ff ff 50 48 8d 3d 3a ca 0a 00 e8 f5 19 02 00 0f 1f 44 00 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 0f 05 <48> 3d 00 f0 ff ff 77 56 c3 0f 1f 44 00 00 48 83 ec 28 48 89 54 24
-[  123.450174] RSP: 002b:00007fffef2ec138 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
-[  123.450177] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f3b351fe142
-[  123.450179] RDX: 0000000000001001 RSI: 00005644c047f070 RDI: 0000000000000003
-[  123.450180] RBP: 00007fffef2ec340 R08: 00005644c047f070 R09: 00007f3b352d9320
-[  123.450182] R10: 00005644c047c010 R11: 0000000000000246 R12: 00005644c047cbf0
-[  123.450184] R13: 00005644c047e6d0 R14: 0000000000000003 R15: 00007fffef2ec140
-[  123.450189] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep toshiba_acpi industrialio toshiba_haps hp_accel lis3lv02d btusb btrtl btbcm btintel bluetooth ecdh_generic ecc joydev input_leds nls_iso8859_1 snd_sof_pci snd_sof_intel_byt snd_sof_intel_ipc snd_sof_intel_hda_common snd_soc_hdac_hda snd_hda_codec_hdmi snd_sof_xtensa_dsp snd_sof_intel_hda snd_sof snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation soundwire_cadence snd_hda_codec snd_hda_core ath10k_pci snd_hwdep intel_rapl_msr intel_rapl_common ath10k_core soundwire_bus snd_soc_core x86_pkg_temp_thermal ath intel_powerclamp snd_compress ac97_bus snd_pcm_dmaengine mac80211 snd_pcm coretemp snd_seq_midi snd_seq_midi_event snd_rawmidi kvm_intel cfg80211 snd_seq snd_seq_device snd_timer mei_hdcp kvm libarc4 snd crct10dif_pclmul ghash_clmulni_intel aesni_intel 
- mei_me dell_wmi
-[  123.450266]  dell_smbios soundcore sparse_keymap dcdbas crypto_simd cryptd mei dell_uart_backlight glue_helper ee1004 wmi_bmof intel_wmi_thunderbolt dell_wmi_descriptor mac_hid efi_pstore acpi_pad acpi_tad intel_cstate sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs blake2b_generic raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear dm_mirror dm_region_hash dm_log hid_generic usbhid hid i915 i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops cec crc32_pclmul rc_core drm intel_lpss_pci i2c_i801 ahci igc intel_lpss i2c_smbus idma64 xhci_pci libahci virt_dma xhci_pci_renesas wmi video pinctrl_tigerlake
-[  123.450335] CR2: 0000000000000008
-[  123.450338] ---[ end trace 9f731e38b53c35cc ]---
+configs tested: 168
+configs skipped: 2
 
-The more generic approach will be wrap get_link_ksettings() with begin()
-and complete() callbacks, and calls runtime resume and runtime suspend
-routine respectively. However, igc is like igb, runtime resume routine
-uses rtnl_lock() which upper ethtool layer also uses.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-So to prevent a deadlock on rtnl, take a different approach, use
-pm_runtime_suspended() to avoid reading register while device is runtime
-suspended.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+powerpc                         ps3_defconfig
+mips                malta_qemu_32r6_defconfig
+x86_64                           alldefconfig
+mips                          ath25_defconfig
+sh                          rsk7201_defconfig
+arm                        clps711x_defconfig
+sh                        edosk7760_defconfig
+powerpc                        cell_defconfig
+sh                            hp6xx_defconfig
+mips                          ath79_defconfig
+openrisc                         alldefconfig
+sh                               j2_defconfig
+mips                       capcella_defconfig
+arm                           viper_defconfig
+c6x                        evmc6474_defconfig
+riscv                    nommu_k210_defconfig
+arm                          pxa3xx_defconfig
+c6x                        evmc6457_defconfig
+m68k                            q40_defconfig
+arc                        nsim_700_defconfig
+sh                           se7705_defconfig
+m68k                         apollo_defconfig
+powerpc               mpc834x_itxgp_defconfig
+arm                        realview_defconfig
+microblaze                          defconfig
+mips                malta_kvm_guest_defconfig
+sh                ecovec24-romimage_defconfig
+arm                      integrator_defconfig
+arm                          imote2_defconfig
+mips                           gcw0_defconfig
+xtensa                         virt_defconfig
+c6x                        evmc6678_defconfig
+sh                             shx3_defconfig
+mips                  maltasmvp_eva_defconfig
+powerpc                     tqm5200_defconfig
+arc                 nsimosci_hs_smp_defconfig
+m68k                       m5208evb_defconfig
+m68k                        mvme16x_defconfig
+m68k                          atari_defconfig
+arc                        nsimosci_defconfig
+arm                          pcm027_defconfig
+ia64                        generic_defconfig
+sh                        dreamcast_defconfig
+arm                            mps2_defconfig
+sparc                               defconfig
+sh                           se7722_defconfig
+sh                   sh7724_generic_defconfig
+arm                           u8500_defconfig
+arm                        magician_defconfig
+arm                          exynos_defconfig
+riscv                               defconfig
+powerpc                        fsp2_defconfig
+powerpc                      ppc40x_defconfig
+h8300                               defconfig
+powerpc                      ppc44x_defconfig
+arm                              alldefconfig
+powerpc                     mpc5200_defconfig
+powerpc                    ge_imp3a_defconfig
+powerpc                       ebony_defconfig
+powerpc                 mpc8313_rdb_defconfig
+sh                           se7343_defconfig
+arm                          moxart_defconfig
+powerpc                    amigaone_defconfig
+mips                        maltaup_defconfig
+arc                              alldefconfig
+microblaze                      mmu_defconfig
+arm                     davinci_all_defconfig
+powerpc                 mpc834x_itx_defconfig
+powerpc                    mvme5100_defconfig
+sh                        apsh4ad0a_defconfig
+sh                  sh7785lcr_32bit_defconfig
+m68k                        m5407c3_defconfig
+arm                       cns3420vb_defconfig
+mips                 decstation_r4k_defconfig
+arm                            zeus_defconfig
+arm                            xcep_defconfig
+arm                         palmz72_defconfig
+powerpc                 mpc837x_mds_defconfig
+arm                          ixp4xx_defconfig
+powerpc                 linkstation_defconfig
+ia64                          tiger_defconfig
+powerpc                         wii_defconfig
+s390                             alldefconfig
+mips                      fuloong2e_defconfig
+sparc                            allyesconfig
+sparc                       sparc64_defconfig
+arm                        vexpress_defconfig
+powerpc                       eiger_defconfig
+powerpc                      pasemi_defconfig
+powerpc                  storcenter_defconfig
+parisc                generic-32bit_defconfig
+mips                    maltaup_xpa_defconfig
+mips                            e55_defconfig
+mips                           xway_defconfig
+xtensa                  audio_kc705_defconfig
+arm                            dove_defconfig
+powerpc                 canyonlands_defconfig
+powerpc                     skiroot_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20201201
+i386                 randconfig-a005-20201201
+i386                 randconfig-a001-20201201
+i386                 randconfig-a002-20201201
+i386                 randconfig-a006-20201201
+i386                 randconfig-a003-20201201
+x86_64               randconfig-a016-20201201
+x86_64               randconfig-a012-20201201
+x86_64               randconfig-a014-20201201
+x86_64               randconfig-a013-20201201
+x86_64               randconfig-a015-20201201
+x86_64               randconfig-a011-20201201
+i386                 randconfig-a014-20201201
+i386                 randconfig-a013-20201201
+i386                 randconfig-a011-20201201
+i386                 randconfig-a015-20201201
+i386                 randconfig-a012-20201201
+i386                 randconfig-a016-20201201
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                                  kexec
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
 
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+clang tested configs:
+x86_64               randconfig-a004-20201201
+x86_64               randconfig-a006-20201201
+x86_64               randconfig-a001-20201201
+x86_64               randconfig-a002-20201201
+x86_64               randconfig-a005-20201201
+x86_64               randconfig-a003-20201201
+
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 61d331ce38cd..4b9eac9dc090 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1708,7 +1708,8 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
- 						     Asym_Pause);
- 	}
- 
--	status = rd32(IGC_STATUS);
-+	status = pm_runtime_suspended(&adapter->pdev->dev) ?
-+		 0 : rd32(IGC_STATUS);
- 
- 	if (status & IGC_STATUS_LU) {
- 		if (status & IGC_STATUS_SPEED_1000) {
--- 
-2.29.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
