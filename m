@@ -2,61 +2,50 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC7062CB40E
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 05:53:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B16D2CB5E6
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 08:50:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 72F4186CAE;
-	Wed,  2 Dec 2020 04:53:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2129686F05;
+	Wed,  2 Dec 2020 07:50:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tHnbaOEDBMBJ; Wed,  2 Dec 2020 04:53:56 +0000 (UTC)
+	with ESMTP id XbWm3P-gVZFE; Wed,  2 Dec 2020 07:50:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7015186D27;
-	Wed,  2 Dec 2020 04:53:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EDE6986F17;
+	Wed,  2 Dec 2020 07:50:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 45C051BF990
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FA4D1BF5DF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4232287886
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1AF7186F05
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LOxPq2UbV2Rh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 04:53:51 +0000 (UTC)
+ with ESMTP id FxTDqrod-Qyu for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 07:50:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 84A73878AE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:51 +0000 (UTC)
-IronPort-SDR: UieLHHoHLOZsQ7/S+MQp+UR/lxSdPvgu7dmE0YlrKUjBnjzgtVTXStvfSobkx7YNBoG6Blt+w4
- pY9DXpmYQIFw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="234558826"
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="234558826"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2020 20:53:50 -0800
-IronPort-SDR: rYUp127OH8oYvnRV0YdH6/h1SyukH2t94dtaN7SS2+Ixo1rftRlp2fYhiHga7bHczd9e3Xsbun
- QOwucY+P+STg==
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="549888392"
-Received: from shivanif-mobl.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.212.152.222])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2020 20:53:50 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: netdev@vger.kernel.org
-Date: Tue,  1 Dec 2020 20:53:25 -0800
-Message-Id: <20201202045325.3254757-10-vinicius.gomes@intel.com>
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E88C086EF9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 07:50:35 +0000 (UTC)
+Received: from 1.general.khfeng.us.vpn ([10.172.68.174] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>)
+ id 1kkMu6-0003KN-HJ; Wed, 02 Dec 2020 07:50:23 +0000
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+To: jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com
+Date: Wed,  2 Dec 2020 15:50:17 +0800
+Message-Id: <20201202075018.1717093-1-kai.heng.feng@canonical.com>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201202045325.3254757-1-vinicius.gomes@intel.com>
-References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 9/9] igc: Separate TSN
- configurations that can be updated
+Subject: [Intel-wired-lan] [PATCH] igc: Report speed and duplex as unknown
+ when device is runtime suspended
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,311 +58,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, jiri@resnulli.us, vladimir.oltean@nxp.com,
- po.liu@nxp.com, jhs@mojatatu.com, m-karicheri2@ti.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, xiyou.wangcong@gmail.com
+Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>, stable@vger.kernel.org,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Some TSN features can be enabled during runtime, but most of the
-features need an adapter reset to be disabled.
+Similar to commit 165ae7a8feb5 ("igb: Report speed and duplex as unknown
+when device is runtime suspended"), if we try to read speed and duplex
+sysfs while the device is runtime suspeneded, igc will complain and
+stops working:
 
-To better keep track of this, separate the process into an "_apply"
-and a "reset" functions, "_apply" will run with the adapter in
-potencially "dirty" state, and if necessary will request an adapter
-reset, so "_reset" always run with a "clean" adapter.
+[  123.449883] igc 0000:03:00.0 enp3s0: PCIe link lost, device now detached
+[  123.450052] BUG: kernel NULL pointer dereference, address: 0000000000000008
+[  123.450056] #PF: supervisor read access in kernel mode
+[  123.450058] #PF: error_code(0x0000) - not-present page
+[  123.450059] PGD 0 P4D 0
+[  123.450064] Oops: 0000 [#1] SMP NOPTI
+[  123.450068] CPU: 0 PID: 2525 Comm: udevadm Tainted: G     U  W  OE     5.10.0-1002-oem #2+rkl2-Ubuntu
+[  123.450078] RIP: 0010:igc_rd32+0x1c/0x90 [igc]
+[  123.450080] Code: c0 5d c3 b8 fd ff ff ff c3 0f 1f 44 00 00 0f 1f 44 00 00 55 89 f0 48 89 e5 41 56 41 55 41 54 49 89 c4 53 48 8b 57 08 48 01 d0 <44> 8b 28 41 83 fd ff 74 0c 5b 44 89 e8 41 5c 41 5d 4
 
-The idea is to make the process easier to follow.
+[  123.450083] RSP: 0018:ffffb0d100d6fcc0 EFLAGS: 00010202
+[  123.450085] RAX: 0000000000000008 RBX: ffffb0d100d6fd30 RCX: 0000000000000000
+[  123.450087] RDX: 0000000000000000 RSI: 0000000000000008 RDI: ffff945a12716c10
+[  123.450089] RBP: ffffb0d100d6fce0 R08: ffff945a12716550 R09: ffff945a09874000
+[  123.450090] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000008
+[  123.450092] R13: ffff945a12716000 R14: ffff945a037da280 R15: ffff945a037da290
+[  123.450094] FS:  00007f3b34c868c0(0000) GS:ffff945b89200000(0000) knlGS:0000000000000000
+[  123.450096] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  123.450098] CR2: 0000000000000008 CR3: 00000001144de006 CR4: 0000000000770ef0
+[  123.450100] PKRU: 55555554
+[  123.450101] Call Trace:
+[  123.450111]  igc_ethtool_get_link_ksettings+0xd6/0x1b0 [igc]
+[  123.450118]  __ethtool_get_link_ksettings+0x71/0xb0
+[  123.450123]  duplex_show+0x74/0xc0
+[  123.450129]  dev_attr_show+0x1d/0x40
+[  123.450134]  sysfs_kf_seq_show+0xa1/0x100
+[  123.450137]  kernfs_seq_show+0x27/0x30
+[  123.450142]  seq_read+0xb7/0x400
+[  123.450148]  ? common_file_perm+0x72/0x170
+[  123.450151]  kernfs_fop_read+0x35/0x1b0
+[  123.450155]  vfs_read+0xb5/0x1b0
+[  123.450157]  ksys_read+0x67/0xe0
+[  123.450160]  __x64_sys_read+0x1a/0x20
+[  123.450164]  do_syscall_64+0x38/0x90
+[  123.450168]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  123.450170] RIP: 0033:0x7f3b351fe142
+[  123.450173] Code: c0 e9 c2 fe ff ff 50 48 8d 3d 3a ca 0a 00 e8 f5 19 02 00 0f 1f 44 00 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 0f 05 <48> 3d 00 f0 ff ff 77 56 c3 0f 1f 44 00 00 48 83 ec 28 48 89 54 24
+[  123.450174] RSP: 002b:00007fffef2ec138 EFLAGS: 00000246 ORIG_RAX: 0000000000000000
+[  123.450177] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f3b351fe142
+[  123.450179] RDX: 0000000000001001 RSI: 00005644c047f070 RDI: 0000000000000003
+[  123.450180] RBP: 00007fffef2ec340 R08: 00005644c047f070 R09: 00007f3b352d9320
+[  123.450182] R10: 00005644c047c010 R11: 0000000000000246 R12: 00005644c047cbf0
+[  123.450184] R13: 00005644c047e6d0 R14: 0000000000000003 R15: 00007fffef2ec140
+[  123.450189] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg bnep toshiba_acpi industrialio toshiba_haps hp_accel lis3lv02d btusb btrtl btbcm btintel bluetooth ecdh_generic ecc joydev input_leds nls_iso8859_1 snd_sof_pci snd_sof_intel_byt snd_sof_intel_ipc snd_sof_intel_hda_common snd_soc_hdac_hda snd_hda_codec_hdmi snd_sof_xtensa_dsp snd_sof_intel_hda snd_sof snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg soundwire_intel soundwire_generic_allocation soundwire_cadence snd_hda_codec snd_hda_core ath10k_pci snd_hwdep intel_rapl_msr intel_rapl_common ath10k_core soundwire_bus snd_soc_core x86_pkg_temp_thermal ath intel_powerclamp snd_compress ac97_bus snd_pcm_dmaengine mac80211 snd_pcm coretemp snd_seq_midi snd_seq_midi_event snd_rawmidi kvm_intel cfg80211 snd_seq snd_seq_device snd_timer mei_hdcp kvm libarc4 snd crct10dif_pclmul ghash_clmulni_intel aesni_intel 
+ mei_me dell_wmi
+[  123.450266]  dell_smbios soundcore sparse_keymap dcdbas crypto_simd cryptd mei dell_uart_backlight glue_helper ee1004 wmi_bmof intel_wmi_thunderbolt dell_wmi_descriptor mac_hid efi_pstore acpi_pad acpi_tad intel_cstate sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs blake2b_generic raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear dm_mirror dm_region_hash dm_log hid_generic usbhid hid i915 i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_fops cec crc32_pclmul rc_core drm intel_lpss_pci i2c_i801 ahci igc intel_lpss i2c_smbus idma64 xhci_pci libahci virt_dma xhci_pci_renesas wmi video pinctrl_tigerlake
+[  123.450335] CR2: 0000000000000008
+[  123.450338] ---[ end trace 9f731e38b53c35cc ]---
 
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+The more generic approach will be wrap get_link_ksettings() with begin()
+and complete() callbacks, and calls runtime resume and runtime suspend
+routine respectively. However, igc is like igb, runtime resume routine
+uses rtnl_lock() which upper ethtool layer also uses.
+
+So to prevent a deadlock on rtnl, take a different approach, use
+pm_runtime_suspended() to avoid reading register while device is runtime
+suspended.
+
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c |  21 ++--
- drivers/net/ethernet/intel/igc/igc_tsn.c  | 140 +++++++++++++++-------
- drivers/net/ethernet/intel/igc/igc_tsn.h  |   1 +
- 3 files changed, 103 insertions(+), 59 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 763f39082f91..76999fe05926 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -107,7 +107,7 @@ void igc_reset(struct igc_adapter *adapter)
- 	igc_ptp_reset(adapter);
- 
- 	/* Re-enable TSN offloading, where applicable. */
--	igc_tsn_offload_apply(adapter);
-+	igc_tsn_reset(adapter);
- 
- 	igc_get_phy_info(hw);
- }
-@@ -4823,6 +4823,11 @@ static int igc_save_frame_preemption(struct igc_adapter *adapter,
- 	u32 preempt;
- 	int i;
- 
-+	/* What we want here is just to save the configuration, so
-+	 * when frame preemption is enabled via ethtool, which queues
-+	 * are marked as preemptible is saved.
-+	 */
-+
- 	preempt = qopt->preemptible_queues;
- 
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
-@@ -4850,18 +4855,6 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
--static int igc_tsn_enable_frame_preemption(struct igc_adapter *adapter,
--					   struct tc_preempt_qopt_offload *qopt)
--{
--	int err;
--
--	err = igc_save_frame_preemption(adapter, qopt);
--	if (err)
--		return err;
--
--	return igc_tsn_offload_apply(adapter);
--}
--
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 			void *type_data)
- {
-@@ -4875,7 +4868,7 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 		return igc_tsn_enable_launchtime(adapter, type_data);
- 
- 	case TC_SETUP_PREEMPT:
--		return igc_tsn_enable_frame_preemption(adapter, type_data);
-+		return igc_save_frame_preemption(adapter, type_data);
- 
- 	default:
- 		return -EOPNOTSUPP;
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 76272f62bb69..caf8510ad6be 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -18,8 +18,24 @@ static bool is_any_launchtime(struct igc_adapter *adapter)
- 	return false;
- }
- 
-+static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
-+{
-+	unsigned int new_flags = adapter->flags & ~IGC_FLAG_TSN_ANY_ENABLED;
-+
-+	if (adapter->base_time)
-+		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+
-+	if (is_any_launchtime(adapter))
-+		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+
-+	if (adapter->frame_preemption_active)
-+		new_flags |= IGC_FLAG_TSN_PREEMPT_ENABLED;
-+
-+	return new_flags;
-+}
-+
- /* Returns the TSN specific registers to their default values after
-- * TSN offloading is disabled.
-+ * the adapter is reset.
-  */
- static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- {
-@@ -27,11 +43,9 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	u32 tqavctrl, rxpbs;
- 	int i;
- 
--	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED))
--		return 0;
--
- 	adapter->cycle_time = 0;
- 	adapter->frame_preemption_active = false;
-+	adapter->base_time = 0;
- 
- 	wr32(IGC_TXPBS, I225_TXPBSIZE_DEFAULT);
- 	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_DEFAULT);
-@@ -63,37 +77,24 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_QBVCYCLET_S, NSEC_PER_MSEC);
- 	wr32(IGC_QBVCYCLET, NSEC_PER_MSEC);
- 
--	adapter->flags &= ~IGC_FLAG_TSN_QBV_ENABLED;
-+	adapter->flags &= ~IGC_FLAG_TSN_ANY_ENABLED;
- 
- 	return 0;
- }
- 
--static int igc_tsn_enable_offload(struct igc_adapter *adapter)
-+static int igc_tsn_update_params(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
--	u32 tqavctrl, baset_l, baset_h;
--	u32 sec, nsec, cycle, rxpbs;
--	ktime_t base_time, systim;
-+	u32 tqavctrl;
-+	unsigned int flags;
- 	int i;
- 
--	if (adapter->flags & IGC_FLAG_TSN_QBV_ENABLED)
-+	flags = igc_tsn_new_flags(adapter) & IGC_FLAG_TSN_ANY_ENABLED;
-+	if (!flags)
- 		return 0;
- 
--	cycle = adapter->cycle_time;
--	base_time = adapter->base_time;
--
--	wr32(IGC_TSAUXC, 0);
--	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
--	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
--
--	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
--	rxpbs |= IGC_RXPBSIZE_TSN;
--
--	wr32(IGC_RXPBS, rxpbs);
--
- 	tqavctrl = rd32(IGC_TQAVCTRL) &
- 		~(IGC_TQAVCTRL_MIN_FRAG_MASK | IGC_TQAVCTRL_PREEMPT_ENA);
--	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
- 
- 	if (adapter->frame_preemption_active)
- 		tqavctrl |= IGC_TQAVCTRL_PREEMPT_ENA;
-@@ -102,9 +103,6 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 
- 	wr32(IGC_TQAVCTRL, tqavctrl);
- 
--	wr32(IGC_QBVCYCLET_S, cycle);
--	wr32(IGC_QBVCYCLET, cycle);
--
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
- 		struct igc_ring *ring = adapter->tx_ring[i];
- 		u32 txqctl = 0;
-@@ -125,12 +123,47 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
- 
--		if (ring->preemptible)
-+		if (adapter->frame_preemption_active && ring->preemptible)
- 			txqctl |= IGC_TXQCTL_PREEMPTABLE;
- 
- 		wr32(IGC_TXQCTL(i), txqctl);
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 61d331ce38cd..4b9eac9dc090 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1708,7 +1708,8 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+ 						     Asym_Pause);
  	}
  
-+	adapter->flags = igc_tsn_new_flags(adapter);
-+
-+	return 0;
-+}
-+
-+static int igc_tsn_enable_offload(struct igc_adapter *adapter)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 baset_l, baset_h, tqavctrl;
-+	u32 sec, nsec, cycle, rxpbs;
-+	ktime_t base_time, systim;
-+
-+	tqavctrl = rd32(IGC_TQAVCTRL);
-+	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
-+
-+	wr32(IGC_TQAVCTRL, tqavctrl);
-+
-+	wr32(IGC_TSAUXC, 0);
-+	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
-+	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
-+
-+	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
-+	rxpbs |= IGC_RXPBSIZE_TSN;
-+
-+	wr32(IGC_RXPBS, rxpbs);
-+
-+	if (!adapter->base_time)
-+		goto done;
-+
-+	cycle = adapter->cycle_time;
-+	base_time = adapter->base_time;
-+
-+	wr32(IGC_QBVCYCLET_S, cycle);
-+	wr32(IGC_QBVCYCLET, cycle);
-+
- 	nsec = rd32(IGC_SYSTIML);
- 	sec = rd32(IGC_SYSTIMH);
+-	status = rd32(IGC_STATUS);
++	status = pm_runtime_suspended(&adapter->pdev->dev) ?
++		 0 : rd32(IGC_STATUS);
  
-@@ -148,34 +181,51 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_BASET_H, baset_h);
- 	wr32(IGC_BASET_L, baset_l);
- 
--	adapter->flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+done:
-+	igc_tsn_update_params(adapter);
- 
- 	return 0;
- }
- 
-+int igc_tsn_reset(struct igc_adapter *adapter)
-+{
-+	unsigned int new_flags;
-+	int err = 0;
-+
-+	new_flags = igc_tsn_new_flags(adapter);
-+
-+	if (!(new_flags & IGC_FLAG_TSN_ANY_ENABLED))
-+		return igc_tsn_disable_offload(adapter);
-+
-+	err = igc_tsn_enable_offload(adapter);
-+	if (err < 0)
-+		return err;
-+
-+	adapter->flags = new_flags;
-+
-+	return err;
-+}
-+
- int igc_tsn_offload_apply(struct igc_adapter *adapter)
- {
--	bool is_any_enabled = adapter->base_time ||
--		is_any_launchtime(adapter) || adapter->frame_preemption_active;
-+	unsigned int new_flags, old_flags;
- 
--	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED) && !is_any_enabled)
--		return 0;
-+	old_flags = adapter->flags;
-+	new_flags = igc_tsn_new_flags(adapter);
- 
--	if (!is_any_enabled) {
--		int err = igc_tsn_disable_offload(adapter);
-+	if (old_flags == new_flags)
-+		return igc_tsn_update_params(adapter);
- 
--		if (err < 0)
--			return err;
-+	/* Enabling features work without resetting the adapter */
-+	if (new_flags > old_flags)
-+		return igc_tsn_enable_offload(adapter);
- 
--		/* The BASET registers aren't cleared when writing
--		 * into them, force a reset if the interface is
--		 * running.
--		 */
--		if (netif_running(adapter->netdev))
--			schedule_work(&adapter->reset_task);
-+	adapter->flags = new_flags;
- 
--		return 0;
--	}
-+	if (!netif_running(adapter->netdev))
-+		return igc_tsn_enable_offload(adapter);
- 
--	return igc_tsn_enable_offload(adapter);
-+	schedule_work(&adapter->reset_task);
-+
-+	return 0;
- }
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-index f76bc86ddccd..1512307f5a52 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-@@ -5,5 +5,6 @@
- #define _IGC_TSN_H_
- 
- int igc_tsn_offload_apply(struct igc_adapter *adapter);
-+int igc_tsn_reset(struct igc_adapter *adapter);
- 
- #endif /* _IGC_BASE_H */
+ 	if (status & IGC_STATUS_LU) {
+ 		if (status & IGC_STATUS_SPEED_1000) {
 -- 
 2.29.2
 
