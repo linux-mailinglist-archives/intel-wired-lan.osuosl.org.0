@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 081B22CC77A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 21:10:37 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4B85A87A35;
-	Wed,  2 Dec 2020 20:10:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fl3GzBIhBR05; Wed,  2 Dec 2020 20:10:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A6D0087A31;
-	Wed,  2 Dec 2020 20:10:34 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 460DA1BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:10:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 670F12CC780
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 21:11:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3F8532E2AE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:10:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 13F59203AF;
+	Wed,  2 Dec 2020 20:11:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VKvqeZUtAZds; Wed,  2 Dec 2020 20:11:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 223552E2AE;
+	Wed,  2 Dec 2020 20:11:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA2E81BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id C4368877EF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NueYVYlvcpKs for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 20:10:31 +0000 (UTC)
+ with ESMTP id mwtDFUEwEm3v for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id A2CB42033B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:10:31 +0000 (UTC)
-Date: Wed, 2 Dec 2020 14:10:29 -0600
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 62824877DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+Date: Wed, 2 Dec 2020 14:11:00 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1606939831;
- bh=i8Vnq+pvTHhHj/1IWA3etZDAb0TNeRlQer8PLomWRag=;
+ s=k20201202; t=1606939862;
+ bh=ZStLK7wKntRm02Bqw/laVzgLBledV/u9Ab/YK1z07Vk=;
  h=From:To:Cc:Subject:In-Reply-To:From;
- b=XUGocHXmgEyD9+LeXma512Rxjr/oRoaZddwcMN6uut9D2vKacomoXW/lfh2/viOmc
- u7jzKI0DGX8iB/YimFhyu7rg+Eh4LsHFGtaqxqMqJ1kfRlQZzEMaTw2HdcXQgQp1vT
- 4Ix+tZzvcKXO7ykBwZIa7QKEaGVtL0F6UrEQt27qinrTshhF1+ML3mu5rbvUFaiygG
- O4Bmn9WYojEL3cV4D/KXyjJQLB3XZol06a1FMbizfoIBOZmX4XhASkyK3Ba/hqcf0C
- 9tHKfcUXM3cCobFeuY0y0EbY1weCqM+0K/MS08ttncCjSRJ7Lfydd4MnyGyQlv7UtX
- nAj1msYc+CJIA==
+ b=OG2DmvqtxBqytPwxrIdBVblA491YcuiJd9AjbOL8fwoQBOT4r0xKrqOG8b/Xn9WwO
+ PJR4XUUOoiKk5ovDi3k1M+CEh8mMoP3XP2Bz5YcEZV7wXi8sZhiput85T+JQr0gtZj
+ mtiLej7c6jIagbC4zEJiKS1e3FhS2ZTGsjYFzhC03nnnH3jAP4LCbsykIqTYZA3LCN
+ r/DCF8KQFMbckmnmZWnbLsRzDz+Mrc4MlomXx/l5by7irDpsup89z9PfblBPYm6DeT
+ 6wlit8K2cuSstOLn0VNWkAMIq32u5K2w2FOVTdopeLYBxC8+cR+FWmxBZB77knS/1V
+ PcrVnS5Apy7xw==
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Mario Limonciello <mario.limonciello@dell.com>
-Message-ID: <20201202201029.GA1464938@bjorn-Precision-5520>
+Message-ID: <20201202201100.GA1466664@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201202161748.128938-2-mario.limonciello@dell.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/5] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
+In-Reply-To: <20201202161748.128938-3-mario.limonciello@dell.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2 2/5] e1000e: Move all s0ix related
+ code into it's own source file
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,76 +71,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 02, 2020 at 10:17:44AM -0600, Mario Limonciello wrote:
-> From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> 
-> Changed a configuration in the flows to align with
-> architecture requirements to achieve S0i3.2 substate.
+s/it's/its/ (in subject as well as below).
 
-I guess this is really talking about requirements of a specific
-CPU/SOC before it will enter S0i3.2?
+Previous patches used "S0ix", not "s0ix" (in subject as well as
+below, as well as subject and commit log of 3/5 and 5/5).
 
-> Also fixed a typo in the previous commit 632fbd5eb5b0
-> ("e1000e: fix S0ix flows for cable connected case").
+On Wed, Dec 02, 2020 at 10:17:45AM -0600, Mario Limonciello wrote:
+> Introduce a flag to indicate the device should be using the s0ix
+> flows and use this flag to run those functions.
 
-Not clear what the typo was, maybe these?
+Would be nicer to have a move that does nothing else + a separate
+patch that adds a flag so it's more obvious, but again, not my circus.
 
-  > -	ew32(FEXTNVM12, mac_data);
-  > +	ew32(FEXTNVM6, mac_data);
+> Splitting the code to it's own file will make future heuristics
+> more self containted.
 
-  > -	ew32(FEXTNVM12, mac_data);
-  > +	ew32(FEXTNVM6, mac_data);
+s/containted/contained/
 
-I would probably have put typo fixes in a separate patch, especially
-since the cover letter mentions regressions related to 632fbd5eb5b0.
-Maybe the commit log for the fix should mention that it's fixing a
-regression, what the regression was, and include a Fixes: tag?  But
-not my circus.
-
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index b30f00891c03..128ab6898070 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6475,13 +6475,13 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->  
->  	/* Ungate PGCB clock */
->  	mac_data = er32(FEXTNVM9);
-> -	mac_data |= BIT(28);
-> +	mac_data &= ~BIT(28);
->  	ew32(FEXTNVM9, mac_data);
->  
->  	/* Enable K1 off to enable mPHY Power Gating */
->  	mac_data = er32(FEXTNVM6);
->  	mac_data |= BIT(31);
-> -	ew32(FEXTNVM12, mac_data);
-> +	ew32(FEXTNVM6, mac_data);
->  
->  	/* Enable mPHY power gating for any link and speed */
->  	mac_data = er32(FEXTNVM8);
-> @@ -6525,11 +6525,11 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
->  	/* Disable K1 off */
->  	mac_data = er32(FEXTNVM6);
->  	mac_data &= ~BIT(31);
-> -	ew32(FEXTNVM12, mac_data);
-> +	ew32(FEXTNVM6, mac_data);
->  
->  	/* Disable Ungate PGCB clock */
->  	mac_data = er32(FEXTNVM9);
-> -	mac_data &= ~BIT(28);
-> +	mac_data |= BIT(28);
->  	ew32(FEXTNVM9, mac_data);
->  
->  	/* Cancel not waking from dynamic
-> -- 
-> 2.25.1
-> 
+Bjorn
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
