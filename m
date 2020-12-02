@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46B712CB40A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 05:53:57 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5399F2CB413
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 05:54:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D433087815;
-	Wed,  2 Dec 2020 04:53:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 72B112E202;
+	Wed,  2 Dec 2020 04:54:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PduFncfCKpqt; Wed,  2 Dec 2020 04:53:54 +0000 (UTC)
+	with ESMTP id OpgLhxO7o2pR; Wed,  2 Dec 2020 04:54:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 72A498781C;
-	Wed,  2 Dec 2020 04:53:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 53D3E2E1F6;
+	Wed,  2 Dec 2020 04:54:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D39791BF30A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7F9DD1BF30A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C97E1878D6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 79F9687886
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L3feHNwq15eh for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id w00eH4907KGb for <intel-wired-lan@lists.osuosl.org>;
  Wed,  2 Dec 2020 04:53:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5A94F87886
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BDCC787883
  for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 04:53:51 +0000 (UTC)
-IronPort-SDR: E0tY4T2puWQbJQesGjzvef909GL/qHCt0wLJTy+nHnALOOzD4NZ9dmZZsxhoWz0SdemZZxoJQX
- KOJX/a88SMjQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="234558819"
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="234558819"
+IronPort-SDR: C7RjAXIK8KjLgrKDnVya9SgoBHyV8ViPgS11vQeIlRB0Gjd42px5x+PNYaCcHZHtGzON00Qxgr
+ OVRxygvVrGgw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9822"; a="234558821"
+X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="234558821"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  01 Dec 2020 20:53:49 -0800
-IronPort-SDR: 1rSTdOIIXv890nNG4Q4YJsPOSGtf6FT0SovW3Ac16DuCvelHLyL1Oad0ZPOP93R4ZlwgcjTkV0
- pyDjV4XAxACQ==
-X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="549888374"
+IronPort-SDR: 0WbdXq5qnllbYBprKbbbPey2UHrxjaAE7yMXBQUiaflxM3hn7eD+J1UC0eGx4nVTWsDShXx+J4
+ SkeOf2hI5ROQ==
+X-IronPort-AV: E=Sophos;i="5.78,385,1599548400"; d="scan'208";a="549888378"
 Received: from shivanif-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.212.152.222])
  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2020 20:53:48 -0800
+ 01 Dec 2020 20:53:49 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: netdev@vger.kernel.org
-Date: Tue,  1 Dec 2020 20:53:20 -0800
-Message-Id: <20201202045325.3254757-5-vinicius.gomes@intel.com>
+Date: Tue,  1 Dec 2020 20:53:21 -0800
+Message-Id: <20201202045325.3254757-6-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201202045325.3254757-1-vinicius.gomes@intel.com>
 References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 4/9] igc: Only dump registers
- if configured to dump HW information
+Subject: [Intel-wired-lan] [PATCH net-next v1 5/9] igc: Avoid TX Hangs
+ because long cycles
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,32 +77,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To avoid polluting the users logs with register dumps, only dump the
-adapter's registers if configured to do so.
-
-If users want to enable HW status messages they can do:
-
-$ ethtool -s IFACE msglvl hw on
+Avoid possible TX Hangs caused by using long Qbv cycles. In some
+cases, using long cycles (more than 1 second) can cause transmissions
+to be blocked for that time. As the TX Hang timeout is close to 1
+second, we may need to reduce the cycle time to something more
+reasonable: the value chosen is 1ms.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_dump.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/intel/igc/igc_main.c | 4 ++--
+ drivers/net/ethernet/intel/igc/igc_tsn.c  | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_dump.c b/drivers/net/ethernet/intel/igc/igc_dump.c
-index 4b9ec7d0b727..90b754b429ff 100644
---- a/drivers/net/ethernet/intel/igc/igc_dump.c
-+++ b/drivers/net/ethernet/intel/igc/igc_dump.c
-@@ -308,6 +308,9 @@ void igc_regs_dump(struct igc_adapter *adapter)
- 	struct igc_hw *hw = &adapter->hw;
- 	struct igc_reg_info *reginfo;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index b673ac1199bb..3af54fd9cc0d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4692,12 +4692,12 @@ static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
+ 	if (adapter->base_time)
+ 		return 0;
  
-+	if (!netif_msg_hw(adapter))
-+		return;
-+
- 	/* Print Registers */
- 	netdev_info(adapter->netdev, "Register Dump\n");
- 	netdev_info(adapter->netdev, "Register Name   Value\n");
+-	adapter->cycle_time = NSEC_PER_SEC;
++	adapter->cycle_time = NSEC_PER_MSEC;
+ 
+ 	for (i = 0; i < adapter->num_tx_queues; i++) {
+ 		ring = adapter->tx_ring[i];
+ 		ring->start_time = 0;
+-		ring->end_time = NSEC_PER_SEC;
++		ring->end_time = NSEC_PER_MSEC;
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+index 38451cf05ac6..f5a5527adb21 100644
+--- a/drivers/net/ethernet/intel/igc/igc_tsn.c
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+@@ -54,11 +54,11 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
+ 
+ 		wr32(IGC_TXQCTL(i), 0);
+ 		wr32(IGC_STQT(i), 0);
+-		wr32(IGC_ENDQT(i), NSEC_PER_SEC);
++		wr32(IGC_ENDQT(i), NSEC_PER_MSEC);
+ 	}
+ 
+-	wr32(IGC_QBVCYCLET_S, NSEC_PER_SEC);
+-	wr32(IGC_QBVCYCLET, NSEC_PER_SEC);
++	wr32(IGC_QBVCYCLET_S, NSEC_PER_MSEC);
++	wr32(IGC_QBVCYCLET, NSEC_PER_MSEC);
+ 
+ 	adapter->flags &= ~IGC_FLAG_TSN_QBV_ENABLED;
+ 
 -- 
 2.29.2
 
