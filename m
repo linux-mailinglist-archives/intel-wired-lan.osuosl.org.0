@@ -2,79 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D594E2CC054
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 16:07:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 719CF2CC0FF
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 16:38:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9544D87996;
-	Wed,  2 Dec 2020 15:07:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CE27087900;
+	Wed,  2 Dec 2020 15:38:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GtPXM8wNTYwe; Wed,  2 Dec 2020 15:07:48 +0000 (UTC)
+	with ESMTP id xYT67409NERO; Wed,  2 Dec 2020 15:38:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 319D18799A;
-	Wed,  2 Dec 2020 15:07:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 120A587902;
+	Wed,  2 Dec 2020 15:38:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B58921BF359
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:07:46 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5437D1BF3A0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:38:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B1DFF87996
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:07:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 441C82E17D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:38:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ohVxpXMj7H7b for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 15:07:46 +0000 (UTC)
+ with ESMTP id qXBtbLF+Pruu for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 15:38:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 25CB887993
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:07:46 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id n7so789506pgg.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Dec 2020 07:07:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=oVUxlFzvG0YeZ7OkR1qvNOs6zaHHh9gvJZg4hCR2xvQ=;
- b=IpoqE5R1/KO4eIB1irQiNBUHh+Cf6DHXFh9d0k80o0IRJGSNBJA2G5lnPFDV92IPxz
- yYumX2Bj9tqLIUJ15xTSpI4+sjxS+/qE0CLzEm316ic5zxs2wt1n24eNilU+LBR7KjH5
- j6kyiV4+x+InCWJ70out41tBtCOzVmF01RhayR+t+esMo4JTpfgzg3h3hk2PrpEDQIgq
- sBtVsfNQ/oe85vqSFxHLwQ+Q5fRPdc2h1fh4uzaO2lqQXD7Y7LplP0gHlTSsbWx/7v2W
- FuJVq2mRwvsR/98hHfd/tQnNgtlBS4SgP8UeWjbxq08DZPpMqcQ+dac/XZS+n1VzfsIW
- pJ2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=oVUxlFzvG0YeZ7OkR1qvNOs6zaHHh9gvJZg4hCR2xvQ=;
- b=pkvArir1lmvGBESlgJf9LLecYC/ST/O28EeKtfgl8gc/a6GawKF28v1aHzFp+9NaFs
- oHBtSDshlBS3G2uXGVyvORdH2z7tXbfw7fk3AdEBX+F1SRN0CRXYrSNlOy9QpHotul1a
- oHzGO+jPyhaqtFysH20PzXlFxi2K6tzzCOn1CKsdoxMWJi/xkkcvzIxbxtD+PhFfHzTG
- fQXFaRpRIcjXap4/w1F/sE9QqEhhCGC+gIl7TFeJgb9YuG0NHPzyaFV3UBUazGemcarf
- nCl4P/ZNVm3pGpVl+oMT40n3j0NB82sBVw+bsMPVfeJND/JXhrIB3CdlT+Q+Z1dgdYUM
- V1ZA==
-X-Gm-Message-State: AOAM5305gLPvnufsgNQ6CCAURs0/iIQoi5jYDUPOqxOFXpUCIe1cnqou
- wwScNdPTTPk+yZa5MGjrVyw=
-X-Google-Smtp-Source: ABdhPJyVqKylIIgWwX4bFqUPOpm3v1ZXtYI/7pXnEGQEgCAEpFQlGhF+/6wjHxKhsHJIT2T93P6cjA==
-X-Received: by 2002:a63:f03:: with SMTP id e3mr273635pgl.316.1606921665773;
- Wed, 02 Dec 2020 07:07:45 -0800 (PST)
-Received: from VM.ger.corp.intel.com ([192.55.55.41])
- by smtp.gmail.com with ESMTPSA id p21sm148537pfn.87.2020.12.02.07.07.42
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 02 Dec 2020 07:07:45 -0800 (PST)
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com
-Date: Wed,  2 Dec 2020 16:07:24 +0100
-Message-Id: <20201202150724.31439-4-magnus.karlsson@gmail.com>
-X-Mailer: git-send-email 2.29.0
-In-Reply-To: <20201202150724.31439-1-magnus.karlsson@gmail.com>
-References: <20201202150724.31439-1-magnus.karlsson@gmail.com>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 13D7E203FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 15:38:02 +0000 (UTC)
+IronPort-SDR: gebG4AUf+mIxzHvF+y7vwagVayZ+UMqhUaPTZQa4YXOTR4SbmsfG5rAsIQy1lFsHm1sCNtz4L7
+ poLCyxC5s2Lw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9823"; a="234639977"
+X-IronPort-AV: E=Sophos;i="5.78,387,1599548400"; d="scan'208";a="234639977"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2020 07:38:00 -0800
+IronPort-SDR: ug/EuDJ5RuAzG+MVKRDo3eqBUamL0BzqxYq9Qqm+l+QXBJOeXqOgDlDaGzOi+kNFnWnZKrFvpA
+ Tx6DOD6g1mcQ==
+X-IronPort-AV: E=Sophos;i="5.78,387,1599548400"; d="scan'208";a="550104523"
+Received: from chenyu-office.sh.intel.com ([10.239.158.173])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2020 07:37:57 -0800
+Date: Wed, 2 Dec 2020 23:40:46 +0800
+From: Chen Yu <yu.c.chen@intel.com>
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Message-ID: <20201202154046.GA17693@chenyu-office.sh.intel.com>
+References: <cover.1606757180.git.yu.c.chen@intel.com>
+ <b8896b7748e516e9c440ab22e582e30f1389776c.1606757180.git.yu.c.chen@intel.com>
+ <DF79FD96-31E6-4D9A-BF0D-40B7FC563C0B@canonical.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 3/3] ice: optimize for
- XDP_REDIRECT in xsk path
+Content-Disposition: inline
+In-Reply-To: <DF79FD96-31E6-4D9A-BF0D-40B7FC563C0B@canonical.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+Subject: Re: [Intel-wired-lan] [PATCH 1/2][v3] e1000e: Leverage
+ direct_complete to speed up s2ram
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,58 +71,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, maciejromanfijalkowski@gmail.com
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, Len Brown <len.brown@intel.com>,
+ netdev@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, "Brandt, Todd E" <todd.e.brandt@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Magnus Karlsson <magnus.karlsson@intel.com>
+Hi Kai-Heng,
+On Wed, Dec 02, 2020 at 09:06:19PM +0800, Kai-Heng Feng wrote:
+> > ---
+> > v2: Added test data and some commit log revise(Paul Menzel)
+> >    Only skip the suspend/resume if the NIC is not a wake up device specified
+> >    by the user(Kai-Heng Feng)
+> > v3: Leverage direct complete mechanism to skip all hooks(Kai-Heng Feng)
+> > ---
+> > 
+> > -	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+> > +	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_SMART_PREPARE);
+> 
+> This isn't required for pci_pm_prepare() to use driver's .prepare callback.
+>
+pci_pm_prepare() is likely to return 1 even if driver's prepare() return 0,
+when DPM_FLAG_SMART_PREPARE is not set, which might cause prblems:
+if (!error && dev_pm_test_driver_flags(dev, DPM_FLAG_SMART_PREPARE))
+	return 0;
+> > 
+> > 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+> > 		pm_runtime_put_noidle(&pdev->dev);
+> > @@ -7890,6 +7897,7 @@ MODULE_DEVICE_TABLE(pci, e1000_pci_tbl);
+> > 
+> > static const struct dev_pm_ops e1000_pm_ops = {
+> > #ifdef CONFIG_PM_SLEEP
+> > +	.prepare	= e1000e_pm_prepare,
+> 
+> How do we make sure a link change happened in S3 can be detect after resume, without a .complete callback which ask device to runtime resume?
+> 
+The pm core's device_complete() has already done that pm_runtime_put() in the end.
 
-Optimize ice_run_xdp_zc() for the XDP program verdict being
-XDP_REDIRECT in the zsk zero-copy path. This path is only used when
-having AF_XDP zero-copy on and in that case most packets will be
-directed to user space. This provides a little over 100k extra packets
-in throughput on my server when running l2fwd in xdpsock.
+Just talked to Rafael and he might also give some feedbacks later.
 
-Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_xsk.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 797886524054..3b180e52112f 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -521,6 +521,14 @@ ice_run_xdp_zc(struct ice_ring *rx_ring, struct xdp_buff *xdp)
- 	}
- 
- 	act = bpf_prog_run_xdp(xdp_prog, xdp);
-+
-+	if (likely(act == XDP_REDIRECT)) {
-+		err = xdp_do_redirect(rx_ring->netdev, xdp, xdp_prog);
-+		result = !err ? ICE_XDP_REDIR : ICE_XDP_CONSUMED;
-+		rcu_read_unlock();
-+		return result;
-+	}
-+
- 	switch (act) {
- 	case XDP_PASS:
- 		break;
-@@ -528,10 +536,6 @@ ice_run_xdp_zc(struct ice_ring *rx_ring, struct xdp_buff *xdp)
- 		xdp_ring = rx_ring->vsi->xdp_rings[rx_ring->q_index];
- 		result = ice_xmit_xdp_buff(xdp, xdp_ring);
- 		break;
--	case XDP_REDIRECT:
--		err = xdp_do_redirect(rx_ring->netdev, xdp, xdp_prog);
--		result = !err ? ICE_XDP_REDIR : ICE_XDP_CONSUMED;
--		break;
- 	default:
- 		bpf_warn_invalid_xdp_action(act);
- 		fallthrough;
--- 
-2.29.0
-
+thanks,
+Chenyu
+> Kai-Heng
+> 
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
