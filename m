@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 670F12CC780
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 21:11:08 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A501E2CC788
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Dec 2020 21:12:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 13F59203AF;
-	Wed,  2 Dec 2020 20:11:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5AB9787A3A;
+	Wed,  2 Dec 2020 20:12:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VKvqeZUtAZds; Wed,  2 Dec 2020 20:11:06 +0000 (UTC)
+	with ESMTP id EiH5VdtbxlwZ; Wed,  2 Dec 2020 20:12:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 223552E2AE;
-	Wed,  2 Dec 2020 20:11:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C3BD087A2C;
+	Wed,  2 Dec 2020 20:12:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CA2E81BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 300591BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:12:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C4368877EF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D3714203AF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:12:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mwtDFUEwEm3v for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
+ with ESMTP id hGvGGsIYDsJz for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Dec 2020 20:12:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 62824877DB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:11:02 +0000 (UTC)
-Date: Wed, 2 Dec 2020 14:11:00 -0600
+ by silver.osuosl.org (Postfix) with ESMTPS id 2E7761FEED
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Dec 2020 20:12:49 +0000 (UTC)
+Date: Wed, 2 Dec 2020 14:12:46 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1606939862;
- bh=ZStLK7wKntRm02Bqw/laVzgLBledV/u9Ab/YK1z07Vk=;
+ s=k20201202; t=1606939968;
+ bh=Iykhya6FOdK4tHivQlBpTlZS4zh7Oi+Xg4iRs0sIZ4A=;
  h=From:To:Cc:Subject:In-Reply-To:From;
- b=OG2DmvqtxBqytPwxrIdBVblA491YcuiJd9AjbOL8fwoQBOT4r0xKrqOG8b/Xn9WwO
- PJR4XUUOoiKk5ovDi3k1M+CEh8mMoP3XP2Bz5YcEZV7wXi8sZhiput85T+JQr0gtZj
- mtiLej7c6jIagbC4zEJiKS1e3FhS2ZTGsjYFzhC03nnnH3jAP4LCbsykIqTYZA3LCN
- r/DCF8KQFMbckmnmZWnbLsRzDz+Mrc4MlomXx/l5by7irDpsup89z9PfblBPYm6DeT
- 6wlit8K2cuSstOLn0VNWkAMIq32u5K2w2FOVTdopeLYBxC8+cR+FWmxBZB77knS/1V
- PcrVnS5Apy7xw==
+ b=igL4lgZ9kTsNKazSQtXmu63EG+hgbA7n6BI0M9Tc5C8btJ9lzuL5IJnymKudUfRuA
+ QmyoRaK75Wyh4eOdGuu8Zx2T5FrQBk2curt2fTH69RwxzqV8PrK21fPdLI+zON9cQ+
+ IWxc1NFpiZrRM6dcdh0fz0u+4+u59YU7m4iR52CRqmtvN/hdokkROXutCbEXsCftpC
+ IjJmFOOhNIMb7SJsg5XDI5fgc13Lt/G0+ehV4yJAzy6NKuDRdmcn/w8xq1EORWV6oS
+ EIRZY+/rZtxkvTt+CAzPHJ4f47mQG5e6k8qfQf4JhVOnqeUjRKsYt4aPmobfOdjbWg
+ HGJ/lapMFHBzg==
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Mario Limonciello <mario.limonciello@dell.com>
-Message-ID: <20201202201100.GA1466664@bjorn-Precision-5520>
+Message-ID: <20201202201246.GA1467134@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201202161748.128938-3-mario.limonciello@dell.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2 2/5] e1000e: Move all s0ix related
- code into it's own source file
+In-Reply-To: <20201202161748.128938-5-mario.limonciello@dell.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2 4/5] e1000e: Add more Dell CML
+ systems into s0ix heuristics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,24 +71,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-s/it's/its/ (in subject as well as below).
+s/s0ix/S0ix/ in subject.
 
-Previous patches used "S0ix", not "s0ix" (in subject as well as
-below, as well as subject and commit log of 3/5 and 5/5).
+On Wed, Dec 02, 2020 at 10:17:47AM -0600, Mario Limonciello wrote:
+> These comet lake systems are not yet released, but have been validated
+> on pre-release hardware.
 
-On Wed, Dec 02, 2020 at 10:17:45AM -0600, Mario Limonciello wrote:
-> Introduce a flag to indicate the device should be using the s0ix
-> flows and use this flag to run those functions.
+s/comet lake/Comet Lake/ to match previous usage in patch 3/5.
 
-Would be nicer to have a move that does nothing else + a separate
-patch that adds a flag so it's more obvious, but again, not my circus.
-
-> Splitting the code to it's own file will make future heuristics
-> more self containted.
-
-s/containted/contained/
-
-Bjorn
+> This is being submitted separately from released hardware in case of
+> a regression between pre-release and release hardware so this commit
+> can be reverted alone.
+> 
+> Tested-by: Yijun Shen <yijun.shen@dell.com>
+> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/s0ix.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/s0ix.c b/drivers/net/ethernet/intel/e1000e/s0ix.c
+> index 74043e80c32f..0dd2e2702ebb 100644
+> --- a/drivers/net/ethernet/intel/e1000e/s0ix.c
+> +++ b/drivers/net/ethernet/intel/e1000e/s0ix.c
+> @@ -60,6 +60,9 @@ static bool e1000e_check_subsystem_allowlist(struct pci_dev *dev)
+>  		case 0x09c2: /* Precision 3551 */
+>  		case 0x09c3: /* Precision 7550 */
+>  		case 0x09c4: /* Precision 7750 */
+> +		case 0x0a40: /* Notebook 0x0a40 */
+> +		case 0x0a41: /* Notebook 0x0a41 */
+> +		case 0x0a42: /* Notebook 0x0a42 */
+>  			return true;
+>  		}
+>  	}
+> -- 
+> 2.25.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
