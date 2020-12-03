@@ -1,74 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FEEF2CDCD4
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 18:57:28 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D3A32CE136
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 22:57:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B47732E347;
-	Thu,  3 Dec 2020 17:57:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA91487B61;
+	Thu,  3 Dec 2020 21:57:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zF1ZMwWAlAEd; Thu,  3 Dec 2020 17:57:26 +0000 (UTC)
+	with ESMTP id pgr7l2qc8iUo; Thu,  3 Dec 2020 21:57:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 17FB12E359;
-	Thu,  3 Dec 2020 17:57:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 176B887B5C;
+	Thu,  3 Dec 2020 21:57:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1E2BD1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 17:57:22 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E7A491BF865
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 21:57:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 19C4E8769D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 17:57:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D9861204C9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 21:57:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qe47SWqSr5Tv for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Dec 2020 17:57:21 +0000 (UTC)
+ with ESMTP id a7wvWQdCRD7L for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Dec 2020 21:57:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4F27D876C7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 17:57:21 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id z5so2943224iob.11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 09:57:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Iwy1nxkNzsDK41E799mE0jnVk8uV5OT9jOHPDUmDqGM=;
- b=XoGEqufjqR3vkKZT6ohzTPHbYmQAEVrHwYWzKYVvuLrOnSG8qoPYZPMXRb/ZTV3+iM
- RFurA0Ji6TS47Z0GDIxGe5VtthNe510Edv7GZzMEej0XHD2l787mHzOkNms2m3qDcJMr
- zncZ3s4rmSlNTQqL1ZYTKd44SsHsjZfxo1H7x9Mf972v2F71ymXgMCjyhBZ5MAgCiZX4
- vF575s198IrH3oNRbIzmPIJqFivvO0Wnai2nACci34alJDGINGpU2o6cPiDkjBVGGkge
- t265fNI59yiryjJPNblz2LL95xlBbemJVqMeq+r0fdumnZI01qV7spshjQPGhwyJTbRI
- IrIg==
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 87057204A8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 21:57:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607032630;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=T4qx1azhAjfBX8YupuuibWk5k4ODm/VRqZyBDfaUn4M=;
+ b=WRSDAJhhFuwfF7flXeemlqv8cMUu4OECuYmw3tnDeRhadi1yGVGd4iWRutr26QdYTG7LZ1
+ hErRafYBanFnNd4h7OlVbqEglKG/1HFNV9tLDNrY9DpxbOBa4ipU08OMAY3LZMGIUtEnPK
+ 02D4DgVBGUP2lwzu3WFhU16K6lJe5AM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-474-7gTCXaGlMomoUnMmTlOslA-1; Thu, 03 Dec 2020 16:57:08 -0500
+X-MC-Unique: 7gTCXaGlMomoUnMmTlOslA-1
+Received: by mail-wm1-f69.google.com with SMTP id z12so1915688wmf.9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 13:57:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Iwy1nxkNzsDK41E799mE0jnVk8uV5OT9jOHPDUmDqGM=;
- b=kJOOpIUKNUxme+K9sxAR6zxZZeupk2Qp6tX5Vd4hgw37zRWdv3RT4fzKgWbKa6B7gC
- mzT0bP/V0M3+KrX83RstNNHhaUIUeBzhFnStPH9kt2IisyEOd7mh0DmlqHcH9xhZDfj7
- xq3MnJAaERuNtdQW0b8NXKEYcKeWRPTKhGEppj9QgEX12YYMrRQiWYYlTWVF4ZCfM+vd
- AKTO2FfFurerRXRzH9RNhXKaOW8jfTwTvT2W1POteRvBkBiO/XyXWfAg6CadpGPrZGgR
- z70RXD6ccSjDt3wa7kwC1Xz8eO52baWicBRHCyI4oZyQx9NtSHDP+XSyny5QkgwTI1CW
- bzFw==
-X-Gm-Message-State: AOAM532+P3mFBl0g5l1CQuI8wtlx7tEN/T4BK4d3/2/EacNy1qhLXcAQ
- YXUIBoyKUx5dFBJRqoK1DCwdLBwBglDT2MK+26w=
-X-Google-Smtp-Source: ABdhPJwaPzSY4DqfjK75ViVJg/XJ88Har94J8tA+MecYJ1lx7QosnvxbdvszOgZKPN9eBNSFUvegAOpgiaZ4u9JdKhE=
-X-Received: by 2002:a05:6602:152:: with SMTP id
- v18mr361343iot.187.1607018240352; 
- Thu, 03 Dec 2020 09:57:20 -0800 (PST)
-MIME-Version: 1.0
-References: <20201203133236.222207-1-andrew@daynix.com>
-In-Reply-To: <20201203133236.222207-1-andrew@daynix.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 3 Dec 2020 09:57:09 -0800
-Message-ID: <CAKgT0UeoKDcDeMMG7KGMSKXP26txrwNuc73HKFPa57y=Vuo-kg@mail.gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=T4qx1azhAjfBX8YupuuibWk5k4ODm/VRqZyBDfaUn4M=;
+ b=ZLg2i4Qp0dhK3FUv4sYgBJ4pzkSl9+HytNQBv8xP/PnMop5+an6r0xIj3gqGvO1Tli
+ pp82NvDDN7WlxUhe9ApDz9Nf/3N6VsKNLxLVFg3gNc15LxQA3pXhKkxd9fxapiQnBF0Y
+ G/RkFMOSd5d7xaRpaWZr4Tpnc0oAFi5WvCKEDeSrk2pCpMBvrI5jQ9MhBi7yNcwVPUG6
+ 4capqoqfRLwqdfi5YEYUW+olTgo8b47rSG5wuCqLIEfgE/DPuR7SFYxHVruSPgT0Q53N
+ q/uYBGWv+tHKuEH9GJGKUKG9loeAsR8FnEN5YbcMbs/zmiS6XbB2q7FfvGMZCIp6BJ/n
+ HZ/Q==
+X-Gm-Message-State: AOAM5306KeRN9JA5Ot3CLrH/s1VtjGc7l01XeCBb03QXzrr48+pR0tV2
+ 05OyEP0XHzFSdT6sR6/iezIQ8h2Rt+cAwCan1Yi/vnqPaySUx5AHgfBbI2evcUxvlUDLP5Gw5OU
+ JPEXdnni43ie7ggW4SAvFL+RREPnqMQ==
+X-Received: by 2002:a1c:3c4:: with SMTP id 187mr818103wmd.143.1607032627141;
+ Thu, 03 Dec 2020 13:57:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz1gurwG73/lEfF3CPCfcQLDcrWO+FPofMkeo+MZQ8Y6BeZutMtLbqX1izShk6f9ysZlIbYIA==
+X-Received: by 2002:a1c:3c4:: with SMTP id 187mr818089wmd.143.1607032626884;
+ Thu, 03 Dec 2020 13:57:06 -0800 (PST)
+Received: from redhat.com (bzq-79-176-44-197.red.bezeqint.net. [79.176.44.197])
+ by smtp.gmail.com with ESMTPSA id d2sm923739wrn.43.2020.12.03.13.57.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Dec 2020 13:57:06 -0800 (PST)
+Date: Thu, 3 Dec 2020 16:57:03 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Andrew Melnychenko <andrew@daynix.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2] e1000e: Added ICR clearing by
- corresponding IMS bit.
+Message-ID: <20201203165317-mutt-send-email-mst@kernel.org>
+References: <20201203132517.220811-1-andrew@daynix.com>
+ <20201203132517.220811-3-andrew@daynix.com>
+MIME-Version: 1.0
+In-Reply-To: <20201203132517.220811-3-andrew@daynix.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Subject: Re: [Intel-wired-lan] [PATCH v4 2/2] hw/virtio-pci Added AER
+ capability.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,77 +97,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>, qemu-devel@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 3, 2020 at 5:00 AM Andrew Melnychenko <andrew@daynix.com> wrote:
->
-> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1707441
-
-So the bugzilla seems to be reporting that the NIC operstate is being
-misreported when qemu has configured the link down. Based on the
-description it isn't clear to me how this patch addresses that. Some
-documentation on how you reproduced the issue, and what was seen
-before and after this patch would be useful.
-
-> Added ICR clearing if there is IMS bit - according to the note by
-
-Should probably be "Add" instead of "Added". Same for the title of the patch.
-
-> section 13.3.27 of the 8257X developers manual.
->
+On Thu, Dec 03, 2020 at 03:25:17PM +0200, Andrew Melnychenko wrote:
+> From: Andrew <andrew@daynix.com>
+> 
+> Added AER capability for virtio-pci devices.
+> Also added property for devices, by default AER is disabled.
+> 
 > Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
 > ---
->  hw/net/e1000e_core.c | 10 ++++++++++
->  hw/net/trace-events  |  1 +
->  2 files changed, 11 insertions(+)
->
-> diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-> index 095c01ebc6..9705f5c52e 100644
-> --- a/hw/net/e1000e_core.c
-> +++ b/hw/net/e1000e_core.c
-> @@ -2624,6 +2624,16 @@ e1000e_mac_icr_read(E1000ECore *core, int index)
->          e1000e_clear_ims_bits(core, core->mac[IAM]);
->      }
->
-> +    /*
-> +     * PCIe* GbE Controllers Open Source Software Developer's Manual
-> +     * 13.3.27 Interrupt Cause Read Register
-> +     */
-> +    if ((core->mac[ICR] & E1000_ICR_ASSERTED) &&
-> +        (core->mac[ICR] & core->mac[IMS])) {
-> +        trace_e1000e_irq_icr_clear_icr_bit_ims(core->mac[ICR], core->mac[IMS]);
-> +        core->mac[ICR] = 0;
-> +    }
+>  hw/virtio/virtio-pci.c | 16 ++++++++++++++++
+>  hw/virtio/virtio-pci.h |  4 ++++
+>  2 files changed, 20 insertions(+)
+> 
+> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+> index ceaa233129..f863f69ede 100644
+> --- a/hw/virtio/virtio-pci.c
+> +++ b/hw/virtio/virtio-pci.c
+> @@ -1817,6 +1817,12 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+>           */
+>          pci_set_word(pci_dev->config + pos + PCI_PM_PMC, 0x3);
+>  
+> +        if (proxy->flags & VIRTIO_PCI_FLAG_AER) {
+> +            pcie_aer_init(pci_dev, PCI_ERR_VER, last_pcie_cap_offset,
+> +                          PCI_ERR_SIZEOF, NULL);
+> +            last_pcie_cap_offset += PCI_ERR_SIZEOF;
+> +        }
 > +
->      trace_e1000e_irq_icr_read_exit(core->mac[ICR]);
->      e1000e_update_interrupt_state(core);
->      return ret;
 
-Changes like this have historically been problematic. I am curious
-what testing had been done on this and with what drivers? Keep in mind
-that we have to support several flavors of BSD, Windows, and Linux
-with this.
 
-> diff --git a/hw/net/trace-events b/hw/net/trace-events
-> index 5db45456d9..2c3521a19c 100644
-> --- a/hw/net/trace-events
-> +++ b/hw/net/trace-events
-> @@ -237,6 +237,7 @@ e1000e_irq_icr_read_entry(uint32_t icr) "Starting ICR read. Current ICR: 0x%x"
->  e1000e_irq_icr_read_exit(uint32_t icr) "Ending ICR read. Current ICR: 0x%x"
->  e1000e_irq_icr_clear_zero_ims(void) "Clearing ICR on read due to zero IMS"
->  e1000e_irq_icr_clear_iame(void) "Clearing ICR on read due to IAME"
-> +e1000e_irq_icr_clear_icr_bit_ims(uint32_t icr, uint32_t ims) "Clearing ICR on read due corresponding IMS bit: 0x%x & 0x%x"
->  e1000e_irq_iam_clear_eiame(uint32_t iam, uint32_t cause) "Clearing IMS due to EIAME, IAM: 0x%X, cause: 0x%X"
->  e1000e_irq_icr_clear_eiac(uint32_t icr, uint32_t eiac) "Clearing ICR bits due to EIAC, ICR: 0x%X, EIAC: 0x%X"
->  e1000e_irq_ims_clear_set_imc(uint32_t val) "Clearing IMS bits due to IMC write 0x%x"
-> --
-> 2.29.2
+What I dislike here is that the property can be added to
+pci devices (not express) and will apparently succeed.
+Pls add code to validate and fail init.
+
+
+>          if (proxy->flags & VIRTIO_PCI_FLAG_INIT_DEVERR) {
+>              /* Init error enabling flags */
+>              pcie_cap_deverr_init(pci_dev);
+> @@ -1858,7 +1864,15 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+>  
+>  static void virtio_pci_exit(PCIDevice *pci_dev)
+>  {
+> +    VirtIOPCIProxy *proxy = VIRTIO_PCI(pci_dev);
+> +    bool pcie_port = pci_bus_is_express(pci_get_bus(pci_dev)) &&
+> +                     !pci_bus_is_root(pci_get_bus(pci_dev));
+> +
+>      msix_uninit_exclusive_bar(pci_dev);
+> +    if (proxy->flags & VIRTIO_PCI_FLAG_AER && pcie_port &&
+> +        pci_is_express(pci_dev)) {
+> +        pcie_aer_exit(pci_dev);
+> +    }
+>  }
+>  
+>  static void virtio_pci_reset(DeviceState *qdev)
+> @@ -1911,6 +1925,8 @@ static Property virtio_pci_properties[] = {
+>                      VIRTIO_PCI_FLAG_INIT_PM_BIT, true),
+>      DEFINE_PROP_BIT("x-pcie-flr-init", VirtIOPCIProxy, flags,
+>                      VIRTIO_PCI_FLAG_INIT_FLR_BIT, true),
+> +    DEFINE_PROP_BIT("aer", VirtIOPCIProxy, flags,
+> +                    VIRTIO_PCI_FLAG_AER_BIT, false),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 >
+> diff --git a/hw/virtio/virtio-pci.h b/hw/virtio/virtio-pci.h
+> index 06e2af12de..d7d5d403a9 100644
+> --- a/hw/virtio/virtio-pci.h
+> +++ b/hw/virtio/virtio-pci.h
+> @@ -41,6 +41,7 @@ enum {
+>      VIRTIO_PCI_FLAG_INIT_LNKCTL_BIT,
+>      VIRTIO_PCI_FLAG_INIT_PM_BIT,
+>      VIRTIO_PCI_FLAG_INIT_FLR_BIT,
+> +    VIRTIO_PCI_FLAG_AER_BIT,
+>  };
+>  
+>  /* Need to activate work-arounds for buggy guests at vmstate load. */
+> @@ -80,6 +81,9 @@ enum {
+>  /* Init Function Level Reset capability */
+>  #define VIRTIO_PCI_FLAG_INIT_FLR (1 << VIRTIO_PCI_FLAG_INIT_FLR_BIT)
+>  
+> +/* Advanced Error Reporting capability */
+> +#define VIRTIO_PCI_FLAG_AER (1 << VIRTIO_PCI_FLAG_AER_BIT)
+> +
+>  typedef struct {
+>      MSIMessage msg;
+>      int virq;
+> -- 
+> 2.29.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
