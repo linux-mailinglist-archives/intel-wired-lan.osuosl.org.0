@@ -1,46 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39A072CCC59
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 03:18:24 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BBE62CCFEB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 07:58:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 98DF687209;
-	Thu,  3 Dec 2020 02:18:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8D450203BE;
+	Thu,  3 Dec 2020 06:58:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dGkg-KWeIB2j; Thu,  3 Dec 2020 02:18:22 +0000 (UTC)
+	with ESMTP id rzMy+mopvLch; Thu,  3 Dec 2020 06:58:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D318387281;
-	Thu,  3 Dec 2020 02:18:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5EF1B203EE;
+	Thu,  3 Dec 2020 06:58:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B7F7D1BF4DB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 02:18:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3C18B1BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 06:58:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B13B5870A7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 02:18:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2E91287141
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 06:58:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WXCJRhjvWy_6 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Dec 2020 02:18:20 +0000 (UTC)
+ with ESMTP id C-1UTzRVBtAF for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Dec 2020 06:58:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 47A838701E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 02:18:20 +0000 (UTC)
-From: Jakub Kicinski <kuba@kernel.org>
-Authentication-Results: mail.kernel.org;
- dkim=permerror (bad message/signature format)
-To: jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com
-Date: Wed,  2 Dec 2020 18:18:06 -0800
-Message-Id: <20201203021806.692194-1-kuba@kernel.org>
-X-Mailer: git-send-email 2.26.2
+Received: from mail-pj1-f67.google.com (mail-pj1-f67.google.com
+ [209.85.216.67])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CB13386DC9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 06:58:17 +0000 (UTC)
+Received: by mail-pj1-f67.google.com with SMTP id p21so1627570pjv.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Dec 2020 22:58:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YsmUWAir1b5Cki8mRIguhpP0JOCeBAGFzmuzsMza7Bg=;
+ b=Def33h22jTS2hyweuH6CldMV6vSSY54coAaTh/4noAeWWG+dtnOACR+W7TO0fz1suh
+ zM80Lu9mTAr3Equ7nJ6saR/Cr8Xbpr1C9kCyIf+wz656UXHvlPMVpfSzH0Gycuz7ufAv
+ TyeT/20NAAprLUW7NQXIYqq/drVWQfEKgFWN7My/hmdaKZ/Zuif9kH3XK65SVE6lpSC7
+ gJnKjcZeOkP4fuBCs06cv+EwF0hnKL3TT84sXetU5WNcHU4zbssbymjZylItGlKfPig9
+ vV6ml2Mg8AeZzOkklOQyP2Y/Ilv3lX9x7SphipFOYGcloFEGo2g81nKp1fUlThHV6FAD
+ vCFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YsmUWAir1b5Cki8mRIguhpP0JOCeBAGFzmuzsMza7Bg=;
+ b=QkvYIMdRMSbZAg7FP2YnKf/QArFGrocTkDyamkdDDivw5KHxuN3X2DCqAKNJoADoDd
+ DAIhjULlMgLHW0fbSzj36lR0egZG6U9xWi2xVZDbCxqC6x6zNdhLKYWcuFo+phyqs7oO
+ fi8ryzAbuVv4CgVcWsbrsxyFdhLQNkYged3EQMU36LZf7pY05OQAkVD2yS1ALvLalNvg
+ fR+/RcnNaEQBdZlnhtC1xgMCOqO6A5WVERjYtlPEgUYmTocLur1pLD5beWqk2grYro3B
+ 3GvGBkyq1AM5LPkGMMWVpTx1tS2UpPMqJcz3be025E6DAxwEku4zWOcpNW3/oJw+0hwx
+ oCpw==
+X-Gm-Message-State: AOAM533LEeN2JvD82h6hyrP55IOJRsbNPlCvkaBp6iiVjPTi1wt/mRoz
+ BULCJJXGes2QPkIHcadCxJkUUKOkYZVZrGmTsNg=
+X-Google-Smtp-Source: ABdhPJx+E1N0OEAyN6x4UdYwJstVEoeYMazJKS4KFK+eH868p3JFsnCe8ItLhA80rRSTM1sQ/U80s/BTqmELuy5i/xU=
+X-Received: by 2002:a17:90a:8c4:: with SMTP id 4mr1762593pjn.204.1606978697290; 
+ Wed, 02 Dec 2020 22:58:17 -0800 (PST)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] iavf: fix double-release of rtnl_lock
+References: <20201202150724.31439-1-magnus.karlsson@gmail.com>
+ <20201202204041.GA30907@ranger.igk.intel.com>
+In-Reply-To: <20201202204041.GA30907@ranger.igk.intel.com>
+From: Magnus Karlsson <magnus.karlsson@gmail.com>
+Date: Thu, 3 Dec 2020 07:58:06 +0100
+Message-ID: <CAJ8uoz04dFruNnDDyvgbPBZBbMqZxHS6xQJ66dnoPLFtWXv0Uw@mail.gmail.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/3] i40e, ice,
+ ixgbe: optimize for XDP_REDIRECT in xsk path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,52 +81,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jakub.pawlak@intel.com,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>
+Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
+ Network Development <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This code does not jump to exit on an error in iavf_lan_add_device(),
-so the rtnl_unlock() from the normal path will follow.
+On Wed, Dec 2, 2020 at 9:49 PM Maciej Fijalkowski
+<maciej.fijalkowski@intel.com> wrote:
+>
+> On Wed, Dec 02, 2020 at 04:07:21PM +0100, Magnus Karlsson wrote:
+> > Optimize run_xdp_zc() for the XDP program verdict being XDP_REDIRECT
+> > in the zsk zero-copy path. This path is only used when having AF_XDP
+> > zero-copy on and in that case most packets will be directed to user
+> > space. This provides around 100k extra packets in throughput on my
+> > server when running l2fwd in xdpsock.
+> >
+> > Thanks: Magnus
+>
+> For series:
+> Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+>
+> You only ate 'e' from i40e subject line.
 
-Fixes: b66c7bc1cd4d ("iavf: Refactor init state machine")
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Sorry, you are right. Tony, would you please be so kind to add this
+missing "e" in the commit message before you send the pull request?
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 95543dfd4fe7..0a867d64d467 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1829,21 +1829,19 @@ static int iavf_init_get_resources(struct iavf_adapter *adapter)
- 		}
- 	}
- 
- 	adapter->netdev_registered = true;
- 
- 	netif_tx_stop_all_queues(netdev);
- 	if (CLIENT_ALLOWED(adapter)) {
- 		err = iavf_lan_add_device(adapter);
--		if (err) {
--			rtnl_unlock();
-+		if (err)
- 			dev_info(&pdev->dev, "Failed to add VF to client API service list: %d\n",
- 				 err);
--		}
- 	}
- 	dev_info(&pdev->dev, "MAC address: %pM\n", adapter->hw.mac.addr);
- 	if (netdev->features & NETIF_F_GRO)
- 		dev_info(&pdev->dev, "GRO is enabled\n");
- 
- 	adapter->state = __IAVF_DOWN;
- 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state);
- 	rtnl_unlock();
--- 
-2.26.2
+Thanks: Magnus
 
+> >
+> > Magnus Karlsson (3):
+> >   i40: optimize for XDP_REDIRECT in xsk path
+> >   ixgbe: optimize for XDP_REDIRECT in xsk path
+> >   ice: optimize for XDP_REDIRECT in xsk path
+> >
+> >  drivers/net/ethernet/intel/i40e/i40e_xsk.c   | 11 +++++++----
+> >  drivers/net/ethernet/intel/ice/ice_xsk.c     | 12 ++++++++----
+> >  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 11 +++++++----
+> >  3 files changed, 22 insertions(+), 12 deletions(-)
+> >
+> >
+> > base-commit: 6b4f503186b73e3da24c6716c8c7ea903e6b74d4
+> > --
+> > 2.29.0
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
