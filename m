@@ -2,79 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB4AE2CD64B
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 14:01:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA52D2CD67B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 14:17:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AF5787516;
-	Thu,  3 Dec 2020 13:01:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7037987526;
+	Thu,  3 Dec 2020 13:17:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EqIIZuWNoN2T; Thu,  3 Dec 2020 13:01:03 +0000 (UTC)
+	with ESMTP id 5BGjxov1ANgT; Thu,  3 Dec 2020 13:17:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8604387519;
-	Thu,  3 Dec 2020 13:01:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E36B87529;
+	Thu,  3 Dec 2020 13:17:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B5B1A1BF344
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:01:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D68801BF5A5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:17:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AEEA0871E6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:01:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CE3BE87910
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:17:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pWKkY5iGok7q for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Dec 2020 13:00:57 +0000 (UTC)
+ with ESMTP id A70wW+PwXc9d for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Dec 2020 13:17:29 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
- [209.85.208.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0CE99871A5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:00:57 +0000 (UTC)
-Received: by mail-lj1-f194.google.com with SMTP id y7so2404007lji.8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 05:00:56 -0800 (PST)
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9BD0C86FC9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:17:29 +0000 (UTC)
+Received: by mail-ed1-f46.google.com with SMTP id y22so2055995edv.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 05:17:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=daynix-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mwUYW1H+JzV3/GtHWdM4HHeVaxmgzWJndCsLs+sl1Ng=;
- b=BgtQsK8CYLko5vgcOxproEXQ+73QQbr4gxZ080r7M9VDB9OnsVvv/yMggb00l9xIJh
- zNtThGLLBVrnx/1zg6n/xQoB5vuWRyY/L1SpPs/mr3lBuTqimQkVdE+1GQNJJE3c7MvU
- 4pOY96mx1gfX/XMnhBRGAKpQbGfB7t6PD1jP9DOsJqgmaYSsqN0UpClaj2AC7VBIEQ/G
- mdfiEbU+Qf5C731hM05I4xJdZBRtQPNfk4X8oXvY86cFPFWNTtbAyPJWg8cxgdKIQOYJ
- egr/q/FFnOyjKGOAKRFfJbh+XsmNaAjfV7hc0kBoNC0qH2RXjImLTWTc7zx83sJL9IrN
- tT+A==
+ bh=FTIXK8Mp2m2AMw0jbqYrjv2kNQYnyeKPV4gyIZ7wxG8=;
+ b=DHHGScHIEY4eeaYDHRrLaWRaPURzlxOs2Qt3/jxPJ6VJwmbNEg4BXXU0QyM8CcTqwy
+ UJpv+4nSRYB/3838yNsBmM2+Smw4c3iQZt7wGNgkcNPDaYAFZV/QMSnmofrgQ1EEw4lK
+ /oIPm5GSc0qAFxjydCMzZvqHvEsVtuQZquP5V2+LmxlzBdYDBhUi+3d4lom6WhWA0sjZ
+ 0e0PBg+VjD97axM4lFdWdvX7qhzzGleU30J0k+KElA8cnB/3QwMORc8WmaTFSK8JQe2p
+ jTxrUzTW+HVKKXLl3ALxZUizt+0HUEsGG50JX09tipY40Djp0necYZfByW3MT7kCfv1B
+ SXPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=mwUYW1H+JzV3/GtHWdM4HHeVaxmgzWJndCsLs+sl1Ng=;
- b=XpkAEDm5HPTISdwMdKfjpJbJexSKA1b7HLaqYy8bMyok5KATkW8asM72bfL+r/J3N5
- dNgfWFuqddwd+kz9JVNM5Uq8jhl36h2X7BHDA+HnkCATGGM8/0/tZenjXnfFN5Yt9/69
- hm8rtSWmsjXaCN249SL35RFKjQABbrohGzq3tHtAYE/wC5shpXqwRP+BbAQhZ1ipDEEJ
- 7s+WPxxPWP4UEI2BJ34jZkiUXi9f/JgBp07KlhDLpU56PVYWSwqFczXsZeESLnLpHZAB
- 8nTbgVKM0WCpJ7AA0wAAhl7LoShe9PSMszGA5Fg11bd0p5h3pcIPnyYFYm6VSbVjKE9V
- ZmWQ==
-X-Gm-Message-State: AOAM531+Ag5kGn+DT+cFjAkh//aK/I6UE4+OpRvkGOpIfdk+nwtR7Dza
- Cni18GudTlwpeI28cl8i5idZKynDatmSfg==
-X-Google-Smtp-Source: ABdhPJyN5qjL2Ch9BCOndJjC6c1/mY97x20lmlcEG6wsT8I74Ek4oUXSdyd+jvXvJIWLoyJD26UxVQ==
-X-Received: by 2002:a19:404a:: with SMTP id n71mr1248846lfa.493.1606999965731; 
- Thu, 03 Dec 2020 04:52:45 -0800 (PST)
+ bh=FTIXK8Mp2m2AMw0jbqYrjv2kNQYnyeKPV4gyIZ7wxG8=;
+ b=LpT3C+p7V4B++E/gRxvW6BM2J5RL3nvb70g/bwdElRiPPlSt90VD/bsf4+LIt6VQzK
+ BqaW039JkUulJxblT5jIXPP4NuQnicE3wrHSptZctXpIlqPxxXlKHUq42Anxj4EPU6Gg
+ JAaYG3CR7O02UaL25GojD5HYAoVqC30ACoIWxImtRXkNqHkkxnn4c3Cdp/g/u0SOOBZi
+ 50I3UoiiAIzPjyMUNNqqWTJ92ULesjnHmzgDJlsi2zq4+3X4Sfb6+ry6ndG/gzWXsaub
+ OmPPHMQqLlpmuGI8snSoxbBtXr0xoQRZtJDpbOQVY57x6o4fXX+tVglTNQ5UiRx6hjjx
+ VzlA==
+X-Gm-Message-State: AOAM533JYIgWhCNDpcT228Wj4qpeXdD7qlrAB+Q8j7cOnM8Al3k0aFKC
+ TrE4zqz3Rkfky+fknyijLD0ciwWgDvJDPg==
+X-Google-Smtp-Source: ABdhPJxn1bvdWXhv3IKmZGiLEM1k3xmR58U7g0UqRt9c+jaSnwAF76IK04kNNB5wYuoxCuQzagpPEA==
+X-Received: by 2002:a05:651c:1033:: with SMTP id
+ w19mr1201668ljm.55.1606999966900; 
+ Thu, 03 Dec 2020 04:52:46 -0800 (PST)
 Received: from navi.cosmonova.net.ua ([95.67.24.131])
- by smtp.gmail.com with ESMTPSA id b17sm499891lfc.93.2020.12.03.04.52.44
+ by smtp.gmail.com with ESMTPSA id b17sm499891lfc.93.2020.12.03.04.52.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Dec 2020 04:52:45 -0800 (PST)
+ Thu, 03 Dec 2020 04:52:46 -0800 (PST)
 From: Andrew Melnychenko <andrew@daynix.com>
 To: mst@redhat.com
-Date: Thu,  3 Dec 2020 15:25:16 +0200
-Message-Id: <20201203132517.220811-2-andrew@daynix.com>
+Date: Thu,  3 Dec 2020 15:25:17 +0200
+Message-Id: <20201203132517.220811-3-andrew@daynix.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201203132517.220811-1-andrew@daynix.com>
 References: <20201203132517.220811-1-andrew@daynix.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v4 1/2] hw/virtio-pci Added counter for
- pcie capabilities offsets.
+Subject: [Intel-wired-lan] [PATCH v4 2/2] hw/virtio-pci Added AER capability.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,36 +95,79 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Andrew <andrew@daynix.com>
 
-Removed hardcoded offset for ats. Added cap offset counter
-for future capabilities like AER.
+Added AER capability for virtio-pci devices.
+Also added property for devices, by default AER is disabled.
 
 Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
 ---
- hw/virtio/virtio-pci.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/virtio/virtio-pci.c | 16 ++++++++++++++++
+ hw/virtio/virtio-pci.h |  4 ++++
+ 2 files changed, 20 insertions(+)
 
 diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index 36524a5728..ceaa233129 100644
+index ceaa233129..f863f69ede 100644
 --- a/hw/virtio/virtio-pci.c
 +++ b/hw/virtio/virtio-pci.c
-@@ -1798,6 +1798,7 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+@@ -1817,6 +1817,12 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+          */
+         pci_set_word(pci_dev->config + pos + PCI_PM_PMC, 0x3);
  
-     if (pcie_port && pci_is_express(pci_dev)) {
-         int pos;
-+        uint16_t last_pcie_cap_offset = PCI_CONFIG_SPACE_SIZE;
++        if (proxy->flags & VIRTIO_PCI_FLAG_AER) {
++            pcie_aer_init(pci_dev, PCI_ERR_VER, last_pcie_cap_offset,
++                          PCI_ERR_SIZEOF, NULL);
++            last_pcie_cap_offset += PCI_ERR_SIZEOF;
++        }
++
+         if (proxy->flags & VIRTIO_PCI_FLAG_INIT_DEVERR) {
+             /* Init error enabling flags */
+             pcie_cap_deverr_init(pci_dev);
+@@ -1858,7 +1864,15 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
  
-         pos = pcie_endpoint_cap_init(pci_dev, 0);
-         assert(pos > 0);
-@@ -1833,7 +1834,8 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
-         }
+ static void virtio_pci_exit(PCIDevice *pci_dev)
+ {
++    VirtIOPCIProxy *proxy = VIRTIO_PCI(pci_dev);
++    bool pcie_port = pci_bus_is_express(pci_get_bus(pci_dev)) &&
++                     !pci_bus_is_root(pci_get_bus(pci_dev));
++
+     msix_uninit_exclusive_bar(pci_dev);
++    if (proxy->flags & VIRTIO_PCI_FLAG_AER && pcie_port &&
++        pci_is_express(pci_dev)) {
++        pcie_aer_exit(pci_dev);
++    }
+ }
  
-         if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
--            pcie_ats_init(pci_dev, 256);
-+            pcie_ats_init(pci_dev, last_pcie_cap_offset);
-+            last_pcie_cap_offset += PCI_EXT_CAP_ATS_SIZEOF;
-         }
+ static void virtio_pci_reset(DeviceState *qdev)
+@@ -1911,6 +1925,8 @@ static Property virtio_pci_properties[] = {
+                     VIRTIO_PCI_FLAG_INIT_PM_BIT, true),
+     DEFINE_PROP_BIT("x-pcie-flr-init", VirtIOPCIProxy, flags,
+                     VIRTIO_PCI_FLAG_INIT_FLR_BIT, true),
++    DEFINE_PROP_BIT("aer", VirtIOPCIProxy, flags,
++                    VIRTIO_PCI_FLAG_AER_BIT, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
  
-         if (proxy->flags & VIRTIO_PCI_FLAG_INIT_FLR) {
+diff --git a/hw/virtio/virtio-pci.h b/hw/virtio/virtio-pci.h
+index 06e2af12de..d7d5d403a9 100644
+--- a/hw/virtio/virtio-pci.h
++++ b/hw/virtio/virtio-pci.h
+@@ -41,6 +41,7 @@ enum {
+     VIRTIO_PCI_FLAG_INIT_LNKCTL_BIT,
+     VIRTIO_PCI_FLAG_INIT_PM_BIT,
+     VIRTIO_PCI_FLAG_INIT_FLR_BIT,
++    VIRTIO_PCI_FLAG_AER_BIT,
+ };
+ 
+ /* Need to activate work-arounds for buggy guests at vmstate load. */
+@@ -80,6 +81,9 @@ enum {
+ /* Init Function Level Reset capability */
+ #define VIRTIO_PCI_FLAG_INIT_FLR (1 << VIRTIO_PCI_FLAG_INIT_FLR_BIT)
+ 
++/* Advanced Error Reporting capability */
++#define VIRTIO_PCI_FLAG_AER (1 << VIRTIO_PCI_FLAG_AER_BIT)
++
+ typedef struct {
+     MSIMessage msg;
+     int virq;
 -- 
 2.29.2
 
