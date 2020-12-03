@@ -1,79 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 913F22CD649
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 14:00:10 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB4AE2CD64B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Dec 2020 14:01:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D3A5087AD9;
-	Thu,  3 Dec 2020 13:00:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5AF5787516;
+	Thu,  3 Dec 2020 13:01:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8mLgjJ9ySezB; Thu,  3 Dec 2020 13:00:08 +0000 (UTC)
+	with ESMTP id EqIIZuWNoN2T; Thu,  3 Dec 2020 13:01:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F19A387ACB;
-	Thu,  3 Dec 2020 13:00:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8604387519;
+	Thu,  3 Dec 2020 13:01:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 253291BF344
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:00:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B5B1A1BF344
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:01:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2070787ABE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:00:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AEEA0871E6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:01:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7Y4cj-xobqgq for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Dec 2020 13:00:05 +0000 (UTC)
-X-Greylist: delayed 00:07:17 by SQLgrey-1.7.6
-Received: from mail-lf1-f47.google.com (mail-lf1-f47.google.com
- [209.85.167.47])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B3AD987A31
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:00:04 +0000 (UTC)
-Received: by mail-lf1-f47.google.com with SMTP id l11so2609234lfg.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 05:00:04 -0800 (PST)
+ with ESMTP id pWKkY5iGok7q for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Dec 2020 13:00:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0CE99871A5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Dec 2020 13:00:57 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id y7so2404007lji.8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Dec 2020 05:00:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=daynix-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GX6ankB3VIUsz6cmu/u03hWEiPljuvEMQ/2K8vSivlU=;
- b=A9CQqJCErse/hXH48A+Qi4a0x0xT5tOXb7m5qt6e+AOv7v0HeDKRG5e0Ggsif8+zuT
- Jq/+dRp+4UcTcjh56eHN4iS5jUlZbNeMgcLcAsF+AwOEqe7hGsGiQ7CC33RqafX2qNBD
- rDt89IdCpHqQ7acBOhbInfhRCJGc3rvIo0Z3dQgiJxUtq8iXJGhebQ6QiD4ms4ge1OgT
- JEZbMNqlb+IpYZ+zKx2IlX58kYgq2jg0l2VWhr+dCqwbWRuqgqpX74w8xcee+uZ3CK7n
- GlGuUQmdyfCUXqGutJU69j+DALj21DIFJ/eFTsB/QoNQDZXAwCy8Ok/r4xkcqzo4mDUR
- Vupw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=mwUYW1H+JzV3/GtHWdM4HHeVaxmgzWJndCsLs+sl1Ng=;
+ b=BgtQsK8CYLko5vgcOxproEXQ+73QQbr4gxZ080r7M9VDB9OnsVvv/yMggb00l9xIJh
+ zNtThGLLBVrnx/1zg6n/xQoB5vuWRyY/L1SpPs/mr3lBuTqimQkVdE+1GQNJJE3c7MvU
+ 4pOY96mx1gfX/XMnhBRGAKpQbGfB7t6PD1jP9DOsJqgmaYSsqN0UpClaj2AC7VBIEQ/G
+ mdfiEbU+Qf5C731hM05I4xJdZBRtQPNfk4X8oXvY86cFPFWNTtbAyPJWg8cxgdKIQOYJ
+ egr/q/FFnOyjKGOAKRFfJbh+XsmNaAjfV7hc0kBoNC0qH2RXjImLTWTc7zx83sJL9IrN
+ tT+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GX6ankB3VIUsz6cmu/u03hWEiPljuvEMQ/2K8vSivlU=;
- b=eJJAfHEXvWk4gBg0JusW0+AtP1p9xGN3AsurQ1tHQCjckEOMwJRBJpKVkHxM0Yzknn
- XKc15PdgV0MEwEmrQPhfL5SKcpipnKjjlEsaJurydgMZN8LQgLUQR+yZokTX6qRUzj8T
- Dxf1ZfsEXlQQ0XpE+bGsQ0CA9Rc7s1sjG3Q4zFjxp3JeGk/W2HaNbljQgxuAzsOXTC1J
- fkzy+g86l4RiohDRzsEezEtSbQSujTsC3s2Bl+2U5wkMEO+0/sSo4YYs7KB6rNlkUQja
- zOWcEgmQ4tGUiF5h1bVYE63B6GYnPY8+ZovTbOHxbdqIcGIEBvmq1yHXROkeNjrA2E8C
- 3Y+Q==
-X-Gm-Message-State: AOAM530yWf+aMMXYXiKxL08h/XEGZE4O7J/6ztwLKWewzgemM/1yaygN
- 84rHx0V/zWFXqn6YTefJXYmhkQ==
-X-Google-Smtp-Source: ABdhPJylFHHLY18Fb8zi+WQREE8TeB2FnUUseCAGPw7ofIEJSw4KLcEcTA1B1JAEsMDRUNM2Tp1Qpg==
-X-Received: by 2002:a05:6512:33bc:: with SMTP id
- i28mr1262566lfg.52.1607000402705; 
- Thu, 03 Dec 2020 05:00:02 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=mwUYW1H+JzV3/GtHWdM4HHeVaxmgzWJndCsLs+sl1Ng=;
+ b=XpkAEDm5HPTISdwMdKfjpJbJexSKA1b7HLaqYy8bMyok5KATkW8asM72bfL+r/J3N5
+ dNgfWFuqddwd+kz9JVNM5Uq8jhl36h2X7BHDA+HnkCATGGM8/0/tZenjXnfFN5Yt9/69
+ hm8rtSWmsjXaCN249SL35RFKjQABbrohGzq3tHtAYE/wC5shpXqwRP+BbAQhZ1ipDEEJ
+ 7s+WPxxPWP4UEI2BJ34jZkiUXi9f/JgBp07KlhDLpU56PVYWSwqFczXsZeESLnLpHZAB
+ 8nTbgVKM0WCpJ7AA0wAAhl7LoShe9PSMszGA5Fg11bd0p5h3pcIPnyYFYm6VSbVjKE9V
+ ZmWQ==
+X-Gm-Message-State: AOAM531+Ag5kGn+DT+cFjAkh//aK/I6UE4+OpRvkGOpIfdk+nwtR7Dza
+ Cni18GudTlwpeI28cl8i5idZKynDatmSfg==
+X-Google-Smtp-Source: ABdhPJyN5qjL2Ch9BCOndJjC6c1/mY97x20lmlcEG6wsT8I74Ek4oUXSdyd+jvXvJIWLoyJD26UxVQ==
+X-Received: by 2002:a19:404a:: with SMTP id n71mr1248846lfa.493.1606999965731; 
+ Thu, 03 Dec 2020 04:52:45 -0800 (PST)
 Received: from navi.cosmonova.net.ua ([95.67.24.131])
- by smtp.gmail.com with ESMTPSA id m7sm396487ljb.8.2020.12.03.05.00.01
+ by smtp.gmail.com with ESMTPSA id b17sm499891lfc.93.2020.12.03.04.52.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Dec 2020 05:00:02 -0800 (PST)
+ Thu, 03 Dec 2020 04:52:45 -0800 (PST)
 From: Andrew Melnychenko <andrew@daynix.com>
 To: mst@redhat.com
-Date: Thu,  3 Dec 2020 15:32:36 +0200
-Message-Id: <20201203133236.222207-1-andrew@daynix.com>
+Date: Thu,  3 Dec 2020 15:25:16 +0200
+Message-Id: <20201203132517.220811-2-andrew@daynix.com>
 X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201203132517.220811-1-andrew@daynix.com>
+References: <20201203132517.220811-1-andrew@daynix.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] e1000e: Added ICR clearing by
- corresponding IMS bit.
+Subject: [Intel-wired-lan] [PATCH v4 1/2] hw/virtio-pci Added counter for
+ pcie capabilities offsets.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,49 +93,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1707441
-Added ICR clearing if there is IMS bit - according to the note by
-section 13.3.27 of the 8257X developers manual.
+From: Andrew <andrew@daynix.com>
+
+Removed hardcoded offset for ats. Added cap offset counter
+for future capabilities like AER.
 
 Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
 ---
- hw/net/e1000e_core.c | 10 ++++++++++
- hw/net/trace-events  |  1 +
- 2 files changed, 11 insertions(+)
+ hw/virtio/virtio-pci.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-index 095c01ebc6..9705f5c52e 100644
---- a/hw/net/e1000e_core.c
-+++ b/hw/net/e1000e_core.c
-@@ -2624,6 +2624,16 @@ e1000e_mac_icr_read(E1000ECore *core, int index)
-         e1000e_clear_ims_bits(core, core->mac[IAM]);
-     }
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index 36524a5728..ceaa233129 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1798,6 +1798,7 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
  
-+    /*
-+     * PCIe* GbE Controllers Open Source Software Developer's Manual
-+     * 13.3.27 Interrupt Cause Read Register
-+     */
-+    if ((core->mac[ICR] & E1000_ICR_ASSERTED) &&
-+        (core->mac[ICR] & core->mac[IMS])) {
-+        trace_e1000e_irq_icr_clear_icr_bit_ims(core->mac[ICR], core->mac[IMS]);
-+        core->mac[ICR] = 0;
-+    }
-+
-     trace_e1000e_irq_icr_read_exit(core->mac[ICR]);
-     e1000e_update_interrupt_state(core);
-     return ret;
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 5db45456d9..2c3521a19c 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -237,6 +237,7 @@ e1000e_irq_icr_read_entry(uint32_t icr) "Starting ICR read. Current ICR: 0x%x"
- e1000e_irq_icr_read_exit(uint32_t icr) "Ending ICR read. Current ICR: 0x%x"
- e1000e_irq_icr_clear_zero_ims(void) "Clearing ICR on read due to zero IMS"
- e1000e_irq_icr_clear_iame(void) "Clearing ICR on read due to IAME"
-+e1000e_irq_icr_clear_icr_bit_ims(uint32_t icr, uint32_t ims) "Clearing ICR on read due corresponding IMS bit: 0x%x & 0x%x"
- e1000e_irq_iam_clear_eiame(uint32_t iam, uint32_t cause) "Clearing IMS due to EIAME, IAM: 0x%X, cause: 0x%X"
- e1000e_irq_icr_clear_eiac(uint32_t icr, uint32_t eiac) "Clearing ICR bits due to EIAC, ICR: 0x%X, EIAC: 0x%X"
- e1000e_irq_ims_clear_set_imc(uint32_t val) "Clearing IMS bits due to IMC write 0x%x"
+     if (pcie_port && pci_is_express(pci_dev)) {
+         int pos;
++        uint16_t last_pcie_cap_offset = PCI_CONFIG_SPACE_SIZE;
+ 
+         pos = pcie_endpoint_cap_init(pci_dev, 0);
+         assert(pos > 0);
+@@ -1833,7 +1834,8 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+         }
+ 
+         if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
+-            pcie_ats_init(pci_dev, 256);
++            pcie_ats_init(pci_dev, last_pcie_cap_offset);
++            last_pcie_cap_offset += PCI_EXT_CAP_ATS_SIZEOF;
+         }
+ 
+         if (proxy->flags & VIRTIO_PCI_FLAG_INIT_FLR) {
 -- 
 2.29.2
 
