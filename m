@@ -1,73 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 969362CF61A
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 22:27:23 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE4692CF6AF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 23:20:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 46AEC87A26;
-	Fri,  4 Dec 2020 21:27:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 75C0187DCE;
+	Fri,  4 Dec 2020 22:20:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8giTrSo4gwsC; Fri,  4 Dec 2020 21:27:21 +0000 (UTC)
+	with ESMTP id 0HvO3SHRQrHd; Fri,  4 Dec 2020 22:20:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8CF8F87A1E;
-	Fri,  4 Dec 2020 21:27:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9428087DCB;
+	Fri,  4 Dec 2020 22:20:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EA3741BF280
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 55CE21BF841
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 22:20:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E5CAA87EA1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4F00887A3B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 22:20:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 10OKN14q9EDF for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3235B87E81
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id j23so7236030iog.6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 13:27:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VqW5xuV/1lTxGcHmiBHYwvfv9PS2BZOwQspVUNm6Gmk=;
- b=GjGyHwMC38/OQ/ofgcFBN2zOLpxvl8SZ/3FV1TRE1dZu/X5yHNG1V2qUruyFFcK6F1
- qcMPYVeyov/gm9K0GZPgx0ouS8gZFYopuu9Frs+wSfINvNtlmnQv5Vc8FyLPD01RKgHg
- EpOFk4FJneu7Ko/sYtfFpkcb1/8T6VHKMGl46rUpAh0CQqNLAANqb6dFlLLUv+JGChC7
- YuQAhJz/qZK9W78y2Rb7daxZY3w3l/LxZw5Rlffq0qKfguJKoY3JT4Q8uEAmwkDiK0Yk
- RozQcbWSqFp/ME1xxYgvan2CZA4kYQRi2Q58dhMDprZfvV0G5RZIFkbt7OxSdQUg4SrD
- Takw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VqW5xuV/1lTxGcHmiBHYwvfv9PS2BZOwQspVUNm6Gmk=;
- b=eUk6W7zs/hJSay69qOp6V/t8FzTu9iiUdM4JvmTCLSiQRdUN/nBBkgbJe68YvhT7TW
- 95h5p5DLoNtFKkiL3S7AHsM0hDEeuqaYZFVSPV6O5hdrJZyECILlyDqp15bUXyxQ86sI
- FWfz9hoCQJUdh416LxeWYmAQnHqmW+3hiSIM2jm12NmoRd9lc21PWezOpHP0ftX0Izrj
- uIvCR0llNHxkIZxgwn6MejtOAkjnCRDMHY2WrxMGUOSBxRK3R7GwbgkepBYM04LGZHtX
- hTFZXhmEu1l+QznDRWY6F9XSFrEI+sWCpAKOsKNtU+U2rfVNxoDRj6rNUE0rGRxeiEAD
- HWVw==
-X-Gm-Message-State: AOAM533sPp3z8hZ4Ey2UolblxuY75iGQWMScoJ0b2iAx4+KrxFZ9OCBF
- E6RhRpzVovTXp3QbY9Cb/RAD+vdbbyiFg6mWAUE=
-X-Google-Smtp-Source: ABdhPJxIMC1a82H6iLiyCFqEN0vjxjwh8XlAwFQGCRVIUw7bOduA99DaSEZLqbBT0opev2aRmHTxlyRn4kB3zOeMqcM=
-X-Received: by 2002:a5e:9812:: with SMTP id s18mr1553635ioj.138.1607117238450; 
- Fri, 04 Dec 2020 13:27:18 -0800 (PST)
+ with ESMTP id O_1Q8VSnjkht for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Dec 2020 22:20:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D3F4187A35
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 22:20:12 +0000 (UTC)
+Received: from sslproxy01.your-server.de ([78.46.139.224])
+ by www62.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92.3) (envelope-from <daniel@iogearbox.net>)
+ id 1klJQi-0000Ap-GR; Fri, 04 Dec 2020 23:19:56 +0100
+Received: from [85.7.101.30] (helo=pc-9.home)
+ by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
+ id 1klJQi-000WQ1-4q; Fri, 04 Dec 2020 23:19:56 +0100
+To: =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201204102901.109709-2-marekx.majtyka@intel.com> <878sad933c.fsf@toke.dk>
+ <20201204124618.GA23696@ranger.igk.intel.com>
+ <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net> <87pn3p7aiv.fsf@toke.dk>
+From: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <eb305a4f-c189-6b32-f718-6e709ef0fa55@iogearbox.net>
+Date: Fri, 4 Dec 2020 23:19:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-References: <20201204200920.133780-1-mario.limonciello@dell.com>
-In-Reply-To: <20201204200920.133780-1-mario.limonciello@dell.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Fri, 4 Dec 2020 13:27:07 -0800
-Message-ID: <CAKgT0Uc=OxcuHbZihY3zxsxzPprJ_8vGHr=reBJFMrf=V9A5kg@mail.gmail.com>
-To: Mario Limonciello <mario.limonciello@dell.com>
-Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
- i219LM
+In-Reply-To: <87pn3p7aiv.fsf@toke.dk>
+Content-Language: en-US
+X-Authenticated-Sender: daniel@iogearbox.net
+X-Virus-Scanned: Clear (ClamAV 0.102.4/26007/Thu Dec  3 14:13:31 2020)
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,46 +69,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Linux PM <linux-pm@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
- Perry.Yuan@dell.com, Yijun Shen <Yijun.Shen@dell.com>,
- LKML <linux-kernel@vger.kernel.org>, anthony.wong@canonical.com,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
- Stefan Assmann <sassmann@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
+ hawk@kernel.org, netdev@vger.kernel.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, ast@kernel.org,
+ Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Dec 4, 2020 at 12:09 PM Mario Limonciello
-<mario.limonciello@dell.com> wrote:
->
-> commit e086ba2fccda ("e1000e: disable s0ix entry and exit flows for ME systems")
-> disabled s0ix flows for systems that have various incarnations of the
-> i219-LM ethernet controller.  This was done because of some regressions
-> caused by an earlier
-> commit 632fbd5eb5b0e ("e1000e: fix S0ix flows for cable connected case")
-> with i219-LM controller.
->
-> Performing suspend to idle with these ethernet controllers requires a properly
-> configured system.  To make enabling such systems easier, this patch
-> series allows determining if enabled and turning on using ethtool.
->
-> The flows have also been confirmed to be configured correctly on Dell's Latitude
-> and Precision CML systems containing the i219-LM controller, when the kernel also
-> contains the fix for s0i3.2 entry previously submitted here and now part of this
-> series.
-> https://marc.info/?l=linux-netdev&m=160677194809564&w=2
->
-> Patches 4 through 7 will turn the behavior on by default for some of Dell's
-> CML and TGL systems.
-
-The patches look good to me. Just need to address the minor issue that
-seems to have been present prior to the introduction of this patch
-set.
-
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTIvNC8yMCA2OjIwIFBNLCBUb2tlIEjDuGlsYW5kLUrDuHJnZW5zZW4gd3JvdGU6Cj4gRGFu
+aWVsIEJvcmttYW5uIDxkYW5pZWxAaW9nZWFyYm94Lm5ldD4gd3JpdGVzOgpbLi4uXQo+PiBXZSB0
+cmllZCB0byBzdGFuZGFyZGl6ZSBvbiBhIG1pbmltdW0gZ3VhcmFudGVlZCBhbW91bnQsIGJ1dCB1
+bmZvcnR1bmF0ZWx5IG5vdAo+PiBldmVyeW9uZSBzZWVtcyB0byBpbXBsZW1lbnQgaXQsIGJ1dCBJ
+IHRoaW5rIGl0IHdvdWxkIGJlIHZlcnkgdXNlZnVsIHRvIHF1ZXJ5Cj4+IHRoaXMgZnJvbSBhcHBs
+aWNhdGlvbiBzaWRlLCBmb3IgZXhhbXBsZSwgY29uc2lkZXIgdGhhdCBhbiBhcHAgaW5zZXJ0cyBh
+IEJQRgo+PiBwcm9nIGF0IFhEUCBkb2luZyBjdXN0b20gZW5jYXAgc2hvcnRseSBiZWZvcmUgWERQ
+X1RYIHNvIGl0IHdvdWxkIGJlIHVzZWZ1bCB0bwo+PiBrbm93IHdoaWNoIG9mIHRoZSBkaWZmZXJl
+bnQgZW5jYXBzIGl0IGltcGxlbWVudHMgYXJlIHJlYWxpc3RpY2FsbHkgcG9zc2libGUgb24KPj4g
+dGhlIHVuZGVybHlpbmcgWERQIHN1cHBvcnRlZCBkZXYuCj4gCj4gSG93IG1hbnkgZGlzdGluY3Qg
+dmFsdWVzIGFyZSB0aGVyZSBpbiByZWFsaXR5PyBFbm91Z2ggdG8gZXhwcmVzcyB0aGlzIGluCj4g
+YSBmZXcgZmxhZ3MgKFhEUF9IRUFEUk9PTV8xMjgsIFhEUF9IRUFEUk9PTV8xOTIsIGV0Yz8pLCBv
+ciBkb2VzIGl0IG5lZWQKPiBhbiBhZGRpdGlvbmFsIGZpZWxkIHRvIGdldCB0aGUgZXhhY3QgdmFs
+dWU/IElmIHdlIGltcGxlbWVudCB0aGUgbGF0dGVyCj4gd2UgYWxzbyBydW4gdGhlIHJpc2sgb2Yg
+cGVvcGxlIGFjdHVhbGx5IGltcGxlbWVudGluZyBhbGwgc29ydHMgb2Ygd2VpcmQKPiB2YWx1ZXMs
+IHdoZXJlYXMgaWYgd2UgY29uc3RyYWluIGl0IHRvIGEgZmV3IGRpc3RpbmN0IHZhbHVlcyBpdCdz
+IGVhc2llcgo+IHRvIHB1c2ggYmFjayBhZ2FpbnN0IGFkZGluZyBuZXcgdmFsdWVzIChhcyBpdCds
+bCBiZSBvYnZpb3VzIGZyb20gdGhlCj4gYWRkaXRpb24gb2YgbmV3IGZsYWdzKS4KCkl0J3Mgbm90
+IGV2ZXJ5d2hlcmUgc3RyYWlnaHQgZm9yd2FyZCB0byBkZXRlcm1pbmUgdW5mb3J0dW5hdGVseSwg
+c2VlIGFsc28gWzAsMV0KYXMgc29tZSBkYXRhIHBvaW50cyB3aGVyZSBKZXNwZXIgbG9va2VkIGlu
+dG8gaW4gdGhlIHBhc3QsIHNvIGluIHNvbWUgY2FzZXMgaXQKbWlnaHQgZGlmZmVyIGRlcGVuZGlu
+ZyBvbiB0aGUgYnVpbGQvcnVudGltZSBjb25maWcuLgoKICAgWzBdIGh0dHBzOi8vbG9yZS5rZXJu
+ZWwub3JnL2JwZi8xNTg5NDUzMTQ2OTguOTcwMzUuNTI4NjgyNzk1MTIyNTU3ODQ2Ny5zdGdpdEBm
+aXJlc291bC8KICAgWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2JwZi8xNTg5NDUzNDY0OTQu
+OTcwMzUuMTI4MDk0MDA0MTQ1NjYwNjE4MTUuc3RnaXRAZmlyZXNvdWwvCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5n
+IGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3Jn
+L21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
