@@ -1,74 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD53F2CF619
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 22:26:08 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 969362CF61A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 22:27:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4AE1D87F86;
-	Fri,  4 Dec 2020 21:26:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 46AEC87A26;
+	Fri,  4 Dec 2020 21:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B8RjvAjPhP1U; Fri,  4 Dec 2020 21:26:06 +0000 (UTC)
+	with ESMTP id 8giTrSo4gwsC; Fri,  4 Dec 2020 21:27:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EB6B887FB4;
-	Fri,  4 Dec 2020 21:26:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8CF8F87A1E;
+	Fri,  4 Dec 2020 21:27:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 74A5E1BF280
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:26:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EA3741BF280
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6EA2C87D8A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:26:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E5CAA87EA1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CeyTou97aDe6 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Dec 2020 21:26:02 +0000 (UTC)
+ with ESMTP id 10OKN14q9EDF for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
  [209.85.166.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 474B587CE8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:26:02 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id r9so7224424ioo.7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 13:26:02 -0800 (PST)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3235B87E81
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 21:27:19 +0000 (UTC)
+Received: by mail-io1-f67.google.com with SMTP id j23so7236030iog.6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 13:27:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dcobOCg4elJ1lBIJnbdqI7sJMeQVb3HqQ2OWJay91KA=;
- b=KrtuBt5MXQtj9zWIsKhfga5hBQGSBID2664sPjRwL0rOihm6EPbkABs+Av6MkIjVjn
- TBPHWrpwNtWgF9I8br+bubAJv3JAmgoMVp3LsbwaXchyw6SNLlL3yeVIl1bWu2+JbzHq
- 9AZFKzvEsjkgCvBLOA9LA3e0RKcLhXFg/29w/NoPzWFfX3UKTJMdbepL1xKlcnRyypBo
- 643+hIgkR8PNRbifZcMEQGO/A7JByE0BjJTAlItgEowUH3wUCYMoE2IwO1cT+wb4Ipyr
- E7hDtUUF3ceyao47yCQXPYB6MtXLcAWnpfQbCPr2e7sAiNDKzj4jy5ME1NFEvREvV70U
- JXKA==
+ :cc; bh=VqW5xuV/1lTxGcHmiBHYwvfv9PS2BZOwQspVUNm6Gmk=;
+ b=GjGyHwMC38/OQ/ofgcFBN2zOLpxvl8SZ/3FV1TRE1dZu/X5yHNG1V2qUruyFFcK6F1
+ qcMPYVeyov/gm9K0GZPgx0ouS8gZFYopuu9Frs+wSfINvNtlmnQv5Vc8FyLPD01RKgHg
+ EpOFk4FJneu7Ko/sYtfFpkcb1/8T6VHKMGl46rUpAh0CQqNLAANqb6dFlLLUv+JGChC7
+ YuQAhJz/qZK9W78y2Rb7daxZY3w3l/LxZw5Rlffq0qKfguJKoY3JT4Q8uEAmwkDiK0Yk
+ RozQcbWSqFp/ME1xxYgvan2CZA4kYQRi2Q58dhMDprZfvV0G5RZIFkbt7OxSdQUg4SrD
+ Takw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=dcobOCg4elJ1lBIJnbdqI7sJMeQVb3HqQ2OWJay91KA=;
- b=KUxGqawPbYsVHCBaARfWOPJKqPI/MAPyUlpMeqNaLXevhEpae9+7udMYDPag4Bqv6W
- IOhD0oQRu7Kzw/Ez5jdIYxkvfz6NfzuUYCEOF0TCCo7333E5AFD8zISlkpCN/kj2TbjU
- jsTg5rLn6hcstOKVDfM9ZOaPgY5Yi74JdNY8oOwT0z+O4VoPeIxRTTt305vVCwfyb+LU
- YRDw9VToEfsSZR4J934xMqepSybJxv5Ae1fjUWJ5b8IwNCrPMtno36Sxi32mazPENtup
- 7pyAiLbkir2QV5uxyz7vuKOZKUKCF6OtB7I+TEPEj8RS5SKtKf4rysqIngk/TCqWpTzf
- BE/g==
-X-Gm-Message-State: AOAM533PpIvGEz9LL2mZ+lMhUcjwXeu1FJyIAF4zFHHn5mplcQGJPfT4
- RvT1hkvZZo4MDPcksl54KC3DIT1kWFBRWub+sD0=
-X-Google-Smtp-Source: ABdhPJx86Powa4ZnC6gzQpBuytC8EmVW3lKN6t9bFbw4cSl/I0aTSHWtuY+5ZF97rQ6aFHJHwlv9tMGf0x4ij9I4aRQ=
-X-Received: by 2002:a02:4:: with SMTP id 4mr8851115jaa.121.1607117161437; Fri,
- 04 Dec 2020 13:26:01 -0800 (PST)
+ bh=VqW5xuV/1lTxGcHmiBHYwvfv9PS2BZOwQspVUNm6Gmk=;
+ b=eUk6W7zs/hJSay69qOp6V/t8FzTu9iiUdM4JvmTCLSiQRdUN/nBBkgbJe68YvhT7TW
+ 95h5p5DLoNtFKkiL3S7AHsM0hDEeuqaYZFVSPV6O5hdrJZyECILlyDqp15bUXyxQ86sI
+ FWfz9hoCQJUdh416LxeWYmAQnHqmW+3hiSIM2jm12NmoRd9lc21PWezOpHP0ftX0Izrj
+ uIvCR0llNHxkIZxgwn6MejtOAkjnCRDMHY2WrxMGUOSBxRK3R7GwbgkepBYM04LGZHtX
+ hTFZXhmEu1l+QznDRWY6F9XSFrEI+sWCpAKOsKNtU+U2rfVNxoDRj6rNUE0rGRxeiEAD
+ HWVw==
+X-Gm-Message-State: AOAM533sPp3z8hZ4Ey2UolblxuY75iGQWMScoJ0b2iAx4+KrxFZ9OCBF
+ E6RhRpzVovTXp3QbY9Cb/RAD+vdbbyiFg6mWAUE=
+X-Google-Smtp-Source: ABdhPJxIMC1a82H6iLiyCFqEN0vjxjwh8XlAwFQGCRVIUw7bOduA99DaSEZLqbBT0opev2aRmHTxlyRn4kB3zOeMqcM=
+X-Received: by 2002:a5e:9812:: with SMTP id s18mr1553635ioj.138.1607117238450; 
+ Fri, 04 Dec 2020 13:27:18 -0800 (PST)
 MIME-Version: 1.0
 References: <20201204200920.133780-1-mario.limonciello@dell.com>
- <20201204200920.133780-3-mario.limonciello@dell.com>
-In-Reply-To: <20201204200920.133780-3-mario.limonciello@dell.com>
+In-Reply-To: <20201204200920.133780-1-mario.limonciello@dell.com>
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Fri, 4 Dec 2020 13:25:50 -0800
-Message-ID: <CAKgT0Ucz5zDp3fEJFpt1x1e+OcLCxOZVyo5KK5sM_LktbLQH3Q@mail.gmail.com>
+Date: Fri, 4 Dec 2020 13:27:07 -0800
+Message-ID: <CAKgT0Uc=OxcuHbZihY3zxsxzPprJ_8vGHr=reBJFMrf=V9A5kg@mail.gmail.com>
 To: Mario Limonciello <mario.limonciello@dell.com>
-Subject: Re: [Intel-wired-lan] [PATCH v3 2/7] e1000e: Move all S0ix related
- code into its own source file
+Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
+ i219LM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,119 +94,31 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 On Fri, Dec 4, 2020 at 12:09 PM Mario Limonciello
 <mario.limonciello@dell.com> wrote:
 >
-> Introduce a flag to indicate the device should be using the S0ix
-> flows and use this flag to run those functions.
+> commit e086ba2fccda ("e1000e: disable s0ix entry and exit flows for ME systems")
+> disabled s0ix flows for systems that have various incarnations of the
+> i219-LM ethernet controller.  This was done because of some regressions
+> caused by an earlier
+> commit 632fbd5eb5b0e ("e1000e: fix S0ix flows for cable connected case")
+> with i219-LM controller.
 >
-> Splitting the code to it's own file will make future heuristics
-> more self contained.
+> Performing suspend to idle with these ethernet controllers requires a properly
+> configured system.  To make enabling such systems easier, this patch
+> series allows determining if enabled and turning on using ethtool.
 >
-> Tested-by: Yijun Shen <yijun.shen@dell.com>
-> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+> The flows have also been confirmed to be configured correctly on Dell's Latitude
+> and Precision CML systems containing the i219-LM controller, when the kernel also
+> contains the fix for s0i3.2 entry previously submitted here and now part of this
+> series.
+> https://marc.info/?l=linux-netdev&m=160677194809564&w=2
+>
+> Patches 4 through 7 will turn the behavior on by default for some of Dell's
+> CML and TGL systems.
 
-One minor issue pointed out below.
+The patches look good to me. Just need to address the minor issue that
+seems to have been present prior to the introduction of this patch
+set.
 
-> ---
->  drivers/net/ethernet/intel/e1000e/Makefile |   2 +-
->  drivers/net/ethernet/intel/e1000e/e1000.h  |   4 +
->  drivers/net/ethernet/intel/e1000e/netdev.c | 272 +-------------------
->  drivers/net/ethernet/intel/e1000e/s0ix.c   | 280 +++++++++++++++++++++
->  4 files changed, 290 insertions(+), 268 deletions(-)
->  create mode 100644 drivers/net/ethernet/intel/e1000e/s0ix.c
->
-> diff --git a/drivers/net/ethernet/intel/e1000e/Makefile b/drivers/net/ethernet/intel/e1000e/Makefile
-> index 44e58b6e7660..f2332c01f86c 100644
-> --- a/drivers/net/ethernet/intel/e1000e/Makefile
-> +++ b/drivers/net/ethernet/intel/e1000e/Makefile
-> @@ -9,5 +9,5 @@ obj-$(CONFIG_E1000E) += e1000e.o
->
->  e1000e-objs := 82571.o ich8lan.o 80003es2lan.o \
->                mac.o manage.o nvm.o phy.o \
-> -              param.o ethtool.o netdev.o ptp.o
-> +              param.o ethtool.o netdev.o s0ix.o ptp.o
->
-> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-> index ba7a0f8f6937..b13f956285ae 100644
-> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> @@ -436,6 +436,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca);
->  #define FLAG2_DFLT_CRC_STRIPPING          BIT(12)
->  #define FLAG2_CHECK_RX_HWTSTAMP           BIT(13)
->  #define FLAG2_CHECK_SYSTIM_OVERFLOW       BIT(14)
-> +#define FLAG2_ENABLE_S0IX_FLOWS           BIT(15)
->
->  #define E1000_RX_DESC_PS(R, i)     \
->         (&(((union e1000_rx_desc_packet_split *)((R).desc))[i]))
-> @@ -462,6 +463,9 @@ enum latency_range {
->  extern char e1000e_driver_name[];
->
->  void e1000e_check_options(struct e1000_adapter *adapter);
-> +void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter);
-> +void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter);
-> +void e1000e_maybe_enable_s0ix(struct e1000_adapter *adapter);
->  void e1000e_set_ethtool_ops(struct net_device *netdev);
->
->  int e1000e_open(struct net_device *netdev);
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 128ab6898070..cd9839e86615 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-
-<snip>
-
->  static int e1000e_pm_freeze(struct device *dev)
->  {
->         struct net_device *netdev = dev_get_drvdata(dev);
-> @@ -6962,7 +6701,6 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->         struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->         struct e1000_adapter *adapter = netdev_priv(netdev);
->         struct pci_dev *pdev = to_pci_dev(dev);
-> -       struct e1000_hw *hw = &adapter->hw;
->         int rc;
->
->         e1000e_flush_lpic(pdev);
-> @@ -6974,8 +6712,7 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->                 e1000e_pm_thaw(dev);
->
->         /* Introduce S0ix implementation */
-> -       if (hw->mac.type >= e1000_pch_cnp &&
-> -           !e1000e_check_me(hw->adapter->pdev->device))
-> +       if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->                 e1000e_s0ix_entry_flow(adapter);
-
-So the placement of this code raises some issues. It isn't a problem
-with your patch but a bug in the driver that needs to be addressed. I
-am assuming you only need to perform this flow if you successfully
-froze the part. However this is doing it in all cases, which is why
-the e1000e_pm_thaw is being called before you call this code. This is
-something that should probably be an "else if" rather than a seperate
-if statement.
-
->
->         return rc;
-> @@ -6986,12 +6723,10 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
->         struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->         struct e1000_adapter *adapter = netdev_priv(netdev);
->         struct pci_dev *pdev = to_pci_dev(dev);
-> -       struct e1000_hw *hw = &adapter->hw;
->         int rc;
->
->         /* Introduce S0ix implementation */
-> -       if (hw->mac.type >= e1000_pch_cnp &&
-> -           !e1000e_check_me(hw->adapter->pdev->device))
-> +       if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->                 e1000e_s0ix_exit_flow(adapter);
->
->         rc = __e1000_resume(pdev);
-> @@ -7655,6 +7390,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->         if (!(adapter->flags & FLAG_HAS_AMT))
->                 e1000e_get_hw_control(adapter);
->
-> +       /* use heuristics to decide whether to enable s0ix flows */
-> +       e1000e_maybe_enable_s0ix(adapter);
-> +
->         strlcpy(netdev->name, "eth%d", sizeof(netdev->name));
->         err = register_netdev(netdev);
->         if (err)
+Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
