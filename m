@@ -1,84 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B0572CEC35
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 11:30:29 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C93752CEDEB
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 13:18:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 03FE22E2F2;
-	Fri,  4 Dec 2020 10:30:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D3A98790F;
+	Fri,  4 Dec 2020 12:18:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o7hSc46oJ31q; Fri,  4 Dec 2020 10:30:20 +0000 (UTC)
+	with ESMTP id erdPSupZmD2h; Fri,  4 Dec 2020 12:18:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E140F2E2E9;
-	Fri,  4 Dec 2020 10:30:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03A4387926;
+	Fri,  4 Dec 2020 12:18:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4B9551BF391
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 10:30:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4DD831BF86D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:18:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 430DB8788E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 10:30:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4869E87920
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:18:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4AtuxZRIGsl0 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Dec 2020 10:30:09 +0000 (UTC)
+ with ESMTP id s7XofFnt-VUq for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Dec 2020 12:18:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-lj1-f196.google.com (mail-lj1-f196.google.com
- [209.85.208.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E025A87849
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 10:30:08 +0000 (UTC)
-Received: by mail-lj1-f196.google.com with SMTP id 142so5980179ljj.10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 02:30:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Uvlu8DVmiHM5LldiM3Sj+vrND7t9AuD6a1TdugQe0Ps=;
- b=E0ImlY99mCDfxsnPflJXi/cbWygBLBAM1yaa2KUG3MVLBPBohyqayrU5z/mhL6zPTl
- uhR/zcyVlioxpXqzWsRcoYO5oXSn16+3Xnkjg0jIV70KnCtXM3UgBob8hM5klIh87wxP
- xN5NrpC+SpiIUuEUcDAKQ/qvgxIUlp8OJGb5vJmlOGNhA5tZpOgP7AwTc4XOXUFgMnMJ
- Ts6a6nTwN12S6f4IGvO3VnMfCbe1qzIxHDN4bgynTwSc4y2OHCRmjny6rigIU+qSO3g/
- Uq57ETHCJIXIeeP2ja5j+2P4FVx3dYNTVTPEIMQQVyYqApDiTEtPK5/nJfwCxfXrYQ6f
- nrzw==
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B5D9F8790F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:18:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607084315;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=yV0H2A32XwiwqiM7qlFKTRy4N5oGQUtMJTuq8qIDfa0=;
+ b=a6QyE3Vazxrdh4hffs94dPZ9cyaHlmqd+IWESdLvMZY8PGaAqwO6UAJShpJ/ZMpJOIP6hw
+ mM9xI2yRqOC6zgHc4VVCbOyyKU+qbVGWS+qtbwD4g2GEYK1BThYzi/yHQhkIXjLKHCdy6U
+ FYoCl86wVoaGdk3cJ/J8IHW3GJUmMK4=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-420-YnDSG3EyPF6eRw2iJky_Qw-1; Fri, 04 Dec 2020 07:18:34 -0500
+X-MC-Unique: YnDSG3EyPF6eRw2iJky_Qw-1
+Received: by mail-ed1-f71.google.com with SMTP id bc27so2280165edb.18
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 04:18:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Uvlu8DVmiHM5LldiM3Sj+vrND7t9AuD6a1TdugQe0Ps=;
- b=KoeWMJ6LcbXEfSoqk012jWtmXh92Ei9pXtSZUeACG4rbu6lKy0IdtfxyTrCQ189ojQ
- W9bYY+G3nVXHjhdteO7FEiBQNGctuz7Ig70Y2SAGJzT0SEY19xuBIfsSPJxZE6LogEV1
- LF9SXy/ISiyjzTLpBLf2XRV4Hv0l+7ftmoZsxECXRklB8GbhH+rIi0N3L+DzMOuOJAJl
- vFEBKsDQSfp9M/aMg2/Lj+fmlp+Xj4VSQU69BvrHtc7TZiWdiCeJTLk24Zs/t84dfOqB
- MwIPnZTfTHqKY91ExvNJUN+C04ZdYcTfrmPdUdKJ15BtdWj5xqdnrQUjmnKRQbmxGQrK
- 79EQ==
-X-Gm-Message-State: AOAM5307Vjd4bPYv+4w7AnMp/sZDcKqMRmRlget+Bykz34oJup8fsGIv
- HTgAZ4mfFyizFbXxulREm5M=
-X-Google-Smtp-Source: ABdhPJwE9keJgFWAavozwghMGSbG70PKlHN+4SLFpuQS41hEbwbptQ2DFJnf7iqWWTjKxFwCQoaeCw==
-X-Received: by 2002:a2e:9c51:: with SMTP id t17mr2971756ljj.302.1607077807064; 
- Fri, 04 Dec 2020 02:30:07 -0800 (PST)
-Received: from localhost.localdomain (87-205-71-93.adsl.inetia.pl.
- [87.205.71.93])
- by smtp.gmail.com with ESMTPSA id d9sm62738lfj.228.2020.12.04.02.30.05
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=yV0H2A32XwiwqiM7qlFKTRy4N5oGQUtMJTuq8qIDfa0=;
+ b=tOlmyqSK7khQVdG7R16EKmdYSHf5uqonW1fytp+E3GsaZ7N1gUTMwXcWpEmfmWE1VH
+ HITHX68fiLyZgnNANFHEco4BMlfH3OB436M1CZeyF5gMEavHvr9x7/+CLkzpIBRGyL/e
+ qEb439MulpFhDGq3Nh4EeErsdmvGwVAnoxk0u1mhpUEsZdkVPbCoiPVQ1qv0vECzPTLo
+ K2XDY3he2sgaQN/ItK7zH/b29fx6fT1KmhDHZjLnm1rw4GZaCd9oP8ug0nlsFQvP5tYg
+ ckjHB79ToAP/oDPLhf8R8AbefAzh2QQNnlMzF7CFt28I6CRj0XRVj4oXy3lV5unvfoFc
+ RqWA==
+X-Gm-Message-State: AOAM532Hm+4xbrPqduRFragsFyOHFDEZcn/6WwyaT+u320B/Pvx8gCgf
+ wVWKTGjaMCAzIO64RsJx1athQyK4DJgB7D0jrrTrEKs6UZZEj4Wq05BivGlGfKMVJMJP4cDujmn
+ xzTLyBOoFEpfDENi8nW83A7ZL79CHFA==
+X-Received: by 2002:a17:906:2a19:: with SMTP id
+ j25mr6525717eje.506.1607084312786; 
+ Fri, 04 Dec 2020 04:18:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwRAf0vbCMukeVPRXqkdupoZEIIMS/2Tcc+wvNymxp+NDt3vnsz4rhmViHnLHdfGwYf7cxIAg==
+X-Received: by 2002:a17:906:2a19:: with SMTP id
+ j25mr6525675eje.506.1607084312401; 
+ Fri, 04 Dec 2020 04:18:32 -0800 (PST)
+Received: from alrua-x1.borgediget.toke.dk ([45.145.92.2])
+ by smtp.gmail.com with ESMTPSA id j20sm2905690ejy.124.2020.12.04.04.18.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Dec 2020 02:30:06 -0800 (PST)
-From: alardam@gmail.com
-X-Google-Original-From: marekx.majtyka@intel.com
-To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
+ Fri, 04 Dec 2020 04:18:31 -0800 (PST)
+Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
+ id 59331182EEA; Fri,  4 Dec 2020 13:18:31 +0100 (CET)
+From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+To: alardam@gmail.com, magnus.karlsson@intel.com, bjorn.topel@intel.com,
  andrii.nakryiko@gmail.com, kuba@kernel.org, ast@kernel.org,
  daniel@iogearbox.net, netdev@vger.kernel.org, davem@davemloft.net,
- john.fastabend@gmail.com, hawk@kernel.org, toke@redhat.com
-Date: Fri,  4 Dec 2020 11:29:01 +0100
-Message-Id: <20201204102901.109709-6-marekx.majtyka@intel.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ john.fastabend@gmail.com, hawk@kernel.org
+In-Reply-To: <20201204102901.109709-2-marekx.majtyka@intel.com>
 References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201204102901.109709-2-marekx.majtyka@intel.com>
+X-Clacks-Overhead: GNU Terry Pratchett
+Date: Fri, 04 Dec 2020 13:18:31 +0100
+Message-ID: <878sad933c.fsf@toke.dk>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 bpf 5/5] ethtool: provide xdp info with
- XDP_PROPERTIES_GET
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=toke@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,230 +112,117 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Marek Majtyka <marekx.majtyka@intel.com>
+alardam@gmail.com writes:
 
-Implement XDP_PROPERTIES_GET request to get network device
-information about supported xdp functionalities.
+> From: Marek Majtyka <marekx.majtyka@intel.com>
+>
+> Implement support for checking what kind of xdp functionality a netdev
+> supports. Previously, there was no way to do this other than to try
+> to create an AF_XDP socket on the interface or load an XDP program and see
+> if it worked. This commit changes this by adding a new variable which
+> describes all xdp supported functions on pretty detailed level:
 
-Signed-off-by: Marek Majtyka <marekx.majtyka@intel.com>
----
- include/uapi/linux/ethtool_netlink.h | 14 +++++
- net/ethtool/Makefile                 |  2 +-
- net/ethtool/netlink.c                | 38 +++++++++-----
- net/ethtool/netlink.h                |  2 +
- net/ethtool/xdp.c                    | 76 ++++++++++++++++++++++++++++
- 5 files changed, 117 insertions(+), 15 deletions(-)
- create mode 100644 net/ethtool/xdp.c
+I like the direction this is going! :)
 
-diff --git a/include/uapi/linux/ethtool_netlink.h b/include/uapi/linux/ethtool_netlink.h
-index e2bf36e6964b..764d6edc2862 100644
---- a/include/uapi/linux/ethtool_netlink.h
-+++ b/include/uapi/linux/ethtool_netlink.h
-@@ -42,6 +42,7 @@ enum {
- 	ETHTOOL_MSG_CABLE_TEST_ACT,
- 	ETHTOOL_MSG_CABLE_TEST_TDR_ACT,
- 	ETHTOOL_MSG_TUNNEL_INFO_GET,
-+	ETHTOOL_MSG_XDP_PROPERTIES_GET,
- 
- 	/* add new constants above here */
- 	__ETHTOOL_MSG_USER_CNT,
-@@ -80,6 +81,7 @@ enum {
- 	ETHTOOL_MSG_CABLE_TEST_NTF,
- 	ETHTOOL_MSG_CABLE_TEST_TDR_NTF,
- 	ETHTOOL_MSG_TUNNEL_INFO_GET_REPLY,
-+	ETHTOOL_MSG_XDP_PROPERTIES_GET_REPLY,
- 
- 	/* add new constants above here */
- 	__ETHTOOL_MSG_KERNEL_CNT,
-@@ -628,6 +630,18 @@ enum {
- 	ETHTOOL_A_TUNNEL_INFO_MAX = (__ETHTOOL_A_TUNNEL_INFO_CNT - 1)
- };
- 
-+/* XDP_PROPERTIES */
-+
-+enum {
-+	ETHTOOL_A_XDP_PROPERTIES_UNSPEC,
-+	ETHTOOL_A_XDP_PROPERTIES_HEADER,			/* nest - _A_HEADER_* */
-+	ETHTOOL_A_XDP_PROPERTIES_DATA,				/* bitset */
-+
-+	/* add new constants above here */
-+	__ETHTOOL_A_XDP_PROPERTIES_CNT,
-+	ETHTOOL_A_XDP_PROPERTIES_MAX = __ETHTOOL_A_XDP_PROPERTIES_CNT - 1
-+};
-+
- /* generic netlink info */
- #define ETHTOOL_GENL_NAME "ethtool"
- #define ETHTOOL_GENL_VERSION 1
-diff --git a/net/ethtool/Makefile b/net/ethtool/Makefile
-index 7a849ff22dad..23d49eb07a7f 100644
---- a/net/ethtool/Makefile
-+++ b/net/ethtool/Makefile
-@@ -7,4 +7,4 @@ obj-$(CONFIG_ETHTOOL_NETLINK)	+= ethtool_nl.o
- ethtool_nl-y	:= netlink.o bitset.o strset.o linkinfo.o linkmodes.o \
- 		   linkstate.o debug.o wol.o features.o privflags.o rings.o \
- 		   channels.o coalesce.o pause.o eee.o tsinfo.o cabletest.o \
--		   tunnels.o
-+		   tunnels.o xdp.o
-diff --git a/net/ethtool/netlink.c b/net/ethtool/netlink.c
-index 50d3c8896f91..06c943c78a11 100644
---- a/net/ethtool/netlink.c
-+++ b/net/ethtool/netlink.c
-@@ -231,20 +231,21 @@ struct ethnl_dump_ctx {
- 
- static const struct ethnl_request_ops *
- ethnl_default_requests[__ETHTOOL_MSG_USER_CNT] = {
--	[ETHTOOL_MSG_STRSET_GET]	= &ethnl_strset_request_ops,
--	[ETHTOOL_MSG_LINKINFO_GET]	= &ethnl_linkinfo_request_ops,
--	[ETHTOOL_MSG_LINKMODES_GET]	= &ethnl_linkmodes_request_ops,
--	[ETHTOOL_MSG_LINKSTATE_GET]	= &ethnl_linkstate_request_ops,
--	[ETHTOOL_MSG_DEBUG_GET]		= &ethnl_debug_request_ops,
--	[ETHTOOL_MSG_WOL_GET]		= &ethnl_wol_request_ops,
--	[ETHTOOL_MSG_FEATURES_GET]	= &ethnl_features_request_ops,
--	[ETHTOOL_MSG_PRIVFLAGS_GET]	= &ethnl_privflags_request_ops,
--	[ETHTOOL_MSG_RINGS_GET]		= &ethnl_rings_request_ops,
--	[ETHTOOL_MSG_CHANNELS_GET]	= &ethnl_channels_request_ops,
--	[ETHTOOL_MSG_COALESCE_GET]	= &ethnl_coalesce_request_ops,
--	[ETHTOOL_MSG_PAUSE_GET]		= &ethnl_pause_request_ops,
--	[ETHTOOL_MSG_EEE_GET]		= &ethnl_eee_request_ops,
--	[ETHTOOL_MSG_TSINFO_GET]	= &ethnl_tsinfo_request_ops,
-+	[ETHTOOL_MSG_STRSET_GET]		= &ethnl_strset_request_ops,
-+	[ETHTOOL_MSG_LINKINFO_GET]		= &ethnl_linkinfo_request_ops,
-+	[ETHTOOL_MSG_LINKMODES_GET]		= &ethnl_linkmodes_request_ops,
-+	[ETHTOOL_MSG_LINKSTATE_GET]		= &ethnl_linkstate_request_ops,
-+	[ETHTOOL_MSG_DEBUG_GET]			= &ethnl_debug_request_ops,
-+	[ETHTOOL_MSG_WOL_GET]			= &ethnl_wol_request_ops,
-+	[ETHTOOL_MSG_FEATURES_GET]		= &ethnl_features_request_ops,
-+	[ETHTOOL_MSG_PRIVFLAGS_GET]		= &ethnl_privflags_request_ops,
-+	[ETHTOOL_MSG_RINGS_GET]			= &ethnl_rings_request_ops,
-+	[ETHTOOL_MSG_CHANNELS_GET]		= &ethnl_channels_request_ops,
-+	[ETHTOOL_MSG_COALESCE_GET]		= &ethnl_coalesce_request_ops,
-+	[ETHTOOL_MSG_PAUSE_GET]			= &ethnl_pause_request_ops,
-+	[ETHTOOL_MSG_EEE_GET]			= &ethnl_eee_request_ops,
-+	[ETHTOOL_MSG_TSINFO_GET]		= &ethnl_tsinfo_request_ops,
-+	[ETHTOOL_MSG_XDP_PROPERTIES_GET]	= &ethnl_xdp_request_ops,
- };
- 
- static struct ethnl_dump_ctx *ethnl_dump_context(struct netlink_callback *cb)
-@@ -912,6 +913,15 @@ static const struct genl_ops ethtool_genl_ops[] = {
- 		.policy = ethnl_tunnel_info_get_policy,
- 		.maxattr = ARRAY_SIZE(ethnl_tunnel_info_get_policy) - 1,
- 	},
-+	{
-+		.cmd	= ETHTOOL_MSG_XDP_PROPERTIES_GET,
-+		.doit	= ethnl_default_doit,
-+		.start	= ethnl_default_start,
-+		.dumpit	= ethnl_default_dumpit,
-+		.done	= ethnl_default_done,
-+		.policy = ethnl_properties_get_policy,
-+		.maxattr = ARRAY_SIZE(ethnl_properties_get_policy) - 1,
-+	},
- };
- 
- static const struct genl_multicast_group ethtool_nl_mcgrps[] = {
-diff --git a/net/ethtool/netlink.h b/net/ethtool/netlink.h
-index d8efec516d86..c5875e97b707 100644
---- a/net/ethtool/netlink.h
-+++ b/net/ethtool/netlink.h
-@@ -344,6 +344,7 @@ extern const struct ethnl_request_ops ethnl_coalesce_request_ops;
- extern const struct ethnl_request_ops ethnl_pause_request_ops;
- extern const struct ethnl_request_ops ethnl_eee_request_ops;
- extern const struct ethnl_request_ops ethnl_tsinfo_request_ops;
-+extern const struct ethnl_request_ops ethnl_xdp_request_ops;
- 
- extern const struct nla_policy ethnl_header_policy[ETHTOOL_A_HEADER_FLAGS + 1];
- extern const struct nla_policy ethnl_header_policy_stats[ETHTOOL_A_HEADER_FLAGS + 1];
-@@ -375,6 +376,7 @@ extern const struct nla_policy ethnl_tsinfo_get_policy[ETHTOOL_A_TSINFO_HEADER +
- extern const struct nla_policy ethnl_cable_test_act_policy[ETHTOOL_A_CABLE_TEST_HEADER + 1];
- extern const struct nla_policy ethnl_cable_test_tdr_act_policy[ETHTOOL_A_CABLE_TEST_TDR_CFG + 1];
- extern const struct nla_policy ethnl_tunnel_info_get_policy[ETHTOOL_A_TUNNEL_INFO_HEADER + 1];
-+extern const struct nla_policy ethnl_properties_get_policy[ETHTOOL_A_XDP_PROPERTIES_HEADER + 1];
- 
- int ethnl_set_linkinfo(struct sk_buff *skb, struct genl_info *info);
- int ethnl_set_linkmodes(struct sk_buff *skb, struct genl_info *info);
-diff --git a/net/ethtool/xdp.c b/net/ethtool/xdp.c
-new file mode 100644
-index 000000000000..fc0e87b6ed80
---- /dev/null
-+++ b/net/ethtool/xdp.c
-@@ -0,0 +1,76 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+#include "netlink.h"
-+#include "common.h"
-+#include "bitset.h"
-+
-+struct properties_req_info {
-+	struct ethnl_req_info	base;
-+};
-+
-+struct properties_reply_data {
-+	struct ethnl_reply_data	base;
-+	u32			properties[ETHTOOL_XDP_PROPERTIES_WORDS];
-+};
-+
-+const struct nla_policy ethnl_properties_get_policy[] = {
-+	[ETHTOOL_A_XDP_PROPERTIES_HEADER]	=
-+		NLA_POLICY_NESTED(ethnl_header_policy),
-+};
-+
-+#define PROPERTIES_REPDATA(__reply_base) \
-+	container_of(__reply_base, struct properties_reply_data, base)
-+
-+static void ethnl_properties_to_bitmap32(u32 *dest, xdp_properties_t src)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < ETHTOOL_XDP_PROPERTIES_WORDS; i++)
-+		dest[i] = src >> (32 * i);
-+}
-+
-+static int properties_prepare_data(const struct ethnl_req_info *req_base,
-+				   struct ethnl_reply_data *reply_base,
-+				   struct genl_info *info)
-+{
-+	struct properties_reply_data *data = PROPERTIES_REPDATA(reply_base);
-+	struct net_device *dev = reply_base->dev;
-+
-+	ethnl_properties_to_bitmap32(data->properties, dev->xdp_properties);
-+
-+	return 0;
-+}
-+
-+static int properties_reply_size(const struct ethnl_req_info *req_base,
-+				 const struct ethnl_reply_data *reply_base)
-+{
-+	const struct properties_reply_data *data = PROPERTIES_REPDATA(reply_base);
-+	bool compact = req_base->flags & ETHTOOL_FLAG_COMPACT_BITSETS;
-+
-+	return ethnl_bitset32_size(data->properties, NULL, XDP_PROPERTIES_COUNT,
-+				   xdp_properties_strings, compact);
-+}
-+
-+static int properties_fill_reply(struct sk_buff *skb,
-+				 const struct ethnl_req_info *req_base,
-+				 const struct ethnl_reply_data *reply_base)
-+{
-+	const struct properties_reply_data *data = PROPERTIES_REPDATA(reply_base);
-+	bool compact = req_base->flags & ETHTOOL_FLAG_COMPACT_BITSETS;
-+
-+	return ethnl_put_bitset32(skb, ETHTOOL_A_XDP_PROPERTIES_DATA, data->properties,
-+				  NULL, XDP_PROPERTIES_COUNT,
-+				  xdp_properties_strings, compact);
-+}
-+
-+const struct ethnl_request_ops ethnl_xdp_request_ops = {
-+	.request_cmd		= ETHTOOL_MSG_XDP_PROPERTIES_GET,
-+	.reply_cmd		= ETHTOOL_MSG_XDP_PROPERTIES_GET_REPLY,
-+	.hdr_attr		= ETHTOOL_A_XDP_PROPERTIES_HEADER,
-+	.req_info_size		= sizeof(struct properties_req_info),
-+	.reply_data_size	= sizeof(struct properties_reply_data),
-+
-+	.prepare_data		= properties_prepare_data,
-+	.reply_size		= properties_reply_size,
-+	.fill_reply		= properties_fill_reply,
-+};
--- 
-2.27.0
+>  - aborted
+>  - drop
+>  - pass
+>  - tx
+>  - redirect
+
+Drivers can in principle implement support for the XDP_REDIRECT return
+code (and calling xdp_do_redirect()) without implementing ndo_xdp_xmit()
+for being the *target* of a redirect. While my quick grepping doesn't
+turn up any drivers that do only one of these right now, I think we've
+had examples of it in the past, so it would probably be better to split
+the redirect feature flag in two.
+
+This would also make it trivial to replace the check in __xdp_enqueue()
+(in devmap.c) from looking at whether the ndo is defined, and just
+checking the flag. It would be great if you could do this as part of
+this series.
+
+Maybe we could even make the 'redirect target' flag be set automatically
+if a driver implements ndo_xdp_xmit?
+
+>  - zero copy
+>  - hardware offload.
+>
+> Zerocopy mode requires that redirect xdp operation is implemented
+> in a driver and the driver supports also zero copy mode.
+> Full mode requires that all xdp operation are implemented in the driver.
+> Basic mode is just full mode without redirect operation.
+>
+> Initially, these new flags are disabled for all drivers by default.
+>
+> Signed-off-by: Marek Majtyka <marekx.majtyka@intel.com>
+> ---
+>  .../networking/netdev-xdp-properties.rst      | 42 ++++++++
+>  include/linux/netdevice.h                     |  2 +
+>  include/linux/xdp_properties.h                | 53 +++++++++++
+>  include/net/xdp.h                             | 95 +++++++++++++++++++
+>  include/net/xdp_sock_drv.h                    | 10 ++
+>  include/uapi/linux/ethtool.h                  |  1 +
+>  include/uapi/linux/xdp_properties.h           | 32 +++++++
+>  net/ethtool/common.c                          | 11 +++
+>  net/ethtool/common.h                          |  4 +
+>  net/ethtool/strset.c                          |  5 +
+>  10 files changed, 255 insertions(+)
+>  create mode 100644 Documentation/networking/netdev-xdp-properties.rst
+>  create mode 100644 include/linux/xdp_properties.h
+>  create mode 100644 include/uapi/linux/xdp_properties.h
+>
+> diff --git a/Documentation/networking/netdev-xdp-properties.rst b/Documentation/networking/netdev-xdp-properties.rst
+> new file mode 100644
+> index 000000000000..4a434a1c512b
+> --- /dev/null
+> +++ b/Documentation/networking/netdev-xdp-properties.rst
+> @@ -0,0 +1,42 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +
+> +=====================
+> +Netdev XDP properties
+> +=====================
+> +
+> + * XDP PROPERTIES FLAGS
+> +
+> +Following netdev xdp properties flags can be retrieve over netlink ethtool
+> +interface the same way as netdev feature flags. These properties flags are
+> +read only and cannot be change in the runtime.
+> +
+> +
+> +*  XDP_ABORTED
+> +
+> +This property informs if netdev supports xdp aborted action.
+> +
+> +*  XDP_DROP
+> +
+> +This property informs if netdev supports xdp drop action.
+> +
+> +*  XDP_PASS
+> +
+> +This property informs if netdev supports xdp pass action.
+> +
+> +*  XDP_TX
+> +
+> +This property informs if netdev supports xdp tx action.
+> +
+> +*  XDP_REDIRECT
+> +
+> +This property informs if netdev supports xdp redirect action.
+> +It assumes the all beforehand mentioned flags are enabled.
+> +
+> +*  XDP_ZEROCOPY
+> +
+> +This property informs if netdev driver supports xdp zero copy.
+> +It assumes the all beforehand mentioned flags are enabled.
+
+Nit: I think 'XDP_ZEROCOPY' can lead people to think that this is
+zero-copy support for all XDP operations, which is obviously not the
+case. So maybe 'XDP_SOCK_ZEROCOPY' (and update the description to
+mention AF_XDP sockets explicitly)?
+
+-Toke
 
 _______________________________________________
 Intel-wired-lan mailing list
