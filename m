@@ -2,96 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D9232CEDF1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 13:19:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27B632CEE68
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Dec 2020 13:54:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5C62087923;
-	Fri,  4 Dec 2020 12:19:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D167280EAD;
+	Fri,  4 Dec 2020 12:54:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vwnv5dsQIo-w; Fri,  4 Dec 2020 12:19:42 +0000 (UTC)
+	with ESMTP id XMXEGNnlFAIn; Fri,  4 Dec 2020 12:54:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B31E487926;
-	Fri,  4 Dec 2020 12:19:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FA5B86EA2;
+	Fri,  4 Dec 2020 12:54:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6841F1BF86D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:19:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 463851BF86D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:54:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 629F68784E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:19:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 36B3386BA6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:54:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FMzONiFiQcUi for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Dec 2020 12:19:40 +0000 (UTC)
+ with ESMTP id LZqaif0cOMTP for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Dec 2020 12:54:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B043C87736
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:19:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607084379;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=R4OGEJo66P6rsNAhT6jP92o68BJnxBUwibF+4bWbC2k=;
- b=R2IMc6Nl37zQf80+xuT2x4HMTBeSmMNRuNeN46eKD8GGfIfJPzunLbnnlPdmzz/yv9z04v
- MqvsdoAkc5JkKswxdLvB/g8kf7xgwqOruLgSsMoF6sV1LDQrZhvHhzSQzTJ6W8gtpBu5H+
- NVzfrGklRHfmdqEOPdjxO1ATlQbuNiw=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-96-Iu1x_hzUOXO0fME3nd4IbA-1; Fri, 04 Dec 2020 07:19:38 -0500
-X-MC-Unique: Iu1x_hzUOXO0fME3nd4IbA-1
-Received: by mail-ej1-f69.google.com with SMTP id 3so1293959ejw.13
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Dec 2020 04:19:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=R4OGEJo66P6rsNAhT6jP92o68BJnxBUwibF+4bWbC2k=;
- b=nROKk4lmHUQeNlQSj3gSWIIkdNde/lMdMWj/+20aRsatoAiFIsbPcGw6IxEpFEbls3
- zGD2NO69rcy4n1vYp0TNb1Iue0ER09m6hoC9eAWE3VfBC1p2GwFU6+yTGyBDkkFPxGvp
- 5TeAE+s1ZwxLywwVQsE3p8NOPM8dFcYrMCM790gH2NYvaM0h1haMprgsnh8Dwb3olBmX
- rWwyGCfuTyCzNAr2ZjjOlG59yhIL11yUoMx+kCGUiKw3Z+0JPZPqWFrA5uvRyhbA+oAR
- OogO3dJQyDjZGfl0D2Fze6PBbr5phpaotWgGOdSOi1QcCvgzCafTYLdNVFDLZHSL6KlQ
- rWYQ==
-X-Gm-Message-State: AOAM530SLw/TacRtk5FKJfJUCctUE61EybyMzFvOi66LWuWyBn6KBXTc
- nJGAbdMsIK6FnHHKPBARKh1zuWEi8B9LBRSU2dubtP9kG4G4wbx3gqelqmf4i+5UUoPlOFCHE2I
- tgNVbA/NnJ7ZzxhBssvgLipYk+dvuHQ==
-X-Received: by 2002:a17:906:660b:: with SMTP id
- b11mr6819056ejp.190.1607084373992; 
- Fri, 04 Dec 2020 04:19:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzHftUesGbbLZt8khqeFgqcDmh06X5sj1NJhXevWW4Jj6/igg4fia1bqWrg5ljp1M1eXKTFOw==
-X-Received: by 2002:a17:906:660b:: with SMTP id
- b11mr6819030ejp.190.1607084373603; 
- Fri, 04 Dec 2020 04:19:33 -0800 (PST)
-Received: from alrua-x1.borgediget.toke.dk ([2a0c:4d80:42:443::2])
- by smtp.gmail.com with ESMTPSA id e27sm3007351ejm.60.2020.12.04.04.19.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Dec 2020 04:19:32 -0800 (PST)
-Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
- id 91941182EEA; Fri,  4 Dec 2020 13:19:32 +0100 (CET)
-From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-To: alardam@gmail.com, magnus.karlsson@intel.com, bjorn.topel@intel.com,
- andrii.nakryiko@gmail.com, kuba@kernel.org, ast@kernel.org,
- daniel@iogearbox.net, netdev@vger.kernel.org, davem@davemloft.net,
- john.fastabend@gmail.com, hawk@kernel.org
-In-Reply-To: <20201204102901.109709-3-marekx.majtyka@intel.com>
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2431480EAD
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Dec 2020 12:54:30 +0000 (UTC)
+IronPort-SDR: mRuXsCcAhziwHmF4z6ppVIOt/cNoKz5Fb1qNmYdzczqwEzCJenyuiAGwZQPEO3kudpRdpFj3Kk
+ t3NlOSY+K4UQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9824"; a="258083946"
+X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="258083946"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2020 04:54:29 -0800
+IronPort-SDR: 62N7mcUJssHEBrSPA3Fs2vP6Pc7CKJOokY/FOW3TTe0ytuNKV960hbP63jmJk9MlzrdPa84uQK
+ 2xrT1fPzWKHw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,392,1599548400"; d="scan'208";a="482381436"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by orsmga004.jf.intel.com with ESMTP; 04 Dec 2020 04:54:25 -0800
+Date: Fri, 4 Dec 2020 13:46:18 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>
+Message-ID: <20201204124618.GA23696@ranger.igk.intel.com>
 References: <20201204102901.109709-1-marekx.majtyka@intel.com>
- <20201204102901.109709-3-marekx.majtyka@intel.com>
-X-Clacks-Overhead: GNU Terry Pratchett
-Date: Fri, 04 Dec 2020 13:19:32 +0100
-Message-ID: <875z5h931n.fsf@toke.dk>
+ <20201204102901.109709-2-marekx.majtyka@intel.com>
+ <878sad933c.fsf@toke.dk>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=toke@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 2/5] drivers/net: turn XDP
- properties on
+Content-Disposition: inline
+In-Reply-To: <878sad933c.fsf@toke.dk>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,26 +71,149 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciejromanfijalkowski@gmail.com, Marek Majtyka <marekx.majtyka@intel.com>,
- intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com,
- bpf@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
+ hawk@kernel.org, daniel@iogearbox.net, netdev@vger.kernel.org, ast@kernel.org,
+ Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-alardam@gmail.com writes:
+On Fri, Dec 04, 2020 at 01:18:31PM +0100, Toke H=F8iland-J=F8rgensen wrote:
+> alardam@gmail.com writes:
+> =
 
-> From: Marek Majtyka <marekx.majtyka@intel.com>
->
-> Turn 'hw-offload' property flag on for:
->  - netronome.
+> > From: Marek Majtyka <marekx.majtyka@intel.com>
+> >
+> > Implement support for checking what kind of xdp functionality a netdev
+> > supports. Previously, there was no way to do this other than to try
+> > to create an AF_XDP socket on the interface or load an XDP program and =
+see
+> > if it worked. This commit changes this by adding a new variable which
+> > describes all xdp supported functions on pretty detailed level:
+> =
 
-Can you add this to netdevsim as well, please? That way we can add a
-test for it in test_offload.py once the userspace bits land in
-ethtool...
+> I like the direction this is going! :)
+> =
 
--Toke
+> >  - aborted
+> >  - drop
+> >  - pass
+> >  - tx
+> >  - redirect
+> =
+
+> Drivers can in principle implement support for the XDP_REDIRECT return
+> code (and calling xdp_do_redirect()) without implementing ndo_xdp_xmit()
+> for being the *target* of a redirect. While my quick grepping doesn't
+> turn up any drivers that do only one of these right now, I think we've
+> had examples of it in the past, so it would probably be better to split
+> the redirect feature flag in two.
+> =
+
+> This would also make it trivial to replace the check in __xdp_enqueue()
+> (in devmap.c) from looking at whether the ndo is defined, and just
+> checking the flag. It would be great if you could do this as part of
+> this series.
+> =
+
+> Maybe we could even make the 'redirect target' flag be set automatically
+> if a driver implements ndo_xdp_xmit?
+
++1
+
+> =
+
+> >  - zero copy
+> >  - hardware offload.
+> >
+> > Zerocopy mode requires that redirect xdp operation is implemented
+> > in a driver and the driver supports also zero copy mode.
+> > Full mode requires that all xdp operation are implemented in the driver.
+> > Basic mode is just full mode without redirect operation.
+> >
+> > Initially, these new flags are disabled for all drivers by default.
+> >
+> > Signed-off-by: Marek Majtyka <marekx.majtyka@intel.com>
+> > ---
+> >  .../networking/netdev-xdp-properties.rst      | 42 ++++++++
+> >  include/linux/netdevice.h                     |  2 +
+> >  include/linux/xdp_properties.h                | 53 +++++++++++
+> >  include/net/xdp.h                             | 95 +++++++++++++++++++
+> >  include/net/xdp_sock_drv.h                    | 10 ++
+> >  include/uapi/linux/ethtool.h                  |  1 +
+> >  include/uapi/linux/xdp_properties.h           | 32 +++++++
+> >  net/ethtool/common.c                          | 11 +++
+> >  net/ethtool/common.h                          |  4 +
+> >  net/ethtool/strset.c                          |  5 +
+> >  10 files changed, 255 insertions(+)
+> >  create mode 100644 Documentation/networking/netdev-xdp-properties.rst
+> >  create mode 100644 include/linux/xdp_properties.h
+> >  create mode 100644 include/uapi/linux/xdp_properties.h
+> >
+> > diff --git a/Documentation/networking/netdev-xdp-properties.rst b/Docum=
+entation/networking/netdev-xdp-properties.rst
+> > new file mode 100644
+> > index 000000000000..4a434a1c512b
+> > --- /dev/null
+> > +++ b/Documentation/networking/netdev-xdp-properties.rst
+> > @@ -0,0 +1,42 @@
+> > +.. SPDX-License-Identifier: GPL-2.0
+> > +
+> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > +Netdev XDP properties
+> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > +
+> > + * XDP PROPERTIES FLAGS
+> > +
+> > +Following netdev xdp properties flags can be retrieve over netlink eth=
+tool
+> > +interface the same way as netdev feature flags. These properties flags=
+ are
+> > +read only and cannot be change in the runtime.
+> > +
+> > +
+> > +*  XDP_ABORTED
+> > +
+> > +This property informs if netdev supports xdp aborted action.
+> > +
+> > +*  XDP_DROP
+> > +
+> > +This property informs if netdev supports xdp drop action.
+> > +
+> > +*  XDP_PASS
+> > +
+> > +This property informs if netdev supports xdp pass action.
+> > +
+> > +*  XDP_TX
+> > +
+> > +This property informs if netdev supports xdp tx action.
+> > +
+> > +*  XDP_REDIRECT
+> > +
+> > +This property informs if netdev supports xdp redirect action.
+> > +It assumes the all beforehand mentioned flags are enabled.
+> > +
+> > +*  XDP_ZEROCOPY
+> > +
+> > +This property informs if netdev driver supports xdp zero copy.
+> > +It assumes the all beforehand mentioned flags are enabled.
+> =
+
+> Nit: I think 'XDP_ZEROCOPY' can lead people to think that this is
+> zero-copy support for all XDP operations, which is obviously not the
+> case. So maybe 'XDP_SOCK_ZEROCOPY' (and update the description to
+> mention AF_XDP sockets explicitly)?
+
+AF_XDP_ZEROCOPY?
+
+> =
+
+> -Toke
+> =
 
 _______________________________________________
 Intel-wired-lan mailing list
