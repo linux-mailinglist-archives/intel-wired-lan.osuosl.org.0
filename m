@@ -2,55 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 359772CFC54
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Dec 2020 19:01:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5670B2CFFD0
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  6 Dec 2020 00:49:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43F3B87600;
-	Sat,  5 Dec 2020 18:00:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BE45187CF2;
+	Sat,  5 Dec 2020 23:49:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qrap-xv7s5Dc; Sat,  5 Dec 2020 18:00:59 +0000 (UTC)
+	with ESMTP id yUZ3IdrBXLYS; Sat,  5 Dec 2020 23:49:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CF151871FB;
-	Sat,  5 Dec 2020 18:00:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4647787CFC;
+	Sat,  5 Dec 2020 23:49:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E21FF1BF3AB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 18:00:32 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 24CB51BF361
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 23:49:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D4504228A0
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 18:00:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 202B788632
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 23:49:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H8ky0aOa4KRN for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Dec 2020 18:00:32 +0000 (UTC)
+ with ESMTP id EyD735kfGvJv for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Dec 2020 23:49:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 5A45122875
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 18:00:32 +0000 (UTC)
-Date: Sat, 5 Dec 2020 10:00:30 -0800
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 93CE6885ED
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 23:49:53 +0000 (UTC)
+Date: Sat, 5 Dec 2020 15:49:51 -0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607191232;
- bh=uck9HMwEih3IHUnkTrO3IT7M00NIKjBuKnwsqXY/FF0=;
+ s=k20201202; t=1607212193;
+ bh=h0vaEYwFre3MPf6MHPuQ2v8JOABc6Vx+THCYEJwqZEg=;
  h=From:To:Cc:Subject:In-Reply-To:References:From;
- b=vGXa3vuIOQSvYx0qhBXENKVePy6swpuQ0v8UpV6bZ70Ti4yDrGpGuN0MffvaKmq7u
- p5jl/FNf0PLft9vGobcXS8FYmNhQ1ahgIU3kOWpe+qJGf5WGjzVsvWAK6m4h0gI115
- XihWUEKr9tNDVVgTzrFMd9e0nxZdGm3Na/ASuktD3nMmAvFzBbOhMsHo6ttbgw0ZAO
- xiW5mHqkLy4OjGqG6MmZSuY9s8ea2XOzYRhWMJMtDZ+UuKmQVs4Ewr2IFb7WeNTCX3
- z/9IWypo7jqt77IyFvUu/xase+SInI1+JtaQJ7Yp+EQjDHss88DEs8fFMh1ioRXm2K
- UW3YUPN2SLu/w==
+ b=CoulufPecNt5be0Hh33etS3OzTQxlnBJ7VBB2umi3YSs3TT6bAL3EyUHBgEj678S1
+ D4e7VYqm5pc2agH2C6uCN5zPOwbkvVwlH+Y2LwcMt4wYPnBdw1fXV95sYKffViOi82
+ y0gL1xUtGL6JHZ55vqfkxTlEJvulAsxDRMKJIl+uZORsFppIruc0DSGKJvS1xuNNnV
+ arPEnpc1N7a7vSPwk9IxxpxwYLSRgD4a85MqeoZCZRlLf4Z+nzhwxkq4qHnj2Dp0Ve
+ nMp1Nrg6/xjUA+Dj7oA/ei8fl0jd7Qlt8cw+URHJlwZLH8KqybD0pcvvwEZagDn2XM
+ VXYVuq9MeuQVQ==
 From: Jakub Kicinski <kuba@kernel.org>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20201205100030.2e3c5dd2@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
-In-Reply-To: <20201202045325.3254757-7-vinicius.gomes@intel.com>
-References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
- <20201202045325.3254757-7-vinicius.gomes@intel.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20201205154951.4dd92194@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+In-Reply-To: <CAKgT0UfuyrbzpDNySMmnAkqKnw9cYuEM1LhgG0QvmrY=smR-uw@mail.gmail.com>
+References: <20201204200920.133780-1-mario.limonciello@dell.com>
+ <CAKgT0Uc=OxcuHbZihY3zxsxzPprJ_8vGHr=reBJFMrf=V9A5kg@mail.gmail.com>
+ <DM6PR19MB2636B200D618A5546E7BBB57FAF10@DM6PR19MB2636.namprd19.prod.outlook.com>
+ <CAKgT0UfuyrbzpDNySMmnAkqKnw9cYuEM1LhgG0QvmrY=smR-uw@mail.gmail.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 6/9] igc: Add support for
- tuning frame preemption via ethtool
+Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
+ i219LM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,31 +65,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, jiri@resnulli.us, vladimir.oltean@nxp.com,
- po.liu@nxp.com, jhs@mojatatu.com, m-karicheri2@ti.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- xiyou.wangcong@gmail.com
+Cc: Linux PM <linux-pm@vger.kernel.org>, Netdev <netdev@vger.kernel.org>, "Yuan,
+ Perry" <Perry.Yuan@dell.com>, "Limonciello,
+ Mario" <Mario.Limonciello@dell.com>, "Shen, Yijun" <Yijun.Shen@dell.com>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "anthony.wong@canonical.com" <anthony.wong@canonical.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue,  1 Dec 2020 20:53:22 -0800 Vinicius Costa Gomes wrote:
-> The tc subsystem sets which queues are marked as preemptible, it's the
-> role of ethtool to control more hardware specific parameters. These
-> parameters include:
+On Fri, 4 Dec 2020 14:38:03 -0800 Alexander Duyck wrote:
+> > > The patches look good to me. Just need to address the minor issue that
+> > > seems to have been present prior to the introduction of this patch
+> > > set.
+> > >
+> > > Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>  
+> >
+> > Thanks for your review.  Just some operational questions - since this previously
+> > existed do you want me to re-spin the series to a v4 for this, or should it be
+> > a follow up after the series?
+> >
+> > If I respin it, would you prefer that change to occur at the start or end
+> > of the series?  
 > 
->  - enabling the frame preemption hardware: As enabling frame
->  preemption may have other requirements before it can be enabled, it's
->  exposed via the ethtool API;
-> 
->  - mininum fragment size multiplier: expressed in usually in the form
->  of (1 + N)*64, this number indicates what's the size of the minimum
->  fragment that can be preempted.
-> 
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> I don't need a respin, but if you are going to fix it you should
+> probably put out the patch as something like a 8/7. If you respin it
+> should happen near the start of the series as it is a bug you are
+> addressing.
 
-WARNING: 'PREEMPTABLE' may be misspelled - perhaps 'PREEMPTIBLE'?
+Don't we need that patch to be before this series so it can be
+back ported easily? Or is it not really a bug?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
