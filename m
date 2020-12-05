@@ -1,55 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0567C2CFC4F
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Dec 2020 18:50:28 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED1992CFC52
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Dec 2020 18:59:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9771A2281C;
-	Sat,  5 Dec 2020 17:50:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 95F19874C2;
+	Sat,  5 Dec 2020 17:59:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i0j4fBe+37EF; Sat,  5 Dec 2020 17:50:25 +0000 (UTC)
+	with ESMTP id DPRkIqGih50Z; Sat,  5 Dec 2020 17:59:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3504122817;
-	Sat,  5 Dec 2020 17:50:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EDC748780F;
+	Sat,  5 Dec 2020 17:59:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 513B61BF3AB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:50:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 975451BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:59:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4CF7C86B43
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:50:23 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9049F86C6D
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:59:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3g76FcWf6bRb for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Dec 2020 17:50:22 +0000 (UTC)
+ with ESMTP id dD9Tiy6XGwDY for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Dec 2020 17:59:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EEC8386B3A
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:50:22 +0000 (UTC)
-Date: Sat, 5 Dec 2020 09:50:21 -0800
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 197AB86C6C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Dec 2020 17:59:50 +0000 (UTC)
+Date: Sat, 5 Dec 2020 09:59:48 -0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607190622;
- bh=eXv3+mv1r4rGBZPQXy5JncBjXLX4m1Jn75DZFqAu9ms=;
+ s=k20201202; t=1607191189;
+ bh=2XTj98FPwKYrzmdgVAroyFbBlTDM4KyJc/G+XYx1L5s=;
  h=From:To:Cc:Subject:In-Reply-To:References:From;
- b=DnUx2vP9Y/VyqMsTenPfI2Uez+RKawzq8uWTV7Up1/vIETGZN4t001HBoruL1L45g
- 0KRHe0lLA1Zrv66m9nJPwasmebj3fzOTzs6Fze4BUn52ekwY1y2Nl9e5UNC0Yy8ecK
- Gb04C8nUJF/Zyzp5d6uTb7OEGS+dsj5Wmw5Z9zsr6kBh4E4R6gQRdEJNOqZ46l7ZOz
- jFz2h3iiKdcUMj/f10/6IuT/rwLdqcVAfGK97DRQGEvOrVCaBwOb7VYqhVH+kEqclK
- GPcF/fkLs8qSptxLShcJVoM43oLj8S5qVmG4NNVKrIDLPWa0IMbVx52k/Gr4W3+5UH
- j8MIA7OQGQElQ==
+ b=frCgoLvdzjdFmwlMnLFXg2EUZK1aRpWGIxlunb2Yx0PduLElndrQvqORfyMbcZjOY
+ sA9u7JB/BbqjGMmWfSlHvzTfuaHo4ffWPpUsFsoskWCcjmrF/BYSL+n0ZpRnsZ84I1
+ AXu/7TgwP3/kiOWws2ZiPPHQBV7lzPs5PCujv3IBlUOAsF155AKtB+Ny2sy1wPcAQa
+ 4vC/DK9p6mCU63qbakVs9iQh6l1Gg/N/ZbcFqczrYkFD330x1sn+sk5M3XOMhFIHBs
+ 4R0snzIEAY6bW0JT1EVc55C+R8uX42sZU95qU/1ZyZER29WztsTZwKkNIyXBTKX1QC
+ YIJx3ks2ohP/w==
 From: Jakub Kicinski <kuba@kernel.org>
 To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20201205095021.36e1a24d@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
-In-Reply-To: <20201202045325.3254757-1-vinicius.gomes@intel.com>
+Message-ID: <20201205095948.5e0eba28@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+In-Reply-To: <20201202045325.3254757-9-vinicius.gomes@intel.com>
 References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
+ <20201202045325.3254757-9-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 0/9] ethtool: Add support
- for frame preemption
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 8/9] igc: Add support for
+ exposing frame preemption stats registers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,25 +72,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue,  1 Dec 2020 20:53:16 -0800 Vinicius Costa Gomes wrote:
-> $ tc qdisc replace dev $IFACE parent root handle 100 taprio \
->       num_tc 3 \
->       map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \
->       queues 1@0 1@1 2@2 \
->       base-time $BASE_TIME \
->       sched-entry S 0f 10000000 \
->       preempt 1110 \
->       flags 0x2 
+On Tue,  1 Dec 2020 20:53:24 -0800 Vinicius Costa Gomes wrote:
+> Expose the Frame Preemption counters, so the number of
+> express/preemptible packets can be monitored by userspace.
 > 
-> The "preempt" parameter is the only difference, it configures which
-> queues are marked as preemptible, in this example, queue 0 is marked
-> as "not preemptible", so it is express, the rest of the four queues
-> are preemptible.
+> These registers are cleared when read, so the value shown is the
+> number of events that happened since the last read.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
-Does it make more sense for the individual queues to be preemptible 
-or not, or is it better controlled at traffic class level?
-I was looking at patch 2, and 32 queues isn't that many these days..
-We either need a larger type there or configure this based on classes.
+You mean expose in a register dump? That's not great user experience..
+
+Are there any stats that the standards mandate?
+
+It'd be great if we could come up with some common set and expose them
+via ethtool like the pause frame statistics.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
