@@ -1,57 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E7152D04B1
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  6 Dec 2020 13:07:10 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CA592D064E
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  6 Dec 2020 18:32:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D047874D5;
-	Sun,  6 Dec 2020 12:07:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD404874A8;
+	Sun,  6 Dec 2020 17:32:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id APvsjGWrLncZ; Sun,  6 Dec 2020 12:07:08 +0000 (UTC)
+	with ESMTP id N1Kd-AP-15M8; Sun,  6 Dec 2020 17:32:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 96942874D0;
-	Sun,  6 Dec 2020 12:07:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ECDF586E61;
+	Sun,  6 Dec 2020 17:32:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 141841BF3EE
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 12:07:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BC4F71BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 17:32:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0A1E886AC6
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 12:07:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B7C4286444
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 17:32:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sJwUTjXQ4_28 for <intel-wired-lan@lists.osuosl.org>;
- Sun,  6 Dec 2020 12:07:05 +0000 (UTC)
+ with ESMTP id BIlLwMqjSC8m for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  6 Dec 2020 17:32:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4A7E286AB6
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 12:07:05 +0000 (UTC)
-IronPort-SDR: ugMWQaGzu9ME5gO/OK1T4Yj5+29pRLh3TfMTdsSyi5w+d6TqXsAljSiIDX6BEPpnuDRMFYW9/6
- 0Xm8iBfA+Mog==
-X-IronPort-AV: E=McAfee;i="6000,8403,9826"; a="235182719"
-X-IronPort-AV: E=Sophos;i="5.78,397,1599548400"; d="scan'208";a="235182719"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Dec 2020 04:07:03 -0800
-IronPort-SDR: ZNtpOtILorHu5NZsYmN6xDkGF2B4Fvz8DF43SFJFWHUiHywY76V0aBDB/snMexc4t+fankSHTW
- G0h3cohSkjkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,397,1599548400"; d="scan'208";a="374869426"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by FMSMGA003.fm.intel.com with ESMTP; 06 Dec 2020 04:07:02 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Sun,  6 Dec 2020 14:07:00 +0200
-Message-Id: <20201206120700.3767534-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E659863E0
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Dec 2020 17:32:35 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id i9so11117501ioo.2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 06 Dec 2020 09:32:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7N3sBfPKm9s8YI9bZ1YGc7d1O3+NqdQ1UI3/+WPcotk=;
+ b=M45rI/m9DMfZmnJXHL7tTN30niu12r/EOAWc38VandwIYSnfEVUM1g2s2xYck7pARH
+ wZD40X4jBe/KnNOo7q99jsZPfDyPyERcf/qwdmfPPxcEvC6QWQuKRb5mts4VYAlwHM+J
+ CKtoU6Gyj7ZUqawPn6PTniKEGMhXGCp3JK6isjiY62Hk27nQT+2Zt9oe5S2E/TgWczJ7
+ /zR6bHCHfRRjDxS2JiO4EROOwDW0x2uqZ1LF4OlUTO/0E2YsLnVvEzlRXl/I1pgjyOE4
+ FWVXUDY0G6EzP9mJ2M06s6TEISJPNDdN6huCiSC02KrDYjY1bxOQXPht9J2QQ5p+PN9u
+ CWZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7N3sBfPKm9s8YI9bZ1YGc7d1O3+NqdQ1UI3/+WPcotk=;
+ b=q02q/VO5wTb47NuaxmkKWE92esuLI0KVflJSn3ry1uszWX+sp/XLifOLRcQdgzVMxA
+ 41gA+dcsI8XJkJY3EWZ4IpZym9TJazfRQdA3WKwNqGwo1E5zgUxv8fyXUkHbxK2kcJco
+ dOrYvz+xdgteeCGhWmAlfInYMJ68ect/ktZpfMh89v0glN57cWpDQYQSWKtBdw48M/qX
+ YorcE6NDJOU1cMwimqGoZpEzZY8cOPFVvUXbdnt/g4VjWfPXNHbDR9qDqFEQmNvkP+8a
+ P4KTVGcB9fLPMu6RlG7yuNvx75HNA+HN8DsNvdDgftT1qFKMCmUEvvwDbnVhNIfWia9i
+ /oBg==
+X-Gm-Message-State: AOAM530Z+AY5q2UeIyjHTIOYYULEXZU7Kv+WFEBt72uVUw2wRb6HH93j
+ zENTH5gtSn3fDLSz9V+ZlfkRBJP/GIPKKVo652k=
+X-Google-Smtp-Source: ABdhPJzqZCFiKiB5XjLUJArT/oiyNwwhPMWwOHxTLuiIuMINM7YzyWjxQfucl4doqDFbDLYVdSs/NdFIuXNI+AklWTs=
+X-Received: by 2002:a02:5d85:: with SMTP id w127mr16403664jaa.83.1607275954356; 
+ Sun, 06 Dec 2020 09:32:34 -0800 (PST)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Add Host Good Packets
- Transmitted Count
+References: <20201204200920.133780-1-mario.limonciello@dell.com>
+ <CAKgT0Uc=OxcuHbZihY3zxsxzPprJ_8vGHr=reBJFMrf=V9A5kg@mail.gmail.com>
+ <DM6PR19MB2636B200D618A5546E7BBB57FAF10@DM6PR19MB2636.namprd19.prod.outlook.com>
+ <CAKgT0UfuyrbzpDNySMmnAkqKnw9cYuEM1LhgG0QvmrY=smR-uw@mail.gmail.com>
+ <20201205154951.4dd92194@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+In-Reply-To: <20201205154951.4dd92194@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Sun, 6 Dec 2020 09:32:23 -0800
+Message-ID: <CAKgT0UcJh219bAXJtJFu7BZsh2+UVGqpLmTiX9V1utsQpPSjvA@mail.gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
+ i219LM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,37 +84,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Linux PM <linux-pm@vger.kernel.org>, Netdev <netdev@vger.kernel.org>, "Yuan,
+ Perry" <Perry.Yuan@dell.com>, "Limonciello,
+ Mario" <Mario.Limonciello@dell.com>, "Shen, Yijun" <Yijun.Shen@dell.com>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "anthony.wong@canonical.com" <anthony.wong@canonical.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This counter counts the number of good (non-erred) packets
-transmitted sent by the host.
-A good transmit packet is considered one that is 64 or more bytes
-in length (from <Destination Address> through <CRC>,
-inclusively) in length
+On Sat, Dec 5, 2020 at 3:49 PM Jakub Kicinski <kuba@kernel.org> wrote:
+>
+> On Fri, 4 Dec 2020 14:38:03 -0800 Alexander Duyck wrote:
+> > > > The patches look good to me. Just need to address the minor issue that
+> > > > seems to have been present prior to the introduction of this patch
+> > > > set.
+> > > >
+> > > > Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
+> > >
+> > > Thanks for your review.  Just some operational questions - since this previously
+> > > existed do you want me to re-spin the series to a v4 for this, or should it be
+> > > a follow up after the series?
+> > >
+> > > If I respin it, would you prefer that change to occur at the start or end
+> > > of the series?
+> >
+> > I don't need a respin, but if you are going to fix it you should
+> > probably put out the patch as something like a 8/7. If you respin it
+> > should happen near the start of the series as it is a bug you are
+> > addressing.
+>
+> Don't we need that patch to be before this series so it can be
+> back ported easily? Or is it not really a bug?
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 705bb89aded7..8913c7f7be7f 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -3949,6 +3949,7 @@ void igc_update_stats(struct igc_adapter *adapter)
- 	adapter->stats.prc1522 += rd32(IGC_PRC1522);
- 	adapter->stats.tlpic += rd32(IGC_TLPIC);
- 	adapter->stats.rlpic += rd32(IGC_RLPIC);
-+	adapter->stats.hgptc += rd32(IGC_HGPTC);
- 
- 	mpc = rd32(IGC_MPC);
- 	adapter->stats.mpc += mpc;
--- 
-2.25.1
-
+You're right. For backports it would make it easier to have the patch
+be before the changes. As far as being a bug, it is one, but it isn't
+an urgent bug as it is basically some bad exception handling so the
+likelihood of seeing it should be quite low.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
