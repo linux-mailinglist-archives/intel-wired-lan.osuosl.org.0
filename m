@@ -1,99 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86D342D11EB
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 14:28:14 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 298122D1220
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 14:32:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 08A068781F;
-	Mon,  7 Dec 2020 13:28:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A95918744C;
+	Mon,  7 Dec 2020 13:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ndZwIMs5h7Iu; Mon,  7 Dec 2020 13:28:12 +0000 (UTC)
+	with ESMTP id 1WZUHYs6Tg13; Mon,  7 Dec 2020 13:32:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C99CA8783A;
-	Mon,  7 Dec 2020 13:28:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2746D8741B;
+	Mon,  7 Dec 2020 13:32:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B65211BF408
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:28:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E945D1BF408
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:32:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A5A182E1F3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:28:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E18028787F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:32:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s48J3J-ocD8e for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Dec 2020 13:28:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by silver.osuosl.org (Postfix) with ESMTPS id 6A0042E1E1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:28:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607347687;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zmWE4Di/SrsoSOSW6qXuYa1KIu/jIAKq7DifFwoMfwo=;
- b=jRXrn7CzyHYB4rYN7cyWuY8mL4Ehw0D7nnpZFNK5HSTO28hdMB+2ZnlKsxKAJZKhtHrq9x
- txmdFwaqIjP+Mga3M1A1Ly1ZVGo1YYKzfDtLWJUshuthrd2k4wMNB1Ei+LXfme1fXgsAoM
- eGjPwXA41RysXmG8fRHjoMOGJRxSF0M=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-362-A9DT3AYYNU2HG6qqrc3lqg-1; Mon, 07 Dec 2020 08:28:03 -0500
-X-MC-Unique: A9DT3AYYNU2HG6qqrc3lqg-1
-Received: by mail-ej1-f69.google.com with SMTP id 3so3136465ejw.13
- for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Dec 2020 05:28:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zmWE4Di/SrsoSOSW6qXuYa1KIu/jIAKq7DifFwoMfwo=;
- b=AHA2D/Oke1UxcNjdMvrE6nMAuMhmYC0B80FNxjs/b51LVqkCrRh4m/ui9je++gbSNs
- AsGBVYsPh2PLKJP9W63hprtb0eAhDCwIwqKjs5uygi89hh2KatI1MPkcZFxpxBV2Qz/2
- MuwKz/bryDPAJq9Z1+7yKXIFo2t/pQdFjtLBWDOAD8J247Dk5Seq3f7YvN/Q384b1Q5e
- 0v6wt5rF9KzWrn5Lq047Hm6vR9KKgkt/oygiZkytEjpQeuyishLOY13v/adUObneej9/
- 4kZH5LnwqHpHwY+oUXfo43qUc3lclobg7Y0KGW9MTa60lEg+MVfH5kG3su6hjwz5CESO
- GKbw==
-X-Gm-Message-State: AOAM533ZwmU33xjcxOmYATwGWsdw1WE/NstzDhpYSjIljk/Fq545fGR9
- 95g0RJU+GRj1whBH2G8fGfbHXDswqdClZNLL0HZp4ex35urQ3ezrLH9KK+97G5aMWPTwetfZGlZ
- dDkql3J2cOcmET9LUkoitiNV3hWfJXw==
-X-Received: by 2002:a17:906:22c7:: with SMTP id
- q7mr18854685eja.486.1607347682014; 
- Mon, 07 Dec 2020 05:28:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwEorJ0sLId/xL9w8EuO0JL3r6cc0kBtMY1HiSGC5kejytn+C5L/ToMHIPmo2of6ILKDTvCoA==
-X-Received: by 2002:a17:906:22c7:: with SMTP id
- q7mr18854658eja.486.1607347681764; 
- Mon, 07 Dec 2020 05:28:01 -0800 (PST)
-Received: from x1.localdomain
- (2001-1c00-0c0c-fe00-d2ea-f29d-118b-24dc.cable.dynamic.v6.ziggo.nl.
- [2001:1c00:c0c:fe00:d2ea:f29d:118b:24dc])
- by smtp.gmail.com with ESMTPSA id oq27sm3461543ejb.108.2020.12.07.05.28.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Dec 2020 05:28:01 -0800 (PST)
-To: Mario Limonciello <mario.limonciello@dell.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20201204200920.133780-1-mario.limonciello@dell.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <d0f7e565-05e1-437e-4342-55eb73daa907@redhat.com>
-Date: Mon, 7 Dec 2020 14:28:00 +0100
+ with ESMTP id 7GepSpOn1+PV for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Dec 2020 13:32:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BA1E587282
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 13:32:08 +0000 (UTC)
+Received: from [192.168.0.3] (ip5f5af45d.dynamic.kabel-deutschland.de
+ [95.90.244.93])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 910BF2064787B;
+ Mon,  7 Dec 2020 14:32:05 +0100 (CET)
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+References: <20201207114223.29030-1-mateusz.palczewski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <551e0e32-b901-4cc0-3919-c497ca3610a2@molgen.mpg.de>
+Date: Mon, 7 Dec 2020 14:32:05 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ Thunderbird/78.5.1
 MIME-Version: 1.0
-In-Reply-To: <20201204200920.133780-1-mario.limonciello@dell.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201207114223.29030-1-mateusz.palczewski@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
- i219LM
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix for failed to init
+ adminq while VF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,148 +61,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Linux PM <linux-pm@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
- Perry.Yuan@dell.com, linux-kernel@vger.kernel.org, anthony.wong@canonical.com,
- Yijun.Shen@dell.com, Jakub Kicinski <kuba@kernel.org>,
- David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
-
-On 12/4/20 9:09 PM, Mario Limonciello wrote:
-> commit e086ba2fccda ("e1000e: disable s0ix entry and exit flows for ME systems")
-> disabled s0ix flows for systems that have various incarnations of the
-> i219-LM ethernet controller.  This was done because of some regressions
-> caused by an earlier
-> commit 632fbd5eb5b0e ("e1000e: fix S0ix flows for cable connected case")
-> with i219-LM controller.
-> 
-> Performing suspend to idle with these ethernet controllers requires a properly
-> configured system.  To make enabling such systems easier, this patch
-> series allows determining if enabled and turning on using ethtool.
-> 
-> The flows have also been confirmed to be configured correctly on Dell's Latitude
-> and Precision CML systems containing the i219-LM controller, when the kernel also
-> contains the fix for s0i3.2 entry previously submitted here and now part of this
-> series.
-> https://marc.info/?l=linux-netdev&m=160677194809564&w=2
-> 
-> Patches 4 through 7 will turn the behavior on by default for some of Dell's
-> CML and TGL systems.
-
-First of all thank you for working on this.
-
-I must say though that I don't like the approach taken here very
-much.
-
-This is not so much a criticism of this series as it is a criticism
-of the earlier decision to simply disable s0ix on all devices
-with the i219-LM + and active ME.
-
-AFAIK there was a perfectly acceptable patch to workaround those
-broken devices, which increased a timeout:
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20200323191639.48826-1-aaron.ma@canonical.com/
-
-That patch was nacked because it increased the resume time
-*on broken devices*.
-
-So it seems to me that we have a simple choice here:
-
-1. Longer resume time on devices with an improperly configured ME
-2. Higher power-consumption on all non-buggy devices
-
-Your patches 4-7 try to workaround 2. but IMHO those are just
-bandaids for getting the initial priorities *very* wrong.
-
-Instead of penalizing non-buggy devices with a higher power-consumption,
-we should default to penalizing the buggy devices with a higher
-resume time. And if it is decided that the higher resume time is
-a worse problem then the higher power-consumption, then there
-should be a list of broken devices and s0ix can be disabled on those.
-
-The current allow-list approach is simply never going to work well
-leading to too high power-consumption on countless devices.
-This is going to be an endless game of whack-a-mole and as
-such really is a bad idea.
-
-A deny-list for broken devices is a much better approach, esp.
-since missing devices on that list will still work fine, they
-will just have a somewhat larger resume time.
-
-So what needs to happen IMHO is:
-
-1. Merge your fix from patch 1 of this set
-2. Merge "e1000e: bump up timeout to wait when ME un-configure ULP mode"
-3. Drop the e1000e_check_me check.
-
-Then we also do not need the new "s0ix-enabled" ethertool flag
-because we do not need userspace to work-around us doing the
-wrong thing by default.
-
-Note a while ago I had access to one of the devices having suspend/resume
-issues caused by the S0ix support (a Lenovo Thinkpad X1 Carbon gen 7)
-and I can confirm that the "e1000e: bump up timeout to wait when ME
-un-configure ULP mode" patch fixes the suspend/resume problem without
-any noticeable negative side-effects.
-
-Regards,
-
-Hans
-
-
-
-
-
-
-
-
-
-> 
-> Changes from v2 to v3:
->  - Correct some grammar and spelling issues caught by Bjorn H.
->    * s/s0ix/S0ix/ in all commit messages
->    * Fix a typo in commit message
->    * Fix capitalization of proper nouns
->  - Add more pre-release systems that pass
->  - Re-order the series to add systems only at the end of the series
->  - Add Fixes tag to a patch in series.
-> 
-> Changes from v1 to v2:
->  - Directly incorporate Vitaly's dependency patch in the series
->  - Split out s0ix code into it's own file
->  - Adjust from DMI matching to PCI subsystem vendor ID/device matching
->  - Remove module parameter and sysfs, use ethtool flag instead.
->  - Export s0ix flag to ethtool private flags
->  - Include more people and lists directly in this submission chain.
-> 
-> Mario Limonciello (6):
->   e1000e: Move all S0ix related code into its own source file
->   e1000e: Export S0ix flags to ethtool
->   e1000e: Add Dell's Comet Lake systems into S0ix heuristics
->   e1000e: Add more Dell CML systems into S0ix heuristics
->   e1000e: Add Dell TGL desktop systems into S0ix heuristics
->   e1000e: Add another Dell TGL notebook system into S0ix heuristics
-> 
-> Vitaly Lifshits (1):
->   e1000e: fix S0ix flow to allow S0i3.2 subset entry
-> 
->  drivers/net/ethernet/intel/e1000e/Makefile  |   2 +-
->  drivers/net/ethernet/intel/e1000e/e1000.h   |   4 +
->  drivers/net/ethernet/intel/e1000e/ethtool.c |  40 +++
->  drivers/net/ethernet/intel/e1000e/netdev.c  | 272 +----------------
->  drivers/net/ethernet/intel/e1000e/s0ix.c    | 311 ++++++++++++++++++++
->  5 files changed, 361 insertions(+), 268 deletions(-)
->  create mode 100644 drivers/net/ethernet/intel/e1000e/s0ix.c
-> 
-> --
-> 2.25.1
-> 
-> 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBNYXRldXN6LAoKCkFtIDA3LjEyLjIwIHVtIDEyOjQyIHNjaHJpZWIgTWF0ZXVzeiBQYWxj
+emV3c2tpOgo+IEZpeCBmb3IgZmFpbGVkIHRvIGluaXQgYWRtaW5xOiAtNTMgd2hpbGUgVkYgaXMg
+cmVzZXR0aW5nIHZpYSBNQUMKPiBhZGRyZXNzIGNoYW5naW5nIHByb2NlZHVyZS4KPiBBZGRlZCBz
+eW5jIG1vZHVsZSB0byBhdm9pZCByZWFkaW5nIGRlYWRiZWVmIHZhbHVlIGluIHJlaW5pdCBhZG1p
+bnEKPiBkdXJpbmcgc29mdHdhcmUgcmVzZXQuCj4gV2l0aG91dCB0aGlzIHBhdGNoIGl0IGlzIHBv
+c3NpYmxlIHRvIHRyaWdnZXIgVkYgcmVzZXQgcHJvY2VkdXJlCj4gZHVyaW5nIHJlaW5pdCBhZG1p
+bnEuIFRoaXMgcmVzdWx0ZWQgaW4gYW4gaW5jb3JyZWN0IHJlYWRpbmcgb2YKPiB2YWx1ZSBmcm9t
+IHRoZSBBUVAgcmVnaXN0ZXJzIGFuZCBnZW5lcmF0ZWQgdGhlIC01MyBlcnJvci4KClRoYW5rIHlv
+dSBmb3IgZml4aW5nIHRoaXMgaXNzdWUuIChCbGFuayBsaW5lcyBiZXR3ZWVuIHBhcmFncmFwaHMg
+d291bGQgCm1ha2UgdGhlbSBiZXR0ZXIgcmVhZGFibGUuKQoKSG93IGNhbiB0aGUgcHJvYmxlbSBi
+ZSByZXByb2R1Y2VkPyBEbyB5b3UgaGF2ZSBhIHJlY2lwZSBkbyBjYXVzZSB0aGlzPwoKSSBoYXZl
+IHNvbWUgbml0cyBiZWxvdywgYnV0IG1heWJlIHlvdSBhbHNvIGNhbiB1c2UgdGhlIHN1bW1hcnkg
+YmVsb3cgZm9yIAp0aGUgZ2l0IGNvbW1pdCBtZXNzYWdlIHN1bW1hcnksIHNvIGl04oCZcyBhIHN0
+YXRlbWVudCB3aXRoIGEgdmVyYiBpbiAKaW1wZXJhdGl2ZSBtb29kLgoKID4gRml4IGluaXQgYWRt
+aW5xIGZhaWx1cmUgd2hpbGUgVkYgcmVzZXQKCllvdSBhcmUgYWRkaW5nIHNldmVyYWwgZGVsYXlz
+IGJlbG93LiBXaGF0IGlzIHRoZSBlZmZlY3Qgb24gdGhhdCBvbiAKb3ZlcmFsbCB0aW1pbmdzIG9m
+IHRoZSBkcml2ZXI/CgoKPiBGaXhlczogOWRjMmU0MTczODM4MTUiKGk0MGU6IHNwbGl0IHNvbWUg
+Y29kZSBpbiBpNDBlX3Jlc2V0X3ZmIGludG8gaGVscGVycyIpCj4gU2lnbmVkLW9mZi1ieTogR3J6
+ZWdvcnogU3pjenVyZWsgPGdyemVnb3J6eC5zemN6dXJla0BpbnRlbC5jb20+Cj4gU2lnbmVkLW9m
+Zi1ieTogTWF0ZXVzeiBQYWxjemV3c2tpIDxtYXRldXN6LnBhbGN6ZXdza2lAaW50ZWwuY29tPgo+
+IFJldmlld2VkLWJ5OiBKYXJvc2xhdyBHYXdpbiA8amFyb3NsYXd4Lmdhd2luQGludGVsLmNvbT4K
+PiBSZXZpZXdlZC1ieTogU2xhd29taXIgTGFiYSA8c2xhd29taXJ4LmxhYmFAaW50ZWwuY29tPgo+
+IFJldmlld2VkLWJ5OiBLYXJlbiBTb3JuZWsgPGthcmVuLnNvcm5la0BpbnRlbC5jb20+Cj4gUmV2
+aWV3ZWQtYnk6IEdyemVnb3J6IFNpd2lrIDxncnplZ29yei5zaXdpa0BpbnRlbC5jb20+Cj4gUmV2
+aWV3ZWQtYnk6IEFya2FkaXVzeiBLdWJhbGV3c2tpIDxhcmthZGl1c3oua3ViYWxld3NraUBpbnRl
+bC5jb20+Cj4gUmV2aWV3ZWQtYnk6IEFsZWtzYW5kciBMb2t0aW9ub3YgPGFsZWtzYW5kci5sb2t0
+aW9ub3ZAaW50ZWwuY29tPgo+IC0tLQo+ICAgLi4uL2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92
+aXJ0Y2hubF9wZi5jICAgIHwgNDYgKysrKysrKysrKysrKysrKysrLQo+ICAgLi4uL2V0aGVybmV0
+L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5oICAgIHwgIDIgKwo+ICAgMiBmaWxlcyBjaGFu
+Z2VkLCA0NiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdmlydGNobmxfcGYuYyBiL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5jCj4gaW5kZXggMjFl
+ZTU2NC4uYWZjY2JiYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+NDBlL2k0MGVfdmlydGNobmxfcGYuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5jCj4gQEAgLTEyOTcsNiArMTI5NywzMiBAQCBzdGF0aWMg
+aTQwZV9zdGF0dXMgaTQwZV9jb25maWdfdmZfcHJvbWlzY3VvdXNfbW9kZShzdHJ1Y3QgaTQwZV92
+ZiAqdmYsCj4gICAJcmV0dXJuIGFxX3JldDsKPiAgIH0KPiAgIAo+ICsvKioKPiArKiBpNDBlX3N5
+bmNfdmZyX3Jlc2V0Cj4gKyogQGh3OiBwb2ludGVyIHRvIGh3IHN0cnVjdAo+ICsqIEB2Zl9pZDog
+VkYgaWRlbnRpZmllcgo+ICsqCj4gKyogQmVmb3JlIHRyaWdnZXIgaGFyZHdhcmUgcmVzZXQsIHdl
+IG5lZWQgdG8ga25vdyBpZiBubyBvdGhlciBwcm9jZXNzIGhhcwoKU21hbGwgdHlwbzoKCiA+IEJl
+Zm9yZSB0cmlnZ2VyKmluZyBhKiBoYXJkd2FyZSByZXNldCwg4oCmCgo+ICsqIHJlc2VydmVkIHRo
+ZSBoYXJkd2FyZSBmb3IgYW55IHJlc2V0IG9wZXJhdGlvbnMuIFRoaXMgY2hlY2sgaXMgZG9uZSBi
+eQo+ICsqIGV4YW1pbmluZyB0aGUgc3RhdHVzIG9mIHRoZSBBRE1JTlEgYml0IGluIFZGIGludGVy
+cnVwdCByZWdpc3Rlci4KClBsZWFzZSBhZGQgaG93IG11Y2ggdGltZSB0aGlzIGRlbGF5cy4KCj4g
+KyoqLwo+ICtzdGF0aWMgaW50IGk0MGVfc3luY192ZnJfcmVzZXQoc3RydWN0IGk0MGVfaHcgKmh3
+LCBpbnQgdmZfaWQpCj4gK3sKPiArCXUzMiByZWc7Cj4gKwlpbnQgaTsKPiArCj4gKwlmb3IgKGkg
+PSAwOyBpIDwgSTQwRV9WRlJfV0FJVF9DT1VOVDsgaSsrKSB7Cj4gKwkJcmVnID0gcmQzMihodywg
+STQwRV9WRklOVF9JQ1IwX0VOQSh2Zl9pZCkpICYKPiArCQkJICAgSTQwRV9WRklOVF9JQ1IwX0FE
+TUlOUV9NQVNLOwo+ICsJCWlmIChyZWcpCj4gKwkJCXJldHVybiAwOwoKVGhlIHZhcmlhYmxlIGBy
+ZWdgIGRvZXMgbm90IHNlZW0gdG8gYmUgbmVlZGVkLgoKPiArCj4gKwkJdXNsZWVwX3JhbmdlKDEw
+LCAyMDApOwo+ICsJfQoKU2hvdWxkIGFuIGVycm9yIGJlIGxvZ2dlZCBpbiBjYXNlIG9mIGZhaWx1
+cmU/Cgo+ICsKPiArCXJldHVybiAtRUFHQUlOOwo+ICt9Cj4gKwo+ICAgLyoqCj4gICAgKiBpNDBl
+X3RyaWdnZXJfdmZfcmVzZXQKPiAgICAqIEB2ZjogcG9pbnRlciB0byB0aGUgVkYgc3RydWN0dXJl
+Cj4gQEAgLTEzMTEsOSArMTMzNywxMSBAQCBzdGF0aWMgdm9pZCBpNDBlX3RyaWdnZXJfdmZfcmVz
+ZXQoc3RydWN0IGk0MGVfdmYgKnZmLCBib29sIGZscikKPiAgIAlzdHJ1Y3QgaTQwZV9wZiAqcGYg
+PSB2Zi0+cGY7Cj4gICAJc3RydWN0IGk0MGVfaHcgKmh3ID0gJnBmLT5odzsKPiAgIAl1MzIgcmVn
+LCByZWdfaWR4LCBiaXRfaWR4Owo+ICsJYm9vbCB2Zl9hY3RpdmU7Cj4gKwl1MzIgcmFkcTsKPiAg
+IAo+ICAgCS8qIHdhcm4gdGhlIFZGICovCj4gLQljbGVhcl9iaXQoSTQwRV9WRl9TVEFURV9BQ1RJ
+VkUsICZ2Zi0+dmZfc3RhdGVzKTsKPiArCXZmX2FjdGl2ZSA9IHRlc3RfYW5kX2NsZWFyX2JpdChJ
+NDBFX1ZGX1NUQVRFX0FDVElWRSwgJnZmLT52Zl9zdGF0ZXMpOwo+ICAgCj4gICAJLyogRGlzYWJs
+ZSBWRidzIGNvbmZpZ3VyYXRpb24gQVBJIGR1cmluZyByZXNldC4gVGhlIGZsYWcgaXMgcmUtZW5h
+YmxlZAo+ICAgCSAqIGluIGk0MGVfYWxsb2NfdmZfcmVzKCksIHdoZW4gaXQncyBzYWZlIGFnYWlu
+IHRvIGFjY2VzcyBWRidzIFZTSS4KPiBAQCAtMTMyNyw3ICsxMzU1LDE5IEBAIHN0YXRpYyB2b2lk
+IGk0MGVfdHJpZ2dlcl92Zl9yZXNldChzdHJ1Y3QgaTQwZV92ZiAqdmYsIGJvb2wgZmxyKQo+ICAg
+CSAqIGp1c3QgbmVlZCB0byBjbGVhbiB1cCwgc28gZG9uJ3QgaGl0IHRoZSBWRlJUUklHIHJlZ2lz
+dGVyLgo+ICAgCSAqLwo+ICAgCWlmICghZmxyKSB7Cj4gLQkJLyogcmVzZXQgVkYgdXNpbmcgVlBH
+RU5fVkZSVFJJRyByZWcgKi8KPiArCQkvKiBTeW5jIFZGUiByZXNldCBiZWZvcmUgdHJpZ2dlciBu
+ZXh0IG9uZSAqLwoKdHJpZ2dlcmluZwoKPiArCQlyYWRxID0gcmQzMihodywgSTQwRV9WRklOVF9J
+Q1IwX0VOQSh2Zi0+dmZfaWQpKSAmCj4gKwkJCSAgICBJNDBFX1ZGSU5UX0lDUjBfQURNSU5RX01B
+U0s7Cj4gKwkJaWYgKHZmX2FjdGl2ZSAmJiAhcmFkcSkKPiArCQkJLyogd2FpdGluZyBmb3IgZmlu
+aXNoIHJlc2V0IGJ5IHZpcnR1YWwgZHJpdmVyICovCgp3YWl0aW5nIGZvciB2aXJ0dWFsIGRyaXZl
+ciB0byBmaW5pc2ggcmVzZXQKCj4gKwkJCWlmIChpNDBlX3N5bmNfdmZyX3Jlc2V0KGh3LCB2Zi0+
+dmZfaWQpKQo+ICsJCQkJZGV2X2luZm8oJnBmLT5wZGV2LT5kZXYsCj4gKwkJCQkJICJSZXNldCBW
+RiAlZCBuZXZlciBmaW5pc2hlZFxuIiwKCuKApiBhZnRlciBYIG1zLgoKQWxzbywgcGxlYXNlIGFk
+ZCB0aGUgY29uc2VxdWVuY2VzIG9mIHRoYXQgZmFpbHVyZS4gV2hhdCBkb2VzIGl0IG1lYW4gZm9y
+IAp0aGUgdXNlciwgdGhhdCB0aGUgcmVzZXQgd2FzIHVuc3VjY2Vzc2Z1bD8KCj4gKwkJCQkJIHZm
+LT52Zl9pZCk7Cj4gKwo+ICsJCS8qIFJlc2V0IFZGIHVzaW5nIFZQR0VOX1ZGUlRSSUcgcmVnLiBJ
+dCBpcyBhbHNvIHNldHRpbmcKPiArCQkgKiBpbiBwcm9ncmVzcyBzdGF0ZSBpbiByc3RhdDEgcmVn
+aXN0ZXIuCj4gKwkJICovCj4gICAJCXJlZyA9IHJkMzIoaHcsIEk0MEVfVlBHRU5fVkZSVFJJRyh2
+Zi0+dmZfaWQpKTsKPiAgIAkJcmVnIHw9IEk0MEVfVlBHRU5fVkZSVFJJR19WRlNXUl9NQVNLOwo+
+ICAgCQl3cjMyKGh3LCBJNDBFX1ZQR0VOX1ZGUlRSSUcodmYtPnZmX2lkKSwgcmVnKTsKPiBAQCAt
+MTQ1Nyw2ICsxNDk3LDcgQEAgYm9vbCBpNDBlX3Jlc2V0X3ZmKHN0cnVjdCBpNDBlX3ZmICp2Ziwg
+Ym9vbCBmbHIpCj4gICAJaTQwZV9jbGVhbnVwX3Jlc2V0X3ZmKHZmKTsKPiAgIAo+ICAgCWk0MGVf
+Zmx1c2goaHcpOwo+ICsJdXNsZWVwX3JhbmdlKDIwMDAwLCA0MDAwMCk7CgpUaGlzIHNlZW1zIHVu
+cmVsYXRlZCB0byB0aGUgY29tbWl0PwoKPiAgIAljbGVhcl9iaXQoX19JNDBFX1ZGX0RJU0FCTEUs
+IHBmLT5zdGF0ZSk7Cj4gICAKPiAgIAlyZXR1cm4gdHJ1ZTsKPiBAQCAtMTU2MSw2ICsxNjAyLDcg
+QEAgYm9vbCBpNDBlX3Jlc2V0X2FsbF92ZnMoc3RydWN0IGk0MGVfcGYgKnBmLCBib29sIGZscikK
+PiAgIAkJaTQwZV9jbGVhbnVwX3Jlc2V0X3ZmKCZwZi0+dmZbdl0pOwo+ICAgCj4gICAJaTQwZV9m
+bHVzaChodyk7Cj4gKwl1c2xlZXBfcmFuZ2UoMjAwMDAsIDQwMDAwKTsKCkRpdHRvLgoKPiAgIAlj
+bGVhcl9iaXQoX19JNDBFX1ZGX0RJU0FCTEUsIHBmLT5zdGF0ZSk7Cj4gICAKPiAgIAlyZXR1cm4g
+dHJ1ZTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBl
+X3ZpcnRjaG5sX3BmLmggYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdmly
+dGNobmxfcGYuaAo+IGluZGV4IDU0OTEyMTUuLmZiNGY1ZGIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3ZpcnRjaG5sX3BmLmgKPiArKysgYi9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdmlydGNobmxfcGYuaAo+IEBAIC0xOCw2
+ICsxOCw4IEBACj4gICAKPiAgICNkZWZpbmUgSTQwRV9NQVhfVkZfUFJPTUlTQ19GTEFHUwkzCj4g
+ICAKPiArI2RlZmluZSBJNDBFX1ZGUl9XQUlUX0NPVU5UCQkxMDAKCldoeSBpcyAxMDAgY2hvc2Vu
+PyBUaGUgY29tbWl0IG1lc3NhZ2UgZG9lcyBub3Qgc2F5LgoKPiArCj4gICAvKiBWYXJpb3VzIHF1
+ZXVlIGN0cmxzICovCj4gICBlbnVtIGk0MGVfcXVldWVfY3RybCB7Cj4gICAJSTQwRV9RVUVVRV9D
+VFJMX1VOS05PV04gPSAwLAo+IAoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
+bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
