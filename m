@@ -1,66 +1,124 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 559F62D1E33
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 00:16:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E9EA387CBC;
-	Mon,  7 Dec 2020 23:16:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RE6XgK3fhign; Mon,  7 Dec 2020 23:16:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A9F7787C6F;
-	Mon,  7 Dec 2020 23:16:37 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4FF431BF332
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:16:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29F5B2D1E54
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 00:28:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4B8E1878B8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:16:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9852E87A4B;
+	Mon,  7 Dec 2020 23:27:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5xPOQ5959ZDa; Mon,  7 Dec 2020 23:27:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id DB76487A56;
+	Mon,  7 Dec 2020 23:27:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E5DF81BF332
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:26:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id DA3B92E2B7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:26:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U7E7X0XxRHSb for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Dec 2020 23:16:34 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 31193878B2
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:16:34 +0000 (UTC)
-IronPort-SDR: pP3XOP+5D56nO3gzRQfkBG+SPL0ZTXY1CN3JaRxkYZxmjE+/fQehF/3w7ZVn0VrAzF5dn3boEn
- flqtk9jQSLAQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9828"; a="161564549"
-X-IronPort-AV: E=Sophos;i="5.78,401,1599548400"; d="scan'208";a="161564549"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2020 15:16:33 -0800
-IronPort-SDR: AcBJtSDVnH4r/P+8UYpSbwg+1u4Ss6h1AzzkiF+du4nrwoimJI4b5gjHvg2NIW6bfd966B3Okb
- MF8cPF4Zz6nw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,401,1599548400"; d="scan'208";a="363360539"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga008.jf.intel.com with ESMTP; 07 Dec 2020 15:16:29 -0800
-Date: Tue, 8 Dec 2020 00:07:55 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: John Fastabend <john.fastabend@gmail.com>
-Message-ID: <20201207230755.GB27205@ranger.igk.intel.com>
-References: <20201204102901.109709-1-marekx.majtyka@intel.com>
- <20201204102901.109709-2-marekx.majtyka@intel.com>
- <878sad933c.fsf@toke.dk>
- <20201204124618.GA23696@ranger.igk.intel.com>
- <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
- <20201207135433.41172202@carbon>
- <5fce960682c41_5a96208e4@john-XPS-13-9370.notmuch>
+ with ESMTP id Rz0wQfz6Zgzy for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Dec 2020 23:26:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from EUR03-DB5-obe.outbound.protection.outlook.com
+ (mail-eopbgr40085.outbound.protection.outlook.com [40.107.4.85])
+ by silver.osuosl.org (Postfix) with ESMTPS id E7D302E2B5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 23:26:50 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TfHEZjbe102fV9e4u+82GZyIkHNnUligB/pWBAf4F1jjfKpm6sqKotasETLBbwwKDWLIPuGlRp1qiKCcCnKHGtFsMBHplR/3AE+lbBUs63+8CBtfetifOA4InY+ailz31rcKpSlu/ruMwpgkxCdlYmMLGIzPwrpfVse/cde4vD1hH/rGaZ5OGL++4gDd4X3XyK3aGCBL6vCxOmUDtJxmtxwD+9aErlGw6njrVtWEu26YeqkusVE7/wfmUsQo1GYeJpwRc1do+aVAposahTaeM2VmV+HgDV4Z3lh38t/bJBl4Qw5b6nc7W2144KhxxsmbN79RjXpauI9BPGdF+z+/Ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rRTpSxdNBemMwgUtSrvpl4ZzfLpcKClhZX8sVHoOngo=;
+ b=BIzqtUtKTb+TMEdeFCaFbotokMAU6rAKBM9G82stPMGc1DjBUR3/LCjpAKVHR3sbiTkZOnC1TmmMSqdPwoeUU916gzLjTKUoFlv8ko8PM5hoo2MiVKgSLP5U9fEo6gnteQcgytNpa2HfM1T/wlVtKxq+Eat1xXhM96OgvHFFzjOjjRQOl45qzejyRZ5RwxEqewhjYp7A7fd+pzcScZcI+A2cu/fy4xLL2duqRmyNupU9UjgKTH2Vic4R1A/Py/HZvHILBdKz0dsiBVIyg7PMAL0pdJtTKcuwtY0PhpJ/7wYph9flTJ8oHQfGqKdE3yHjSJE03hbTmCgIhPmZOjrrpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rRTpSxdNBemMwgUtSrvpl4ZzfLpcKClhZX8sVHoOngo=;
+ b=NDG+X+xuc+o8BS8ywaopt7bB/monWHXR+v2+FjeqKVfGuXdYA2qy2AQnWFFAs7Fz5s8PJPnrMEhPbb6ZFFHBs4A2GjTMy9ipd9+TT9wVg4q4BRVCrxRUJcJVknl/YgVlBVSMoCRY+6MmRHXBg8pChIi4VWWhVIpJ4+d13EpAENg=
+Received: from VI1PR04MB5696.eurprd04.prod.outlook.com (2603:10a6:803:e7::13)
+ by VI1PR0401MB2511.eurprd04.prod.outlook.com (2603:10a6:800:50::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.17; Mon, 7 Dec
+ 2020 23:12:31 +0000
+Received: from VI1PR04MB5696.eurprd04.prod.outlook.com
+ ([fe80::2dd6:8dc:2da7:ad84]) by VI1PR04MB5696.eurprd04.prod.outlook.com
+ ([fe80::2dd6:8dc:2da7:ad84%5]) with mapi id 15.20.3632.021; Mon, 7 Dec 2020
+ 23:12:31 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Thread-Topic: [PATCH net-next v1 0/9] ethtool: Add support for frame preemption
+Thread-Index: AQHWyGcjTxqNudxW/Uq5xtWOatYXManozWWAgAN4RICAAAZnAA==
+Date: Mon, 7 Dec 2020 23:12:31 +0000
+Message-ID: <20201207231230.3avhe6yqklsbxsiz@skbuf>
+References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
+ <20201205095021.36e1a24d@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+ <87o8j5z0xs.fsf@intel.com>
+In-Reply-To: <87o8j5z0xs.fsf@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=nxp.com;
+x-originating-ip: [188.25.2.120]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 1c02e29c-a37a-4286-0142-08d89b0592ae
+x-ms-traffictypediagnostic: VI1PR0401MB2511:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <VI1PR0401MB2511D59A319ED409B105006DE0CE0@VI1PR0401MB2511.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Kyt8wCAtetBDEiZe3hG3loIAFtsSPdg95sU9pa2dHPPNNPGUHrrKIza+m/UDdv98ts253sJ+Go7kzFixWY47lQlCLt9NHfXCggQsCOc95b6Nq6EbC4IVZWj4ESt/UKYOxPYYg4v+OdGnqhJU9sraPbgMHoYm1oQwEeNM9CH4pwwYiuxogpDJaEVokIhqr2tlcyR/YRUq1Lnf0aVzt3/od7+1kjmT9JxAsqemDG1htCrf5WCssHMM34INa67rGVS9XIuiAcueElUoNH468ic3ieczqoug5I8ymaTiaPx9gEL22YWh+zYdL3fUthkOy7YEkusoyTt51p2Im0S64W0zkg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB5696.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(7916004)(4636009)(366004)(136003)(346002)(376002)(54906003)(86362001)(5660300002)(76116006)(6486002)(6916009)(2906002)(66556008)(66946007)(9686003)(91956017)(33716001)(1076003)(66476007)(66446008)(83380400001)(64756008)(7416002)(8936002)(8676002)(26005)(6512007)(44832011)(508600001)(4326008)(71200400001)(6506007)(186003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?ZyulpqsCfKeb1450f6XeON1PZstN9Fj/hPypKc2cBusX9XDZ/a3rvB3bNC01?=
+ =?us-ascii?Q?VnO0pYf/qXopiK/7ZMys/7MExhOunHMN2nyhVajESEiE5q+LNLeXDBo4Ys1M?=
+ =?us-ascii?Q?BQzgtOA7xsVJYjnnaj7XFExzqYbkLG+6pdhSjAdrbbIkSBzelBFPc6t/ybDn?=
+ =?us-ascii?Q?Wp6TuFEWp51IrIKavmodpDzCwgeoN9I51qBjYEeYZDg7j8vRLHH+oR66i6Ol?=
+ =?us-ascii?Q?BtXDsfArB3uHLVc6wWWqxx6RDT3f3iZXlQ3MmtborpsRX9xzm0sx2K4HTHz4?=
+ =?us-ascii?Q?YtSzsJ2cYGu04DICVRQHim6jeEEacZsxyGIvNfSA8Kj7omWWyLEN4wjAq4Rg?=
+ =?us-ascii?Q?gWHCJh731KYuo4sQ4zsnhEJKTbpmo61R6fdfihmhz33+HZ1Exj36TXe+2up+?=
+ =?us-ascii?Q?XtfX4omUxkxjner8HvGHNltA6EuxH/cgTEUiFv+52sslya/gUfHRiKvo72Qg?=
+ =?us-ascii?Q?rzka0rq1NKYZ9ZLBHSYJ2AuQiIvTWiGFVw/t6PVonAUKvpirBcUxSXCS0yis?=
+ =?us-ascii?Q?5m80qeTq67Q5L41D/N5vc/MGXtCq3o8UmgBv1LvdHLszv6fBryXpZ85OC82k?=
+ =?us-ascii?Q?dcKT9AxTw2bm16jrfVXkaQDPE4JHVe1wjoADlaSoauMm4DXkih+HLsHTOOPT?=
+ =?us-ascii?Q?5OQc/iJA17HeAuShkdXZwqR6NrekM4MbGsi4pb2viG4EJg4uOyDUwgRk85sU?=
+ =?us-ascii?Q?LGvW2ppG/QS81pqyNbaj5wpoEUwAQtG+d9YpJ79m/enT4kd+W0xFeD6sNawU?=
+ =?us-ascii?Q?CKd+pc0n9Y5y26yVkmLSSOO3O1OOye3iBqpmVfNf/WKnx5HROqKHBRiL4bCN?=
+ =?us-ascii?Q?48PFihzfFyG1EclSJufsxafjFtVEA0HjotfTUmOp2ON7nmKhZT/flrU1LdF4?=
+ =?us-ascii?Q?KGnPjnsjAFpsSJieO5uMMop3EdLdLq15ZfcDv1XA6revkJvsJphtm8GJJ0Yb?=
+ =?us-ascii?Q?DG2oV/A6x4SppJl1sYdDkh6EO2rQwuvyNAnuMZ7KdGRtEu7fSZuxPepUPP7Y?=
+ =?us-ascii?Q?8ajn?=
+Content-ID: <7FCE58176DE30A40904ACDF1D08D270B@eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5fce960682c41_5a96208e4@john-XPS-13-9370.notmuch>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
- properties flag set
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5696.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1c02e29c-a37a-4286-0142-08d89b0592ae
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Dec 2020 23:12:31.0214 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: sIASoWE/95+Fj8ip88jx/4MqB+i6pM2FbzBRlMF/n1A5yfl37IqUzV47xDVbEtx6XauVUXbHQUYpt/sKagBCpw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0401MB2511
+X-Mailman-Approved-At: Mon, 07 Dec 2020 23:27:56 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 0/9] ethtool: Add support
+ for frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,185 +131,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
- hawk@kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
- Marek Majtyka <marekx.majtyka@intel.com>, netdev@vger.kernel.org,
- Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>, ast@kernel.org,
- Jesper Dangaard Brouer <jbrouer@redhat.com>, alardam@gmail.com,
- intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
- bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
- magnus.karlsson@intel.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
+ "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "m-karicheri2@ti.com" <m-karicheri2@ti.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 07, 2020 at 12:52:22PM -0800, John Fastabend wrote:
-> Jesper Dangaard Brouer wrote:
-> > On Fri, 4 Dec 2020 16:21:08 +0100
-> > Daniel Borkmann <daniel@iogearbox.net> wrote:
-> > =
+On Mon, Dec 07, 2020 at 02:49:35PM -0800, Vinicius Costa Gomes wrote:
+> Jakub Kicinski <kuba@kernel.org> writes:
+>
+> > On Tue,  1 Dec 2020 20:53:16 -0800 Vinicius Costa Gomes wrote:
+> >> $ tc qdisc replace dev $IFACE parent root handle 100 taprio \
+> >>       num_tc 3 \
+> >>       map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \
+> >>       queues 1@0 1@1 2@2 \
+> >>       base-time $BASE_TIME \
+> >>       sched-entry S 0f 10000000 \
+> >>       preempt 1110 \
+> >>       flags 0x2
+> >>
+> >> The "preempt" parameter is the only difference, it configures which
+> >> queues are marked as preemptible, in this example, queue 0 is marked
+> >> as "not preemptible", so it is express, the rest of the four queues
+> >> are preemptible.
+> >
+> > Does it make more sense for the individual queues to be preemptible
+> > or not, or is it better controlled at traffic class level?
+> > I was looking at patch 2, and 32 queues isn't that many these days..
+> > We either need a larger type there or configure this based on classes.
+>
+> I can set more future proof sizes for expressing the queues, sure, but
+> the issue, I think, is that frame preemption has dimishing returns with
+> link speed: at 2.5G the latency improvements are on the order of single
+> digit microseconds. At greater speeds the improvements are even less
+> noticeable.
 
-> > > On 12/4/20 1:46 PM, Maciej Fijalkowski wrote:
-> > > > On Fri, Dec 04, 2020 at 01:18:31PM +0100, Toke H=F8iland-J=F8rgense=
-n wrote:  =
+You could look at it another way.
+You can enable jumbo frames in your network, and your latency-sensitive
+traffic would not suffer as long as the jumbo frames are preemptible.
 
-> > > >> alardam@gmail.com writes:  =
+> The only adapters that I see that support frame preemtion have 8 queues
+> or less.
+>
+> The idea of configuring frame preemption based on classes is
+> interesting. I will play with it, and see how it looks.
 
-> > > >>> From: Marek Majtyka <marekx.majtyka@intel.com>
-> > > >>>
-> > > >>> Implement support for checking what kind of xdp functionality a n=
-etdev
-> > > >>> supports. Previously, there was no way to do this other than to t=
-ry
-> > > >>> to create an AF_XDP socket on the interface or load an XDP progra=
-m and see
-> > > >>> if it worked. This commit changes this by adding a new variable w=
-hich
-> > > >>> describes all xdp supported functions on pretty detailed level:  =
-
-> > > >>
-> > > >> I like the direction this is going! :)
-> > =
-
-> > (Me too, don't get discouraged by our nitpicking, keep working on this!=
- :-))
-> > =
-
-> > > >>  =
-
-> > > >>>   - aborted
-> > > >>>   - drop
-> > > >>>   - pass
-> > > >>>   - tx  =
-
-> > > =
-
-> > > I strongly think we should _not_ merge any native XDP driver patchset
-> > > that does not support/implement the above return codes. =
-
-> > =
-
-> > I agree, with above statement.
-> > =
-
-> > > Could we instead group them together and call this something like
-> > > XDP_BASE functionality to not give a wrong impression?
-> > =
-
-> > I disagree.  I can accept that XDP_BASE include aborted+drop+pass.
-> > =
-
-> > I think we need to keep XDP_TX action separate, because I think that
-> > there are use-cases where the we want to disable XDP_TX due to end-user
-> > policy or hardware limitations.
-> =
-
-> How about we discover this at load time though. Meaning if the program
-> doesn't use XDP_TX then the hardware can skip resource allocations for
-> it. I think we could have verifier or extra pass discover the use of
-> XDP_TX and then pass a bit down to driver to enable/disable TX caps.
-
-+1
-
-> =
-
-> > =
-
-> > Use-case(1): Cloud-provider want to give customers (running VMs) ability
-> > to load XDP program for DDoS protection (only), but don't want to allow
-> > customer to use XDP_TX (that can implement LB or cheat their VM
-> > isolation policy).
-> =
-
-> Not following. What interface do they want to allow loading on? If its
-> the VM interface then I don't see how it matters. From outside the
-> VM there should be no way to discover if its done in VM or in tc or
-> some other stack.
-> =
-
-> If its doing some onloading/offloading I would assume they need to
-> ensure the isolation, etc. is still maintained because you can't
-> let one VMs program work on other VMs packets safely.
-> =
-
-> So what did I miss, above doesn't make sense to me.
-> =
-
-> > =
-
-> > Use-case(2): Disable XDP_TX on a driver to save hardware TX-queue
-> > resources, as the use-case is only DDoS.  Today we have this problem
-> > with the ixgbe hardware, that cannot load XDP programs on systems with
-> > more than 192 CPUs.
-> =
-
-> The ixgbe issues is just a bug or missing-feature in my opinion.
-
-Not a bug, rather HW limitation?
-
-> =
-
-> I think we just document that XDP_TX consumes resources and if users
-> care they shouldn't use XD_TX in programs and in that case hardware
-> should via program discovery not allocate the resource. This seems
-> cleaner in my opinion then more bits for features.
-
-But what if I'm with some limited HW that actually has a support for XDP
-and I would like to utilize XDP_TX?
-
-Not all drivers that support XDP consume Tx resources. Recently igb got
-support and it shares Tx queues between netstack and XDP.
-
-I feel like we should have a sort-of best effort approach in case we
-stumble upon the XDP_TX in prog being loaded and query the driver if it
-would be able to provide the Tx resources on the current system, given
-that normally we tend to have a queue per core.
-
-In that case igb would say yes, ixgbe would say no and prog would be
-rejected.
-
-> =
-
-> > =
-
-> > =
-
-> > > If this is properly documented that these are basic must-have
-> > > _requirements_, then users and driver developers both know what the
-> > > expectations are.
-> > =
-
-> > We can still document that XDP_TX is a must-have requirement, when a
-> > driver implements XDP.
-> =
-
-> +1
-> =
-
-> > =
-
-> > =
-
-> > > >>>   - redirect  =
-
-> > > >>
-> > =
-
-> > =
-
-> > -- =
-
-> > Best regards,
-> >   Jesper Dangaard Brouer
-> >   MSc.CS, Principal Kernel Engineer at Red Hat
-> >   LinkedIn: http://www.linkedin.com/in/brouer
-> > =
-
-> =
-
-> =
-
+I admit I never understood why you insist on configuring TSN offloads
+per hardware queue and not per traffic class.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
