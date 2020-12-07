@@ -2,55 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07D322D0F9C
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 12:42:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F1302D0FC2
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 12:55:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A2B186F99;
-	Mon,  7 Dec 2020 11:42:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2989C87160;
+	Mon,  7 Dec 2020 11:55:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i6jMxjhS05Pf; Mon,  7 Dec 2020 11:42:43 +0000 (UTC)
+	with ESMTP id u3wo6MHOZSIx; Mon,  7 Dec 2020 11:55:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 07EEB86DFD;
-	Mon,  7 Dec 2020 11:42:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0FCA2870FE;
+	Mon,  7 Dec 2020 11:55:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 57E7D1BF40D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5692D1BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:55:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 52D7A877A8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4AA8E870EF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:55:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GC1u2f-rRGBy for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Dec 2020 11:42:38 +0000 (UTC)
+ with ESMTP id fIY+o8kKZ3Q6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Dec 2020 11:55:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4E4F9877A6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:38 +0000 (UTC)
-IronPort-SDR: S7oBe2Fjs4MobXeJyQRJfVkCGRWiQG8MBcjnmqEzz3VueBYotsnawqSNzwHSPlPzvcutJKFZl7
- qCH9lGR/ob9g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9827"; a="153499223"
-X-IronPort-AV: E=Sophos;i="5.78,399,1599548400"; d="scan'208";a="153499223"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2020 03:42:37 -0800
-IronPort-SDR: 9aeeZIfMK0NgnxRZsHQLC/D69W7XAJzaoFR5WMqOekZ4dxFziwb6faRtrFKA5md39vc4h4cb4M
- sVnF5sNjlt2Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,399,1599548400"; d="scan'208";a="332068811"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga003.jf.intel.com with ESMTP; 07 Dec 2020 03:42:36 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  7 Dec 2020 11:42:23 +0000
-Message-Id: <20201207114223.29030-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix for failed to init
- adminq while VF reset
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 49F0E870EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:55:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607342114;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RFxHsnImOflCZF1OXAJjc3KHnp1DAGQjdGBQW7WJyfU=;
+ b=LjI138oX5AUGPk9aYp2J0BDo9IPmAcZY3EfJ3rQbVMGVMEE2tQoWrxOLS7A1o/zA0LzwBQ
+ 5McOAJNP1FmYu/NyIZgsVLNnVXMLyc1sgJ6JWvoNcgTolOzZrdhoXnQqtHcFn5tkWplPht
+ W4Zs586tKcdNJHdxxfK9060vN4kAvEE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-361-1vbLW6_MOg2laIdy23Kp7w-1; Mon, 07 Dec 2020 06:55:11 -0500
+X-MC-Unique: 1vbLW6_MOg2laIdy23Kp7w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ADB8F801FDB;
+ Mon,  7 Dec 2020 11:55:08 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.55])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4A50C60C4D;
+ Mon,  7 Dec 2020 11:54:55 +0000 (UTC)
+Date: Mon, 7 Dec 2020 12:54:54 +0100
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <20201207125454.3883d315@carbon>
+In-Reply-To: <eb305a4f-c189-6b32-f718-6e709ef0fa55@iogearbox.net>
+References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201204102901.109709-2-marekx.majtyka@intel.com>
+ <878sad933c.fsf@toke.dk>
+ <20201204124618.GA23696@ranger.igk.intel.com>
+ <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
+ <87pn3p7aiv.fsf@toke.dk>
+ <eb305a4f-c189-6b32-f718-6e709ef0fa55@iogearbox.net>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,146 +83,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
+ hawk@kernel.org, netdev@vger.kernel.org,
+ Toke =?UTF-8?B?SMO4aWxhbmQtSsO4cmdlbnNlbg==?= <toke@redhat.com>,
+ ast@kernel.org, Marek Majtyka <marekx.majtyka@intel.com>, brouer@redhat.com,
+ Saeed Mahameed <saeed@kernel.org>, alardam@gmail.com,
+ intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix for failed to init adminq: -53 while VF is resetting via MAC
-address changing procedure.
-Added sync module to avoid reading deadbeef value in reinit adminq
-during software reset.
-Without this patch it is possible to trigger VF reset procedure
-during reinit adminq. This resulted in an incorrect reading of
-value from the AQP registers and generated the -53 error.
-
-Fixes: 9dc2e417383815"(i40e: split some code in i40e_reset_vf into helpers")
-Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Reviewed-by: Jaroslaw Gawin <jaroslawx.gawin@intel.com>
-Reviewed-by: Slawomir Laba <slawomirx.laba@intel.com>
-Reviewed-by: Karen Sornek <karen.sornek@intel.com>
-Reviewed-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 46 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  2 +
- 2 files changed, 46 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 21ee564..afccbbc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -1297,6 +1297,32 @@ static i40e_status i40e_config_vf_promiscuous_mode(struct i40e_vf *vf,
- 	return aq_ret;
- }
- 
-+/**
-+* i40e_sync_vfr_reset
-+* @hw: pointer to hw struct
-+* @vf_id: VF identifier
-+*
-+* Before trigger hardware reset, we need to know if no other process has
-+* reserved the hardware for any reset operations. This check is done by
-+* examining the status of the ADMINQ bit in VF interrupt register.
-+**/
-+static int i40e_sync_vfr_reset(struct i40e_hw *hw, int vf_id)
-+{
-+	u32 reg;
-+	int i;
-+
-+	for (i = 0; i < I40E_VFR_WAIT_COUNT; i++) {
-+		reg = rd32(hw, I40E_VFINT_ICR0_ENA(vf_id)) &
-+			   I40E_VFINT_ICR0_ADMINQ_MASK;
-+		if (reg)
-+			return 0;
-+
-+		usleep_range(10, 200);
-+	}
-+
-+	return -EAGAIN;
-+}
-+
- /**
-  * i40e_trigger_vf_reset
-  * @vf: pointer to the VF structure
-@@ -1311,9 +1337,11 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
- 	struct i40e_pf *pf = vf->pf;
- 	struct i40e_hw *hw = &pf->hw;
- 	u32 reg, reg_idx, bit_idx;
-+	bool vf_active;
-+	u32 radq;
- 
- 	/* warn the VF */
--	clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
-+	vf_active = test_and_clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
- 
- 	/* Disable VF's configuration API during reset. The flag is re-enabled
- 	 * in i40e_alloc_vf_res(), when it's safe again to access VF's VSI.
-@@ -1327,7 +1355,19 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
- 	 * just need to clean up, so don't hit the VFRTRIG register.
- 	 */
- 	if (!flr) {
--		/* reset VF using VPGEN_VFRTRIG reg */
-+		/* Sync VFR reset before trigger next one */
-+		radq = rd32(hw, I40E_VFINT_ICR0_ENA(vf->vf_id)) &
-+			    I40E_VFINT_ICR0_ADMINQ_MASK;
-+		if (vf_active && !radq)
-+			/* waiting for finish reset by virtual driver */
-+			if (i40e_sync_vfr_reset(hw, vf->vf_id))
-+				dev_info(&pf->pdev->dev,
-+					 "Reset VF %d never finished\n",
-+					 vf->vf_id);
-+
-+		/* Reset VF using VPGEN_VFRTRIG reg. It is also setting
-+		 * in progress state in rstat1 register.
-+		 */
- 		reg = rd32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id));
- 		reg |= I40E_VPGEN_VFRTRIG_VFSWR_MASK;
- 		wr32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id), reg);
-@@ -1457,6 +1497,7 @@ bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
- 	i40e_cleanup_reset_vf(vf);
- 
- 	i40e_flush(hw);
-+	usleep_range(20000, 40000);
- 	clear_bit(__I40E_VF_DISABLE, pf->state);
- 
- 	return true;
-@@ -1561,6 +1602,7 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
- 		i40e_cleanup_reset_vf(&pf->vf[v]);
- 
- 	i40e_flush(hw);
-+	usleep_range(20000, 40000);
- 	clear_bit(__I40E_VF_DISABLE, pf->state);
- 
- 	return true;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index 5491215..fb4f5db 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -18,6 +18,8 @@
- 
- #define I40E_MAX_VF_PROMISC_FLAGS	3
- 
-+#define I40E_VFR_WAIT_COUNT		100
-+
- /* Various queue ctrls */
- enum i40e_queue_ctrl {
- 	I40E_QUEUE_CTRL_UNKNOWN = 0,
--- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCA0IERlYyAyMDIwIDIzOjE5OjU1ICswMTAwCkRhbmllbCBCb3JrbWFubiA8ZGFuaWVs
+QGlvZ2VhcmJveC5uZXQ+IHdyb3RlOgoKPiBPbiAxMi80LzIwIDY6MjAgUE0sIFRva2UgSMO4aWxh
+bmQtSsO4cmdlbnNlbiB3cm90ZToKPiA+IERhbmllbCBCb3JrbWFubiA8ZGFuaWVsQGlvZ2VhcmJv
+eC5uZXQ+IHdyaXRlczogIAo+IFsuLi5dCj4gPj4gV2UgdHJpZWQgdG8gc3RhbmRhcmRpemUgb24g
+YSBtaW5pbXVtIGd1YXJhbnRlZWQgYW1vdW50LCBidXQgdW5mb3J0dW5hdGVseSBub3QKPiA+PiBl
+dmVyeW9uZSBzZWVtcyB0byBpbXBsZW1lbnQgaXQsIGJ1dCBJIHRoaW5rIGl0IHdvdWxkIGJlIHZl
+cnkgdXNlZnVsIHRvIHF1ZXJ5Cj4gPj4gdGhpcyBmcm9tIGFwcGxpY2F0aW9uIHNpZGUsIGZvciBl
+eGFtcGxlLCBjb25zaWRlciB0aGF0IGFuIGFwcCBpbnNlcnRzIGEgQlBGCj4gPj4gcHJvZyBhdCBY
+RFAgZG9pbmcgY3VzdG9tIGVuY2FwIHNob3J0bHkgYmVmb3JlIFhEUF9UWCBzbyBpdCB3b3VsZCBi
+ZSB1c2VmdWwgdG8KPiA+PiBrbm93IHdoaWNoIG9mIHRoZSBkaWZmZXJlbnQgZW5jYXBzIGl0IGlt
+cGxlbWVudHMgYXJlIHJlYWxpc3RpY2FsbHkgcG9zc2libGUgb24KPiA+PiB0aGUgdW5kZXJseWlu
+ZyBYRFAgc3VwcG9ydGVkIGRldi4gIAo+ID4gCj4gPiBIb3cgbWFueSBkaXN0aW5jdCB2YWx1ZXMg
+YXJlIHRoZXJlIGluIHJlYWxpdHk/IEVub3VnaCB0byBleHByZXNzIHRoaXMgaW4KPiA+IGEgZmV3
+IGZsYWdzIChYRFBfSEVBRFJPT01fMTI4LCBYRFBfSEVBRFJPT01fMTkyLCBldGM/KSwgb3IgZG9l
+cyBpdCBuZWVkCj4gPiBhbiBhZGRpdGlvbmFsIGZpZWxkIHRvIGdldCB0aGUgZXhhY3QgdmFsdWU/
+IElmIHdlIGltcGxlbWVudCB0aGUgbGF0dGVyCj4gPiB3ZSBhbHNvIHJ1biB0aGUgcmlzayBvZiBw
+ZW9wbGUgYWN0dWFsbHkgaW1wbGVtZW50aW5nIGFsbCBzb3J0cyBvZiB3ZWlyZAo+ID4gdmFsdWVz
+LCB3aGVyZWFzIGlmIHdlIGNvbnN0cmFpbiBpdCB0byBhIGZldyBkaXN0aW5jdCB2YWx1ZXMgaXQn
+cyBlYXNpZXIKPiA+IHRvIHB1c2ggYmFjayBhZ2FpbnN0IGFkZGluZyBuZXcgdmFsdWVzIChhcyBp
+dCdsbCBiZSBvYnZpb3VzIGZyb20gdGhlCj4gPiBhZGRpdGlvbiBvZiBuZXcgZmxhZ3MpLiAgCj4g
+Cj4gSXQncyBub3QgZXZlcnl3aGVyZSBzdHJhaWdodCBmb3J3YXJkIHRvIGRldGVybWluZSB1bmZv
+cnR1bmF0ZWx5LCBzZWUgYWxzbyBbMCwxXQo+IGFzIHNvbWUgZGF0YSBwb2ludHMgd2hlcmUgSmVz
+cGVyIGxvb2tlZCBpbnRvIGluIHRoZSBwYXN0LCBzbyBpbiBzb21lIGNhc2VzIGl0Cj4gbWlnaHQg
+ZGlmZmVyIGRlcGVuZGluZyBvbiB0aGUgYnVpbGQvcnVudGltZSBjb25maWcuLgo+IAo+ICAgIFsw
+XSBodHRwczovL2xvcmUua2VybmVsLm9yZy9icGYvMTU4OTQ1MzE0Njk4Ljk3MDM1LjUyODY4Mjc5
+NTEyMjU1Nzg0Njcuc3RnaXRAZmlyZXNvdWwvCj4gICAgWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwu
+b3JnL2JwZi8xNTg5NDUzNDY0OTQuOTcwMzUuMTI4MDk0MDA0MTQ1NjYwNjE4MTUuc3RnaXRAZmly
+ZXNvdWwvCgpZZXMsIHVuZm9ydHVuYXRlbHkgZHJpdmVycyBoYXZlIGFscmVhZHkgZ290dGVuIGNy
+ZWF0aXZlIGluIHRoaXMgYXJlYSwKYW5kIHZhcmlhdGlvbnMgaGF2ZSBzbmVha2VkIGluLiAgSSBy
+ZW1lbWJlciB0aGF0IHdlIHdlcmUgZm9yY2VkIHRvCmFsbG93IFNGQyBkcml2ZXIgdG8gdXNlIDEy
+OCBieXRlcyBoZWFkcm9vbSwgdG8gYXZvaWQgYSBtZW1vcnkKY29ycnVwdGlvbi4gSSB0cmllZCBo
+YXJkIHRvIGhhdmUgdGhlIG1pbmltdW0gMTkyIGJ5dGVzIGFzIGl0IGlzIDMKY2FjaGVsaW5lcywg
+YnV0IEkgZmFpbGVkIHRvIGVuZm9yY2UgdGhpcy4KCkl0IG1pZ2h0IGJlIHZhbHVhYmxlIHRvIGV4
+cG9zZSBpbmZvIG9uIHRoZSBkcml2ZXJzIGhlYWRyb29tIHNpemUsIGFzCnRoaXMgd2lsbCBhbGxv
+dyBlbmQtdXNlcnMgdG8gdGFrZSBhZHZhbnRhZ2Ugb2YgdGhpcyAoaW5zdGVhZCBvZiBoYXZpbmcK
+dG8gdXNlIHRoZSBsb3dlc3QgY29tbW9uIGhlYWRyb29tKSBhbmQgdXAtZnJvbnQgaW4gdXNlcnNw
+YWNlIHJlamVjdGluZwp0byBsb2FkIG9uIGUuZy4gU0ZDIHRoYXQgaGF2ZSB0aGlzIGFubm95aW5n
+IGxpbWl0YXRpb24uCgpCVVQgdGhpbmtpbmcgYWJvdXQgd2hhdCB0aGUgZHJpdmVycyBoZWFkcm9v
+bSBzaXplIE1FQU5TIHRvIHVzZXJzcGFjZSwKSSdtIG5vdCBzdXJlIGl0IGlzIHdpc2UgdG8gZ2l2
+ZSB0aGlzIGluZm8gdG8gdXNlcnNwYWNlLiAgVGhlClhEUC1oZWFkcm9vbSBpcyB1c2VkIGZvciBz
+ZXZlcmFsIGtlcm5lbCBpbnRlcm5hbCB0aGluZ3MsIHRoYXQgbGltaXQgdGhlCmF2YWlsYWJsZSBz
+cGFjZSBmb3IgZ3Jvd2luZyBwYWNrZXQtaGVhZHJvb20uICBFLmcuICgxKSB4ZHBfZnJhbWUgaXMK
+c29tZXRoaW5nIHRoYXQgd2UgbGlrZWx5IG5lZWQgdG8gZ3JvdyAoZXZlbi10aG91Z2ggSSdtIHB1
+c2hpbmcgYmFjayksCkUuZy4gKDIpIG1ldGFkYXRhIGFyZWEgd2hpY2ggU2FlZWQgaXMgbG9va2lu
+ZyB0byBwb3B1bGF0ZSBmcm9tIGRyaXZlcgpjb2RlIChhbHNvIHJlZHVjZSBwYWNrZXQtaGVhZHJv
+b20gZm9yIGVuY2FwLWhlYWRlcnMpLiAgU28sIHVzZXJzcGFjZQpjYW5ub3QgdXNlIHRoZSBYRFAt
+aGVhZHJvb20gc2l6ZSB0byBtdWNoLi4uCgotLSAKQmVzdCByZWdhcmRzLAogIEplc3BlciBEYW5n
+YWFyZCBCcm91ZXIKICBNU2MuQ1MsIFByaW5jaXBhbCBLZXJuZWwgRW5naW5lZXIgYXQgUmVkIEhh
+dAogIExpbmtlZEluOiBodHRwOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9icm91ZXIKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBt
+YWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vv
+c2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
