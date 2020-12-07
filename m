@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AF322D0902
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 02:55:55 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07D322D0F9C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 12:42:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D502B20396;
-	Mon,  7 Dec 2020 01:55:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A2B186F99;
+	Mon,  7 Dec 2020 11:42:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gn+grDf9LwIN; Mon,  7 Dec 2020 01:55:53 +0000 (UTC)
+	with ESMTP id i6jMxjhS05Pf; Mon,  7 Dec 2020 11:42:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CBEE42E17F;
-	Mon,  7 Dec 2020 01:55:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 07EEB86DFD;
+	Mon,  7 Dec 2020 11:42:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 402641BF3AA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 01:55:50 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 57E7D1BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3AD2B2E125
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 01:55:50 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 52D7A877A8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7NESuaV00INZ for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Dec 2020 01:55:49 +0000 (UTC)
+ with ESMTP id GC1u2f-rRGBy for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Dec 2020 11:42:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 1E3AE20396
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 01:55:49 +0000 (UTC)
-IronPort-SDR: fBfchOwaHwwR7xhJUQUGcIMfo7dXD/te4NdGBQ8D/lqOZCJMWpzi9GxJLVSONA8keuCA2P4jIw
- 2G+glttej1Tg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9827"; a="235232749"
-X-IronPort-AV: E=Sophos;i="5.78,398,1599548400"; d="scan'208";a="235232749"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Dec 2020 17:55:48 -0800
-IronPort-SDR: a6Z98o16Q9vmI4WSuvjgJSCGCKKknLx3GQyOhR31BV7HM4n3JfvUWy7gNt215H8JW1ppw27thX
- VmVN5j2Wt5CA==
-X-IronPort-AV: E=Sophos;i="5.78,398,1599548400"; d="scan'208";a="362918747"
-Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
- ([10.209.16.231])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Dec 2020 17:55:48 -0800
-Date: Sun, 6 Dec 2020 17:55:47 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Xiaohui Zhang <ruc_zhangxiaohui@163.com>
-Message-ID: <20201206175547.00005aa9@intel.com>
-In-Reply-To: <20201207011415.463-1-ruc_zhangxiaohui@163.com>
-References: <20201207011415.463-1-ruc_zhangxiaohui@163.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 1/1] ice: fix array overflow on
- receiving too many fragments for a packet
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4E4F9877A6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 11:42:38 +0000 (UTC)
+IronPort-SDR: S7oBe2Fjs4MobXeJyQRJfVkCGRWiQG8MBcjnmqEzz3VueBYotsnawqSNzwHSPlPzvcutJKFZl7
+ qCH9lGR/ob9g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9827"; a="153499223"
+X-IronPort-AV: E=Sophos;i="5.78,399,1599548400"; d="scan'208";a="153499223"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2020 03:42:37 -0800
+IronPort-SDR: 9aeeZIfMK0NgnxRZsHQLC/D69W7XAJzaoFR5WMqOekZ4dxFziwb6faRtrFKA5md39vc4h4cb4M
+ sVnF5sNjlt2Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,399,1599548400"; d="scan'208";a="332068811"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga003.jf.intel.com with ESMTP; 07 Dec 2020 03:42:36 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  7 Dec 2020 11:42:23 +0000
+Message-Id: <20201207114223.29030-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix for failed to init
+ adminq while VF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,76 +63,146 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-WGlhb2h1aSBaaGFuZyB3cm90ZToKCj4gRnJvbTogWmhhbmcgWGlhb2h1aSA8cnVjX3poYW5neGlh
-b2h1aUAxNjMuY29tPgo+IAo+IElmIHRoZSBoYXJkd2FyZSByZWNlaXZlcyBhbiBvdmVyc2l6ZWQg
-cGFja2V0IHdpdGggdG9vIG1hbnkgcnggZnJhZ21lbnRzLAo+IHNrYl9zaGluZm8oc2tiKS0+ZnJh
-Z3MgY2FuIG92ZXJmbG93IGFuZCBjb3JydXB0IG1lbW9yeSBvZiBhZGphY2VudCBwYWdlcy4KPiBU
-aGlzIGJlY29tZXMgZXNwZWNpYWxseSB2aXNpYmxlIGlmIGl0IGNvcnJ1cHRzIHRoZSBmcmVlbGlz
-dCBwb2ludGVyIG9mCj4gYSBzbGFiIHBhZ2UuCgpBcyBJIHJlcGxpZWQgdG8gdGhlIGlvbmljIHBh
-dGNoLCBwbGVhc2UganVzdGlmeSB0aGlzIHdpdGggaG93IHlvdSBmb3VuZAppdCBhbmQgaG93IHlv
-dSByZXByb2R1Y2VkIGEgcHJvYmxlbS4gUmVzZW5kIHRoZSBwYXRjaGVzIGFzIGEgc2VyaWVzIHNv
-CndlIGNhbiBkaXNjdXNzIHRoZW0gYXMgb25lIGNoYW5nZS4KCj4gCj4gU2lnbmVkLW9mZi1ieTog
-WmhhbmcgWGlhb2h1aSA8cnVjX3poYW5neGlhb2h1aUAxNjMuY29tPgo+IC0tLQo+ICBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguYyB8IDYgKysrKystCj4gIDEgZmlsZSBj
-aGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMgYi9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguYwo+IGluZGV4IGVhZTc1MjYwZi4uZjBmMDM0ZmE1
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeC5j
-Cj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMKPiBAQCAt
-ODIzLDggKzgyMywxMiBAQCBpY2VfYWRkX3J4X2ZyYWcoc3RydWN0IGljZV9yaW5nICpyeF9yaW5n
-LCBzdHJ1Y3QgaWNlX3J4X2J1ZiAqcnhfYnVmLAo+ICAKPiAgCWlmICghc2l6ZSkKPiAgCQlyZXR1
-cm47Cj4gLQlza2JfYWRkX3J4X2ZyYWcoc2tiLCBza2Jfc2hpbmZvKHNrYiktPm5yX2ZyYWdzLCBy
-eF9idWYtPnBhZ2UsCj4gKwlzdHJ1Y3Qgc2tiX3NoYXJlZF9pbmZvICpzaGluZm8gPSBza2Jfc2hp
-bmZvKHNrYik7Cj4gKwo+ICsJaWYgKHNoaW5mby0+bnJfZnJhZ3MgPCBBUlJBWV9TSVpFKHNoaW5m
-by0+ZnJhZ3MpKSB7Cj4gKwkJc2tiX2FkZF9yeF9mcmFnKHNrYiwgc2hpbmZvLCByeF9idWYtPnBh
-Z2UsCj4gIAkJCXJ4X2J1Zi0+cGFnZV9vZmZzZXQsIHNpemUsIHRydWVzaXplKTsKPiArCX0KClRo
-ZSBkcml2ZXIgaXMgdXNpbmcgMmtCIHJlY2VpdmUgYnVmZmVycywgYW5kIGNhbiBjaGFpbiB0aGVt
-IHRvZ2V0aGVyIHVwCnRvIGEgbWF4IHJlY2VpdmUgc2l6ZSBvZiA5MTI2IGJ5dGVzIChvciBzbyks
-IHNvIGhvdyBjYW4gd2UgcmVjZWl2ZSBtb3JlCnRoYW4gMTggZnJhZ21lbnRzPyBQbGVhc2UgZXhw
-bGFpbiB5b3VyIGxvZ2ljCgo+ICAKPiAgCS8qIHBhZ2UgaXMgYmVpbmcgdXNlZCBzbyB3ZSBtdXN0
-IHVwZGF0ZSB0aGUgcGFnZSBvZmZzZXQgKi8KPiAgCWljZV9yeF9idWZfYWRqdXN0X3BnX29mZnNl
-dChyeF9idWYsIHRydWVzaXplKTsKCllvdXIgcGF0Y2ggZG9lc24ndCBjb21waWxlLiBZb3UgbXVz
-dCBjb21waWxlIHRlc3QgYW5kIGV4cGxhaW4geW91cgpwYXRjaGVzIGJldHRlci4KCiAgQ0MgW01d
-ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvL2ljZV9tYWluLm8KICBDQyBbTV0gIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS8vaWNlX2NvbnRyb2xxLm8KICBDQyBbTV0gIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS8vaWNlX2NvbW1vbi5vCiAgQ0MgW01dICBkcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvL2ljZV9udm0ubwogIENDIFtNXSAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlLy9pY2Vfc3dpdGNoLm8KICBDQyBbTV0gIGRyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS8vaWNlX3NjaGVkLm8KICBDQyBbTV0gIGRyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2ljZS8vaWNlX2Jhc2UubwogIENDIFtNXSAgZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaWNlLy9pY2VfbGliLm8KICBDQyBbTV0gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS8vaWNlX3R4cnhfbGliLm8KICBDQyBbTV0gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS8vaWNlX3R4cngubwpkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvL2ljZV90
-eHJ4LmM6IEluIGZ1bmN0aW9uIOKAmGljZV9hZGRfcnhfZnJhZ+KAmToKZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaWNlLy9pY2VfdHhyeC5jOjgyOToyOiB3YXJuaW5nOiBJU08gQzkwIGZvcmJp
-ZHMgbWl4ZWQgZGVjbGFyYXRpb25zIGFuZCBjb2RlIFstV2RlY2xhcmF0aW9uLWFmdGVyLXN0YXRl
-bWVudF0KICA4MjkgfCAgc3RydWN0IHNrYl9zaGFyZWRfaW5mbyAqc2hpbmZvID0gc2tiX3NoaW5m
-byhza2IpOwogICAgICB8ICBefn5+fn4KZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlLy9p
-Y2VfdHhyeC5jOjgzMjoyNDogd2FybmluZzogcGFzc2luZyBhcmd1bWVudCAyIG9mIOKAmHNrYl9h
-ZGRfcnhfZnJhZ+KAmSBtYWtlcyBpbnRlZ2VyIGZyb20gcG9pbnRlciB3aXRob3V0IGEgY2FzdCBb
-LVdpbnQtY29udmVyc2lvbl0KICA4MzIgfCAgIHNrYl9hZGRfcnhfZnJhZyhza2IsIHNoaW5mbywg
-cnhfYnVmLT5wYWdlLAogICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+CiAgICAg
-IHwgICAgICAgICAgICAgICAgICAgICAgICB8CiAgICAgIHwgICAgICAgICAgICAgICAgICAgICAg
-ICBzdHJ1Y3Qgc2tiX3NoYXJlZF9pbmZvICoKSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC4vaW5jbHVk
-ZS9saW51eC9pZl9ldGhlci5oOjE5LAogICAgICAgICAgICAgICAgIGZyb20gLi9pbmNsdWRlL3Vh
-cGkvbGludXgvZXRodG9vbC5oOjE5LAogICAgICAgICAgICAgICAgIGZyb20gLi9pbmNsdWRlL2xp
-bnV4L2V0aHRvb2wuaDoxOCwKICAgICAgICAgICAgICAgICBmcm9tIC4vaW5jbHVkZS9saW51eC9u
-ZXRkZXZpY2UuaDozNywKICAgICAgICAgICAgICAgICBmcm9tIC4vaW5jbHVkZS90cmFjZS9ldmVu
-dHMveGRwLmg6OCwKICAgICAgICAgICAgICAgICBmcm9tIC4vaW5jbHVkZS9saW51eC9icGZfdHJh
-Y2UuaDo1LAogICAgICAgICAgICAgICAgIGZyb20gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlLy9pY2VfdHhyeC5jOjg6Ci4vaW5jbHVkZS9saW51eC9za2J1ZmYuaDoyMTgyOjQ3OiBub3Rl
-OiBleHBlY3RlZCDigJhpbnTigJkgYnV0IGFyZ3VtZW50IGlzIG9mIHR5cGUg4oCYc3RydWN0IHNr
-Yl9zaGFyZWRfaW5mbyAq4oCZCiAyMTgyIHwgdm9pZCBza2JfYWRkX3J4X2ZyYWcoc3RydWN0IHNr
-X2J1ZmYgKnNrYiwgaW50IGksIHN0cnVjdCBwYWdlICpwYWdlLCBpbnQgb2ZmLAogICAgICB8ICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH5+fn5eCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWls
-aW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wu
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Fix for failed to init adminq: -53 while VF is resetting via MAC
+address changing procedure.
+Added sync module to avoid reading deadbeef value in reinit adminq
+during software reset.
+Without this patch it is possible to trigger VF reset procedure
+during reinit adminq. This resulted in an incorrect reading of
+value from the AQP registers and generated the -53 error.
+
+Fixes: 9dc2e417383815"(i40e: split some code in i40e_reset_vf into helpers")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reviewed-by: Jaroslaw Gawin <jaroslawx.gawin@intel.com>
+Reviewed-by: Slawomir Laba <slawomirx.laba@intel.com>
+Reviewed-by: Karen Sornek <karen.sornek@intel.com>
+Reviewed-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 46 ++++++++++++++++++-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  2 +
+ 2 files changed, 46 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 21ee564..afccbbc 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -1297,6 +1297,32 @@ static i40e_status i40e_config_vf_promiscuous_mode(struct i40e_vf *vf,
+ 	return aq_ret;
+ }
+ 
++/**
++* i40e_sync_vfr_reset
++* @hw: pointer to hw struct
++* @vf_id: VF identifier
++*
++* Before trigger hardware reset, we need to know if no other process has
++* reserved the hardware for any reset operations. This check is done by
++* examining the status of the ADMINQ bit in VF interrupt register.
++**/
++static int i40e_sync_vfr_reset(struct i40e_hw *hw, int vf_id)
++{
++	u32 reg;
++	int i;
++
++	for (i = 0; i < I40E_VFR_WAIT_COUNT; i++) {
++		reg = rd32(hw, I40E_VFINT_ICR0_ENA(vf_id)) &
++			   I40E_VFINT_ICR0_ADMINQ_MASK;
++		if (reg)
++			return 0;
++
++		usleep_range(10, 200);
++	}
++
++	return -EAGAIN;
++}
++
+ /**
+  * i40e_trigger_vf_reset
+  * @vf: pointer to the VF structure
+@@ -1311,9 +1337,11 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_hw *hw = &pf->hw;
+ 	u32 reg, reg_idx, bit_idx;
++	bool vf_active;
++	u32 radq;
+ 
+ 	/* warn the VF */
+-	clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
++	vf_active = test_and_clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
+ 
+ 	/* Disable VF's configuration API during reset. The flag is re-enabled
+ 	 * in i40e_alloc_vf_res(), when it's safe again to access VF's VSI.
+@@ -1327,7 +1355,19 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
+ 	 * just need to clean up, so don't hit the VFRTRIG register.
+ 	 */
+ 	if (!flr) {
+-		/* reset VF using VPGEN_VFRTRIG reg */
++		/* Sync VFR reset before trigger next one */
++		radq = rd32(hw, I40E_VFINT_ICR0_ENA(vf->vf_id)) &
++			    I40E_VFINT_ICR0_ADMINQ_MASK;
++		if (vf_active && !radq)
++			/* waiting for finish reset by virtual driver */
++			if (i40e_sync_vfr_reset(hw, vf->vf_id))
++				dev_info(&pf->pdev->dev,
++					 "Reset VF %d never finished\n",
++					 vf->vf_id);
++
++		/* Reset VF using VPGEN_VFRTRIG reg. It is also setting
++		 * in progress state in rstat1 register.
++		 */
+ 		reg = rd32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id));
+ 		reg |= I40E_VPGEN_VFRTRIG_VFSWR_MASK;
+ 		wr32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id), reg);
+@@ -1457,6 +1497,7 @@ bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
+ 	i40e_cleanup_reset_vf(vf);
+ 
+ 	i40e_flush(hw);
++	usleep_range(20000, 40000);
+ 	clear_bit(__I40E_VF_DISABLE, pf->state);
+ 
+ 	return true;
+@@ -1561,6 +1602,7 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 		i40e_cleanup_reset_vf(&pf->vf[v]);
+ 
+ 	i40e_flush(hw);
++	usleep_range(20000, 40000);
+ 	clear_bit(__I40E_VF_DISABLE, pf->state);
+ 
+ 	return true;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 5491215..fb4f5db 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -18,6 +18,8 @@
+ 
+ #define I40E_MAX_VF_PROMISC_FLAGS	3
+ 
++#define I40E_VFR_WAIT_COUNT		100
++
+ /* Various queue ctrls */
+ enum i40e_queue_ctrl {
+ 	I40E_QUEUE_CTRL_UNKNOWN = 0,
+-- 
+2.17.1
+
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
