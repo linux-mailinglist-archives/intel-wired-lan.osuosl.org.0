@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B55E12D1D0A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 23:15:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF8992D1D50
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Dec 2020 23:30:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 730CC87987;
-	Mon,  7 Dec 2020 22:15:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 607ED87713;
+	Mon,  7 Dec 2020 22:29:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YOFHddJi+WqX; Mon,  7 Dec 2020 22:15:30 +0000 (UTC)
+	with ESMTP id S37ZbvEnUEm4; Mon,  7 Dec 2020 22:29:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1E61F8798A;
-	Mon,  7 Dec 2020 22:15:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D0B3687966;
+	Mon,  7 Dec 2020 22:29:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C937D1BF389
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:15:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 01E971BF389
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:29:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C395B8721E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:15:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F1B2B8721E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:29:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 64XzaBMIBN07 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Dec 2020 22:15:27 +0000 (UTC)
+ with ESMTP id Zzdvi7-F1udH for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Dec 2020 22:29:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 51743871BF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:15:27 +0000 (UTC)
-IronPort-SDR: EQORxZBDMvmc/hSLhwYlUQgrr7QVjTpjELI42bxxeij4D9VE4CGkU7ffAGYQJQgHNcwjq2PtL6
- RzKxESiusfkQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9828"; a="237893464"
-X-IronPort-AV: E=Sophos;i="5.78,400,1599548400"; d="scan'208";a="237893464"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2020 14:15:26 -0800
-IronPort-SDR: vZv6vjibZEslUQzBm1ROhICgQjPzhTAI2Kqbsvm47KWdTZNZ6qk3UL241la+pj5EqO0nCZtOPR
- ipBnRnKstp8w==
-X-IronPort-AV: E=Sophos;i="5.78,400,1599548400"; d="scan'208";a="367446111"
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 668F586920
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Dec 2020 22:29:55 +0000 (UTC)
+IronPort-SDR: hTjOQYELgIxMYsdYYfUQpewPdR08wl3qISRJeLobWpDSDGTzvsMoCxozRW/+JN3kQujHnz5dyt
+ Ve6DfpG9yHJw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9828"; a="173023417"
+X-IronPort-AV: E=Sophos;i="5.78,400,1599548400"; d="scan'208";a="173023417"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2020 14:29:54 -0800
+IronPort-SDR: L5Soz7wYDp4oNjcX/ydMMdKhCQ3nVA9Iu1Jng82x3Nai/m8JqiOz3rY33gTMqP3XXINPyWX3Y0
+ Z73XTmSEGEvg==
+X-IronPort-AV: E=Sophos;i="5.78,400,1599548400"; d="scan'208";a="363343787"
 Received: from seherahx-mobl1.amr.corp.intel.com (HELO ellie) ([10.209.17.196])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2020 14:15:26 -0800
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2020 14:29:54 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <20201205100030.2e3c5dd2@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+In-Reply-To: <20201205095948.5e0eba28@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
 References: <20201202045325.3254757-1-vinicius.gomes@intel.com>
- <20201202045325.3254757-7-vinicius.gomes@intel.com>
- <20201205100030.2e3c5dd2@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
-Date: Mon, 07 Dec 2020 14:15:25 -0800
-Message-ID: <87a6up1cw2.fsf@intel.com>
+ <20201202045325.3254757-9-vinicius.gomes@intel.com>
+ <20201205095948.5e0eba28@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+Date: Mon, 07 Dec 2020 14:29:54 -0800
+Message-ID: <87v9ddz1ul.fsf@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 6/9] igc: Add support for
- tuning frame preemption via ethtool
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 8/9] igc: Add support for
+ exposing frame preemption stats registers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,27 +78,47 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Jakub Kicinski <kuba@kernel.org> writes:
 
-> On Tue,  1 Dec 2020 20:53:22 -0800 Vinicius Costa Gomes wrote:
->> The tc subsystem sets which queues are marked as preemptible, it's the
->> role of ethtool to control more hardware specific parameters. These
->> parameters include:
+> On Tue,  1 Dec 2020 20:53:24 -0800 Vinicius Costa Gomes wrote:
+>> Expose the Frame Preemption counters, so the number of
+>> express/preemptible packets can be monitored by userspace.
 >> 
->>  - enabling the frame preemption hardware: As enabling frame
->>  preemption may have other requirements before it can be enabled, it's
->>  exposed via the ethtool API;
->> 
->>  - mininum fragment size multiplier: expressed in usually in the form
->>  of (1 + N)*64, this number indicates what's the size of the minimum
->>  fragment that can be preempted.
+>> These registers are cleared when read, so the value shown is the
+>> number of events that happened since the last read.
 >> 
 >> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 >
-> WARNING: 'PREEMPTABLE' may be misspelled - perhaps 'PREEMPTIBLE'?
+> You mean expose in a register dump? That's not great user experience..
 
-In the datasheet the term PREEMPTABLE is used, and when refering to
-register values I chose to be consistent with the datasheet. But as the
-margin for confusion is small, I can change to use "preemptible"
-everywhere, no problem.
+I can agree with that, even after some formatting on the ethtool side:
+
+Preemption statistics:
+    TX Preemption event counter: 14070
+    Good TX Preemptable Packets: 201957
+    Good TX Express Packets: 32031
+    TX Preempted Packets: 13259
+    RX Preemption event counter: 0
+    Good RX Preemptable Packets: 0
+    Good RX Preempted Packets: 0
+    Preemption Exception Counter:
+        OOO_SMDC 0
+        OOO_FRAME 0
+        OOO_FRAG 0
+        MISS_FRAME_FRAG 0
+
+It's less than ideal, but useful for development/debugging.
+
+>
+> Are there any stats that the standards mandate?
+
+I just took abother look at the standard, mainly at the MIBs, there are
+no statistics related to frame preemption that I could find, only
+configuration stuff.
+
+>
+> It'd be great if we could come up with some common set and expose them
+> via ethtool like the pause frame statistics.
+
+Agreed, will drop this patch, until this common set is agreed upon.
 
 
 Cheers,
