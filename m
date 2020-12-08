@@ -1,57 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4858E2D2A0E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 12:56:11 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F16EF2D2A9B
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 13:23:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2121F86FB2;
-	Tue,  8 Dec 2020 11:56:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 18FD98759D;
+	Tue,  8 Dec 2020 12:23:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KVzWozdZGMVl; Tue,  8 Dec 2020 11:56:09 +0000 (UTC)
+	with ESMTP id 8va4Mzepm1pQ; Tue,  8 Dec 2020 12:23:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A8DB386FFB;
-	Tue,  8 Dec 2020 11:56:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6CAAF875F2;
+	Tue,  8 Dec 2020 12:23:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0C951BF834
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:56:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 35D1A1BF304
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 12:23:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9CA5F86FA5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:56:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 311088706D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 12:23:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2cK_hTVxdje0 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Dec 2020 11:56:05 +0000 (UTC)
+ with ESMTP id vLRSCNSTM209 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Dec 2020 12:23:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F0B2786F14
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:56:04 +0000 (UTC)
-IronPort-SDR: d+v1+YOgRfbHyyBvNn9rJFvvqsnjOMr+Mr5Zrj/qUijiPra/FH/2eDotRzjBhlnEMU04Zx+vCA
- vcZsj7La638w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9828"; a="170366692"
-X-IronPort-AV: E=Sophos;i="5.78,402,1599548400"; d="scan'208";a="170366692"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2020 03:56:03 -0800
-IronPort-SDR: NTGKuWr/EbPrGylFulu+3Vu0e6NNVpBbihsxUAIstv/tPuLo+w0aDS64RU/UQ3wit7fKYFArEp
- lceOPY+ib1pw==
-X-IronPort-AV: E=Sophos;i="5.78,402,1599548400"; d="scan'208";a="437349324"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.237.94.20])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2020 03:56:02 -0800
-From: Radoslaw Tyl <radoslawx.tyl@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  8 Dec 2020 12:53:43 -0500
-Message-Id: <20201208175343.454313-1-radoslawx.tyl@intel.com>
-X-Mailer: git-send-email 2.27.0
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 90C9387067
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 12:23:15 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B8C9hKA166692;
+ Tue, 8 Dec 2020 12:23:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type :
+ content-transfer-encoding; s=corp-2020-01-29;
+ bh=k4U1Y8hj6xUCKyUuBlZ528/7o6VIzulur21OqjLbEPs=;
+ b=EKWjOnWwZ4yNNM1JsiPiSr1Zalta9XUPTIU53GZbwcrSVRxhKtH1LN/jaVyFZByk/pmy
+ yHLGjROgNJ56hHrAFLZ6XO8kfKOPdcyY79HkRzBdqjUcWCmpYxsTIhMjGDsHgbCNkYux
+ WxRlBroW2NnTkqalNkrKnJtl8/JsH8t4WwM7GyWUShaAnqpuZPHtkMAxQPAae794bv0G
+ F37bjKURaRmJPkYBIJY0dnahfqZbAgIqs+FcwEzGAaRcNplQQ+IqufbvxzzqneyQe9fZ
+ ELUM4w2WMGGV7Ar1ShaCUDzpxYD7hI37o6Fz+gkatdiorh/9rhgiAZE2NPDq5UqpjSkB rw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 35825m2ft9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 08 Dec 2020 12:23:13 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B8C9g7b007139;
+ Tue, 8 Dec 2020 12:21:12 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 358m4xqxqa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 08 Dec 2020 12:21:12 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0B8CLBOW012563;
+ Tue, 8 Dec 2020 12:21:11 GMT
+Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 08 Dec 2020 04:21:10 -0800
+Date: Tue, 8 Dec 2020 15:21:01 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: bjorn.topel@intel.com
+Message-ID: <X89vkBAEFET+IchI@mwanda>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] ixgbe: aggregate of all receive errors
- through netdev's rx_errors
+Content-Disposition: inline
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9828
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ spamscore=0 suspectscore=3
+ bulkscore=0 malwarescore=0 phishscore=0 adultscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012080078
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9828
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=3
+ adultscore=0 bulkscore=0
+ phishscore=0 mlxlogscore=999 clxscore=1011 priorityscore=1501 mlxscore=0
+ spamscore=0 lowpriorityscore=0 malwarescore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012080078
+Subject: [Intel-wired-lan] [bug report] xsk: Propagate napi_id to XDP socket
+ Rx path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,60 +95,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Radoslaw Tyl <radoslawx.tyl@intel.com>, piotrx.skajewski@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The global rx error does not take into account all the error counters
-that are counted by device.
+Hello Bj=F6rn T=F6pel,
 
-Extend rx error with the following counters:
-- illegal byte error
-- number of receive fragment errors
-- receive jabber
-- receive oversize error
-- receive undersize error
-- frames marked as checksum invalid by hardware
+This is a semi-automatic email about new static checker warnings.
 
-The above were added in order to align statistics with other products.
+The patch b02e5a0ebb17: "xsk: Propagate napi_id to XDP socket Rx =
 
-Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+path" from Nov 30, 2020, leads to the following Smatch complaint:
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 45ae33e15303..413a13b2578f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -7234,12 +7234,21 @@ void ixgbe_update_stats(struct ixgbe_adapter *adapter)
- 	hwstats->ptc1023 += IXGBE_READ_REG(hw, IXGBE_PTC1023);
- 	hwstats->ptc1522 += IXGBE_READ_REG(hw, IXGBE_PTC1522);
- 	hwstats->bptc += IXGBE_READ_REG(hw, IXGBE_BPTC);
-+	hwstats->illerrc += IXGBE_READ_REG(hw, IXGBE_ILLERRC);
- 
- 	/* Fill out the OS statistics structure */
- 	netdev->stats.multicast = hwstats->mprc;
- 
- 	/* Rx Errors */
--	netdev->stats.rx_errors = hwstats->crcerrs + hwstats->rlec;
-+	netdev->stats.rx_errors = hwstats->crcerrs +
-+				    hwstats->illerrc +
-+				    hwstats->rlec +
-+				    hwstats->rfc +
-+				    hwstats->rjc +
-+				    hwstats->roc +
-+				    hwstats->ruc +
-+				    hw_csum_rx_error;
-+
- 	netdev->stats.rx_dropped = 0;
- 	netdev->stats.rx_length_errors = hwstats->rlec;
- 	netdev->stats.rx_crc_errors = hwstats->crcerrs;
--- 
-2.27.0
+    drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:6580 ixgbe_setup_rx_resou=
+rces()
+    error: we previously assumed 'rx_ring->q_vector' could be null (see lin=
+e 6550)
 
+drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+  6549	=
+
+  6550		if (rx_ring->q_vector)
+                    ^^^^^^^^^^^^^^^^^
+Check for NULL
+
+  6551			ring_node =3D rx_ring->q_vector->numa_node;
+  6552	=
+
+  6553		rx_ring->rx_buffer_info =3D vmalloc_node(size, ring_node);
+  6554		if (!rx_ring->rx_buffer_info)
+  6555			rx_ring->rx_buffer_info =3D vmalloc(size);
+  6556		if (!rx_ring->rx_buffer_info)
+  6557			goto err;
+  6558	=
+
+  6559		/* Round up to nearest 4K */
+  6560		rx_ring->size =3D rx_ring->count * sizeof(union ixgbe_adv_rx_desc);
+  6561		rx_ring->size =3D ALIGN(rx_ring->size, 4096);
+  6562	=
+
+  6563		set_dev_node(dev, ring_node);
+  6564		rx_ring->desc =3D dma_alloc_coherent(dev,
+  6565						   rx_ring->size,
+  6566						   &rx_ring->dma,
+  6567						   GFP_KERNEL);
+  6568		set_dev_node(dev, orig_node);
+  6569		if (!rx_ring->desc)
+  6570			rx_ring->desc =3D dma_alloc_coherent(dev, rx_ring->size,
+  6571							   &rx_ring->dma, GFP_KERNEL);
+  6572		if (!rx_ring->desc)
+  6573			goto err;
+  6574	=
+
+  6575		rx_ring->next_to_clean =3D 0;
+  6576		rx_ring->next_to_use =3D 0;
+  6577	=
+
+  6578		/* XDP RX-queue info */
+  6579		if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
+  6580				     rx_ring->queue_index, rx_ring->q_vector->napi.napi_id) < 0)
+                                                           ^^^^^^^^^^^^^^^^=
+^^^
+New unchecked dereference.
+
+  6581			goto err;
+  6582	=
+
+
+regards,
+dan carpenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
