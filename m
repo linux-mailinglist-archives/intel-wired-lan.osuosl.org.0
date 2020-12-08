@@ -1,104 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7620E2D27A3
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 10:30:58 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0171F2D27FB
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 10:43:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E87C720423;
-	Tue,  8 Dec 2020 09:30:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA1D5875C5;
+	Tue,  8 Dec 2020 09:43:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fpEEQB6o1TXR; Tue,  8 Dec 2020 09:30:56 +0000 (UTC)
+	with ESMTP id oZqE74FMjhzR; Tue,  8 Dec 2020 09:43:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 131A62040C;
-	Tue,  8 Dec 2020 09:30:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71260875CE;
+	Tue,  8 Dec 2020 09:43:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7BC401BF255
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:30:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E826B1BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:43:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 75C0186C5A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:30:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D807E86DA9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:43:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rhoz_AwMDvEl for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Dec 2020 09:30:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A650E86B43
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:30:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607419845;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=B4gXzSaav/qWw7+pF0tiVYim8F4nDRvOBt7xLk8iti0=;
- b=ZYALajwpfjs4lX9y4EgMq2uGo8PGmvSV2T06a83iNe9uNYxP/m/RNUqoGIfxQbRTpAlGgC
- t72jw+CsaT4LFj5H+Z9vNHkvuRVWdYVvwAJWxMUWLCfsItcbcgKFhSkhy9lpydaIG+dugk
- 3itPMt9IxEMixlWzv1S/cvjwqKngyD4=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-344-EK6kZbR9Nc-66ox_H8uuCw-1; Tue, 08 Dec 2020 04:30:41 -0500
-X-MC-Unique: EK6kZbR9Nc-66ox_H8uuCw-1
-Received: by mail-ej1-f71.google.com with SMTP id 3so4208256ejw.13
- for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Dec 2020 01:30:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=B4gXzSaav/qWw7+pF0tiVYim8F4nDRvOBt7xLk8iti0=;
- b=Tai5qhGE9zlNgpDtsTE5eZY9UplPJ5Yol72xmcKJ0bm9WynxA48/krO84ld5IfGj7d
- r1zyhMA4lJCA2ehgo0mhv7HHXzSCeAPLBLz+14j+S0m03PtJltKC2ysytOjqgF3Tc1nf
- QhIg1oPiCG9Jp5Wi9apgJjHxIfVXcy/wOTyVxFkjKcarHJ624Dd0Xd0VGX22MKeQn+KF
- BA8h2VONy8gjjendL6PTvKA0bcvsnY6Wc2xeplAo2HLkx4HSXjKYSQ/dpBEg/aZy7Eqx
- yqmkfOgxVGrXWzoNurTSg8tpdcrRx9ccPvJ1R5HyPAbzTkvS1RZhhLVzb3LaQsnmVs/A
- w3ng==
-X-Gm-Message-State: AOAM533t/udjV3QcAG15+QP25aViv1XZzYB5YzugyoW0luH8jCZr4ufM
- 59300r3uBHkHLtvDqXqUEl+j7kLkwYjoP5NaiFUAZmdmIsVbyvVBfGpKPgrMNprDK3+LdFIV9Pw
- a7CqWZYMwV03yWrPQk9bVuBlAnq0YTQ==
-X-Received: by 2002:a05:6402:129a:: with SMTP id
- w26mr12249083edv.355.1607419839840; 
- Tue, 08 Dec 2020 01:30:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyPKIXmBZ1ZbQcKGouDIjTXKfUkjZFARJoSi8+5Q0SNiCV6dUdwOJYdxdocwTQkErwDPiZ64A==
-X-Received: by 2002:a05:6402:129a:: with SMTP id
- w26mr12249042edv.355.1607419839407; 
- Tue, 08 Dec 2020 01:30:39 -0800 (PST)
-Received: from x1.localdomain
- (2001-1c00-0c0c-fe00-d2ea-f29d-118b-24dc.cable.dynamic.v6.ziggo.nl.
- [2001:1c00:c0c:fe00:d2ea:f29d:118b:24dc])
- by smtp.gmail.com with ESMTPSA id b7sm15310139ejp.5.2020.12.08.01.30.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Dec 2020 01:30:38 -0800 (PST)
-To: "Neftin, Sasha" <sasha.neftin@intel.com>,
- "Limonciello, Mario" <Mario.Limonciello@dell.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-References: <20201204200920.133780-1-mario.limonciello@dell.com>
- <d0f7e565-05e1-437e-4342-55eb73daa907@redhat.com>
- <DM6PR19MB2636A4097B68DBB253C416D8FACE0@DM6PR19MB2636.namprd19.prod.outlook.com>
- <383daf0d-8a9b-c614-aded-6e816f530dcd@intel.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <e7d57370-e35e-a9e6-2dd9-aa7855c15650@redhat.com>
-Date: Tue, 8 Dec 2020 10:30:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ with ESMTP id tRoDaFAbWGC1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Dec 2020 09:43:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4659686D7B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 09:43:01 +0000 (UTC)
+Received: from sslproxy02.your-server.de ([78.47.166.47])
+ by www62.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92.3) (envelope-from <daniel@iogearbox.net>)
+ id 1kmZW9-0003EK-El; Tue, 08 Dec 2020 10:42:45 +0100
+Received: from [85.7.101.30] (helo=pc-9.home)
+ by sslproxy02.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
+ id 1kmZW9-0000AX-3P; Tue, 08 Dec 2020 10:42:45 +0100
+To: Jesper Dangaard Brouer <brouer@redhat.com>,
+ John Fastabend <john.fastabend@gmail.com>
+References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201204102901.109709-2-marekx.majtyka@intel.com> <878sad933c.fsf@toke.dk>
+ <20201204124618.GA23696@ranger.igk.intel.com>
+ <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
+ <20201207135433.41172202@carbon>
+ <5fce960682c41_5a96208e4@john-XPS-13-9370.notmuch>
+ <20201208100040.0d57742a@carbon>
+From: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <1c327ddf-f361-8abe-9f8d-605f05ddcc7a@iogearbox.net>
+Date: Tue, 8 Dec 2020 10:42:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <383daf0d-8a9b-c614-aded-6e816f530dcd@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201208100040.0d57742a@carbon>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
- i219LM
+X-Authenticated-Sender: daniel@iogearbox.net
+X-Virus-Scanned: Clear (ClamAV 0.102.4/26011/Mon Dec  7 15:37:03 2020)
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,168 +72,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Linux PM <linux-pm@vger.kernel.org>, Netdev <netdev@vger.kernel.org>, "Yuan,
- Perry" <Perry.Yuan@dell.com>, viltaly.lifshits@intel.com,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "anthony.wong@canonical.com" <anthony.wong@canonical.com>, "Shen,
- Yijun" <Yijun.Shen@dell.com>, Jakub Kicinski <kuba@kernel.org>,
- David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
+ hawk@kernel.org, netdev@vger.kernel.org,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>, ast@kernel.org,
+ Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGksCgpPbiAxMi84LzIwIDY6MDggQU0sIE5lZnRpbiwgU2FzaGEgd3JvdGU6Cj4gT24gMTIvNy8y
-MDIwIDE3OjQxLCBMaW1vbmNpZWxsbywgTWFyaW8gd3JvdGU6Cj4+PiBGaXJzdCBvZiBhbGwgdGhh
-bmsgeW91IGZvciB3b3JraW5nIG9uIHRoaXMuCj4+Pgo+Pj4gSSBtdXN0IHNheSB0aG91Z2ggdGhh
-dCBJIGRvbid0IGxpa2UgdGhlIGFwcHJvYWNoIHRha2VuIGhlcmUgdmVyeQo+Pj4gbXVjaC4KPj4+
-Cj4+PiBUaGlzIGlzIG5vdCBzbyBtdWNoIGEgY3JpdGljaXNtIG9mIHRoaXMgc2VyaWVzIGFzIGl0
-IGlzIGEgY3JpdGljaXNtCj4+PiBvZiB0aGUgZWFybGllciBkZWNpc2lvbiB0byBzaW1wbHkgZGlz
-YWJsZSBzMGl4IG9uIGFsbCBkZXZpY2VzCj4+PiB3aXRoIHRoZSBpMjE5LUxNICsgYW5kIGFjdGl2
-ZSBNRS4KPj4KPj4gSSB3YXMgbm90IGhhcHB5IHdpdGggdGhhdCBkZWNpc2lvbiBlaXRoZXIgYXMg
-aXQgZGlkIGNhdXNlIHJlZ3Jlc3Npb25zCj4+IG9uIGFsbCBvZiB0aGUgIm5hbWVkIiBDb21ldCBM
-YWtlIGxhcHRvcHMgdGhhdCB3ZXJlIGluIHRoZSBtYXJrZXQgYXQKPj4gdGhlIHRpbWUuwqAgVGhl
-ICJ1bm5hbWVkIiBvbmVzIGFyZSBub3QgeWV0IHJlbGVhc2VkLCBhbmQgSSBkb24ndCBmZWVsCj4+
-IGl0J3MgZmFpciB0byBjYWxsIGl0IGEgcmVncmVzc2lvbiBvbiAidW5yZWxlYXNlZCIgaGFyZHdh
-cmUuCj4+Cj4+Pgo+Pj4gQUZBSUsgdGhlcmUgd2FzIGEgcGVyZmVjdGx5IGFjY2VwdGFibGUgcGF0
-Y2ggdG8gd29ya2Fyb3VuZCB0aG9zZQo+Pj4gYnJva2VuIGRldmljZXMsIHdoaWNoIGluY3JlYXNl
-ZCBhIHRpbWVvdXQ6Cj4+PiBodHRwczovL3BhdGNod29yay5vemxhYnMub3JnL3Byb2plY3QvaW50
-ZWwtd2lyZWQtCj4+PiBsYW4vcGF0Y2gvMjAyMDAzMjMxOTE2MzkuNDg4MjYtMS1hYXJvbi5tYUBj
-YW5vbmljYWwuY29tLwo+Pj4KPj4+IFRoYXQgcGF0Y2ggd2FzIG5hY2tlZCBiZWNhdXNlIGl0IGlu
-Y3JlYXNlZCB0aGUgcmVzdW1lIHRpbWUKPj4+ICpvbiBicm9rZW4gZGV2aWNlcyouCj4+Pgo+IE9m
-ZmljaWFsbHkgQ1NNRS9NRSBub3QgUE9SIGZvciBMaW51eCBhbmQgd2UgaGF2ZW4ndCBpbnRlcmZy
-YWNlIHRvIHRoZSBNRS4gTm9ib2R5IGNhbiB0ZWxsIGhvdyBsb25nIChhbmQgd2h5KSBNRSB3aWxs
-IGhvbGQgUEhZIGFjY2VzcyBzZW1hcGhvcmUgYW50IGp1c3QgaW5jcmVhc2luZyB0aGUgcmVzdW1p
-bmcgdGltZSAoVUxQIGNvbmZpZ3VyZSkgd29uJ3QgYmUgc29sdmUgdGhlIHByb2JsZW0uIFRoaXMg
-aXMgbm90IHJlbGlhYmxlIGFwcHJvYWNoLgo+IEkgd291bGQgYWdyZWUgdXNlcnMgY2FuIGFkZCBN
-RSBzeXN0ZW0gb24gdGhlaXIgcmVzcG9uc2liaWxpdGllcy4KCkl0IGlzIG5vdCBjbGVhciB0byBt
-ZSB3aGF0IHlvdSBhcmUgdHJ5aW5nIHRvIHNheSBoZXJlLgoKQXJlIHlvdSBzYXlpbmcgdGhhdCB5
-b3UgaW5zaXN0IG9uIGtlZXBpbmcgdGhlIGUxMDAwZV9jaGVja19tZSBjaGVjayBhbmQKdGh1cyBu
-ZWVkbGVzc2x5IHBlbmFsaXppbmcgMTAwcyBvZiBsYXB0b3BzIG1vZGVscyB3aXRoIGhpZ2hlcgpw
-b3dlci1jb25zdW1wdGlvbiB1bmxlc3MgdGhlc2UgMTAwcyBvZiBsYXB0b3BzIGFyZSBhZGRlZCBt
-YW51YWxseQp0byBhbiBhbGxvdyBsaXN0IGZvciB0aGlzPwoKSSdtIHNvcnJ5IGJ1dCB0aGF0IGlz
-IHNpbXBseSB1bmFjY2VwdGFibGUsIHRoZSBtYWludGVuYW5jZSBidXJkZW4Kb2YgdGhhdCBpcyBq
-dXN0IHdheSB0b28gaGlnaC4KClRlc3Rpbmcgb24gdGhlIG1vZGVscyB3aGVyZSB0aGUgdGltZW91
-dCBpc3N1ZSB3YXMgZmlyc3QgaGl0IGhhcwpzaG93biB0aGF0IGluY3JlYXNpbmcgdGhlIHRpbWVv
-dXQgZG9lcyBhY3R1YWxseSBmaXggaXQgb24gdGhvc2UKbW9kZWxzLiBTdXJlIGluIHRoZW9yeSB0
-aGUgTUUgb24gc29tZSBidWdneSBtb2RlbCBjb3VsZCBob2xkIHRoZQpzZW1hcGhvcmUgZXZlbiBs
-b25nZXIsIGJ1dCB0aGVuIHRoZSByaWdodCB0aGluZyB3b3VsZCBiZSB0bwpoYXZlIGEgZGVueS1s
-aXN0IGZvciBzMGl4IHdoZXJlIHdlIGNhbiBhZGQgdGhvc2UgYnVnZ3kgbW9kZWxzCihub25lIG9m
-IHdoaWNoIHdlIGhhdmUgZW5jb3VudGVyZWQgc29mYXIpLiBKdXN0IGxpa2Ugd2UgaGF2ZQpkZW55
-bGlzdCBmb3IgYnVnZ3kgaHcgaW4gb3RoZXIgcGxhY2VzIGluIHRoZSBrZXJuZWwuCgpNYWludGFp
-bmluZyBhbiBldmVyIGdyb3dpbmcgYWxsb3cgbGlzdCBmb3IgdGhlICp0aGVvcmV0aWNhbCoKY2Fz
-ZSBvZiBlbmNvdW50ZXJpbmcgYSBtb2RlbCB3aGVyZSB0aGluZ3MgZG8gbm90IHdvcmsgd2l0aAp0
-aGUgaW5jcmVhc2VkIHRpbWVvdXQgaXMgbm90IGEgd29ya2FibGUgYW5kIHRoaXMgbm90IGFuCmFj
-Y2VwdGFibGUgc29sdXRpb24uCgpUaGUgaW5pdGlhbCBhZGRpdGlvbiBvZiB0aGUgZTEwMDBlX2No
-ZWNrX21lIGNoZWNrIGluc3RlYWQKb2YganVzdCBnb2luZyB3aXRoIHRoZSBjb25maXJtZWQgZml4
-IG9mIGJ1bXBpbmcgdGhlIHRpbWVvdXQKd2FzIGFscmVhZHkgaGlnaGx5IGNvbnRyb3ZlcnNpYWwg
-YW5kIHNob3VsZCBJTUhPIG5ldmVyIGhhdmUKYmVlbiBkb25lLgoKQ29tYmluaW5nIHRoaXMgd2l0
-aCBhbiBldmVyLWdyb3dpbmcgYWxsb3ctbGlzdCBvbiB3aGljaCBldmVyeQpuZXcgbGFwdG9wIG1v
-ZGVsIG5lZWRzIHRvIGJlIGFkZGVkIHNlcGFyYXRlbHkgKyBhIG5ldwoiczBpeC1lbmFibGVkIiBl
-dGhlcnRvb2wgZmxhZywgd2hpY2ggZXhpc3RlbmNlIGlzIGJhc2ljYWxseQphbiBhZG1pc3Npb24g
-dGhhdCB0aGUgYWxsb3ctbGlzdCBhcHByb2FjaCBpcyBmbGF3ZWQgZ29lcwpmcm9tIGNvbnRyb3Zl
-cnNpYWwgdG8ganVzdCBwbGFpbiBub3QgYWNjZXB0YWJsZS4KClJlZ2FyZHMsCgpIYW5zCgoKCj4+
-PiBTbyBpdCBzZWVtcyB0byBtZSB0aGF0IHdlIGhhdmUgYSBzaW1wbGUgY2hvaWNlIGhlcmU6Cj4+
-Pgo+Pj4gMS4gTG9uZ2VyIHJlc3VtZSB0aW1lIG9uIGRldmljZXMgd2l0aCBhbiBpbXByb3Blcmx5
-IGNvbmZpZ3VyZWQgTUUKPj4+IDIuIEhpZ2hlciBwb3dlci1jb25zdW1wdGlvbiBvbiBhbGwgbm9u
-LWJ1Z2d5IGRldmljZXMKPj4+Cj4+PiBZb3VyIHBhdGNoZXMgNC03IHRyeSB0byB3b3JrYXJvdW5k
-IDIuIGJ1dCBJTUhPIHRob3NlIGFyZSBqdXN0Cj4+PiBiYW5kYWlkcyBmb3IgZ2V0dGluZyB0aGUg
-aW5pdGlhbCBwcmlvcml0aWVzICp2ZXJ5KiB3cm9uZy4KPj4KPj4gVGhleSB3ZXJlIGRvbmUgYmFz
-ZWQgdXBvbiB0aGUgZGlzY3Vzc2lvbiBpbiB0aGF0IHRocmVhZCB5b3UgbGlua2VkIGFuZCBvdGhl
-cnMuCj4+IElmIHRoZSBvd25lcnMgb2YgdGhpcyBkcml2ZXIgZmVlbCBpdCdzIHBvc3NpYmxlL3Nj
-YWxhYmxlIHRvIGZvbGxvdyB5b3VyIHByb3Bvc2FsCj4+IEknbSBoYXBweSB0byByZXN1Ym1pdCBh
-IG5ldyB2NCBzZXJpZXMgd2l0aCB0aGVzZSBzZXRzIG9mIHBhdGNoZXM6Cj4+Cj4+IDEpIEZpeHVw
-IGZvciB0aGUgZXhjZXB0aW9uIGNvcm5lciBjYXNlIHJlZmVyZW5jZWQgaW4gdGhpcyB0aHJlYWQK
-Pj4gMikgUGF0Y2ggMSBmcm9tIHRoaXMgc2VyaWVzIHRoYXQgZml4ZXMgY2FibGUgY29ubmVjdGVk
-IGNhc2UKPj4gMykgSW5jcmVhc2UgdGhlIHRpbWVvdXQgKGZyb20geW91ciByZWZlcmVuY2VkIGxp
-bmspCj4+IDQpIFJldmVydCB0aGUgTUUgZGlzYWxsb3cgbGlzdAo+Pgo+Pj4KPj4+IEluc3RlYWQg
-b2YgcGVuYWxpemluZyBub24tYnVnZ3kgZGV2aWNlcyB3aXRoIGEgaGlnaGVyIHBvd2VyLWNvbnN1
-bXB0aW9uLAo+Pj4gd2Ugc2hvdWxkIGRlZmF1bHQgdG8gcGVuYWxpemluZyB0aGUgYnVnZ3kgZGV2
-aWNlcyB3aXRoIGEgaGlnaGVyCj4+PiByZXN1bWUgdGltZS4gQW5kIGlmIGl0IGlzIGRlY2lkZWQg
-dGhhdCB0aGUgaGlnaGVyIHJlc3VtZSB0aW1lIGlzCj4+PiBhIHdvcnNlIHByb2JsZW0gdGhlbiB0
-aGUgaGlnaGVyIHBvd2VyLWNvbnN1bXB0aW9uLCB0aGVuIHRoZXJlCj4+PiBzaG91bGQgYmUgYSBs
-aXN0IG9mIGJyb2tlbiBkZXZpY2VzIGFuZCBzMGl4IGNhbiBiZSBkaXNhYmxlZCBvbiB0aG9zZS4K
-Pj4KPj4gSSdtIHBlcmZlY3RseSBoYXBweSBlaXRoZXIgd2F5LCBteSBwcmltYXJ5IGdvYWwgaXMg
-dGhhdCBEZWxsJ3Mgbm90ZWJvb2tzIGFuZAo+PiBkZXNrdG9wcyB0aGF0IG1lZXQgdGhlIGFyY2hp
-dGVjdHVyYWwgYW5kIGZpcm13YXJlIGd1aWRlbGluZXMgZm9yIGFwcHJvcHJpYXRlCj4+IGxvdyBw
-b3dlciBjb25zdW1wdGlvbiBvdmVyIHMwaXggYXJlIG5vdCBwZW5hbGl6ZWQuCj4+Cj4+Pgo+Pj4g
-VGhlIGN1cnJlbnQgYWxsb3ctbGlzdCBhcHByb2FjaCBpcyBzaW1wbHkgbmV2ZXIgZ29pbmcgdG8g
-d29yayB3ZWxsCj4+PiBsZWFkaW5nIHRvIHRvbyBoaWdoIHBvd2VyLWNvbnN1bXB0aW9uIG9uIGNv
-dW50bGVzcyBkZXZpY2VzLgo+Pj4gVGhpcyBpcyBnb2luZyB0byBiZSBhbiBlbmRsZXNzIGdhbWUg
-b2Ygd2hhY2stYS1tb2xlIGFuZCBhcwo+Pj4gc3VjaCByZWFsbHkgaXMgYSBiYWQgaWRlYS4KPj4K
-Pj4gSSBlbnZpc2lvbmVkIHRoYXQgaXQgd291bGQgZXZvbHZlIG92ZXIgdGltZS7CoCBGb3IgZXhh
-bXBsZSBpZiBieSB0aGUgdGltZSBEZWxsCj4+IGZpbmlzaGVkIHNoaXBwaW5nIG5ldyBDTUwgbW9k
-ZWxzIGl0IHdhcyBkZWVtZWQgdGhhdCBhbGwgdGhlIENNTCBoYXJkd2FyZSB3YXMgZG9uZQo+PiBw
-cm9wZXJseSBpdCBjb3VsZCBpbnN0ZWFkIGJ5IGFuIGFsbG93IGxpc3Qgb2YgRGVsbCArIENvbWV0
-IFBvaW50Lgo+PiBJZiBhbGwgb2YgVGlnZXIgTGFrZSBhcmUgZG9uZSBwcm9wZXJseSAnbWF5YmUn
-IGJ5IHRoZSB0aW1lIHRoZSBNTCBzaGlwcyBtYXliZSBpdAo+PiBjb3VsZCBiZSBhbiBhbGxvdyBs
-aXN0IG9mIERlbGwgKyBDTUwgb3IgbmV3ZXIuCj4+Cj4+IEJ1dCBldmVuIGlmIHRoZSBoZXVyaXN0
-aWMgY2hhbmdlZCAtIHRoaXMgcGFydGljdWxhciBjb25maWd1cmF0aW9uIG5lZWRzIHRvIGJlIHRl
-c3RlZAo+PiBvbiBldmVyeSBzaW5nbGUgbmV3IG1vZGVsLsKgIEFsbCBvZiB0aGUgbm90ZWJvb2tz
-IHRoYXQgaGF2ZSBhIFRlc3RlZC1CeSBjbGF1c2Ugd2VyZQo+PiBjaGVja2VkIGJ5IERlbGwgYW5k
-IERlbGwncyBwYXJ0bmVycy4KPj4KPj4+Cj4+PiBBIGRlbnktbGlzdCBmb3IgYnJva2VuIGRldmlj
-ZXMgaXMgYSBtdWNoIGJldHRlciBhcHByb2FjaCwgZXNwLgo+Pj4gc2luY2UgbWlzc2luZyBkZXZp
-Y2VzIG9uIHRoYXQgbGlzdCB3aWxsIHN0aWxsIHdvcmsgZmluZSwgdGhleQo+Pj4gd2lsbCBqdXN0
-IGhhdmUgYSBzb21ld2hhdCBsYXJnZXIgcmVzdW1lIHRpbWUuCj4+Cj4+IEkgZG9uJ3QgaGF2ZSBj
-b25maWd1cmF0aW9uIGRlZW1lZCBidWdneS7CoCBTaW5jZSB5b3Ugd2VyZSBjb21tZW50aW5nIGlu
-IHRoYXQgb3RoZXIKPj4gdGhyZWFkIHdpdGggdGhlIHBhdGNoIGZyb20gQWFhcm9uIEl0IHNvdW5k
-cyBsaWtlIHlvdSBkby4gQ2FuIHlvdSBwZXJoYXBzIGNoZWNrIGlmCj4+IHRoYXQgcHJvcG9zYWwg
-YWN0dWFsbHkgd29ya3M/Cj4+Cj4+Pgo+Pj4gU28gd2hhdCBuZWVkcyB0byBoYXBwZW4gSU1ITyBp
-czoKPj4+Cj4+PiAxLiBNZXJnZSB5b3VyIGZpeCBmcm9tIHBhdGNoIDEgb2YgdGhpcyBzZXQKPj4+
-IDIuIE1lcmdlICJlMTAwMGU6IGJ1bXAgdXAgdGltZW91dCB0byB3YWl0IHdoZW4gTUUgdW4tY29u
-ZmlndXJlIFVMUCBtb2RlIgo+Pj4gMy4gRHJvcCB0aGUgZTEwMDBlX2NoZWNrX21lIGNoZWNrLgo+
-Pj4KPj4+IFRoZW4gd2UgYWxzbyBkbyBub3QgbmVlZCB0aGUgbmV3ICJzMGl4LWVuYWJsZWQiIGV0
-aGVydG9vbCBmbGFnCj4+PiBiZWNhdXNlIHdlIGRvIG5vdCBuZWVkIHVzZXJzcGFjZSB0byB3b3Jr
-LWFyb3VuZCB1cyBkb2luZyB0aGUKPj4+IHdyb25nIHRoaW5nIGJ5IGRlZmF1bHQuCj4+Cj4+IElm
-IHdlIGNvbGxlY3RpdmVseSBhZ3JlZSB0byBrZWVwIGVpdGhlciBhbiBhbGxvdyBsaXN0ICJvciIg
-ZGlzYWxsb3cgbGlzdCBhdAo+PiBhbGwgSSB0aGluayB5b3UgbmVlZCBhIHdheSBjaGVjayB3aGV0
-aGVyIGVuYWJsaW5nIHRoaXMgZmVhdHVyZSB3b3Jrcy4KPj4KPj4gSWYgd2UgYXJlIG1ha2luZyBh
-biBhc3NlcnRpb24gaXQgd2lsbCBhbHdheXMgd29yayBwcm9wZXJseSBhbGwgdGhlIHRpbWUsIEkg
-YWdyZWUKPj4gdGhhdCB0aGVyZSBpcyBubyBuZWVkIGZvciBhbiBldGh0b29sIGZsYWcuCj4+Cj4+
-Pgo+Pj4gTm90ZSBhIHdoaWxlIGFnbyBJIGhhZCBhY2Nlc3MgdG8gb25lIG9mIHRoZSBkZXZpY2Vz
-IGhhdmluZyBzdXNwZW5kL3Jlc3VtZQo+Pj4gaXNzdWVzIGNhdXNlZCBieSB0aGUgUzBpeCBzdXBw
-b3J0IChhIExlbm92byBUaGlua3BhZCBYMSBDYXJib24gZ2VuIDcpCj4+PiBhbmQgSSBjYW4gY29u
-ZmlybSB0aGF0IHRoZSAiZTEwMDBlOiBidW1wIHVwIHRpbWVvdXQgdG8gd2FpdCB3aGVuIE1FCj4+
-PiB1bi1jb25maWd1cmUgVUxQIG1vZGUiIHBhdGNoIGZpeGVzIHRoZSBzdXNwZW5kL3Jlc3VtZSBw
-cm9ibGVtIHdpdGhvdXQKPj4+IGFueSBub3RpY2VhYmxlIG5lZ2F0aXZlIHNpZGUtZWZmZWN0cy4K
-Pj4+Cj4+Cj4+IENhbiB5b3Ugb3Igc29tZW9uZSBlbHNlIHdpdGggdGhpcyBtb2RlbCBwbGVhc2Ug
-Y2hlY2sgd2l0aCBhIGN1cnJlbnQga2VybmVsCj4+IHcvIHJldmVydGluZyBNRSBjaGVjayBhbmQg
-YWRkaW5nIHRoZSBwYXRjaCBmcm9tIFZpdGFseSAoaW5jbHVkZWQgYXMgcGF0Y2ggMQo+PiBpbiBt
-eSBzZXJpZXMpPwo+Pgo+Pj4gUmVnYXJkcywKPj4+Cj4+PiBIYW5zCj4+Pgo+Pj4KPj4+Cj4+Pgo+
-Pj4KPj4+Cj4+Pgo+Pj4KPj4+Cj4+Pj4KPj4+PiBDaGFuZ2VzIGZyb20gdjIgdG8gdjM6Cj4+Pj4g
-wqAgLSBDb3JyZWN0IHNvbWUgZ3JhbW1hciBhbmQgc3BlbGxpbmcgaXNzdWVzIGNhdWdodCBieSBC
-am9ybiBILgo+Pj4+IMKgwqDCoCAqIHMvczBpeC9TMGl4LyBpbiBhbGwgY29tbWl0IG1lc3NhZ2Vz
-Cj4+Pj4gwqDCoMKgICogRml4IGEgdHlwbyBpbiBjb21taXQgbWVzc2FnZQo+Pj4+IMKgwqDCoCAq
-IEZpeCBjYXBpdGFsaXphdGlvbiBvZiBwcm9wZXIgbm91bnMKPj4+PiDCoCAtIEFkZCBtb3JlIHBy
-ZS1yZWxlYXNlIHN5c3RlbXMgdGhhdCBwYXNzCj4+Pj4gwqAgLSBSZS1vcmRlciB0aGUgc2VyaWVz
-IHRvIGFkZCBzeXN0ZW1zIG9ubHkgYXQgdGhlIGVuZCBvZiB0aGUgc2VyaWVzCj4+Pj4gwqAgLSBB
-ZGQgRml4ZXMgdGFnIHRvIGEgcGF0Y2ggaW4gc2VyaWVzLgo+Pj4+Cj4+Pj4gQ2hhbmdlcyBmcm9t
-IHYxIHRvIHYyOgo+Pj4+IMKgIC0gRGlyZWN0bHkgaW5jb3Jwb3JhdGUgVml0YWx5J3MgZGVwZW5k
-ZW5jeSBwYXRjaCBpbiB0aGUgc2VyaWVzCj4+Pj4gwqAgLSBTcGxpdCBvdXQgczBpeCBjb2RlIGlu
-dG8gaXQncyBvd24gZmlsZQo+Pj4+IMKgIC0gQWRqdXN0IGZyb20gRE1JIG1hdGNoaW5nIHRvIFBD
-SSBzdWJzeXN0ZW0gdmVuZG9yIElEL2RldmljZSBtYXRjaGluZwo+Pj4+IMKgIC0gUmVtb3ZlIG1v
-ZHVsZSBwYXJhbWV0ZXIgYW5kIHN5c2ZzLCB1c2UgZXRodG9vbCBmbGFnIGluc3RlYWQuCj4+Pj4g
-wqAgLSBFeHBvcnQgczBpeCBmbGFnIHRvIGV0aHRvb2wgcHJpdmF0ZSBmbGFncwo+Pj4+IMKgIC0g
-SW5jbHVkZSBtb3JlIHBlb3BsZSBhbmQgbGlzdHMgZGlyZWN0bHkgaW4gdGhpcyBzdWJtaXNzaW9u
-IGNoYWluLgo+Pj4+Cj4+Pj4gTWFyaW8gTGltb25jaWVsbG8gKDYpOgo+Pj4+IMKgwqAgZTEwMDBl
-OiBNb3ZlIGFsbCBTMGl4IHJlbGF0ZWQgY29kZSBpbnRvIGl0cyBvd24gc291cmNlIGZpbGUKPj4+
-PiDCoMKgIGUxMDAwZTogRXhwb3J0IFMwaXggZmxhZ3MgdG8gZXRodG9vbAo+Pj4+IMKgwqAgZTEw
-MDBlOiBBZGQgRGVsbCdzIENvbWV0IExha2Ugc3lzdGVtcyBpbnRvIFMwaXggaGV1cmlzdGljcwo+
-Pj4+IMKgwqAgZTEwMDBlOiBBZGQgbW9yZSBEZWxsIENNTCBzeXN0ZW1zIGludG8gUzBpeCBoZXVy
-aXN0aWNzCj4+Pj4gwqDCoCBlMTAwMGU6IEFkZCBEZWxsIFRHTCBkZXNrdG9wIHN5c3RlbXMgaW50
-byBTMGl4IGhldXJpc3RpY3MKPj4+PiDCoMKgIGUxMDAwZTogQWRkIGFub3RoZXIgRGVsbCBUR0wg
-bm90ZWJvb2sgc3lzdGVtIGludG8gUzBpeCBoZXVyaXN0aWNzCj4+Pj4KPj4+PiBWaXRhbHkgTGlm
-c2hpdHMgKDEpOgo+Pj4+IMKgwqAgZTEwMDBlOiBmaXggUzBpeCBmbG93IHRvIGFsbG93IFMwaTMu
-MiBzdWJzZXQgZW50cnkKPj4+Pgo+Pj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
-MDAwZS9NYWtlZmlsZcKgIHzCoMKgIDIgKy0KPj4+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9lMTAwMGUvZTEwMDAuaMKgwqAgfMKgwqAgNCArCj4+Pj4gwqAgZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvZTEwMDBlL2V0aHRvb2wuYyB8wqAgNDAgKysrCj4+Pj4gwqAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jwqAgfCAyNzIgKy0tLS0tLS0tLS0tLS0t
-LS0KPj4+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvczBpeC5jwqDCoMKg
-IHwgMzExICsrKysrKysrKysrKysrKysrKysrCj4+Pj4gwqAgNSBmaWxlcyBjaGFuZ2VkLCAzNjEg
-aW5zZXJ0aW9ucygrKSwgMjY4IGRlbGV0aW9ucygtKQo+Pj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvczBpeC5jCj4+Pj4KPj4+PiAtLSAK
-Pj4+PiAyLjI1LjEKPj4+Pgo+Pj4+Cj4+Cj4gVGhhbmtzLAo+IFNhc2hhCj4gCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
-bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+On 12/8/20 10:00 AM, Jesper Dangaard Brouer wrote:
+> On Mon, 07 Dec 2020 12:52:22 -0800
+> John Fastabend <john.fastabend@gmail.com> wrote:
+> 
+>>> Use-case(1): Cloud-provider want to give customers (running VMs) ability
+>>> to load XDP program for DDoS protection (only), but don't want to allow
+>>> customer to use XDP_TX (that can implement LB or cheat their VM
+>>> isolation policy).
+>>
+>> Not following. What interface do they want to allow loading on? If its
+>> the VM interface then I don't see how it matters. From outside the
+>> VM there should be no way to discover if its done in VM or in tc or
+>> some other stack.
+>>
+>> If its doing some onloading/offloading I would assume they need to
+>> ensure the isolation, etc. is still maintained because you can't
+>> let one VMs program work on other VMs packets safely.
+>>
+>> So what did I miss, above doesn't make sense to me.
+> 
+> The Cloud-provider want to load customer provided BPF-code on the
+> physical Host-OS NIC (that support XDP).  The customer can get access
+> to a web-interface where they can write or upload their BPF-prog.
+> 
+> As multiple customers can upload BPF-progs, the Cloud-provider have to
+> write a BPF-prog dispatcher that runs these multiple program.  This
+> could be done via BPF tail-calls, or via Toke's libxdp[1], or via
+> devmap XDP-progs per egress port.
+> 
+> The Cloud-provider don't fully trust customers BPF-prog.   They already
+> pre-filtered traffic to the given VM, so they can allow customers
+> freedom to see traffic and do XDP_PASS and XDP_DROP.  They
+> administratively (via ethtool) want to disable the XDP_REDIRECT and
+> XDP_TX driver feature, as it can be used for violation their VM
+> isolation policy between customers.
+> 
+> Is the use-case more clear now?
+
+I think we're talking about two different things. The use case as I understood
+it in (1) mentioned to be able to disable XDP_TX for NICs that are deployed in
+the VM. This would be a no-go as-is since that would mean my basic assumption
+for attaching XDP progs is gone in that today return codes pass/drop/tx is
+pretty much available everywhere on native XDP supported NICs. And if you've
+tried it on major cloud providers like AWS or Azure that offer SRIOV-based
+networking that works okay and further restricting this would mean breakage of
+existing programs.
+
+What you mean here is "offload" from guest to host which is a different use
+case than what likely John and I read from your description in (1). Such program
+should then be loaded via BPF offload API. Meaning, if offload is used and the
+host is then configured to disallow XDP_TX for such requests from guests, then
+these get rejected through such facility, but if the /same/ program was loaded as
+regular native XDP where it's still running in the guest, then it must succeed.
+These are two entirely different things.
+
+It's not clear to me whether some ethtool XDP properties flag is the right place
+to describe this (plus this needs to differ between offloaded / non-offloaded progs)
+or whether this should be an implementation detail for things like virtio_net e.g.
+via virtio_has_feature(). Feels more like the latter to me which already has such
+a facility in place.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
