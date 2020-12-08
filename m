@@ -1,78 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F0D62D2F3A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 17:15:18 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 241862D3074
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 18:02:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D9A2187267;
-	Tue,  8 Dec 2020 16:15:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 926EC20444;
+	Tue,  8 Dec 2020 17:02:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QckgGqjDUzlo; Tue,  8 Dec 2020 16:15:13 +0000 (UTC)
+	with ESMTP id r5bNYuZHo2HX; Tue,  8 Dec 2020 17:02:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 94D1E87244;
-	Tue,  8 Dec 2020 16:15:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0EB9E275B0;
+	Tue,  8 Dec 2020 17:02:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D74C1BF3E8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 16:15:12 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EB1EC1BF356
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 04:07:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 18B0087293
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 16:15:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DE3E42E4FA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 04:07:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bOOOxQflnvxk for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Dec 2020 16:15:11 +0000 (UTC)
+ with ESMTP id Ac2aTlK8FlPa for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Dec 2020 04:07:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1E9DB87277
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 16:15:11 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id n14so17372409iom.10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Dec 2020 08:15:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=oLW8xGxoanWIpJZovz5czICr17i3LTPEQIdqGA3O2h0=;
- b=CrdkV8rVgDKbU+JWugnZu/ASTWkgGuftLg+bo5Y6wrvT9CZAL7f/Ib+cmCyVw6n9SJ
- oWm9XKNEBDhWdBKlz/9tIIVY7jkM0EU446Hl2B2pgz+tdXjPkEuMpEEVP3+09EsGrhFy
- 39b3VWPxG08coduB0bDMIJ9QeYmgs0kkoHt2pKY4IDUvgsXTDB7usxHxluT+1BAXTMM+
- H/EIy6prqc9OFu6LQwGoMeuH/xsCiph6igRly3nhzc5RzWaK+cS0zsgyA1NApO9F4KLy
- 3lrB4KJNmn/ORSK/xKYgtqRwlGRp5JhRe52UKnTbjX73D462/HnflLGHP/Xw3vVLrFlf
- 8Vqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=oLW8xGxoanWIpJZovz5czICr17i3LTPEQIdqGA3O2h0=;
- b=uFIj5KBMbNaWkG07bs0vA7E0xG7+RgULFC1khXdNWBY5W7gST9TCI8KlwgywEX66/4
- EOEf6an6/41nIdTKq1MjitURcZRxIJhQjA/fZAS31LT6LIQyfFvSgefJGpyHnjbUpaJg
- TdNIrVrjBDIyw7pJkK9parSTu6GKv9+pK0bLY5/863XWFBaWCyDu8F3hxlVhkFPxa9EU
- z38KOmNSv9COikMPQIbxUsCXdfaIuk8XsApqLpWu/1DHgptcvsry+CBDDuYHxq97VIxD
- hqbjH4aZtvtrvOsaSdH+7n/HlYuXRuhL0pM4eOkSEEgcRUdqrF0LPMQbLYDnVfjRpO1a
- E0ig==
-X-Gm-Message-State: AOAM532etirhhfnL95zpIWCOtfcdXMQMLvO7b3raH/i3wLlm15C4M4pT
- GORk/nYSzgbXZo9f12T7qXsByU9O2ua1bX5/Fhc=
-X-Google-Smtp-Source: ABdhPJxXeSbNnS0AeBgABRYL8Vmru53bsBrzbyhq87wFdTsv9q/V2oexnDeIfcYrjPz5NCgFr4xpx2rWyu1scvDIowQ=
-X-Received: by 2002:a5d:8344:: with SMTP id q4mr25183113ior.38.1607444110138; 
- Tue, 08 Dec 2020 08:15:10 -0800 (PST)
-MIME-Version: 1.0
-References: <20201204200920.133780-1-mario.limonciello@dell.com>
- <d0f7e565-05e1-437e-4342-55eb73daa907@redhat.com>
- <DM6PR19MB2636A4097B68DBB253C416D8FACE0@DM6PR19MB2636.namprd19.prod.outlook.com>
- <383daf0d-8a9b-c614-aded-6e816f530dcd@intel.com>
- <e7d57370-e35e-a9e6-2dd9-aa7855c15650@redhat.com>
-In-Reply-To: <e7d57370-e35e-a9e6-2dd9-aa7855c15650@redhat.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 8 Dec 2020 08:14:58 -0800
-Message-ID: <CAKgT0UebNROCeAyyg0Jf-pTfLDd-oNyu2Lo-gkZKWk=nOAYL8g@mail.gmail.com>
-To: Hans de Goede <hdegoede@redhat.com>
-Subject: Re: [Intel-wired-lan] [PATCH v3 0/7] Improve s0ix flows for systems
- i219LM
+Received: from mail-m975.mail.163.com (mail-m975.mail.163.com [123.126.97.5])
+ by silver.osuosl.org (Postfix) with ESMTPS id 699CA203F2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 04:07:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id; bh=e7nlyQZHgn2nibFtK4
+ qOZ6mgkuCjj/AG/0LmEvfJ7cg=; b=WstvLNyhYhLoTOPoDQY4k++acBfJXte9An
+ g6otyHU0hVgw1JweyT4ha1U3w/vrNQv9Azt5LmbhVUuZ5aQWezKXQZ/NkK4qR2oL
+ ZwiL5HZA8SvnUMXlJZcbYjmKkP2vjELc+gzLk2vjSdsiMfhS9zLsY0sdF7uC3pcW
+ Epv609VJk=
+Received: from localhost.localdomain (unknown [202.112.113.212])
+ by smtp5 (Coremail) with SMTP id HdxpCgD3tIHP+85fwShYEA--.3818S4;
+ Tue, 08 Dec 2020 12:06:45 +0800 (CST)
+From: Xiaohui Zhang <ruc_zhangxiaohui@163.com>
+To: Xiaohui Zhang <ruc_zhangxiaohui@163.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Shannon Nelson <snelson@pensando.io>,
+ Pensando Drivers <drivers@pensando.io>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Tue,  8 Dec 2020 12:06:38 +0800
+Message-Id: <20201208040638.40627-1-ruc_zhangxiaohui@163.com>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: HdxpCgD3tIHP+85fwShYEA--.3818S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFykuFyfGF48Kw4ftF17Awb_yoW5Jry3pF
+ 4UKa4UZw4kXrs0gw1kAw4kuFW5tws8GrWSgr9ak3s5Ww1DJrZ2qa4DtFySyr95trW8CF4I
+ qr42vwn5A3Z8XwUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRu6wZUUUUU=
+X-Originating-IP: [202.112.113.212]
+X-CM-SenderInfo: puxfs6pkdqw5xldrx3rl6rljoofrz/1tbiThX0MFUDGa6IsQAAsH
+X-Mailman-Approved-At: Tue, 08 Dec 2020 17:02:09 +0000
+Subject: [Intel-wired-lan] [PATCH 1/1] fix possible array overflow on
+ receiving too many fragments for a packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,126 +73,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Limonciello, Mario" <Mario.Limonciello@dell.com>,
- Netdev <netdev@vger.kernel.org>, "Yuan, Perry" <Perry.Yuan@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Shen, Yijun" <Yijun.Shen@dell.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "anthony.wong@canonical.com" <anthony.wong@canonical.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, viltaly.lifshits@intel.com,
- David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 8, 2020 at 1:30 AM Hans de Goede <hdegoede@redhat.com> wrote:
->
-> Hi,
->
-> On 12/8/20 6:08 AM, Neftin, Sasha wrote:
-> > On 12/7/2020 17:41, Limonciello, Mario wrote:
-> >>> First of all thank you for working on this.
-> >>>
-> >>> I must say though that I don't like the approach taken here very
-> >>> much.
-> >>>
-> >>> This is not so much a criticism of this series as it is a criticism
-> >>> of the earlier decision to simply disable s0ix on all devices
-> >>> with the i219-LM + and active ME.
-> >>
-> >> I was not happy with that decision either as it did cause regressions
-> >> on all of the "named" Comet Lake laptops that were in the market at
-> >> the time.  The "unnamed" ones are not yet released, and I don't feel
-> >> it's fair to call it a regression on "unreleased" hardware.
-> >>
-> >>>
-> >>> AFAIK there was a perfectly acceptable patch to workaround those
-> >>> broken devices, which increased a timeout:
-> >>> https://patchwork.ozlabs.org/project/intel-wired-
-> >>> lan/patch/20200323191639.48826-1-aaron.ma@canonical.com/
-> >>>
-> >>> That patch was nacked because it increased the resume time
-> >>> *on broken devices*.
-> >>>
-> > Officially CSME/ME not POR for Linux and we haven't interface to the ME. Nobody can tell how long (and why) ME will hold PHY access semaphore ant just increasing the resuming time (ULP configure) won't be solve the problem. This is not reliable approach.
-> > I would agree users can add ME system on their responsibilities.
->
-> It is not clear to me what you are trying to say here.
+From: Zhang Xiaohui <ruc_zhangxiaohui@163.com>
 
-Based on the earlier thread you had referenced and his comment here it
-sounds like while adding time will work for most cases, it doesn't
-solve it for all cases. The problem is as a vendor you are usually
-stuck looking for a solution that will work for all cases which can
-lead to things like having to drop features because they can be
-problematic for a few cases.
+If the hardware receives an oversized packet with too many rx fragments,
+skb_shinfo(skb)->frags can overflow and corrupt memory of adjacent pages.
+This becomes especially visible if it corrupts the freelist pointer of
+a slab page.
+I found these two code fragments were very similar to the vulnerable code
+in CVE-2020-12465, so I submitted these two patches.
 
-> Are you saying that you insist on keeping the e1000e_check_me check and
-> thus needlessly penalizing 100s of laptops models with higher
-> power-consumption unless these 100s of laptops are added manually
-> to an allow list for this?
->
-> I'm sorry but that is simply unacceptable, the maintenance burden
-> of that is just way too high.
+Signed-off-by: Zhang Xiaohui <ruc_zhangxiaohui@163.com>
+---
+ drivers/net/ethernet/intel/ice/ice_txrx.c        | 4 +++-
+ drivers/net/ethernet/pensando/ionic/ionic_txrx.c | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-Think about this the other way though. If it is enabled and there are
-cases where adding a delay doesn't resolve it then it still doesn't
-really solve the issue does it?
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index eae75260f..f0a252208 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -821,9 +821,11 @@ ice_add_rx_frag(struct ice_ring *rx_ring, struct ice_rx_buf *rx_buf,
+ 	unsigned int truesize = ice_rx_pg_size(rx_ring) / 2;
+ #endif
+ 
++	struct skb_shared_info *shinfo = skb_shinfo(skb);
+ 	if (!size)
+ 		return;
+-	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
++	if (shinfo->nr_frags < ARRAY_SIZE(shinfo->frags))
++		skb_add_rx_frag(skb, shinfo, rx_buf->page,
+ 			rx_buf->page_offset, size, truesize);
+ 
+ 	/* page is being used so we must update the page offset */
+diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+index 169ac4f54..d30e83a4b 100644
+--- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
++++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+@@ -74,6 +74,7 @@ static struct sk_buff *ionic_rx_frags(struct ionic_queue *q,
+ 	struct device *dev = q->lif->ionic->dev;
+ 	struct ionic_page_info *page_info;
+ 	struct sk_buff *skb;
++	struct skb_shared_info *shinfo = skb_shinfo(skb);
+ 	unsigned int i;
+ 	u16 frag_len;
+ 	u16 len;
+@@ -102,7 +103,8 @@ static struct sk_buff *ionic_rx_frags(struct ionic_queue *q,
+ 
+ 		dma_unmap_page(dev, dma_unmap_addr(page_info, dma_addr),
+ 			       PAGE_SIZE, DMA_FROM_DEVICE);
+-		skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags,
++		if (shinfo->nr_frags < ARRAY_SIZE(shinfo->frags))
++			skb_add_rx_frag(skb, shinfo->nr_frags,
+ 				page_info->page, 0, frag_len, PAGE_SIZE);
+ 		page_info->page = NULL;
+ 		page_info++;
+-- 
+2.17.1
 
-> Testing on the models where the timeout issue was first hit has
-> shown that increasing the timeout does actually fix it on those
-> models. Sure in theory the ME on some buggy model could hold the
-> semaphore even longer, but then the right thing would be to
-> have a deny-list for s0ix where we can add those buggy models
-> (none of which we have encountered sofar). Just like we have
-> denylist for buggy hw in other places in the kernel.
-
-This would actually have a higher maintenance burden then just
-disabling the feature. Having to individually test for and deny-list
-every one-off system with this bad configuration would be a pretty
-significant burden. That also implies somebody would have access to
-such systems and that is not normally the case. Even Intel doesn't
-have all possible systems that would include this NIC.
-
-> Maintaining an ever growing allow list for the *theoretical*
-> case of encountering a model where things do not work with
-> the increased timeout is not a workable and this not an
-> acceptable solution.
-
-I'm not a fan of the allow-list either, but it is preferable to a
-deny-list where you have to first trigger the bug before you realize
-it is there. Ideally there should be another solution in which the ME
-could somehow set a flag somewhere in the hardware to indicate that it
-is alive and the driver could read that order to determine if the ME
-is actually alive and can skip this workaround. Then this could all be
-avoided and it can be safely assumed the system is working correctly.
-
-> The initial addition of the e1000e_check_me check instead
-> of just going with the confirmed fix of bumping the timeout
-> was already highly controversial and should IMHO never have
-> been done.
-
-How big was the sample size for the "confirmed" fix? How many
-different vendors were there within the mix? The problem is while it
-may have worked for the case you encountered you cannot say with
-certainty that it worked in all cases unless you had samples of all
-the different hardware out there.
-
-> Combining this with an ever-growing allow-list on which every
-> new laptop model needs to be added separately + a new
-> "s0ix-enabled" ethertool flag, which existence is basically
-> an admission that the allow-list approach is flawed goes
-> from controversial to just plain not acceptable.
-
-I don't view this as problematic, however this is some overhead to it.
-One thing I don't know is if anyone has looked at is if the issue only
-applies to a few specific system vendors. Currently the allow-list is
-based on the subdevice ID. One thing we could look at doing is
-enabling it based on the subvendor ID in which case we could
-allow-list in large swaths of hardware with certain trusted vendors.
-The only issue is that it pulls in any future parts as well so it puts
-the onus on that manufacturer to avoid misconfiguring things in the
-future.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
