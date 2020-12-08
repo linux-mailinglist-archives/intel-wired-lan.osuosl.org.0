@@ -2,74 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 424DC2D29D9
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 12:39:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CEC562D2A17
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Dec 2020 12:59:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EBD53864DA;
-	Tue,  8 Dec 2020 11:39:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 29AC9855DF;
+	Tue,  8 Dec 2020 11:59:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8MxEjvm7fQSy; Tue,  8 Dec 2020 11:39:23 +0000 (UTC)
+	with ESMTP id Z3p9L7CAKQEN; Tue,  8 Dec 2020 11:59:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B3D2B8688A;
-	Tue,  8 Dec 2020 11:39:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 573E0855EF;
+	Tue,  8 Dec 2020 11:59:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 10A0E1BF834
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:39:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E94C01BF23B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:59:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 03F15875F2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:39:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D497C8444F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:59:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qlH5Tw6lYMJu for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Dec 2020 11:39:20 +0000 (UTC)
+ with ESMTP id DpqkPO86EGV9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Dec 2020 11:59:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 11CE8875EE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:39:19 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C317C8644F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Dec 2020 11:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607427558;
+ s=mimecast20190719; t=1607428741;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mztAL0IbDNTerxOKqrjs7RBlEmfpHYSq6RMdJCS9850=;
- b=JGo4LBtGxHY6MV0/pYNelTFzs7Iquegx9CCwkYxTiI97X2V/S0rBqJRZuC2IUUjejZdm0S
- Y5Ft0t3wfKXXUs8IozlKnYmoGXG2zEdkOKdZhRh0t4s1sm+IiWf+4ZWE1bxkvnAClEbybS
- QYc7+c8qbQ/Oflb6osufa92tcFaBlKA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-1dU4fq_MOYe02b5FQc8kiQ-1; Tue, 08 Dec 2020 06:39:14 -0500
-X-MC-Unique: 1dU4fq_MOYe02b5FQc8kiQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B5B110054FF;
- Tue,  8 Dec 2020 11:39:12 +0000 (UTC)
-Received: from carbon (unknown [10.36.110.55])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3ED335D9DE;
- Tue,  8 Dec 2020 11:39:02 +0000 (UTC)
-Date: Tue, 8 Dec 2020 12:39:01 +0100
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
-Message-ID: <20201208123901.20e87ee5@carbon>
-In-Reply-To: <MW3PR11MB45544E9B9B610CC6553F246B9CCD0@MW3PR11MB4554.namprd11.prod.outlook.com>
-References: <20201111170453.32693-1-sven.auhagen@voleatech.de>
- <20201111170453.32693-3-sven.auhagen@voleatech.de>
- <DM6PR11MB454615FDFC4E7B71D9B82FA29CF40@DM6PR11MB4546.namprd11.prod.outlook.com>
- <20201201095852.2dc1e8f8@carbon>
- <20201205094213.p64bkcmd3lr4iejl@SvensMacBookAir-2.local>
- <MW3PR11MB45544E9B9B610CC6553F246B9CCD0@MW3PR11MB4554.namprd11.prod.outlook.com>
+ bh=X3UiVLhoBn0QxGbQIaE3lfbb23sxxLlKxWSYI9eyG3I=;
+ b=ZeDSW4CPzGdJi4bXnWMxMoerpkbmnRdXSMdi3LOuHLdzkitUdt3QuhZBGvC47/SwcmAoyx
+ DZaKT4fj/USH8CsFfqzDtel+Gskv72gMLI4hQuNH05gkMj4sExrnpaWM0ShmRSYXSiFG/F
+ Vbeaz0IoZmyJrLJwd36zst4NhHgqwcQ=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-293-Z4lO38niOeG7k3gGOqHC-Q-1; Tue, 08 Dec 2020 06:59:00 -0500
+X-MC-Unique: Z4lO38niOeG7k3gGOqHC-Q-1
+Received: by mail-wr1-f71.google.com with SMTP id v1so6065793wri.16
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Dec 2020 03:59:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=X3UiVLhoBn0QxGbQIaE3lfbb23sxxLlKxWSYI9eyG3I=;
+ b=iYuS4owWh4agIZpvipx1nFPVYnSh1vMeB2/lXqjmVauujxCESDykaHKYp5hwp1fB+k
+ MVJurbU7TXLyv2vTm50NUqxp9DXouqjVZOLambuYgMTuXJ5eSazLJocE2mhSO1i3wD/N
+ hds/rFK7K0oFJrA/sYM7u5FqJ2Yrt1XjI2akclzLaEuNhsGLgdGYzO8nthL0aT1j1weQ
+ uyXI80DktZ0NyH8LdHu/OHNH5HuLM+dwGxaclEtGIpvpsBo9C1iShX2IOp1WF/Sz4C6Y
+ 1dTO3rKiKATT4J06iAM8xWvfyEuuYgl9Z7k+6+K0MdvhxKgKCS8d47I8bndELF5bOjpW
+ bYnQ==
+X-Gm-Message-State: AOAM530HQD6zckqq5i71W4ELtPo8ozzkp+dWIXIb6rpt1GkAKwZMcZj8
+ tARyvDGf5rn9vNP8cTjqrl2VOo5I7FRztLcKx2zJ+Ahvsg2CPXOr0MYQ1kWIEr9ztOI5h9584qP
+ FvWPYRk9czIdo55WecbEL98pyDwxqQA==
+X-Received: by 2002:a7b:c145:: with SMTP id z5mr3532620wmi.164.1607428738541; 
+ Tue, 08 Dec 2020 03:58:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJztnhlMopB/tBeUjOLv6knn4JP4rwNtEk3g6zzAXTDTjNarHkAPjHiVgYn2NYy0BbdBqs0ZzA==
+X-Received: by 2002:a7b:c145:: with SMTP id z5mr3532576wmi.164.1607428737875; 
+ Tue, 08 Dec 2020 03:58:57 -0800 (PST)
+Received: from alrua-x1.borgediget.toke.dk ([2a0c:4d80:42:443::2])
+ by smtp.gmail.com with ESMTPSA id 94sm11113339wrq.22.2020.12.08.03.58.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Dec 2020 03:58:56 -0800 (PST)
+Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
+ id 6E42118060F; Tue,  8 Dec 2020 12:58:55 +0100 (CET)
+From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>, David Ahern
+ <dsahern@gmail.com>
+In-Reply-To: <20201208092803.05b27db3@carbon>
+References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201204102901.109709-2-marekx.majtyka@intel.com>
+ <878sad933c.fsf@toke.dk> <20201204124618.GA23696@ranger.igk.intel.com>
+ <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
+ <20201207135433.41172202@carbon>
+ <5fce960682c41_5a96208e4@john-XPS-13-9370.notmuch>
+ <431a53bd-25d7-8535-86e1-aa15bf94e6c3@gmail.com>
+ <20201208092803.05b27db3@carbon>
+X-Clacks-Overhead: GNU Terry Pratchett
+Date: Tue, 08 Dec 2020 12:58:55 +0100
+Message-ID: <87lfe8ik5c.fsf@toke.dk>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Subject: Re: [Intel-wired-lan] [PATCH v4 2/6] igb: take vlan double header
- into account
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=toke@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,55 +106,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "nhorman@redhat.com" <nhorman@redhat.com>,
- "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, brouer@redhat.com,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "sassmann@redhat.com" <sassmann@redhat.com>
+Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
+ hawk@kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
+ netdev@vger.kernel.org, ast@kernel.org,
+ Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 8 Dec 2020 10:52:28 +0000
-"Penigalapati, Sandeep" <sandeep.penigalapati@intel.com> wrote:
+Jesper Dangaard Brouer <jbrouer@redhat.com> writes:
 
-> On Tue, Dec 01, 2020 at 09:58:52AM +0100, Jesper Dangaard Brouer wrote:
-> > > On Tue, 1 Dec 2020 08:23:23 +0000
-> > > "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com> wrote:
-> > >  
-> > > > Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>  
-> > >
-> > > Very happy that you are testing this.
-> > >
-> > > Have you also tested that samples/bpf/ xdp_redirect_cpu program works?  
-> > 
-> > Hi Jesper,
-> > 
-> > I have tested the xdp routing example but it would be good if someone can
-> > double check this.
-> > 
-> Hi Jesper, Sven
-> 
-> I have tested xdp_redirect_cpu and it is working.
+> On Mon, 7 Dec 2020 18:01:00 -0700
+> David Ahern <dsahern@gmail.com> wrote:
+>
+>> On 12/7/20 1:52 PM, John Fastabend wrote:
+>> >>
+>> >> I think we need to keep XDP_TX action separate, because I think that
+>> >> there are use-cases where the we want to disable XDP_TX due to end-user
+>> >> policy or hardware limitations.  
+>> > 
+>> > How about we discover this at load time though. 
+>
+> Nitpick at XDP "attach" time. The general disconnect between BPF and
+> XDP is that BPF can verify at "load" time (as kernel knows what it
+> support) while XDP can have different support/features per driver, and
+> cannot do this until attachment time. (See later issue with tail calls).
+> (All other BPF-hooks don't have this issue)
+>
+>> > Meaning if the program
+>> > doesn't use XDP_TX then the hardware can skip resource allocations for
+>> > it. I think we could have verifier or extra pass discover the use of
+>> > XDP_TX and then pass a bit down to driver to enable/disable TX caps.
+>> >   
+>> 
+>> This was discussed in the context of virtio_net some months back - it is
+>> hard to impossible to know a program will not return XDP_TX (e.g., value
+>> comes from a map).
+>
+> It is hard, and sometimes not possible.  For maps the workaround is
+> that BPF-programmer adds a bound check on values from the map. If not
+> doing that the verifier have to assume all possible return codes are
+> used by BPF-prog.
+>
+> The real nemesis is program tail calls, that can be added dynamically
+> after the XDP program is attached.  It is at attachment time that
+> changing the NIC resources is possible.  So, for program tail calls the
+> verifier have to assume all possible return codes are used by BPF-prog.
 
-Thanks this is great to hear.
+We actually had someone working on a scheme for how to express this for
+programs some months ago, but unfortunately that stalled out (Jesper
+already knows this, but FYI to the rest of you). In any case, I view
+this as a "next step". Just exposing the feature bits to userspace will
+help users today, and as a side effect, this also makes drivers declare
+what they support, which we can then incorporate into the core code to,
+e.g., reject attachment of programs that won't work anyway. But let's
+do this in increments and not make the perfect the enemy of the good
+here.
 
-You have tested with large frames right?  As cpumap just creates SKBs
-based on xdp_frame, and send them to the normal network stack (on
-remote CPU), you can just to a standard TCP-stream throughput test with
-iperf or netperf.  That should hopefully blowup if we screwed up the
-boundaries of the two packets sharing the same page.  (In principle we
-should verify the content of the TCP transfer, so maybe a scp + md5sum
-is a better test).
+> BPF now have function calls and function replace right(?)  How does
+> this affect this detection of possible return codes?
 
--- 
-Best regards,
-  Jesper Dangaard Brouer
-  MSc.CS, Principal Kernel Engineer at Red Hat
-  LinkedIn: http://www.linkedin.com/in/brouer
+It does have the same issue as tail calls, in that the return code of
+the function being replaced can obviously change. However, the verifier
+knows the target of a replace, so it can propagate any constraints put
+upon the caller if we implement it that way.
+
+-Toke
 
 _______________________________________________
 Intel-wired-lan mailing list
