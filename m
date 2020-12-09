@@ -1,68 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 337912D458E
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Dec 2020 16:39:36 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93EB62D4619
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Dec 2020 16:58:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E9A0386449;
-	Wed,  9 Dec 2020 15:39:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 175E52038A;
+	Wed,  9 Dec 2020 15:58:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dgK2mQEW1nCw; Wed,  9 Dec 2020 15:39:34 +0000 (UTC)
+	with ESMTP id 8A+bhHPyPF5l; Wed,  9 Dec 2020 15:58:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6064686493;
-	Wed,  9 Dec 2020 15:39:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E35D8204C7;
+	Wed,  9 Dec 2020 15:58:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 803C61BF5A7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 11:52:46 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0EFB21BF3C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 15:41:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7B3F787374
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 11:52:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 09F3387318
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 15:41:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DWqSWGzUsmu3 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Dec 2020 11:52:45 +0000 (UTC)
+ with ESMTP id gzkPhQeFmpWF for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Dec 2020 15:41:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DCBDF8735E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 11:52:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607514763;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Bn51LdHRNaBLMGJFIDHKNY3UzL8ceDzRM+1UkGzDc6U=;
- b=KipTP6H6yodaqE5G3wyB7O63G7JSHwZxgOwni73HJr/c9eFPxgHjrfjXvcvVsy+tmkEFst
- Gj1XYhi5irtfVOZl/B/sJTbAIqLgew+i5RoR+3vtHuGnXjmMjsXN/AE1/9j66H6AboeaAc
- ST7z//4U6pvoKYcana2oDDJO3TiG90w=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-572-Cg46o7bWOtyId69R_7_9DQ-1; Wed, 09 Dec 2020 06:52:39 -0500
-X-MC-Unique: Cg46o7bWOtyId69R_7_9DQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5B9AD107ACF8;
- Wed,  9 Dec 2020 11:52:37 +0000 (UTC)
-Received: from carbon (unknown [10.36.110.55])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3DA3B1002393;
- Wed,  9 Dec 2020 11:52:28 +0000 (UTC)
-Date: Wed, 9 Dec 2020 12:52:23 +0100
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Message-ID: <20201209125223.49096d50@carbon>
-In-Reply-To: <20201209095454.GA36812@ranger.igk.intel.com>
+Received: from mail-oo1-f68.google.com (mail-oo1-f68.google.com
+ [209.85.161.68])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 64B06872B2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 15:41:09 +0000 (UTC)
+Received: by mail-oo1-f68.google.com with SMTP id i7so481275oot.8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Dec 2020 07:41:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JKPWvTeOUAWWeTIgOEQ1k8P3eL2U5OpItcuMAQW7INo=;
+ b=Hj1UiESjeBP5AmevOGTf6A/W9xJJvcS3eDm6cx5dIVkGB8z9kyiJU9VEWE62VFfK7l
+ vi5RDj6WXNGqyogY0y/J23YIc9PVB+X/RLLaJsH4hgFHGmtGTcj838loYr7v45jPADEM
+ c8pGvqNrHlcFVoS3KArXTLKNlihTDX8l3gtgkTN46MG2BnpFrAqK0oCeKwcEUKgBin8i
+ Q/l7aeUKq4r6Cyh8RwFekPmwVh731B3bk5b7wYpETBZW5Yfy8qYasFeIpuj4hPOdnvJy
+ udHwy3wRrb8ER4U6/yVFZTzkjTPA1vceeNB6oU60zxlcCA+2H3je1A4AF4ACJzA6XEo1
+ lBTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JKPWvTeOUAWWeTIgOEQ1k8P3eL2U5OpItcuMAQW7INo=;
+ b=DYq8ieIwaRQ+elIKA0nnU73FYQdcP9GGwo/tpIhb7VDid5LOK4RJjRIgpNniwbBa7t
+ opwuD9TQG9OnmeEdP3AV9qabo74mlqxYMToInFIW5fnYHgl5v0X3ldhvfiKhKIRFYA3z
+ radyTmTmZkqWXFX8Ed2jTZhJRmk0X0wtt526zuUg7VOKfKILPawU25+pVpJNBa1ChGIm
+ JuJRZyugHfyu0q8ZXcWVyyJ8s1afsDuuP+bCwytrjVm3vnzktjAxp9lC/d69Bk374s9G
+ hkLZ9C23SB/C/C+YeTaTA9g6EYb+3IOCFgqK1dFBfWD9+4iclUl/MNHAhyTSEKjvZHzw
+ mCTA==
+X-Gm-Message-State: AOAM530O81n8wAEL7ZJX845a9+6uDBwSc5sxaAjxqcUX0kpB42Gzi6N7
+ NaJy+z3YHk6eAIMr3uOBLQw=
+X-Google-Smtp-Source: ABdhPJyK21rORfCNf9dRwuUVrVhlTAdISKYwMWBuQTlPCNLLU+QgFl/G7zg79dKi4UhOwnu0HK/6fw==
+X-Received: by 2002:a4a:9563:: with SMTP id n32mr2334087ooi.53.1607528468662; 
+ Wed, 09 Dec 2020 07:41:08 -0800 (PST)
+Received: from Davids-MacBook-Pro.local ([8.48.134.51])
+ by smtp.googlemail.com with ESMTPSA id r25sm454194otp.23.2020.12.09.07.41.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Dec 2020 07:41:07 -0800 (PST)
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 References: <20201204102901.109709-1-marekx.majtyka@intel.com>
- <20201204102901.109709-2-marekx.majtyka@intel.com>
- <878sad933c.fsf@toke.dk>
+ <20201204102901.109709-2-marekx.majtyka@intel.com> <878sad933c.fsf@toke.dk>
  <20201204124618.GA23696@ranger.igk.intel.com>
  <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
  <20201207135433.41172202@carbon>
@@ -70,10 +76,16 @@ References: <20201204102901.109709-1-marekx.majtyka@intel.com>
  <20201207230755.GB27205@ranger.igk.intel.com>
  <5fd068c75b92d_50ce20814@john-XPS-13-9370.notmuch>
  <20201209095454.GA36812@ranger.igk.intel.com>
-Organization: Red Hat Inc.
+ <20201209125223.49096d50@carbon>
+From: David Ahern <dsahern@gmail.com>
+Message-ID: <e1573338-17c0-48f4-b4cd-28eeb7ce699a@gmail.com>
+Date: Wed, 9 Dec 2020 08:41:05 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:78.0)
+ Gecko/20100101 Thunderbird/78.5.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mailman-Approved-At: Wed, 09 Dec 2020 15:39:30 +0000
+In-Reply-To: <20201209125223.49096d50@carbon>
+Content-Language: en-US
+X-Mailman-Approved-At: Wed, 09 Dec 2020 15:58:32 +0000
 Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
  properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -91,8 +103,8 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
  hawk@kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
  netdev@vger.kernel.org,
- Toke =?UTF-8?B?SMO4aWxhbmQtSsO4cmdlbnNlbg==?= <toke@redhat.com>,
- ast@kernel.org, Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>, ast@kernel.org,
+ Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
  intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
  bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
  magnus.karlsson@intel.com
@@ -101,155 +113,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 9 Dec 2020 10:54:54 +0100
-Maciej Fijalkowski <maciej.fijalkowski@intel.com> wrote:
-
-> On Tue, Dec 08, 2020 at 10:03:51PM -0800, John Fastabend wrote:
-> > > On Mon, Dec 07, 2020 at 12:52:22PM -0800, John Fastabend wrote:  
-> > > > Jesper Dangaard Brouer wrote:  
-> > > > > On Fri, 4 Dec 2020 16:21:08 +0100
-> > > > > Daniel Borkmann <daniel@iogearbox.net> wrote:  
-> > 
-> > [...] pruning the thread to answer Jesper.  
+On 12/9/20 4:52 AM, Jesper Dangaard Brouer wrote:
+>>> still load and either share queues across multiple cores or restirct
+>>> down to a subset of CPUs.  
+>>
+>> And that's the missing piece of logic, I suppose.
+>>
+>>> Do you need 192 cores for a 10gbps nic, probably not.  
+>>
+>> Let's hear from Jesper :p
 > 
-> I think you meant me, but thanks anyway for responding :)
+> LOL - of-cause you don't need 192 cores.  With XDP I will claim that
+> you only need 2 cores (with high GHz) to forward 10gbps wirespeed small
+> packets.
 
-I was about to say that ;-)
+You don't need 192 for 10G on Rx. However, if you are using XDP_REDIRECT
+from VM tap devices the next device (presumably the host NIC) does need
+to be able to handle the redirect.
 
-> > > > > 
-> > > > > Use-case(2): Disable XDP_TX on a driver to save hardware TX-queue
-> > > > > resources, as the use-case is only DDoS.  Today we have this problem
-> > > > > with the ixgbe hardware, that cannot load XDP programs on systems with
-> > > > > more than 192 CPUs.  
-> > > > 
-> > > > The ixgbe issues is just a bug or missing-feature in my opinion.  
-> > > 
-> > > Not a bug, rather HW limitation?  
-> > 
-> > Well hardware has some max queue limit. Likely <192 otherwise I would
-> > have kept doing queue per core on up to 192. But, ideally we should  
-> 
-> Data sheet states its 128 Tx qs for ixgbe.
-
-I likely remember wrong, maybe it was only ~96 CPUs.  I do remember that
-some TX queue were reserved for something else, and QA reported issues
-(as I don't have this high end system myself).
-
-
-> > still load and either share queues across multiple cores or restirct
-> > down to a subset of CPUs.  
-> 
-> And that's the missing piece of logic, I suppose.
-> 
-> > Do you need 192 cores for a 10gbps nic, probably not.  
-> 
-> Let's hear from Jesper :p
-
-LOL - of-cause you don't need 192 cores.  With XDP I will claim that
-you only need 2 cores (with high GHz) to forward 10gbps wirespeed small
-packets.
-
-The point is that this only works, when we avoid atomic lock operations
-per packet and bulk NIC PCIe tail/doorbell.  It was actually John's
-invention/design to have a dedicated TX queue per core to avoid the
-atomic lock operation per packet when queuing packets to the NIC.
-
- 10G @64B give budget of 67.2 ns (241 cycles @ 3.60GHz)
- Atomic lock operation use:[1]
- - Type:spin_lock_unlock         Per elem: 34 cycles(tsc) 9.485 ns
- - Type:spin_lock_unlock_irqsave Per elem: 61 cycles(tsc) 17.125 ns
- (And atomic can affect Inst per cycle)
-
-But I have redesigned the ndo_xdp_xmit call to take a bulk of packets
-(up-to 16) so it should not be a problem to solve this by sharing
-TX-queue and talking a lock per 16 packets.  I still recommend that,
-for fallback case,  you allocated a number a TX-queue and distribute
-this across CPUs to avoid hitting a congested lock (above measurements
-are the optimal non-congested atomic lock operation)
-
-[1] https://github.com/netoptimizer/prototype-kernel/blob/master/kernel/lib/time_bench_sample.c
-
-> > Yes, it requires some extra care, but should be doable
-> > if someone cares enough. I gather current limitation/bug is because
-> > no one has that configuration and/or has complained loud enough.  
-> 
-> I would say we're safe for queue per core approach for newer devices where
-> we have thousands of queues to play with. Older devices combined with big
-> cpu count can cause us some problems.
-> 
-> Wondering if drivers could have a problem when user would do something
-> weird as limiting the queue count to a lower value than cpu count and then
-> changing the irq affinity?
-
-Not sure what you mean.
-
-But for XDP RX-side we use softirq NAPI guarantee to guard against
-concurrent access to our (per-cpu) data structures.
-
-> >   
-> > >   
-> > > > 
-> > > > I think we just document that XDP_TX consumes resources and if users
-> > > > care they shouldn't use XD_TX in programs and in that case hardware
-> > > > should via program discovery not allocate the resource. This seems
-> > > > cleaner in my opinion then more bits for features.  
-> > > 
-> > > But what if I'm with some limited HW that actually has a support for XDP
-> > > and I would like to utilize XDP_TX?
-> > > 
-> > > Not all drivers that support XDP consume Tx resources. Recently igb got
-> > > support and it shares Tx queues between netstack and XDP.  
-> > 
-> > Makes sense to me.
-> >   
-> > > 
-> > > I feel like we should have a sort-of best effort approach in case we
-> > > stumble upon the XDP_TX in prog being loaded and query the driver if it
-> > > would be able to provide the Tx resources on the current system, given
-> > > that normally we tend to have a queue per core.  
-> > 
-> > Why do we need to query? I guess you want some indication from the
-> > driver its not going to be running in the ideal NIC configuraition?
-> > I guess printing a warning would be the normal way to show that. But,
-> > maybe your point is you want something easier to query?  
-> 
-> I meant that given Jesper's example, what should we do? You don't have Tx
-> resources to pull at all. Should we have a data path for that case that
-> would share Tx qs between XDP/netstack? Probably not.
-> 
-
-I think ixgbe should have a fallback mode, where it allocated e.g. 32
-TX-queue for XDP xmits or even just same amount as RX-queues (I think
-XDP_TX and XDP_REDIRECT can share these TX-queues dedicated to XDP).
-When in fallback mode a lock need to be taken (sharded across CPUs),
-but ndo_xdp_xmit will bulk up-to 16 packets, so it should not matter
-too much.
-
-I do think ixgbe should output a dmesg log message, to say it is in XDP
-fallback mode with X number of TX-queues.  For us QA usually collect
-the dmesg output after a test run.
-
-   
-> > > 
-> > > In that case igb would say yes, ixgbe would say no and prog would be
-> > > rejected.  
-> > 
-> > I think the driver should load even if it can't meet the queue per
-> > core quota. Refusing to load at all or just dropping packets on the
-> > floor is not very friendly. I think we agree on that point.  
-> 
-> Agreed on that. But it needs some work. I can dabble on that a bit.
-> 
-
-I will really appreciate if Intel can fix this in the ixgbe driver, and
-implement a fallback method.
-
--- 
-Best regards,
-  Jesper Dangaard Brouer
-  MSc.CS, Principal Kernel Engineer at Red Hat
-  LinkedIn: http://www.linkedin.com/in/brouer
-
+My personal experience with this one is mlx5/ConnectX4-LX with a limit
+of 63 queues and a server with 96 logical cpus. If the vhost thread for
+the tap device runs on a cpu that does not have an XDP TX Queue, the
+packet is dropped. This is a really bizarre case to debug as some
+packets go out fine while others are dropped.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
