@@ -2,88 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2D6D2D48D4
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Dec 2020 19:23:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14EB32D4EDF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Dec 2020 00:43:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 53F1E86B3B;
-	Wed,  9 Dec 2020 18:23:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 40F4186C64;
+	Wed,  9 Dec 2020 23:43:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c0i1m6vaumaG; Wed,  9 Dec 2020 18:23:46 +0000 (UTC)
+	with ESMTP id WkJwqhHdAOCX; Wed,  9 Dec 2020 23:43:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6A57D86B60;
-	Wed,  9 Dec 2020 18:23:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 16B7486C80;
+	Wed,  9 Dec 2020 23:43:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BB0151BF306
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 18:23:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F06B31BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 23:43:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B3C7486B41
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 18:23:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E8BA887991
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 23:43:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0+m8TRV5f3+o for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Dec 2020 18:23:43 +0000 (UTC)
-X-Greylist: delayed 00:16:34 by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 87E7886B3B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 18:23:43 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id o4so1733431pgj.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Dec 2020 10:23:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-transfer-encoding:content-language;
- bh=np6y/90WZ0jov8mQi+nBfEvz1hgvvktXYNQalTN2VOA=;
- b=z2OaNa0ZCJay85YKUnmgykcwdwgU529ig8NEhpJl4gi8tTJYO22Wv1PX4faCZqxRFm
- ngS8OCYbEwNHWyaazGl3Vx27plBCYWXFHVCg6tQHYUlFoCXd47gzgmV9bNDhg1Wbsf2t
- xxWfidLgAibRrDl8Pizvru/KHa93taeyVsmQY2INyTAF02jKertWJnw6EuWVd+Usxzvc
- 5BFbhJfDDmLWTiVH8u7/MNLzujS7euBb2VqD3blTlMPpeZpCGZhAXsnECcA5mTM5rCat
- AJWsGZJe9LKYBnKdMzkXMSVr2ObpKuSwC+rhYyvDNy6WmmPPbWjSp7e/S2pP339Uaopj
- 73Ww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=np6y/90WZ0jov8mQi+nBfEvz1hgvvktXYNQalTN2VOA=;
- b=YNkZI6/fNeS28udRjsZGMOHhYXCfW6Dw0vv/Pzwhcn0jCXMB/mRb0G8PccJua9GnAr
- VeSEsv+JoheuO+shzv2DrhecxZAPhFoffw+HfcMVjlZ5IDM2hIBAA50czb+FF3FwDqUT
- xjryfmnaKmQiluPVuvP1hXw8oqO8bPh+DM13H6iH87oFG4EH47wgAtyTj33mxwtMrR0F
- nCE74QD/si2oXxk4HB9uiJzsyPqFCeBUhYtCPugaJbmg5oX0mYZUBLot3uM7zkSdj6Z1
- odlQaiiSW/G0CetUP6eKiJ/l7hnaGs+P+CDe0xAl3pwTdcSfB+ho0VWd1zPmZnBWCc4f
- Zpsg==
-X-Gm-Message-State: AOAM53216UhmLszeWcicLS50o8Acs54PkNH/KJId6M4Pc2BcDRJb9/5E
- hUT807sn9rxrpUo0EmWlhmL79rg98WO/dg==
-X-Google-Smtp-Source: ABdhPJzhG8+Gjb+Rl8ulzdWuzOtn6Rg5AAbTLhU/msat9UkjDbjuN9Ma1kT0DktaZoaLkcOWqxkzGA==
-X-Received: by 2002:a17:902:aa8b:b029:da:ef22:8675 with SMTP id
- d11-20020a170902aa8bb02900daef228675mr3228705plr.15.1607536863321; 
- Wed, 09 Dec 2020 10:01:03 -0800 (PST)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id 14sm2806685pjm.21.2020.12.09.10.01.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Dec 2020 10:01:02 -0800 (PST)
-To: Xiaohui Zhang <ruc_zhangxiaohui@163.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Pensando Drivers <drivers@pensando.io>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20201208040638.40627-1-ruc_zhangxiaohui@163.com>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <fcf79346-5463-b736-c109-44db76eec1c9@pensando.io>
-Date: Wed, 9 Dec 2020 10:01:00 -0800
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.4.1
+ with ESMTP id DDB6Z5Fk-0PB for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Dec 2020 23:43:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 95F8287990
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 23:43:04 +0000 (UTC)
+Date: Wed, 9 Dec 2020 15:43:02 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607557384;
+ bh=+c0ca5zidLBtV0WQT+M6L2oC7W9CxOG6LU9fUbXq5IY=;
+ h=From:To:Cc:Subject:In-Reply-To:References:From;
+ b=TuBdDqJnLVHUWgj9KXqB0UfcC/5bP/RHMgJZn8nUuPoL3Hn1TxQO76Mo5WbrVUWQb
+ zmljHZpIs3RWMkWHk9x8Yoy/ZBixzGxVBY8lvkBGXEHQNzvXRnFItHUqG1+7UiHDtp
+ jckQxb/dXxhIlcM4uPv/x+Vsntt4C/vdT+EyNjjuiTFM0pnFnJEU3gfPOhVtNjLf0J
+ r5vghJv43vfE1DCK7sc2XOw8Ou3b4zKBVRn7lHqpYFRzNUZs/1FlYlxN6HJkRNBaxn
+ Eb4NI8a/SvkcPpWWJTQn2Ij6yA+S51T+N57jhBbn0lBYuJgApEKTmEQOhYg5kYFjkd
+ Uczq3U/xPe+Ug==
+From: Jakub Kicinski <kuba@kernel.org>
+To: Mario Limonciello <mario.limonciello@dell.com>
+Message-ID: <20201209154302.266adf70@kicinski-fedora-pc1c0hjn.DHCP.thefacebook.com>
+In-Reply-To: <20201208185632.151052-1-mario.limonciello@dell.com>
+References: <20201208185632.151052-1-mario.limonciello@dell.com>
 MIME-Version: 1.0
-In-Reply-To: <20201208040638.40627-1-ruc_zhangxiaohui@163.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 1/1] fix possible array overflow on
- receiving too many fragments for a packet
+Subject: Re: [Intel-wired-lan] [PATCH RESEND] e1000e: fix S0ix flow to allow
+ S0i3.2 subset entry
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,90 +62,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Netdev <netdev@vger.kernel.org>, Perry.Yuan@dell.com, Yijun.Shen@dell.com,
+ linux-kernel@vger.kernel.org, anthony.wong@canonical.com,
+ intel-wired-lan@lists.osuosl.org, Alexander Duyck <alexanderduyck@fb.com>,
+ David Miller <davem@davemloft.net>, Stefan Assmann <sassmann@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/7/20 8:06 PM, Xiaohui Zhang wrote:
-> From: Zhang Xiaohui <ruc_zhangxiaohui@163.com>
->
-> If the hardware receives an oversized packet with too many rx fragments,
-> skb_shinfo(skb)->frags can overflow and corrupt memory of adjacent pages.
-> This becomes especially visible if it corrupts the freelist pointer of
-> a slab page.
-> I found these two code fragments were very similar to the vulnerable code
-> in CVE-2020-12465, so I submitted these two patches.
->
-> Signed-off-by: Zhang Xiaohui <ruc_zhangxiaohui@163.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_txrx.c        | 4 +++-
->   drivers/net/ethernet/pensando/ionic/ionic_txrx.c | 4 +++-
->   2 files changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> index eae75260f..f0a252208 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> @@ -821,9 +821,11 @@ ice_add_rx_frag(struct ice_ring *rx_ring, struct ice_rx_buf *rx_buf,
->   	unsigned int truesize = ice_rx_pg_size(rx_ring) / 2;
->   #endif
->   
-> +	struct skb_shared_info *shinfo = skb_shinfo(skb);
+On Tue,  8 Dec 2020 12:56:32 -0600 Mario Limonciello wrote:
+> From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> 
+> Changed a configuration in the flows to align with
+> architecture requirements to achieve S0i3.2 substate.
+> 
+> This helps both i219V and i219LM configurations.
+> 
+> Also fixed a typo in the previous commit 632fbd5eb5b0
+> ("e1000e: fix S0ix flows for cable connected case").
+> 
+> Fixes: 632fbd5eb5b0 ("e1000e: fix S0ix flows for cable connected case").
+> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
+> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
 
-This declaration should be up directly below the #endif and a blank line 
-inserted before the code.
-
->   	if (!size)
->   		return;
-> -	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
-> +	if (shinfo->nr_frags < ARRAY_SIZE(shinfo->frags))
-> +		skb_add_rx_frag(skb, shinfo, rx_buf->page,
->   			rx_buf->page_offset, size, truesize);
->   
->   	/* page is being used so we must update the page offset */
-> diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> index 169ac4f54..d30e83a4b 100644
-> --- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> +++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> @@ -74,6 +74,7 @@ static struct sk_buff *ionic_rx_frags(struct ionic_queue *q,
->   	struct device *dev = q->lif->ionic->dev;
->   	struct ionic_page_info *page_info;
->   	struct sk_buff *skb;
-> +	struct skb_shared_info *shinfo = skb_shinfo(skb);
-
-As the kernel test robot has suggested, this is using an uninitialized 
-skb and will likely cause great unhappiness.
-
-Also, this needs to follow the "reverse xmas tree" formatting style for 
-declarations.
-
-
->   	unsigned int i;
->   	u16 frag_len;
->   	u16 len;
-> @@ -102,7 +103,8 @@ static struct sk_buff *ionic_rx_frags(struct ionic_queue *q,
->   
->   		dma_unmap_page(dev, dma_unmap_addr(page_info, dma_addr),
->   			       PAGE_SIZE, DMA_FROM_DEVICE);
-> -		skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags,
-> +		if (shinfo->nr_frags < ARRAY_SIZE(shinfo->frags))
-> +			skb_add_rx_frag(skb, shinfo->nr_frags,
->   				page_info->page, 0, frag_len, PAGE_SIZE);
-
-I'm still not convinced this is necessary here, and I'm still not 
-thrilled with the result of just quietly dropping the fragments.
-
-A better answer here might be to check the ARRAY_SIZE against 
-comp->num_sg_elements before allocating the skb, and if too big, then 
-return NULL - this gets the check done before any allocations are made, 
-and the packet will be properly dropped and the drop statistic incremented.
-
-sln
-
->   		page_info->page = NULL;
->   		page_info++;
-
+Applied, thank you!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
