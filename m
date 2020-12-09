@@ -1,76 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3C632D3B0C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Dec 2020 06:50:40 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35DAE2D3B1E
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Dec 2020 07:04:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6374186937;
-	Wed,  9 Dec 2020 05:50:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CC19B8753F;
+	Wed,  9 Dec 2020 06:04:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4jGL5pdU3Wo2; Wed,  9 Dec 2020 05:50:38 +0000 (UTC)
+	with ESMTP id VAWKZWN8dSto; Wed,  9 Dec 2020 06:04:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B69786A70;
-	Wed,  9 Dec 2020 05:50:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3C6FE87532;
+	Wed,  9 Dec 2020 06:04:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1BCEC1BF5F8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 05:50:37 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D24C01BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 06:04:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 169BD8688A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 05:50:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C61D087522
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 06:04:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GVxTtsSNDdSa for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Dec 2020 05:50:34 +0000 (UTC)
+ with ESMTP id m82+yZmcRF5x for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Dec 2020 06:04:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4A8DD85F46
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 05:50:34 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id s2so596675oij.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Dec 2020 21:50:34 -0800 (PST)
+Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
+ [209.85.167.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4F180874C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Dec 2020 06:04:01 +0000 (UTC)
+Received: by mail-oi1-f196.google.com with SMTP id p126so601276oif.7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Dec 2020 22:04:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:message-id:in-reply-to:references:subject
  :mime-version:content-transfer-encoding;
- bh=ND2tD+7Jx2gQmpOSM894CsoiaxDjDETPdHa/hyM90oc=;
- b=NrK8G6s9BErmDQfLleIY0KXBEcOlkm+fdiECSvO3k8YuABReFpLp1QBBAXfUhs6y1F
- VixCoiS0GRT6I9XOplAWaRNDkWnCHBaXLjewUryw46E2AhG/Xs+8u/z9uL/8nPmaCdoE
- s4z7uffhXCMefnxPKJwG7LTZvdaFMEXSCtE7HqtOYIe5yZXBBQYzB0ZAdlu3/XgJI11b
- 0vUvYmu3h65zApqbhUM4DF+JNvKUXVlnb06qeYm8bWfVTromacXm7ZRqp1qRCZ2XJOsV
- s8djvtpgGhW1of1m8FAlcXbtCVZqrZXl15kyMcbCau8qTxjQHQ3dLzf/Il361WV0SYwG
- sVQQ==
+ bh=xw4WlY+gecPL6DnhDENOYEz8RjK6qkVO+Z0UKbUq6rg=;
+ b=blwLBC8I1ol4VExUBqHsBtI6x0pnw4U9cZxawk5zq5P+jhWlGmVILWBjufi50F8loU
+ WojsXW9aVAUWw+4Y2PdjbPOPLwoIt0/7GeopTLMG/+jEXSEkZ5ecA+zXjjnTOk2uFwG7
+ kmJYGE2S/K0UHiFUvZWmmh8ia3O7af3Mzii4qhds/1x8YS+2dCtKR6TVPDHsPBeuqZBH
+ cmpb3ZwZM+WWRyXmI1MsedriU66ezUuOKPPIXns6a50R8arW1J2ghUj7okehG7uCsxYX
+ q/+CVLJolt7dnHvij8gBSy5bmiRz9mSDVAW85kW5GawlUZMk5mJCo5pzhzdEMHHOAcz/
+ EMug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:message-id:in-reply-to
  :references:subject:mime-version:content-transfer-encoding;
- bh=ND2tD+7Jx2gQmpOSM894CsoiaxDjDETPdHa/hyM90oc=;
- b=JE5GPW/SikKexb6fzbPTo9qdc8TPmjL1qxZ/6EsduIBjAkRYpeZC11+/tfofvfjld5
- VNVGRa+RH+oc/gpajgS2NOR95N2ikxY9k/SF6g0XY9OZ2lhjLFc81wPXf5YQzY4/Uq+A
- s1NLn/tP6DyPLSeuY4VycR+QfAMspaXADyqK6N1E2Uxks+UW+tkhtrOxiHz+vrtyZmV6
- xEwbZ1Y23Cn7zJahM6Ute8KS10i5Js72Jhs5MDmhKy1pvm6xLvIhsN+ghiiQQoSzoIoS
- 1pFkxZG5cWYVCk8UJrnYslw31Jx5nH2+fAkBTOstX4RSYwSMNGbtkd2iCS4WeykgFyd+
- GLFQ==
-X-Gm-Message-State: AOAM530NN2njSwxM5gbm97thPmSuZKkNNIyB6oTDl+jcl8YhjRYaAbD+
- KuiarYTxNtew5nfFdZd0pkU=
-X-Google-Smtp-Source: ABdhPJz0SNSBWxF84Jfr/FlBBmsQOaECSAgOcZFYAgfaxZFNTFmQHh1bIgPNC3bMonrMF32/bhOV/g==
-X-Received: by 2002:aca:cc01:: with SMTP id c1mr714149oig.18.1607493033489;
- Tue, 08 Dec 2020 21:50:33 -0800 (PST)
+ bh=xw4WlY+gecPL6DnhDENOYEz8RjK6qkVO+Z0UKbUq6rg=;
+ b=enPOxxzn+Dhm0aPW01EUfkfEnKXTNMF6Xrp34V4fwzuYf0S6dUH+vvBhAdCbh9ISFT
+ ifZ+z1gcLZ9/qLyczAVV1yY5B6MauBS4LhtUYKrD7dg/P/Y+lMAG0Ft6JcS6i1csj7hj
+ 9Re5WEDCJS2B6vyCKAH3re7TKvczhsKIhTG9xvWZsBzMNftlxplC+vKCMJ5S1sVrLdAs
+ qkb8/kQS7hhGdE2U1pzUBn4meF08l4iKIDqclv87g6pLjkTLLlykkbNOUZxehMAhijam
+ Ob4zgls3Oz7kAH9u48uktRWAyvhkZcC+i9aRpwIDCzvZX0VRJE31oFcYIFMl0D0YEE62
+ gMaw==
+X-Gm-Message-State: AOAM533oIKKYCFWSmNOqc40SOzlqyWFIGy1We5hzrYNRlckpWA4PQZ9E
+ s369aIq491R4DcL3+Y491cs=
+X-Google-Smtp-Source: ABdhPJzV0J/ZAp54eywd2BpQ5szxmUsuNU04Mn+rnJMPMdPd0aR0tQNtc8qfELb8e1bBcroRKkVURA==
+X-Received: by 2002:aca:6287:: with SMTP id w129mr702445oib.82.1607493840475; 
+ Tue, 08 Dec 2020 22:04:00 -0800 (PST)
 Received: from localhost ([184.21.204.5])
- by smtp.gmail.com with ESMTPSA id 60sm182040otn.35.2020.12.08.21.50.30
+ by smtp.gmail.com with ESMTPSA id v123sm159783oie.20.2020.12.08.22.03.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Dec 2020 21:50:32 -0800 (PST)
-Date: Tue, 08 Dec 2020 21:50:25 -0800
+ Tue, 08 Dec 2020 22:03:59 -0800 (PST)
+Date: Tue, 08 Dec 2020 22:03:51 -0800
 From: John Fastabend <john.fastabend@gmail.com>
-To: =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>, 
- Jesper Dangaard Brouer <jbrouer@redhat.com>, 
- David Ahern <dsahern@gmail.com>
-Message-ID: <5fd065a1479c4_50ce208b1@john-XPS-13-9370.notmuch>
-In-Reply-To: <87lfe8ik5c.fsf@toke.dk>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>, 
+ John Fastabend <john.fastabend@gmail.com>
+Message-ID: <5fd068c75b92d_50ce20814@john-XPS-13-9370.notmuch>
+In-Reply-To: <20201207230755.GB27205@ranger.igk.intel.com>
 References: <20201204102901.109709-1-marekx.majtyka@intel.com>
  <20201204102901.109709-2-marekx.majtyka@intel.com>
  <878sad933c.fsf@toke.dk>
@@ -78,8 +77,7 @@ References: <20201204102901.109709-1-marekx.majtyka@intel.com>
  <048bd986-2e05-ee5b-2c03-cd8c473f6636@iogearbox.net>
  <20201207135433.41172202@carbon>
  <5fce960682c41_5a96208e4@john-XPS-13-9370.notmuch>
- <431a53bd-25d7-8535-86e1-aa15bf94e6c3@gmail.com>
- <20201208092803.05b27db3@carbon> <87lfe8ik5c.fsf@toke.dk>
+ <20201207230755.GB27205@ranger.igk.intel.com>
 Mime-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
  properties flag set
@@ -97,73 +95,76 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: maciejromanfijalkowski@gmail.com, andrii.nakryiko@gmail.com,
  hawk@kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
- netdev@vger.kernel.org, ast@kernel.org,
- Marek Majtyka <marekx.majtyka@intel.com>, alardam@gmail.com,
+ Marek Majtyka <marekx.majtyka@intel.com>, netdev@vger.kernel.org,
+ =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>, ast@kernel.org,
+ Jesper Dangaard Brouer <jbrouer@redhat.com>, alardam@gmail.com,
  intel-wired-lan@lists.osuosl.org, jonathan.lemon@gmail.com, kuba@kernel.org,
  bpf@vger.kernel.org, bjorn.topel@intel.com, davem@davemloft.net,
  magnus.karlsson@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2VuIHdyb3RlOgo+IEplc3BlciBEYW5nYWFyZCBCcm91ZXIg
-PGpicm91ZXJAcmVkaGF0LmNvbT4gd3JpdGVzOgo+IAo+ID4gT24gTW9uLCA3IERlYyAyMDIwIDE4
-OjAxOjAwIC0wNzAwCj4gPiBEYXZpZCBBaGVybiA8ZHNhaGVybkBnbWFpbC5jb20+IHdyb3RlOgo+
-ID4KPiA+PiBPbiAxMi83LzIwIDE6NTIgUE0sIEpvaG4gRmFzdGFiZW5kIHdyb3RlOgo+ID4+ID4+
-Cj4gPj4gPj4gSSB0aGluayB3ZSBuZWVkIHRvIGtlZXAgWERQX1RYIGFjdGlvbiBzZXBhcmF0ZSwg
-YmVjYXVzZSBJIHRoaW5rIHRoYXQKPiA+PiA+PiB0aGVyZSBhcmUgdXNlLWNhc2VzIHdoZXJlIHRo
-ZSB3ZSB3YW50IHRvIGRpc2FibGUgWERQX1RYIGR1ZSB0byBlbmQtdXNlcgo+ID4+ID4+IHBvbGlj
-eSBvciBoYXJkd2FyZSBsaW1pdGF0aW9ucy4gIAo+ID4+ID4gCj4gPj4gPiBIb3cgYWJvdXQgd2Ug
-ZGlzY292ZXIgdGhpcyBhdCBsb2FkIHRpbWUgdGhvdWdoLiAKPiA+Cj4gPiBOaXRwaWNrIGF0IFhE
-UCAiYXR0YWNoIiB0aW1lLiBUaGUgZ2VuZXJhbCBkaXNjb25uZWN0IGJldHdlZW4gQlBGIGFuZAo+
-ID4gWERQIGlzIHRoYXQgQlBGIGNhbiB2ZXJpZnkgYXQgImxvYWQiIHRpbWUgKGFzIGtlcm5lbCBr
-bm93cyB3aGF0IGl0Cj4gPiBzdXBwb3J0KSB3aGlsZSBYRFAgY2FuIGhhdmUgZGlmZmVyZW50IHN1
-cHBvcnQvZmVhdHVyZXMgcGVyIGRyaXZlciwgYW5kCj4gPiBjYW5ub3QgZG8gdGhpcyB1bnRpbCBh
-dHRhY2htZW50IHRpbWUuIChTZWUgbGF0ZXIgaXNzdWUgd2l0aCB0YWlsIGNhbGxzKS4KPiA+IChB
-bGwgb3RoZXIgQlBGLWhvb2tzIGRvbid0IGhhdmUgdGhpcyBpc3N1ZSkKPiA+Cj4gPj4gPiBNZWFu
-aW5nIGlmIHRoZSBwcm9ncmFtCj4gPj4gPiBkb2Vzbid0IHVzZSBYRFBfVFggdGhlbiB0aGUgaGFy
-ZHdhcmUgY2FuIHNraXAgcmVzb3VyY2UgYWxsb2NhdGlvbnMgZm9yCj4gPj4gPiBpdC4gSSB0aGlu
-ayB3ZSBjb3VsZCBoYXZlIHZlcmlmaWVyIG9yIGV4dHJhIHBhc3MgZGlzY292ZXIgdGhlIHVzZSBv
-Zgo+ID4+ID4gWERQX1RYIGFuZCB0aGVuIHBhc3MgYSBiaXQgZG93biB0byBkcml2ZXIgdG8gZW5h
-YmxlL2Rpc2FibGUgVFggY2Fwcy4KPiA+PiA+ICAgCj4gPj4gCj4gPj4gVGhpcyB3YXMgZGlzY3Vz
-c2VkIGluIHRoZSBjb250ZXh0IG9mIHZpcnRpb19uZXQgc29tZSBtb250aHMgYmFjayAtIGl0IGlz
-Cj4gPj4gaGFyZCB0byBpbXBvc3NpYmxlIHRvIGtub3cgYSBwcm9ncmFtIHdpbGwgbm90IHJldHVy
-biBYRFBfVFggKGUuZy4sIHZhbHVlCj4gPj4gY29tZXMgZnJvbSBhIG1hcCkuCj4gPgo+ID4gSXQg
-aXMgaGFyZCwgYW5kIHNvbWV0aW1lcyBub3QgcG9zc2libGUuICBGb3IgbWFwcyB0aGUgd29ya2Fy
-b3VuZCBpcwo+ID4gdGhhdCBCUEYtcHJvZ3JhbW1lciBhZGRzIGEgYm91bmQgY2hlY2sgb24gdmFs
-dWVzIGZyb20gdGhlIG1hcC4gSWYgbm90Cj4gPiBkb2luZyB0aGF0IHRoZSB2ZXJpZmllciBoYXZl
-IHRvIGFzc3VtZSBhbGwgcG9zc2libGUgcmV0dXJuIGNvZGVzIGFyZQo+ID4gdXNlZCBieSBCUEYt
-cHJvZy4KPiA+Cj4gPiBUaGUgcmVhbCBuZW1lc2lzIGlzIHByb2dyYW0gdGFpbCBjYWxscywgdGhh
-dCBjYW4gYmUgYWRkZWQgZHluYW1pY2FsbHkKPiA+IGFmdGVyIHRoZSBYRFAgcHJvZ3JhbSBpcyBh
-dHRhY2hlZC4gIEl0IGlzIGF0IGF0dGFjaG1lbnQgdGltZSB0aGF0Cj4gPiBjaGFuZ2luZyB0aGUg
-TklDIHJlc291cmNlcyBpcyBwb3NzaWJsZS4gIFNvLCBmb3IgcHJvZ3JhbSB0YWlsIGNhbGxzIHRo
-ZQo+ID4gdmVyaWZpZXIgaGF2ZSB0byBhc3N1bWUgYWxsIHBvc3NpYmxlIHJldHVybiBjb2RlcyBh
-cmUgdXNlZCBieSBCUEYtcHJvZy4KPiAKPiBXZSBhY3R1YWxseSBoYWQgc29tZW9uZSB3b3JraW5n
-IG9uIGEgc2NoZW1lIGZvciBob3cgdG8gZXhwcmVzcyB0aGlzIGZvcgo+IHByb2dyYW1zIHNvbWUg
-bW9udGhzIGFnbywgYnV0IHVuZm9ydHVuYXRlbHkgdGhhdCBzdGFsbGVkIG91dCAoSmVzcGVyCj4g
-YWxyZWFkeSBrbm93cyB0aGlzLCBidXQgRllJIHRvIHRoZSByZXN0IG9mIHlvdSkuIEluIGFueSBj
-YXNlLCBJIHZpZXcKPiB0aGlzIGFzIGEgIm5leHQgc3RlcCIuIEp1c3QgZXhwb3NpbmcgdGhlIGZl
-YXR1cmUgYml0cyB0byB1c2Vyc3BhY2Ugd2lsbAo+IGhlbHAgdXNlcnMgdG9kYXksIGFuZCBhcyBh
-IHNpZGUgZWZmZWN0LCB0aGlzIGFsc28gbWFrZXMgZHJpdmVycyBkZWNsYXJlCj4gd2hhdCB0aGV5
-IHN1cHBvcnQsIHdoaWNoIHdlIGNhbiB0aGVuIGluY29ycG9yYXRlIGludG8gdGhlIGNvcmUgY29k
-ZSB0bywKPiBlLmcuLCByZWplY3QgYXR0YWNobWVudCBvZiBwcm9ncmFtcyB0aGF0IHdvbid0IHdv
-cmsgYW55d2F5LiBCdXQgbGV0J3MKPiBkbyB0aGlzIGluIGluY3JlbWVudHMgYW5kIG5vdCBtYWtl
-IHRoZSBwZXJmZWN0IHRoZSBlbmVteSBvZiB0aGUgZ29vZAo+IGhlcmUuCj4gCj4gPiBCUEYgbm93
-IGhhdmUgZnVuY3Rpb24gY2FsbHMgYW5kIGZ1bmN0aW9uIHJlcGxhY2UgcmlnaHQoPykgIEhvdyBk
-b2VzCj4gPiB0aGlzIGFmZmVjdCB0aGlzIGRldGVjdGlvbiBvZiBwb3NzaWJsZSByZXR1cm4gY29k
-ZXM/Cj4gCj4gSXQgZG9lcyBoYXZlIHRoZSBzYW1lIGlzc3VlIGFzIHRhaWwgY2FsbHMsIGluIHRo
-YXQgdGhlIHJldHVybiBjb2RlIG9mCj4gdGhlIGZ1bmN0aW9uIGJlaW5nIHJlcGxhY2VkIGNhbiBv
-YnZpb3VzbHkgY2hhbmdlLiBIb3dldmVyLCB0aGUgdmVyaWZpZXIKPiBrbm93cyB0aGUgdGFyZ2V0
-IG9mIGEgcmVwbGFjZSwgc28gaXQgY2FuIHByb3BhZ2F0ZSBhbnkgY29uc3RyYWludHMgcHV0Cj4g
-dXBvbiB0aGUgY2FsbGVyIGlmIHdlIGltcGxlbWVudCBpdCB0aGF0IHdheS4KCk9LIEknbSBjb252
-aW5jZWQgaXRzIG5vdCBwb3NzaWJsZSB0byB0ZWxsIGF0IGF0dGFjaCB0aW1lIGlmIGEgcHJvZ3Jh
-bQp3aWxsIHVzZSBYRFBfVFggb3Igbm90IGluIGdlbmVyYWwuIEFuZCBpbiBmYWN0IGZvciBtb3N0
-IHJlYWwgcHJvZ3JhbXMgaXQKbGlrZWx5IHdpbGwgbm90IGJlIGtub3dhYmxlLiBBdCBsZWFzdCBt
-b3N0IHByb2dyYW1zIEkgbG9vayBhdCB0aGVzZSBkYXlzCnVzZSBlaXRoZXIgdGFpbCBjYWxscyBv
-ciBmdW5jdGlvbiBjYWxscyBzbyBzZWVtcyBsaWtlIGEgZGVhZCBlbmQuCgpBbHNvIGFib3ZlIHNv
-bWV3aGVyZSBpdCB3YXMgcG9pbnRlZCBvdXQgdGhhdCBYRFBfUkVESVJFQ1Qgd291bGQgd2FudAp0
-aGUgcXVldWVzIGFuZCBpdCBzZWVtcyBldmVuIG1vcmUgY2hhbGxlbmdpbmcgdG8gc29ydCB0aGF0
-IG91dC4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
-ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
-czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+> On Mon, Dec 07, 2020 at 12:52:22PM -0800, John Fastabend wrote:
+> > Jesper Dangaard Brouer wrote:
+> > > On Fri, 4 Dec 2020 16:21:08 +0100
+> > > Daniel Borkmann <daniel@iogearbox.net> wrote:
+
+[...] pruning the thread to answer Jesper.
+
+> > > 
+> > > Use-case(2): Disable XDP_TX on a driver to save hardware TX-queue
+> > > resources, as the use-case is only DDoS.  Today we have this problem
+> > > with the ixgbe hardware, that cannot load XDP programs on systems with
+> > > more than 192 CPUs.
+> > 
+> > The ixgbe issues is just a bug or missing-feature in my opinion.
+> 
+> Not a bug, rather HW limitation?
+
+Well hardware has some max queue limit. Likely <192 otherwise I would
+have kept doing queue per core on up to 192. But, ideally we should
+still load and either share queues across multiple cores or restirct
+down to a subset of CPUs. Do you need 192 cores for a 10gbps nic,
+probably not. Yes, it requires some extra care, but should be doable
+if someone cares enough. I gather current limitation/bug is because
+no one has that configuration and/or has complained loud enough.
+
+> 
+> > 
+> > I think we just document that XDP_TX consumes resources and if users
+> > care they shouldn't use XD_TX in programs and in that case hardware
+> > should via program discovery not allocate the resource. This seems
+> > cleaner in my opinion then more bits for features.
+> 
+> But what if I'm with some limited HW that actually has a support for XDP
+> and I would like to utilize XDP_TX?
+> 
+> Not all drivers that support XDP consume Tx resources. Recently igb got
+> support and it shares Tx queues between netstack and XDP.
+
+Makes sense to me.
+
+> 
+> I feel like we should have a sort-of best effort approach in case we
+> stumble upon the XDP_TX in prog being loaded and query the driver if it
+> would be able to provide the Tx resources on the current system, given
+> that normally we tend to have a queue per core.
+
+Why do we need to query? I guess you want some indication from the
+driver its not going to be running in the ideal NIC configuraition?
+I guess printing a warning would be the normal way to show that. But,
+maybe your point is you want something easier to query?
+
+> 
+> In that case igb would say yes, ixgbe would say no and prog would be
+> rejected.
+
+I think the driver should load even if it can't meet the queue per
+core quota. Refusing to load at all or just dropping packets on the
+floor is not very friendly. I think we agree on that point.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
