@@ -1,62 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 453CE2D9AAE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:17:26 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 501B72D9ACA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:23:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D2E128710F;
-	Mon, 14 Dec 2020 15:17:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BFF9B87265;
+	Mon, 14 Dec 2020 15:22:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LLDdd2g92GY2; Mon, 14 Dec 2020 15:17:24 +0000 (UTC)
+	with ESMTP id uPCKU-HZBlW6; Mon, 14 Dec 2020 15:22:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4A27A8744F;
-	Mon, 14 Dec 2020 15:17:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4787687206;
+	Mon, 14 Dec 2020 15:22:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0DAE21BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:17:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D4D811BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:22:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EAD8E27236
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:17:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D023E8744F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:22:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id thEh715r2aog for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Dec 2020 15:17:12 +0000 (UTC)
+ with ESMTP id JU3X4XNOOARv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Dec 2020 15:22:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 7298E27A5D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:17:08 +0000 (UTC)
-IronPort-SDR: PUqb3rDe6lL+6xSgp72w9L+rSe9mm+mTpDa5/2QzMtqFyDdZV0fYGunGFVzKgBb3K4DC5CxiQ0
- G5tq83+Y4OMw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="193082045"
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="193082045"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2020 07:17:08 -0800
-IronPort-SDR: lNPF00ciK5Gtp944ROTXfleYBCOhzczUlCIRfz5JCfqnQdVnEkuU6rnHnA3BEInFXCjCZwDXB/
- a7Aa4FLjrEnQ==
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 50542870D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:22:55 +0000 (UTC)
+IronPort-SDR: Kirp8/Es7HRrO2pdBa50NoIvot6XBJ7lCMAjtlbcH8aiJD0D6/WMrTAcTQhTCRN10xG/kno32E
+ oDgayXFd58Aw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="236308469"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="236308469"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Dec 2020 07:22:54 -0800
+IronPort-SDR: yVbryF9/CAvcv7DJmj1AZLTlKAQhEdobTU3q4WXmpE2WX3SNbuj7FdtU8kvK324ZI62neN8iaJ
+ jkIRoslXcbwQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="333478153"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="411285637"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga008.fm.intel.com with ESMTP; 14 Dec 2020 07:17:06 -0800
-Date: Mon, 14 Dec 2020 16:07:40 +0100
+ by orsmga001.jf.intel.com with ESMTP; 14 Dec 2020 07:22:52 -0800
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20201214150740.GA15222@ranger.igk.intel.com>
-References: <20201211164956.59628-1-maciej.fijalkowski@intel.com>
- <20201211164956.59628-6-maciej.fijalkowski@intel.com>
- <20201211202315.570b6605@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 14 Dec 2020 16:13:00 +0100
+Message-Id: <20201214151308.15275-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201211202315.570b6605@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH net-next 5/8] ice: move skb pointer
- from rx_buf to rx_ring
+Subject: [Intel-wired-lan] [PATCH v2 net-next 0/8] i40e/ice cleanups
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,28 +63,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org, bjorn.topel@intel.com, magnus.karlsson@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
+ bjorn.topel@intel.com, magnus.karlsson@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Dec 11, 2020 at 08:23:15PM -0800, Jakub Kicinski wrote:
-> On Fri, 11 Dec 2020 17:49:53 +0100 Maciej Fijalkowski wrote:
-> > @@ -864,14 +865,12 @@ ice_reuse_rx_page(struct ice_ring *rx_ring, struct ice_rx_buf *old_buf)
-> >   * for use by the CPU.
-> >   */
-> >  static struct ice_rx_buf *
-> > -ice_get_rx_buf(struct ice_ring *rx_ring, struct sk_buff **skb,
-> > -	       const unsigned int size)
-> > +ice_get_rx_buf(struct ice_ring *rx_ring, const unsigned int size)
-> >  {
-> 
-> FWIW I think you missed adjusting kdoc here.
-
-How ironic :) sorry for that.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGksCgpUaGlzIHNlcmllcyBpcyBtb3N0bHkgYWJvdXQgdGhlIGNsZWFudXBzIG9uIFJ4IChaQy9u
+b3JtYWwpIHBhdGhzIGJvdGggaW4KaWNlIGFuZCBpNDBlIGRyaXZlcnMuIFRoaW5ncyB0aGF0IHN0
+YW5kIG91dCBhcmUgdGhlIHNpbXBsaWZhY3Rpb25zIG9mCmljZV9jaGFuZ2VfbXR1IGFuZCBpNDBl
+X3hkcF9zZXR1cC4KClRoYW5rcyEKCnYyOiBmaXgga2RvYyBpbiBwYXRjaCA1IChKYWt1YikKCkJq
+w7ZybiBUw7ZwZWwgKDEpOgogIGk0MGUsIHhzazogU2ltcGxpZnkgdGhlIGRvLXdoaWxlIGFsbG9j
+YXRpb24gbG9vcAoKTWFjaWVqIEZpamFsa293c2tpICg3KToKICBpNDBlOiBkcm9wIHJlZHVuZGFu
+dCBjaGVjayB3aGVuIHNldHRpbmcgeGRwIHByb2cKICBpNDBlOiBkcm9wIG1pc2xlYWRpbmcgZnVu
+Y3Rpb24gY29tbWVudHMKICBpNDBlOiBhZGp1c3QgaTQwZV9pc19ub25fZW9wCiAgaWNlOiBzaW1w
+bGlmeSBpY2VfcnVuX3hkcAogIGljZTogbW92ZSBza2IgcG9pbnRlciBmcm9tIHJ4X2J1ZiB0byBy
+eF9yaW5nCiAgaWNlOiByZW1vdmUgcmVkdW5kYW50IGNoZWNrcyBpbiBpY2VfY2hhbmdlX210dQog
+IGljZTogc2tpcCBOVUxMIGNoZWNrIGFnYWluc3QgWERQIHByb2cgaW4gWkMgcGF0aAoKIGRyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmMgfCAgMyAtLQogZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYyB8IDU2ICsrKysrLS0tLS0tLS0tLS0t
+LS0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jICB8ICA0ICst
+CiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYyAgIHwgIDkgLS0tLQog
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMgICB8IDQ0ICsrKysrKyst
+LS0tLS0tLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeC5oICAgfCAg
+MiArLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV94c2suYyAgICB8ICA3ICsr
+LQogNyBmaWxlcyBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCA5MSBkZWxldGlvbnMoLSkKCi0t
+IAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcK
+aHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFu
+Cg==
