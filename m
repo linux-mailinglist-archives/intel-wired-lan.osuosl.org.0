@@ -2,58 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3B462D9ACC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:23:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8DB62D9ACE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:23:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A7759868C7;
-	Mon, 14 Dec 2020 15:23:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 86506868DC;
+	Mon, 14 Dec 2020 15:23:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JG_QOXFIF6WR; Mon, 14 Dec 2020 15:23:04 +0000 (UTC)
+	with ESMTP id 0WkKqSbcIOcM; Mon, 14 Dec 2020 15:23:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9C57E8689C;
-	Mon, 14 Dec 2020 15:23:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ECFBD868CF;
+	Mon, 14 Dec 2020 15:23:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4E4841BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 531A61BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4A95A8744F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 500428747B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id axYVqCm2y4Aa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Dec 2020 15:23:00 +0000 (UTC)
+ with ESMTP id SF91GsQlHW6C for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Dec 2020 15:23:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B477C870D1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:00 +0000 (UTC)
-IronPort-SDR: yjjz7SntVJxwxbrP8SGscwuUDKkeAd6a/zVIbHFL1Zbzdwt82qWrRwB+yMWerpKew2z7xyBHUg
- qbV6z3ZtnoZw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="236308492"
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="236308492"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CF6CA870D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:02 +0000 (UTC)
+IronPort-SDR: AcjoiMMYmEKoYWdDPRdIFjKkTtedkEcpV0/GDEeIyeoIFQ/TRHQyc460xd6RGC5Q4OaQNqE3JR
+ QZrl4CQgrr2Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="236308496"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="236308496"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2020 07:23:00 -0800
-IronPort-SDR: wzGkGTRJse31QTl3lRLx1+d7iDIkO+AtEU/gPcn8Eb01rKf1TDlv0PbrpyxEC1etyn76MlNkmF
- mFpiZlXInWrw==
+ 14 Dec 2020 07:23:02 -0800
+IronPort-SDR: M6G2TaFF9s87TaSaPSevh93XG4Rn07MkCpFxSneFdo9n3Elgqvd+9ZyT+5Ax9vAgaMVgYRM5+a
+ ZHlg00IxDeKA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="411285687"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="411285711"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga001.jf.intel.com with ESMTP; 14 Dec 2020 07:22:58 -0800
+ by orsmga001.jf.intel.com with ESMTP; 14 Dec 2020 07:23:00 -0800
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 14 Dec 2020 16:13:03 +0100
-Message-Id: <20201214151308.15275-4-maciej.fijalkowski@intel.com>
+Date: Mon, 14 Dec 2020 16:13:04 +0100
+Message-Id: <20201214151308.15275-5-maciej.fijalkowski@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201214151308.15275-1-maciej.fijalkowski@intel.com>
 References: <20201214151308.15275-1-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 net-next 3/8] i40e: adjust
- i40e_is_non_eop
+Subject: [Intel-wired-lan] [PATCH v2 net-next 4/8] ice: simplify ice_run_xdp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,67 +72,58 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i40e_is_non_eop had a leftover comment and unused skb argument which was
-used for placing the skb onto rx_buf in case when current buffer was
-non-eop one. This is not relevant anymore as commit e72e56597ba1
-("i40e/i40evf: Moves skb from i40e_rx_buffer to i40e_ring") pulled the
-non-complete skb handling out of rx_bufs up to rx_ring.  Therefore,
-let's adjust the function arguments that i40e_is_non_eop takes.
-
-Furthermore, since there is already a function responsible for bumping
-the ntc, make use of that and drop that logic from i40e_is_non_eop so
-that the scope of this function is limited to what the name actually
-states.
+There's no need for 'result' variable, we can directly return the
+internal status based on action returned by xdp prog.
 
 Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 23 ++++++---------------
- 1 file changed, 6 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 1dbb8efa50ad..205dc2124e96 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -2118,25 +2118,13 @@ static void i40e_put_rx_buffer(struct i40e_ring *rx_ring,
-  * i40e_is_non_eop - process handling of non-EOP buffers
-  * @rx_ring: Rx ring being processed
-  * @rx_desc: Rx descriptor for current buffer
-- * @skb: Current socket buffer containing buffer in progress
-  *
-- * This function updates next to clean.  If the buffer is an EOP buffer
-- * this function exits returning false, otherwise it will place the
-- * sk_buff in the next buffer to be chained and return true indicating
-- * that this is in fact a non-EOP buffer.
-- **/
-+ * If the buffer is an EOP buffer, this function exits returning false,
-+ * otherwise return true indicating that this is in fact a non-EOP buffer.
-+ */
- static bool i40e_is_non_eop(struct i40e_ring *rx_ring,
--			    union i40e_rx_desc *rx_desc,
--			    struct sk_buff *skb)
-+			    union i40e_rx_desc *rx_desc)
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 77d5eae6b4c2..8b5d23436904 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -537,22 +537,20 @@ static int
+ ice_run_xdp(struct ice_ring *rx_ring, struct xdp_buff *xdp,
+ 	    struct bpf_prog *xdp_prog)
  {
--	u32 ntc = rx_ring->next_to_clean + 1;
--
--	/* fetch, update, and store next to clean */
--	ntc = (ntc < rx_ring->count) ? ntc : 0;
--	rx_ring->next_to_clean = ntc;
--
--	prefetch(I40E_RX_DESC(rx_ring, ntc));
--
- 	/* if we are the last buffer then there is nothing else to do */
- #define I40E_RXD_EOF BIT(I40E_RX_DESC_STATUS_EOF_SHIFT)
- 	if (likely(i40e_test_staterr(rx_desc, I40E_RXD_EOF)))
-@@ -2414,7 +2402,8 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget)
- 		i40e_put_rx_buffer(rx_ring, rx_buffer);
- 		cleaned_count++;
+-	int err, result = ICE_XDP_PASS;
+ 	struct ice_ring *xdp_ring;
++	int err;
+ 	u32 act;
  
--		if (i40e_is_non_eop(rx_ring, rx_desc, skb))
-+		i40e_inc_ntc(rx_ring);
-+		if (i40e_is_non_eop(rx_ring, rx_desc))
- 			continue;
+ 	act = bpf_prog_run_xdp(xdp_prog, xdp);
+ 	switch (act) {
+ 	case XDP_PASS:
+-		break;
++		return ICE_XDP_PASS;
+ 	case XDP_TX:
+ 		xdp_ring = rx_ring->vsi->xdp_rings[smp_processor_id()];
+-		result = ice_xmit_xdp_buff(xdp, xdp_ring);
+-		break;
++		return ice_xmit_xdp_buff(xdp, xdp_ring);
+ 	case XDP_REDIRECT:
+ 		err = xdp_do_redirect(rx_ring->netdev, xdp, xdp_prog);
+-		result = !err ? ICE_XDP_REDIR : ICE_XDP_CONSUMED;
+-		break;
++		return !err ? ICE_XDP_REDIR : ICE_XDP_CONSUMED;
+ 	default:
+ 		bpf_warn_invalid_xdp_action(act);
+ 		fallthrough;
+@@ -560,11 +558,8 @@ ice_run_xdp(struct ice_ring *rx_ring, struct xdp_buff *xdp,
+ 		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
+ 		fallthrough;
+ 	case XDP_DROP:
+-		result = ICE_XDP_CONSUMED;
+-		break;
++		return ICE_XDP_CONSUMED;
+ 	}
+-
+-	return result;
+ }
  
- 		if (i40e_cleanup_headers(rx_ring, skb, rx_desc)) {
+ /**
 -- 
 2.20.1
 
