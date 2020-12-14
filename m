@@ -2,100 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B77A42D9EDC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 19:25:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B7002D9F0B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 19:30:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E7771204DB;
-	Mon, 14 Dec 2020 18:25:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 361D3204DB;
+	Mon, 14 Dec 2020 18:30:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8hYOucp3uEe4; Mon, 14 Dec 2020 18:25:06 +0000 (UTC)
+	with ESMTP id UKyPfwCWeQZS; Mon, 14 Dec 2020 18:30:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 494A220510;
-	Mon, 14 Dec 2020 18:25:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B35BF20510;
+	Mon, 14 Dec 2020 18:30:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0CE71BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:24:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AB761BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 926FD86451
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:24:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 95F4B87094
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uFEJxKC1blJX for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Dec 2020 18:24:58 +0000 (UTC)
+ with ESMTP id Vr24GbNvkPwH for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Dec 2020 18:30:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A748B86442
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:24:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2B50186760
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607970297;
+ s=mimecast20190719; t=1607970616;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CyLy54hfyhCtSUDgzjFrWItZ29I+gEb+W/XqxBJbwVA=;
- b=IGzQsOwlwL+PFRg0olPswSxQP5KN/rIRRBOKKMuCnGItj+hd4/Bt37gvNh1xqZh2fo3+kY
- c94zMDUnVeuWXhG0jn0Q7IiyQE9nk6J1rbA26q4usCZz86Mvp/TbPvKyFOg8jkO3W05PC9
- dG8n1KZmeK2MTS+j+x3nPUKi28ecJUw=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-GEwgHiYYNJuggsweGEKLOA-1; Mon, 14 Dec 2020 13:24:51 -0500
-X-MC-Unique: GEwgHiYYNJuggsweGEKLOA-1
-Received: by mail-ej1-f70.google.com with SMTP id dv25so4839104ejb.15
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 10:24:51 -0800 (PST)
+ bh=EIf2JCGI48rPFPz2gsh8ftUao4WBFY/XukAB4tvlgxs=;
+ b=ZGnZebM6z1mCTva+pQNvrFPfd41yDSeAfM9GkCAxVuIC52/PVAmGr2PMpMfFypKl98fXgk
+ 6m7XSbIKVp8Gzk/2udWOvcB+O4IYovm4wV7ywiJ26SeEbjFNUSl0+Xngvq9o1DiAFmffxk
+ kxvTzXXhJRiURWvExh4XTSP/0yjXYl0=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-153-6WpmGVnTOe6c4xrLnviOwA-1; Mon, 14 Dec 2020 13:30:14 -0500
+X-MC-Unique: 6WpmGVnTOe6c4xrLnviOwA-1
+Received: by mail-ed1-f71.google.com with SMTP id dh21so8669117edb.6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 10:30:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:from:subject:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=CyLy54hfyhCtSUDgzjFrWItZ29I+gEb+W/XqxBJbwVA=;
- b=my4g2n0UoaX4g+apn9ZnnamjoBjxTbKfrJsnaeARNfkOOOJ8IoGCxmugQMN4z44jqX
- 8mHl7PmPWcPPDFeR04IV2tYY++t6ofNbm8OOxM/IA0eKdPSTN1WhyikZm9BqvTgJy5IX
- nVHqcuz9rv7moG3Qp6k3Fk+2w0XI4MWqkV1VuA7vuFOPvfZawo0nSx/v+B1FeP9/XUYP
- kIjkIk9nmWSn18aw8r1nvdsE16NVobKxb7RVlqTRhoOht6l1y4/bigybzlfh+PFdR7O7
- OoAAp5BNnMWHfodIkqbEQFvMoW4mho0MV5LZ6dwHOX07Ahf43B6PEzP4n4a8/6GCkHhd
- rgLw==
-X-Gm-Message-State: AOAM5330FPVequrWw5TUV0khuNo1JY80wuCfwZ1PqRKMD95F64Dwayv5
- Y4+KH7gS6dR2P8CiO+tkixeuLvDFog6IUDROm/tSWOqKUnMKbtqYse/9rajXx4dMGOmVruDiLVU
- 0yaGHnz16DPBymaTyPtLVRJjZYj8q1Q==
-X-Received: by 2002:a17:907:2116:: with SMTP id
- qn22mr23704529ejb.483.1607970290390; 
- Mon, 14 Dec 2020 10:24:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwqBaawG+erOxtewDg4zJ/4nQfEo0yh6A55cDwt5V85xmwcQr3cCu1EzOpabpv5a5miqlOQdQ==
-X-Received: by 2002:a17:907:2116:: with SMTP id
- qn22mr23704499ejb.483.1607970290086; 
- Mon, 14 Dec 2020 10:24:50 -0800 (PST)
+ bh=EIf2JCGI48rPFPz2gsh8ftUao4WBFY/XukAB4tvlgxs=;
+ b=DFva2Dx9VzDlbNKs1vR94QGaW/VrG7Q/+BMlDEOmHpOHAZ/XwAWfcRIjmx2BrmyUqH
+ rovUOM4N1t1OEaps93vAGvkQGpuW8HS5zt/zMbpnQ4iJyzXeVF7MfHgOzIqSpK/DpIhn
+ XTkN/IsKPoLnPleFgAlyVqWK+c91/hyn4YmPwNscn/ezOYo8Wm1HPR8nqbz3Ge/5BB0V
+ fdFTOtxfRaukoUNODP6J76pV58oB0DMg47i5TTCoazxaW3evr6Rk2QY1HCFmf7NJsKZY
+ U2K8AT5ih90bBiY5tYVTZ4+SeLpAg40h8NcYQLgr2hx82J+yVUOV1u8Ho8J1KtoEFupv
+ C9dQ==
+X-Gm-Message-State: AOAM530YMboV+oc3BPgOs0yqcyfT8XW25b+jLNzZDQ8Dd8He9YIku+JO
+ zv4Q2YPcGS44N9X+FXRMV0Ly5nDOR90hANLNrtvWHbPtaDjkU8TkXcKuOnln6T14xnHX5wDq11t
+ b94E6aegimKCzLGzLZleE9/77mokTVw==
+X-Received: by 2002:a17:906:30d2:: with SMTP id
+ b18mr23540994ejb.109.1607970612142; 
+ Mon, 14 Dec 2020 10:30:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzrhhybisEbWGtsbchj7dNQJwp8o+r2Tv+BWCOW7oS8uIStKg3KikoBxJYSRM7V9w9VPWCN4w==
+X-Received: by 2002:a17:906:30d2:: with SMTP id
+ b18mr23540936ejb.109.1607970611727; 
+ Mon, 14 Dec 2020 10:30:11 -0800 (PST)
 Received: from x1.localdomain
  (2001-1c00-0c0c-fe00-d2ea-f29d-118b-24dc.cable.dynamic.v6.ziggo.nl.
  [2001:1c00:c0c:fe00:d2ea:f29d:118b:24dc])
- by smtp.gmail.com with ESMTPSA id b9sm14248650eju.8.2020.12.14.10.24.49
+ by smtp.gmail.com with ESMTPSA id ho34sm2716312ejc.13.2020.12.14.10.30.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Dec 2020 10:24:49 -0800 (PST)
+ Mon, 14 Dec 2020 10:30:11 -0800 (PST)
+From: Hans de Goede <hdegoede@redhat.com>
 To: Mario Limonciello <mario.limonciello@dell.com>,
  Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- David Miller <davem@davemloft.net>, Aaron Ma <aaron.ma@canonical.com>,
- Mark Pearson <mpearson@lenovo.com>
+ David Miller <davem@davemloft.net>
 References: <20201214153450.874339-1-mario.limonciello@dell.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <80862f70-18a4-4f96-1b96-e2fad7cc2b35@redhat.com>
-Date: Mon, 14 Dec 2020 19:24:48 +0100
+ <20201214153450.874339-5-mario.limonciello@dell.com>
+Message-ID: <015f0d3c-57fa-06bc-4139-e4512201eb92@redhat.com>
+Date: Mon, 14 Dec 2020 19:30:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201214153450.874339-1-mario.limonciello@dell.com>
+In-Reply-To: <20201214153450.874339-5-mario.limonciello@dell.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v4 0/4] Improve s0ix flows for systems
- i219LM
+Subject: Re: [Intel-wired-lan] [PATCH 4/4] e1000e: Export S0ix flags to
+ ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,130 +116,175 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi All,
+Hi,
 
-Sasha (and the other intel-wired-lan folks), thank you for investigating this
-further and for coming up with a better solution.
+On 12/14/20 4:34 PM, Mario Limonciello wrote:
+> This flag can be used by an end user to disable S0ix flows on a
+> buggy system or by an OEM for development purposes.
+> 
+> If you need this flag to be persisted across reboots, it's suggested
+> to use a udev rule to call adjust it until the kernel could have your
+> configuration in a disallow list.
+> 
+> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/e1000.h   |  1 +
+>  drivers/net/ethernet/intel/e1000e/ethtool.c | 40 +++++++++++++++++++++
+>  drivers/net/ethernet/intel/e1000e/netdev.c  |  9 ++---
+>  3 files changed, 46 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
+> index ba7a0f8f6937..5b2143f4b1f8 100644
+> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
+> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
+> @@ -436,6 +436,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca);
+>  #define FLAG2_DFLT_CRC_STRIPPING          BIT(12)
+>  #define FLAG2_CHECK_RX_HWTSTAMP           BIT(13)
+>  #define FLAG2_CHECK_SYSTIM_OVERFLOW       BIT(14)
+> +#define FLAG2_ENABLE_S0IX_FLOWS           BIT(15)
+>  
+>  #define E1000_RX_DESC_PS(R, i)	    \
+>  	(&(((union e1000_rx_desc_packet_split *)((R).desc))[i]))
+> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> index 03215b0aee4b..eb683949ebfe 100644
+> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> @@ -23,6 +23,13 @@ struct e1000_stats {
+>  	int stat_offset;
+>  };
+>  
+> +static const char e1000e_priv_flags_strings[][ETH_GSTRING_LEN] = {
+> +#define E1000E_PRIV_FLAGS_S0IX_ENABLED	BIT(0)
+> +	"s0ix-enabled",
+> +};
+> +
+> +#define E1000E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(e1000e_priv_flags_strings)
+> +
+>  #define E1000_STAT(str, m) { \
+>  		.stat_string = str, \
+>  		.type = E1000_STATS, \
+> @@ -1776,6 +1783,8 @@ static int e1000e_get_sset_count(struct net_device __always_unused *netdev,
+>  		return E1000_TEST_LEN;
+>  	case ETH_SS_STATS:
+>  		return E1000_STATS_LEN;
+> +	case ETH_SS_PRIV_FLAGS:
+> +		return E1000E_PRIV_FLAGS_STR_LEN;
+>  	default:
+>  		return -EOPNOTSUPP;
+>  	}
+> @@ -2097,6 +2106,10 @@ static void e1000_get_strings(struct net_device __always_unused *netdev,
+>  			p += ETH_GSTRING_LEN;
+>  		}
+>  		break;
+> +	case ETH_SS_PRIV_FLAGS:
+> +		memcpy(data, e1000e_priv_flags_strings,
+> +		       E1000E_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
+> +		break;
+>  	}
+>  }
+>  
+> @@ -2305,6 +2318,31 @@ static int e1000e_get_ts_info(struct net_device *netdev,
+>  	return 0;
+>  }
+>  
+> +static u32 e1000e_get_priv_flags(struct net_device *netdev)
+> +{
+> +	struct e1000_adapter *adapter = netdev_priv(netdev);
+> +	u32 priv_flags = 0;
+> +
+> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
+> +		priv_flags |= E1000E_PRIV_FLAGS_S0IX_ENABLED;
+> +
+> +	return priv_flags;
+> +}
+> +
+> +static int e1000e_set_priv_flags(struct net_device *netdev, u32 priv_flags)
+> +{
+> +	struct e1000_adapter *adapter = netdev_priv(netdev);
+> +	unsigned int flags2 = adapter->flags2;
+> +
+> +	flags2 &= ~FLAG2_ENABLE_S0IX_FLOWS;
+> +	if (priv_flags & E1000E_PRIV_FLAGS_S0IX_ENABLED)
+> +		flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
+> +	if (flags2 != adapter->flags2)
+> +		adapter->flags2 = flags2;
 
-Mario, thank you for implementing the new scheme.
 
-I've tested this patch set on a Lenovo X1C8 with vPRO and AMT enabled in the BIOS
-(the previous issues were soon on a X1C7).
+This will allow ethtool to enable the s0ix code on hw which does not
+support this. I believe that this needs a
 
-I have good and bad news:
+	if (hw->mac.type >= e1000_pch_cnp)
 
-The good news is that after reverting the
-"e1000e: disable s0ix entry and exit flows for ME systems"
-I can reproduce the original issue on the X1C8 (I no longer have
-a X1C7 to test on).
-
-The bad news is that increasing the timeout to 1 second does
-not fix the issue. Suspend/resume is still broken after one
-suspend/resume cycle, as described in the original bug-report:
-https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1865570
-
-More good news though, bumping the timeout to 250 poll iterations
-(approx 2.5 seconds) as done in Aaron Ma's original patch for
-this fixes this on the X1C8 just as it did on the X1C7
-(it takes 2 seconds for ULP_CONFIG_DONE to clear).
-
-I've ran some extra tests and the poll loop succeeds on its
-first iteration when an ethernet-cable is connected. It seems
-that Lenovo's variant of the ME firmware waits up to 2 seconds
-for a link, causing the long wait for ULP_CONFIG_DONE to clear.
-
-I think that for now the best fix would be to increase the timeout
-to 2.5 seconds as done in  Aaron Ma's original patch. Combined
-with a broken-firmware warning when we waited longer then 1 second,
-to make it clear that there is a firmware issue here and that
-the long wait / slow resume is not the fault of the driver.
-
-###
-
-I've added Mark Pearson from Lenovo to the Cc so that Lenovo
-can investigate this issue further.
-
-Mark, this thread is about an issue with enabling S0ix support for
-e1000e (i219lm) controllers. This was enabled in the kernel a
-while ago, but then got disabled again on vPro / AMT enabled
-systems because on some systems (Lenovo X1C7 and now also X1C8)
-this lead to suspend/resume issues.
-
-When AMT is active then there is a handover handshake for the
-OS to get access to the ethernet controller from the ME. The
-Intel folks have checked and the Windows driver is using a timeout
-of 1 second for this handshake, yet on Lenovo systems this is
-taking 2 seconds. This likely has something to do with the
-ME firmware on these Lenovo models, can you get the firmware
-team at Lenovo to investigate this further ?
+Check to avoid this scenario. And probably return -EINVAL when
+a user tries to enable this on hw where it is not supported.
 
 Regards,
 
 Hans
 
-p.s.
-
-I also have a small review remark on patch 4/4 I will
-reply to that patch separately.
 
 
 
-
-
-
-
-
-On 12/14/20 4:34 PM, Mario Limonciello wrote:
-> commit e086ba2fccda ("e1000e: disable s0ix entry and exit flows for ME systems")
-> disabled s0ix flows for systems that have various incarnations of the
-> i219-LM ethernet controller.  This was done because of some regressions
-> caused by an earlier
-> commit 632fbd5eb5b0e ("e1000e: fix S0ix flows for cable connected case")
-> with i219-LM controller.
-> 
-> Per discussion with Intel architecture team this direction should be changed and
-> allow S0ix flows to be used by default.  This patch series includes directional
-> changes for their conclusions in https://lkml.org/lkml/2020/12/13/15.
-> 
-> Changes from v3 to v4:
->  - Drop patch 1 for proper s0i3.2 entry, it was separated and is now merged in kernel
->  - Add patch to only run S0ix flows if shutdown succeeded which was suggested in
->    thread
->  - Adjust series for guidance from https://lkml.org/lkml/2020/12/13/15
->    * Revert i219-LM disallow-list.
->    * Drop all patches for systems tested by Dell in an allow list
->    * Increase ULP timeout to 1000ms
-> Changes from v2 to v3:
->  - Correct some grammar and spelling issues caught by Bjorn H.
->    * s/s0ix/S0ix/ in all commit messages
->    * Fix a typo in commit message
->    * Fix capitalization of proper nouns
->  - Add more pre-release systems that pass
->  - Re-order the series to add systems only at the end of the series
->  - Add Fixes tag to a patch in series.
-> 
-> Changes from v1 to v2:
->  - Directly incorporate Vitaly's dependency patch in the series
->  - Split out s0ix code into it's own file
->  - Adjust from DMI matching to PCI subsystem vendor ID/device matching
->  - Remove module parameter and sysfs, use ethtool flag instead.
->  - Export s0ix flag to ethtool private flags
->  - Include more people and lists directly in this submission chain.
-> 
-> Mario Limonciello (4):
->   e1000e: Only run S0ix flows if shutdown succeeded
->   e1000e: bump up timeout to wait when ME un-configure ULP mode
->   Revert "e1000e: disable s0ix entry and exit flows for ME systems"
->   e1000e: Export S0ix flags to ethtool
-> 
->  drivers/net/ethernet/intel/e1000e/e1000.h   |  1 +
->  drivers/net/ethernet/intel/e1000e/ethtool.c | 40 ++++++++++++++
->  drivers/net/ethernet/intel/e1000e/ich8lan.c |  4 +-
->  drivers/net/ethernet/intel/e1000e/netdev.c  | 59 ++++-----------------
->  4 files changed, 53 insertions(+), 51 deletions(-)
-> 
-> --
-> 2.25.1
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct ethtool_ops e1000_ethtool_ops = {
+>  	.supported_coalesce_params = ETHTOOL_COALESCE_RX_USECS,
+>  	.get_drvinfo		= e1000_get_drvinfo,
+> @@ -2336,6 +2374,8 @@ static const struct ethtool_ops e1000_ethtool_ops = {
+>  	.set_eee		= e1000e_set_eee,
+>  	.get_link_ksettings	= e1000_get_link_ksettings,
+>  	.set_link_ksettings	= e1000_set_link_ksettings,
+> +	.get_priv_flags		= e1000e_get_priv_flags,
+> +	.set_priv_flags		= e1000e_set_priv_flags,
+>  };
+>  
+>  void e1000e_set_ethtool_ops(struct net_device *netdev)
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index b9800ba2006c..e9b82c209c2d 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -6923,7 +6923,6 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
+>  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
+>  	struct e1000_adapter *adapter = netdev_priv(netdev);
+>  	struct pci_dev *pdev = to_pci_dev(dev);
+> -	struct e1000_hw *hw = &adapter->hw;
+>  	int rc;
+>  
+>  	e1000e_flush_lpic(pdev);
+> @@ -6935,7 +6934,7 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
+>  		e1000e_pm_thaw(dev);
+>  	} else {
+>  		/* Introduce S0ix implementation */
+> -		if (hw->mac.type >= e1000_pch_cnp)
+> +		if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
+>  			e1000e_s0ix_entry_flow(adapter);
+>  	}
+>  
+> @@ -6947,11 +6946,10 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
+>  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
+>  	struct e1000_adapter *adapter = netdev_priv(netdev);
+>  	struct pci_dev *pdev = to_pci_dev(dev);
+> -	struct e1000_hw *hw = &adapter->hw;
+>  	int rc;
+>  
+>  	/* Introduce S0ix implementation */
+> -	if (hw->mac.type >= e1000_pch_cnp)
+> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
+>  		e1000e_s0ix_exit_flow(adapter);
+>  
+>  	rc = __e1000_resume(pdev);
+> @@ -7615,6 +7613,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  	if (!(adapter->flags & FLAG_HAS_AMT))
+>  		e1000e_get_hw_control(adapter);
+>  
+> +	if (hw->mac.type >= e1000_pch_cnp)
+> +		adapter->flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
+> +
+>  	strlcpy(netdev->name, "eth%d", sizeof(netdev->name));
+>  	err = register_netdev(netdev);
+>  	if (err)
 > 
 
 _______________________________________________
