@@ -2,58 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DC492D9AD1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:23:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9751B2D9AD2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 16:23:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 114B6868CC;
-	Mon, 14 Dec 2020 15:23:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 59DDC868E7;
+	Mon, 14 Dec 2020 15:23:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AAlpt0CzR7IA; Mon, 14 Dec 2020 15:23:11 +0000 (UTC)
+	with ESMTP id x2ErtNGQYtAJ; Mon, 14 Dec 2020 15:23:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 86FC6868CE;
-	Mon, 14 Dec 2020 15:23:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DE64F868D1;
+	Mon, 14 Dec 2020 15:23:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D78C11BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 933C11BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D45E187488
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:09 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8E26587466
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dqWp90883T3r for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Dec 2020 15:23:09 +0000 (UTC)
+ with ESMTP id eVSC15TLrynh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Dec 2020 15:23:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4B52787466
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:09 +0000 (UTC)
-IronPort-SDR: PJ466DOiZHAyj+LuYI4PvFjxlnRGA2pk/URgiWzidxbshP9CBL0DjleV5/bLJL1JFIu2q1CaK5
- B+yNo6mu4yow==
-X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="236308515"
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="236308515"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 72BA1870D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 15:23:11 +0000 (UTC)
+IronPort-SDR: PV2AS2ACgGhleWdQPsnr+of1Jps+vyoJLK0Im2S8zK0NMr58GRAlw6zL1KZHlHgnltDvTfpzAV
+ 3F/9JFYyU+TQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9834"; a="236308519"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="236308519"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2020 07:23:09 -0800
-IronPort-SDR: 2sz3LWE2BdjS1ZGPnyBMZBaeaVD9tY7CiHzCdSxNlxF9f4WJx7VvYKbHz50HaGMt+wHVXsH1A3
- pnKX0EuNXOsA==
+ 14 Dec 2020 07:23:11 -0800
+IronPort-SDR: ctp9ScIgn6YcqGCvrAdH0QTDHWYEnWb8z+6R82dHgYTMKJNdwk7MX1I1sr2oCNFG/QFVtwkE+L
+ 1WnJpaF38FWw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="411285753"
+X-IronPort-AV: E=Sophos;i="5.78,420,1599548400"; d="scan'208";a="411285763"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga001.jf.intel.com with ESMTP; 14 Dec 2020 07:23:07 -0800
+ by orsmga001.jf.intel.com with ESMTP; 14 Dec 2020 07:23:09 -0800
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 14 Dec 2020 16:13:07 +0100
-Message-Id: <20201214151308.15275-8-maciej.fijalkowski@intel.com>
+Date: Mon, 14 Dec 2020 16:13:08 +0100
+Message-Id: <20201214151308.15275-9-maciej.fijalkowski@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201214151308.15275-1-maciej.fijalkowski@intel.com>
 References: <20201214151308.15275-1-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 net-next 7/8] ice: skip NULL check
- against XDP prog in ZC path
+Subject: [Intel-wired-lan] [PATCH v2 net-next 8/8] i40e,
+ xsk: Simplify the do-while allocation loop
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,44 +68,24 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
  bjorn.topel@intel.com, magnus.karlsson@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Whole zero-copy variant of clean Rx irq is executed when xsk_pool is
-attached to rx_ring and it can happen only when XDP program is present
-on interface. Therefore it is safe to assume that program is always
-!NULL and there is no need for checking it in ice_run_xdp_zc.
-
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_xsk.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 797886524054..9aea97ca4a04 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -514,11 +514,10 @@ ice_run_xdp_zc(struct ice_ring *rx_ring, struct xdp_buff *xdp)
- 	u32 act;
- 
- 	rcu_read_lock();
-+	/* ZC patch is enabled only when XDP program is set,
-+	 * so here it can not be NULL
-+	 */
- 	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
--	if (!xdp_prog) {
--		rcu_read_unlock();
--		return ICE_XDP_PASS;
--	}
- 
- 	act = bpf_prog_run_xdp(xdp_prog, xdp);
- 	switch (act) {
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgoKRm9sZCB0aGUgY291
+bnQgZGVjcmVtZW50IGludG8gdGhlIHdoaWxlLXN0YXRlbWVudC4KClNpZ25lZC1vZmYtYnk6IEJq
+w7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgfCA0ICstLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+NDBlL2k0MGVfeHNrLmMKaW5kZXggYmZhODRiZmIwNDg4Li42NzkyMDBkOTRlZjggMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYworKysgYi9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMKQEAgLTIxNSw5ICsyMTUsNyBA
+QCBib29sIGk0MGVfYWxsb2NfcnhfYnVmZmVyc196YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5n
+LCB1MTYgY291bnQpCiAJCQliaSA9IGk0MGVfcnhfYmkocnhfcmluZywgMCk7CiAJCQludHUgPSAw
+OwogCQl9Ci0KLQkJY291bnQtLTsKLQl9IHdoaWxlIChjb3VudCk7CisJfSB3aGlsZSAoLS1jb3Vu
+dCk7CiAKIG5vX2J1ZmZlcnM6CiAJaWYgKHJ4X3JpbmctPm5leHRfdG9fdXNlICE9IG50dSkKLS0g
+CjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+SW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpo
+dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
