@@ -1,101 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B7002D9F0B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 19:30:26 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 361D3204DB;
-	Mon, 14 Dec 2020 18:30:25 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UKyPfwCWeQZS; Mon, 14 Dec 2020 18:30:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B35BF20510;
-	Mon, 14 Dec 2020 18:30:20 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9AB761BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAF4F2D9FA7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Dec 2020 19:55:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 95F4B87094
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C352B871C9;
+	Mon, 14 Dec 2020 18:55:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2AAd6Fkk+L2d; Mon, 14 Dec 2020 18:55:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9763D87126;
+	Mon, 14 Dec 2020 18:55:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D18D41BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:54:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C8A758747A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:54:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vr24GbNvkPwH for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Dec 2020 18:30:17 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2B50186760
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:30:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607970616;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EIf2JCGI48rPFPz2gsh8ftUao4WBFY/XukAB4tvlgxs=;
- b=ZGnZebM6z1mCTva+pQNvrFPfd41yDSeAfM9GkCAxVuIC52/PVAmGr2PMpMfFypKl98fXgk
- 6m7XSbIKVp8Gzk/2udWOvcB+O4IYovm4wV7ywiJ26SeEbjFNUSl0+Xngvq9o1DiAFmffxk
- kxvTzXXhJRiURWvExh4XTSP/0yjXYl0=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-153-6WpmGVnTOe6c4xrLnviOwA-1; Mon, 14 Dec 2020 13:30:14 -0500
-X-MC-Unique: 6WpmGVnTOe6c4xrLnviOwA-1
-Received: by mail-ed1-f71.google.com with SMTP id dh21so8669117edb.6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 10:30:14 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EIf2JCGI48rPFPz2gsh8ftUao4WBFY/XukAB4tvlgxs=;
- b=DFva2Dx9VzDlbNKs1vR94QGaW/VrG7Q/+BMlDEOmHpOHAZ/XwAWfcRIjmx2BrmyUqH
- rovUOM4N1t1OEaps93vAGvkQGpuW8HS5zt/zMbpnQ4iJyzXeVF7MfHgOzIqSpK/DpIhn
- XTkN/IsKPoLnPleFgAlyVqWK+c91/hyn4YmPwNscn/ezOYo8Wm1HPR8nqbz3Ge/5BB0V
- fdFTOtxfRaukoUNODP6J76pV58oB0DMg47i5TTCoazxaW3evr6Rk2QY1HCFmf7NJsKZY
- U2K8AT5ih90bBiY5tYVTZ4+SeLpAg40h8NcYQLgr2hx82J+yVUOV1u8Ho8J1KtoEFupv
- C9dQ==
-X-Gm-Message-State: AOAM530YMboV+oc3BPgOs0yqcyfT8XW25b+jLNzZDQ8Dd8He9YIku+JO
- zv4Q2YPcGS44N9X+FXRMV0Ly5nDOR90hANLNrtvWHbPtaDjkU8TkXcKuOnln6T14xnHX5wDq11t
- b94E6aegimKCzLGzLZleE9/77mokTVw==
-X-Received: by 2002:a17:906:30d2:: with SMTP id
- b18mr23540994ejb.109.1607970612142; 
- Mon, 14 Dec 2020 10:30:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzrhhybisEbWGtsbchj7dNQJwp8o+r2Tv+BWCOW7oS8uIStKg3KikoBxJYSRM7V9w9VPWCN4w==
-X-Received: by 2002:a17:906:30d2:: with SMTP id
- b18mr23540936ejb.109.1607970611727; 
- Mon, 14 Dec 2020 10:30:11 -0800 (PST)
-Received: from x1.localdomain
- (2001-1c00-0c0c-fe00-d2ea-f29d-118b-24dc.cable.dynamic.v6.ziggo.nl.
- [2001:1c00:c0c:fe00:d2ea:f29d:118b:24dc])
- by smtp.gmail.com with ESMTPSA id ho34sm2716312ejc.13.2020.12.14.10.30.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Dec 2020 10:30:11 -0800 (PST)
-From: Hans de Goede <hdegoede@redhat.com>
-To: Mario Limonciello <mario.limonciello@dell.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- David Miller <davem@davemloft.net>
+ with ESMTP id EdKKVypyfPNu for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Dec 2020 18:54:02 +0000 (UTC)
+X-Greylist: delayed 00:13:19 by SQLgrey-1.7.6
+Received: from mail1.bemta23.messagelabs.com (mail1.bemta23.messagelabs.com
+ [67.219.246.5])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D886A86F12
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Dec 2020 18:54:01 +0000 (UTC)
+Received: from [100.112.3.43] (using TLSv1.2 with cipher
+ DHE-RSA-AES256-GCM-SHA384 (256 bits))
+ by server-5.bemta.az-b.us-east-1.aws.symcld.net id 22/43-54546-8A1B7DF5;
+ Mon, 14 Dec 2020 18:40:40 +0000
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrPKsWRWlGSWpSXmKPExsWS8eIhj+6Kjdf
+ jDe4eZLH4MOcBo8X/medYLf7Pvc1isfvCDyaLQ+cOMFsceTaV1WLO+RYWi/+3frNanNh8n9Hi
+ wrY+VovLu+awWTR1NrFZHFsgZtHy5BGzxe6fkxktZrUsY7W4OOEcq4Ogx6yGXjaPLStvMnlMm
+ jmD2WPnrLvsHov3vGTy2LSqk83jZHOpx/t9V9k8Pm+SC+CMYs3MS8qvSGDN2Ni/kr1gj2DFpp
+ lvWBsYP/N1MXJxCAn8Z5To/TiFHcJ5wShx+c4qpi5GTg5hgVCJY3+a2EASIgIzmSQuLvzOCFF
+ 1lFGiY+ZGVhCHWeA1s8T1aWuYQVrYBLQltmz5xQZi8wrYSlze8RAsziKgKnF450lWEFtUIFxi
+ /ZKVjBA1ghInZz5hAbE5BWIl7p/ZBnQHB9BQTYn1u/RBwswC4hK3nsxngrDlJZq3zgYbKSGgI
+ HG5exMbhJ0gsezlHeYJjIKzkEydhTBpFpJJs5BMWsDIsorRNKkoMz2jJDcxM0fX0MBA19DQSB
+ dE6iVW6SbplRbrpiYWl+gCueXFesWVuck5KXp5qSWbGIFxnVLAwL2DceubD3qHGCU5mJREefn
+ XXI8X4kvKT6nMSCzOiC8qzUktPsQow8GhJMG7ZQNQTrAoNT21Ii0zB5hiYNISHDxKIrxCwDQj
+ xFtckJhbnJkOkTrFqMtx8uCSRcxCLHn5ealS4rxuIDMEQIoySvPgRsDS3SVGWSlhXkYGBgYhn
+ oLUotzMElT5V4ziHIxKwryyIKt4MvNK4Da9AjqCCeiIF8cugxxRkoiQkmpgUrl/8rz8MqZPGd
+ silz49nX//6uuFEitariQf2vQsfSLfndWbUu4oOHms5q/KNP0/c8/lLypyJ9R9n104ZZ7PPan
+ 6OTPr0hurSoU/68VU2D44ayF3mPVdXd6h9qvTm0JfP9ZydzlyYmJibWRqspj6/wvvnHMv68Uf
+ 23Bxc1MOw1wmY8UXFiuUQrmeGK3NNnoXl/n9z9rWCOWOuQ+/LVvMwbbPtc3xrsCfK3lBD5peL
+ 5yzPuTCLOOT15ffXXvS/GJLqM1+B4EVX22Ce+fdqNjtt9Fxi6HfO+4KR7e3NwO65/wTvezVvO
+ drsfSSs5k53FG1mQtuy9Suz5Jw8+3OKJye5RwiW6gUe+fiPUUn/bvL+ZVYijMSDbWYi4oTAQ5
+ sVcHyAwAA
+X-Env-Sender: markpearson@lenovo.com
+X-Msg-Ref: server-15.tower-386.messagelabs.com!1607971239!240127!1
+X-Originating-IP: [104.232.225.12]
+X-SYMC-ESS-Client-Auth: outbound-route-from=pass
+X-StarScan-Received: 
+X-StarScan-Version: 9.60.3; banners=-,-,-
+X-VirusChecked: Checked
+Received: (qmail 2545 invoked from network); 14 Dec 2020 18:40:40 -0000
+Received: from unknown (HELO lenovo.com) (104.232.225.12)
+ by server-15.tower-386.messagelabs.com with ECDHE-RSA-AES256-GCM-SHA384
+ encrypted SMTP; 14 Dec 2020 18:40:40 -0000
+Received: from reswpmail04.lenovo.com (unknown [10.62.32.23])
+ (using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by Forcepoint Email with ESMTPS id C85F91614D85C50BF915;
+ Mon, 14 Dec 2020 13:40:39 -0500 (EST)
+Received: from localhost.localdomain (10.38.98.145) by reswpmail04.lenovo.com
+ (10.62.32.23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2044.4; Mon, 14 Dec
+ 2020 10:40:38 -0800
+To: Mario Limonciello <mario.limonciello@dell.com>, Jeff Kirsher
+ <jeffrey.t.kirsher@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, David
+ Miller <davem@davemloft.net>, Aaron Ma <aaron.ma@canonical.com>
 References: <20201214153450.874339-1-mario.limonciello@dell.com>
- <20201214153450.874339-5-mario.limonciello@dell.com>
-Message-ID: <015f0d3c-57fa-06bc-4139-e4512201eb92@redhat.com>
-Date: Mon, 14 Dec 2020 19:30:10 +0100
+ <80862f70-18a4-4f96-1b96-e2fad7cc2b35@redhat.com>
+ <PS2PR03MB37505A15D3C9B7505D679D7BBDC70@PS2PR03MB3750.apcprd03.prod.outlook.com>
+From: Mark Pearson <markpearson@lenovo.com>
+Message-ID: <ae436f90-45b8-ba70-be57-d17641c4f79d@lenovo.com>
+Date: Mon, 14 Dec 2020 13:40:37 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201214153450.874339-5-mario.limonciello@dell.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <PS2PR03MB37505A15D3C9B7505D679D7BBDC70@PS2PR03MB3750.apcprd03.prod.outlook.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 4/4] e1000e: Export S0ix flags to
- ethtool
+X-Originating-IP: [10.38.98.145]
+X-ClientProxiedBy: reswpmail04.lenovo.com (10.62.32.23) To
+ reswpmail04.lenovo.com (10.62.32.23)
+X-Mailman-Approved-At: Mon, 14 Dec 2020 18:55:21 +0000
+Subject: Re: [Intel-wired-lan] Fw: [External] Re: [PATCH v4 0/4] Improve
+ s0ix flows for systems i219LM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,186 +107,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>, Perry.Yuan@dell.com,
- linux-kernel@vger.kernel.org, anthony.wong@canonical.com, Yijun.Shen@dell.com,
- Jakub Kicinski <kuba@kernel.org>, Stefan Assmann <sassmann@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Netdev <netdev@vger.kernel.org>,
+ "Perry.Yuan@dell.com" <Perry.Yuan@dell.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "anthony.wong@canonical.com" <anthony.wong@canonical.com>,
+ "Yijun.Shen@dell.com" <Yijun.Shen@dell.com>, Jakub Kicinski <kuba@kernel.org>,
+ Stefan Assmann <sassmann@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
-
-On 12/14/20 4:34 PM, Mario Limonciello wrote:
-> This flag can be used by an end user to disable S0ix flows on a
-> buggy system or by an OEM for development purposes.
-> 
-> If you need this flag to be persisted across reboots, it's suggested
-> to use a udev rule to call adjust it until the kernel could have your
-> configuration in a disallow list.
-> 
-> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
-> ---
->  drivers/net/ethernet/intel/e1000e/e1000.h   |  1 +
->  drivers/net/ethernet/intel/e1000e/ethtool.c | 40 +++++++++++++++++++++
->  drivers/net/ethernet/intel/e1000e/netdev.c  |  9 ++---
->  3 files changed, 46 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-> index ba7a0f8f6937..5b2143f4b1f8 100644
-> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> @@ -436,6 +436,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca);
->  #define FLAG2_DFLT_CRC_STRIPPING          BIT(12)
->  #define FLAG2_CHECK_RX_HWTSTAMP           BIT(13)
->  #define FLAG2_CHECK_SYSTIM_OVERFLOW       BIT(14)
-> +#define FLAG2_ENABLE_S0IX_FLOWS           BIT(15)
->  
->  #define E1000_RX_DESC_PS(R, i)	    \
->  	(&(((union e1000_rx_desc_packet_split *)((R).desc))[i]))
-> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-> index 03215b0aee4b..eb683949ebfe 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-> @@ -23,6 +23,13 @@ struct e1000_stats {
->  	int stat_offset;
->  };
->  
-> +static const char e1000e_priv_flags_strings[][ETH_GSTRING_LEN] = {
-> +#define E1000E_PRIV_FLAGS_S0IX_ENABLED	BIT(0)
-> +	"s0ix-enabled",
-> +};
-> +
-> +#define E1000E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(e1000e_priv_flags_strings)
-> +
->  #define E1000_STAT(str, m) { \
->  		.stat_string = str, \
->  		.type = E1000_STATS, \
-> @@ -1776,6 +1783,8 @@ static int e1000e_get_sset_count(struct net_device __always_unused *netdev,
->  		return E1000_TEST_LEN;
->  	case ETH_SS_STATS:
->  		return E1000_STATS_LEN;
-> +	case ETH_SS_PRIV_FLAGS:
-> +		return E1000E_PRIV_FLAGS_STR_LEN;
->  	default:
->  		return -EOPNOTSUPP;
->  	}
-> @@ -2097,6 +2106,10 @@ static void e1000_get_strings(struct net_device __always_unused *netdev,
->  			p += ETH_GSTRING_LEN;
->  		}
->  		break;
-> +	case ETH_SS_PRIV_FLAGS:
-> +		memcpy(data, e1000e_priv_flags_strings,
-> +		       E1000E_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
-> +		break;
->  	}
->  }
->  
-> @@ -2305,6 +2318,31 @@ static int e1000e_get_ts_info(struct net_device *netdev,
->  	return 0;
->  }
->  
-> +static u32 e1000e_get_priv_flags(struct net_device *netdev)
-> +{
-> +	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	u32 priv_flags = 0;
-> +
-> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
-> +		priv_flags |= E1000E_PRIV_FLAGS_S0IX_ENABLED;
-> +
-> +	return priv_flags;
-> +}
-> +
-> +static int e1000e_set_priv_flags(struct net_device *netdev, u32 priv_flags)
-> +{
-> +	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	unsigned int flags2 = adapter->flags2;
-> +
-> +	flags2 &= ~FLAG2_ENABLE_S0IX_FLOWS;
-> +	if (priv_flags & E1000E_PRIV_FLAGS_S0IX_ENABLED)
-> +		flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
-> +	if (flags2 != adapter->flags2)
-> +		adapter->flags2 = flags2;
-
-
-This will allow ethtool to enable the s0ix code on hw which does not
-support this. I believe that this needs a
-
-	if (hw->mac.type >= e1000_pch_cnp)
-
-Check to avoid this scenario. And probably return -EINVAL when
-a user tries to enable this on hw where it is not supported.
-
-Regards,
-
-Hans
-
-
-
-
-> +
-> +	return 0;
-> +}
-> +
->  static const struct ethtool_ops e1000_ethtool_ops = {
->  	.supported_coalesce_params = ETHTOOL_COALESCE_RX_USECS,
->  	.get_drvinfo		= e1000_get_drvinfo,
-> @@ -2336,6 +2374,8 @@ static const struct ethtool_ops e1000_ethtool_ops = {
->  	.set_eee		= e1000e_set_eee,
->  	.get_link_ksettings	= e1000_get_link_ksettings,
->  	.set_link_ksettings	= e1000_set_link_ksettings,
-> +	.get_priv_flags		= e1000e_get_priv_flags,
-> +	.set_priv_flags		= e1000e_set_priv_flags,
->  };
->  
->  void e1000e_set_ethtool_ops(struct net_device *netdev)
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index b9800ba2006c..e9b82c209c2d 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6923,7 +6923,6 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
->  	struct pci_dev *pdev = to_pci_dev(dev);
-> -	struct e1000_hw *hw = &adapter->hw;
->  	int rc;
->  
->  	e1000e_flush_lpic(pdev);
-> @@ -6935,7 +6934,7 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->  		e1000e_pm_thaw(dev);
->  	} else {
->  		/* Introduce S0ix implementation */
-> -		if (hw->mac.type >= e1000_pch_cnp)
-> +		if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->  			e1000e_s0ix_entry_flow(adapter);
->  	}
->  
-> @@ -6947,11 +6946,10 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
->  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
->  	struct pci_dev *pdev = to_pci_dev(dev);
-> -	struct e1000_hw *hw = &adapter->hw;
->  	int rc;
->  
->  	/* Introduce S0ix implementation */
-> -	if (hw->mac.type >= e1000_pch_cnp)
-> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->  		e1000e_s0ix_exit_flow(adapter);
->  
->  	rc = __e1000_resume(pdev);
-> @@ -7615,6 +7613,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->  	if (!(adapter->flags & FLAG_HAS_AMT))
->  		e1000e_get_hw_control(adapter);
->  
-> +	if (hw->mac.type >= e1000_pch_cnp)
-> +		adapter->flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
-> +
->  	strlcpy(netdev->name, "eth%d", sizeof(netdev->name));
->  	err = register_netdev(netdev);
->  	if (err)
-> 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhhbmtzIEhhbnMKCk9uIDE0LzEyLzIwMjAgMTM6MzEsIE1hcmsgUGVhcnNvbiB3cm90ZToKPiAK
+PiAKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAqRnJvbToqIEhhbnMgZGUgR29lZGUgPGhkZWdvZWRlQHJl
+ZGhhdC5jb20+Cj4gKlNlbnQ6KiBEZWNlbWJlciAxNCwgMjAyMCAxMzoyNAo+ICpUbzoqIE1hcmlv
+IExpbW9uY2llbGxvIDxtYXJpby5saW1vbmNpZWxsb0BkZWxsLmNvbT47IEplZmYgS2lyc2hlcgo+
+IDxqZWZmcmV5LnQua2lyc2hlckBpbnRlbC5jb20+OyBUb255IE5ndXllbiA8YW50aG9ueS5sLm5n
+dXllbkBpbnRlbC5jb20+Owo+IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3JnIDxpbnRl
+bC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZz47Cj4gRGF2aWQgTWlsbGVyIDxkYXZlbUBkYXZl
+bWxvZnQubmV0PjsgQWFyb24gTWEgPGFhcm9uLm1hQGNhbm9uaWNhbC5jb20+Owo+IE1hcmsgUGVh
+cnNvbiA8bXBlYXJzb25AbGVub3ZvLmNvbT4KPiAqQ2M6KiBsaW51eC1rZXJuZWxAdmdlci5rZXJu
+ZWwub3JnIDxsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnPjsKPiBOZXRkZXYgPG5ldGRldkB2
+Z2VyLmtlcm5lbC5vcmc+OyBBbGV4YW5kZXIgRHV5Y2sKPiA8YWxleGFuZGVyLmR1eWNrQGdtYWls
+LmNvbT47IEpha3ViIEtpY2luc2tpIDxrdWJhQGtlcm5lbC5vcmc+OyBTYXNoYQo+IE5ldGZpbiA8
+c2FzaGEubmVmdGluQGludGVsLmNvbT47IEFhcm9uIEJyb3duIDxhYXJvbi5mLmJyb3duQGludGVs
+LmNvbT47Cj4gU3RlZmFuIEFzc21hbm4gPHNhc3NtYW5uQHJlZGhhdC5jb20+OyBkYXJjYXJpQHJl
+ZGhhdC5jb20KPiA8ZGFyY2FyaUByZWRoYXQuY29tPjsgWWlqdW4uU2hlbkBkZWxsLmNvbSA8WWlq
+dW4uU2hlbkBkZWxsLmNvbT47Cj4gUGVycnkuWXVhbkBkZWxsLmNvbSA8UGVycnkuWXVhbkBkZWxs
+LmNvbT47IGFudGhvbnkud29uZ0BjYW5vbmljYWwuY29tCj4gPGFudGhvbnkud29uZ0BjYW5vbmlj
+YWwuY29tPgo+ICpTdWJqZWN0OiogW0V4dGVybmFsXSBSZTogW1BBVENIIHY0IDAvNF0gSW1wcm92
+ZSBzMGl4IGZsb3dzIGZvciBzeXN0ZW1zCj4gaTIxOUxNCj4gwqAKPiBIaSBBbGwsCj4gCjxzbmlw
+Pgo+IAo+ICMjIwo+IAo+IEkndmUgYWRkZWQgTWFyayBQZWFyc29uIGZyb20gTGVub3ZvIHRvIHRo
+ZSBDYyBzbyB0aGF0IExlbm92bwo+IGNhbiBpbnZlc3RpZ2F0ZSB0aGlzIGlzc3VlIGZ1cnRoZXIu
+Cj4gCj4gTWFyaywgdGhpcyB0aHJlYWQgaXMgYWJvdXQgYW4gaXNzdWUgd2l0aCBlbmFibGluZyBT
+MGl4IHN1cHBvcnQgZm9yCj4gZTEwMDBlIChpMjE5bG0pIGNvbnRyb2xsZXJzLiBUaGlzIHdhcyBl
+bmFibGVkIGluIHRoZSBrZXJuZWwgYQo+IHdoaWxlIGFnbywgYnV0IHRoZW4gZ290IGRpc2FibGVk
+IGFnYWluIG9uIHZQcm8gLyBBTVQgZW5hYmxlZAo+IHN5c3RlbXMgYmVjYXVzZSBvbiBzb21lIHN5
+c3RlbXMgKExlbm92byBYMUM3IGFuZCBub3cgYWxzbyBYMUM4KQo+IHRoaXMgbGVhZCB0byBzdXNw
+ZW5kL3Jlc3VtZSBpc3N1ZXMuCj4gCj4gV2hlbiBBTVQgaXMgYWN0aXZlIHRoZW4gdGhlcmUgaXMg
+YSBoYW5kb3ZlciBoYW5kc2hha2UgZm9yIHRoZQo+IE9TIHRvIGdldCBhY2Nlc3MgdG8gdGhlIGV0
+aGVybmV0IGNvbnRyb2xsZXIgZnJvbSB0aGUgTUUuIFRoZQo+IEludGVsIGZvbGtzIGhhdmUgY2hl
+Y2tlZCBhbmQgdGhlIFdpbmRvd3MgZHJpdmVyIGlzIHVzaW5nIGEgdGltZW91dAo+IG9mIDEgc2Vj
+b25kIGZvciB0aGlzIGhhbmRzaGFrZSwgeWV0IG9uIExlbm92byBzeXN0ZW1zIHRoaXMgaXMKPiB0
+YWtpbmcgMiBzZWNvbmRzLiBUaGlzIGxpa2VseSBoYXMgc29tZXRoaW5nIHRvIGRvIHdpdGggdGhl
+Cj4gTUUgZmlybXdhcmUgb24gdGhlc2UgTGVub3ZvIG1vZGVscywgY2FuIHlvdSBnZXQgdGhlIGZp
+cm13YXJlCj4gdGVhbSBhdCBMZW5vdm8gdG8gaW52ZXN0aWdhdGUgdGhpcyBmdXJ0aGVyID8KQWJz
+b2x1dGVseSAtIEknbGwgYXNrIHRoZW0gdG8gbG9vayBpbnRvIHRoaXMgYWdhaW4uCgpXZSBkaWQg
+dHJ5IHRvIG1ha2UgcHJvZ3Jlc3Mgd2l0aCB0aGlzIHByZXZpb3VzbHkgLSBidXQgaXQgZ290IGEg
+Yml0CnN0dWNrIGFuZCBoZW5jZSB0aGUgbmVlZCBmb3IgdGhlc2UgcGF0Y2hlcy4uLi5idXQgSSBi
+ZWxpZXZlIHRoaW5ncyBtYXkKaGF2ZSBjaGFuZ2VkIGEgYml0IHNvIGl0J3Mgd29ydGggdHJ5aW5n
+IGFnYWluCgpNYXJrCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5v
+cmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQt
+bGFuCg==
