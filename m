@@ -1,100 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 094F52DAD74
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Dec 2020 13:49:30 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73D632DADBD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Dec 2020 14:09:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B2E13845C0;
-	Tue, 15 Dec 2020 12:49:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B425A873F4;
+	Tue, 15 Dec 2020 13:09:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c_6OIb24SDpm; Tue, 15 Dec 2020 12:49:28 +0000 (UTC)
+	with ESMTP id qQGXHkxTeNq5; Tue, 15 Dec 2020 13:09:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6AB1884595;
-	Tue, 15 Dec 2020 12:49:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0AB67873CB;
+	Tue, 15 Dec 2020 13:09:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 130D21BF215
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 12:49:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B87541BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 13:09:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0F12284595
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 12:49:26 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B0E3D85124
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 13:09:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RYhs6IeV5U08 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Dec 2020 12:49:25 +0000 (UTC)
+ with ESMTP id a3-4MzXPsNQG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Dec 2020 13:09:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EBE7984539
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 12:49:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1608036563;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IGmxOp+lsZTAqb+3B7qIl/D1OZdN92HJYfxMLvkO2No=;
- b=MteBt64VRfm01v4kgQCM+D98mv1qf8fItRPO3supQv7Xv/gD23ZUf0Zpd3HloCjspSvyZi
- YQ6xEwsBzyiPvWu2IWYedbr4eeRXoEr6NUdaA4BEHBSzuiFDPcBRFNAhlbCwN+e0zm8ZrV
- z1iw3U8iIWoFuXpdFdieIGxcbspW3zA=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-569-Y71ffMTwPpi4h7-8R-BHsA-1; Tue, 15 Dec 2020 07:49:20 -0500
-X-MC-Unique: Y71ffMTwPpi4h7-8R-BHsA-1
-Received: by mail-ed1-f71.google.com with SMTP id d12so9981137edx.23
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 04:49:20 -0800 (PST)
+Received: from mail-qv1-f68.google.com (mail-qv1-f68.google.com
+ [209.85.219.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B0AD984F2E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 13:09:24 +0000 (UTC)
+Received: by mail-qv1-f68.google.com with SMTP id h16so4979248qvu.8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Dec 2020 05:09:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hdqeyKkCIkULH5xghW+2OPTmzGrNx+Inf0KzB+LcKvU=;
+ b=h0Eu8pPEqm4M6eudkGrpydocbz0OgQtwdUoB2bgUwS39ZQAvEggcsjM02N7PSSJvCA
+ SsS3FvHATcVhRzWfqA7JOtBE2z8I2IdwspFMySEDhpicCeTfvd4r8Xq8MwWRGYCQFLo3
+ /zYsjEmBjL7FS6VwxsA1Uq2Q7I1dUXIZ+ldktKfyWIPT0hli/OyqDK96wU+3UEhWmPNo
+ 3BylVFloB41crHzIVjGIiO8uqxp9odzKPirwkmkMJJzpRAe7vKVg1iBu3GD5txDcwpk9
+ IeaXnG6W1rTi00jihmXS+FuGMyBm3dEiN0rHDjryPBiL9D8cpjKL6u6i5xsIMEvGXOKU
+ jczQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IGmxOp+lsZTAqb+3B7qIl/D1OZdN92HJYfxMLvkO2No=;
- b=SEPgDWCs5aB0Fm1H6qqDWXe17w7RRw2E4atmvAWqokqEWsP+NNR6W6WvCLPOWYCTWf
- z92TNLLkTkYdaC/YZnIRE1zjEtwGIXb+GsUhffbnCwbCVq4CZJuV26AiQGvtHcxQliGf
- 9WSfi9s2dXOzwExYe9UuyNT7YaXlzjmuoO3Baxo6OxirMpYYesVfGrPYHRhcfcJjKj1Q
- RLwJJSKQQLjnPGdhuzFdD71/kbXPDHmDQK697wJtD8Wcj4h0NJpj8PC/i5i8VbNFqob6
- E2sJJ+XbB2pK+LfAw+CD3lT35h2dlkBV4gLiVH5+wUh4ewbYRVqldF7NogXXLN1yTBzI
- 0gig==
-X-Gm-Message-State: AOAM533QbPrUYckKzjnqDCCCjVLv8uiqIl6UG3uV6Aaa6wH93m5PacRc
- 3KBD+LIDV8c4G/MCIYd9TCAB7BifU2FXPDYCCCJQ/zAcExIe5LWwBSfa24OK/OwZHxJTGAI4MEo
- zFOklKD1Mo7KyaFQq1EneilY5ixr2bA==
-X-Received: by 2002:a05:6402:1714:: with SMTP id
- y20mr2251012edu.2.1608036559087; 
- Tue, 15 Dec 2020 04:49:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwxdC979gOoM0XUlTY+f7JZajT+QM9AvZjK/ijPgI4e4+rYBIlyOZR0IQrrF9Jugpe/5Ejo5A==
-X-Received: by 2002:a05:6402:1714:: with SMTP id
- y20mr2250993edu.2.1608036558891; 
- Tue, 15 Dec 2020 04:49:18 -0800 (PST)
-Received: from x1.localdomain
- (2001-1c00-0c0c-fe00-d2ea-f29d-118b-24dc.cable.dynamic.v6.ziggo.nl.
- [2001:1c00:c0c:fe00:d2ea:f29d:118b:24dc])
- by smtp.gmail.com with ESMTPSA id r7sm18271356edv.39.2020.12.15.04.49.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Dec 2020 04:49:18 -0800 (PST)
-To: Mario Limonciello <mario.limonciello@dell.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20201214192935.895174-1-mario.limonciello@dell.com>
- <20201214192935.895174-5-mario.limonciello@dell.com>
-From: Hans de Goede <hdegoede@redhat.com>
-Message-ID: <71cd8bc2-2a34-5a27-64d8-56e5ac9c2b22@redhat.com>
-Date: Tue, 15 Dec 2020 13:49:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hdqeyKkCIkULH5xghW+2OPTmzGrNx+Inf0KzB+LcKvU=;
+ b=F/9cReoJknrTy338prFA0rE8bouuInYVG1Q21kn5Qd6ZRnhs5ot32iuVGMtOlN/RAe
+ cfQe5Grepz6j/RDESNrCr3n7GRn7OizxJi8lM3zG90dnqIxt1mEdMgHLtklz0mHYueM/
+ 0hKxwgdwRqN3PdqTWNWDVBwy1EMg4GMtR+gv3qVDqjus4QW52fu6ZQYlO9qjiKVifMKf
+ aoJxUDHP/89trUq6Y+cWNa26BsbT3AagatTX3B0u5R8ZpYnt4aqYcIk4XavmbwSRgPtx
+ 9YBuQp1BF4pq8VxVWCXjjhDloDbzjC3j65xz5G/5SIC06okZzDZOjtvx0frmtx5gj6GL
+ blUA==
+X-Gm-Message-State: AOAM531PgcE/PQGSKPteMnZOmvUmHIwLwDqSqWgUPoGqMTWvavu36I1r
+ 5BVmrZeW+LUY0Rawe5R1unPWab/ssRKKrDeFQP8=
+X-Google-Smtp-Source: ABdhPJxlGdBwLcqYBPtaQEMyirP/hdBZ95RAAqVxvBNdnGMzkIna/DL9tdprm+WLHCBJjyDfXP66FkFmREuxLR2xRkE=
+X-Received: by 2002:a0c:b3d1:: with SMTP id b17mr37337119qvf.41.1608037763580; 
+ Tue, 15 Dec 2020 05:09:23 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201214192935.895174-5-mario.limonciello@dell.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v5 4/4] e1000e: Export S0ix flags to
- ethtool
+References: <CAA85sZs8Li7+8BQWj0e+Qrxes1VF6K_Ukqrqgs1E3hHmaXqsbQ@mail.gmail.com>
+ <20201215004004.GA280628@bjorn-Precision-5520>
+In-Reply-To: <20201215004004.GA280628@bjorn-Precision-5520>
+From: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Tue, 15 Dec 2020 14:09:12 +0100
+Message-ID: <CAA85sZvUvUTtyKR8rTDwGa=1sNrhv4cA8LQ+6TXi20Sq9Yn8fw@mail.gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH 1/3] PCI/ASPM: Use the path max in L1
+ ASPM latency check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,184 +81,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>, Perry.Yuan@dell.com,
- linux-kernel@vger.kernel.org, anthony.wong@canonical.com, Yijun.Shen@dell.com,
- Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
- Stefan Assmann <sassmann@redhat.com>
+Cc: Puranjay Mohan <puranjay12@gmail.com>,
+ linux-pci <linux-pci@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ "Saheed O. Bolarinwa" <refactormyself@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+On Tue, Dec 15, 2020 at 1:40 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Mon, Dec 14, 2020 at 11:56:31PM +0100, Ian Kumlien wrote:
+> > On Mon, Dec 14, 2020 at 8:19 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> > > If you're interested, you could probably unload the Realtek drivers,
+> > > remove the devices, and set the PCI_EXP_LNKCTL_LD (Link Disable) bit
+> > > in 02:04.0, e.g.,
+> > >
+> > >   # RT=/sys/devices/pci0000:00/0000:00:01.2/0000:01:00.0/0000:02:04.0
+> > >   # echo 1 > $RT/0000:04:00.0/remove
+> > >   # echo 1 > $RT/0000:04:00.1/remove
+> > >   # echo 1 > $RT/0000:04:00.2/remove
+> > >   # echo 1 > $RT/0000:04:00.4/remove
+> > >   # echo 1 > $RT/0000:04:00.7/remove
+> > >   # setpci -s02:04.0 CAP_EXP+0x10.w=0x0010
+> > >
+> > > That should take 04:00.x out of the picture.
+> >
+> > Didn't actually change the behaviour, I'm suspecting an errata for AMD pcie...
+> >
+> > So did this, with unpatched kernel:
+> > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > [  5]   0.00-1.00   sec  4.56 MBytes  38.2 Mbits/sec    0   67.9 KBytes
+> > [  5]   1.00-2.00   sec  4.47 MBytes  37.5 Mbits/sec    0   96.2 KBytes
+> > [  5]   2.00-3.00   sec  4.85 MBytes  40.7 Mbits/sec    0   50.9 KBytes
+> > [  5]   3.00-4.00   sec  4.23 MBytes  35.4 Mbits/sec    0   70.7 KBytes
+> > [  5]   4.00-5.00   sec  4.23 MBytes  35.4 Mbits/sec    0   48.1 KBytes
+> > [  5]   5.00-6.00   sec  4.23 MBytes  35.4 Mbits/sec    0   45.2 KBytes
+> > [  5]   6.00-7.00   sec  4.23 MBytes  35.4 Mbits/sec    0   36.8 KBytes
+> > [  5]   7.00-8.00   sec  3.98 MBytes  33.4 Mbits/sec    0   36.8 KBytes
+> > [  5]   8.00-9.00   sec  4.23 MBytes  35.4 Mbits/sec    0   36.8 KBytes
+> > [  5]   9.00-10.00  sec  4.23 MBytes  35.4 Mbits/sec    0   48.1 KBytes
+> > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > [ ID] Interval           Transfer     Bitrate         Retr
+> > [  5]   0.00-10.00  sec  43.2 MBytes  36.2 Mbits/sec    0             sender
+> > [  5]   0.00-10.00  sec  42.7 MBytes  35.8 Mbits/sec                  receiver
+> >
+> > and:
+> > echo 0 > /sys/devices/pci0000:00/0000:00:01.2/0000:01:00.0/link/l1_aspm
+>
+> BTW, thanks a lot for testing out the "l1_aspm" sysfs file.  I'm very
+> pleased that it seems to be working as intended.
 
-On 12/14/20 8:29 PM, Mario Limonciello wrote:
-> This flag can be used by an end user to disable S0ix flows on a
-> buggy system or by an OEM for development purposes.
-> 
-> If you need this flag to be persisted across reboots, it's suggested
-> to use a udev rule to call adjust it until the kernel could have your
-> configuration in a disallow list.
-> 
-> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+It was nice to find it for easy disabling :)
 
-Thanks, patch looks good to me:
+> > and:
+> > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > [  5]   0.00-1.00   sec   113 MBytes   951 Mbits/sec  153    772 KBytes
+> > [  5]   1.00-2.00   sec   109 MBytes   912 Mbits/sec  276    550 KBytes
+> > [  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec  123    625 KBytes
+> > [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec   31    687 KBytes
+> > [  5]   4.00-5.00   sec   110 MBytes   923 Mbits/sec    0    679 KBytes
+> > [  5]   5.00-6.00   sec   110 MBytes   923 Mbits/sec  136    577 KBytes
+> > [  5]   6.00-7.00   sec   110 MBytes   923 Mbits/sec  214    645 KBytes
+> > [  5]   7.00-8.00   sec   110 MBytes   923 Mbits/sec   32    628 KBytes
+> > [  5]   8.00-9.00   sec   110 MBytes   923 Mbits/sec   81    537 KBytes
+> > [  5]   9.00-10.00  sec   110 MBytes   923 Mbits/sec   10    577 KBytes
+> > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > [ ID] Interval           Transfer     Bitrate         Retr
+> > [  5]   0.00-10.00  sec  1.08 GBytes   927 Mbits/sec  1056             sender
+> > [  5]   0.00-10.00  sec  1.07 GBytes   923 Mbits/sec                  receiver
+> >
+> > But this only confirms that the fix i experience is a side effect.
+> >
+> > The original code is still wrong :)
+>
+> What exactly is this machine?  Brand, model, config?  Maybe you could
+> add this and a dmesg log to the buzilla?  It seems like other people
+> should be seeing the same problem, so I'm hoping to grub around on the
+> web to see if there are similar reports involving these devices.
 
-Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+ASUS Pro WS X570-ACE with AMD Ryzen 9 3900X
 
-Regards,
+> https://bugzilla.kernel.org/show_bug.cgi?id=209725
+>
+> Here's one that is superficially similar:
+> https://linux-hardware.org/index.php?probe=e5f24075e5&log=lspci_all
+> in that it has a RP -- switch -- I211 path.  Interestingly, the switch
+> here advertises <64us L1 exit latency instead of the <32us latency
+> your switch advertises.  Of course, I can't tell if it's exactly the
+> same switch.
 
-Hans
+Same chipset it seems
 
-> ---
->  drivers/net/ethernet/intel/e1000e/e1000.h   |  1 +
->  drivers/net/ethernet/intel/e1000e/ethtool.c | 46 +++++++++++++++++++++
->  drivers/net/ethernet/intel/e1000e/netdev.c  |  9 ++--
->  3 files changed, 52 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-> index ba7a0f8f6937..5b2143f4b1f8 100644
-> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> @@ -436,6 +436,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca);
->  #define FLAG2_DFLT_CRC_STRIPPING          BIT(12)
->  #define FLAG2_CHECK_RX_HWTSTAMP           BIT(13)
->  #define FLAG2_CHECK_SYSTIM_OVERFLOW       BIT(14)
-> +#define FLAG2_ENABLE_S0IX_FLOWS           BIT(15)
->  
->  #define E1000_RX_DESC_PS(R, i)	    \
->  	(&(((union e1000_rx_desc_packet_split *)((R).desc))[i]))
-> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-> index 03215b0aee4b..06442e6bef73 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-> @@ -23,6 +23,13 @@ struct e1000_stats {
->  	int stat_offset;
->  };
->  
-> +static const char e1000e_priv_flags_strings[][ETH_GSTRING_LEN] = {
-> +#define E1000E_PRIV_FLAGS_S0IX_ENABLED	BIT(0)
-> +	"s0ix-enabled",
-> +};
-> +
-> +#define E1000E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(e1000e_priv_flags_strings)
-> +
->  #define E1000_STAT(str, m) { \
->  		.stat_string = str, \
->  		.type = E1000_STATS, \
-> @@ -1776,6 +1783,8 @@ static int e1000e_get_sset_count(struct net_device __always_unused *netdev,
->  		return E1000_TEST_LEN;
->  	case ETH_SS_STATS:
->  		return E1000_STATS_LEN;
-> +	case ETH_SS_PRIV_FLAGS:
-> +		return E1000E_PRIV_FLAGS_STR_LEN;
->  	default:
->  		return -EOPNOTSUPP;
->  	}
-> @@ -2097,6 +2106,10 @@ static void e1000_get_strings(struct net_device __always_unused *netdev,
->  			p += ETH_GSTRING_LEN;
->  		}
->  		break;
-> +	case ETH_SS_PRIV_FLAGS:
-> +		memcpy(data, e1000e_priv_flags_strings,
-> +		       E1000E_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
-> +		break;
->  	}
->  }
->  
-> @@ -2305,6 +2318,37 @@ static int e1000e_get_ts_info(struct net_device *netdev,
->  	return 0;
->  }
->  
-> +static u32 e1000e_get_priv_flags(struct net_device *netdev)
-> +{
-> +	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	u32 priv_flags = 0;
-> +
-> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
-> +		priv_flags |= E1000E_PRIV_FLAGS_S0IX_ENABLED;
-> +
-> +	return priv_flags;
-> +}
-> +
-> +static int e1000e_set_priv_flags(struct net_device *netdev, u32 priv_flags)
-> +{
-> +	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	unsigned int flags2 = adapter->flags2;
-> +
-> +	flags2 &= ~FLAG2_ENABLE_S0IX_FLOWS;
-> +	if (priv_flags & E1000E_PRIV_FLAGS_S0IX_ENABLED) {
-> +		struct e1000_hw *hw = &adapter->hw;
-> +
-> +		if (hw->mac.type < e1000_pch_cnp)
-> +			return -EINVAL;
-> +		flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
-> +	}
-> +
-> +	if (flags2 != adapter->flags2)
-> +		adapter->flags2 = flags2;
-> +
-> +	return 0;
-> +}
-> +
->  static const struct ethtool_ops e1000_ethtool_ops = {
->  	.supported_coalesce_params = ETHTOOL_COALESCE_RX_USECS,
->  	.get_drvinfo		= e1000_get_drvinfo,
-> @@ -2336,6 +2380,8 @@ static const struct ethtool_ops e1000_ethtool_ops = {
->  	.set_eee		= e1000e_set_eee,
->  	.get_link_ksettings	= e1000_get_link_ksettings,
->  	.set_link_ksettings	= e1000_set_link_ksettings,
-> +	.get_priv_flags		= e1000e_get_priv_flags,
-> +	.set_priv_flags		= e1000e_set_priv_flags,
->  };
->  
->  void e1000e_set_ethtool_ops(struct net_device *netdev)
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index b9800ba2006c..e9b82c209c2d 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6923,7 +6923,6 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
->  	struct pci_dev *pdev = to_pci_dev(dev);
-> -	struct e1000_hw *hw = &adapter->hw;
->  	int rc;
->  
->  	e1000e_flush_lpic(pdev);
-> @@ -6935,7 +6934,7 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
->  		e1000e_pm_thaw(dev);
->  	} else {
->  		/* Introduce S0ix implementation */
-> -		if (hw->mac.type >= e1000_pch_cnp)
-> +		if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->  			e1000e_s0ix_entry_flow(adapter);
->  	}
->  
-> @@ -6947,11 +6946,10 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
->  	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
->  	struct pci_dev *pdev = to_pci_dev(dev);
-> -	struct e1000_hw *hw = &adapter->hw;
->  	int rc;
->  
->  	/* Introduce S0ix implementation */
-> -	if (hw->mac.type >= e1000_pch_cnp)
-> +	if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
->  		e1000e_s0ix_exit_flow(adapter);
->  
->  	rc = __e1000_resume(pdev);
-> @@ -7615,6 +7613,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->  	if (!(adapter->flags & FLAG_HAS_AMT))
->  		e1000e_get_hw_control(adapter);
->  
-> +	if (hw->mac.type >= e1000_pch_cnp)
-> +		adapter->flags2 |= FLAG2_ENABLE_S0IX_FLOWS;
-> +
->  	strlcpy(netdev->name, "eth%d", sizeof(netdev->name));
->  	err = register_netdev(netdev);
->  	if (err)
-> 
+I'm running bios version:
+        Version: 2206
+        Release Date: 08/13/2020
 
+ANd latest is:
+Version 3003
+2020/12/07
+
+Will test upgrading that as well, but it could be that they report the
+incorrect latency of the switch - I don't know how many things AGESA
+changes but... It's been updated twice since my upgrade.
+
+> Bjorn
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
