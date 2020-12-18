@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 481E82DE200
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Dec 2020 12:30:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E40B2DE379
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Dec 2020 14:50:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D0ED787AF8;
-	Fri, 18 Dec 2020 11:30:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D498487642;
+	Fri, 18 Dec 2020 13:50:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5bBrE97xmTTq; Fri, 18 Dec 2020 11:30:25 +0000 (UTC)
+	with ESMTP id SX9+3oRe3Dtm; Fri, 18 Dec 2020 13:50:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AA39E87AFB;
-	Fri, 18 Dec 2020 11:30:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5B19287094;
+	Fri, 18 Dec 2020 13:50:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 39C111BF417
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 11:30:23 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 98E041BF844
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 13:50:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2E65387824
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 11:30:23 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8C7EB87637
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 13:50:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fH4Jmxu-WoRH for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Dec 2020 11:30:22 +0000 (UTC)
+ with ESMTP id SNPXET4OACEz for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Dec 2020 13:50:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EDB1F87807
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 11:30:21 +0000 (UTC)
-IronPort-SDR: toGbPR1InVv3uqNXMnbLO7Uf1Hzlb385jHUozgmWEAGzE8UkRSyKuZvSZC+ldBJudYoAIdf0ta
- O2GSXOIZJ/ZA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9838"; a="260151219"
-X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="260151219"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F34A786F81
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 13:50:01 +0000 (UTC)
+IronPort-SDR: wUixcTRMpracnxuDdNsjRYAdyqBapSTbe9mr2wuAJg34ZcWSFiBR2Zmh/83vBtom0HpAtPNJ5N
+ ZSqaUcoOebRg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9838"; a="154660674"
+X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="154660674"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2020 03:30:21 -0800
-IronPort-SDR: TfJYKm2K/Xu7tgYpdOZN8GX4Q6fI22dKQpab1GQdadCh5j5bi6fna0aCFp01u5Mm1GFBNtBZDT
- MxTAE0oiwTzg==
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Dec 2020 05:50:01 -0800
+IronPort-SDR: +OR6Gl8PZK1u7R9CrHwWCwFcTIvTsL7SFRQe24SfXVLCv0uDJYMwks+5UPoxpCBJ6oDSvMui/Q
+ khOFv+jvjD4g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="393549971"
-Received: from lkp-server02.sh.intel.com (HELO c4fb2a2464e8) ([10.239.97.151])
- by FMSMGA003.fm.intel.com with ESMTP; 18 Dec 2020 03:30:20 -0800
-Received: from kbuild by c4fb2a2464e8 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kqDxj-0000E6-Qi; Fri, 18 Dec 2020 11:30:19 +0000
-Date: Fri, 18 Dec 2020 19:29:25 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5fdc9295.3QSsmOluEYlvWWjk%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="393741231"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by FMSMGA003.fm.intel.com with ESMTP; 18 Dec 2020 05:50:00 -0800
+Date: Fri, 18 Dec 2020 14:40:04 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Message-ID: <20201218134004.GA39364@ranger.igk.intel.com>
+References: <20201218103608.4359-1-mateusz.palczewski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
- f1340265726e0edf8a8cef28e665b28ad6302ce9
+Content-Disposition: inline
+In-Reply-To: <20201218103608.4359-1-mateusz.palczewski@intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH net v4 0/2] Flow director support for
+ IPv6 and VLAN field
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,132 +67,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  40GbE
-branch HEAD: f1340265726e0edf8a8cef28e665b28ad6302ce9  iavf: fix double-release of rtnl_lock
+On Fri, Dec 18, 2020 at 10:36:08AM +0000, Mateusz Palczewski wrote:
+> This series focuses on adding flow director for both IPv6 support and
+> VLAN field.
+> 
+> Patch 1/2 focuses on implementing a flow director support for IPv6 by
+> adding packet templates, handlers and refactoring the code to make it
+> more generic.
+> 
+> Patch 2/2 allows user to specify VLAN field and add it to flow
+> director by showing vlan field in "ethtool -n ethx" command. It also
+> refactors static static arrays with runtime dummy packet creation.
+> 
+> v4: Changed the name of patch series to keep the upstream integrity
 
-elapsed time: 722m
+Keep the whole history of revision changes. Also, in patch descriptions
+you have a 'v2' change but it's v4 right now.
 
-configs tested: 103
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                  mpc885_ads_defconfig
-m68k                          hp300_defconfig
-sh                          landisk_defconfig
-arm                        shmobile_defconfig
-m68k                          sun3x_defconfig
-sh                         ap325rxa_defconfig
-parisc                generic-64bit_defconfig
-arm                        mvebu_v5_defconfig
-powerpc                     taishan_defconfig
-arm                         assabet_defconfig
-c6x                              alldefconfig
-openrisc                         alldefconfig
-powerpc                      ppc64e_defconfig
-arm                          imote2_defconfig
-powerpc                    amigaone_defconfig
-sh                          rsk7269_defconfig
-h8300                               defconfig
-arm                      jornada720_defconfig
-powerpc                           allnoconfig
-arm                          moxart_defconfig
-powerpc                    socrates_defconfig
-arm                          ep93xx_defconfig
-sh                           se7750_defconfig
-arm                         hackkit_defconfig
-arm64                            alldefconfig
-mips                        jmr3927_defconfig
-powerpc                     tqm8548_defconfig
-um                            kunit_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-i386                 randconfig-a001-20201217
-i386                 randconfig-a004-20201217
-i386                 randconfig-a003-20201217
-i386                 randconfig-a002-20201217
-i386                 randconfig-a006-20201217
-i386                 randconfig-a005-20201217
-x86_64               randconfig-a003-20201217
-x86_64               randconfig-a006-20201217
-x86_64               randconfig-a002-20201217
-x86_64               randconfig-a005-20201217
-x86_64               randconfig-a004-20201217
-x86_64               randconfig-a001-20201217
-i386                 randconfig-a014-20201217
-i386                 randconfig-a013-20201217
-i386                 randconfig-a012-20201217
-i386                 randconfig-a011-20201217
-i386                 randconfig-a015-20201217
-i386                 randconfig-a016-20201217
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a016-20201217
-x86_64               randconfig-a012-20201217
-x86_64               randconfig-a013-20201217
-x86_64               randconfig-a015-20201217
-x86_64               randconfig-a014-20201217
-x86_64               randconfig-a011-20201217
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> 
+> Przemyslaw Patynowski (2):
+>   i40e: Add flow director support for IPv6
+>   i40e: VLAN field for flow director
+> 
+>  drivers/net/ethernet/intel/i40e/i40e.h        |  11 +-
+>  .../net/ethernet/intel/i40e/i40e_ethtool.c    | 239 +++++++-
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   |  79 ++-
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 534 +++++++++++-------
+>  drivers/net/ethernet/intel/i40e/i40e_type.h   |   2 +
+>  5 files changed, 647 insertions(+), 218 deletions(-)
+> 
+> -- 
+> 2.17.1
+> 
+> ---------------------------------------------------------------------
+> Intel Technology Poland sp. z o.o.
+> ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+> Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+> This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+>  
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
