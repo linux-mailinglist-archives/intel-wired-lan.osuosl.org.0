@@ -1,74 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94EB02DDBEC
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Dec 2020 00:37:35 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A16652DE001
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Dec 2020 09:40:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 45C17876F2;
-	Thu, 17 Dec 2020 23:37:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 57CF487854;
+	Fri, 18 Dec 2020 08:40:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WhQTaGGsaopY; Thu, 17 Dec 2020 23:37:34 +0000 (UTC)
+	with ESMTP id u6-iVCUZHkWQ; Fri, 18 Dec 2020 08:40:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1296487204;
-	Thu, 17 Dec 2020 23:37:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2123E87827;
+	Fri, 18 Dec 2020 08:40:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9BC4A1BF846
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Dec 2020 23:37:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B0C451BF390
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 08:40:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8B72420422
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Dec 2020 23:37:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 795162E10C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 08:40:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w-w7p8xbAYVM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Dec 2020 23:37:29 +0000 (UTC)
+ with ESMTP id gc52qfBTZjOo for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Dec 2020 08:40:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f181.google.com (mail-qt1-f181.google.com
- [209.85.160.181])
- by silver.osuosl.org (Postfix) with ESMTPS id 02E63203F8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Dec 2020 23:37:28 +0000 (UTC)
-Received: by mail-qt1-f181.google.com with SMTP id b9so160532qtr.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Dec 2020 15:37:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kD1MCPsoar6G9vdvcEBH5KP4RAgDclspZS+ZkNc4Ibw=;
- b=vF1XpAg3XI4izQ9RMo3HIqPyUz+/ETJm89Xj86uC113NDLGEhaO0joAeBhgp1fZ3Du
- rNVPb8S2hZecAOpE2YsGcafHsDWtyXjI01SgtBra1oQbjY6nDfBzzFMPhsidwZ9o1ZQm
- kCVZSO1smvTI9+tYfEC9A3JGkmA5gHniIbefKqv0Qo6LHVB2znzwx/Aob970XlUClcce
- /HLH2bnFpNFIx8Z4ovAIU30r/uGnZ266YC+rScWuKg5Qm2pquEW7PU0fvvLuTcJ/AFmC
- hAco2pfmL97oiHf1D9kgKxKxF2PMv5d2F3sWwNgv7ERM2/r+TUGaUYfhN0ocCUUquNWk
- TRWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kD1MCPsoar6G9vdvcEBH5KP4RAgDclspZS+ZkNc4Ibw=;
- b=kr67E5lkiXQj+MIzi9EmB8Zo6DPrb34yToYHjlGqR9GKq6SkTN4yd5IZLsWJ77w4JF
- G9EIjbvzsl7TC1gEJ8X5i3gYo+ikr1FtqUILeqiI3AJwyohhFdxPVPylypGTIReRKAuM
- eg9P5peNW6zPs5RyOhLqUyBOOEKrVFqqYCLcX5ZYS7SbwW24xiSFT3wFHy8oI4VY816F
- lBvBw+h4a5/79QiwFscc5oGnsErywEpPGawAKFWIXyrG0YyHbAUuvvgXeej8MeWGjKUq
- QC5oBQzEEfAf9pYum+QSWZXajd1Oby30uEt5mnEG+I4V2bLuKEdKiFmd25I9o7B358/N
- wmdw==
-X-Gm-Message-State: AOAM531+r9zgR8jmv0uBKl2JjiW/Kf73o96xgPt84kvnvTI0kvR0jn+h
- /+yCYTsspWV+zEuuUcpqhvKPDJLy8fqIKSUvrRM=
-X-Google-Smtp-Source: ABdhPJxTAw/uYHDkTUNNqfptLLfb2aLcIaqUznoO4lkmP/y4u+xIxscOz0xMEGy3En40Zo/6ZZjRIsbVCe9ALFWfGks=
-X-Received: by 2002:ac8:4e47:: with SMTP id e7mr1374898qtw.262.1608248247634; 
- Thu, 17 Dec 2020 15:37:27 -0800 (PST)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id F22FD2E103
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Dec 2020 08:40:04 +0000 (UTC)
+IronPort-SDR: me4LqZ42rvyDOFG9djQBdKBF2mba9oZPmeqlS57MnDm3JuIj5owiqZAlKnw0bivRTSZ48Hitdi
+ Mz4GSNRfwS4Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9838"; a="174631162"
+X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="174631162"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Dec 2020 00:40:02 -0800
+IronPort-SDR: kQhtueTlSRXA2ToIwIWpvVGUqgOlsoUt7zFTC1hBXOj3rA3Xw8DrFJJtXT7903W5uLk8rwjz3A
+ QSmvBzhP3wRA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,430,1599548400"; d="scan'208";a="413894416"
+Received: from lkp-server02.sh.intel.com (HELO c4fb2a2464e8) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 18 Dec 2020 00:40:00 -0800
+Received: from kbuild by c4fb2a2464e8 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kqBIt-00007t-W9; Fri, 18 Dec 2020 08:39:59 +0000
+Date: Fri, 18 Dec 2020 16:39:16 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5fdc6ab4./1hqhTgdaDcRUBvC%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <CAA85sZsiuE9rN7uVCuhgiki-rffo4mYbh6BKvuGaJAK5CsPgKw@mail.gmail.com>
- <20201216232103.GA368161@bjorn-Precision-5520>
-In-Reply-To: <20201216232103.GA368161@bjorn-Precision-5520>
-From: Ian Kumlien <ian.kumlien@gmail.com>
-Date: Fri, 18 Dec 2020 00:37:16 +0100
-Message-ID: <CAA85sZtez59wrAr8AVdbaZWvkPhVeurcznQ0kbL3UVx2FqLJ7w@mail.gmail.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [Intel-wired-lan] [PATCH 1/3] PCI/ASPM: Use the path max in L1
- ASPM latency check
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ caf5876592122a2a31a309e5d3679a18deca8822
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,165 +67,146 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Puranjay Mohan <puranjay12@gmail.com>,
- linux-pci <linux-pci@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>,
- "Saheed O. Bolarinwa" <refactormyself@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Linux Kernel Network Developers <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 17, 2020 at 12:21 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Wed, Dec 16, 2020 at 12:20:53PM +0100, Ian Kumlien wrote:
-> > On Wed, Dec 16, 2020 at 1:08 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > On Tue, Dec 15, 2020 at 02:09:12PM +0100, Ian Kumlien wrote:
-> > > > On Tue, Dec 15, 2020 at 1:40 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > > > On Mon, Dec 14, 2020 at 11:56:31PM +0100, Ian Kumlien wrote:
-> > > > > > On Mon, Dec 14, 2020 at 8:19 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > > >
-> > > > > > > If you're interested, you could probably unload the Realtek drivers,
-> > > > > > > remove the devices, and set the PCI_EXP_LNKCTL_LD (Link Disable) bit
-> > > > > > > in 02:04.0, e.g.,
-> > > > > > >
-> > > > > > >   # RT=/sys/devices/pci0000:00/0000:00:01.2/0000:01:00.0/0000:02:04.0
-> > > > > > >   # echo 1 > $RT/0000:04:00.0/remove
-> > > > > > >   # echo 1 > $RT/0000:04:00.1/remove
-> > > > > > >   # echo 1 > $RT/0000:04:00.2/remove
-> > > > > > >   # echo 1 > $RT/0000:04:00.4/remove
-> > > > > > >   # echo 1 > $RT/0000:04:00.7/remove
-> > > > > > >   # setpci -s02:04.0 CAP_EXP+0x10.w=0x0010
-> > > > > > >
-> > > > > > > That should take 04:00.x out of the picture.
-> > > > > >
-> > > > > > Didn't actually change the behaviour, I'm suspecting an errata for AMD pcie...
-> > > > > >
-> > > > > > So did this, with unpatched kernel:
-> > > > > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-> > > > > > [  5]   0.00-1.00   sec  4.56 MBytes  38.2 Mbits/sec    0   67.9 KBytes
-> > > > > > [  5]   1.00-2.00   sec  4.47 MBytes  37.5 Mbits/sec    0   96.2 KBytes
-> > > > > > [  5]   2.00-3.00   sec  4.85 MBytes  40.7 Mbits/sec    0   50.9 KBytes
-> > > > > > [  5]   3.00-4.00   sec  4.23 MBytes  35.4 Mbits/sec    0   70.7 KBytes
-> > > > > > [  5]   4.00-5.00   sec  4.23 MBytes  35.4 Mbits/sec    0   48.1 KBytes
-> > > > > > [  5]   5.00-6.00   sec  4.23 MBytes  35.4 Mbits/sec    0   45.2 KBytes
-> > > > > > [  5]   6.00-7.00   sec  4.23 MBytes  35.4 Mbits/sec    0   36.8 KBytes
-> > > > > > [  5]   7.00-8.00   sec  3.98 MBytes  33.4 Mbits/sec    0   36.8 KBytes
-> > > > > > [  5]   8.00-9.00   sec  4.23 MBytes  35.4 Mbits/sec    0   36.8 KBytes
-> > > > > > [  5]   9.00-10.00  sec  4.23 MBytes  35.4 Mbits/sec    0   48.1 KBytes
-> > > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
-> > > > > > [ ID] Interval           Transfer     Bitrate         Retr
-> > > > > > [  5]   0.00-10.00  sec  43.2 MBytes  36.2 Mbits/sec    0             sender
-> > > > > > [  5]   0.00-10.00  sec  42.7 MBytes  35.8 Mbits/sec                  receiver
-> > > > > >
-> > > > > > and:
-> > > > > > echo 0 > /sys/devices/pci0000:00/0000:00:01.2/0000:01:00.0/link/l1_aspm
-> > > > >
-> > > > > BTW, thanks a lot for testing out the "l1_aspm" sysfs file.  I'm very
-> > > > > pleased that it seems to be working as intended.
-> > > >
-> > > > It was nice to find it for easy disabling :)
-> > > >
-> > > > > > and:
-> > > > > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-> > > > > > [  5]   0.00-1.00   sec   113 MBytes   951 Mbits/sec  153    772 KBytes
-> > > > > > [  5]   1.00-2.00   sec   109 MBytes   912 Mbits/sec  276    550 KBytes
-> > > > > > [  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec  123    625 KBytes
-> > > > > > [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec   31    687 KBytes
-> > > > > > [  5]   4.00-5.00   sec   110 MBytes   923 Mbits/sec    0    679 KBytes
-> > > > > > [  5]   5.00-6.00   sec   110 MBytes   923 Mbits/sec  136    577 KBytes
-> > > > > > [  5]   6.00-7.00   sec   110 MBytes   923 Mbits/sec  214    645 KBytes
-> > > > > > [  5]   7.00-8.00   sec   110 MBytes   923 Mbits/sec   32    628 KBytes
-> > > > > > [  5]   8.00-9.00   sec   110 MBytes   923 Mbits/sec   81    537 KBytes
-> > > > > > [  5]   9.00-10.00  sec   110 MBytes   923 Mbits/sec   10    577 KBytes
-> > > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
-> > > > > > [ ID] Interval           Transfer     Bitrate         Retr
-> > > > > > [  5]   0.00-10.00  sec  1.08 GBytes   927 Mbits/sec  1056             sender
-> > > > > > [  5]   0.00-10.00  sec  1.07 GBytes   923 Mbits/sec                  receiver
-> > > > > >
-> > > > > > But this only confirms that the fix i experience is a side effect.
-> > > > > >
-> > > > > > The original code is still wrong :)
-> > > > >
-> > > > > What exactly is this machine?  Brand, model, config?  Maybe you could
-> > > > > add this and a dmesg log to the buzilla?  It seems like other people
-> > > > > should be seeing the same problem, so I'm hoping to grub around on the
-> > > > > web to see if there are similar reports involving these devices.
-> > > >
-> > > > ASUS Pro WS X570-ACE with AMD Ryzen 9 3900X
-> > >
-> > > Possible similar issues:
-> > >
-> > >   https://forums.unraid.net/topic/94274-hardware-upgrade-woes/
-> > >   https://forums.servethehome.com/index.php?threads/upgraded-my-home-server-from-intel-to-amd-virtual-disk-stuck-in-degraded-unhealty-state.25535/ (Windows)
-> >
-> > Could be, I suspect that we need a workaround (is there a quirk for
-> > "reporting wrong latency"?) and the patches.
->
-> I don't think there's currently a quirk mechanism that would work for
-> correcting latencies, but there should be, and we could add one if we
-> can figure out for sure what's wrong.
->
-> I found this:
->
->   https://www.reddit.com/r/VFIO/comments/hgk3cz/x570_pcieclassic_pci_bridge_woes/
->
-> which looks like it should be the same hardware (if you can collect a
-> dmesg log or "lspci -nnvv" output we could tell for sure) and is
-> interesting because it includes some lspci output that shows different
-> L1 exit latencies than what you see.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git  dev-queue
+branch HEAD: caf5876592122a2a31a309e5d3679a18deca8822  i40e, xsk: Simplify the do-while allocation loop
 
-I'll send both of them separately to you, no reason to push that to
-everyone i assume.. =)
+elapsed time: 724m
 
-> > > > > https://bugzilla.kernel.org/show_bug.cgi?id=209725
-> > > > >
-> > > > > Here's one that is superficially similar:
-> > > > > https://linux-hardware.org/index.php?probe=e5f24075e5&log=lspci_all
-> > > > > in that it has a RP -- switch -- I211 path.  Interestingly, the switch
-> > > > > here advertises <64us L1 exit latency instead of the <32us latency
-> > > > > your switch advertises.  Of course, I can't tell if it's exactly the
-> > > > > same switch.
-> > > >
-> > > > Same chipset it seems
-> > > >
-> > > > I'm running bios version:
-> > > >         Version: 2206
-> > > >         Release Date: 08/13/2020
-> > > >
-> > > > ANd latest is:
-> > > > Version 3003
-> > > > 2020/12/07
-> > > >
-> > > > Will test upgrading that as well, but it could be that they report the
-> > > > incorrect latency of the switch - I don't know how many things AGESA
-> > > > changes but... It's been updated twice since my upgrade.
-> > >
-> > > I wouldn't be surprised if the advertised exit latencies are writable
-> > > by the BIOS because it probably depends on electrical characteristics
-> > > outside the switch.  If so, it's possible ASUS just screwed it up.
-> >
-> > Not surprisingly, nothing changed.
-> > (There was a lot of "stability improvements")
->
-> I wouldn't be totally surprised if ASUS didn't test that I211 NIC
-> under Linux, but I'm sure it must work well under Windows.  If you
-> happen to have Windows, a free trial version of AIDA64 should be able
-> to give us the equivalent of "lspci -vv".
+configs tested: 117
+configs skipped: 2
 
-I don't have windows, haven't had windows at home since '98 ;)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-I'll check with some friends that dualboot om systems that might be
-similar - will see what i can get
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                               defconfig
+arm                         cm_x300_defconfig
+powerpc                      pasemi_defconfig
+powerpc                      mgcoge_defconfig
+powerpc                     rainier_defconfig
+s390                       zfcpdump_defconfig
+riscv                    nommu_k210_defconfig
+c6x                         dsk6455_defconfig
+arm                            mps2_defconfig
+powerpc                         ps3_defconfig
+mips                malta_kvm_guest_defconfig
+mips                  cavium_octeon_defconfig
+mips                      bmips_stb_defconfig
+mips                       capcella_defconfig
+openrisc                         alldefconfig
+powerpc                      ppc64e_defconfig
+arm                          imote2_defconfig
+m68k                          hp300_defconfig
+powerpc                    amigaone_defconfig
+sh                          rsk7269_defconfig
+h8300                               defconfig
+arm                      jornada720_defconfig
+powerpc                           allnoconfig
+xtensa                generic_kc705_defconfig
+powerpc                    mvme5100_defconfig
+powerpc                 mpc832x_mds_defconfig
+arm                         lubbock_defconfig
+ia64                      gensparse_defconfig
+sh                            migor_defconfig
+powerpc                     tqm8541_defconfig
+powerpc                 mpc8313_rdb_defconfig
+powerpc                      ppc6xx_defconfig
+xtensa                           alldefconfig
+mips                      malta_kvm_defconfig
+mips                           jazz_defconfig
+xtensa                    smp_lx200_defconfig
+mips                          ath25_defconfig
+ia64                            zx1_defconfig
+h8300                       h8s-sim_defconfig
+powerpc                      bamboo_defconfig
+arm                        mvebu_v7_defconfig
+powerpc                     ksi8560_defconfig
+ia64                             alldefconfig
+sh                     magicpanelr2_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+x86_64               randconfig-a003-20201217
+x86_64               randconfig-a006-20201217
+x86_64               randconfig-a002-20201217
+x86_64               randconfig-a005-20201217
+x86_64               randconfig-a004-20201217
+x86_64               randconfig-a001-20201217
+i386                 randconfig-a001-20201217
+i386                 randconfig-a004-20201217
+i386                 randconfig-a003-20201217
+i386                 randconfig-a002-20201217
+i386                 randconfig-a006-20201217
+i386                 randconfig-a005-20201217
+i386                 randconfig-a014-20201217
+i386                 randconfig-a013-20201217
+i386                 randconfig-a012-20201217
+i386                 randconfig-a011-20201217
+i386                 randconfig-a015-20201217
+i386                 randconfig-a016-20201217
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
+clang tested configs:
+x86_64               randconfig-a016-20201217
+x86_64               randconfig-a012-20201217
+x86_64               randconfig-a013-20201217
+x86_64               randconfig-a015-20201217
+x86_64               randconfig-a014-20201217
+x86_64               randconfig-a011-20201217
 
-> Bjorn
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
