@@ -2,69 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D4F32DF083
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Dec 2020 17:48:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD9B82DF1B4
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Dec 2020 21:59:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E6CB4870B9;
-	Sat, 19 Dec 2020 16:48:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91E0E86D2F;
+	Sat, 19 Dec 2020 20:59:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rwgtwJ-HuamC; Sat, 19 Dec 2020 16:48:13 +0000 (UTC)
+	with ESMTP id 5+mrf8gd+jha; Sat, 19 Dec 2020 20:59:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1F04286F9F;
-	Sat, 19 Dec 2020 16:48:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D6B5686DF8;
+	Sat, 19 Dec 2020 20:59:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E93901BF357
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 16:48:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 010B21BF20F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 20:59:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D717286E5C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 16:48:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DB82B20398
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 20:59:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ROCX1agPWeij for <intel-wired-lan@lists.osuosl.org>;
- Sat, 19 Dec 2020 16:48:11 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E7B1B86E56
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 16:48:10 +0000 (UTC)
-Received: from [192.168.254.6] (unknown [50.46.158.169])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id 3D5B113C2B0;
- Sat, 19 Dec 2020 08:48:09 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 3D5B113C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
- s=default; t=1608396490;
- bh=k7UGAkK2YrX0XJWfLlBG7Nehqoolrm99yVl5Iy0+fME=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=k816MND7j5BGv/3C/BkUXUZhJmphxmC0p/4i6z8LwxjQx0XGLxvZ0COJFuFsJzl3u
- q/9YGHiSCsU5nPPof8PioKi/tzsKy7sE1vZhICINNKt0Zd76Ls+bly0HBUXSZodQOm
- TbTnLiKFOi51a/s47gJLKVYRV5a5ybW7Z4b2gwQg=
-To: "Fujinaka, Todd" <todd.fujinaka@intel.com>,
- Paul Menzel <pmenzel@molgen.mpg.de>
+ with ESMTP id bVm8CFVapEuo for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 19 Dec 2020 20:59:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com
+ [209.85.167.42])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7617C2034B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 20:59:38 +0000 (UTC)
+Received: by mail-lf1-f42.google.com with SMTP id h205so14452724lfd.5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 12:59:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+k+ujggqUTvxy3MB1Q6zrA1H1dw+aXsOR/YRXOvXhyM=;
+ b=QektH8aCIKUARsO+RGKfSId99/uIpySlGmjvSZB/QNXZsgdC0qxZwNmhY3gWlgAXd3
+ kSpsYg2ERgYWmP79mXtmY6FvMQ3oyAqxjliL7GdJ8WIOswJr9eVDuAvdq4TnVFkgmMJX
+ TwZWzIdmSTMdmv40PxXxT9I2Y3b7oaUBwnTaA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+k+ujggqUTvxy3MB1Q6zrA1H1dw+aXsOR/YRXOvXhyM=;
+ b=Cc5KhNXlik8Jryq2K3H+EmsNNxCyyytCg57pjKlWTNPhXhJKdkmDaFj2rhlLFhslsA
+ jGXSl3KJkYQjZfOlPwcTo0tq5NxuJqFkZds9CyM8SFxytQ1PNvg3FeOtIKalI3N6Nblo
+ QADI/0xuiVd0VZRuDk2O+b4bR8b1sdE2WH1WYhaFu6PaG5CCiWNoSGXuRzp8KcPEFews
+ i4rRvpauhH6jRgdRxsM38IWjwTFDQOOQ8p63Rgm4vWaf8dOemLExBg0XzZ74IxIEqUxr
+ cwlJdnMaYJBxXB+2fQmBU16CxTp/v9CUeWf8JR1WZuppYznApkV/kZVk2pjKfjR+LXDQ
+ L/sw==
+X-Gm-Message-State: AOAM531cLFCfXMsyaFC44Dg14emue+RDEY7zO2SPwOjBLhdDaTYNPNo+
+ mZU2nAkEw/HV0N+kDlCa71VLKX7gJkAbZQ==
+X-Google-Smtp-Source: ABdhPJwptPlIQlRPJI9HBLc3LWuia0sUkCaV4RdgsVOgpcKDP4BEQY6nMqT8hNA8szq1dFVtS6We2Q==
+X-Received: by 2002:a19:7906:: with SMTP id u6mr3640151lfc.632.1608411576065; 
+ Sat, 19 Dec 2020 12:59:36 -0800 (PST)
+Received: from mail-lf1-f48.google.com (mail-lf1-f48.google.com.
+ [209.85.167.48])
+ by smtp.gmail.com with ESMTPSA id q15sm1550788ljh.136.2020.12.19.12.59.34
+ for <intel-wired-lan@lists.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 19 Dec 2020 12:59:35 -0800 (PST)
+Received: by mail-lf1-f48.google.com with SMTP id y19so14339845lfa.13
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Dec 2020 12:59:34 -0800 (PST)
+X-Received: by 2002:ac2:41d9:: with SMTP id d25mr3447738lfi.377.1608411574392; 
+ Sat, 19 Dec 2020 12:59:34 -0800 (PST)
+MIME-Version: 1.0
 References: <7bb485c3-9556-d9f1-e70f-a4b3a05909c9@candelatech.com>
  <BYAPR11MB3606E48BA821185142354D67EFC30@BYAPR11MB3606.namprd11.prod.outlook.com>
  <3bcba0ca-8f3b-8428-861a-86aaff1688b6@molgen.mpg.de>
  <c54c8f2c-a295-c691-466e-07ae8f41b0ac@candelatech.com>
  <3c8510fb-af8c-b5f9-2af1-64584a667ac8@molgen.mpg.de>
  <BYAPR11MB36060F3889C66AE55092DA01EFC20@BYAPR11MB3606.namprd11.prod.outlook.com>
- <8635a2db-0d38-c088-321b-27bc4bb21ec4@candelatech.com>
- <MN2PR11MB3614FD0C52705864C05EFDF8EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <2108932e-ee2e-cadf-52cd-0cd11a6aeba4@candelatech.com>
-Date: Sat, 19 Dec 2020 08:48:08 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <MN2PR11MB3614FD0C52705864C05EFDF8EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
-Content-Language: en-MW
-Subject: Re: [Intel-wired-lan] 5.10.0 kernel regression for 2.5Gbps link
- negotiation?
+ <86fb482f-81b0-8a5f-1580-ed5b6f13c743@molgen.mpg.de>
+ <MN2PR11MB361416A8BFB904EC0149C178EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
+In-Reply-To: <MN2PR11MB361416A8BFB904EC0149C178EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Sat, 19 Dec 2020 12:59:18 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wiCOBCW-eKVuag6FOjarYnYAG8E2Rak2Qn2=qYJBjCTgA@mail.gmail.com>
+Message-ID: <CAHk-=wiCOBCW-eKVuag6FOjarYnYAG8E2Rak2Qn2=qYJBjCTgA@mail.gmail.com>
+To: "Fujinaka, Todd" <todd.fujinaka@intel.com>
+Subject: Re: [Intel-wired-lan] ixgbe: 5.10.0 kernel regression for 2.5Gbps
+ link negotiation?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,122 +96,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, "Tyl,
+ RadoslawX" <radoslawx.tyl@intel.com>, Greg KH <gregkh@linuxfoundation.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTIvMTkvMjAgODoxOSBBTSwgRnVqaW5ha2EsIFRvZGQgd3JvdGU6Cj4gVGhpcyBpcyBhIGJh
-ZCBjYXNlIHdpdGggbm8gaWRlYWwgc29sdXRpb24uIERldGVjdGluZyB0aGUgY2FzZSBpcyBub3Qg
-cG9zc2libGUgYXMgYXV0b25lZ290aWF0aW9uIGhhcHBlbnMgaW4gdGhlIGhhcmR3YXJlIHdpdGhv
-dXQgc29mdHdhcmUgaW52b2x2ZW1lbnQuCj4gCgpTbywgYWZ0ZXIgaXQgbmVnb3RpYXRlcyB0byAy
-LjUsIHdoYXQgaGFwcGVucz8gIERvIHlvdSBzZWUgbG90cyBvZiBsb3ctbGV2ZWwgY3JjIGVycm9y
-cyBvciBzaW1pbGFyPwpNYXliZSB5b3UgY2FuIHVzZSB0aGF0IHRvIGRldGVybWluZSBsaW5rIGlz
-IGJhZCBhbmQgZm9yY2UgaXQgYmFjayB0byAxR2JwcyBhbmQgcmUtbmVnb3RpYXRlIGxpbms/Cgoo
-QW5kIHdpdGggbmljZSB2aXNpYmxlIHdhcm5pbmcgaW4gZG1lc2cgYWJvdXQgd2hhdCBpcyBnb2lu
-ZyBvbikKCj4gT25lIHNvbHV0aW9uIHdhcyB0byB1cGRhdGUgdGhlIHN3aXRjaCBmaXJtd2FyZSBm
-b3IgdGhlIGEgc3dpdGNoIHRoYXQgaXMgaXMgdGhlIGxpbmsgcGFydG5lciB0aGF0IGdpdmUgdXMg
-dGhlIG1vc3QgdHJvdWJsZS4gVGhlIGlzc3VlIGFwcGVhcnMgdG8gYmUgaW4gY29tcGV0aW5nIG9y
-IGhhbGYtaW1wbGVtZW50ZWQgc3RhbmRhcmRzLiAyLjVHIGFuZCA1RyB3ZXJlIGluaXRpYWxseSBu
-b24tSUVFRSBzdGFuZGFyZHMgdGhhdCBkaWZmZXJlbnQgbWFudWZhY3R1cmVycyBoYWNrZWQgb250
-byAxRyBpbiBkaWZmZXJlbnQgd2F5cy4gV2UgaW1wbGVtZW50ZWQgaXQgdG8gb25lIG9mIHRoZSBz
-dGFuZGFyZHMgd2hpY2ggc2hvdWxkIGJlIGludGVyb3BlcmFibGUsIGJ1dCB0aGUgY29ybmVyIGNh
-c2Ugb2YgdGhlIHdpZGVseS1kZXBsb3llZCBzd2l0Y2ggd2lsbCB0YWtlIHRoZSBsaW5rIGZyb20g
-MTBHIHRvIDFHIHdpdGggbm8gYXV0b21hdGVkIHdheSB0byBmaXggaXQuCj4gCj4gVXBkYXRpbmcg
-c3dpdGNoZXMgbWVhbnMgYSBsb3Qgb2YgZG93bnRpbWUgZm9yIGEgbG90IG9mIGRhdGFjZW50ZXJz
-IGFuZCB0aGUgT0VNcyB3ZSBkZWFsIHdpdGggd291bGQgbm90IGFjY2VwdCB0aGF0IGFuc3dlci4K
-PiAKPiBPdXIgc29sdXRpb24gd2FzIHRvIGRpc2FibGUgMi41RyBhbmQgNUcgYnkgZGVmYXVsdC4g
-VGhpcyBmaXhlcyAxMEcgbGlua2luZyBhdCAxRyBvbiB0aGF0IHN3aXRjaCwgYnV0IDIuNUcgYW5k
-IDVHIHdpbGwgbGluayBhdCAxRyBieSBkZWZhdWx0LiBBbmQsIGFzIEkgc2FpZCwgSSd2ZSBoYWQg
-dmVyeSBsaXR0bGUgY29udGFjdCB3aXRoIHBlb3BsZSB1c2luZyAyLjVHIGFuZCA1RyBhbmQgSSdt
-IHRoZSBndXkgb24gYWxsIHRoZSBtYWlsaW5nIGxpc3RzLiBJIGFwb2xvZ2l6ZSBmb3IgbWFraW5n
-IHlvdXIgbGlmZSBoYXJkZXIsIGJ1dCBpdCBzZWVtcyBsaWtlIGl0J3MganVzdCB5b3Ugc28gZmFy
-LiBQYXVsIHNlZW1zIHRvIGJlIGFyZ3Vpbmcgd2l0aCBtZSBqdXN0IGZvciB0aGUgZnVuIG9mIGl0
-LgoKV2VsbCwgd2hlbiB0aGluZ3Mgd29yaywgbm8gb25lIHRhbGtzIGFib3V0IGl0LiA6KQoKQXJl
-IHlvdSBhYmxlIHRvIGRldGVybWluZSB0aGF0IHBlZXIgaXMgYWR2ZXJ0aXNpbmcgMi41LCBhbmQg
-bG9jYWwgTklDIGlzIGZvcmNlZCB0byAxRywgYW5kIHRoZW4KcHV0IGEgdmlzaWJsZSB3YXJuaW5n
-IGluIGRtZXNnIGFib3V0IHRoaXMgY2FzZSBhbmQgbGluayB0byBob3cgdG8gZW5hYmxlIDIuNS81
-RyByYXRlcz8gIFRoYXQKbWlnaHQgaGVscCBwZW9wbGUgcmVhbGl6ZSB3aGF0IGlzIGdvaW5nIG9u
-LiAgQW5kIHdoZW4geW91IGRvIHRoaXMgY29tbWl0LCBwdXQgYSBsb3Qgb2Ygbm90ZXMKYWJvdXQg
-d2h5IGFuZCBhYm91dCB3aGF0IGNvbW1pdCBjaGFuZ2VkIHRoaW5ncyBzaW5jZSBpdCBpcyBub3Qg
-YXQgYWxsIG9idmlvdXMgZnJvbSB0aGUgb3JpZ2luYWwKY29tbWl0IG1lc3NhZ2UuCgpUaGFua3Ms
-CkJlbgoKPiAKPiBUb2RkIEZ1amluYWthCj4gU29mdHdhcmUgQXBwbGljYXRpb24gRW5naW5lZXIK
-PiBEYXRhIENlbnRlciBHcm91cAo+IEludGVsIENvcnBvcmF0aW9uCj4gdG9kZC5mdWppbmFrYUBp
-bnRlbC5jb20KPiAKPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+IEZyb206IEJlbiBHcmVl
-YXIgPGdyZWVhcmJAY2FuZGVsYXRlY2guY29tPgo+IFNlbnQ6IEZyaWRheSwgRGVjZW1iZXIgMTgs
-IDIwMjAgNDo0NyBQTQo+IFRvOiBGdWppbmFrYSwgVG9kZCA8dG9kZC5mdWppbmFrYUBpbnRlbC5j
-b20+OyBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPgo+IENjOiBpbnRlbC13aXJl
-ZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsgR3JlZyBLSCA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5v
-cmc+Cj4gU3ViamVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIDUuMTAuMCBrZXJuZWwgcmVncmVz
-c2lvbiBmb3IgMi41R2JwcyBsaW5rIG5lZ290aWF0aW9uPwo+IAo+IE9uIDEyLzE4LzIwIDQ6MDkg
-UE0sIEZ1amluYWthLCBUb2RkIHdyb3RlOgo+PiBXaGF0IGRvIHlvdSBjb25zaWRlciBhIHJlZ3Jl
-c3Npb24/IEhhdmluZyB0byBlbmFibGUgMi41RyBhbmQgNUcgdXNpbmcgZXRodG9vbCB3aGljaCBj
-YW4gYmUgZG9uZSBhdCBib290IHRpbWU/Cj4+Cj4+IFdlIGhhZCBtb3JlIHRoYW4gYSBmZXcgZGF0
-YWNlbnRlcnMgd2l0aCBpc3N1ZXMgYmVjYXVzZSBvZiBjb21wZXRpbmcgc3RhbmRhcmRzLiBJIGNo
-ZWNrZWQgd2l0aCBvdXIgbWFya2V0aW5nIHBlb3BsZSBhbmQsIG9uIHRoZSB3aG9sZSwgbm8gb25l
-IGNvdWxkIHRoaW5rIG9mIGEgbGFyZ2UgbnVtYmVyIG9mIDIuNUcgb3IgNUcgY3VzdG9tZXJzLgo+
-Pgo+PiBXZSBoYWQgc2V2ZXJhbCBlc2NhbGF0aW9ucyBmcm9tIG1ham9yIE9FTXMgYW5kIHRoaXMg
-d2FzIHRoZSBzb2x1dGlvbiB0aGV5IHdhbnRlZC4KPj4KPj4gV2UgY29uc2lkZXIgdGhpcyBuZWNl
-c3NhcnkgZm9yIGludGVyb3BlcmFiaWxpdHkuCj4gCj4gQ2FuIHlvdSBkZXRlY3QgdGhpcyBjYXNl
-IHNvbWVob3cgYW5kIGF1dG9tYXRpY2FsbHkgZmFsbC1iYWNrIHRvIDFHYnBzPwo+IAo+IEZvciBt
-eSBvd24gcHVycG9zZXMsIEkgd2lsbCBqdXN0IGhhY2sgdGhhdCBjb21taXQsIGJ1dCBpdCBpcyBs
-aWtlbHkgdG8gYmUgY29uZnVzaW5nIHRvIG90aGVyIHBlb3BsZSB3aG8gaGFkIGEgc3lzdGVtIHRo
-YXQgd29ya2VkIGF0IDIuNSBwcmV2aW91c2x5IGFuZCB0aGVuIHN1ZGRlbmx5IGl0IGlzIHNsb3dl
-ci4gIFRoZXJlIGlzIG5vIGVhc3kgd2F5IHRvIGtub3cgZnJvbSB0aGUgc3ltcHRvbSB0aGF0IHlv
-dSBuZWVkIHRvIGRpZyB1cCBhbiBvYnNjdXJlIHJlYWRtZSBhbmQgcnVuIGFuIG9ic2N1cmUgZXRo
-dG9vbCBjb21tYW5kLgo+IAo+IFRoYW5rcywKPiBCZW4KPiAKPj4KPj4gVG9kZCBGdWppbmFrYQo+
-PiBTb2Z0d2FyZSBBcHBsaWNhdGlvbiBFbmdpbmVlcgo+PiBEYXRhIENlbnRlciBHcm91cAo+PiBJ
-bnRlbCBDb3Jwb3JhdGlvbgo+PiB0b2RkLmZ1amluYWthQGludGVsLmNvbQo+Pgo+PiAtLS0tLU9y
-aWdpbmFsIE1lc3NhZ2UtLS0tLQo+PiBGcm9tOiBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4u
-bXBnLmRlPgo+PiBTZW50OiBGcmlkYXksIERlY2VtYmVyIDE4LCAyMDIwIDM6MTkgUE0KPj4gVG86
-IEJlbiBHcmVlYXIgPGdyZWVhcmJAY2FuZGVsYXRlY2guY29tPjsgRnVqaW5ha2EsIFRvZGQKPj4g
-PHRvZGQuZnVqaW5ha2FAaW50ZWwuY29tPgo+PiBDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9z
-dW9zbC5vcmc7IEdyZWcgS0gKPj4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPjsgTmd1eWVu
-LCBBbnRob255IEwKPj4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPjsgQnJhbmRlYnVyZywg
-SmVzc2UKPj4gPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPjsgVHlsLCBSYWRvc2xhd1gKPj4g
-PHJhZG9zbGF3eC50eWxAaW50ZWwuY29tPjsgTG9rdGlvbm92LCBBbGVrc2FuZHIKPj4gPGFsZWtz
-YW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tPjsgTWNsZWFuLCBBcnRodXIgRgo+PiA8YXJ0aHVyLmYu
-bWNsZWFuQGludGVsLmNvbT47IFNrYWpld3NraSwgUGlvdHJYCj4+IDxwaW90cnguc2thamV3c2tp
-QGludGVsLmNvbT4KPj4gU3ViamVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIDUuMTAuMCBrZXJu
-ZWwgcmVncmVzc2lvbiBmb3IgMi41R2JwcyBsaW5rIG5lZ290aWF0aW9uPwo+Pgo+PiBbK2NjIFJh
-ZG9zbGF3LCBBbGVrc2FuZHIsIFBpb3RyXQo+Pgo+PiBBbSAxOS4xMi4yMCB1bSAwMDowNyBzY2hy
-aWViIEJlbiBHcmVlYXI6Cj4+PiBPbiAxMi8xOC8yMCAxMTo0MyBBTSwgUGF1bCBNZW56ZWwgd3Jv
-dGU6Cj4+Cj4+Pj4gQW0gMTguMTIuMjAgdW0gMjA6Mjcgc2NocmllYiBGdWppbmFrYSwgVG9kZDoK
-Pj4+Pj4gWWVzLCBhbmQgSSdtIHBsdWdnaW5nIHRoZSBob2xlIGluIHRoZSBSRUFETUUgcmlnaHQg
-bm93LiBIZXJlJ3MgdGhlCj4+Pj4+IHByb3Bvc2VkIHRleHQ6Cj4+Pj4+Cj4+Pj4+IEFkdmVydGlz
-ZW1lbnRzIGZvciAyLjVHIGFuZCA1RyBvbiB0aGUgeDU1MCB3ZXJlIHR1cm5lZCBvZmYgYnkKPj4+
-Pj4gZGVmYXVsdCBkdWUgdG8gaW50ZXJvcGVyYWJpbGl0eSBpc3N1ZXMgd2l0aCBjZXJ0YWluIHN3
-aXRjaGVzLiBUbwo+Pj4+PiB0dXJuIHRoZW0gYmFjayBvbiwgdXNlCj4+Pj4+Cj4+Pj4+IGV0aHRv
-b2wgLXMgPGV0aFg+IGFkdmVydGlzZSBOCj4+Pj4+Cj4+Pj4+IHdoZXJlIE4gaXMgYSBjb21iaW5h
-dGlvbiBvZiB0aGUgZm9sbG93aW5nLgo+Pj4+Pgo+Pj4+PiAxMDBiYXNlVEZ1bGzCoMKgwqAgMHgw
-MDgKPj4+Pj4gMTAwMGJhc2VURnVsbMKgwqAgMHgwMjAKPj4+Pj4gMjUwMGJhc2VURnVsbMKgwqAg
-MHg4MDAwMDAwMDAwMDAKPj4+Pj4gNTAwMGJhc2VURnVsbMKgwqAgMHgxMDAwMDAwMDAwMDAwCj4+
-Pj4+IDEwMDAwYmFzZVRGdWxswqAgMHgxMDAwCj4+Pj4+Cj4+Pj4+IEZvciBleGFtcGxlLCB0byB0
-dXJuIG9uIGFsbCBtb2RlczoKPj4+Pj4gZXRodG9vbCAtcyA8ZXRoWD4gYWR2ZXJ0aXNlIDB4MTgw
-MDAwMDAwMTAyOAo+Pj4+Pgo+Pj4+PiBGb3IgbW9yZSBkZXRhaWxzIHBsZWFzZSBzZWUgdGhlIGV0
-aHRvb2wgbWFuIHBhZ2UuCj4+Pj4KPj4+PiBXaGF0IGNvbW1pdCBpbnRyb2R1Y2VkIHRoaXMgcmVn
-cmVzc2lvbi4gUGxlYXNlIGJlYXIgaW4gbWluZCwgdGhhdAo+Pj4+IHRoaXMgY29udHJhZGljdHMg
-TGludXjigJkgbm8tcmVncmVzc2lvbiBwb2xpY3ksIGFuZCB0aGUgY29tbWl0IHNob3VsZAo+Pj4+
-IHRoZXJlZm9yZSBiZSByZXZlcnRlZCBhcyBzb29uIGFzIHBvc3NpYmxlLgo+Pj4KPj4+IExvb2tz
-IGxpa2UgaXQgaXMgYXQgdGhlIGVuZCBvZiB0aGlzIHBhdGNoLCB0aG91Z2ggdGhlIGRlc2NyaXB0
-aW9uCj4+PiBkb2Vzbid0IG1lbnRpb24gY2hhbmdpbmcgZGVmYXVsdHM6Cj4+Pgo+Pj4gQ29tbWl0
-IGEyOTZkNjY1ZWFlMWU4ZWM2NDQ1NjgzYmZiOTk5Yzg4NDA1ODQyNmEKPj4+IEF1dGhvcjogUmFk
-b3NsYXcgVHlsIDxyYWRvc2xhd3gudHlsQGludGVsLmNvbT4KPj4+IERhdGU6wqDCoCBGcmkgSnVu
-IDI2IDE1OjI4OjE0IDIwMjAgKzAyMDAKPj4+Cj4+PiAgICDCoMKgwqAgaXhnYmU6IEFkZCBldGh0
-b29sIHN1cHBvcnQgdG8gZW5hYmxlIDIuNSBhbmQgNS4wIEdicHMgc3VwcG9ydAo+Pj4KPj4+ICAg
-IMKgwqDCoCBBZGRlZCBmdWxsIHN1cHBvcnQgZm9yIG5ldyB2ZXJzaW9uIEV0aHRvb2wgQVBJLiBO
-ZXcgQVBJIGFsbG93IHVzZQo+Pj4gICAgwqDCoMKgIDI1MDBHYmFzZS1UIGFuZCA1MDAwYmFzZS1U
-IHN1cHBvcnRlZCBhbmQgYWR2ZXJ0aXNlZCBsaW5rIHNwZWVkIG1vZGVzLgo+Pj4KPj4+ICAgIMKg
-wqDCoCBTaWduZWQtb2ZmLWJ5OiBSYWRvc2xhdyBUeWwgPHJhZG9zbGF3eC50eWxAaW50ZWwuY29t
-Pgo+Pj4gICAgwqDCoMKgIFRlc3RlZC1ieTogQW5kcmV3IEJvd2VycyA8YW5kcmV3eC5ib3dlcnNA
-aW50ZWwuY29tPgo+Pj4gICAgwqDCoMKgIFNpZ25lZC1vZmYtYnk6IFRvbnkgTmd1eWVuIDxhbnRo
-b255Lmwubmd1eWVuQGludGVsLmNvbT4KPj4+Cj4+PiBUaGFua3MsCj4+PiBCZW4KPiAKPiAKPiAt
-LQo+IEJlbiBHcmVlYXIgPGdyZWVhcmJAY2FuZGVsYXRlY2guY29tPgo+IENhbmRlbGEgVGVjaG5v
-bG9naWVzIEluYyAgaHR0cDovL3d3dy5jYW5kZWxhdGVjaC5jb20KPiAKCgotLSAKQmVuIEdyZWVh
-ciA8Z3JlZWFyYkBjYW5kZWxhdGVjaC5jb20+CkNhbmRlbGEgVGVjaG5vbG9naWVzIEluYyAgaHR0
-cDovL3d3dy5jYW5kZWxhdGVjaC5jb20KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
-YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
-bnRlbC13aXJlZC1sYW4K
+On Sat, Dec 19, 2020 at 8:07 AM Fujinaka, Todd <todd.fujinaka@intel.com> wrote:
+>
+> I am stripping the maintainers because they're on the mailing list already and multiple copies of the same email means they get annoyed and likely ignore the email.
+
+Don't do that. This is what "Message-ID" is for. People don't get
+multiple copies of the email, because any sane MUA will see that they
+are the same message even when they came in through two different
+paths.
+
+Of course, if some maintainer has a broken MUA, that's one thing, but
+I would expect kernel maintainers that deal with a lot of email to not
+have quite _that_ broken a setup.
+
+            Linus
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
