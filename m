@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D968D2E02D0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 00:08:39 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0747D2E02DB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 00:19:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7368F87347;
-	Mon, 21 Dec 2020 23:08:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9146322D22;
+	Mon, 21 Dec 2020 23:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rBmK+yDOCx3P; Mon, 21 Dec 2020 23:08:38 +0000 (UTC)
+	with ESMTP id QEU4xr9Y8j1O; Mon, 21 Dec 2020 23:19:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1EF0287329;
-	Mon, 21 Dec 2020 23:08:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1141723042;
+	Mon, 21 Dec 2020 23:19:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6C0841BF3DB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:08:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 73ECB1BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:19:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3E1BC87337
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:08:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2525186490
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:19:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q2emfZ4Yulv0 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Dec 2020 23:08:35 +0000 (UTC)
+ with ESMTP id NmBrRSKj2Am8 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Dec 2020 23:19:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 86D2C8732F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:08:35 +0000 (UTC)
-IronPort-SDR: yyOiT4yi3M51b3FGSSxd1kvbYj8uR2gQu+KLirNM5Ra9YedA1LBCAODU7pe10iQVJwflJnbJTp
- dJ6pNLWK2aPQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9842"; a="260526305"
-X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="260526305"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 80EF58648C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 23:19:30 +0000 (UTC)
+IronPort-SDR: h2GiULIKz02TTmSCAhOxP9lerhqOzTbB9dlvHoJ4vUH0FqhSujq6cKBnOfI/PvS5kVEdOMp1ka
+ vPOpZ/ZLholA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9842"; a="155586225"
+X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="155586225"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2020 15:08:35 -0800
-IronPort-SDR: d38fh4vIuozr43HdKYJNHPuN6eNPN7Zk/R3wLRBWWfN8Bf9myib6gjtMpVX/GkWDDWzpRGGBDt
- PN0ZhEyC6+6Q==
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2020 15:19:29 -0800
+IronPort-SDR: LpuCNCX7W7XmiWhi2h0eaQpAuq5ulWUbIZHVqbGDjv+hXWWxOoXfOt9iipABkvhetyRkhT3VT5
+ XgcdpfDu6yXA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="343487392"
+X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="343491869"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga008.fm.intel.com with ESMTP; 21 Dec 2020 15:08:34 -0800
-Date: Mon, 21 Dec 2020 23:58:11 +0100
+ by fmsmga008.fm.intel.com with ESMTP; 21 Dec 2020 15:19:28 -0800
+Date: Tue, 22 Dec 2020 00:09:05 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201221225811.GC2943@ranger.igk.intel.com>
+Message-ID: <20201221230905.GD2943@ranger.igk.intel.com>
 References: <20201217202415.77891-1-andre.guedes@intel.com>
- <20201217202415.77891-7-andre.guedes@intel.com>
+ <20201217202415.77891-9-andre.guedes@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201217202415.77891-7-andre.guedes@intel.com>
+In-Reply-To: <20201217202415.77891-9-andre.guedes@intel.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH 06/10] igc: Introduce
- igc_update_tx_stats()
+Subject: Re: [Intel-wired-lan] [PATCH 08/10] igc: Replace IGC_TX_FLAGS_XDP
+ flag by an enum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,58 +74,124 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 17, 2020 at 12:24:11PM -0800, Andre Guedes wrote:
-> Likewise we do with the RX stats, this patch encapsulates the code that
-> updates the driver TX stats in its own local helper.
-
-I think you can squash this onto previous patch.
-
+On Thu, Dec 17, 2020 at 12:24:13PM -0800, Andre Guedes wrote:
+> Up to this point, tx buffers are associated with either a skb or a xdpf,
+> and the IGC_TX_FLAGS_XDP flag was enough to distinguish between these
+> two case. However, with upcoming patches that will add AF_XDP zero-copy
+> support, a third case will be introduced so this flag-based approach
+> won't fit well.
+> 
+> In preparation to land AF_XDP zero-copy support, this patch replaces the
+> IGC_TX_FLAGS_XDP flag by an enum which will be extended once zero-copy
+> support is introduced to the driver.
 > 
 > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 22 ++++++++++++++++------
->  1 file changed, 16 insertions(+), 6 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc.h      |  8 +++++--
+>  drivers/net/ethernet/intel/igc/igc_main.c | 27 ++++++++++++++++++-----
+>  2 files changed, 28 insertions(+), 7 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+> index 29be8833956a..b537488f5bae 100644
+> --- a/drivers/net/ethernet/intel/igc/igc.h
+> +++ b/drivers/net/ethernet/intel/igc/igc.h
+> @@ -376,8 +376,6 @@ enum igc_tx_flags {
+>  	/* olinfo flags */
+>  	IGC_TX_FLAGS_IPV4	= 0x10,
+>  	IGC_TX_FLAGS_CSUM	= 0x20,
+> -
+> -	IGC_TX_FLAGS_XDP	= 0x100,
+>  };
+>  
+>  enum igc_boards {
+> @@ -394,12 +392,18 @@ enum igc_boards {
+>  #define TXD_USE_COUNT(S)	DIV_ROUND_UP((S), IGC_MAX_DATA_PER_TXD)
+>  #define DESC_NEEDED	(MAX_SKB_FRAGS + 4)
+>  
+> +enum igc_tx_buffer_type {
+> +	IGC_TX_BUFFER_TYPE_SKB,
+> +	IGC_TX_BUFFER_TYPE_XDP,
+> +};
+> +
+>  /* wrapper around a pointer to a socket buffer,
+>   * so a DMA handle can be stored along with the buffer
+>   */
+>  struct igc_tx_buffer {
+>  	union igc_adv_tx_desc *next_to_watch;
+>  	unsigned long time_stamp;
+> +	enum igc_tx_buffer_type type;
+>  	union {
+>  		struct sk_buff *skb;
+>  		struct xdp_frame *xdpf;
 > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index e5cdebbe5637..26c2fc9977cc 100644
+> index 60987a5b4b72..ec366643f996 100644
 > --- a/drivers/net/ethernet/intel/igc/igc_main.c
 > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -2263,6 +2263,20 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->  	return total_packets;
->  }
+> @@ -191,10 +191,18 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+>  	while (i != tx_ring->next_to_use) {
+>  		union igc_adv_tx_desc *eop_desc, *tx_desc;
 >  
-> +static void igc_update_tx_stats(struct igc_q_vector *q_vector,
-> +				unsigned int packets, unsigned int bytes)
-> +{
-> +	struct igc_ring *ring = q_vector->tx.ring;
-> +
-> +	u64_stats_update_begin(&ring->tx_syncp);
-> +	ring->tx_stats.bytes += bytes;
-> +	ring->tx_stats.packets += packets;
-> +	u64_stats_update_end(&ring->tx_syncp);
-> +
-> +	q_vector->tx.total_bytes += bytes;
-> +	q_vector->tx.total_packets += packets;
-> +}
-> +
->  /**
->   * igc_clean_tx_irq - Reclaim resources after transmit completes
->   * @q_vector: pointer to q_vector containing needed info
-> @@ -2365,12 +2379,8 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+> -		if (tx_buffer->tx_flags & IGC_TX_FLAGS_XDP)
+> +		switch (tx_buffer->type) {
+> +		case IGC_TX_BUFFER_TYPE_XDP:
+>  			xdp_return_frame(tx_buffer->xdpf);
+> -		else
+> +			break;
+> +		case IGC_TX_BUFFER_TYPE_SKB:
+>  			dev_kfree_skb_any(tx_buffer->skb);
+> +			break;
+> +		default:
+> +			netdev_warn_once(tx_ring->netdev,
+> +					 "Unknown tx buffer type\n");
+> +			break;
+> +		}
+
+nit: you've been doing some effort in order to reduce the code duplication
+as much as it's possible, yet here you introduce duplicated code for that
+desc cleanup :p maybe add a little helper for that as well?
+
 >  
->  	i += tx_ring->count;
->  	tx_ring->next_to_clean = i;
-> -	u64_stats_update_begin(&tx_ring->tx_syncp);
-> -	tx_ring->tx_stats.bytes += total_bytes;
-> -	tx_ring->tx_stats.packets += total_packets;
-> -	u64_stats_update_end(&tx_ring->tx_syncp);
-> -	q_vector->tx.total_bytes += total_bytes;
-> -	q_vector->tx.total_packets += total_packets;
-> +
-> +	igc_update_tx_stats(q_vector, total_packets, total_bytes);
+>  		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
 >  
->  	if (test_bit(IGC_RING_FLAG_TX_DETECT_HANG, &tx_ring->flags)) {
->  		struct igc_hw *hw = &adapter->hw;
+> @@ -1371,6 +1379,7 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+>  
+>  	/* record the location of the first descriptor for this packet */
+>  	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+> +	first->type = IGC_TX_BUFFER_TYPE_SKB;
+>  	first->skb = skb;
+>  	first->bytecount = skb->len;
+>  	first->gso_segs = 1;
+> @@ -1950,8 +1959,8 @@ static int igc_xdp_init_tx_buffer(struct igc_tx_buffer *buffer,
+>  		return -ENOMEM;
+>  	}
+>  
+> +	buffer->type = IGC_TX_BUFFER_TYPE_XDP;
+>  	buffer->xdpf = xdpf;
+> -	buffer->tx_flags = IGC_TX_FLAGS_XDP;
+>  	buffer->protocol = 0;
+>  	buffer->bytecount = xdpf->len;
+>  	buffer->gso_segs = 1;
+> @@ -2315,10 +2324,18 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+>  		total_bytes += tx_buffer->bytecount;
+>  		total_packets += tx_buffer->gso_segs;
+>  
+> -		if (tx_buffer->tx_flags & IGC_TX_FLAGS_XDP)
+> +		switch (tx_buffer->type) {
+> +		case IGC_TX_BUFFER_TYPE_XDP:
+>  			xdp_return_frame(tx_buffer->xdpf);
+> -		else
+> +			break;
+> +		case IGC_TX_BUFFER_TYPE_SKB:
+>  			napi_consume_skb(tx_buffer->skb, napi_budget);
+> +			break;
+> +		default:
+> +			netdev_warn_once(tx_ring->netdev,
+> +					 "Unknown tx buffer type\n");
+> +			break;
+> +		}
+>  
+>  		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+>  
 > -- 
 > 2.29.2
 > 
