@@ -1,46 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B91B2DFDA3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Dec 2020 16:38:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 664AB2DFDB6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Dec 2020 16:53:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6F2EE8765F;
-	Mon, 21 Dec 2020 15:38:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F3F8786C7C;
+	Mon, 21 Dec 2020 15:52:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7YcJDIEnbpyR; Mon, 21 Dec 2020 15:38:23 +0000 (UTC)
+	with ESMTP id GWHz6SoikVD3; Mon, 21 Dec 2020 15:52:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA67C877A5;
-	Mon, 21 Dec 2020 15:38:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FE7F86C4D;
+	Mon, 21 Dec 2020 15:52:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E33711BF391
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:38:20 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B06CD1BF391
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:52:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D9F898765F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:38:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ABED986C78
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:52:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f-D4tLwFMR2c for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Dec 2020 15:38:19 +0000 (UTC)
-X-Greylist: delayed 00:06:53 by SQLgrey-1.7.6
-Received: from chris.i8u.org (mail.i8u.org [75.148.87.25])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 66F5587662
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:38:19 +0000 (UTC)
-Received: by chris.i8u.org (Postfix, from userid 1000)
- id DAC6116C92F6; Mon, 21 Dec 2020 07:31:25 -0800 (PST)
-Received: from localhost (localhost [127.0.0.1])
- by chris.i8u.org (Postfix) with ESMTP id D896016C92D3;
- Mon, 21 Dec 2020 07:31:25 -0800 (PST)
-Date: Mon, 21 Dec 2020 07:31:25 -0800 (PST)
-From: Hisashi T Fujinaka <htodd@twofifty.com>
-To: "Fujinaka, Todd" <todd.fujinaka@intel.com>
-In-Reply-To: <BYAPR11MB3606001E3832B5A04F9787E6EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
-Message-ID: <53eaaa80-46de-4c47-4ec5-7adcc7d13b42@twofifty.com>
+ with ESMTP id Z63ZgMaB7Vcy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Dec 2020 15:52:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8EF6E86B67
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Dec 2020 15:52:55 +0000 (UTC)
+Received: from [192.168.254.6] (unknown [50.46.158.169])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id 9925F13C2B0;
+ Mon, 21 Dec 2020 07:52:54 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 9925F13C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+ s=default; t=1608565975;
+ bh=zN1SPE8FppjdITOSajCv7w3UYvN6HTr9SensOYLEzNQ=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=j1dWe7BEXTSwMfQbeZOx2pZrcgyuP4XNyL0sRwveBcz8GuvPR9unjQfNOXwyt4H90
+ 3nxpbxnXzN6Srk4JJJanhg08VOu5G/5p5VJRQ3d4bAsXv6m1XPo0mYdPVqygq/rFzf
+ 061/RpaasHWE5nCHzUHnWbKeAJU2AD9Zzx8PyL0Y=
+To: "Fujinaka, Todd" <todd.fujinaka@intel.com>,
+ Paul Menzel <pmenzel@molgen.mpg.de>
 References: <7bb485c3-9556-d9f1-e70f-a4b3a05909c9@candelatech.com>
  <BYAPR11MB3606E48BA821185142354D67EFC30@BYAPR11MB3606.namprd11.prod.outlook.com>
  <3bcba0ca-8f3b-8428-861a-86aaff1688b6@molgen.mpg.de>
@@ -49,11 +54,19 @@ References: <7bb485c3-9556-d9f1-e70f-a4b3a05909c9@candelatech.com>
  <BYAPR11MB36060F3889C66AE55092DA01EFC20@BYAPR11MB3606.namprd11.prod.outlook.com>
  <8635a2db-0d38-c088-321b-27bc4bb21ec4@candelatech.com>
  <MN2PR11MB3614FD0C52705864C05EFDF8EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
- <07a977b0-c3f9-4cbe-482e-350d8b42cda7@molgen.mpg.de>
- <BYAPR11MB3606001E3832B5A04F9787E6EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
+ <2108932e-ee2e-cadf-52cd-0cd11a6aeba4@candelatech.com>
+ <BYAPR11MB3606A702240D0A1614AA6585EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <1d9e12e5-56a5-7921-e4b6-b67bcc180942@candelatech.com>
+Date: Mon, 21 Dec 2020 07:52:54 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] ixgbe: 5.10.0 kernel regression for 2.5Gbps
- link negotiation?
+In-Reply-To: <BYAPR11MB3606A702240D0A1614AA6585EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
+Content-Language: en-MW
+Subject: Re: [Intel-wired-lan] 5.10.0 kernel regression for 2.5Gbps link
+ negotiation?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,110 +79,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Greg KH <gregkh@linuxfoundation.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-I'm going to answer this from home, where Outlook isn't impeding me.
-This is the only time I'm doing this because I can't find your email any
-more. Outlook has cleverly hiddent it from me.
-
-On Mon, 21 Dec 2020, Fujinaka, Todd wrote:
-
-> I would listen to you on Linus' list, but this is Intel-wired-lan.
->
-> Todd Fujinaka
-> Software Application Engineer
-> Data Center Group
-> Intel Corporation
-> todd.fujinaka@intel.com
->
-> -----Original Message-----
-> From: Paul Menzel <pmenzel@molgen.mpg.de>
-> Sent: Monday, December 21, 2020 7:10 AM
-> To: Fujinaka, Todd <todd.fujinaka@intel.com>; Ben Greear <greearb@candelatech.com>
-> Cc: intel-wired-lan@lists.osuosl.org; Greg KH <gregkh@linuxfoundation.org>; Linus Torvalds <torvalds@linux-foundation.org>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>
-> Subject: Re: [Intel-wired-lan] ixgbe: 5.10.0 kernel regression for 2.5Gbps link negotiation?
->
-> Dear Todd,
->
->
-> I kindly ask you again, please do not top-post. It?s impolite, and more importantly, it wastes the readers time as it looses context, and results in misunderstandings.
-
-This is where I should've inserted my comment about Outlook and
-intel-wired-lan vs Linus' lists. It's a pain, but
-
-> Am 19.12.20 um 17:19 schrieb Fujinaka, Todd:
->> This is a bad case with no ideal solution. Detecting the case is not
->> possible as autonegotiation happens in the hardware without software
->> involvement.
->>
->> One solution was to update the switch firmware for the a switch that
->> is is the link partner that give us the most trouble. The issue
->> appears to be in competing or half-implemented standards. 2.5G and 5G
->> were initially non-IEEE standards that different manufacturers hacked
->> onto 1G in different ways. We implemented it to one of the standards
->> which should be interoperable, but the corner case of the
->> widely-deployed switch will take the link from 10G to 1G with no
->> automated way to fix it.
->
-> Thank you for the background, which should have been in the commit message.
->
-> Can you please tell us the problematic switch name and the problematic firmware version and the one, where this issues is fixed?
-
-I can ask around. I wasn't on those issues. The problem isn't with the
-switch manufacturer because they're released a fix, but with the
-datacenters who don't want to update their switches. I've been loath to
-reveal more data because that's confidential to the customer.
-
->> Updating switches means a lot of downtime for a lot of datacenters and
->> the OEMs we deal with would not accept that answer.
->
-> Well, then please discuss the problem and possible solutions on the mailing list. Breaking other peoples setups is unacceptable. A Linux kernel runtime parameter would be one solution, your customers could have used.
-
-Runtime parameter? That's even higher on the list of "not allowed". I've
-said several times that the end-customers wouldn't update their switches
-and wouldn't use any boot parameters. Customers high enough that the
-executive VP of several companies called our company and demanded an
-immediate fix.
-
->> Our solution was to disable 2.5G and 5G by default. This fixes 10G
->> linking at 1G on that switch, but 2.5G and 5G will link at 1G by
->> default. And, as I said, I've had very little contact with people
->> using 2.5G and 5G and I'm the guy on all the mailing lists.
->
-> Unfortunately, a lot of users are not on the mailing list.
-
-On ANY mailing list. This isn't the only one I'm on.
-
->> I apologize for making your life harder, but it seems like it's just
->> you so far. Paul seems to be arguing with me just for the fun of it.
->
-> Please keep the discussion respectful, and do not insult others.
-
-I'm not being disrespectful, I'm just saying you're just arguing
-semantics and "rules".
-
-> Unfortunately, at work we have now been bitten several times by regressions updating to the current mainline Linux kernel, causing frictions in the team about what Linux kernel to use.
->
-> I am missing a statement by you, acknowledging that the commit and the whole communication was a big fail, and how you will fix the regression.
-> Additionally, an analysis would be nice, where the process failed ? why was the commit message incomplete and why did the test (Tested-by
-> present) not spot the issue ? and how to improve it to avoid such a situation in the future.
-
-Communications was a big fail, and I'm here to try to solve that. We
-will not be reverting this, in fact I've been told by my management that
-this is required. And my management goes way up the chain to executive
-VPs at Intel.
-
-Right now I'm between a rock and a hard place and 2.5G and 5G is not our
-primary market. I'm not the marketing guy, so I didn't make that
-decision.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTIvMjEvMjAgNzoyMCBBTSwgRnVqaW5ha2EsIFRvZGQgd3JvdGU6Cj4gTm9wZS4gVGhlIHRp
+bWluZyBvZiB0aGUgUEhZcyBtZWFucyB0aGUgc3dpdGNoIHRpbWVzIG91dCB3aGlsZSB3ZSdyZSB0
+cnlpbmcgMi41RyBhbmQgNUcgYW5kIHRoZSBzd2l0Y2ggZ29lcyB0byBpdHMgZGVmYXVsdCBsb3dl
+c3Qgc3BlZWQgb2YgMUcuIFRoZW4gd2UgZ28gdG8gMUcgYW5kIGJ5IHRoYXQgdGltZSBib25kaW5n
+IGlzIGJyb2tlbiBpbiBzZXZlcmFsIG9mIHRoZSBjYXNlcyB3ZSByYW4gaW50by4KPiAKPiBCYXNp
+Y2FsbHksIHdlIGNhbiBoYXZlIHRoYXQgc3dpdGNoIHdvcmssIG9yIHdlIGNhbiBoYXZlIDIuNUcg
+YW5kIDVHIG9uIGJ5IGRlZmF1bHQuIE5vdCBib3RoLiBBbmQgc2luY2Ugd2UncmUgc2VsbGluZyBh
+IDEwRyBkZXZpY2Ugd2l0aCBvdGhlciBzcGVlZHMgYXMgYSBib251cywgd2UncmUgcHJpb3JpdGl6
+aW5nIHRoZSBoaWdoZXN0IHNwZWVkLiBUaGF0IHBsdXMgdGhlIHZlcnkgaGlnaCBwcm9maWxlIGN1
+c3RvbWVycyB3aG8gd2FudGVkIHRoaXMgc29sdXRpb24uCj4gCj4gVGhlIHNvbHV0aW9uIGZvciBv
+bmUgY2FtcCBvciB0aGUgb3RoZXIgaXMgdG8gdXNlIHRoZSBldGh0b29sIGNvbW1hbmQgYXQgYm9v
+dCAoSSd2ZSBmb3Jnb3R0ZW4gZXhhY3RseSB3aGF0IHRoYXQgd2FzKSBidXQgdGhlIGhpZ2ggcHJv
+ZmlsZSBjdXN0b21lcnMgcmVmdXNlZCB0byBkbyB0aGF0LiBTb3VuZHMgbGlrZSB5b3UncmUgcmVm
+dXNpbmcgYXMgd2VsbD8KCkknbSBub3QgcmVmdXNpbmcsIEkganVzdCB3b3VsZCByYXRoZXIgcGF0
+Y2ggbXkga2VybmVscyB0aGFuIHVzZSBldGh0b29sLCB0aGF0IHdheSBteSBvbGRlciB1c2VyLXNw
+YWNlCndvdWxkIHdvcmsgZmluZSBvbiBuZXdlciBrZXJuZWxzLgoKV291bGQgeW91IGFjY2VwdCBh
+IHBhdGNoIHRoYXQgbWFrZXMgdGhpcyBhIG1vZHVsZSBvcHRpb24sIGRlZmF1bHRlZCB0byBkaXNh
+YmxlIDIuNS81LCBidXQgd2hpY2gKYSB1c2VyIGNvdWxkIGVuYWJsZWQgdG8gZW5hYmxlIDIuNS81
+IGJ5IGRlZmF1bHQ/CgpJJ2QgZmluZCB0aGF0IGVhc2llciB0byB1c2UgdGhhdCB0aGUgZXRodG9v
+bCBtb2RpZmljYXRpb24sIGFuZCBvZiBjb3Vyc2UgZXRodG9vbCBjb3VsZCBzdGlsbApvdmVycmlk
+ZSB0aGluZ3MgYXMgZGVzaXJlZC4KClRoYW5rcywKQmVuCgo+IAo+IFRvZGQgRnVqaW5ha2EKPiBT
+b2Z0d2FyZSBBcHBsaWNhdGlvbiBFbmdpbmVlcgo+IERhdGEgQ2VudGVyIEdyb3VwCj4gSW50ZWwg
+Q29ycG9yYXRpb24KPiB0b2RkLmZ1amluYWthQGludGVsLmNvbQo+IAo+IC0tLS0tT3JpZ2luYWwg
+TWVzc2FnZS0tLS0tCj4gRnJvbTogQmVuIEdyZWVhciA8Z3JlZWFyYkBjYW5kZWxhdGVjaC5jb20+
+Cj4gU2VudDogU2F0dXJkYXksIERlY2VtYmVyIDE5LCAyMDIwIDg6NDggQU0KPiBUbzogRnVqaW5h
+a2EsIFRvZGQgPHRvZGQuZnVqaW5ha2FAaW50ZWwuY29tPjsgUGF1bCBNZW56ZWwgPHBtZW56ZWxA
+bW9sZ2VuLm1wZy5kZT4KPiBDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc7IEdy
+ZWcgS0ggPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgo+IFN1YmplY3Q6IFJlOiBbSW50ZWwt
+d2lyZWQtbGFuXSA1LjEwLjAga2VybmVsIHJlZ3Jlc3Npb24gZm9yIDIuNUdicHMgbGluayBuZWdv
+dGlhdGlvbj8KPiAKPiBPbiAxMi8xOS8yMCA4OjE5IEFNLCBGdWppbmFrYSwgVG9kZCB3cm90ZToK
+Pj4gVGhpcyBpcyBhIGJhZCBjYXNlIHdpdGggbm8gaWRlYWwgc29sdXRpb24uIERldGVjdGluZyB0
+aGUgY2FzZSBpcyBub3QgcG9zc2libGUgYXMgYXV0b25lZ290aWF0aW9uIGhhcHBlbnMgaW4gdGhl
+IGhhcmR3YXJlIHdpdGhvdXQgc29mdHdhcmUgaW52b2x2ZW1lbnQuCj4+Cj4gCj4gU28sIGFmdGVy
+IGl0IG5lZ290aWF0ZXMgdG8gMi41LCB3aGF0IGhhcHBlbnM/ICBEbyB5b3Ugc2VlIGxvdHMgb2Yg
+bG93LWxldmVsIGNyYyBlcnJvcnMgb3Igc2ltaWxhcj8KPiBNYXliZSB5b3UgY2FuIHVzZSB0aGF0
+IHRvIGRldGVybWluZSBsaW5rIGlzIGJhZCBhbmQgZm9yY2UgaXQgYmFjayB0byAxR2JwcyBhbmQg
+cmUtbmVnb3RpYXRlIGxpbms/Cj4gCj4gKEFuZCB3aXRoIG5pY2UgdmlzaWJsZSB3YXJuaW5nIGlu
+IGRtZXNnIGFib3V0IHdoYXQgaXMgZ29pbmcgb24pCj4gCj4+IE9uZSBzb2x1dGlvbiB3YXMgdG8g
+dXBkYXRlIHRoZSBzd2l0Y2ggZmlybXdhcmUgZm9yIHRoZSBhIHN3aXRjaCB0aGF0IGlzIGlzIHRo
+ZSBsaW5rIHBhcnRuZXIgdGhhdCBnaXZlIHVzIHRoZSBtb3N0IHRyb3VibGUuIFRoZSBpc3N1ZSBh
+cHBlYXJzIHRvIGJlIGluIGNvbXBldGluZyBvciBoYWxmLWltcGxlbWVudGVkIHN0YW5kYXJkcy4g
+Mi41RyBhbmQgNUcgd2VyZSBpbml0aWFsbHkgbm9uLUlFRUUgc3RhbmRhcmRzIHRoYXQgZGlmZmVy
+ZW50IG1hbnVmYWN0dXJlcnMgaGFja2VkIG9udG8gMUcgaW4gZGlmZmVyZW50IHdheXMuIFdlIGlt
+cGxlbWVudGVkIGl0IHRvIG9uZSBvZiB0aGUgc3RhbmRhcmRzIHdoaWNoIHNob3VsZCBiZSBpbnRl
+cm9wZXJhYmxlLCBidXQgdGhlIGNvcm5lciBjYXNlIG9mIHRoZSB3aWRlbHktZGVwbG95ZWQgc3dp
+dGNoIHdpbGwgdGFrZSB0aGUgbGluayBmcm9tIDEwRyB0byAxRyB3aXRoIG5vIGF1dG9tYXRlZCB3
+YXkgdG8gZml4IGl0Lgo+Pgo+PiBVcGRhdGluZyBzd2l0Y2hlcyBtZWFucyBhIGxvdCBvZiBkb3du
+dGltZSBmb3IgYSBsb3Qgb2YgZGF0YWNlbnRlcnMgYW5kIHRoZSBPRU1zIHdlIGRlYWwgd2l0aCB3
+b3VsZCBub3QgYWNjZXB0IHRoYXQgYW5zd2VyLgo+Pgo+PiBPdXIgc29sdXRpb24gd2FzIHRvIGRp
+c2FibGUgMi41RyBhbmQgNUcgYnkgZGVmYXVsdC4gVGhpcyBmaXhlcyAxMEcgbGlua2luZyBhdCAx
+RyBvbiB0aGF0IHN3aXRjaCwgYnV0IDIuNUcgYW5kIDVHIHdpbGwgbGluayBhdCAxRyBieSBkZWZh
+dWx0LiBBbmQsIGFzIEkgc2FpZCwgSSd2ZSBoYWQgdmVyeSBsaXR0bGUgY29udGFjdCB3aXRoIHBl
+b3BsZSB1c2luZyAyLjVHIGFuZCA1RyBhbmQgSSdtIHRoZSBndXkgb24gYWxsIHRoZSBtYWlsaW5n
+IGxpc3RzLiBJIGFwb2xvZ2l6ZSBmb3IgbWFraW5nIHlvdXIgbGlmZSBoYXJkZXIsIGJ1dCBpdCBz
+ZWVtcyBsaWtlIGl0J3MganVzdCB5b3Ugc28gZmFyLiBQYXVsIHNlZW1zIHRvIGJlIGFyZ3Vpbmcg
+d2l0aCBtZSBqdXN0IGZvciB0aGUgZnVuIG9mIGl0Lgo+IAo+IFdlbGwsIHdoZW4gdGhpbmdzIHdv
+cmssIG5vIG9uZSB0YWxrcyBhYm91dCBpdC4gOikKPiAKPiBBcmUgeW91IGFibGUgdG8gZGV0ZXJt
+aW5lIHRoYXQgcGVlciBpcyBhZHZlcnRpc2luZyAyLjUsIGFuZCBsb2NhbCBOSUMgaXMgZm9yY2Vk
+IHRvIDFHLCBhbmQgdGhlbiBwdXQgYSB2aXNpYmxlIHdhcm5pbmcgaW4gZG1lc2cgYWJvdXQgdGhp
+cyBjYXNlIGFuZCBsaW5rIHRvIGhvdyB0byBlbmFibGUgMi41LzVHIHJhdGVzPyAgVGhhdCBtaWdo
+dCBoZWxwIHBlb3BsZSByZWFsaXplIHdoYXQgaXMgZ29pbmcgb24uICBBbmQgd2hlbiB5b3UgZG8g
+dGhpcyBjb21taXQsIHB1dCBhIGxvdCBvZiBub3RlcyBhYm91dCB3aHkgYW5kIGFib3V0IHdoYXQg
+Y29tbWl0IGNoYW5nZWQgdGhpbmdzIHNpbmNlIGl0IGlzIG5vdCBhdCBhbGwgb2J2aW91cyBmcm9t
+IHRoZSBvcmlnaW5hbCBjb21taXQgbWVzc2FnZS4KPiAKPiBUaGFua3MsCj4gQmVuCj4gCj4+Cj4+
+IFRvZGQgRnVqaW5ha2EKPj4gU29mdHdhcmUgQXBwbGljYXRpb24gRW5naW5lZXIKPj4gRGF0YSBD
+ZW50ZXIgR3JvdXAKPj4gSW50ZWwgQ29ycG9yYXRpb24KPj4gdG9kZC5mdWppbmFrYUBpbnRlbC5j
+b20KPj4KPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0KPj4gRnJvbTogQmVuIEdyZWVhciA8
+Z3JlZWFyYkBjYW5kZWxhdGVjaC5jb20+Cj4+IFNlbnQ6IEZyaWRheSwgRGVjZW1iZXIgMTgsIDIw
+MjAgNDo0NyBQTQo+PiBUbzogRnVqaW5ha2EsIFRvZGQgPHRvZGQuZnVqaW5ha2FAaW50ZWwuY29t
+PjsgUGF1bCBNZW56ZWwKPj4gPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4KPj4gQ2M6IGludGVsLXdp
+cmVkLWxhbkBsaXN0cy5vc3Vvc2wub3JnOyBHcmVnIEtICj4+IDxncmVna2hAbGludXhmb3VuZGF0
+aW9uLm9yZz4KPj4gU3ViamVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIDUuMTAuMCBrZXJuZWwg
+cmVncmVzc2lvbiBmb3IgMi41R2JwcyBsaW5rIG5lZ290aWF0aW9uPwo+Pgo+PiBPbiAxMi8xOC8y
+MCA0OjA5IFBNLCBGdWppbmFrYSwgVG9kZCB3cm90ZToKPj4+IFdoYXQgZG8geW91IGNvbnNpZGVy
+IGEgcmVncmVzc2lvbj8gSGF2aW5nIHRvIGVuYWJsZSAyLjVHIGFuZCA1RyB1c2luZyBldGh0b29s
+IHdoaWNoIGNhbiBiZSBkb25lIGF0IGJvb3QgdGltZT8KPj4+Cj4+PiBXZSBoYWQgbW9yZSB0aGFu
+IGEgZmV3IGRhdGFjZW50ZXJzIHdpdGggaXNzdWVzIGJlY2F1c2Ugb2YgY29tcGV0aW5nIHN0YW5k
+YXJkcy4gSSBjaGVja2VkIHdpdGggb3VyIG1hcmtldGluZyBwZW9wbGUgYW5kLCBvbiB0aGUgd2hv
+bGUsIG5vIG9uZSBjb3VsZCB0aGluayBvZiBhIGxhcmdlIG51bWJlciBvZiAyLjVHIG9yIDVHIGN1
+c3RvbWVycy4KPj4+Cj4+PiBXZSBoYWQgc2V2ZXJhbCBlc2NhbGF0aW9ucyBmcm9tIG1ham9yIE9F
+TXMgYW5kIHRoaXMgd2FzIHRoZSBzb2x1dGlvbiB0aGV5IHdhbnRlZC4KPj4+Cj4+PiBXZSBjb25z
+aWRlciB0aGlzIG5lY2Vzc2FyeSBmb3IgaW50ZXJvcGVyYWJpbGl0eS4KPj4KPj4gQ2FuIHlvdSBk
+ZXRlY3QgdGhpcyBjYXNlIHNvbWVob3cgYW5kIGF1dG9tYXRpY2FsbHkgZmFsbC1iYWNrIHRvIDFH
+YnBzPwo+Pgo+PiBGb3IgbXkgb3duIHB1cnBvc2VzLCBJIHdpbGwganVzdCBoYWNrIHRoYXQgY29t
+bWl0LCBidXQgaXQgaXMgbGlrZWx5IHRvIGJlIGNvbmZ1c2luZyB0byBvdGhlciBwZW9wbGUgd2hv
+IGhhZCBhIHN5c3RlbSB0aGF0IHdvcmtlZCBhdCAyLjUgcHJldmlvdXNseSBhbmQgdGhlbiBzdWRk
+ZW5seSBpdCBpcyBzbG93ZXIuICBUaGVyZSBpcyBubyBlYXN5IHdheSB0byBrbm93IGZyb20gdGhl
+IHN5bXB0b20gdGhhdCB5b3UgbmVlZCB0byBkaWcgdXAgYW4gb2JzY3VyZSByZWFkbWUgYW5kIHJ1
+biBhbiBvYnNjdXJlIGV0aHRvb2wgY29tbWFuZC4KPj4KPj4gVGhhbmtzLAo+PiBCZW4KPj4KPj4+
+Cj4+PiBUb2RkIEZ1amluYWthCj4+PiBTb2Z0d2FyZSBBcHBsaWNhdGlvbiBFbmdpbmVlcgo+Pj4g
+RGF0YSBDZW50ZXIgR3JvdXAKPj4+IEludGVsIENvcnBvcmF0aW9uCj4+PiB0b2RkLmZ1amluYWth
+QGludGVsLmNvbQo+Pj4KPj4+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4+PiBGcm9tOiBQ
+YXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPgo+Pj4gU2VudDogRnJpZGF5LCBEZWNl
+bWJlciAxOCwgMjAyMCAzOjE5IFBNCj4+PiBUbzogQmVuIEdyZWVhciA8Z3JlZWFyYkBjYW5kZWxh
+dGVjaC5jb20+OyBGdWppbmFrYSwgVG9kZAo+Pj4gPHRvZGQuZnVqaW5ha2FAaW50ZWwuY29tPgo+
+Pj4gQ2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3JnOyBHcmVnIEtICj4+PiA8Z3Jl
+Z2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+OyBOZ3V5ZW4sIEFudGhvbnkgTAo+Pj4gPGFudGhvbnku
+bC5uZ3V5ZW5AaW50ZWwuY29tPjsgQnJhbmRlYnVyZywgSmVzc2UKPj4+IDxqZXNzZS5icmFuZGVi
+dXJnQGludGVsLmNvbT47IFR5bCwgUmFkb3NsYXdYCj4+PiA8cmFkb3NsYXd4LnR5bEBpbnRlbC5j
+b20+OyBMb2t0aW9ub3YsIEFsZWtzYW5kcgo+Pj4gPGFsZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwu
+Y29tPjsgTWNsZWFuLCBBcnRodXIgRgo+Pj4gPGFydGh1ci5mLm1jbGVhbkBpbnRlbC5jb20+OyBT
+a2FqZXdza2ksIFBpb3RyWAo+Pj4gPHBpb3RyeC5za2FqZXdza2lAaW50ZWwuY29tPgo+Pj4gU3Vi
+amVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIDUuMTAuMCBrZXJuZWwgcmVncmVzc2lvbiBmb3Ig
+Mi41R2JwcyBsaW5rIG5lZ290aWF0aW9uPwo+Pj4KPj4+IFsrY2MgUmFkb3NsYXcsIEFsZWtzYW5k
+ciwgUGlvdHJdCj4+Pgo+Pj4gQW0gMTkuMTIuMjAgdW0gMDA6MDcgc2NocmllYiBCZW4gR3JlZWFy
+Ogo+Pj4+IE9uIDEyLzE4LzIwIDExOjQzIEFNLCBQYXVsIE1lbnplbCB3cm90ZToKPj4+Cj4+Pj4+
+IEFtIDE4LjEyLjIwIHVtIDIwOjI3IHNjaHJpZWIgRnVqaW5ha2EsIFRvZGQ6Cj4+Pj4+PiBZZXMs
+IGFuZCBJJ20gcGx1Z2dpbmcgdGhlIGhvbGUgaW4gdGhlIFJFQURNRSByaWdodCBub3cuIEhlcmUn
+cyB0aGUKPj4+Pj4+IHByb3Bvc2VkIHRleHQ6Cj4+Pj4+Pgo+Pj4+Pj4gQWR2ZXJ0aXNlbWVudHMg
+Zm9yIDIuNUcgYW5kIDVHIG9uIHRoZSB4NTUwIHdlcmUgdHVybmVkIG9mZiBieQo+Pj4+Pj4gZGVm
+YXVsdCBkdWUgdG8gaW50ZXJvcGVyYWJpbGl0eSBpc3N1ZXMgd2l0aCBjZXJ0YWluIHN3aXRjaGVz
+LiBUbwo+Pj4+Pj4gdHVybiB0aGVtIGJhY2sgb24sIHVzZQo+Pj4+Pj4KPj4+Pj4+IGV0aHRvb2wg
+LXMgPGV0aFg+IGFkdmVydGlzZSBOCj4+Pj4+Pgo+Pj4+Pj4gd2hlcmUgTiBpcyBhIGNvbWJpbmF0
+aW9uIG9mIHRoZSBmb2xsb3dpbmcuCj4+Pj4+Pgo+Pj4+Pj4gMTAwYmFzZVRGdWxswqDCoMKgIDB4
+MDA4Cj4+Pj4+PiAxMDAwYmFzZVRGdWxswqDCoCAweDAyMAo+Pj4+Pj4gMjUwMGJhc2VURnVsbMKg
+wqAgMHg4MDAwMDAwMDAwMDAKPj4+Pj4+IDUwMDBiYXNlVEZ1bGzCoMKgIDB4MTAwMDAwMDAwMDAw
+MAo+Pj4+Pj4gMTAwMDBiYXNlVEZ1bGzCoCAweDEwMDAKPj4+Pj4+Cj4+Pj4+PiBGb3IgZXhhbXBs
+ZSwgdG8gdHVybiBvbiBhbGwgbW9kZXM6Cj4+Pj4+PiBldGh0b29sIC1zIDxldGhYPiBhZHZlcnRp
+c2UgMHgxODAwMDAwMDAxMDI4Cj4+Pj4+Pgo+Pj4+Pj4gRm9yIG1vcmUgZGV0YWlscyBwbGVhc2Ug
+c2VlIHRoZSBldGh0b29sIG1hbiBwYWdlLgo+Pj4+Pgo+Pj4+PiBXaGF0IGNvbW1pdCBpbnRyb2R1
+Y2VkIHRoaXMgcmVncmVzc2lvbi4gUGxlYXNlIGJlYXIgaW4gbWluZCwgdGhhdAo+Pj4+PiB0aGlz
+IGNvbnRyYWRpY3RzIExpbnV44oCZIG5vLXJlZ3Jlc3Npb24gcG9saWN5LCBhbmQgdGhlIGNvbW1p
+dCBzaG91bGQKPj4+Pj4gdGhlcmVmb3JlIGJlIHJldmVydGVkIGFzIHNvb24gYXMgcG9zc2libGUu
+Cj4+Pj4KPj4+PiBMb29rcyBsaWtlIGl0IGlzIGF0IHRoZSBlbmQgb2YgdGhpcyBwYXRjaCwgdGhv
+dWdoIHRoZSBkZXNjcmlwdGlvbgo+Pj4+IGRvZXNuJ3QgbWVudGlvbiBjaGFuZ2luZyBkZWZhdWx0
+czoKPj4+Pgo+Pj4+IENvbW1pdCBhMjk2ZDY2NWVhZTFlOGVjNjQ0NTY4M2JmYjk5OWM4ODQwNTg0
+MjZhCj4+Pj4gQXV0aG9yOiBSYWRvc2xhdyBUeWwgPHJhZG9zbGF3eC50eWxAaW50ZWwuY29tPgo+
+Pj4+IERhdGU6wqDCoCBGcmkgSnVuIDI2IDE1OjI4OjE0IDIwMjAgKzAyMDAKPj4+Pgo+Pj4+ICAg
+ICDCoMKgwqAgaXhnYmU6IEFkZCBldGh0b29sIHN1cHBvcnQgdG8gZW5hYmxlIDIuNSBhbmQgNS4w
+IEdicHMgc3VwcG9ydAo+Pj4+Cj4+Pj4gICAgIMKgwqDCoCBBZGRlZCBmdWxsIHN1cHBvcnQgZm9y
+IG5ldyB2ZXJzaW9uIEV0aHRvb2wgQVBJLiBOZXcgQVBJIGFsbG93IHVzZQo+Pj4+ICAgICDCoMKg
+wqAgMjUwMEdiYXNlLVQgYW5kIDUwMDBiYXNlLVQgc3VwcG9ydGVkIGFuZCBhZHZlcnRpc2VkIGxp
+bmsgc3BlZWQgbW9kZXMuCj4+Pj4KPj4+PiAgICAgwqDCoMKgIFNpZ25lZC1vZmYtYnk6IFJhZG9z
+bGF3IFR5bCA8cmFkb3NsYXd4LnR5bEBpbnRlbC5jb20+Cj4+Pj4gICAgIMKgwqDCoCBUZXN0ZWQt
+Ynk6IEFuZHJldyBCb3dlcnMgPGFuZHJld3guYm93ZXJzQGludGVsLmNvbT4KPj4+PiAgICAgwqDC
+oMKgIFNpZ25lZC1vZmYtYnk6IFRvbnkgTmd1eWVuIDxhbnRob255Lmwubmd1eWVuQGludGVsLmNv
+bT4KPj4+Pgo+Pj4+IFRoYW5rcywKPj4+PiBCZW4KPj4KPj4KPj4gLS0KPj4gQmVuIEdyZWVhciA8
+Z3JlZWFyYkBjYW5kZWxhdGVjaC5jb20+Cj4+IENhbmRlbGEgVGVjaG5vbG9naWVzIEluYyAgaHR0
+cDovL3d3dy5jYW5kZWxhdGVjaC5jb20KPj4KPiAKPiAKPiAtLQo+IEJlbiBHcmVlYXIgPGdyZWVh
+cmJAY2FuZGVsYXRlY2guY29tPgo+IENhbmRlbGEgVGVjaG5vbG9naWVzIEluYyAgaHR0cDovL3d3
+dy5jYW5kZWxhdGVjaC5jb20KPiAKCgotLSAKQmVuIEdyZWVhciA8Z3JlZWFyYkBjYW5kZWxhdGVj
+aC5jb20+CkNhbmRlbGEgVGVjaG5vbG9naWVzIEluYyAgaHR0cDovL3d3dy5jYW5kZWxhdGVjaC5j
+b20KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
+d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
+L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
