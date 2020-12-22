@@ -1,63 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C8B72E0FA4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 22:10:10 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B06A52E0FA5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 22:10:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6D6B86984;
-	Tue, 22 Dec 2020 21:10:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3946B274D1;
+	Tue, 22 Dec 2020 21:10:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mZzeD4tpnX-K; Tue, 22 Dec 2020 21:10:08 +0000 (UTC)
+	with ESMTP id yEYxViwsqzFx; Tue, 22 Dec 2020 21:10:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 54EC88698E;
-	Tue, 22 Dec 2020 21:10:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 24DA027428;
+	Tue, 22 Dec 2020 21:10:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0E08C1BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 10CEC1BF3BC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 06D0187237
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0C48286984
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KJB-s6SGxEf8 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Dec 2020 21:10:03 +0000 (UTC)
+ with ESMTP id Ek1qos2TMzBL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Dec 2020 21:10:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C683887236
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:03 +0000 (UTC)
-IronPort-SDR: hC6o85M544RULJ1aaigW0r+y3A0ycRcy1XMy8wY9gnEJASxPVTLpLO1eXMFWi1BBwiH0vi4n1m
- dY7m5nrzNu4Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="175148826"
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="175148826"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 13:09:56 -0800
-IronPort-SDR: dLw1g7XhP9t7BMnmFuZicFB7l5aXWXcnqEqlfdapm+z7FKWgxaLrbdBDo53YqrSQkUrRB21lrx
- 5et4JYjdie2A==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4A31B868B0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:32 +0000 (UTC)
+IronPort-SDR: fsWSh0PIRCt+1kMnoIvYW1Q7jMRTHgeWk1SI84NoRzT6IHol8MnOjWW+jV4P5//pnt2GOgBmVB
+ nyksorCF06Qw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="176071626"
+X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="176071626"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 13:10:26 -0800
+IronPort-SDR: 072MTfSl58IBfKY1y21qQghyI/Kt1muzJpB6v8jl0DnWkjakHp+Jzy2CZaFGfmwGYkHxWVe2z7
+ c7XMDuKFarew==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="457639597"
+X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="392548498"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga001.fm.intel.com with ESMTP; 22 Dec 2020 13:09:55 -0800
-Date: Tue, 22 Dec 2020 21:59:25 +0100
+ by fmsmga002.fm.intel.com with ESMTP; 22 Dec 2020 13:10:24 -0800
+Date: Tue, 22 Dec 2020 21:59:53 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201222205925.GA10157@ranger.igk.intel.com>
+Message-ID: <20201222205953.GB10157@ranger.igk.intel.com>
 References: <20201217202415.77891-1-andre.guedes@intel.com>
- <20201217202415.77891-10-andre.guedes@intel.com>
- <20201222131428.GG2943@ranger.igk.intel.com>
- <160865901948.65485.17595669491129234170@ticela-az-003.amr.corp.intel.com>
+ <20201217202415.77891-5-andre.guedes@intel.com>
+ <20201221225345.GB2943@ranger.igk.intel.com>
+ <160859961079.45139.12880409788363593695@bgdudka-mobl.amr.corp.intel.com>
+ <20201222123205.GE2943@ranger.igk.intel.com>
+ <160865901531.65485.14120712105251086033@ticela-az-003.amr.corp.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <160865901948.65485.17595669491129234170@ticela-az-003.amr.corp.intel.com>
+In-Reply-To: <160865901531.65485.14120712105251086033@ticela-az-003.amr.corp.intel.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH 09/10] igc: Enable RX via AF_XDP
- zero-copy
+Subject: Re: [Intel-wired-lan] [PATCH 04/10] igc: Refactor XDP rxq info
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,120 +78,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 22, 2020 at 09:43:39AM -0800, Andre Guedes wrote:
-> Quoting Maciej Fijalkowski (2020-12-22 05:14:28)
-> > > +static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
-> > > +{
-> > > +     struct igc_adapter *adapter = q_vector->adapter;
-> > > +     struct igc_ring *ring = q_vector->rx.ring;
-> > > +     u16 cleaned_count = igc_desc_unused(ring);
-> > > +     int total_bytes = 0, total_packets = 0;
-> > > +     struct bpf_prog *prog;
-> > > +     bool failure = false;
-> > > +     int xdp_status = 0;
-> > > +
-> > > +     rcu_read_lock();
-> > > +
-> > > +     prog = READ_ONCE(adapter->xdp_prog);
-> > > +
-> > > +     while (likely(total_packets < budget)) {
-> > > +             union igc_adv_rx_desc *desc;
-> > > +             struct igc_rx_buffer *bi;
-> > > +             unsigned int size;
-> > > +             int res;
-> > > +
-> > > +             desc = IGC_RX_DESC(ring, ring->next_to_clean);
-> > > +             size = le16_to_cpu(desc->wb.upper.length);
-> > > +             if (!size)
-> > > +                     break;
-> > > +
-> > > +             /* This memory barrier is needed to keep us from reading
-> > > +              * any other fields out of the rx_desc until we know the
-> > > +              * descriptor has been written back
-> > > +              */
-> > > +             dma_rmb();
-> > > +
-> > > +             bi = &ring->rx_buffer_info[ring->next_to_clean];
-> > > +
-> > > +             if (igc_test_staterr(desc, IGC_RXDADV_STAT_TSIP)) {
-> > > +                     /* FIXME: For now, if packet buffer contains timestamp
-> > > +                      * information, we discard it. Once XDP infrastructe
+On Tue, Dec 22, 2020 at 09:43:35AM -0800, Andre Guedes wrote:
+> Quoting Maciej Fijalkowski (2020-12-22 04:32:05)
+> > > > > @@ -536,6 +539,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+> > > > >       u32 srrctl = 0, rxdctl = 0;
+> > > > >       u64 rdba = ring->dma;
+> > > > >  
+> > > > > +     WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+> > > > > +                                        MEM_TYPE_PAGE_SHARED, NULL));
+> > > > 
+> > > > You should do the unroll in case it fails just like it was done in
+> > > > igc_xdp_register_rxq_info.
+> > > 
+> > > This was inspired in ixgbe driver.
+> > > 
+> > > The only reason xdp_rxq_info_reg_mem_model() could fail here is if xdp_rxq
+> > > wasn't registered. However, this is very unlikely to happen since it is
+> > > registered in igc_setup_rx_resources() which is always called before
+> > > igc_configure_rx_ring(). The WARN_ON() macro is used just in case.
 > > 
-> > nit: s/infrastructe/infrastructure
-> 
-> Thanks, I'll fix it in the v2.
-> 
-> > > +int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
-> > > +{
-> > > +     struct igc_adapter *adapter = netdev_priv(dev);
-> > > +     struct igc_q_vector *q_vector;
-> > > +     struct igc_ring *ring;
-> > > +
-> > > +     if (test_bit(__IGC_DOWN, &adapter->state))
-> > > +             return -ENETDOWN;
-> > > +
-> > > +     if (!igc_xdp_is_enabled(adapter))
-> > > +             return -ENXIO;
-> > > +
-> > > +     if (queue_id >= adapter->num_rx_queues)
-> > > +             return -EINVAL;
-> > > +
-> > > +     ring = adapter->rx_ring[queue_id];
-> > > +
-> > > +     if (!ring->xsk_pool)
-> > > +             return -ENXIO;
+> > Agreed on that but let's not disregard the other failure cases that can
+> > happen by saying that it can only fail when xdp_rxq wasn't registered.
 > > 
-> > ring local variable feels a bit unnecessary.
-> 
-> It's just for the sake of code readability. I thought it reads better than:
-> 
-> 	if (!adapter->rx_ring[queue_id]->xsk_pool)
-> 		return -ENXIO;
-
-Yeah, okay then.
-
-> 
-> > > +static int igc_xdp_enable_pool(struct igc_adapter *adapter,
-> > > +                            struct xsk_buff_pool *pool, u16 queue_id)
-> > > +{
-> > > +     struct net_device *ndev = adapter->netdev;
-> > > +     struct device *dev = &adapter->pdev->dev;
-> > > +     struct igc_ring *rx_ring;
-> > > +     struct napi_struct *napi;
-> > > +     bool needs_reset;
-> > > +     u32 frame_size;
-> > > +     int err;
-> > > +
-> > > +     if (queue_id >= adapter->num_rx_queues)
-> > > +             return -EINVAL;
-> > > +
-> > > +     frame_size = xsk_pool_get_rx_frame_size(pool);
-> > > +     if (frame_size < ETH_FRAME_LEN + VLAN_HLEN * 2) {
-> > > +             /* For now, when XDP is enabled, the driver doesn't support
-> > > +              * frames that span over multiple buffers. The max frame size
-> > > +              * considered here is the ethernet frame size + vlan double
-> > > +              * tagging.
-> > > +              */
+> > I believe that functions returning statuses have been written in such way
+> > for some reason, so I feel that ignoring error statuses is a wrong
+> > attitude.
 > > 
-> > I don't really follow that. You check if chunk size is less than
-> > ETH_FRAME_LEN + VLAN_HLEN * 2. chunk size will be at least 2k if I recall
-> > correctly. How is that related to fragmented buffers?
+> > For example, igc_setup_all_rx_resources return value is ignored in
+> > igc_request_irq, but in __igc_open it is checked. Why?
+> > 
+> > One last thing is that all other drivers besides igb/ixgbe do the error
+> > handling.
 > 
-> Note that the code above checks the xsk frame size, not chunk size.
+> Agreed. I have another series with some fixes to the driver that I'm working
+> on. I can fix the issue with igc_request_irq() on that series.
 > 
-> Yes, the chunk mim size is 2k indeed. However, if I'm reading the code
-> correctly, the umem headroom can have an arbitrary value defined by the user
-> (see xdp_umem_reg()). In this case, the xsk frame size could potentially be
-> less than the ethernet frame size.
+> > > If we really want to unroll, we should propagate the error back in the call
+> > > chain, changing the returning type of igc_configure_rx_ring() as well as the
+> > > other functions in the call chain, so the unrolling is done in the proper
+> > > place.
+> > > 
+> > > IMO, such change isn't worth it. It seems like a lot of change to cover a case
+> > > that is never expected. WARN_ON() sound more suitable in those cases. Also,
+> > > ixgbe is around for quite some time and this doesn't seem to be an issue.
+> > 
+> > Well, although I don't like it, I agree :P
+> > 
+> > The uncomfortable question would be what will happen if we fail to
+> > register that mem model but due to the fact that driver is written in a
+> > way that it is not profitable to do unrolling?
+> 
+> I see your point. In that case, I think we can tackle that in a separate series
+> changing all three drivers (igc, ixgbe, and igb). Sounds good?
 
-Ok I see. So you actually meant that for lower frame size given to HW we
-would start to fragment the frames?
-
-Comment was a bit unclear, hence my confusion.
-
-Anyway, I feel like this is something generic that should be checked
-earlier at xsk code? Meaning, when we actually create the umem with user
-provided config at setsockopt?
+Sure :)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
