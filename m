@@ -1,78 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F8002E0DCD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 18:22:30 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59BF12E0DE8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 18:43:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DFDB227233;
-	Tue, 22 Dec 2020 17:22:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 99838872C4;
+	Tue, 22 Dec 2020 17:43:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r1daoIjXQWk4; Tue, 22 Dec 2020 17:22:28 +0000 (UTC)
+	with ESMTP id nYulGAtyyZA3; Tue, 22 Dec 2020 17:43:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 590D823265;
-	Tue, 22 Dec 2020 17:22:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ECC4D872C8;
+	Tue, 22 Dec 2020 17:43:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 478FF1BF873
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:22:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 364391BF873
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:43:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 38876204C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:22:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 321AF866CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:43:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kEXUkdEEwnd6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Dec 2020 17:22:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f173.google.com (mail-pg1-f173.google.com
- [209.85.215.173])
- by silver.osuosl.org (Postfix) with ESMTPS id B0E6B2042C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:22:24 +0000 (UTC)
-Received: by mail-pg1-f173.google.com with SMTP id e2so8784804pgi.5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 09:22:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=c5LEavqIHcsGZNet7OtNJDKg+adi8Yhy4rgjrGS3+HY=;
- b=DB9ED2+8OMnwUUzccX30PHXzOQASZ4odqRfIkP+26b1qoi1JGFFsAFxqlCS2PYy4ZB
- 19abBdglgQIXLKL61VE3Qi1ehEypx8VVxRTkmcUu1EUU/pMWB1CtY3DEWa9SJaWD1iyD
- 9zIqT9X4PiGjnoPBMOvNFTFeavp28KSnyVF5IU1fdWhk4q3AH9mo4UP5BZex/grZyWeq
- 9E3jbEoE7W/84bHY2HR1+UTIJXqed644N1vOeVYGI6/7QfewPdlF9egCG3eUV0HEJnR5
- VAEp4TaBZFWRFNupjeRyDwoH4cHuc/D1KsT0csg+kYbbQ3+AZSECjSATbE+a8F4GM3wk
- itFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=c5LEavqIHcsGZNet7OtNJDKg+adi8Yhy4rgjrGS3+HY=;
- b=VAYRnJYCHRia90Bi1Li7KUacEBIZO9+4WiKgNGMUubRmG3F+Xj3p6HpsYfIHbhTTV0
- eFVAfH+8jwebJ4y8pN0gleOal8xIlAkrdKuqfHo7YEZoouTe+ud2J763g1gWaU8Lzmv9
- IZ96/pZeszC2NHrQWpete0smelhi0eTsl+U4bNwQSZK5PxXg9sF1f/SLQjxCDxL2Sdhp
- RmdGtOYLqM0smsA85RJKLRSEixvTq/LYWsXslYv5GgD+OfVAUm3lIcI1YffpyZgsrOha
- eCdWiBf5QNf6uezs3PK/74oENWpaH0ZbkjtqXF/K74EsYjbxwotPF9Sn0rhx7d/Cb7Co
- Dz6w==
-X-Gm-Message-State: AOAM531yi/1oGT5UXgWodR+l9kaEMtQMWAbspDp7g70t6xmToH0mV3uH
- sWa8Tsre1lab4/EL/Pt167sKioPtYs5bAO8b
-X-Google-Smtp-Source: ABdhPJz3DZZV3pwiYy3mpqxo8oP/y4ZaPz1eP5EgYReImYZQVo/hj9V+4+wmvFxmBxzQwp/RnF7UGA==
-X-Received: by 2002:a63:d707:: with SMTP id d7mr2365589pgg.275.1608657273668; 
- Tue, 22 Dec 2020 09:14:33 -0800 (PST)
-Received: from hermes.local (204-195-22-127.wavecable.com. [204.195.22.127])
- by smtp.gmail.com with ESMTPSA id o9sm20783519pjw.9.2020.12.22.09.14.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Dec 2020 09:14:33 -0800 (PST)
-Date: Tue, 22 Dec 2020 09:12:55 -0800
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>
-Message-ID: <20201222091255.55fe72c3@hermes.local>
+ with ESMTP id ZWtHwKaW6IcI for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Dec 2020 17:43:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C9C5D86845
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 17:43:36 +0000 (UTC)
+IronPort-SDR: FdT2Jo1ybThS+DaIIQ7274aYv5a93m1SfNfrPYZXidijY7nfi0XoEney1FDuiiEe4K6lNchuB0
+ 3nguSok3NCXQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="172390811"
+X-IronPort-AV: E=Sophos;i="5.78,439,1599548400"; d="scan'208";a="172390811"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 09:43:36 -0800
+IronPort-SDR: vEvPcKD+SNyW/ZIBxKzWaql6o+FVyzzy6FAzFrjoT5sjcUAnidaAAoOg1T9ldhmillJ8SuNijU
+ Dg3KqhawIFRw==
+X-IronPort-AV: E=Sophos;i="5.78,439,1599548400"; d="scan'208";a="492337426"
+Received: from ticela-az-003.amr.corp.intel.com (HELO localhost)
+ ([10.254.73.166])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 09:43:35 -0800
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] Fw: [Bug 210855] New: Increased latency & jitter
- with e1000e on Linux 5.8
+In-Reply-To: <20201222123205.GE2943@ranger.igk.intel.com>
+References: <20201217202415.77891-1-andre.guedes@intel.com>
+ <20201217202415.77891-5-andre.guedes@intel.com>
+ <20201221225345.GB2943@ranger.igk.intel.com>
+ <160859961079.45139.12880409788363593695@bgdudka-mobl.amr.corp.intel.com>
+ <20201222123205.GE2943@ranger.igk.intel.com>
+From: Andre Guedes <andre.guedes@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Tue, 22 Dec 2020 09:43:35 -0800
+Message-ID: <160865901531.65485.14120712105251086033@ticela-az-003.amr.corp.intel.com>
+User-Agent: alot/0.9.1
+Subject: Re: [Intel-wired-lan] [PATCH 04/10] igc: Refactor XDP rxq info
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,86 +77,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Quoting Maciej Fijalkowski (2020-12-22 04:32:05)
+> > > > @@ -536,6 +539,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+> > > >       u32 srrctl = 0, rxdctl = 0;
+> > > >       u64 rdba = ring->dma;
+> > > >  
+> > > > +     WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+> > > > +                                        MEM_TYPE_PAGE_SHARED, NULL));
+> > > 
+> > > You should do the unroll in case it fails just like it was done in
+> > > igc_xdp_register_rxq_info.
+> > 
+> > This was inspired in ixgbe driver.
+> > 
+> > The only reason xdp_rxq_info_reg_mem_model() could fail here is if xdp_rxq
+> > wasn't registered. However, this is very unlikely to happen since it is
+> > registered in igc_setup_rx_resources() which is always called before
+> > igc_configure_rx_ring(). The WARN_ON() macro is used just in case.
+> 
+> Agreed on that but let's not disregard the other failure cases that can
+> happen by saying that it can only fail when xdp_rxq wasn't registered.
+> 
+> I believe that functions returning statuses have been written in such way
+> for some reason, so I feel that ignoring error statuses is a wrong
+> attitude.
+> 
+> For example, igc_setup_all_rx_resources return value is ignored in
+> igc_request_irq, but in __igc_open it is checked. Why?
+> 
+> One last thing is that all other drivers besides igb/ixgbe do the error
+> handling.
 
+Agreed. I have another series with some fixes to the driver that I'm working
+on. I can fix the issue with igc_request_irq() on that series.
 
-Begin forwarded message:
+> > If we really want to unroll, we should propagate the error back in the call
+> > chain, changing the returning type of igc_configure_rx_ring() as well as the
+> > other functions in the call chain, so the unrolling is done in the proper
+> > place.
+> > 
+> > IMO, such change isn't worth it. It seems like a lot of change to cover a case
+> > that is never expected. WARN_ON() sound more suitable in those cases. Also,
+> > ixgbe is around for quite some time and this doesn't seem to be an issue.
+> 
+> Well, although I don't like it, I agree :P
+> 
+> The uncomfortable question would be what will happen if we fail to
+> register that mem model but due to the fact that driver is written in a
+> way that it is not profitable to do unrolling?
 
-Date: Tue, 22 Dec 2020 16:59:27 +0000
-From: bugzilla-daemon@bugzilla.kernel.org
-To: stephen@networkplumber.org
-Subject: [Bug 210855] New: Increased latency & jitter with e1000e on Linux 5.8
-
-
-https://bugzilla.kernel.org/show_bug.cgi?id=210855
-
-            Bug ID: 210855
-           Summary: Increased latency & jitter with e1000e on Linux 5.8
-           Product: Networking
-           Version: 2.5
-    Kernel Version: 5.8
-          Hardware: Intel
-                OS: Linux
-              Tree: Mainline
-            Status: NEW
-          Severity: normal
-          Priority: P1
-         Component: Other
-          Assignee: stephen@networkplumber.org
-          Reporter: tm@del.bg
-        Regression: No
-
-I have a Linux router with the following specs:
-
-Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
-
-01:00.0  Intel Corporation 82571EB Gigabit Ethernet Controller (rev 06)
-01:00.1  Intel Corporation 82571EB Gigabit Ethernet Controller (rev 06)
-02:00.0  Intel Corporation 82571EB Gigabit Ethernet Controller (rev 06)
-02:00.1  Intel Corporation 82571EB Gigabit Ethernet Controller (rev 06)
-03:00.0  Intel Corporation Ethernet Controller 10G X550T (rev 01)
-03:00.1  Intel Corporation Ethernet Controller 10G X550T (rev 01)
-04:00.0  Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
-04:00.1  Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
-
-Up to Linux 5.7 kernel everything was ok. After upgrading to 5.8 I've noticed
-that latency and jitter to one of the e1000e NICs (82571EB) increased.
-
-Further tests revealed the following:
-
-# 4.19  rtt min/avg/max/mdev = 0.183/0.275/0.382/0.032 ms
-# 5.0   rtt min/avg/max/mdev = 0.180/0.249/0.310/0.034 ms
-# 5.4   rtt min/avg/max/mdev = 0.146/0.226/0.306/0.046 ms
-# 5.6   rtt min/avg/max/mdev = 0.128/0.172/0.210/0.022 ms
-# 5.7   rtt min/avg/max/mdev = 0.147/0.181/0.233/0.024 ms
-
-# 5.8   rtt min/avg/max/mdev = 0.152/2.182/3.944/1.524 ms
-# 5.9   rtt min/avg/max/mdev = 0.345/2.095/4.192/1.160 ms
-# 5.10  rtt min/avg/max/mdev = 0.345/2.095/4.192/1.160 ms
-
-Single ping session looks like this:
-
-PING 172.31.252.132 (172.31.252.132) 56(84) bytes of data.
-64 bytes from 172.31.252.132: icmp_seq=1 ttl=64 time=2.42 ms
-64 bytes from 172.31.252.132: icmp_seq=2 ttl=64 time=0.872 ms
-64 bytes from 172.31.252.132: icmp_seq=3 ttl=64 time=0.171 ms
-64 bytes from 172.31.252.132: icmp_seq=4 ttl=64 time=1.89 ms
-64 bytes from 172.31.252.132: icmp_seq=5 ttl=64 time=0.163 ms
-64 bytes from 172.31.252.132: icmp_seq=6 ttl=64 time=0.196 ms
-64 bytes from 172.31.252.132: icmp_seq=7 ttl=64 time=0.191 ms
-64 bytes from 172.31.252.132: icmp_seq=8 ttl=64 time=1.90 ms
-64 bytes from 172.31.252.132: icmp_seq=9 ttl=64 time=4.00 ms
-
-No such problem on another NIC (10G X550T).
-
-Using e1000e-3.8.7.tar.gz driver (dkms) didn't help at all.
-
-I'm trying to bisect it right now...
-
--- 
-You may reply to this email to add a comment.
-
-You are receiving this mail because:
-You are the assignee for the bug.
+I see your point. In that case, I think we can tackle that in a separate series
+changing all three drivers (igc, ixgbe, and igb). Sounds good?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
