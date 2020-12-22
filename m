@@ -1,64 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 550442E0796
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 09:59:14 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56A652E0A1A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 13:42:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1846387114;
-	Tue, 22 Dec 2020 08:59:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B3CFB2047D;
+	Tue, 22 Dec 2020 12:42:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jciXTau+u+LN; Tue, 22 Dec 2020 08:59:12 +0000 (UTC)
+	with ESMTP id 9dQo5T2r1Q09; Tue, 22 Dec 2020 12:42:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4AC9387245;
-	Tue, 22 Dec 2020 08:59:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B9612273E1;
+	Tue, 22 Dec 2020 12:42:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D0F961BF280
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 50E701BF34D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 12:42:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CC85680CE5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4CB9F87286
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 12:42:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zsaBlkPhdBK6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5EBDA847DD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F34022251F;
- Tue, 22 Dec 2020 08:59:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1608627549;
- bh=Dyk8LinvwccB3LsrSKP8imoT/WARhd4gsqmIsWMXlNc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XUtv1x4Cy70kM8JIhJrYNWYTmCnH14ydp+Gvk3y78S84bC6mEZayv6JWrfkwi/6q6
- aWAANbPxwf2TE/so0EY0VSrqKGtaJlDHdd2fDrt0lw1malEKr4vCHF40aMJxF+ZPfG
- eAEVeizzIPLIff2F4fmU0pOUH87O0cZdzv5DlFpE=
-Date: Tue, 22 Dec 2020 09:59:05 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Ben Greear <greearb@candelatech.com>
-Message-ID: <X+G1WVz0qorjegSa@kroah.com>
-References: <BYAPR11MB3606E48BA821185142354D67EFC30@BYAPR11MB3606.namprd11.prod.outlook.com>
- <3bcba0ca-8f3b-8428-861a-86aaff1688b6@molgen.mpg.de>
- <c54c8f2c-a295-c691-466e-07ae8f41b0ac@candelatech.com>
- <3c8510fb-af8c-b5f9-2af1-64584a667ac8@molgen.mpg.de>
- <BYAPR11MB36060F3889C66AE55092DA01EFC20@BYAPR11MB3606.namprd11.prod.outlook.com>
- <8635a2db-0d38-c088-321b-27bc4bb21ec4@candelatech.com>
- <MN2PR11MB3614FD0C52705864C05EFDF8EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
- <2108932e-ee2e-cadf-52cd-0cd11a6aeba4@candelatech.com>
- <BYAPR11MB3606A702240D0A1614AA6585EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
- <1d9e12e5-56a5-7921-e4b6-b67bcc180942@candelatech.com>
+ with ESMTP id Ut8Qx2LCH8cs for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Dec 2020 12:42:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 833D387142
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 12:42:40 +0000 (UTC)
+IronPort-SDR: /haES9fOFTpfolzeP1Av7wfYmeXQjlk9QrSImQpP8c/fAtRkB7W/LAmICpqUXoYBFym8tPYStz
+ ZZG0XNSMfRdw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9842"; a="237423382"
+X-IronPort-AV: E=Sophos;i="5.78,438,1599548400"; d="scan'208";a="237423382"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2020 04:42:34 -0800
+IronPort-SDR: VGjJ6L/df1s5mmMK7hSQTzB/vsR6Z+Jp/8QbjT/niUOc1WOWZl1PIB5G1ZaWuAfmErKB2YFeHQ
+ UEonRXnMpsqw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,438,1599548400"; d="scan'208";a="457436971"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by fmsmga001.fm.intel.com with ESMTP; 22 Dec 2020 04:42:32 -0800
+Date: Tue, 22 Dec 2020 13:32:05 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Andre Guedes <andre.guedes@intel.com>
+Message-ID: <20201222123205.GE2943@ranger.igk.intel.com>
+References: <20201217202415.77891-1-andre.guedes@intel.com>
+ <20201217202415.77891-5-andre.guedes@intel.com>
+ <20201221225345.GB2943@ranger.igk.intel.com>
+ <160859961079.45139.12880409788363593695@bgdudka-mobl.amr.corp.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1d9e12e5-56a5-7921-e4b6-b67bcc180942@candelatech.com>
-Subject: Re: [Intel-wired-lan] 5.10.0 kernel regression for 2.5Gbps link
- negotiation?
+In-Reply-To: <160859961079.45139.12880409788363593695@bgdudka-mobl.amr.corp.intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH 04/10] igc: Refactor XDP rxq info
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,34 +70,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 21, 2020 at 07:52:54AM -0800, Ben Greear wrote:
-> On 12/21/20 7:20 AM, Fujinaka, Todd wrote:
-> > Nope. The timing of the PHYs means the switch times out while we're trying 2.5G and 5G and the switch goes to its default lowest speed of 1G. Then we go to 1G and by that time bonding is broken in several of the cases we ran into.
+On Mon, Dec 21, 2020 at 05:13:30PM -0800, Andre Guedes wrote:
+> Quoting Maciej Fijalkowski (2020-12-21 14:53:45)
+> > > @@ -460,9 +460,12 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
+> > >       struct device *dev = rx_ring->dev;
+> > >       int size, desc_len, res;
+> > >  
+> > > -     res = igc_xdp_register_rxq_info(rx_ring);
+> > > -     if (res < 0)
+> > > +     res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, rx_ring->queue_index,
+> > > +                            0);
+> > > +     if (res < 0) {
+> > > +             netdev_err(ndev, "Failed to register xdp rxq info\n");
 > > 
-> > Basically, we can have that switch work, or we can have 2.5G and 5G on by default. Not both. And since we're selling a 10G device with other speeds as a bonus, we're prioritizing the highest speed. That plus the very high profile customers who wanted this solution.
+> > Maybe print out q idx?
+> 
+> I'll add that.
+> 
+> > > @@ -536,6 +539,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+> > >       u32 srrctl = 0, rxdctl = 0;
+> > >       u64 rdba = ring->dma;
+> > >  
+> > > +     WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+> > > +                                        MEM_TYPE_PAGE_SHARED, NULL));
 > > 
-> > The solution for one camp or the other is to use the ethtool command at boot (I've forgotten exactly what that was) but the high profile customers refused to do that. Sounds like you're refusing as well?
+> > You should do the unroll in case it fails just like it was done in
+> > igc_xdp_register_rxq_info.
 > 
-> I'm not refusing, I just would rather patch my kernels than use ethtool, that way my older user-space
-> would work fine on newer kernels.
+> This was inspired in ixgbe driver.
 > 
-> Would you accept a patch that makes this a module option, defaulted to disable 2.5/5, but which
-> a user could enabled to enable 2.5/5 by default?
+> The only reason xdp_rxq_info_reg_mem_model() could fail here is if xdp_rxq
+> wasn't registered. However, this is very unlikely to happen since it is
+> registered in igc_setup_rx_resources() which is always called before
+> igc_configure_rx_ring(). The WARN_ON() macro is used just in case.
 
-Module options are not ok, this is not the 1990's.  Please use the
-proper configuration methods instead that can work on a per-device
-basis.
+Agreed on that but let's not disregard the other failure cases that can
+happen by saying that it can only fail when xdp_rxq wasn't registered.
 
-thanks,
+I believe that functions returning statuses have been written in such way
+for some reason, so I feel that ignoring error statuses is a wrong
+attitude.
 
-greg k-h
+For example, igc_setup_all_rx_resources return value is ignored in
+igc_request_irq, but in __igc_open it is checked. Why?
+
+One last thing is that all other drivers besides igb/ixgbe do the error
+handling.
+
+> 
+> If we really want to unroll, we should propagate the error back in the call
+> chain, changing the returning type of igc_configure_rx_ring() as well as the
+> other functions in the call chain, so the unrolling is done in the proper
+> place.
+> 
+> IMO, such change isn't worth it. It seems like a lot of change to cover a case
+> that is never expected. WARN_ON() sound more suitable in those cases. Also,
+> ixgbe is around for quite some time and this doesn't seem to be an issue.
+
+Well, although I don't like it, I agree :P
+
+The uncomfortable question would be what will happen if we fail to
+register that mem model but due to the fact that driver is written in a
+way that it is not profitable to do unrolling?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
