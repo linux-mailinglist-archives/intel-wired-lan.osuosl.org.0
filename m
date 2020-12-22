@@ -1,65 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B06A52E0FA5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 22:10:37 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 815172E100D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 23:17:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3946B274D1;
-	Tue, 22 Dec 2020 21:10:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 484B985F33;
+	Tue, 22 Dec 2020 22:17:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yEYxViwsqzFx; Tue, 22 Dec 2020 21:10:36 +0000 (UTC)
+	with ESMTP id B-dABUyTVmFq; Tue, 22 Dec 2020 22:17:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 24DA027428;
-	Tue, 22 Dec 2020 21:10:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 90F2C85F37;
+	Tue, 22 Dec 2020 22:17:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 10CEC1BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:33 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 976381BF3AB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 22:16:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0C48286984
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:33 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 929DB85F08
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 22:16:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ek1qos2TMzBL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Dec 2020 21:10:32 +0000 (UTC)
+ with ESMTP id qUnM52SMJpQa for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Dec 2020 22:16:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4A31B868B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 21:10:32 +0000 (UTC)
-IronPort-SDR: fsWSh0PIRCt+1kMnoIvYW1Q7jMRTHgeWk1SI84NoRzT6IHol8MnOjWW+jV4P5//pnt2GOgBmVB
- nyksorCF06Qw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9843"; a="176071626"
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="176071626"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2020 13:10:26 -0800
-IronPort-SDR: 072MTfSl58IBfKY1y21qQghyI/Kt1muzJpB6v8jl0DnWkjakHp+Jzy2CZaFGfmwGYkHxWVe2z7
- c7XMDuKFarew==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,440,1599548400"; d="scan'208";a="392548498"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga002.fm.intel.com with ESMTP; 22 Dec 2020 13:10:24 -0800
-Date: Tue, 22 Dec 2020 21:59:53 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201222205953.GB10157@ranger.igk.intel.com>
-References: <20201217202415.77891-1-andre.guedes@intel.com>
- <20201217202415.77891-5-andre.guedes@intel.com>
- <20201221225345.GB2943@ranger.igk.intel.com>
- <160859961079.45139.12880409788363593695@bgdudka-mobl.amr.corp.intel.com>
- <20201222123205.GE2943@ranger.igk.intel.com>
- <160865901531.65485.14120712105251086033@ticela-az-003.amr.corp.intel.com>
+Received: from mail-io1-f49.google.com (mail-io1-f49.google.com
+ [209.85.166.49])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F28A784F8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 22:16:57 +0000 (UTC)
+Received: by mail-io1-f49.google.com with SMTP id t8so13369423iov.8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 14:16:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vcuCwqWsHQ0Jro60u5SF/gPTaAVB4GUgkYUHbcvSl/0=;
+ b=IAVF8kPRyM2u8xrdPfII9YxGhOpLPRXwwaYaOMnBazAcx0tVHO+bF3eMEojveuULcR
+ cad0e+XShOoDA1Aomwy+kXreMF9BBpIXWa6ZT3NPcBKChmnmU2yXR2CskLx5jkTiZgme
+ gwZIns+gso20Fln6aRZXw6iMqncW7QM6vsMOrmsWv8FKic4NeyG4aDswwFnk9jPJ08ha
+ H2GQaxp/K9OEWOduvZB7+mBOKz3T4rsNqSZ0Oda06UW+HTSfo+6Vt/mZY1IROgWHGOF9
+ TKOrl2wAab2zP+GkTRGVce+La61TVT8d5lstnUHr/kaEA6uRKoCb+TRrOfoCIqlzwW+K
+ JuWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vcuCwqWsHQ0Jro60u5SF/gPTaAVB4GUgkYUHbcvSl/0=;
+ b=ESpznPnC+KV2yIhD9NKIcLNa6RsDzB8NM4Fm9uVXRAzPA7+WG8rpEyczA4qyPiHvH0
+ iTvot1rH06Bg/XZZBzPB8joA06Ofq3ZRV1nz7Ry87HPKd6uLE5If7WPoW+nA1Gk8VGc/
+ Ll0PLyjHx6Bvy056C/5vpbRzn53IsiJbhtrB/iS2udrN7HkuBpCjlknbeRS2hY1fq0K8
+ ba1qQTesH7M21KvxLy2F3xLUFuLv91CZAvTgayKPK3IfbAv7+JPQvlJQtjD1M1Sd/nJ2
+ 3Z1cnhoK7zXdmGib5cFwl1iirTS4OhG4zyj8pqfxRKdLjJKboC6FAiXbbpcJQs/pnLBV
+ bhEQ==
+X-Gm-Message-State: AOAM531/DXhTFE4ZPnj9/+OrZGoUCGP1e2YkeXrplGZZyRFqDK5+hEB7
+ 9DupJUvlTi7ou9Q3t0+Erugs5S81qqGwx0nRlKE=
+X-Google-Smtp-Source: ABdhPJxSS8Ck1wKKpqAF+9lUA7Bj6TaXUPuyvnY+wgT+0U4WaUJmmAliC02tO6t3wSxSPcGsEksAKSFlTDD/QO4rKNc=
+X-Received: by 2002:a02:7a50:: with SMTP id z16mr20532413jad.87.1608675417178; 
+ Tue, 22 Dec 2020 14:16:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <160865901531.65485.14120712105251086033@ticela-az-003.amr.corp.intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH 04/10] igc: Refactor XDP rxq info
- registration
+References: <cover.1608670965.git.lorenzo@kernel.org>
+In-Reply-To: <cover.1608670965.git.lorenzo@kernel.org>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Tue, 22 Dec 2020 14:16:46 -0800
+Message-ID: <CAKgT0Ud66UtBxQ6a-DKbswB6tNSGojhoSi81YEWHtO03qx97XQ@mail.gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v5 bpf-next 0/2] introduce
+ xdp_init_buff/xdp_prepare_buff
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,66 +82,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, lorenzo.bianconi@redhat.com,
+ Saeed Mahameed <saeed@kernel.org>, Jesper Dangaard Brouer <brouer@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, bpf <bpf@vger.kernel.org>,
+ David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 22, 2020 at 09:43:35AM -0800, Andre Guedes wrote:
-> Quoting Maciej Fijalkowski (2020-12-22 04:32:05)
-> > > > > @@ -536,6 +539,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
-> > > > >       u32 srrctl = 0, rxdctl = 0;
-> > > > >       u64 rdba = ring->dma;
-> > > > >  
-> > > > > +     WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
-> > > > > +                                        MEM_TYPE_PAGE_SHARED, NULL));
-> > > > 
-> > > > You should do the unroll in case it fails just like it was done in
-> > > > igc_xdp_register_rxq_info.
-> > > 
-> > > This was inspired in ixgbe driver.
-> > > 
-> > > The only reason xdp_rxq_info_reg_mem_model() could fail here is if xdp_rxq
-> > > wasn't registered. However, this is very unlikely to happen since it is
-> > > registered in igc_setup_rx_resources() which is always called before
-> > > igc_configure_rx_ring(). The WARN_ON() macro is used just in case.
-> > 
-> > Agreed on that but let's not disregard the other failure cases that can
-> > happen by saying that it can only fail when xdp_rxq wasn't registered.
-> > 
-> > I believe that functions returning statuses have been written in such way
-> > for some reason, so I feel that ignoring error statuses is a wrong
-> > attitude.
-> > 
-> > For example, igc_setup_all_rx_resources return value is ignored in
-> > igc_request_irq, but in __igc_open it is checked. Why?
-> > 
-> > One last thing is that all other drivers besides igb/ixgbe do the error
-> > handling.
-> 
-> Agreed. I have another series with some fixes to the driver that I'm working
-> on. I can fix the issue with igc_request_irq() on that series.
-> 
-> > > If we really want to unroll, we should propagate the error back in the call
-> > > chain, changing the returning type of igc_configure_rx_ring() as well as the
-> > > other functions in the call chain, so the unrolling is done in the proper
-> > > place.
-> > > 
-> > > IMO, such change isn't worth it. It seems like a lot of change to cover a case
-> > > that is never expected. WARN_ON() sound more suitable in those cases. Also,
-> > > ixgbe is around for quite some time and this doesn't seem to be an issue.
-> > 
-> > Well, although I don't like it, I agree :P
-> > 
-> > The uncomfortable question would be what will happen if we fail to
-> > register that mem model but due to the fact that driver is written in a
-> > way that it is not profitable to do unrolling?
-> 
-> I see your point. In that case, I think we can tackle that in a separate series
-> changing all three drivers (igc, ixgbe, and igb). Sounds good?
+On Tue, Dec 22, 2020 at 1:09 PM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+>
+> Introduce xdp_init_buff and xdp_prepare_buff utility routines to initialize
+> xdp_buff data structure and remove duplicated code in all XDP capable
+> drivers.
+>
+> Changes since v4:
+> - fix xdp_init_buff/xdp_prepare_buff (natural order is xdp_init_buff() first
+>   and then xdp_prepare_buff())
+>
+> Changes since v3:
+> - use __always_inline instead of inline for xdp_init_buff/xdp_prepare_buff
+> - add 'const bool meta_valid' to xdp_prepare_buff signature to avoid
+>   overwriting data_meta with xdp_set_data_meta_invalid()
+> - introduce removed comment in bnxt driver
+>
+> Changes since v2:
+> - precompute xdp->data as hard_start + headroom and save it in a local
+>   variable to reuse it for xdp->data_end and xdp->data_meta in
+>   xdp_prepare_buff()
+>
+> Changes since v1:
+> - introduce xdp_prepare_buff utility routine
+>
+> Lorenzo Bianconi (2):
+>   net: xdp: introduce xdp_init_buff utility routine
+>   net: xdp: introduce xdp_prepare_buff utility routine
+>
+> Acked-by: Shay Agroskin <shayagr@amazon.com>
+> Acked-by: Martin Habets <habetsm.xilinx@gmail.com>
+> Acked-by: Camelia Groza <camelia.groza@nxp.com>
 
-Sure :)
+The changes to the Intel drivers look fine to me, although it might be
+nice to have someone from Intel provide a review/ack. I've added
+intel-wired-lan to the thread so that someone from Intel can hopefully
+review and also ack this.
+
+Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
