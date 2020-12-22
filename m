@@ -1,62 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 445602E03B4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 02:13:55 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 550442E0796
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Dec 2020 09:59:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EBCE386896;
-	Tue, 22 Dec 2020 01:13:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1846387114;
+	Tue, 22 Dec 2020 08:59:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NKm7oHN4Ft15; Tue, 22 Dec 2020 01:13:53 +0000 (UTC)
+	with ESMTP id jciXTau+u+LN; Tue, 22 Dec 2020 08:59:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B7D1868CE;
-	Tue, 22 Dec 2020 01:13:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4AC9387245;
+	Tue, 22 Dec 2020 08:59:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C17DB1BF3C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 01:13:49 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D0F961BF280
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B9D1823115
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 01:13:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CC85680CE5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iCsuUKGswU4b for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Dec 2020 01:13:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 23DF2230F3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 01:13:49 +0000 (UTC)
-IronPort-SDR: y0emI68iw0lnBpV5R9Ab/6UctNLXUrLj5ZjPajlqBueLD96Ev0aYj7DyN1AnNMA0P/eLlZsk//
- Pq6AKETzf+xQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9842"; a="155594677"
-X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="155594677"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2020 17:13:49 -0800
-IronPort-SDR: lo2mZJ/Gvt6CjRm6gkkUZn4ijNdD/xjmvO2QCHfOglK35R9sabRPInXilJuH2LQW+wTnrqvrJs
- 3xHzKXs7JEZQ==
-X-IronPort-AV: E=Sophos;i="5.78,437,1599548400"; d="scan'208";a="457034879"
-Received: from bgdudka-mobl.amr.corp.intel.com (HELO localhost)
- ([10.212.1.108])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2020 17:13:48 -0800
+ with ESMTP id zsaBlkPhdBK6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5EBDA847DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Dec 2020 08:59:10 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F34022251F;
+ Tue, 22 Dec 2020 08:59:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1608627549;
+ bh=Dyk8LinvwccB3LsrSKP8imoT/WARhd4gsqmIsWMXlNc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XUtv1x4Cy70kM8JIhJrYNWYTmCnH14ydp+Gvk3y78S84bC6mEZayv6JWrfkwi/6q6
+ aWAANbPxwf2TE/so0EY0VSrqKGtaJlDHdd2fDrt0lw1malEKr4vCHF40aMJxF+ZPfG
+ eAEVeizzIPLIff2F4fmU0pOUH87O0cZdzv5DlFpE=
+Date: Tue, 22 Dec 2020 09:59:05 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ben Greear <greearb@candelatech.com>
+Message-ID: <X+G1WVz0qorjegSa@kroah.com>
+References: <BYAPR11MB3606E48BA821185142354D67EFC30@BYAPR11MB3606.namprd11.prod.outlook.com>
+ <3bcba0ca-8f3b-8428-861a-86aaff1688b6@molgen.mpg.de>
+ <c54c8f2c-a295-c691-466e-07ae8f41b0ac@candelatech.com>
+ <3c8510fb-af8c-b5f9-2af1-64584a667ac8@molgen.mpg.de>
+ <BYAPR11MB36060F3889C66AE55092DA01EFC20@BYAPR11MB3606.namprd11.prod.outlook.com>
+ <8635a2db-0d38-c088-321b-27bc4bb21ec4@candelatech.com>
+ <MN2PR11MB3614FD0C52705864C05EFDF8EFC20@MN2PR11MB3614.namprd11.prod.outlook.com>
+ <2108932e-ee2e-cadf-52cd-0cd11a6aeba4@candelatech.com>
+ <BYAPR11MB3606A702240D0A1614AA6585EFC00@BYAPR11MB3606.namprd11.prod.outlook.com>
+ <1d9e12e5-56a5-7921-e4b6-b67bcc180942@candelatech.com>
 MIME-Version: 1.0
-In-Reply-To: <20201221230905.GD2943@ranger.igk.intel.com>
-References: <20201217202415.77891-1-andre.guedes@intel.com>
- <20201217202415.77891-9-andre.guedes@intel.com>
- <20201221230905.GD2943@ranger.igk.intel.com>
-From: Andre Guedes <andre.guedes@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Mon, 21 Dec 2020 17:13:48 -0800
-Message-ID: <160859962833.45139.11189791470425967959@bgdudka-mobl.amr.corp.intel.com>
-User-Agent: alot/0.9.1
-Subject: Re: [Intel-wired-lan] [PATCH 08/10] igc: Replace IGC_TX_FLAGS_XDP
- flag by an enum
+Content-Disposition: inline
+In-Reply-To: <1d9e12e5-56a5-7921-e4b6-b67bcc180942@candelatech.com>
+Subject: Re: [Intel-wired-lan] 5.10.0 kernel regression for 2.5Gbps link
+ negotiation?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,38 +71,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Quoting Maciej Fijalkowski (2020-12-21 15:09:05)
-> > @@ -191,10 +191,18 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
-> >       while (i != tx_ring->next_to_use) {
-> >               union igc_adv_tx_desc *eop_desc, *tx_desc;
-> >  
-> > -             if (tx_buffer->tx_flags & IGC_TX_FLAGS_XDP)
-> > +             switch (tx_buffer->type) {
-> > +             case IGC_TX_BUFFER_TYPE_XDP:
-> >                       xdp_return_frame(tx_buffer->xdpf);
-> > -             else
-> > +                     break;
-> > +             case IGC_TX_BUFFER_TYPE_SKB:
-> >                       dev_kfree_skb_any(tx_buffer->skb);
-> > +                     break;
-> > +             default:
-> > +                     netdev_warn_once(tx_ring->netdev,
-> > +                                      "Unknown tx buffer type\n");
-> > +                     break;
-> > +             }
+On Mon, Dec 21, 2020 at 07:52:54AM -0800, Ben Greear wrote:
+> On 12/21/20 7:20 AM, Fujinaka, Todd wrote:
+> > Nope. The timing of the PHYs means the switch times out while we're trying 2.5G and 5G and the switch goes to its default lowest speed of 1G. Then we go to 1G and by that time bonding is broken in several of the cases we ran into.
+> > 
+> > Basically, we can have that switch work, or we can have 2.5G and 5G on by default. Not both. And since we're selling a 10G device with other speeds as a bonus, we're prioritizing the highest speed. That plus the very high profile customers who wanted this solution.
+> > 
+> > The solution for one camp or the other is to use the ethtool command at boot (I've forgotten exactly what that was) but the high profile customers refused to do that. Sounds like you're refusing as well?
 > 
-> nit: you've been doing some effort in order to reduce the code duplication
-> as much as it's possible, yet here you introduce duplicated code for that
-> desc cleanup :p maybe add a little helper for that as well?
+> I'm not refusing, I just would rather patch my kernels than use ethtool, that way my older user-space
+> would work fine on newer kernels.
+> 
+> Would you accept a patch that makes this a module option, defaulted to disable 2.5/5, but which
+> a user could enabled to enable 2.5/5 by default?
 
-Note that the handling in IGC_TX_BUFFER_TYPE_SKB case is different in
-igc_clean_tx_irq(): dev_kfree_skb_any() vs napi_consume_skb().
+Module options are not ok, this is not the 1990's.  Please use the
+proper configuration methods instead that can work on a per-device
+basis.
+
+thanks,
+
+greg k-h
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
