@@ -1,64 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 021202E20D6
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Dec 2020 20:27:17 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 702778730A;
-	Wed, 23 Dec 2020 19:27:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h81QuRtyAzxl; Wed, 23 Dec 2020 19:27:16 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 455768721C;
-	Wed, 23 Dec 2020 19:27:15 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D26CC1BF405
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:27:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 70AE42E210F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Dec 2020 20:57:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BC84F20417
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:27:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2893E2E0FA;
+	Wed, 23 Dec 2020 19:57:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id koFJ2LcA46Uc; Wed, 23 Dec 2020 19:57:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id B9EF52E0F6;
+	Wed, 23 Dec 2020 19:57:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C5F21BF405
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:44:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 87C5A85AF1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:44:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fuvkJ4YnNCuz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Dec 2020 19:27:12 +0000 (UTC)
+ with ESMTP id T2HxOdZV1iKF for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Dec 2020 19:44:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 9CF04203F7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:27:12 +0000 (UTC)
-IronPort-SDR: CflvwfFmuguV7oNR9TodobWZcORnXZioIAXPvJfPZK/5/DN+joqYGDrE/Oe/NBVCKZ0kJRjX1H
- gTYClFkA8wJw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9844"; a="240147278"
-X-IronPort-AV: E=Sophos;i="5.78,442,1599548400"; d="scan'208";a="240147278"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2020 11:27:06 -0800
-IronPort-SDR: qT9NkIzIfOau3ediyUJ2lqig9Lz5qpMU5w8FVJCXGtg0IZLqNSJ6hpomx7LvFLRUZ0AHTNYL8Q
- 6WN1t7XHjsag==
-X-IronPort-AV: E=Sophos;i="5.78,442,1599548400"; d="scan'208";a="565419269"
-Received: from eburton-mobl.amr.corp.intel.com (HELO localhost)
- ([10.209.148.11])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2020 11:27:05 -0800
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3756B852FE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 19:44:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1608752674;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=EuGy6qIW0/paAvyDjWz+UUhD6lrJF9atn4prE3pJJ6w=;
+ b=Mt0T2WZ5Yb7Mez5OL3fuUJPMrBfqNM1tIYItdMWopEAEnshyEXWrLoSaOYhhpa15Gu8boJ
+ 3QQTw+CWfIugcOxVuxIoPCBs8C0tcVsWRCk/hxJoqKi7TR+OvsFN0yqEIrQou5vj2i8gn8
+ BLPfo9IUAwDgP6Cfzf0qcXvpRRLU6Bk=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-267-irSzyYooOc-ET9sAFipcyg-1; Wed, 23 Dec 2020 14:44:32 -0500
+X-MC-Unique: irSzyYooOc-ET9sAFipcyg-1
+Received: by mail-qv1-f72.google.com with SMTP id i13so195137qvx.11
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Dec 2020 11:44:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EuGy6qIW0/paAvyDjWz+UUhD6lrJF9atn4prE3pJJ6w=;
+ b=JHMGm2UG9V18qooDSjZLZOf0+/MC7x/y/Tn8A29hK5YmzTTMD/sSHpkhqVuR9NbxzR
+ rUsxa7POWZ+MJgFNQdvWyNV2Mu+I2GkT9v41h79iiQTLHZ+XL1aJWTOSX+pN6i/aDg8G
+ 3+J6wgbxHSTjXS8GQp+67evEqfnczZU0wenxubtUpFs7C+Nhi89K5b+wXNh02hFqnYOo
+ cijzMTAn2TNJB12cyepS45JvTp0RZYCqWv1gX/3DPjOEvpSPUbsoT2BK+q0yU4twucll
+ Kq9boyItjY1O9B34/YA8/jo0dEJ+J8a6+6SOoVQTbqrH7ILBpu/F861e9ry1Gvn0FhI9
+ mwRw==
+X-Gm-Message-State: AOAM5328J5woK1E9HRLsSZ7g2MHUSiRuf710D0xj5afAoVPPEpVEWrcr
+ xeoG3focepoOS3K8p9zyoUBcK/0u17KWliBVPj9QX+eE1q5imoENvsln0Zod8UcXsSdcZVqOs/3
+ KAt5g0C3Uo2+TzpTC62AUYrpjjCeNKw==
+X-Received: by 2002:a37:5b46:: with SMTP id p67mr28428061qkb.124.1608752672501; 
+ Wed, 23 Dec 2020 11:44:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwnc84b1xei0cRwwa2LGRxGKjZwkeTxy1ErJZY1x5QNthF2Qqq8Btc61gyWkWl6PYehaSPqyw==
+X-Received: by 2002:a37:5b46:: with SMTP id p67mr28428041qkb.124.1608752672297; 
+ Wed, 23 Dec 2020 11:44:32 -0800 (PST)
+Received: from trix.remote.csb (075-142-250-213.res.spectrum.com.
+ [75.142.250.213])
+ by smtp.gmail.com with ESMTPSA id p75sm16054644qka.72.2020.12.23.11.44.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Dec 2020 11:44:31 -0800 (PST)
+From: trix@redhat.com
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, kuba@kernel.org
+Date: Wed, 23 Dec 2020 11:44:25 -0800
+Message-Id: <20201223194425.125605-1-trix@redhat.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <20201222205925.GA10157@ranger.igk.intel.com>
-References: <20201217202415.77891-1-andre.guedes@intel.com>
- <20201217202415.77891-10-andre.guedes@intel.com>
- <20201222131428.GG2943@ranger.igk.intel.com>
- <160865901948.65485.17595669491129234170@ticela-az-003.amr.corp.intel.com>
- <20201222205925.GA10157@ranger.igk.intel.com>
-From: Andre Guedes <andre.guedes@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Wed, 23 Dec 2020 11:27:04 -0800
-Message-ID: <160875162462.73444.8887896326456165945@gstoner1-mobl1.amr.corp.intel.com>
-User-Agent: alot/0.9.1
-Subject: Re: [Intel-wired-lan] [PATCH 09/10] igc: Enable RX via AF_XDP
- zero-copy
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Approved-At: Wed, 23 Dec 2020 19:57:02 +0000
+Subject: [Intel-wired-lan] [PATCH] igb: remove h from printk format specifier
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,62 +96,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Tom Rix <trix@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Quoting Maciej Fijalkowski (2020-12-22 12:59:25)
-> > > > +static int igc_xdp_enable_pool(struct igc_adapter *adapter,
-> > > > +                            struct xsk_buff_pool *pool, u16 queue_id)
-> > > > +{
-> > > > +     struct net_device *ndev = adapter->netdev;
-> > > > +     struct device *dev = &adapter->pdev->dev;
-> > > > +     struct igc_ring *rx_ring;
-> > > > +     struct napi_struct *napi;
-> > > > +     bool needs_reset;
-> > > > +     u32 frame_size;
-> > > > +     int err;
-> > > > +
-> > > > +     if (queue_id >= adapter->num_rx_queues)
-> > > > +             return -EINVAL;
-> > > > +
-> > > > +     frame_size = xsk_pool_get_rx_frame_size(pool);
-> > > > +     if (frame_size < ETH_FRAME_LEN + VLAN_HLEN * 2) {
-> > > > +             /* For now, when XDP is enabled, the driver doesn't support
-> > > > +              * frames that span over multiple buffers. The max frame size
-> > > > +              * considered here is the ethernet frame size + vlan double
-> > > > +              * tagging.
-> > > > +              */
-> > > 
-> > > I don't really follow that. You check if chunk size is less than
-> > > ETH_FRAME_LEN + VLAN_HLEN * 2. chunk size will be at least 2k if I recall
-> > > correctly. How is that related to fragmented buffers?
-> > 
-> > Note that the code above checks the xsk frame size, not chunk size.
-> > 
-> > Yes, the chunk mim size is 2k indeed. However, if I'm reading the code
-> > correctly, the umem headroom can have an arbitrary value defined by the user
-> > (see xdp_umem_reg()). In this case, the xsk frame size could potentially be
-> > less than the ethernet frame size.
-> 
-> Ok I see. So you actually meant that for lower frame size given to HW we
-> would start to fragment the frames?
+From: Tom Rix <trix@redhat.com>
 
-Yes.
+This change fixes the checkpatch warning described in this commit
+commit cbacb5ab0aa0 ("docs: printk-formats: Stop encouraging use of unnecessary %h[xudi] and %hh[xudi]")
 
-> Comment was a bit unclear, hence my confusion.
+Standard integer promotion is already done and %hx and %hhx is useless
+so do not encourage the use of %hh[xudi] or %h[xudi].
 
-I'll try to make that comment more clear in the v2.
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Anyway, I feel like this is something generic that should be checked
-> earlier at xsk code? Meaning, when we actually create the umem with user
-> provided config at setsockopt?
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 03f78fdb0dcd..cb682232df16 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -3156,7 +3156,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 * the PCIe SR-IOV capability.
+ 	 */
+ 	if (pdev->is_virtfn) {
+-		WARN(1, KERN_ERR "%s (%hx:%hx) should not be a VF!\n",
++		WARN(1, KERN_ERR "%s (%x:%x) should not be a VF!\n",
+ 			pci_name(pdev), pdev->vendor, pdev->device);
+ 		return -EINVAL;
+ 	}
+-- 
+2.27.0
 
-Yeah, that might be a good idea. For now, I'll keep the check in the driver
-since it doesn't work properly with smaller sizes. In the future, if we have
-that check in xsk layer, we can remove it from the driver.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
