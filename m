@@ -1,60 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48E892E2807
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Dec 2020 17:15:40 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 774632E2EB6
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Dec 2020 18:11:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 08B47862E4;
-	Thu, 24 Dec 2020 16:15:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F391B86ECC;
+	Sat, 26 Dec 2020 17:11:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OrM4_RuTlfGB; Thu, 24 Dec 2020 16:15:38 +0000 (UTC)
+	with ESMTP id rR7HKl84lQKB; Sat, 26 Dec 2020 17:11:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 769C7862D4;
-	Thu, 24 Dec 2020 16:15:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5BA7D86F21;
+	Sat, 26 Dec 2020 17:11:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 943411BF3B9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Dec 2020 16:15:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5135D1BF407
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Dec 2020 17:11:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8F8BF85EC4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Dec 2020 16:15:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4861384C09
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Dec 2020 17:11:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gjZZuUtka5tJ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Dec 2020 16:15:35 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2E8658612B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Dec 2020 16:15:35 +0000 (UTC)
-IronPort-SDR: cE6BNRo2ppGtq7sALCdbUajXaO6nSfnm7Q/ZK2VdkXNaHNBSWn6DkQGGaaR1vtJEbCN9X1eNDj
- upfgSixo5EHQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9845"; a="163879285"
-X-IronPort-AV: E=Sophos;i="5.78,444,1599548400"; d="scan'208";a="163879285"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Dec 2020 08:15:34 -0800
-IronPort-SDR: DeodCg2QrvSKZ1FJEcqH8SAe/aJFdY0ZbPr1XEtnJtjoozXCZP1SjTm1+DPiki/JEeeQIP6mCN
- beHmFm58Vtkg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,444,1599548400"; d="scan'208";a="393896162"
-Received: from lkp-server02.sh.intel.com (HELO 4242b19f17ef) ([10.239.97.151])
- by fmsmga002.fm.intel.com with ESMTP; 24 Dec 2020 08:15:30 -0800
-Received: from kbuild by 4242b19f17ef with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1ksTGw-00013z-P5; Thu, 24 Dec 2020 16:15:26 +0000
-Date: Fri, 25 Dec 2020 00:14:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5fe4be6b.pq32LNN1MGCZh+RH%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id 9XIcbj35QmKo for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 26 Dec 2020 17:11:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0017.hostedemail.com
+ [216.40.44.17])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0604C84BCF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Dec 2020 17:10:59 +0000 (UTC)
+Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
+ [10.5.19.251])
+ by smtpgrave04.hostedemail.com (Postfix) with ESMTP id DDD53181667FD
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Dec 2020 17:10:58 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay07.hostedemail.com (Postfix) with ESMTP id 43300181D3026;
+ Sat, 26 Dec 2020 17:10:56 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:800:960:968:973:988:989:1260:1261:1277:1311:1313:1314:1345:1437:1515:1516:1518:1535:1544:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3865:3867:3868:3871:4321:4419:4605:5007:6117:6119:6742:7652:7903:10004:10848:11026:11473:11657:11658:11914:12043:12296:12297:12438:12555:12760:12986:13439:14181:14394:14659:14721:21080:21324:21627:21987:21990:30054:30055,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: boats47_2f0077427484
+X-Filterd-Recvd-Size: 5425
+Received: from [192.168.1.159] (unknown [47.151.137.21])
+ (Authenticated sender: joe@perches.com)
+ by omf11.hostedemail.com (Postfix) with ESMTPA;
+ Sat, 26 Dec 2020 17:10:54 +0000 (UTC)
+Message-ID: <d1ea50ed47e2e9ca65a67ffc2ca0eee08e662132.camel@perches.com>
+From: Joe Perches <joe@perches.com>
+To: netdev@vger.kernel.org
+Date: Sat, 26 Dec 2020 09:10:53 -0800
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 6785a05b2d2bca150764f324ae8191378f1829a3
+Subject: [Intel-wired-lan] [PATCH] ethernet: Remove invalid trailers after
+ %pI4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,123 +72,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ariel Elior <aelior@marvell.com>, Tom Rix <trix@redhat.com>,
+ Ido Schimmel <idosch@nvidia.com>, linux-kernel@vger.kernel.org,
+ GR-everest-linux-l2@marvell.com, Jiri Pirko <jiri@nvidia.com>,
+ Jakub Kicinski <kuba@kernel.org>, Michael Chan <michael.chan@broadcom.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  dev-queue
-branch HEAD: 6785a05b2d2bca150764f324ae8191378f1829a3  e1000e: Export S0ix flags to ethtool
+Alphanumeric characters after vsprintf pointer extension %pI4 are
+not valid and are not emitted.
 
-elapsed time: 723m
+Remove the invalid characters from the %pI4 uses.
 
-configs tested: 94
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-m68k                        m5407c3_defconfig
-openrisc                            defconfig
-sh                           se7343_defconfig
-mips                      maltasmvp_defconfig
-arm                          prima2_defconfig
-sparc                            alldefconfig
-mips                       bmips_be_defconfig
-powerpc                mpc7448_hpc2_defconfig
-microblaze                      mmu_defconfig
-sh                                  defconfig
-m68k                       bvme6000_defconfig
-sh                  sh7785lcr_32bit_defconfig
-openrisc                    or1ksim_defconfig
-sh                           se7705_defconfig
-arm                          pxa3xx_defconfig
-m68k                        mvme16x_defconfig
-sh                        sh7763rdp_defconfig
-sh                             espt_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a002-20201223
-i386                 randconfig-a005-20201223
-i386                 randconfig-a006-20201223
-i386                 randconfig-a004-20201223
-i386                 randconfig-a003-20201223
-i386                 randconfig-a001-20201223
-i386                 randconfig-a011-20201223
-i386                 randconfig-a016-20201223
-i386                 randconfig-a014-20201223
-i386                 randconfig-a012-20201223
-i386                 randconfig-a015-20201223
-i386                 randconfig-a013-20201223
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a015-20201223
-x86_64               randconfig-a014-20201223
-x86_64               randconfig-a016-20201223
-x86_64               randconfig-a012-20201223
-x86_64               randconfig-a013-20201223
-x86_64               randconfig-a011-20201223
-x86_64               randconfig-a001-20201224
-x86_64               randconfig-a006-20201224
-x86_64               randconfig-a004-20201224
-x86_64               randconfig-a002-20201224
-x86_64               randconfig-a003-20201224
-x86_64               randconfig-a005-20201224
-
+Signed-off-by: Joe Perches <joe@perches.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c          | 6 +++---
+ drivers/net/ethernet/intel/i40e/i40e_main.c           | 4 ++--
+ drivers/net/ethernet/mellanox/mlxsw/spectrum_router.c | 2 +-
+ drivers/net/ethernet/qlogic/qed/qed_iwarp.c           | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
+index 5e4429b14b8c..213cbdea3888 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
+@@ -1232,7 +1232,7 @@ static int bnxt_tc_resolve_tunnel_hdrs(struct bnxt *bp,
+ 
+ 	rt = ip_route_output_key(dev_net(real_dst_dev), &flow);
+ 	if (IS_ERR(rt)) {
+-		netdev_info(bp->dev, "no route to %pI4b\n", &flow.daddr);
++		netdev_info(bp->dev, "no route to %pI4\n", &flow.daddr);
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+@@ -1258,7 +1258,7 @@ static int bnxt_tc_resolve_tunnel_hdrs(struct bnxt *bp,
+ #endif
+ 	} else if (dst_dev != real_dst_dev) {
+ 		netdev_info(bp->dev,
+-			    "dst_dev(%s) for %pI4b is not PF-if(%s)\n",
++			    "dst_dev(%s) for %pI4 is not PF-if(%s)\n",
+ 			    netdev_name(dst_dev), &flow.daddr,
+ 			    netdev_name(real_dst_dev));
+ 		rc = -EOPNOTSUPP;
+@@ -1267,7 +1267,7 @@ static int bnxt_tc_resolve_tunnel_hdrs(struct bnxt *bp,
+ 
+ 	nbr = dst_neigh_lookup(&rt->dst, &flow.daddr);
+ 	if (!nbr) {
+-		netdev_info(bp->dev, "can't lookup neighbor for %pI4b\n",
++		netdev_info(bp->dev, "can't lookup neighbor for %pI4\n",
+ 			    &flow.daddr);
+ 		rc = -EOPNOTSUPP;
+ 		goto put_rt;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 1db482d310c2..eab6ce63b63d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -7924,7 +7924,7 @@ static int i40e_parse_cls_flower(struct i40e_vsi *vsi,
+ 			if (match.mask->dst == cpu_to_be32(0xffffffff)) {
+ 				field_flags |= I40E_CLOUD_FIELD_IIP;
+ 			} else {
+-				dev_err(&pf->pdev->dev, "Bad ip dst mask %pI4b\n",
++				dev_err(&pf->pdev->dev, "Bad ip dst mask %pI4\n",
+ 					&match.mask->dst);
+ 				return I40E_ERR_CONFIG;
+ 			}
+@@ -7934,7 +7934,7 @@ static int i40e_parse_cls_flower(struct i40e_vsi *vsi,
+ 			if (match.mask->src == cpu_to_be32(0xffffffff)) {
+ 				field_flags |= I40E_CLOUD_FIELD_IIP;
+ 			} else {
+-				dev_err(&pf->pdev->dev, "Bad ip src mask %pI4b\n",
++				dev_err(&pf->pdev->dev, "Bad ip src mask %pI4\n",
+ 					&match.mask->src);
+ 				return I40E_ERR_CONFIG;
+ 			}
+diff --git a/drivers/net/ethernet/mellanox/mlxsw/spectrum_router.c b/drivers/net/ethernet/mellanox/mlxsw/spectrum_router.c
+index 41424ee909a0..6c711385aae9 100644
+--- a/drivers/net/ethernet/mellanox/mlxsw/spectrum_router.c
++++ b/drivers/net/ethernet/mellanox/mlxsw/spectrum_router.c
+@@ -2297,7 +2297,7 @@ static void mlxsw_sp_router_neigh_ent_ipv4_process(struct mlxsw_sp *mlxsw_sp,
+ 	if (!n)
+ 		return;
+ 
+-	netdev_dbg(dev, "Updating neighbour with IP=%pI4h\n", &dip);
++	netdev_dbg(dev, "Updating neighbour with IP=%pI4\n", &dip);
+ 	neigh_event_send(n, NULL);
+ 	neigh_release(n);
+ }
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_iwarp.c b/drivers/net/ethernet/qlogic/qed/qed_iwarp.c
+index a99861124630..6756f7919deb 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_iwarp.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_iwarp.c
+@@ -584,7 +584,7 @@ qed_iwarp_print_tcp_ramrod(struct qed_hwfn *p_hwfn,
+ 
+ 	if (p_tcp_ramrod->tcp.ip_version == TCP_IPV4) {
+ 		DP_VERBOSE(p_hwfn, QED_MSG_RDMA,
+-			   "local_ip=%pI4h:%x, remote_ip=%pI4h:%x, vlan=%x\n",
++			   "local_ip=%pI4:%x, remote_ip=%pI4:%x, vlan=%x\n",
+ 			   p_tcp_ramrod->tcp.local_ip,
+ 			   p_tcp_ramrod->tcp.local_port,
+ 			   p_tcp_ramrod->tcp.remote_ip,
+@@ -1548,7 +1548,7 @@ qed_iwarp_print_cm_info(struct qed_hwfn *p_hwfn,
+ 
+ 	if (cm_info->ip_version == QED_TCP_IPV4)
+ 		DP_VERBOSE(p_hwfn, QED_MSG_RDMA,
+-			   "remote_ip %pI4h:%x, local_ip %pI4h:%x vlan=%x\n",
++			   "remote_ip %pI4:%x, local_ip %pI4:%x vlan=%x\n",
+ 			   cm_info->remote_ip, cm_info->remote_port,
+ 			   cm_info->local_ip, cm_info->local_port,
+ 			   cm_info->vlan);
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
