@@ -2,54 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60F912E35F7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Dec 2020 11:38:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EE0B2E3A7E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Dec 2020 14:37:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 71B8D86CAE;
-	Mon, 28 Dec 2020 10:38:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A2AB386CCF;
+	Mon, 28 Dec 2020 13:37:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hYw94Ossu7ro; Mon, 28 Dec 2020 10:38:15 +0000 (UTC)
+	with ESMTP id s0pvBdCuaArd; Mon, 28 Dec 2020 13:37:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9B16086CBE;
-	Mon, 28 Dec 2020 10:38:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 115D286CC8;
+	Mon, 28 Dec 2020 13:37:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 004FB1BF395
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 10:38:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D6EFE1BF232
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 13:37:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EFD2B86CAF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 10:38:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D275887041
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 13:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PI+skV+wRHfR for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Dec 2020 10:38:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1FA9286CAE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 10:38:12 +0000 (UTC)
-IronPort-SDR: bHFuj/tHPtsJYbh1wTy3I+mOdXTlwWa0R8Yc5EBMNPtM7SWAGxpQKgOoIP8hznJ/DpXUyClRDD
- gDioVv6Gji2w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9847"; a="164083801"
-X-IronPort-AV: E=Sophos;i="5.78,454,1599548400"; d="scan'208";a="164083801"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Dec 2020 02:38:04 -0800
-IronPort-SDR: nMH7mjNx+Ua2zzMjSD7ctRQrAHsPGrHh7pFQpNfHBR5nr2DL76u6mPbPT2fY6aXIbDDxNRyiNL
- LVlb544JUmaQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,454,1599548400"; d="scan'208";a="343700237"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.102.19.171])
- by orsmga003.jf.intel.com with ESMTP; 28 Dec 2020 02:38:03 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 28 Dec 2020 11:38:00 +0100
-Message-Id: <20201228103800.11303-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.18.4
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix add tc filter for IPv6
+ with ESMTP id 9IQVjOMtmCzs for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Dec 2020 13:37:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1C06F87020
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 13:37:47 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 288152072C;
+ Mon, 28 Dec 2020 13:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1609162666;
+ bh=jT3U9pCjSSGzxUPMad1bppwQk0EyLe3sb3alStvw5KQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Iyuj2CsmuhaZr8jNVjPdy3yLHpO0xIjrOrUH3t6ZtvEyqLbeOH/A39ZnIqThZBqI6
+ jksS4EWDN2Dl9ADQ3AghKM4yFJs7J+XuP0wW0U3Gyb/fLpvfMQnAYymejUrlsGNoKY
+ OpIGQK/lf+g48aRAD13uwwsEirE4yTVV1R/F5GYE=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: linux-kernel@vger.kernel.org
+Date: Mon, 28 Dec 2020 13:44:27 +0100
+Message-Id: <20201228124938.758716399@linuxfoundation.org>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201228124937.240114599@linuxfoundation.org>
+References: <20201228124937.240114599@linuxfoundation.org>
+User-Agent: quilt/0.66
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH 5.4 031/453] i40e: Refactor rx_bi accesses
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,60 +62,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Alexei Starovoitov <ast@kernel.org>, stable@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix insufficient distinction between IPv4 and IPv6 addresses
-when creating a filter.
-IPv4 and IPv6 are kept in the same memory area. If IPv6 is added,
-then it's caught by IPv4 check, which leads to err -95.
-
-Fixes: 2f4b411a3d67("i40e: Enable cloud filters via tc-flower")
-Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Reviewed-by: Jaroslaw Gawin <jaroslawx.gawin@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 630258e..bb87164 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -8115,7 +8115,8 @@ int i40e_add_del_cloud_filter_big_buf(struct i40e_vsi *vsi,
- 		return -EOPNOTSUPP;
- 
- 	/* adding filter using src_port/src_ip is not supported at this stage */
--	if (filter->src_port || filter->src_ipv4 ||
-+	if (filter->src_port ||
-+	    (filter->src_ipv4 && filter->n_proto != ETH_P_IPV6) ||
- 	    !ipv6_addr_any(&filter->ip.v6.src_ip6))
- 		return -EOPNOTSUPP;
- 
-@@ -8144,7 +8145,7 @@ int i40e_add_del_cloud_filter_big_buf(struct i40e_vsi *vsi,
- 			cpu_to_le16(I40E_AQC_ADD_CLOUD_FILTER_MAC_VLAN_PORT);
- 		}
- 
--	} else if (filter->dst_ipv4 ||
-+	} else if ((filter->dst_ipv4 && filter->n_proto != ETH_P_IPV6) ||
- 		   !ipv6_addr_any(&filter->ip.v6.dst_ip6)) {
- 		cld_filter.element.flags =
- 				cpu_to_le16(I40E_AQC_ADD_CLOUD_FILTER_IP_PORT);
--- 
-2.18.4
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgoKWyBVcHN0cmVhbSBj
+b21taXQgZTE2NzVmOTczNjdiZWQ3NGQ0ZGNmZTA4ZGU5Y2U5YjVkNmIyODhjMSBdCgpBcyBhIGZp
+cnN0IHN0ZXAgdG8gbWlncmF0ZSBpNDBlIHRvIHRoZSBuZXcgTUVNX1RZUEVfWFNLX0JVRkZfUE9P
+TApBUElzLCBjb2RlIHRoYXQgYWNjZXNzZXMgdGhlIHJ4X2JpIChTVy9zaGFkb3cgcmluZykgaXMg
+cmVmYWN0b3JlZCB0bwp1c2UgYW4gYWNjZXNzb3IgZnVuY3Rpb24uCgpTaWduZWQtb2ZmLWJ5OiBC
+asO2cm4gVMO2cGVsIDxiam9ybi50b3BlbEBpbnRlbC5jb20+ClNpZ25lZC1vZmYtYnk6IEFsZXhl
+aSBTdGFyb3ZvaXRvdiA8YXN0QGtlcm5lbC5vcmc+CkNjOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMu
+b3N1b3NsLm9yZwpMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9icGYvMjAyMDA1MjAxOTIx
+MDMuMzU1MjMzLTctYmpvcm4udG9wZWxAZ21haWwuY29tClNpZ25lZC1vZmYtYnk6IFNhc2hhIExl
+dmluIDxzYXNoYWxAa2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+NDBlL2k0MGVfdHhyeC5jIHwgMTcgKysrKysrKysrKystLS0tLS0KIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyAgfCAxOCArKysrKysrKysrKystLS0tLS0KIDIgZmls
+ZXMgY2hhbmdlZCwgMjMgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYyBiL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV90eHJ4LmMKaW5kZXggZTNmMjlkYzhiMjkwYS4u
+N2Y3ZjAyYmMyYjc5NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQw
+ZS9pNDBlX3R4cnguYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVf
+dHhyeC5jCkBAIC0xMTk1LDYgKzExOTUsMTEgQEAgc3RhdGljIHZvaWQgaTQwZV91cGRhdGVfaXRy
+KHN0cnVjdCBpNDBlX3FfdmVjdG9yICpxX3ZlY3RvciwKIAlyYy0+dG90YWxfcGFja2V0cyA9IDA7
+CiB9CiAKK3N0YXRpYyBzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKmk0MGVfcnhfYmkoc3RydWN0IGk0
+MGVfcmluZyAqcnhfcmluZywgdTMyIGlkeCkKK3sKKwlyZXR1cm4gJnJ4X3JpbmctPnJ4X2JpW2lk
+eF07Cit9CisKIC8qKgogICogaTQwZV9yZXVzZV9yeF9wYWdlIC0gcGFnZSBmbGlwIGJ1ZmZlciBh
+bmQgc3RvcmUgaXQgYmFjayBvbiB0aGUgcmluZwogICogQHJ4X3Jpbmc6IHJ4IGRlc2NyaXB0b3Ig
+cmluZyB0byBzdG9yZSBidWZmZXJzIG9uCkBAIC0xMjA4LDcgKzEyMTMsNyBAQCBzdGF0aWMgdm9p
+ZCBpNDBlX3JldXNlX3J4X3BhZ2Uoc3RydWN0IGk0MGVfcmluZyAqcnhfcmluZywKIAlzdHJ1Y3Qg
+aTQwZV9yeF9idWZmZXIgKm5ld19idWZmOwogCXUxNiBudGEgPSByeF9yaW5nLT5uZXh0X3RvX2Fs
+bG9jOwogCi0JbmV3X2J1ZmYgPSAmcnhfcmluZy0+cnhfYmlbbnRhXTsKKwluZXdfYnVmZiA9IGk0
+MGVfcnhfYmkocnhfcmluZywgbnRhKTsKIAogCS8qIHVwZGF0ZSwgYW5kIHN0b3JlIG5leHQgdG8g
+YWxsb2MgKi8KIAludGErKzsKQEAgLTEyNzIsNyArMTI3Nyw3IEBAIHN0cnVjdCBpNDBlX3J4X2J1
+ZmZlciAqaTQwZV9jbGVhbl9wcm9ncmFtbWluZ19zdGF0dXMoCiAJbnRjID0gcnhfcmluZy0+bmV4
+dF90b19jbGVhbjsKIAogCS8qIGZldGNoLCB1cGRhdGUsIGFuZCBzdG9yZSBuZXh0IHRvIGNsZWFu
+ICovCi0JcnhfYnVmZmVyID0gJnJ4X3JpbmctPnJ4X2JpW250YysrXTsKKwlyeF9idWZmZXIgPSBp
+NDBlX3J4X2JpKHJ4X3JpbmcsIG50YysrKTsKIAludGMgPSAobnRjIDwgcnhfcmluZy0+Y291bnQp
+ID8gbnRjIDogMDsKIAlyeF9yaW5nLT5uZXh0X3RvX2NsZWFuID0gbnRjOwogCkBAIC0xMzYxLDcg
+KzEzNjYsNyBAQCB2b2lkIGk0MGVfY2xlYW5fcnhfcmluZyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9y
+aW5nKQogCiAJLyogRnJlZSBhbGwgdGhlIFJ4IHJpbmcgc2tfYnVmZnMgKi8KIAlmb3IgKGkgPSAw
+OyBpIDwgcnhfcmluZy0+Y291bnQ7IGkrKykgewotCQlzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKnJ4
+X2JpID0gJnJ4X3JpbmctPnJ4X2JpW2ldOworCQlzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKnJ4X2Jp
+ID0gaTQwZV9yeF9iaShyeF9yaW5nLCBpKTsKIAogCQlpZiAoIXJ4X2JpLT5wYWdlKQogCQkJY29u
+dGludWU7CkBAIC0xNTc2LDcgKzE1ODEsNyBAQCBib29sIGk0MGVfYWxsb2NfcnhfYnVmZmVycyhz
+dHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCB1MTYgY2xlYW5lZF9jb3VudCkKIAkJcmV0dXJuIGZh
+bHNlOwogCiAJcnhfZGVzYyA9IEk0MEVfUlhfREVTQyhyeF9yaW5nLCBudHUpOwotCWJpID0gJnJ4
+X3JpbmctPnJ4X2JpW250dV07CisJYmkgPSBpNDBlX3J4X2JpKHJ4X3JpbmcsIG50dSk7CiAKIAlk
+byB7CiAJCWlmICghaTQwZV9hbGxvY19tYXBwZWRfcGFnZShyeF9yaW5nLCBiaSkpCkBAIC0xNTk4
+LDcgKzE2MDMsNyBAQCBib29sIGk0MGVfYWxsb2NfcnhfYnVmZmVycyhzdHJ1Y3QgaTQwZV9yaW5n
+ICpyeF9yaW5nLCB1MTYgY2xlYW5lZF9jb3VudCkKIAkJbnR1Kys7CiAJCWlmICh1bmxpa2VseShu
+dHUgPT0gcnhfcmluZy0+Y291bnQpKSB7CiAJCQlyeF9kZXNjID0gSTQwRV9SWF9ERVNDKHJ4X3Jp
+bmcsIDApOwotCQkJYmkgPSByeF9yaW5nLT5yeF9iaTsKKwkJCWJpID0gaTQwZV9yeF9iaShyeF9y
+aW5nLCAwKTsKIAkJCW50dSA9IDA7CiAJCX0KIApAQCAtMTk2NSw3ICsxOTcwLDcgQEAgc3RhdGlj
+IHN0cnVjdCBpNDBlX3J4X2J1ZmZlciAqaTQwZV9nZXRfcnhfYnVmZmVyKHN0cnVjdCBpNDBlX3Jp
+bmcgKnJ4X3JpbmcsCiB7CiAJc3RydWN0IGk0MGVfcnhfYnVmZmVyICpyeF9idWZmZXI7CiAKLQly
+eF9idWZmZXIgPSAmcnhfcmluZy0+cnhfYmlbcnhfcmluZy0+bmV4dF90b19jbGVhbl07CisJcnhf
+YnVmZmVyID0gaTQwZV9yeF9iaShyeF9yaW5nLCByeF9yaW5nLT5uZXh0X3RvX2NsZWFuKTsKIAlw
+cmVmZXRjaHcocnhfYnVmZmVyLT5wYWdlKTsKIAogCS8qIHdlIGFyZSByZXVzaW5nIHNvIHN5bmMg
+dGhpcyBidWZmZXIgZm9yIENQVSB1c2UgKi8KZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZV94c2suYwppbmRleCAzMTU2ZGU3ODZkOTU1Li5jOWQ0NTM0ZmJkZjAyIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMKKysrIGIvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCkBAIC05LDYgKzksMTEgQEAK
+ICNpbmNsdWRlICJpNDBlX3R4cnhfY29tbW9uLmgiCiAjaW5jbHVkZSAiaTQwZV94c2suaCIKIAor
+c3RhdGljIHN0cnVjdCBpNDBlX3J4X2J1ZmZlciAqaTQwZV9yeF9iaShzdHJ1Y3QgaTQwZV9yaW5n
+ICpyeF9yaW5nLCB1MzIgaWR4KQoreworCXJldHVybiAmcnhfcmluZy0+cnhfYmlbaWR4XTsKK30K
+KwogLyoqCiAgKiBpNDBlX3hza191bWVtX2RtYV9tYXAgLSBETUEgbWFwcyBhbGwgVU1FTSBtZW1v
+cnkgZm9yIHRoZSBuZXRkZXYKICAqIEB2c2k6IEN1cnJlbnQgVlNJCkBAIC0zMjEsNyArMzI2LDcg
+QEAgX19pNDBlX2FsbG9jX3J4X2J1ZmZlcnNfemMoc3RydWN0IGk0MGVfcmluZyAqcnhfcmluZywg
+dTE2IGNvdW50LAogCWJvb2wgb2sgPSB0cnVlOwogCiAJcnhfZGVzYyA9IEk0MEVfUlhfREVTQyhy
+eF9yaW5nLCBudHUpOwotCWJpID0gJnJ4X3JpbmctPnJ4X2JpW250dV07CisJYmkgPSBpNDBlX3J4
+X2JpKHJ4X3JpbmcsIG50dSk7CiAJZG8gewogCQlpZiAoIWFsbG9jKHJ4X3JpbmcsIGJpKSkgewog
+CQkJb2sgPSBmYWxzZTsKQEAgLTM0MCw3ICszNDUsNyBAQCBfX2k0MGVfYWxsb2NfcnhfYnVmZmVy
+c196YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCB1MTYgY291bnQsCiAKIAkJaWYgKHVubGlr
+ZWx5KG50dSA9PSByeF9yaW5nLT5jb3VudCkpIHsKIAkJCXJ4X2Rlc2MgPSBJNDBFX1JYX0RFU0Mo
+cnhfcmluZywgMCk7Ci0JCQliaSA9IHJ4X3JpbmctPnJ4X2JpOworCQkJYmkgPSBpNDBlX3J4X2Jp
+KHJ4X3JpbmcsIDApOwogCQkJbnR1ID0gMDsKIAkJfQogCkBAIC00MDIsNyArNDA3LDcgQEAgc3Rh
+dGljIHN0cnVjdCBpNDBlX3J4X2J1ZmZlciAqaTQwZV9nZXRfcnhfYnVmZmVyX3pjKHN0cnVjdCBp
+NDBlX3JpbmcgKnJ4X3JpbmcsCiB7CiAJc3RydWN0IGk0MGVfcnhfYnVmZmVyICpiaTsKIAotCWJp
+ID0gJnJ4X3JpbmctPnJ4X2JpW3J4X3JpbmctPm5leHRfdG9fY2xlYW5dOworCWJpID0gaTQwZV9y
+eF9iaShyeF9yaW5nLCByeF9yaW5nLT5uZXh0X3RvX2NsZWFuKTsKIAogCS8qIHdlIGFyZSByZXVz
+aW5nIHNvIHN5bmMgdGhpcyBidWZmZXIgZm9yIENQVSB1c2UgKi8KIAlkbWFfc3luY19zaW5nbGVf
+cmFuZ2VfZm9yX2NwdShyeF9yaW5nLT5kZXYsCkBAIC00MjQsNyArNDI5LDggQEAgc3RhdGljIHN0
+cnVjdCBpNDBlX3J4X2J1ZmZlciAqaTQwZV9nZXRfcnhfYnVmZmVyX3pjKHN0cnVjdCBpNDBlX3Jp
+bmcgKnJ4X3JpbmcsCiBzdGF0aWMgdm9pZCBpNDBlX3JldXNlX3J4X2J1ZmZlcl96YyhzdHJ1Y3Qg
+aTQwZV9yaW5nICpyeF9yaW5nLAogCQkJCSAgICBzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKm9sZF9i
+aSkKIHsKLQlzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKm5ld19iaSA9ICZyeF9yaW5nLT5yeF9iaVty
+eF9yaW5nLT5uZXh0X3RvX2FsbG9jXTsKKwlzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKm5ld19iaSA9
+IGk0MGVfcnhfYmkocnhfcmluZywKKwkJCQkJCSAgIHJ4X3JpbmctPm5leHRfdG9fYWxsb2MpOwog
+CXUxNiBudGEgPSByeF9yaW5nLT5uZXh0X3RvX2FsbG9jOwogCiAJLyogdXBkYXRlLCBhbmQgc3Rv
+cmUgbmV4dCB0byBhbGxvYyAqLwpAQCAtNDU2LDcgKzQ2Miw3IEBAIHZvaWQgaTQwZV96Y2FfZnJl
+ZShzdHJ1Y3QgemVyb19jb3B5X2FsbG9jYXRvciAqYWxsb2MsIHVuc2lnbmVkIGxvbmcgaGFuZGxl
+KQogCW1hc2sgPSByeF9yaW5nLT54c2tfdW1lbS0+Y2h1bmtfbWFzazsKIAogCW50YSA9IHJ4X3Jp
+bmctPm5leHRfdG9fYWxsb2M7Ci0JYmkgPSAmcnhfcmluZy0+cnhfYmlbbnRhXTsKKwliaSA9IGk0
+MGVfcnhfYmkocnhfcmluZywgbnRhKTsKIAogCW50YSsrOwogCXJ4X3JpbmctPm5leHRfdG9fYWxs
+b2MgPSAobnRhIDwgcnhfcmluZy0+Y291bnQpID8gbnRhIDogMDsKQEAgLTgyNCw3ICs4MzAsNyBA
+QCB2b2lkIGk0MGVfeHNrX2NsZWFuX3J4X3Jpbmcoc3RydWN0IGk0MGVfcmluZyAqcnhfcmluZykK
+IAl1MTYgaTsKIAogCWZvciAoaSA9IDA7IGkgPCByeF9yaW5nLT5jb3VudDsgaSsrKSB7Ci0JCXN0
+cnVjdCBpNDBlX3J4X2J1ZmZlciAqcnhfYmkgPSAmcnhfcmluZy0+cnhfYmlbaV07CisJCXN0cnVj
+dCBpNDBlX3J4X2J1ZmZlciAqcnhfYmkgPSBpNDBlX3J4X2JpKHJ4X3JpbmcsIGkpOwogCiAJCWlm
+ICghcnhfYmktPmFkZHIpCiAJCQljb250aW51ZTsKLS0gCjIuMjcuMAoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGlu
+ZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
