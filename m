@@ -1,74 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 867552E6A05
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Dec 2020 19:34:17 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34B5B2E7A05
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Dec 2020 15:43:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 84F4D203F6;
-	Mon, 28 Dec 2020 18:34:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5631985FA8;
+	Wed, 30 Dec 2020 14:43:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S1aprQFxwxdy; Mon, 28 Dec 2020 18:34:15 +0000 (UTC)
+	with ESMTP id rrYKkSA4qF8o; Wed, 30 Dec 2020 14:43:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 83A7C22DDB;
-	Mon, 28 Dec 2020 18:34:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 309A0861B2;
+	Wed, 30 Dec 2020 14:43:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 523921BF397
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 18:34:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 652E61BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:43:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 468CB20412
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 18:34:12 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 55ECF20482
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:43:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MaQfkTEhWl1T for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Dec 2020 18:34:11 +0000 (UTC)
+ with ESMTP id EworBggYyF1C for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Dec 2020 14:43:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f43.google.com (mail-io1-f43.google.com
- [209.85.166.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 30FF6203F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 18:34:11 +0000 (UTC)
-Received: by mail-io1-f43.google.com with SMTP id z5so10114577iob.11
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Dec 2020 10:34:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W2VBIjwTI9YnWAgN/Gh/eIQ26Mt5o2ALjLPZ5apGXhA=;
- b=mkcsFzY3B58ZrnEsxzGvHjV3MHYe586qe0bGyBt71RyDDrVxSmIIWGG9W7x5c4yFZL
- Pp10pJ7RLzyFyFrzLDhUI7MSUHy9bL8DSIHeYXAfvdqMLjws5Au8S5a2w/zLdTTh1qF2
- B6Ghg9DW24V0D6Najx56IB4p4HET4W1kd14kdrskiJ/otqZDBZsuoJ9y666PWGmubMPO
- NHfFWJl5tMFauRix6Epj/8hiTTRQ75jjGQJ2ssAYNISLOx7/NmnA7SK+41U20pttL7rK
- b5qzKSya7WQr+CPkqWOUJFQ0J/sqmzL4HGE/vcXYgNo22Zyr2ODadiDervQwel6mSEgq
- NGAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W2VBIjwTI9YnWAgN/Gh/eIQ26Mt5o2ALjLPZ5apGXhA=;
- b=Z7Vp4gKYw71nuRsGeG8iJNwNjvHsHWSjK038Lpnd+dExvza7ApoXzSn+9vqr1tLfoR
- 0OaZaTjcg2t23L0uFxs9Ebc6ly6ZJDxnJLjvu9fduyqeKDWa6pvaMGGH2O333quUJ47G
- Y5Iq3xVK6Cnwwz+F5TNU8IN0wJ1w2UrXT521ml8nEp3hU0tkxwNr1g+QE/2sSLfTqFh7
- Pyktrilt7Rf7b9TQilODlP3eF/VHCngeP55qohbFYPDuJ/MqrdjpxxDBrfFPkysJELm2
- v9CTYIR8H35xOPa3hECK0PL4zllNkWjLkk946+O5cudHUhitXUEuJKz8bTQyeNnw7Fu/
- iqHg==
-X-Gm-Message-State: AOAM532SiKGVKJ57l1+sUKX2xn/BdI2EWUUf1t2sdr7gKYJY4QJPiM8d
- UlefiEt2B9+b2s49+VbAbnsTKpUFw3TWCFxn7Wc=
-X-Google-Smtp-Source: ABdhPJyt7cxo5aZy3B7MHuppquqeX2CKZwNPPEz6oYWwcMq279Fzs/rwUJZV8Vfhj/h+CtQnmJlxHNQhjir/lFOz0SU=
-X-Received: by 2002:a05:6602:152:: with SMTP id
- v18mr37522077iot.187.1609180450303; 
- Mon, 28 Dec 2020 10:34:10 -0800 (PST)
-MIME-Version: 1.0
-References: <20201228103633.11621-1-mateusz.palczewski@intel.com>
-In-Reply-To: <20201228103633.11621-1-mateusz.palczewski@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 28 Dec 2020 10:33:59 -0800
-Message-ID: <CAKgT0Uf-Exy1qhZYhKTe=mWf6i8L-FcaUYT0zGnyVWDq-pnfqw@mail.gmail.com>
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] virtchnl: Fix layout of RSS
- structures
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id C79AB203D4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:42:59 +0000 (UTC)
+IronPort-SDR: Sm4VoI2J15CeBr0U1OYqdwogGqBDMHUidn+D8S19gXuwquC3gpCYQRvYZwNBF3Ze2nz2kvnehy
+ BHzX9r7EN8gA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9849"; a="240689121"
+X-IronPort-AV: E=Sophos;i="5.78,461,1599548400"; d="scan'208";a="240689121"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Dec 2020 06:42:58 -0800
+IronPort-SDR: FtDEo8RCROTGY8TGmqIpwJeaeYrluVQ9e/TGUJ8dQhmyfmLp/h3I/Cmcq2BYg4cfSCqfP1cOnt
+ WVnwLidcUIpw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,461,1599548400"; d="scan'208";a="419564410"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga001.jf.intel.com with ESMTP; 30 Dec 2020 06:42:57 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 30 Dec 2020 14:42:55 +0000
+Message-Id: <20201230144255.2687-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix setting PF MAC filters
+ when changing MAC address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,68 +63,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Norbert Ciosek <norbertx.ciosek@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 28, 2020 at 2:36 AM Mateusz Palczewski
-<mateusz.palczewski@intel.com> wrote:
->
-> From: Norbert Ciosek <norbertx.ciosek@intel.com>
->
-> Move "key" and "lut" fields at the end of RSS structures.
-> They are arrays of size 1 used to fill in the data
-> in dynamically allocated memory located after both structures.
-> Previous layout could lead to unwanted compiler optimizations
-> in loops when iterating over these arrays.
->
-> Fixes: 65ece6de0114 ("virtchnl: Add missing explicit padding to structures")
-> Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
-> ---
->  include/linux/avf/virtchnl.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-> index ac4a1d3..44945d6 100644
-> --- a/include/linux/avf/virtchnl.h
-> +++ b/include/linux/avf/virtchnl.h
-> @@ -529,8 +529,8 @@ struct virtchnl_eth_stats {
->  struct virtchnl_rss_key {
->         u16 vsi_id;
->         u16 key_len;
-> -       u8 key[1];         /* RSS hash key, packed bytes */
->         u8 pad[1];
-> +       u8 key[1];         /* RSS hash key, packed bytes */
->  };
->
->  VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_key);
-> @@ -538,8 +538,8 @@ VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_key);
->  struct virtchnl_rss_lut {
->         u16 vsi_id;
->         u16 lut_entries;
-> -       u8 lut[1];        /* RSS lookup table */
->         u8 pad[1];
-> +       u8 lut[1];        /* RSS lookup table */
->  };
->
->  VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_lut);
+When changing PFs MAC address the old MAC filter was not removed
+due to incorrect order of copying MAC from netdev and deleting
+the old MAC filter.
+Changed how the old MAC filter is removed to remove the proper
+filter.
 
-This makes absolutely no sense. Isn't it going to break compatibility
-with existing devices that already have the old definitions? If the
-key and lut are meant to be dynamically allocated it doesn't make
-sense to have it size 1. Defining them with a length of 1 is incorrect
-for how these are handled in the kernel. It just looks wrong as my
-first instinct was to ask about why you would define an array of size
-1? You should be defining the key and lut without size, so "key[]" and
-"lut[]". That is how we define dynamically allocated fields at the end
-of structure.
+Fixes: 158daed16efb("i40e: fix mac filter delete when setting mac address")
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-If the lut and key are supposed to be dynamically allocated you
-shouldn't have the pad at all. You should remove it from the
-structures in question.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 630258e..de5e0fb 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -1561,6 +1561,7 @@ int i40e_del_mac_filter(struct i40e_vsi *vsi, const u8 *macaddr)
+ static int i40e_set_mac(struct net_device *netdev, void *p)
+ {
+ 	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct sockaddr addr_tmp = {0};
+ 	struct i40e_vsi *vsi = np->vsi;
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_hw *hw = &pf->hw;
+@@ -1591,8 +1592,11 @@ static int i40e_set_mac(struct net_device *netdev, void *p)
+ 	 * - Copy new address
+ 	 * - Add new address to MAC filter
+ 	 */
++
++	ether_addr_copy(addr_tmp.sa_data, netdev->dev_addr);
++
+ 	spin_lock_bh(&vsi->mac_filter_hash_lock);
+-	i40e_del_mac_filter(vsi, netdev->dev_addr);
++	i40e_del_mac_filter(vsi, addr_tmp.sa_data);
+ 	ether_addr_copy(netdev->dev_addr, addr->sa_data);
+ 	i40e_add_mac_filter(vsi, netdev->dev_addr);
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+-- 
+2.17.1
+
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
