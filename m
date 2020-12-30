@@ -1,56 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34B5B2E7A05
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Dec 2020 15:43:07 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91AE32E7B98
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Dec 2020 18:35:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5631985FA8;
-	Wed, 30 Dec 2020 14:43:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2B340870FA;
+	Wed, 30 Dec 2020 17:35:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rrYKkSA4qF8o; Wed, 30 Dec 2020 14:43:04 +0000 (UTC)
+	with ESMTP id qu6EN4RU9RYv; Wed, 30 Dec 2020 17:35:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 309A0861B2;
-	Wed, 30 Dec 2020 14:43:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7F1DA8726A;
+	Wed, 30 Dec 2020 17:35:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 652E61BF31F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:43:01 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4354B1BF4E2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 17:28:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 55ECF20482
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:43:01 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3E4468140D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 17:28:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EworBggYyF1C for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Dec 2020 14:43:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id C79AB203D4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 14:42:59 +0000 (UTC)
-IronPort-SDR: Sm4VoI2J15CeBr0U1OYqdwogGqBDMHUidn+D8S19gXuwquC3gpCYQRvYZwNBF3Ze2nz2kvnehy
- BHzX9r7EN8gA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9849"; a="240689121"
-X-IronPort-AV: E=Sophos;i="5.78,461,1599548400"; d="scan'208";a="240689121"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Dec 2020 06:42:58 -0800
-IronPort-SDR: FtDEo8RCROTGY8TGmqIpwJeaeYrluVQ9e/TGUJ8dQhmyfmLp/h3I/Cmcq2BYg4cfSCqfP1cOnt
- WVnwLidcUIpw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,461,1599548400"; d="scan'208";a="419564410"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga001.jf.intel.com with ESMTP; 30 Dec 2020 06:42:57 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 30 Dec 2020 14:42:55 +0000
-Message-Id: <20201230144255.2687-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix setting PF MAC filters
- when changing MAC address
+ with ESMTP id YXkQT2iFsTHE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Dec 2020 17:28:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from ssl.serverraum.org (ssl.serverraum.org [176.9.125.105])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0AF7E8672B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Dec 2020 17:28:35 +0000 (UTC)
+Received: from mwalle01.fritz.box (unknown
+ [IPv6:2a02:810c:c200:2e91:fa59:71ff:fe9b:b851])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id 8E61722727;
+ Wed, 30 Dec 2020 18:28:32 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1609349313;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=6FicUDPIGdxRaI+t09GLlQLPPAddV4hLMgOu+jJmYzQ=;
+ b=Pt0t25f7AZMrS72/2OOTXUIQb1FDTZ4ZIWIqO3kyJ/v3A3O+AZx33wPaO8Z0goKKBfxYXj
+ QhUGVUzo2Ko7OxYWMkf2FQJympk8MXSFnWJgwatDma5ylJ7YKM5mcZDyi04V2CYNm/K4Jy
+ fMTV5CbQh92pdK+c1nICi9JDbZ4TLkM=
+From: Michael Walle <michael@walle.cc>
+To: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Date: Wed, 30 Dec 2020 18:28:23 +0100
+Message-Id: <20201230172823.28483-1-michael@walle.cc>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+X-Mailman-Approved-At: Wed, 30 Dec 2020 17:35:04 +0000
+Subject: [Intel-wired-lan] [PATCH] PCI: add Intel i210 quirk
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,63 +68,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-MIME-Version: 1.0
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Michael Walle <michael@walle.cc>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When changing PFs MAC address the old MAC filter was not removed
-due to incorrect order of copying MAC from netdev and deleting
-the old MAC filter.
-Changed how the old MAC filter is removed to remove the proper
-filter.
+The Intel i210 doesn't work if the Expansion ROM BAR overlaps with
+another BAR. Networking won't work at all and once a packet is sent the
+netdev watchdog will bite:
 
-Fixes: 158daed16efb("i40e: fix mac filter delete when setting mac address")
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+[   89.059374] ------------[ cut here ]------------
+[   89.064019] NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
+[   89.070681] WARNING: CPU: 1 PID: 0 at net/sched/sch_generic.c:443 dev_watchdog+0x3a8/0x3b0
+[   89.078989] Modules linked in:
+[   89.082053] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W         5.11.0-rc1-00020-gc16f033804b #289
+[   89.091574] Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval 2.0 carrier (DT)
+[   89.099870] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
+[   89.105900] pc : dev_watchdog+0x3a8/0x3b0
+[   89.109923] lr : dev_watchdog+0x3a8/0x3b0
+[   89.113945] sp : ffff80001000bd50
+[   89.117268] x29: ffff80001000bd50 x28: 0000000000000008
+[   89.122602] x27: 0000000000000004 x26: 0000000000000140
+[   89.127935] x25: ffff002001c6c000 x24: ffff002001c2b940
+[   89.133267] x23: ffff8000118c7000 x22: ffff002001c6c39c
+[   89.138600] x21: ffff002001c6bfb8 x20: ffff002001c6c3b8
+[   89.143932] x19: 0000000000000000 x18: 0000000000000010
+[   89.149264] x17: 0000000000000000 x16: 0000000000000000
+[   89.154596] x15: ffffffffffffffff x14: 0720072007200720
+[   89.159928] x13: 0720072007740775 x12: ffff80001195b980
+[   89.165260] x11: 0000000000000003 x10: ffff800011943940
+[   89.170592] x9 : ffff800010100d44 x8 : 0000000000017fe8
+[   89.175924] x7 : c0000000ffffefff x6 : 0000000000000001
+[   89.181255] x5 : 0000000000000000 x4 : 0000000000000000
+[   89.186587] x3 : 00000000ffffffff x2 : ffff8000118eb908
+[   89.191919] x1 : 84d8200845006900 x0 : 0000000000000000
+[   89.197251] Call trace:
+[   89.199701]  dev_watchdog+0x3a8/0x3b0
+[   89.203374]  call_timer_fn+0x38/0x208
+[   89.207049]  run_timer_softirq+0x290/0x540
+[   89.211158]  __do_softirq+0x138/0x404
+[   89.214831]  irq_exit+0xe8/0xf8
+[   89.217981]  __handle_domain_irq+0x70/0xc8
+[   89.222091]  gic_handle_irq+0xc8/0x2b0
+[   89.225850]  el1_irq+0xb8/0x180
+[   89.228999]  arch_cpu_idle+0x18/0x40
+[   89.232587]  default_idle_call+0x70/0x214
+[   89.236610]  do_idle+0x21c/0x290
+[   89.239848]  cpu_startup_entry+0x2c/0x70
+[   89.243783]  secondary_start_kernel+0x1a0/0x1f0
+[   89.248332] ---[ end trace 1687af62576397bc ]---
+[   89.253350] igb 0002:01:00.0 enP2p1s0: Reset adapter
+
+Before this fixup the Expansion ROM BAR will overlap with BAR3:
+  # lspci -ns 2:1:0 -xx
+  0002:01:00.0 0200: 8086:1533 (rev 03)
+  00: 86 80 33 15 06 04 10 00 03 00 00 02 08 00 00 00
+  10: 00 00 00 40 00 00 00 00 00 00 00 00 00 00 20 40
+  20: 00 00 00 00 00 00 00 00 00 00 00 00 3c 10 03 00
+  30: 00 00 20 40 40 00 00 00 00 00 00 00 22 01 00 00
+
+Add a quirk which will update the Expansion ROM BAR for Intel i210s even
+if the ROM is disabled. This was tested on an ARM64 board (kontron
+sl28).
+
+Signed-off-by: Michael Walle <michael@walle.cc>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/pci/quirks.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 630258e..de5e0fb 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -1561,6 +1561,7 @@ int i40e_del_mac_filter(struct i40e_vsi *vsi, const u8 *macaddr)
- static int i40e_set_mac(struct net_device *netdev, void *p)
- {
- 	struct i40e_netdev_priv *np = netdev_priv(netdev);
-+	struct sockaddr addr_tmp = {0};
- 	struct i40e_vsi *vsi = np->vsi;
- 	struct i40e_pf *pf = vsi->back;
- 	struct i40e_hw *hw = &pf->hw;
-@@ -1591,8 +1592,11 @@ static int i40e_set_mac(struct net_device *netdev, void *p)
- 	 * - Copy new address
- 	 * - Add new address to MAC filter
- 	 */
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 653660e3ba9e..59c204ef5df7 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -5612,3 +5612,37 @@ static void apex_pci_fixup_class(struct pci_dev *pdev)
+ }
+ DECLARE_PCI_FIXUP_CLASS_HEADER(0x1ac1, 0x089a,
+ 			       PCI_CLASS_NOT_DEFINED, 8, apex_pci_fixup_class);
 +
-+	ether_addr_copy(addr_tmp.sa_data, netdev->dev_addr);
++/*
++ * Some devices doesn't work if the Expansion ROM has the same base address as
++ * one of the other BARs although it is disabled.
++ * This might happen if the bootloader/BIOS enumerate the BARs in a different
++ * way than linux. If the Expansion ROM is disabled, linux deliberately skip
++ * writing the ROM BAR if the BAR is not enabled because of some broken
++ * devices, see pci_std_update_resource(). Thus, the ROM BAR of the device will
++ * still contain the value assigned by the booloader, which might be the same
++ * value as one of the other BARs then.
++ *
++ * As a workaround, update the Expansion ROM BAR even if the Expansion ROM is
++ * disabled.
++ */
++static void pci_fixup_rewrite_rom_bar(struct pci_dev *dev)
++{
++	struct resource *res = &dev->resource[PCI_ROM_RESOURCE];
++	struct pci_bus_region region;
++	u32 rom_addr;
 +
- 	spin_lock_bh(&vsi->mac_filter_hash_lock);
--	i40e_del_mac_filter(vsi, netdev->dev_addr);
-+	i40e_del_mac_filter(vsi, addr_tmp.sa_data);
- 	ether_addr_copy(netdev->dev_addr, addr->sa_data);
- 	i40e_add_mac_filter(vsi, netdev->dev_addr);
- 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
++	pci_read_config_dword(dev, dev->rom_base_reg, &rom_addr);
++
++	if (rom_addr & PCI_ROM_ADDRESS_ENABLE)
++		return;
++
++	pcibios_resource_to_bus(dev->bus, &region, res);
++	rom_addr &= ~PCI_ROM_ADDRESS_MASK;
++	rom_addr |= region.start;
++	pci_write_config_dword(dev, dev->rom_base_reg, rom_addr);
++}
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1533, pci_fixup_rewrite_rom_bar);
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1536, pci_fixup_rewrite_rom_bar);
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1537, pci_fixup_rewrite_rom_bar);
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1538, pci_fixup_rewrite_rom_bar);
 -- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
