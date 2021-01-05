@@ -1,82 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B6632EB302
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 20:03:13 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B4EE2EB2FF
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 20:03:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4FCF02035B;
-	Tue,  5 Jan 2021 19:03:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 25C0A87256;
+	Tue,  5 Jan 2021 19:03:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z120KFTP5HSz; Tue,  5 Jan 2021 19:03:09 +0000 (UTC)
+	with ESMTP id vjd0GQLrD8Iy; Tue,  5 Jan 2021 19:03:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BE3A920456;
-	Tue,  5 Jan 2021 19:02:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CEF2D87251;
+	Tue,  5 Jan 2021 19:03:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1DF0E1BF9AD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:10 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E1A741BF335
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 056F6203F3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DCF5885F37
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WcZGujYeIbXj for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Jan 2021 19:01:09 +0000 (UTC)
+ with ESMTP id XpgHfHIugRLE for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Jan 2021 19:01:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com
- [209.85.208.47])
- by silver.osuosl.org (Postfix) with ESMTPS id C154E2035B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:08 +0000 (UTC)
-Received: by mail-ed1-f47.google.com with SMTP id j16so1942301edr.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 05 Jan 2021 11:01:08 -0800 (PST)
+Received: from mail-ej1-f45.google.com (mail-ej1-f45.google.com
+ [209.85.218.45])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C98F786109
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 19:01:10 +0000 (UTC)
+Received: by mail-ej1-f45.google.com with SMTP id q22so1908007eja.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 05 Jan 2021 11:01:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=o9S5VetFLcZ6A9nQu4WMhm39cSlo6GMb/Zh6iH2PAWo=;
- b=YWokJ4VPJ94sBnkT+J4C7IXLt2kDzNBiTghXcM82L4KlMYRDSQqifLNZOGQ5Ut9y9y
- ZYiZ82rB9AIHdypa4FsXAC26qJoxHElT0kBMRGUjrsc29JcTFDlY94P4nE2dlq8lkW5p
- RObbbo/amQfqkKgkEHtgtEG6GmOiOS8vXyggValuLbpZUJLcOgUnstTIgSnT4Cl+PF0r
- M7LICV5lt5TZgUn1E3t7REd9NPVkyHWhDTfuYNvSIgwZAWGeCko00gqk4ZhFi44rujaV
- 0754bHfrxdO5Y9swDHvq9Ejhryrsc5R+dyJJGPIwMT7udP2PqylpCYgrjVtcl5BRYJ9I
- 0TPQ==
+ bh=2Xkt1oCIrxKaf3It3JKv+vsp1Hey/NBy/qFeY9d8DZc=;
+ b=Gt5QFu6I7aHo+8GOPj5R6UBnaDhbCplrfdTcdydwynZSIxhp9WE4gV3mh7aGBMhvd/
+ 2rSp5iOOh6nP27UsPfrjVeanyWIu7s1MfI/Sj7qYZizz3AsC8CTZ46nLPYgajUFzTdnL
+ vcl31dKkTWMrIK3J8VFuZl0La4iCfKMMOcjSNTKaMokKfC3PC+/Wk5fnlzmJyUmCW2Ak
+ Wz71qxVmVISS6e5HCu1t8G9zRraBu0jxxVzCbv6fdiGMern9MRd2d3L/y/bgN0w9R1ft
+ SlO9N3Av0p/8zNw//Ah3Vmsfx35/2SKI8FB7cYchKY9eQBtOP21dvYqJq7ic4+BeuxJj
+ +FWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=o9S5VetFLcZ6A9nQu4WMhm39cSlo6GMb/Zh6iH2PAWo=;
- b=qUJiG/Nzcac06Oj/gjIxIPDDgAyQPhNTSL5q+SEnu+hAOSyL0SU1FcPUgtXZefxCgm
- DGi/c8n2oItSnib4w0yMimer41NMsxwWS1YasrVGtWfhCtPBX6SNg7LFd0ZLzE6cfqW2
- hjqhUR1aMsBJdMNnwWMaBzjUS9hrQADsxwSQs+DQXFY3kmIUGAfLoDFx/e8b2qd/+0o1
- AJiF3wnU6bbNZBZiCP74Gq8kZHMPFv4yDnNR42IokWDrSig9oTUBfBfEBjRZIfAJH64w
- TrbQEHAE9sGtfrIVR9BcSi660vboNajBjfuCA1013y8zcHKibGKbBB9fZSNY0GMjYqSN
- 4pUw==
-X-Gm-Message-State: AOAM530TgzrO4/kSY9wZ/r6uIVOUAix1UQXPIYrnsbmbSwh6xWFXecDU
- +C+iR17uokchBDOHMcJSjXU=
-X-Google-Smtp-Source: ABdhPJxjE2k61m92yxHS+AwU9WB9vDDtGHYZ1kuHbwT7yr8ORT7g6VgNhr8Kz8oPy6UDV4hKTq121A==
-X-Received: by 2002:a05:6402:310f:: with SMTP id
- dc15mr1186577edb.225.1609873267285; 
- Tue, 05 Jan 2021 11:01:07 -0800 (PST)
+ bh=2Xkt1oCIrxKaf3It3JKv+vsp1Hey/NBy/qFeY9d8DZc=;
+ b=PJ4bcF7T6IvVPmiEbpe9LxQyZeIagMiix1NFW93K/SPNijNsZjUp+9+dML0WS0ksKb
+ ij1AorN5bipsTwJ2KU1nu3DmFO8tCP+FTyesS+D6XLt1EfPwx23sUcMd7FqhXhNSUEvT
+ 7TGyH2TZQLj8FfssH964OaYiHwV4e5vi3iCGLKNZUCcVsZWuvEQnd0IVqWeTLETD5QF3
+ 5IKmu3pqA/rvg1cxx68wrhm5YAws4EiCInK/BXwLreoVrO3z+ObCLzs+UVZSsCDixvbn
+ kVBAFHQUtvnTOPcn0bMVJKieMkfiLxlE9So9uWaQFqPZniUAZYTdBkOlTN2qvGy2w2NK
+ e6GQ==
+X-Gm-Message-State: AOAM531Fpc4eaUuJwzl804HyvORoN1f4ZNwAuL6k6vZ+m050B1uDhCVA
+ kgsiJVEzLhzw0k/GC+wnPus=
+X-Google-Smtp-Source: ABdhPJwJ20qomfS5nkztFWDy2mx/AXJKC58XuuP1SWp95xUhRb4sibo0a7Ho4ddPX1swb2PGZfDcEQ==
+X-Received: by 2002:a17:906:81d6:: with SMTP id
+ e22mr490266ejx.476.1609873269304; 
+ Tue, 05 Jan 2021 11:01:09 -0800 (PST)
 Received: from localhost.localdomain (5-12-227-87.residential.rdsnet.ro.
  [5.12.227.87])
- by smtp.gmail.com with ESMTPSA id z13sm205084edq.48.2021.01.05.11.01.05
+ by smtp.gmail.com with ESMTPSA id z13sm205084edq.48.2021.01.05.11.01.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Jan 2021 11:01:06 -0800 (PST)
+ Tue, 05 Jan 2021 11:01:08 -0800 (PST)
 From: Vladimir Oltean <olteanv@gmail.com>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Tue,  5 Jan 2021 20:59:01 +0200
-Message-Id: <20210105185902.3922928-12-olteanv@gmail.com>
+Date: Tue,  5 Jan 2021 20:59:02 +0200
+Message-Id: <20210105185902.3922928-13-olteanv@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210105185902.3922928-1-olteanv@gmail.com>
 References: <20210105185902.3922928-1-olteanv@gmail.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 05 Jan 2021 19:02:51 +0000
-Subject: [Intel-wired-lan] [RFC PATCH v2 net-next 11/12] net: mark
- ndo_get_stats64 as being able to sleep
+Subject: [Intel-wired-lan] [RFC PATCH v2 net-next 12/12] net: remove
+ obsolete comments about ndo_get_stats64 context from eth drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,69 +116,66 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-Now that all callers have been converted to not use atomic context when
-calling dev_get_stats, it is time to update the documentation and put a
-notice in the function that it expects process context.
+Now that we have a good summary in Documentation/networking/netdevices.rst,
+these comments serve no purpose and are actually distracting/confusing.
 
 Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
- Documentation/networking/netdevices.rst | 8 ++++++--
- Documentation/networking/statistics.rst | 9 ++++-----
- net/core/dev.c                          | 2 ++
- 3 files changed, 12 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/cisco/enic/enic_main.c | 1 -
+ drivers/net/ethernet/nvidia/forcedeth.c     | 2 --
+ drivers/net/ethernet/sfc/efx_common.c       | 1 -
+ drivers/net/ethernet/sfc/falcon/efx.c       | 1 -
+ 4 files changed, 5 deletions(-)
 
-diff --git a/Documentation/networking/netdevices.rst b/Documentation/networking/netdevices.rst
-index 5a85fcc80c76..944599722c76 100644
---- a/Documentation/networking/netdevices.rst
-+++ b/Documentation/networking/netdevices.rst
-@@ -64,8 +64,12 @@ ndo_do_ioctl:
- 	Context: process
+diff --git a/drivers/net/ethernet/cisco/enic/enic_main.c b/drivers/net/ethernet/cisco/enic/enic_main.c
+index fb269d587b74..7425f94f9091 100644
+--- a/drivers/net/ethernet/cisco/enic/enic_main.c
++++ b/drivers/net/ethernet/cisco/enic/enic_main.c
+@@ -870,7 +870,6 @@ static netdev_tx_t enic_hard_start_xmit(struct sk_buff *skb,
+ 	return NETDEV_TX_OK;
+ }
  
- ndo_get_stats:
--	Synchronization: dev_base_lock rwlock.
--	Context: nominally process, but don't sleep inside an rwlock
-+	Synchronization:
-+		none. netif_lists_lock(net) might be held, but not guaranteed.
-+		It is illegal to hold rtnl_lock() in this method, since it will
-+		cause a lock inversion with netif_lists_lock and a deadlock.
-+	Context:
-+		process
- 
- ndo_start_xmit:
- 	Synchronization: __netif_tx_lock spinlock.
-diff --git a/Documentation/networking/statistics.rst b/Documentation/networking/statistics.rst
-index 234abedc29b2..ad3e353df0dd 100644
---- a/Documentation/networking/statistics.rst
-+++ b/Documentation/networking/statistics.rst
-@@ -155,11 +155,10 @@ Drivers must ensure best possible compliance with
- Please note for example that detailed error statistics must be
- added into the general `rx_error` / `tx_error` counters.
- 
--The `.ndo_get_stats64` callback can not sleep because of accesses
--via `/proc/net/dev`. If driver may sleep when retrieving the statistics
--from the device it should do so periodically asynchronously and only return
--a recent copy from `.ndo_get_stats64`. Ethtool interrupt coalescing interface
--allows setting the frequency of refreshing statistics, if needed.
-+Drivers may sleep when retrieving the statistics from the device, or they might
-+read the counters periodically and only return in `.ndo_get_stats64` a recent
-+copy collected asynchronously. In the latter case, the ethtool interrupt
-+coalescing interface allows setting the frequency of refreshing statistics.
- 
- Retrieving ethtool statistics is a multi-syscall process, drivers are advised
- to keep the number of statistics constant to avoid race conditions with
-diff --git a/net/core/dev.c b/net/core/dev.c
-index d48b75479b3e..6b7cdf8ab875 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -10389,6 +10389,8 @@ void dev_get_stats(struct net_device *dev, struct rtnl_link_stats64 *storage)
+-/* dev_base_lock rwlock held, nominally process context */
+ static void enic_get_stats(struct net_device *netdev,
+ 			   struct rtnl_link_stats64 *net_stats)
  {
- 	const struct net_device_ops *ops = dev->netdev_ops;
+diff --git a/drivers/net/ethernet/nvidia/forcedeth.c b/drivers/net/ethernet/nvidia/forcedeth.c
+index 8724d6a9ed02..8fa254dc64e9 100644
+--- a/drivers/net/ethernet/nvidia/forcedeth.c
++++ b/drivers/net/ethernet/nvidia/forcedeth.c
+@@ -1761,8 +1761,6 @@ static void nv_get_stats(int cpu, struct fe_priv *np,
+ /*
+  * nv_get_stats64: dev->ndo_get_stats64 function
+  * Get latest stats value from the nic.
+- * Called with read_lock(&dev_base_lock) held for read -
+- * only synchronized against unregister_netdevice.
+  */
+ static void
+ nv_get_stats64(struct net_device *dev, struct rtnl_link_stats64 *storage)
+diff --git a/drivers/net/ethernet/sfc/efx_common.c b/drivers/net/ethernet/sfc/efx_common.c
+index de797e1ac5a9..4d8047b35fb2 100644
+--- a/drivers/net/ethernet/sfc/efx_common.c
++++ b/drivers/net/ethernet/sfc/efx_common.c
+@@ -596,7 +596,6 @@ void efx_stop_all(struct efx_nic *efx)
+ 	efx_stop_datapath(efx);
+ }
  
-+	might_sleep();
-+
- 	if (ops->ndo_get_stats64) {
- 		memset(storage, 0, sizeof(*storage));
- 		ops->ndo_get_stats64(dev, storage);
+-/* Context: process, dev_base_lock or RTNL held, non-blocking. */
+ void efx_net_stats(struct net_device *net_dev, struct rtnl_link_stats64 *stats)
+ {
+ 	struct efx_nic *efx = netdev_priv(net_dev);
+diff --git a/drivers/net/ethernet/sfc/falcon/efx.c b/drivers/net/ethernet/sfc/falcon/efx.c
+index f8979991970e..6db2b6583dec 100644
+--- a/drivers/net/ethernet/sfc/falcon/efx.c
++++ b/drivers/net/ethernet/sfc/falcon/efx.c
+@@ -2096,7 +2096,6 @@ int ef4_net_stop(struct net_device *net_dev)
+ 	return 0;
+ }
+ 
+-/* Context: process, dev_base_lock or RTNL held, non-blocking. */
+ static void ef4_net_stats(struct net_device *net_dev,
+ 			  struct rtnl_link_stats64 *stats)
+ {
 -- 
 2.25.1
 
