@@ -1,77 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A2EE2EB1A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 18:42:56 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 492DF2EB1DF
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 18:57:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BDCBC868FF;
-	Tue,  5 Jan 2021 17:42:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0488F87208;
+	Tue,  5 Jan 2021 17:57:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zkvsq3FX6J3M; Tue,  5 Jan 2021 17:42:54 +0000 (UTC)
+	with ESMTP id XUadsjl5F2Vt; Tue,  5 Jan 2021 17:57:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5183586978;
-	Tue,  5 Jan 2021 17:42:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D2FB87202;
+	Tue,  5 Jan 2021 17:57:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 428571BF335
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:42:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 170E01BF969
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:57:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3DC03868FF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:42:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0FA7885EC1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:57:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EvWXBihA+FNu for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Jan 2021 17:42:51 +0000 (UTC)
+ with ESMTP id An04ChCr4nvI for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Jan 2021 17:57:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f51.google.com (mail-io1-f51.google.com
- [209.85.166.51])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4C0E386447
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:42:51 +0000 (UTC)
-Received: by mail-io1-f51.google.com with SMTP id q137so104714iod.9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 05 Jan 2021 09:42:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Wb/4HOHjskfsaOj7o6FHqkvX5uAvMdV7s3iqcjLLeUI=;
- b=VkKNOlr1HBViMRB9Ibx6OJpevbh9kpOUV3xCYLX43nubEMVDNoLa9fa0NfaVw8NQQl
- shGY8+RVJUGibx1JDrcyPaRjxEkaEMlDxS3n5tbPFzWZkW4hd7EIugQNA7QnZJ/FQQU3
- In6gA8Uj0OzQKthe2Sl8GSlbmF19zpv2RiyR3gtYkJYre98I0vyV6b6NDYBPAR2nw0r8
- LQAsjTtIoC9Shhdr8JkX7/KDxSJ+LSex/L4mTLFK8ptvvF9WyemRn2qi1lC/4b9fvA4H
- 3vbKmLrPAbl+1vd8wwQLM8m7zzPkriixu4Rr7EJYYc0ycImBoTJ+jc0DppgPgZOGsEq5
- 9aEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Wb/4HOHjskfsaOj7o6FHqkvX5uAvMdV7s3iqcjLLeUI=;
- b=K36KDKRtEKL24EhWx0AhzODkKyH1458YCp/ZgX3t2+XuFvmhVjGHQMj4XkJ11vaM+e
- BmxLHr8veZ/jPziRscysh4zWDzRo4oJT6Xl0cj19T40Q2gBkNhADZxlDB0bBF8noBUL2
- RdzI6ouXr1uLjti0P9ukysCmRSrmMQgu2DGu6Htt2qajCy/3Zal22AHOjFeaTuT0RWep
- hKC59tFGh+P0GaSncfu6W9hDyID4sDpjpgyjkjde95ZcaTEE+a2c0gc2RA2IPxNulsec
- UNcm54imU2SGhjoAcHSb3xM9s5C79l/mBpDfXWU1ppq+fkV7aG7Q6Tn8kxnwxRf5RbgT
- SxYg==
-X-Gm-Message-State: AOAM5319cXWBjXINaHVvetfK69WqfTKHwqgznq27+FNUOdVagmUsOqof
- O8lG9xFS/hzA5Otg+eqy8vs44CbyKmok19j6Zg0=
-X-Google-Smtp-Source: ABdhPJxUMUZHX1ujtOY1sOJwRZTqyJVHt02V3RTS+nZ2jZTeeiXFmWXTU6x0TfxhnttV3YJfGZNgDQHNOfoFRUvBBDY=
-X-Received: by 2002:a02:b011:: with SMTP id p17mr691303jah.114.1609868570568; 
- Tue, 05 Jan 2021 09:42:50 -0800 (PST)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 82C8F85D95
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:57:16 +0000 (UTC)
+IronPort-SDR: JExMBS2iD/EAUhMmi3fsKthxi4nrgpAA0rHr5DrKXjIyUvRSZ9FgWDwmw7D8HluPB0n2ruNKi4
+ rTnA4E7q6zGw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9855"; a="174576125"
+X-IronPort-AV: E=Sophos;i="5.78,477,1599548400"; d="scan'208";a="174576125"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jan 2021 09:57:16 -0800
+IronPort-SDR: 4pW8BFAWz0aE2b9b/AOV0ag3JJzwjTBWbjgo5E2ITn4QP/G60a6SmrlnHpn2tkzNs/NxLMXj8u
+ kaHIDAiImFMw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.78,477,1599548400"; d="scan'208";a="350469437"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by fmsmga008.fm.intel.com with ESMTP; 05 Jan 2021 09:57:15 -0800
+Date: Tue, 5 Jan 2021 18:48:30 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Andre Guedes <andre.guedes@intel.com>
+Message-ID: <20210105174830.GD13327@ranger.igk.intel.com>
+References: <20201223203705.78705-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-References: <20201228103633.11621-1-mateusz.palczewski@intel.com>
- <CAKgT0Uf-Exy1qhZYhKTe=mWf6i8L-FcaUYT0zGnyVWDq-pnfqw@mail.gmail.com>
- <BL0PR11MB35241617E21D17136107E0D187D10@BL0PR11MB3524.namprd11.prod.outlook.com>
-In-Reply-To: <BL0PR11MB35241617E21D17136107E0D187D10@BL0PR11MB3524.namprd11.prod.outlook.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 5 Jan 2021 09:42:39 -0800
-Message-ID: <CAKgT0Ue3fQY1JDsE+vxY3SscRvwQrE9YwUZ3Vva2H3Nze-ALuA@mail.gmail.com>
-To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>, 
- "Brandeburg, Jesse" <jesse.brandeburg@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] virtchnl: Fix layout of RSS
- structures
+Content-Disposition: inline
+In-Reply-To: <20201223203705.78705-1-andre.guedes@intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH v2 0/9] igc: Add support for AF_XDP
+ zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,107 +67,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Ciosek, NorbertX" <norbertx.ciosek@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGksCgpXaGF0IHlvdSBhcmUgc2F5aW5nIGRvZXNuJ3QgbWFrZSBtdWNoIHNlbnNlLiBXaHkgZG8g
-eW91IG5lZWQgdGhlIHNpemUKZ3VhcmFudGVlPyBUaGUgcGFkZGluZyBpcyBwb2ludGxlc3MgZm9y
-IGEgdmFyaWFibGUgbGVuZ3RoIGFycmF5IHNvIGl0CnNob3VsZG4ndCBiZSB0aGVyZSBhbnl3YXku
-IFdoYXQgSSBhbSBzdWdnZXN0aW5nIHlvdSBkbyBpcyByZXZlcnQgdGhlCnBhZCBhbmQgY29udmVy
-dCB0aGUga2V5IGFuZCBsdXQgdG8gZmxleGlibGUgYXJyYXkgbWVtYmVycy4gVGhlbiB0aGUKc2l6
-ZSBkb2Vzbid0IGFzc3VtZSBhIHNpemUgb2YgMSBzaW5jZSB0aGF0IGlzbid0IGFueXRoaW5nIHRo
-YXQgaGFzIHRvCmJlIGd1YXJhbnRlZWQgYW55d2F5LgoKQWxzbyB3aGF0IHRlc3RpbmcgYXJlIHlv
-dSBkb2luZyB0byBndWFyYW50ZWUgeW91IGRvbid0IGJyZWFrIGJhY2t3YXJkCmNvbXBhdGliaWxp
-dHk/IEl0IHNlZW1zIGxpa2UgYW4gb2J2aW91cyBpc3N1ZSB0aGF0IG1vdmluZyB0aGUgbHV0IG9y
-CmtleSBieSBhZGRpbmcgdGhlIHBhZCBzaG91bGQgYnJlYWsgY29tcGF0aWJpbGl0eSB3aXRoIG9s
-ZGVyIGJ1aWxkcyBvZgp0aGUgQVZGIG9yIFBGIGRyaXZlcnMgc2luY2UgeW91IGFyZSBtb3Zpbmcg
-dGhlIGxvY2F0aW9uIG9mIHRoZSBrZXkgYW5kCnRhYmxlLiBUaGlzIHNob3VsZCByZXN1bHQgaW4g
-YW4gb2ZmLWJ5LW9uZSBpbmRleGluZyBlcnJvci4gQXJlIHlvdQpydW5uaW5nIHRoaXMgd2l0aCBh
-biBvbGRlciB2ZXJzaW9uIG9mIGVpdGhlciBhbmQgdGhlbiB2ZXJpZnlpbmcgdGhlCmhhcmR3YXJl
-IGJlaGF2aW9yIGlzIHRoZSBzYW1lPyBNeSBjb25jZXJuIGlzIHRoYXQgaWYgeW91IGFyZSBidWls
-ZGluZwphbiBBVkYgYW5kIGEgUEYgd2l0aCB0aGUgc2FtZSBjb2RlIGl0IHdpbGwgd29yaywgYnV0
-IGlmIHlvdSB0ZXN0CmFnYWluc3QgYW4gb2xkZXIgdmVyc2lvbiBvZiBlaXRoZXIgdGhleSB3aWxs
-IGV4cGVjdCB0aGUgb2xkIGxvY2F0aW9uLApub3QgdGhlIHBhZGRlZCBvbmUgYW5kIHRoYXQgd2ls
-bCByZXN1bHQgaW4gaXNzdWVzLgoKLSBBbGV4CgpPbiBUdWUsIEphbiA1LCAyMDIxIGF0IDI6NTMg
-QU0gUGFsY3pld3NraSwgTWF0ZXVzego8bWF0ZXVzei5wYWxjemV3c2tpQGludGVsLmNvbT4gd3Jv
-dGU6Cj4KPiBIZWxsbywKPiBObywgaXQgd2lsbCBub3QgYnJlYWsgYW55IGZ1bmN0aW9uYWxpdHkg
-b2YgdGhlIGluLXRyZWUgZHJpdmVycy4gVGhpcyBwYXRjaCBmaXhlcyBjb21taXQgNjVlY2U2ZGUw
-MTE0ICgidmlydGNobmw6IEFkZCBtaXNzaW5nIGV4cGxpY2l0IHBhZGRpbmcgdG8gc3RydWN0dXJl
-cyIpIHdoaWNoIGFkZGVkIHBhZGRpbmcgaW4gdGhlIHdyb25nIHBsYWNlIG9mIGJvdGggc3RydWN0
-dXJlcyBhcyBrZXkvbHV0IGZpZWxkcyBzaG91bGQgYmUgYXQgdGhlIGVuZC4gRHJpdmVycyBjb2Rl
-IGFzc3VtZXMgdGhhdCBzaXplIG9mIGJvdGggaXMgZXF1YWwgdG8gMSBhbmQgYWxsb2NhdGVzIG1l
-bW9yeSB3aXRoIChzaXplb2YodmlydGNobmxfcnNzX2x1dC92aXJ0Y2hubF9yc3Nfa2V5KSAtIDEg
-KyAoYXJyYXkgc2l6ZSkpLiBDaGFuZ2luZyBsdXRbMV0va2V5WzFdIHRvIGZsZXhpYmxlIGFycmF5
-IG1lbWJlcnMgbHV0W10va2V5W10gaXMgcG9zc2libGUgYnV0IHRoaXMgd2lsbCByZXF1aXJlIG1v
-cmUgY2hhbmdlcyBpbiB0aGUgZHJpdmVycyBhcyBjb21waWxlciBjYW5ub3QgZ3VhcmFudGVlIHRo
-YXQgc2l6ZSBvZiB0aGVzZSBmaWVsZHMgd2lsbCBiZSAxLiBUaGVzZSBtb2RpZmljYXRpb25zIHNo
-b3VsZCBiZSBkb25lIGluIG90aGVyIGNvbW1pdC4KPgo+IFJlZ2FyZHMsCj4gTWF0ZXVzeiBQYWxj
-emV3c2tpCj4KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+IEZyb206IEFsZXhhbmRlciBE
-dXljayA8YWxleGFuZGVyLmR1eWNrQGdtYWlsLmNvbT4KPiBTZW50OiBwb25pZWR6aWHFgmVrLCAy
-OCBncnVkbmlhIDIwMjAgMTk6MzQKPiBUbzogUGFsY3pld3NraSwgTWF0ZXVzeiA8bWF0ZXVzei5w
-YWxjemV3c2tpQGludGVsLmNvbT4KPiBDYzogaW50ZWwtd2lyZWQtbGFuIDxpbnRlbC13aXJlZC1s
-YW5AbGlzdHMub3N1b3NsLm9yZz47IENpb3NlaywgTm9yYmVydFggPG5vcmJlcnR4LmNpb3Nla0Bp
-bnRlbC5jb20+Cj4gU3ViamVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIFtQQVRDSCBuZXQgdjFd
-IHZpcnRjaG5sOiBGaXggbGF5b3V0IG9mIFJTUyBzdHJ1Y3R1cmVzCj4KPiBPbiBNb24sIERlYyAy
-OCwgMjAyMCBhdCAyOjM2IEFNIE1hdGV1c3ogUGFsY3pld3NraSA8bWF0ZXVzei5wYWxjemV3c2tp
-QGludGVsLmNvbT4gd3JvdGU6Cj4gPgo+ID4gRnJvbTogTm9yYmVydCBDaW9zZWsgPG5vcmJlcnR4
-LmNpb3Nla0BpbnRlbC5jb20+Cj4gPgo+ID4gTW92ZSAia2V5IiBhbmQgImx1dCIgZmllbGRzIGF0
-IHRoZSBlbmQgb2YgUlNTIHN0cnVjdHVyZXMuCj4gPiBUaGV5IGFyZSBhcnJheXMgb2Ygc2l6ZSAx
-IHVzZWQgdG8gZmlsbCBpbiB0aGUgZGF0YSBpbiBkeW5hbWljYWxseQo+ID4gYWxsb2NhdGVkIG1l
-bW9yeSBsb2NhdGVkIGFmdGVyIGJvdGggc3RydWN0dXJlcy4KPiA+IFByZXZpb3VzIGxheW91dCBj
-b3VsZCBsZWFkIHRvIHVud2FudGVkIGNvbXBpbGVyIG9wdGltaXphdGlvbnMgaW4gbG9vcHMKPiA+
-IHdoZW4gaXRlcmF0aW5nIG92ZXIgdGhlc2UgYXJyYXlzLgo+ID4KPiA+IEZpeGVzOiA2NWVjZTZk
-ZTAxMTQgKCJ2aXJ0Y2hubDogQWRkIG1pc3NpbmcgZXhwbGljaXQgcGFkZGluZyB0bwo+ID4gc3Ry
-dWN0dXJlcyIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBOb3JiZXJ0IENpb3NlayA8bm9yYmVydHguY2lv
-c2VrQGludGVsLmNvbT4KPiA+IC0tLQo+ID4gIGluY2x1ZGUvbGludXgvYXZmL3ZpcnRjaG5sLmgg
-fCA0ICsrLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9u
-cygtKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L2F2Zi92aXJ0Y2hubC5oCj4g
-PiBiL2luY2x1ZGUvbGludXgvYXZmL3ZpcnRjaG5sLmggaW5kZXggYWM0YTFkMy4uNDQ5NDVkNiAx
-MDA2NDQKPiA+IC0tLSBhL2luY2x1ZGUvbGludXgvYXZmL3ZpcnRjaG5sLmgKPiA+ICsrKyBiL2lu
-Y2x1ZGUvbGludXgvYXZmL3ZpcnRjaG5sLmgKPiA+IEBAIC01MjksOCArNTI5LDggQEAgc3RydWN0
-IHZpcnRjaG5sX2V0aF9zdGF0cyB7ICBzdHJ1Y3QKPiA+IHZpcnRjaG5sX3Jzc19rZXkgewo+ID4g
-ICAgICAgICB1MTYgdnNpX2lkOwo+ID4gICAgICAgICB1MTYga2V5X2xlbjsKPiA+IC0gICAgICAg
-dTgga2V5WzFdOyAgICAgICAgIC8qIFJTUyBoYXNoIGtleSwgcGFja2VkIGJ5dGVzICovCj4gPiAg
-ICAgICAgIHU4IHBhZFsxXTsKPiA+ICsgICAgICAgdTgga2V5WzFdOyAgICAgICAgIC8qIFJTUyBo
-YXNoIGtleSwgcGFja2VkIGJ5dGVzICovCj4gPiAgfTsKPiA+Cj4gPiAgVklSVENITkxfQ0hFQ0tf
-U1RSVUNUX0xFTig2LCB2aXJ0Y2hubF9yc3Nfa2V5KTsgQEAgLTUzOCw4ICs1MzgsOCBAQAo+ID4g
-VklSVENITkxfQ0hFQ0tfU1RSVUNUX0xFTig2LCB2aXJ0Y2hubF9yc3Nfa2V5KTsgIHN0cnVjdAo+
-ID4gdmlydGNobmxfcnNzX2x1dCB7Cj4gPiAgICAgICAgIHUxNiB2c2lfaWQ7Cj4gPiAgICAgICAg
-IHUxNiBsdXRfZW50cmllczsKPiA+IC0gICAgICAgdTggbHV0WzFdOyAgICAgICAgLyogUlNTIGxv
-b2t1cCB0YWJsZSAqLwo+ID4gICAgICAgICB1OCBwYWRbMV07Cj4gPiArICAgICAgIHU4IGx1dFsx
-XTsgICAgICAgIC8qIFJTUyBsb29rdXAgdGFibGUgKi8KPiA+ICB9Owo+ID4KPiA+ICBWSVJUQ0hO
-TF9DSEVDS19TVFJVQ1RfTEVOKDYsIHZpcnRjaG5sX3Jzc19sdXQpOwo+Cj4gVGhpcyBtYWtlcyBh
-YnNvbHV0ZWx5IG5vIHNlbnNlLiBJc24ndCBpdCBnb2luZyB0byBicmVhayBjb21wYXRpYmlsaXR5
-IHdpdGggZXhpc3RpbmcgZGV2aWNlcyB0aGF0IGFscmVhZHkgaGF2ZSB0aGUgb2xkIGRlZmluaXRp
-b25zPyBJZiB0aGUga2V5IGFuZCBsdXQgYXJlIG1lYW50IHRvIGJlIGR5bmFtaWNhbGx5IGFsbG9j
-YXRlZCBpdCBkb2Vzbid0IG1ha2Ugc2Vuc2UgdG8gaGF2ZSBpdCBzaXplIDEuIERlZmluaW5nIHRo
-ZW0gd2l0aCBhIGxlbmd0aCBvZiAxIGlzIGluY29ycmVjdCBmb3IgaG93IHRoZXNlIGFyZSBoYW5k
-bGVkIGluIHRoZSBrZXJuZWwuIEl0IGp1c3QgbG9va3Mgd3JvbmcgYXMgbXkgZmlyc3QgaW5zdGlu
-Y3Qgd2FzIHRvIGFzayBhYm91dCB3aHkgeW91IHdvdWxkIGRlZmluZSBhbiBhcnJheSBvZiBzaXpl
-IDE/IFlvdSBzaG91bGQgYmUgZGVmaW5pbmcgdGhlIGtleSBhbmQgbHV0IHdpdGhvdXQgc2l6ZSwg
-c28gImtleVtdIiBhbmQgImx1dFtdIi4gVGhhdCBpcyBob3cgd2UgZGVmaW5lIGR5bmFtaWNhbGx5
-IGFsbG9jYXRlZCBmaWVsZHMgYXQgdGhlIGVuZCBvZiBzdHJ1Y3R1cmUuCj4KPiBJZiB0aGUgbHV0
-IGFuZCBrZXkgYXJlIHN1cHBvc2VkIHRvIGJlIGR5bmFtaWNhbGx5IGFsbG9jYXRlZCB5b3Ugc2hv
-dWxkbid0IGhhdmUgdGhlIHBhZCBhdCBhbGwuIFlvdSBzaG91bGQgcmVtb3ZlIGl0IGZyb20gdGhl
-IHN0cnVjdHVyZXMgaW4gcXVlc3Rpb24uCj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gSW50ZWwgVGVjaG5vbG9n
-eSBQb2xhbmQgc3AuIHogby5vLgo+IHVsLiBTb3dhY2tpZWdvIDE3MyB8IDgwLTI5OCBHZGFzayB8
-IFNkIFJlam9ub3d5IEdkYXNrIFBub2MgfCBWSUkgV3lkemlhIEdvc3BvZGFyY3p5IEtyYWpvd2Vn
-byBSZWplc3RydSBTZG93ZWdvIC0gS1JTIDEwMTg4MiB8IE5JUCA5NTctMDctNTItMzE2IHwgS2Fw
-aXRhIHpha2Fkb3d5IDIwMC4wMDAgUExOLgo+IFRhIHdpYWRvbW8gd3JheiB6IHphY3puaWthbWkg
-amVzdCBwcnplem5hY3pvbmEgZGxhIG9rcmVsb25lZ28gYWRyZXNhdGEgaSBtb2UgemF3aWVyYSBp
-bmZvcm1hY2plIHBvdWZuZS4gVyByYXppZSBwcnp5cGFka293ZWdvIG90cnp5bWFuaWEgdGVqIHdp
-YWRvbW9jaSwgcHJvc2lteSBvIHBvd2lhZG9taWVuaWUgbmFkYXdjeSBvcmF6IHRyd2FlIGplaiB1
-c3VuaWNpZTsgamFraWVrb2x3aWVrIHByemVnbGRhbmllIGx1YiByb3pwb3dzemVjaG5pYW5pZSBq
-ZXN0IHphYnJvbmlvbmUuCj4gVGhpcyBlLW1haWwgYW5kIGFueSBhdHRhY2htZW50cyBtYXkgY29u
-dGFpbiBjb25maWRlbnRpYWwgbWF0ZXJpYWwgZm9yIHRoZSBzb2xlIHVzZSBvZiB0aGUgaW50ZW5k
-ZWQgcmVjaXBpZW50KHMpLiBJZiB5b3UgYXJlIG5vdCB0aGUgaW50ZW5kZWQgcmVjaXBpZW50LCBw
-bGVhc2UgY29udGFjdCB0aGUgc2VuZGVyIGFuZCBkZWxldGUgYWxsIGNvcGllczsgYW55IHJldmll
-dyBvciBkaXN0cmlidXRpb24gYnkgb3RoZXJzIGlzIHN0cmljdGx5IHByb2hpYml0ZWQuCj4KX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQt
-bGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3Rz
-Lm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Wed, Dec 23, 2020 at 12:36:56PM -0800, Andre Guedes wrote:
+> Hi all,
+> 
+> This is the second version of this series which adds AF_XDP zero-copy support
+> to igc driver.
+> 
+> The main changes from v1 are:
+> 
+>     - Fixed commit messages to describe changes in imperative mood, e.g. "make
+>       xyzzy do frotz" instead of "[This patch] makes xyzzy do frotz".
+>     - Added queue index to error message in igc_setup_rx_resources().
+>     - Improved comment about xsk frame size check in igc_xdp_enable_pool(). 
+>     - Fixed typos.
+> 
+> v1 is here:
+> 
+>     https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201217202415.77891-1-andre.guedes@intel.com/
+
+For the series:
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+
+> 
+> Best,
+> Andre
+> 
+> Andre Guedes (9):
+>   igc: Move igc_xdp_is_enabled()
+>   igc: Refactor igc_xdp_run_prog()
+>   igc: Refactor igc_clean_rx_ring()
+>   igc: Refactor XDP rxq info registration
+>   igc: Introduce tx/rx stats helpers
+>   igc: Introduce igc_unmap_tx_buffer() helper
+>   igc: Replace IGC_TX_FLAGS_XDP flag by an enum
+>   igc: Enable RX via AF_XDP zero-copy
+>   igc: Enable TX via AF_XDP zero-copy
+> 
+>  drivers/net/ethernet/intel/igc/igc.h      |  33 +-
+>  drivers/net/ethernet/intel/igc/igc_base.h |   2 +
+>  drivers/net/ethernet/intel/igc/igc_main.c | 651 ++++++++++++++++++----
+>  drivers/net/ethernet/intel/igc/igc_xdp.c  | 107 +++-
+>  drivers/net/ethernet/intel/igc/igc_xdp.h  |   8 +-
+>  5 files changed, 673 insertions(+), 128 deletions(-)
+> 
+> -- 
+> 2.29.2
+> 
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
