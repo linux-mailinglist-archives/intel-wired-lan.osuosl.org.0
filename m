@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06FC62EAAEE
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 13:32:10 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 285D72EB12D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 18:17:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9EBAC85EEF;
-	Tue,  5 Jan 2021 12:32:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C4D97227DB;
+	Tue,  5 Jan 2021 17:17:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UpwCrvGd8lI8; Tue,  5 Jan 2021 12:32:08 +0000 (UTC)
+	with ESMTP id Z9c3+3olTdAK; Tue,  5 Jan 2021 17:17:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DC5DE85F0A;
-	Tue,  5 Jan 2021 12:32:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A8BA12284F;
+	Tue,  5 Jan 2021 17:17:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BC1D61BF47F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2691E1BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:17:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B564F8608F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2006C22802
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:17:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h5YpMjfJ76NF for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Jan 2021 12:32:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C2C7B86038
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:05 +0000 (UTC)
-IronPort-SDR: rVckalni/+R3g6onL9K+HYOHGqV9S3f4hqaC2OkSBiLZH50uf3++VHkjR7JQDrk5xDG1Q05YlU
- N7A6h61ChF1A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9854"; a="241180362"
-X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="241180362"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2021 04:32:03 -0800
-IronPort-SDR: sw65j5mGrLvKiIDqDaaiOTIjx0OLTNtfjsDm8hMO93ScKIzGZSAeAd0CXbIBa+TPsmk7arjcTH
- QAgia+HiYg6A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="462286457"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga001.fm.intel.com with ESMTP; 05 Jan 2021 04:31:57 -0800
-Date: Tue, 5 Jan 2021 13:23:14 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Message-ID: <20210105122314.GC13327@ranger.igk.intel.com>
-References: <20210104150002.10916-1-mateusz.palczewski@intel.com>
+ with ESMTP id zEUXcaa5B4Br for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Jan 2021 17:17:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by silver.osuosl.org (Postfix) with ESMTPS id 671C1227AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 17:17:03 +0000 (UTC)
+Received: from [192.168.0.6] (ip5f5aea6a.dynamic.kabel-deutschland.de
+ [95.90.234.106])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id D261E20647DA3;
+ Tue,  5 Jan 2021 18:16:59 +0100 (CET)
+To: Jakub Kicinski <kuba@kernel.org>, Greg KH <gregkh@linuxfoundation.org>
+References: <20201102231307.13021-1-pmenzel@molgen.mpg.de>
+ <20201102231307.13021-3-pmenzel@molgen.mpg.de>
+ <20201102161943.343586b1@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+ <36ce1f2e-843c-4995-8bb2-2c2676f01b9d@molgen.mpg.de>
+ <20201103103940.2ed27fa2@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <c1ad26c6-a4a6-d161-1b18-476b380f4e58@molgen.mpg.de>
+Date: Tue, 5 Jan 2021 18:16:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210104150002.10916-1-mateusz.palczewski@intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Added Asym_Pause to
- supported link modes
+In-Reply-To: <20201103103940.2ed27fa2@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ethernet: igb: e1000_phy: Check
+ for ops.force_speed_duplex existence
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,59 +65,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dawid Lukwinski <dawid.lukwinski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Jeffrey Townsend <jeffrey.townsend@bigswitch.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ John W Linville <linville@tuxdriver.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jan 04, 2021 at 03:00:02PM +0000, Mateusz Palczewski wrote:
-> Add Asym_Pause to supported link modes (it is supported by HW).
-> Lack of Asym_Pause in supported modes can cause several problems,
-> i.e. it won't be possible to turn the autonegotiation on
-> with asymmetric pause settings (i.e. Tx on, Rx off).
-> 
-
-If it's a fix, it needs a fixes tag.
-Also, use imperative mood in your subject line.
-
-> 
-> Signed-off-by: Dawid Lukwinski <dawid.lukwinski@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index 2b6d887..45f5dc2 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -1101,6 +1101,7 @@ static int i40e_get_link_ksettings(struct net_device *netdev,
->  
->  	/* Set flow control settings */
->  	ethtool_link_ksettings_add_link_mode(ks, supported, Pause);
-> +	ethtool_link_ksettings_add_link_mode(ks, supported, Asym_Pause);
->  
->  	switch (hw->fc.requested_mode) {
->  	case I40E_FC_FULL:
-> -- 
-> 2.17.1
-> 
-> ---------------------------------------------------------------------
-> Intel Technology Poland sp. z o.o.
-> ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-> Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-> This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
->  
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKYWt1YiwgZGVhciBHcmVnLAoKCkFtIDAzLjExLjIwIHVtIDE5OjM5IHNjaHJpZWIgSmFr
+dWIgS2ljaW5za2k6Cj4gT24gVHVlLCAzIE5vdiAyMDIwIDA4OjM1OjA5ICswMTAwIFBhdWwgTWVu
+emVsIHdyb3RlOgo+PiBBY2NvcmRpbmcgdG8gKkRldmVsb3BlcidzIENlcnRpZmljYXRlIG9mIE9y
+aWdpbiAxLjEqIFszXSwgaXTigJlzIG15Cj4+IHVuZGVyc3RhbmRpbmcsIHRoYXQgaXQgaXMgKm5v
+dCogcmVxdWlyZWQuIFRoZSBpdGVtcyAoYSksIChiKSwgYW5kIChjKQo+PiBhcmUgY29ubmVjdGVk
+IGJ5IGFuICpvciouCj4+Cj4+PiAgICAgICAgICAoYikgVGhlIGNvbnRyaWJ1dGlvbiBpcyBiYXNl
+ZCB1cG9uIHByZXZpb3VzIHdvcmsgdGhhdCwgdG8gdGhlIGJlc3QKPj4+ICAgICAgICAgICAgICBv
+ZiBteSBrbm93bGVkZ2UsIGlzIGNvdmVyZWQgdW5kZXIgYW4gYXBwcm9wcmlhdGUgb3BlbiBzb3Vy
+Y2UKPj4+ICAgICAgICAgICAgICBsaWNlbnNlIGFuZCBJIGhhdmUgdGhlIHJpZ2h0IHVuZGVyIHRo
+YXQgbGljZW5zZSB0byBzdWJtaXQgdGhhdAo+Pj4gICAgICAgICAgICAgIHdvcmsgd2l0aCBtb2Rp
+ZmljYXRpb25zLCB3aGV0aGVyIGNyZWF0ZWQgaW4gd2hvbGUgb3IgaW4gcGFydAo+Pj4gICAgICAg
+ICAgICAgIGJ5IG1lLCB1bmRlciB0aGUgc2FtZSBvcGVuIHNvdXJjZSBsaWNlbnNlICh1bmxlc3Mg
+SSBhbQo+Pj4gICAgICAgICAgICAgIHBlcm1pdHRlZCB0byBzdWJtaXQgdW5kZXIgYSBkaWZmZXJl
+bnQgbGljZW5zZSksIGFzIGluZGljYXRlZAo+Pj4gICAgICAgICAgICAgIGluIHRoZSBmaWxlOyBv
+cgo+IAo+IEFjaywgYnV0IHRoZW4geW91IG5lZWQgdG8gcHV0IHlvdXJzZWxmIGFzIHRoZSBhdXRo
+b3IsIGJlY2F1c2UgaXQncwo+IHlvdSBjZXJ0aWZ5aW5nIHRoYXQgdGhlIGNvZGUgZmFsbHMgdW5k
+ZXIgKGIpLgo+IAo+IEF0IGxlYXN0IHRoYXQncyBteSB1bmRlcnN0YW5kaW5nLgoKR3JlZywgY2Fu
+IHlvdSBwbGVhc2UgY2xhcmlmeSwgaWYgaXTigJlzIGZpbmUsIGlmIEkgdXBzdHJlYW0gYSBwYXRj
+aCAKYXV0aG9yZWQgYnkgc29tZWJvZHkgZWxzZSBhbmQgZGlzdHJpYnV0ZWQgdW5kZXIgdGhlIEdQ
+THYyPyBJIHB1dCB0aGVtIGFzIAp0aGUgYXV0aG9yIGFuZCBzaWduZWQgaXQgb2ZmLgoKKEluIHRo
+aXMgY2FzZSB0aGUgY2hhbmdlLCBhZGRpbmcgYW4gaWYgY29uZGl0aW9uLCBpcyBhbHNvIHRyaXZp
+YWwuKQoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
+ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC13aXJlZC1sYW4K
