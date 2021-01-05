@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B61132EAAEC
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 13:30:50 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 72E5B868DA;
-	Tue,  5 Jan 2021 12:30:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c6Xr9j0t-iE0; Tue,  5 Jan 2021 12:30:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 550CF868B8;
-	Tue,  5 Jan 2021 12:30:47 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5B76F1BF47F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:30:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06FC62EAAEE
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jan 2021 13:32:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 56B5685EBB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:30:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9EBAC85EEF;
+	Tue,  5 Jan 2021 12:32:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UpwCrvGd8lI8; Tue,  5 Jan 2021 12:32:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DC5DE85F0A;
+	Tue,  5 Jan 2021 12:32:07 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BC1D61BF47F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id B564F8608F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:06 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qDIti-yXB9Kk for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Jan 2021 12:30:44 +0000 (UTC)
+ with ESMTP id h5YpMjfJ76NF for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Jan 2021 12:32:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9648685E7C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:30:44 +0000 (UTC)
-IronPort-SDR: pEMyrws4zZrotoZJknThWXGsnWCuPF81H9XQmAGgV3qMZf0hkqntISYljlHdm2biyn7FfB8G3R
- pXlJhAykXp2Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9854"; a="177250304"
-X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="177250304"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2021 04:30:43 -0800
-IronPort-SDR: hIpDz3Nu+7aoUj84TXDPReVyppQdKGdtMIAA862s5t11hnJYCg/kngfSUx6rgJUPityYlvhCFE
- 2TpVZwwXd1qA==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C2C7B86038
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Jan 2021 12:32:05 +0000 (UTC)
+IronPort-SDR: rVckalni/+R3g6onL9K+HYOHGqV9S3f4hqaC2OkSBiLZH50uf3++VHkjR7JQDrk5xDG1Q05YlU
+ N7A6h61ChF1A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9854"; a="241180362"
+X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="241180362"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jan 2021 04:32:03 -0800
+IronPort-SDR: sw65j5mGrLvKiIDqDaaiOTIjx0OLTNtfjsDm8hMO93ScKIzGZSAeAd0CXbIBa+TPsmk7arjcTH
+ QAgia+HiYg6A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="350359967"
+X-IronPort-AV: E=Sophos;i="5.78,476,1599548400"; d="scan'208";a="462286457"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga008.fm.intel.com with ESMTP; 05 Jan 2021 04:30:42 -0800
-Date: Tue, 5 Jan 2021 13:21:59 +0100
+ by fmsmga001.fm.intel.com with ESMTP; 05 Jan 2021 04:31:57 -0800
+Date: Tue, 5 Jan 2021 13:23:14 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Message-ID: <20210105122159.GB13327@ranger.igk.intel.com>
-References: <20210104143628.5845-1-mateusz.palczewski@intel.com>
+Message-ID: <20210105122314.GC13327@ranger.igk.intel.com>
+References: <20210104150002.10916-1-mateusz.palczewski@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210104143628.5845-1-mateusz.palczewski@intel.com>
+In-Reply-To: <20210104150002.10916-1-mateusz.palczewski@intel.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Add support for 5Gbps
- cards
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Added Asym_Pause to
+ supported link modes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,85 +67,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+Cc: Dawid Lukwinski <dawid.lukwinski@intel.com>,
  intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jan 04, 2021 at 02:36:28PM +0000, Mateusz Palczewski wrote:
-> From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+On Mon, Jan 04, 2021 at 03:00:02PM +0000, Mateusz Palczewski wrote:
+> Add Asym_Pause to supported link modes (it is supported by HW).
+> Lack of Asym_Pause in supported modes can cause several problems,
+> i.e. it won't be possible to turn the autonegotiation on
+> with asymmetric pause settings (i.e. Tx on, Rx off).
 > 
-> Make possible for the i40e driver to bind to the new
-> V710 for 5GBASE-T cards.
 
-Why 'net' is your target tree? it's not a fix.
+If it's a fix, it needs a fixes tag.
+Also, use imperative mood in your subject line.
 
 > 
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Dawid Lukwinski <dawid.lukwinski@intel.com>
+> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Reviewed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_common.c | 3 +++
->  drivers/net/ethernet/intel/i40e/i40e_devids.h | 4 +++-
->  drivers/net/ethernet/intel/i40e/i40e_main.c   | 1 +
->  3 files changed, 7 insertions(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-> index 45b90eb..05f1dd7 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-> @@ -27,6 +27,7 @@ i40e_status i40e_set_mac_type(struct i40e_hw *hw)
->  		case I40E_DEV_ID_QSFP_A:
->  		case I40E_DEV_ID_QSFP_B:
->  		case I40E_DEV_ID_QSFP_C:
-> +		case I40E_DEV_ID_5G_BASE_T_BC:
->  		case I40E_DEV_ID_10G_BASE_T:
->  		case I40E_DEV_ID_10G_BASE_T4:
->  		case I40E_DEV_ID_10G_BASE_T_BC:
-> @@ -4910,6 +4911,7 @@ i40e_status i40e_write_phy_register(struct i40e_hw *hw,
->  		status = i40e_write_phy_register_clause22(hw, reg, phy_addr,
->  							  value);
->  		break;
-> +	case I40E_DEV_ID_5G_BASE_T_BC:
->  	case I40E_DEV_ID_10G_BASE_T:
->  	case I40E_DEV_ID_10G_BASE_T4:
->  	case I40E_DEV_ID_10G_BASE_T_BC:
-> @@ -4947,6 +4949,7 @@ i40e_status i40e_read_phy_register(struct i40e_hw *hw,
->  		status = i40e_read_phy_register_clause22(hw, reg, phy_addr,
->  							 value);
->  		break;
-> +	case I40E_DEV_ID_5G_BASE_T_BC:
->  	case I40E_DEV_ID_10G_BASE_T:
->  	case I40E_DEV_ID_10G_BASE_T4:
->  	case I40E_DEV_ID_10G_BASE_T_BC:
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_devids.h b/drivers/net/ethernet/intel/i40e/i40e_devids.h
-> index bf15a86..acd39ab 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_devids.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_devids.h
-> @@ -23,8 +23,10 @@
->  #define I40E_DEV_ID_10G_BASE_T_BC	0x15FF
->  #define I40E_DEV_ID_10G_B		0x104F
->  #define I40E_DEV_ID_10G_SFP		0x104E
-> +#define I40E_DEV_ID_5G_BASE_T_BC	0x101F
->  #define I40E_IS_X710TL_DEVICE(d) \
-> -	((d) == I40E_DEV_ID_10G_BASE_T_BC)
-> +	(((d) == I40E_DEV_ID_10G_BASE_T_BC) || \
-> +	((d) == I40E_DEV_ID_5G_BASE_T_BC))
->  #define I40E_DEV_ID_KX_X722		0x37CE
->  #define I40E_DEV_ID_QSFP_X722		0x37CF
->  #define I40E_DEV_ID_SFP_X722		0x37D0
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 8c3e753..692c8bc 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -71,6 +71,7 @@ static const struct pci_device_id i40e_pci_tbl[] = {
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_QSFP_A), 0},
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_QSFP_B), 0},
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_QSFP_C), 0},
-> +	{PCI_VDEVICE(INTEL, I40E_DEV_ID_5G_BASE_T_BC), 0},
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_BASE_T), 0},
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_BASE_T4), 0},
->  	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_BASE_T_BC), 0},
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> index 2b6d887..45f5dc2 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> @@ -1101,6 +1101,7 @@ static int i40e_get_link_ksettings(struct net_device *netdev,
+>  
+>  	/* Set flow control settings */
+>  	ethtool_link_ksettings_add_link_mode(ks, supported, Pause);
+> +	ethtool_link_ksettings_add_link_mode(ks, supported, Asym_Pause);
+>  
+>  	switch (hw->fc.requested_mode) {
+>  	case I40E_FC_FULL:
 > -- 
 > 2.17.1
 > 
