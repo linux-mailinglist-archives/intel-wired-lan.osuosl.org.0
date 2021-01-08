@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D89032EFB8C
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Jan 2021 00:07:28 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5F1052E167;
-	Fri,  8 Jan 2021 23:07:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wQUDHMTdJsoF; Fri,  8 Jan 2021 23:07:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1410B2E165;
-	Fri,  8 Jan 2021 23:07:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 441011BF84C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:07:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1BDE92EFB8E
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Jan 2021 00:08:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3FB5C86E91
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:07:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1BD7986E75;
+	Fri,  8 Jan 2021 23:08:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l5o2DrWDeGp7; Fri,  8 Jan 2021 23:08:31 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 93E6A86E9F;
+	Fri,  8 Jan 2021 23:08:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6DD9A1BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 67F6187624
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aPH_vmdjUgeM for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Jan 2021 23:07:23 +0000 (UTC)
+ with ESMTP id lKsiYMkMU5QL for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jan 2021 23:08:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4E9AE86E75
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:07:23 +0000 (UTC)
-IronPort-SDR: Ug0vlluDDA4vaw5wDR5ZkjucHyI8mtBMr4qpnUrNReMBpSRsOWyKXEpfMgqhzwcK68UFCUF6O6
- LGl+G/C6qjMQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="177813981"
-X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="177813981"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2021 15:07:22 -0800
-IronPort-SDR: G/3eQ33I5CKCILRM3yTgnhoAu5vjSVRH5QXuo7DV9xaOKCQaZZY3dmE5+kVNZ0IEc8R/7xGN5A
- q6W8dANlsOWQ==
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A8CBE87620
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:28 +0000 (UTC)
+IronPort-SDR: 1prGyZUZe8ppNb53c/2wV+rwkt8fkW2CRkCK01Y7bHRuCTFto5ZmxYWgQBoROijo3lxU5SgqaM
+ nute6hAa9a4g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="175088577"
+X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="175088577"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2021 15:08:23 -0800
+IronPort-SDR: B3NJpaSBi9nY96Dz4r3AtKz+PX62i7ZyenkOhL4jq2ISTOgsWNQbKUQRApLDifShzUtpxyiO8W
+ dyLMHmZT4g4g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="351015183"
+X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="396449000"
 Received: from lkp-server01.sh.intel.com (HELO 412602b27703) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 08 Jan 2021 15:07:21 -0800
+ by fmsmga004.fm.intel.com with ESMTP; 08 Jan 2021 15:08:22 -0800
 Received: from kbuild by 412602b27703 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1ky0qm-0000jB-Nr; Fri, 08 Jan 2021 23:07:20 +0000
-Date: Sat, 09 Jan 2021 07:06:25 +0800
+ id 1ky0rm-0000jh-9W; Fri, 08 Jan 2021 23:08:22 +0000
+Date: Sat, 09 Jan 2021 07:07:33 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5ff8e571.B5NQgvcHGSe8AZoT%lkp@intel.com>
+Message-ID: <5ff8e5b5.fCy5oYVdCyZD3/+K%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
- 0565ff56cd0543bacb5d3ec2ee0f979813ea1841
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ c88f9a09f666bb7fec4da10fa91ad2cdb02d14cf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,12 +72,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  master
-branch HEAD: 0565ff56cd0543bacb5d3ec2ee0f979813ea1841  Merge https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  dev-queue
+branch HEAD: c88f9a09f666bb7fec4da10fa91ad2cdb02d14cf  i40e: Fix setting PF MAC filters when changing MAC address
 
-elapsed time: 1133m
+elapsed time: 1134m
 
-configs tested: 145
+configs tested: 150
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -100,6 +100,12 @@ mips                        qi_lb60_defconfig
 powerpc                     sbc8548_defconfig
 openrisc                 simple_smp_defconfig
 sh                           se7780_defconfig
+mips                           ip28_defconfig
+riscv                            alldefconfig
+mips                        jmr3927_defconfig
+arm                           spitz_defconfig
+arm                        magician_defconfig
+sh                            migor_defconfig
 arm                       imx_v4_v5_defconfig
 sh                         ap325rxa_defconfig
 m68k                         amcore_defconfig
@@ -109,7 +115,6 @@ arm                         socfpga_defconfig
 powerpc                       ebony_defconfig
 mips                         bigsur_defconfig
 arm                        realview_defconfig
-sh                            migor_defconfig
 arm                           h3600_defconfig
 m68k                          atari_defconfig
 sparc                       sparc64_defconfig
@@ -176,10 +181,10 @@ xtensa                           allyesconfig
 h8300                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
+parisc                              defconfig
 s390                             allyesconfig
 parisc                           allyesconfig
 s390                                defconfig
-parisc                              defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
 c6x                              allyesconfig
