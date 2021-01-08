@@ -2,84 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 382DB2EF861
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 20:50:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C91122EF92C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 21:27:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C564E87468;
-	Fri,  8 Jan 2021 19:50:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5AB4D87371;
+	Fri,  8 Jan 2021 20:27:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xeol5U2Nz+U2; Fri,  8 Jan 2021 19:50:35 +0000 (UTC)
+	with ESMTP id xuEIWGl1Cin5; Fri,  8 Jan 2021 20:27:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D01C887460;
-	Fri,  8 Jan 2021 19:50:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 736B18738B;
+	Fri,  8 Jan 2021 20:27:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 725E81BF2A5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 19:50:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 79BC01BF37C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 20:27:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6D72F8745D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 19:50:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6C0CC87387
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 20:27:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k3XeFtCeIgLi for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Jan 2021 19:50:32 +0000 (UTC)
-X-Greylist: delayed 00:22:01 by SQLgrey-1.7.6
-Received: from mail-oi1-f171.google.com (mail-oi1-f171.google.com
- [209.85.167.171])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9CCA78745C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 19:50:32 +0000 (UTC)
-Received: by mail-oi1-f171.google.com with SMTP id l207so12642279oib.4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 08 Jan 2021 11:50:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=dBC1YMdtvT3Z9+9jU03+XCfqPLlCOumqVm97SHmv0dk=;
- b=cYAu0m7MXxQty+Qy1nnRae1TJSyA0AlBMPng2O4QVqd6HnoWiX37FcJKIFG+JJcTuG
- b0fKYHfLsM/1TCMLnNfi6Fq7Vq3P05FwYYmdZZ3VtxYn4IlxQ84ddv0JhAlGiaBIbkDu
- 9hx9ywJiCrjFRC5lrnaWUdzdqNV821dNkuYmA5ZxvEhBaJlP6rf9uYWsbZ2FxjR6hNYE
- qoTSUD5y1v4uB37cZMaM5h5X/5xIItVTb8D2AcUT4/s2ETxtx6VflZvjPVh3FB1fqkms
- N0iI0nKZMRWG5xJQbmDmJD8eyekLUXYo1LcprsihIJ7yl+WQkC3OkqRNwX7TU6gKJdJe
- 3YNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=dBC1YMdtvT3Z9+9jU03+XCfqPLlCOumqVm97SHmv0dk=;
- b=aPn5lVnoZuMtJvU1TTz8VOlg+Qlljh/bJpj/nI0K4MPAkcqhUtAcBvGhtbqHTFY1Qj
- vmiK/3LGDjk+JKg0BDV5Pjad2VX5EYa3Z/+vINRDq7k+bTC2I9zBVi09H9VxyKjOFIxV
- Pzh/VOB8Jf+077tYfAnEqwWAB3O7r+BfA0rP5m4xSUT3I+VDWz/5hyeE883/mb7g2TIU
- WCfJPa2AHZq3ILP6JmQ5ycRQY4KqpS7L5blrYZc3JW1/pPM+M+lImaH8ck64wvnhib/z
- dmDqmuG0zN+aGLhuoyzNNiYgoI0czh4CM4SumW2q67EvvbZOIrOK3/aDBvK1h6ucYh0I
- cppw==
-X-Gm-Message-State: AOAM532GfpKFFDNXgELTdY5Oosr5qFyu5/xqpp+t4G2JxWFX2BVKgec5
- EkiCPSFc1+SPELz1Wnzq8zvrrI3SZdX5KA==
-X-Google-Smtp-Source: ABdhPJzvPRqg2mccrMstcg71t5qx7TlwTTmeXopdlTfvbENK3Vw9oqBtQM1y4iovJECygjC+XRnAlA==
-X-Received: by 2002:a17:90a:b395:: with SMTP id
- e21mr5260844pjr.197.1610133700858; 
- Fri, 08 Jan 2021 11:21:40 -0800 (PST)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id j20sm9379186pfd.106.2021.01.08.11.21.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Jan 2021 11:21:40 -0800 (PST)
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+ with ESMTP id R2T3NSXQdPmV for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jan 2021 20:27:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B759F87371
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 20:27:02 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5E5FD2399C;
+ Fri,  8 Jan 2021 20:27:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1610137622;
+ bh=uKMf/YCjz4GqBLQ8uH3F7hRE4xdACHWcOKV7E2KR6rY=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=dKsTN3UP4YZ8SoW6w2vdMEJYgnLRQemcYBHXJcsSXKaGU2t5k1SzZBBNti6cgaKhx
+ iPZc5RaymVwhHNU7yNdJJ2LK+VLL279DNY5P4e0SbUzsWKktvPKaZ1fQb1PC3GnGgm
+ OXFizs8ZK0k8/UxMBFfs9Ikb35+oa9nIYPWWenh7ekZoowIZ+VcHGxiBJ2OxgksQKH
+ I+nX/Lme6FMg8C6QHoaEzEH7mE47mrqitE29wzHNp1YovCeY+EgOgsTOp/OZRjPSOd
+ LXNOLCt+TC5jDh+C4uhoZBJ6LF86GyNC2S2Tg4eqxW3NQnKQgG7yPXsm8vxqAf8iF0
+ o5Lt2XpBmZIhQ==
+Message-ID: <0e06ff3234b78b5bde6bf77d192a42c3f8ab5319.camel@kernel.org>
+From: Saeed Mahameed <saeed@kernel.org>
+To: Shannon Nelson <snelson@pensando.io>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>
+Date: Fri, 08 Jan 2021 12:26:58 -0800
+In-Reply-To: <c11bb25a-f73d-3ae9-b1fd-7eb96bc79cc7@pensando.io>
 References: <20210106215539.2103688-1-jesse.brandeburg@intel.com>
  <20210106215539.2103688-2-jesse.brandeburg@intel.com>
  <1e4ee1cf-c2b7-8ba3-7cb1-5c5cb3ff1e84@pensando.io>
  <20210108102630.00004202@intel.com>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <c11bb25a-f73d-3ae9-b1fd-7eb96bc79cc7@pensando.io>
-Date: Fri, 8 Jan 2021 11:21:38 -0800
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.6.0
+ <c11bb25a-f73d-3ae9-b1fd-7eb96bc79cc7@pensando.io>
+User-Agent: Evolution 3.36.5 (3.36.5-2.fc32) 
 MIME-Version: 1.0
-In-Reply-To: <20210108102630.00004202@intel.com>
-Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] net: core: count
  drops from GRO
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -96,43 +72,81 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
  intel-wired-lan@lists.osuosl.org, Jamal Hadi Salim <jhs@mojatatu.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMS84LzIxIDEwOjI2IEFNLCBKZXNzZSBCcmFuZGVidXJnIHdyb3RlOgo+IFNoYW5ub24gTmVs
-c29uIHdyb3RlOgo+Cj4+IE9uIDEvNi8yMSAxOjU1IFBNLCBKZXNzZSBCcmFuZGVidXJnIHdyb3Rl
-Ogo+Pj4gV2hlbiBkcml2ZXJzIGNhbGwgdGhlIHZhcmlvdXMgcmVjZWl2ZSB1cGNhbGxzIHRvIHJl
-Y2VpdmUgYW4gc2tiCj4+PiB0byB0aGUgc3RhY2ssIHNvbWV0aW1lcyB0aGF0IHN0YWNrIGNhbiBk
-cm9wIHRoZSBwYWNrZXQuIFRoZSBnb29kCj4+PiBuZXdzIGlzIHRoYXQgdGhlIHJldHVybiBjb2Rl
-IGlzIGdpdmVuIHRvIGFsbCB0aGUgZHJpdmVycyBvZgo+Pj4gTkVUX1JYX0RST1Agb3IgR1JPX0RS
-T1AuIFRoZSBiYWQgbmV3cyBpcyB0aGF0IG5vIGRyaXZlcnMgZXhjZXB0Cj4+PiB0aGUgb25lICJp
-Y2UiIGRyaXZlciB0aGF0IEkgY2hhbmdlZCwgY2hlY2sgdGhlIHN0YXQgYW5kIGluY3JlbWVudAo+
-PiBJZiB0aGUgc3RhY2sgaXMgZHJvcHBpbmcgdGhlIHBhY2tldCwgaXNuJ3QgaXQgdXAgdG8gdGhl
-IHN0YWNrIHRvIHRyYWNrCj4+IHRoYXQsIHBlcmhhcHMgd2l0aCBzb21ldGhpbmcgdGhhdCBzaG93
-cyB1cCBpbiBuZXRzdGF0IC1zP8KgIFdlIGRvbid0Cj4+IHJlYWxseSB3YW50IHRvIG1ha2UgdGhl
-IGRyaXZlciByZXNwb25zaWJsZSBmb3IgYW55IGRyb3BzIHRoYXQgaGFwcGVuCj4+IGFib3ZlIGl0
-cyBoZWFkLCBkbyB3ZT8KPiBJIHRvdGFsbHkgYWdyZWUhCj4KPiBJbiBwYXRjaCAyLzIgSSByZXZl
-cnQgdGhlIGRyaXZlci1zcGVjaWZpYyBjaGFuZ2VzIEkgaGFkIG1hZGUgaW4gYW4KPiBlYXJsaWVy
-IHBhdGNoLCBhbmQgdGhpcyBwYXRjaCAqd2FzKiBteSBlZmZvcnQgdG8gbWFrZSB0aGUgc3RhY2sg
-c2hvdyB0aGUKPiBkcm9wcy4KPgo+IE1heWJlIEkgd2Fzbid0IGNsZWFyLiBJJ20gc2VlaW5nIHBh
-Y2tldHMgZGlzYXBwZWFyIGR1cmluZyBUQ1AKPiB3b3JrbG9hZHMsIGFuZCB0aGlzIEdST19EUk9Q
-IGNvZGUgd2FzIHRoZSBzb3VyY2Ugb2YgdGhlIGRyb3BzIChJIHNlZSBpdAo+IHJldHVybmluZyBp
-bmZyZXF1ZW50bHkgYnV0IHJlZ3VsYXJseSkKPgo+IFRoZSBkcml2ZXIgcHJvY2Vzc2VzIHRoZSBw
-YWNrZXQgYnV0IHRoZSBzdGFjayBuZXZlciBzZWVzIGl0LCBhbmQgdGhlcmUKPiB3ZXJlIG5vIGRy
-b3AgY291bnRlcnMgYW55d2hlcmUgdHJhY2tpbmcgaXQuCj4KCk15IHBvaW50IGlzIHRoYXQgdGhl
-IHBhdGNoIGluY3JlbWVudHMgYSBuZXRkZXYgY291bnRlciwgd2hpY2ggdG8gbXkgbWluZCAKaW1t
-ZWRpYXRlbHkgaW1wbGljYXRlcyB0aGUgZHJpdmVyIGFuZCBoYXJkd2FyZSwgcmF0aGVyIHRoYW4g
-dGhlIHN0YWNrLsKgIApBcyBhIGRyaXZlciBtYWludGFpbmVyLCBJIGRvbid0IHdhbnQgdG8gYmUg
-Y2hhc2luZyBkcml2ZXIgcGFja2V0IGRyb3AgCnJlcG9ydHMgdGhhdCBhcmUgYSBzdGFjayBwcm9i
-bGVtLsKgIEknZCByYXRoZXIgc2VlIGEgbmV3IGNvdW50ZXIgaW4gCm5ldHN0YXQgLXMgdGhhdCBy
-ZWZsZWN0cyB0aGUgc3RhY2sgZGVjaXNpb24gYW5kIGNhbiBiZXR0ZXIgaW1wbHkgd2hhdCAKd2Vu
-dCB3cm9uZy7CoCBJIGRvbid0IGhhdmUgYSBnb29kIHN1Z2dlc3Rpb24gZm9yIGEgY291bnRlciBu
-YW1lIGF0IHRoZSAKbW9tZW50LgoKSSBndWVzcyBwYXJ0IG9mIHRoZSBpc3N1ZSBpcyB0aGF0IHRo
-aXMgaXMgcmlnaHQgb24gdGhlIGJvdW5kYXJ5IG9mIApkcml2ZXItc3RhY2suwqAgQnV0IGlmIHdl
-IGZvbGxvdyBFcmljJ3Mgc3VnZ2VzdGlvbnMsIG1heWJlIHRoZSBwcm9ibGVtIAptYWdpY2FsbHkg
-Z29lcyBhd2F5IDotKSAuCgpzbG4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFu
-QG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50
-ZWwtd2lyZWQtbGFuCg==
+On Fri, 2021-01-08 at 11:21 -0800, Shannon Nelson wrote:
+> On 1/8/21 10:26 AM, Jesse Brandeburg wrote:
+> > Shannon Nelson wrote:
+> > 
+> > > On 1/6/21 1:55 PM, Jesse Brandeburg wrote:
+> > > > When drivers call the various receive upcalls to receive an skb
+> > > > to the stack, sometimes that stack can drop the packet. The
+> > > > good
+> > > > news is that the return code is given to all the drivers of
+> > > > NET_RX_DROP or GRO_DROP. The bad news is that no drivers except
+> > > > the one "ice" driver that I changed, check the stat and
+> > > > increment
+> > > If the stack is dropping the packet, isn't it up to the stack to
+> > > track
+> > > that, perhaps with something that shows up in netstat -s?  We
+> > > don't
+> > > really want to make the driver responsible for any drops that
+> > > happen
+> > > above its head, do we?
+> > I totally agree!
+> > 
+> > In patch 2/2 I revert the driver-specific changes I had made in an
+> > earlier patch, and this patch *was* my effort to make the stack
+> > show the
+> > drops.
+> > 
+> > Maybe I wasn't clear. I'm seeing packets disappear during TCP
+> > workloads, and this GRO_DROP code was the source of the drops (I
+> > see it
+> > returning infrequently but regularly)
+> > 
+> > The driver processes the packet but the stack never sees it, and
+> > there
+> > were no drop counters anywhere tracking it.
+> > 
+> 
+> My point is that the patch increments a netdev counter, which to my
+> mind 
+> immediately implicates the driver and hardware, rather than the
+> stack.  
+> As a driver maintainer, I don't want to be chasing driver packet
+> drop 
+> reports that are a stack problem.  I'd rather see a new counter in 
+> netstat -s that reflects the stack decision and can better imply
+> what 
+> went wrong.  I don't have a good suggestion for a counter name at
+> the 
+> moment.
+> 
+> I guess part of the issue is that this is right on the boundary of 
+> driver-stack.  But if we follow Eric's suggestions, maybe the
+> problem 
+> magically goes away :-) .
+> 
+> sln
+> 
+
+I think there is still some merit in this patchset even with Eric's
+removal of GRO_DROP from gro_receive(). As Eric explained, it is still
+possible to silently drop for the same reason when drivers
+call napi_get_frags or even alloc_skb() apis, many drivers do not
+account for such packet drops, and maybe it is the right thing to do to
+inline the packet drop accounting into the skb alloc APIs ? the
+question is, is it the job of those APIs to update netdev->stats ?
+
+
+
+
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
