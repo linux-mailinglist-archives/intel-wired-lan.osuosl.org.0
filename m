@@ -1,83 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A6A02EEA8E
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 01:50:56 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 751262EEF8F
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 10:26:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C35EE86CE7;
-	Fri,  8 Jan 2021 00:50:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EC69B87318;
+	Fri,  8 Jan 2021 09:25:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2PLHyNa3V3Uk; Fri,  8 Jan 2021 00:50:52 +0000 (UTC)
+	with ESMTP id 0YIOQ7676+A0; Fri,  8 Jan 2021 09:25:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9BFDF86CF4;
-	Fri,  8 Jan 2021 00:50:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AB87187311;
+	Fri,  8 Jan 2021 09:25:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B9EFE1BF9C8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D814D1BF5A5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 09:25:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B22AC86CA0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D3A3F86BA6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 09:25:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WyZexyUKVxfe for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Jan 2021 00:50:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f180.google.com (mail-pg1-f180.google.com
- [209.85.215.180])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 359FE86CE4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:13 +0000 (UTC)
-Received: by mail-pg1-f180.google.com with SMTP id i5so6550948pgo.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 07 Jan 2021 16:50:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=aV7cj3PKcKgrjSt+F3CvxyD76lss2wpxKzg35jttMAI=;
- b=EOOt6Cjs3cCuAWvRElNB+slmQDg52pnQaK/X+dYj/G7qmVhNvCpqijuWJIX85tvrP8
- m1IiQS2cg55TEwlDHwLmKhGn9uVR0K9qs7FsCYJa39bkFeIOfhmc+7cru+HCTjaivV/R
- wGjnBBPL8mllB+U9ExinWYhJ5CotfykPCpgdHgMo5H1rsbHBRlG0RnEtOEg/9BIXF9mW
- ekvSEHYUAz5wdKQNQdy+QnyJbJML99p3eXgKDd+5H57zANVu8EKwNhbGUPo5GmR/4mAl
- vBka8rTggqp+xhpi2sohgHvgNJH0+nyhnxgdBkTt9susH6sLWlr/fLsTH1QOlmkReB7m
- t7Og==
+ with ESMTP id Ps7xrghKE9mJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jan 2021 09:25:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-il1-f173.google.com (mail-il1-f173.google.com
+ [209.85.166.173])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 31FC286B90
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 09:25:55 +0000 (UTC)
+Received: by mail-il1-f173.google.com with SMTP id n9so9668864ili.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 08 Jan 2021 01:25:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2JJPXlq5r6kmJ9tmwIciSJ/jy5n+AhqM308ZXWIW30M=;
+ b=D47lKCZYjYroRoNzd+16Yh/kEJ0twoiXZMIrSoTTE7Qm6jB+9m/VFALjOZXr9Q7D6r
+ y86/0hLqhmKa9J7RWWLBBxy/+XiiYZVgZlUGZ1g1+plYYrDX/rontDNzOZoRamNBhA09
+ uWKS4em1hjF0W7+1oNtFtrVy93JBUKZTCdfA6ut2RZ+E2MkuliaMFfV23ZHUgDgJU9fy
+ O7h5Xw/AMz8CPyoynxNf2zivMZOF3OEnFa31ZBMZgO3Q2V5Pq09prbgks+i8les+HxWm
+ +smS/cgRgyhZn7ySdeuYe8hCiZv7dkZ3eet35gDjY6abG6OyvT3dYpUvlOPx4EeUVIwY
+ IY5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=aV7cj3PKcKgrjSt+F3CvxyD76lss2wpxKzg35jttMAI=;
- b=EQLqVhlFcQoJI/cKg3dcypWOkz6eJPvsQxjNn64yv2zJiGbitTFuEIOPVk9/WCDmIZ
- M3LLrPRbnpfUawufIRCWVtibpCPExorK6wO5yj4+G+rX5EenjswQlWu4qoqYjIhGgKxX
- +f8skgAAs/J9FvfVyyoGNB9PqEeZAyGPVeMaHC7Vp/kVlVW0l020J8yhuxw/zeOxx6dz
- pe2pH/UfN4JAH+5rEHWcy4EYBqGaaCkrXqBLiccQzHU/mDAif5qo/8SN/eBvP9Gxw/Bi
- Iw9+9liKdIBOMpduZGI10TRmTeStI8T8z+fbbW5L/xxS2WSrs4kaBYMFE7HnL/0D9Vzd
- +u+w==
-X-Gm-Message-State: AOAM531W5cgXZZL6y7yFO0YltGz/8R661v+77U+rAU9cRHpnp0/6Zf0Y
- tk72RvfG8nfqymNyoxyP2x3irw==
-X-Google-Smtp-Source: ABdhPJzbgULcbMqjtezmp4QPNzeiCFrUd4tZIYgSjeGxqkrnx9ia+RBpNxlF1ND0wXz1Vrn8L9vIYQ==
-X-Received: by 2002:a62:1c16:0:b029:1a6:8b06:68e9 with SMTP id
- c22-20020a621c160000b02901a68b0668e9mr1131328pfc.45.1610067012682; 
- Thu, 07 Jan 2021 16:50:12 -0800 (PST)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id i6sm7771634pgc.58.2021.01.07.16.50.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Jan 2021 16:50:12 -0800 (PST)
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2JJPXlq5r6kmJ9tmwIciSJ/jy5n+AhqM308ZXWIW30M=;
+ b=h7Ij1wGfWiPG8GboDiywJpqLUN+jdvIHxuuinE5Z6MUgNV+yrX139ZHAWDrJK60Xug
+ k5yKM2D9cpiddlmExY+3/4getMhWUq/ACIfE8nTTuYSKiN3ovNF+bCheZ1/bPbjKx6Cy
+ cf6xhgkMYQPjvCDY4nAVZYELVcjZuqjXv83q1LLYrMd9cz6HdHlO6RQNadlaBPzpoGFj
+ OzIzQT4fqqxgfINWfNzseQrBmlfTSLWyV3d98xH+vFeUrt7svuoARVDGdCnWLmwgkt0+
+ gQUFqgOnG5ReypY0bTGl0S3lRgm3mOn4d0WaC9oleLgva7fcvUkuPtS4M2KtsXI5OA/k
+ qM0Q==
+X-Gm-Message-State: AOAM533ssNhvWYuDeTzyF214BnShJ7olz3rPDrsKfJ6kP6tAeEmEDmFT
+ OwTOWO5oNTEJoGet6WdeeByqfcj2BkfKTT47jGYkMA==
+X-Google-Smtp-Source: ABdhPJxsPixqtwwnvlmnKvcMNRDE4QV0qctqi+7HWVM2nolb+Qc0fMZnHgYR30aSear8HP9jSUQXJR72pzTqcxt2vfQ=
+X-Received: by 2002:a92:9f59:: with SMTP id u86mr3048560ili.205.1610097954232; 
+ Fri, 08 Jan 2021 01:25:54 -0800 (PST)
+MIME-Version: 1.0
 References: <20210106215539.2103688-1-jesse.brandeburg@intel.com>
  <20210106215539.2103688-2-jesse.brandeburg@intel.com>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <1e4ee1cf-c2b7-8ba3-7cb1-5c5cb3ff1e84@pensando.io>
-Date: Thu, 7 Jan 2021 16:50:10 -0800
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.6.0
-MIME-Version: 1.0
 In-Reply-To: <20210106215539.2103688-2-jesse.brandeburg@intel.com>
-Content-Language: en-US
+From: Eric Dumazet <edumazet@google.com>
+Date: Fri, 8 Jan 2021 10:25:42 +0100
+Message-ID: <CANn89iLcRrmXW_MGjuMMnNxWS+kaEnY=Y79hCPuiwiDd_G9=EA@mail.gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] net: core: count
  drops from GRO
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -92,45 +81,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+Cc: netdev <netdev@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
  Jamal Hadi Salim <jhs@mojatatu.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMS82LzIxIDE6NTUgUE0sIEplc3NlIEJyYW5kZWJ1cmcgd3JvdGU6Cj4gV2hlbiBkcml2ZXJz
-IGNhbGwgdGhlIHZhcmlvdXMgcmVjZWl2ZSB1cGNhbGxzIHRvIHJlY2VpdmUgYW4gc2tiCj4gdG8g
-dGhlIHN0YWNrLCBzb21ldGltZXMgdGhhdCBzdGFjayBjYW4gZHJvcCB0aGUgcGFja2V0LiBUaGUg
-Z29vZAo+IG5ld3MgaXMgdGhhdCB0aGUgcmV0dXJuIGNvZGUgaXMgZ2l2ZW4gdG8gYWxsIHRoZSBk
-cml2ZXJzIG9mCj4gTkVUX1JYX0RST1Agb3IgR1JPX0RST1AuIFRoZSBiYWQgbmV3cyBpcyB0aGF0
-IG5vIGRyaXZlcnMgZXhjZXB0Cj4gdGhlIG9uZSAiaWNlIiBkcml2ZXIgdGhhdCBJIGNoYW5nZWQs
-IGNoZWNrIHRoZSBzdGF0IGFuZCBpbmNyZW1lbnQKCklmIHRoZSBzdGFjayBpcyBkcm9wcGluZyB0
-aGUgcGFja2V0LCBpc24ndCBpdCB1cCB0byB0aGUgc3RhY2sgdG8gdHJhY2sgCnRoYXQsIHBlcmhh
-cHMgd2l0aCBzb21ldGhpbmcgdGhhdCBzaG93cyB1cCBpbiBuZXRzdGF0IC1zP8KgIFdlIGRvbid0
-IApyZWFsbHkgd2FudCB0byBtYWtlIHRoZSBkcml2ZXIgcmVzcG9uc2libGUgZm9yIGFueSBkcm9w
-cyB0aGF0IGhhcHBlbiAKYWJvdmUgaXRzIGhlYWQsIGRvIHdlPwoKc2xuCgo+IHRoZSBkcm9wcGVk
-IGNvdW50LiBUaGlzIGlzIGN1cnJlbnRseSBsZWFkaW5nIHRvIHBhY2tldHMgdGhhdAo+IGFycml2
-ZSBhdCB0aGUgZWRnZSBpbnRlcmZhY2UgYW5kIGFyZSBmdWxseSBoYW5kbGVkIGJ5IHRoZSBkcml2
-ZXIKPiBhbmQgdGhlbiBteXN0ZXJpb3VzbHkgZGlzYXBwZWFyLgo+Cj4gUmF0aGVyIHRoYW4gZml4
-IGFsbCBkcml2ZXJzIHRvIGluY3JlbWVudCB0aGUgZHJvcCBzdGF0IHdoZW4KPiBoYW5kbGluZyB0
-aGUgcmV0dXJuIGNvZGUsIGVtdWxhdGUgdGhlIGFscmVhZHkgZXhpc3Rpbmcgc3RhdGlzdGljCj4g
-dXBkYXRlIGZvciBORVRfUlhfRFJPUCBldmVudHMgZm9yIHRoZSB0d28gR1JPX0RST1AgbG9jYXRp
-b25zLCBhbmQKPiBpbmNyZW1lbnQgdGhlIGRldi0+cnhfZHJvcHBlZCBhc3NvY2lhdGVkIHdpdGgg
-dGhlIHNrYi4KPgo+IFNpZ25lZC1vZmYtYnk6IEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5k
-ZWJ1cmdAaW50ZWwuY29tPgo+IENjOiBFcmljIER1bWF6ZXQgPGVkdW1hemV0QGdvb2dsZS5jb20+
-Cj4gQ2M6IEphbWFsIEhhZGkgU2FsaW0gPGpoc0Btb2phdGF0dS5jb20+Cj4gLS0tCj4gICBuZXQv
-Y29yZS9kZXYuYyB8IDIgKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPgo+
-IGRpZmYgLS1naXQgYS9uZXQvY29yZS9kZXYuYyBiL25ldC9jb3JlL2Rldi5jCj4gaW5kZXggOGZh
-NzM5MjU5MDQxLi5lZjM0MDQzYTk1NTAgMTAwNjQ0Cj4gLS0tIGEvbmV0L2NvcmUvZGV2LmMKPiAr
-KysgYi9uZXQvY29yZS9kZXYuYwo+IEBAIC02MDcxLDYgKzYwNzEsNyBAQCBzdGF0aWMgZ3JvX3Jl
-c3VsdF90IG5hcGlfc2tiX2ZpbmlzaChzdHJ1Y3QgbmFwaV9zdHJ1Y3QgKm5hcGksCj4gICAJCWJy
-ZWFrOwo+ICAgCj4gICAJY2FzZSBHUk9fRFJPUDoKPiArCQlhdG9taWNfbG9uZ19pbmMoJnNrYi0+
-ZGV2LT5yeF9kcm9wcGVkKTsKPiAgIAkJa2ZyZWVfc2tiKHNrYik7Cj4gICAJCWJyZWFrOwo+ICAg
-Cj4gQEAgLTYxNTksNiArNjE2MCw3IEBAIHN0YXRpYyBncm9fcmVzdWx0X3QgbmFwaV9mcmFnc19m
-aW5pc2goc3RydWN0IG5hcGlfc3RydWN0ICpuYXBpLAo+ICAgCQlicmVhazsKPiAgIAo+ICAgCWNh
-c2UgR1JPX0RST1A6Cj4gKwkJYXRvbWljX2xvbmdfaW5jKCZza2ItPmRldi0+cnhfZHJvcHBlZCk7
-Cj4gICAJCW5hcGlfcmV1c2Vfc2tiKG5hcGksIHNrYik7Cj4gICAJCWJyZWFrOwo+ICAgCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
-YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
-b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+On Wed, Jan 6, 2021 at 10:56 PM Jesse Brandeburg
+<jesse.brandeburg@intel.com> wrote:
+>
+> When drivers call the various receive upcalls to receive an skb
+> to the stack, sometimes that stack can drop the packet. The good
+> news is that the return code is given to all the drivers of
+> NET_RX_DROP or GRO_DROP. The bad news is that no drivers except
+> the one "ice" driver that I changed, check the stat and increment
+> the dropped count. This is currently leading to packets that
+> arrive at the edge interface and are fully handled by the driver
+> and then mysteriously disappear.
+>
+> Rather than fix all drivers to increment the drop stat when
+> handling the return code, emulate the already existing statistic
+> update for NET_RX_DROP events for the two GRO_DROP locations, and
+> increment the dev->rx_dropped associated with the skb.
+>
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Cc: Eric Dumazet <edumazet@google.com>
+> Cc: Jamal Hadi Salim <jhs@mojatatu.com>
+> ---
+>  net/core/dev.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/net/core/dev.c b/net/core/dev.c
+> index 8fa739259041..ef34043a9550 100644
+> --- a/net/core/dev.c
+> +++ b/net/core/dev.c
+> @@ -6071,6 +6071,7 @@ static gro_result_t napi_skb_finish(struct napi_struct *napi,
+>                 break;
+>
+>         case GRO_DROP:
+> +               atomic_long_inc(&skb->dev->rx_dropped);
+>                 kfree_skb(skb);
+>                 break;
+>
+> @@ -6159,6 +6160,7 @@ static gro_result_t napi_frags_finish(struct napi_struct *napi,
+>                 break;
+>
+>         case GRO_DROP:
+> +               atomic_long_inc(&skb->dev->rx_dropped);
+>                 napi_reuse_skb(napi, skb);
+>                 break;
+>
+
+
+This is not needed. I think we should clean up ice instead.
+
+Drivers are supposed to have allocated the skb (using
+napi_get_frags()) before calling napi_gro_frags()
+
+Only napi_gro_frags() would return GRO_DROP, but we supposedly could
+crash at that point, since a driver is clearly buggy.
+
+We probably can remove GRO_DROP completely, assuming lazy drivers are fixed.
+
+diff --git a/net/core/dev.c b/net/core/dev.c
+index 8fa739259041aaa03585b5a7b8ebce862f4b7d1d..c9460c9597f1de51957fdcfc7a64ca45bce5af7c
+100644
+--- a/net/core/dev.c
++++ b/net/core/dev.c
+@@ -6223,9 +6223,6 @@ gro_result_t napi_gro_frags(struct napi_struct *napi)
+        gro_result_t ret;
+        struct sk_buff *skb = napi_frags_skb(napi);
+
+-       if (!skb)
+-               return GRO_DROP;
+-
+        trace_napi_gro_frags_entry(skb);
+
+        ret = napi_frags_finish(napi, skb, dev_gro_receive(napi, skb));
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
