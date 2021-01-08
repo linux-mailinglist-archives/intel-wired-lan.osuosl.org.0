@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BC6B2EF749
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 19:26:36 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A0422EF778
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 19:35:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CCECB870BB;
-	Fri,  8 Jan 2021 18:26:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 428A1203DB;
+	Fri,  8 Jan 2021 18:35:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CNNn6HxiJuAB; Fri,  8 Jan 2021 18:26:34 +0000 (UTC)
+	with ESMTP id 8PFOpWR44rru; Fri,  8 Jan 2021 18:35:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B7F687367;
-	Fri,  8 Jan 2021 18:26:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C81E0204F6;
+	Fri,  8 Jan 2021 18:35:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B62EF1BF9C1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:26:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C0481BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:35:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ACF6A871D5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:26:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2661520400
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:35:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jNV8P4ggmbH6 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Jan 2021 18:26:32 +0000 (UTC)
+ with ESMTP id BCH-otZN8NlA for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jan 2021 18:35:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0D6A3870BB
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:26:31 +0000 (UTC)
-IronPort-SDR: 8DHf5e7EJ/+6sX7msq5L3NoeEuLg0Mdg2Pi7Q94/824PyX8U5jdAlven9j5/ASuHZrv8ABwjvV
- QU36+dNc2zuQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="165325630"
-X-IronPort-AV: E=Sophos;i="5.79,332,1602572400"; d="scan'208";a="165325630"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id B51DC203DB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 18:35:39 +0000 (UTC)
+IronPort-SDR: +hsLMju6IUb8hEsV42XuaQW4EuIFhdFjIF/PrrJxflVueHx1HZWK3qy855+QK9aHPTlEx6r8zp
+ jLR7p9EEEVcg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="177737602"
+X-IronPort-AV: E=Sophos;i="5.79,332,1602572400"; d="scan'208";a="177737602"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2021 10:26:31 -0800
-IronPort-SDR: bnp1s7+11gFdcXaxj5lq/veRhfyI2zhVB/lG3e0cFQ6vBSp+IeCPDPc1Ga51Tz0hIxs/um/GVW
- eJyJMyei0+RQ==
-X-IronPort-AV: E=Sophos;i="5.79,332,1602572400"; d="scan'208";a="399061275"
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2021 10:35:38 -0800
+IronPort-SDR: o8bS21OClYQAd0KB7U06eFITSFA+f0yhrO24xDbHK075rPQ4Oe9es/nOq8F8MinuDxkiX2v8YG
+ Bh2TOiMG+UWQ==
+X-IronPort-AV: E=Sophos;i="5.79,332,1602572400"; d="scan'208";a="399064663"
 Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
  ([10.209.68.23])
  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2021 10:26:30 -0800
-Date: Fri, 8 Jan 2021 10:26:30 -0800
+ 08 Jan 2021 10:35:38 -0800
+Date: Fri, 8 Jan 2021 10:35:37 -0800
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Shannon Nelson <snelson@pensando.io>
-Message-ID: <20210108102630.00004202@intel.com>
-In-Reply-To: <1e4ee1cf-c2b7-8ba3-7cb1-5c5cb3ff1e84@pensando.io>
+To: Eric Dumazet <edumazet@google.com>
+Message-ID: <20210108103537.00005168@intel.com>
+In-Reply-To: <CANn89iLcRrmXW_MGjuMMnNxWS+kaEnY=Y79hCPuiwiDd_G9=EA@mail.gmail.com>
 References: <20210106215539.2103688-1-jesse.brandeburg@intel.com>
  <20210106215539.2103688-2-jesse.brandeburg@intel.com>
- <1e4ee1cf-c2b7-8ba3-7cb1-5c5cb3ff1e84@pensando.io>
+ <CANn89iLcRrmXW_MGjuMMnNxWS+kaEnY=Y79hCPuiwiDd_G9=EA@mail.gmail.com>
 X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] net: core: count
@@ -69,44 +69,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, Jamal Hadi Salim <jhs@mojatatu.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: netdev <netdev@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jamal Hadi Salim <jhs@mojatatu.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Shannon Nelson wrote:
+Eric Dumazet wrote:
+> > --- a/net/core/dev.c
+> > +++ b/net/core/dev.c
+> > @@ -6071,6 +6071,7 @@ static gro_result_t napi_skb_finish(struct napi_struct *napi,
+> >                 break;
+> >
+> >         case GRO_DROP:
+> > +               atomic_long_inc(&skb->dev->rx_dropped);
+> >                 kfree_skb(skb);
+> >                 break;
+> >
+> > @@ -6159,6 +6160,7 @@ static gro_result_t napi_frags_finish(struct napi_struct *napi,
+> >                 break;
+> >
+> >         case GRO_DROP:
+> > +               atomic_long_inc(&skb->dev->rx_dropped);
+> >                 napi_reuse_skb(napi, skb);
+> >                 break;
+> >
+> 
+> 
+> This is not needed. I think we should clean up ice instead.
 
-> On 1/6/21 1:55 PM, Jesse Brandeburg wrote:
-> > When drivers call the various receive upcalls to receive an skb
-> > to the stack, sometimes that stack can drop the packet. The good
-> > news is that the return code is given to all the drivers of
-> > NET_RX_DROP or GRO_DROP. The bad news is that no drivers except
-> > the one "ice" driver that I changed, check the stat and increment
-> =
+My patch 2 already did that. I was trying to address the fact that I'm
+*actually seeing* GRO_DROP return codes coming back from stack.
 
-> If the stack is dropping the packet, isn't it up to the stack to track =
+I'll try to reproduce that issue again that I saw. Maybe modern kernels
+don't have the problem as frequently or at all.
 
-> that, perhaps with something that shows up in netstat -s?=A0 We don't =
+> Drivers are supposed to have allocated the skb (using
+> napi_get_frags()) before calling napi_gro_frags()
 
-> really want to make the driver responsible for any drops that happen =
+ice doesn't use napi_get_frags/napi_gro_frags, so I'm not sure how this
+is relevant. 
 
-> above its head, do we?
+> Only napi_gro_frags() would return GRO_DROP, but we supposedly could
+> crash at that point, since a driver is clearly buggy.
 
-I totally agree!
+seems unlikely since we don't call those functions.
+ 
+> We probably can remove GRO_DROP completely, assuming lazy drivers are fixed.
 
-In patch 2/2 I revert the driver-specific changes I had made in an
-earlier patch, and this patch *was* my effort to make the stack show the
-drops.
+This might be ok, but doesn't explain why I was seeing this return
+code (which was the whole reason I was trying to count them), however I
+may have been running on a distro kernel from redhat/centos 8 when I
+was seeing these events. I haven't fully completed spelunking all the
+different sources, but might be able to follow down the rabbit hole
+further.
 
-Maybe I wasn't clear. I'm seeing packets disappear during TCP
-workloads, and this GRO_DROP code was the source of the drops (I see it
-returning infrequently but regularly)
+ 
+> diff --git a/net/core/dev.c b/net/core/dev.c
+> index 8fa739259041aaa03585b5a7b8ebce862f4b7d1d..c9460c9597f1de51957fdcfc7a64ca45bce5af7c
+> 100644
+> --- a/net/core/dev.c
+> +++ b/net/core/dev.c
+> @@ -6223,9 +6223,6 @@ gro_result_t napi_gro_frags(struct napi_struct *napi)
+>         gro_result_t ret;
+>         struct sk_buff *skb = napi_frags_skb(napi);
+> 
+> -       if (!skb)
+> -               return GRO_DROP;
+> -
+>         trace_napi_gro_frags_entry(skb);
+> 
+>         ret = napi_frags_finish(napi, skb, dev_gro_receive(napi, skb));
 
-The driver processes the packet but the stack never sees it, and there
-were no drop counters anywhere tracking it.
-
+This change (noted from your other patches is fine), and a likely
+improvement, thanks for sending those!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
