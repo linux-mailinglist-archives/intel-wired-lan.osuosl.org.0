@@ -1,73 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0D3E2EE77E
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Jan 2021 22:16:06 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A6A02EEA8E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jan 2021 01:50:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A2C50866C4;
-	Thu,  7 Jan 2021 21:16:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C35EE86CE7;
+	Fri,  8 Jan 2021 00:50:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zBla8J0mCDV2; Thu,  7 Jan 2021 21:16:05 +0000 (UTC)
+	with ESMTP id 2PLHyNa3V3Uk; Fri,  8 Jan 2021 00:50:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BCA5287092;
-	Thu,  7 Jan 2021 21:16:02 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7F0D01BF391
- for <intel-wired-lan@osuosl.org>; Thu,  7 Jan 2021 21:16:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9BFDF86CF4;
+	Fri,  8 Jan 2021 00:50:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B9EFE1BF9C8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 78D0187515
- for <intel-wired-lan@osuosl.org>; Thu,  7 Jan 2021 21:16:01 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B22AC86CA0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lmwogosLc977 for <intel-wired-lan@osuosl.org>;
- Thu,  7 Jan 2021 21:16:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f51.google.com (mail-io1-f51.google.com
- [209.85.166.51])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B373B87514
- for <intel-wired-lan@osuosl.org>; Thu,  7 Jan 2021 21:16:00 +0000 (UTC)
-Received: by mail-io1-f51.google.com with SMTP id n4so7531861iow.12
- for <intel-wired-lan@osuosl.org>; Thu, 07 Jan 2021 13:16:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r9xMPhwO650SkubUjGknZGVj33UqYQe/HEsVWuoyiYk=;
- b=n+gHo/CuDJOI0UvyJpipzoUhTwcnAtMBU3+fcQATSz0B0vs7nGI8NDSBjNR99aopow
- 42pf8DjSkJcAwnfzGFT3KN7kJXJ5B4swT+PgKemwG7EcFu1ZVBOM6unPbrkoBqSdHyLT
- 2ecdRhKdAOjH3tS23RlzcE2zDvF2UHsjtKk/IDI+Wlc234S6FeaiMs4/aj1ZRqVDSy+b
- +7UptUfiVP3CPKuxknx6u1UdipRYShW0kQDZOvgkUNnCQp6DhJm6ItaQmar/bKKTbbJ1
- C8OvF3hHcas4bwUhkeX8wCLJ9f+NjnOMsRGw/xgeuPwEJvklXG8ZV7hnP5h/byyQLgvI
- y8+w==
+ with ESMTP id WyZexyUKVxfe for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jan 2021 00:50:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f180.google.com (mail-pg1-f180.google.com
+ [209.85.215.180])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 359FE86CE4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 00:50:13 +0000 (UTC)
+Received: by mail-pg1-f180.google.com with SMTP id i5so6550948pgo.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 07 Jan 2021 16:50:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=aV7cj3PKcKgrjSt+F3CvxyD76lss2wpxKzg35jttMAI=;
+ b=EOOt6Cjs3cCuAWvRElNB+slmQDg52pnQaK/X+dYj/G7qmVhNvCpqijuWJIX85tvrP8
+ m1IiQS2cg55TEwlDHwLmKhGn9uVR0K9qs7FsCYJa39bkFeIOfhmc+7cru+HCTjaivV/R
+ wGjnBBPL8mllB+U9ExinWYhJ5CotfykPCpgdHgMo5H1rsbHBRlG0RnEtOEg/9BIXF9mW
+ ekvSEHYUAz5wdKQNQdy+QnyJbJML99p3eXgKDd+5H57zANVu8EKwNhbGUPo5GmR/4mAl
+ vBka8rTggqp+xhpi2sohgHvgNJH0+nyhnxgdBkTt9susH6sLWlr/fLsTH1QOlmkReB7m
+ t7Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=r9xMPhwO650SkubUjGknZGVj33UqYQe/HEsVWuoyiYk=;
- b=TfowjpJ9i5J641lCB8mlCxa/Rk30+Vivv6aBg5IPcbNLI/gNZMZvbsAz3Y6syc0KAI
- /ngJZYOuw/0X93NctkG5HNtK/ToAv2h7vxJbPKC2NiVXctRgrZwX+8xs3dE68IAuJYbl
- ZE8nvcYIgLrESWXgMiDxG1eERUk0P22nHYe83lHyynadfWrEKdKiSLN1N7lPtgphh9CD
- SVcvhVo2Vg5oXUlxJzxOD4GiJEsJvd6JW5PCgTmN66Wow2aFaps6jjRM6QdOlJm79E3M
- vBKPesQ7dtxPyXC0wp0HqVfzxFywk7beAehRPPq4EnkAcFBtnfPaphyNlfiORR6AxxH4
- TqKw==
-X-Gm-Message-State: AOAM533XGRRvzsN+jaUvQ6uaPXfEP9NEMRvEAFcUAg/gIHdsLYC08mzC
- gxPainUjbInlAVt2ZGqFFsXHRh+KlZkr/QBwss8=
-X-Google-Smtp-Source: ABdhPJzlfzLPflJQkYdxB0u0uBfx/+CEviOl7GGn2z8Qj8btYh/7enAt7E5rhOrTvjV3+E8FVWu68Mxo3FJ8ivJvucY=
-X-Received: by 2002:a5d:9a82:: with SMTP id c2mr2828214iom.38.1610054159955;
- Thu, 07 Jan 2021 13:15:59 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=aV7cj3PKcKgrjSt+F3CvxyD76lss2wpxKzg35jttMAI=;
+ b=EQLqVhlFcQoJI/cKg3dcypWOkz6eJPvsQxjNn64yv2zJiGbitTFuEIOPVk9/WCDmIZ
+ M3LLrPRbnpfUawufIRCWVtibpCPExorK6wO5yj4+G+rX5EenjswQlWu4qoqYjIhGgKxX
+ +f8skgAAs/J9FvfVyyoGNB9PqEeZAyGPVeMaHC7Vp/kVlVW0l020J8yhuxw/zeOxx6dz
+ pe2pH/UfN4JAH+5rEHWcy4EYBqGaaCkrXqBLiccQzHU/mDAif5qo/8SN/eBvP9Gxw/Bi
+ Iw9+9liKdIBOMpduZGI10TRmTeStI8T8z+fbbW5L/xxS2WSrs4kaBYMFE7HnL/0D9Vzd
+ +u+w==
+X-Gm-Message-State: AOAM531W5cgXZZL6y7yFO0YltGz/8R661v+77U+rAU9cRHpnp0/6Zf0Y
+ tk72RvfG8nfqymNyoxyP2x3irw==
+X-Google-Smtp-Source: ABdhPJzbgULcbMqjtezmp4QPNzeiCFrUd4tZIYgSjeGxqkrnx9ia+RBpNxlF1ND0wXz1Vrn8L9vIYQ==
+X-Received: by 2002:a62:1c16:0:b029:1a6:8b06:68e9 with SMTP id
+ c22-20020a621c160000b02901a68b0668e9mr1131328pfc.45.1610067012682; 
+ Thu, 07 Jan 2021 16:50:12 -0800 (PST)
+Received: from Shannons-MacBook-Pro.local
+ (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
+ by smtp.gmail.com with ESMTPSA id i6sm7771634pgc.58.2021.01.07.16.50.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Jan 2021 16:50:12 -0800 (PST)
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
 References: <20210106215539.2103688-1-jesse.brandeburg@intel.com>
  <20210106215539.2103688-2-jesse.brandeburg@intel.com>
- <5badc441-6de9-54cf-2b72-d67572cbb105@intel.com>
-In-Reply-To: <5badc441-6de9-54cf-2b72-d67572cbb105@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 7 Jan 2021 13:15:49 -0800
-Message-ID: <CAKgT0UejO3B-KML-F0ADo-8BrrC7-N37BL_nxN=QNkhXWBJ-xg@mail.gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
+From: Shannon Nelson <snelson@pensando.io>
+Message-ID: <1e4ee1cf-c2b7-8ba3-7cb1-5c5cb3ff1e84@pensando.io>
+Date: Thu, 7 Jan 2021 16:50:10 -0800
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <20210106215539.2103688-2-jesse.brandeburg@intel.com>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] net: core: count
  drops from GRO
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -82,68 +92,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Jamal Hadi Salim <jhs@mojatatu.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 7, 2021 at 10:47 AM Jacob Keller <jacob.e.keller@intel.com> wrote:
->
->
->
-> On 1/6/2021 1:55 PM, Jesse Brandeburg wrote:
-> > When drivers call the various receive upcalls to receive an skb
-> > to the stack, sometimes that stack can drop the packet. The good
-> > news is that the return code is given to all the drivers of
-> > NET_RX_DROP or GRO_DROP. The bad news is that no drivers except
-> > the one "ice" driver that I changed, check the stat and increment
-> > the dropped count. This is currently leading to packets that
-> > arrive at the edge interface and are fully handled by the driver
-> > and then mysteriously disappear.
-> >
-> > Rather than fix all drivers to increment the drop stat when
-> > handling the return code, emulate the already existing statistic
-> > update for NET_RX_DROP events for the two GRO_DROP locations, and
-> > increment the dev->rx_dropped associated with the skb.
-> >
-> > Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> > Cc: Eric Dumazet <edumazet@google.com>
-> > Cc: Jamal Hadi Salim <jhs@mojatatu.com>
-> > ---
-> >  net/core/dev.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/net/core/dev.c b/net/core/dev.c
-> > index 8fa739259041..ef34043a9550 100644
-> > --- a/net/core/dev.c
-> > +++ b/net/core/dev.c
-> > @@ -6071,6 +6071,7 @@ static gro_result_t napi_skb_finish(struct napi_struct *napi,
-> >               break;
-> >
-> >       case GRO_DROP:
-> > +             atomic_long_inc(&skb->dev->rx_dropped);
-> >               kfree_skb(skb);
-> >               break;
->
-> Would it makes sense to have this be a different stat? or is it really
-> basically the same as the existing rx_dropped, so treating it
-> differently wouldn't make much sense..
-
-I'm not seeing why this is anything that we really need to track. From
-what I can tell GRO_DROP is only returned in one case, and that is if
-we are using napi_gro_frags and napi_frags_skb returns NULL. I cannot
-see how you can actually return GRO_DROP to the two functions in
-question as it looks like dev_gro_receive. Are these paths perhaps
-dead code?
-
-Also it doesn't make much sense to free the skb in the GRO_DROP case
-as it looks like the skb has already been recycled. It might make more
-sense to add the counter in napi_frags_skb in the case where we are
-going to return NULL and reset the NAPI skb, and maybe look at
-dropping these code paths since I don't think it is possible for us to
-get here.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMS82LzIxIDE6NTUgUE0sIEplc3NlIEJyYW5kZWJ1cmcgd3JvdGU6Cj4gV2hlbiBkcml2ZXJz
+IGNhbGwgdGhlIHZhcmlvdXMgcmVjZWl2ZSB1cGNhbGxzIHRvIHJlY2VpdmUgYW4gc2tiCj4gdG8g
+dGhlIHN0YWNrLCBzb21ldGltZXMgdGhhdCBzdGFjayBjYW4gZHJvcCB0aGUgcGFja2V0LiBUaGUg
+Z29vZAo+IG5ld3MgaXMgdGhhdCB0aGUgcmV0dXJuIGNvZGUgaXMgZ2l2ZW4gdG8gYWxsIHRoZSBk
+cml2ZXJzIG9mCj4gTkVUX1JYX0RST1Agb3IgR1JPX0RST1AuIFRoZSBiYWQgbmV3cyBpcyB0aGF0
+IG5vIGRyaXZlcnMgZXhjZXB0Cj4gdGhlIG9uZSAiaWNlIiBkcml2ZXIgdGhhdCBJIGNoYW5nZWQs
+IGNoZWNrIHRoZSBzdGF0IGFuZCBpbmNyZW1lbnQKCklmIHRoZSBzdGFjayBpcyBkcm9wcGluZyB0
+aGUgcGFja2V0LCBpc24ndCBpdCB1cCB0byB0aGUgc3RhY2sgdG8gdHJhY2sgCnRoYXQsIHBlcmhh
+cHMgd2l0aCBzb21ldGhpbmcgdGhhdCBzaG93cyB1cCBpbiBuZXRzdGF0IC1zP8KgIFdlIGRvbid0
+IApyZWFsbHkgd2FudCB0byBtYWtlIHRoZSBkcml2ZXIgcmVzcG9uc2libGUgZm9yIGFueSBkcm9w
+cyB0aGF0IGhhcHBlbiAKYWJvdmUgaXRzIGhlYWQsIGRvIHdlPwoKc2xuCgo+IHRoZSBkcm9wcGVk
+IGNvdW50LiBUaGlzIGlzIGN1cnJlbnRseSBsZWFkaW5nIHRvIHBhY2tldHMgdGhhdAo+IGFycml2
+ZSBhdCB0aGUgZWRnZSBpbnRlcmZhY2UgYW5kIGFyZSBmdWxseSBoYW5kbGVkIGJ5IHRoZSBkcml2
+ZXIKPiBhbmQgdGhlbiBteXN0ZXJpb3VzbHkgZGlzYXBwZWFyLgo+Cj4gUmF0aGVyIHRoYW4gZml4
+IGFsbCBkcml2ZXJzIHRvIGluY3JlbWVudCB0aGUgZHJvcCBzdGF0IHdoZW4KPiBoYW5kbGluZyB0
+aGUgcmV0dXJuIGNvZGUsIGVtdWxhdGUgdGhlIGFscmVhZHkgZXhpc3Rpbmcgc3RhdGlzdGljCj4g
+dXBkYXRlIGZvciBORVRfUlhfRFJPUCBldmVudHMgZm9yIHRoZSB0d28gR1JPX0RST1AgbG9jYXRp
+b25zLCBhbmQKPiBpbmNyZW1lbnQgdGhlIGRldi0+cnhfZHJvcHBlZCBhc3NvY2lhdGVkIHdpdGgg
+dGhlIHNrYi4KPgo+IFNpZ25lZC1vZmYtYnk6IEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5k
+ZWJ1cmdAaW50ZWwuY29tPgo+IENjOiBFcmljIER1bWF6ZXQgPGVkdW1hemV0QGdvb2dsZS5jb20+
+Cj4gQ2M6IEphbWFsIEhhZGkgU2FsaW0gPGpoc0Btb2phdGF0dS5jb20+Cj4gLS0tCj4gICBuZXQv
+Y29yZS9kZXYuYyB8IDIgKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPgo+
+IGRpZmYgLS1naXQgYS9uZXQvY29yZS9kZXYuYyBiL25ldC9jb3JlL2Rldi5jCj4gaW5kZXggOGZh
+NzM5MjU5MDQxLi5lZjM0MDQzYTk1NTAgMTAwNjQ0Cj4gLS0tIGEvbmV0L2NvcmUvZGV2LmMKPiAr
+KysgYi9uZXQvY29yZS9kZXYuYwo+IEBAIC02MDcxLDYgKzYwNzEsNyBAQCBzdGF0aWMgZ3JvX3Jl
+c3VsdF90IG5hcGlfc2tiX2ZpbmlzaChzdHJ1Y3QgbmFwaV9zdHJ1Y3QgKm5hcGksCj4gICAJCWJy
+ZWFrOwo+ICAgCj4gICAJY2FzZSBHUk9fRFJPUDoKPiArCQlhdG9taWNfbG9uZ19pbmMoJnNrYi0+
+ZGV2LT5yeF9kcm9wcGVkKTsKPiAgIAkJa2ZyZWVfc2tiKHNrYik7Cj4gICAJCWJyZWFrOwo+ICAg
+Cj4gQEAgLTYxNTksNiArNjE2MCw3IEBAIHN0YXRpYyBncm9fcmVzdWx0X3QgbmFwaV9mcmFnc19m
+aW5pc2goc3RydWN0IG5hcGlfc3RydWN0ICpuYXBpLAo+ICAgCQlicmVhazsKPiAgIAo+ICAgCWNh
+c2UgR1JPX0RST1A6Cj4gKwkJYXRvbWljX2xvbmdfaW5jKCZza2ItPmRldi0+cnhfZHJvcHBlZCk7
+Cj4gICAJCW5hcGlfcmV1c2Vfc2tiKG5hcGksIHNrYik7Cj4gICAJCWJyZWFrOwo+ICAgCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
