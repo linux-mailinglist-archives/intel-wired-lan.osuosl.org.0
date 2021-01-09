@@ -1,60 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BDE92EFB8E
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Jan 2021 00:08:34 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A2D6E2EFC7B
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Jan 2021 01:54:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1BD7986E75;
-	Fri,  8 Jan 2021 23:08:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E0E1586EDC;
+	Sat,  9 Jan 2021 00:54:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l5o2DrWDeGp7; Fri,  8 Jan 2021 23:08:31 +0000 (UTC)
+	with ESMTP id k5Y66xJGjyPB; Sat,  9 Jan 2021 00:54:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 93E6A86E9F;
-	Fri,  8 Jan 2021 23:08:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6DD9A1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BE5F387019;
+	Sat,  9 Jan 2021 00:54:21 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 563A81BF406
+ for <intel-wired-lan@osuosl.org>; Sat,  9 Jan 2021 00:54:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 67F6187624
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5074C86EDC
+ for <intel-wired-lan@osuosl.org>; Sat,  9 Jan 2021 00:54:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lKsiYMkMU5QL for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Jan 2021 23:08:28 +0000 (UTC)
+ with ESMTP id lrDCbofrUkdp for <intel-wired-lan@osuosl.org>;
+ Sat,  9 Jan 2021 00:54:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A8CBE87620
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jan 2021 23:08:28 +0000 (UTC)
-IronPort-SDR: 1prGyZUZe8ppNb53c/2wV+rwkt8fkW2CRkCK01Y7bHRuCTFto5ZmxYWgQBoROijo3lxU5SgqaM
- nute6hAa9a4g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="175088577"
-X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="175088577"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2021 15:08:23 -0800
-IronPort-SDR: B3NJpaSBi9nY96Dz4r3AtKz+PX62i7ZyenkOhL4jq2ISTOgsWNQbKUQRApLDifShzUtpxyiO8W
- dyLMHmZT4g4g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="396449000"
-Received: from lkp-server01.sh.intel.com (HELO 412602b27703) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 08 Jan 2021 15:08:22 -0800
-Received: from kbuild by 412602b27703 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1ky0rm-0000jh-9W; Fri, 08 Jan 2021 23:08:22 +0000
-Date: Sat, 09 Jan 2021 07:07:33 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5ff8e5b5.fCy5oYVdCyZD3/+K%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 93B0786ECC
+ for <intel-wired-lan@osuosl.org>; Sat,  9 Jan 2021 00:54:19 +0000 (UTC)
+IronPort-SDR: taaj+9yNuDCcNqzh6isFCPmFaW8IrF/TC4y1FwLGs/V4Qes6woMaqooNCYdPkxkx0Bvx6rYuht
+ 8D5FCemdcv6w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9858"; a="174166012"
+X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="174166012"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2021 16:54:18 -0800
+IronPort-SDR: K6pmx6texZX4JyvbESHdkSmz3mlstfzAvBYeYMdw4TmpTrOD4C2StfYie35Uj3HzwvmD7sY2bA
+ FjMah4nM629A==
+X-IronPort-AV: E=Sophos;i="5.79,333,1602572400"; d="scan'208";a="399155516"
+Received: from jekeller-mobl1.amr.corp.intel.com (HELO [10.212.196.132])
+ ([10.212.196.132])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2021 16:54:18 -0800
+To: intel-wired-lan@osuosl.org
+References: <20210106215539.2103688-1-jesse.brandeburg@intel.com>
+ <20210106215539.2103688-2-jesse.brandeburg@intel.com>
+ <CANn89iLcRrmXW_MGjuMMnNxWS+kaEnY=Y79hCPuiwiDd_G9=EA@mail.gmail.com>
+ <20210108103537.00005168@intel.com>
+ <CANn89iL8KZGQhNbwwYRS2POkc_VEiSCecOyaCF4z95=StRn_xQ@mail.gmail.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+Organization: Intel Corporation
+Message-ID: <74aeaa53-90cb-f2af-ede8-a40e92f3af80@intel.com>
+Date: Fri, 8 Jan 2021 16:54:15 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- c88f9a09f666bb7fec4da10fa91ad2cdb02d14cf
+In-Reply-To: <CANn89iL8KZGQhNbwwYRS2POkc_VEiSCecOyaCF4z95=StRn_xQ@mail.gmail.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] net: core: count
+ drops from GRO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,174 +79,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git  dev-queue
-branch HEAD: c88f9a09f666bb7fec4da10fa91ad2cdb02d14cf  i40e: Fix setting PF MAC filters when changing MAC address
 
-elapsed time: 1134m
 
-configs tested: 150
-configs skipped: 3
+On 1/8/2021 10:45 AM, Eric Dumazet wrote:
+> On Fri, Jan 8, 2021 at 7:35 PM Jesse Brandeburg
+> <jesse.brandeburg@intel.com> wrote:
+>>
+>> Eric Dumazet wrote:
+>>>> --- a/net/core/dev.c
+>>>> +++ b/net/core/dev.c
+>>>> @@ -6071,6 +6071,7 @@ static gro_result_t napi_skb_finish(struct napi_struct *napi,
+>>>>                 break;
+>>>>
+>>>>         case GRO_DROP:
+>>>> +               atomic_long_inc(&skb->dev->rx_dropped);
+>>>>                 kfree_skb(skb);
+>>>>                 break;
+>>>>
+>>>> @@ -6159,6 +6160,7 @@ static gro_result_t napi_frags_finish(struct napi_struct *napi,
+>>>>                 break;
+>>>>
+>>>>         case GRO_DROP:
+>>>> +               atomic_long_inc(&skb->dev->rx_dropped);
+>>>>                 napi_reuse_skb(napi, skb);
+>>>>                 break;
+>>>>
+>>>
+>>>
+>>> This is not needed. I think we should clean up ice instead.
+>>
+>> My patch 2 already did that. I was trying to address the fact that I'm
+>> *actually seeing* GRO_DROP return codes coming back from stack.
+>>
+>> I'll try to reproduce that issue again that I saw. Maybe modern kernels
+>> don't have the problem as frequently or at all.
+> 
+> 
+> Jesse, you are sending a patch for current kernels.
+> 
+> It is pretty clear that the issue you have can not happen with current
+> kernels, by reading the code source,
+> even without an actual ICE piece of hardware to test this :)
+> 
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+FWIW, I did some digging through the history to see what might have
+removed other possible GRO_DROP returns. I found this commit:
 
-gcc tested configs:
-arm                                 defconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-nios2                            alldefconfig
-c6x                         dsk6455_defconfig
-arm                        mini2440_defconfig
-mips                          rb532_defconfig
-mips                       rbtx49xx_defconfig
-openrisc                            defconfig
-powerpc                      arches_defconfig
-mips                        qi_lb60_defconfig
-powerpc                     sbc8548_defconfig
-openrisc                 simple_smp_defconfig
-sh                           se7780_defconfig
-mips                           ip28_defconfig
-riscv                            alldefconfig
-mips                        jmr3927_defconfig
-arm                           spitz_defconfig
-arm                        magician_defconfig
-sh                            migor_defconfig
-arm                       imx_v4_v5_defconfig
-sh                         ap325rxa_defconfig
-m68k                         amcore_defconfig
-ia64                             alldefconfig
-sh                        sh7785lcr_defconfig
-arm                         socfpga_defconfig
-powerpc                       ebony_defconfig
-mips                         bigsur_defconfig
-arm                        realview_defconfig
-arm                           h3600_defconfig
-m68k                          atari_defconfig
-sparc                       sparc64_defconfig
-c6x                        evmc6472_defconfig
-mips                          ath25_defconfig
-nds32                            alldefconfig
-sh                         microdev_defconfig
-powerpc                mpc7448_hpc2_defconfig
-mips                        workpad_defconfig
-mips                        omega2p_defconfig
-sh                            titan_defconfig
-powerpc                      ppc64e_defconfig
-sh                        dreamcast_defconfig
-m68k                         apollo_defconfig
-powerpc64                           defconfig
-arm                       cns3420vb_defconfig
-m68k                        mvme147_defconfig
-sh                            shmin_defconfig
-powerpc                  iss476-smp_defconfig
-powerpc                 xes_mpc85xx_defconfig
-mips                          rm200_defconfig
-powerpc                        cell_defconfig
-x86_64                              defconfig
-ia64                            zx1_defconfig
-powerpc                     ppa8548_defconfig
-mips                           ip22_defconfig
-openrisc                    or1ksim_defconfig
-powerpc                  mpc885_ads_defconfig
-mips                malta_kvm_guest_defconfig
-i386                             allyesconfig
-powerpc                       ppc64_defconfig
-powerpc                     tqm8560_defconfig
-mips                         cobalt_defconfig
-sh                           se7724_defconfig
-powerpc                      cm5200_defconfig
-arm                         lpc32xx_defconfig
-ia64                         bigsur_defconfig
-arm                     eseries_pxa_defconfig
-sh                          r7780mp_defconfig
-powerpc                      acadia_defconfig
-arc                          axs103_defconfig
-arm                        vexpress_defconfig
-mips                            gpr_defconfig
-sh                            hp6xx_defconfig
-arm                      integrator_defconfig
-sh                   rts7751r2dplus_defconfig
-arm                    vt8500_v6_v7_defconfig
-powerpc                      chrp32_defconfig
-arm                          lpd270_defconfig
-mips                           ci20_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a004-20210108
-x86_64               randconfig-a006-20210108
-x86_64               randconfig-a001-20210108
-x86_64               randconfig-a002-20210108
-x86_64               randconfig-a003-20210108
-x86_64               randconfig-a005-20210108
-i386                 randconfig-a005-20210108
-i386                 randconfig-a002-20210108
-i386                 randconfig-a001-20210108
-i386                 randconfig-a003-20210108
-i386                 randconfig-a006-20210108
-i386                 randconfig-a004-20210108
-i386                 randconfig-a016-20210108
-i386                 randconfig-a011-20210108
-i386                 randconfig-a014-20210108
-i386                 randconfig-a015-20210108
-i386                 randconfig-a013-20210108
-i386                 randconfig-a012-20210108
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+6570bc79c0df ("net: core: use listified Rx for GRO_NORMAL in
+napi_gro_receive()")
 
-clang tested configs:
-x86_64               randconfig-a013-20210108
-x86_64               randconfig-a011-20210108
-x86_64               randconfig-a012-20210108
-x86_64               randconfig-a016-20210108
-x86_64               randconfig-a014-20210108
-x86_64               randconfig-a015-20210108
+It seems to have modified napi_skb_finish in such a way that it no
+longer reports GRO_DROP.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+I had trouble finding the other cases where GRO_DROP was removed, but I
+also am in favor of just removing it entirely at this point.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
