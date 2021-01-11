@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0871A2F18F7
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C5742F18F8
 	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Jan 2021 15:58:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2712487098;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E221F85BB8;
 	Mon, 11 Jan 2021 14:58:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1EKioYB4RL5i; Mon, 11 Jan 2021 14:58:32 +0000 (UTC)
+	with ESMTP id HPErB45CH9S4; Mon, 11 Jan 2021 14:58:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58DD587091;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B390785C67;
 	Mon, 11 Jan 2021 14:58:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 662D41BF577
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Jan 2021 18:31:51 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 32A3D1BF3DD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 13:26:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 609A187095
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Jan 2021 18:31:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2DCB085DB8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 13:26:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0MIg00GXn7xa for <intel-wired-lan@lists.osuosl.org>;
- Sat,  9 Jan 2021 18:31:49 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from ssl.serverraum.org (ssl.serverraum.org [176.9.125.105])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 17E308704B
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Jan 2021 18:31:49 +0000 (UTC)
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id AFAC722708;
- Sat,  9 Jan 2021 19:31:46 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1610217107;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=p2UDMWK0VwuZPNdNMdX3dZBlVkph5iJ84buMQxQDKJM=;
- b=pfz+72KfFX4HT4+7K8S0iv9FJlA9Svw3oYFTiOk8xQ66f+xjCPTjTCklPymrOsc3tFq+Cb
- 4JDBFOquyB8XIYHPERtRZM2MBCZLxCM+EQn72icWFAna7v5AuSF882hM9uNA+0eOj9F/Nr
- Kw8Nct5JoJ03ahEeJtzLGJugp0aD8W4=
+ with ESMTP id GPGD_8m8XrM7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Jan 2021 13:26:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0DE3F85D78
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 13:26:13 +0000 (UTC)
+IronPort-SDR: sYkrHR/0fbfTDq9cPPDLO89NOJPSBiUclSJF0l9SLOEyuCuHYgmmjfzUhxFM9zs8vHcPXycUXQ
+ TdR5cbX+SOrQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9860"; a="178007073"
+X-IronPort-AV: E=Sophos;i="5.79,338,1602572400"; d="scan'208";a="178007073"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2021 05:26:08 -0800
+IronPort-SDR: 9rR6L8Ra2W2XoqC4xXwCfSU+DGNafg++oodP96V4LoXDNkru7uqyOtpLuWUDc0gcxrq6T4a1zg
+ d6tBu8T/W0PA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,338,1602572400"; d="scan'208";a="423789385"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga001.jf.intel.com with ESMTP; 11 Jan 2021 05:26:04 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1000)
+ id 9B0E4114; Mon, 11 Jan 2021 15:26:02 +0200 (EET)
+Date: Mon, 11 Jan 2021 16:26:02 +0300
+From: "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+To: "Radev, Martin" <martin.radev@aisec.fraunhofer.de>
+Message-ID: <20210111132602.bcd5hmtoqe4dcjwp@black.fi.intel.com>
+References: <AM7P194MB0900E443CEBD6EF2EE37325ED9AE0@AM7P194MB0900.EURP194.PROD.OUTLOOK.COM>
+ <AM7P194MB09004AD790C5C85EDCB42323D9AE0@AM7P194MB0900.EURP194.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
-Date: Sat, 09 Jan 2021 19:31:46 +0100
-From: Michael Walle <michael@walle.cc>
-To: Bjorn Helgaas <helgaas@kernel.org>
-In-Reply-To: <20210108212021.GA1472277@bjorn-Precision-5520>
-References: <20210108212021.GA1472277@bjorn-Precision-5520>
-User-Agent: Roundcube Webmail/1.4.9
-Message-ID: <642eb96b495f5ad7d2d14410fedcd1ad@walle.cc>
-X-Sender: michael@walle.cc
+Content-Disposition: inline
+In-Reply-To: <AM7P194MB09004AD790C5C85EDCB42323D9AE0@AM7P194MB0900.EURP194.PROD.OUTLOOK.COM>
 X-Mailman-Approved-At: Mon, 11 Jan 2021 14:58:30 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+Subject: Re: [Intel-wired-lan] Security issue with vmxnet3 and e100 for AMD
+ SEV(-SNP) / Intel TDX
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,122 +70,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: "martin.b.radev@gmail.com" <martin.b.radev@gmail.com>,
+ "Thomas.Lendacky@amd.com" <Thomas.Lendacky@amd.com>,
+ "sathyanarayanan.kuppuswamy@linux.intel.com"
+ <sathyanarayanan.kuppuswamy@linux.intel.com>,
+ "file@sect.tu-berlin.de" <file@sect.tu-berlin.de>,
+ "doshir@vmware.com" <doshir@vmware.com>,
+ "pv-drivers@vmware.com" <pv-drivers@vmware.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "brijesh.singh@amd.com" <brijesh.singh@amd.com>, "Banse,
+ Christian" <christian.banse@aisec.fraunhofer.de>, "Kleen,
+ Andi" <andi.kleen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Morbitzer, Mathias" <mathias.morbitzer@aisec.fraunhofer.de>,
+ Robert Buhren <robert.buhren@sect.tu-berlin.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Bjorn,
-
-Am 2021-01-08 22:20, schrieb Bjorn Helgaas:
-> On Wed, Dec 30, 2020 at 07:53:17PM +0100, Michael Walle wrote:
->> The Intel i210 doesn't work if the Expansion ROM BAR overlaps with
->> another BAR. Networking won't work at all and once a packet is sent 
->> the
->> netdev watchdog will bite:
+On Fri, Jan 08, 2021 at 03:31:56PM +0000, Radev, Martin wrote:
+> Just noticed that Intel TDX already does the device filtering. Check: https://github.com/intel/tdx/commit/6789eee52aab8985e49b362379fab73aa3eecde2
 > 
+> CC-ing Kirill and Kuppuswamy from Intel in case they want to be part of the discussion.
+> ________________________________
+> From: Radev, Martin
+> Sent: Friday, January 8, 2021 12:57 PM
+> To: netdev@vger.kernel.org <netdev@vger.kernel.org>; intel-wired-lan@lists.osuosl.org <intel-wired-lan@lists.osuosl.org>
+> Cc: doshir@vmware.com <doshir@vmware.com>; jesse.brandeburg@intel.com <jesse.brandeburg@intel.com>; anthony.l.nguyen@intel.com <anthony.l.nguyen@intel.com>; Morbitzer, Mathias <mathias.morbitzer@aisec.fraunhofer.de>; Robert Buhren <robert.buhren@sect.tu-berlin.de>; file@sect.tu-berlin.de <file@sect.tu-berlin.de>; Banse, Christian <christian.banse@aisec.fraunhofer.de>; brijesh.singh@amd.com <brijesh.singh@amd.com>; Thomas.Lendacky@amd.com <Thomas.Lendacky@amd.com>; pv-drivers@vmware.com <pv-drivers@vmware.com>; martin.b.radev@gmail.com <martin.b.radev@gmail.com>
+> Subject: Security issue with vmxnet3 and e100 for AMD SEV(-SNP) / Intel TDX
 > 
-> 1) Is this a regression?  It sounds like you don't know for sure
-> because earlier kernels don't support your platform.
-
-Whats the background of the question? The board is offially supported
-since 5.8. I doubt that the code responsible to not touch the ExpROM
-BAR in pci_std_update_resource() were recently changed/added; the
-comment refers to a mail from 2005. So no I don't think it is a
-regression per se.
-
-It is just that some combination of hardware and firmware will program
-the BARs in away so that this bug is triggered. And chances of this
-happing are very unlikely.
-
-Do we agree that it should be irrelevant how the firmware programs and
-enables the BARs in this case? I.e. you could "fix" u-boot to match the
-way linux will assign addresses to the BARs. But that would just work
-around the real issue here. IMO.
-
-> 2) Can you open a bugzilla at https://bugzilla.kernel.org and attach
-> the complete dmesg and "sudo lspci -vv" output?  I want to see whether
-> Linux is assigning something incorrectly or this is a consequence of
-> some firmware initialization.
-
-Sure, but you wouldn't even see the error with "lspci -vv" because
-lspci will just show the mapping linux assigned to it. But not whats
-written to the actual BAR for the PCI card. I'll also include a
-"lspci -xx". I've enabled CONFIG_PCI_DEBUG, too.
-
-https://bugzilla.kernel.org/show_bug.cgi?id=211105
-
-> 3) If the Intel i210 is defective in how it handles an Expansion ROM
-> that overlaps another BAR, a quirk might be the right fix. But my
-> guess is the device is working correctly per spec and there's
-> something wrong in how firmware/Linux is assigning things.  That would
-> mean we need a more generic fix that's not a quirk and not tied to the
-> Intel i210.
-
-Agreed, but as you already stated (and I've also found that in the PCI
-spec) the Expansion ROM address decoder can be shared by the other BARs
-and it shouldn't matter as long as the ExpROM BAR is disabled, which is
-the case here.
-
-I've included the Intel ML, maybe the Intel guys can comment on that.
-
->> [   89.059374] ------------[ cut here ]------------
->> [   89.064019] NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed 
->> out
->> [   89.070681] WARNING: CPU: 1 PID: 0 at net/sched/sch_generic.c:443 
->> dev_watchdog+0x3a8/0x3b0
->> [   89.078989] Modules linked in:
->> [   89.082053] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W       
->>   5.11.0-rc1-00020-gc16f033804b #289
->> [   89.091574] Hardware name: Kontron SMARC-sAL28 (Single PHY) on 
->> SMARC Eval 2.0 carrier (DT)
->> [   89.099870] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
->> [   89.105900] pc : dev_watchdog+0x3a8/0x3b0
->> [   89.109923] lr : dev_watchdog+0x3a8/0x3b0
->> [   89.113945] sp : ffff80001000bd50
->> [   89.117268] x29: ffff80001000bd50 x28: 0000000000000008
->> [   89.122602] x27: 0000000000000004 x26: 0000000000000140
->> [   89.127935] x25: ffff002001c6c000 x24: ffff002001c2b940
->> [   89.133267] x23: ffff8000118c7000 x22: ffff002001c6c39c
->> [   89.138600] x21: ffff002001c6bfb8 x20: ffff002001c6c3b8
->> [   89.143932] x19: 0000000000000000 x18: 0000000000000010
->> [   89.149264] x17: 0000000000000000 x16: 0000000000000000
->> [   89.154596] x15: ffffffffffffffff x14: 0720072007200720
->> [   89.159928] x13: 0720072007740775 x12: ffff80001195b980
->> [   89.165260] x11: 0000000000000003 x10: ffff800011943940
->> [   89.170592] x9 : ffff800010100d44 x8 : 0000000000017fe8
->> [   89.175924] x7 : c0000000ffffefff x6 : 0000000000000001
->> [   89.181255] x5 : 0000000000000000 x4 : 0000000000000000
->> [   89.186587] x3 : 00000000ffffffff x2 : ffff8000118eb908
->> [   89.191919] x1 : 84d8200845006900 x0 : 0000000000000000
->> [   89.197251] Call trace:
->> [   89.199701]  dev_watchdog+0x3a8/0x3b0
->> [   89.203374]  call_timer_fn+0x38/0x208
->> [   89.207049]  run_timer_softirq+0x290/0x540
->> [   89.211158]  __do_softirq+0x138/0x404
->> [   89.214831]  irq_exit+0xe8/0xf8
->> [   89.217981]  __handle_domain_irq+0x70/0xc8
->> [   89.222091]  gic_handle_irq+0xc8/0x2b0
->> [   89.225850]  el1_irq+0xb8/0x180
->> [   89.228999]  arch_cpu_idle+0x18/0x40
->> [   89.232587]  default_idle_call+0x70/0x214
->> [   89.236610]  do_idle+0x21c/0x290
->> [   89.239848]  cpu_startup_entry+0x2c/0x70
->> [   89.243783]  secondary_start_kernel+0x1a0/0x1f0
->> [   89.248332] ---[ end trace 1687af62576397bc ]---
->> [   89.253350] igb 0002:01:00.0 enP2p1s0: Reset adapter
+> Hello everybody,
 > 
-> This entire splat is overkill.  The useful part is what somebody who
-> trips over this might google for.  Strip out the "cut here", the
-> timestamps, the register dump, and the last 6-8 lines of the call
-> trace.
+> tldr: Both drivers expose skb GVAs to untrusted devices which gives RIP
+>          control to a malicious e100 / vmxnet3 device implementation. This is
+>          an issue for AMD SEV (-SNP) [1] and likely Intel TDX [2].
+> 
+> Felicitas and Robert have started a project on fuzzing device drivers which
+> may have negative security impact on solutions like AMD SEV Secure
+> Nested Paging and Intel Trusted Domain Extensions. These solutions protect
+> a VM from a malicious Hypervisor in various way.
+> 
+> There are a couple of devices which carry security issues under the attacker
+> models of SEV-SNP / Intel TDX, but here we're only discussing VMXNET3 and
+> e100, because we have detailed PoCs for both.
+> 
+> Maintainers of both vmxnet3 and e100 were added in this email because the
+> discussion will likely be the same. The issues were already sent to AMD PSIRT,
+> and Tom Lendacky and Brijesh Singh have volunteered to be part of the email
+> communication with the maintainers. Both have been working on AMD SEV.
+> 
+> Please check the two attached files: vmxnet3_report.txt and e100_report.txt.
+> Both contain detailed information about what the issue is and how it can be
+> exploited by a malicious HV or attacker who has access to the QEMU process.
+> 
+> Fix:
+> In an earlier discussion with AMD, there was the idea of making a list of
+> allowed devices with SEV and forbidding everything else. This would avoid
+> issues with other drivers whose implementation has not been yet scrutinized
+> under the threat model of SEV-SNP and Intel Trusted Domain Extensions.
 
-This seem to be different from subsys to subsys, but whatever ;)
++Andi.
 
--michael
+Right. Our TDX guest enabling has white list of devices that allowed to be
+used. For now it's only VirtIO, but I believe it also requires hardening.
+We need to validate any VMM input.
+
+It might be beneficial to have coordination between Intel and AMD on what
+devices (and device drivers) considered to be safe for trusted computing.
+I think we can share burden of code audit and fuzzing.
+
+-- 
+ Kirill A. Shutemov
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
