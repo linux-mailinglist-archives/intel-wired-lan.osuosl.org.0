@@ -1,57 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CAD42F1DA7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Jan 2021 19:12:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A6E686FBF;
-	Mon, 11 Jan 2021 18:12:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j-T7ESDkzK3R; Mon, 11 Jan 2021 18:12:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 484BE870DC;
-	Mon, 11 Jan 2021 18:12:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 81EAB1BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 18:11:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id EABD52F1FB9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Jan 2021 20:47:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6F2A8227AA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 18:11:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 95E2B228A7;
+	Mon, 11 Jan 2021 19:47:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PkEyqg4xYB-S; Mon, 11 Jan 2021 19:47:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id C08A322844;
+	Mon, 11 Jan 2021 19:47:53 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F05F01BF356
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 19:47:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id EB5BB870A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 19:47:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d-ZaQmG5VKyA for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Jan 2021 18:11:42 +0000 (UTC)
+ with ESMTP id tBm5Rq9Ehrh1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Jan 2021 19:47:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A7DF204DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 18:11:41 +0000 (UTC)
-IronPort-SDR: rYn1tQ+Ow98bSedyRUMnE2nAj3zlCSsDPJHYsYzwSxfA2tlx8+q6EtNUpagUWCL+g+WjXTbEs/
- pY35azI1JRgA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9861"; a="165589399"
-X-IronPort-AV: E=Sophos;i="5.79,339,1602572400"; d="scan'208";a="165589399"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2021 10:11:40 -0800
-IronPort-SDR: Mohv5/ZA6vCRs2JGSYialOXSsXTIr3PGlOKUqmaKg4rqZ5SKt70ZpQJ7D1TE4tp58nRx1wKf9i
- ZR5uldA1Sa1Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,339,1602572400"; d="scan'208";a="498653463"
-Received: from silpixa00400572.ir.intel.com ([10.237.213.34])
- by orsmga004.jf.intel.com with ESMTP; 11 Jan 2021 10:11:39 -0800
-From: Cristian Dumitrescu <cristian.dumitrescu@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 11 Jan 2021 18:11:38 +0000
-Message-Id: <20210111181138.49757-1-cristian.dumitrescu@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id ED780870A6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jan 2021 19:47:50 +0000 (UTC)
+IronPort-SDR: BKG0LRih1cRE5EFS/YMuOKSas4c2HnNEYnkOw1yvkCrhlrb1a0q6arvUfuUVRI944b1XPSb4u7
+ TRRjIKFe0TnQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9861"; a="241997682"
+X-IronPort-AV: E=Sophos;i="5.79,339,1602572400"; d="scan'208";a="241997682"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2021 11:47:46 -0800
+IronPort-SDR: vSMvzdE1rybLWHt5j7ZLLDBShm+gQWVX9NjaOc12Dv6FOxAKmjminMevil6uL9PmjVfi1RB//a
+ avVV7JpNQz8Q==
+X-IronPort-AV: E=Sophos;i="5.79,339,1602572400"; d="scan'208";a="381129269"
+Received: from amburges-mobl1.ger.corp.intel.com (HELO
+ btopel-mobl.ger.intel.com) ([10.252.40.54])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2021 11:47:43 -0800
+To: Cristian Dumitrescu <cristian.dumitrescu@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20210111181138.49757-1-cristian.dumitrescu@intel.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
+Message-ID: <ac36b7b2-bf0e-c58c-754b-d9ab4dbb9cae@intel.com>
+Date: Mon, 11 Jan 2021 20:47:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 11 Jan 2021 18:12:27 +0000
-Subject: [Intel-wired-lan] [PATCH net] i40e: fix potential NULL pointer
+In-Reply-To: <20210111181138.49757-1-cristian.dumitrescu@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: fix potential NULL pointer
  dereferencing
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -65,54 +70,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, bjorn.topel@intel.com,
- cristian.dumitrescu@intel.com, magnus.karlsson@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, the function i40e_construct_skb_zc only frees the input xdp
-buffer when the output skb is successfully built. On error, the
-function i40e_clean_rx_irq_zc does not commit anything for the current
-packet descriptor and simply exits the packet descriptor processing
-loop, with the plan to restart the processing of this descriptor on
-the next invocation. Therefore, on error the ring next-to-clean
-pointer should not advance, the xdp i.e. *bi buffer should not be
-freed and the current buffer info should not be invalidated by setting
-*bi to NULL. Therefore, the *bi should only be set to NULL when the
-function i40e_construct_skb_zc is successful, otherwise a NULL *bi
-will be dereferenced when the work for the current descriptor is
-eventually restarted.
-
-Fixes: 3b4f0b66c2b3 ("i40e, xsk: Migrate to new MEM_TYPE_XSK_BUFF_POOL")
-Signed-off-by: Cristian Dumitrescu <cristian.dumitrescu@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 47eb9c584a12..492ce213208d 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -348,12 +348,12 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
- 		 * SBP is *not* set in PRT_SBPVSI (default not set).
- 		 */
- 		skb = i40e_construct_skb_zc(rx_ring, *bi);
--		*bi = NULL;
- 		if (!skb) {
- 			rx_ring->rx_stats.alloc_buff_failed++;
- 			break;
- 		}
- 
-+		*bi = NULL;
- 		cleaned_count++;
- 		i40e_inc_ntc(rx_ring);
- 
--- 
-2.25.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMjAyMS0wMS0xMSAxOToxMSwgQ3Jpc3RpYW4gRHVtaXRyZXNjdSB3cm90ZToKPiBDdXJyZW50
+bHksIHRoZSBmdW5jdGlvbiBpNDBlX2NvbnN0cnVjdF9za2JfemMgb25seSBmcmVlcyB0aGUgaW5w
+dXQgeGRwCj4gYnVmZmVyIHdoZW4gdGhlIG91dHB1dCBza2IgaXMgc3VjY2Vzc2Z1bGx5IGJ1aWx0
+LiBPbiBlcnJvciwgdGhlCj4gZnVuY3Rpb24gaTQwZV9jbGVhbl9yeF9pcnFfemMgZG9lcyBub3Qg
+Y29tbWl0IGFueXRoaW5nIGZvciB0aGUgY3VycmVudAo+IHBhY2tldCBkZXNjcmlwdG9yIGFuZCBz
+aW1wbHkgZXhpdHMgdGhlIHBhY2tldCBkZXNjcmlwdG9yIHByb2Nlc3NpbmcKPiBsb29wLCB3aXRo
+IHRoZSBwbGFuIHRvIHJlc3RhcnQgdGhlIHByb2Nlc3Npbmcgb2YgdGhpcyBkZXNjcmlwdG9yIG9u
+Cj4gdGhlIG5leHQgaW52b2NhdGlvbi4gVGhlcmVmb3JlLCBvbiBlcnJvciB0aGUgcmluZyBuZXh0
+LXRvLWNsZWFuCj4gcG9pbnRlciBzaG91bGQgbm90IGFkdmFuY2UsIHRoZSB4ZHAgaS5lLiAqYmkg
+YnVmZmVyIHNob3VsZCBub3QgYmUKPiBmcmVlZCBhbmQgdGhlIGN1cnJlbnQgYnVmZmVyIGluZm8g
+c2hvdWxkIG5vdCBiZSBpbnZhbGlkYXRlZCBieSBzZXR0aW5nCj4gKmJpIHRvIE5VTEwuIFRoZXJl
+Zm9yZSwgdGhlICpiaSBzaG91bGQgb25seSBiZSBzZXQgdG8gTlVMTCB3aGVuIHRoZQo+IGZ1bmN0
+aW9uIGk0MGVfY29uc3RydWN0X3NrYl96YyBpcyBzdWNjZXNzZnVsLCBvdGhlcndpc2UgYSBOVUxM
+ICpiaQo+IHdpbGwgYmUgZGVyZWZlcmVuY2VkIHdoZW4gdGhlIHdvcmsgZm9yIHRoZSBjdXJyZW50
+IGRlc2NyaXB0b3IgaXMKPiBldmVudHVhbGx5IHJlc3RhcnRlZC4KPiAKPiBGaXhlczogM2I0ZjBi
+NjZjMmIzICgiaTQwZSwgeHNrOiBNaWdyYXRlIHRvIG5ldyBNRU1fVFlQRV9YU0tfQlVGRl9QT09M
+IikKPiBTaWduZWQtb2ZmLWJ5OiBDcmlzdGlhbiBEdW1pdHJlc2N1IDxjcmlzdGlhbi5kdW1pdHJl
+c2N1QGludGVsLmNvbT4KClRoYW5rcyBmb3IgZmluZGluZyBhbmQgZml4aW5nIHRoaXMsIENyaXN0
+aWFuIQoKQWNrZWQtYnk6IEJqw7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNvbT4KCj4g
+LS0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgfCAyICst
+Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCj4gaW5kZXggNDdlYjlj
+NTg0YTEyLi40OTJjZTIxMzIwOGQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaTQwZS9pNDBlX3hzay5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aTQwZS9pNDBlX3hzay5jCj4gQEAgLTM0OCwxMiArMzQ4LDEyIEBAIGludCBpNDBlX2NsZWFuX3J4
+X2lycV96YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCBpbnQgYnVkZ2V0KQo+ICAgCQkgKiBT
+QlAgaXMgKm5vdCogc2V0IGluIFBSVF9TQlBWU0kgKGRlZmF1bHQgbm90IHNldCkuCj4gICAJCSAq
+Lwo+ICAgCQlza2IgPSBpNDBlX2NvbnN0cnVjdF9za2JfemMocnhfcmluZywgKmJpKTsKPiAtCQkq
+YmkgPSBOVUxMOwo+ICAgCQlpZiAoIXNrYikgewo+ICAgCQkJcnhfcmluZy0+cnhfc3RhdHMuYWxs
+b2NfYnVmZl9mYWlsZWQrKzsKPiAgIAkJCWJyZWFrOwo+ICAgCQl9Cj4gICAKPiArCQkqYmkgPSBO
+VUxMOwo+ICAgCQljbGVhbmVkX2NvdW50Kys7Cj4gICAJCWk0MGVfaW5jX250YyhyeF9yaW5nKTsK
+PiAgIAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJ
+bnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0
+dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
