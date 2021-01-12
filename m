@@ -1,56 +1,149 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D08AB2F36F2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jan 2021 18:22:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3978E86CD3;
-	Tue, 12 Jan 2021 17:22:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sWhzRGY8JL1M; Tue, 12 Jan 2021 17:22:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 78F3B86DD3;
-	Tue, 12 Jan 2021 17:22:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 95A151BF36B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 422ED2F374D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jan 2021 18:38:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 90AF4862C7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A8364863D5;
+	Tue, 12 Jan 2021 17:38:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o6VpCVeFsmU3; Tue, 12 Jan 2021 17:38:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 924BB863A6;
+	Tue, 12 Jan 2021 17:38:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 14F811BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:38:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id C09C620354
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:38:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wQ6yXDFA25De for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Jan 2021 17:22:00 +0000 (UTC)
+ with ESMTP id l6k-1uqt5Iiq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Jan 2021 17:38:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3256586274
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:00 +0000 (UTC)
-IronPort-SDR: yVAmmd3hzhuHu8NWQNpeedu0vXxivNFjNarmN9NZVtsmrPuDQKhHAJd4dVANDZPV3D4ZOP+WRN
- c/Fh9UwuceUA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9862"; a="157254309"
-X-IronPort-AV: E=Sophos;i="5.79,341,1602572400"; d="scan'208";a="157254309"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2021 09:21:59 -0800
-IronPort-SDR: ywgAe/U6gLvyyKVZqYARVVHun0VvgabsC/Y3mWuncBPns59KNI5n9881fSiOpNrrXMhxC1mOMH
- DGZwaWpIfMhA==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id B5A9820030
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:38:01 +0000 (UTC)
+IronPort-SDR: Ko+8Me0IjUX2kOpVYunFXawpxbC4Yo43wtpwXx0quyjj2O+EfQ4L0xgl9APAsGOjMqGiQWjmSX
+ 68yqhHq7vVcA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9862"; a="157856998"
+X-IronPort-AV: E=Sophos;i="5.79,342,1602572400"; d="scan'208";a="157856998"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2021 09:37:56 -0800
+IronPort-SDR: D+6fjQsk27L4AvKE6x4x0yTd//SA7Rn38LEKjM+hg7TXZU1C8PBa3vzAsU3XKKgH+MZ7Q6K9+T
+ BoMQu3Gkk2Mg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,342,1602572400"; d="scan'208";a="353106533"
-Received: from amlin-018-053.igk.intel.com (HELO 10.252.34.83) ([10.102.18.53])
- by fmsmga008.fm.intel.com with ESMTP; 12 Jan 2021 09:21:58 -0800
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 Jan 2021 17:14:31 +0000
-Message-Id: <20210112171431.457524-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
+X-IronPort-AV: E=Sophos;i="5.79,342,1602572400"; d="scan'208";a="345273948"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by fmsmga007.fm.intel.com with ESMTP; 12 Jan 2021 09:37:56 -0800
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 12 Jan 2021 09:37:55 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Tue, 12 Jan 2021 09:37:55 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.174)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Tue, 12 Jan 2021 09:37:54 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nTHxjNAqyK4RYTabFi7Zk5n30Jqg14WMJ7i0WJW+3KkN5U/D1JK8Mhwt4LR8N8+JK68Ub44HxYH8oukG0nqY5Ql8H58BrqOBmHByn4Pto1EdwQB4KZj9Lx5GOP3P8HNHILM7fcxhCPiS3KpnkPSi6xeYXAnA+yoInFA0C9+g+RVf83Ou1rWizXtqPr1F6mugP80/TPAnzYOCYXwpmuejin+aJLixJktNdHlYq1lulZ3Yss0WmH/4m1bSPUw8mJBo1RHHrQS9q2syoRFdiFXxu/Cc+An/16YWXtxOKrNXCmtN3Ku1C7SxHvNwaQb1jXOXAJgmHU3yq+zvA2hwxy6j5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZEF1uzU6+YcmarESEp6sIy9uYOJ3T1/B7LmK9SSNcVE=;
+ b=mnRaJnOMbabUczetqBGAYv4vQuNdzIkrdYT5mtaqUHJXkyZt7kdsXFn8J/XZjtNEoPfb2xiKBo556IQEZQNU28SoO0B+sPvtlZVJ3dwQe4vRKIAdf1VDzDbdkMTm6JBAlQq+uYW+xIdDZnPtoOKlxX3q9tnYW8ZivqQDoDbvFTmT02ZpO/1Efh/dA/EG+l28F4ojiT0g40iDg1hN0vdWfzD4gIlWvxSejLOitLQ4R2t+PulwGmBOpyJSjhlpQWUZqf3mPwnaYMEVj8DBPtx4y9LdCApLjfEYlfgZWI88xRXI3pnx6rZub89mo7Gopw1jyKZhCLoxLB1k3sxa+bdbKg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZEF1uzU6+YcmarESEp6sIy9uYOJ3T1/B7LmK9SSNcVE=;
+ b=Ss0n2kLsIJYzYP/IUw29Rp/pkdIdBiKz5rc7gbaP5lEwd0vhDedDyG9+zUzneaTYPlYQCPf66SoWfcy95o0EkrZBPbAY9oshSX+jhktxi18xR1kw1yn+mpsWICUuECU0wUAbRT9DMj8pLvUrr6BYaHbjF5eL1tU+weGoi/7doJU=
+Received: from BN6PR11MB1572.namprd11.prod.outlook.com (2603:10b6:405:e::9) by
+ BN6PR11MB1393.namprd11.prod.outlook.com (2603:10b6:404:3c::12) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3742.8; Tue, 12 Jan 2021 17:37:53 +0000
+Received: from BN6PR11MB1572.namprd11.prod.outlook.com
+ ([fe80::d89b:cd03:de56:6d9c]) by BN6PR11MB1572.namprd11.prod.outlook.com
+ ([fe80::d89b:cd03:de56:6d9c%5]) with mapi id 15.20.3742.012; Tue, 12 Jan 2021
+ 17:37:53 +0000
+From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
+To: Stefan Assmann <sassmann@kpanic.de>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH] i40e: acquire VSI pointer only after
+ VF is initialized
+Thread-Index: AQHWxxusGWmKZMrqBkC6/aAqKEo8Q6okhGTA
+Date: Tue, 12 Jan 2021 17:37:53 +0000
+Message-ID: <BN6PR11MB15729586015B697F769A2426ABAA0@BN6PR11MB1572.namprd11.prod.outlook.com>
+References: <20201130131257.28856-1-sassmann@kpanic.de>
+In-Reply-To: <20201130131257.28856-1-sassmann@kpanic.de>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: kpanic.de; dkim=none (message not signed)
+ header.d=none;kpanic.de; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [188.147.103.87]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bf0236e6-ad28-4cb9-2e63-08d8b720ca6c
+x-ms-traffictypediagnostic: BN6PR11MB1393:
+x-microsoft-antispam-prvs: <BN6PR11MB139331CCEA6E50AD9D73F875ABAA0@BN6PR11MB1393.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1443;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: EGOET5fxty1IMpfqgSDFm/I3iEEOyYp/NrovSEBLU0qsemOIQX3Y1sv3y2wv5OXMUFfzf9nvq4sghfuu+p3Iago2GzYaX0m9haTJxggV/qKyBU4nj6JAwtOpUXnYzvjTng459eLiIeoj1hra5Ja6f6Nl4IvQ5O6IzUOg71Wq+F6BGx7n8c4tcz3FKIhorsckK2Kd26zk6dyOoIxj4Xl3kmrDIW9sAK17v+ZBaSQs6GnM4f7vS5InffwRpbynqnzEEVUwJWw57de/ak1uA69QQ4wPXnOcotkovP96dbAedCBdTLo2SlWp34XyG2RvyfcyQ7xQ2csQPOSdxWFEPtv1mheDp3h9pvhscoknTTiKq2R+vDzdNeNaeXooLvUxGMSA383GPmRd65MAdk0J+BBN4Q==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN6PR11MB1572.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(366004)(136003)(376002)(39860400002)(396003)(55016002)(53546011)(186003)(478600001)(8676002)(2906002)(66446008)(86362001)(316002)(71200400001)(83380400001)(66556008)(64756008)(6506007)(8936002)(54906003)(9686003)(5660300002)(7696005)(4326008)(52536014)(26005)(66574015)(110136005)(66946007)(33656002)(76116006)(66476007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: =?iso-8859-2?Q?n46H82qR1Zofh9QzddmgG6YAnGNL4lPepPquX06ftKCegxtZS63rroiJsg?=
+ =?iso-8859-2?Q?2vtQNg+lT04t7QbGfLhRMf33WFa58EYLEP75WW/w03R+AqhZcatgC6TxvV?=
+ =?iso-8859-2?Q?ABXMLyuTeURwOV6fKtkX82gDWVXQ4qZEppuTeyWYqVHLY31rmzhLbqY9E0?=
+ =?iso-8859-2?Q?snl1m3w6rDonHF5s06WMzHiQAZUv6UHcvM/kJs2BEDmGyD1FII7rURljZG?=
+ =?iso-8859-2?Q?HnmrRLDxhIMVYC1IZujEAaOLk4UKYVJyalrLexsatTXBCEB/y7SWjE3b1w?=
+ =?iso-8859-2?Q?NS81fnshRQJ3UjhhEFgMnPeofNLnsJD5/mloDmoozdAfOLjaj7u9sMhoEK?=
+ =?iso-8859-2?Q?dgZtt3xz3JDZq6p62G6QW1CfYPKb3gOJSh8yEtOhVbNwrdk/k/xhQ/oVx4?=
+ =?iso-8859-2?Q?+o6yaq8Z8nndFeyBC4QxqLfCIifetyNr0NbZIwIjM/Ib/pns2870nMK9Xx?=
+ =?iso-8859-2?Q?J6pPg0QwlwSlrZfQ5/WuzAt9wXu7wMl/qaxSZIzih84tV4kbMRvrxzADR5?=
+ =?iso-8859-2?Q?EcsJWjim16NIzqhBEwURL0QIP21tnZ555OhYRtB0Fas03GlqS4sytInSEf?=
+ =?iso-8859-2?Q?0n5NMpQFTuo0V4HjAHY50Dne0keZlh/PYDaGBo6eueTAQl39k0jelZgJa5?=
+ =?iso-8859-2?Q?2VvUBaDuFRuLnf6U45oJSAbXnFRl72XAUXW/gCveC6pt0tp9SBKNS0H9ua?=
+ =?iso-8859-2?Q?a72cZ66fzrEYOHvaiY6BkVurvEW6WlUz7q50QF6AV0A1WtPrL/GPh2A00q?=
+ =?iso-8859-2?Q?IylM7RxGKFbUu5RgYK5rjdyMmWvL11vhPQYU8w1/CJ1+oe6MnxxzqKn6La?=
+ =?iso-8859-2?Q?Wd9ys1xPjmgDtGJU/lF9Wo+3bodHi/hbc72UR+2bK97SpNK42yRn7cPkXo?=
+ =?iso-8859-2?Q?Q0xO1zhnmd1aXwvbL1OLVROIE7GUhqWPysC5HkURmo4fyGzSiP2l5M4yKM?=
+ =?iso-8859-2?Q?fonIugH2xpLCIgsAVRcnO8fZhDFiOvqG15OOQgXkZq4Vp2dvVYtIeu6CCL?=
+ =?iso-8859-2?Q?KCspTo8zp8+LVocn4=3D?=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix for link-flapping
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN6PR11MB1572.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bf0236e6-ad28-4cb9-2e63-08d8b720ca6c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2021 17:37:53.3730 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ERgpVSwn2obouvHYUNxtSS96Szpiq15BeouL49jj+8udpM8Qpn+D7QxZgnymcNLT6kf0DrQvNldGkGn9XSzhh9lfZdLL5d1mrAMXBuRGQO4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1393
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: acquire VSI pointer only after
+ VF is initialized
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,235 +156,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VF queues were not brought up when PF was brought up after being downed
-if the VF driver disabled VFs queues during PF down. This could happen
-in some older or external VF driver implementations.
-The problem was that PF driver used vf->queues_enabled as a condition
-to decide what link-state it would send out which caused the issue.
-Remove the check for vf->queues_enabled in the VF link notify. Now VF
-will always be notified of the current link status. Also remove
-the queues_enabled member from i40e_vf structure as it is not used
-anymore. Also refactor repeated link state reporting code into a
-separate helper function i40e_set_vf_link_state().
-Otherwise VNF implementation was broken and caused a link flap.
 
-v2: improve commit message
-v3: net tree target
 
-Fixes: 2ad1274fa35a ("i40e: don't report link up for a VF who hasn't
-enabled")
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 115 ++++++++++--------
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   1 -
- 2 files changed, 67 insertions(+), 49 deletions(-)
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Stefan Assmann
+> Sent: poniedzia=B3ek, 30 listopada 2020 14:13
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; davem@davemloft.net; sassmann@kpanic.de
+> Subject: [Intel-wired-lan] [PATCH] i40e: acquire VSI pointer only after V=
+F is
+> initialized
+> =
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 7efc61a..6621943 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -39,6 +39,66 @@ static void i40e_vc_vf_broadcast(struct i40e_pf *pf,
- 	}
- }
- 
-+/**
-+ * i40e_vc_link_speed2mbps
-+ * converts i40e_aq_link_speed to integer value of Mbps
-+ * @link_speed: the speed to convert
-+ *
-+ * return the speed as direct value of Mbps.
-+ **/
-+static u32
-+i40e_vc_link_speed2mbps(enum i40e_aq_link_speed link_speed)
-+{
-+	switch (link_speed) {
-+	case I40E_LINK_SPEED_100MB:
-+		return SPEED_100;
-+	case I40E_LINK_SPEED_1GB:
-+		return SPEED_1000;
-+	case I40E_LINK_SPEED_2_5GB:
-+		return SPEED_2500;
-+	case I40E_LINK_SPEED_5GB:
-+		return SPEED_5000;
-+	case I40E_LINK_SPEED_10GB:
-+		return SPEED_10000;
-+	case I40E_LINK_SPEED_20GB:
-+		return SPEED_20000;
-+	case I40E_LINK_SPEED_25GB:
-+		return SPEED_25000;
-+	case I40E_LINK_SPEED_40GB:
-+		return SPEED_40000;
-+	case I40E_LINK_SPEED_UNKNOWN:
-+		return SPEED_UNKNOWN;
-+	}
-+	return SPEED_UNKNOWN;
-+}
-+
-+/**
-+ * i40e_set_vf_link_state
-+ * @vf: pointer to the VF structure
-+ * @pfe: pointer to PF event structure
-+ * @ls: pointer to link status structure
-+ *
-+ * set a link state on a single vf
-+ **/
-+static void i40e_set_vf_link_state(struct i40e_vf *vf,
-+				   struct virtchnl_pf_event *pfe, struct i40e_link_status *ls)
-+{
-+	u8 link_status = ls->link_info & I40E_AQ_LINK_UP;
-+
-+	if (vf->link_forced)
-+		link_status = vf->link_up;
-+
-+	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED) {
-+		pfe->event_data.link_event_adv.link_speed = link_status ?
-+			i40e_vc_link_speed2mbps(ls->link_speed) : 0;
-+		pfe->event_data.link_event_adv.link_status = link_status;
-+	} else {
-+		pfe->event_data.link_event.link_speed = link_status ?
-+			i40e_virtchnl_link_speed(ls->link_speed) : 0;
-+		pfe->event_data.link_event.link_status = link_status;
-+	}
-+}
-+
- /**
-  * i40e_vc_notify_vf_link_state
-  * @vf: pointer to the VF structure
-@@ -56,20 +116,7 @@ static void i40e_vc_notify_vf_link_state(struct i40e_vf *vf)
- 	pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
- 	pfe.severity = PF_EVENT_SEVERITY_INFO;
- 
--	/* Always report link is down if the VF queues aren't enabled */
--	if (!vf->queues_enabled) {
--		pfe.event_data.link_event.link_status = false;
--		pfe.event_data.link_event.link_speed = 0;
--	} else if (vf->link_forced) {
--		pfe.event_data.link_event.link_status = vf->link_up;
--		pfe.event_data.link_event.link_speed =
--			(vf->link_up ? i40e_virtchnl_link_speed(ls->link_speed) : 0);
--	} else {
--		pfe.event_data.link_event.link_status =
--			ls->link_info & I40E_AQ_LINK_UP;
--		pfe.event_data.link_event.link_speed =
--			i40e_virtchnl_link_speed(ls->link_speed);
--	}
-+	i40e_set_vf_link_state(vf, &pfe, ls);
- 
- 	i40e_aq_send_msg_to_vf(hw, abs_vf_id, VIRTCHNL_OP_EVENT,
- 			       0, (u8 *)&pfe, sizeof(pfe), NULL);
-@@ -1946,6 +1993,7 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
- 				  VIRTCHNL_VF_OFFLOAD_VLAN;
- 
- 	vfres->vf_cap_flags = VIRTCHNL_VF_OFFLOAD_L2;
-+	vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vsi->info.pvid)
- 		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_VLAN;
-@@ -2443,8 +2491,6 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf *vf, u8 *msg)
- 		}
- 	}
- 
--	vf->queues_enabled = true;
--
- error_param:
- 	/* send the response to the VF */
- 	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES,
-@@ -2466,9 +2512,6 @@ static int i40e_vc_disable_queues_msg(struct i40e_vf *vf, u8 *msg)
- 	struct i40e_pf *pf = vf->pf;
- 	i40e_status aq_ret = 0;
- 
--	/* Immediately mark queues as disabled */
--	vf->queues_enabled = false;
--
- 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
- 		aq_ret = I40E_ERR_PARAM;
- 		goto error_param;
-@@ -3698,26 +3741,8 @@ static int i40e_vc_add_qch_msg(struct i40e_vf *vf, u8 *msg)
- 	}
- 
- 	/* get link speed in MB to validate rate limit */
--	switch (ls->link_speed) {
--	case VIRTCHNL_LINK_SPEED_100MB:
--		speed = SPEED_100;
--		break;
--	case VIRTCHNL_LINK_SPEED_1GB:
--		speed = SPEED_1000;
--		break;
--	case VIRTCHNL_LINK_SPEED_10GB:
--		speed = SPEED_10000;
--		break;
--	case VIRTCHNL_LINK_SPEED_20GB:
--		speed = SPEED_20000;
--		break;
--	case VIRTCHNL_LINK_SPEED_25GB:
--		speed = SPEED_25000;
--		break;
--	case VIRTCHNL_LINK_SPEED_40GB:
--		speed = SPEED_40000;
--		break;
--	default:
-+	speed = i40e_vc_link_speed2mbps(ls->link_speed);
-+	if (speed == SPEED_UNKNOWN) {
- 		dev_err(&pf->pdev->dev,
- 			"Cannot detect link speed\n");
- 		aq_ret = I40E_ERR_PARAM;
-@@ -4466,23 +4491,17 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
- 	switch (link) {
- 	case IFLA_VF_LINK_STATE_AUTO:
- 		vf->link_forced = false;
--		pfe.event_data.link_event.link_status =
--			pf->hw.phy.link_info.link_info & I40E_AQ_LINK_UP;
--		pfe.event_data.link_event.link_speed =
--			(enum virtchnl_link_speed)
--			pf->hw.phy.link_info.link_speed;
-+		i40e_set_vf_link_state(vf, &pfe, ls);
- 		break;
- 	case IFLA_VF_LINK_STATE_ENABLE:
- 		vf->link_forced = true;
- 		vf->link_up = true;
--		pfe.event_data.link_event.link_status = true;
--		pfe.event_data.link_event.link_speed = i40e_virtchnl_link_speed(ls->link_speed);
-+		i40e_set_vf_link_state(vf, &pfe, ls);
- 		break;
- 	case IFLA_VF_LINK_STATE_DISABLE:
- 		vf->link_forced = true;
- 		vf->link_up = false;
--		pfe.event_data.link_event.link_status = false;
--		pfe.event_data.link_event.link_speed = 0;
-+		i40e_set_vf_link_state(vf, &pfe, ls);
- 		break;
- 	default:
- 		ret = -EINVAL;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index 5491215..091e32c 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -98,7 +98,6 @@ struct i40e_vf {
- 	unsigned int tx_rate;	/* Tx bandwidth limit in Mbps */
- 	bool link_forced;
- 	bool link_up;		/* only valid if VF link is forced */
--	bool queues_enabled;	/* true if the VF queues are enabled */
- 	bool spoofchk;
- 	u16 num_vlan;
- 
+> This change simplifies the VF initialization check and also minimizes the=
+ delay
+> between acquiring the VSI pointer and using it. As known by the commit
+> being fixed, there is a risk of the VSI pointer getting changed. Therefore
+> minimize the delay between getting and using the pointer.
+> =
 
-base-commit: 82edab16ec1fc048ef6a9a96ec5a0d1374f5bf3b
--- 
-2.18.4
+> Fixes: 9889707b06ac ("i40e: Fix crash caused by stress setting of VF MAC
+> addresses")
+> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+> =
 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> index 729c4f0d5ac5..bf6034c3a6ea 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> @@ -4046,20 +4046,16 @@ int i40e_ndo_set_vf_mac(struct net_device
+> *netdev, int vf_id, u8 *mac)
+>  		goto error_param;
+> =
+
+>  	vf =3D &pf->vf[vf_id];
+> -	vsi =3D pf->vsi[vf->lan_vsi_idx];
+> =
+
+>  	/* When the VF is resetting wait until it is done.
+>  	 * It can take up to 200 milliseconds,
+>  	 * but wait for up to 300 milliseconds to be safe.
+> -	 * If the VF is indeed in reset, the vsi pointer has
+> -	 * to show on the newly loaded vsi under pf->vsi[id].
+> +	 * Acquire the vsi pointer only after the VF has been
+> +	 * properly initialized.
+>  	 */
+>  	for (i =3D 0; i < 15; i++) {
+> -		if (test_bit(I40E_VF_STATE_INIT, &vf->vf_states)) {
+> -			if (i > 0)
+> -				vsi =3D pf->vsi[vf->lan_vsi_idx];
+> +		if (test_bit(I40E_VF_STATE_INIT, &vf->vf_states))
+>  			break;
+> -		}
+>  		msleep(20);
+>  	}
+>  	if (!test_bit(I40E_VF_STATE_INIT, &vf->vf_states)) { @@ -4068,6
+> +4064,7 @@ int i40e_ndo_set_vf_mac(struct net_device *netdev, int vf_id,
+> u8 *mac)
+>  		ret =3D -EAGAIN;
+>  		goto error_param;
+>  	}
+> +	vsi =3D pf->vsi[vf->lan_vsi_idx];
+> =
+
+>  	if (is_multicast_ether_addr(mac)) {
+>  		dev_err(&pf->pdev->dev,
+
+Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 ---------------------------------------------------------------------
 Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gos=
+podarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapi=
+ta zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i mo=
+e zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci=
+, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek prz=
+egldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the s=
+ole use of the intended recipient(s). If you are not the intended recipient=
+, please contact the sender and delete all copies; any review or distributi=
+on by others is strictly prohibited.
+ =
+
 
 _______________________________________________
 Intel-wired-lan mailing list
