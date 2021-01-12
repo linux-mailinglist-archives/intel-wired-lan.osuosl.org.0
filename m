@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D78192F36BA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jan 2021 18:12:43 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D08AB2F36F2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jan 2021 18:22:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4D64C862E8;
-	Tue, 12 Jan 2021 17:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3978E86CD3;
+	Tue, 12 Jan 2021 17:22:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SbJq5ihMIlAy; Tue, 12 Jan 2021 17:12:42 +0000 (UTC)
+	with ESMTP id sWhzRGY8JL1M; Tue, 12 Jan 2021 17:22:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5662E861D5;
-	Tue, 12 Jan 2021 17:12:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 78F3B86DD3;
+	Tue, 12 Jan 2021 17:22:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4A0CA1BF36B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:12:38 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 95A151BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3539E20337
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:12:38 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 90AF4862C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sjCikRYrNG75 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Jan 2021 17:12:36 +0000 (UTC)
+ with ESMTP id wQ6yXDFA25De for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Jan 2021 17:22:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by silver.osuosl.org (Postfix) with ESMTPS id 6C87720112
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:12:36 +0000 (UTC)
-IronPort-SDR: blMcGfF5BMNKuEYTl2aeqm+I+9moIS0awRFat5LCqhU1pJupiCekdPlVMCicO5rJHNYVgkzc9Z
- VSvdmHrPZ3Ag==
-X-IronPort-AV: E=McAfee;i="6000,8403,9862"; a="157252914"
-X-IronPort-AV: E=Sophos;i="5.79,341,1602572400"; d="scan'208";a="157252914"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3256586274
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jan 2021 17:22:00 +0000 (UTC)
+IronPort-SDR: yVAmmd3hzhuHu8NWQNpeedu0vXxivNFjNarmN9NZVtsmrPuDQKhHAJd4dVANDZPV3D4ZOP+WRN
+ c/Fh9UwuceUA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9862"; a="157254309"
+X-IronPort-AV: E=Sophos;i="5.79,341,1602572400"; d="scan'208";a="157254309"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2021 09:12:26 -0800
-IronPort-SDR: iUtyqKHCBRJIuJbOCvMDmbIPzng4woofQCcApp1bL+0CluWX4q42zJ/5aJBCJ8VtwfIFZHr9rk
- Z6VRqGh23GtQ==
+ 12 Jan 2021 09:21:59 -0800
+IronPort-SDR: ywgAe/U6gLvyyKVZqYARVVHun0VvgabsC/Y3mWuncBPns59KNI5n9881fSiOpNrrXMhxC1mOMH
+ DGZwaWpIfMhA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,341,1602572400"; d="scan'208";a="348519067"
+X-IronPort-AV: E=Sophos;i="5.79,342,1602572400"; d="scan'208";a="353106533"
 Received: from amlin-018-053.igk.intel.com (HELO 10.252.34.83) ([10.102.18.53])
- by orsmga003.jf.intel.com with ESMTP; 12 Jan 2021 09:12:25 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 12 Jan 2021 09:21:58 -0800
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 Jan 2021 17:04:51 +0000
-Message-Id: <20210112170451.445703-1-arkadiusz.kubalewski@intel.com>
+Date: Tue, 12 Jan 2021 17:14:31 +0000
+Message-Id: <20210112171431.457524-1-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] i40e: Fix for link-flapping
+Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix for link-flapping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,6 +82,7 @@ separate helper function i40e_set_vf_link_state().
 Otherwise VNF implementation was broken and caused a link flap.
 
 v2: improve commit message
+v3: net tree target
 
 Fixes: 2ad1274fa35a ("i40e: don't report link up for a VF who hasn't
 enabled")
