@@ -1,73 +1,153 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07C932F4FB7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Jan 2021 17:19:53 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 077FB2F5E2D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Jan 2021 10:57:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0B48C87264;
-	Wed, 13 Jan 2021 16:19:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B4200868F2;
+	Thu, 14 Jan 2021 09:57:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IbPZOIIsvxBL; Wed, 13 Jan 2021 16:19:47 +0000 (UTC)
+	with ESMTP id Iah64bLnsoUM; Thu, 14 Jan 2021 09:57:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0E96387283;
-	Wed, 13 Jan 2021 16:19:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 51B3286BA4;
+	Thu, 14 Jan 2021 09:57:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 247DD1BF59D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Jan 2021 16:19:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2C6601BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2069B86644
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Jan 2021 16:19:46 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 280F186A88
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DIJGrVlv-9z8 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Jan 2021 16:19:45 +0000 (UTC)
+ with ESMTP id t2394tnre9AT for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Jan 2021 09:57:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f52.google.com (mail-io1-f52.google.com
- [209.85.166.52])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6B4A186610
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Jan 2021 16:19:45 +0000 (UTC)
-Received: by mail-io1-f52.google.com with SMTP id q1so5223355ion.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Jan 2021 08:19:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xEPkDwVE9RtnXuRxHoTlrHwQitE78zqBqfATtPtI1UA=;
- b=lJA9CNNPtgcXrhTIrSypuNObSP77MJyUlIs+QKRmtu6gHJFeanhw7/XaGr1Li3VKM/
- 2yCbgcMfPHpPI3G1PeAD1jpUQ+96vgLiIIR+QVg8E3pfe+dMhiBJeKCFKPMecJhKJ95U
- Q++il9AlFfG6tfd1+wT+5KpXpy1ijYMgJ9bk5iY9NY/2ZGJg4aUIvRn4VqOwk4nCRTnc
- 4cituXjcaVGPSitOWCJmUz1AAUOiDUWwxClPaetj6euOMmgnjr+KsPJ9wuaw4hro77r9
- Vk1wQnKl2it8TmgG9X6J5aecv0zsd5jDu/N8ddROK4Dhbl83CqOcr7XFDzmNcghEtsXZ
- oIAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xEPkDwVE9RtnXuRxHoTlrHwQitE78zqBqfATtPtI1UA=;
- b=EnS3CDUz049G4VnXBWJkw7dEKcXXhibPwulhF5fz5R5RuPeAraDP69h+M5YcgkrxfL
- 825BSDVSzIuKRDU02J/yE78SNC/ylB8PXEOv3IbPPa4nrtglqVrNBTnGsfHv+BtTbeJw
- w0Rfbi8uUMHstX8byXHmuz1BTle+HTO/OIQAI43qMEobIXV+fV8ikCmDyzs6Wa6JnV5i
- AB1sejYTW+2CuievyHrBbEQiu06Xd5NmD4a8o4GQ7vGxwcuaBnUPJQRXsZmmWh37mX7u
- 090CXhUH+K+2epKjLjKdZNDXqSDa1OuijNfUQeZTQmw201KNIn6DDC1U+BZ3/0yL8kow
- Hq4A==
-X-Gm-Message-State: AOAM532sdWzmMyNfT2dNnUctYS7X2RPSbFsAX+215Jn2YU6YO8qxZfOs
- FLQGAJiit6jyXeBjFOlu4dsLWejlDPnWUu1bsWg=
-X-Google-Smtp-Source: ABdhPJxtJRbIJ8rd/8KvVO/iH5cbcBfYsiysK0as6sV3To8TfXWO5sRlItdFgSWDvRgjVvpZBzOs4sIWpJhBmTutzKc=
-X-Received: by 2002:a6b:d007:: with SMTP id x7mr2367487ioa.88.1610554784721;
- Wed, 13 Jan 2021 08:19:44 -0800 (PST)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6BF34845D7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:33 +0000 (UTC)
+IronPort-SDR: d3vqEWHPCjVkk3YBVeGC90pwUSbwdnPe2e0hzXFZK9p1IhwGmsDH0aTz4qtqqlMojXkrZ5zDZ4
+ 8OEJyONpmwDg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9863"; a="263130353"
+X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="263130353"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2021 01:57:32 -0800
+IronPort-SDR: U5o3kiy/mu4PI8d+1HffNn9rEeOlrcJ+gX+zmEoYwjKOJPr6d/iPEkw/ojv/AFW7fiqMb4oebF
+ n5Fo65Jp6vYQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="424897648"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga001.jf.intel.com with ESMTP; 14 Jan 2021 01:57:31 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 14 Jan 2021 01:57:31 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 14 Jan 2021 01:57:29 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Thu, 14 Jan 2021 01:57:29 -0800
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.36.51) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Thu, 14 Jan 2021 01:57:29 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VhfMLo2QlrIs9sOaoY4SQ54num8TDpu8wVNWR2yOWRz8Feja0NKnVOpGDU1kvFDCaLNeZ8P552bsjo92u485i3WVwANNSaHHywtC2zbL66/w9ResosB3QDyIA5Cj1WtVRl+Gu5wlu9ncOz3x2eNi3HtYcc6OrY8ghfpi5byBZTJDv3csqVuGuF+B3kfhkg6Ndx6DQnBK8V4S4tMvSfdRolyWWWR/lidqgWBfkj6N1dFTooZRLlKZC0YeBxfns5xCYlyFWHflBc0dYUOppqd6Kxqv4lb1bAB3MnTuYaGvypWRnLWkcSGqZPuGWk4mgZtjLxTNO6BAEpKW71fYgpfpbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FRrb4L2DDR4q2wsL2TS5NGrCxbS0+rTcTlPb6R9L0eo=;
+ b=GXTuSoWlBfmHFgJ0YL1plWfCr0H1BqfizE3Lte12sK7j8lTs/DAsGA3Qc1AA/KDnxosBgXjJKzVytLT72mcimnPGGGGwbjp1OfL9hqciiqcg3+4lFBjGHvnPVvD91RsYrzJpxx3FHdPCvS8N1lIq4pChKONFGlm0Kc0NdLe/rby9rYoCyy/T4gX5rHk50jwr+Jph39KTXwPd4qPVoCBAcbExkcT75srH+PglHmenF3gqHpGdi+ujuxCpIwQ0dDhxgqXeIkhFME9czsLBgIHHUPUU5soybrUSdD1zvAmuOpD7EnwW0oKkZVSfkxh+oCN8rT59BdtGMV0/DXCqnrsVrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FRrb4L2DDR4q2wsL2TS5NGrCxbS0+rTcTlPb6R9L0eo=;
+ b=aRAP4ktf37ETXJvPqAsRh5+K6JYMBjCqMbo2Yu81WlDygpwPFT8w1cLPoDY9igt628xECtqX+lFnTQ9w7nW+wQltISTCERaWCeWNsA5XDKZ8yzlXgJ9SlaNDHcJHBlyZg6chpkvwx6yNyiT+tVU4UamMbdUETMHVOhTxV8ocOoU=
+Received: from CY4PR11MB1576.namprd11.prod.outlook.com (2603:10b6:910:d::15)
+ by CY4PR1101MB2088.namprd11.prod.outlook.com (2603:10b6:910:17::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3763.10; Thu, 14 Jan
+ 2021 09:57:28 +0000
+Received: from CY4PR11MB1576.namprd11.prod.outlook.com
+ ([fe80::e832:8392:8dea:28d7]) by CY4PR11MB1576.namprd11.prod.outlook.com
+ ([fe80::e832:8392:8dea:28d7%7]) with mapi id 15.20.3763.010; Thu, 14 Jan 2021
+ 09:57:28 +0000
+From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
+To: Wei Xu <xuwei5@hisilicon.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE macro
+ for aq_to_posix
+Thread-Index: AQHWhrJTlOhH9ZnF0Ui9Tr4Lsx8uZqonqdWA
+Date: Thu, 14 Jan 2021 09:57:28 +0000
+Message-ID: <CY4PR11MB15769D5697074F230C8742CAABA80@CY4PR11MB1576.namprd11.prod.outlook.com>
+References: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
+In-Reply-To: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: hisilicon.com; dkim=none (message not signed)
+ header.d=none;hisilicon.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [188.147.103.87]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ab8be4de-97ed-4be6-9c38-08d8b872cd76
+x-ms-traffictypediagnostic: CY4PR1101MB2088:
+x-microsoft-antispam-prvs: <CY4PR1101MB208871F60BCE25105BCABDE6ABA80@CY4PR1101MB2088.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5797;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: MZkMXQAY9LexzqwXCVjOfld/ryEbt67e7Jlt6rTNCCwZcySUeAUvnn+Na6HJLpL2XoKZ6WMBwMKiqFYBAaMa2ZTKTp/Zqf1fONvWqxZZvop7p6V5Kox1eK+rFL5NbdHMMg7op/HXYpmxvnnDdVE2EGbOxaSX/mwin2Eeb01ON938yK6X17VvuuT+jPWOfZrkoKHEE/PWSr66811OoUKtScRdeGhCsM3g6nqiK2iXaas2PECLoFvzEKdVMK0WBff7waYE/21xsjkTnssXxEbGJ0cyJLWj8JS79N+nLNBm8JqTUuNsFiuyAG3JEngxFmjKzfEqfESR3vgoEqU00mpNpvpWJstaUQv0jghApr3UoDpI4eX0IxMuHauqNgSflw25uz6UPwAOc7noIUxXJa/m/g==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY4PR11MB1576.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(136003)(366004)(376002)(396003)(346002)(76116006)(52536014)(4326008)(7696005)(8936002)(186003)(9686003)(7416002)(110136005)(66556008)(66476007)(66446008)(64756008)(54906003)(66946007)(478600001)(316002)(8676002)(6506007)(86362001)(83380400001)(33656002)(2906002)(53546011)(26005)(66574015)(71200400001)(55016002)(5660300002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: =?iso-8859-2?Q?ohT1bNiwqH97qfQ6B5fRVWDfRA3Uu5fHk1LcPn/sCWCZWx3Cdr5ZY5tLxu?=
+ =?iso-8859-2?Q?qC3OmjYVCKy9MxM3OiO6I2bKGW751VpIv3RvzCSYur0dFfa4lycmkhNCo8?=
+ =?iso-8859-2?Q?OPmTmc1fjvO8otZCmFrq5JURkDwihg3do2kEljh0OcoUYBgiS5TDt+lnyc?=
+ =?iso-8859-2?Q?tUbmDpazJu3VMaQLU7m0TcNv2ASshXLr95SiESF1CSZTDMizvg1FZ8BGyY?=
+ =?iso-8859-2?Q?/LO6RJKHnxdEZVDcdEFBji5n8YQAhweeQEToR/qH1DuYUppoqK8yxT1l6s?=
+ =?iso-8859-2?Q?qbIWHAYLXNJOSDgkZyg2n+Ow/wkBM18uDF6wIsV9eCszE29bfdRFevroPo?=
+ =?iso-8859-2?Q?O8rrfC9x96kxn4cGyI+l5AX7Sl+cB7VwHIFT6pEUcWk5rCuxq9nF6KK3A6?=
+ =?iso-8859-2?Q?54PI2u/NkEiLFEkKcRbLCNoGzKMpyY1569uOAqIixFP7owJU8LjE0if7zO?=
+ =?iso-8859-2?Q?hc6Y9+PsvQPfHaDqMh5do/ZpbICv/heexztQF1V1hBWMv7cH4PWd2+7hBy?=
+ =?iso-8859-2?Q?pzEfw8TDTk+/xbl4gBRSqM1nBCi6iYSPYM40rPJSmz5PnVz7yFpZFd7mCq?=
+ =?iso-8859-2?Q?F4N9jduEgXC//bFzvJfxoXK5wQGpJrv+s/A9RerrahW6tIi3jd4sUkvnfl?=
+ =?iso-8859-2?Q?Dyj00HXrHFEpK22tgXT6sS599pslbenozN84ZL65cdl4KlB95JqA7qn9+5?=
+ =?iso-8859-2?Q?Ot4APu230+Sbdog2F5DbwDqlX1/zY4pkTltnq/YlbMDPe7Z1jBy5WtI7Cy?=
+ =?iso-8859-2?Q?i+8Gbp3XmIZtBITM01j0RAIMq3vAZf0n1alC8/dm9JPx4+HOFJYE2NAswL?=
+ =?iso-8859-2?Q?3GUxXxRu2HNqcus0lHITWhJ9uf93hSEnK+L5YffcpwvedCj0FfjymqItQM?=
+ =?iso-8859-2?Q?buATWmjD5AgSKzo8IJmZ5C0+pmezpO/+9IYIZeGVlFxEJ5w7y0EQCqkrpz?=
+ =?iso-8859-2?Q?F4N9HgoUrvSYLmZTu7vUnZKvHQMqTlCPrJIa6uSLbvuX+vr6X1g1LF8QYP?=
+ =?iso-8859-2?Q?O7qiADW0P6+NOzX5E=3D?=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-References: <1610538220-25980-1-git-send-email-lirongqing@baidu.com>
-In-Reply-To: <1610538220-25980-1-git-send-email-lirongqing@baidu.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Wed, 13 Jan 2021 08:19:33 -0800
-Message-ID: <CAKgT0Udh8_m=MpDLsWfAeWh2uvFq4ksJ=00e8zMB-v7=P4XLMg@mail.gmail.com>
-To: Li RongQing <lirongqing@baidu.com>
-Subject: Re: [Intel-wired-lan] [PATCH][v2] igb: avoid premature Rx buffer
- reuse
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1576.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ab8be4de-97ed-4be6-9c38-08d8b872cd76
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jan 2021 09:57:28.4610 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: v+pn2lHDB5R51vKImnNVZiFZCiC7eUDR/uHbsaIOvkiKGGpjuO4J6Tb3UsP1Ikic8lG+mdBV3CFQHNfTcEgSrNOM9IyM3JMkFjmFJ47p+ZU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1101MB2088
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE
+ macro for aq_to_posix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,81 +160,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "salil.mehta@huawei.com" <salil.mehta@huawei.com>,
+ "jinying@hisilicon.com" <jinying@hisilicon.com>,
+ "tangkunshan@huawei.com" <tangkunshan@huawei.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "john.garry@huawei.com" <john.garry@huawei.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "linuxarm@huawei.com" <linuxarm@huawei.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "huangdaode@hisilicon.com" <huangdaode@hisilicon.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ "liguozhu@hisilicon.com" <liguozhu@hisilicon.com>,
+ "zhangyi.ac@huawei.com" <zhangyi.ac@huawei.com>,
+ "shiju.jose@huawei.com" <shiju.jose@huawei.com>
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jan 13, 2021 at 3:47 AM Li RongQing <lirongqing@baidu.com> wrote:
->
-> Igb needs a similar fix as commit 75aab4e10ae6a ("i40e: avoid
-> premature Rx buffer reuse")
->
-> The page recycle code, incorrectly, relied on that a page fragment
-> could not be freed inside xdp_do_redirect(). This assumption leads to
-> that page fragments that are used by the stack/XDP redirect can be
-> reused and overwritten.
->
-> To avoid this, store the page count prior invoking xdp_do_redirect().
->
-> Longer explanation:
->
-> Intel NICs have a recycle mechanism. The main idea is that a page is
-> split into two parts. One part is owned by the driver, one part might
-> be owned by someone else, such as the stack.
->
-> t0: Page is allocated, and put on the Rx ring
->               +---------------
-> used by NIC ->| upper buffer
-> (rx_buffer)   +---------------
->               | lower buffer
->               +---------------
->   page count  == USHRT_MAX
->   rx_buffer->pagecnt_bias == USHRT_MAX
->
-> t1: Buffer is received, and passed to the stack (e.g.)
->               +---------------
->               | upper buff (skb)
->               +---------------
-> used by NIC ->| lower buffer
-> (rx_buffer)   +---------------
->   page count  == USHRT_MAX
->   rx_buffer->pagecnt_bias == USHRT_MAX - 1
->
-> t2: Buffer is received, and redirected
->               +---------------
->               | upper buff (skb)
->               +---------------
-> used by NIC ->| lower buffer
-> (rx_buffer)   +---------------
->
-> Now, prior calling xdp_do_redirect():
->   page count  == USHRT_MAX
->   rx_buffer->pagecnt_bias == USHRT_MAX - 2
->
-> This means that buffer *cannot* be flipped/reused, because the skb is
-> still using it.
->
-> The problem arises when xdp_do_redirect() actually frees the
-> segment. Then we get:
->   page count  == USHRT_MAX - 1
->   rx_buffer->pagecnt_bias == USHRT_MAX - 2
->
-> From a recycle perspective, the buffer can be flipped and reused,
-> which means that the skb data area is passed to the Rx HW ring!
->
-> To work around this, the page count is stored prior calling
-> xdp_do_redirect().
->
-> Fixes: 9cbc948b5a20 ("igb: add XDP support")
-> Signed-off-by: Li RongQing <lirongqing@baidu.com>
 
-Looks good.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Wei Xu
+> Sent: =B6roda, 9 wrze=B6nia 2020 10:51
+> To: netdev@vger.kernel.org
+> Cc: salil.mehta@huawei.com; jinying@hisilicon.com;
+> tangkunshan@huawei.com; huangdaode@hisilicon.com;
+> john.garry@huawei.com; linux-kernel@vger.kernel.org;
+> linuxarm@huawei.com; shameerali.kolothum.thodi@huawei.com;
+> zhangyi.ac@huawei.com; intel-wired-lan@lists.osuosl.org;
+> xuwei5@hisilicon.com; jonathan.cameron@huawei.com; Jakub Kicinski
+> <kuba@kernel.org>; liguozhu@hisilicon.com; davem@davemloft.net;
+> shiju.jose@huawei.com
+> Subject: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE macro=
+ for
+> aq_to_posix
+> =
 
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
+> Use the ARRAY_SIZE macro to calculate the size of an array.
+> This code was detected with the help of Coccinelle.
+> =
+
+> Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_adminq.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
+
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> index baf2fe2..eead12c 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> @@ -120,7 +120,7 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, int
+> aq_rc)
+>  	if (aq_ret =3D=3D IAVF_ERR_ADMIN_QUEUE_TIMEOUT)
+>  		return -EAGAIN;
+> =
+
+> -	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
+> +	if (!((u32)aq_rc < ARRAY_SIZE(aq_to_posix)))
+>  		return -ERANGE;
+> =
+
+>  	return aq_to_posix[aq_rc];
+
+Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gos=
+podarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapi=
+ta zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i mo=
+e zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci=
+, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek prz=
+egldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the s=
+ole use of the intended recipient(s). If you are not the intended recipient=
+, please contact the sender and delete all copies; any review or distributi=
+on by others is strictly prohibited.
+ =
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
