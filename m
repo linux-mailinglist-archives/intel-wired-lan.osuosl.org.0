@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CCC12F5FDA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Jan 2021 12:29:33 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F10D2F5FDD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Jan 2021 12:29:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E046D873AD;
-	Thu, 14 Jan 2021 11:29:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E8EE82E11C;
+	Thu, 14 Jan 2021 11:29:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n7pk98d+Mtut; Thu, 14 Jan 2021 11:29:29 +0000 (UTC)
+	with ESMTP id R4aDWXO4Dh02; Thu, 14 Jan 2021 11:29:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4E5C2873AF;
-	Thu, 14 Jan 2021 11:29:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6542F20463;
+	Thu, 14 Jan 2021 11:29:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 46C041BF3C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1EC671BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 42ABD8699B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1977881DE9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M485g2Pzkmxc for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Jan 2021 11:29:25 +0000 (UTC)
+ with ESMTP id 9UQZjnGq0qO2 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Jan 2021 11:29:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D89A386979
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:24 +0000 (UTC)
-IronPort-SDR: IMnkrYw7GK/gRI4ccx489HyaIJD8FcBnY0b9SGOH1j1N+UYqVhPFNV50S2BJvbfV3v1XKGhxCn
- a1NVPfkOI+9A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9863"; a="166022161"
-X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="166022161"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9291D86979
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 11:29:26 +0000 (UTC)
+IronPort-SDR: 0O4L7iCg1r3rdWSTHYb3ExhKjIRXD5w8Rc6Mo9pJFS5DkKzDZjxp6tg+Nq8VDjHHD2fqUPvK/k
+ ARoGzcEcC4iQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9863"; a="166022162"
+X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="166022162"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jan 2021 03:29:24 -0800
-IronPort-SDR: kZJsg7aAvS1JwEhFW3mFWUBgWC5s3dt7dX7ZJe+ik9pK36r/aUIuYE64ep/5DGbcYKyi41wVb2
- +UnpEKYI4Cdg==
+ 14 Jan 2021 03:29:26 -0800
+IronPort-SDR: 7pTzeLWTKmHILqhU6Najrie8Py2B4iAiaxQ+GWIxVX2Sgd+vK99lLk1c67c5rhdYiatJ2qsKHv
+ V8Pscek4SpGA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="424919569"
+X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="424919577"
 Received: from npg-dpdk-haiyue-3.sh.intel.com ([10.67.118.237])
- by orsmga001.jf.intel.com with ESMTP; 14 Jan 2021 03:29:23 -0800
+ by orsmga001.jf.intel.com with ESMTP; 14 Jan 2021 03:29:24 -0800
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 14 Jan 2021 19:13:01 +0800
-Message-Id: <20210114111310.97121-12-haiyue.wang@intel.com>
+Date: Thu, 14 Jan 2021 19:13:02 +0800
+Message-Id: <20210114111310.97121-13-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210114111310.97121-1-haiyue.wang@intel.com>
 References: <20210114111310.97121-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [Patch v1 11/20] ice: Add new actions support for
- VF FDIR
+Subject: [Intel-wired-lan] [Patch v1 12/20] ice: Add non-IP Layer2 protocol
+ FDIR filter for AVF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,119 +75,227 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Qi Zhang <qi.z.zhang@intel.com>
 
-Add two new actions support for VF FDIR:
-
-A passthrough action does not specify the destination queue, but
-just allow the packet go to next pipeline stage, a typical use
-cases is combined with a software mark (FDID) action.
-
-Allow specify a 2^n continuous queues as the destination of a FDIR rule.
-Packet distribution is based on current RSS configure.
+Add new filter type that allow forward non-IP Ethernet packets base on its
+ethertype. The filter is only enabled when COMMS DDP package is loaded.
 
 Signed-off-by: Yahui Cao <yahui.cao@intel.com>
 Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_fdir.c          | 12 +++++++++++-
- drivers/net/ethernet/intel/ice/ice_fdir.h          |  4 ++++
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 10 ++++++++++
- include/linux/avf/virtchnl.h                       |  2 ++
- 4 files changed, 27 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_fdir.c     | 15 ++++++++
+ drivers/net/ethernet/intel/ice/ice_fdir.h     |  2 +
+ drivers/net/ethernet/intel/ice/ice_flow.c     | 17 ++++++++-
+ drivers/net/ethernet/intel/ice/ice_flow.h     |  1 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |  1 +
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 38 +++++++++++++++++--
+ 6 files changed, 70 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.c b/drivers/net/ethernet/intel/ice/ice_fdir.c
-index 8f3e61c6bfd6..5f8d7a9ca068 100644
+index 5f8d7a9ca068..b9c65d0c9271 100644
 --- a/drivers/net/ethernet/intel/ice/ice_fdir.c
 +++ b/drivers/net/ethernet/intel/ice/ice_fdir.c
-@@ -374,7 +374,14 @@ ice_fdir_get_prgm_desc(struct ice_hw *hw, struct ice_fdir_fltr *input,
- 	if (input->dest_ctl == ICE_FLTR_PRGM_DESC_DEST_DROP_PKT) {
- 		fdir_fltr_ctx.drop = ICE_FXD_FLTR_QW0_DROP_YES;
- 		fdir_fltr_ctx.qindex = 0;
-+	} else if (input->dest_ctl ==
-+		   ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_OTHER) {
-+		fdir_fltr_ctx.drop = ICE_FXD_FLTR_QW0_DROP_NO;
-+		fdir_fltr_ctx.qindex = 0;
- 	} else {
-+		if (input->dest_ctl ==
-+		    ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QGROUP)
-+			fdir_fltr_ctx.toq = input->q_region;
- 		fdir_fltr_ctx.drop = ICE_FXD_FLTR_QW0_DROP_NO;
- 		fdir_fltr_ctx.qindex = input->q_index;
- 	}
-@@ -382,7 +389,10 @@ ice_fdir_get_prgm_desc(struct ice_hw *hw, struct ice_fdir_fltr *input,
- 	fdir_fltr_ctx.cnt_index = input->cnt_index;
- 	fdir_fltr_ctx.fd_vsi = ice_get_hw_vsi_num(hw, input->dest_vsi);
- 	fdir_fltr_ctx.evict_ena = ICE_FXD_FLTR_QW0_EVICT_ENA_FALSE;
--	fdir_fltr_ctx.toq_prio = 3;
-+	if (input->dest_ctl == ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_OTHER)
-+		fdir_fltr_ctx.toq_prio = 0;
-+	else
-+		fdir_fltr_ctx.toq_prio = 3;
- 	fdir_fltr_ctx.pcmd = add ? ICE_FXD_FLTR_QW1_PCMD_ADD :
- 		ICE_FXD_FLTR_QW1_PCMD_REMOVE;
- 	fdir_fltr_ctx.swap = ICE_FXD_FLTR_QW1_SWAP_NOT_SET;
+@@ -40,6 +40,12 @@ static const u8 ice_fdir_ipv4_pkt[] = {
+ 	0x00, 0x00
+ };
+ 
++static const u8 ice_fdir_non_ip_l2_pkt[] = {
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++};
++
+ static const u8 ice_fdir_tcpv6_pkt[] = {
+ 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+ 	0x00, 0x00, 0x00, 0x00, 0x86, 0xDD, 0x60, 0x00,
+@@ -238,6 +244,11 @@ static const struct ice_fdir_base_pkt ice_fdir_pkt[] = {
+ 		sizeof(ice_fdir_ipv4_pkt), ice_fdir_ipv4_pkt,
+ 		sizeof(ice_fdir_ip4_tun_pkt), ice_fdir_ip4_tun_pkt,
+ 	},
++	{
++		ICE_FLTR_PTYPE_NON_IP_L2,
++		sizeof(ice_fdir_non_ip_l2_pkt), ice_fdir_non_ip_l2_pkt,
++		sizeof(ice_fdir_non_ip_l2_pkt), ice_fdir_non_ip_l2_pkt,
++	},
+ 	{
+ 		ICE_FLTR_PTYPE_NONF_IPV6_TCP,
+ 		sizeof(ice_fdir_tcpv6_pkt), ice_fdir_tcpv6_pkt,
+@@ -674,6 +685,10 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				  input->ip.v4.proto);
+ 		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
++	case ICE_FLTR_PTYPE_NON_IP_L2:
++		ice_pkt_insert_u16(loc, ICE_MAC_ETHTYPE_OFFSET,
++				   input->ext_data.ether_type);
++		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV6_TCP:
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_DST_ADDR_OFFSET,
+ 					 input->ip.v6.src_ip);
 diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.h b/drivers/net/ethernet/intel/ice/ice_fdir.h
-index 93f3f0d9d37b..adf237925b3c 100644
+index adf237925b3c..58c927cbc953 100644
 --- a/drivers/net/ethernet/intel/ice/ice_fdir.h
 +++ b/drivers/net/ethernet/intel/ice/ice_fdir.h
-@@ -42,6 +42,8 @@
- enum ice_fltr_prgm_desc_dest {
- 	ICE_FLTR_PRGM_DESC_DEST_DROP_PKT,
- 	ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QINDEX,
-+	ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QGROUP,
-+	ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_OTHER,
+@@ -30,6 +30,7 @@
+ #define ICE_IPV6_TC_OFFSET		14
+ #define ICE_IPV6_HLIM_OFFSET		21
+ #define ICE_IPV6_PROTO_OFFSET		20
++#define ICE_MAC_ETHTYPE_OFFSET		12
+ 
+ #define ICE_FDIR_MAX_FLTRS		16384
+ 
+@@ -116,6 +117,7 @@ struct ice_fdir_v6 {
+ struct ice_fdir_extra {
+ 	u8 dst_mac[ETH_ALEN];	/* dest MAC address */
+ 	u8 src_mac[ETH_ALEN];	/* src MAC address */
++	__be16 ether_type;      /* for NON_IP_L2 */
+ 	u32 usr_def[2];		/* user data */
+ 	__be16 vlan_type;	/* VLAN ethertype */
+ 	__be16 vlan_tag;	/* VLAN tag info */
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index 6bf467e09307..b06758c5ad93 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -571,6 +571,17 @@ static const u32 ice_ptypes_nat_t_esp[] = {
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
  };
  
- enum ice_fltr_prgm_desc_fd_status {
-@@ -133,6 +135,8 @@ struct ice_fdir_fltr {
++static const u32 ice_ptypes_mac_non_ip_ofos[] = {
++	0x00000846, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00400000, 0x03FFF000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
+ /* Manage parameters and info. used during the creation of a flow profile */
+ struct ice_flow_prof_params {
+ 	enum ice_block blk;
+@@ -760,7 +771,11 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
+ 				   ICE_FLOW_PTYPE_MAX);
+ 		}
  
- 	/* flex byte filter data */
- 	__be16 flex_word;
-+	/* queue region size (=2^q_region) */
-+	u8 q_region;
- 	u16 flex_offset;
- 	u16 flex_fltr;
- 
+-		if (hdrs & ICE_FLOW_SEG_HDR_PPPOE) {
++		if (hdrs & ICE_FLOW_SEG_HDR_ETH_NON_IP) {
++			src = (const unsigned long *)ice_ptypes_mac_non_ip_ofos;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
++		} else if (hdrs & ICE_FLOW_SEG_HDR_PPPOE) {
+ 			src = (const unsigned long *)ice_ptypes_pppoe;
+ 			bitmap_and(params->ptypes, params->ptypes, src,
+ 				   ICE_FLOW_PTYPE_MAX);
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index d5e7f2dadd56..f1bed16abc64 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -138,6 +138,7 @@ enum ice_flow_seg_hdr {
+ 	ICE_FLOW_SEG_HDR_ESP		= 0x00100000,
+ 	ICE_FLOW_SEG_HDR_AH		= 0x00200000,
+ 	ICE_FLOW_SEG_HDR_NAT_T_ESP	= 0x00400000,
++	ICE_FLOW_SEG_HDR_ETH_NON_IP	= 0x00800000,
+ 	/* The following is an additive bit for ICE_FLOW_SEG_HDR_IPV4 and
+ 	 * ICE_FLOW_SEG_HDR_IPV6 which include the IPV4 other PTYPEs
+ 	 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 7a57d5f88c96..dc8b6cb8e9f2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -192,6 +192,7 @@ enum ice_fltr_ptype {
+ 	ICE_FLTR_PTYPE_NONF_IPV4_TCP,
+ 	ICE_FLTR_PTYPE_NONF_IPV4_SCTP,
+ 	ICE_FLTR_PTYPE_NONF_IPV4_OTHER,
++	ICE_FLTR_PTYPE_NON_IP_L2,
+ 	ICE_FLTR_PTYPE_FRAG_IPV4,
+ 	ICE_FLTR_PTYPE_NONF_IPV6_UDP,
+ 	ICE_FLTR_PTYPE_NONF_IPV6_TCP,
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index de6ec56223e8..f06820af6153 100644
+index f06820af6153..f302458037a2 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -904,6 +904,10 @@ ice_vc_fdir_parse_action(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
- 		struct virtchnl_filter_action *action = &as->actions[i];
- 
- 		switch (action->type) {
-+		case VIRTCHNL_ACTION_PASSTHRU:
-+			dest_num++;
-+			input->dest_ctl = ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_OTHER;
-+			break;
- 		case VIRTCHNL_ACTION_DROP:
- 			dest_num++;
- 			input->dest_ctl = ICE_FLTR_PRGM_DESC_DEST_DROP_PKT;
-@@ -913,6 +917,12 @@ ice_vc_fdir_parse_action(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
- 			input->dest_ctl = ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QINDEX;
- 			input->q_index = action->act_conf.queue.index;
- 			break;
-+		case VIRTCHNL_ACTION_Q_REGION:
-+			dest_num++;
-+			input->dest_ctl = ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QGROUP;
-+			input->q_index = action->act_conf.queue.index;
-+			input->q_region = action->act_conf.queue.region;
-+			break;
- 		case VIRTCHNL_ACTION_MARK:
- 			mark_num++;
- 			input->fltr_id = action->act_conf.mark_id;
-diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-index 5f84e10cef89..cc4ef0f29878 100644
---- a/include/linux/avf/virtchnl.h
-+++ b/include/linux/avf/virtchnl.h
-@@ -593,7 +593,9 @@ enum virtchnl_action {
- 	/* action types */
- 	VIRTCHNL_ACTION_DROP = 0,
- 	VIRTCHNL_ACTION_TC_REDIRECT,
-+	VIRTCHNL_ACTION_PASSTHRU,
- 	VIRTCHNL_ACTION_QUEUE,
-+	VIRTCHNL_ACTION_Q_REGION,
- 	VIRTCHNL_ACTION_MARK,
- 	VIRTCHNL_ACTION_COUNT,
+@@ -27,6 +27,11 @@ struct virtchnl_fdir_fltr_conf {
+ 	struct ice_fdir_fltr input;
  };
+ 
++static enum virtchnl_proto_hdr_type vc_pattern_ether[] = {
++	VIRTCHNL_PROTO_HDR_ETH,
++	VIRTCHNL_PROTO_HDR_NONE,
++};
++
+ static enum virtchnl_proto_hdr_type vc_pattern_ipv4[] = {
+ 	VIRTCHNL_PROTO_HDR_ETH,
+ 	VIRTCHNL_PROTO_HDR_IPV4,
+@@ -87,7 +92,7 @@ struct virtchnl_fdir_pattern_match_item {
+ 	u64 *meta;
+ };
+ 
+-static const struct virtchnl_fdir_pattern_match_item vc_fdir_pattern[] = {
++static const struct virtchnl_fdir_pattern_match_item vc_fdir_pattern_os[] = {
+ 	{vc_pattern_ipv4,                     0,         NULL},
+ 	{vc_pattern_ipv4_tcp,                 0,         NULL},
+ 	{vc_pattern_ipv4_udp,                 0,         NULL},
+@@ -98,6 +103,18 @@ static const struct virtchnl_fdir_pattern_match_item vc_fdir_pattern[] = {
+ 	{vc_pattern_ipv6_sctp,                0,         NULL},
+ };
+ 
++static const struct virtchnl_fdir_pattern_match_item vc_fdir_pattern_comms[] = {
++	{vc_pattern_ipv4,                     0,         NULL},
++	{vc_pattern_ipv4_tcp,                 0,         NULL},
++	{vc_pattern_ipv4_udp,                 0,         NULL},
++	{vc_pattern_ipv4_sctp,                0,         NULL},
++	{vc_pattern_ipv6,                     0,         NULL},
++	{vc_pattern_ipv6_tcp,                 0,         NULL},
++	{vc_pattern_ipv6_udp,                 0,         NULL},
++	{vc_pattern_ipv6_sctp,                0,         NULL},
++	{vc_pattern_ether,                    0,         NULL},
++};
++
+ struct virtchnl_fdir_inset_map {
+ 	enum virtchnl_proto_hdr_field field;
+ 	enum ice_flow_field fld;
+@@ -372,6 +389,9 @@ ice_vc_fdir_set_flow_hdr(struct ice_vf *vf,
+ 	struct device *dev = ice_pf_to_dev(vf->pf);
+ 
+ 	switch (flow) {
++	case ICE_FLTR_PTYPE_NON_IP_L2:
++		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_ETH_NON_IP);
++		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV4_OTHER:
+ 		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_IPV4 |
+ 				  ICE_FLOW_SEG_HDR_IPV_OTHER);
+@@ -712,8 +732,14 @@ ice_vc_fdir_get_pattern(struct ice_vf *vf, int *len)
+ 	struct ice_hw *hw;
+ 
+ 	hw = &pf->hw;
+-	item = vc_fdir_pattern;
+-	*len = ARRAY_SIZE(vc_fdir_pattern);
++	if (!strncmp(hw->active_pkg_name, "ICE COMMS Package",
++		     sizeof(hw->active_pkg_name))) {
++		item = vc_fdir_pattern_comms;
++		*len = ARRAY_SIZE(vc_fdir_pattern_comms);
++	} else {
++		item = vc_fdir_pattern_os;
++		*len = ARRAY_SIZE(vc_fdir_pattern_os);
++	}
+ 
+ 	return item;
+ }
+@@ -775,10 +801,16 @@ ice_vc_fdir_parse_pattern(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
+ 		struct ipv6hdr *ip6h;
+ 		struct udphdr *udph;
+ 		struct tcphdr *tcph;
++		struct ethhdr *eth;
+ 		struct iphdr *iph;
+ 
+ 		switch (hdr->type) {
+ 		case VIRTCHNL_PROTO_HDR_ETH:
++			eth = (struct ethhdr *)hdr->buffer;
++			input->flow_type = ICE_FLTR_PTYPE_NON_IP_L2;
++
++			if (hdr->field_selector)
++				input->ext_data.ether_type = eth->h_proto;
+ 			break;
+ 		case VIRTCHNL_PROTO_HDR_IPV4:
+ 			iph = (struct iphdr *)hdr->buffer;
 -- 
 2.30.0
 
