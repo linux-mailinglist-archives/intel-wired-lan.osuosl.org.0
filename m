@@ -1,151 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077FB2F5E2D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Jan 2021 10:57:39 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 817462F5F52
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Jan 2021 11:55:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B4200868F2;
-	Thu, 14 Jan 2021 09:57:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9A16E20416;
+	Thu, 14 Jan 2021 10:55:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iah64bLnsoUM; Thu, 14 Jan 2021 09:57:37 +0000 (UTC)
+	with ESMTP id 2de9P4VHkrLh; Thu, 14 Jan 2021 10:55:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 51B3286BA4;
-	Thu, 14 Jan 2021 09:57:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DF7A820437;
+	Thu, 14 Jan 2021 10:55:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2C6601BF46D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D12CC1BF3CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 10:55:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 280F186A88
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CCA0986AFD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 10:55:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t2394tnre9AT for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Jan 2021 09:57:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6BF34845D7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 09:57:33 +0000 (UTC)
-IronPort-SDR: d3vqEWHPCjVkk3YBVeGC90pwUSbwdnPe2e0hzXFZK9p1IhwGmsDH0aTz4qtqqlMojXkrZ5zDZ4
- 8OEJyONpmwDg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9863"; a="263130353"
-X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="263130353"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jan 2021 01:57:32 -0800
-IronPort-SDR: U5o3kiy/mu4PI8d+1HffNn9rEeOlrcJ+gX+zmEoYwjKOJPr6d/iPEkw/ojv/AFW7fiqMb4oebF
- n5Fo65Jp6vYQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,347,1602572400"; d="scan'208";a="424897648"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga001.jf.intel.com with ESMTP; 14 Jan 2021 01:57:31 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 14 Jan 2021 01:57:31 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 14 Jan 2021 01:57:29 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 14 Jan 2021 01:57:29 -0800
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.36.51) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Thu, 14 Jan 2021 01:57:29 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VhfMLo2QlrIs9sOaoY4SQ54num8TDpu8wVNWR2yOWRz8Feja0NKnVOpGDU1kvFDCaLNeZ8P552bsjo92u485i3WVwANNSaHHywtC2zbL66/w9ResosB3QDyIA5Cj1WtVRl+Gu5wlu9ncOz3x2eNi3HtYcc6OrY8ghfpi5byBZTJDv3csqVuGuF+B3kfhkg6Ndx6DQnBK8V4S4tMvSfdRolyWWWR/lidqgWBfkj6N1dFTooZRLlKZC0YeBxfns5xCYlyFWHflBc0dYUOppqd6Kxqv4lb1bAB3MnTuYaGvypWRnLWkcSGqZPuGWk4mgZtjLxTNO6BAEpKW71fYgpfpbA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FRrb4L2DDR4q2wsL2TS5NGrCxbS0+rTcTlPb6R9L0eo=;
- b=GXTuSoWlBfmHFgJ0YL1plWfCr0H1BqfizE3Lte12sK7j8lTs/DAsGA3Qc1AA/KDnxosBgXjJKzVytLT72mcimnPGGGGwbjp1OfL9hqciiqcg3+4lFBjGHvnPVvD91RsYrzJpxx3FHdPCvS8N1lIq4pChKONFGlm0Kc0NdLe/rby9rYoCyy/T4gX5rHk50jwr+Jph39KTXwPd4qPVoCBAcbExkcT75srH+PglHmenF3gqHpGdi+ujuxCpIwQ0dDhxgqXeIkhFME9czsLBgIHHUPUU5soybrUSdD1zvAmuOpD7EnwW0oKkZVSfkxh+oCN8rT59BdtGMV0/DXCqnrsVrw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FRrb4L2DDR4q2wsL2TS5NGrCxbS0+rTcTlPb6R9L0eo=;
- b=aRAP4ktf37ETXJvPqAsRh5+K6JYMBjCqMbo2Yu81WlDygpwPFT8w1cLPoDY9igt628xECtqX+lFnTQ9w7nW+wQltISTCERaWCeWNsA5XDKZ8yzlXgJ9SlaNDHcJHBlyZg6chpkvwx6yNyiT+tVU4UamMbdUETMHVOhTxV8ocOoU=
-Received: from CY4PR11MB1576.namprd11.prod.outlook.com (2603:10b6:910:d::15)
- by CY4PR1101MB2088.namprd11.prod.outlook.com (2603:10b6:910:17::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3763.10; Thu, 14 Jan
- 2021 09:57:28 +0000
-Received: from CY4PR11MB1576.namprd11.prod.outlook.com
- ([fe80::e832:8392:8dea:28d7]) by CY4PR11MB1576.namprd11.prod.outlook.com
- ([fe80::e832:8392:8dea:28d7%7]) with mapi id 15.20.3763.010; Thu, 14 Jan 2021
- 09:57:28 +0000
-From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: Wei Xu <xuwei5@hisilicon.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE macro
- for aq_to_posix
-Thread-Index: AQHWhrJTlOhH9ZnF0Ui9Tr4Lsx8uZqonqdWA
-Date: Thu, 14 Jan 2021 09:57:28 +0000
-Message-ID: <CY4PR11MB15769D5697074F230C8742CAABA80@CY4PR11MB1576.namprd11.prod.outlook.com>
+ with ESMTP id vroIy36KrBKr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Jan 2021 10:55:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtprelay.hostedemail.com (smtprelay0086.hostedemail.com
+ [216.40.44.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A972A86AF9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Jan 2021 10:55:20 +0000 (UTC)
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay07.hostedemail.com (Postfix) with ESMTP id 2FC50181D3025;
+ Thu, 14 Jan 2021 10:55:18 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
+ RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1261:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:4321:5007:6742:7576:7652:7974:8603:10004:10400:10848:11026:11232:11473:11658:11914:12043:12048:12109:12296:12297:12438:12740:12895:13019:13069:13095:13255:13311:13357:13439:13894:14181:14659:14721:21080:21433:21451:21524:21627:21990:30012:30054:30055:30063:30064:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:1, LUA_SUMMARY:none
+X-HE-Tag: rake95_1e0310527526
+X-Filterd-Recvd-Size: 3103
+Received: from [192.168.1.159] (unknown [47.151.137.21])
+ (Authenticated sender: joe@perches.com)
+ by omf20.hostedemail.com (Postfix) with ESMTPA;
+ Thu, 14 Jan 2021 10:55:15 +0000 (UTC)
+Message-ID: <ff6c529f78396aa3ce8d9cb9fefeeb098e64342f.camel@perches.com>
+From: Joe Perches <joe@perches.com>
+To: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>, Wei Xu
+ <xuwei5@hisilicon.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Date: Thu, 14 Jan 2021 02:55:13 -0800
+In-Reply-To: <CY4PR11MB15769D5697074F230C8742CAABA80@CY4PR11MB1576.namprd11.prod.outlook.com>
 References: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
-In-Reply-To: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: hisilicon.com; dkim=none (message not signed)
- header.d=none;hisilicon.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [188.147.103.87]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ab8be4de-97ed-4be6-9c38-08d8b872cd76
-x-ms-traffictypediagnostic: CY4PR1101MB2088:
-x-microsoft-antispam-prvs: <CY4PR1101MB208871F60BCE25105BCABDE6ABA80@CY4PR1101MB2088.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5797;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MZkMXQAY9LexzqwXCVjOfld/ryEbt67e7Jlt6rTNCCwZcySUeAUvnn+Na6HJLpL2XoKZ6WMBwMKiqFYBAaMa2ZTKTp/Zqf1fONvWqxZZvop7p6V5Kox1eK+rFL5NbdHMMg7op/HXYpmxvnnDdVE2EGbOxaSX/mwin2Eeb01ON938yK6X17VvuuT+jPWOfZrkoKHEE/PWSr66811OoUKtScRdeGhCsM3g6nqiK2iXaas2PECLoFvzEKdVMK0WBff7waYE/21xsjkTnssXxEbGJ0cyJLWj8JS79N+nLNBm8JqTUuNsFiuyAG3JEngxFmjKzfEqfESR3vgoEqU00mpNpvpWJstaUQv0jghApr3UoDpI4eX0IxMuHauqNgSflw25uz6UPwAOc7noIUxXJa/m/g==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR11MB1576.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(136003)(366004)(376002)(396003)(346002)(76116006)(52536014)(4326008)(7696005)(8936002)(186003)(9686003)(7416002)(110136005)(66556008)(66476007)(66446008)(64756008)(54906003)(66946007)(478600001)(316002)(8676002)(6506007)(86362001)(83380400001)(33656002)(2906002)(53546011)(26005)(66574015)(71200400001)(55016002)(5660300002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?iso-8859-2?Q?ohT1bNiwqH97qfQ6B5fRVWDfRA3Uu5fHk1LcPn/sCWCZWx3Cdr5ZY5tLxu?=
- =?iso-8859-2?Q?qC3OmjYVCKy9MxM3OiO6I2bKGW751VpIv3RvzCSYur0dFfa4lycmkhNCo8?=
- =?iso-8859-2?Q?OPmTmc1fjvO8otZCmFrq5JURkDwihg3do2kEljh0OcoUYBgiS5TDt+lnyc?=
- =?iso-8859-2?Q?tUbmDpazJu3VMaQLU7m0TcNv2ASshXLr95SiESF1CSZTDMizvg1FZ8BGyY?=
- =?iso-8859-2?Q?/LO6RJKHnxdEZVDcdEFBji5n8YQAhweeQEToR/qH1DuYUppoqK8yxT1l6s?=
- =?iso-8859-2?Q?qbIWHAYLXNJOSDgkZyg2n+Ow/wkBM18uDF6wIsV9eCszE29bfdRFevroPo?=
- =?iso-8859-2?Q?O8rrfC9x96kxn4cGyI+l5AX7Sl+cB7VwHIFT6pEUcWk5rCuxq9nF6KK3A6?=
- =?iso-8859-2?Q?54PI2u/NkEiLFEkKcRbLCNoGzKMpyY1569uOAqIixFP7owJU8LjE0if7zO?=
- =?iso-8859-2?Q?hc6Y9+PsvQPfHaDqMh5do/ZpbICv/heexztQF1V1hBWMv7cH4PWd2+7hBy?=
- =?iso-8859-2?Q?pzEfw8TDTk+/xbl4gBRSqM1nBCi6iYSPYM40rPJSmz5PnVz7yFpZFd7mCq?=
- =?iso-8859-2?Q?F4N9jduEgXC//bFzvJfxoXK5wQGpJrv+s/A9RerrahW6tIi3jd4sUkvnfl?=
- =?iso-8859-2?Q?Dyj00HXrHFEpK22tgXT6sS599pslbenozN84ZL65cdl4KlB95JqA7qn9+5?=
- =?iso-8859-2?Q?Ot4APu230+Sbdog2F5DbwDqlX1/zY4pkTltnq/YlbMDPe7Z1jBy5WtI7Cy?=
- =?iso-8859-2?Q?i+8Gbp3XmIZtBITM01j0RAIMq3vAZf0n1alC8/dm9JPx4+HOFJYE2NAswL?=
- =?iso-8859-2?Q?3GUxXxRu2HNqcus0lHITWhJ9uf93hSEnK+L5YffcpwvedCj0FfjymqItQM?=
- =?iso-8859-2?Q?buATWmjD5AgSKzo8IJmZ5C0+pmezpO/+9IYIZeGVlFxEJ5w7y0EQCqkrpz?=
- =?iso-8859-2?Q?F4N9HgoUrvSYLmZTu7vUnZKvHQMqTlCPrJIa6uSLbvuX+vr6X1g1LF8QYP?=
- =?iso-8859-2?Q?O7qiADW0P6+NOzX5E=3D?=
-x-ms-exchange-transport-forked: True
+ <CY4PR11MB15769D5697074F230C8742CAABA80@CY4PR11MB1576.namprd11.prod.outlook.com>
+User-Agent: Evolution 3.38.1-1 
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1576.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ab8be4de-97ed-4be6-9c38-08d8b872cd76
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jan 2021 09:57:28.4610 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: v+pn2lHDB5R51vKImnNVZiFZCiC7eUDR/uHbsaIOvkiKGGpjuO4J6Tb3UsP1Ikic8lG+mdBV3CFQHNfTcEgSrNOM9IyM3JMkFjmFJ47p+ZU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1101MB2088
-X-OriginatorOrg: intel.com
 Subject: Re: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE
  macro for aq_to_posix
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -175,73 +87,52 @@ Cc: "salil.mehta@huawei.com" <salil.mehta@huawei.com>,
  "liguozhu@hisilicon.com" <liguozhu@hisilicon.com>,
  "zhangyi.ac@huawei.com" <zhangyi.ac@huawei.com>,
  "shiju.jose@huawei.com" <shiju.jose@huawei.com>
-Content-Type: text/plain; charset="iso-8859-2"
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Thu, 2021-01-14 at 09:57 +0000, Jankowski, Konrad0 wrote:
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of=
+ Wei Xu
+[]
+> > Use the ARRAY_SIZE macro to calculate the size of an array.
+> > This code was detected with the help of Coccinelle.
+[]
+> > diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+[]
+> > @@ -120,7 +120,7 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, i=
+nt aq_rc)
+> > =A0	if (aq_ret =3D=3D IAVF_ERR_ADMIN_QUEUE_TIMEOUT)
+> > =A0		return -EAGAIN;
+> > =
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Wei Xu
-> Sent: =B6roda, 9 wrze=B6nia 2020 10:51
-> To: netdev@vger.kernel.org
-> Cc: salil.mehta@huawei.com; jinying@hisilicon.com;
-> tangkunshan@huawei.com; huangdaode@hisilicon.com;
-> john.garry@huawei.com; linux-kernel@vger.kernel.org;
-> linuxarm@huawei.com; shameerali.kolothum.thodi@huawei.com;
-> zhangyi.ac@huawei.com; intel-wired-lan@lists.osuosl.org;
-> xuwei5@hisilicon.com; jonathan.cameron@huawei.com; Jakub Kicinski
-> <kuba@kernel.org>; liguozhu@hisilicon.com; davem@davemloft.net;
-> shiju.jose@huawei.com
-> Subject: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE macro=
- for
-> aq_to_posix
+> > -	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
+> > +	if (!((u32)aq_rc < ARRAY_SIZE(aq_to_posix)))
+> > =A0		return -ERANGE;
+> > =
+
+> > =A0	return aq_to_posix[aq_rc];
 > =
 
-> Use the ARRAY_SIZE macro to calculate the size of an array.
-> This code was detected with the help of Coccinelle.
-> =
+> Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 
-> Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_adminq.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
+I think several things are poor here.
 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-> b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-> index baf2fe2..eead12c 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-> @@ -120,7 +120,7 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, int
-> aq_rc)
->  	if (aq_ret =3D=3D IAVF_ERR_ADMIN_QUEUE_TIMEOUT)
->  		return -EAGAIN;
-> =
+This function shouldn't really be a static inline as it would just bloat
+whatever uses it and should just be a typical function in a utility .c file.
 
-> -	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
-> +	if (!((u32)aq_rc < ARRAY_SIZE(aq_to_posix)))
->  		return -ERANGE;
-> =
+And it doesn't seem this function is used at all so it should be deleted.
 
->  	return aq_to_posix[aq_rc];
+aq_to_posix should be static const.
 
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gos=
-podarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapi=
-ta zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i mo=
-e zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci=
-, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek prz=
-egldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the s=
-ole use of the intended recipient(s). If you are not the intended recipient=
-, please contact the sender and delete all copies; any review or distributi=
-on by others is strictly prohibited.
- =
+And if it's really necessary, I think it would be simpler to read using code
+without the cast and negation.
+
+	if (aq_rc < 0 || aq_rc >=3D ARRAY_SIZE(aq_to_posix))
+		return -ERANGE;
+
 
 
 _______________________________________________
