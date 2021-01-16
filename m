@@ -1,57 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 626A72F89AB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Jan 2021 00:57:28 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 402622F8BCE
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Jan 2021 07:14:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DA23186C69;
-	Fri, 15 Jan 2021 23:57:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A5078874FC;
+	Sat, 16 Jan 2021 06:13:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6ZE-hNInzlad; Fri, 15 Jan 2021 23:57:26 +0000 (UTC)
+	with ESMTP id adC4UzZs5keQ; Sat, 16 Jan 2021 06:13:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CF46886C6A;
-	Fri, 15 Jan 2021 23:57:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 18C8B874FE;
+	Sat, 16 Jan 2021 06:13:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 82EA61BF31B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Jan 2021 23:57:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 998961BF861
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:13:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7E6E686C4F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Jan 2021 23:57:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9033086E3C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:13:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sBoagxcN7E3h for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Jan 2021 23:57:23 +0000 (UTC)
+ with ESMTP id k2VrD15vHFPz for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Jan 2021 06:13:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D870086C4D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Jan 2021 23:57:23 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1BC01239E5;
- Fri, 15 Jan 2021 23:57:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610755043;
- bh=Jugm7yT041wqfvRSYw3MdlF8tLFsAvalmyiaeKw8Jd4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=N0xHbYmttdidoLVINDbT8f4OEoalscoXogfQ9zam8wgk+OGu2ipltKpv8YaAIqtlT
- pypHYIT2Gsqj+jFVcpEf93gIEG1wXXrII1JwUwMJS6naXP6AQUGrSwdEDEZCsY9G54
- usmXPtaL8Oqe5bK7KzLbrwwsf7W4I6aYn7mpSCjweCXZfYCt6WrNTYbDWBMamd1dHe
- 7vSVZsgbByxNmW+q5/22fEmooCXS5skphnD0xEAJV9JzRu2040wPMMp3cHnzqs3wvA
- LMrOGFKVNoEFSeYHS+lsCHe9n4WOTN+sKyeZYgEYoJtcZDlNiROEjeeYY6TRHgktnf
- xRZNOY2lptl1Q==
-Date: Fri, 15 Jan 2021 17:57:21 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Michael Walle <michael@walle.cc>
-Message-ID: <20210115235721.GA1862880@bjorn-Precision-5520>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3b101fff85ec1c490e9a14305a999cbe@walle.cc>
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+Received: from mail-pg1-f172.google.com (mail-pg1-f172.google.com
+ [209.85.215.172])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 974C386DBC
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:13:51 +0000 (UTC)
+Received: by mail-pg1-f172.google.com with SMTP id g15so7416898pgu.9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Jan 2021 22:13:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=r6ZBFq9DkJZ2tpvGqG5+pJx56O4V/iX/AfXLlHPFg4Q=;
+ b=EsSGgNod3bsqzTiIFYRjLKg90zqiIvQOvQ6nKwWid+ssFOEvw/lL7DRixQWv36E9bP
+ Yu2j9Isf2B4iVPPXXXSn+VI0oQQWaFACgNzMnVLJf37nCOqldzkdCHP/0jIbGCzX2DCG
+ uLyljBIi/1yyRMJi/uQgyzdZIYGAuryOtEJEAXz5gTRWlT37K4FcIlRfB2c7vZCPwDxB
+ vqYSQFpYQCV/1MEUX34PSfUJAbVhIsUVs3qnULMWOEdtQtlEs7yUAEx+ITBXGCHIAnAL
+ jR+4rw9coP28DLhRjLo66IkLT4DJcVBROUQzN4tXUH3bxkuYHEc7HnYc0U0Z9gbVAjU3
+ 94kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=r6ZBFq9DkJZ2tpvGqG5+pJx56O4V/iX/AfXLlHPFg4Q=;
+ b=i+wHXOMFz6gO8ety5halEw9Cfm9IWWfnyaTndeyf6O4hGLsZN+6MDkzvhl5epZEihn
+ kDx7MD2d9Dm2/o5dQPfs4XpUZGwM7Lq2Oqxf1yv9puGACf6M4035pZIe59bHhoFvcfWJ
+ bcQHWApWz17jqnoCUvMEyL1gAgmfZDD1uniMrZwSqtLAa4/M+ppqxzE/kvq8uI6Xep6l
+ Dep3qHcOvmotmMxIDRLvv+nLmVNEFAeJhQboQnQymOMlc5LWJCBrLnXlNoFDe51IGmg5
+ EbOmLjDA99pdOW8YhaA6i0n/JN1OjdHWYMsbhoSaUgaQx3lEAn28VwM+bivXHhD/zzAD
+ JeQg==
+X-Gm-Message-State: AOAM532DA6xRIfeYDlB3y1dWEcEHpgU/P+Ii2SVT23x02gOJzl3hJekA
+ FW7mCTvy4moWMOYKv89SYrQ=
+X-Google-Smtp-Source: ABdhPJwCn1gNfstQ9YdIORANyi+qvRInI90IuWxV/fUbjrbKN+XnUU2pkBVpbVDOup2dxPTOta2UYA==
+X-Received: by 2002:a65:460d:: with SMTP id v13mr16099601pgq.414.1610777630983; 
+ Fri, 15 Jan 2021 22:13:50 -0800 (PST)
+Received: from localhost ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id b13sm9933821pfi.162.2021.01.15.22.13.49
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 15 Jan 2021 22:13:50 -0800 (PST)
+From: Xin Long <lucien.xin@gmail.com>
+To: network dev <netdev@vger.kernel.org>,
+	linux-sctp@vger.kernel.org
+Date: Sat, 16 Jan 2021 14:13:36 +0800
+Message-Id: <cover.1610777159.git.lucien.xin@gmail.com>
+X-Mailer: git-send-email 2.1.0
+Subject: [Intel-wired-lan] [PATCH net-next 0/6] net: support SCTP CRC csum
+ offload for tunneling packets in some drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,121 +82,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>,
+ Neil Horman <nhorman@tuxdriver.com>, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, davem@davemloft.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jan 13, 2021 at 12:32:32AM +0100, Michael Walle wrote:
-> Am 2021-01-12 23:58, schrieb Bjorn Helgaas:
-> > On Sat, Jan 09, 2021 at 07:31:46PM +0100, Michael Walle wrote:
-> > > Am 2021-01-08 22:20, schrieb Bjorn Helgaas:
+This patchset introduces inline function skb_csum_is_sctp(), and uses it
+to validate it's a sctp CRC csum offload packet, to make SCTP CRC csum
+offload for tunneling packets supported in some HW drivers.
 
-> > > > 3) If the Intel i210 is defective in how it handles an Expansion ROM
-> > > > that overlaps another BAR, a quirk might be the right fix. But my
-> > > > guess is the device is working correctly per spec and there's
-> > > > something wrong in how firmware/Linux is assigning things.  That would
-> > > > mean we need a more generic fix that's not a quirk and not tied to the
-> > > > Intel i210.
-> > > 
-> > > Agreed, but as you already stated (and I've also found that in
-> > > the PCI spec) the Expansion ROM address decoder can be shared by
-> > > the other BARs and it shouldn't matter as long as the ExpROM BAR
-> > > is disabled, which is the case here.
-> > 
-> > My point is just that if this could theoretically affect devices
-> > other than the i210, the fix should not be an i210-specific quirk.
-> > I'll assume this is a general problem and wait for a generic PCI
-> > core solution unless it's i210-specific.
-> 
-> I guess the culprit here is that linux skips the programming of the
-> BAR because of some broken Matrox card. That should have been a
-> quirk instead, right? But I don't know if we want to change that, do
-> we? How many other cards depend on that?
+Xin Long (6):
+  net: add inline function skb_csum_is_sctp
+  net: igb: use skb_csum_is_sctp instead of protocol check
+  net: igbvf: use skb_csum_is_sctp instead of protocol check
+  net: igc: use skb_csum_is_sctp instead of protocol check
+  net: ixgbe: use skb_csum_is_sctp instead of protocol check
+  net: ixgbevf: use skb_csum_is_sctp instead of protocol check
 
-Oh, right.  There's definitely some complicated history there that
-makes me a little scared to change things.  But it's also unfortunate
-if we have to pile quirks on top of quirks.
+ drivers/net/ethernet/intel/igb/igb_main.c         | 14 +-------------
+ drivers/net/ethernet/intel/igbvf/netdev.c         | 14 +-------------
+ drivers/net/ethernet/intel/igc/igc_main.c         | 14 +-------------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c     | 14 +-------------
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 14 +-------------
+ drivers/net/ethernet/pensando/ionic/ionic_txrx.c  |  2 +-
+ include/linux/skbuff.h                            |  5 +++++
+ net/core/dev.c                                    |  2 +-
+ 8 files changed, 12 insertions(+), 67 deletions(-)
 
-> And still, how do we find out that the i210 is behaving correctly?
-> In my opinion it is clearly not. You can change the ExpROM BAR value
-> during runtime and it will start working (while keeping it
-> disabled).  Am I missing something here?
+-- 
+2.1.0
 
-I agree; if the ROM BAR is disabled, I don't think it should matter at
-all what it contains, so this does look like an i210 defect.
-
-Would you mind trying the patch below?  It should update the ROM BAR
-value even when it is disabled.  With the current pci_enable_rom()
-code that doesn't rely on the value read from the BAR, I *think* this
-should be safe even on the Matrox and similar devices.
-
-Bjorn
-
-
-commit 0ca2233eb71f ("PCI: Update ROM BAR even if disabled")
-Author: Bjorn Helgaas <bhelgaas@google.com>
-Date:   Fri Jan 15 17:17:44 2021 -0600
-
-    PCI: Update ROM BAR even if disabled
-    
-    Test patch for i210 issue reported by Michael Walle:
-    https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
-
-diff --git a/drivers/pci/rom.c b/drivers/pci/rom.c
-index 8fc9a4e911e3..fc638034628c 100644
---- a/drivers/pci/rom.c
-+++ b/drivers/pci/rom.c
-@@ -35,9 +35,8 @@ int pci_enable_rom(struct pci_dev *pdev)
- 		return 0;
- 
- 	/*
--	 * Ideally pci_update_resource() would update the ROM BAR address,
--	 * and we would only set the enable bit here.  But apparently some
--	 * devices have buggy ROM BARs that read as zero when disabled.
-+	 * Some ROM BARs read as zero when disabled, so we can't simply
-+	 * read the BAR, set the enable bit, and write it back.
- 	 */
- 	pcibios_resource_to_bus(pdev->bus, &region, res);
- 	pci_read_config_dword(pdev, pdev->rom_base_reg, &rom_addr);
-diff --git a/drivers/pci/setup-res.c b/drivers/pci/setup-res.c
-index 7f1acb3918d0..f69b7d179617 100644
---- a/drivers/pci/setup-res.c
-+++ b/drivers/pci/setup-res.c
-@@ -69,18 +69,10 @@ static void pci_std_update_resource(struct pci_dev *dev, int resno)
- 	if (resno < PCI_ROM_RESOURCE) {
- 		reg = PCI_BASE_ADDRESS_0 + 4 * resno;
- 	} else if (resno == PCI_ROM_RESOURCE) {
--
--		/*
--		 * Apparently some Matrox devices have ROM BARs that read
--		 * as zero when disabled, so don't update ROM BARs unless
--		 * they're enabled.  See
--		 * https://lore.kernel.org/r/43147B3D.1030309@vc.cvut.cz/
--		 */
--		if (!(res->flags & IORESOURCE_ROM_ENABLE))
--			return;
-+		if (res->flags & IORESOURCE_ROM_ENABLE)
-+			new |= PCI_ROM_ADDRESS_ENABLE;
- 
- 		reg = dev->rom_base_reg;
--		new |= PCI_ROM_ADDRESS_ENABLE;
- 	} else
- 		return;
- 
-@@ -99,7 +91,8 @@ static void pci_std_update_resource(struct pci_dev *dev, int resno)
- 	pci_write_config_dword(dev, reg, new);
- 	pci_read_config_dword(dev, reg, &check);
- 
--	if ((new ^ check) & mask) {
-+	/* Some ROM BARs read as zero when disabled */
-+	if (resno != PCI_ROM_RESOURCE && (new ^ check) & mask) {
- 		pci_err(dev, "BAR %d: error updating (%#08x != %#08x)\n",
- 			resno, new, check);
- 	}
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
