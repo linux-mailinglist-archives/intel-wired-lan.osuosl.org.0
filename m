@@ -1,54 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90E392F9140
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 17 Jan 2021 08:31:18 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72AFD2F9154
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 17 Jan 2021 09:17:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C0D6987114;
-	Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 14F178686E;
+	Sun, 17 Jan 2021 08:17:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DJrzOctGEvl5; Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
+	with ESMTP id QQASL4BoWQeC; Sun, 17 Jan 2021 08:16:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7B127870A4;
-	Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 372CE86FDB;
+	Sun, 17 Jan 2021 08:16:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A938A1BF489
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 83B611BF57C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 08:16:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A4BCE8707C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7BD9287015
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 08:16:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nYZBfGiqeUIX for <intel-wired-lan@lists.osuosl.org>;
- Sun, 17 Jan 2021 07:31:13 +0000 (UTC)
+ with ESMTP id 5wahdvxfe8yO for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 17 Jan 2021 08:16:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 965228705C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:13 +0000 (UTC)
-IronPort-SDR: 8ulh5aIfcMfVKEgxtoy/mZU43wzA/0LlujGkFgSF8HT56QMZ99OyLFNo2n2E+KPTbOQSDdHooV
- W0MYx8/kuMRg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9866"; a="157884124"
-X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="157884124"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jan 2021 23:31:12 -0800
-IronPort-SDR: KLkkE7aZpxptUPbTradYVm+RFJe4nByB3BZVjhQS7O1GFAEdE2iJxR8T7OSrgSELje1a7YTG7d
- uVon91Bf5ejw==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B50B18706A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 08:16:54 +0000 (UTC)
+IronPort-SDR: CPf09MTpnEbAYW0ydAZLNO9Nug6nksSN+tFLHZEooRm6nC+j+1nkiexlPIHjkC10L5u9qsn/Wy
+ 1OYAFbBCq0pA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9866"; a="177926693"
+X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="177926693"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2021 00:16:49 -0800
+IronPort-SDR: vvLzuETECsgE7fc6pzpOSRWD8VHpC9c++m4p+JLDl6HBSwD1QvzZ9RVawiVbnN4IOh3EhEtatd
+ gEevBHnWdanw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="425795335"
+X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="346580969"
 Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by orsmga001.jf.intel.com with ESMTP; 16 Jan 2021 23:31:11 -0800
+ by fmsmga007.fm.intel.com with ESMTP; 17 Jan 2021 00:16:48 -0800
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org,
 	anna.kostyukovsky@intel.com
-Date: Sun, 17 Jan 2021 09:31:06 +0200
-Message-Id: <20210117073106.4102905-1-sasha.neftin@intel.com>
+Date: Sun, 17 Jan 2021 10:16:45 +0200
+Message-Id: <20210117081645.4120780-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unused MII_CR_SPEED
@@ -69,7 +69,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Foce PHY speed not supported for i225 devices.
+Force PHY speed not supported for i225 devices.
 MII_CR_SPEED masks not in use in i225 device and can be removed.
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
