@@ -1,89 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4465C2F8BD4
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Jan 2021 07:14:44 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90E392F9140
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 17 Jan 2021 08:31:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EF5A32E1A7;
-	Sat, 16 Jan 2021 06:14:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C0D6987114;
+	Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cWpFScvjJKu8; Sat, 16 Jan 2021 06:14:42 +0000 (UTC)
+	with ESMTP id DJrzOctGEvl5; Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 20AE92E1A4;
-	Sat, 16 Jan 2021 06:14:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7B127870A4;
+	Sun, 17 Jan 2021 07:31:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 18CB71BF861
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:14:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A938A1BF489
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 150F885BAE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:14:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A4BCE8707C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Duplicate header field: "References"
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lhL1o9tn5G9A for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Jan 2021 06:14:39 +0000 (UTC)
+ with ESMTP id nYZBfGiqeUIX for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 17 Jan 2021 07:31:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f172.google.com (mail-pg1-f172.google.com
- [209.85.215.172])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F244386B46
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Jan 2021 06:14:38 +0000 (UTC)
-Received: by mail-pg1-f172.google.com with SMTP id v19so7398769pgj.12
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Jan 2021 22:14:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :in-reply-to:references;
- bh=tdERieQxHdGfwIbBa+vBjrBhMvCQN0KrezwB3bCvhCI=;
- b=AjcIgbmspBRodbPF6HCP12RUDlCEdUblG8XgtE6rAarmbJbtnjqyW9JxUvl2IJYV1e
- F6SJBjnt5ofo5gojJxy4deiqtVaQUguzqUpeQF4D0+gDroeYtpC+ecQ86SKT9Vb3NOy/
- eIJ+SisYel2+kYCVsbNNT70NJ2ny5P5mzNtfNHibf+rDppRbGGupUZUDDcsnPxpl085U
- EGb+O7JpM+uD76HSJuBKLBA0zh8Q0jc75fCC/LRWCPEXgAif69mx8VQVsEMGuotoAvSN
- JSvV8CDACiLR6GGHsNZYteuY03NTiWAa6ka0WyS6CQVe/EqZzHYmAgmpeiu+iCsfpu6R
- PiNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:in-reply-to:references;
- bh=tdERieQxHdGfwIbBa+vBjrBhMvCQN0KrezwB3bCvhCI=;
- b=PVn5RSdgS6cM6KELdpIb9RKdEpatcuP2b4RTIjV5c7k9cIVQHMEQpdWJJn48a5LrjE
- 19Z9gjx/ubIyu8iNGYuRKoz/Ao6l080K/iLLOasnw4H00IES7ksdkYGPFTnl7iDNUfa2
- wBJJgc505a0gWL5Kin1IPhJI17lBvnnldrNbIBl9oC8L+xQSx77W4nQWAnJwufTa7FM+
- v0whBAR624fiGh3nmC+sFea/4fOf4wZ8YjHmtr7BcvQsMpiJP77hWYqyiLEUa9CS3H+d
- 1PX1EXWUz86CYYHO6TkUSvBPi2HpBmMwRmjNBh4Ufo6eW6GT3Tuq1cqX1N5yfz1azgse
- LZew==
-X-Gm-Message-State: AOAM531NI59nqY234givN/ZWuMZlvYacU8m6pG4fID6KDbp5an0eBxQ2
- UFjE2cGH4fRYVtA6CqeZG60=
-X-Google-Smtp-Source: ABdhPJyHhkO2bjdkIB45X0LnolVIdaFq4kG082tSkw1Um22ir/+9vGKKnuz4igyhIXt4mGN0dy7uKg==
-X-Received: by 2002:a05:6a00:a88:b029:19e:4ba8:bbe4 with SMTP id
- b8-20020a056a000a88b029019e4ba8bbe4mr16769998pfl.41.1610777678637; 
- Fri, 15 Jan 2021 22:14:38 -0800 (PST)
-Received: from localhost ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id y189sm9593875pfb.155.2021.01.15.22.14.37
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 15 Jan 2021 22:14:38 -0800 (PST)
-From: Xin Long <lucien.xin@gmail.com>
-To: network dev <netdev@vger.kernel.org>,
-	linux-sctp@vger.kernel.org
-Date: Sat, 16 Jan 2021 14:13:42 +0800
-Message-Id: <c7cd3ae7df46d579a11c277f9cb258b7955415b2.1610777159.git.lucien.xin@gmail.com>
-X-Mailer: git-send-email 2.1.0
-In-Reply-To: <f58d50ef96eb1504f4a952cc75a19d21dcf85827.1610777159.git.lucien.xin@gmail.com>
-References: <cover.1610777159.git.lucien.xin@gmail.com>
- <34c9f5b8c31610687925d9db1f151d5bc87deba7.1610777159.git.lucien.xin@gmail.com>
- <aa69157e286b0178bf115124f4b2da254e07a291.1610777159.git.lucien.xin@gmail.com>
- <c1a1972ea509a7559a8900e1a33212d09f58f3c9.1610777159.git.lucien.xin@gmail.com>
- <7b4d84fe32d588884fcd75c2f6f84eb8cd052622.1610777159.git.lucien.xin@gmail.com>
- <f58d50ef96eb1504f4a952cc75a19d21dcf85827.1610777159.git.lucien.xin@gmail.com>
-In-Reply-To: <cover.1610777159.git.lucien.xin@gmail.com>
-References: <cover.1610777159.git.lucien.xin@gmail.com>
-Subject: [Intel-wired-lan] [PATCH net-next 6/6] net: ixgbevf: use
- skb_csum_is_sctp instead of protocol check
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 965228705C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 07:31:13 +0000 (UTC)
+IronPort-SDR: 8ulh5aIfcMfVKEgxtoy/mZU43wzA/0LlujGkFgSF8HT56QMZ99OyLFNo2n2E+KPTbOQSDdHooV
+ W0MYx8/kuMRg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9866"; a="157884124"
+X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="157884124"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jan 2021 23:31:12 -0800
+IronPort-SDR: KLkkE7aZpxptUPbTradYVm+RFJe4nByB3BZVjhQS7O1GFAEdE2iJxR8T7OSrgSELje1a7YTG7d
+ uVon91Bf5ejw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,352,1602572400"; d="scan'208";a="425795335"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by orsmga001.jf.intel.com with ESMTP; 16 Jan 2021 23:31:11 -0800
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	anna.kostyukovsky@intel.com
+Date: Sun, 17 Jan 2021 09:31:06 +0200
+Message-Id: <20210117073106.4102905-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unused MII_CR_SPEED
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,59 +64,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>,
- Neil Horman <nhorman@tuxdriver.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, davem@davemloft.net
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Using skb_csum_is_sctp is a easier way to validate it's a SCTP CRC
-checksum offload packet, and yet it also makes ixgbevf support SCTP
-CRC checksum offload for UDP and GRE encapped packets, just as it
-does in igb driver.
+Foce PHY speed not supported for i225 devices.
+MII_CR_SPEED masks not in use in i225 device and can be removed.
 
-Signed-off-by: Xin Long <lucien.xin@gmail.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 14 +-------------
- 1 file changed, 1 insertion(+), 13 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_defines.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index 4061cd7..cd9d79f 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -3844,15 +3844,6 @@ static int ixgbevf_tso(struct ixgbevf_ring *tx_ring,
- 	return 1;
- }
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 58fc207dc995..c5b36ec7bcff 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -442,9 +442,6 @@
+ #define MII_CR_POWER_DOWN	0x0800  /* Power down */
+ #define MII_CR_AUTO_NEG_EN	0x1000  /* Auto Neg Enable */
+ #define MII_CR_LOOPBACK		0x4000  /* 0 = normal, 1 = loopback */
+-#define MII_CR_SPEED_1000	0x0040
+-#define MII_CR_SPEED_100	0x2000
+-#define MII_CR_SPEED_10		0x0000
  
--static inline bool ixgbevf_ipv6_csum_is_sctp(struct sk_buff *skb)
--{
--	unsigned int offset = 0;
--
--	ipv6_find_hdr(skb, &offset, IPPROTO_SCTP, NULL, NULL);
--
--	return offset == skb_checksum_start_offset(skb);
--}
--
- static void ixgbevf_tx_csum(struct ixgbevf_ring *tx_ring,
- 			    struct ixgbevf_tx_buffer *first,
- 			    struct ixgbevf_ipsec_tx_data *itd)
-@@ -3873,10 +3864,7 @@ static void ixgbevf_tx_csum(struct ixgbevf_ring *tx_ring,
- 		break;
- 	case offsetof(struct sctphdr, checksum):
- 		/* validate that this is actually an SCTP request */
--		if (((first->protocol == htons(ETH_P_IP)) &&
--		     (ip_hdr(skb)->protocol == IPPROTO_SCTP)) ||
--		    ((first->protocol == htons(ETH_P_IPV6)) &&
--		     ixgbevf_ipv6_csum_is_sctp(skb))) {
-+		if (skb_csum_is_sctp(skb)) {
- 			type_tucmd = IXGBE_ADVTXD_TUCMD_L4T_SCTP;
- 			break;
- 		}
+ /* PHY Status Register */
+ #define MII_SR_LINK_STATUS	0x0004 /* Link Status 1 = link */
 -- 
-2.1.0
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
