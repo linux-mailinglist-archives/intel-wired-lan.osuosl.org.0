@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E623D2F9A70
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 08:24:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 37AC92010B;
-	Mon, 18 Jan 2021 07:24:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ivmu0nV2dAPE; Mon, 18 Jan 2021 07:24:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BAAF72014B;
-	Mon, 18 Jan 2021 07:24:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6603F1BF39D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:24:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98C482F9A86
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 08:31:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5F91F84808
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:24:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A94C858FB;
+	Mon, 18 Jan 2021 07:31:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I2Jp-jS5GA1d; Mon, 18 Jan 2021 07:31:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CE25585955;
+	Mon, 18 Jan 2021 07:31:36 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D8E781BF983
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id D2FD386B2C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WdXVI9Jc75Lq for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Jan 2021 07:24:23 +0000 (UTC)
+ with ESMTP id NHAnEapshcpa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com
- [209.85.214.177])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 33E99845D9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:24:23 +0000 (UTC)
-Received: by mail-pl1-f177.google.com with SMTP id t6so8166141plq.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 23:24:23 -0800 (PST)
+Received: from mail-pf1-f173.google.com (mail-pf1-f173.google.com
+ [209.85.210.173])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 440EA86AD4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+Received: by mail-pf1-f173.google.com with SMTP id h10so9687398pfo.9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 23:31:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=96HWQZJ4JBJxKYas/QXiYTwz0zB+Bpmae7wlXUCw2Ic=;
- b=cSOiQpjHxWGFt/I65wRvVLxfLdjjgx/31D+eEKkYld8WTYl2oNe8H1n0sZeNXCkH8W
- xApe3F+iohMm3/JlT/A8az2aV/GdZWmstekv9kJHTDztjxFdwWw4oYU9Jafb7HRA5zr9
- SngikQhMniTyXovVMmX3sWylJP/qaANK4w9Lj6Eq7+X4s9uAf9wrNuXJgUF4bdIqW7VH
- qfiBO+lgdrjLURpsG4ZRuMTc95epUrzwDc52zbupOIkDZU4fMlDdGDPuonfl6d+lKlj4
- I6a46kYx3J5+Z8Ofjg85XEWafIVvAorfkEzeCET0VVWX/gEF+M5iw6NH7jL0TihdKl7r
- PuwQ==
+ :cc; bh=uMxNPxAc5Cn9KFySg+fY1OeEicAZhM0J6k8NTwRGK+A=;
+ b=iaZzS8C3aXT2rIpu9BDwTtgQwNYsgOCzOvQDRtzptqNJcQ1WjV8yNGStDuo1Ak4rcL
+ ywzDfzx/r6vY6f3V/q4yAmYqEFoVUK4cS4vN06qjRFknPyaksz78sYIr9SW4ZN/aWn0x
+ iBoQ8JC8o3eSC3Tvjpi6T7COqH1Khrh88rGCAcUKtLntkWBdTg0ZqrzR4nIClItEL62e
+ bEbvoToX7ZZvP0+xCVgDBmGYiQnHZfyuv7PNhfWrsqZ4NXIj1qXllhrKPX3O+/5Mx3dz
+ NVWVesGTz5MdNRQV5ajQJEp1t03XT1JAjNeWNQ8zdj63XXJfWK29GBtH86YAbdW2HbRA
+ 4vzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=96HWQZJ4JBJxKYas/QXiYTwz0zB+Bpmae7wlXUCw2Ic=;
- b=mekyve8FAik6jY2+pWmVNwDbjFmXVpEq0lbv9CydLRFAMg95TgszVZrdJ/I+GFNrZZ
- xOjsX3nxhvcek1J0KALDx5azIpwAwirzzwwr4B/JKXpwL6OA+PbT9nzxbsACgvqyDYp0
- gQEBgrxGPP50RuLii9zbwDei01Fs+k+BJCOjdNc7cjCeBCMB1TkybqVTzDdm91skdlO7
- Sdw5jcYknY6F8LXtLN3+v9p8P+MSJ4cVf8onVDbs0bYUMrtqZiI2shemeCNbLh9W7oc/
- 4xuZnK8txoYKnDo+QuDJuljdf2W1K1RxhMJkHRIXUZ+KT5kZzYfFY51gfptHvVx0lIqX
- p6jg==
-X-Gm-Message-State: AOAM530A3PiEHDfDVOM/WOziMd+KQmo0eSIypXpNn43z9PEZvsbEFlAM
- 2lCN/l0AS4Kq90GJacwgaVcFbTkiZ3nRkm+ojTQ=
-X-Google-Smtp-Source: ABdhPJxva6lNOuxx2Cr3KnS3WOlsOMJakeat5WOCdr2Fk99k+Okws29n/VrV8YYcl2npYcQllYdSuRtnolXlDGYahJw=
-X-Received: by 2002:a17:90a:db96:: with SMTP id
- h22mr24996905pjv.204.1610954662795; 
- Sun, 17 Jan 2021 23:24:22 -0800 (PST)
+ bh=uMxNPxAc5Cn9KFySg+fY1OeEicAZhM0J6k8NTwRGK+A=;
+ b=dz6xPGAWnGn0Qh4NYmGscaoh7W1wnd5hMXd9lDyph2YvQTDtW07e68oarJpOcZpBId
+ BwlZepXeB68kNJyTsq1RxnCoaqMhwA+qJ5n9ySkTVG6BuC0sp6575Q+mxNUrTlLdzcBS
+ 68FKcq3uyYZ8ZgPh2rB+aI8bsx76PPRzUbAm7cvB8MABbGlDV10E0By2BHOUWJ49gxjw
+ 0+niOt4ErQwPgOUkQ+kx5A8P2woO4+RXiaWjE0SbavcXX8RP0htQAKdwmWjWgeFVszmu
+ StAb7HEKylKnnmvk+uAqdptXmnCkfcci5YSfd87FZ5xvL8x/y+t/AFkLf7ixxZ1GqRZE
+ UALg==
+X-Gm-Message-State: AOAM531wfbiKwWr9lEgtqfz4QQyejTccw6wazos08sZRZXzpb5tkKeEY
+ KkvVgkz5U8D+Dqd2Fx5w0OiJEI6XCurSS/15eJQ=
+X-Google-Smtp-Source: ABdhPJxEtJGajVP4thclN6C/pO5f+COjssAshj2axTP4UepwJmqqj22e5d0d5dcx9ef2uoL6nqyNdqO6muZfhKhx51c=
+X-Received: by 2002:a62:2e86:0:b029:1a6:5f94:2cb with SMTP id
+ u128-20020a622e860000b02901a65f9402cbmr25225451pfu.19.1610955093909; Sun, 17
+ Jan 2021 23:31:33 -0800 (PST)
 MIME-Version: 1.0
 References: <20210114143318.2171-1-cristian.dumitrescu@intel.com>
 In-Reply-To: <20210114143318.2171-1-cristian.dumitrescu@intel.com>
 From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Mon, 18 Jan 2021 08:24:11 +0100
-Message-ID: <CAJ8uoz01EwDoK15pHpi77YzO+x9REXARYPM_ELgqrcPd7k-2dw@mail.gmail.com>
+Date: Mon, 18 Jan 2021 08:31:23 +0100
+Message-ID: <CAJ8uoz3YSuPj6F+GHkk6yXHryUEOUhVSg2pDVEVrFA6b8Hgu6g@mail.gmail.com>
 To: Cristian Dumitrescu <cristian.dumitrescu@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH net-next 0/4] i40e: small improvements
  on XDP path
@@ -85,19 +85,14 @@ Cc: Network Development <netdev@vger.kernel.org>, edwin.verplanke@intel.com,
  intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf <bpf@vger.kernel.org>,
  =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
  Magnus" <magnus.karlsson@intel.com>
-Content-Type: multipart/mixed; boundary="===============3362652727558229729=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============3362652727558229729==
-Content-Type: multipart/alternative; boundary="0000000000006cde2305b9279c8e"
-
---0000000000006cde2305b9279c8e
-Content-Type: text/plain; charset="UTF-8"
-
-On Thu, Jan 14, 2021 at 3:34 PM Cristian Dumitrescu <
-cristian.dumitrescu@intel.com> wrote:
-
+On Thu, Jan 14, 2021 at 3:34 PM Cristian Dumitrescu
+<cristian.dumitrescu@intel.com> wrote:
+>
 > This patchset introduces some small and straightforward improvements
 > to the Intel i40e driver XDP path. Each improvement is fully described
 > in its associated patch.
@@ -114,56 +109,13 @@ cristian.dumitrescu@intel.com> wrote:
 > --
 > 2.25.1
 >
->
+
 Thank you for these clean ups Cristian!
 
 For the series:
 
 Acked-by: Magnus Karlsson <magnus.karlsson@intel.com>
-
---0000000000006cde2305b9279c8e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 14, 2021 at 3:34 PM Crist=
-ian Dumitrescu &lt;<a href=3D"mailto:cristian.dumitrescu@intel.com">cristia=
-n.dumitrescu@intel.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
-04);padding-left:1ex">This patchset introduces some small and straightforwa=
-rd improvements<br>
-to the Intel i40e driver XDP path. Each improvement is fully described<br>
-in its associated patch.<br>
-<br>
-Cristian Dumitrescu (4):<br>
-=C2=A0 i40e: remove unnecessary memory writes of the next to clean pointer<=
-br>
-=C2=A0 i40e: remove unnecessary cleaned_count updates<br>
-=C2=A0 i40e: remove the redundant buffer info updates<br>
-=C2=A0 i40: consolidate handling of XDP program actions<br>
-<br>
-=C2=A0drivers/net/ethernet/intel/i40e/i40e_xsk.c | 149 +++++++++++---------=
--<br>
-=C2=A01 file changed, 79 insertions(+), 70 deletions(-)<br>
-<br>
--- <br>
-2.25.1<br>
-<br></blockquote><div><br></div><div>Thank you for these clean ups Cristian=
-!</div><div><br></div><div>For the series:</div><div><br></div>Acked-by: Ma=
-gnus Karlsson &lt;<a href=3D"mailto:magnus.karlsson@intel.com">magnus.karls=
-son@intel.com</a>&gt;<br><div>=C2=A0</div></div></div>
-
---0000000000006cde2305b9279c8e--
-
---===============3362652727558229729==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3362652727558229729==--
