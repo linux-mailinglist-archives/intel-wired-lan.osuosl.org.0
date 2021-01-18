@@ -1,56 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 355E52FAA62
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 20:42:11 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7BC12FAA61
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 20:42:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AEDAE84CA5;
-	Mon, 18 Jan 2021 19:42:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A371D86F72;
+	Mon, 18 Jan 2021 19:42:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pP4CyuhdcPLL; Mon, 18 Jan 2021 19:42:09 +0000 (UTC)
+	with ESMTP id c3xKdmaBwG1R; Mon, 18 Jan 2021 19:42:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8E8B88532B;
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2AC586F77;
 	Mon, 18 Jan 2021 19:42:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D10DC1BF313
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 62E9E1BF313
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AC12F2042A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5D93620029
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FeDLGugB6J1D for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Jan 2021 19:42:04 +0000 (UTC)
+ with ESMTP id 4-cU4OCDVKl1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Jan 2021 19:42:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id C8E4720029
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:04 +0000 (UTC)
-IronPort-SDR: FZgwsX+XOOx77yfcOhvYC8+g3B4AsIOuWU7evGeThLtxthFgol2OkwROsEa1W5u15TDzAGfOO+
- X2vpUOy/HmtQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9868"; a="197540481"
-X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="197540481"
+ by silver.osuosl.org (Postfix) with ESMTPS id 8CB5820423
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 19:42:05 +0000 (UTC)
+IronPort-SDR: Fw98OLdyc8XWZnVtR94iai9HKkweP9oR76VSOEGeIb9c5CmYU4C7+IR2OaQeTNDeT+8PW+jfku
+ Iq7uVRSOwygQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9868"; a="197540484"
+X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="197540484"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2021 11:42:04 -0800
-IronPort-SDR: emOk3BCUvgBNQuDg+jWkm4eBZl1WlPUbPwDaHNLtCPEDDpW44zpKTtz915sQP9DcS1iZsMLEEe
- jLIeh5ZHliLA==
+ 18 Jan 2021 11:42:05 -0800
+IronPort-SDR: blrliNwRzxolyHPlxlwwSqZxj2ABT8o2f5NH9Pw77khCwI5bvGaDHhHRJkXRTNIcj75eUKNxbm
+ gx9ThIDIK2Vg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="355289820"
+X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="355289826"
 Received: from amlin-018-053.igk.intel.com (HELO 10.252.34.83) ([10.102.18.53])
- by fmsmga008.fm.intel.com with ESMTP; 18 Jan 2021 11:42:03 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 18 Jan 2021 11:42:04 -0800
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 18 Jan 2021 19:34:52 +0000
-Message-Id: <20210118193454.275037-1-arkadiusz.kubalewski@intel.com>
+Date: Mon, 18 Jan 2021 19:34:53 +0000
+Message-Id: <20210118193454.275037-2-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.26.0
+In-Reply-To: <20210118193454.275037-1-arkadiusz.kubalewski@intel.com>
+References: <20210118193454.275037-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v4 0/2] i40e: Fix for link-flapping
+Subject: [Intel-wired-lan] [PATCH net v4 1/2] i40e: Revert "i40e: don't
+ report link up for a VF who hasn't enabled queues"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,40 +66,84 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VF queues were not brought up when PF was brought up after being downed
-if the VF driver disabled VFs queues during PF down. This could happen
-in some older or external VF driver implementations.
-The problem was that PF driver used vf->queues_enabled as a condition
-to decide what link-state it would send out which caused the issue.
-Remove the check for vf->queues_enabled in the VF link notify. Now VF
-will always be notified of the current link status. Also remove
-the queues_enabled member from i40e_vf structure as it is not used
-anymore. Also refactor repeated link state reporting code into a
-separate helper function i40e_set_vf_link_state().
-Otherwise VNF implementation was broken and caused a link flap.
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-Fixes: 2ad1274fa35a ("i40e: don't report link up for a VF who hasn't enabled")
+This reverts commit 2ad1274fa35ace5c6360762ba48d33b63da2396c
 
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
 v2: improve commit message
 v3: net tree target
 v4: split into 2 patches
+---
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 13 +------------
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h |  1 -
+ 2 files changed, 1 insertion(+), 13 deletions(-)
 
-Arkadiusz Kubalewski (2):
-  i40e: Revert "i40e: don't report link up for a VF who hasn't enabled
-    queues"
-  i40e: refactor repeated link state reporting code
-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 115 ++++++++++--------
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   1 -
- 2 files changed, 67 insertions(+), 49 deletions(-)
-
-
-base-commit: 82edab16ec1fc048ef6a9a96ec5a0d1374f5bf3b
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 7efc61a..1b6ec9b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -55,12 +55,7 @@ static void i40e_vc_notify_vf_link_state(struct i40e_vf *vf)
+ 
+ 	pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
+ 	pfe.severity = PF_EVENT_SEVERITY_INFO;
+-
+-	/* Always report link is down if the VF queues aren't enabled */
+-	if (!vf->queues_enabled) {
+-		pfe.event_data.link_event.link_status = false;
+-		pfe.event_data.link_event.link_speed = 0;
+-	} else if (vf->link_forced) {
++	if (vf->link_forced) {
+ 		pfe.event_data.link_event.link_status = vf->link_up;
+ 		pfe.event_data.link_event.link_speed =
+ 			(vf->link_up ? i40e_virtchnl_link_speed(ls->link_speed) : 0);
+@@ -70,7 +65,6 @@ static void i40e_vc_notify_vf_link_state(struct i40e_vf *vf)
+ 		pfe.event_data.link_event.link_speed =
+ 			i40e_virtchnl_link_speed(ls->link_speed);
+ 	}
+-
+ 	i40e_aq_send_msg_to_vf(hw, abs_vf_id, VIRTCHNL_OP_EVENT,
+ 			       0, (u8 *)&pfe, sizeof(pfe), NULL);
+ }
+@@ -2443,8 +2437,6 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 		}
+ 	}
+ 
+-	vf->queues_enabled = true;
+-
+ error_param:
+ 	/* send the response to the VF */
+ 	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES,
+@@ -2466,9 +2458,6 @@ static int i40e_vc_disable_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 	struct i40e_pf *pf = vf->pf;
+ 	i40e_status aq_ret = 0;
+ 
+-	/* Immediately mark queues as disabled */
+-	vf->queues_enabled = false;
+-
+ 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
+ 		aq_ret = I40E_ERR_PARAM;
+ 		goto error_param;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 5491215..091e32c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -98,7 +98,6 @@ struct i40e_vf {
+ 	unsigned int tx_rate;	/* Tx bandwidth limit in Mbps */
+ 	bool link_forced;
+ 	bool link_up;		/* only valid if VF link is forced */
+-	bool queues_enabled;	/* true if the VF queues are enabled */
+ 	bool spoofchk;
+ 	u16 num_vlan;
+ 
 -- 
 2.18.4
 
