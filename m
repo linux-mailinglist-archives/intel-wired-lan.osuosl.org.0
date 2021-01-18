@@ -1,74 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98C482F9A86
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 08:31:39 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC0332FA476
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jan 2021 16:23:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A94C858FB;
-	Mon, 18 Jan 2021 07:31:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 76F25204AD;
+	Mon, 18 Jan 2021 15:23:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I2Jp-jS5GA1d; Mon, 18 Jan 2021 07:31:37 +0000 (UTC)
+	with ESMTP id OJrCz4jUPXlW; Mon, 18 Jan 2021 15:23:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE25585955;
-	Mon, 18 Jan 2021 07:31:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 92E40204A1;
+	Mon, 18 Jan 2021 15:23:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D8E781BF983
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 05B311BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 15:23:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D2FD386B2C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0093B85A80
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 15:23:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NHAnEapshcpa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
+ with ESMTP id 0kSQpBsE-rOv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Jan 2021 15:22:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f173.google.com (mail-pf1-f173.google.com
- [209.85.210.173])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 440EA86AD4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 07:31:34 +0000 (UTC)
-Received: by mail-pf1-f173.google.com with SMTP id h10so9687398pfo.9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Jan 2021 23:31:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uMxNPxAc5Cn9KFySg+fY1OeEicAZhM0J6k8NTwRGK+A=;
- b=iaZzS8C3aXT2rIpu9BDwTtgQwNYsgOCzOvQDRtzptqNJcQ1WjV8yNGStDuo1Ak4rcL
- ywzDfzx/r6vY6f3V/q4yAmYqEFoVUK4cS4vN06qjRFknPyaksz78sYIr9SW4ZN/aWn0x
- iBoQ8JC8o3eSC3Tvjpi6T7COqH1Khrh88rGCAcUKtLntkWBdTg0ZqrzR4nIClItEL62e
- bEbvoToX7ZZvP0+xCVgDBmGYiQnHZfyuv7PNhfWrsqZ4NXIj1qXllhrKPX3O+/5Mx3dz
- NVWVesGTz5MdNRQV5ajQJEp1t03XT1JAjNeWNQ8zdj63XXJfWK29GBtH86YAbdW2HbRA
- 4vzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uMxNPxAc5Cn9KFySg+fY1OeEicAZhM0J6k8NTwRGK+A=;
- b=dz6xPGAWnGn0Qh4NYmGscaoh7W1wnd5hMXd9lDyph2YvQTDtW07e68oarJpOcZpBId
- BwlZepXeB68kNJyTsq1RxnCoaqMhwA+qJ5n9ySkTVG6BuC0sp6575Q+mxNUrTlLdzcBS
- 68FKcq3uyYZ8ZgPh2rB+aI8bsx76PPRzUbAm7cvB8MABbGlDV10E0By2BHOUWJ49gxjw
- 0+niOt4ErQwPgOUkQ+kx5A8P2woO4+RXiaWjE0SbavcXX8RP0htQAKdwmWjWgeFVszmu
- StAb7HEKylKnnmvk+uAqdptXmnCkfcci5YSfd87FZ5xvL8x/y+t/AFkLf7ixxZ1GqRZE
- UALg==
-X-Gm-Message-State: AOAM531wfbiKwWr9lEgtqfz4QQyejTccw6wazos08sZRZXzpb5tkKeEY
- KkvVgkz5U8D+Dqd2Fx5w0OiJEI6XCurSS/15eJQ=
-X-Google-Smtp-Source: ABdhPJxEtJGajVP4thclN6C/pO5f+COjssAshj2axTP4UepwJmqqj22e5d0d5dcx9ef2uoL6nqyNdqO6muZfhKhx51c=
-X-Received: by 2002:a62:2e86:0:b029:1a6:5f94:2cb with SMTP id
- u128-20020a622e860000b02901a65f9402cbmr25225451pfu.19.1610955093909; Sun, 17
- Jan 2021 23:31:33 -0800 (PST)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B06BA8565B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jan 2021 15:22:58 +0000 (UTC)
+IronPort-SDR: bK135HXrdE18YDKVvtlodjlx6ZsLQuJFXM6blazyAnfULNPfaDL1FUKfUNju5jdynkbDzB/INO
+ 1nEhU/v6QiqA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9867"; a="240358008"
+X-IronPort-AV: E=Sophos;i="5.79,356,1602572400"; d="scan'208";a="240358008"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2021 07:22:54 -0800
+IronPort-SDR: 30U+n3iALOaiOFOL0prCiNqmVU7aJdQXT673T12J5TqN9XBUB1MyWda2biRUzwwEgeXgH/N75M
+ QecKOdeERX0A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,356,1602572400"; d="scan'208";a="500676287"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by orsmga004.jf.intel.com with ESMTP; 18 Jan 2021 07:22:52 -0800
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 18 Jan 2021 16:13:07 +0100
+Message-Id: <20210118151318.12324-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20210114143318.2171-1-cristian.dumitrescu@intel.com>
-In-Reply-To: <20210114143318.2171-1-cristian.dumitrescu@intel.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Mon, 18 Jan 2021 08:31:23 +0100
-Message-ID: <CAJ8uoz3YSuPj6F+GHkk6yXHryUEOUhVSg2pDVEVrFA6b8Hgu6g@mail.gmail.com>
-To: Cristian Dumitrescu <cristian.dumitrescu@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/4] i40e: small improvements
- on XDP path
+Subject: [Intel-wired-lan] [PATCH v3 net-next 00/11] intel driver cleanups
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,41 +63,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Network Development <netdev@vger.kernel.org>, edwin.verplanke@intel.com,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf <bpf@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
+ bjorn.topel@intel.com, magnus.karlsson@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 14, 2021 at 3:34 PM Cristian Dumitrescu
-<cristian.dumitrescu@intel.com> wrote:
->
-> This patchset introduces some small and straightforward improvements
-> to the Intel i40e driver XDP path. Each improvement is fully described
-> in its associated patch.
->
-> Cristian Dumitrescu (4):
->   i40e: remove unnecessary memory writes of the next to clean pointer
->   i40e: remove unnecessary cleaned_count updates
->   i40e: remove the redundant buffer info updates
->   i40: consolidate handling of XDP program actions
->
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 149 +++++++++++----------
->  1 file changed, 79 insertions(+), 70 deletions(-)
->
-> --
-> 2.25.1
->
-
-Thank you for these clean ups Cristian!
-
-For the series:
-
-Acked-by: Magnus Karlsson <magnus.karlsson@intel.com>
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGksCgpUaGlzIHNlcmllcyBpcyBtb3N0bHkgYWJvdXQgdGhlIGNsZWFudXBzIG9uIFJ4IChaQy9u
+b3JtYWwpIHBhdGhzIGJvdGggaW4KaWNlIGFuZCBpNDBlIGRyaXZlcnMuIFRoaW5ncyB0aGF0IHN0
+YW5kIG91dCBhcmUgdGhlIHNpbXBsaWZhY3Rpb25zIG9mCmljZV9jaGFuZ2VfbXR1IGFuZCBpNDBl
+X3hkcF9zZXR1cC4KClRoaXJkIGl0ZXJhdGlvbiBvZiB0aGlzIGluY2x1ZGVzIHBhdGNoZXMgdGhh
+dCBvcHRpbWl6ZSB0aGUgaGFuZGxpbmcgb2YKKl9yeF9vZmZzZXQoKSBjYWxscyBwZXIgZWFjaCBw
+cm9jZXNzZWQgZnJhbWUuIFNvbWUgY3ljbGVzIGNhbiBiZSBzYXZlZApieSBzdG9yaW5nIHRoZSBy
+ZXN1bHQgb2YgdGhhdCBmdW5jdGlvbiBvbnRvIHJ4IHJpbmcuIEZvciB0aGF0LCBJIGFtCnVzaW5n
+IGV4aXN0aW5nIGhvbGVzIHdpdGhpbiByaW5nIHN0cnVjdHMgKGNoZWNrZWQgd2l0aCBwYWhvbGUp
+LgoKVGhhbmtzIQoKdjM6IHJlYmFzZSwgZml4IGhhbmRsaW5nIHJ4IG9mZnNldAp2MjogZml4IGtk
+b2MgaW4gcGF0Y2ggNSAoSmFrdWIpCgoKQmrDtnJuIFTDtnBlbCAoMSk6CiAgaTQwZSwgeHNrOiBT
+aW1wbGlmeSB0aGUgZG8td2hpbGUgYWxsb2NhdGlvbiBsb29wCgpNYWNpZWogRmlqYWxrb3dza2kg
+KDEwKToKICBpNDBlOiBkcm9wIHJlZHVuZGFudCBjaGVjayB3aGVuIHNldHRpbmcgeGRwIHByb2cK
+ICBpNDBlOiBkcm9wIG1pc2xlYWRpbmcgZnVuY3Rpb24gY29tbWVudHMKICBpNDBlOiBhZGp1c3Qg
+aTQwZV9pc19ub25fZW9wCiAgaWNlOiBzaW1wbGlmeSBpY2VfcnVuX3hkcAogIGljZTogbW92ZSBz
+a2IgcG9pbnRlciBmcm9tIHJ4X2J1ZiB0byByeF9yaW5nCiAgaWNlOiByZW1vdmUgcmVkdW5kYW50
+IGNoZWNrcyBpbiBpY2VfY2hhbmdlX210dQogIGljZTogc2tpcCBOVUxMIGNoZWNrIGFnYWluc3Qg
+WERQIHByb2cgaW4gWkMgcGF0aAogIGk0MGU6IHN0b3JlIHRoZSByZXN1bHQgb2YgaTQwZV9yeF9v
+ZmZzZXQoKSBvbnRvIGk0MGVfcmluZwogIGljZTogc3RvcmUgdGhlIHJlc3VsdCBvZiBpY2Vfcnhf
+b2Zmc2V0KCkgb250byBpY2VfcmluZwogIGl4Z2JlOiBzdG9yZSB0aGUgcmVzdWx0IG9mIGl4Z2Jl
+X3J4X29mZnNldCgpIG9udG8gaXhnYmVfcmluZwoKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2k0MGUvaTQwZV9tYWluLmMgICB8ICAzIC0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZV90eHJ4LmMgICB8IDkxICsrKysrKy0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2k0MGUvaTQwZV90eHJ4LmggICB8ICAxICsKIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyAgICB8ICA0ICstCiBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pY2UvaWNlX21haW4uYyAgICAgfCAgOSAtLQogZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWNlL2ljZV90eHJ4LmMgICAgIHwgODggKysrKysrKystLS0tLS0tLS0tCiBkcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguaCAgICAgfCAgMyArLQogZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV94c2suYyAgICAgIHwgIDcgKy0KIGRyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlLmggICAgICB8ICAxICsKIGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYyB8IDE1ICstLQogMTAgZmlsZXMgY2hhbmdl
+ZCwgODYgaW5zZXJ0aW9ucygrKSwgMTM2IGRlbGV0aW9ucygtKQoKLS0gCjIuMjAuMQoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFu
+IG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9z
+dW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
