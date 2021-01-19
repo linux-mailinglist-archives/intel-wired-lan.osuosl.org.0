@@ -1,77 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA01F2FC34A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 23:25:30 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44D502FC35B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 23:25:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6614586252;
-	Tue, 19 Jan 2021 22:25:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EC13E84ABB;
+	Tue, 19 Jan 2021 22:25:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OJQTbLjd7rT7; Tue, 19 Jan 2021 22:25:29 +0000 (UTC)
+	with ESMTP id wxcTo7rWWtor; Tue, 19 Jan 2021 22:25:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C6A61864F3;
-	Tue, 19 Jan 2021 22:25:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4828784D09;
+	Tue, 19 Jan 2021 22:25:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0DF071BF59A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8C4941BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F0EB2203B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 78306203B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kK8YSqtU9LEf for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Jan 2021 22:25:25 +0000 (UTC)
+ with ESMTP id 0TC7ezIGLIQK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Jan 2021 22:25:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f42.google.com (mail-io1-f42.google.com
- [209.85.166.42])
- by silver.osuosl.org (Postfix) with ESMTPS id AB43D203A4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:25 +0000 (UTC)
-Received: by mail-io1-f42.google.com with SMTP id d81so27795838iof.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 14:25:25 -0800 (PST)
+Received: from mail-io1-f43.google.com (mail-io1-f43.google.com
+ [209.85.166.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 59D591FE2F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:25:45 +0000 (UTC)
+Received: by mail-io1-f43.google.com with SMTP id h11so3097329ioh.11
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 14:25:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ckQsUQ1LKR1mQXUCM/yL+eZIKUoNzImIqmnZkfMbC3Y=;
- b=CERfv+nwmEmSScikj66V2CkDoFpDpYI273t4hfbNwjoqpuqJy9+uV5ZOUEP/6ZEQn/
- M9MwbTFJ8zUi7qq1AvPhMPT5JrPWzTHi1Kg1gzenf5FoWEBwis2cO911+05j85VgWPeq
- hLaBGPGfxLbZvTftWrjPp7j6GlKYoqMyuKcIkZfZwqpYS33iMWln1NGlFGBJ2jx5LUCL
- VwZgVh/CksTySsbKCzQEWIj+NZIizbVYxIZnFEAB/URgvREpSlsEG7TePH5vay2Ys88E
- 0uGAXUeWA3IUTpdi6plUnYLtnoCDo0v+BB/PGEHnbeKRXY/Mawzqpfw+qkw++xN24JLy
- yn7w==
+ :cc; bh=d7zoJM+uNhdWvf1nHzEcFiYo9BG80GzQR83DQYjnEzw=;
+ b=eil52VWTCcNdi++4F2dG/nMwfkcdE91k3nHfVG8GKbOw0SwqzOWfBUgUGRIRTkxIqA
+ fLVNu6G3aJ548afzbytVlZPJMTl8wGbJaQ8KfCF+sqVN7opxIcsJ2IGN0sIxUYxSXLIy
+ NIONX+zWUh0SOhOSotXhMFMLEcg6L4pLt9U/t11s0JlR/RliRRsBfAJwsetVvrfBoOdP
+ f7wazaGsD1pW8VXo7YvMA1kIVPB+aXRZczruu1ftzmlRRJtL3b/mxT7/T2y8AC4taJm9
+ x8mN3J8lqrcuYu4fjLE4O2E3WSP+vgbLmas6FN3rT/2a22EBOxz79NtHxJxE1cw9id5q
+ JCqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ckQsUQ1LKR1mQXUCM/yL+eZIKUoNzImIqmnZkfMbC3Y=;
- b=cG0pB2GtooomMG8CnudeMjTEBtlZrCacB+8SYmPEhuzXFC4p5VG24EmhP4CnrW1aGT
- UDck8Iw3KP7PoQJPePAogg8nVp+ft31JlYNqnvF2zM3YI5hqA//9T1HyFV/qfyAE7Rs0
- Kcfxe0JrnjNju6KMwkZOR4/M52Crc+NAPqkt3iGNth8YJ+Ceb5q3AfZ5GwXCIRT9UMWm
- 0QX0CDTL2aXZ0Q5n/C3bWxlP8FSs4/eC3YHAxCxZyz7+/z+fQZ3oIa8AvOADnkAll9iu
- HUhunfFYB5PZnbPUE/vvUEELPTg8rGamVB9diDPoR3r6TAymMTXI7wxbV9OLdwvX3VaP
- OQoA==
-X-Gm-Message-State: AOAM530y1mGRhzO6GUGyo0ZTMB9Y0qAFwN4NelHPW1sLgrnWhiWhQATu
- Nvs2iRwyM/OAEpVy+z3j2WjkpCXbCBToZDeVpaY=
-X-Google-Smtp-Source: ABdhPJylN6iYGS9pZS0XhZW5StN63C1HfTKCSdFeDNy6fAtLirkNvErTelv9k1RwWpw+XADvqOjsuXK7VyUDytCgRuw=
-X-Received: by 2002:a02:5889:: with SMTP id f131mr5339131jab.121.1611095125034; 
- Tue, 19 Jan 2021 14:25:25 -0800 (PST)
+ bh=d7zoJM+uNhdWvf1nHzEcFiYo9BG80GzQR83DQYjnEzw=;
+ b=iovy/WxTouGlI0LA92tutURs8SEwFGr+Npl49zGG3I/CEHXXaNwAwpfj5oTbC6pRXy
+ KcwTPsL97nEZyHwi09iVymy7vmLQM5hS8JhmztS2QvqE09CLPL2k9w6D0wjFP/jFU6sk
+ k33wglHXJmKn5O3n1Hj6wMdf1vVcDdNMCFmUrDSVZ6Ox0rKya56lIAzNIIYgHESyObtP
+ jVLMRtwkdKfhJKlWxhKU3sKlmhPyb90LXwx6/RMYjftmSD83HDB5LCnypxsVCNUp7vN+
+ 9LkJ7gMIvKoN5EuLkO7NZ6Ppyc1WA+fy9TOR/ChfMdjaiwbM5v4KQ3yiMjrJO8QqjwUG
+ yEaA==
+X-Gm-Message-State: AOAM531orK2h4mSD7bSw/k+cEIE7nJo68fL61yalV2YKqHMaJ9RVxxaQ
+ cM+SGwIKmGRPLi5BK34cEBcBUNc8myRpHiAG44E=
+X-Google-Smtp-Source: ABdhPJzSh0zwo7rTqCixtlkjRTXkcsmO4VdPcYvUvCQTW0AwTAj8wdr2YAuGptKyS9szDJCfJiOLjgr5A9AUhS/ecKw=
+X-Received: by 2002:a92:b6dd:: with SMTP id m90mr4638493ill.97.1611095144572; 
+ Tue, 19 Jan 2021 14:25:44 -0800 (PST)
 MIME-Version: 1.0
 References: <34c9f5b8c31610687925d9db1f151d5bc87deba7.1610777159.git.lucien.xin@gmail.com>
  <aa69157e286b0178bf115124f4b2da254e07a291.1610777159.git.lucien.xin@gmail.com>
  <c1a1972ea509a7559a8900e1a33212d09f58f3c9.1610777159.git.lucien.xin@gmail.com>
- <cover.1610777159.git.lucien.xin@gmail.com>
  <7b4d84fe32d588884fcd75c2f6f84eb8cd052622.1610777159.git.lucien.xin@gmail.com>
+ <cover.1610777159.git.lucien.xin@gmail.com>
  <f58d50ef96eb1504f4a952cc75a19d21dcf85827.1610777159.git.lucien.xin@gmail.com>
-In-Reply-To: <f58d50ef96eb1504f4a952cc75a19d21dcf85827.1610777159.git.lucien.xin@gmail.com>
+ <c7cd3ae7df46d579a11c277f9cb258b7955415b2.1610777159.git.lucien.xin@gmail.com>
+In-Reply-To: <c7cd3ae7df46d579a11c277f9cb258b7955415b2.1610777159.git.lucien.xin@gmail.com>
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 19 Jan 2021 14:25:13 -0800
-Message-ID: <CAKgT0UciYR6t7nUpAiAi79LSbqg048g_ZKCi511KDXUnXo2e5A@mail.gmail.com>
+Date: Tue, 19 Jan 2021 14:25:31 -0800
+Message-ID: <CAKgT0UdaXj9X47=ggSwTKt2zvG-Wcvtj-GSf9JZWcPaMGy+M2w@mail.gmail.com>
 To: Xin Long <lucien.xin@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 5/6] net: ixgbe: use
+Subject: Re: [Intel-wired-lan] [PATCH net-next 6/6] net: ixgbevf: use
  skb_csum_is_sctp instead of protocol check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -99,7 +100,7 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 On Fri, Jan 15, 2021 at 10:14 PM Xin Long <lucien.xin@gmail.com> wrote:
 >
 > Using skb_csum_is_sctp is a easier way to validate it's a SCTP CRC
-> checksum offload packet, and yet it also makes ixgbe support SCTP
+> checksum offload packet, and yet it also makes ixgbevf support SCTP
 > CRC checksum offload for UDP and GRE encapped packets, just as it
 > does in igb driver.
 >
