@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72B1E2FAE24
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 01:41:07 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A9BA2FB21E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 07:55:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1C00122D33;
-	Tue, 19 Jan 2021 00:41:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ABD8F85F8C;
+	Tue, 19 Jan 2021 06:55:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RZgXrnqmKcQI; Tue, 19 Jan 2021 00:41:02 +0000 (UTC)
+	with ESMTP id lne0N6b8MsiF; Tue, 19 Jan 2021 06:55:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0A9D422FB9;
-	Tue, 19 Jan 2021 00:41:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7817E85F7F;
+	Tue, 19 Jan 2021 06:55:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F41AB1BF2EA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 00:40:58 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 08F8A1BF313
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 06:55:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id F093586944
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 00:40:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E595427400
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 06:55:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fzZrSlHxmX2e for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Jan 2021 00:40:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 91D7986788
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 00:40:56 +0000 (UTC)
-IronPort-SDR: ZqZElZSEnIJ+jBJ0OxetS3RsqjWN6lPRsbx7lumnyYYT6jo8ujdmJSi9Ij/0Io5s6AXqN4kBkf
- cafZYRqOHa0A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9868"; a="240401914"
-X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="240401914"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2021 16:40:56 -0800
-IronPort-SDR: rryoP86f2/jqERXEi9OD55lGJSKxjIRFGTsTkH1U72kUKNkb3LDBUEjK/xsNOBzYE9EINij16a
- 32INf1X6K+xQ==
-X-IronPort-AV: E=Sophos;i="5.79,357,1602572400"; d="scan'208";a="426285792"
-Received: from cemillan-mobl.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.212.57.184])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2021 16:40:55 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: netdev@vger.kernel.org
-Date: Mon, 18 Jan 2021 16:40:28 -0800
-Message-Id: <20210119004028.2809425-9-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210119004028.2809425-1-vinicius.gomes@intel.com>
-References: <20210119004028.2809425-1-vinicius.gomes@intel.com>
+ with ESMTP id nsyEJlaQac9p for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Jan 2021 06:55:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3E447204FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 06:55:24 +0000 (UTC)
+Received: from [192.168.0.6] (ip5f5aeabb.dynamic.kabel-deutschland.de
+ [95.90.234.187])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 64D2520645D54;
+ Tue, 19 Jan 2021 07:55:20 +0100 (CET)
+To: Greg KH <gregkh@linuxfoundation.org>, Jakub Kicinski <kuba@kernel.org>
+References: <20201102231307.13021-1-pmenzel@molgen.mpg.de>
+ <20201102231307.13021-3-pmenzel@molgen.mpg.de>
+ <20201102161943.343586b1@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+ <36ce1f2e-843c-4995-8bb2-2c2676f01b9d@molgen.mpg.de>
+ <20201103103940.2ed27fa2@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+ <c1ad26c6-a4a6-d161-1b18-476b380f4e58@molgen.mpg.de>
+ <X/ShBVXp32Y+Jeds@kroah.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <19eab284-b7b0-7053-1aa7-5fedcee04263@molgen.mpg.de>
+Date: Tue, 19 Jan 2021 07:55:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 8/8] igc: Separate TSN
- configurations that can be updated
+In-Reply-To: <X/ShBVXp32Y+Jeds@kroah.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ethernet: igb: e1000_phy: Check
+ for ops.force_speed_duplex existence
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,313 +67,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, mkubecek@suse.cz, jiri@resnulli.us,
- vladimir.oltean@nxp.com, po.liu@nxp.com, jhs@mojatatu.com, m-karicheri2@ti.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, xiyou.wangcong@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Jeffrey Townsend <jeffrey.townsend@bigswitch.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ John W Linville <linville@tuxdriver.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Some TSN features can be enabled during runtime, but most of the
-features need an adapter reset to be disabled.
-
-To better keep track of this, separate the process into an "_apply"
-and a "reset" functions, "_apply" will run with the adapter in
-potencially "dirty" state, and if necessary will request an adapter
-reset, so "_reset" always run with a "clean" adapter.
-
-The idea is to make the process easier to follow.
-
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c |  21 ++--
- drivers/net/ethernet/intel/igc/igc_tsn.c  | 139 +++++++++++++++-------
- drivers/net/ethernet/intel/igc/igc_tsn.h  |   1 +
- 3 files changed, 102 insertions(+), 59 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 6a09f37ba7ed..8f94b53de2df 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -108,7 +108,7 @@ void igc_reset(struct igc_adapter *adapter)
- 	igc_ptp_reset(adapter);
- 
- 	/* Re-enable TSN offloading, where applicable. */
--	igc_tsn_offload_apply(adapter);
-+	igc_tsn_reset(adapter);
- 
- 	igc_get_phy_info(hw);
- }
-@@ -4824,6 +4824,11 @@ static int igc_save_frame_preemption(struct igc_adapter *adapter,
- 	u32 preempt;
- 	int i;
- 
-+	/* What we want here is just to save the configuration, so
-+	 * when frame preemption is enabled via ethtool, which queues
-+	 * are marked as preemptible is saved.
-+	 */
-+
- 	preempt = qopt->preemptible_queues;
- 
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
-@@ -4851,18 +4856,6 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
--static int igc_tsn_enable_frame_preemption(struct igc_adapter *adapter,
--					   struct tc_preempt_qopt_offload *qopt)
--{
--	int err;
--
--	err = igc_save_frame_preemption(adapter, qopt);
--	if (err)
--		return err;
--
--	return igc_tsn_offload_apply(adapter);
--}
--
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 			void *type_data)
- {
-@@ -4876,7 +4869,7 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 		return igc_tsn_enable_launchtime(adapter, type_data);
- 
- 	case TC_SETUP_PREEMPT:
--		return igc_tsn_enable_frame_preemption(adapter, type_data);
-+		return igc_save_frame_preemption(adapter, type_data);
- 
- 	default:
- 		return -EOPNOTSUPP;
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 31aa9eed3ae3..fdb472a80967 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -18,8 +18,24 @@ static bool is_any_launchtime(struct igc_adapter *adapter)
- 	return false;
- }
- 
-+static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
-+{
-+	unsigned int new_flags = adapter->flags & ~IGC_FLAG_TSN_ANY_ENABLED;
-+
-+	if (adapter->base_time)
-+		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+
-+	if (is_any_launchtime(adapter))
-+		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+
-+	if (adapter->frame_preemption_active)
-+		new_flags |= IGC_FLAG_TSN_PREEMPT_ENABLED;
-+
-+	return new_flags;
-+}
-+
- /* Returns the TSN specific registers to their default values after
-- * TSN offloading is disabled.
-+ * the adapter is reset.
-  */
- static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- {
-@@ -27,9 +43,6 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	u32 tqavctrl, rxpbs;
- 	int i;
- 
--	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED))
--		return 0;
--
- 	adapter->base_time = 0;
- 	adapter->cycle_time = 0;
- 	adapter->frame_preemption_active = false;
-@@ -65,38 +78,25 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_QBVCYCLET_S, NSEC_PER_MSEC);
- 	wr32(IGC_QBVCYCLET, NSEC_PER_MSEC);
- 
--	adapter->flags &= ~IGC_FLAG_TSN_QBV_ENABLED;
-+	adapter->flags &= ~IGC_FLAG_TSN_ANY_ENABLED;
- 
- 	return 0;
- }
- 
--static int igc_tsn_enable_offload(struct igc_adapter *adapter)
-+static int igc_tsn_update_params(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
--	u32 tqavctrl, baset_l, baset_h;
--	u32 sec, nsec, cycle, rxpbs;
--	ktime_t base_time, systim;
-+	unsigned int flags;
- 	u8 frag_size_mult;
-+	u32 tqavctrl;
- 	int i;
- 
--	if (adapter->flags & IGC_FLAG_TSN_QBV_ENABLED)
-+	flags = igc_tsn_new_flags(adapter) & IGC_FLAG_TSN_ANY_ENABLED;
-+	if (!flags)
- 		return 0;
- 
--	cycle = adapter->cycle_time;
--	base_time = adapter->base_time;
--
--	wr32(IGC_TSAUXC, 0);
--	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
--	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
--
--	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
--	rxpbs |= IGC_RXPBSIZE_TSN;
--
--	wr32(IGC_RXPBS, rxpbs);
--
- 	tqavctrl = rd32(IGC_TQAVCTRL) &
- 		~(IGC_TQAVCTRL_MIN_FRAG_MASK | IGC_TQAVCTRL_PREEMPT_ENA);
--	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
- 
- 	if (adapter->frame_preemption_active)
- 		tqavctrl |= IGC_TQAVCTRL_PREEMPT_ENA;
-@@ -107,9 +107,6 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 
- 	wr32(IGC_TQAVCTRL, tqavctrl);
- 
--	wr32(IGC_QBVCYCLET_S, cycle);
--	wr32(IGC_QBVCYCLET, cycle);
--
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
- 		struct igc_ring *ring = adapter->tx_ring[i];
- 		u32 txqctl = 0;
-@@ -130,12 +127,47 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
- 
--		if (ring->preemptible)
-+		if (adapter->frame_preemption_active && ring->preemptible)
- 			txqctl |= IGC_TXQCTL_PREEMPTABLE;
- 
- 		wr32(IGC_TXQCTL(i), txqctl);
- 	}
- 
-+	adapter->flags = igc_tsn_new_flags(adapter);
-+
-+	return 0;
-+}
-+
-+static int igc_tsn_enable_offload(struct igc_adapter *adapter)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 baset_l, baset_h, tqavctrl;
-+	u32 sec, nsec, cycle, rxpbs;
-+	ktime_t base_time, systim;
-+
-+	tqavctrl = rd32(IGC_TQAVCTRL);
-+	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
-+
-+	wr32(IGC_TQAVCTRL, tqavctrl);
-+
-+	wr32(IGC_TSAUXC, 0);
-+	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
-+	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
-+
-+	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
-+	rxpbs |= IGC_RXPBSIZE_TSN;
-+
-+	wr32(IGC_RXPBS, rxpbs);
-+
-+	if (!adapter->base_time)
-+		goto done;
-+
-+	cycle = adapter->cycle_time;
-+	base_time = adapter->base_time;
-+
-+	wr32(IGC_QBVCYCLET_S, cycle);
-+	wr32(IGC_QBVCYCLET, cycle);
-+
- 	nsec = rd32(IGC_SYSTIML);
- 	sec = rd32(IGC_SYSTIMH);
- 
-@@ -153,34 +185,51 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_BASET_H, baset_h);
- 	wr32(IGC_BASET_L, baset_l);
- 
--	adapter->flags |= IGC_FLAG_TSN_QBV_ENABLED;
-+done:
-+	igc_tsn_update_params(adapter);
- 
- 	return 0;
- }
- 
-+int igc_tsn_reset(struct igc_adapter *adapter)
-+{
-+	unsigned int new_flags;
-+	int err = 0;
-+
-+	new_flags = igc_tsn_new_flags(adapter);
-+
-+	if (!(new_flags & IGC_FLAG_TSN_ANY_ENABLED))
-+		return igc_tsn_disable_offload(adapter);
-+
-+	err = igc_tsn_enable_offload(adapter);
-+	if (err < 0)
-+		return err;
-+
-+	adapter->flags = new_flags;
-+
-+	return err;
-+}
-+
- int igc_tsn_offload_apply(struct igc_adapter *adapter)
- {
--	bool is_any_enabled = adapter->base_time ||
--		is_any_launchtime(adapter) || adapter->frame_preemption_active;
-+	unsigned int new_flags, old_flags;
- 
--	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED) && !is_any_enabled)
--		return 0;
-+	old_flags = adapter->flags;
-+	new_flags = igc_tsn_new_flags(adapter);
- 
--	if (!is_any_enabled) {
--		int err = igc_tsn_disable_offload(adapter);
-+	if (old_flags == new_flags)
-+		return igc_tsn_update_params(adapter);
- 
--		if (err < 0)
--			return err;
-+	/* Enabling features work without resetting the adapter */
-+	if (new_flags > old_flags)
-+		return igc_tsn_enable_offload(adapter);
- 
--		/* The BASET registers aren't cleared when writing
--		 * into them, force a reset if the interface is
--		 * running.
--		 */
--		if (netif_running(adapter->netdev))
--			schedule_work(&adapter->reset_task);
-+	adapter->flags = new_flags;
- 
--		return 0;
--	}
-+	if (!netif_running(adapter->netdev))
-+		return igc_tsn_enable_offload(adapter);
- 
--	return igc_tsn_enable_offload(adapter);
-+	schedule_work(&adapter->reset_task);
-+
-+	return 0;
- }
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-index f76bc86ddccd..1512307f5a52 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-@@ -5,5 +5,6 @@
- #define _IGC_TSN_H_
- 
- int igc_tsn_offload_apply(struct igc_adapter *adapter);
-+int igc_tsn_reset(struct igc_adapter *adapter);
- 
- #endif /* _IGC_BASE_H */
--- 
-2.30.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKYWt1YiwgZGVhciBHcmVnLAoKCkFtIDA1LjAxLjIxIHVtIDE4OjI1IHNjaHJpZWIgR3Jl
+ZyBLSDoKPiBPbiBUdWUsIEphbiAwNSwgMjAyMSBhdCAwNjoxNjo1OVBNICswMTAwLCBQYXVsIE1l
+bnplbCB3cm90ZToKCj4+IEFtIDAzLjExLjIwIHVtIDE5OjM5IHNjaHJpZWIgSmFrdWIgS2ljaW5z
+a2k6Cj4+PiBPbiBUdWUsIDMgTm92IDIwMjAgMDg6MzU6MDkgKzAxMDAgUGF1bCBNZW56ZWwgd3Jv
+dGU6Cj4+Pj4gQWNjb3JkaW5nIHRvICpEZXZlbG9wZXIncyBDZXJ0aWZpY2F0ZSBvZiBPcmlnaW4g
+MS4xKiBbM10sIGl04oCZcyBteQo+Pj4+IHVuZGVyc3RhbmRpbmcsIHRoYXQgaXQgaXMgKm5vdCog
+cmVxdWlyZWQuIFRoZSBpdGVtcyAoYSksIChiKSwgYW5kIChjKQo+Pj4+IGFyZSBjb25uZWN0ZWQg
+YnkgYW4gKm9yKi4KPj4+Pgo+Pj4+PiAgICAgICAgICAgKGIpIFRoZSBjb250cmlidXRpb24gaXMg
+YmFzZWQgdXBvbiBwcmV2aW91cyB3b3JrIHRoYXQsIHRvIHRoZSBiZXN0Cj4+Pj4+ICAgICAgICAg
+ICAgICAgb2YgbXkga25vd2xlZGdlLCBpcyBjb3ZlcmVkIHVuZGVyIGFuIGFwcHJvcHJpYXRlIG9w
+ZW4gc291cmNlCj4+Pj4+ICAgICAgICAgICAgICAgbGljZW5zZSBhbmQgSSBoYXZlIHRoZSByaWdo
+dCB1bmRlciB0aGF0IGxpY2Vuc2UgdG8gc3VibWl0IHRoYXQKPj4+Pj4gICAgICAgICAgICAgICB3
+b3JrIHdpdGggbW9kaWZpY2F0aW9ucywgd2hldGhlciBjcmVhdGVkIGluIHdob2xlIG9yIGluIHBh
+cnQKPj4+Pj4gICAgICAgICAgICAgICBieSBtZSwgdW5kZXIgdGhlIHNhbWUgb3BlbiBzb3VyY2Ug
+bGljZW5zZSAodW5sZXNzIEkgYW0KPj4+Pj4gICAgICAgICAgICAgICBwZXJtaXR0ZWQgdG8gc3Vi
+bWl0IHVuZGVyIGEgZGlmZmVyZW50IGxpY2Vuc2UpLCBhcyBpbmRpY2F0ZWQKPj4+Pj4gICAgICAg
+ICAgICAgICBpbiB0aGUgZmlsZTsgb3IKPj4+Cj4+PiBBY2ssIGJ1dCB0aGVuIHlvdSBuZWVkIHRv
+IHB1dCB5b3Vyc2VsZiBhcyB0aGUgYXV0aG9yLCBiZWNhdXNlIGl0J3MKPj4+IHlvdSBjZXJ0aWZ5
+aW5nIHRoYXQgdGhlIGNvZGUgZmFsbHMgdW5kZXIgKGIpLgo+Pj4KPj4+IEF0IGxlYXN0IHRoYXQn
+cyBteSB1bmRlcnN0YW5kaW5nLgo+Pgo+PiBHcmVnLCBjYW4geW91IHBsZWFzZSBjbGFyaWZ5LCBp
+ZiBpdOKAmXMgZmluZSwgaWYgSSB1cHN0cmVhbSBhIHBhdGNoIGF1dGhvcmVkCj4+IGJ5IHNvbWVi
+b2R5IGVsc2UgYW5kIGRpc3RyaWJ1dGVkIHVuZGVyIHRoZSBHUEx2Mj8gSSBwdXQgdGhlbSBhcyB0
+aGUgYXV0aG9yCj4+IGFuZCBzaWduZWQgaXQgb2ZmLgo+IAo+IFlvdSBjYW4ndCBhZGQgc29tZW9u
+ZSBlbHNlJ3Mgc2lnbmVkLW9mZi1ieSwgYnV0IHlvdSBjYW4gYWRkIHlvdXIgb3duIGFuZAo+IGtl
+ZXAgdGhlbSBhcyB0aGUgYXV0aG9yLCBoYXMgaGFwcGVuZWQgbG90cyBvZiB0aW1lIGluIHRoZSBw
+YXN0Lgo+IAo+IE9yLCB5b3UgY2FuIG1ha2UgdGhlIEZyb206IGxpbmUgYmUgZnJvbSB5b3UgaWYg
+dGhlIG9yaWdpbmFsIGF1dGhvcgo+IGRvZXNuJ3Qgd2FudCB0aGVpciBuYW1lL2VtYWlsIGluIHRo
+ZSBjaGFuZ2Vsb2csIHdlJ3ZlIGRvbmUgdGhhdCBhcyB3ZWxsLAo+IGJvdGggYXJlIGZpbmUuCgpH
+cmVnLCB0aGFuayB5b3UgZm9yIHRoZSBjbGFyaWZpY2F0aW9uLgoKSmFrdWIsIHdpdGggdGhhdCBv
+dXQgb2YgdGhlIHdheSwgY2FuIHlvdSBwbGVhc2UgdGFrZSBwYXRjaCAyLzI/CgoKS2luZCByZWdh
+cmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
+Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
+bgo=
