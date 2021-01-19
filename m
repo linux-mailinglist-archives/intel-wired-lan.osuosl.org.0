@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F4692FC346
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 23:23:49 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BD0F2FC347
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jan 2021 23:24:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CF8B486DF1;
-	Tue, 19 Jan 2021 22:23:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B00284828;
+	Tue, 19 Jan 2021 22:24:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jaYc6kZgC4aH; Tue, 19 Jan 2021 22:23:47 +0000 (UTC)
+	with ESMTP id 2LO_7BXVkvVF; Tue, 19 Jan 2021 22:24:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2DD4086F64;
-	Tue, 19 Jan 2021 22:23:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 93DF08487A;
+	Tue, 19 Jan 2021 22:24:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6E1A91BF59A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:23:45 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2127B1BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:24:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 695F184B88
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:23:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 13A2F203B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:24:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z9BqRllqgevy for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Jan 2021 22:23:43 +0000 (UTC)
+ with ESMTP id qeDZBDziLZKL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Jan 2021 22:24:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f51.google.com (mail-io1-f51.google.com
- [209.85.166.51])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 552C681EE6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:23:43 +0000 (UTC)
-Received: by mail-io1-f51.google.com with SMTP id w18so42997746iot.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 14:23:43 -0800 (PST)
+Received: from mail-io1-f45.google.com (mail-io1-f45.google.com
+ [209.85.166.45])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2F353203A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 22:24:21 +0000 (UTC)
+Received: by mail-io1-f45.google.com with SMTP id p72so18214287iod.12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jan 2021 14:24:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WMd4G6Vw+iokzlycIBszbMWea4hqYJQXqXCw+KiiIAo=;
- b=vONKQuqSeYLNbI0hx++5jXZ9CVRE4w+KkUnZYocBO8H0WtHln+qkHIzoY+EDJ0ck1P
- SO1GdgosqsPYY6kejJkbnFKYDuMwJmVGUOXtwjkiU8Xt9x2bPX0C0hOZabO5jJoB2Qim
- n85Qd2XJHrmEGFAgHjsOEQcT6RiydxnJ7uzSNjDn2O7DoRdAbRA7l9du4ueWlCkK+1Cb
- mTkPz4YYAC6B/bFqnPAfd7f4DHiesxoTy9sVQqxME137nxLS5Ug+EoKAuMP7i9hU2bOu
- YpzWeWS8JA21ZUrscWb0YogjsRanzFXc08DlNpRpQ0kcU8uqpj2f8QPyB9iQwLlmK2ZP
- Rahg==
+ :cc; bh=EadHn0p5gKnVuIymeerOy3CQV3eLQ3su75tNWBGiCuQ=;
+ b=MJGueoZEJZRrmN/tgyulQV0hLaATz7ozk9aLX4rafkwOmF09XAsz5r8iWl4INoccbY
+ ea03blbJ1MYtpop0Ew3NRDR07gl+4ntDYz088i5XRXWdFqr1z0Z+VedmIWpsOyzhSaOh
+ o7waqqB2UTGLsR/p8OPyVaAwoqVpv+ZYJaPhm0AbIsUWH+CnOH8p1zvIruWu6/9RuThm
+ N9HLdbcUoewHf2MYnsBFv84VM4pN+UuuPN7WSh8dtQFrMmwhwKeaqSdKc0pFBaESQiNq
+ CrbPVWpxnZzKqEK5R4bPsM1Zgj6pGxeWok0RYq2HSkb6dpmUXCi+DZcW/6CKAbgd6B/N
+ xECQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=WMd4G6Vw+iokzlycIBszbMWea4hqYJQXqXCw+KiiIAo=;
- b=idmp1+N4nQ+hkXTPMe4pW9hypsQjKRZ9eU00lRiSO+DtDtk8QFMx32fIRpedfnGFOU
- /Nimuf0ygdevXsdMyRDWT736ksee+ElMWaNcZaGXZ7nwbfI5SebNaLbwQaT7ETRdEbY3
- AW6UwEIsWUr6dH0ZCTTFheSQyV9/VRz3dE+gf8QtCbG4FIY5hpl/ABk4ds+Ac8EYCTG6
- r3d/wxZoNGKMN8iTdlopHnXEm9Lkb9gJKaJ3XRDRr3p7yASmuf+K7nFu0nvLjtoAQKja
- 6G9G/bMrVExlv51Hi9yi3AL2aQpaQGV6vxuZu0L0gh/vRIHxqSDrj7rTsk3kkPzKvSwT
- LTuw==
-X-Gm-Message-State: AOAM532gN9SfHdpxwYO7P0uS6G5dG0a4ERAx25UA1vw5qC6WFGasEcyH
- Fb/EMGFKrCKYjEpCII3KCSkA6K212OQ5KUM1I1s=
-X-Google-Smtp-Source: ABdhPJwQqyhnQXHUQZu0t9aXfZLVUu9i99yt3aQohHcdEu+bmP71nZHwmE+1DwfmULPKfKxtFsUpF3mGkdFdXl3dcao=
-X-Received: by 2002:a05:6e02:929:: with SMTP id
- o9mr5146752ilt.42.1611095022624; 
- Tue, 19 Jan 2021 14:23:42 -0800 (PST)
+ bh=EadHn0p5gKnVuIymeerOy3CQV3eLQ3su75tNWBGiCuQ=;
+ b=ai1HBQWT7LcBPyCCWByxZORS80r2vSI9S73AO4FCm64uGUE8eJk5yQ5G2uOBV9xJ33
+ LtObsCQo0Lh5Hjl+zmYIGjNlIo5fGgoj9jSu2v7ETm1RHFtaHlXscYAIGJuNHQUJl1wZ
+ 5/+7JsQjlCMIE/LX6rqRn2ZOclpbRKfisgpJjjjd8/rzeVpV94uEygqoBDg7pEWHwWVV
+ i53Oucn8pZ5T2jRbHvZjpQWt/cxKMDlopR4Ox3Y2Cat+iUPnz6hbEWlZ/0IU2eP+9L3O
+ f8ZNdf2aLt3hvB176nNbdg43/Lsq2yVOnlZyBkbxQV1zd2urV3FlWWDfq/iynHaapS+x
+ rt5w==
+X-Gm-Message-State: AOAM5327JAKmpiXUKFLLt4f9kOA+1lGqKq7mI+ufCpS7XNCkgDCY/9NK
+ 9wUF0OvM7zy8mwEtdeOmWxz0vS5f9ON5UDj8lOw=
+X-Google-Smtp-Source: ABdhPJxrjJRymcHTUnxi5DKTrTjveAMZWdIpGoLXeKvcvoYWgVOR3KuFI2PIFyiyfIwn3LWLsIaTphGK9nA3jkCZiI8=
+X-Received: by 2002:a92:b6dd:: with SMTP id m90mr4633894ill.97.1611095060520; 
+ Tue, 19 Jan 2021 14:24:20 -0800 (PST)
 MIME-Version: 1.0
 References: <cover.1610777159.git.lucien.xin@gmail.com>
  <34c9f5b8c31610687925d9db1f151d5bc87deba7.1610777159.git.lucien.xin@gmail.com>
-In-Reply-To: <34c9f5b8c31610687925d9db1f151d5bc87deba7.1610777159.git.lucien.xin@gmail.com>
+ <aa69157e286b0178bf115124f4b2da254e07a291.1610777159.git.lucien.xin@gmail.com>
+In-Reply-To: <aa69157e286b0178bf115124f4b2da254e07a291.1610777159.git.lucien.xin@gmail.com>
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 19 Jan 2021 14:23:31 -0800
-Message-ID: <CAKgT0UduX4M-N1Kyo-M2=05EO_rAs2c_CDrUwWMKk2oDOgxd2Q@mail.gmail.com>
+Date: Tue, 19 Jan 2021 14:24:09 -0800
+Message-ID: <CAKgT0UencO4hnti1ShWpVUmKm9M0Y_MHHLkGvX-0UQNwYtT+ow@mail.gmail.com>
 To: Xin Long <lucien.xin@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/6] net: add inline function
- skb_csum_is_sctp
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/6] net: igb: use
+ skb_csum_is_sctp instead of protocol check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,73 +93,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 15, 2021 at 10:13 PM Xin Long <lucien.xin@gmail.com> wrote:
+On Fri, Jan 15, 2021 at 10:14 PM Xin Long <lucien.xin@gmail.com> wrote:
 >
-> This patch is to define a inline function skb_csum_is_sctp(), and
-> also replace all places where it checks if it's a SCTP CSUM skb.
-> This function would be used later in many networking drivers in
-> the following patches.
+> Using skb_csum_is_sctp is a easier way to validate it's a SCTP
+> CRC checksum offload packet, and there is no need to parse the
+> packet to check its proto field, especially when it's a UDP or
+> GRE encapped packet.
 >
-> Suggested-by: Alexander Duyck <alexander.duyck@gmail.com>
+> So this patch also makes igb support SCTP CRC checksum offload
+> for UDP and GRE encapped packets.
+>
 > Signed-off-by: Xin Long <lucien.xin@gmail.com>
 
-One minor nit. If you had to resubmit this I might move the ionic
-driver code into a separate patch. However It can probably be accepted
-as is.
-
 Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
-
-> ---
->  drivers/net/ethernet/pensando/ionic/ionic_txrx.c | 2 +-
->  include/linux/skbuff.h                           | 5 +++++
->  net/core/dev.c                                   | 2 +-
->  3 files changed, 7 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> index ac4cd5d..162a1ff 100644
-> --- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> +++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> @@ -979,7 +979,7 @@ static int ionic_tx_calc_csum(struct ionic_queue *q, struct sk_buff *skb)
->                 stats->vlan_inserted++;
->         }
->
-> -       if (skb->csum_not_inet)
-> +       if (skb_csum_is_sctp(skb))
->                 stats->crc32_csum++;
->         else
->                 stats->csum++;
-> diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-> index c9568cf..46f901a 100644
-> --- a/include/linux/skbuff.h
-> +++ b/include/linux/skbuff.h
-> @@ -4621,6 +4621,11 @@ static inline void skb_reset_redirect(struct sk_buff *skb)
->  #endif
->  }
->
-> +static inline bool skb_csum_is_sctp(struct sk_buff *skb)
-> +{
-> +       return skb->csum_not_inet;
-> +}
-> +
->  static inline void skb_set_kcov_handle(struct sk_buff *skb,
->                                        const u64 kcov_handle)
->  {
-> diff --git a/net/core/dev.c b/net/core/dev.c
-> index 0a31d4e..bbd306f 100644
-> --- a/net/core/dev.c
-> +++ b/net/core/dev.c
-> @@ -3617,7 +3617,7 @@ static struct sk_buff *validate_xmit_vlan(struct sk_buff *skb,
->  int skb_csum_hwoffload_help(struct sk_buff *skb,
->                             const netdev_features_t features)
->  {
-> -       if (unlikely(skb->csum_not_inet))
-> +       if (unlikely(skb_csum_is_sctp(skb)))
->                 return !!(features & NETIF_F_SCTP_CRC) ? 0 :
->                         skb_crc32c_csum_help(skb);
->
-> --
-> 2.1.0
->
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
