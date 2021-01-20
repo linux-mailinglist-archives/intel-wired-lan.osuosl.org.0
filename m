@@ -2,59 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A3EB2FD15D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Jan 2021 14:43:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C14C22FD3B1
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Jan 2021 16:18:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 579CC85F75;
-	Wed, 20 Jan 2021 13:43:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4F90D86078;
+	Wed, 20 Jan 2021 15:18:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iePKjKftQPWj; Wed, 20 Jan 2021 13:43:19 +0000 (UTC)
+	with ESMTP id bKzV1d2m6z9V; Wed, 20 Jan 2021 15:18:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D75CF85F7C;
-	Wed, 20 Jan 2021 13:43:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 152BA86054;
+	Wed, 20 Jan 2021 15:18:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 44E911BF34E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 13:43:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3709F1BF59F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 06:28:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3D6AB869C7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 13:43:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1E4C986FCC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 06:28:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8PLJ0WKpNSNt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Jan 2021 13:43:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 197BD86235
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 13:43:16 +0000 (UTC)
-IronPort-SDR: WgpcJvy7sMaVEMraO00Oj6PvYunhZMIka8cO6t+nM2r9wPfmgsFmOBHi5MG2f9fns6uboc1xXW
- DnYESIUh/xeA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9869"; a="175601791"
-X-IronPort-AV: E=Sophos;i="5.79,361,1602572400"; d="scan'208";a="175601791"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jan 2021 05:43:15 -0800
-IronPort-SDR: UPheod8XC3VfrWLXktHwQjOEW6rWPEByTNYGBTDMqdX2KcY0fZB3tcSna9M3MBVhzD0c/S5L6G
- EX+ZRvhQBCRg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,361,1602572400"; d="scan'208";a="356050090"
-Received: from lkp-server01.sh.intel.com (HELO 260eafd5ecd0) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 20 Jan 2021 05:43:14 -0800
-Received: from kbuild by 260eafd5ecd0 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l2DlR-0005oj-Hx; Wed, 20 Jan 2021 13:43:13 +0000
-Date: Wed, 20 Jan 2021 21:42:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60083353.u7UXyajfj180JfBE%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 373c2fab031161fb33e74f61aafbc8d0e75407a1
+ with ESMTP id zhgtdAQJYRMc for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Jan 2021 06:28:26 +0000 (UTC)
+X-Greylist: delayed 00:05:02 by SQLgrey-1.7.6
+Received: from out4436.biz.mail.alibaba.com (out4436.biz.mail.alibaba.com
+ [47.88.44.36])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1972086FC6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Jan 2021 06:28:25 +0000 (UTC)
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R111e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04426;
+ MF=abaci-bugfix@linux.alibaba.com; NM=1; PH=DS; RN=8; SR=0;
+ TI=SMTPD_---0UMIdawV_1611123780; 
+Received: from
+ j63c13417.sqa.eu95.tbsite.net(mailfrom:abaci-bugfix@linux.alibaba.com
+ fp:SMTPD_---0UMIdawV_1611123780) by smtp.aliyun-inc.com(127.0.0.1);
+ Wed, 20 Jan 2021 14:23:10 +0800
+From: Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>
+To: jesse.brandeburg@intel.com
+Date: Wed, 20 Jan 2021 14:22:58 +0800
+Message-Id: <1611123778-104125-1-git-send-email-abaci-bugfix@linux.alibaba.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Mailman-Approved-At: Wed, 20 Jan 2021 15:18:31 +0000
+Subject: [Intel-wired-lan] [PATCH] igc: Assign boolean values to a bool
+ variable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,144 +60,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 373c2fab031161fb33e74f61aafbc8d0e75407a1  i40: consolidate handling of XDP program actions
+Fix the following coccicheck warnings:
 
-elapsed time: 721m
+./drivers/net/ethernet/intel/igc/igc_main.c:4961:2-14: WARNING:
+Assignment of 0/1 to bool variable.
 
-configs tested: 115
-configs skipped: 2
+./drivers/net/ethernet/intel/igc/igc_main.c:4955:2-14: WARNING:
+Assignment of 0/1 to bool variable.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+./drivers/net/ethernet/intel/igc/igc_main.c:4933:1-13: WARNING:
+Assignment of 0/1 to bool variable.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                        sh7763rdp_defconfig
-powerpc                      bamboo_defconfig
-sh                           sh2007_defconfig
-mips                           gcw0_defconfig
-openrisc                            defconfig
-sh                          polaris_defconfig
-powerpc                      pasemi_defconfig
-sparc64                             defconfig
-arc                           tb10x_defconfig
-m68k                        m5272c3_defconfig
-c6x                        evmc6474_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                       holly_defconfig
-arm                         s5pv210_defconfig
-h8300                    h8300h-sim_defconfig
-xtensa                         virt_defconfig
-sh                         apsh4a3a_defconfig
-m68k                       m5249evb_defconfig
-mips                      loongson3_defconfig
-arm                       omap2plus_defconfig
-powerpc                     pq2fads_defconfig
-powerpc                       eiger_defconfig
-arc                              alldefconfig
-mips                     loongson1b_defconfig
-mips                           jazz_defconfig
-mips                        omega2p_defconfig
-powerpc                 canyonlands_defconfig
-riscv                    nommu_k210_defconfig
-parisc                generic-32bit_defconfig
-arm                             ezx_defconfig
-arm                          pxa168_defconfig
-riscv                          rv32_defconfig
-powerpc                 mpc837x_rdb_defconfig
-arm                        spear6xx_defconfig
-powerpc                     skiroot_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210120
-i386                 randconfig-a002-20210120
-i386                 randconfig-a004-20210120
-i386                 randconfig-a006-20210120
-i386                 randconfig-a005-20210120
-i386                 randconfig-a003-20210120
-x86_64               randconfig-a012-20210120
-x86_64               randconfig-a015-20210120
-x86_64               randconfig-a016-20210120
-x86_64               randconfig-a011-20210120
-x86_64               randconfig-a013-20210120
-x86_64               randconfig-a014-20210120
-i386                 randconfig-a013-20210120
-i386                 randconfig-a011-20210120
-i386                 randconfig-a012-20210120
-i386                 randconfig-a014-20210120
-i386                 randconfig-a015-20210120
-i386                 randconfig-a016-20210120
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-riscv                    nommu_virt_defconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+./drivers/net/ethernet/intel/igc/igc_main.c:4592:1-24: WARNING:
+Assignment of 0/1 to bool variable.
 
-clang tested configs:
-x86_64               randconfig-a002-20210120
-x86_64               randconfig-a003-20210120
-x86_64               randconfig-a001-20210120
-x86_64               randconfig-a005-20210120
-x86_64               randconfig-a006-20210120
-x86_64               randconfig-a004-20210120
-x86_64               randconfig-a015-20210119
-x86_64               randconfig-a013-20210119
-x86_64               randconfig-a012-20210119
-x86_64               randconfig-a016-20210119
-x86_64               randconfig-a011-20210119
-x86_64               randconfig-a014-20210119
+./drivers/net/ethernet/intel/igc/igc_main.c:4438:2-25: WARNING:
+Assignment of 0/1 to bool variable.
 
+./drivers/net/ethernet/intel/igc/igc_main.c:4396:2-25: WARNING:
+Assignment of 0/1 to bool variable.
+
+./drivers/net/ethernet/intel/igc/igc_main.c:4018:2-25: WARNING:
+Assignment of 0/1 to bool variable.
+
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Jiapeng Zhong <abaci-bugfix@linux.alibaba.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/igc/igc_main.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index afd6a62..6abb331 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3597,7 +3597,7 @@ void igc_up(struct igc_adapter *adapter)
+ 	netif_tx_start_all_queues(adapter->netdev);
+ 
+ 	/* start the watchdog. */
+-	hw->mac.get_link_status = 1;
++	hw->mac.get_link_status = true;
+ 	schedule_work(&adapter->watchdog_task);
+ }
+ 
+@@ -4016,7 +4016,7 @@ static irqreturn_t igc_msix_other(int irq, void *data)
+ 	}
+ 
+ 	if (icr & IGC_ICR_LSC) {
+-		hw->mac.get_link_status = 1;
++		hw->mac.get_link_status = true;
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__IGC_DOWN, &adapter->state))
+ 			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+@@ -4394,7 +4394,7 @@ static irqreturn_t igc_intr_msi(int irq, void *data)
+ 	}
+ 
+ 	if (icr & (IGC_ICR_RXSEQ | IGC_ICR_LSC)) {
+-		hw->mac.get_link_status = 1;
++		hw->mac.get_link_status = true;
+ 		if (!test_bit(__IGC_DOWN, &adapter->state))
+ 			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+ 	}
+@@ -4436,7 +4436,7 @@ static irqreturn_t igc_intr(int irq, void *data)
+ 	}
+ 
+ 	if (icr & (IGC_ICR_RXSEQ | IGC_ICR_LSC)) {
+-		hw->mac.get_link_status = 1;
++		hw->mac.get_link_status = true;
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__IGC_DOWN, &adapter->state))
+ 			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+@@ -4590,7 +4590,7 @@ static int __igc_open(struct net_device *netdev, bool resuming)
+ 	netif_tx_start_all_queues(netdev);
+ 
+ 	/* start the watchdog. */
+-	hw->mac.get_link_status = 1;
++	hw->mac.get_link_status = true;
+ 	schedule_work(&adapter->watchdog_task);
+ 
+ 	return IGC_SUCCESS;
+@@ -4931,7 +4931,7 @@ int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
+ {
+ 	struct igc_mac_info *mac = &adapter->hw.mac;
+ 
+-	mac->autoneg = 0;
++	mac->autoneg = false;
+ 
+ 	/* Make sure dplx is at most 1 bit and lsb of speed is not set
+ 	 * for the switch() below to work
+@@ -4953,13 +4953,13 @@ int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
+ 		mac->forced_speed_duplex = ADVERTISE_100_FULL;
+ 		break;
+ 	case SPEED_1000 + DUPLEX_FULL:
+-		mac->autoneg = 1;
++		mac->autoneg = true;
+ 		adapter->hw.phy.autoneg_advertised = ADVERTISE_1000_FULL;
+ 		break;
+ 	case SPEED_1000 + DUPLEX_HALF: /* not supported */
+ 		goto err_inval;
+ 	case SPEED_2500 + DUPLEX_FULL:
+-		mac->autoneg = 1;
++		mac->autoneg = true;
+ 		adapter->hw.phy.autoneg_advertised = ADVERTISE_2500_FULL;
+ 		break;
+ 	case SPEED_2500 + DUPLEX_HALF: /* not supported */
+-- 
+1.8.3.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
