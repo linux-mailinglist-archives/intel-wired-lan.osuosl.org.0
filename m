@@ -1,59 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 913D32FF351
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Jan 2021 19:39:38 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6656B2FF79B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Jan 2021 22:53:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 51699862D4;
-	Thu, 21 Jan 2021 18:39:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2599287214;
+	Thu, 21 Jan 2021 21:53:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jXeuYUrDuMFj; Thu, 21 Jan 2021 18:39:36 +0000 (UTC)
+	with ESMTP id 4kFLgmo3hl9Q; Thu, 21 Jan 2021 21:53:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 48028863DC;
-	Thu, 21 Jan 2021 18:39:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 77B7787216;
+	Thu, 21 Jan 2021 21:53:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ED7461BF355
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 18:39:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EF2AF1BF385
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DCF75230FE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 18:39:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D4BC827384
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9cJqZar5LPlw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Jan 2021 18:39:32 +0000 (UTC)
+ with ESMTP id K1lvTNftyHmM for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Jan 2021 21:53:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 2DFE323100
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 18:39:32 +0000 (UTC)
-IronPort-SDR: +KeFRI94fpWFpN2OU4lR1TE2/KVk0Dnc82IZezivCVI4D0uA/H/eSCarLOVM0BbopsG1y6Eigd
- 7pdHrXJ10/9g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="166991455"
-X-IronPort-AV: E=Sophos;i="5.79,364,1602572400"; d="scan'208";a="166991455"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2021 10:39:26 -0800
-IronPort-SDR: MihhkvL/IcrbKX/w1fl9EJXkEl6jSS0b9OTVWCD7e9PLisT9WACPJFIyF6T2Mc2gnlcYCDeZ6n
- 7lLOYPQXW6+Q==
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id BEA7A272F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:46 +0000 (UTC)
+IronPort-SDR: Z/SJAEwZY36dNmq1BkCQyC9TlTeU7F5JcKidXYQvxSZhzh4MOIFhjDduYJGQjah9Bjx1Bl5qsD
+ BJdqmTCH+z2A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="198093216"
+X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="198093216"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2021 13:53:44 -0800
+IronPort-SDR: FykCpICOr9dmbW6AkgJ/oaIB0i7GkrLBBdqUCpJvb8+9XjVPywPywSKlCJa/hnRa1ePhZhaLn6
+ 0mRhdVLtivZg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,364,1602572400"; d="scan'208";a="385411864"
-Received: from bcreeley-st-desk.jf.intel.com ([10.166.244.126])
- by orsmga008.jf.intel.com with ESMTP; 21 Jan 2021 10:39:26 -0800
-From: Brett Creeley <brett.creeley@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 21 Jan 2021 10:38:06 -0800
-Message-Id: <20210121183806.23030-2-brett.creeley@intel.com>
+X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="354983411"
+Received: from anguy11-desk2.jf.intel.com ([10.166.244.147])
+ by orsmga006.jf.intel.com with ESMTP; 21 Jan 2021 13:53:43 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	lirongqing@baidu.com
+Date: Thu, 21 Jan 2021 13:54:23 -0800
+Message-Id: <20210121215423.3599429-1-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210121183806.23030-1-brett.creeley@intel.com>
-References: <20210121183806.23030-1-brett.creeley@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 2/2] ice: Fix MSI-X vector fallback
- logic
+Subject: [Intel-wired-lan] [RESEND PATCH net-queue v2] igb: avoid premature
+ Rx buffer reuse
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,122 +70,154 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current MSI-X enablement logic tries to enable best-case MSI-X
-vectors and if that fails we only support a bare-minimum set. This
-includes a single MSI-X for 1 Tx and 1 Rx queue and a single MSI-X
-for the OICR interrupt. Unfortunately, the driver fails to load when we
-don't get as many MSI-X as requested for a couple reasons.
+From: Li RongQing <lirongqing@baidu.com>
 
-First, the code to allocate MSI-X in the driver tries to allocate
-num_online_cpus() MSI-X for LAN traffic without caring about the number
-of MSI-X actually enabled/requested from the kernel for LAN traffic.
-So, when calling ice_get_res() for the PF VSI, it returns failure
-because the number of available vectors is less than requested. Fix
-this by not allowing the PF VSI to allocation  more than
-pf->num_lan_msix MSI-X vectors and pf->num_lan_msix Rx/Tx queues.
-Limiting the number of queues is done because we don't want more than
-1 Tx/Rx queue per interrupt due to performance conerns.
+Igb needs a similar fix as commit 75aab4e10ae6a ("i40e: avoid
+premature Rx buffer reuse")
 
-Second, the driver assigns pf->num_lan_msix = 2, to account for LAN
-traffic and the OICR. However, pf->num_lan_msix is only meant for LAN
-MSI-X. This is causing a failure when the PF VSI tries to
-allocate/reserve the minimum pf->num_lan_msix because the OICR MSI-X has
-already been reserved, so there may not be enough MSI-X vectors left.
-Fix this by setting pf->num_lan_msix = 1 for the failure case. Then the
-ICE_MIN_MSIX accounts for the LAN MSI-X and the OICR MSI-X needed for
-the failure case.
+The page recycle code, incorrectly, relied on that a page fragment
+could not be freed inside xdp_do_redirect(). This assumption leads to
+that page fragments that are used by the stack/XDP redirect can be
+reused and overwritten.
 
-Update the related defines used in ice_ena_msix_range() to align with
-the above behavior and remove the unused RDMA defines because RDMA is
-currently not supported. Also, remove the now incorrect comment.
+To avoid this, store the page count prior invoking xdp_do_redirect().
 
-Fixes: 152b978a1f90 ("ice: Rework ice_ena_msix_range")
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Longer explanation:
+
+Intel NICs have a recycle mechanism. The main idea is that a page is
+split into two parts. One part is owned by the driver, one part might
+be owned by someone else, such as the stack.
+
+t0: Page is allocated, and put on the Rx ring
+              +---------------
+used by NIC ->| upper buffer
+(rx_buffer)   +---------------
+              | lower buffer
+              +---------------
+  page count  == USHRT_MAX
+  rx_buffer->pagecnt_bias == USHRT_MAX
+
+t1: Buffer is received, and passed to the stack (e.g.)
+              +---------------
+              | upper buff (skb)
+              +---------------
+used by NIC ->| lower buffer
+(rx_buffer)   +---------------
+  page count  == USHRT_MAX
+  rx_buffer->pagecnt_bias == USHRT_MAX - 1
+
+t2: Buffer is received, and redirected
+              +---------------
+              | upper buff (skb)
+              +---------------
+used by NIC ->| lower buffer
+(rx_buffer)   +---------------
+
+Now, prior calling xdp_do_redirect():
+  page count  == USHRT_MAX
+  rx_buffer->pagecnt_bias == USHRT_MAX - 2
+
+This means that buffer *cannot* be flipped/reused, because the skb is
+still using it.
+
+The problem arises when xdp_do_redirect() actually frees the
+segment. Then we get:
+  page count  == USHRT_MAX - 1
+  rx_buffer->pagecnt_bias == USHRT_MAX - 2
+
+From a recycle perspective, the buffer can be flipped and reused,
+which means that the skb data area is passed to the Rx HW ring!
+
+To work around this, the page count is stored prior calling
+xdp_do_redirect().
+
+Fixes: 9cbc948b5a20 ("igb: add XDP support")
+Signed-off-by: Li RongQing <lirongqing@baidu.com>
+Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h      |  4 +++-
- drivers/net/ethernet/intel/ice/ice_lib.c  | 14 +++++++++-----
- drivers/net/ethernet/intel/ice/ice_main.c |  8 ++------
- 3 files changed, 14 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/igb/igb_main.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 6efafe7d8a62..619d93f8b54c 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -68,7 +68,9 @@
- #define ICE_INT_NAME_STR_LEN	(IFNAMSIZ + 16)
- #define ICE_AQ_LEN		64
- #define ICE_MBXSQ_LEN		64
--#define ICE_MIN_MSIX		2
-+#define ICE_MIN_LAN_TXRX_MSIX	1
-+#define ICE_MIN_LAN_OICR_MSIX	1
-+#define ICE_MIN_MSIX		(ICE_MIN_LAN_TXRX_MSIX + ICE_MIN_LAN_OICR_MSIX)
- #define ICE_FDIR_MSIX		1
- #define ICE_NO_VSI		0xffff
- #define ICE_VSI_MAP_CONTIG	0
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 3df67486d42d..ad9c22a1b97a 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -161,8 +161,9 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 57818953e289..8ec17a754db7 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -8238,7 +8238,8 @@ static inline bool igb_page_is_reserved(struct page *page)
+ 	return (page_to_nid(page) != numa_mem_id()) || page_is_pfmemalloc(page);
+ }
  
- 	switch (vsi->type) {
- 	case ICE_VSI_PF:
--		vsi->alloc_txq = min_t(int, ice_get_avail_txq_count(pf),
--				       num_online_cpus());
-+		vsi->alloc_txq = min3(pf->num_lan_msix,
-+				      ice_get_avail_txq_count(pf),
-+				      (u16)num_online_cpus());
- 		if (vsi->req_txq) {
- 			vsi->alloc_txq = vsi->req_txq;
- 			vsi->num_txq = vsi->req_txq;
-@@ -174,8 +175,9 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
- 		if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
- 			vsi->alloc_rxq = 1;
- 		} else {
--			vsi->alloc_rxq = min_t(int, ice_get_avail_rxq_count(pf),
--					       num_online_cpus());
-+			vsi->alloc_rxq = min3(pf->num_lan_msix,
-+					      ice_get_avail_rxq_count(pf),
-+					      (u16)num_online_cpus());
- 			if (vsi->req_rxq) {
- 				vsi->alloc_rxq = vsi->req_rxq;
- 				vsi->num_rxq = vsi->req_rxq;
-@@ -184,7 +186,9 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
+-static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
++static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer,
++				  int rx_buf_pgcnt)
+ {
+ 	unsigned int pagecnt_bias = rx_buffer->pagecnt_bias;
+ 	struct page *page = rx_buffer->page;
+@@ -8249,7 +8250,7 @@ static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
  
- 		pf->num_lan_rx = vsi->alloc_rxq;
+ #if (PAGE_SIZE < 8192)
+ 	/* if we are only owner of page we can reuse it */
+-	if (unlikely((page_ref_count(page) - pagecnt_bias) > 1))
++	if (unlikely((rx_buf_pgcnt - pagecnt_bias) > 1))
+ 		return false;
+ #else
+ #define IGB_LAST_OFFSET \
+@@ -8638,11 +8639,17 @@ static unsigned int igb_rx_offset(struct igb_ring *rx_ring)
+ }
  
--		vsi->num_q_vectors = max_t(int, vsi->alloc_rxq, vsi->alloc_txq);
-+		vsi->num_q_vectors = min_t(int, pf->num_lan_msix,
-+					   max_t(int, vsi->alloc_rxq,
-+						 vsi->alloc_txq));
- 		break;
- 	case ICE_VSI_VF:
- 		vf = &pf->vf[vsi->vf_id];
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index fb81aa5979e3..e10ca8929f85 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3430,18 +3430,14 @@ static int ice_ena_msix_range(struct ice_pf *pf)
- 	if (v_actual < v_budget) {
- 		dev_warn(dev, "not enough OS MSI-X vectors. requested = %d, obtained = %d\n",
- 			 v_budget, v_actual);
--/* 2 vectors each for LAN and RDMA (traffic + OICR), one for flow director */
--#define ICE_MIN_LAN_VECS 2
--#define ICE_MIN_RDMA_VECS 2
--#define ICE_MIN_VECS (ICE_MIN_LAN_VECS + ICE_MIN_RDMA_VECS + 1)
+ static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
+-					       const unsigned int size)
++					       const unsigned int size, int *rx_buf_pgcnt)
+ {
+ 	struct igb_rx_buffer *rx_buffer;
  
--		if (v_actual < ICE_MIN_LAN_VECS) {
-+		if (v_actual < ICE_MIN_MSIX) {
- 			/* error if we can't get minimum vectors */
- 			pci_disable_msix(pf->pdev);
- 			err = -ERANGE;
- 			goto msix_err;
- 		} else {
--			pf->num_lan_msix = ICE_MIN_LAN_VECS;
-+			pf->num_lan_msix = ICE_MIN_LAN_TXRX_MSIX;
+ 	rx_buffer = &rx_ring->rx_buffer_info[rx_ring->next_to_clean];
++	*rx_buf_pgcnt =
++#if (PAGE_SIZE < 8192)
++		page_count(rx_buffer->page);
++#else
++		0;
++#endif
+ 	prefetchw(rx_buffer->page);
+ 
+ 	/* we are reusing so sync this buffer for CPU use */
+@@ -8658,9 +8665,9 @@ static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
+ }
+ 
+ static void igb_put_rx_buffer(struct igb_ring *rx_ring,
+-			      struct igb_rx_buffer *rx_buffer)
++			      struct igb_rx_buffer *rx_buffer, int rx_buf_pgcnt)
+ {
+-	if (igb_can_reuse_rx_page(rx_buffer)) {
++	if (igb_can_reuse_rx_page(rx_buffer, rx_buf_pgcnt)) {
+ 		/* hand second half of page back to the ring */
+ 		igb_reuse_rx_page(rx_ring, rx_buffer);
+ 	} else {
+@@ -8687,6 +8694,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 	u16 cleaned_count = igb_desc_unused(rx_ring);
+ 	unsigned int xdp_xmit = 0;
+ 	struct xdp_buff xdp;
++	int rx_buf_pgcnt;
+ 
+ 	xdp.rxq = &rx_ring->xdp_rxq;
+ 
+@@ -8717,7 +8725,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 		 */
+ 		dma_rmb();
+ 
+-		rx_buffer = igb_get_rx_buffer(rx_ring, size);
++		rx_buffer = igb_get_rx_buffer(rx_ring, size, &rx_buf_pgcnt);
+ 
+ 		/* retrieve a buffer from the ring */
+ 		if (!skb) {
+@@ -8760,7 +8768,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 			break;
  		}
- 	}
  
+-		igb_put_rx_buffer(rx_ring, rx_buffer);
++		igb_put_rx_buffer(rx_ring, rx_buffer, rx_buf_pgcnt);
+ 		cleaned_count++;
+ 
+ 		/* fetch next buffer in frame if non-eop */
 -- 
 2.26.2
 
