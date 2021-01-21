@@ -1,58 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6656B2FF79B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Jan 2021 22:53:53 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30FBB2FF88C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jan 2021 00:17:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2599287214;
-	Thu, 21 Jan 2021 21:53:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E6EA486F99;
+	Thu, 21 Jan 2021 23:17:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4kFLgmo3hl9Q; Thu, 21 Jan 2021 21:53:52 +0000 (UTC)
+	with ESMTP id qGk-3tOf4Gmu; Thu, 21 Jan 2021 23:17:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 77B7787216;
-	Thu, 21 Jan 2021 21:53:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 28C5886FA2;
+	Thu, 21 Jan 2021 23:17:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EF2AF1BF385
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 17A4B1BF86C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:17:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D4BC827384
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0C58A2083F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:17:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K1lvTNftyHmM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Jan 2021 21:53:46 +0000 (UTC)
+ with ESMTP id exB9YUouS9+J for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Jan 2021 23:17:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id BEA7A272F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 21:53:46 +0000 (UTC)
-IronPort-SDR: Z/SJAEwZY36dNmq1BkCQyC9TlTeU7F5JcKidXYQvxSZhzh4MOIFhjDduYJGQjah9Bjx1Bl5qsD
- BJdqmTCH+z2A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="198093216"
-X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="198093216"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2021 13:53:44 -0800
-IronPort-SDR: FykCpICOr9dmbW6AkgJ/oaIB0i7GkrLBBdqUCpJvb8+9XjVPywPywSKlCJa/hnRa1ePhZhaLn6
- 0mRhdVLtivZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="354983411"
-Received: from anguy11-desk2.jf.intel.com ([10.166.244.147])
- by orsmga006.jf.intel.com with ESMTP; 21 Jan 2021 13:53:43 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	lirongqing@baidu.com
-Date: Thu, 21 Jan 2021 13:54:23 -0800
-Message-Id: <20210121215423.3599429-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.26.2
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6C28D20773
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:17:26 +0000 (UTC)
+IronPort-SDR: pvgNID7JTR0ViI6ZMJGruDRLc1fC/h3RuDPwd+mU2ituHUJVFJzIvmNaTV1dSHzkK4Vc/08Fiw
+ Yv+NGBfAU7yw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="264180223"
+X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="264180223"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2021 15:17:25 -0800
+IronPort-SDR: 0I/TA9zVNg72KVyzosHe8A0LZ4PD5lyNjuh/oLHqisu8RolKDcGW8wDCWHZ40xudti7vBybh3j
+ KnwPRoxDc3ew==
+X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="392126925"
+Received: from amgiffor-mobl1.amr.corp.intel.com (HELO
+ vcostago-mobl2.amr.corp.intel.com) ([10.212.124.114])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2021 15:17:25 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>
+In-Reply-To: <20210119182133.038fbfc3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+References: <20210119004028.2809425-1-vinicius.gomes@intel.com>
+ <20210119004028.2809425-3-vinicius.gomes@intel.com>
+ <20210119182133.038fbfc3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Date: Thu, 21 Jan 2021 15:17:14 -0800
+Message-ID: <878s8lyj5x.fsf@vcostago-mobl2.amr.corp.intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RESEND PATCH net-queue v2] igb: avoid premature
- Rx buffer reuse
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/8] taprio: Add support
+ for frame preemption offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,162 +68,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jose.Abreu@synopsys.com, mkubecek@suse.cz, jiri@resnulli.us,
+ vladimir.oltean@nxp.com, po.liu@nxp.com, jhs@mojatatu.com, m-karicheri2@ti.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ xiyou.wangcong@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Li RongQing <lirongqing@baidu.com>
+Jakub Kicinski <kuba@kernel.org> writes:
 
-Igb needs a similar fix as commit 75aab4e10ae6a ("i40e: avoid
-premature Rx buffer reuse")
+> On Mon, 18 Jan 2021 16:40:22 -0800 Vinicius Costa Gomes wrote:
+>> Adds a way to configure which traffic classes are marked as
+>> preemptible and which are marked as express.
+>> 
+>> Even if frame preemption is not a "real" offload, because it can't be
+>> executed purely in software, having this information near where the
+>> mapping of traffic classes to queues is specified, makes it,
+>> hopefully, easier to use.
+>> 
+>> taprio will receive the information of which traffic classes are
+>> marked as express/preemptible, and when offloading frame preemption to
+>> the driver will convert the information, so the driver receives which
+>> queues are marked as express/preemptible.
+>> 
+>> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+>
+>> @@ -1286,13 +1289,15 @@ static int taprio_disable_offload(struct net_device *dev,
+>>  	offload->enable = 0;
+>>  
+>>  	err = ops->ndo_setup_tc(dev, TC_SETUP_QDISC_TAPRIO, offload);
+>> -	if (err < 0) {
+>> +	if (err < 0)
+>> +		NL_SET_ERR_MSG(extack,
+>> +			       "Device failed to disable offload");
+>> +
+>> +	err = ops->ndo_setup_tc(dev, TC_SETUP_PREEMPT, &preempt);
+>> +	if (err < 0)
+>>  		NL_SET_ERR_MSG(extack,
+>>  			       "Device failed to disable offload");
+>
+> This was meant to say something else?
 
-The page recycle code, incorrectly, relied on that a page fragment
-could not be freed inside xdp_do_redirect(). This assumption leads to
-that page fragments that are used by the stack/XDP redirect can be
-reused and overwritten.
+Yeah, better to say which offload failed to be disabled. Will fix.
 
-To avoid this, store the page count prior invoking xdp_do_redirect().
 
-Longer explanation:
-
-Intel NICs have a recycle mechanism. The main idea is that a page is
-split into two parts. One part is owned by the driver, one part might
-be owned by someone else, such as the stack.
-
-t0: Page is allocated, and put on the Rx ring
-              +---------------
-used by NIC ->| upper buffer
-(rx_buffer)   +---------------
-              | lower buffer
-              +---------------
-  page count  == USHRT_MAX
-  rx_buffer->pagecnt_bias == USHRT_MAX
-
-t1: Buffer is received, and passed to the stack (e.g.)
-              +---------------
-              | upper buff (skb)
-              +---------------
-used by NIC ->| lower buffer
-(rx_buffer)   +---------------
-  page count  == USHRT_MAX
-  rx_buffer->pagecnt_bias == USHRT_MAX - 1
-
-t2: Buffer is received, and redirected
-              +---------------
-              | upper buff (skb)
-              +---------------
-used by NIC ->| lower buffer
-(rx_buffer)   +---------------
-
-Now, prior calling xdp_do_redirect():
-  page count  == USHRT_MAX
-  rx_buffer->pagecnt_bias == USHRT_MAX - 2
-
-This means that buffer *cannot* be flipped/reused, because the skb is
-still using it.
-
-The problem arises when xdp_do_redirect() actually frees the
-segment. Then we get:
-  page count  == USHRT_MAX - 1
-  rx_buffer->pagecnt_bias == USHRT_MAX - 2
-
-From a recycle perspective, the buffer can be flipped and reused,
-which means that the skb data area is passed to the Rx HW ring!
-
-To work around this, the page count is stored prior calling
-xdp_do_redirect().
-
-Fixes: 9cbc948b5a20 ("igb: add XDP support")
-Signed-off-by: Li RongQing <lirongqing@baidu.com>
-Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 22 +++++++++++++++-------
- 1 file changed, 15 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 57818953e289..8ec17a754db7 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -8238,7 +8238,8 @@ static inline bool igb_page_is_reserved(struct page *page)
- 	return (page_to_nid(page) != numa_mem_id()) || page_is_pfmemalloc(page);
- }
- 
--static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
-+static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer,
-+				  int rx_buf_pgcnt)
- {
- 	unsigned int pagecnt_bias = rx_buffer->pagecnt_bias;
- 	struct page *page = rx_buffer->page;
-@@ -8249,7 +8250,7 @@ static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
- 
- #if (PAGE_SIZE < 8192)
- 	/* if we are only owner of page we can reuse it */
--	if (unlikely((page_ref_count(page) - pagecnt_bias) > 1))
-+	if (unlikely((rx_buf_pgcnt - pagecnt_bias) > 1))
- 		return false;
- #else
- #define IGB_LAST_OFFSET \
-@@ -8638,11 +8639,17 @@ static unsigned int igb_rx_offset(struct igb_ring *rx_ring)
- }
- 
- static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
--					       const unsigned int size)
-+					       const unsigned int size, int *rx_buf_pgcnt)
- {
- 	struct igb_rx_buffer *rx_buffer;
- 
- 	rx_buffer = &rx_ring->rx_buffer_info[rx_ring->next_to_clean];
-+	*rx_buf_pgcnt =
-+#if (PAGE_SIZE < 8192)
-+		page_count(rx_buffer->page);
-+#else
-+		0;
-+#endif
- 	prefetchw(rx_buffer->page);
- 
- 	/* we are reusing so sync this buffer for CPU use */
-@@ -8658,9 +8665,9 @@ static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
- }
- 
- static void igb_put_rx_buffer(struct igb_ring *rx_ring,
--			      struct igb_rx_buffer *rx_buffer)
-+			      struct igb_rx_buffer *rx_buffer, int rx_buf_pgcnt)
- {
--	if (igb_can_reuse_rx_page(rx_buffer)) {
-+	if (igb_can_reuse_rx_page(rx_buffer, rx_buf_pgcnt)) {
- 		/* hand second half of page back to the ring */
- 		igb_reuse_rx_page(rx_ring, rx_buffer);
- 	} else {
-@@ -8687,6 +8694,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 	u16 cleaned_count = igb_desc_unused(rx_ring);
- 	unsigned int xdp_xmit = 0;
- 	struct xdp_buff xdp;
-+	int rx_buf_pgcnt;
- 
- 	xdp.rxq = &rx_ring->xdp_rxq;
- 
-@@ -8717,7 +8725,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 		 */
- 		dma_rmb();
- 
--		rx_buffer = igb_get_rx_buffer(rx_ring, size);
-+		rx_buffer = igb_get_rx_buffer(rx_ring, size, &rx_buf_pgcnt);
- 
- 		/* retrieve a buffer from the ring */
- 		if (!skb) {
-@@ -8760,7 +8768,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 			break;
- 		}
- 
--		igb_put_rx_buffer(rx_ring, rx_buffer);
-+		igb_put_rx_buffer(rx_ring, rx_buffer, rx_buf_pgcnt);
- 		cleaned_count++;
- 
- 		/* fetch next buffer in frame if non-eop */
+Cheers,
 -- 
-2.26.2
-
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
