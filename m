@@ -1,61 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72F0C2FF896
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jan 2021 00:19:14 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C406327384;
-	Thu, 21 Jan 2021 23:19:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uKY2W7Fj-mYU; Thu, 21 Jan 2021 23:19:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D1166273AC;
-	Thu, 21 Jan 2021 23:19:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4DEF61BF86C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:19:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47232300162
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jan 2021 12:24:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 49BEC8464C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:19:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E495B854F7;
+	Fri, 22 Jan 2021 11:24:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id e6I-rBhHBiSi; Fri, 22 Jan 2021 11:24:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D73A848AB;
+	Fri, 22 Jan 2021 11:24:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7DE581BF2A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jan 2021 11:24:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 78D5D87367
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jan 2021 11:24:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UEuPuJmcFK88 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Jan 2021 23:19:09 +0000 (UTC)
+ with ESMTP id 5PcINbusMuKp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Jan 2021 11:24:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BF6FC845D7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jan 2021 23:19:09 +0000 (UTC)
-IronPort-SDR: vHOFhhsiDn0aRgbTkSxjFIxFsXPp1CbaxeH58DRy5IiHFjSjHjzsGogSAMm7rz3BBj85w+hlZp
- k3U+Ve1o4q2Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="166460211"
-X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="166460211"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2021 15:19:09 -0800
-IronPort-SDR: dLUa+otTXyjROyoleikc5ecb0unsRidSasWGWQUEobFyzdXDjSJL7xg3K6R1/HeHKlfOmlcu1o
- 1PfAo5yrZT1Q==
-X-IronPort-AV: E=Sophos;i="5.79,365,1602572400"; d="scan'208";a="392127285"
-Received: from amgiffor-mobl1.amr.corp.intel.com (HELO
- vcostago-mobl2.amr.corp.intel.com) ([10.212.124.114])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2021 15:19:07 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <20210119182352.17635829@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-References: <20210119004028.2809425-1-vinicius.gomes@intel.com>
- <20210119004028.2809425-7-vinicius.gomes@intel.com>
- <20210119182352.17635829@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Date: Thu, 21 Jan 2021 15:18:56 -0800
-Message-ID: <87v9bpx4in.fsf@vcostago-mobl2.amr.corp.intel.com>
+Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F0EBC87366
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jan 2021 11:24:08 +0000 (UTC)
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DMcLN3KnTzl7BM;
+ Fri, 22 Jan 2021 19:22:36 +0800 (CST)
+Received: from localhost (10.174.242.175) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.498.0; Fri, 22 Jan 2021
+ 19:23:57 +0800
+From: wangyunjian <wangyunjian@huawei.com>
+To: <kuba@kernel.org>, <davem@davemloft.net>
+Date: Fri, 22 Jan 2021 19:23:55 +0800
+Message-ID: <1611314635-25592-1-git-send-email-wangyunjian@huawei.com>
+X-Mailer: git-send-email 1.9.5.msysgit.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 6/8] igc: Add support for
- tuning frame preemption via ethtool
+X-Originating-IP: [10.174.242.175]
+X-CFilter-Loop: Reflected
+Subject: [Intel-wired-lan] [PATCH net] ixgbe: add NULL pointer check before
+ calling xdp_rxq_info_reg
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,28 +59,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, mkubecek@suse.cz, jiri@resnulli.us,
- vladimir.oltean@nxp.com, po.liu@nxp.com, jhs@mojatatu.com, m-karicheri2@ti.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- xiyou.wangcong@gmail.com
+Cc: netdev@vger.kernel.org, Yunjian Wang <wangyunjian@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, jerry.lilijun@huawei.com,
+ xudingke@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jakub Kicinski <kuba@kernel.org> writes:
+From: Yunjian Wang <wangyunjian@huawei.com>
 
-> On Mon, 18 Jan 2021 16:40:26 -0800 Vinicius Costa Gomes wrote:
->> +		NL_SET_ERR_MSG(extack, "Invalid value for add-frag-size");
->
-> NL_SET_ERR_MSG_MOD
+The rx_ring->q_vector could be NULL, so it need to be checked before
+calling xdp_rxq_info_reg.
 
-Will fix. Thanks.
+Fixes: b02e5a0ebb172 ("xsk: Propagate napi_id to XDP socket Rx path")
+Addresses-Coverity: ("Dereference after null check")
+Signed-off-by: Yunjian Wang <wangyunjian@huawei.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-
-Cheers,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 6cbbe09ce8a0..7b76b3f448f7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -6586,8 +6586,9 @@ int ixgbe_setup_rx_resources(struct ixgbe_adapter *adapter,
+ 	rx_ring->next_to_use = 0;
+ 
+ 	/* XDP RX-queue info */
+-	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
+-			     rx_ring->queue_index, rx_ring->q_vector->napi.napi_id) < 0)
++	if (rx_ring->q_vector && xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
++						  rx_ring->queue_index,
++						  rx_ring->q_vector->napi.napi_id) < 0)
+ 		goto err;
+ 
+ 	rx_ring->xdp_prog = adapter->xdp_prog;
 -- 
-Vinicius
+2.23.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
