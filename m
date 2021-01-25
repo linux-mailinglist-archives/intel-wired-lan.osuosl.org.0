@@ -2,55 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1D0830282A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Jan 2021 17:48:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78EF53029EA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Jan 2021 19:19:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3BC8D86004;
-	Mon, 25 Jan 2021 16:47:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A28B885DF2;
+	Mon, 25 Jan 2021 18:19:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p2yKbfxZzXgS; Mon, 25 Jan 2021 16:47:58 +0000 (UTC)
+	with ESMTP id XejWaq_cSR5S; Mon, 25 Jan 2021 18:19:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A6CE85FD6;
-	Mon, 25 Jan 2021 16:47:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7387385DC4;
+	Mon, 25 Jan 2021 18:19:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 69DC61BF2BB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 16:47:33 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0219E1BF36D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 18:19:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 64C2886C2D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 16:47:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ED15F87036
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 18:19:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3F0wJ26pfiNc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Jan 2021 16:47:31 +0000 (UTC)
+ with ESMTP id 0NM+Q2mIFpYD for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Jan 2021 18:19:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-40131.protonmail.ch (mail-40131.protonmail.ch
- [185.70.40.131])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 798CE86806
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 16:47:31 +0000 (UTC)
-Date: Mon, 25 Jan 2021 16:47:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
- t=1611593248; bh=PQjqCY1n/n+4wNCpUtWb3rQkV1Ny0cNm6fdbl7f6pik=;
- h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
- b=QV6ZOPg0656nfl1DEH/S322UL4+pstgUgCc1D1CKk+HVHLbKEV+ewpATEWp5Q2eyp
- 0lsWNC9+XSddJ1LCqgvTPbHc+S6hYcR8A4hVYiJyLTitAeI7WF+1rsWLslrCAGkOX5
- jEkHVWyb1P69/EUyfSsZLxVqP0CyMZ7v7Rm68NXplu9W1/G6howkrSHUKDizycGriX
- bKgyr8xwzvdhUKVpkxSpn5yG1ZaFwioid4sNE2m+1MmTEKHoAbrkxIuQO3CM5rhdD1
- I/HRYbQNpisrempK/yISGDWXVzxypGSshKmbXw98Hv/d4DeohCAi9HLwK50hsgD7G+
- YLKFDroD9T46g==
-To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-From: Alexander Lobakin <alobakin@pm.me>
-Message-ID: <20210125164612.243838-4-alobakin@pm.me>
-In-Reply-To: <20210125164612.243838-1-alobakin@pm.me>
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com
+ [209.85.214.180])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 463698701E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 18:19:51 +0000 (UTC)
+Received: by mail-pl1-f180.google.com with SMTP id u11so8145850plg.13
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 10:19:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :mime-version; bh=0c4KjDt9RqUgbcxyXAyGUkPhwWC8rpyfeee6wZQAFco=;
+ b=AqNbyr+0wl4qPhxc3CH+99Y1/W6aQeouqpdR58sNIYDkGf5WmwV5MgeLJBM+IJ1Pvc
+ dioGNRhcggbnIEy9SigRQFGl8trx8Oxl81+dLdOAiLTHheihfnqS0qNI5qKQ51G6PrWi
+ AjxiMB4vDodzkwLRjltgGxDQrHLTXzNrsIXnVtWs2KYQTZTQ3pIGDts5Yr21ui0aaIQi
+ 4bSnWwkHoSrHG0JHeaBj3YOZKvkMqu3AnHvqU6KZCxOoYOENDNIxXW9TJT6Fpy/alZj4
+ lOQ5W05p4mQz8efM/bPfTOaLOcBGbqYkFi5TwVKa1jIVc91DXYFZhhGlS/2/K5IOi6+O
+ Zr0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:mime-version;
+ bh=0c4KjDt9RqUgbcxyXAyGUkPhwWC8rpyfeee6wZQAFco=;
+ b=s/w3FPKGsmrSuD9+dIv8ARRHdL1s0Io0wFVR/jN9A3EYqWH3BkCGsLQCy5sPZGx8Pp
+ aqYVdARAStSrQNO8sHggCJGNiivvfBjQwTH7HG8t5uYi5JLfXYgPnfMW4CmAWTBtgF7P
+ pzGmT0kRy4JHdlUB8B/IC1ONifHVc76077WCcKHZNnJel9FJO2+QvDQZWqJxQ2DtuCVo
+ JAaKeI5oM25y8bpMR5FSqRDvyGJ1KmMvu31LSX+7wq3ApAa1/NiXbXEyp6whHwH7G/zA
+ DhJsKN8kXFJegrbTZUMAzJEwJu02I60hqHcnBSImrutxlwRNM6UV1+hIiaB/eDDc3Evp
+ AeNQ==
+X-Gm-Message-State: AOAM53353nEUcuba+Q8Jmfb/G0TyAImx0O0ftKHkptO/FZz+FCjQ5tlI
+ wXlnaeUBsviffOgzM6QpzsCApw==
+X-Google-Smtp-Source: ABdhPJx4cEmVf7ft4lmXwGwBrpz2zFbNGi/QGjI/RQLigXVw/jFM6+G/RZb7dQlNfHWGfUuyCC1KTQ==
+X-Received: by 2002:a17:902:f54e:b029:de:19f9:c45f with SMTP id
+ h14-20020a170902f54eb02900de19f9c45fmr1958100plf.48.1611598790601; 
+ Mon, 25 Jan 2021 10:19:50 -0800 (PST)
+Received: from [2620:15c:17:3:4a0f:cfff:fe51:6667]
+ ([2620:15c:17:3:4a0f:cfff:fe51:6667])
+ by smtp.gmail.com with ESMTPSA id w21sm16351255pff.220.2021.01.25.10.19.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Jan 2021 10:19:49 -0800 (PST)
+Date: Mon, 25 Jan 2021 10:19:48 -0800 (PST)
+From: David Rientjes <rientjes@google.com>
+To: Alexander Lobakin <alobakin@pm.me>
+In-Reply-To: <20210125164612.243838-3-alobakin@pm.me>
+Message-ID: <85978330-9753-f7a-f263-7a1cfd95b851@google.com>
 References: <20210125164612.243838-1-alobakin@pm.me>
+ <20210125164612.243838-3-alobakin@pm.me>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 25 Jan 2021 16:47:55 +0000
-Subject: [Intel-wired-lan] [PATCH net-next 3/3] net: page_pool: simplify
- page recycling condition tests
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/3] net: constify
+ page_is_pfmemalloc() argument at call sites
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,71 +87,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: Alexander Lobakin <alobakin@pm.me>
-Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Alexander Lobakin <alobakin@pm.me>, linux-mm@kvack.org,
+Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-mm@kvack.org,
  Jakub Sitnicki <jakub@cloudflare.com>, Leon Romanovsky <leon@kernel.org>,
  linux-rdma@vger.kernel.org, Dexuan Cui <decui@microsoft.com>,
- intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
  Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
  Jesper Dangaard Brouer <hawk@kernel.org>,
  Willem de Bruijn <willemb@google.com>, Salil Mehta <salil.mehta@huawei.com>,
  netdev@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>,
  linux-kernel@vger.kernel.org, Aleksandr Nogikh <nogikh@google.com>,
  Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>
+ Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-pool_page_reusable() is a leftover from pre-NUMA-aware times. For now,
-this function is just a redundant wrapper over page_is_pfmemalloc(),
-so Inline it into its sole call site.
+On Mon, 25 Jan 2021, Alexander Lobakin wrote:
 
-Signed-off-by: Alexander Lobakin <alobakin@pm.me>
----
- net/core/page_pool.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+> Constify "page" argument for page_is_pfmemalloc() users where applicable.
+> 
+> Signed-off-by: Alexander Lobakin <alobakin@pm.me>
+> ---
+>  drivers/net/ethernet/hisilicon/hns3/hns3_enet.c   | 2 +-
+>  drivers/net/ethernet/intel/fm10k/fm10k_main.c     | 2 +-
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c       | 2 +-
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c       | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_txrx.c         | 2 +-
+>  drivers/net/ethernet/intel/igb/igb_main.c         | 2 +-
+>  drivers/net/ethernet/intel/igc/igc_main.c         | 2 +-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c     | 2 +-
+>  drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 2 +-
+>  drivers/net/ethernet/mellanox/mlx5/core/en_rx.c   | 2 +-
+>  include/linux/skbuff.h                            | 4 ++--
+>  11 files changed, 12 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
+> index 512080640cbc..0f8e962b5010 100644
+> --- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
+> +++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
+> @@ -2800,7 +2800,7 @@ static void hns3_nic_alloc_rx_buffers(struct hns3_enet_ring *ring,
+>  	writel(i, ring->tqp->io_base + HNS3_RING_RX_RING_HEAD_REG);
+>  }
+>  
+> -static bool hns3_page_is_reusable(struct page *page)
+> +static bool hns3_page_is_reusable(const struct page *page)
+>  {
+>  	return page_to_nid(page) == numa_mem_id() &&
+>  		!page_is_pfmemalloc(page);
 
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index f3c690b8c8e3..ad8b0707af04 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -350,14 +350,6 @@ static bool page_pool_recycle_in_cache(struct page *page,
- 	return true;
- }
- 
--/* page is NOT reusable when:
-- * 1) allocated when system is under some pressure. (page_is_pfmemalloc)
-- */
--static bool pool_page_reusable(struct page_pool *pool, struct page *page)
--{
--	return !page_is_pfmemalloc(page);
--}
--
- /* If the page refcnt == 1, this will try to recycle the page.
-  * if PP_FLAG_DMA_SYNC_DEV is set, we'll try to sync the DMA area for
-  * the configured size min(dma_sync_size, pool->max_len).
-@@ -373,9 +365,11 @@ __page_pool_put_page(struct page_pool *pool, struct page *page,
- 	 * regular page allocator APIs.
- 	 *
- 	 * refcnt == 1 means page_pool owns page, and can recycle it.
-+	 *
-+	 * page is NOT reusable when allocated when system is under
-+	 * some pressure. (page_is_pfmemalloc)
- 	 */
--	if (likely(page_ref_count(page) == 1 &&
--		   pool_page_reusable(pool, page))) {
-+	if (likely(page_ref_count(page) == 1 && !page_is_pfmemalloc(page))) {
- 		/* Read barrier done in page_ref_count / READ_ONCE */
- 
- 		if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
--- 
-2.30.0
+Hi Alexander,
 
-
+All of these functions appear to be doing the same thing, would it make 
+sense to simply add this to a header file and remove all the code 
+duplication as well?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
