@@ -1,58 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B41A30372B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Jan 2021 08:09:18 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D91D303A45
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Jan 2021 11:30:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DB48D852E9;
-	Tue, 26 Jan 2021 07:09:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A092986794;
+	Tue, 26 Jan 2021 10:30:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9JgqcP8NZCqe; Tue, 26 Jan 2021 07:09:15 +0000 (UTC)
+	with ESMTP id S9dj--ISNClk; Tue, 26 Jan 2021 10:30:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 408CD85308;
-	Tue, 26 Jan 2021 07:09:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 66FB386759;
+	Tue, 26 Jan 2021 10:30:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1A7BB1BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 07:09:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 020D71BF277
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 10:30:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0D8C4203A4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 07:09:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D80BE203E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 10:30:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9IoNRIPEaoF1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Jan 2021 07:09:06 +0000 (UTC)
+ with ESMTP id uRPPL9LDSyfl for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Jan 2021 10:30:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id 7855A20409
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 07:09:06 +0000 (UTC)
-IronPort-SDR: JxsnDEaLWpWoXI/y5QBPy/bJ1OgSeJU4WN0NNkkE4aiuhiptaCbGuW+6Zy8BImGca2cD069R23
- 1nm+w74cu4CA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9875"; a="176348315"
-X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="176348315"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jan 2021 23:09:06 -0800
-IronPort-SDR: Pnbyoz9FehEFhSa++zeu1HPOR0gDC2XASSR9frtoUVKV9CEzHE+5Sx0bYRsS4PpF/DHsziSKoy
- 18v44BnJkyhw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="472639296"
-Received: from npg-dpdk-haiyue-3.sh.intel.com ([10.67.118.189])
- by fmsmga001.fm.intel.com with ESMTP; 25 Jan 2021 23:09:04 -0800
-From: Haiyue Wang <haiyue.wang@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 26 Jan 2021 14:52:06 +0800
-Message-Id: <20210126065206.137422-21-haiyue.wang@intel.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210126065206.137422-1-haiyue.wang@intel.com>
-References: <20210126065206.137422-1-haiyue.wang@intel.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id A2A84203E1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 10:30:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1611657044;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=KuZg9upurN3kgrK07D1i3fm6HoQPuTKGYFjpYfOzLAo=;
+ b=UapkGD9RSkhvOzHYcIMQe37tbxO0+YmP6zSti1hKe1osbf6NeZngkjXzXSCCDR9JNZGsdT
+ MsUF/noRt2qmZWUIPhZ4DMkoaMhADHth6JTvAWbGRW1hD67D9SHFZKWchy/3QxpBiuqJwu
+ d3sNtP/OleTHpNua6kZB6eKgqenokQY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-453-hdxK8C7DOsWxFZjpwsOrHQ-1; Tue, 26 Jan 2021 05:30:40 -0500
+X-MC-Unique: hdxK8C7DOsWxFZjpwsOrHQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DCE0318C8C03;
+ Tue, 26 Jan 2021 10:30:38 +0000 (UTC)
+Received: from calimero.vinschen.de (ovpn-112-118.ams2.redhat.com
+ [10.36.112.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9BB73710DC;
+ Tue, 26 Jan 2021 10:30:38 +0000 (UTC)
+Received: by calimero.vinschen.de (Postfix, from userid 500)
+ id 252A5A80D7F; Tue, 26 Jan 2021 11:30:37 +0100 (CET)
+Date: Tue, 26 Jan 2021 11:30:37 +0100
+From: Corinna Vinschen <vinschen@redhat.com>
+To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <20210126103037.GH4393@calimero.vinschen.de>
+Mail-Followup-To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ sasha.neftin@intel.com
+References: <20201117195040.178651-1-vinschen@redhat.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [Patch v2 20/20] iavf: Enable flex-bytes support
+Content-Disposition: inline
+In-Reply-To: <20201117195040.178651-1-vinschen@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Subject: Re: [Intel-wired-lan] igc: fix link speed advertising
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,478 +81,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: cunming.liang@intel.com, qi.z.zhang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Flex-bytes allows for packet matching based on an offset and value. This
-is supported via the ethtool user-def option.
+Ping?
 
-The user-def 0xAAAABBBBCCCCDDDD: BBBB is the 2 byte pattern while AAAA
-corresponds to its offset in the packet. Similarly DDDD is the 2 byte
-pattern with CCCC being the corresponding offset. The offset ranges from
-0x0 to 0x1F7 (up to 504 bytes into the packet). The offset starts from
-the beginning of the packet.
+It looks like this patch got lost somehow.  Without this patch,
+setting link speed advertising is broken.
 
-This feature can be used to allow customers to set flow director rules
-for protocols headers that are beyond standard ones supported by ethtool
-(e.g. PFCP or GTP-U).
 
-Like for matching GTP-U's TEID value 0x10203040:
-ethtool -N ens787f0v0 flow-type udp4 dst-port 2152 \
-user-def 0x002e102000303040 action 13
+Thanks,
+Corinna
 
-Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
----
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |  93 ++++++++
- drivers/net/ethernet/intel/iavf/iavf_fdir.c   | 217 +++++++++++++++++-
- drivers/net/ethernet/intel/iavf/iavf_fdir.h   |  19 ++
- 3 files changed, 327 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 24ee6ddb8dcb..3ebfef737f5c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -909,6 +909,85 @@ static enum iavf_fdir_flow_type iavf_ethtool_flow_to_fltr(int eth)
- 	}
- }
- 
-+/**
-+ * iavf_is_mask_valid - check mask field set
-+ * @mask: full mask to check
-+ * @field: field for which mask should be valid
-+ *
-+ * If the mask is fully set return true. If it is not valid for field return
-+ * false.
-+ */
-+static bool iavf_is_mask_valid(u64 mask, u64 field)
-+{
-+	return (mask & field) == field;
-+}
-+
-+/**
-+ * iavf_parse_rx_flow_user_data - deconstruct user-defined data
-+ * @fsp: pointer to ethtool Rx flow specification
-+ * @fltr: pointer to Flow Director filter for userdef data storage
-+ *
-+ * Returns 0 on success, negative error value on failure
-+ */
-+static int
-+iavf_parse_rx_flow_user_data(struct ethtool_rx_flow_spec *fsp,
-+			     struct iavf_fdir_fltr *fltr)
-+{
-+	struct iavf_flex_word *flex;
-+	int i, cnt = 0;
-+
-+	if (!(fsp->flow_type & FLOW_EXT))
-+		return 0;
-+
-+	for (i = 0; i < 2; i++) {
-+#define IAVF_USERDEF_FLEX_WORD_M	GENMASK(15, 0)
-+#define IAVF_USERDEF_FLEX_OFFS_S	16
-+#define IAVF_USERDEF_FLEX_OFFS_M	GENMASK(31, IAVF_USERDEF_FLEX_OFFS_S)
-+#define IAVF_USERDEF_FLEX_FLTR_M	GENMASK(31, 0)
-+		u32 value = be32_to_cpu(fsp->h_ext.data[i]);
-+		u32 mask = be32_to_cpu(fsp->m_ext.data[i]);
-+
-+		if (!value || !mask)
-+			continue;
-+
-+		if (!iavf_is_mask_valid(mask, IAVF_USERDEF_FLEX_FLTR_M))
-+			return -EINVAL;
-+
-+		/* 504 is the maximum value for offsets, and offset is measured
-+		 * from the start of the MAC address.
-+		 */
-+#define IAVF_USERDEF_FLEX_MAX_OFFS_VAL 504
-+		flex = &fltr->flex_words[cnt++];
-+		flex->word = value & IAVF_USERDEF_FLEX_WORD_M;
-+		flex->offset = (value & IAVF_USERDEF_FLEX_OFFS_M) >>
-+			     IAVF_USERDEF_FLEX_OFFS_S;
-+		if (flex->offset > IAVF_USERDEF_FLEX_MAX_OFFS_VAL)
-+			return -EINVAL;
-+	}
-+
-+	fltr->flex_cnt = cnt;
-+
-+	return 0;
-+}
-+
-+/**
-+ * iavf_fill_rx_flow_ext_data - fill the additional data
-+ * @fsp: pointer to ethtool Rx flow specification
-+ * @fltr: pointer to Flow Director filter to get additional data
-+ */
-+static void
-+iavf_fill_rx_flow_ext_data(struct ethtool_rx_flow_spec *fsp,
-+			   struct iavf_fdir_fltr *fltr)
-+{
-+	if (!fltr->ext_mask.usr_def[0] && !fltr->ext_mask.usr_def[1])
-+		return;
-+
-+	fsp->flow_type |= FLOW_EXT;
-+
-+	memcpy(fsp->h_ext.data, fltr->ext_data.usr_def, sizeof(fsp->h_ext.data));
-+	memcpy(fsp->m_ext.data, fltr->ext_mask.usr_def, sizeof(fsp->m_ext.data));
-+}
-+
- /**
-  * iavf_get_ethtool_fdir_entry - fill ethtool structure with Flow Director filter data
-  * @adapter: the VF adapter structure that contains filter list
-@@ -1038,6 +1117,8 @@ iavf_get_ethtool_fdir_entry(struct iavf_adapter *adapter,
- 		break;
- 	}
- 
-+	iavf_fill_rx_flow_ext_data(fsp, rule);
-+
- 	if (rule->action == VIRTCHNL_ACTION_DROP)
- 		fsp->ring_cookie = RX_CLS_FLOW_DISC;
- 	else
-@@ -1100,6 +1181,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- {
- 	u32 flow_type, q_index = 0;
- 	enum virtchnl_action act;
-+	int err;
- 
- 	if (fsp->ring_cookie == RX_CLS_FLOW_DISC) {
- 		act = VIRTCHNL_ACTION_DROP;
-@@ -1115,6 +1197,13 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 	fltr->loc = fsp->location;
- 	fltr->q_index = q_index;
- 
-+	if (fsp->flow_type & FLOW_EXT) {
-+		memcpy(fltr->ext_data.usr_def, fsp->h_ext.data,
-+		       sizeof(fltr->ext_data.usr_def));
-+		memcpy(fltr->ext_mask.usr_def, fsp->m_ext.data,
-+		       sizeof(fltr->ext_mask.usr_def));
-+	}
-+
- 	flow_type = fsp->flow_type & ~(FLOW_EXT | FLOW_MAC_EXT | FLOW_RSS);
- 	fltr->flow_type = iavf_ethtool_flow_to_fltr(flow_type);
- 
-@@ -1217,6 +1306,10 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 	if (iavf_fdir_is_dup_fltr(adapter, fltr))
- 		return -EEXIST;
- 
-+	err = iavf_parse_rx_flow_user_data(fsp, fltr);
-+	if (err)
-+		return err;
-+
- 	return iavf_fill_fdir_add_msg(adapter, fltr);
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.c b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-index 635850814313..2a355cd6e7c8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-@@ -5,6 +5,10 @@
- 
- #include "iavf.h"
- 
-+#define GTPU_PORT	2152
-+#define NAT_T_ESP_PORT	4500
-+#define PFCP_PORT	8805
-+
- static const struct in6_addr ipv6_addr_full_mask = {
- 	.in6_u = {
- 		.u6_addr8 = {
-@@ -14,6 +18,206 @@ static const struct in6_addr ipv6_addr_full_mask = {
- 	}
- };
- 
-+/**
-+ * iavf_pkt_udp_no_pay_len - the length of UDP packet without payload
-+ * @fltr: Flow Director filter data structure
-+ */
-+static u16 iavf_pkt_udp_no_pay_len(struct iavf_fdir_fltr *fltr)
-+{
-+	return sizeof(struct ethhdr) +
-+	       (fltr->ip_ver == 4 ? sizeof(struct iphdr) : sizeof(struct ipv6hdr)) +
-+	       sizeof(struct udphdr);
-+}
-+
-+/**
-+ * iavf_fill_fdir_gtpu_hdr - fill the GTP-U protocol header
-+ * @fltr: Flow Director filter data structure
-+ * @proto_hdrs: Flow Director protocol headers data structure
-+ *
-+ * Returns 0 if the GTP-U protocol header is set successfully
-+ */
-+static int
-+iavf_fill_fdir_gtpu_hdr(struct iavf_fdir_fltr *fltr,
-+			struct virtchnl_proto_hdrs *proto_hdrs)
-+{
-+	struct virtchnl_proto_hdr *uhdr = &proto_hdrs->proto_hdr[proto_hdrs->count - 1];
-+	struct virtchnl_proto_hdr *ghdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+	struct virtchnl_proto_hdr *ehdr = NULL; /* Extension Header if it exists */
-+	u16 adj_offs, hdr_offs;
-+	int i;
-+
-+	VIRTCHNL_SET_PROTO_HDR_TYPE(ghdr, GTPU_IP);
-+
-+	adj_offs = iavf_pkt_udp_no_pay_len(fltr);
-+
-+	for (i = 0; i < fltr->flex_cnt; i++) {
-+#define IAVF_GTPU_HDR_TEID_OFFS0	4
-+#define IAVF_GTPU_HDR_TEID_OFFS1	6
-+#define IAVF_GTPU_HDR_N_PDU_AND_NEXT_EXTHDR_OFFS	10
-+#define IAVF_GTPU_HDR_PSC_PDU_TYPE_AND_QFI_OFFS		13
-+#define IAVF_GTPU_PSC_EXTHDR_TYPE	0x85 /* PDU Session Container Extension Header */
-+		if (fltr->flex_words[i].offset < adj_offs)
-+			return -EINVAL;
-+
-+		hdr_offs = fltr->flex_words[i].offset - adj_offs;
-+
-+		switch (hdr_offs) {
-+		case IAVF_GTPU_HDR_TEID_OFFS0:
-+		case IAVF_GTPU_HDR_TEID_OFFS1: {
-+			__be16 *pay_word = (__be16 *)ghdr->buffer;
-+
-+			pay_word[hdr_offs >> 1] = htons(fltr->flex_words[i].word);
-+			VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(ghdr, GTPU_IP, TEID);
-+			}
-+			break;
-+		case IAVF_GTPU_HDR_N_PDU_AND_NEXT_EXTHDR_OFFS:
-+			if ((fltr->flex_words[i].word & 0xff) != IAVF_GTPU_PSC_EXTHDR_TYPE)
-+				return -EOPNOTSUPP;
-+			if (!ehdr)
-+				ehdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+			VIRTCHNL_SET_PROTO_HDR_TYPE(ehdr, GTPU_EH);
-+			break;
-+		case IAVF_GTPU_HDR_PSC_PDU_TYPE_AND_QFI_OFFS:
-+			if (!ehdr)
-+				return -EINVAL;
-+			ehdr->buffer[1] = fltr->flex_words[i].word & 0x3F;
-+			VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(ehdr, GTPU_EH, QFI);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	uhdr->field_selector = 0; /* The PF ignores the UDP header fields */
-+
-+	return 0;
-+}
-+
-+/**
-+ * iavf_fill_fdir_pfcp_hdr - fill the PFCP protocol header
-+ * @fltr: Flow Director filter data structure
-+ * @proto_hdrs: Flow Director protocol headers data structure
-+ *
-+ * Returns 0 if the PFCP protocol header is set successfully
-+ */
-+static int
-+iavf_fill_fdir_pfcp_hdr(struct iavf_fdir_fltr *fltr,
-+			struct virtchnl_proto_hdrs *proto_hdrs)
-+{
-+	struct virtchnl_proto_hdr *uhdr = &proto_hdrs->proto_hdr[proto_hdrs->count - 1];
-+	struct virtchnl_proto_hdr *hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+	u16 adj_offs, hdr_offs;
-+	int i;
-+
-+	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, PFCP);
-+
-+	adj_offs = iavf_pkt_udp_no_pay_len(fltr);
-+
-+	for (i = 0; i < fltr->flex_cnt; i++) {
-+#define IAVF_PFCP_HDR_SFIELD_AND_MSG_TYPE_OFFS	0
-+		if (fltr->flex_words[i].offset < adj_offs)
-+			return -EINVAL;
-+
-+		hdr_offs = fltr->flex_words[i].offset - adj_offs;
-+
-+		switch (hdr_offs) {
-+		case IAVF_PFCP_HDR_SFIELD_AND_MSG_TYPE_OFFS:
-+			hdr->buffer[0] = (fltr->flex_words[i].word >> 8) & 0xff;
-+			VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, PFCP, S_FIELD);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	uhdr->field_selector = 0; /* The PF ignores the UDP header fields */
-+
-+	return 0;
-+}
-+
-+/**
-+ * iavf_fill_fdir_nat_t_esp_hdr - fill the NAT-T-ESP protocol header
-+ * @fltr: Flow Director filter data structure
-+ * @proto_hdrs: Flow Director protocol headers data structure
-+ *
-+ * Returns 0 if the NAT-T-ESP protocol header is set successfully
-+ */
-+static int
-+iavf_fill_fdir_nat_t_esp_hdr(struct iavf_fdir_fltr *fltr,
-+			     struct virtchnl_proto_hdrs *proto_hdrs)
-+{
-+	struct virtchnl_proto_hdr *uhdr = &proto_hdrs->proto_hdr[proto_hdrs->count - 1];
-+	struct virtchnl_proto_hdr *hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+	u16 adj_offs, hdr_offs;
-+	u32 spi = 0;
-+	int i;
-+
-+	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, ESP);
-+
-+	adj_offs = iavf_pkt_udp_no_pay_len(fltr);
-+
-+	for (i = 0; i < fltr->flex_cnt; i++) {
-+#define IAVF_NAT_T_ESP_SPI_OFFS0	0
-+#define IAVF_NAT_T_ESP_SPI_OFFS1	2
-+		if (fltr->flex_words[i].offset < adj_offs)
-+			return -EINVAL;
-+
-+		hdr_offs = fltr->flex_words[i].offset - adj_offs;
-+
-+		switch (hdr_offs) {
-+		case IAVF_NAT_T_ESP_SPI_OFFS0:
-+			spi |= fltr->flex_words[i].word << 16;
-+			break;
-+		case IAVF_NAT_T_ESP_SPI_OFFS1:
-+			spi |= fltr->flex_words[i].word;
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (!spi)
-+		return -EOPNOTSUPP; /* Not support IKE Header Format with SPI 0 */
-+
-+	*(__be32 *)hdr->buffer = htonl(spi);
-+	VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, ESP, SPI);
-+
-+	uhdr->field_selector = 0; /* The PF ignores the UDP header fields */
-+
-+	return 0;
-+}
-+
-+/**
-+ * iavf_fill_fdir_udp_flex_pay_hdr - fill the UDP payload header
-+ * @fltr: Flow Director filter data structure
-+ * @proto_hdrs: Flow Director protocol headers data structure
-+ *
-+ * Returns 0 if the UDP payload defined protocol header is set successfully
-+ */
-+static int
-+iavf_fill_fdir_udp_flex_pay_hdr(struct iavf_fdir_fltr *fltr,
-+				struct virtchnl_proto_hdrs *proto_hdrs)
-+{
-+	int err;
-+
-+	switch (ntohs(fltr->ip_data.dst_port)) {
-+	case GTPU_PORT:
-+		err = iavf_fill_fdir_gtpu_hdr(fltr, proto_hdrs);
-+		break;
-+	case NAT_T_ESP_PORT:
-+		err = iavf_fill_fdir_nat_t_esp_hdr(fltr, proto_hdrs);
-+		break;
-+	case PFCP_PORT:
-+		err = iavf_fill_fdir_pfcp_hdr(fltr, proto_hdrs);
-+		break;
-+	default:
-+		err = -EOPNOTSUPP;
-+		break;
-+	}
-+
-+	return err;
-+}
-+
- /**
-  * iavf_fill_fdir_ip4_hdr - fill the IPv4 protocol header
-  * @fltr: Flow Director filter data structure
-@@ -50,6 +254,8 @@ iavf_fill_fdir_ip4_hdr(struct iavf_fdir_fltr *fltr,
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, DST);
- 	}
- 
-+	fltr->ip_ver = 4;
-+
- 	return 0;
- }
- 
-@@ -94,6 +300,8 @@ iavf_fill_fdir_ip6_hdr(struct iavf_fdir_fltr *fltr,
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, DST);
- 	}
- 
-+	fltr->ip_ver = 6;
-+
- 	return 0;
- }
- 
-@@ -152,7 +360,10 @@ iavf_fill_fdir_udp_hdr(struct iavf_fdir_fltr *fltr,
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, UDP, DST_PORT);
- 	}
- 
--	return 0;
-+	if (!fltr->flex_cnt)
-+		return 0;
-+
-+	return iavf_fill_fdir_udp_flex_pay_hdr(fltr, proto_hdrs);
- }
- 
- /**
-@@ -511,7 +722,9 @@ bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *
- 		if (!memcmp(&tmp->eth_data, &fltr->eth_data,
- 			    sizeof(fltr->eth_data)) &&
- 		    !memcmp(&tmp->ip_data, &fltr->ip_data,
--			    sizeof(fltr->ip_data))) {
-+			    sizeof(fltr->ip_data)) &&
-+		    !memcmp(&tmp->ext_data, &fltr->ext_data,
-+			    sizeof(fltr->ext_data))) {
- 			ret = true;
- 			break;
- 		}
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.h b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-index 45ff4423ef47..10f6ffb85c70 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-@@ -35,6 +35,11 @@ enum iavf_fdir_flow_type {
- 	IAVF_FDIR_FLOW_PTYPE_MAX,
- };
- 
-+struct iavf_flex_word {
-+	u16 offset;
-+	u16 word;
-+};
-+
- struct iavf_ipv4_addrs {
- 	__be32 src_ip;
- 	__be32 dst_ip;
-@@ -64,6 +69,11 @@ struct iavf_fdir_ip {
- 	};
- 	u8 proto;
- };
-+
-+struct iavf_fdir_extra {
-+	u32 usr_def[2];
-+};
-+
- /* bookkeeping of Flow Director filters */
- struct iavf_fdir_fltr {
- 	enum iavf_fdir_fltr_state_t state;
-@@ -77,7 +87,16 @@ struct iavf_fdir_fltr {
- 	struct iavf_fdir_ip ip_data;
- 	struct iavf_fdir_ip ip_mask;
- 
-+	struct iavf_fdir_extra ext_data;
-+	struct iavf_fdir_extra ext_mask;
-+
- 	enum virtchnl_action action;
-+
-+	/* flex byte filter data */
-+	u8 ip_ver; /* used to adjust the flex offset, 4 : IPv4, 6 : IPv6 */
-+	u8 flex_cnt;
-+	struct iavf_flex_word flex_words[2];
-+
- 	u32 flow_id;
- 
- 	u32 loc;	/* Rule location inside the flow table */
--- 
-2.30.0
+On Nov 17 20:50, Corinna Vinschen wrote:
+> Link speed advertising in igc has two problems:
+> 
+> - When setting the advertisement via ethtool, the link speed is converted
+>   to the legacy 32 bit representation for the intel PHY code.
+>   This inadvertently drops ETHTOOL_LINK_MODE_2500baseT_Full_BIT (being
+>   beyond bit 31).  As a result, any call to `ethtool -s ...' drops the
+>   2500Mbit/s link speed from the PHY settings.  Only reloading the driver
+>   alleviates that problem.
+> 
+>   Fix this by converting the ETHTOOL_LINK_MODE_2500baseT_Full_BIT to the
+>   Intel PHY ADVERTISE_2500_FULL bit explicitely.
+> 
+> - Rather than checking the actual PHY setting, the .get_link_ksettings
+>   function always fills link_modes.advertising with all link speeds
+>   the device is capable of.
+> 
+>   Fix this by checking the PHY autoneg_advertised settings and report
+>   only the actually advertised speeds up to ethtool.
+> 
+> Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 24 +++++++++++++++-----
+>  1 file changed, 18 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index 61d331ce38cd..75cb4ca36bac 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> @@ -1675,12 +1675,18 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+>  	cmd->base.phy_address = hw->phy.addr;
+>  
+>  	/* advertising link modes */
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Half);
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Full);
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Half);
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Full);
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 1000baseT_Full);
+> -	ethtool_link_ksettings_add_link_mode(cmd, advertising, 2500baseT_Full);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_10_HALF)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Half);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_10_FULL)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 10baseT_Full);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_100_HALF)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Half);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_100_FULL)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 100baseT_Full);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_1000_FULL)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 1000baseT_Full);
+> +	if (hw->phy.autoneg_advertised & ADVERTISE_2500_FULL)
+> +		ethtool_link_ksettings_add_link_mode(cmd, advertising, 2500baseT_Full);
+>  
+>  	/* set autoneg settings */
+>  	if (hw->mac.autoneg == 1) {
+> @@ -1792,6 +1798,12 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+>  
+>  	ethtool_convert_link_mode_to_legacy_u32(&advertising,
+>  						cmd->link_modes.advertising);
+> +	/* Converting to legacy u32 drops ETHTOOL_LINK_MODE_2500baseT_Full_BIT.
+> +	 * We have to check this and convert it to ADVERTISE_2500_FULL
+> +	 * (aka ETHTOOL_LINK_MODE_2500baseX_Full_BIT) explicitely.
+> +	 */
+> +	if (ethtool_link_ksettings_test_link_mode(cmd, advertising, 2500baseT_Full))
+> +		advertising |= ADVERTISE_2500_FULL;
+>  
+>  	if (cmd->base.autoneg == AUTONEG_ENABLE) {
+>  		hw->mac.autoneg = 1;
+> -- 
+> 2.27.0
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
 _______________________________________________
 Intel-wired-lan mailing list
