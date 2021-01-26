@@ -1,125 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB0A130410F
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E230E304110
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Jan 2021 15:56:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 96E0486757;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 02A1186F72;
 	Tue, 26 Jan 2021 14:56:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 226m6JkM1Th3; Tue, 26 Jan 2021 14:56:43 +0000 (UTC)
+	with ESMTP id xZApZ4J0at+P; Tue, 26 Jan 2021 14:56:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0B61686770;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 65C3786F3F;
 	Tue, 26 Jan 2021 14:56:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D5B191BF33F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:47:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 82E241BF47E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 11:08:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D10B08708E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:47:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 75B468543E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 11:08:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zwj14JMvvu5U for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Jan 2021 00:47:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR04-DB3-obe.outbound.protection.outlook.com
- (mail-eopbgr60070.outbound.protection.outlook.com [40.107.6.70])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5A4D687036
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:47:38 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=oQmktDMLRdqgNvnPnlcNkFHj8+lii0+JEJcgewduk19YDtVil5N7aQ9sSB3iBvy//YoF1/0ccSVYVYq5/TXeEMC1HaFON7CmOn1wRWQ3N9wjOGUhgKNuOMD52ud+05bNiXU98FmdIGSdy/ipMOkqq3FqaZ6G2IxBDnKiRV1XXdVxpbv4lIffzTMMsowOtvyvPDm59/5cRwTLp0oOtTOcpoktbqeSt1W1g8B+akt4QHhiyZD6lgK8hTgy04rfZvBo0HDgZ7//trPPXMTB/2D5EhToeOgVry/Pv3msg6wh+mzoabJWcFABUn4EbTylOcxr3TX8VMlPZyn8YTd+yBbu0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tKoWuGnyQYkgIDlOnX6Yfrphna/H9FLkvulXMNmhYw4=;
- b=nU3afB0vBrGCVN2LhiV4IKMA8OIrtLjJikytZekUfEEaJnG6IMa/VM7GOSjxPZPuY2h4OV27wKFEpNLSffH4yDHYyyQU2N865Qg0bkK5zifL3ppAvdQoY/vQ1dmdjlAgKTEaZxJ+7VcRDZqB8FxAWSw5GkrD8t0Fpjury0Ozm/7IXrdybjpzq5TZBlyWUsKjfcc1hmvfuSj+925uIcrcQKW12W9PK07xrOj1xkFIev04/x/C9d+U+4veaEejeqfwdgAeFFE17wi+gqnhdvF2KfQ8ZT1CB69ak2y4lEpxiyXvMPeDR/MAjLyeeT0L9/QSnTi9pmzgkIO6aAJCMk8Auw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tKoWuGnyQYkgIDlOnX6Yfrphna/H9FLkvulXMNmhYw4=;
- b=NWOoiwsk/XsK85zZtuJsfmz8afLuCaA7xGzRjEhn3SfYzjLjfrIyMu05XixLvOXqaAXnCXmBG04N4aVdyVnEe0heRqxf+sJuhGEvRNUE4/v/ggqm+EC1sxAz2dQEHu5RirR//R1lQtFuPVwvryikV2+ZlbiHhin4Hxilu6cqwbw=
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by VI1PR0402MB3616.eurprd04.prod.outlook.com (2603:10a6:803:8::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.15; Tue, 26 Jan
- 2021 00:32:44 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::3df3:2eba:51bb:58d7]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::3df3:2eba:51bb:58d7%6]) with mapi id 15.20.3784.012; Tue, 26 Jan 2021
- 00:32:44 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Thread-Topic: [PATCH net-next v3 6/8] igc: Add support for tuning frame
- preemption via ethtool
-Thread-Index: AQHW8RBJWWRwM35MG0uYfKaT0XnEyqo5E2SA
-Date: Tue, 26 Jan 2021 00:32:44 +0000
-Message-ID: <20210126003243.x3c44pmxmieqsa6e@skbuf>
-References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-7-vinicius.gomes@intel.com>
-In-Reply-To: <20210122224453.4161729-7-vinicius.gomes@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=nxp.com;
-x-originating-ip: [5.12.227.87]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 0aa56d87-19f1-4343-1720-08d8c191e5f3
-x-ms-traffictypediagnostic: VI1PR0402MB3616:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <VI1PR0402MB3616DBF8522E04827B1E4DADE0BC0@VI1PR0402MB3616.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: rfjeYcTw+a8ch2upcID0vbq8HN9XUmfVKcSNibUpK1AlTwkijrDe8jSr4Nd9DeCwbVWMQwGKp7Cxq18cE02a1JIJhqlNArvYZdMWaedn6R36nKzr+pq1wCUQDgxZSBLlCIWe5rngf7jjPoeNRUwe3jM2M+CoEcG3klp5ykA7ekJWAU+up+4D03RDq72cWpGWBNOyJE/tGzGMrt8/sHTbvqCo1bS7u3GPNK8auatPwq/ftK4qSyAWmkscM9vcriZyCHPTmJkLe8RVePv2JHF2aouPMfBJ5R3zATOPWZ0OYxUInLP/H3Pa2B/3DpSUR2OUbWgDdPCZrEsSrDECwV4f8iZ2TVaYnl7gfLK2dV1fA1IB2f51exSd9bgWvcxdbX4f5XP8sEsh8aTgEqOG+Sd1VQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(7916004)(376002)(366004)(396003)(136003)(346002)(39860400002)(4326008)(6916009)(91956017)(33716001)(6486002)(7416002)(76116006)(71200400001)(1076003)(66946007)(6512007)(8936002)(9686003)(66446008)(66476007)(86362001)(83380400001)(316002)(5660300002)(8676002)(66556008)(186003)(478600001)(54906003)(64756008)(6506007)(2906002)(44832011)(26005);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?AoQePBH3dUXe1cB8WO56hxxCCX4kpKXr8OejMylKHPJ70+l6r6Dy38Ws4CTG?=
- =?us-ascii?Q?/VNtC/IV/AuhhKjstVrA5qEcOY2sgJPffkmCcq4cmQTer5AwoZL2aAV7wvju?=
- =?us-ascii?Q?FWNvAijVadr490uj1cjET07chGFARZfYOMYskU/mlrppZ+WbwcVIv2D11Blc?=
- =?us-ascii?Q?EdMnJ/nrlmdtEz4oVYjVw7mHFOy2bqzTdPHixBf9BQCVFWZX8pFcG3Or7MZi?=
- =?us-ascii?Q?n7eTWX9cMswdqkJwTWtXy3ei60KpPUGa3sI8uO6B4OCIHIfNg5ATE497pI5r?=
- =?us-ascii?Q?zTLFBHTl8QD8+7msEYQ6eqyNI+9vZgVJDWGcD4Rtw6G1HVJIQADKpt/p7kRn?=
- =?us-ascii?Q?tsisCS0qHCeV7Zo7NwJZ3nQICtZ6J2ez8irVBtjCoeJ+75rlQZZqzXkUTtcM?=
- =?us-ascii?Q?vpAllCrmfckPp6jQZQhILymVrTVuJiN4cqep2ODwmIkmOEz0Rppod5kSrkbS?=
- =?us-ascii?Q?67XCwBofP6PzglnexzrSX3bJ7YYMjWdtlNof0d5o6/GDRmLVu+lyOXpqqj5g?=
- =?us-ascii?Q?73H7wFSdxz5MMiVHSg6OnLEvFjNhyte7kegdVoZnMTE/5UK0TqFkdEIxz5d4?=
- =?us-ascii?Q?IlOC7VbWTfX0cxWMGtBD9Fqm5kYsr9D4LlGhTG+tECWL4HGR4DopcHnajcdP?=
- =?us-ascii?Q?2whbFACZnAL9bPaMQZByrOuJsgyNv4k7/qkba7imWQWJ25VBNlGSXIMBYxF2?=
- =?us-ascii?Q?ENJnxRTHyp4+z+n8G3igtgWhl+nDdF3MTh6CAMcNCVf2fmb/K9by5YupoIz5?=
- =?us-ascii?Q?aPUeH35ewoa4QR0WwCMADSvoxIJFI9S3olze2DbWeTLRnsnWGSSYpjeceolS?=
- =?us-ascii?Q?9nOkHEzE9xQEml/PQMS0t7blr6MoQkjIHnJLG/DkZoCeU6QyWVZwkaxaEhlK?=
- =?us-ascii?Q?GTIMVE5FfQuA7TTjJwfiGIGkS3N1DzwaD5pED3Z8YjfDpVRZ4q3WHtRVpy8X?=
- =?us-ascii?Q?OgI1nn5zFNbQ1T+gZ4gbSzCXXYLzP951Jt6JCnqYTe15bZo0zGgxmYqsLkgi?=
- =?us-ascii?Q?TaXdldlsFZX/E6NqgTe1nBiwHm2KcUaYPX+pmGAgmcq1GTW8BNr9Gw5HtdA2?=
- =?us-ascii?Q?CWhSrd6Q?=
-Content-ID: <049A3FC0022CD94EB1606346C797E095@eurprd04.prod.outlook.com>
+ with ESMTP id AqzIHdRW6gWU for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Jan 2021 11:08:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com
+ [209.85.221.50])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0F8DA85359
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 11:08:34 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id c12so16008451wrc.7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 03:08:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=YexESypTZUXGxM0RNYUq5KscUb8ruQBrW1cIhg1mZJ0=;
+ b=bskZDSuMdTWcqASyQOy7OtS5KG6+pzOlrEOQmnZLWuKDog92AwWAC1iTsT88zhd+Ja
+ ZTzLqQWfD+pNGaDtTg9/JwZGrg2jqNk3p00j0Vqeou4Es5qRMXi3/B5C/X8WDGdgvLC8
+ Mj3oB0BD2rnEjNWyqV+6YxFkgxDX0gk7IrTBWoutXmKk+hMV/QjsiqUyNqRK8Iswsc7m
+ L/hxU2h/VFLAZ4DsQP4cuQ7HTUZC0vC1x1KXSwSA/5/55OU/Ep4640dCRmO3bKDGb5Zn
+ HmIQWYUROmzmI+3qbDfiEH9LsEymELXtGaIE2e6Wv5p2XA69vrlDal64gt7vPdqeUPwV
+ TT1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YexESypTZUXGxM0RNYUq5KscUb8ruQBrW1cIhg1mZJ0=;
+ b=WSc+7n6i/LDxBZyYfXc2ckrDMyY6qaCoJzmscQSo/fkppyu3lkBVFIA1qPRX5CrP9L
+ sLrswnhRzHdPnmMZADgjobXKq+M9bSvbfmwfg6qMsHupnIxxVSpjfsjQfUy/Q23CQvZi
+ Ah3EZ2Lk3WoF2XWqC7It/pUDKsI0lzAaYzSGvpHr/GP2ztVnAej4F1MD4HOim3ijiBCR
+ YbWQ+EI9pqP45V/teKPzClgr1CM/As4ZgYVuBeoY673oS/eWLlYdaic0fAv4l2+2fxkq
+ p14foQxNnogPbsaRKcNZBHfOJLtXLR1s/zo+9yZR7q9wCDj5njWy5WsbklaHwrK16Zk/
+ +tlA==
+X-Gm-Message-State: AOAM531PYcKj5elIiTUKxkNJ6Wrw3Y9NAIsU/ywKF4WpW+QHi5GbKIuY
+ KMXInySTKP4pvz+4Tqi5Zz2eXQ==
+X-Google-Smtp-Source: ABdhPJyfP85ucHm7H/Dm1TztP6OgLXgNB/BxHatQ80kHkb7XarU2/+PooSiT+4Wl68HlfXcBzEPDXg==
+X-Received: by 2002:a5d:440a:: with SMTP id z10mr5556407wrq.266.1611659312476; 
+ Tue, 26 Jan 2021 03:08:32 -0800 (PST)
+Received: from apalos.home (athedsl-376992.home.otenet.gr. [79.131.24.158])
+ by smtp.gmail.com with ESMTPSA id z18sm10610031wro.91.2021.01.26.03.08.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Jan 2021 03:08:31 -0800 (PST)
+Date: Tue, 26 Jan 2021 13:08:28 +0200
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+To: Alexander Lobakin <alobakin@pm.me>
+Message-ID: <YA/4LNJPEQJv++mo@apalos.home>
+References: <20210125164612.243838-1-alobakin@pm.me>
+ <20210125164612.243838-4-alobakin@pm.me>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0aa56d87-19f1-4343-1720-08d8c191e5f3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2021 00:32:44.3908 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pA696OFStsoOtkpQp+zo3jV5udRiyl/YlLTvT4SGdfXOGieBkfu79s3ahLGa3nR8oyqLy5UezjLaiNLE7PwRKQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0402MB3616
+Content-Disposition: inline
+In-Reply-To: <20210125164612.243838-4-alobakin@pm.me>
 X-Mailman-Approved-At: Tue, 26 Jan 2021 14:56:40 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 6/8] igc: Add support for
- tuning frame preemption via ethtool
+Subject: Re: [Intel-wired-lan] [PATCH net-next 3/3] net: page_pool: simplify
+ page recycling condition tests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,107 +88,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
- "mkubecek@suse.cz" <mkubecek@suse.cz>, "jiri@resnulli.us" <jiri@resnulli.us>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
- "jhs@mojatatu.com" <jhs@mojatatu.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>
+Cc: linux-mm@kvack.org, Jakub Sitnicki <jakub@cloudflare.com>,
+ Leon Romanovsky <leon@kernel.org>, linux-rdma@vger.kernel.org,
+ Dexuan Cui <decui@microsoft.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Willem de Bruijn <willemb@google.com>, Salil Mehta <salil.mehta@huawei.com>,
+ netdev@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>,
+ linux-kernel@vger.kernel.org, Aleksandr Nogikh <nogikh@google.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 22, 2021 at 02:44:51PM -0800, Vinicius Costa Gomes wrote:
-> The tc subsystem sets which queues are marked as preemptible, it's the
-> role of ethtool to control more hardware specific parameters. These
-> parameters include:
+On Mon, Jan 25, 2021 at 04:47:20PM +0000, Alexander Lobakin wrote:
+> pool_page_reusable() is a leftover from pre-NUMA-aware times. For now,
+> this function is just a redundant wrapper over page_is_pfmemalloc(),
+> so Inline it into its sole call site.
 > 
->  - enabling the frame preemption hardware: As enabling frame
->  preemption may have other requirements before it can be enabled, it's
->  exposed via the ethtool API;
-> 
->  - mininum fragment size multiplier: expressed in usually in the form
->  of (1 + N)*64, this number indicates what's the size of the minimum
->  fragment that can be preempted.
-
-And not one word has been said about the patch...
-
-> 
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Alexander Lobakin <alobakin@pm.me>
 > ---
->  drivers/net/ethernet/intel/igc/igc.h         | 12 +++++
->  drivers/net/ethernet/intel/igc/igc_defines.h |  4 ++
->  drivers/net/ethernet/intel/igc/igc_ethtool.c | 53 ++++++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_tsn.c     | 25 +++++++--
->  4 files changed, 91 insertions(+), 3 deletions(-)
+>  net/core/page_pool.c | 14 ++++----------
+>  1 file changed, 4 insertions(+), 10 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index 35baae900c1f..1067c46e0bc2 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -87,6 +87,7 @@ struct igc_ring {
->  	u8 queue_index;                 /* logical index of the ring*/
->  	u8 reg_idx;                     /* physical index of the ring */
->  	bool launchtime_enable;         /* true if LaunchTime is enabled */
-> +	bool preemptible;		/* true if not express */
-
-Mixing tabs and spaces?
-
-> +static int igc_ethtool_set_preempt(struct net_device *netdev,
-> +				   struct ethtool_fp *fpcmd,
-> +				   struct netlink_ext_ack *extack)
-> +{
-> +	struct igc_adapter *adapter = netdev_priv(netdev);
-> +	int i;
-> +
-> +	if (fpcmd->add_frag_size < 68 || fpcmd->add_frag_size > 260) {
-> +		NL_SET_ERR_MSG_MOD(extack, "Invalid value for add-frag-size");
-> +		return -EINVAL;
-> +	}
-
-This check should belong in ethtool, since there's nothing unusual about
-this supported range.
-
-Also, I believe that Jakub requested the min-frag-size to be passed as
-0, 1, 2, 3 as the standard specifies it, and not its multiplied version?
-
-> +
-> +	adapter->frame_preemption_active = fpcmd->enabled;
-> +	adapter->add_frag_size = fpcmd->add_frag_size;
-> +
-> +	if (!adapter->frame_preemption_active)
-> +		goto done;
-> +
-> +	/* Enabling frame preemption requires TSN mode to be enabled,
-> +	 * which requires a schedule to be active. So, if there isn't
-> +	 * a schedule already configured, configure a simple one, with
-> +	 * all queues open, with 1ms cycle time.
-> +	 */
-> +	if (adapter->base_time)
-> +		goto done;
-
-Unless I'm missing something, you are interpreting an adapter->base_time
-value of zero as "no Qbv schedule on port", as if it was invalid to have
-a base-time of zero, which it isn't.
-
-> @@ -115,6 +130,9 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
->  		if (ring->launchtime_enable)
->  			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
+> diff --git a/net/core/page_pool.c b/net/core/page_pool.c
+> index f3c690b8c8e3..ad8b0707af04 100644
+> --- a/net/core/page_pool.c
+> +++ b/net/core/page_pool.c
+> @@ -350,14 +350,6 @@ static bool page_pool_recycle_in_cache(struct page *page,
+>  	return true;
+>  }
 >  
-> +		if (ring->preemptible)
-> +			txqctl |= IGC_TXQCTL_PREEMPTABLE;
+> -/* page is NOT reusable when:
+> - * 1) allocated when system is under some pressure. (page_is_pfmemalloc)
+> - */
+> -static bool pool_page_reusable(struct page_pool *pool, struct page *page)
+> -{
+> -	return !page_is_pfmemalloc(page);
+> -}
+> -
+>  /* If the page refcnt == 1, this will try to recycle the page.
+>   * if PP_FLAG_DMA_SYNC_DEV is set, we'll try to sync the DMA area for
+>   * the configured size min(dma_sync_size, pool->max_len).
+> @@ -373,9 +365,11 @@ __page_pool_put_page(struct page_pool *pool, struct page *page,
+>  	 * regular page allocator APIs.
+>  	 *
+>  	 * refcnt == 1 means page_pool owns page, and can recycle it.
+> +	 *
+> +	 * page is NOT reusable when allocated when system is under
+> +	 * some pressure. (page_is_pfmemalloc)
+>  	 */
+> -	if (likely(page_ref_count(page) == 1 &&
+> -		   pool_page_reusable(pool, page))) {
+> +	if (likely(page_ref_count(page) == 1 && !page_is_pfmemalloc(page))) {
+>  		/* Read barrier done in page_ref_count / READ_ONCE */
+>  
+>  		if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
+> -- 
+> 2.30.0
+> 
+> 
 
-I think this is the only place in the series where you use PREEMPTABLE
-instead of PREEMPTIBLE.
-
-> +
->  		wr32(IGC_TXQCTL(i), txqctl);
->  	}
-
-Out of curiosity, where is the ring to traffic class mapping configured
-in the igc driver? I suppose that you have more rings than traffic classes.
+Reviewed-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
