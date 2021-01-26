@@ -1,79 +1,124 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28DCD302ED6
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Jan 2021 23:20:24 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED61E3030F2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Jan 2021 01:19:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5803C870F2;
-	Mon, 25 Jan 2021 22:20:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8110286A04;
+	Tue, 26 Jan 2021 00:19:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LVwoUtmI47JL; Mon, 25 Jan 2021 22:20:22 +0000 (UTC)
+	with ESMTP id rh8Zz30dS01c; Tue, 26 Jan 2021 00:19:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A8BDC870E5;
-	Mon, 25 Jan 2021 22:20:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A24386A10;
+	Tue, 26 Jan 2021 00:19:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5670F1BF34D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 22:20:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DF7821BF33F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:18:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5277285277
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 22:20:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D716F87123
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:18:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5UYBF6-QPf6Y for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Jan 2021 22:20:19 +0000 (UTC)
+ with ESMTP id xqTnjx5sNIQY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Jan 2021 00:18:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f178.google.com (mail-pg1-f178.google.com
- [209.85.215.178])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A7E7E85259
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 22:20:19 +0000 (UTC)
-Received: by mail-pg1-f178.google.com with SMTP id b21so3078807pgk.7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Jan 2021 14:20:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=g/9DKh0ULPecggucPXnLdq3O/CxzusNUloqJvn3JPOs=;
- b=LuSxjB7clImr7UW8SpMc1WdkUtYmQq9iWLHL8AgJBA9t4kvdkAoaZGdAKNaRKDz2dm
- PvMhimdAFJW0fjAyO7e0EkivVpmsS2+ZhTiLIXWwjRQrdAGBlXoQBf60pP3jp05ZUSs7
- v7oovwP73SpBCp7srxyu2WknU90MwDefmozE6qCpalEt9QO7d7LTS6sJEd7wBaxwX2Ve
- mLJLQO39EcuvfD8fuQnnioHJVIM3u4Nth3UdF3B8IYoBe+gBC+9TTOlsjkZi4WIReKZe
- 1oA+gyTiIBz7gb2J+eonJwFjbm905s8erjtjcYaxAh/BgXPOqK4nbhavMfpOD7dMf0no
- dleg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=g/9DKh0ULPecggucPXnLdq3O/CxzusNUloqJvn3JPOs=;
- b=tAPjPQX4CDhT6VOLCWZdiDf+c09diMngIoMR/jZ1NoPm+HxiI412/shfMlAuo2cXMu
- R2B97gtlKbGF6ZbtvA0RgY1ZM7FO+S9q+Uq+0EhWz9ltdPP1aoh5n0nfm/dQGwoteTuu
- rbVzIHw64+c+bc+MNdI8TBnpvBhmLpXCSMm6sANGvxKkWwKUZka9/1vBLboWth5BQfDF
- j8q3tcQktoB8m+bHR9WIvA716bn2bnwMwc2dxfet9yqjpSL+TsZMNJAO4rrEWIeKcoHN
- TxexmXV5DKC+4pmtCZFSnh2dsDOLBul15hp4G+K/S4Bxvwlk9OAdM0U+R4Hr4OfLwBeW
- 0IcQ==
-X-Gm-Message-State: AOAM531WRzsdWOH36qcyNsMR3KOfm68618MQ2XTUNafx7/76WiCMhf6K
- ec3dOk+0tnRZQSc9p9oVpQkMbYamHN1Rag==
-X-Google-Smtp-Source: ABdhPJxM0j7jB0wxT974GA0zRsKzv1xX0tYiSTHNMnIAN+evGz0IkQc1/RS8Yo1Iu5oByE2tZmBaYA==
-X-Received: by 2002:a63:4082:: with SMTP id n124mr2679077pga.340.1611613218546; 
- Mon, 25 Jan 2021 14:20:18 -0800 (PST)
-Received: from hermes.local (76-14-222-244.or.wavecable.com. [76.14.222.244])
- by smtp.gmail.com with ESMTPSA id
- b14sm351647pju.14.2021.01.25.14.20.17
- for <intel-wired-lan@lists.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Jan 2021 14:20:18 -0800 (PST)
-Date: Mon, 25 Jan 2021 14:20:09 -0800
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: intel-wired-lan@lists.osuosl.org
-Message-ID: <20210125142009.01b6278d@hermes.local>
+Received: from EUR01-VE1-obe.outbound.protection.outlook.com
+ (mail-eopbgr140089.outbound.protection.outlook.com [40.107.14.89])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 79DA48711C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jan 2021 00:18:38 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YVCQkp3lwd75QIXPBhfJusQkQ1L3QvbNojYFtOJL4gZyLb+DoRUQbglLvDJ0uoXUwG63Qhf2m27Gp2cXKiqCNad+CPWIod0uQ7TMSuKgtydD5MBoy8D6yunpTyLd8WAepdjuNbiFg1xcZOcui6CIgraXCOsW+2IWxiUNBfUO+283y1Clr2JzjayG039YukjRyu1SNOd595Szj8gxhxbWvhcgGBmiBW2DmPgG0/fUamI/kxk0QVXxO0FAaAREw/nkYaUZSikrTk9Tk8pKanK9QNs+9NLaXV2rzaBKvSAeMV5TTIRp3Bm+0ID2cRnNbda7idcmzGyZhl8OPRLujPrh6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FqA5PHtnveU17Sq2NPmAX4oJdzel3tNEDyfouxbGtkg=;
+ b=Coo3c1C8EUVmIEww9//xVaES8F3sImIgODtunTjVh6ZtzE9wXdLrQG+gwCAkgDkYQ+aPxobZ72BtQT8AYiYWHrcBfNXkZvtDoXXZyKndDDNsCNtUoKn9Qic5hK/Mi/jU6ZVn3fm5PvtkAd23g2UJ8EnUwXn/uKb5RQJ4ITu7x/2Z1QCgElJ3IrKR/nGJwZufMijI7gQeK4ItK4eqOtGG4HvV0HQ8AM8Xb3hCFyawzMLemZBqy4n1VSFIi1dFrcmN8SkwYdWSHWqc3mfb1MtGu2cK/b/g2M9X/w53p9sIpdxcmm6gLw/iUcjQeDeMXVUQCKV5mo8fEROsllVTBYiM+Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FqA5PHtnveU17Sq2NPmAX4oJdzel3tNEDyfouxbGtkg=;
+ b=FuaCpEWwJMZmjg1xCz6P8dmYzsYyrGRJ7L3IBxPt2hKIc85lT9FctEV4cnEYqdMZzR2jyec9rGXghH3lNlstNJn0H8r58YFZQjkgaDyheeNSeScTTXb+c1b/9qTvY1s8Ihiyo1VITLeDwudZqb8/ulqrEcXrfG7ejRHAETmXZ/k=
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
+ by VE1PR04MB6509.eurprd04.prod.outlook.com (2603:10a6:803:125::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3784.17; Tue, 26 Jan
+ 2021 00:02:29 +0000
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::3df3:2eba:51bb:58d7]) by VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::3df3:2eba:51bb:58d7%6]) with mapi id 15.20.3784.012; Tue, 26 Jan 2021
+ 00:02:29 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Thread-Topic: [PATCH net-next v3 5/8] igc: Avoid TX Hangs because long cycles
+Thread-Index: AQHW8RBH771cWx+OG06we+xwGrQpUKo5CvAA
+Date: Tue, 26 Jan 2021 00:02:29 +0000
+Message-ID: <20210126000228.gpyh3rrp662wysit@skbuf>
+References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
+ <20210122224453.4161729-6-vinicius.gomes@intel.com>
+In-Reply-To: <20210122224453.4161729-6-vinicius.gomes@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=nxp.com;
+x-originating-ip: [5.12.227.87]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 3e4a4399-9c9b-4b69-05a7-08d8c18dac3d
+x-ms-traffictypediagnostic: VE1PR04MB6509:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <VE1PR04MB6509D4D9201569DBEA4F5BE5E0BC0@VE1PR04MB6509.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ShSfsBW7/56lT9eW0MyoVH998owi+ygiO5AoBU2o27sRzbXApoXpVnKSAzDcMhFksfsu74JIzwZqJitilDn5GQZ8qeiGHEwWJlbXVhvHNv+b1guzxw6+nlh+avbk97DSzUxu+LfW/qYR5gh/NPYd2MF6wXTPffDswqa6qh6/uGZ2EbZwrAiqBEE/wvGrq+gEXnfW6pvhx3NZDPvQSLZ2oRRZe2wUyhEibvpjg2B2HSHaV5FeyjD+5ES1O1rLjT8tieahodhFtRVPBUq6IHGG9LykjdfkNTqpe4ZkVJZtXBmagul5Zc6abVjTZfM1M852s5S1OCPrhLK81nl1VFZS1VeF/sjQK9I1gGJQubHX1M1qKxbpVI62Du5uI+r1IiwyhenVJmXAHFsk1oFhKty6GzRmH0M6YaPA9c6YX9i8QYB4JHv1rluG41rWe/2jfdQ7nXMSQPY0JNN14xu28uX+qXXqZyjp00ZN+5fIAAtmYT6vdq38nRi4JDE9hz2tZSQjI0pSCwgqbWtmT7o117HUTQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(7916004)(4636009)(396003)(346002)(376002)(136003)(366004)(39860400002)(2906002)(6512007)(4744005)(83380400001)(1076003)(6486002)(54906003)(76116006)(64756008)(66556008)(8936002)(66446008)(316002)(44832011)(478600001)(91956017)(6506007)(86362001)(33716001)(4326008)(7416002)(6916009)(8676002)(66946007)(66476007)(186003)(5660300002)(9686003)(71200400001)(26005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?DTpOBkC7BtFuxBWjKrPY1Abbc6gIizokc2XoyxIfPyj+IGm915USZ9CDao39?=
+ =?us-ascii?Q?NOePCUWsCm/2ntw1KHd8emjQufRpngHbguv8rxKXC5kuXB34E5rJ+KflO9zd?=
+ =?us-ascii?Q?9gxXz4wWB33aQaAtEd8jLYnDsbuaeqfnUqp8gz2kQAVhP98N6HsvknSnOVPg?=
+ =?us-ascii?Q?/w6IO4kXc13nudlYhWcme0+xexpvb30HMmGOqyDLICU0oWQsOp1mgJWE9sTP?=
+ =?us-ascii?Q?GqMvDZOkEYIJey6TLVG5tXlzv36YchKvBRbHsY2zc8EC1dcUN93dmiyNVFH3?=
+ =?us-ascii?Q?ihusSVTbUgwMWMC04XWsfcpvd/xlJIe1uwR32qMB5LqLoQsI2h1ELhmVRTTL?=
+ =?us-ascii?Q?o3rErZ5EozUSZ8mxbZ3DlHyTRF5Wcr0sz1BNPOaFKKLpVMyWIvmFRw7gZvEu?=
+ =?us-ascii?Q?2dCkO1CEiD0H1/uBaf6p/4sj4CpXImZa6nAG1yvezwDj79P8nBCr7NTTqavs?=
+ =?us-ascii?Q?z/9UR2yHSIUAIA+0ED3ryB//g0OiCiMWBezNSjLOWTXFEN8U+H2PnAODjFtH?=
+ =?us-ascii?Q?8Hb8R5wzZQmq36zBJppoZjd9oUAG7MNCZXq562LkL6+nLoTkun/jaXaQH7ZM?=
+ =?us-ascii?Q?p/rd2UyXwQyxowBZ87iPeem2cbSeICf0WJDrjp/hAAfEGbxK0FNTbNDMcgD9?=
+ =?us-ascii?Q?NabyghKAyGwenDpdbENIAbkAsOY+1YcIC3tCzX5eRG2ekIyYHvFXkoCa06Lr?=
+ =?us-ascii?Q?k7uXH0dIInMtViy1m3jB3tlQ8JN169i50adWXFJYRGUzF+vLMJK2g35ucGPl?=
+ =?us-ascii?Q?WqRlfpEXMJjmB8qOy48d8IOvARcYHjljv3t/UNuEimLy8s7U7AlhxVlkV50h?=
+ =?us-ascii?Q?XxdJybJxU8qWLi1b0fXAmGRXq3OImI8u54/uge2NBVw0JJDzfDoexq3eM55O?=
+ =?us-ascii?Q?8DtNsscJU7nS6BdWojdxhdybw+AHaB0PfwaoXG79tsW6tUNEecgwGUzYtC5T?=
+ =?us-ascii?Q?CkW5HCJZyYX51nkUHatthLElsg7cVubE8QgRnF6B3UFAjE5p/pW7VvGM1Hhs?=
+ =?us-ascii?Q?MoOYwmAQBiJQbeCAMbl2GohV4rEJ2TkEuDFxIPHCGVcGyTLw3oN8sxokbwLx?=
+ =?us-ascii?Q?MgMSwc9K?=
+Content-ID: <9017B83999087042AA350220CFFD15A3@eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] Fw: [Bug 211335] New: Network connectivity issues
- after hibernation
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3e4a4399-9c9b-4b69-05a7-08d8c18dac3d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2021 00:02:29.5895 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: h30/nxjMlzTkUzvdDz938IxNiqZ92DSly8NjiFnJtjnbLXvjrWKZQJt8zRbra8OKfDD0CeBNSXXZFO7AhuIKPw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB6509
+X-Mailman-Approved-At: Tue, 26 Jan 2021 00:19:27 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 5/8] igc: Avoid TX Hangs
+ because long cycles
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,58 +131,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
+ "mkubecek@suse.cz" <mkubecek@suse.cz>, "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ "kuba@kernel.org" <kuba@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Fri, Jan 22, 2021 at 02:44:50PM -0800, Vinicius Costa Gomes wrote:
+> Avoid possible TX Hangs caused by using long Qbv cycles. In some
+> cases, using long cycles (more than 1 second) can cause transmissions
+> to be blocked for that time. As the TX Hang timeout is close to 1
+> second, we may need to reduce the cycle time to something more
+> reasonable: the value chosen is 1ms.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
 
-
-Begin forwarded message:
-
-Date: Mon, 25 Jan 2021 08:41:52 +0000
-From: bugzilla-daemon@bugzilla.kernel.org
-To: stephen@networkplumber.org
-Subject: [Bug 211335] New: Network connectivity issues after hibernation
-
-
-https://bugzilla.kernel.org/show_bug.cgi?id=211335
-
-            Bug ID: 211335
-           Summary: Network connectivity issues after hibernation
-           Product: Networking
-           Version: 2.5
-    Kernel Version: 5.10.10
-          Hardware: x86-64
-                OS: Linux
-              Tree: Mainline
-            Status: NEW
-          Severity: high
-          Priority: P1
-         Component: Other
-          Assignee: stephen@networkplumber.org
-          Reporter: morfikov@gmail.com
-        Regression: No
-
-Created attachment 294843
-  --> https://bugzilla.kernel.org/attachment.cgi?id=294843&action=edit  
-hibernation log
-
-I not sure where to put it, but whenever I hibernate my machine, the process is
-interrupted with the two kernel warnings. One is "TPM returned invalid status"
-and the other is "NETDEV WATCHDOG: eth0 (e1000e): transmit queue 0 timed out".
-After this happens, I'm able to hibernate the machine again without this warns,
-but when I resume the machine from sleep, the network doesn't seem to work well
--- I get bunch of errors when I try to visit some http/https pages in firefox. 
-
-I attached the full hibernation log as well as lspci/lsusb. The machine is
-Lenovo Thinkpad T430.
-
--- 
-You may reply to this email to add a comment.
-
-You are receiving this mail because:
-You are the assignee for the bug.
+Don't you want this patch to go to 'net' and be backported?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
