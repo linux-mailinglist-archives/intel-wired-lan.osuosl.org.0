@@ -2,59 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30FA0305E0C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 15:20:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 071BA305EBE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 15:54:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B537C871CA;
-	Wed, 27 Jan 2021 14:20:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B918E86F84;
+	Wed, 27 Jan 2021 14:54:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 29IedRTsnH8h; Wed, 27 Jan 2021 14:20:08 +0000 (UTC)
+	with ESMTP id tZj9pMd26DNW; Wed, 27 Jan 2021 14:54:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EE854871CC;
-	Wed, 27 Jan 2021 14:20:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 34665871D2;
+	Wed, 27 Jan 2021 14:54:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C1B491BF301
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:20:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F2D6E1BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 09:03:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BD64785B5B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:20:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E5A9C87123
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 09:03:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gQY1gbZV0ZHn for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jan 2021 14:20:05 +0000 (UTC)
+ with ESMTP id KzxOISddtBC1 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jan 2021 09:03:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 943D284C93
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:20:05 +0000 (UTC)
-IronPort-SDR: q+rOO3EVyPr4+A9IQcafnO4D/nMI6PFlzkoEFvlnmj42Lfmk8TLglTiBRBXrdtf03uhFRtkUad
- ihK6Dx1b+gEw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9876"; a="159245053"
-X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="159245053"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2021 06:19:52 -0800
-IronPort-SDR: MnYUvGcZS7Q8EkIf/CfcVReZ38TdqPAod/xTT4luLTJ6A00DezFlpCBLQeoWTZMCK1/qbw5lLB
- HCIvDzsxGiLA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="504929427"
-Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 27 Jan 2021 06:19:51 -0800
-Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l4lfi-0001c6-OZ; Wed, 27 Jan 2021 14:19:50 +0000
-Date: Wed, 27 Jan 2021 22:19:24 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6011766c.Cp4AOnS3I1QEJr9i%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C2D40870CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 09:03:57 +0000 (UTC)
+From: Kurt Kanzenbach <kurt.kanzenbach@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1611738234;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1u36hpoLD/DdxchMkselsxB05sjOdJH6kXFKjz0bs3E=;
+ b=qqcDxKfPxpmk6CwA+8+uw/P56kVgH3WeDo6BLFhQS3UKxBn66F5MGNnN474Z043nngzlHM
+ iBx/MItBtDE/ZfHbAJeiMcSTZj76NhxfCAicDnritDYzblTWjC5q9eOqaSrX8JWVYo3QkX
+ bEDb+OXaQsDonmoP3xCaJ8oIkWJaKqByMTDl7AawBG4e/ydCXBNO1qLifSnAKLv0BQnW0c
+ PJlJCaw1krNwtcjW4PUmnkxhssL2gB0OkW57G/BvwXLsvHRmBQd0JnSQKM3cSPmuvGYnww
+ LbSZYT+S0eorNS59JEHr7rsj14zVJj9/guKTFZyKMYvVAAlh7VCu/oxrWWVXzw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1611738234;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1u36hpoLD/DdxchMkselsxB05sjOdJH6kXFKjz0bs3E=;
+ b=DqGBp/w3OIwfALewbhYL6NxHJMr+tOSn3qJRuwpSA5cLi0l3IPNjDJpvJUfvCNCh70Dra9
+ sxpHaVmJr+BQ31Dg==
+To: Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>
+In-Reply-To: <20210126000228.gpyh3rrp662wysit@skbuf>
+References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
+ <20210122224453.4161729-6-vinicius.gomes@intel.com>
+ <20210126000228.gpyh3rrp662wysit@skbuf>
+Date: Wed, 27 Jan 2021 10:03:53 +0100
+Message-ID: <87czxqda4m.fsf@kurt>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
- 3e841bacf72fd5fd98172c42bbc9ae7d461b6304
+X-Mailman-Approved-At: Wed, 27 Jan 2021 14:54:55 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 5/8] igc: Avoid TX Hangs
+ because long cycles
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,174 +75,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
+ "mkubecek@suse.cz" <mkubecek@suse.cz>, "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ "kuba@kernel.org" <kuba@kernel.org>
+Content-Type: multipart/mixed; boundary="===============0067754827375154541=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
-branch HEAD: 3e841bacf72fd5fd98172c42bbc9ae7d461b6304  net: bridge: multicast: fix br_multicast_eht_set_entry_lookup indentation
+--===============0067754827375154541==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-elapsed time: 817m
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-configs tested: 144
-configs skipped: 2
+On Tue Jan 26 2021, Vladimir Oltean wrote:
+> On Fri, Jan 22, 2021 at 02:44:50PM -0800, Vinicius Costa Gomes wrote:
+>> Avoid possible TX Hangs caused by using long Qbv cycles. In some
+>> cases, using long cycles (more than 1 second) can cause transmissions
+>> to be blocked for that time. As the TX Hang timeout is close to 1
+>> second, we may need to reduce the cycle time to something more
+>> reasonable: the value chosen is 1ms.
+>>=20
+>> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+>> ---
+>
+> Don't you want this patch to go to 'net' and be backported?
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I'm wondering about this patch as well. Is this fix related to frame
+preemption? If I understand the code correctly the 1sec is a dummy cycle
+and all queues are open. How should Tx hang then?
 
-gcc tested configs:
-arm64                               defconfig
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                          landisk_defconfig
-powerpc                     redwood_defconfig
-m68k                          atari_defconfig
-powerpc                     tqm8540_defconfig
-mips                 decstation_r4k_defconfig
-powerpc                 mpc832x_mds_defconfig
-powerpc                        warp_defconfig
-powerpc                     tqm8560_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                      ep88xc_defconfig
-sh                          kfr2r09_defconfig
-powerpc                    klondike_defconfig
-powerpc                    mvme5100_defconfig
-mips                           ip22_defconfig
-openrisc                    or1ksim_defconfig
-xtensa                generic_kc705_defconfig
-nios2                         10m50_defconfig
-powerpc                 mpc8315_rdb_defconfig
-powerpc                 mpc85xx_cds_defconfig
-xtensa                         virt_defconfig
-arc                         haps_hs_defconfig
-arm                          prima2_defconfig
-mips                           rs90_defconfig
-arm                            xcep_defconfig
-sh                      rts7751r2d1_defconfig
-arm                          moxart_defconfig
-m68k                            q40_defconfig
-x86_64                           alldefconfig
-arm                  colibri_pxa300_defconfig
-c6x                                 defconfig
-powerpc                     taishan_defconfig
-arm                            hisi_defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-um                           x86_64_defconfig
-arm                         lubbock_defconfig
-powerpc                      acadia_defconfig
-sh                        dreamcast_defconfig
-powerpc                 mpc837x_mds_defconfig
-arm                      integrator_defconfig
-powerpc                    adder875_defconfig
-arm                       cns3420vb_defconfig
-um                            kunit_defconfig
-sh                        edosk7705_defconfig
-powerpc                      tqm8xx_defconfig
-sh                           se7206_defconfig
-mips                         db1xxx_defconfig
-arm                       aspeed_g4_defconfig
-powerpc                     pq2fads_defconfig
-powerpc                     powernv_defconfig
-arm                          pcm027_defconfig
-mips                       capcella_defconfig
-arm                          ep93xx_defconfig
-powerpc                 mpc832x_rdb_defconfig
-arm                            lart_defconfig
-powerpc                           allnoconfig
-arm                        spear3xx_defconfig
-nds32                               defconfig
-arm                        spear6xx_defconfig
-mips                        nlm_xlr_defconfig
-arm                        neponset_defconfig
-arm                        multi_v7_defconfig
-powerpc                       maple_defconfig
-m68k                        m5307c3_defconfig
-powerpc                   lite5200b_defconfig
-arm                         s3c2410_defconfig
-arm                        oxnas_v6_defconfig
-arm                            qcom_defconfig
-arm                        shmobile_defconfig
-powerpc               mpc834x_itxgp_defconfig
-powerpc                     pseries_defconfig
-arm                          lpd270_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-c6x                              allyesconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-i386                 randconfig-a001-20210126
-i386                 randconfig-a002-20210126
-i386                 randconfig-a004-20210126
-i386                 randconfig-a006-20210126
-i386                 randconfig-a003-20210126
-i386                 randconfig-a005-20210126
-x86_64               randconfig-a012-20210126
-x86_64               randconfig-a016-20210126
-x86_64               randconfig-a015-20210126
-x86_64               randconfig-a011-20210126
-x86_64               randconfig-a013-20210126
-x86_64               randconfig-a014-20210126
-i386                 randconfig-a013-20210126
-i386                 randconfig-a011-20210126
-i386                 randconfig-a012-20210126
-i386                 randconfig-a015-20210126
-i386                 randconfig-a014-20210126
-i386                 randconfig-a016-20210126
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Thanks,
+Kurt
 
-clang tested configs:
-x86_64               randconfig-a003-20210126
-x86_64               randconfig-a002-20210126
-x86_64               randconfig-a001-20210126
-x86_64               randconfig-a005-20210126
-x86_64               randconfig-a006-20210126
-x86_64               randconfig-a004-20210126
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmARLHkACgkQeSpbgcuY
+8KYw8xAApAhXYhm/AZcD2FuRDeZ/OIPPzW+J6C/nOf105TTBpGqEAWaGhBURtl1i
+ZOCt8BV9e2KTLj/+cfcmkcBVIMOonYxwo7CWYNU8M1S2s0W/FZWm6Aj4bPYqM3oh
+ZxfuKwCzfro6rjt5I8qLC15pCxM3SW0d7HCDBCBseZdt1QkWNTsCRUJojbLkFQ5P
+4V4sFrAgwo6sORLPswvrCLtYK3gIfEBtwNwdldQBLxC7o2EoScixyFvjDF4ArDc1
+Gx69tNjMHdSEw2yWuxdZEaN2GM9taoJqWJs9Q/Hra/3wDPL5aLli+V8LxPUvhtDt
+iBG01C/gldi3T+JnEmasj4eR/3v6/Nj5+Fr2sCp5dRSB7oGzqsc0eQMf3bN0FK/u
+qjBtMxrSwQ51pPgZYLyzI6Lzg+Ji6zJtP6y2UF1BS2VxggtjPwX/cCb5B+9yXrnG
+NFjkBNPET/k+5ylJXiB1W+5/mSsS5uajrCi4qreXrL0CiGlVd1w+Ee/zN0RR5Uhf
+/fv6WJdibTk2QNL2eVJwC7VP3IVSswHeW8so519Gq7phltvlMXkC9wW8ghNGgxmi
+eCg0AmeqotkGtF/MkuyAv8L657cIlnOjjRWREk1J+ASKh/rUchFYe/+p3U0Cmldp
+yTj/eQ/+oFa76dvtC4aFyzk0355gyb7Duww6UX2TjuXhOe3B+0A=
+=TJzX
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============0067754827375154541==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0067754827375154541==--
