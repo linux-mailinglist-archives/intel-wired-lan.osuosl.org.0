@@ -1,58 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E39A9305C2D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 13:55:53 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EF63305DF9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 15:13:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 354AE226E9;
-	Wed, 27 Jan 2021 12:55:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8790285722;
+	Wed, 27 Jan 2021 14:13:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 80hP1gSGpZK3; Wed, 27 Jan 2021 12:55:52 +0000 (UTC)
+	with ESMTP id OQR5Z_YG3UNS; Wed, 27 Jan 2021 14:13:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B853A2264A;
-	Wed, 27 Jan 2021 12:55:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B28AB85ABB;
+	Wed, 27 Jan 2021 14:13:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CF4211BF5E6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 12:55:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 70B641BF301
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:13:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C3E78866DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 12:55:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 67A3784FC9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:13:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LcCZb8NORnfJ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jan 2021 12:55:45 +0000 (UTC)
-X-Greylist: delayed 00:05:02 by SQLgrey-1.7.6
-Received: from andre.telenet-ops.be (andre.telenet-ops.be [195.130.132.53])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 426F9866DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 12:55:44 +0000 (UTC)
-Received: from ramsan.of.borg ([84.195.186.194])
- by andre.telenet-ops.be with bizsmtp
- id Moqh240014C55Sk01oqh6r; Wed, 27 Jan 2021 13:50:41 +0100
-Received: from geert (helo=localhost)
- by ramsan.of.borg with local-esmtp (Exim 4.93)
- (envelope-from <geert@linux-m68k.org>)
- id 1l4kHQ-0016XV-KY; Wed, 27 Jan 2021 13:50:40 +0100
-Date: Wed, 27 Jan 2021 13:50:40 +0100 (CET)
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-In-Reply-To: <ff6d11dfa2a04076893105a457ca323f@intel.com>
-Message-ID: <alpine.DEB.2.22.394.2101271348400.263225@ramsan.of.borg>
-References: <20201228103633.11621-1-mateusz.palczewski@intel.com>
- <CAKgT0Uf-Exy1qhZYhKTe=mWf6i8L-FcaUYT0zGnyVWDq-pnfqw@mail.gmail.com>
- <BL0PR11MB35241617E21D17136107E0D187D10@BL0PR11MB3524.namprd11.prod.outlook.com>
- <CAKgT0Ue3fQY1JDsE+vxY3SscRvwQrE9YwUZ3Vva2H3Nze-ALuA@mail.gmail.com>
- <ff6d11dfa2a04076893105a457ca323f@intel.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+ with ESMTP id DU-O0gKGFqxI for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jan 2021 14:13:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1157F84F24
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:13:53 +0000 (UTC)
+IronPort-SDR: mFjyCPTJwD1LaIZ3SdRaXLb9iRjyeQprTsgRAtyr1f+rYowluYQPIgJV28UFK0PU4LeIiH7D3U
+ ynVNw3+XCeJg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9876"; a="180151837"
+X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="180151837"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2021 06:13:52 -0800
+IronPort-SDR: gxsV9to5lZz4KYFccl2EJl21ENn/Is+UO5AyRN6vvegdGTKj3KMZJhuICosf+hnAZnpic8JUiG
+ GvYxaNNCQlHg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="430112784"
+Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 27 Jan 2021 06:13:51 -0800
+Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1l4lZu-0001bx-Jh; Wed, 27 Jan 2021 14:13:50 +0000
+Date: Wed, 27 Jan 2021 22:13:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <601174fa.LW8/F7WqUnwVl1Tn%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1221235678-1611751840=:263225"
-Subject: Re: [Intel-wired-lan] [PATCH net v1] virtchnl: Fix layout of RSS
- structures
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS WITH
+ WARNING 6cb2d50eee0b83d340d508d095414ae6faaaf2cf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,156 +67,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, netdev@vger.kernel.org,
- "Ciosek, NorbertX" <norbertx.ciosek@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 6cb2d50eee0b83d340d508d095414ae6faaaf2cf  i40e: Revert "i40e: don't report link up for a VF who hasn't enabled queues"
 
---8323329-1221235678-1611751840=:263225
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+possible Warning in current branch:
 
-On Tue, 5 Jan 2021, Samudrala, Sridhar wrote:
-> Looks like the patch that went in upstream is incorrect and it will break when working with PF drivers
-> that are built without that commit. The fix proposed in this patch is also not correct as it will again break backwards
-> compatibility.
->
-> The OOT driver doesn't include this patch. I think the simple fix is to remove the pad field as Alex suggested.
-> I think the reason we are not using flexible arrays in virtchnl is because this file is shared with other
-> OSes that use C++ compilers that don't support flexible arrays.
->
-> Thanks
-> Sridhar
->
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Alexander Duyck
-> Sent: Tuesday, January 5, 2021 9:43 AM
-> To: Palczewski, Mateusz <mateusz.palczewski@intel.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>
-> Cc: Ciosek, NorbertX <norbertx.ciosek@intel.com>; intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-> Subject: Re: [Intel-wired-lan] [PATCH net v1] virtchnl: Fix layout of RSS structures
->
-> Hi,
->
-> What you are saying doesn't make much sense. Why do you need the size
-> guarantee? The padding is pointless for a variable length array so it
-> shouldn't be there anyway. What I am suggesting you do is revert the
-> pad and convert the key and lut to flexible array members. Then the
-> size doesn't assume a size of 1 since that isn't anything that has to
-> be guaranteed anyway.
->
-> Also what testing are you doing to guarantee you don't break backward
-> compatibility? It seems like an obvious issue that moving the lut or
-> key by adding the pad should break compatibility with older builds of
-> the AVF or PF drivers since you are moving the location of the key and
-> table. This should result in an off-by-one indexing error. Are you
-> running this with an older version of either and then verifying the
-> hardware behavior is the same? My concern is that if you are building
-> an AVF and a PF with the same code it will work, but if you test
-> against an older version of either they will expect the old location,
-> not the padded one and that will result in issues.
->
-> - Alex
->
-> On Tue, Jan 5, 2021 at 2:53 AM Palczewski, Mateusz
-> <mateusz.palczewski@intel.com> wrote:
->>
->> Hello,
->> No, it will not break any functionality of the in-tree drivers. This patch fixes commit 65ece6de0114 ("virtchnl: Add missing explicit padding to structures") which added padding in the wrong place of both structures as key/lut fields should be at the end. Drivers code assumes that size of both is equal to 1 and allocates memory with (sizeof(virtchnl_rss_lut/virtchnl_rss_key) - 1 + (array size)). Changing lut[1]/key[1] to flexible array members lut[]/key[] is possible but this will require more changes in the drivers as compiler cannot guarantee that size of these fields will be 1. These modifications should be done in other commit.
->>
->> Regards,
->> Mateusz Palczewski
->>
->> -----Original Message-----
->> From: Alexander Duyck <alexander.duyck@gmail.com>
->> Sent: poniedziałek, 28 grudnia 2020 19:34
->> To: Palczewski, Mateusz <mateusz.palczewski@intel.com>
->> Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>; Ciosek, NorbertX <norbertx.ciosek@intel.com>
->> Subject: Re: [Intel-wired-lan] [PATCH net v1] virtchnl: Fix layout of RSS structures
->>
->> On Mon, Dec 28, 2020 at 2:36 AM Mateusz Palczewski <mateusz.palczewski@intel.com> wrote:
->>>
->>> From: Norbert Ciosek <norbertx.ciosek@intel.com>
->>>
->>> Move "key" and "lut" fields at the end of RSS structures.
->>> They are arrays of size 1 used to fill in the data in dynamically
->>> allocated memory located after both structures.
->>> Previous layout could lead to unwanted compiler optimizations in loops
->>> when iterating over these arrays.
->>>
->>> Fixes: 65ece6de0114 ("virtchnl: Add missing explicit padding to
->>> structures")
->>> Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
->>> ---
->>>  include/linux/avf/virtchnl.h | 4 ++--
->>>  1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/include/linux/avf/virtchnl.h
->>> b/include/linux/avf/virtchnl.h index ac4a1d3..44945d6 100644
->>> --- a/include/linux/avf/virtchnl.h
->>> +++ b/include/linux/avf/virtchnl.h
->>> @@ -529,8 +529,8 @@ struct virtchnl_eth_stats {  struct
->>> virtchnl_rss_key {
->>>         u16 vsi_id;
->>>         u16 key_len;
->>> -       u8 key[1];         /* RSS hash key, packed bytes */
->>>         u8 pad[1];
->>> +       u8 key[1];         /* RSS hash key, packed bytes */
+drivers/net/ethernet/intel/i40e/i40e_ptp.c:29:57-58: WARNING opportunity for kobj_to_dev()
 
-If you use a flexible array member, it should be declared without a
-size, i.e.
+Warning ids grouped by kconfigs:
 
-     u8 key[];
+gcc_recent_errors
+`-- powerpc64-randconfig-c004-20210126
+    `-- drivers-net-ethernet-intel-i40e-i40e_ptp.c:WARNING-opportunity-for-kobj_to_dev()
 
-Everything else is (trying to) fool the compiler, and leading to
-undefined behavior.
+elapsed time: 720m
 
->>>  };
->>>
->>>  VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_key); @@ -538,8 +538,8 @@
->>> VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_key);  struct
->>> virtchnl_rss_lut {
->>>         u16 vsi_id;
->>>         u16 lut_entries;
->>> -       u8 lut[1];        /* RSS lookup table */
->>>         u8 pad[1];
->>> +       u8 lut[1];        /* RSS lookup table */
->>>  };
->>>
->>>  VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_rss_lut);
->>
->> This makes absolutely no sense. Isn't it going to break compatibility with existing devices that already have the old definitions? If the key and lut are meant to be dynamically allocated it doesn't make sense to have it size 1. Defining them with a length of 1 is incorrect for how these are handled in the kernel. It just looks wrong as my first instinct was to ask about why you would define an array of size 1? You should be defining the key and lut without size, so "key[]" and "lut[]". That is how we define dynamically allocated fields at the end of structure.
->>
->> If the lut and key are supposed to be dynamically allocated you shouldn't have the pad at all. You should remove it from the structures in question.
->> ---------------------------------------------------------------------
->> Intel Technology Poland sp. z o.o.
->> ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
->> Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
->> This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
->>
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-> ???/C??Sߝ?߭???v
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+configs tested: 103
+configs skipped: 2
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
- 							    -- Linus Torvalds
---8323329-1221235678-1611751840=:263225
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sh                          landisk_defconfig
+powerpc                 mpc832x_mds_defconfig
+powerpc                        warp_defconfig
+powerpc                     tqm8560_defconfig
+powerpc                      ppc44x_defconfig
+arm                        clps711x_defconfig
+mips                     decstation_defconfig
+powerpc                  storcenter_defconfig
+arm                          ep93xx_defconfig
+powerpc                         wii_defconfig
+sh                           se7780_defconfig
+arm                  colibri_pxa300_defconfig
+c6x                                 defconfig
+powerpc                     taishan_defconfig
+arm                            hisi_defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+powerpc                    adder875_defconfig
+arm                       cns3420vb_defconfig
+um                            kunit_defconfig
+sh                        edosk7705_defconfig
+powerpc                 mpc832x_rdb_defconfig
+arm                            lart_defconfig
+powerpc                           allnoconfig
+arm                        spear3xx_defconfig
+arm                        spear6xx_defconfig
+arc                         haps_hs_defconfig
+mips                        nlm_xlr_defconfig
+arm                        neponset_defconfig
+arm                        multi_v7_defconfig
+nds32                               defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+c6x                              allyesconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+i386                 randconfig-a001-20210126
+i386                 randconfig-a002-20210126
+i386                 randconfig-a004-20210126
+i386                 randconfig-a006-20210126
+i386                 randconfig-a003-20210126
+i386                 randconfig-a005-20210126
+x86_64               randconfig-a012-20210126
+x86_64               randconfig-a016-20210126
+x86_64               randconfig-a015-20210126
+x86_64               randconfig-a011-20210126
+x86_64               randconfig-a013-20210126
+x86_64               randconfig-a014-20210126
+i386                 randconfig-a013-20210126
+i386                 randconfig-a011-20210126
+i386                 randconfig-a012-20210126
+i386                 randconfig-a014-20210126
+i386                 randconfig-a015-20210126
+i386                 randconfig-a016-20210126
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
+clang tested configs:
+x86_64               randconfig-a003-20210126
+x86_64               randconfig-a002-20210126
+x86_64               randconfig-a001-20210126
+x86_64               randconfig-a005-20210126
+x86_64               randconfig-a006-20210126
+x86_64               randconfig-a004-20210126
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---8323329-1221235678-1611751840=:263225--
