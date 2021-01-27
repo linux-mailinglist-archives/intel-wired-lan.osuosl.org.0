@@ -2,59 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A8F305E57
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 15:33:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1F5E3064CA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jan 2021 21:11:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C027228B0;
-	Wed, 27 Jan 2021 14:33:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4CAB2107A;
+	Wed, 27 Jan 2021 20:11:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DET-XMjSYGGN; Wed, 27 Jan 2021 14:33:05 +0000 (UTC)
+	with ESMTP id XWWJqC86X-NX; Wed, 27 Jan 2021 20:11:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C28A322882;
-	Wed, 27 Jan 2021 14:33:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0D99F22E94;
+	Wed, 27 Jan 2021 20:11:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 702FE1BF301
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:32:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93DDB1BF4DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 20:11:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 30EF920004
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:32:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8C0B9226F3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 20:11:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RNZMqjzkGxTx for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jan 2021 14:32:55 +0000 (UTC)
+ with ESMTP id A+PS-jRlmw7W for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jan 2021 20:11:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 64823226FC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 14:32:54 +0000 (UTC)
-IronPort-SDR: fLvIawilDi4XpM1IVFSY/rr5epZUfwTBIe6QA4DyE1CaV2nDWXTtq5yUZ/UjUjWOjx6TxVtNSo
- y8z4LqslVKUQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9876"; a="167749045"
-X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="167749045"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2021 06:32:52 -0800
-IronPort-SDR: hrztvBoIW1PO3Io24R0iQv3NNij2eKS7FRId8Hmknkz+MmfVVtstogfeaciCGRjJTLSL1hY957
- PckPUOxt12Eg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,379,1602572400"; d="scan'208";a="362448379"
-Received: from lkp-server02.sh.intel.com (HELO 625d3a354f04) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 27 Jan 2021 06:32:51 -0800
-Received: from kbuild by 625d3a354f04 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1l4lsI-0001cC-U7; Wed, 27 Jan 2021 14:32:50 +0000
-Date: Wed, 27 Jan 2021 22:32:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60117975.1BQ7KN3x/30q00M4%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-40131.protonmail.ch (mail-40131.protonmail.ch
+ [185.70.40.131])
+ by silver.osuosl.org (Postfix) with ESMTPS id 31D382107A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jan 2021 20:11:00 +0000 (UTC)
+Date: Wed, 27 Jan 2021 20:10:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
+ t=1611778257; bh=VdLcOnTLbHfFNHFlN/XjYPHtoWTcOg+AoFdHQrfr7jE=;
+ h=Date:To:From:Cc:Reply-To:Subject:From;
+ b=Xk5AAUW2hzwHMulLeDd1o8jFMxpHFcNn5Lvyslpc98CPdmGW4hNZNh3OaAbwjkSWF
+ oRIUWJF6XzV3pvfkbhNTHAgvLjD1kCMdekHFzEH3aT3J99QoFSDjRqhaxPk0zkda4E
+ t6ZOnF3hrDrAuzwJf3UsUBN+qukP/a/neSV503kp2b969Qcxk+IxK556S/wA6rijux
+ fPvxxFUbr0ObBC1OXrkGd3Xpr4RzPPRCNiBQ0Gpc3V0F6+CioAvlmc8HKKlahZTVif
+ Lf2ETDXjkBX+TWCVy0ex1AB8YM/aUks2vTia/rjzIUxIRVi1U+zeOL7SuD+exMYml9
+ xhEDv9ixZi3hA==
+To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+From: Alexander Lobakin <alobakin@pm.me>
+Message-ID: <20210127201031.98544-1-alobakin@pm.me>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
- 329a3678ec69962aa67c91397efbd46d36635f91
+Subject: [Intel-wired-lan] [PATCH v2 net-next 0/4] net: consolidate
+ page_is_pfmemalloc() usage
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,141 +60,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Reply-To: Alexander Lobakin <alobakin@pm.me>
+Cc: Randy Dunlap <rdunlap@infradead.org>, Alexander Lobakin <alobakin@pm.me>,
+ linux-mm@kvack.org, Jakub Sitnicki <jakub@cloudflare.com>,
+ Leon Romanovsky <leon@kernel.org>, linux-rdma@vger.kernel.org,
+ Dexuan Cui <decui@microsoft.com>, intel-wired-lan@lists.osuosl.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, Paolo Abeni <pabeni@redhat.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
+ David Rientjes <rientjes@google.com>, Willem de Bruijn <willemb@google.com>,
+ Salil Mehta <salil.mehta@huawei.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
-branch HEAD: 329a3678ec69962aa67c91397efbd46d36635f91  igc: fix link speed advertising
+page_is_pfmemalloc() is used mostly by networking drivers to test
+if a page can be considered for reusing/recycling.
+It doesn't write anything to the struct page itself, so its sole
+argument can be constified, as well as the first argument of
+skb_propagate_pfmemalloc().
+In Page Pool core code, it can be simply inlined instead.
+Most of the callers from NIC drivers were just doppelgangers of
+the same condition tests. Derive them into a new common function
+do deduplicate the code.
 
-elapsed time: 724m
+Since v1 [0]:
+ - new: reduce code duplication by introducing a new common function
+   to test if a page can be reused/recycled (David Rientjes);
+ - collect autographs for Page Pool bits (Jesper Dangaard Brouer,
+   Ilias Apalodimas).
 
-configs tested: 112
-configs skipped: 2
+[0] https://lore.kernel.org/netdev/20210125164612.243838-1-alobakin@pm.me
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Alexander Lobakin (4):
+  mm: constify page_is_pfmemalloc() argument
+  skbuff: constify skb_propagate_pfmemalloc() "page" argument
+  net: introduce common dev_page_is_reserved()
+  net: page_pool: simplify page recycling condition tests
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-sh                          landisk_defconfig
-powerpc                     redwood_defconfig
-m68k                          atari_defconfig
-powerpc                     tqm8540_defconfig
-mips                 decstation_r4k_defconfig
-xtensa                generic_kc705_defconfig
-nios2                         10m50_defconfig
-powerpc                 mpc8315_rdb_defconfig
-powerpc                 mpc85xx_cds_defconfig
-sh                      rts7751r2d1_defconfig
-arm                          moxart_defconfig
-m68k                            q40_defconfig
-sh                          kfr2r09_defconfig
-x86_64                           alldefconfig
-arc                                 defconfig
-mips                       rbtx49xx_defconfig
-powerpc                    adder875_defconfig
-arm                       cns3420vb_defconfig
-um                            kunit_defconfig
-sh                        edosk7705_defconfig
-arm                       aspeed_g4_defconfig
-powerpc                     pq2fads_defconfig
-powerpc                     powernv_defconfig
-arm                          pcm027_defconfig
-mips                       capcella_defconfig
-arm                          ep93xx_defconfig
-arm                        spear6xx_defconfig
-arc                         haps_hs_defconfig
-mips                        nlm_xlr_defconfig
-arm                        neponset_defconfig
-arm                        multi_v7_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a003-20210127
-x86_64               randconfig-a002-20210127
-x86_64               randconfig-a001-20210127
-x86_64               randconfig-a005-20210127
-x86_64               randconfig-a006-20210127
-x86_64               randconfig-a004-20210127
-i386                 randconfig-a001-20210126
-i386                 randconfig-a002-20210126
-i386                 randconfig-a004-20210126
-i386                 randconfig-a006-20210126
-i386                 randconfig-a003-20210126
-i386                 randconfig-a005-20210126
-x86_64               randconfig-a012-20210126
-x86_64               randconfig-a016-20210126
-x86_64               randconfig-a015-20210126
-x86_64               randconfig-a011-20210126
-x86_64               randconfig-a013-20210126
-x86_64               randconfig-a014-20210126
-i386                 randconfig-a013-20210126
-i386                 randconfig-a011-20210126
-i386                 randconfig-a012-20210126
-i386                 randconfig-a015-20210126
-i386                 randconfig-a014-20210126
-i386                 randconfig-a016-20210126
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   | 10 ++--------
+ drivers/net/ethernet/intel/fm10k/fm10k_main.c |  9 ++-------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 15 +--------------
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 15 +--------------
+ drivers/net/ethernet/intel/ice/ice_txrx.c     | 11 +----------
+ drivers/net/ethernet/intel/igb/igb_main.c     |  7 +------
+ drivers/net/ethernet/intel/igc/igc_main.c     |  7 +------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  7 +------
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  7 +------
+ .../net/ethernet/mellanox/mlx5/core/en_rx.c   |  7 +------
+ include/linux/mm.h                            |  2 +-
+ include/linux/skbuff.h                        | 19 +++++++++++++++++--
+ net/core/page_pool.c                          | 14 ++++----------
+ 13 files changed, 34 insertions(+), 96 deletions(-)
 
-clang tested configs:
-x86_64               randconfig-a003-20210126
-x86_64               randconfig-a002-20210126
-x86_64               randconfig-a001-20210126
-x86_64               randconfig-a005-20210126
-x86_64               randconfig-a006-20210126
-x86_64               randconfig-a004-20210126
+-- 
+2.30.0
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
