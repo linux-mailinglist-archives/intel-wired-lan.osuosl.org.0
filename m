@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8177E308EE3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:02:18 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AE73308F0E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:13:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F184886A6C;
-	Fri, 29 Jan 2021 21:02:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A17FD8679C;
+	Fri, 29 Jan 2021 21:13:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0TWrwiDLVFXt; Fri, 29 Jan 2021 21:02:16 +0000 (UTC)
+	with ESMTP id Ua0EBZbnNf36; Fri, 29 Jan 2021 21:13:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B3FEF86A6F;
-	Fri, 29 Jan 2021 21:02:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A215486B5C;
+	Fri, 29 Jan 2021 21:13:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 02B061BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:02:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 78E8C1BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 078EC22FB9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:02:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C25E4810BF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OG9IFiKkFEOA for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Jan 2021 21:02:13 +0000 (UTC)
+ with ESMTP id wiFmvmFHp0V6 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Jan 2021 21:13:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 8FA4320465
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:02:11 +0000 (UTC)
-IronPort-SDR: SFyY5ANifORtul7V5RUXhTqOY6EWBthRs4UDPZPf3aA7Vyeqaoddx0kjK4WiD8/wGJvoVd6Toy
- fs5fWnGRbzuQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="168147937"
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="168147937"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AD4FB8673C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:38 +0000 (UTC)
+IronPort-SDR: CocAkURdszuEJZG315GXRT8piuUB3rL/VnNEitcSBvh+dDJBdyqjazff3CdAxKcD1X3sscC7pz
+ rwPUXdLkcUKQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="265315946"
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="265315946"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:02:07 -0800
-IronPort-SDR: WRXbI5a0a2lSURK7Xr+Kb73RU8Knx2kYK8+5YKwRrDalQfM+N1tz56QvtjlLDZxPBLbsnQF1Zr
- wiJYNCMM+VoA==
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="389456096"
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2021 13:13:38 -0800
+IronPort-SDR: JaNwW4v4QH7/0Ro7wE3yxhf4sMkPEtmhv2deC0cRtP8dE2isQzmu4Kz1N3KmsaHucbiWMes/5c
+ tqBLwFsAkVxg==
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="389464788"
 Received: from ndatiri-mobl.amr.corp.intel.com (HELO
  vcostago-mobl2.amr.corp.intel.com) ([10.212.145.249])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:02:06 -0800
+ 29 Jan 2021 13:13:37 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: Vladimir Oltean <vladimir.oltean@nxp.com>
-In-Reply-To: <20210126000228.gpyh3rrp662wysit@skbuf>
+In-Reply-To: <20210126000924.jjkjruzmh5lgrkry@skbuf>
 References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-6-vinicius.gomes@intel.com>
- <20210126000228.gpyh3rrp662wysit@skbuf>
-Date: Fri, 29 Jan 2021 13:01:53 -0800
-Message-ID: <877dnvtq2m.fsf@vcostago-mobl2.amr.corp.intel.com>
+ <20210122224453.4161729-3-vinicius.gomes@intel.com>
+ <20210126000924.jjkjruzmh5lgrkry@skbuf>
+Date: Fri, 29 Jan 2021 13:13:24 -0800
+Message-ID: <87wnvvsayz.fsf@vcostago-mobl2.amr.corp.intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 5/8] igc: Avoid TX Hangs
- because long cycles
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/8] taprio: Add support
+ for frame preemption offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,23 +80,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
-
 Vladimir Oltean <vladimir.oltean@nxp.com> writes:
 
-> On Fri, Jan 22, 2021 at 02:44:50PM -0800, Vinicius Costa Gomes wrote:
->> Avoid possible TX Hangs caused by using long Qbv cycles. In some
->> cases, using long cycles (more than 1 second) can cause transmissions
->> to be blocked for that time. As the TX Hang timeout is close to 1
->> second, we may need to reduce the cycle time to something more
->> reasonable: the value chosen is 1ms.
->> 
->> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->> ---
+> On Fri, Jan 22, 2021 at 02:44:47PM -0800, Vinicius Costa Gomes wrote:
+>> +	/* It's valid to enable frame preemption without any kind of
+>> +	 * offloading being enabled, so keep it separated.
+>> +	 */
+>> +	if (tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]) {
+>> +		u32 preempt = nla_get_u32(tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]);
+>> +		struct tc_preempt_qopt_offload qopt = { };
+>> +
+>> +		if (preempt == U32_MAX) {
+>> +			NL_SET_ERR_MSG(extack, "At least one queue must be not be preemptible");
+>> +			err = -EINVAL;
+>> +			goto free_sched;
+>> +		}
+>> +
+>> +		qopt.preemptible_queues = tc_map_to_queue_mask(dev, preempt);
+>> +
+>> +		err = dev->netdev_ops->ndo_setup_tc(dev, TC_SETUP_PREEMPT,
+>> +						    &qopt);
+>> +		if (err)
+>> +			goto free_sched;
+>> +
+>> +		q->preemptible_tcs = preempt;
+>> +	}
+>> +
 >
-> Don't you want this patch to go to 'net' and be backported?
+> First I'm interested in the means: why check for preempt == U32_MAX when
+> you determine that all traffic classes are preemptible? What if less
+> than 32 traffic classes are used by the netdev? The check will be
+> bypassed, won't it?
 
-Will propose this patch to 'net'. Thanks.
+Good catch :-)
+
+I wanted to have this (at least one express queue) handled in a
+centralized way, but perhaps this should be handled best per driver.
+
+>
+> Secondly, why should at least one queue be preemptible? What's wrong
+> with frame preemption being triggered by a tc-taprio window smaller than
+> the packet size? This can happen regardless of traffic class.
+
+It's the opposite, at least one queue needs to be marked
+express/non-preemptible. But as I said above, perhaps this should be
+handled in a per-driver way. I will remove this from taprio.
+
+I think removing this check/limitation from taprio should solve the
+second part of your question, right?
 
 
 Cheers,
