@@ -1,61 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 656D1308F47
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:27:49 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 02CE3871D2;
-	Fri, 29 Jan 2021 21:27:48 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ohmer7V8pk1C; Fri, 29 Jan 2021 21:27:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A0957871E0;
-	Fri, 29 Jan 2021 21:27:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0AF161BF34D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62972308F64
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:29:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 012D787443
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CF50387443;
+	Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gRFIlfWdkXhn; Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3BD0787484;
+	Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A8C41BF34D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8635884E3A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qz26FFjR4CJv for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Jan 2021 21:27:43 +0000 (UTC)
+ with ESMTP id yUW5DMiAmYNa for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Jan 2021 21:29:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C422A87403
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:43 +0000 (UTC)
-IronPort-SDR: rloBCV4kSDS2IYWxdsoE2Zb5zbMCCl/ahkC7jai65cssg9FiMBGnQlBkmaz/ldz4LgF2M0YWX8
- tU6ORQtKDsMw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="179706805"
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="179706805"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:27:42 -0800
-IronPort-SDR: EHnBB3E3HR89MCE+UOB9IAuwByLYhXtbemwdwONUzHdzEF3ILqAK3EKDGAxPJNNiUHx4X82G2L
- WFA9YXmOFa+g==
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="431174255"
-Received: from ndatiri-mobl.amr.corp.intel.com (HELO
- vcostago-mobl2.amr.corp.intel.com) ([10.212.145.249])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:27:41 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-In-Reply-To: <20210126003243.x3c44pmxmieqsa6e@skbuf>
-References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-7-vinicius.gomes@intel.com>
- <20210126003243.x3c44pmxmieqsa6e@skbuf>
-Date: Fri, 29 Jan 2021 13:27:28 -0800
-Message-ID: <87pn1nsabj.fsf@vcostago-mobl2.amr.corp.intel.com>
+Received: from mail-il1-f175.google.com (mail-il1-f175.google.com
+ [209.85.166.175])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 277A784C78
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:19 +0000 (UTC)
+Received: by mail-il1-f175.google.com with SMTP id e7so9824712ile.7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 13:29:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bo9wk+Zp7XIXyUMdnMvEFsvbcpo8wwo/HqzXnr9MlNc=;
+ b=nOQMMFDFG6VRyQNxANyJnJjvS4uzEBoR8BIxXSv9nq2qnRsheGhNx38WKREFJY3VDW
+ qV6y/ULQaaiQxsiU592aP1jeTi9edjBRIPoiUL0kZFU+0VkMZwXsLP3gBsvEFcLPhYRL
+ 0XYgimzgryy0utBLEBvKwRdg/HjD6mQF6TZ1WhbktIUQefyG0YD2ibQ3sBfj3H+KoA3d
+ NgPybg6EhIpWgdb05ULggnItyTcPTFVxq7hrYf8/PF4s29fvihGvpV4MBklFE6OP5seJ
+ Ke7rgyhf5wPdc3vpIP8y05hQC0JQxsCnSZFw1uuesNWWBotnkqOYHBP3+jsMDtWlx3xp
+ 8xaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bo9wk+Zp7XIXyUMdnMvEFsvbcpo8wwo/HqzXnr9MlNc=;
+ b=Sw1HPL+K/jgaIyrN0wclpvA6Hikhth49JrmaFilprDQd0ERdbnhCtLYrNP91SU0q5y
+ uodpuPY44lm4F3V3tjYXDKsKwQTpc8+eDLycDSeg8jFXQaTwKliIpew4+I4ADKf0Mi4h
+ Yp6+IicZaMCw1BzrIckRdFjsN0KkJhZtSrfvxqOcFpJ7BQ/ASlvUytCsin7LFLcXeNJx
+ Yu7ab2XHLd9aXtTEqc6m17rm9PtF5mZX9amJfO/+QLJsBgVuo6yAXkDGUKfUWdPz/doz
+ TWrrPwA2s765m9tlZBGlS7rtCP5yHzxc52bMqTZqYfhfedR8C1nZtp2uvaPsNBLSlLQg
+ INYw==
+X-Gm-Message-State: AOAM532xhh0xSyBD07PURH6ywBFWWxsb4E5pw9NEf0PbQLL8UvTiKAVi
+ 4DXNVOfHQ9M6SzI34AQ382tilKUuQB+HtPu73b0=
+X-Google-Smtp-Source: ABdhPJwSnIPBGk2LbwLs6AuBGzz+WVtSSxOlYdRNaNXUuLlWe9haMTl7W4uKzqNU1YYbUnjIXDk1rT4y37BEMf67qC8=
+X-Received: by 2002:a05:6e02:c6:: with SMTP id r6mr5027459ilq.95.1611955758331; 
+ Fri, 29 Jan 2021 13:29:18 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 6/8] igc: Add support for
- tuning frame preemption via ethtool
+References: <20210129101543.13680-1-mateusz.palczewski@intel.com>
+In-Reply-To: <20210129101543.13680-1-mateusz.palczewski@intel.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 29 Jan 2021 13:29:07 -0800
+Message-ID: <CAKgT0UcSswz4crJqoRti96ogUuH8MD0qAZyUhqUU3EqxOLQeUg@mail.gmail.com>
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix endianness
+ conversions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,139 +80,135 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
- "mkubecek@suse.cz" <mkubecek@suse.cz>, "jiri@resnulli.us" <jiri@resnulli.us>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
- "jhs@mojatatu.com" <jhs@mojatatu.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>
+Cc: Norbert Ciosek <norbertx.ciosek@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Vladimir Oltean <vladimir.oltean@nxp.com> writes:
-
-> On Fri, Jan 22, 2021 at 02:44:51PM -0800, Vinicius Costa Gomes wrote:
->> The tc subsystem sets which queues are marked as preemptible, it's the
->> role of ethtool to control more hardware specific parameters. These
->> parameters include:
->> 
->>  - enabling the frame preemption hardware: As enabling frame
->>  preemption may have other requirements before it can be enabled, it's
->>  exposed via the ethtool API;
->> 
->>  - mininum fragment size multiplier: expressed in usually in the form
->>  of (1 + N)*64, this number indicates what's the size of the minimum
->>  fragment that can be preempted.
+On Fri, Jan 29, 2021 at 2:15 AM Mateusz Palczewski
+<mateusz.palczewski@intel.com> wrote:
 >
-> And not one word has been said about the patch...
-
-If I am undertanding this right. Will fix the commit message.
-
+> From: Norbert Ciosek <norbertx.ciosek@intel.com>
 >
->> 
->> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->> ---
->>  drivers/net/ethernet/intel/igc/igc.h         | 12 +++++
->>  drivers/net/ethernet/intel/igc/igc_defines.h |  4 ++
->>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 53 ++++++++++++++++++++
->>  drivers/net/ethernet/intel/igc/igc_tsn.c     | 25 +++++++--
->>  4 files changed, 91 insertions(+), 3 deletions(-)
->> 
->> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
->> index 35baae900c1f..1067c46e0bc2 100644
->> --- a/drivers/net/ethernet/intel/igc/igc.h
->> +++ b/drivers/net/ethernet/intel/igc/igc.h
->> @@ -87,6 +87,7 @@ struct igc_ring {
->>  	u8 queue_index;                 /* logical index of the ring*/
->>  	u8 reg_idx;                     /* physical index of the ring */
->>  	bool launchtime_enable;         /* true if LaunchTime is enabled */
->> +	bool preemptible;		/* true if not express */
+> Fixes the following sparse warnings:
+> i40e_main.c:5953:32: warning: cast from restricted __le16
+> i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
+> i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
+> i40e_main.c:8008:29:    got restricted __le32 [usertype]
+> i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
+> i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
+> i40e_main.c:8008:29:    got restricted __le32 [usertype]
+> i40e_txrx.c:1950:59: warning: incorrect type in initializer (different base types)
+> i40e_txrx.c:1950:59:    expected unsigned short [usertype] vlan_tag
+> i40e_txrx.c:1950:59:    got restricted __le16 [usertype] l2tag1
+> i40e_txrx.c:1953:40: warning: cast to restricted __le16
+> i40e_xsk.c:448:38: warning: invalid assignment: |=
+> i40e_xsk.c:448:38:    left side has type restricted __le64
+> i40e_xsk.c:448:38:    right side has type int
 >
-> Mixing tabs and spaces?
-
-Ugh. Will fix. Thanks.
-
+> Fixes: 2f4b411a3d67 ("i40e: Enable cloud filters via tc-flower")
+> Fixes: 2a508c64ad27 ("i40e: fix VLAN.TCI == 0 RX HW offload")
+> Fixes: 3106c580fb7c ("i40e: Use batched xsk Tx interfaces to increase performance")
+> Fixes: 8f88b3034db3 ("i40e: Add infrastructure for queue channel support")
+> Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 18 +++++++++---------
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c |  2 +-
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c  |  2 +-
+>  3 files changed, 11 insertions(+), 11 deletions(-)
 >
->> +static int igc_ethtool_set_preempt(struct net_device *netdev,
->> +				   struct ethtool_fp *fpcmd,
->> +				   struct netlink_ext_ack *extack)
->> +{
->> +	struct igc_adapter *adapter = netdev_priv(netdev);
->> +	int i;
->> +
->> +	if (fpcmd->add_frag_size < 68 || fpcmd->add_frag_size > 260) {
->> +		NL_SET_ERR_MSG_MOD(extack, "Invalid value for add-frag-size");
->> +		return -EINVAL;
->> +	}
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 3ed7f0e..8f635ac 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -5950,7 +5950,7 @@ static int i40e_add_channel(struct i40e_pf *pf, u16 uplink_seid,
+>         ch->enabled_tc = !i40e_is_channel_macvlan(ch) && enabled_tc;
+>         ch->seid = ctxt.seid;
+>         ch->vsi_number = ctxt.vsi_number;
+> -       ch->stat_counter_idx = cpu_to_le16(ctxt.info.stat_counter_idx);
+> +       ch->stat_counter_idx = le16_to_cpu(ctxt.info.stat_counter_idx);
 >
-> This check should belong in ethtool, since there's nothing unusual about
-> this supported range.
+>         /* copy just the sections touched not the entire info
+>          * since not all sections are valid as returned by
+> @@ -7990,8 +7990,7 @@ static inline void
+>  i40e_set_cld_element(struct i40e_cloud_filter *filter,
+>                      struct i40e_aqc_cloud_filters_element_data *cld)
+>  {
+> -       int i, j;
+> -       u32 ipa;
+> +       int i;
 >
-> Also, I believe that Jakub requested the min-frag-size to be passed as
-> 0, 1, 2, 3 as the standard specifies it, and not its multiplied
-> version?
-
-Later, Michal Kubechek suggested using the multiplied value, to be
-future proof and less dependent on some specific standard version.
-
+>         memset(cld, 0, sizeof(*cld));
+>         ether_addr_copy(cld->outer_mac, filter->dst_mac);
+> @@ -8002,14 +8001,15 @@ i40e_set_cld_element(struct i40e_cloud_filter *filter,
 >
->> +
->> +	adapter->frame_preemption_active = fpcmd->enabled;
->> +	adapter->add_frag_size = fpcmd->add_frag_size;
->> +
->> +	if (!adapter->frame_preemption_active)
->> +		goto done;
->> +
->> +	/* Enabling frame preemption requires TSN mode to be enabled,
->> +	 * which requires a schedule to be active. So, if there isn't
->> +	 * a schedule already configured, configure a simple one, with
->> +	 * all queues open, with 1ms cycle time.
->> +	 */
->> +	if (adapter->base_time)
->> +		goto done;
+>         if (filter->n_proto == ETH_P_IPV6) {
+>  #define IPV6_MAX_INDEX (ARRAY_SIZE(filter->dst_ipv6) - 1)
+> -               for (i = 0, j = 0; i < ARRAY_SIZE(filter->dst_ipv6);
+> -                    i++, j += 2) {
+> -                       ipa = be32_to_cpu(filter->dst_ipv6[IPV6_MAX_INDEX - i]);
+> -                       ipa = cpu_to_le32(ipa);
+> -                       memcpy(&cld->ipaddr.raw_v6.data[j], &ipa, sizeof(ipa));
+> +               for (i = 0; i < ARRAY_SIZE(filter->dst_ipv6); i++) {
+> +                       __le32 ipa = cpu_to_le32(be32_to_cpu
+> +                               (filter->dst_ipv6[IPV6_MAX_INDEX - i]));
+> +
+> +                       memcpy(&cld->ipaddr.raw_v6.data[i * 2], &ipa, sizeof(ipa));
+
+I would argue the code you had before was more readable than what this is now.
+
+Instead of changing things this way it might be better to instead do
+just drop the last two lines and do something like:
+    *(__le32 *)&cld->ipaddr.raw_v6.data[i * 2] = cpu_to_le32(ipa);
+
+Also from what I can tell it looks like the raw_v6 field is only used
+here so you could drop the need to cast this if you were to change the
+type for data from an __le16 to an __le32 and just drop the array
+length by half.
+
+>                 }
+>         } else {
+> -               ipa = be32_to_cpu(filter->dst_ipv4);
+> +               u32 ipa = be32_to_cpu(filter->dst_ipv4);
+> +
+>                 memcpy(&cld->ipaddr.v4.data, &ipa, sizeof(ipa));
+>         }
 >
-> Unless I'm missing something, you are interpreting an adapter->base_time
-> value of zero as "no Qbv schedule on port", as if it was invalid to have
-> a base-time of zero, which it isn't.
-
-This HW has specific limitations, it doesn't allow a base_time in the
-past. So a base_time of zero can be used to signify "No Qbv".
-
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> index 15feecd..c7759cb 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> @@ -1948,7 +1948,7 @@ void i40e_process_skb_fields(struct i40e_ring *rx_ring,
+>         skb_record_rx_queue(skb, rx_ring->queue_index);
 >
->> @@ -115,6 +130,9 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
->>  		if (ring->launchtime_enable)
->>  			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
->>  
->> +		if (ring->preemptible)
->> +			txqctl |= IGC_TXQCTL_PREEMPTABLE;
+>         if (qword & BIT(I40E_RX_DESC_STATUS_L2TAG1P_SHIFT)) {
+> -               u16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
+> +               __le16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
 >
-> I think this is the only place in the series where you use PREEMPTABLE
-> instead of PREEMPTIBLE.
-
-Yeah, on the datasheet it's written PREEMPTABLE, I chose to use this
-spelling to make it easier to search for this bit in the datasheet.
-
+>                 __vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
+>                                        le16_to_cpu(vlan_tag));
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> index b42300b..df1ec8c 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> @@ -457,7 +457,7 @@ static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
+>         struct i40e_tx_desc *tx_desc;
 >
->> +
->>  		wr32(IGC_TXQCTL(i), txqctl);
->>  	}
+>         tx_desc = I40E_TX_DESC(xdp_ring, ntu);
+> -       tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
+> +       tx_desc->cmd_type_offset_bsz |= cpu_to_le64(I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
+>  }
 >
-> Out of curiosity, where is the ring to traffic class mapping configured
-> in the igc driver? I suppose that you have more rings than traffic classes.
-
-The driver follows the default behaviour, that netdev->queue[0] maps to
-ring[0], queue[1] to ring[1], and so on. And by default ring[0] has
-higher priority than ring[1], ring[1] higher than ring[2], and so on.
-
-The HW only has 4 rings/queues.
-
-
-Cheers,
--- 
-Vinicius
+>  /**
+> --
+> 2.17.1
+>
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
