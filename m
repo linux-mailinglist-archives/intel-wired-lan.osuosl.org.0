@@ -2,60 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AE73308F0E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:13:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 656D1308F47
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:27:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A17FD8679C;
-	Fri, 29 Jan 2021 21:13:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02CE3871D2;
+	Fri, 29 Jan 2021 21:27:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ua0EBZbnNf36; Fri, 29 Jan 2021 21:13:47 +0000 (UTC)
+	with ESMTP id Ohmer7V8pk1C; Fri, 29 Jan 2021 21:27:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A215486B5C;
-	Fri, 29 Jan 2021 21:13:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A0957871E0;
+	Fri, 29 Jan 2021 21:27:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 78E8C1BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AF161BF34D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C25E4810BF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 012D787443
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wiFmvmFHp0V6 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Jan 2021 21:13:38 +0000 (UTC)
+ with ESMTP id qz26FFjR4CJv for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Jan 2021 21:27:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AD4FB8673C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:13:38 +0000 (UTC)
-IronPort-SDR: CocAkURdszuEJZG315GXRT8piuUB3rL/VnNEitcSBvh+dDJBdyqjazff3CdAxKcD1X3sscC7pz
- rwPUXdLkcUKQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="265315946"
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="265315946"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:13:38 -0800
-IronPort-SDR: JaNwW4v4QH7/0Ro7wE3yxhf4sMkPEtmhv2deC0cRtP8dE2isQzmu4Kz1N3KmsaHucbiWMes/5c
- tqBLwFsAkVxg==
-X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="389464788"
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C422A87403
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:27:43 +0000 (UTC)
+IronPort-SDR: rloBCV4kSDS2IYWxdsoE2Zb5zbMCCl/ahkC7jai65cssg9FiMBGnQlBkmaz/ldz4LgF2M0YWX8
+ tU6ORQtKDsMw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9879"; a="179706805"
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="179706805"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2021 13:27:42 -0800
+IronPort-SDR: EHnBB3E3HR89MCE+UOB9IAuwByLYhXtbemwdwONUzHdzEF3ILqAK3EKDGAxPJNNiUHx4X82G2L
+ WFA9YXmOFa+g==
+X-IronPort-AV: E=Sophos;i="5.79,386,1602572400"; d="scan'208";a="431174255"
 Received: from ndatiri-mobl.amr.corp.intel.com (HELO
  vcostago-mobl2.amr.corp.intel.com) ([10.212.145.249])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jan 2021 13:13:37 -0800
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2021 13:27:41 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: Vladimir Oltean <vladimir.oltean@nxp.com>
-In-Reply-To: <20210126000924.jjkjruzmh5lgrkry@skbuf>
+In-Reply-To: <20210126003243.x3c44pmxmieqsa6e@skbuf>
 References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-3-vinicius.gomes@intel.com>
- <20210126000924.jjkjruzmh5lgrkry@skbuf>
-Date: Fri, 29 Jan 2021 13:13:24 -0800
-Message-ID: <87wnvvsayz.fsf@vcostago-mobl2.amr.corp.intel.com>
+ <20210122224453.4161729-7-vinicius.gomes@intel.com>
+ <20210126003243.x3c44pmxmieqsa6e@skbuf>
+Date: Fri, 29 Jan 2021 13:27:28 -0800
+Message-ID: <87pn1nsabj.fsf@vcostago-mobl2.amr.corp.intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/8] taprio: Add support
- for frame preemption offload
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 6/8] igc: Add support for
+ tuning frame preemption via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,52 +82,120 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Vladimir Oltean <vladimir.oltean@nxp.com> writes:
 
-> On Fri, Jan 22, 2021 at 02:44:47PM -0800, Vinicius Costa Gomes wrote:
->> +	/* It's valid to enable frame preemption without any kind of
->> +	 * offloading being enabled, so keep it separated.
->> +	 */
->> +	if (tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]) {
->> +		u32 preempt = nla_get_u32(tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]);
->> +		struct tc_preempt_qopt_offload qopt = { };
+> On Fri, Jan 22, 2021 at 02:44:51PM -0800, Vinicius Costa Gomes wrote:
+>> The tc subsystem sets which queues are marked as preemptible, it's the
+>> role of ethtool to control more hardware specific parameters. These
+>> parameters include:
+>> 
+>>  - enabling the frame preemption hardware: As enabling frame
+>>  preemption may have other requirements before it can be enabled, it's
+>>  exposed via the ethtool API;
+>> 
+>>  - mininum fragment size multiplier: expressed in usually in the form
+>>  of (1 + N)*64, this number indicates what's the size of the minimum
+>>  fragment that can be preempted.
+>
+> And not one word has been said about the patch...
+
+If I am undertanding this right. Will fix the commit message.
+
+>
+>> 
+>> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+>> ---
+>>  drivers/net/ethernet/intel/igc/igc.h         | 12 +++++
+>>  drivers/net/ethernet/intel/igc/igc_defines.h |  4 ++
+>>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 53 ++++++++++++++++++++
+>>  drivers/net/ethernet/intel/igc/igc_tsn.c     | 25 +++++++--
+>>  4 files changed, 91 insertions(+), 3 deletions(-)
+>> 
+>> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+>> index 35baae900c1f..1067c46e0bc2 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc.h
+>> +++ b/drivers/net/ethernet/intel/igc/igc.h
+>> @@ -87,6 +87,7 @@ struct igc_ring {
+>>  	u8 queue_index;                 /* logical index of the ring*/
+>>  	u8 reg_idx;                     /* physical index of the ring */
+>>  	bool launchtime_enable;         /* true if LaunchTime is enabled */
+>> +	bool preemptible;		/* true if not express */
+>
+> Mixing tabs and spaces?
+
+Ugh. Will fix. Thanks.
+
+>
+>> +static int igc_ethtool_set_preempt(struct net_device *netdev,
+>> +				   struct ethtool_fp *fpcmd,
+>> +				   struct netlink_ext_ack *extack)
+>> +{
+>> +	struct igc_adapter *adapter = netdev_priv(netdev);
+>> +	int i;
 >> +
->> +		if (preempt == U32_MAX) {
->> +			NL_SET_ERR_MSG(extack, "At least one queue must be not be preemptible");
->> +			err = -EINVAL;
->> +			goto free_sched;
->> +		}
->> +
->> +		qopt.preemptible_queues = tc_map_to_queue_mask(dev, preempt);
->> +
->> +		err = dev->netdev_ops->ndo_setup_tc(dev, TC_SETUP_PREEMPT,
->> +						    &qopt);
->> +		if (err)
->> +			goto free_sched;
->> +
->> +		q->preemptible_tcs = preempt;
+>> +	if (fpcmd->add_frag_size < 68 || fpcmd->add_frag_size > 260) {
+>> +		NL_SET_ERR_MSG_MOD(extack, "Invalid value for add-frag-size");
+>> +		return -EINVAL;
 >> +	}
+>
+> This check should belong in ethtool, since there's nothing unusual about
+> this supported range.
+>
+> Also, I believe that Jakub requested the min-frag-size to be passed as
+> 0, 1, 2, 3 as the standard specifies it, and not its multiplied
+> version?
+
+Later, Michal Kubechek suggested using the multiplied value, to be
+future proof and less dependent on some specific standard version.
+
+>
 >> +
+>> +	adapter->frame_preemption_active = fpcmd->enabled;
+>> +	adapter->add_frag_size = fpcmd->add_frag_size;
+>> +
+>> +	if (!adapter->frame_preemption_active)
+>> +		goto done;
+>> +
+>> +	/* Enabling frame preemption requires TSN mode to be enabled,
+>> +	 * which requires a schedule to be active. So, if there isn't
+>> +	 * a schedule already configured, configure a simple one, with
+>> +	 * all queues open, with 1ms cycle time.
+>> +	 */
+>> +	if (adapter->base_time)
+>> +		goto done;
 >
-> First I'm interested in the means: why check for preempt == U32_MAX when
-> you determine that all traffic classes are preemptible? What if less
-> than 32 traffic classes are used by the netdev? The check will be
-> bypassed, won't it?
+> Unless I'm missing something, you are interpreting an adapter->base_time
+> value of zero as "no Qbv schedule on port", as if it was invalid to have
+> a base-time of zero, which it isn't.
 
-Good catch :-)
-
-I wanted to have this (at least one express queue) handled in a
-centralized way, but perhaps this should be handled best per driver.
+This HW has specific limitations, it doesn't allow a base_time in the
+past. So a base_time of zero can be used to signify "No Qbv".
 
 >
-> Secondly, why should at least one queue be preemptible? What's wrong
-> with frame preemption being triggered by a tc-taprio window smaller than
-> the packet size? This can happen regardless of traffic class.
+>> @@ -115,6 +130,9 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+>>  		if (ring->launchtime_enable)
+>>  			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
+>>  
+>> +		if (ring->preemptible)
+>> +			txqctl |= IGC_TXQCTL_PREEMPTABLE;
+>
+> I think this is the only place in the series where you use PREEMPTABLE
+> instead of PREEMPTIBLE.
 
-It's the opposite, at least one queue needs to be marked
-express/non-preemptible. But as I said above, perhaps this should be
-handled in a per-driver way. I will remove this from taprio.
+Yeah, on the datasheet it's written PREEMPTABLE, I chose to use this
+spelling to make it easier to search for this bit in the datasheet.
 
-I think removing this check/limitation from taprio should solve the
-second part of your question, right?
+>
+>> +
+>>  		wr32(IGC_TXQCTL(i), txqctl);
+>>  	}
+>
+> Out of curiosity, where is the ring to traffic class mapping configured
+> in the igc driver? I suppose that you have more rings than traffic classes.
+
+The driver follows the default behaviour, that netdev->queue[0] maps to
+ring[0], queue[1] to ring[1], and so on. And by default ring[0] has
+higher priority than ring[1], ring[1] higher than ring[2], and so on.
+
+The HW only has 4 rings/queues.
 
 
 Cheers,
