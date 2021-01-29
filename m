@@ -1,73 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62972308F64
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:29:24 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CF50387443;
-	Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gRFIlfWdkXhn; Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3BD0787484;
-	Fri, 29 Jan 2021 21:29:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A8C41BF34D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 71810308FA5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jan 2021 22:57:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8635884E3A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EF00586A72;
+	Fri, 29 Jan 2021 21:57:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SSUM7Y5VfKj2; Fri, 29 Jan 2021 21:57:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1C91986A88;
+	Fri, 29 Jan 2021 21:57:06 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A6EF91BF34D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:57:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id A270E872BD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:57:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yUW5DMiAmYNa for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Jan 2021 21:29:19 +0000 (UTC)
+ with ESMTP id WuQO6EBiSQbL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Jan 2021 21:57:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f175.google.com (mail-il1-f175.google.com
- [209.85.166.175])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 277A784C78
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:29:19 +0000 (UTC)
-Received: by mail-il1-f175.google.com with SMTP id e7so9824712ile.7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 13:29:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bo9wk+Zp7XIXyUMdnMvEFsvbcpo8wwo/HqzXnr9MlNc=;
- b=nOQMMFDFG6VRyQNxANyJnJjvS4uzEBoR8BIxXSv9nq2qnRsheGhNx38WKREFJY3VDW
- qV6y/ULQaaiQxsiU592aP1jeTi9edjBRIPoiUL0kZFU+0VkMZwXsLP3gBsvEFcLPhYRL
- 0XYgimzgryy0utBLEBvKwRdg/HjD6mQF6TZ1WhbktIUQefyG0YD2ibQ3sBfj3H+KoA3d
- NgPybg6EhIpWgdb05ULggnItyTcPTFVxq7hrYf8/PF4s29fvihGvpV4MBklFE6OP5seJ
- Ke7rgyhf5wPdc3vpIP8y05hQC0JQxsCnSZFw1uuesNWWBotnkqOYHBP3+jsMDtWlx3xp
- 8xaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bo9wk+Zp7XIXyUMdnMvEFsvbcpo8wwo/HqzXnr9MlNc=;
- b=Sw1HPL+K/jgaIyrN0wclpvA6Hikhth49JrmaFilprDQd0ERdbnhCtLYrNP91SU0q5y
- uodpuPY44lm4F3V3tjYXDKsKwQTpc8+eDLycDSeg8jFXQaTwKliIpew4+I4ADKf0Mi4h
- Yp6+IicZaMCw1BzrIckRdFjsN0KkJhZtSrfvxqOcFpJ7BQ/ASlvUytCsin7LFLcXeNJx
- Yu7ab2XHLd9aXtTEqc6m17rm9PtF5mZX9amJfO/+QLJsBgVuo6yAXkDGUKfUWdPz/doz
- TWrrPwA2s765m9tlZBGlS7rtCP5yHzxc52bMqTZqYfhfedR8C1nZtp2uvaPsNBLSlLQg
- INYw==
-X-Gm-Message-State: AOAM532xhh0xSyBD07PURH6ywBFWWxsb4E5pw9NEf0PbQLL8UvTiKAVi
- 4DXNVOfHQ9M6SzI34AQ382tilKUuQB+HtPu73b0=
-X-Google-Smtp-Source: ABdhPJwSnIPBGk2LbwLs6AuBGzz+WVtSSxOlYdRNaNXUuLlWe9haMTl7W4uKzqNU1YYbUnjIXDk1rT4y37BEMf67qC8=
-X-Received: by 2002:a05:6e02:c6:: with SMTP id r6mr5027459ilq.95.1611955758331; 
- Fri, 29 Jan 2021 13:29:18 -0800 (PST)
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2CBAE87248
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jan 2021 21:57:04 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 280F564E0C;
+ Fri, 29 Jan 2021 21:57:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611957423;
+ bh=JFXcp5hcRzeOdQmARynw+e5iZvxPrVy9IZ5Fz2O2o1Q=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=UbcrEIAjID8butS8l1CXsVi68aW2+EnT/corLsU3SEhN5fYHWWB98OLBVyWkVJjIv
+ sdD6D5KnoSxV1zOTx4LGfZt+6UijYId5QYHrjzVvG3nPW+xylFiYEJfXxQgqUtfxdX
+ s1t1mra8GM3NVV8tCL0PlmCAoKvy6FzdhYkqtN92J8H5NoJEuSHobqUIzQc340gEBH
+ CxtaXZW6ZdrW1rXfA2ZgAF/VpbHCbiJpIa+97G5AHMuFeLrkazvIgJo2vOPamUwjAM
+ GOdVhH9uSKFtJfuAb/cgwkaDiINWlgrFKsv7ET467GbO2ggqmW3b9BBdIYqZzZgHvK
+ Og/FsDcRQBTBw==
+Date: Fri, 29 Jan 2021 13:57:02 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Message-ID: <20210129135702.0f8cf702@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <87wnvvsayz.fsf@vcostago-mobl2.amr.corp.intel.com>
+References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
+ <20210122224453.4161729-3-vinicius.gomes@intel.com>
+ <20210126000924.jjkjruzmh5lgrkry@skbuf>
+ <87wnvvsayz.fsf@vcostago-mobl2.amr.corp.intel.com>
 MIME-Version: 1.0
-References: <20210129101543.13680-1-mateusz.palczewski@intel.com>
-In-Reply-To: <20210129101543.13680-1-mateusz.palczewski@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Fri, 29 Jan 2021 13:29:07 -0800
-Message-ID: <CAKgT0UcSswz4crJqoRti96ogUuH8MD0qAZyUhqUU3EqxOLQeUg@mail.gmail.com>
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix endianness
- conversions
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/8] taprio: Add support
+ for frame preemption offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,135 +67,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Norbert Ciosek <norbertx.ciosek@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
+ "mkubecek@suse.cz" <mkubecek@suse.cz>, "jiri@resnulli.us" <jiri@resnulli.us>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 29, 2021 at 2:15 AM Mateusz Palczewski
-<mateusz.palczewski@intel.com> wrote:
->
-> From: Norbert Ciosek <norbertx.ciosek@intel.com>
->
-> Fixes the following sparse warnings:
-> i40e_main.c:5953:32: warning: cast from restricted __le16
-> i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
-> i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
-> i40e_main.c:8008:29:    got restricted __le32 [usertype]
-> i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
-> i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
-> i40e_main.c:8008:29:    got restricted __le32 [usertype]
-> i40e_txrx.c:1950:59: warning: incorrect type in initializer (different base types)
-> i40e_txrx.c:1950:59:    expected unsigned short [usertype] vlan_tag
-> i40e_txrx.c:1950:59:    got restricted __le16 [usertype] l2tag1
-> i40e_txrx.c:1953:40: warning: cast to restricted __le16
-> i40e_xsk.c:448:38: warning: invalid assignment: |=
-> i40e_xsk.c:448:38:    left side has type restricted __le64
-> i40e_xsk.c:448:38:    right side has type int
->
-> Fixes: 2f4b411a3d67 ("i40e: Enable cloud filters via tc-flower")
-> Fixes: 2a508c64ad27 ("i40e: fix VLAN.TCI == 0 RX HW offload")
-> Fixes: 3106c580fb7c ("i40e: Use batched xsk Tx interfaces to increase performance")
-> Fixes: 8f88b3034db3 ("i40e: Add infrastructure for queue channel support")
-> Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 18 +++++++++---------
->  drivers/net/ethernet/intel/i40e/i40e_txrx.c |  2 +-
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c  |  2 +-
->  3 files changed, 11 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 3ed7f0e..8f635ac 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -5950,7 +5950,7 @@ static int i40e_add_channel(struct i40e_pf *pf, u16 uplink_seid,
->         ch->enabled_tc = !i40e_is_channel_macvlan(ch) && enabled_tc;
->         ch->seid = ctxt.seid;
->         ch->vsi_number = ctxt.vsi_number;
-> -       ch->stat_counter_idx = cpu_to_le16(ctxt.info.stat_counter_idx);
-> +       ch->stat_counter_idx = le16_to_cpu(ctxt.info.stat_counter_idx);
->
->         /* copy just the sections touched not the entire info
->          * since not all sections are valid as returned by
-> @@ -7990,8 +7990,7 @@ static inline void
->  i40e_set_cld_element(struct i40e_cloud_filter *filter,
->                      struct i40e_aqc_cloud_filters_element_data *cld)
->  {
-> -       int i, j;
-> -       u32 ipa;
-> +       int i;
->
->         memset(cld, 0, sizeof(*cld));
->         ether_addr_copy(cld->outer_mac, filter->dst_mac);
-> @@ -8002,14 +8001,15 @@ i40e_set_cld_element(struct i40e_cloud_filter *filter,
->
->         if (filter->n_proto == ETH_P_IPV6) {
->  #define IPV6_MAX_INDEX (ARRAY_SIZE(filter->dst_ipv6) - 1)
-> -               for (i = 0, j = 0; i < ARRAY_SIZE(filter->dst_ipv6);
-> -                    i++, j += 2) {
-> -                       ipa = be32_to_cpu(filter->dst_ipv6[IPV6_MAX_INDEX - i]);
-> -                       ipa = cpu_to_le32(ipa);
-> -                       memcpy(&cld->ipaddr.raw_v6.data[j], &ipa, sizeof(ipa));
-> +               for (i = 0; i < ARRAY_SIZE(filter->dst_ipv6); i++) {
-> +                       __le32 ipa = cpu_to_le32(be32_to_cpu
-> +                               (filter->dst_ipv6[IPV6_MAX_INDEX - i]));
-> +
-> +                       memcpy(&cld->ipaddr.raw_v6.data[i * 2], &ipa, sizeof(ipa));
+On Fri, 29 Jan 2021 13:13:24 -0800 Vinicius Costa Gomes wrote:
+> Vladimir Oltean <vladimir.oltean@nxp.com> writes:
+> 
+> > On Fri, Jan 22, 2021 at 02:44:47PM -0800, Vinicius Costa Gomes wrote:  
+> >> +	/* It's valid to enable frame preemption without any kind of
+> >> +	 * offloading being enabled, so keep it separated.
+> >> +	 */
+> >> +	if (tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]) {
+> >> +		u32 preempt = nla_get_u32(tb[TCA_TAPRIO_ATTR_PREEMPT_TCS]);
+> >> +		struct tc_preempt_qopt_offload qopt = { };
+> >> +
+> >> +		if (preempt == U32_MAX) {
+> >> +			NL_SET_ERR_MSG(extack, "At least one queue must be not be preemptible");
+> >> +			err = -EINVAL;
+> >> +			goto free_sched;
+> >> +		}
+> >> +
+> >> +		qopt.preemptible_queues = tc_map_to_queue_mask(dev, preempt);
+> >> +
+> >> +		err = dev->netdev_ops->ndo_setup_tc(dev, TC_SETUP_PREEMPT,
+> >> +						    &qopt);
+> >> +		if (err)
+> >> +			goto free_sched;
+> >> +
+> >> +		q->preemptible_tcs = preempt;
+> >> +	}
+> >> +  
+> >
+> > First I'm interested in the means: why check for preempt == U32_MAX when
+> > you determine that all traffic classes are preemptible? What if less
+> > than 32 traffic classes are used by the netdev? The check will be
+> > bypassed, won't it?  
+> 
+> Good catch :-)
+> 
+> I wanted to have this (at least one express queue) handled in a
+> centralized way, but perhaps this should be handled best per driver.
 
-I would argue the code you had before was more readable than what this is now.
-
-Instead of changing things this way it might be better to instead do
-just drop the last two lines and do something like:
-    *(__le32 *)&cld->ipaddr.raw_v6.data[i * 2] = cpu_to_le32(ipa);
-
-Also from what I can tell it looks like the raw_v6 field is only used
-here so you could drop the need to cast this if you were to change the
-type for data from an __le16 to an __le32 and just drop the array
-length by half.
-
->                 }
->         } else {
-> -               ipa = be32_to_cpu(filter->dst_ipv4);
-> +               u32 ipa = be32_to_cpu(filter->dst_ipv4);
-> +
->                 memcpy(&cld->ipaddr.v4.data, &ipa, sizeof(ipa));
->         }
->
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index 15feecd..c7759cb 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -1948,7 +1948,7 @@ void i40e_process_skb_fields(struct i40e_ring *rx_ring,
->         skb_record_rx_queue(skb, rx_ring->queue_index);
->
->         if (qword & BIT(I40E_RX_DESC_STATUS_L2TAG1P_SHIFT)) {
-> -               u16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
-> +               __le16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
->
->                 __vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
->                                        le16_to_cpu(vlan_tag));
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> index b42300b..df1ec8c 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> @@ -457,7 +457,7 @@ static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
->         struct i40e_tx_desc *tx_desc;
->
->         tx_desc = I40E_TX_DESC(xdp_ring, ntu);
-> -       tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
-> +       tx_desc->cmd_type_offset_bsz |= cpu_to_le64(I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
->  }
->
->  /**
-> --
-> 2.17.1
->
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Centralized is good. Much easier than reviewing N drivers to make sure
+they all behave the same, and right.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
