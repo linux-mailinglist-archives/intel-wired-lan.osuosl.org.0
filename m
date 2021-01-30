@@ -2,58 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B46EF3091AB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Jan 2021 04:27:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB697309652
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Jan 2021 16:42:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2443F87403;
-	Sat, 30 Jan 2021 03:27:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 69C78871C4;
+	Sat, 30 Jan 2021 15:42:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gXumcWguPzEG; Sat, 30 Jan 2021 03:27:54 +0000 (UTC)
+	with ESMTP id EGA76UF1MCf7; Sat, 30 Jan 2021 15:42:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 940EB8739D;
-	Sat, 30 Jan 2021 03:27:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8401871EC;
+	Sat, 30 Jan 2021 15:42:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5EAAB1BF319
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 03:27:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BC0871BF31E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 15:42:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 53D2F20471
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 03:27:52 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B6BA485108
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 15:42:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OvAHuYqUNCFp for <intel-wired-lan@lists.osuosl.org>;
- Sat, 30 Jan 2021 03:27:51 +0000 (UTC)
+ with ESMTP id dz8T1KPdrd29 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 30 Jan 2021 15:42:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 9322C203D9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 03:27:51 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0694F64DDC;
- Sat, 30 Jan 2021 03:27:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611977271;
- bh=+T+HEriJ5zyZvGjDbX0DF9md9wN7rBRcxsaD5KqWobs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Xt0Fn3FOiBKbdQjW5aB1hpt+L8qi7xj55fCXQQWTNHol5zsHPLzpOkMsSK8KlAC5v
- ENPasNAifBPrBtwNOsFkbFvsMiSAjiVHzrU+IhNi66jf2+MtPbtNRtjs/tBRDY0O12
- q1SUatZ2bk8QGfdtZPi/btFav2hlJZxeU3qUm0YHuhST50pOpTYYf5fjCbS4kPy7Z0
- RusJZirVdibxLJ1eHoOrqYUd0mJsnbWDbvZqVmEihTUzk+VpufI4RevSLLxNA7M05d
- DdE97iu1eqqrIX16Y/o0+6/FI70+soWh+vlFofry7Kls6BPaYYou4V37F5A0/WncCd
- Ub1QlX46L0YJA==
-Date: Fri, 29 Jan 2021 19:27:50 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Pierre Cheynier <p.cheynier@criteo.com>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <20210129192750.7b2d8b25@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <DB8PR04MB6460F61AE67E17CC9189D067EAB99@DB8PR04MB6460.eurprd04.prod.outlook.com>
-References: <DB8PR04MB6460F61AE67E17CC9189D067EAB99@DB8PR04MB6460.eurprd04.prod.outlook.com>
+Received: from mail-40136.protonmail.ch (mail-40136.protonmail.ch
+ [185.70.40.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CFBB18458F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 15:42:35 +0000 (UTC)
+Date: Sat, 30 Jan 2021 15:42:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
+ t=1612021352; bh=SqOOfzeH0noXKgcwnW/E6N5QTvdiF5329lwzLQGnSBA=;
+ h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
+ b=QNesXZCqMsxg9WWq30zTsSxoLyYfcPmwRs7aX304JT8WeHNT2iGeKEibhU43V9vgT
+ OcUNJmqqlVZvquPt6J7MLkmBaKhnUDCH23CFKrtXuP8CIQAzp8bYEWC7Ml27/Xc8Kv
+ f1C/khyFadsGNsXhEO1dzJJ1HgqXdA5r7yJfx+tsRajwQc82BlDqw5ZjlanwRvD1p/
+ Z6/yyOW9dpxawki7sSDlRjQ8u8VXcF1HC/BOx5w/k5QhQxYz3scGwOIxNqXL+3s/5C
+ rCuWxQuQ5OT/DcRqoNddGAAnHcb6UjvmotgX1eW2NpSx7FLK/lnTTT8mb84wIIyEYx
+ YpUaky0ym1igA==
+To: Jakub Kicinski <kuba@kernel.org>
+From: Alexander Lobakin <alobakin@pm.me>
+Message-ID: <20210130154149.8107-1-alobakin@pm.me>
+In-Reply-To: <20210129183907.2ae5ca3d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+References: <20210127201031.98544-1-alobakin@pm.me>
+ <20210127201031.98544-4-alobakin@pm.me>
+ <20210129183907.2ae5ca3d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [5.10] i40e/udp_tunnel: RTNL: assertion
- failed at net/ipv4/udp_tunnel_nic.c
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 3/4] net: introduce common
+ dev_page_is_reserved()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,68 +64,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Reply-To: Alexander Lobakin <alobakin@pm.me>
+Cc: Randy Dunlap <rdunlap@infradead.org>, Alexander Lobakin <alobakin@pm.me>,
+ linux-mm@kvack.org, Jakub Sitnicki <jakub@cloudflare.com>,
+ Leon Romanovsky <leon@kernel.org>, linux-rdma@vger.kernel.org,
+ Dexuan Cui <decui@microsoft.com>, intel-wired-lan@lists.osuosl.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, Paolo Abeni <pabeni@redhat.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
+ David Rientjes <rientjes@google.com>, Willem de Bruijn <willemb@google.com>,
+ Salil Mehta <salil.mehta@huawei.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 29 Jan 2021 17:44:12 +0000 Pierre Cheynier wrote:
-> Dear list,
+From: Jakub Kicinski <kuba@kernel.org>
+Date: Fri, 29 Jan 2021 18:39:07 -0800
+
+> On Wed, 27 Jan 2021 20:11:23 +0000 Alexander Lobakin wrote:
+> > + * dev_page_is_reserved - check whether a page can be reused for network Rx
+> > + * @page: the page to test
+> > + *
+> > + * A page shouldn't be considered for reusing/recycling if it was allocated
+> > + * under memory pressure or at a distant memory node.
+> > + *
+> > + * Returns true if this page should be returned to page allocator, false
+> > + * otherwise.
+> > + */
+> > +static inline bool dev_page_is_reserved(const struct page *page)
 > 
-> I noticed this assertion error recently after upgrading to 5.10.x (latest trial being 5.10.11).
-> Coming indirectly with my usage of the vxlan module, the assertion output will probably give you the information required to guess my hardware context (i40e).
-> 
-> [    8.842462] ------------[ cut here ]------------
-> [    8.847081] RTNL: assertion failed at net/ipv4/udp_tunnel_nic.c (557)
-> [    8.853541] WARNING: CPU: 0 PID: 15 at net/ipv4/udp_tunnel_nic.c:557 __udp_tunnel_nic_reset_ntf+0xde/0xf0 [udp_tunnel]
+> Am I the only one who feels like "reusable" is a better term than
+> "reserved".
 
-> [    8.910283] RIP: 0010:__udp_tunnel_nic_reset_ntf+0xde/0xf0 [udp_tunnel]
+I thought about it, but this will need to inverse the conditions in
+most of the drivers. I decided to keep it as it is.
+I can redo if "reusable" is preferred.
 
-> [    9.014499] Call Trace:
-> [    9.016968]  i40e_setup_pf_switch+0x3e8/0x5e0 [i40e]
-> [    9.021949]  i40e_probe.part.0.cold+0x87a/0x11f2 [i40e]
-> [    9.065385]  local_pci_probe+0x42/0x80
+Regarding "no objectives to take patch 1 through net-next": patches
+2-3 depend on it, so I can't put it in a separate series.
 
-Thanks for the report!
+Thanks,
+Al
 
-I must have missed that i40e_setup_pf_switch() is called from the probe
-path.
-
-Intel folks, does the UDP port table get reset only when reinit is true?
-So can this be the fix?
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 521ea9df38d5..4f3e7201ec1e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14269,7 +14269,8 @@ static int i40e_setup_pf_switch(struct i40e_pf *pf, bool reinit)
-        i40e_ptp_init(pf);
- 
-        /* repopulate tunnel port filters */
--       udp_tunnel_nic_reset_ntf(pf->vsi[pf->lan_vsi]->netdev);
-+       if (!reinit)
-+               udp_tunnel_nic_reset_ntf(pf->vsi[pf->lan_vsi]->netdev);
- 
-        return ret;
- }
-
-Or do we need to exclude the first call like this?
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 521ea9df38d5..823c054f4c23 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14269,7 +14269,8 @@ static int i40e_setup_pf_switch(struct i40e_pf *pf, bool reinit)
-        i40e_ptp_init(pf);
- 
-        /* repopulate tunnel port filters */
--       udp_tunnel_nic_reset_ntf(pf->vsi[pf->lan_vsi]->netdev);
-+       if (pf->lan_vsi != I40E_NO_VSI)
-+               udp_tunnel_nic_reset_ntf(pf->vsi[pf->lan_vsi]->netdev);
- 
-        return ret;
- }
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
