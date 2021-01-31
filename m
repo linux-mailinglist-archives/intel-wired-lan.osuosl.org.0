@@ -1,54 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5551309BE4
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Jan 2021 13:12:21 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E025A309BEE
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Jan 2021 13:18:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4BD7285A73;
-	Sun, 31 Jan 2021 12:12:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D27A1203BD;
+	Sun, 31 Jan 2021 12:18:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q0J0r42W8Mgq; Sun, 31 Jan 2021 12:12:19 +0000 (UTC)
+	with ESMTP id DSau9v1-AiYN; Sun, 31 Jan 2021 12:18:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 11DA785A22;
-	Sun, 31 Jan 2021 12:12:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3C853203B4;
+	Sun, 31 Jan 2021 12:18:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 46F751BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:12:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EB2401BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:18:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4334D80664
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:12:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E681085A73
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:18:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5l0vC3m87vfk for <intel-wired-lan@lists.osuosl.org>;
- Sun, 31 Jan 2021 12:12:15 +0000 (UTC)
+ with ESMTP id 8BIPnbDFJZ9T for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 31 Jan 2021 12:18:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2.protonmail.ch (mail2.protonmail.ch [185.70.40.22])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 632DE80653
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:12:15 +0000 (UTC)
-Date: Sun, 31 Jan 2021 12:12:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
- t=1612095132; bh=vZbokY1lR2yxpQh6llA40AYewCXOK6n7Mk2VaFMgqMw=;
- h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
- b=E+7p+WclLnclb9/oXHSDVoy6bFsJ1HSU47SI8Jc5wa3Kih9aIB5JxLhPcmKFpy52l
- qFa2Fz5CZNEED9xa3g8SQz9+PfHtZexOUS99c8IUt9IlrHwr9SNTuuEsGMDfvl2KwK
- 8LKh4Dymt71B5fNFJJyG24viVvjiwURtgHKAU22XhC0NS6E4Lx93gdcWRs2qAhK57C
- KDCReaX4JoYHy7l/R0JT3HV8dtTzED4kQ+LZqboAAjFhgzTzb8nyMngy5c+jyYy8ol
- aDK45oeEX5yxhRE77Y1ODbcgk7WQ+oLLUk1a9ZS7LDhwbg9pocnvE6Wb1t+ynFoOmr
- TU7OY3sQLSa1w==
-To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-From: Alexander Lobakin <alobakin@pm.me>
-Message-ID: <20210131120844.7529-6-alobakin@pm.me>
-In-Reply-To: <20210131120844.7529-1-alobakin@pm.me>
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A0FFD85A60
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:18:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=waTZux8Cwve+CiQIqqN/EJ/wAxhO0fG6uw7wz8ZwZuI=; b=sQvJvvONMP4EtOYNfqop7Sr9Gz
+ Ytmvzvl6YVL/4NTxtPPR2oqvqEX4heJrgDVSINS8Vh5cxSFkEV+ETmufdMLP/tp/F/FbLvUbuo9XY
+ O5m9tTdkQZd95bRwrW0t4gxSgJhGoIInJx8cO8qc4FyN5gifdfvAwHKIAJ4Ptinlic5SoHcpCyyNX
+ RSt6lRYS0GKR4KMTxSC4ZSXSPLfStJc2k9LTeiREU8VeAH+/P8Z3sYJOXSm6hbtcZlBxAnr5xUEFU
+ tnLMwBIUvwX0PZNeQM1K846oPyMAg2A0AIg3BiUB6qtZLHx5t2idzfHtxk5qsavBYyFo6b/JnkFTE
+ OnyV6hRg==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat
+ Linux)) id 1l6BfW-00CQMl-AF; Sun, 31 Jan 2021 12:17:30 +0000
+Date: Sun, 31 Jan 2021 12:17:30 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: Alexander Lobakin <alobakin@pm.me>
+Message-ID: <20210131121730.GK308988@casper.infradead.org>
 References: <20210131120844.7529-1-alobakin@pm.me>
+ <20210131120844.7529-2-alobakin@pm.me>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v3 net-next 5/5] net: page_pool: simplify
- page recycling condition tests
+Content-Disposition: inline
+In-Reply-To: <20210131120844.7529-2-alobakin@pm.me>
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 1/5] mm: constify
+ page_is_pfmemalloc() argument
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,74 +66,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: Alexander Lobakin <alobakin@pm.me>
-Cc: Randy Dunlap <rdunlap@infradead.org>, Alexander Lobakin <alobakin@pm.me>,
- linux-mm@kvack.org, Jakub Sitnicki <jakub@cloudflare.com>,
- Leon Romanovsky <leon@kernel.org>, linux-rdma@vger.kernel.org,
- Dexuan Cui <decui@microsoft.com>, intel-wired-lan@lists.osuosl.org,
- Jesper Dangaard Brouer <brouer@redhat.com>, Paolo Abeni <pabeni@redhat.com>,
+Cc: Randy Dunlap <rdunlap@infradead.org>, linux-mm@kvack.org,
+ Jakub Sitnicki <jakub@cloudflare.com>, Leon Romanovsky <leon@kernel.org>,
+ linux-rdma@vger.kernel.org, Dexuan Cui <decui@microsoft.com>,
+ intel-wired-lan@lists.osuosl.org, Jesper Dangaard Brouer <brouer@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Yisen Zhuang <yisen.zhuang@huawei.com>,
  Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
  John Hubbard <jhubbard@nvidia.com>, David Rientjes <rientjes@google.com>,
  Willem de Bruijn <willemb@google.com>, Salil Mehta <salil.mehta@huawei.com>,
  netdev@vger.kernel.org, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
  linux-kernel@vger.kernel.org, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>
+ Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-pool_page_reusable() is a leftover from pre-NUMA-aware times. For now,
-this function is just a redundant wrapper over page_is_pfmemalloc(),
-so inline it into its sole call site.
+On Sun, Jan 31, 2021 at 12:11:30PM +0000, Alexander Lobakin wrote:
+> The function only tests for page->index, so its argument should be
+> const.
+> 
+> Signed-off-by: Alexander Lobakin <alobakin@pm.me>
+> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Acked-by: David Rientjes <rientjes@google.com>
 
-Signed-off-by: Alexander Lobakin <alobakin@pm.me>
-Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Reviewed-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Acked-by: David Rientjes <rientjes@google.com>
----
- net/core/page_pool.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
-
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index f3c690b8c8e3..ad8b0707af04 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -350,14 +350,6 @@ static bool page_pool_recycle_in_cache(struct page *page,
- 	return true;
- }
- 
--/* page is NOT reusable when:
-- * 1) allocated when system is under some pressure. (page_is_pfmemalloc)
-- */
--static bool pool_page_reusable(struct page_pool *pool, struct page *page)
--{
--	return !page_is_pfmemalloc(page);
--}
--
- /* If the page refcnt == 1, this will try to recycle the page.
-  * if PP_FLAG_DMA_SYNC_DEV is set, we'll try to sync the DMA area for
-  * the configured size min(dma_sync_size, pool->max_len).
-@@ -373,9 +365,11 @@ __page_pool_put_page(struct page_pool *pool, struct page *page,
- 	 * regular page allocator APIs.
- 	 *
- 	 * refcnt == 1 means page_pool owns page, and can recycle it.
-+	 *
-+	 * page is NOT reusable when allocated when system is under
-+	 * some pressure. (page_is_pfmemalloc)
- 	 */
--	if (likely(page_ref_count(page) == 1 &&
--		   pool_page_reusable(pool, page))) {
-+	if (likely(page_ref_count(page) == 1 && !page_is_pfmemalloc(page))) {
- 		/* Read barrier done in page_ref_count / READ_ONCE */
- 
- 		if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
--- 
-2.30.0
-
-
+Reviewed-by: Matthew Wilcox (Oracle) <willy@infradead.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
