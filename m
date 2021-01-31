@@ -1,56 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D30A309C24
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Jan 2021 13:57:38 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02C24309FBE
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Feb 2021 01:38:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ECF7D87028;
-	Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D6CF84B62;
+	Mon,  1 Feb 2021 00:38:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mt9Pyg6PZL9V; Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
+	with ESMTP id 1ydpwDnWkY4C; Mon,  1 Feb 2021 00:38:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7F19B87082;
-	Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2613084CC2;
+	Mon,  1 Feb 2021 00:38:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7E2FC1BF2BC
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:34 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9CD4D1BF33C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 02:08:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 78B8787082
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:34 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8E9EC2037C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 02:08:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uC6N23yS60pE for <intel-wired-lan@lists.osuosl.org>;
- Sun, 31 Jan 2021 12:57:33 +0000 (UTC)
+ with ESMTP id 4YCqpifIP1pf for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 31 Jan 2021 02:08:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail2.protonmail.ch (mail2.protonmail.ch [185.70.40.22])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2C47D87028
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:33 +0000 (UTC)
-Date: Sun, 31 Jan 2021 12:57:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
- t=1612097850; bh=hy3HTU1Gr4SJ412CK0eDCO6whxGXOGwlEZQ/bHzh0IY=;
- h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
- b=gOF3DQLDOPbnITXBUL2KPwaqec06jg7hgwxBrpixduvxzEnKNGsfv8ItuXKrxv9Ng
- JiqbWegAiSb0RANpw00MRZt5dHVkVaU/4aT5yLL76tDfJs1aAdwYldD7IWkRc5kxbh
- 1BAJMWanlZQ2JqPkXy6HSIYWPNKbrH0EQAF1HDdchGDHYnALdR6ajs+2btoq67GU9f
- f5YZ1517Lx6mBTrwwu58TBCcS9IuiaspQ6k7jtFh66w62CLwSumleX42KAPMkjKfzH
- bHZna372czPrByZznTmm5VyRMiP9VCQ0UQEj/5CLGRQO8Ef03IeNcCrs59678BmNjl
- NGoTfgARWpgvw==
-To: Matthew Wilcox <willy@infradead.org>
-From: Alexander Lobakin <alobakin@pm.me>
-Message-ID: <20210131125713.8710-1-alobakin@pm.me>
-In-Reply-To: <20210131122205.GL308988@casper.infradead.org>
-References: <20210131120844.7529-1-alobakin@pm.me>
- <20210131120844.7529-4-alobakin@pm.me>
- <20210131122205.GL308988@casper.infradead.org>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1782420030
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 02:08:48 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4D0FB64E19
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 02:08:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612058927;
+ bh=3xx8TxmA2gyZeZoXMG+7SVI7SSrkFWvs9+2r9Zf9QRc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=BexwFh0UZjD/MDkHQlx3LAHdIrG72RIa5g2QskzKvkLMTAq/RElWBJcJY+FZHg0xG
+ renDgcUEjaV4TIwjL8qLq4ch2tGV4shORnPoMA6Me4wQwTTzSG4whXRyN3T2oiWUj0
+ b5/3iHeMbGDLgAvnu+gVJU7BsY8PO8bhuEurCZ5XPswz8tG7BcqGbHSTxgnI11ZHXO
+ sB/x1m2yxs2QHygppMrWgy4Wl33VO4n+pbuQPbOAQF55NJ6vw/2Pw2qSPJng37gk4I
+ 87P/R9mrqWIbnRhSqktts1MR0OcvMb8ft3euBsIj/H9g25EGY0zYlnFstX8a22dSVG
+ cyvac44CTdpHQ==
+Received: by mail-lf1-f43.google.com with SMTP id a8so17937066lfi.8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Jan 2021 18:08:47 -0800 (PST)
+X-Gm-Message-State: AOAM531LZtqYjzBKpuo7iijJpWsJJt+kb/XgXe3OZ8UU3a2B+3XKSQet
+ f9hl4Ppfe7Ci/aMCdb2WMtUESXiZqoU/+xHOnUw=
+X-Google-Smtp-Source: ABdhPJwG5EEsXTAkRktbcPgJ+2WpcojmwU3MKgiO4woMGgiI1IAhUnHK26iX8F90zDbQs+2STBLedI78m+5xCp3puRs=
+X-Received: by 2002:ac2:4436:: with SMTP id w22mr5282197lfl.41.1612058925675; 
+ Sat, 30 Jan 2021 18:08:45 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 3/5] net: introduce common
- dev_page_is_reusable()
+References: <20210130234949.21090-1-rdunlap@infradead.org>
+In-Reply-To: <20210130234949.21090-1-rdunlap@infradead.org>
+From: Guo Ren <guoren@kernel.org>
+Date: Sun, 31 Jan 2021 10:08:34 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTR9pdgmYv8tV9ncjHYQ-LAA75f_Yc0BMyOQjiR-TAW4TA@mail.gmail.com>
+Message-ID: <CAJF2gTR9pdgmYv8tV9ncjHYQ-LAA75f_Yc0BMyOQjiR-TAW4TA@mail.gmail.com>
+To: Randy Dunlap <rdunlap@infradead.org>
+X-Mailman-Approved-At: Mon, 01 Feb 2021 00:38:41 +0000
+Subject: Re: [Intel-wired-lan] [PATCH] csky: change a Kconfig symbol name to
+ fix e1000 build error
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,78 +73,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: Alexander Lobakin <alobakin@pm.me>
-Cc: Randy Dunlap <rdunlap@infradead.org>, Alexander Lobakin <alobakin@pm.me>,
- Jakub Sitnicki <jakub@cloudflare.com>, Leon Romanovsky <leon@kernel.org>,
- linux-rdma@vger.kernel.org, Dexuan Cui <decui@microsoft.com>,
- intel-wired-lan@lists.osuosl.org, Jesper Dangaard Brouer <brouer@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Pablo Neira Ayuso <pablo@netfilter.org>, Marco Elver <elver@google.com>,
- John Hubbard <jhubbard@nvidia.com>, David Rientjes <rientjes@google.com>,
- Willem de Bruijn <willemb@google.com>, linux-mm@kvac.osuosl.org,
- Salil Mehta <salil.mehta@huawei.com>, netdev@vger.kernel.org,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
- k.org@osuosl.org, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>, Saeed Mahameed <saeedm@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Guo Ren <guoren@linux.alibaba.com>, linux-csky@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Matthew Wilcox <willy@infradead.org>
-Date: Sun, 31 Jan 2021 12:22:05 +0000
+Acked-by
 
-> On Sun, Jan 31, 2021 at 12:11:52PM +0000, Alexander Lobakin wrote:
-> > A bunch of drivers test the page before reusing/recycling for two
-> > common conditions:
-> >  - if a page was allocated under memory pressure (pfmemalloc page);
-> >  - if a page was allocated at a distant memory node (to exclude
-> >    slowdowns).
-> >
-> > Introduce a new common inline for doing this, with likely() already
-> > folded inside to make driver code a bit simpler.
-> 
-> I don't see the need for the 'dev_' prefix.  That actually confuses me
-> because it makes me think this is tied to ZONE_DEVICE or some such.
+Thx
 
-Several functions right above this one also use 'dev_' prefix. It's
-a rather old mark that it's about network devices.
+On Sun, Jan 31, 2021 at 7:50 AM Randy Dunlap <rdunlap@infradead.org> wrote:
+>
+> e1000's #define of CONFIG_RAM_BASE conflicts with a Kconfig symbol in
+> arch/csky/Kconfig.
+> The symbol in e1000 has been around longer, so change arch/csky/
+> to use DRAM_BASE instead of RAM_BASE to remove the conflict.
+> (although e1000 is also a 2-line change)
+>
+> Not tested: I don't have a build toolchain for CSKY.
+>
+> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+> Reported-by: kernel test robot <lkp@intel.com>
+> Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Cc: intel-wired-lan@lists.osuosl.org
+> Cc: Guo Ren <guoren@linux.alibaba.com>
+> Cc: Guo Ren <guoren@kernel.org>
+> Cc: linux-csky@vger.kernel.org
+> ---
+> IMO "CONFIG_" namespace should belong to Kconfig files, not
+> individual drivers, but e1000 isn't the only driver that uses
+> CONFIG_ symbols.
+>
+>  arch/csky/Kconfig            |    2 +-
+>  arch/csky/include/asm/page.h |    2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> --- linux-next-20210129.orig/arch/csky/include/asm/page.h
+> +++ linux-next-20210129/arch/csky/include/asm/page.h
+> @@ -28,7 +28,7 @@
+>  #define SSEG_SIZE      0x20000000
+>  #define LOWMEM_LIMIT   (SSEG_SIZE * 2)
+>
+> -#define PHYS_OFFSET_OFFSET (CONFIG_RAM_BASE & (SSEG_SIZE - 1))
+> +#define PHYS_OFFSET_OFFSET (CONFIG_DRAM_BASE & (SSEG_SIZE - 1))
+>
+>  #ifndef __ASSEMBLY__
+>
+> --- linux-next-20210129.orig/arch/csky/Kconfig
+> +++ linux-next-20210129/arch/csky/Kconfig
+> @@ -314,7 +314,7 @@ config FORCE_MAX_ZONEORDER
+>         int "Maximum zone order"
+>         default "11"
+>
+> -config RAM_BASE
+> +config DRAM_BASE
+>         hex "DRAM start addr (the same with memory-section in dts)"
+>         default 0x0
+>
 
-> So how about calling it just 'page_is_reusable' and putting it in mm.h
-> with page_is_pfmemalloc() and making the comment a little less network-centric?
 
-This pair of conditions (!pfmemalloc + local memory node) is really
-specific to network drivers. I didn't see any other instances of such
-tests, so I don't see a reason to place it in a more common mm.h.
+-- 
+Best Regards
+ Guo Ren
 
-> Or call it something like skb_page_is_recyclable() since it's only used
-> by networking today.  But I bet it could/should be used more widely.
-
-There's nothing about skb. Tested page is just a memory chunk for DMA
-transaction. It can be used as skb head/frag, for XDP buffer/frame or
-for XSK umem.
-
-> > +/**
-> > + * dev_page_is_reusable - check whether a page can be reused for network Rx
-> > + * @page: the page to test
-> > + *
-> > + * A page shouldn't be considered for reusing/recycling if it was allocated
-> > + * under memory pressure or at a distant memory node.
-> > + *
-> > + * Returns false if this page should be returned to page allocator, true
-> > + * otherwise.
-> > + */
-> > +static inline bool dev_page_is_reusable(const struct page *page)
-> > +{
-> > +	return likely(page_to_nid(page) == numa_mem_id() &&
-> > +		      !page_is_pfmemalloc(page));
-> > +}
-> > +
-
-Al
-
+ML: https://lore.kernel.org/linux-csky/
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
