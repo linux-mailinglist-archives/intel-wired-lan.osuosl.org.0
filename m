@@ -2,56 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 425E0309C17
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Jan 2021 13:48:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D30A309C24
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Jan 2021 13:57:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E1D2A86D82;
-	Sun, 31 Jan 2021 12:48:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ECF7D87028;
+	Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YuAl017foUCF; Sun, 31 Jan 2021 12:48:44 +0000 (UTC)
+	with ESMTP id mt9Pyg6PZL9V; Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F11DB8707C;
-	Sun, 31 Jan 2021 12:48:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7F19B87082;
+	Sun, 31 Jan 2021 12:57:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7E57B1BF2BC
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:48:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7E2FC1BF2BC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7688786DCA
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:48:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 78B8787082
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bFtB2oy3W0xP for <intel-wired-lan@lists.osuosl.org>;
- Sun, 31 Jan 2021 12:48:40 +0000 (UTC)
+ with ESMTP id uC6N23yS60pE for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 31 Jan 2021 12:57:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-40134.protonmail.ch (mail-40134.protonmail.ch
- [185.70.40.134])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 927CC86D82
- for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:48:40 +0000 (UTC)
-Date: Sun, 31 Jan 2021 12:48:28 +0000
+Received: from mail2.protonmail.ch (mail2.protonmail.ch [185.70.40.22])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2C47D87028
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Jan 2021 12:57:33 +0000 (UTC)
+Date: Sun, 31 Jan 2021 12:57:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me; s=protonmail;
- t=1612097317; bh=y30s5J10nfJ05d+t9ObBLUOEaiYg0NNkaEvHUkJBLzA=;
+ t=1612097850; bh=hy3HTU1Gr4SJ412CK0eDCO6whxGXOGwlEZQ/bHzh0IY=;
  h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:From;
- b=nhDCOWplzmyXPSzZmedhJPQwO/CC5dhY2EAtlfsC7hL96xVl0c+sIejcE+CS/6IpU
- gKKz74jA72t0iHZmFG4/Vph3vyY8VtWfQ6r65Fm6GYKbXLbfdZe10YKpES2uD/emi8
- SHz1PtfhWCTcQPkFFde1Xz7YXK4Bf9JUIsyZrdynXJ0OgIbBhvB6oa5SUdPL4/J0RW
- OXbOAw2zjJyP47AAvJbs6D6KnTLWmMU4i43Sbxw6nbusSdbY+qHSiPn5BRfN/WIU+l
- YrXmib/7xJ4qSyDdhsroCsfKrCT45hSewfuvdY91s9u3N/tjTddj5YDF4JW17JiqKy
- VR6FDnyinK+Zw==
+ b=gOF3DQLDOPbnITXBUL2KPwaqec06jg7hgwxBrpixduvxzEnKNGsfv8ItuXKrxv9Ng
+ JiqbWegAiSb0RANpw00MRZt5dHVkVaU/4aT5yLL76tDfJs1aAdwYldD7IWkRc5kxbh
+ 1BAJMWanlZQ2JqPkXy6HSIYWPNKbrH0EQAF1HDdchGDHYnALdR6ajs+2btoq67GU9f
+ f5YZ1517Lx6mBTrwwu58TBCcS9IuiaspQ6k7jtFh66w62CLwSumleX42KAPMkjKfzH
+ bHZna372czPrByZznTmm5VyRMiP9VCQ0UQEj/5CLGRQO8Ef03IeNcCrs59678BmNjl
+ NGoTfgARWpgvw==
 To: Matthew Wilcox <willy@infradead.org>
 From: Alexander Lobakin <alobakin@pm.me>
-Message-ID: <20210131124802.8430-1-alobakin@pm.me>
-In-Reply-To: <20210131122348.GM308988@casper.infradead.org>
+Message-ID: <20210131125713.8710-1-alobakin@pm.me>
+In-Reply-To: <20210131122205.GL308988@casper.infradead.org>
 References: <20210131120844.7529-1-alobakin@pm.me>
- <20210131120844.7529-6-alobakin@pm.me>
- <20210131122348.GM308988@casper.infradead.org>
+ <20210131120844.7529-4-alobakin@pm.me>
+ <20210131122205.GL308988@casper.infradead.org>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 5/5] net: page_pool:
- simplify page recycling condition tests
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 3/5] net: introduce common
+ dev_page_is_reusable()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,18 +84,54 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Matthew Wilcox <willy@infradead.org>
-Date: Sun, 31 Jan 2021 12:23:48 +0000
+Date: Sun, 31 Jan 2021 12:22:05 +0000
 
-> On Sun, Jan 31, 2021 at 12:12:11PM +0000, Alexander Lobakin wrote:
-> > pool_page_reusable() is a leftover from pre-NUMA-aware times. For now,
-> > this function is just a redundant wrapper over page_is_pfmemalloc(),
-> > so inline it into its sole call site.
+> On Sun, Jan 31, 2021 at 12:11:52PM +0000, Alexander Lobakin wrote:
+> > A bunch of drivers test the page before reusing/recycling for two
+> > common conditions:
+> >  - if a page was allocated under memory pressure (pfmemalloc page);
+> >  - if a page was allocated at a distant memory node (to exclude
+> >    slowdowns).
+> >
+> > Introduce a new common inline for doing this, with likely() already
+> > folded inside to make driver code a bit simpler.
 > 
-> Why doesn't this want to use {dev_}page_is_reusable()?
+> I don't see the need for the 'dev_' prefix.  That actually confuses me
+> because it makes me think this is tied to ZONE_DEVICE or some such.
 
-Page Pool handles NUMA on its own. Replacing plain page_is_pfmemalloc()
-with dev_page_is_reusable() will only add a completely redundant and
-always-false check on the fastpath.
+Several functions right above this one also use 'dev_' prefix. It's
+a rather old mark that it's about network devices.
+
+> So how about calling it just 'page_is_reusable' and putting it in mm.h
+> with page_is_pfmemalloc() and making the comment a little less network-centric?
+
+This pair of conditions (!pfmemalloc + local memory node) is really
+specific to network drivers. I didn't see any other instances of such
+tests, so I don't see a reason to place it in a more common mm.h.
+
+> Or call it something like skb_page_is_recyclable() since it's only used
+> by networking today.  But I bet it could/should be used more widely.
+
+There's nothing about skb. Tested page is just a memory chunk for DMA
+transaction. It can be used as skb head/frag, for XDP buffer/frame or
+for XSK umem.
+
+> > +/**
+> > + * dev_page_is_reusable - check whether a page can be reused for network Rx
+> > + * @page: the page to test
+> > + *
+> > + * A page shouldn't be considered for reusing/recycling if it was allocated
+> > + * under memory pressure or at a distant memory node.
+> > + *
+> > + * Returns false if this page should be returned to page allocator, true
+> > + * otherwise.
+> > + */
+> > +static inline bool dev_page_is_reusable(const struct page *page)
+> > +{
+> > +	return likely(page_to_nid(page) == numa_mem_id() &&
+> > +		      !page_is_pfmemalloc(page));
+> > +}
+> > +
 
 Al
 
