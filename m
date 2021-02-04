@@ -1,58 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7269230E999
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Feb 2021 02:50:50 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09CA330F616
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Feb 2021 16:21:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 05B5486B3B;
-	Thu,  4 Feb 2021 01:50:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9922F864DA;
+	Thu,  4 Feb 2021 15:21:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Aa8TcyzT3mPQ; Thu,  4 Feb 2021 01:50:48 +0000 (UTC)
+	with ESMTP id Z980QPlhjLNV; Thu,  4 Feb 2021 15:21:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B026D86AF6;
-	Thu,  4 Feb 2021 01:50:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 67C08864C3;
+	Thu,  4 Feb 2021 15:21:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 21AD61BF3D6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 01:50:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EEAD1BF29E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 10:05:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1CEC387144
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 01:50:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5A72585F8B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 10:05:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pyS1121rDfwl for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Feb 2021 01:50:44 +0000 (UTC)
+ with ESMTP id 7CJX-4KusPqX for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Feb 2021 10:05:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 11B9787140
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 01:50:44 +0000 (UTC)
-IronPort-SDR: davZJeCXO0yW+DbVHqXzP3teRzy5fh7ByujgnFqJTli4Z+XycFiQ8gVR97uoxIh1f3iN8Fbxbb
- AKhV0OpWal6w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9884"; a="180380195"
-X-IronPort-AV: E=Sophos;i="5.79,399,1602572400"; d="scan'208";a="180380195"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2021 17:50:41 -0800
-IronPort-SDR: XfFqTcM36H66gWXf2DeY3KG/qzaYORfG5p5982fMDYY+hy+dIamaSow2ircLil9oZPfknbZOMh
- qpbN33KkeS0A==
-X-IronPort-AV: E=Sophos;i="5.79,399,1602572400"; d="scan'208";a="371781566"
-Received: from swfong-mobl.amr.corp.intel.com (HELO edesouza-mobl1.lan)
- ([10.212.18.66])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2021 17:50:39 -0800
-From: Ederson de Souza <ederson.desouza@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  3 Feb 2021 17:50:25 -0800
-Message-Id: <20210204015025.40275-1-ederson.desouza@intel.com>
-X-Mailer: git-send-email 2.30.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3874D84F58
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Feb 2021 10:05:41 +0000 (UTC)
+IronPort-SDR: KbM7MCvoAmM+PZv8dae9/sTZe7MGcvCCF+dICo9JkxADgD68elW2lzTJfryq1fyzAHNOsBXuBV
+ boYivLdCrbKw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9884"; a="200199083"
+X-IronPort-AV: E=Sophos;i="5.79,400,1602572400"; d="scan'208";a="200199083"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2021 02:05:40 -0800
+IronPort-SDR: Lg/g0hBDeh1Dk7pooH37ln/y0SGA6xYlq6XzVzVK652SgmKyowjGbVLhI8PZ2hoZB4AB6qUgRl
+ glqF3xxy0cwA==
+X-IronPort-AV: E=Sophos;i="5.79,400,1602572400"; d="scan'208";a="393091584"
+Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2021 02:05:39 -0800
+To: "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20210127092421.GS4393@calimero.vinschen.de>
+ <79cb04f0-1a93-f463-3131-ad7772eab202@intel.com>
+From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <e955280d-305a-70a4-f74a-8cf9b2a07e1f@linux.intel.com>
+Date: Thu, 4 Feb 2021 12:05:37 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v1] igb: Redistribute memory
- for transmit packet buffers when in Qav mode
+In-Reply-To: <79cb04f0-1a93-f463-3131-ad7772eab202@intel.com>
+Content-Language: en-US
+X-Mailman-Approved-At: Thu, 04 Feb 2021 15:21:16 +0000
+Subject: Re: [Intel-wired-lan] igc: fix link speed advertising
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,168 +72,145 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i210 has a total of 24KB of transmit packet buffer. When in Qav mode,
-this buffer is divided into four pieces, one for each Tx queue.
-Currently, 8KB are given to each of the two SR queues and 4KB are given
-to each of the two SP queues.
-
-However, it was noticed that such distribution can make best effort
-traffic (which would usually go to the SP queues when Qav is enabled, as
-the SR queues would be used by ETF or CBS qdiscs for TSN-aware traffic)
-perform poorly. Using iperf3 to measure, one could see the performance
-of best effort traffic drop by nearly a third (from 935Mbps to 578Mbps),
-with no TSN traffic competing.
-
-This patch redistributes the 24KB to each queue equally: 6KB each. On
-tests, there was no notable performance reduction of best effort traffic
-performance when there was no TSN traffic competing.
-
-Below, more details about the data collected:
-
-All experiments were run using the following qdisc setup:
-
-qdisc taprio 100: root refcnt 9 tc 4 map 3 3 3 2 3 0 0 3 3 3 3 3 3 3 3 3
-    queues offset 0 count 1 offset 1 count 1 offset 2 count 1 offset 3 count 1
-    clockid TAI base-time 0 cycle-time 10000000 cycle-time-extension 0
-    index 0 cmd S gatemask 0xf interval 10000000
-
-qdisc etf 8045: parent 100:1 clockid TAI delta 1000000 offload on
-    deadline_mode off skip_sock_check off
-
-TSN traffic, when enabled, had this characteristics:
- Packet size: 1500 bytes
- Transmission interval: 125us
-
-----------------------------------
-Without this patch:
-----------------------------------
-- TCP data:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.35 GBytes   578 Mbits/sec    0
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.07 GBytes   460 Mbits/sec    1
-
-- TCP data limiting iperf3 buffer size to 4K:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.35 GBytes   579 Mbits/sec    0
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.08 GBytes   462 Mbits/sec    0
-
-- TCP data limiting iperf3 buffer size to 192 bytes (smallest size without
- serious performance degradation):
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.34 GBytes   577 Mbits/sec    0
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.07 GBytes   461 Mbits/sec    1
-
-- UDP data at 1000Mbit/sec:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-        [  5]   0.00-20.00  sec  1.36 GBytes   586 Mbits/sec  0.000 ms  0/1011407 (0%)
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-        [  5]   0.00-20.00  sec  1.05 GBytes   451 Mbits/sec  0.000 ms  0/778672 (0%)
-
-----------------------------------
-With this patch:
-----------------------------------
-
-- TCP data:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  2.17 GBytes   932 Mbits/sec    0
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.50 GBytes   646 Mbits/sec    1
-
-- TCP data limiting iperf3 buffer size to 4K:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  2.17 GBytes   931 Mbits/sec    0
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.50 GBytes   645 Mbits/sec    0
-
-- TCP data limiting iperf3 buffer size to 192 bytes (smallest size without
- serious performance degradation):
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  2.17 GBytes   932 Mbits/sec    1
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Retr
-        [  5]   0.00-20.00  sec  1.50 GBytes   645 Mbits/sec    0
-
-- UDP data at 1000Mbit/sec:
-    - No TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-        [  5]   0.00-20.00  sec  2.23 GBytes   956 Mbits/sec  0.000 ms  0/1650226 (0%)
-
-    - With TSN traffic:
-        [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-        [  5]   0.00-20.00  sec  1.51 GBytes   649 Mbits/sec  0.000 ms  0/1120264 (0%)
-
-Signed-off-by: Ederson de Souza <ederson.desouza@intel.com>
----
- drivers/net/ethernet/intel/igb/e1000_defines.h | 8 ++++----
- drivers/net/ethernet/intel/igb/igb_main.c      | 4 ++--
- 2 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/e1000_defines.h b/drivers/net/ethernet/intel/igb/e1000_defines.h
-index d2e2c50ce257..ca5429774994 100644
---- a/drivers/net/ethernet/intel/igb/e1000_defines.h
-+++ b/drivers/net/ethernet/intel/igb/e1000_defines.h
-@@ -340,10 +340,10 @@
- #define I210_RXPBSIZE_PB_32KB		0x00000020
- #define I210_TXPBSIZE_DEFAULT		0x04000014 /* TXPBSIZE default */
- #define I210_TXPBSIZE_MASK		0xC0FFFFFF
--#define I210_TXPBSIZE_PB0_8KB		(8 << 0)
--#define I210_TXPBSIZE_PB1_8KB		(8 << 6)
--#define I210_TXPBSIZE_PB2_4KB		(4 << 12)
--#define I210_TXPBSIZE_PB3_4KB		(4 << 18)
-+#define I210_TXPBSIZE_PB0_6KB		(6 << 0)
-+#define I210_TXPBSIZE_PB1_6KB		(6 << 6)
-+#define I210_TXPBSIZE_PB2_6KB		(6 << 12)
-+#define I210_TXPBSIZE_PB3_6KB		(6 << 18)
- 
- #define I210_DTXMXPKTSZ_DEFAULT		0x00000098
- 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 0ace791d40d7..a05736e0874d 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -1921,8 +1921,8 @@ static void igb_setup_tx_mode(struct igb_adapter *adapter)
- 		 */
- 		val = rd32(E1000_TXPBS);
- 		val &= ~I210_TXPBSIZE_MASK;
--		val |= I210_TXPBSIZE_PB0_8KB | I210_TXPBSIZE_PB1_8KB |
--			I210_TXPBSIZE_PB2_4KB | I210_TXPBSIZE_PB3_4KB;
-+		val |= I210_TXPBSIZE_PB0_6KB | I210_TXPBSIZE_PB1_6KB |
-+			I210_TXPBSIZE_PB2_6KB | I210_TXPBSIZE_PB3_6KB;
- 		wr32(E1000_TXPBS, val);
- 
- 		val = rd32(E1000_RXPBS);
--- 
-2.30.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiAKPiAKPiAKPiAtLS0tLS0tLSBGb3J3YXJkZWQgTWVzc2FnZSAtLS0tLS0tLQo+IFN1YmplY3Q6
+IFJlOiBbRndkOiBpZ2M6IGZpeCBsaW5rIHNwZWVkIGFkdmVydGlzaW5nXQo+IERhdGU6IFdlZCwg
+MjcgSmFuIDIwMjEgMTA6MjQ6MjEgKzAxMDAKPiBGcm9tOiBDb3Jpbm5hIFZpbnNjaGVuIDx2aW5z
+Y2hlbkByZWRoYXQuY29tPgo+IFRvOiBZYW5nLCBMaWhvbmcgPGxpaG9uZy55YW5nQGludGVsLmNv
+bT4KPiBDQzogUGF0aGksIFByYWd5YW5zcmkgPHByYWd5YW5zcmkucGF0aGlAaW50ZWwuY29tPiwg
+RG9uIEJheWx5IAo+IDxkYmF5bHlAcmVkaGF0LmNvbT4sIE5lZnRpbiwgU2FzaGEgPHNhc2hhLm5l
+ZnRpbkBpbnRlbC5jb20+LCBOZ3V5ZW4sIAo+IEFudGhvbnkgTCA8YW50aG9ueS5sLm5ndXllbkBp
+bnRlbC5jb20+Cj4gCj4gSGkgTGlob25nLAo+IEhpIFRvbnksCj4gCj4gCj4gVGhhbmtzIGEgbG90
+IHRvIGJvdGggb2YgeW91IQo+IAo+IAo+IENvcmlubmEKPiAKPiAKPiBPbiBKYW4gMjYgMjM6NTgs
+IFlhbmcsIExpaG9uZyB3cm90ZToKPj4gSGkgQ29yaW5uYSwKPj4KPj4gQSBxdWljayB1cGRhdGUu
+IFlvdXIgcGF0Y2hbMV0gd2FzIGp1c3Qgc2VudCBieSBUb255IHRvIG5ldCBhcyBwYXJ0IG9mIAo+
+PiB0aGUgYnVnLWZpeCBzZXJpZXMuIEhvcGVmdWxseSBpdCB3aWxsIGJlIGFjY2VwdGVkIHNvb24u
+Cj4+IFRoYW5rcywKPj4gTGlob25nCj4+Cj4+IFsxXSAKPj4gaHR0cHM6Ly9wYXRjaHdvcmsua2Vy
+bmVsLm9yZy9wcm9qZWN0L25ldGRldmJwZi9wYXRjaC8yMDIxMDEyNjIyMTAzNS42NTgxMjQtOC1h
+bnRob255Lmwubmd1eWVuQGludGVsLmNvbS8gCj4+Cj4+Cj4+Cj4+ID4gLS0tLS1PcmlnaW5hbCBN
+ZXNzYWdlLS0tLS0KPj4gPiBGcm9tOiBZYW5nLCBMaWhvbmcKPj4gPiBTZW50OiBUdWVzZGF5LCBK
+YW51YXJ5IDI2LCAyMDIxIDExOjAyIEFNCj4+ID4gVG86IENvcmlubmEgVmluc2NoZW4gPHZpbnNj
+aGVuQHJlZGhhdC5jb20+Cj4+ID4gQ2M6IFBhdGhpLCBQcmFneWFuc3JpIDxwcmFneWFuc3JpLnBh
+dGhpQGludGVsLmNvbT47IERvbiBCYXlseQo+PiA+IDxkYmF5bHlAcmVkaGF0LmNvbT47IE5lZnRp
+biwgU2FzaGEgPHNhc2hhLm5lZnRpbkBpbnRlbC5jb20+OyBOZ3V5ZW4sCj4+ID4gQW50aG9ueSBM
+IDxhbnRob255Lmwubmd1eWVuQGludGVsLmNvbT4KPj4gPiBTdWJqZWN0OiBSRTogW0Z3ZDogaWdj
+OiBmaXggbGluayBzcGVlZCBhZHZlcnRpc2luZ10KPj4gPiA+IEhpIENvcmlubmEsCj4+ID4gPiBG
+cm9tIHRoZSBpbmZvIEkgZ2F0aGVyZWQsIHRoZSByZWFzb24geW91ciBwYXRjaCBoYXMgbm90IGJl
+ZW4gc2VudCAKPj4gTGludXgKPj4gPiB1cHN0cmVhbSBpcyBiZWNhdXNlIGl0IGhhcyBub3QgYmVl
+biB2YWxpZGF0ZWQgZnJvbSBJbnRlbCBzaWRlLiBPbmNlIAo+PiBpdCBpcwo+PiA+IHRhZ2dlZCB3
+aXRoIGEgVGVzdGVkLWJ5LCBpdCBzaG91bGQgYmUgcmVhZHkgdG8gZ28gdXAuCj4+ID4gPiBJIGFt
+IGFkZGluZyBTYXNoYSBmcm9tIHRoZSBpZ2MgZHJpdmVyIHRlYW0gdG8gYmUgYXdhcmUgb2YgeW91
+ciAKPj4gaW5xdWlyeSwKPj4gPiBhbmQgVG9ueSBvdXIgTmV0d29ya2luZyBtYWludGFpbmVyIGFz
+IGFuIEZZSS4KPj4gPiA+IFRoYW5rcywKPj4gPiBMaWhvbmcKPj4gPiA+ID4gLS0tLS1PcmlnaW5h
+bCBNZXNzYWdlLS0tLS0KPj4gPiA+IEZyb206IENvcmlubmEgVmluc2NoZW4gPHZpbnNjaGVuQHJl
+ZGhhdC5jb20+Cj4+ID4gPiBTZW50OiBUdWVzZGF5LCBKYW51YXJ5IDI2LCAyMDIxIDAyOjM3IEFN
+Cj4+ID4gPiBUbzogWWFuZywgTGlob25nIDxsaWhvbmcueWFuZ0BpbnRlbC5jb20+Cj4+ID4gPiBT
+dWJqZWN0OiBbRndkOiBpZ2M6IGZpeCBsaW5rIHNwZWVkIGFkdmVydGlzaW5nXQo+PiA+ID4KPj4g
+PiA+IEhpIExpaG9uZywKPj4gPiA+Cj4+ID4gPiBJIHNlbnQgdGhpcyBwYXRjaCB0byB0aGUgSW50
+ZWwtd2lyZWQtbGFuIGFuZCBuZXRkZXYgbWFpbGluZyBsaXN0cwo+PiA+ID4gaW4gTm92ZW1iZXIg
+YWxyZWFkeS7CoCBJIGdvdCBubyByZXBseSBidXQgaXQgbG9va2VkIGxpa2UgaXQgaGFkIGJlZW4K
+Pj4gPiA+IGluY2x1ZGVkIGludG8gdGhlIHRlc3QgcnVucyBmcm9tIHRoZSAia2VybmVsIHRlc3Qg
+cm9ib3QiIG91dHB1dC4KPj4gPiA+Cj4+ID4gPiBTbyBJIGV4cGVjdGVkIHRoaXMgaXMgZ29pbmcg
+dXBzdHJlYW0gZm9yIHRoZSBuZXh0IGtlcm5lbCB2ZXJzaW9uLCAKPj4gYnV0IGl0Cj4+ID4gPiBk
+aWRuJ3QgbWFrZSBpdCBpbnRvIG5ldC1uZXh0IHlldC7CoCBJIHdhcyBob3BpbmcgdGhpcyBjYW4g
+Z28gaW50byBSSEVMCj4+ID4gPiA4LjQsIGJ1dCBpdCdzIGdldHRpbmcgcmVhbGx5IGxhdGUgbm93
+Lgo+PiA+ID4KPj4gPiA+IEkgcGluZ2VkIHRoZSBtYWlsaW5nIGxpc3RzIGFnYWluLCBidXQsIHdv
+dWxkIHlvdSBtaW5kIHRvIGNoZWNrCj4+ID4gPiBpbnRlcm5hbGx5LCBpZiB0aGVyZSdzIHNvbWUg
+cmVhc29uIG5vdCB0byBpbmNsdWRlIGl0Pwo+PiA+ID4KPj4gPiA+Cj4+ID4gPiBUaGFua3MgYSBs
+b3QhCj4+ID4gPiBDb3Jpbm5hCj4+ID4gPgo+PiA+ID4KPj4gPiA+IC0tLS0tIEZvcndhcmRlZCBt
+ZXNzYWdlIGZyb20gQ29yaW5uYSBWaW5zY2hlbiAKPj4gPHZpbnNjaGVuQHJlZGhhdC5jb20+IC0t
+LS0KPj4gPiAtCj4+ID4gPgo+PiA+ID4gPiBEYXRlOiBUdWUsIDE3IE5vdiAyMDIwIDIwOjUwOjQw
+ICswMTAwCj4+ID4gPiA+IEZyb206IENvcmlubmEgVmluc2NoZW4gPHZpbnNjaGVuQHJlZGhhdC5j
+b20+Cj4+ID4gPiA+IFRvOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZywgbmV0ZGV2
+QHZnZXIua2VybmVsLm9yZwo+PiA+ID4gPiBTdWJqZWN0OiBbSW50ZWwtd2lyZWQtbGFuXSBpZ2M6
+IGZpeCBsaW5rIHNwZWVkIGFkdmVydGlzaW5nCj4+ID4gPiA+Cj4+ID4gPiA+IExpbmsgc3BlZWQg
+YWR2ZXJ0aXNpbmcgaW4gaWdjIGhhcyB0d28gcHJvYmxlbXM6Cj4+ID4gPiA+Cj4+ID4gPiA+IC0g
+V2hlbiBzZXR0aW5nIHRoZSBhZHZlcnRpc2VtZW50IHZpYSBldGh0b29sLCB0aGUgbGluayBzcGVl
+ZCBpcwo+PiA+ID4gY29udmVydGVkCj4+ID4gPiA+wqDCoCB0byB0aGUgbGVnYWN5IDMyIGJpdCBy
+ZXByZXNlbnRhdGlvbiBmb3IgdGhlIGludGVsIFBIWSBjb2RlLgo+PiA+ID4gPsKgwqAgVGhpcyBp
+bmFkdmVydGVudGx5IGRyb3BzIEVUSFRPT0xfTElOS19NT0RFXzI1MDBiYXNlVF9GdWxsX0JJVCAK
+Pj4gKGJlaW5nCj4+ID4gPiA+wqDCoCBiZXlvbmQgYml0IDMxKS7CoCBBcyBhIHJlc3VsdCwgYW55
+IGNhbGwgdG8gYGV0aHRvb2wgLXMgLi4uJyAKPj4gZHJvcHMgdGhlCj4+ID4gPiA+wqDCoCAyNTAw
+TWJpdC9zIGxpbmsgc3BlZWQgZnJvbSB0aGUgUEhZIHNldHRpbmdzLsKgIE9ubHkgcmVsb2FkaW5n
+IHRoZQo+PiA+ID4gZHJpdmVyCj4+ID4gPiA+wqDCoCBhbGxldmlhdGVzIHRoYXQgcHJvYmxlbS4K
+Pj4gPiA+ID4KPj4gPiA+ID7CoMKgIEZpeCB0aGlzIGJ5IGNvbnZlcnRpbmcgdGhlIAo+PiBFVEhU
+T09MX0xJTktfTU9ERV8yNTAwYmFzZVRfRnVsbF9CSVQgdG8KPj4gPiB0aGUKPj4gPiA+ID7CoMKg
+IEludGVsIFBIWSBBRFZFUlRJU0VfMjUwMF9GVUxMIGJpdCBleHBsaWNpdGVseS4KPj4gPiA+ID4K
+Pj4gPiA+ID4gLSBSYXRoZXIgdGhhbiBjaGVja2luZyB0aGUgYWN0dWFsIFBIWSBzZXR0aW5nLCB0
+aGUgCj4+IC5nZXRfbGlua19rc2V0dGluZ3MKPj4gPiA+ID7CoMKgIGZ1bmN0aW9uIGFsd2F5cyBm
+aWxscyBsaW5rX21vZGVzLmFkdmVydGlzaW5nIHdpdGggYWxsIGxpbmsgc3BlZWRzCj4+ID4gPiA+
+wqDCoCB0aGUgZGV2aWNlIGlzIGNhcGFibGUgb2YuCj4+ID4gPiA+Cj4+ID4gPiA+wqDCoCBGaXgg
+dGhpcyBieSBjaGVja2luZyB0aGUgUEhZIGF1dG9uZWdfYWR2ZXJ0aXNlZCBzZXR0aW5ncyBhbmQg
+Cj4+IHJlcG9ydAo+PiA+ID4gPsKgwqAgb25seSB0aGUgYWN0dWFsbHkgYWR2ZXJ0aXNlZCBzcGVl
+ZHMgdXAgdG8gZXRodG9vbC4KPj4gPiA+ID4KPj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQ29yaW5u
+YSBWaW5zY2hlbiA8dmluc2NoZW5AcmVkaGF0LmNvbT4KPj4gPiA+ID4gLS0tCj4+ID4gPiA+wqAg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19ldGh0b29sLmMgfCAyNCAKPj4gKysr
+KysrKysrKysrKysrLS0tLQo+PiA+IC0KPj4gPiA+ID7CoCAxIGZpbGUgY2hhbmdlZCwgMTggaW5z
+ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4gPiA+ID4KPj4gPiA+ID4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfZXRodG9vbC5jCj4+ID4gPiBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfZXRodG9vbC5jCj4+ID4gPiA+IGluZGV4
+IDYxZDMzMWNlMzhjZC4uNzVjYjRjYTM2YmFjIDEwMDY0NAo+PiA+ID4gPiAtLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX2V0aHRvb2wuYwo+PiA+ID4gPiArKysgYi9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX2V0aHRvb2wuYwo+PiA+ID4gPiBAQCAtMTY3
+NSwxMiArMTY3NSwxOCBAQCBzdGF0aWMgaW50Cj4+ID4gaWdjX2V0aHRvb2xfZ2V0X2xpbmtfa3Nl
+dHRpbmdzKHN0cnVjdAo+PiA+ID4gbmV0X2RldmljZSAqbmV0ZGV2LAo+PiA+ID4gPsKgwqDCoMKg
+wqAgY21kLT5iYXNlLnBoeV9hZGRyZXNzID0gaHctPnBoeS5hZGRyOwo+PiA+ID4gPgo+PiA+ID4g
+PsKgwqDCoMKgwqAgLyogYWR2ZXJ0aXNpbmcgbGluayBtb2RlcyAqLwo+PiA+ID4gPiAtwqDCoMKg
+IGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRkX2xpbmtfbW9kZShjbWQsIGFkdmVydGlzaW5nLCAK
+Pj4gMTBiYXNlVF9IYWxmKTsKPj4gPiA+ID4gLcKgwqDCoCBldGh0b29sX2xpbmtfa3NldHRpbmdz
+X2FkZF9saW5rX21vZGUoY21kLCBhZHZlcnRpc2luZywgCj4+IDEwYmFzZVRfRnVsbCk7Cj4+ID4g
+PiA+IC3CoMKgwqAgZXRodG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2RlKGNtZCwgYWR2
+ZXJ0aXNpbmcsCj4+ID4gPiAxMDBiYXNlVF9IYWxmKTsKPj4gPiA+ID4gLcKgwqDCoCBldGh0b29s
+X2xpbmtfa3NldHRpbmdzX2FkZF9saW5rX21vZGUoY21kLCBhZHZlcnRpc2luZywKPj4gPiA+IDEw
+MGJhc2VUX0Z1bGwpOwo+PiA+ID4gPiAtwqDCoMKgIGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRk
+X2xpbmtfbW9kZShjbWQsIGFkdmVydGlzaW5nLAo+PiA+ID4gMTAwMGJhc2VUX0Z1bGwpOwo+PiA+
+ID4gPiAtwqDCoMKgIGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRkX2xpbmtfbW9kZShjbWQsIGFk
+dmVydGlzaW5nLAo+PiA+ID4gMjUwMGJhc2VUX0Z1bGwpOwo+PiA+ID4gPiArwqDCoMKgIGlmICho
+dy0+cGh5LmF1dG9uZWdfYWR2ZXJ0aXNlZCAmIEFEVkVSVElTRV8xMF9IQUxGKQo+PiA+ID4gPiAr
+wqDCoMKgwqDCoMKgwqAgZXRodG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2RlKGNtZCwg
+YWR2ZXJ0aXNpbmcsCj4+ID4gPiAxMGJhc2VUX0hhbGYpOwo+PiA+ID4gPiArwqDCoMKgIGlmICho
+dy0+cGh5LmF1dG9uZWdfYWR2ZXJ0aXNlZCAmIEFEVkVSVElTRV8xMF9GVUxMKQo+PiA+ID4gPiAr
+wqDCoMKgwqDCoMKgwqAgZXRodG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2RlKGNtZCwg
+YWR2ZXJ0aXNpbmcsCj4+ID4gPiAxMGJhc2VUX0Z1bGwpOwo+PiA+ID4gPiArwqDCoMKgIGlmICho
+dy0+cGh5LmF1dG9uZWdfYWR2ZXJ0aXNlZCAmIEFEVkVSVElTRV8xMDBfSEFMRikKPj4gPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgIGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRkX2xpbmtfbW9kZShjbWQs
+IGFkdmVydGlzaW5nLAo+PiA+ID4gMTAwYmFzZVRfSGFsZik7Cj4+ID4gPiA+ICvCoMKgwqAgaWYg
+KGh3LT5waHkuYXV0b25lZ19hZHZlcnRpc2VkICYgQURWRVJUSVNFXzEwMF9GVUxMKQo+PiA+ID4g
+PiArwqDCoMKgwqDCoMKgwqAgZXRodG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2RlKGNt
+ZCwgYWR2ZXJ0aXNpbmcsCj4+ID4gPiAxMDBiYXNlVF9GdWxsKTsKPj4gPiA+ID4gK8KgwqDCoCBp
+ZiAoaHctPnBoeS5hdXRvbmVnX2FkdmVydGlzZWQgJiBBRFZFUlRJU0VfMTAwMF9GVUxMKQo+PiA+
+ID4gPiArwqDCoMKgwqDCoMKgwqAgZXRodG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2Rl
+KGNtZCwgYWR2ZXJ0aXNpbmcsCj4+ID4gPiAxMDAwYmFzZVRfRnVsbCk7Cj4+ID4gPiA+ICvCoMKg
+wqAgaWYgKGh3LT5waHkuYXV0b25lZ19hZHZlcnRpc2VkICYgQURWRVJUSVNFXzI1MDBfRlVMTCkK
+Pj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgIGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRkX2xpbmtf
+bW9kZShjbWQsIGFkdmVydGlzaW5nLAo+PiA+ID4gMjUwMGJhc2VUX0Z1bGwpOwo+PiA+ID4gPgo+
+PiA+ID4gPsKgwqDCoMKgwqAgLyogc2V0IGF1dG9uZWcgc2V0dGluZ3MgKi8KPj4gPiA+ID7CoMKg
+wqDCoMKgIGlmIChody0+bWFjLmF1dG9uZWcgPT0gMSkgewo+PiA+ID4gPiBAQCAtMTc5Miw2ICsx
+Nzk4LDEyIEBAIGlnY19ldGh0b29sX3NldF9saW5rX2tzZXR0aW5ncyhzdHJ1Y3QKPj4gPiBuZXRf
+ZGV2aWNlCj4+ID4gPiAqbmV0ZGV2LAo+PiA+ID4gPgo+PiA+ID4gPsKgwqDCoMKgwqAgZXRodG9v
+bF9jb252ZXJ0X2xpbmtfbW9kZV90b19sZWdhY3lfdTMyKCZhZHZlcnRpc2luZywKPj4gPiA+ID7C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjbWQtPmxp
+bmtfbW9kZXMuYWR2ZXJ0aXNpbmcpOwo+PiA+ID4gPiArwqDCoMKgIC8qIENvbnZlcnRpbmcgdG8g
+bGVnYWN5IHUzMiBkcm9wcwo+PiA+ID4gRVRIVE9PTF9MSU5LX01PREVfMjUwMGJhc2VUX0Z1bGxf
+QklULgo+PiA+ID4gPiArwqDCoMKgwqAgKiBXZSBoYXZlIHRvIGNoZWNrIHRoaXMgYW5kIGNvbnZl
+cnQgaXQgdG8gQURWRVJUSVNFXzI1MDBfRlVMTAo+PiA+ID4gPiArwqDCoMKgwqAgKiAoYWthIEVU
+SFRPT0xfTElOS19NT0RFXzI1MDBiYXNlWF9GdWxsX0JJVCkgZXhwbGljaXRlbHkuCj4+ID4gPiA+
+ICvCoMKgwqDCoCAqLwo+PiA+ID4gPiArwqDCoMKgIGlmIChldGh0b29sX2xpbmtfa3NldHRpbmdz
+X3Rlc3RfbGlua19tb2RlKGNtZCwgYWR2ZXJ0aXNpbmcsCj4+ID4gPiAyNTAwYmFzZVRfRnVsbCkp
+Cj4+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoCBhZHZlcnRpc2luZyB8PSBBRFZFUlRJU0VfMjUwMF9G
+VUxMOwo+PiA+ID4gPgo+PiA+ID4gPsKgwqDCoMKgwqAgaWYgKGNtZC0+YmFzZS5hdXRvbmVnID09
+IEFVVE9ORUdfRU5BQkxFKSB7Cj4+ID4gPiA+wqDCoMKgwqDCoMKgwqDCoMKgIGh3LT5tYWMuYXV0
+b25lZyA9IDE7Cj4+ID4gPiA+IC0tCj4+ID4gPiA+IDIuMjcuMAo+PiA+ID4gPgo+PiA+ID4gPiBf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiA+ID4gPiBJ
+bnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4+ID4gPiA+IEludGVsLXdpcmVkLWxhbkBvc3Vv
+c2wub3JnCj4+ID4gPiA+IGh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2ludGVsLXdpcmVkLWxhbgo+PiA+ID4KPj4gPiA+IC0tLS0tIEVuZCBmb3J3YXJkZWQgbWVzc2Fn
+ZSAtLS0tLQo+Pgo+IApUZXN0ZWQtYnk6IER2b3JhIEZ1eGJydW1lciA8ZHZvcmF4LmZ1eGJydW1l
+ckBsaW51eC5pbnRlbC5jb20+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9z
+dW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwt
+d2lyZWQtbGFuCg==
