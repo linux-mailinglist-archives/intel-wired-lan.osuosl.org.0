@@ -1,55 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52DB33106F9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Feb 2021 09:49:12 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CF5531074B
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Feb 2021 10:09:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0EB3586D36;
-	Fri,  5 Feb 2021 08:49:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3318A20390;
+	Fri,  5 Feb 2021 09:09:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ANtqiidokz3l; Fri,  5 Feb 2021 08:49:10 +0000 (UTC)
+	with ESMTP id m09KIO+pi0I2; Fri,  5 Feb 2021 09:09:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DC49786D96;
-	Fri,  5 Feb 2021 08:49:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4BE2E203A9;
+	Fri,  5 Feb 2021 09:09:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A344D1C113E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 08:49:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EA9E71BF383
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 09:09:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9ED6C86D36
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 08:49:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D896520392
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 09:09:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M5Ym5yLOZ6xT for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Feb 2021 08:49:06 +0000 (UTC)
+ with ESMTP id wSdfyQ8mFl+M for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Feb 2021 09:09:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6369086D0C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 08:49:06 +0000 (UTC)
-IronPort-SDR: oUugoZaMJHadN32YMIYtghbIACw0hcLhpRDi9J7MDv/rzXeTx5dVIbGNPm+Fpr7bD/4ddlFstB
- BOm74N/suNkA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9885"; a="168519998"
-X-IronPort-AV: E=Sophos;i="5.81,154,1610438400"; d="scan'208";a="168519998"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2021 00:49:04 -0800
-IronPort-SDR: l3MpYBtV6j/i9aFxUuz1HSHTi/Vd7RTKdOJAI+lwfDmyuSI2qPI7bqA8uEpy0OMkYxXShXWYwO
- t0IGk96JWmCQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,154,1610438400"; d="scan'208";a="415956695"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by FMSMGA003.fm.intel.com with ESMTP; 05 Feb 2021 00:49:02 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  5 Feb 2021 08:48:52 +0000
-Message-Id: <20210205084852.28545-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix endianness conversions
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com
+ [209.85.128.48])
+ by silver.osuosl.org (Postfix) with ESMTPS id AA61320390
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Feb 2021 09:09:16 +0000 (UTC)
+Received: by mail-wm1-f48.google.com with SMTP id t142so3197583wmt.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 05 Feb 2021 01:09:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Y49irSyVfNAggSfPuZlywntYMQM69bQ0nbpSgVeCqwg=;
+ b=E6m6zB9zS79rjFw3qcouP+OcVhvqtsx9x9yFyu1rn9voNv3OYbL2LO/UJQ7JCNpi78
+ jtxxWEY0ln1OWMSlrchT5KCqEbNPAn+Lryaowiykdijz5cHLWGVaumk0+Wj4e+UQA+Dx
+ 7sl59RTHd6nDNAK68yXez/E6jEFL62cOE3ULbAGi1DUHCZAyqKMZ3MczZ1evP9yDZOWN
+ kHc9tBjEh+jvZsEhdCh5TVUTwfqpX3cEFYCBEUTKzdU1Xs4uI9CJkYnwZOSX9yAuDxXj
+ F/Lax+/rc3OXYUwl4rOxuLZEw02UwcF0rxHRdPnoLSP1FqIX3ZVfsVpi8wx5lqUdUYlJ
+ 6tpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Y49irSyVfNAggSfPuZlywntYMQM69bQ0nbpSgVeCqwg=;
+ b=YKJuicKTiYuy6sOdRSaOxTU4kORwtGDFiEZ/EVE5hJ5a/YS3f/WLV1gPEPQkJQG0WG
+ f492DizIufp0hDRhC18w2Of1DfXNGulQJHafOotULa41GtpLBFkCbXNYop966ZJB++MI
+ OWO1B8oC6lpuqjBqEaqNZ4WfAYQEUhbpkdVHnKyB+ShbrKO6m7upe5nLXuK0mMuy5R2e
+ hW6+gm0syDszWHOrqCdmyLATGFcw1kUDVjuP4wStk1CTsxqJROPmNY06sMeSaAuTcQlr
+ WtZDPNpaHylIY5uhTuGQfYw3I1d0jwHUvxFs2ksPFIIDOxwqY/tZUCZaLixwK3FNh+cw
+ rVSg==
+X-Gm-Message-State: AOAM532NATA6f4YM8+hWV7+XImgmdvxLBPnQedZ2pbABRnzjq8SNZsws
+ Hy3GacLtvsK7znjKAl7Kdzc=
+X-Google-Smtp-Source: ABdhPJwu4v/5tQ36DQC1YUXwLOZ5KqJ8afUsQfNHnQiskbGkBQbW0cvZb/iUI2DCkl/QGEKXcm2tdw==
+X-Received: by 2002:a1c:6a09:: with SMTP id f9mr2677492wmc.104.1612516154986; 
+ Fri, 05 Feb 2021 01:09:14 -0800 (PST)
+Received: from localhost.localdomain (h-47-246.A165.priv.bahnhof.se.
+ [46.59.47.246])
+ by smtp.gmail.com with ESMTPSA id g16sm7950303wmi.30.2021.02.05.01.09.13
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 05 Feb 2021 01:09:14 -0800 (PST)
+From: Magnus Karlsson <magnus.karlsson@gmail.com>
+To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
+ intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ maciej.fijalkowski@intel.com, maciejromanfijalkowski@gmail.com
+Date: Fri,  5 Feb 2021 10:09:04 +0100
+Message-Id: <20210205090904.20794-1-magnus.karlsson@gmail.com>
+X-Mailer: git-send-email 2.29.0
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH intel-net] ice: fix napi work done
+ reporting in xsk path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,112 +87,108 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Norbert Ciosek <norbertx.ciosek@intel.com>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Norbert Ciosek <norbertx.ciosek@intel.com>
+From: Magnus Karlsson <magnus.karlsson@intel.com>
 
-Fixes the following sparse warnings:
-i40e_main.c:5953:32: warning: cast from restricted __le16
-i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
-i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
-i40e_main.c:8008:29:    got restricted __le32 [usertype]
-i40e_main.c:8008:29: warning: incorrect type in assignment (different base types)
-i40e_main.c:8008:29:    expected unsigned int [assigned] [usertype] ipa
-i40e_main.c:8008:29:    got restricted __le32 [usertype]
-i40e_txrx.c:1950:59: warning: incorrect type in initializer (different base types)
-i40e_txrx.c:1950:59:    expected unsigned short [usertype] vlan_tag
-i40e_txrx.c:1950:59:    got restricted __le16 [usertype] l2tag1
-i40e_txrx.c:1953:40: warning: cast to restricted __le16
-i40e_xsk.c:448:38: warning: invalid assignment: |=
-i40e_xsk.c:448:38:    left side has type restricted __le64
-i40e_xsk.c:448:38:    right side has type int
+Fix the wrong napi work done reporting in the xsk path of the ice
+driver. The code in the main Rx processing loop was written to assume
+that the buffer allocation code returns true if all allocations where
+successful and false if not. In contrast with all other Intel NIC xsk
+drivers, the ice_alloc_rx_bufs_zc() has the inverted logic messing up
+the work done reporting in the napi loop.
 
-Fixes: 2f4b411a3d67 ("i40e: Enable cloud filters via tc-flower")
-Fixes: 2a508c64ad27 ("i40e: fix VLAN.TCI == 0 RX HW offload")
-Fixes: 3106c580fb7c ("i40e: Use batched xsk Tx interfaces to increase performance")
-Fixes: 8f88b3034db3 ("i40e: Add infrastructure for queue channel support")
-Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
+This can be fixed either by inverting the return value from
+ice_alloc_rx_bufs_zc() in the function that uses this in an incorrect
+way, or by changing the return value of ice_alloc_rx_bufs_zc(). We
+chose the latter as it makes all the xsk allocation functions for
+Intel NICs behave in the same way. My guess is that it was this
+unexpected discrepancy that gave rise to this bug in the first place.
+
+Fixes: 5bb0c4b5eb61 ("ice, xsk: Move Rx allocation out of while-loop")
+Reported-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 12 ++++++------
- drivers/net/ethernet/intel/i40e/i40e_txrx.c |  2 +-
- drivers/net/ethernet/intel/i40e/i40e_xsk.c  |  2 +-
- 3 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_base.c |  6 ++++--
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 10 +++++-----
+ 2 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 3ed7f0e..db3a9cc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -5950,7 +5950,7 @@ static int i40e_add_channel(struct i40e_pf *pf, u16 uplink_seid,
- 	ch->enabled_tc = !i40e_is_channel_macvlan(ch) && enabled_tc;
- 	ch->seid = ctxt.seid;
- 	ch->vsi_number = ctxt.vsi_number;
--	ch->stat_counter_idx = cpu_to_le16(ctxt.info.stat_counter_idx);
-+	ch->stat_counter_idx = le16_to_cpu(ctxt.info.stat_counter_idx);
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 3124a3bf519a..952e41a1e001 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -418,6 +418,8 @@ int ice_setup_rx_ctx(struct ice_ring *ring)
+ 	writel(0, ring->tail);
  
- 	/* copy just the sections touched not the entire info
- 	 * since not all sections are valid as returned by
-@@ -7990,8 +7990,8 @@ static inline void
- i40e_set_cld_element(struct i40e_cloud_filter *filter,
- 		     struct i40e_aqc_cloud_filters_element_data *cld)
- {
--	int i, j;
- 	u32 ipa;
-+	int i;
- 
- 	memset(cld, 0, sizeof(*cld));
- 	ether_addr_copy(cld->outer_mac, filter->dst_mac);
-@@ -8002,14 +8002,14 @@ i40e_set_cld_element(struct i40e_cloud_filter *filter,
- 
- 	if (filter->n_proto == ETH_P_IPV6) {
- #define IPV6_MAX_INDEX	(ARRAY_SIZE(filter->dst_ipv6) - 1)
--		for (i = 0, j = 0; i < ARRAY_SIZE(filter->dst_ipv6);
--		     i++, j += 2) {
-+		for (i = 0; i < ARRAY_SIZE(filter->dst_ipv6); i++) {
- 			ipa = be32_to_cpu(filter->dst_ipv6[IPV6_MAX_INDEX - i]);
--			ipa = cpu_to_le32(ipa);
--			memcpy(&cld->ipaddr.raw_v6.data[j], &ipa, sizeof(ipa));
+ 	if (ring->xsk_pool) {
++		bool ok;
 +
-+			*(__le32 *)&cld->ipaddr.raw_v6.data[i * 2] = cpu_to_le32(ipa);
+ 		if (!xsk_buff_can_alloc(ring->xsk_pool, num_bufs)) {
+ 			dev_warn(dev, "XSK buffer pool does not provide enough addresses to fill %d buffers on Rx ring %d\n",
+ 				 num_bufs, ring->q_index);
+@@ -426,8 +428,8 @@ int ice_setup_rx_ctx(struct ice_ring *ring)
+ 			return 0;
  		}
- 	} else {
- 		ipa = be32_to_cpu(filter->dst_ipv4);
-+
- 		memcpy(&cld->ipaddr.v4.data, &ipa, sizeof(ipa));
+ 
+-		err = ice_alloc_rx_bufs_zc(ring, num_bufs);
+-		if (err)
++		ok = ice_alloc_rx_bufs_zc(ring, num_bufs);
++		if (!ok)
+ 			dev_info(dev, "Failed to allocate some buffers on XSK buffer pool enabled Rx ring %d (pf_q %d)\n",
+ 				 ring->q_index, pf_q);
+ 		return 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 1782146db644..69ee1a8e87ab 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -408,18 +408,18 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+  * This function allocates a number of Rx buffers from the fill ring
+  * or the internal recycle mechanism and places them on the Rx ring.
+  *
+- * Returns false if all allocations were successful, true if any fail.
++ * Returns true if all allocations were successful, false if any fail.
+  */
+ bool ice_alloc_rx_bufs_zc(struct ice_ring *rx_ring, u16 count)
+ {
+ 	union ice_32b_rx_flex_desc *rx_desc;
+ 	u16 ntu = rx_ring->next_to_use;
+ 	struct ice_rx_buf *rx_buf;
+-	bool ret = false;
++	bool ok = true;
+ 	dma_addr_t dma;
+ 
+ 	if (!count)
+-		return false;
++		return true;
+ 
+ 	rx_desc = ICE_RX_DESC(rx_ring, ntu);
+ 	rx_buf = &rx_ring->rx_buf[ntu];
+@@ -427,7 +427,7 @@ bool ice_alloc_rx_bufs_zc(struct ice_ring *rx_ring, u16 count)
+ 	do {
+ 		rx_buf->xdp = xsk_buff_alloc(rx_ring->xsk_pool);
+ 		if (!rx_buf->xdp) {
+-			ret = true;
++			ok = false;
+ 			break;
+ 		}
+ 
+@@ -452,7 +452,7 @@ bool ice_alloc_rx_bufs_zc(struct ice_ring *rx_ring, u16 count)
+ 		ice_release_rx_desc(rx_ring, ntu);
  	}
  
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 15feecd..c7759cb 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1948,7 +1948,7 @@ void i40e_process_skb_fields(struct i40e_ring *rx_ring,
- 	skb_record_rx_queue(skb, rx_ring->queue_index);
- 
- 	if (qword & BIT(I40E_RX_DESC_STATUS_L2TAG1P_SHIFT)) {
--		u16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
-+		__le16 vlan_tag = rx_desc->wb.qword0.lo_dword.l2tag1;
- 
- 		__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
- 				       le16_to_cpu(vlan_tag));
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index b42300b..df1ec8c 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -457,7 +457,7 @@ static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
- 	struct i40e_tx_desc *tx_desc;
- 
- 	tx_desc = I40E_TX_DESC(xdp_ring, ntu);
--	tx_desc->cmd_type_offset_bsz |= (I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
-+	tx_desc->cmd_type_offset_bsz |= cpu_to_le64(I40E_TX_DESC_CMD_RS << I40E_TXD_QW1_CMD_SHIFT);
+-	return ret;
++	return ok;
  }
  
  /**
+
+base-commit: b3d2c7b876d450e1d2624fd67658acc96465a9e6
 -- 
-2.17.1
+2.29.0
 
 _______________________________________________
 Intel-wired-lan mailing list
