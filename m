@@ -1,55 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D8543146AC
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Feb 2021 03:58:12 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27FEF3146AF
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Feb 2021 03:58:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 263FD87241;
-	Tue,  9 Feb 2021 02:58:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4270B6F484
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Feb 2021 02:58:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WC+b+BiGOAAL; Tue,  9 Feb 2021 02:58:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1cr83vjk7fS7 for <lists+intel-wired-lan@lfdr.de>;
+	Tue,  9 Feb 2021 02:58:40 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 09C6A6F892; Tue,  9 Feb 2021 02:58:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C19FC87253;
-	Tue,  9 Feb 2021 02:58:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CBD206F890;
+	Tue,  9 Feb 2021 02:58:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 835FF1BF59F
- for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E0D301BF59F
+ for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7B13887249
- for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DD5D186D78
+ for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ufDePkwSehxh for <intel-wired-lan@osuosl.org>;
- Tue,  9 Feb 2021 02:58:08 +0000 (UTC)
+ with ESMTP id MWy9U3zmpsQD for <intel-wired-lan@osuosl.org>;
+ Tue,  9 Feb 2021 02:58:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BA82787241
- for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:08 +0000 (UTC)
-IronPort-SDR: 4pAV95JDkvhCXbF6EIt04/mIJr3KcP5tlV77XS5DkS4qDMkE/zY3ynE2wnyPUte8DGjtaEnJix
- v3cwE0qNcNfg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9889"; a="181963306"
-X-IronPort-AV: E=Sophos;i="5.81,163,1610438400"; d="scan'208";a="181963306"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D17F386A28
+ for <intel-wired-lan@osuosl.org>; Tue,  9 Feb 2021 02:58:17 +0000 (UTC)
+IronPort-SDR: KKUf8X+D6Y8bAxumosh+9N80y8VKazSZMdKtLGPwhFPKszHw0BBI/WWBtiQbFJh4Rm029YKYvD
+ dWtS4qI5xAfA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9889"; a="245888649"
+X-IronPort-AV: E=Sophos;i="5.81,163,1610438400"; d="scan'208";a="245888649"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Feb 2021 18:58:07 -0800
-IronPort-SDR: aVaxxD4oAameVORKxnCVrVtrWR40fwDzr9xlOQ+Qj9q+alVZ2NHlR5PBssAzZ1HgQzlVOgBcMT
- jOpiRAOLd2VQ==
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Feb 2021 18:58:17 -0800
+IronPort-SDR: FgEBwz5RLYyxM+SJPscXzqXfxY+lWMDG8WtSxuDUaQwRpU67J5LMHnv/JzR5zc58Ep2E8G6mue
+ Sf66u5V1bsyQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,163,1610438400"; d="scan'208";a="374799145"
+X-IronPort-AV: E=Sophos;i="5.81,163,1610438400"; d="scan'208";a="374799192"
 Received: from otc-cfl-ubuntu-15.jf.intel.com ([10.54.31.57])
- by orsmga002.jf.intel.com with ESMTP; 08 Feb 2021 18:58:07 -0800
+ by orsmga002.jf.intel.com with ESMTP; 08 Feb 2021 18:58:16 -0800
 From: Vedang Patel <vedang.patel@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Mon,  8 Feb 2021 18:41:32 -0800
-Message-Id: <20210209024141.23298-1-vedang.patel@intel.com>
+Date: Mon,  8 Feb 2021 18:41:33 -0800
+Message-Id: <20210209024141.23298-2-vedang.patel@intel.com>
 X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net-next v5 0/9]  igc: Add XDP support
+In-Reply-To: <20210209024141.23298-1-vedang.patel@intel.com>
+References: <20210209024141.23298-1-vedang.patel@intel.com>
+Subject: [Intel-wired-lan] [PATCH net-next v5 1/9] igc: Fix
+ igc_ptp_rx_pktstamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,63 +68,139 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Andre Guedes <andre.guedes@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi all,
+From: Andre Guedes <andre.guedes@intel.com>
 
-This is the fifth version of this series which adds XDP support
-to igc driver.
+The comment describing the timestamps layout in the packet buffer is
+wrong and the code is actually retrieving the timestamp in Timer 1
+reference instead of Timer 0. This hasn't been a big issue so far
+because hardware is configured to report both timestamps using Timer 0
+(see IGC_SRRCTL register configuration in igc_ptp_enable_rx_timestamp()
+helper). This patch fixes the comment and the code so we retrieve the
+timestamp in Timer 0 reference as expected.
 
-Changes from v4 are:
+This patch also takes the opportunity to get rid of the hw.mac.type check
+since it is not required.
 
-    - In igc_configure_rx_ring(), clear large buffer bit after calling
-      dma_unmap_page_attrs(). dma_unmap_page_attrs() needs the buffer
-      size in order to unmap the page.
+Fixes: 81b055205e8ba ("igc: Add support for RX timestamping")
+Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Vedang Patel <vedang.patel@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h     |  2 +-
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 72 +++++++++++++-----------
+ 2 files changed, 41 insertions(+), 33 deletions(-)
 
-v4 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201104031210.27772-1-andre.guedes@intel.com/
-
-v3 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201030210351.46482-1-andre.guedes@intel.com/
-
-v2 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201028201943.93147-1-andre.guedes@intel.com/
-
-v1 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201009025349.4037-1-andre.guedes@intel.com/
-
-Thanks,
-Vedang
-
-Andre Guedes (9):
-  igc: Fix igc_ptp_rx_pktstamp()
-  igc: Remove unused argument from igc_tx_cmd_type()
-  igc: Introduce igc_rx_buffer_flip() helper
-  igc: Introduce igc_get_rx_frame_truesize() helper
-  igc: Refactor Rx timestamp handling
-  igc: Add set/clear large buffer helpers
-  igc: Add initial XDP support
-  igc: Add support for XDP_TX action
-  igc: Add support for XDP_REDIRECT action
-
- drivers/net/ethernet/intel/igc/Makefile   |   2 +-
- drivers/net/ethernet/intel/igc/igc.h      |  18 +-
- drivers/net/ethernet/intel/igc/igc_main.c | 435 +++++++++++++++++++---
- drivers/net/ethernet/intel/igc/igc_ptp.c  |  87 +++--
- drivers/net/ethernet/intel/igc/igc_xdp.c  |  60 +++
- drivers/net/ethernet/intel/igc/igc_xdp.h  |  13 +
- 6 files changed, 515 insertions(+), 100 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.c
- create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.h
-
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 873f6c0221a8..153e3276207e 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -546,7 +546,7 @@ void igc_ptp_init(struct igc_adapter *adapter);
+ void igc_ptp_reset(struct igc_adapter *adapter);
+ void igc_ptp_suspend(struct igc_adapter *adapter);
+ void igc_ptp_stop(struct igc_adapter *adapter);
+-void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
++void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, u32 *va,
+ 			 struct sk_buff *skb);
+ int igc_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
+ int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index ac0b9c85da7c..b6a640bfc991 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -152,46 +152,54 @@ static void igc_ptp_systim_to_hwtstamp(struct igc_adapter *adapter,
+ }
+ 
+ /**
+- * igc_ptp_rx_pktstamp - retrieve Rx per packet timestamp
++ * igc_ptp_rx_pktstamp - Retrieve timestamp from Rx packet buffer
+  * @q_vector: Pointer to interrupt specific structure
+  * @va: Pointer to address containing Rx buffer
+  * @skb: Buffer containing timestamp and packet
+  *
+- * This function is meant to retrieve the first timestamp from the
+- * first buffer of an incoming frame. The value is stored in little
+- * endian format starting on byte 0. There's a second timestamp
+- * starting on byte 8.
+- **/
+-void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
++ * This function retrieves the timestamp saved in the beginning of packet
++ * buffer. While two timestamps are available, one in timer0 reference and the
++ * other in timer1 reference, this function considers only the timestamp in
++ * timer0 reference.
++ */
++void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, u32 *va,
+ 			 struct sk_buff *skb)
+ {
+ 	struct igc_adapter *adapter = q_vector->adapter;
+-	__le64 *regval = (__le64 *)va;
+-	int adjust = 0;
+-
+-	/* The timestamp is recorded in little endian format.
+-	 * DWORD: | 0          | 1           | 2          | 3
+-	 * Field: | Timer0 Low | Timer0 High | Timer1 Low | Timer1 High
++	u64 regval;
++	int adjust;
++
++	/* Timestamps are saved in little endian at the beginning of the packet
++	 * buffer following the layout:
++	 *
++	 * DWORD: | 0              | 1              | 2              | 3              |
++	 * Field: | Timer1 SYSTIML | Timer1 SYSTIMH | Timer0 SYSTIML | Timer0 SYSTIMH |
++	 *
++	 * SYSTIML holds the nanoseconds part while SYSTIMH holds the seconds
++	 * part of the timestamp.
+ 	 */
+-	igc_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb),
+-				   le64_to_cpu(regval[0]));
+-
+-	/* adjust timestamp for the RX latency based on link speed */
+-	if (adapter->hw.mac.type == igc_i225) {
+-		switch (adapter->link_speed) {
+-		case SPEED_10:
+-			adjust = IGC_I225_RX_LATENCY_10;
+-			break;
+-		case SPEED_100:
+-			adjust = IGC_I225_RX_LATENCY_100;
+-			break;
+-		case SPEED_1000:
+-			adjust = IGC_I225_RX_LATENCY_1000;
+-			break;
+-		case SPEED_2500:
+-			adjust = IGC_I225_RX_LATENCY_2500;
+-			break;
+-		}
++	regval = le32_to_cpu(va[2]);
++	regval |= (u64)le32_to_cpu(va[3]) << 32;
++	igc_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb), regval);
++
++	/* Adjust timestamp for the RX latency based on link speed */
++	switch (adapter->link_speed) {
++	case SPEED_10:
++		adjust = IGC_I225_RX_LATENCY_10;
++		break;
++	case SPEED_100:
++		adjust = IGC_I225_RX_LATENCY_100;
++		break;
++	case SPEED_1000:
++		adjust = IGC_I225_RX_LATENCY_1000;
++		break;
++	case SPEED_2500:
++		adjust = IGC_I225_RX_LATENCY_2500;
++		break;
++	default:
++		adjust = 0;
++		netdev_warn_once(adapter->netdev, "Imprecise timestamp\n");
++		break;
+ 	}
+ 	skb_hwtstamps(skb)->hwtstamp =
+ 		ktime_sub_ns(skb_hwtstamps(skb)->hwtstamp, adjust);
 -- 
 2.17.1
 
