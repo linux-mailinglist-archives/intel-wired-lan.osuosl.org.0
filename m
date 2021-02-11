@@ -1,62 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 691293182DF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Feb 2021 02:05:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A23EF318300
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Feb 2021 02:19:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 05EB686D08;
-	Thu, 11 Feb 2021 01:05:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 37F8B86DBC;
+	Thu, 11 Feb 2021 01:19:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oV85WtRAvw20; Thu, 11 Feb 2021 01:05:30 +0000 (UTC)
+	with ESMTP id SZfHIhekwX0R; Thu, 11 Feb 2021 01:19:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A42E486D15;
-	Thu, 11 Feb 2021 01:05:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 48B92871A5;
+	Thu, 11 Feb 2021 01:19:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 59D871BF310
- for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:05:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 09ABB1BF310
+ for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:19:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 472A56F526
- for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:05:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 02B6786DBC
+ for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:19:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GddbDJHJy1Ji for <intel-wired-lan@osuosl.org>;
- Thu, 11 Feb 2021 01:05:24 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 4ED0F6F5DE; Thu, 11 Feb 2021 01:05:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from whitealder.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DtH2PoUbkUAT for <intel-wired-lan@osuosl.org>;
+ Thu, 11 Feb 2021 01:19:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 58B636F501
- for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:05:22 +0000 (UTC)
-IronPort-SDR: VvtVXsFUhjVkKr9uZ9CyCVlXhMqVc2eNxKgJuerCKk55LrE9mPf+KYtNuNmGsVm5SUGmeBfJlF
- 1Kk8CBTS5Q5A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9891"; a="246243706"
-X-IronPort-AV: E=Sophos;i="5.81,169,1610438400"; d="scan'208";a="246243706"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A619986E97
+ for <intel-wired-lan@osuosl.org>; Thu, 11 Feb 2021 01:19:07 +0000 (UTC)
+IronPort-SDR: VSD0lhGFVGc3xJYYOl0go18wRR4fQgabgAXwJcT5jgTaTmSS8kWR9h2lDTa0TtoOumHooyEATD
+ Y3u3VtVdpAog==
+X-IronPort-AV: E=McAfee;i="6000,8403,9891"; a="246245252"
+X-IronPort-AV: E=Sophos;i="5.81,169,1610438400"; d="scan'208";a="246245252"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Feb 2021 17:05:21 -0800
-IronPort-SDR: l5sJ99nIizG6CrT1gGoK2D3t4k4kKq/VDJBDiYg5+Z5g/QCNL5QoStmJxqxOu3SWMpHsxqxY3+
- ZBgWwGF77Ckw==
+ 10 Feb 2021 17:19:07 -0800
+IronPort-SDR: kJ4OxFRz5TbedyAufG/ZK4WAop4vT5qEJ7XVAKv68zpC0iV070Fb7NMi8gdTZYABbYzK7QZMsq
+ QN/icKjaZpQQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,169,1610438400"; d="scan'208";a="414340702"
+X-IronPort-AV: E=Sophos;i="5.81,169,1610438400"; d="scan'208";a="397033243"
 Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga004.fm.intel.com with ESMTP; 10 Feb 2021 17:05:20 -0800
-Date: Thu, 11 Feb 2021 01:55:47 +0100
+ by orsmga008.jf.intel.com with ESMTP; 10 Feb 2021 17:19:00 -0800
+Date: Thu, 11 Feb 2021 02:09:09 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: Vedang Patel <vedang.patel@intel.com>
-Message-ID: <20210211005547.GB44042@ranger.igk.intel.com>
+Message-ID: <20210211010909.GC44042@ranger.igk.intel.com>
 References: <20210209024243.23406-1-vedang.patel@intel.com>
- <20210209024243.23406-9-vedang.patel@intel.com>
+ <20210209024243.23406-10-vedang.patel@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210209024243.23406-9-vedang.patel@intel.com>
+In-Reply-To: <20210209024243.23406-10-vedang.patel@intel.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 8/9] igc: Enable RX via
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 9/9] igc: Enable TX via
  AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -76,148 +74,107 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 08, 2021 at 06:42:42PM -0800, Vedang Patel wrote:
+On Mon, Feb 08, 2021 at 06:42:43PM -0800, Vedang Patel wrote:
 > From: Andre Guedes <andre.guedes@intel.com>
 > 
-> Add support for receiving packets via AF_XDP zero-copy mechanism.
+> Add support for transmitting packets via AF_XDP zero-copy mechanism.
 > 
-> A new flag is added to 'enum igc_ring_flags_t' to indicate the ring has
-> AF_XDP zero-copy enabled so proper ring setup is carried out during ring
-> configuration in igc_configure_rx_ring().
-
-I'm still stubborn when it comes to imperative mood usage in commit
-messages :P so a kind reminder to apply that.
-
-'A new flag is added' -> 'Add a new flag'
-
-Not a big deal though.
-
+> The packet transmission itself is implemented by igc_xdp_xmit_zc() which
+> is called from igc_clean_tx_irq() when the ring has AF_XDP zero-copy
+> enabled. Likewise i40e and ice drivers, the transmission budget used is
+> the number of descriptors available on the ring.
 > 
-> RX buffers can now be allocated via the shared pages mechanism (default
-> behavior of the driver) or via xsk pool (when AF_XDP zero-copy is
-> enabled) so a union is added to the 'struct igc_rx_buffer' to cover both
-> cases.
+> A new tx buffer type is introduced to 'enum igc_tx_buffer_type' to
+> indicate the tx buffer uses memory from xsk pool so it can be properly
+> cleaned after transmission or when the ring is cleaned.
 > 
-> When AF_XDP zero-copy is enabled, rx buffers are allocated from the xsk
-> pool using the new helper igc_alloc_rx_buffers_zc() which is the
-> counterpart of igc_alloc_rx_buffers().
-> 
-> Likewise other Intel drivers that support AF_XDP zero-copy, in igc we
-> have a dedicated path for cleaning up rx irqs when zero-copy is enabled.
-> This avoids adding too many checks within igc_clean_rx_irq(), resulting
-> in a more readable and efficient code since this function is called from
-> the hot-path of the driver.
+> The I225 controller has only 4 Tx hardware queues so the main difference
+> between igc and other Intel drivers that support AF_XDP zero-copy is
+> that there is no tx ring dedicated exclusively to XDP. Instead, tx
+> rings are shared between the network stack and XDP, and netdev queue
+> lock is used to ensure mutual exclusion. This is the same approach
+> implemented to support XDP_TX and XDP_REDIRECT actions.
 > 
 > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 > Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc.h      |  22 +-
+>  drivers/net/ethernet/intel/igc/igc.h      |   3 +
 >  drivers/net/ethernet/intel/igc/igc_base.h |   1 +
->  drivers/net/ethernet/intel/igc/igc_main.c | 336 +++++++++++++++++++++-
->  drivers/net/ethernet/intel/igc/igc_xdp.c  |  98 +++++++
->  drivers/net/ethernet/intel/igc/igc_xdp.h  |   2 +
->  5 files changed, 440 insertions(+), 19 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_main.c | 115 +++++++++++++++++++++-
+>  drivers/net/ethernet/intel/igc/igc_xdp.c  |  20 +++-
+>  4 files changed, 131 insertions(+), 8 deletions(-)
 > 
 
 [...]
 
-> +
-> +static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
+>  
+> +static void igc_xdp_xmit_zc(struct igc_ring *ring)
 > +{
-> +	struct igc_adapter *adapter = q_vector->adapter;
-> +	struct igc_ring *ring = q_vector->rx.ring;
-> +	u16 cleaned_count = igc_desc_unused(ring);
-> +	int total_bytes = 0, total_packets = 0;
-> +	struct bpf_prog *prog;
-> +	bool failure = false;
-> +	int xdp_status = 0;
+> +	struct xsk_buff_pool *pool = ring->xsk_pool;
+> +	struct netdev_queue *nq = txring_txq(ring);
+> +	int cpu = smp_processor_id();
+> +	struct xdp_desc xdp_desc;
+> +	bool work_done;
+> +	u16 budget;
 > +
-> +	rcu_read_lock();
+> +	if (!netif_carrier_ok(ring->netdev))
+> +		return;
 > +
-> +	prog = READ_ONCE(adapter->xdp_prog);
+> +	__netif_tx_lock(nq, cpu);
 > +
-> +	while (likely(total_packets < budget)) {
-> +		union igc_adv_rx_desc *desc;
-> +		struct igc_rx_buffer *bi;
-> +		ktime_t timestamp = 0;
-> +		unsigned int size;
-> +		int res;
+> +	budget = igc_desc_unused(ring);
+> +	work_done = false;
 > +
-> +		desc = IGC_RX_DESC(ring, ring->next_to_clean);
+> +	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
+> +		u32 cmd_type, olinfo_status;
+> +		union igc_adv_tx_desc *desc;
+> +		struct igc_tx_buffer *bi;
+> +		dma_addr_t dma;
+> +
+> +		cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
+> +			   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
+> +			   xdp_desc.len;
+> +		olinfo_status = xdp_desc.len << IGC_ADVTXD_PAYLEN_SHIFT;
+> +
+> +		dma = xsk_buff_raw_get_dma(pool, xdp_desc.addr);
+> +		xsk_buff_raw_dma_sync_for_device(pool, dma, xdp_desc.len);
+> +
+> +		desc = IGC_TX_DESC(ring, ring->next_to_use);
 
-I think we've seen some minor optimization happening from working on local
-ring->next_to_clean value, IOW maybe do:
+Same suggestion as with ntc on Rx side
 
-u16 ntc = ring->next_to_clean;
+> +		desc->read.cmd_type_len = cpu_to_le32(cmd_type);
+> +		desc->read.olinfo_status = cpu_to_le32(olinfo_status);
+> +		desc->read.buffer_addr = cpu_to_le64(dma);
+> +
+> +		bi = &ring->tx_buffer_info[ring->next_to_use];
+> +		bi->type = IGC_TX_BUFFER_TYPE_XSK;
+> +		bi->protocol = 0;
+> +		bi->bytecount = xdp_desc.len;
+> +		bi->gso_segs = 1;
+> +		bi->time_stamp = jiffies;
+> +		bi->next_to_watch = desc;
+> +
+> +		netdev_tx_sent_queue(txring_txq(ring), xdp_desc.len);
+> +
+> +		ring->next_to_use++;
+> +		if (ring->next_to_use == ring->count)
+> +			ring->next_to_use = 0;
+> +
+> +		work_done = true;
 
-and store it back to ring after the main while () loop
+Seems sub-optimal to set it on each iteration?
 
-> +		size = le16_to_cpu(desc->wb.upper.length);
-> +		if (!size)
-> +			break;
-> +
-> +		/* This memory barrier is needed to keep us from reading
-> +		 * any other fields out of the rx_desc until we know the
-> +		 * descriptor has been written back
-> +		 */
-> +		dma_rmb();
-> +
-> +		bi = &ring->rx_buffer_info[ring->next_to_clean];
-> +
-> +		if (igc_test_staterr(desc, IGC_RXDADV_STAT_TSIP)) {
-> +			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
-> +							bi->xdp->data);
-> +
-> +			bi->xdp->data += IGC_TS_HDR_LEN;
-> +			size -= IGC_TS_HDR_LEN;
-> +		}
-> +
-> +		bi->xdp->data_end = bi->xdp->data + size;
-> +		xsk_buff_dma_sync_for_cpu(bi->xdp, ring->xsk_pool);
-> +
-> +		res = igc_xdp_do_run_prog(adapter, prog, bi->xdp);
-> +		switch (res) {
-> +		case IGC_XDP_PASS:
-> +			igc_dispatch_skb_zc(q_vector, desc, bi->xdp, timestamp);
-> +			fallthrough;
-> +		case IGC_XDP_CONSUMED:
-> +			xsk_buff_free(bi->xdp);
-> +			break;
-> +		case IGC_XDP_TX:
-> +		case IGC_XDP_REDIRECT:
-> +			xdp_status |= res;
-> +			break;
-> +		}
-> +
-> +		bi->xdp = NULL;
-> +		total_bytes += size;
-> +		total_packets++;
-> +		cleaned_count++;
-> +		ring->next_to_clean++;
-> +		if (ring->next_to_clean == ring->count)
-> +			ring->next_to_clean = 0;
 > +	}
 > +
-> +	rcu_read_unlock();
-> +
-> +	if (cleaned_count >= IGC_RX_BUFFER_WRITE)
-> +		failure = !igc_alloc_rx_buffers_zc(ring, cleaned_count);
-> +
-> +	if (xdp_status)
-> +		igc_finalize_xdp(adapter, xdp_status);
-> +
-> +	igc_update_rx_stats(q_vector, total_packets, total_bytes);
-> +
-> +	if (xsk_uses_need_wakeup(ring->xsk_pool)) {
-> +		if (failure || ring->next_to_clean == ring->next_to_use)
-> +			xsk_set_rx_need_wakeup(ring->xsk_pool);
-> +		else
-> +			xsk_clear_rx_need_wakeup(ring->xsk_pool);
-> +		return total_packets;
+> +	if (work_done) {
+> +		igc_flush_tx_descriptors(ring);
+> +		xsk_tx_release(pool);
 > +	}
 > +
-> +	return failure ? budget : total_packets;
+> +	__netif_tx_unlock(nq);
 > +}
+> +
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
