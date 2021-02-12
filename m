@@ -2,153 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68E05319796
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Feb 2021 01:47:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54E943197F3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Feb 2021 02:26:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DA7EE86F69;
-	Fri, 12 Feb 2021 00:47:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1158E86F6A;
+	Fri, 12 Feb 2021 01:26:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fGTbZ3SHlVZr; Fri, 12 Feb 2021 00:47:05 +0000 (UTC)
+	with ESMTP id ExNgmMxwfF2B; Fri, 12 Feb 2021 01:26:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9AB3186F7D;
-	Fri, 12 Feb 2021 00:47:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B45DF86F89;
+	Fri, 12 Feb 2021 01:26:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B065F1BF9C2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 00:47:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9DBFA1BF361
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 01:26:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A654E86F69
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 00:47:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 98DF6875F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 01:26:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m7BQAW565mZw for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Feb 2021 00:47:01 +0000 (UTC)
+ with ESMTP id R3DFfes-vilI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Feb 2021 01:26:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 173A586F63
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 00:47:01 +0000 (UTC)
-IronPort-SDR: rHZzLa2seedqcMXq+IG/dDMWIQbyhLVVUu33tpx+SFWFE0KiCT1l2ggVw7CxGPz8C6tRufBHVL
- zCCj2pfqsv7A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9892"; a="179788697"
-X-IronPort-AV: E=Sophos;i="5.81,172,1610438400"; d="scan'208";a="179788697"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2021 16:46:59 -0800
-IronPort-SDR: cIZgodvp96JLbsvN4t7G7aE4OvpX/7KBf0vry1mXXznYzx0UA2aktFvQNcZ4ogzWuFHHoInHT3
- GtzDZHAhBAsA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,172,1610438400"; d="scan'208";a="381249036"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga008.fm.intel.com with ESMTP; 11 Feb 2021 16:46:58 -0800
-Received: from fmsmsx606.amr.corp.intel.com (10.18.126.86) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Thu, 11 Feb 2021 16:46:58 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2
- via Frontend Transport; Thu, 11 Feb 2021 16:46:57 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.45) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2106.2; Thu, 11 Feb 2021 16:46:52 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BwCIJba77ViSJt3OcB4u/XTiM8QXZq/mxZBIwtCUb0MVjpqvxcGJpVm1aB/a7+Ffw11kHHm+Cmm1cykj7FkGL3mXoG5XFAVvgpRbCwUxr+cTqKGdnd4VzBpOSjDtKFKdCyhRcosb8f1pXbjGQFLx56U/SiOSe5wSjj+U6ixSmBUshvzsSDWpsw6UMK2rX+O7zvVaOcNuHlR5o56SFTCUJtxKtvAInf29iVkS78xiIvvUyEFXPz4LqIvz/4h/B3+31ySWQzy+zBYCLiLMBmdCJ1qd0rJx3U+cFgw9Au36HvayeD+diUsETNW+LNr8uGT8IohUWjHu57cSn+Y0JJcC2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mdg+LgHNXLT0wANxw/+Es7T6NQy4oQ3cE11MMpiWv4o=;
- b=cf6sLrutIOr/aGpYol37Ihttj3yVwpR3lEku1MYCyQp9LnCea2X9i4nmT6GHrynEkXQEqLpmjasO3FCsWEIshxhOU4uuTPyME1LmHpy/ol1mojoNwJVzOVxsE2l95xwwgnlRUFbyOdAaTQptX0Q0JLrAM7p4gGiFIJVS1XcllpBDKSqDU19s0rhPfboLUBYy42LZwg9L7/A6kq6zD3yY3WHDBvBV08wx141Rh+q2z69T995TrdBlspk8Ldra9+xETs37zYhpkt8UNivLT9Pve5VwZWiUzmxtPXEkaWftPGe9lerC8pzvLaMqVu49uzVyrj/f6oUDTd52xtlJwpvshg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mdg+LgHNXLT0wANxw/+Es7T6NQy4oQ3cE11MMpiWv4o=;
- b=uOlW4/30SF36keelUBEpbq6StrUuqsDGLk5kJeNVf5tOEwQcb+lwKZP/ZxRxL8IOpKSKIos+lIBWvmixZlekauBWjXtDxQOyi22Mce31Xf0uNHA4kkX6uAF+9fP2A7ywmgvQJDuCk1+L1DXbEbYCh/GRtw87g+rGM3WxpfBkiZ4=
-Received: from BYAPR11MB3606.namprd11.prod.outlook.com (2603:10b6:a03:b5::25)
- by BY5PR11MB4353.namprd11.prod.outlook.com (2603:10b6:a03:1b9::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.23; Fri, 12 Feb
- 2021 00:46:51 +0000
-Received: from BYAPR11MB3606.namprd11.prod.outlook.com
- ([fe80::9db8:680e:ac77:1208]) by BYAPR11MB3606.namprd11.prod.outlook.com
- ([fe80::9db8:680e:ac77:1208%5]) with mapi id 15.20.3846.030; Fri, 12 Feb 2021
- 00:46:51 +0000
-From: "Fujinaka, Todd" <todd.fujinaka@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "jdtxs00@gmail.com" <jdtxs00@gmail.com>
-Thread-Topic: [Intel-wired-lan] iavf null packets and arbitrary memory reads
-Thread-Index: AQHW/+9MiEdQczt5Kka7rT2SBEkPSqpSO+SAgAF1NyA=
-Date: Fri, 12 Feb 2021 00:46:51 +0000
-Message-ID: <BYAPR11MB36062A9FC2CF8231B79DE0D1EF8B9@BYAPR11MB3606.namprd11.prod.outlook.com>
-References: <CAMnf+PgVx-bg87KCV0NbtSi_FRMokVVXLEwuA_XCH6UxR57rKQ@mail.gmail.com>
- <e73bcf37b214af6c8267622a49a7c9166522f3d0.camel@intel.com>
-In-Reply-To: <e73bcf37b214af6c8267622a49a7c9166522f3d0.camel@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.5.1.3
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [97.115.69.8]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9a5a204e-bf96-4e8b-44cc-08d8ceefafa6
-x-ms-traffictypediagnostic: BY5PR11MB4353:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR11MB435366B9E83218B00787DDD7EF8B9@BY5PR11MB4353.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nXEs1vZIBgjwr4aAeOZ+o7lZqb36c3RRJVhYkCc79Civ7e1owMw4XyHkfY2VjwWKSknnfDhor6LeRDeL1AKdxqID90gQsVz4XHFI1iiyBoH1PrJ9on5iJPtZtGJDWtoFtqqzMTd6T1EyZnYFrzz8su01vH2sQwSBnGWUoaKNJ2OuXFHMtEjXQoS+UJxsUtncKBihK0sdnG9gdyxjGfC8AjSCLnkZhulKXQqxhnxbSve1RepC7PTbRCO8dH7yOKTrIhoNme4DBpmDla19bW1smFIK7C946GipGMtsrGNAcSBvYksro/2yI/i0vwGrsZCer/OsgB/XF1gPcHe1b9tc/LzgqQZ1xIki3FHQHEWJxtbObcs1XzK9jvuCwB6tzQZhN4mckWjxQPE4BZZLjEX1lx5KxJGrUKqJVTQs22w61h6hK7Ds4/OUHesmMAnWSw5ZrTbo62HH37amL880BCtjdf0NQHv4MqON5j/BmxlybwdohYSMFANERtKYtWdjanMgSab/Np6ArfaAa+FB+XojsZQrMvNZi771O+gsELmJ9iCcu5gCU2FQPB1kSqQ3EfScZ4wwGTc3w1L/TkaVi940kA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3606.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(346002)(136003)(366004)(396003)(39860400002)(86362001)(110136005)(7696005)(6506007)(53546011)(55016002)(8676002)(8936002)(71200400001)(316002)(478600001)(76116006)(5660300002)(83380400001)(66476007)(66946007)(26005)(2906002)(64756008)(66446008)(52536014)(186003)(33656002)(966005)(66556008)(9686003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?fF0hW3wNBoCtODlE9ihi754ragoigyS1vyNCnD+5DCc0kcee2EICtUloy1T0?=
- =?us-ascii?Q?EwtjXy/SkuKvalgUQFkTm02JbslSbwoEtKMe8NuB5w6jTpfWkgN6/1pjST9K?=
- =?us-ascii?Q?nhZaymc5ddq2djuucCgVH+/WI6Nk8wmmXIqumJSiFGcjKSr1WkiO/kNSjy3E?=
- =?us-ascii?Q?tHcAnz3D6DP3mYBzpzIM1ZX3Gm6duYX65WAyRouO8icqcTLWqUUgIcJrVGn3?=
- =?us-ascii?Q?Z8ogQztn7H7xxrJKa5OMvUICSshYM+aGxsP3djauJtGAtyXtAM4Xl0Qwk0Mn?=
- =?us-ascii?Q?NFarBzMmSRLsO34NHuch5LtJzM9iYbDOrlV/9hHjcBCjXIF0NP4hDyQAe8JW?=
- =?us-ascii?Q?XKSni2rwESTqHU57zQBi/DPl+jeylmxk8KchW1ZAtTcFXQzRWrmZey2ThteC?=
- =?us-ascii?Q?EfahA/kIFOcSKC5FiKkDF2hbu+QcYxfvt93Rx25WyN5jBT7D1vg9TntLyQnM?=
- =?us-ascii?Q?vHIDTolf/mm0Ld8Zzd+A0L+y1YonsvZbJxTgLtM4Rj6a/cQLln6POxGU+6Sz?=
- =?us-ascii?Q?/zrbCrRcP8F2NfjGsA9ngygT44YQDX2aJPJDm9iFhGQOPlyVi5DJXtdvCH58?=
- =?us-ascii?Q?9snNvptuwJ6RyY1tiGyY9bjy7K4Qeo8EIFJAJ5fviZva5u0V3O39LBThoosk?=
- =?us-ascii?Q?F2H0G6guV9kL5+7zPdQ2d62V897Ik5yZlmauoSC/mlEJ8/zAueox8++XNi41?=
- =?us-ascii?Q?5uhkuyWGZpU9lA2u6/MzBDLINQAecl5yoQnI7qjsDiIrGyvLlSr8xfexMHDO?=
- =?us-ascii?Q?cKE4UsYBbIYr9vyjE50FH1m0TirRvWjcfrcR/wm3ELNFl5HVXyVo41MdzBdX?=
- =?us-ascii?Q?zYkvrAcOyN2p5hYZTDn9vqxdui0hkjkrz5RjbwW0vJpSEXp94p1fWR5X3u3r?=
- =?us-ascii?Q?rvi2xvpiIw7htMX+Z+dhZtFlSTcDJeRZ+GUC1flhsFORCDOzosDVmquowvwS?=
- =?us-ascii?Q?6H3RNHZYDRtdNMhc0+H699ZKAiInaj4PFjx8k6Vz7AOOcoXjoWVbd4G6o0e6?=
- =?us-ascii?Q?mW9hnyQR3M6qkg46lvFcdvYsnf1rSTJxV5lNNBYtMmF20BB3ceRa2BN3YygJ?=
- =?us-ascii?Q?XZSgPXlSw5yX8kpfJEHv9bB4RgwegxDee4ExuKDZRdOo0cBLnDndhzDTU/Pw?=
- =?us-ascii?Q?FHsVjw3d1kZ/KI4RC8zFWYRciP7CqfhIHZC7opvZYD/cQwdvTohxKf0T45Df?=
- =?us-ascii?Q?lRrXQINVUbx9c7jJypDThmshDQoE9btn5Nc/T3oIPTD4T4RoKBesJr/FXcBA?=
- =?us-ascii?Q?a17mRo4Ta6+2Qv9SthCNNwSThHuYI0oeLUzQPBaJb/tAfFpryWrvCEgus0ad?=
- =?us-ascii?Q?Y8k=3D?=
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E710F875F0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Feb 2021 01:26:05 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CBE4764E3B;
+ Fri, 12 Feb 2021 01:26:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1613093165;
+ bh=wilJ8lskA8dshMWOY4eOP0upu6a6phBxe5ABOy25GUU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=r++H1etXUpaC4HUoLGcIw4A412v8aSTChbUopnOUL49MZXsv8ZTPRGLS2Zm51XgYD
+ Rt6dNUiI3/0BI3Hm+cZx8DpfQH6PoW7uubdJJEcTuWk7XOjde49x9h8X5RC3mzFyln
+ pdRqmZlQNhRZxcjYd3ykEXkmCzvBxedQAlLqwDBF6UkLvVCMbywlZuM+itpRHDeMml
+ jq4NIji9R3Q/I+D13FzaVcZej4hxUzsKGAlornXIGyMgO6dXuC75vgQEM1iAO4qw0q
+ p16cAuhTLqVccK1517Kra2Vu67eI4i96PmNXJYfW0L8AgrIEsawnyFGfu0pk+arziH
+ kVxk30TiZnmLg==
+Date: Thu, 11 Feb 2021 17:26:03 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Toke =?UTF-8?B?SMO4aWxhbmQtSsO4cmdlbnNlbg==?= <toke@redhat.com>
+Message-ID: <20210211172603.17d6a8f6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <87czx7r0w8.fsf@toke.dk>
+References: <20201204102901.109709-1-marekx.majtyka@intel.com>
+ <20201209125223.49096d50@carbon>
+ <e1573338-17c0-48f4-b4cd-28eeb7ce699a@gmail.com>
+ <1e5e044c8382a68a8a547a1892b48fb21d53dbb9.camel@kernel.org>
+ <cb6b6f50-7cf1-6519-a87a-6b0750c24029@gmail.com>
+ <f4eb614ac91ee7623d13ea77ff3c005f678c512b.camel@kernel.org>
+ <d5be0627-6a11-9c1f-8507-cc1a1421dade@gmail.com>
+ <6f8c23d4ac60525830399754b4891c12943b63ac.camel@kernel.org>
+ <CAAOQfrHN1-oHmbOksDv-BKWv4gDF2zHZ5dTew6R_QTh6s_1abg@mail.gmail.com>
+ <87h7mvsr0e.fsf@toke.dk>
+ <CAAOQfrHA+-BsikeQzXYcK_32BZMbm54x5p5YhAiBj==uaZvG1w@mail.gmail.com>
+ <87bld2smi9.fsf@toke.dk>
+ <20210202113456.30cfe21e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAAOQfrGqcsn3wu5oxzHYxtE8iK3=gFdTka5HSh5Fe9Hc6HWRWA@mail.gmail.com>
+ <20210203090232.4a259958@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <874kikry66.fsf@toke.dk>
+ <20210210103135.38921f85@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <87czx7r0w8.fsf@toke.dk>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3606.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a5a204e-bf96-4e8b-44cc-08d8ceefafa6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Feb 2021 00:46:51.1280 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CmA5NSMh1c07TBNqv7RfMo3eGnaigkGJosg3UACgHjJvGMCHY8zcPQKqqt3dbslpbPgk9s6XuoRTy1RSuKDMmw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR11MB4353
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] iavf null packets and arbitrary memory reads
+Subject: Re: [Intel-wired-lan] [PATCH v2 bpf 1/5] net: ethtool: add xdp
+ properties flag set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,150 +81,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
+ Andrii Nakryiko <andrii.nakryiko@gmail.com>, hawk@kernel.org,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Network Development <netdev@vger.kernel.org>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Jesper Dangaard Brouer <jbrouer@redhat.com>, Saeed Mahameed <saeed@kernel.org>,
+ Marek Majtyka <alardam@gmail.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ jeffrey.t.kirsher@intel.com, David Ahern <dsahern@gmail.com>,
+ bpf <bpf@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "David S.
+ Miller" <davem@davemloft.net>, "Karlsson, Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Sorry, top-posting guy.
-
-I'm going to put this in our internal bug tracker to make sure it doesn't get lost.
-
-Todd Fujinaka
-Software Application Engineer
-Data Center Group
-Intel Corporation
-todd.fujinaka@intel.com
-
------Original Message-----
-From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Nguyen, Anthony L
-Sent: Wednesday, February 10, 2021 6:31 PM
-To: intel-wired-lan@lists.osuosl.org; jdtxs00@gmail.com
-Subject: Re: [Intel-wired-lan] iavf null packets and arbitrary memory reads
-
-On Wed, 2021-02-10 at 14:56 -0600, JD wrote:
-> Hello,
-> 
-> I've encountered a NIC driver bug that leads to null packets being 
-> transmitted and arbitrary/OOB memory reads by the iavf driver.
-> 
-> I'm unfortunately not sure how the issue starts, but it has been 
-> happening across many different AMD servers and virtual machines.
-> 
-> Running a tcpdump (tcpdump -i bond0 -nne ether host
-> 00:00:00:00:00:00)
-> on bond0 results in these packets being produced at a high rate:
-> 
-> 13:04:14.826298 00:00:00:00:00:00 > 00:00:00:00:00:00, 802.3, length
-> 0: LLC, dsap Null (0x00) Individual, ssap Null (0x00) Command, ctrl
-> 0x0000: Information, send seq 0, rcv seq 0, Flags [Command], length
-> 144
->         0x0000:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0010:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0020:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0030:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0040:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0050:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0060:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0070:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
->         0x0080:  0000 0000 0000 0000 0000 0000 0000
-> 0000  ................
-> 
-> 
-> As you can see, they have a dest/src ether of 00:00:00:00:00:00 and 
-> are completely null.  This doesn't happen on every virtual machine, 
-> some return absolutely nothing.
-> 
-> If I filter the tcpdump command to ignore empty packets (all dots), 
-> some other interesting items begin to appear:
-> 
->         0x0500:  0000 0000 0000 0029 0100 071b 0473 656c  
-> .......).....sel
->         0x0510:  696e 7578 7379 7374 656d 5f75 3a6f 626a  
-> inuxsystem_u:obj
->         0x0520:  6563 745f 723a 6269 6e5f 743a 7330
-> 0000  ect_r:bin_t:s0..
-> [...]
->         0x0080:  0000 2f75 7372 2f6c 6962 3634 2f70
-> 6572  ../usr/lib64/per
->         0x0090:  6c35 2f76 656e 646f 725f 7065 726c
-> 2f46  l5/vendor_perl/F
->         0x00a0:  696c 652f 5370 6563 2f55 6e69 782e 706d  
-> ile/Spec/Unix.pm
-> 
-> To me, that looks like it's reading data from memory and attempting to 
-> send from 00:00:00:00:00:00 to 00:00:00:00:00:00.
-> 
-> If I run that same tcpdump on a different servers exhibiting the null 
-> packets, completely different items show up which also appear to be 
-> from memory.
-> 
-> Keeping a tcpdump results in the same items from memory being repeated 
-> infinitely with no observable variation.
-> 
-> So, it seems like the iavf driver is encountering some bug with memory 
-> management and ends up transmitting null packets or arbitrary data 
-> from memory over bond0.
-> 
-> How/why did I notice this behavior? The VM's seem to perform worse 
-> over the network when this occurs. They usually exhibit small amounts 
-> of packet loss, or poor SSH responsiveness. Oddly, I have seen this 
-> bug in the past, and it resulted in dmesg on the parent printing 
-> Spoofed packet warnings for the i40e driver. Now it does not, yet the 
-> null packets still occur.
-> 
-> I would like to help in any way I can to resolve this in the iavf/i40e 
-> driver. I'm happy to provide information from the servers if it's 
-> needed.
-> 
-> For reference, here is the setup on every single AMD server:
-> VM:
-> CentOS 7.9
-> NIC driver: iavf 4.0.1
-> Kernel 4.19.163
-> 
-> KVM parent:
-> CentOS 7.9
-> NIC driver: i40e 2.12.6
-> Kernel: 4.19.163
-> 2x Intel XXV710 for 25GbE SFP28 @ 25Gbps BONDED (Mode 4, LACP)
-> Vendor: Supermicro Network Adapter AOC-S25G-i2S Firmware version: 7.20 
-> 0x800082b3 1.2585.0
-> MOBO: Supermicro H11DSU-iN
-> CPU: AMD EPYC 7352
-> 
-> And here is the dmesg log (grepped for iavf) from a server that has 
-> the issue:
-> iavf: loading out-of-tree module taints kernel.
-> iavf: Intel(R) Ethernet Adaptive Virtual Function Network Driver - 
-> version 4.0.1 iavf 0000:00:06.0: Multiqueue Enabled: Queue pair count 
-> = 4 iavf 0000:00:06.0: MAC address: 52:54:00:7f:bc:39 iavf 
-> 0000:00:06.0: GRO is enabled iavf 0000:00:05.0: Multiqueue Enabled: 
-> Queue pair count = 4 iavf 0000:00:05.0: MAC address: 52:54:00:a6:3e:62 
-> iavf 0000:00:05.0: GRO is enabled iavf 0000:00:06.0 eth0: NIC Link is 
-> Up Speed is 25 Gbps Full Duplex iavf 0000:00:05.0 eth1: NIC Link is Up 
-> Speed is 25 Gbps Full Duplex
-> 
-
-Hi JD,
-
-I will check and see we're aware of this issue or have any information about it. If not, I'll see if we can work on a reproduction.
-
-Thanks,
-Tony
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gV2VkLCAxMCBGZWIgMjAyMSAyMzo1MjozOSArMDEwMCBUb2tlIEjDuGlsYW5kLUrDuHJnZW5z
+ZW4gd3JvdGU6Cj4gSmFrdWIgS2ljaW5za2kgPGt1YmFAa2VybmVsLm9yZz4gd3JpdGVzOgo+ID4g
+T24gV2VkLCAxMCBGZWIgMjAyMSAxMTo1Mzo1MyArMDEwMCBUb2tlIEjDuGlsYW5kLUrDuHJnZW5z
+ZW4gd3JvdGU6ICAKPiA+PiBXaGlsZSBJIGRvIGFncmVlIHRoYXQgdGhhdCBraW5kIG9mIGNvbmZv
+cm1hbmNlIHRlc3Qgd291bGQgYmUgZ3JlYXQsIEkKPiA+PiBkb24ndCB0aGluayBpdCBoYXMgdG8g
+aG9sZCB1cCB0aGlzIHNlcmllcyAodGhlIHBlcmZlY3QgYmVpbmcgdGhlIGVuZW15Cj4gPj4gb2Yg
+dGhlIGdvb2QsIGFuZCBhbGwgdGhhdCkuIFdlIGhhdmUgYSByZWFsIHByb2JsZW0gdG9kYXkgdGhh
+dCB1c2Vyc3BhY2UKPiA+PiBjYW4ndCB0ZWxsIGlmIGEgZ2l2ZW4gZHJpdmVyIGltcGxlbWVudHMs
+IHNheSwgWERQX1JFRElSRUNULCBhbmQgc28KPiA+PiBwZW9wbGUgdHJ5IHRvIHVzZSBpdCBhbmQg
+c3BlbmQgZGF5cyB3b25kZXJpbmcgd2hpY2ggYmxhY2sgaG9sZSB0aGVpcgo+ID4+IHBhY2tldHMg
+ZGlzYXBwZWFyIGludG8uIEFuZCBmb3IgdGhpbmdzIGxpa2UgY29udGFpbmVyIG1pZ3JhdGlvbiB3
+ZSBuZWVkCj4gPj4gdG8gYmUgYWJsZSB0byBwcmVkaWN0IHdoZXRoZXIgYSBnaXZlbiBob3N0IHN1
+cHBvcnRzIGEgZmVhdHVyZSAqYmVmb3JlKgo+ID4+IHdlIHN0YXJ0IHRoZSBtaWdyYXRpb24gYW5k
+IHRyeSB0byB1c2UgaXQuICAKPiA+Cj4gPiBVbmxlc3MgeW91IGhhdmUgYSBzdHJvbmcgZGVmaW5p
+dGlvbiBvZiB3aGF0IFhEUF9SRURJUkVDVCBtZWFucyB0aGUgZmxhZwo+ID4gaXRzZWxmIGlzIG5v
+dCB3b3J0aCBtdWNoLiBXZSdyZSBub3QgdGFsa2luZyBhYm91dCBub3JtYWwgZXRodG9vbCBmZWF0
+dXJlCj4gPiBmbGFncyB3aGljaCBhcmUgcHJpbWFyaWx5IHN0YWNrLWRyaXZlbiwgWERQIGlzIGlt
+cGxlbWVudGVkIG1vc3RseSBieQo+ID4gdGhlIGRyaXZlciwgZWFjaCB2ZW5kb3IgY2FuIGRvIHRo
+ZWlyIG93biB0aGluZy4gTWF5YmUgSSd2ZSBzZWVuIG9uZQo+ID4gdmVuZG9yIGluY29tcGF0aWJp
+bGl0eSB0b28gbWFueSBhdCBteSBkYXkgam9iIHRvIGhvcGUgZm9yIHRoZSBiZXN0Li4uICAKPiAK
+PiBJJ20gdG90YWxseSBvbiBib2FyZCB3aXRoIGRvY3VtZW50aW5nIHdoYXQgYSBmZWF0dXJlIG1l
+YW5zLgoKV2UncmUgdHJ5aW5nIGRvY3VtZW50YXRpb24gaW4gZGV2bGluayBldGMuIGFuZCBpdCdz
+IG5vdCB0aGF0IGdyZWF0LgpJdCdzIG5ldmVyIGNsZWFyIGFuZCBjb21wcmVoZW5zaXZlIGVub3Vn
+aCwgYmFyZWx5IGFueW9uZSByZWFkcyBpdC4KCj4gRS5nLiwgZm9yCj4gWERQX1JFRElSRUNULCB3
+aGV0aGVyIGl0J3MgYWNjZXB0YWJsZSB0byBmYWlsIHRoZSByZWRpcmVjdCBpbiBzb21lCj4gc2l0
+dWF0aW9ucyBldmVuIHdoZW4gaXQncyBhY3RpdmUsIG9yIGlmIHRoZXJlIHNob3VsZCBhbHdheXMg
+YmUgYQo+IHNsb3ctcGF0aCBmYWxsYmFjay4KPiAKPiBCdXQgSSBkaXNhZ3JlZSB0aGF0IHRoZSBm
+bGFnIGlzIHdvcnRobGVzcyB3aXRob3V0IGl0LiBQZW9wbGUgYXJlIHJ1bm5pbmcKPiBpbnRvIHJl
+YWwgaXNzdWVzIHdpdGggdHJ5aW5nIHRvIHJ1biBYRFBfUkVESVJFQ1QgcHJvZ3JhbXMgb24gYSBk
+cml2ZXIKPiB0aGF0IGRvZXNuJ3Qgc3VwcG9ydCBpdCBhdCBhbGwsIGFuZCBpdCdzIGluY3JlZGli
+bHkgY29uZnVzaW5nLiBUaGUKPiBsYXRlc3QgZXhhbXBsZSBwb3BwZWQgdXAgbGl0ZXJhbGx5IHll
+c3RlcmRheToKPiAKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy94ZHAtbmV3Ymllcy9DQU0tc2Na
+UFBldTQ0RmVDUEdPPVF6PTAzQ3JoaGZCMUdkSjhGTkVwUHFQX0cyN2M2bVFAbWFpbC5nbWFpbC5j
+b20vCgpUbyBoZWxwIHN1Y2ggY29uZnVzaW9uIHdlJ2QgYWN0dWFsbHkgaGF2ZSB0byB2YWxpZGF0
+ZSB0aGUgcHJvZ3JhbQphZ2FpbnN0IHRoZSBkZXZpY2UgY2Fwcy4gQnV0IHBlcmhhcHMgSSdtIGxl
+c3MgY29uY2VybmVkIGFib3V0IGEKbmV3Y29tZXIgbm90IGtub3dpbmcgaG93IHRvIHVzZSB0aGlu
+Z3MgYW5kIG1vcmUgY29uY2VybmVkIGFib3V0CnByb3ZpZGluZyBhYnN0cmFjdGlvbnMgd2hpY2gg
+d2lsbCBtYWtlIHByb2dyYW1zIGRlcGVuZGFibHkgd29ya2luZwphY3Jvc3MgdmVuZG9ycyBhbmQg
+SFcgZ2VuZXJhdGlvbnMuCgo+ID4+IEkgdmlldyB0aGUgZmVhdHVyZSBmbGFncyBhcyBhIGxpc3Qg
+b2YgZmVhdHVyZXMgKmltcGxlbWVudGVkKiBieSB0aGUKPiA+PiBkcml2ZXIuIFdoaWNoIHNob3Vs
+ZCBiZSBwcmV0dHkgc3RhdGljIGluIGEgZ2l2ZW4ga2VybmVsLCBidXQgbWF5IGJlCj4gPj4gZGlm
+ZmVyZW50IHRoYW4gdGhlIGZlYXR1cmVzIGN1cnJlbnRseSAqZW5hYmxlZCogb24gYSBnaXZlbiBz
+eXN0ZW0gKGR1ZQo+ID4+IHRvLCBlLmcuLCB0aGUgVFggcXVldWUgc3R1ZmYpLiAgCj4gPgo+ID4g
+SG0sIG1heWJlIEknbSBub3QgYmVpbmcgY2xlYXIgZW5vdWdoLiBUaGUgd2F5IFhEUF9SRURJUkVD
+VCAoeW91cgo+ID4gZXhhbXBsZSkgaXMgaW1wbGVtZW50ZWQgYWNyb3NzIGRyaXZlcnMgZGlmZmVy
+cyBpbiBhIG1lYW5pbmdmdWwgd2F5cy4gCj4gPiBIZW5jZSB0aGUgbmVlZCBmb3IgY29uZm9ybWFu
+Y2UgdGVzdGluZy4gV2UgZG9uJ3QgaGF2ZSBhIGdvbGRlbiBTVwo+ID4gc3RhbmRhcmQgdG8gZmFs
+bCBiYWNrIG9uLCBsaWtlIHdlIGRvIHdpdGggSFcgb2ZmbG9hZHMuICAKPiAKPiBJJ20gbm90IGRp
+c2FncmVlaW5nIHRoYXQgd2UgbmVlZCB0byBoYXJtb25pc2Ugd2hhdCAiaW1wbGVtZW50aW5nIGEK
+PiBmZWF0dXJlIiBtZWFucy4gTWF5YmUgSSdtIGp1c3Qgbm90IHN1cmUgd2hhdCB5b3UgbWVhbiBi
+eSAiY29uZm9ybWFuY2UKPiB0ZXN0aW5nIj8gV2hhdCB3b3VsZCB0aGF0IGxvb2sgbGlrZSwgc3Bl
+Y2lmaWNhbGx5PyAKCldlIGRldmVsb3BlZCBhIHByZXR0eSBnb29kIHNldCBvZiB0ZXN0cyBhdCBt
+eSBwcmV2aW91cyBqb2IgZm9yIHRlc3RpbmcKZHJpdmVyIFhEUCBhcyB3ZWxsIGFzIGNoZWNraW5n
+IHRoYXQgdGhlIG9mZmxvYWQgY29uZm9ybXMgdG8gdGhlIFNXCmJlaGF2aW9yLiBJIGFzc3VtZSBh
+bnkgdmVuZG9yIHdobyB0YWtlcyBxdWFsaXR5IHNlcmlvdXNseSBoYXMKY29tcHJlaGVuc2l2ZSBY
+RFAgdGVzdHMuCgpJZiB0aG9zZSB0ZXN0cyB3ZXJlIHVwc3RyZWFtIC8gY29tbW9uIHNvIHRoYXQg
+d2UgY291bGQgcnVuIHRoZW0KYWdhaW5zdCBldmVyeSBpbXBsZW1lbnRhdGlvbiAtIHRoZSBmZWF0
+dXJlcyB3aGljaCBhcmUgc3VwcG9ydGVkIGJ5IAphIGRyaXZlciBmYWxsIG91dCBuYXR1cmFsbHkg
+b3V0IG9mIHRoZSBzZXQgb2YgdGVzdHMgd2hpY2ggcGFzc2VkLgpBbmQgdGhlIHN0cnVjdHVyZSBv
+ZiB0aGUgY2FwYWJpbGl0eSBBUEkgY291bGQgYmUgYmFzZWQgb24gd2hhdCB0aGUKdGVzdHMgbmVl
+ZCB0byBrbm93IHRvIG1ha2UgYSBTS0lQIHZzIEZBSUwgZGVjaXNpb24uCgpDb21tb24gdGVzdHMg
+d291bGQgb2J2aW91c2x5IGFsc28gZWFzZSB0aGUgdmFsaWRhdGlvbiBidXJkZW4sIGJ1cmRlbiBv
+Zgp3cml0aW5nIHRlc3RzIG9uIHZlbmRvcnMgYW5kIG1ha2UgaXQgZmFyIGVhc2llciBmb3IgbmV3
+IGltcGxlbWVudGF0aW9ucwp0byBiZSBjb25maWRlbnRseSBzdWJtaXR0ZWQuCgo+IEEgc2NyaXB0
+IGluIHNlbGZ0ZXN0IHRoYXQgc2V0cyB1cCBhIHJlZGlyZWN0IGJldHdlZW4gdHdvIGludGVyZmFj
+ZXMKPiB0aGF0IHdlIHRlbGwgcGVvcGxlIHRvIHJ1bj8gT3Igd2hhdD8gSG93IHdvdWxkIHlvdSBj
+YXRjaCwgc2F5LCB0aGF0Cj4gaXNzdWUgd2hlcmUgaWYgYSBtYWNoaW5lIGhhcyBtb3JlIENQVXMg
+dGhhbiB0aGUgTklDIGhhcyBUWFFzIHRoaW5ncwo+IHN0YXJ0IGZhbGxpbmcgYXBhcnQ/CgpzZWxm
+dGVzdHMgc2hvdWxkIGJlIGEgZ29vZCBwbGFjZSwgYnV0IEkgZG9uJ3QgbWluZCB0aGUgbG9jYXRp
+b24uClRoZSBwb2ludCBpcyBoYXZpbmcgdGVzdHMgd2hpY2ggYW55b25lICh2ZW5kb3JzIGFuZCB1
+c2VycykgY2FuIHJ1bgp0byB0ZXN0IHRoZWlyIHBsYXRmb3Jtcy4gT25lIG9mIHRoZSB0ZXN0cyBz
+aG91bGQgaW5kZWVkIHRlc3QgaWYgZXZlcnkKQ1BVIGluIHRoZSBwbGF0Zm9ybSBjYW4gWERQX1JF
+RElSRUNULiBTaG91bGRuJ3QgaXQgYmUgYSByYXRoZXIgdHJpdmlhbApjb21iaW5hdGlvbiBvZiB0
+dW4vdmV0aCwgbWggYW5kIHRhc2tzZXQ/Cgo+ID4gQWxzbyBJREsgd2h5IHRob3NlIHRlc3RzIGFy
+ZSBjb25zaWRlcmVkIHN1Y2ggYSBodWdlIGFzay4gQXMgSSBzYWlkIG1vc3QKPiA+IHZlbmRvcnMg
+cHJvYmFibHkgYWxyZWFkeSBoYXZlIHRoZW0sIGFuZCBzbyBJJ2QgZ3Vlc3MgZG8gZ29vZCBkaXN0
+cm9zLgo+ID4gU28gbGV0J3Mgd29yayB0b2dldGhlci4gIAo+IAo+IEkgZ3Vlc3Mgd2hhdCBJJ20g
+YWZyYWlkIG9mIGlzIHRoYXQgdGhpcyB3aWxsIGVuZCB1cCBkZWxheWluZyBvciBzdGFsbGluZwo+
+IGEgZml4IGZvciBhIGxvbmctc3RhbmRpbmcgaXNzdWUgKHdoaWNoIGlzIHdoYXQgSSBjb25zaWRl
+ciB0aGlzIHNlcmllcyBhcwo+IHNob3duIGJ5IHRoZSBleGFtcGxlIGFib3ZlKS4gTWF5YmUgeW91
+IGNhbiBhbGxldmlhdGUgdGhhdCBieSBleHBhbmRpbmcgYQo+IGJpdCBvbiB3aGF0IHlvdSBtZWFu
+PwoKSSBob3BlIHdoYXQgSSB3cm90ZSBoZWxwcyBhIGxpdHRsZS4gSSdtIG5vdCBnb29kIGF0IGV4
+cGxhaW5pbmcuIAoKUGVyaGFwcyBJIGhhZCBzZWVuIG9uZSB0b28gbWFueSB2ZW5kb3IgaW5jb21w
+YXRpYmlsaXR5IHRvIHRydXN0IHRoYXQKYWRkaW5nIGEgZHJpdmVyIEFQSSB3aXRob3V0IGEgdmFs
+aWRhdGlvbiBzdWl0ZSB3aWxsIHJlc3VsdCBpbiBzb21ldGhpbmcKdXNhYmxlIGluIHByb2R1Y3Rp
+b24gc2V0dGluZ3MuIApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
+b3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVk
+LWxhbgo=
