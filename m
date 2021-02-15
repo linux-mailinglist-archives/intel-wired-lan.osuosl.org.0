@@ -1,55 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61F6E31B6DA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Feb 2021 11:05:33 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D228231BE56
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Feb 2021 17:12:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1FD5F8709A;
-	Mon, 15 Feb 2021 10:05:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 810AB6F572
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Feb 2021 16:12:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l73aM0JfKfEC; Mon, 15 Feb 2021 10:05:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IEKM7WKcFNiL for <lists+intel-wired-lan@lfdr.de>;
+	Mon, 15 Feb 2021 16:12:02 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 735606F527; Mon, 15 Feb 2021 16:12:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8E393870A6;
-	Mon, 15 Feb 2021 10:05:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 71ADA6F509;
+	Mon, 15 Feb 2021 16:11:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4E3581BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 10:05:26 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 59C001BF3A3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 16:11:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 497F4866A1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 10:05:26 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5334885722
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 16:11:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IWZBKZPx0WhQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Feb 2021 10:05:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3BFC186738
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 10:05:21 +0000 (UTC)
-Received: from [192.168.0.6] (ip5f5aea71.dynamic.kabel-deutschland.de
- [95.90.234.113])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 149EC20645D6D;
- Mon, 15 Feb 2021 11:05:18 +0100 (CET)
-To: Ederson de Souza <ederson.desouza@intel.com>
-References: <20210212014212.41570-1-ederson.desouza@intel.com>
- <20210212014212.41570-3-ederson.desouza@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <bd0bfa55-de44-82e9-337a-e6254d3a8405@molgen.mpg.de>
-Date: Mon, 15 Feb 2021 11:05:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ with ESMTP id qRT9rMzrdIc2 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Feb 2021 16:11:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A3D6981B4E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 16:11:45 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1lBgTL-0006j6-GV; Mon, 15 Feb 2021 16:11:39 +0000
+From: Colin King <colin.king@canonical.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Date: Mon, 15 Feb 2021 16:11:39 +0000
+Message-Id: <20210215161139.83432-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-In-Reply-To: <20210212014212.41570-3-ederson.desouza@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 2/2] igc: enable
- auxiliary PHC functions for the i225
+Subject: [Intel-wired-lan] [PATCH][next] i40e: Fix uninitialized variable
+ mfs_max
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,26 +65,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBFZGVyc29uLAoKCkFtIDEyLjAyLjIxIHVtIDAyOjQyIHNjaHJpZWIgRWRlcnNvbiBkZSBT
-b3V6YToKPiBUaGUgaTIyNSBkZXZpY2Ugb2ZmZXJzIGEgbnVtYmVyIG9mIHNwZWNpYWwgUFRQIEhh
-cmR3YXJlIENsb2NrIGZlYXR1cmVzIG9uCj4gdGhlIFNvZnR3YXJlIERlZmluZWQgUGlucyAoU0RQ
-cykuIFRoaXMgcGF0Y2ggYWRkcyBzdXBwb3J0IGZvciB0d28gb2YgdGhlCj4gcG9zc2libGUgZnVu
-Y3Rpb25zLCBuYW1lbHkgdGltZSBzdGFtcGluZyBleHRlcm5hbCBldmVudHMsIGFuZCBwZXJpb2Rp
-Ywo+IG91dHB1dCBzaWduYWxzLgo+IAo+IFRoZSBhc3NpZ25tZW50IG9mIFBIQyBmdW5jdGlvbnMg
-dG8gdGhlIGZvdXIgU0RQIGNhbiBiZSBmcmVlbHkgY2hvc2VuIGJ5Cj4gdGhlIHVzZXIuCj4gCj4g
-V2hpbGUgaTIyNSBhbGxvd3MgdXAgdG8gZm91ciB0aW1lcnMgdG8gYmUgdXNlZCB0byBzb3VyY2Ug
-dGhlIHRpbWUgdXNlZAo+IG9uIHRoZSBleHRlcm5hbCBldmVudHMgb3Igb3V0cHV0IHNpZ25hbHMs
-IHRoaXMgcGF0Y2ggdXNlcyBvbmx5IG9uZSBvZgo+IHRob3NlIHRpbWVycy4KCldoeSBpcyB0aGF0
-PyBCZWNhdXNlIGl04oCZcyBzaW1wbGVyIHRvIGltcGxlbWVudD8gUGxlYXNlIGFkZCB0aGUgcmVh
-c29uIHRvIAp0aGUgY29tbWl0IG1lc3NhZ2UuCgpJdOKAmWQgYmUgYWxzbyBncmVhdCwgaWYgeW91
-IG1lbnRpb25lZCB0aGUgZGF0YXNoZWV0IG5hbWUgYW5kIHJldmlzaW9uIAp1c2VkIGZvciBpbXBs
-ZW1lbnRpbmcgdGhpcy4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+From: Colin Ian King <colin.king@canonical.com>
+
+The variable mfs_max is not initialized and is being compared to find
+the maximum value. Fix this by initializing it to 0.
+
+Addresses-Coverity: ("Uninitialized scalar variable")
+Fixes: 90bc8e003be2 ("i40e: Add hardware configuration for software based DCB")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_dcb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_dcb.c b/drivers/net/ethernet/intel/i40e/i40e_dcb.c
+index 7b73a279d46e..243b0d2b7b72 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_dcb.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_dcb.c
+@@ -1636,7 +1636,7 @@ void i40e_dcb_hw_calculate_pool_sizes(struct i40e_hw *hw,
+ 	u32 total_pool_size = 0;
+ 	int shared_pool_size; /* Need signed variable */
+ 	u32 port_pb_size;
+-	u32 mfs_max;
++	u32 mfs_max = 0;
+ 	u32 pcirtt;
+ 	u8 i;
+ 
+-- 
+2.30.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
