@@ -2,62 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C54731CC78
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Feb 2021 15:54:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C269831D113
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Feb 2021 20:43:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A69218714C;
-	Tue, 16 Feb 2021 14:54:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2B1758720D;
+	Tue, 16 Feb 2021 19:43:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DOKo8617l1Yu; Tue, 16 Feb 2021 14:54:42 +0000 (UTC)
+	with ESMTP id uU4US6fOrZUu; Tue, 16 Feb 2021 19:43:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EF84787146;
-	Tue, 16 Feb 2021 14:54:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D689871C7;
+	Tue, 16 Feb 2021 19:43:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 171171BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 12:24:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5ADF81BF983
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Feb 2021 19:43:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 11A216F4A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 12:24:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 56A5F8476C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Feb 2021 19:43:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O_uBQ3LA5N91 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Feb 2021 12:24:20 +0000 (UTC)
-Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 564D46F4F7; Mon, 15 Feb 2021 12:24:20 +0000 (UTC)
-X-Greylist: delayed 00:16:56 by SQLgrey-1.8.0
-Received: from m12-14.163.com (m12-14.163.com [220.181.12.14])
- by smtp3.osuosl.org (Postfix) with SMTP id 25F036F4A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Feb 2021 12:24:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id; bh=7+Zfjjs9Ah3I25lTRn
- 9mVs6v6P7IaEZ1WvDV0OO4SYo=; b=ELbcgOK0fyD7imMxflkksEq21Bc6JTz14+
- JZvXyN50MTTLklf1wtOeMrMM+mXXo769IXDO9Wn45WOT6gh1wpdJevR4i7XIsYOE
- h3h2bXNQsi+19b5zi6lAfstzgPwuiKfXSk/Idaf8iq7C1Amj8Z8bsKjpt1MAOr0d
- C56yYS6Ag=
-Received: from localhost.localdomain (unknown [125.70.196.55])
- by smtp10 (Coremail) with SMTP id DsCowADXmLZ6YypgQ_cJlA--.29413S2;
- Mon, 15 Feb 2021 20:05:18 +0800 (CST)
-From: Chen Lin <chen45464546@163.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Date: Mon, 15 Feb 2021 20:04:58 +0800
-Message-Id: <1613390698-3637-1-git-send-email-chen45464546@163.com>
-X-Mailer: git-send-email 1.7.9.5
-X-CM-TRANSID: DsCowADXmLZ6YypgQ_cJlA--.29413S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CrWkKr45tFW7AFyfZFWDurg_yoW8XrW5pa
- y8X34xGF1Sqr48Wa4kXw45ZFZI9a10grW5GrWfA3yY9F1Ykr48K3WDtFyUAa409r45GrW3
- ZFyayr4DCa13GwUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jhuc_UUUUU=
-X-Originating-IP: [125.70.196.55]
-X-CM-SenderInfo: hfkh0kqvuwkkiuw6il2tof0z/1tbiGh46nlaD825JEgAAsz
-X-Mailman-Approved-At: Tue, 16 Feb 2021 14:54:40 +0000
-Subject: [Intel-wired-lan] [PATCH] net: intel: Remove unused function
- pointer typedef ixgbe_mc_addr_itr
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aCWRVPHjLS-3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Feb 2021 19:43:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 350E084775
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Feb 2021 19:43:02 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11GJTmIO135565;
+ Tue, 16 Feb 2021 19:42:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=qliTX49NNysy1Z4rv4b9wioSaC5k9nPPzl89Rr56v8Q=;
+ b=sQmWPFOAf5IMuXDZ4xQzII5RMG3OdNAIDBAxzyr0uEWousTvwIoAo7tTCrK2pb8Bpfn3
+ JVm+YYiHWHBmN2Wq4zXfHbcXdIo+oeuv3vE2Mcpxburn28RvaCK8a7tBr2lh6TTJxXDD
+ VGgYbBKijMBAF6/qqgyj4neZEB5i+3bDqYvBi6ShVVYuuSI7tfAzyv/kkW86srTs1IqT
+ fUxLSI0ojHUQ+soxTvOXgI2CQtdG1D86CSZKjedOrwx1hI0wOnqH9sea3kIS1olw/ymP
+ 0Pdn+OxYkHjtZ3HeFBUx8nWAj6aSrnDh7QwuP+uzjvPp4vN+bGAqys2RNrme0MJEIehf Og== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 36pd9a7jvs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Feb 2021 19:42:57 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 11GJUNap119459;
+ Tue, 16 Feb 2021 19:42:56 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 36prbnm42h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Feb 2021 19:42:56 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 11GJgsNf007609;
+ Tue, 16 Feb 2021 19:42:55 GMT
+Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 16 Feb 2021 11:42:54 -0800
+Date: Tue, 16 Feb 2021 22:42:43 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: arkadiusz.kubalewski@intel.com
+Message-ID: <YCwgM5yvXRAZix/Q@mwanda>
+MIME-Version: 1.0
+Content-Disposition: inline
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9897
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 mlxscore=0
+ phishscore=0 adultscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2102160162
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9897
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1011
+ impostorscore=0
+ mlxscore=0 phishscore=0 mlxlogscore=999 spamscore=0 bulkscore=0
+ priorityscore=1501 malwarescore=0 suspectscore=0 adultscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2102160162
+Subject: [Intel-wired-lan] [bug report] i40e: Add hardware configuration for
+ software based DCB
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,57 +95,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Chen Lin <chen.lin5@zte.com.cn>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-MIME-Version: 1.0
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Chen Lin <chen.lin5@zte.com.cn>
+Hello Arkadiusz Kubalewski,
 
-Remove the 'ixgbe_mc_addr_itr' typedef as it is not used.
+The patch 90bc8e003be2: "i40e: Add hardware configuration for
+software based DCB" from Oct 19, 2020, leads to the following static
+checker warning:
 
-Signed-off-by: Chen Lin <chen.lin5@zte.com.cn>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |    4 ----
- drivers/net/ethernet/intel/ixgbevf/vf.h       |    3 ---
- 2 files changed, 7 deletions(-)
+	drivers/net/ethernet/intel/i40e/i40e_dcb.c:1645 i40e_dcb_hw_calculate_pool_sizes()
+	error: uninitialized symbol 'mfs_max'.
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 2be1c4c..e4da5ac 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3383,10 +3383,6 @@ struct ixgbe_hw_stats {
- /* forward declaration */
- struct ixgbe_hw;
- 
--/* iterator type for walking multicast address lists */
--typedef u8* (*ixgbe_mc_addr_itr) (struct ixgbe_hw *hw, u8 **mc_addr_ptr,
--				  u32 *vmdq);
--
- /* Function pointer table */
- struct ixgbe_eeprom_operations {
- 	s32 (*init_params)(struct ixgbe_hw *);
-diff --git a/drivers/net/ethernet/intel/ixgbevf/vf.h b/drivers/net/ethernet/intel/ixgbevf/vf.h
-index d1e9e30..1d8209d 100644
---- a/drivers/net/ethernet/intel/ixgbevf/vf.h
-+++ b/drivers/net/ethernet/intel/ixgbevf/vf.h
-@@ -16,9 +16,6 @@
- 
- struct ixgbe_hw;
- 
--/* iterator type for walking multicast address lists */
--typedef u8* (*ixgbe_mc_addr_itr) (struct ixgbe_hw *hw, u8 **mc_addr_ptr,
--				  u32 *vmdq);
- struct ixgbe_mac_operations {
- 	s32 (*init_hw)(struct ixgbe_hw *);
- 	s32 (*reset_hw)(struct ixgbe_hw *);
--- 
-1.7.9.5
+drivers/net/ethernet/intel/i40e/i40e_dcb.c
+  1628  void i40e_dcb_hw_calculate_pool_sizes(struct i40e_hw *hw,
+  1629                                        u8 num_ports, bool eee_enabled,
+  1630                                        u8 pfc_en, u32 *mfs_tc,
+  1631                                        struct i40e_rx_pb_config *pb_cfg)
+  1632  {
+  1633          u32 pool_size[I40E_MAX_TRAFFIC_CLASS];
+  1634          u32 high_wm[I40E_MAX_TRAFFIC_CLASS];
+  1635          u32 low_wm[I40E_MAX_TRAFFIC_CLASS];
+  1636          u32 total_pool_size = 0;
+  1637          int shared_pool_size; /* Need signed variable */
+  1638          u32 port_pb_size;
+  1639          u32 mfs_max;
+  1640          u32 pcirtt;
+  1641          u8 i;
+  1642  
+  1643          /* Get the MFS(max) for the port */
+  1644          for (i = 0; i < I40E_MAX_TRAFFIC_CLASS; i++) {
+  1645                  if (mfs_tc[i] > mfs_max)
+                                        ^^^^^^^
+Uninitialized.
 
+  1646                          mfs_max = mfs_tc[i];
+  1647          }
+  1648  
 
+regards,
+dan carpenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
