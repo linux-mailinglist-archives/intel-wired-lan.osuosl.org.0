@@ -1,60 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EB4F31F775
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Feb 2021 11:41:02 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35B9B31F9BA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Feb 2021 14:18:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC03487483;
-	Fri, 19 Feb 2021 10:41:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8039B86C1B;
+	Fri, 19 Feb 2021 13:18:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9G9EC5LHF0Uh; Fri, 19 Feb 2021 10:41:00 +0000 (UTC)
+	with ESMTP id f9DZ_ZFOK9rl; Fri, 19 Feb 2021 13:18:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 079AD87480;
-	Fri, 19 Feb 2021 10:41:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 48EF886C25;
+	Fri, 19 Feb 2021 13:18:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D2F51BF2CC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 10:40:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E2B9F1BF393
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 13:18:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 178958704C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 10:40:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D91BB87168
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 13:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tB3dwIG01NF5 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Feb 2021 10:40:57 +0000 (UTC)
+ with ESMTP id qXKpqrsGbkgs for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Feb 2021 13:18:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 09A9C87038
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 10:40:56 +0000 (UTC)
-IronPort-SDR: Zhgn82dK9tOuhih8azysF2cWUM7GqdchrqwE+PW8T7fMzx9YXZjDVwS6s7vIS7w9IyY9Xs5eno
- JUbPe2E1zwmw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9899"; a="171479314"
-X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="171479314"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 851E98711F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 13:17:05 +0000 (UTC)
+IronPort-SDR: v+yjl4cXIJQkobVrk0WZuv2vaAu6278xOqr5ytwlZsYA9lK4VT4Uw7EL4eScBBFlrNZ9EtuGhM
+ LrrKQ2b+DPIQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9899"; a="171507218"
+X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="171507218"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2021 02:40:55 -0800
-IronPort-SDR: lgmCHm3qBusg/i58C016MZj7JBq2ew4QP8Fr7SrPkKLrXYU+EVHUQpc4tt9E1/uu3J8Ql593Bh
- WldlIcLuww7w==
+ 19 Feb 2021 05:17:04 -0800
+IronPort-SDR: 9eyJnK5EI/E4U5r5yb+sOzYHJcgevQ6kT/PBtCDcU0/gx6o8AK5hygpJjFDsO82EjwqKxOSs9J
+ r2ytUr5IsCSw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="513633514"
-Received: from lkp-server02.sh.intel.com (HELO cd560a204411) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 19 Feb 2021 02:40:54 -0800
-Received: from kbuild by cd560a204411 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lD3DR-000AIv-T7; Fri, 19 Feb 2021 10:40:53 +0000
-Date: Fri, 19 Feb 2021 18:40:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <602f95b2.jQwcbUV/mOLcsbp8%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="401025166"
+Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.118.220])
+ by orsmga008.jf.intel.com with ESMTP; 19 Feb 2021 05:17:02 -0800
+From: Haiyue Wang <haiyue.wang@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 19 Feb 2021 20:59:43 +0800
+Message-Id: <20210219130001.49600-1-haiyue.wang@intel.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 48fb4d20552fa8fbc970601bf08470d66a49c4c4
+Subject: [Intel-wired-lan] [Patch v4 00/18] Enable Intel VF flow director
+ with DDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,127 +64,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: cunming.liang@intel.com, qi.z.zhang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 48fb4d20552fa8fbc970601bf08470d66a49c4c4  i40e: Fix inconsistent indenting
+The Intel E810 Series supports a programmable pipeline for a domain
+specific protocols classification, for example GTP by Dynamic Device
+Personalization (DDP) profile.
 
-elapsed time: 726m
+The E810 PF has introduced flex-bytes support by ethtool user-def option
+allowing for packet deeper matching based on an offset and value for DDP
+usage.
 
-configs tested: 98
-configs skipped: 2
+For making VF also benefit from this flexible protocol classification, some
+new virtchnl messages are defined and handled by PF, so VF can query this
+new flow director capability, and use ethtool with extending the user-def
+option to configure Rx flow classification.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+The new user-def 0xAAAABBBBCCCCDDDD: BBBB is the 2 byte pattern while AAAA
+corresponds to its offset in the packet. Similarly DDDD is the 2 byte
+pattern with CCCC being the corresponding offset. The offset ranges from
+0x0 to 0x1F7 (up to 504 bytes into the packet). The offset starts from
+the beginning of the packet.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                     akebono_defconfig
-m68k                            q40_defconfig
-um                           x86_64_defconfig
-powerpc64                           defconfig
-sparc                            alldefconfig
-powerpc                      ppc44x_defconfig
-mips                         tb0219_defconfig
-sh                             sh03_defconfig
-m68k                        m5272c3_defconfig
-arm                          pxa168_defconfig
-mips                       lemote2f_defconfig
-arm                            zeus_defconfig
-powerpc                   bluestone_defconfig
-m68k                        m5407c3_defconfig
-powerpc                 mpc8313_rdb_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arm                          collie_defconfig
-s390                       zfcpdump_defconfig
-powerpc                          g5_defconfig
-powerpc                      ppc6xx_defconfig
-sh                           sh2007_defconfig
-sh                        sh7757lcr_defconfig
-m68k                             allyesconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a003-20210218
-x86_64               randconfig-a001-20210218
-x86_64               randconfig-a004-20210218
-x86_64               randconfig-a002-20210218
-x86_64               randconfig-a005-20210218
-x86_64               randconfig-a006-20210218
-i386                 randconfig-a005-20210218
-i386                 randconfig-a003-20210218
-i386                 randconfig-a002-20210218
-i386                 randconfig-a004-20210218
-i386                 randconfig-a001-20210218
-i386                 randconfig-a006-20210218
-i386                 randconfig-a016-20210218
-i386                 randconfig-a012-20210218
-i386                 randconfig-a014-20210218
-i386                 randconfig-a013-20210218
-i386                 randconfig-a011-20210218
-i386                 randconfig-a015-20210218
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+This feature can be used to allow customers to set flow director rules
+for protocols headers that are beyond standard ones supported by ethtool
+(e.g. PFCP or GTP-U).
 
-clang tested configs:
-x86_64               randconfig-a012-20210218
-x86_64               randconfig-a016-20210218
-x86_64               randconfig-a013-20210218
-x86_64               randconfig-a015-20210218
-x86_64               randconfig-a011-20210218
-x86_64               randconfig-a014-20210218
+Like for matching GTP-U's TEID value 0x10203040:
+ethtool -N ens787f0v0 flow-type udp4 dst-port 2152 \
+    user-def 0x002e102000303040 action 13
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+v4: Refactor the patch set.
+v3: Fix the flags bit conflict
+v2: Fix the building and checkpatch warnings.
+
+Haiyue Wang (5):
+  iavf: Add framework to enable ethtool ntuple filters
+  iavf: Support IPv4 Flow Director filters
+  iavf: Support IPv6 Flow Director filters
+  iavf: Support Ethernet Type Flow Director filters
+  iavf: Enable flex-bytes support
+
+Qi Zhang (13):
+  ice: Add more basic protocol support for flow filter
+  ice: Support non word aligned input set field
+  ice: Add more advanced protocol support in flow filter
+  ice: Support to separate GTP-U uplink and downlink
+  ice: Enhanced IPv4 and IPv6 flow filter
+  ice: Add support for per VF ctrl VSI enabling
+  ice: Enable FDIR Configure for AVF
+  ice: Add FDIR pattern action parser for VF
+  ice: Add new actions support for VF FDIR
+  ice: Add non-IP Layer2 protocol FDIR filter for AVF
+  ice: Add GTPU FDIR filter for AVF
+  ice: Add more FDIR filter type for AVF
+  ice: Check FDIR program status for AVF
+
+ drivers/net/ethernet/intel/iavf/Makefile      |    2 +-
+ drivers/net/ethernet/intel/iavf/iavf.h        |   12 +
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |  631 +++++
+ drivers/net/ethernet/intel/iavf/iavf_fdir.c   |  773 ++++++
+ drivers/net/ethernet/intel/iavf/iavf_fdir.h   |  113 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |   27 +
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  195 ++
+ drivers/net/ethernet/intel/ice/Makefile       |    2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |    5 +-
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c |    4 +
+ drivers/net/ethernet/intel/ice/ice_fdir.c     |  486 +++-
+ drivers/net/ethernet/intel/ice/ice_fdir.h     |   58 +
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  528 +++-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |    3 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   78 +
+ drivers/net/ethernet/intel/ice/ice_flow.c     |  727 +++++-
+ drivers/net/ethernet/intel/ice/ice_flow.h     |  160 +-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   19 +
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |   22 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   64 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   11 +-
+ .../ethernet/intel/ice/ice_protocol_type.h    |   10 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |    5 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   18 +
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 2206 +++++++++++++++++
+ .../ethernet/intel/ice/ice_virtchnl_fdir.h    |   49 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |   79 +-
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |    8 +
+ include/linux/avf/virtchnl.h                  |  278 +++
+ 29 files changed, 6489 insertions(+), 84 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_fdir.c
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_fdir.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+
+-- 
+2.30.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
