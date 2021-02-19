@@ -1,60 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33DD831FD36
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Feb 2021 17:37:12 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E432887136;
-	Fri, 19 Feb 2021 16:37:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FL8cjVHxdDeh; Fri, 19 Feb 2021 16:37:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4F700870E5;
-	Fri, 19 Feb 2021 16:37:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 054F81BF287
- for <intel-wired-lan@osuosl.org>; Fri, 19 Feb 2021 16:37:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FDE9320024
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Feb 2021 22:13:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E563960705
- for <intel-wired-lan@osuosl.org>; Fri, 19 Feb 2021 16:37:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6471360714
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Feb 2021 21:13:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uz-tocroWaAv for <lists+intel-wired-lan@lfdr.de>;
+	Fri, 19 Feb 2021 21:13:38 +0000 (UTC)
+Received: by smtp3.osuosl.org (Postfix, from userid 1001)
+	id 9699860726; Fri, 19 Feb 2021 21:13:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id C977760719;
+	Fri, 19 Feb 2021 21:13:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 02A071BF32E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 21:13:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id DF425606B8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 21:13:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yNSUWEOSVhS5 for <intel-wired-lan@osuosl.org>;
- Fri, 19 Feb 2021 16:37:05 +0000 (UTC)
+ with ESMTP id O2geISfpqocQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Feb 2021 21:13:23 +0000 (UTC)
 Received: by smtp3.osuosl.org (Postfix, from userid 1001)
- id 76BAC60701; Fri, 19 Feb 2021 16:37:05 +0000 (UTC)
+ id 0AC0060709; Fri, 19 Feb 2021 21:13:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 89DE66070A
- for <intel-wired-lan@osuosl.org>; Fri, 19 Feb 2021 16:36:57 +0000 (UTC)
-IronPort-SDR: TvifYO4GMSPelEqG5IQdj45W5aKMyKvh1eWt6oVqN4gntqIbqZ21ZWGAUHnnxzQsAVyyG88lg+
- m2uWlj7oIXBQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9900"; a="183949654"
-X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="183949654"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2021 08:36:57 -0800
-IronPort-SDR: l1vH7CJYZ0uVMiBDxSPB1aQ682IvAyWuu2/msqtLjjKE3hYFNQNz/Hhn6DiNPhoBq3/Rtwzifz
- x6vokrVFZW9Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,189,1610438400"; d="scan'208";a="581737140"
-Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.114])
- by orsmga005.jf.intel.com with ESMTP; 19 Feb 2021 08:36:55 -0800
-From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Sat, 20 Feb 2021 00:36:48 +0800
-Message-Id: <20210219163648.14581-3-muhammad.husaini.zulkifli@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
-References: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
-Subject: [Intel-wired-lan] [PATCH net v1 2/2] igc: Fix Supported Pause Frame
- Link Setting
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AECCE606B8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Feb 2021 21:13:21 +0000 (UTC)
+IronPort-SDR: prjHgelTsFmDv6JFqdi09ssQNX0ei/ZcwHA7cxziRZWFOmI6Nx4jhaEbZtUIQ7ZIix+z//MiJJ
+ jDBQH+bU7XZA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9900"; a="180453231"
+X-IronPort-AV: E=Sophos;i="5.81,191,1610438400"; d="scan'208";a="180453231"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2021 13:13:20 -0800
+IronPort-SDR: QY4uDOfsK1NgIC29ka2laRiPYLFYhQ9nujjNM4qQbruMYNPzHTiz1pA2U4tQZu7y62g3geCUEu
+ ZRZlq7Fr2CLA==
+X-IronPort-AV: E=Sophos;i="5.81,191,1610438400"; d="scan'208";a="401197963"
+Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
+ ([10.209.16.143])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2021 13:13:20 -0800
+Date: Fri, 19 Feb 2021 13:13:19 -0800
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: Haiyue Wang <haiyue.wang@intel.com>
+Message-ID: <20210219131319.00000079@intel.com>
+In-Reply-To: <20210219130001.49600-1-haiyue.wang@intel.com>
+References: <20210219130001.49600-1-haiyue.wang@intel.com>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [Patch v4 00/18] Enable Intel VF flow
+ director with DDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,46 +72,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: muhammad.husaini.zulkifli@intel.com, mallikarjuna.chilakala@intel.com
-MIME-Version: 1.0
+Cc: cunming.liang@intel.com, intel-wired-lan@lists.osuosl.org,
+ qi.z.zhang@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The Supported Pause Frame always display "No" eventhough the Advertised
-pause frame showing the correct setting based on the pause parameters via
-ethtool. Set bit in link_ksettings to "Supported" for Pause Frame.
+Haiyue Wang wrote:
 
-Before output:
-Supported pause frame use: No
+> The Intel E810 Series supports a programmable pipeline for a domain
+> specific protocols classification, for example GTP by Dynamic Device
+> Personalization (DDP) profile.
+> 
+> The E810 PF has introduced flex-bytes support by ethtool user-def option
+> allowing for packet deeper matching based on an offset and value for DDP
+> usage.
+> 
+> For making VF also benefit from this flexible protocol classification, some
+> new virtchnl messages are defined and handled by PF, so VF can query this
+> new flow director capability, and use ethtool with extending the user-def
+> option to configure Rx flow classification.
+> 
+> The new user-def 0xAAAABBBBCCCCDDDD: BBBB is the 2 byte pattern while AAAA
+> corresponds to its offset in the packet. Similarly DDDD is the 2 byte
+> pattern with CCCC being the corresponding offset. The offset ranges from
+> 0x0 to 0x1F7 (up to 504 bytes into the packet). The offset starts from
+> the beginning of the packet.
 
-Expected output:
-Supported pause frame use: Symmetric
+Why must you use the ethtool user-def interface like this? I suspect
+that you should be using tc-u32.
 
-Fixes: 8c5ad0dae93c ("igc: Add ethtool support")
-Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-Reviewed-by: Malli C <mallikarjuna.chilakala@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 3 +++
- 1 file changed, 3 insertions(+)
+At the very least you should cover why you're *not* using u32 in the
+cover letter, otherwise I'm sure the question will come up.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 67a4aed45fc2..8722294ab90c 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1711,6 +1711,9 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
- 						     Autoneg);
- 	}
  
-+	/* Set pause flow control settings */
-+	ethtool_link_ksettings_add_link_mode(cmd, supported, Pause);
-+
- 	switch (hw->fc.requested_mode) {
- 	case igc_fc_full:
- 		ethtool_link_ksettings_add_link_mode(cmd, advertising, Pause);
--- 
-2.17.1
+> This feature can be used to allow customers to set flow director rules
+> for protocols headers that are beyond standard ones supported by ethtool
+> (e.g. PFCP or GTP-U).
+> 
+> Like for matching GTP-U's TEID value 0x10203040:
+> ethtool -N ens787f0v0 flow-type udp4 dst-port 2152 \
+>
+
 
 _______________________________________________
 Intel-wired-lan mailing list
