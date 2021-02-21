@@ -1,67 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89A83320670
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Feb 2021 18:32:15 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 030018376D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Feb 2021 17:32:13 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mP_VtxyhkQNX for <lists+intel-wired-lan@lfdr.de>;
-	Sat, 20 Feb 2021 17:32:13 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix, from userid 1001)
-	id 3999D8374F; Sat, 20 Feb 2021 17:32:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0DA2981DBF;
-	Sat, 20 Feb 2021 17:32:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC5201BF962
- for <intel-wired-lan@osuosl.org>; Sat, 20 Feb 2021 17:31:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE8A1320935
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Feb 2021 09:38:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E863B87109
- for <intel-wired-lan@osuosl.org>; Sat, 20 Feb 2021 17:31:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 987DF87058;
+	Sun, 21 Feb 2021 08:38:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tGewuV1tDbhM for <intel-wired-lan@osuosl.org>;
- Sat, 20 Feb 2021 17:31:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g8trcrv4XPxo; Sun, 21 Feb 2021 08:38:29 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5EC9B8706A;
+	Sun, 21 Feb 2021 08:38:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 66C5D1BF2BA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 08:38:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 542F383443
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 08:38:27 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NwBOO5xqC-l0 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 21 Feb 2021 08:38:26 +0000 (UTC)
+Received: by smtp1.osuosl.org (Postfix, from userid 1001)
+ id 9A6F3835B9; Sun, 21 Feb 2021 08:38:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 17A3287104
- for <intel-wired-lan@osuosl.org>; Sat, 20 Feb 2021 17:31:56 +0000 (UTC)
-IronPort-SDR: 7k1iUabPZhDm3qNBLPsctFrAC8LoW8hctPme4iQhXczdXdhc+UTEU5EFfahhAx4jilwgGZ/Vdn
- Hl6lP+ne5D6Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9901"; a="184172119"
-X-IronPort-AV: E=Sophos;i="5.81,193,1610438400"; d="scan'208";a="184172119"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 574D783443
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 08:38:25 +0000 (UTC)
+IronPort-SDR: fdcFOTrPn6+E5NGENG7Wdm4AdBv7vK6rgEPzTzdlRs2Bd2IlkxS4dheD6eSCFK5O1eBUFswA2X
+ JHsUMYqdtanw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9901"; a="184264001"
+X-IronPort-AV: E=Sophos;i="5.81,194,1610438400"; d="scan'208";a="184264001"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2021 09:31:55 -0800
-IronPort-SDR: KgPhHPtlD7KFylUhrimgd66/a1dAUYeyW6WpLJ89hsWFJK1dKPQLniEoCQ/ZY/8V6PxktKrjpG
- k3tgr6S9sNOQ==
-X-IronPort-AV: E=Sophos;i="5.81,193,1610438400"; d="scan'208";a="401583896"
-Received: from sorgil-mobl.ger.corp.intel.com (HELO [10.214.251.204])
- ([10.214.251.204])
+ 21 Feb 2021 00:38:24 -0800
+IronPort-SDR: wYUklQqUEMfW+slH3RopgFkWsfgY8Njx39eALSpfvGAtZewqsApRKU/hkNo6ahix7Oionby1YD
+ CfmfiSiNHL1g==
+X-IronPort-AV: E=Sophos;i="5.81,194,1610438400"; d="scan'208";a="401896980"
+Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2021 09:31:54 -0800
-To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
- intel-wired-lan@osuosl.org
-References: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
- <20210219163648.14581-2-muhammad.husaini.zulkifli@intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <4b2f2fd8-7446-ce64-644c-93f6aba62623@intel.com>
-Date: Sat, 20 Feb 2021 19:31:52 +0200
+ 21 Feb 2021 00:38:22 -0800
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
+ anna.kostyukovsky@intel.com
+References: <20210214071749.4068885-1-sasha.neftin@intel.com>
+From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <4b510df9-4f6b-0c16-beaf-30bc718421f7@linux.intel.com>
+Date: Sun, 21 Feb 2021 10:38:23 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210219163648.14581-2-muhammad.husaini.zulkifli@intel.com>
+In-Reply-To: <20210214071749.4068885-1-sasha.neftin@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net v1 1/2] igc: Fix Pause Frame
- Advertising
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unused
+ MII_CR_LOOPBACK
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,47 +72,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mallikarjuna.chilakala@intel.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2/19/2021 18:36, Muhammad Husaini Zulkifli wrote:
-> Fix Pause Frame Advertising when getting the advertisement via ethtool.
-> Remove setting the "advertising" bit in link_ksettings during default
-> case when tx and rx are in off state with Auto Negotiatiate off.
+On 14/02/2021 09:17, Sasha Neftin wrote:
+> MII_CR_LOOPBACK masks not in use in i225 device and can be removed.
 > 
-> Below is the original output of advertisement link during tx and rx off:
-> Advertised pause frame use: Symmetric Receive-only
-> 
-> Expected output:
-> Advertised pause frame use: No
-> 
-> Fixes: 8c5ad0dae93c ("igc: Add ethtool support")
-> Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-> Reviewed-by: Malli C <mallikarjuna.chilakala@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->   drivers/net/ethernet/intel/igc/igc_ethtool.c | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
+>   drivers/net/ethernet/intel/igc/igc_defines.h | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> index 824a6c454bca..67a4aed45fc2 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> @@ -1725,9 +1725,7 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
->   						     Asym_Pause);
->   		break;
->   	default:
-> -		ethtool_link_ksettings_add_link_mode(cmd, advertising, Pause);
-> -		ethtool_link_ksettings_add_link_mode(cmd, advertising,
-> -						     Asym_Pause);
-> +		break;
->   	}
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index c5b36ec7bcff..153561291166 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -441,7 +441,6 @@
+>   #define MII_CR_RESTART_AUTO_NEG	0x0200  /* Restart auto negotiation */
+>   #define MII_CR_POWER_DOWN	0x0800  /* Power down */
+>   #define MII_CR_AUTO_NEG_EN	0x1000  /* Auto Neg Enable */
+> -#define MII_CR_LOOPBACK		0x4000  /* 0 = normal, 1 = loopback */
 >   
->   	status = pm_runtime_suspended(&adapter->pdev->dev) ?
+>   /* PHY Status Register */
+>   #define MII_SR_LINK_STATUS	0x0004 /* Link Status 1 = link */
 > 
-Acked-by: Sasha Neftin <sasha.neftin@intel.com>
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
