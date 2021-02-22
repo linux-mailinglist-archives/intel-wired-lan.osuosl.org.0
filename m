@@ -2,56 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E121A3212B6
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:08:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 534933212B8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:08:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9446285D87;
-	Mon, 22 Feb 2021 09:08:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 06AE485D17;
+	Mon, 22 Feb 2021 09:08:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FicE50g0Cxqb; Mon, 22 Feb 2021 09:08:34 +0000 (UTC)
+	with ESMTP id wfkTkrTMf5aM; Mon, 22 Feb 2021 09:08:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67F0C85D39;
-	Mon, 22 Feb 2021 09:08:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C956785D44;
+	Mon, 22 Feb 2021 09:08:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5EEC11BF38E
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4ECAE1BF38E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4D6686F539
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 39E5C83880
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U-37RqTgEOFw for <intel-wired-lan@osuosl.org>;
- Mon, 22 Feb 2021 09:08:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 74AtMSLdjq4v for <intel-wired-lan@osuosl.org>;
+ Mon, 22 Feb 2021 09:08:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4E13F60590
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:31 +0000 (UTC)
-IronPort-SDR: DKCqDEpaeRwN808WUShlQMXiJnfwhd43Xk78KNemOhxJ7/v2xTzzaZwURTCvAjDPU9JksLzmp3
- NczcuGSgFrgQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="245808794"
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="245808794"
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2C1918380E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:47 +0000 (UTC)
+IronPort-SDR: 3srrbnUolnRmJXyxyRbtKYCkG5krsENDZ4lQTRA4JG5DjRUibqq+tqB/Zr3kvw+uoywv61PsYE
+ jxuUf7T8VH/g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="172041123"
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="172041123"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:08:30 -0800
-IronPort-SDR: qJRiCH3hX4+elj+r+wBL1KmNOudENuWVlP9rN0ui+/sdyF3Pbkp/rhlKDbDcmxJ4D9kAJv3WyH
- VYljufiu4+UQ==
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321592"
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 01:08:45 -0800
+IronPort-SDR: BTh+cfDlOjIBtJAi2jXbLITQv7s2jKjz5GC2iHJESlBabvAGDvx71xb3pU7klXvq+nJEPlrQKu
+ cl+3LhrSuBSw==
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321633"
 Received: from coffy.sc.intel.com ([10.3.79.166])
  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:08:24 -0800
+ 22 Feb 2021 01:08:35 -0800
 From: Jithu Joseph <jithu.joseph@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Mon, 22 Feb 2021 01:09:32 -0800
-Message-Id: <20210222090936.6768-6-jithu.joseph@intel.com>
+Date: Mon, 22 Feb 2021 01:09:33 -0800
+Message-Id: <20210222090936.6768-7-jithu.joseph@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210222090936.6768-1-jithu.joseph@intel.com>
 References: <20210222090936.6768-1-jithu.joseph@intel.com>
-Subject: [Intel-wired-lan] [PATCH v4 5/9] igc: Introduce TX/RX stats helpers
+Subject: [Intel-wired-lan] [PATCH v4 6/9] igc: Introduce
+ igc_unmap_tx_buffer() helper
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,92 +75,119 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 From: Andre Guedes <andre.guedes@intel.com>
 
 In preparation for AF_XDP zero-copy support, encapsulate the code that
-updates the driver RX stats in its own local helper so it can be reused
-in the zero-copy path. Likewise, encapsulate TX stats code as well.
+unmaps tx buffers into its own local helper so we can reuse it, avoiding
+code duplication.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
 Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 43 ++++++++++++++++-------
- 1 file changed, 31 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 49 +++++++----------------
+ 1 file changed, 15 insertions(+), 34 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 26208441aad3..389df007f050 100644
+index 389df007f050..fbb6aeea95cd 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2111,6 +2111,20 @@ static void igc_finalize_xdp(struct igc_adapter *adapter, int status)
- 		xdp_do_flush();
+@@ -171,6 +171,14 @@ static void igc_get_hw_control(struct igc_adapter *adapter)
+ 	     ctrl_ext | IGC_CTRL_EXT_DRV_LOAD);
  }
  
-+static void igc_update_rx_stats(struct igc_q_vector *q_vector,
-+				unsigned int packets, unsigned int bytes)
++static void igc_unmap_tx_buffer(struct device *dev, struct igc_tx_buffer *buf)
 +{
-+	struct igc_ring *ring = q_vector->rx.ring;
++	dma_unmap_single(dev, dma_unmap_addr(buf, dma),
++			 dma_unmap_len(buf, len), DMA_TO_DEVICE);
 +
-+	u64_stats_update_begin(&ring->rx_syncp);
-+	ring->rx_stats.packets += packets;
-+	ring->rx_stats.bytes += bytes;
-+	u64_stats_update_end(&ring->rx_syncp);
-+
-+	q_vector->rx.total_packets += packets;
-+	q_vector->rx.total_bytes += bytes;
-+}
-+
- static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- {
- 	unsigned int total_bytes = 0, total_packets = 0;
-@@ -2234,12 +2248,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 	/* place incomplete frames back on ring for completion */
- 	rx_ring->skb = skb;
- 
--	u64_stats_update_begin(&rx_ring->rx_syncp);
--	rx_ring->rx_stats.packets += total_packets;
--	rx_ring->rx_stats.bytes += total_bytes;
--	u64_stats_update_end(&rx_ring->rx_syncp);
--	q_vector->rx.total_packets += total_packets;
--	q_vector->rx.total_bytes += total_bytes;
-+	igc_update_rx_stats(q_vector, total_packets, total_bytes);
- 
- 	if (cleaned_count)
- 		igc_alloc_rx_buffers(rx_ring, cleaned_count);
-@@ -2247,6 +2256,20 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 	return total_packets;
- }
- 
-+static void igc_update_tx_stats(struct igc_q_vector *q_vector,
-+				unsigned int packets, unsigned int bytes)
-+{
-+	struct igc_ring *ring = q_vector->tx.ring;
-+
-+	u64_stats_update_begin(&ring->tx_syncp);
-+	ring->tx_stats.bytes += bytes;
-+	ring->tx_stats.packets += packets;
-+	u64_stats_update_end(&ring->tx_syncp);
-+
-+	q_vector->tx.total_bytes += bytes;
-+	q_vector->tx.total_packets += packets;
++	dma_unmap_len_set(buf, len, 0);
 +}
 +
  /**
-  * igc_clean_tx_irq - Reclaim resources after transmit completes
-  * @q_vector: pointer to q_vector containing needed info
-@@ -2349,12 +2372,8 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+  * igc_clean_tx_ring - Free Tx Buffers
+  * @tx_ring: ring to be cleaned
+@@ -188,11 +196,7 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+ 		else
+ 			dev_kfree_skb_any(tx_buffer->skb);
  
- 	i += tx_ring->count;
- 	tx_ring->next_to_clean = i;
--	u64_stats_update_begin(&tx_ring->tx_syncp);
--	tx_ring->tx_stats.bytes += total_bytes;
--	tx_ring->tx_stats.packets += total_packets;
--	u64_stats_update_end(&tx_ring->tx_syncp);
--	q_vector->tx.total_bytes += total_bytes;
--	q_vector->tx.total_packets += total_packets;
-+
-+	igc_update_tx_stats(q_vector, total_packets, total_bytes);
+-		/* unmap skb header data */
+-		dma_unmap_single(tx_ring->dev,
+-				 dma_unmap_addr(tx_buffer, dma),
+-				 dma_unmap_len(tx_buffer, len),
+-				 DMA_TO_DEVICE);
++		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
  
- 	if (test_bit(IGC_RING_FLAG_TX_DETECT_HANG, &tx_ring->flags)) {
- 		struct igc_hw *hw = &adapter->hw;
+ 		/* check for eop_desc to determine the end of the packet */
+ 		eop_desc = tx_buffer->next_to_watch;
+@@ -211,10 +215,7 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+ 
+ 			/* unmap any remaining paged data */
+ 			if (dma_unmap_len(tx_buffer, len))
+-				dma_unmap_page(tx_ring->dev,
+-					       dma_unmap_addr(tx_buffer, dma),
+-					       dma_unmap_len(tx_buffer, len),
+-					       DMA_TO_DEVICE);
++				igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 		}
+ 
+ 		/* move us one more past the eop_desc for start of next pkt */
+@@ -1218,11 +1219,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 	/* clear dma mappings for failed tx_buffer_info map */
+ 	while (tx_buffer != first) {
+ 		if (dma_unmap_len(tx_buffer, len))
+-			dma_unmap_page(tx_ring->dev,
+-				       dma_unmap_addr(tx_buffer, dma),
+-				       dma_unmap_len(tx_buffer, len),
+-				       DMA_TO_DEVICE);
+-		dma_unmap_len_set(tx_buffer, len, 0);
++			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 
+ 		if (i-- == 0)
+ 			i += tx_ring->count;
+@@ -1230,11 +1227,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 	}
+ 
+ 	if (dma_unmap_len(tx_buffer, len))
+-		dma_unmap_single(tx_ring->dev,
+-				 dma_unmap_addr(tx_buffer, dma),
+-				 dma_unmap_len(tx_buffer, len),
+-				 DMA_TO_DEVICE);
+-	dma_unmap_len_set(tx_buffer, len, 0);
++		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 
+ 	dev_kfree_skb_any(tx_buffer->skb);
+ 	tx_buffer->skb = NULL;
+@@ -2320,14 +2313,7 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+ 		else
+ 			napi_consume_skb(tx_buffer->skb, napi_budget);
+ 
+-		/* unmap skb header data */
+-		dma_unmap_single(tx_ring->dev,
+-				 dma_unmap_addr(tx_buffer, dma),
+-				 dma_unmap_len(tx_buffer, len),
+-				 DMA_TO_DEVICE);
+-
+-		/* clear tx_buffer data */
+-		dma_unmap_len_set(tx_buffer, len, 0);
++		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 
+ 		/* clear last DMA location and unmap remaining buffers */
+ 		while (tx_desc != eop_desc) {
+@@ -2341,13 +2327,8 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+ 			}
+ 
+ 			/* unmap any remaining paged data */
+-			if (dma_unmap_len(tx_buffer, len)) {
+-				dma_unmap_page(tx_ring->dev,
+-					       dma_unmap_addr(tx_buffer, dma),
+-					       dma_unmap_len(tx_buffer, len),
+-					       DMA_TO_DEVICE);
+-				dma_unmap_len_set(tx_buffer, len, 0);
+-			}
++			if (dma_unmap_len(tx_buffer, len))
++				igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 		}
+ 
+ 		/* move us one more past the eop_desc for start of next pkt */
 -- 
 2.17.1
 
