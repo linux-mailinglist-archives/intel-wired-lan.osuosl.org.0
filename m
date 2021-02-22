@@ -1,82 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C35CD32111F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 08:07:54 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9287321121
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 08:07:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 68D598381F;
-	Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FD5D85BB5;
+	Mon, 22 Feb 2021 07:07:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8Xs9VBfZ62DT; Mon, 22 Feb 2021 07:07:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8GGjeoKPW60C; Mon, 22 Feb 2021 07:07:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 434C983777;
-	Mon, 22 Feb 2021 07:07:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DA79885B81;
+	Mon, 22 Feb 2021 07:07:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 82FFA1BF983
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:47 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C79B11BF983
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7E4E883777
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C36B4870A1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rW687Tp3-xow for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Feb 2021 07:07:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rozRvTQqUsGa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4DAF983518
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2102187098
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613977665;
+ s=mimecast20190719; t=1613977671;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gAp2I2H4ORRdIzGQOTnp0OVejY1BSXenzSWMruiT71M=;
- b=NFU5Sf5kEfWchApMuobgiGkKDzbrmTgczhVWC0OCBueDNoAmhnmp/nUgt81smUs4meEw52
- DORgjc0BAjJUKmkV/RtNYoYTztZPk7QDi24U5Bud6oW0eRLieSN526IoWTX3+HT2WXH/7U
- eiXlyYwKL66yB5PBACMGwPJWoqju8wM=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-213-7oYKoSp5M6ChzDvdZHgtSQ-1; Mon, 22 Feb 2021 02:07:41 -0500
-X-MC-Unique: 7oYKoSp5M6ChzDvdZHgtSQ-1
-Received: by mail-pj1-f72.google.com with SMTP id w2so1673331pjk.4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 23:07:40 -0800 (PST)
+ bh=SfjcSkeuCzE9/+CoYCFIFTm1Ke7Qr71yxOHQpPA/W1c=;
+ b=F9OhE3QTwJ7Y0W1XA7oFnSiMHvyrWCUFGUG2NXUQMZAeCJB22vSmfwJ2+CZKEHNYftcAkl
+ /5o59CzPglyMISl2x/I2yBmu1Qqk1OH6icisICAhAS415aXrNGrRkQIs7dby3m1V9SJyp6
+ OmHk/p26oxVWcB1bAryamYSTlp9J074=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-417-pPQfL_i2MXmDYJZhMTQ-3g-1; Mon, 22 Feb 2021 02:07:49 -0500
+X-MC-Unique: pPQfL_i2MXmDYJZhMTQ-3g-1
+Received: by mail-pf1-f198.google.com with SMTP id y17so308631pfp.18
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 23:07:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gAp2I2H4ORRdIzGQOTnp0OVejY1BSXenzSWMruiT71M=;
- b=Q8+oZdvOhvbi+7kWZH2+LAzkvHtw65VCsczDPo/lH2jw4xqYnG54R6wZkMkVHrfwCy
- O4ggWayG6EfMxc4upkfsiVGIM6gUKc8Nmq+NC64Sdgd0d66l+9tgXKcqjycZkDzrDBoA
- tzcv3Ip5OwDfLlcgtK3YkL3hXEv+bglPKTwYmkRmLJGfwJrocl44Zg6rz3Ehuyp3B2QL
- 5GzvMWfCASX3ljIEl4T7b55/5rhGp6fprZsX7vhvsGVPiCtgFkhL+m7H/Qa09XH69fHx
- vEoEeNOyVlxY8Bf4VAKNDq1tDqQ2RydeJDvyCCANMlDBKAGxys7uPDLGbe1/ZSTswSO+
- mwrQ==
-X-Gm-Message-State: AOAM530CGq97G6TS91X2BfoMiKdm7HQu1zrh4lo/zpQ6bLzFQovH/zQ8
- I4348tNAglaYkMCseqQMW+tyi1yh1rTT+D0PbVyOsnqm1f8J60FP7p+tAl9ZvzqrVykhPFYBApZ
- +ZoOjA4Vrmd2LmhpFP5OzGHasc6UXfg==
-X-Received: by 2002:a17:90a:194b:: with SMTP id
- 11mr21935619pjh.100.1613977660051; 
- Sun, 21 Feb 2021 23:07:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx1p7DWcYJD3VbncV/CfHu7aM+wNHjZQUVuys68WjauioDf0PpZYeqnLQl9yRTiF9YT6Xnl0w==
-X-Received: by 2002:a17:90a:194b:: with SMTP id
- 11mr21935603pjh.100.1613977659906; 
- Sun, 21 Feb 2021 23:07:39 -0800 (PST)
+ bh=SfjcSkeuCzE9/+CoYCFIFTm1Ke7Qr71yxOHQpPA/W1c=;
+ b=P5zvwLAynrOfITeCUmCfAWi2Wbqk8zPSC6kLFeHGaRByJwtbt64B/L8GDhzpFUYqu9
+ vRtw3jtFeoZisyYhv1bZFbLC3qvdWmGAugWX2NSXYkQw02l2rN1helpee2g0genRx1ux
+ rAEvTDHLuHJND7WfQcrdFNS5dMTsqYYaxMc3s4cj9Z98ex/yX1vm9ZDhluZ27ne2taT0
+ pCdkruH6KoXJdaK30ImgjIAH/J8/30BPQjT9ASu1dS+1LZC++nypbjJ3GCawKf14C1Ny
+ xFYbsob4phljzk3aITu7fD4HCRhKb9WTqGCZS7w4mM4fwriWqswrZDrkZDi6MT08bXKc
+ vq9A==
+X-Gm-Message-State: AOAM530UUeHgMiYofmTWltLEmnVBPHnBHXjiLqhy6YKsLcGTyZfbCwAU
+ Mwto/wXVeQ8r5mDrZO7CRFvYB5p0LFg15jga/ZIyar5VVJGEkSujgi7+GI1wydoQb9qepq3sPRr
+ /u/j74bL1jDZy69RUg4lQ4UIpFITRwg==
+X-Received: by 2002:a63:90c9:: with SMTP id a192mr19124717pge.8.1613977668235; 
+ Sun, 21 Feb 2021 23:07:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwP+/I77AvpPaCYZWkNUEmz3EntQVTfgkKGYRyDaFQPkLb+Affv8SxoduV3LDfkj7rLRdqY7Q==
+X-Received: by 2002:a63:90c9:: with SMTP id a192mr19124701pge.8.1613977668054; 
+ Sun, 21 Feb 2021 23:07:48 -0800 (PST)
 Received: from localhost ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id h186sm13422121pgc.38.2021.02.21.23.07.38
+ by smtp.gmail.com with ESMTPSA id a24sm18029132pff.18.2021.02.21.23.07.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 23:07:39 -0800 (PST)
+ Sun, 21 Feb 2021 23:07:47 -0800 (PST)
 From: Coiby Xu <coxu@redhat.com>
 To: netdev@vger.kernel.org
-Date: Mon, 22 Feb 2021 15:06:59 +0800
-Message-Id: <20210222070701.16416-3-coxu@redhat.com>
+Date: Mon, 22 Feb 2021 15:07:00 +0800
+Message-Id: <20210222070701.16416-4-coxu@redhat.com>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210222070701.16416-1-coxu@redhat.com>
 References: <20210222070701.16416-1-coxu@redhat.com>
@@ -85,8 +83,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=coxu@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [RFC PATCH 2/4] i40e: use minimal rx and tx ring
- buffers for kdump
+Subject: [Intel-wired-lan] [RFC PATCH 3/4] i40e: use minimal admin queue for
+ kdump
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,30 +105,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use the minimum of the number of descriptors thus we will allocate the
-minimal ring buffers for kdump.
+The minimum size of admin send/receive queue is 1 and 2 respectively.
+The admin send queue can't be set to 1 because in that case, the
+firmware would fail to init.
 
 Signed-off-by: Coiby Xu <coxu@redhat.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/net/ethernet/intel/i40e/i40e.h      | 2 ++
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 9 +++++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 118473dfdcbd..e106c33ff958 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -66,6 +66,8 @@
+ #define I40E_FDIR_RING_COUNT		32
+ #define I40E_MAX_AQ_BUF_SIZE		4096
+ #define I40E_AQ_LEN			256
++#define I40E_MIN_ARQ_LEN		1
++#define I40E_MIN_ASQ_LEN		2
+ #define I40E_AQ_WORK_LIMIT		66 /* max number of VFs + a little */
+ #define I40E_MAX_USER_PRIORITY		8
+ #define I40E_DEFAULT_TRAFFIC_CLASS	BIT(0)
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 069c86e2f69d..5307f1744766 100644
+index 5307f1744766..2fd8db80b585 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -10552,6 +10552,11 @@ static int i40e_set_num_rings_in_vsi(struct i40e_vsi *vsi)
- 		return -ENODATA;
- 	}
+@@ -14847,8 +14847,13 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  
+ 	i40e_check_recovery_mode(pf);
+ 
+-	hw->aq.num_arq_entries = I40E_AQ_LEN;
+-	hw->aq.num_asq_entries = I40E_AQ_LEN;
 +	if (is_kdump_kernel()) {
-+		vsi->num_tx_desc = I40E_MIN_NUM_DESCRIPTORS;
-+		vsi->num_rx_desc = I40E_MIN_NUM_DESCRIPTORS;
++		hw->aq.num_arq_entries = I40E_MIN_ARQ_LEN;
++		hw->aq.num_asq_entries = I40E_MIN_ASQ_LEN;
++	} else {
++		hw->aq.num_arq_entries = I40E_AQ_LEN;
++		hw->aq.num_asq_entries = I40E_AQ_LEN;
 +	}
-+
- 	return 0;
- }
- 
+ 	hw->aq.arq_buf_size = I40E_MAX_AQ_BUF_SIZE;
+ 	hw->aq.asq_buf_size = I40E_MAX_AQ_BUF_SIZE;
+ 	pf->adminq_work_limit = I40E_AQ_WORK_LIMIT;
 -- 
 2.30.0
 
