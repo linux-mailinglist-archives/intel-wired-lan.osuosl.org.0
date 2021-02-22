@@ -1,83 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD91A321B2F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 16:18:20 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AB5E321E1B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 18:31:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5CAED83A58;
-	Mon, 22 Feb 2021 15:18:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BEF61853FF;
+	Mon, 22 Feb 2021 17:31:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yBz4qYEni7XQ; Mon, 22 Feb 2021 15:18:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rzSJTptd_eu1; Mon, 22 Feb 2021 17:31:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1AA6B83A43;
-	Mon, 22 Feb 2021 15:18:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EDB71853C3;
+	Mon, 22 Feb 2021 17:31:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 52DD91BF395
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 04:00:24 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 78ECE1BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 17:31:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 41C9F6F4E7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 04:00:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 74E1B84CC2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 17:31:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xnLaZ5d9sBgQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Feb 2021 04:00:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-ot1-f42.google.com (mail-ot1-f42.google.com
- [209.85.210.42])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 616D56E56C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 04:00:23 +0000 (UTC)
-Received: by mail-ot1-f42.google.com with SMTP id s6so10800375otk.4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 20:00:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=C5jIWv0u/h+FrMMOIfXvwXHSiJidvB2uvWg+IEoiJkE=;
- b=M58Px5orX5sa0ekAkac9dTSAS3FDni8kEtoAECfPlUVtOCzAajbxV0DUD8Mw7NiotU
- vDu0/B4I+LsI/uPyS2OskP0RTzpbJeXOenfk9j2lqDBjd+aJeSW4R1C1WLd7ZCZcZjC0
- uKsSX2euKpZnvsgasRRc5L0oLEKprEMjbSiPsavzL0XgRnZR4SNvF4qPfWef+0jwoSig
- 69LIXMfmYT83RfVsBGMuybzGeR1+j+3dLMxKlGea+4VSjPrhrq5KgQfgDFgOFlGMKFiV
- AeEMnQ0L6Gb8X/vmc1UBzQd5Zl19QeTRWVDjNYDUPuUrz8BeWT+g3TDST9gGbYXn7osa
- bnuw==
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OOgZG3shAMTQ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Feb 2021 17:30:58 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com
+ [209.85.216.45])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7F8C6853FF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 17:30:58 +0000 (UTC)
+Received: by mail-pj1-f45.google.com with SMTP id cx11so6937528pjb.4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 09:30:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=networkplumber-org.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:subject:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CxYzf4iLrKHCNKtHQ8ZsS9KmxE98OKU/5kuL1yqgG3s=;
+ b=XaIkwyiGigPzswwJKjhuEbwPTUCBlv7WNqN8BoEufH35e4u2gdHXrZd7wZxhdZBJ8e
+ qKFHOycuNMFa8CRTx0/1CjPoDTXPVa+awBw4tOjLlN4CuW2nLY0H99kut7EF2JqzNKTb
+ lLQs5iSpgiaSyF0j47dh8zeaQ9UJBSDRjYWXqcv+7mSLtckltreiUjOdVCkT+ltOQFeJ
+ IQF4qxvLhOrodxIKh39Ka3bvtFVKiwc8J4EU21TAt2tAWA9ccVD9gXwQkM1I2Tbw3r62
+ eUMFcOpDns4YH7YqRbRGKnU9F1yigxWDPXCbRgykJpI1E8tvVp/y4whoqwYPcYr5zqF6
+ bMjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=C5jIWv0u/h+FrMMOIfXvwXHSiJidvB2uvWg+IEoiJkE=;
- b=da+QhH0CYLUma1h57P/Oqznm7ZaKGuO2+3Am+ieF1AJH8LIiA2lOyLFyjTY44rwIvS
- S2TPcDceeQEmA047lzfQUFCznCfVovIdDpsT2o+atgkZMCYDGZEMZX59hFid+76B2M7h
- O3s1rODY0R0eha63hMrNosQQ+KPpfPp+YJjbuR0PsGg9gtqGLbQa/JqngnC6/79bB+Sh
- nM4dN3/P7YH5nWyasEIqwvkIhl6sMJRWphJHDzwiwJ9D+eE7CxAU6jDHvLed3SYAVLTv
- Ka7Z5U7S+L8K3z2e/hlazrN+nehDONGse85mW0vaOiSTLAjcqMCkTPm559Nhwuj/MFeg
- oLrA==
-X-Gm-Message-State: AOAM532vZ0fQYZk+a0xoB/536a+uAH1//cmJgUDPysmeXygCAKfVkTmA
- rGyQy39kGl1ImfTjLodtY5M=
-X-Google-Smtp-Source: ABdhPJzeYek00EABJJvfObC0rnsof0j4x0xOEp9BTT0GPsxltcyoiuXo9Te9HDLWRN9E1tfkHB7Nbg==
-X-Received: by 2002:a9d:8b2:: with SMTP id 47mr7876942otf.24.1613966422518;
- Sun, 21 Feb 2021 20:00:22 -0800 (PST)
-Received: from proxmox.local.lan
- (2603-80a0-0e01-cc2f-0226-b9ff-fe41-ba6b.res6.spectrum.com.
- [2603:80a0:e01:cc2f:226:b9ff:fe41:ba6b])
- by smtp.googlemail.com with ESMTPSA id t2sm3518066otj.47.2021.02.21.20.00.21
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-transfer-encoding;
+ bh=CxYzf4iLrKHCNKtHQ8ZsS9KmxE98OKU/5kuL1yqgG3s=;
+ b=RxIaFbCuP918aEVoQpN7iTVUofu7F4dDFbAQYxpQ+4l35dtQAadqi5/6Yq8Tk9fwZw
+ +q/oW+uCTfymB0mcEZxF4FN590IWchtInxhFRXSgbfCqAD20ZDuYzUdPDGe9c6+6GVsv
+ ofej8G5SU9Os5Kf6BlxosM/yD2QGZnNQNCOX1dyvC6i1q+zeCEYufPAo4RLFmQziJlWM
+ DG6PwC29Ao1R/rJHZzYH1xnIoquc917fzslPxNekadsOU1q1B4EbdvAJo+GVILF/T/T9
+ bEqq1sUQPl9f4dJxLeHEgzEH+oF+eu7Dn88X2JQOSZYOoCFj2Ny6y+LiPnvv0a2SoIVC
+ gFvw==
+X-Gm-Message-State: AOAM532mPMK3PflX3JVkpgVy60ZFRxFTC79/bzKoIaMAff8kVfg3/jaz
+ GZl4lGXTE3y9/j328CilCPM1yA==
+X-Google-Smtp-Source: ABdhPJzsViG/yiG2kRNGPFqgCBjD3OELbUW7NmoH3HkhXhsCPP47+1CrpS2MOtTKduUeVOkiaaX4Gg==
+X-Received: by 2002:a17:902:bb97:b029:e3:99a6:741d with SMTP id
+ m23-20020a170902bb97b02900e399a6741dmr23116038pls.48.1614015057903; 
+ Mon, 22 Feb 2021 09:30:57 -0800 (PST)
+Received: from hermes.local (mobile-166-176-184-131.mycingular.net.
+ [166.176.184.131])
+ by smtp.gmail.com with ESMTPSA id i16sm18241023pgv.60.2021.02.22.09.30.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 20:00:22 -0800 (PST)
-From: Tom Seewald <tseewald@gmail.com>
-To: netdev@vger.kernel.org
-Date: Sun, 21 Feb 2021 22:00:05 -0600
-Message-Id: <20210222040005.20126-2-tseewald@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210222040005.20126-1-tseewald@gmail.com>
-References: <20210222040005.20126-1-tseewald@gmail.com>
+ Mon, 22 Feb 2021 09:30:57 -0800 (PST)
+Date: Mon, 22 Feb 2021 09:30:49 -0800
+From: Stephen Hemminger <stephen@networkplumber.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <20210222093049.395aea61@hermes.local>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 22 Feb 2021 15:18:09 +0000
-Subject: [Intel-wired-lan] [PATCH net 2/2] igb: Fix duplicate include guard
+Subject: [Intel-wired-lan] Fw: [Bug 211859] New: Difficulties with macvlan
+ on igc network driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,51 +87,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Auke Kok <auke-jan.h.kok@intel.com>, Jeff Garzik <jeff@garzik.org>,
- tseewald@gmail.com, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The include guard "_E1000_HW_H_" is used by two separate header files in
-two different drivers (e1000/e1000_hw.h and igb/e1000_hw.h). Using the
-same include guard macro in more than one header file may cause
-unexpected behavior from the compiler. Fix this by renaming the
-duplicate guard in the igb driver.
-
-Fixes: 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver")
-Signed-off-by: Tom Seewald <tseewald@gmail.com>
----
- drivers/net/ethernet/intel/igb/e1000_hw.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/e1000_hw.h b/drivers/net/ethernet/intel/igb/e1000_hw.h
-index 5d87957b2627..44111f65afc7 100644
---- a/drivers/net/ethernet/intel/igb/e1000_hw.h
-+++ b/drivers/net/ethernet/intel/igb/e1000_hw.h
-@@ -1,8 +1,8 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- /* Copyright(c) 2007 - 2018 Intel Corporation. */
- 
--#ifndef _E1000_HW_H_
--#define _E1000_HW_H_
-+#ifndef _E1000_IGB_HW_H_
-+#define _E1000_IGB_HW_H_
- 
- #include <linux/types.h>
- #include <linux/delay.h>
-@@ -551,4 +551,4 @@ s32 igb_write_pcie_cap_reg(struct e1000_hw *hw, u32 reg, u16 *value);
- 
- void igb_read_pci_cfg(struct e1000_hw *hw, u32 reg, u16 *value);
- void igb_write_pci_cfg(struct e1000_hw *hw, u32 reg, u16 *value);
--#endif /* _E1000_HW_H_ */
-+#endif /* _E1000_IGB_HW_H_ */
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CgpCZWdpbiBmb3J3YXJkZWQgbWVzc2FnZToKCkRhdGU6IFNhdCwgMjAgRmViIDIwMjEgMDE6MjE6
+MzIgKzAwMDAKRnJvbTogYnVnemlsbGEtZGFlbW9uQGJ1Z3ppbGxhLmtlcm5lbC5vcmcKVG86IHN0
+ZXBoZW5AbmV0d29ya3BsdW1iZXIub3JnClN1YmplY3Q6IFtCdWcgMjExODU5XSBOZXc6IERpZmZp
+Y3VsdGllcyB3aXRoIG1hY3ZsYW4gb24gaWdjIG5ldHdvcmsgZHJpdmVyCgoKaHR0cHM6Ly9idWd6
+aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMTE4NTkKCiAgICAgICAgICAgIEJ1ZyBJ
+RDogMjExODU5CiAgICAgICAgICAgU3VtbWFyeTogRGlmZmljdWx0aWVzIHdpdGggbWFjdmxhbiBv
+biBpZ2MgbmV0d29yayBkcml2ZXIKICAgICAgICAgICBQcm9kdWN0OiBOZXR3b3JraW5nCiAgICAg
+ICAgICAgVmVyc2lvbjogMi41CiAgICBLZXJuZWwgVmVyc2lvbjogNS40LjAtNjUtZ2VuZXJpYyAo
+eDg2XzY0KQogICAgICAgICAgSGFyZHdhcmU6IEFsbAogICAgICAgICAgICAgICAgT1M6IExpbnV4
+CiAgICAgICAgICAgICAgVHJlZTogTWFpbmxpbmUKICAgICAgICAgICAgU3RhdHVzOiBORVcKICAg
+ICAgICAgIFNldmVyaXR5OiBub3JtYWwKICAgICAgICAgIFByaW9yaXR5OiBQMQogICAgICAgICBD
+b21wb25lbnQ6IElQVjQKICAgICAgICAgIEFzc2lnbmVlOiBzdGVwaGVuQG5ldHdvcmtwbHVtYmVy
+Lm9yZwogICAgICAgICAgUmVwb3J0ZXI6IHBqd0ByaHltZS5jb20uYXUKICAgICAgICBSZWdyZXNz
+aW9uOiBObwoKRHJpdmVyOiBpZ2MKTklDOiBFdGhlcm5ldCBjb250cm9sbGVyOiBJbnRlbCBDb3Jw
+b3JhdGlvbiBEZXZpY2UgMTVmMyAocmV2IDAyKQpNb2JvOiBBU1VTIFo0OTAtSApGaXJtd2FyZTog
+MS40NSAobGF0ZXN0IGZyb20gSW50ZWwpCgoKVGhpcyBOSUMgaXMga25vd24gdG8gaGF2ZSBzb21l
+IGhhcmR3YXJlIHByb2JsZW1zLCBzbyB0aGlzIG1heSBiZQppbnN1cm1vdW50YWJsZS4gVGhhdCBz
+YWlkOgoKCkNyZWF0aW5nIGEgbWFjdmxhbiBhdHRhY2hlZCB0byB0aGlzIE5JQyByZXN1bHRzIGlu
+IGZhaWx1cmUgdG8gcm91dGUgTGF5ZXIgMgptZXNzYWdlcyBjb3JyZWN0bHkgKHNwZWNpZmljYWxs
+eSwgREhDUE9GRkVSKS4gVGhlIGNvbmZpZyB1c2VkIHdhczoKCgppcCBsaW5rIGFkZCBtdmxhbl9u
+YW1lIGxpbmsgZXRoX25hbWUgdHlwZSBtYWN2bGFuIG1vZGUgYnJpZGdlCgoKV2hlbiB0aGUgbGlu
+ayBpcyBicm91Z2h0IHVwLCB2aXJ0dWFsYm94IFZNcyBjb25uZWN0ZWQgdG8gdGhlIOKAmG12bGFu
+X25hbWXigJkKaW50ZXJmYWNlIGluIGJyaWRnZWQgbW9kZSBjYW4gc2VuZCBESENQUkVRVUVTVCBt
+ZXNzYWdlcywgd2hpY2ggYXJlIHNlbnQKY29ycmVjdGx5IG92ZXIgdGhlIGludGVyZmFjZSwgYW5k
+IHJlY2VpdmVkIGJ5IHRoZSBzZXJ2ZXIuIFRoZSByZXNwb25zZQooREhDUE9GRkVSKSBpcyBuZXZl
+ciByb3V0ZWQgdG8gdGhlIFZNLgoKCkZ1cnRoZXIsIGF0dGFjaGluZyB0aGUgVk0gdG8gdGhlIE5J
+QyBpbnRlcmZhY2UgZGlyZWN0bHkgaW4gYnJpZGdlZCBtb2RlIGhhcyBhCnNpbWlsYXIgcmVzdWx0
+LgoKClBlcmZvcm1pbmcgZXhhY3RseSB0aGUgc2FtZSB0ZXN0cyBvbiBhIGRpZmZlcmVudCBOSUMg
+KEludGVsIENvcnBvcmF0aW9uIEkzNTAKR2lnYWJpdCBOZXR3b3JrIENvbm5lY3Rpb24gKHJldiAw
+MSkpLCByZXN1bHRzIGluIGNvcnJlY3QgZnVuY3Rpb25pbmc6IHRoZSB2bGFuCnNldHVwIHdvcmtz
+LCBhcyBkaXJlY3QgVk0gYnJpZGdpbmcgdG8gdGhlIE5JQy4KCi0tIApZb3UgbWF5IHJlcGx5IHRv
+IHRoaXMgZW1haWwgdG8gYWRkIGEgY29tbWVudC4KCllvdSBhcmUgcmVjZWl2aW5nIHRoaXMgbWFp
+bCBiZWNhdXNlOgpZb3UgYXJlIHRoZSBhc3NpZ25lZSBmb3IgdGhlIGJ1Zy4KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
+bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
