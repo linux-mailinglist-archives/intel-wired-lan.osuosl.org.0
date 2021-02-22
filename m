@@ -1,92 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16C0C321122
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 08:08:11 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AA2846F525;
-	Mon, 22 Feb 2021 07:08:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J3o8AsXxdWva; Mon, 22 Feb 2021 07:08:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 692C26F521;
-	Mon, 22 Feb 2021 07:08:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 160331BF983
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 390F23212B1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:07:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 10F2583842
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6678883829;
+	Mon, 22 Feb 2021 09:07:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3QGf08hWdaRC for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Feb 2021 07:08:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1956283841
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613977681;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8cGC74PMCnaWbBAWCVUBDXRxKgEXEKkWJtgVHkIGS/0=;
- b=JTAd8oucxlMcKjdlUPZ1DOyX0bIFVaZX55eLth+AsZBBasBhc/TX5SLnUuRRBCRe8l/IdE
- l48SAcRWwpFsE+a9/K5fjgwJRGfxuyYcNbqz/5hnVsxMj2VzR9POrPEFONgDhN4PmhGez+
- Dcu0Y4aLPGmvhA3BjnuNgu7T4wxtbqU=
-Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
- [209.85.210.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-585-WewXZRFSOvq7_t5WL5hwgQ-1; Mon, 22 Feb 2021 02:07:58 -0500
-X-MC-Unique: WewXZRFSOvq7_t5WL5hwgQ-1
-Received: by mail-pf1-f198.google.com with SMTP id s18so6665226pfe.10
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 23:07:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8cGC74PMCnaWbBAWCVUBDXRxKgEXEKkWJtgVHkIGS/0=;
- b=Osh9SXM7tcsIZRJEVzX2SmKgzSc0Y8pT4buMjT+WCI52Oe+LiDpuqSta700NWaR4EB
- C443PUTmyMUbm1OpQSAQPRQjdAy36nQKcn+vBXm3LVqNff35QDZ7zJWoAYFLOhqiK5Cu
- Hi0Frkp2MSGbE4RTjVmkMpNngRRxfZX0gVLUNvqAH39hbp9i1BXrRHsaOxypmofyQSHB
- esx79I0Bs35JQWZZwefcCr1H3Es2gl8Pc5AzOyvbwrim20ZcuzrKEUStgLGX5zDCm0ec
- IAj4EjtEvJQGnuXS+WrPSgG1bcz21SFtjqwHYLBA4VIrPfm4uLiDsdt7X5arfsSMa/9X
- 0Y6g==
-X-Gm-Message-State: AOAM530h1hHZJAVHJclMsNYFOxOsJLcysh2xp3kGctMMa/rdNFunsAmP
- 6LAi9rJHGX2fObCGP585lajL47QsY6Wnt5tF/XSLzOdKRLF7oFHaeWx8W1o0ufVelUmkHxkbI9D
- kZTiyL3krlzGzs1zNNvMfwdGpATYkQg==
-X-Received: by 2002:a63:3602:: with SMTP id d2mr18862401pga.81.1613977677767; 
- Sun, 21 Feb 2021 23:07:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzG0zRT+B2eqBSHJCG+woLse614WOgfmD0XJ5e3O9heRqpM5jj6GbtUXuwOa2JP1tEgm2+OsA==
-X-Received: by 2002:a63:3602:: with SMTP id d2mr18862385pga.81.1613977677597; 
- Sun, 21 Feb 2021 23:07:57 -0800 (PST)
-Received: from localhost ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id ig12sm8527195pjb.36.2021.02.21.23.07.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 23:07:57 -0800 (PST)
-From: Coiby Xu <coxu@redhat.com>
-To: netdev@vger.kernel.org
-Date: Mon, 22 Feb 2021 15:07:01 +0800
-Message-Id: <20210222070701.16416-5-coxu@redhat.com>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210222070701.16416-1-coxu@redhat.com>
-References: <20210222070701.16416-1-coxu@redhat.com>
-MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=coxu@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client for
- kdump
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id u_tuobzczOOH; Mon, 22 Feb 2021 09:07:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2843883852;
+	Mon, 22 Feb 2021 09:07:34 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A0F01BF38E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7559887128
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N0O6exr1dwzj for <intel-wired-lan@osuosl.org>;
+ Mon, 22 Feb 2021 09:07:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id BF8D887121
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:28 +0000 (UTC)
+IronPort-SDR: B6T/2W8wKN5zCofUwTe1mt0l8MJ3ChFTg8T+WSsbR6LwezAJKsry3CjadjRIR7UxrCgqRo1ft/
+ r5KrhGqui2LQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="180935364"
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="180935364"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 01:07:28 -0800
+IronPort-SDR: WDyfmzVN1xIFzuX37TSHDAR3SxtgCKEOmbZr4VBTFMEtoYT5tn4g+5HipVQbTIymx38jVx9L73
+ dorDFzXJLnAg==
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321281"
+Received: from coffy.sc.intel.com ([10.3.79.166])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 01:07:24 -0800
+From: Jithu Joseph <jithu.joseph@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Mon, 22 Feb 2021 01:09:27 -0800
+Message-Id: <20210222090936.6768-1-jithu.joseph@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH v4 0/9] igc: Add support for AF_XDP
+ zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,56 +63,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kexec@lists.infradead.org, open list <linux-kernel@vger.kernel.org>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
-i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
-for 1GbE while "craskernel=auto" only reserved 160M. With the module
-parameter "resource_profile=2", we can reduce the memory usage of i40iw
-to ~300M which is still too much for kdump.
+Hi all,
 
-Disabling the client registration would spare us the client interface
-operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
-saved for kdump.
+This is the fourth version of this series which adds AF_XDP zero-copy support
+to igc driver.
 
-Signed-off-by: Coiby Xu <coxu@redhat.com>
----
- drivers/net/ethernet/intel/i40e/i40e_client.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+The main changes from v3 are:
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
-index a2dba32383f6..aafc2587f389 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_client.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
-@@ -4,6 +4,7 @@
- #include <linux/list.h>
- #include <linux/errno.h>
- #include <linux/net/intel/i40e_client.h>
-+#include <linux/crash_dump.h>
- 
- #include "i40e.h"
- #include "i40e_prototype.h"
-@@ -741,6 +742,12 @@ int i40e_register_client(struct i40e_client *client)
- {
- 	int ret = 0;
- 
-+	/* Don't open i40iw client for kdump because i40iw will consume huge
-+	 * amounts of memory.
-+	 */
-+	if (is_kdump_kernel())
-+		return ret;
-+
- 	if (!client) {
- 		ret = -EIO;
- 		goto out;
+    - Renamed igc_xdp_run_prog() to __igc_xdp_run_prog()
+    - Reworded commit message for 2nd patch in this series as suggested
+      in the review
+    - igc_clean_rx_irq_zc() - Assigned ring->next_to_clean to local
+      variable for performance reasons as suggested in review comment
+    - igc_xdp_xmit_zc() - Assigned ring->next_to_use to local variable
+      and replaced work_done conditional variable as per review comment
+    - Added Maciej Fijalkowski's reviewed by tags
+
+Known issues (from v3):
+    When an XDP application is running in Tx-Only mode with Zero-Copy
+    enabled, it is not expected to add the frames to the fill-queue. I have
+    noticed the following two issues in this scenario:
+    - If XDP_USE_NEED_WAKEUP flag is not set by application, igc_poll()
+      will go into infinite loop because the buffer allocation resulting
+      in igc_clean_rx_irq_zc() indicating that all work is not done and NAPI
+      should keep polling. This does not occur if XDP_USE_NEED_WAKEUP
+      flag is set.
+    - Since there are no buffers allocated by userspace for the fill
+      queue, there is no memory allocated for the NIC to copy the data
+      to. If the packet received is destined to the hardware queue where
+      XDP application is running, no packets are received even on other
+      queues.
+    Both these issues can be mitigated by adding a few frames to the
+    fill queue. The second issue can also be mitigated by making sure no
+    packets are being received on the hardware queue where Rx is running.
+
+v3 is here:
+
+    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20210209024243.23406-1-vedang.patel@intel.com/
+
+v2 is here:
+
+    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201223203705.78705-1-andre.guedes@intel.com/
+
+v1 is here:
+
+    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201217202415.77891-1-andre.guedes@intel.com/
+
+Andre Guedes (9):
+  igc: Move igc_xdp_is_enabled()
+  igc: Refactor __igc_xdp_run_prog()
+  igc: Refactor igc_clean_rx_ring()
+  igc: Refactor XDP rxq info registration
+  igc: Introduce TX/RX stats helpers
+  igc: Introduce igc_unmap_tx_buffer() helper
+  igc: Replace IGC_TX_FLAGS_XDP flag by an enum
+  igc: Enable RX via AF_XDP zero-copy
+  igc: Enable TX via AF_XDP zero-copy
+
+ drivers/net/ethernet/intel/igc/igc.h      |  33 +-
+ drivers/net/ethernet/intel/igc/igc_base.h |   2 +
+ drivers/net/ethernet/intel/igc/igc_main.c | 651 ++++++++++++++++++----
+ drivers/net/ethernet/intel/igc/igc_xdp.c  | 107 +++-
+ drivers/net/ethernet/intel/igc/igc_xdp.h  |   8 +-
+ 5 files changed, 674 insertions(+), 127 deletions(-)
+
 -- 
-2.30.1
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
