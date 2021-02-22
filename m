@@ -2,56 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD6C43212BC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:09:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A0E4321328
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:33:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D69F84BB2;
-	Mon, 22 Feb 2021 09:09:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4975985660;
+	Mon, 22 Feb 2021 09:33:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yCJ4MTGoXA1v; Mon, 22 Feb 2021 09:09:19 +0000 (UTC)
+	with ESMTP id GmGMUI7K3W9P; Mon, 22 Feb 2021 09:33:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8A9ED847F8;
-	Mon, 22 Feb 2021 09:09:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 71E6A857C1;
+	Mon, 22 Feb 2021 09:33:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A86B11BF38E
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:09:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E25F81BF38E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:33:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 97FDE831A0
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:09:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D012B6F53A
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:33:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qomz0UMm3hRW for <intel-wired-lan@osuosl.org>;
- Mon, 22 Feb 2021 09:09:16 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YFYVsbwnAHSP for <intel-wired-lan@osuosl.org>;
+ Mon, 22 Feb 2021 09:33:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 494D283279
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:09:16 +0000 (UTC)
-IronPort-SDR: nwG6l2Gs3utHORJkVFpM/8rtS8zHNyuekWwOBaGK5yOhhKLQVlY5wHRSja0W2846A1JSB0VpaN
- /4qU1EzC6biw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="181880744"
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="181880744"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:09:15 -0800
-IronPort-SDR: Evi5t4DF3kIxqQwMrfwsZearGLQBEANAKj/e2EkRJcGw46MvCXYU7Z/odr5I+qS+BVNHnJhjw7
- 4/Cdzf+yZTNw==
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321784"
-Received: from coffy.sc.intel.com ([10.3.79.166])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:09:09 -0800
-From: Jithu Joseph <jithu.joseph@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Mon, 22 Feb 2021 01:09:36 -0800
-Message-Id: <20210222090936.6768-10-jithu.joseph@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210222090936.6768-1-jithu.joseph@intel.com>
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
+ [209.85.128.51])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4FB8E6001B
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:33:06 +0000 (UTC)
+Received: by mail-wm1-f51.google.com with SMTP id n10so13682349wmq.0
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 01:33:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=rYvuvWZnniOmjwGz5S+ryLVWDWaokquUYjt42CP2SE4=;
+ b=MJl15YyI6GF27jPlJ5RGzxxpHklYTk+12e52Sv7VZ9JVVEtw1gAhqqqBaqbwOZvIkN
+ /oOO1tYRlH/AmnZycJdggNAZJ3AAjLL3FNXYoXI5EslGUKO+Og2Kb3xgPbCPEqbYDEIO
+ GbaGkISegtSWH1JuS9wwOlr5iwdYnOa9h++PomhBbekZTfvoHTXhAvzBF/CMx1jwMLhQ
+ y2fbuDhe58XhhgICeMEjBK3uJkF7G1bD+X5ty2XBInYYe+wr77br17F9OW3fv3WCx0Vl
+ ChJ+6UNlD2T1LKJsmZtbSL0qp4FahokHjO+ENMOiMVb0Thgd9v66eZO1PrGkyIgO0glZ
+ Rlpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=rYvuvWZnniOmjwGz5S+ryLVWDWaokquUYjt42CP2SE4=;
+ b=hCGAN94TxUtc1d8az89rTbEDeo1qV5LCbOzNGgvEWN7WPjj9qDMBbqkj7l4jRy4Jr0
+ UjDrcUZps0opqUO5c4ff75r1M7WdihjMTE79zLljr5ib2BtNVLWtfYQmwbMKkFoI8ipx
+ EDDcPxYCpG0LCy0Dl3D3ByGg0IYuIw5tSbOwkJocmlxeDS7fE78lH0uiTVgyRAXktdfJ
+ lQM7OA9PKTHyLjKJyK0Lr395cLsZ6Xi+hiw7dO8YIEIJFXegqQFXWBT+8VOQGYAN9A+w
+ UR3t9OL60TI+Aek9dRDeTsd9I56VA2T5hYySimbKNc92BRvQqK7nmlVSp00EwTzePI3J
+ 2XKQ==
+X-Gm-Message-State: AOAM5338BOjKQ6FpwVunRWAi6HbULVCytbrhp+dHKeubvA3o/rcmJ7MD
+ sjAJ4Np2rJ07KhYKdLCSCLB7kpLftJ1wetqb5jnIXhUDIr6L/Q==
+X-Google-Smtp-Source: ABdhPJxyZqq5L4DL7Ix2dracl2LKedPswZQU17l8lEB76FPZyaeV/jA2q7hkVYV9qlrVcRabakdfMSSgUJxIBDeFn1E=
+X-Received: by 2002:a05:600c:4ec7:: with SMTP id
+ g7mr19029587wmq.56.1613986384258; 
+ Mon, 22 Feb 2021 01:33:04 -0800 (PST)
+MIME-Version: 1.0
 References: <20210222090936.6768-1-jithu.joseph@intel.com>
-Subject: [Intel-wired-lan] [PATCH v4 9/9] igc: Enable TX via AF_XDP zero-copy
+ <20210222090936.6768-5-jithu.joseph@intel.com>
+In-Reply-To: <20210222090936.6768-5-jithu.joseph@intel.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Mon, 22 Feb 2021 10:32:52 +0100
+Message-ID: <CAJ+HfNhx5LhsS++sFxq2w50gmsnVd2QeXT35ZFVPwvaixbnPAQ@mail.gmail.com>
+To: Jithu Joseph <jithu.joseph@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v4 4/9] igc: Refactor XDP rxq info
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,369 +85,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@osuosl.org, Andre Guedes <andre.guedes@intel.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Andre Guedes <andre.guedes@intel.com>
-
-Add support for transmitting packets via AF_XDP zero-copy mechanism.
-
-The packet transmission itself is implemented by igc_xdp_xmit_zc() which
-is called from igc_clean_tx_irq() when the ring has AF_XDP zero-copy
-enabled. Likewise i40e and ice drivers, the transmission budget used is
-the number of descriptors available on the ring.
-
-A new tx buffer type is introduced to 'enum igc_tx_buffer_type' to
-indicate the tx buffer uses memory from xsk pool so it can be properly
-cleaned after transmission or when the ring is cleaned.
-
-The I225 controller has only 4 Tx hardware queues so the main difference
-between igc and other Intel drivers that support AF_XDP zero-copy is
-that there is no tx ring dedicated exclusively to XDP. Instead, tx
-rings are shared between the network stack and XDP, and netdev queue
-lock is used to ensure mutual exclusion. This is the same approach
-implemented to support XDP_TX and XDP_REDIRECT actions.
-
-Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-Signed-off-by: Vedang Patel <vedang.patel@intel.com>
-Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      |   3 +
- drivers/net/ethernet/intel/igc/igc_base.h |   1 +
- drivers/net/ethernet/intel/igc/igc_main.c | 113 +++++++++++++++++++++-
- drivers/net/ethernet/intel/igc/igc_xdp.c  |  20 +++-
- 4 files changed, 129 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 6e5869a1c9bc..53f3cef3820d 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -258,6 +258,8 @@ int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx);
- void igc_update_stats(struct igc_adapter *adapter);
- void igc_disable_rx_ring(struct igc_ring *ring);
- void igc_enable_rx_ring(struct igc_ring *ring);
-+void igc_disable_tx_ring(struct igc_ring *ring);
-+void igc_enable_tx_ring(struct igc_ring *ring);
- int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
- 
- /* igc_dump declarations */
-@@ -413,6 +415,7 @@ enum igc_boards {
- enum igc_tx_buffer_type {
- 	IGC_TX_BUFFER_TYPE_SKB,
- 	IGC_TX_BUFFER_TYPE_XDP,
-+	IGC_TX_BUFFER_TYPE_XSK,
- };
- 
- /* wrapper around a pointer to a socket buffer,
-diff --git a/drivers/net/ethernet/intel/igc/igc_base.h b/drivers/net/ethernet/intel/igc/igc_base.h
-index 2ca028c1919f..ce530f5fd7bd 100644
---- a/drivers/net/ethernet/intel/igc/igc_base.h
-+++ b/drivers/net/ethernet/intel/igc/igc_base.h
-@@ -78,6 +78,7 @@ union igc_adv_rx_desc {
- 
- /* Additional Transmit Descriptor Control definitions */
- #define IGC_TXDCTL_QUEUE_ENABLE	0x02000000 /* Ena specific Tx Queue */
-+#define IGC_TXDCTL_SWFLUSH	0x04000000 /* Transmit Software Flush */
- 
- /* Additional Receive Descriptor Control definitions */
- #define IGC_RXDCTL_QUEUE_ENABLE	0x02000000 /* Ena specific Rx Queue */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 8b79404d53ff..6cacbc03e000 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -187,16 +187,22 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
- {
- 	u16 i = tx_ring->next_to_clean;
- 	struct igc_tx_buffer *tx_buffer = &tx_ring->tx_buffer_info[i];
-+	u32 xsk_frames = 0;
- 
- 	while (i != tx_ring->next_to_use) {
- 		union igc_adv_tx_desc *eop_desc, *tx_desc;
- 
- 		switch (tx_buffer->type) {
-+		case IGC_TX_BUFFER_TYPE_XSK:
-+			xsk_frames++;
-+			break;
- 		case IGC_TX_BUFFER_TYPE_XDP:
- 			xdp_return_frame(tx_buffer->xdpf);
-+			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 			break;
- 		case IGC_TX_BUFFER_TYPE_SKB:
- 			dev_kfree_skb_any(tx_buffer->skb);
-+			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 			break;
- 		default:
- 			netdev_warn_once(tx_ring->netdev,
-@@ -204,8 +210,6 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
- 			break;
- 		}
- 
--		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
--
- 		/* check for eop_desc to determine the end of the packet */
- 		eop_desc = tx_buffer->next_to_watch;
- 		tx_desc = IGC_TX_DESC(tx_ring, i);
-@@ -235,6 +239,9 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
- 		}
- 	}
- 
-+	if (tx_ring->xsk_pool && xsk_frames)
-+		xsk_tx_completed(tx_ring->xsk_pool, xsk_frames);
-+
- 	/* reset BQL for queue */
- 	netdev_tx_reset_queue(txring_txq(tx_ring));
- 
-@@ -676,6 +683,8 @@ static void igc_configure_tx_ring(struct igc_adapter *adapter,
- 	u64 tdba = ring->dma;
- 	u32 txdctl = 0;
- 
-+	ring->xsk_pool = igc_get_xsk_pool(adapter, ring);
-+
- 	/* disable the queue */
- 	wr32(IGC_TXDCTL(reg_idx), 0);
- 	wrfl();
-@@ -2507,6 +2516,65 @@ static void igc_update_tx_stats(struct igc_q_vector *q_vector,
- 	q_vector->tx.total_packets += packets;
- }
- 
-+static void igc_xdp_xmit_zc(struct igc_ring *ring)
-+{
-+	struct xsk_buff_pool *pool = ring->xsk_pool;
-+	struct netdev_queue *nq = txring_txq(ring);
-+	union igc_adv_tx_desc *tx_desc = NULL;
-+	int cpu = smp_processor_id();
-+	u16 ntu = ring->next_to_use;
-+	struct xdp_desc xdp_desc;
-+	u16 budget;
-+
-+	if (!netif_carrier_ok(ring->netdev))
-+		return;
-+
-+	__netif_tx_lock(nq, cpu);
-+
-+	budget = igc_desc_unused(ring);
-+
-+	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
-+		u32 cmd_type, olinfo_status;
-+		struct igc_tx_buffer *bi;
-+		dma_addr_t dma;
-+
-+		cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
-+			   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
-+			   xdp_desc.len;
-+		olinfo_status = xdp_desc.len << IGC_ADVTXD_PAYLEN_SHIFT;
-+
-+		dma = xsk_buff_raw_get_dma(pool, xdp_desc.addr);
-+		xsk_buff_raw_dma_sync_for_device(pool, dma, xdp_desc.len);
-+
-+		tx_desc = IGC_TX_DESC(ring, ntu);
-+		tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+		tx_desc->read.olinfo_status = cpu_to_le32(olinfo_status);
-+		tx_desc->read.buffer_addr = cpu_to_le64(dma);
-+
-+		bi = &ring->tx_buffer_info[ntu];
-+		bi->type = IGC_TX_BUFFER_TYPE_XSK;
-+		bi->protocol = 0;
-+		bi->bytecount = xdp_desc.len;
-+		bi->gso_segs = 1;
-+		bi->time_stamp = jiffies;
-+		bi->next_to_watch = tx_desc;
-+
-+		netdev_tx_sent_queue(txring_txq(ring), xdp_desc.len);
-+
-+		ntu++;
-+		if (ntu == ring->count)
-+			ntu = 0;
-+	}
-+
-+	ring->next_to_use = ntu;
-+	if (tx_desc) {
-+		igc_flush_tx_descriptors(ring);
-+		xsk_tx_release(pool);
-+	}
-+
-+	__netif_tx_unlock(nq);
-+}
-+
- /**
-  * igc_clean_tx_irq - Reclaim resources after transmit completes
-  * @q_vector: pointer to q_vector containing needed info
-@@ -2523,6 +2591,7 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 	unsigned int i = tx_ring->next_to_clean;
- 	struct igc_tx_buffer *tx_buffer;
- 	union igc_adv_tx_desc *tx_desc;
-+	u32 xsk_frames = 0;
- 
- 	if (test_bit(__IGC_DOWN, &adapter->state))
- 		return true;
-@@ -2553,11 +2622,16 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 		total_packets += tx_buffer->gso_segs;
- 
- 		switch (tx_buffer->type) {
-+		case IGC_TX_BUFFER_TYPE_XSK:
-+			xsk_frames++;
-+			break;
- 		case IGC_TX_BUFFER_TYPE_XDP:
- 			xdp_return_frame(tx_buffer->xdpf);
-+			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 			break;
- 		case IGC_TX_BUFFER_TYPE_SKB:
- 			napi_consume_skb(tx_buffer->skb, napi_budget);
-+			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 			break;
- 		default:
- 			netdev_warn_once(tx_ring->netdev,
-@@ -2565,8 +2639,6 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 			break;
- 		}
- 
--		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
--
- 		/* clear last DMA location and unmap remaining buffers */
- 		while (tx_desc != eop_desc) {
- 			tx_buffer++;
-@@ -2608,6 +2680,14 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 
- 	igc_update_tx_stats(q_vector, total_packets, total_bytes);
- 
-+	if (tx_ring->xsk_pool) {
-+		if (xsk_frames)
-+			xsk_tx_completed(tx_ring->xsk_pool, xsk_frames);
-+		if (xsk_uses_need_wakeup(tx_ring->xsk_pool))
-+			xsk_set_tx_need_wakeup(tx_ring->xsk_pool);
-+		igc_xdp_xmit_zc(tx_ring);
-+	}
-+
- 	if (test_bit(IGC_RING_FLAG_TX_DETECT_HANG, &tx_ring->flags)) {
- 		struct igc_hw *hw = &adapter->hw;
- 
-@@ -6338,6 +6418,31 @@ void igc_enable_rx_ring(struct igc_ring *ring)
- 		igc_alloc_rx_buffers(ring, igc_desc_unused(ring));
- }
- 
-+static void igc_disable_tx_ring_hw(struct igc_ring *ring)
-+{
-+	struct igc_hw *hw = &ring->q_vector->adapter->hw;
-+	u8 idx = ring->reg_idx;
-+	u32 txdctl;
-+
-+	txdctl = rd32(IGC_TXDCTL(idx));
-+	txdctl &= ~IGC_TXDCTL_QUEUE_ENABLE;
-+	txdctl |= IGC_TXDCTL_SWFLUSH;
-+	wr32(IGC_TXDCTL(idx), txdctl);
-+}
-+
-+void igc_disable_tx_ring(struct igc_ring *ring)
-+{
-+	igc_disable_tx_ring_hw(ring);
-+	igc_clean_tx_ring(ring);
-+}
-+
-+void igc_enable_tx_ring(struct igc_ring *ring)
-+{
-+	struct igc_adapter *adapter = ring->q_vector->adapter;
-+
-+	igc_configure_tx_ring(adapter, ring);
-+}
-+
- /**
-  * igc_init_module - Driver Registration Routine
-  *
-diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
-index 7fe3177a53dd..38e86522ab7b 100644
---- a/drivers/net/ethernet/intel/igc/igc_xdp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
-@@ -39,13 +39,14 @@ static int igc_xdp_enable_pool(struct igc_adapter *adapter,
- {
- 	struct net_device *ndev = adapter->netdev;
- 	struct device *dev = &adapter->pdev->dev;
--	struct igc_ring *rx_ring;
-+	struct igc_ring *rx_ring, *tx_ring;
- 	struct napi_struct *napi;
- 	bool needs_reset;
- 	u32 frame_size;
- 	int err;
- 
--	if (queue_id >= adapter->num_rx_queues)
-+	if (queue_id >= adapter->num_rx_queues ||
-+	    queue_id >= adapter->num_tx_queues)
- 		return -EINVAL;
- 
- 	frame_size = xsk_pool_get_rx_frame_size(pool);
-@@ -67,18 +68,23 @@ static int igc_xdp_enable_pool(struct igc_adapter *adapter,
- 	needs_reset = netif_running(adapter->netdev) && igc_xdp_is_enabled(adapter);
- 
- 	rx_ring = adapter->rx_ring[queue_id];
-+	tx_ring = adapter->tx_ring[queue_id];
-+	/* Rx and Tx rings share the same napi context. */
- 	napi = &rx_ring->q_vector->napi;
- 
- 	if (needs_reset) {
- 		igc_disable_rx_ring(rx_ring);
-+		igc_disable_tx_ring(tx_ring);
- 		napi_disable(napi);
- 	}
- 
- 	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
-+	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
- 
- 	if (needs_reset) {
- 		napi_enable(napi);
- 		igc_enable_rx_ring(rx_ring);
-+		igc_enable_tx_ring(tx_ring);
- 
- 		err = igc_xsk_wakeup(ndev, queue_id, XDP_WAKEUP_RX);
- 		if (err)
-@@ -90,12 +96,13 @@ static int igc_xdp_enable_pool(struct igc_adapter *adapter,
- 
- static int igc_xdp_disable_pool(struct igc_adapter *adapter, u16 queue_id)
- {
-+	struct igc_ring *rx_ring, *tx_ring;
- 	struct xsk_buff_pool *pool;
--	struct igc_ring *rx_ring;
- 	struct napi_struct *napi;
- 	bool needs_reset;
- 
--	if (queue_id >= adapter->num_rx_queues)
-+	if (queue_id >= adapter->num_rx_queues ||
-+	    queue_id >= adapter->num_tx_queues)
- 		return -EINVAL;
- 
- 	pool = xsk_get_pool_from_qid(adapter->netdev, queue_id);
-@@ -105,19 +112,24 @@ static int igc_xdp_disable_pool(struct igc_adapter *adapter, u16 queue_id)
- 	needs_reset = netif_running(adapter->netdev) && igc_xdp_is_enabled(adapter);
- 
- 	rx_ring = adapter->rx_ring[queue_id];
-+	tx_ring = adapter->tx_ring[queue_id];
-+	/* Rx and Tx rings share the same napi context. */
- 	napi = &rx_ring->q_vector->napi;
- 
- 	if (needs_reset) {
- 		igc_disable_rx_ring(rx_ring);
-+		igc_disable_tx_ring(tx_ring);
- 		napi_disable(napi);
- 	}
- 
- 	xsk_pool_dma_unmap(pool, IGC_RX_DMA_ATTR);
- 	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
-+	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
- 
- 	if (needs_reset) {
- 		napi_enable(napi);
- 		igc_enable_rx_ring(rx_ring);
-+		igc_enable_tx_ring(tx_ring);
- 	}
- 
- 	return 0;
--- 
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gTW9uLCAyMiBGZWIgMjAyMSBhdCAxMDowOCwgSml0aHUgSm9zZXBoIDxqaXRodS5qb3NlcGhA
+aW50ZWwuY29tPiB3cm90ZToKPgo+IEZyb206IEFuZHJlIEd1ZWRlcyA8YW5kcmUuZ3VlZGVzQGlu
+dGVsLmNvbT4KPgo+IFJlZmFjdG9yIFhEUCByeHEgaW5mbyByZWdpc3RyYXRpb24gY29kZSwgcHJl
+cGFyaW5nIHRoZSBkcml2ZXIgZm9yIEFGX1hEUAo+IHplcm8tY29weSBzdXBwb3J0IHdoaWNoIGlz
+IGFkZGVkIGJ5IHVwY29taW5nIHBhdGNoZXMuCj4KPiBDdXJyZW50bHksIHhkcF9yeHEgYW5kIG1l
+bW9yeSBtb2RlbCBhcmUgYm90aCByZWdpc3RlcmVkIGR1cmluZyBSWAo+IHJlc291cmNlIHNldHVw
+IHRpbWUgYnkgaWdjX3hkcF9yZWdpc3Rlcl9yeHFfaW5mbygpIGhlbHBlci4gV2l0aCBBRl9YRFAs
+Cj4gd2Ugd2FudCB0byByZWdpc3RlciB0aGUgbWVtb3J5IG1vZGVsIGxhdGVyIG9uIHdoaWxlIGNv
+bmZpZ3VyaW5nIHRoZSByaW5nCj4gYmVjYXVzZSB3ZSB3aWxsIGtub3cgd2hpY2ggbWVtb3J5IG1v
+ZGVsIHR5cGUgdG8gcmVnaXN0ZXIKPiAoTUVNX1RZUEVfUEFHRV9TSEFSRUQgb3IgTUVNX1RZUEVf
+WFNLX0JVRkZfUE9PTCkuCj4KPiBUaGUgaGVscGVycyBpZ2NfeGRwX3JlZ2lzdGVyX3J4cV9pbmZv
+KCkgYW5kIGlnY194ZHBfdW5yZWdpc3Rlcl9yeHFfCj4gaW5mbygpIGFyZSBub3QgdXNlZnVsIGFu
+eW1vcmUgc28gdGhleSBhcmUgcmVtb3ZlZC4KPgo+IFNpZ25lZC1vZmYtYnk6IEFuZHJlIEd1ZWRl
+cyA8YW5kcmUuZ3VlZGVzQGludGVsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBWZWRhbmcgUGF0ZWwg
+PHZlZGFuZy5wYXRlbEBpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSml0aHUgSm9zZXBoIDxq
+aXRodS5qb3NlcGhAaW50ZWwuY29tPgo+IFJldmlld2VkLWJ5OiBNYWNpZWogRmlqYWxrb3dza2kg
+PG1hY2llai5maWphbGtvd3NraUBpbnRlbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jIHwgMTUgKysrKysrKysrLS0tLQo+ICBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX3hkcC5jICB8IDI3IC0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfeGRwLmggIHwgIDMgLS0t
+Cj4gIDMgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMzQgZGVsZXRpb25zKC0pCj4K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19tYWluLmMg
+Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4uYwo+IGluZGV4IGJjMDg2
+ZDJmNzM4Yi4uMjYyMDg0NDFhYWQzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2lnYy9pZ2NfbWFpbi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWdjL2lnY19tYWluLmMKPiBAQCAtNDE5LDcgKzQxOSw3IEBAIHZvaWQgaWdjX2ZyZWVfcnhfcmVz
+b3VyY2VzKHN0cnVjdCBpZ2NfcmluZyAqcnhfcmluZykKPiAgewo+ICAgICAgICAgaWdjX2NsZWFu
+X3J4X3JpbmcocnhfcmluZyk7Cj4KPiAtICAgICAgIGlnY194ZHBfdW5yZWdpc3Rlcl9yeHFfaW5m
+byhyeF9yaW5nKTsKPiArICAgICAgIHhkcF9yeHFfaW5mb191bnJlZygmcnhfcmluZy0+eGRwX3J4
+cSk7Cj4KPiAgICAgICAgIHZmcmVlKHJ4X3JpbmctPnJ4X2J1ZmZlcl9pbmZvKTsKPiAgICAgICAg
+IHJ4X3JpbmctPnJ4X2J1ZmZlcl9pbmZvID0gTlVMTDsKPiBAQCAtNDU4LDExICs0NTgsMTUgQEAg
+aW50IGlnY19zZXR1cF9yeF9yZXNvdXJjZXMoc3RydWN0IGlnY19yaW5nICpyeF9yaW5nKQo+ICB7
+Cj4gICAgICAgICBzdHJ1Y3QgbmV0X2RldmljZSAqbmRldiA9IHJ4X3JpbmctPm5ldGRldjsKPiAg
+ICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IHJ4X3JpbmctPmRldjsKPiArICAgICAgIHU4IGlu
+ZGV4ID0gcnhfcmluZy0+cXVldWVfaW5kZXg7Cj4gICAgICAgICBpbnQgc2l6ZSwgZGVzY19sZW4s
+IHJlczsKPgo+IC0gICAgICAgcmVzID0gaWdjX3hkcF9yZWdpc3Rlcl9yeHFfaW5mbyhyeF9yaW5n
+KTsKPiAtICAgICAgIGlmIChyZXMgPCAwKQo+ICsgICAgICAgcmVzID0geGRwX3J4cV9pbmZvX3Jl
+ZygmcnhfcmluZy0+eGRwX3J4cSwgbmRldiwgaW5kZXgsIDApOwoKVGhhbmtzIGZvciB3b3JraW5n
+IG9uIEFGX1hEUCBaQyBzdXBwb3J0IQoKVGhlIGxhc3QgYXJndW1lbnQgaXMgdGhlIG5hcGlfaWQu
+IFNldHRpbmcgdGhpcyB0byAwLCBtZWFucyB0aGF0IHRoZQpuYXBpX2lkIGlzIHVua25vd24vbm90
+IGF2YWlsYWJsZSBhdCB0aGlzIHBvaW50LiBJdCBhbHNvIG1lYW5zIHRoYXQgdGhlCkFGX1hEUCBi
+dXN5LXBvbGxpbmcgdXNpbmcgcHJlZmVycmVkIGJ1c3ktcG9sbGluZyBbMV0gd2lsbCBub3Qgd29y
+ay4gSWYKdGhlIG5hcGkgaXMgcmVnaXN0ZXJlZCBhdCB0aGlzIHBvaW50LCBwbGVhc2UgcGFzczoK
+cnhfcmluZy0+cV92ZWN0b3ItPm5hcGkubmFwaV9pZCBpbnN0ZWFkIG9mIDAhCgooTG9vayBhdCB0
+aGUgaTQwZS9pY2UgZHJpdmVycy4pCgpDaGVlcnMsCkJqw7ZybgoKWzFdIGh0dHBzOi8vbG9yZS5r
+ZXJuZWwub3JnL2JwZi8yMDIwMTEzMDE4NTIwNS4xOTYwMjktMS1iam9ybi50b3BlbEBnbWFpbC5j
+b20vCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVs
+LXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6
+Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
