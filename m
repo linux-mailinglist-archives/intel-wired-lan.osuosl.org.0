@@ -1,80 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9287321121
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 08:07:57 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16C0C321122
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 08:08:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FD5D85BB5;
-	Mon, 22 Feb 2021 07:07:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA2846F525;
+	Mon, 22 Feb 2021 07:08:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8GGjeoKPW60C; Mon, 22 Feb 2021 07:07:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id J3o8AsXxdWva; Mon, 22 Feb 2021 07:08:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DA79885B81;
-	Mon, 22 Feb 2021 07:07:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 692C26F521;
+	Mon, 22 Feb 2021 07:08:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C79B11BF983
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 160331BF983
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C36B4870A1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 10F2583842
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rozRvTQqUsGa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3QGf08hWdaRC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Feb 2021 07:08:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2102187098
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:07:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1956283841
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Feb 2021 07:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613977671;
+ s=mimecast20190719; t=1613977681;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SfjcSkeuCzE9/+CoYCFIFTm1Ke7Qr71yxOHQpPA/W1c=;
- b=F9OhE3QTwJ7Y0W1XA7oFnSiMHvyrWCUFGUG2NXUQMZAeCJB22vSmfwJ2+CZKEHNYftcAkl
- /5o59CzPglyMISl2x/I2yBmu1Qqk1OH6icisICAhAS415aXrNGrRkQIs7dby3m1V9SJyp6
- OmHk/p26oxVWcB1bAryamYSTlp9J074=
+ bh=8cGC74PMCnaWbBAWCVUBDXRxKgEXEKkWJtgVHkIGS/0=;
+ b=JTAd8oucxlMcKjdlUPZ1DOyX0bIFVaZX55eLth+AsZBBasBhc/TX5SLnUuRRBCRe8l/IdE
+ l48SAcRWwpFsE+a9/K5fjgwJRGfxuyYcNbqz/5hnVsxMj2VzR9POrPEFONgDhN4PmhGez+
+ Dcu0Y4aLPGmvhA3BjnuNgu7T4wxtbqU=
 Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
  [209.85.210.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-417-pPQfL_i2MXmDYJZhMTQ-3g-1; Mon, 22 Feb 2021 02:07:49 -0500
-X-MC-Unique: pPQfL_i2MXmDYJZhMTQ-3g-1
-Received: by mail-pf1-f198.google.com with SMTP id y17so308631pfp.18
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 23:07:49 -0800 (PST)
+ us-mta-585-WewXZRFSOvq7_t5WL5hwgQ-1; Mon, 22 Feb 2021 02:07:58 -0500
+X-MC-Unique: WewXZRFSOvq7_t5WL5hwgQ-1
+Received: by mail-pf1-f198.google.com with SMTP id s18so6665226pfe.10
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Feb 2021 23:07:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SfjcSkeuCzE9/+CoYCFIFTm1Ke7Qr71yxOHQpPA/W1c=;
- b=P5zvwLAynrOfITeCUmCfAWi2Wbqk8zPSC6kLFeHGaRByJwtbt64B/L8GDhzpFUYqu9
- vRtw3jtFeoZisyYhv1bZFbLC3qvdWmGAugWX2NSXYkQw02l2rN1helpee2g0genRx1ux
- rAEvTDHLuHJND7WfQcrdFNS5dMTsqYYaxMc3s4cj9Z98ex/yX1vm9ZDhluZ27ne2taT0
- pCdkruH6KoXJdaK30ImgjIAH/J8/30BPQjT9ASu1dS+1LZC++nypbjJ3GCawKf14C1Ny
- xFYbsob4phljzk3aITu7fD4HCRhKb9WTqGCZS7w4mM4fwriWqswrZDrkZDi6MT08bXKc
- vq9A==
-X-Gm-Message-State: AOAM530UUeHgMiYofmTWltLEmnVBPHnBHXjiLqhy6YKsLcGTyZfbCwAU
- Mwto/wXVeQ8r5mDrZO7CRFvYB5p0LFg15jga/ZIyar5VVJGEkSujgi7+GI1wydoQb9qepq3sPRr
- /u/j74bL1jDZy69RUg4lQ4UIpFITRwg==
-X-Received: by 2002:a63:90c9:: with SMTP id a192mr19124717pge.8.1613977668235; 
- Sun, 21 Feb 2021 23:07:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwP+/I77AvpPaCYZWkNUEmz3EntQVTfgkKGYRyDaFQPkLb+Affv8SxoduV3LDfkj7rLRdqY7Q==
-X-Received: by 2002:a63:90c9:: with SMTP id a192mr19124701pge.8.1613977668054; 
- Sun, 21 Feb 2021 23:07:48 -0800 (PST)
+ bh=8cGC74PMCnaWbBAWCVUBDXRxKgEXEKkWJtgVHkIGS/0=;
+ b=Osh9SXM7tcsIZRJEVzX2SmKgzSc0Y8pT4buMjT+WCI52Oe+LiDpuqSta700NWaR4EB
+ C443PUTmyMUbm1OpQSAQPRQjdAy36nQKcn+vBXm3LVqNff35QDZ7zJWoAYFLOhqiK5Cu
+ Hi0Frkp2MSGbE4RTjVmkMpNngRRxfZX0gVLUNvqAH39hbp9i1BXrRHsaOxypmofyQSHB
+ esx79I0Bs35JQWZZwefcCr1H3Es2gl8Pc5AzOyvbwrim20ZcuzrKEUStgLGX5zDCm0ec
+ IAj4EjtEvJQGnuXS+WrPSgG1bcz21SFtjqwHYLBA4VIrPfm4uLiDsdt7X5arfsSMa/9X
+ 0Y6g==
+X-Gm-Message-State: AOAM530h1hHZJAVHJclMsNYFOxOsJLcysh2xp3kGctMMa/rdNFunsAmP
+ 6LAi9rJHGX2fObCGP585lajL47QsY6Wnt5tF/XSLzOdKRLF7oFHaeWx8W1o0ufVelUmkHxkbI9D
+ kZTiyL3krlzGzs1zNNvMfwdGpATYkQg==
+X-Received: by 2002:a63:3602:: with SMTP id d2mr18862401pga.81.1613977677767; 
+ Sun, 21 Feb 2021 23:07:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzG0zRT+B2eqBSHJCG+woLse614WOgfmD0XJ5e3O9heRqpM5jj6GbtUXuwOa2JP1tEgm2+OsA==
+X-Received: by 2002:a63:3602:: with SMTP id d2mr18862385pga.81.1613977677597; 
+ Sun, 21 Feb 2021 23:07:57 -0800 (PST)
 Received: from localhost ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id a24sm18029132pff.18.2021.02.21.23.07.46
+ by smtp.gmail.com with ESMTPSA id ig12sm8527195pjb.36.2021.02.21.23.07.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 23:07:47 -0800 (PST)
+ Sun, 21 Feb 2021 23:07:57 -0800 (PST)
 From: Coiby Xu <coxu@redhat.com>
 To: netdev@vger.kernel.org
-Date: Mon, 22 Feb 2021 15:07:00 +0800
-Message-Id: <20210222070701.16416-4-coxu@redhat.com>
+Date: Mon, 22 Feb 2021 15:07:01 +0800
+Message-Id: <20210222070701.16416-5-coxu@redhat.com>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210222070701.16416-1-coxu@redhat.com>
 References: <20210222070701.16416-1-coxu@redhat.com>
@@ -83,7 +85,7 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=coxu@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [RFC PATCH 3/4] i40e: use minimal admin queue for
+Subject: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client for
  kdump
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -105,51 +107,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The minimum size of admin send/receive queue is 1 and 2 respectively.
-The admin send queue can't be set to 1 because in that case, the
-firmware would fail to init.
+i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
+i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
+for 1GbE while "craskernel=auto" only reserved 160M. With the module
+parameter "resource_profile=2", we can reduce the memory usage of i40iw
+to ~300M which is still too much for kdump.
+
+Disabling the client registration would spare us the client interface
+operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
+saved for kdump.
 
 Signed-off-by: Coiby Xu <coxu@redhat.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e.h      | 2 ++
- drivers/net/ethernet/intel/i40e/i40e_main.c | 9 +++++++--
- 2 files changed, 9 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_client.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index 118473dfdcbd..e106c33ff958 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -66,6 +66,8 @@
- #define I40E_FDIR_RING_COUNT		32
- #define I40E_MAX_AQ_BUF_SIZE		4096
- #define I40E_AQ_LEN			256
-+#define I40E_MIN_ARQ_LEN		1
-+#define I40E_MIN_ASQ_LEN		2
- #define I40E_AQ_WORK_LIMIT		66 /* max number of VFs + a little */
- #define I40E_MAX_USER_PRIORITY		8
- #define I40E_DEFAULT_TRAFFIC_CLASS	BIT(0)
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 5307f1744766..2fd8db80b585 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14847,8 +14847,13 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
+index a2dba32383f6..aafc2587f389 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_client.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
+@@ -4,6 +4,7 @@
+ #include <linux/list.h>
+ #include <linux/errno.h>
+ #include <linux/net/intel/i40e_client.h>
++#include <linux/crash_dump.h>
  
- 	i40e_check_recovery_mode(pf);
+ #include "i40e.h"
+ #include "i40e_prototype.h"
+@@ -741,6 +742,12 @@ int i40e_register_client(struct i40e_client *client)
+ {
+ 	int ret = 0;
  
--	hw->aq.num_arq_entries = I40E_AQ_LEN;
--	hw->aq.num_asq_entries = I40E_AQ_LEN;
-+	if (is_kdump_kernel()) {
-+		hw->aq.num_arq_entries = I40E_MIN_ARQ_LEN;
-+		hw->aq.num_asq_entries = I40E_MIN_ASQ_LEN;
-+	} else {
-+		hw->aq.num_arq_entries = I40E_AQ_LEN;
-+		hw->aq.num_asq_entries = I40E_AQ_LEN;
-+	}
- 	hw->aq.arq_buf_size = I40E_MAX_AQ_BUF_SIZE;
- 	hw->aq.asq_buf_size = I40E_MAX_AQ_BUF_SIZE;
- 	pf->adminq_work_limit = I40E_AQ_WORK_LIMIT;
++	/* Don't open i40iw client for kdump because i40iw will consume huge
++	 * amounts of memory.
++	 */
++	if (is_kdump_kernel())
++		return ret;
++
+ 	if (!client) {
+ 		ret = -EIO;
+ 		goto out;
 -- 
-2.30.0
+2.30.1
 
 _______________________________________________
 Intel-wired-lan mailing list
