@@ -1,56 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 390F23212B1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:07:37 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6678883829;
-	Mon, 22 Feb 2021 09:07:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u_tuobzczOOH; Mon, 22 Feb 2021 09:07:34 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2843883852;
-	Mon, 22 Feb 2021 09:07:34 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7A0F01BF38E
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 853393212B2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:07:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7559887128
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3C15A87128;
+	Mon, 22 Feb 2021 09:07:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N0O6exr1dwzj for <intel-wired-lan@osuosl.org>;
- Mon, 22 Feb 2021 09:07:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BF8D887121
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:28 +0000 (UTC)
-IronPort-SDR: B6T/2W8wKN5zCofUwTe1mt0l8MJ3ChFTg8T+WSsbR6LwezAJKsry3CjadjRIR7UxrCgqRo1ft/
- r5KrhGqui2LQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="180935364"
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="180935364"
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NOZX518OjzEQ; Mon, 22 Feb 2021 09:07:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id C34AA87134;
+	Mon, 22 Feb 2021 09:07:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8DFC21BF38E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7BB3883880
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 93yFrGecHX8m for <intel-wired-lan@osuosl.org>;
+ Mon, 22 Feb 2021 09:07:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4D4758384B
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:07:43 +0000 (UTC)
+IronPort-SDR: iheAvdsoIePYDqkUMJ09xhwWlnwaOmWKeoaOv9k+7e3h1mbgWxZzQqJHeD/U5b0bMXYUTChx8B
+ qH5YGEwr0SCg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="163590163"
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="163590163"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:07:28 -0800
-IronPort-SDR: WDyfmzVN1xIFzuX37TSHDAR3SxtgCKEOmbZr4VBTFMEtoYT5tn4g+5HipVQbTIymx38jVx9L73
- dorDFzXJLnAg==
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321281"
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 01:07:41 -0800
+IronPort-SDR: oO2KCcXBZYu9WeyEikS1iM0++wgM1toYn5Lf9WcHMeVStXp3MUbxDuc34F3pyKnDuNHT3LfOIA
+ 0Pa00JJivPIg==
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321349"
 Received: from coffy.sc.intel.com ([10.3.79.166])
  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:07:24 -0800
+ 22 Feb 2021 01:07:35 -0800
 From: Jithu Joseph <jithu.joseph@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Mon, 22 Feb 2021 01:09:27 -0800
-Message-Id: <20210222090936.6768-1-jithu.joseph@intel.com>
+Date: Mon, 22 Feb 2021 01:09:28 -0800
+Message-Id: <20210222090936.6768-2-jithu.joseph@intel.com>
 X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH v4 0/9] igc: Add support for AF_XDP
- zero-copy
+In-Reply-To: <20210222090936.6768-1-jithu.joseph@intel.com>
+References: <20210222090936.6768-1-jithu.joseph@intel.com>
+Subject: [Intel-wired-lan] [PATCH v4 1/9] igc: Move igc_xdp_is_enabled()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,76 +64,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Andre Guedes <andre.guedes@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi all,
+From: Andre Guedes <andre.guedes@intel.com>
 
-This is the fourth version of this series which adds AF_XDP zero-copy support
-to igc driver.
+Move the helper igc_xdp_is_enabled() to igc_xdp.h so it can be reused in
+igc_xdp.c by upcoming patches that will introduce AF_XDP zero-copy
+support to the driver.
 
-The main changes from v3 are:
+Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+Signed-off-by: Vedang Patel <vedang.patel@intel.com>
+Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 5 -----
+ drivers/net/ethernet/intel/igc/igc_xdp.h  | 5 +++++
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-    - Renamed igc_xdp_run_prog() to __igc_xdp_run_prog()
-    - Reworded commit message for 2nd patch in this series as suggested
-      in the review
-    - igc_clean_rx_irq_zc() - Assigned ring->next_to_clean to local
-      variable for performance reasons as suggested in review comment
-    - igc_xdp_xmit_zc() - Assigned ring->next_to_use to local variable
-      and replaced work_done conditional variable as per review comment
-    - Added Maciej Fijalkowski's reviewed by tags
-
-Known issues (from v3):
-    When an XDP application is running in Tx-Only mode with Zero-Copy
-    enabled, it is not expected to add the frames to the fill-queue. I have
-    noticed the following two issues in this scenario:
-    - If XDP_USE_NEED_WAKEUP flag is not set by application, igc_poll()
-      will go into infinite loop because the buffer allocation resulting
-      in igc_clean_rx_irq_zc() indicating that all work is not done and NAPI
-      should keep polling. This does not occur if XDP_USE_NEED_WAKEUP
-      flag is set.
-    - Since there are no buffers allocated by userspace for the fill
-      queue, there is no memory allocated for the NIC to copy the data
-      to. If the packet received is destined to the hardware queue where
-      XDP application is running, no packets are received even on other
-      queues.
-    Both these issues can be mitigated by adding a few frames to the
-    fill queue. The second issue can also be mitigated by making sure no
-    packets are being received on the hardware queue where Rx is running.
-
-v3 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20210209024243.23406-1-vedang.patel@intel.com/
-
-v2 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201223203705.78705-1-andre.guedes@intel.com/
-
-v1 is here:
-
-    https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20201217202415.77891-1-andre.guedes@intel.com/
-
-Andre Guedes (9):
-  igc: Move igc_xdp_is_enabled()
-  igc: Refactor __igc_xdp_run_prog()
-  igc: Refactor igc_clean_rx_ring()
-  igc: Refactor XDP rxq info registration
-  igc: Introduce TX/RX stats helpers
-  igc: Introduce igc_unmap_tx_buffer() helper
-  igc: Replace IGC_TX_FLAGS_XDP flag by an enum
-  igc: Enable RX via AF_XDP zero-copy
-  igc: Enable TX via AF_XDP zero-copy
-
- drivers/net/ethernet/intel/igc/igc.h      |  33 +-
- drivers/net/ethernet/intel/igc/igc_base.h |   2 +
- drivers/net/ethernet/intel/igc/igc_main.c | 651 ++++++++++++++++++----
- drivers/net/ethernet/intel/igc/igc_xdp.c  | 107 +++-
- drivers/net/ethernet/intel/igc/igc_xdp.h  |   8 +-
- 5 files changed, 674 insertions(+), 127 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 1b497d3c952c..a659e6f24886 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -515,11 +515,6 @@ static int igc_setup_all_rx_resources(struct igc_adapter *adapter)
+ 	return err;
+ }
+ 
+-static bool igc_xdp_is_enabled(struct igc_adapter *adapter)
+-{
+-	return !!adapter->xdp_prog;
+-}
+-
+ /**
+  * igc_configure_rx_ring - Configure a receive ring after Reset
+  * @adapter: board private structure
+diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.h b/drivers/net/ethernet/intel/igc/igc_xdp.h
+index cfecb515b718..412aa369e6ba 100644
+--- a/drivers/net/ethernet/intel/igc/igc_xdp.h
++++ b/drivers/net/ethernet/intel/igc/igc_xdp.h
+@@ -10,4 +10,9 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
+ int igc_xdp_register_rxq_info(struct igc_ring *ring);
+ void igc_xdp_unregister_rxq_info(struct igc_ring *ring);
+ 
++static inline bool igc_xdp_is_enabled(struct igc_adapter *adapter)
++{
++	return !!adapter->xdp_prog;
++}
++
+ #endif /* _IGC_XDP_H_ */
 -- 
 2.17.1
 
