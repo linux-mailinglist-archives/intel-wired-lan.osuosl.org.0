@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 534933212B8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:08:53 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0217D3212BA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Feb 2021 10:09:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 06AE485D17;
-	Mon, 22 Feb 2021 09:08:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 973F46F53F;
+	Mon, 22 Feb 2021 09:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wfkTkrTMf5aM; Mon, 22 Feb 2021 09:08:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uF99mKG1rzoG; Mon, 22 Feb 2021 09:09:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C956785D44;
-	Mon, 22 Feb 2021 09:08:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 45C84605DD;
+	Mon, 22 Feb 2021 09:09:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4ECAE1BF38E
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 77BEB1BF38E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 39E5C83880
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6511283880
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 74AtMSLdjq4v for <intel-wired-lan@osuosl.org>;
- Mon, 22 Feb 2021 09:08:47 +0000 (UTC)
+ with ESMTP id faAv_GQf0WO9 for <intel-wired-lan@osuosl.org>;
+ Mon, 22 Feb 2021 09:08:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2C1918380E
- for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:47 +0000 (UTC)
-IronPort-SDR: 3srrbnUolnRmJXyxyRbtKYCkG5krsENDZ4lQTRA4JG5DjRUibqq+tqB/Zr3kvw+uoywv61PsYE
- jxuUf7T8VH/g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="172041123"
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="172041123"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5BE2B8380E
+ for <intel-wired-lan@osuosl.org>; Mon, 22 Feb 2021 09:08:56 +0000 (UTC)
+IronPort-SDR: dBMm+pfgYi4oVajIm9f6s4O0MCVe+jlKhd4+AOcXWQtvpjZbRxIa4Su0rwVD+VB9RkYfmD8TeV
+ 7gQnk/PqhYkQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9902"; a="248439858"
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="248439858"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:08:45 -0800
-IronPort-SDR: BTh+cfDlOjIBtJAi2jXbLITQv7s2jKjz5GC2iHJESlBabvAGDvx71xb3pU7klXvq+nJEPlrQKu
- cl+3LhrSuBSw==
-X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321633"
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2021 01:08:54 -0800
+IronPort-SDR: ME0QWvtgV4J5tDc1yiFcqGdXah7J520oc0V4jH/U2vV1ClZq74nIU/0kPiCd5L0pPtTaYoNLJJ
+ Pc8f7GZHAUNA==
+X-IronPort-AV: E=Sophos;i="5.81,196,1610438400"; d="scan'208";a="441321677"
 Received: from coffy.sc.intel.com ([10.3.79.166])
  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2021 01:08:35 -0800
+ 22 Feb 2021 01:08:48 -0800
 From: Jithu Joseph <jithu.joseph@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Mon, 22 Feb 2021 01:09:33 -0800
-Message-Id: <20210222090936.6768-7-jithu.joseph@intel.com>
+Date: Mon, 22 Feb 2021 01:09:34 -0800
+Message-Id: <20210222090936.6768-8-jithu.joseph@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210222090936.6768-1-jithu.joseph@intel.com>
 References: <20210222090936.6768-1-jithu.joseph@intel.com>
-Subject: [Intel-wired-lan] [PATCH v4 6/9] igc: Introduce
- igc_unmap_tx_buffer() helper
+Subject: [Intel-wired-lan] [PATCH v4 7/9] igc: Replace IGC_TX_FLAGS_XDP flag
+ by an enum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,120 +74,121 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Andre Guedes <andre.guedes@intel.com>
 
-In preparation for AF_XDP zero-copy support, encapsulate the code that
-unmaps tx buffers into its own local helper so we can reuse it, avoiding
-code duplication.
+Up to this point, tx buffers are associated with either a skb or a xdpf,
+and the IGC_TX_FLAGS_XDP flag was enough to distinguish between these
+two case. However, with upcoming patches that will add AF_XDP zero-copy
+support, a third case will be introduced so this flag-based approach
+won't fit well.
+
+In preparation to land AF_XDP zero-copy support, replace the
+IGC_TX_FLAGS_XDP flag by an enum which will be extended once zero-copy
+support is introduced to the driver.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
 Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 49 +++++++----------------
- 1 file changed, 15 insertions(+), 34 deletions(-)
+ drivers/net/ethernet/intel/igc/igc.h      |  8 +++++--
+ drivers/net/ethernet/intel/igc/igc_main.c | 27 ++++++++++++++++++-----
+ 2 files changed, 28 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 2472a364874c..f0a8909c0d44 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -390,8 +390,6 @@ enum igc_tx_flags {
+ 	/* olinfo flags */
+ 	IGC_TX_FLAGS_IPV4	= 0x10,
+ 	IGC_TX_FLAGS_CSUM	= 0x20,
+-
+-	IGC_TX_FLAGS_XDP	= 0x100,
+ };
+ 
+ enum igc_boards {
+@@ -408,12 +406,18 @@ enum igc_boards {
+ #define TXD_USE_COUNT(S)	DIV_ROUND_UP((S), IGC_MAX_DATA_PER_TXD)
+ #define DESC_NEEDED	(MAX_SKB_FRAGS + 4)
+ 
++enum igc_tx_buffer_type {
++	IGC_TX_BUFFER_TYPE_SKB,
++	IGC_TX_BUFFER_TYPE_XDP,
++};
++
+ /* wrapper around a pointer to a socket buffer,
+  * so a DMA handle can be stored along with the buffer
+  */
+ struct igc_tx_buffer {
+ 	union igc_adv_tx_desc *next_to_watch;
+ 	unsigned long time_stamp;
++	enum igc_tx_buffer_type type;
+ 	union {
+ 		struct sk_buff *skb;
+ 		struct xdp_frame *xdpf;
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 389df007f050..fbb6aeea95cd 100644
+index fbb6aeea95cd..f72c760ba4a2 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -171,6 +171,14 @@ static void igc_get_hw_control(struct igc_adapter *adapter)
- 	     ctrl_ext | IGC_CTRL_EXT_DRV_LOAD);
- }
+@@ -191,10 +191,18 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+ 	while (i != tx_ring->next_to_use) {
+ 		union igc_adv_tx_desc *eop_desc, *tx_desc;
  
-+static void igc_unmap_tx_buffer(struct device *dev, struct igc_tx_buffer *buf)
-+{
-+	dma_unmap_single(dev, dma_unmap_addr(buf, dma),
-+			 dma_unmap_len(buf, len), DMA_TO_DEVICE);
-+
-+	dma_unmap_len_set(buf, len, 0);
-+}
-+
- /**
-  * igc_clean_tx_ring - Free Tx Buffers
-  * @tx_ring: ring to be cleaned
-@@ -188,11 +196,7 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
- 		else
+-		if (tx_buffer->tx_flags & IGC_TX_FLAGS_XDP)
++		switch (tx_buffer->type) {
++		case IGC_TX_BUFFER_TYPE_XDP:
+ 			xdp_return_frame(tx_buffer->xdpf);
+-		else
++			break;
++		case IGC_TX_BUFFER_TYPE_SKB:
  			dev_kfree_skb_any(tx_buffer->skb);
++			break;
++		default:
++			netdev_warn_once(tx_ring->netdev,
++					 "Unknown tx buffer type\n");
++			break;
++		}
  
--		/* unmap skb header data */
--		dma_unmap_single(tx_ring->dev,
--				 dma_unmap_addr(tx_buffer, dma),
--				 dma_unmap_len(tx_buffer, len),
--				 DMA_TO_DEVICE);
-+		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
  
- 		/* check for eop_desc to determine the end of the packet */
- 		eop_desc = tx_buffer->next_to_watch;
-@@ -211,10 +215,7 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+@@ -1360,6 +1368,7 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
  
- 			/* unmap any remaining paged data */
- 			if (dma_unmap_len(tx_buffer, len))
--				dma_unmap_page(tx_ring->dev,
--					       dma_unmap_addr(tx_buffer, dma),
--					       dma_unmap_len(tx_buffer, len),
--					       DMA_TO_DEVICE);
-+				igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 		}
- 
- 		/* move us one more past the eop_desc for start of next pkt */
-@@ -1218,11 +1219,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
- 	/* clear dma mappings for failed tx_buffer_info map */
- 	while (tx_buffer != first) {
- 		if (dma_unmap_len(tx_buffer, len))
--			dma_unmap_page(tx_ring->dev,
--				       dma_unmap_addr(tx_buffer, dma),
--				       dma_unmap_len(tx_buffer, len),
--				       DMA_TO_DEVICE);
--		dma_unmap_len_set(tx_buffer, len, 0);
-+			igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 
- 		if (i-- == 0)
- 			i += tx_ring->count;
-@@ -1230,11 +1227,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 	/* record the location of the first descriptor for this packet */
+ 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
++	first->type = IGC_TX_BUFFER_TYPE_SKB;
+ 	first->skb = skb;
+ 	first->bytecount = skb->len;
+ 	first->gso_segs = 1;
+@@ -1943,8 +1952,8 @@ static int igc_xdp_init_tx_buffer(struct igc_tx_buffer *buffer,
+ 		return -ENOMEM;
  	}
  
- 	if (dma_unmap_len(tx_buffer, len))
--		dma_unmap_single(tx_ring->dev,
--				 dma_unmap_addr(tx_buffer, dma),
--				 dma_unmap_len(tx_buffer, len),
--				 DMA_TO_DEVICE);
--	dma_unmap_len_set(tx_buffer, len, 0);
-+		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
++	buffer->type = IGC_TX_BUFFER_TYPE_XDP;
+ 	buffer->xdpf = xdpf;
+-	buffer->tx_flags = IGC_TX_FLAGS_XDP;
+ 	buffer->protocol = 0;
+ 	buffer->bytecount = xdpf->len;
+ 	buffer->gso_segs = 1;
+@@ -2308,10 +2317,18 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+ 		total_bytes += tx_buffer->bytecount;
+ 		total_packets += tx_buffer->gso_segs;
  
- 	dev_kfree_skb_any(tx_buffer->skb);
- 	tx_buffer->skb = NULL;
-@@ -2320,14 +2313,7 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 		else
+-		if (tx_buffer->tx_flags & IGC_TX_FLAGS_XDP)
++		switch (tx_buffer->type) {
++		case IGC_TX_BUFFER_TYPE_XDP:
+ 			xdp_return_frame(tx_buffer->xdpf);
+-		else
++			break;
++		case IGC_TX_BUFFER_TYPE_SKB:
  			napi_consume_skb(tx_buffer->skb, napi_budget);
++			break;
++		default:
++			netdev_warn_once(tx_ring->netdev,
++					 "Unknown tx buffer type\n");
++			break;
++		}
  
--		/* unmap skb header data */
--		dma_unmap_single(tx_ring->dev,
--				 dma_unmap_addr(tx_buffer, dma),
--				 dma_unmap_len(tx_buffer, len),
--				 DMA_TO_DEVICE);
--
--		/* clear tx_buffer data */
--		dma_unmap_len_set(tx_buffer, len, 0);
-+		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
+ 		igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
  
- 		/* clear last DMA location and unmap remaining buffers */
- 		while (tx_desc != eop_desc) {
-@@ -2341,13 +2327,8 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 			}
- 
- 			/* unmap any remaining paged data */
--			if (dma_unmap_len(tx_buffer, len)) {
--				dma_unmap_page(tx_ring->dev,
--					       dma_unmap_addr(tx_buffer, dma),
--					       dma_unmap_len(tx_buffer, len),
--					       DMA_TO_DEVICE);
--				dma_unmap_len_set(tx_buffer, len, 0);
--			}
-+			if (dma_unmap_len(tx_buffer, len))
-+				igc_unmap_tx_buffer(tx_ring->dev, tx_buffer);
- 		}
- 
- 		/* move us one more past the eop_desc for start of next pkt */
 -- 
 2.17.1
 
