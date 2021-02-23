@@ -2,59 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 527C43231FF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Feb 2021 21:22:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE9AF323454
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Feb 2021 00:47:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7101F4CD89;
-	Tue, 23 Feb 2021 20:22:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B67974EA77;
+	Tue, 23 Feb 2021 23:47:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wIGwcDWZ_qbK; Tue, 23 Feb 2021 20:22:18 +0000 (UTC)
+	with ESMTP id L6XoL5BqKaW8; Tue, 23 Feb 2021 23:47:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6C4914CB7B;
-	Tue, 23 Feb 2021 20:22:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 932ED4E8A7;
+	Tue, 23 Feb 2021 23:47:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CB4A51BF25F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7541B1BF3C4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 23:47:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B96DF82977
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6C2CA83276
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 23:47:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zoagwnHfuCrP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
+ with ESMTP id w9MbL57UfYZp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Feb 2021 23:47:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2DA5A83A87
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6189764E4B;
- Tue, 23 Feb 2021 20:22:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614111731;
- bh=8laCGD7U3MYSyfadsQn88ZtEeX4T0liVLcz0GRwyYPQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ptB8CxddL8YW1QWoe5c+F2+mjCCPOjZ5mvl4BJ1Lg1ajOaPrSNldFAHh+oS+pNkZC
- 2+6bIMBBxI7b2lC7leRQ81c78RiYHbw9ZS6uzxNZ1a6f427EtC4bc6qit+8HP5v0iC
- woponyIisbOLVjymtcU7CoIidFKbLhM/f9xFmrwZhlp6r5sN2s7mEDKaXUBhl6Jkv2
- Z4QTDhkf3deSqAf1n7UZ7WiQOY6BPmWNwCgiKHTbsauKJUyE0/R95tSyzHzXJFcZRA
- Jsk6NF8eDzk+w4qMN13Yrft7FUxdmZ5JXv0gI2CWaH4LJTaF2ShvzS3Ijg7TTPw+Ni
- zDiTyfjCnBWIw==
-Date: Tue, 23 Feb 2021 12:22:07 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Coiby Xu <coxu@redhat.com>
-Message-ID: <20210223122207.08835e0b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20210222070701.16416-5-coxu@redhat.com>
-References: <20210222070701.16416-1-coxu@redhat.com>
- <20210222070701.16416-5-coxu@redhat.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B9C3F83183
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 23:47:27 +0000 (UTC)
+IronPort-SDR: cbmWjqdojoBoyg+c8RdUEZwQKOWWU0ycwGBGFcg0z3GQgP9YA1DTmoAo7vouXUTQ+d095EJNwh
+ pLRHANLRgniA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9904"; a="249047157"
+X-IronPort-AV: E=Sophos;i="5.81,201,1610438400"; d="scan'208";a="249047157"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2021 15:47:26 -0800
+IronPort-SDR: tKc6KQQBBe/U6YGc6PEWJLMpItWY9TamxwQhO2jitH33bxZYlBEek9W8qSEx5HXZYX4XQ+gdrP
+ iRpzwOEv/0ug==
+X-IronPort-AV: E=Sophos;i="5.81,201,1610438400"; d="scan'208";a="432986424"
+Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2021 15:47:26 -0800
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 23 Feb 2021 15:47:04 -0800
+Message-Id: <20210223234707.1170711-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client
- for kdump
+Subject: [Intel-wired-lan] [PATCH net-next v1 0/3] intel: packet type table
+ simplification
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,29 +64,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kexec@lists.infradead.org, open
- list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 22 Feb 2021 15:07:01 +0800 Coiby Xu wrote:
-> i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
-> i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
-> for 1GbE while "craskernel=auto" only reserved 160M. With the module
-> parameter "resource_profile=2", we can reduce the memory usage of i40iw
-> to ~300M which is still too much for kdump.
-> 
-> Disabling the client registration would spare us the client interface
-> operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
-> saved for kdump.
-> 
-> Signed-off-by: Coiby Xu <coxu@redhat.com>
+Update three of the Intel Ethernet drivers with similar (but not the
+same) improvements to simplify the packet type table init, while removing
+an unused structure entry. For the ice driver, the table is extended
+to 10 bits, which is the hardware limit, and for now is initialized
+to zero.
 
-Is i40iw or whatever the client is not itself under a CONFIG which
-kdump() kernels could be reasonably expected to disable?
+The end result is slightly reduced memory usage, removal of a bunch
+of code, and more specific initialization.
+
+Jesse Brandeburg (3):
+  ice: report hash type such as L2/L3/L4
+  i40e: clean up packet type lookup table
+  iavf: clean up packet type lookup table
+
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 124 +--------------
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |   1 -
+ drivers/net/ethernet/intel/iavf/iavf_common.c | 124 +--------------
+ drivers/net/ethernet/intel/iavf/iavf_type.h   |   1 -
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    | 147 ++++--------------
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  23 ++-
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.h |   2 +-
+ drivers/net/ethernet/intel/ice/ice_xsk.c      |   2 +-
+ 9 files changed, 62 insertions(+), 364 deletions(-)
+
+-- 
+2.29.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
