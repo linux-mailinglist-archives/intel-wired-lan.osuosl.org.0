@@ -1,57 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E135322D78
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Feb 2021 16:27:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 527C43231FF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Feb 2021 21:22:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AEC2460614;
-	Tue, 23 Feb 2021 15:27:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7101F4CD89;
+	Tue, 23 Feb 2021 20:22:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7uRwJbXjVAyg; Tue, 23 Feb 2021 15:27:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wIGwcDWZ_qbK; Tue, 23 Feb 2021 20:22:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5F2FE605A5;
-	Tue, 23 Feb 2021 15:27:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C4914CB7B;
+	Tue, 23 Feb 2021 20:22:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2899B1BF36B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 14:15:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CB4A51BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 23C1B85513
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 14:15:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B96DF82977
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZsvJjNkDbO_e for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Feb 2021 14:15:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 91F458560B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 14:15:47 +0000 (UTC)
-IronPort-SDR: aqUHcNrGeMKOsnfNzHJs4o7MmpmoiOyYiKFLHWPPkB9r4h55LlmBHSB9UYtcG+fnXVc1t4dXvp
- k5PXo3n4x8Bw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9903"; a="164660120"
-X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="164660120"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2021 06:15:46 -0800
-IronPort-SDR: XoaFlVQHtvlnDXxCrmqwM353FE575a2Ujk/1EzZlmJ78FJXl+I/GsEtXx2BAs9dpThL0v9wv2h
- dWTZ5kabesyA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="390906038"
-Received: from gsiwik.igk.intel.com ([10.102.18.50])
- by fmsmga008.fm.intel.com with ESMTP; 23 Feb 2021 06:15:45 -0800
-From: Grzegorz Siwik <grzegorz.siwik@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Feb 2021 15:15:27 +0100
-Message-Id: <1614089727-337500-1-git-send-email-grzegorz.siwik@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-X-Mailman-Approved-At: Tue, 23 Feb 2021 15:27:45 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v1] igb: Add double-check
- MTA_REGISTER for i210 and i211
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zoagwnHfuCrP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2DA5A83A87
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 20:22:13 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6189764E4B;
+ Tue, 23 Feb 2021 20:22:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614111731;
+ bh=8laCGD7U3MYSyfadsQn88ZtEeX4T0liVLcz0GRwyYPQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=ptB8CxddL8YW1QWoe5c+F2+mjCCPOjZ5mvl4BJ1Lg1ajOaPrSNldFAHh+oS+pNkZC
+ 2+6bIMBBxI7b2lC7leRQ81c78RiYHbw9ZS6uzxNZ1a6f427EtC4bc6qit+8HP5v0iC
+ woponyIisbOLVjymtcU7CoIidFKbLhM/f9xFmrwZhlp6r5sN2s7mEDKaXUBhl6Jkv2
+ Z4QTDhkf3deSqAf1n7UZ7WiQOY6BPmWNwCgiKHTbsauKJUyE0/R95tSyzHzXJFcZRA
+ Jsk6NF8eDzk+w4qMN13Yrft7FUxdmZ5JXv0gI2CWaH4LJTaF2ShvzS3Ijg7TTPw+Ni
+ zDiTyfjCnBWIw==
+Date: Tue, 23 Feb 2021 12:22:07 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Coiby Xu <coxu@redhat.com>
+Message-ID: <20210223122207.08835e0b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210222070701.16416-5-coxu@redhat.com>
+References: <20210222070701.16416-1-coxu@redhat.com>
+ <20210222070701.16416-5-coxu@redhat.com>
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client
+ for kdump
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,74 +67,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Grzegorz Siwik <grzegorz.siwik@intel.com>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, kexec@lists.infradead.org, open
+ list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add new function which checks MTA_REGISTER if its filled correctly.
-If not then writes again to same register.
-There is possibility that i210 and i211 could not accept
-MTA_REGISTER settings, specially when you add and remove
-many of multicast addresses in short time.
-Without this patch there is possibility that multicast settings will be
-not always set correctly in hardware.
+On Mon, 22 Feb 2021 15:07:01 +0800 Coiby Xu wrote:
+> i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
+> i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
+> for 1GbE while "craskernel=auto" only reserved 160M. With the module
+> parameter "resource_profile=2", we can reduce the memory usage of i40iw
+> to ~300M which is still too much for kdump.
+> 
+> Disabling the client registration would spare us the client interface
+> operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
+> saved for kdump.
+> 
+> Signed-off-by: Coiby Xu <coxu@redhat.com>
 
-Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
----
- drivers/net/ethernet/intel/igb/e1000_mac.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igb/e1000_mac.c b/drivers/net/ethernet/intel/igb/e1000_mac.c
-index fd8eb2f..2ed6a00 100644
---- a/drivers/net/ethernet/intel/igb/e1000_mac.c
-+++ b/drivers/net/ethernet/intel/igb/e1000_mac.c
-@@ -484,6 +484,31 @@ static u32 igb_hash_mc_addr(struct e1000_hw *hw, u8 *mc_addr)
- }
- 
- /**
-+* igb_i21x_hw_doublecheck - double checks potential HW issue in i21X
-+* @hw: pointer to the HW structure
-+*
-+* Checks if multicast array is wrote correctly
-+* If not then rewrites again to register
-+**/
-+static void igb_i21x_hw_doublecheck(struct e1000_hw *hw)
-+{
-+	bool is_failed;
-+	int i;
-+
-+	do {
-+		is_failed = false;
-+		for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
-+			if (array_rd32(E1000_MTA, i) != hw->mac.mta_shadow[i]) {
-+				is_failed = true;
-+				array_wr32(E1000_MTA, i, hw->mac.mta_shadow[i]);
-+				wrfl();
-+				break;
-+			}
-+		}
-+	} while (is_failed);
-+}
-+
-+/**
-  *  igb_update_mc_addr_list - Update Multicast addresses
-  *  @hw: pointer to the HW structure
-  *  @mc_addr_list: array of multicast addresses to program
-@@ -516,6 +541,8 @@ void igb_update_mc_addr_list(struct e1000_hw *hw,
- 	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
- 		array_wr32(E1000_MTA, i, hw->mac.mta_shadow[i]);
- 	wrfl();
-+	if (hw->mac.type == e1000_i210 || hw->mac.type == e1000_i211)
-+		igb_i21x_hw_doublecheck(hw);
- }
- 
- /**
--- 
-1.8.3.1
-
+Is i40iw or whatever the client is not itself under a CONFIG which
+kdump() kernels could be reasonably expected to disable?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
