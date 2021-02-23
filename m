@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD3D1322B37
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Feb 2021 14:09:27 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E7DC322B38
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Feb 2021 14:09:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 565A4871B4;
-	Tue, 23 Feb 2021 13:09:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D7AA2847B3;
+	Tue, 23 Feb 2021 13:09:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ry6Uv2rdyHHl; Tue, 23 Feb 2021 13:09:26 +0000 (UTC)
+	with ESMTP id sXBJIjbD-_U7; Tue, 23 Feb 2021 13:09:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C9BE3871CC;
-	Tue, 23 Feb 2021 13:09:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 254C7847C3;
+	Tue, 23 Feb 2021 13:09:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7CBDD1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 13:09:24 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B0A81BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 13:09:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 76FC2871B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 13:09:24 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2786384785
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 13:09:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kQT0RwpQsyUx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Feb 2021 13:09:23 +0000 (UTC)
+ with ESMTP id FgK_r0pm9ywU for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Feb 2021 13:09:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B9AF5871A2
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 120E084755
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Feb 2021 13:09:23 +0000 (UTC)
-IronPort-SDR: rkweybIDt61zZA4Nb6kZNyBH0UXSFk5YhTtomvmlAv1o1hNxEm+VtcUiqMYdoUEyhTqbFgMsR2
- Tu3aYaxDsv7Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9903"; a="171931232"
-X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="171931232"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+IronPort-SDR: 4oumOz1BOue8/bRRFkaPG/mUaWMiKTKFT74mAyoDIDlDo9S4q2LZSp9fbDxQtzk+hQLlxYu+tF
+ Akd8vGitYvSw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9903"; a="184845979"
+X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="184845979"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  23 Feb 2021 05:09:23 -0800
-IronPort-SDR: /xK034OI7StcXRKzRAiKmBm4qwBxb9UrU7DDpPJ/GTPTY9apy6i2Sd89kQVoALV2xxB6hW5hMj
- LRTSqQQ/ucaw==
+IronPort-SDR: BPW76l0vFaJO0bt9DRSLRbEbtp8aBm0Tw/031LeUPsDQ+I8duVjJsyqSuULuNneYbeAsfneC/G
+ 2zNUti2UwTLg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="364496193"
+X-IronPort-AV: E=Sophos;i="5.81,200,1610438400"; d="scan'208";a="583194429"
 Received: from lkp-server01.sh.intel.com (HELO 16660e54978b) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 23 Feb 2021 05:09:21 -0800
+ by orsmga005.jf.intel.com with ESMTP; 23 Feb 2021 05:09:22 -0800
 Received: from kbuild by 16660e54978b with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lEXRJ-0001DQ-7c; Tue, 23 Feb 2021 13:09:21 +0000
-Date: Tue, 23 Feb 2021 21:08:34 +0800
+ id 1lEXRJ-0001DZ-Aa; Tue, 23 Feb 2021 13:09:21 +0000
+Date: Tue, 23 Feb 2021 21:08:36 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6034fe52.6NCsJ+BwPReDjgza%lkp@intel.com>
+Message-ID: <6034fe54.4B/Gvc1Jp984YJxo%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- c0593e1d6e66c973b4d67a33d094a2f77cfbfd64
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ 0393e46ac48a6832b1011c233ebcef84f8dbe4f5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,8 +72,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: c0593e1d6e66c973b4d67a33d094a2f77cfbfd64  igb: Fix duplicate include guard
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: 0393e46ac48a6832b1011c233ebcef84f8dbe4f5  ice: update the number of available RSS queues
 
 elapsed time: 726m
 
@@ -94,10 +94,10 @@ mips                      pic32mzda_defconfig
 m68k                          atari_defconfig
 powerpc                        cell_defconfig
 mips                           ip22_defconfig
-sh                             sh03_defconfig
-powerpc                        warp_defconfig
-sh                        sh7757lcr_defconfig
-powerpc                 mpc837x_rdb_defconfig
+powerpc                     akebono_defconfig
+x86_64                           alldefconfig
+mips                            gpr_defconfig
+powerpc                 mpc836x_mds_defconfig
 mips                         db1xxx_defconfig
 powerpc                   lite5200b_defconfig
 mips                  decstation_64_defconfig
