@@ -2,63 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CD9C324803
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Feb 2021 01:47:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8CA63249FD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Feb 2021 06:19:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 677F84ED09;
-	Thu, 25 Feb 2021 00:47:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 419AE4EC30;
+	Thu, 25 Feb 2021 05:19:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xd1Bxr-h9mM7; Thu, 25 Feb 2021 00:47:31 +0000 (UTC)
+	with ESMTP id vpNTMbQBVqK7; Thu, 25 Feb 2021 05:19:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B1DC4ED00;
-	Thu, 25 Feb 2021 00:47:31 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 720FD1BF48B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Feb 2021 00:47:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DB3BA4E43C;
+	Thu, 25 Feb 2021 05:19:31 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CE1EE1BF584
+ for <intel-wired-lan@osuosl.org>; Thu, 25 Feb 2021 05:19:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6C73383DD8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Feb 2021 00:47:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C9CAD6F6BD
+ for <intel-wired-lan@osuosl.org>; Thu, 25 Feb 2021 05:19:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QWm6IUWsU7ft for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Feb 2021 00:47:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CD55783D87
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Feb 2021 00:47:25 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B22DA6146B;
- Thu, 25 Feb 2021 00:47:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614214044;
- bh=v9Cemz6+5QAlytl+WWIeYFPOPcg34dVPzVpn7Ai5Kbw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=MbLCz8HFy4albGGaAxeg4DicoNj4dZI5iynJgXU/NsF8WsILKvj+eqHB9Vphr5thB
- a+v8u35WFikt58r/new7tuteQEpeXz0BPZda2yKfwfAXywmHnlGc8GdcXjW/DHn4f8
- 9S/m2GeerM10HksfNa/H89VAgmt8HzUYiUrjVK13ZRxb+QA6lCQKqbeZPTjwdBDVlb
- MaVHRzW29g0Q/aD6awdU3cHJniScZwcYcR1Opfy/gYImRqa4Wp+qM3NWbSaCDYrdmA
- h4+gY6mCiZcqGJrFctn8iIDBaQStqYzHlDaLRoNhnUfadNgwTrmxX83v4Tafma2exe
- 6ZCL5ZFfEF05A==
-Date: Wed, 24 Feb 2021 16:47:20 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Coiby Xu <coxu@redhat.com>
-Message-ID: <20210224164720.2228c580@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20210225002101.hvbpq7f6zbvylqy4@Rk>
-References: <20210222070701.16416-1-coxu@redhat.com>
- <20210222070701.16416-5-coxu@redhat.com>
- <20210223122207.08835e0b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <20210224114141.ziywca4dvn5fs6js@Rk>
- <20210224084841.50620776@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <20210225002101.hvbpq7f6zbvylqy4@Rk>
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=unrealservers.net
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JH8_bBYytsxo for <intel-wired-lan@osuosl.org>;
+ Thu, 25 Feb 2021 05:19:25 +0000 (UTC)
+X-Greylist: delayed 00:15:46 by SQLgrey-1.8.0
+Received: from mail-oi1-f179.google.com (mail-oi1-f179.google.com
+ [209.85.167.179])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C825B6F60C
+ for <intel-wired-lan@osuosl.org>; Thu, 25 Feb 2021 05:19:25 +0000 (UTC)
+Received: by mail-oi1-f179.google.com with SMTP id i21so2683126oii.2
+ for <intel-wired-lan@osuosl.org>; Wed, 24 Feb 2021 21:19:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=unrealservers.net; s=gsuite;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=mRPenMecG68d3niftIV4DutSJv5NQHVRmLfUrFB7iLw=;
+ b=bR3XCw4d0MtoXpie2bmnhFBUbPeFWV/GEIuicAshoNshvPd/6MasIcWjO3zbbzGxfM
+ HBpmvyw8GJsggbXZt1wGnwWm83Hw15Ot9UhFh8DWSpsmxUEsBCm+wR2tr9lXRX7o2c7s
+ yny/H4Lhz8nR4/syZIsd4KuRw7AwKiNZMFOrw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=mRPenMecG68d3niftIV4DutSJv5NQHVRmLfUrFB7iLw=;
+ b=IYtGoNtkDxTxim8Uy+LsUC48Ww1O7rjIWE7TfdXoscuJM0xZ4h6x4ExcETcgS934vd
+ BA1ULOiYReG1id7LjjPN3me6ZKkAtPprOulh+C1afmzuy/26CwnNSD4nJ3OT0M6FQrQ4
+ Zvsts/uD08mn1bEv0ZnMT4ZyZKWlhCQeCGcc0SuQl1Tl4wAtGO1uKVZcyGTZz7MMY0MX
+ 0cQ3GtLbXCoOyB2uY8e5RWlxA4NnqVePvZzjGPlocQgDYrsf2JtpOAiuMicD+lPyneg4
+ X/7kbO8kKL305+rpb8txi685RPLixxcE/sVDHmz5FhdX/66SRnQiaQrNJD4siL3PSQfC
+ vLFA==
+X-Gm-Message-State: AOAM533NRd3Amnb3/+8dYoNEGrrwWi2wOzoKhqylSRgTIXvBE68KwpDA
+ j2wvG0iL42AHTzEzrPXGfvDsEwMe+3K5i9U9AIuF9decvK8=
+X-Google-Smtp-Source: ABdhPJxAoTKVbGxyTiVOICE9h+qWBmj2iVxGo2O2+C+FHzwzFL/D2r7LyBoU/Q/+B4GZbTNph+hBH4fxcXjetnCzt8M=
+X-Received: by 2002:a17:90a:5914:: with SMTP id
+ k20mr1439056pji.199.1614229070021; 
+ Wed, 24 Feb 2021 20:57:50 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client
- for kdump
+From: Billy Croan <BCroan@unrealservers.net>
+Date: Wed, 24 Feb 2021 22:57:37 -0600
+Message-ID: <CABJL2KoxdiBV6BBOJKfU4pAxANy3F-65c3+mtM2BhS5Lu89vfw@mail.gmail.com>
+To: intel-wired-lan@osuosl.org
+Subject: [Intel-wired-lan] How to "arm" WoL with OS running?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,43 +77,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kexec@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4783235366188268871=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 25 Feb 2021 08:21:01 +0800 Coiby Xu wrote:
-> On Wed, Feb 24, 2021 at 08:48:41AM -0800, Jakub Kicinski wrote:
-> >On Wed, 24 Feb 2021 19:41:41 +0800 Coiby Xu wrote:  
-> >> I'm not sure if I understand you correctly. Do you mean we shouldn't
-> >> disable i40iw for kdump?  
-> >
-> >Forgive my ignorance - are the kdump kernels separate builds?
-> 
-> AFAIK we don't build a kernel exclusively for kdump. 
-> 
-> >If they are it'd be better to leave the choice of enabling RDMA
-> >to the user - through appropriate Kconfig options.
-> 
-> i40iw is usually built as a loadable module. So if we want to leave the
-> choce of enabling RDMA to the user, we could exclude this driver when
-> building the initramfs for kdump, for example, dracut provides the 
-> omit_drivers option for this purpose. 
-> 
-> On the other hand, the users expect "crashkernel=auto" to work out of
-> the box. So i40iw defeats this purpose. 
-> 
-> I'll discuss with my Red Hat team and the Intel team about whether RDMA
-> is needed for kdump. Thanks for bringing up this issue!
+--===============4783235366188268871==
+Content-Type: multipart/alternative; boundary="0000000000004e1d5d05bc21fe05"
 
-Great, talking to experts here at FB it seems that building a cut-down
-kernel for kdump is easier than chasing all the drivers to react to
-is_kdump_kernel(). But if you guys need it and Intel is fine with 
-the change I won't complain.
+--0000000000004e1d5d05bc21fe05
+Content-Type: text/plain; charset="UTF-8"
+
+I was reading https://en.wikipedia.org/wiki/Wake-on-LAN and came across
+this phrase: "not armed for WOL"
+
+I have some OpenCompute hardware which uses the WoL signal from the intel
+network chip to cause a reset/reboot.
+
+this works when the system is in bios or in memtest86, but not when an OS
+is loaded.  I suspect that the e1000e driver "disarms" WoL on load, and 're
+arms' it when unloaded or when the OS shuts down or changes to a lower ACPI
+state.
+
+Is there a technical reason any WoL can not be armed at the same time as OS
+is using the nic?
+
+I get that it serves no useful purpose of the os is already running, but
+does it pose a problem?
+
+--0000000000004e1d5d05bc21fe05
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div dir=3D"ltr"><div>I was reading <a href=3D"https://en=
+.wikipedia.org/wiki/Wake-on-LAN" target=3D"_blank" rel=3D"noreferrer">https=
+://en.wikipedia.org/wiki/Wake-on-LAN</a> and came across this phrase: &quot=
+;not armed for WOL&quot;</div><div><br></div><div>I have some OpenCompute h=
+ardware which uses the WoL signal from the intel network chip to cause a re=
+set/reboot.</div><div><br></div><div>this works when the system is in bios =
+or in memtest86, but not when an OS is loaded.=C2=A0 I suspect that the e10=
+00e driver &quot;disarms&quot; WoL on load, and &#39;re arms&#39; it when u=
+nloaded or when the OS shuts down or changes to a lower ACPI state.</div><d=
+iv><br></div><div>Is there a technical reason any WoL can not be armed at t=
+he same time as OS is using the nic?<br></div><div dir=3D"auto"><br></div><=
+div dir=3D"auto">I get that it serves no useful purpose of the os is alread=
+y running, but does it pose a problem?</div></div></div>
+
+--0000000000004e1d5d05bc21fe05--
+
+--===============4783235366188268871==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4783235366188268871==--
