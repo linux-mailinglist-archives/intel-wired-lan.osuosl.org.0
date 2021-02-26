@@ -1,57 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7414A325AAD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 01:21:04 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93E18325AAF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 01:21:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1285A8424A;
-	Fri, 26 Feb 2021 00:21:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 362BD43370;
+	Fri, 26 Feb 2021 00:21:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r2JgdSplg_8h; Fri, 26 Feb 2021 00:21:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qCfhZ7NPqzKE; Fri, 26 Feb 2021 00:21:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EBEF284246;
-	Fri, 26 Feb 2021 00:21:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 83B1D43352;
+	Fri, 26 Feb 2021 00:21:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2224D1BF2A9
+ by ash.osuosl.org (Postfix) with ESMTP id 766A51BF2A9
  for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1E5E88421D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6F75E8421D
  for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cks7CH5yZLXo for <intel-wired-lan@osuosl.org>;
+ with ESMTP id t-cUuBrRuT0I for <intel-wired-lan@osuosl.org>;
  Fri, 26 Feb 2021 00:20:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 78D858424F
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 92DD584250
  for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:46 +0000 (UTC)
-IronPort-SDR: a7sUcfApeWRuDB8xgpM1YeKUiEMpyzW1HkzTlS89hPCH4ucqiC5t8plYb/3SxxRVPP0frWK5f0
- zQ8VA9FKVrqA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9906"; a="185033334"
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="185033334"
+IronPort-SDR: 0VK7XxI3Vj8TzSUuR638Z9nXiQFtQvDb1gvKLag+QLsYOn8oQ0cf8HiWMTmsOMSXl/Ob4iZvyO
+ PNC4mDdUUZ7w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9906"; a="185033335"
+X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="185033335"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Feb 2021 16:20:45 -0800
-IronPort-SDR: uCpHWxYu51IW0P+Pzw/YRIw5b14QOTcjgJv0/hk5nFWqrIzw1Hd5+PWKB9LZQnet6jueBPzDFf
- 8aVLNdaIBOBg==
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="392639293"
+IronPort-SDR: mk+m5+ZbISf+HAtsZizh64j75OM8P6SVC+MlzgUNTTGYoPFZu+DgMOiyvFbjAvJgFwe2LzlK7P
+ eBBrqqaVE/Kw==
+X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="392639297"
 Received: from coffy.sc.intel.com ([10.3.79.166])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Feb 2021 16:20:45 -0800
 From: Jithu Joseph <jithu.joseph@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Thu, 25 Feb 2021 16:23:02 -0800
-Message-Id: <20210226002308.2348-4-jithu.joseph@intel.com>
+Date: Thu, 25 Feb 2021 16:23:03 -0800
+Message-Id: <20210226002308.2348-5-jithu.joseph@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210226002308.2348-1-jithu.joseph@intel.com>
 References: <20210226002308.2348-1-jithu.joseph@intel.com>
-Subject: [Intel-wired-lan] [PATCH v5 3/9] igc: Refactor igc_clean_rx_ring()
+Subject: [Intel-wired-lan] [PATCH v5 4/9] igc: Refactor XDP rxq info
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,64 +74,128 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Andre Guedes <andre.guedes@intel.com>
 
-Refactor igc_clean_rx_ring() helper, preparing the code for AF_XDP
+Refactor XDP rxq info registration code, preparing the driver for AF_XDP
 zero-copy support which is added by upcoming patches.
 
-The refactor consists of encapsulating page-shared specific code into
-its own helper, leaving common code that will be shared by both
-page-shared and xsk pool in igc_clean_rx_ring().
+Currently, xdp_rxq and memory model are both registered during RX
+resource setup time by igc_xdp_register_rxq_info() helper. With AF_XDP,
+we want to register the memory model later on while configuring the ring
+because we will know which memory model type to register
+(MEM_TYPE_PAGE_SHARED or MEM_TYPE_XSK_BUFF_POOL).
+
+The helpers igc_xdp_register_rxq_info() and igc_xdp_unregister_rxq_
+info() are not useful anymore so they are removed.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
 Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 16 ++++++++++----
+ drivers/net/ethernet/intel/igc/igc_xdp.c  | 27 -----------------------
+ drivers/net/ethernet/intel/igc/igc_xdp.h  |  3 ---
+ 3 files changed, 12 insertions(+), 34 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index d9d60c6c6726..bc086d2f738b 100644
+index bc086d2f738b..2237165c3719 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -346,11 +346,7 @@ static int igc_setup_all_tx_resources(struct igc_adapter *adapter)
- 	return err;
- }
- 
--/**
-- * igc_clean_rx_ring - Free Rx Buffers per Queue
-- * @rx_ring: ring to free buffers from
-- */
--static void igc_clean_rx_ring(struct igc_ring *rx_ring)
-+static void igc_clean_rx_ring_page_shared(struct igc_ring *rx_ring)
+@@ -419,7 +419,7 @@ void igc_free_rx_resources(struct igc_ring *rx_ring)
  {
- 	u16 i = rx_ring->next_to_clean;
+ 	igc_clean_rx_ring(rx_ring);
  
-@@ -383,12 +379,21 @@ static void igc_clean_rx_ring(struct igc_ring *rx_ring)
- 		if (i == rx_ring->count)
- 			i = 0;
- 	}
-+}
+-	igc_xdp_unregister_rxq_info(rx_ring);
++	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+ 
+ 	vfree(rx_ring->rx_buffer_info);
+ 	rx_ring->rx_buffer_info = NULL;
+@@ -458,11 +458,16 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
+ {
+ 	struct net_device *ndev = rx_ring->netdev;
+ 	struct device *dev = rx_ring->dev;
++	u8 index = rx_ring->queue_index;
+ 	int size, desc_len, res;
+ 
+-	res = igc_xdp_register_rxq_info(rx_ring);
+-	if (res < 0)
++	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, index,
++			       rx_ring->q_vector->napi.napi_id);
++	if (res < 0) {
++		netdev_err(ndev, "Failed to register xdp_rxq index %u\n",
++			   index);
+ 		return res;
++	}
+ 
+ 	size = sizeof(struct igc_rx_buffer) * rx_ring->count;
+ 	rx_ring->rx_buffer_info = vzalloc(size);
+@@ -488,7 +493,7 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
+ 	return 0;
+ 
+ err:
+-	igc_xdp_unregister_rxq_info(rx_ring);
++	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+ 	vfree(rx_ring->rx_buffer_info);
+ 	rx_ring->rx_buffer_info = NULL;
+ 	netdev_err(ndev, "Unable to allocate memory for Rx descriptor ring\n");
+@@ -536,6 +541,9 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+ 	u32 srrctl = 0, rxdctl = 0;
+ 	u64 rdba = ring->dma;
+ 
++	WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
++					   MEM_TYPE_PAGE_SHARED, NULL));
 +
-+/**
-+ * igc_clean_rx_ring - Free Rx Buffers per Queue
-+ * @ring: ring to free buffers from
-+ */
-+static void igc_clean_rx_ring(struct igc_ring *ring)
-+{
-+	igc_clean_rx_ring_page_shared(ring);
+ 	if (igc_xdp_is_enabled(adapter))
+ 		set_ring_uses_large_buffer(ring);
  
--	clear_ring_uses_large_buffer(rx_ring);
-+	clear_ring_uses_large_buffer(ring);
+diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
+index 11133c4619bb..27c886a254f1 100644
+--- a/drivers/net/ethernet/intel/igc/igc_xdp.c
++++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+@@ -31,30 +31,3 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
  
--	rx_ring->next_to_alloc = 0;
--	rx_ring->next_to_clean = 0;
--	rx_ring->next_to_use = 0;
-+	ring->next_to_alloc = 0;
-+	ring->next_to_clean = 0;
-+	ring->next_to_use = 0;
+ 	return 0;
  }
+-
+-int igc_xdp_register_rxq_info(struct igc_ring *ring)
+-{
+-	struct net_device *dev = ring->netdev;
+-	int err;
+-
+-	err = xdp_rxq_info_reg(&ring->xdp_rxq, dev, ring->queue_index, 0);
+-	if (err) {
+-		netdev_err(dev, "Failed to register xdp rxq info\n");
+-		return err;
+-	}
+-
+-	err = xdp_rxq_info_reg_mem_model(&ring->xdp_rxq, MEM_TYPE_PAGE_SHARED,
+-					 NULL);
+-	if (err) {
+-		netdev_err(dev, "Failed to register xdp rxq mem model\n");
+-		xdp_rxq_info_unreg(&ring->xdp_rxq);
+-		return err;
+-	}
+-
+-	return 0;
+-}
+-
+-void igc_xdp_unregister_rxq_info(struct igc_ring *ring)
+-{
+-	xdp_rxq_info_unreg(&ring->xdp_rxq);
+-}
+diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.h b/drivers/net/ethernet/intel/igc/igc_xdp.h
+index 412aa369e6ba..cdaa2c39b03a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_xdp.h
++++ b/drivers/net/ethernet/intel/igc/igc_xdp.h
+@@ -7,9 +7,6 @@
+ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
+ 		     struct netlink_ext_ack *extack);
  
- /**
+-int igc_xdp_register_rxq_info(struct igc_ring *ring);
+-void igc_xdp_unregister_rxq_info(struct igc_ring *ring);
+-
+ static inline bool igc_xdp_is_enabled(struct igc_adapter *adapter)
+ {
+ 	return !!adapter->xdp_prog;
 -- 
 2.17.1
 
