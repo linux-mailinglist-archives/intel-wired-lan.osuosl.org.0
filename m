@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 349F2326988
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 22:29:57 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E55F2326974
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 22:29:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 825744F0AB;
-	Fri, 26 Feb 2021 21:29:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 98BC68438F;
+	Fri, 26 Feb 2021 21:29:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0QTer8Wbf8HN; Fri, 26 Feb 2021 21:29:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sLetK8mSzIJt; Fri, 26 Feb 2021 21:29:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 64D3F4F0C1;
-	Fri, 26 Feb 2021 21:29:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B304884331;
+	Fri, 26 Feb 2021 21:29:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 163331BF302
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:29:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 998611BF302
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:29:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CD7F24342C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:29:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 882306F824
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XJnOhxAnOcpY for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Feb 2021 21:29:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RV3hGvNbvax4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Feb 2021 21:28:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0A9504341A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:28:59 +0000 (UTC)
-IronPort-SDR: DWrrN6xFrED/63R6obm0sLgzRZwN2PLCUfr674oOppU374ZfEScbEPXYZrbokwL7iHrdzmsOOy
- UqKa5Puh6ivw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9907"; a="186117852"
-X-IronPort-AV: E=Sophos;i="5.81,209,1610438400"; d="scan'208";a="186117852"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6CB166EA49
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Feb 2021 21:28:58 +0000 (UTC)
+IronPort-SDR: 8qBYG/7WdlXya7W5Bm64in/VRlyvbZHBtm0CMfgAkWq8Wxq0hGmoE7GH19akMQhYakbnPSNmfT
+ SZ6AJKlwRPZw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9907"; a="173138971"
+X-IronPort-AV: E=Sophos;i="5.81,209,1610438400"; d="scan'208";a="173138971"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Feb 2021 13:28:57 -0800
-IronPort-SDR: sBaNBB06V2O6wPlN8yDdd1fJ5k3Cu7HfmrX2h3DKiPGybJCP6jh+GPgt2MTmFYC0vWKy0PHLIK
- MxY+Jq9q1I1Q==
+IronPort-SDR: 8SMZy7Z/cbMidhNxQiJ9+pdbFF5MfCHJC/0DhIX/w8wvWxgDT2gn2BOhH0gJ8fI0P1XV+MvanD
+ rYmfKzVjr/cg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,209,1610438400"; d="scan'208";a="432913468"
+X-IronPort-AV: E=Sophos;i="5.81,209,1610438400"; d="scan'208";a="432913469"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 26 Feb 2021 13:28:56 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 26 Feb 2021 13:19:29 -0800
-Message-Id: <20210226211932.46683-10-anthony.l.nguyen@intel.com>
+Date: Fri, 26 Feb 2021 13:19:30 -0800
+Message-Id: <20210226211932.46683-11-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210226211932.46683-1-anthony.l.nguyen@intel.com>
 References: <20210226211932.46683-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 10/13] ice: Fix for dereference of
- NULL pointer
+Subject: [Intel-wired-lan] [PATCH net 11/13] ice: Use port number instead of
+ PF ID for WoL
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,49 +66,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogSmFjZWsgQnXFgmF0ZWsgPGphY2VreC5idWxhdGVrQGludGVsLmNvbT4KCkFkZCBoYW5k
-bGluZyBvZiBhbGxvY2F0aW9uIGZhdWx0IGZvciBpY2VfdnNpX2xpc3RfbWFwX2luZm8uCgpBbHNv
-ICpmaSBzaG91bGQgbm90IGJlIE5VTEwgcG9pbnRlciwgaXQgaXMgYSByZWZlcmVuY2UgdG8gcmF3
-CmRhdGEgZmllbGQsIHNvIHJlbW92ZSB0aGlzIHZhcmlhYmxlIGFuZCB1c2UgdGhlIHJlZmVyZW5j
-ZQpkaXJlY3RseS4KCkZpeGVzOiA5ZGFmODIwOGRkNGQgKCJpY2U6IEFkZCBzdXBwb3J0IGZvciBz
-d2l0Y2ggZmlsdGVyIHByb2dyYW1taW5nIikKU2lnbmVkLW9mZi1ieTogSmFjZWsgQnXFgmF0ZWsg
-PGphY2VreC5idWxhdGVrQGludGVsLmNvbT4KQ28tZGV2ZWxvcGVkLWJ5OiBIYWl5dWUgV2FuZyA8
-aGFpeXVlLndhbmdAaW50ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBIYWl5dWUgV2FuZyA8aGFpeXVl
-LndhbmdAaW50ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBUb255IE5ndXllbiA8YW50aG9ueS5sLm5n
-dXllbkBpbnRlbC5jb20+Ci0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9z
-d2l0Y2guYyB8IDEyICsrKysrKystLS0tLQogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygr
-KSwgNSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvaWNlX3N3aXRjaC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9z
-d2l0Y2guYwppbmRleCA2N2M5NjVhM2Y1ZDIuLjM4N2QzZjZjZDcxZSAxMDA2NDQKLS0tIGEvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zd2l0Y2guYworKysgYi9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3N3aXRjaC5jCkBAIC0xMjM4LDYgKzEyMzgsOSBAQCBp
-Y2VfYWRkX3VwZGF0ZV92c2lfbGlzdChzdHJ1Y3QgaWNlX2h3ICpodywKIAkJCWljZV9jcmVhdGVf
-dnNpX2xpc3RfbWFwKGh3LCAmdnNpX2hhbmRsZV9hcnJbMF0sIDIsCiAJCQkJCQl2c2lfbGlzdF9p
-ZCk7CiAKKwkJaWYgKCFtX2VudHJ5LT52c2lfbGlzdF9pbmZvKQorCQkJcmV0dXJuIElDRV9FUlJf
-Tk9fTUVNT1JZOworCiAJCS8qIElmIHRoaXMgZW50cnkgd2FzIGxhcmdlIGFjdGlvbiB0aGVuIHRo
-ZSBsYXJnZSBhY3Rpb24gbmVlZHMKIAkJICogdG8gYmUgdXBkYXRlZCB0byBwb2ludCB0byBGV0Qg
-dG8gVlNJIGxpc3QKIAkJICovCkBAIC0yMjIwLDYgKzIyMjMsNyBAQCBpY2VfdnNpX3VzZXNfZmx0
-cihzdHJ1Y3QgaWNlX2ZsdHJfbWdtdF9saXN0X2VudHJ5ICpmbV9lbnRyeSwgdTE2IHZzaV9oYW5k
-bGUpCiAJcmV0dXJuICgoZm1fZW50cnktPmZsdHJfaW5mby5mbHRyX2FjdCA9PSBJQ0VfRldEX1RP
-X1ZTSSAmJgogCQkgZm1fZW50cnktPmZsdHJfaW5mby52c2lfaGFuZGxlID09IHZzaV9oYW5kbGUp
-IHx8CiAJCShmbV9lbnRyeS0+Zmx0cl9pbmZvLmZsdHJfYWN0ID09IElDRV9GV0RfVE9fVlNJX0xJ
-U1QgJiYKKwkJIGZtX2VudHJ5LT52c2lfbGlzdF9pbmZvICYmCiAJCSAodGVzdF9iaXQodnNpX2hh
-bmRsZSwgZm1fZW50cnktPnZzaV9saXN0X2luZm8tPnZzaV9tYXApKSkpOwogfQogCkBAIC0yMjky
-LDE0ICsyMjk2LDEyIEBAIGljZV9hZGRfdG9fdnNpX2ZsdHJfbGlzdChzdHJ1Y3QgaWNlX2h3ICpo
-dywgdTE2IHZzaV9oYW5kbGUsCiAJCXJldHVybiBJQ0VfRVJSX1BBUkFNOwogCiAJbGlzdF9mb3Jf
-ZWFjaF9lbnRyeShmbV9lbnRyeSwgbGt1cF9saXN0X2hlYWQsIGxpc3RfZW50cnkpIHsKLQkJc3Ry
-dWN0IGljZV9mbHRyX2luZm8gKmZpOwotCi0JCWZpID0gJmZtX2VudHJ5LT5mbHRyX2luZm87Ci0J
-CWlmICghZmkgfHwgIWljZV92c2lfdXNlc19mbHRyKGZtX2VudHJ5LCB2c2lfaGFuZGxlKSkKKwkJ
-aWYgKCFpY2VfdnNpX3VzZXNfZmx0cihmbV9lbnRyeSwgdnNpX2hhbmRsZSkpCiAJCQljb250aW51
-ZTsKIAogCQlzdGF0dXMgPSBpY2VfYWRkX2VudHJ5X3RvX3ZzaV9mbHRyX2xpc3QoaHcsIHZzaV9o
-YW5kbGUsCi0JCQkJCQkJdnNpX2xpc3RfaGVhZCwgZmkpOworCQkJCQkJCXZzaV9saXN0X2hlYWQs
-CisJCQkJCQkJJmZtX2VudHJ5LT5mbHRyX2luZm8pOwogCQlpZiAoc3RhdHVzKQogCQkJcmV0dXJu
-IHN0YXR1czsKIAl9Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
-bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
-aW50ZWwtd2lyZWQtbGFuCg==
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+
+As per the spec, the WoL control word read from the NVM should be
+interpreted as port numbers, and not PF numbers. So when checking
+if WoL supported, use the port number instead of the PF ID.
+
+Also, ice_is_wol_supported doesn't really need a pointer to the pf
+struct, but just needs a pointer to the hw instance.
+
+Fixes: 769c500dcc1e ("ice: Add advanced power mgmt for WoL")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h         | 2 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 4 ++--
+ drivers/net/ethernet/intel/ice/ice_main.c    | 9 ++++-----
+ 3 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 522c7aa61cc7..def5439c3f6c 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -620,7 +620,7 @@ int ice_schedule_reset(struct ice_pf *pf, enum ice_reset_req reset);
+ void ice_print_link_msg(struct ice_vsi *vsi, bool isup);
+ const char *ice_stat_str(enum ice_status stat_err);
+ const char *ice_aq_str(enum ice_aq_err aq_err);
+-bool ice_is_wol_supported(struct ice_pf *pf);
++bool ice_is_wol_supported(struct ice_hw *hw);
+ int
+ ice_fdir_write_fltr(struct ice_pf *pf, struct ice_fdir_fltr *input, bool add,
+ 		    bool is_tun);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 2dcfa685b763..32ba71a16165 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3472,7 +3472,7 @@ static void ice_get_wol(struct net_device *netdev, struct ethtool_wolinfo *wol)
+ 		netdev_warn(netdev, "Wake on LAN is not supported on this interface!\n");
+ 
+ 	/* Get WoL settings based on the HW capability */
+-	if (ice_is_wol_supported(pf)) {
++	if (ice_is_wol_supported(&pf->hw)) {
+ 		wol->supported = WAKE_MAGIC;
+ 		wol->wolopts = pf->wol_ena ? WAKE_MAGIC : 0;
+ 	} else {
+@@ -3492,7 +3492,7 @@ static int ice_set_wol(struct net_device *netdev, struct ethtool_wolinfo *wol)
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
+ 
+-	if (vsi->type != ICE_VSI_PF || !ice_is_wol_supported(pf))
++	if (vsi->type != ICE_VSI_PF || !ice_is_wol_supported(&pf->hw))
+ 		return -EOPNOTSUPP;
+ 
+ 	/* only magic packet is supported */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 255a07c1e33a..9f1adff85be7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3537,15 +3537,14 @@ static int ice_init_interrupt_scheme(struct ice_pf *pf)
+ }
+ 
+ /**
+- * ice_is_wol_supported - get NVM state of WoL
+- * @pf: board private structure
++ * ice_is_wol_supported - check if WoL is supported
++ * @hw: pointer to hardware info
+  *
+  * Check if WoL is supported based on the HW configuration.
+  * Returns true if NVM supports and enables WoL for this port, false otherwise
+  */
+-bool ice_is_wol_supported(struct ice_pf *pf)
++bool ice_is_wol_supported(struct ice_hw *hw)
+ {
+-	struct ice_hw *hw = &pf->hw;
+ 	u16 wol_ctrl;
+ 
+ 	/* A bit set to 1 in the NVM Software Reserved Word 2 (WoL control
+@@ -3554,7 +3553,7 @@ bool ice_is_wol_supported(struct ice_pf *pf)
+ 	if (ice_read_sr_word(hw, ICE_SR_NVM_WOL_CFG, &wol_ctrl))
+ 		return false;
+ 
+-	return !(BIT(hw->pf_id) & wol_ctrl);
++	return !(BIT(hw->port_info->lport) & wol_ctrl);
+ }
+ 
+ /**
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
