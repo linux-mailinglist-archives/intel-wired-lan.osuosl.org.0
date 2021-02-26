@@ -1,57 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEF82325AAB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 01:21:00 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7414A325AAD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Feb 2021 01:21:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 65A6B6F93E;
-	Fri, 26 Feb 2021 00:20:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1285A8424A;
+	Fri, 26 Feb 2021 00:21:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RSlcM7GSt395; Fri, 26 Feb 2021 00:20:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r2JgdSplg_8h; Fri, 26 Feb 2021 00:21:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5BCAA6F880;
-	Fri, 26 Feb 2021 00:20:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBEF284246;
+	Fri, 26 Feb 2021 00:21:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 031561C113E
+ by ash.osuosl.org (Postfix) with ESMTP id 2224D1BF2A9
  for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F2CB68421D
- for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1E5E88421D
+ for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LlhIw_0vzy9P for <intel-wired-lan@osuosl.org>;
+ with ESMTP id Cks7CH5yZLXo for <intel-wired-lan@osuosl.org>;
  Fri, 26 Feb 2021 00:20:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4E8348424A
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 78D858424F
  for <intel-wired-lan@osuosl.org>; Fri, 26 Feb 2021 00:20:46 +0000 (UTC)
-IronPort-SDR: GIKJQiXoa4OXVug3kXh74c+/U+uXbA1QANjf+aBdiahktNSstcmZbO3ro2FDn/18CvwKAMYEYB
- imIPzE31nFVg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9906"; a="185033333"
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="185033333"
+IronPort-SDR: a7sUcfApeWRuDB8xgpM1YeKUiEMpyzW1HkzTlS89hPCH4ucqiC5t8plYb/3SxxRVPP0frWK5f0
+ zQ8VA9FKVrqA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9906"; a="185033334"
+X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="185033334"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Feb 2021 16:20:45 -0800
-IronPort-SDR: NPH3mTdRUjbeDEQzDgNTox2m1e5MQ4wgdJAiPPIGriPA2iRF+rg818i2zUAQkYZ8VUBE9MDhpI
- 56AOH0Azcfjw==
-X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="392639289"
+IronPort-SDR: uCpHWxYu51IW0P+Pzw/YRIw5b14QOTcjgJv0/hk5nFWqrIzw1Hd5+PWKB9LZQnet6jueBPzDFf
+ 8aVLNdaIBOBg==
+X-IronPort-AV: E=Sophos;i="5.81,207,1610438400"; d="scan'208";a="392639293"
 Received: from coffy.sc.intel.com ([10.3.79.166])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Feb 2021 16:20:45 -0800
 From: Jithu Joseph <jithu.joseph@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Thu, 25 Feb 2021 16:23:01 -0800
-Message-Id: <20210226002308.2348-3-jithu.joseph@intel.com>
+Date: Thu, 25 Feb 2021 16:23:02 -0800
+Message-Id: <20210226002308.2348-4-jithu.joseph@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210226002308.2348-1-jithu.joseph@intel.com>
 References: <20210226002308.2348-1-jithu.joseph@intel.com>
-Subject: [Intel-wired-lan] [PATCH v5 2/9] igc: Refactor __igc_xdp_run_prog()
+Subject: [Intel-wired-lan] [PATCH v5 3/9] igc: Refactor igc_clean_rx_ring()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,105 +73,64 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Andre Guedes <andre.guedes@intel.com>
 
-Refactor __igc_xdp_run_prog() helper from igc_xdp_run_prog(),
-preparing the code for AF_XDP zero-copy support which is added
-by upcoming patches.
+Refactor igc_clean_rx_ring() helper, preparing the code for AF_XDP
+zero-copy support which is added by upcoming patches.
 
-The existing igc_xdp_run_prog() caters to regular XDP rx path
-which has to verify if bpf_prog is not NULL. Zero-copy
-path assumes that bpf_prog is not NULL and hence this check is
-not required. Therefore it makes sense to refactor the common
-code into a helper function, to avoid code duplication.
+The refactor consists of encapsulating page-shared specific code into
+its own helper, leaving common code that will be shared by both
+page-shared and xsk pool in igc_clean_rx_ring().
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 Signed-off-by: Jithu Joseph <jithu.joseph@intel.com>
 Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 56 +++++++++++------------
- 1 file changed, 28 insertions(+), 28 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index a659e6f24886..d9d60c6c6726 100644
+index d9d60c6c6726..bc086d2f738b 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2021,38 +2021,22 @@ static int igc_xdp_xmit_back(struct igc_adapter *adapter, struct xdp_buff *xdp)
- 	return res;
+@@ -346,11 +346,7 @@ static int igc_setup_all_tx_resources(struct igc_adapter *adapter)
+ 	return err;
  }
  
--static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
--					struct xdp_buff *xdp)
-+/* This function assumes rcu_read_lock() is held by the caller. */
-+static int __igc_xdp_run_prog(struct igc_adapter *adapter,
-+			      struct bpf_prog *prog,
-+			      struct xdp_buff *xdp)
+-/**
+- * igc_clean_rx_ring - Free Rx Buffers per Queue
+- * @rx_ring: ring to free buffers from
+- */
+-static void igc_clean_rx_ring(struct igc_ring *rx_ring)
++static void igc_clean_rx_ring_page_shared(struct igc_ring *rx_ring)
  {
--	struct bpf_prog *prog;
--	int res;
--	u32 act;
--
--	rcu_read_lock();
--
--	prog = READ_ONCE(adapter->xdp_prog);
--	if (!prog) {
--		res = IGC_XDP_PASS;
--		goto unlock;
--	}
-+	u32 act = bpf_prog_run_xdp(prog, xdp);
+ 	u16 i = rx_ring->next_to_clean;
  
--	act = bpf_prog_run_xdp(prog, xdp);
- 	switch (act) {
- 	case XDP_PASS:
--		res = IGC_XDP_PASS;
--		break;
-+		return IGC_XDP_PASS;
- 	case XDP_TX:
--		if (igc_xdp_xmit_back(adapter, xdp) < 0)
--			res = IGC_XDP_CONSUMED;
--		else
--			res = IGC_XDP_TX;
--		break;
-+		return igc_xdp_xmit_back(adapter, xdp) < 0 ?
-+			IGC_XDP_CONSUMED : IGC_XDP_TX;
- 	case XDP_REDIRECT:
--		if (xdp_do_redirect(adapter->netdev, xdp, prog) < 0)
--			res = IGC_XDP_CONSUMED;
--		else
--			res = IGC_XDP_REDIRECT;
--		break;
-+		return xdp_do_redirect(adapter->netdev, xdp, prog) < 0 ?
-+			IGC_XDP_CONSUMED : IGC_XDP_REDIRECT;
- 	default:
- 		bpf_warn_invalid_xdp_action(act);
- 		fallthrough;
-@@ -2060,9 +2044,25 @@ static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
- 		trace_xdp_exception(adapter->netdev, prog, act);
- 		fallthrough;
- 	case XDP_DROP:
--		res = IGC_XDP_CONSUMED;
--		break;
-+		return IGC_XDP_CONSUMED;
+@@ -383,12 +379,21 @@ static void igc_clean_rx_ring(struct igc_ring *rx_ring)
+ 		if (i == rx_ring->count)
+ 			i = 0;
  	}
 +}
 +
-+static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
-+					struct xdp_buff *xdp)
++/**
++ * igc_clean_rx_ring - Free Rx Buffers per Queue
++ * @ring: ring to free buffers from
++ */
++static void igc_clean_rx_ring(struct igc_ring *ring)
 +{
-+	struct bpf_prog *prog;
-+	int res;
-+
-+	rcu_read_lock();
-+
-+	prog = READ_ONCE(adapter->xdp_prog);
-+	if (!prog) {
-+		res = IGC_XDP_PASS;
-+		goto unlock;
-+	}
-+
-+	res = __igc_xdp_run_prog(adapter, prog, xdp);
++	igc_clean_rx_ring_page_shared(ring);
  
- unlock:
- 	rcu_read_unlock();
+-	clear_ring_uses_large_buffer(rx_ring);
++	clear_ring_uses_large_buffer(ring);
+ 
+-	rx_ring->next_to_alloc = 0;
+-	rx_ring->next_to_clean = 0;
+-	rx_ring->next_to_use = 0;
++	ring->next_to_alloc = 0;
++	ring->next_to_clean = 0;
++	ring->next_to_use = 0;
+ }
+ 
+ /**
 -- 
 2.17.1
 
