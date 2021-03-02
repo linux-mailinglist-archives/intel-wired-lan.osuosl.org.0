@@ -2,58 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E62A32A946
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:24:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2F2232A930
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:22:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BCDA44EBAB;
-	Tue,  2 Mar 2021 18:24:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7CC0B4EB91;
+	Tue,  2 Mar 2021 18:22:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4EzG-Q1kdFP3; Tue,  2 Mar 2021 18:24:24 +0000 (UTC)
+	with ESMTP id b9zBv9yvh8uf; Tue,  2 Mar 2021 18:22:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 97F894EB9A;
-	Tue,  2 Mar 2021 18:24:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B6D8E4EA77;
+	Tue,  2 Mar 2021 18:22:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7BF741BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:24:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 202961BF2B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 74FCC4EB91
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:24:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 98D82606B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sbEPDk2V5xVM for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 18:24:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id q-8Mu7I1nCfl for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1C82C4EA77
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:23:58 +0000 (UTC)
-IronPort-SDR: fpM4Rp9b2ln7x8eQsA3O0r/1Bb5vmv4nRu7ThQ8rC1SuL6j5DySDcvwIl1xSdhDD+YKFhNPYKF
- aESFsTGt/ekQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="174062084"
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="174062084"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0F4EF606C5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
+IronPort-SDR: FezOaVIPZwdASUlITGKW+w6T4NzAqdUDrkzf2DxDBD2lkqAL+XXLC8YL66G/OBk7jIy15TIysF
+ JKEkIxYNt9Tg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="166813976"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="166813976"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Mar 2021 10:21:48 -0800
-IronPort-SDR: ykGVXgoouL5+pJ/QxoxwswxNTMl3JNEP16moMrrjYFDquDBcvLqo9yxwqMdBydfaYljK8yIUPf
- k1RjOUR7E/kg==
+IronPort-SDR: 9dQ5u5XTsAEbObq8z5yoRQr5oka2ve55UUT8XmSvvG/kcRZQ6lOJF9xF9J7cMUICYFCINZ5oE1
+ Hwd09NmBWM6w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="369051173"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="369051174"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga006.jf.intel.com with ESMTP; 02 Mar 2021 10:21:45 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Mar 2021 10:12:08 -0800
-Message-Id: <20210302181213.51718-9-anthony.l.nguyen@intel.com>
+Date: Tue,  2 Mar 2021 10:12:09 -0800
+Message-Id: <20210302181213.51718-10-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
 References: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S55 09/14] ice: remove unnecessary
- duplicated AQ command flag setting
+Subject: [Intel-wired-lan] [PATCH S55 10/14] ice: Check for bail out
+ condition early
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,33 +71,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Commit a012dca9f7a2 ("ice: add ethtool -m support for reading i2c eeprom
-modules") unnecessarily added the ICE_AQ_FLAG_BUF flag to the descriptor
-when sending the indirect Read/Write SFF EEPROM AQ command. The flag is
-already added later in the code flow for all indirect AQ commands, i.e.
-commands that provide an additional data buffer.
+Check for bail out condition before calling ice_aq_sff_eeprom
 
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index a20edf1538a0..105504c8cfe7 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3186,7 +3186,7 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index d6a9fd912971..26a7be2f7193 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3958,14 +3958,14 @@ ice_get_module_eeprom(struct net_device *netdev,
+ 	u8 value = 0;
+ 	u8 page = 0;
  
- 	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_sff_eeprom);
- 	cmd = &desc.params.read_write_sff_param;
--	desc.flags = cpu_to_le16(ICE_AQ_FLAG_RD | ICE_AQ_FLAG_BUF);
-+	desc.flags = cpu_to_le16(ICE_AQ_FLAG_RD);
- 	cmd->lport_num = (u8)(lport & 0xff);
- 	cmd->lport_num_valid = (u8)((lport >> 8) & 0x01);
- 	cmd->i2c_bus_addr = cpu_to_le16(((bus_addr >> 1) &
+-	status = ice_aq_sff_eeprom(hw, 0, addr, offset, page, 0,
+-				   &value, 1, 0, NULL);
+-	if (status)
+-		return -EIO;
+-
+ 	if (!ee || !ee->len || !data)
+ 		return -EINVAL;
+ 
++	status = ice_aq_sff_eeprom(hw, 0, addr, offset, page, 0, &value, 1, 0,
++				   NULL);
++	if (status)
++		return -EIO;
++
+ 	if (value == ICE_MODULE_TYPE_SFP)
+ 		is_sfp = true;
+ 
 -- 
 2.20.1
 
