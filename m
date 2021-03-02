@@ -1,83 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98E7432A26B
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 15:24:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C06532A384
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 16:19:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2AA9783EF9;
-	Tue,  2 Mar 2021 14:24:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E9BF743155;
+	Tue,  2 Mar 2021 15:19:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WAiIdMELSpQF; Tue,  2 Mar 2021 14:24:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 400_o5EHx911; Tue,  2 Mar 2021 15:19:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1216183EF0;
-	Tue,  2 Mar 2021 14:24:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DB82B4314F;
+	Tue,  2 Mar 2021 15:19:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A3BD41BF4E5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 14:23:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2DC471BF337
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 15:19:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9F08D605D1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 14:23:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1C2426063C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 15:19:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cc-ntBm7qVsk for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 14:23:55 +0000 (UTC)
+ with ESMTP id V_isJ4JI-VYY for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 15:19:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-f45.google.com (mail-ed1-f45.google.com
- [209.85.208.45])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DDDBE6009C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 14:23:54 +0000 (UTC)
-Received: by mail-ed1-f45.google.com with SMTP id dm26so1822295edb.12
- for <intel-wired-lan@lists.osuosl.org>; Tue, 02 Mar 2021 06:23:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=FRuUQq30ioibxh1s4bVwuehg8mtomzSVObPwas+DnIg=;
- b=IT5oSHASkikMtm5+s4mDKYrYKWItV+t92P4VfQoJ5Ou/G7Myg0EVwG+uHQpNNj6Cpm
- bPja5SqMGlNAcU+CwE3v03PJqJR6S0M57k+5OWSfEWx+HECvCSgJBNUAyqPFYgj0bgq+
- h8YhOx9ooxmr8z9nd2TvDMQ+O4BwWl0UvRJF506IVbuw3TvZ+srztEMMoKKF+mStKxVP
- uLLET1eOi2uiZKjYWcLdHKadCi9AhrOl33PsI8bBCMYhwTY+BZX3fMhJLUW/z14Qv+Z7
- 5NV8czCy4ASTeDlpewvnTBX8Q5XpQiKu6Zd+w4NNbQV6cJXvpiB773YlH6y43fOxyqFy
- PsSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=FRuUQq30ioibxh1s4bVwuehg8mtomzSVObPwas+DnIg=;
- b=kVU/pwT0P/0Se49kORVlm4rT7s0Pejx0jv/5W9ZOD7NQNECiw+CrU1QFjm8ilG9J3L
- ElbE80lVO10K3srmRDNZI22U94mWIXfTKEIXwGudjDf/5COs4ahZ+FiJdj9t9wnhNS5y
- IYXyobTRfNqsXtf2qVhrC0ocxzQWJHLPcGNYjOAcHBO4GlnwwSmDVr+P3EkHN62zcSdn
- ekyl9clH0QMpROb/Q7N2L9bib+AdOyFaFETvwaZofboEq/qhw/ZbTwV1oPdoRZi4uH+F
- qvuSwEPzORg6WAyL4mr/CiWw6TRwU/YtKvujYvIb4fJCA2slGAggdWO+487HxccTcJSe
- SENQ==
-X-Gm-Message-State: AOAM532xFkdtjAQiWHTpGvp2LKMWECwASCr9T3T3SH04AjXXL5fwHzTl
- q8F2brTMXi4FYBPKsYcOOs0=
-X-Google-Smtp-Source: ABdhPJw3mteegPMDsRKGbXh6fddEUQcBDDITsXRT7DkQclbrm5uBo95Lgwv1KjRNXaPARhzFTxhSEg==
-X-Received: by 2002:a05:6402:b70:: with SMTP id
- cb16mr19522696edb.11.1614695033027; 
- Tue, 02 Mar 2021 06:23:53 -0800 (PST)
-Received: from skbuf ([188.25.217.13])
- by smtp.gmail.com with ESMTPSA id x17sm18854567edq.42.2021.03.02.06.23.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 06:23:51 -0800 (PST)
-Date: Tue, 2 Mar 2021 16:23:50 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20210302142350.4tu3n4gay53cjnig@skbuf>
-References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-2-vinicius.gomes@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210122224453.4161729-2-vinicius.gomes@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/8] ethtool: Add support
- for configuring frame preemption
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D60B26063A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 15:19:10 +0000 (UTC)
+IronPort-SDR: VLgWt58Pa+TH9KdyKNXbFs5p+r2etHvJg84odo8/pEjSxtVhEHdK+K7bJf4t6rk3WZOU5PmojW
+ iOHOp9jdCLHw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="186962767"
+X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="186962767"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2021 07:19:09 -0800
+IronPort-SDR: vYKaJ2S1uzLcfuw9BIARoA/I/2oDrgNFX40uin9Z0QgW71n8xa84/AiZGGqOgTCgkmej0eLcd6
+ YOiLXk6Z4ZWg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="383582740"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga002.jf.intel.com with ESMTP; 02 Mar 2021 07:19:08 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  2 Mar 2021 15:19:04 +0000
+Message-Id: <20210302151904.13288-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix to not show opcode msg
+ on unsuccessful VF MAC change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,42 +63,158 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, mkubecek@suse.cz, jiri@resnulli.us,
- vladimir.oltean@nxp.com, xiyou.wangcong@gmail.com, jhs@mojatatu.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
- po.liu@nxp.com
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vinicius,
+Hide i40e opcode information sent during response to VF in case when
+untrusted VF tried to change MAC on the VF interface.
 
-On Fri, Jan 22, 2021 at 02:44:46PM -0800, Vinicius Costa Gomes wrote:
-> Frame preemption (described in IEEE 802.3br-2016) defines the concept
-> of preemptible and express queues. It allows traffic from express
-> queues to "interrupt" traffic from preemptible queues, which are
-> "resumed" after the express traffic has finished transmitting.
-> 
-> Frame preemption can only be used when both the local device and the
-> link partner support it.
-> 
-> Only parameters for enabling/disabling frame preemption and
-> configuring the minimum fragment size are included here. Expressing
-> which queues are marked as preemptible is left to mqprio/taprio, as
-> having that information there should be easier on the user.
-> 
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> ---
+This is implemented by adding an additional parameter 'hide' to the
+response sent to VF function that hides the display of error
+information, but forwards the error code to VF.
 
-I just noticed that the aMACMergeStatusVerify variable is not exposed in
-the PREEMPT_GET command, which would allow the user to inspect the state
-of the MAC merge sublayer verification state machine. Also, a way in the
-PREEMPT_SET command to set the disableVerify variable would be nice.
+Previously it was not possible to send response with some error code
+to VF without displaying opcode information.
 
-Do you still have the iproute2 patch that goes along with this? If you
-don't have the time, I might try to take a stab at adding these extra
-parameters and resending.
+Fixes: 5c3c48ac6bf5("i40e: implement virtual device interface")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Reviewed-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 44 +++++++++++++++----
+ 1 file changed, 35 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 0cb533c..05de5fe 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -1845,17 +1845,18 @@ sriov_configure_out:
+ /***********************virtual channel routines******************/
+ 
+ /**
+- * i40e_vc_send_msg_to_vf
++ * i40e_vc_send_msg_to_vf_ex
+  * @vf: pointer to the VF info
+  * @v_opcode: virtual channel opcode
+  * @v_retval: virtual channel return value
+  * @msg: pointer to the msg buffer
+  * @msglen: msg length
+- *
++ * @is_quiet: true for not printing unsuccessful return values, false otherwise
+  * send msg to VF
+  **/
+-static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+-				  u32 v_retval, u8 *msg, u16 msglen)
++static int i40e_vc_send_msg_to_vf_ex(struct i40e_vf *vf, u32 v_opcode,
++				     u32 v_retval, u8 *msg, u16 msglen,
++				     bool is_quiet)
+ {
+ 	struct i40e_pf *pf;
+ 	struct i40e_hw *hw;
+@@ -1871,7 +1872,7 @@ static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+ 	abs_vf_id = vf->vf_id + hw->func_caps.vf_base_id;
+ 
+ 	/* single place to detect unsuccessful return values */
+-	if (v_retval) {
++	if (v_retval && !is_quiet) {
+ 		vf->num_invalid_msgs++;
+ 		dev_info(&pf->pdev->dev, "VF %d failed opcode %d, retval: %d\n",
+ 			 vf->vf_id, v_opcode, v_retval);
+@@ -1901,6 +1902,23 @@ static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+ 	return 0;
+ }
+ 
++/**
++ * i40e_vc_send_msg_to_vf
++ * @vf: pointer to the VF info
++ * @v_opcode: virtual channel opcode
++ * @v_retval: virtual channel return value
++ * @msg: pointer to the msg buffer
++ * @msglen: msg length
++ *
++ * send msg to VF
++ **/
++static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
++				  u32 v_retval, u8 *msg, u16 msglen)
++{
++	return i40e_vc_send_msg_to_vf_ex(vf, v_opcode, v_retval,
++					 msg, msglen, false);
++}
++
+ /**
+  * i40e_vc_send_resp_to_vf
+  * @vf: pointer to the VF info
+@@ -2645,6 +2663,7 @@ error_param:
+  * i40e_check_vf_permission
+  * @vf: pointer to the VF info
+  * @al: MAC address list from virtchnl
++ * @is_quiet: set true for printing msg without opcode info, false otherwise
+  *
+  * Check that the given list of MAC addresses is allowed. Will return -EPERM
+  * if any address in the list is not valid. Checks the following conditions:
+@@ -2659,13 +2678,18 @@ error_param:
+  * addresses might not be accurate.
+  **/
+ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+-					   struct virtchnl_ether_addr_list *al)
++					   struct virtchnl_ether_addr_list *al,
++					   bool *is_quiet)
+ {
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = pf->vsi[vf->lan_vsi_idx];
+ 	int mac2add_cnt = 0;
+ 	int i;
+ 
++	if (!is_quiet)
++		return -EINVAL;
++
++	*is_quiet = false;
+ 	for (i = 0; i < al->num_elements; i++) {
+ 		struct i40e_mac_filter *f;
+ 		u8 *addr = al->list[i].addr;
+@@ -2689,6 +2713,7 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 		    !ether_addr_equal(addr, vf->default_lan_addr.addr)) {
+ 			dev_err(&pf->pdev->dev,
+ 				"VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation\n");
++			*is_quiet = true;
+ 			return -EPERM;
+ 		}
+ 
+@@ -2725,6 +2750,7 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	    (struct virtchnl_ether_addr_list *)msg;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
++	bool is_quiet = false;
+ 	i40e_status ret = 0;
+ 	int i;
+ 
+@@ -2741,7 +2767,7 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	 */
+ 	spin_lock_bh(&vsi->mac_filter_hash_lock);
+ 
+-	ret = i40e_check_vf_permission(vf, al);
++	ret = i40e_check_vf_permission(vf, al, &is_quiet);
+ 	if (ret) {
+ 		spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 		goto error_param;
+@@ -2779,8 +2805,8 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 
+ error_param:
+ 	/* send the response to the VF */
+-	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+-				       ret);
++	return i40e_vc_send_msg_to_vf_ex(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
++				       ret, NULL, 0, is_quiet);
+ }
+ 
+ /**
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
