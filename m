@@ -1,59 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12E1032A936
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:22:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A941C32A94E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:25:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6BCD3431A4;
-	Tue,  2 Mar 2021 18:22:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5880383AB2;
+	Tue,  2 Mar 2021 18:25:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3bHArltCuIxZ; Tue,  2 Mar 2021 18:22:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mjiNUqHxWh_E; Tue,  2 Mar 2021 18:25:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6453A4319B;
-	Tue,  2 Mar 2021 18:22:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B8BB83A9B;
+	Tue,  2 Mar 2021 18:25:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6B8EA1BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4BB441BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0C0B3606C5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3677C606DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sYD83vEqkpOW for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
+ with ESMTP id 1TYrkyFb3weO for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 18:25:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 60F48606DD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
-IronPort-SDR: PSvum2WE1745qBCATH/rstZpKJ5XjHcruRnIqfF9l7i6EwkOWUK/o+kUxvN0Mx/Zth/llwaqzy
- aEYF0RItq9kw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="166813981"
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="166813981"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2021 10:21:48 -0800
-IronPort-SDR: PkP/KOEkMcYuyRhxlLyq/isUaMIO1W5imVfA1wr1Cy2iHzG1nZiQT3yFuZAxRVTzrtgz9TS9N4
- G9Xdmh5KrivA==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 67D6E60612
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:18 +0000 (UTC)
+IronPort-SDR: sVunNwBbPPPCPzIxrV4mg5NZP1flgb9tfpUSbruL3+STzFoxAp5WfvMDcXWmjHX3ZtEMWD7tKv
+ h69ncrfkTXvw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="186263181"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="186263181"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2021 10:25:17 -0800
+IronPort-SDR: 19osst0ynboTAEgrHnO7DJf/E7dD/DyFFbVNM+6B06FfCvWVbCEdegjmj8Z3nua2Y7CkjBC22+
+ flK7vRTQLLRg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="369051178"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="434915051"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
- by orsmga006.jf.intel.com with ESMTP; 02 Mar 2021 10:21:45 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 02 Mar 2021 10:25:17 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Mar 2021 10:12:13 -0800
-Message-Id: <20210302181213.51718-14-anthony.l.nguyen@intel.com>
+Date: Tue,  2 Mar 2021 10:15:33 -0800
+Message-Id: <20210302181545.51822-1-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
-References: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S55 14/14] iavf: add support for UDP
- Segmentation Offload
+Subject: [Intel-wired-lan] [PATCH S56 01/13] ice: Change
+ ice_vsi_setup_q_map() to not depend on RSS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,70 +71,126 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Brett Creeley <brett.creeley@intel.com>
 
-Add code to support UDP segmentation offload (USO) for
-hardware that supports it.
+Currently, ice_vsi_setup_q_map() depends on the VSI's rss_size. However,
+the Rx Queue Mapping section of the VSI context has no dependency on RSS.
+Instead, limit the maximum number of Rx queues per TC based on the Rx
+Queue mapping section of the VSI context, which currently allows for up
+to 256 Rx queues per TC.
 
-Suggested-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c     |  2 ++
- drivers/net/ethernet/intel/iavf/iavf_txrx.c     | 15 +++++++++++----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c |  1 +
- 3 files changed, 14 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h     |  1 +
+ drivers/net/ethernet/intel/ice/ice_lib.c | 50 ++++++++----------------
+ 2 files changed, 17 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 84430a304f3e..5a7ebbf0fb42 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3560,6 +3560,8 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 	/* Enable cloud filter if ADQ is supported */
- 	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ)
- 		hw_features |= NETIF_F_HW_TC;
-+	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_USO)
-+		hw_features |= NETIF_F_GSO_UDP_L4;
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index a0233962a672..5304296c1e39 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -92,6 +92,7 @@
+ #define ICE_INVAL_Q_INDEX	0xffff
+ #define ICE_INVAL_VFID		256
  
- 	netdev->hw_features |= hw_features;
++#define ICE_MAX_RXQS_PER_TC		256	/* Used when setting VSI context per TC Rx queues */
+ #define ICE_MAX_RESET_WAIT		20
  
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index ffaf2742a2e0..23a51ebe13c5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1905,13 +1905,20 @@ static int iavf_tso(struct iavf_tx_buffer *first, u8 *hdr_len,
+ #define ICE_VSIQF_HKEY_ARRAY_SIZE	((VSIQF_HKEY_MAX_INDEX + 1) *	4)
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index a305dc2c3c10..f67b58a154fa 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -744,11 +744,10 @@ static void ice_set_dflt_vsi_ctx(struct ice_vsi_ctx *ctxt)
+  */
+ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ {
+-	u16 offset = 0, qmap = 0, tx_count = 0;
++	u16 offset = 0, qmap = 0, tx_count = 0, pow = 0;
++	u16 num_txq_per_tc, num_rxq_per_tc;
+ 	u16 qcount_tx = vsi->alloc_txq;
+ 	u16 qcount_rx = vsi->alloc_rxq;
+-	u16 tx_numq_tc, rx_numq_tc;
+-	u16 pow = 0, max_rss = 0;
+ 	bool ena_tc0 = false;
+ 	u8 netdev_tc = 0;
+ 	int i;
+@@ -766,12 +765,15 @@ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 		vsi->tc_cfg.ena_tc |= 1;
+ 	}
  
- 	/* determine offset of inner transport header */
- 	l4_offset = l4.hdr - skb->data;
+-	rx_numq_tc = qcount_rx / vsi->tc_cfg.numtc;
+-	if (!rx_numq_tc)
+-		rx_numq_tc = 1;
+-	tx_numq_tc = qcount_tx / vsi->tc_cfg.numtc;
+-	if (!tx_numq_tc)
+-		tx_numq_tc = 1;
++	num_rxq_per_tc = min_t(u16, qcount_rx / vsi->tc_cfg.numtc, ICE_MAX_RXQS_PER_TC);
++	if (!num_rxq_per_tc)
++		num_rxq_per_tc = 1;
++	num_txq_per_tc = qcount_tx / vsi->tc_cfg.numtc;
++	if (!num_txq_per_tc)
++		num_txq_per_tc = 1;
++
++	/* find the (rounded up) power-of-2 of qcount */
++	pow = (u16)order_base_2(num_rxq_per_tc);
+ 
+ 	/* TC mapping is a function of the number of Rx queues assigned to the
+ 	 * VSI for each traffic class and the offset of these queues.
+@@ -784,26 +786,6 @@ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 	 *
+ 	 * Setup number and offset of Rx queues for all TCs for the VSI
+ 	 */
 -
- 	/* remove payload length from inner checksum */
- 	paylen = skb->len - l4_offset;
--	csum_replace_by_diff(&l4.tcp->check, (__force __wsum)htonl(paylen));
+-	qcount_rx = rx_numq_tc;
+-
+-	/* qcount will change if RSS is enabled */
+-	if (test_bit(ICE_FLAG_RSS_ENA, vsi->back->flags)) {
+-		if (vsi->type == ICE_VSI_PF || vsi->type == ICE_VSI_VF) {
+-			if (vsi->type == ICE_VSI_PF)
+-				max_rss = ICE_MAX_LG_RSS_QS;
+-			else
+-				max_rss = ICE_MAX_RSS_QS_PER_VF;
+-			qcount_rx = min_t(u16, rx_numq_tc, max_rss);
+-			if (!vsi->req_rxq)
+-				qcount_rx = min_t(u16, qcount_rx,
+-						  vsi->rss_size);
+-		}
+-	}
+-
+-	/* find the (rounded up) power-of-2 of qcount */
+-	pow = (u16)order_base_2(qcount_rx);
+-
+ 	ice_for_each_traffic_class(i) {
+ 		if (!(vsi->tc_cfg.ena_tc & BIT(i))) {
+ 			/* TC is not enabled */
+@@ -817,16 +799,16 @@ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
  
--	/* compute length of segmentation header */
--	*hdr_len = (l4.tcp->doff * 4) + l4_offset;
-+	if (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) {
-+		csum_replace_by_diff(&l4.udp->check,
-+				     (__force __wsum)htonl(paylen));
-+		/* compute length of UDP segmentation header */
-+		*hdr_len = (u8)sizeof(l4.udp) + l4_offset;
-+	} else {
-+		csum_replace_by_diff(&l4.tcp->check,
-+				     (__force __wsum)htonl(paylen));
-+		/* compute length of TCP segmentation header */
-+		*hdr_len = (u8)((l4.tcp->doff * 4) + l4_offset);
-+	}
+ 		/* TC is enabled */
+ 		vsi->tc_cfg.tc_info[i].qoffset = offset;
+-		vsi->tc_cfg.tc_info[i].qcount_rx = qcount_rx;
+-		vsi->tc_cfg.tc_info[i].qcount_tx = tx_numq_tc;
++		vsi->tc_cfg.tc_info[i].qcount_rx = num_rxq_per_tc;
++		vsi->tc_cfg.tc_info[i].qcount_tx = num_txq_per_tc;
+ 		vsi->tc_cfg.tc_info[i].netdev_tc = netdev_tc++;
  
- 	/* pull values out of skb_shinfo */
- 	gso_size = skb_shinfo(skb)->gso_size;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index b41dff44f65b..3d7643ea8d46 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -140,6 +140,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
- 	       VIRTCHNL_VF_OFFLOAD_REQ_QUEUES |
- 	       VIRTCHNL_VF_OFFLOAD_ADQ |
-+	       VIRTCHNL_VF_OFFLOAD_USO |
- 	       VIRTCHNL_VF_OFFLOAD_FDIR_PF |
- 	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
+ 		qmap = ((offset << ICE_AQ_VSI_TC_Q_OFFSET_S) &
+ 			ICE_AQ_VSI_TC_Q_OFFSET_M) |
+ 			((pow << ICE_AQ_VSI_TC_Q_NUM_S) &
+ 			 ICE_AQ_VSI_TC_Q_NUM_M);
+-		offset += qcount_rx;
+-		tx_count += tx_numq_tc;
++		offset += num_rxq_per_tc;
++		tx_count += num_txq_per_tc;
+ 		ctxt->info.tc_mapping[i] = cpu_to_le16(qmap);
+ 	}
+ 
+@@ -839,7 +821,7 @@ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 	if (offset)
+ 		vsi->num_rxq = offset;
+ 	else
+-		vsi->num_rxq = qcount_rx;
++		vsi->num_rxq = num_rxq_per_tc;
+ 
+ 	vsi->num_txq = tx_count;
  
 -- 
 2.20.1
