@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AAD132A955
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:25:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 405C232A957
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:25:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E7DE983ACB;
-	Tue,  2 Mar 2021 18:25:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DF984606BD;
+	Tue,  2 Mar 2021 18:25:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EWhVpRhO2YhJ; Tue,  2 Mar 2021 18:25:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id h4-STAUJ8eaO; Tue,  2 Mar 2021 18:25:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9196683AB2;
-	Tue,  2 Mar 2021 18:25:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4812E606B6;
+	Tue,  2 Mar 2021 18:25:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F3F9E1BF255
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1096D1BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C9E05606B6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 33DD9606E8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eca23jGHI1GR for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 18:25:18 +0000 (UTC)
+ with ESMTP id ijt1zoPNYRWq for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 18:25:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D05A4606BD
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 091E4606CC
  for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:25:18 +0000 (UTC)
-IronPort-SDR: mE/BDP0F/tT/MJu6/mshuBmf3GI9RaIVVQaCeSOvwMFlR8sjdmmyiDjBJoa8bu10KKC6gcbUQC
- RGHwHvqSpQYg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="186263184"
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="186263184"
+IronPort-SDR: yeoX37GR5npYvzJ5XGvuisr0Wk0uTi21LPSYkxsJt4LRnzjqZ9GlZFMMzMYk34Q/FmfFCxwTnG
+ iYGT0WGDuP2w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="186263186"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="186263186"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Mar 2021 10:25:17 -0800
-IronPort-SDR: VynewSZtSVA8h+3ZLENNyGJhzo8PPMGYdx0Zn1SXUSKO/wmvB5ffTnQf3vy7cI9yIe5wPLX7eX
- 06P6aFbkxtBg==
+IronPort-SDR: 218xQRZ4wy4QNXMeEmG4XTBZQ1qkhb6nE9mWYf+VLy6VmLOm4+7W4K2TOtQdOJy/lQiHClmdsi
+ 9xBjjQbrGpfw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="434915053"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="434915054"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 02 Mar 2021 10:25:17 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Mar 2021 10:15:35 -0800
-Message-Id: <20210302181545.51822-3-anthony.l.nguyen@intel.com>
+Date: Tue,  2 Mar 2021 10:15:36 -0800
+Message-Id: <20210302181545.51822-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210302181545.51822-1-anthony.l.nguyen@intel.com>
 References: <20210302181545.51822-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S56 03/13] ice: Refactor get/set RSS LUT
- to use struct parameter
+Subject: [Intel-wired-lan] [PATCH S56 04/13] ice: Refactor ice_set/get_rss
+ into LUT and key specific functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,252 +73,433 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Brett Creeley <brett.creeley@intel.com>
 
-Update ice_aq_get_rss_lut() and ice_aq_set_rss_lut() to take a new
-structure ice_aq_get_set_rss_params instead of passing individual
-parameters. This is done for 2 reasons:
+Currently ice_set/get_rss are used to set/get the RSS LUT and/or RSS
+key. However nearly everywhere these functions are called only the LUT
+or key are set/get. Also, making this change reduces how many things
+ice_set/get_rss are doing. Fix this by adding ice_set/get_rss_lut and
+ice_set/get_rss_key functions.
 
-1. Reduce the number of parameters passed to the functions.
-2. Reduce the amount of change required if the arguments ever need to be
-   updated in the future.
-
-Also, reduce duplicate code that was checking for an invalid vsi_handle
-and lut parameter by moving the checks to the lower level
-__ice_aq_get_set_rss_lut().
+Also, consolidate all calls for setting/getting the RSS LUT and RSS Key
+to use ice_set/get_rss_lut() and ice_set/get_rss_key().
 
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c  | 54 +++++++++-----------
- drivers/net/ethernet/intel/ice/ice_common.h  |  6 +--
- drivers/net/ethernet/intel/ice/ice_ethtool.c |  9 +++-
- drivers/net/ethernet/intel/ice/ice_lib.c     |  9 +++-
- drivers/net/ethernet/intel/ice/ice_main.c    | 18 +++++--
- drivers/net/ethernet/intel/ice/ice_type.h    |  8 +++
- 6 files changed, 62 insertions(+), 42 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h          |   6 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  43 +++---
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  42 ++----
+ drivers/net/ethernet/intel/ice/ice_main.c     | 139 ++++++++++--------
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |   4 +-
+ 5 files changed, 117 insertions(+), 117 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 105504c8cfe7..3fdd76a85ab9 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3206,23 +3206,33 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
- /**
-  * __ice_aq_get_set_rss_lut
-  * @hw: pointer to the hardware structure
-- * @vsi_id: VSI FW index
-- * @lut_type: LUT table type
-- * @lut: pointer to the LUT buffer provided by the caller
-- * @lut_size: size of the LUT buffer
-- * @glob_lut_idx: global LUT index
-+ * @params: RSS LUT parameters
-  * @set: set true to set the table, false to get the table
-  *
-  * Internal function to get (0x0B05) or set (0x0B03) RSS look up table
-  */
- static enum ice_status
--__ice_aq_get_set_rss_lut(struct ice_hw *hw, u16 vsi_id, u8 lut_type, u8 *lut,
--			 u16 lut_size, u8 glob_lut_idx, bool set)
-+__ice_aq_get_set_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *params, bool set)
- {
-+	u16 flags = 0, vsi_id, lut_type, lut_size, glob_lut_idx, vsi_handle;
- 	struct ice_aqc_get_set_rss_lut *cmd_resp;
- 	struct ice_aq_desc desc;
- 	enum ice_status status;
--	u16 flags = 0;
-+	u8 *lut;
-+
-+	if (!params)
-+		return ICE_ERR_PARAM;
-+
-+	vsi_handle = params->vsi_handle;
-+	lut = params->lut;
-+
-+	if (!ice_is_vsi_valid(hw, vsi_handle) || !lut)
-+		return ICE_ERR_PARAM;
-+
-+	lut_size = params->lut_size;
-+	lut_type = params->lut_type;
-+	glob_lut_idx = params->global_lut_id;
-+	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
- 
- 	cmd_resp = &desc.params.get_set_rss_lut;
- 
-@@ -3296,43 +3306,27 @@ __ice_aq_get_set_rss_lut(struct ice_hw *hw, u16 vsi_id, u8 lut_type, u8 *lut,
- /**
-  * ice_aq_get_rss_lut
-  * @hw: pointer to the hardware structure
-- * @vsi_handle: software VSI handle
-- * @lut_type: LUT table type
-- * @lut: pointer to the LUT buffer provided by the caller
-- * @lut_size: size of the LUT buffer
-+ * @get_params: RSS LUT parameters used to specify which RSS LUT to get
-  *
-  * get the RSS lookup table, PF or VSI type
-  */
- enum ice_status
--ice_aq_get_rss_lut(struct ice_hw *hw, u16 vsi_handle, u8 lut_type,
--		   u8 *lut, u16 lut_size)
-+ice_aq_get_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *get_params)
- {
--	if (!ice_is_vsi_valid(hw, vsi_handle) || !lut)
--		return ICE_ERR_PARAM;
--
--	return __ice_aq_get_set_rss_lut(hw, ice_get_hw_vsi_num(hw, vsi_handle),
--					lut_type, lut, lut_size, 0, false);
-+	return __ice_aq_get_set_rss_lut(hw, get_params, false);
- }
- 
- /**
-  * ice_aq_set_rss_lut
-  * @hw: pointer to the hardware structure
-- * @vsi_handle: software VSI handle
-- * @lut_type: LUT table type
-- * @lut: pointer to the LUT buffer provided by the caller
-- * @lut_size: size of the LUT buffer
-+ * @set_params: RSS LUT parameters used to specify how to set the RSS LUT
-  *
-  * set the RSS lookup table, PF or VSI type
-  */
- enum ice_status
--ice_aq_set_rss_lut(struct ice_hw *hw, u16 vsi_handle, u8 lut_type,
--		   u8 *lut, u16 lut_size)
-+ice_aq_set_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *set_params)
- {
--	if (!ice_is_vsi_valid(hw, vsi_handle) || !lut)
--		return ICE_ERR_PARAM;
--
--	return __ice_aq_get_set_rss_lut(hw, ice_get_hw_vsi_num(hw, vsi_handle),
--					lut_type, lut, lut_size, 0, true);
-+	return __ice_aq_get_set_rss_lut(hw, set_params, true);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index baf4064fcbfe..81fd69cb1485 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -51,11 +51,9 @@ ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
- 		  u32 rxq_index);
- 
- enum ice_status
--ice_aq_get_rss_lut(struct ice_hw *hw, u16 vsi_handle, u8 lut_type, u8 *lut,
--		   u16 lut_size);
-+ice_aq_get_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *get_params);
- enum ice_status
--ice_aq_set_rss_lut(struct ice_hw *hw, u16 vsi_handle, u8 lut_type, u8 *lut,
--		   u16 lut_size);
-+ice_aq_set_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *set_params);
- enum ice_status
- ice_aq_get_rss_key(struct ice_hw *hw, u16 vsi_handle,
- 		   struct ice_aqc_get_set_rss_keys *keys);
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 5304296c1e39..4041859ab89b 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -621,8 +621,10 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi);
+ int
+ ice_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
+ 	     u32 flags);
+-int ice_set_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
+-int ice_get_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
++int ice_set_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size);
++int ice_get_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size);
++int ice_set_rss_key(struct ice_vsi *vsi, u8 *seed);
++int ice_get_rss_key(struct ice_vsi *vsi, u8 *seed);
+ void ice_fill_rss_lut(u8 *lut, u16 rss_table_size, u16 rss_size);
+ int ice_schedule_reset(struct ice_pf *pf, enum ice_reset_req reset);
+ void ice_print_link_msg(struct ice_vsi *vsi, bool isup);
 diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 26a7be2f7193..b0da7fe5468b 100644
+index b0da7fe5468b..7bc9cdefa169 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3358,6 +3358,7 @@ static int ice_get_valid_rss_size(struct ice_hw *hw, int new_size)
+@@ -3170,7 +3170,7 @@ ice_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
+-	int ret = 0, i;
++	int err, i;
+ 	u8 *lut;
+ 
+ 	if (hfunc)
+@@ -3189,17 +3189,20 @@ ice_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+ 	if (!lut)
+ 		return -ENOMEM;
+ 
+-	if (ice_get_rss(vsi, key, lut, vsi->rss_table_size)) {
+-		ret = -EIO;
++	err = ice_get_rss_key(vsi, key);
++	if (err)
++		goto out;
++
++	err = ice_get_rss_lut(vsi, lut, vsi->rss_table_size);
++	if (err)
+ 		goto out;
+-	}
+ 
+ 	for (i = 0; i < vsi->rss_table_size; i++)
+ 		indir[i] = (u32)(lut[i]);
+ 
+ out:
+ 	kfree(lut);
+-	return ret;
++	return err;
+ }
+ 
+ /**
+@@ -3220,7 +3223,7 @@ ice_set_rxfh(struct net_device *netdev, const u32 *indir, const u8 *key,
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
+ 	struct device *dev;
+-	u8 *seed = NULL;
++	int err;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (hfunc != ETH_RSS_HASH_NO_CHANGE && hfunc != ETH_RSS_HASH_TOP)
+@@ -3241,7 +3244,10 @@ ice_set_rxfh(struct net_device *netdev, const u32 *indir, const u8 *key,
+ 				return -ENOMEM;
+ 		}
+ 		memcpy(vsi->rss_hkey_user, key, ICE_VSIQF_HKEY_ARRAY_SIZE);
+-		seed = vsi->rss_hkey_user;
++
++		err = ice_set_rss_key(vsi, vsi->rss_hkey_user);
++		if (err)
++			return err;
+ 	}
+ 
+ 	if (!vsi->rss_lut_user) {
+@@ -3262,8 +3268,9 @@ ice_set_rxfh(struct net_device *netdev, const u32 *indir, const u8 *key,
+ 				 vsi->rss_size);
+ 	}
+ 
+-	if (ice_set_rss(vsi, seed, vsi->rss_lut_user, vsi->rss_table_size))
+-		return -EIO;
++	err = ice_set_rss_lut(vsi, vsi->rss_lut_user, vsi->rss_table_size);
++	if (err)
++		return err;
+ 
+ 	return 0;
+ }
+@@ -3358,12 +3365,10 @@ static int ice_get_valid_rss_size(struct ice_hw *hw, int new_size)
   */
  static int ice_vsi_set_dflt_rss_lut(struct ice_vsi *vsi, int req_rss_size)
  {
-+	struct ice_aq_get_set_rss_lut_params set_params = {};
+-	struct ice_aq_get_set_rss_lut_params set_params = {};
  	struct ice_pf *pf = vsi->back;
- 	enum ice_status status;
+-	enum ice_status status;
  	struct device *dev;
-@@ -3383,8 +3384,12 @@ static int ice_vsi_set_dflt_rss_lut(struct ice_vsi *vsi, int req_rss_size)
+ 	struct ice_hw *hw;
+-	int err = 0;
++	int err;
+ 	u8 *lut;
+ 
+ 	dev = ice_pf_to_dev(pf);
+@@ -3384,18 +3389,10 @@ static int ice_vsi_set_dflt_rss_lut(struct ice_vsi *vsi, int req_rss_size)
  
  	/* create/set RSS LUT */
  	ice_fill_rss_lut(lut, vsi->rss_table_size, vsi->rss_size);
--	status = ice_aq_set_rss_lut(hw, vsi->idx, vsi->rss_lut_type, lut,
--				    vsi->rss_table_size);
-+	set_params.vsi_handle = vsi->idx;
-+	set_params.lut_size = vsi->rss_table_size;
-+	set_params.lut_type = vsi->rss_lut_type;
-+	set_params.lut = lut;
-+	set_params.global_lut_id = 0;
-+	status = ice_aq_set_rss_lut(hw, &set_params);
- 	if (status) {
- 		dev_err(dev, "Cannot set RSS lut, err %s aq_err %s\n",
- 			ice_stat_str(status),
+-	set_params.vsi_handle = vsi->idx;
+-	set_params.lut_size = vsi->rss_table_size;
+-	set_params.lut_type = vsi->rss_lut_type;
+-	set_params.lut = lut;
+-	set_params.global_lut_id = 0;
+-	status = ice_aq_set_rss_lut(hw, &set_params);
+-	if (status) {
+-		dev_err(dev, "Cannot set RSS lut, err %s aq_err %s\n",
+-			ice_stat_str(status),
++	err = ice_set_rss_lut(vsi, lut, vsi->rss_table_size);
++	if (err)
++		dev_err(dev, "Cannot set RSS lut, err %d aq_err %s\n", err,
+ 			ice_aq_str(hw->adminq.sq_last_status));
+-		err = -EIO;
+-	}
+ 
+ 	kfree(lut);
+ 	return err;
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index f67b58a154fa..0ded64de38f3 100644
+index 0ded64de38f3..0b0f13ed757f 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1337,6 +1337,7 @@ int ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena)
+@@ -1326,7 +1326,7 @@ int ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena)
+ 					 vsi->rss_size);
+ 	}
+ 
+-	err = ice_set_rss(vsi, NULL, lut, vsi->rss_table_size);
++	err = ice_set_rss_lut(vsi, lut, vsi->rss_table_size);
+ 	kfree(lut);
+ 	return err;
+ }
+@@ -1337,13 +1337,10 @@ int ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena)
   */
  static int ice_vsi_cfg_rss_lut_key(struct ice_vsi *vsi)
  {
-+	struct ice_aq_get_set_rss_lut_params set_params = {};
- 	struct ice_aqc_get_set_rss_keys *key;
+-	struct ice_aq_get_set_rss_lut_params set_params = {};
+-	struct ice_aqc_get_set_rss_keys *key;
  	struct ice_pf *pf = vsi->back;
- 	enum ice_status status;
-@@ -1356,8 +1357,12 @@ static int ice_vsi_cfg_rss_lut_key(struct ice_vsi *vsi)
+-	enum ice_status status;
+ 	struct device *dev;
+-	int err = 0;
+-	u8 *lut;
++	u8 *lut, *key;
++	int err;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	vsi->rss_size = min_t(u16, vsi->rss_size, vsi->num_rxq);
+@@ -1357,41 +1354,26 @@ static int ice_vsi_cfg_rss_lut_key(struct ice_vsi *vsi)
  	else
  		ice_fill_rss_lut(lut, vsi->rss_table_size, vsi->rss_size);
  
--	status = ice_aq_set_rss_lut(&pf->hw, vsi->idx, vsi->rss_lut_type, lut,
--				    vsi->rss_table_size);
-+	set_params.vsi_handle = vsi->idx;
-+	set_params.lut_size = vsi->rss_table_size;
-+	set_params.lut_type = vsi->rss_lut_type;
-+	set_params.lut = lut;
-+	set_params.global_lut_id = 0;
-+	status = ice_aq_set_rss_lut(&pf->hw, &set_params);
+-	set_params.vsi_handle = vsi->idx;
+-	set_params.lut_size = vsi->rss_table_size;
+-	set_params.lut_type = vsi->rss_lut_type;
+-	set_params.lut = lut;
+-	set_params.global_lut_id = 0;
+-	status = ice_aq_set_rss_lut(&pf->hw, &set_params);
+-
+-	if (status) {
+-		dev_err(dev, "set_rss_lut failed, error %s\n",
+-			ice_stat_str(status));
+-		err = -EIO;
++	err = ice_set_rss_lut(vsi, lut, vsi->rss_table_size);
++	if (err) {
++		dev_err(dev, "set_rss_lut failed, error %d\n", err);
+ 		goto ice_vsi_cfg_rss_exit;
+ 	}
  
- 	if (status) {
- 		dev_err(dev, "set_rss_lut failed, error %s\n",
+-	key = kzalloc(sizeof(*key), GFP_KERNEL);
++	key = kzalloc(ICE_GET_SET_RSS_KEY_EXTEND_KEY_SIZE, GFP_KERNEL);
+ 	if (!key) {
+ 		err = -ENOMEM;
+ 		goto ice_vsi_cfg_rss_exit;
+ 	}
+ 
+ 	if (vsi->rss_hkey_user)
+-		memcpy(key,
+-		       (struct ice_aqc_get_set_rss_keys *)vsi->rss_hkey_user,
+-		       ICE_GET_SET_RSS_KEY_EXTEND_KEY_SIZE);
++		memcpy(key, vsi->rss_hkey_user, ICE_GET_SET_RSS_KEY_EXTEND_KEY_SIZE);
+ 	else
+-		netdev_rss_key_fill((void *)key,
+-				    ICE_GET_SET_RSS_KEY_EXTEND_KEY_SIZE);
+-
+-	status = ice_aq_set_rss_key(&pf->hw, vsi->idx, key);
++		netdev_rss_key_fill((void *)key, ICE_GET_SET_RSS_KEY_EXTEND_KEY_SIZE);
+ 
+-	if (status) {
+-		dev_err(dev, "set_rss_key failed, error %s\n",
+-			ice_stat_str(status));
+-		err = -EIO;
+-	}
++	err = ice_set_rss_key(vsi, key);
++	if (err)
++		dev_err(dev, "set_rss_key failed, error %d\n", err);
+ 
+ 	kfree(key);
+ ice_vsi_cfg_rss_exit:
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 3e5f71bf333b..ed9b226156ce 100644
+index ed9b226156ce..25a3f06c7828 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6366,8 +6366,13 @@ int ice_set_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size)
+@@ -6335,99 +6335,118 @@ const char *ice_stat_str(enum ice_status stat_err)
+ }
+ 
+ /**
+- * ice_set_rss - Set RSS keys and lut
++ * ice_set_rss_lut - Set RSS LUT
+  * @vsi: Pointer to VSI structure
+- * @seed: RSS hash seed
+  * @lut: Lookup table
+  * @lut_size: Lookup table size
+  *
+  * Returns 0 on success, negative on failure
+  */
+-int ice_set_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size)
++int ice_set_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size)
+ {
+-	struct ice_pf *pf = vsi->back;
+-	struct ice_hw *hw = &pf->hw;
++	struct ice_aq_get_set_rss_lut_params params = {};
++	struct ice_hw *hw = &vsi->back->hw;
+ 	enum ice_status status;
+-	struct device *dev;
+ 
+-	dev = ice_pf_to_dev(pf);
+-	if (seed) {
+-		struct ice_aqc_get_set_rss_keys *buf =
+-				  (struct ice_aqc_get_set_rss_keys *)seed;
++	if (!lut)
++		return -EINVAL;
+ 
+-		status = ice_aq_set_rss_key(hw, vsi->idx, buf);
++	params.vsi_handle = vsi->idx;
++	params.lut_size = lut_size;
++	params.lut_type = vsi->rss_lut_type;
++	params.lut = lut;
+ 
+-		if (status) {
+-			dev_err(dev, "Cannot set RSS key, err %s aq_err %s\n",
+-				ice_stat_str(status),
+-				ice_aq_str(hw->adminq.sq_last_status));
+-			return -EIO;
+-		}
++	status = ice_aq_set_rss_lut(hw, &params);
++	if (status) {
++		dev_err(ice_pf_to_dev(vsi->back), "Cannot set RSS lut, err %s aq_err %s\n",
++			ice_stat_str(status),
++			ice_aq_str(hw->adminq.sq_last_status));
++		return -EIO;
  	}
  
- 	if (lut) {
--		status = ice_aq_set_rss_lut(hw, vsi->idx, vsi->rss_lut_type,
--					    lut, lut_size);
-+		struct ice_aq_get_set_rss_lut_params set_params = {
-+			.vsi_handle = vsi->idx, .lut_size = lut_size,
-+			.lut_type = vsi->rss_lut_type, .lut = lut,
-+			.global_lut_id = 0
-+		};
+-	if (lut) {
+-		struct ice_aq_get_set_rss_lut_params set_params = {
+-			.vsi_handle = vsi->idx, .lut_size = lut_size,
+-			.lut_type = vsi->rss_lut_type, .lut = lut,
+-			.global_lut_id = 0
+-		};
++	return 0;
++}
+ 
+-		status = ice_aq_set_rss_lut(hw, &set_params);
+-		if (status) {
+-			dev_err(dev, "Cannot set RSS lut, err %s aq_err %s\n",
+-				ice_stat_str(status),
+-				ice_aq_str(hw->adminq.sq_last_status));
+-			return -EIO;
+-		}
++/**
++ * ice_set_rss_key - Set RSS key
++ * @vsi: Pointer to the VSI structure
++ * @seed: RSS hash seed
++ *
++ * Returns 0 on success, negative on failure
++ */
++int ice_set_rss_key(struct ice_vsi *vsi, u8 *seed)
++{
++	struct ice_hw *hw = &vsi->back->hw;
++	enum ice_status status;
 +
-+		status = ice_aq_set_rss_lut(hw, &set_params);
- 		if (status) {
- 			dev_err(dev, "Cannot set RSS lut, err %s aq_err %s\n",
- 				ice_stat_str(status),
-@@ -6410,8 +6415,13 @@ int ice_get_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size)
++	if (!seed)
++		return -EINVAL;
++
++	status = ice_aq_set_rss_key(hw, vsi->idx, (struct ice_aqc_get_set_rss_keys *)seed);
++	if (status) {
++		dev_err(ice_pf_to_dev(vsi->back), "Cannot set RSS key, err %s aq_err %s\n",
++			ice_stat_str(status),
++			ice_aq_str(hw->adminq.sq_last_status));
++		return -EIO;
  	}
  
- 	if (lut) {
--		status = ice_aq_get_rss_lut(hw, vsi->idx, vsi->rss_lut_type,
--					    lut, lut_size);
-+		struct ice_aq_get_set_rss_lut_params get_params = {
-+			.vsi_handle = vsi->idx, .lut_size = lut_size,
-+			.lut_type = vsi->rss_lut_type, .lut = lut,
-+			.global_lut_id = 0
-+		};
-+
-+		status = ice_aq_get_rss_lut(hw, &get_params);
- 		if (status) {
- 			dev_err(dev, "Cannot get RSS lut, err %s aq_err %s\n",
- 				ice_stat_str(status),
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 208989b5629d..b99c815f2bd0 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -910,6 +910,14 @@ struct ice_hw_port_stats {
- 	u64 fd_sb_match;
- };
+ 	return 0;
+ }
  
-+struct ice_aq_get_set_rss_lut_params {
-+	u16 vsi_handle;		/* software VSI handle */
-+	u16 lut_size;		/* size of the LUT buffer */
-+	u8 lut_type;		/* type of the LUT (i.e. VSI, PF, Global) */
-+	u8 *lut;		/* input RSS LUT for set and output RSS LUT for get */
-+	u8 global_lut_id;	/* only valid when lut_type is global */
-+};
+ /**
+- * ice_get_rss - Get RSS keys and lut
++ * ice_get_rss_lut - Get RSS LUT
+  * @vsi: Pointer to VSI structure
+- * @seed: Buffer to store the keys
+  * @lut: Buffer to store the lookup table entries
+  * @lut_size: Size of buffer to store the lookup table entries
+  *
+  * Returns 0 on success, negative on failure
+  */
+-int ice_get_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size)
++int ice_get_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size)
+ {
+-	struct ice_pf *pf = vsi->back;
+-	struct ice_hw *hw = &pf->hw;
++	struct ice_aq_get_set_rss_lut_params params = {};
++	struct ice_hw *hw = &vsi->back->hw;
+ 	enum ice_status status;
+-	struct device *dev;
+ 
+-	dev = ice_pf_to_dev(pf);
+-	if (seed) {
+-		struct ice_aqc_get_set_rss_keys *buf =
+-				  (struct ice_aqc_get_set_rss_keys *)seed;
++	if (!lut)
++		return -EINVAL;
+ 
+-		status = ice_aq_get_rss_key(hw, vsi->idx, buf);
+-		if (status) {
+-			dev_err(dev, "Cannot get RSS key, err %s aq_err %s\n",
+-				ice_stat_str(status),
+-				ice_aq_str(hw->adminq.sq_last_status));
+-			return -EIO;
+-		}
++	params.vsi_handle = vsi->idx;
++	params.lut_size = lut_size;
++	params.lut_type = vsi->rss_lut_type;
++	params.lut = lut;
 +
- /* Checksum and Shadow RAM pointers */
- #define ICE_SR_NVM_CTRL_WORD		0x00
- #define ICE_SR_BOOT_CFG_PTR		0x132
++	status = ice_aq_get_rss_lut(hw, &params);
++	if (status) {
++		dev_err(ice_pf_to_dev(vsi->back), "Cannot get RSS lut, err %s aq_err %s\n",
++			ice_stat_str(status),
++			ice_aq_str(hw->adminq.sq_last_status));
++		return -EIO;
+ 	}
+ 
+-	if (lut) {
+-		struct ice_aq_get_set_rss_lut_params get_params = {
+-			.vsi_handle = vsi->idx, .lut_size = lut_size,
+-			.lut_type = vsi->rss_lut_type, .lut = lut,
+-			.global_lut_id = 0
+-		};
++	return 0;
++}
+ 
+-		status = ice_aq_get_rss_lut(hw, &get_params);
+-		if (status) {
+-			dev_err(dev, "Cannot get RSS lut, err %s aq_err %s\n",
+-				ice_stat_str(status),
+-				ice_aq_str(hw->adminq.sq_last_status));
+-			return -EIO;
+-		}
++/**
++ * ice_get_rss_key - Get RSS key
++ * @vsi: Pointer to VSI structure
++ * @seed: Buffer to store the key in
++ *
++ * Returns 0 on success, negative on failure
++ */
++int ice_get_rss_key(struct ice_vsi *vsi, u8 *seed)
++{
++	struct ice_hw *hw = &vsi->back->hw;
++	enum ice_status status;
++
++	if (!seed)
++		return -EINVAL;
++
++	status = ice_aq_get_rss_key(hw, vsi->idx, (struct ice_aqc_get_set_rss_keys *)seed);
++	if (status) {
++		dev_err(ice_pf_to_dev(vsi->back), "Cannot get RSS key, err %s aq_err %s\n",
++			ice_stat_str(status),
++			ice_aq_str(hw->adminq.sq_last_status));
++		return -EIO;
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index c30b1dd9ac29..07294cd936e3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -2252,7 +2252,7 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if (ice_set_rss(vsi, vrk->key, NULL, 0))
++	if (ice_set_rss_key(vsi, vrk->key))
+ 		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
+ error_param:
+ 	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_KEY, v_ret,
+@@ -2299,7 +2299,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if (ice_set_rss(vsi, NULL, vrl->lut, ICE_VSIQF_HLUT_ARRAY_SIZE))
++	if (ice_set_rss_lut(vsi, vrl->lut, ICE_VSIQF_HLUT_ARRAY_SIZE))
+ 		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
+ error_param:
+ 	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
 -- 
 2.20.1
 
