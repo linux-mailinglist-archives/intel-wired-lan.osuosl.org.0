@@ -1,62 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 580A4329D53
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 12:56:38 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69383329D5B
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 12:57:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0692C6F655;
-	Tue,  2 Mar 2021 11:56:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1788A83D97;
+	Tue,  2 Mar 2021 11:57:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nNN3laUN0YCj; Tue,  2 Mar 2021 11:56:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Zta4_9kZrj3k; Tue,  2 Mar 2021 11:57:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EE85A6F5D2;
-	Tue,  2 Mar 2021 11:56:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 178FC83ACA;
+	Tue,  2 Mar 2021 11:57:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9B8421BF396
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:56:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 483611BF396
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:57:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8A04C83E11
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:56:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 360CB83ACA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:57:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id konzpH8Ll6sP for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 11:56:30 +0000 (UTC)
+ with ESMTP id r2YptIB7lzSR for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 11:57:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0504383E0E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:56:29 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8027764F25;
- Tue,  2 Mar 2021 11:56:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A8CD78104C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:57:34 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 126D264F6C;
+ Tue,  2 Mar 2021 11:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614686189;
+ s=k20201202; t=1614686254;
  bh=Lf4E2EbPxFAb0cIRYV4xQxcbHaujRyn/8kT+zabVpNo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jydTaEaIb9fF3TqAXdCcOI5Qongd3Ine8UzF2aQxKuLD3poJtxukZCDKPVvIv8Dyv
- 1tl+QoMSP1H0vTGm9AZV9GIC3JOMEoQXC3jLqofPH4Pvx+wg9PyGYZ+t4evVRhTdka
- nawsMRPpFUXB5LKWlt8P9vtzlpU3Ob2mRR4OHtPir86vUIqzlFpW7zi5AgRADKbIVq
- s2qb/Nc2B7IpXtcbPcCMicAJWt+apRoN/boYqNRU4etY5uXgDHhmXuyDicno9I1ozQ
- IFwU81dYj1zYRbYQHv2ImtUjMDnIPcP107KUi0mdQD8wKMlW7DbmQrxqsq/yFrTxQW
- FFZTWd8NWS1ow==
+ b=FJoq2CPgEnZ8otNQ44/LCmQDXCNOMC7Gm4eIcnXFmsQztEbStegg7hrKyoj7cVxVJ
+ dD24fg9fve6UCW+mYDqLLe+bHEP2/bZVT9jDES7u478334dB9VfipGi4hunLmAVUAk
+ u3a4u3LrenZdGa/FxDmM1cefVq+4O8D+ql6DE38RgxsS+1gLL1hGUNe1lTf1tIV2oJ
+ KgLwMtlTYifcvZTUv/qPojDbydb3qv37wtvQ890V1UoS7av8eddbzgPycxTccLXUka
+ D1d6O3M415lJikez7fU2Y0MF1j9vKWLCQviQkte44eopiGHgMEg1IwRfsLKY3eT4PQ
+ ydJQ/pXCroF7Q==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue,  2 Mar 2021 06:55:23 -0500
-Message-Id: <20210302115534.61800-42-sashal@kernel.org>
+Date: Tue,  2 Mar 2021 06:56:37 -0500
+Message-Id: <20210302115646.62291-38-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210302115534.61800-1-sashal@kernel.org>
-References: <20210302115534.61800-1-sashal@kernel.org>
+In-Reply-To: <20210302115646.62291-1-sashal@kernel.org>
+References: <20210302115646.62291-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.11 42/52] i40e: Fix memory leak
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.10 38/47] i40e: Fix memory leak
  in i40e_probe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
