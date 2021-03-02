@@ -1,63 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01C61329D68
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 12:59:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 172A8329ED9
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 13:38:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A679430C9;
-	Tue,  2 Mar 2021 11:59:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B3C7F6F66F;
+	Tue,  2 Mar 2021 12:38:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZXrILgGEvPca; Tue,  2 Mar 2021 11:59:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gp5ML2clBtVC; Tue,  2 Mar 2021 12:38:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9F86B43104;
-	Tue,  2 Mar 2021 11:59:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A08526F64A;
+	Tue,  2 Mar 2021 12:38:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 91B2A1BF396
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:58:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 85C141BF3DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 12:38:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 89A1E60713
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:58:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 743EB83F2D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 12:38:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FehWRwp0ROYW for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 11:58:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hRll_Jo7472O for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 12:38:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0894860710
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 11:58:57 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 828AF64FAF;
- Tue,  2 Mar 2021 11:58:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614686337;
- bh=Nun6+umzy46SPZaE7zsVzCyb0W8AjsJTb7kSxMakyMg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pO5tCEv3AG9QEuiL4zkJ9Swu/9k+JqdTCJcopfrqfQ60UWEgukGl7UO75j+MNqo1x
- VnqlhsAGLgOoiRy0zN7tdpDE65/B2QtnRWBvuifM8+WBHTv3AqPrJlfDXl6o7KnSjq
- H8w5XdSfP8tWNkK9rLYRL1ZlaMRygo/mIcvaqWBBZFOGkBSkCHtIt3SqX8EKtTqn7S
- SETZt1fGyxqX9tMMQNtaHMmPRt3ziFEYgMwnW4TTRXANQbB4QzX5zLwYM3AdhSwrMo
- uHX7dJg2QFNDAlr8YFWOFyl+ii67Lv7ti1BOxlwi002PvMBM/zootlTbuL0BcM8lj6
- z0o7uzMjqo/kg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Tue,  2 Mar 2021 06:58:31 -0500
-Message-Id: <20210302115835.63269-17-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210302115835.63269-1-sashal@kernel.org>
-References: <20210302115835.63269-1-sashal@kernel.org>
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3F4A983E51
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 12:38:14 +0000 (UTC)
+IronPort-SDR: 74KNZP7/yzyVUrkb9Ib+xxH2QoNHsH+syCJstwF0XEeOv5y906l2F8yt1YB//jfGtaGQ6gLpED
+ D35OxECmObAw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9910"; a="271802566"
+X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="271802566"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2021 04:38:13 -0800
+IronPort-SDR: feLXMaI4Tye8SpVbPTEF4NzIAowQAB5CgWP03PGmQjiOtox547ErZennrBFOJkGaz3glpr34F+
+ MbT7FxnlsGYA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,216,1610438400"; d="scan'208";a="383530498"
+Received: from lkp-server02.sh.intel.com (HELO 2482ff9f8ac0) ([10.239.97.151])
+ by orsmga002.jf.intel.com with ESMTP; 02 Mar 2021 04:38:12 -0800
+Received: from kbuild by 2482ff9f8ac0 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lH4Hz-0000Nl-KS; Tue, 02 Mar 2021 12:38:11 +0000
+Date: Tue, 02 Mar 2021 20:37:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <603e317b.xBUT/Z5bX8jiiMw6%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 17/21] i40e: Fix memory leak
- in i40e_probe
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
+ 3a3e187b7b489df5ae729aeee86b2db852b76a92
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,48 +67,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- Keita Suzuki <keitasuzuki.park@sslab.ics.keio.ac.jp>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Keita Suzuki <keitasuzuki.park@sslab.ics.keio.ac.jp>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 3a3e187b7b489df5ae729aeee86b2db852b76a92  igb: unbreak I2C bit-banging on i350
 
-[ Upstream commit 58cab46c622d6324e47bd1c533693c94498e4172 ]
+Error/Warning in current branch:
 
-Struct i40e_veb is allocated in function i40e_setup_pf_switch, and
-stored to an array field veb inside struct i40e_pf. However when
-i40e_setup_misc_vector fails, this memory leaks.
+drivers/net/ethernet/intel/ice/ice_main.c:2074: undefined reference to `ice_flush_fdir_ctx'
+drivers/net/ethernet/intel/ice/ice_txrx.c:1122: undefined reference to `ice_vc_fdir_irq_handler'
 
-Fix this by calling exit and teardown functions.
+Error/Warning ids grouped by kconfigs:
 
-Signed-off-by: Keita Suzuki <keitasuzuki.park@sslab.ics.keio.ac.jp>
-Tested-by: Tony Brelinski <tonyx.brelinski@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+gcc_recent_errors
+`-- i386-randconfig-a012-20210302
+    |-- drivers-net-ethernet-intel-ice-ice_main.c:undefined-reference-to-ice_flush_fdir_ctx
+    `-- drivers-net-ethernet-intel-ice-ice_txrx.c:undefined-reference-to-ice_vc_fdir_irq_handler
+
+elapsed time: 722m
+
+configs tested: 95
+configs skipped: 2
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arc                        nsim_700_defconfig
+arm                        keystone_defconfig
+ia64                             alldefconfig
+arm                            mps2_defconfig
+arm                          gemini_defconfig
+arm                         at91_dt_defconfig
+arm                             rpc_defconfig
+ia64                            zx1_defconfig
+powerpc                        cell_defconfig
+arm                        shmobile_defconfig
+parisc                generic-64bit_defconfig
+x86_64                           alldefconfig
+arm                            hisi_defconfig
+powerpc                    gamecube_defconfig
+sh                           se7705_defconfig
+powerpc                      walnut_defconfig
+powerpc                     sbc8548_defconfig
+powerpc                   currituck_defconfig
+m68k                        mvme147_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20210302
+i386                 randconfig-a003-20210302
+i386                 randconfig-a002-20210302
+i386                 randconfig-a004-20210302
+i386                 randconfig-a006-20210302
+i386                 randconfig-a001-20210302
+i386                 randconfig-a016-20210302
+i386                 randconfig-a012-20210302
+i386                 randconfig-a014-20210302
+i386                 randconfig-a013-20210302
+i386                 randconfig-a011-20210302
+i386                 randconfig-a015-20210302
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a006-20210301
+x86_64               randconfig-a001-20210301
+x86_64               randconfig-a004-20210301
+x86_64               randconfig-a002-20210301
+x86_64               randconfig-a005-20210301
+x86_64               randconfig-a003-20210301
+x86_64               randconfig-a013-20210302
+x86_64               randconfig-a016-20210302
+x86_64               randconfig-a015-20210302
+x86_64               randconfig-a014-20210302
+x86_64               randconfig-a012-20210302
+x86_64               randconfig-a011-20210302
+
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index a728b6a7872c..90314f78c204 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -13977,6 +13977,8 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		if (err) {
- 			dev_info(&pdev->dev,
- 				 "setup of misc vector failed: %d\n", err);
-+			i40e_cloud_filter_exit(pf);
-+			i40e_fdir_teardown(pf);
- 			goto err_vsis;
- 		}
- 	}
--- 
-2.30.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
