@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2261832A935
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:22:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97A4632A947
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Mar 2021 19:24:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C70B44EBA6;
-	Tue,  2 Mar 2021 18:22:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 495DB83ACF;
+	Tue,  2 Mar 2021 18:24:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mxobbZx6s5EP; Tue,  2 Mar 2021 18:22:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YSIugZutp2CD; Tue,  2 Mar 2021 18:24:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BEE744EB99;
-	Tue,  2 Mar 2021 18:22:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 45BA283AA2;
+	Tue,  2 Mar 2021 18:24:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1DAB01BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E3ABC1BF2B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:24:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D6E38606BD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D074441507
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kKdiI9gOL0aK for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YToaXd_DKnqd for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Mar 2021 18:24:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2F2EF606CC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:21:49 +0000 (UTC)
-IronPort-SDR: EaN8GCu7JX34scWApTb6Fr/vejPnwlFrVPu3BLB6gQAIV2TJSjSTlLi2rXR7V6v02j3n4lO6v7
- Vsy654Q12d6w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="166813978"
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="166813978"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1A76243194
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Mar 2021 18:24:01 +0000 (UTC)
+IronPort-SDR: UH/BF5DtFXJxPjhmmM7ISpbGb+4GdlsvuhaUD7NQRepY8Uwfossh4xUBkdPJomJtt50Lt1pQv8
+ 4guntJJ3Cv6A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="174062088"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="174062088"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Mar 2021 10:21:48 -0800
-IronPort-SDR: zmFgoinYkI9Mc6Qls87U+k6LKnq9nNyQsHjKkfhkIYNINHmrKJaX2unmCnHeZ6YkKjTK3dUKkz
- Mbz0Vh8B2tpA==
+IronPort-SDR: FEBtJAUuc0gHDUR7VGqzU7P3zeXFxc6hW1F4hEJXqxaSGnb+vbQD6pJ5y4uhx/6rKtUBWwzTJ6
+ 7AuNCsjaszGA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="369051176"
+X-IronPort-AV: E=Sophos;i="5.81,217,1610438400"; d="scan'208";a="369051177"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga006.jf.intel.com with ESMTP; 02 Mar 2021 10:21:45 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Mar 2021 10:12:11 -0800
-Message-Id: <20210302181213.51718-12-anthony.l.nguyen@intel.com>
+Date: Tue,  2 Mar 2021 10:12:12 -0800
+Message-Id: <20210302181213.51718-13-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
 References: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S55 12/14] ice: rename ptype bitmap
+Subject: [Intel-wired-lan] [PATCH S55 13/14] ice: Advertise virtchnl UDP
+ segmentation offload capability
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,77 +71,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Qi Zhang <qi.z.zhang@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Align all ptype bitmap to follow ice_ptypes_xxx prefix.
+As the hardware is capable of supporting UDP segmentation offload, add a
+capability bit to virtchnl.h to communicate this and have the driver
+advertise its support.
 
-Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+Suggested-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_flow.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 3 +++
+ include/linux/avf/virtchnl.h                     | 1 +
+ 2 files changed, 4 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
-index ceb802ab76c0..2eec44ef2346 100644
---- a/drivers/net/ethernet/intel/ice/ice_flow.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flow.c
-@@ -237,7 +237,7 @@ static const u32 ice_ptypes_ipv6_il[] = {
- };
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index f09367eb242a..43d309aa9efe 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -2126,6 +2126,9 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
+ 		vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
  
- /* Packet types for packets with an Outer/First/Single IPv4 header - no L4 */
--static const u32 ice_ipv4_ofos_no_l4[] = {
-+static const u32 ice_ptypes_ipv4_ofos_no_l4[] = {
- 	0x10C00000, 0x04000800, 0x00000000, 0x00000000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-@@ -261,7 +261,7 @@ static const u32 ice_ptypes_arp_of[] = {
- };
++	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_USO)
++		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_USO;
++
+ 	vfres->num_vsis = 1;
+ 	/* Tx and Rx queue are equal for VF */
+ 	vfres->num_queue_pairs = vsi->num_txq;
+diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
+index 228b90ef3361..ddcff6219b61 100644
+--- a/include/linux/avf/virtchnl.h
++++ b/include/linux/avf/virtchnl.h
+@@ -252,6 +252,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
+ #define VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM	0X00400000
+ #define VIRTCHNL_VF_OFFLOAD_ADQ			0X00800000
+ #define VIRTCHNL_VF_OFFLOAD_FDIR_PF		0X10000000
++#define VIRTCHNL_VF_OFFLOAD_USO			0X02000000
  
- /* Packet types for packets with an Innermost/Last IPv4 header - no L4 */
--static const u32 ice_ipv4_il_no_l4[] = {
-+static const u32 ice_ptypes_ipv4_il_no_l4[] = {
- 	0x60000000, 0x18043008, 0x80000002, 0x6010c021,
- 	0x00000008, 0x00000000, 0x00000000, 0x00000000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-@@ -273,7 +273,7 @@ static const u32 ice_ipv4_il_no_l4[] = {
- };
- 
- /* Packet types for packets with an Outer/First/Single IPv6 header - no L4 */
--static const u32 ice_ipv6_ofos_no_l4[] = {
-+static const u32 ice_ptypes_ipv6_ofos_no_l4[] = {
- 	0x00000000, 0x00000000, 0x43000000, 0x10002000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-@@ -285,7 +285,7 @@ static const u32 ice_ipv6_ofos_no_l4[] = {
- };
- 
- /* Packet types for packets with an Innermost/Last IPv6 header - no L4 */
--static const u32 ice_ipv6_il_no_l4[] = {
-+static const u32 ice_ptypes_ipv6_il_no_l4[] = {
- 	0x00000000, 0x02180430, 0x0000010c, 0x086010c0,
- 	0x00000430, 0x00000000, 0x00000000, 0x00000000,
- 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-@@ -749,8 +749,8 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
- 				   ICE_FLOW_PTYPE_MAX);
- 		} else if ((hdrs & ICE_FLOW_SEG_HDR_IPV4) &&
- 			   !(hdrs & ICE_FLOW_SEG_HDRS_L4_MASK_NO_OTHER)) {
--			src = !i ? (const unsigned long *)ice_ipv4_ofos_no_l4 :
--				(const unsigned long *)ice_ipv4_il_no_l4;
-+			src = !i ? (const unsigned long *)ice_ptypes_ipv4_ofos_no_l4 :
-+				(const unsigned long *)ice_ptypes_ipv4_il_no_l4;
- 			bitmap_and(params->ptypes, params->ptypes, src,
- 				   ICE_FLOW_PTYPE_MAX);
- 		} else if (hdrs & ICE_FLOW_SEG_HDR_IPV4) {
-@@ -760,8 +760,8 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
- 				   ICE_FLOW_PTYPE_MAX);
- 		} else if ((hdrs & ICE_FLOW_SEG_HDR_IPV6) &&
- 			   !(hdrs & ICE_FLOW_SEG_HDRS_L4_MASK_NO_OTHER)) {
--			src = !i ? (const unsigned long *)ice_ipv6_ofos_no_l4 :
--				(const unsigned long *)ice_ipv6_il_no_l4;
-+			src = !i ? (const unsigned long *)ice_ptypes_ipv6_ofos_no_l4 :
-+				(const unsigned long *)ice_ptypes_ipv6_il_no_l4;
- 			bitmap_and(params->ptypes, params->ptypes, src,
- 				   ICE_FLOW_PTYPE_MAX);
- 		} else if (hdrs & ICE_FLOW_SEG_HDR_IPV6) {
+ /* Define below the capability flags that are not offloads */
+ #define VIRTCHNL_VF_CAP_ADV_LINK_SPEED		0x00000080
 -- 
 2.20.1
 
