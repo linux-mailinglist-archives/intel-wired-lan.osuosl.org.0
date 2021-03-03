@@ -1,95 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A73E932B64C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 10:45:57 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 344FC32B791
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 12:45:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A719347E72;
-	Wed,  3 Mar 2021 09:45:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 496F14881A;
+	Wed,  3 Mar 2021 11:45:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YcCJDagURSzH; Wed,  3 Mar 2021 09:45:54 +0000 (UTC)
+	with ESMTP id mK1cZmWBIpr6; Wed,  3 Mar 2021 11:45:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6303047E3B;
-	Wed,  3 Mar 2021 09:45:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 02B5947661;
+	Wed,  3 Mar 2021 11:45:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2CFDF1BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 98E3F1BF591
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 11:45:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 284A96063A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 936D047661
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 11:45:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yQ4FfDrweZMZ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Mar 2021 09:45:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hkKcsR5epAeM for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Mar 2021 11:45:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EFD5760606
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614764745;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=cshNihsT70kA34dCPACF1CCG63bGyROQDb6b88wnZvg=;
- b=g5n58Ezx4h13LG/qOLk10HdCAdh1WLdYSPw0gWbs8wsDQ89KQY/GhwC83Yn0ZgZOqqlgQs
- Alyb8ZCShye7dI1K9BSB0ebYUGAr0rEYzIHnQPTqnulawc7Vnul4toYO7uMbz4YfKgiVHN
- 4picZsTL3MkbIsG0f2HY6j0ZENzmbnA=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-ShIu-htVOwWapr9X3X7BCA-1; Wed, 03 Mar 2021 04:45:41 -0500
-X-MC-Unique: ShIu-htVOwWapr9X3X7BCA-1
-Received: by mail-pl1-f198.google.com with SMTP id p15so13027264plq.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Mar 2021 01:45:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=cshNihsT70kA34dCPACF1CCG63bGyROQDb6b88wnZvg=;
- b=jQXlmy34D1CNHARGC+aUpIUKsXogIkdsUEWr2hj9psw4Voz/f2pHiU6GZ7oREKQhHL
- 2x5rkT7kS5A2mjJVcQG5DS8sz7vDmDdQUwNS5E+TFmyYKLCNh8re5/Zo7tjX1n5R2Nk2
- WkoZ4K44L3mNBjCAO6qdy4LydYId5WdzN4tKCMRO5greKn2QsA//zw00U14OpScsNgWM
- VQuAIxmYEaL19iSkxLxHQwKqbKFMH7s/I1HQNzM02YoyYJH103J9C/QPT1SA/kz2XrPQ
- HPMC6wHnOp8jBhF7QbDKuNprljTEyQ1umc/887vKNMu6PJvFkB4FpyQyjPQQsz3iDnR4
- BQ1Q==
-X-Gm-Message-State: AOAM530AukeDIbp8Pn8+BNaLekNz4YbFCxWr5cqASGB0KrmgJoSbdtjw
- ThUakZHDGL0PCvEeMwuRciCVBwx6HSsrOksBGqpPUKP42O5J7kwH+BN+3bjfKqzOdFE/bqCF/Jd
- GkZCk6HymvODgQDbMC492wzscoWtRTA==
-X-Received: by 2002:a17:902:968e:b029:e3:a9b8:60b4 with SMTP id
- n14-20020a170902968eb02900e3a9b860b4mr7325528plp.61.1614764740219; 
- Wed, 03 Mar 2021 01:45:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyhxw9k+pawLT6E5fKwXWvbGnWK52c80D5k5VW6r+WMv0sxJ0XABOxB+c5SZrcGoJ6gjtIdiA==
-X-Received: by 2002:a17:902:968e:b029:e3:a9b8:60b4 with SMTP id
- n14-20020a170902968eb02900e3a9b860b4mr7325512plp.61.1614764739880; 
- Wed, 03 Mar 2021 01:45:39 -0800 (PST)
-Received: from localhost ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id x9sm6135360pjp.29.2021.03.03.01.45.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 01:45:39 -0800 (PST)
-Date: Wed, 3 Mar 2021 17:44:58 +0800
-From: Coiby Xu <coxu@redhat.com>
-To: Bhupesh SHARMA <bhupesh.linux@gmail.com>
-Message-ID: <20210303094458.7yootsa5dvn5cnba@Rk>
-References: <20210222070701.16416-1-coxu@redhat.com>
- <20210222070701.16416-5-coxu@redhat.com>
- <CAFTCetS=G_JV4Ax6=Ty20uifoL1jscrqPGhdh7d2k+t=0d+L8g@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAFTCetS=G_JV4Ax6=Ty20uifoL1jscrqPGhdh7d2k+t=0d+L8g@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=coxu@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Subject: Re: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client
- for kdump
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C67940111
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 11:45:38 +0000 (UTC)
+IronPort-SDR: ff9OW5nzQ7J54+oXphE0jZG47v3m2YxLC5sj+NaUoB/F9HU75xugt2zqtXYs2Zm90dbMQKbpW0
+ i1Hpea7nvvvg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="206863699"
+X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="206863699"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2021 03:45:37 -0800
+IronPort-SDR: Un2/N+BpgbyM2VKlo7XuTeuqmYM/L3BV0JZ3nFbqio84sFnF4eFWEjl4EmdsJfMMOPJYwXfumS
+ CBB+11Tr8fpw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="406430922"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga007.jf.intel.com with ESMTP; 03 Mar 2021 03:45:36 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  3 Mar 2021 11:45:33 +0000
+Message-Id: <20210303114533.2893-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix to not show opcode msg
+ on unsuccessful VF MAC change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,102 +63,161 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kexec@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Bhupesh,
+Hide i40e opcode information sent during response to VF in case when
+untrusted VF tried to change MAC on the VF interface.
 
-Glad to meet you here:)
+This is implemented by adding an additional parameter 'hide' to the
+response sent to VF function that hides the display of error
+information, but forwards the error code to VF.
 
-On Thu, Feb 25, 2021 at 03:41:55PM +0530, Bhupesh SHARMA wrote:
->Hello Coiby,
->
->On Mon, Feb 22, 2021 at 12:40 PM Coiby Xu <coxu@redhat.com> wrote:
->>
->> i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
->> i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
->> for 1GbE while "craskernel=auto" only reserved 160M. With the module
->> parameter "resource_profile=2", we can reduce the memory usage of i40iw
->> to ~300M which is still too much for kdump.
->>
->> Disabling the client registration would spare us the client interface
->> operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
->> saved for kdump.
->>
->> Signed-off-by: Coiby Xu <coxu@redhat.com>
->> ---
->>  drivers/net/ethernet/intel/i40e/i40e_client.c | 7 +++++++
->>  1 file changed, 7 insertions(+)
->>
->> diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
->> index a2dba32383f6..aafc2587f389 100644
->> --- a/drivers/net/ethernet/intel/i40e/i40e_client.c
->> +++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
->> @@ -4,6 +4,7 @@
->>  #include <linux/list.h>
->>  #include <linux/errno.h>
->>  #include <linux/net/intel/i40e_client.h>
->> +#include <linux/crash_dump.h>
->>
->>  #include "i40e.h"
->>  #include "i40e_prototype.h"
->> @@ -741,6 +742,12 @@ int i40e_register_client(struct i40e_client *client)
->>  {
->>         int ret = 0;
->>
->> +       /* Don't open i40iw client for kdump because i40iw will consume huge
->> +        * amounts of memory.
->> +        */
->> +       if (is_kdump_kernel())
->> +               return ret;
->> +
->
->Since crashkernel size can be manually set on the command line by a
->user, and some users might be fine with a ~300M memory usage by i40iw
->client [with resource_profile=2"], in my view, disabling the client
->for all kdump cases seems too restrictive.
->
->We can probably check the crash kernel size allocated (
->$ cat /sys/kernel/kexec_crash_size) and then make a decision
->accordingly, so for example something like:
->
-> +       if (is_kdump_kernel() && kexec_crash_size < 512M)
-> +               return ret;
->
->What do you think?
->
+Previously it was not possible to send response with some error code
+to VF without displaying opcode information.
 
-Thanks for the suggestion! After having a discussion with the team, we
-think it's better to not intervene i40iw in the kernel space. Actually 
-when kexec-tools is building initramfs for kdump, i40iw is not included 
-by default unless a user explicitly asks to include i40iw by changing 
-/etc/kdump.conf, i.e., adding 'dracut_args --add-drivers "i40iw"'.
+Fixes: 5c3c48ac6bf5("i40e:implement virtual device interface")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reviewed-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v2: Changed the patch title to make the patch more understandable
+v3: Added change history and signed-off-by tag
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 44 +++++++++++++++----
+ 1 file changed, 35 insertions(+), 9 deletions(-)
 
-
->Regards,
->Bhupesh
->
->>         if (!client) {
->>                 ret = -EIO;
->>                 goto out;
->> --
->> 2.30.1
->>
->>
->> _______________________________________________
->> kexec mailing list
->> kexec@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/kexec
->
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 0cb533c..05de5fe 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -1845,17 +1845,18 @@ sriov_configure_out:
+ /***********************virtual channel routines******************/
+ 
+ /**
+- * i40e_vc_send_msg_to_vf
++ * i40e_vc_send_msg_to_vf_ex
+  * @vf: pointer to the VF info
+  * @v_opcode: virtual channel opcode
+  * @v_retval: virtual channel return value
+  * @msg: pointer to the msg buffer
+  * @msglen: msg length
+- *
++ * @is_quiet: true for not printing unsuccessful return values, false otherwise
+  * send msg to VF
+  **/
+-static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+-				  u32 v_retval, u8 *msg, u16 msglen)
++static int i40e_vc_send_msg_to_vf_ex(struct i40e_vf *vf, u32 v_opcode,
++				     u32 v_retval, u8 *msg, u16 msglen,
++				     bool is_quiet)
+ {
+ 	struct i40e_pf *pf;
+ 	struct i40e_hw *hw;
+@@ -1871,7 +1872,7 @@ static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+ 	abs_vf_id = vf->vf_id + hw->func_caps.vf_base_id;
+ 
+ 	/* single place to detect unsuccessful return values */
+-	if (v_retval) {
++	if (v_retval && !is_quiet) {
+ 		vf->num_invalid_msgs++;
+ 		dev_info(&pf->pdev->dev, "VF %d failed opcode %d, retval: %d\n",
+ 			 vf->vf_id, v_opcode, v_retval);
+@@ -1901,6 +1902,23 @@ static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
+ 	return 0;
+ }
+ 
++/**
++ * i40e_vc_send_msg_to_vf
++ * @vf: pointer to the VF info
++ * @v_opcode: virtual channel opcode
++ * @v_retval: virtual channel return value
++ * @msg: pointer to the msg buffer
++ * @msglen: msg length
++ *
++ * send msg to VF
++ **/
++static int i40e_vc_send_msg_to_vf(struct i40e_vf *vf, u32 v_opcode,
++				  u32 v_retval, u8 *msg, u16 msglen)
++{
++	return i40e_vc_send_msg_to_vf_ex(vf, v_opcode, v_retval,
++					 msg, msglen, false);
++}
++
+ /**
+  * i40e_vc_send_resp_to_vf
+  * @vf: pointer to the VF info
+@@ -2645,6 +2663,7 @@ error_param:
+  * i40e_check_vf_permission
+  * @vf: pointer to the VF info
+  * @al: MAC address list from virtchnl
++ * @is_quiet: set true for printing msg without opcode info, false otherwise
+  *
+  * Check that the given list of MAC addresses is allowed. Will return -EPERM
+  * if any address in the list is not valid. Checks the following conditions:
+@@ -2659,13 +2678,18 @@ error_param:
+  * addresses might not be accurate.
+  **/
+ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+-					   struct virtchnl_ether_addr_list *al)
++					   struct virtchnl_ether_addr_list *al,
++					   bool *is_quiet)
+ {
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = pf->vsi[vf->lan_vsi_idx];
+ 	int mac2add_cnt = 0;
+ 	int i;
+ 
++	if (!is_quiet)
++		return -EINVAL;
++
++	*is_quiet = false;
+ 	for (i = 0; i < al->num_elements; i++) {
+ 		struct i40e_mac_filter *f;
+ 		u8 *addr = al->list[i].addr;
+@@ -2689,6 +2713,7 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 		    !ether_addr_equal(addr, vf->default_lan_addr.addr)) {
+ 			dev_err(&pf->pdev->dev,
+ 				"VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation\n");
++			*is_quiet = true;
+ 			return -EPERM;
+ 		}
+ 
+@@ -2725,6 +2750,7 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	    (struct virtchnl_ether_addr_list *)msg;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
++	bool is_quiet = false;
+ 	i40e_status ret = 0;
+ 	int i;
+ 
+@@ -2741,7 +2767,7 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	 */
+ 	spin_lock_bh(&vsi->mac_filter_hash_lock);
+ 
+-	ret = i40e_check_vf_permission(vf, al);
++	ret = i40e_check_vf_permission(vf, al, &is_quiet);
+ 	if (ret) {
+ 		spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 		goto error_param;
+@@ -2779,8 +2805,8 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 
+ error_param:
+ 	/* send the response to the VF */
+-	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+-				       ret);
++	return i40e_vc_send_msg_to_vf_ex(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
++				       ret, NULL, 0, is_quiet);
+ }
+ 
+ /**
 -- 
-Best regards,
-Coiby
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
