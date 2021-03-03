@@ -2,84 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36F4832AFDC
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 04:32:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6454032B5DE
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 09:08:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8AB3943192;
-	Wed,  3 Mar 2021 03:32:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BE319400AE;
+	Wed,  3 Mar 2021 08:08:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rA2yvRi4GvLU; Wed,  3 Mar 2021 03:32:14 +0000 (UTC)
+	with ESMTP id qIPOtJNz6NeB; Wed,  3 Mar 2021 08:08:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7966E430D6;
-	Wed,  3 Mar 2021 03:32:14 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id B5DBB400A9;
+	Wed,  3 Mar 2021 08:08:27 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B8F461BF3D1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 03:32:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2317A1BF4DB
+ for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 08:08:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B4E7B838B6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 03:32:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1F42483A40
+ for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 08:08:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WeYSRKQXY1w9 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Mar 2021 03:32:09 +0000 (UTC)
-X-Greylist: delayed 00:55:03 by SQLgrey-1.8.0
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
- [IPv6:2a00:1450:4864:20::636])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DC710838AF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 03:32:08 +0000 (UTC)
-Received: by mail-ej1-x636.google.com with SMTP id r17so39390931ejy.13
- for <intel-wired-lan@lists.osuosl.org>; Tue, 02 Mar 2021 19:32:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ryLp0YPsBnAjcUWFGCHtjNE59ss5r/1p8ASYvWpfQbE=;
- b=q/PMxxGGIJU1SSObQGps6XB0QpdxXOz6MkmI7DuoA5viKHgaRSN1qmyfq0Pg/xNEdW
- cjsMY6gfrZP4xu7t6Sikg6Nkvy2VtrtDTVQCvEQR3zypRJrT+J9VhhijcSwkZDq4VSIK
- 8Kw2C1jttgbOZDPxmhJ51+weFFTW93Dg7sunJPe36QenVjVclJVQdiNdq08+Tg9Z8kZA
- Si3PqmT8P0kHU1erknBd+UgJ14vAbjLuwYdt7cK198RGvJ1Fgm5909GCjkaU2/t/E32R
- 0P9myucsS7GU0M6drb42uuqvfPG/cdSdmECYuECEk27np3pBMGxsiooKI/zOezMTTt7l
- MUNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ryLp0YPsBnAjcUWFGCHtjNE59ss5r/1p8ASYvWpfQbE=;
- b=HW440yxqfYrCs4dKciRPCD/F3NW+aY0fJiv9+oNvHlnNVuDcTZA8a4deOt1vOzPZYX
- lCIkkz1N+AE05zkolhPbIOIHRUWNFdces28dzr5yER/DQLnYFeFhHQ5cdeoEpQHyZKHI
- FY/VbT4rSIZb7rI2E0yh0U+yoaBGF8OJRWGYhjI5fGYm2xVw/bmVdbY/TN7dmj1rEl7k
- dKxjlEo1lGQJ4QT3pW+WE4Ys97xwshNcbnGRieUBESW6qfGk6ouAScokgj/Eq8k+ofEh
- 0hcgl1ecdaXNgS5afqnQ7m20zWdGHfVuX0ccGCjwiW6ZLZr9D7r6vkKsKU/bb62qJAoo
- CpZg==
-X-Gm-Message-State: AOAM531+T4nkvwxdcoHlUKw4ZFRsXH15lEcgnceUKa6R4KD9DdMRlN5T
- hV07B3S8vcoKKuKAcLC9sq9oUjSd8RI=
-X-Google-Smtp-Source: ABdhPJxjLzCYznig/RiqovOx/qEpCOywElvrIFfbtyC5YrFhnTMwdwqzp09o3As41boFO/glNXNaow==
-X-Received: by 2002:a17:907:3e8a:: with SMTP id
- hs10mr14608835ejc.267.1614732673738; 
- Tue, 02 Mar 2021 16:51:13 -0800 (PST)
-Received: from skbuf ([188.25.219.167])
- by smtp.gmail.com with ESMTPSA id b21sm13292564ejv.13.2021.03.02.16.51.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 16:51:13 -0800 (PST)
-Date: Wed, 3 Mar 2021 02:51:12 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20210303005112.im2zur47553uv2ld@skbuf>
-References: <20210122224453.4161729-1-vinicius.gomes@intel.com>
- <20210122224453.4161729-2-vinicius.gomes@intel.com>
- <20210302142350.4tu3n4gay53cjnig@skbuf>
- <87o8g1nk6g.fsf@vcostago-mobl2.amr.corp.intel.com>
+ with ESMTP id aZSd9SH2wTdj for <intel-wired-lan@osuosl.org>;
+ Wed,  3 Mar 2021 08:08:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1EEF18378C
+ for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 08:08:21 +0000 (UTC)
+IronPort-SDR: tSuEXs56Sneva/5dyd41AVD/twfp5vgttba1butx+W4KfRGCQXRwcBW1eMciiQv+HSX7ir1gqY
+ 8Nse+4fmLbkQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="251184982"
+X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="251184982"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2021 00:08:20 -0800
+IronPort-SDR: sO9RPzVGYXBTCtGNjUUsG2yD2/bFSVAiO70W4xOezmH+Rp5Q+4vjEi1gzfV3j+m5I3BUHseTV9
+ Iopn91hu7Plg==
+X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="407131194"
+Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2021 00:08:19 -0800
+To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
+ intel-wired-lan@osuosl.org
+References: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
+From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <25ceda96-4835-0bec-e3b9-e5bf5edd6adf@linux.intel.com>
+Date: Wed, 3 Mar 2021 10:08:17 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87o8g1nk6g.fsf@vcostago-mobl2.amr.corp.intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/8] ethtool: Add support
- for configuring frame preemption
+In-Reply-To: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net v1 0/2] igc: Fix Pause Frame
+ Advertising
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,53 +70,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, mkubecek@suse.cz, jiri@resnulli.us,
- vladimir.oltean@nxp.com, xiyou.wangcong@gmail.com, jhs@mojatatu.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
- po.liu@nxp.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mallikarjuna.chilakala@intel.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 02, 2021 at 04:40:55PM -0800, Vinicius Costa Gomes wrote:
-> Hi Vladimir,
->
-> Vladimir Oltean <olteanv@gmail.com> writes:
->
-> > Hi Vinicius,
-> >
-> > On Fri, Jan 22, 2021 at 02:44:46PM -0800, Vinicius Costa Gomes wrote:
-> >> Frame preemption (described in IEEE 802.3br-2016) defines the concept
-> >> of preemptible and express queues. It allows traffic from express
-> >> queues to "interrupt" traffic from preemptible queues, which are
-> >> "resumed" after the express traffic has finished transmitting.
-> >>
-> >> Frame preemption can only be used when both the local device and the
-> >> link partner support it.
-> >>
-> >> Only parameters for enabling/disabling frame preemption and
-> >> configuring the minimum fragment size are included here. Expressing
-> >> which queues are marked as preemptible is left to mqprio/taprio, as
-> >> having that information there should be easier on the user.
-> >>
-> >> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> >> ---
-> >
-> > I just noticed that the aMACMergeStatusVerify variable is not exposed in
-> > the PREEMPT_GET command, which would allow the user to inspect the state
-> > of the MAC merge sublayer verification state machine. Also, a way in the
-> > PREEMPT_SET command to set the disableVerify variable would be nice.
-> >
->
-> The hardware I have won't have support for this.
-
-What exactly is not supported, FP verification or the disabling of it?
-Does your hardware at least respond to verification frames?
-
-> I am going to send the next version of this series soon. Care to send
-> the support for verifyStatus/disableVerify as follow up series?
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTkvMDIvMjAyMSAxODozNiwgTXVoYW1tYWQgSHVzYWluaSBadWxraWZsaSB3cm90ZToKPiBI
+aSwKPiAKPiBLaW5kbHkgaGVscCB0byByZXZpZXcgYmVsb3cgcGF0Y2hlcy4KPiAKPiBTdW1tYXJ5
+IG9mIGVhY2ggcGF0Y2hlcyBhcyBwZXIgYmVsb3c6Cj4gUGF0Y2ggMTogVG8gZml4ICJBZHZlcnRp
+c2VkIHBhdXNlIGZyYW1lIHVzZSIgYWR2ZXJ0aXNpbmcgd2hlbiB0eCBhbmQgcnggYXJlIGluIG9m
+ZiBzdGF0ZSB3aXRoIEF1dG9OZWdvdGlhdGUgb2ZmLgo+IFBhdGNoIDI6IFRvIGZpeCAiU3VwcG9y
+dGVkIHBhdXNlIGZyYW1lIHVzZSIgb3V0cHV0IHZpYSBldGh0b29sIHdoZXJlIHRoZSBiaXQgaXMg
+bm90IHNldC4KPiAKPiBUZXN0ZWQgd2l0aCBJbnRlbMKuIEV0aGVybmV0IENvbnRyb2xsZXIgSTIy
+NShSZXY0KS4KPiAKPiBUaGFua3MuCj4gCj4gTXVoYW1tYWQgSHVzYWluaSBadWxraWZsaSAoMik6
+Cj4gICAgaWdjOiBGaXggUGF1c2UgRnJhbWUgQWR2ZXJ0aXNpbmcKPiAgICBpZ2M6IEZpeCBTdXBw
+b3J0ZWQgUGF1c2UgRnJhbWUgTGluayBTZXR0aW5nCj4gCj4gICBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pZ2MvaWdjX2V0aHRvb2wuYyB8IDcgKysrKy0tLQo+ICAgMSBmaWxlIGNoYW5nZWQs
+IDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiAKPiAtLQo+IDIuMTcuMQo+IAo+IF9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gSW50ZWwtd2ly
+ZWQtbGFuIG1haWxpbmcgbGlzdAo+IEludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCj4gaHR0cHM6
+Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCj4gClRl
+c3RlZC1ieTogRHZvcmEgRnV4YnJ1bWVyIDxkdm9yYXguZnV4YnJ1bWVyQGxpbnV4LmludGVsLmNv
+bT4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
+d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
+L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
