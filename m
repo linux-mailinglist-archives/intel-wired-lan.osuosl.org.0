@@ -1,66 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A019532B628
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 10:27:07 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A73E932B64C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Mar 2021 10:45:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E2443400B5;
-	Wed,  3 Mar 2021 09:27:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A719347E72;
+	Wed,  3 Mar 2021 09:45:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6i3_sry-Y2xf; Wed,  3 Mar 2021 09:27:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YcCJDagURSzH; Wed,  3 Mar 2021 09:45:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 06B93400AF;
-	Wed,  3 Mar 2021 09:27:05 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6303047E3B;
+	Wed,  3 Mar 2021 09:45:54 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7D11B1BF5A1
- for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 09:26:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2CFDF1BF5A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 63C9E60606
- for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 09:26:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 284A96063A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fmxBIwvGw904 for <intel-wired-lan@osuosl.org>;
- Wed,  3 Mar 2021 09:26:58 +0000 (UTC)
+ with ESMTP id yQ4FfDrweZMZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Mar 2021 09:45:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 80133605E5
- for <intel-wired-lan@osuosl.org>; Wed,  3 Mar 2021 09:26:58 +0000 (UTC)
-IronPort-SDR: E73iAnFaUKwOrkCYSicNT2Xq/D3rMTNNLudwCoMMEPXOgbC9cvnyzFe+YyJm5LGmTQCPUV709q
- MRylOjJRB8CQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9911"; a="166406465"
-X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="166406465"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2021 01:26:57 -0800
-IronPort-SDR: 5XqHxbsQ71g71E74/csOn/LtY1g8bd7uIe1ZNmI/OriVbtzoyAtwp72ou8LNyPLZFky4z3ASJu
- xgAv69dl6GZQ==
-X-IronPort-AV: E=Sophos;i="5.81,219,1610438400"; d="scan'208";a="407155155"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.251.160.25])
- ([10.251.160.25])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2021 01:26:56 -0800
-To: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>,
- Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
- intel-wired-lan@osuosl.org
-References: <20210219163648.14581-1-muhammad.husaini.zulkifli@intel.com>
- <20210219163648.14581-3-muhammad.husaini.zulkifli@intel.com>
- <ec5adf63-63d7-7e8e-f260-3eaf29ac82c3@linux.intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <81dc14b2-7aaf-9166-ab07-94e0b1e35224@intel.com>
-Date: Wed, 3 Mar 2021 11:26:52 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EFD5760606
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Mar 2021 09:45:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614764745;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cshNihsT70kA34dCPACF1CCG63bGyROQDb6b88wnZvg=;
+ b=g5n58Ezx4h13LG/qOLk10HdCAdh1WLdYSPw0gWbs8wsDQ89KQY/GhwC83Yn0ZgZOqqlgQs
+ Alyb8ZCShye7dI1K9BSB0ebYUGAr0rEYzIHnQPTqnulawc7Vnul4toYO7uMbz4YfKgiVHN
+ 4picZsTL3MkbIsG0f2HY6j0ZENzmbnA=
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-15-ShIu-htVOwWapr9X3X7BCA-1; Wed, 03 Mar 2021 04:45:41 -0500
+X-MC-Unique: ShIu-htVOwWapr9X3X7BCA-1
+Received: by mail-pl1-f198.google.com with SMTP id p15so13027264plq.8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Mar 2021 01:45:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=cshNihsT70kA34dCPACF1CCG63bGyROQDb6b88wnZvg=;
+ b=jQXlmy34D1CNHARGC+aUpIUKsXogIkdsUEWr2hj9psw4Voz/f2pHiU6GZ7oREKQhHL
+ 2x5rkT7kS5A2mjJVcQG5DS8sz7vDmDdQUwNS5E+TFmyYKLCNh8re5/Zo7tjX1n5R2Nk2
+ WkoZ4K44L3mNBjCAO6qdy4LydYId5WdzN4tKCMRO5greKn2QsA//zw00U14OpScsNgWM
+ VQuAIxmYEaL19iSkxLxHQwKqbKFMH7s/I1HQNzM02YoyYJH103J9C/QPT1SA/kz2XrPQ
+ HPMC6wHnOp8jBhF7QbDKuNprljTEyQ1umc/887vKNMu6PJvFkB4FpyQyjPQQsz3iDnR4
+ BQ1Q==
+X-Gm-Message-State: AOAM530AukeDIbp8Pn8+BNaLekNz4YbFCxWr5cqASGB0KrmgJoSbdtjw
+ ThUakZHDGL0PCvEeMwuRciCVBwx6HSsrOksBGqpPUKP42O5J7kwH+BN+3bjfKqzOdFE/bqCF/Jd
+ GkZCk6HymvODgQDbMC492wzscoWtRTA==
+X-Received: by 2002:a17:902:968e:b029:e3:a9b8:60b4 with SMTP id
+ n14-20020a170902968eb02900e3a9b860b4mr7325528plp.61.1614764740219; 
+ Wed, 03 Mar 2021 01:45:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyhxw9k+pawLT6E5fKwXWvbGnWK52c80D5k5VW6r+WMv0sxJ0XABOxB+c5SZrcGoJ6gjtIdiA==
+X-Received: by 2002:a17:902:968e:b029:e3:a9b8:60b4 with SMTP id
+ n14-20020a170902968eb02900e3a9b860b4mr7325512plp.61.1614764739880; 
+ Wed, 03 Mar 2021 01:45:39 -0800 (PST)
+Received: from localhost ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id x9sm6135360pjp.29.2021.03.03.01.45.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 03 Mar 2021 01:45:39 -0800 (PST)
+Date: Wed, 3 Mar 2021 17:44:58 +0800
+From: Coiby Xu <coxu@redhat.com>
+To: Bhupesh SHARMA <bhupesh.linux@gmail.com>
+Message-ID: <20210303094458.7yootsa5dvn5cnba@Rk>
+References: <20210222070701.16416-1-coxu@redhat.com>
+ <20210222070701.16416-5-coxu@redhat.com>
+ <CAFTCetS=G_JV4Ax6=Ty20uifoL1jscrqPGhdh7d2k+t=0d+L8g@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <ec5adf63-63d7-7e8e-f260-3eaf29ac82c3@linux.intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net v1 2/2] igc: Fix Supported Pause
- Frame Link Setting
+In-Reply-To: <CAFTCetS=G_JV4Ax6=Ty20uifoL1jscrqPGhdh7d2k+t=0d+L8g@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=coxu@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Subject: Re: [Intel-wired-lan] [RFC PATCH 4/4] i40e: don't open i40iw client
+ for kdump
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,43 +102,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mallikarjuna.chilakala@intel.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: netdev@vger.kernel.org, kexec@lists.infradead.org,
+ open list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMy8zLzIwMjEgMTA6MDksIER2b3JhIEZ1eGJydW1lciB3cm90ZToKPiBPbiAxOS8wMi8yMDIx
-IDE4OjM2LCBNdWhhbW1hZCBIdXNhaW5pIFp1bGtpZmxpIHdyb3RlOgo+PiBUaGUgU3VwcG9ydGVk
-IFBhdXNlIEZyYW1lIGFsd2F5cyBkaXNwbGF5ICJObyIgZXZlbnRob3VnaCB0aGUgQWR2ZXJ0aXNl
-ZAo+PiBwYXVzZSBmcmFtZSBzaG93aW5nIHRoZSBjb3JyZWN0IHNldHRpbmcgYmFzZWQgb24gdGhl
-IHBhdXNlIHBhcmFtZXRlcnMgdmlhCj4+IGV0aHRvb2wuIFNldCBiaXQgaW4gbGlua19rc2V0dGlu
-Z3MgdG8gIlN1cHBvcnRlZCIgZm9yIFBhdXNlIEZyYW1lLgo+Pgo+PiBCZWZvcmUgb3V0cHV0Ogo+
-PiBTdXBwb3J0ZWQgcGF1c2UgZnJhbWUgdXNlOiBObwo+Pgo+PiBFeHBlY3RlZCBvdXRwdXQ6Cj4+
-IFN1cHBvcnRlZCBwYXVzZSBmcmFtZSB1c2U6IFN5bW1ldHJpYwo+Pgo+PiBGaXhlczogOGM1YWQw
-ZGFlOTNjICgiaWdjOiBBZGQgZXRodG9vbCBzdXBwb3J0IikKPj4gU2lnbmVkLW9mZi1ieTogTXVo
-YW1tYWQgSHVzYWluaSBadWxraWZsaSAKPj4gPG11aGFtbWFkLmh1c2FpbmkuenVsa2lmbGlAaW50
-ZWwuY29tPgo+PiBSZXZpZXdlZC1ieTogTWFsbGkgQyA8bWFsbGlrYXJqdW5hLmNoaWxha2FsYUBp
-bnRlbC5jb20+Cj4+IC0tLQo+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdj
-X2V0aHRvb2wuYyB8IDMgKysrCj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykK
-Pj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfZXRo
-dG9vbC5jIAo+PiBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfZXRodG9vbC5j
-Cj4+IGluZGV4IDY3YTRhZWQ0NWZjMi4uODcyMjI5NGFiOTBjIDEwMDY0NAo+PiAtLS0gYS9kcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX2V0aHRvb2wuYwo+PiArKysgYi9kcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX2V0aHRvb2wuYwo+PiBAQCAtMTcxMSw2ICsxNzEx
-LDkgQEAgc3RhdGljIGludCBpZ2NfZXRodG9vbF9nZXRfbGlua19rc2V0dGluZ3Moc3RydWN0IAo+
-PiBuZXRfZGV2aWNlICpuZXRkZXYsCj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBBdXRvbmVnKTsKPj4gwqDCoMKgwqDCoCB9Cj4+
-ICvCoMKgwqAgLyogU2V0IHBhdXNlIGZsb3cgY29udHJvbCBzZXR0aW5ncyAqLwo+PiArwqDCoMKg
-IGV0aHRvb2xfbGlua19rc2V0dGluZ3NfYWRkX2xpbmtfbW9kZShjbWQsIHN1cHBvcnRlZCwgUGF1
-c2UpOwo+PiArCj4+IMKgwqDCoMKgwqAgc3dpdGNoIChody0+ZmMucmVxdWVzdGVkX21vZGUpIHsK
-Pj4gwqDCoMKgwqDCoCBjYXNlIGlnY19mY19mdWxsOgo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgZXRo
-dG9vbF9saW5rX2tzZXR0aW5nc19hZGRfbGlua19tb2RlKGNtZCwgYWR2ZXJ0aXNpbmcsIFBhdXNl
-KTsKPj4KPiBUZXN0ZWQtYnk6IER2b3JhIEZ1eGJydW1lciA8ZHZvcmF4LmZ1eGJydW1lckBsaW51
-eC5pbnRlbC5jb20+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwtd2lyZWQtbGFuQG9z
-dW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRl
-bC13aXJlZC1sYW4KQWNrZWQtYnk6IFNhc2hhIE5lZnRpbiA8c2FzaGEubmVmdGluQGludGVsLmNv
-bT4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
-d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
-L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hi Bhupesh,
+
+Glad to meet you here:)
+
+On Thu, Feb 25, 2021 at 03:41:55PM +0530, Bhupesh SHARMA wrote:
+>Hello Coiby,
+>
+>On Mon, Feb 22, 2021 at 12:40 PM Coiby Xu <coxu@redhat.com> wrote:
+>>
+>> i40iw consumes huge amounts of memory. For example, on a x86_64 machine,
+>> i40iw consumed 1.5GB for Intel Corporation Ethernet Connection X722 for
+>> for 1GbE while "craskernel=auto" only reserved 160M. With the module
+>> parameter "resource_profile=2", we can reduce the memory usage of i40iw
+>> to ~300M which is still too much for kdump.
+>>
+>> Disabling the client registration would spare us the client interface
+>> operation open , i.e., i40iw_open for iwarp/uda device. Thus memory is
+>> saved for kdump.
+>>
+>> Signed-off-by: Coiby Xu <coxu@redhat.com>
+>> ---
+>>  drivers/net/ethernet/intel/i40e/i40e_client.c | 7 +++++++
+>>  1 file changed, 7 insertions(+)
+>>
+>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
+>> index a2dba32383f6..aafc2587f389 100644
+>> --- a/drivers/net/ethernet/intel/i40e/i40e_client.c
+>> +++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
+>> @@ -4,6 +4,7 @@
+>>  #include <linux/list.h>
+>>  #include <linux/errno.h>
+>>  #include <linux/net/intel/i40e_client.h>
+>> +#include <linux/crash_dump.h>
+>>
+>>  #include "i40e.h"
+>>  #include "i40e_prototype.h"
+>> @@ -741,6 +742,12 @@ int i40e_register_client(struct i40e_client *client)
+>>  {
+>>         int ret = 0;
+>>
+>> +       /* Don't open i40iw client for kdump because i40iw will consume huge
+>> +        * amounts of memory.
+>> +        */
+>> +       if (is_kdump_kernel())
+>> +               return ret;
+>> +
+>
+>Since crashkernel size can be manually set on the command line by a
+>user, and some users might be fine with a ~300M memory usage by i40iw
+>client [with resource_profile=2"], in my view, disabling the client
+>for all kdump cases seems too restrictive.
+>
+>We can probably check the crash kernel size allocated (
+>$ cat /sys/kernel/kexec_crash_size) and then make a decision
+>accordingly, so for example something like:
+>
+> +       if (is_kdump_kernel() && kexec_crash_size < 512M)
+> +               return ret;
+>
+>What do you think?
+>
+
+Thanks for the suggestion! After having a discussion with the team, we
+think it's better to not intervene i40iw in the kernel space. Actually 
+when kexec-tools is building initramfs for kdump, i40iw is not included 
+by default unless a user explicitly asks to include i40iw by changing 
+/etc/kdump.conf, i.e., adding 'dracut_args --add-drivers "i40iw"'.
+
+
+>Regards,
+>Bhupesh
+>
+>>         if (!client) {
+>>                 ret = -EIO;
+>>                 goto out;
+>> --
+>> 2.30.1
+>>
+>>
+>> _______________________________________________
+>> kexec mailing list
+>> kexec@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/kexec
+>
+
+-- 
+Best regards,
+Coiby
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
