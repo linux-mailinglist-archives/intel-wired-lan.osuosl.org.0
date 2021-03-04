@@ -1,57 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81DF732CDB5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Mar 2021 08:38:35 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB45832CEE4
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Mar 2021 09:54:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0F7D7431D0;
-	Thu,  4 Mar 2021 07:38:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6E5B96F5B7;
+	Thu,  4 Mar 2021 08:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0mZWZ5hiI7aA; Thu,  4 Mar 2021 07:38:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6z9U68u_GMLi; Thu,  4 Mar 2021 08:54:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE5F043115;
-	Thu,  4 Mar 2021 07:38:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6B8206F5B6;
+	Thu,  4 Mar 2021 08:54:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0CA791BF299
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 07:38:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 887401BF3B9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 08:54:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EF4B183422
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 07:38:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 75EA183F12
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 08:54:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dXCKWSmwXq-f for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Mar 2021 07:38:26 +0000 (UTC)
+ with ESMTP id KocS4AEMxEXL for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Mar 2021 08:54:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AF01082F77
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 07:38:26 +0000 (UTC)
-IronPort-SDR: 3ym/3onSMbUFsRoYuQd0qN1nmH7FTuJvPMymy2bYcK6JPkth4UnL5EOcSKM+oKnxkmMnwm+Qu9
- GqGzAfjhznhQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9912"; a="183985215"
-X-IronPort-AV: E=Sophos;i="5.81,222,1610438400"; d="scan'208";a="183985215"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2021 23:38:23 -0800
-IronPort-SDR: jW/fYaC8XlDxCI/4xO8ZfvFktGVio3bQY0gG4TA65av6gL/PG5vydFThmlbrTXuK+w6DW5va0o
- 4vERNPyyUO6Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,222,1610438400"; d="scan'208";a="435706446"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by FMSMGA003.fm.intel.com with ESMTP; 03 Mar 2021 23:38:21 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anna.kostyukovsky@intel.com,
- dvorax.fuxbrumer@linux.intel.com
-Date: Thu,  4 Mar 2021 09:38:13 +0200
-Message-Id: <20210304073813.2741545-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6BA848372B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Mar 2021 08:54:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614848050;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0ALBoN6GuLRnOc5Ing6JXs8nS20VaQ0+cVKOusK5494=;
+ b=DkjlGN6W96V9ejSrv1efkCOc8QumOnZIzEJ4RS/xu0Sn9xoW+qrlyrPKMi54MojltZbShD
+ iv4B1wjv3QrkSt35d9GvvhH1LA3bTDdrWYDJFvAVvncEIEGwN7pD4ZXa8Oi4Yz/YI7pfzj
+ 6D8ExTJXtzLUjkfbWjMY5F7VSZzJwdU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-594-ag5dkR-hMJW0UvGJkkLgAA-1; Thu, 04 Mar 2021 03:54:06 -0500
+X-MC-Unique: ag5dkR-hMJW0UvGJkkLgAA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D712157;
+ Thu,  4 Mar 2021 08:54:04 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0A5F810023AB;
+ Thu,  4 Mar 2021 08:53:58 +0000 (UTC)
+Date: Thu, 4 Mar 2021 09:53:56 +0100
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <20210304095356.054a8778@carbon>
+In-Reply-To: <20210303153928.11764-2-maciej.fijalkowski@intel.com>
+References: <20210303153928.11764-1-maciej.fijalkowski@intel.com>
+ <20210303153928.11764-2-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Add support for Lunar Lake
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Subject: Re: [Intel-wired-lan] [PATCH intel-net 1/3] i40e: move headroom
+ initialization to i40e_configure_rx_ring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,172 +80,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, brouer@redhat.com, Jean Hsiao <jhsiao@redhat.com>,
+ Zhiqian Guan <zhguan@redhat.com>, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org, bjorn.topel@intel.com,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add devices IDs for the next LOM generations that will be
-available on the next Intel Client platform (Lunar Lake)
-This patch provides the initial support for these devices
+On Wed,  3 Mar 2021 16:39:26 +0100
+Maciej Fijalkowski <maciej.fijalkowski@intel.com> wrote:
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/e1000e/ethtool.c | 2 ++
- drivers/net/ethernet/intel/e1000e/hw.h      | 5 +++++
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 +++++++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 6 ++++++
- drivers/net/ethernet/intel/e1000e/ptp.c     | 1 +
- 5 files changed, 21 insertions(+)
+> i40e_rx_offset(), that is supposed to initialize the Rx buffer headroom,
+> relies on I40E_RXR_FLAGS_BUILD_SKB_ENABLED flag.
+> 
+> Currently, the callsite of mentioned function is placed incorrectly
+> within i40e_setup_rx_descriptors() where Rx ring's build skb flag is not
+> set yet. This causes the XDP_REDIRECT to be partially broken due to
+> inability to create xdp_frame in the headroom space, as the headroom is
+> 0.
+> 
+> For the record, below is the call graph:
+> 
+> i40e_vsi_open
+>  i40e_vsi_setup_rx_resources
+>   i40e_setup_rx_descriptors
+>    i40e_rx_offset() <-- sets offset to 0 as build_skb flag is set below
+> 
+>  i40e_vsi_configure_rx
+>   i40e_configure_rx_ring
+>    set_ring_build_skb_enabled(ring) <-- set build_skb flag
+> 
+> Fix this by moving i40e_rx_offset() to i40e_configure_rx_ring() after
+> the flag setting.
+> 
+> Fixes: f7bb0d71d658 ("i40e: store the result of i40e_rx_offset() onto i40e_ring")
+> Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> Co-developed-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 13 +++++++++++++
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 12 ------------
+>  2 files changed, 13 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 06442e6bef73..7256b43b7a65 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -903,6 +903,7 @@ static int e1000_reg_test(struct e1000_adapter *adapter, u64 *data)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		mask |= BIT(18);
- 		break;
- 	default:
-@@ -1569,6 +1570,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		fext_nvm11 = er32(FEXTNVM11);
- 		fext_nvm11 &= ~E1000_FEXTNVM11_DISABLE_MULR_FIX;
- 		ew32(FEXTNVM11, fext_nvm11);
-diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
-index 69a2329ea463..d02aebf65554 100644
---- a/drivers/net/ethernet/intel/e1000e/hw.h
-+++ b/drivers/net/ethernet/intel/e1000e/hw.h
-@@ -106,6 +106,10 @@ struct e1000_hw;
- #define E1000_DEV_ID_PCH_MTP_I219_V18		0x550B
- #define E1000_DEV_ID_PCH_MTP_I219_LM19		0x550C
- #define E1000_DEV_ID_PCH_MTP_I219_V19		0x550D
-+#define E1000_DEV_ID_PCH_LNP_I219_LM20		0x550E
-+#define E1000_DEV_ID_PCH_LNP_I219_V20		0x550F
-+#define E1000_DEV_ID_PCH_LNP_I219_LM21		0x5510
-+#define E1000_DEV_ID_PCH_LNP_I219_V21		0x5511
- 
- #define E1000_REVISION_4	4
- 
-@@ -132,6 +136,7 @@ enum e1000_mac_type {
- 	e1000_pch_tgp,
- 	e1000_pch_adp,
- 	e1000_pch_mtp,
-+	e1000_pch_lnp,
- };
- 
- enum e1000_media_type {
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 0ac8d79a7987..8c5aaa523b01 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -321,6 +321,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		if (e1000_phy_is_accessible_pchlan(hw))
- 			break;
- 
-@@ -466,6 +467,7 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
- 		case e1000_pch_tgp:
- 		case e1000_pch_adp:
- 		case e1000_pch_mtp:
-+		case e1000_pch_lnp:
- 			/* In case the PHY needs to be in mdio slow mode,
- 			 * set slow mode and try to get the PHY id again.
- 			 */
-@@ -711,6 +713,7 @@ static s32 e1000_init_mac_params_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 	case e1000_pchlan:
- 		/* check management mode */
- 		mac->ops.check_mng_mode = e1000_check_mng_mode_pchlan;
-@@ -1663,6 +1666,7 @@ static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		rc = e1000_init_phy_params_pchlan(hw);
- 		break;
- 	default:
-@@ -2118,6 +2122,7 @@ static s32 e1000_sw_lcd_config_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		sw_cfg_mask = E1000_FEXTNVM_SW_CONFIG_ICH8M;
- 		break;
- 	default:
-@@ -3162,6 +3167,7 @@ static s32 e1000_valid_nvm_bank_detect_ich8lan(struct e1000_hw *hw, u32 *bank)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		bank1_offset = nvm->flash_bank_size;
- 		act_offset = E1000_ICH_NVM_SIG_WORD;
- 
-@@ -4101,6 +4107,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		word = NVM_COMPAT;
- 		valid_csum_mask = NVM_COMPAT_VALID_CSUM;
- 		break;
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index f1c9debd9f3b..ecbe91cb95ed 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -3550,6 +3550,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		if (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI) {
- 			/* Stable 24MHz frequency */
- 			incperiod = INCPERIOD_24MHZ;
-@@ -4068,6 +4069,7 @@ void e1000e_reset(struct e1000_adapter *adapter)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		fc->refresh_time = 0xFFFF;
- 		fc->pause_time = 0xFFFF;
- 
-@@ -7855,6 +7857,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM20), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V20), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM21), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V21), board_pch_cnp },
- 
- 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
- };
-diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
-index f3f671311855..41213baee050 100644
---- a/drivers/net/ethernet/intel/e1000e/ptp.c
-+++ b/drivers/net/ethernet/intel/e1000e/ptp.c
-@@ -298,6 +298,7 @@ void e1000e_ptp_init(struct e1000_adapter *adapter)
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
- 	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
- 		if ((hw->mac.type < e1000_pch_lpt) ||
- 		    (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI)) {
- 			adapter->ptp_clock_info.max_adj = 24000000 - 1;
+Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
+Tested-by: Jesper Dangaard Brouer <brouer@redhat.com>
+
+I'm currently looking at extending samples/bpf/ xdp_redirect_map to
+detect the situation.  As with this bug the redirect tests/sample
+programs will just report really high performance numbers (because
+packets are dropped earlier due to err).   Knowing what performance
+numbers to expect, I could see that they were out-of-spec, and
+investigated the root-cause.
+
+I assume Intel QA tested XDP-redirect and didn't find the bug due to
+this.  Red Hat QA also use samples/bpf/xdp* and based on the reports I
+get from them, I could not blame them if this bug would slip through,
+as the tool reports "good" results.
+
 -- 
-2.25.1
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
 
 _______________________________________________
 Intel-wired-lan mailing list
