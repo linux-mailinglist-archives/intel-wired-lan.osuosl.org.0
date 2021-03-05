@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E0D732E44B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 10:05:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D907832E52A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 10:46:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 21AD384511;
-	Fri,  5 Mar 2021 09:05:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 66FFA6FB6C;
+	Fri,  5 Mar 2021 09:46:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KIpBuWBixbZA; Fri,  5 Mar 2021 09:05:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0z79T_VQMiOu; Fri,  5 Mar 2021 09:46:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2085B843A0;
-	Fri,  5 Mar 2021 09:05:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 605036FB6E;
+	Fri,  5 Mar 2021 09:46:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 403E61BF294
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:05:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 000531BF294
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:46:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2E66584484
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:05:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E17228451D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:46:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Is95xwrlrZy5 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Mar 2021 09:05:14 +0000 (UTC)
+ with ESMTP id 1SlbomdiYOOs for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Mar 2021 09:46:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5F857843A0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:05:14 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 07B4664F4F;
- Fri,  5 Mar 2021 09:05:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2B4A184517
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:46:45 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C79C364FE8;
+ Fri,  5 Mar 2021 09:46:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614935114;
- bh=W0doVExi+7l5tGvbjfwECBr+mScLF6o8Q5o+wMEAbOQ=;
+ s=k20201202; t=1614937604;
+ bh=jOhOPnGpy4/jsUIFCgwn/Z7qlNd4zdeoKzMUdRXrl3E=;
  h=Date:From:To:Cc:Subject:From;
- b=uPEEz0YF8G2J+UnsF0n3wskkD9GHvbdojuQlw9HujLPi/tL0CWTduYIx9gUtAORHt
- 1KlxbV2H+A7t5odKqdJu/6HlauGlcAb9ekch/pK8U4ezhQBirL6ThTqYdCEmRNNSW3
- IDm8QUxOQxxBhmtYE/8rZun5yN1JzPZ2CZ+D3GuCYct9kXK3MVxXgPxq2gTm/1UhGl
- 9dFuy14ShZfXp7STYqy/xWfuugwUnkHTOeWq2hjJgHvTjRVFBkFUPp1RCaj36yZhgQ
- S1Ouk2LD2wSqkL+ArCHVUH7/9jC+Nie9CnrYwTSB+EjVrcBKvrRGMESj2VJ82Jr5bT
- 4fPgGPIRcsuVA==
-Date: Fri, 5 Mar 2021 03:05:11 -0600
+ b=J5z0r5zjbV+eQHA1prDi2AwVZ4qKzUGlS/izBiKKnehrhWwSsDiJMUELr1U2RT1yf
+ HmLYQtoxwz1RYCyEwn9Ls6rrm5p8Uc256sdVqrajAMIgEvbWzqctefH9c4qTreUsru
+ QFqtKanAUFjbgLP2952sKcMTqMnZgrHMPlZXLFyQkb1QWPSZKC0d2W/JV2xHQH3BL7
+ N97kd5wrdrnP3f1+MAFUk9/jAlaR8mBqiA/AKtjS8r/WuhOFFieqiVD5ci5jZNkZuN
+ qid91No3dbap49DswgBk+rd6mulo4jbgZlbTELe2oBrSUgMCx2+RyTeg9nJj85bVhk
+ suQOETPnZEhbA==
+Date: Fri, 5 Mar 2021 03:46:42 -0600
 From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20210305090511.GA139181@embeddedor>
+Message-ID: <20210305094642.GA141002@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
-Subject: [Intel-wired-lan] [PATCH RESEND][next] igb: Fix fall-through
+Subject: [Intel-wired-lan] [PATCH RESEND][next] ixgbevf: Fix fall-through
  warnings for Clang
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -73,54 +75,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation to enable -Wimplicit-fallthrough for Clang, fix multiple
-warnings by explicitly adding multiple break statements instead of just
-letting the code fall through to the next case.
+In preparation to enable -Wimplicit-fallthrough for Clang, fix a warning
+by explicitly adding a break statement instead of just letting the code
+fall through to the next case.
 
 Link: https://github.com/KSPP/linux/issues/115
 Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 ---
- drivers/net/ethernet/intel/igb/e1000_phy.c   | 1 +
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 1 +
- drivers/net/ethernet/intel/igb/igb_ptp.c     | 1 +
- 3 files changed, 3 insertions(+)
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/intel/igb/e1000_phy.c b/drivers/net/ethernet/intel/igb/e1000_phy.c
-index 8c8eb82e6272..a018000f7db9 100644
---- a/drivers/net/ethernet/intel/igb/e1000_phy.c
-+++ b/drivers/net/ethernet/intel/igb/e1000_phy.c
-@@ -836,6 +836,7 @@ s32 igb_copper_link_setup_igp(struct e1000_hw *hw)
- 			break;
- 		case e1000_ms_auto:
- 			data &= ~CR_1000T_MS_ENABLE;
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+index 449d7d5b280d..ba2ed8a43d2d 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -2633,6 +2633,7 @@ static void ixgbevf_set_num_queues(struct ixgbevf_adapter *adapter)
+ 			adapter->num_rx_queues = rss;
+ 			adapter->num_tx_queues = rss;
+ 			adapter->num_xdp_queues = adapter->xdp_prog ? rss : 0;
 +			break;
  		default:
  			break;
  		}
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 28baf203459a..486d3e67d3a9 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -3022,6 +3022,7 @@ static int igb_set_rxnfc(struct net_device *dev, struct ethtool_rxnfc *cmd)
- 		break;
- 	case ETHTOOL_SRXCLSRLDEL:
- 		ret = igb_del_ethtool_nfc_entry(adapter, cmd);
-+		break;
- 	default:
- 		break;
- 	}
-diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
-index 7cc5428c3b3d..f3ff565da0a1 100644
---- a/drivers/net/ethernet/intel/igb/igb_ptp.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
-@@ -1008,6 +1008,7 @@ static int igb_ptp_set_timestamp_mode(struct igb_adapter *adapter,
- 	switch (config->tx_type) {
- 	case HWTSTAMP_TX_OFF:
- 		tsync_tx_ctl = 0;
-+		break;
- 	case HWTSTAMP_TX_ON:
- 		break;
- 	default:
 -- 
 2.27.0
 
