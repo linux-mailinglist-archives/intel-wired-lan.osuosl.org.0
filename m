@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12A9832E549
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 10:51:36 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FBB932EADE
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 13:41:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 931436FB6C;
-	Fri,  5 Mar 2021 09:51:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 942584AC93;
+	Fri,  5 Mar 2021 12:41:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q_CL659O_7Eu; Fri,  5 Mar 2021 09:51:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yvlTI9CyBoWG; Fri,  5 Mar 2021 12:41:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BD6E6F526;
-	Fri,  5 Mar 2021 09:51:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6AAFB47963;
+	Fri,  5 Mar 2021 12:41:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 851941BF294
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:51:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A02D21BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 12:41:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7FDB143150
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:51:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8EE91432AC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 12:41:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bb3GlAxJWPNo for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Mar 2021 09:51:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B84F943095
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:51:16 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CEA8064FE8;
- Fri,  5 Mar 2021 09:51:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614937874;
- bh=NeHeQJmUla3vmR7XyOy4O+i4tOPT/mQV3ZB26CkYB+k=;
- h=Date:From:To:Cc:Subject:From;
- b=jEYSdslz67T2R6ea1N5zqE2LhoHiz/UA8GWmRRLo7ssGD+mJFgFdn2CcLyTk/IBNI
- ftxb0GWclDUwmavpOwJY7bgkcqlK5o843aKsnmbxRNITMQfrfGUlUT0g5ATcbF2yn3
- jF6hAHti5maoI949Y03oEzi2h6rB513HsDJEfRWbLdVnQ3F4YVx0XJLfK6U91aQTV1
- ddyG3V6disHPgXmI5czbc6qp2ArYzaLXnh0eHgu/uPN/Gpn5WC0S44RnBzbRwaN7V/
- eIF+qQmd3c8SesYpKvUZLjEm7/0RXcvESDSvuZ8L80fLWg02NBBAn8RDBL41jGBXsv
- T560eE0nrUXBw==
-Date: Fri, 5 Mar 2021 03:51:11 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20210305095111.GA141480@embeddedor>
+ with ESMTP id UMCm-zDeHa6I for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Mar 2021 12:41:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-44.mimecast.com
+ (us-smtp-delivery-44.mimecast.com [205.139.111.44])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0A804432A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 12:41:02 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-185-3gWCCtCyN3CXF2ZOze5HQg-1; Fri, 05 Mar 2021 07:39:10 -0500
+X-MC-Unique: 3gWCCtCyN3CXF2ZOze5HQg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75ED7814339;
+ Fri,  5 Mar 2021 12:39:09 +0000 (UTC)
+Received: from p50.redhat.com (unknown [10.40.194.61])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DCC175D6B1;
+ Fri,  5 Mar 2021 12:39:07 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  5 Mar 2021 13:38:56 +0100
+Message-Id: <20210305123856.14302-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-Subject: [Intel-wired-lan] [PATCH RESEND][next] e1000: Fix fall-through
- warnings for Clang
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kpanic.de
+Subject: [Intel-wired-lan] [PATCH] iavf: do not override the adapter state
+ in the watchdog task
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,38 +67,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: netdev@vger.kernel.org, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation to enable -Wimplicit-fallthrough for Clang, fix a warning
-by explicitly adding a break statement instead of just letting the code
-fall through to the next case.
+The iavf watchdog task overrides adapter->state to __IAVF_RESETTING
+when it detects a pending reset. Then schedules iavf_reset_task() which
+takes care of the reset.
 
-Link: https://github.com/KSPP/linux/issues/115
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+The reset task is capable of handling the reset without changing
+adapter->state. In fact we lose the state information when the watchdog
+task prematurely changes the adapter state. This may lead to a crash if
+instead of the reset task the iavf_remove() function gets called before
+the reset task.
+In that case (if we were in state __IAVF_RUNNING previously) the
+iavf_remove() function triggers iavf_close() which fails to close the
+device because of the incorrect state information.
+
+This may result in a crash due to pending interrupts.
+kernel BUG at drivers/pci/msi.c:357!
+[...]
+Call Trace:
+ [<ffffffffbddf24dd>] pci_disable_msix+0x3d/0x50
+ [<ffffffffc08d2a63>] iavf_reset_interrupt_capability+0x23/0x40 [iavf]
+ [<ffffffffc08d312a>] iavf_remove+0x10a/0x350 [iavf]
+ [<ffffffffbddd3359>] pci_device_remove+0x39/0xc0
+ [<ffffffffbdeb492f>] __device_release_driver+0x7f/0xf0
+ [<ffffffffbdeb49c3>] device_release_driver+0x23/0x30
+ [<ffffffffbddcabb4>] pci_stop_bus_device+0x84/0xa0
+ [<ffffffffbddcacc2>] pci_stop_and_remove_bus_device+0x12/0x20
+ [<ffffffffbddf361f>] pci_iov_remove_virtfn+0xaf/0x160
+ [<ffffffffbddf3bcc>] sriov_disable+0x3c/0xf0
+ [<ffffffffbddf3ca3>] pci_disable_sriov+0x23/0x30
+ [<ffffffffc0667365>] i40e_free_vfs+0x265/0x2d0 [i40e]
+ [<ffffffffc0667624>] i40e_pci_sriov_configure+0x144/0x1f0 [i40e]
+ [<ffffffffbddd5307>] sriov_numvfs_store+0x177/0x1d0
+Code: 00 00 e8 3c 25 e3 ff 49 c7 86 88 08 00 00 00 00 00 00 5b 41 5c 41 5d 41 5e 41 5f 5d c3 48 8b 7b 28 e8 0d 44
+RIP  [<ffffffffbbbf1068>] free_msi_irqs+0x188/0x190
+
+The solution is to not touch the adapter->state in iavf_watchdog_task()
+and let the reset task handle the state transition.
+
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 ---
- drivers/net/ethernet/intel/e1000/e1000_hw.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_hw.c b/drivers/net/ethernet/intel/e1000/e1000_hw.c
-index 4c0c9433bd60..19cf36360933 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_hw.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_hw.c
-@@ -1183,6 +1183,7 @@ static s32 e1000_copper_link_igp_setup(struct e1000_hw *hw)
- 			break;
- 		case e1000_ms_auto:
- 			phy_data &= ~CR_1000T_MS_ENABLE;
-+			break;
- 		default:
- 			break;
- 		}
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 0a867d64d467..d9e3a70abb47 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -1954,7 +1954,6 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		/* check for hw reset */
+ 	reg_val = rd32(hw, IAVF_VF_ARQLEN1) & IAVF_VF_ARQLEN1_ARQENABLE_MASK;
+ 	if (!reg_val) {
+-		adapter->state = __IAVF_RESETTING;
+ 		adapter->flags |= IAVF_FLAG_RESET_PENDING;
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
 -- 
-2.27.0
+2.29.2
 
 _______________________________________________
 Intel-wired-lan mailing list
