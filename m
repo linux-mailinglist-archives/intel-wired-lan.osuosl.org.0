@@ -1,57 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB44D32E414
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 10:00:13 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB41932E43D
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Mar 2021 10:04:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5A20F84484;
-	Fri,  5 Mar 2021 09:00:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 29D724ECE6;
+	Fri,  5 Mar 2021 09:04:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q6EJFLMdqujr; Fri,  5 Mar 2021 09:00:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yOiH-Gj_78xr; Fri,  5 Mar 2021 09:04:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 579588448C;
-	Fri,  5 Mar 2021 09:00:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9F47D4ECD2;
+	Fri,  5 Mar 2021 09:04:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 091D81BF3DB
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:00:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 19B061BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:04:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EBC978448C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:00:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 008FD84484
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:04:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qrpHYrUzjbkH for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Mar 2021 09:00:03 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4231E84484
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:00:03 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D963364EE8;
- Fri,  5 Mar 2021 09:00:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614934802;
- bh=dMsOIhXGuMLC9cmVk+Focv2+8LwcryL3ponccTcC2cU=;
- h=Date:From:To:Cc:Subject:From;
- b=qLF+qxaeLIRd6Zb1xbi53eTdZBZnFau505mva7w1lqm1lfQ3hRoLQkTrwSSXUXc2U
- NzidIRUcMV9UhZbka6Q5MxBeGxK2jkm8Jmt65Gf66nv+k4ovzQdodJU6XVtbgpu6Ik
- wlUuKkanOUoeWxP07f1Hl1cRiq93gSF7MN+85Wr70DRgZkYYqsfGGCNiMlp0nYbt3m
- QrGP7m64kToiN9IFu0OlD1UMwiuskA7zww0o5veNTxWo5WeIG+EaXTUdcwnjOvlmF5
- BkXk8IIpMPLz6El64DUfcQJlXmQqeDiAn98tn2ohe6wzm6p8MDxBSdNpQv7qSWITWG
- kt+S5t9nxrR+g==
-Date: Fri, 5 Mar 2021 03:00:00 -0600
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ with ESMTP id csevp-rXhiCj for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Mar 2021 09:04:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 07C38830FB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Mar 2021 09:04:01 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aea8b.dynamic.kabel-deutschland.de
+ [95.90.234.139])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id BE07820647914;
+ Fri,  5 Mar 2021 10:03:58 +0100 (CET)
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20210305090000.GA138882@embeddedor>
+References: <20210305085257.GA138498@embeddedor>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <833549f5-a191-b532-50bf-4ec343c48dd0@molgen.mpg.de>
+Date: Fri, 5 Mar 2021 10:03:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-Subject: [Intel-wired-lan] [PATCH RESEND][next] ixgbe: Fix fall-through
+In-Reply-To: <20210305085257.GA138498@embeddedor>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH RESEND][next] ice: Fix fall-through
  warnings for Clang
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -65,87 +64,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-hardening@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation to enable -Wimplicit-fallthrough for Clang, fix multiple
-warnings by explicitly adding multiple break statements instead of just
-letting the code fall through to the next case.
-
-Link: https://github.com/KSPP/linux/issues/115
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c  | 2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_common.c | 1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c    | 1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c    | 1 +
- 4 files changed, 5 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-index 8d3798a32f0e..cdfff510a27b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-@@ -1542,6 +1542,7 @@ s32 ixgbe_fdir_set_input_mask_82599(struct ixgbe_hw *hw,
- 	switch (input_mask->formatted.vm_pool & 0x7F) {
- 	case 0x0:
- 		fdirm |= IXGBE_FDIRM_POOL;
-+		break;
- 	case 0x7F:
- 		break;
- 	default:
-@@ -1557,6 +1558,7 @@ s32 ixgbe_fdir_set_input_mask_82599(struct ixgbe_hw *hw,
- 			hw_dbg(hw, " Error on src/dst port mask\n");
- 			return IXGBE_ERR_CONFIG;
- 		}
-+		break;
- 	case IXGBE_ATR_L4TYPE_MASK:
- 		break;
- 	default:
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index 62ddb452f862..8d5a01be1d99 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -93,6 +93,7 @@ bool ixgbe_device_supports_autoneg_fc(struct ixgbe_hw *hw)
- 		default:
- 			break;
- 		}
-+		break;
- 	default:
- 		break;
- 	}
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-index df389a11d3af..0218f6c9b925 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-@@ -132,6 +132,7 @@ static void ixgbe_get_first_reg_idx(struct ixgbe_adapter *adapter, u8 tc,
- 			else
- 				*tx = (tc + 4) << 4;	/* 96, 112 */
- 		}
-+		break;
- 	default:
- 		break;
- 	}
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-index 22a874eee2e8..23ddfd79fc8b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-@@ -999,6 +999,7 @@ static int ixgbe_ptp_set_timestamp_mode(struct ixgbe_adapter *adapter,
- 	switch (config->tx_type) {
- 	case HWTSTAMP_TX_OFF:
- 		tsync_tx_ctl = 0;
-+		break;
- 	case HWTSTAMP_TX_ON:
- 		break;
- 	default:
--- 
-2.27.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBHdXN0YXZvLAoKClRoYW5rIHlvdSBmb3Igd29ya2luZyBvbiB0aGF0LgoKQW0gMDUuMDMu
+MjEgdW0gMDk6NTIgc2NocmllYiBHdXN0YXZvIEEuIFIuIFNpbHZhOgo+IEluIHByZXBhcmF0aW9u
+IHRvIGVuYWJsZSAtV2ltcGxpY2l0LWZhbGx0aHJvdWdoIGZvciBDbGFuZywgZml4IGEgd2Fybmlu
+Zwo+IGJ5IGV4cGxpY2l0bHkgYWRkaW5nIGEgYnJlYWsgc3RhdGVtZW50IGluc3RlYWQgb2YganVz
+dCBsZXR0aW5nIHRoZSBjb2RlCj4gZmFsbCB0aHJvdWdoIHRvIHRoZSBuZXh0IGNhc2UuCgpJdCB3
+b3VsZCBiZSBuaWNlIHRvIGhhdmUgYSBzaG9ydCBzdW1tYXJ5IG9mIHRoZSBkaXNjcmVwYW5jeSBi
+ZXR3ZWVuIEdDQyAKYW5kIGNsYW5nLCBhbmQgaXQgd2FzIGRlY2lkZWQgdG8gZ28gd2l0aCB0aGUg
+4oCcY2xhbmcgZGVjaXNpb27igJ0sIGFuZCBub3QgCmhhdmUgY2xhbmcgYWRhcHQgdG8gR0NDLgoK
+PiBMaW5rOiBodHRwczovL2dpdGh1Yi5jb20vS1NQUC9saW51eC9pc3N1ZXMvMTE1Cj4gU2lnbmVk
+LW9mZi1ieTogR3VzdGF2byBBLiBSLiBTaWx2YSA8Z3VzdGF2b2Fyc0BrZXJuZWwub3JnPgo+IC0t
+LQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4X2xpYi5jIHwgMSAr
+Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4X2xpYi5jIGIvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4X2xpYi5jCj4gaW5kZXggMDJiMTI3MzZlYTgwLi4y
+MDdmNmVlM2E3ZjYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
+L2ljZV90eHJ4X2xpYi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
+ZV90eHJ4X2xpYi5jCj4gQEAgLTE0Myw2ICsxNDMsNyBAQCBpY2VfcnhfY3N1bShzdHJ1Y3QgaWNl
+X3JpbmcgKnJpbmcsIHN0cnVjdCBza19idWZmICpza2IsCj4gICAJY2FzZSBJQ0VfUlhfUFRZUEVf
+SU5ORVJfUFJPVF9VRFA6Cj4gICAJY2FzZSBJQ0VfUlhfUFRZUEVfSU5ORVJfUFJPVF9TQ1RQOgo+
+ICAgCQlza2ItPmlwX3N1bW1lZCA9IENIRUNLU1VNX1VOTkVDRVNTQVJZOwo+ICsJCWJyZWFrOwo+
+ICAgCWRlZmF1bHQ6Cj4gICAJCWJyZWFrOwo+ICAgCX0KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVk
+LWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0
+cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
