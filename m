@@ -1,82 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB9853369B8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 02:36:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8558E3369BF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 02:36:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6500047179;
-	Thu, 11 Mar 2021 01:36:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DE77A60671;
+	Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4nb0POE-3Ng9; Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3Ye3Se09EoQr; Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 42304454B4;
-	Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D9AEF60649;
+	Thu, 11 Mar 2021 01:36:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C84D71BF38B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:00 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FF831BF38B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B7A4582E44
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0C3ED400C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jrg6K6ILX9kN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Mar 2021 01:36:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id r-qKFKnI-5W8 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Mar 2021 01:36:06 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
- [IPv6:2607:f8b0:4864:20::62d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 27A6482C7C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:00 +0000 (UTC)
-Received: by mail-pl1-x62d.google.com with SMTP id c16so9443245ply.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Mar 2021 17:36:00 -0800 (PST)
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com
+ [IPv6:2607:f8b0:4864:20::52a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6284942FFC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:06 +0000 (UTC)
+Received: by mail-pg1-x52a.google.com with SMTP id x29so12616182pgk.6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Mar 2021 17:36:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:from:to:cc:date:message-id:in-reply-to:references
  :user-agent:mime-version:content-transfer-encoding;
- bh=4BA8bY8lW0soxmFw6y9gJo0Qf+WroUwWFLtWhIeGuxE=;
- b=MOSbPSAbIJuFkuaS1h71CmOP0ISteAYhnQnsaQkZfapXlF28sNdzh8dCHP5cVjPjOh
- fxTgbxJPxxVD5x1kKH6plMYROOtYap5wJJ0yS00glsFE0GHVQqtPzUTQHJ9Qk/3ZUwfE
- 4+p8QI92ZsoCZeAQ4Ss5b47AsQyB//GE28tlxHC5y9FMnJsJ3XhIHffcL4lcPsbZ8Awd
- G5sbzCq51Xl9PfaBher+6avERsfjz/bUWji9kR6BR5czbbNcdNayn3UJS+D01onsVzCh
- h15reSH9ffYYgwMcf9DzDWuEbFza/N7pbMyxDgXr+MvVk8Ok35Th99Sz9Z9k1DRNOreQ
- OwhQ==
+ bh=d4YFnDPS6NroPhjQrx8F6bp+0knVok/iG5b32FqCjOM=;
+ b=MTxHgVBJzfOyF26VNWYwKA/avXyYB1azHbsAxKVZMIv7rGzYeunTQRuMuXTs22eo2i
+ WhvDrROk7eaJlUsXbayHX3kThv35uRa5NqnjqtOhAdOItJ1ohISNt2jvUuz0ei6QfoUw
+ rrdCktU72iXJ2y8D7lP+EJMuXBi8MR/DekxFrn+rwFroluvho13P82/JEi6LtnnedHT8
+ q5r/yU576arRtcwjccVnb3GS9wdst2pb2R3JZza7f1BR4LwxIcytid/dLAMz5exuo9p9
+ /kk5/rRLqSzNETQDOEBr+3kphEnd+sBdPQK9TYOz1oJ9tWx+HqFj/j+Kgd+WNQCYCvYs
+ xffw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
  :references:user-agent:mime-version:content-transfer-encoding;
- bh=4BA8bY8lW0soxmFw6y9gJo0Qf+WroUwWFLtWhIeGuxE=;
- b=ZAX0kShHZeGps5nWS96tvX1AAJ5DNul+EMfW/Hu3IG/MAINNZ98CwoWZtq/Hf4sY3N
- L88/XTQOUF3cIz2heb2U9ueY8KUWmcP5CKmJQh1/qUbMdg2at5nryPXtX87LyP0JTXtj
- q4vXG5R2sOHiRn4PwBlDclc+eFv5BwA0SPstGU6aZqDlS12hmg9LUuEkUOsfx7+TubEX
- 0dh5Xkl0zR3e8rEjxQOC5bQqnQzeIAi12sio9zkkoaineENKJI7+WIM7W4wTBg/67Hd0
- eqSJvTixjfLRMwdhkdmjwoKIS3fPjcwbHM6ccrhD2CFDUhsZZy5KoMYP7iMa5IekYL1L
- gfgg==
-X-Gm-Message-State: AOAM533Ozog9HNl4S8UZNnvGPfWShzN6WV5BdSDbNyCgk8VHwifB18yK
- aj4FDmQAH/FQETFGKy2LRho=
-X-Google-Smtp-Source: ABdhPJwVn+fQZjyQ6TNPpCSKHLaMl+AtJxMEPvkjzY7hpr/MdI/TF0icwGCsDHoKHp3EHsdp0UMQ/w==
-X-Received: by 2002:a17:90a:9f8c:: with SMTP id
- o12mr2870941pjp.215.1615426559468; 
- Wed, 10 Mar 2021 17:35:59 -0800 (PST)
+ bh=d4YFnDPS6NroPhjQrx8F6bp+0knVok/iG5b32FqCjOM=;
+ b=hAJmYy9xEqIMp7pCnMs+2dQ/44E4d7J+wfxLjcDdjUy1DEmfdzTWUL/Vye7UqZ7g1u
+ Mamd3dZKfzVahJFdPIQgtZkjvLu/JDCrSLW3cR5oj+8Dw0xQstqjY4qpiNEGHZBwbdW2
+ xmqz53uyljtJo6NUxn4pIjoTkLciyoMALE6EEyK+YazXpyxsKlpRwqPMJ3JOHOKYuziS
+ dKwLazpf0Z7xjqW0ty0NpvKLS8tQHmeYQw3JYTG6No7scJgGxSrOQj0GqGMjbMbJ/jGM
+ nv4dCd1rP5NtZPtyaHsrYI+6fLj/+uwyZQLORDwxYWy8NyK3Zc/a2VrNPsciaf3/YTzq
+ qH+A==
+X-Gm-Message-State: AOAM531i3hLrLrUbAMKiIuWCe5B7jqVWOIk4JGLlf6QcCB7az4PFphNe
+ IsN54I7OxfjhUekjO3nX6Ic=
+X-Google-Smtp-Source: ABdhPJzINJzrtYbdjGhlQeGB2A3yvooP0Bn8O3A2gT2en5QOTXW3gMoax9U5xrcQ1AHnKm7ofi7g8w==
+X-Received: by 2002:a63:c65:: with SMTP id 37mr5273967pgm.186.1615426565817;
+ Wed, 10 Mar 2021 17:36:05 -0800 (PST)
 Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id mz11sm548496pjb.6.2021.03.10.17.35.58
+ by smtp.gmail.com with ESMTPSA id b14sm646417pfi.74.2021.03.10.17.36.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 17:35:59 -0800 (PST)
+ Wed, 10 Mar 2021 17:36:05 -0800 (PST)
 From: Alexander Duyck <alexander.duyck@gmail.com>
 To: kuba@kernel.org
-Date: Wed, 10 Mar 2021 17:35:58 -0800
-Message-ID: <161542655816.13546.114000517042800369.stgit@localhost.localdomain>
+Date: Wed, 10 Mar 2021 17:36:04 -0800
+Message-ID: <161542656461.13546.474867975442613938.stgit@localhost.localdomain>
 In-Reply-To: <161542634192.13546.4185974647834631704.stgit@localhost.localdomain>
 References: <161542634192.13546.4185974647834631704.stgit@localhost.localdomain>
 User-Agent: StGit/0.23
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC PATCH 07/10] virtio_net: Update driver to
- use ethtool_gsprintf
+Subject: [Intel-wired-lan] [RFC PATCH 08/10] vmxnet3: Update driver to use
+ ethtool_gsprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,54 +103,90 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Alexander Duyck <alexanderduyck@fb.com>
 
-Update the code to replace instances of snprintf and a pointer update with
-just calling ethtool_gsprintf.
+So this patch actually does 3 things.
 
-Also replace the char pointer with a u8 pointer to avoid having to recast
-the pointer type.
+First it removes a stray white space at the start of the variable
+declaration in vmxnet3_get_strings.
+
+Second it flips the logic for the string test so that we exit immediately
+if we are not looking for the stats strings. Doing this we can avoid
+unnecessary indentation and line wrapping.
+
+Then finally it updates the code to use ethtool_gsprintf rather than a
+memcpy and pointer increment to write the ethtool strings.
 
 Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 ---
- drivers/net/virtio_net.c |   18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
+ drivers/net/vmxnet3/vmxnet3_ethtool.c |   53 ++++++++++++---------------------
+ 1 file changed, 19 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
-index 82e520d2cb12..f1a05b43dde7 100644
---- a/drivers/net/virtio_net.c
-+++ b/drivers/net/virtio_net.c
-@@ -2104,25 +2104,21 @@ static int virtnet_set_channels(struct net_device *dev,
- static void virtnet_get_strings(struct net_device *dev, u32 stringset, u8 *data)
+diff --git a/drivers/net/vmxnet3/vmxnet3_ethtool.c b/drivers/net/vmxnet3/vmxnet3_ethtool.c
+index 7ec8652f2c26..4ec674380a91 100644
+--- a/drivers/net/vmxnet3/vmxnet3_ethtool.c
++++ b/drivers/net/vmxnet3/vmxnet3_ethtool.c
+@@ -218,43 +218,28 @@ vmxnet3_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
+ static void
+ vmxnet3_get_strings(struct net_device *netdev, u32 stringset, u8 *buf)
  {
- 	struct virtnet_info *vi = netdev_priv(dev);
--	char *p = (char *)data;
- 	unsigned int i, j;
-+	u8 *p = data;
- 
- 	switch (stringset) {
- 	case ETH_SS_STATS:
- 		for (i = 0; i < vi->curr_queue_pairs; i++) {
--			for (j = 0; j < VIRTNET_RQ_STATS_LEN; j++) {
--				snprintf(p, ETH_GSTRING_LEN, "rx_queue_%u_%s",
--					 i, virtnet_rq_stats_desc[j].desc);
--				p += ETH_GSTRING_LEN;
+-	 struct vmxnet3_adapter *adapter = netdev_priv(netdev);
+-	if (stringset == ETH_SS_STATS) {
+-		int i, j;
+-		for (j = 0; j < adapter->num_tx_queues; j++) {
+-			for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_dev_stats); i++) {
+-				memcpy(buf, vmxnet3_tq_dev_stats[i].desc,
+-				       ETH_GSTRING_LEN);
+-				buf += ETH_GSTRING_LEN;
 -			}
-+			for (j = 0; j < VIRTNET_RQ_STATS_LEN; j++)
-+				ethtool_gsprintf(&p, "rx_queue_%u_%s", i,
-+						 virtnet_rq_stats_desc[j].desc);
- 		}
- 
- 		for (i = 0; i < vi->curr_queue_pairs; i++) {
--			for (j = 0; j < VIRTNET_SQ_STATS_LEN; j++) {
--				snprintf(p, ETH_GSTRING_LEN, "tx_queue_%u_%s",
--					 i, virtnet_sq_stats_desc[j].desc);
--				p += ETH_GSTRING_LEN;
+-			for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_driver_stats);
+-			     i++) {
+-				memcpy(buf, vmxnet3_tq_driver_stats[i].desc,
+-				       ETH_GSTRING_LEN);
+-				buf += ETH_GSTRING_LEN;
 -			}
-+			for (j = 0; j < VIRTNET_SQ_STATS_LEN; j++)
-+				ethtool_gsprintf(&p, "tx_queue_%u_%s", i,
-+						 virtnet_sq_stats_desc[j].desc);
- 		}
- 		break;
+-		}
++	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
++	int i, j;
+ 
+-		for (j = 0; j < adapter->num_rx_queues; j++) {
+-			for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_dev_stats); i++) {
+-				memcpy(buf, vmxnet3_rq_dev_stats[i].desc,
+-				       ETH_GSTRING_LEN);
+-				buf += ETH_GSTRING_LEN;
+-			}
+-			for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_driver_stats);
+-			     i++) {
+-				memcpy(buf, vmxnet3_rq_driver_stats[i].desc,
+-				       ETH_GSTRING_LEN);
+-				buf += ETH_GSTRING_LEN;
+-			}
+-		}
++	if (stringset != ETH_SS_STATS)
++		return;
+ 
+-		for (i = 0; i < ARRAY_SIZE(vmxnet3_global_stats); i++) {
+-			memcpy(buf, vmxnet3_global_stats[i].desc,
+-				ETH_GSTRING_LEN);
+-			buf += ETH_GSTRING_LEN;
+-		}
++	for (j = 0; j < adapter->num_tx_queues; j++) {
++		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_dev_stats); i++)
++			ethtool_gsprintf(&buf, vmxnet3_tq_dev_stats[i].desc);
++		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_driver_stats); i++)
++			ethtool_gsprintf(&buf, vmxnet3_tq_driver_stats[i].desc);
++	}
++
++	for (j = 0; j < adapter->num_rx_queues; j++) {
++		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_dev_stats); i++)
++			ethtool_gsprintf(&buf, vmxnet3_rq_dev_stats[i].desc);
++		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_driver_stats); i++)
++			ethtool_gsprintf(&buf, vmxnet3_rq_driver_stats[i].desc);
  	}
++
++	for (i = 0; i < ARRAY_SIZE(vmxnet3_global_stats); i++)
++		ethtool_gsprintf(&buf, vmxnet3_global_stats[i].desc);
+ }
+ 
+ netdev_features_t vmxnet3_fix_features(struct net_device *netdev,
 
 
 _______________________________________________
