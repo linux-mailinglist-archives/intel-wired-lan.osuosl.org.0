@@ -1,80 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8558E3369BF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 02:36:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52E7C3369C0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 02:36:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DE77A60671;
-	Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D16B6606B8;
+	Thu, 11 Mar 2021 01:36:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3Ye3Se09EoQr; Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
+	with ESMTP id PcyKXdTHmNr5; Thu, 11 Mar 2021 01:36:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D9AEF60649;
-	Thu, 11 Mar 2021 01:36:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CBE860671;
+	Thu, 11 Mar 2021 01:36:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0FF831BF38B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C03EF1BF38B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0C3ED400C3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BC1BE6067C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r-qKFKnI-5W8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Mar 2021 01:36:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EPtejX-EI3Xp for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com
- [IPv6:2607:f8b0:4864:20::52a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6284942FFC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:06 +0000 (UTC)
-Received: by mail-pg1-x52a.google.com with SMTP id x29so12616182pgk.6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Mar 2021 17:36:06 -0800 (PST)
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
+ [IPv6:2607:f8b0:4864:20::102b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C172960666
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 01:36:12 +0000 (UTC)
+Received: by mail-pj1-x102b.google.com with SMTP id ha17so1885611pjb.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Mar 2021 17:36:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:from:to:cc:date:message-id:in-reply-to:references
  :user-agent:mime-version:content-transfer-encoding;
- bh=d4YFnDPS6NroPhjQrx8F6bp+0knVok/iG5b32FqCjOM=;
- b=MTxHgVBJzfOyF26VNWYwKA/avXyYB1azHbsAxKVZMIv7rGzYeunTQRuMuXTs22eo2i
- WhvDrROk7eaJlUsXbayHX3kThv35uRa5NqnjqtOhAdOItJ1ohISNt2jvUuz0ei6QfoUw
- rrdCktU72iXJ2y8D7lP+EJMuXBi8MR/DekxFrn+rwFroluvho13P82/JEi6LtnnedHT8
- q5r/yU576arRtcwjccVnb3GS9wdst2pb2R3JZza7f1BR4LwxIcytid/dLAMz5exuo9p9
- /kk5/rRLqSzNETQDOEBr+3kphEnd+sBdPQK9TYOz1oJ9tWx+HqFj/j+Kgd+WNQCYCvYs
- xffw==
+ bh=DJltLUYcs98/kijveBfZyUaWDIHwVhRt97pqpufw9i0=;
+ b=scU65pB6xFpMzm1+8nIhbovGBVQq1DtmdBjSrEWTrUXE9VHbZuS3Lp1yFfeNpGFfxd
+ Cg192aYX3oZnj0Vjf/xDZXhzxbnPGFY6nzOYMcZgXEafssYgqgiQTUElhKKRk1RSIt3w
+ j6uwqDsJhAIHRrxiUgh8lfrcN5TpkjTx9T0VqizaOYxrtVhx/IlOCru4UmCjbY5kWqbK
+ hsxwpPM5A2aN1K8dtdZ340qIcfmC9lMWZZV5vG9vB1Aap5phcHGC0vAoAxGZNO4njQf+
+ pgr1Yh/62kmsT8+WMW12lAtChaLX09Czqn5I8v7f7yqp65WdgUmwpIhEmMacY/3e2efZ
+ DjdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
  :references:user-agent:mime-version:content-transfer-encoding;
- bh=d4YFnDPS6NroPhjQrx8F6bp+0knVok/iG5b32FqCjOM=;
- b=hAJmYy9xEqIMp7pCnMs+2dQ/44E4d7J+wfxLjcDdjUy1DEmfdzTWUL/Vye7UqZ7g1u
- Mamd3dZKfzVahJFdPIQgtZkjvLu/JDCrSLW3cR5oj+8Dw0xQstqjY4qpiNEGHZBwbdW2
- xmqz53uyljtJo6NUxn4pIjoTkLciyoMALE6EEyK+YazXpyxsKlpRwqPMJ3JOHOKYuziS
- dKwLazpf0Z7xjqW0ty0NpvKLS8tQHmeYQw3JYTG6No7scJgGxSrOQj0GqGMjbMbJ/jGM
- nv4dCd1rP5NtZPtyaHsrYI+6fLj/+uwyZQLORDwxYWy8NyK3Zc/a2VrNPsciaf3/YTzq
- qH+A==
-X-Gm-Message-State: AOAM531i3hLrLrUbAMKiIuWCe5B7jqVWOIk4JGLlf6QcCB7az4PFphNe
- IsN54I7OxfjhUekjO3nX6Ic=
-X-Google-Smtp-Source: ABdhPJzINJzrtYbdjGhlQeGB2A3yvooP0Bn8O3A2gT2en5QOTXW3gMoax9U5xrcQ1AHnKm7ofi7g8w==
-X-Received: by 2002:a63:c65:: with SMTP id 37mr5273967pgm.186.1615426565817;
- Wed, 10 Mar 2021 17:36:05 -0800 (PST)
+ bh=DJltLUYcs98/kijveBfZyUaWDIHwVhRt97pqpufw9i0=;
+ b=J5NYOWuXMCr7ibHGT+HFECxSbLQADXjN8diYKxFkdDTsLaX43V6kFK3Ma/TmpF5Lk+
+ YY+jZ8Zl8rwAgbahLNJOq9C18SEwNjqiuX9cpBCq1yGAXa407xqb59+ODoimb0Q3QEC/
+ guXfyJJYATGNc0AcUF192REJxfAbLmDtV3nxu1BzuS6q6q6ep/Vi9nzvpaTUGr/47CB1
+ rgCuVG1a7GZtYWv5ECyONPHMUwSv7I6CDXVMxEISNUTnWIPL+TwRcrngukKqt6vjWCtf
+ ZBR3nAH6mQ5EUs5eWq6NCZx4H8p7E3qIexRMTaMJjdFyBH9yTGKtL+8YL69KD0XyJVsu
+ yW+Q==
+X-Gm-Message-State: AOAM531QBeeKUeba5eIeY3g0XqLMHqYAhkzZRW9O1im+BSY9BC+5GfOb
+ So7+35Iru/kzAR0Lt+SGWHA=
+X-Google-Smtp-Source: ABdhPJzYqOo5VXwSONbDqpY26hTZ33JQIrILn89H5MFVviNNdeqdtDsgwtLdyDkytIH8dBO1ybn1gQ==
+X-Received: by 2002:a17:90a:5302:: with SMTP id
+ x2mr6557715pjh.232.1615426572198; 
+ Wed, 10 Mar 2021 17:36:12 -0800 (PST)
 Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id b14sm646417pfi.74.2021.03.10.17.36.05
+ by smtp.gmail.com with ESMTPSA id e1sm518190pjm.12.2021.03.10.17.36.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Mar 2021 17:36:05 -0800 (PST)
+ Wed, 10 Mar 2021 17:36:11 -0800 (PST)
 From: Alexander Duyck <alexander.duyck@gmail.com>
 To: kuba@kernel.org
-Date: Wed, 10 Mar 2021 17:36:04 -0800
-Message-ID: <161542656461.13546.474867975442613938.stgit@localhost.localdomain>
+Date: Wed, 10 Mar 2021 17:36:10 -0800
+Message-ID: <161542657091.13546.17503493571307422104.stgit@localhost.localdomain>
 In-Reply-To: <161542634192.13546.4185974647834631704.stgit@localhost.localdomain>
 References: <161542634192.13546.4185974647834631704.stgit@localhost.localdomain>
 User-Agent: StGit/0.23
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC PATCH 08/10] vmxnet3: Update driver to use
+Subject: [Intel-wired-lan] [RFC PATCH 09/10] bna: Update driver to use
  ethtool_gsprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -103,90 +102,310 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Alexander Duyck <alexanderduyck@fb.com>
 
-So this patch actually does 3 things.
-
-First it removes a stray white space at the start of the variable
-declaration in vmxnet3_get_strings.
-
-Second it flips the logic for the string test so that we exit immediately
-if we are not looking for the stats strings. Doing this we can avoid
-unnecessary indentation and line wrapping.
-
-Then finally it updates the code to use ethtool_gsprintf rather than a
-memcpy and pointer increment to write the ethtool strings.
+Update the bnad_get_strings to make use of ethtool_gsprintf and avoid
+unnecessary line wrapping. To do this we invert the logic for the string
+set test and instead exit immediately if we are not working with the stats
+strings. In addition the function is broken up into subfunctions for each
+area so that we can simply call ethtool_gsprintf once for each string in a
+given subsection.
 
 Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 ---
- drivers/net/vmxnet3/vmxnet3_ethtool.c |   53 ++++++++++++---------------------
- 1 file changed, 19 insertions(+), 34 deletions(-)
+ drivers/net/ethernet/brocade/bna/bnad_ethtool.c |  266 +++++++++--------------
+ 1 file changed, 105 insertions(+), 161 deletions(-)
 
-diff --git a/drivers/net/vmxnet3/vmxnet3_ethtool.c b/drivers/net/vmxnet3/vmxnet3_ethtool.c
-index 7ec8652f2c26..4ec674380a91 100644
---- a/drivers/net/vmxnet3/vmxnet3_ethtool.c
-+++ b/drivers/net/vmxnet3/vmxnet3_ethtool.c
-@@ -218,43 +218,28 @@ vmxnet3_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
- static void
- vmxnet3_get_strings(struct net_device *netdev, u32 stringset, u8 *buf)
- {
--	 struct vmxnet3_adapter *adapter = netdev_priv(netdev);
--	if (stringset == ETH_SS_STATS) {
--		int i, j;
--		for (j = 0; j < adapter->num_tx_queues; j++) {
--			for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_dev_stats); i++) {
--				memcpy(buf, vmxnet3_tq_dev_stats[i].desc,
--				       ETH_GSTRING_LEN);
--				buf += ETH_GSTRING_LEN;
--			}
--			for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_driver_stats);
--			     i++) {
--				memcpy(buf, vmxnet3_tq_driver_stats[i].desc,
--				       ETH_GSTRING_LEN);
--				buf += ETH_GSTRING_LEN;
--			}
--		}
-+	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
-+	int i, j;
- 
--		for (j = 0; j < adapter->num_rx_queues; j++) {
--			for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_dev_stats); i++) {
--				memcpy(buf, vmxnet3_rq_dev_stats[i].desc,
--				       ETH_GSTRING_LEN);
--				buf += ETH_GSTRING_LEN;
--			}
--			for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_driver_stats);
--			     i++) {
--				memcpy(buf, vmxnet3_rq_driver_stats[i].desc,
--				       ETH_GSTRING_LEN);
--				buf += ETH_GSTRING_LEN;
--			}
--		}
-+	if (stringset != ETH_SS_STATS)
-+		return;
- 
--		for (i = 0; i < ARRAY_SIZE(vmxnet3_global_stats); i++) {
--			memcpy(buf, vmxnet3_global_stats[i].desc,
--				ETH_GSTRING_LEN);
--			buf += ETH_GSTRING_LEN;
--		}
-+	for (j = 0; j < adapter->num_tx_queues; j++) {
-+		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_dev_stats); i++)
-+			ethtool_gsprintf(&buf, vmxnet3_tq_dev_stats[i].desc);
-+		for (i = 0; i < ARRAY_SIZE(vmxnet3_tq_driver_stats); i++)
-+			ethtool_gsprintf(&buf, vmxnet3_tq_driver_stats[i].desc);
-+	}
-+
-+	for (j = 0; j < adapter->num_rx_queues; j++) {
-+		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_dev_stats); i++)
-+			ethtool_gsprintf(&buf, vmxnet3_rq_dev_stats[i].desc);
-+		for (i = 0; i < ARRAY_SIZE(vmxnet3_rq_driver_stats); i++)
-+			ethtool_gsprintf(&buf, vmxnet3_rq_driver_stats[i].desc);
- 	}
-+
-+	for (i = 0; i < ARRAY_SIZE(vmxnet3_global_stats); i++)
-+		ethtool_gsprintf(&buf, vmxnet3_global_stats[i].desc);
+diff --git a/drivers/net/ethernet/brocade/bna/bnad_ethtool.c b/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
+index 588c4804d10a..9d72f896880d 100644
+--- a/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
++++ b/drivers/net/ethernet/brocade/bna/bnad_ethtool.c
+@@ -524,6 +524,68 @@ bnad_set_pauseparam(struct net_device *netdev,
+ 	return 0;
  }
  
- netdev_features_t vmxnet3_fix_features(struct net_device *netdev,
++static void bnad_get_txf_strings(u8 **string, int f_num)
++{
++	ethtool_gsprintf(string, "txf%d_ucast_octets", f_num);
++	ethtool_gsprintf(string, "txf%d_ucast", f_num);
++	ethtool_gsprintf(string, "txf%d_ucast_vlan", f_num);
++	ethtool_gsprintf(string, "txf%d_mcast_octets", f_num);
++	ethtool_gsprintf(string, "txf%d_mcast", f_num);
++	ethtool_gsprintf(string, "txf%d_mcast_vlan", f_num);
++	ethtool_gsprintf(string, "txf%d_bcast_octets", f_num);
++	ethtool_gsprintf(string, "txf%d_bcast", f_num);
++	ethtool_gsprintf(string, "txf%d_bcast_vlan", f_num);
++	ethtool_gsprintf(string, "txf%d_errors", f_num);
++	ethtool_gsprintf(string, "txf%d_filter_vlan", f_num);
++	ethtool_gsprintf(string, "txf%d_filter_mac_sa", f_num);
++}
++
++static void bnad_get_rxf_strings(u8 **string, int f_num)
++{
++	ethtool_gsprintf(string, "rxf%d_ucast_octets", f_num);
++	ethtool_gsprintf(string, "rxf%d_ucast", f_num);
++	ethtool_gsprintf(string, "rxf%d_ucast_vlan", f_num);
++	ethtool_gsprintf(string, "rxf%d_mcast_octets", f_num);
++	ethtool_gsprintf(string, "rxf%d_mcast", f_num);
++	ethtool_gsprintf(string, "rxf%d_mcast_vlan", f_num);
++	ethtool_gsprintf(string, "rxf%d_bcast_octets", f_num);
++	ethtool_gsprintf(string, "rxf%d_bcast", f_num);
++	ethtool_gsprintf(string, "rxf%d_bcast_vlan", f_num);
++	ethtool_gsprintf(string, "rxf%d_frame_drops", f_num);
++}
++
++static void bnad_get_cq_strings(u8 **string, int q_num)
++{
++	ethtool_gsprintf(string, "cq%d_producer_index", q_num);
++	ethtool_gsprintf(string, "cq%d_consumer_index", q_num);
++	ethtool_gsprintf(string, "cq%d_hw_producer_index", q_num);
++	ethtool_gsprintf(string, "cq%d_intr", q_num);
++	ethtool_gsprintf(string, "cq%d_poll", q_num);
++	ethtool_gsprintf(string, "cq%d_schedule", q_num);
++	ethtool_gsprintf(string, "cq%d_keep_poll", q_num);
++	ethtool_gsprintf(string, "cq%d_complete", q_num);
++}
++
++static void bnad_get_rxq_strings(u8 **string, int q_num)
++{
++	ethtool_gsprintf(string, "rxq%d_packets", q_num);
++	ethtool_gsprintf(string, "rxq%d_bytes", q_num);
++	ethtool_gsprintf(string, "rxq%d_packets_with_error", q_num);
++	ethtool_gsprintf(string, "rxq%d_allocbuf_failed", q_num);
++	ethtool_gsprintf(string, "rxq%d_mapbuf_failed", q_num);
++	ethtool_gsprintf(string, "rxq%d_producer_index", q_num);
++	ethtool_gsprintf(string, "rxq%d_consumer_index", q_num);
++}
++
++static void bnad_get_txq_strings(u8 **string, int q_num)
++{
++	ethtool_gsprintf(string, "txq%d_packets", q_num);
++	ethtool_gsprintf(string, "txq%d_bytes", q_num);
++	ethtool_gsprintf(string, "txq%d_producer_index", q_num);
++	ethtool_gsprintf(string, "txq%d_consumer_index", q_num);
++	ethtool_gsprintf(string, "txq%d_hw_consumer_index", q_num);
++}
++
+ static void
+ bnad_get_strings(struct net_device *netdev, u32 stringset, u8 *string)
+ {
+@@ -531,175 +593,57 @@ bnad_get_strings(struct net_device *netdev, u32 stringset, u8 *string)
+ 	int i, j, q_num;
+ 	u32 bmap;
+ 
++	if (stringset != ETH_SS_STATS)
++		return;
++
+ 	mutex_lock(&bnad->conf_mutex);
+ 
+-	switch (stringset) {
+-	case ETH_SS_STATS:
+-		for (i = 0; i < BNAD_ETHTOOL_STATS_NUM; i++) {
+-			BUG_ON(!(strlen(bnad_net_stats_strings[i]) <
+-				   ETH_GSTRING_LEN));
+-			strncpy(string, bnad_net_stats_strings[i],
+-				ETH_GSTRING_LEN);
+-			string += ETH_GSTRING_LEN;
+-		}
+-		bmap = bna_tx_rid_mask(&bnad->bna);
+-		for (i = 0; bmap; i++) {
+-			if (bmap & 1) {
+-				sprintf(string, "txf%d_ucast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_ucast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_ucast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_mcast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_mcast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_mcast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_bcast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_bcast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_bcast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_errors", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_filter_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txf%d_filter_mac_sa", i);
+-				string += ETH_GSTRING_LEN;
+-			}
+-			bmap >>= 1;
+-		}
++	for (i = 0; i < BNAD_ETHTOOL_STATS_NUM; i++) {
++		BUG_ON(!(strlen(bnad_net_stats_strings[i]) < ETH_GSTRING_LEN));
++		ethtool_gsprintf(&string, bnad_net_stats_strings[i]);
++	}
+ 
+-		bmap = bna_rx_rid_mask(&bnad->bna);
+-		for (i = 0; bmap; i++) {
+-			if (bmap & 1) {
+-				sprintf(string, "rxf%d_ucast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_ucast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_ucast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_mcast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_mcast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_mcast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_bcast_octets", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_bcast", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_bcast_vlan", i);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxf%d_frame_drops", i);
+-				string += ETH_GSTRING_LEN;
+-			}
+-			bmap >>= 1;
+-		}
++	bmap = bna_tx_rid_mask(&bnad->bna);
++	for (i = 0; bmap; i++) {
++		if (bmap & 1)
++			bnad_get_txf_strings(&string, i);
++		bmap >>= 1;
++	}
+ 
+-		q_num = 0;
+-		for (i = 0; i < bnad->num_rx; i++) {
+-			if (!bnad->rx_info[i].rx)
+-				continue;
+-			for (j = 0; j < bnad->num_rxp_per_rx; j++) {
+-				sprintf(string, "cq%d_producer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_consumer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_hw_producer_index",
+-					q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_intr", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_poll", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_schedule", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_keep_poll", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "cq%d_complete", q_num);
+-				string += ETH_GSTRING_LEN;
+-				q_num++;
+-			}
+-		}
++	bmap = bna_rx_rid_mask(&bnad->bna);
++	for (i = 0; bmap; i++, bmap >>= 1) {
++		if (bmap & 1)
++			bnad_get_rxf_strings(&string, i);
++		bmap >>= 1;
++	}
+ 
+-		q_num = 0;
+-		for (i = 0; i < bnad->num_rx; i++) {
+-			if (!bnad->rx_info[i].rx)
+-				continue;
+-			for (j = 0; j < bnad->num_rxp_per_rx; j++) {
+-				sprintf(string, "rxq%d_packets", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_bytes", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_packets_with_error",
+-								q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_allocbuf_failed", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_mapbuf_failed", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_producer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "rxq%d_consumer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				q_num++;
+-				if (bnad->rx_info[i].rx_ctrl[j].ccb &&
+-					bnad->rx_info[i].rx_ctrl[j].ccb->
+-					rcb[1] &&
+-					bnad->rx_info[i].rx_ctrl[j].ccb->
+-					rcb[1]->rxq) {
+-					sprintf(string, "rxq%d_packets", q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string, "rxq%d_bytes", q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string,
+-					"rxq%d_packets_with_error", q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string, "rxq%d_allocbuf_failed",
+-								q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string, "rxq%d_mapbuf_failed",
+-						q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string, "rxq%d_producer_index",
+-								q_num);
+-					string += ETH_GSTRING_LEN;
+-					sprintf(string, "rxq%d_consumer_index",
+-								q_num);
+-					string += ETH_GSTRING_LEN;
+-					q_num++;
+-				}
+-			}
+-		}
++	q_num = 0;
++	for (i = 0; i < bnad->num_rx; i++) {
++		if (!bnad->rx_info[i].rx)
++			continue;
++		for (j = 0; j < bnad->num_rxp_per_rx; j++)
++			bnad_get_cq_strings(&string, q_num++);
++	}
+ 
+-		q_num = 0;
+-		for (i = 0; i < bnad->num_tx; i++) {
+-			if (!bnad->tx_info[i].tx)
+-				continue;
+-			for (j = 0; j < bnad->num_txq_per_tx; j++) {
+-				sprintf(string, "txq%d_packets", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txq%d_bytes", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txq%d_producer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txq%d_consumer_index", q_num);
+-				string += ETH_GSTRING_LEN;
+-				sprintf(string, "txq%d_hw_consumer_index",
+-									q_num);
+-				string += ETH_GSTRING_LEN;
+-				q_num++;
+-			}
++	q_num = 0;
++	for (i = 0; i < bnad->num_rx; i++) {
++		if (!bnad->rx_info[i].rx)
++			continue;
++		for (j = 0; j < bnad->num_rxp_per_rx; j++) {
++			bnad_get_rxq_strings(&string, q_num++);
++			if (bnad->rx_info[i].rx_ctrl[j].ccb &&
++			    bnad->rx_info[i].rx_ctrl[j].ccb->rcb[1] &&
++			    bnad->rx_info[i].rx_ctrl[j].ccb->rcb[1]->rxq)
++				bnad_get_rxq_strings(&string, q_num++);
+ 		}
++	}
+ 
+-		break;
+-
+-	default:
+-		break;
++	q_num = 0;
++	for (i = 0; i < bnad->num_tx; i++) {
++		if (!bnad->tx_info[i].tx)
++			continue;
++		for (j = 0; j < bnad->num_txq_per_tx; j++)
++			bnad_get_txq_strings(&string, q_num++);
+ 	}
+ 
+ 	mutex_unlock(&bnad->conf_mutex);
 
 
 _______________________________________________
