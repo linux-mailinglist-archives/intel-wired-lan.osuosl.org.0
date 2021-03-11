@@ -1,61 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6780F337F0A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 21:32:45 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D311337F23
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Mar 2021 21:37:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 756134ECF8;
-	Thu, 11 Mar 2021 20:32:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EBF7B6F840;
+	Thu, 11 Mar 2021 20:37:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 96qhep68Nv5a; Thu, 11 Mar 2021 20:32:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ttUWO-Hua5r8; Thu, 11 Mar 2021 20:37:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2452E4ECDB;
-	Thu, 11 Mar 2021 20:32:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 063BC6F5A4;
+	Thu, 11 Mar 2021 20:37:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3D03E1BF989
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:32:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 882C61BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:37:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 33B5B4ECEA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:32:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 822E78444B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:37:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Sa0F3-jEQC0r for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Mar 2021 20:32:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vXCD0mSdQzfs for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Mar 2021 20:37:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4364E4ECDB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:32:36 +0000 (UTC)
-IronPort-SDR: SfqKdV0j67CvBW8Bfq1Sejtpp/GcLd4Wf+nKrctcDaB7b1DyvAYO2A30ClFN/TE/nkUiWE+pMA
- CtuLUQPEmhgA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9920"; a="250102699"
-X-IronPort-AV: E=Sophos;i="5.81,241,1610438400"; d="scan'208";a="250102699"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D615B8444A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Mar 2021 20:37:23 +0000 (UTC)
+IronPort-SDR: NYjWcEdBDQ7xRyuafUUj1YZ6BqLkGmtjrVAVCKsGjH6Y/2r4+7zQTxC2ZwThroLZ9RwFv7nNYI
+ KM0yVPI0JjxA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9920"; a="175851860"
+X-IronPort-AV: E=Sophos;i="5.81,241,1610438400"; d="scan'208";a="175851860"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2021 12:32:35 -0800
-IronPort-SDR: 8xNhb8wMcbUS77T52NVrxn7TvEEBcUq3HgASnvdPs2ySDrE05KoWH6NFqJDrxPfOx86BxTu34B
- SkoOJuQVEZ1w==
-X-IronPort-AV: E=Sophos;i="5.81,241,1610438400"; d="scan'208";a="438277275"
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2021 12:37:23 -0800
+IronPort-SDR: BqbB2zz3Nv8GXxVLf0B9QzES99iqYIWgAir+PXBwqkW1pZ5nwvYRNmsg3TfhVFh8P1NsI8fPTk
+ ruF4nSkEwDDw==
+X-IronPort-AV: E=Sophos;i="5.81,241,1610438400"; d="scan'208";a="438278581"
 Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
  ([10.251.18.194])
  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2021 12:32:30 -0800
-Date: Thu, 11 Mar 2021 12:32:29 -0800
+ 11 Mar 2021 12:37:21 -0800
+Date: Thu, 11 Mar 2021 12:37:21 -0800
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-Message-ID: <20210311123229.00007580@intel.com>
-In-Reply-To: <161542652605.13546.13143472024905128153.stgit@localhost.localdomain>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20210311123721.00005913@intel.com>
+In-Reply-To: <20210310180807.5fb1752d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 References: <161542634192.13546.4185974647834631704.stgit@localhost.localdomain>
- <161542652605.13546.13143472024905128153.stgit@localhost.localdomain>
+ <161542651749.13546.3959589547085613076.stgit@localhost.localdomain>
+ <20210310180807.5fb1752d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 02/10] intel: Update drivers to
- use ethtool_gsprintf
+Subject: Re: [Intel-wired-lan] [RFC PATCH 01/10] ethtool: Add common
+ function for filling out strings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,7 +78,6 @@ Cc: "doshir@vmware.com" <doshir@vmware.com>, "mst@redhat.com" <mst@redhat.com>,
  "sthemmin@microsoft.com" <sthemmin@microsoft.com>,
  "pv-drivers@vmware.com" <pv-drivers@vmware.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
  "yisen.zhuang@huawei.com" <yisen.zhuang@huawei.com>,
  "gtzalik@amazon.com" <gtzalik@amazon.com>,
  "simon.horman@netronome.com" <simon.horman@netronome.com>,
@@ -96,37 +96,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Alexander Duyck wrote:
+Jakub Kicinski wrote:
 
-> From: Alexander Duyck <alexanderduyck@fb.com>
+> On Wed, 10 Mar 2021 17:35:17 -0800 Alexander Duyck wrote:
+> > From: Alexander Duyck <alexanderduyck@fb.com>
+> > +/**
+> > + * ethtool_gsprintf - Write formatted string to ethtool string data
+> > + * @data: Pointer to start of string to update
+> > + * @fmt: Format of string to write
+> > + *
+> > + * Write formatted string to data. Update data to point at start of
+> > + * next string.
+> > + */
+> > +extern __printf(2, 3) void ethtool_gsprintf(u8 **data, const char *fmt, ...);
 > 
-> Update the Intel drivers to make use of ethtool_gsprintf. The general idea
-> is to reduce code size and overhead by replacing the repeated pattern of
-> string printf statements and ETH_STRING_LEN counter increments.
+> I'd drop the 'g' TBH, it seems to have made its way from the ethtool
+> command ('gstrings') to various places but without the 'string' after
+> it - it becomes less and less meaningful. Just ethtool_sprintf() would
+> be fine IMHO.
 > 
-> Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c   |   16 ++----
->  drivers/net/ethernet/intel/ice/ice_ethtool.c     |   55 +++++++---------------
->  drivers/net/ethernet/intel/igb/igb_ethtool.c     |   40 ++++++----------
->  drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |   40 ++++++----------
->  4 files changed, 50 insertions(+), 101 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index c70dec65a572..932c6635cfd6 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -2368,21 +2368,15 @@ static void i40e_get_priv_flag_strings(struct net_device *netdev, u8 *data)
->  	struct i40e_netdev_priv *np = netdev_priv(netdev);
->  	struct i40e_vsi *vsi = np->vsi;
->  	struct i40e_pf *pf = vsi->back;
-> -	char *p = (char *)data;
-> +	u8 *p = data;
->  	unsigned int i;
+> Other than that there is a minor rev xmas tree violation in patch 2 :)
 
-As Jakub said, RCT... :-)
 
-no other comments on the rest of the patch, looks good and Thanks!
+I agree with Jakub, and I really like this series, it's a good clean up.
+
+I'll be glad to add a reviewed by tag to v2.
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
