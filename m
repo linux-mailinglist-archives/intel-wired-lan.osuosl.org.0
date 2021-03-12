@@ -1,76 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8288F338D2A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Mar 2021 13:36:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99BB1339563
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Mar 2021 18:48:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2FF2943276;
-	Fri, 12 Mar 2021 12:36:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1E2E26FAF6;
+	Fri, 12 Mar 2021 17:48:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TOP0qFrDq2i7; Fri, 12 Mar 2021 12:36:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UwkvW5SqfsYA; Fri, 12 Mar 2021 17:48:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 11B6143027;
-	Fri, 12 Mar 2021 12:36:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D0B86FA35;
+	Fri, 12 Mar 2021 17:48:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8BE601BF303
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 12:36:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BCA341BF2E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 17:48:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 87BC7605E1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 12:36:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A514E6FA35
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 17:48:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id stspZ-er_Y-e for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Mar 2021 12:36:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7B9896FACC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 12:36:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1615552582;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Yf38aWVZxFE9ILLSEmaMSxQNiUWyijTp458yF6D1C80=;
- b=Wt41uDHY7SfED7hFJ3r6TeC2FIJghCeT09A2v2HWgYQ1C4P7UeCjIBhP2I/EkLgGuddZ3C
- Mt5OwsCJdWe8gAdlOkqX1ef62gFLP5YE9n9UMaUxnJk69+c9ZHDtMdFf7xi1q4X73cREe9
- qgNz0n+OulJvov+rLPynAYZasX19JU4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-592-DaDt_1K_Oe-Nlp8HjEP_-A-1; Fri, 12 Mar 2021 07:36:18 -0500
-X-MC-Unique: DaDt_1K_Oe-Nlp8HjEP_-A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF8A91966322;
- Fri, 12 Mar 2021 12:36:17 +0000 (UTC)
-Received: from p50.fritz.box (unknown [10.40.194.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E84B81001281;
- Fri, 12 Mar 2021 12:36:16 +0000 (UTC)
-Date: Fri, 12 Mar 2021 13:36:15 +0100
-From: Stefan Assmann <sassmann@redhat.com>
-To: Eryk Rybak <eryk.roch.rybak@intel.com>
-Message-ID: <20210312123615.7fcvoayobcslko74@p50.fritz.box>
-References: <20210312093337.68364-1-eryk.roch.rybak@intel.com>
+ with ESMTP id 08K91Q-IPxQE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Mar 2021 17:48:03 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com
+ [IPv6:2607:f8b0:4864:20::535])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3222E605DF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 17:48:03 +0000 (UTC)
+Received: by mail-pg1-x535.google.com with SMTP id o10so16348896pgg.4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Mar 2021 09:48:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:from:to:cc:date:message-id:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=JujqZ6a4DmxzimQ0g7KvclcEk5s4VwtmJHbcoMqSQjc=;
+ b=rcxMYdpEO6lHAHPh4RETobEtXCQrqgLx3Rb0IfqN5vgUEEsWzH8qrSCptI0QhoZrnS
+ +INuncQS3/J7CWxHGN+7ln5hdUcL0m7ew3JrvUXcNLoKu/q/UzEuyq5Gmp0u83Igy9eD
+ HCruWTBcSG4vl0Ex8UOWxX+JeW1atjEXj3tN73nYFmSYjWx2QiTjeUoQEsi1pQMR5T9e
+ C3Ov/dk9ZT4F1x6AmaSkrd/x1qv8xPL3f0DlT3PQxgdIpIw/mm1uNaR8zUNda1+2gqzA
+ TZJhijEpykqn3J4V6g4s+avtx4RcveFwGqRS+WxZMEO4+bZq0Vd8vHwRazauuA9CPZUB
+ nWVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:date:message-id:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=JujqZ6a4DmxzimQ0g7KvclcEk5s4VwtmJHbcoMqSQjc=;
+ b=L+ZQ+ojjaV2ghNGYC0azd1+D70PvuWti8JDaFNVBmI6eKjb/OvY2yvmMkGyjxtqxSr
+ zJYW1/xD9dA+D0fTXaM2hPEw1O+M8fRxbjUO1EskrlFFp6swPYFgWxtFEU187LK7PGMu
+ XXtZYcMdkvrWy/xK3KZXZddnJNsW844bI6fWvHAkaikA7cCBXgVYVks7NW5jSuqRtE4l
+ jfDk8snS8J6Vub0VrboOvWeMZStRb2TJ1nIHbJOywXHcXIPmy0n6l/JS9v2XkM1ONQ4I
+ 9fcpc78rkmg0nCVmZlGBMbiLuPezuba4D3YKhUSNPyDkfL4Q02Eix8cdMJckyU1pbJjO
+ Fo5Q==
+X-Gm-Message-State: AOAM530fYkNuggs7b9WXD7njaXQmK4+q0PkB5llxYXqRd1qeg+lfl6fl
+ F6p9SzWkkPeDJott5jLbsaM=
+X-Google-Smtp-Source: ABdhPJxIxzPr/Sn3NRSXifls8FfVyr98rA8KnH45DnR3NedshdnHABjldzx3v6Va9KmFVinuZA9pMA==
+X-Received: by 2002:a62:bd05:0:b029:1ab:6d2:5edf with SMTP id
+ a5-20020a62bd050000b02901ab06d25edfmr13189721pff.32.1615571282442; 
+ Fri, 12 Mar 2021 09:48:02 -0800 (PST)
+Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
+ by smtp.gmail.com with ESMTPSA id e190sm6273082pfe.3.2021.03.12.09.48.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Mar 2021 09:48:02 -0800 (PST)
+From: Alexander Duyck <alexander.duyck@gmail.com>
+To: davem@davemloft.net, kuba@kernel.org
+Date: Fri, 12 Mar 2021 09:48:00 -0800
+Message-ID: <161557111604.10304.1798900949114188676.stgit@localhost.localdomain>
+User-Agent: StGit/0.23
 MIME-Version: 1.0
-In-Reply-To: <20210312093337.68364-1-eryk.roch.rybak@intel.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sassmann@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Subject: Re: [Intel-wired-lan] [PATCH net v2] iavf: Fix asynchronous tasks
- during driver remove
+Subject: [Intel-wired-lan] [net-next PATCH 00/10] ethtool: Factor out common
+ code related to writing ethtool strings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,129 +85,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: doshir@vmware.com, mst@redhat.com, oss-drivers@netronome.com,
+ jasowang@redhat.com, alexanderduyck@fb.com, akiyano@amazon.com,
+ wei.liu@kernel.org, sthemmin@microsoft.com, pv-drivers@vmware.com,
+ intel-wired-lan@lists.osuosl.org, Kernel-team@fb.com, yisen.zhuang@huawei.com,
+ gtzalik@amazon.com, simon.horman@netronome.com, haiyangz@microsoft.com,
+ drivers@pensando.io, salil.mehta@huawei.com, GR-Linux-NIC-Dev@marvell.com,
+ rmody@marvell.com, netdev@vger.kernel.org, netanel@amazon.com,
+ saeedb@amazon.com, snelson@pensando.io, skalluru@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2021-03-12 10:33, Eryk Rybak wrote:
-> Although rare, is possible for unexpected driver watchdog or Admin
-> Queue tasks to run during the execution of iavf_remove function.
-> Then, is not possible to obtain the standard __IAVF_IN_CRITICAL_TASK
-> lock and difficult to ensure that the driver state stays consistent
-> during the full removal process.
+This patch set is meant to be a cleanup and refactoring of common code bits
+from several drivers. Specifically a number of drivers engage in a pattern
+where they will use some variant on an sprintf or memcpy to write a string
+into the ethtool string array and then they will increment their pointer by
+ETH_GSTRING_LEN.
 
-If you shutdown the watchdog task before closing the device, how do you
-ensure the client task is properly shutdown?
+Instead of having each driver implement this independently I am refactoring
+the code so that we have one central function, ethtool_sprintf that does
+all this and takes a double pointer to access the data, a formatted string
+to print, and the variable arguments that are associated with the string.
 
-Calling iavf_close() sets the IAVF_FLAG_CLIENT_NEEDS_CLOSE flag, which
-would call iavf_notify_client_close(&adapter->vsi, false); in the
-client task, but the client task does no longer get scheduled by the
-watchdog task because it has been shutdown already.
+Changes from RFC:
+Renamed ethtool_gsprintf to ethtool_sprintf
+Fixed reverse xmas tree issue in patch 2
+Added Acked-by/Reviewed-by tags from RFC review
 
-  Stefan
+---
 
-> Fully stops all asynchronous tasks in the beginning of iavf_remove,
-> and uses a single-threaded flow to shut down the driver.
-> 
-> Fixes: fdd4044ffdc8("iavf: Remove timer for work triggering, use delaying work instead")
-> Signed-off-by: Nick Nunley <nicholas.d.nunley@intel.com>
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Eryk Rybak <eryk.roch.rybak@intel.com>
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 31 +++++++++++++++++----
->  1 file changed, 25 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index dc5b3c06d1e0..e752ecb7ad89 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -1887,6 +1887,12 @@ static void iavf_watchdog_task(struct work_struct *work)
->  	struct iavf_hw *hw = &adapter->hw;
->  	u32 reg_val;
->  
-> +	/* If the driver is in the process of being removed then don't run or
-> +	 * reschedule the watchdog task.
-> +	 */
-> +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-> +		return;
-> +
->  	if (test_and_set_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section))
->  		goto restart_watchdog;
->  
-> @@ -2267,6 +2273,12 @@ static void iavf_adminq_task(struct work_struct *work)
->  	u32 val, oldval;
->  	u16 pending;
->  
-> +	/* If the driver is in the process of being removed then return
-> +	 * immediately and don't re-enable the Admin Queue interrupt.
-> +	 */
-> +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-> +		return;
-> +
->  	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
->  		goto out;
->  
-> @@ -3245,6 +3257,13 @@ static int iavf_close(struct net_device *netdev)
->  
->  	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
->  
-> +	/* If the interface is closing as part of driver removal it doesn't
-> +	 * wait. The VF resources will be reinitialized when the hardware is
-> +	 * reset.
-> +	 */
-> +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-> +		return 0;
-> +
->  	/* We explicitly don't free resources here because the hardware is
->  	 * still active and can DMA into memory. Resources are cleared in
->  	 * iavf_virtchnl_completion() after we get confirmation from the PF
-> @@ -3850,11 +3869,16 @@ static void iavf_remove(struct pci_dev *pdev)
->  	struct iavf_cloud_filter *cf, *cftmp;
->  	struct iavf_hw *hw = &adapter->hw;
->  	int err;
-> -	/* Indicate we are in remove and not to run reset_task */
-> +	/* Indicate that program driver is remove task and not
-> +	 * to run/schedule any driver tasks
-> +	 */
->  	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
->  	cancel_delayed_work_sync(&adapter->init_task);
->  	cancel_work_sync(&adapter->reset_task);
->  	cancel_delayed_work_sync(&adapter->client_task);
-> +	cancel_work_sync(&adapter->adminq_task);
-> +	cancel_delayed_work_sync(&adapter->watchdog_task);
-> +	iavf_misc_irq_disable(adapter);
->  	if (adapter->netdev_registered) {
->  		unregister_netdev(netdev);
->  		adapter->netdev_registered = false;
-> @@ -3879,15 +3903,10 @@ static void iavf_remove(struct pci_dev *pdev)
->  	}
->  	iavf_free_all_tx_resources(adapter);
->  	iavf_free_all_rx_resources(adapter);
-> -	iavf_misc_irq_disable(adapter);
->  	iavf_free_misc_irq(adapter);
->  	iavf_reset_interrupt_capability(adapter);
->  	iavf_free_q_vectors(adapter);
->  
-> -	cancel_delayed_work_sync(&adapter->watchdog_task);
-> -
-> -	cancel_work_sync(&adapter->adminq_task);
-> -
->  	iavf_free_rss(adapter);
->  
->  	if (hw->aq.asq.count)
-> 
-> base-commit: c1acda9807e2bbe1d2026b44f37d959d6d8266c8
-> -- 
-> 2.20.1
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-> 
+Alexander Duyck (10):
+      ethtool: Add common function for filling out strings
+      intel: Update drivers to use ethtool_sprintf
+      nfp: Replace nfp_pr_et with ethtool_sprintf
+      hisilicon: Update drivers to use ethtool_sprintf
+      ena: Update driver to use ethtool_sprintf
+      netvsc: Update driver to use ethtool_sprintf
+      virtio_net: Update driver to use ethtool_sprintf
+      vmxnet3: Update driver to use ethtool_sprintf
+      bna: Update driver to use ethtool_sprintf
+      ionic: Update driver to use ethtool_sprintf
+
+
+ drivers/net/ethernet/amazon/ena/ena_ethtool.c |  25 +-
+ .../net/ethernet/brocade/bna/bnad_ethtool.c   | 266 +++++++-----------
+ .../ethernet/hisilicon/hns/hns_dsaf_gmac.c    |   7 +-
+ .../net/ethernet/hisilicon/hns/hns_dsaf_ppe.c |  37 +--
+ .../net/ethernet/hisilicon/hns/hns_dsaf_rcb.c |  89 ++----
+ .../ethernet/hisilicon/hns/hns_dsaf_xgmac.c   |   6 +-
+ .../net/ethernet/hisilicon/hns/hns_ethtool.c  |  97 +++----
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  16 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  55 ++--
+ drivers/net/ethernet/intel/igb/igb_ethtool.c  |  40 +--
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  40 +--
+ drivers/net/ethernet/netronome/nfp/abm/main.c |   4 +-
+ .../ethernet/netronome/nfp/nfp_net_ethtool.c  |  79 +++---
+ drivers/net/ethernet/netronome/nfp/nfp_port.h |   2 -
+ .../net/ethernet/pensando/ionic/ionic_stats.c | 145 ++++------
+ drivers/net/hyperv/netvsc_drv.c               |  33 +--
+ drivers/net/virtio_net.c                      |  18 +-
+ drivers/net/vmxnet3/vmxnet3_ethtool.c         |  53 ++--
+ 18 files changed, 381 insertions(+), 631 deletions(-)
+
+--
 
 _______________________________________________
 Intel-wired-lan mailing list
