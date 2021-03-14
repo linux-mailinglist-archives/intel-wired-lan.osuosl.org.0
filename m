@@ -1,60 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B45233A338
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Mar 2021 07:09:50 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDAA833A3A9
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Mar 2021 09:56:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7784C83E78;
-	Sun, 14 Mar 2021 06:09:48 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5EC1A4013A;
+	Sun, 14 Mar 2021 08:56:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vqAaQsQ3m5x3; Sun, 14 Mar 2021 06:09:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V22kOPB8EG46; Sun, 14 Mar 2021 08:56:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6381783DB0;
-	Sun, 14 Mar 2021 06:09:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5661040123;
+	Sun, 14 Mar 2021 08:56:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B4F7F1BF409
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 06:09:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7095B1BF46A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 08:56:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9DC90606E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 06:09:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 50A6F60732
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 08:56:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OhpvxRMjE2NL for <intel-wired-lan@lists.osuosl.org>;
- Sun, 14 Mar 2021 06:09:39 +0000 (UTC)
+ with ESMTP id 7mHU0unRuUCp for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 14 Mar 2021 08:56:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B79BE606E2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 06:09:39 +0000 (UTC)
-IronPort-SDR: gDexTfliCoknSwxte6L78yRBxpjv5RrJ8fnYG09ERg9S5PhphrDRQW1H3DrkjpO8mmeAS6yQ9T
- oi8ojjI8/muA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9922"; a="188335316"
-X-IronPort-AV: E=Sophos;i="5.81,245,1610438400"; d="scan'208";a="188335316"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2021 22:09:38 -0800
-IronPort-SDR: SAU6kZm6k39F4PTgMrTEG93fmH6gF8QkyjVG86UQUz8OX23H8WncpneL6LST2dHB84i7rrAgPP
- fbBSSVLiOcPA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,245,1610438400"; d="scan'208";a="604458522"
-Received: from lkp-server02.sh.intel.com (HELO 1dc5e1a854f4) ([10.239.97.151])
- by fmsmga005.fm.intel.com with ESMTP; 13 Mar 2021 22:09:37 -0800
-Received: from kbuild by 1dc5e1a854f4 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lLJwW-00004X-Oy; Sun, 14 Mar 2021 06:09:36 +0000
-Date: Sun, 14 Mar 2021 14:09:29 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <604da899.MgSnFjFqq7dp5v48%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 78F066ECA6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 08:56:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615712173;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=LyaH1dab1qBISD1dv3cUf9pEcqtmk2xN7TDwrY2qafc=;
+ b=RCW/wy/c0RjBjZILV9ATo8aHrg56ncoTLvYbttlcE99kyXcZ6uM2NnJoZwqiwCSFhck6JI
+ YoLXXyiGoH2Z76vJSR+Hr/Wlkg8/3Jd9b4iHlvUMpgfwL7CWkqH1fwO8R4E0fHNDG4goTe
+ wg6lPivJtq/kP1yqjmN2AOCE5srINbA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-139-GWWLQancONm-aSifKvQqZQ-1; Sun, 14 Mar 2021 04:56:11 -0400
+X-MC-Unique: GWWLQancONm-aSifKvQqZQ-1
+Received: by mail-wr1-f72.google.com with SMTP id n16so12457440wro.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 00:56:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=LyaH1dab1qBISD1dv3cUf9pEcqtmk2xN7TDwrY2qafc=;
+ b=HAB9LvyaOb9ui2XYUjHny73ub9gdV6gSe3L9gVZeO2OWixSR8qj4c0W8TvgXWWYQtv
+ H1H76ZFfek9aRzXdCImlIc2dQhEIq/myNb67sg9IO6OzZX1NKnGPZ4JPvb3apNkNVEiE
+ 7bexplStl3Vc/NRHz2lwwUU/P/AoBtkAT2fCtZ7Xkvbq9QWDHw/sfBlAkiJS030e4W1j
+ vBfG8uoUa2+bLiJLDUTShEHw+VhUE9g3uggyXwpDfHSKb5IiR3C0s44AMBy3P4tsRlIm
+ iFANmLuoqcL0PtqaHtFHl6Uj6Y2SxkDl0FJJ1MMlRtbo8kZbgixPWJ/CmGIffdiWn9gI
+ 6X0Q==
+X-Gm-Message-State: AOAM533CHBR8N4M6+KmMyj/ubh1hI/h2MIjeuZw6mgplSM1vRDy5+/6E
+ NLZ5PaxYk5KuIzakFu5qfXPNctlIs48t9+l8NfDEn+dBWTYDLxqQen5HXy0DCIdO9hWdKiOQjV3
+ GzPQPvhP18R3y67IQDipGnKa1sZnepQ==
+X-Received: by 2002:adf:d4ca:: with SMTP id w10mr22950886wrk.146.1615712170217; 
+ Sun, 14 Mar 2021 00:56:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx5nAlSrO335TBU3WBHpmFz/LXcg2/JrE7facrTQ+RdwLovH3VigAS7iOHC73pus5SKoqDvMg==
+X-Received: by 2002:adf:d4ca:: with SMTP id w10mr22950845wrk.146.1615712169946; 
+ Sun, 14 Mar 2021 00:56:09 -0800 (PST)
+Received: from redhat.com (bzq-79-180-2-31.red.bezeqint.net. [79.180.2.31])
+ by smtp.gmail.com with ESMTPSA id o14sm14006144wri.48.2021.03.14.00.56.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 14 Mar 2021 00:56:09 -0800 (PST)
+Date: Sun, 14 Mar 2021 04:56:04 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20210314045559-mutt-send-email-mst@kernel.org>
+References: <161557111604.10304.1798900949114188676.stgit@localhost.localdomain>
+ <161557132651.10304.9382850626606060019.stgit@localhost.localdomain>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 9f096678c93bdde938d8293f111033657d61b8e8
+In-Reply-To: <161557132651.10304.9382850626606060019.stgit@localhost.localdomain>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Subject: Re: [Intel-wired-lan] [net-next PATCH 07/10] virtio_net: Update
+ driver to use ethtool_sprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,131 +99,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: doshir@vmware.com, oss-drivers@netronome.com, jasowang@redhat.com,
+ alexanderduyck@fb.com, akiyano@amazon.com, wei.liu@kernel.org,
+ sthemmin@microsoft.com, pv-drivers@vmware.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, Kernel-team@fb.com,
+ yisen.zhuang@huawei.com, gtzalik@amazon.com, simon.horman@netronome.com,
+ haiyangz@microsoft.com, drivers@pensando.io, salil.mehta@huawei.com,
+ GR-Linux-NIC-Dev@marvell.com, rmody@marvell.com, netdev@vger.kernel.org,
+ davem@davemloft.net, netanel@amazon.com, saeedb@amazon.com,
+ snelson@pensando.io, skalluru@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 9f096678c93bdde938d8293f111033657d61b8e8  ixgbe: Fix NULL pointer dereference in ethtool loopback test
+On Fri, Mar 12, 2021 at 09:48:46AM -0800, Alexander Duyck wrote:
+> From: Alexander Duyck <alexanderduyck@fb.com>
+> 
+> Update the code to replace instances of snprintf and a pointer update with
+> just calling ethtool_sprintf.
+> 
+> Also replace the char pointer with a u8 pointer to avoid having to recast
+> the pointer type.
+> 
+> Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 
-elapsed time: 723m
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-configs tested: 102
-configs skipped: 2
+> ---
+>  drivers/net/virtio_net.c |   18 +++++++-----------
+>  1 file changed, 7 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
+> index e97288dd6e5a..77ba8e2fc11c 100644
+> --- a/drivers/net/virtio_net.c
+> +++ b/drivers/net/virtio_net.c
+> @@ -2138,25 +2138,21 @@ static int virtnet_set_channels(struct net_device *dev,
+>  static void virtnet_get_strings(struct net_device *dev, u32 stringset, u8 *data)
+>  {
+>  	struct virtnet_info *vi = netdev_priv(dev);
+> -	char *p = (char *)data;
+>  	unsigned int i, j;
+> +	u8 *p = data;
+>  
+>  	switch (stringset) {
+>  	case ETH_SS_STATS:
+>  		for (i = 0; i < vi->curr_queue_pairs; i++) {
+> -			for (j = 0; j < VIRTNET_RQ_STATS_LEN; j++) {
+> -				snprintf(p, ETH_GSTRING_LEN, "rx_queue_%u_%s",
+> -					 i, virtnet_rq_stats_desc[j].desc);
+> -				p += ETH_GSTRING_LEN;
+> -			}
+> +			for (j = 0; j < VIRTNET_RQ_STATS_LEN; j++)
+> +				ethtool_sprintf(&p, "rx_queue_%u_%s", i,
+> +						virtnet_rq_stats_desc[j].desc);
+>  		}
+>  
+>  		for (i = 0; i < vi->curr_queue_pairs; i++) {
+> -			for (j = 0; j < VIRTNET_SQ_STATS_LEN; j++) {
+> -				snprintf(p, ETH_GSTRING_LEN, "tx_queue_%u_%s",
+> -					 i, virtnet_sq_stats_desc[j].desc);
+> -				p += ETH_GSTRING_LEN;
+> -			}
+> +			for (j = 0; j < VIRTNET_SQ_STATS_LEN; j++)
+> +				ethtool_sprintf(&p, "tx_queue_%u_%s", i,
+> +						virtnet_sq_stats_desc[j].desc);
+>  		}
+>  		break;
+>  	}
+> 
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                       maple_defconfig
-powerpc                    socrates_defconfig
-arm                         s3c6400_defconfig
-mips                         db1xxx_defconfig
-mips                     loongson1c_defconfig
-powerpc                        cell_defconfig
-powerpc                     akebono_defconfig
-sh                            migor_defconfig
-powerpc64                        alldefconfig
-sh                        sh7785lcr_defconfig
-powerpc                 mpc837x_rdb_defconfig
-arc                          axs101_defconfig
-openrisc                         alldefconfig
-sh                        edosk7760_defconfig
-powerpc                         wii_defconfig
-mips                         tb0226_defconfig
-mips                           ip32_defconfig
-arc                              allyesconfig
-riscv                    nommu_virt_defconfig
-powerpc                      ppc6xx_defconfig
-powerpc                     taishan_defconfig
-powerpc                     kmeter1_defconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                      acadia_defconfig
-arm                         assabet_defconfig
-arm                  colibri_pxa300_defconfig
-parisc                           alldefconfig
-m68k                          atari_defconfig
-powerpc                     ppa8548_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-nios2                               defconfig
-nds32                             allnoconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210314
-i386                 randconfig-a005-20210314
-i386                 randconfig-a003-20210314
-i386                 randconfig-a002-20210314
-i386                 randconfig-a004-20210314
-i386                 randconfig-a006-20210314
-x86_64               randconfig-a011-20210314
-x86_64               randconfig-a016-20210314
-x86_64               randconfig-a013-20210314
-x86_64               randconfig-a015-20210314
-x86_64               randconfig-a014-20210314
-x86_64               randconfig-a012-20210314
-i386                 randconfig-a013-20210314
-i386                 randconfig-a016-20210314
-i386                 randconfig-a011-20210314
-i386                 randconfig-a012-20210314
-i386                 randconfig-a014-20210314
-i386                 randconfig-a015-20210314
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20210314
-x86_64               randconfig-a001-20210314
-x86_64               randconfig-a005-20210314
-x86_64               randconfig-a004-20210314
-x86_64               randconfig-a002-20210314
-x86_64               randconfig-a003-20210314
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
