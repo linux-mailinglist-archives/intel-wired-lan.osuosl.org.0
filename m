@@ -1,85 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16F1D33B6EB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Mar 2021 15:00:18 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CF4633B6F0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Mar 2021 15:00:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 662CA483DE;
-	Mon, 15 Mar 2021 14:00:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E21B56F530;
+	Mon, 15 Mar 2021 14:00:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4dzgeMFKvoXr; Mon, 15 Mar 2021 14:00:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Nu1_4ldiIvTs; Mon, 15 Mar 2021 14:00:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3335147B6F;
-	Mon, 15 Mar 2021 14:00:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EC5DB6F565;
+	Mon, 15 Mar 2021 14:00:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C2FF91BF363
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 01:49:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F296B1BF966
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 03:52:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ADB63605A9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 01:49:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DFB628348C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 03:52:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZrY5lrw9Sic4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Mar 2021 01:49:16 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qt1-x835.google.com (mail-qt1-x835.google.com
- [IPv6:2607:f8b0:4864:20::835])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1D700605A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 01:49:16 +0000 (UTC)
-Received: by mail-qt1-x835.google.com with SMTP id l13so8139516qtu.9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Mar 2021 18:49:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=v5C1FzAc3n+Q+DivoMRN4HMo2xYIzd9PmibOkkmSFMM=;
- b=qfxYsDiUCXCn2YMPNV3ILEn4qTBRXy3TmHhuQxOVq3khLZh8Hfbw0sJ2nXZVN8LX68
- 2MXIrvXxo2B6ijIlTTV4biVg8NH4ijLrAntmxqx1ucJr9xY2JWmpxs1FGUyvz+zrnjtm
- siivPv+cM8HkBDT/QFdO5LmJZTxlC/lp75OsM55BdxC9VtjVdoe8JnGfK3+9poIHQ3WG
- MsvbyAMsH6rskCJgOjqHZRn0UjMKegWJUOksBBO78AGVR/iWY80Xjwzi2btTRy79NlTh
- oq04YuxmpgmNvM4q+uo3GBlE0Zt0jVky6wTu9S6fz0hAB8WrA5+wz5ktxUVnxWIZWBoO
- zbpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=v5C1FzAc3n+Q+DivoMRN4HMo2xYIzd9PmibOkkmSFMM=;
- b=Bdft9UG/ovUuIC9QPltDGrT73piuxCBhm7VOzJ7L2fH1zmapBnCyop1xL6CJm16vk9
- hkAZOCn0a639blRIumwu2JIYZTuUuY575l2DilUDqzpqTfFi4KwR/bEWLvJZ2AjlWM1i
- TVV9/9npO1nlV5jKRYC/+IuK4uEXDZFakinjuh14o1AJs0cmZT81VFHB5ccil4XZ8ZSs
- 6fChUMyAHwgmWLIXF3yRhaUUqrvfrqhwcLOa7ZvPBbO2BXnIOn6X/fCq4ai6qDoHISZt
- KvOH7uBmcH2wXdBenZooW/fhAlw/FCKSPKXleJvuV2L1iXGXqgvytUpBiW53FxH/+oBX
- Cllw==
-X-Gm-Message-State: AOAM533pExo9yEqfSZqo/ZiKsT3JVtzQb6GmA7nWXnC7dYfYi1c0uf+O
- HvFBWdQtnmaYH92aGhflDJY=
-X-Google-Smtp-Source: ABdhPJxauSh2np1+DiEgowjAKvrGN9eiA811QseMjJ28g+CWSg10+3Cl+N0LksmkC6ssrKOS/DKFsw==
-X-Received: by 2002:ac8:4b6d:: with SMTP id g13mr21011158qts.369.1615772954902; 
- Sun, 14 Mar 2021 18:49:14 -0700 (PDT)
-Received: from localhost.localdomain ([37.19.198.69])
- by smtp.gmail.com with ESMTPSA id z6sm9944662qto.70.2021.03.14.18.49.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Mar 2021 18:49:14 -0700 (PDT)
-From: Bhaskar Chowdhury <unixbhaskar@gmail.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, ast@kernel.org, daniel@iogearbox.net,
- hawk@kernel.org, john.fastabend@gmail.com, andrii@kernel.org, kafai@fb.com,
- songliubraving@fb.com, yhs@fb.com, kpsingh@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-Date: Mon, 15 Mar 2021 07:18:47 +0530
-Message-Id: <20210315014847.1021209-1-unixbhaskar@gmail.com>
-X-Mailer: git-send-email 2.30.2
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zEtY0GGTzcV3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Mar 2021 03:52:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A068783459
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 03:52:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615780343;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iaINR4+J/WQmMj/Rt87A6ow5gujrBEiTkrmO56nKbXg=;
+ b=eWKHsEZF5zIFu0PcZrfAJNRRpjO0xCmZWdM2m8+fFOX9oUkF9DfoCnSib30Zo9Doa0Z//g
+ IFEqDda5zIC4gt6nZMFsA73G7lpPekucGe1fCmrgwLXeTAJpehSHG1nkomLPwztjfeRPV9
+ DyJlz0BRPKk1vHoboh/L61hSG5HB1aI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-499-n3qRxgpVPRGE2zuO94Et_w-1; Sun, 14 Mar 2021 23:52:19 -0400
+X-MC-Unique: n3qRxgpVPRGE2zuO94Et_w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 075EF19200C0;
+ Mon, 15 Mar 2021 03:52:15 +0000 (UTC)
+Received: from wangxiaodeMacBook-Air.local (ovpn-13-199.pek2.redhat.com
+ [10.72.13.199])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 831B41F07C;
+ Mon, 15 Mar 2021 03:52:02 +0000 (UTC)
+To: Alexander Duyck <alexander.duyck@gmail.com>, davem@davemloft.net,
+ kuba@kernel.org
+References: <161557111604.10304.1798900949114188676.stgit@localhost.localdomain>
+ <161557132651.10304.9382850626606060019.stgit@localhost.localdomain>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <67ac83a4-10e8-602c-84a7-78ce8cbb5483@redhat.com>
+Date: Mon, 15 Mar 2021 11:52:00 +0800
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:78.0)
+ Gecko/20100101 Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <161557132651.10304.9382850626606060019.stgit@localhost.localdomain>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mailman-Approved-At: Mon, 15 Mar 2021 14:00:10 +0000
-Subject: [Intel-wired-lan] [PATCH] net: ethernet: intel: igb: Typo fix in
- the file igb_main.c
+Subject: Re: [Intel-wired-lan] [net-next PATCH 07/10] virtio_net: Update
+ driver to use ethtool_sprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,38 +85,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: rdunlap@infradead.org, Bhaskar Chowdhury <unixbhaskar@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: doshir@vmware.com, mst@redhat.com, oss-drivers@netronome.com,
+ alexanderduyck@fb.com, akiyano@amazon.com, wei.liu@kernel.org,
+ sthemmin@microsoft.com, pv-drivers@vmware.com,
+ intel-wired-lan@lists.osuosl.org, Kernel-team@fb.com, yisen.zhuang@huawei.com,
+ gtzalik@amazon.com, simon.horman@netronome.com, haiyangz@microsoft.com,
+ drivers@pensando.io, salil.mehta@huawei.com, GR-Linux-NIC-Dev@marvell.com,
+ rmody@marvell.com, netdev@vger.kernel.org, netanel@amazon.com,
+ saeedb@amazon.com, snelson@pensando.io, skalluru@marvell.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-s/structue/structure/
-
-
-Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 03f78fdb0dcd..afc8ab9046a5 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3115,7 +3115,7 @@ static s32 igb_init_i2c(struct igb_adapter *adapter)
- 		return 0;
-
- 	/* Initialize the i2c bus which is controlled by the registers.
--	 * This bus will use the i2c_algo_bit structue that implements
-+	 * This bus will use the i2c_algo_bit structure that implements
- 	 * the protocol through toggling of the 4 bits in the register.
- 	 */
- 	adapter->i2c_adap.owner = THIS_MODULE;
---
-2.30.2
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CuWcqCAyMDIxLzMvMTMg5LiK5Y2IMTo0OCwgQWxleGFuZGVyIER1eWNrIOWGmemBkzoKPiBGcm9t
+OiBBbGV4YW5kZXIgRHV5Y2sgPGFsZXhhbmRlcmR1eWNrQGZiLmNvbT4KPgo+IFVwZGF0ZSB0aGUg
+Y29kZSB0byByZXBsYWNlIGluc3RhbmNlcyBvZiBzbnByaW50ZiBhbmQgYSBwb2ludGVyIHVwZGF0
+ZSB3aXRoCj4ganVzdCBjYWxsaW5nIGV0aHRvb2xfc3ByaW50Zi4KPgo+IEFsc28gcmVwbGFjZSB0
+aGUgY2hhciBwb2ludGVyIHdpdGggYSB1OCBwb2ludGVyIHRvIGF2b2lkIGhhdmluZyB0byByZWNh
+c3QKPiB0aGUgcG9pbnRlciB0eXBlLgo+Cj4gU2lnbmVkLW9mZi1ieTogQWxleGFuZGVyIER1eWNr
+IDxhbGV4YW5kZXJkdXlja0BmYi5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL25ldC92aXJ0aW9fbmV0
+LmMgfCAgIDE4ICsrKysrKystLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0
+aW9ucygrKSwgMTEgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvdmly
+dGlvX25ldC5jIGIvZHJpdmVycy9uZXQvdmlydGlvX25ldC5jCj4gaW5kZXggZTk3Mjg4ZGQ2ZTVh
+Li43N2JhOGUyZmMxMWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvdmlydGlvX25ldC5jCj4g
+KysrIGIvZHJpdmVycy9uZXQvdmlydGlvX25ldC5jCj4gQEAgLTIxMzgsMjUgKzIxMzgsMjEgQEAg
+c3RhdGljIGludCB2aXJ0bmV0X3NldF9jaGFubmVscyhzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAo+
+ICAgc3RhdGljIHZvaWQgdmlydG5ldF9nZXRfc3RyaW5ncyhzdHJ1Y3QgbmV0X2RldmljZSAqZGV2
+LCB1MzIgc3RyaW5nc2V0LCB1OCAqZGF0YSkKPiAgIHsKPiAgIAlzdHJ1Y3QgdmlydG5ldF9pbmZv
+ICp2aSA9IG5ldGRldl9wcml2KGRldik7Cj4gLQljaGFyICpwID0gKGNoYXIgKilkYXRhOwo+ICAg
+CXVuc2lnbmVkIGludCBpLCBqOwo+ICsJdTggKnAgPSBkYXRhOwo+ICAgCj4gICAJc3dpdGNoIChz
+dHJpbmdzZXQpIHsKPiAgIAljYXNlIEVUSF9TU19TVEFUUzoKPiAgIAkJZm9yIChpID0gMDsgaSA8
+IHZpLT5jdXJyX3F1ZXVlX3BhaXJzOyBpKyspIHsKPiAtCQkJZm9yIChqID0gMDsgaiA8IFZJUlRO
+RVRfUlFfU1RBVFNfTEVOOyBqKyspIHsKPiAtCQkJCXNucHJpbnRmKHAsIEVUSF9HU1RSSU5HX0xF
+TiwgInJ4X3F1ZXVlXyV1XyVzIiwKPiAtCQkJCQkgaSwgdmlydG5ldF9ycV9zdGF0c19kZXNjW2pd
+LmRlc2MpOwo+IC0JCQkJcCArPSBFVEhfR1NUUklOR19MRU47Cj4gLQkJCX0KPiArCQkJZm9yIChq
+ID0gMDsgaiA8IFZJUlRORVRfUlFfU1RBVFNfTEVOOyBqKyspCj4gKwkJCQlldGh0b29sX3Nwcmlu
+dGYoJnAsICJyeF9xdWV1ZV8ldV8lcyIsIGksCj4gKwkJCQkJCXZpcnRuZXRfcnFfc3RhdHNfZGVz
+Y1tqXS5kZXNjKTsKPiAgIAkJfQo+ICAgCj4gICAJCWZvciAoaSA9IDA7IGkgPCB2aS0+Y3Vycl9x
+dWV1ZV9wYWlyczsgaSsrKSB7Cj4gLQkJCWZvciAoaiA9IDA7IGogPCBWSVJUTkVUX1NRX1NUQVRT
+X0xFTjsgaisrKSB7Cj4gLQkJCQlzbnByaW50ZihwLCBFVEhfR1NUUklOR19MRU4sICJ0eF9xdWV1
+ZV8ldV8lcyIsCj4gLQkJCQkJIGksIHZpcnRuZXRfc3Ffc3RhdHNfZGVzY1tqXS5kZXNjKTsKPiAt
+CQkJCXAgKz0gRVRIX0dTVFJJTkdfTEVOOwo+IC0JCQl9Cj4gKwkJCWZvciAoaiA9IDA7IGogPCBW
+SVJUTkVUX1NRX1NUQVRTX0xFTjsgaisrKQo+ICsJCQkJZXRodG9vbF9zcHJpbnRmKCZwLCAidHhf
+cXVldWVfJXVfJXMiLCBpLAo+ICsJCQkJCQl2aXJ0bmV0X3NxX3N0YXRzX2Rlc2Nbal0uZGVzYyk7
+Cj4gICAJCX0KPiAgIAkJYnJlYWs7Cj4gICAJfQoKCkFja2VkLWJ5OiBKYXNvbiBXYW5nIDxqYXNv
+d2FuZ0ByZWRoYXQuY29tPgoKCgo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
+bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
+aW50ZWwtd2lyZWQtbGFuCg==
