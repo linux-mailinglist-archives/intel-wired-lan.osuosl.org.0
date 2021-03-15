@@ -1,160 +1,159 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1049633AD2E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Mar 2021 09:19:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA28333AD30
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Mar 2021 09:19:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 946006F4E7;
-	Mon, 15 Mar 2021 08:19:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8FA576F545;
+	Mon, 15 Mar 2021 08:19:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y5IW-hfytUki; Mon, 15 Mar 2021 08:19:16 +0000 (UTC)
+	with ESMTP id 3uYboWWRyIEQ; Mon, 15 Mar 2021 08:19:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C6146F52B;
-	Mon, 15 Mar 2021 08:19:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3BCAD6F53F;
+	Mon, 15 Mar 2021 08:19:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 45E471BF2AA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 277BF1BF2AA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2FE21447DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 163116F53F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TRUOu7nS8oZ2 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Mar 2021 08:19:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rMgMC4t1Huk7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Mar 2021 08:19:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E19CB42DDB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:09 +0000 (UTC)
-IronPort-SDR: 3/n19OiqaOq270MSFFJZeuwE8PQNTRVykXXwiNeqKmcqF/VGaL9U9dUXLZGb7uAkMRfPXbHuYm
- iIFOsSlPCOyw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9923"; a="253068718"
-X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="253068718"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2021 01:19:02 -0700
-IronPort-SDR: zqvqY5QAddW2zZ/VOSlV6TsFP4QZPAdbYuve31EXSlwUVlW1k71UhED0/ICyJh1DLlFEU+xFJl
- eIuMjWm6+zzw==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D6C8C6F52B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Mar 2021 08:19:18 +0000 (UTC)
+IronPort-SDR: d9t3yOCRU5FONjbxR6xeMdfH7mvanD2a0k3pKvFoNvGK1lgA1Il3E8Gqcfv07gXaklMbc3UJ6f
+ 6J3tt0Uusa2Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9923"; a="188413242"
+X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="188413242"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2021 01:19:17 -0700
+IronPort-SDR: +ilHVjpAUh3O+wXR/WxZSNMi3tbyPyBPQuxJb+mDWIPVy4TQ3W/40sjcTaPhtllk8bEyDrGnea
+ HIf/EKs0bRlQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="601350595"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by fmsmga006.fm.intel.com with ESMTP; 15 Mar 2021 01:19:02 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.81,249,1610438400"; d="scan'208";a="371555137"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga003.jf.intel.com with ESMTP; 15 Mar 2021 01:19:17 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Mon, 15 Mar 2021 01:19:01 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ 15.1.2106.2; Mon, 15 Mar 2021 01:19:16 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Mon, 15 Mar 2021 01:19:00 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ 15.1.2106.2; Mon, 15 Mar 2021 01:19:16 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2
- via Frontend Transport; Mon, 15 Mar 2021 01:19:00 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ via Frontend Transport; Mon, 15 Mar 2021 01:19:16 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.172)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2106.2; Mon, 15 Mar 2021 01:19:00 -0700
+ 15.1.2106.2; Mon, 15 Mar 2021 01:19:12 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JdqSWoc6CjsLIi+cT0dk6q05velwseAfxS1eiMGs5LbZUGeIgAuj2qdqXn9KZ9AM1geDGIBJhlUDSYnw3QBL4B8+3HrZwFqEVQWn3VI1KhgiDNIyGNSfjKG0V//KeBv+ZZBM8x19YC3lYzS7ixvkWKDsRRC9aU/GhMrYHmkFW3hSoChu2OuCemBK340/Uv4j6RCCL5F4exyYXsbVF0Vcrn+BjfwqAveyvKfoPETbsfNdv9vTrQTO4lDsD40IKCMoKm1HjRffIJW9+xzrrmW2ngMkfgjW8gvV2qOxdRfZhoW0zuqFg0hm8JFpn0mq4q6rZavtC8T77eyTqGlGdyPbRg==
+ b=BV9LyUIUdjP4acBZ6Q7wSsM+885nQac8+UFUN9n3had7r4k/A06A0bitLlj2wQP64gxNlzP/9H03H/10M5RrA8khqItZBTrYAcOvXS3BR+Ijbu24iMPgImU149yTf2PJc9WViut436h+mJylqAYprSA82ftZDqdeMa6EhNl8KoHqPmmnoAA9ypuOe+y2GELS5KlanW0OXpGs+oVg2CbWjKP+z4uejUWuRReGAlalrSiya44DgKztfIJpXGs89XllPcrAPKXOl6ggwgnLaV7LeC54OKRxNpDM6SVvJHit8DxsLppxWTgVC/Kda/C/iLwcbenuV2XsHlcPZh6w1tfv8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sQfHRKelDG1EO2voG6YhT8QTxs0cI+3WcmnNHwDpmvQ=;
- b=KC3NQaAK1MSa9NOWvOl8Og7zz0cVCTsUV4oG5OL9NHvv1XIO7RG1ZrAyNI21vAoy47uJ8JkB5LOz+bCB7NIwvsTiFp2BLRoTugYrLRKKE+VCGey3k83rlz9S0FGBn84qNvaiVSRM4SELH/myJ7L3tmh2gq+ozQaP6R+pBBPhvA+bcuBbJfKKJxQ8JqY4oL6xPW/6y91Vbq63mUK5M8fcv+wLlwPyq70gnhaYMVPytzXAheFRSZpP0VmGqE4l+X13w8RAaKO8KN+ya/+7YteGciahhmKE6sWXjk3/ZPBHW1MAs7wwWPL4Pgl+nbflBhGdYxLfbdC6e3twU27oLT1sTw==
+ bh=FWpusEg5P/En+e3vmKiyBh082CmL7q2QhcQ9N0UgOrg=;
+ b=Pu560Zp+acQiIKs+Z2hFzLA8Tc+WnrbWM0vS3ie6UWAqnG/HDEllXynohPFKz/c37cq1YlUmTB3CeIXym7Ix/XEQ2+LikM5Px5BwX1VV1n/pv0tk+GpoxtiXuK16tuvYMgvvxivrDz01UtOV+Hh4TUqJqrsd7oo04yLMn3jGXd5c6dP9RVrIUrIadPCzgRDLb7NUnXUUihbaPBpjV5GNk4TEisdFcqjRGuAmshvNOt644c06QoJeea80WyeQHCQgZbx7GNW9ZVNBjBQohw7tkeU2pS9cjQA2HwCa8pYeUJUrbQlUKZ2sFKCpaUnSgglnlTA2QofGxKxG6NdCUkgo8g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sQfHRKelDG1EO2voG6YhT8QTxs0cI+3WcmnNHwDpmvQ=;
- b=yN/hBeQoJT7TmMKAGcuO+yTj7ighh0sV3XYlc2CM+BNWAk360S90T0eeIc5/ciNvF5yXtvAwjrdFD4EWAIWXsFa1uqDxtabDbgJB3hPTavNT37lEX0bVLk6Suewhhp+dY0eCr+Vg2eFtoUQmIuUWR6PFMBI2Oo3cSy0ULyaZfV0=
-Received: from DM6PR11MB3099.namprd11.prod.outlook.com (2603:10b6:5:6c::16) by
- DM6PR11MB3260.namprd11.prod.outlook.com (2603:10b6:5:b::30) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3933.32; Mon, 15 Mar 2021 08:18:58 +0000
-Received: from DM6PR11MB3099.namprd11.prod.outlook.com
- ([fe80::fdb8:bfa8:ff9:b29f]) by DM6PR11MB3099.namprd11.prod.outlook.com
- ([fe80::fdb8:bfa8:ff9:b29f%6]) with mapi id 15.20.3933.032; Mon, 15 Mar 2021
- 08:18:58 +0000
-From: "Chen, BoX C" <box.c.chen@intel.com>
-To: "Wang, Haiyue" <haiyue.wang@intel.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [Patch v5 06/18] ice: Add support for per VF
- ctrl VSI enabling
-Thread-Index: AQHXFJQJvDF5VjtDOkqn/eOBwrgM4qqEvjHwgAAASDA=
-Date: Mon, 15 Mar 2021 08:18:58 +0000
-Message-ID: <DM6PR11MB309959CFC416D7B72AC95A82D96C9@DM6PR11MB3099.namprd11.prod.outlook.com>
+ bh=FWpusEg5P/En+e3vmKiyBh082CmL7q2QhcQ9N0UgOrg=;
+ b=hGcCsrmWQTmi5X+hikvDVJR4CCcwtBJi0yw3NslZ9Y7R2HduADFvJJixEUcOIe6kt9heMhybYxsze/NWW5heTmwCbaO8YDwOMWxiaU1dmo6LLFXvpxXttYlFsfMzeMNpTp12HW1a5M9F37UdH/GBQDug/Q3jMr4RrCdxrMaTDfo=
+Received: from BN8PR11MB3795.namprd11.prod.outlook.com (2603:10b6:408:82::31)
+ by BN6PR11MB1297.namprd11.prod.outlook.com (2603:10b6:404:4a::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3933.32; Mon, 15 Mar
+ 2021 08:19:05 +0000
+Received: from BN8PR11MB3795.namprd11.prod.outlook.com
+ ([fe80::ec6a:25a8:8c59:89e]) by BN8PR11MB3795.namprd11.prod.outlook.com
+ ([fe80::ec6a:25a8:8c59:89e%2]) with mapi id 15.20.3933.032; Mon, 15 Mar 2021
+ 08:18:59 +0000
+From: "Wang, Haiyue" <haiyue.wang@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [Patch v5 07/18] ice: Enable FDIR Configure
+ for AVF
+Thread-Index: AQHXFJQVwm7GqGdjt0iSpUQtS4REfaqEvlZQ
+Date: Mon, 15 Mar 2021 08:18:59 +0000
+Message-ID: <BN8PR11MB3795F68FC7D640CD383ECE88F76C9@BN8PR11MB3795.namprd11.prod.outlook.com>
 References: <20210309030815.5299-1-haiyue.wang@intel.com>
- <20210309030815.5299-7-haiyue.wang@intel.com>
- <BN8PR11MB379511C9ACA9E6FDA41D0597F76C9@BN8PR11MB3795.namprd11.prod.outlook.com>
-In-Reply-To: <BN8PR11MB379511C9ACA9E6FDA41D0597F76C9@BN8PR11MB3795.namprd11.prod.outlook.com>
-Accept-Language: zh-CN, en-US
+ <20210309030815.5299-8-haiyue.wang@intel.com>
+In-Reply-To: <20210309030815.5299-8-haiyue.wang@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [192.102.204.51]
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.6.0.76
+authentication-results: lists.osuosl.org; dkim=none (message not signed)
+ header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
+x-originating-ip: [192.55.46.56]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: aa85df35-6fa8-4ddb-4115-08d8e78afb7b
-x-ms-traffictypediagnostic: DM6PR11MB3260:
+x-ms-office365-filtering-correlation-id: 85b75072-bc13-4938-0b28-08d8e78afc2e
+x-ms-traffictypediagnostic: BN6PR11MB1297:
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB3260B6534A54F7E28F5F6896D96C9@DM6PR11MB3260.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-microsoft-antispam-prvs: <BN6PR11MB1297EAA06C7680025E4CB444F76C9@BN6PR11MB1297.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: /Gqj2I5YyCgx2Z1Wy1/J+snkfLPZNju0l7kKr8doyaSxhOTxgSf8Ei0TugNezwfkYhvgn3+DnITqDYq+kOAdJ9+jo51JvDEj4UlVklfuQu1umlw1nZxsUOrOqAvVVfzm1hANP+qrqlXwRdf8Gcf41BMy5cwzqs8i4BHSX1c5MAXI3eSRET/Jk+OZZXIViJoPgmXo7U0tNYZ6CdOMhqtU8pIQA63dlKyR7xalmJ2Ir73H1ti8VlbxB4H1xc752hb2jSTPlnxUZv+2Z7B9m7F01bm7qptEpUrrgImS/xBypXq8VMIbjFz+pQVseJiEwHp0hU9S6aerIFRdT9WRkrZAN6c7OhZa+uarL00TPA711B5aNAohdCsS6qmn40aPO881sd+tVqAALbJZJlQH6QURtLeUfJDL0VmqyxJKLpgS++SeJ+h0Hf+orU85TUQ3ZTx/b5XUMDxQmtrgCm3nJSusJD6J1g+qqVQmx9EDgMu7R3Wfs2rexEEEm8wHD6WYAJtDitt/BQYWkXJ/TFDev6UGah0WjNsfkzyl07miv1sstEZqdH+1E99Lq4FTPoLEUPhgu7cQSFG26eO8PpW2jugTf3lr63CVSiDCX2a4SU5Lj1xsXT6oHp9qsPbDY0ecRDAeuLCnvkLwxIbebQOc79eU5A==
+x-microsoft-antispam-message-info: bDHajm2Jxo0U2bee5bOyXAw5p+d8huLLf90LhAUdxEvVBerNL1AsGJcuuK85nQP5p8HVso3NgMLzUMSM1zsX258ndmB+jLbUqwwo9gmR6J3AfeY40Hs6BpvQ/ShiYsrLjLWNaP/55pfb/jCDjKJEB9CeOHjhBwATHQX5gs/QtG9oOvL6s1utcC9GP1DzYGB202o58jxlcwl2IqHLiaGqBZ8luEq3mLMbI9YYd41DmDFFXLUTQ/R23GmB7nOlFSPomJssClU50PdL34XLBNzjYyg6WQCR/OjHutWUprczVCOf5rJdi+ALIclJZUkNtoQtBqyB9v+pkn2YoU/qRwHkhfO9lGkZToU3n4QH/P3d0WDekNvb6EWgzsc74JHtVA7XdJQFi9+igfP7lBGplz+0pE1FRrnfX98YbOWYktQ13eQP1pAMeQQDv+YtRr6wF6nKUWnPhx8/Oy2lbi38FSS7Y3ki7FHtH9c2En5CSosMSH83/JVCzbv8gwIqIU5Gy/cbT/BbfPAEodqWks/HhasYjn/2sx9cEE74CjAssSCi/DKLXSiLwSDD2FfKGz4YvYWsLV7ezI4JQSQKo/4AM9zE9arHBArDYynWSRQsmlhjprf40G8sCIiqd28IxSXNzOZgZDEAol4fx6zFeTBGNLFoLw==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3099.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(376002)(366004)(39860400002)(136003)(346002)(76116006)(64756008)(66946007)(7696005)(66556008)(66476007)(186003)(966005)(5660300002)(83380400001)(8936002)(66446008)(8676002)(107886003)(52536014)(53546011)(316002)(478600001)(86362001)(55016002)(33656002)(9686003)(2906002)(6506007)(4326008)(26005)(54906003)(110136005)(71200400001);
+ IPV:NLI; SFV:NSPM; H:BN8PR11MB3795.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(39860400002)(376002)(396003)(346002)(366004)(136003)(86362001)(33656002)(83380400001)(52536014)(64756008)(66946007)(66556008)(76116006)(6916009)(71200400001)(8936002)(66446008)(7696005)(9686003)(316002)(54906003)(5660300002)(107886003)(53546011)(4326008)(478600001)(186003)(2906002)(8676002)(55016002)(6506007)(26005)(966005)(66476007);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?wzVkkuZyyJyI5/XKHO8cuLN54KnCjJ+3jdem5ORAEuHbge/DXTwbz6KRR0xe?=
- =?us-ascii?Q?5/x0lN/O6VL3Cn0SnqiycAFobaSE2+KXK7eNmjZRjQA23S0B1UOQn0C97bDp?=
- =?us-ascii?Q?cK5KqeUBdhG8+xwlKkPAy/n/Rt8ErGAFLOUzFtex5Xrm/vBOfJuVb6ImNa29?=
- =?us-ascii?Q?J63C/pjNwcf1k9FqayIZDWBldoRuos30ccKxdoFC9jMmpNTW9u7cnc5RDom2?=
- =?us-ascii?Q?QWzhFP7HszesM0bQq5iApOH02mO/wMTKv3Rxb5tvldfh4xxpCWEHTgpSKL9Q?=
- =?us-ascii?Q?w1yxmCX5Dd4csELDj1B/+oZTMNdRnpwvrWe9Rr+JDBxP1+lMw79qibwtlqbY?=
- =?us-ascii?Q?I0YjznoGDZDpeS6xF8Nq4ZT8iSgA475RFuzo+2QGLJVNG81PJoEvxkj0pRvF?=
- =?us-ascii?Q?gSFvMAvpIunp6soUNPd5lb21WjhmJOMq8JG2H01v7Jt6u2orM15FQ30yBha7?=
- =?us-ascii?Q?p6AhQGy00C9tEA6Q3ZLAraYuT2lqF+e1wk9qn/hRbWSCdaudA2zJGzSca3KE?=
- =?us-ascii?Q?75bcapOx6FzVMaHoG7jv+id68pePSJ1DQpxVS2qYB5Ncnksv78E3fmCR1/bX?=
- =?us-ascii?Q?VQSFu8DasFP7K47yKOcn2dvfG8D+9mD/ITc5wtBlKAda/gthAvQVB5gg4jD/?=
- =?us-ascii?Q?IVmVfgVTvnHna8ugzXpoTXdd82oDQjkWn12HwFxLuT9co76Lfr9waVu/H8a2?=
- =?us-ascii?Q?VsqxD+57E1+QE/HPNq/s9f4YPq0qu2CvCURxd3cvFDki8jWWwpvriyPhc+np?=
- =?us-ascii?Q?7KT2LcTvirsDzj5XOYCrWetQvkal3/9VtQI15bk4ZtyLot9HxAGkBfni0Mfr?=
- =?us-ascii?Q?7xIRv4fYdylDN+2QqihpLYL/PTARc2zuxATcEuD28IHgEX5N3VB0YWW0pOSV?=
- =?us-ascii?Q?ckHiC4uYyAHgIjEy9hlOxYn6CUT3D4Y0R6x4X0JU+qNKo4p85YjJHFbrOFez?=
- =?us-ascii?Q?/icE6+geMNvq0uLBh4dRP5lZ8sM4FDRoojJC3MMbjAInSXVwh/pft1aQPc7p?=
- =?us-ascii?Q?5Y/+BE4RWVpov1OcBXUxSVCpRCGTHNq6IbRdO2+d0tDyh1MrfaHjYzjZHctT?=
- =?us-ascii?Q?fnzN8uG+/N9rj1xk4X+/AIi4AtjASKTXOQgH7TTnnKN0lg7mj7sP3wR1MYIm?=
- =?us-ascii?Q?RHOZa7mXFrDhe0E6XdnIlneYcFrqn3/nNsYt4Y2bNb5e7NyZmM2d6/3gxQHn?=
- =?us-ascii?Q?XAherxikqzmlwpIXz0xWnZN4XY2CJ1MbC2/rGqh8jl1sIhHFbFsCqdKWq6QP?=
- =?us-ascii?Q?a8MyPxxQLGHc/8QpU3PLgCO6dCq9CBhEKHcJIoPP7M1rhuSEn0IbQ+cM4g/H?=
- =?us-ascii?Q?zh7YIyp4owBTMbGhAObp5F2X?=
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?67SQts8YKK1s4NZSBUzP7CTtFgDRDgc1trNXB6QtUP8VCkxIt8tk8psBOAub?=
+ =?us-ascii?Q?D34feemMIOyeExyjm6GlBSC9wDWu1iPaoIIViAKcx475NzDKKdJufS3P6mP6?=
+ =?us-ascii?Q?Zu5Z8JnEgfd2DLaalt4uv5VsVgL+bAiG+hJ9hx9n3uFx9kHJ2iREZUckOBI3?=
+ =?us-ascii?Q?yeeOrjyoDcyCdshcrmrXeszJr95kJI2QvM3KWtJ8+Yn85wKdxNO0O2jAEnYk?=
+ =?us-ascii?Q?2HVgJ1BEOF9qa7B/W3MRcGTBSQORedTILs+DcPjLlnFbr7haEzbZMHYHt5RO?=
+ =?us-ascii?Q?up72KFu/vyN9nizJr4+qllsoL7LMnHdJrshThe3VgQyj66lcbcS/1ulSoKSy?=
+ =?us-ascii?Q?BMpn+l2VEjfn6GE479k06At2Rxu4gahOKLXCnaPqHlZr0Pcztm3M7irnOPnn?=
+ =?us-ascii?Q?zhS3TnuKgsGugGWSEwqV08cd6SRy0o2cDVMo+GHn5599m92Rj/OU5duAiSS9?=
+ =?us-ascii?Q?clT2q09ssdnUvjw6v/cONiSQmo8PnRLi/+N4xpTQupYDdE3APpGR6+kI3srI?=
+ =?us-ascii?Q?LaWSSAa6s3vjLMXiiQ73LiKPxAMEW3ORNCVJYCLOVEA52650jqjF01a1DFTk?=
+ =?us-ascii?Q?kzxixZEIWm6TwSeHbr4hmeNFOjbvM4AWVNuMV286It8cNhO0ruL89GQZ0CUp?=
+ =?us-ascii?Q?llDzGu+/7Lb0K5fyVVN8QFbLFLodgqIS7ipS00nZe8Wd6Xg/ymQNlNaAK8Cy?=
+ =?us-ascii?Q?r3+XsQgDeeYzeQ1m6J5SS0+lz/rUPv6JISKZhoXp0RkXok6RkGo+uBGpf+xE?=
+ =?us-ascii?Q?m0cH/Eb2RSs7LMTaLgyoc7nfb7d866r2MYJaR1y6+l8j06O5/5gSoDLW5cLr?=
+ =?us-ascii?Q?/r3Aw9oX7icHXjy1ILqQSxbujlEbpdEGjtpSiaKIyt88Eksgcc+gOj5t1v2j?=
+ =?us-ascii?Q?S2emMKQyA8HPdSxwcsbhA4hdo757Oe8Osmtn2D8UFhuBJU20Z0SxIs1/r3DP?=
+ =?us-ascii?Q?/GvuPnD8zoDE7sJJLkxKAGmnotmlGo9cbBYStaousmMhdPsV+WZJU2tuu2qP?=
+ =?us-ascii?Q?BMqGcvAqGK2fBPxLQCjhqJkHsIpTxfpnVBfos90rG7uxDBBntX0T65ylZ9AE?=
+ =?us-ascii?Q?hJ1ARfmYbDw2Pwu0w4Gx645xEXxylJHTQcEBP7KWOb4X/Q28y1TQ1fjtg/zg?=
+ =?us-ascii?Q?4GkeWsyHhhTUsY1QQPFJ9QYPT7DRVyyCsnXa9lnTfO2cqPTslnk7A4/BDtbc?=
+ =?us-ascii?Q?L7v40hxMfG+lfqbOn7usBTnETg+NXAJyoOPF5lREI0RkT39NDZNAy20/z9Re?=
+ =?us-ascii?Q?0a4cu+0ghbcHwNK4pLBUUQhBmqvz78XAjaopbG19zCHSOn/3PjxKoClNyWOS?=
+ =?us-ascii?Q?ortJg3uaUTcBp65122AXoyzT?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3099.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aa85df35-6fa8-4ddb-4115-08d8e78afb7b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Mar 2021 08:18:58.2177 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: BN8PR11MB3795.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 85b75072-bc13-4938-0b28-08d8e78afc2e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Mar 2021 08:18:59.1896 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VQOdB4g07Z1sorRHkZ46UgHl33FSxt6sHhTGvSZ4cRey8Nw/GtRVKFtN/wqW2lY2XIBJB3tMVcMveawLvpDXew==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3260
+X-MS-Exchange-CrossTenant-userprincipalname: 9r/R6oXD8VSfIrhphi5pBkggzLkd6T9cZ/zVgFRashvbORQVI1ZJ0YUmQ4eGuQxzxZ3luyK6E9gs2jqj0Ndwag==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1297
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [Patch v5 06/18] ice: Add support for per VF
- ctrl VSI enabling
+Subject: Re: [Intel-wired-lan] [Patch v5 07/18] ice: Enable FDIR Configure
+ for AVF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,73 +166,158 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Liang, Cunming" <cunming.liang@intel.com>, "Li,
- Xiaoyun" <xiaoyun.li@intel.com>, "Cao, Yahui" <yahui.cao@intel.com>, "Zhang,
- Qi Z" <qi.z.zhang@intel.com>
+Cc: "Su, Simei" <simei.su@intel.com>, "Guo, Jia" <jia.guo@intel.com>, "Liang, 
+ Cunming" <cunming.liang@intel.com>, "Cao, Yahui" <yahui.cao@intel.com>,
+ "Xing, Beilei" <beilei.xing@intel.com>, "Zhang, Qi Z" <qi.z.zhang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
-> From: Wang, Haiyue <haiyue.wang@intel.com>
-> Sent: March 15, 2021 16:18
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Haiyue Wang
+> Sent: Tuesday, March 9, 2021 11:08
 > To: intel-wired-lan@lists.osuosl.org
-> Cc: Liang, Cunming <cunming.liang@intel.com>; Li, Xiaoyun
-> <xiaoyun.li@intel.com>; Cao, Yahui <yahui.cao@intel.com>; Zhang, Qi Z
-> <qi.z.zhang@intel.com>; Chen, BoX C <box.c.chen@intel.com>
-> Subject: RE: [Intel-wired-lan] [Patch v5 06/18] ice: Add support for per VF ctrl
-> VSI enabling
+> Cc: Su, Simei <simei.su@intel.com>; Guo, Jia <jia.guo@intel.com>; Liang, Cunming
+> <cunming.liang@intel.com>; Cao, Yahui <yahui.cao@intel.com>; Zhang, Qi Z <qi.z.zhang@intel.com>; Xing,
+> Beilei <beilei.xing@intel.com>
+> Subject: [Intel-wired-lan] [Patch v5 07/18] ice: Enable FDIR Configure for AVF
 > 
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Haiyue Wang
-> > Sent: Tuesday, March 9, 2021 11:08
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: Liang, Cunming <cunming.liang@intel.com>; Li, Xiaoyun
-> > <xiaoyun.li@intel.com>; Cao, Yahui <yahui.cao@intel.com>; Zhang, Qi Z
-> > <qi.z.zhang@intel.com>
-> > Subject: [Intel-wired-lan] [Patch v5 06/18] ice: Add support for per
-> > VF ctrl VSI enabling
-> >
-> > From: Qi Zhang <qi.z.zhang@intel.com>
-> >
-> > We are going to enable FDIR configure for AVF through virtual channel.
-> > The first step is to add helper functions to support control VSI setup.
-> > A control VSI will be allocated for a VF when AVF creates its first
-> > FDIR rule through ice_vf_ctrl_vsi_setup().
-> > The patch will also allocate FDIR rule space for VF's control VSI.
-> > If a VF asks for flow director rules, then those should come entirely
-> > from the best effort pool and not from the guaranteed pool. The patch
-> > allow a VF VSI to have only space in the best effort rules.
-> >
-> > Signed-off-by: Xiaoyun Li <xiaoyun.li@intel.com>
-> > Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-> > Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice.h          |  4 +-
-> >  drivers/net/ethernet/intel/ice/ice_lib.c      | 64 ++++++++++++++++---
-> >  drivers/net/ethernet/intel/ice/ice_main.c     |  9 ++-
-> >  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 62 ++++++++++++++++++
-> > .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  2 +
-> >  5 files changed, 130 insertions(+), 11 deletions(-)
-> >
+> From: Qi Zhang <qi.z.zhang@intel.com>
 > 
-> Re-send to Bo, as a new member.
+> The virtual channel is going to be extended to support FDIR and
+> RSS configure from AVF. New data structures and OP codes will be
+> added, the patch enable the FDIR part.
+> 
+> To support above advanced AVF feature, we need to figure out
+> what kind of data structure should be passed from VF to PF to describe
+> an FDIR rule or RSS config rule. The common part of the requirement is
+> we need a data structure to represent the input set selection of a rule's
+> hash key.
+> 
+> An input set selection is a group of fields be selected from one or more
+> network protocol layers that could be identified as a specific flow.
+> For example, select dst IP address from an IPv4 header combined with
+> dst port from the TCP header as the input set for an IPv4/TCP flow.
+> 
+> The patch adds a new data structure virtchnl_proto_hdrs to abstract
+> a network protocol headers group which is composed of layers of network
+> protocol header(virtchnl_proto_hdr).
+> 
+> A protocol header contains a 32 bits mask (field_selector) to describe
+> which fields are selected as input sets, as well as a header type
+> (enum virtchnl_proto_hdr_type). Each bit is mapped to a field in
+> enum virtchnl_proto_hdr_field guided by its header type.
+> 
+> +------------+-----------+------------------------------+
+> |            | Proto Hdr | Header Type A                |
+> |            |           +------------------------------+
+> |            |           | BIT 31 | ... | BIT 1 | BIT 0 |
+> |            |-----------+------------------------------+
+> |Proto Hdrs  | Proto Hdr | Header Type B                |
+> |            |           +------------------------------+
+> |            |           | BIT 31 | ... | BIT 1 | BIT 0 |
+> |            |-----------+------------------------------+
+> |            | Proto Hdr | Header Type C                |
+> |            |           +------------------------------+
+> |            |           | BIT 31 | ... | BIT 1 | BIT 0 |
+> |            |-----------+------------------------------+
+> |            |    ....                                  |
+> +-------------------------------------------------------+
+> 
+> All fields in enum virtchnl_proto_hdr_fields are grouped with header type
+> and the value of the first field of a header type is always 32 aligned.
+> 
+> enum proto_hdr_type {
+>         header_type_A = 0;
+>         header_type_B = 1;
+>         ....
+> }
+> 
+> enum proto_hdr_field {
+>         /* header type A */
+>         header_A_field_0 = 0,
+>         header_A_field_1 = 1,
+>         header_A_field_2 = 2,
+>         header_A_field_3 = 3,
+> 
+>         /* header type B */
+>         header_B_field_0 = 32, // = header_type_B << 5
+>         header_B_field_0 = 33,
+>         header_B_field_0 = 34
+>         header_B_field_0 = 35,
+>         ....
+> };
+> 
+> So we have:
+> proto_hdr_type = proto_hdr_field / 32
+> bit offset = proto_hdr_field % 32
+> 
+> To simply the protocol header's operations, couple help macros are added.
+> For example, to select src IP and dst port as input set for an IPv4/UDP
+> flow.
+> 
+> we have:
+> struct virtchnl_proto_hdr hdr[2];
+> 
+> VIRTCHNL_SET_PROTO_HDR_TYPE(&hdr[0], IPV4)
+> VIRTCHNL_ADD_PROTO_HDR_FIELD(&hdr[0], IPV4, SRC)
+> 
+> VIRTCHNL_SET_PROTO_HDR_TYPE(&hdr[1], UDP)
+> VIRTCHNL_ADD_PROTO_HDR_FIELD(&hdr[1], UDP, DST)
+> 
+> A protocol header also contains a byte array, this field should only
+> be used by an FDIR rule and should be ignored by RSS. For an FDIR rule,
+> the byte array is used to store the protocol header of a training
+> package. The byte array must be network order.
+> 
+> The patch added virtual channel support for iAVF FDIR add/validate/delete filter.
+> iAVF FDIR is Flow Director for Intel Adaptive Virtual Function which can
+> direct Ethernet packets to the queues of the Network Interface Card.
+> Add/delete command is adding or deleting one rule for each virtual
+> channel message, while validate command is just verifying if this rule
+> is valid without any other operations.
+> 
+> To add or delete one rule, driver needs to config TCAM and Profile,
+> build training packets which contains the input set value, and send
+> the training packets through FDIR Tx queue. In addition, driver needs to
+> manage the software context to avoid adding duplicated rules, deleting
+> non-existent rule, input set conflicts and other invalid cases.
+> 
+> NOTE:
+> Supported pattern/actions and their parse functions are not be included in
+> this patch, they will be added in a separate one.
+> 
+> Signed-off-by: Jeff Guo <jia.guo@intel.com>
+> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
+> Signed-off-by: Simei Su <simei.su@intel.com>
+> Signed-off-by: Beilei Xing <beilei.xing@intel.com>
+> Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/Makefile       |    2 +-
+>  .../net/ethernet/intel/ice/ice_ethtool_fdir.c |    4 +
+>  drivers/net/ethernet/intel/ice/ice_fdir.c     |    6 +-
+>  drivers/net/ethernet/intel/ice/ice_fdir.h     |    5 +
+>  .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |    2 +
+>  .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 1034 +++++++++++++++++
+>  .../ethernet/intel/ice/ice_virtchnl_fdir.h    |   24 +
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |   17 +-
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |    6 +
+>  include/linux/avf/virtchnl.h                  |  278 +++++
+>  10 files changed, 1372 insertions(+), 6 deletions(-)
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
 > 
 
-Tested-by: Chen Bo <BoX.C.Chen@intel.com>
+Re-send to Bo, as a new member.
 
-BRs,
-Chen Bo
-
-> > --
-> > 2.30.1
-> >
-> > _______________________________________________
-> > Intel-wired-lan mailing list
-> > Intel-wired-lan@osuosl.org
-> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> --
+> 2.30.1
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
