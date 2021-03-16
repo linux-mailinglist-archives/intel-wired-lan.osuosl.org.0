@@ -1,57 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A87ED33DA6F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 18:14:53 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D921F33DB17
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 18:40:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0038083AD2;
-	Tue, 16 Mar 2021 17:14:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 479E683E27;
+	Tue, 16 Mar 2021 17:40:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V_wSfiliL4Dv; Tue, 16 Mar 2021 17:14:51 +0000 (UTC)
+	with ESMTP id dcWqSgOGJdDm; Tue, 16 Mar 2021 17:40:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F29FF83BB6;
-	Tue, 16 Mar 2021 17:14:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2BEB083774;
+	Tue, 16 Mar 2021 17:40:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A84371BF427
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BB58B1BF427
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:40:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D7D84ECA4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A9CD06F68A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:40:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 81D7zrtBcA9e for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E0B634EC93
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B1F565087;
- Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615914884;
- bh=CDcD1dQBr2YIU2/9H6b3fgSvWCMP+J7RvXYb+uxHbnU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Y9HRoKOYVyBxyp8v3oNq6vGc4ugf+1ST8l3ZE1inyHrkrtVRnJZTd3Htff9hGDUnw
- 2ZHB9v/He710SJABH+YHBfy1sVLLaK7ChvAAWtXVeI3IkJaGItGSkG5ota+7NBdNw7
- f8LY7YFWDpv1LMX7EePMyl5anq5eJviQpRN3tkMmrCZWSawPsHv7pHyQmVBuUdvu2R
- WSvpIFhGaUZzQkdsSy6fOayzU9cD0TnFz/6Kh0MKFTJ1GcJXJDZHMXSqmJJG80GvRq
- 8JI0XWr8QsF/eiqg75c4ap4zZM9lzZYEV+WIOVadLQRZEJvdNdgDio5XI70/qO54ya
- ceUsIWyG5uFFw==
-Date: Tue, 16 Mar 2021 10:14:43 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Stefan Assmann <sassmann@kpanic.de>
-Message-ID: <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20210316100141.53551-1-sassmann@kpanic.de>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id erpF-JavIe-D for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Mar 2021 17:40:27 +0000 (UTC)
+X-Greylist: delayed 00:07:48 by SQLgrey-1.8.0
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 18962606A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:40:26 +0000 (UTC)
+Received: from [192.168.0.11] ([217.83.109.231]) by mrelayeu.kundenserver.de
+ (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
+ 1N3sRi-1lmNG40rXE-00zraJ; Tue, 16 Mar 2021 18:27:12 +0100
+To: Jakub Kicinski <kuba@kernel.org>
 References: <20210316100141.53551-1-sassmann@kpanic.de>
+ <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+From: Stefan Assmann <sassmann@kpanic.de>
+Message-ID: <44b3f5f0-93f8-29e2-ab21-5fd7cc14c755@kpanic.de>
+Date: Tue, 16 Mar 2021 18:27:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Content-Language: de-DE
+X-Provags-ID: V03:K1:Io/XlaNymXq7CBfOVzViFtONLAYXSli5QpGHDs+cV1IUpUYmTUN
+ J5ofW3PnkGcCHLJXAH4cseNqcsYgUsHjr9HvVzwXwtyeBIUoFFl9I8Dc5SakkWW66V9waC3
+ vuywws5CCD5PR9yZ0L5MGBVhOdieWgLp60u65VGCs875O/L94z9hkw8jIASvGtirzL7bL67
+ AMkYB0iinIrmlaDfbjcPw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KbYlf475X84=:Knqw9GCr4n2/odtp/SqW6H
+ 1QdLfbiii7t1JgtZ82XtKKtCtNylfzSDQm03dn332RsI4N/JL2AlLMS8CbTpAEdXPGZQDX9bl
+ dlUV4FjgykhCe1BGtvPxlRZkQq75wWNi9v5E6OtnBdJ1wAHBFV2Yk96IKt/0vl+kT0K4fCVaP
+ A5Zm15UO/aFaT752qQbD7KgLkCE7UOjCQxouie9M7zbB9CW0qM1N5vagGPBPjAwRUE8DZln8Y
+ ovbQFV86lRvBtodLFEqXjoGQCOp+qIkPiPcaHjbc/pgeHPi3wo3L827pPbkrPemSAyLBW6M5F
+ 3abkjJu0HrhiNtf4bnYH0udlY9BaG5+8I84slGTbS65vK3+3C9XX4kq2J5cqyyQ9ceqUeVKol
+ eHwnI5SUDwbuXFQnnU5GjNJkCdAomUUgMtHXaaI3hVLmHIZ8I5rl3J7qKxxlG68pwt1hmYeVL
+ Y3MQnsjJdw==
 Subject: Re: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -72,33 +77,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 16 Mar 2021 11:01:41 +0100 Stefan Assmann wrote:
-> To avoid races between iavf_init_task(), iavf_reset_task(),
-> iavf_watchdog_task(), iavf_adminq_task() as well as the shutdown and
-> remove functions more locking is required.
-> The current protection by __IAVF_IN_CRITICAL_TASK is needed in
-> additional places.
+On 16.03.21 18:14, Jakub Kicinski wrote:
+> On Tue, 16 Mar 2021 11:01:41 +0100 Stefan Assmann wrote:
+>> To avoid races between iavf_init_task(), iavf_reset_task(),
+>> iavf_watchdog_task(), iavf_adminq_task() as well as the shutdown and
+>> remove functions more locking is required.
+>> The current protection by __IAVF_IN_CRITICAL_TASK is needed in
+>> additional places.
+>>
+>> - The reset task performs state transitions, therefore needs locking.
+>> - The adminq task acts on replies from the PF in
+>>   iavf_virtchnl_completion() which may alter the states.
+>> - The init task is not only run during probe but also if a VF gets stuck
+>>   to reinitialize it.
+>> - The shutdown function performs a state transition.
+>> - The remove function perorms a state transition and also free's
+>>   resources.
+>>
+>> iavf_lock_timeout() is introduced to avoid waiting infinitely
+>> and cause a deadlock. Rather unlock and print a warning.
+>>
+>> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 > 
-> - The reset task performs state transitions, therefore needs locking.
-> - The adminq task acts on replies from the PF in
->   iavf_virtchnl_completion() which may alter the states.
-> - The init task is not only run during probe but also if a VF gets stuck
->   to reinitialize it.
-> - The shutdown function performs a state transition.
-> - The remove function perorms a state transition and also free's
->   resources.
+> I personally think that the overuse of flags in Intel drivers brings
+> nothing but trouble. At which point does it make sense to just add a
+> lock / semaphore here rather than open code all this with no clear
+> semantics? No code seems to just test the __IAVF_IN_CRITICAL_TASK flag,
+> all the uses look like poor man's locking at a quick grep. What am I
+> missing?
 > 
-> iavf_lock_timeout() is introduced to avoid waiting infinitely
-> and cause a deadlock. Rather unlock and print a warning.
-> 
-> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 
-I personally think that the overuse of flags in Intel drivers brings
-nothing but trouble. At which point does it make sense to just add a
-lock / semaphore here rather than open code all this with no clear
-semantics? No code seems to just test the __IAVF_IN_CRITICAL_TASK flag,
-all the uses look like poor man's locking at a quick grep. What am I
-missing?
+Hi Jakub,
+
+I agree with you that the locking could be done with other locking
+mechanisms just as good. I didn't invent the current method so I'll let
+Intel comment on that part, but I'd like to point out that what I'm
+making use of is fixing what is currently in the driver.
+
+Thanks!
+
+  Stefan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
