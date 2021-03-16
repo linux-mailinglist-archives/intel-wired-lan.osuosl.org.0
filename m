@@ -1,65 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A7A933E0D1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 22:51:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA28933E0E4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 22:56:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 93BC583E94;
-	Tue, 16 Mar 2021 21:51:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 535A44EC9C;
+	Tue, 16 Mar 2021 21:56:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jhBUfOrQi9QU; Tue, 16 Mar 2021 21:51:20 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1CTcApeJ2Yhv; Tue, 16 Mar 2021 21:56:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7F15483E5F;
-	Tue, 16 Mar 2021 21:51:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EC5E24EC9E;
+	Tue, 16 Mar 2021 21:56:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1ED1B1BF2C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:50:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C27771BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:56:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 08828431C7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:50:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id AD92C83E2F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:56:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0a1PR1txFER7 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Mar 2021 21:50:05 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xUbOaQujumxu for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Mar 2021 21:55:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4EB0F43198
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:50:05 +0000 (UTC)
-IronPort-SDR: fJbM62QmCxOicIMdYOoKmHxbahjUv0LcxOKTpGvKsaLAxECjdDULDxS68boixQ2obKssuinJnh
- bowSgIZahyDg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9925"; a="189434459"
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="189434459"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2021 14:50:04 -0700
-IronPort-SDR: EpUR9PTr0FWi6YsbtcIl+/iJ2++gHevox7KEbGtvPMX/C2x8DRDD5NZXiw55NV/cDlhgR4BaTS
- kST7NdoNr/jQ==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A175183D41
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:55:58 +0000 (UTC)
+IronPort-SDR: tTi43kVEIURVRd4ze9xWTdmgjcWx0S6SkcqPBvGjbTM/7o3mR3lHFpGcQYobfvIv2/R6cZeged
+ sFWRcxOGB1KQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9925"; a="253355869"
+X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="253355869"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2021 14:55:57 -0700
+IronPort-SDR: lbaj48DavyvRjIwS/cmisZ7oquu98qsFHcEluN1RjFIaWSpSOXhel6OxvhG5aMfkPW4UNS6g8o
+ tFmaJlB6ucXw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="405682307"
+X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="522639139"
 Received: from linux.intel.com ([10.54.29.200])
- by fmsmga008.fm.intel.com with ESMTP; 16 Mar 2021 14:50:03 -0700
+ by orsmga004.jf.intel.com with ESMTP; 16 Mar 2021 14:55:57 -0700
 Received: from debox1-desk2.jf.intel.com (debox1-desk2.jf.intel.com
  [10.54.75.16])
- by linux.intel.com (Postfix) with ESMTP id AAE5E5807EA;
- Tue, 16 Mar 2021 14:50:03 -0700 (PDT)
+ by linux.intel.com (Postfix) with ESMTP id D474E580677;
+ Tue, 16 Mar 2021 14:55:57 -0700 (PDT)
 From: "David E. Box" <david.e.box@linux.intel.com>
 To: irenic.rajneesh@gmail.com,
 	hdegoede@redhat.com,
 	mgross@linux.intel.com
-Date: Tue, 16 Mar 2021 14:49:34 -0700
-Message-Id: <20210316214934.2992637-2-david.e.box@linux.intel.com>
+Date: Tue, 16 Mar 2021 14:55:29 -0700
+Message-Id: <20210316215529.2992734-2-david.e.box@linux.intel.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210316214934.2992637-1-david.e.box@linux.intel.com>
-References: <20210316214934.2992637-1-david.e.box@linux.intel.com>
+In-Reply-To: <20210316215529.2992734-1-david.e.box@linux.intel.com>
+References: <20210316215529.2992734-1-david.e.box@linux.intel.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 16 Mar 2021 21:51:16 +0000
-Subject: [Intel-wired-lan] [PATCH V2 2/2] platform/x86: intel_pmc: Ignore
+Subject: [Intel-wired-lan] [PATCH V3 2/2] platform/x86: intel_pmc: Ignore
  GBE LTR on Tiger Lake platforms
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -93,6 +92,9 @@ Reviewed-by: Sasha Neftin <sasha.neftin@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org
 Reviewed-by: Rajneesh Bhardwaj <irenic.rajneesh@gmail.com>
 ---
+Changes in V3:
+	- None
+
 Changes in V2:
 	- Pass the bit position instead of the entire mask to the ltr_ignore
 	  fuction
