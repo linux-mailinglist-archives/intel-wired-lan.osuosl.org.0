@@ -1,155 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE7BF33CE28
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 07:56:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95CFA33CEA9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 08:33:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D87954EC7C;
-	Tue, 16 Mar 2021 06:56:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E155C43169;
+	Tue, 16 Mar 2021 07:33:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lUT8nbRG1yJA; Tue, 16 Mar 2021 06:56:42 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NPbrZL04GyP3; Tue, 16 Mar 2021 07:33:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6C7104EC5C;
-	Tue, 16 Mar 2021 06:56:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CCEEA4300E;
+	Tue, 16 Mar 2021 07:33:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5832B1BF295
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 06:56:37 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C1F7E1BF387
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 07:33:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3F4234EC5C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 06:56:37 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B1F296F5E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 07:33:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 416aK9zVbFmW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Mar 2021 06:56:35 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id crUL2ShWyeW6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Mar 2021 07:33:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A2D864EC4F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 06:56:35 +0000 (UTC)
-IronPort-SDR: HlkcZfQYvRu6cBoJpMbCbgU7iZw84p2L/sdFwE4/wXcxlFpwkIih4/QgVp4Ue/6ccBBf/0aeni
- RaOD/DxbMYhA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9924"; a="176341809"
-X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="176341809"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2021 23:56:34 -0700
-IronPort-SDR: RYCrnG2fvWvPBOTWV33X0/fcxITmfAy9JvnOzvv/A75gSCI3Sc+O2t/deU0yHqYk/jKbeJlHCh
- 6blMpjukntsA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,251,1610438400"; d="scan'208";a="410945633"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga007.jf.intel.com with ESMTP; 15 Mar 2021 23:56:34 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Mon, 15 Mar 2021 23:56:33 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2
- via Frontend Transport; Mon, 15 Mar 2021 23:56:33 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2106.2; Mon, 15 Mar 2021 23:56:33 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A2hec0/RH0YUBaIScPWeDVSdXPzOdI+la0sKI7mZAZJqzOJwugXTBiOri389Ef0tFWVbu/l2Aa3gHcAqxAUFag33Ga+8LzrFs7fWY3P3U1PmSIW5+CaXfRz+LbluP3xzoMcA6Ap+G3fOYtoub8x0KfuQLHk86Ac3uaKzPnoY84NzzYtthlNz0scqL3nHfIQ7hNgRj9LGT9aeNYp0IGeFDvgP4zarIghPwd3wjtr0qcpMp4R/t1cLxp3sp4IhEHFD6coyr5+mjT9bhUQrvC9QGOJYIB74Zg+/3Hdf9GmzoZ8T583eM5T/DXMtVlie2946Uj1ngnSZUNt9i6tpFhkXnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zJhBTOnduIEBRy0//IV6ttbQDwxZaKmalzS/lLDm5zg=;
- b=TE2ic0CZn9St5gXfVqCf7Bmq8Rl3Cb/TM1s7yXJ1xcxLnNUVwlUF3MatB+8A3rAbJInvqVWczS876dULyj+cb88fROgYwC6VWW5DlZHOLcnm9Fr2IX6LTjxYBYNjqUz13SxYQeH0M5PFdgjF7Sbes8DO4x4ZvIaMv7TSbugaEkAE8SHRnhjmLUG1jtQygwICNyHJOe/B5V8e9oCMnBmyvFF6YOvlxK2HbikpDz5sZgAj037ausoUu83TLJoFz7qkEqrjgjlU7NbFu5fzb3G9ywRLgRIQr9ChErXClixNEa2dORvg78bgyrltLM7U98KIwJzvvq6A4I05hJFIASMCwQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zJhBTOnduIEBRy0//IV6ttbQDwxZaKmalzS/lLDm5zg=;
- b=lggmoZpeyezwBgCff27y2gQuor7eFOi4TT8mmEifwvfGRbQeKaQpT53RfDb25tH3xKAIknn8Y6fuwINt/UwfGr9kXvMvkGfyeLMysxVaZ0b93HqfDULPyTVtEtbVV8YuVYLsOwHdT1kIEUHnft+327MPAfvVDAotn3oyRwEFMZc=
-Received: from BN8PR11MB3795.namprd11.prod.outlook.com (2603:10b6:408:82::31)
- by BN6PR11MB1842.namprd11.prod.outlook.com (2603:10b6:404:101::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3933.32; Tue, 16 Mar
- 2021 06:56:32 +0000
-Received: from BN8PR11MB3795.namprd11.prod.outlook.com
- ([fe80::ec6a:25a8:8c59:89e]) by BN8PR11MB3795.namprd11.prod.outlook.com
- ([fe80::ec6a:25a8:8c59:89e%2]) with mapi id 15.20.3933.032; Tue, 16 Mar 2021
- 06:56:32 +0000
-From: "Wang, Haiyue" <haiyue.wang@intel.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "kuba@kernel.org" <kuba@kernel.org>
-Thread-Topic: [Intel-wired-lan] [net-next PATCH 02/10] intel: Update drivers
- to use ethtool_sprintf
-Thread-Index: AQHXF2f+U7+k+NBRpEO2cn2D2idATaqGM7uA
-Date: Tue, 16 Mar 2021 06:56:32 +0000
-Message-ID: <BN8PR11MB37957A1DA6915E9E6A532A69F76B9@BN8PR11MB3795.namprd11.prod.outlook.com>
-References: <161557111604.10304.1798900949114188676.stgit@localhost.localdomain>
- <161557129416.10304.13389129491117212311.stgit@localhost.localdomain>
-In-Reply-To: <161557129416.10304.13389129491117212311.stgit@localhost.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.6.0.76
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [192.102.204.53]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e9a23387-fca6-4e84-30f1-08d8e848a1e0
-x-ms-traffictypediagnostic: BN6PR11MB1842:
-x-microsoft-antispam-prvs: <BN6PR11MB18427B2608718DE494EBB236F76B9@BN6PR11MB1842.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2201;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xEQzczvJVNwmKop/u/aKxfRbHNf85WVzv9D56OO9EybRMnZ7ZCmzS4KWZymggXSTvoODDN8g0L6NZbOEWlj95aWnVHCw3gF5Adv2DaLY9zpcNVnjjGhN7rW37RQEufS+quUQ3gwWbhQMMmNdKHlRew4uO8KLV8pFGyjFp9guS0p8mlxx5MHoOBBKBkMRrP5L7gLy6WKXFzM9ftyOM6T5qq3O4oNUAez5t/B0UQVxqNSqMA8NzRbAXI9zjDJVt2whDnqjdnD4nZAi+hy6KNc1B2pFCkFpkvzdBXd0QyJey+DjkqOl2hfquyLAgRNG8MppqJ14Ly4SlSCImTwYlii9vB/wsmt4f3E+lKvDG7hiJ2+VBSB2qBlPbMF3xORtxuySAdbFaP7JF2+jy7aDxcCf+P867eUelX7EeR23ZusdBaTMqZ46KsZreELZzWm+9nk/SS+lTx3p8UHWuCB7hEk6m/WgpD01nW8XDZQSla7C4/Dv0+e2St21PISqARgacAUtCbM5QNuWb0+D13cLaUYu2Brf3JSgmfDOqcEJCfyOIpqGAuMR5ODVZltV2w5+dIvDVLssizZhNu89F2hZu1jAyYWboGx0Ooh/+9hAjyiVdNWOZr8fPP4JIyOA/dy/XJz+bYC4h0Uf1i63U8oDyFYbaw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN8PR11MB3795.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(376002)(136003)(39860400002)(346002)(396003)(71200400001)(26005)(83380400001)(8676002)(7416002)(7696005)(186003)(4326008)(2906002)(33656002)(54906003)(15650500001)(966005)(8936002)(53546011)(110136005)(66556008)(55016002)(5660300002)(86362001)(66946007)(45080400002)(52536014)(64756008)(316002)(66446008)(66476007)(6506007)(76116006)(478600001)(9686003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?VtrVS+WicNky3Q97uC+3PEUwDi0w52yzRv+WrSghyc1Fw5ezB70ahhW58vi7?=
- =?us-ascii?Q?XnnDBpn12g+GZSgmTZOCHNCCrgRrCUTrQX2oBYDl008zZFaAEkjYnQngC/86?=
- =?us-ascii?Q?beKq/VH+umjk4xrSLVorDOOqUKOqO3nLqpeGyzXp70H9Razr1zDATKgOmt6M?=
- =?us-ascii?Q?SItEzuNBqt080SFWS/Vx5h39jB3VX3hWgNqcS8VFt/A8+bZdHfKEwluG/vo2?=
- =?us-ascii?Q?yDasSDC3y0eF24oI1crN0KWPhv2aoPdKzQgNR18I6jc6/MHqYYV4KGVgEznY?=
- =?us-ascii?Q?l5OyVvb7fCsFIWaWla9G0RHCCYcBY2H2SehYjBv7Fs6m4e4hJACQ3EETYANW?=
- =?us-ascii?Q?HWYpt7oOh8Dk8ANwGdKBaCz7wYQH543uee/bpbNJ5r9XXOxUt4MNOCvsl+U6?=
- =?us-ascii?Q?QObK0oh7I+1HBe4obQOfxTLazM8hk/+JpT9i28+Smk/+fu4pggTgMN2zZivK?=
- =?us-ascii?Q?NJYwlUJq3BkIsNYrEKVutNuZrJwgTXyIL0REtlwhNm8SYB+FpN+VWYt3jf/w?=
- =?us-ascii?Q?+rKHZ8VaKgtA6Ma44Dedp9y7A4jSABQJ5P/oD67lcrx41yv4TSa5TBZ63H+5?=
- =?us-ascii?Q?PoRuSeBzEPSd5eiGRIkBYo1PgEVAfQQ70KVRKMSAvij6btOAnmVoapveGbsQ?=
- =?us-ascii?Q?FIgQ9yVdSfJxDFY0Q/mBc59Q1WWfp+Kd2DxIYC6iXuaZc8BXXvZsAXVfH7PR?=
- =?us-ascii?Q?DWks7ZLk7h07fbIuCcdxHjfJeHLL79wrGD23r8gRpXU1tjFGfMOa68F22v0S?=
- =?us-ascii?Q?XB3T/+yKim1srRyujTzJtqI8VEu2fdRwHm3BlrzVVzFoHtyKhJCxHk/CDHdS?=
- =?us-ascii?Q?RYZ1nEE6qnxvzaxpgGchf/na1Bv+xqlmXXkLtRj2UNstd/d3m1vPjdppAjfG?=
- =?us-ascii?Q?C2DLfZ4wq84IPC1taZSeVdErtZQnHd9kyBnhUK7mT7g0msHrostYxpc5iYfx?=
- =?us-ascii?Q?wIdeF3VyZJdmpU8pPkd6n/LzgAmz5O798DxRSwxU22LUGM7bh5s/xUGcY3QU?=
- =?us-ascii?Q?XcM1ywCJRSYq9I3/FkrWzboC7eHgIBvqhX8/u8y+RcsIp2o2TzKHJnM7pjXg?=
- =?us-ascii?Q?n/GSF+6Sb2Bp42xdqHWdaQ/DbQTstOROFkRPNTNfWu7hxv/2dAAkLsDtPA64?=
- =?us-ascii?Q?QS+gNZK+eHDRbDVzwmqa5tKTIGbCENecI/QyI978rWpT49Dmh0k/PFbhOO6V?=
- =?us-ascii?Q?hEreh4YBEYirqufAcQnpvUcq45H0dFWxm22M1uDota2LmnDVvBa28OBFLm6D?=
- =?us-ascii?Q?1Dm+l8A5NaMcg4gWLDAzCBhj4Wvyrmdom2jsq/PIvjbColEKGk2hDHmSzg1E?=
- =?us-ascii?Q?BKad8ehCd3wjr46fQKuMULh6?=
-x-ms-exchange-transport-forked: True
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7F3D3606B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 07:33:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1615879999;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=jeyAVaOSdR6Hy2y6sHQ5JY4pFCVLACbOMokS7U8UkbQ=;
+ b=AmfqWYQ/XEMIMeWDfC4x60Ci7Ovp2nBNcGkRScBEH8dv5jmcYeMclqV33nufYwsgeNXc3E
+ tTWemBs6M8lUgSVw86ChctB14c8sd62qb4paEB04NDbEQDE3YQJODNYQAVrzaYTzJE4+Aj
+ /t0q/ot4T+R/9IOkWmj66e5q1lyihic=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-218-ZTpxVl9BPCq-Bhrxr0OV4w-1; Tue, 16 Mar 2021 03:33:16 -0400
+X-MC-Unique: ZTpxVl9BPCq-Bhrxr0OV4w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 26D9419057A2;
+ Tue, 16 Mar 2021 07:33:15 +0000 (UTC)
+Received: from p50.fritz.box (ovpn-112-37.ams2.redhat.com [10.36.112.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C4ADB17DC3;
+ Tue, 16 Mar 2021 07:33:13 +0000 (UTC)
+Date: Tue, 16 Mar 2021 08:33:11 +0100
+From: Stefan Assmann <sassmann@redhat.com>
+To: "Nunley, Nicholas D" <nicholas.d.nunley@intel.com>
+Message-ID: <20210316073311.xbssn43q3r52e2e7@p50.fritz.box>
+References: <20210312093337.68364-1-eryk.roch.rybak@intel.com>
+ <20210312123615.7fcvoayobcslko74@p50.fritz.box>
+ <DM5PR1101MB20742AB907C04D1B6A6C6A4FB36C9@DM5PR1101MB2074.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN8PR11MB3795.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9a23387-fca6-4e84-30f1-08d8e848a1e0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Mar 2021 06:56:32.2339 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Z+lPnHJl/g5gOlLSMcqRXAubVR3o/NnxvKFw2e6z2xVVN0GOxip65FxcjPDwuGDPalA+frFcdjf8QrJC4W2kQw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1842
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [net-next PATCH 02/10] intel: Update drivers
- to use ethtool_sprintf
+In-Reply-To: <DM5PR1101MB20742AB907C04D1B6A6C6A4FB36C9@DM5PR1101MB2074.namprd11.prod.outlook.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sassmann@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Subject: Re: [Intel-wired-lan] [PATCH net v2] iavf: Fix asynchronous tasks
+ during driver remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,63 +85,175 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "doshir@vmware.com" <doshir@vmware.com>, "mst@redhat.com" <mst@redhat.com>,
- "oss-drivers@netronome.com" <oss-drivers@netronome.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "alexanderduyck@fb.com" <alexanderduyck@fb.com>,
- "akiyano@amazon.com" <akiyano@amazon.com>,
- "wei.liu@kernel.org" <wei.liu@kernel.org>,
- "sthemmin@microsoft.com" <sthemmin@microsoft.com>,
- "pv-drivers@vmware.com" <pv-drivers@vmware.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Kernel-team@fb.com" <Kernel-team@fb.com>,
- "yisen.zhuang@huawei.com" <yisen.zhuang@huawei.com>,
- "gtzalik@amazon.com" <gtzalik@amazon.com>,
- "simon.horman@netronome.com" <simon.horman@netronome.com>,
- "haiyangz@microsoft.com" <haiyangz@microsoft.com>,
- "drivers@pensando.io" <drivers@pensando.io>,
- "salil.mehta@huawei.com" <salil.mehta@huawei.com>,
- "GR-Linux-NIC-Dev@marvell.com" <GR-Linux-NIC-Dev@marvell.com>,
- "rmody@marvell.com" <rmody@marvell.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "netanel@amazon.com" <netanel@amazon.com>,
- "saeedb@amazon.com" <saeedb@amazon.com>,
- "snelson@pensando.io" <snelson@pensando.io>,
- "skalluru@marvell.com" <skalluru@marvell.com>
+Cc: "Rybak, Eryk Roch" <eryk.roch.rybak@intel.com>, "Loktionov,
+ Aleksandr" <aleksandr.loktionov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Alexander Duyck
-> Sent: Saturday, March 13, 2021 01:48
-> To: davem@davemloft.net; kuba@kernel.org
-> Cc: doshir@vmware.com; mst@redhat.com; oss-drivers@netronome.com; jasowang@redhat.com;
-> alexanderduyck@fb.com; akiyano@amazon.com; wei.liu@kernel.org; sthemmin@microsoft.com; pv-
-> drivers@vmware.com; intel-wired-lan@lists.osuosl.org; Kernel-team@fb.com; yisen.zhuang@huawei.com;
-> gtzalik@amazon.com; simon.horman@netronome.com; haiyangz@microsoft.com; drivers@pensando.io;
-> salil.mehta@huawei.com; GR-Linux-NIC-Dev@marvell.com; rmody@marvell.com; netdev@vger.kernel.org;
-> netanel@amazon.com; saeedb@amazon.com; snelson@pensando.io; skalluru@marvell.com
-> Subject: [Intel-wired-lan] [net-next PATCH 02/10] intel: Update drivers to use ethtool_sprintf
-> 
-> From: Alexander Duyck <alexanderduyck@fb.com>
-> 
-> Update the Intel drivers to make use of ethtool_sprintf. The general idea
-> is to reduce code size and overhead by replacing the repeated pattern of
-> string printf statements and ETH_STRING_LEN counter increments.
-                                   ^
-                               ETH_GSTRING_LEN
-> 
-> Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
-> ---
+On 2021-03-15 23:31, Nunley, Nicholas D wrote:
+> Thanks for pointing this out. This was an accidental oversight, although I think part of my reason for not paying close enough attention is that the client code is never actually used. Since there aren't any plans to use the client code in the future, we discussed this here and the plan is to remove that code from the iavf driver. We'll be submitting a patch for that soon, but in the meantime I think we'll be all right if this patch goes in as-is, since the bug is purely hypothetical and has no real-world impact.
 
+Hi Nick,
 
+the other question I have here is. How do you properly communicate the
+device close to the PF if the watchdog and adminq tasks are already
+shutdown?
+
+iavf_close() calls iavf_down() which queues these adminq commands
+                adapter->aq_required = IAVF_FLAG_AQ_DEL_MAC_FILTER;
+                adapter->aq_required |= IAVF_FLAG_AQ_DEL_VLAN_FILTER;
+                adapter->aq_required |= IAVF_FLAG_AQ_DEL_CLOUD_FILTER;
+                adapter->aq_required |= IAVF_FLAG_AQ_DISABLE_QUEUES;
+which can never be handled. IOW, is i40e still able to properly clean up
+in this case?
+
+  Stefan
+
+> Nick
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> > Stefan Assmann
+> > Sent: Friday, March 12, 2021 4:36 AM
+> > To: Rybak, Eryk Roch <eryk.roch.rybak@intel.com>
+> > Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; intel-wired-
+> > lan@lists.osuosl.org
+> > Subject: Re: [Intel-wired-lan] [PATCH net v2] iavf: Fix asynchronous tasks
+> > during driver remove
+> > 
+> > On 2021-03-12 10:33, Eryk Rybak wrote:
+> > > Although rare, is possible for unexpected driver watchdog or Admin
+> > > Queue tasks to run during the execution of iavf_remove function.
+> > > Then, is not possible to obtain the standard __IAVF_IN_CRITICAL_TASK
+> > > lock and difficult to ensure that the driver state stays consistent
+> > > during the full removal process.
+> > 
+> > If you shutdown the watchdog task before closing the device, how do you
+> > ensure the client task is properly shutdown?
+> > 
+> > Calling iavf_close() sets the IAVF_FLAG_CLIENT_NEEDS_CLOSE flag, which
+> > would call iavf_notify_client_close(&adapter->vsi, false); in the client task,
+> > but the client task does no longer get scheduled by the watchdog task
+> > because it has been shutdown already.
+> > 
+> >   Stefan
+> > 
+> > > Fully stops all asynchronous tasks in the beginning of iavf_remove,
+> > > and uses a single-threaded flow to shut down the driver.
+> > >
+> > > Fixes: fdd4044ffdc8("iavf: Remove timer for work triggering, use
+> > > delaying work instead")
+> > > Signed-off-by: Nick Nunley <nicholas.d.nunley@intel.com>
+> > > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> > > Signed-off-by: Eryk Rybak <eryk.roch.rybak@intel.com>
+> > > ---
+> > >  drivers/net/ethernet/intel/iavf/iavf_main.c | 31
+> > > +++++++++++++++++----
+> > >  1 file changed, 25 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> > > b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> > > index dc5b3c06d1e0..e752ecb7ad89 100644
+> > > --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> > > +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> > > @@ -1887,6 +1887,12 @@ static void iavf_watchdog_task(struct
+> > work_struct *work)
+> > >  	struct iavf_hw *hw = &adapter->hw;
+> > >  	u32 reg_val;
+> > >
+> > > +	/* If the driver is in the process of being removed then don't run or
+> > > +	 * reschedule the watchdog task.
+> > > +	 */
+> > > +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
+> > > +		return;
+> > > +
+> > >  	if (test_and_set_bit(__IAVF_IN_CRITICAL_TASK, &adapter-
+> > >crit_section))
+> > >  		goto restart_watchdog;
+> > >
+> > > @@ -2267,6 +2273,12 @@ static void iavf_adminq_task(struct work_struct
+> > *work)
+> > >  	u32 val, oldval;
+> > >  	u16 pending;
+> > >
+> > > +	/* If the driver is in the process of being removed then return
+> > > +	 * immediately and don't re-enable the Admin Queue interrupt.
+> > > +	 */
+> > > +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
+> > > +		return;
+> > > +
+> > >  	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
+> > >  		goto out;
+> > >
+> > > @@ -3245,6 +3257,13 @@ static int iavf_close(struct net_device
+> > > *netdev)
+> > >
+> > >  	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+> > >
+> > > +	/* If the interface is closing as part of driver removal it doesn't
+> > > +	 * wait. The VF resources will be reinitialized when the hardware is
+> > > +	 * reset.
+> > > +	 */
+> > > +	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
+> > > +		return 0;
+> > > +
+> > >  	/* We explicitly don't free resources here because the hardware is
+> > >  	 * still active and can DMA into memory. Resources are cleared in
+> > >  	 * iavf_virtchnl_completion() after we get confirmation from the PF
+> > > @@ -3850,11 +3869,16 @@ static void iavf_remove(struct pci_dev *pdev)
+> > >  	struct iavf_cloud_filter *cf, *cftmp;
+> > >  	struct iavf_hw *hw = &adapter->hw;
+> > >  	int err;
+> > > -	/* Indicate we are in remove and not to run reset_task */
+> > > +	/* Indicate that program driver is remove task and not
+> > > +	 * to run/schedule any driver tasks
+> > > +	 */
+> > >  	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
+> > >  	cancel_delayed_work_sync(&adapter->init_task);
+> > >  	cancel_work_sync(&adapter->reset_task);
+> > >  	cancel_delayed_work_sync(&adapter->client_task);
+> > > +	cancel_work_sync(&adapter->adminq_task);
+> > > +	cancel_delayed_work_sync(&adapter->watchdog_task);
+> > > +	iavf_misc_irq_disable(adapter);
+> > >  	if (adapter->netdev_registered) {
+> > >  		unregister_netdev(netdev);
+> > >  		adapter->netdev_registered = false; @@ -3879,15 +3903,10
+> > @@ static
+> > > void iavf_remove(struct pci_dev *pdev)
+> > >  	}
+> > >  	iavf_free_all_tx_resources(adapter);
+> > >  	iavf_free_all_rx_resources(adapter);
+> > > -	iavf_misc_irq_disable(adapter);
+> > >  	iavf_free_misc_irq(adapter);
+> > >  	iavf_reset_interrupt_capability(adapter);
+> > >  	iavf_free_q_vectors(adapter);
+> > >
+> > > -	cancel_delayed_work_sync(&adapter->watchdog_task);
+> > > -
+> > > -	cancel_work_sync(&adapter->adminq_task);
+> > > -
+> > >  	iavf_free_rss(adapter);
+> > >
+> > >  	if (hw->aq.asq.count)
+> > >
+> > > base-commit: c1acda9807e2bbe1d2026b44f37d959d6d8266c8
+> > > --
+> > > 2.20.1
+> > >
+> > > _______________________________________________
+> > > Intel-wired-lan mailing list
+> > > Intel-wired-lan@osuosl.org
+> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> > >
+> > 
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 > 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
