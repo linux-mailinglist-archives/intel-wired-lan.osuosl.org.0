@@ -1,65 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA28933E0E4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 22:56:08 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7A8833E10C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 23:02:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 535A44EC9C;
-	Tue, 16 Mar 2021 21:56:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 519FC431D6;
+	Tue, 16 Mar 2021 22:02:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1CTcApeJ2Yhv; Tue, 16 Mar 2021 21:56:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2TbyoiKst0dO; Tue, 16 Mar 2021 22:02:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC5E24EC9E;
-	Tue, 16 Mar 2021 21:56:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6F6BF431E7;
+	Tue, 16 Mar 2021 22:02:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C27771BF4E4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:56:00 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DCDAF1BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 22:02:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AD92C83E2F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:56:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D6BCF431E0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 22:02:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xUbOaQujumxu for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Mar 2021 21:55:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id d-3sTdbTTmGB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Mar 2021 22:02:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A175183D41
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 21:55:58 +0000 (UTC)
-IronPort-SDR: tTi43kVEIURVRd4ze9xWTdmgjcWx0S6SkcqPBvGjbTM/7o3mR3lHFpGcQYobfvIv2/R6cZeged
- sFWRcxOGB1KQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9925"; a="253355869"
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="253355869"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2021 14:55:57 -0700
-IronPort-SDR: lbaj48DavyvRjIwS/cmisZ7oquu98qsFHcEluN1RjFIaWSpSOXhel6OxvhG5aMfkPW4UNS6g8o
- tFmaJlB6ucXw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="522639139"
-Received: from linux.intel.com ([10.54.29.200])
- by orsmga004.jf.intel.com with ESMTP; 16 Mar 2021 14:55:57 -0700
-Received: from debox1-desk2.jf.intel.com (debox1-desk2.jf.intel.com
- [10.54.75.16])
- by linux.intel.com (Postfix) with ESMTP id D474E580677;
- Tue, 16 Mar 2021 14:55:57 -0700 (PDT)
-From: "David E. Box" <david.e.box@linux.intel.com>
-To: irenic.rajneesh@gmail.com,
-	hdegoede@redhat.com,
-	mgross@linux.intel.com
-Date: Tue, 16 Mar 2021 14:55:29 -0700
-Message-Id: <20210316215529.2992734-2-david.e.box@linux.intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210316215529.2992734-1-david.e.box@linux.intel.com>
-References: <20210316215529.2992734-1-david.e.box@linux.intel.com>
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 33411431D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 22:02:26 +0000 (UTC)
+IronPort-SDR: 0SjGOynTxmvZOLNYceO4bbuefCz5INp73yf4ai4TZeuj2ej6LaayruwG5royG3f5a8OPjui0ZG
+ 1uiIlIAlC9ww==
+X-IronPort-AV: E=McAfee;i="6000,8403,9925"; a="188700159"
+X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="188700159"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2021 15:02:12 -0700
+IronPort-SDR: H5Hp5Ovw/lWsX+qmQ2QAHc18aEgxbnXR7LybT2VWkNtoOS0SmbC020Mkd4DcXcI4VnZH0aNDP8
+ dntYeElcZ7hw==
+X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="449865416"
+Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
+ ([10.254.107.179])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2021 15:02:10 -0700
+Date: Tue, 16 Mar 2021 15:02:10 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20210316150210.00007249@intel.com>
+In-Reply-To: <20210316132905.5d0f90dd@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+References: <20210316100141.53551-1-sassmann@kpanic.de>
+ <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <44b3f5f0-93f8-29e2-ab21-5fd7cc14c755@kpanic.de>
+ <20210316132905.5d0f90dd@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH V3 2/2] platform/x86: intel_pmc: Ignore
- GBE LTR on Tiger Lake platforms
+Subject: Re: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,138 +69,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, gayatri.kammela@intel.com,
- "David E. Box" <david.e.box@linux.intel.com>, Mario.Limonciello@dell.com
+Cc: slawomirx.laba@intel.com, netdev@vger.kernel.org,
+ Stefan Assmann <sassmann@kpanic.de>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Due to a HW limitation, the Latency Tolerance Reporting (LTR) value
-programmed in the Tiger Lake GBE controller is not large enough to allow
-the platform to enter Package C10, which in turn prevents the platform from
-achieving its low power target during suspend-to-idle.  Ignore the GBE LTR
-value on Tiger Lake. LTR ignore functionality is currently performed solely
-by a debugfs write call. Split out the LTR code into its own function that
-can be called by both the debugfs writer and by this work around.
+Jakub Kicinski wrote:
+> > > I personally think that the overuse of flags in Intel drivers brings
+> > > nothing but trouble. At which point does it make sense to just add a
+> > > lock / semaphore here rather than open code all this with no clear
+> > > semantics? No code seems to just test the __IAVF_IN_CRITICAL_TASK flag,
+> > > all the uses look like poor man's locking at a quick grep. What am I
+> > > missing?
+> > 
+> > I agree with you that the locking could be done with other locking
+> > mechanisms just as good. I didn't invent the current method so I'll let
+> > Intel comment on that part, but I'd like to point out that what I'm
+> > making use of is fixing what is currently in the driver.
+> 
+> Right, I should have made it clear that I don't blame you for the
+> current state of things. Would you mind sending a patch on top of 
+> this one to do a conversion to a semaphore? 
+> 
+> Intel folks any opinions?
 
-Signed-off-by: David E. Box <david.e.box@linux.intel.com>
-Reviewed-by: Sasha Neftin <sasha.neftin@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org
-Reviewed-by: Rajneesh Bhardwaj <irenic.rajneesh@gmail.com>
----
-Changes in V3:
-	- None
+I know Slawomir has been working closely with Stefan on figuring out
+the right ways to fix this code.  Hopefully he can speak for himself,
+but I know he's on Europe time.
 
-Changes in V2:
-	- Pass the bit position instead of the entire mask to the ltr_ignore
-	  fuction
-	- Rename the write_ltr_ignore to send_ltr_ignore to differentiate it
-	  from the caller, ltr_ignore_write.
-	- Rename variables for clarity
-
- drivers/platform/x86/intel_pmc_core.c | 59 ++++++++++++++++++++-------
- 1 file changed, 44 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/platform/x86/intel_pmc_core.c b/drivers/platform/x86/intel_pmc_core.c
-index ee2f757515b0..8d799cfa0e9f 100644
---- a/drivers/platform/x86/intel_pmc_core.c
-+++ b/drivers/platform/x86/intel_pmc_core.c
-@@ -863,34 +863,45 @@ static int pmc_core_pll_show(struct seq_file *s, void *unused)
- }
- DEFINE_SHOW_ATTRIBUTE(pmc_core_pll);
- 
--static ssize_t pmc_core_ltr_ignore_write(struct file *file,
--					 const char __user *userbuf,
--					 size_t count, loff_t *ppos)
-+static int pmc_core_send_ltr_ignore(u32 value)
- {
- 	struct pmc_dev *pmcdev = &pmc;
- 	const struct pmc_reg_map *map = pmcdev->map;
--	u32 val, buf_size, fd;
--	int err;
--
--	buf_size = count < 64 ? count : 64;
--
--	err = kstrtou32_from_user(userbuf, buf_size, 10, &val);
--	if (err)
--		return err;
-+	u32 reg;
-+	int err = 0;
- 
- 	mutex_lock(&pmcdev->lock);
- 
--	if (val > map->ltr_ignore_max) {
-+	if (value > map->ltr_ignore_max) {
- 		err = -EINVAL;
- 		goto out_unlock;
- 	}
- 
--	fd = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
--	fd |= (1U << val);
--	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, fd);
-+	reg = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
-+	reg |= (1U << value);
-+	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, reg);
- 
- out_unlock:
- 	mutex_unlock(&pmcdev->lock);
-+
-+	return err;
-+}
-+
-+static ssize_t pmc_core_ltr_ignore_write(struct file *file,
-+					 const char __user *userbuf,
-+					 size_t count, loff_t *ppos)
-+{
-+	u32 buf_size, value;
-+	int err;
-+
-+	buf_size = count < 64 ? count : 64;
-+
-+	err = kstrtou32_from_user(userbuf, buf_size, 10, &value);
-+	if (err)
-+		return err;
-+
-+	err = pmc_core_send_ltr_ignore(value);
-+
- 	return err == 0 ? count : err;
- }
- 
-@@ -1189,6 +1200,15 @@ static int quirk_xtal_ignore(const struct dmi_system_id *id)
- 	return 0;
- }
- 
-+static int quirk_ltr_ignore(u32 value)
-+{
-+	int err;
-+
-+	err = pmc_core_send_ltr_ignore(value);
-+
-+	return err;
-+}
-+
- static const struct dmi_system_id pmc_core_dmi_table[]  = {
- 	{
- 	.callback = quirk_xtal_ignore,
-@@ -1244,6 +1264,15 @@ static int pmc_core_probe(struct platform_device *pdev)
- 	pmcdev->pmc_xram_read_bit = pmc_core_check_read_lock_bit();
- 	dmi_check_system(pmc_core_dmi_table);
- 
-+	/*
-+	 * On TGL, due to a hardware limitation, the GBE LTR blocks PC10 when
-+	 * a cable is attached. Tell the PMC to ignore it.
-+	 */
-+	if (pmcdev->map == &tgl_reg_map) {
-+		dev_dbg(&pdev->dev, "ignoring GBE LTR\n");
-+		quirk_ltr_ignore(3);
-+	}
-+
- 	pmc_core_dbgfs_register(pmcdev);
- 
- 	device_initialized = true;
--- 
-2.25.1
+As for conversion to mutexes I'm a big fan, and as long as we don't
+have too many collisions with the RTNL lock I think it's a reasonable
+improvement to do, and if Stefan doesn't want to work on it, we can
+look into whether Slawomir or his team can.
 
 _______________________________________________
 Intel-wired-lan mailing list
