@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C394033DA3B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 18:05:53 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A87ED33DA6F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Mar 2021 18:14:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 202294ECB6;
-	Tue, 16 Mar 2021 17:05:52 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V0n2IfbJqn2K; Tue, 16 Mar 2021 17:05:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B9A2C4ECC8;
-	Tue, 16 Mar 2021 17:05:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 764A51BF427
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:05:46 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7251583A7A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:05:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0038083AD2;
+	Tue, 16 Mar 2021 17:14:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lUr9a_UdVh57 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Mar 2021 17:05:43 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V_wSfiliL4Dv; Tue, 16 Mar 2021 17:14:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id F29FF83BB6;
+	Tue, 16 Mar 2021 17:14:50 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A84371BF427
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9D7D84ECA4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 81D7zrtBcA9e for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8926383D90
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:05:43 +0000 (UTC)
-IronPort-SDR: h5RyNq7K5/tsjFghLTVxNBYHcKHbny85yDBNKBAIzhLSE+Ko/6C0b4QDnMnyteLwyjx3uouZcu
- si2XxJ3lV3sw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9925"; a="253314832"
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="253314832"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2021 10:05:42 -0700
-IronPort-SDR: IolH5EY1Xx6XakaObhw3qNizlC4DJqvsmbUDvfP95nSZiSGrLyEqo9/Frp/fzpEMiDSF2WiL8u
- mMbFOikdhA9g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,254,1610438400"; d="scan'208";a="378934024"
-Received: from lkp-server02.sh.intel.com (HELO 1c294c63cb86) ([10.239.97.151])
- by fmsmga007.fm.intel.com with ESMTP; 16 Mar 2021 10:05:40 -0700
-Received: from kbuild by 1c294c63cb86 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lMD8W-0000EA-7j; Tue, 16 Mar 2021 17:05:40 +0000
-Date: Wed, 17 Mar 2021 01:05:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6050e556.nbsgWlvBRo7jsQXp%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E0B634EC93
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B1F565087;
+ Tue, 16 Mar 2021 17:14:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1615914884;
+ bh=CDcD1dQBr2YIU2/9H6b3fgSvWCMP+J7RvXYb+uxHbnU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Y9HRoKOYVyBxyp8v3oNq6vGc4ugf+1ST8l3ZE1inyHrkrtVRnJZTd3Htff9hGDUnw
+ 2ZHB9v/He710SJABH+YHBfy1sVLLaK7ChvAAWtXVeI3IkJaGItGSkG5ota+7NBdNw7
+ f8LY7YFWDpv1LMX7EePMyl5anq5eJviQpRN3tkMmrCZWSawPsHv7pHyQmVBuUdvu2R
+ WSvpIFhGaUZzQkdsSy6fOayzU9cD0TnFz/6Kh0MKFTJ1GcJXJDZHMXSqmJJG80GvRq
+ 8JI0XWr8QsF/eiqg75c4ap4zZM9lzZYEV+WIOVadLQRZEJvdNdgDio5XI70/qO54ya
+ ceUsIWyG5uFFw==
+Date: Tue, 16 Mar 2021 10:14:43 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Stefan Assmann <sassmann@kpanic.de>
+Message-ID: <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210316100141.53551-1-sassmann@kpanic.de>
+References: <20210316100141.53551-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 6daa42ab1b5274127023d189aa8c17d286f734da
+Subject: Re: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,124 +65,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: slawomirx.laba@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 6daa42ab1b5274127023d189aa8c17d286f734da  i40e: Fix autoneg disabling for non-10GBaseT links
+On Tue, 16 Mar 2021 11:01:41 +0100 Stefan Assmann wrote:
+> To avoid races between iavf_init_task(), iavf_reset_task(),
+> iavf_watchdog_task(), iavf_adminq_task() as well as the shutdown and
+> remove functions more locking is required.
+> The current protection by __IAVF_IN_CRITICAL_TASK is needed in
+> additional places.
+> 
+> - The reset task performs state transitions, therefore needs locking.
+> - The adminq task acts on replies from the PF in
+>   iavf_virtchnl_completion() which may alter the states.
+> - The init task is not only run during probe but also if a VF gets stuck
+>   to reinitialize it.
+> - The shutdown function performs a state transition.
+> - The remove function perorms a state transition and also free's
+>   resources.
+> 
+> iavf_lock_timeout() is introduced to avoid waiting infinitely
+> and cause a deadlock. Rather unlock and print a warning.
+> 
+> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 
-elapsed time: 881m
-
-configs tested: 97
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                               defconfig
-riscv                            allmodconfig
-powerpc                   motionpro_defconfig
-powerpc                  mpc866_ads_defconfig
-sh                          urquell_defconfig
-powerpc                 mpc832x_rdb_defconfig
-m68k                         amcore_defconfig
-arm                          imote2_defconfig
-openrisc                            defconfig
-um                             i386_defconfig
-arm                         lpc32xx_defconfig
-sh                            shmin_defconfig
-arc                          axs103_defconfig
-powerpc                      cm5200_defconfig
-arm                          badge4_defconfig
-powerpc                  iss476-smp_defconfig
-arm                      jornada720_defconfig
-sh                           se7780_defconfig
-sh                     magicpanelr2_defconfig
-powerpc                      tqm8xx_defconfig
-sh                           se7751_defconfig
-h8300                            alldefconfig
-sh                   rts7751r2dplus_defconfig
-powerpc                      ppc44x_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                               tinyconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20210316
-i386                 randconfig-a005-20210316
-i386                 randconfig-a002-20210316
-i386                 randconfig-a003-20210316
-i386                 randconfig-a004-20210316
-i386                 randconfig-a006-20210316
-i386                 randconfig-a001-20210315
-i386                 randconfig-a005-20210315
-i386                 randconfig-a003-20210315
-i386                 randconfig-a002-20210315
-i386                 randconfig-a004-20210315
-i386                 randconfig-a006-20210315
-x86_64               randconfig-a011-20210316
-x86_64               randconfig-a016-20210316
-x86_64               randconfig-a013-20210316
-x86_64               randconfig-a014-20210316
-x86_64               randconfig-a015-20210316
-x86_64               randconfig-a012-20210316
-i386                 randconfig-a013-20210316
-i386                 randconfig-a016-20210316
-i386                 randconfig-a011-20210316
-i386                 randconfig-a012-20210316
-i386                 randconfig-a015-20210316
-i386                 randconfig-a014-20210316
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+I personally think that the overuse of flags in Intel drivers brings
+nothing but trouble. At which point does it make sense to just add a
+lock / semaphore here rather than open code all this with no clear
+semantics? No code seems to just test the __IAVF_IN_CRITICAL_TASK flag,
+all the uses look like poor man's locking at a quick grep. What am I
+missing?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
