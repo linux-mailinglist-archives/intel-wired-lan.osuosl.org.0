@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 257EF33E408
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:59:07 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E10B233E40B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:59:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CAE3482F2D;
-	Wed, 17 Mar 2021 00:59:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C69C431D5;
+	Wed, 17 Mar 2021 00:59:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ffyQ2Clsud6n; Wed, 17 Mar 2021 00:59:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id psNqrc1zS1rc; Wed, 17 Mar 2021 00:59:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C73AD82E80;
-	Wed, 17 Mar 2021 00:59:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 75F6C431C7;
+	Wed, 17 Mar 2021 00:59:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E6DA91BF393
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:58:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CA3E41BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D4EBD4BA46
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:58:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B8A6F60684
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nEkFIDNmbbk1 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 00:58:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jS3QhTTgjTXQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 00:59:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1B95247394
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:58:59 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C267464FA8;
- Wed, 17 Mar 2021 00:58:57 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2964F60604
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:59:29 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F268C64EBD;
+ Wed, 17 Mar 2021 00:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615942738;
- bh=lGnKsFU9WusgLjBndFPmhMu+MIFrtB71Z3vSsGKi2+k=;
+ s=k20201202; t=1615942768;
+ bh=6OcSODOYqwJboTZ9frUoduypl0F1XliqrHBhqruTSDQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ecgGgBTYKg/l4cqemGN40OnE2SBrtbhvUSdKwRBrYLV+ixWWPWx6Y5Zsx2a0ze3wM
- XVDQ/+4Y2neWutV8xn8oNESQyifLHKFJHJ7nL88cukY8/42sHropxsTHiET8QOQarD
- zkMyO9p1CCW50Hh5fwj3a2kgkFHgYRLZiAVUM6dLJcBk56mWLIwabcXR7GJqQ8pNsi
- CPQcD/7sjd2Iv4/GLpLkLOn5Uwcq4NW+8TWTKPgD0l+9QFC8BG2YbDWM1h5SyqJEwO
- mGyhXfWAgIPy6s1aveVIUJ3xp66oKBg4wTv6ZUOc3CZSHNXAYWfGDHggiaV3U0C8WR
- ZJ9e+429kwiNQ==
+ b=EMrkyv4NND+VZRZyoNccZshPViIbMHd75rvrEWh5ywwP9UlE5k8csQv9l27AhzgIB
+ nb5XFp/ghOazMYow0ZTdI0E2uNpzlCd0amSr3BRwu9l0oeL3bAmpIXBSGVpf6oAScw
+ w9SDDDlyv25B3UEqmzKt+eMO40OxJdhu1mHgUmonPhRyEKEE4QWmaKr/lvVLKg7En7
+ y+ElLV7Hz++5whAxiuiFU7pInCThbHqVJz6lxO+MKjxPY2BM1BnapB0E/5FMrq2Rpy
+ lhsZofUQw9IT7w46Up2MW9V8ykBlotBMNbrxfpWY3QJo0bvgjhnuhA0PHQFX2HX7uR
+ V0oLxwkjGF0Vg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue, 16 Mar 2021 20:58:32 -0400
-Message-Id: <20210317005850.726479-6-sashal@kernel.org>
+Date: Tue, 16 Mar 2021 20:59:05 -0400
+Message-Id: <20210317005920.726931-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210317005850.726479-1-sashal@kernel.org>
-References: <20210317005850.726479-1-sashal@kernel.org>
+In-Reply-To: <20210317005920.726931-1-sashal@kernel.org>
+References: <20210317005920.726931-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 06/23] ixgbe: Fix memleak in
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.14 06/21] ixgbe: Fix memleak in
  ixgbe_configure_clsu32
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -96,10 +96,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index faee77fa0804..8fcd3ffb43e0 100644
+index 9c3fa0b55551..e9205c893531 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -9487,8 +9487,10 @@ static int ixgbe_configure_clsu32(struct ixgbe_adapter *adapter,
+@@ -9266,8 +9266,10 @@ static int ixgbe_configure_clsu32(struct ixgbe_adapter *adapter,
  	ixgbe_atr_compute_perfect_hash_82599(&input->filter, mask);
  	err = ixgbe_fdir_write_perfect_filter_82599(hw, &input->filter,
  						    input->sw_idx, queue);
