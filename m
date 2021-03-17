@@ -1,79 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5210733F788
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 18:52:48 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D07C233F7F5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 19:15:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CCE2643049;
-	Wed, 17 Mar 2021 17:52:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5811143209;
+	Wed, 17 Mar 2021 18:15:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V7TwcqxsTbUn; Wed, 17 Mar 2021 17:52:46 +0000 (UTC)
+	with ESMTP id L5CZNTkePGGI; Wed, 17 Mar 2021 18:15:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DB3B242FB1;
-	Wed, 17 Mar 2021 17:52:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1FE724324A;
+	Wed, 17 Mar 2021 18:15:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 478B21BF9AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:52:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D8FC1BF330
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:15:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 35A6142FB1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:52:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6BA7E6F971
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:15:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sOhag2DHc0dT for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 17:52:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IaBgra6qcydX for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 18:15:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from desiato.infradead.org (desiato.infradead.org
- [IPv6:2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8E1624150B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:52:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description;
- bh=nE45k8FixLnSufakV+tBQGAF9aOc9NiNiG7mBSO7nh4=; b=F98z509CNK7YcUoO4tYJCgG6mG
- PbzrCzDTB2a4x+GpP7LWk/+KaszGygqe9KccAdbkTdwyEIs2ZL0t+LIURfPKZ0C5fHmAuIQ10O1SM
- m3wO7eg2RFBujvbbx/yFwWdr/ivPVw1jVJ9PEFXKWydB6DSeBTfPk0w+Ax3Tz30K1TKfQ72ZI/w0l
- o6FdguVxVePx1PUpBfpdocnLWbZDVaSwuiUO+HjwvDR949G3A69nA5+kiGuNRi8Vcl8HYualmebu9
- WD9JzH+3CjCagZSloVHiYdmFT94DcK8sTmiMa8Gh4OGlPeqx04l4wrk2d1lM9qLuryhLroSsPI1vQ
- /+4HwdJQ==;
-Received: from merlin.infradead.org ([2001:8b0:10b:1234::107])
- by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMaLW-003hIs-EP
- for intel-wired-lan@lists.osuosl.org; Wed, 17 Mar 2021 17:52:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description;
- bh=nE45k8FixLnSufakV+tBQGAF9aOc9NiNiG7mBSO7nh4=; b=lfPgb9Z31TuQRauM8ZNsdVcckv
- Xl5YXjzSFB/Olw8k2lkfOmyXSGCy9iP0ZQ46sJtFlU3TBg3EiDaD+6Q1qNeynYR5+2ZB993On+lj/
- q8fmoIVUpT1dvRt4Xjz8C0Y/xKrzcz7EpP+UteqVVt5zRZSEnpcihIt6mL/zrkgT5ylFKKZ+jDbRn
- 1/yB14CqxtmHdqs8KfMcC3RyDN7wtdsh2fvsIVA3qwhyX56BPupBnCCDd0D21/YdVwIpEgxlUuMQs
- XMboLCg3uPHa5rkX6+oPODFGqKfdAjuiRQj+UV+bSMsGw6vK4NaaGi5nmjzcjCAPyMoP0rhqhtwZr
- xztB3uhg==;
-Received: from [2601:1c0:6280:3f0::9757]
- by merlin.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
- id 1lMaLJ-001feL-W4; Wed, 17 Mar 2021 17:52:26 +0000
-To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20210317100001.2172893-1-unixbhaskar@gmail.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <7ee2ccf4-5b1f-eb3c-9d8f-d3381a347bc3@infradead.org>
-Date: Wed, 17 Mar 2021 10:52:22 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.73])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B40566F970
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:15:07 +0000 (UTC)
+Received: from [192.168.0.11] ([217.83.109.231]) by mrelayeu.kundenserver.de
+ (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+ 1MCbMz-1lV99K2yDT-009jhv; Wed, 17 Mar 2021 19:14:53 +0100
+To: "Laba, SlawomirX" <slawomirx.laba@intel.com>,
+ "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>
+References: <20210316100141.53551-1-sassmann@kpanic.de>
+ <20210316101443.56b87cf6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <44b3f5f0-93f8-29e2-ab21-5fd7cc14c755@kpanic.de>
+ <20210316132905.5d0f90dd@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20210316150210.00007249@intel.com>
+ <3a4078fe-0be5-745c-91a3-ed83d4dc372f@kpanic.de>
+ <DM6PR11MB3113AB6CE1D93EF28B3A7345876A9@DM6PR11MB3113.namprd11.prod.outlook.com>
+From: Stefan Assmann <sassmann@kpanic.de>
+Message-ID: <e28db42e-a55a-6f7f-7622-add296b1035e@kpanic.de>
+Date: Wed, 17 Mar 2021 19:14:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210317100001.2172893-1-unixbhaskar@gmail.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] net: ethernet: intel: Fix a typo in
- the file ixgbe_dcb_nl.c
+In-Reply-To: <DM6PR11MB3113AB6CE1D93EF28B3A7345876A9@DM6PR11MB3113.namprd11.prod.outlook.com>
+Content-Language: de-DE
+X-Provags-ID: V03:K1:BeUyXZ+JH/HvtDs+SOAVSvqT2sl26epQy2X5/469VJ4s4/oKsFN
+ cZuin5NrpI9yEnJPHtqQ2JDF2RU4LOgR+WWk4RKVsPseUmfLfBhhwzZzjqJtYT21GJt9pPI
+ NQa9TfET/a961y9APY5YrpP+nJAdeGp6mW1lt4BTFntLncKLp07cjanz1BvGkqVeeLXnEYn
+ zzR0LheJlEr5KCNe0c3sg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iuFNz7tkKmQ=:bnmqJfP+deQbG9rtCMDby+
+ 1WAUBU/KAFreUpijqgPgkFOtXcuZYO7MyfYqx373xOrqKsILYuBAefjQUssG5nAevUxQJufu2
+ yx9hU3/EDlE8QSDhUquVM+ApVb3XeZqKSrIo08f8JSNf+HXPoymxkhGdqma0djP+AHbJJcsBF
+ nxMbR9zoDm38iZ1Zfd1P/g2aQViucLEbyIqf4dqtU0lHHh2/6sSLOr8fUml/xzn/vu8RKBOT8
+ i5xjPTNEmN9+sPjDU/ljgFojqlgMhSqxJBp/i3S9LX1KCUIwahY1eFLI6EPX693kly5cj5DSb
+ tY80dGCm8ZoBOB1pxquIcXiqTHNmVPe5IWf5iyMwLCKO71a0vL2++bBpCsLx/Uanilw7SRKEf
+ xKNa0YUprZcyhY8A548bG0DZEIiAOqVuREp1wdoDNdh8Yihpc8lZnDUO/c0GUu2LdbbA77FD1
+ HbXX99hBMg==
+Subject: Re: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,41 +77,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/17/21 3:00 AM, Bhaskar Chowdhury wrote:
-> 
-> s/Reprogam/Reprogram/
-> 
-> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+On 17.03.21 18:27, Laba, SlawomirX wrote:
+> We were discussing introducing mutexes in those critical spots for a long time now (in my team).
+> Stefan, if you find time, you are most welcome to offer your solution with mutexes.
 
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
+Hi Slawek,
 
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+I'll work on that conversion once the current patch went through Intel
+testing and is merged. Smaller patches, smaller steps are usually
+better, so let's make one change at a time.
+
+Thanks!
+
+  Stefan
+
+> Slawek
 > 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c
-> index c00332d2e02a..72e6ebffea33 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c
-> @@ -361,7 +361,7 @@ static u8 ixgbe_dcbnl_set_all(struct net_device *netdev)
->  	}
 > 
->  #ifdef IXGBE_FCOE
-> -	/* Reprogam FCoE hardware offloads when the traffic class
-> +	/* Reprogram FCoE hardware offloads when the traffic class
->  	 * FCoE is using changes. This happens if the APP info
->  	 * changes or the up2tc mapping is updated.
->  	 */
-> --
-
-
--- 
-~Randy
+> -----Original Message-----
+> From: Stefan Assmann <sassmann@kpanic.de> 
+> Sent: Wednesday, March 17, 2021 8:50 AM
+> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Jakub Kicinski <kuba@kernel.org>
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Yang, Lihong <lihong.yang@intel.com>; Laba, SlawomirX <slawomirx.laba@intel.com>; Nunley, Nicholas D <nicholas.d.nunley@intel.com>
+> Subject: Re: [PATCH] iavf: fix locking of critical sections
+> 
+> On 16.03.21 23:02, Jesse Brandeburg wrote:
+>> Jakub Kicinski wrote:
+>>>>> I personally think that the overuse of flags in Intel drivers 
+>>>>> brings nothing but trouble. At which point does it make sense to 
+>>>>> just add a lock / semaphore here rather than open code all this 
+>>>>> with no clear semantics? No code seems to just test the 
+>>>>> __IAVF_IN_CRITICAL_TASK flag, all the uses look like poor man's 
+>>>>> locking at a quick grep. What am I missing?
+>>>>
+>>>> I agree with you that the locking could be done with other locking 
+>>>> mechanisms just as good. I didn't invent the current method so I'll 
+>>>> let Intel comment on that part, but I'd like to point out that what 
+>>>> I'm making use of is fixing what is currently in the driver.
+>>>
+>>> Right, I should have made it clear that I don't blame you for the 
+>>> current state of things. Would you mind sending a patch on top of 
+>>> this one to do a conversion to a semaphore?
+> 
+> Sure, I'm happy to help working on the conversion once the current issue is resolved.
+> 
+>>> Intel folks any opinions?
+>>
+>> I know Slawomir has been working closely with Stefan on figuring out 
+>> the right ways to fix this code.  Hopefully he can speak for himself, 
+>> but I know he's on Europe time.
+>>
+>> As for conversion to mutexes I'm a big fan, and as long as we don't 
+>> have too many collisions with the RTNL lock I think it's a reasonable 
+>> improvement to do, and if Stefan doesn't want to work on it, we can 
+>> look into whether Slawomir or his team can.
+> 
+> I'd appreciate to be involved.
+> Thanks!
+> 
+>   Stefan
+> 
 
 _______________________________________________
 Intel-wired-lan mailing list
