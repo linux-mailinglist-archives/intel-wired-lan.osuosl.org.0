@@ -1,79 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5840C33E2A2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:30:40 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2705233E2A3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:30:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C2607431E0;
-	Wed, 17 Mar 2021 00:30:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 76F806F502;
+	Wed, 17 Mar 2021 00:30:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gfAidOdRlj87; Wed, 17 Mar 2021 00:30:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GBIFKvfgT6_O; Wed, 17 Mar 2021 00:30:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D4FF8431D8;
-	Wed, 17 Mar 2021 00:30:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 70F7160688;
+	Wed, 17 Mar 2021 00:30:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3368E1BF393
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BFFE41BF393
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1FFAA60688
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AF7E7431C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B9jNwcalZ8Wp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 00:30:32 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kpPS3H70wFYF for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 00:30:41 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qt1-x833.google.com (mail-qt1-x833.google.com
- [IPv6:2607:f8b0:4864:20::833])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 580C5605E8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:32 +0000 (UTC)
-Received: by mail-qt1-x833.google.com with SMTP id r14so230340qtt.7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:30:32 -0700 (PDT)
+Received: from mail-qk1-x72d.google.com (mail-qk1-x72d.google.com
+ [IPv6:2607:f8b0:4864:20::72d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E47AD4304B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:40 +0000 (UTC)
+Received: by mail-qk1-x72d.google.com with SMTP id n24so7089666qkh.9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:30:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:date:message-id:user-agent:mime-version
- :content-transfer-encoding;
- bh=JyD1AfSdasEn/u8wYDDHXH7XUQ3+kOL4jh+Dl7Iuniw=;
- b=TkbYPePWLa1bTatA0X95043R7hVQxtibwJhPXOIr00EXe42Mx+3/jm4PmyKLMM+dVO
- ZUVvIFWbtt/5NW8/bCioza2a6VLmxhKmw0k/gq1gnaymdwKwWB2h9ggMjc2B3eejiiAN
- 0Adds1C2/kYrXkZ5FcEuk1SvjjLv5Kxck/4nMqI6pUo+uQZlfOJEh80ElA0tZ42HWsXe
- WfFbQ6B/t/bS1Yymc4BJ1mSioR+Gs9HgC8QMfetQltxk+tfeTKXD63RkpPdSaJFzH+mY
- CB4O8q1KDrIxyUJZ5bF3kM6mB5TiH7W5rO4x6hLEOQnuesmM1CPSdpiQb0z1VAXoXoK1
- 0s7w==
+ h=subject:from:to:cc:date:message-id:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=zA5IcSkZdzMYjmL0nkp46xqZGTradm6C/26ke9+ROTc=;
+ b=TpLoEjdNa97hWFKfqofPTdN001mZvlLvJEb9AGWHDzNqKHRH5Asbyb1wnUMS0Qh/QD
+ rShQiIiMBtMHkHMhvQ8KLkIRZ525HAx/fO6TOLi9y4g6F00DnZM12OpmUtuzP57sx6RO
+ r7gV0iiDbE6R4m7h6AeWl8ch2ovMZWV1RttwghvVz153EZ541qxskwZ5oZKF8dB8exuA
+ uTpjRdSOfqYx4SJ14UnX6z1+smrmiKC/Aq87unUek6xQvrdTbncG6Z92V1LaDYMxao9i
+ awTRXg2wUxMJUz08CQmK6tcf0wl2yQCqUlgKOja23nqLIqW5nClAhb54xxQjrUqcEysj
+ FX4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:date:message-id:user-agent
- :mime-version:content-transfer-encoding;
- bh=JyD1AfSdasEn/u8wYDDHXH7XUQ3+kOL4jh+Dl7Iuniw=;
- b=hc0Bmog23CYw1qy/pFIsmBdvpQ0dBH9DfIHt9tOtyGEU3vk2nhal35cxfTki2yLjL2
- 6o+uaAZJFMNuimDYSIZPWQBU4SZXsEnJH0RlZ6bpOi8dIkB6fOCXlrW5ojM64Pmy9cS1
- AaSUAvzi/FogMOuo9my8g+iwH8BW0Kcvu4W5UJLR4Vk+tGT9pduBZIdrvHhs6ru3Fw5k
- DyEsruKD7EjWFg5mEM4GyXgv5Xhg2sahJr+B9IXu0jrlZ4b0Tfk1MVnbBL9Nxbu0f0Xy
- av6PmHrQZLEWx9ZFWoFqVtjpnqeY+maBvsl22gyJNegZXkxFS2QNJCQQyfGxswkthtC1
- 5OfA==
-X-Gm-Message-State: AOAM532Xr61xjmdv2xlZcWTN3Nd7bIgohINTv9EkeXLcf+GGyLWsAH4r
- oR/wlKXQXxz8ZSBxgDgfyZo=
-X-Google-Smtp-Source: ABdhPJyNkGcofJay0CXpkXC49lI9UO4OfffPZNulfO4OmD7JkSt7lIcHeDBmta2GuORLdl9OlOpjTQ==
-X-Received: by 2002:ac8:5212:: with SMTP id r18mr1453107qtn.290.1615941031027; 
- Tue, 16 Mar 2021 17:30:31 -0700 (PDT)
+ h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=zA5IcSkZdzMYjmL0nkp46xqZGTradm6C/26ke9+ROTc=;
+ b=XVxUc9TuWXUZNPxQV6nUb2BkTV1IuHQMhOtl+fyds6ihoIQ5AgWDOxJymKBeWEKn8b
+ rVEpeFkMfhBzv+ig56kCiUVOGaX9D9R7PWWfE6mmhEt3QBQ+ybu59mwPr3ZMgkL66osM
+ AMp7j1IiFi8+aQQ7VM3QhoqyqSymIP7rXvqi2N9c8qxhOX7s0CelsAbFhp8MVHdkyZC+
+ s9lRs1p3owEA5ihRKj748Q2Bak3RFpVeITNCX5McJs9qlKd/E86vYJ1UGc/nQXCoS6RM
+ eEVP5sQMaevhckurnSG7UKAdgEsBL7XA5Vt/U1crovqgmotE5bmV/mr0UiVyeDyKlqYt
+ gkYA==
+X-Gm-Message-State: AOAM530GUN99n9VIYg+nZZMruStYHsCxN8DSiJqdke0OeY2lg2FE95SH
+ f8ds4RW9a5jm+mmd0glSURQ=
+X-Google-Smtp-Source: ABdhPJytZ3Tsacfz9IW64ZwGkAjrYyUIBGH0J6VR40u4Q/xcv0EwU/SgPRPEyBAZtDewReiQjYKqiw==
+X-Received: by 2002:a05:620a:214a:: with SMTP id
+ m10mr1973501qkm.372.1615941039723; 
+ Tue, 16 Mar 2021 17:30:39 -0700 (PDT)
 Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id s133sm16590561qke.1.2021.03.16.17.30.27
+ by smtp.gmail.com with ESMTPSA id f27sm15805825qkh.118.2021.03.16.17.30.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 17:30:30 -0700 (PDT)
+ Tue, 16 Mar 2021 17:30:39 -0700 (PDT)
 From: Alexander Duyck <alexander.duyck@gmail.com>
 To: davem@davemloft.net, kuba@kernel.org
-Date: Tue, 16 Mar 2021 17:30:26 -0700
-Message-ID: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
+Date: Tue, 16 Mar 2021 17:30:36 -0700
+Message-ID: <161594103620.5644.13159023537924919629.stgit@localhost.localdomain>
+In-Reply-To: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
+References: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
 User-Agent: StGit/0.23
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 00/10] ethtool: Factor out
- common code related to writing ethtool strings
+Subject: [Intel-wired-lan] [net-next PATCH v2 01/10] ethtool: Add common
+ function for filling out strings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,60 +102,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch set is meant to be a cleanup and refactoring of common code bits
-from several drivers. Specificlly a number of drivers engage in a pattern
-where they will use some variant on an sprintf or memcpy to write a string
-into the ethtool string array and then they will increment their pointer by
-ETH_GSTRING_LEN.
+From: Alexander Duyck <alexanderduyck@fb.com>
 
-Instead of having each driver implement this independently I am refactoring
-the code so that we have one central function, ethtool_sprintf that does
-all this and takes a double pointer to access the data, a formatted string
-to print, and the variable arguments that are associated with the string.
+Add a function to handle the common pattern of printing a string into the
+ethtool strings interface and incrementing the string pointer by the
+ETH_GSTRING_LEN. Most of the drivers end up doing this and several have
+implemented their own versions of this function so it would make sense to
+consolidate on one implementation.
 
-Changes from v1:
-Fixed usage of char ** vs  unsigned char ** in hisilicon drivers
-
-Changes from RFC:
-Renamed ethtool_gsprintf to ethtool_sprintf
-Fixed reverse xmas tree issue in patch 2
-
+Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 ---
+ include/linux/ethtool.h |    9 +++++++++
+ net/ethtool/ioctl.c     |   12 ++++++++++++
+ 2 files changed, 21 insertions(+)
 
-Alexander Duyck (10):
-      ethtool: Add common function for filling out strings
-      intel: Update drivers to use ethtool_sprintf
-      nfp: Replace nfp_pr_et with ethtool_sprintf
-      hisilicon: Update drivers to use ethtool_sprintf
-      ena: Update driver to use ethtool_sprintf
-      netvsc: Update driver to use ethtool_sprintf
-      virtio_net: Update driver to use ethtool_sprintf
-      vmxnet3: Update driver to use ethtool_sprintf
-      bna: Update driver to use ethtool_sprintf
-      ionic: Update driver to use ethtool_sprintf
+diff --git a/include/linux/ethtool.h b/include/linux/ethtool.h
+index ec4cd3921c67..3583f7fc075c 100644
+--- a/include/linux/ethtool.h
++++ b/include/linux/ethtool.h
+@@ -571,4 +571,13 @@ struct ethtool_phy_ops {
+  */
+ void ethtool_set_ethtool_phy_ops(const struct ethtool_phy_ops *ops);
+ 
++/**
++ * ethtool_sprintf - Write formatted string to ethtool string data
++ * @data: Pointer to start of string to update
++ * @fmt: Format of string to write
++ *
++ * Write formatted string to data. Update data to point at start of
++ * next string.
++ */
++extern __printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...);
+ #endif /* _LINUX_ETHTOOL_H */
+diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
+index 24783b71c584..0788cc3b3114 100644
+--- a/net/ethtool/ioctl.c
++++ b/net/ethtool/ioctl.c
+@@ -1844,6 +1844,18 @@ static int ethtool_get_strings(struct net_device *dev, void __user *useraddr)
+ 	return ret;
+ }
+ 
++__printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...)
++{
++	va_list args;
++
++	va_start(args, fmt);
++	vsnprintf(*data, ETH_GSTRING_LEN, fmt, args);
++	va_end(args);
++
++	*data += ETH_GSTRING_LEN;
++}
++EXPORT_SYMBOL(ethtool_sprintf);
++
+ static int ethtool_phys_id(struct net_device *dev, void __user *useraddr)
+ {
+ 	struct ethtool_value id;
 
-
- drivers/net/ethernet/amazon/ena/ena_ethtool.c |  25 +-
- .../net/ethernet/brocade/bna/bnad_ethtool.c   | 266 +++++++-----------
- .../ethernet/hisilicon/hns/hns_dsaf_gmac.c    |   9 +-
- .../net/ethernet/hisilicon/hns/hns_dsaf_ppe.c |  41 +--
- .../net/ethernet/hisilicon/hns/hns_dsaf_rcb.c |  91 +++---
- .../ethernet/hisilicon/hns/hns_dsaf_xgmac.c   |   8 +-
- .../net/ethernet/hisilicon/hns/hns_ethtool.c  | 103 +++----
- .../net/ethernet/intel/i40e/i40e_ethtool.c    |  16 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c  |  55 ++--
- drivers/net/ethernet/intel/igb/igb_ethtool.c  |  40 +--
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  40 +--
- drivers/net/ethernet/netronome/nfp/abm/main.c |   4 +-
- .../ethernet/netronome/nfp/nfp_net_ethtool.c  |  79 +++---
- drivers/net/ethernet/netronome/nfp/nfp_port.h |   2 -
- .../net/ethernet/pensando/ionic/ionic_stats.c | 145 ++++------
- drivers/net/hyperv/netvsc_drv.c               |  33 +--
- drivers/net/virtio_net.c                      |  18 +-
- drivers/net/vmxnet3/vmxnet3_ethtool.c         |  53 ++--
- 18 files changed, 389 insertions(+), 639 deletions(-)
-
---
 
 _______________________________________________
 Intel-wired-lan mailing list
