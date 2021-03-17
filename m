@@ -1,79 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33D7433E2A4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:30:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3039533E2A6
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 01:31:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BA9C76F48C;
-	Wed, 17 Mar 2021 00:30:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D21C8431C7;
+	Wed, 17 Mar 2021 00:31:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id quEaJe8tP_3n; Wed, 17 Mar 2021 00:30:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M3BUzGRypXkB; Wed, 17 Mar 2021 00:31:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C0ED6F5B4;
-	Wed, 17 Mar 2021 00:30:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1DE134304B;
+	Wed, 17 Mar 2021 00:31:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 004B41BF393
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:50 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F5731BF393
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:31:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EF14C605E8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2DCCE838DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:31:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DD_Y2I1GCrjh for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 00:30:50 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id M0LvgDkaq4-B for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 00:30:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qt1-x832.google.com (mail-qt1-x832.google.com
- [IPv6:2607:f8b0:4864:20::832])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DDCEB6F5D0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:49 +0000 (UTC)
-Received: by mail-qt1-x832.google.com with SMTP id h7so243068qtx.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:30:49 -0700 (PDT)
+Received: from mail-qk1-x72c.google.com (mail-qk1-x72c.google.com
+ [IPv6:2607:f8b0:4864:20::72c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2F01782F8A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 00:30:59 +0000 (UTC)
+Received: by mail-qk1-x72c.google.com with SMTP id a9so37220874qkn.13
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Mar 2021 17:30:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:from:to:cc:date:message-id:in-reply-to:references
  :user-agent:mime-version:content-transfer-encoding;
- bh=qRbccARXlRCPUWaG1KfN16iDlT6bnnDQLr5CqzaWN7I=;
- b=WoSU1I/j05n7eOqyUaZUaAICOnBF2X+kn0LyTpoUoLQOIP2eaWud8JWT+234KE1UXQ
- Pi1MJqtc4SwzWL8LyZ3HCEae0kPhmsbWBLuY5PKx9RavNq60Qi8BY4oGSrNOWSaLm2bF
- r5Wbyp6TfV+wGLFygxiu2HkpBjUj9aLEfHxs/R2CcSHHE0Y98HNBlqXyW/xRyp1ljAMK
- iBbiwGDVN1Vd19ZA0d5JtK5B2t2dPt59xUm8WXoLhFzP4dt1QhWRgQZ0WBN1QiM3Wi2q
- EmXFemVyt/WeDN23jJ1hvVK/4Z5rQr6IKk/Ws6L9+ZOhQJRY91aRRnwmF/udxf5/IKOU
- uUng==
+ bh=llWoi5Oz4cqtzO38dPbZfnNzhy8uG4ghtKaDmv3GSRM=;
+ b=XrCNRpN21i/k9icbjdt3zIUyPBzlYc8IdYY6Id81DH5JvlTfBCj/NuOXN6EAfgb0GF
+ c3zNOwr9jvqskuAJHlmpp4m6BYHNescM8SLmGWAymGyExBLqe1zMtJ83tcy6pUfFt3Up
+ V/oO5/cxp2PFmEoEXYBBglsOV1AXFn58BxAdjwq/Whi2nJ6grwFedfVFXJcSYm40VLR/
+ Rw81EGmcOPQr0aUfPyi0g+R/N5PZw/I6UqjrFdnQwfmAqIi4zJOI+M+Mp0ozBC1Hk+1J
+ EMjqjpA/1eiSjxIklQ0QITriKL3L4639FAJGPbvxfZOMMgXGK+4jA5J60p7oJ/HhVDmy
+ 8lcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
  :references:user-agent:mime-version:content-transfer-encoding;
- bh=qRbccARXlRCPUWaG1KfN16iDlT6bnnDQLr5CqzaWN7I=;
- b=E+eOh6Y7LFt5vR3LVISJSLlYPw48815/GCgAcvYlwCDnOWssIpLlktX/QeDMqCPiCp
- HVhOgT0z7bJ7WaoFxIeWYWyCyL8nYx7UJI7FC2v4Y9KVAZi3XgbND5Db/SOruYUHMEv/
- yoPpZT/3IQOYmyzfFkYfY6pd0YwA7Dp9ygLT0IxTxgMdqi9K+X5hNPio75xzugsLPaay
- 6Uolt2/1QZVhZju/KfxAlFoO7+mq00LnzN8laAUVopd/5I5/nOgZ/ZuvbkO2R7BS5Clt
- soy4xV7RNMvNAnUndvcmmO5E0p4SZGCfIITjbWS4MEFLvGAVS9M9bNl4h2D2aEWSS2rg
- G2og==
-X-Gm-Message-State: AOAM532uAALmJCwroCqpUUoOuAWIFQ96HHXMgdd1qt8kunH5AiYzujVr
- CCnrvzkl+GyoYluN+3R15zo=
-X-Google-Smtp-Source: ABdhPJwXmZpOfKOLlhP0gqnWdMVCSMZXq5IqOYXpitHahZP63zKtdXnLxHhKoIcCBPydo8Hk4PhtUA==
-X-Received: by 2002:ac8:5510:: with SMTP id j16mr1416262qtq.339.1615941048608; 
- Tue, 16 Mar 2021 17:30:48 -0700 (PDT)
+ bh=llWoi5Oz4cqtzO38dPbZfnNzhy8uG4ghtKaDmv3GSRM=;
+ b=P96D9eGOrybthqGuEfWWpR5VOh32glShr6uIg1k7W/LNWsW4aoxIqlgCMWQOIj1L8b
+ BYi140f70GwGZm1sz7MymaKzFldB+lsmL57lwwB3AkL7FwXy81KKmyAzxHZXs8lJOXDh
+ er4KRl0ARSYSyt22x11MH7fxFaijTLZKoNig3grz+CmyzR8C2NXLBnji2wpRKeE1K7wz
+ +YHT5mLZcyZ+fq92gE74QnNnH1HEAvwSj2X7PakElwQIbau6NoHSyZ1E476oG4nOzx9W
+ +1IurHGTXLjoZdz12FZOMEmjV2Fd/eNXUge7jpfT3zNHsUBcxZakLNc1iqGdA7D3zick
+ 8cCA==
+X-Gm-Message-State: AOAM5332T8J1Qlo9K6BmxUY2JIvcoUPt6PYxvoUejnTn70ch989+RWXF
+ 2YNYAWqwfqjbHMAs7XqXMlY=
+X-Google-Smtp-Source: ABdhPJwEkVMNyU/8hDrCGgFr4Yp6mdJACl0PXrbxV//ec1YeX8u9AV6kG+WZoiZJiX5UnAklas3Hrg==
+X-Received: by 2002:a05:620a:126d:: with SMTP id
+ b13mr1970963qkl.122.1615941057903; 
+ Tue, 16 Mar 2021 17:30:57 -0700 (PDT)
 Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id h16sm14258475qto.45.2021.03.16.17.30.45
+ by smtp.gmail.com with ESMTPSA id z89sm14539192qtd.5.2021.03.16.17.30.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Mar 2021 17:30:48 -0700 (PDT)
+ Tue, 16 Mar 2021 17:30:57 -0700 (PDT)
 From: Alexander Duyck <alexander.duyck@gmail.com>
 To: davem@davemloft.net, kuba@kernel.org
-Date: Tue, 16 Mar 2021 17:30:44 -0700
-Message-ID: <161594104491.5644.18446437902161792108.stgit@localhost.localdomain>
+Date: Tue, 16 Mar 2021 17:30:53 -0700
+Message-ID: <161594105382.5644.13954561846222024517.stgit@localhost.localdomain>
 In-Reply-To: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
 References: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
 User-Agent: StGit/0.23
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 02/10] intel: Update drivers
- to use ethtool_sprintf
+Subject: [Intel-wired-lan] [net-next PATCH v2 03/10] nfp: Replace nfp_pr_et
+ with ethtool_sprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,257 +104,178 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Alexander Duyck <alexanderduyck@fb.com>
 
-Update the Intel drivers to make use of ethtool_sprintf. The general idea
-is to reduce code size and overhead by replacing the repeated pattern of
-string printf statements and ETH_STRING_LEN counter increments.
+The nfp_pr_et function is nearly identical to ethtool_sprintf except for
+the fact that it passes the pointer by value and as a return whereas
+ethtool_sprintf passes it as a pointer.
 
+Since they are so close just update nfp to make use of ethtool_sprintf
+
+Reviewed-by: Simon Horman <simon.horman@netronome.com>
 Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c   |   16 ++----
- drivers/net/ethernet/intel/ice/ice_ethtool.c     |   55 +++++++---------------
- drivers/net/ethernet/intel/igb/igb_ethtool.c     |   40 ++++++----------
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |   40 ++++++----------
- 4 files changed, 50 insertions(+), 101 deletions(-)
+ drivers/net/ethernet/netronome/nfp/abm/main.c      |    4 +
+ .../net/ethernet/netronome/nfp/nfp_net_ethtool.c   |   79 +++++++++-----------
+ drivers/net/ethernet/netronome/nfp/nfp_port.h      |    2 -
+ 3 files changed, 36 insertions(+), 49 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index c70dec65a572..3c9054e13aa5 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -2368,21 +2368,15 @@ static void i40e_get_priv_flag_strings(struct net_device *netdev, u8 *data)
- 	struct i40e_netdev_priv *np = netdev_priv(netdev);
- 	struct i40e_vsi *vsi = np->vsi;
- 	struct i40e_pf *pf = vsi->back;
--	char *p = (char *)data;
- 	unsigned int i;
-+	u8 *p = data;
- 
--	for (i = 0; i < I40E_PRIV_FLAGS_STR_LEN; i++) {
--		snprintf(p, ETH_GSTRING_LEN, "%s",
--			 i40e_gstrings_priv_flags[i].flag_string);
--		p += ETH_GSTRING_LEN;
--	}
-+	for (i = 0; i < I40E_PRIV_FLAGS_STR_LEN; i++)
-+		ethtool_sprintf(&p, i40e_gstrings_priv_flags[i].flag_string);
- 	if (pf->hw.pf_id != 0)
- 		return;
--	for (i = 0; i < I40E_GL_PRIV_FLAGS_STR_LEN; i++) {
--		snprintf(p, ETH_GSTRING_LEN, "%s",
--			 i40e_gl_gstrings_priv_flags[i].flag_string);
--		p += ETH_GSTRING_LEN;
--	}
-+	for (i = 0; i < I40E_GL_PRIV_FLAGS_STR_LEN; i++)
-+		ethtool_sprintf(&p, i40e_gl_gstrings_priv_flags[i].flag_string);
+diff --git a/drivers/net/ethernet/netronome/nfp/abm/main.c b/drivers/net/ethernet/netronome/nfp/abm/main.c
+index bdbf0726145e..605a1617b195 100644
+--- a/drivers/net/ethernet/netronome/nfp/abm/main.c
++++ b/drivers/net/ethernet/netronome/nfp/abm/main.c
+@@ -419,8 +419,8 @@ nfp_abm_port_get_stats_strings(struct nfp_app *app, struct nfp_port *port,
+ 		return data;
+ 	alink = repr->app_priv;
+ 	for (i = 0; i < alink->vnic->dp.num_r_vecs; i++) {
+-		data = nfp_pr_et(data, "q%u_no_wait", i);
+-		data = nfp_pr_et(data, "q%u_delayed", i);
++		ethtool_sprintf(&data, "q%u_no_wait", i);
++		ethtool_sprintf(&data, "q%u_delayed", i);
+ 	}
+ 	return data;
+ }
+diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c b/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
+index 9c9ae33d84ce..1b482446536d 100644
+--- a/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
++++ b/drivers/net/ethernet/netronome/nfp/nfp_net_ethtool.c
+@@ -429,17 +429,6 @@ static int nfp_net_set_ringparam(struct net_device *netdev,
+ 	return nfp_net_set_ring_size(nn, rxd_cnt, txd_cnt);
  }
  
- static void i40e_get_strings(struct net_device *netdev, u32 stringset,
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 2dcfa685b763..4f738425fb44 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -871,68 +871,47 @@ static void ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
+-__printf(2, 3) u8 *nfp_pr_et(u8 *data, const char *fmt, ...)
+-{
+-	va_list args;
+-
+-	va_start(args, fmt);
+-	vsnprintf(data, ETH_GSTRING_LEN, fmt, args);
+-	va_end(args);
+-
+-	return data + ETH_GSTRING_LEN;
+-}
+-
+ static unsigned int nfp_vnic_get_sw_stats_count(struct net_device *netdev)
  {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_vsi *vsi = np->vsi;
--	char *p = (char *)data;
- 	unsigned int i;
-+	u8 *p = data;
+ 	struct nfp_net *nn = netdev_priv(netdev);
+@@ -454,29 +443,29 @@ static u8 *nfp_vnic_get_sw_stats_strings(struct net_device *netdev, u8 *data)
+ 	int i;
  
- 	switch (stringset) {
- 	case ETH_SS_STATS:
--		for (i = 0; i < ICE_VSI_STATS_LEN; i++) {
--			snprintf(p, ETH_GSTRING_LEN, "%s",
--				 ice_gstrings_vsi_stats[i].stat_string);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < ICE_VSI_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					ice_gstrings_vsi_stats[i].stat_string);
+ 	for (i = 0; i < nn->max_r_vecs; i++) {
+-		data = nfp_pr_et(data, "rvec_%u_rx_pkts", i);
+-		data = nfp_pr_et(data, "rvec_%u_tx_pkts", i);
+-		data = nfp_pr_et(data, "rvec_%u_tx_busy", i);
++		ethtool_sprintf(&data, "rvec_%u_rx_pkts", i);
++		ethtool_sprintf(&data, "rvec_%u_tx_pkts", i);
++		ethtool_sprintf(&data, "rvec_%u_tx_busy", i);
+ 	}
  
- 		ice_for_each_alloc_txq(vsi, i) {
--			snprintf(p, ETH_GSTRING_LEN,
--				 "tx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			snprintf(p, ETH_GSTRING_LEN, "tx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
- 		}
+-	data = nfp_pr_et(data, "hw_rx_csum_ok");
+-	data = nfp_pr_et(data, "hw_rx_csum_inner_ok");
+-	data = nfp_pr_et(data, "hw_rx_csum_complete");
+-	data = nfp_pr_et(data, "hw_rx_csum_err");
+-	data = nfp_pr_et(data, "rx_replace_buf_alloc_fail");
+-	data = nfp_pr_et(data, "rx_tls_decrypted_packets");
+-	data = nfp_pr_et(data, "hw_tx_csum");
+-	data = nfp_pr_et(data, "hw_tx_inner_csum");
+-	data = nfp_pr_et(data, "tx_gather");
+-	data = nfp_pr_et(data, "tx_lso");
+-	data = nfp_pr_et(data, "tx_tls_encrypted_packets");
+-	data = nfp_pr_et(data, "tx_tls_ooo");
+-	data = nfp_pr_et(data, "tx_tls_drop_no_sync_data");
+-
+-	data = nfp_pr_et(data, "hw_tls_no_space");
+-	data = nfp_pr_et(data, "rx_tls_resync_req_ok");
+-	data = nfp_pr_et(data, "rx_tls_resync_req_ign");
+-	data = nfp_pr_et(data, "rx_tls_resync_sent");
++	ethtool_sprintf(&data, "hw_rx_csum_ok");
++	ethtool_sprintf(&data, "hw_rx_csum_inner_ok");
++	ethtool_sprintf(&data, "hw_rx_csum_complete");
++	ethtool_sprintf(&data, "hw_rx_csum_err");
++	ethtool_sprintf(&data, "rx_replace_buf_alloc_fail");
++	ethtool_sprintf(&data, "rx_tls_decrypted_packets");
++	ethtool_sprintf(&data, "hw_tx_csum");
++	ethtool_sprintf(&data, "hw_tx_inner_csum");
++	ethtool_sprintf(&data, "tx_gather");
++	ethtool_sprintf(&data, "tx_lso");
++	ethtool_sprintf(&data, "tx_tls_encrypted_packets");
++	ethtool_sprintf(&data, "tx_tls_ooo");
++	ethtool_sprintf(&data, "tx_tls_drop_no_sync_data");
++
++	ethtool_sprintf(&data, "hw_tls_no_space");
++	ethtool_sprintf(&data, "rx_tls_resync_req_ok");
++	ethtool_sprintf(&data, "rx_tls_resync_req_ign");
++	ethtool_sprintf(&data, "rx_tls_resync_sent");
  
- 		ice_for_each_alloc_rxq(vsi, i) {
--			snprintf(p, ETH_GSTRING_LEN,
--				 "rx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			snprintf(p, ETH_GSTRING_LEN, "rx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
- 		}
+ 	return data;
+ }
+@@ -550,19 +539,19 @@ nfp_vnic_get_hw_stats_strings(u8 *data, unsigned int num_vecs, bool repr)
+ 	swap_off = repr * NN_ET_SWITCH_STATS_LEN;
  
- 		if (vsi->type != ICE_VSI_PF)
- 			return;
+ 	for (i = 0; i < NN_ET_SWITCH_STATS_LEN; i++)
+-		data = nfp_pr_et(data, nfp_net_et_stats[i + swap_off].name);
++		ethtool_sprintf(&data, nfp_net_et_stats[i + swap_off].name);
  
--		for (i = 0; i < ICE_PF_STATS_LEN; i++) {
--			snprintf(p, ETH_GSTRING_LEN, "%s",
--				 ice_gstrings_pf_stats[i].stat_string);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < ICE_PF_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					ice_gstrings_pf_stats[i].stat_string);
+ 	for (i = NN_ET_SWITCH_STATS_LEN; i < NN_ET_SWITCH_STATS_LEN * 2; i++)
+-		data = nfp_pr_et(data, nfp_net_et_stats[i - swap_off].name);
++		ethtool_sprintf(&data, nfp_net_et_stats[i - swap_off].name);
  
- 		for (i = 0; i < ICE_MAX_USER_PRIORITY; i++) {
--			snprintf(p, ETH_GSTRING_LEN,
--				 "tx_priority_%u_xon.nic", i);
--			p += ETH_GSTRING_LEN;
--			snprintf(p, ETH_GSTRING_LEN,
--				 "tx_priority_%u_xoff.nic", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_priority_%u_xon.nic", i);
-+			ethtool_sprintf(&p, "tx_priority_%u_xoff.nic", i);
- 		}
- 		for (i = 0; i < ICE_MAX_USER_PRIORITY; i++) {
--			snprintf(p, ETH_GSTRING_LEN,
--				 "rx_priority_%u_xon.nic", i);
--			p += ETH_GSTRING_LEN;
--			snprintf(p, ETH_GSTRING_LEN,
--				 "rx_priority_%u_xoff.nic", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_priority_%u_xon.nic", i);
-+			ethtool_sprintf(&p, "rx_priority_%u_xoff.nic", i);
- 		}
- 		break;
- 	case ETH_SS_TEST:
- 		memcpy(data, ice_gstrings_test, ICE_TEST_LEN * ETH_GSTRING_LEN);
- 		break;
- 	case ETH_SS_PRIV_FLAGS:
--		for (i = 0; i < ICE_PRIV_FLAG_ARRAY_SIZE; i++) {
--			snprintf(p, ETH_GSTRING_LEN, "%s",
--				 ice_gstrings_priv_flags[i].name);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < ICE_PRIV_FLAG_ARRAY_SIZE; i++)
-+			ethtool_sprintf(&p, ice_gstrings_priv_flags[i].name);
- 		break;
- 	default:
- 		break;
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 28baf203459a..4ab9f468f08e 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -2347,35 +2347,23 @@ static void igb_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- 			IGB_TEST_LEN*ETH_GSTRING_LEN);
- 		break;
- 	case ETH_SS_STATS:
--		for (i = 0; i < IGB_GLOBAL_STATS_LEN; i++) {
--			memcpy(p, igb_gstrings_stats[i].stat_string,
--			       ETH_GSTRING_LEN);
--			p += ETH_GSTRING_LEN;
--		}
--		for (i = 0; i < IGB_NETDEV_STATS_LEN; i++) {
--			memcpy(p, igb_gstrings_net_stats[i].stat_string,
--			       ETH_GSTRING_LEN);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < IGB_GLOBAL_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					igb_gstrings_stats[i].stat_string);
-+		for (i = 0; i < IGB_NETDEV_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					igb_gstrings_net_stats[i].stat_string);
- 		for (i = 0; i < adapter->num_tx_queues; i++) {
--			sprintf(p, "tx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_queue_%u_restart", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_restart", i);
- 		}
- 		for (i = 0; i < adapter->num_rx_queues; i++) {
--			sprintf(p, "rx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_drops", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_csum_err", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_alloc_failed", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_drops", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_csum_err", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_alloc_failed", i);
- 		}
- 		/* BUG_ON(p - data != IGB_STATS_LEN * ETH_GSTRING_LEN); */
- 		break;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index a280aa34ca1d..4ceaca0f6ce3 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -1368,45 +1368,33 @@ static void ixgbe_get_ethtool_stats(struct net_device *netdev,
- static void ixgbe_get_strings(struct net_device *netdev, u32 stringset,
- 			      u8 *data)
- {
--	char *p = (char *)data;
- 	unsigned int i;
-+	u8 *p = data;
+ 	for (i = NN_ET_SWITCH_STATS_LEN * 2; i < NN_ET_GLOBAL_STATS_LEN; i++)
+-		data = nfp_pr_et(data, nfp_net_et_stats[i].name);
++		ethtool_sprintf(&data, nfp_net_et_stats[i].name);
  
- 	switch (stringset) {
- 	case ETH_SS_TEST:
--		for (i = 0; i < IXGBE_TEST_LEN; i++) {
--			memcpy(data, ixgbe_gstrings_test[i], ETH_GSTRING_LEN);
--			data += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < IXGBE_TEST_LEN; i++)
-+			ethtool_sprintf(&p, ixgbe_gstrings_test[i]);
- 		break;
- 	case ETH_SS_STATS:
--		for (i = 0; i < IXGBE_GLOBAL_STATS_LEN; i++) {
--			memcpy(p, ixgbe_gstrings_stats[i].stat_string,
--			       ETH_GSTRING_LEN);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < IXGBE_GLOBAL_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					ixgbe_gstrings_stats[i].stat_string);
- 		for (i = 0; i < netdev->num_tx_queues; i++) {
--			sprintf(p, "tx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+ 	for (i = 0; i < num_vecs; i++) {
+-		data = nfp_pr_et(data, "rxq_%u_pkts", i);
+-		data = nfp_pr_et(data, "rxq_%u_bytes", i);
+-		data = nfp_pr_et(data, "txq_%u_pkts", i);
+-		data = nfp_pr_et(data, "txq_%u_bytes", i);
++		ethtool_sprintf(&data, "rxq_%u_pkts", i);
++		ethtool_sprintf(&data, "rxq_%u_bytes", i);
++		ethtool_sprintf(&data, "txq_%u_pkts", i);
++		ethtool_sprintf(&data, "txq_%u_bytes", i);
+ 	}
+ 
+ 	return data;
+@@ -610,15 +599,15 @@ static u8 *nfp_vnic_get_tlv_stats_strings(struct nfp_net *nn, u8 *data)
+ 			memcpy(data, nfp_tlv_stat_names[id], ETH_GSTRING_LEN);
+ 			data += ETH_GSTRING_LEN;
+ 		} else {
+-			data = nfp_pr_et(data, "dev_unknown_stat%u", id);
++			ethtool_sprintf(&data, "dev_unknown_stat%u", id);
  		}
- 		for (i = 0; i < IXGBE_NUM_RX_QUEUES; i++) {
--			sprintf(p, "rx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
- 		}
- 		for (i = 0; i < IXGBE_MAX_PACKET_BUFFERS; i++) {
--			sprintf(p, "tx_pb_%u_pxon", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_pb_%u_pxoff", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_pb_%u_pxon", i);
-+			ethtool_sprintf(&p, "tx_pb_%u_pxoff", i);
- 		}
- 		for (i = 0; i < IXGBE_MAX_PACKET_BUFFERS; i++) {
--			sprintf(p, "rx_pb_%u_pxon", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_pb_%u_pxoff", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_pb_%u_pxon", i);
-+			ethtool_sprintf(&p, "rx_pb_%u_pxoff", i);
- 		}
- 		/* BUG_ON(p - data != IXGBE_STATS_LEN * ETH_GSTRING_LEN); */
- 		break;
+ 	}
+ 
+ 	for (i = 0; i < nn->max_r_vecs; i++) {
+-		data = nfp_pr_et(data, "rxq_%u_pkts", i);
+-		data = nfp_pr_et(data, "rxq_%u_bytes", i);
+-		data = nfp_pr_et(data, "txq_%u_pkts", i);
+-		data = nfp_pr_et(data, "txq_%u_bytes", i);
++		ethtool_sprintf(&data, "rxq_%u_pkts", i);
++		ethtool_sprintf(&data, "rxq_%u_bytes", i);
++		ethtool_sprintf(&data, "txq_%u_pkts", i);
++		ethtool_sprintf(&data, "txq_%u_bytes", i);
+ 	}
+ 
+ 	return data;
+@@ -666,7 +655,7 @@ static u8 *nfp_mac_get_stats_strings(struct net_device *netdev, u8 *data)
+ 		return data;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(nfp_mac_et_stats); i++)
+-		data = nfp_pr_et(data, "mac.%s", nfp_mac_et_stats[i].name);
++		ethtool_sprintf(&data, "mac.%s", nfp_mac_et_stats[i].name);
+ 
+ 	return data;
+ }
+diff --git a/drivers/net/ethernet/netronome/nfp/nfp_port.h b/drivers/net/ethernet/netronome/nfp/nfp_port.h
+index d7fd203bb180..ae4da189d955 100644
+--- a/drivers/net/ethernet/netronome/nfp/nfp_port.h
++++ b/drivers/net/ethernet/netronome/nfp/nfp_port.h
+@@ -92,8 +92,6 @@ struct nfp_port {
+ 
+ extern const struct ethtool_ops nfp_port_ethtool_ops;
+ 
+-__printf(2, 3) u8 *nfp_pr_et(u8 *data, const char *fmt, ...);
+-
+ int nfp_port_setup_tc(struct net_device *netdev, enum tc_setup_type type,
+ 		      void *type_data);
+ 
 
 
 _______________________________________________
