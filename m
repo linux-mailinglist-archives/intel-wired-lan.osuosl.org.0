@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A64E33F5C3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 17:41:49 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BDBA33F627
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 18:00:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 73E844ECF7;
-	Wed, 17 Mar 2021 16:41:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 845B540143;
+	Wed, 17 Mar 2021 17:00:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jtrsE8_kOFB9; Wed, 17 Mar 2021 16:41:46 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KKQRAUScQBIo; Wed, 17 Mar 2021 17:00:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 49B7B4ECD6;
-	Wed, 17 Mar 2021 16:41:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9A5364150B;
+	Wed, 17 Mar 2021 17:00:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DA9161BF402
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:41:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E955F1BF402
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:00:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C86496F96E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:41:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D89E34017B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:00:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mmmZ-qrFO_e9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 16:41:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2xxViyXt8bL6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 17:00:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1F3916F969
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:41:39 +0000 (UTC)
-IronPort-SDR: YRtvRu+d+YHRyjSwcadXZLUUv2AVeqlu0vXB/ThXUh6s5P+thvt6haCHQDcSfKDlSUl0ZNrHTX
- eljE9v8fQtCw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9926"; a="250859549"
-X-IronPort-AV: E=Sophos;i="5.81,256,1610438400"; d="scan'208";a="250859549"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4321A40143
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 17:00:47 +0000 (UTC)
+IronPort-SDR: ihiFbnAWrlftg7bvuXZXZ6Fz9ZFWY65PhZh4E3GUF9gktG2Z1xZnM6x8tmQThLTH1gg3J3zI7r
+ DIjPPrRpmcwg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9926"; a="168780732"
+X-IronPort-AV: E=Sophos;i="5.81,257,1610438400"; d="scan'208";a="168780732"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2021 09:41:39 -0700
-IronPort-SDR: jBh0ESDE3nQ62X8GGYlW2EfcuPeTJTTpknrp5suwpoKISw9McOFxBaO2QU73W1LXVA6s+1vd4q
- FoEDLTrxGrbg==
-X-IronPort-AV: E=Sophos;i="5.81,256,1610438400"; d="scan'208";a="372408606"
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2021 10:00:45 -0700
+IronPort-SDR: OvHxno4mREoUHFZRIKk5WYAoZWHH+n2AbIKte/Ujez80a/FP4ygTb/5KVdBotqhXhzep7NhyEZ
+ 2Uz4kxzF+Ydw==
+X-IronPort-AV: E=Sophos;i="5.81,256,1610438400"; d="scan'208";a="372414118"
 Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
  ([10.209.10.230])
  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2021 09:41:37 -0700
-Date: Wed, 17 Mar 2021 09:41:37 -0700
+ 17 Mar 2021 10:00:45 -0700
+Date: Wed, 17 Mar 2021 10:00:44 -0700
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-Message-ID: <20210317094137.00007073@intel.com>
-In-Reply-To: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
-References: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
+To: Bhaskar Chowdhury <unixbhaskar@gmail.com>
+Message-ID: <20210317100044.00005f65@intel.com>
+In-Reply-To: <20210317100001.2172893-1-unixbhaskar@gmail.com>
+References: <20210317100001.2172893-1-unixbhaskar@gmail.com>
 X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next PATCH v2 00/10] ethtool: Factor out
- common code related to writing ethtool strings
+Subject: Re: [Intel-wired-lan] [PATCH] net: ethernet: intel: Fix a typo in
+ the file ixgbe_dcb_nl.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,42 +67,19 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: doshir@vmware.com, mst@redhat.com, oss-drivers@netronome.com,
- jasowang@redhat.com, alexanderduyck@fb.com, akiyano@amazon.com,
- wei.liu@kernel.org, sthemmin@microsoft.com, pv-drivers@vmware.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, Kernel-team@fb.com,
- yisen.zhuang@huawei.com, gtzalik@amazon.com, simon.horman@netronome.com,
- haiyangz@microsoft.com, drivers@pensando.io, salil.mehta@huawei.com,
- GR-Linux-NIC-Dev@marvell.com, rmody@marvell.com, netdev@vger.kernel.org,
- davem@davemloft.net, netanel@amazon.com, saeedb@amazon.com,
- snelson@pensando.io, skalluru@marvell.com
+Cc: netdev@vger.kernel.org, rdunlap@infradead.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Alexander Duyck wrote:
+Bhaskar Chowdhury wrote:
 
-> This patch set is meant to be a cleanup and refactoring of common code bits
-> from several drivers. Specificlly a number of drivers engage in a pattern
-> where they will use some variant on an sprintf or memcpy to write a string
-> into the ethtool string array and then they will increment their pointer by
-> ETH_GSTRING_LEN.
 > 
-> Instead of having each driver implement this independently I am refactoring
-> the code so that we have one central function, ethtool_sprintf that does
-> all this and takes a double pointer to access the data, a formatted string
-> to print, and the variable arguments that are associated with the string.
+> s/Reprogam/Reprogram/
 > 
-> Changes from v1:
-> Fixed usage of char ** vs  unsigned char ** in hisilicon drivers
-> 
-> Changes from RFC:
-> Renamed ethtool_gsprintf to ethtool_sprintf
-> Fixed reverse xmas tree issue in patch 2
-> 
-
-Thanks Alex, I had a look over the whole thing and it looks good to me.
+> Signed-off-by: Bhaskar Chowdhury <unixbhaskar@gmail.com>
 
 Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 _______________________________________________
