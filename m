@@ -1,62 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55DFF33F879
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 19:51:37 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F93833F890
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 19:58:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E1F6743098;
-	Wed, 17 Mar 2021 18:51:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F17F54ECC6;
+	Wed, 17 Mar 2021 18:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GebRXQp8mb6n; Wed, 17 Mar 2021 18:51:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V64uwsKnFia9; Wed, 17 Mar 2021 18:58:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E103C43074;
-	Wed, 17 Mar 2021 18:51:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ABABD4ECD1;
+	Wed, 17 Mar 2021 18:58:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 36A9D1BF330
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:50:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D49C1BF330
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:58:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1C1FA43045
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:50:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6872943098
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=google.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2ckFcLtHrcv9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 18:50:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EED0D4303F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:50:09 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPS id 8B30564F51;
- Wed, 17 Mar 2021 18:50:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1616007009;
- bh=16bY4Q9L91OTPdgdNxgxLVnLRs6fDvle7jzwH1pV4Tk=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=KUiPkmTO49BfebMM4e2Q4/RPZBF/y+p7v0HPEVf9OizLrHrow208m941u3hzr8OkM
- yWWvL1nJyytqNMfTUonN2V4hbdiJmLtGwiEeJQfeuC7ew3ddydyJe7IgL6KUJHTgni
- oT2xijLszEeuDiD0WAg8bMfKdijPZ7fItSGU/2SYxb8wg2FHQK8H0ZHpe8NjRQEv+l
- vMw/EZdPYyIekCsHyXwy7J1a8qryKGwNdyAO0wTva6ol8Pv2p3Gf/graBXLZmikIoQ
- MfUhKHdr5Jh7aiFeYhdGVTmmZpjIvwt5XBIXXGS9ggfpuMzftOoX08cRbe8O3ALX+K
- TYUEQcaz2+zFg==
-Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
- [127.0.0.1])
- by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id 7397B60A60;
- Wed, 17 Mar 2021 18:50:09 +0000 (UTC)
+ with ESMTP id 7qOSMn1eM8Sp for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 18:58:13 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lj1-x236.google.com (mail-lj1-x236.google.com
+ [IPv6:2a00:1450:4864:20::236])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 501F24303F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 18:58:13 +0000 (UTC)
+Received: by mail-lj1-x236.google.com with SMTP id 16so4484368ljc.11
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 11:58:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=4tkhXz7ciBpwwPumsE8QZTmyp8AevItredkFY7TSORQ=;
+ b=E5uNQ5HR2vm/LcV09nz3Jy9xCy4NevVtgcwEskfoCxV0rh3LoaOeF1rVJdHkhThgla
+ OTgXFFEnsj1kovBCJU2GLDgdQPDGlAFX5lP/lTIl3+y5CThXEWZO8+DoGHBwpH00/9eR
+ gee/VOKAIre91MnnvaNmSjynUKSJUVpFdRqzj1jVDxoQPbJH2CLaKvBERLTn+qjksv82
+ 9jzbKUHOdrHW7hsA9xmNS2XQhTyGspCBiyA4QnJTkmiry8dZdtrNVWlKY0tBGh+BuG2A
+ ZHWj6NitZnMqBsRbgiCxqhMHWCEAfk6VgDLMPkvqgHE3r+ZcUw7i6YxPt8qPvjO8sRjb
+ /CJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=4tkhXz7ciBpwwPumsE8QZTmyp8AevItredkFY7TSORQ=;
+ b=Rk1fr65vyxTq0xceiA8C5qROX1msIKhuMiMM4BRmPTKdpcbtUkwyBUCPrczRbay1eN
+ JqdOUUqBe9c5QV9rSNoBugP/ffC3ABPLYFFoN/URv4zVVNciDq7Y4wyQksWLZa0LjUMk
+ 107kLrj5L8SeLLtxhlYUhskuq5euEI5BdKnwE3blztw52K83ReV8kXFwbYr1nvBMvkSi
+ m8MT3322BXkYq9wdusFCbwHdy56oxSxwhut37NePprOXqGTwPuRbv0E6QcCNVzqdL+C0
+ bXU7h7jaKBELPxInTGjQmusKPA9BVV+RbQeT7oeUoNzSuycERNCkSPr9cQVkJsFb0QDK
+ XtQA==
+X-Gm-Message-State: AOAM531YnDiGchM8h1CkLPj6S2Af06HfUpl5LTFwXWwbAh+XbrwRpKed
+ x8dydFineOYYE7H8KgyF75n+CuTyndGCJc3RirbhRg==
+X-Google-Smtp-Source: ABdhPJwaPhnsiLqqCDjn4YrthpikIfaOtSJjzyFR2YNIAhcPW965YmQXEKwVehsmEmAxjilmIDVwpz9hTiGhU6JLzsQ=
+X-Received: by 2002:a05:651c:1134:: with SMTP id
+ e20mr3228605ljo.385.1616007490899; 
+ Wed, 17 Mar 2021 11:58:10 -0700 (PDT)
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <161600700946.1265.8041343414246655720.git-patchwork-notify@kernel.org>
-Date: Wed, 17 Mar 2021 18:50:09 +0000
-References: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
-In-Reply-To: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-X-Mailman-Approved-At: Wed, 17 Mar 2021 18:51:30 +0000
-Subject: Re: [Intel-wired-lan] [net-next PATCH v2 00/10] ethtool: Factor out
- common code related to writing ethtool strings
+References: <20210317064148.GA55123@embeddedor>
+ <CAG48ez2RDqKwx=umOHjo_1mYyNQgzvcP=KOw1HgSo4Prs_VQDw@mail.gmail.com>
+ <3bd8d009-2ad2-c24d-5c34-5970c52502de@embeddedor.com>
+In-Reply-To: <3bd8d009-2ad2-c24d-5c34-5970c52502de@embeddedor.com>
+From: Jann Horn <jannh@google.com>
+Date: Wed, 17 Mar 2021 19:57:44 +0100
+Message-ID: <CAG48ez2jr_8MbY_sNXfwvs7WsF-5f9j=U4-66dTcgXd2msr39A@mail.gmail.com>
+To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Subject: Re: [Intel-wired-lan] [PATCH][next] ixgbe: Fix out-of-bounds
+ warning in ixgbe_host_interface_command()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,67 +86,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: doshir@vmware.com, mst@redhat.com, oss-drivers@netronome.com,
- jasowang@redhat.com, alexanderduyck@fb.com, akiyano@amazon.com,
- wei.liu@kernel.org, sthemmin@microsoft.com, pv-drivers@vmware.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, Kernel-team@fb.com,
- yisen.zhuang@huawei.com, gtzalik@amazon.com, simon.horman@netronome.com,
- haiyangz@microsoft.com, drivers@pensando.io, salil.mehta@huawei.com,
- GR-Linux-NIC-Dev@marvell.com, rmody@marvell.com, netdev@vger.kernel.org,
- davem@davemloft.net, netanel@amazon.com, saeedb@amazon.com,
- snelson@pensando.io, skalluru@marvell.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Network Development <netdev@vger.kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ kernel list <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ linux-hardening@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
-
-This series was applied to netdev/net-next.git (refs/heads/master):
-
-On Tue, 16 Mar 2021 17:30:26 -0700 you wrote:
-> This patch set is meant to be a cleanup and refactoring of common code bits
-> from several drivers. Specificlly a number of drivers engage in a pattern
-> where they will use some variant on an sprintf or memcpy to write a string
-> into the ethtool string array and then they will increment their pointer by
-> ETH_GSTRING_LEN.
-> 
-> Instead of having each driver implement this independently I am refactoring
-> the code so that we have one central function, ethtool_sprintf that does
-> all this and takes a double pointer to access the data, a formatted string
-> to print, and the variable arguments that are associated with the string.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v2,01/10] ethtool: Add common function for filling out strings
-    https://git.kernel.org/netdev/net-next/c/7888fe53b706
-  - [net-next,v2,02/10] intel: Update drivers to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/c8d4725e985d
-  - [net-next,v2,03/10] nfp: Replace nfp_pr_et with ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/6a143a7cf947
-  - [net-next,v2,04/10] hisilicon: Update drivers to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/83cd23974a73
-  - [net-next,v2,05/10] ena: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/efbbe4fb5976
-  - [net-next,v2,06/10] netvsc: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/3ae0ed376d1c
-  - [net-next,v2,07/10] virtio_net: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/d7a9a01b4e21
-  - [net-next,v2,08/10] vmxnet3: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/3b78b3067f38
-  - [net-next,v2,09/10] bna: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/b82e8118c540
-  - [net-next,v2,10/10] ionic: Update driver to use ethtool_sprintf
-    https://git.kernel.org/netdev/net-next/c/acebe5b6107c
-
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gV2VkLCBNYXIgMTcsIDIwMjEgYXQgNzoyNyBQTSBHdXN0YXZvIEEuIFIuIFNpbHZhCjxndXN0
+YXZvQGVtYmVkZGVkb3IuY29tPiB3cm90ZToKPiBPbiAzLzE3LzIxIDEyOjExLCBKYW5uIEhvcm4g
+d3JvdGU6Cj4gPiBPbiBXZWQsIE1hciAxNywgMjAyMSBhdCA4OjQzIEFNIEd1c3Rhdm8gQS4gUi4g
+U2lsdmEKPiA+IDxndXN0YXZvYXJzQGtlcm5lbC5vcmc+IHdyb3RlOgo+ID4+IEZpeCB0aGUgZm9s
+bG93aW5nIG91dC1vZi1ib3VuZHMgd2FybmluZyBieSByZXBsYWNpbmcgdGhlIG9uZS1lbGVtZW50
+Cj4gPj4gYXJyYXkgaW4gYW4gYW5vbnltb3VzIHVuaW9uIHdpdGggYSBwb2ludGVyOgo+ID4+Cj4g
+Pj4gICBDQyBbTV0gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1v
+bi5vCj4gPj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmM6
+IEluIGZ1bmN0aW9uIOKAmGl4Z2JlX2hvc3RfaW50ZXJmYWNlX2NvbW1hbmTigJk6Cj4gPj4gZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmM6MzcyOToxMzogd2Fy
+bmluZzogYXJyYXkgc3Vic2NyaXB0IDEgaXMgYWJvdmUgYXJyYXkgYm91bmRzIG9mIOKAmHUzMlsx
+XeKAmSB7YWthIOKAmHVuc2lnbmVkIGludFsxXeKAmX0gWy1XYXJyYXktYm91bmRzXQo+ID4+ICAz
+NzI5IHwgICBicC0+dTMyYXJyW2JpXSA9IElYR0JFX1JFQURfUkVHX0FSUkFZKGh3LCBJWEdCRV9G
+TEVYX01ORywgYmkpOwo+ID4+ICAgICAgIHwgICB+fn5+fn5+fn5+Xn5+fgo+ID4+IGRyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1vbi5jOjM2ODI6Nzogbm90ZTogd2hp
+bGUgcmVmZXJlbmNpbmcg4oCYdTMyYXJy4oCZCj4gPj4gIDM2ODIgfCAgIHUzMiB1MzJhcnJbMV07
+Cj4gPj4gICAgICAgfCAgICAgICBefn5+fn4KPiA+Pgo+ID4+IFRoaXMgaGVscHMgd2l0aCB0aGUg
+b25nb2luZyBlZmZvcnRzIHRvIGdsb2JhbGx5IGVuYWJsZSAtV2FycmF5LWJvdW5kcy4KPiA+Pgo+
+ID4+IE5vdGljZSB0aGF0LCB0aGUgdXN1YWwgYXBwcm9hY2ggdG8gZml4IHRoZXNlIHNvcnRzIG9m
+IGlzc3VlcyBpcyB0bwo+ID4+IHJlcGxhY2UgdGhlIG9uZS1lbGVtZW50IGFycmF5IHdpdGggYSBm
+bGV4aWJsZS1hcnJheSBtZW1iZXIuIEhvd2V2ZXIsCj4gPj4gZmxleGlibGUgYXJyYXlzIHNob3Vs
+ZCBub3QgYmUgdXNlZCBpbiB1bmlvbnMuIFRoYXQsIHRvZ2V0aGVyIHdpdGggdGhlCj4gPj4gZmFj
+dCB0aGF0IHRoZSBhcnJheSBub3RhdGlvbiBpcyBub3QgYmVpbmcgYWZmZWN0ZWQgaW4gYW55IHdh
+eXMsIGlzIHdoeQo+ID4+IHRoZSBwb2ludGVyIGFwcHJvYWNoIHdhcyBjaG9zZW4gaW4gdGhpcyBj
+YXNlLgo+ID4+Cj4gPj4gTGluazogaHR0cHM6Ly9naXRodWIuY29tL0tTUFAvbGludXgvaXNzdWVz
+LzEwOQo+ID4+IFNpZ25lZC1vZmYtYnk6IEd1c3Rhdm8gQS4gUi4gU2lsdmEgPGd1c3Rhdm9hcnNA
+a2VybmVsLm9yZz4KPiA+PiAtLS0KPiA+PiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhn
+YmUvaXhnYmVfY29tbW9uLmMgfCAyICstCj4gPj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKSwgMSBkZWxldGlvbigtKQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1vbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmMKPiA+PiBpbmRleCA2MmRkYjQ1MmY4NjIuLmJmZjNk
+YzFhZjcwMiAxMDA2NDQKPiA+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdi
+ZS9peGdiZV9jb21tb24uYwo+ID4+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4
+Z2JlL2l4Z2JlX2NvbW1vbi5jCj4gPj4gQEAgLTM2NzksNyArMzY3OSw3IEBAIHMzMiBpeGdiZV9o
+b3N0X2ludGVyZmFjZV9jb21tYW5kKHN0cnVjdCBpeGdiZV9odyAqaHcsIHZvaWQgKmJ1ZmZlciwK
+PiA+PiAgICAgICAgIHUzMiBoZHJfc2l6ZSA9IHNpemVvZihzdHJ1Y3QgaXhnYmVfaGljX2hkcik7
+Cj4gPj4gICAgICAgICB1bmlvbiB7Cj4gPj4gICAgICAgICAgICAgICAgIHN0cnVjdCBpeGdiZV9o
+aWNfaGRyIGhkcjsKPiA+PiAtICAgICAgICAgICAgICAgdTMyIHUzMmFyclsxXTsKPiA+PiArICAg
+ICAgICAgICAgICAgdTMyICp1MzJhcnI7Cj4gPj4gICAgICAgICB9ICpicCA9IGJ1ZmZlcjsKPiA+
+PiAgICAgICAgIHUxNiBidWZfbGVuLCBkd29yZF9sZW47Cj4gPj4gICAgICAgICBzMzIgc3RhdHVz
+Owo+ID4KPiA+IFRoaXMgbG9va3MgYm9ndXMuIEFuIGFycmF5IGlzIGlubGluZSwgYSBwb2ludGVy
+IHBvaW50cyBlbHNld2hlcmUgLQo+ID4gdGhleSdyZSBub3QgaW50ZXJjaGFuZ2VhYmxlLgo+Cj4g
+WWVwOyBidXQgaW4gdGhpcyBjYXNlIHRoZXNlIGFyZSB0aGUgb25seSBwbGFjZXMgaW4gdGhlIGNv
+ZGUgd2hlcmUgX3UzMmFycl8gaXMKPiBiZWluZyB1c2VkOgo+Cj4gMzcwNyAgICAgICAgIC8qIGZp
+cnN0IHB1bGwgaW4gdGhlIGhlYWRlciBzbyB3ZSBrbm93IHRoZSBidWZmZXIgbGVuZ3RoICovCj4g
+MzcwOCAgICAgICAgIGZvciAoYmkgPSAwOyBiaSA8IGR3b3JkX2xlbjsgYmkrKykgewo+IDM3MDkg
+ICAgICAgICAgICAgICAgIGJwLT51MzJhcnJbYmldID0gSVhHQkVfUkVBRF9SRUdfQVJSQVkoaHcs
+IElYR0JFX0ZMRVhfTU5HLCBiaSk7Cj4gMzcxMCAgICAgICAgICAgICAgICAgbGUzMl90b19jcHVz
+KCZicC0+dTMyYXJyW2JpXSk7Cj4gMzcxMSAgICAgICAgIH0KClNvIG5vdyBsaW5lIDM3MDkgbWVh
+bnM6IFJlYWQgYSBwb2ludGVyIGZyb20gYnAtPnUzMmFyciAodGhlIHZhbHVlCmJlaW5nIHJlYWQg
+ZnJvbSB0aGVyZSBpcyBub3QgYWN0dWFsbHkgYSB2YWxpZCBwb2ludGVyKSwgYW5kIHdyaXRlIHRv
+CnRoYXQgcG9pbnRlciBhdCBvZmZzZXQgYGJpYC4gSSBkb24ndCBzZWUgaG93IHRoYXQgbGluZSBj
+b3VsZCBleGVjdXRlCndpdGhvdXQgY3Jhc2hpbmcuCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwt
+d2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlz
+dGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
