@@ -1,54 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5C8333F397
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 15:44:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8C4533F59E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Mar 2021 17:36:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 216A482E94;
-	Wed, 17 Mar 2021 14:44:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD3C36F96E;
+	Wed, 17 Mar 2021 16:36:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jr8JdBvdW7zK; Wed, 17 Mar 2021 14:44:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XwUb_La5CVVi; Wed, 17 Mar 2021 16:36:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 181E782E15;
-	Wed, 17 Mar 2021 14:44:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD7AB6F970;
+	Wed, 17 Mar 2021 16:36:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EAE1F1BF57C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 14:44:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DECB61BF402
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:36:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D688F414F1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 14:44:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D9D1682FDE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:36:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FJvql_vYdtUv for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Mar 2021 14:44:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zcx0D93cVDXN for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Mar 2021 16:36:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C74A742FA6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 14:44:15 +0000 (UTC)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F0tCs1gLFz19GZ3;
- Wed, 17 Mar 2021 22:42:17 +0800 (CST)
-Received: from localhost.localdomain (10.175.102.38) by
- DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.498.0; Wed, 17 Mar 2021 22:43:59 +0800
-From: 'w00385741 <weiyongjun1@huawei.com>
-To: <weiyongjun1@huawei.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Chen Yu <yu.c.chen@intel.com>
-Date: Wed, 17 Mar 2021 14:52:34 +0000
-Message-ID: <20210317145234.3171021-1-weiyongjun1@huawei.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 39C138397F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Mar 2021 16:36:26 +0000 (UTC)
+IronPort-SDR: LtMemnDelBXx3/tJoPDO74uOUIPoyCKGBNvH/A3/WsSZs2/olvWJtT5oUWP2X74JN4behmM8U6
+ LoL+SXtcY9dQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9926"; a="168775635"
+X-IronPort-AV: E=Sophos;i="5.81,256,1610438400"; d="scan'208";a="168775635"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2021 09:36:25 -0700
+IronPort-SDR: SHus9+wDX8b0eIupvkjhQgwqpU2eyRx/H6MOHPhxShhdm6rqrk3xoRC5rvqvOKV1xIcXyITO47
+ IrkZUrEeWdVg==
+X-IronPort-AV: E=Sophos;i="5.81,256,1610438400"; d="scan'208";a="372406847"
+Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
+ ([10.209.10.230])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2021 09:36:24 -0700
+Date: Wed, 17 Mar 2021 09:36:24 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20210317093624.00005020@intel.com>
+In-Reply-To: <161594104491.5644.18446437902161792108.stgit@localhost.localdomain>
+References: <161594093708.5644.11391417312031401152.stgit@localhost.localdomain>
+ <161594104491.5644.18446437902161792108.stgit@localhost.localdomain>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.102.38]
-X-CFilter-Loop: Reflected
-Subject: [Intel-wired-lan] [PATCH net-next] e1000e: Mark e1000e_pm_prepare()
- as __maybe_unused
+Subject: Re: [Intel-wired-lan] [net-next PATCH v2 02/10] intel: Update
+ drivers to use ethtool_sprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,45 +68,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Hulk Robot <hulkci@huawei.com>
+Cc: doshir@vmware.com, mst@redhat.com, oss-drivers@netronome.com,
+ jasowang@redhat.com, alexanderduyck@fb.com, akiyano@amazon.com,
+ wei.liu@kernel.org, sthemmin@microsoft.com, pv-drivers@vmware.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, Kernel-team@fb.com,
+ yisen.zhuang@huawei.com, gtzalik@amazon.com, simon.horman@netronome.com,
+ haiyangz@microsoft.com, drivers@pensando.io, salil.mehta@huawei.com,
+ GR-Linux-NIC-Dev@marvell.com, rmody@marvell.com, netdev@vger.kernel.org,
+ davem@davemloft.net, netanel@amazon.com, saeedb@amazon.com,
+ snelson@pensando.io, skalluru@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Wei Yongjun <weiyongjun1@huawei.com>
+Alexander Duyck wrote:
 
-The function e1000e_pm_prepare() may have no callers depending
-on configuration, so it must be marked __maybe_unused to avoid
-harmless warning:
+> From: Alexander Duyck <alexanderduyck@fb.com>
+> 
+> Update the Intel drivers to make use of ethtool_sprintf. The general idea
+> is to reduce code size and overhead by replacing the repeated pattern of
+> string printf statements and ETH_STRING_LEN counter increments.
+> 
+> Signed-off-by: Alexander Duyck <alexanderduyck@fb.com>
 
-drivers/net/ethernet/intel/e1000e/netdev.c:6926:12:
- warning: 'e1000e_pm_prepare' defined but not used [-Wunused-function]
- 6926 | static int e1000e_pm_prepare(struct device *dev)
-      |            ^~~~~~~~~~~~~~~~~
+Thanks!
 
-Fixes: ccf8b940e5fd ("e1000e: Leverage direct_complete to speed up s2ram")
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- drivers/net/ethernet/intel/e1000e/netdev.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index f1c9debd9f3b..d2e4653536c5 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6923,7 +6923,7 @@ static int __e1000_resume(struct pci_dev *pdev)
- 	return 0;
- }
- 
--static int e1000e_pm_prepare(struct device *dev)
-+static __maybe_unused int e1000e_pm_prepare(struct device *dev)
- {
- 	return pm_runtime_suspended(dev) &&
- 		pm_suspend_via_firmware();
-
+Acked-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
