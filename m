@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18C93342B85
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Mar 2021 11:39:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78CE0342C94
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Mar 2021 12:55:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 67C564034E;
-	Sat, 20 Mar 2021 10:39:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF016402F1;
+	Sat, 20 Mar 2021 11:55:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u7k_4hEkyz4T; Sat, 20 Mar 2021 10:39:27 +0000 (UTC)
+	with ESMTP id cbRKctLv636Z; Sat, 20 Mar 2021 11:55:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C38540278;
-	Sat, 20 Mar 2021 10:39:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3F881402E9;
+	Sat, 20 Mar 2021 11:55:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A88E1BF41A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 10:39:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DE9DD1BF370
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 11:55:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7530740278
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 10:39:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C495D402E9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 11:55:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TXMo0PzN63jX for <intel-wired-lan@lists.osuosl.org>;
- Sat, 20 Mar 2021 10:39:21 +0000 (UTC)
+ with ESMTP id x5GSvG2XkjHf for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 20 Mar 2021 11:55:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3992040274
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 10:39:21 +0000 (UTC)
-IronPort-SDR: 38uWLN3gDOW14jtfmPcOGYMolhTNtwvRRdPdunWy01n1FZwQApr5QrUxXG1ld3C21w3sbaPN6T
- h0ky8sJ2xCZg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9928"; a="169341873"
-X-IronPort-AV: E=Sophos;i="5.81,264,1610438400"; d="scan'208";a="169341873"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2021 03:39:20 -0700
-IronPort-SDR: QmXmcm4dgR/dP3mSXaHudBLU6gdzlaw5+VpnoQWBw1A7f4w/t+jRwyxlslmgLNlJJwpR/iqMuX
- MY7MvV+8zR+Q==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B9CE9402D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Mar 2021 11:55:24 +0000 (UTC)
+IronPort-SDR: hOOEMKmruFMY53YvJWoCzP1VZMPx2rMkY6YJ7bIJri9hp4M8AoOrJtd5NLOCy3GAyk4CMook0F
+ ljC7zvlFz9Cw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9928"; a="275111768"
+X-IronPort-AV: E=Sophos;i="5.81,264,1610438400"; d="scan'208";a="275111768"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Mar 2021 04:55:23 -0700
+IronPort-SDR: KjYtoKgD4xOXqMJ6glKnVraJJZtLuzTtCGxmaCoEhC/ypYtZJT+Y6OWcnjGASdv+P9uO91eHWW
+ 1uz1fy2MJotw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,264,1610438400"; d="scan'208";a="440417882"
+X-IronPort-AV: E=Sophos;i="5.81,264,1610438400"; d="scan'208";a="407137555"
 Received: from lkp-server02.sh.intel.com (HELO 1c294c63cb86) ([10.239.97.151])
- by fmsmga002.fm.intel.com with ESMTP; 20 Mar 2021 03:39:19 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 20 Mar 2021 04:55:22 -0700
 Received: from kbuild by 1c294c63cb86 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lNZ0o-0002XH-S7; Sat, 20 Mar 2021 10:39:18 +0000
-Date: Sat, 20 Mar 2021 18:38:43 +0800
+ id 1lNaCP-0002Ze-UW; Sat, 20 Mar 2021 11:55:21 +0000
+Date: Sat, 20 Mar 2021 19:55:12 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6055d0b3.c9yYBWvhDQqlzR/3%lkp@intel.com>
+Message-ID: <6055e2a0.w4Sk4AUr5gfjRyKf%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:1GbE] BUILD SUCCESS
- f2d75b178532087c15b2a86ec79e443177611b7a
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS WITH
+ WARNING 8138882557813215cdad24e43c85f516ff251071
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,16 +72,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 1GbE
-branch HEAD: f2d75b178532087c15b2a86ec79e443177611b7a  e1000e: Mark e1000e_pm_prepare() as __maybe_unused
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 8138882557813215cdad24e43c85f516ff251071  intel: clean up mismatched header comments
 
-elapsed time: 720m
+Warning in current branch:
 
-configs tested: 127
+drivers/net/ethernet/intel/iavf/iavf_fdir.c:399: warning: expecting prototype for iavf_fdir_fltr_by_loc(). Prototype was for iavf_find_fdir_fltr_by_loc() instead
+drivers/net/ethernet/intel/iavf/iavf_fdir.c:744: warning: expecting prototype for iavf_fdir_fltr_by_loc(). Prototype was for iavf_find_fdir_fltr_by_loc() instead
+
+Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- arc-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- i386-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- ia64-allmodconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- ia64-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- mips-allmodconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- mips-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- parisc-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- powerpc-allmodconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- powerpc-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- riscv-allmodconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- riscv-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- s390-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- sparc-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- x86_64-allyesconfig
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+|-- x86_64-rhel-7.6-kselftests
+|   `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+`-- xtensa-allyesconfig
+    `-- drivers-net-ethernet-intel-iavf-iavf_fdir.c:warning:expecting-prototype-for-iavf_fdir_fltr_by_loc().-Prototype-was-for-iavf_find_fdir_fltr_by_loc()-instead
+
+elapsed time: 796m
+
+configs tested: 119
 configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 gcc tested configs:
 arm                                 defconfig
@@ -103,12 +143,6 @@ mips                malta_kvm_guest_defconfig
 arm                         lubbock_defconfig
 arm                          ep93xx_defconfig
 sh                            hp6xx_defconfig
-arm                  colibri_pxa300_defconfig
-arm                            qcom_defconfig
-powerpc                     redwood_defconfig
-nds32                             allnoconfig
-powerpc                   lite5200b_defconfig
-powerpc                 canyonlands_defconfig
 powerpc                  mpc885_ads_defconfig
 arm                         cm_x300_defconfig
 powerpc                     pq2fads_defconfig
@@ -139,9 +173,6 @@ ia64                            zx1_defconfig
 powerpc                     skiroot_defconfig
 powerpc                     ksi8560_defconfig
 sh                     magicpanelr2_defconfig
-powerpc                     tqm5200_defconfig
-powerpc                 linkstation_defconfig
-arm                       versatile_defconfig
 arm                        clps711x_defconfig
 powerpc               mpc834x_itxgp_defconfig
 parisc                generic-64bit_defconfig
@@ -154,6 +185,7 @@ m68k                                defconfig
 m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
+nds32                             allnoconfig
 nds32                               defconfig
 nios2                            allyesconfig
 csky                                defconfig
