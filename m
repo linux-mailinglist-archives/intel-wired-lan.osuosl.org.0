@@ -1,56 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3691E3448E5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Mar 2021 16:12:00 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CC8F34495B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Mar 2021 16:36:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5156660705;
-	Mon, 22 Mar 2021 15:11:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iHq1bC01yJw4; Mon, 22 Mar 2021 15:11:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5F6C8606B4;
-	Mon, 22 Mar 2021 15:11:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3BB3E1BF83E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:11:53 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 269B640339
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:11:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AEB0640387;
+	Mon, 22 Mar 2021 15:36:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VAtbG4gd8uOC for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Mar 2021 15:11:52 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uo3GMzobU9iX; Mon, 22 Mar 2021 15:36:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8AD0140380;
+	Mon, 22 Mar 2021 15:36:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D06A1BF860
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:36:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1879040166
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:36:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XqY31faGVQZ5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Mar 2021 15:36:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4788A40325
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:11:52 +0000 (UTC)
-IronPort-SDR: 7KXiJYuy8KBz4VwK7KEE0JauTbbnrbRDIBl3a3REtWro1rGagRD1JsGMpEmzVt358yrRaYFZD3
- WscY/vSO7yXA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="190317930"
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="190317930"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2021 08:11:50 -0700
-IronPort-SDR: AuZ3ckhKj1YD9wrEXyIqePSrcNzgfUFMvCFrlI8uTLyn7VJCjZNrkP+huAxDKMfAHDHkfgW1SY
- 6BthtfBYFjug==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="592654821"
-Received: from gsiwik.igk.intel.com ([10.102.18.50])
- by orsmga005.jf.intel.com with ESMTP; 22 Mar 2021 08:11:50 -0700
-From: Grzegorz Siwik <grzegorz.siwik@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 22 Mar 2021 16:11:47 +0100
-Message-Id: <1616425907-12165-1-git-send-email-grzegorz.siwik@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix parameters in
- aq_get_phy_register()
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6CFF140137
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:36:28 +0000 (UTC)
+IronPort-SDR: nyYOgCLdISpQtQrjOOFVqOMwzC8xZ74Ygs9LTO0PNKl59UXyYwxTDxhVlkajkf2Pt2OtwaHApJ
+ sqq0PSx49oHg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="190388800"
+X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="190388800"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2021 08:36:27 -0700
+IronPort-SDR: Q/H4/+JVNJok82pFItWldcl3WVNosJ0SalGgqz6jpWL1XnigUMagnhUZ9QrID+lspV8TjLunmw
+ hiaI1gy4xMRw==
+X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="451777329"
+Received: from canguven-mobl1.amr.corp.intel.com (HELO
+ vcostago-mobl2.amr.corp.intel.com) ([10.255.87.118])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2021 08:36:27 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>
+In-Reply-To: <20201118125451.GC23320@hoboy.vegasvil.org>
+References: <20201114025704.GA15240@hoboy.vegasvil.org>
+ <874klo7pwp.fsf@intel.com> <20201117014926.GA26272@hoboy.vegasvil.org>
+ <87d00b5uj7.fsf@intel.com> <20201118125451.GC23320@hoboy.vegasvil.org>
+Date: Mon, 22 Mar 2021 08:36:26 -0700
+Message-ID: <87czvrkxol.fsf@vcostago-mobl2.amr.corp.intel.com>
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
+ for PTP getcrosststamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,43 +68,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Grzegorz Siwik <grzegorz.siwik@intel.com>
-MIME-Version: 1.0
+Cc: linux-pci@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ andre.guedes@intel.com, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Change parameters order in aq_get_phy_register() due to wrong
-statistics in PHY reported by ethtool. Previosly all PHY statistics were
-exactly the same for all interfaces
-Now statistics are reported correctly - different for different interfaces
+Hi,
 
-Fixes: 0514db37dd78 ("i40e: Extend PHY access with page change flag")
-Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
----
-v2:
--Changed target tree to net
----
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Richard Cochran <richardcochran@gmail.com> writes:
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index 96d5202..0e92668 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -5480,7 +5480,7 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
- 
- 		status = i40e_aq_get_phy_register(hw,
- 				I40E_AQ_PHY_REG_ACCESS_EXTERNAL_MODULE,
--				true, addr, offset, &value, NULL);
-+				addr, true, offset, &value, NULL);
- 		if (status)
- 			return -EIO;
- 		data[i] = value;
+> On Tue, Nov 17, 2020 at 05:21:48PM -0800, Vinicius Costa Gomes wrote:
+>> Agreed that would be easiest/simplest. But what I have in hand seems to
+>> not like it, i.e. I have an earlier series implementing this "one shot" way
+>> and it's not reliable over long periods of time or against having the
+>> system time adjusted.
+>
+> Before we go inventing a new API, I think we should first understand
+> why the one shot thing fails.
+
+After a long time, a couple of internal misunderstandings, fixing some
+typos in the delay adjustment constants and better error handling, this
+one shot method is working well.
+
+I will propose a new version, implementing PTP_SYS_OFFSET_PRECISE using
+the one shot way.
+
+>
+> If there is problem with the system time being adjusted during PTM,
+> then that needs solving in any case!
+
+The new series uses shorter cycles, is able to restart the PTM dialogs
+if an error is detected (the clock adjustment in the end causes the NIC
+to report a PTM timeout), so things are working better.
+
+>
+> Thanks,
+> Richard
+
+
+Cheers,
 -- 
-1.8.3.1
-
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
