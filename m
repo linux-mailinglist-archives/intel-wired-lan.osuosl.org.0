@@ -1,61 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0421934499A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Mar 2021 16:48:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8B57344B01
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Mar 2021 17:20:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D35E6078F;
-	Mon, 22 Mar 2021 15:48:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7FEDD82DF3;
+	Mon, 22 Mar 2021 16:19:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o4Jhe2iZYK4F; Mon, 22 Mar 2021 15:48:03 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iCmI91SKnnVr; Mon, 22 Mar 2021 16:19:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 25289606BE;
-	Mon, 22 Mar 2021 15:48:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9167E82DDE;
+	Mon, 22 Mar 2021 16:19:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A30561BF860
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:47:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2C5301BF319
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 16:19:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9554D4030C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:47:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 63ABF4037F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 16:19:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kk2fzFwMKFch for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Mar 2021 15:47:56 +0000 (UTC)
+ with ESMTP id RLkzrr_l8ddA for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Mar 2021 16:19:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CAC3940375
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 15:47:56 +0000 (UTC)
-IronPort-SDR: QUSh/5tSUnK3iuQErGZS7WUIQI/iioR+gPz6U1A7UApB8aYtoVzfIpDzq6Y1QThljmIwfYG04b
- VQ2bh0Em12eg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="177869558"
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="177869558"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2021 08:47:55 -0700
-IronPort-SDR: TZEUZdZLl44sVFSK6KXCk76loEa+NgbKDVRw/xzbvUQR4XfBwfeqfKciBlZNMK76b8PUHyig5o
- HZLnuyhZheLw==
-X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="451780716"
-Received: from canguven-mobl1.amr.corp.intel.com (HELO
- vcostago-mobl2.amr.corp.intel.com) ([10.255.87.118])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2021 08:47:55 -0700
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 91DBB4038C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Mar 2021 16:19:49 +0000 (UTC)
+IronPort-SDR: EfNUheRg+tu+JSdWoLqdc+gk2PaARHvybhptFnkUbQv82RGX7KmdBwUkgUbRoLNpQFf1xCcjzf
+ K+q6lDSdxIiQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="275400825"
+X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="275400825"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2021 09:19:23 -0700
+IronPort-SDR: HQ3akpnHPpLHDT7mmhoaVazRlWDreeTdYyLA9dC2UX0DyvS5mBjryokClXhGTKY6YrPNCHFRic
+ dUkCadlmTnGw==
+X-IronPort-AV: E=Sophos;i="5.81,269,1610438400"; d="scan'208";a="407893515"
+Received: from canguven-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.255.87.118])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2021 09:19:22 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Miroslav Lichvar <mlichvar@redhat.com>
-In-Reply-To: <20201110180719.GA1559650@localhost>
-References: <20201110061019.519589-1-vinicius.gomes@intel.com>
- <20201110061019.519589-4-vinicius.gomes@intel.com>
- <20201110180719.GA1559650@localhost>
-Date: Mon, 22 Mar 2021 08:47:54 -0700
-Message-ID: <875z1jkx5h.fsf@vcostago-mobl2.amr.corp.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 22 Mar 2021 09:18:19 -0700
+Message-Id: <20210322161822.1546454-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.31.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
- for PTP getcrosststamp()
+Subject: [Intel-wired-lan] [PATCH next-queue v3 0/3] igc: Add support for
+ PCIe PTM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,59 +65,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bhelgaas@google.com, linux-pci@vger.kernel.org, andre.guedes@intel.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Cc: linux-pci@vger.kernel.org, richardcochran@gmail.com, netdev@vger.kernel.org,
+ bhelgaas@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Miroslav Lichvar <mlichvar@redhat.com> writes:
+Hi,
 
-> On Mon, Nov 09, 2020 at 10:10:19PM -0800, Vinicius Costa Gomes wrote:
->> i225 has support for PCIe PTM, which allows us to implement support
->> for the PTP_SYS_OFFSET_PRECISE ioctl(), implemented in the driver via
->> the getcrosststamp() function.
->
-> Would it be possible to provide the PTM measurements with the
-> PTP_SYS_OFFSET_EXTENDED ioctl instead of PTP_SYS_OFFSET_PRECISE?
+Changes from v2:
+  - Now the PTM timestamps are retrieved synchronously with the
+    ioctl();
+  - Fixed some typos in constants;
+  - The IGC_PTM_STAT register is write-1-to-clear, document this more
+    clearly;
 
-Sorry for the long delay.
+Changes from v1:
+  - This now should cross compile better, convert_art_ns_to_tsc() will
+    only be used if CONFIG_X86_TSC is enabled;
+  - PCIe PTM errors reported by the NIC are logged and PTM cycles are
+    restarted in case an error is detected;
 
-About PTP_SYS_OFFSET_EXTENDED, I did play with it a bit, but I didn't
-like it too much: because I don't have access to all the timestamps from
-the same "cycle", I ended up having to run two cycles to retrieve all
-the information.
+Original cover letter:
 
-So, the new version will expose the timestamps via
-PTP_SYS_OFFSET_PRECISE, later we can think of PTP_SYS_OFFSET_EXTENDED.
+This adds support for PCIe PTM (Precision Time Measurement) to the igc
+driver. PCIe PTM allows the NIC and Host clocks to be compared more
+precisely, improving the clock synchronization accuracy.
 
->
-> As I understand it, PTM is not cross timestamping. It's basically
-> NTP over PCIe, which provides four timestamps with each "dialog". From
-> the other constants added to the header file it looks like they could
-> all be obtained and then they could be converted to the triplets
-> returned by the EXTENDED ioctl.
->
-> The main advantage would be that it would provide applications with
-> the round trip time, which is important to estimate the maximum error
-> in the measurement. As your example phc2sys output shows, with the
-> PRECISE ioctl the delay is 0, which is misleading here.
->
-> I suspect the estimate would be valid only when the NIC is connected
-> directly to the PTM root (PCI root complex). Is it possible to get the
-> timestamps or delay from PTM-capable switches on the path between CPU
-> and NIC? Also, how frequent can be the PTM dialogs? Could they be
-> performed synchronously in the ioctl?
->
-> -- 
-> Miroslav Lichvar
->
+Patch 1/3 reverts a commit that made pci_enable_ptm() private to the
+PCI subsystem, reverting makes it possible for it to be called from
+the drivers.
 
+Patch 2/3 calls pci_enable_ptm() from the igc driver.
+
+Patch 3/3 implements the PCIe PTM support. It adds a workqueue that
+reads the PTM registers periodically and collects the information so a
+subsequent call to getcrosststamp() has all the timestamps needed.
+
+Some questions are raised (also pointed out in the commit message):
+
+1. Using convert_art_ns_to_tsc() is too x86 specific, there should be
+   a common way to create a 'system_counterval_t' from a timestamp.
+
+2. convert_art_ns_to_tsc() says that it should only be used when
+   X86_FEATURE_TSC_KNOWN_FREQ is true, but during tests it works even
+   when it returns false. Should that check be done?
 
 Cheers,
+
+Vinicius Costa Gomes (3):
+  Revert "PCI: Make pci_enable_ptm() private"
+  igc: Enable PCIe PTM
+  igc: Add support for PTP getcrosststamp()
+
+ drivers/net/ethernet/intel/igc/igc.h         |   1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  31 ++++
+ drivers/net/ethernet/intel/igc/igc_main.c    |   6 +
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 173 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  23 +++
+ drivers/pci/pci.h                            |   3 -
+ include/linux/pci.h                          |   7 +
+ 7 files changed, 241 insertions(+), 3 deletions(-)
+
 -- 
-Vinicius
+2.31.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
