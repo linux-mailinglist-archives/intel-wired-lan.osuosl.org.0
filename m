@@ -1,54 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 442AE345920
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Mar 2021 08:56:51 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 92C7D345D62
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Mar 2021 12:54:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7FFBC40484;
-	Tue, 23 Mar 2021 07:56:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 93F2E402A5;
+	Tue, 23 Mar 2021 11:54:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PjDx5K5vymwv; Tue, 23 Mar 2021 07:56:48 +0000 (UTC)
+	with ESMTP id J1-Q7zSCXxua; Tue, 23 Mar 2021 11:54:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 46EE74047A;
-	Tue, 23 Mar 2021 07:56:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 670BB40244;
+	Tue, 23 Mar 2021 11:54:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5DBBF1BF2BE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 07:56:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CEAFA1BF396
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 11:54:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4BDDF60668
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 07:56:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BC08040374
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 11:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D8xMMHmZ4MuI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Mar 2021 07:56:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9B1F260652
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 07:56:41 +0000 (UTC)
-Received: from [192.168.0.3] (ip5f5aef73.dynamic.kabel-deutschland.de
- [95.90.239.115])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 0D31A206479E4;
- Tue, 23 Mar 2021 08:56:38 +0100 (CET)
-To: Grzegorz Siwik <grzegorz.siwik@intel.com>
-References: <1616425907-12165-1-git-send-email-grzegorz.siwik@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <95f8be30-1d80-22bc-78be-9265a2816abf@molgen.mpg.de>
-Date: Tue, 23 Mar 2021 08:56:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Q6yITnz9W8gR for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Mar 2021 11:54:00 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 495564036B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Mar 2021 11:53:59 +0000 (UTC)
+IronPort-SDR: MMFNSkNLQucbRpFVERSW0GLVdiyI6WS4RMmQCE0xtEV97a4PRhRj8oqVeBTT/E0TVdAkUicfTL
+ XHduxJ9NxLUg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9931"; a="190557176"
+X-IronPort-AV: E=Sophos;i="5.81,271,1610438400"; d="scan'208";a="190557176"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Mar 2021 04:53:58 -0700
+IronPort-SDR: AkaRm/PsMuy0L2pOkrpNyZH84UTQYMaJyIlzsCWg0XBPEO9Pd5tVeQwfi2VTDi8AXAFgu2+HEK
+ IArFXxQgBFvA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,271,1610438400"; d="scan'208";a="408282584"
+Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 23 Mar 2021 04:53:57 -0700
+Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lOfbh-0000ZS-4t; Tue, 23 Mar 2021 11:53:57 +0000
+Date: Tue, 23 Mar 2021 19:53:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6059d6b7.smftHVE4pCy0I9vx%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <1616425907-12165-1-git-send-email-grzegorz.siwik@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Fix parameters in
- aq_get_phy_register()
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ be4dabd08146bb482df94ef03b171aa6e11364c4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,57 +67,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Grzegorz,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: be4dabd08146bb482df94ef03b171aa6e11364c4  i40e: Fix parameters in aq_get_phy_register()
 
+elapsed time: 721m
 
-Maybe use something like below as the commit message summary:
+configs tested: 111
+configs skipped: 2
 
-> i40e: ethtool: Report correct statistics for each interface
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Am 22.03.21 um 16:11 schrieb Grzegorz Siwik:
-> Change parameters order in aq_get_phy_register() due to wrong
-> statistics in PHY reported by ethtool. Previosly all PHY statistics were
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+i386                             allyesconfig
+riscv                            allyesconfig
+powerpc                     powernv_defconfig
+sh                           se7712_defconfig
+arm                         lubbock_defconfig
+sparc64                          alldefconfig
+powerpc                      ppc44x_defconfig
+mips                      maltaaprp_defconfig
+mips                           ip28_defconfig
+arm                             mxs_defconfig
+riscv                            alldefconfig
+powerpc                      katmai_defconfig
+sh                        edosk7705_defconfig
+powerpc                       maple_defconfig
+parisc                              defconfig
+sh                            titan_defconfig
+arm                      pxa255-idp_defconfig
+arc                           tb10x_defconfig
+mips                          ath79_defconfig
+powerpc                     akebono_defconfig
+powerpc                     redwood_defconfig
+arm                            lart_defconfig
+arm                         palmz72_defconfig
+arm                        mvebu_v7_defconfig
+sh                           se7780_defconfig
+nios2                            alldefconfig
+powerpc                 linkstation_defconfig
+powerpc                    gamecube_defconfig
+arm                           tegra_defconfig
+xtensa                  cadence_csp_defconfig
+powerpc                 mpc836x_rdk_defconfig
+openrisc                         alldefconfig
+m68k                       m5249evb_defconfig
+mips                        maltaup_defconfig
+arm                           omap1_defconfig
+i386                                defconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                     rainier_defconfig
+arm                          pxa168_defconfig
+arm                          collie_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                               tinyconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20210322
+i386                 randconfig-a003-20210322
+i386                 randconfig-a001-20210322
+i386                 randconfig-a002-20210322
+i386                 randconfig-a006-20210322
+i386                 randconfig-a005-20210322
+x86_64               randconfig-a012-20210322
+x86_64               randconfig-a015-20210322
+x86_64               randconfig-a013-20210322
+x86_64               randconfig-a014-20210322
+x86_64               randconfig-a016-20210322
+x86_64               randconfig-a011-20210322
+i386                 randconfig-a014-20210322
+i386                 randconfig-a011-20210322
+i386                 randconfig-a015-20210322
+i386                 randconfig-a016-20210322
+i386                 randconfig-a012-20210322
+i386                 randconfig-a013-20210322
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-Nit: Previously
+clang tested configs:
+x86_64               randconfig-a002-20210322
+x86_64               randconfig-a003-20210322
+x86_64               randconfig-a001-20210322
+x86_64               randconfig-a006-20210322
+x86_64               randconfig-a004-20210322
+x86_64               randconfig-a005-20210322
 
-> exactly the same for all interfaces
-> Now statistics are reported correctly - different for different interfaces
-> 
-> Fixes: 0514db37dd78 ("i40e: Extend PHY access with page change flag")
-> Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
-> ---
-> v2:
-> -Changed target tree to net
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index 96d5202..0e92668 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -5480,7 +5480,7 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
->   
->   		status = i40e_aq_get_phy_register(hw,
->   				I40E_AQ_PHY_REG_ACCESS_EXTERNAL_MODULE,
-> -				true, addr, offset, &value, NULL);
-> +				addr, true, offset, &value, NULL);
->   		if (status)
->   			return -EIO;
->   		data[i] = value;
-
-The rest looks good.
-
-
-Kind regards,
-
-Paul
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
