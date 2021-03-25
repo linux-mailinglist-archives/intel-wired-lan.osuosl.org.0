@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F19A349C81
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Mar 2021 23:45:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 063EC349C76
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Mar 2021 23:45:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A7B0040F7D;
-	Thu, 25 Mar 2021 22:45:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8BB5940F79;
+	Thu, 25 Mar 2021 22:45:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GOq5Zdn6YgOa; Thu, 25 Mar 2021 22:45:50 +0000 (UTC)
+	with ESMTP id qN3ikYy0wc7U; Thu, 25 Mar 2021 22:45:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6E73440F78;
-	Thu, 25 Mar 2021 22:45:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4F6AF40F78;
+	Thu, 25 Mar 2021 22:45:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5A99B1BF909
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Mar 2021 22:45:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AD80C1BF909
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Mar 2021 22:45:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D897F84B59
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9AEF3401F4
  for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Mar 2021 22:45:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TAO4X-_3cRDt for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7jksim8Qvidq for <intel-wired-lan@lists.osuosl.org>;
  Thu, 25 Mar 2021 22:45:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4178184B54
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Mar 2021 22:45:04 +0000 (UTC)
-IronPort-SDR: By4Sxx8qXoNbCfnY0fXW9VR5/7sqKdR866Lhb6KDwlb0g6Kia8CI00zRy5c90IDeMyIRM8wK3E
- 0SolBTKQ5siQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9934"; a="255031240"
-X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="255031240"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E940440002
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Mar 2021 22:45:03 +0000 (UTC)
+IronPort-SDR: 0AO0xXhzOqvoMUbtTnk1t+1qQZx1RwQWOqIGaOXTFhG1PVO+wHEij0EdduomDhCLiQh3vcHiyA
+ 6D9gCVWCXdlw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9934"; a="255031241"
+X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="255031241"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Mar 2021 15:45:01 -0700
-IronPort-SDR: dam0G04VrbuFecy5/AaIGJSRBt8T7s8VyGHaovtC472w8eR7wNb8DArKTNadYH7i+/RfK1NnJk
- SduKt2lyUfSA==
+IronPort-SDR: spf0zdxhmW4QcSC5HO/5e8iaupMs2k89edFpT+wJA4F2eTOK6C9BkjIVpGfb60/Qny3QEEkBJx
+ pdmFM+ML4gEg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="375251368"
+X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="375251370"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by orsmga003.jf.intel.com with ESMTP; 25 Mar 2021 15:45:01 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 25 Mar 2021 15:35:10 -0700
-Message-Id: <20210325223517.17722-7-anthony.l.nguyen@intel.com>
+Date: Thu, 25 Mar 2021 15:35:11 -0700
+Message-Id: <20210325223517.17722-8-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210325223517.17722-1-anthony.l.nguyen@intel.com>
 References: <20210325223517.17722-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S57 07/14] ice: Fix error return codes in
- ice_set_link_ksettings
+Subject: [Intel-wired-lan] [PATCH S57 08/14] ice: Replace some memsets and
+ memcpys with assignment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,80 +73,52 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Return more appropriate error codes so that the right error
-message is communicated to the user by ethtool.
+In ice_set_link_ksettings, use assignment instead of memset/memcpy
+where possible
 
 Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 989b0b0e3cad..643012b0cc67 100644
+index 643012b0cc67..273647188f69 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2212,7 +2212,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	pi = np->vsi->port_info;
- 
- 	if (!pi)
--		return -EOPNOTSUPP;
-+		return -EIO;
- 
- 	if (pi->phy.media_type != ICE_MEDIA_BASET &&
- 	    pi->phy.media_type != ICE_MEDIA_FIBER &&
-@@ -2229,7 +2229,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	status = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP_MEDIA,
- 				     phy_caps, NULL);
- 	if (status) {
--		err = -EAGAIN;
-+		err = -EIO;
+@@ -2195,8 +2195,9 @@ ice_set_link_ksettings(struct net_device *netdev,
+ 		       const struct ethtool_link_ksettings *ks)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	struct ethtool_link_ksettings safe_ks, copy_ks;
+ 	u8 autoneg, timeout = TEST_SET_BITS_TIMEOUT;
++	struct ethtool_link_ksettings copy_ks = *ks;
++	struct ethtool_link_ksettings safe_ks = {};
+ 	struct ice_aqc_get_phy_caps_data *phy_caps;
+ 	struct ice_aqc_set_phy_cfg_data config;
+ 	u16 adv_link_speed, curr_link_speed;
+@@ -2233,14 +2234,9 @@ ice_set_link_ksettings(struct net_device *netdev,
  		goto done;
  	}
  
-@@ -2252,7 +2252,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 			   __ETHTOOL_LINK_MODE_MASK_NBITS)) {
- 		if (!test_bit(ICE_FLAG_LINK_LENIENT_MODE_ENA, pf->flags))
- 			netdev_info(netdev, "The selected speed is not supported by the current media. Please select a link speed that is supported by the current media.\n");
--		err = -EINVAL;
-+		err = -EOPNOTSUPP;
- 		goto done;
- 	}
+-	/* copy the ksettings to copy_ks to avoid modifying the original */
+-	memcpy(&copy_ks, ks, sizeof(copy_ks));
+-
+ 	/* save autoneg out of ksettings */
+ 	autoneg = copy_ks.base.autoneg;
  
-@@ -2304,7 +2304,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	pi->phy.get_link_info = true;
- 	status = ice_get_link_status(pi, &linkup);
- 	if (status) {
--		err = -EAGAIN;
-+		err = -EIO;
- 		goto done;
- 	}
+-	memset(&safe_ks, 0, sizeof(safe_ks));
+-
+ 	/* Get link modes supported by hardware.*/
+ 	ice_phy_type_to_ethtool(netdev, &safe_ks);
  
-@@ -2335,7 +2335,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	/* check if there is a PHY type for the requested advertised speed */
- 	if (!(phy_type_low || phy_type_high)) {
- 		netdev_info(netdev, "The selected speed is not supported by the current media. Please select a link speed that is supported by the current media.\n");
--		err = -EAGAIN;
-+		err = -EOPNOTSUPP;
- 		goto done;
- 	}
+@@ -2289,7 +2285,7 @@ ice_set_link_ksettings(struct net_device *netdev,
+ 	 * configuration is initialized during probe from PHY capabilities
+ 	 * software mode, and updated on set PHY configuration.
+ 	 */
+-	memcpy(&config, &pi->phy.curr_user_phy_cfg, sizeof(config));
++	config = pi->phy.curr_user_phy_cfg;
  
-@@ -2359,7 +2359,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 					      pf->nvm_phy_type_lo;
- 		} else {
- 			netdev_info(netdev, "The selected speed is not supported by the current media. Please select a link speed that is supported by the current media.\n");
--			err = -EAGAIN;
-+			err = -EOPNOTSUPP;
- 			goto done;
- 		}
- 	}
-@@ -2378,7 +2378,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	status = ice_aq_set_phy_cfg(&pf->hw, pi, &config, NULL);
- 	if (status) {
- 		netdev_info(netdev, "Set phy config failed,\n");
--		err = -EAGAIN;
-+		err = -EIO;
- 		goto done;
- 	}
+ 	config.caps |= ICE_AQ_PHY_ENA_AUTO_LINK_UPDT;
  
 -- 
 2.20.1
