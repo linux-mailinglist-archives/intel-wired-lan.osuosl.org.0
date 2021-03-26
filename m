@@ -1,59 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CE3C349E11
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Mar 2021 01:39:00 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54739349E14
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Mar 2021 01:39:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C957984B73;
-	Fri, 26 Mar 2021 00:38:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA56660BA4;
+	Fri, 26 Mar 2021 00:39:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LRKoFlow0KqL; Fri, 26 Mar 2021 00:38:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6dc1fvNBf3Uj; Fri, 26 Mar 2021 00:39:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B458484B6C;
-	Fri, 26 Mar 2021 00:38:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DC73E60B2D;
+	Fri, 26 Mar 2021 00:39:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 152C01C1190
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Mar 2021 00:38:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6F1241C1190
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Mar 2021 00:38:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 28B2D60B9F
+ by smtp3.osuosl.org (Postfix) with ESMTP id 66F8260BA0
  for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Mar 2021 00:38:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bsZTF5XolLgA for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id bpaOFxq2Qczp for <intel-wired-lan@lists.osuosl.org>;
  Fri, 26 Mar 2021 00:38:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 772C960B82
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B3C6260B96
  for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Mar 2021 00:38:45 +0000 (UTC)
-IronPort-SDR: qU+DfCf+8nm9BgXBR0uTdzUMHCoyB/9Bw713N54fRjCRP82qUx5eaVRHnIclhopdcaKB4KHn/T
- n5roB9m+ePbA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9934"; a="188762077"
-X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="188762077"
+IronPort-SDR: ib234lNUgDMK1KZVP7Y1dVzRZieZz5CsY3MWcrfuPdeYUkcQ6sLNV6gdscWA55pc1e4neEYrRp
+ 6PGbcK4Okq/A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9934"; a="188762078"
+X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="188762078"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Mar 2021 17:38:44 -0700
-IronPort-SDR: 20yu7BMwPyYwVXFbpwIluTPuYlYB4pm5ilaEQuF1f+PZ5K5niwJ4JmqsqCcN5Nsk7VGjpSsweJ
- ARH78EQd8t/Q==
-X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="416276244"
+IronPort-SDR: Pwka1Fs54tKLfw1kUAkrVj32NlfQLeoiH+3KVjPTqrIyihQq7nPdY/gA8AM2WOka90DXnegfPZ
+ lBC1JVVopnng==
+X-IronPort-AV: E=Sophos;i="5.81,278,1610438400"; d="scan'208";a="416276247"
 Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Mar 2021 17:38:43 -0700
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 25 Mar 2021 17:38:25 -0700
-Message-Id: <20210326003834.3886241-3-jesse.brandeburg@intel.com>
+Date: Thu, 25 Mar 2021 17:38:26 -0700
+Message-Id: <20210326003834.3886241-4-jesse.brandeburg@intel.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210326003834.3886241-1-jesse.brandeburg@intel.com>
 References: <20210326003834.3886241-1-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 02/11] intel: remove checker
- warning
+Subject: [Intel-wired-lan] [PATCH net-next v2 03/11] fm10k: move error check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,78 +70,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The sparse checker (C=2) found an assignment where we were mixing
-types when trying to convert from data read directly from the
-device NVM, to an array in CPU order in-memory, which
-unfortunately the driver tries to do in-place.
+The error check and set_bit are placed in such a way that sparse (C=2)
+warns:
+.../fm10k_pci.c:1395:9: warning: context imbalance in 'fm10k_msix_mbx_pf' - different lock contexts for basic block
 
-This is easily solved by using the swap operation instead of an
-assignment, and is already proven in other Intel drivers to be
-functionally correct and the same code, just without a sparse
-warning.
-
-The change is the same in all three drivers.
+Which seems a little odd, but the code can obviously be moved
+to where the variable is being set without changing functionality
+at all, and it even seems to make a bit more sense with the check
+closer to the set.
 
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
-Warning Detail:
-  CHECK   .../e1000/e1000_ethtool.c
-.../e1000/e1000_ethtool.c:516:32: warning: incorrect type in assignment (different base types)
-.../e1000/e1000_ethtool.c:516:32:    expected unsigned short [usertype]
-.../e1000/e1000_ethtool.c:516:32:    got restricted __le16 [usertype]
-  CHECK   .../igb/igb_ethtool.c
-.../igb/igb_ethtool.c:834:32: warning: incorrect type in assignment (different base types)
-.../igb/igb_ethtool.c:834:32:    expected unsigned short [usertype]
-.../igb/igb_ethtool.c:834:32:    got restricted __le16 [usertype]
-  CHECK   .../igc/igc_ethtool.c
-.../igc/igc_ethtool.c:555:32: warning: incorrect type in assignment (different base types)
-.../igc/igc_ethtool.c:555:32:    expected unsigned short [usertype]
-.../igc/igc_ethtool.c:555:32:    got restricted __le16 [usertype]
----
- drivers/net/ethernet/intel/e1000/e1000_ethtool.c | 2 +-
- drivers/net/ethernet/intel/igb/igb_ethtool.c     | 2 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-index f976e9daa3d8..3c51ee94fa00 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-@@ -513,7 +513,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 	memcpy(ptr, bytes, eeprom->len);
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+index 9e3103fae723..dbcae92bb18d 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+@@ -1370,7 +1370,6 @@ static irqreturn_t fm10k_msix_mbx_pf(int __always_unused irq, void *data)
+ 	struct fm10k_hw *hw = &interface->hw;
+ 	struct fm10k_mbx_info *mbx = &hw->mbx;
+ 	u32 eicr;
+-	s32 err = 0;
  
- 	for (i = 0; i < last_word - first_word + 1; i++)
--		eeprom_buff[i] = cpu_to_le16(eeprom_buff[i]);
-+		cpu_to_le16s(&eeprom_buff[i]);
+ 	/* unmask any set bits related to this interrupt */
+ 	eicr = fm10k_read_reg(hw, FM10K_EICR);
+@@ -1386,15 +1385,16 @@ static irqreturn_t fm10k_msix_mbx_pf(int __always_unused irq, void *data)
  
- 	ret_val = e1000_write_eeprom(hw, first_word,
- 				     last_word - first_word + 1, eeprom_buff);
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 7545da216d8b..636a1b1fb7e1 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -831,7 +831,7 @@ static int igb_set_eeprom(struct net_device *netdev,
- 	memcpy(ptr, bytes, eeprom->len);
+ 	/* service mailboxes */
+ 	if (fm10k_mbx_trylock(interface)) {
+-		err = mbx->ops.process(hw, mbx);
++		s32 err = mbx->ops.process(hw, mbx);
++
++		if (err == FM10K_ERR_RESET_REQUESTED)
++			set_bit(FM10K_FLAG_RESET_REQUESTED, interface->flags);
++
+ 		/* handle VFLRE events */
+ 		fm10k_iov_event(interface);
+ 		fm10k_mbx_unlock(interface);
+ 	}
  
- 	for (i = 0; i < last_word - first_word + 1; i++)
--		eeprom_buff[i] = cpu_to_le16(eeprom_buff[i]);
-+		cpu_to_le16s(&eeprom_buff[i]);
- 
- 	ret_val = hw->nvm.ops.write(hw, first_word,
- 				    last_word - first_word + 1, eeprom_buff);
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 9722449d7633..2cb12431c371 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -554,7 +554,7 @@ static int igc_ethtool_set_eeprom(struct net_device *netdev,
- 	memcpy(ptr, bytes, eeprom->len);
- 
- 	for (i = 0; i < last_word - first_word + 1; i++)
--		eeprom_buff[i] = cpu_to_le16(eeprom_buff[i]);
-+		cpu_to_le16s(&eeprom_buff[i]);
- 
- 	ret_val = hw->nvm.ops.write(hw, first_word,
- 				    last_word - first_word + 1, eeprom_buff);
+-	if (err == FM10K_ERR_RESET_REQUESTED)
+-		set_bit(FM10K_FLAG_RESET_REQUESTED, interface->flags);
+-
+ 	/* if switch toggled state we should reset GLORTs */
+ 	if (eicr & FM10K_EICR_SWITCHNOTREADY) {
+ 		/* force link down for at least 4 seconds */
 -- 
 2.30.2
 
