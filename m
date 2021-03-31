@@ -1,157 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 225E53508B2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:01:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6268C350912
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:27:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 929304014E;
-	Wed, 31 Mar 2021 21:01:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 03BDF40EDE;
+	Wed, 31 Mar 2021 21:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rw9dfRT9bXYr; Wed, 31 Mar 2021 21:01:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RE_U1vEDER5r; Wed, 31 Mar 2021 21:27:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8DFCE40275;
-	Wed, 31 Mar 2021 21:01:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6EE85406B0;
+	Wed, 31 Mar 2021 21:27:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 56E051BF2CA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:01:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 612C61BF41E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5258040EDB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:01:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C0D9840EDE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XjMkXVNUjil9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Mar 2021 21:01:43 +0000 (UTC)
+ with ESMTP id MJYI0N5ME43F for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Mar 2021 21:26:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6E61E40493
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:01:43 +0000 (UTC)
-IronPort-SDR: GV+dstbg6AjWTtiSAyf4e3foWD0N7TDK101CUcj+Reb0lMS8m7jbRX9MKmMV1lm63cosJflnDI
- Bn8NpRQhPH8Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="212336279"
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="212336279"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2021 14:01:42 -0700
-IronPort-SDR: 81AmG4KdXFzegxWtEiDQx2uhxIpCBkTBt+oL+K5GYWR9D+OpT0GuKnaSqAQtm4jHcsMJeYeeNQ
- /rRNu4rKOL5w==
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 72FBD406B0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:53 +0000 (UTC)
+IronPort-SDR: 7nn7Z186EzPi6naPyc3OBB3LDkA7NVHdSL0fHw1WPAK+hqO/TIgHMeX4YsZhk6PuogKK6b+WRt
+ GLDQy9flGEsg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="192117302"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="192117302"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2021 14:26:51 -0700
+IronPort-SDR: rywCat3HYOoxmiA//7j0M65xAkdZ3ap6O1JvW1ovbWn4FAl3BnDXIgBO0LdzaqCFOB5hfL55OZ
+ DpntRBCK38Kg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="394196677"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga002.jf.intel.com with ESMTP; 31 Mar 2021 14:01:42 -0700
-Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Wed, 31 Mar 2021 14:01:41 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2
- via Frontend Transport; Wed, 31 Mar 2021 14:01:41 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2106.2; Wed, 31 Mar 2021 14:01:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Kg5R8cLxieq9aAkj5ogHNUhgznqo6U/1UEBNHhSIH2RQvgTIYWfRvBtJExTd7UVDVbcahamM4IVP/wQ7ZtbMcVDOPzTY8h/gSaV14VZ8LWgqIQ9YUzEohd14Opn/eIccFrnCfEMnTQ4AhgYQ3dobDqmEaCm6M1c1GrxIR4yjIjXvXL7DX7OSrT5NSDD5Rt6Xlt33RhbBlxXTUsC98HD1GX/akphZHll9FXe298546nY723mXJP8NZDojdK0R2xKWug1VNQA8w3DoZNQgnKR2KDdfV4deG1L4FONaq3i1lrgZNl6YFk5JW6kazzqvNz3b1wlIqAhyI2U5Nwi9t1GOqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a86Keb8P+jZzfgkd4EbG5sEyBknBYj5FYjkJWrT/HXY=;
- b=XPS+4hUv78QAEpgI7OJyAWP0vAINFSg6rXAyGsJYEZzAYIfuuckfSH0q8HCQYhLXEleV9p0u3soo69SKaZITnlHPC/7IUWVQIxOv0IixApRNY5tdH4T6MlE6n9fHzUPw6xmxvRexMfRwQcwxF2h5mBfa/3Y8n/AXXaYRzIbANcmL07gm1xOPY/VXfNg1+kCre6PkX+IE+ITuCQ6C6n5Wd7LgVGirXBjmA19KlTbw15TNg39VkRbdko14IUG46j1/H5CH3G/w4liwp1VISTDa3kVYLpOjkETWQQ7MZ3l0aiNZbMzvH91ZlcgE1KAwabmROWmxYFNMApia/Fae10qk4w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a86Keb8P+jZzfgkd4EbG5sEyBknBYj5FYjkJWrT/HXY=;
- b=x7naUMtBjum0FWpCPUx8Su+3k4M5iHfX/f3+KsHD/Yi4NYr2oeEXa1RtmI5FQgCCAAbhXyxpaYadeVQSrCP5XngyWY5mutsqaLQD1OUpdrXzwiqXtiZip3TwuTT4NWKSEocnojejjSMBquEQP4zz6IGANZzRqYa1mdTg0M+bs8A=
-Received: from CO1PR11MB5105.namprd11.prod.outlook.com (2603:10b6:303:9f::7)
- by MWHPR11MB1968.namprd11.prod.outlook.com (2603:10b6:300:113::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3977.30; Wed, 31 Mar
- 2021 21:01:24 +0000
-Received: from CO1PR11MB5105.namprd11.prod.outlook.com
- ([fe80::fc78:a58:d862:c366]) by CO1PR11MB5105.namprd11.prod.outlook.com
- ([fe80::fc78:a58:d862:c366%3]) with mapi id 15.20.3977.033; Wed, 31 Mar 2021
- 21:01:24 +0000
-From: "Brelinski, TonyX" <tonyx.brelinski@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S57 05/14] ice: Remove unnecessary
- checker loop
-Thread-Index: AQHXIciPAnox+3vb7E2ey9etoTPGPaqenl9w
-Date: Wed, 31 Mar 2021 21:01:24 +0000
-Message-ID: <CO1PR11MB5105CB15A837D91737FD8F00FA7C9@CO1PR11MB5105.namprd11.prod.outlook.com>
-References: <20210325223517.17722-1-anthony.l.nguyen@intel.com>
- <20210325223517.17722-5-anthony.l.nguyen@intel.com>
-In-Reply-To: <20210325223517.17722-5-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.6.0.76
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [71.236.132.75]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 57ab8395-3476-421b-f632-08d8f4882527
-x-ms-traffictypediagnostic: MWHPR11MB1968:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MWHPR11MB1968D05B77C3BCB11A8A0F0AFA7C9@MWHPR11MB1968.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: qGdj/xLSXV7D7X1fhImYEmem+nqACLiPl4XjtP19QNxwx+c+gvMQhFlnSLrXbN235GWkeH2pPK+Hv1/sg94lBI4mmX5FsCiBTTP8t+y+yJbxYqndcg8+xg2soy5d3svXMZuH/vXCYuKClt6QcRFFT1Rb84UCA94P0in4fymRqGFmupiErqQHVVR8uJQVXxIBN0aAHrQrNCmvKlKW8obIVjApuzKpBb2uBFCqNAWvpRtQB53sx+k1gUygXp7vmLv0zZi1Jsv690uGbSHoClI7K4O09mU9YP6MzvWBgQVl7IVGWA89Q9SXALbB2XE99F3FLPedBWB45itFgdI7cIrklG6OiKcr23dEPO/uaE6wU1Dw0IV4dLjFCQJtBPYUE2b4WCS2VAhFRMDW8BuhpaT7VEKms+55Y3jYGJtu/buAMvxXLeR5/wmfwmDnRT4lFxzG6rbnQCCJIdeFltJCZHVzbxMgC9EjeLxTeooWaRgGjdPIBJFQbFAWJu9A6E0scFjZ8KfcOVLgsJptEhkYsmdR9+lOtq3KFfYYff0c32icftfEQM+JPHA+eB+CnQb9nGlaEu14YfJvJlDnZPmrrYk/w3UvJwN1QlcbFMQ3d4kCfDIumFMArQ65yUx4W4vkyuAeZYPUWis+u0u1wz9Nans6CnTWt9D6O40wUGK1loJnvCw=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5105.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(396003)(39860400002)(136003)(376002)(346002)(6506007)(76116006)(38100700001)(66946007)(66556008)(66446008)(64756008)(316002)(110136005)(55016002)(8676002)(7696005)(33656002)(9686003)(53546011)(86362001)(5660300002)(8936002)(52536014)(186003)(26005)(71200400001)(66476007)(83380400001)(2906002)(478600001)(4744005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?lkn4vy6j0gKk3xggUF4kszN76qdILMLIpl/D7N3qasEatTASbrubaRk2Noo/?=
- =?us-ascii?Q?bgkLQNDcqT19+cSvjQxp1/J9TDAcZ9moUmoX6Wo4HH9K0w47OPI/rFcEoGIG?=
- =?us-ascii?Q?Yn4y/s7e8ZQ5K7aW5NbEH8LXvIprhSMlhbCNWDfgpB1X3RyH312ESHa6D+MA?=
- =?us-ascii?Q?RUaqKTgusXj8FzMJ2+dRcadHn9njYXkXJJ7pXXEph1GQruidT7FeYzrbvjRn?=
- =?us-ascii?Q?TbnxMeAXsBVTgjvluSJnqDZYxn67bNQzV5YZmUST/uKOwEXD3YNr9ccwIpiK?=
- =?us-ascii?Q?qCy3b4/jwv3OUqKE2k4ISV07MCokLc6fcLf80q8ndnnkBeETodlo6av5sPkM?=
- =?us-ascii?Q?TNIQpt4W+A7+2/ftgpEslzNU7Gv50ozWC/xstlrCCAgu5n+DZXA4Zhas56tZ?=
- =?us-ascii?Q?aVuFlv/WelG1krgmKAT0o+gX1Hz2y+aO3EQzlCFrwgn2Br9KWGVvNsgYYoNA?=
- =?us-ascii?Q?O9EGOA3P3iRCWAZ6RxYcm3i8eBjMMzCrdNqI+ADlyxdLGpResrf0hz4Sf0tZ?=
- =?us-ascii?Q?BLMwSZ+yq+ZqNaeIpz4WyJyXeedj716c4ZbQ3zqYjjYeRKQWGSIC+Wl7WotL?=
- =?us-ascii?Q?SlnYWH/+4Xr4FXKGt41mS60Vg3hSPFuqwJ3o29X39Ay8Tx3trt3fYO8HhIo3?=
- =?us-ascii?Q?r5QWvs2hSQ2Qm9Xpex8S//LrBJ9UtOH1uFX+MnGU0UsC6FtqEf16k4fVDsY1?=
- =?us-ascii?Q?e0cdoNlWGoHycZFgOxar2nXcjCoVaVaAs+QVhkaOuVCNMOQxC6ADrM8inlDN?=
- =?us-ascii?Q?yITWEmQj0DbhltDBUuxmV3RO0LMlsQsDuA4q/WKN5zDFZjCXkZ4VfKtH81mf?=
- =?us-ascii?Q?HzvvMKdC8LmYeDlyQO6phYTKOIyfDRxpyXRoTMVJ5eN7WBPpCcLAkh6Q4bet?=
- =?us-ascii?Q?ah/v1yJASTQSDNEPT5ApqTt++l2OgPpiFFulv75ql8CvQttxPpsjytxpMzwn?=
- =?us-ascii?Q?KzyZoC0Y5Cwi3C0ecCMnTbQOqDcgfmOopzMGNfRnHDeQSYt1TNZrOQc77/eZ?=
- =?us-ascii?Q?xYq/eN16ESSSrHnmHYid7xZRDazReZPUsvjVOsw1I77YBM3afovnY47Yr7lv?=
- =?us-ascii?Q?oQsxdJgeVZYkhyWdDYOGTbCJeb6JvldDVsCZUcVt7fjFStdCKQckON343PuB?=
- =?us-ascii?Q?5WNIMbZL4VQTxFuqSon5qRpzu9nHESHmx7LPI/eHdUNo3X03BEWDf7uq7Bft?=
- =?us-ascii?Q?lFrgxosrHtSzQaoydusW7oXR9Mt7U2qRRsE0gn5X3G63mud8iP88FtqXt2IH?=
- =?us-ascii?Q?iwEPag0T0SRuKZUeaQnh4wtIcDqBFYYPXZtNccyT6cT7jwJLizqd62O8/gyL?=
- =?us-ascii?Q?sHylXzp97DIVE1ehc3M57M2o?=
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="445819634"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
+ by FMSMGA003.fm.intel.com with ESMTP; 31 Mar 2021 14:26:50 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 31 Mar 2021 14:16:56 -0700
+Message-Id: <20210331211708.55205-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5105.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 57ab8395-3476-421b-f632-08d8f4882527
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Mar 2021 21:01:24.8353 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pcRGOuDVcbZqL/lp9F/NyuOVOfcRqky3pK5lU6WNo61ECFpBHgpJmkpSh3gSJD7frTMHu9PCmesar+yJAwPRTkbGtZ54PEO6/5LmxZWCalk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1968
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S57 05/14] ice: Remove unnecessary
- checker loop
+Subject: [Intel-wired-lan] [PATCH S58 01/13] ice: refactor interrupt
+ moderation writes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,28 +69,376 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Thursday, March 25, 2021 3:35 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S57 05/14] ice: Remove unnecessary
-> checker loop
-> 
-> From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-> 
-> The loop checking for PF VSI doesn't make any sense. The VSI type backing
-> the netdev passed to ice_set_link_ksettings will always be of type
-> ICE_PF_VSI. Remove it.
-> 
-> Signed-off-by: Anirudh Venkataramanan
-> <anirudh.venkataramanan@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 +---------
->  1 file changed, 1 insertion(+), 9 deletions(-)
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-Tested-by: Tony Brelinski <tonyx.brelinski@intel.com> A Contingent Worker at Intel
+Introduce several new helpers for writing ITR and GLINT_RATE
+registers, and refactor the code calling them.  This resulted
+in removal of several duplicate functions and rolled a bunch
+of simple code back into the calling routines.
 
+In particular this removes some code that was doing both
+a store and a set in a helper function, which seems better
+done as separate tasks in the caller (and generally takes
+less lines of code even with a tiny bit of repetition).
+
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_base.c    |  22 +--
+ drivers/net/ethernet/intel/ice/ice_ethtool.c |  17 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 171 ++++++++++---------
+ drivers/net/ethernet/intel/ice/ice_lib.h     |   3 +-
+ drivers/net/ethernet/intel/ice/ice_xsk.c     |   3 -
+ 5 files changed, 112 insertions(+), 104 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 16cd67050967..5e6d9604e22c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -766,25 +766,13 @@ void ice_cfg_itr(struct ice_hw *hw, struct ice_q_vector *q_vector)
+ {
+ 	ice_cfg_itr_gran(hw);
+ 
+-	if (q_vector->num_ring_rx) {
+-		struct ice_ring_container *rc = &q_vector->rx;
+-
+-		rc->target_itr = ITR_TO_REG(rc->itr_setting);
+-		rc->next_update = jiffies + 1;
+-		rc->current_itr = rc->target_itr;
+-		wr32(hw, GLINT_ITR(rc->itr_idx, q_vector->reg_idx),
+-		     ITR_REG_ALIGN(rc->current_itr) >> ICE_ITR_GRAN_S);
+-	}
++	if (q_vector->num_ring_rx)
++		ice_write_itr(&q_vector->rx, q_vector->rx.itr_setting);
+ 
+-	if (q_vector->num_ring_tx) {
+-		struct ice_ring_container *rc = &q_vector->tx;
++	if (q_vector->num_ring_tx)
++		ice_write_itr(&q_vector->tx, q_vector->tx.itr_setting);
+ 
+-		rc->target_itr = ITR_TO_REG(rc->itr_setting);
+-		rc->next_update = jiffies + 1;
+-		rc->current_itr = rc->target_itr;
+-		wr32(hw, GLINT_ITR(rc->itr_idx, q_vector->reg_idx),
+-		     ITR_REG_ALIGN(rc->current_itr) >> ICE_ITR_GRAN_S);
+-	}
++	ice_write_intrl(q_vector, q_vector->intrl);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index f2bc8f1e86cc..e273560d9e6e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3636,9 +3636,8 @@ ice_set_rc_coalesce(enum ice_container_type c_type, struct ethtool_coalesce *ec,
+ 		}
+ 		if (ec->rx_coalesce_usecs_high != rc->ring->q_vector->intrl) {
+ 			rc->ring->q_vector->intrl = ec->rx_coalesce_usecs_high;
+-			wr32(&pf->hw, GLINT_RATE(rc->ring->q_vector->reg_idx),
+-			     ice_intrl_usec_to_reg(ec->rx_coalesce_usecs_high,
+-						   pf->hw.intrl_gran));
++			ice_write_intrl(rc->ring->q_vector,
++					ec->rx_coalesce_usecs_high);
+ 		}
+ 
+ 		use_adaptive_coalesce = ec->use_adaptive_rx_coalesce;
+@@ -3672,10 +3671,15 @@ ice_set_rc_coalesce(enum ice_container_type c_type, struct ethtool_coalesce *ec,
+ 	if (use_adaptive_coalesce) {
+ 		rc->itr_setting |= ICE_ITR_DYNAMIC;
+ 	} else {
+-		/* save the user set usecs */
++		/* store user facing value how it was set */
+ 		rc->itr_setting = coalesce_usecs;
+-		/* device ITR granularity is in 2 usec increments */
+-		rc->target_itr = ITR_REG_ALIGN(rc->itr_setting);
++		/* write the change to the register */
++		ice_write_itr(rc, coalesce_usecs);
++		/* force writes to take effect immediately, the flush shouldn't
++		 * be done in the functions above because the intent is for
++		 * them to do lazy writes.
++		 */
++		ice_flush(&pf->hw);
+ 	}
+ 
+ 	return 0;
+@@ -3793,7 +3797,6 @@ __ice_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
+ 		return -EINVAL;
+ 
+ set_complete:
+-
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 5cbb4b0f682b..06c1e5f7eb5e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1796,7 +1796,7 @@ int ice_vsi_cfg_xdp_txqs(struct ice_vsi *vsi)
+  * This function converts a decimal interrupt rate limit in usecs to the format
+  * expected by firmware.
+  */
+-u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran)
++static u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran)
+ {
+ 	u32 val = intrl / gran;
+ 
+@@ -1805,6 +1805,58 @@ u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran)
+ 	return 0;
+ }
+ 
++/**
++ * ice_write_intrl - write throttle rate limit to interrupt specific register
++ * @q_vector: pointer to interrupt specific structure
++ * @intrl: throttle rate limit in microseconds to write
++ */
++void ice_write_intrl(struct ice_q_vector *q_vector, u8 intrl)
++{
++	struct ice_hw *hw = &q_vector->vsi->back->hw;
++
++	wr32(hw, GLINT_RATE(q_vector->reg_idx),
++	     ice_intrl_usec_to_reg(intrl, ICE_INTRL_GRAN_ABOVE_25));
++}
++
++/**
++ * __ice_write_itr - write throttle rate to register
++ * @q_vector: pointer to interrupt data structure
++ * @rc: pointer to ring container
++ * @itr: throttle rate in microseconds to write
++ */
++static void __ice_write_itr(struct ice_q_vector *q_vector,
++			    struct ice_ring_container *rc, u16 itr)
++{
++	struct ice_hw *hw = &q_vector->vsi->back->hw;
++
++	wr32(hw, GLINT_ITR(rc->itr_idx, q_vector->reg_idx),
++	     ITR_REG_ALIGN(itr) >> ICE_ITR_GRAN_S);
++}
++
++/**
++ * ice_write_itr - write throttle rate to queue specific register
++ * @rc: pointer to ring container
++ * @itr: throttle rate in microseconds to write
++ *
++ * This function is resilient to having the 0x8000 bit set which
++ * is indicating that an ITR value is "DYNAMIC", and will write
++ * the correct value to the register.
++ */
++void ice_write_itr(struct ice_ring_container *rc, u16 itr)
++{
++	struct ice_q_vector *q_vector;
++
++	if (!rc->ring)
++		return;
++
++	q_vector = rc->ring->q_vector;
++
++	/* clear the "DYNAMIC" bit */
++	itr = ITR_TO_REG(itr);
++
++	__ice_write_itr(q_vector, rc, itr);
++}
++
+ /**
+  * ice_vsi_cfg_msix - MSIX mode Interrupt Config in the HW
+  * @vsi: the VSI being configured
+@@ -1825,9 +1877,6 @@ void ice_vsi_cfg_msix(struct ice_vsi *vsi)
+ 
+ 		ice_cfg_itr(hw, q_vector);
+ 
+-		wr32(hw, GLINT_RATE(reg_idx),
+-		     ice_intrl_usec_to_reg(q_vector->intrl, hw->intrl_gran));
+-
+ 		/* Both Transmit Queue Interrupt Cause Control register
+ 		 * and Receive Queue Interrupt Cause control register
+ 		 * expects MSIX_INDX field to be the vector index
+@@ -2515,11 +2564,10 @@ static void ice_vsi_release_msix(struct ice_vsi *vsi)
+ 
+ 	for (i = 0; i < vsi->num_q_vectors; i++) {
+ 		struct ice_q_vector *q_vector = vsi->q_vectors[i];
+-		u16 reg_idx = q_vector->reg_idx;
+ 
+-		wr32(hw, GLINT_ITR(ICE_IDX_ITR0, reg_idx), 0);
+-		wr32(hw, GLINT_ITR(ICE_IDX_ITR1, reg_idx), 0);
++		ice_write_intrl(q_vector, 0);
+ 		for (q = 0; q < q_vector->num_ring_tx; q++) {
++			ice_write_itr(&q_vector->tx, 0);
+ 			wr32(hw, QINT_TQCTL(vsi->txq_map[txq]), 0);
+ 			if (ice_is_xdp_ena_vsi(vsi)) {
+ 				u32 xdp_txq = txq + vsi->num_xdp_txq;
+@@ -2530,6 +2578,7 @@ static void ice_vsi_release_msix(struct ice_vsi *vsi)
+ 		}
+ 
+ 		for (q = 0; q < q_vector->num_ring_rx; q++) {
++			ice_write_itr(&q_vector->rx, 0);
+ 			wr32(hw, QINT_RQCTL(vsi->rxq_map[rxq]), 0);
+ 			rxq++;
+ 		}
+@@ -2866,47 +2915,6 @@ int ice_vsi_release(struct ice_vsi *vsi)
+ 	return 0;
+ }
+ 
+-/**
+- * ice_vsi_rebuild_update_coalesce_intrl - set interrupt rate limit for a q_vector
+- * @q_vector: pointer to q_vector which is being updated
+- * @stored_intrl_setting: original INTRL setting
+- *
+- * Set coalesce param in q_vector and update these parameters in HW.
+- */
+-static void
+-ice_vsi_rebuild_update_coalesce_intrl(struct ice_q_vector *q_vector,
+-				      u16 stored_intrl_setting)
+-{
+-	struct ice_hw *hw = &q_vector->vsi->back->hw;
+-
+-	q_vector->intrl = stored_intrl_setting;
+-	wr32(hw, GLINT_RATE(q_vector->reg_idx),
+-	     ice_intrl_usec_to_reg(q_vector->intrl, hw->intrl_gran));
+-}
+-
+-/**
+- * ice_vsi_rebuild_update_coalesce_itr - set coalesce for a q_vector
+- * @q_vector: pointer to q_vector which is being updated
+- * @rc: pointer to ring container
+- * @stored_itr_setting: original ITR setting
+- *
+- * Set coalesce param in q_vector and update these parameters in HW.
+- */
+-static void
+-ice_vsi_rebuild_update_coalesce_itr(struct ice_q_vector *q_vector,
+-				    struct ice_ring_container *rc,
+-				    u16 stored_itr_setting)
+-{
+-	struct ice_hw *hw = &q_vector->vsi->back->hw;
+-
+-	rc->itr_setting = stored_itr_setting;
+-
+-	/* dynamic ITR values will be updated during Tx/Rx */
+-	if (!ITR_IS_DYNAMIC(rc->itr_setting))
+-		wr32(hw, GLINT_ITR(rc->itr_idx, q_vector->reg_idx),
+-		     ITR_REG_ALIGN(rc->itr_setting) >> ICE_ITR_GRAN_S);
+-}
+-
+ /**
+  * ice_vsi_rebuild_get_coalesce - get coalesce from all q_vectors
+  * @vsi: VSI connected with q_vectors
+@@ -2950,6 +2958,7 @@ static void
+ ice_vsi_rebuild_set_coalesce(struct ice_vsi *vsi,
+ 			     struct ice_coalesce_stored *coalesce, int size)
+ {
++	struct ice_ring_container *rc;
+ 	int i;
+ 
+ 	if ((size && !coalesce) || !vsi)
+@@ -2972,41 +2981,51 @@ ice_vsi_rebuild_set_coalesce(struct ice_vsi *vsi,
+ 		 *   rings is less than are allocated (this means the number of
+ 		 *   rings increased from previously), then write out the
+ 		 *   values in the first element
++		 *
++		 *   Also, always write the ITR, even if in ITR_IS_DYNAMIC
++		 *   as there is no harm because the dynamic algorithm
++		 *   will just overwrite.
+ 		 */
+-		if (i < vsi->alloc_rxq && coalesce[i].rx_valid)
+-			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-							    &vsi->q_vectors[i]->rx,
+-							    coalesce[i].itr_rx);
+-		else if (i < vsi->alloc_rxq)
+-			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-							    &vsi->q_vectors[i]->rx,
+-							    coalesce[0].itr_rx);
+-
+-		if (i < vsi->alloc_txq && coalesce[i].tx_valid)
+-			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-							    &vsi->q_vectors[i]->tx,
+-							    coalesce[i].itr_tx);
+-		else if (i < vsi->alloc_txq)
+-			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-							    &vsi->q_vectors[i]->tx,
+-							    coalesce[0].itr_tx);
+-
+-		ice_vsi_rebuild_update_coalesce_intrl(vsi->q_vectors[i],
+-						      coalesce[i].intrl);
++		if (i < vsi->alloc_rxq && coalesce[i].rx_valid) {
++			rc = &vsi->q_vectors[i]->rx;
++			rc->itr_setting = coalesce[i].itr_rx;
++			ice_write_itr(rc, rc->itr_setting);
++		} else if (i < vsi->alloc_rxq) {
++			rc = &vsi->q_vectors[i]->rx;
++			rc->itr_setting = coalesce[0].itr_rx;
++			ice_write_itr(rc, rc->itr_setting);
++		}
++
++		if (i < vsi->alloc_txq && coalesce[i].tx_valid) {
++			rc = &vsi->q_vectors[i]->tx;
++			rc->itr_setting = coalesce[i].itr_tx;
++			ice_write_itr(rc, rc->itr_setting);
++		} else if (i < vsi->alloc_txq) {
++			rc = &vsi->q_vectors[i]->tx;
++			rc->itr_setting = coalesce[0].itr_tx;
++			ice_write_itr(rc, rc->itr_setting);
++		}
++
++		vsi->q_vectors[i]->intrl = coalesce[i].intrl;
++		ice_write_intrl(vsi->q_vectors[i], coalesce[i].intrl);
+ 	}
+ 
+ 	/* the number of queue vectors increased so write whatever is in
+ 	 * the first element
+ 	 */
+ 	for (; i < vsi->num_q_vectors; i++) {
+-		ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-						    &vsi->q_vectors[i]->tx,
+-						    coalesce[0].itr_tx);
+-		ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
+-						    &vsi->q_vectors[i]->rx,
+-						    coalesce[0].itr_rx);
+-		ice_vsi_rebuild_update_coalesce_intrl(vsi->q_vectors[i],
+-						      coalesce[0].intrl);
++		/* transmit */
++		rc = &vsi->q_vectors[i]->tx;
++		rc->itr_setting = coalesce[0].itr_tx;
++		ice_write_itr(rc, rc->itr_setting);
++
++		/* receive */
++		rc = &vsi->q_vectors[i]->rx;
++		rc->itr_setting = coalesce[0].itr_rx;
++		ice_write_itr(rc, rc->itr_setting);
++
++		vsi->q_vectors[i]->intrl = coalesce[0].intrl;
++		ice_write_intrl(vsi->q_vectors[i], coalesce[0].intrl);
+ 	}
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 92d2d23ce920..7775f1e36474 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -99,7 +99,8 @@ void ice_vsi_cfg_frame_size(struct ice_vsi *vsi);
+ 
+ int ice_status_to_errno(enum ice_status err);
+ 
+-u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran);
++void ice_write_intrl(struct ice_q_vector *q_vector, u8 intrl);
++void ice_write_itr(struct ice_ring_container *rc, u16 itr);
+ 
+ enum ice_status
+ ice_vsi_cfg_mac_fltr(struct ice_vsi *vsi, const u8 *macaddr, bool set);
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index fdc44b3f8e26..2f4a8a1f1677 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -108,9 +108,6 @@ ice_qvec_cfg_msix(struct ice_vsi *vsi, struct ice_q_vector *q_vector)
+ 
+ 	ice_cfg_itr(hw, q_vector);
+ 
+-	wr32(hw, GLINT_RATE(reg_idx),
+-	     ice_intrl_usec_to_reg(q_vector->intrl, hw->intrl_gran));
+-
+ 	ice_for_each_ring(ring, q_vector->tx)
+ 		ice_cfg_txq_interrupt(vsi, ring->reg_idx, reg_idx,
+ 				      q_vector->tx.itr_idx);
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
