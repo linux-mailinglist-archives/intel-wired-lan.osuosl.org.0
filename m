@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 655E635090F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:27:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CD7A54046E;
-	Wed, 31 Mar 2021 21:27:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q7uNrOXwlhwf; Wed, 31 Mar 2021 21:27:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B0DD240283;
-	Wed, 31 Mar 2021 21:27:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9B981BF41E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBBAD350920
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:27:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6994C8496A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 776AF8496D;
+	Wed, 31 Mar 2021 21:27:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oLSiu3kPjncU for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Mar 2021 21:26:54 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SvOMn9nlLIK4; Wed, 31 Mar 2021 21:27:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8A1978495C;
+	Wed, 31 Mar 2021 21:27:45 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F3B11BF41E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:27:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4130D40E9A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JK7mfXeuL1by for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Mar 2021 21:26:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C919C84958
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A254640EE1
  for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:54 +0000 (UTC)
-IronPort-SDR: b3/XAt9oZ0ajofbg+75HfNWqQESi3bXGRk2bo22zq/I5NBUHqrM93GPknhEaSHUNA9zcxhgpD2
- iqfXN5C/dS6A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="192117312"
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="192117312"
+IronPort-SDR: czcX7vG69YAE2HDqs9pBzMm8Fm9VAhJQodBw9RzUYGbKVR7V3XL2yFTg/UZHWVTz6MAjF9mQCM
+ qq+10K4/AlPQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="256078726"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="256078726"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  31 Mar 2021 14:26:52 -0700
-IronPort-SDR: MjRxxeAqfqIzgA5YKiwyzKezU2M9MvnUw1uGsRJyUPbGKZTZec6gclEUx7xFnGMkSXePhCBeJ1
- 3HZxPsvu6WVA==
+IronPort-SDR: /cB2cWNA+ZkfZbK7P2YP1NaQdrULcN7rRcfkyBqgnkJjqJ/5h+lVYZAnUomuBgKYUw1ZAGxgsD
+ PBQc3wOfrzyw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="445819644"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="445819645"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 31 Mar 2021 14:26:51 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 31 Mar 2021 14:17:05 -0700
-Message-Id: <20210331211708.55205-10-anthony.l.nguyen@intel.com>
+Date: Wed, 31 Mar 2021 14:17:06 -0700
+Message-Id: <20210331211708.55205-11-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210331211708.55205-1-anthony.l.nguyen@intel.com>
 References: <20210331211708.55205-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S58 10/13] ice: suppress false cppcheck
- issues
+Subject: [Intel-wired-lan] [PATCH S58 11/13] ice: fix clang warning
+ regarding deadcode.DeadStores
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,69 +71,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 
-Silence false errors, warnings and style issues reported by cppcheck.
+clang generates deadcode.DeadStores warnings when a variable
+is used to read a value, but then that value isn't used later
+in the code. Fix this warning.
 
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_flex_pipe.c | 3 +++
- drivers/net/ethernet/intel/ice/ice_nvm.c       | 1 +
- drivers/net/ethernet/intel/ice/ice_sched.c     | 1 +
- 3 files changed, 5 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index 4b83960876f4..06ac9badee77 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -334,6 +334,7 @@ ice_boost_tcam_handler(u32 sect_type, void *section, u32 index, u32 *offset)
- 	if (sect_type != ICE_SID_RXPARSER_BOOST_TCAM)
- 		return NULL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 06cb86746415..4b9c256204da 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3501,13 +3501,9 @@ static int
+ ice_get_rc_coalesce(struct ethtool_coalesce *ec, enum ice_container_type c_type,
+ 		    struct ice_ring_container *rc)
+ {
+-	struct ice_pf *pf;
+-
+ 	if (!rc->ring)
+ 		return -EINVAL;
  
-+	/* cppcheck-suppress nullPointer */
- 	if (index > ICE_MAX_BST_TCAMS_IN_BUF)
- 		return NULL;
+-	pf = rc->ring->vsi->back;
+-
+ 	switch (c_type) {
+ 	case ICE_RX_CONTAINER:
+ 		ec->use_adaptive_rx_coalesce = ITR_IS_DYNAMIC(rc);
+@@ -3519,7 +3515,7 @@ ice_get_rc_coalesce(struct ethtool_coalesce *ec, enum ice_container_type c_type,
+ 		ec->tx_coalesce_usecs = rc->itr_setting;
+ 		break;
+ 	default:
+-		dev_dbg(ice_pf_to_dev(pf), "Invalid c_type %d\n", c_type);
++		dev_dbg(ice_pf_to_dev(rc->ring->vsi->back), "Invalid c_type %d\n", c_type);
+ 		return -EINVAL;
+ 	}
  
-@@ -404,6 +405,7 @@ ice_label_enum_handler(u32 __always_unused sect_type, void *section, u32 index,
- 	if (!section)
- 		return NULL;
- 
-+	/* cppcheck-suppress nullPointer */
- 	if (index > ICE_MAX_LABELS_IN_BUF)
- 		return NULL;
- 
-@@ -2067,6 +2069,7 @@ ice_match_prop_lst(struct list_head *list1, struct list_head *list2)
- 		count++;
- 	list_for_each_entry(tmp2, list2, list)
- 		chk_count++;
-+	/* cppcheck-suppress knownConditionTrueFalse */
- 	if (!count || count != chk_count)
- 		return false;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 2f7de2d03510..4058d8f4e782 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -740,6 +740,7 @@ ice_get_orom_civd_data(struct ice_hw *hw, enum ice_bank_select bank,
- 
- 		/* Verify that the simple checksum is zero */
- 		for (i = 0; i < sizeof(tmp); i++)
-+			/* cppcheck-suppress objectIndex */
- 			sum += ((u8 *)&tmp)[i];
- 
- 		if (sum) {
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index 97562051fe14..2f097637e405 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -988,6 +988,7 @@ ice_sched_add_nodes_to_layer(struct ice_port_info *pi,
- 	*num_nodes_added = 0;
- 	while (*num_nodes_added < num_nodes) {
- 		u16 max_child_nodes, num_added = 0;
-+		/* cppcheck-suppress unusedVariable */
- 		u32 temp;
- 
- 		status = ice_sched_add_nodes_to_hw_layer(pi, tc_node, parent,
 -- 
 2.20.1
 
