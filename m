@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47C4E34F69C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 04:27:29 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05B4D34F69A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 04:27:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E898784187;
-	Wed, 31 Mar 2021 02:27:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 729DF404B2;
+	Wed, 31 Mar 2021 02:27:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jyrNV_RkdaNx; Wed, 31 Mar 2021 02:27:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lc3cUVtoCirr; Wed, 31 Mar 2021 02:27:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E773A83C7D;
-	Wed, 31 Mar 2021 02:27:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 80BBC404B6;
+	Wed, 31 Mar 2021 02:27:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 24AB21BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 02:27:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 393E31BF2B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 02:27:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4E887404C0
+ by smtp2.osuosl.org (Postfix) with ESMTP id 053DF404C0
  for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 02:27:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8bOwc-6Buoen for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id yEG37eN3SsUe for <intel-wired-lan@lists.osuosl.org>;
  Wed, 31 Mar 2021 02:27:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A399D404BD
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4A6F7404B9
  for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 02:27:13 +0000 (UTC)
-IronPort-SDR: G1bzjIFxgVIRmvwxIiUXh2x7KK2nh+aKkTeZ/Ifjyo/gWCZvve9co2BdbJ3r0WRBJRIXEH1FyR
- 94Ywd/aT2l/g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9939"; a="171924579"
-X-IronPort-AV: E=Sophos;i="5.81,291,1610438400"; d="scan'208";a="171924579"
+IronPort-SDR: YlIZsnm5A9FtprUbkOMm8w3dZxvFIjp+dIqBIJH43c17V5IjBUn1W5+mwYdjYOby5un5uAmCqz
+ ilGq7omrb6EQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9939"; a="171924581"
+X-IronPort-AV: E=Sophos;i="5.81,291,1610438400"; d="scan'208";a="171924581"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Mar 2021 19:27:07 -0700
-IronPort-SDR: PeY7Uux6eHbqs8JlfDPnvunaZLNbWze22/NGJSVWavtk4hAWEiLzAbIE5p0VlQJulfHELqtY/W
- 0kQNKnj/uMbQ==
+ 30 Mar 2021 19:27:08 -0700
+IronPort-SDR: KWPNwa2VSvJeb63tjvQXmW8a4TY5A0Ox8mbSCFlr+fnB/ZIlk2jYDgb+hgo7chSdGa6JUrZ1uB
+ uNF9/78xtTAA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,291,1610438400"; d="scan'208";a="411916105"
+X-IronPort-AV: E=Sophos;i="5.81,291,1610438400"; d="scan'208";a="411916115"
 Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.118.220])
- by fmsmga008.fm.intel.com with ESMTP; 30 Mar 2021 19:27:06 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 30 Mar 2021 19:27:07 -0700
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 31 Mar 2021 10:08:35 +0800
-Message-Id: <20210331020837.3640-1-haiyue.wang@intel.com>
+Date: Wed, 31 Mar 2021 10:08:36 +0800
+Message-Id: <20210331020837.3640-2-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210331020837.3640-1-haiyue.wang@intel.com>
+References: <20210331020837.3640-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [Patch v1 1/3] iavf: change the flex-byte support
- number to macro definition
+Subject: [Intel-wired-lan] [Patch v1 2/3] iavf: enhance the duplicated FDIR
+ list scan handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,65 +71,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The maximum number (2) of flex-byte support is derived from ethtool
-use-def data size (8 byte).
-
-Change the magic number 2 to macro definition, and add the comment to
-track the design thinking, so the code is clear and easily maintained.
+When the FDIR entry is found, just return the result directly to break
+the loop.
 
 Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 2 +-
- drivers/net/ethernet/intel/iavf/iavf_fdir.h    | 9 +++++++--
- 2 files changed, 8 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf_fdir.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index d9ed4d4e3d78..935145ab2b77 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -939,7 +939,7 @@ iavf_parse_rx_flow_user_data(struct ethtool_rx_flow_spec *fsp,
- 	if (!(fsp->flow_type & FLOW_EXT))
- 		return 0;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.c b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
+index 3e687189d737..af872ea3163f 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_fdir.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
+@@ -713,7 +713,6 @@ void iavf_print_fdir_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *f
+ bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr)
+ {
+ 	struct iavf_fdir_fltr *tmp;
+-	bool ret = false;
  
--	for (i = 0; i < 2; i++) {
-+	for (i = 0; i < IAVF_FLEX_WORD_NUM; i++) {
- #define IAVF_USERDEF_FLEX_WORD_M	GENMASK(15, 0)
- #define IAVF_USERDEF_FLEX_OFFS_S	16
- #define IAVF_USERDEF_FLEX_OFFS_M	GENMASK(31, IAVF_USERDEF_FLEX_OFFS_S)
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.h b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-index 2439c970b657..33c55c366315 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-@@ -35,6 +35,11 @@ enum iavf_fdir_flow_type {
- 	IAVF_FDIR_FLOW_PTYPE_MAX,
- };
+ 	list_for_each_entry(tmp, &adapter->fdir_list_head, list) {
+ 		if (tmp->flow_type != fltr->flow_type)
+@@ -724,13 +723,11 @@ bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *
+ 		    !memcmp(&tmp->ip_data, &fltr->ip_data,
+ 			    sizeof(fltr->ip_data)) &&
+ 		    !memcmp(&tmp->ext_data, &fltr->ext_data,
+-			    sizeof(fltr->ext_data))) {
+-			ret = true;
+-			break;
+-		}
++			    sizeof(fltr->ext_data)))
++			return true;
+ 	}
  
-+/* Must not exceed the array element number of '__be32 data[2]' in the ethtool
-+ * 'struct ethtool_rx_flow_spec.m_ext.data[2]' to express the flex-byte (word).
-+ */
-+#define IAVF_FLEX_WORD_NUM	2
-+
- struct iavf_flex_word {
- 	u16 offset;
- 	u16 word;
-@@ -71,7 +76,7 @@ struct iavf_fdir_ip {
- };
+-	return ret;
++	return false;
+ }
  
- struct iavf_fdir_extra {
--	u32 usr_def[2];
-+	u32 usr_def[IAVF_FLEX_WORD_NUM];
- };
- 
- /* bookkeeping of Flow Director filters */
-@@ -95,7 +100,7 @@ struct iavf_fdir_fltr {
- 	/* flex byte filter data */
- 	u8 ip_ver; /* used to adjust the flex offset, 4 : IPv4, 6 : IPv6 */
- 	u8 flex_cnt;
--	struct iavf_flex_word flex_words[2];
-+	struct iavf_flex_word flex_words[IAVF_FLEX_WORD_NUM];
- 
- 	u32 flow_id;
- 
+ /**
 -- 
 2.31.1
 
