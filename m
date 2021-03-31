@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99BE335090E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:27:20 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 18F40849C3;
-	Wed, 31 Mar 2021 21:27:19 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PKX4wz3LaB3P; Wed, 31 Mar 2021 21:27:18 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 10BAE8496D;
-	Wed, 31 Mar 2021 21:27:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5105D1BF41E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D422C35090C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Mar 2021 23:27:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 874FF40EE5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A1AA40EE1;
+	Wed, 31 Mar 2021 21:27:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1fYHzaL98JtD for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5QTCsJvWXSsg; Wed, 31 Mar 2021 21:27:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5CD41406B0;
+	Wed, 31 Mar 2021 21:27:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E69ED1BF41E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2126C8495A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:55 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DYEkIZR4_wuI for <intel-wired-lan@lists.osuosl.org>;
  Wed, 31 Mar 2021 21:26:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8B25B40EDE
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 77B638496A
  for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Mar 2021 21:26:54 +0000 (UTC)
-IronPort-SDR: twAhGy47ze67Q9P6khAp6H/pzUznCMSB7TR+Ts1oeQIS0qUE+4A9Z3Y6albe1QQGH+NRaHutSq
- OuqT7E6Azn2A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="192117310"
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="192117310"
+IronPort-SDR: cth2v7d6N7aZRIFgOrU5MccvPysSxHcQ7/ZwRbRH/xUPvOrH/5U3tjyylc5TUaX0Vhsa1zh6LJ
+ xWlsbJsbY2sQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="192117311"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="192117311"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  31 Mar 2021 14:26:52 -0700
-IronPort-SDR: +5ttMY9ju2lNVCZDeCIXPqGwMou9UKAK4w9Wpyge1IYlgezosvAogashuRiV45Vt8U4jgkbXPE
- 1bW62iUl5frQ==
+IronPort-SDR: yqM7XNPxi7ElYiQ4okhAcfN0vQidhis1TrXfVlu9ZY+NKBSaSrphQi3XA4HnvAg0DqXkS8DRcL
+ 49dXNZ1yiy+w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="445819642"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="445819643"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 31 Mar 2021 14:26:51 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 31 Mar 2021 14:17:03 -0700
-Message-Id: <20210331211708.55205-8-anthony.l.nguyen@intel.com>
+Date: Wed, 31 Mar 2021 14:17:04 -0700
+Message-Id: <20210331211708.55205-9-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210331211708.55205-1-anthony.l.nguyen@intel.com>
 References: <20210331211708.55205-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S58 08/13] ice: remove unused struct member
+Subject: [Intel-wired-lan] [PATCH S58 09/13] ice: Set vsi->vf_id as
+ ICE_INVAL_VFID for non VF VSI types
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,63 +71,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-The only time you can ever have a rq_last_status is if
-a firmware event was somehow reporting a status on the receive
-queue, which are generally firmware initiated events or
-mailbox messages from a VF.  Mostly this struct member was unused.
+Currently the vsi->vf_id is set only for ICE_VSI_VF and it's left as 0
+for all other VSI types. This is confusing and could be problematic
+since 0 is a valid vf_id. Fix this by always setting non VF VSI types to
+ICE_INVAL_VFID.
 
-Fix this problem by still printing the value of the field in a debug
-print, but don't store the value forever in a struct, potentially
-creating opportunities for callers to use the wrong struct member.
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_controlq.c | 6 +++---
- drivers/net/ethernet/intel/ice/ice_controlq.h | 1 -
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index 0f207a42ea77..87b33bdd4960 100644
---- a/drivers/net/ethernet/intel/ice/ice_controlq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -1097,6 +1097,7 @@ ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 		  struct ice_rq_event_info *e, u16 *pending)
- {
- 	u16 ntc = cq->rq.next_to_clean;
-+	enum ice_aq_err rq_last_status;
- 	enum ice_status ret_code = 0;
- 	struct ice_aq_desc *desc;
- 	struct ice_dma_mem *bi;
-@@ -1130,13 +1131,12 @@ ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	desc = ICE_CTL_Q_DESC(cq->rq, ntc);
- 	desc_idx = ntc;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 4e93005686a4..c379b4ddffbd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -158,7 +158,8 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
  
--	cq->rq_last_status = (enum ice_aq_err)le16_to_cpu(desc->retval);
-+	rq_last_status = (enum ice_aq_err)le16_to_cpu(desc->retval);
- 	flags = le16_to_cpu(desc->flags);
- 	if (flags & ICE_AQ_FLAG_ERR) {
- 		ret_code = ICE_ERR_AQ_ERROR;
- 		ice_debug(hw, ICE_DBG_AQ_MSG, "Control Receive Queue Event 0x%04X received with error 0x%X\n",
--			  le16_to_cpu(desc->opcode),
--			  cq->rq_last_status);
-+			  le16_to_cpu(desc->opcode), rq_last_status);
- 	}
- 	memcpy(&e->desc, desc, sizeof(e->desc));
- 	datalen = le16_to_cpu(desc->datalen);
-diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.h b/drivers/net/ethernet/intel/ice/ice_controlq.h
-index 77c2307d4fb8..fe75871e48ca 100644
---- a/drivers/net/ethernet/intel/ice/ice_controlq.h
-+++ b/drivers/net/ethernet/intel/ice/ice_controlq.h
-@@ -83,7 +83,6 @@ struct ice_rq_event_info {
- /* Control Queue information */
- struct ice_ctl_q_info {
- 	enum ice_ctl_q qtype;
--	enum ice_aq_err rq_last_status;	/* last status on receive queue */
- 	struct ice_ctl_q_ring rq;	/* receive queue */
- 	struct ice_ctl_q_ring sq;	/* send queue */
- 	u32 sq_cmd_timeout;		/* send queue cmd write back timeout */
+ 	if (vsi->type == ICE_VSI_VF)
+ 		vsi->vf_id = vf_id;
+-
++	else
++		vsi->vf_id = ICE_INVAL_VFID;
+ 	switch (vsi->type) {
+ 	case ICE_VSI_PF:
+ 		vsi->alloc_txq = min3(pf->num_lan_msix,
 -- 
 2.20.1
 
