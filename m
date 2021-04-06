@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83F423549FB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Apr 2021 03:20:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAC523549FC
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Apr 2021 03:20:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 298DB606D4;
-	Tue,  6 Apr 2021 01:20:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2C90240686;
+	Tue,  6 Apr 2021 01:20:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dDJYCFdFzKgJ; Tue,  6 Apr 2021 01:20:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Cv5hKOMiBrjz; Tue,  6 Apr 2021 01:20:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C26C960642;
-	Tue,  6 Apr 2021 01:20:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 853E740664;
+	Tue,  6 Apr 2021 01:20:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 360411BF37B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 20C251BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 31AE58488A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1D58D8488A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nq5IkqULZUQ9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Apr 2021 01:19:52 +0000 (UTC)
+ with ESMTP id gQh-7JbMAqTc for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Apr 2021 01:19:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2ABDB8482F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:52 +0000 (UTC)
-IronPort-SDR: hbppe2MKlgpbZySkPXeVF7OClBNY2u4KrTeQFf35TlAhriG1ouuk9L/vUMjRosufJzkvexrQjz
- fqN+BNBeF6Dw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9945"; a="192485899"
-X-IronPort-AV: E=Sophos;i="5.81,308,1610438400"; d="scan'208";a="192485899"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F01E88482F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Apr 2021 01:19:53 +0000 (UTC)
+IronPort-SDR: t4LvNQcmBptRwnza6cmClSNT6B3gC1wX+kgze/4LXcKYCcPwAB0oroiUFn+y/kBoPTkV17d1sQ
+ i1dvO0DETvSg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9945"; a="192485900"
+X-IronPort-AV: E=Sophos;i="5.81,308,1610438400"; d="scan'208";a="192485900"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Apr 2021 18:19:51 -0700
-IronPort-SDR: cTGg+Y5mSa/vjXuBiwgiqAOBzUdmZVsRjx098R6t3Fmi5SnilyGWvWOcJmzKdDVlWtBJCQpdsn
- opIb0WDMyOVg==
+ 05 Apr 2021 18:19:53 -0700
+IronPort-SDR: E99hhcsLMiKgOJQrv5WKvb3rvc2XkWYf8Em9ruFhwnuzSal0+aTO1yhBl4SlkcTnvmJXgRDkRn
+ 6oWbDZb7Lrgw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.81,308,1610438400"; d="scan'208";a="420969799"
+X-IronPort-AV: E=Sophos;i="5.81,308,1610438400"; d="scan'208";a="420969814"
 Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.118.220])
- by orsmga008.jf.intel.com with ESMTP; 05 Apr 2021 18:19:50 -0700
+ by orsmga008.jf.intel.com with ESMTP; 05 Apr 2021 18:19:52 -0700
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  6 Apr 2021 09:00:22 +0800
-Message-Id: <20210406010025.90549-4-haiyue.wang@intel.com>
+Date: Tue,  6 Apr 2021 09:00:23 +0800
+Message-Id: <20210406010025.90549-5-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210406010025.90549-1-haiyue.wang@intel.com>
 References: <20210406010025.90549-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 3/6] iavf: Add framework to
- enable ethtool RSS config
+Subject: [Intel-wired-lan] [PATCH net-next v1 4/6] iavf: Support ethtool TCP
+ flow RSS hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,372 +72,566 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add the virtchnl message interface to VF, so that VF can request RSS
-input set(s) based on PF's capability.
+Support to configure the TCP flow RSS hash by ethtool.
 
-This framework allows ethtool RSS config support on the VF driver.
+Supported fields are: src-ip, dst-ip, src-port, dst-port.
+Supported rx-flow-hash types are: tcp4, tcp6.
 
 Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h        |  10 ++
- .../net/ethernet/intel/iavf/iavf_adv_rss.h    |  25 +++
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  28 ++++
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 154 ++++++++++++++++++
- 4 files changed, 217 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
+ drivers/net/ethernet/intel/iavf/Makefile      |   1 +
+ .../net/ethernet/intel/iavf/iavf_adv_rss.c    | 176 ++++++++++++++
+ .../net/ethernet/intel/iavf/iavf_adv_rss.h    |  55 +++++
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 215 +++++++++++++++++-
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  16 +-
+ 5 files changed, 459 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 09e5b9cf5719..1e996d9c1351 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -38,6 +38,7 @@
- #include <linux/avf/virtchnl.h>
- #include "iavf_txrx.h"
- #include "iavf_fdir.h"
-+#include "iavf_adv_rss.h"
+diff --git a/drivers/net/ethernet/intel/iavf/Makefile b/drivers/net/ethernet/intel/iavf/Makefile
+index 121e194ee734..9c3e45c54d01 100644
+--- a/drivers/net/ethernet/intel/iavf/Makefile
++++ b/drivers/net/ethernet/intel/iavf/Makefile
+@@ -12,4 +12,5 @@ subdir-ccflags-y += -I$(src)
+ obj-$(CONFIG_IAVF) += iavf.o
  
- #define DEFAULT_DEBUG_LEVEL_SHIFT 3
- #define PFX "iavf: "
-@@ -304,6 +305,8 @@ struct iavf_adapter {
- #define IAVF_FLAG_AQ_DEL_CLOUD_FILTER		BIT(24)
- #define IAVF_FLAG_AQ_ADD_FDIR_FILTER		BIT(25)
- #define IAVF_FLAG_AQ_DEL_FDIR_FILTER		BIT(26)
-+#define IAVF_FLAG_AQ_ADD_ADV_RSS_CFG		BIT(27)
-+#define IAVF_FLAG_AQ_DEL_ADV_RSS_CFG		BIT(28)
- 
- 	/* OS defined structs */
- 	struct net_device *netdev;
-@@ -346,6 +349,8 @@ struct iavf_adapter {
- 			      VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
- #define FDIR_FLTR_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
- 			       VIRTCHNL_VF_OFFLOAD_FDIR_PF)
-+#define ADV_RSS_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
-+			     VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF)
- 	struct virtchnl_vf_resource *vf_res; /* incl. all VSIs */
- 	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
- 	struct virtchnl_version_info pf_version;
-@@ -373,6 +378,9 @@ struct iavf_adapter {
- 	u16 fdir_active_fltr;
- 	struct list_head fdir_list_head;
- 	spinlock_t fdir_fltr_lock;	/* protect the Flow Director filter list */
-+
-+	struct list_head adv_rss_list_head;
-+	spinlock_t adv_rss_lock;	/* protect the RSS management list */
- };
- 
- 
-@@ -445,6 +453,8 @@ void iavf_add_cloud_filter(struct iavf_adapter *adapter);
- void iavf_del_cloud_filter(struct iavf_adapter *adapter);
- void iavf_add_fdir_filter(struct iavf_adapter *adapter);
- void iavf_del_fdir_filter(struct iavf_adapter *adapter);
-+void iavf_add_adv_rss_cfg(struct iavf_adapter *adapter);
-+void iavf_del_adv_rss_cfg(struct iavf_adapter *adapter);
- struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
- 					const u8 *macaddr);
- #endif /* _IAVF_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
+ iavf-objs := iavf_main.o iavf_ethtool.o iavf_virtchnl.o iavf_fdir.o \
++	     iavf_adv_rss.o \
+ 	     iavf_txrx.o iavf_common.o iavf_adminq.o iavf_client.o
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
 new file mode 100644
-index 000000000000..4e0ef9d79498
+index 000000000000..e41afc1f914c
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-@@ -0,0 +1,25 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
++++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
+@@ -0,0 +1,176 @@
++// SPDX-License-Identifier: GPL-2.0
 +/* Copyright (c) 2021, Intel Corporation. */
 +
-+#ifndef _IAVF_ADV_RSS_H_
-+#define _IAVF_ADV_RSS_H_
++/* advance RSS configuration ethtool support for iavf */
 +
-+struct iavf_adapter;
++#include "iavf.h"
 +
-+/* State of advanced RSS configuration */
-+enum iavf_adv_rss_state_t {
-+	IAVF_ADV_RSS_ADD_REQUEST,	/* User requests to add RSS */
-+	IAVF_ADV_RSS_ADD_PENDING,	/* RSS pending add by the PF */
-+	IAVF_ADV_RSS_DEL_REQUEST,	/* Driver requests to delete RSS */
-+	IAVF_ADV_RSS_DEL_PENDING,	/* RSS pending delete by the PF */
-+	IAVF_ADV_RSS_ACTIVE,		/* RSS configuration is active */
-+};
-+
-+/* bookkeeping of advanced RSS configuration */
-+struct iavf_adv_rss {
-+	enum iavf_adv_rss_state_t state;
-+	struct list_head list;
-+
-+	struct virtchnl_rss_cfg rss_cfg_msg;
-+};
-+#endif /* _IAVF_ADV_RSS_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 357e66e866b7..eb7618ffb9e8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -962,6 +962,7 @@ void iavf_down(struct iavf_adapter *adapter)
- 	struct iavf_cloud_filter *cf;
- 	struct iavf_fdir_fltr *fdir;
- 	struct iavf_mac_filter *f;
-+	struct iavf_adv_rss *rss;
- 
- 	if (adapter->state <= __IAVF_DOWN_PENDING)
- 		return;
-@@ -1004,6 +1005,13 @@ void iavf_down(struct iavf_adapter *adapter)
- 	}
- 	spin_unlock_bh(&adapter->fdir_fltr_lock);
- 
-+	/* remove all advance RSS configuration */
-+	spin_lock_bh(&adapter->adv_rss_lock);
-+	list_for_each_entry(rss, &adapter->adv_rss_list_head, list) {
-+		rss->state = IAVF_ADV_RSS_DEL_REQUEST;
-+	}
-+	spin_unlock_bh(&adapter->adv_rss_lock);
-+
- 	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) &&
- 	    adapter->state != __IAVF_RESETTING) {
- 		/* cancel any current operation */
-@@ -1016,6 +1024,7 @@ void iavf_down(struct iavf_adapter *adapter)
- 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_VLAN_FILTER;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_CLOUD_FILTER;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_FDIR_FILTER;
-+		adapter->aq_required |= IAVF_FLAG_AQ_DEL_ADV_RSS_CFG;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DISABLE_QUEUES;
- 	}
- 
-@@ -1646,6 +1655,14 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
- 		iavf_del_fdir_filter(adapter);
- 		return IAVF_SUCCESS;
- 	}
-+	if (adapter->aq_required & IAVF_FLAG_AQ_ADD_ADV_RSS_CFG) {
-+		iavf_add_adv_rss_cfg(adapter);
-+		return 0;
-+	}
-+	if (adapter->aq_required & IAVF_FLAG_AQ_DEL_ADV_RSS_CFG) {
-+		iavf_del_adv_rss_cfg(adapter);
-+		return 0;
-+	}
- 	return -EAGAIN;
- }
- 
-@@ -3776,11 +3793,13 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	spin_lock_init(&adapter->mac_vlan_list_lock);
- 	spin_lock_init(&adapter->cloud_filter_list_lock);
- 	spin_lock_init(&adapter->fdir_fltr_lock);
-+	spin_lock_init(&adapter->adv_rss_lock);
- 
- 	INIT_LIST_HEAD(&adapter->mac_filter_list);
- 	INIT_LIST_HEAD(&adapter->vlan_filter_list);
- 	INIT_LIST_HEAD(&adapter->cloud_filter_list);
- 	INIT_LIST_HEAD(&adapter->fdir_list_head);
-+	INIT_LIST_HEAD(&adapter->adv_rss_list_head);
- 
- 	INIT_WORK(&adapter->reset_task, iavf_reset_task);
- 	INIT_WORK(&adapter->adminq_task, iavf_adminq_task);
-@@ -3886,6 +3905,7 @@ static void iavf_remove(struct pci_dev *pdev)
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	struct iavf_fdir_fltr *fdir, *fdirtmp;
- 	struct iavf_vlan_filter *vlf, *vlftmp;
-+	struct iavf_adv_rss *rss, *rsstmp;
- 	struct iavf_mac_filter *f, *ftmp;
- 	struct iavf_cloud_filter *cf, *cftmp;
- 	struct iavf_hw *hw = &adapter->hw;
-@@ -3969,6 +3989,14 @@ static void iavf_remove(struct pci_dev *pdev)
- 	}
- 	spin_unlock_bh(&adapter->fdir_fltr_lock);
- 
-+	spin_lock_bh(&adapter->adv_rss_lock);
-+	list_for_each_entry_safe(rss, rsstmp, &adapter->adv_rss_list_head,
-+				 list) {
-+		list_del(&rss->list);
-+		kfree(rss);
-+	}
-+	spin_unlock_bh(&adapter->adv_rss_lock);
-+
- 	free_netdev(netdev);
- 
- 	pci_disable_pcie_error_reporting(pdev);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 9aaade0aae4c..62646531c862 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -142,6 +142,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_ADQ |
- 	       VIRTCHNL_VF_OFFLOAD_USO |
- 	       VIRTCHNL_VF_OFFLOAD_FDIR_PF |
-+	       VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF |
- 	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
- 
- 	adapter->current_op = VIRTCHNL_OP_GET_VF_RESOURCES;
-@@ -1294,6 +1295,104 @@ void iavf_del_fdir_filter(struct iavf_adapter *adapter)
- 	iavf_send_pf_msg(adapter, VIRTCHNL_OP_DEL_FDIR_FILTER, (u8 *)&f, len);
- }
- 
 +/**
-+ * iavf_add_adv_rss_cfg
-+ * @adapter: the VF adapter structure
-+ *
-+ * Request that the PF add RSS configuration as specified
-+ * by the user via ethtool.
-+ **/
-+void iavf_add_adv_rss_cfg(struct iavf_adapter *adapter)
++ * iavf_fill_adv_rss_ip4_hdr - fill the IPv4 RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iavf_fill_adv_rss_ip4_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
 +{
-+	struct virtchnl_rss_cfg *rss_cfg;
-+	struct iavf_adv_rss *rss;
-+	bool process_rss = false;
-+	int len;
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, IPV4);
 +
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev, "Cannot add RSS configuration, command %d pending\n",
-+			adapter->current_op);
-+		return;
-+	}
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_IPV4_SA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, SRC);
 +
-+	len = sizeof(struct virtchnl_rss_cfg);
-+	rss_cfg = kzalloc(len, GFP_KERNEL);
-+	if (!rss_cfg)
-+		return;
-+
-+	spin_lock_bh(&adapter->adv_rss_lock);
-+	list_for_each_entry(rss, &adapter->adv_rss_list_head, list) {
-+		if (rss->state == IAVF_ADV_RSS_ADD_REQUEST) {
-+			process_rss = true;
-+			rss->state = IAVF_ADV_RSS_ADD_PENDING;
-+			memcpy(rss_cfg, &rss->rss_cfg_msg, len);
-+			break;
-+		}
-+	}
-+	spin_unlock_bh(&adapter->adv_rss_lock);
-+
-+	if (!process_rss) {
-+		/* prevent iavf_add_fdir_filter() from being called when there
-+		 * are no filters to add
-+		 */
-+		adapter->aq_required &= ~IAVF_FLAG_AQ_ADD_ADV_RSS_CFG;
-+		kfree(rss_cfg);
-+		return;
-+	}
-+	adapter->current_op = VIRTCHNL_OP_ADD_RSS_CFG;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_ADD_RSS_CFG, (u8 *)rss_cfg, len);
-+	kfree(rss_cfg);
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_IPV4_DA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, DST);
 +}
 +
 +/**
-+ * iavf_del_adv_rss_cfg
-+ * @adapter: the VF adapter structure
-+ *
-+ * Request that the PF delete RSS configuration as specified
-+ * by the user via ethtool.
-+ **/
-+void iavf_del_adv_rss_cfg(struct iavf_adapter *adapter)
++ * iavf_fill_adv_rss_ip6_hdr - fill the IPv6 RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iavf_fill_adv_rss_ip6_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
 +{
-+	struct virtchnl_rss_cfg *rss_cfg;
-+	struct iavf_adv_rss *rss;
-+	bool process_rss = false;
-+	int len;
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, IPV6);
 +
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev, "Cannot remove RSS configuration, command %d pending\n",
-+			adapter->current_op);
-+		return;
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_IPV6_SA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, SRC);
++
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_IPV6_DA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, DST);
++}
++
++/**
++ * iavf_fill_adv_rss_tcp_hdr - fill the TCP RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iavf_fill_adv_rss_tcp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, TCP);
++
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, TCP, SRC_PORT);
++
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, TCP, DST_PORT);
++}
++
++/**
++ * iavf_fill_adv_rss_cfg_msg - fill the RSS configuration into virtchnl message
++ * @rss_cfg: the virtchnl message to be filled with RSS configuration setting
++ * @packet_hdrs: the RSS configuration protocol header types
++ * @hash_flds: the RSS configuration protocol hash fields
++ *
++ * Returns 0 if the RSS configuration virtchnl message is filled successfully
++ */
++int
++iavf_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
++			  u32 packet_hdrs, u64 hash_flds)
++{
++	struct virtchnl_proto_hdrs *proto_hdrs = &rss_cfg->proto_hdrs;
++	struct virtchnl_proto_hdr *hdr;
++
++	rss_cfg->rss_algorithm = VIRTCHNL_RSS_ALG_TOEPLITZ_ASYMMETRIC;
++
++	proto_hdrs->tunnel_level = 0;	/* always outer layer */
++
++	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
++	switch (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L3) {
++	case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4:
++		iavf_fill_adv_rss_ip4_hdr(hdr, hash_flds);
++		break;
++	case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6:
++		iavf_fill_adv_rss_ip6_hdr(hdr, hash_flds);
++		break;
++	default:
++		return -EINVAL;
 +	}
 +
-+	len = sizeof(struct virtchnl_rss_cfg);
-+	rss_cfg = kzalloc(len, GFP_KERNEL);
-+	if (!rss_cfg)
++	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
++	switch (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L4) {
++	case IAVF_ADV_RSS_FLOW_SEG_HDR_TCP:
++		iavf_fill_adv_rss_tcp_hdr(hdr, hash_flds);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++/**
++ * iavf_find_adv_rss_cfg_by_hdrs - find RSS configuration with header type
++ * @adapter: pointer to the VF adapter structure
++ * @packet_hdrs: protocol header type to find.
++ *
++ * Returns pointer to advance RSS configuration if found or null
++ */
++struct iavf_adv_rss *
++iavf_find_adv_rss_cfg_by_hdrs(struct iavf_adapter *adapter, u32 packet_hdrs)
++{
++	struct iavf_adv_rss *rss;
++
++	list_for_each_entry(rss, &adapter->adv_rss_list_head, list)
++		if (rss->packet_hdrs == packet_hdrs)
++			return rss;
++
++	return NULL;
++}
++
++/**
++ * iavf_print_adv_rss_cfg
++ * @level: Debug print message level as KERN_XXX
++ * @adapter: pointer to the VF adapter structure
++ * @rss: pointer to the advance RSS configuration to print
++ * @action: the string description about how to handle the RSS
++ * @result: the string description about the virtchnl result
++ *
++ * Print the advance RSS configuration
++ **/
++void
++iavf_print_adv_rss_cfg(const char *level, struct iavf_adapter *adapter,
++		       struct iavf_adv_rss *rss, const char *action,
++		       const char *result)
++{
++	struct device *dev = &adapter->pdev->dev;
++	u32 packet_hdrs = rss->packet_hdrs;
++	u64 hash_flds = rss->hash_flds;
++	static char hash_opt[300];
++	const char *proto;
++
++	if (!level)
 +		return;
 +
-+	spin_lock_bh(&adapter->adv_rss_lock);
-+	list_for_each_entry(rss, &adapter->adv_rss_list_head, list) {
-+		if (rss->state == IAVF_ADV_RSS_DEL_REQUEST) {
-+			process_rss = true;
-+			rss->state = IAVF_ADV_RSS_DEL_PENDING;
-+			memcpy(rss_cfg, &rss->rss_cfg_msg, len);
++	if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_TCP)
++		proto = "TCP";
++	else
++		return;
++
++	memset(hash_opt, 0, sizeof(hash_opt));
++
++	strcat(hash_opt, proto);
++	if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4)
++		strcat(hash_opt, "v4 ");
++	else
++		strcat(hash_opt, "v6 ");
++
++	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_IPV4_SA |
++			 IAVF_ADV_RSS_HASH_FLD_IPV6_SA))
++		strcat(hash_opt, "IP SA,");
++	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_IPV4_DA |
++			 IAVF_ADV_RSS_HASH_FLD_IPV6_DA))
++		strcat(hash_opt, "IP DA,");
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT)
++		strcat(hash_opt, "src port,");
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT)
++		strcat(hash_opt, "dst port,");
++
++	if (!action)
++		action = "";
++
++	if (!result)
++		result = "";
++
++	dev_printk(level, dev, "%s %s %s\n", action, hash_opt, result);
++}
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
+index 4e0ef9d79498..3023c5f7b986 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
++++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
+@@ -15,11 +15,66 @@ enum iavf_adv_rss_state_t {
+ 	IAVF_ADV_RSS_ACTIVE,		/* RSS configuration is active */
+ };
+ 
++enum iavf_adv_rss_flow_seg_hdr {
++	IAVF_ADV_RSS_FLOW_SEG_HDR_NONE	= 0x00000000,
++	IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4	= 0x00000001,
++	IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6	= 0x00000002,
++	IAVF_ADV_RSS_FLOW_SEG_HDR_TCP	= 0x00000004,
++};
++
++#define IAVF_ADV_RSS_FLOW_SEG_HDR_L3		\
++	(IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4	|	\
++	 IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6)
++
++#define IAVF_ADV_RSS_FLOW_SEG_HDR_L4		\
++	(IAVF_ADV_RSS_FLOW_SEG_HDR_TCP)
++
++enum iavf_adv_rss_flow_field {
++	/* L3 */
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV4_SA,
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV4_DA,
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV6_SA,
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV6_DA,
++	/* L4 */
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_TCP_SRC_PORT,
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_TCP_DST_PORT,
++
++	/* The total number of enums must not exceed 64 */
++	IAVF_ADV_RSS_FLOW_FIELD_IDX_MAX
++};
++
++#define IAVF_ADV_RSS_HASH_INVALID	0
++#define IAVF_ADV_RSS_HASH_FLD_IPV4_SA	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV4_SA)
++#define IAVF_ADV_RSS_HASH_FLD_IPV6_SA	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV6_SA)
++#define IAVF_ADV_RSS_HASH_FLD_IPV4_DA	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV4_DA)
++#define IAVF_ADV_RSS_HASH_FLD_IPV6_DA	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV6_DA)
++#define IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_TCP_SRC_PORT)
++#define IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT	\
++	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_TCP_DST_PORT)
++
+ /* bookkeeping of advanced RSS configuration */
+ struct iavf_adv_rss {
+ 	enum iavf_adv_rss_state_t state;
+ 	struct list_head list;
+ 
++	u32 packet_hdrs;
++	u64 hash_flds;
++
+ 	struct virtchnl_rss_cfg rss_cfg_msg;
+ };
++
++int
++iavf_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
++			  u32 packet_hdrs, u64 hash_flds);
++struct iavf_adv_rss *
++iavf_find_adv_rss_cfg_by_hdrs(struct iavf_adapter *adapter, u32 packet_hdrs);
++void
++iavf_print_adv_rss_cfg(const char *level, struct iavf_adapter *adapter,
++		       struct iavf_adv_rss *rss, const char *action,
++		       const char *result);
+ #endif /* _IAVF_ADV_RSS_H_ */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 935145ab2b77..44c4536b7760 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -1418,6 +1418,215 @@ static int iavf_del_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
+ 	return err;
+ }
+ 
++/**
++ * iavf_adv_rss_parse_hdrs - parses headers from RSS hash input
++ * @cmd: ethtool rxnfc command
++ *
++ * This function parses the rxnfc command and returns intended
++ * header types for RSS configuration
++ */
++static u32 iavf_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
++{
++	u32 hdrs = IAVF_ADV_RSS_FLOW_SEG_HDR_NONE;
++
++	switch (cmd->flow_type) {
++	case TCP_V4_FLOW:
++		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_TCP |
++			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
++		break;
++	case TCP_V6_FLOW:
++		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_TCP |
++			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
++		break;
++	default:
++		break;
++	}
++
++	return hdrs;
++}
++
++/**
++ * iavf_adv_rss_parse_hash_flds - parses hash fields from RSS hash input
++ * @cmd: ethtool rxnfc command
++ *
++ * This function parses the rxnfc command and returns intended hash fields for
++ * RSS configuration
++ */
++static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd)
++{
++	u64 hfld = IAVF_ADV_RSS_HASH_INVALID;
++
++	if (cmd->data & RXH_IP_SRC || cmd->data & RXH_IP_DST) {
++		switch (cmd->flow_type) {
++		case TCP_V4_FLOW:
++			if (cmd->data & RXH_IP_SRC)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV4_SA;
++			if (cmd->data & RXH_IP_DST)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV4_DA;
++			break;
++		case TCP_V6_FLOW:
++			if (cmd->data & RXH_IP_SRC)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV6_SA;
++			if (cmd->data & RXH_IP_DST)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV6_DA;
++			break;
++		default:
 +			break;
 +		}
 +	}
-+	spin_unlock_bh(&adapter->adv_rss_lock);
 +
-+	if (!process_rss) {
-+		adapter->aq_required &= ~IAVF_FLAG_AQ_DEL_ADV_RSS_CFG;
-+		kfree(rss_cfg);
-+		return;
++	if (cmd->data & RXH_L4_B_0_1 || cmd->data & RXH_L4_B_2_3) {
++		switch (cmd->flow_type) {
++		case TCP_V4_FLOW:
++		case TCP_V6_FLOW:
++			if (cmd->data & RXH_L4_B_0_1)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT;
++			if (cmd->data & RXH_L4_B_2_3)
++				hfld |= IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT;
++			break;
++		default:
++			break;
++		}
 +	}
 +
-+	adapter->current_op = VIRTCHNL_OP_DEL_RSS_CFG;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_DEL_RSS_CFG, (u8 *)rss_cfg, len);
-+	kfree(rss_cfg);
++	return hfld;
++}
++
++/**
++ * iavf_set_adv_rss_hash_opt - Enable/Disable flow types for RSS hash
++ * @adapter: pointer to the VF adapter structure
++ * @cmd: ethtool rxnfc command
++ *
++ * Returns Success if the flow input set is supported.
++ */
++static int
++iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
++			  struct ethtool_rxnfc *cmd)
++{
++	struct iavf_adv_rss *rss_old, *rss_new;
++	bool rss_new_add = false;
++	int count = 50, err = 0;
++	u64 hash_flds;
++	u32 hdrs;
++
++	if (!ADV_RSS_SUPPORT(adapter))
++		return -EOPNOTSUPP;
++
++	hdrs = iavf_adv_rss_parse_hdrs(cmd);
++	if (hdrs == IAVF_ADV_RSS_FLOW_SEG_HDR_NONE)
++		return -EINVAL;
++
++	hash_flds = iavf_adv_rss_parse_hash_flds(cmd);
++	if (hash_flds == IAVF_ADV_RSS_HASH_INVALID)
++		return -EINVAL;
++
++	rss_new = kzalloc(sizeof(*rss_new), GFP_KERNEL);
++	if (!rss_new)
++		return -ENOMEM;
++
++	if (iavf_fill_adv_rss_cfg_msg(&rss_new->rss_cfg_msg, hdrs,
++				      hash_flds)) {
++		kfree(rss_new);
++		return -EINVAL;
++	}
++
++	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
++				&adapter->crit_section)) {
++		if (--count == 0) {
++			kfree(rss_new);
++			return -EINVAL;
++		}
++
++		udelay(1);
++	}
++
++	spin_lock_bh(&adapter->adv_rss_lock);
++	rss_old = iavf_find_adv_rss_cfg_by_hdrs(adapter, hdrs);
++	if (rss_old) {
++		if (rss_old->state != IAVF_ADV_RSS_ACTIVE) {
++			err = -EBUSY;
++		} else if (rss_old->hash_flds != hash_flds) {
++			rss_old->state = IAVF_ADV_RSS_ADD_REQUEST;
++			rss_old->hash_flds = hash_flds;
++			memcpy(&rss_old->rss_cfg_msg, &rss_new->rss_cfg_msg,
++			       sizeof(rss_new->rss_cfg_msg));
++			adapter->aq_required |= IAVF_FLAG_AQ_ADD_ADV_RSS_CFG;
++		} else {
++			err = -EEXIST;
++		}
++	} else {
++		rss_new_add = true;
++		rss_new->state = IAVF_ADV_RSS_ADD_REQUEST;
++		rss_new->packet_hdrs = hdrs;
++		rss_new->hash_flds = hash_flds;
++		list_add_tail(&rss_new->list, &adapter->adv_rss_list_head);
++		adapter->aq_required |= IAVF_FLAG_AQ_ADD_ADV_RSS_CFG;
++	}
++	spin_unlock_bh(&adapter->adv_rss_lock);
++
++	if (!err)
++		mod_delayed_work(iavf_wq, &adapter->watchdog_task, 0);
++
++	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++
++	if (!rss_new_add)
++		kfree(rss_new);
++
++	return err;
++}
++
++/**
++ * iavf_get_adv_rss_hash_opt - Retrieve hash fields for a given flow-type
++ * @adapter: pointer to the VF adapter structure
++ * @cmd: ethtool rxnfc command
++ *
++ * Returns Success if the flow input set is supported.
++ */
++static int
++iavf_get_adv_rss_hash_opt(struct iavf_adapter *adapter,
++			  struct ethtool_rxnfc *cmd)
++{
++	struct iavf_adv_rss *rss;
++	u64 hash_flds;
++	u32 hdrs;
++
++	if (!ADV_RSS_SUPPORT(adapter))
++		return -EOPNOTSUPP;
++
++	cmd->data = 0;
++
++	hdrs = iavf_adv_rss_parse_hdrs(cmd);
++	if (hdrs == IAVF_ADV_RSS_FLOW_SEG_HDR_NONE)
++		return -EINVAL;
++
++	spin_lock_bh(&adapter->adv_rss_lock);
++	rss = iavf_find_adv_rss_cfg_by_hdrs(adapter, hdrs);
++	if (rss)
++		hash_flds = rss->hash_flds;
++	else
++		hash_flds = IAVF_ADV_RSS_HASH_INVALID;
++	spin_unlock_bh(&adapter->adv_rss_lock);
++
++	if (hash_flds == IAVF_ADV_RSS_HASH_INVALID)
++		return -EINVAL;
++
++	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_IPV4_SA |
++			 IAVF_ADV_RSS_HASH_FLD_IPV6_SA))
++		cmd->data |= (u64)RXH_IP_SRC;
++
++	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_IPV4_DA |
++			 IAVF_ADV_RSS_HASH_FLD_IPV6_DA))
++		cmd->data |= (u64)RXH_IP_DST;
++
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT)
++		cmd->data |= (u64)RXH_L4_B_0_1;
++
++	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT)
++		cmd->data |= (u64)RXH_L4_B_2_3;
++
++	return 0;
 +}
 +
  /**
-  * iavf_request_reset
-  * @adapter: adapter structure
-@@ -1494,6 +1593,37 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			spin_unlock_bh(&adapter->fdir_fltr_lock);
- 			}
- 			break;
-+		case VIRTCHNL_OP_ADD_RSS_CFG: {
-+			struct iavf_adv_rss *rss, *rss_tmp;
-+
-+			spin_lock_bh(&adapter->adv_rss_lock);
-+			list_for_each_entry_safe(rss, rss_tmp,
-+						 &adapter->adv_rss_list_head,
-+						 list) {
-+				if (rss->state == IAVF_ADV_RSS_ADD_PENDING) {
-+					list_del(&rss->list);
-+					kfree(rss);
-+				}
-+			}
-+			spin_unlock_bh(&adapter->adv_rss_lock);
-+			}
-+			break;
-+		case VIRTCHNL_OP_DEL_RSS_CFG: {
-+			struct iavf_adv_rss *rss;
-+
-+			spin_lock_bh(&adapter->adv_rss_lock);
-+			list_for_each_entry(rss, &adapter->adv_rss_list_head,
-+					    list) {
-+				if (rss->state == IAVF_ADV_RSS_DEL_PENDING) {
-+					rss->state = IAVF_ADV_RSS_ACTIVE;
-+					dev_err(&adapter->pdev->dev, "Failed to del RSS configuration, error %s\n",
-+						iavf_stat_str(&adapter->hw,
-+							      v_retval));
-+				}
-+			}
-+			spin_unlock_bh(&adapter->adv_rss_lock);
-+			}
-+			break;
- 		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
- 		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
- 			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-@@ -1683,6 +1813,30 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		spin_unlock_bh(&adapter->fdir_fltr_lock);
- 		}
+  * iavf_set_rxnfc - command to set Rx flow rules.
+  * @netdev: network interface device structure
+@@ -1437,6 +1646,9 @@ static int iavf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
+ 	case ETHTOOL_SRXCLSRLDEL:
+ 		ret = iavf_del_fdir_ethtool(adapter, cmd);
  		break;
-+	case VIRTCHNL_OP_ADD_RSS_CFG: {
-+		struct iavf_adv_rss *rss;
-+
-+		spin_lock_bh(&adapter->adv_rss_lock);
-+		list_for_each_entry(rss, &adapter->adv_rss_list_head, list)
-+			if (rss->state == IAVF_ADV_RSS_ADD_PENDING)
-+				rss->state = IAVF_ADV_RSS_ACTIVE;
-+		spin_unlock_bh(&adapter->adv_rss_lock);
-+		}
-+		break;
-+	case VIRTCHNL_OP_DEL_RSS_CFG: {
-+		struct iavf_adv_rss *rss, *rss_tmp;
-+
-+		spin_lock_bh(&adapter->adv_rss_lock);
-+		list_for_each_entry_safe(rss, rss_tmp,
-+					 &adapter->adv_rss_list_head, list) {
-+			if (rss->state == IAVF_ADV_RSS_DEL_PENDING) {
-+				list_del(&rss->list);
-+				kfree(rss);
-+			}
-+		}
-+		spin_unlock_bh(&adapter->adv_rss_lock);
-+		}
++	case ETHTOOL_SRXFH:
++		ret = iavf_set_adv_rss_hash_opt(adapter, cmd);
 +		break;
  	default:
- 		if (adapter->current_op && (v_opcode != adapter->current_op))
- 			dev_warn(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
+ 		break;
+ 	}
+@@ -1477,8 +1689,7 @@ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 		ret = iavf_get_fdir_fltr_ids(adapter, cmd, (u32 *)rule_locs);
+ 		break;
+ 	case ETHTOOL_GRXFH:
+-		netdev_info(netdev,
+-			    "RSS hash info is not available to vf, use pf.\n");
++		ret = iavf_get_adv_rss_hash_opt(adapter, cmd);
+ 		break;
+ 	default:
+ 		break;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 62646531c862..b68ea94e2eee 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1327,6 +1327,9 @@ void iavf_add_adv_rss_cfg(struct iavf_adapter *adapter)
+ 			process_rss = true;
+ 			rss->state = IAVF_ADV_RSS_ADD_PENDING;
+ 			memcpy(rss_cfg, &rss->rss_cfg_msg, len);
++			iavf_print_adv_rss_cfg(KERN_DEBUG, adapter, rss,
++					       "Input set change for",
++					       "is pending");
+ 			break;
+ 		}
+ 	}
+@@ -1601,6 +1604,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 						 &adapter->adv_rss_list_head,
+ 						 list) {
+ 				if (rss->state == IAVF_ADV_RSS_ADD_PENDING) {
++					iavf_print_adv_rss_cfg(KERN_ERR,
++							       adapter, rss,
++							       "Failed to change the input set for",
++							       NULL);
+ 					list_del(&rss->list);
+ 					kfree(rss);
+ 				}
+@@ -1817,9 +1824,14 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		struct iavf_adv_rss *rss;
+ 
+ 		spin_lock_bh(&adapter->adv_rss_lock);
+-		list_for_each_entry(rss, &adapter->adv_rss_list_head, list)
+-			if (rss->state == IAVF_ADV_RSS_ADD_PENDING)
++		list_for_each_entry(rss, &adapter->adv_rss_list_head, list) {
++			if (rss->state == IAVF_ADV_RSS_ADD_PENDING) {
++				iavf_print_adv_rss_cfg(KERN_DEBUG, adapter, rss,
++						       "Input set change for",
++						       "successful");
+ 				rss->state = IAVF_ADV_RSS_ACTIVE;
++			}
++		}
+ 		spin_unlock_bh(&adapter->adv_rss_lock);
+ 		}
+ 		break;
 -- 
 2.31.1
 
