@@ -1,57 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7B83359A7E
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Apr 2021 11:59:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 068F8359AB1
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Apr 2021 12:01:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 33CB460E15;
-	Fri,  9 Apr 2021 09:59:13 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 93AF5402C7;
+	Fri,  9 Apr 2021 10:01:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w2qwWDLAlmvs; Fri,  9 Apr 2021 09:59:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3iJG5Jz8CFiN; Fri,  9 Apr 2021 10:01:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1ACD1607F0;
-	Fri,  9 Apr 2021 09:59:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7B24F40E96;
+	Fri,  9 Apr 2021 10:01:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 48FC71BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B8411BF300
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 10:01:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2FC2B402DE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 079958482C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 10:01:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CIZzPiQd79l8 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Apr 2021 09:59:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lXhTMJblzSbT for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Apr 2021 10:01:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3F47640E94
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:06 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0BEB5611C1;
- Fri,  9 Apr 2021 09:59:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 22B8484828
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 10:01:08 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 344E061289;
+ Fri,  9 Apr 2021 10:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1617962345;
- bh=JQHc71NngkcjmgohfZTxTKQYodA59kNCBc74PtxrA+8=;
+ s=korg; t=1617962467;
+ bh=QJXJaZp1t8B7Gn2SWJTKo5a1MX75+jxDlJbZeUzMPR8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hdWAqgOxvuV50wtIFmXaZLGINpdEq636XF8pEaML/662Fe7h+v7sObJtr1Dtq7viZ
- UGo2c5AxDKCik8jS0z+bkZjyB0QCZCqF2hj+PpocUD8cXiXWkPqz2hMhbkIhBASyyr
- lAJi7KyoXiN2cH3cvE7XwvX3HwsoSy9SuSNMNvy4=
+ b=PUqb9wlz4Uk5L2833h7eMHZW8ExRnD8/sVoQPgqjxhJ1nOFRUB3JScABGp5kGeb+R
+ tga70KyTIFIGNyeRlIfmOujdbK4NGyDZl08LApE/apyY0vRpJ37h96gwXXE+TLWzsh
+ 5k+MU0ZsTwsGgjcl0IDXTtmVx5jxzZGrS888hLso=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: linux-kernel@vger.kernel.org
-Date: Fri,  9 Apr 2021 11:53:44 +0200
-Message-Id: <20210409095305.542546686@linuxfoundation.org>
+Date: Fri,  9 Apr 2021 11:53:52 +0200
+Message-Id: <20210409095306.262914731@linuxfoundation.org>
 X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210409095304.818847860@linuxfoundation.org>
-References: <20210409095304.818847860@linuxfoundation.org>
+In-Reply-To: <20210409095305.397149021@linuxfoundation.org>
+References: <20210409095305.397149021@linuxfoundation.org>
 User-Agent: quilt/0.66
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 5.10 22/41] platform/x86: intel_pmc_core:
+Subject: [Intel-wired-lan] [PATCH 5.11 26/45] platform/x86: intel_pmc_core:
  Ignore GBE LTR on Tiger Lake platforms
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -99,7 +99,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 35 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/platform/x86/intel_pmc_core.c b/drivers/platform/x86/intel_pmc_core.c
-index 3e5fe66333f1..e06b36e87a33 100644
+index ee2f757515b0..b5888aeb4bcf 100644
 --- a/drivers/platform/x86/intel_pmc_core.c
 +++ b/drivers/platform/x86/intel_pmc_core.c
 @@ -863,34 +863,45 @@ static int pmc_core_pll_show(struct seq_file *s, void *unused)
