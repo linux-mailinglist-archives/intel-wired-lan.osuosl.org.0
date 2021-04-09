@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2B4B35951D
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Apr 2021 08:05:14 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7B83359A7E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Apr 2021 11:59:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 869F684A2B;
-	Fri,  9 Apr 2021 06:05:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 33CB460E15;
+	Fri,  9 Apr 2021 09:59:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-BGaVayfPVX; Fri,  9 Apr 2021 06:05:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id w2qwWDLAlmvs; Fri,  9 Apr 2021 09:59:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DA1F8499B;
-	Fri,  9 Apr 2021 06:05:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1ACD1607F0;
+	Fri,  9 Apr 2021 09:59:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 58E051BF349
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 06:04:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 48FC71BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 41A3A40168
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 06:04:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2FC2B402DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YEuOjX5sfSih for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Apr 2021 06:04:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1488040171
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 06:04:56 +0000 (UTC)
-IronPort-SDR: W57WR68T2KjnXxbnBKOcubPUDtr+FG3ozQwhp6BCGTDCytQ6H9fmd8v/QkAq/UmsOVZwyiB96E
- P5qb1ji1Zx5w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9948"; a="173781920"
-X-IronPort-AV: E=Sophos;i="5.82,208,1613462400"; d="scan'208";a="173781920"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2021 23:04:56 -0700
-IronPort-SDR: Sx9fEhNX8h/RCdzL6Iu+wnK+o/pS+HOp8X8Hky6wpLybSJEVBNsXbd2wqw++e3ek1tdawCauOj
- WFiKIzYoinlw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,208,1613462400"; d="scan'208";a="530872156"
-Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 08 Apr 2021 23:04:54 -0700
-Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lUkGE-000GHp-4J; Fri, 09 Apr 2021 06:04:54 +0000
-Date: Fri, 09 Apr 2021 14:04:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <606fee82.J7/Hj1mqRq8YPBMz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id CIZzPiQd79l8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Apr 2021 09:59:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3F47640E94
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Apr 2021 09:59:06 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0BEB5611C1;
+ Fri,  9 Apr 2021 09:59:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1617962345;
+ bh=JQHc71NngkcjmgohfZTxTKQYodA59kNCBc74PtxrA+8=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=hdWAqgOxvuV50wtIFmXaZLGINpdEq636XF8pEaML/662Fe7h+v7sObJtr1Dtq7viZ
+ UGo2c5AxDKCik8jS0z+bkZjyB0QCZCqF2hj+PpocUD8cXiXWkPqz2hMhbkIhBASyyr
+ lAJi7KyoXiN2cH3cvE7XwvX3HwsoSy9SuSNMNvy4=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: linux-kernel@vger.kernel.org
+Date: Fri,  9 Apr 2021 11:53:44 +0200
+Message-Id: <20210409095305.542546686@linuxfoundation.org>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210409095304.818847860@linuxfoundation.org>
+References: <20210409095304.818847860@linuxfoundation.org>
+User-Agent: quilt/0.66
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
- 1831da7ea5bdf5531d78bcf81f526faa4c4375fa
+Subject: [Intel-wired-lan] [PATCH 5.10 22/41] platform/x86: intel_pmc_core:
+ Ignore GBE LTR on Tiger Lake platforms
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,168 +65,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org,
+ Hans de Goede <hdegoede@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ "David E. Box" <david.e.box@linux.intel.com>,
+ Rajneesh Bhardwaj <irenic.rajneesh@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 40GbE
-branch HEAD: 1831da7ea5bdf5531d78bcf81f526faa4c4375fa  ice: fix memory leak of aRFS after resuming from suspend
+From: David E. Box <david.e.box@linux.intel.com>
 
-elapsed time: 725m
+[ Upstream commit d1635448f1105e549b4041aab930dbc6945fc635 ]
 
-configs tested: 139
-configs skipped: 2
+Due to a HW limitation, the Latency Tolerance Reporting (LTR) value
+programmed in the Tiger Lake GBE controller is not large enough to allow
+the platform to enter Package C10, which in turn prevents the platform from
+achieving its low power target during suspend-to-idle.  Ignore the GBE LTR
+value on Tiger Lake. LTR ignore functionality is currently performed solely
+by a debugfs write call. Split out the LTR code into its own function that
+can be called by both the debugfs writer and by this work around.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-i386                             allyesconfig
-mips                         rt305x_defconfig
-um                                allnoconfig
-sh                          urquell_defconfig
-sh                            titan_defconfig
-arm                             ezx_defconfig
-arm                        oxnas_v6_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                 linkstation_defconfig
-arm                            pleb_defconfig
-sh                            migor_defconfig
-mips                       lemote2f_defconfig
-m68k                        m5407c3_defconfig
-arm                            lart_defconfig
-arm                           spitz_defconfig
-arm                         palmz72_defconfig
-arm                         lpc32xx_defconfig
-ia64                             alldefconfig
-powerpc                 mpc832x_mds_defconfig
-powerpc                      ppc6xx_defconfig
-sh                   sh7770_generic_defconfig
-sh                           sh2007_defconfig
-xtensa                  cadence_csp_defconfig
-mips                           ip28_defconfig
-sh                          r7780mp_defconfig
-m68k                        mvme16x_defconfig
-arm                        multi_v5_defconfig
-powerpc                     kmeter1_defconfig
-arc                     nsimosci_hs_defconfig
-arm                        clps711x_defconfig
-xtensa                    xip_kc705_defconfig
-m68k                       bvme6000_defconfig
-h8300                            alldefconfig
-powerpc                 mpc836x_rdk_defconfig
-powerpc                  storcenter_defconfig
-arm                         s5pv210_defconfig
-ia64                         bigsur_defconfig
-arm                         orion5x_defconfig
-m68k                        stmark2_defconfig
-mips                     loongson1b_defconfig
-mips                  decstation_64_defconfig
-um                           x86_64_defconfig
-arc                    vdk_hs38_smp_defconfig
-arm                           u8500_defconfig
-arm                          ixp4xx_defconfig
-sh                  sh7785lcr_32bit_defconfig
-s390                          debug_defconfig
-arm                          pxa3xx_defconfig
-powerpc                           allnoconfig
-arm                            zeus_defconfig
-arm                      footbridge_defconfig
-powerpc                        warp_defconfig
-mips                           ip22_defconfig
-m68k                          multi_defconfig
-sh                          lboxre2_defconfig
-arm                     eseries_pxa_defconfig
-arm64                            alldefconfig
-arm                        realview_defconfig
-x86_64                           alldefconfig
-arm                        mvebu_v7_defconfig
-arm                          collie_defconfig
-powerpc                         ps3_defconfig
-arm                          gemini_defconfig
-arm                          iop32x_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a004-20210408
-x86_64               randconfig-a005-20210408
-x86_64               randconfig-a003-20210408
-x86_64               randconfig-a001-20210408
-x86_64               randconfig-a002-20210408
-x86_64               randconfig-a006-20210408
-i386                 randconfig-a006-20210408
-i386                 randconfig-a003-20210408
-i386                 randconfig-a001-20210408
-i386                 randconfig-a004-20210408
-i386                 randconfig-a005-20210408
-i386                 randconfig-a002-20210408
-i386                 randconfig-a014-20210408
-i386                 randconfig-a016-20210408
-i386                 randconfig-a011-20210408
-i386                 randconfig-a012-20210408
-i386                 randconfig-a013-20210408
-i386                 randconfig-a015-20210408
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a014-20210408
-x86_64               randconfig-a015-20210408
-x86_64               randconfig-a012-20210408
-x86_64               randconfig-a013-20210408
-x86_64               randconfig-a011-20210408
-x86_64               randconfig-a016-20210408
-
+Signed-off-by: David E. Box <david.e.box@linux.intel.com>
+Reviewed-by: Sasha Neftin <sasha.neftin@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Reviewed-by: Rajneesh Bhardwaj <irenic.rajneesh@gmail.com>
+Link: https://lore.kernel.org/r/20210319201844.3305399-2-david.e.box@linux.intel.com
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/platform/x86/intel_pmc_core.c | 50 +++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/platform/x86/intel_pmc_core.c b/drivers/platform/x86/intel_pmc_core.c
+index 3e5fe66333f1..e06b36e87a33 100644
+--- a/drivers/platform/x86/intel_pmc_core.c
++++ b/drivers/platform/x86/intel_pmc_core.c
+@@ -863,34 +863,45 @@ static int pmc_core_pll_show(struct seq_file *s, void *unused)
+ }
+ DEFINE_SHOW_ATTRIBUTE(pmc_core_pll);
+ 
+-static ssize_t pmc_core_ltr_ignore_write(struct file *file,
+-					 const char __user *userbuf,
+-					 size_t count, loff_t *ppos)
++static int pmc_core_send_ltr_ignore(u32 value)
+ {
+ 	struct pmc_dev *pmcdev = &pmc;
+ 	const struct pmc_reg_map *map = pmcdev->map;
+-	u32 val, buf_size, fd;
+-	int err;
+-
+-	buf_size = count < 64 ? count : 64;
+-
+-	err = kstrtou32_from_user(userbuf, buf_size, 10, &val);
+-	if (err)
+-		return err;
++	u32 reg;
++	int err = 0;
+ 
+ 	mutex_lock(&pmcdev->lock);
+ 
+-	if (val > map->ltr_ignore_max) {
++	if (value > map->ltr_ignore_max) {
+ 		err = -EINVAL;
+ 		goto out_unlock;
+ 	}
+ 
+-	fd = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
+-	fd |= (1U << val);
+-	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, fd);
++	reg = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
++	reg |= BIT(value);
++	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, reg);
+ 
+ out_unlock:
+ 	mutex_unlock(&pmcdev->lock);
++
++	return err;
++}
++
++static ssize_t pmc_core_ltr_ignore_write(struct file *file,
++					 const char __user *userbuf,
++					 size_t count, loff_t *ppos)
++{
++	u32 buf_size, value;
++	int err;
++
++	buf_size = min_t(u32, count, 64);
++
++	err = kstrtou32_from_user(userbuf, buf_size, 10, &value);
++	if (err)
++		return err;
++
++	err = pmc_core_send_ltr_ignore(value);
++
+ 	return err == 0 ? count : err;
+ }
+ 
+@@ -1244,6 +1255,15 @@ static int pmc_core_probe(struct platform_device *pdev)
+ 	pmcdev->pmc_xram_read_bit = pmc_core_check_read_lock_bit();
+ 	dmi_check_system(pmc_core_dmi_table);
+ 
++	/*
++	 * On TGL, due to a hardware limitation, the GBE LTR blocks PC10 when
++	 * a cable is attached. Tell the PMC to ignore it.
++	 */
++	if (pmcdev->map == &tgl_reg_map) {
++		dev_dbg(&pdev->dev, "ignoring GBE LTR\n");
++		pmc_core_send_ltr_ignore(3);
++	}
++
+ 	pmc_core_dbgfs_register(pmcdev);
+ 
+ 	device_initialized = true;
+-- 
+2.30.2
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
