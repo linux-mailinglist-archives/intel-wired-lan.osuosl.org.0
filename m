@@ -1,60 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66A4635B1DA
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 07:54:07 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98D8035B217
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 09:03:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2F48A83A5E;
-	Sun, 11 Apr 2021 05:54:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 15ED84028A;
+	Sun, 11 Apr 2021 07:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X4Zi8dKRi5xN; Sun, 11 Apr 2021 05:54:04 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L2TcT1Jpyzpj; Sun, 11 Apr 2021 07:03:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 242BC83A4F;
-	Sun, 11 Apr 2021 05:54:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 763F94028D;
+	Sun, 11 Apr 2021 07:03:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4BD061BF5E0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 05:54:00 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1DB0D1BF2AB
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:03:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 46DFE402A8
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 05:54:00 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 153AF83B39
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:03:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=infradead.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HSp2M7w1fwS6 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 11 Apr 2021 05:53:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c9UI3Y-X6JOM for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Apr 2021 07:03:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7692040299
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 05:53:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=SaNBURFA0COj7csdi3RrmkJ1pw97mCX9cbVvlM/9+g8=; b=bIe+F5I1L6nn9iWW8iQEFhxYaD
- Fuz75mOt8HRpbB44011Fsk4+wkhJ4o7BoEXeCszj2O0XcaBRL/yo1+ifZmveaYVSbyh0Wa/1NI5ZH
- Un+n+36mLmLB1ZM4pYIAqbZv6m09IqwRO/kAlp8RzzGkqziFMmn78lcDKr8R7TBLZmuZblGjoDLcs
- azM/+se24lDreM45gtgDRmHwOWe8zUJ683RZ2NPAJvypulwofA3jdzOVzlqxcvcwQM2yHC2oCK1Pa
- 3burDeVZtLCsJ/GJPltB8yTrovcsTBT4HJ/eW2iTPHCBYUARpolw7SOQKX5zaFQ3NdVvxurcPD5fE
- 0PJmb5jg==;
-Received: from [2601:1c0:6280:3f0::e0e1] (helo=smtpauth.infradead.org)
- by casper.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
- id 1lVT2T-002cUV-HL; Sun, 11 Apr 2021 05:53:43 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Date: Sat, 10 Apr 2021 22:53:35 -0700
-Message-Id: <20210411055335.7111-1-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.26.2
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CA3CB83AD6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:03:08 +0000 (UTC)
+IronPort-SDR: 6hlUicBt9yWGd8SEPRC2e3HNxD2dszlsdcpyKvvtnxU+ZZNDHXT0cS9Px+l1m3ay0sHmMDqh2X
+ a4ban/PAKNkQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="279288287"
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="279288287"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Apr 2021 00:03:07 -0700
+IronPort-SDR: 2nNaNkCfvTe4SQwToiEfKCkRH90xB0OqIvOO0845/5NU5Fs7eZzyYCAfr9WUcF6P5RTtkz5u9R
+ 8mZH3onBiDhQ==
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423336057"
+Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Apr 2021 00:03:05 -0700
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
+ anna.kostyukovsky@intel.com
+References: <20210324080531.2051963-1-sasha.neftin@intel.com>
+From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <439041d0-ec08-0dbe-70dd-c5770c76b1b9@linux.intel.com>
+Date: Sun, 11 Apr 2021 10:03:04 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH RESEND] csky: change a Kconfig symbol name
- to fix e1000 build error
+In-Reply-To: <20210324080531.2051963-1-sasha.neftin@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] igc: Fix overwrites return
+ value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,68 +70,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Guo Ren <guoren@linux.alibaba.com>, Randy Dunlap <rdunlap@infradead.org>,
- Guo Ren <guoren@kernel.org>, intel-wired-lan@lists.osuosl.org,
- linux-csky@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Dan Carpenter <dan.carpenter@oracle.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-e1000's #define of CONFIG_RAM_BASE conflicts with a Kconfig symbol in
-arch/csky/Kconfig.
-The symbol in e1000 has been around longer, so change arch/csky/
-to use DRAM_BASE instead of RAM_BASE to remove the conflict.
-(although e1000 is also a 2-line change)
-
-Now build-tested.
-
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Reported-by: kernel test robot <lkp@intel.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org
-Cc: Guo Ren <guoren@linux.alibaba.com>
-Cc: Guo Ren <guoren@kernel.org>
-Cc: linux-csky@vger.kernel.org
-Acked-by: Guo Ren <guoren@kernel.org>
----
-Andrew, please merge.
-
-v2: Add Acked-by: Guo Ren
-    Has now been build-tested.
-
-IMO "CONFIG_" namespace should belong to Kconfig files, not
-individual drivers, but e1000 isn't the only driver that uses
-CONFIG_ symbols.
-
- arch/csky/Kconfig            |    2 +-
- arch/csky/include/asm/page.h |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
---- linux-next-20210409.orig/arch/csky/include/asm/page.h
-+++ linux-next-20210409/arch/csky/include/asm/page.h
-@@ -28,7 +28,7 @@
- #define SSEG_SIZE	0x20000000
- #define LOWMEM_LIMIT	(SSEG_SIZE * 2)
- 
--#define PHYS_OFFSET_OFFSET (CONFIG_RAM_BASE & (SSEG_SIZE - 1))
-+#define PHYS_OFFSET_OFFSET (CONFIG_DRAM_BASE & (SSEG_SIZE - 1))
- 
- #ifndef __ASSEMBLY__
- 
---- linux-next-20210409.orig/arch/csky/Kconfig
-+++ linux-next-20210409/arch/csky/Kconfig
-@@ -314,7 +314,7 @@ config FORCE_MAX_ZONEORDER
- 	int "Maximum zone order"
- 	default "11"
- 
--config RAM_BASE
-+config DRAM_BASE
- 	hex "DRAM start addr (the same with memory-section in dts)"
- 	default 0x0
- 
+On 24/03/2021 10:05, Sasha Neftin wrote:
+> drivers/net/ethernet/intel/igc/igc_i225.c:235 igc_write_nvm_srwr()
+> warn: loop overwrites return value 'ret_val'
+> 
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_i225.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
