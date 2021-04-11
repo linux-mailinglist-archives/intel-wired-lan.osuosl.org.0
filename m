@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E786435B21B
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 09:09:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3181B35B21E
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 09:15:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 832A183AD6;
-	Sun, 11 Apr 2021 07:09:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C7D648398E;
+	Sun, 11 Apr 2021 07:15:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X3vos4unsJec; Sun, 11 Apr 2021 07:09:47 +0000 (UTC)
+	with ESMTP id RXmhLr-V2SZL; Sun, 11 Apr 2021 07:15:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 81E6F83A8E;
-	Sun, 11 Apr 2021 07:09:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DEF788397A;
+	Sun, 11 Apr 2021 07:15:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D32871BF28C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 53E651BF28C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:15:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CDFBC403A5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3EDE3403B2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:15:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6OyjSypJkuei for <intel-wired-lan@lists.osuosl.org>;
- Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
+ with ESMTP id BkkavyFpWanm for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Apr 2021 07:15:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0F1A3403A3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:41 +0000 (UTC)
-IronPort-SDR: vq8PmBM1hMk47I6pIfK4rxDZR+8LuneC112BSr7Juv2FlJxoZB2hf9S0oJ0bUgb7YMKnr5W6ow
- 8LZApMgfPWyA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="174091259"
-X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="174091259"
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 37481403AA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:15:47 +0000 (UTC)
+IronPort-SDR: YCy2sQ3UC44SuP5rSKNGnGuQtWY4sCIfr9QSFTf4AZkLvsqMi4Qc16sTZ4rokI9TcI5iQ4k71W
+ cRoeZAvTzRKw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="190813845"
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="190813845"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Apr 2021 00:09:41 -0700
-IronPort-SDR: mVAvk9n5N+7iOl28bP1d8xBn4htvP2Kk4GS3c11b9h9iUiv27VwETWOXbi0bQoQEIk/LXkef8z
- 7EjGfMsqlQkA==
-X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423337513"
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Apr 2021 00:15:46 -0700
+IronPort-SDR: jq8oXBOvuZZzSr4whs7E6ScesYihEzk7VHnRxHpVVx3o4dLEXkyaR++rjKtFnd3JuyPTl9t6bV
+ cfYfBxcbyiFQ==
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423338900"
 Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
  ([10.12.48.255])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Apr 2021 00:09:39 -0700
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ 11 Apr 2021 00:15:45 -0700
+To: Ederson de Souza <ederson.desouza@intel.com>,
  intel-wired-lan@lists.osuosl.org
-References: <20210326003834.3886241-1-jesse.brandeburg@intel.com>
- <20210326003834.3886241-5-jesse.brandeburg@intel.com>
+References: <20210219013104.54436-1-ederson.desouza@intel.com>
+ <20210219013104.54436-2-ederson.desouza@intel.com>
 From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
-Message-ID: <e290e053-5118-1357-f4e5-6744be7fcc8e@linux.intel.com>
-Date: Sun, 11 Apr 2021 10:09:37 +0300
+Message-ID: <771f5092-3762-4312-0760-c9e709c96ee7@linux.intel.com>
+Date: Sun, 11 Apr 2021 10:15:44 +0300
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210326003834.3886241-5-jesse.brandeburg@intel.com>
+In-Reply-To: <20210219013104.54436-2-ederson.desouza@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 04/11] igb/igc: use
- strongly typed pointer
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 1/2] igc: Enable
+ internal i225 PPS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,38 +76,25 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 26/03/2021 03:38, Jesse Brandeburg wrote:
-> The igb and igc driver both use a trick of creating a local type
-> pointer on the stack to ease dealing with a receive descriptor in
-> 64 bit chunks for printing.  Sparse however was not taken into
-> account and receive descriptors are always in little endian
-> order, so just make the unions use __le64 instead of u64.
+On 19/02/2021 03:31, Ederson de Souza wrote:
+> The i225 device can produce one interrupt on the full second, much
+> like i210 - from where this patch is inspired.
 > 
-> No functional change.
+> This patch sets up the full second interruption on the i225 and when
+> receiving it, it sends a PPS event to PTP (Precision Time Protocol)
+> kernel subsystem.
 > 
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> The PTP subsystem exposes the PPS events via ioctl and sysfs, and one
+> can use the `testptp` tool (tools/testing/selftests/ptp) to check that
+> the events are being generated.
+> 
+> Signed-off-by: Ederson de Souza <ederson.desouza@intel.com>
 > ---
-> Warning Detail:
->    CHECK   .../igb/igb_main.c
-> .../igb/igb_main.c:442:25: warning: cast to restricted __le64
-> .../igb/igb_main.c:442:25: warning: cast to restricted __le64
-> .../igb/igb_main.c:522:33: warning: cast to restricted __le64
-> .../igb/igb_main.c:522:33: warning: cast to restricted __le64
-> .../igb/igb_main.c:528:33: warning: cast to restricted __le64
-> .../igb/igb_main.c:528:33: warning: cast to restricted __le64
->    CHECK   .../igc/igc_dump.c
-> .../igc/igc_dump.c:192:40: warning: cast to restricted __le64
-> .../igc/igc_dump.c:193:37: warning: cast to restricted __le64
-> .../igc/igc_dump.c:275:45: warning: cast to restricted __le64
-> .../igc/igc_dump.c:276:45: warning: cast to restricted __le64
-> .../igc/igc_dump.c:281:45: warning: cast to restricted __le64
-> .../igc/igc_dump.c:282:45: warning: cast to restricted __le64
-> ---
->   drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
->   drivers/net/ethernet/intel/igc/igc_dump.c | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   drivers/net/ethernet/intel/igc/igc.h      |  2 ++
+>   drivers/net/ethernet/intel/igc/igc_main.c |  8 +++++++
+>   drivers/net/ethernet/intel/igc/igc_ptp.c  | 28 ++++++++++++++++++++++-
+>   3 files changed, 37 insertions(+), 1 deletion(-)
 > 
-Tested for igc
 Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
