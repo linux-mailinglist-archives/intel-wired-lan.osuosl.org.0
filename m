@@ -2,61 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C961B35B218
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 09:04:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E786435B21B
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Apr 2021 09:09:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4D78683AD2;
-	Sun, 11 Apr 2021 07:04:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 832A183AD6;
+	Sun, 11 Apr 2021 07:09:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id amslmQR-Hsxf; Sun, 11 Apr 2021 07:04:56 +0000 (UTC)
+	with ESMTP id X3vos4unsJec; Sun, 11 Apr 2021 07:09:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5222083A9D;
-	Sun, 11 Apr 2021 07:04:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 81E6F83A8E;
+	Sun, 11 Apr 2021 07:09:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 24E761BF28C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:04:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D32871BF28C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1371A4028D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:04:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CDFBC403A5
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yZLP90snJT9R for <intel-wired-lan@lists.osuosl.org>;
- Sun, 11 Apr 2021 07:04:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6OyjSypJkuei for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Apr 2021 07:09:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 715634028A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:04:51 +0000 (UTC)
-IronPort-SDR: HkfGgB4cINWarC8YBEadf1LsEnhgQ1kmWosljoOzoo6cXJZuPrGJ9UgYstgtZ+4hScLa6Y0iRt
- aGGGMIijIepA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="194032642"
-X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="194032642"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F1A3403A3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Apr 2021 07:09:41 +0000 (UTC)
+IronPort-SDR: vq8PmBM1hMk47I6pIfK4rxDZR+8LuneC112BSr7Juv2FlJxoZB2hf9S0oJ0bUgb7YMKnr5W6ow
+ 8LZApMgfPWyA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9950"; a="174091259"
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="174091259"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Apr 2021 00:04:50 -0700
-IronPort-SDR: C2dW9du3AJ1jJoVsArrPO9MLpXiIuRR2opweMi5ke3Ocx7ASP5PQNYtya5LJrTonsDmzHoIwnK
- 2baET/dY0z0Q==
-X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423336461"
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Apr 2021 00:09:41 -0700
+IronPort-SDR: mVAvk9n5N+7iOl28bP1d8xBn4htvP2Kk4GS3c11b9h9iUiv27VwETWOXbi0bQoQEIk/LXkef8z
+ 7EjGfMsqlQkA==
+X-IronPort-AV: E=Sophos;i="5.82,213,1613462400"; d="scan'208";a="423337513"
 Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
  ([10.12.48.255])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Apr 2021 00:04:48 -0700
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
- anna.kostyukovsky@intel.com
-References: <20210324131525.2196955-1-sasha.neftin@intel.com>
+ 11 Apr 2021 00:09:39 -0700
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20210326003834.3886241-1-jesse.brandeburg@intel.com>
+ <20210326003834.3886241-5-jesse.brandeburg@intel.com>
 From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
-Message-ID: <b42f9d98-d18c-eebd-291a-eb83e90219fb@linux.intel.com>
-Date: Sun, 11 Apr 2021 10:04:47 +0300
+Message-ID: <e290e053-5118-1357-f4e5-6744be7fcc8e@linux.intel.com>
+Date: Sun, 11 Apr 2021 10:09:37 +0300
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210324131525.2196955-1-sasha.neftin@intel.com>
+In-Reply-To: <20210326003834.3886241-5-jesse.brandeburg@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Expose LPI counters
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 04/11] igb/igc: use
+ strongly typed pointer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,17 +76,38 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 24/03/2021 15:15, Sasha Neftin wrote:
-> Expose EEE tx and rx low power idle counters via ethtool
-> A EEE TX or RX LPI event occurs when the transmitter or the receiver
-> enters EEE (IEEE802.3az) LPI state.
-> ethtool --statistics <iface>
+On 26/03/2021 03:38, Jesse Brandeburg wrote:
+> The igb and igc driver both use a trick of creating a local type
+> pointer on the stack to ease dealing with a receive descriptor in
+> 64 bit chunks for printing.  Sparse however was not taken into
+> account and receive descriptors are always in little endian
+> order, so just make the unions use __le64 instead of u64.
 > 
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> No functional change.
+> 
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 > ---
->   drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 ++
->   1 file changed, 2 insertions(+)
+> Warning Detail:
+>    CHECK   .../igb/igb_main.c
+> .../igb/igb_main.c:442:25: warning: cast to restricted __le64
+> .../igb/igb_main.c:442:25: warning: cast to restricted __le64
+> .../igb/igb_main.c:522:33: warning: cast to restricted __le64
+> .../igb/igb_main.c:522:33: warning: cast to restricted __le64
+> .../igb/igb_main.c:528:33: warning: cast to restricted __le64
+> .../igb/igb_main.c:528:33: warning: cast to restricted __le64
+>    CHECK   .../igc/igc_dump.c
+> .../igc/igc_dump.c:192:40: warning: cast to restricted __le64
+> .../igc/igc_dump.c:193:37: warning: cast to restricted __le64
+> .../igc/igc_dump.c:275:45: warning: cast to restricted __le64
+> .../igc/igc_dump.c:276:45: warning: cast to restricted __le64
+> .../igc/igc_dump.c:281:45: warning: cast to restricted __le64
+> .../igc/igc_dump.c:282:45: warning: cast to restricted __le64
+> ---
+>   drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+>   drivers/net/ethernet/intel/igc/igc_dump.c | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 > 
+Tested for igc
 Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
