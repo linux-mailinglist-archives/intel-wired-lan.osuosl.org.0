@@ -1,71 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C51B35C8B7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Apr 2021 16:29:14 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C733B35C90C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Apr 2021 16:41:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 105834030E;
-	Mon, 12 Apr 2021 14:29:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3657F60A9D;
+	Mon, 12 Apr 2021 14:41:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id we0LWGf6KFQR; Mon, 12 Apr 2021 14:29:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bMHstMNIHCum; Mon, 12 Apr 2021 14:41:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7677040213;
-	Mon, 12 Apr 2021 14:29:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1DEA160A98;
+	Mon, 12 Apr 2021 14:41:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 05B811BF3B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:29:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BF4171BF5D7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 008F860598
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:29:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B9AE340486
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EYyCMfJwvfJs for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Apr 2021 14:29:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ejlZ31VzMd9z for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Apr 2021 14:41:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A7B64600D1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:29:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618237743;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xjo5kMEcOV1z9+BzuqEgvJE6ZWi5lpu660nuRfke06w=;
- b=X0H2APc1ysWTKF1oI4Xh/7TvFKyz52adARDIPNw3iR0Ct6+x+Sk4e+ld9lnOjrJwivXxKH
- an2frS6kFyivZ0l6oLn2pl/sKqv1kvwE8/0Og8qEHzSitoVlZlaNWFP3SrnBp5s5NwrldM
- x5DbJ03z/cskjgRVG2n0qI6vnAjWhz4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-110-9Ud_nq_jNk-bs-OnKUU5Cg-1; Mon, 12 Apr 2021 10:28:58 -0400
-X-MC-Unique: 9Ud_nq_jNk-bs-OnKUU5Cg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 769439F92C;
- Mon, 12 Apr 2021 14:28:56 +0000 (UTC)
-Received: from carbon (unknown [10.36.110.19])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0FF3D5D6B1;
- Mon, 12 Apr 2021 14:28:48 +0000 (UTC)
-Date: Mon, 12 Apr 2021 16:28:46 +0200
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20210412162846.42706d99@carbon>
-In-Reply-To: <20210412101713.15161-1-kurt@linutronix.de>
-References: <20210412101713.15161-1-kurt@linutronix.de>
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C6A334047F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:24 +0000 (UTC)
+IronPort-SDR: OryAYRUjKhM/MJETKrJDywGikeAu9t60QZ42JMdMSY/TiKApssfy/KVVUXJ0Nv+QYowdRIdaHv
+ bPbPOZnOWvIQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="193767847"
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="193767847"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2021 07:41:23 -0700
+IronPort-SDR: 5e9fEAXRlwPrGBWZdpx4+kzu7T5X3DXRCaBbAHj3jyuYn5I11mvGkbGIeQBJov2PMLvUOAgrp6
+ G6IodYiPACaA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="531900864"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by orsmga004.jf.intel.com with ESMTP; 12 Apr 2021 07:41:12 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	dvorax.fuxbrumer@linux.intel.com
+Date: Mon, 12 Apr 2021 17:41:07 +0300
+Message-Id: <20210412144107.3659411-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Subject: Re: [Intel-wired-lan] [PATCH RFC net] igb: Fix XDP with PTP enabled
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Update driver to use
+ ethtool_sprintf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,243 +65,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Alexei Starovoitov <ast@kernel.org>, brouer@redhat.com,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Alexander Duyck <alexanderduyck@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Complete to commit c8d4725e985d ("intel: Update drivers to use
+ethtool_sprintf")
+Update the igc driver to make use of ethtool_sprintf. The general idea
+is to reduce code size and overhead by replacing the repeated pattern of
+string printf statements and ETH_STRING_LEN counter increments.
 
-On Mon, 12 Apr 2021 12:17:13 +0200
-Kurt Kanzenbach <kurt@linutronix.de> wrote:
+Suggested-by: Alexander Duyck <alexanderduyck@fb.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 40 +++++++-------------
+ 1 file changed, 14 insertions(+), 26 deletions(-)
 
-> When using native XDP with the igb driver, the XDP frame data doesn't point to
-> the beginning of the packet. It's off by 16 bytes. Everything works as expected
-> with XDP skb mode.
-> 
-> Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
-> the timestamp before executing any XDP operations and adjust all other code
-> accordingly. The igc driver does it like that as well.
-
-(Cc. Alexander Duyck)
-
-Do we have enough room for the packet page-split tricks when these 16
-bytes are added?
-
-AFAIK this driver like ixgbe+i40e split the page in two 2048 bytes packets.
-
- The XDP headroom is reduced to 192 bytes.
- The skb_shared_info is 320 bytes in size.
-
-2048-192-320 = 1536 bytes
-
- MTU(L3) 1500
- Ethernet (L2) headers 14 bytes
- VLAN 4 bytes, but Q-in-Q vlan 8 bytes.
-
-Single VLAN: 1536-1500-14-4 = 18 bytes left
-Q-in-q VLAN: 1536-1500-14-8 = 14 bytes left
-
-
-> Tested with Intel i210 card and AF_XDP sockets.
-> 
-> Fixes: 9cbc948b5a20 ("igb: add XDP support")
-> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
-> ---
->  drivers/net/ethernet/intel/igb/igb.h      |  3 +-
->  drivers/net/ethernet/intel/igb/igb_main.c | 45 ++++++++++++-----------
->  drivers/net/ethernet/intel/igb/igb_ptp.c  | 18 ++++-----
->  3 files changed, 32 insertions(+), 34 deletions(-)
-
-(no comments on code below, but kept it if Alex need to see it)
-
-> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-> index 7bda8c5edea5..72cf967c1a00 100644
-> --- a/drivers/net/ethernet/intel/igb/igb.h
-> +++ b/drivers/net/ethernet/intel/igb/igb.h
-> @@ -748,8 +748,7 @@ void igb_ptp_suspend(struct igb_adapter *adapter);
->  void igb_ptp_rx_hang(struct igb_adapter *adapter);
->  void igb_ptp_tx_hang(struct igb_adapter *adapter);
->  void igb_ptp_rx_rgtstamp(struct igb_q_vector *q_vector, struct sk_buff *skb);
-> -int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
-> -			struct sk_buff *skb);
-> +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va);
->  int igb_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
->  int igb_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
->  void igb_set_flag_queue_pairs(struct igb_adapter *, const u32);
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index a45cd2b416c8..8fab55fd18fc 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -8281,7 +8281,7 @@ static void igb_add_rx_frag(struct igb_ring *rx_ring,
->  static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
->  					 struct igb_rx_buffer *rx_buffer,
->  					 struct xdp_buff *xdp,
-> -					 union e1000_adv_rx_desc *rx_desc)
-> +					 ktime_t timestamp)
->  {
->  #if (PAGE_SIZE < 8192)
->  	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
-> @@ -8301,12 +8301,8 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
->  	if (unlikely(!skb))
->  		return NULL;
->  
-> -	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
-> -		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, xdp->data, skb)) {
-> -			xdp->data += IGB_TS_HDR_LEN;
-> -			size -= IGB_TS_HDR_LEN;
-> -		}
-> -	}
-> +	if (timestamp)
-> +		skb_hwtstamps(skb)->hwtstamp = timestamp;
->  
->  	/* Determine available headroom for copy */
->  	headlen = size;
-> @@ -8337,7 +8333,7 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
->  static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
->  				     struct igb_rx_buffer *rx_buffer,
->  				     struct xdp_buff *xdp,
-> -				     union e1000_adv_rx_desc *rx_desc)
-> +				     ktime_t timestamp)
->  {
->  #if (PAGE_SIZE < 8192)
->  	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
-> @@ -8364,11 +8360,8 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
->  	if (metasize)
->  		skb_metadata_set(skb, metasize);
->  
-> -	/* pull timestamp out of packet data */
-> -	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-> -		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, skb->data, skb))
-> -			__skb_pull(skb, IGB_TS_HDR_LEN);
-> -	}
-> +	if (timestamp)
-> +		skb_hwtstamps(skb)->hwtstamp = timestamp;
->  
->  	/* update buffer offset */
->  #if (PAGE_SIZE < 8192)
-> @@ -8683,7 +8676,10 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
->  	while (likely(total_packets < budget)) {
->  		union e1000_adv_rx_desc *rx_desc;
->  		struct igb_rx_buffer *rx_buffer;
-> +		ktime_t timestamp = 0;
-> +		int pkt_offset = 0;
->  		unsigned int size;
-> +		void *pktbuf;
->  
->  		/* return some buffers to hardware, one at a time is too slow */
->  		if (cleaned_count >= IGB_RX_BUFFER_WRITE) {
-> @@ -8703,15 +8699,21 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
->  		dma_rmb();
->  
->  		rx_buffer = igb_get_rx_buffer(rx_ring, size, &rx_buf_pgcnt);
-> +		pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
-> +
-> +		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-> +			timestamp = igb_ptp_rx_pktstamp(rx_ring->q_vector,
-> +							pktbuf);
-> +			pkt_offset += IGB_TS_HDR_LEN;
-> +			size -= IGB_TS_HDR_LEN;
-> +		}
->  
->  		/* retrieve a buffer from the ring */
->  		if (!skb) {
-> -			unsigned int offset = igb_rx_offset(rx_ring);
-> -			unsigned char *hard_start;
-> -
-> -			hard_start = page_address(rx_buffer->page) +
-> -				     rx_buffer->page_offset - offset;
-> -			xdp_prepare_buff(&xdp, hard_start, offset, size, true);
-> +			xdp.data = pktbuf + pkt_offset;
-> +			xdp.data_end = xdp.data + size;
-> +			xdp.data_meta = xdp.data;
-> +			xdp.data_hard_start = pktbuf - igb_rx_offset(rx_ring);
->  #if (PAGE_SIZE > 4096)
->  			/* At larger PAGE_SIZE, frame_sz depend on len size */
->  			xdp.frame_sz = igb_rx_frame_truesize(rx_ring, size);
-> @@ -8733,10 +8735,11 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
->  		} else if (skb)
->  			igb_add_rx_frag(rx_ring, rx_buffer, skb, size);
->  		else if (ring_uses_build_skb(rx_ring))
-> -			skb = igb_build_skb(rx_ring, rx_buffer, &xdp, rx_desc);
-> +			skb = igb_build_skb(rx_ring, rx_buffer, &xdp,
-> +					    timestamp);
->  		else
->  			skb = igb_construct_skb(rx_ring, rx_buffer,
-> -						&xdp, rx_desc);
-> +						&xdp, timestamp);
->  
->  		/* exit if we failed to retrieve a buffer */
->  		if (!skb) {
-> diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
-> index 86a576201f5f..0cbdf48285d3 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
-> @@ -863,23 +863,22 @@ static void igb_ptp_tx_hwtstamp(struct igb_adapter *adapter)
->   * igb_ptp_rx_pktstamp - retrieve Rx per packet timestamp
->   * @q_vector: Pointer to interrupt specific structure
->   * @va: Pointer to address containing Rx buffer
-> - * @skb: Buffer containing timestamp and packet
->   *
->   * This function is meant to retrieve a timestamp from the first buffer of an
->   * incoming frame.  The value is stored in little endian format starting on
->   * byte 8
->   *
-> - * Returns: 0 if success, nonzero if failure
-> + * Returns: 0 on failure, timestamp on success
->   **/
-> -int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
-> -			struct sk_buff *skb)
-> +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
->  {
->  	struct igb_adapter *adapter = q_vector->adapter;
-> +	struct skb_shared_hwtstamps ts;
->  	__le64 *regval = (__le64 *)va;
->  	int adjust = 0;
->  
->  	if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
-> -		return IGB_RET_PTP_DISABLED;
-> +		return 0;
->  
->  	/* The timestamp is recorded in little endian format.
->  	 * DWORD: 0        1        2        3
-> @@ -888,10 +887,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
->  
->  	/* check reserved dwords are zero, be/le doesn't matter for zero */
->  	if (regval[0])
-> -		return IGB_RET_PTP_INVALID;
-> +		return 0;
->  
-> -	igb_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb),
-> -				   le64_to_cpu(regval[1]));
-> +	igb_ptp_systim_to_hwtstamp(adapter, &ts, le64_to_cpu(regval[1]));
->  
->  	/* adjust timestamp for the RX latency based on link speed */
->  	if (adapter->hw.mac.type == e1000_i210) {
-> @@ -907,10 +905,8 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
->  			break;
->  		}
->  	}
-> -	skb_hwtstamps(skb)->hwtstamp =
-> -		ktime_sub_ns(skb_hwtstamps(skb)->hwtstamp, adjust);
->  
-> -	return 0;
-> +	return ktime_sub_ns(ts.hwtstamp, adjust);
->  }
->  
->  /**
-
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 2cb12431c371..744e979b94d2 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -765,35 +765,23 @@ static void igc_ethtool_get_strings(struct net_device *netdev, u32 stringset,
+ 		       IGC_TEST_LEN * ETH_GSTRING_LEN);
+ 		break;
+ 	case ETH_SS_STATS:
+-		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++) {
+-			memcpy(p, igc_gstrings_stats[i].stat_string,
+-			       ETH_GSTRING_LEN);
+-			p += ETH_GSTRING_LEN;
+-		}
+-		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++) {
+-			memcpy(p, igc_gstrings_net_stats[i].stat_string,
+-			       ETH_GSTRING_LEN);
+-			p += ETH_GSTRING_LEN;
+-		}
++		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++)
++			ethtool_sprintf(&p,
++					igc_gstrings_stats[i].stat_string);
++		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++)
++			ethtool_sprintf(&p,
++					igc_gstrings_net_stats[i].stat_string);
+ 		for (i = 0; i < adapter->num_tx_queues; i++) {
+-			sprintf(p, "tx_queue_%u_packets", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "tx_queue_%u_bytes", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "tx_queue_%u_restart", i);
+-			p += ETH_GSTRING_LEN;
++			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
++			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
++			ethtool_sprintf(&p, "tx_queue_%u_restart", i);
+ 		}
+ 		for (i = 0; i < adapter->num_rx_queues; i++) {
+-			sprintf(p, "rx_queue_%u_packets", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "rx_queue_%u_bytes", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "rx_queue_%u_drops", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "rx_queue_%u_csum_err", i);
+-			p += ETH_GSTRING_LEN;
+-			sprintf(p, "rx_queue_%u_alloc_failed", i);
+-			p += ETH_GSTRING_LEN;
++			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
++			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
++			ethtool_sprintf(&p, "rx_queue_%u_drops", i);
++			ethtool_sprintf(&p, "rx_queue_%u_csum_err", i);
++			ethtool_sprintf(&p, "rx_queue_%u_alloc_failed", i);
+ 		}
+ 		/* BUG_ON(p - data != IGC_STATS_LEN * ETH_GSTRING_LEN); */
+ 		break;
 -- 
-Best regards,
-  Jesper Dangaard Brouer
-  MSc.CS, Principal Kernel Engineer at Red Hat
-  LinkedIn: http://www.linkedin.com/in/brouer
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
