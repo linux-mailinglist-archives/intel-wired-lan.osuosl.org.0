@@ -1,58 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C733B35C90C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Apr 2021 16:41:35 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AA4A35C90E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Apr 2021 16:41:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3657F60A9D;
-	Mon, 12 Apr 2021 14:41:34 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C8EAC40443;
+	Mon, 12 Apr 2021 14:41:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bMHstMNIHCum; Mon, 12 Apr 2021 14:41:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N9b4jR3cC6Zt; Mon, 12 Apr 2021 14:41:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1DEA160A98;
-	Mon, 12 Apr 2021 14:41:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 98A3F40421;
+	Mon, 12 Apr 2021 14:41:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BF4171BF5D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 21F071BF5D7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B9AE340486
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 04FAA83B5F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ejlZ31VzMd9z for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Apr 2021 14:41:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4_SVZbzSgs1m for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Apr 2021 14:41:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C6A334047F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:24 +0000 (UTC)
-IronPort-SDR: OryAYRUjKhM/MJETKrJDywGikeAu9t60QZ42JMdMSY/TiKApssfy/KVVUXJ0Nv+QYowdRIdaHv
- bPbPOZnOWvIQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="193767847"
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="193767847"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2021 07:41:23 -0700
-IronPort-SDR: 5e9fEAXRlwPrGBWZdpx4+kzu7T5X3DXRCaBbAHj3jyuYn5I11mvGkbGIeQBJov2PMLvUOAgrp6
- G6IodYiPACaA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="531900864"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by orsmga004.jf.intel.com with ESMTP; 12 Apr 2021 07:41:12 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	dvorax.fuxbrumer@linux.intel.com
-Date: Mon, 12 Apr 2021 17:41:07 +0300
-Message-Id: <20210412144107.3659411-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9360383AB5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Apr 2021 14:41:37 +0000 (UTC)
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FJrvf4tJjzPqcC;
+ Mon, 12 Apr 2021 22:38:38 +0800 (CST)
+Received: from localhost (10.174.242.151) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.498.0; Mon, 12 Apr 2021
+ 22:41:22 +0800
+From: wangyunjian <wangyunjian@huawei.com>
+To: <kuba@kernel.org>, <davem@davemloft.net>
+Date: Mon, 12 Apr 2021 22:41:18 +0800
+Message-ID: <1618238478-18068-1-git-send-email-wangyunjian@huawei.com>
+X-Mailer: git-send-email 1.9.5.msysgit.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Update driver to use
- ethtool_sprintf
+X-Originating-IP: [10.174.242.151]
+X-CFilter-Loop: Reflected
+Subject: [Intel-wired-lan] [PATCH net] i40e: Fix use-after-free in
+ i40e_client_subtask()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,80 +59,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexander Duyck <alexanderduyck@fb.com>
+Cc: netdev@vger.kernel.org, Yunjian Wang <wangyunjian@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, dingxiaoxiong@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Complete to commit c8d4725e985d ("intel: Update drivers to use
-ethtool_sprintf")
-Update the igc driver to make use of ethtool_sprintf. The general idea
-is to reduce code size and overhead by replacing the repeated pattern of
-string printf statements and ETH_STRING_LEN counter increments.
+From: Yunjian Wang <wangyunjian@huawei.com>
 
-Suggested-by: Alexander Duyck <alexanderduyck@fb.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Currently the call to i40e_client_del_instance frees the object
+pf->cinst, however pf->cinst->lan_info is being accessed after
+the free. Fix this by adding the missing return.
+
+Addresses-Coverity: ("Read from pointer after free")
+Fixes: 7b0b1a6d0ac9 ("i40e: Disable iWARP VSI PETCP_ENA flag on netdev down events")
+Signed-off-by: Yunjian Wang <wangyunjian@huawei.com>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 40 +++++++-------------
- 1 file changed, 14 insertions(+), 26 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_client.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 2cb12431c371..744e979b94d2 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -765,35 +765,23 @@ static void igc_ethtool_get_strings(struct net_device *netdev, u32 stringset,
- 		       IGC_TEST_LEN * ETH_GSTRING_LEN);
- 		break;
- 	case ETH_SS_STATS:
--		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++) {
--			memcpy(p, igc_gstrings_stats[i].stat_string,
--			       ETH_GSTRING_LEN);
--			p += ETH_GSTRING_LEN;
--		}
--		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++) {
--			memcpy(p, igc_gstrings_net_stats[i].stat_string,
--			       ETH_GSTRING_LEN);
--			p += ETH_GSTRING_LEN;
--		}
-+		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					igc_gstrings_stats[i].stat_string);
-+		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++)
-+			ethtool_sprintf(&p,
-+					igc_gstrings_net_stats[i].stat_string);
- 		for (i = 0; i < adapter->num_tx_queues; i++) {
--			sprintf(p, "tx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "tx_queue_%u_restart", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-+			ethtool_sprintf(&p, "tx_queue_%u_restart", i);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
+index a2dba32383f6..32f3facbed1a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_client.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
+@@ -375,6 +375,7 @@ void i40e_client_subtask(struct i40e_pf *pf)
+ 				clear_bit(__I40E_CLIENT_INSTANCE_OPENED,
+ 					  &cdev->state);
+ 				i40e_client_del_instance(pf);
++				return;
+ 			}
  		}
- 		for (i = 0; i < adapter->num_rx_queues; i++) {
--			sprintf(p, "rx_queue_%u_packets", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_bytes", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_drops", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_csum_err", i);
--			p += ETH_GSTRING_LEN;
--			sprintf(p, "rx_queue_%u_alloc_failed", i);
--			p += ETH_GSTRING_LEN;
-+			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_drops", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_csum_err", i);
-+			ethtool_sprintf(&p, "rx_queue_%u_alloc_failed", i);
- 		}
- 		/* BUG_ON(p - data != IGC_STATS_LEN * ETH_GSTRING_LEN); */
- 		break;
+ 	}
 -- 
-2.25.1
+2.23.0
 
 _______________________________________________
 Intel-wired-lan mailing list
