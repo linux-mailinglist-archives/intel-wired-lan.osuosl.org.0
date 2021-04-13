@@ -1,61 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 772BD35E3D7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 18:26:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1027335E5C1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 19:58:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF031844F5;
-	Tue, 13 Apr 2021 16:26:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A8E9C60C1E;
+	Tue, 13 Apr 2021 17:58:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZTeZ3dOzgM0c; Tue, 13 Apr 2021 16:26:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1iMER3VB94FS; Tue, 13 Apr 2021 17:58:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D1099844DF;
-	Tue, 13 Apr 2021 16:26:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A44560C16;
+	Tue, 13 Apr 2021 17:58:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4732F1BF4D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 16:26:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E99751BF94D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3327040115
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 16:26:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D7065405EC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6Aac5hG5Qvvb for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Apr 2021 16:26:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BB3A9400E1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 16:26:37 +0000 (UTC)
-IronPort-SDR: 6dy5omNPRdCf8yEfehV6nq2wHx6qPuV3e06WxR9mHOQBlMskRK4DnNLSv9MA1LxLTieFN9OC6V
- ST81jDMnMUwQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9953"; a="255768485"
-X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="255768485"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2021 09:18:14 -0700
-IronPort-SDR: Jzr+S+le5B4GUu2EQyxbXU3HDtawIzY+OyQ3xLADIAL2ivTY0OdI80xwzRmJf+X6sUAh0+Jpqv
- lf+q961xqT/g==
-X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="452023243"
-Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
- ([10.209.118.40])
- by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2021 09:18:13 -0700
-Date: Tue, 13 Apr 2021 09:18:12 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: kerneljasonxing@gmail.com
-Message-ID: <20210413091812.0000383d@intel.com>
-In-Reply-To: <20210413025011.1251-1-kerneljasonxing@gmail.com>
-References: <20210412065759.2907-1-kerneljasonxing@gmail.com>
- <20210413025011.1251-1-kerneljasonxing@gmail.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=linutronix.de header.b="2ls2iDkJ";
+ dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
+ header.d=linutronix.de header.b="cvPB+KjZ"
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k5WmfUeuEj3c for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
+X-Greylist: delayed 09:46:11 by SQLgrey-1.8.0
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EA66640E58
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:05 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1618334461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/FIguiC0JpPqnEHwTEVTe/PehrMSgAq174+EKyhr82I=;
+ b=2ls2iDkJEgxLT8BBbuxpsz+mBg1wpRLaZvIiJwhFSRwgoiRMRnJzbT0sYoJa4inNSgR7n+
+ yUBE8eyjM1W4GLKVGy2FAZbaqa99UbF2JxojJdoSpuVrV+Lgu3IpVtB0uw71Bb/TdOs0lH
+ lj+1e99uaxO9VNKrRsD3NzbXge6FqqhohbcsoUHjPXr+qj7ED0Pofah6oLDFDg2JYcgqwD
+ mQDojXqvWnX1rlEtXGPBu0JZRmSWr345WSwhsX+zYTuxXSBbAzGtaeCOolXeXbgsMSo5n2
+ YoVytbBJ6VCsPsJ9spHa95w6rfgnfj40aRiyEFkhM88KW948okBz7aQPZev+Hg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1618334461;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/FIguiC0JpPqnEHwTEVTe/PehrMSgAq174+EKyhr82I=;
+ b=cvPB+KjZ1ydaw7+/5jmL7AtRi2v45vBIWXzrEbqnaXnlvGRBOeJQzWM2dzpHFR670qb0/5
+ pSegCUAMuXU7XPCg==
+To: Alexander Duyck <alexander.duyck@gmail.com>,
+ Jesper Dangaard Brouer <brouer@redhat.com>
+In-Reply-To: <CAKgT0UekqPNQxV6PzpEeis69z3e3YNcaFyot=nD7w26hLxPX2Q@mail.gmail.com>
+References: <20210412101713.15161-1-kurt@linutronix.de>
+ <20210412162846.42706d99@carbon>
+ <CAKgT0UekqPNQxV6PzpEeis69z3e3YNcaFyot=nD7w26hLxPX2Q@mail.gmail.com>
+Date: Tue, 13 Apr 2021 19:21:00 +0200
+Message-ID: <87fszuyubn.fsf@kurt>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: fix the panic when
- running bpf in xdpdrv mode
+X-Mailman-Approved-At: Tue, 13 Apr 2021 17:58:38 +0000
+Subject: Re: [Intel-wired-lan] [PATCH RFC net] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,75 +79,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: songliubraving@fb.com, kafai@fb.com, hawk@kernel.org, daniel@iogearbox.net,
- netdev@vger.kernel.org, ast@kernel.org, andrii@kernel.org,
- Shujin Li <lishujin@kuaishou.com>, yhs@fb.com, kpsingh@kernel.org,
- kuba@kernel.org, bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- davem@davemloft.net, linux-kernel@vger.kernel.org,
- Jason Xing <xingwanli@kuaishou.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============4925421365699620633=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-kerneljasonxing@gmail.com wrote:
+--===============4925421365699620633==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-> From: Jason Xing <xingwanli@kuaishou.com>
+--=-=-=
+Content-Type: text/plain
 
-Hi Jason,
+On Tue Apr 13 2021, Alexander Duyck wrote:
+> On Mon, Apr 12, 2021 at 7:29 AM Jesper Dangaard Brouer
+> <brouer@redhat.com> wrote:
+>> > +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
+>> >  {
+>> >       struct igb_adapter *adapter = q_vector->adapter;
+>> > +     struct skb_shared_hwtstamps ts;
+>> >       __le64 *regval = (__le64 *)va;
+>> >       int adjust = 0;
+>> >
+>> >       if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
+>> > -             return IGB_RET_PTP_DISABLED;
+>> > +             return 0;
+>> >
+>> >       /* The timestamp is recorded in little endian format.
+>> >        * DWORD: 0        1        2        3
+>> > @@ -888,10 +887,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+>> >
+>> >       /* check reserved dwords are zero, be/le doesn't matter for zero */
+>> >       if (regval[0])
+>> > -             return IGB_RET_PTP_INVALID;
+>> > +             return 0;
+>> >
+>
+> One thing that needs to be cleaned up in the patch is that if it is
+> going to drop these return values it should probably drop the defines
+> for them since I don't think they are used anywhere else.
 
-Sorry, I missed this on the first time: Added intel-wired-lan,
-please include on any future submissions for Intel drivers.
-get-maintainers script might help here?
-
-> 
-> Fix this panic by adding more rules to calculate the value of @rss_size_max
-> which could be used in allocating the queues when bpf is loaded, which,
-> however, could cause the failure and then trigger the NULL pointer of
-> vsi->rx_rings. Prio to this fix, the machine doesn't care about how many
-> cpus are online and then allocates 256 queues on the machine with 32 cpus
-> online actually.
-> 
-> Once the load of bpf begins, the log will go like this "failed to get
-> tracking for 256 queues for VSI 0 err -12" and this "setup of MAIN VSI
-> failed".
-> 
-> Thus, I attach the key information of the crash-log here.
-> 
-> BUG: unable to handle kernel NULL pointer dereference at
-> 0000000000000000
-> RIP: 0010:i40e_xdp+0xdd/0x1b0 [i40e]
-> Call Trace:
-> [2160294.717292]  ? i40e_reconfig_rss_queues+0x170/0x170 [i40e]
-> [2160294.717666]  dev_xdp_install+0x4f/0x70
-> [2160294.718036]  dev_change_xdp_fd+0x11f/0x230
-> [2160294.718380]  ? dev_disable_lro+0xe0/0xe0
-> [2160294.718705]  do_setlink+0xac7/0xe70
-> [2160294.719035]  ? __nla_parse+0xed/0x120
-> [2160294.719365]  rtnl_newlink+0x73b/0x860
-> 
-> Fixes: 41c445ff0f48 ("i40e: main driver core")
-> 
-
-This Fixes line should be connected to the Sign offs with
-no linefeeds between.
-
-> Signed-off-by: Jason Xing <xingwanli@kuaishou.com>
-> Signed-off-by: Shujin Li <lishujin@kuaishou.com>
-
-Did Shujin contribute to this patch? Why are they signing off? If
-they developed this patch with you, it should say:
-Co-developed-by: Shujin ....
-Signed-off-by: Shujin ...
-Signed-off-by: Jason ...
-
-Your signature should be last if you sent the patch. The sign-offs are
-like a chain of custody, please review 
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#when-to-use-acked-by-cc-and-co-developed-by
+Yes, of course. I'll clean it up before sending a non RFC version.
 
 Thanks,
- Jesse
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmB10vwACgkQeSpbgcuY
+8Kae6A//Y46kXPei0XtDNGOtHdy8H2HDncTe48K7rSLmFB2pYeSlsBGsh5LrXJeK
+7o5qc8ZQ5dZq1zkdJZvvfZurP7/t2S/c4+rh3w0fEUH/UF1Zpu0P4ZNEcA6zOBrb
+cPm/nLQZydrfreTcN3bJ2PM3/+80K8FLfF74M/wc47Wi7biCYx94ls2mNoihvy1z
+2TWwTY7EeoN4YElwyIXFGKIqgkuTCMt3hgBtVFnzLCnl7xRu9snHLiCFo5PiNKRT
+qpC79qUHcqtu39VQHlkvHM9tQvnaMj08okgllnvbLX+XftX+ZyEROO5O5AGjS79E
+h5ftqZ6TBqxrOGT3z1M88vlSSBClw2+ZoOXBMCg87Ir4eO5vZwCblvmzipZ5m5Io
+aVqPmUsi3gGNwdvySsBGAweJ4cTrteHyHVBDmB4pd+87IpxCPHh/vj3b1v+kjMcJ
+aUx7Ken6cu9Sx5YifWE33Ad5PbcR1dXjBIQUuf3HKTodX6swudzLSEsKdEN1Nz88
+Ekg+V/YXuV7zDYH9i02OfUTJovD4+AplgNSE/JE3VqQa9G7UrPekMpBJp2DkjwEL
+1N/d0pYPARMDC90TpGbaD1FmXjKPs45Zwe6NEJtoF2d5nHrQWa+biNgs/EnGkfOx
+9ZTEhIBgfmdjG1yetmoQmXZtlPTyKYMoaTV4HjrQ/aGnE4zOKhw=
+=HXr0
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============4925421365699620633==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4925421365699620633==--
