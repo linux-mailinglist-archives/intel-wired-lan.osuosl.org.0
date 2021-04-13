@@ -1,65 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60FC535E13E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 16:19:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE5DB35E13F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 16:19:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BF1F3405C4;
-	Tue, 13 Apr 2021 14:19:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5287140271;
+	Tue, 13 Apr 2021 14:19:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cq0mNxSzHZZd; Tue, 13 Apr 2021 14:19:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eP_IkwFRf5q4; Tue, 13 Apr 2021 14:19:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A99D5404B0;
-	Tue, 13 Apr 2021 14:19:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 724644027A;
+	Tue, 13 Apr 2021 14:19:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A47811BF2F1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 07:34:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1FDF41BF2B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 08:26:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8C11F400DC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 07:34:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0DD4C400D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 08:26:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Olx4Ci_j7GHC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Apr 2021 07:34:57 +0000 (UTC)
+ with ESMTP id 1PoifAOGuUQn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Apr 2021 08:26:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D3C09400D8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 07:34:56 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1618299290;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/LfaSmfHgZ7FhwZDnDyWBTYgSSsbi4xbqPkH3xgE2QA=;
- b=U1rYNIyYBvJL7cg2KvL30AZRInQmZ8/etlrwjB2BxBSUhLQV1jUCQ3t+U7CwqVtPP3hyYH
- nGVVqejphQx69o113MhPCVJmXusUelycu12rByi6KEXVPcKt7ehQyY6uTFRFxhzSOFFdxq
- oNpMDwjEA5Mhz6+RddV6/c9aqPrp1JF1t9t+pTfW8DJc7WyjH1qt1HnP+PhjvLZDvz+LOa
- FFIFL0e2/IAQs1igq9iqHwi95xeJEk1wFEHdYkvSHQ1lYJPK0SOb18aROwKuZQDLssJWn1
- J5hQzKxkThZWaIgrYnsMnV7uByZWv+YUDO+uCjgmoWNHWbYeG4SCm6Ep0H3Naw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1618299290;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/LfaSmfHgZ7FhwZDnDyWBTYgSSsbi4xbqPkH3xgE2QA=;
- b=xmTfrrOSQsQaStYrHcrKkgH3R0zQpU6/tfqmMYiJP2/o6AFOHBQmn/QsVV3C2WTpdXk7AW
- ozpGAPJzKEbnhiCA==
-To: Jesper Dangaard Brouer <brouer@redhat.com>
-In-Reply-To: <20210412162846.42706d99@carbon>
-References: <20210412101713.15161-1-kurt@linutronix.de>
- <20210412162846.42706d99@carbon>
-Date: Tue, 13 Apr 2021 09:34:49 +0200
-Message-ID: <874kga1vty.fsf@kurt>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
+ [185.176.79.56])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 756974057B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 08:26:09 +0000 (UTC)
+Received: from fraeml710-chm.china.huawei.com (unknown [172.18.147.201])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4FKJQw67r3z688K3;
+ Tue, 13 Apr 2021 16:18:48 +0800 (CST)
+Received: from lhreml707-chm.china.huawei.com (10.201.108.56) by
+ fraeml710-chm.china.huawei.com (10.206.15.59) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
+ 15.1.2106.2; Tue, 13 Apr 2021 10:26:01 +0200
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2106.2; Tue, 13 Apr 2021 09:25:58 +0100
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2106.013; 
+ Tue, 13 Apr 2021 09:25:58 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "davem@davemloft.net"
+ <davem@davemloft.net>, "kuba@kernel.org" <kuba@kernel.org>
+Thread-Topic: [PATCH net] ice: Re-organizes reqstd/avail {R,T}XQ check/code
+ for efficiency+readability
+Thread-Index: AQHXLnSYr3LSh1DDV0C/ZapTpipD6KqxbBIAgACyFoA=
+Date: Tue, 13 Apr 2021 08:25:58 +0000
+Message-ID: <8fd160b556fc4d45bff2d607918aad33@huawei.com>
+References: <20210411014530.25060-1-salil.mehta@huawei.com>
+ <03655fb6faa595a20a1143fb3b01561042cd317f.camel@intel.com>
+In-Reply-To: <03655fb6faa595a20a1143fb3b01561042cd317f.camel@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.73.132]
 MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Tue, 13 Apr 2021 14:18:41 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC net] igb: Fix XDP with PTP enabled
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Re-organizes reqstd/avail {R,
+ T}XQ check/code for efficiency+readability
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,91 +79,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Alexei Starovoitov <ast@kernel.org>, brouer@redhat.com,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============7269132124820014605=="
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7269132124820014605==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+Hi Anthony,
+Thanks for reviewing!
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+> From: Nguyen, Anthony L [mailto:anthony.l.nguyen@intel.com]
+> Sent: Monday, April 12, 2021 11:41 PM
+> To: davem@davemloft.net; kuba@kernel.org; Salil Mehta <salil.mehta@huawei.com>
+> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Brandeburg, Jesse
+> <jesse.brandeburg@intel.com>; linuxarm@openeuler.org; Tieman, Henry W
+> <henry.w.tieman@intel.com>; Linuxarm <linuxarm@huawei.com>
+> Subject: Re: [PATCH net] ice: Re-organizes reqstd/avail {R,T}XQ check/code for
+> efficiency+readability
+> 
+> On Sun, 2021-04-11 at 02:45 +0100, Salil Mehta wrote:
+> > If user has explicitly requested the number of {R,T}XQs, then it is
+> > unnecessary
+> > to get the count of already available {R,T}XQs from the PF
+> > avail_{r,t}xqs
+> > bitmap. This value will get overriden by user specified value in any
+> 
+> s/overriden/overridden
 
-On Mon Apr 12 2021, Jesper Dangaard Brouer wrote:
-> On Mon, 12 Apr 2021 12:17:13 +0200
-> Kurt Kanzenbach <kurt@linutronix.de> wrote:
->
->> When using native XDP with the igb driver, the XDP frame data doesn't po=
-int to
->> the beginning of the packet. It's off by 16 bytes. Everything works as e=
-xpected
->> with XDP skb mode.
->>=20
->> Actually these 16 bytes are used to store the packet timestamps. Therefo=
-re, pull
->> the timestamp before executing any XDP operations and adjust all other c=
-ode
->> accordingly. The igc driver does it like that as well.
->
-> (Cc. Alexander Duyck)
+Ok.
 
-Thanks.
+> 
+> > case.
+> >
+> > This patch does minor re-organization of the code for improving the
+> > flow and
+> > readabiltiy. This scope of improvement was found during the review of
+> > the ICE
+> > driver code.
+> 
+> The changes themselves look ok, but there are some checkpatch issues.
+> Also, could you include intel-wired-lan@lists.osuosl.org
 
->
-> Do we have enough room for the packet page-split tricks when these 16
-> bytes are added?
+Sure. will fix them.
 
-I think so. AFAICT the timestamp header is accounted. There is
-IGB_2K_TOO_SMALL_WITH_PADDING. If 2k isn't sufficient, then 3k buffers
-are used.
+> 
+> > FYI, I could not test this change due to unavailability of the
+> > hardware. It
+> > would helpful if somebody can test this and provide Tested-by Tag.
+> > Many thanks!
+> >
+> > Fixes: 11b7551e096d ("ice: Implement ethtool ops for channels")
+> 
+> This commit id doesn't exist.
 
-The only thing this patch does, is adjusting the xdp->data pointer
-before executing igb_run_xdp() instead of doing it afterwards. So, that
-in the eBPF program `data' points to the packet data, and not to the
-timestamp.
+Will fix. Sorry about this.
 
-Thanks,
-Kurt
+> 
+> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_lib.c | 14 ++++++++------
+> >  1 file changed, 8 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c
+> > b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > index d13c7fc8fb0a..161e8dfe548c 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > @@ -161,12 +161,13 @@ static void ice_vsi_set_num_qs(struct ice_vsi
+> > *vsi, u16 vf_id)
+> >
+> >  	switch (vsi->type) {
+> >  	case ICE_VSI_PF:
+> > -		vsi->alloc_txq = min3(pf->num_lan_msix,
+> > -				      ice_get_avail_txq_count(pf),
+> > -				      (u16)num_online_cpus());
+> >  		if (vsi->req_txq) {
+> >  			vsi->alloc_txq = vsi->req_txq;
+> >  			vsi->num_txq = vsi->req_txq;
+> > +		} else {
+> > +			vsi->alloc_txq = min3(pf->num_lan_msix,
+> > +					 ice_get_avail_txq_count(pf),
+> > +					 (u16)num_online_cpus());
+> 
+> Alignment is incorrect.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+Ok. Will check, perhaps the cause of the checkpatch.pl errors.
 
------BEGIN PGP SIGNATURE-----
+> 
+> >  		}
+> >
+> >  		pf->num_lan_tx = vsi->alloc_txq;
+> > @@ -175,12 +176,13 @@ static void ice_vsi_set_num_qs(struct ice_vsi
+> > *vsi, u16 vf_id)
+> >  		if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+> >  			vsi->alloc_rxq = 1;
+> >  		} else {
+> > -			vsi->alloc_rxq = min3(pf->num_lan_msix,
+> > -					      ice_get_avail_rxq_count(p
+> > f),
+> > -					      (u16)num_online_cpus());
+> >  			if (vsi->req_rxq) {
+> >  				vsi->alloc_rxq = vsi->req_rxq;
+> >  				vsi->num_rxq = vsi->req_rxq;
+> > +			} else {
+> > +				vsi->alloc_rxq = min3(pf->num_lan_msix,
+> > +						 ice_get_avail_rxq_coun
+> > t(pf),
+> > +						 (u16)num_online_cpus()
+> 
+> Same, alignment is incorrect.
 
-iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmB1SZkACgkQeSpbgcuY
-8Kbblw/9GEZbAegavmAgPDxBCxupwmoVoxdsy+i7Nw2V5vk1L1eSVSwJwHiXL0Rs
-00Dhns8rjS/FBS+mmDFdyAkz0OvADLsLf6bWE25RtJvgvetKidyq4Y/KhscOvU/7
-Y07ll2KvpxoDT1Au4z3igJHllYt46KJSYnWrS2Id5rtWt9TQS+bC9EtDwMSaGAkK
-krMikylRNHKwFAy4dzO+guThRSDwO0PlCATtVQ3vON47J+MxqcE/Z+5Jl5vP691X
-+oXtpcodQ1lVbqxcX66BCduI+QnjBDxgYWhtDOZiDVhU+sqSDldG+MjTbfTdCOUv
-PekfeQT64IaEYFocgIiYX570V0b++7fagSBSNnG7eV4+HNo4ujsWcfjnZCF11KMU
-7qITP/BLK/n+OtpCnpQM6rv+AgSMY3+f3YswiEvF8at3/K77SStNRlB8mtqw3xaF
-wxPQFIepGGzRHq60W3JX7KunyKIpGmg2IzMpi93p3VA1TG2uYAyDMOdqXcy6OcML
-4LDlylLmHvfHRNwEZaQDbWXXdvGoj7A2p74QsoY/cSObVs7wCGL/D++BVramrSmY
-jdgQrmpBJNNtZNzjjNrUE6Dm60dmbeSSHCssgUplCzL2sY+T2C+EwHpsuEXDjZyn
-Djd6091Bcbo6bXfpDjY5ISyTuNI5N9XAGtis4uyr9HhgggET3dc=
-=sh9o
------END PGP SIGNATURE-----
---=-=-=--
+Ok. Will fix.
 
---===============7269132124820014605==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks
+Salil.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7269132124820014605==--
