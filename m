@@ -1,72 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1027335E5C1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 19:58:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B4E735E6C8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 21:03:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A8E9C60C1E;
-	Tue, 13 Apr 2021 17:58:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DA15140130;
+	Tue, 13 Apr 2021 19:03:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1iMER3VB94FS; Tue, 13 Apr 2021 17:58:42 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lhBQhq_if-C0; Tue, 13 Apr 2021 19:03:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9A44560C16;
-	Tue, 13 Apr 2021 17:58:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 05DF84012E;
+	Tue, 13 Apr 2021 19:03:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E99751BF94D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 79BD71BF370
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 19:03:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D7065405EC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 73F794012E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 19:03:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=linutronix.de header.b="2ls2iDkJ";
- dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
- header.d=linutronix.de header.b="cvPB+KjZ"
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k5WmfUeuEj3c for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Apr 2021 17:21:06 +0000 (UTC)
-X-Greylist: delayed 09:46:11 by SQLgrey-1.8.0
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EA66640E58
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 17:21:05 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1618334461;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/FIguiC0JpPqnEHwTEVTe/PehrMSgAq174+EKyhr82I=;
- b=2ls2iDkJEgxLT8BBbuxpsz+mBg1wpRLaZvIiJwhFSRwgoiRMRnJzbT0sYoJa4inNSgR7n+
- yUBE8eyjM1W4GLKVGy2FAZbaqa99UbF2JxojJdoSpuVrV+Lgu3IpVtB0uw71Bb/TdOs0lH
- lj+1e99uaxO9VNKrRsD3NzbXge6FqqhohbcsoUHjPXr+qj7ED0Pofah6oLDFDg2JYcgqwD
- mQDojXqvWnX1rlEtXGPBu0JZRmSWr345WSwhsX+zYTuxXSBbAzGtaeCOolXeXbgsMSo5n2
- YoVytbBJ6VCsPsJ9spHa95w6rfgnfj40aRiyEFkhM88KW948okBz7aQPZev+Hg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1618334461;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/FIguiC0JpPqnEHwTEVTe/PehrMSgAq174+EKyhr82I=;
- b=cvPB+KjZ1ydaw7+/5jmL7AtRi2v45vBIWXzrEbqnaXnlvGRBOeJQzWM2dzpHFR670qb0/5
- pSegCUAMuXU7XPCg==
-To: Alexander Duyck <alexander.duyck@gmail.com>,
- Jesper Dangaard Brouer <brouer@redhat.com>
-In-Reply-To: <CAKgT0UekqPNQxV6PzpEeis69z3e3YNcaFyot=nD7w26hLxPX2Q@mail.gmail.com>
-References: <20210412101713.15161-1-kurt@linutronix.de>
- <20210412162846.42706d99@carbon>
- <CAKgT0UekqPNQxV6PzpEeis69z3e3YNcaFyot=nD7w26hLxPX2Q@mail.gmail.com>
-Date: Tue, 13 Apr 2021 19:21:00 +0200
-Message-ID: <87fszuyubn.fsf@kurt>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dAvn-Rl-yh8S for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Apr 2021 19:03:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 725AA400A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 19:03:37 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 15FD8613C7;
+ Tue, 13 Apr 2021 19:03:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1618340616;
+ bh=024RQYE9FOwSubSEu8+U+9O/gSbth/Wav0L2yaIq/CE=;
+ h=Date:From:To:Cc:Subject:From;
+ b=W9GfPXo6hE3q/OpLX9wNTbZjLXShA7tzwr8wzyMijum7OMWJsbTnqTy1cypdHf8Vv
+ 1/hrOdrXOWrsNG6HGJqCVnB5lQ0yPbNOV6ot6SH2ryuDh4UBYITLEZgF8pV9UVR6Ur
+ GksGKBQ4WSEp4zpGgNp6FVS/X9BBb4pF5l1X+DlMAM76Yougyp6xuGbodqw3xzHptb
+ dIfoP6qlh2jt/oBJltDErEaHC35wDR6IiQsUpk0BOecS/j8uWgPebtD43WQfd1zJo6
+ IXhzMJ5Iq5Zc5LBA6cpxkMkcaAVROZlHD62p3cMGFD6CH3EVsTrHxqqueXN2b76y3E
+ fgUtf1572LoCQ==
+Date: Tue, 13 Apr 2021 14:03:45 -0500
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20210413190345.GA304933@embeddedor>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 13 Apr 2021 17:58:38 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC net] igb: Fix XDP with PTP enabled
+Content-Disposition: inline
+Subject: [Intel-wired-lan] [PATCH][next] ixgbe: Fix out-bounds warning in
+ ixgbe_host_interface_command()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,86 +65,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============4925421365699620633=="
+Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============4925421365699620633==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
-
---=-=-=
-Content-Type: text/plain
-
-On Tue Apr 13 2021, Alexander Duyck wrote:
-> On Mon, Apr 12, 2021 at 7:29 AM Jesper Dangaard Brouer
-> <brouer@redhat.com> wrote:
->> > +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
->> >  {
->> >       struct igb_adapter *adapter = q_vector->adapter;
->> > +     struct skb_shared_hwtstamps ts;
->> >       __le64 *regval = (__le64 *)va;
->> >       int adjust = 0;
->> >
->> >       if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
->> > -             return IGB_RET_PTP_DISABLED;
->> > +             return 0;
->> >
->> >       /* The timestamp is recorded in little endian format.
->> >        * DWORD: 0        1        2        3
->> > @@ -888,10 +887,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
->> >
->> >       /* check reserved dwords are zero, be/le doesn't matter for zero */
->> >       if (regval[0])
->> > -             return IGB_RET_PTP_INVALID;
->> > +             return 0;
->> >
->
-> One thing that needs to be cleaned up in the patch is that if it is
-> going to drop these return values it should probably drop the defines
-> for them since I don't think they are used anywhere else.
-
-Yes, of course. I'll clean it up before sending a non RFC version.
-
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmB10vwACgkQeSpbgcuY
-8Kae6A//Y46kXPei0XtDNGOtHdy8H2HDncTe48K7rSLmFB2pYeSlsBGsh5LrXJeK
-7o5qc8ZQ5dZq1zkdJZvvfZurP7/t2S/c4+rh3w0fEUH/UF1Zpu0P4ZNEcA6zOBrb
-cPm/nLQZydrfreTcN3bJ2PM3/+80K8FLfF74M/wc47Wi7biCYx94ls2mNoihvy1z
-2TWwTY7EeoN4YElwyIXFGKIqgkuTCMt3hgBtVFnzLCnl7xRu9snHLiCFo5PiNKRT
-qpC79qUHcqtu39VQHlkvHM9tQvnaMj08okgllnvbLX+XftX+ZyEROO5O5AGjS79E
-h5ftqZ6TBqxrOGT3z1M88vlSSBClw2+ZoOXBMCg87Ir4eO5vZwCblvmzipZ5m5Io
-aVqPmUsi3gGNwdvySsBGAweJ4cTrteHyHVBDmB4pd+87IpxCPHh/vj3b1v+kjMcJ
-aUx7Ken6cu9Sx5YifWE33Ad5PbcR1dXjBIQUuf3HKTodX6swudzLSEsKdEN1Nz88
-Ekg+V/YXuV7zDYH9i02OfUTJovD4+AplgNSE/JE3VqQa9G7UrPekMpBJp2DkjwEL
-1N/d0pYPARMDC90TpGbaD1FmXjKPs45Zwe6NEJtoF2d5nHrQWa+biNgs/EnGkfOx
-9ZTEhIBgfmdjG1yetmoQmXZtlPTyKYMoaTV4HjrQ/aGnE4zOKhw=
-=HXr0
------END PGP SIGNATURE-----
---=-=-=--
-
---===============4925421365699620633==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============4925421365699620633==--
+UmVwbGFjZSB1bmlvbiB3aXRoIGEgY291cGxlIG9mIHBvaW50ZXJzIGluIG9yZGVyIHRvIGZpeCB0
+aGUgZm9sbG93aW5nCm91dC1vZi1ib3VuZHMgd2FybmluZzoKCiAgQ0MgW01dICBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9jb21tb24ubwpkcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9peGdiZS9peGdiZV9jb21tb24uYzogSW4gZnVuY3Rpb24g4oCYaXhnYmVfaG9zdF9p
+bnRlcmZhY2VfY29tbWFuZOKAmToKZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhn
+YmVfY29tbW9uLmM6MzcyOToxMzogd2FybmluZzogYXJyYXkgc3Vic2NyaXB0IDEgaXMgYWJvdmUg
+YXJyYXkgYm91bmRzIG9mIOKAmHUzMlsxXeKAmSB7YWthIOKAmHVuc2lnbmVkIGludFsxXeKAmX0g
+Wy1XYXJyYXktYm91bmRzXQogMzcyOSB8ICAgYnAtPnUzMmFycltiaV0gPSBJWEdCRV9SRUFEX1JF
+R19BUlJBWShodywgSVhHQkVfRkxFWF9NTkcsIGJpKTsKICAgICAgfCAgIH5+fn5+fn5+fn5efn5+
+CmRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1vbi5jOjM2ODI6Nzog
+bm90ZTogd2hpbGUgcmVmZXJlbmNpbmcg4oCYdTMyYXJy4oCZCiAzNjgyIHwgICB1MzIgdTMyYXJy
+WzFdOwogICAgICB8ICAgICAgIF5+fn5+fgoKVGhpcyBoZWxwcyB3aXRoIHRoZSBvbmdvaW5nIGVm
+Zm9ydHMgdG8gZ2xvYmFsbHkgZW5hYmxlIC1XYXJyYXktYm91bmRzLgoKTGluazogaHR0cHM6Ly9n
+aXRodWIuY29tL0tTUFAvbGludXgvaXNzdWVzLzEwOQpDby1kZXZlbG9wZWQtYnk6IEtlZXMgQ29v
+ayA8a2Vlc2Nvb2tAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBLZWVzIENvb2sgPGtlZXNj
+b29rQGNocm9taXVtLm9yZz4KU2lnbmVkLW9mZi1ieTogR3VzdGF2byBBLiBSLiBTaWx2YSA8Z3Vz
+dGF2b2Fyc0BrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
+L2l4Z2JlX2NvbW1vbi5jIHwgMTYgKysrKysrKy0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDcg
+aW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9jb21tb24uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1vbi5jCmluZGV4IDAzY2NiZTZiNjZkMi4uZTkwYjUwNDdl
+Njk1IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9j
+b21tb24uYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9jb21t
+b24uYwpAQCAtMzY3OCwxMCArMzY3OCw4IEBAIHMzMiBpeGdiZV9ob3N0X2ludGVyZmFjZV9jb21t
+YW5kKHN0cnVjdCBpeGdiZV9odyAqaHcsIHZvaWQgKmJ1ZmZlciwKIAkJCQkgYm9vbCByZXR1cm5f
+ZGF0YSkKIHsKIAl1MzIgaGRyX3NpemUgPSBzaXplb2Yoc3RydWN0IGl4Z2JlX2hpY19oZHIpOwot
+CXVuaW9uIHsKLQkJc3RydWN0IGl4Z2JlX2hpY19oZHIgaGRyOwotCQl1MzIgdTMyYXJyWzFdOwot
+CX0gKmJwID0gYnVmZmVyOworCXN0cnVjdCBpeGdiZV9oaWNfaGRyICpoZHIgPSBidWZmZXI7CisJ
+dTMyICp1MzJhcnIgPSBidWZmZXI7CiAJdTE2IGJ1Zl9sZW4sIGR3b3JkX2xlbjsKIAlzMzIgc3Rh
+dHVzOwogCXUzMiBiaTsKQEAgLTM3MDcsMTIgKzM3MDUsMTIgQEAgczMyIGl4Z2JlX2hvc3RfaW50
+ZXJmYWNlX2NvbW1hbmQoc3RydWN0IGl4Z2JlX2h3ICpodywgdm9pZCAqYnVmZmVyLAogCiAJLyog
+Zmlyc3QgcHVsbCBpbiB0aGUgaGVhZGVyIHNvIHdlIGtub3cgdGhlIGJ1ZmZlciBsZW5ndGggKi8K
+IAlmb3IgKGJpID0gMDsgYmkgPCBkd29yZF9sZW47IGJpKyspIHsKLQkJYnAtPnUzMmFycltiaV0g
+PSBJWEdCRV9SRUFEX1JFR19BUlJBWShodywgSVhHQkVfRkxFWF9NTkcsIGJpKTsKLQkJbGUzMl90
+b19jcHVzKCZicC0+dTMyYXJyW2JpXSk7CisJCXUzMmFycltiaV0gPSBJWEdCRV9SRUFEX1JFR19B
+UlJBWShodywgSVhHQkVfRkxFWF9NTkcsIGJpKTsKKwkJbGUzMl90b19jcHVzKCZ1MzJhcnJbYmld
+KTsKIAl9CiAKIAkvKiBJZiB0aGVyZSBpcyBhbnkgdGhpbmcgaW4gZGF0YSBwb3NpdGlvbiBwdWxs
+IGl0IGluICovCi0JYnVmX2xlbiA9IGJwLT5oZHIuYnVmX2xlbjsKKwlidWZfbGVuID0gaGRyLT5i
+dWZfbGVuOwogCWlmICghYnVmX2xlbikKIAkJZ290byByZWxfb3V0OwogCkBAIC0zNzI3LDggKzM3
+MjUsOCBAQCBzMzIgaXhnYmVfaG9zdF9pbnRlcmZhY2VfY29tbWFuZChzdHJ1Y3QgaXhnYmVfaHcg
+Kmh3LCB2b2lkICpidWZmZXIsCiAKIAkvKiBQdWxsIGluIHRoZSByZXN0IG9mIHRoZSBidWZmZXIg
+KGJpIGlzIHdoZXJlIHdlIGxlZnQgb2ZmKSAqLwogCWZvciAoOyBiaSA8PSBkd29yZF9sZW47IGJp
+KyspIHsKLQkJYnAtPnUzMmFycltiaV0gPSBJWEdCRV9SRUFEX1JFR19BUlJBWShodywgSVhHQkVf
+RkxFWF9NTkcsIGJpKTsKLQkJbGUzMl90b19jcHVzKCZicC0+dTMyYXJyW2JpXSk7CisJCXUzMmFy
+cltiaV0gPSBJWEdCRV9SRUFEX1JFR19BUlJBWShodywgSVhHQkVfRkxFWF9NTkcsIGJpKTsKKwkJ
+bGUzMl90b19jcHVzKCZ1MzJhcnJbYmldKTsKIAl9CiAKIHJlbF9vdXQ6Ci0tIAoyLjI3LjAKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVk
+LWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0
+cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
