@@ -2,58 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1365435D4AE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 03:08:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2157535DDF9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 13:43:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AC8D860B5C;
-	Tue, 13 Apr 2021 01:08:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7E09E6009C;
+	Tue, 13 Apr 2021 11:43:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lt12L2x_GqbJ; Tue, 13 Apr 2021 01:08:33 +0000 (UTC)
+	with ESMTP id baWeaN7rqpYo; Tue, 13 Apr 2021 11:43:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F5BE60B55;
-	Tue, 13 Apr 2021 01:08:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1B665606E5;
+	Tue, 13 Apr 2021 11:43:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D0E161BF2F0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 01:08:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ED3921BF592
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 11:43:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7804683D74
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 01:08:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DBE2B82CA3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 11:43:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UQAh101XwLDS for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Apr 2021 01:08:09 +0000 (UTC)
+ with ESMTP id JF5JYHzS0o6h for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Apr 2021 11:43:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A706183D61
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 01:08:09 +0000 (UTC)
-IronPort-SDR: jJK89StsZgknP6jfKClUUUCT6hd1SoXfbLt7Deh2S+q/0nh3YuA/s2gkUnDoz4MVuM5WwBAR2e
- FKm5TvJoXgDQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="192181676"
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="192181676"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Apr 2021 18:08:09 -0700
-IronPort-SDR: h+Mw+9O8PwBbViT7HW7UMCnUQYCj/KYtAVD2VCA8U2Vc0yylc1jeOIZGaibZqmtNcr78IK0vpS
- yfgB1f/yP+Nw==
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EF42484323
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 11:43:40 +0000 (UTC)
+IronPort-SDR: 6fdYjJHMTg7ufzdwqfMe/evzXjxEpAApifZIK7/4dk7Yl4Kvx7cNpd8VCKnWVf342lij5JljNJ
+ GHG9TRLNnaUQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="181910283"
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="181910283"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Apr 2021 04:43:36 -0700
+IronPort-SDR: 8Ik4z+WabV3MmZTcfl/mdh9mhaEKWBRalrWCyyT7E0+QXX38Kh5clHml7bcMV9nuSU13Ywdcgl
+ 11Fuz+pzh77g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; d="scan'208";a="521400349"
-Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.118.220])
- by fmsmga001.fm.intel.com with ESMTP; 12 Apr 2021 18:08:08 -0700
-From: Haiyue Wang <haiyue.wang@intel.com>
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="398740462"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga002.jf.intel.com with ESMTP; 13 Apr 2021 04:43:34 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 13 Apr 2021 08:48:44 +0800
-Message-Id: <20210413004844.32462-7-haiyue.wang@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210413004844.32462-1-haiyue.wang@intel.com>
-References: <20210413004844.32462-1-haiyue.wang@intel.com>
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v3 6/6] iavf: Support for
- modifying SCTP RSS flow hashing
+Date: Tue, 13 Apr 2021 11:43:32 +0000
+Message-Id: <20210413114332.32650-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v2] iavf: Fix init and watchdog state
+ machines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,203 +63,376 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: qi.z.zhang@intel.com
+Cc: Jakub Pawlak <jakub.pawlak@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Provide the ability to enable SCTP RSS hashing by ethtool.
+From: Jan Sokolowski <jan.sokolowski@intel.com>
 
-It gives users option of generating RSS hash based on the SCTP source
-and destination ports numbers, IPv4 or IPv6 source and destination
-addresses.
+Use single state machine for driver initialization
+and for service initialized driver. The init state
+machine implemented in init_task() is merged
+into the watchdog_task(). The init_task() function
+is removed.
 
-Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
+Testing-Hints: Change is only for VF driver state machine,
+               should be checked load/unload/reset and
+               set/get driver parameters.
+
+Fixes: bac8486116b0 ("iavf: Refactor the watchdog state machine")
+Signed-off-by: Jakub Pawlak <jakub.pawlak@intel.com>
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
 ---
- .../net/ethernet/intel/iavf/iavf_adv_rss.c    | 28 +++++++++++++++++--
- .../net/ethernet/intel/iavf/iavf_adv_rss.h    | 10 ++++++-
- .../net/ethernet/intel/iavf/iavf_ethtool.c    | 23 +++++++++++++--
- 3 files changed, 56 insertions(+), 5 deletions(-)
+ v2: splitted the patch into smaller pieces
+---
+ drivers/net/ethernet/intel/iavf/iavf.h      |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 159 ++++++++++----------
+ 2 files changed, 77 insertions(+), 84 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-index a8e03aaccc6b..6edbf134b73f 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-@@ -73,6 +73,23 @@ iavf_fill_adv_rss_udp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, UDP, DST_PORT);
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 874da98..3c18efc 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -175,6 +175,7 @@ enum iavf_state_t {
+ 	__IAVF_INIT_VERSION_CHECK,	/* aq msg sent, awaiting reply */
+ 	__IAVF_INIT_GET_RESOURCES,	/* aq msg sent, awaiting reply */
+ 	__IAVF_INIT_SW,		/* got resources, setting up structs */
++	__IAVF_INIT_FAILED,	/* init failed, restarting procedure */
+ 	__IAVF_RESETTING,		/* in reset */
+ 	__IAVF_COMM_FAILED,		/* communication with PF failed */
+ 	/* Below here, watchdog is running */
+@@ -230,7 +231,6 @@ struct iavf_adapter {
+ 	struct work_struct reset_task;
+ 	struct work_struct adminq_task;
+ 	struct delayed_work client_task;
+-	struct delayed_work init_task;
+ 	wait_queue_head_t down_waitqueue;
+ 	struct iavf_q_vector *q_vectors;
+ 	struct list_head vlan_filter_list;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index dc0388e..bb0f73d 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -14,7 +14,7 @@
+ static int iavf_setup_all_tx_resources(struct iavf_adapter *adapter);
+ static int iavf_setup_all_rx_resources(struct iavf_adapter *adapter);
+ static int iavf_close(struct net_device *netdev);
+-static int iavf_init_get_resources(struct iavf_adapter *adapter);
++static void iavf_init_get_resources(struct iavf_adapter *adapter);
+ static int iavf_check_reset_complete(struct iavf_hw *hw);
+ 
+ char iavf_driver_name[] = "iavf";
+@@ -1655,9 +1655,9 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
+  *
+  * Function process __IAVF_STARTUP driver state.
+  * When success the state is changed to __IAVF_INIT_VERSION_CHECK
+- * when fails it returns -EAGAIN
++ * when fails the state is changed to __IAVF_INIT_FAILED
+  **/
+-static int iavf_startup(struct iavf_adapter *adapter)
++static void iavf_startup(struct iavf_adapter *adapter)
+ {
+ 	struct pci_dev *pdev = adapter->pdev;
+ 	struct iavf_hw *hw = &adapter->hw;
+@@ -1697,8 +1697,9 @@ static int iavf_startup(struct iavf_adapter *adapter)
+ 		goto err;
+ 	}
+ 	iavf_change_state(adapter, __IAVF_INIT_VERSION_CHECK);
++	return;
+ err:
+-	return err;
++	iavf_change_state(adapter, __IAVF_INIT_FAILED);
  }
  
-+/**
-+ * iavf_fill_adv_rss_sctp_hdr - fill the SCTP RSS protocol header
-+ * @hdr: the virtchnl message protocol header data structure
-+ * @hash_flds: the RSS configuration protocol hash fields
-+ */
-+static void
-+iavf_fill_adv_rss_sctp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
-+{
-+	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, SCTP);
-+
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_SCTP_SRC_PORT)
-+		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, SCTP, SRC_PORT);
-+
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT)
-+		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, SCTP, DST_PORT);
-+}
-+
  /**
-  * iavf_fill_adv_rss_cfg_msg - fill the RSS configuration into virtchnl message
-  * @rss_cfg: the virtchnl message to be filled with RSS configuration setting
-@@ -112,6 +129,9 @@ iavf_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
- 	case IAVF_ADV_RSS_FLOW_SEG_HDR_UDP:
- 		iavf_fill_adv_rss_udp_hdr(hdr, hash_flds);
- 		break;
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP:
-+		iavf_fill_adv_rss_sctp_hdr(hdr, hash_flds);
-+		break;
- 	default:
- 		return -EINVAL;
+@@ -1707,9 +1708,9 @@ err:
+  *
+  * Function process __IAVF_INIT_VERSION_CHECK driver state.
+  * When success the state is changed to __IAVF_INIT_GET_RESOURCES
+- * when fails it returns -EAGAIN
++ * when fails the state is changed to __IAVF_INIT_FAILED
+  **/
+-static int iavf_init_version_check(struct iavf_adapter *adapter)
++static void iavf_init_version_check(struct iavf_adapter *adapter)
+ {
+ 	struct pci_dev *pdev = adapter->pdev;
+ 	struct iavf_hw *hw = &adapter->hw;
+@@ -1744,8 +1745,9 @@ static int iavf_init_version_check(struct iavf_adapter *adapter)
+ 		goto err;
  	}
-@@ -160,6 +180,8 @@ iavf_print_adv_rss_cfg(struct iavf_adapter *adapter, struct iavf_adv_rss *rss,
- 		proto = "TCP";
- 	else if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_UDP)
- 		proto = "UDP";
-+	else if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP)
-+		proto = "SCTP";
+ 	iavf_change_state(adapter, __IAVF_INIT_GET_RESOURCES);
++	return;
+ err:
+-	return err;
++	iavf_change_state(adapter, __IAVF_INIT_FAILED);
+ }
+ 
+ /**
+@@ -1755,9 +1757,9 @@ err:
+  * Function process __IAVF_INIT_GET_RESOURCES driver state and
+  * finishes driver initialization procedure.
+  * When success the state is changed to __IAVF_DOWN
+- * when fails it returns -EAGAIN
++ * when fails it changes state to __IAVF_INIT_FAILED;
+  **/
+-static int iavf_init_get_resources(struct iavf_adapter *adapter)
++static void iavf_init_get_resources(struct iavf_adapter *adapter)
+ {
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct pci_dev *pdev = adapter->pdev;
+@@ -1785,7 +1787,7 @@ static int iavf_init_get_resources(struct iavf_adapter *adapter)
+ 		 */
+ 		iavf_shutdown_adminq(hw);
+ 		dev_err(&pdev->dev, "Unable to get VF config due to PF error condition, not retrying\n");
+-		return 0;
++		return;
+ 	}
+ 	if (err) {
+ 		dev_err(&pdev->dev, "Unable to get VF config (%d)\n", err);
+@@ -1877,7 +1879,7 @@ static int iavf_init_get_resources(struct iavf_adapter *adapter)
  	else
- 		return;
+ 		iavf_init_rss(adapter);
  
-@@ -178,10 +200,12 @@ iavf_print_adv_rss_cfg(struct iavf_adapter *adapter, struct iavf_adv_rss *rss,
- 			 IAVF_ADV_RSS_HASH_FLD_IPV6_DA))
- 		strcat(hash_opt, "IP DA,");
- 	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT |
--			 IAVF_ADV_RSS_HASH_FLD_UDP_SRC_PORT))
-+			 IAVF_ADV_RSS_HASH_FLD_UDP_SRC_PORT |
-+			 IAVF_ADV_RSS_HASH_FLD_SCTP_SRC_PORT))
- 		strcat(hash_opt, "src port,");
- 	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT |
--			 IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT))
-+			 IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT |
-+			 IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT))
- 		strcat(hash_opt, "dst port,");
+-	return err;
++	return;
+ err_mem:
+ 	iavf_free_rss(adapter);
+ err_register:
+@@ -1888,7 +1890,7 @@ err_alloc:
+ 	kfree(adapter->vf_res);
+ 	adapter->vf_res = NULL;
+ err:
+-	return err;
++	iavf_change_state(adapter, __IAVF_INIT_FAILED);
+ }
  
- 	if (!action)
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-index 4681f5e8321d..4d3be11af7aa 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-@@ -21,6 +21,7 @@ enum iavf_adv_rss_flow_seg_hdr {
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6	= 0x00000002,
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_TCP	= 0x00000004,
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_UDP	= 0x00000008,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP	= 0x00000010,
- };
+ /**
+@@ -1915,7 +1917,49 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
+ 		iavf_change_state(adapter, __IAVF_COMM_FAILED);
  
- #define IAVF_ADV_RSS_FLOW_SEG_HDR_L3		\
-@@ -29,7 +30,8 @@ enum iavf_adv_rss_flow_seg_hdr {
- 
- #define IAVF_ADV_RSS_FLOW_SEG_HDR_L4		\
- 	(IAVF_ADV_RSS_FLOW_SEG_HDR_TCP |	\
--	 IAVF_ADV_RSS_FLOW_SEG_HDR_UDP)
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP)
- 
- enum iavf_adv_rss_flow_field {
- 	/* L3 */
-@@ -42,6 +44,8 @@ enum iavf_adv_rss_flow_field {
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_TCP_DST_PORT,
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_UDP_SRC_PORT,
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_UDP_DST_PORT,
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT,
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT,
- 
- 	/* The total number of enums must not exceed 64 */
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_MAX
-@@ -64,6 +68,10 @@ enum iavf_adv_rss_flow_field {
- 	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_UDP_SRC_PORT)
- #define IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT	\
- 	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_UDP_DST_PORT)
-+#define IAVF_ADV_RSS_HASH_FLD_SCTP_SRC_PORT	\
-+	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT)
-+#define IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT	\
-+	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT)
- 
- /* bookkeeping of advanced RSS configuration */
- struct iavf_adv_rss {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 8a396cba944b..0d22a5275218 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1438,6 +1438,10 @@ static u32 iavf_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
- 		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |
- 			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
- 		break;
-+	case SCTP_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
- 	case TCP_V6_FLOW:
- 		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_TCP |
- 			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-@@ -1446,6 +1450,10 @@ static u32 iavf_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
- 		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |
- 			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
- 		break;
-+	case SCTP_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
- 	default:
- 		break;
- 	}
-@@ -1468,6 +1476,7 @@ static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd)
- 		switch (cmd->flow_type) {
- 		case TCP_V4_FLOW:
- 		case UDP_V4_FLOW:
-+		case SCTP_V4_FLOW:
- 			if (cmd->data & RXH_IP_SRC)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV4_SA;
- 			if (cmd->data & RXH_IP_DST)
-@@ -1475,6 +1484,7 @@ static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd)
- 			break;
- 		case TCP_V6_FLOW:
- 		case UDP_V6_FLOW:
-+		case SCTP_V6_FLOW:
- 			if (cmd->data & RXH_IP_SRC)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV6_SA;
- 			if (cmd->data & RXH_IP_DST)
-@@ -1501,6 +1511,13 @@ static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd)
- 			if (cmd->data & RXH_L4_B_2_3)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT;
- 			break;
-+		case SCTP_V4_FLOW:
-+		case SCTP_V6_FLOW:
-+			if (cmd->data & RXH_L4_B_0_1)
-+				hfld |= IAVF_ADV_RSS_HASH_FLD_SCTP_SRC_PORT;
-+			if (cmd->data & RXH_L4_B_2_3)
-+				hfld |= IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT;
-+			break;
- 		default:
- 			break;
++	if (adapter->flags & IAVF_FLAG_RESET_NEEDED &&
++	    adapter->state != __IAVF_RESETTING) {
++		iavf_change_state(adapter, __IAVF_RESETTING);
++		adapter->aq_required = 0;
++		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
++	}
++
+ 	switch (adapter->state) {
++	case __IAVF_STARTUP:
++		iavf_startup(adapter);
++		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
++				   msecs_to_jiffies(30));
++		return;
++	case __IAVF_INIT_VERSION_CHECK:
++		iavf_init_version_check(adapter);
++		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
++				   msecs_to_jiffies(30));
++		return;
++	case __IAVF_INIT_GET_RESOURCES:
++		iavf_init_get_resources(adapter);
++		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
++				   msecs_to_jiffies(1));
++		return;
++	case __IAVF_INIT_FAILED:
++		if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
++			dev_err(&adapter->pdev->dev,
++				"Failed to communicate with PF; waiting before retry\n");
++			adapter->flags |= IAVF_FLAG_PF_COMMS_FAILED;
++			iavf_shutdown_adminq(hw);
++			clear_bit(__IAVF_IN_CRITICAL_TASK,
++				  &adapter->crit_section);
++			queue_delayed_work(iavf_wq,
++					   &adapter->watchdog_task, (5 * HZ));
++			return;
++		}
++		/* Try again from failed step*/
++		iavf_change_state(adapter, adapter->last_state);
++		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ);
++		return;
+ 	case __IAVF_COMM_FAILED:
+ 		reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
+ 			  IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
+@@ -1924,17 +1968,12 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 			/* A chance for redemption! */
+ 			dev_err(&adapter->pdev->dev,
+ 				"Hardware came out of reset. Attempting reinit.\n");
+-			iavf_change_state(adapter, __IAVF_STARTUP);
+-			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
+-			queue_delayed_work(iavf_wq, &adapter->init_task, 10);
+-			clear_bit(__IAVF_IN_CRITICAL_TASK,
+-				  &adapter->crit_section);
+-			/* Don't reschedule the watchdog, since we've restarted
+-			 * the init task. When init_task contacts the PF and
++			/* When init task contacts the PF and
+ 			 * gets everything set up again, it'll restart the
+ 			 * watchdog for us. Down, boy. Sit. Stay. Woof.
+ 			 */
+-			return;
++			iavf_change_state(adapter, __IAVF_STARTUP);
++			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
  		}
-@@ -1635,11 +1652,13 @@ iavf_get_adv_rss_hash_opt(struct iavf_adapter *adapter,
- 		cmd->data |= (u64)RXH_IP_DST;
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+@@ -1943,7 +1982,7 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		queue_delayed_work(iavf_wq,
+ 				   &adapter->watchdog_task,
+ 				   msecs_to_jiffies(10));
+-		goto watchdog_done;
++		return;
+ 	case __IAVF_RESETTING:
+ 		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
+@@ -1966,12 +2005,14 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 			    adapter->state == __IAVF_RUNNING)
+ 				iavf_request_stats(adapter);
+ 		}
++		if (adapter->state == __IAVF_RUNNING)
++			iavf_detect_recover_hung(&adapter->vsi);
+ 		break;
+ 	case __IAVF_REMOVE:
+ 		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ 		return;
+ 	default:
+-		goto restart_watchdog;
++		return;
+ 	}
  
- 	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_TCP_SRC_PORT |
--			 IAVF_ADV_RSS_HASH_FLD_UDP_SRC_PORT))
-+			 IAVF_ADV_RSS_HASH_FLD_UDP_SRC_PORT |
-+			 IAVF_ADV_RSS_HASH_FLD_SCTP_SRC_PORT))
- 		cmd->data |= (u64)RXH_L4_B_0_1;
+ 	/* check for hw reset */
+@@ -1983,22 +2024,22 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+ 		dev_err(&adapter->pdev->dev, "Hardware reset detected\n");
+ 		queue_work(iavf_wq, &adapter->reset_task);
+-		goto watchdog_done;
++		clear_bit(__IAVF_IN_CRITICAL_TASK,
++			  &adapter->crit_section);
++		queue_delayed_work(iavf_wq,
++				   &adapter->watchdog_task, HZ * 2);
++		return;
+ 	}
  
- 	if (hash_flds & (IAVF_ADV_RSS_HASH_FLD_TCP_DST_PORT |
--			 IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT))
-+			 IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT |
-+			 IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT))
- 		cmd->data |= (u64)RXH_L4_B_2_3;
+ 	schedule_delayed_work(&adapter->client_task, msecs_to_jiffies(5));
+-watchdog_done:
+-	if (adapter->state == __IAVF_RUNNING ||
+-	    adapter->state == __IAVF_COMM_FAILED)
+-		iavf_detect_recover_hung(&adapter->vsi);
+ 	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ restart_watchdog:
++	queue_work(iavf_wq, &adapter->adminq_task);
+ 	if (adapter->aq_required)
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
+ 				   msecs_to_jiffies(20));
+ 	else
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
+-	queue_work(iavf_wq, &adapter->adminq_task);
+ }
  
+ static void iavf_disable_vf(struct iavf_adapter *adapter)
+@@ -2271,6 +2312,8 @@ continue_reset:
+ 
+ 	return;
+ reset_err:
++	if (running)
++		iavf_change_state(adapter, __IAVF_RUNNING);
+ 	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
+ 	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
+@@ -3611,58 +3654,6 @@ int iavf_process_config(struct iavf_adapter *adapter)
  	return 0;
+ }
+ 
+-/**
+- * iavf_init_task - worker thread to perform delayed initialization
+- * @work: pointer to work_struct containing our data
+- *
+- * This task completes the work that was begun in probe. Due to the nature
+- * of VF-PF communications, we may need to wait tens of milliseconds to get
+- * responses back from the PF. Rather than busy-wait in probe and bog down the
+- * whole system, we'll do it in a task so we can sleep.
+- * This task only runs during driver init. Once we've established
+- * communications with the PF driver and set up our netdev, the watchdog
+- * takes over.
+- **/
+-static void iavf_init_task(struct work_struct *work)
+-{
+-	struct iavf_adapter *adapter = container_of(work,
+-						    struct iavf_adapter,
+-						    init_task.work);
+-	struct iavf_hw *hw = &adapter->hw;
+-
+-	switch (adapter->state) {
+-	case __IAVF_STARTUP:
+-		if (iavf_startup(adapter) < 0)
+-			goto init_failed;
+-		break;
+-	case __IAVF_INIT_VERSION_CHECK:
+-		if (iavf_init_version_check(adapter) < 0)
+-			goto init_failed;
+-		break;
+-	case __IAVF_INIT_GET_RESOURCES:
+-		if (iavf_init_get_resources(adapter) < 0)
+-			goto init_failed;
+-		return;
+-	default:
+-		goto init_failed;
+-	}
+-
+-	queue_delayed_work(iavf_wq, &adapter->init_task,
+-			   msecs_to_jiffies(30));
+-	return;
+-init_failed:
+-	if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
+-		dev_err(&adapter->pdev->dev,
+-			"Failed to communicate with PF; waiting before retry\n");
+-		adapter->flags |= IAVF_FLAG_PF_COMMS_FAILED;
+-		iavf_shutdown_adminq(hw);
+-		iavf_change_state(adapter, __IAVF_STARTUP);
+-		queue_delayed_work(iavf_wq, &adapter->init_task, HZ * 5);
+-		return;
+-	}
+-	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
+-}
+-
+ /**
+  * iavf_shutdown - Shutdown the device in preparation for a reboot
+  * @pdev: pci device structure
+@@ -3789,8 +3780,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	INIT_WORK(&adapter->adminq_task, iavf_adminq_task);
+ 	INIT_DELAYED_WORK(&adapter->watchdog_task, iavf_watchdog_task);
+ 	INIT_DELAYED_WORK(&adapter->client_task, iavf_client_task);
+-	INIT_DELAYED_WORK(&adapter->init_task, iavf_init_task);
+-	queue_delayed_work(iavf_wq, &adapter->init_task,
++	queue_delayed_work(iavf_wq, &adapter->watchdog_task,
+ 			   msecs_to_jiffies(5 * (pdev->devfn & 0x07)));
+ 
+ 	/* Setup the wait queue for indicating transition to down status */
+@@ -3897,13 +3887,16 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	 * to run/schedule any driver tasks
+ 	 */
+ 	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
+-	cancel_delayed_work_sync(&adapter->init_task);
+ 	cancel_work_sync(&adapter->reset_task);
+ 	cancel_delayed_work_sync(&adapter->client_task);
+ 	iavf_misc_irq_disable(adapter);
+ 	if (adapter->netdev_registered) {
+ 		unregister_netdev(netdev);
+ 		adapter->netdev_registered = false;
++		/* wait for device down */
++		wait_event_timeout(adapter->down_waitqueue,
++				   adapter->state == __IAVF_DOWN,
++				   msecs_to_jiffies(200));
+ 	}
+ 	if (CLIENT_ALLOWED(adapter)) {
+ 		err = iavf_lan_del_device(adapter);
 -- 
-2.31.1
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
