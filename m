@@ -1,56 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F33335E1C3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 16:43:21 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E712235E2BE
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Apr 2021 17:25:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ED382401CA;
-	Tue, 13 Apr 2021 14:43:19 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C_8bl-DDpC3t; Tue, 13 Apr 2021 14:43:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EA447401BC;
-	Tue, 13 Apr 2021 14:43:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7F3721BF370
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 14:43:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 66AA460B94
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 14:43:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8CC8860697;
+	Tue, 13 Apr 2021 15:25:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bVj_8t1YS407 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Apr 2021 14:43:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 680666079F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 14:43:12 +0000 (UTC)
-IronPort-SDR: frWXCzZUQBNACazp+SZug0r5hrquzJTwiU61n13PR6X5g+ftm5P4uSZ7GkIT4i4JTarLZAWpvK
- 8kS85PPsTndQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9953"; a="192300000"
-X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="192300000"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2021 07:43:11 -0700
-IronPort-SDR: Zdd2mZL8tkMkKXcwhgnq0/XHaUqi8BHlUwS1+DeqPbWDJfdvfuMqOv8Zo4eiUpz3aTS7SRZPnE
- OIpzkUnzF2zg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; d="scan'208";a="460606255"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga001.jf.intel.com with ESMTP; 13 Apr 2021 07:43:10 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 13 Apr 2021 14:43:07 +0000
-Message-Id: <20210413144307.3616-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix PHY type identifiers for
- 2.5G and 5G adapters
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Gpj2dfJoGESO; Tue, 13 Apr 2021 15:25:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9478060BEB;
+	Tue, 13 Apr 2021 15:25:20 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C16771BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 15:25:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id BCCF884449
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 15:25:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8VFc0NljwZCx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Apr 2021 15:25:14 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd2f.google.com (mail-io1-xd2f.google.com
+ [IPv6:2607:f8b0:4864:20::d2f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9747D84444
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 15:25:14 +0000 (UTC)
+Received: by mail-io1-xd2f.google.com with SMTP id f15so8698171iob.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Apr 2021 08:25:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iEkFvtIIJwWjPMTHPUh8pykqV8qelaf111D4c5j8NNA=;
+ b=tDyWBKyI07EoQCiqVaB2z9Ker9DumbnCK3Ml9Nu4KOZE+VB1kTzB4jrnQy7qEodb62
+ 2bWGa7onwKSyv5dXo+nSrL5dAeJ/sgFbY3B3Ma+jmCwram13g75Ggzx4PoXXffIp51hu
+ 8RjIw+Q5k3sYIf8ESScjQnbP4woH9ocnQ7TR4SYQhd29A2/P7hlY8Cd3KsBxOjYDKCle
+ V9JAROuG2YDeiXc95dNHXDxdkqDGUpkLbT0WJP9Oy+5MszJDRJu4ZOqC8QinGG1K5yDQ
+ RkppYBe9GZw7y5DQfqHOfJsuIZjWmp6Bu/dXqImCMfNPUmUZeC/nQqReTA9z932M1G5g
+ Czew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iEkFvtIIJwWjPMTHPUh8pykqV8qelaf111D4c5j8NNA=;
+ b=IkV96VG40jKBY65TKS22RKDjvHwg2VJNXJpe6L6uCd3V1vo5ov2nUeRNK2aR9SdBOL
+ qksvrrNrcTQ1sVN6yaIQLuIe2Y9DS3vgSl/szEGdr97yQTrt11xh6Fb+i52urCoZGE1J
+ oejaHTdT7jqw0wYDTKGLPbT2lhJH1E3HLKXwqo6Ga94Qh0gVzphiUGove6JDplDqwUQP
+ MktRpOYzZVH+QBTAPraYg693A5hoMuaHQKcRUGu4f85x49VkwlCY3HtphXjIW/9QyOHC
+ Zgt8K4/cp/VX1+FMxNweL0Sw2S+try384U1dM6Zv5ClqyTINN0rP+BGDimgTKxOeAJOC
+ slxg==
+X-Gm-Message-State: AOAM532+Z+560JPBtkKcUED/bYNzbghAJDNahoRwO4dOO+JBZFeUw/bf
+ BoeJa8nYQ6Gb0ac2UhkK0n1DDG36KHpcoLRANRg=
+X-Google-Smtp-Source: ABdhPJzEhueFKv2yERuPNsQ9B/O4YOCvuA+I3aOzshga6AY/kS/tfVGWmW79I825q1ZwTz9OUjp1t+9anMhd1xtdWpE=
+X-Received: by 2002:a6b:f909:: with SMTP id j9mr27601969iog.138.1618327513486; 
+ Tue, 13 Apr 2021 08:25:13 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210412101713.15161-1-kurt@linutronix.de>
+ <20210412162846.42706d99@carbon>
+In-Reply-To: <20210412162846.42706d99@carbon>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Tue, 13 Apr 2021 08:25:01 -0700
+Message-ID: <CAKgT0UekqPNQxV6PzpEeis69z3e3YNcaFyot=nD7w26hLxPX2Q@mail.gmail.com>
+To: Jesper Dangaard Brouer <brouer@redhat.com>
+Subject: Re: [Intel-wired-lan] [PATCH RFC net] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,101 +82,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Dawid Lukwinski <dawid.lukwinski@intel.com>
-MIME-Version: 1.0
+Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Kurt Kanzenbach <kurt@linutronix.de>, Alexei Starovoitov <ast@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Unlike other supported adapters, 2.5G and 5G use different
-PHY type identifiers for reading/writing PHY settings
-and for reading link status. This commit introduces
-separate PHY identifiers for these two operation types.
+On Mon, Apr 12, 2021 at 7:29 AM Jesper Dangaard Brouer
+<brouer@redhat.com> wrote:
+>
+>
+> On Mon, 12 Apr 2021 12:17:13 +0200
+> Kurt Kanzenbach <kurt@linutronix.de> wrote:
+>
+> > When using native XDP with the igb driver, the XDP frame data doesn't point to
+> > the beginning of the packet. It's off by 16 bytes. Everything works as expected
+> > with XDP skb mode.
+> >
+> > Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
+> > the timestamp before executing any XDP operations and adjust all other code
+> > accordingly. The igc driver does it like that as well.
+>
+> (Cc. Alexander Duyck)
+>
+> Do we have enough room for the packet page-split tricks when these 16
+> bytes are added?
+>
+> AFAIK this driver like ixgbe+i40e split the page in two 2048 bytes packets.
+>
+>  The XDP headroom is reduced to 192 bytes.
+>  The skb_shared_info is 320 bytes in size.
+>
+> 2048-192-320 = 1536 bytes
+>
+>  MTU(L3) 1500
+>  Ethernet (L2) headers 14 bytes
+>  VLAN 4 bytes, but Q-in-Q vlan 8 bytes.
+>
+> Single VLAN: 1536-1500-14-4 = 18 bytes left
+> Q-in-q VLAN: 1536-1500-14-8 = 14 bytes left
 
-Fixes: 2e45d3f4677a ("i40e: Add support for X710 B/P & SFP+ cards")
-Signed-off-by: Dawid Lukwinski <dawid.lukwinski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- v3: Added missing changes and fixed fixes tag
- v2: Added missing changes in i40e_ethtool.c file
---
- drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h | 6 ++++--
- drivers/net/ethernet/intel/i40e/i40e_common.c     | 4 ++--
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c    | 4 ++--
- drivers/net/ethernet/intel/i40e/i40e_type.h       | 7 ++-----
- 4 files changed, 10 insertions(+), 11 deletions(-)
+So the Q-in-q case should kick us over to jumbo frames since we have
+to add the extra size into the final supported frame size. So the size
+itself should work.
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-index ce626ea..140b677 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-@@ -1566,8 +1566,10 @@ enum i40e_aq_phy_type {
- 	I40E_PHY_TYPE_25GBASE_LR		= 0x22,
- 	I40E_PHY_TYPE_25GBASE_AOC		= 0x23,
- 	I40E_PHY_TYPE_25GBASE_ACC		= 0x24,
--	I40E_PHY_TYPE_2_5GBASE_T		= 0x30,
--	I40E_PHY_TYPE_5GBASE_T			= 0x31,
-+	I40E_PHY_TYPE_2_5GBASE_T		= 0x26,
-+	I40E_PHY_TYPE_5GBASE_T			= 0x27,
-+	I40E_PHY_TYPE_2_5GBASE_T_LINK_STATUS	= 0x30,
-+	I40E_PHY_TYPE_5GBASE_T_LINK_STATUS	= 0x31,
- 	I40E_PHY_TYPE_MAX,
- 	I40E_PHY_TYPE_NOT_SUPPORTED_HIGH_TEMP	= 0xFD,
- 	I40E_PHY_TYPE_EMPTY			= 0xFE,
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index dd65aaa..b4d3fed 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -1042,8 +1042,8 @@ static enum i40e_media_type i40e_get_media_type(struct i40e_hw *hw)
- 		break;
- 	case I40E_PHY_TYPE_100BASE_TX:
- 	case I40E_PHY_TYPE_1000BASE_T:
--	case I40E_PHY_TYPE_2_5GBASE_T:
--	case I40E_PHY_TYPE_5GBASE_T:
-+	case I40E_PHY_TYPE_2_5GBASE_T_LINK_STATUS:
-+	case I40E_PHY_TYPE_5GBASE_T_LINK_STATUS:
- 	case I40E_PHY_TYPE_10GBASE_T:
- 		media = I40E_MEDIA_TYPE_BASET;
- 		break;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index fbe4fe9..b575ce4 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -841,8 +841,8 @@ static void i40e_get_settings_link_up(struct i40e_hw *hw,
- 							     10000baseT_Full);
- 		break;
- 	case I40E_PHY_TYPE_10GBASE_T:
--	case I40E_PHY_TYPE_5GBASE_T:
--	case I40E_PHY_TYPE_2_5GBASE_T:
-+	case I40E_PHY_TYPE_5GBASE_T_LINK_STATUS:
-+	case I40E_PHY_TYPE_2_5GBASE_T_LINK_STATUS:
- 	case I40E_PHY_TYPE_1000BASE_T:
- 	case I40E_PHY_TYPE_100BASE_TX:
- 		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
-index 1fb13a7..36a4ca1 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_type.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
-@@ -239,11 +239,8 @@ struct i40e_phy_info {
- #define I40E_CAP_PHY_TYPE_25GBASE_ACC BIT_ULL(I40E_PHY_TYPE_25GBASE_ACC + \
- 					     I40E_PHY_TYPE_OFFSET)
- /* Offset for 2.5G/5G PHY Types value to bit number conversion */
--#define I40E_PHY_TYPE_OFFSET2 (-10)
--#define I40E_CAP_PHY_TYPE_2_5GBASE_T BIT_ULL(I40E_PHY_TYPE_2_5GBASE_T + \
--					     I40E_PHY_TYPE_OFFSET2)
--#define I40E_CAP_PHY_TYPE_5GBASE_T BIT_ULL(I40E_PHY_TYPE_5GBASE_T + \
--					     I40E_PHY_TYPE_OFFSET2)
-+#define I40E_CAP_PHY_TYPE_2_5GBASE_T BIT_ULL(I40E_PHY_TYPE_2_5GBASE_T)
-+#define I40E_CAP_PHY_TYPE_5GBASE_T BIT_ULL(I40E_PHY_TYPE_5GBASE_T)
- #define I40E_HW_CAP_MAX_GPIO			30
- /* Capabilities of a PF or a VF or the whole device */
- struct i40e_hw_capabilities {
--- 
-2.17.1
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > index 86a576201f5f..0cbdf48285d3 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > @@ -863,23 +863,22 @@ static void igb_ptp_tx_hwtstamp(struct igb_adapter *adapter)
+> >   * igb_ptp_rx_pktstamp - retrieve Rx per packet timestamp
+> >   * @q_vector: Pointer to interrupt specific structure
+> >   * @va: Pointer to address containing Rx buffer
+> > - * @skb: Buffer containing timestamp and packet
+> >   *
+> >   * This function is meant to retrieve a timestamp from the first buffer of an
+> >   * incoming frame.  The value is stored in little endian format starting on
+> >   * byte 8
+> >   *
+> > - * Returns: 0 if success, nonzero if failure
+> > + * Returns: 0 on failure, timestamp on success
+> >   **/
+> > -int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+> > -                     struct sk_buff *skb)
+> > +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
+> >  {
+> >       struct igb_adapter *adapter = q_vector->adapter;
+> > +     struct skb_shared_hwtstamps ts;
+> >       __le64 *regval = (__le64 *)va;
+> >       int adjust = 0;
+> >
+> >       if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
+> > -             return IGB_RET_PTP_DISABLED;
+> > +             return 0;
+> >
+> >       /* The timestamp is recorded in little endian format.
+> >        * DWORD: 0        1        2        3
+> > @@ -888,10 +887,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+> >
+> >       /* check reserved dwords are zero, be/le doesn't matter for zero */
+> >       if (regval[0])
+> > -             return IGB_RET_PTP_INVALID;
+> > +             return 0;
+> >
 
+One thing that needs to be cleaned up in the patch is that if it is
+going to drop these return values it should probably drop the defines
+for them since I don't think they are used anywhere else.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
