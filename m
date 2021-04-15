@@ -1,72 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD590360BA9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Apr 2021 16:17:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75D6B360BA8
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Apr 2021 16:17:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 73C7441504;
-	Thu, 15 Apr 2021 14:17:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1CB5284747;
+	Thu, 15 Apr 2021 14:17:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hBm_BlYiJ-1F; Thu, 15 Apr 2021 14:17:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DWi2_yICSb_V; Thu, 15 Apr 2021 14:17:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A3019414EE;
-	Thu, 15 Apr 2021 14:17:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 41E5884719;
+	Thu, 15 Apr 2021 14:17:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6252C1BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 12:51:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 946AB1BF955
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 13:20:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5DB6D4016C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 12:51:45 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8324D4021B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 13:20:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
+ dkim=pass (2048-bit key) header.d=linutronix.de header.b="fvZSnk4F";
+ dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
+ header.d=linutronix.de header.b="SBf11oFU"
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CKs9elxxLC6X for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Apr 2021 12:51:44 +0000 (UTC)
+ with ESMTP id u2tQKGrh3C_d for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Apr 2021 13:20:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0EFD240129
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 12:51:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1618491102;
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D39584016C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Apr 2021 13:20:07 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1618492804;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m+egjn8p3lm4N8WT7Rqz4QHSvGTjGYcB6Au487i0bKQ=;
- b=NmZCHWJTf8Lf9AcR3Fc5yIBRgWvsRDk2S3zSfxc4oyjaSWy6SQ4ddFe3/LTqIkyF8Fjwi6
- A6JNsHIj65OgdFe4sbWW3rBBFPzKBLrZJyVxC67sFhVrvTCEI7mX5rGNpu/lr3w+5k1UHH
- jwMmMbovXczOWvgLiTNOFwKE6cjZpjs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-593-Cz96uEqYPjG0x8NmQ1PDqg-1; Thu, 15 Apr 2021 08:51:38 -0400
-X-MC-Unique: Cz96uEqYPjG0x8NmQ1PDqg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CDF85107ACE6;
- Thu, 15 Apr 2021 12:51:35 +0000 (UTC)
-Received: from carbon (unknown [10.36.110.19])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9436060CE7;
- Thu, 15 Apr 2021 12:51:31 +0000 (UTC)
-Date: Thu, 15 Apr 2021 14:51:28 +0200
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20210415145011.6734d3fb@carbon>
-In-Reply-To: <874kg7hhej.fsf@kurt>
+ bh=onhykUzXf+/EwFP50ypOXEHOWfV85WogyE7TB/1hxLM=;
+ b=fvZSnk4FDhR0rUQNCp7zWEexOgxoM6fVTb9ZNTt5vDGlOCuznffQoguS38pGzczCXY2aWe
+ GZJ71VPqw+QxMhMtP2jmJDceMMVwewWMfs9lfmtusBuV1VXQOrhGWLqqn3ZPYpfMAwZ0D9
+ igpD0ywki7qTftlrQkXBbIf6Z4fGIB0bcAxZSGZpkMyPa3gn6bK5Ew98fg7J5bkmY7l49u
+ fAL74nA914v8mpMXhevKVc4UWaxdSWc5tW6sLhMw/to3Sv/lANv9vR9LrH3g6kjXUggwZF
+ fPkSo4h+a7XyepEISpt6Eqrf8Iqg1Ks5TqXNZrmtGhlAHd+pLUyNEIyYWj/Niw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1618492804;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=onhykUzXf+/EwFP50ypOXEHOWfV85WogyE7TB/1hxLM=;
+ b=SBf11oFUfY83MZ9Xqsy6ctSb7TGOnnDiPFQ5O70bBSUih03DjMnMwazqNb5e9RWtKE/xyq
+ oXjvaJOPUwefoeCg==
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>
+In-Reply-To: <20210415145011.6734d3fb@carbon>
 References: <20210415092145.27322-1-kurt@linutronix.de>
  <20210415140438.60221f21@carbon> <874kg7hhej.fsf@kurt>
-Organization: Red Hat Inc.
+ <20210415145011.6734d3fb@carbon>
+Date: Thu, 15 Apr 2021 15:20:02 +0200
+Message-ID: <87v98nfzwd.fsf@kurt>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mailman-Approved-At: Thu, 15 Apr 2021 14:16:57 +0000
 Subject: Re: [Intel-wired-lan] [PATCH net] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -89,54 +86,63 @@ Cc: Richard Cochran <richardcochran@gmail.com>,
  Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
  bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7049808170733688411=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 15 Apr 2021 14:16:36 +0200
-Kurt Kanzenbach <kurt@linutronix.de> wrote:
+--===============7049808170733688411==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-> On Thu Apr 15 2021, Jesper Dangaard Brouer wrote:
-> > On Thu, 15 Apr 2021 11:21:45 +0200
-> > Kurt Kanzenbach <kurt@linutronix.de> wrote:
-> >  
-> >> When using native XDP with the igb driver, the XDP frame data doesn't point to
-> >> the beginning of the packet. It's off by 16 bytes. Everything works as expected
-> >> with XDP skb mode.
-> >> 
-> >> Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
-> >> the timestamp before executing any XDP operations and adjust all other code
-> >> accordingly. The igc driver does it like that as well.
-> >> 
-> >> Tested with Intel i210 card and AF_XDP sockets.  
-> >
-> > Doesn't the i210 card use the igc driver?
-> > This change is for igb driver.  
-> 
-> Nope. igb is for i210 and igc is for the newer Intel i225 NICs.
-> 
-> |01:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)
-> |[...]
-> |        Kernel driver in use: igb
-> |        Kernel modules: igb
+--=-=-=
+Content-Type: text/plain
 
-Thanks a lot for correcting me!
+On Thu Apr 15 2021, Jesper Dangaard Brouer wrote:
+> I have a project involving i225+igc (using TSN).  And someone suggested
+> that I also looked at i210 for TSN.  I've ordered hardware that have
+> i210 on motherboard (and I will insert my i225 card) so I have a system
+> with both chips for experimenting with TSN.  I guess, I would have
+> discovered this eventually when I got the hardware.  Thanks for saving
+> me from this mistake. Thanks!
 
-I have a project involving i225+igc (using TSN).  And someone suggested
-that I also looked at i210 for TSN.  I've ordered hardware that have
-i210 on motherboard (and I will insert my i225 card) so I have a system
-with both chips for experimenting with TSN.  I guess, I would have
-discovered this eventually when I got the hardware.  Thanks for saving
-me from this mistake. Thanks!
+Well, both cards are interesting for TSN. However, the i225 has some
+advanced features in contrast to the i210. For instance, it supports
+time aware scheduling (IEEE 802.1Qbv) in hardware through the Linux
+TAPRIO interface.
 
--- 
-Best regards,
-  Jesper Dangaard Brouer
-  MSc.CS, Principal Kernel Engineer at Red Hat
-  LinkedIn: http://www.linkedin.com/in/brouer
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmB4PYIACgkQeSpbgcuY
+8Kb++w//cWfxRdKbXgvTOAikLaw1ZzNE1Jmpt+ztax4zcmZX8Qe07WuCarmTqNWS
+qZqiKEsnLvxBsZo46qQEYBofELI5TdwmkUXODmHvOFEHng/SvN4dZd0JXqI1EriY
+LY37FBl00xqDUrSrt+9AgjswEnxWxueOyH/xvONxjSjNXP8sh1jk6YbRi77+ZzMA
+ggVBGyCyckmhqAG7KCC+htOM+OWvChz0VOCpWRGy6LSCjQSU10b5LnCOCT2749BP
+sm+QdZwcxU+vCSdzAQF6WounBgCZono2STziYzoJxOKYk2as5i94hM14DpRaTSaz
+vHyyp/nVwVa3Cq1mbF1/C9Rd3XGm5h3LlbSgXe60c+jPxhQb76vvBhYTseb3ZXuR
+vnH4R0RwpFshbc4PnUthyTRtM1iYOdppySsBlXCrN1EWiR9tV/8yTwou9WGP07ko
+r/gM3jPolQ0bMxe+Kvhi/D+82FABC069mlAeqxks/KUCEfSJvVrRwTSom+qadKfj
+ilh7IgOb5EBXwKGWAuEcmn+TqphtLy+AB7T79dbANYzmV1f6aaqyZbsMK/xYvENS
+lJ6Wjyhc2jWBAjcVi8gG+PWzSMuUckdwBBIu4v7f59ZDlIcAmIdMcNCeNqdJ9YVQ
+f7YgKXk1CFM9WAJzQBky9vFPL02wBhysw3fPW3vZxRMNz/syfyc=
+=KPkY
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============7049808170733688411==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============7049808170733688411==--
