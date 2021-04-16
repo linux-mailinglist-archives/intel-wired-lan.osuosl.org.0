@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E35636263B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Apr 2021 19:00:23 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C00D362A98
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Apr 2021 23:52:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B886F60E04;
-	Fri, 16 Apr 2021 17:00:21 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4EFF3403A3;
+	Fri, 16 Apr 2021 21:52:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R8TN124q7r5X; Fri, 16 Apr 2021 17:00:20 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4RcmEcDfrNzW; Fri, 16 Apr 2021 21:52:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD86260BAE;
-	Fri, 16 Apr 2021 17:00:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4CF94403A2;
+	Fri, 16 Apr 2021 21:52:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DE9C81BF297
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 17:00:16 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BB42F1BF336
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DA2AE84B5E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 17:00:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B6DB3403A2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r_SMVNdGJ_rZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Apr 2021 17:00:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7UcMGHaye-LE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Apr 2021 21:52:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C92E484584
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 17:00:12 +0000 (UTC)
-IronPort-SDR: KHIstpjq7QMV2NCxUznGwIqyhKM5pcbL5GC9JhrZy+2jvnWc60/dgWiW/gbXpuQ1mnIygrSS8r
- 7UENT8mqnX3A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9956"; a="280387079"
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="280387079"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2021 10:00:01 -0700
-IronPort-SDR: bzKQ/wsbHNpLxqG2kzSzy8h2hB53/B4Ciesp/IU95pSEXWgU8coZukAiw9DCiyyBObBNgQhsg4
- A3vLZOdoY9nQ==
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B124540197
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:27 +0000 (UTC)
+IronPort-SDR: OisXCAGsCv1Kt22xsDBdSDg/x7nUS5IXHmUgp4fSO9rJIvIxX3ZmzJoGkPlKMtGPqmtffhQBPn
+ GP5LgQCfZugg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9956"; a="215663908"
+X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="215663908"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2021 14:52:25 -0700
+IronPort-SDR: op1NkjkqRu8jQ3e+kvhvi3wvXG+svzvc7pDVtbOHurSbmqBN+zno+bNXS/078O2sNxiQ1ULTkN
+ X25V3VqECs2w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="425657084"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga008.jf.intel.com with ESMTP; 16 Apr 2021 10:00:00 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="462095371"
+Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
+ by orsmga001.jf.intel.com with ESMTP; 16 Apr 2021 14:52:24 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 16 Apr 2021 16:59:52 +0000
-Message-Id: <20210416165952.24401-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [net] igb: Check if num of q_vectors is smaller
- than max before array access.
+Date: Fri, 16 Apr 2021 23:43:57 +0200
+Message-Id: <20210416214357.341975-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.26.0
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH net] i40e: Remove lldp frame filters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,59 +63,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ensure that the adapter->q_vector[MAX_Q_VECTORS] array isn't accessed
-beyond its size. It was fixed by using a local variable num_q_vectors
-as a limit for loop index, and ensure that num_q_vectors is not bigger
-than MAX_Q_VECTORS.
+Remove filters from being setup in case of software DCB and allow the
+lldp frames to be properly transmitted to the wire.
 
-Fixes: 047e0030f1e6 ("igb: add new data structure for handling
-interrupts and NAPI")
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Reviewed-by: Slawomir Laba <slawomirx.laba@intel.com>
-Reviewed-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Verified-by: Mateusz Palczewski <mateusz.placzewski@intel.com>
+It is not possible to transmit the LLDP frame out of the port, if they
+are filtered by control VSI. This prohibits software lldp agent
+properly communicate it's DCB capabilities to the neighbors.
+
+Fixes: 4b208eaa8078 ("i40e: Add init and default config of software based DCB")
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e.h        |  1 -
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  1 -
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 42 -------------------
+ 3 files changed, 44 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 55051a492..2c601261f 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -929,6 +929,7 @@ static void igb_configure_msix(struct igb_adapter *adapter)
-  **/
- static int igb_request_msix(struct igb_adapter *adapter)
- {
-+	unsigned int num_q_vectors = adapter->num_q_vectors;
- 	struct net_device *netdev = adapter->netdev;
- 	int i, err = 0, vector = 0, free_vector = 0;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 1116543..e3a4c7b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -1222,7 +1222,6 @@ static inline bool i40e_is_sw_dcb(struct i40e_pf *pf)
+ 	return !!(pf->flags & I40E_FLAG_DISABLE_FW_LLDP);
+ }
  
-@@ -937,7 +938,13 @@ static int igb_request_msix(struct igb_adapter *adapter)
- 	if (err)
- 		goto err_out;
+-void i40e_set_lldp_forwarding(struct i40e_pf *pf, bool enable);
+ #ifdef CONFIG_I40E_DCB
+ void i40e_dcbnl_flush_apps(struct i40e_pf *pf,
+ 			   struct i40e_dcbx_config *old_cfg,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index fbe4fe9..936908c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5280,7 +5280,6 @@ flags_complete:
+ 			i40e_aq_cfg_lldp_mib_change_event(&pf->hw, false, NULL);
+ 			i40e_aq_stop_lldp(&pf->hw, true, false, NULL);
+ 		} else {
+-			i40e_set_lldp_forwarding(pf, false);
+ 			status = i40e_aq_start_lldp(&pf->hw, false, NULL);
+ 			if (status) {
+ 				adq_err = pf->hw.aq.asq_last_status;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 3180b41..1a39e51 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -6890,40 +6890,6 @@ out:
+ }
+ #endif /* CONFIG_I40E_DCB */
  
--	for (i = 0; i < adapter->num_q_vectors; i++) {
-+	if (num_q_vectors > MAX_Q_VECTORS) {
-+		num_q_vectors = MAX_Q_VECTORS;
-+		dev_warn(&adapter->pdev->dev,
-+			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
-+			 adapter->num_q_vectors, MAX_Q_VECTORS);
-+	}
-+	for (i = 0; i < num_q_vectors; i++) {
- 		struct igb_q_vector *q_vector = adapter->q_vector[i];
+-/**
+- * i40e_set_lldp_forwarding - set forwarding of lldp frames
+- * @pf: PF being configured
+- * @enable: if forwarding to OS shall be enabled
+- *
+- * Toggle forwarding of lldp frames behavior,
+- * When passing DCB control from firmware to software
+- * lldp frames must be forwarded to the software based
+- * lldp agent.
+- */
+-void i40e_set_lldp_forwarding(struct i40e_pf *pf, bool enable)
+-{
+-	if (pf->lan_vsi == I40E_NO_VSI)
+-		return;
+-
+-	if (!pf->vsi[pf->lan_vsi])
+-		return;
+-
+-	/* No need to check the outcome, commands may fail
+-	 * if desired value is already set
+-	 */
+-	i40e_aq_add_rem_control_packet_filter(&pf->hw, NULL, ETH_P_LLDP,
+-					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_TX |
+-					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_IGNORE_MAC,
+-					      pf->vsi[pf->lan_vsi]->seid, 0,
+-					      enable, NULL, NULL);
+-
+-	i40e_aq_add_rem_control_packet_filter(&pf->hw, NULL, ETH_P_LLDP,
+-					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_RX |
+-					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_IGNORE_MAC,
+-					      pf->vsi[pf->lan_vsi]->seid, 0,
+-					      enable, NULL, NULL);
+-}
+-
+ /**
+  * i40e_print_link_message - print link up or down
+  * @vsi: the VSI for which link needs a message
+@@ -10749,10 +10715,6 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+ 	 */
+ 	i40e_add_filter_to_drop_tx_flow_control_frames(&pf->hw,
+ 						       pf->main_vsi_seid);
+-#ifdef CONFIG_I40E_DCB
+-	if (pf->flags & I40E_FLAG_DISABLE_FW_LLDP)
+-		i40e_set_lldp_forwarding(pf, true);
+-#endif /* CONFIG_I40E_DCB */
  
- 		vector++;
+ 	/* restart the VSIs that were rebuilt and running before the reset */
+ 	i40e_pf_unquiesce_all_vsi(pf);
+@@ -15796,10 +15758,6 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 */
+ 	i40e_add_filter_to_drop_tx_flow_control_frames(&pf->hw,
+ 						       pf->main_vsi_seid);
+-#ifdef CONFIG_I40E_DCB
+-	if (pf->flags & I40E_FLAG_DISABLE_FW_LLDP)
+-		i40e_set_lldp_forwarding(pf, true);
+-#endif /* CONFIG_I40E_DCB */
+ 
+ 	if ((pf->hw.device_id == I40E_DEV_ID_10G_BASE_T) ||
+ 		(pf->hw.device_id == I40E_DEV_ID_10G_BASE_T4))
+
+base-commit: ca4303103f33952646218db4e0869e6f6aa1c840
 -- 
-2.17.1
+2.26.0
 
 _______________________________________________
 Intel-wired-lan mailing list
