@@ -1,56 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C00D362A98
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Apr 2021 23:52:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67209362D74
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Apr 2021 06:14:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4EFF3403A3;
-	Fri, 16 Apr 2021 21:52:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 44D6E404C9;
+	Sat, 17 Apr 2021 04:14:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4RcmEcDfrNzW; Fri, 16 Apr 2021 21:52:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ycsLdz3kJzHz; Sat, 17 Apr 2021 04:14:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4CF94403A2;
-	Fri, 16 Apr 2021 21:52:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 029B9404B0;
+	Sat, 17 Apr 2021 04:14:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BB42F1BF336
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DEE0F1BF866
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Apr 2021 04:14:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B6DB3403A2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CBEF140139
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Apr 2021 04:14:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7UcMGHaye-LE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Apr 2021 21:52:27 +0000 (UTC)
+ with ESMTP id ylc9E75Kh_VR for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 17 Apr 2021 04:14:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B124540197
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Apr 2021 21:52:27 +0000 (UTC)
-IronPort-SDR: OisXCAGsCv1Kt22xsDBdSDg/x7nUS5IXHmUgp4fSO9rJIvIxX3ZmzJoGkPlKMtGPqmtffhQBPn
- GP5LgQCfZugg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9956"; a="215663908"
-X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="215663908"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B657E40113
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Apr 2021 04:14:20 +0000 (UTC)
+IronPort-SDR: 7SyJC4S/TQirwD0A53DgNSWGem6Z7XwtUSnJ5sK37fBE+rtREljNhM9bmujYzgmApBiR/ar/85
+ ot3apsu8DEEw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9956"; a="215697566"
+X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="215697566"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2021 14:52:25 -0700
-IronPort-SDR: op1NkjkqRu8jQ3e+kvhvi3wvXG+svzvc7pDVtbOHurSbmqBN+zno+bNXS/078O2sNxiQ1ULTkN
- X25V3VqECs2w==
+ 16 Apr 2021 21:14:19 -0700
+IronPort-SDR: BeWfVirCuejri/b9d3RQlFQnwOloo4d1MJZ9T2mGwESu4qVnSpTqix883lLaz1vJePBXzeiESD
+ dTksbDYujXuw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="462095371"
-Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
- by orsmga001.jf.intel.com with ESMTP; 16 Apr 2021 14:52:24 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 16 Apr 2021 23:43:57 +0200
-Message-Id: <20210416214357.341975-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
+X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="425828083"
+Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 16 Apr 2021 21:14:11 -0700
+Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lXcLS-0000fo-UQ; Sat, 17 Apr 2021 04:14:10 +0000
+Date: Sat, 17 Apr 2021 12:13:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <607a6067.NRWCrNG0gkDDBTlO%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] i40e: Remove lldp frame filters
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 82aeaaf85177a522ed86316ac0d681a2be18e3d2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,117 +72,141 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove filters from being setup in case of software DCB and allow the
-lldp frames to be properly transmitted to the wire.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 82aeaaf85177a522ed86316ac0d681a2be18e3d2  ice: Re-organizes reqstd/avail {R,T}XQ check/code for efficiency+readability
 
-It is not possible to transmit the LLDP frame out of the port, if they
-are filtered by control VSI. This prohibits software lldp agent
-properly communicate it's DCB capabilities to the neighbors.
+elapsed time: 722m
 
-Fixes: 4b208eaa8078 ("i40e: Add init and default config of software based DCB")
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+configs tested: 117
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                             allyesconfig
+riscv                            allyesconfig
+arm                    vt8500_v6_v7_defconfig
+arm                        clps711x_defconfig
+arm                         at91_dt_defconfig
+arc                      axs103_smp_defconfig
+mips                      maltaaprp_defconfig
+arm                          imote2_defconfig
+sh                           se7751_defconfig
+arm                            pleb_defconfig
+arm                        mini2440_defconfig
+sparc                       sparc32_defconfig
+mips                           ip22_defconfig
+arm                           sama5_defconfig
+ia64                        generic_defconfig
+csky                                defconfig
+mips                           ip32_defconfig
+sh                             shx3_defconfig
+powerpc                     mpc512x_defconfig
+arm                       imx_v4_v5_defconfig
+arm                         socfpga_defconfig
+sh                ecovec24-romimage_defconfig
+arm                         lpc18xx_defconfig
+sparc                       sparc64_defconfig
+sh                        sh7757lcr_defconfig
+sh                     magicpanelr2_defconfig
+arm                              alldefconfig
+powerpc                 mpc8540_ads_defconfig
+mips                            ar7_defconfig
+mips                     cu1000-neo_defconfig
+powerpc                     sequoia_defconfig
+powerpc                     mpc83xx_defconfig
+powerpc                 canyonlands_defconfig
+powerpc                        cell_defconfig
+sh                        sh7785lcr_defconfig
+arm                        trizeps4_defconfig
+s390                          debug_defconfig
+openrisc                  or1klitex_defconfig
+arm64                            alldefconfig
+sh                          r7785rp_defconfig
+powerpc                          g5_defconfig
+mips                        maltaup_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a003-20210416
+i386                 randconfig-a006-20210416
+i386                 randconfig-a001-20210416
+i386                 randconfig-a005-20210416
+i386                 randconfig-a004-20210416
+i386                 randconfig-a002-20210416
+x86_64               randconfig-a014-20210416
+x86_64               randconfig-a015-20210416
+x86_64               randconfig-a011-20210416
+x86_64               randconfig-a013-20210416
+x86_64               randconfig-a012-20210416
+x86_64               randconfig-a016-20210416
+i386                 randconfig-a015-20210416
+i386                 randconfig-a014-20210416
+i386                 randconfig-a013-20210416
+i386                 randconfig-a012-20210416
+i386                 randconfig-a016-20210416
+i386                 randconfig-a011-20210416
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a003-20210416
+x86_64               randconfig-a002-20210416
+x86_64               randconfig-a005-20210416
+x86_64               randconfig-a001-20210416
+x86_64               randconfig-a006-20210416
+x86_64               randconfig-a004-20210416
+
 ---
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 -
- .../net/ethernet/intel/i40e/i40e_ethtool.c    |  1 -
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 42 -------------------
- 3 files changed, 44 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index 1116543..e3a4c7b 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -1222,7 +1222,6 @@ static inline bool i40e_is_sw_dcb(struct i40e_pf *pf)
- 	return !!(pf->flags & I40E_FLAG_DISABLE_FW_LLDP);
- }
- 
--void i40e_set_lldp_forwarding(struct i40e_pf *pf, bool enable);
- #ifdef CONFIG_I40E_DCB
- void i40e_dcbnl_flush_apps(struct i40e_pf *pf,
- 			   struct i40e_dcbx_config *old_cfg,
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index fbe4fe9..936908c 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -5280,7 +5280,6 @@ flags_complete:
- 			i40e_aq_cfg_lldp_mib_change_event(&pf->hw, false, NULL);
- 			i40e_aq_stop_lldp(&pf->hw, true, false, NULL);
- 		} else {
--			i40e_set_lldp_forwarding(pf, false);
- 			status = i40e_aq_start_lldp(&pf->hw, false, NULL);
- 			if (status) {
- 				adq_err = pf->hw.aq.asq_last_status;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 3180b41..1a39e51 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -6890,40 +6890,6 @@ out:
- }
- #endif /* CONFIG_I40E_DCB */
- 
--/**
-- * i40e_set_lldp_forwarding - set forwarding of lldp frames
-- * @pf: PF being configured
-- * @enable: if forwarding to OS shall be enabled
-- *
-- * Toggle forwarding of lldp frames behavior,
-- * When passing DCB control from firmware to software
-- * lldp frames must be forwarded to the software based
-- * lldp agent.
-- */
--void i40e_set_lldp_forwarding(struct i40e_pf *pf, bool enable)
--{
--	if (pf->lan_vsi == I40E_NO_VSI)
--		return;
--
--	if (!pf->vsi[pf->lan_vsi])
--		return;
--
--	/* No need to check the outcome, commands may fail
--	 * if desired value is already set
--	 */
--	i40e_aq_add_rem_control_packet_filter(&pf->hw, NULL, ETH_P_LLDP,
--					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_TX |
--					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_IGNORE_MAC,
--					      pf->vsi[pf->lan_vsi]->seid, 0,
--					      enable, NULL, NULL);
--
--	i40e_aq_add_rem_control_packet_filter(&pf->hw, NULL, ETH_P_LLDP,
--					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_RX |
--					      I40E_AQC_ADD_CONTROL_PACKET_FLAGS_IGNORE_MAC,
--					      pf->vsi[pf->lan_vsi]->seid, 0,
--					      enable, NULL, NULL);
--}
--
- /**
-  * i40e_print_link_message - print link up or down
-  * @vsi: the VSI for which link needs a message
-@@ -10749,10 +10715,6 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
- 	 */
- 	i40e_add_filter_to_drop_tx_flow_control_frames(&pf->hw,
- 						       pf->main_vsi_seid);
--#ifdef CONFIG_I40E_DCB
--	if (pf->flags & I40E_FLAG_DISABLE_FW_LLDP)
--		i40e_set_lldp_forwarding(pf, true);
--#endif /* CONFIG_I40E_DCB */
- 
- 	/* restart the VSIs that were rebuilt and running before the reset */
- 	i40e_pf_unquiesce_all_vsi(pf);
-@@ -15796,10 +15758,6 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	 */
- 	i40e_add_filter_to_drop_tx_flow_control_frames(&pf->hw,
- 						       pf->main_vsi_seid);
--#ifdef CONFIG_I40E_DCB
--	if (pf->flags & I40E_FLAG_DISABLE_FW_LLDP)
--		i40e_set_lldp_forwarding(pf, true);
--#endif /* CONFIG_I40E_DCB */
- 
- 	if ((pf->hw.device_id == I40E_DEV_ID_10G_BASE_T) ||
- 		(pf->hw.device_id == I40E_DEV_ID_10G_BASE_T4))
-
-base-commit: ca4303103f33952646218db4e0869e6f6aa1c840
--- 
-2.26.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
