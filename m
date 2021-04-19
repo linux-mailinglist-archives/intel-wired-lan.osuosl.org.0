@@ -1,129 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEED7363E82
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Apr 2021 11:31:36 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71DC136460D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Apr 2021 16:26:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 189A1608A6;
-	Mon, 19 Apr 2021 09:31:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 069E8402AE;
+	Mon, 19 Apr 2021 14:26:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IJEK9WE1_05W; Mon, 19 Apr 2021 09:31:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XMOwvr4Vm1mP; Mon, 19 Apr 2021 14:26:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1F241607CD;
-	Mon, 19 Apr 2021 09:31:34 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D1219400D3;
+	Mon, 19 Apr 2021 14:26:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B45071BF40E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 09:31:29 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 924EB1BF420
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 07:24:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A2A43607CD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 09:31:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8EBA4835DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 07:24:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vqiml3skZll2 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Apr 2021 09:31:28 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2055.outbound.protection.outlook.com [40.107.237.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4C880607BF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 09:31:28 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=e14/KkIj23k2vlUovyKGSLhHUMyLX39Cs9LoihLdlQ98GUKTLwpj+8V+S4G7O78tnbFrQk0vVi+FfnjqSPKlYZuARtezED2+JJ/6ipq0yWkjWkzpnJJn4NNqdetzJe+OpqTaHSNxNls9pAbst5lPj75ExL/Dtwsi4N+VFy9vmYvNXhuUebQNko5YoxFAjWxWQPmTRqtaCIZoJoJ6fkw7pS0AI/0wBgqew3FJFJBBXuh2THj7+w7Wn+gqetVuDrbaBg/GFzV/hqSSsJk+LSpb0jeAeFM2DyMY09qs02VxJkkpcGMrBr78ViXdhBFhj4pCErpErsLYg2QyzhgJXr3BJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QpLekaCmnQjQpj+Epq8Tv7ojo4ky48ahB0UBNCna/7U=;
- b=fif+NPkQVKjeb2uJ6zeH2yIVXXWnZY/o0/Yhb/NTyDmkJmOuvoQ2uO520Olg8O7RRoEWtM/s8gMhVLo8fINnFn7E0HciGXPyE1n+6o5YIcS4m6zEUDd0ztuJ3sZT0b91Qf7J/BTqyZ8hGqIYnULkmWoKsmie4BBh7clt6AT+VOt8dtmyFIaSNKwUA7MVj8D4u1FglFw1duvDGur8yH21Xhh0wCXmjYcIaT0kSdFt6uDd++Z0gUxgc27VVjGr4iCw8MxUvdt6aZA7vbdyoMZtG2+lL2jO/bJjYwEsjGR7zhVX6eMQlZNpVyi19D2pASVYRxb4VjtkQYxX7F3TgK49Ww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=windriver.com; dmarc=pass action=none
- header.from=windriver.com; dkim=pass header.d=windriver.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=windriversystems.onmicrosoft.com;
- s=selector2-windriversystems-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QpLekaCmnQjQpj+Epq8Tv7ojo4ky48ahB0UBNCna/7U=;
- b=TFVJCXgH8DsDt3CULzGuXnbLKyOAEtONvOdS/pFlSCIZi35BTy56WtwJV6V/iFrNwgLFOTPEmpBlc/ylv9+UUTg3weEh5hdRCBCSyEWsokSyLc6Ma4moPDBHa9yl0O1Is9bgIeckeKXrte9lABMBTL/vLYOcUyUp6EuWWUbhZJo=
-Authentication-Results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none;lists.osuosl.org; dmarc=none action=none
- header.from=windriver.com;
-Received: from DM6PR11MB3419.namprd11.prod.outlook.com (2603:10b6:5:6f::32) by
- DM5PR11MB1481.namprd11.prod.outlook.com (2603:10b6:4:9::12) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4042.16; Mon, 19 Apr 2021 09:31:25 +0000
-Received: from DM6PR11MB3419.namprd11.prod.outlook.com
- ([fe80::5d18:2208:ab30:d880]) by DM6PR11MB3419.namprd11.prod.outlook.com
- ([fe80::5d18:2208:ab30:d880%5]) with mapi id 15.20.4042.024; Mon, 19 Apr 2021
- 09:31:25 +0000
-From: Liwei Song <liwei.song@windriver.com>
-To: intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- jesse <jesse.brandeburg@intel.com>, anthony <anthony.l.nguyen@intel.com>
-Date: Mon, 19 Apr 2021 17:31:06 +0800
-Message-Id: <20210419093106.6487-1-liwei.song@windriver.com>
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [60.247.85.82]
-X-ClientProxiedBy: HK2PR04CA0071.apcprd04.prod.outlook.com
- (2603:1096:202:15::15) To DM6PR11MB3419.namprd11.prod.outlook.com
- (2603:10b6:5:6f::32)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=linutronix.de header.b="XAR3sWMS";
+ dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
+ header.d=linutronix.de header.b="LPsPYwYi"
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Rky9TgJQyL-R for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Apr 2021 07:23:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 19DD0835CF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Apr 2021 07:23:55 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1618817032;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=0yUPCGi5Qzs0eCJF6W8l4MzA23lsWwUXLo57LdFubCU=;
+ b=XAR3sWMSqGPcuhuPrGXlWQSz/NT2R2zsemd8ORtyKnA2gHAudq0eIpPQw8C+2SlfEvPvnw
+ BGRaDZ8+LCissxqqejC0YEJG1+vXLl41/cIqIgnY+HFPeKknSbX41kncU/0NHTUJYEhsPV
+ TBwj0VaJVEGKVqlBn6ej7KXHkMSFDlQOzlQekNp0ROYPzFwz/40jHpXOsyJNtmvd195OxE
+ JR8Hz8FPFzLPFTJC/s6byUbcsQBI+3Ot1JtsPrL+gbfl6GRYes3E3/q/59Dz9zs3Z1UKK6
+ /C/goDAQsfPOeustEObBpmlvHO5HIfRkB0CPjakPkzYJms4WvjAOZY/RkhsU1g==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1618817032;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=0yUPCGi5Qzs0eCJF6W8l4MzA23lsWwUXLo57LdFubCU=;
+ b=LPsPYwYiqaMlPxMjEe0/n1bCMR2cY5FDRgIY24wDQZdu2bRXi/3y9Owp0UvvC0n5Hbhzpc
+ UREHUSA5G16wwfBg==
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Date: Mon, 19 Apr 2021 09:23:32 +0200
+Message-Id: <20210419072332.7246-1-kurt@linutronix.de>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from pek-lpggp3.wrs.com (60.247.85.82) by
- HK2PR04CA0071.apcprd04.prod.outlook.com (2603:1096:202:15::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4042.16 via Frontend Transport; Mon, 19 Apr 2021 09:31:22 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 4e3f377c-1fc0-432c-214f-08d90315e6ac
-X-MS-TrafficTypeDiagnostic: DM5PR11MB1481:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM5PR11MB148153B9FF5E18E361BEFDD29E499@DM5PR11MB1481.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: pllgNun6KOT1Nys/GZarRz5SfLZKpZuuIBSgAebt/RiCbVTObY8/3rr6KDHssKtD4UGr925xPxkcTfGKdj/ObWHNdjztuTnrPD//hdAFKBAdDbkjenflDiXEdrlZlAgSqEFwijvWDcCsxowl6XcEUB9uD7NM3bDvURKcV8qerxIUYtDjtLWpsPHaN70M9hccWjVHj7r0fJ4h1AkCA0QJWL60xOG78t6+doLOdCwu+gNT1knIqsUrTsJf60IMgmYPqHlAck7ys707URUm/AzLedt9WjeOVQ0XTe/FIrOjuz2KHLWJROBGp23v4pJelEvwCIJbELvId4jCV+P6E8RVJMKIBNrAyxpIVXuJWifcWWZvuPZqD0nH5sIdzCTXJ20ZEZbjwDaYt7bYvvlCWEudfdavpNeGVgg6+Q/zkj02JAoeZXSY8g/1TrNalOOwlKiFxguTbsp6kQH/uF8S3KrDalPShMRUGMYHXznn4oB5gLkmBxE9EpAz0Pn7B1keS2EiwxJBhJ+cpZlr4qPFq9JLrGW1XZwP2SNPcemT82IHtAN+ft7srUeYT+L0LUh521iQMWHNESQPo1X7zfsVUCXKZJu+RfmcN/m6e+FWNLL4lUq3BIf+rWGUmk0d1U+xDd38NDgFmX3hv2aNLGyTBI/spbcDUbjlZGN5bwDtmIqKV60t7F5pHQ1dHEkTIlcabECi
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3419.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(346002)(136003)(376002)(39840400004)(396003)(186003)(86362001)(38100700002)(8676002)(38350700002)(66946007)(2616005)(16526019)(6512007)(6666004)(44832011)(478600001)(2906002)(1076003)(52116002)(83380400001)(956004)(8936002)(26005)(4326008)(66476007)(6486002)(5660300002)(6506007)(66556008)(107886003)(54906003)(316002)(36756003)(110136005)(148743002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?Wx6wYJ4VcDfDaL4+rcg1OF2ccYjdaDnrEvqr+gSd8IkTdlE4yoEJBT0aJmFL?=
- =?us-ascii?Q?yjw3AbnpLdBcbrzQq5agsM6zsnnqLzG21WkxJuJL2/7maoxfZlRNNGiy3K20?=
- =?us-ascii?Q?jKfQTAp+XH5r8vD5z+kBMdMXNJWytUIv6UgipSvMVQuYeFKHIGTcp2qwz5aK?=
- =?us-ascii?Q?XmdbRO6uVeNvP9T0HXVOqcRYxY8ZZNxLaYa4ftS/jbDggVLe+VyKa8+s9lva?=
- =?us-ascii?Q?yLm8xnjZKgkAJOZ++HEoppvE0NPBY6OoxsSavcluqfl8WuEOlPTVuY7pioVB?=
- =?us-ascii?Q?xnDJEn0BHHIAPxfPEZqhIzK8QP9jQNdYQW191/MKBOvuOLbdgRGcMyTch8S9?=
- =?us-ascii?Q?uxd/a35fBCwhRGf25D8feMtgrr7faySbqRqm/e8tb5EOf3fEneFG2yah7ind?=
- =?us-ascii?Q?Ou0WJuO9AdLrji+xB8FHpg8UQbXcG8ymHHyUCQBnJjEZK30D74bU90wqjmka?=
- =?us-ascii?Q?iD+2bsIH6sU36pm7zqJDwV7FVJb/KN8WwwEMKxEZ+ghBCTpRtQGV+YiS0fMk?=
- =?us-ascii?Q?Y4WhGXRaLVMDkLiFyI5cLNikww5otmcaJuARDey0Fkw1MAu5bT2Rud1cVc+w?=
- =?us-ascii?Q?JGI0mIwwnXprZd/KZBCxanzOm60AYWgzB3hooTO7Wbm+A5XnVXFWZ7JxNMmM?=
- =?us-ascii?Q?Ln7xu/s4Qk4BOqwONID3Mw50MEIK0bpRp71dyZOmBSCGcuTNByxuYxD7LlIu?=
- =?us-ascii?Q?sk3lIjLqT6pftzFnW0ZpiVkXMGnHViVjMvIWE2j+Lzs2TzU/DRMDFyZTW1E2?=
- =?us-ascii?Q?nvEB+Xa8X64qHBg4svhq18QyYN4e5W90azqk/TIdqOBJ3Z2A7zJoEPbObrJL?=
- =?us-ascii?Q?9/gm69KKctaJAWTMaF18f2VW7hcU4KoI/p2tA8UHp+r5oHGWhW0A/989APNV?=
- =?us-ascii?Q?2ONdLLZ/r2XNmqgYLmuQ60mXmuFf7DaPQB6P3zSkNcApYk2TVeHqngDrsoch?=
- =?us-ascii?Q?Pwey8JK1zskWBabgSYrCslRwvbC4IPN1MomkJC8HcYlrKzsiv3EEWaHTA6Pb?=
- =?us-ascii?Q?GIT9Pl5YnP08wD/qOrsA7B/e/9CORTGIzcVlG/KjGbQQjua8J1/0a010qG7T?=
- =?us-ascii?Q?MC8SQbEGICZ4jq8fe9al0NM5BAAbEepsQjcDAM3AutUIKVnt7k191WgAQYC3?=
- =?us-ascii?Q?+R/9BTjGPLgHMRI0i7e5WRMtO9HAvF9mvnKX4BwaXs2IxyAV0LPPaBS+BKF9?=
- =?us-ascii?Q?f9031pwBIZ8pN2MxcsCveUUvPZYshRd732o9j08OvVbTJRKAhcpvTe3A2jKd?=
- =?us-ascii?Q?j+jSUHkO7Z0lCyTt9C6sYwyCup63ew3tpCueLNLwhQBgBD6Q26D5TTyRalgR?=
- =?us-ascii?Q?dWPT4KzAaZRUushm4N0aOFcm?=
-X-OriginatorOrg: windriver.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e3f377c-1fc0-432c-214f-08d90315e6ac
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3419.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2021 09:31:25.3520 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8ddb2873-a1ad-4a18-ae4e-4644631433be
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KkNxJdm5922bqcyNnshnVGrI6o8SdXKsThOmVw571bGi25HNvqdUCfWl7gL4++ey7f5MHAvDa2pablVyEN23HCgUqPQ1rn1wtHSzSxKtIOw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1481
-Subject: [Intel-wired-lan] [PATCH] ice: set the value of global config lock
- timeout longer
+X-Mailman-Approved-At: Mon, 19 Apr 2021 14:26:22 +0000
+Subject: [Intel-wired-lan] [PATCH net v2] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,44 +75,233 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub <kuba@kernel.org>, David <davem@davemloft.net>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: Kurt Kanzenbach <kurt@linutronix.de>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Alexei Starovoitov <ast@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It may need hold Global Config Lock a longer time when download DDP
-package file, extend the timeout value to 5000ms to ensure that
-download can be finished before other AQ command got time to run,
-this will fix the issue below when probe the device, 5000ms is a test
-value that work with both Backplane and BreakoutCable NVM image:
+When using native XDP with the igb driver, the XDP frame data doesn't point to
+the beginning of the packet. It's off by 16 bytes. Everything works as expected
+with XDP skb mode.
 
-ice 0000:f4:00.0: VSI 12 failed lan queue config, error ICE_ERR_CFG
-ice 0000:f4:00.0: Failed to delete VSI 12 in FW - error: ICE_ERR_AQ_TIMEOUT
-ice 0000:f4:00.0: probe failed due to setup PF switch: -12
-ice: probe of 0000:f4:00.0 failed with error -12
+Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
+the timestamp before executing any XDP operations and adjust all other code
+accordingly. The igc driver does it like that as well.
 
-Signed-off-by: Liwei Song <liwei.song@windriver.com>
+Tested with Intel i210 card and AF_XDP sockets.
+
+Fixes: 9cbc948b5a20 ("igb: add XDP support")
+Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
- drivers/net/ethernet/intel/ice/ice_type.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 266036b7a49a..8a90c47e337d 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -63,7 +63,7 @@ enum ice_aq_res_ids {
- /* FW update timeout definitions are in milliseconds */
- #define ICE_NVM_TIMEOUT			180000
- #define ICE_CHANGE_LOCK_TIMEOUT		1000
--#define ICE_GLOBAL_CFG_LOCK_TIMEOUT	3000
-+#define ICE_GLOBAL_CFG_LOCK_TIMEOUT	5000
+Changes since v1:
+
+ * Use xdp_prepare_buff() (Lorenzo Bianconi)
+
+Changes since RFC:
+
+ * Removed unused return value definitions (Alexander Duyck)
+
+Previous versions:
+
+ * https://lkml.kernel.org/netdev/20210415092145.27322-1-kurt@linutronix.de/
+ * https://lkml.kernel.org/netdev/20210412101713.15161-1-kurt@linutronix.de/
+
+ drivers/net/ethernet/intel/igb/igb.h      |  3 +-
+ drivers/net/ethernet/intel/igb/igb_main.c | 42 +++++++++++++----------
+ drivers/net/ethernet/intel/igb/igb_ptp.c  | 21 ++++--------
+ 3 files changed, 31 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index 7bda8c5edea5..72cf967c1a00 100644
+--- a/drivers/net/ethernet/intel/igb/igb.h
++++ b/drivers/net/ethernet/intel/igb/igb.h
+@@ -748,8 +748,7 @@ void igb_ptp_suspend(struct igb_adapter *adapter);
+ void igb_ptp_rx_hang(struct igb_adapter *adapter);
+ void igb_ptp_tx_hang(struct igb_adapter *adapter);
+ void igb_ptp_rx_rgtstamp(struct igb_q_vector *q_vector, struct sk_buff *skb);
+-int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+-			struct sk_buff *skb);
++ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va);
+ int igb_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
+ int igb_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
+ void igb_set_flag_queue_pairs(struct igb_adapter *, const u32);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index a45cd2b416c8..49873a5eaeaa 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -8281,7 +8281,7 @@ static void igb_add_rx_frag(struct igb_ring *rx_ring,
+ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+ 					 struct igb_rx_buffer *rx_buffer,
+ 					 struct xdp_buff *xdp,
+-					 union e1000_adv_rx_desc *rx_desc)
++					 ktime_t timestamp)
+ {
+ #if (PAGE_SIZE < 8192)
+ 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
+@@ -8301,12 +8301,8 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+ 	if (unlikely(!skb))
+ 		return NULL;
  
- enum ice_aq_res_access_type {
- 	ICE_RES_READ = 1,
+-	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
+-		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, xdp->data, skb)) {
+-			xdp->data += IGB_TS_HDR_LEN;
+-			size -= IGB_TS_HDR_LEN;
+-		}
+-	}
++	if (timestamp)
++		skb_hwtstamps(skb)->hwtstamp = timestamp;
+ 
+ 	/* Determine available headroom for copy */
+ 	headlen = size;
+@@ -8337,7 +8333,7 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
+ 				     struct igb_rx_buffer *rx_buffer,
+ 				     struct xdp_buff *xdp,
+-				     union e1000_adv_rx_desc *rx_desc)
++				     ktime_t timestamp)
+ {
+ #if (PAGE_SIZE < 8192)
+ 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
+@@ -8364,11 +8360,8 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
+ 	if (metasize)
+ 		skb_metadata_set(skb, metasize);
+ 
+-	/* pull timestamp out of packet data */
+-	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+-		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, skb->data, skb))
+-			__skb_pull(skb, IGB_TS_HDR_LEN);
+-	}
++	if (timestamp)
++		skb_hwtstamps(skb)->hwtstamp = timestamp;
+ 
+ 	/* update buffer offset */
+ #if (PAGE_SIZE < 8192)
+@@ -8683,7 +8676,10 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 	while (likely(total_packets < budget)) {
+ 		union e1000_adv_rx_desc *rx_desc;
+ 		struct igb_rx_buffer *rx_buffer;
++		ktime_t timestamp = 0;
++		int pkt_offset = 0;
+ 		unsigned int size;
++		void *pktbuf;
+ 
+ 		/* return some buffers to hardware, one at a time is too slow */
+ 		if (cleaned_count >= IGB_RX_BUFFER_WRITE) {
+@@ -8703,14 +8699,21 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 		dma_rmb();
+ 
+ 		rx_buffer = igb_get_rx_buffer(rx_ring, size, &rx_buf_pgcnt);
++		pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
++
++		/* pull rx packet timestamp if available */
++		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
++			timestamp = igb_ptp_rx_pktstamp(rx_ring->q_vector,
++							pktbuf);
++			pkt_offset += IGB_TS_HDR_LEN;
++			size -= IGB_TS_HDR_LEN;
++		}
+ 
+ 		/* retrieve a buffer from the ring */
+ 		if (!skb) {
+-			unsigned int offset = igb_rx_offset(rx_ring);
+-			unsigned char *hard_start;
++			unsigned char *hard_start = pktbuf - igb_rx_offset(rx_ring);
++			unsigned int offset = pkt_offset + igb_rx_offset(rx_ring);
+ 
+-			hard_start = page_address(rx_buffer->page) +
+-				     rx_buffer->page_offset - offset;
+ 			xdp_prepare_buff(&xdp, hard_start, offset, size, true);
+ #if (PAGE_SIZE > 4096)
+ 			/* At larger PAGE_SIZE, frame_sz depend on len size */
+@@ -8733,10 +8736,11 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 		} else if (skb)
+ 			igb_add_rx_frag(rx_ring, rx_buffer, skb, size);
+ 		else if (ring_uses_build_skb(rx_ring))
+-			skb = igb_build_skb(rx_ring, rx_buffer, &xdp, rx_desc);
++			skb = igb_build_skb(rx_ring, rx_buffer, &xdp,
++					    timestamp);
+ 		else
+ 			skb = igb_construct_skb(rx_ring, rx_buffer,
+-						&xdp, rx_desc);
++						&xdp, timestamp);
+ 
+ 		/* exit if we failed to retrieve a buffer */
+ 		if (!skb) {
+diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+index 86a576201f5f..8e23df7da641 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ptp.c
++++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+@@ -856,30 +856,26 @@ static void igb_ptp_tx_hwtstamp(struct igb_adapter *adapter)
+ 	dev_kfree_skb_any(skb);
+ }
+ 
+-#define IGB_RET_PTP_DISABLED 1
+-#define IGB_RET_PTP_INVALID 2
+-
+ /**
+  * igb_ptp_rx_pktstamp - retrieve Rx per packet timestamp
+  * @q_vector: Pointer to interrupt specific structure
+  * @va: Pointer to address containing Rx buffer
+- * @skb: Buffer containing timestamp and packet
+  *
+  * This function is meant to retrieve a timestamp from the first buffer of an
+  * incoming frame.  The value is stored in little endian format starting on
+  * byte 8
+  *
+- * Returns: 0 if success, nonzero if failure
++ * Returns: 0 on failure, timestamp on success
+  **/
+-int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+-			struct sk_buff *skb)
++ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
+ {
+ 	struct igb_adapter *adapter = q_vector->adapter;
++	struct skb_shared_hwtstamps ts;
+ 	__le64 *regval = (__le64 *)va;
+ 	int adjust = 0;
+ 
+ 	if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
+-		return IGB_RET_PTP_DISABLED;
++		return 0;
+ 
+ 	/* The timestamp is recorded in little endian format.
+ 	 * DWORD: 0        1        2        3
+@@ -888,10 +884,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+ 
+ 	/* check reserved dwords are zero, be/le doesn't matter for zero */
+ 	if (regval[0])
+-		return IGB_RET_PTP_INVALID;
++		return 0;
+ 
+-	igb_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb),
+-				   le64_to_cpu(regval[1]));
++	igb_ptp_systim_to_hwtstamp(adapter, &ts, le64_to_cpu(regval[1]));
+ 
+ 	/* adjust timestamp for the RX latency based on link speed */
+ 	if (adapter->hw.mac.type == e1000_i210) {
+@@ -907,10 +902,8 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+ 			break;
+ 		}
+ 	}
+-	skb_hwtstamps(skb)->hwtstamp =
+-		ktime_sub_ns(skb_hwtstamps(skb)->hwtstamp, adjust);
+ 
+-	return 0;
++	return ktime_sub_ns(ts.hwtstamp, adjust);
+ }
+ 
+ /**
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
