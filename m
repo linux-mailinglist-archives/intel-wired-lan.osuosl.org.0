@@ -1,71 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42ACA366D74
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Apr 2021 16:00:26 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DC78366EE5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Apr 2021 17:15:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D47A040EBF;
-	Wed, 21 Apr 2021 14:00:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0984740EB9;
+	Wed, 21 Apr 2021 15:15:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cloj2MExizru; Wed, 21 Apr 2021 14:00:24 +0000 (UTC)
+	with ESMTP id oll7C_JZ6t1Q; Wed, 21 Apr 2021 15:15:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD1B740E63;
-	Wed, 21 Apr 2021 14:00:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D642F40E84;
+	Wed, 21 Apr 2021 15:15:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C1EF71BF5A4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 08:08:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B59B1BF3EB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 15:15:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BC3364068B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 08:08:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 16F22841FD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 15:15:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l-d0BHS87a6i for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Apr 2021 08:08:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n852maStWaGH for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Apr 2021 15:15:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from szxga03-in.huawei.com (szxga03-in.huawei.com [45.249.212.189])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D3AB240669
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 08:08:11 +0000 (UTC)
-Received: from DGGEML401-HUB.china.huawei.com (unknown [172.30.72.53])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4FQClN1VDKz5rk5;
- Wed, 21 Apr 2021 16:05:04 +0800 (CST)
-Received: from dggpeml100021.china.huawei.com (7.185.36.148) by
- DGGEML401-HUB.china.huawei.com (10.3.17.32) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Wed, 21 Apr 2021 16:08:04 +0800
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- dggpeml100021.china.huawei.com (7.185.36.148) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Wed, 21 Apr 2021 16:08:03 +0800
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.2176.012; 
- Wed, 21 Apr 2021 09:08:00 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [PATCH V2 net] ice: Re-organizes reqstd/avail
- {R, T}XQ check/code for efficiency+readability
-Thread-Index: AQHXNnA44ik22M7HZEWiZd3JF/ZDoKq+hESggAAFGoCAABKToA==
-Date: Wed, 21 Apr 2021 08:08:00 +0000
-Message-ID: <fdd2432301e541baa82ec56427d40cca@huawei.com>
-References: <20210413224446.16612-1-salil.mehta@huawei.com>
- <7974e665-73bd-401c-f023-9da568e1dffc@molgen.mpg.de>
- <418702bdb5244eb4811a2a1a536c55c0@huawei.com>
- <9335975a-ef19-863c-005a-d460eac83e03@molgen.mpg.de>
-In-Reply-To: <9335975a-ef19-863c-005a-d460eac83e03@molgen.mpg.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.66.69]
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Mailman-Approved-At: Wed, 21 Apr 2021 14:00:10 +0000
-Subject: Re: [Intel-wired-lan] [PATCH V2 net] ice: Re-organizes reqstd/avail
- {R, T}XQ check/code for efficiency+readability
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EA89B83E87
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 15:15:33 +0000 (UTC)
+IronPort-SDR: mJJwAxRy4fa5p/uWifN89nURTbIbBqge4ProzhaWo6D8tpnq8mSTfGquxo+EfJPdsM9APSqiOW
+ ZyyiJjb0ZfSA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="183203717"
+X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="183203717"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Apr 2021 08:15:30 -0700
+IronPort-SDR: 89g44h+xoopLiSh9WEt+PW4A83ZAyZDz+FahAtBf/qTscAwdbwMAar8uHHnojHsTBWPlL08kAU
+ u26JA6jqW3/A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="421020674"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by fmsmga008.fm.intel.com with ESMTP; 21 Apr 2021 08:15:23 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 21 Apr 2021 15:15:11 +0000
+Message-Id: <20210421151511.4230-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [net] igb: Check if num of q_vectors is smaller
+ than max before array access.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,120 +63,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Linuxarm <linuxarm@huawei.com>,
- "linuxarm@openeuler.org" <linuxarm@openeuler.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Paul Menzel [mailto:pmenzel@molgen.mpg.de]
-> Sent: Wednesday, April 21, 2021 8:54 AM
-> 
-> [CC: Remove Jeff, as email is rejected]
+Ensure that the adapter->q_vector[MAX_Q_VECTORS] array isn't accessed
+beyond its size. It was fixed by using a local variable num_q_vectors
+as a limit for loop index, and ensure that num_q_vectors is not bigger
+than MAX_Q_VECTORS.
 
-Yes, thanks for the reminder. I had noticed it earlier.
+Fixes: 047e0030f1e6 ("igb: add new data structure for handling
+interrupts and NAPI")
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Reviewed-by: Slawomir Laba <slawomirx.laba@intel.com>
+Reviewed-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Reviewed-by: Mateusz Palczewski <mateusz.placzewski@intel.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-[...]
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 55051a492..2c601261f 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -929,6 +929,7 @@ static void igb_configure_msix(struct igb_adapter *adapter)
+  **/
+ static int igb_request_msix(struct igb_adapter *adapter)
+ {
++	unsigned int num_q_vectors = adapter->num_q_vectors;
+ 	struct net_device *netdev = adapter->netdev;
+ 	int i, err = 0, vector = 0, free_vector = 0;
+ 
+@@ -937,7 +938,13 @@ static int igb_request_msix(struct igb_adapter *adapter)
+ 	if (err)
+ 		goto err_out;
+ 
+-	for (i = 0; i < adapter->num_q_vectors; i++) {
++	if (num_q_vectors > MAX_Q_VECTORS) {
++		num_q_vectors = MAX_Q_VECTORS;
++		dev_warn(&adapter->pdev->dev,
++			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
++			 adapter->num_q_vectors, MAX_Q_VECTORS);
++	}
++	for (i = 0; i < num_q_vectors; i++) {
+ 		struct igb_q_vector *q_vector = adapter->q_vector[i];
+ 
+ 		vector++;
+-- 
+2.17.1
 
-> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c
-> b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> index d13c7fc8fb0a..d77133d6baa7 100644
-> >>> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> @@ -161,12 +161,13 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi,
-> u16 vf_id)
-> >>>
-> >>>    	switch (vsi->type) {
-> >>>    	case ICE_VSI_PF:
-> >>> -		vsi->alloc_txq = min3(pf->num_lan_msix,
-> >>> -				      ice_get_avail_txq_count(pf),
-> >>> -				      (u16)num_online_cpus());
-> >>>    		if (vsi->req_txq) {
-> >>>    			vsi->alloc_txq = vsi->req_txq;
-> >>>    			vsi->num_txq = vsi->req_txq;
-> >>> +		} else {
-> >>> +			vsi->alloc_txq = min3(pf->num_lan_msix,
-> >>> +					      ice_get_avail_txq_count(pf),
-> >>> +					      (u16)num_online_cpus());
-> >>>    		}
-> >>
-> >> I am curious, did you check the compiler actually creates different
-> >> code, or did it notice the inefficiency by itself and optimized it already?
-> >
-> > I have not looked into that detail but irrespective of what compiler generates
-> > I would like to keep the code in a shape which is more efficient and more readable.
-> >
-> > I do understand in certain cases we have to do tradeoff between efficiency
-> > and readability but I do not see that here.
-> 
-> I agree, as *efficiency* is mentioned several times, I assume it was
-> tested. Thank you for the clarification.
-
-
-I mentioned inefficient because below code gets executed unnecessarily.
-
-
-/**
- * ice_get_avail_q_count - Get count of queues in use
- * @pf_qmap: bitmap to get queue use count from
- * @lock: pointer to a mutex that protects access to pf_qmap
- * @size: size of the bitmap
- */
-static u16
-ice_get_avail_q_count(unsigned long *pf_qmap, struct mutex *lock, u16 size)
-{
-	unsigned long bit;
-	u16 count = 0;
-
-	mutex_lock(lock);
-	for_each_clear_bit(bit, pf_qmap, size)
-		count++;
-	mutex_unlock(lock);
-
-	return count;
-}
-
-/**
- * ice_get_avail_txq_count - Get count of Tx queues in use
- * @pf: pointer to an ice_pf instance
- */
-u16 ice_get_avail_txq_count(struct ice_pf *pf)
-{
-	return ice_get_avail_q_count(pf->avail_txqs, &pf->avail_q_mutex,
-				     pf->max_pf_txqs);
-}
-
-
-
-> >>>    		pf->num_lan_tx = vsi->alloc_txq;
-> >>> @@ -175,12 +176,13 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi,
-> u16 vf_id)
-> >>>    		if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
-> >>>    			vsi->alloc_rxq = 1;
-> >>>    		} else {
-> >>> -			vsi->alloc_rxq = min3(pf->num_lan_msix,
-> >>> -					      ice_get_avail_rxq_count(pf),
-> >>> -					      (u16)num_online_cpus());
-> >>>    			if (vsi->req_rxq) {
-> >>>    				vsi->alloc_rxq = vsi->req_rxq;
-> >>>    				vsi->num_rxq = vsi->req_rxq;
-> >>> +			} else {
-> >>> +				vsi->alloc_rxq = min3(pf->num_lan_msix,
-> >>> +						      ice_get_avail_rxq_count(pf),
-> >>> +						      (u16)num_online_cpus());
-> >>>    			}
-> >>>    		}
-> >>>
-> 
-> 
-> Kind regards,
-> 
-> Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
