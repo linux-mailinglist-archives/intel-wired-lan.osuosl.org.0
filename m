@@ -1,96 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D7653672D1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Apr 2021 20:48:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 103FA3672D4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Apr 2021 20:48:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1B87660B82;
-	Wed, 21 Apr 2021 18:48:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 863F783D52;
+	Wed, 21 Apr 2021 18:48:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jjeMXpaFh2A8; Wed, 21 Apr 2021 18:48:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cfNqJ-sIe1YT; Wed, 21 Apr 2021 18:48:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A27B9608E1;
-	Wed, 21 Apr 2021 18:48:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E61583D05;
+	Wed, 21 Apr 2021 18:48:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 811121BF3DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:05 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 66B701C11A5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7BF43608E1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:05 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4C92E4065E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KlLVuZ2BP0Zq for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Apr 2021 18:48:03 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hPkoJzCmM6ir for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Apr 2021 18:48:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CDD4560712
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:03 +0000 (UTC)
-IronPort-SDR: h3fl/GDqd7/L5FASwuWG7QCkJ5xJ2hAIAGYI90zm7by1nKyQXO3xgz46Xh643JdYB/7MFuu/X6
- kx/ggcPmXfqw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="195311783"
-X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="195311783"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Apr 2021 11:48:03 -0700
-IronPort-SDR: LOgcoHEiy/kRCcU+mUWGZnBLoa0TdfwFLwtsxF3oe0g+yF+tUykKcwIcXQekLDIUApKTIqiId5
- ePJpBdQIilLA==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 62BE34061A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Apr 2021 18:48:42 +0000 (UTC)
+IronPort-SDR: akLsfueuvxmIIJvGbf9XGdU+msX4Ibwa2oSOtKHrvAWYI85kkkLUOKXANiA+N0UhlNqZQN9zCD
+ rBLs5pOlTqJw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="281084875"
+X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="281084875"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Apr 2021 11:48:41 -0700
+IronPort-SDR: Ww4QefSYr/XryyZdZFrsu/9FWCuTfmIjjfO+QkSNkeZAlemb1HpBtC/i5osU5cKuhu8V/p73vP
+ xRQoBa/loyng==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="421091596"
-Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
- by fmsmga008.fm.intel.com with ESMTP; 21 Apr 2021 11:48:03 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.82,240,1613462400"; d="scan'208";a="614173935"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by fmsmga006.fm.intel.com with ESMTP; 21 Apr 2021 11:48:41 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Wed, 21 Apr 2021 11:48:02 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ 15.1.2106.2; Wed, 21 Apr 2021 11:48:41 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2
- via Frontend Transport; Wed, 21 Apr 2021 11:48:02 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.45) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ via Frontend Transport; Wed, 21 Apr 2021 11:48:41 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.36.55) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2106.2; Wed, 21 Apr 2021 11:48:02 -0700
+ 15.1.2106.2; Wed, 21 Apr 2021 11:48:40 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BKSKopx0oJU3kx+Vu9rMSokzHl6daW/hnvN+N8GVSvuqvr6ibJ8pCRQkMTTKOhAp89lrLLAQgujqn6pmW0IZuwBz/gcnrKsEotfkHCiYd2eq73AbcTDlnz19pTbUKHwoFcVYqcU1WvdgNqsGTGrXohJ2g268awSdJRRptlpmkkp8aT7+obVi1dTV0vk2uHY23xMCB/pXbBgwko8J7JYekWUIcSz5jonjkXbj4qqpZsPoEqastQOYa3pSgsmSRR3MsRGTfR5mTnhs35SK0Xv3jJTag0G5xj2+XnAJvrXTk8Sh76H2k96fwo6BDqYpPTjrbEpe4W22TDLecD5JeXwuEA==
+ b=jJrZgo0jWR2Y8ktAURvgJMLixZdlSr2iOc1HrgUJ7oVzq8zO/wRyKxD0eCQrfJ0mmuBaHRWbFCAPY7KB/8rSMBhX/iwk4XJfpC1AidleG/pyRI5w2XNsmf2xeZtI2K6jn3pp20cbYUPGS8rXnMFEcSl6ZANQ9aGgqvx43VSFvsjrBL7NW34Vws4YaVXIybGLsCSobUiC/ErDkthff0TwQAwO0rYqMwUrRvHClA/TAZqgQtAyt4HDDr86a6MdI4jE2nnNSa17Rp3D77NWH0sbTgKp75Pj76oOs3Wzuya5vNaudFaWL7r/usLoFwDHXJIE6L817n9W+yD7bZXn8byqEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=i8/FFq+a/o+QdQqavk5sjrG5uugq+RGP15Xu2u5f2u8=;
- b=FX2klBlGWSwbLonILwh4E19pFFNRxRYZjWCC0v2eT5S/wvOTR/Tgv4ausa57ztolL3JETuxJu3O1ZtCAXms62pdWwd2broGUETaEauZ6vLS7/6VGoIXw+9OF4n2htZsl4HDQhPY9Zj4JGjta+w/WfKEP3HyVGepucV0bmAhr95VTwqMFF1DbKSUJII8pSrUTKFGL4Xnr1Dl+kJavFbE1iW+3V6U8bV0QqS0Gi6OReMXqNY/vFIa4U9tpU9O5PNvxbhUJ5Cg6rXlc7RH0L2uybo/oQwgDkgNMO1YUThN+YZ8VI10Pd5URLZHaV4W3R0pDaxFnT+pzXIlnQuyonIBraw==
+ bh=RiG8n+VeXUE5DINSZYaj/5/rEawdTDBYEs+10pM65hg=;
+ b=QnnOUIvhLvbE40O+uH8qmV62l79og3gARhTXWroonKhCr7xFwZVLdDhX5SHikGiZHH5QBm9DxVdkLKrxCrj3nTF5iHDtHZ0alnjPsIC+wowwz1Jvs2+vZy57OJYfL0tbs9bZdsZZWv/9l7ScWkUZwN05JMCnJQ0H7heSeEU9Dg91XAySlebiKEKh/AsqZRsK8Mg9Zf7Q0NJex+LmUm+vuQOolAltqcBWYaAw0QJ4EQgd4wbjyxrlRrnhNihOa56FEOfdqm3tvGmYBepJk8RapuoPwIy4DpPlHLEwLbQ/z3DlyQapuqylrEQMvPSXA8tzrnHDq7GDWplCoF4X03wAKw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=i8/FFq+a/o+QdQqavk5sjrG5uugq+RGP15Xu2u5f2u8=;
- b=tyvfHmziCQX14FRrNL7i2um0Xm9h4lKcSkztxfrdiijXSEB1RGS93PFkjZt9NaCgaSHk4jIt2+tJMtDZQs35MiqUJkPzl3ERziRkHWey2z/UvAUQDsreJdrAeRBCrVumgcLg7Q2IjuMsYApWv7ks+9sDephIU/6NRl4Kto6TWJk=
+ bh=RiG8n+VeXUE5DINSZYaj/5/rEawdTDBYEs+10pM65hg=;
+ b=u+zoo1HSEZTVWKjqSYiel34x+qsZ4cpsAG56Zq2RYt7dVFgSMtFA6b+4+3iaenRfFC9LkQPuQykU0H8TQV1k2Daw1GEOvf+r0zSFbKilqMENc+Lpl8AtsTq6NXQ1EEE1cxQjzPQzhFImqdc+Q4oixkon2fpmhzdnDs2qN5Oef4w=
 Received: from CY4PR11MB1576.namprd11.prod.outlook.com (2603:10b6:910:d::15)
- by CY4PR1101MB2309.namprd11.prod.outlook.com (2603:10b6:910:1a::16) with
+ by CY4PR1101MB2197.namprd11.prod.outlook.com (2603:10b6:910:18::22) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4065.21; Wed, 21 Apr
- 2021 18:48:01 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.23; Wed, 21 Apr
+ 2021 18:48:39 +0000
 Received: from CY4PR11MB1576.namprd11.prod.outlook.com
  ([fe80::6cb6:a971:f256:c08]) by CY4PR11MB1576.namprd11.prod.outlook.com
  ([fe80::6cb6:a971:f256:c08%7]) with mapi id 15.20.4020.023; Wed, 21 Apr 2021
- 18:48:01 +0000
+ 18:48:39 +0000
 From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
 To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S56 07/13] ice: Add helper function to
- get the VF's VSI
-Thread-Index: AQHXD5GXVf1wyJpNG0SlrXKC4Drocqq/nn7Q
-Date: Wed, 21 Apr 2021 18:48:01 +0000
-Message-ID: <CY4PR11MB1576D0985A0DF0B7D945DE40AB479@CY4PR11MB1576.namprd11.prod.outlook.com>
-References: <20210302181545.51822-1-anthony.l.nguyen@intel.com>
- <20210302181545.51822-7-anthony.l.nguyen@intel.com>
-In-Reply-To: <20210302181545.51822-7-anthony.l.nguyen@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S55 02/14] ice: Allow ignoring opcodes
+ on specific VF
+Thread-Index: AQHXD5FeJugGimH0jk6YJw0GxwjFeqq/nquA
+Date: Wed, 21 Apr 2021 18:48:39 +0000
+Message-ID: <CY4PR11MB15766D1A7CDAF249E2D85396AB479@CY4PR11MB1576.namprd11.prod.outlook.com>
+References: <20210302181213.51718-1-anthony.l.nguyen@intel.com>
+ <20210302181213.51718-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20210302181213.51718-2-anthony.l.nguyen@intel.com>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -102,54 +104,54 @@ authentication-results: intel.com; dkim=none (message not signed)
  header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [188.147.97.153]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: df9459c3-93e4-4d4e-a3d6-08d904f5fd96
-x-ms-traffictypediagnostic: CY4PR1101MB2309:
+x-ms-office365-filtering-correlation-id: 5a071c8f-444a-435f-5d14-08d904f61447
+x-ms-traffictypediagnostic: CY4PR1101MB2197:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CY4PR1101MB23092C5A4EDCE07325B8700EAB479@CY4PR1101MB2309.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
+x-microsoft-antispam-prvs: <CY4PR1101MB2197CA313A5019084BC346A5AB479@CY4PR1101MB2197.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4303;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 1N+AwTdfgx4NiTkHWHPtN6MhF+fB2t9XrvjwfAWP0bEU9ckNOIL7TM2sijnUCjq/zT7ItJUKVP61xAGknt1RovAsEFxJsCSiBYmjyJqmcfH9/aXpy1LEDo3Dkx7f/5dYiwiuIniZt133K3U7OH6sq8t87OJNuDsKbr03zu+1crPz/yv0DlfAzxO3PUBxudFB/H8FGdIt1hMQR/qqY/984ScfknFkKHy5tRPwQVYvAaqGPJLTMscgSdxMvY5gg+LEZTx3rE9EWWIIlz6B7+vhANE81khZIOw/ROAspwNbFGsmKWkJFRk4gi1230GOoTCmnf8nCU8eBABmFzI1fD3gd9tw7LxckcLwLGrep45+A6zX4iejILDkA7wBkn25aMv8FwoNd7Cvi1ppwpnAcNtvPsY3KXsVvCp9Ip5bzA2dPXvaVZsR7ZPprj4KzMuAcyagg7OHvfsHLhSfRmejIf1mZG9pQ7jiIsedgPYYL8ITZN+FnLOnRQ6nd8QeJ2w9V23CVGammxl25W9tvK8MgzvGYo1OvtSDwbe/57EneqFXm2MZdGHod2Jc4DTPaWKqvW+8KbqYNguQa1rrMRuIAuI5DQ2iGVBZ0tHWmBuQt2CxdUnjS8wwy8pa9aZSQOU/8uWIGpAlx5cW3UHIWpfAvXdG5w==
+x-microsoft-antispam-message-info: AC9umc2iMKwnqN7RmILCEoXsupBn5T7WjfkgQ2T/Kur8SKmMc9TBJc08ENdxEqFIMqGev2GJFkdUvFjmumoHhb97lFSZYMgFatnCOhjChM9v+eX0akPYPrFoFTIcJ7CfQjIxro/uOsm1cyeto0pfHPVuSsH5SqnTW9qqC3QD0nR23YGBZNgGLjpV2mIK/mvz26TujYZW9LlZzF6DrQ2LPzxKeqfBEjksIMIs6D7ChtslKxrm2k8ygrz3qhZwf3zBD34yZDcMJ/M48T0WuR4ZgL4rhU15sycP9JtKDTRzzTvgA2pAFKbawUd+VvsTAokL2Fzk6QAYTzHCymz5bFRBfSrOoJtcNYoVFxKHpcIiItSyMeP9Y8FoZyC0hU6LznZQZcZNW/ArDDLYUbvmcbFQlDBn/qe0KXB8N94YZppVZCOi7lxaXrtRIuRcL9lY+VDH2ZgTRH5JI+1v9//GNcrzQ4DW5rl29+ev5tfCIzLchyZL9FDLBQhIfZBYO/af8GJ6HPS538P2VfTmcWG5oKdnC+L0K8xbjn/IK9nTlwfowjA1aGM1KtH4GgFVsMJz2+RwxfyOzLxZvVwBvwRfnfSs69YhCM7gmCL58gzxIS8iq5A=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CY4PR11MB1576.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(346002)(39860400002)(396003)(366004)(136003)(376002)(83380400001)(478600001)(86362001)(26005)(55016002)(33656002)(76116006)(66946007)(316002)(64756008)(7696005)(6506007)(2906002)(53546011)(66556008)(66476007)(52536014)(186003)(66446008)(8676002)(71200400001)(30864003)(9686003)(5660300002)(38100700002)(122000001)(110136005)(8936002)(15583001);
+ SFS:(396003)(39860400002)(366004)(376002)(346002)(136003)(33656002)(66946007)(52536014)(316002)(30864003)(9686003)(55016002)(122000001)(186003)(2906002)(71200400001)(66446008)(478600001)(83380400001)(66476007)(5660300002)(64756008)(66556008)(76116006)(8676002)(110136005)(53546011)(38100700002)(8936002)(26005)(7696005)(86362001)(6506007);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?ebbLr3gqcXuAjOzFMfeWSwb3PEcXs233A4tp4ZHHb/T9e9X7hcKFx6YakA+K?=
- =?us-ascii?Q?7vNFCFgnCeUANdJyEL5v1eM915UI9Mv4IP+P8WbCSZDBzWUU8dZJU+oHCwvQ?=
- =?us-ascii?Q?CJydgbKEZxXmCHLp16ozLzg/8K2svLJw938hRATObv1/SanxPaxDQe2pGvTb?=
- =?us-ascii?Q?nMjB+7mjE416UblPnbZFT5kbtV1ujcr2vt4762uUiy9lQgGUMOVKOH6/9YzC?=
- =?us-ascii?Q?Q0+wQnCrYJUg6VRQ4xZ0kO7+/y/54p6kWwp+MM0HNY0sVNB1G3rNW5BVljzL?=
- =?us-ascii?Q?nh4ksAHFo/teJZdEXxTWKYG2FK8dxFKoScswG6oSjoa9p7BiiEExrIsqzMtD?=
- =?us-ascii?Q?1+b7r0XC6swpgrp0j22gJv1jjIRorTXkTgZr/r5kwoH+/spCYoZY9bN0QpEy?=
- =?us-ascii?Q?BtyygtCx/0dI51GibIHoVcdFWbeK6ov+DUK7d2sw6Egqyyn/12mu/wwzNLd1?=
- =?us-ascii?Q?pJjU+i1eHZQkFwCS2P3ZPT1q/TdUjqGjHCHmqwIvtWI9eoQnth4VUSjqS8lt?=
- =?us-ascii?Q?wGr6OrlHPmm4WdM4oIxhk3JgQcaegsGFIt1V8gJWHYk6IFSyba/6azwlIT5d?=
- =?us-ascii?Q?nx7s1JYD6uynbB0CxlAKgSvVUBtA0M+iVAC5BWX9XrSgUUxaOoAphGg2vsRg?=
- =?us-ascii?Q?OOrBsjrjyztC3InaefhhnL3/HKkemtHCcT2t4QuUX4/pFymbVEQnphBqKeNV?=
- =?us-ascii?Q?3CWY/7tr+5uKHm3sP2W6b7HiC31NXXgzvKUUSZ92TJChNTyhpVc1ZcNNlCwf?=
- =?us-ascii?Q?siDUCrJizW5h4gVFW1mYqgz9hLw15KTazesxfFohd8EpjTU4cdF0gShocM/O?=
- =?us-ascii?Q?ylInAdb+qXBsCECNx6dqTJOmWj1WBtWp8284r/fyBQp3gjTghcYyi4ybMtq2?=
- =?us-ascii?Q?l2NIuNTUqk8ylY6IgssSquxxV5nbxgLi9bba3m3jKmJ0gslhJHPCendt59ex?=
- =?us-ascii?Q?q7DEMvpRIQJS5Feny0KuBnkTzgwcgkYoS6YMCQ9ZU5sllck2oTK06LB15Zkj?=
- =?us-ascii?Q?0+HfAStlArzGnfdMBTcpV8am+DCAdVgDDPwvip71niC6ZcMzIy0S0sX0+W+D?=
- =?us-ascii?Q?uPrbIf0gZlBkEF/OzQhOxauzR7xEBwMZhcwu3skkeQpJUmscgPX1lftkVW86?=
- =?us-ascii?Q?ypmw/zJ3V+o8i5cODm1gNLfcFxz+1aUf3LQGDndNzA9IFIMJMvdZw05y2Bel?=
- =?us-ascii?Q?tpJu51u9UmD0tAwup7KaypVD9LymBduRaZ4AJcPnuHsOPomWJr+5XHEvrkd3?=
- =?us-ascii?Q?jS1u3I1wTqo9nuOV+ixqaemcXaQ7YIWQRGEiwbI3+yOk8ZAa2D1a77jWb2hp?=
- =?us-ascii?Q?Y04eV0VAHs8Ihu1C842+fkE8?=
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?3twQS9SJoR+JwkwoAH8lrBCUHMb/19Y86I9v9/atQRJNzQ6slke/inYRsbrn?=
+ =?us-ascii?Q?/TLtlnReeoxVoHieQKzLoLvh+5Op8dFIPxYpZs9tiBdbC3/gU9SfcbYA1CMb?=
+ =?us-ascii?Q?WPu9FyhGMn/UeuP9nZDjiu+ZsAyHmQIAkVn/qVGeWMFEJVOHOXmwqJUH/NKx?=
+ =?us-ascii?Q?KXk8bZHCxuPUvCeKbMJBmMxqNSULrQGdcQ5z0XjIDSzFedihgC/pLHD//5cF?=
+ =?us-ascii?Q?HynqfABfSpCQoPHMmt48hMlWljzAu0u9BVMNb0bM+WNMsXXy0B9CIynYagEF?=
+ =?us-ascii?Q?EHm9thy85XFjtPH1aGmk27FP3C2w/l8giEP79GEa8IZ2qQGPG9/bAK4frLm9?=
+ =?us-ascii?Q?vAXg9qKz0asXa3bMBE01XZ96IOJ+cmCgAG8TkLD459wHOoq3TJBAAqpnu8h/?=
+ =?us-ascii?Q?uVxVmY+hwETTBwyIqK2vuOFmWlwR7GExi8gbxSQnEP6ucUSUU16EwsQRJFD+?=
+ =?us-ascii?Q?fAK6c1x6vF4wK4JvsFLT50+HfSiUCveYC+L1AC7/zKxWrBcIDEjIqeOp9vqq?=
+ =?us-ascii?Q?k/uHYaBVD6QUAjkCPpxZgDD+IgkR/CXwIyQqY36ZHSp31oKUuVeu14HF2+2o?=
+ =?us-ascii?Q?wcTL0yvW/CmTZ0voAf+sJIZ967+Ayr2tpII+q0hfsLQWGcYeBze5KyNplpPP?=
+ =?us-ascii?Q?zzVF/IutS3qMNLJu34tRij8yNECatftao6MX36LHy58nDMkRw/Z5BTC2fajY?=
+ =?us-ascii?Q?olMzMQuM+kp16EUzdE5nTtWIo3QwLHXeXMvqsMJgfYl6Ls3dFn4B/TZuAKA2?=
+ =?us-ascii?Q?tbIsnHMNRweXxfZylj9HdpF+mePSX8eMUgMVwach9nZC1VqPimN8j/pRUQ5o?=
+ =?us-ascii?Q?9T+1dUzMOQRnpmJdRe8Gexs6I3UxX84RXPIY4YP8Mopu7bzJOkT03EQGkWVA?=
+ =?us-ascii?Q?zRNK82/ICE4nH3mOGEouIbIpSZjoAqKz/kC5OR0LVYSqAfw0DLiKTWFTWiA5?=
+ =?us-ascii?Q?xE8+rDZOAyWMLGyjrO+1o0iqYC5RTtzdSN5jPWG1NrfKNBHzWN2q3taQDRr+?=
+ =?us-ascii?Q?yPesxK7Bto7E/BmPbkaVqrm5KIz4I03XppFp4IkJbU20wpVdDolx6LVguZIj?=
+ =?us-ascii?Q?ETpwuXDkKdfmyvSmCxgVVwJk7ry4HzgY3U2vqUfgpzAw7KW219N+CkQYtIC8?=
+ =?us-ascii?Q?GWHeUdyz4WgvrmW+lm9PFawV/dDkDEVubhqn5+kqtBSskMogVUeLxrhx+9Ro?=
+ =?us-ascii?Q?sXqX/v6p+fYVrj3JRNSCo8mq/xoxxfTY0fxzPeEHgMWGMzg6dA36CcAiXLIO?=
+ =?us-ascii?Q?AQvtVzFrTDoWeb3rc1n5VPfb0pz8uKSER1FUeAmW0qAkkINfleheCNAdNBSE?=
+ =?us-ascii?Q?hizRMf3mN2rfCYE3GkfeHbXq?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1576.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: df9459c3-93e4-4d4e-a3d6-08d904f5fd96
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Apr 2021 18:48:01.6043 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5a071c8f-444a-435f-5d14-08d904f61447
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Apr 2021 18:48:39.7353 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: AZYTzFiVPdeKgApJ+CVQkdPKxczAiewzeUnB3WaRduPux3GpnYKoIVtme8SfbkIintDkRhnXqo1uKG/vSq+/tqcw8UPUuHC5P0ZGSYgOimM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1101MB2309
+X-MS-Exchange-CrossTenant-userprincipalname: nJszUuys1lIn6fOO6bdGJ9m4BX0L6yHS74phdKKoPVVUYqcgBW3zQwOxX9LoJ/+qDyu4GVMy3+SzekwflbdCfrZu5Rm9A0QvOym8eK8Pdk0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1101MB2197
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S56 07/13] ice: Add helper function to
- get the VF's VSI
+Subject: Re: [Intel-wired-lan] [PATCH S55 02/14] ice: Allow ignoring opcodes
+ on specific VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,392 +174,338 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
 > Tony Nguyen
-> Sent: wtorek, 2 marca 2021 19:16
+> Sent: wtorek, 2 marca 2021 19:12
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S56 07/13] ice: Add helper function to get
-> the VF's VSI
+> Subject: [Intel-wired-lan] [PATCH S55 02/14] ice: Allow ignoring opcodes on
+> specific VF
 > 
-> From: Brett Creeley <brett.creeley@intel.com>
+> From: Michal Swiatkowski <michal.swiatkowski@intel.com>
 > 
-> Currently, the driver gets the VF's VSI by using a long string of dereferences
-> (i.e. vf->pf->vsi[vf->lan_vsi_idx]). If the method to get the VF's VSI were to
-> change the driver would have to change it in every location. Fix this by adding
-> the helper ice_get_vf_vsi().
+> Declare bitmap of allowed commands on VF. Initialize default opcodes list
+> that should be always supported. Declare array of supported opcodes for
+> each caps used in virtchnl code.
 > 
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> Change allowed bitmap by setting or clearing corresponding bit to allowlist
+> (bit set) or denylist (bit clear).
+> 
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 82 +++++++++----------
->  1 file changed, 39 insertions(+), 43 deletions(-)
+>  drivers/net/ethernet/intel/ice/Makefile       |   2 +-
+>  .../intel/ice/ice_virtchnl_allowlist.c        | 165 ++++++++++++++++++
+>  .../intel/ice/ice_virtchnl_allowlist.h        |  13 ++
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  18 ++
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   1 +
+>  include/linux/avf/virtchnl.h                  |   1 +
+>  6 files changed, 199 insertions(+), 1 deletion(-)  create mode 100644
+> drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.h
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> index 2d4b39a9f788..7ffad4c8a64e 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> @@ -7,6 +7,15 @@
->  #include "ice_fltr.h"
->  #include "ice_virtchnl_allowlist.h"
-> 
-> +/**
-> + * ice_get_vf_vsi - get VF's VSI based on the stored index
-> + * @vf: VF used to get VSI
+> diff --git a/drivers/net/ethernet/intel/ice/Makefile
+> b/drivers/net/ethernet/intel/ice/Makefile
+> index f391691e2c7e..dc24ce7d1c1e 100644
+> --- a/drivers/net/ethernet/intel/ice/Makefile
+> +++ b/drivers/net/ethernet/intel/ice/Makefile
+> @@ -26,7 +26,7 @@ ice-y := ice_main.o	\
+>  	 ice_fw_update.o \
+>  	 ice_lag.o	\
+>  	 ice_ethtool.o
+> -ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o ice_virtchnl_fdir.o
+> +ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o
+> +ice_virtchnl_allowlist.o ice_virtchnl_fdir.o
+>  ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+>  ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
+>  ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.c
+> b/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.c
+> new file mode 100644
+> index 000000000000..64b1314d4761
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.c
+> @@ -0,0 +1,165 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2018-2021, Intel Corporation. */
+> +
+> +#include "ice_virtchnl_allowlist.h"
+> +
+> +/* Purpose of this file is to share functionality to allowlist or
+> +denylist
+> + * opcodes used in PF <-> VF communication. Group of opcodes:
+> + * - default -> should be always allowed after creating VF,
+> + *   default_allowlist_opcodes
+> + * - opcodes needed by VF to work correctly, but not associated with caps -
+> >
+> + *   should be allowed after successful VF resources allocation,
+> + *   working_allowlist_opcodes
+> + * - opcodes needed by VF when caps are activated
+> + *
+> + * Caps that don't use new opcodes (no opcodes should be allowed):
+> + * - VIRTCHNL_VF_OFFLOAD_RSS_AQ
+> + * - VIRTCHNL_VF_OFFLOAD_RSS_REG
+> + * - VIRTCHNL_VF_OFFLOAD_WB_ON_ITR
+> + * - VIRTCHNL_VF_OFFLOAD_CRC
+> + * - VIRTCHNL_VF_OFFLOAD_RX_POLLING
+> + * - VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2
+> + * - VIRTCHNL_VF_OFFLOAD_ENCAP
+> + * - VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM
+> + * - VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM
+> + * - VIRTCHNL_VF_OFFLOAD_USO
 > + */
-> +static struct ice_vsi *ice_get_vf_vsi(struct ice_vf *vf) {
-> +	return vf->pf->vsi[vf->lan_vsi_idx];
+> +
+> +/* default opcodes to communicate with VF */ static const u32
+> +default_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_GET_VF_RESOURCES, VIRTCHNL_OP_VERSION,
+> +VIRTCHNL_OP_RESET_VF, };
+> +
+> +/* opcodes supported after successful VIRTCHNL_OP_GET_VF_RESOURCES
+> */
+> +static const u32 working_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_CONFIG_TX_QUEUE,
+> VIRTCHNL_OP_CONFIG_RX_QUEUE,
+> +	VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+> VIRTCHNL_OP_CONFIG_IRQ_MAP,
+> +	VIRTCHNL_OP_ENABLE_QUEUES, VIRTCHNL_OP_DISABLE_QUEUES,
+> +	VIRTCHNL_OP_GET_STATS, VIRTCHNL_OP_EVENT, };
+> +
+> +/* VIRTCHNL_VF_OFFLOAD_L2 */
+> +static const u32 l2_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_ADD_ETH_ADDR, VIRTCHNL_OP_DEL_ETH_ADDR,
+> +	VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
+> +};
+> +
+> +/* VIRTCHNL_VF_OFFLOAD_REQ_QUEUES */
+> +static const u32 req_queues_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_REQUEST_QUEUES,
+> +};
+> +
+> +/* VIRTCHNL_VF_OFFLOAD_VLAN */
+> +static const u32 vlan_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_ADD_VLAN, VIRTCHNL_OP_DEL_VLAN,
+> +	VIRTCHNL_OP_ENABLE_VLAN_STRIPPING,
+> VIRTCHNL_OP_DISABLE_VLAN_STRIPPING,
+> +};
+> +
+> +/* VIRTCHNL_VF_OFFLOAD_RSS_PF */
+> +static const u32 rss_pf_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_CONFIG_RSS_KEY, VIRTCHNL_OP_CONFIG_RSS_LUT,
+> +	VIRTCHNL_OP_GET_RSS_HENA_CAPS,
+> VIRTCHNL_OP_SET_RSS_HENA, };
+> +
+> +/* VIRTCHNL_VF_OFFLOAD_FDIR_PF */
+> +static const u32 fdir_pf_allowlist_opcodes[] = {
+> +	VIRTCHNL_OP_ADD_FDIR_FILTER, VIRTCHNL_OP_DEL_FDIR_FILTER,
+> };
+> +
+> +struct allowlist_opcode_info {
+> +	const u32 *opcodes;
+> +	size_t size;
+> +};
+> +
+> +#define BIT_INDEX(caps) (HWEIGHT((caps) - 1)) #define
+> ALLOW_ITEM(caps,
+> +list) \
+> +	[BIT_INDEX(caps)] = { \
+> +		.opcodes = list, \
+> +		.size = ARRAY_SIZE(list) \
+> +	}
+> +static const struct allowlist_opcode_info allowlist_opcodes[] = {
+> +	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_L2, l2_allowlist_opcodes),
+> +	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES,
+> req_queues_allowlist_opcodes),
+> +	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_VLAN,
+> vlan_allowlist_opcodes),
+> +	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_RSS_PF,
+> rss_pf_allowlist_opcodes),
+> +	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_FDIR_PF,
+> fdir_pf_allowlist_opcodes), };
+> +
+> +/**
+> + * ice_vc_opcode_is_allowed - check if this opcode is allowed on this
+> +VF
+> + * @vf: pointer to VF structure
+> + * @opcode: virtchnl opcode
+> + *
+> + * Return true if message is allowed on this VF  */ bool
+> +ice_vc_is_opcode_allowed(struct ice_vf *vf, u32 opcode) {
+> +	if (opcode >= VIRTCHNL_OP_MAX)
+> +		return false;
+> +
+> +	return test_bit(opcode, vf->opcodes_allowlist); }
+> +
+> +/**
+> + * ice_vc_allowlist_opcodes - allowlist selected opcodes
+> + * @vf: pointer to VF structure
+> + * @opcodes: array of opocodes to allowlist
+> + * @size: size of opcodes array
+> + *
+> + * Function should be called to allowlist opcodes on VF.
+> + */
+> +static void
+> +ice_vc_allowlist_opcodes(struct ice_vf *vf, const u32 *opcodes, size_t
+> +size) {
+> +	unsigned int i;
+> +
+> +	for (i = 0; i < size; i++)
+> +		set_bit(opcodes[i], vf->opcodes_allowlist); }
+> +
+> +/**
+> + * ice_vc_clear_allowlist - clear all allowlist opcodes
+> + * @vf: pointer to VF structure
+> + */
+> +static void ice_vc_clear_allowlist(struct ice_vf *vf) {
+> +	bitmap_zero(vf->opcodes_allowlist, VIRTCHNL_OP_MAX); }
+> +
+> +/**
+> + * ice_vc_set_default_allowlist - allowlist default opcodes for VF
+> + * @vf: pointer to VF structure
+> + */
+> +void ice_vc_set_default_allowlist(struct ice_vf *vf) {
+> +	ice_vc_clear_allowlist(vf);
+> +	ice_vc_allowlist_opcodes(vf, default_allowlist_opcodes,
+> +				 ARRAY_SIZE(default_allowlist_opcodes));
 > +}
 > +
+> +/**
+> + * ice_vc_set_working_allowlist - allowlist opcodes needed to by VF to
+> +work
+> + * @vf: pointer to VF structure
+> + *
+> + * Whitelist opcodes that aren't associated with specific caps, but
+> + * are needed by VF to work.
+> + */
+> +void ice_vc_set_working_allowlist(struct ice_vf *vf) {
+> +	ice_vc_allowlist_opcodes(vf, working_allowlist_opcodes,
+> +				 ARRAY_SIZE(working_allowlist_opcodes));
+> +}
+> +
+> +/**
+> + * ice_vc_set_allowlist_based_on_caps - allowlist VF opcodes according
+> +caps
+> + * @vf: pointer to VF structure
+> + */
+> +void ice_vc_set_caps_allowlist(struct ice_vf *vf) {
+> +	unsigned long caps = vf->driver_caps;
+> +	unsigned int i;
+> +
+> +	for_each_set_bit(i, &caps, ARRAY_SIZE(allowlist_opcodes))
+> +		ice_vc_allowlist_opcodes(vf, allowlist_opcodes[i].opcodes,
+> +					 allowlist_opcodes[i].size);
+> +}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.h
+> b/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.h
+> new file mode 100644
+> index 000000000000..c33bc6ac3f54
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_allowlist.h
+> @@ -0,0 +1,13 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/* Copyright (C) 2018-2021, Intel Corporation. */
+> +
+> +#ifndef _ICE_VIRTCHNL_ALLOWLIST_H_
+> +#define _ICE_VIRTCHNL_ALLOWLIST_H_
+> +#include "ice.h"
+> +
+> +bool ice_vc_is_opcode_allowed(struct ice_vf *vf, u32 opcode);
+> +
+> +void ice_vc_set_default_allowlist(struct ice_vf *vf); void
+> +ice_vc_set_working_allowlist(struct ice_vf *vf); void
+> +ice_vc_set_caps_allowlist(struct ice_vf *vf); #endif
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+> index 0da9c84ed30f..f09367eb242a 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+> @@ -5,6 +5,7 @@
+>  #include "ice_base.h"
+>  #include "ice_lib.h"
+>  #include "ice_fltr.h"
+> +#include "ice_virtchnl_allowlist.h"
+> 
 >  /**
->   * ice_validate_vf_id - helper to check if VF ID is valid
->   * @pf: pointer to the PF structure
-> @@ -167,7 +176,7 @@ static void ice_vf_invalidate_vsi(struct ice_vf *vf)
->   */
->  static void ice_vf_vsi_release(struct ice_vf *vf)  {
-> -	ice_vsi_release(vf->pf->vsi[vf->lan_vsi_idx]);
-> +	ice_vsi_release(ice_get_vf_vsi(vf));
->  	ice_vf_invalidate_vsi(vf);
->  }
+>   * ice_validate_vf_id - helper to check if VF ID is valid @@ -1317,6 +1318,9
+> @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
+>  	ice_for_each_vf(pf, v) {
+>  		vf = &pf->vf[v];
 > 
-> @@ -243,7 +252,7 @@ static void ice_dis_vf_mappings(struct ice_vf *vf)
->  	struct ice_hw *hw;
-> 
->  	hw = &pf->hw;
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
-> 
->  	dev = ice_pf_to_dev(pf);
->  	wr32(hw, VPINT_ALLOC(vf->vf_id), 0);
-> @@ -318,10 +327,7 @@ void ice_set_vf_state_qs_dis(struct ice_vf *vf)
->   */
->  static void ice_dis_vf_qs(struct ice_vf *vf)  {
-> -	struct ice_pf *pf = vf->pf;
-> -	struct ice_vsi *vsi;
-> -
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-> 
->  	ice_vsi_stop_lan_tx_rings(vsi, ICE_NO_RESET, vf->vf_id);
->  	ice_vsi_stop_all_rx_rings(vsi);
-> @@ -609,8 +615,8 @@ static int ice_calc_vf_first_vector_idx(struct ice_pf
-> *pf, struct ice_vf *vf)
->   */
->  static int ice_vf_rebuild_host_vlan_cfg(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
->  	struct device *dev = ice_pf_to_dev(vf->pf);
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
->  	u16 vlan_id = 0;
->  	int err;
-> 
-> @@ -646,8 +652,8 @@ static int ice_vf_rebuild_host_vlan_cfg(struct ice_vf
-> *vf)
->   */
->  static int ice_vf_rebuild_host_mac_cfg(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
->  	struct device *dev = ice_pf_to_dev(vf->pf);
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
->  	enum ice_status status;
->  	u8 broadcast[ETH_ALEN];
-> 
-> @@ -750,8 +756,8 @@ static void ice_ena_vf_msix_mappings(struct ice_vf
-> *vf)
->   */
->  static void ice_ena_vf_q_mappings(struct ice_vf *vf, u16 max_txq, u16
-> max_rxq)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
->  	struct device *dev = ice_pf_to_dev(vf->pf);
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
->  	struct ice_hw *hw = &vf->pf->hw;
->  	u32 reg;
-> 
-> @@ -798,7 +804,7 @@ static void ice_ena_vf_q_mappings(struct ice_vf *vf,
-> u16 max_txq, u16 max_rxq)
->   */
->  static void ice_ena_vf_mappings(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-> 
->  	ice_ena_vf_msix_mappings(vf);
->  	ice_ena_vf_q_mappings(vf, vsi->alloc_txq, vsi->alloc_rxq); @@ -
-> 1064,7 +1070,7 @@ static int ice_vf_clear_vsi_promisc(struct ice_vf *vf,
-> struct ice_vsi *vsi, u8 p
-> 
->  static void ice_vf_clear_counters(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-> 
->  	vf->num_mac = 0;
->  	vsi->num_vlan = 0;
-> @@ -1124,8 +1130,8 @@ static void
-> ice_vf_rebuild_aggregator_node_cfg(struct ice_vsi *vsi)
->   */
->  static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
->  	struct device *dev = ice_pf_to_dev(vf->pf);
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-> 
->  	ice_vf_set_host_trust_cfg(vf);
-> 
-> @@ -1165,10 +1171,8 @@ static int ice_vf_rebuild_vsi_with_release(struct
-> ice_vf *vf)
->   */
->  static int ice_vf_rebuild_vsi(struct ice_vf *vf)  {
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
->  	struct ice_pf *pf = vf->pf;
-> -	struct ice_vsi *vsi;
-> -
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> 
->  	if (ice_vsi_rebuild(vsi, true)) {
->  		dev_err(ice_pf_to_dev(pf), "failed to rebuild VF %d VSI\n",
-> @@ -1367,7 +1371,7 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
->  	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
->  	ice_trigger_vf_reset(vf, is_vflr, false);
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
-> 
->  	if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
->  		ice_dis_vf_qs(vf);
-> @@ -1416,7 +1420,7 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
->  		else
->  			promisc_m = ICE_UCAST_PROMISC_BITS;
-> 
-> -		vsi = pf->vsi[vf->lan_vsi_idx];
-> +		vsi = ice_get_vf_vsi(vf);
->  		if (ice_vf_clear_vsi_promisc(vf, vsi, promisc_m))
->  			dev_err(dev, "disabling promiscuous mode
-> failed\n");
+> +		vf->driver_caps = 0;
+> +		ice_vc_set_default_allowlist(vf);
+> +
+>  		ice_vf_fdir_exit(vf);
+>  		/* clean VF control VSI when resetting VFs since it should be
+>  		 * setup only when iAVF creates its first FDIR rule.
+> @@ -1421,6 +1425,9 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+>  		usleep_range(10, 20);
 >  	}
-> @@ -1867,7 +1871,7 @@ static struct ice_vf *ice_get_vf_from_pfq(struct
-> ice_pf *pf, u16 pfq)
->  		struct ice_vsi *vsi;
->  		u16 rxq_idx;
 > 
-> -		vsi = pf->vsi[vf->lan_vsi_idx];
-> +		vsi = ice_get_vf_vsi(vf);
+> +	vf->driver_caps = 0;
+> +	ice_vc_set_default_allowlist(vf);
+> +
+>  	/* Display a warning if VF didn't manage to reset in time, but need to
+>  	 * continue on with the operation.
+>  	 */
+> @@ -1633,6 +1640,7 @@ static void ice_set_dflt_settings_vfs(struct ice_pf
+> *pf)
+>  		set_bit(ICE_VIRTCHNL_VF_CAP_L2, &vf->vf_caps);
+>  		vf->spoofchk = true;
+>  		vf->num_vf_qs = pf->num_qps_per_vf;
+> +		ice_vc_set_default_allowlist(vf);
 > 
->  		ice_for_each_rxq(vsi, rxq_idx)
->  			if (vsi->rxq_map[rxq_idx] == pfq)
-> @@ -2007,8 +2011,7 @@ static int ice_vc_get_ver_msg(struct ice_vf *vf, u8
-> *msg)
->   */
->  static u16 ice_vc_get_max_frame_size(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
-> -	struct ice_port_info *pi = vsi->port_info;
-> +	struct ice_port_info *pi = ice_vf_get_port_info(vf);
->  	u16 max_frame_size;
-> 
->  	max_frame_size = pi->phy.link_info.max_frame_size; @@ -2056,7
-> +2059,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
->  				  VIRTCHNL_VF_OFFLOAD_VLAN;
-> 
->  	vfres->vf_cap_flags = VIRTCHNL_VF_OFFLOAD_L2;
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto err;
-> @@ -2223,7 +2226,6 @@ static int ice_vc_config_rss_key(struct ice_vf *vf,
+>  		/* ctrl_vsi_idx will be set to a valid value only when iAVF
+>  		 * creates its first fdir rule.
+> @@ -2135,6 +2143,9 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf,
 > u8 *msg)
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
->  	struct virtchnl_rss_key *vrk =
->  		(struct virtchnl_rss_key *)msg;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
+>  	/* match guest capabilities */
+>  	vf->driver_caps = vfres->vf_cap_flags;
 > 
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) { @@ -2246,7
-> +2248,7 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
->  		goto error_param;
+> +	ice_vc_set_caps_allowlist(vf);
+> +	ice_vc_set_working_allowlist(vf);
+> +
+>  	set_bit(ICE_VF_STATE_ACTIVE, vf->vf_states);
+> 
+>  err:
+> @@ -3964,6 +3975,13 @@ void ice_vc_process_vf_msg(struct ice_pf *pf,
+> struct ice_rq_event_info *event)
+>  			err = -EINVAL;
 >  	}
 > 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2270,7 +2272,6 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8
-> *msg)  {
->  	struct virtchnl_rss_lut *vrl = (struct virtchnl_rss_lut *)msg;
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
+> +	if (!ice_vc_is_opcode_allowed(vf, v_opcode)) {
+> +		ice_vc_send_msg_to_vf(vf, v_opcode,
+> +
+> VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
+> +				      0);
+> +		return;
+> +	}
+> +
+>  error_handler:
+>  	if (err) {
+>  		ice_vc_send_msg_to_vf(vf, v_opcode,
+> VIRTCHNL_STATUS_ERR_PARAM, diff --git
+> a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+> index 53391ac1f068..77ff0023f7be 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+> @@ -110,6 +110,7 @@ struct ice_vf {
+>  	u16 num_vf_qs;			/* num of queue configured
+> per VF */
+>  	struct ice_mdd_vf_events mdd_rx_events;
+>  	struct ice_mdd_vf_events mdd_tx_events;
+> +	DECLARE_BITMAP(opcodes_allowlist, VIRTCHNL_OP_MAX);
+>  };
 > 
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) { @@ -2293,7
-> +2294,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
->  		goto error_param;
->  	}
+>  #ifdef CONFIG_PCI_IOV
+> diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h index
+> e3d5ecf7cf41..228b90ef3361 100644
+> --- a/include/linux/avf/virtchnl.h
+> +++ b/include/linux/avf/virtchnl.h
+> @@ -139,6 +139,7 @@ enum virtchnl_ops {
+>  	/* opcode 34 - 46 are reserved */
+>  	VIRTCHNL_OP_ADD_FDIR_FILTER = 47,
+>  	VIRTCHNL_OP_DEL_FDIR_FILTER = 48,
+> +	VIRTCHNL_OP_MAX,
+>  };
 > 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2376,7 +2377,7 @@ int ice_set_vf_spoofchk(struct net_device
-> *netdev, int vf_id, bool ena)
->  	if (ret)
->  		return ret;
-> 
-> -	vf_vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vf_vsi = ice_get_vf_vsi(vf);
->  	if (!vf_vsi) {
->  		netdev_err(netdev, "VSI %d for VF %d is null\n",
->  			   vf->lan_vsi_idx, vf->vf_id);
-> @@ -2482,7 +2483,7 @@ static int
-> ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2614,7 +2615,6 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8
-> *msg)
->  	struct virtchnl_queue_select *vqs =
->  		(struct virtchnl_queue_select *)msg;
->  	struct ice_eth_stats stats = { 0 };
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
-> 
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) { @@ -2627,7
-> +2627,7 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2717,7 +2717,6 @@ static int ice_vc_ena_qs_msg(struct ice_vf *vf, u8
-> *msg)
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
->  	struct virtchnl_queue_select *vqs =
->  	    (struct virtchnl_queue_select *)msg;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
->  	unsigned long q_map;
->  	u16 vf_q_id;
-> @@ -2737,7 +2736,7 @@ static int ice_vc_ena_qs_msg(struct ice_vf *vf, u8
-> *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2807,7 +2806,6 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8
-> *msg)
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
->  	struct virtchnl_queue_select *vqs =
->  	    (struct virtchnl_queue_select *)msg;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
->  	unsigned long q_map;
->  	u16 vf_q_id;
-> @@ -2828,7 +2826,7 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8
-> *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -2993,7 +2991,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf
-> *vf, u8 *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -3070,7 +3068,7 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8
-> *msg)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -3422,7 +3420,7 @@ ice_vc_handle_mac_addr_msg(struct ice_vf *vf, u8
-> *msg, bool set)
->  		goto handle_mac_exit;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto handle_mac_exit;
-> @@ -3654,7 +3652,7 @@ static int ice_vc_process_vlan_msg(struct ice_vf
-> *vf, u8 *msg, bool add_v)
->  	}
-> 
->  	hw = &pf->hw;
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -3821,7 +3819,6 @@ static int ice_vc_remove_vlan_msg(struct ice_vf
-> *vf, u8 *msg)  static int ice_vc_ena_vlan_stripping(struct ice_vf *vf)  {
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
-> 
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) { @@ -3834,7
-> +3831,7 @@ static int ice_vc_ena_vlan_stripping(struct ice_vf *vf)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (ice_vsi_manage_vlan_stripping(vsi, true))
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-> 
-> @@ -3852,7 +3849,6 @@ static int ice_vc_ena_vlan_stripping(struct ice_vf
-> *vf)  static int ice_vc_dis_vlan_stripping(struct ice_vf *vf)  {
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-> -	struct ice_pf *pf = vf->pf;
->  	struct ice_vsi *vsi;
-> 
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) { @@ -3865,7
-> +3861,7 @@ static int ice_vc_dis_vlan_stripping(struct ice_vf *vf)
->  		goto error_param;
->  	}
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->  		goto error_param;
-> @@ -3891,7 +3887,7 @@ static int ice_vc_dis_vlan_stripping(struct ice_vf
-> *vf)
->   */
->  static int ice_vf_init_vlan_stripping(struct ice_vf *vf)  {
-> -	struct ice_vsi *vsi = vf->pf->vsi[vf->lan_vsi_idx];
-> +	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-> 
->  	if (!vsi)
->  		return -EINVAL;
-> @@ -4281,7 +4277,7 @@ int ice_get_vf_stats(struct net_device *netdev, int
-> vf_id,
->  	if (ret)
->  		return ret;
-> 
-> -	vsi = pf->vsi[vf->lan_vsi_idx];
-> +	vsi = ice_get_vf_vsi(vf);
->  	if (!vsi)
->  		return -EINVAL;
-> 
+>  /* These macros are used to generate compilation errors if a structure/union
 
 Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
