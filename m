@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF74C367E77
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Apr 2021 12:17:55 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B05F7367E82
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Apr 2021 12:19:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B981540EC8;
-	Thu, 22 Apr 2021 10:17:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0058F4018F;
+	Thu, 22 Apr 2021 10:19:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mE43Lsdbrq9r; Thu, 22 Apr 2021 10:17:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n6UjmaKgdNRt; Thu, 22 Apr 2021 10:19:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8E596403F8;
-	Thu, 22 Apr 2021 10:17:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0A64840145;
+	Thu, 22 Apr 2021 10:19:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 91EF11BF2BB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:17:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 085CF1BF2BB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:19:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8D21883C95
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:17:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EA5F7606CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:19:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7JarsDCgUiRZ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Apr 2021 10:17:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id py35z5n0AakI for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Apr 2021 10:19:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D0B7982F6C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:17:46 +0000 (UTC)
-IronPort-SDR: yORDBV8M2qwBy8hniJhOZoIAUTb9BrzshnUVjT8TGye0rYqNS/a9kgFY8q0DBi0fk6FAOxkQdH
- YBI+aLjyHj9w==
-X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="195974267"
-X-IronPort-AV: E=Sophos;i="5.82,241,1613462400"; d="scan'208";a="195974267"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2021 03:17:45 -0700
-IronPort-SDR: Yr+jdlv92V2bESc0HvzmldpBtZMSh5YX1KbZzHXCkriSiYc0dtgvljtV8T7c5AAz6VWnVSlkw0
- /YSfPxU2BrBg==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 57DE16063B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:19:29 +0000 (UTC)
+IronPort-SDR: 6o93N+vb3LrCcx6YsSZGVvA7yRwl2tF94TIhYJ3lBPiwcoQPaLFCSTPsLlsWK6bhKJziMVLlxu
+ OINRyHg95T4w==
+X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="259815781"
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="259815781"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2021 03:19:27 -0700
+IronPort-SDR: mSicDZ9PxTXEzytGi56I7YJA0PH5Vbkp/qA1lF5aQHbKgAbfebGVqq1PqhMDCiO726/seiOPQ2
+ 5PkQ2+K2BoSA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="401784995"
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="524602314"
 Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga002.jf.intel.com with ESMTP; 22 Apr 2021 03:17:44 -0700
+ by fmsmga001.fm.intel.com with ESMTP; 22 Apr 2021 03:19:27 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Apr 2021 10:17:36 +0000
-Message-Id: <20210422101736.20476-1-aleksandr.loktionov@intel.com>
+Date: Thu, 22 Apr 2021 10:19:23 +0000
+Message-Id: <20210422101923.21147-1-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [net v3] igb: Check if num of q_vectors is
+Subject: [Intel-wired-lan] [net v4] igb: Check if num of q_vectors is
  smaller than max before array access.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -76,7 +76,8 @@ as a limit for loop index, and ensure that num_q_vectors is not bigger
 than MAX_Q_VECTORS.
 
 v2:fix commit message Reviewed-by tag
-v2:fix commit message Fixes tag
+v3:fix commit message Fixes tag
+v4:fix commit versions history
 
 Fixes: 047e0030f1e6 ("igb: add new data structure for handling interrupts and NAPI")
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
