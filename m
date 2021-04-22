@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A31F367C7D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Apr 2021 10:28:01 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77394367E8C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Apr 2021 12:26:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3453360690;
-	Thu, 22 Apr 2021 08:27:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B157A40E74;
+	Thu, 22 Apr 2021 10:26:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hzakk_abTnTT; Thu, 22 Apr 2021 08:27:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hdddLjS4LjMS; Thu, 22 Apr 2021 10:26:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1421E60651;
-	Thu, 22 Apr 2021 08:27:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1FCB140E7E;
+	Thu, 22 Apr 2021 10:26:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C8E821BF345
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 08:27:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E2C1F1BF2BB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:26:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B83DA40145
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 08:27:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D0EE54021A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:26:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X-a4pdLTsXQi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Apr 2021 08:27:53 +0000 (UTC)
+ with ESMTP id WVL1aTycQD1y for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Apr 2021 10:26:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0642940112
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 08:27:52 +0000 (UTC)
-IronPort-SDR: xsU3b0o+DU5rXpfxXNndhoIEYF3VbpXRLi8UfBprpPxRxcX8L/F6WUIr4DogjQtFgdTjbNeBFA
- ddLanUG+nRdA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="195405590"
-X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="195405590"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9E1CA40148
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Apr 2021 10:26:11 +0000 (UTC)
+IronPort-SDR: qLUFEz1Dce+7v7pCjkTj0zxFER6eJQVXaPgm1ZMqAqqvHAP7UOjgbZToM9eeKA0+mkEPEAL+9K
+ uAwrIYjW5oyw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9961"; a="257173671"
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="257173671"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2021 01:27:51 -0700
-IronPort-SDR: WhQ1ryfDwvphLryNvfQccuas5dcGEJ9s3K8rBxB+hzfnQW9T6VKeYgbBR9mtnVfKc5AtrH03BA
- Rgm/311B4dXA==
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2021 03:26:09 -0700
+IronPort-SDR: mHY7u5k59moItct7caFWGDF+/okmwjUEh+XeA0FcTjUAh/KjJDBss1VZbhrXWCi4c5fZrrH1Zw
+ NMEkUKsQFD/g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="524572202"
-Received: from amlin-018-147.igk.intel.com ([10.102.18.147])
- by fmsmga001.fm.intel.com with ESMTP; 22 Apr 2021 01:27:48 -0700
-From: Eryk Rybak <eryk.roch.rybak@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Apr 2021 10:28:49 +0200
-Message-Id: <20210422082849.42079-2-eryk.roch.rybak@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210422082849.42079-1-eryk.roch.rybak@intel.com>
-References: <20210422082849.42079-1-eryk.roch.rybak@intel.com>
+X-IronPort-AV: E=Sophos;i="5.82,242,1613462400"; d="scan'208";a="524603351"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by fmsmga001.fm.intel.com with ESMTP; 22 Apr 2021 03:26:05 -0700
+Date: Thu, 22 Apr 2021 12:11:29 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <20210422101129.GB44289@ranger.igk.intel.com>
+References: <20210422052617.17267-1-kurt@linutronix.de>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 2/2 net v3] i40e: Fix ping is lost after
- configuring ADq on VF
+Content-Disposition: inline
+In-Reply-To: <20210422052617.17267-1-kurt@linutronix.de>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH net v3] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,183 +66,269 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eryk Rybak <eryk.roch.rybak@intel.com>,
- Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Cc: Richard Cochran <richardcochran@gmail.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Properly reconfigure VF VSIs after VF request ADq.
-Created new function to update queue mapping and queue pairs per TC
-with AQ update VSI. This sets proper RSS size on NIC.
-VFs num_queue_pairs should not be changed during setup of queue maps.
-Previously, VF main VSI in ADq had configured too many queues and had
-wrong RSS size, which lead to packets not being consumed and drops in
-connectivity.
+On Thu, Apr 22, 2021 at 07:26:17AM +0200, Kurt Kanzenbach wrote:
+> When using native XDP with the igb driver, the XDP frame data doesn't point to
+> the beginning of the packet. It's off by 16 bytes. Everything works as expected
+> with XDP skb mode.
+> 
+> Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
+> the timestamp before executing any XDP operations and adjust all other code
+> accordingly. The igc driver does it like that as well.
+> 
+> Tested with Intel i210 card and AF_XDP sockets.
+> 
+> Fixes: 9cbc948b5a20 ("igb: add XDP support")
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> ---
+> 
+> Changes since v2:
+> 
+>  * Check timestamp for validity (Nguyen, Anthony L)
+> 
+> Changes since v1:
+> 
+>  * Use xdp_prepare_buff() (Lorenzo Bianconi)
+> 
+> Changes since RFC:
+> 
+>  * Removed unused return value definitions (Alexander Duyck)
+> 
+> Previous versions:
+> 
+>  * https://lkml.kernel.org/netdev/20210419072332.7246-1-kurt@linutronix.de/
+>  * https://lkml.kernel.org/netdev/20210415092145.27322-1-kurt@linutronix.de/
+>  * https://lkml.kernel.org/netdev/20210412101713.15161-1-kurt@linutronix.de/
+> 
+>  drivers/net/ethernet/intel/igb/igb.h      |  3 +-
+>  drivers/net/ethernet/intel/igb/igb_main.c | 45 +++++++++++++----------
+>  drivers/net/ethernet/intel/igb/igb_ptp.c  | 21 ++++-------
+>  3 files changed, 34 insertions(+), 35 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+> index 7bda8c5edea5..72cf967c1a00 100644
+> --- a/drivers/net/ethernet/intel/igb/igb.h
+> +++ b/drivers/net/ethernet/intel/igb/igb.h
+> @@ -748,8 +748,7 @@ void igb_ptp_suspend(struct igb_adapter *adapter);
+>  void igb_ptp_rx_hang(struct igb_adapter *adapter);
+>  void igb_ptp_tx_hang(struct igb_adapter *adapter);
+>  void igb_ptp_rx_rgtstamp(struct igb_q_vector *q_vector, struct sk_buff *skb);
+> -int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+> -			struct sk_buff *skb);
+> +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va);
+>  int igb_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
+>  int igb_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
+>  void igb_set_flag_queue_pairs(struct igb_adapter *, const u32);
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index a45cd2b416c8..13595618f9e3 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -8281,7 +8281,7 @@ static void igb_add_rx_frag(struct igb_ring *rx_ring,
+>  static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+>  					 struct igb_rx_buffer *rx_buffer,
+>  					 struct xdp_buff *xdp,
+> -					 union e1000_adv_rx_desc *rx_desc)
+> +					 ktime_t timestamp)
+>  {
+>  #if (PAGE_SIZE < 8192)
+>  	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
+> @@ -8301,12 +8301,8 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+>  	if (unlikely(!skb))
+>  		return NULL;
+>  
+> -	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
+> -		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, xdp->data, skb)) {
+> -			xdp->data += IGB_TS_HDR_LEN;
+> -			size -= IGB_TS_HDR_LEN;
+> -		}
+> -	}
+> +	if (timestamp)
+> +		skb_hwtstamps(skb)->hwtstamp = timestamp;
+>  
+>  	/* Determine available headroom for copy */
+>  	headlen = size;
+> @@ -8337,7 +8333,7 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
+>  static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
+>  				     struct igb_rx_buffer *rx_buffer,
+>  				     struct xdp_buff *xdp,
+> -				     union e1000_adv_rx_desc *rx_desc)
+> +				     ktime_t timestamp)
+>  {
+>  #if (PAGE_SIZE < 8192)
+>  	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
+> @@ -8364,11 +8360,8 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
+>  	if (metasize)
+>  		skb_metadata_set(skb, metasize);
+>  
+> -	/* pull timestamp out of packet data */
+> -	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+> -		if (!igb_ptp_rx_pktstamp(rx_ring->q_vector, skb->data, skb))
+> -			__skb_pull(skb, IGB_TS_HDR_LEN);
+> -	}
+> +	if (timestamp)
+> +		skb_hwtstamps(skb)->hwtstamp = timestamp;
+>  
+>  	/* update buffer offset */
+>  #if (PAGE_SIZE < 8192)
+> @@ -8683,7 +8676,10 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+>  	while (likely(total_packets < budget)) {
+>  		union e1000_adv_rx_desc *rx_desc;
+>  		struct igb_rx_buffer *rx_buffer;
+> +		ktime_t timestamp = 0;
+> +		int pkt_offset = 0;
+>  		unsigned int size;
+> +		void *pktbuf;
+>  
+>  		/* return some buffers to hardware, one at a time is too slow */
+>  		if (cleaned_count >= IGB_RX_BUFFER_WRITE) {
+> @@ -8703,14 +8699,24 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+>  		dma_rmb();
+>  
+>  		rx_buffer = igb_get_rx_buffer(rx_ring, size, &rx_buf_pgcnt);
+> +		pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
+> +
+> +		/* pull rx packet timestamp if available and valid */
+> +		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+> +			timestamp = igb_ptp_rx_pktstamp(rx_ring->q_vector,
+> +							pktbuf);
+> +
+> +			if (timestamp) {
+> +				pkt_offset += IGB_TS_HDR_LEN;
+> +				size -= IGB_TS_HDR_LEN;
+> +			}
+> +		}
 
-Fixes: bc6d33c8d93f ("i40e: Fix the number of queues available to be mapped for use")
-Co-developed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Eryk Rybak <eryk.roch.rybak@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 62 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 17 +++--
- 3 files changed, 72 insertions(+), 8 deletions(-)
+Small nit: since this is a hot path, maybe we could omit the additional
+branch that you're introducing above and make igb_ptp_rx_pktstamp() to
+return either 0 for error cases and IGB_TS_HDR_LEN if timestamp was fine?
+timestamp itself would be passed as an arg.
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index 111654351400..549e021d08fb 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -1247,6 +1247,7 @@ void i40e_ptp_restore_hw_time(struct i40e_pf *pf);
- void i40e_ptp_init(struct i40e_pf *pf);
- void i40e_ptp_stop(struct i40e_pf *pf);
- int i40e_ptp_alloc_pins(struct i40e_pf *pf);
-+int i40e_update_adq_vsi_queues(struct i40e_vsi *vsi, int vsi_offset);
- int i40e_is_vsi_uplink_mode_veb(struct i40e_vsi *vsi);
- i40e_status i40e_get_partition_bw_setting(struct i40e_pf *pf);
- i40e_status i40e_set_partition_bw_setting(struct i40e_pf *pf);
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index a717941db037..f492efdce885 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -1808,6 +1808,8 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 
- 	sections = I40E_AQ_VSI_PROP_QUEUE_MAP_VALID;
- 	offset = 0;
-+	/* zero out queue mapping, it will get updated on the end of the function */
-+	memset(ctxt->info.queue_mapping, 0, sizeof(ctxt->info.queue_mapping));
- 
- 	if (vsi->type == I40E_VSI_MAIN) {
- 		/* This code helps add more queue to the VSI if we have
-@@ -1824,10 +1826,12 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 	}
- 
- 	/* Number of queues per enabled TC */
--	if (vsi->type == I40E_VSI_MAIN)
-+	if (vsi->type == I40E_VSI_MAIN ||
-+	    (vsi->type == I40E_VSI_SRIOV && vsi->num_queue_pairs != 0))
- 		num_tc_qps = vsi->num_queue_pairs;
- 	else
- 		num_tc_qps = vsi->alloc_queue_pairs;
-+
- 	if (enabled_tc && (vsi->back->flags & I40E_FLAG_DCB_ENABLED)) {
- 		/* Find numtc from enabled TC bitmap */
- 		for (i = 0, numtc = 0; i < I40E_MAX_TRAFFIC_CLASS; i++) {
-@@ -1905,10 +1909,12 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 		}
- 		ctxt->info.tc_mapping[i] = cpu_to_le16(qmap);
- 	}
--	/* Do not change previously set num_queue_pairs for PFs */
-+	/* Do not change previously set num_queue_pairs for PFs and VFs*/
- 	if ((vsi->type == I40E_VSI_MAIN && numtc != 1) ||
--	    vsi->type != I40E_VSI_MAIN)
-+	    (vsi->type == I40E_VSI_SRIOV && vsi->num_queue_pairs == 0) ||
-+	    (vsi->type != I40E_VSI_MAIN && vsi->type != I40E_VSI_SRIOV))
- 		vsi->num_queue_pairs = offset;
-+
- 	/* Scheduler section valid can only be set for ADD VSI */
- 	if (is_add) {
- 		sections |= I40E_AQ_VSI_PROP_SCHED_VALID;
-@@ -5434,6 +5440,56 @@ static void i40e_vsi_update_queue_map(struct i40e_vsi *vsi,
- 	       sizeof(vsi->info.tc_mapping));
- }
- 
-+/**
-+ * i40e_update_adq_vsi_queues - update queue mapping for ADq VSI
-+ * @vsi: the VSI being reconfigured
-+ * @vsi_offset: offset from main VF VSI
-+ */
-+int i40e_update_adq_vsi_queues(struct i40e_vsi *vsi, int vsi_offset)
-+{
-+	struct i40e_pf *pf = vsi->back;
-+	struct i40e_hw *hw = &pf->hw;
-+	struct i40e_vsi_context ctxt = {};
-+	int ret = 0;
-+
-+	if (!vsi)
-+		return I40E_ERR_PARAM;
-+
-+	ctxt.seid = vsi->seid;
-+	ctxt.pf_num = vsi->back->hw.pf_id;
-+	ctxt.vf_num = vsi->vf_id + hw->func_caps.vf_base_id + vsi_offset;
-+	ctxt.uplink_seid = vsi->uplink_seid;
-+	ctxt.connection_type = I40E_AQ_VSI_CONN_TYPE_NORMAL;
-+	ctxt.flags = I40E_AQ_VSI_TYPE_VF;
-+	ctxt.info = vsi->info;
-+
-+	i40e_vsi_setup_queue_map(vsi, &ctxt, vsi->tc_config.enabled_tc,
-+				 false);
-+	if (vsi->reconfig_rss) {
-+		vsi->rss_size = min_t(int, vsi->back->alloc_rss_size,
-+				      vsi->num_queue_pairs);
-+		ret = i40e_vsi_config_rss(vsi);
-+		if (ret) {
-+			dev_info(&vsi->back->pdev->dev, "Failed to reconfig rss for num_queues\n");
-+			return ret;
-+		}
-+		vsi->reconfig_rss = false;
-+	}
-+
-+	ret = i40e_aq_update_vsi_params(hw, &ctxt, NULL);
-+	if (ret) {
-+		dev_info(&pf->pdev->dev, "Update vsi config failed, err %s aq_err %s\n",
-+			 i40e_stat_str(hw, ret),
-+			 i40e_aq_str(hw, hw->aq.asq_last_status));
-+		return ret;
-+	}
-+	/* update the local VSI info with updated queue map */
-+	i40e_vsi_update_queue_map(vsi, &ctxt);
-+	vsi->info.valid_sections = 0;
-+
-+	return ret;
-+}
-+
- /**
-  * i40e_vsi_config_tc - Configure VSI Tx Scheduler for given TC map
-  * @vsi: VSI to be configured
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index f6121a0c4a5e..cbff71e7dbdc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2238,11 +2238,12 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
- 	struct virtchnl_vsi_queue_config_info *qci =
- 	    (struct virtchnl_vsi_queue_config_info *)msg;
- 	struct virtchnl_queue_pair_info *qpi;
--	struct i40e_pf *pf = vf->pf;
- 	u16 vsi_id, vsi_queue_id = 0;
--	u16 num_qps_all = 0;
-+	struct i40e_pf *pf = vf->pf;
- 	i40e_status aq_ret = 0;
- 	int i, j = 0, idx = 0;
-+	struct i40e_vsi *vsi;
-+	u16 num_qps_all = 0;
- 
- 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
- 		aq_ret = I40E_ERR_PARAM;
-@@ -2331,9 +2332,15 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
- 		pf->vsi[vf->lan_vsi_idx]->num_queue_pairs =
- 			qci->num_queue_pairs;
- 	} else {
--		for (i = 0; i < vf->num_tc; i++)
--			pf->vsi[vf->ch[i].vsi_idx]->num_queue_pairs =
--			       vf->ch[i].num_qps;
-+		for (i = 0; i < vf->num_tc; i++) {
-+			vsi = pf->vsi[vf->ch[i].vsi_idx];
-+			vsi->num_queue_pairs = vf->ch[i].num_qps;
-+
-+			if (i40e_update_adq_vsi_queues(vsi, i)) {
-+				aq_ret = I40E_ERR_CONFIG;
-+				goto error_param;
-+			}
-+		}
- 	}
- 
- error_param:
--- 
-2.20.1
+So:
+		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+			ts_offset = igb_ptp_rx_pktstamp(rx_ring->q_vector,
+							pktbuf, &timestamp);
+			pkt_offset += ts_offset;
+			size -= ts_offset;
+		}
 
+Thoughts? I feel like if we see that desc has timestamp enabled then let's
+optimize it for successful case.
+
+>  
+>  		/* retrieve a buffer from the ring */
+>  		if (!skb) {
+> -			unsigned int offset = igb_rx_offset(rx_ring);
+> -			unsigned char *hard_start;
+> +			unsigned char *hard_start = pktbuf - igb_rx_offset(rx_ring);
+> +			unsigned int offset = pkt_offset + igb_rx_offset(rx_ring);
+
+Probably we could do something similar in flavour of:
+https://lore.kernel.org/bpf/20210118151318.12324-10-maciej.fijalkowski@intel.com/
+
+which broke XDP_REDIRECT and got fixed in:
+https://lore.kernel.org/bpf/20210303153928.11764-2-maciej.fijalkowski@intel.com/
+
+You get the idea.
+
+>  
+> -			hard_start = page_address(rx_buffer->page) +
+> -				     rx_buffer->page_offset - offset;
+>  			xdp_prepare_buff(&xdp, hard_start, offset, size, true);
+>  #if (PAGE_SIZE > 4096)
+>  			/* At larger PAGE_SIZE, frame_sz depend on len size */
+> @@ -8733,10 +8739,11 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+>  		} else if (skb)
+>  			igb_add_rx_frag(rx_ring, rx_buffer, skb, size);
+>  		else if (ring_uses_build_skb(rx_ring))
+> -			skb = igb_build_skb(rx_ring, rx_buffer, &xdp, rx_desc);
+> +			skb = igb_build_skb(rx_ring, rx_buffer, &xdp,
+> +					    timestamp);
+>  		else
+>  			skb = igb_construct_skb(rx_ring, rx_buffer,
+> -						&xdp, rx_desc);
+> +						&xdp, timestamp);
+>  
+>  		/* exit if we failed to retrieve a buffer */
+>  		if (!skb) {
+> diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> index 86a576201f5f..8e23df7da641 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> @@ -856,30 +856,26 @@ static void igb_ptp_tx_hwtstamp(struct igb_adapter *adapter)
+>  	dev_kfree_skb_any(skb);
+>  }
+>  
+> -#define IGB_RET_PTP_DISABLED 1
+> -#define IGB_RET_PTP_INVALID 2
+> -
+>  /**
+>   * igb_ptp_rx_pktstamp - retrieve Rx per packet timestamp
+>   * @q_vector: Pointer to interrupt specific structure
+>   * @va: Pointer to address containing Rx buffer
+> - * @skb: Buffer containing timestamp and packet
+>   *
+>   * This function is meant to retrieve a timestamp from the first buffer of an
+>   * incoming frame.  The value is stored in little endian format starting on
+>   * byte 8
+>   *
+> - * Returns: 0 if success, nonzero if failure
+> + * Returns: 0 on failure, timestamp on success
+>   **/
+> -int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+> -			struct sk_buff *skb)
+> +ktime_t igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va)
+>  {
+>  	struct igb_adapter *adapter = q_vector->adapter;
+> +	struct skb_shared_hwtstamps ts;
+>  	__le64 *regval = (__le64 *)va;
+>  	int adjust = 0;
+>  
+>  	if (!(adapter->ptp_flags & IGB_PTP_ENABLED))
+> -		return IGB_RET_PTP_DISABLED;
+> +		return 0;
+>  
+>  	/* The timestamp is recorded in little endian format.
+>  	 * DWORD: 0        1        2        3
+> @@ -888,10 +884,9 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+>  
+>  	/* check reserved dwords are zero, be/le doesn't matter for zero */
+>  	if (regval[0])
+> -		return IGB_RET_PTP_INVALID;
+> +		return 0;
+>  
+> -	igb_ptp_systim_to_hwtstamp(adapter, skb_hwtstamps(skb),
+> -				   le64_to_cpu(regval[1]));
+> +	igb_ptp_systim_to_hwtstamp(adapter, &ts, le64_to_cpu(regval[1]));
+>  
+>  	/* adjust timestamp for the RX latency based on link speed */
+>  	if (adapter->hw.mac.type == e1000_i210) {
+> @@ -907,10 +902,8 @@ int igb_ptp_rx_pktstamp(struct igb_q_vector *q_vector, void *va,
+>  			break;
+>  		}
+>  	}
+> -	skb_hwtstamps(skb)->hwtstamp =
+> -		ktime_sub_ns(skb_hwtstamps(skb)->hwtstamp, adjust);
+>  
+> -	return 0;
+> +	return ktime_sub_ns(ts.hwtstamp, adjust);
+>  }
+>  
+>  /**
+> -- 
+> 2.20.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
