@@ -2,58 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D439A36916C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 13:42:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96C1F3691AC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 14:00:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3BEFB60DD7;
-	Fri, 23 Apr 2021 11:42:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3EDE7615C7;
+	Fri, 23 Apr 2021 12:00:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IjcpO_DlJ6-7; Fri, 23 Apr 2021 11:42:53 +0000 (UTC)
+	with ESMTP id q7M5sFtin7VM; Fri, 23 Apr 2021 12:00:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0159B60DAE;
-	Fri, 23 Apr 2021 11:42:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18C3160DD8;
+	Fri, 23 Apr 2021 12:00:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CA19F1BF33F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:42:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AAB6B1BF283
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:00:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B961240610
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:42:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 985D040F6B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:00:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oI0pLBVmCV-Q for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Apr 2021 11:42:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FtpMTdHQuLEd for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Apr 2021 12:00:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 929D34060B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:42:45 +0000 (UTC)
-IronPort-SDR: Q/WPCyXROOjKMQwtbwJGGyq8R4MZI44wg3MMdom7TAXg19qgnU1HcUWF16EgS4k13fYHWenPYF
- a8xJN+zFWE5g==
-X-IronPort-AV: E=McAfee;i="6200,9189,9962"; a="260008278"
-X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="260008278"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2021 04:42:45 -0700
-IronPort-SDR: 8zmaxgEDFjVseHrU/Jqxbuovqe9C46ZxLP3gzgTTMeJFrGE924YMjo9vpSLDM/OdV4YjSDeI1F
- gjQha2dI4VNA==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 55D3C4055D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:00:03 +0000 (UTC)
+IronPort-SDR: zB+GaRh9RJfl7mY4518eGIY3HIUBN8k+MY0fAz3vozeQWEJMANbhg5ymZQK/ZYPJfm/EtV+SNC
+ iJ6UqnzDSSKw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9962"; a="176178184"
+X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="176178184"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2021 05:00:02 -0700
+IronPort-SDR: gcw+cLWZkMgfiI0ojQWgslDff6IJeDJ9Mw9CTsTfeI6KvQcjM+mLFRKiwQm+658xSBM+AvA5Tr
+ Y7Nc6RB7Qafw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="385072454"
-Received: from amlin-018-147.igk.intel.com ([10.102.18.147])
- by orsmga003.jf.intel.com with ESMTP; 23 Apr 2021 04:42:44 -0700
-From: Eryk Rybak <eryk.roch.rybak@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 23 Apr 2021 13:43:26 +0200
-Message-Id: <20210423114326.22393-3-eryk.roch.rybak@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210423114326.22393-1-eryk.roch.rybak@intel.com>
-References: <20210423114326.22393-1-eryk.roch.rybak@intel.com>
+X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="617960259"
+Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 23 Apr 2021 05:00:01 -0700
+Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lZuTZ-0004eM-83; Fri, 23 Apr 2021 12:00:01 +0000
+Date: Fri, 23 Apr 2021 19:59:05 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6082b689.EdD9eT4xmjpPxfVW%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 2/2] i40e: Fix ping is lost
- after configuring ADq on VF
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 5ee9f22fb30f02076233f8fb105f83ff68fe6dbc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,183 +67,141 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eryk Rybak <eryk.roch.rybak@intel.com>,
- Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Properly reconfigure VF VSIs after VF request ADq.
-Created new function to update queue mapping and queue pairs per TC
-with AQ update VSI. This sets proper RSS size on NIC.
-VFs num_queue_pairs should not be changed during setup of queue maps.
-Previously, VF main VSI in ADq had configured too many queues and had
-wrong RSS size, which lead to packets not being consumed and drops in
-connectivity.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 5ee9f22fb30f02076233f8fb105f83ff68fe6dbc  igb: Check if num of q_vectors is smaller than max before array access
 
-Fixes: bc6d33c8d93f ("i40e: Fix the number of queues available to be mapped for use")
-Co-developed-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Eryk Rybak <eryk.roch.rybak@intel.com>
+elapsed time: 723m
+
+configs tested: 114
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+um                           x86_64_defconfig
+sh                            titan_defconfig
+powerpc                  storcenter_defconfig
+riscv                             allnoconfig
+powerpc                 mpc834x_mds_defconfig
+powerpc                      ep88xc_defconfig
+arm                     eseries_pxa_defconfig
+parisc                           alldefconfig
+powerpc                      mgcoge_defconfig
+mips                        omega2p_defconfig
+arm                          exynos_defconfig
+arm                         bcm2835_defconfig
+openrisc                            defconfig
+sh                          r7785rp_defconfig
+m68k                           sun3_defconfig
+sh                        sh7785lcr_defconfig
+arm                          lpd270_defconfig
+xtensa                         virt_defconfig
+openrisc                         alldefconfig
+sh                          rsk7269_defconfig
+powerpc                     powernv_defconfig
+powerpc                   currituck_defconfig
+ia64                      gensparse_defconfig
+sh                           se7750_defconfig
+sh                          lboxre2_defconfig
+h8300                       h8s-sim_defconfig
+sparc                               defconfig
+powerpc                     ep8248e_defconfig
+mips                          rb532_defconfig
+powerpc                     tqm8548_defconfig
+powerpc                     mpc512x_defconfig
+arm                         at91_dt_defconfig
+arm                         palmz72_defconfig
+arm                            dove_defconfig
+mips                            e55_defconfig
+arm                           sunxi_defconfig
+powerpc                 mpc8315_rdb_defconfig
+sh                           se7722_defconfig
+m68k                       m5208evb_defconfig
+powerpc                      arches_defconfig
+m68k                            mac_defconfig
+arm                          pxa910_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210423
+x86_64               randconfig-a004-20210423
+x86_64               randconfig-a001-20210423
+x86_64               randconfig-a005-20210423
+x86_64               randconfig-a006-20210423
+x86_64               randconfig-a003-20210423
+i386                 randconfig-a005-20210423
+i386                 randconfig-a002-20210423
+i386                 randconfig-a001-20210423
+i386                 randconfig-a006-20210423
+i386                 randconfig-a004-20210423
+i386                 randconfig-a003-20210423
+i386                 randconfig-a014-20210423
+i386                 randconfig-a012-20210423
+i386                 randconfig-a011-20210423
+i386                 randconfig-a013-20210423
+i386                 randconfig-a015-20210423
+i386                 randconfig-a016-20210423
+i386                 randconfig-a012-20210421
+i386                 randconfig-a014-20210421
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
 ---
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 62 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 17 +++--
- 3 files changed, 72 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index e3a4c7b5fd56..ea9e301c6ff3 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -1246,6 +1246,7 @@ void i40e_ptp_restore_hw_time(struct i40e_pf *pf);
- void i40e_ptp_init(struct i40e_pf *pf);
- void i40e_ptp_stop(struct i40e_pf *pf);
- int i40e_ptp_alloc_pins(struct i40e_pf *pf);
-+int i40e_update_adq_vsi_queues(struct i40e_vsi *vsi, int vsi_offset);
- int i40e_is_vsi_uplink_mode_veb(struct i40e_vsi *vsi);
- i40e_status i40e_get_partition_bw_setting(struct i40e_pf *pf);
- i40e_status i40e_set_partition_bw_setting(struct i40e_pf *pf);
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 9a4eff7beb12..de101ad96425 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -1801,6 +1801,8 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 
- 	sections = I40E_AQ_VSI_PROP_QUEUE_MAP_VALID;
- 	offset = 0;
-+	/* zero out queue mapping, it will get updated on the end of the function */
-+	memset(ctxt->info.queue_mapping, 0, sizeof(ctxt->info.queue_mapping));
- 
- 	if (vsi->type == I40E_VSI_MAIN) {
- 		/* This code helps add more queue to the VSI if we have
-@@ -1817,10 +1819,12 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 	}
- 
- 	/* Number of queues per enabled TC */
--	if (vsi->type == I40E_VSI_MAIN)
-+	if (vsi->type == I40E_VSI_MAIN ||
-+	    (vsi->type == I40E_VSI_SRIOV && vsi->num_queue_pairs != 0))
- 		num_tc_qps = vsi->num_queue_pairs;
- 	else
- 		num_tc_qps = vsi->alloc_queue_pairs;
-+
- 	if (enabled_tc && (vsi->back->flags & I40E_FLAG_DCB_ENABLED)) {
- 		/* Find numtc from enabled TC bitmap */
- 		for (i = 0, numtc = 0; i < I40E_MAX_TRAFFIC_CLASS; i++) {
-@@ -1898,10 +1902,12 @@ static void i40e_vsi_setup_queue_map(struct i40e_vsi *vsi,
- 		}
- 		ctxt->info.tc_mapping[i] = cpu_to_le16(qmap);
- 	}
--	/* Do not change previously set num_queue_pairs for PFs */
-+	/* Do not change previously set num_queue_pairs for PFs and VFs*/
- 	if ((vsi->type == I40E_VSI_MAIN && numtc != 1) ||
--	    vsi->type != I40E_VSI_MAIN)
-+	    (vsi->type == I40E_VSI_SRIOV && vsi->num_queue_pairs == 0) ||
-+	    (vsi->type != I40E_VSI_MAIN && vsi->type != I40E_VSI_SRIOV))
- 		vsi->num_queue_pairs = offset;
-+
- 	/* Scheduler section valid can only be set for ADD VSI */
- 	if (is_add) {
- 		sections |= I40E_AQ_VSI_PROP_SCHED_VALID;
-@@ -5427,6 +5433,56 @@ static void i40e_vsi_update_queue_map(struct i40e_vsi *vsi,
- 	       sizeof(vsi->info.tc_mapping));
- }
- 
-+/**
-+ * i40e_update_adq_vsi_queues - update queue mapping for ADq VSI
-+ * @vsi: the VSI being reconfigured
-+ * @vsi_offset: offset from main VF VSI
-+ */
-+int i40e_update_adq_vsi_queues(struct i40e_vsi *vsi, int vsi_offset)
-+{
-+	struct i40e_pf *pf = vsi->back;
-+	struct i40e_hw *hw = &pf->hw;
-+	struct i40e_vsi_context ctxt = {};
-+	int ret = 0;
-+
-+	if (!vsi)
-+		return I40E_ERR_PARAM;
-+
-+	ctxt.seid = vsi->seid;
-+	ctxt.pf_num = vsi->back->hw.pf_id;
-+	ctxt.vf_num = vsi->vf_id + hw->func_caps.vf_base_id + vsi_offset;
-+	ctxt.uplink_seid = vsi->uplink_seid;
-+	ctxt.connection_type = I40E_AQ_VSI_CONN_TYPE_NORMAL;
-+	ctxt.flags = I40E_AQ_VSI_TYPE_VF;
-+	ctxt.info = vsi->info;
-+
-+	i40e_vsi_setup_queue_map(vsi, &ctxt, vsi->tc_config.enabled_tc,
-+				 false);
-+	if (vsi->reconfig_rss) {
-+		vsi->rss_size = min_t(int, vsi->back->alloc_rss_size,
-+				      vsi->num_queue_pairs);
-+		ret = i40e_vsi_config_rss(vsi);
-+		if (ret) {
-+			dev_info(&vsi->back->pdev->dev, "Failed to reconfig rss for num_queues\n");
-+			return ret;
-+		}
-+		vsi->reconfig_rss = false;
-+	}
-+
-+	ret = i40e_aq_update_vsi_params(hw, &ctxt, NULL);
-+	if (ret) {
-+		dev_info(&pf->pdev->dev, "Update vsi config failed, err %s aq_err %s\n",
-+			 i40e_stat_str(hw, ret),
-+			 i40e_aq_str(hw, hw->aq.asq_last_status));
-+		return ret;
-+	}
-+	/* update the local VSI info with updated queue map */
-+	i40e_vsi_update_queue_map(vsi, &ctxt);
-+	vsi->info.valid_sections = 0;
-+
-+	return ret;
-+}
-+
- /**
-  * i40e_vsi_config_tc - Configure VSI Tx Scheduler for given TC map
-  * @vsi: VSI to be configured
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 139562aaf908..84fa7f2325ae 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2238,11 +2238,12 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
- 	struct virtchnl_vsi_queue_config_info *qci =
- 	    (struct virtchnl_vsi_queue_config_info *)msg;
- 	struct virtchnl_queue_pair_info *qpi;
--	struct i40e_pf *pf = vf->pf;
- 	u16 vsi_id, vsi_queue_id = 0;
--	u16 num_qps_all = 0;
-+	struct i40e_pf *pf = vf->pf;
- 	i40e_status aq_ret = 0;
- 	int i, j = 0, idx = 0;
-+	struct i40e_vsi *vsi;
-+	u16 num_qps_all = 0;
- 
- 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
- 		aq_ret = I40E_ERR_PARAM;
-@@ -2331,9 +2332,15 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
- 		pf->vsi[vf->lan_vsi_idx]->num_queue_pairs =
- 			qci->num_queue_pairs;
- 	} else {
--		for (i = 0; i < vf->num_tc; i++)
--			pf->vsi[vf->ch[i].vsi_idx]->num_queue_pairs =
--			       vf->ch[i].num_qps;
-+		for (i = 0; i < vf->num_tc; i++) {
-+			vsi = pf->vsi[vf->ch[i].vsi_idx];
-+			vsi->num_queue_pairs = vf->ch[i].num_qps;
-+
-+			if (i40e_update_adq_vsi_queues(vsi, i)) {
-+				aq_ret = I40E_ERR_CONFIG;
-+				goto error_param;
-+			}
-+		}
- 	}
- 
- error_param:
--- 
-2.20.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
