@@ -1,65 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1EBD3694C8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 16:32:32 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F0093694C9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 16:32:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2096460DC5;
-	Fri, 23 Apr 2021 14:32:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BB50884426;
+	Fri, 23 Apr 2021 14:32:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0-lRb-wtoa4k; Fri, 23 Apr 2021 14:32:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3YH2LEk56A8d; Fri, 23 Apr 2021 14:32:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3C614607D0;
-	Fri, 23 Apr 2021 14:32:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A5C2584429;
+	Fri, 23 Apr 2021 14:32:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 092C81BF3BE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:09 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FF951BF283
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 08:19:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EB48160DC9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6B8B683C72
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 08:19:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TQ7n7GtTiM4A for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Apr 2021 06:46:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4A28360DC5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:07 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1619160362;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kCSJX76twDPO for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Apr 2021 08:19:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from vulcan.natalenko.name (vulcan.natalenko.name [104.207.131.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 04D0283A80
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 08:19:49 +0000 (UTC)
+Received: from localhost (kaktus.kanapka.ml [151.237.229.131])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by vulcan.natalenko.name (Postfix) with ESMTPSA id 6BF2FA471E0;
+ Fri, 23 Apr 2021 10:19:45 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
+ s=dkim-20170712; t=1619165985;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=COpI2hRP60Vs2lnyODeiD9EhKAi0HtjdTtgcT2kw3Hc=;
- b=Tat9RtrgjoUdU2WZNdvnghT6Etxjtfc9mkKhkXJIVA7dzvtLJqNjYSKisckLvjSwoIiUIV
- RnMLSK7XGcAGMJbZVYoHOa3MntLf/UMEOwqqXqn/4fBBJqwRut1oNsy+1L624nLYAM/9zE
- +PYsVB9Z2U+8dPtXvxGu0Fp+RNT2u5CfuOLZDovLGYQiVGepJa8rgWaJD75aga2EObBYQ6
- ITXgCRNnB1Rfqej4THc5QfPj8CQwFtAnt10Oat2ujzWeJR9ewWPWJpPpFHJ0ymOl04lT4T
- lm3/FuwwHsB+vORaCX36YerTLoAI4Tq1mBWQvpCOp5MfTjff4MO8bj4GtfSaEg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1619160362;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=COpI2hRP60Vs2lnyODeiD9EhKAi0HtjdTtgcT2kw3Hc=;
- b=XVXMIiSoL7ZehE5pRQd2hsow7veSTYahNLh/QvNIKx3Es3yPioDrWLNDxXFPibFmxfQvUf
- XN71MyCQfFRc7LDg==
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-In-Reply-To: <20210422101129.GB44289@ranger.igk.intel.com>
-References: <20210422052617.17267-1-kurt@linutronix.de>
- <20210422101129.GB44289@ranger.igk.intel.com>
-Date: Fri, 23 Apr 2021 08:45:52 +0200
-Message-ID: <878s59qz1b.fsf@kurt>
+ bh=Sq6FHbzlathvCZzoMydAX13uBBzPWKO/SRxFralH4D8=;
+ b=KaXcWN7NsMg/HQb9++N0iYdLJ6eHuzsRPeDfCoFVS/TmOevAzY/DLmjA+y6gsb/Miriec7
+ zUHhIG5zF/EVgwu7lMpjeu/qx8hPIXsjjRuXOMyUMjKmWY2HhYcUD7FFChAwHTtFnFLipm
+ 2YAvxBEUDY1gGszhyGzK4MOo8LaDmEk=
+Date: Fri, 23 Apr 2021 10:19:44 +0200
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20210423081944.kvvm4v7jcdyj74l3@spock.localdomain>
+References: <20210406123619.rhvtr73xwwlbu2ll@spock.localdomain>
+ <20210406114734.0e00cb2f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20210407060053.wyo75mqwcva6w6ci@spock.localdomain>
+ <20210407083748.56b9c261@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAKgT0UfLLQycLsAZQ98ofBGYPwejA6zHbG6QsNrU92mizS7e0g@mail.gmail.com>
+ <20210407110722.1eb4ebf2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAKgT0UcQXVOifi_2r_Y6meg_zvHDBf1me8VwA4pvEtEMzOaw2Q@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAKgT0UcQXVOifi_2r_Y6meg_zvHDBf1me8VwA4pvEtEMzOaw2Q@mail.gmail.com>
 X-Mailman-Approved-At: Fri, 23 Apr 2021 14:32:25 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net v3] igb: Fix XDP with PTP enabled
+Subject: Re: [Intel-wired-lan] [igb] netconsole triggers warning in
+ netpoll_poll_dev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,117 +75,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Richard Cochran <richardcochran@gmail.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============0292140996471576680=="
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============0292140996471576680==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+Hello.
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On Wed, Apr 07, 2021 at 04:06:29PM -0700, Alexander Duyck wrote:
+> On Wed, Apr 7, 2021 at 11:07 AM Jakub Kicinski <kuba@kernel.org> wrote:
+> >
+> > On Wed, 7 Apr 2021 09:25:28 -0700 Alexander Duyck wrote:
+> > > On Wed, Apr 7, 2021 at 8:37 AM Jakub Kicinski <kuba@kernel.org> wrote:
+> > > >
+> > > > On Wed, 7 Apr 2021 08:00:53 +0200 Oleksandr Natalenko wrote:
+> > > > > Thanks for the effort, but reportedly [1] it made no difference,
+> > > > > unfortunately.
+> > > > >
+> > > > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=212573#c8
+> > > >
+> > > > The only other option I see is that somehow the NAPI has no rings.
+> > > >
+> > > > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > index a45cd2b416c8..24568adc2fb1 100644
+> > > > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > @@ -7980,7 +7980,7 @@ static int igb_poll(struct napi_struct *napi, int budget)
+> > > >         struct igb_q_vector *q_vector = container_of(napi,
+> > > >                                                      struct igb_q_vector,
+> > > >                                                      napi);
+> > > > -       bool clean_complete = true;
+> > > > +       bool clean_complete = q_vector->tx.ring || q_vector->rx.ring;
+> > > >         int work_done = 0;
+> > > >
+> > > >  #ifdef CONFIG_IGB_DCA
+> > >
+> > > It might make sense to just cast the work_done as a unsigned int, and
+> > > then on the end of igb_poll use:
+> > >   return min_t(unsigned int, work_done, budget - 1);
+> >
+> > Sure, that's simplest. I wasn't sure something is supposed to prevent
+> > this condition or if it's okay to cover it up.
+> 
+> I'm pretty sure it is okay to cover it up. In this case the "budget -
+> 1" is supposed to be the upper limit on what can be reported. I think
+> it was assuming an unsigned value anyway.
+> 
+> Another alternative would be to default clean_complete to !!budget.
+> Then if budget is 0 clean_complete would always return false.
 
-On Thu Apr 22 2021, Maciej Fijalkowski wrote:
-> On Thu, Apr 22, 2021 at 07:26:17AM +0200, Kurt Kanzenbach wrote:
->> +		/* pull rx packet timestamp if available and valid */
->> +		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
->> +			timestamp =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
->> +							pktbuf);
->> +
->> +			if (timestamp) {
->> +				pkt_offset +=3D IGB_TS_HDR_LEN;
->> +				size -=3D IGB_TS_HDR_LEN;
->> +			}
->> +		}
->
-> Small nit: since this is a hot path, maybe we could omit the additional
-> branch that you're introducing above and make igb_ptp_rx_pktstamp() to
-> return either 0 for error cases and IGB_TS_HDR_LEN if timestamp was fine?
-> timestamp itself would be passed as an arg.
->
-> So:
-> 		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-> 			ts_offset =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
-> 							pktbuf, &timestamp);
-> 			pkt_offset +=3D ts_offset;
-> 			size -=3D ts_offset;
-> 		}
->
-> Thoughts? I feel like if we see that desc has timestamp enabled then let's
-> optimize it for successful case.
+So, among all the variants, which one to try? Or there was a separate
+patch sent to address this?
 
-Yes, this should work as well. Actually I didn't like the if statement
-either. Only one comment: It's not an offset but rather the timestamp
-header length. I'd call it 'ts_len'.
+Thanks.
 
->
->>=20=20
->>  		/* retrieve a buffer from the ring */
->>  		if (!skb) {
->> -			unsigned int offset =3D igb_rx_offset(rx_ring);
->> -			unsigned char *hard_start;
->> +			unsigned char *hard_start =3D pktbuf - igb_rx_offset(rx_ring);
->> +			unsigned int offset =3D pkt_offset + igb_rx_offset(rx_ring);
->
-> Probably we could do something similar in flavour of:
-> https://lore.kernel.org/bpf/20210118151318.12324-10-maciej.fijalkowski@in=
-tel.com/
->
-> which broke XDP_REDIRECT and got fixed in:
-> https://lore.kernel.org/bpf/20210303153928.11764-2-maciej.fijalkowski@int=
-el.com/
->
-> You get the idea.
-
-Yes, I do. However, I think such a change doesn't belong in this patch,
-which is a bugfix for XDP. It looks like an optimization. Should I split
-it into two patches and rather target net-next instead of net?
-
-Thanks for your review.
-
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmCCbSAACgkQeSpbgcuY
-8KZFcw//eFr5BqqCeafT7m7sSMhiuiG0plalsTXxSK877VCcoGMIMMjAks4moTNv
-3oL7Mz6NkGsMCi/BXwwBTer/orNzEfEPphWV/HcShgnBErsaJtHydiFkL+KaKFBm
-HPkghjIfN9bOehDLrLmXNWWLuLx7I1YWak+LeH7NGCNo4oAu2IvaDPxhJNDEpywk
-5hC3oSsGdHLv81SqKc8pkGSEhdiNloAOuPDuOxAJTmC3eEgXszSMk5MYdLK8huDs
-FzkHiGWNZgYRMR1lWePzhlrTIMQPf7J0Kg3zk5urmwQxNP3xg6ljsNOs3yMATKM5
-DTyvE3PsRQjMRDIsGhBCk3N6OezoOfM0Iqz7bJLOJNwMgffyeFHQgvE1x0qSHatV
-bLWl2pr5SaoGsPxrrmUgpbF/DoXRwfZhrC3fk9vznzHNNHL7HiP2soE+K1EgyYCZ
-/7HbwRlaMjeELhtwueh2fuSXQoHJDq5QzoqnceJOirgXJmGiJTNZn9CptHtYQHsL
-OCe9BC6XPcB53Tmyqf5IGqkdS40Uw6vqV7aAp/gB1HJfPHGE6F4Bqg5U5Cdzlqr5
-PUH12N0JhvcbUnXpX/Rl0fnXDcmSbtv6heH0e+rQowJK5E1MlVz+wJoKpq8sndJB
-WWpn5MbDOHzpzXxImgyJL9zY1HuS1sIZb4vjDfmiKHShgqXIXEs=
-=yxE8
------END PGP SIGNATURE-----
---=-=-=--
-
---===============0292140996471576680==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+  Oleksandr Natalenko (post-factum)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0292140996471576680==--
