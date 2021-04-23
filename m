@@ -1,82 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFC9B36900B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 12:05:26 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF1863690C6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 13:04:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96850842A4;
-	Fri, 23 Apr 2021 10:05:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13AEF41829;
+	Fri, 23 Apr 2021 11:04:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o5Yz08iaylQo; Fri, 23 Apr 2021 10:05:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3-UD-Kc56Gq4; Fri, 23 Apr 2021 11:04:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1332C843ED;
-	Fri, 23 Apr 2021 10:05:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C506D40472;
+	Fri, 23 Apr 2021 11:04:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6F8161BF281
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 10:05:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4963E1BF33F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:04:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 55D16404D1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 10:05:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 372898354B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:04:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WihcAYYZlnxb for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Apr 2021 10:05:11 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
- [IPv6:2a00:1450:4864:20::436])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 59CE4404C3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 10:05:11 +0000 (UTC)
-Received: by mail-wr1-x436.google.com with SMTP id e7so38794917wrs.11
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 03:05:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=qnu8+xANZ9fCEYBDMJeqZXufIm484UwdqLlibJM+xGg=;
- b=gTywlByTY8QOwBs3ivbEvMqShqcmbc4tS9l9NuuXjPrkAexiFBUVJjPIZWN6Pqi2Ek
- ly2V/tpirLtOQD9WJ+jvJ2Sj6Gn3qkCh9idbNI5dBkXGK2lYa7esVN2E5GvOlfJ2mDG0
- i0OiVaFxW6Ij7RpgIF0CqP8TqN5wPdtoHIUvTMuudrupWItd1FrHaV7lqnfebOwumtsy
- p+XHdCPypdhizZI0H413GnC/MvtTWMZ0WirnT1dBwIPviLe3hVLUOv1e4mCEwKUZFqGW
- 92wy55YvAlADM4FjY34V+mLELpOI5zbh35QAZeqtLDJGdSvULAbLh20HNlD7vcfY33E9
- 4Dog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=qnu8+xANZ9fCEYBDMJeqZXufIm484UwdqLlibJM+xGg=;
- b=EzTzzcl/xREOTrQTCNfkF8nr2F5342RZVYTPj+n0CmBoXCU9MJY5dfSP7tj6nFYaZR
- 6apyO3IGvgXMkXjDRoPHQ/MfsI75dnNb5YbRbkv5ASa0pdb7aM1Iu/A5imjH8CfTIzh0
- BSfjZGTsgfAgE/ylJlq71y4ZggzxwY/lW7tEqp23CEeU+hgOU+al7qLjQSQPWCNw58GF
- +1MXdA5X6desVmGgMEezy7KL+8GEPJYeYXOj4tHaQoZjesUIFeRdqesQ400Wp9+q9NxR
- 3Z0IJFD7lhCGilJBrp0fHfRRSUzRB1eTYrQHJ5Mw3DzKMD+Ngpn2qHiNf8z/b7Mab1Zh
- Pu6g==
-X-Gm-Message-State: AOAM532+Ezu+Zj5ZC9cHwrbZs3Y3D35JyHBC00dKImpxuA9RzsfoEEqS
- yGni4r8wPDnPZStfSK3pWlQ=
-X-Google-Smtp-Source: ABdhPJzii5OWQkCLiIFA+BGj7w6KHZ66O4nqK+QYLm0i/NTPCGM5wB3mN8Lhidzx/+Dt8uLt6Jxcww==
-X-Received: by 2002:a5d:47c1:: with SMTP id o1mr3672237wrc.216.1619172309744; 
- Fri, 23 Apr 2021 03:05:09 -0700 (PDT)
-Received: from localhost.localdomain ([188.149.128.194])
- by smtp.gmail.com with ESMTPSA id t12sm8599481wrs.42.2021.04.23.03.05.08
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 23 Apr 2021 03:05:09 -0700 (PDT)
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-To: magnus.karlsson@intel.com, intel-wired-lan@lists.osuosl.org,
- anthony.l.nguyen@intel.com, maciej.fijalkowski@intel.com
-Date: Fri, 23 Apr 2021 12:04:46 +0200
-Message-Id: <20210423100446.15412-6-magnus.karlsson@gmail.com>
-X-Mailer: git-send-email 2.29.0
-In-Reply-To: <20210423100446.15412-1-magnus.karlsson@gmail.com>
-References: <20210423100446.15412-1-magnus.karlsson@gmail.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kgDHm0hcLwds for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Apr 2021 11:04:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1F8CC83260
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 11:04:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619175876;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cDqRU4xoeQBq+o0x4/mB6P0WkqM1pYsz0fuPPw/7z8s=;
+ b=hxV6M7YQLW9SLnw0qhKanFnNScNzir6oAfGYnbDrr04GA+IbQp6FmfgUyd3eI24gc+F95u
+ 4SRMYyOW+KgYKD2fznLRcEaucgmDKDQqz2nW42CDEFbN74NMFwDgS2t7uQTGNWsQO6ssFN
+ lj9rlWGL0KwT6KIxaMbrNix4hp4Cg7A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-571-4IUDAQOzOgOBTwnbUgIRUw-1; Fri, 23 Apr 2021 07:04:35 -0400
+X-MC-Unique: 4IUDAQOzOgOBTwnbUgIRUw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 90FF5817469;
+ Fri, 23 Apr 2021 11:04:33 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 521D660BE5;
+ Fri, 23 Apr 2021 11:04:28 +0000 (UTC)
+Date: Fri, 23 Apr 2021 13:04:27 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Magnus Karlsson <magnus.karlsson@gmail.com>
+Message-ID: <20210423130427.1bbe4df2@carbon>
+In-Reply-To: <20210423095955.15207-1-magnus.karlsson@gmail.com>
+References: <20210423095955.15207-1-magnus.karlsson@gmail.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH intel-net 5/5] ixgbevf: add correct
- exception tracing for XDP
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Subject: Re: [Intel-wired-lan] [PATCH intel-net] i40e: fix broken XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,47 +78,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, brouer@redhat.com
+Cc: netdev@vger.kernel.org, brouer@redhat.com, intel-wired-lan@lists.osuosl.org,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Magnus Karlsson <magnus.karlsson@intel.com>
+On Fri, 23 Apr 2021 11:59:55 +0200
+Magnus Karlsson <magnus.karlsson@gmail.com> wrote:
 
-Add missing exception tracing to XDP when a number of different
-errors can occur. The support was only partial. Several errors
-where not logged which would confuse the user quite a lot not
-knowing where and why the packets disappeared.
+> From: Magnus Karlsson <magnus.karlsson@intel.com>
+> 
+> Commit 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c") broke
+> XDP support in the i40e driver. That commit was fixing a sparse error
+> in the code by introducing a new variable xdp_res instead of
+> overloading this into the skb pointer. The problem is that the code
+> later uses the skb pointer in if statements and these where not
+> extended to also test for the new xdp_res variable. Fix this by adding
+> the correct tests for xdp_res in these places.
+> 
+> Fixes: 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c")
+> Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 10 +++-------
+>  1 file changed, 3 insertions(+), 7 deletions(-)
 
-Fixes: 21092e9ce8b1 ("ixgbevf: Add support for XDP_TX action")
-Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
----
- drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 3 +++
- 1 file changed, 3 insertions(+)
+Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index 449d7d5b280d..b38860c48598 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -1067,11 +1067,14 @@ static struct sk_buff *ixgbevf_run_xdp(struct ixgbevf_adapter *adapter,
- 	case XDP_TX:
- 		xdp_ring = adapter->xdp_ring[rx_ring->queue_index];
- 		result = ixgbevf_xmit_xdp_ring(xdp_ring, xdp);
-+		if (result == IXGBEVF_XDP_CONSUMED)
-+			goto out_failure;
- 		break;
- 	default:
- 		bpf_warn_invalid_xdp_action(act);
- 		fallthrough;
- 	case XDP_ABORTED:
-+out_failure:
- 		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
- 		fallthrough; /* handle aborts by dropping packet */
- 	case XDP_DROP:
+Tested-by: Jesper Dangaard Brouer <brouer@redhat.com>
+
+I also tested that i40e works on my system again.
+ Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+
+Running XDP on dev:i40e2 (ifindex:8) action:XDP_DROP options:no_touch
+XDP stats       CPU     pps         issue-pps  
+XDP-RX CPU      4       33,670,895  0          
+XDP-RX CPU      total   33,670,895 
+
+RXQ stats       RXQ:CPU pps         issue-pps  
+rx_queue_index    4:4   33,670,900  0          
+rx_queue_index    4:sum 33,670,900 
+
+
+Running XDP on dev:i40e2 (ifindex:8) action:XDP_DROP options:read
+XDP stats       CPU     pps         issue-pps  
+XDP-RX CPU      4       31,424,994  0          
+XDP-RX CPU      total   31,424,994 
+
+RXQ stats       RXQ:CPU pps         issue-pps  
+rx_queue_index    4:4   31,424,997  0          
+rx_queue_index    4:sum 31,424,997 
+
+
+Running XDP on dev:i40e2 (ifindex:8) action:XDP_TX options:swapmac
+XDP stats       CPU     pps         issue-pps  
+XDP-RX CPU      4       14,777,900  0          
+XDP-RX CPU      total   14,777,900 
+
+RXQ stats       RXQ:CPU pps         issue-pps  
+rx_queue_index    4:4   14,777,893  0          
+rx_queue_index    4:sum 14,777,893 
+
+
+$ sudo ./xdp_redirect_map i40e2 i40e2
+input: 8 output: 8
+libbpf: elf: skipping unrecognized data section(24) .eh_frame
+libbpf: elf: skipping relo section(25) .rel.eh_frame for section(24) .eh_frame
+libbpf: Kernel error message: XDP program already attached
+WARN: link set xdp fd failed on 8
+ifindex 8:    8212980 pkt/s
+ifindex 8:   11725145 pkt/s
+ifindex 8:   11727939 pkt/s
+ifindex 8:   11727640 pkt/s
+ifindex 8:   11729593 pkt/s
+
 -- 
-2.29.0
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
 
 _______________________________________________
 Intel-wired-lan mailing list
