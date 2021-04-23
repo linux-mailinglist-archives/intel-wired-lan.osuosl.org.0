@@ -1,59 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74FD63691BD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 14:06:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1EBD3694C8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Apr 2021 16:32:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F4EF843EA;
-	Fri, 23 Apr 2021 12:06:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2096460DC5;
+	Fri, 23 Apr 2021 14:32:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U2lABN6twCFK; Fri, 23 Apr 2021 12:06:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0-lRb-wtoa4k; Fri, 23 Apr 2021 14:32:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06C0C843D1;
-	Fri, 23 Apr 2021 12:06:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3C614607D0;
+	Fri, 23 Apr 2021 14:32:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 19C451BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:06:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 092C81BF3BE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 06F2B843D1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:06:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EB48160DC9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id orYVsgm1v3LS for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Apr 2021 12:06:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TQ7n7GtTiM4A for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Apr 2021 06:46:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2F8DA843B5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 12:06:44 +0000 (UTC)
-IronPort-SDR: H9NTulXL125AR4YVHexBK/KdD+rP1eLUMr5DaVM7XLIsTy7Dp66qe8WMVwFMnlUEAO157c1JYb
- c0pg0LwHxa8w==
-X-IronPort-AV: E=McAfee;i="6200,9189,9962"; a="175542385"
-X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="175542385"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2021 05:06:40 -0700
-IronPort-SDR: jHLdHp/7cZWAzZ1xBF+5GdsV/b6RbTdlmh/DqV+zeClSdXidxRdGp++38iezLl8Zeplu2s/KMb
- CZ2Wso0VxfkA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,245,1613462400"; d="scan'208";a="464302721"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga001.jf.intel.com with ESMTP; 23 Apr 2021 05:06:35 -0700
-Date: Fri, 23 Apr 2021 13:51:50 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20210423115150.GB64904@ranger.igk.intel.com>
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4A28360DC5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Apr 2021 06:46:07 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1619160362;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=COpI2hRP60Vs2lnyODeiD9EhKAi0HtjdTtgcT2kw3Hc=;
+ b=Tat9RtrgjoUdU2WZNdvnghT6Etxjtfc9mkKhkXJIVA7dzvtLJqNjYSKisckLvjSwoIiUIV
+ RnMLSK7XGcAGMJbZVYoHOa3MntLf/UMEOwqqXqn/4fBBJqwRut1oNsy+1L624nLYAM/9zE
+ +PYsVB9Z2U+8dPtXvxGu0Fp+RNT2u5CfuOLZDovLGYQiVGepJa8rgWaJD75aga2EObBYQ6
+ ITXgCRNnB1Rfqej4THc5QfPj8CQwFtAnt10Oat2ujzWeJR9ewWPWJpPpFHJ0ymOl04lT4T
+ lm3/FuwwHsB+vORaCX36YerTLoAI4Tq1mBWQvpCOp5MfTjff4MO8bj4GtfSaEg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1619160362;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=COpI2hRP60Vs2lnyODeiD9EhKAi0HtjdTtgcT2kw3Hc=;
+ b=XVXMIiSoL7ZehE5pRQd2hsow7veSTYahNLh/QvNIKx3Es3yPioDrWLNDxXFPibFmxfQvUf
+ XN71MyCQfFRc7LDg==
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+In-Reply-To: <20210422101129.GB44289@ranger.igk.intel.com>
 References: <20210422052617.17267-1-kurt@linutronix.de>
- <20210422101129.GB44289@ranger.igk.intel.com> <878s59qz1b.fsf@kurt>
+ <20210422101129.GB44289@ranger.igk.intel.com>
+Date: Fri, 23 Apr 2021 08:45:52 +0200
+Message-ID: <878s59qz1b.fsf@kurt>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <878s59qz1b.fsf@kurt>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Mailman-Approved-At: Fri, 23 Apr 2021 14:32:25 +0000
 Subject: Re: [Intel-wired-lan] [PATCH net v3] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -75,81 +80,109 @@ Cc: Richard Cochran <richardcochran@gmail.com>,
  Alexei Starovoitov <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
  bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0292140996471576680=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 23, 2021 at 08:45:52AM +0200, Kurt Kanzenbach wrote:
-> On Thu Apr 22 2021, Maciej Fijalkowski wrote:
-> > On Thu, Apr 22, 2021 at 07:26:17AM +0200, Kurt Kanzenbach wrote:
-> >> +		/* pull rx packet timestamp if available and valid */
-> >> +		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-> >> +			timestamp = igb_ptp_rx_pktstamp(rx_ring->q_vector,
-> >> +							pktbuf);
-> >> +
-> >> +			if (timestamp) {
-> >> +				pkt_offset += IGB_TS_HDR_LEN;
-> >> +				size -= IGB_TS_HDR_LEN;
-> >> +			}
-> >> +		}
-> >
-> > Small nit: since this is a hot path, maybe we could omit the additional
-> > branch that you're introducing above and make igb_ptp_rx_pktstamp() to
-> > return either 0 for error cases and IGB_TS_HDR_LEN if timestamp was fine?
-> > timestamp itself would be passed as an arg.
-> >
-> > So:
-> > 		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-> > 			ts_offset = igb_ptp_rx_pktstamp(rx_ring->q_vector,
-> > 							pktbuf, &timestamp);
-> > 			pkt_offset += ts_offset;
-> > 			size -= ts_offset;
-> > 		}
-> >
-> > Thoughts? I feel like if we see that desc has timestamp enabled then let's
-> > optimize it for successful case.
-> 
-> Yes, this should work as well. Actually I didn't like the if statement
-> either. Only one comment: It's not an offset but rather the timestamp
-> header length. I'd call it 'ts_len'.
+--===============0292140996471576680==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Right, sorry.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> >
-> >>  
-> >>  		/* retrieve a buffer from the ring */
-> >>  		if (!skb) {
-> >> -			unsigned int offset = igb_rx_offset(rx_ring);
-> >> -			unsigned char *hard_start;
-> >> +			unsigned char *hard_start = pktbuf - igb_rx_offset(rx_ring);
-> >> +			unsigned int offset = pkt_offset + igb_rx_offset(rx_ring);
-> >
-> > Probably we could do something similar in flavour of:
-> > https://lore.kernel.org/bpf/20210118151318.12324-10-maciej.fijalkowski@intel.com/
-> >
-> > which broke XDP_REDIRECT and got fixed in:
-> > https://lore.kernel.org/bpf/20210303153928.11764-2-maciej.fijalkowski@intel.com/
-> >
-> > You get the idea.
-> 
-> Yes, I do. However, I think such a change doesn't belong in this patch,
-> which is a bugfix for XDP. It looks like an optimization. Should I split
-> it into two patches and rather target net-next instead of net?
+On Thu Apr 22 2021, Maciej Fijalkowski wrote:
+> On Thu, Apr 22, 2021 at 07:26:17AM +0200, Kurt Kanzenbach wrote:
+>> +		/* pull rx packet timestamp if available and valid */
+>> +		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+>> +			timestamp =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
+>> +							pktbuf);
+>> +
+>> +			if (timestamp) {
+>> +				pkt_offset +=3D IGB_TS_HDR_LEN;
+>> +				size -=3D IGB_TS_HDR_LEN;
+>> +			}
+>> +		}
+>
+> Small nit: since this is a hot path, maybe we could omit the additional
+> branch that you're introducing above and make igb_ptp_rx_pktstamp() to
+> return either 0 for error cases and IGB_TS_HDR_LEN if timestamp was fine?
+> timestamp itself would be passed as an arg.
+>
+> So:
+> 		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+> 			ts_offset =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
+> 							pktbuf, &timestamp);
+> 			pkt_offset +=3D ts_offset;
+> 			size -=3D ts_offset;
+> 		}
+>
+> Thoughts? I feel like if we see that desc has timestamp enabled then let's
+> optimize it for successful case.
 
-This was just a heads up from my side as it caught my eye. For sure it's
-out of the scope of that patch, but would be good to have a follow up on
-that.
+Yes, this should work as well. Actually I didn't like the if statement
+either. Only one comment: It's not an offset but rather the timestamp
+header length. I'd call it 'ts_len'.
 
-> 
-> Thanks for your review.
-> 
-> Thanks,
-> Kurt
+>
+>>=20=20
+>>  		/* retrieve a buffer from the ring */
+>>  		if (!skb) {
+>> -			unsigned int offset =3D igb_rx_offset(rx_ring);
+>> -			unsigned char *hard_start;
+>> +			unsigned char *hard_start =3D pktbuf - igb_rx_offset(rx_ring);
+>> +			unsigned int offset =3D pkt_offset + igb_rx_offset(rx_ring);
+>
+> Probably we could do something similar in flavour of:
+> https://lore.kernel.org/bpf/20210118151318.12324-10-maciej.fijalkowski@in=
+tel.com/
+>
+> which broke XDP_REDIRECT and got fixed in:
+> https://lore.kernel.org/bpf/20210303153928.11764-2-maciej.fijalkowski@int=
+el.com/
+>
+> You get the idea.
 
+Yes, I do. However, I think such a change doesn't belong in this patch,
+which is a bugfix for XDP. It looks like an optimization. Should I split
+it into two patches and rather target net-next instead of net?
+
+Thanks for your review.
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmCCbSAACgkQeSpbgcuY
+8KZFcw//eFr5BqqCeafT7m7sSMhiuiG0plalsTXxSK877VCcoGMIMMjAks4moTNv
+3oL7Mz6NkGsMCi/BXwwBTer/orNzEfEPphWV/HcShgnBErsaJtHydiFkL+KaKFBm
+HPkghjIfN9bOehDLrLmXNWWLuLx7I1YWak+LeH7NGCNo4oAu2IvaDPxhJNDEpywk
+5hC3oSsGdHLv81SqKc8pkGSEhdiNloAOuPDuOxAJTmC3eEgXszSMk5MYdLK8huDs
+FzkHiGWNZgYRMR1lWePzhlrTIMQPf7J0Kg3zk5urmwQxNP3xg6ljsNOs3yMATKM5
+DTyvE3PsRQjMRDIsGhBCk3N6OezoOfM0Iqz7bJLOJNwMgffyeFHQgvE1x0qSHatV
+bLWl2pr5SaoGsPxrrmUgpbF/DoXRwfZhrC3fk9vznzHNNHL7HiP2soE+K1EgyYCZ
+/7HbwRlaMjeELhtwueh2fuSXQoHJDq5QzoqnceJOirgXJmGiJTNZn9CptHtYQHsL
+OCe9BC6XPcB53Tmyqf5IGqkdS40Uw6vqV7aAp/gB1HJfPHGE6F4Bqg5U5Cdzlqr5
+PUH12N0JhvcbUnXpX/Rl0fnXDcmSbtv6heH0e+rQowJK5E1MlVz+wJoKpq8sndJB
+WWpn5MbDOHzpzXxImgyJL9zY1HuS1sIZb4vjDfmiKHShgqXIXEs=
+=yxE8
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============0292140996471576680==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0292140996471576680==--
