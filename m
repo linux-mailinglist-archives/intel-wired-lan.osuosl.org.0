@@ -1,77 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8A6236B228
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Apr 2021 13:14:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EF8736B5C8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Apr 2021 17:29:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 70AD482894;
-	Mon, 26 Apr 2021 11:14:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F0E6B402A9;
+	Mon, 26 Apr 2021 15:28:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jls4dOSQHune; Mon, 26 Apr 2021 11:14:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id REdkBzanJEDN; Mon, 26 Apr 2021 15:28:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3F747826EF;
-	Mon, 26 Apr 2021 11:14:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B70934021C;
+	Mon, 26 Apr 2021 15:28:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 161991BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 11:14:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E45A61BF300
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 15:28:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BF655801CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 11:14:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D2AFB605C0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 15:28:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lFEDfP3ezG5x for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Apr 2021 11:14:11 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id G5nxmacNRY1Q for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Apr 2021 15:28:53 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
- [IPv6:2a00:1450:4864:20::333])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7BD21834D5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 11:14:11 +0000 (UTC)
-Received: by mail-wm1-x333.google.com with SMTP id i129so2796845wma.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 04:14:11 -0700 (PDT)
+Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
+ [IPv6:2a00:1450:4864:20::635])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0A2DE605A2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 15:28:52 +0000 (UTC)
+Received: by mail-ej1-x635.google.com with SMTP id u17so85154372ejk.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Apr 2021 08:28:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=kdhNnKDdgoIaQXXShKVt9ASG9VusPLEivumubGkDQnE=;
- b=Kui77ir32sgq2Abir6W8MW0kVChFzbBaBBfE4OSzM9zzdoubx3HW50UGOpAp2igBhT
- wjyEJL6Q8k18drCca6DWr/sgIz9ezPs94OD+W15SJ8q+N68IRle8LqvRJ5KT+SnpA7ih
- wFBkEyp1CXy0zbYMoe9XGLmqmlcZMXZ3LkeGXsfIwH7SzY1A+L8K3RBbnq4M2HUWPXm9
- qSpKZ+UVlyIBNapVxE90gHSt++hbZKj5fmFfRDcgH1RYH7Hh7lcuCsJjRXZfwnEAuck8
- Cakqw2qsI/HXl0U1t5kAwCkmBxzzMGWmd2dwEMhigjVH3HcKpP8MCiAs0gXmywv7BX+y
- Fhnw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=M5rHl1uTPHcNcUuxY/E3wd4JEZWlIuCjeq1wxcyEpDI=;
+ b=gxIek4o9quqavrkE+Xlb1OWBOADVfMEK55W1qRIFN+jG9v8r15SD/LJCR4ow5Gx2nA
+ Kn71I+KZGVenIf5dBtOLRMnSnptyYWeHWyZzD4TetNo6vCL0YcwW/hDqGccrra1WeyDV
+ kKiKqIN/6UdiUGTKl6dzvQkCadXAt1BP9bBlz/bQaSQ+KuWS1w9JEx+fSKv5OiT4d0Ke
+ Mrt9P2eN+0Vdl1VJtWESOBl6rnJhkjd0XNJFLqNPqiGvxr+zDZYNGxhhF3DNUZG9z+RB
+ Jv3YTr9h6DNwihnohBT6SvCzS/JTaeJkKlMVmWOZhvuM53N+iUzr9wP1woKY1lnZ1FBh
+ QCpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=kdhNnKDdgoIaQXXShKVt9ASG9VusPLEivumubGkDQnE=;
- b=p6q7jBebhgGfHGlyEQZt3Kf+gnYP5rezRfZk7dS+sV+X5mV8gz2tXz0BTNLkYKgM+u
- VdxbTnIfGHXOjt7IVsAmi5KgE8pgzdEDI8oH5qfSY7BFyQj/vbL2KLz3ig4qN23J+CAB
- omQ0YFZgRjy4xe+xLIGw569PwfbeU6vIJZG354yMuBkeAXcRkQ6RqZ0IOlVzDcAz7oxc
- IIZFdRvAY4BBcz/U7ezhK7acxMWt2x6JWfhyS2hLGKyxmUS5qX1YBnvScPvAtO/+80Mt
- 0CGQOVmbjx+IIK/kA9lhvcuP/ZsvQTW/zdfUqz8oLkDe6JC7hc54gi+jlbYj9ncByTME
- UXbQ==
-X-Gm-Message-State: AOAM532vKaUuF78lhCua6PgiTLcSmhzo2mPKgbJwTFeqaoW05fJHYKwm
- 1xz/bq/+Qot2li9QhJIje94=
-X-Google-Smtp-Source: ABdhPJxy0CXQ1Nd25BAJbHtaIFQ0eXR8IScaqEOODqifCTThs7SCPfP9AE7rwy2HKziSd61qMFgadg==
-X-Received: by 2002:a7b:c3c6:: with SMTP id t6mr19619895wmj.42.1619435649657; 
- Mon, 26 Apr 2021 04:14:09 -0700 (PDT)
-Received: from localhost.localdomain ([188.149.128.194])
- by smtp.gmail.com with ESMTPSA id m184sm5118600wme.40.2021.04.26.04.14.08
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 26 Apr 2021 04:14:09 -0700 (PDT)
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-To: magnus.karlsson@intel.com, intel-wired-lan@lists.osuosl.org,
- anthony.l.nguyen@intel.com, maciej.fijalkowski@intel.com
-Date: Mon, 26 Apr 2021 13:14:01 +0200
-Message-Id: <20210426111401.28369-1-magnus.karlsson@gmail.com>
-X-Mailer: git-send-email 2.29.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=M5rHl1uTPHcNcUuxY/E3wd4JEZWlIuCjeq1wxcyEpDI=;
+ b=SICDg0dHWMYmfxheTvwNPJzsb/fmKkOsLH1hM0Be1zeU5wHi3II4MF1tVJTeDgBRE7
+ LN3uAblvo+rjSmR4hhOz7AEnI/bRe3SBzKQDLfvBRvvgmtAK4uo3Uj+CYrRuxnp4NdAO
+ bXXHZaTOd5cgUoCcYTBDRUjS3p1UM0a34WPK3QlPKWq92mJb+QTwE2OPypznCY8XI+0B
+ EYjfQ4HyHkXhAcTr+1jDRhqozW0fr7/qSdLy8jZ5Ml29P07/dWzGkkW8ljN9OWdnkBLV
+ 3dSkti/TJEQTzaELYAxZ2lTnDouW3wTVHiBQ2q8Sp75L0h8i9c9T06D9B0bEns+2nWWh
+ NUkA==
+X-Gm-Message-State: AOAM530nWW8NhbNy1Bdt5onyTy8d2PRnWWOQie+FqgabYq/sXIpF+VWo
+ jzXYzNI/cnvWQnnQNaRCPFOnD3Yk1uII0bV9N+M=
+X-Google-Smtp-Source: ABdhPJy+pIsSR8u9JuZX6ML4NK4MUr1r5mS+Y6zvqckgwnnfCXVg5wLMymxt8pIahThSrGGa+hYCy8jNFzwT7ihNnGU=
+X-Received: by 2002:a17:907:7b9f:: with SMTP id
+ ne31mr3671687ejc.139.1619450931244; 
+ Mon, 26 Apr 2021 08:28:51 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH intel-net] i40e: fix broken XDP support
+References: <20210406123619.rhvtr73xwwlbu2ll@spock.localdomain>
+ <20210406114734.0e00cb2f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20210407060053.wyo75mqwcva6w6ci@spock.localdomain>
+ <20210407083748.56b9c261@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAKgT0UfLLQycLsAZQ98ofBGYPwejA6zHbG6QsNrU92mizS7e0g@mail.gmail.com>
+ <20210407110722.1eb4ebf2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAKgT0UcQXVOifi_2r_Y6meg_zvHDBf1me8VwA4pvEtEMzOaw2Q@mail.gmail.com>
+ <20210423081944.kvvm4v7jcdyj74l3@spock.localdomain>
+ <20210423155836.25ef1e77@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20210426064736.7efynita4brzos4u@spock.localdomain>
+In-Reply-To: <20210426064736.7efynita4brzos4u@spock.localdomain>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Mon, 26 Apr 2021 08:28:40 -0700
+Message-ID: <CAKgT0Uemubh8yP+UXh-n-YceheFRZO+hYpxtqs+=vedv7hbv4w@mail.gmail.com>
+To: Oleksandr Natalenko <oleksandr@natalenko.name>
+Subject: Re: [Intel-wired-lan] [igb] netconsole triggers warning in
+ netpoll_poll_dev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,96 +92,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesper Dangaard Brouer <brouer@redhat.com>
+Cc: Netdev <netdev@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Magnus Karlsson <magnus.karlsson@intel.com>
+On Sun, Apr 25, 2021 at 11:47 PM Oleksandr Natalenko
+<oleksandr@natalenko.name> wrote:
+>
+> Hello.
+>
+> On Fri, Apr 23, 2021 at 03:58:36PM -0700, Jakub Kicinski wrote:
+> > On Fri, 23 Apr 2021 10:19:44 +0200 Oleksandr Natalenko wrote:
+> > > On Wed, Apr 07, 2021 at 04:06:29PM -0700, Alexander Duyck wrote:
+> > > > On Wed, Apr 7, 2021 at 11:07 AM Jakub Kicinski <kuba@kernel.org> wrote:
+> > > > > Sure, that's simplest. I wasn't sure something is supposed to prevent
+> > > > > this condition or if it's okay to cover it up.
+> > > >
+> > > > I'm pretty sure it is okay to cover it up. In this case the "budget -
+> > > > 1" is supposed to be the upper limit on what can be reported. I think
+> > > > it was assuming an unsigned value anyway.
+> > > >
+> > > > Another alternative would be to default clean_complete to !!budget.
+> > > > Then if budget is 0 clean_complete would always return false.
+> > >
+> > > So, among all the variants, which one to try? Or there was a separate
+> > > patch sent to address this?
+> >
+> > Alex's suggestion is probably best.
+> >
+> > I'm not aware of the fix being posted. Perhaps you could take over and
+> > post the patch if Intel doesn't chime in?
+>
+> So, IIUC, Alex suggests this:
+>
+> ```
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index a45cd2b416c8..7503d5bf168a 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -7981,7 +7981,7 @@ static int igb_poll(struct napi_struct *napi, int budget)
+>                                                      struct igb_q_vector,
+>                                                      napi);
+>         bool clean_complete = true;
+> -       int work_done = 0;
+> +       unsigned int work_done = 0;
+>
+>  #ifdef CONFIG_IGB_DCA
+>         if (q_vector->adapter->flags & IGB_FLAG_DCA_ENABLED)
+> @@ -8008,7 +8008,7 @@ static int igb_poll(struct napi_struct *napi, int budget)
+>         if (likely(napi_complete_done(napi, work_done)))
+>                 igb_ring_irq_enable(q_vector);
+>
+> -       return min(work_done, budget - 1);
+> +       return min_t(unsigned int, work_done, budget - 1);
+>  }
+>
+>  /**
+> ```
+>
+> Am I right?
+>
+> Thanks.
 
-Commit 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c") broke
-XDP support in the i40e driver. That commit was fixing a sparse error
-in the code by introducing a new variable xdp_res instead of
-overloading this into the skb pointer. The problem is that the code
-later uses the skb pointer in if statements and these where not
-extended to also test for the new xdp_res variable. Fix this by adding
-the correct tests for xdp_res in these places.
-
-The skb pointer was used to store the result of the XDP program by
-overloading the results in the errror pointer
-ERR_PTR(-result). Therefore, the allocation failure test that used to
-only test for !skb now need to be extended to also consider !xdp_res.
-
-i40e_cleanup_headers() had a check that based on the skb value being
-an error pointer, i.e. a result from the XDP program != XDP_PASS, and
-if so start to process a new packet immediately, instead of populating
-skb fields and sending the skb to the stack. This check is not needed
-anymore, since we have added an explicit test for xdp_res being set
-and if so just do continue to pick the next packet from the NIC.
-
-v1 -> v2:
-
-* Improved commit message.
-
-* Restored the xdp_res = 0 initialization to its original place
-  outside the per-packet loop. The original reason to move it inside
-  the loop was that it was only initialized inside the loop code if
-  skb was not set. But as skb can only be non-null if we have packets
-  consisting of multiple frames (skb is set for all frames except the
-  last one in a packet) and when this is true XDP cannot be active, so
-  this does not matter. xdp_res == 0 is the same as I40E_XDP_PASS
-  which is the default action if XDP is not active and it is then true
-  for every single packet in this case.
-
-Fixes: 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c")
-Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Tested-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 06b4271219b1..70b515049540 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1961,10 +1961,6 @@ static bool i40e_cleanup_headers(struct i40e_ring *rx_ring, struct sk_buff *skb,
- 				 union i40e_rx_desc *rx_desc)
- 
- {
--	/* XDP packets use error pointer so abort at this point */
--	if (IS_ERR(skb))
--		return true;
--
- 	/* ERR_MASK will only have valid bits if EOP set, and
- 	 * what we are doing here is actually checking
- 	 * I40E_RX_DESC_ERROR_RXE_SHIFT, since it is the zeroth bit in
-@@ -2534,7 +2530,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget)
- 		}
- 
- 		/* exit if we failed to retrieve a buffer */
--		if (!skb) {
-+		if (!xdp_res && !skb) {
- 			rx_ring->rx_stats.alloc_buff_failed++;
- 			rx_buffer->pagecnt_bias++;
- 			break;
-@@ -2547,7 +2543,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget)
- 		if (i40e_is_non_eop(rx_ring, rx_desc))
- 			continue;
- 
--		if (i40e_cleanup_headers(rx_ring, skb, rx_desc)) {
-+		if (xdp_res || i40e_cleanup_headers(rx_ring, skb, rx_desc)) {
- 			skb = NULL;
- 			continue;
- 		}
-
-base-commit: bbd6f0a948139970f4a615dff189d9a503681a39
--- 
-2.29.0
-
+Actually a better way to go would be to probably just initialize
+"clean_complete = !!budget". With that we don't have it messing with
+the interrupt enables which would probably be a better behavior.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
