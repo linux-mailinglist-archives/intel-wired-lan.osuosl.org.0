@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D8D136D6ED
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Apr 2021 14:02:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A790E82A28;
-	Wed, 28 Apr 2021 12:02:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 85bs2TG_b__B; Wed, 28 Apr 2021 12:02:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A8FF3826DE;
-	Wed, 28 Apr 2021 12:02:42 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6D561BF9AC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 12:02:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F37336D942
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Apr 2021 16:09:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A12C3607EB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 12:02:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E26C460BA6;
+	Wed, 28 Apr 2021 14:09:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NRnjIKoKtkZ9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Apr 2021 12:02:37 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gX5_f28xeWbK; Wed, 28 Apr 2021 14:09:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id C391A607C4;
+	Wed, 28 Apr 2021 14:09:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 78FD61BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 08:12:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7297A4058B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 08:12:42 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 44fOzSXJ7VmQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Apr 2021 08:12:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BC5826063D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 12:02:37 +0000 (UTC)
-IronPort-SDR: I6O5S4BHF4BLS641kB9kEf4Qfh4WY9Okmk/illof90HRhPbYOxEK7A7pJaqv3FjjA+qsbwv4YB
- sgEJb52tzLtA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9967"; a="217440082"
-X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; d="scan'208";a="217440082"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Apr 2021 05:02:37 -0700
-IronPort-SDR: 1el8lvRgVapFARFCIyZWjlxJ+SVWblZEKB/h00PVONmufleboJ8uGROnjmDdFpuBFZL3oUnPEg
- nT4urCBQ9eVw==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B6B0E40548
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Apr 2021 08:12:40 +0000 (UTC)
+IronPort-SDR: GY8VRpDjL62PIyp4wnkM4zx2ExFtZgZDvhADlP0nSCk1viUvmL9N27lZvrn12RBK8nEcGgJD7f
+ UtwnaKMIK7yQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9967"; a="282022424"
+X-IronPort-AV: E=Sophos;i="5.82,257,1613462400"; d="scan'208";a="282022424"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2021 01:12:31 -0700
+IronPort-SDR: GvyedSGmtm3sveikew/3EV+cUN4gxn6K9eM7bB0AchyTcnAlMHMhxVRl4vwfnrsKE+1HCTlaSJ
+ J68VkCxTL0zw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; d="scan'208";a="619281011"
-Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 28 Apr 2021 05:02:36 -0700
-Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lbitn-00076c-L7; Wed, 28 Apr 2021 12:02:35 +0000
-Date: Wed, 28 Apr 2021 20:02:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60894ed2.Xjjc9j7e9HKKm/By%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.82,257,1613462400"; d="scan'208";a="403591289"
+Received: from amlin-19-169.igk.intel.com ([10.102.19.169])
+ by orsmga002.jf.intel.com with ESMTP; 28 Apr 2021 01:12:30 -0700
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 28 Apr 2021 10:19:41 +0200
+Message-Id: <20210428081941.4765-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 776a417daec6a28fdf89426ea98126f8a03c79a1
+X-Mailman-Approved-At: Wed, 28 Apr 2021 14:09:10 +0000
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix warning message and call
+ stack during rmmod i40e driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,136 +65,163 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 776a417daec6a28fdf89426ea98126f8a03c79a1  ixgbevf: add correct exception tracing for XDP
+Restore part of reset functionality used when reset is called
+from the VF to reset itself. Without this fix warning message
+is displayed when vf is being removed via sysfs.
 
-elapsed time: 726m
+Fix the crash of the VF  during reset by ensuring
+that that PF receives the reset message successfully.
+Refactor code to use one function instead of two.
 
-configs tested: 107
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-powerpc                     akebono_defconfig
-arm                         socfpga_defconfig
-mips                    maltaup_xpa_defconfig
-arm                       spear13xx_defconfig
-ia64                             allmodconfig
-powerpc                    mvme5100_defconfig
-csky                                defconfig
-arm                         lpc32xx_defconfig
-sh                           se7343_defconfig
-riscv                          rv32_defconfig
-arm                         axm55xx_defconfig
-ia64                         bigsur_defconfig
-mips                            e55_defconfig
-arm                           viper_defconfig
-mips                      maltasmvp_defconfig
-arm                        multi_v7_defconfig
-powerpc                 mpc836x_rdk_defconfig
-m68k                       m5208evb_defconfig
-arm                           corgi_defconfig
-powerpc                    socrates_defconfig
-powerpc                      ppc6xx_defconfig
-sh                           se7619_defconfig
-i386                             alldefconfig
-mips                           ip27_defconfig
-powerpc                      mgcoge_defconfig
-mips                  maltasmvp_eva_defconfig
-mips                           mtx1_defconfig
-sh                      rts7751r2d1_defconfig
-powerpc                      pmac32_defconfig
-sh                     magicpanelr2_defconfig
-mips                     loongson1c_defconfig
-arm                         orion5x_defconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a005-20210428
-i386                 randconfig-a002-20210428
-i386                 randconfig-a001-20210428
-i386                 randconfig-a006-20210428
-i386                 randconfig-a003-20210428
-i386                 randconfig-a004-20210428
-x86_64               randconfig-a015-20210428
-x86_64               randconfig-a016-20210428
-x86_64               randconfig-a011-20210428
-x86_64               randconfig-a014-20210428
-x86_64               randconfig-a013-20210428
-x86_64               randconfig-a012-20210428
-i386                 randconfig-a012-20210428
-i386                 randconfig-a014-20210428
-i386                 randconfig-a013-20210428
-i386                 randconfig-a011-20210428
-i386                 randconfig-a015-20210428
-i386                 randconfig-a016-20210428
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a004-20210428
-x86_64               randconfig-a002-20210428
-x86_64               randconfig-a005-20210428
-x86_64               randconfig-a006-20210428
-x86_64               randconfig-a001-20210428
-x86_64               randconfig-a003-20210428
-
+Fixes: eeeddbb80640 ("i40e: drop i40e_pf *pf from i40e_vc_disable_vf()")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Karen Sornek <karen.sornek@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 53 ++++++++-----------
+ 1 file changed, 21 insertions(+), 32 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 139562aaf..49720b5c3 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -183,17 +183,18 @@ void i40e_vc_notify_vf_reset(struct i40e_vf *vf)
+ /***********************misc routines*****************************/
+ 
+ /**
+- * i40e_vc_disable_vf
++ * i40e_vc_reset_vf
+  * @vf: pointer to the VF info
+- *
+- * Disable the VF through a SW reset.
++ * @notify_vf: notify vf about reset or not
++ * Reset VF handler.
+  **/
+-static inline void i40e_vc_disable_vf(struct i40e_vf *vf)
++static void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf)
+ {
+ 	struct i40e_pf *pf = vf->pf;
+ 	int i;
+ 
+-	i40e_vc_notify_vf_reset(vf);
++	if (notify_vf)
++		i40e_vc_notify_vf_reset(vf);
+ 
+ 	/* We want to ensure that an actual reset occurs initiated after this
+ 	 * function was called. However, we do not want to wait forever, so
+@@ -211,9 +212,14 @@ static inline void i40e_vc_disable_vf(struct i40e_vf *vf)
+ 		usleep_range(10000, 20000);
+ 	}
+ 
+-	dev_warn(&vf->pf->pdev->dev,
+-		 "Failed to initiate reset for VF %d after 200 milliseconds\n",
+-		 vf->vf_id);
++	if (notify_vf)
++		dev_warn(&vf->pf->pdev->dev,
++			 "Failed to initiate reset for VF %d after 200 milliseconds\n",
++			 vf->vf_id);
++	else
++		dev_dbg(&vf->pf->pdev->dev,
++			"Failed to initiate reset for VF %d after 200 milliseconds\n",
++			vf->vf_id);
+ }
+ 
+ /**
+@@ -2126,20 +2132,6 @@ err:
+ 	return ret;
+ }
+ 
+-/**
+- * i40e_vc_reset_vf_msg
+- * @vf: pointer to the VF info
+- *
+- * called from the VF to reset itself,
+- * unlike other virtchnl messages, PF driver
+- * doesn't send the response back to the VF
+- **/
+-static void i40e_vc_reset_vf_msg(struct i40e_vf *vf)
+-{
+-	if (test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states))
+-		i40e_reset_vf(vf, false);
+-}
+-
+ /**
+  * i40e_vc_config_promiscuous_mode_msg
+  * @vf: pointer to the VF info
+@@ -2628,8 +2620,7 @@ static int i40e_vc_request_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 	} else {
+ 		/* successful request */
+ 		vf->num_req_queues = req_pairs;
+-		i40e_vc_notify_vf_reset(vf);
+-		i40e_reset_vf(vf, false);
++		i40e_vc_reset_vf(vf, true);
+ 		return 0;
+ 	}
+ 
+@@ -3832,8 +3823,7 @@ static int i40e_vc_add_qch_msg(struct i40e_vf *vf, u8 *msg)
+ 	vf->num_req_queues = 0;
+ 
+ 	/* reset the VF in order to allocate resources */
+-	i40e_vc_notify_vf_reset(vf);
+-	i40e_reset_vf(vf, false);
++	i40e_vc_reset_vf(vf, true);
+ 
+ 	return I40E_SUCCESS;
+ 
+@@ -3873,8 +3863,7 @@ static int i40e_vc_del_qch_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	/* reset the VF in order to allocate resources */
+-	i40e_vc_notify_vf_reset(vf);
+-	i40e_reset_vf(vf, false);
++	i40e_vc_reset_vf(vf, true);
+ 
+ 	return I40E_SUCCESS;
+ 
+@@ -3936,7 +3925,7 @@ int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode,
+ 		i40e_vc_notify_vf_link_state(vf);
+ 		break;
+ 	case VIRTCHNL_OP_RESET_VF:
+-		i40e_vc_reset_vf_msg(vf);
++		i40e_vc_reset_vf(vf, false);
+ 		ret = 0;
+ 		break;
+ 	case VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE:
+@@ -4190,7 +4179,7 @@ int i40e_ndo_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 	/* Force the VF interface down so it has to bring up with new MAC
+ 	 * address
+ 	 */
+-	i40e_vc_disable_vf(vf);
++	i40e_vc_reset_vf(vf, true);
+ 	dev_info(&pf->pdev->dev, "Bring down and up the VF interface to make this change effective.\n");
+ 
+ error_param:
+@@ -4254,7 +4243,7 @@ int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id,
+ 		/* duplicate request, so just return success */
+ 		goto error_pvid;
+ 
+-	i40e_vc_disable_vf(vf);
++	i40e_vc_reset_vf(vf, true);
+ 	/* During reset the VF got a new VSI, so refresh a pointer. */
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 	/* Locked once because multiple functions below iterate list */
+@@ -4632,7 +4621,7 @@ int i40e_ndo_set_vf_trust(struct net_device *netdev, int vf_id, bool setting)
+ 		goto out;
+ 
+ 	vf->trusted = setting;
+-	i40e_vc_disable_vf(vf);
++	i40e_vc_reset_vf(vf, true);
+ 	dev_info(&pf->pdev->dev, "VF %u is now %strusted\n",
+ 		 vf_id, setting ? "" : "un");
+ 
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
