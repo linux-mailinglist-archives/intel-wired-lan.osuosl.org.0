@@ -1,62 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6047536E851
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Apr 2021 12:02:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F9BA36EB57
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Apr 2021 15:28:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C4EA86F6E2;
-	Thu, 29 Apr 2021 10:02:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8688B845F9;
+	Thu, 29 Apr 2021 13:28:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5uIT7l_HRE-G; Thu, 29 Apr 2021 10:02:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UYQ32Q5vaTdk; Thu, 29 Apr 2021 13:28:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C002D6079D;
-	Thu, 29 Apr 2021 10:02:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8ACF0845F6;
+	Thu, 29 Apr 2021 13:28:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 07F441BF3E8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 10:02:30 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B11A1BF29A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 13:28:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E974F418FC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 10:02:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4924E845F4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 13:28:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id toAXoc7LU4gp for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Apr 2021 10:02:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PRaWCilGjkJU for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Apr 2021 13:28:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 343C8418FD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 10:02:28 +0000 (UTC)
-IronPort-SDR: yIuidu7M9wwqASGqkzdZiunVHIjTr8KwnFalz0Br4tr7q66/ui7Qw2AO6uQuRtL0i/YdOlzgNv
- ODftayUXO3vA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9968"; a="217696759"
-X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; d="scan'208";a="217696759"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2021 03:02:27 -0700
-IronPort-SDR: sZ+wEn4XRfP80eI47kRmxy+H58FgG4bZF5eEZIF+QCybwKeHMl1h/IzU0nNmiH91Lx/q23IgRG
- OaG0SpplsIIg==
-X-IronPort-AV: E=Sophos;i="5.82,258,1613462400"; d="scan'208";a="430769004"
-Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
- ([10.12.48.255])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2021 03:02:26 -0700
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20210412144107.3659411-1-sasha.neftin@intel.com>
-From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
-Message-ID: <1140c282-5c57-5df8-70c5-ed03edb03fac@linux.intel.com>
-Date: Thu, 29 Apr 2021 13:02:15 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
-MIME-Version: 1.0
-In-Reply-To: <20210412144107.3659411-1-sasha.neftin@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Update driver to use
- ethtool_sprintf
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 219DB845F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Apr 2021 13:28:40 +0000 (UTC)
+IronPort-SDR: c8UdqSeyyNbKT9R4Xjvi3jcq5Np+8rKABYV+UiJI/kSQS7+OiCL45dDOMwdiPQRKQuB3X7fWji
+ rLZNoU/DUJxw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9969"; a="176487239"
+X-IronPort-AV: E=Sophos;i="5.82,259,1613462400"; d="scan'208";a="176487239"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2021 06:28:38 -0700
+IronPort-SDR: uZjr4IjvobA//HBCw8UDqw3Jrvu1cMAQCM1zplqKtdwaNW3D8wW2+atwr/ei6EcPztC7jGYGRv
+ VPWf1EGdOTuQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,259,1613462400"; d="scan'208";a="424088367"
+Received: from gsiwik.igk.intel.com ([10.102.18.50])
+ by fmsmga008.fm.intel.com with ESMTP; 29 Apr 2021 06:28:37 -0700
+From: Grzegorz Siwik <grzegorz.siwik@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 29 Apr 2021 15:28:36 +0200
+Message-Id: <1619702916-379862-1-git-send-email-grzegorz.siwik@intel.com>
+X-Mailer: git-send-email 1.8.3.1
+Subject: [Intel-wired-lan] [PATCH net-next v1] igb: Add counter to i21x
+ doublecheck
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +63,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexander Duyck <alexanderduyck@fb.com>
+Cc: Grzegorz Siwik <grzegorz.siwik@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/04/2021 17:41, Sasha Neftin wrote:
-> Complete to commit c8d4725e985d ("intel: Update drivers to use
-> ethtool_sprintf")
-> Update the igc driver to make use of ethtool_sprintf. The general idea
-> is to reduce code size and overhead by replacing the repeated pattern of
-> string printf statements and ETH_STRING_LEN counter increments.
-> 
-> Suggested-by: Alexander Duyck <alexanderduyck@fb.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_ethtool.c | 40 +++++++-------------
->   1 file changed, 14 insertions(+), 26 deletions(-)
-> 
-Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Add failed_counter to i21x_doublecheck(). There is possibility that
+loop will never end.
+With this patch the loop will stop after maximum 3 retries
+to write to MTA_REGISTER
+
+Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
+---
+ drivers/net/ethernet/intel/igb/e1000_mac.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/e1000_mac.c b/drivers/net/ethernet/intel/igb/e1000_mac.c
+index e63ee3c..3cb7e55 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_mac.c
++++ b/drivers/net/ethernet/intel/igb/e1000_mac.c
+@@ -492,6 +492,8 @@ static u32 igb_hash_mc_addr(struct e1000_hw *hw, u8 *mc_addr)
+  **/
+ static void igb_i21x_hw_doublecheck(struct e1000_hw *hw)
+ {
++	const unsigned int failed_cnt_max = 3;
++	unsigned int failed_cnt = 0;
+ 	bool is_failed;
+ 	int i;
+ 
+@@ -502,10 +504,14 @@ static void igb_i21x_hw_doublecheck(struct e1000_hw *hw)
+ 				is_failed = true;
+ 				array_wr32(E1000_MTA, i, hw->mac.mta_shadow[i]);
+ 				wrfl();
+-				break;
+ 			}
+ 		}
+-	} while (is_failed);
++		if (is_failed)
++			++failed_cnt;
++	} while (is_failed && failed_cnt < failed_cnt_max);
++
++	if (failed_cnt >= failed_cnt_max)
++		hw_dbg("Failed to update MTA_REGISTER, too many retries");
+ }
+ 
+ /**
+-- 
+1.8.3.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
