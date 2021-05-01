@@ -1,57 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 619A53704FA
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 May 2021 04:19:01 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F5953706D2
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 May 2021 12:29:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDCA5403A0;
-	Sat,  1 May 2021 02:18:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C42940408;
+	Sat,  1 May 2021 10:29:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EzIt3C76uqKI; Sat,  1 May 2021 02:18:57 +0000 (UTC)
+	with ESMTP id WUxp6N_NIaX5; Sat,  1 May 2021 10:29:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8D6C74040A;
-	Sat,  1 May 2021 02:18:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 28521403FB;
+	Sat,  1 May 2021 10:29:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 280C01C11CE
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 02:18:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9205B1BF5B4
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 10:29:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 23444850F8
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 02:18:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 84D7960629
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 10:29:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WXpU4YYbqH5F for <intel-wired-lan@lists.osuosl.org>;
- Sat,  1 May 2021 02:18:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sFaUOzatfoA2 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  1 May 2021 10:28:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 341D9850F5
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 02:18:50 +0000 (UTC)
-IronPort-SDR: ARFCpOSav+DjbDTit8dVJnaYkVKXIsF6zkIb6PYtQGGZQ+8gFc77HYWH+bK+jYfm7lCCmJVezP
- HpkLLcgXwFKQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9970"; a="261356858"
-X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="261356858"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2021 19:18:50 -0700
-IronPort-SDR: JlpZ7xyrmFpR/5vTZHzOHISvtpryqsXmldHmo04zipfTYW/bB4m2M5kAjy/pZyyKFydt34Y8NK
- 5ziTmsOj11yQ==
-X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="467070538"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2021 19:18:50 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Date: Fri, 30 Apr 2021 19:18:32 -0700
-Message-Id: <20210501021832.743094-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.30.2
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DD00D60622
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 May 2021 10:28:59 +0000 (UTC)
+IronPort-SDR: tnRmNCh8n93vrRAQaWFciNGcG59BsR53Z0IndiwCdofhUCkrFlBUEyj1jZ13DsZXeLoRev3UOj
+ La7hcjY8CdIA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9970"; a="195356619"
+X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="195356619"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 May 2021 03:28:57 -0700
+IronPort-SDR: EIas9bQ4XMrH2xAwyX5TLl7iv5yu1V67CNfwRe995YHw1Gt7jQub8CL+KZhwDSlCfbtFvXQRhV
+ MOVAO9WHhZEw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,264,1613462400"; d="scan'208";a="449338782"
+Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 01 May 2021 03:28:56 -0700
+Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lcmrn-0008Wh-Mz; Sat, 01 May 2021 10:28:55 +0000
+Date: Sat, 01 May 2021 18:28:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <608d2d66.GJwxb4oW+Pq9xn2u%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH tip:irq/core v1] genirq: remove auto-set
- of the mask when setting the hint
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS WITH
+ WARNING 9db33b54fb98525e323d0d3f16b01778f17b9493
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,93 +67,145 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "peterz@infradead.org" <peterz@infradead.org>, abelits@marvell.com,
- Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
- "jinyuqi@huawei.com" <jinyuqi@huawei.com>, intel-wired-lan@lists.osuosl.org,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Nitesh Lal <nilal@redhat.com>, "frederic@kernel.org" <frederic@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
- "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, netdev@vger.kernel.org,
- Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It was pointed out by Nitesh that the original work I did in 2014
-to automatically set the interrupt affinity when requesting a
-mask is no longer necessary. The kernel has moved on and no
-longer has the original problem, BUT the original patch
-introduced a subtle bug when booting a system with reserved or
-excluded CPUs. Drivers calling this function with a mask value
-that included a CPU that was currently or in the future
-unavailable would generally not update the hint.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 9db33b54fb98525e323d0d3f16b01778f17b9493  igb: Add counter to i21x doublecheck
 
-I'm sure there are a million ways to solve this, but the simplest
-one is to just remove a little code that tries to force the
-affinity, as Nitesh has shown it fixes the bug and doesn't seem
-to introduce immediate side effects.
+Warning in current branch:
 
-While I'm here, introduce a kernel-doc for the hint function.
+drivers/net/ethernet/mellanox/mlx5/core/en/rep/tc.c:654:14: warning: variable 'reg_c1' set but not used [-Wunused-but-set-variable]
 
-Ref: https://lore.kernel.org/lkml/CAFki+L=_dd+JgAR12_eBPX0kZO2_6=1dGdgkwHE=u=K6chMeLQ@mail.gmail.com/
-Cc: netdev@vger.kernel.org
-Fixes: 4fe7ffb7e17c ("genirq: Fix null pointer reference in irq_set_affinity_hint()")
-Fixes: e2e64a932556 ("genirq: Set initial affinity in irq_set_affinity_hint()")
-Reported-by: Nitesh Lal <nilal@redhat.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- arm64-defconfig
+|   `-- drivers-net-ethernet-mellanox-mlx5-core-en-rep-tc.c:warning:variable-reg_c1-set-but-not-used
+`-- i386-randconfig-a004-20210430
+    `-- drivers-net-ethernet-mellanox-mlx5-core-en-rep-tc.c:warning:variable-reg_c1-set-but-not-used
+
+elapsed time: 724m
+
+configs tested: 107
+configs skipped: 2
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+x86_64                           allyesconfig
+riscv                            allmodconfig
+i386                             allyesconfig
+riscv                            allyesconfig
+mips                     loongson1b_defconfig
+powerpc                     rainier_defconfig
+mips                       capcella_defconfig
+arm                  colibri_pxa270_defconfig
+m68k                        m5407c3_defconfig
+sh                           se7712_defconfig
+powerpc                      ppc40x_defconfig
+sh                           se7750_defconfig
+powerpc                    ge_imp3a_defconfig
+ia64                        generic_defconfig
+powerpc                      bamboo_defconfig
+arm                        oxnas_v6_defconfig
+arm                           corgi_defconfig
+sh                   sh7770_generic_defconfig
+mips                        bcm47xx_defconfig
+powerpc                 mpc834x_mds_defconfig
+powerpc                         ps3_defconfig
+powerpc                     tqm8541_defconfig
+arm                         axm55xx_defconfig
+mips                     decstation_defconfig
+arm                        trizeps4_defconfig
+arm                         cm_x300_defconfig
+m68k                          hp300_defconfig
+xtensa                         virt_defconfig
+arm                           sunxi_defconfig
+ia64                                defconfig
+mips                           jazz_defconfig
+openrisc                            defconfig
+sh                             shx3_defconfig
+sh                  sh7785lcr_32bit_defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a003-20210430
+x86_64               randconfig-a004-20210430
+x86_64               randconfig-a002-20210430
+x86_64               randconfig-a006-20210430
+x86_64               randconfig-a001-20210430
+x86_64               randconfig-a005-20210430
+i386                 randconfig-a004-20210430
+i386                 randconfig-a001-20210430
+i386                 randconfig-a003-20210430
+i386                 randconfig-a002-20210430
+i386                 randconfig-a005-20210430
+i386                 randconfig-a006-20210430
+i386                 randconfig-a013-20210430
+i386                 randconfig-a011-20210430
+i386                 randconfig-a016-20210430
+i386                 randconfig-a015-20210430
+i386                 randconfig-a012-20210430
+i386                 randconfig-a014-20210430
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a011-20210430
+x86_64               randconfig-a016-20210430
+x86_64               randconfig-a013-20210430
+x86_64               randconfig-a014-20210430
+x86_64               randconfig-a012-20210430
+x86_64               randconfig-a015-20210430
+
 ---
-
-!!! NOTE: Compile tested only, would appreciate feedback
-
----
- kernel/irq/manage.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
-
-diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
-index e976c4927b25..a31df64662d5 100644
---- a/kernel/irq/manage.c
-+++ b/kernel/irq/manage.c
-@@ -456,6 +456,16 @@ int __irq_set_affinity(unsigned int irq, const struct cpumask *mask, bool force)
- 	return ret;
- }
- 
-+/**
-+ * 	irq_set_affinity_hint - set the hint for an irq
-+ *	@irq:	Interrupt for which to set the hint
-+ *	@m:	Mask to indicate which CPUs to suggest for the interrupt, use
-+ *		NULL here to indicate to clear the value.
-+ *
-+ *	Use this function to recommend which CPU should handle the
-+ *	interrupt to any userspace that uses /proc/irq/nn/smp_affinity_hint
-+ *	in order to align interrupts. Pass NULL as the mask to clear the hint.
-+ */
- int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
- {
- 	unsigned long flags;
-@@ -465,9 +475,6 @@ int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
- 		return -EINVAL;
- 	desc->affinity_hint = m;
- 	irq_put_desc_unlock(desc, flags);
--	/* set the initial affinity to prevent every interrupt being on CPU0 */
--	if (m)
--		__irq_set_affinity(irq, m, false);
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
-
-base-commit: 765822e1569a37aab5e69736c52d4ad4a289eba6
--- 
-2.30.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
