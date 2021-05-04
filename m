@@ -2,98 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 721BE372536
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 May 2021 06:44:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 623D2372739
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 May 2021 10:28:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C97814066A;
-	Tue,  4 May 2021 04:44:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 16E494045F;
+	Tue,  4 May 2021 08:28:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5a-CqOZJGPOT; Tue,  4 May 2021 04:44:05 +0000 (UTC)
+	with ESMTP id 3iNNDTmKuXdB; Tue,  4 May 2021 08:28:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A6DDF40650;
-	Tue,  4 May 2021 04:44:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B6D3B40425;
+	Tue,  4 May 2021 08:28:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C8D531BF2A6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 04:44:01 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 56AEB1BF29F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 08:28:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B60B140650
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 04:44:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4483440136
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 08:28:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MvCuNgU7g3Be for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 May 2021 04:44:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from wnew1-smtp.messagingengine.com (wnew1-smtp.messagingengine.com
- [64.147.123.26])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DEF104064F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 04:43:58 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.west.internal (Postfix) with ESMTP id E7FCF1B0E;
- Tue,  4 May 2021 00:43:56 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Tue, 04 May 2021 00:43:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm3; bh=myMLMhEQ7RWnOdFkGtWzXDzHzlP
- xU9Etz1COB68N1NQ=; b=EyUO8kOvWIuRt0hXZjWg55qFjOgTXJFkqPYpTmkp03u
- yWYzGkpdCeJXznx+Zn56OfS7MDAwBbYDVtCmt8/YPXmjDiclgB8zmPwKRc+61/sb
- JkwQFeYxDFSaSnSdayoixZuHdc2GQVuL3opfTP9XV+cyDWfRbMHgi7V5HFgOrEa9
- D5dIeZd3IM1ccG3Dunb41tnqHmz657qSAwwqtRwmiCu/LjRBjmykPBywFAYtKX7J
- H29Q6ccgzKaisbvNfMpvn7xNF9MgIZ2c2zm92YA2m2WP+QT1NmWoLgVXBYH6tqWm
- JDIVtC5Qzl+SKKYJybkPbhy0B0fZDkchm0nz5yn4enA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=myMLMh
- EQ7RWnOdFkGtWzXDzHzlPxU9Etz1COB68N1NQ=; b=uoOAoKFKj7QeFC//AfdsV1
- aT9WAw4hdqKZevZSubuskVW0CGbEAW/hdQ0WC9ZcYtAeJuxZryHyTgl8ImiKlTrQ
- B1acpc2UvKOBFrt1ND8yiqxt8xRSx1/7tJgd8CGrEo6BAL05djgK+cIpfcHoa5Dt
- 0N1ohpHztrG7VXOHmCW4eXkTge/6x+0Nor6i2vkHxRoZV3ySqhMfz8bU6NNwSoNC
- r1d6Etlmm+9132aHNJfBMdHlLcZCzER138tHC3kanHMgzKd+t5o5xp9s0Y4P3mxe
- 2w6A8TB4bgE1dLRQHjJ6wvDbVMPuIrUyx3bM70RqOjaB+obZHJAn/ItMs/V+Smgg
- ==
-X-ME-Sender: <xms:C9GQYCrhAVk7oxVJzGxoJAQmY34_pz1npKcPlmYiFVKsueTt7JiRJw>
- <xme:C9GQYAq3xtx_oTTUgII5hEDH5wG5f3GX7xus765rqlMd5hA1sGwMdYBtZpgkImMs4
- s554TRqgfAq9A>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrvdefhedgkeekucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefirhgvghcu
- mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucggtffrrghtthgvrhhnpeevueehje
- fgfffgiedvudekvdektdelleelgefhleejieeugeegveeuuddukedvteenucfkphepkeef
- rdekiedrjeegrdeigeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrih
- hlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:C9GQYHNDp-lGLxDKa8am9wxh6dcvs7bw9QHWtPrQvpCRxdWDYrQNkw>
- <xmx:C9GQYB52uO8x2K9rXXG4aNDcmtYZKfFMAk85s7EUURaG97y-C62UCA>
- <xmx:C9GQYB4Dle9cEHVD38YwgNWHzMB_tIG1STRM-13Mqi9pRJXlhlutTQ>
- <xmx:DNGQYAK1cBnmymMmFDa-9A6b12dhm2eFkKdykbzKKXsdZNETIkzLCKmoJeE>
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
- by mail.messagingengine.com (Postfix) with ESMTPA;
- Tue,  4 May 2021 00:43:55 -0400 (EDT)
-Date: Tue, 4 May 2021 06:43:53 +0200
-From: Greg KH <greg@kroah.com>
-To: Nick Lowe <nick.lowe@gmail.com>
-Message-ID: <YJDRCSRHSqu0yE7T@kroah.com>
-References: <379d4ef3-02e5-f08a-1b04-21848e11a365@bluematt.me>
- <20210201084747.2cb64c3f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <a7a89e90bf6c3f383fa236b1128db8d012223da0.camel@intel.com>
- <20210201114545.6278ae5c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <69e92a09-d597-2385-2391-fee100464c59@bluematt.me>
- <CADSoG1vn-T3ZL0uZSR-=TnGDdcqYDXjuAxqPaHb0HjKYSuQwXg@mail.gmail.com>
- <20210201123350.159feabd@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CADSoG1sf9zXj9CQfJ3kQ1_CUapmZDa6ZeKtbspUsm34c7TSKqw@mail.gmail.com>
- <20210503113010.774e4ca6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CADSoG1stdPVOE2N0dg10T6tgTUN1nqafY_m+K1CLwB6z2Y9j5Q@mail.gmail.com>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Wh_Kg_x68mf6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 May 2021 08:28:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 62988400F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 May 2021 08:28:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620116925;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oCGIoq+q2yEHekhzcWTEQd9G0dS+82wyYCm9Ec+BzMk=;
+ b=ErFG8OWZC8YRJNaNUppDIMmp0RK1aTjlnofg6enNHgefvAU0+6PsEmjMXOapvHc/C6shdQ
+ I/xKl4pZkU20gBB8pSwYvy496yY0frhKdGCSIyJLDf4FkskbPgQ10bCpOedCvPi/Bwyetc
+ 3wgGTeoKpiRBonVENNi+YDt/mF+eN0k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-532-O1LMVxDONsGykzhE3i_Ffw-1; Tue, 04 May 2021 04:28:42 -0400
+X-MC-Unique: O1LMVxDONsGykzhE3i_Ffw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 741838030D5;
+ Tue,  4 May 2021 08:28:39 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 091EA1A866;
+ Tue,  4 May 2021 08:28:28 +0000 (UTC)
+Date: Tue, 4 May 2021 10:28:27 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <20210504102827.342f6302@carbon>
+In-Reply-To: <20210503072800.79936-1-kurt@linutronix.de>
+References: <20210503072800.79936-1-kurt@linutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CADSoG1stdPVOE2N0dg10T6tgTUN1nqafY_m+K1CLwB6z2Y9j5Q@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] Stable inclusion request - igb: Enable RSS
- for Intel I211 Ethernet Controller
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Subject: Re: [Intel-wired-lan] [PATCH net v4] igb: Fix XDP with PTP enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,27 +78,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, stable@vger.kernel.org,
- Matt Corallo <linux-wired-list@bluematt.me>, intel-wired-lan@lists.osuosl.org,
+Cc: Richard Cochran <richardcochran@gmail.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Alexei Starovoitov <ast@kernel.org>, Tyler S <tylerjstachecki@gmail.com>,
+ brouer@redhat.com, Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Lorenzo Bianconi <lorenzo@kernel.org>,
  "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 03, 2021 at 08:53:48PM +0100, Nick Lowe wrote:
-> Hi,
+On Mon,  3 May 2021 09:28:00 +0200
+Kurt Kanzenbach <kurt@linutronix.de> wrote:
+
+> When using native XDP with the igb driver, the XDP frame data doesn't point to
+> the beginning of the packet. It's off by 16 bytes. Everything works as expected
+> with XDP skb mode.
 > 
-> Please may we request that commit 6e6026f2dd20 ("igb: Enable RSS for
-> Intel I211 Ethernet Controller") be backported to the 5.4 and 5.10 LTS
-> kernels?
->
+> Actually these 16 bytes are used to store the packet timestamps. Therefore, pull
+> the timestamp before executing any XDP operations and adjust all other code
+> accordingly. The igc driver does it like that as well.
+> 
+> Tested with Intel i210 card and AF_XDP sockets.
+> 
+> Fixes: 9cbc948b5a20 ("igb: add XDP support")
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 
-Also added to 5.11 as it's still alive for another week or so :)
+Thanks for fixing this!
 
-thanks,
+Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-greg k-h
+I expect that we/I will (soon) play with getting this area that is
+stored in front of the packet (the XDP data_meta area) described via
+BTF.  This way both xdp_frame and AF_XDP can get structured access (e.g.
+to the PTP timestamp in this case).
+
+I'll be adding my notes on this project here:
+ https://github.com/xdp-project/xdp-project/blob/master/areas/tsn/
+
+Looking forward to collaborate on this with you :-)
+-- 
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
