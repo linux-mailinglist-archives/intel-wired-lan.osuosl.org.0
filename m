@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68C1B374A25
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 23:28:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 076A9374A26
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 23:28:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D2C83845EC;
-	Wed,  5 May 2021 21:28:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E3B8845DD;
+	Wed,  5 May 2021 21:28:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oIf0c8fBtZ2h; Wed,  5 May 2021 21:28:43 +0000 (UTC)
+	with ESMTP id oZ0WA6sbbNHn; Wed,  5 May 2021 21:28:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4F4D845E9;
-	Wed,  5 May 2021 21:28:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6B1B4845E9;
+	Wed,  5 May 2021 21:28:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 99B451BF25F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 21:28:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AA4C11BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 21:28:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5B38F845DD
+ by smtp1.osuosl.org (Postfix) with ESMTP id 87675845E9
  for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 21:28:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2RW1Tt-ubxbN for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 May 2021 21:28:30 +0000 (UTC)
+ with ESMTP id KeuPIS5UWOyK for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 May 2021 21:28:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9C0B2845E9
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E5D6F845EC
  for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 21:28:30 +0000 (UTC)
-IronPort-SDR: xjv40F1wPuNhmRGVgCSCQZVefoQG1XbUhJgt1PcFCPOCr/HD5KtRsoM6M6gBor37Bq459hNUoh
- RcnjUEwqsVhQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9975"; a="283743042"
-X-IronPort-AV: E=Sophos;i="5.82,276,1613462400"; d="scan'208";a="283743042"
+IronPort-SDR: l7gh2YhCUfdrQrH6j9C+tzIc9drnYarneRtH4/hydn4fd/meTk+6Qp3+A7C29NXh5wZIsEaWT1
+ PkWF5d1uUujA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9975"; a="283743044"
+X-IronPort-AV: E=Sophos;i="5.82,276,1613462400"; d="scan'208";a="283743044"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  05 May 2021 14:28:28 -0700
-IronPort-SDR: t4z+OUcwpG/DiKfODg7jx4LF8jjUa6X6OkyMItvR6XurZIEIhAOYtKHExPwZSB5+kT/HFJGcv+
- zP1U5/ZBoIsA==
+IronPort-SDR: 3YJpTTmhJt0+k/thhzSK1+xrdJ3/dRIsKPq25G0h+4Y4FVTlnR/ahr/LOMMfJG7B1VYltDcc4p
+ 1XGSY2fA7w1g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,276,1613462400"; d="scan'208";a="622213116"
+X-IronPort-AV: E=Sophos;i="5.82,276,1613462400"; d="scan'208";a="622213117"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by fmsmga005.fm.intel.com with ESMTP; 05 May 2021 14:28:28 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  5 May 2021 14:17:58 -0700
-Message-Id: <20210505211800.11908-2-anthony.l.nguyen@intel.com>
+Date: Wed,  5 May 2021 14:17:59 -0700
+Message-Id: <20210505211800.11908-3-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210505211800.11908-1-anthony.l.nguyen@intel.com>
 References: <20210505211800.11908-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 2/4] ice: report supported and
- advertised autoneg using PHY capabilities
+Subject: [Intel-wired-lan] [PATCH net 3/4] ice: Allow all LLDP packets from
+ PF to Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,105 +71,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+From: Dave Ertman <david.m.ertman@intel.com>
 
-Ethtool incorrectly reported supported and advertised auto-negotiation
-settings for a backplane PHY image which did not support auto-negotiation.
-This can occur when using media or PHY type for reporting ethtool
-supported and advertised auto-negotiation settings.
+Currently in the ice driver, the check whether to
+allow a LLDP packet to egress the interface from the
+PF_VSI is being based on the SKB's priority field.
+It checks to see if the packets priority is equal to
+TC_PRIO_CONTROL.  Injected LLDP packets do not always
+meet this condition.
 
-Remove setting supported and advertised auto-negotiation settings based
-on PHY type in ice_phy_type_to_ethtool(), and MAC type in
-ice_get_link_ksettings().
+SCAPY defaults to a sk_buff->protocol value of ETH_P_ALL
+(0x0003) and does not set the priority field.  There will
+be other injection methods (even ones used by end users)
+that will not correctly configure the socket so that
+SKB fields are correctly populated.
 
-Ethtool supported and advertised auto-negotiation settings should be
-based on the PHY image using the AQ command get PHY capabilities with
-media. Add setting supported and advertised auto-negotiation settings
-based get PHY capabilities with media in ice_get_link_ksettings().
+Then ethernet header has to have to correct value for
+the protocol though.
 
-Fixes: 48cb27f2fd18 ("ice: Implement handlers for ethtool PHY/link operations")
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Add a check to also allow packets whose ethhdr->h_proto
+matches ETH_P_LLDP (0x88CC).
+
+Fixes: 0c3a6101ff2d ("ice: Allow egress control packets from PF_VSI")
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 51 +++-----------------
- 1 file changed, 6 insertions(+), 45 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index d9ddd0bcf65f..99301ad95290 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -1773,49 +1773,6 @@ ice_phy_type_to_ethtool(struct net_device *netdev,
- 		ice_ethtool_advertise_link_mode(ICE_AQ_LINK_SPEED_100GB,
- 						100000baseKR4_Full);
- 	}
--
--	/* Autoneg PHY types */
--	if (phy_types_low & ICE_PHY_TYPE_LOW_100BASE_TX ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_1000BASE_T ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_1000BASE_KX ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_2500BASE_T ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_2500BASE_KX ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_5GBASE_T ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_5GBASE_KR ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_10GBASE_T ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_10GBASE_KR_CR1 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_T ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_CR ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_CR_S ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_CR1 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_KR ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_KR_S ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_25GBASE_KR1 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_40GBASE_CR4 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_40GBASE_KR4) {
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     Autoneg);
--	}
--	if (phy_types_low & ICE_PHY_TYPE_LOW_50GBASE_CR2 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_50GBASE_KR2 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_50GBASE_CP ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_50GBASE_KR_PAM4) {
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     Autoneg);
--	}
--	if (phy_types_low & ICE_PHY_TYPE_LOW_100GBASE_CR4 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_100GBASE_KR4 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_100GBASE_KR_PAM4 ||
--	    phy_types_low & ICE_PHY_TYPE_LOW_100GBASE_CP2) {
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     Autoneg);
--	}
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index e2b4b29ea207..dd06d25850aa 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -2143,6 +2143,7 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
+ 	struct ice_tx_offload_params offload = { 0 };
+ 	struct ice_vsi *vsi = tx_ring->vsi;
+ 	struct ice_tx_buf *first;
++	struct ethhdr *eth;
+ 	unsigned int count;
+ 	int tso, csum;
  
- #define TEST_SET_BITS_TIMEOUT	50
-@@ -1972,9 +1929,7 @@ ice_get_link_ksettings(struct net_device *netdev,
- 		ks->base.port = PORT_TP;
- 		break;
- 	case ICE_MEDIA_BACKPLANE:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
- 		ethtool_link_ksettings_add_link_mode(ks, supported, Backplane);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
- 		ethtool_link_ksettings_add_link_mode(ks, advertising,
- 						     Backplane);
- 		ks->base.port = PORT_NONE;
-@@ -2049,6 +2004,12 @@ ice_get_link_ksettings(struct net_device *netdev,
- 	if (caps->link_fec_options & ICE_AQC_PHY_FEC_25G_RS_CLAUSE91_EN)
- 		ethtool_link_ksettings_add_link_mode(ks, supported, FEC_RS);
+@@ -2189,7 +2190,9 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
+ 		goto out_drop;
  
-+	/* Set supported and advertised autoneg */
-+	if (ice_is_phy_caps_an_enabled(caps)) {
-+		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
-+		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
-+	}
-+
- done:
- 	kfree(caps);
- 	return err;
+ 	/* allow CONTROL frames egress from main VSI if FW LLDP disabled */
+-	if (unlikely(skb->priority == TC_PRIO_CONTROL &&
++	eth = (struct ethhdr *)skb_mac_header(skb);
++	if (unlikely((skb->priority == TC_PRIO_CONTROL ||
++		      eth->h_proto == htons(ETH_P_LLDP)) &&
+ 		     vsi->type == ICE_VSI_PF &&
+ 		     vsi->port_info->qos_cfg.is_sw_lldp))
+ 		offload.cd_qw1 |= (u64)(ICE_TX_DESC_DTYPE_CTX |
 -- 
 2.20.1
 
