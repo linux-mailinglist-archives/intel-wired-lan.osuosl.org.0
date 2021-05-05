@@ -2,61 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B55613740D5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 18:38:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CCB83740EB
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 18:40:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6289B60A7E;
-	Wed,  5 May 2021 16:38:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1AC93607CD;
+	Wed,  5 May 2021 16:40:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B_7wIVtq1Vgi; Wed,  5 May 2021 16:38:45 +0000 (UTC)
+	with ESMTP id px7P1pE9rG6a; Wed,  5 May 2021 16:40:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5889060804;
-	Wed,  5 May 2021 16:38:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 21A0260804;
+	Wed,  5 May 2021 16:40:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8D89F1BF29C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:38:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5AE801BF29C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:40:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 88A1B83DE5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:38:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5668A402AE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:40:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A2lohfhtul54 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 May 2021 16:38:39 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wPm_UDWovpn5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 May 2021 16:39:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8C12883DB7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:38:39 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 269C66198F;
- Wed,  5 May 2021 16:38:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D7C1740192
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:39:59 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A6FC4619AF;
+ Wed,  5 May 2021 16:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232718;
- bh=RCxLgN7/gkXsKhym5ThqqgbVTx9xWZPHnifZLnamMSs=;
+ s=k20201202; t=1620232799;
+ bh=XG8G87TVuOVi6GUNhXNTYQqH9ntP4FqUcblCmqCe8+E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UCwafsOkYp72QEq723Ye10qkIkqtsggLkCi0nwbGONXm/MSu8a4OXEYqwukNWKSY7
- xbQ6bDSFfeSixytn3gVP86dM8kvfv0hdZxhCbiWWPIRdNk8RI9XkjUpZ2YAmfRvs1o
- NCfSJxDY5vsqEfxvt6E4WGUKC2BDUMI7QOghOwHBp2ol1rJI9vGedJoCWlSg6+JEZL
- PQeGNzLpPBvz5Vaava5JzFjHLRHJVPFYjNc1Vu7T3xUaYUZWXzIZP018MtZWw4KJx/
- rBESJqw91i7OHE2eS0GS72tuUkDWRuy0kS1/kx4djLCkd56ln5XSq5dua3Op/K+kVq
- qbgJ09FTjnrAA==
+ b=OCBGBth4MDCveYo8KusoaQSdJ+LEH0EsRqgAf0os0BeLKPlqtlc2IWE5e39/JXfr5
+ OKqyP0oNI00B3dnV1EnEE7tllIB2uNcIkJboQHlPURqiDqrdABWYIKvFRWMGpdULFW
+ 2giNWimHm9CP1ujhtaY1mLOdN6S/7PouA2tIHmuDgh+6utcx3/NHtGD12GUfE502z+
+ Dto6KELWMWVuL6mIme3Qv9sGp87Sgkt139mRdtgDFMpsXCpX2KRLgowkLBdtyHZrs6
+ MAckw9Qm8mT4jHWjByaNtL5ANlF1a+6u+Qfv1Y30sYEz3buxrzAgmPKecB1U5UaB3b
+ TbDE6Fvib+T8A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Wed,  5 May 2021 12:36:38 -0400
-Message-Id: <20210505163648.3462507-75-sashal@kernel.org>
+Date: Wed,  5 May 2021 12:38:53 -0400
+Message-Id: <20210505163856.3463279-43-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210505163648.3462507-1-sashal@kernel.org>
-References: <20210505163648.3462507-1-sashal@kernel.org>
+In-Reply-To: <20210505163856.3463279-1-sashal@kernel.org>
+References: <20210505163856.3463279-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.10 75/85] iavf: remove duplicate
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 43/46] iavf: remove duplicate
  free resources calls
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -93,10 +93,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index dc5b3c06d1e0..ebd08543791b 100644
+index cffc8c1044f2..a97e1f9ca1ed 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3899,8 +3899,6 @@ static void iavf_remove(struct pci_dev *pdev)
+@@ -3906,8 +3906,6 @@ static void iavf_remove(struct pci_dev *pdev)
  
  	iounmap(hw->hw_addr);
  	pci_release_regions(pdev);
