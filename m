@@ -1,60 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53D8D37341C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 06:00:06 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95ACC373FF8
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 May 2021 18:32:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A9872401BA;
-	Wed,  5 May 2021 04:00:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 40C4560A67;
+	Wed,  5 May 2021 16:32:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AEvkZYkMv50H; Wed,  5 May 2021 04:00:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PsjP17CKa_S7; Wed,  5 May 2021 16:32:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6D347401B8;
-	Wed,  5 May 2021 04:00:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1571360804;
+	Wed,  5 May 2021 16:32:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 71F451BF239
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 03:59:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 25A451BF29C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:32:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 589B8401B8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 03:59:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1FB6A83DB9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:32:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KCk4lBoPh-3A for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 May 2021 03:59:57 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id K2SNTjJPqOwR for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 May 2021 16:32:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5B322401B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 03:59:57 +0000 (UTC)
-IronPort-SDR: K4uUxnnPYw0CEfAk0RjPEzKnmPpAP6ynoN3GuQOs0sTD/rvjGi0tB+8jw4C9XHP58R7Ak+LXPB
- Gay2cemd5z+A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9974"; a="194995517"
-X-IronPort-AV: E=Sophos;i="5.82,273,1613462400"; d="scan'208";a="194995517"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 May 2021 20:59:56 -0700
-IronPort-SDR: tAbhUXk38dZMU771uaPlIAaGU6qS42QSvMX4PVt2yZE3xJs2Ey0oqohTQt5hXYvTXuH/Uu4XRV
- gBruqGmI2Xvg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,273,1613462400"; d="scan'208";a="458393481"
-Received: from lkp-server01.sh.intel.com (HELO a48ff7ddd223) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 04 May 2021 20:59:55 -0700
-Received: from kbuild by a48ff7ddd223 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1le8hX-0009qF-3s; Wed, 05 May 2021 03:59:55 +0000
-Date: Wed, 05 May 2021 11:59:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60921813.rciP4USnlOCOajAR%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5FE8083DA2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 May 2021 16:32:17 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2BD4F61415;
+ Wed,  5 May 2021 16:32:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620232337;
+ bh=bmLQThdMvJ2I/cHj3QpqostU/B37Qhc6cji/YV9j8dw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=kUqq50XcpZIyxeEYFw2LNbL2dRedHyTV8XbAntA+TBsNRYW8dnYPdjMYAED/eXPhm
+ QnMGgIzxj+CvQMKseOcfbBZM+CnsELqI0yQrytgqgrsL8PekfUj0AXWrl6EluTbvl9
+ AA5MwUUjymUMLkHXkoqxd2HCG/lnpFov4I/i3S19LUhqpaqtq3ph4LNq1wooiLxtxX
+ ma8lGaCQWpdqC+RMjG0WAYvlxVUF4I7AUS6Z3xXm5bg1kqO4FNzNvNSoFbdpbV4vYp
+ fqG98QIT9z/5v9w+NV0stmlj/otYIexg/G1rGCFknP2aWJsr6Gsi1SHjfjw/tWDZQG
+ mU8yWHWpzeCRA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Wed,  5 May 2021 12:30:06 -0400
+Message-Id: <20210505163125.3460440-38-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210505163125.3460440-1-sashal@kernel.org>
+References: <20210505163125.3460440-1-sashal@kernel.org>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- ac3ae13a867225197f59ada7b38914280ebbb15f
+X-stable: review
+X-Patchwork-Hint: Ignore
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.12 038/116] ice: handle
+ increasing Tx or Rx ring sizes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,161 +70,224 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: ac3ae13a867225197f59ada7b38914280ebbb15f  igc: Remove unused MDICNFG register
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 
-elapsed time: 726m
+[ Upstream commit 2ec5638559c13b923250eccf495d2a033fccb3e7 ]
 
-configs tested: 132
-configs skipped: 2
+There is an issue when the Tx or Rx ring size increases using
+'ethtool -L ...' where the new rings don't get the correct ITR
+values because when we rebuild the VSI we don't know that some
+of the rings may be new.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Fix this by looking at the original number of rings and
+determining if the rings in ice_vsi_rebuild_set_coalesce()
+were not present in the original rings received in
+ice_vsi_rebuild_get_coalesce().
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-x86_64                           allyesconfig
-riscv                            allmodconfig
-i386                             allyesconfig
-riscv                            allyesconfig
-arm                       imx_v6_v7_defconfig
-arm                          pcm027_defconfig
-powerpc                     tqm8560_defconfig
-mips                             allmodconfig
-arm                            zeus_defconfig
-mips                      fuloong2e_defconfig
-powerpc               mpc834x_itxgp_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arc                        nsim_700_defconfig
-mips                           ci20_defconfig
-mips                            ar7_defconfig
-powerpc                     asp8347_defconfig
-sparc64                          alldefconfig
-mips                            e55_defconfig
-mips                        vocore2_defconfig
-powerpc                        icon_defconfig
-powerpc                    socrates_defconfig
-powerpc                     tqm5200_defconfig
-sh                          sdk7780_defconfig
-m68k                          atari_defconfig
-m68k                        mvme147_defconfig
-arm                      integrator_defconfig
-powerpc                     powernv_defconfig
-arm                           sama5_defconfig
-arm                           spitz_defconfig
-m68k                        m5272c3_defconfig
-powerpc                        cell_defconfig
-powerpc                    mvme5100_defconfig
-sh                   sh7770_generic_defconfig
-mips                       rbtx49xx_defconfig
-sh                           se7343_defconfig
-openrisc                    or1ksim_defconfig
-mips                          rm200_defconfig
-mips                           xway_defconfig
-sparc64                             defconfig
-powerpc                 mpc834x_mds_defconfig
-arm                          pxa3xx_defconfig
-arc                         haps_hs_defconfig
-sh                           se7712_defconfig
-arm                          collie_defconfig
-s390                       zfcpdump_defconfig
-sh                             sh03_defconfig
-powerpc                 mpc832x_mds_defconfig
-arm                           stm32_defconfig
-arm                        keystone_defconfig
-sh                        dreamcast_defconfig
-arm                          gemini_defconfig
-arm                        spear6xx_defconfig
-parisc                           allyesconfig
-m68k                        stmark2_defconfig
-sh                           se7780_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20210504
-i386                 randconfig-a006-20210504
-i386                 randconfig-a001-20210504
-i386                 randconfig-a005-20210504
-i386                 randconfig-a004-20210504
-i386                 randconfig-a002-20210504
-i386                 randconfig-a003-20210503
-i386                 randconfig-a006-20210503
-i386                 randconfig-a001-20210503
-i386                 randconfig-a005-20210503
-i386                 randconfig-a004-20210503
-i386                 randconfig-a002-20210503
-x86_64               randconfig-a014-20210504
-x86_64               randconfig-a015-20210504
-x86_64               randconfig-a012-20210504
-x86_64               randconfig-a013-20210504
-i386                 randconfig-a015-20210504
-i386                 randconfig-a013-20210504
-i386                 randconfig-a016-20210504
-i386                 randconfig-a014-20210504
-i386                 randconfig-a012-20210504
-i386                 randconfig-a011-20210504
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Also change the code to return an error if we can't allocate
+memory for the coalesce data in ice_vsi_rebuild().
 
-clang tested configs:
-x86_64               randconfig-a006-20210504
-x86_64               randconfig-a014-20210503
-x86_64               randconfig-a015-20210503
-x86_64               randconfig-a012-20210503
-x86_64               randconfig-a011-20210503
-x86_64               randconfig-a013-20210503
-x86_64               randconfig-a016-20210503
-
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Tested-by: Tony Brelinski <tonyx.brelinski@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/ice/ice_lib.c  | 123 ++++++++++++++++------
+ drivers/net/ethernet/intel/ice/ice_txrx.h |   2 +
+ 2 files changed, 92 insertions(+), 33 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index d13c7fc8fb0a..195d122c9cb2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2818,38 +2818,46 @@ int ice_vsi_release(struct ice_vsi *vsi)
+ }
+ 
+ /**
+- * ice_vsi_rebuild_update_coalesce - set coalesce for a q_vector
++ * ice_vsi_rebuild_update_coalesce_intrl - set interrupt rate limit for a q_vector
+  * @q_vector: pointer to q_vector which is being updated
+- * @coalesce: pointer to array of struct with stored coalesce
++ * @stored_intrl_setting: original INTRL setting
+  *
+  * Set coalesce param in q_vector and update these parameters in HW.
+  */
+ static void
+-ice_vsi_rebuild_update_coalesce(struct ice_q_vector *q_vector,
+-				struct ice_coalesce_stored *coalesce)
++ice_vsi_rebuild_update_coalesce_intrl(struct ice_q_vector *q_vector,
++				      u16 stored_intrl_setting)
+ {
+-	struct ice_ring_container *rx_rc = &q_vector->rx;
+-	struct ice_ring_container *tx_rc = &q_vector->tx;
+ 	struct ice_hw *hw = &q_vector->vsi->back->hw;
+ 
+-	tx_rc->itr_setting = coalesce->itr_tx;
+-	rx_rc->itr_setting = coalesce->itr_rx;
+-
+-	/* dynamic ITR values will be updated during Tx/Rx */
+-	if (!ITR_IS_DYNAMIC(tx_rc->itr_setting))
+-		wr32(hw, GLINT_ITR(tx_rc->itr_idx, q_vector->reg_idx),
+-		     ITR_REG_ALIGN(tx_rc->itr_setting) >>
+-		     ICE_ITR_GRAN_S);
+-	if (!ITR_IS_DYNAMIC(rx_rc->itr_setting))
+-		wr32(hw, GLINT_ITR(rx_rc->itr_idx, q_vector->reg_idx),
+-		     ITR_REG_ALIGN(rx_rc->itr_setting) >>
+-		     ICE_ITR_GRAN_S);
+-
+-	q_vector->intrl = coalesce->intrl;
++	q_vector->intrl = stored_intrl_setting;
+ 	wr32(hw, GLINT_RATE(q_vector->reg_idx),
+ 	     ice_intrl_usec_to_reg(q_vector->intrl, hw->intrl_gran));
+ }
+ 
++/**
++ * ice_vsi_rebuild_update_coalesce_itr - set coalesce for a q_vector
++ * @q_vector: pointer to q_vector which is being updated
++ * @rc: pointer to ring container
++ * @stored_itr_setting: original ITR setting
++ *
++ * Set coalesce param in q_vector and update these parameters in HW.
++ */
++static void
++ice_vsi_rebuild_update_coalesce_itr(struct ice_q_vector *q_vector,
++				    struct ice_ring_container *rc,
++				    u16 stored_itr_setting)
++{
++	struct ice_hw *hw = &q_vector->vsi->back->hw;
++
++	rc->itr_setting = stored_itr_setting;
++
++	/* dynamic ITR values will be updated during Tx/Rx */
++	if (!ITR_IS_DYNAMIC(rc->itr_setting))
++		wr32(hw, GLINT_ITR(rc->itr_idx, q_vector->reg_idx),
++		     ITR_REG_ALIGN(rc->itr_setting) >> ICE_ITR_GRAN_S);
++}
++
+ /**
+  * ice_vsi_rebuild_get_coalesce - get coalesce from all q_vectors
+  * @vsi: VSI connected with q_vectors
+@@ -2869,6 +2877,11 @@ ice_vsi_rebuild_get_coalesce(struct ice_vsi *vsi,
+ 		coalesce[i].itr_tx = q_vector->tx.itr_setting;
+ 		coalesce[i].itr_rx = q_vector->rx.itr_setting;
+ 		coalesce[i].intrl = q_vector->intrl;
++
++		if (i < vsi->num_txq)
++			coalesce[i].tx_valid = true;
++		if (i < vsi->num_rxq)
++			coalesce[i].rx_valid = true;
+ 	}
+ 
+ 	return vsi->num_q_vectors;
+@@ -2893,17 +2906,59 @@ ice_vsi_rebuild_set_coalesce(struct ice_vsi *vsi,
+ 	if ((size && !coalesce) || !vsi)
+ 		return;
+ 
+-	for (i = 0; i < size && i < vsi->num_q_vectors; i++)
+-		ice_vsi_rebuild_update_coalesce(vsi->q_vectors[i],
+-						&coalesce[i]);
+-
+-	/* number of q_vectors increased, so assume coalesce settings were
+-	 * changed globally (i.e. ethtool -C eth0 instead of per-queue) and use
+-	 * the previous settings from q_vector 0 for all of the new q_vectors
++	/* There are a couple of cases that have to be handled here:
++	 *   1. The case where the number of queue vectors stays the same, but
++	 *      the number of Tx or Rx rings changes (the first for loop)
++	 *   2. The case where the number of queue vectors increased (the
++	 *      second for loop)
+ 	 */
+-	for (; i < vsi->num_q_vectors; i++)
+-		ice_vsi_rebuild_update_coalesce(vsi->q_vectors[i],
+-						&coalesce[0]);
++	for (i = 0; i < size && i < vsi->num_q_vectors; i++) {
++		/* There are 2 cases to handle here and they are the same for
++		 * both Tx and Rx:
++		 *   if the entry was valid previously (coalesce[i].[tr]x_valid
++		 *   and the loop variable is less than the number of rings
++		 *   allocated, then write the previous values
++		 *
++		 *   if the entry was not valid previously, but the number of
++		 *   rings is less than are allocated (this means the number of
++		 *   rings increased from previously), then write out the
++		 *   values in the first element
++		 */
++		if (i < vsi->alloc_rxq && coalesce[i].rx_valid)
++			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++							    &vsi->q_vectors[i]->rx,
++							    coalesce[i].itr_rx);
++		else if (i < vsi->alloc_rxq)
++			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++							    &vsi->q_vectors[i]->rx,
++							    coalesce[0].itr_rx);
++
++		if (i < vsi->alloc_txq && coalesce[i].tx_valid)
++			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++							    &vsi->q_vectors[i]->tx,
++							    coalesce[i].itr_tx);
++		else if (i < vsi->alloc_txq)
++			ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++							    &vsi->q_vectors[i]->tx,
++							    coalesce[0].itr_tx);
++
++		ice_vsi_rebuild_update_coalesce_intrl(vsi->q_vectors[i],
++						      coalesce[i].intrl);
++	}
++
++	/* the number of queue vectors increased so write whatever is in
++	 * the first element
++	 */
++	for (; i < vsi->num_q_vectors; i++) {
++		ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++						    &vsi->q_vectors[i]->tx,
++						    coalesce[0].itr_tx);
++		ice_vsi_rebuild_update_coalesce_itr(vsi->q_vectors[i],
++						    &vsi->q_vectors[i]->rx,
++						    coalesce[0].itr_rx);
++		ice_vsi_rebuild_update_coalesce_intrl(vsi->q_vectors[i],
++						      coalesce[0].intrl);
++	}
+ }
+ 
+ /**
+@@ -2932,9 +2987,11 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
+ 
+ 	coalesce = kcalloc(vsi->num_q_vectors,
+ 			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+-	if (coalesce)
+-		prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi,
+-								  coalesce);
++	if (!coalesce)
++		return -ENOMEM;
++
++	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
++
+ 	ice_rm_vsi_lan_cfg(vsi->port_info, vsi->idx);
+ 	ice_vsi_free_q_vectors(vsi);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
+index 5dab77504fa5..672a7ff0ee36 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.h
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
+@@ -351,6 +351,8 @@ struct ice_coalesce_stored {
+ 	u16 itr_tx;
+ 	u16 itr_rx;
+ 	u8 intrl;
++	u8 tx_valid;
++	u8 rx_valid;
+ };
+ 
+ /* iterator for handling rings in ring container */
+-- 
+2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
