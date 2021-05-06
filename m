@@ -2,58 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D26B23757E1
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 May 2021 17:50:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 997283757EC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 May 2021 17:51:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4EEB9402C8;
-	Thu,  6 May 2021 15:50:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3569F40683;
+	Thu,  6 May 2021 15:51:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8OymiJ40txO9; Thu,  6 May 2021 15:50:45 +0000 (UTC)
+	with ESMTP id eA_8-2p_cr9s; Thu,  6 May 2021 15:51:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6982940294;
-	Thu,  6 May 2021 15:50:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2F9BD4028C;
+	Thu,  6 May 2021 15:51:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 011331BF363
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:40 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1DC281BF363
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DEEC5608B5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C290740617
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wmz853pCivS9 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 May 2021 15:50:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AmzVHX6-vy9f for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 May 2021 15:50:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 26F4060660
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 70C544061C
  for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:39 +0000 (UTC)
-IronPort-SDR: EwMVv5WzyvynQnUlY0u9kM/vE6Fu43KvmW2BeJGSjkg/nzKot37hyZERL7wPMIfMV8lEdfnYcI
- 6UU1Mn+AgT9A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9976"; a="219389331"
-X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="219389331"
+IronPort-SDR: U1Hoyy2n4rOYSgWwhtU8icIlsrKF0uQuStu1ENuPTSo6cFxPqvFLDJ7GEl0UocpD750eogSGdq
+ WEDU6hqhwvew==
+X-IronPort-AV: E=McAfee;i="6200,9189,9976"; a="219389332"
+X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="219389332"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 May 2021 08:50:36 -0700
-IronPort-SDR: oW/Xvsbn30AiGJMlk3Ms9l6KJ2fjYyE/7fKhA+DKm2nJG5tE/WkBQkuXHaRJheH6uCzBQM3H14
- 5PB6K9KMJukw==
+IronPort-SDR: 6vOs82Ua+NS4mZ5osm+9EUrYzCpbH936d3USH4ma1EsPtssHW/rnCu7CYQ55jYEIsDC39cOr2D
+ b1Acp76UYPJw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="459369491"
+X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="459369493"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 06 May 2021 08:50:36 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  6 May 2021 08:40:06 -0700
-Message-Id: <20210506154008.12880-11-anthony.l.nguyen@intel.com>
+Date: Thu,  6 May 2021 08:40:07 -0700
+Message-Id: <20210506154008.12880-12-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210506154008.12880-1-anthony.l.nguyen@intel.com>
 References: <20210506154008.12880-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S59 11/13] ice: downgrade error print to
- debug print
+Subject: [Intel-wired-lan] [PATCH S59 12/13] ice: reduce scope of variables
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,29 +70,72 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 
-Failing to add or remove LLDP filter doesn't seem to be a fatal
-error, so downgrade the dev_err message to a dev_dbg message.
+There are some places where the scope of a variable can
+be reduced so do that.
 
-Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c  | 8 ++++----
+ drivers/net/ethernet/intel/ice/ice_main.c | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 20daa8c8fb07..3291fe194ba1 100644
+index 3291fe194ba1..454432ed7a3f 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -2237,7 +2237,7 @@ void ice_cfg_sw_lldp(struct ice_vsi *vsi, bool tx, bool create)
- 	}
+@@ -1194,11 +1194,11 @@ static int ice_vsi_setup_vector_base(struct ice_vsi *vsi)
+ 	num_q_vectors = vsi->num_q_vectors;
+ 	/* reserve slots from OS requested IRQs */
+ 	if (vsi->type == ICE_VSI_CTRL && vsi->vf_id != ICE_INVAL_VFID) {
+-		struct ice_vf *vf;
+ 		int i;
  
- 	if (status)
--		dev_err(dev, "Fail %s %s LLDP rule on VSI %i error: %s\n",
-+		dev_dbg(dev, "Fail %s %s LLDP rule on VSI %i error: %s\n",
- 			create ? "adding" : "removing", tx ? "TX" : "RX",
- 			vsi->vsi_num, ice_stat_str(status));
- }
+ 		ice_for_each_vf(pf, i) {
+-			vf = &pf->vf[i];
++			struct ice_vf *vf = &pf->vf[i];
++
+ 			if (i != vsi->vf_id && vf->ctrl_vsi_idx != ICE_NO_VSI) {
+ 				base = pf->vsi[vf->ctrl_vsi_idx]->base_vector;
+ 				break;
+@@ -2852,11 +2852,11 @@ int ice_vsi_release(struct ice_vsi *vsi)
+ 	 * cleared in the same manner.
+ 	 */
+ 	if (vsi->type == ICE_VSI_CTRL && vsi->vf_id != ICE_INVAL_VFID) {
+-		struct ice_vf *vf;
+ 		int i;
+ 
+ 		ice_for_each_vf(pf, i) {
+-			vf = &pf->vf[i];
++			struct ice_vf *vf = &pf->vf[i];
++
+ 			if (i != vsi->vf_id && vf->ctrl_vsi_idx != ICE_NO_VSI)
+ 				break;
+ 		}
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index eaebffdb6257..0034bbe9c9b3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5498,7 +5498,6 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_ring **rings,
+ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ {
+ 	struct rtnl_link_stats64 *vsi_stats = &vsi->net_stats;
+-	struct ice_ring *ring;
+ 	u64 pkts, bytes;
+ 	int i;
+ 
+@@ -5522,7 +5521,8 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ 
+ 	/* update Rx rings counters */
+ 	ice_for_each_rxq(vsi, i) {
+-		ring = READ_ONCE(vsi->rx_rings[i]);
++		struct ice_ring *ring = READ_ONCE(vsi->rx_rings[i]);
++
+ 		ice_fetch_u64_stats_per_ring(ring, &pkts, &bytes);
+ 		vsi_stats->rx_packets += pkts;
+ 		vsi_stats->rx_bytes += bytes;
 -- 
 2.20.1
 
