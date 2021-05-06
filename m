@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9085D3757E9
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 May 2021 17:51:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1E973757F0
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 May 2021 17:51:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 376F6600D4;
-	Thu,  6 May 2021 15:51:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3F0F440617;
+	Thu,  6 May 2021 15:51:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1r3lSvErOST8; Thu,  6 May 2021 15:51:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VQWCI66pJiGW; Thu,  6 May 2021 15:51:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1DDB1608C0;
-	Thu,  6 May 2021 15:51:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0BF23405DC;
+	Thu,  6 May 2021 15:51:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CD921BF363
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3FE491BF363
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9CC2640570
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6898C40613
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sWC_Rg2u0Qmr for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 May 2021 15:50:41 +0000 (UTC)
+ with ESMTP id ikJT_OfU5ybG for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 May 2021 15:50:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4498140617
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:39 +0000 (UTC)
-IronPort-SDR: smxLqzHHisweHkJ739R4LuCMMkDhVbUSYfxEF0Q6sbN2oe66R95lZv1uX9QnwQMLSEO1+TtHY3
- NM95qzmbfGpw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9976"; a="219389320"
-X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="219389320"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C52B7405DC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 May 2021 15:50:38 +0000 (UTC)
+IronPort-SDR: oB/OqW5ZLykoxheQdQfqEiYfd752iRRqjcQ3kEuillgz73006pxE0kUigSAHh1n6qoJ8EZSXd5
+ gZi/dbZclegA==
+X-IronPort-AV: E=McAfee;i="6200,9189,9976"; a="219389321"
+X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="219389321"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 May 2021 08:50:35 -0700
-IronPort-SDR: dvtihnn/3Aqcx8ca8xcqM7M+C/wDeuEx7At8PrCd2PcisTlUyoQoXKKJiiYxekmhtBl2pxJLAE
- WpP9snkcO7Ew==
+IronPort-SDR: GwuckQY+rdRHZ2Ci4tMOtjvgUqwQ4fmouKN4Z3Lmwi6tPuUqF6AGvoOKfF614xvjzfC4Ua3inA
+ niCf3QODpI/Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="459369476"
+X-IronPort-AV: E=Sophos;i="5.82,277,1613462400"; d="scan'208";a="459369477"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 06 May 2021 08:50:35 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  6 May 2021 08:39:57 -0700
-Message-Id: <20210506154008.12880-2-anthony.l.nguyen@intel.com>
+Date: Thu,  6 May 2021 08:39:58 -0700
+Message-Id: <20210506154008.12880-3-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210506154008.12880-1-anthony.l.nguyen@intel.com>
 References: <20210506154008.12880-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S59 02/13] ice: add extack when unable to
- read device caps
+Subject: [Intel-wired-lan] [PATCH S59 03/13] ice: add error message when
+ pldmfw_flash_image fails
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,30 +73,59 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jacob Keller <jacob.e.keller@intel.com>
 
-When filling out information for the DEVLINK_CMD_INFO_GET, the driver
-needs to read some device capabilities. Add an extack message to
-properly inform the caller of the failure, as we do for other failures
-in this function.
+When flashing a new firmware image onto the device, the pldmfw library
+parses the image contents looking for a matching record. If no record
+can be found, the function reports an error of -ENOENT. This can produce
+a very confusing error message and experience for the user:
+
+  $devlink dev flash pci/0000:ab:00.0 file image.bin
+  devlink answers: No such file or directory
+
+This is because the ENOENT error code is interpreted as a missing file
+or directory. The pldmfw library does not have direct access to the
+extack pointer as it is generic and non-netdevice specific. The only way
+that ENOENT is returned by the pldmfw library is when no record matches.
+
+Catch this specific error and report a suitable extended ack message:
+
+  $devlink dev flash pci/0000:ab:00.0 file image.bin
+  Error: ice: Firmware image has no record matching this device
+  devlink answers: No such file or directory
+
+In addition, ensure that we log an error message to the console whenever
+this function fails. Because our driver specific PLDM operation
+functions potentially set the extended ACK message, avoid overwriting
+this with a generic message.
+
+This change should result in an improved experience when attempting to
+flash an image that does not have a compatible record.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_devlink.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_fw_update.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index ecefab6368f8..63a8718586b3 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -283,6 +283,9 @@ static int ice_devlink_info_get(struct devlink *devlink,
- 	/* discover capabilities first */
- 	status = ice_discover_dev_caps(hw, &ctx->dev_caps);
- 	if (status) {
-+		dev_dbg(dev, "Failed to discover device capabilities, status %s aq_err %s\n",
-+			ice_stat_str(status), ice_aq_str(hw->adminq.sq_last_status));
-+		NL_SET_ERR_MSG_MOD(extack, "Unable to discover device capabilities");
- 		err = -EIO;
- 		goto out_free_ctx;
+diff --git a/drivers/net/ethernet/intel/ice/ice_fw_update.c b/drivers/net/ethernet/intel/ice/ice_fw_update.c
+index dcec0360ce55..f8601d5b0b19 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fw_update.c
++++ b/drivers/net/ethernet/intel/ice/ice_fw_update.c
+@@ -702,6 +702,16 @@ int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
  	}
+ 
+ 	err = pldmfw_flash_image(&priv.context, fw);
++	if (err == -ENOENT) {
++		dev_err(dev, "Firmware image has no record matching this device\n");
++		NL_SET_ERR_MSG_MOD(extack, "Firmware image has no record matching this device");
++	} else if (err) {
++		/* Do not set a generic extended ACK message here. A more
++		 * specific message may already have been set by one of our
++		 * ops.
++		 */
++		dev_err(dev, "Failed to flash PLDM image, err %d", err);
++	}
+ 
+ 	ice_release_nvm(hw);
+ 
 -- 
 2.20.1
 
