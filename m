@@ -1,68 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F30A137777A
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 May 2021 18:03:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 338A4377A38
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 04:46:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6011840153;
-	Sun,  9 May 2021 16:03:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F16FF405E6;
+	Mon, 10 May 2021 02:46:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TQ6A6APVOOoJ; Sun,  9 May 2021 16:03:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5bHZfuHOwHYN; Mon, 10 May 2021 02:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 39B994014F;
-	Sun,  9 May 2021 16:03:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 779CC405E4;
+	Mon, 10 May 2021 02:46:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0653D1BF3E1
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 May 2021 16:02:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0EF0E1BF402
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E8C9883BA1
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 May 2021 16:02:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F159D4020F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EG9BSOyW_fBZ for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 May 2021 16:02:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DD14B83B9B
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 May 2021 16:02:57 +0000 (UTC)
-IronPort-SDR: Y5w0Wb0ReQf7z6P9ydlxI+hRBWsA7orIzeUWUI6DkOVNpuMjDB+szk7No87wHFgv4nuA2Kz3uT
- wC4qGnfGEI5A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9979"; a="284523166"
-X-IronPort-AV: E=Sophos;i="5.82,286,1613462400"; d="scan'208";a="284523166"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 May 2021 09:02:56 -0700
-IronPort-SDR: 4JNVOgTvcpa06LIRy1rMiVxFwO+gvDGWg19/1fEpTBI0W5D9vS/kYpIWXwc/3yAhZvUhof636H
- dbjORZuoZ8JQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,286,1613462400"; d="scan'208";a="460897375"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by FMSMGA003.fm.intel.com with ESMTP; 09 May 2021 09:02:52 -0700
-Date: Sun, 9 May 2021 17:50:33 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>
-Message-ID: <20210509155033.GB36905@ranger.igk.intel.com>
-References: <CAC1LvL1NHj6n+RNYRmja2YDhkcCwREuhjaBz_k255rU1jdO8Sw@mail.gmail.com>
- <CADS2XXpjasmJKP__oHsrvv3EG8n-FjB6sqHwgQfh7QgeJ8GrrQ@mail.gmail.com>
- <CAC1LvL2Q=s8pmwKAh2615fsTFEETKp96jpoLJS+75=0ztwuLFQ@mail.gmail.com>
- <CADS2XXptoyPTBObKgp3gcRZnWzoVyZrC26tDpLWhC9YrGMSefw@mail.gmail.com>
- <CAC1LvL2zmO1ntKeAoUMkJSarJBgxNhnTva3Di4047MTKqo8rPA@mail.gmail.com>
- <CAC1LvL1Kd-TCuPk0BEQyGvEiLzgUqkZHOKQNOUnxXSY6NjFMmw@mail.gmail.com>
- <20210505130128.00006720@intel.com>
- <20210505212157.GA63266@ranger.igk.intel.com>
- <87fsz0w3xn.fsf@toke.dk>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=natalenko.name
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZF7sUKlr9LzJ for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  8 May 2021 10:26:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from vulcan.natalenko.name (vulcan.natalenko.name [104.207.131.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 53CD340003
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:40 +0000 (UTC)
+Received: from localhost (unknown [151.237.229.131])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by vulcan.natalenko.name (Postfix) with ESMTPSA id 035B0A6D98D;
+ Sat,  8 May 2021 12:26:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
+ s=dkim-20170712; t=1620469591;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zLjmoZ8ttQhofZn3V8LsDPESwFpALm5tULY6M5XKZ3A=;
+ b=qcwjU+kf1DVXOPxq+EBvgywzag9EGWH0ifsVqWZMvsGdYrvWNd/JpfUL/BWok7UoxgPIFI
+ kcj5kaXoFqpdSghrNpyMTwfE9S0PI1W4fYPtZ7K069qNU/pxMR4guQ/apOH8E7PRXI3e2e
+ YPkiqGZIiXZM593eZ8FyBu+JpPekRNA=
+Date: Sat, 8 May 2021 12:26:30 +0200
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <20210508102630.rytwqgkn7ariwru6@spock.localdomain>
+References: <20210507023001.2621951-1-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <87fsz0w3xn.fsf@toke.dk>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] Dropped packets mapping IRQs for adjusted
- queue counts on i40e
+In-Reply-To: <20210507023001.2621951-1-jesse.brandeburg@intel.com>
+X-Mailman-Approved-At: Mon, 10 May 2021 02:46:11 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: fix netpoll exit with traffic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,126 +71,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Xdp <xdp-newbies@vger.kernel.org>, T K Sourabh <sourabhtk37@gmail.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- magnus.karlsson@intel.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Alexander Duyck <alexanderduyck@fb.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, May 06, 2021 at 12:29:40PM +0200, Toke H=F8iland-J=F8rgensen wrote:
-> Maciej Fijalkowski <maciej.fijalkowski@intel.com> writes:
-> =
-
-> > On Wed, May 05, 2021 at 01:01:28PM -0700, Jesse Brandeburg wrote:
-> >> Zvi Effron wrote:
-> >> =
-
-> >> > On Tue, May 4, 2021 at 4:07 PM Zvi Effron <zeffron@riotgames.com> wr=
-ote:
-> >> > > I'm suspecting it's something with how XDP_REDIRECT is implemented=
- in
-> >> > > the i40e driver, but I don't know if this is a) cross driver behav=
-ior,
-> >> > > b) expected behavior, or c) a bug.
-> >> > I think I've found the issue, and it appears to be specific to i40e
-> >> > (and maybe other drivers, too, but not XDP itself).
-> >> > =
-
-> >> > When performing the XDP xmit, i40e uses the smp_processor_id() to
-> >> > select the tx queue (see
-> >> > https://elixir.bootlin.com/linux/v5.12.1/source/drivers/net/ethernet=
-/intel/i40e/i40e_txrx.c#L3846).
-> >> > I'm not 100% clear on how the CPU is selected (since we don't use
-> >> > cores 0 and 1), we end up on a core whose id is higher than any
-> >> > available queue.
-> >> > =
-
-> >> > I'm going to try to modify our IRQ mappings to test this.
-> >> > =
-
-> >> > If I'm correct, this feels like a bug to me, since it requires a user
-> >> > to understand low level driver details to do IRQ remapping, which is=
- a
-> >> > bit higher level. But if it's intended, we'll just have to figure out
-> >> > how to work around this. (Unfortunately, using split tx and rx queues
-> >> > is not possible with i40e, so that easy solution is unavailable.)
-> >> > =
-
-> >> > --Zvi
-> >
-> > Hey Zvi, sorry for the lack of assistance, there has been statutory free
-> > time in Poland and today i'm in the birthday mode, but we managed to
-> > discuss the issue with Magnus and we feel like we could have a solution
-> > for that, more below.
-> >
-> >> =
-
-> >> =
-
-> >> It seems like for Intel drivers, igc, ixgbe, i40e, ice all have
-> >> this problem.
-> >> =
-
-> >> Notably, igb, fixes it like I would expect.
-> >
-> > igb is correct but I think that we would like to avoid the introduction=
- of
-> > locking for higher speed NICs in XDP data path.
-> >
-> > We talked with Magnus that for i40e and ice that have lots of HW
-> > resources, we could always create the xdp_rings array of num_online_cpu=
-s()
-> > size and use smp_processor_id() for accesses, regardless of the user's
-> > changes to queue count.
-> =
-
-> What is "lots"? Systems with hundreds of CPUs exist (and I seem to
-> recall an issue with just such a system on Intel hardware(?)). Also,
-> what if num_online_cpus() changes?
-
-"Lots" is 16k for ice. For i40e datasheet tells that it's only 1536 for
-whole device, so I back off from the statement that i40e has a lot of
-resources :)
-
-Also, s/num_online_cpus()/num_possible_cpus().
-
-> =
-
-> > This way the smp_processor_id() provides the serialization by itself as
-> > we're under napi on a given cpu, so there's no need for locking
-> > introduction - there is a per-cpu XDP ring provided. If we would stick =
-to
-> > the approach where you adjust the size of xdp_rings down to the shrinked
-> > Rx queue count and use a smp_processor_id() % vsi->num_queue_pairs form=
-ula
-> > then we could have a resource contention. Say that you did on a 16 core
-> > system:
-> > $ ethtool -L eth0 combined 2
-> >
-> > and then mapped the q0 to cpu1 and q1 to cpu 11. Both queues will grab =
-the
-> > xdp_rings[1], so we would have to introduce the locking.
-> >
-> > Proposed approach would just result with more Tx queues packed onto Tx
-> > ring container of queue vector.
-> >
-> > Thoughts? Any concerns? Should we have a 'fallback' mode if we would be
-> > out of queues?
-> =
-
-> Yes, please :)
-
-How to have a fallback (in drivers that need it) in a way that wouldn't
-hurt the scenario where queue per cpu requirement is satisfied?
-
-> =
-
-> -Toke
-> =
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGVsbG8uCgpPbiBUaHUsIE1heSAwNiwgMjAyMSBhdCAwNzozMDowMVBNIC0wNzAwLCBKZXNzZSBC
+cmFuZGVidXJnIHdyb3RlOgo+IE9sZWtzYW5kciBicm91Z2h0IGEgYnVnIHJlcG9ydCB3aGVyZSBu
+ZXRwb2xsIGNhdXNlcyB0cmFjZSBtZXNzYWdlcyBpbgo+IHRoZSBsb2cgb24gaWdiLgo+IAo+IFsy
+MjAzOC43MTA4MDBdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQo+IFsyMjAz
+OC43MTA4MDFdIGlnYl9wb2xsKzB4MC8weDE0NDAgW2lnYl0gZXhjZWVkZWQgYnVkZ2V0IGluIHBv
+bGwKPiBbMjIwMzguNzEwODAyXSBXQVJOSU5HOiBDUFU6IDEyIFBJRDogNDAzNjIgYXQgbmV0L2Nv
+cmUvbmV0cG9sbC5jOjE1NSBuZXRwb2xsX3BvbGxfZGV2KzB4MThhLzB4MWEwCj4gCj4gQWZ0ZXIg
+c29tZSBkaXNjdXNzaW9uIGFuZCBkZWJ1ZyBmcm9tIHRoZSBsaXN0LCBpdCB3YXMgZGVlbWVkIHRo
+YXQgdGhlCj4gcmlnaHQgdGhpbmcgdG8gZG8gaXMgaW5pdGlhbGl6ZSB0aGUgY2xlYW5fY29tcGxl
+dGUgdmFyaWFibGUgdG8gZmFsc2UKPiB3aGVuIHRoZSAibmV0cG9sbCBtb2RlIiBvZiBwYXNzaW5n
+IGEgemVybyBidWRnZXQgaXMgdXNlZC4KPiAKPiBUaGlzIGxvZ2ljIHNob3VsZCBiZSBzYW5lIGFu
+ZCBub3Qgcmlza3kgYmVjYXVzZSB0aGUgb25seSB0aW1lIGJ1ZGdldAo+IHNob3VsZCBiZSB6ZXJv
+IG9uIGVudHJ5IGlzIG5ldHBvbGwuICBDaGFuZ2UgaW5jbHVkZXMgYSBzbWFsbCByZWZhY3Rvcgo+
+IG9mIGxvY2FsIHZhcmlhYmxlIGFzc2lnbm1lbnRzIHRvIGNsZWFuIHVwIHRoZSBsb29rLgo+IAo+
+IEZpeGVzOiAxNmViODgxNWMyMzUgKCJpZ2I6IFJlZmFjdG9yIGNsZWFuX3J4X2lycSB0byByZWR1
+Y2Ugb3ZlcmhlYWQgYW5kIGltcHJvdmUgcGVyZm9ybWFuY2UiKQo+IFJlcG9ydGVkLWJ5OiBPbGVr
+c2FuZHIgTmF0YWxlbmtvIDxvbGVrc2FuZHJAbmF0YWxlbmtvLm5hbWU+Cj4gU3VnZ2VzdGVkLWJ5
+OiBBbGV4YW5kZXIgRHV5Y2sgPGFsZXhhbmRlci5kdXlja0BnbWFpbC5jb20+Cj4gU2lnbmVkLW9m
+Zi1ieTogSmVzc2UgQnJhbmRlYnVyZyA8amVzc2UuYnJhbmRlYnVyZ0BpbnRlbC5jb20+Cj4gUmV2
+aWV3ZWQtYnk6IEFsZXhhbmRlciBEdXljayA8YWxleGFuZGVyZHV5Y2tAZmIuY29tPgo+IC0tLQo+
+IAo+IENvbXBpbGUgdGVzdGVkIE9OTFksIGJ1dCBmdW5jdGlvbmFsbHkgaXQgc2hvdWxkIGJlIGV4
+YWN0bHkgdGhlIHNhbWUgZm9yCj4gYWxsIGNhc2VzIGV4Y2VwdCB3aGVuIGJ1ZGdldCBpcyB6ZXJv
+IG9uIGVudHJ5LCB3aGljaCB3aWxsIGhvcGVmdWxseSBmaXgKPiB0aGUgYnVnLgo+IAo+IFNlbmRp
+bmcgdGhpcyB0aHJvdWdoIGludGVsLXdpcmVkLWxhbiB3aXRoIEFsZXgncyBBQ0suCj4gLS0tCj4g
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jIHwgMTIgKysrKysrKyst
+LS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4g
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5j
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPiBpbmRleCAwY2Qz
+N2FkODFiNGUuLmIwYTliZWQxNDA3MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pZ2IvaWdiX21haW4uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2lnYi9pZ2JfbWFpbi5jCj4gQEAgLTc5OTEsMTIgKzc5OTEsMTYgQEAgc3RhdGljIHZvaWQgaWdi
+X3JpbmdfaXJxX2VuYWJsZShzdHJ1Y3QgaWdiX3FfdmVjdG9yICpxX3ZlY3RvcikKPiAgICoqLwo+
+ICBzdGF0aWMgaW50IGlnYl9wb2xsKHN0cnVjdCBuYXBpX3N0cnVjdCAqbmFwaSwgaW50IGJ1ZGdl
+dCkKPiAgewo+IC0Jc3RydWN0IGlnYl9xX3ZlY3RvciAqcV92ZWN0b3IgPSBjb250YWluZXJfb2Yo
+bmFwaSwKPiAtCQkJCQkJICAgICBzdHJ1Y3QgaWdiX3FfdmVjdG9yLAo+IC0JCQkJCQkgICAgIG5h
+cGkpOwo+IC0JYm9vbCBjbGVhbl9jb21wbGV0ZSA9IHRydWU7Cj4gKwlzdHJ1Y3QgaWdiX3FfdmVj
+dG9yICpxX3ZlY3RvcjsKPiArCWJvb2wgY2xlYW5fY29tcGxldGU7Cj4gIAlpbnQgd29ya19kb25l
+ID0gMDsKPiAgCj4gKwkvKiBpZiBidWRnZXQgaXMgemVybywgd2UgaGF2ZSBhIHNwZWNpYWwgY2Fz
+ZSBmb3IgbmV0Y29uc29sZSwgc28KPiArCSAqIG1ha2Ugc3VyZSB0byBzZXQgY2xlYW5fY29tcGxl
+dGUgdG8gZmFsc2UgaW4gdGhhdCBjYXNlLgo+ICsJICovCj4gKwljbGVhbl9jb21wbGV0ZSA9ICEh
+YnVkZ2V0Owo+ICsKPiArCXFfdmVjdG9yID0gY29udGFpbmVyX29mKG5hcGksIHN0cnVjdCBpZ2Jf
+cV92ZWN0b3IsIG5hcGkpOwo+ICAjaWZkZWYgQ09ORklHX0lHQl9EQ0EKPiAgCWlmIChxX3ZlY3Rv
+ci0+YWRhcHRlci0+ZmxhZ3MgJiBJR0JfRkxBR19EQ0FfRU5BQkxFRCkKPiAgCQlpZ2JfdXBkYXRl
+X2RjYShxX3ZlY3Rvcik7Cj4gLS0gCj4gMi4zMC4yCj4gCgpUaGlzIGRpZG4ndCBmaXggdGhlIGlz
+c3VlIG5laXRoZXIgZm9yIG1lLCBub3IgZm9yIGFub3RoZXIgcGVyc29uIGZyb20KdGhlIGtlcm5l
+bCBidWd6aWxsYSBbMV0uCgpUaGUgc2FtZSBwcmludG91dCBzdGlsbCBoYXBwZW5zOgoKYGBgCk1h
+eSAwNyAyMDoyNjo1NSBzcG9jayBrZXJuZWw6IGlnYl9wb2xsKzB4MC8weDE0NDAgW2lnYl0gZXhj
+ZWVkZWQgYnVkZ2V0IGluIHBvbGwKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogV0FSTklO
+RzogQ1BVOiAxMyBQSUQ6IDEyMjg1IGF0IG5ldC9jb3JlL25ldHBvbGwuYzoxNTQgbmV0cG9sbF9w
+b2xsX2RldisweDE4YS8weDFhMArigKYKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogQ2Fs
+bCBUcmFjZToKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIG5ldHBvbGxfc2VuZF9za2Ir
+MHgxYTAvMHgyNjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIHdyaXRlX21zZysweGU1
+LzB4MTAwIFtuZXRjb25zb2xlXQpNYXkgMDcgMjA6MjY6NTUgc3BvY2sga2VybmVsOiAgY29uc29s
+ZV91bmxvY2srMHg0MmYvMHg3MjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIHN1c3Bl
+bmRfZGV2aWNlc19hbmRfZW50ZXIrMHgyYWMvMHg3ZjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtl
+cm5lbDogIHBtX3N1c3BlbmQuY29sZCsweDMyMS8weDM2YwpNYXkgMDcgMjA6MjY6NTUgc3BvY2sg
+a2VybmVsOiAgc3RhdGVfc3RvcmUrMHhhNi8weDE0MApNYXkgMDcgMjA6MjY6NTUgc3BvY2sga2Vy
+bmVsOiAga2VybmZzX2ZvcF93cml0ZV9pdGVyKzB4MTI0LzB4MWIwCk1heSAwNyAyMDoyNjo1NSBz
+cG9jayBrZXJuZWw6ICBuZXdfc3luY193cml0ZSsweDE2YS8weDIwMApNYXkgMDcgMjA6MjY6NTUg
+c3BvY2sga2VybmVsOiAgdmZzX3dyaXRlKzB4MjIzLzB4MmUwCk1heSAwNyAyMDoyNjo1NSBzcG9j
+ayBrZXJuZWw6ICBfX3g2NF9zeXNfd3JpdGUrMHg2ZC8weGYwCmBgYAoKUHJvYmFibHksIHlvdXIg
+cGF0Y2ggaXMgc3RpbGwgZmluZSwgYnV0IGFub3RoZXIgaWRlYSBpcyBkZXNwZXJhdGVseQpuZWVk
+ZWQgOikuCgpUaGFua3MuCgpbMV0gaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVn
+LmNnaT9pZD0yMTI1NzMKCi0tIAogIE9sZWtzYW5kciBOYXRhbGVua28gKHBvc3QtZmFjdHVtKQpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
+ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
+dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
