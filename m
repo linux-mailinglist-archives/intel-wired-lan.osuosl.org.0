@@ -1,81 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9152D377F8F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 11:39:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FE4F377F90
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 11:39:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3B0CB607D6;
-	Mon, 10 May 2021 09:39:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 46E654061B;
+	Mon, 10 May 2021 09:39:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pVHujHC8qRTV; Mon, 10 May 2021 09:39:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Q2NG7R5V0JOF; Mon, 10 May 2021 09:39:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4D5116078A;
-	Mon, 10 May 2021 09:39:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 234AA4060D;
+	Mon, 10 May 2021 09:39:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0FC251BF316
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7536D1BF316
  for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 09:39:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F12E3607A7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 09:39:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5E73140452
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 09:39:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ImwNRbx7sJEk for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 May 2021 09:39:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ez9ypVaoTJNr for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 May 2021 09:39:25 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com
- [IPv6:2a00:1450:4864:20::332])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4366A6078A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 09:39:24 +0000 (UTC)
-Received: by mail-wm1-x332.google.com with SMTP id
- a10-20020a05600c068ab029014dcda1971aso8636346wmn.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 02:39:24 -0700 (PDT)
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
+ [IPv6:2a00:1450:4864:20::42a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 61ABC40618
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 09:39:25 +0000 (UTC)
+Received: by mail-wr1-x42a.google.com with SMTP id v12so15858859wrq.6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 02:39:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6+LTRB3VeUFqK10wpr4zxmf6+vUY37t/15OeIVQYx0c=;
- b=TzJR5KOFFl9YqEnH/MEwkVADy+gytZMw3a1UlDM1riIoHbLyRlQGfuK1g4Cz3NZWXx
- zOYeMiyNPxlBVQ9nLQsdtG6ePRAQ0cxBa+l+Pot50fyOrxnJhzlKZSCaGR6fZtcNUPQR
- 0zAwye4vRwnTq0xPeGJq/koVWlk2PEB9PiKS0NlMrJH3PEm/fX0zL6QK6j22D7v3Y/E/
- ZNmdbpWbpUNSNR4qIBkeE6B2W/FSIC/D55YP/j2jqqpT00neN7Fl9LUjKeG6oraBsGxB
- Qn61siwM9Fuu1+Z+77tI1x+n+yUgWKsNcIS8+ywH6Zw6P2YfkqSTTJ2Rt8eukxFcAI+k
- JV8Q==
+ bh=HZeUvAh+ikwDmY/Rpx/0dfPv/y2blsSGC/hug1HK8f4=;
+ b=g+hWkqeGFjepemAxYPKAzvNKEJDCNCvG6+KeEY70i3mWYBFfhAUc9hFQ4FoFGuKkEc
+ Nz+DIBzk2ttzCcpY+9TECzAZiuOJwnxcfC5lyaUoa6EEyZlrrdH3+y8inZ1LsZASZUxg
+ bUatE/X7murdSa3ED9EuWTREHTvKhDL4kpnRCdinw63fDyFiSdnam478ebOOEE7mouw6
+ 3LvZnwSQDoVJLwk38iN0iTgBhuHAAga+KMsLjFJAj9j3k3QwBUOsZK/U7eeu8tFP3JP0
+ eVWgukKJM0lQZqKScTzvIlCFUr13EPDD7JSbyvq1kR2Kj9x1pnRzqqvHg6lKOKzi9TR1
+ HcAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6+LTRB3VeUFqK10wpr4zxmf6+vUY37t/15OeIVQYx0c=;
- b=siJGReZoG1HT3d8FWbMQLgVdVjjG+H2JSVtKqi/eVw3A7lvs4eRC1f2VwOYFdKb2IF
- Kb9ub1OlcXZNyxB7eJ348OKpNv41qjgx0uxm/IU5/SuEvplPg9/niN3P9qV6Y7KH3znK
- F//euuFExWtC9XdBG0J1OjZTECo2H8LOksBG5TS5cPAMswSRi9Clrv8wZ2zMdmka1CQs
- FWSQ8qF+15USM1QZGklOz0f7YRWKX1b7Ny5f0q4HXXVAFxn3veOXfhF75nm+Ek0uV5Iq
- ysIlusFx5Mnxk3RijQZyydb/MeLUxYSh+SxQEJpgX07qjxpqSjofKdb0EuTFx9Ta3hnh
- xzCg==
-X-Gm-Message-State: AOAM531DtnYquM5gqwFZv6mkGBs596mmFJFWWlZsbMHqxfL+HfPsyqTi
- wvcJi++RAaJ5bVnY0A315VUCIwq8eTCBsA==
-X-Google-Smtp-Source: ABdhPJw4IDSVTCDH95Xq0Ef9vi4FdUcD02zRAsTdyPWRHyY6/xpHdSOZoI9y9/QzBQosRl5dYlOWsg==
-X-Received: by 2002:a1c:f705:: with SMTP id v5mr34937718wmh.69.1620639562547; 
- Mon, 10 May 2021 02:39:22 -0700 (PDT)
+ bh=HZeUvAh+ikwDmY/Rpx/0dfPv/y2blsSGC/hug1HK8f4=;
+ b=i72PDb8W2Jyb+UPTmofDvGhOIjHsES4szgQnx9YKxBUwLi6SFUJVe9uFaIAJmPNWOS
+ B6hBDfZ8crkwnS4+nhViV3bHiuubY1I5MT2M1UaeWp6BQfs2gRh8Dx0vIVRWnI9vQpOE
+ IVVIqO4XfVcja/r3EvtEFedSQJ2wS4HFCmTgo0vEkct2ByU3YthOIzOEZfMgVhOYj2OP
+ ClxG0MriydHR2oseJrmvMEVZboYI9ygViFNnLMF55X/jVlntvmBCprZyFXX1whDtEnRY
+ 9ajoOXCX9xqT0hdaIbX5g+n4X6M/0g0sTCOthIRT17JgzPNyRMe/VdH5y3PiNUzAIYRA
+ joSw==
+X-Gm-Message-State: AOAM533t7zQa6c0/AE+nMgRFKEUMCcOgEcX4xEWBWhPE7JIUtADhubmL
+ VYG+U4PQIvtsyJLrsP5Dhpg=
+X-Google-Smtp-Source: ABdhPJzfXM86VStYs4heIkT5ntqyyXLWNiqOsHG8TvgoNymz6mpUuml5xVSJJcN4Yt4d7S+LJ4At/g==
+X-Received: by 2002:a5d:608a:: with SMTP id w10mr29751980wrt.342.1620639563688; 
+ Mon, 10 May 2021 02:39:23 -0700 (PDT)
 Received: from localhost.localdomain (h-47-246.A165.priv.bahnhof.se.
  [46.59.47.246])
- by smtp.gmail.com with ESMTPSA id i2sm25892933wro.0.2021.05.10.02.39.21
+ by smtp.gmail.com with ESMTPSA id i2sm25892933wro.0.2021.05.10.02.39.22
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 10 May 2021 02:39:22 -0700 (PDT)
+ Mon, 10 May 2021 02:39:23 -0700 (PDT)
 From: Magnus Karlsson <magnus.karlsson@gmail.com>
 To: magnus.karlsson@intel.com, intel-wired-lan@lists.osuosl.org,
  anthony.l.nguyen@intel.com, maciej.fijalkowski@intel.com
-Date: Mon, 10 May 2021 11:38:53 +0200
-Message-Id: <20210510093854.31652-6-magnus.karlsson@gmail.com>
+Date: Mon, 10 May 2021 11:38:54 +0200
+Message-Id: <20210510093854.31652-7-magnus.karlsson@gmail.com>
 X-Mailer: git-send-email 2.29.0
 In-Reply-To: <20210510093854.31652-1-magnus.karlsson@gmail.com>
 References: <20210510093854.31652-1-magnus.karlsson@gmail.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH intel-net v2 5/6] ixgbevf: add correct
+Subject: [Intel-wired-lan] [PATCH intel-net v2 6/6] igc: add correct
  exception tracing for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -102,31 +101,43 @@ errors can occur. The support was only partial. Several errors
 where not logged which would confuse the user quite a lot not
 knowing where and why the packets disappeared.
 
-Fixes: 21092e9ce8b1 ("ixgbevf: Add support for XDP_TX action")
+Fixes: 73f1071c1d29 ("igc: Add support for XDP_TX action")
+Fixes: 4ff320361092 ("igc: Add support for XDP_REDIRECT action")
 Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
 Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/intel/igc/igc_main.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index ba2ed8a43d2d..0e733cc15c58 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -1067,11 +1067,14 @@ static struct sk_buff *ixgbevf_run_xdp(struct ixgbevf_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 069471b7ffb0..f1adf154ec4a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2047,20 +2047,19 @@ static struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
+ 		break;
  	case XDP_TX:
- 		xdp_ring = adapter->xdp_ring[rx_ring->queue_index];
- 		result = ixgbevf_xmit_xdp_ring(xdp_ring, xdp);
-+		if (result == IXGBEVF_XDP_CONSUMED)
+ 		if (igc_xdp_xmit_back(adapter, xdp) < 0)
+-			res = IGC_XDP_CONSUMED;
+-		else
+-			res = IGC_XDP_TX;
 +			goto out_failure;
++		res = IGC_XDP_TX;
+ 		break;
+ 	case XDP_REDIRECT:
+ 		if (xdp_do_redirect(adapter->netdev, xdp, prog) < 0)
+-			res = IGC_XDP_CONSUMED;
+-		else
+-			res = IGC_XDP_REDIRECT;
++			goto out_failure;
++		res = IGC_XDP_REDIRECT;
  		break;
  	default:
  		bpf_warn_invalid_xdp_action(act);
  		fallthrough;
  	case XDP_ABORTED:
 +out_failure:
- 		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
- 		fallthrough; /* handle aborts by dropping packet */
+ 		trace_xdp_exception(adapter->netdev, prog, act);
+ 		fallthrough;
  	case XDP_DROP:
 -- 
 2.29.0
