@@ -1,75 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AADAC377C11
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 08:06:18 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14D16377ECA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 10:57:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 33196401B5;
-	Mon, 10 May 2021 06:06:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 77A2560906;
+	Mon, 10 May 2021 08:57:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GdgI2QahJ1Jm; Mon, 10 May 2021 06:06:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3qXhJuJp8Qf4; Mon, 10 May 2021 08:57:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2F09040139;
-	Mon, 10 May 2021 06:06:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7680C6078A;
+	Mon, 10 May 2021 08:57:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7A87C1BF44A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 06:06:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A09C11BF423
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 08:57:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 74F4283BA2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 06:06:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9B9DA6078A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 08:57:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ey-VOKJ3D1Oa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 May 2021 06:06:10 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
- [IPv6:2607:f8b0:4864:20::52c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6B74783BA1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 06:06:10 +0000 (UTC)
-Received: by mail-pg1-x52c.google.com with SMTP id z16so12566816pga.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 09 May 2021 23:06:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MDrcpXE39hK+tsy+zeJ9NcnfUtXm+Fj2OZgopVYIL0c=;
- b=a4k8t596jRiGiHvZ3K9iDz5sTR7VxyAB6dhL5+66qQchlvRyybuzfPcEgu3mErhetO
- sRGV2scP9qoVnV7zobRdH8j4p2CAHFm5D7KizyW267aRqlRFEy7sYCcruH9+5zj5BH71
- Uip2ZkTlM/yMTiCmBxx4lGSDZqexb2VIFjdTCUwMoacrvhf1UjKS3wHQ5ZVHg6BeNmie
- Mllfq7Xh2Iom/Gc9rLPnnmJO305FxGiuPMktkhi66GJ3O8VHpdv5qNowLBtp2Fv4Z22T
- ThPHreJeAGQFbiLRxL0GZu7CfOqC6YrfjF53myFmJbWQzKKj5ir9AitBShFvMsKvTRNP
- jFOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MDrcpXE39hK+tsy+zeJ9NcnfUtXm+Fj2OZgopVYIL0c=;
- b=mJH4ozt19uv8JQ3XBQqpoe88ShsSr3kiaxuHNTZpul92e4ZUwN1EWAIk0fZKdi+axE
- z/WDnP11+omCpce/KIu2Ieh7hJA2labaXWBZHcWjrHUG9D04+ppptRw4H0aArh+wjvgK
- MO7x6WpxBwsMyd7kTNS02Y6bK/N73dwqFrfHIoRKaOXA02OLUp7H8qF6T2xrv/eV6xVe
- rB85oacZnZYtngIl+4THgPTg/ZSOH/D11Jx+lQ5MK6TFZB/+75U6oqXSO+38NCu9Colw
- LNfpSKooAIjlLwQ+fG7kHkv4AJqzh0X5RDBiKKlPnxL1X+gG+BSXgLUqULmkW/q9zNcI
- 0Pjg==
-X-Gm-Message-State: AOAM533uWKIMv1TSslE/ysh/WtoHQ2wdJCjbCNT4kGV3DoUWKrDW4hyl
- oBVlb9GGL7+TVlytJ63j0msugTaJ8aH29lJsZFQ=
-X-Google-Smtp-Source: ABdhPJyI5s8NZwfuKDpEZ8b6Fp2u5on+enRQ4oHGe86WgJBiFubYi63j4o4IlmRCWCnLfYIus4gTKeOu0wdd5AuRwMU=
-X-Received: by 2002:a62:1b97:0:b029:24e:44e9:a8c1 with SMTP id
- b145-20020a621b970000b029024e44e9a8c1mr24125765pfb.19.1620626769732; Sun, 09
- May 2021 23:06:09 -0700 (PDT)
-MIME-Version: 1.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UXg0EShQMSXn for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 May 2021 08:57:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8ECDF60703
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 May 2021 08:57:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620637064;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yZZqhl1lPZ55ZI62hYWzaYM8RnSN2emKsTAUPinh/Kg=;
+ b=IPJ1SSkpMw6SoC/dm1NvegSo5Gz9gFD60FiU4jcwrd/X3iGKhGNJ0GV3wjPUC8tDRUCCJa
+ lBdffRgybTP8812pKg9armR7s2Ug8qROgWROIlOJ73QMvPasCXJwjxkweDMeymyfI67Iqo
+ Sl5YLrRfe0JI6N/NZT1SqTze7Ai/WFc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-535-zET4am8tP2erlHUFmfIydg-1; Mon, 10 May 2021 04:57:40 -0400
+X-MC-Unique: zET4am8tP2erlHUFmfIydg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9740219251A1;
+ Mon, 10 May 2021 08:57:38 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 72EE35D765;
+ Mon, 10 May 2021 08:57:29 +0000 (UTC)
+Date: Mon, 10 May 2021 10:57:28 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Magnus Karlsson <magnus.karlsson@gmail.com>
+Message-ID: <20210510105728.2eac4666@carbon>
+In-Reply-To: <CAJ8uoz0Pgfn8kai34_MFGYv3m7c24bpo4DhjZ8oLgd4zaGMWsg@mail.gmail.com>
 References: <20210423100446.15412-1-magnus.karlsson@gmail.com>
  <75d0a1d13a755bc128458c0d43f16d54fe08051e.camel@intel.com>
-In-Reply-To: <75d0a1d13a755bc128458c0d43f16d54fe08051e.camel@intel.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Mon, 10 May 2021 08:06:00 +0200
-Message-ID: <CAJ8uoz0Pgfn8kai34_MFGYv3m7c24bpo4DhjZ8oLgd4zaGMWsg@mail.gmail.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+ <CAJ8uoz0Pgfn8kai34_MFGYv3m7c24bpo4DhjZ8oLgd4zaGMWsg@mail.gmail.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Subject: Re: [Intel-wired-lan] [PATCH intel-net 0/5] i40e: ice: ixgbe:
  ixgbevf: igb: add correct exception tracing for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -84,60 +79,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "brouer@redhat.com" <brouer@redhat.com>,
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Toke =?UTF-8?B?SMO4aWxhbmQtSsO4cmdlbnNlbg==?= <toke@redhat.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+ Kumar Kartikeya Dwivedi <memxor@gmail.com>, brouer@redhat.com, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, May 8, 2021 at 12:58 AM Nguyen, Anthony L
-<anthony.l.nguyen@intel.com> wrote:
->
-> On Fri, 2021-04-23 at 12:04 +0200, Magnus Karlsson wrote:
-> > Add missing exception tracing to XDP when a number of different
-> > errors
-> > can occur. The support was only partial. Several errors where not
-> > logged which would confuse the user quite a lot not knowing where and
-> > why the packets disappeared.
-> >
-> > This patch set fixes this for all Intel drivers with XDP support.
-> >
-> > Thanks: Magnus
->
-> This doesn't apply anymore with the 5.13 patches. It looks like your
-> "optimize for XDP_REDIRECT in xsk path" patches are conflicting with
-> some of these. Did you want to rework them?
+On Mon, 10 May 2021 08:06:00 +0200
+Magnus Karlsson <magnus.karlsson@gmail.com> wrote:
 
-I will rebase them and resubmit.
+> On Sat, May 8, 2021 at 12:58 AM Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com> wrote:
+> >
+> > On Fri, 2021-04-23 at 12:04 +0200, Magnus Karlsson wrote:  
+> > > Add missing exception tracing to XDP when a number of different errors
+> > > can occur. The support was only partial. Several errors where not
+> > > logged which would confuse the user quite a lot not knowing where and
+> > > why the packets disappeared.
+> > >
+> > > This patch set fixes this for all Intel drivers with XDP support.
+> > >
+> > > Thanks: Magnus  
+> >
+> > This doesn't apply anymore with the 5.13 patches. It looks like your
+> > "optimize for XDP_REDIRECT in xsk path" patches are conflicting with
+> > some of these. Did you want to rework them?  
+> 
+> I will rebase them and resubmit.
 
-> Thanks,
-> Tony
->
-> > Magnus Karlsson (5):
-> >   i40e: add correct exception tracing for XDP
-> >   ice: add correct exception tracing for XDP
-> >   ixgbe: add correct exception tracing for XDP
-> >   igb add correct exception tracing for XDP
-> >   ixgbevf: add correct exception tracing for XDP
-> >
-> >  drivers/net/ethernet/intel/i40e/i40e_txrx.c      |  7 ++++++-
-> >  drivers/net/ethernet/intel/i40e/i40e_xsk.c       |  7 ++++++-
-> >  drivers/net/ethernet/intel/ice/ice_txrx.c        | 12 +++++++++---
-> >  drivers/net/ethernet/intel/ice/ice_xsk.c         |  7 ++++++-
-> >  drivers/net/ethernet/intel/igb/igb_main.c        | 10 ++++++----
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    | 16 ++++++++----
-> > ----
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c     | 13 ++++++++-----
-> >  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c    |  3 +++
-> >  8 files changed, 52 insertions(+), 23 deletions(-)
-> >
-> >
-> > base-commit: bb556de79f0a9e647e8febe15786ee68483fa67b
-> > --
-> > 2.29.0
+Thanks for working on this Magnus, highly appreciated.  This should
+help end-users troubleshoot these kind of 'exception' packet drops.
+
+We have people that will look at updating the sample/bpf/ programs
+(that does XDP redirect) to report on these exception errors/drops.
+
+-- 
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
