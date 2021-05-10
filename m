@@ -2,63 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 338A4377A38
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 04:46:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B749F377B91
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 May 2021 07:36:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F16FF405E6;
-	Mon, 10 May 2021 02:46:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CACC0405BC;
+	Mon, 10 May 2021 05:36:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5bHZfuHOwHYN; Mon, 10 May 2021 02:46:16 +0000 (UTC)
+	with ESMTP id qxc4MPfqmZXT; Mon, 10 May 2021 05:36:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 779CC405E4;
-	Mon, 10 May 2021 02:46:16 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0EF0E1BF402
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4121E405A4;
+	Mon, 10 May 2021 05:36:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B57DD1BF471
+ for <intel-wired-lan@osuosl.org>; Mon, 10 May 2021 05:36:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F159D4020F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AFF97405A4
+ for <intel-wired-lan@osuosl.org>; Mon, 10 May 2021 05:36:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=natalenko.name
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZF7sUKlr9LzJ for <intel-wired-lan@lists.osuosl.org>;
- Sat,  8 May 2021 10:26:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from vulcan.natalenko.name (vulcan.natalenko.name [104.207.131.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 53CD340003
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 May 2021 10:26:40 +0000 (UTC)
-Received: from localhost (unknown [151.237.229.131])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by vulcan.natalenko.name (Postfix) with ESMTPSA id 035B0A6D98D;
- Sat,  8 May 2021 12:26:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
- s=dkim-20170712; t=1620469591;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zLjmoZ8ttQhofZn3V8LsDPESwFpALm5tULY6M5XKZ3A=;
- b=qcwjU+kf1DVXOPxq+EBvgywzag9EGWH0ifsVqWZMvsGdYrvWNd/JpfUL/BWok7UoxgPIFI
- kcj5kaXoFqpdSghrNpyMTwfE9S0PI1W4fYPtZ7K069qNU/pxMR4guQ/apOH8E7PRXI3e2e
- YPkiqGZIiXZM593eZ8FyBu+JpPekRNA=
-Date: Sat, 8 May 2021 12:26:30 +0200
-From: Oleksandr Natalenko <oleksandr@natalenko.name>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20210508102630.rytwqgkn7ariwru6@spock.localdomain>
-References: <20210507023001.2621951-1-jesse.brandeburg@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210507023001.2621951-1-jesse.brandeburg@intel.com>
-X-Mailman-Approved-At: Mon, 10 May 2021 02:46:11 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net] igb: fix netpoll exit with traffic
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oUKbFqlRvdue for <intel-wired-lan@osuosl.org>;
+ Mon, 10 May 2021 05:36:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0EA4D4053D
+ for <intel-wired-lan@osuosl.org>; Mon, 10 May 2021 05:36:32 +0000 (UTC)
+IronPort-SDR: 98L3Ob0vJG+S/zqdxxpymcrLpFwqDHZ9X43CfPggXtM/js8+KmeZT5sBL1GCHkcdpJeCcaB6Do
+ s1JBihfo/6xg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9979"; a="178705775"
+X-IronPort-AV: E=Sophos;i="5.82,286,1613462400"; d="scan'208";a="178705775"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 May 2021 22:36:30 -0700
+IronPort-SDR: drzFL/WRu0L8mmO2XXErzmvD9miVp581ExJse4COQCjOGF5w1LgQRKF7YiwEi6bVu9McicuOAh
+ +/zo5a5IEYFA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,286,1613462400"; d="scan'208";a="470669585"
+Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.114])
+ by orsmga001.jf.intel.com with ESMTP; 09 May 2021 22:36:28 -0700
+From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Mon, 10 May 2021 13:36:12 +0800
+Message-Id: <20210510053612.14163-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH v1] igc: Enable HW VLAN Insertion and HW
+ VLAN Stripping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,77 +63,249 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexander Duyck <alexanderduyck@fb.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: muhammad.husaini.zulkifli@intel.com, mallikarjuna.chilakala@intel.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGVsbG8uCgpPbiBUaHUsIE1heSAwNiwgMjAyMSBhdCAwNzozMDowMVBNIC0wNzAwLCBKZXNzZSBC
-cmFuZGVidXJnIHdyb3RlOgo+IE9sZWtzYW5kciBicm91Z2h0IGEgYnVnIHJlcG9ydCB3aGVyZSBu
-ZXRwb2xsIGNhdXNlcyB0cmFjZSBtZXNzYWdlcyBpbgo+IHRoZSBsb2cgb24gaWdiLgo+IAo+IFsy
-MjAzOC43MTA4MDBdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQo+IFsyMjAz
-OC43MTA4MDFdIGlnYl9wb2xsKzB4MC8weDE0NDAgW2lnYl0gZXhjZWVkZWQgYnVkZ2V0IGluIHBv
-bGwKPiBbMjIwMzguNzEwODAyXSBXQVJOSU5HOiBDUFU6IDEyIFBJRDogNDAzNjIgYXQgbmV0L2Nv
-cmUvbmV0cG9sbC5jOjE1NSBuZXRwb2xsX3BvbGxfZGV2KzB4MThhLzB4MWEwCj4gCj4gQWZ0ZXIg
-c29tZSBkaXNjdXNzaW9uIGFuZCBkZWJ1ZyBmcm9tIHRoZSBsaXN0LCBpdCB3YXMgZGVlbWVkIHRo
-YXQgdGhlCj4gcmlnaHQgdGhpbmcgdG8gZG8gaXMgaW5pdGlhbGl6ZSB0aGUgY2xlYW5fY29tcGxl
-dGUgdmFyaWFibGUgdG8gZmFsc2UKPiB3aGVuIHRoZSAibmV0cG9sbCBtb2RlIiBvZiBwYXNzaW5n
-IGEgemVybyBidWRnZXQgaXMgdXNlZC4KPiAKPiBUaGlzIGxvZ2ljIHNob3VsZCBiZSBzYW5lIGFu
-ZCBub3Qgcmlza3kgYmVjYXVzZSB0aGUgb25seSB0aW1lIGJ1ZGdldAo+IHNob3VsZCBiZSB6ZXJv
-IG9uIGVudHJ5IGlzIG5ldHBvbGwuICBDaGFuZ2UgaW5jbHVkZXMgYSBzbWFsbCByZWZhY3Rvcgo+
-IG9mIGxvY2FsIHZhcmlhYmxlIGFzc2lnbm1lbnRzIHRvIGNsZWFuIHVwIHRoZSBsb29rLgo+IAo+
-IEZpeGVzOiAxNmViODgxNWMyMzUgKCJpZ2I6IFJlZmFjdG9yIGNsZWFuX3J4X2lycSB0byByZWR1
-Y2Ugb3ZlcmhlYWQgYW5kIGltcHJvdmUgcGVyZm9ybWFuY2UiKQo+IFJlcG9ydGVkLWJ5OiBPbGVr
-c2FuZHIgTmF0YWxlbmtvIDxvbGVrc2FuZHJAbmF0YWxlbmtvLm5hbWU+Cj4gU3VnZ2VzdGVkLWJ5
-OiBBbGV4YW5kZXIgRHV5Y2sgPGFsZXhhbmRlci5kdXlja0BnbWFpbC5jb20+Cj4gU2lnbmVkLW9m
-Zi1ieTogSmVzc2UgQnJhbmRlYnVyZyA8amVzc2UuYnJhbmRlYnVyZ0BpbnRlbC5jb20+Cj4gUmV2
-aWV3ZWQtYnk6IEFsZXhhbmRlciBEdXljayA8YWxleGFuZGVyZHV5Y2tAZmIuY29tPgo+IC0tLQo+
-IAo+IENvbXBpbGUgdGVzdGVkIE9OTFksIGJ1dCBmdW5jdGlvbmFsbHkgaXQgc2hvdWxkIGJlIGV4
-YWN0bHkgdGhlIHNhbWUgZm9yCj4gYWxsIGNhc2VzIGV4Y2VwdCB3aGVuIGJ1ZGdldCBpcyB6ZXJv
-IG9uIGVudHJ5LCB3aGljaCB3aWxsIGhvcGVmdWxseSBmaXgKPiB0aGUgYnVnLgo+IAo+IFNlbmRp
-bmcgdGhpcyB0aHJvdWdoIGludGVsLXdpcmVkLWxhbiB3aXRoIEFsZXgncyBBQ0suCj4gLS0tCj4g
-IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jIHwgMTIgKysrKysrKyst
-LS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4g
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5j
-IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPiBpbmRleCAwY2Qz
-N2FkODFiNGUuLmIwYTliZWQxNDA3MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pZ2IvaWdiX21haW4uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2lnYi9pZ2JfbWFpbi5jCj4gQEAgLTc5OTEsMTIgKzc5OTEsMTYgQEAgc3RhdGljIHZvaWQgaWdi
-X3JpbmdfaXJxX2VuYWJsZShzdHJ1Y3QgaWdiX3FfdmVjdG9yICpxX3ZlY3RvcikKPiAgICoqLwo+
-ICBzdGF0aWMgaW50IGlnYl9wb2xsKHN0cnVjdCBuYXBpX3N0cnVjdCAqbmFwaSwgaW50IGJ1ZGdl
-dCkKPiAgewo+IC0Jc3RydWN0IGlnYl9xX3ZlY3RvciAqcV92ZWN0b3IgPSBjb250YWluZXJfb2Yo
-bmFwaSwKPiAtCQkJCQkJICAgICBzdHJ1Y3QgaWdiX3FfdmVjdG9yLAo+IC0JCQkJCQkgICAgIG5h
-cGkpOwo+IC0JYm9vbCBjbGVhbl9jb21wbGV0ZSA9IHRydWU7Cj4gKwlzdHJ1Y3QgaWdiX3FfdmVj
-dG9yICpxX3ZlY3RvcjsKPiArCWJvb2wgY2xlYW5fY29tcGxldGU7Cj4gIAlpbnQgd29ya19kb25l
-ID0gMDsKPiAgCj4gKwkvKiBpZiBidWRnZXQgaXMgemVybywgd2UgaGF2ZSBhIHNwZWNpYWwgY2Fz
-ZSBmb3IgbmV0Y29uc29sZSwgc28KPiArCSAqIG1ha2Ugc3VyZSB0byBzZXQgY2xlYW5fY29tcGxl
-dGUgdG8gZmFsc2UgaW4gdGhhdCBjYXNlLgo+ICsJICovCj4gKwljbGVhbl9jb21wbGV0ZSA9ICEh
-YnVkZ2V0Owo+ICsKPiArCXFfdmVjdG9yID0gY29udGFpbmVyX29mKG5hcGksIHN0cnVjdCBpZ2Jf
-cV92ZWN0b3IsIG5hcGkpOwo+ICAjaWZkZWYgQ09ORklHX0lHQl9EQ0EKPiAgCWlmIChxX3ZlY3Rv
-ci0+YWRhcHRlci0+ZmxhZ3MgJiBJR0JfRkxBR19EQ0FfRU5BQkxFRCkKPiAgCQlpZ2JfdXBkYXRl
-X2RjYShxX3ZlY3Rvcik7Cj4gLS0gCj4gMi4zMC4yCj4gCgpUaGlzIGRpZG4ndCBmaXggdGhlIGlz
-c3VlIG5laXRoZXIgZm9yIG1lLCBub3IgZm9yIGFub3RoZXIgcGVyc29uIGZyb20KdGhlIGtlcm5l
-bCBidWd6aWxsYSBbMV0uCgpUaGUgc2FtZSBwcmludG91dCBzdGlsbCBoYXBwZW5zOgoKYGBgCk1h
-eSAwNyAyMDoyNjo1NSBzcG9jayBrZXJuZWw6IGlnYl9wb2xsKzB4MC8weDE0NDAgW2lnYl0gZXhj
-ZWVkZWQgYnVkZ2V0IGluIHBvbGwKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogV0FSTklO
-RzogQ1BVOiAxMyBQSUQ6IDEyMjg1IGF0IG5ldC9jb3JlL25ldHBvbGwuYzoxNTQgbmV0cG9sbF9w
-b2xsX2RldisweDE4YS8weDFhMArigKYKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogQ2Fs
-bCBUcmFjZToKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIG5ldHBvbGxfc2VuZF9za2Ir
-MHgxYTAvMHgyNjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIHdyaXRlX21zZysweGU1
-LzB4MTAwIFtuZXRjb25zb2xlXQpNYXkgMDcgMjA6MjY6NTUgc3BvY2sga2VybmVsOiAgY29uc29s
-ZV91bmxvY2srMHg0MmYvMHg3MjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtlcm5lbDogIHN1c3Bl
-bmRfZGV2aWNlc19hbmRfZW50ZXIrMHgyYWMvMHg3ZjAKTWF5IDA3IDIwOjI2OjU1IHNwb2NrIGtl
-cm5lbDogIHBtX3N1c3BlbmQuY29sZCsweDMyMS8weDM2YwpNYXkgMDcgMjA6MjY6NTUgc3BvY2sg
-a2VybmVsOiAgc3RhdGVfc3RvcmUrMHhhNi8weDE0MApNYXkgMDcgMjA6MjY6NTUgc3BvY2sga2Vy
-bmVsOiAga2VybmZzX2ZvcF93cml0ZV9pdGVyKzB4MTI0LzB4MWIwCk1heSAwNyAyMDoyNjo1NSBz
-cG9jayBrZXJuZWw6ICBuZXdfc3luY193cml0ZSsweDE2YS8weDIwMApNYXkgMDcgMjA6MjY6NTUg
-c3BvY2sga2VybmVsOiAgdmZzX3dyaXRlKzB4MjIzLzB4MmUwCk1heSAwNyAyMDoyNjo1NSBzcG9j
-ayBrZXJuZWw6ICBfX3g2NF9zeXNfd3JpdGUrMHg2ZC8weGYwCmBgYAoKUHJvYmFibHksIHlvdXIg
-cGF0Y2ggaXMgc3RpbGwgZmluZSwgYnV0IGFub3RoZXIgaWRlYSBpcyBkZXNwZXJhdGVseQpuZWVk
-ZWQgOikuCgpUaGFua3MuCgpbMV0gaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVn
-LmNnaT9pZD0yMTI1NzMKCi0tIAogIE9sZWtzYW5kciBOYXRhbGVua28gKHBvc3QtZmFjdHVtKQpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
-ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
-dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Add HW VLAN acceleration protocol handling. In case of HW VLAN tagging,
+we need that protocol available in the ndo_start_xmit(), so that it will be
+stored in a new fields in the skb.
+
+HW offloading is set to OFF by default.
+Users are allow to turn on/off rx/tx HW vlan acceleration via ethtool.
+
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h         |  1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  5 ++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 73 +++++++++++++++++++-
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  1 +
+ 4 files changed, 78 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index b6d3277c6f52..9e0bbb2e55e3 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -372,6 +372,7 @@ extern char igc_driver_name[];
+ 
+ /* VLAN info */
+ #define IGC_TX_FLAGS_VLAN_MASK	0xffff0000
++#define IGC_TX_FLAGS_VLAN_SHIFT	16
+ 
+ /* igc_test_staterr - tests bits within Rx descriptor status and error fields */
+ static inline __le32 igc_test_staterr(union igc_adv_rx_desc *rx_desc,
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 7cc48321bb70..8f6ba2b8d9e6 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -94,6 +94,7 @@
+ #define IGC_CTRL_SLU		0x00000040  /* Set link up (Force Link) */
+ #define IGC_CTRL_FRCSPD		0x00000800  /* Force Speed */
+ #define IGC_CTRL_FRCDPX		0x00001000  /* Force Duplex */
++#define IGC_CTRL_VME		0x40000000  /* IEEE VLAN mode enable */
+ 
+ #define IGC_CTRL_RFCE		0x08000000  /* Receive Flow Control enable */
+ #define IGC_CTRL_TFCE		0x10000000  /* Transmit flow control enable */
+@@ -187,6 +188,7 @@
+ #define IGC_STATUS_SPEED_100	0x00000040      /* Speed 100Mb/s */
+ #define IGC_STATUS_SPEED_1000	0x00000080      /* Speed 1000Mb/s */
+ #define IGC_STATUS_SPEED_2500	0x00400000	/* Speed 2.5Gb/s */
++#define IGC_STATUS_VME		0x40000000	/* IEEE VLAN mode enable */
+ 
+ #define SPEED_10		10
+ #define SPEED_100		100
+@@ -322,6 +324,9 @@
+ #define IGC_RXD_STAT_IXSM	0x04	/* Ignore checksum */
+ #define IGC_RXD_STAT_UDPCS	0x10	/* UDP xsum calculated */
+ #define IGC_RXD_STAT_TCPCS	0x20	/* TCP xsum calculated */
++#define IGC_RXD_STAT_VP		0x08	/* IEEE VLAN Packet */
++
++#define IGC_RXDEXT_STATERR_LB	0x00040000
+ 
+ /* Advanced Receive Descriptor bit definitions */
+ #define IGC_RXDADV_STAT_TSIP	0x08000 /* timestamp in packet */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 5d1617961adb..e4a82606dd1c 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -111,6 +111,9 @@ void igc_reset(struct igc_adapter *adapter)
+ 	if (!netif_running(adapter->netdev))
+ 		igc_power_down_phy_copper_base(&adapter->hw);
+ 
++	/* Enable H/W to recognize an 802.1Q VLAN Ethernet packet */
++	wr32(IGC_VET, ETH_P_8021Q);
++
+ 	/* Re-enable PTP, where applicable. */
+ 	igc_ptp_reset(adapter);
+ 
+@@ -1123,13 +1126,17 @@ static inline int igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
+ 	 ((u32)((_input) & (_flag)) * ((_result) / (_flag))) :	\
+ 	 ((u32)((_input) & (_flag)) / ((_flag) / (_result))))
+ 
+-static u32 igc_tx_cmd_type(u32 tx_flags)
++static u32 igc_tx_cmd_type(struct sk_buff *skb, u32 tx_flags)
+ {
+ 	/* set type for advanced descriptor with frame checksum insertion */
+ 	u32 cmd_type = IGC_ADVTXD_DTYP_DATA |
+ 		       IGC_ADVTXD_DCMD_DEXT |
+ 		       IGC_ADVTXD_DCMD_IFCS;
+ 
++	/* set HW vlan bit if vlan is present */
++	cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_VLAN,
++				 (IGC_ADVTXD_DCMD_VLE));
++
+ 	/* set segmentation bits for TSO */
+ 	cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSO,
+ 				 (IGC_ADVTXD_DCMD_TSE));
+@@ -1138,6 +1145,9 @@ static u32 igc_tx_cmd_type(u32 tx_flags)
+ 	cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSTAMP,
+ 				 (IGC_ADVTXD_MAC_TSTAMP));
+ 
++	/* insert frame checksum */
++	cmd_type ^= IGC_SET_FLAG(skb->no_fcs, 1, IGC_ADVTXD_DCMD_IFCS);
++
+ 	return cmd_type;
+ }
+ 
+@@ -1172,7 +1182,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 	u16 i = tx_ring->next_to_use;
+ 	unsigned int data_len, size;
+ 	dma_addr_t dma;
+-	u32 cmd_type = igc_tx_cmd_type(tx_flags);
++	u32 cmd_type = igc_tx_cmd_type(skb, tx_flags);
+ 
+ 	tx_desc = IGC_TX_DESC(tx_ring, i);
+ 
+@@ -1445,6 +1455,11 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 		}
+ 	}
+ 
++	if (skb_vlan_tag_present(skb)) {
++		tx_flags |= IGC_TX_FLAGS_VLAN;
++		tx_flags |= (skb_vlan_tag_get(skb) << IGC_TX_FLAGS_VLAN_SHIFT);
++	}
++
+ 	/* record initial flags and protocol */
+ 	first->tx_flags = tx_flags;
+ 	first->protocol = protocol;
+@@ -1544,6 +1559,25 @@ static inline void igc_rx_hash(struct igc_ring *ring,
+ 			     PKT_HASH_TYPE_L3);
+ }
+ 
++static void igc_rx_vlan(struct igc_ring *rx_ring,
++			union igc_adv_rx_desc *rx_desc,
++			struct sk_buff *skb)
++{
++	struct net_device *dev = rx_ring->netdev;
++	u16 vid;
++
++	if ((dev->features & NETIF_F_HW_VLAN_CTAG_RX) &&
++	    igc_test_staterr(rx_desc, IGC_RXD_STAT_VP)) {
++		if (igc_test_staterr(rx_desc, IGC_RXDEXT_STATERR_LB) &&
++		    test_bit(IGC_RING_FLAG_RX_LB_VLAN_BSWAP, &rx_ring->flags))
++			vid = be16_to_cpu(rx_desc->wb.upper.vlan);
++		else
++			vid = le16_to_cpu(rx_desc->wb.upper.vlan);
++
++		__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q), vid);
++	}
++}
++
+ /**
+  * igc_process_skb_fields - Populate skb header fields from Rx descriptor
+  * @rx_ring: rx descriptor ring packet is being transacted on
+@@ -1562,11 +1596,37 @@ static void igc_process_skb_fields(struct igc_ring *rx_ring,
+ 
+ 	igc_rx_checksum(rx_ring, rx_desc, skb);
+ 
++	igc_rx_vlan(rx_ring, rx_desc, skb);
++
+ 	skb_record_rx_queue(skb, rx_ring->queue_index);
+ 
+ 	skb->protocol = eth_type_trans(skb, rx_ring->netdev);
+ }
+ 
++static void igc_vlan_mode(struct net_device *netdev, netdev_features_t features)
++{
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	struct igc_hw *hw = &adapter->hw;
++	u32 ctrl;
++	bool enable = !!(features & NETIF_F_HW_VLAN_CTAG_RX);
++
++	ctrl = rd32(IGC_CTRL);
++
++	if (enable) {
++		/* enable VLAN tag insert/strip */
++		ctrl |= IGC_CTRL_VME;
++	} else {
++		/* disable VLAN tag insert/strip */
++		ctrl &= ~IGC_CTRL_VME;
++	}
++	wr32(IGC_CTRL, ctrl);
++}
++
++static void igc_restore_vlan(struct igc_adapter *adapter)
++{
++	igc_vlan_mode(adapter->netdev, adapter->netdev->features);
++}
++
+ static struct igc_rx_buffer *igc_get_rx_buffer(struct igc_ring *rx_ring,
+ 					       const unsigned int size,
+ 					       int *rx_buffer_pgcnt)
+@@ -3254,6 +3314,8 @@ static void igc_configure(struct igc_adapter *adapter)
+ 	igc_get_hw_control(adapter);
+ 	igc_set_rx_mode(netdev);
+ 
++	igc_restore_vlan(adapter);
++
+ 	igc_setup_tctl(adapter);
+ 	igc_setup_mrqc(adapter);
+ 	igc_setup_rctl(adapter);
+@@ -4553,6 +4615,9 @@ static int igc_set_features(struct net_device *netdev,
+ 	netdev_features_t changed = netdev->features ^ features;
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 
++	if (changed & NETIF_F_HW_VLAN_CTAG_RX)
++		igc_vlan_mode(netdev, features);
++
+ 	/* Add VLAN support */
+ 	if (!(changed & (NETIF_F_RXALL | NETIF_F_NTUPLE)))
+ 		return 0;
+@@ -5882,11 +5947,15 @@ static int igc_probe(struct pci_dev *pdev,
+ 
+ 	/* copy netdev features into list of user selectable features */
+ 	netdev->hw_features |= NETIF_F_NTUPLE;
++	netdev->hw_features |= NETIF_F_HW_VLAN_CTAG_TX;
++	netdev->hw_features |= NETIF_F_HW_VLAN_CTAG_RX;
+ 	netdev->hw_features |= netdev->features;
+ 
+ 	if (pci_using_dac)
+ 		netdev->features |= NETIF_F_HIGHDMA;
+ 
++	netdev->vlan_features |= netdev->features;
++
+ 	/* MTU range: 68 - 9216 */
+ 	netdev->min_mtu = ETH_MIN_MTU;
+ 	netdev->max_mtu = MAX_STD_JUMBO_FRAME_SIZE;
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 2491d565d758..0f82990567d9 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -11,6 +11,7 @@
+ #define IGC_CTRL_EXT		0x00018  /* Extended Device Control - RW */
+ #define IGC_MDIC		0x00020  /* MDI Control - RW */
+ #define IGC_CONNSW		0x00034  /* Copper/Fiber switch control - RW */
++#define IGC_VET			0x00038  /* VLAN Ether Type - RW */
+ #define IGC_I225_PHPM		0x00E14  /* I225 PHY Power Management */
+ #define IGC_GPHY_VERSION	0x0001E  /* I225 gPHY Firmware Version */
+ 
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
