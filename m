@@ -1,61 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DBCA37AC98
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 19:01:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 852D937AD07
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 19:23:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 922C283C69;
-	Tue, 11 May 2021 17:01:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0331E842EC;
+	Tue, 11 May 2021 17:23:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TFVbXjKkZFcQ; Tue, 11 May 2021 17:01:34 +0000 (UTC)
+	with ESMTP id gtmepE07gt0i; Tue, 11 May 2021 17:23:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 88F7083C46;
-	Tue, 11 May 2021 17:01:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 00DAB8428B;
+	Tue, 11 May 2021 17:23:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C72D11BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5B8D21C1135
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:23:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B568883C46
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 49A828428B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:23:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xr5NDSz8nR33 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 May 2021 17:01:28 +0000 (UTC)
+ with ESMTP id deZp9FgorONp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 May 2021 17:23:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ms.lwn.net (ms.lwn.net [IPv6:2600:3c01:e000:3a1::42])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DDB7883C3D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:28 +0000 (UTC)
-Received: from localhost (unknown
- [IPv6:2601:281:8300:104d:444a:d152:279d:1dbb])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ms.lwn.net (Postfix) with ESMTPSA id 6C8034BF;
- Tue, 11 May 2021 17:01:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 6C8034BF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
- t=1620752487; bh=QmVYJvT1Kzq68R+QLKACGPLdolv6eNZVx9knetb0KFs=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=irQf+xtmaDJZYLKwq3hA8ztA2UhPkWaMvlGfMCect35HeamgThOzqqCroC26BP/Sl
- CZ5fyVVCGLDX5hEb0cnVXCWNegwA+Xs245fqJaayhz/QOZsSyLbOEm6eAcMMVYm6OY
- KYssjOyi8tvqVhDlU9yQOg3yj6ggq5zhGjo6YGvleqEvR4QvYakpL6DYodSr6ne5p2
- POLXDUg/aNRvtMVVTSEj+i7YB0HcWdlIM/5xZz2XEUDjPiyFKgjrJG+D5PIfW0A/ku
- jf3zV8C5QT23k16fFmU0Sd0ej651gdEPXtb2eRRgDOFPAPrnQiy6aPBFrlggpfHlaH
- YTUqF86upi5qg==
-From: Jonathan Corbet <corbet@lwn.net>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Linux Doc Mailing
- List <linux-doc@vger.kernel.org>
-In-Reply-To: <cover.1620744606.git.mchehab+huawei@kernel.org>
+Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7615E84284
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:23:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Ku5o60Uda8ZBIzKz23zeLhUSNmtSK2p64+IzFDQCsXE=; b=dMLtNLFZrTo+mfkJIAn6TGzGvt
+ E0nX+PEqBjjPXElMrcB216WzYo5nT8Cz179AyVOlatWlbrRhCc+YpoCPJK7J9BcsjPh7TeVfUoxFW
+ ZzZUAPbOy2Y1dc+hFavdGEnOo6BW+jNIEiUjDCl89UCY3tmqIeoE+thU0j2cIFDuLk4M=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1lgW5p-003nl3-SY; Tue, 11 May 2021 19:22:49 +0200
+Date: Tue, 11 May 2021 19:22:49 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Message-ID: <YJq9abOeuBla3Jiw@lunn.ch>
 References: <cover.1620744606.git.mchehab+huawei@kernel.org>
-Date: Tue, 11 May 2021 11:01:26 -0600
-Message-ID: <87fsytdx21.fsf@meer.lwn.net>
+ <95eb2a48d0ca3528780ce0dfce64359977fa8cb3.1620744606.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 0/5] Fix some UTF-8 bad usages
+Content-Disposition: inline
+In-Reply-To: <95eb2a48d0ca3528780ce0dfce64359977fa8cb3.1620744606.git.mchehab+huawei@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH 5/5] docs: networking: device_drivers:
+ fix bad usage of UTF-8 chars
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,67 +66,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-hwmon@vger.kernel.org,
- Jean Delvare <jdelvare@suse.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
-
-> This series follow up this past series:
-> 	https://lore.kernel.org/lkml/cover.1620641727.git.mchehab+huawei@kernel.org/
->
-> Containing just the manual fixes from it. I'll respin the remaining
-> patches on a separate series.
->
-> Please note that patches 1 to 3 are identical to the ones posted
-> on the original series.
->
-> Patch 1 is special: it fixes some left-overs from a convertion
-> from cdrom-standard.tex: there, some characters that are
-> valid in C were converted to some visually similar UTF-8 by LaTeX.
->
-> Patch 2 remove U+00ac (''): NOT SIGN characters at the end of
-> the first line of two files. No idea why those ended being there :-p
->
-> Patch 3 replaces:
-> 	KernelVersion:3.3
-> by:
-> 	KernelVersion:	3.3
->
-> which is the expected format for the KernelVersion field;
->
-> Patches 4 and 5 fix some bad usages of EM DASH/EN DASH on
-> places that it should be, instead, a normal hyphen. I suspect
-> that they ended being there due to the usage of some conversion
-> toolset.
->
-> Mauro Carvalho Chehab (5):
->   docs: cdrom-standard.rst: get rid of uneeded UTF-8 chars
->   docs: ABI: remove a meaningless UTF-8 character
->   docs: ABI: remove some spurious characters
->   docs: hwmon: tmp103.rst: fix bad usage of UTF-8 chars
->   docs: networking: device_drivers: fix bad usage of UTF-8 chars
->
->  .../obsolete/sysfs-kernel-fadump_registered   |  2 +-
->  .../obsolete/sysfs-kernel-fadump_release_mem  |  2 +-
->  Documentation/ABI/testing/sysfs-module        |  4 +--
->  Documentation/cdrom/cdrom-standard.rst        | 30 +++++++++----------
->  Documentation/hwmon/tmp103.rst                |  4 +--
->  .../device_drivers/ethernet/intel/i40e.rst    |  4 +--
->  .../device_drivers/ethernet/intel/iavf.rst    |  2 +-
->  7 files changed, 24 insertions(+), 24 deletions(-)
-
-These seem pretty straightforward; I've applied the set, thanks.
-
-jon
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiAtbW9uaXRvcmluZyB0b29scyBzdWNoIGFzIGlmc3RhdCBvciBzYXIg4oCTbiBERVYgW2ludGVy
+dmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdCj4gK21vbml0b3JpbmcgdG9vbHMgc3VjaCBhcyBgaWZz
+dGF0YCBvciBgc2FyIC1uIERFViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2FtcGxlc11gCgouLi4K
+Cj4gIEZvciBleGFtcGxlOiBtaW5fcmF0ZSAxR2JpdCAzR2JpdDogVmVyaWZ5IGJhbmR3aWR0aCBs
+aW1pdCB1c2luZyBuZXR3b3JrCj4gLW1vbml0b3JpbmcgdG9vbHMgc3VjaCBhcyBpZnN0YXQgb3Ig
+c2FyIOKAk24gREVWIFtpbnRlcnZhbF0gW251bWJlciBvZiBzYW1wbGVzXQo+ICttb25pdG9yaW5n
+IHRvb2xzIHN1Y2ggYXMgYGBpZnN0YXRgYCBvciBgYHNhciAtbiBERVYgW2ludGVydmFsXSBbbnVt
+YmVyIG9mIHNhbXBsZXNdYGAKCklzIHRoZXJlIGEgZGlmZmVyZW5jZSBiZXR3ZWVuIGAgYW5kIGBg
+ID8gRG9lcyBpdCBtYWtlIHNlbnNlIHRvIGJlCmNvbnNpc3RlbnQ/CgoJQW5kcmV3Cl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBt
+YWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vv
+c2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
