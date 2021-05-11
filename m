@@ -1,99 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DA9C37AB1E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 17:49:44 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DBCA37AC98
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 19:01:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1A06D40379;
-	Tue, 11 May 2021 15:49:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 922C283C69;
+	Tue, 11 May 2021 17:01:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HnGuq7kRvGua; Tue, 11 May 2021 15:49:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TFVbXjKkZFcQ; Tue, 11 May 2021 17:01:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F2B604028E;
-	Tue, 11 May 2021 15:49:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 88F7083C46;
+	Tue, 11 May 2021 17:01:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1B4931BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 15:49:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C72D11BF2C9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 09667606A2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 15:49:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B568883C46
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=embeddedor.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cQStu7152pdL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 May 2021 15:49:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xr5NDSz8nR33 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 May 2021 17:01:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from gateway22.websitewelcome.com (gateway22.websitewelcome.com
- [192.185.47.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CB3D66066B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 15:49:35 +0000 (UTC)
-Received: from cm13.websitewelcome.com (cm13.websitewelcome.com [100.42.49.6])
- by gateway22.websitewelcome.com (Postfix) with ESMTP id 6661141413
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 10:49:31 -0500 (CDT)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id gUdXlEd4aAEP6gUdXlEuWx; Tue, 11 May 2021 10:49:31 -0500
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=du7TLirKJwuRndTVgzHHBCMXvT6lZMGk+j6j2JK4ikk=; b=jVO4W/UG3fiHMDSm9xE8Ra87k3
- +cgQgqzxJVZdYJVsdqhpoh0FUWz2VDu+NJczDnC8WrpoxH++yGLWMSWG3vY3L4TwcEYXqt/VYGwfS
- Iq31krhyN9/zwtnmsYa6hR2l5qrGI5RbO2Mobfbn1y34LKFCKc6D5eLAQx35mV97uY/wAYMkfgXsp
- VBABL308IUxeJpnKvlfvfqVxAxxg9F58lw2s/1Y7rEoPe1aUmq+ePxI3C45k6ughER11G8y7I7zE2
- mWTQsmaxiHyhKmUDzHzrf4wrxEimMLhzUQ83BNifaZvm0BwlnDyKzNINSGViHnLXpKpL1nFECJa15
- lAWA6ndQ==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:59016
- helo=[192.168.15.8])
- by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <gustavo@embeddedor.com>)
- id 1lgUdS-000VgQ-Ji; Tue, 11 May 2021 10:49:26 -0500
-To: "Switzer, David" <david.switzer@intel.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-References: <20210413190345.GA304933@embeddedor>
- <MW3PR11MB47483A28574E9F2C5517D3C5EB589@MW3PR11MB4748.namprd11.prod.outlook.com>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Message-ID: <b0749fb9-ff4e-3237-e2f7-b97255545eb0@embeddedor.com>
-Date: Tue, 11 May 2021 10:49:55 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+Received: from ms.lwn.net (ms.lwn.net [IPv6:2600:3c01:e000:3a1::42])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DDB7883C3D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 17:01:28 +0000 (UTC)
+Received: from localhost (unknown
+ [IPv6:2601:281:8300:104d:444a:d152:279d:1dbb])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ms.lwn.net (Postfix) with ESMTPSA id 6C8034BF;
+ Tue, 11 May 2021 17:01:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 6C8034BF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
+ t=1620752487; bh=QmVYJvT1Kzq68R+QLKACGPLdolv6eNZVx9knetb0KFs=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=irQf+xtmaDJZYLKwq3hA8ztA2UhPkWaMvlGfMCect35HeamgThOzqqCroC26BP/Sl
+ CZ5fyVVCGLDX5hEb0cnVXCWNegwA+Xs245fqJaayhz/QOZsSyLbOEm6eAcMMVYm6OY
+ KYssjOyi8tvqVhDlU9yQOg3yj6ggq5zhGjo6YGvleqEvR4QvYakpL6DYodSr6ne5p2
+ POLXDUg/aNRvtMVVTSEj+i7YB0HcWdlIM/5xZz2XEUDjPiyFKgjrJG+D5PIfW0A/ku
+ jf3zV8C5QT23k16fFmU0Sd0ej651gdEPXtb2eRRgDOFPAPrnQiy6aPBFrlggpfHlaH
+ YTUqF86upi5qg==
+From: Jonathan Corbet <corbet@lwn.net>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Linux Doc Mailing
+ List <linux-doc@vger.kernel.org>
+In-Reply-To: <cover.1620744606.git.mchehab+huawei@kernel.org>
+References: <cover.1620744606.git.mchehab+huawei@kernel.org>
+Date: Tue, 11 May 2021 11:01:26 -0600
+Message-ID: <87fsytdx21.fsf@meer.lwn.net>
 MIME-Version: 1.0
-In-Reply-To: <MW3PR11MB47483A28574E9F2C5517D3C5EB589@MW3PR11MB4748.namprd11.prod.outlook.com>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.31.110
-X-Source-L: No
-X-Exim-ID: 1lgUdS-000VgQ-Ji
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.8])
- [187.162.31.110]:59016
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 40
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-Subject: Re: [Intel-wired-lan] [PATCH][next] ixgbe: Fix out-bounds warning
- in ixgbe_host_interface_command()
+Subject: Re: [Intel-wired-lan] [PATCH 0/5] Fix some UTF-8 bad usages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,53 +68,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Kees Cook <keescook@chromium.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jens Axboe <axboe@kernel.dk>, linux-hwmon@vger.kernel.org,
+ Jean Delvare <jdelvare@suse.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Guenter Roeck <linux@roeck-us.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGkgYWxsLAoKT24gNS82LzIxIDAyOjI1LCBTd2l0emVyLCBEYXZpZCB3cm90ZToKPiAKPj4gLS0t
-LS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0KPj4gRnJvbTogSW50ZWwtd2lyZWQtbGFuIDxpbnRlbC13
-aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnPiBPbiBCZWhhbGYgT2YKPj4gR3VzdGF2byBBLiBS
-LiBTaWx2YQo+PiBTZW50OiBUdWVzZGF5LCBBcHJpbCAxMywgMjAyMSAxMjowNCBQTQo+PiBUbzog
-QnJhbmRlYnVyZywgSmVzc2UgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPjsgTmd1eWVuLCBB
-bnRob255IEwKPj4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPjsgRGF2aWQgUy4gTWlsbGVy
-IDxkYXZlbUBkYXZlbWxvZnQubmV0PjsgSmFrdWIKPj4gS2ljaW5za2kgPGt1YmFAa2VybmVsLm9y
-Zz4KPj4gQ2M6IEtlZXMgQ29vayA8a2Vlc2Nvb2tAY2hyb21pdW0ub3JnPjsgbmV0ZGV2QHZnZXIu
-a2VybmVsLm9yZzsgbGludXgtCj4+IGtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IEd1c3Rhdm8gQS4g
-Ui4gU2lsdmEgPGd1c3Rhdm9hcnNAa2VybmVsLm9yZz47IGludGVsLQo+PiB3aXJlZC1sYW5AbGlz
-dHMub3N1b3NsLm9yZzsgbGludXgtaGFyZGVuaW5nQHZnZXIua2VybmVsLm9yZwo+PiBTdWJqZWN0
-OiBbSW50ZWwtd2lyZWQtbGFuXSBbUEFUQ0hdW25leHRdIGl4Z2JlOiBGaXggb3V0LWJvdW5kcyB3
-YXJuaW5nIGluCj4+IGl4Z2JlX2hvc3RfaW50ZXJmYWNlX2NvbW1hbmQoKQo+Pgo+PiBSZXBsYWNl
-IHVuaW9uIHdpdGggYSBjb3VwbGUgb2YgcG9pbnRlcnMgaW4gb3JkZXIgdG8gZml4IHRoZSBmb2xs
-b3dpbmcgb3V0LW9mLQo+PiBib3VuZHMgd2FybmluZzoKPj4KPj4gIENDIFtNXSAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLm8KPj4gZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmM6IEluIGZ1bmN0aW9uCj4+IOKAmGl4Z2Jl
-X2hvc3RfaW50ZXJmYWNlX2NvbW1hbmTigJk6Cj4+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2l4Z2JlL2l4Z2JlX2NvbW1vbi5jOjM3Mjk6MTM6IHdhcm5pbmc6IGFycmF5Cj4+IHN1YnNjcmlw
-dCAxIGlzIGFib3ZlIGFycmF5IGJvdW5kcyBvZiDigJh1MzJbMV3igJkge2FrYSDigJh1bnNpZ25l
-ZCBpbnRbMV3igJl9IFstV2FycmF5LQo+PiBib3VuZHNdCj4+IDM3MjkgfCAgIGJwLT51MzJhcnJb
-YmldID0gSVhHQkVfUkVBRF9SRUdfQVJSQVkoaHcsIElYR0JFX0ZMRVhfTU5HLCBiaSk7Cj4+ICAg
-ICAgfCAgIH5+fn5+fn5+fn5efn5+Cj4+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
-L2l4Z2JlX2NvbW1vbi5jOjM2ODI6Nzogbm90ZTogd2hpbGUKPj4gcmVmZXJlbmNpbmcg4oCYdTMy
-YXJy4oCZCj4+IDM2ODIgfCAgIHUzMiB1MzJhcnJbMV07Cj4+ICAgICAgfCAgICAgICBefn5+fn4K
-Pj4KPj4gVGhpcyBoZWxwcyB3aXRoIHRoZSBvbmdvaW5nIGVmZm9ydHMgdG8gZ2xvYmFsbHkgZW5h
-YmxlIC1XYXJyYXktYm91bmRzLgo+Pgo+PiBMaW5rOiBodHRwczovL2dpdGh1Yi5jb20vS1NQUC9s
-aW51eC9pc3N1ZXMvMTA5Cj4+IENvLWRldmVsb3BlZC1ieTogS2VlcyBDb29rIDxrZWVzY29va0Bj
-aHJvbWl1bS5vcmc+Cj4+IFNpZ25lZC1vZmYtYnk6IEtlZXMgQ29vayA8a2Vlc2Nvb2tAY2hyb21p
-dW0ub3JnPgo+PiBTaWduZWQtb2ZmLWJ5OiBHdXN0YXZvIEEuIFIuIFNpbHZhIDxndXN0YXZvYXJz
-QGtlcm5lbC5vcmc+Cj4+IC0tLQo+PiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9p
-eGdiZV9jb21tb24uYyB8IDE2ICsrKysrKystLS0tLS0tLS0KPj4gMSBmaWxlIGNoYW5nZWQsIDcg
-aW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4KPiBUZXN0ZWQtYnk6IERhdmUgU3dpdHpl
-ciA8ZGF2aWQuc3dpdHplckBpbnRlbC5jb20+CgpUaGFua3MgZm9yIHRoaXMsIERhdmUuIDopCgpC
-eSB0aGUgd2F5LCB3ZSBhcmUgYWJvdXQgdG8gYmUgYWJsZSB0byBnbG9iYWxseSBlbmFibGUgLVdh
-cnJheS1ib3VuZHMgYW5kLAp0aGlzIGlzIG9uZSBvZiB0aGUgbGFzdCBvdXQtb2YtYm91bmRzIHdh
-cm5pbmdzIGluIGxpbnV4LW5leHQuCgpUaGFua3MKLS0KR3VzdGF2bwpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
-aXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
+
+> This series follow up this past series:
+> 	https://lore.kernel.org/lkml/cover.1620641727.git.mchehab+huawei@kernel.org/
+>
+> Containing just the manual fixes from it. I'll respin the remaining
+> patches on a separate series.
+>
+> Please note that patches 1 to 3 are identical to the ones posted
+> on the original series.
+>
+> Patch 1 is special: it fixes some left-overs from a convertion
+> from cdrom-standard.tex: there, some characters that are
+> valid in C were converted to some visually similar UTF-8 by LaTeX.
+>
+> Patch 2 remove U+00ac (''): NOT SIGN characters at the end of
+> the first line of two files. No idea why those ended being there :-p
+>
+> Patch 3 replaces:
+> 	KernelVersion:3.3
+> by:
+> 	KernelVersion:	3.3
+>
+> which is the expected format for the KernelVersion field;
+>
+> Patches 4 and 5 fix some bad usages of EM DASH/EN DASH on
+> places that it should be, instead, a normal hyphen. I suspect
+> that they ended being there due to the usage of some conversion
+> toolset.
+>
+> Mauro Carvalho Chehab (5):
+>   docs: cdrom-standard.rst: get rid of uneeded UTF-8 chars
+>   docs: ABI: remove a meaningless UTF-8 character
+>   docs: ABI: remove some spurious characters
+>   docs: hwmon: tmp103.rst: fix bad usage of UTF-8 chars
+>   docs: networking: device_drivers: fix bad usage of UTF-8 chars
+>
+>  .../obsolete/sysfs-kernel-fadump_registered   |  2 +-
+>  .../obsolete/sysfs-kernel-fadump_release_mem  |  2 +-
+>  Documentation/ABI/testing/sysfs-module        |  4 +--
+>  Documentation/cdrom/cdrom-standard.rst        | 30 +++++++++----------
+>  Documentation/hwmon/tmp103.rst                |  4 +--
+>  .../device_drivers/ethernet/intel/i40e.rst    |  4 +--
+>  .../device_drivers/ethernet/intel/iavf.rst    |  2 +-
+>  7 files changed, 24 insertions(+), 24 deletions(-)
+
+These seem pretty straightforward; I've applied the set, thanks.
+
+jon
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
