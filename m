@@ -2,63 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27CCF37AE6E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 20:25:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0329D37AEAA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 20:49:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9FCEF402C8;
-	Tue, 11 May 2021 18:25:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9BC3B405B3;
+	Tue, 11 May 2021 18:49:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cL0ZUbLcroqV; Tue, 11 May 2021 18:25:00 +0000 (UTC)
+	with ESMTP id 7XQ3qLZ-6ytb; Tue, 11 May 2021 18:49:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 832994011A;
-	Tue, 11 May 2021 18:25:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A1FD40596;
+	Tue, 11 May 2021 18:49:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B6C3C1BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:24:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0B24B1BF4E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:49:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A438840520
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:24:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id ED577403DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:49:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=lwn.net
+ dkim=pass (2048-bit key) header.d=infradead.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HtpXsIDGb-r9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 May 2021 18:24:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ms.lwn.net (ms.lwn.net [IPv6:2600:3c01:e000:3a1::42])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B459A40483
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:24:54 +0000 (UTC)
-Received: from localhost (unknown
- [IPv6:2601:281:8300:104d:444a:d152:279d:1dbb])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ms.lwn.net (Postfix) with ESMTPSA id 505484BF;
- Tue, 11 May 2021 18:24:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 505484BF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
- t=1620757493; bh=9sU3ahlIQ4NVEGbfN/aeZtX+52ui1CI9/vl021LPM1U=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=PD4SBIWrd2qF4jBts8tkLj+dOD8PeMpRMY6MQ2tW8mQ2JgUXHEEhZU+ekEzLQvPFs
- kYce01dJPs7PGlsbLAYPormV3zSabfNRxdZ+094RmneJy6cOXIOibiQ0Hnhy6nyX0o
- YybTFnADzTeyIbwqkBgXCM+lLRxTjrEwjbLGoesTo7x8nR4vCr9iHqNI9w/BPToEjQ
- 6Buf1D6flDuONDV8rJZJ42hX0kVfFz0+FAYHlHz0ZS64O57rf6Jg2L/mQJalqCR+kQ
- omQrHuKO/XSfYpBj9D+JC/o25dIcYMFrhTncUqdIfDGY54ZeiVYqhUj7B/FKa0heIn
- qdQSDbPKtA9dQ==
-From: Jonathan Corbet <corbet@lwn.net>
-To: Andrew Lunn <andrew@lunn.ch>, Mauro Carvalho Chehab
- <mchehab+huawei@kernel.org>
-In-Reply-To: <YJq9abOeuBla3Jiw@lunn.ch>
+ with ESMTP id K33OvlDkZ4zp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 May 2021 18:49:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 03B48405AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 18:49:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=ZkOT+h7IwVrb/g/jzXBMqGF7GJVTbVn2CyQ5yD1dGC0=; b=ob16GH3+IUlXSVCRaH6KiTLg7W
+ KVGr+qMse8+2g2wZdN5XpCzI8gx5fFedBPPM7a0rOUni9p45nSoKas8LoTGRgHGNdkGawym72lhqM
+ wJbSskCAJ6pc2JLqZ19l1wZaFi+zkpp51vBlynJg4PBatQf22v1P4WdbiiA7PqNpj7tXatV247aE2
+ 21UgpSPrBZpRsGMfHIgOaz02Ys+BYCWvtFjxa9JaCK0gBNYJHLasByutmseHgF2XExtnxn+lpHG3w
+ WA3D4PNCmFk+6mL1JXUn9rz1vDUXpsZ/V7mW3lf+BHtLXAPoZnwv53hS1vP1JcbO5oRf8GsV9VHsT
+ j4deW4PQ==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat
+ Linux)) id 1lgXQY-007ZFN-Mj; Tue, 11 May 2021 18:48:20 +0000
+Date: Tue, 11 May 2021 19:48:18 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Jonathan Corbet <corbet@lwn.net>
+Message-ID: <YJrRcgmrqJLSOjR5@casper.infradead.org>
 References: <cover.1620744606.git.mchehab+huawei@kernel.org>
  <95eb2a48d0ca3528780ce0dfce64359977fa8cb3.1620744606.git.mchehab+huawei@kernel.org>
- <YJq9abOeuBla3Jiw@lunn.ch>
-Date: Tue, 11 May 2021 12:24:52 -0600
-Message-ID: <8735utdt6z.fsf@meer.lwn.net>
+ <YJq9abOeuBla3Jiw@lunn.ch> <8735utdt6z.fsf@meer.lwn.net>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <8735utdt6z.fsf@meer.lwn.net>
 Subject: Re: [Intel-wired-lan] [PATCH 5/5] docs: networking: device_drivers:
  fix bad usage of UTF-8 chars
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -73,29 +70,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Linux Doc Mailing List <linux-doc@vger.kernel.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-QW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPiB3cml0ZXM6Cgo+PiAtbW9uaXRvcmluZyB0b29s
-cyBzdWNoIGFzIGlmc3RhdCBvciBzYXIg4oCTbiBERVYgW2ludGVydmFsXSBbbnVtYmVyIG9mIHNh
-bXBsZXNdCj4+ICttb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgYGlmc3RhdGAgb3IgYHNhciAtbiBE
-RVYgW2ludGVydmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdYAo+Cj4gLi4uCj4KPj4gIEZvciBleGFt
-cGxlOiBtaW5fcmF0ZSAxR2JpdCAzR2JpdDogVmVyaWZ5IGJhbmR3aWR0aCBsaW1pdCB1c2luZyBu
-ZXR3b3JrCj4+IC1tb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgaWZzdGF0IG9yIHNhciDigJNuIERF
-ViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2FtcGxlc10KPj4gK21vbml0b3JpbmcgdG9vbHMgc3Vj
-aCBhcyBgYGlmc3RhdGBgIG9yIGBgc2FyIC1uIERFViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2Ft
-cGxlc11gYAo+Cj4gSXMgdGhlcmUgYSBkaWZmZXJlbmNlIGJldHdlZW4gYCBhbmQgYGAgPyBEb2Vz
-IGl0IG1ha2Ugc2Vuc2UgdG8gYmUKPiBjb25zaXN0ZW50PwoKVGhpcyBpcyBganVzdCB3ZWlyZCBx
-dW90ZXNgClRoaXMgaXMgYGBsaXRlcmFsIHRleHRgYCBzZXQgaW4gbW9ub3NwYWNlIGluIHByb2Nl
-c3NlZCBvdXRwdXQuCgpUaGVyZSBpcyBhIGNlcnRhaW4gdGVuc2lvbiBiZXR3ZWVuIHRob3NlIHdo
-byB3YW50IHRvIHNlZSBsaWJlcmFsIHVzZSBvZgpsaXRlcmFsLXRleHQgbWFya3VwLCBhbmQgdGhv
-c2Ugd2hvIHdvdWxkIHJhdGhlciBoYXZlIGxlc3MgbWFya3VwIGluIHRoZQp0ZXh0IG92ZXJhbGw7
-IGNlcnRhaW5seSwgaXQncyBiZXR0ZXIgbm90IHRvIGdvIHRvdGFsbHkgbnV0cyB3aXRoIGl0LgoK
-am9uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVs
-LXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6
-Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+T24gVHVlLCBNYXkgMTEsIDIwMjEgYXQgMTI6MjQ6NTJQTSAtMDYwMCwgSm9uYXRoYW4gQ29yYmV0
+IHdyb3RlOgo+IEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4gd3JpdGVzOgo+IAo+ID4+IC1t
+b25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgaWZzdGF0IG9yIHNhciDigJNuIERFViBbaW50ZXJ2YWxd
+IFtudW1iZXIgb2Ygc2FtcGxlc10KPiA+PiArbW9uaXRvcmluZyB0b29scyBzdWNoIGFzIGBpZnN0
+YXRgIG9yIGBzYXIgLW4gREVWIFtpbnRlcnZhbF0gW251bWJlciBvZiBzYW1wbGVzXWAKPiA+Cj4g
+PiAuLi4KPiA+Cj4gPj4gIEZvciBleGFtcGxlOiBtaW5fcmF0ZSAxR2JpdCAzR2JpdDogVmVyaWZ5
+IGJhbmR3aWR0aCBsaW1pdCB1c2luZyBuZXR3b3JrCj4gPj4gLW1vbml0b3JpbmcgdG9vbHMgc3Vj
+aCBhcyBpZnN0YXQgb3Igc2FyIOKAk24gREVWIFtpbnRlcnZhbF0gW251bWJlciBvZiBzYW1wbGVz
+XQo+ID4+ICttb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgYGBpZnN0YXRgYCBvciBgYHNhciAtbiBE
+RVYgW2ludGVydmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdYGAKPiA+Cj4gPiBJcyB0aGVyZSBhIGRp
+ZmZlcmVuY2UgYmV0d2VlbiBgIGFuZCBgYCA/IERvZXMgaXQgbWFrZSBzZW5zZSB0byBiZQo+ID4g
+Y29uc2lzdGVudD8KPiAKPiBUaGlzIGlzIGBqdXN0IHdlaXJkIHF1b3Rlc2AKCnVtbSAuLi4gYHRo
+aXNgIGlzIHN1cHBvc2VkIHRvIGJlICJpbnRlcnByZXRlZCB0ZXh0IgpodHRwczovL2RvY3V0aWxz
+LnNvdXJjZWZvcmdlLmlvL2RvY3MvcmVmL3JzdC9yZXN0cnVjdHVyZWR0ZXh0Lmh0bWwjaW5saW5l
+LW1hcmt1cAoKTWF5YmUgd2UgZG9uJ3QgYWN0dWFsbHkgaW50ZXJwcmV0IGl0LgoKPiBUaGlzIGlz
+IGBgbGl0ZXJhbCB0ZXh0YGAgc2V0IGluIG1vbm9zcGFjZSBpbiBwcm9jZXNzZWQgb3V0cHV0Lgo+
+IAo+IFRoZXJlIGlzIGEgY2VydGFpbiB0ZW5zaW9uIGJldHdlZW4gdGhvc2Ugd2hvIHdhbnQgdG8g
+c2VlIGxpYmVyYWwgdXNlIG9mCj4gbGl0ZXJhbC10ZXh0IG1hcmt1cCwgYW5kIHRob3NlIHdobyB3
+b3VsZCByYXRoZXIgaGF2ZSBsZXNzIG1hcmt1cCBpbiB0aGUKPiB0ZXh0IG92ZXJhbGw7IGNlcnRh
+aW5seSwgaXQncyBiZXR0ZXIgbm90IHRvIGdvIHRvdGFsbHkgbnV0cyB3aXRoIGl0LgoKSSByZWFs
+bHkgYXBwcmVjaWF0ZSB0aGUgd29yayB5b3UgZGlkIHRvIHJlZHVjZSB0aGUgYW1vdW50IG9mCm1h
+cmt1cCB0aGF0J3MgbmVlZGVkIQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
+c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LXdpcmVkLWxhbgo=
