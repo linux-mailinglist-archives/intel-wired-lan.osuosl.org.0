@@ -1,56 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E11537B84F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 May 2021 10:46:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40EB237BCF8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 May 2021 14:51:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 24FC1402E0;
-	Wed, 12 May 2021 08:46:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 97A6260AC8;
+	Wed, 12 May 2021 12:51:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SPg7awwIZZDT; Wed, 12 May 2021 08:46:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fu7IyAABhYDJ; Wed, 12 May 2021 12:51:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2D03D402D8;
-	Wed, 12 May 2021 08:46:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5545760A8A;
+	Wed, 12 May 2021 12:51:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EDDF01BF3F9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E3EE1BF575
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 12:51:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E8DB8402D8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F03CB400C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 12:51:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G4ImVTosOObz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 May 2021 08:46:24 +0000 (UTC)
+ with ESMTP id waU0fqWBjP4k for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 May 2021 12:51:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3F9834019A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
-IronPort-SDR: 7hx/L91WyKxhtAd3dBFOm5RnUes2R42tuUI6Lha0lcOJVdfjMUQ+g8cyZG7vx0BqSc/S7uyi5Q
- l8PQ67o0+sDQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9981"; a="179246410"
-X-IronPort-AV: E=Sophos;i="5.82,293,1613462400"; d="scan'208";a="179246410"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2021 01:46:18 -0700
-IronPort-SDR: 5DGoBmAN8UhMBlGb1aMBE6IbBeu8oRspYsSA1STy7gn/sifc3CWeOCUiwmtcUoejUjdQzaKwEQ
- jhIz7qafes1g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,293,1613462400"; d="scan'208";a="609825318"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga005.jf.intel.com with ESMTP; 12 May 2021 01:46:15 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 12 May 2021 08:45:58 +0000
-Message-Id: <20210512084558.512-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v1] ixgbe: fix large MTU request from
- VF
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E581A40374
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 12:51:43 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1144561439;
+ Wed, 12 May 2021 12:51:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620823903;
+ bh=WJnZZbvp/3S4+mp/P3c374P9sXWpRT/tkUrjwqlxuBE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=hpmPUvze122Z88MbxyJ83KfRXPlS2//fnIasq9quewJJDo/CrzSl4AS78cU/EnY6Q
+ 7Zu3BewUGA5I8YJeVnP1kc1yq1neWzk3aigdwcY8TojJt/zmg0jmaz3GEBZPe9rhh4
+ dWjjJqbfsYmFOQDY4EhuJRv60WP2o+wxGMI5t10Zo7fZ1RUV5qIemUuWOCb7Tw+siZ
+ jABs8/7Wow/b+7XoBX81eTatEJxanmlokwbYLZvUO0IQ5SMKJAOI+SIjWxj7GPgJaq
+ 9spMdsMvSJ0msgdG2kBmOu0hrps8lZt5WxithYsEUDMoTDsVsvkFUovZfO01q0KA/m
+ 3/sfVaScsThuQ==
+Received: by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1lgoKz-0018iU-6a; Wed, 12 May 2021 14:51:41 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Date: Wed, 12 May 2021 14:50:30 +0200
+Message-Id: <aa49206f65b7302f6d579d3be726242dedebdb79.1620823573.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1620823573.git.mchehab+huawei@kernel.org>
+References: <cover.1620823573.git.mchehab+huawei@kernel.org>
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH v2 26/40] docs: networking:
+ device_drivers: Use ASCII subset instead of UTF-8 alternate symbols
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,81 +70,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: eryk.roch.rybak@intel.com,
- Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Piotr Skajewski <piotrx.skajewski@intel.com>, shravan.nagraj@intel.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Shannon Nelson <snelson@pensando.io>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-
-Check that the MTU value requested by the VF is in the supported
-range of MTUs before attempting to set the VF large packet enable,
-otherwise reject the request. This also avoids unnecessary
-register updates in the case of the 82599 controller.
-
-Fixes: 872844ddb9e4 ("ixgbe: Enable jumbo frames support w/ SR-IOV")
-Co-developed-by: Piotr Skajewski <piotrx.skajewski@intel.com>
-Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Co-developed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-index 988db46..75921cd 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-@@ -467,12 +467,16 @@ static int ixgbe_set_vf_vlan(struct ixgbe_adapter *adapter, int add, int vid,
- 	return err;
- }
- 
--static s32 ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
-+static int ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 max_frame, u32 vf)
- {
- 	struct ixgbe_hw *hw = &adapter->hw;
--	int max_frame = msgbuf[1];
- 	u32 max_frs;
- 
-+	if (max_frame < 68 || max_frame > IXGBE_MAX_JUMBO_FRAME_SIZE) {
-+		e_err(drv, "VF max_frame %d out of range\n", max_frame);
-+		return -EINVAL;
-+	}
-+
- 	/*
- 	 * For 82599EB we have to keep all PFs and VFs operating with
- 	 * the same max_frame value in order to avoid sending an oversize
-@@ -533,12 +537,6 @@ static s32 ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
- 		}
- 	}
- 
--	/* MTU < 68 is an error and causes problems on some kernels */
--	if (max_frame > IXGBE_MAX_JUMBO_FRAME_SIZE) {
--		e_err(drv, "VF max_frame %d out of range\n", max_frame);
--		return -EINVAL;
--	}
--
- 	/* pull current max frame size from hardware */
- 	max_frs = IXGBE_READ_REG(hw, IXGBE_MAXFRS);
- 	max_frs &= IXGBE_MHADD_MFS_MASK;
-@@ -1249,7 +1247,7 @@ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
- 		retval = ixgbe_set_vf_vlan_msg(adapter, msgbuf, vf);
- 		break;
- 	case IXGBE_VF_SET_LPE:
--		retval = ixgbe_set_vf_lpe(adapter, msgbuf, vf);
-+		retval = ixgbe_set_vf_lpe(adapter, msgbuf[1], vf);
- 		break;
- 	case IXGBE_VF_SET_MACVLAN:
- 		retval = ixgbe_set_vf_macvlan_msg(adapter, msgbuf, vf);
--- 
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhlIGNvbnZlcnNpb24gdG9vbHMgdXNlZCBkdXJpbmcgRG9jQm9vay9MYVRlWC9NYXJrZG93bi0+
+UmVTVCBjb252ZXJzaW9uCmFuZCBzb21lIGF1dG9tYXRpYyBydWxlcyB3aGljaCBleGlzdHMgb24g
+Y2VydGFpbiB0ZXh0IGVkaXRvcnMgbGlrZQpMaWJyZU9mZmljZSB0dXJuZWQgQVNDSUkgY2hhcmFj
+dGVycyBpbnRvIHNvbWUgVVRGLTggYWx0ZXJuYXRpdmVzIHRoYXQKYXJlIGJldHRlciBkaXNwbGF5
+ZWQgb24gaHRtbCBhbmQgUERGLgoKV2hpbGUgaXQgaXMgT0sgdG8gdXNlIFVURi04IGNoYXJhY3Rl
+cnMgaW4gTGludXgsIGl0IGlzIGJldHRlciB0bwp1c2UgdGhlIEFTQ0lJIHN1YnNldCBpbnN0ZWFk
+IG9mIHVzaW5nIGFuIFVURi04IGVxdWl2YWxlbnQgY2hhcmFjdGVyCmFzIGl0IG1ha2VzIGxpZmUg
+ZWFzaWVyIGZvciB0b29scyBsaWtlIGdyZXAsIGFuZCBhcmUgZWFzaWVyIHRvIGVkaXQKd2l0aCB0
+aGUgc29tZSBjb21tb25seSB1c2VkIHRleHQvc291cmNlIGNvZGUgZWRpdG9ycy4KCkFsc28sIFNw
+aGlueCBhbHJlYWR5IGRvIHN1Y2ggY29udmVyc2lvbiBhdXRvbWF0aWNhbGx5IG91dHNpZGUgbGl0
+ZXJhbCBibG9ja3M6CiAgIGh0dHBzOi8vZG9jdXRpbHMuc291cmNlZm9yZ2UuaW8vZG9jcy91c2Vy
+L3NtYXJ0cXVvdGVzLmh0bWwKClNvLCByZXBsYWNlIHRoZSBvY2N1cmVuY2VzIG9mIHRoZSBmb2xs
+b3dpbmcgVVRGLTggY2hhcmFjdGVyczoKCgktIFUrMDBhMCAoJ8KgJyk6IE5PLUJSRUFLIFNQQUNF
+CgktIFUrMjAxOCAoJ+KAmCcpOiBMRUZUIFNJTkdMRSBRVU9UQVRJT04gTUFSSwoJLSBVKzIwMTkg
+KCfigJknKTogUklHSFQgU0lOR0xFIFFVT1RBVElPTiBNQVJLCgpTaWduZWQtb2ZmLWJ5OiBNYXVy
+byBDYXJ2YWxobyBDaGVoYWIgPG1jaGVoYWIraHVhd2VpQGtlcm5lbC5vcmc+Ci0tLQogLi4uL2Rl
+dmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2k0MGUucnN0ICAgICAgICAgICB8ICA4ICsrKyst
+LS0tCiAuLi4vZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50ZWwvaWF2Zi5yc3QgICAgICAgICAg
+IHwgIDQgKystLQogLi4uL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L25ldHJvbm9tZS9uZnAucnN0
+ICAgICAgICB8IDEyICsrKysrKy0tLS0tLQogMyBmaWxlcyBjaGFuZ2VkLCAxMiBpbnNlcnRpb25z
+KCspLCAxMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL25ldHdvcmtp
+bmcvZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50ZWwvaTQwZS5yc3QgYi9Eb2N1bWVudGF0aW9u
+L25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50ZWwvaTQwZS5yc3QKaW5kZXgg
+MmQzZjZiZDk2OWEyLi5kMGU5Yjc4M2EyMjQgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vbmV0
+d29ya2luZy9kZXZpY2VfZHJpdmVycy9ldGhlcm5ldC9pbnRlbC9pNDBlLnJzdAorKysgYi9Eb2N1
+bWVudGF0aW9uL25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50ZWwvaTQwZS5y
+c3QKQEAgLTQ2Niw3ICs0NjYsNyBAQCBuZXR3b3JrLiBQVFAgc3VwcG9ydCB2YXJpZXMgYW1vbmcg
+SW50ZWwgZGV2aWNlcyB0aGF0IHN1cHBvcnQgdGhpcyBkcml2ZXIuIFVzZQogImV0aHRvb2wgLVQg
+PG5ldGRldiBuYW1lPiIgdG8gZ2V0IGEgZGVmaW5pdGl2ZSBsaXN0IG9mIFBUUCBjYXBhYmlsaXRp
+ZXMKIHN1cHBvcnRlZCBieSB0aGUgZGV2aWNlLgogCi1JRUVFIDgwMi4xYWQgKFFpblEpwqBTdXBw
+b3J0CitJRUVFIDgwMi4xYWQgKFFpblEpIFN1cHBvcnQKIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLQogVGhlIElFRUUgODAyLjFhZCBzdGFuZGFyZCwgaW5mb3JtYWxseSBrbm93biBhcyBRaW5R
+LCBhbGxvd3MgZm9yIG11bHRpcGxlIFZMQU4KIElEcyB3aXRoaW4gYSBzaW5nbGUgRXRoZXJuZXQg
+ZnJhbWUuIFZMQU4gSURzIGFyZSBzb21ldGltZXMgcmVmZXJyZWQgdG8gYXMKQEAgLTUyMyw4ICs1
+MjMsOCBAQCBvZiBhIHBvcnQncyBiYW5kd2lkdGggKHNob3VsZCBpdCBiZSBhdmFpbGFibGUpLiBU
+aGUgc3VtIG9mIGFsbCB0aGUgdmFsdWVzIGZvcgogTWF4aW11bSBCYW5kd2lkdGggaXMgbm90IHJl
+c3RyaWN0ZWQsIGJlY2F1c2Ugbm8gbW9yZSB0aGFuIDEwMCUgb2YgYSBwb3J0J3MKIGJhbmR3aWR0
+aCBjYW4gZXZlciBiZSB1c2VkLgogCi1OT1RFOsKgWDcxMC9YWFY3MTAgZGV2aWNlcyBmYWlsIHRv
+IGVuYWJsZSBNYXggVkZzICg2NCkgd2hlbiBNdWx0aXBsZSBGdW5jdGlvbnMKLXBlciBQb3J0IChN
+RlApwqBhbmQgU1ItSU9WIGFyZSBlbmFibGVkLiBBbiBlcnJvciBmcm9tIGk0MGUgaXMgbG9nZ2Vk
+IHRoYXQgc2F5cworTk9URTogWDcxMC9YWFY3MTAgZGV2aWNlcyBmYWlsIHRvIGVuYWJsZSBNYXgg
+VkZzICg2NCkgd2hlbiBNdWx0aXBsZSBGdW5jdGlvbnMKK3BlciBQb3J0IChNRlApIGFuZCBTUi1J
+T1YgYXJlIGVuYWJsZWQuIEFuIGVycm9yIGZyb20gaTQwZSBpcyBsb2dnZWQgdGhhdCBzYXlzCiAi
+YWRkIHZzaSBmYWlsZWQgZm9yIFZGIE4sIGFxX2VyciAxNiIuIFRvIHdvcmthcm91bmQgdGhlIGlz
+c3VlLCBlbmFibGUgbGVzcyB0aGFuCiA2NCB2aXJ0dWFsIGZ1bmN0aW9ucyAoVkZzKS4KIApAQCAt
+NjgwLDcgKzY4MCw3IEBAIHF1ZXVlczogZm9yIGVhY2ggdGMsIDxudW0gcXVldWVzPkA8b2Zmc2V0
+PiAoZS5nLiBxdWV1ZXMgMTZAMCAxNkAxNiBhc3NpZ25zCiAxNiBxdWV1ZXMgdG8gdGMwIGF0IG9m
+ZnNldCAwIGFuZCAxNiBxdWV1ZXMgdG8gdGMxIGF0IG9mZnNldCAxNi4gTWF4IHRvdGFsCiBudW1i
+ZXIgb2YgcXVldWVzIGZvciBhbGwgdGNzIGlzIDY0IG9yIG51bWJlciBvZiBjb3Jlcywgd2hpY2hl
+dmVyIGlzIGxvd2VyLikKIAotaHcgMSBtb2RlIGNoYW5uZWw6IOKAmGNoYW5uZWzigJkgd2l0aCDi
+gJhod+KAmSBzZXQgdG8gMSBpcyBhIG5ldyBuZXcgaGFyZHdhcmUKK2h3IDEgbW9kZSBjaGFubmVs
+OiAnY2hhbm5lbCcgd2l0aCAnaHcnIHNldCB0byAxIGlzIGEgbmV3IG5ldyBoYXJkd2FyZQogb2Zm
+bG9hZCBtb2RlIGluIG1xcHJpbyB0aGF0IG1ha2VzIGZ1bGwgdXNlIG9mIHRoZSBtcXByaW8gb3B0
+aW9ucywgdGhlCiBUQ3MsIHRoZSBxdWV1ZSBjb25maWd1cmF0aW9ucywgYW5kIHRoZSBRb1MgcGFy
+YW1ldGVycy4KIApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9k
+cml2ZXJzL2V0aGVybmV0L2ludGVsL2lhdmYucnN0IGIvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5n
+L2RldmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2lhdmYucnN0CmluZGV4IDI1MzMwYjdiNTE2
+OC4uYjcwZWVhNjdjM2Q5IDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL25ldHdvcmtpbmcvZGV2
+aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50ZWwvaWF2Zi5yc3QKKysrIGIvRG9jdW1lbnRhdGlvbi9u
+ZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2lhdmYucnN0CkBAIC0xMTMs
+NyArMTEzLDcgQEAgd2hpY2ggdGhlIEFWRiBpcyBhc3NvY2lhdGVkLiBUaGUgZm9sbG93aW5nIGFy
+ZSBiYXNlIG1vZGUgZmVhdHVyZXM6CiAtIEFWRiBkZXZpY2UgSUQKIC0gSFcgbWFpbGJveCBpcyB1
+c2VkIGZvciBWRiB0byBQRiBjb21tdW5pY2F0aW9ucyAoaW5jbHVkaW5nIG9uIFdpbmRvd3MpCiAK
+LUlFRUUgODAyLjFhZCAoUWluUSnCoFN1cHBvcnQKK0lFRUUgODAyLjFhZCAoUWluUSkgU3VwcG9y
+dAogLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiBUaGUgSUVFRSA4MDIuMWFkIHN0YW5kYXJk
+LCBpbmZvcm1hbGx5IGtub3duIGFzIFFpblEsIGFsbG93cyBmb3IgbXVsdGlwbGUgVkxBTgogSURz
+IHdpdGhpbiBhIHNpbmdsZSBFdGhlcm5ldCBmcmFtZS4gVkxBTiBJRHMgYXJlIHNvbWV0aW1lcyBy
+ZWZlcnJlZCB0byBhcwpAQCAtMTcxLDcgKzE3MSw3IEBAIHF1ZXVlczogZm9yIGVhY2ggdGMsIDxu
+dW0gcXVldWVzPkA8b2Zmc2V0PiAoZS5nLiBxdWV1ZXMgMTZAMCAxNkAxNiBhc3NpZ25zCiAxNiBx
+dWV1ZXMgdG8gdGMwIGF0IG9mZnNldCAwIGFuZCAxNiBxdWV1ZXMgdG8gdGMxIGF0IG9mZnNldCAx
+Ni4gTWF4IHRvdGFsCiBudW1iZXIgb2YgcXVldWVzIGZvciBhbGwgdGNzIGlzIDY0IG9yIG51bWJl
+ciBvZiBjb3Jlcywgd2hpY2hldmVyIGlzIGxvd2VyLikKIAotaHcgMSBtb2RlIGNoYW5uZWw6IOKA
+mGNoYW5uZWzigJkgd2l0aCDigJhod+KAmSBzZXQgdG8gMSBpcyBhIG5ldyBuZXcgaGFyZHdhcmUK
+K2h3IDEgbW9kZSBjaGFubmVsOiAnY2hhbm5lbCcgd2l0aCAnaHcnIHNldCB0byAxIGlzIGEgbmV3
+IG5ldyBoYXJkd2FyZQogb2ZmbG9hZCBtb2RlIGluIG1xcHJpbyB0aGF0IG1ha2VzIGZ1bGwgdXNl
+IG9mIHRoZSBtcXByaW8gb3B0aW9ucywgdGhlCiBUQ3MsIHRoZSBxdWV1ZSBjb25maWd1cmF0aW9u
+cywgYW5kIHRoZSBRb1MgcGFyYW1ldGVycy4KIApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9u
+ZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L25ldHJvbm9tZS9uZnAucnN0IGIvRG9j
+dW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L25ldHJvbm9tZS9u
+ZnAucnN0CmluZGV4IGFkYTYxMWZiNDI3Yy4uOTQ5YzAzNmU4NjY3IDEwMDY0NAotLS0gYS9Eb2N1
+bWVudGF0aW9uL25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvbmV0cm9ub21lL25m
+cC5yc3QKKysrIGIvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0aGVy
+bmV0L25ldHJvbm9tZS9uZnAucnN0CkBAIC02MiwxNCArNjIsMTQgQEAgYWN0dWFsIGZpcm13YXJl
+IGZpbGVzIGluIGFwcGxpY2F0aW9uLW5hbWVkIHN1YmRpcmVjdG9yaWVzIGluCiAgICAgJCB0cmVl
+IC9saWIvZmlybXdhcmUvbmV0cm9ub21lLwogICAgIC9saWIvZmlybXdhcmUvbmV0cm9ub21lLwog
+ICAgIOKUnOKUgOKUgCBicGYKLSAgICDilILCoMKgIOKUnOKUgOKUgCBuaWNfQU1EQTAwODEtMDAw
+MV8xeDQwLm5mZncKLSAgICDilILCoMKgIOKUlOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV80eDEw
+Lm5mZncKKyAgICDilIIgICDilJzilIDilIAgbmljX0FNREEwMDgxLTAwMDFfMXg0MC5uZmZ3Cisg
+ICAg4pSCICAg4pSU4pSA4pSAIG5pY19BTURBMDA4MS0wMDAxXzR4MTAubmZmdwogICAgIOKUnOKU
+gOKUgCBmbG93ZXIKLSAgICDilILCoMKgIOKUnOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV8xeDQw
+Lm5mZncKLSAgICDilILCoMKgIOKUlOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV80eDEwLm5mZncK
+KyAgICDilIIgICDilJzilIDilIAgbmljX0FNREEwMDgxLTAwMDFfMXg0MC5uZmZ3CisgICAg4pSC
+ICAg4pSU4pSA4pSAIG5pY19BTURBMDA4MS0wMDAxXzR4MTAubmZmdwogICAgIOKUnOKUgOKUgCBu
+aWMKLSAgICDilILCoMKgIOKUnOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV8xeDQwLm5mZncKLSAg
+ICDilILCoMKgIOKUlOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV80eDEwLm5mZncKKyAgICDilIIg
+ICDilJzilIDilIAgbmljX0FNREEwMDgxLTAwMDFfMXg0MC5uZmZ3CisgICAg4pSCICAg4pSU4pSA
+4pSAIG5pY19BTURBMDA4MS0wMDAxXzR4MTAubmZmdwogICAgIOKUnOKUgOKUgCBuaWNfQU1EQTAw
+ODEtMDAwMV8xeDQwLm5mZncgLT4gYnBmL25pY19BTURBMDA4MS0wMDAxXzF4NDAubmZmdwogICAg
+IOKUlOKUgOKUgCBuaWNfQU1EQTAwODEtMDAwMV80eDEwLm5mZncgLT4gYnBmL25pY19BTURBMDA4
+MS0wMDAxXzR4MTAubmZmdwogCi0tIAoyLjMwLjIKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwt
+d2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlz
+dGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
