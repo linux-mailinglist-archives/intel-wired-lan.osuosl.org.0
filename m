@@ -1,63 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06FFD37AF1B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 May 2021 21:10:44 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E11537B84F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 May 2021 10:46:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 860A183B56;
-	Tue, 11 May 2021 19:10:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24FC1402E0;
+	Wed, 12 May 2021 08:46:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JAe7Klk4OUxL; Tue, 11 May 2021 19:10:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SPg7awwIZZDT; Wed, 12 May 2021 08:46:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C9B083B3F;
-	Tue, 11 May 2021 19:10:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2D03D402D8;
+	Wed, 12 May 2021 08:46:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6D9661BF3C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 19:10:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EDDF01BF3F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5B6FF606CA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 19:10:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E8DB8402D8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pj_e09nC7Dyu for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 May 2021 19:10:35 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id G4ImVTosOObz for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 May 2021 08:46:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 71F0F60674
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 May 2021 19:10:35 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D1CE661626;
- Tue, 11 May 2021 19:10:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620760234;
- bh=e54D+JL7G0fBmcvlSsTLoGw5QlbnsspS2RdH8ESWbLg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Mw2rodQrteAc7YOIRxIl2TsI0vlaRbRWOhWt/N3R4Vou6GUuZDCD0NY9j4YljQgyz
- atAwkCCqXc7HLwaXvYrqa8MLJosjjgC6Vbl5U/bdQt//JGlf/pmueW8BN+WKUCJtx2
- BS7AVC2k75NT+WJMh+9tQslurOQ5EpMhdgc+9ZFQnX6JuHFpOR3FDSwPgEToJC/HUz
- J7CShSGPDmGMCgjDcf17jxx09XhC+3VYRKeGQb7dYwGFrjA2EeNyThD+mMW3jpOsnS
- AjuQ3F6zLxMXRGH+ZrHo0qo9EjHKK5XbhHXyLIhe/NSobmMHDYae2fShv+00Tl6f9Y
- WQv0lV53C0T4g==
-Date: Tue, 11 May 2021 21:10:28 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Matthew Wilcox <willy@infradead.org>
-Message-ID: <20210511211028.557de948@coco.lan>
-In-Reply-To: <YJrRcgmrqJLSOjR5@casper.infradead.org>
-References: <cover.1620744606.git.mchehab+huawei@kernel.org>
- <95eb2a48d0ca3528780ce0dfce64359977fa8cb3.1620744606.git.mchehab+huawei@kernel.org>
- <YJq9abOeuBla3Jiw@lunn.ch> <8735utdt6z.fsf@meer.lwn.net>
- <YJrRcgmrqJLSOjR5@casper.infradead.org>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 5/5] docs: networking: device_drivers:
- fix bad usage of UTF-8 chars
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3F9834019A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 May 2021 08:46:24 +0000 (UTC)
+IronPort-SDR: 7hx/L91WyKxhtAd3dBFOm5RnUes2R42tuUI6Lha0lcOJVdfjMUQ+g8cyZG7vx0BqSc/S7uyi5Q
+ l8PQ67o0+sDQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9981"; a="179246410"
+X-IronPort-AV: E=Sophos;i="5.82,293,1613462400"; d="scan'208";a="179246410"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 May 2021 01:46:18 -0700
+IronPort-SDR: 5DGoBmAN8UhMBlGb1aMBE6IbBeu8oRspYsSA1STy7gn/sifc3CWeOCUiwmtcUoejUjdQzaKwEQ
+ jhIz7qafes1g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,293,1613462400"; d="scan'208";a="609825318"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga005.jf.intel.com with ESMTP; 12 May 2021 01:46:15 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 12 May 2021 08:45:58 +0000
+Message-Id: <20210512084558.512-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v1] ixgbe: fix large MTU request from
+ VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,64 +63,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>, netdev@vger.kernel.org,
- Jonathan Corbet <corbet@lwn.net>, linux-kernel@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: eryk.roch.rybak@intel.com,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Piotr Skajewski <piotrx.skajewski@intel.com>, shravan.nagraj@intel.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RW0gVHVlLCAxMSBNYXkgMjAyMSAxOTo0ODoxOCArMDEwMApNYXR0aGV3IFdpbGNveCA8d2lsbHlA
-aW5mcmFkZWFkLm9yZz4gZXNjcmV2ZXU6Cgo+IE9uIFR1ZSwgTWF5IDExLCAyMDIxIGF0IDEyOjI0
-OjUyUE0gLTA2MDAsIEpvbmF0aGFuIENvcmJldCB3cm90ZToKPiA+IEFuZHJldyBMdW5uIDxhbmRy
-ZXdAbHVubi5jaD4gd3JpdGVzOgo+ID4gICAKPiA+ID4+IC1tb25pdG9yaW5nIHRvb2xzIHN1Y2gg
-YXMgaWZzdGF0IG9yIHNhciDigJNuIERFViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2FtcGxlc10K
-PiA+ID4+ICttb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgYGlmc3RhdGAgb3IgYHNhciAtbiBERVYg
-W2ludGVydmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdYCAgCj4gPiA+Cj4gPiA+IC4uLgo+ID4gPiAg
-Cj4gPiA+PiAgRm9yIGV4YW1wbGU6IG1pbl9yYXRlIDFHYml0IDNHYml0OiBWZXJpZnkgYmFuZHdp
-ZHRoIGxpbWl0IHVzaW5nIG5ldHdvcmsKPiA+ID4+IC1tb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMg
-aWZzdGF0IG9yIHNhciDigJNuIERFViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2FtcGxlc10KPiA+
-ID4+ICttb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgYGBpZnN0YXRgYCBvciBgYHNhciAtbiBERVYg
-W2ludGVydmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdYGAgIAo+ID4gPgo+ID4gPiBJcyB0aGVyZSBh
-IGRpZmZlcmVuY2UgYmV0d2VlbiBgIGFuZCBgYCA/IERvZXMgaXQgbWFrZSBzZW5zZSB0byBiZQo+
-ID4gPiBjb25zaXN0ZW50PyAgCj4gPiAKPiA+IFRoaXMgaXMgYGp1c3Qgd2VpcmQgcXVvdGVzYCAg
-CgpHYWgsIHNvcnJ5IGZvciB0aGF0ISBJIHNlbnQgYSB3cm9uZyB2ZXJzaW9uIG9mIHRoaXMgcGF0
-Y2guLi4KaTQwZS5yc3Qgc2hvdWxkIGFsc28gYmUgdXNpbmc6CgoJbW9uaXRvcmluZyB0b29scyBz
-dWNoIGFzIGBgaWZzdGF0YGAgb3IgYGBzYXIgLW4gREVWIFtpbnRlcnZhbF0gW251bWJlciBvZiBz
-YW1wbGVzXWBgIAoKSSdsbCBmaXggaXQgb24gdGhlIG5leHQgc3Bpbi4KCj4gCj4gdW1tIC4uLiBg
-dGhpc2AgaXMgc3VwcG9zZWQgdG8gYmUgImludGVycHJldGVkIHRleHQiCj4gaHR0cHM6Ly9kb2N1
-dGlscy5zb3VyY2Vmb3JnZS5pby9kb2NzL3JlZi9yc3QvcmVzdHJ1Y3R1cmVkdGV4dC5odG1sI2lu
-bGluZS1tYXJrdXAKPiAKPiBNYXliZSB3ZSBkb24ndCBhY3R1YWxseSBpbnRlcnByZXQgaXQuCgpX
-ZWxsLCBpZiB3ZSB1c2UgaXQgYXMgc29tZXRoaW5nIGxpa2UgOnJlZjpgZm9vYCwgaXQgaXMgdGhl
-biBpbnRlcnByZXRlZCA7LSkKCnVzaW5nIGBmb29gIG9uIFNwaGlueCBwcm9kdWNlcywgaW4gcHJh
-Y3RpY2UsIHRoZSBzYW1lIGVmZmVjdCBhcwpgYGZvb2BgIChhdCBsZWFzdCBvbiB0aGUgaW5pdGlh
-bCB2ZXJzaW9ucyk6IGl0IGFsc28gc2V0cyB0aGUgZm9udCB0bwptb25vc3BhY2UgYW5kIHN0b3Bz
-IHBhcnNpbmcgb3RoZXIgbWFya3VwcyBpbnNpZGUgdGhlIGBpbnRlcnByZXRlZCB0ZXh0YApzdHJp
-bmcuIAoKSSByZW1lbWJlciB0aGF0LCBhdCB0aGUgdmVyeSBiZWdpbm5pbmcsIEkgZGlkIHNvbWUg
-UmVTVCBjb252ZXJzaW9ucwp1c2luZyBgZm9vYC4gVGhlbiwgSSByZWFsaXplZCB0aGF0IHRoaXMg
-YWN0dWFsbHkgd3JvbmcsIGZyb20gdGhlCmRlZmluaXRpb24gUG9WLCBhbmQgc3RhcnRlZCB1c2lu
-ZyBgYGZvb2BgLgoKPiAKPiA+IFRoaXMgaXMgYGBsaXRlcmFsIHRleHRgYCBzZXQgaW4gbW9ub3Nw
-YWNlIGluIHByb2Nlc3NlZCBvdXRwdXQuCj4gPiAKPiA+IFRoZXJlIGlzIGEgY2VydGFpbiB0ZW5z
-aW9uIGJldHdlZW4gdGhvc2Ugd2hvIHdhbnQgdG8gc2VlIGxpYmVyYWwgdXNlIG9mCj4gPiBsaXRl
-cmFsLXRleHQgbWFya3VwLCBhbmQgdGhvc2Ugd2hvIHdvdWxkIHJhdGhlciBoYXZlIGxlc3MgbWFy
-a3VwIGluIHRoZQo+ID4gdGV4dCBvdmVyYWxsOyBjZXJ0YWlubHksIGl0J3MgYmV0dGVyIG5vdCB0
-byBnbyB0b3RhbGx5IG51dHMgd2l0aCBpdC4gIAo+IAo+IEkgcmVhbGx5IGFwcHJlY2lhdGUgdGhl
-IHdvcmsgeW91IGRpZCB0byByZWR1Y2UgdGhlIGFtb3VudCBvZgo+IG1hcmt1cCB0aGF0J3MgbmVl
-ZGVkIQoKSW4gdGhlIHNwZWNpZmljIGNhc2Ugb2YgdXNpbmcgdGhpbmdzIGxpa2U6IGBgY29tbWFu
-ZCAtbmBgLCBJIHdvdWxkCnB1dCBpdCBvbiBhIGxpdGVyYWwgYmxvY2ssIGVpdGhlciBsaWtlIHRo
-ZSBwcm9wb3NlZCBwYXRoLCBvciBhczoKCgltb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXM6OgoKCQlp
-ZnN0YXQKCglvcjo6CgkJc2FyIC1uIERFViBbaW50ZXJ2YWxdIFtudW1iZXIgb2Ygc2FtcGxlc10K
-Cmlmc3RhdCBpcyB0aGVyZSB1c2luZyB0aGUgc2FtZSBtb25vc3BhY2VkIGZvbnQganVzdCBmb3IK
-Y29uc2lzdGVuY3kgcHVycG9zZXMuCgpTZWUsIGlmIHlvdSB1c2UganVzdDogc2FyIC1uCgpUaGUg
-U3BoaW54IG91dHB1dCBjb3VsZCBjb252ZXJ0IHRoZSBoeXBoZW4gdG8gYSBkYXNoLgoKQnR3LCBp
-ZiB0aGVyZSB3YXMgdHdvIGh5cGhlbnMsIGxpa2U6ICJpZnN0YXQgLS1oZWxwIgoKVGhpcyB3b3Vs
-ZCBiZSBjb252ZXJ0ZWQgaW50byAiaWZzdGF0IOKAk2hlbHAiLCB1c2luZyB0aGUgRU4gREFTSCBV
-VEYtOApjaGFyYWN0ZXIuCgpTbywgSSBzdHJvbmdseSByZWNvbW1lbmQgdGhhdCBwcm9ncmFtcyAo
-c3BlY2lhbGx5IHdoZW4gZm9sbG93ZWQKYnkgYXJndW1lbnRzKSB0byBhbHdheXMgdXNlIGEgbGl0
-ZXJhbCBibG9jayBtYXJrdXAuCgoKVGhhbmtzLApNYXVybwpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cklu
-dGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+
+Check that the MTU value requested by the VF is in the supported
+range of MTUs before attempting to set the VF large packet enable,
+otherwise reject the request. This also avoids unnecessary
+register updates in the case of the 82599 controller.
+
+Fixes: 872844ddb9e4 ("ixgbe: Enable jumbo frames support w/ SR-IOV")
+Co-developed-by: Piotr Skajewski <piotrx.skajewski@intel.com>
+Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Co-developed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index 988db46..75921cd 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -467,12 +467,16 @@ static int ixgbe_set_vf_vlan(struct ixgbe_adapter *adapter, int add, int vid,
+ 	return err;
+ }
+ 
+-static s32 ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
++static int ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 max_frame, u32 vf)
+ {
+ 	struct ixgbe_hw *hw = &adapter->hw;
+-	int max_frame = msgbuf[1];
+ 	u32 max_frs;
+ 
++	if (max_frame < 68 || max_frame > IXGBE_MAX_JUMBO_FRAME_SIZE) {
++		e_err(drv, "VF max_frame %d out of range\n", max_frame);
++		return -EINVAL;
++	}
++
+ 	/*
+ 	 * For 82599EB we have to keep all PFs and VFs operating with
+ 	 * the same max_frame value in order to avoid sending an oversize
+@@ -533,12 +537,6 @@ static s32 ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
+ 		}
+ 	}
+ 
+-	/* MTU < 68 is an error and causes problems on some kernels */
+-	if (max_frame > IXGBE_MAX_JUMBO_FRAME_SIZE) {
+-		e_err(drv, "VF max_frame %d out of range\n", max_frame);
+-		return -EINVAL;
+-	}
+-
+ 	/* pull current max frame size from hardware */
+ 	max_frs = IXGBE_READ_REG(hw, IXGBE_MAXFRS);
+ 	max_frs &= IXGBE_MHADD_MFS_MASK;
+@@ -1249,7 +1247,7 @@ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ 		retval = ixgbe_set_vf_vlan_msg(adapter, msgbuf, vf);
+ 		break;
+ 	case IXGBE_VF_SET_LPE:
+-		retval = ixgbe_set_vf_lpe(adapter, msgbuf, vf);
++		retval = ixgbe_set_vf_lpe(adapter, msgbuf[1], vf);
+ 		break;
+ 	case IXGBE_VF_SET_MACVLAN:
+ 		retval = ixgbe_set_vf_macvlan_msg(adapter, msgbuf, vf);
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
