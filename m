@@ -1,71 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E711380FF4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 May 2021 20:42:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 047CA380FF5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 May 2021 20:42:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF8D760E12;
-	Fri, 14 May 2021 18:42:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 992FE8469C;
+	Fri, 14 May 2021 18:42:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y4lGLeKbaPFt; Fri, 14 May 2021 18:42:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NBteLx4v_c8U; Fri, 14 May 2021 18:42:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0DF3B60831;
-	Fri, 14 May 2021 18:42:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A96198468D;
+	Fri, 14 May 2021 18:42:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D0481BF5DE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0398F1BF5DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5B5B940168
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E682D60831
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mkn8fIaBcYNa for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 May 2021 18:40:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LgBs_3A_H_rL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 May 2021 18:40:39 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com
- [209.85.218.41])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9B41340156
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:18 +0000 (UTC)
-Received: by mail-ej1-f41.google.com with SMTP id l1so100163ejb.6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 11:40:18 -0700 (PDT)
+Received: from mail-ed1-f43.google.com (mail-ed1-f43.google.com
+ [209.85.208.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EDBED60D55
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 18:40:38 +0000 (UTC)
+Received: by mail-ed1-f43.google.com with SMTP id i13so5804110edb.9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 May 2021 11:40:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Lxrxc/3Z3jVIsCsgfSFIGV92bNeYHWS7yDIGi9KJTvU=;
- b=YR7j/VstE8ccae13Zq0ewhRFF9qDQXNIa0ZV27KPuUfZCrfzrTSZHHG9+XYPaAJpGQ
- UcB/7JK2P3nvIkSCyjB0dlESHgeuLmTA5in41vOz85ryzfgsQwoyIF9XaITSMRVwsrqI
- s8GINXr51zXoUJqUAhdERsY85pMpUYT30iCo/fwRy4Ml/5Bkx/duqJ3TFfDbL3grfaRg
- sgT1FlJ5ZidU/jJaCmLlk2lEEhwRbG7/gu36tgE2KChJVSbFA+Fp284fxUYaI3ReLFIi
- m/pcIx5l5xamGubKjTh2aB7mRNJp9bA3gyXWmEq/6bb5Cy8HFssE/Paw+WjOJdCGPqK8
- Wu/g==
-X-Gm-Message-State: AOAM5326RLqyhT2KgeBVHgh7BCnrL1xZaeZWLD6D7iRQVFzG9l11AUv8
- Mm7tSx5hfy61ycVw1je9KmI=
-X-Google-Smtp-Source: ABdhPJxBodBBYmBXuen9Ejp5wfOYCaCjxZ1MET6PdnzFoJwHDXVXjsBYdM8lj2LlwI6HA+CHmlPOAQ==
-X-Received: by 2002:a17:906:c0c3:: with SMTP id
- bn3mr50194763ejb.498.1621017616765; 
- Fri, 14 May 2021 11:40:16 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Y4MTLt5TFZRdEBttrmfCcK1QF/TJDQ6Lo2hOuLadKIY=;
+ b=O4RNDZjBdxHIsAE7CSTH+qLjLNCVbgnckCW1VhWizasunn4VukEMZxh/a6rllsit64
+ ICMmQNrhumu64b4oqH64Ub9VgPgEHWerA5U1y5ak8g/mVAAQQROve7LhUdqLAnPOgHsS
+ WcQXnwCFIbfL/TvGAphLIiKTWnB+toYfWhNobCnhtcnf65/OzjLWxmtA5SC5znq1iYP1
+ jq+EeSDp+uJ+cnEBLbQ0injfy2rBlCP6rJ7siBaBjrcq5uOOLYMaDyqb/keNPZjE1Tgw
+ bIHUmtDkngU4+Ayz97AM6Ag6WK4+p/s8ZMkfsuJUdbtjUhdR7Ue17blFXI5JRfJ4ntP4
+ tsVg==
+X-Gm-Message-State: AOAM533VmGS7FjYgCZFSj9XCl3yCCiu1r0jhKLQ8lXxXTicZ66xlZh98
+ JgeIa8NVbSy1OjYL5gZFHcE=
+X-Google-Smtp-Source: ABdhPJztVPeeFds+ovfXgi5hiN0AM5Kzib6Wesqh/ef775Q8o65ykbVOOjTXi8FRmrOvM5b3sV8Pyw==
+X-Received: by 2002:aa7:de99:: with SMTP id j25mr36955284edv.91.1621017637149; 
+ Fri, 14 May 2021 11:40:37 -0700 (PDT)
 Received: from turbo.teknoraver.net (net-5-94-253-60.cust.vodafonedsl.it.
  [5.94.253.60])
- by smtp.gmail.com with ESMTPSA id dj17sm5081505edb.7.2021.05.14.11.40.15
+ by smtp.gmail.com with ESMTPSA id dj17sm5081505edb.7.2021.05.14.11.40.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 May 2021 11:40:16 -0700 (PDT)
+ Fri, 14 May 2021 11:40:36 -0700 (PDT)
 From: Matteo Croce <mcroce@linux.microsoft.com>
 To: netdev@vger.kernel.org, bpf@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-stm32@st-md-mailman.stormreply.com,
  kvm@vger.kernel.org, virtualization@lists.linux-foundation.org
-Date: Fri, 14 May 2021 20:39:51 +0200
-Message-Id: <20210514183954.7129-1-mcroce@linux.microsoft.com>
+Date: Fri, 14 May 2021 20:39:52 +0200
+Message-Id: <20210514183954.7129-2-mcroce@linux.microsoft.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210514183954.7129-1-mcroce@linux.microsoft.com>
+References: <20210514183954.7129-1-mcroce@linux.microsoft.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Fri, 14 May 2021 18:41:22 +0000
-Subject: [Intel-wired-lan] [PATCH net-next 0/3] net: use XDP helpers
+Subject: [Intel-wired-lan] [PATCH net-next 1/3] stmmac: use XDP helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,21 +91,34 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Matteo Croce <mcroce@microsoft.com>
 
-The commit 43b5169d8355 ("net, xdp: Introduce xdp_init_buff utility
-routine") and commit be9df4aff65f ("net, xdp: Introduce xdp_prepare_buff
-utility routine") introduces two useful helpers to populate xdp_buff.
-Use it in drivers which still open codes that routines.
+Make use of the xdp_{init,prepare}_buff() helpers instead of
+an open-coded version.
 
-Matteo Croce (3):
-  stmmac: use XDP helpers
-  igc: use XDP helpers
-  vhost_net: use XDP helpers
-
- drivers/net/ethernet/intel/igc/igc_main.c         | 9 +++------
+Signed-off-by: Matteo Croce <mcroce@microsoft.com>
+---
  drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 9 +++------
- drivers/vhost/net.c                               | 6 ++----
- 3 files changed, 8 insertions(+), 16 deletions(-)
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 345b4c6d1fd4..bf9fe25fed69 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -5167,12 +5167,9 @@ static int stmmac_rx(struct stmmac_priv *priv, int limit, u32 queue)
+ 			dma_sync_single_for_cpu(priv->device, buf->addr,
+ 						buf1_len, dma_dir);
+ 
+-			xdp.data = page_address(buf->page) + buf->page_offset;
+-			xdp.data_end = xdp.data + buf1_len;
+-			xdp.data_hard_start = page_address(buf->page);
+-			xdp_set_data_meta_invalid(&xdp);
+-			xdp.frame_sz = buf_sz;
+-			xdp.rxq = &rx_q->xdp_rxq;
++			xdp_init_buff(&xdp, buf_sz, &rx_q->xdp_rxq);
++			xdp_prepare_buff(&xdp, page_address(buf->page),
++					 buf->page_offset, buf1_len, false);
+ 
+ 			pre_len = xdp.data_end - xdp.data_hard_start -
+ 				  buf->page_offset;
 -- 
 2.31.1
 
