@@ -1,62 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 550D63816E6
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 May 2021 10:22:58 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E5F7F381736
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 May 2021 11:24:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 62A6D84519;
-	Sat, 15 May 2021 08:22:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 075BA401B7;
+	Sat, 15 May 2021 09:24:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y_kVnJ9yX70S; Sat, 15 May 2021 08:22:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id J22C7x0ejeaX; Sat, 15 May 2021 09:24:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F2D3383CFB;
-	Sat, 15 May 2021 08:22:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B3203401B9;
+	Sat, 15 May 2021 09:24:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 347DD1BF3DF
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 08:22:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6F9B81BF5A7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 09:24:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 21AAE607A3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 08:22:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5D975606A3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 09:24:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
+ dkim=pass (2048-bit key) header.d=infradead.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EouC1HHkJEd9 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 15 May 2021 08:22:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B0DF6607D7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 08:22:48 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2C190613B9;
- Sat, 15 May 2021 08:22:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621066968;
- bh=GZ+Kn4jT0gb7iB9pP/pJk26tOsd2+CGQf4jvs2zdqBw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=iG7hTAT03WHgFWqqoj0DV+re/0SLdMb3cUSY+SSuTzLrJYQKUGl36xxPlzpJM+obe
- aYXsMgr2FnrS3UmbhM6x/v0hyySs4FwS7nZabhVI4uZ7oSvYetpsNsa8YF+pHbxJBR
- Pvc7xud7ZTl9KAziTz3eT27vowbOqKYiG2XDc1TE977RvXZd58WPI/7xagMPnTojJ/
- GJWlmOneBx01cy6SZcbDkvz0BdOwIrrlmQD5XJjxn9s8e2uY2fdVvUP3k7z3IeULok
- mtqmqeDzUbwgUVG+WJhEq15O9UonBwspCZS/Ybte0/0w+ceHppeg8djn6HLQSfz0bi
- sBmNf+UX/Tqtg==
-Date: Sat, 15 May 2021 10:22:39 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: David Woodhouse <dwmw2@infradead.org>
-Message-ID: <20210515102239.2ffd0451@coco.lan>
-In-Reply-To: <61c286b7afd6c4acf71418feee4eecca2e6c80c8.camel@infradead.org>
+ with ESMTP id TCQWSTliiPED for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 15 May 2021 09:24:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from bombadil.infradead.org (bombadil.infradead.org
+ [IPv6:2607:7c80:54:e::133])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 31A5A6063A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 May 2021 09:24:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Mime-Version:Content-Type:References:
+ In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=LLYaJflt7X2EcBwnrjcvWHS4RrYDGI37jewhLUeMQfo=; b=hK6f2QgZDu5EyunitIS6XZR+NX
+ bvU5wst3CRfBNcfqHo1FZJuzPI0U+oVxjn9tdnCSEGxwhLl5/453K16L8aroMHorKRjqQerfTGpwQ
+ wQ2674BBELprQAsvRpbeKTZ/jKrHfKiRmn1TjOtF3Trd05+LXYljpkhtResjFcAYKi6lN1amEhfq9
+ O4Eu40enbcCQCqcZTSn4/v0B+vOGORoJalDwOCAQQ1ceV8/asIWmEJ515PBdprgTMCwcY3o+PmB+c
+ O3zDzRFN0oyzBRhFs2luuHf31lpJ4CjcavZMDfrlehbrgDZEvS2Zhu5Y+m5sMN/icTUc/VZDN+MKB
+ n2k7fhTQ==;
+Received: from [2001:8b0:10b:1::3ae] (helo=u3832b3a9db3152.ant.amazon.com)
+ by bombadil.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
+ id 1lhqXE-00CT1z-1l; Sat, 15 May 2021 09:24:36 +0000
+Message-ID: <c2a4cb8457823685ecba6833d57047d059b36fbb.camel@infradead.org>
+From: David Woodhouse <dwmw2@infradead.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Sat, 15 May 2021 10:24:28 +0100
+In-Reply-To: <20210515102239.2ffd0451@coco.lan>
 References: <cover.1620823573.git.mchehab+huawei@kernel.org>
  <d2fed242fbe200706b8d23a53512f0311d900297.camel@infradead.org>
  <20210514102118.1b71bec3@coco.lan>
  <61c286b7afd6c4acf71418feee4eecca2e6c80c8.camel@infradead.org>
-Followup-To: dri-devel@lists.freedesktop.org
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
+ <20210515102239.2ffd0451@coco.lan>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Mime-Version: 1.0
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
+ bombadil.infradead.org. See http://www.infradead.org/rpr.html
 Subject: Re: [Intel-wired-lan] [PATCH v2 00/40] Use ASCII subset instead of
  UTF-8 alternate symbols
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -85,221 +89,373 @@ Cc: alsa-devel@alsa-project.org, kvm@vger.kernel.org,
  netdev@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
  linux-integrity@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============4080042869979177764=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RW0gRnJpLCAxNCBNYXkgMjAyMSAxMDowNjowMSArMDEwMApEYXZpZCBXb29kaG91c2UgPGR3bXcy
-QGluZnJhZGVhZC5vcmc+IGVzY3JldmV1OgoKPiBPbiBGcmksIDIwMjEtMDUtMTQgYXQgMTA6MjEg
-KzAyMDAsIE1hdXJvIENhcnZhbGhvIENoZWhhYiB3cm90ZToKPiA+IEVtIFdlZCwgMTIgTWF5IDIw
-MjEgMTg6MDc6MDQgKzAxMDAKPiA+IERhdmlkIFdvb2Rob3VzZSA8ZHdtdzJAaW5mcmFkZWFkLm9y
-Zz4gZXNjcmV2ZXU6Cj4gPiAgIAo+ID4gPiBPbiBXZWQsIDIwMjEtMDUtMTIgYXQgMTQ6NTAgKzAy
-MDAsIE1hdXJvIENhcnZhbGhvIENoZWhhYiB3cm90ZTogIAo+ID4gPiA+IFN1Y2ggY29udmVyc2lv
-biB0b29scyAtIHBsdXMgc29tZSB0ZXh0IGVkaXRvciBsaWtlIExpYnJlT2ZmaWNlICBvciBzaW1p
-bGFyICAtIGhhdmUKPiA+ID4gPiBhIHNldCBvZiBydWxlcyB0aGF0IHR1cm5zIHNvbWUgdHlwZWQg
-QVNDSUkgY2hhcmFjdGVycyBpbnRvIFVURi04IGFsdGVybmF0aXZlcywKPiA+ID4gPiBmb3IgaW5z
-dGFuY2UgY29udmVydGluZyBjb21tYXMgaW50byBjdXJseSBjb21tYXMgYW5kIGFkZGluZyBub24t
-YnJlYWthYmxlCj4gPiA+ID4gc3BhY2VzLiBBbGwgb2YgdGhvc2UgYXJlIG1lYW50IHRvIHByb2R1
-Y2UgYmV0dGVyIHJlc3VsdHMgd2hlbiB0aGUgdGV4dCBpcwo+ID4gPiA+IGRpc3BsYXllZCBpbiBI
-VE1MIG9yIFBERiBmb3JtYXRzLiAgICAKPiA+ID4gCj4gPiA+IEFuZCBkb24ndCB3ZSByZW5kZXIg
-b3VyIGRvY3VtZW50YXRpb24gaW50byBIVE1MIG9yIFBERiBmb3JtYXRzPyAgIAo+ID4gCj4gPiBZ
-ZXMuCj4gPiAgIAo+ID4gPiBBcmUKPiA+ID4gc29tZSBvZiB0aG9zZSBub24tYnJlYWtpbmcgc3Bh
-Y2VzIG5vdCBhY3R1YWxseSAqdXNlZnVsKiBmb3IgdGhlaXIKPiA+ID4gaW50ZW5kZWQgcHVycG9z
-ZT8gIAo+ID4gCj4gPiBOby4KPiA+IAo+ID4gVGhlIHRoaW5nIGlzOiBub24tYnJlYWtpbmcgc3Bh
-Y2UgY2FuIGNhdXNlIGEgbG90IG9mIHByb2JsZW1zLgo+ID4gCj4gPiBXZSBldmVuIGhhZCB0byBk
-aXNhYmxlIFNwaGlueCB1c2FnZSBvZiBub24tYnJlYWtpbmcgc3BhY2UgZm9yCj4gPiBQREYgb3V0
-cHV0cywgYXMgdGhpcyB3YXMgY2F1c2luZyBiYWQgTGFUZVgvUERGIG91dHB1dHMuCj4gPiAKPiA+
-IFNlZSwgY29tbWl0OiAzYjRjOTYzMjQzYjEgKCJkb2NzOiBjb25mLnB5OiBhZGp1c3QgdGhlIExh
-VGVYIGRvY3VtZW50IG91dHB1dCIpCj4gPiAKPiA+IFRoZSBhZm9yZSBtZW50aW9uZWQgcGF0Y2gg
-ZGlzYWJsZXMgU3BoaW54IGRlZmF1bHQgYmVoYXZpb3Igb2YKPiA+IHVzaW5nIE5PTi1CUkVBS0FC
-TEUgU1BBQ0Ugb24gbGl0ZXJhbCBibG9ja3MgYW5kIHN0cmluZ3MsIHVzaW5nIHRoaXMKPiA+IHNw
-ZWNpYWwgc2V0dGluZzogInBhcnNlZGxpdGVyYWx3cmFwcz10cnVlIi4KPiA+IAo+ID4gV2hlbiBO
-T04tQlJFQUtBQkxFIFNQQUNFIHdlcmUgdXNlZCBvbiBQREYgb3V0cHV0cywgc2V2ZXJhbCBwYXJ0
-cyBvZiAKPiA+IHRoZSBtZWRpYSB1QVBJIGRvY3Mgd2VyZSB2aW9sYXRpbmcgdGhlIGRvY3VtZW50
-IG1hcmdpbnMgYnkgZmFyLAo+ID4gY2F1c2luZyB0ZXh0cyB0byBiZSB0cnVuY2F0ZWQuCj4gPiAK
-PiA+IFNvLCBwbGVhc2UgKipkb24ndCBhZGQgTk9OLUJSRUFLQUJMRSBTUEFDRSoqLCB1bmxlc3Mg
-eW91IHRlc3QKPiA+IChhbmQga2VlcCB0ZXN0aW5nIGl0IGZyb20gdGltZSB0byB0aW1lKSBpZiBv
-dXRwdXRzIG9uIGFsbAo+ID4gZm9ybWF0cyBhcmUgcHJvcGVybHkgc3VwcG9ydGluZyBpdCBvbiBk
-aWZmZXJlbnQgU3BoaW54IHZlcnNpb25zLiAgCj4gCj4gQW5kIHRoZXJlIHlvdSBoYXZlIGEgc3Bl
-Y2lmaWMgY2hhbmdlIHdpdGggYSBzcGVjaWZpYyBmaXguIE5vdGhpbmcgdG8gZG8KPiB3aXRoIHdo
-ZXRoZXIgTk9OLUJSRUFLQUJMRSBTUEFDRSBpcyDiiIkgQVNDSUksIGFuZCAqY2VydGFpbmx5KiBu
-b3RoaW5nIHRvCj4gZG8gd2l0aCB0aGUgZmFjdCB0aGF0LCBsaWtlICpldmVyeSogY2hhcmFjdGVy
-IGluIGV2ZXJ5IGtlcm5lbCBmaWxlCj4gZXhjZXB0IHRoZSAqYmluYXJ5KiBmaWxlcywgaXQncyBy
-ZXByZXNlbnRhYmxlIGluIFVURi04Lgo+IAo+IEJ5IGFsbCBtZWFucyBmaXggdGhlIHNwZWNpZmlj
-IGNoYXJhY3RlcnMgd2hpY2ggYXJlIHR5cG9ncmFwaGljYWxseQo+IHdyb25nIG9yIHdoaWNoLCBs
-aWtlIE5PTi1CUkVBS0FCTEUgU1BBQ0UsIGNhdXNlIHByb2JsZW1zIGZvciByZW5kZXJpbmcKPiB0
-aGUgZG9jdW1lbnRhdGlvbi4KPiAKPiAKPiA+IEFsc28sIG1vc3Qgb2YgdGhvc2UgY2FtZSBmcm9t
-IGNvbnZlcnNpb24gdG9vbHMsIHRvZ2V0aGVyIHdpdGggb3RoZXIKPiA+IGVjY2VudHJpY2l0aWVz
-LCBsaWtlIHRoZSB1c2FnZSBvZiBVK0ZFRkYgKEJPTSkgY2hhcmFjdGVyIGF0IHRoZQo+ID4gc3Rh
-cnQgb2Ygc29tZSBkb2N1bWVudHMuIFRoZSByZW1haW5pbmcgb25lcyBzZWVtIHRvIGNhbWUgZnJv
-bSAKPiA+IGN1dC1hbmQtcGFzdGUuICAKPiAKPiAuLi4gb3Igd2hpY2ggYXJlIGp1c3QgZW50aXJl
-bHkgcmVkdW5kYW50IGFuZCBncmF0dWl0b3VzLCBsaWtlIGEgQk9NIGluCj4gYW4gZW52aXJvbm1l
-bnQgd2hlcmUgYWxsIGZpbGVzIGFyZSBVVEYtOCBhbmQgbmV2ZXIgMTYtYml0IGVuY29kaW5ncwo+
-IGFueXdheS4KCkFncmVlZC4KCj4gCj4gPiA+ID4gV2hpbGUgaXQgaXMgcGVyZmVjdGx5IGZpbmUg
-dG8gdXNlIFVURi04IGNoYXJhY3RlcnMgaW4gTGludXgsIGFuZCBzcGVjaWFsbHkgYXQKPiA+ID4g
-PiB0aGUgZG9jdW1lbnRhdGlvbiwgIGl0IGlzIGJldHRlciB0byAgc3RpY2sgdG8gdGhlIEFTQ0lJ
-IHN1YnNldCAgb24gc3VjaAo+ID4gPiA+IHBhcnRpY3VsYXIgY2FzZSwgIGR1ZSB0byBhIGNvdXBs
-ZSBvZiByZWFzb25zOgo+ID4gPiA+IAo+ID4gPiA+IDEuIGl0IG1ha2VzIGxpZmUgZWFzaWVyIGZv
-ciB0b29scyBsaWtlIGdyZXA7ICAgIAo+ID4gPiAKPiA+ID4gQmFyZWx5LCBhcyBub3RlZCwgYmVj
-YXVzZSBvZiB0aGluZ3MgbGlrZSBsaW5lIGZlZWRzLiAgCj4gPiAKPiA+IFlvdSBjYW4gdXNlIGdy
-ZXAgd2l0aCAiLXoiIHRvIHNlZWsgZm9yIG11bHRpLWxpbmUgc3RyaW5ncygqKSwgTGlrZToKPiA+
-IAo+ID4gCSQgZ3JlcCAtUHpsICdncmFjZSBwZXJpb2Qgc3RhcnRlZCxccyp0aGVuJyAkKGZpbmQg
-RG9jdW1lbnRhdGlvbi8gLXR5cGUgZikKPiA+IAlEb2N1bWVudGF0aW9uL1JDVS9EZXNpZ24vRGF0
-YS1TdHJ1Y3R1cmVzL0RhdGEtU3RydWN0dXJlcy5yc3QgIAo+IAo+IFllYWgsIHJpZ2h0LiBUaGF0
-IHdvcmtzIGlmIHlvdSBkb24ndCBqdXN0IHVzZSB0aGUgdGV4dCB0aGF0IHlvdSdsbCBoYXZlCj4g
-c2VlbiBpbiB0aGUgSFRNTC9QREYgImdyYWNlIHBlcmlvZCBzdGFydGVkLCB0aGVuIiwgYW5kIGlm
-IHlvdSBpbnN0ZWFkCj4gY3JhZnQgYSAqcmVnZXgqIGZvciBpdCwgcmVwbGFjaW5nIHRoZSBzcGFj
-ZXMgd2l0aCAnXHMqJy4gT3IgaXMgdGhhdAo+IFtbOnNwYWNlOl1dKiBpZiB5b3UgZG9uJ3Qgd2Fu
-dCB0byB1c2UgdGhlIGV4cGVyaW1lbnRhbCBQZXJsIHJlZ2V4Cj4gZmVhdHVyZT8KPiAKPiAgJCBn
-cmVwIC16bHIgJ2dyYWNlW1s6c3BhY2U6XV1cK3BlcmlvZFtbOnNwYWNlOl1dXCtzdGFydGVkLFtb
-OnNwYWNlOl1dXCt0aGVuJyBEb2N1bWVudGF0aW9uL1JDVQo+IERvY3VtZW50YXRpb24vUkNVL0Rl
-c2lnbi9EYXRhLVN0cnVjdHVyZXMvRGF0YS1TdHJ1Y3R1cmVzLnJzdAo+IAo+IEFuZCB3aXRob3V0
-ICctbCcgaXQnbGwgb2J2aW91c2x5IGp1c3QgZ2l2ZSB5b3UgdGhlIHdob2xlIGZpbGUuIE5vICct
-QTUKPiAtQjUnIHRvIHNlZSB0aGUgc3Vycm91bmRpbmdzLi4uIGl0J3MgaGFyZGx5IGEgdXNlZnVs
-IHRoaW5nLCBpcyBpdD8KPiAKPiA+ICgqKSBVbmZvcnR1bmF0ZWx5LCB3aGlsZSAiZ2l0IGdyZXAi
-IGFsc28gaGFzIGEgIi16IiBmbGFnLCBpdAo+ID4gICAgIHNlZW1zIHRoYXQgdGhpcyBpcyAoY3Vy
-cmVudGx5PykgYnJva2VuIHdpdGggcmVnYXJkcyBvZiBoYW5kbGluZyBtdWx0aWxpbmVzOgo+ID4g
-Cj4gPiAJJCBnaXQgZ3JlcCAtUHpsICdncmFjZSBwZXJpb2Qgc3RhcnRlZCxccyp0aGVuJwo+ID4g
-CSQgIAo+IAo+IEV2ZW4gYmV0dGVyLiBTbyBubywgbXVsdGlsaW5lIGdyZXAgaXNuJ3QgcmVhbGx5
-IGEgY29tbW9ubHkgdXNhYmxlCj4gZmVhdHVyZSBhdCBhbGwuCj4gCj4gVGhpcyBpcyB3aHkgd2Ug
-cHJlZmVyIHRvIHB1dCB1c2VyLXZpc2libGUgc3RyaW5ncyBvbiBvbmUgbGluZSBpbiBDCj4gc291
-cmNlIGNvZGUsIGV2ZW4gaWYgaXQgdGFrZXMgdGhlIGxpbmVzIG92ZXIgODAgY2hhcmFjdGVycyDi
-gJQgdG8gYWxsb3cKPiBmb3IgZ3JlcCB0byBmaW5kIHRoZW0uCgpNYWtlcyBzZW5zZSwgYnV0IGlu
-IGNhc2Ugb2YgZG9jdW1lbnRhdGlvbiwgdGhpcyBpcyBhIGxpdHRsZSBtb3JlCmNvbXBsZXggdGhh
-biB0aGF0LiAKCkJ0dywgdGhlIHRoZW1lIHVzZWQgd2hlbiBidWlsZGluZyBodG1sIGJ5IGRlZmF1
-bHRbMV0gaGFzIGEgc2VhcmNoCmJveCAod3JpdHRlbiBpbiBKYXZhc2NyaXB0KSB0aGF0IGNvdWxk
-IGJlIGFibGUgdG8gZmluZCBtdWx0aS1saW5lCnBhdHRlcm5zLCB3b3JraW5nIHNvbWV3aGF0IHNp
-bWlsYXIgdG8gImdpdCBncmVwIGZvbyAtYSBiYXIiLgoKWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9y
-ZWFkdGhlZG9jcy9zcGhpbnhfcnRkX3RoZW1lCgo+ID4gWzFdIElmIEkgaGF2ZSBhIHRhYmxlIHdp
-dGggVVRGLTggY29kZXMgaGFuZHksIEkgY291bGQgdHlwZSB0aGUgVVRGLTggCj4gPiAgICAgbnVt
-YmVyIG1hbnVhbGx5Li4uIEhvd2V2ZXIsIGl0IHNlZW1zIHRoYXQgdGhpcyBpcyBjdXJyZW50bHkg
-YnJva2VuIAo+ID4gICAgIGF0IGxlYXN0IG9uIEZlZG9yYSAzMyAod2l0aCBNYXRlIERlc2t0b3Ag
-YW5kIFVTIGludGwga2V5Ym9hcmQgd2l0aCAKPiA+ICAgICBkZWFkIGtleXMpLgo+ID4gCj4gPiAg
-ICAgSGVyZSwgPENUUkw+PFNISUZUPlUgaXMgbm90IHdvcmtpbmcuIE5vIGlkZWEgd2h5LiBJIGhh
-dmVuJ3QgCj4gPiAgICAgdGVzdCBpdCBmb3IgKnllYXJzKiwgYXMgSSBkaW4ndCBzZWUgYW55IHJl
-YXNvbiB3aHkgSSB3b3VsZAo+ID4gICAgIG5lZWQgdG8gdHlwZSBVVEYtOCBjaGFyYWN0ZXJzIGJ5
-IG51bWJlcnMgdW50aWwgd2Ugc3RhcnRlZAo+ID4gICAgIHRoaXMgdGhyZWFkLiAgCj4gCj4gUGxl
-YXNlIHByb3ZpZGUgdGhlIGJ1ZyBudW1iZXIgZm9yIHRoaXM7IEknZCBsaWtlIHRvIHRyYWNrIGl0
-LgoKSnVzdCBvcGVuZWQgYSBCWiBhbmQgYWRkZWQgeW91IGFzIGMvYy4KCj4gPiBOb3csIEknbSBu
-b3QgYXJndWluZyB0aGF0IHlvdSBjYW4ndCB1c2Ugd2hhdGV2ZXIgVVRGLTggc3ltYm9sIHlvdQo+
-ID4gd2FudCBvbiB5b3VyIGRvY3MuIEknbSBqdXN0IHNheWluZyB0aGF0LCBub3cgdGhhdCB0aGUg
-Y29udmVyc2lvbiAKPiA+IGlzIG92ZXIgYW5kIGEgbG90IG9mIGRvY3VtZW50cyBlbmRlZCBnZXR0
-aW5nIHNvbWUgVVRGLTggY2hhcmFjdGVycwo+ID4gYnkgYWNjaWRlbnQsIGl0IGlzIHRpbWUgZm9y
-IGEgY2xlYW51cC4gIAo+IAo+IEFsbCB0ZXh0IGRvY3VtZW50cyBhcmUgKmZ1bGwqIG9mIFVURi04
-IGNoYXJhY3RlcnMuIElmIHRoZXJlIGlzIGEgZmlsZQo+IGluIHRoZSBzb3VyY2UgY29kZSB3aGlj
-aCBoYXMgKmFueSogbm9uLVVURjgsIHdlIGNhbGwgdGhhdCBhICdiaW5hcnkKPiBmaWxlJy4KPiAK
-PiBBZ2FpbiwgaWYgeW91IHdhbnQgdG8gbWFrZSBzcGVjaWZpYyBmaXhlcyBsaWtlIHJlbW92aW5n
-IG5vbi1icmVha2luZwo+IHNwYWNlcyBhbmQgYnl0ZSBvcmRlciBtYXJrcywgd2l0aCBzcGVjaWZp
-YyByZWFzb25zLCB0aGVuIHRob3NlIG1ha2UKPiBzZW5zZS4gQnV0IGl0J3MgZ290IHZlcnkgbGl0
-dGxlIHRvIGRvIHdpdGggVVRGLTggYW5kIGhvdyBlYXN5IGl0IGlzIHRvCj4gdHlwZSB0aGVtLiBB
-bmQgdGhlIGV4Y3VzZSB5b3UndmUgcHV0IGluIHRoZSBjb21taXQgY29tbWVudCBmb3IgeW91cgo+
-IHBhdGNoZXMgaXMgdXR0ZXJseSBib2d1cy4KCkxldCdzIHRha2Ugb25lIHN0ZXAgYmFjaywgaW4g
-b3JkZXIgdG8gcmV0dXJuIHRvIHRoZSBpbnRlbnRzIG9mIHRoaXMKVVRGLTgsIGFzIHRoZSBkaXNj
-dXNzaW9ucyBoZXJlIGFyZSBub3QgY2VudGVyZWQgaW50byB0aGUgcGF0Y2hlcywgYnV0Cmluc3Rl
-YWQsIG9uIHdoYXQgdG8gZG8gYW5kIHdoeS4KCi0KClRoaXMgZGlzY3Vzc2lvbiBzdGFydGVkIG9y
-aWdpbmFsbHkgYXQgbGludXgtZG9jIE1MLgoKV2hpbGUgZGlzY3Vzc2luZyBhYm91dCBhbiBpc3N1
-ZSB3aGVuIG1hY2hpbmUncyBsb2NhbGUgd2FzIG5vdCBzZXQKdG8gVVRGLTggb24gYSBidWlsZCBW
-TSwgd2UgZGlzY292ZXJlZCB0aGF0IHNvbWUgY29udmVydGVkIGRvY3MgZW5kZWQKd2l0aCBCT00g
-Y2hhcmFjdGVycy4gVGhvc2Ugc3BlY2lmaWMgY2hhbmdlcyB3ZXJlIGludHJvZHVjZWQgYnkgc29t
-ZQpvZiBteSBjb252ZXJ0IHBhdGNoZXMsIHByb2JhYmx5IGNvbnZlcnRlZCB2aWEgcGFuZG9jLgoK
-U28sIEkgd2VudCBhaGVhZCBpbiBvcmRlciB0byBjaGVjayB3aGF0IG90aGVyIHBvc3NpYmxlIHdl
-aXJkIHRoaW5ncwp3ZXJlIGludHJvZHVjZWQgYnkgdGhlIGNvbnZlcnNpb24sIHdoZXJlIHNldmVy
-YWwgc2NyaXB0cyBhbmQgdG9vbHMKd2VyZSB1c2VkIG9uIGZpbGVzIHRoYXQgaGFkIGFscmVhZHkg
-YSBkaWZmZXJlbnQgbWFya3VwLgoKSSBhY3R1YWxseSBjaGVja2VkIHRoZSBjdXJyZW50IFVURi04
-IGlzc3VlcywgYW5kIGFza2VkIHBlb3BsZSBhdApsaW51eC1kb2MgdG8gY29tbWVudCB3aGF0IG9m
-IHRob3NlIGFyZSB2YWxpZCB1c2VjYXNlcywgYW5kIHdoYXQKc2hvdWxkIGJlIHJlcGxhY2VkIGJ5
-IHBsYWluIEFTQ0lJLgoKQmFzaWNhbGx5LCB0aGlzIGlzIHRoZSBjdXJyZW50IHNpdHVhdGlvbiAo
-YXQgZG9jcy9kb2NzLW5leHQpLCBmb3IgdGhlClJlU1QgZmlsZXMgdW5kZXIgRG9jdW1lbnRhdGlv
-bi8sIGV4Y2x1ZGluZyB0cmFuc2xhdGlvbnMgaXM6CgoxLiBTcGFjZXMgYW5kIEJPTQoKCS0gVSsw
-MGEwICgnwqAnKTogTk8tQlJFQUsgU1BBQ0UKCS0gVStmZWZmICgn77u/Jyk6IFpFUk8gV0lEVEgg
-Tk8tQlJFQUsgU1BBQ0UgKEJPTSkKCkJhc2VkIG9uIHRoZSBkaXNjdXNzaW9ucyB0aGVyZSBhbmQg
-b24gdGhpcyB0aHJlYWQsIHRob3NlIHNob3VsZCBiZQpkcm9wcGVkLCBhcyBCT00gaXMgdXNlbGVz
-cyBhbmQgTk8tQlJFQUsgU1BBQ0UgY2FuIGNhdXNlIHByb2JsZW1zCmF0IHRoZSBodG1sL3BkZiBv
-dXRwdXQ7CgoyLiBTeW1ib2xzCgoJLSBVKzAwYTkgKCfCqScpOiBDT1BZUklHSFQgU0lHTgoJLSBV
-KzAwYWMgKCfCrCcpOiBOT1QgU0lHTgoJLSBVKzAwYWUgKCfCricpOiBSRUdJU1RFUkVEIFNJR04K
-CS0gVSswMGIwICgnwrAnKTogREVHUkVFIFNJR04KCS0gVSswMGIxICgnwrEnKTogUExVUy1NSU5V
-UyBTSUdOCgktIFUrMDBiMiAoJ8KyJyk6IFNVUEVSU0NSSVBUIFRXTwoJLSBVKzAwYjUgKCfCtScp
-OiBNSUNSTyBTSUdOCgktIFUrMDNiYyAoJ868Jyk6IEdSRUVLIFNNQUxMIExFVFRFUiBNVQoJLSBV
-KzAwYjcgKCfCtycpOiBNSURETEUgRE9UCgktIFUrMDBiZCAoJ8K9Jyk6IFZVTEdBUiBGUkFDVElP
-TiBPTkUgSEFMRgoJLSBVKzIxMjIgKCfihKInKTogVFJBREUgTUFSSyBTSUdOCgktIFUrMjI2NCAo
-J+KJpCcpOiBMRVNTLVRIQU4gT1IgRVFVQUwgVE8KCS0gVSsyMjY1ICgn4omlJyk6IEdSRUFURVIt
-VEhBTiBPUiBFUVVBTCBUTwoJLSBVKzJiMGQgKCfirI0nKTogVVAgRE9XTiBCTEFDSyBBUlJPVwoK
-VGhvc2Ugc2VlbSBPSyBvbiBteSBleWVzLgoKT24gYSBzaWRlIG5vdGUsIGJvdGggTUlDUk8gU0lH
-TiBhbmQgR1JFRUsgU01BTEwgTEVUVEVSIE1VIGFyZQp1c2VkIHNldmVyYWwgZG9jcyB0byByZXBy
-ZXNlbnQgbWljcm9zZWNvbmRzLCBtaWNyby12b2x0cyBhbmQKbWljcm8tYW1ww6hyZXMuIElmIHdl
-IHdyaXRlIGFuIG9yaWVudGF0aW9uIGRvY3VtZW50LCBpdCBwcm9iYWJseQptYWtlcyBzZW5zZSB0
-byByZWNvbW1lbmQgdXNpbmcgTUlDUk8gU0lHTiBvbiBzdWNoIGNhc2VzLgoKMy4gTGF0aW4KCgkt
-IFUrMDBjNyAoJ8OHJyk6IExBVElOIENBUElUQUwgTEVUVEVSIEMgV0lUSCBDRURJTExBCgktIFUr
-MDBkZiAoJ8OfJyk6IExBVElOIFNNQUxMIExFVFRFUiBTSEFSUCBTCgktIFUrMDBlMSAoJ8OhJyk6
-IExBVElOIFNNQUxMIExFVFRFUiBBIFdJVEggQUNVVEUKCS0gVSswMGU0ICgnw6QnKTogTEFUSU4g
-U01BTEwgTEVUVEVSIEEgV0lUSCBESUFFUkVTSVMKCS0gVSswMGU2ICgnw6YnKTogTEFUSU4gU01B
-TEwgTEVUVEVSIEFFCgktIFUrMDBlNyAoJ8OnJyk6IExBVElOIFNNQUxMIExFVFRFUiBDIFdJVEgg
-Q0VESUxMQQoJLSBVKzAwZTkgKCfDqScpOiBMQVRJTiBTTUFMTCBMRVRURVIgRSBXSVRIIEFDVVRF
-CgktIFUrMDBlYSAoJ8OqJyk6IExBVElOIFNNQUxMIExFVFRFUiBFIFdJVEggQ0lSQ1VNRkxFWAoJ
-LSBVKzAwZWIgKCfDqycpOiBMQVRJTiBTTUFMTCBMRVRURVIgRSBXSVRIIERJQUVSRVNJUwoJLSBV
-KzAwZjMgKCfDsycpOiBMQVRJTiBTTUFMTCBMRVRURVIgTyBXSVRIIEFDVVRFCgktIFUrMDBmNCAo
-J8O0Jyk6IExBVElOIFNNQUxMIExFVFRFUiBPIFdJVEggQ0lSQ1VNRkxFWAoJLSBVKzAwZjYgKCfD
-ticpOiBMQVRJTiBTTUFMTCBMRVRURVIgTyBXSVRIIERJQUVSRVNJUwoJLSBVKzAwZjggKCfDuCcp
-OiBMQVRJTiBTTUFMTCBMRVRURVIgTyBXSVRIIFNUUk9LRQoJLSBVKzAwZmEgKCfDuicpOiBMQVRJ
-TiBTTUFMTCBMRVRURVIgVSBXSVRIIEFDVVRFCgktIFUrMDBmYyAoJ8O8Jyk6IExBVElOIFNNQUxM
-IExFVFRFUiBVIFdJVEggRElBRVJFU0lTCgktIFUrMDBmZCAoJ8O9Jyk6IExBVElOIFNNQUxMIExF
-VFRFUiBZIFdJVEggQUNVVEUKCS0gVSswMTFmICgnxJ8nKTogTEFUSU4gU01BTEwgTEVUVEVSIEcg
-V0lUSCBCUkVWRQoJLSBVKzAxNDIgKCfFgicpOiBMQVRJTiBTTUFMTCBMRVRURVIgTCBXSVRIIFNU
-Uk9LRQoKVGhvc2Ugc2hvdWxkIGJlIGtlcHQgYXMgd2VsbCwgYXMgdGhleSdyZSB1c2VkIGZvciBu
-b24tRW5nbGlzaCBuYW1lcy4KCjQuIGFycm93cyBhbmQgYm94IGRyYXdpbmcgc3ltYm9sczoKCS0g
-VSsyMTkxICgn4oaRJyk6IFVQV0FSRFMgQVJST1cKCS0gVSsyMTkyICgn4oaSJyk6IFJJR0hUV0FS
-RFMgQVJST1cKCS0gVSsyMTkzICgn4oaTJyk6IERPV05XQVJEUyBBUlJPVwoKCS0gVSsyNTAwICgn
-4pSAJyk6IEJPWCBEUkFXSU5HUyBMSUdIVCBIT1JJWk9OVEFMCgktIFUrMjUwMiAoJ+KUgicpOiBC
-T1ggRFJBV0lOR1MgTElHSFQgVkVSVElDQUwKCS0gVSsyNTE0ICgn4pSUJyk6IEJPWCBEUkFXSU5H
-UyBMSUdIVCBVUCBBTkQgUklHSFQKCS0gVSsyNTFjICgn4pScJyk6IEJPWCBEUkFXSU5HUyBMSUdI
-VCBWRVJUSUNBTCBBTkQgUklHSFQKCkFsc28gc2hvdWxkIGJlIGtlcHQuCgpJbiBzdW1tYXJ5LCBi
-YXNlZCBvbiB0aGUgZGlzY3Vzc2lvbnMgd2UgaGF2ZSBzbyBmYXIsIEkgc3VzcGVjdCB0aGF0CnRo
-ZXJlJ3Mgbm90IG11Y2ggdG8gYmUgZGlzY3Vzc2VkIGZvciB0aGUgYWJvdmUgY2FzZXMuCgpTbywg
-SSdsbCBwb3N0IGEgdjMgb2YgdGhpcyBzZXJpZXMsIGNoYW5naW5nIG9ubHk6CgoJLSBVKzAwYTAg
-KCfCoCcpOiBOTy1CUkVBSyBTUEFDRQoJLSBVK2ZlZmYgKCfvu78nKTogWkVSTyBXSURUSCBOTy1C
-UkVBSyBTUEFDRSAoQk9NKQoKLS0tCgpOb3csIHRoaXMgc3BlY2lmaWMgcGF0Y2ggc2VyaWVzIGFk
-ZHJlc3MgYWxzbyB0aGlzIGV4dHJhIGNhc2U6Cgo1LiBjdXJseSBjb21tYXM6CgoJLSBVKzIwMTgg
-KCfigJgnKTogTEVGVCBTSU5HTEUgUVVPVEFUSU9OIE1BUksKCS0gVSsyMDE5ICgn4oCZJyk6IFJJ
-R0hUIFNJTkdMRSBRVU9UQVRJT04gTUFSSwoJLSBVKzIwMWMgKCfigJwnKTogTEVGVCBET1VCTEUg
-UVVPVEFUSU9OIE1BUksKCS0gVSsyMDFkICgn4oCdJyk6IFJJR0hUIERPVUJMRSBRVU9UQVRJT04g
-TUFSSwoKSU1PLCB0aG9zZSBzaG91bGQgYmUgcmVwbGFjZWQgYnkgQVNDSUkgY29tbWFzOiAnIGFu
-ZCAiLgoKVGhlIHJhdGlvbmFsZSBpcyBzaW1wbGU6IAoKLSBtb3N0IHdlcmUgaW50cm9kdWNlZCBk
-dXJpbmcgdGhlIGNvbnZlcnNpb24gZnJvbSBEb2Nib29rLAogIG1hcmtkb3duIGFuZCBMYVRleDsK
-LSB0aGV5IGRvbid0IGFkZCBhbnkgZXh0cmEgdmFsdWUsIGFzIHVzaW5nICJmb28iIG9mIOKAnGZv
-b+KAnSBtZWFucwogIHRoZSBzYW1lIHRoaW5nOwotIFNwaGlueCBhbHJlYWR5IHVzZSAiZmFuY3ki
-IGNvbW1hcyBhdCB0aGUgb3V0cHV0LiAKCkkgZ3Vlc3MgSSB3aWxsIHB1dCB0aGlzIG9uIGEgc2Vw
-YXJhdGUgc2VyaWVzLCBhcyB0aGlzIGlzIG5vdCBhIGJ1ZwpmaXgsIGJ1dCBqdXN0IGEgY2xlYW51
-cCBmcm9tIHRoZSBjb252ZXJzaW9uIHdvcmsuCgpJJ2xsIHJlLXBvc3QgdGhvc2UgY2xlYW51cHMg
-b24gYSBzZXBhcmF0ZSBzZXJpZXMsIGZvciBwYXRjaCBwZXIgcGF0Y2gKcmV2aWV3LgoKLS0tCgpU
-aGUgcmVtYWluaW5nIGNhc2VzIGFyZSBmdXR1cmUgd29yaywgb3V0c2lkZSB0aGUgc2NvcGUgb2Yg
-dGhpcyB2MjoKCjYuIEh5cGhlbi9EYXNoZXMgYW5kIGVsbGlwc2lzCgoJLSBVKzIyMTIgKCfiiJIn
-KTogTUlOVVMgU0lHTgoJLSBVKzAwYWQgKCfCrScpOiBTT0ZUIEhZUEhFTgoJLSBVKzIwMTAgKCfi
-gJAnKTogSFlQSEVOCgoJICAgIFRob3NlIHRocmVlIGFyZSB1c2VkIG9uIHBsYWNlcyB3aGVyZSBh
-IG5vcm1hbCBBU0NJSSBoeXBoZW4vbWludXMKCSAgICBzaG91bGQgYmUgdXNlZCBpbnN0ZWFkLiBU
-aGVyZSBhcmUgZXZlbiBhIGNvdXBsZSBvZiBDIGZpbGVzIHdoaWNoCgkgICAgdXNlIHRoZW0gaW5z
-dGVhZCBvZiAnLScgb24gY29tbWVudHMuCgoJICAgIElNTyBhcmUgZml4ZXMvY2xlYW51cHMgZnJv
-bSBjb252ZXJzaW9ucyBhbmQgYmFkIGN1dC1hbmQtcGFzdGUuCgoJLSBVKzIwMTMgKCfigJMnKTog
-RU4gREFTSAoJLSBVKzIwMTQgKCfigJQnKTogRU0gREFTSAoJLSBVKzIwMjYgKCfigKYnKTogSE9S
-SVpPTlRBTCBFTExJUFNJUwoKCSAgICBUaG9zZSBhcmUgYXV0by1yZXBsYWNlZCBieSBTcGhpbngg
-ZnJvbSAiLS0iLCAiLS0tIiBhbmQgIi4uLiIsCgkgICAgcmVzcGVjdGl2ZWx5LgoKCSAgICBJIGd1
-ZXNzIHRob3NlIGFyZSBhIG1hdHRlciBvZiBwZXJzb25hbCBwcmVmZXJlbmNlIGFib3V0CgkgICAg
-d2VhdGhlciB1c2luZyBBU0NJSSBvciBVVEYtOC4KCiAgICAgICAgICAgIE15IHBlcnNvbmFsIHBy
-ZWZlcmVuY2UgKGFuZCBUZWQgc2VlbXMgdG8gaGF2ZSBhIHNpbWlsYXIKCSAgICBvcGluaW9uKSBp
-cyB0byBsZXQgU3BoaW54IGRvIHRoZSBjb252ZXJzaW9uLgoKCSAgICBGb3IgdGhvc2UsIEkgaW50
-ZW5kIHRvIHBvc3QgYSBzZXBhcmF0ZSBzZXJpZXMsIHRvIGJlCgkgICAgcmV2aWV3ZWQgcGF0Y2gg
-cGVyIHBhdGNoLCBhcyB0aGlzIGlzIHJlYWxseSBhIG1hdHRlcgoJICAgIG9mIHBlcnNvbmFsIHRh
-c3RlLiBIYXJkbHkgd2UnbGwgcmVhY2ggYSBjb25zZW5zdXMgaGVyZS4KCjcuIG1hdGggc3ltYm9s
-czoKCgktIFUrMDBkNyAoJ8OXJyk6IE1VTFRJUExJQ0FUSU9OIFNJR04KCgkgICBUaGlzIG9uZSBp
-cyB1c2VkIG1vc3RseSBkbyBkZXNjcmliZSB2aWRlbyByZXNvbHV0aW9ucywgYnV0IHRoaXMgaXMK
-CSAgIG9uIGEgc21hbGxlciBjaGFuZ2VzZXQgdGhhbiB0aGUgb25lcyB0aGF0IHVzZSAieCIgbGV0
-dGVyLgoKCS0gVSsyMjE3ICgn4oiXJyk6IEFTVEVSSVNLIE9QRVJBVE9SCgoJICAgVGhpcyBpcyB1
-c2VkIG9ubHkgaGVyZToKCQlEb2N1bWVudGF0aW9uL2ZpbGVzeXN0ZW1zL2V4dDQvYmxvY2tncm91
-cC5yc3Q6ZmlsZXN5c3RlbSBzaXplIHRvIDJeMjEg4oiXIDJeMjcgPSAyXjQ4Ynl0ZXMgb3IgMjU2
-VGlCLgoKCSAgIFByb2JhYmx5IGFkZGVkIGJ5IHNvbWUgY29udmVyc2lvbiB0b29sLiBJTU8sIHRo
-aXMgb25lIHNob3VsZAoJICAgYWxzbyBiZSByZXBsYWNlZCBieSBhbiBBU0NJSSBhc3Rlcmlzay4K
-CkkgZ3Vlc3MgSSdsbCBwb3N0IGEgcGF0Y2ggZm9yIHRoZSBBU1RFUklTSyBPUEVSQVRPUi4KVGhh
-bmtzLApNYXVybwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
-Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
-bgo=
+
+--===============4080042869979177764==
+Content-Type: multipart/signed; micalg="sha-256";
+	protocol="application/x-pkcs7-signature";
+	boundary="=-u7lujVc2VeBAWx71Tyhx"
+
+
+--=-u7lujVc2VeBAWx71Tyhx
+Content-Type: text/plain; charset="UTF-7"
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, 2021-05-15 at 10:22 +-0200, Mauro Carvalho Chehab wrote:
++AD4 +AD4 +AD4      Here, +ADw-CTRL+AD4APA-SHIFT+AD4-U is not working. No i=
+dea why. I haven't=20
++AD4 +AD4 +AD4      test it for +ACo-years+ACo, as I din't see any reason w=
+hy I would
++AD4 +AD4 +AD4      need to type UTF-8 characters by numbers until we start=
+ed
++AD4 +AD4 +AD4      this thread. =20
++AD4 +AD4=20
++AD4 +AD4 Please provide the bug number for this+ADs I'd like to track it.
++AD4=20
++AD4 Just opened a BZ and added you as c/c.
+
+Thanks.
+
++AD4 Let's take one step back, in order to return to the intents of this
++AD4 UTF-8, as the discussions here are not centered into the patches, but
++AD4 instead, on what to do and why.
++AD4=20
++AD4 -
++AD4=20
++AD4 This discussion started originally at linux-doc ML.
++AD4=20
++AD4 While discussing about an issue when machine's locale was not set
++AD4 to UTF-8 on a build VM,=20
+
+Stop. Stop +ACo-right+ACo there before you go any further.
+
+The machine's locale should have +ACo-nothing+ACo to do with anything.
+
+When you view this email, it comes with a Content-Type: header which
+explicitly tells you the character set that the message is encoded in,=20
+which I think I've set to UTF-7.
+
+When showing you the mail, your system has to interpret the bytes of
+the content using +ACo-that+ACo character set encoding. Anything else is ju=
+st
+fundamentally broken. Your system locale has +ACo-nothing+ACo to do with it=
+.
+
+If your local system is running EBCDIC that doesn't +ACo-matter+ACo.
+
+Now, the character set encoding of the kernel source and documentation
+text files is UTF-8. It isn't EBCDIC, it isn't ISO8859-15 or any of the
+legacy crap. It isn't system locale either, unless your system locale
++ACo-happens+ACo to be UTF-8.
+
+UTF-8 +ACo-happens+ACo to be compatible with ASCII for the limited subset o=
+f
+characters which ASCII contains, sure +IBQ just as +ACo-many+ACo, but not a=
+ll, of
+the legacy 8-bit character sets are also a superset of ASCII's 7 bits.
+
+But if the docs contain +ACo-any+ACo characters which aren't ASCII, and you
+build them with a broken build system which assumes ASCII, you are
+going to produce wrong output. There is +ACo-no+ACo substitute for fixing t=
+he
++ACo-actual+ACo bug which started all this, and ensuring your build system =
+(or
+whatever) uses the +ACo-actual+ACo encoding of the text files it's processi=
+ng,
+instead of making stupid and bogus assumptions based on a system
+default.
+
+You concede keeping U+-00a9 +AKk COPYRIGHT SIGN. And that's encoded in UTF-
+8 as two bytes 0xC2 0xA9. If some broken build system +ACo-assumes+ACo thos=
+e
+bytes are ISO8859-15 it'll take them to mean two separate characters
+
+    U+-00C2 +AMI LATIN CAPITAL LETTER A WITH CIRCUMFLEX
+    U+-00A9 +AKk COPYRIGHT SIGN
+
+Your broken build system that started all this is never going to be
++ACo-anything+ACo other than broken. You can only paper over the cracks and
+make it slightly less likely that people will notice in the common
+case, perhaps? That's all you do by +ACo-reducing+ACo the use of non-ASCII,
+unless you're going to drag us all the way back to the 1980s and
+strictly limit us to pure ASCII, using the equivalent of trigraphs for
++ACo-anything+ACo outside the 0-127 character ranges.
+
+And even if you did that, systems which use EBCDIC as their local
+encoding would +ACo-still+ACo be broken, if they have the same bug you star=
+ted
+from. Because EBCDIC isn't compatible with ASCII +ACo-even+ACo for the firs=
+t 7
+bits.
+
+
++AD4 we discovered that some converted docs ended
++AD4 with BOM characters. Those specific changes were introduced by some
++AD4 of my convert patches, probably converted via pandoc.
++AD4=20
++AD4 So, I went ahead in order to check what other possible weird things
++AD4 were introduced by the conversion, where several scripts and tools
++AD4 were used on files that had already a different markup.
++AD4=20
++AD4 I actually checked the current UTF-8 issues, and asked people at
++AD4 linux-doc to comment what of those are valid usecases, and what
++AD4 should be replaced by plain ASCII.
+
+No, these aren't +ACI-UTF-8 issues+ACI. Those are +ACo-conversion+ACo issue=
+s, and
+would still be there if the output of the conversion had been UTF-7,
+UCS-16, etc. Or +ACo-even+ACo if the output of the conversion had been
+trigraph-like stuff like '--' for emdash. It's +ACo-nothing+ACo to do with =
+the
+encoding that we happen to be using.
+
+Fixing the conversion issues makes a lot of sense. Try to do it without
+making +ACo-any+ACo mention of UTF-8 at all.
+
++AD4 In summary, based on the discussions we have so far, I suspect that
++AD4 there's not much to be discussed for the above cases.
++AD4=20
++AD4 So, I'll post a v3 of this series, changing only:
++AD4=20
++AD4         - U+-00a0 (' '): NO-BREAK SPACE
++AD4         - U+-feff ('+/v8'): ZERO WIDTH NO-BREAK SPACE (BOM)
+
+Ack, as long as those make +ACo-no+ACo mention of UTF-8. Except perhaps to
+note that BOM is redundant because UTF-8 doesn't have a byteorder.
+
++AD4 ---
++AD4=20
++AD4 Now, this specific patch series address also this extra case:
++AD4=20
++AD4 5. curly commas:
++AD4=20
++AD4         - U+-2018 ('+IBg'): LEFT SINGLE QUOTATION MARK
++AD4         - U+-2019 ('+IBk'): RIGHT SINGLE QUOTATION MARK
++AD4         - U+-201c ('+IBw'): LEFT DOUBLE QUOTATION MARK
++AD4         - U+-201d ('+IB0'): RIGHT DOUBLE QUOTATION MARK
++AD4=20
++AD4 IMO, those should be replaced by ASCII commas: ' and +ACI.
++AD4=20
++AD4 The rationale is simple:=20
++AD4=20
++AD4 - most were introduced during the conversion from Docbook,
++AD4   markdown and LaTex+ADs
++AD4 - they don't add any extra value, as using +ACI-foo+ACI of +IBw-foo+IB=
+0 means
++AD4   the same thing+ADs
++AD4 - Sphinx already use +ACI-fancy+ACI commas at the output.=20
++AD4=20
++AD4 I guess I will put this on a separate series, as this is not a bug
++AD4 fix, but just a cleanup from the conversion work.
++AD4=20
++AD4 I'll re-post those cleanups on a separate series, for patch per patch
++AD4 review.
+
+Makes sense.=20
+
+The left/right quotation marks exists to make human-readable text much
+easier to read, but the key point here is that they are redundant
+because the tooling already emits them in the +ACo-output+ACo so they don't
+need to be in the source, yes?
+
+As long as the tooling gets it +ACo-right+ACo and uses them where it should=
+,
+that seems sane enough.
+
+However, it +ACo-does+ACo break 'grep', because if I cut/paste a snippet fr=
+om
+the documentation and try to grep for it, it'll no longer match.
+
+Consistency is good, but perhaps we should actually be consistent the
+other way round and always use the left/right versions in the source
++ACo-instead+ACo of relying on the tooling, to make searches work better?
+You claimed to care about that, right?
+
++AD4 The remaining cases are future work, outside the scope of this v2:
++AD4=20
++AD4 6. Hyphen/Dashes and ellipsis
++AD4=20
++AD4         - U+-2212 ('+IhI'): MINUS SIGN
++AD4         - U+-00ad ('+AK0'): SOFT HYPHEN
++AD4         - U+-2010 ('+IBA'): HYPHEN
++AD4=20
++AD4             Those three are used on places where a normal ASCII hyphen=
+/minus
++AD4             should be used instead. There are even a couple of C files=
+ which
++AD4             use them instead of '-' on comments.
++AD4=20
++AD4             IMO are fixes/cleanups from conversions and bad cut-and-pa=
+ste.
+
+That seems to make sense.
+
++AD4         - U+-2013 ('+IBM'): EN DASH
++AD4         - U+-2014 ('+IBQ'): EM DASH
++AD4         - U+-2026 ('+ICY'): HORIZONTAL ELLIPSIS
++AD4=20
++AD4             Those are auto-replaced by Sphinx from +ACI---+ACI, +ACI--=
+--+ACI and +ACI...+ACI,
++AD4             respectively.
++AD4=20
++AD4             I guess those are a matter of personal preference about
++AD4             weather using ASCII or UTF-8.
++AD4=20
++AD4             My personal preference (and Ted seems to have a similar
++AD4             opinion) is to let Sphinx do the conversion.
++AD4=20
++AD4             For those, I intend to post a separate series, to be
++AD4             reviewed patch per patch, as this is really a matter
++AD4             of personal taste. Hardly we'll reach a consensus here.
++AD4=20
+
+Again using the trigraph-like '--' and '...' instead of just using the
+plain text '+IBQ' and '+ICY' breaks searching, because what's in the output
+doesn't match the input. Again consistency is good, but perhaps we
+should standardise on just putting these in their plain text form
+instead of the trigraphs?
+
++AD4 7. math symbols:
++AD4=20
++AD4         - U+-00d7 ('+ANc'): MULTIPLICATION SIGN
++AD4=20
++AD4            This one is used mostly do describe video resolutions, but =
+this is
++AD4            on a smaller changeset than the ones that use +ACI-x+ACI le=
+tter.
+
+I think standardising on +ANc for video resolutions in documentation would
+make it look better and be easier to read.
+
++AD4=20
++AD4         - U+-2217 ('+Ihc'): ASTERISK OPERATOR
++AD4=20
++AD4            This is used only here:
++AD4                 Documentation/filesystems/ext4/blockgroup.rst:filesyst=
+em size to 2+AF4-21 +Ihc 2+AF4-27 +AD0 2+AF4-48bytes or 256TiB.
++AD4=20
++AD4            Probably added by some conversion tool. IMO, this one shoul=
+d
++AD4            also be replaced by an ASCII asterisk.
++AD4=20
++AD4 I guess I'll post a patch for the ASTERISK OPERATOR.
+
+That makes sense.
+
+--=-u7lujVc2VeBAWx71Tyhx
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCECow
+ggUcMIIEBKADAgECAhEA4rtJSHkq7AnpxKUY8ZlYZjANBgkqhkiG9w0BAQsFADCBlzELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
+A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
+bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0EwHhcNMTkwMTAyMDAwMDAwWhcNMjIwMTAxMjM1
+OTU5WjAkMSIwIAYJKoZIhvcNAQkBFhNkd213MkBpbmZyYWRlYWQub3JnMIIBIjANBgkqhkiG9w0B
+AQEFAAOCAQ8AMIIBCgKCAQEAsv3wObLTCbUA7GJqKj9vHGf+Fa+tpkO+ZRVve9EpNsMsfXhvFpb8
+RgL8vD+L133wK6csYoDU7zKiAo92FMUWaY1Hy6HqvVr9oevfTV3xhB5rQO1RHJoAfkvhy+wpjo7Q
+cXuzkOpibq2YurVStHAiGqAOMGMXhcVGqPuGhcVcVzVUjsvEzAV9Po9K2rpZ52FE4rDkpDK1pBK+
+uOAyOkgIg/cD8Kugav5tyapydeWMZRJQH1vMQ6OVT24CyAn2yXm2NgTQMS1mpzStP2ioPtTnszIQ
+Ih7ASVzhV6csHb8Yrkx8mgllOyrt9Y2kWRRJFm/FPRNEurOeNV6lnYAXOymVJwIDAQABo4IB0zCC
+Ac8wHwYDVR0jBBgwFoAUgq9sjPjF/pZhfOgfPStxSF7Ei8AwHQYDVR0OBBYEFLfuNf820LvaT4AK
+xrGK3EKx1DE7MA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUF
+BwMEBggrBgEFBQcDAjBGBgNVHSAEPzA9MDsGDCsGAQQBsjEBAgEDBTArMCkGCCsGAQUFBwIBFh1o
+dHRwczovL3NlY3VyZS5jb21vZG8ubmV0L0NQUzBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3Js
+LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWls
+Q0EuY3JsMIGLBggrBgEFBQcBAQR/MH0wVQYIKwYBBQUHMAKGSWh0dHA6Ly9jcnQuY29tb2RvY2Eu
+Y29tL0NPTU9ET1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcnQwJAYI
+KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmNvbW9kb2NhLmNvbTAeBgNVHREEFzAVgRNkd213MkBpbmZy
+YWRlYWQub3JnMA0GCSqGSIb3DQEBCwUAA4IBAQALbSykFusvvVkSIWttcEeifOGGKs7Wx2f5f45b
+nv2ghcxK5URjUvCnJhg+soxOMoQLG6+nbhzzb2rLTdRVGbvjZH0fOOzq0LShq0EXsqnJbbuwJhK+
+PnBtqX5O23PMHutP1l88AtVN+Rb72oSvnD+dK6708JqqUx2MAFLMevrhJRXLjKb2Mm+/8XBpEw+B
+7DisN4TMlLB/d55WnT9UPNHmQ+3KFL7QrTO8hYExkU849g58Dn3Nw3oCbMUgny81ocrLlB2Z5fFG
+Qu1AdNiBA+kg/UxzyJZpFbKfCITd5yX49bOriL692aMVDyqUvh8fP+T99PqorH4cIJP6OxSTdxKM
+MIIFHDCCBASgAwIBAgIRAOK7SUh5KuwJ6cSlGPGZWGYwDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
+ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTE5MDEwMjAwMDAwMFoXDTIyMDEwMTIz
+NTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBALL98Dmy0wm1AOxiaio/bxxn/hWvraZDvmUVb3vRKTbDLH14bxaW
+/EYC/Lw/i9d98CunLGKA1O8yogKPdhTFFmmNR8uh6r1a/aHr301d8YQea0DtURyaAH5L4cvsKY6O
+0HF7s5DqYm6tmLq1UrRwIhqgDjBjF4XFRqj7hoXFXFc1VI7LxMwFfT6PStq6WedhROKw5KQytaQS
+vrjgMjpICIP3A/CroGr+bcmqcnXljGUSUB9bzEOjlU9uAsgJ9sl5tjYE0DEtZqc0rT9oqD7U57My
+ECIewElc4VenLB2/GK5MfJoJZTsq7fWNpFkUSRZvxT0TRLqznjVepZ2AFzsplScCAwEAAaOCAdMw
+ggHPMB8GA1UdIwQYMBaAFIKvbIz4xf6WYXzoHz0rcUhexIvAMB0GA1UdDgQWBBS37jX/NtC72k+A
+CsaxitxCsdQxOzAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEF
+BQcDBAYIKwYBBQUHAwIwRgYDVR0gBD8wPTA7BgwrBgEEAbIxAQIBAwUwKzApBggrBgEFBQcCARYd
+aHR0cHM6Ly9zZWN1cmUuY29tb2RvLm5ldC9DUFMwWgYDVR0fBFMwUTBPoE2gS4ZJaHR0cDovL2Ny
+bC5jb21vZG9jYS5jb20vQ09NT0RPUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFp
+bENBLmNybDCBiwYIKwYBBQUHAQEEfzB9MFUGCCsGAQUFBzAChklodHRwOi8vY3J0LmNvbW9kb2Nh
+LmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWlsQ0EuY3J0MCQG
+CCsGAQUFBzABhhhodHRwOi8vb2NzcC5jb21vZG9jYS5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAC20spBbrL71ZEiFrbXBHonzhhirO1sdn+X+O
+W579oIXMSuVEY1LwpyYYPrKMTjKECxuvp24c829qy03UVRm742R9Hzjs6tC0oatBF7KpyW27sCYS
+vj5wbal+TttzzB7rT9ZfPALVTfkW+9qEr5w/nSuu9PCaqlMdjABSzHr64SUVy4ym9jJvv/FwaRMP
+gew4rDeEzJSwf3eeVp0/VDzR5kPtyhS+0K0zvIWBMZFPOPYOfA59zcN6AmzFIJ8vNaHKy5QdmeXx
+RkLtQHTYgQPpIP1Mc8iWaRWynwiE3ecl+PWzq4i+vdmjFQ8qlL4fHz/k/fT6qKx+HCCT+jsUk3cS
+jDCCBeYwggPOoAMCAQICEGqb4Tg7/ytrnwHV2binUlYwDQYJKoZIhvcNAQEMBQAwgYUxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMSswKQYDVQQDEyJDT01PRE8gUlNBIENlcnRpZmljYXRp
+b24gQXV0aG9yaXR5MB4XDTEzMDExMDAwMDAwMFoXDTI4MDEwOTIzNTk1OVowgZcxCzAJBgNVBAYT
+AkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNV
+BAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAvrOeV6wodnVAFsc4A5jTxhh2IVDzJXkLTLWg0X06WD6cpzEup/Y0dtmEatrQPTRI5Or1u6zf
++bGBSyD9aH95dDSmeny1nxdlYCeXIoymMv6pQHJGNcIDpFDIMypVpVSRsivlJTRENf+RKwrB6vcf
+WlP8dSsE3Rfywq09N0ZfxcBa39V0wsGtkGWC+eQKiz4pBZYKjrc5NOpG9qrxpZxyb4o4yNNwTqza
+aPpGRqXB7IMjtf7tTmU2jqPMLxFNe1VXj9XB1rHvbRikw8lBoNoSWY66nJN/VCJv5ym6Q0mdCbDK
+CMPybTjoNCQuelc0IAaO4nLUXk0BOSxSxt8kCvsUtQIDAQABo4IBPDCCATgwHwYDVR0jBBgwFoAU
+u69+Aj36pvE8hI6t7jiY7NkyMtQwHQYDVR0OBBYEFIKvbIz4xf6WYXzoHz0rcUhexIvAMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMBEGA1UdIAQKMAgwBgYEVR0gADBMBgNVHR8E
+RTBDMEGgP6A9hjtodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDZXJ0aWZpY2F0aW9u
+QXV0aG9yaXR5LmNybDBxBggrBgEFBQcBAQRlMGMwOwYIKwYBBQUHMAKGL2h0dHA6Ly9jcnQuY29t
+b2RvY2EuY29tL0NPTU9ET1JTQUFkZFRydXN0Q0EuY3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2Nz
+cC5jb21vZG9jYS5jb20wDQYJKoZIhvcNAQEMBQADggIBAHhcsoEoNE887l9Wzp+XVuyPomsX9vP2
+SQgG1NgvNc3fQP7TcePo7EIMERoh42awGGsma65u/ITse2hKZHzT0CBxhuhb6txM1n/y78e/4ZOs
+0j8CGpfb+SJA3GaBQ+394k+z3ZByWPQedXLL1OdK8aRINTsjk/H5Ns77zwbjOKkDamxlpZ4TKSDM
+KVmU/PUWNMKSTvtlenlxBhh7ETrN543j/Q6qqgCWgWuMAXijnRglp9fyadqGOncjZjaaSOGTTFB+
+E2pvOUtY+hPebuPtTbq7vODqzCM6ryEhNhzf+enm0zlpXK7q332nXttNtjv7VFNYG+I31gnMrwfH
+M5tdhYF/8v5UY5g2xANPECTQdu9vWPoqNSGDt87b3gXb1AiGGaI06vzgkejL580ul+9hz9D0S0U4
+jkhJiA7EuTecP/CFtR72uYRBcunwwH3fciPjviDDAI9SnC/2aPY8ydehzuZutLbZdRJ5PDEJM/1t
+yZR2niOYihZ+FCbtf3D9mB12D4ln9icgc7CwaxpNSCPt8i/GqK2HsOgkL3VYnwtx7cJUmpvVdZ4o
+gnzgXtgtdk3ShrtOS1iAN2ZBXFiRmjVzmehoMof06r1xub+85hFQzVxZx5/bRaTKTlL8YXLI8nAb
+R9HWdFqzcOoB/hxfEyIQpx9/s81rgzdEZOofSlZHynoSMYIDyjCCA8YCAQEwga0wgZcxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
+ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA4rtJSHkq7AnpxKUY8ZlYZjANBglghkgB
+ZQMEAgEFAKCCAe0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjEw
+NTE1MDkyNDI4WjAvBgkqhkiG9w0BCQQxIgQg49GQz/BbeEPj001ez4MuF6hd0h51zt25HOFj2G8v
+OQEwgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
+TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
+PTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1h
+aWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMIHABgsqhkiG9w0BCRACCzGBsKCBrTCBlzELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
+A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
+bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMA0GCSqGSIb3
+DQEBAQUABIIBAChecHYKH1pVDQ14kpVQyKM/0TfFVqChrg+BV+F5I4XDPsXAbXtzIRgpKq0mubC7
+AWub/8FyhZyd78JqnN1Hn4t32RZJzKoOg17VH6cMdko33uHc4IMzNzbQYDeNGaRz1rZnK2VLStPS
+hwZBoREvfRk1IEapEVfsL7FKU5k/3pk9QeB/fub8w2OsifwcmWarIEfEdlN1zFdv/CWg3t9sJANE
+CfBdV9U2MCB1/Wadvd/R/O53ljOC7I9i0dK89gWWSC+vnQqlmiAAhpDwTD6lA/XP8s67Ic5r0+Yf
+y81ku4xSOAaCwM6VXj3tSVck3A6WbQzCne3NSF/EJu9Tv2qKsssAAAAAAAA=
+
+
+--=-u7lujVc2VeBAWx71Tyhx--
+
+
+--===============4080042869979177764==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4080042869979177764==--
+
