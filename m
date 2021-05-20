@@ -1,59 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C7CF38B4A0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 May 2021 18:49:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC30B38B949
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 May 2021 23:58:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1C69740576;
-	Thu, 20 May 2021 16:49:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CCF1414EE;
+	Thu, 20 May 2021 21:58:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iZa-5AZZ6W6o; Thu, 20 May 2021 16:49:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4Db81Wq96IhN; Thu, 20 May 2021 21:58:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B25F40561;
-	Thu, 20 May 2021 16:49:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AE39A414ED;
+	Thu, 20 May 2021 21:58:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 32BF71BF956
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:49:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A4C581BF3C0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 21:58:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 214DC83A4E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:49:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8B7EE844FD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 21:58:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EUIYy7G1I5mQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 May 2021 16:49:01 +0000 (UTC)
+ with ESMTP id mGEjCAIXy3Qx for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 May 2021 21:58:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F11C084365
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:49:00 +0000 (UTC)
-IronPort-SDR: tIDrM6eqvWIfB4HlPbQlmwsT3Lzvvg1WvfKaaLHfybneED9zblMe0ViOLC01O7giB9aAP9/hPe
- rAEh3kJ9PbUw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9989"; a="188401254"
-X-IronPort-AV: E=Sophos;i="5.82,313,1613462400"; d="scan'208";a="188401254"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2021 09:49:00 -0700
-IronPort-SDR: TRWDJ+WaM/Z1hToHMuBVXM8gNlUPUQKzEpS67rfFX2uh2x3TQAs2IeR3QdcQYf2tlRLReyq8jM
- +Ozo+J6H5rew==
-X-IronPort-AV: E=Sophos;i="5.82,313,1613462400"; d="scan'208";a="543659643"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2021 09:48:59 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Thu, 20 May 2021 09:48:50 -0700
-Message-Id: <20210520164850.1884656-9-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
-In-Reply-To: <20210520164850.1884656-1-jacob.e.keller@intel.com>
-References: <20210520164850.1884656-1-jacob.e.keller@intel.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8473C844F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 21:58:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1621547883;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GkTVO6S3XAPMr10XOopEA4GoA4JfOcUYU8NEFBnvEmw=;
+ b=X3QnwKOjsSFLCL8ZOzIZpb8v8gn52yzvkZ7Fu0N8FRieaXTR9WVjEeJbGoaki8EIcH6bkn
+ JHE+CgCDvyWOvax+sW6NXPCtssChyYWmj0AMWidx8PXqJQQnCTK8Pql8EFpPaOyG/D8WkN
+ WTlq9+UyX0nLMcScaO48hPT3v0DjBdQ=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-349-0Xx5Sy7mPw297Vt6WNhCmA-1; Thu, 20 May 2021 17:58:01 -0400
+X-MC-Unique: 0Xx5Sy7mPw297Vt6WNhCmA-1
+Received: by mail-lf1-f69.google.com with SMTP id
+ g16-20020ac24d900000b0290239d19e27ffso3520887lfe.8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 14:58:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=GkTVO6S3XAPMr10XOopEA4GoA4JfOcUYU8NEFBnvEmw=;
+ b=XmgRANnK+DjWruoeKn7so8KOrv6OclLYUTNO/y01sMr1uURuQ4uFOfpGfudbdlWMG3
+ 69IbW5JwcE+ez9DJrCEPM6znUmIhN7qyBNNH58Y5fsLyuKELuddB+4fF8wy7CFWaR/Ri
+ jUYTDhzXh8T92VQSJT2XizF9HFPPpGe8oU296M2lJa7b4JVKcDQs/OTpJAX4KS6U6U4P
+ LvmlfKMVlLbmDGZ31aTmxi39qRQXL0VNTxESZUjJ2P89geaQSFNvLziG7F//Je0W1S/j
+ X23TxNu9oB/CwU3SE9Cn6bD1NQYy1SQlEqGeLnbj1Rn2gMeIXpLLcmXUd2S2mC1xQYJo
+ BlTQ==
+X-Gm-Message-State: AOAM533zgyw/2gPWqaiUusZk/xlv+2rWsVi9awcs2zycC83nEwvoG9Wy
+ tmhZfr9kZNvFf1mhf9o+hfAp3K1gaQMb1+UYJQvyqTib3h9yK91mIIjjV8jP71pJlJVV71GkRT5
+ uwEAF/wutr44XQPxYK8Mkoqj+LKfCLr94AovspE53VNu7aA==
+X-Received: by 2002:a05:6512:3b93:: with SMTP id
+ g19mr4668380lfv.548.1621547879600; 
+ Thu, 20 May 2021 14:57:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycNBHNApdEMPPfyR1CFYsoWikWJFtl6kPpEuS6x/SuQ79H+NxWtvmFXVfNLuDCxOYam0+CaH+Jtui15wxD2Gc=
+X-Received: by 2002:a05:6512:3b93:: with SMTP id
+ g19mr4668344lfv.548.1621547879329; 
+ Thu, 20 May 2021 14:57:59 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 8/8] ice: enable transmit timestamps for
- E810 devices
+References: <20210504092340.00006c61@intel.com>
+ <87pmxpdr32.ffs@nanos.tec.linutronix.de>
+ <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
+ <87im3gewlu.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+In-Reply-To: <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+From: Nitesh Lal <nilal@redhat.com>
+Date: Thu, 20 May 2021 17:57:47 -0400
+Message-ID: <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
+To: Thomas Gleixner <tglx@linutronix.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+ Robin Murphy <robin.murphy@arm.com>, Marcelo Tosatti <mtosatti@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH tip:irq/core v1] genirq: remove
+ auto-set of the mask when setting the hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,801 +102,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sean Lion <sean.lion@intel.com>
+Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+ "peterz@infradead.org" <peterz@infradead.org>,
+ Alex Belits <abelits@marvell.com>, Ingo Molnar <mingo@kernel.org>,
+ "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>, Marc Zyngier <maz@kernel.org>,
+ "jinyuqi@huawei.com" <jinyuqi@huawei.com>, intel-wired-lan@lists.osuosl.org,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ "frederic@kernel.org" <frederic@kernel.org>,
+ "rostedt@goodmis.org" <rostedt@goodmis.org>,
+ "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
+ "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
+ Neil Horman <nhorman@tuxdriver.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for enabling Tx timestamp requests for outgoing packets on
-E810 devices.
+On Mon, May 17, 2021 at 8:23 PM Nitesh Lal <nilal@redhat.com> wrote:
+>
+> On Mon, May 17, 2021 at 8:04 PM Thomas Gleixner <tglx@linutronix.de> wrote:
+> >
+> > On Mon, May 17 2021 at 18:44, Nitesh Lal wrote:
+> > > On Mon, May 17, 2021 at 4:48 PM Thomas Gleixner <tglx@linutronix.de> wrote:
+> > >> The hint was added so that userspace has a better understanding where it
+> > >> should place the interrupt. So if irqbalanced ignores it anyway, then
+> > >> what's the point of the hint? IOW, why is it still used drivers?
+> > >>
+> > > Took a quick look at the irqbalance repo and saw the following commit:
+> > >
+> > > dcc411e7bf    remove affinity_hint infrastructure
+> > >
+> > > The commit message mentions that "PJ is redesiging how affinity hinting
+> > > works in the kernel, the future model will just tell us to ignore an IRQ,
+> > > and the kernel will handle placement for us.  As such we can remove the
+> > > affinity_hint recognition entirely".
+> >
+> > No idea who PJ is. I really love useful commit messages. Maybe Neil can
+> > shed some light on that.
+> >
+> > > This does indicate that apparently, irqbalance moved away from the usage of
+> > > affinity_hint. However, the next question is what was this future
+> > > model?
+> >
+> > I might have missed something in the last 5 years, but that's the first
+> > time I hear about someone trying to cleanup that thing.
+> >
+> > > I don't know but I can surely look into it if that helps or maybe someone
+> > > here already knows about it?
+> >
+> > I CC'ed Neil :)
+>
+> Thanks, I have added PJ Waskiewicz as well who I think was referred in
+> that commit message as PJ.
+>
+> >
+> > >> Now there is another aspect to that. What happens if irqbalanced does
+> > >> not run at all and a driver relies on the side effect of the hint
+> > >> setting the initial affinity. Bah...
+> > >>
+> > >
+> > > Right, but if they only rely on this API so that the IRQs are spread across
+> > > all the CPUs then that issue is already resolved and these other drivers
+> > > should not regress because of changing this behavior. Isn't it?
+> >
+> > Is that true for all architectures?
+>
+> Unfortunately, I don't know and that's probably why we have to be careful.
 
-The ice hardware can support multiple outstanding Tx timestamp requests.
-When sending a descriptor to hardware, a Tx timestamp request is made by
-setting a request bit, and assigning an index that represents which Tx
-timestamp index to store the timestamp in.
+I think here to ensure that we are not breaking any of the drivers we have
+to first analyze all the existing drivers and understand how they are using
+this API.
+AFAIK there are three possible scenarios:
 
-Hardware makes no effort to synchronize the index use, so it is up to
-software to ensure that Tx timestamp indexes are not re-used before the
-timestamp is reported back.
+- A driver use this API to spread the IRQs
+  + For this case we should be safe considering the spreading is naturally
+    done from the IRQ subsystem itself.
 
-To do this, introduce a Tx timestamp tracker which will keep track of
-currently in-use indexes.
+- A driver use this API to actually set the hint
+  + These drivers should have no functional impact because of this revert
 
-In the hot path, if a packet has a timestamp request, an index will be
-requested from the tracker. Unfortunately, this does require a lock as
-the indexes are shared across all queues on a PHY. There are not enough
-indexes to reliably assign only 1 to each queue.
+- Driver use this API to force a certain affinity mask
+  + In this case we have to replace the API with the irq_force_affinity()
 
-For the E810 devices, the timestamp indexes are not shared across PHYs,
-so each port can have its own tracking.
+I can start looking into the individual drivers, however, testing them will
+be a challenge.
 
-Once hardware captures a timestamp, an interrupt is fired. In this
-interrupt, trigger a new work item that will figure out which timestamp
-was completed, and report the timestamp back to the stack.
+Any thoughts?
 
-This function loops through the Tx timestamp indexes and checks whether
-there is now a valid timestamp. If so, it clears the PHY timestamp
-indication in the PHY memory, locks and removes the SKB and bit in the
-tracker, then reports the timestamp to the stack.
-
-It is possible in some cases that a timestamp request will be initiated
-but never completed. This might occur if the packet is dropped by
-software or hardware before it reaches the PHY.
-
-Add a task to the periodic work function that will check whether
-a timestamp request is more than a few seconds old. If so, the timestamp
-index is cleared in the PHY, and the SKB is released.
-
-Just as with Rx timestamps, the Tx timestamps are only 40 bits wide, and
-use the same overall logic for extending to 64 bits of nanoseconds.
-
-With this change, E810 devices should be able to perform basic PTP
-functionality.
-
-Future changes will extend the support to cover the E822-based devices.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c     |   9 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c  |   6 +-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   1 +
- drivers/net/ethernet/intel/ice/ice_lib.c      |   1 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   5 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 369 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ptp.h      |  91 +++++
- drivers/net/ethernet/intel/ice/ice_txrx.c     |  37 ++
- drivers/net/ethernet/intel/ice/ice_txrx.h     |   3 +
- 9 files changed, 518 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 0b44baf0dcff..c36057efc7ae 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -287,6 +287,15 @@ ice_setup_tx_ctx(struct ice_ring *ring, struct ice_tlan_ctx *tlan_ctx, u16 pf_q)
- 	/* make sure the context is associated with the right VSI */
- 	tlan_ctx->src_vsi = ice_get_hw_vsi_num(hw, vsi->idx);
- 
-+	/* Restrict Tx timestamps to the PF VSI */
-+	switch (vsi->type) {
-+	case ICE_VSI_PF:
-+		tlan_ctx->tsyn_ena = 1;
-+		break;
-+	default:
-+		break;
-+	}
-+
- 	tlan_ctx->tso_ena = ICE_TX_LEGACY;
- 	tlan_ctx->tso_qnum = pf_q;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 38d784742bf3..d95a5daca114 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3204,14 +3204,16 @@ ice_get_ts_info(struct net_device *dev, struct ethtool_ts_info *info)
- 	if (!test_bit(ICE_FLAG_PTP, pf->flags))
- 		return ethtool_op_get_ts_info(dev, info);
- 
--	info->so_timestamping = SOF_TIMESTAMPING_RX_SOFTWARE |
-+	info->so_timestamping = SOF_TIMESTAMPING_TX_SOFTWARE |
-+				SOF_TIMESTAMPING_RX_SOFTWARE |
- 				SOF_TIMESTAMPING_SOFTWARE |
-+				SOF_TIMESTAMPING_TX_HARDWARE |
- 				SOF_TIMESTAMPING_RX_HARDWARE |
- 				SOF_TIMESTAMPING_RAW_HARDWARE;
- 
- 	info->phc_index = ice_get_ptp_clock_index(pf);
- 
--	info->tx_types = BIT(HWTSTAMP_TX_OFF);
-+	info->tx_types = BIT(HWTSTAMP_TX_OFF) | BIT(HWTSTAMP_TX_ON);
- 
- 	info->rx_filters = BIT(HWTSTAMP_FILTER_NONE) | BIT(HWTSTAMP_FILTER_ALL);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 9ea3529902dd..58e8604a8e1e 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -204,6 +204,7 @@
- #define PFINT_MBX_CTL_ITR_INDX_M		ICE_M(0x3, 11)
- #define PFINT_MBX_CTL_CAUSE_ENA_M		BIT(30)
- #define PFINT_OICR				0x0016CA00
-+#define PFINT_OICR_TSYN_TX_M			BIT(11)
- #define PFINT_OICR_ECC_ERR_M			BIT(16)
- #define PFINT_OICR_MAL_DETECT_M			BIT(19)
- #define PFINT_OICR_GRST_M			BIT(20)
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 938c1823f393..2fb481e632b1 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1287,6 +1287,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 		ring->reg_idx = vsi->txq_map[i];
- 		ring->ring_active = false;
- 		ring->vsi = vsi;
-+		ring->tx_tstamps = &pf->ptp.port.tx;
- 		ring->dev = dev;
- 		ring->count = vsi->num_tx_desc;
- 		WRITE_ONCE(vsi->tx_rings[i], ring);
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index e1957f1a61ce..851a8e60734f 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2801,6 +2801,11 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
- 		}
- 	}
- 
-+	if (oicr & PFINT_OICR_TSYN_TX_M) {
-+		ena_mask &= ~PFINT_OICR_TSYN_TX_M;
-+		ice_ptp_process_ts(pf);
-+	}
-+
- 	if (oicr & PFINT_OICR_HMC_ERR_M) {
- 		ena_mask &= ~PFINT_OICR_HMC_ERR_M;
- 		dev_dbg(dev, "HMC Error interrupt - info 0x%x, data 0x%x\n",
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 5cac29509a61..4608a69acba2 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -4,6 +4,37 @@
- #include "ice.h"
- #include "ice_lib.h"
- 
-+/**
-+ * ice_set_tx_tstamp - Enable or disable Tx timestamping
-+ * @pf: The PF pointer to search in
-+ * @on: bool value for whether timestamps are enabled or disabled
-+ */
-+static void ice_set_tx_tstamp(struct ice_pf *pf, bool on)
-+{
-+	struct ice_vsi *vsi;
-+	u32 val;
-+	u16 i;
-+
-+	vsi = ice_get_main_vsi(pf);
-+	if (!vsi)
-+		return;
-+
-+	/* Set the timestamp enable flag for all the Tx rings */
-+	ice_for_each_rxq(vsi, i) {
-+		if (!vsi->tx_rings[i])
-+			continue;
-+		vsi->tx_rings[i]->ptp_tx = on;
-+	}
-+
-+	/* Configure the Tx timestamp interrupt */
-+	val = rd32(&pf->hw, PFINT_OICR_ENA);
-+	if (on)
-+		val |= PFINT_OICR_TSYN_TX_M;
-+	else
-+		val &= ~PFINT_OICR_TSYN_TX_M;
-+	wr32(&pf->hw, PFINT_OICR_ENA, val);
-+}
-+
- /**
-  * ice_set_rx_tstamp - Enable or disable Rx timestamping
-  * @pf: The PF pointer to search in
-@@ -36,12 +67,16 @@ static void ice_set_rx_tstamp(struct ice_pf *pf, bool on)
-  */
- static void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena)
- {
-+	ice_set_tx_tstamp(pf, ena);
- 	ice_set_rx_tstamp(pf, ena);
- 
--	if (ena)
-+	if (ena) {
- 		pf->ptp.tstamp_config.rx_filter = HWTSTAMP_FILTER_ALL;
--	else
-+		pf->ptp.tstamp_config.tx_type = HWTSTAMP_TX_ON;
-+	} else {
- 		pf->ptp.tstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
-+		pf->ptp.tstamp_config.tx_type = HWTSTAMP_TX_OFF;
-+	}
- }
- 
- /**
-@@ -319,6 +354,40 @@ static u64 ice_ptp_extend_32b_ts(u64 cached_phc_time, u32 in_tstamp)
- 	return ns;
- }
- 
-+/**
-+ * ice_ptp_extend_40b_ts - Convert a 40b timestamp to 64b nanoseconds
-+ * @pf: Board private structure
-+ * @in_tstamp: Ingress/egress 40b timestamp value
-+ *
-+ * The Tx and Rx timestamps are 40 bits wide, including 32 bits of nominal
-+ * nanoseconds, 7 bits of sub-nanoseconds, and a valid bit.
-+ *
-+ *  *--------------------------------------------------------------*
-+ *  | 32 bits of nanoseconds | 7 high bits of sub ns underflow | v |
-+ *  *--------------------------------------------------------------*
-+ *
-+ * The low bit is an indicator of whether the timestamp is valid. The next
-+ * 7 bits are a capture of the upper 7 bits of the sub-nanosecond underflow,
-+ * and the remaining 32 bits are the lower 32 bits of the PHC timer.
-+ *
-+ * It is assumed that the caller verifies the timestamp is valid prior to
-+ * calling this function.
-+ *
-+ * Extract the 32bit nominal nanoseconds and extend them. Use the cached PHC
-+ * time stored in the device private PTP structure as the basis for timestamp
-+ * extension.
-+ *
-+ * See ice_ptp_extend_32b_ts for a detailed explanation of the extension
-+ * algorithm.
-+ */
-+static u64 ice_ptp_extend_40b_ts(struct ice_pf *pf, u64 in_tstamp)
-+{
-+	const u64 mask = GENMASK_ULL(31, 0);
-+
-+	return ice_ptp_extend_32b_ts(pf->ptp.cached_phc_time,
-+				     (in_tstamp >> 8) & mask);
-+}
-+
- /**
-  * ice_ptp_read_time - Read the time from the device
-  * @pf: Board private structure
-@@ -586,6 +655,10 @@ ice_ptp_set_timestamp_mode(struct ice_pf *pf, struct hwtstamp_config *config)
- 
- 	switch (config->tx_type) {
- 	case HWTSTAMP_TX_OFF:
-+		ice_set_tx_tstamp(pf, false);
-+		break;
-+	case HWTSTAMP_TX_ON:
-+		ice_set_tx_tstamp(pf, true);
- 		break;
- 	default:
- 		return -ERANGE;
-@@ -736,6 +809,291 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
- 	return 0;
- }
- 
-+/**
-+ * ice_ptp_tx_tstamp_work - Process Tx timestamps for a port
-+ * @work: pointer to the kthread_work struct
-+ *
-+ * Process timestamps captured by the PHY associated with this port. To do
-+ * this, loop over each index with a waiting skb.
-+ *
-+ * If a given index has a valid timestamp, perform the following steps:
-+ *
-+ * 1) copy the timestamp out of the PHY register
-+ * 4) clear the timestamp valid bit in the PHY register
-+ * 5) unlock the index by clearing the associated in_use bit.
-+ * 2) extend the 40b timestamp value to get a 64bit timestamp
-+ * 3) send that timestamp to the stack
-+ *
-+ * After looping, if we still have waiting SKBs, then re-queue the work. This
-+ * may cause us effectively poll even when not strictly necessary. We do this
-+ * because it's possible a new timestamp was requested around the same time as
-+ * the interrupt. In some cases hardware might not interrupt us again when the
-+ * timestamp is captured.
-+ *
-+ * Note that we only take the tracking lock when clearing the bit and when
-+ * checking if we need to re-queue this task. The only place where bits can be
-+ * set is the hard xmit routine where an SKB has a request flag set. The only
-+ * places where we clear bits are this work function, or the periodic cleanup
-+ * thread. If the cleanup thread clears a bit we're processing we catch it
-+ * when we lock to clear the bit and then grab the SKB pointer. If a Tx thread
-+ * starts a new timestamp, we might not begin processing it right away but we
-+ * will notice it at the end when we re-queue the work item. If a Tx thread
-+ * starts a new timestamp just after this function exits without re-queuing,
-+ * the interrupt when the timestamp finishes should trigger. Avoiding holding
-+ * the lock for the entire function is important in order to ensure that Tx
-+ * threads do not get blocked while waiting for the lock.
-+ */
-+static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
-+{
-+	struct ice_ptp_port *ptp_port;
-+	struct ice_ptp_tx *tx;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	u8 idx;
-+
-+	tx = container_of(work, struct ice_ptp_tx, work);
-+	if (!tx->init)
-+		return;
-+
-+	ptp_port = container_of(tx, struct ice_ptp_port, tx);
-+	pf = ptp_port_to_pf(ptp_port);
-+	hw = &pf->hw;
-+
-+	for_each_set_bit(idx, tx->in_use, tx->len) {
-+		struct skb_shared_hwtstamps shhwtstamps = {};
-+		u8 phy_idx = idx + tx->quad_offset;
-+		enum ice_status status;
-+		u64 raw_tstamp, tstamp;
-+		struct sk_buff *skb;
-+
-+		status = ice_read_phy_tstamp(hw, tx->quad, phy_idx,
-+					     &raw_tstamp);
-+		if (status)
-+			continue;
-+
-+		/* Check if the timestamp is valid */
-+		if (!(raw_tstamp & ICE_PTP_TS_VALID))
-+			continue;
-+
-+		/* clear the timestamp register, so that it won't show valid
-+		 * again when re-used.
-+		 */
-+		ice_clear_phy_tstamp(hw, tx->quad, phy_idx);
-+
-+		/* The timestamp is valid, so we'll go ahead and clear this
-+		 * index and then send the timestamp up to the stack.
-+		 */
-+		spin_lock(&tx->lock);
-+		clear_bit(idx, tx->in_use);
-+		skb = tx->tstamps[idx].skb;
-+		tx->tstamps[idx].skb = NULL;
-+		spin_unlock(&tx->lock);
-+
-+		/* it's (unlikely but) possible we raced with the cleanup
-+		 * thread for discarding old timestamp requests.
-+		 */
-+		if (!skb)
-+			continue;
-+
-+		/* Extend the timestamp using cached PHC time */
-+		tstamp = ice_ptp_extend_40b_ts(pf, raw_tstamp);
-+		shhwtstamps.hwtstamp = ns_to_ktime(tstamp);
-+
-+		skb_tstamp_tx(skb, &shhwtstamps);
-+		dev_kfree_skb_any(skb);
-+	}
-+
-+	/* Check if we still have work to do. If so, re-queue this task to
-+	 * poll for remaining timestamps.
-+	 */
-+	spin_lock(&tx->lock);
-+	if (!bitmap_empty(tx->in_use, tx->len))
-+		kthread_queue_work(pf->ptp.kworker, &tx->work);
-+	spin_unlock(&tx->lock);
-+}
-+
-+/**
-+ * ice_ptp_request_ts - Request an available Tx timestamp index
-+ * @tx: the PTP Tx timestamp tracker to request from
-+ * @skb: the SKB to associate with this timestamp request
-+ */
-+s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb)
-+{
-+	u8 idx;
-+
-+	/* Check if this tracker is initialized */
-+	if (!tx->init)
-+		return -1;
-+
-+	spin_lock(&tx->lock);
-+	/* Find and set the first available index */
-+	idx = find_first_zero_bit(tx->in_use, tx->len);
-+	if (idx < tx->len) {
-+		/* We got a valid index that no other thread could have set. Store
-+		 * a reference to the skb and the start time to allow discarding old
-+		 * requests.
-+		 */
-+		set_bit(idx, tx->in_use);
-+		tx->tstamps[idx].start = jiffies;
-+		tx->tstamps[idx].skb = skb_get(skb);
-+		skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
-+	}
-+
-+	spin_unlock(&tx->lock);
-+
-+	/* return the appropriate PHY timestamp register index, -1 if no
-+	 * indexes were available.
-+	 */
-+	if (idx >= tx->len)
-+		return -1;
-+	else
-+		return idx + tx->quad_offset;
-+}
-+
-+/**
-+ * ice_ptp_process_ts - Spawn kthread work to handle timestamps
-+ * @pf: Board private structure
-+ *
-+ * Queue work required to process the PTP Tx timestamps outside of interrupt
-+ * context.
-+ */
-+void ice_ptp_process_ts(struct ice_pf *pf)
-+{
-+	if (pf->ptp.port.tx.init)
-+		kthread_queue_work(pf->ptp.kworker, &pf->ptp.port.tx.work);
-+}
-+
-+/**
-+ * ice_ptp_alloc_tx_tracker - Initialize tracking for Tx timestamps
-+ * @tx: Tx tracking structure to initialize
-+ *
-+ * Assumes that the length has already been initialized. Do not call directly,
-+ * use the ice_ptp_init_tx_e822 or ice_ptp_init_tx_e810 instead.
-+ */
-+static int
-+ice_ptp_alloc_tx_tracker(struct ice_ptp_tx *tx)
-+{
-+	tx->tstamps = kcalloc(tx->len, sizeof(*tx->tstamps), GFP_KERNEL);
-+	if (!tx->tstamps)
-+		return -ENOMEM;
-+
-+	tx->in_use = bitmap_zalloc(tx->len, GFP_KERNEL);
-+	if (!tx->in_use) {
-+		kfree(tx->tstamps);
-+		tx->tstamps = NULL;
-+		return -ENOMEM;
-+	}
-+
-+	spin_lock_init(&tx->lock);
-+	kthread_init_work(&tx->work, ice_ptp_tx_tstamp_work);
-+
-+	tx->init = 1;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_ptp_flush_tx_tracker - Flush any remaining timestamps from the tracker
-+ * @pf: Board private structure
-+ * @tx: the tracker to flush
-+ */
-+static void
-+ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	u8 idx;
-+
-+	for (idx = 0; idx < tx->len; idx++) {
-+		u8 phy_idx = idx + tx->quad_offset;
-+
-+		/* Clear any potential residual timestamp in the PHY block */
-+		if (!pf->hw.reset_ongoing)
-+			ice_clear_phy_tstamp(&pf->hw, tx->quad, phy_idx);
-+
-+		if (tx->tstamps[idx].skb) {
-+			dev_kfree_skb_any(tx->tstamps[idx].skb);
-+			tx->tstamps[idx].skb = NULL;
-+		}
-+	}
-+}
-+
-+/**
-+ * ice_ptp_release_tx_tracker - Release allocated memory for Tx tracker
-+ * @pf: Board private structure
-+ * @tx: Tx tracking structure to release
-+ *
-+ * Free memory associated with the Tx timestamp tracker.
-+ */
-+static void
-+ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	tx->init = 0;
-+
-+	kthread_cancel_work_sync(&tx->work);
-+
-+	ice_ptp_flush_tx_tracker(pf, tx);
-+
-+	kfree(tx->tstamps);
-+	tx->tstamps = NULL;
-+
-+	kfree(tx->in_use);
-+	tx->in_use = NULL;
-+
-+	tx->len = 0;
-+}
-+
-+/**
-+ * ice_ptp_init_tx_e810 - Initialize tracking for Tx timestamps
-+ * @pf: Board private structure
-+ * @tx: the Tx tracking structure to initialize
-+ *
-+ * Initialize the Tx timestamp tracker for this PF. For E810 devices, each
-+ * port has its own block of timestamps, independent of the other ports.
-+ */
-+static int
-+ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	tx->quad = pf->hw.port_info->lport;
-+	tx->quad_offset = 0;
-+	tx->len = INDEX_PER_QUAD;
-+
-+	return ice_ptp_alloc_tx_tracker(tx);
-+}
-+
-+/**
-+ * ice_ptp_tx_tstamp_cleanup - Cleanup old timestamp requests that got dropped
-+ * @tx: PTP Tx tracker to clean up
-+ *
-+ * Loop through the Tx timestamp requests and see if any of them have been
-+ * waiting for a long time. Discard any SKBs that have been waiting for more
-+ * than 2 seconds. This is long enough to be reasonably sure that the
-+ * timestamp will never be captured. This might happen if the packet gets
-+ * discarded before it reaches the PHY timestamping block.
-+ */
-+static void ice_ptp_tx_tstamp_cleanup(struct ice_ptp_tx *tx)
-+{
-+	u8 idx;
-+
-+	if (!tx->init)
-+		return;
-+
-+	for_each_set_bit(idx, tx->in_use, tx->len) {
-+		struct sk_buff *skb;
-+
-+		/* Check if this SKB has been waiting for too long */
-+		if (time_is_after_jiffies(tx->tstamps[idx].start + 2 * HZ))
-+			continue;
-+
-+		spin_lock(&tx->lock);
-+		skb = tx->tstamps[idx].skb;
-+		tx->tstamps[idx].skb = NULL;
-+		clear_bit(idx, tx->in_use);
-+		spin_unlock(&tx->lock);
-+
-+		/* Free the SKB after we've cleared the bit */
-+		dev_kfree_skb_any(skb);
-+	}
-+}
-+
- static void ice_ptp_periodic_work(struct kthread_work *work)
- {
- 	struct ice_ptp *ptp = container_of(work, struct ice_ptp, work.work);
-@@ -746,6 +1104,8 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- 
- 	ice_ptp_update_cached_phctime(pf);
- 
-+	ice_ptp_tx_tstamp_cleanup(&pf->ptp.port.tx);
-+
- 	/* Run twice a second */
- 	kthread_queue_delayed_work(ptp->kworker, &ptp->work,
- 				   msecs_to_jiffies(500));
-@@ -858,6 +1218,9 @@ void ice_ptp_init(struct ice_pf *pf)
- 	/* Disable timestamping for both Tx and Rx */
- 	ice_ptp_cfg_timestamp(pf, false);
- 
-+	/* Initialize the PTP port Tx timestamp tracker */
-+	ice_ptp_init_tx_e810(pf, &pf->ptp.port.tx);
-+
- 	/* Initialize work functions */
- 	kthread_init_delayed_work(&pf->ptp.work, ice_ptp_periodic_work);
- 
-@@ -900,6 +1263,8 @@ void ice_ptp_release(struct ice_pf *pf)
- 	/* Disable timestamping for both Tx and Rx */
- 	ice_ptp_cfg_timestamp(pf, false);
- 
-+	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
-+
- 	clear_bit(ICE_FLAG_PTP, pf->flags);
- 
- 	kthread_cancel_delayed_work_sync(&pf->ptp.work);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 1a1f2d5a2f30..fb2d4dceca56 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -9,8 +9,82 @@
- 
- #include "ice_ptp_hw.h"
- 
-+/* The ice hardware captures Tx hardware timestamps in the PHY. The timestamp
-+ * is stored in a buffer of registers. Depending on the specific hardware,
-+ * this buffer might be shared across multiple PHY ports.
-+ *
-+ * On transmit of a packet to be timestamped, software is responsible for
-+ * selecting an open index. Hardware makes no attempt to lock or prevent
-+ * re-use of an index for multiple packets.
-+ *
-+ * To handle this, timestamp indexes must be tracked by software to ensure
-+ * that an index is not re-used for multiple transmitted packets. The
-+ * structures and functions declared in this file track the available Tx
-+ * register indexes, as well as provide storage for the SKB pointers.
-+ *
-+ * To allow multiple ports to access the shared register block independently,
-+ * the blocks are split up so that indexes are assigned to each port based on
-+ * hardware logical port number.
-+ */
-+
-+/**
-+ * ice_tx_tstamp - Tracking for a single Tx timestamp
-+ * @skb: pointer to the SKB for this timestamp request
-+ * @start: jiffies when the timestamp was first requested
-+ *
-+ * This structure tracks a single timestamp request. The SKB pointer is
-+ * provided when initiating a request. The start time is used to ensure that
-+ * we discard old requests that were not fulfilled within a 2 second time
-+ * window.
-+ */
-+struct ice_tx_tstamp {
-+	struct sk_buff *skb;
-+	unsigned long start;
-+};
-+
-+/**
-+ * ice_ptp_tx - Tracking structure for all Tx timestamp requests on a port
-+ * @work: work function to handle processing of Tx timestamps
-+ * @lock: lock to prevent concurrent write to in_use bitmap
-+ * @tstamps: array of len to store outstanding requests
-+ * @in_use: bitmap of len to indicate which slots are in use
-+ * @quad: which quad the timestamps are captured in
-+ * @quad_offset: offset into timestamp block of the quad to get the real index
-+ * @len: length of the tstamps and in_use fields.
-+ * @init: if true, the tracker is initialized;
-+ */
-+struct ice_ptp_tx {
-+	struct kthread_work work;
-+	spinlock_t lock; /* lock protecting in_use bitmap */
-+	struct ice_tx_tstamp *tstamps;
-+	unsigned long *in_use;
-+	u8 quad;
-+	u8 quad_offset;
-+	u8 len;
-+	u8 init;
-+};
-+
-+/* Quad and port information for initializing timestamp blocks */
-+#define INDEX_PER_QUAD			64
-+#define INDEX_PER_PORT			(INDEX_PER_QUAD / ICE_PORTS_PER_QUAD)
-+
-+/**
-+ * struct ice_ptp_port - data used to initialize an external port for PTP
-+ *
-+ * This structure contains PTP data related to the external ports. Currently
-+ * it is used for tracking the Tx timestamps of a port. In the future this
-+ * structure will also hold information for the E822 port initialization
-+ * logic.
-+ *
-+ * @tx: Tx timestamp tracking for this port
-+ */
-+struct ice_ptp_port {
-+	struct ice_ptp_tx tx;
-+};
-+
- /**
-  * struct ice_ptp - data used for integrating with CONFIG_PTP_1588_CLOCK
-+ * @port: data for the PHY port initialization procedure
-  * @work: delayed work function for periodic tasks
-  * @cached_phc_time: a cached copy of the PHC time for timestamp extension
-  * @kworker: kwork thread for handling periodic work
-@@ -19,6 +93,7 @@
-  * @tstamp_config: hardware timestamping configuration
-  */
- struct ice_ptp {
-+	struct ice_ptp_port port;
- 	struct kthread_delayed_work work;
- 	u64 cached_phc_time;
- 	struct kthread_worker *kworker;
-@@ -27,6 +102,11 @@ struct ice_ptp {
- 	struct hwtstamp_config tstamp_config;
- };
- 
-+#define __ptp_port_to_ptp(p) \
-+	container_of((p), struct ice_ptp, port)
-+#define ptp_port_to_pf(p) \
-+	container_of(__ptp_port_to_ptp((p)), struct ice_pf, ptp)
-+
- #define __ptp_info_to_ptp(i) \
- 	container_of((i), struct ice_ptp, info)
- #define ptp_info_to_pf(i) \
-@@ -40,6 +120,10 @@ struct ice_pf;
- int ice_ptp_set_ts_config(struct ice_pf *pf, struct ifreq *ifr);
- int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr);
- int ice_get_ptp_clock_index(struct ice_pf *pf);
-+
-+s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb);
-+void ice_ptp_process_ts(struct ice_pf *pf);
-+
- void ice_ptp_rx_hwtstamp(struct ice_ring *rx_ring, union ice_32b_rx_flex_desc *rx_desc,
- 			 struct sk_buff *skb);
- void ice_ptp_init(struct ice_pf *pf);
-@@ -60,6 +144,13 @@ static inline int ice_get_ptp_clock_index(struct ice_pf *pf)
- 	return -1;
- }
- 
-+static inline
-+ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb)
-+{
-+	return -1;
-+}
-+
-+static inline void ice_ptp_process_ts(struct ice_pf *pf) { }
- static inline void ice_ptp_rx_hwtstamp(struct ice_ring *rx_ring,
- 				       union ice_32b_rx_flex_desc *rx_desc,
- 				       struct sk_buff *skb) { }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 3702ee0d42de..e9e9edb32c6f 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -2136,6 +2136,41 @@ static bool ice_chk_linearize(struct sk_buff *skb, unsigned int count)
- 	return count != ICE_MAX_BUF_TXD;
- }
- 
-+/**
-+ * ice_tstamp - set up context descriptor for hardware timestamp
-+ * @tx_ring: pointer to the Tx ring to send buffer on
-+ * @skb: pointer to the SKB we're sending
-+ * @first: Tx buffer
-+ * @off: Tx offload parameters
-+ */
-+static void
-+ice_tstamp(struct ice_ring *tx_ring, struct sk_buff *skb,
-+	   struct ice_tx_buf *first, struct ice_tx_offload_params *off)
-+{
-+	s8 idx;
-+
-+	/* only timestamp the outbound packet if the user has requested it */
-+	if (likely(!(skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)))
-+		return;
-+
-+	if (!tx_ring->ptp_tx)
-+		return;
-+
-+	/* Tx timestamps cannot be sampled when doing TSO */
-+	if (first->tx_flags & ICE_TX_FLAGS_TSO)
-+		return;
-+
-+	/* Grab an open timestamp slot */
-+	idx = ice_ptp_request_ts(tx_ring->tx_tstamps, skb);
-+	if (idx < 0)
-+		return;
-+
-+	off->cd_qw1 |= (u64)(ICE_TX_DESC_DTYPE_CTX |
-+			     (ICE_TX_CTX_DESC_TSYN << ICE_TXD_CTX_QW1_CMD_S) |
-+			     ((u64)idx << ICE_TXD_CTX_QW1_TSO_LEN_S));
-+	first->tx_flags |= ICE_TX_FLAGS_TSYN;
-+}
-+
- /**
-  * ice_xmit_frame_ring - Sends buffer on Tx ring
-  * @skb: send buffer
-@@ -2205,6 +2240,8 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
- 					ICE_TX_CTX_DESC_SWTCH_UPLINK <<
- 					ICE_TXD_CTX_QW1_CMD_S);
- 
-+	ice_tstamp(tx_ring, skb, first, &offload);
-+
- 	if (offload.cd_qw1 & ICE_TX_DESC_DTYPE_CTX) {
- 		struct ice_tx_ctx_desc *cdesc;
- 		u16 i = tx_ring->next_to_use;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index 1069f3a9b6cb..1e46e80f3d6f 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -118,6 +118,7 @@ static inline int ice_skb_pad(void)
-  * freed instead of returned like skb packets.
-  */
- #define ICE_TX_FLAGS_DUMMY_PKT	BIT(3)
-+#define ICE_TX_FLAGS_TSYN	BIT(4)
- #define ICE_TX_FLAGS_IPV4	BIT(5)
- #define ICE_TX_FLAGS_IPV6	BIT(6)
- #define ICE_TX_FLAGS_TUNNEL	BIT(7)
-@@ -311,8 +312,10 @@ struct ice_ring {
- 	u32 txq_teid;			/* Added Tx queue TEID */
- 	u16 rx_buf_len;
- 	u8 dcb_tc;			/* Traffic class of ring */
-+	struct ice_ptp_tx *tx_tstamps;
- 	u64 cached_phctime;
- 	u8 ptp_rx:1;
-+	u8 ptp_tx:1;
- } ____cacheline_internodealigned_in_smp;
- 
- static inline bool ice_ring_uses_build_skb(struct ice_ring *ring)
--- 
-2.31.1.331.gb0c09ab8796f
+--
+Thanks
+Nitesh
 
 _______________________________________________
 Intel-wired-lan mailing list
