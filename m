@@ -1,72 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57BD038B040
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 May 2021 15:44:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 925A438B498
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 May 2021 18:49:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 025DF60B98;
-	Thu, 20 May 2021 13:44:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F40E940477;
+	Thu, 20 May 2021 16:49:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1zPUYDkRl7C6; Thu, 20 May 2021 13:44:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9IGF9pqHWFaR; Thu, 20 May 2021 16:49:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 09D95605D9;
-	Thu, 20 May 2021 13:44:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6F69C40409;
+	Thu, 20 May 2021 16:49:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0527D1BF23C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 06:20:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CA6D61BF956
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:49:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E7A5D40176
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 06:20:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B49764044D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:49:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=linutronix.de header.b="iTnqVFsI";
- dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
- header.d=linutronix.de header.b="vIq9NEQZ"
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QVsaKNGMCH8g for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 May 2021 06:20:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vKRg1v2w7S-o for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 May 2021 16:48:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 44E7E400AB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 06:20:06 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1621491602;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=uOWpubAeDjCq3jPJAikebk3RLTs9XtXurni2b2g7SlI=;
- b=iTnqVFsIA5J2cvm501sVzrkOic1IyiMj3G9oWvDY7pbtVpMcDBVpaxqfhJuvnds0HJa/km
- 3UCEyPmC1WCBDD3VjzhK12G4HDrMpqXCjpr1Hne+3hOv8gCT4y2LwdG2eZaR6BAETWndna
- uadp1SDnpL+iemC3qMIzDZbHl3FqkixFN5Pw5QE+/yjSKh+iNj70/1givMuvqtAmnn0hMp
- WnB67S5cP5c91zSbhmdAQ86eP/Wn4RCMjzDx/v/iKI1w95j1yD6/vco6yLuQJa0TPL/Y1K
- meIULyfVuHksbMeiqjU/zhCP39BXq7SAO3QjEsKeop3zWaREue8ejBgFBGy2BQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1621491602;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=uOWpubAeDjCq3jPJAikebk3RLTs9XtXurni2b2g7SlI=;
- b=vIq9NEQZr2cyt2k/T3c+P9H3VOvIu1sJuNfexYOOAXlnHA4WexieJvZBntPDqJ05tEuOWM
- A/4MCLqE8eWOc/DA==
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "brouer@redhat.com"
- <brouer@redhat.com>
-In-Reply-To: <e4568dc225edd00122b35be37cef9fac68329508.camel@intel.com>
-References: <20210503072800.79936-1-kurt@linutronix.de>
- <20210504102827.342f6302@carbon> <20210519153418.00c4cc42@carbon>
- <e4568dc225edd00122b35be37cef9fac68329508.camel@intel.com>
-Date: Thu, 20 May 2021 08:20:00 +0200
-Message-ID: <87cztmgc4v.fsf@kurt>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9105B403C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 May 2021 16:48:59 +0000 (UTC)
+IronPort-SDR: Ju29MwhLRph7zRgTUqtqL9fGWRDk7i6NPrH83QP3Itq/8Oiu95/zWuXG2eYJtG02xVE8nLi+2y
+ CMYrUKsdQikg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9989"; a="188401241"
+X-IronPort-AV: E=Sophos;i="5.82,313,1613462400"; d="scan'208";a="188401241"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 May 2021 09:48:58 -0700
+IronPort-SDR: /qSghyAbdx3R+IQyCPPpPLDUYfURstdij8wNmAf2ufTpI40sScHS9gUuv8wGZX2myK8gTyWtN8
+ eYQQhrrMEITA==
+X-IronPort-AV: E=Sophos;i="5.82,313,1613462400"; d="scan'208";a="543659607"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
+ by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 May 2021 09:48:57 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Thu, 20 May 2021 09:48:42 -0700
+Message-Id: <20210520164850.1884656-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 MIME-Version: 1.0
-X-Mailman-Approved-At: Thu, 20 May 2021 13:43:55 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net v4] igb: Fix XDP with PTP enabled
+Subject: [Intel-wired-lan] [PATCH 0/8] ice: implement PTP clock for E810
+ devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,79 +64,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "hawk@kernel.org" <hawk@kernel.org>,
- "daniel@iogearbox.net" <daniel@iogearbox.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "bigeasy@linutronix.de" <bigeasy@linutronix.de>,
- "ilias.apalodimas@linaro.org" <ilias.apalodimas@linaro.org>,
- "ast@kernel.org" <ast@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "tylerjstachecki@gmail.com" <tylerjstachecki@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "lorenzo@kernel.org" <lorenzo@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============8705499869945635130=="
+Cc: Sean Lion <sean.lion@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============8705499869945635130==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+Extend the ice driver to support basic PTP clock functionality for E810
+devices.
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+This includes some tangential work required to setup the sideband queue and
+driver shared parameters as well.
 
-On Wed May 19 2021, Nguyen, Anthony L wrote:
-> On Wed, 2021-05-19 at 15:34 +0200, Jesper Dangaard Brouer wrote:
->> Hi Maintainers,
->>=20
->> What is the status on this patch?
->
-> I'm awaiting testing from our validation. They expect to finish by the
-> end of the week; I'll send out the patch as soon as they've completed.
->
+This series only supports E810-based devices. This is because other devices
+based on the E822 MAC use a different and more complex PHY.
 
-Thanks! I've got also a backport of this patch for v5.10.x, so that
-people can use the latest LTS e.g., with PREEMPT_RT and working PTP and
-XDP. Let me know if there's interest in it.
+The low level device functionality is kept within ice_ptp_hw.c and is
+designed to be extensible for supporting E822 devices in a future series.
 
-Thanks,
-Kurt
+This series also only supports very basic functionality including the
+ptp_clock device and timestamping. Support for configuring periodic outputs
+and external input timestamps will be implemented in a future series.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+There are a couple of potential "what? why?" bits in this series I want to
+point out:
 
------BEGIN PGP SIGNATURE-----
+1) the PTP hardware functionality is shared between multiple functions. This
+means that the same clock registers are shared across multiple PFs. In order
+to avoid contention or clashing between PFs, firmware assigns "ownership" to
+one PF, while other PFs are merely "associated" with the timer. Because we
+share the hardware resource, only the clock owner will allocate and register
+a PTP clock device. Other PFs determine the appropriate PTP clock index to
+report by using a firmware interface to read a shared parameter that is set
+by the owning PF.
 
-iQJHBAEBCgAxFiEEooWgvezyxHPhdEojeSpbgcuY8KYFAmCl/5ATHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRB5KluBy5jwppJYEACQyg1sVvFCi0t+BRp4dhqyOclcGz7m
-2Y90nHRqFTMYZDU49dd0G/gpWMJXea2mU3HBwzwyZPHUBOtE+G9auDQQJC1rayyb
-Q+MslQGk7HpXchuQkTqaXbP3OKXBkP3vLLr+Acxkbo8gpemnGc9ADuwjn6YAcnSX
-l6g3Ipeo02SMGQAWsbUXB2PVS5/+tw3SP+5tbZ75BMzH/qYkb3bt6rtVmtU0vw+H
-5p82NH9Xc/lGAM4yELtjYSd4JCDwPMNnU69SVRK52xZ4UOv/+Kjh8Dh7Y7/nNa+Y
-ud5AXuIrd8FyFS40dl0kxINK/dDsvYQDKuWHR0l8M9ViBif+fBLWBX5TYNIp4a+a
-5vLc8S38QZ0Um7H+K47I17fGTXT6jnNMHvvtALMyTErFIOSa8ysHNom7NlBDCZ61
-A4PZk5EGKLUBwSn3phSNdeT0RU3AL5LMZcn00LMnYZuNfUavF1mmCMPXvGExxvUN
-c02ChNRLN1l23NdM13RnyaWR7X94qI51EPJYIQPm/NPflcCJDVwo6pfLsHSKKzOt
-pBYmsKiQu4WKbrZ9/+12HVPL8RjjSKi5QIX74f2d/83Vl2qXiSVGpjEleaUrAJfk
-rfVC6KI4kpvURMnl9hUr310Xm5oD97mKA1pIsgDmJsnuQtcjF6q++VUc7n+8Km1T
-qVekB9Xhnv6kvg==
-=a0rv
------END PGP SIGNATURE-----
---=-=-=--
+2) the ice driver uses its own kthread instead of using do_aux_work. This is
+because the periodic and asynchronous tasks are necessary for all PFs, but
+only one PF will allocate the clock.
 
---===============8705499869945635130==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+The series is broken up into functional pieces to allow easy review.
+
+Jacob Keller (8):
+  ice: add support for sideband messages
+  ice: process 1588 PTP capabilities during initialization
+  ice: add support for set/get of driver-stored firmware parameters
+  ice: add low level PTP clock access functions
+  ice: register 1588 PTP clock device object for E810 devices
+  ice: report the PTP clock index in ethtool .get_ts_info
+  ice: enable receive hardware timestamping
+  ice: enable transmit timestamps for E810 devices
+
+ drivers/net/ethernet/intel/Kconfig            |    1 +
+ drivers/net/ethernet/intel/ice/Makefile       |    1 +
+ drivers/net/ethernet/intel/ice/ice.h          |    8 +-
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   41 +
+ drivers/net/ethernet/intel/ice/ice_base.c     |   14 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |  243 ++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |   10 +
+ drivers/net/ethernet/intel/ice/ice_controlq.c |   62 +
+ drivers/net/ethernet/intel/ice/ice_controlq.h |    2 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   27 +-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   69 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |    9 +-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |    3 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   94 ++
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 1285 +++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |  160 ++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  662 +++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   81 ++
+ drivers/net/ethernet/intel/ice/ice_sbq_cmd.h  |   92 ++
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   37 +
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |    5 +
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |    3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   62 +
+ include/linux/kernel.h                        |   12 +
+ 24 files changed, 2977 insertions(+), 6 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_ptp.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_ptp.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+
+
+base-commit: 2ea69bb97b73af5e086d83419403207c1f24818f
+-- 
+2.31.1.331.gb0c09ab8796f
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============8705499869945635130==--
