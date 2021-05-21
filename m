@@ -2,93 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 735C738CFC7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 May 2021 23:21:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E2F138D00B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 May 2021 23:45:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 73E6D41887;
-	Fri, 21 May 2021 21:21:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 91BE24183B;
+	Fri, 21 May 2021 21:45:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GJyzgDcqldQK; Fri, 21 May 2021 21:21:42 +0000 (UTC)
+	with ESMTP id 1kYEQHkxsNGl; Fri, 21 May 2021 21:45:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6B50C4145E;
-	Fri, 21 May 2021 21:21:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 545B4414DE;
+	Fri, 21 May 2021 21:45:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CACE81C11B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 19:50:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C7B6E1BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B90CC605CE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 19:50:28 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B38AC402B3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G2N5kZM7lALn for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 May 2021 19:50:27 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=linutronix.de header.b="GWPNOh34";
+ dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
+ header.d=linutronix.de header.b="ys1EeWOd"
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0rdgMvZTj5SX for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 May 2021 21:45:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 88481605B7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 19:50:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1621626626;
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 15E7340285
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:18 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1621633514;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=GPfnJGzP4OqGD0+wu1euBp+ahcfCCZpRemrfs0fPKWg=;
- b=U7WHP1UlZgNaK0qIaiUVVA3HsRXD2FPVfLW1J2DRAOe4yNCVBBw1JJ/tGQClhnvIRqENmV
- I7udR9RJXPvyfvwN2j3qNFB7NPlBdb4iROFW9/Et8GK8sNE7tCW8JLn+1GTPavbXuKrTOI
- OWwUrEG+PDsbJtYS68tj1V6Wn8LrqSk=
-Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
- [209.85.167.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-469-eRXyykB6MoqfOA0uesr_Zg-1; Fri, 21 May 2021 15:50:24 -0400
-X-MC-Unique: eRXyykB6MoqfOA0uesr_Zg-1
-Received: by mail-oi1-f198.google.com with SMTP id
- s3-20020a0568080083b02901eee88a8f42so2829949oic.11
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 12:50:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=GPfnJGzP4OqGD0+wu1euBp+ahcfCCZpRemrfs0fPKWg=;
- b=YdXhayn5gsT7OofSi4hGg5GJl4tzGlIJYNU9tL/8X/n7BYkFFvOrB/WRfuv0hk85ty
- Ks21knAM3lyC74dDnIkqGTYbiW2z5Zhtx9RTiVCAqPha9G0fT57xi40ljyuO+qz5c8I2
- Qhh0BBSMFnN+juEaFwFw2UXXzLsunta2hNbxZPudyhNWiujbkIOpamnnK6OV7DRhCau8
- T+bRD70JErj+Z4p0yLoLcFL1OjU8CEqutBMkdoCrnhyF02SSrc23jry0wfeOZdlYEV2k
- +wkEmr3WSdFZ6Ai+A5Fe61efYL2uSg+HZV8DXI8PqM6n98/CWLOFd/IYCsBBOsbMm4kK
- UGlQ==
-X-Gm-Message-State: AOAM531esKnVxITk6lmg172X4kFyZRGv58vaokqViir6CAXvy2QPPVm6
- 8+r3sicfc2CSWhydfkuWmWk9xG/2guVoarlyqz1mtu3ckS5BhyUYv3OXq2Bwd4TI8DcS4HPRFJO
- GPLdUl60G6OPnmNOAmvtgeU0CljvUdA==
-X-Received: by 2002:a9d:69c2:: with SMTP id v2mr9675703oto.186.1621626624007; 
- Fri, 21 May 2021 12:50:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrhDz8hYcbq+CC3R6HOECEW0ZHmOtKTJgEQEzXiMKV0b8sWqr7I+euvwLLW/m5M5RWdTM3Rg==
-X-Received: by 2002:a9d:69c2:: with SMTP id v2mr9675685oto.186.1621626623820; 
- Fri, 21 May 2021 12:50:23 -0700 (PDT)
-Received: from localhost.localdomain.com (075-142-250-213.res.spectrum.com.
- [75.142.250.213])
- by smtp.gmail.com with ESMTPSA id w4sm1549740otl.21.2021.05.21.12.50.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 May 2021 12:50:23 -0700 (PDT)
-From: trix@redhat.com
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, jeffrey.t.kirsher@intel.com,
- sasha.neftin@intel.com
-Date: Fri, 21 May 2021 12:50:19 -0700
-Message-Id: <20210521195019.2078661-1-trix@redhat.com>
-X-Mailer: git-send-email 2.26.3
+ in-reply-to:in-reply-to:references:references;
+ bh=XaPyYtGVTJJud1M86TNOLs+rsQI2Kj9lnXY3H+cu/B0=;
+ b=GWPNOh34mwS1P2HssdlKXWYC2cb0/7ReSUe88lhO6VM4W67K+8jaNdN8J1QWRZKOCLZLek
+ obNhTVmcA5eECX4vLfE+2ewnqfM/obokPSvUsKqeHpp2FNJlJFkezOS+ankHC3USbbYBhO
+ JxOmEOXlZgcrwxQx2MO2bpdr3TzCJ4gwjrOtRz4xqLIgIXC9EW4tufADmasY68QKks/eBk
+ oHkXV0k9J2uwivI0KgsTFxkCMCQfVmuu6GRr9USMiKFNX0/uB2UqPIF+ycpUjf8Dw/DxRH
+ vBzB05qF5vJ/LYbp39ehcGCxW3E1AgdJw9h8vZTc6eP8x5PGBx+YOCtWarNtVg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1621633514;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=XaPyYtGVTJJud1M86TNOLs+rsQI2Kj9lnXY3H+cu/B0=;
+ b=ys1EeWOdNdNZ7QDxXGBp6GDvs0ZkBupG3nrlJ/lE35qgxunHJzjnNadxRQswz2zQMVaPrI
+ 8Tsdrf+ncPocWqCA==
+To: Lijun Pan <lijunp213@gmail.com>
+In-Reply-To: <CAOhMmr6p2a=Dgz3Q=cbEoXJjbBjBdJm1Vwt60Si+JDCdbOEVaw@mail.gmail.com>
+References: <20210504092340.00006c61@intel.com>
+ <87pmxpdr32.ffs@nanos.tec.linutronix.de>
+ <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
+ <87im3gewlu.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+ <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
+ <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
+ <87zgwo9u79.ffs@nanos.tec.linutronix.de>
+ <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
+ <CAOhMmr6p2a=Dgz3Q=cbEoXJjbBjBdJm1Vwt60Si+JDCdbOEVaw@mail.gmail.com>
+Date: Fri, 21 May 2021 23:45:14 +0200
+Message-ID: <87eedzahhx.ffs@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Approved-At: Fri, 21 May 2021 21:21:38 +0000
-Subject: [Intel-wired-lan] [PATCH] igc: change default return of
- igc_read_phy_reg()
+Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
+ affinity hints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,48 +85,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Tom Rix <trix@redhat.com>
+Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+ "peterz@infradead.org" <peterz@infradead.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
+ Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
+ Nitesh Lal <nilal@redhat.com>, "frederic@kernel.org" <frederic@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "rostedt@goodmis.org" <rostedt@goodmis.org>,
+ "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
+ "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
+ Neil Horman <nhorman@tuxdriver.com>,
+ "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ netdev@vger.kernel.org,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Tom Rix <trix@redhat.com>
+On Fri, May 21 2021 at 10:45, Lijun Pan wrote:
+> On Fri, May 21, 2021 at 7:48 AM Thomas Gleixner <tglx@linutronix.de> wrote:
+>> +/**
+>> + * irq_update_affinity_hint - Update the affinity hint
+>> + * @irq:       Interrupt to update
+>> + * @cpumask:   cpumask pointer (NULL to clear the hint)
+>> + *
+>> + * Updates the affinity hint, but does not change the affinity of the interrupt.
+>> + */
+>> +static inline int
+>> +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
+>> +{
+>> +       return __irq_apply_affinity_hint(irq, m, true);
+>> +}
+>
+> Should it be:
+> return __irq_apply_affinity_hint(irq, m, false);
+> here?
 
-Static analysis reports this problem
+Of course. Copy & Pasta should be forbidden.
 
-igc_main.c:4944:20: warning: The left operand of '&'
-  is a garbage value
-    if (!(phy_data & SR_1000T_REMOTE_RX_STATUS) &&
-          ~~~~~~~~ ^
+Thanks for spotting it!
 
-pyy_data is set by the call to igc_read_phy_reg() only if
-there is a read_reg() op, else it is unset and a 0 is
-returned.  Change the return to -EOPNOTSUPP.
-
-Fixes: 208983f099d9 ("igc: Add watchdog")
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/net/ethernet/intel/igc/igc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index b6d3277c6f520..71100ee7afbee 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -577,7 +577,7 @@ static inline s32 igc_read_phy_reg(struct igc_hw *hw, u32 offset, u16 *data)
- 	if (hw->phy.ops.read_reg)
- 		return hw->phy.ops.read_reg(hw, offset, data);
- 
--	return 0;
-+	return -EOPNOTSUPP;
- }
- 
- void igc_reinit_locked(struct igc_adapter *);
--- 
-2.26.3
-
+       tglx
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
