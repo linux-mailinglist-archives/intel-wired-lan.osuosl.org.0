@@ -1,63 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E2F138D00B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 May 2021 23:45:28 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1EDB38D012
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 May 2021 23:48:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 91BE24183B;
-	Fri, 21 May 2021 21:45:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7D082615F5;
+	Fri, 21 May 2021 21:48:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1kYEQHkxsNGl; Fri, 21 May 2021 21:45:25 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AyhCV0bMKNrD; Fri, 21 May 2021 21:48:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 545B4414DE;
-	Fri, 21 May 2021 21:45:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5C3D1615CA;
+	Fri, 21 May 2021 21:48:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C7B6E1BF32C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A83081BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:48:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B38AC402B3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 957294045B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:48:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=linutronix.de header.b="GWPNOh34";
+ dkim=pass (2048-bit key) header.d=linutronix.de header.b="MpR7WhOy";
  dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
- header.d=linutronix.de header.b="ys1EeWOd"
+ header.d=linutronix.de header.b="Ug5aL3Ba"
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0rdgMvZTj5SX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 May 2021 21:45:19 +0000 (UTC)
+ with ESMTP id dod_ShI4QAFy for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 May 2021 21:48:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 15E7340285
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:45:18 +0000 (UTC)
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E7C8C402B3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 May 2021 21:48:45 +0000 (UTC)
 From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1621633514;
+ s=2020; t=1621633723;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=XaPyYtGVTJJud1M86TNOLs+rsQI2Kj9lnXY3H+cu/B0=;
- b=GWPNOh34mwS1P2HssdlKXWYC2cb0/7ReSUe88lhO6VM4W67K+8jaNdN8J1QWRZKOCLZLek
- obNhTVmcA5eECX4vLfE+2ewnqfM/obokPSvUsKqeHpp2FNJlJFkezOS+ankHC3USbbYBhO
- JxOmEOXlZgcrwxQx2MO2bpdr3TzCJ4gwjrOtRz4xqLIgIXC9EW4tufADmasY68QKks/eBk
- oHkXV0k9J2uwivI0KgsTFxkCMCQfVmuu6GRr9USMiKFNX0/uB2UqPIF+ycpUjf8Dw/DxRH
- vBzB05qF5vJ/LYbp39ehcGCxW3E1AgdJw9h8vZTc6eP8x5PGBx+YOCtWarNtVg==
+ bh=/+S8LTQNiG8i9DExgcVWsWx6U3U7vi+PRUnPuD/CDDg=;
+ b=MpR7WhOyoJvBu9w7C3xfGoz0uwROzPNODcrPkb6Eu+Tyo5nrZ7nd0Xs3F7kllLesJ2CtCx
+ rkuTb3JESWsKOFBUx4dFUdG4FCZG4SoziwDTEM52Y9DU7FTnJQslfOHkWKJSpnMJDGIzUU
+ OG8f7A6FSbfF23uysmfoIeyU/DTcECF6Hxl9ur3UFtrX+m6wvQT53T7mnqupOV58JWjynY
+ 1UiyBovgzBUTzkZZAhqZJKgksdxRXJPYQ3HEeF+wMTTPmUyjR9i3kMhLDtlgQHzMw+o8Js
+ SHWhabAKFfs0w3j4lCJmtYNkKMxOIFZoUQIwx+puNK1XHU9mf1GX866A6b718A==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1621633514;
+ s=2020e; t=1621633723;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=XaPyYtGVTJJud1M86TNOLs+rsQI2Kj9lnXY3H+cu/B0=;
- b=ys1EeWOdNdNZ7QDxXGBp6GDvs0ZkBupG3nrlJ/lE35qgxunHJzjnNadxRQswz2zQMVaPrI
- 8Tsdrf+ncPocWqCA==
-To: Lijun Pan <lijunp213@gmail.com>
-In-Reply-To: <CAOhMmr6p2a=Dgz3Q=cbEoXJjbBjBdJm1Vwt60Si+JDCdbOEVaw@mail.gmail.com>
+ bh=/+S8LTQNiG8i9DExgcVWsWx6U3U7vi+PRUnPuD/CDDg=;
+ b=Ug5aL3BaELpvg/OrbwBRE30R+5KHf653uC6Z2QkOC3VWj6yCx/fkMy8YHUjo7RwS3H5JK3
+ QN+PDqVGRgtzb2BQ==
+To: Nitesh Lal <nilal@redhat.com>
+In-Reply-To: <CAFki+LkqBHnVYB5VBx_8Ch0u8RfXrJsRzxyuDfHhbR-dCeN3Lg@mail.gmail.com>
 References: <20210504092340.00006c61@intel.com>
  <87pmxpdr32.ffs@nanos.tec.linutronix.de>
  <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
@@ -67,9 +66,9 @@ References: <20210504092340.00006c61@intel.com>
  <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
  <87zgwo9u79.ffs@nanos.tec.linutronix.de>
  <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
- <CAOhMmr6p2a=Dgz3Q=cbEoXJjbBjBdJm1Vwt60Si+JDCdbOEVaw@mail.gmail.com>
-Date: Fri, 21 May 2021 23:45:14 +0200
-Message-ID: <87eedzahhx.ffs@nanos.tec.linutronix.de>
+ <CAFki+LkqBHnVYB5VBx_8Ch0u8RfXrJsRzxyuDfHhbR-dCeN3Lg@mail.gmail.com>
+Date: Fri, 21 May 2021 23:48:43 +0200
+Message-ID: <87bl93ahc4.ffs@nanos.tec.linutronix.de>
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
  affinity hints
@@ -91,7 +90,7 @@ Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
  Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
  Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
  intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
- Nitesh Lal <nilal@redhat.com>, "frederic@kernel.org" <frederic@kernel.org>,
+ "frederic@kernel.org" <frederic@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
  "rostedt@goodmis.org" <rostedt@goodmis.org>,
  "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
@@ -109,30 +108,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, May 21 2021 at 10:45, Lijun Pan wrote:
-> On Fri, May 21, 2021 at 7:48 AM Thomas Gleixner <tglx@linutronix.de> wrote:
->> +/**
->> + * irq_update_affinity_hint - Update the affinity hint
->> + * @irq:       Interrupt to update
->> + * @cpumask:   cpumask pointer (NULL to clear the hint)
->> + *
->> + * Updates the affinity hint, but does not change the affinity of the interrupt.
->> + */
->> +static inline int
->> +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
->> +{
->> +       return __irq_apply_affinity_hint(irq, m, true);
->> +}
+On Fri, May 21 2021 at 12:13, Nitesh Lal wrote:
+> On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
+>> Provide new interfaces:
+>>
+>>   irq_update_affinity_hint() - Only sets the affinity hint pointer
+>>   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
+>>                                the interrupt
+>>
 >
-> Should it be:
-> return __irq_apply_affinity_hint(irq, m, false);
-> here?
+> Any reason why you ruled out the usage of irq_set_affinity_and_hint()?
+> IMHO the latter makes it very clear what the function is meant to do.
 
-Of course. Copy & Pasta should be forbidden.
+You're right. I was trying to phase the existing hint setter out, but
+that's probably pointless overengineering for no real value. Let me redo
+that.
 
-Thanks for spotting it!
+Thanks,
 
-       tglx
+        tglx
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
