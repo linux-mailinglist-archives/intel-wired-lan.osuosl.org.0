@@ -2,62 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 691BD38D92B
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 23 May 2021 07:47:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C03138E0E0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 May 2021 08:09:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D9FE9607DC;
-	Sun, 23 May 2021 05:47:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 04CB6606E0;
+	Mon, 24 May 2021 06:09:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 129IG6DgLXNs; Sun, 23 May 2021 05:47:40 +0000 (UTC)
+	with ESMTP id UmL7hLriliKX; Mon, 24 May 2021 06:09:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 90E4560730;
-	Sun, 23 May 2021 05:47:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0BB2060690;
+	Mon, 24 May 2021 06:09:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BEA1C1BF2A7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 May 2021 05:47:35 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A81571BF363
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 May 2021 06:09:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AC6B283A49
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 May 2021 05:47:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 92C38606E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 May 2021 06:09:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ci1qgXGL9Qjs for <intel-wired-lan@lists.osuosl.org>;
- Sun, 23 May 2021 05:47:34 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WQgAANutjWDZ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 May 2021 06:09:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D999583A50
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 May 2021 05:47:34 +0000 (UTC)
-IronPort-SDR: nSgKkv3B3L2+vFDwbQXjJox2+juryRfud39wqo5FjQMWKCMrTO26nQM7texaPt0nKIU1TMagDB
- fWK/R/5ci7bQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9992"; a="201460706"
-X-IronPort-AV: E=Sophos;i="5.82,319,1613462400"; d="scan'208";a="201460706"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2021 22:47:34 -0700
-IronPort-SDR: GC0ZpBmkqFP7xLRiZ1xXyEnpSGojc1KmPElF1Gpipdi4uaeMHrYJwfP5aZAhzlhT8JpsZjWunz
- hOVmrcSu7lEw==
-X-IronPort-AV: E=Sophos;i="5.82,319,1613462400"; d="scan'208";a="475298038"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.214.192.226])
- ([10.214.192.226])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2021 22:47:30 -0700
-To: trix@redhat.com, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org
-References: <20210521195019.2078661-1-trix@redhat.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <85d1b413-3ab3-6cee-4197-785b0c099340@intel.com>
-Date: Sun, 23 May 2021 08:47:27 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EA43C600C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 May 2021 06:09:06 +0000 (UTC)
+IronPort-SDR: 6qwE/mMYHc7muHyM81Dlkgn8F4VoOND4DaLJi8WtO67lppSdyrTbrRVos4xPZTmOBnB0UTEYZH
+ ndju9nuMmEmw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9993"; a="198804453"
+X-IronPort-AV: E=Sophos;i="5.82,319,1613462400"; d="scan'208";a="198804453"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2021 23:09:05 -0700
+IronPort-SDR: FpC2UauNwxstrBmJOaE/kj31N3Brurgfp6pKNrtFa282Bqd3gAlnJCMZ7MIKfyZE8BMdry0alp
+ +smve0T6RCNA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,319,1613462400"; d="scan'208";a="463540148"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by fmsmga004.fm.intel.com with ESMTP; 23 May 2021 23:09:04 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	dvorax.fuxbrumer@linux.intel.com
+Date: Mon, 24 May 2021 09:09:01 +0300
+Message-Id: <20210524060901.3622163-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210521195019.2078661-1-trix@redhat.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igc: change default return of
- igc_read_phy_reg()
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Indentation fixes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,53 +64,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 5/21/2021 22:50, trix@redhat.com wrote:
-> From: Tom Rix <trix@redhat.com>
-> 
-> Static analysis reports this problem
-> 
-> igc_main.c:4944:20: warning: The left operand of '&'
->    is a garbage value
->      if (!(phy_data & SR_1000T_REMOTE_RX_STATUS) &&
->            ~~~~~~~~ ^
-Tom, thanks for this patch. I believe the same static analysis problem 
-should be with the 'igb_read_phy_reg' method:
-https://elixir.bootlin.com/linux/v5.13-rc1/source/drivers/net/ethernet/intel/igb/igb.h#L769
-> 
-> pyy_data is set by the call to igc_read_phy_reg() only if
-%s/pyy_data/phy_data/gc (typo)
-> there is a read_reg() op, else it is unset and a 0 is
-> returned.  Change the return to -EOPNOTSUPP.
-> 
-> Fixes: 208983f099d9 ("igc: Add watchdog")
-> Signed-off-by: Tom Rix <trix@redhat.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index b6d3277c6f520..71100ee7afbee 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -577,7 +577,7 @@ static inline s32 igc_read_phy_reg(struct igc_hw *hw, u32 offset, u16 *data)
->   	if (hw->phy.ops.read_reg)
->   		return hw->phy.ops.read_reg(hw, offset, data);
->   
-> -	return 0;
-> +	return -EOPNOTSUPP;
->   }
->   
->   void igc_reinit_locked(struct igc_adapter *);
-> 
-Thanks,
-Sasha
+Minor fix of indentation in igc_defines.h
+
+Fixes: 87938851b6efb ("igc: enable auxiliary PHC functions for the i225")
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_defines.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 8f6ba2b8d9e6..26a6ca004697 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -99,8 +99,8 @@
+ #define IGC_CTRL_RFCE		0x08000000  /* Receive Flow Control enable */
+ #define IGC_CTRL_TFCE		0x10000000  /* Transmit flow control enable */
+ 
+-#define IGC_CTRL_SDP0_DIR 0x00400000	/* SDP0 Data direction */
+-#define IGC_CTRL_SDP1_DIR 0x00800000	/* SDP1 Data direction */
++#define IGC_CTRL_SDP0_DIR	0x00400000  /* SDP0 Data direction */
++#define IGC_CTRL_SDP1_DIR	0x00800000  /* SDP1 Data direction */
+ 
+ /* As per the EAS the maximum supported size is 9.5KB (9728 bytes) */
+ #define MAX_JUMBO_FRAME_SIZE	0x2600
+-- 
+2.25.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
