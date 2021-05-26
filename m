@@ -1,60 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3EA3391655
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 May 2021 13:33:56 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91355392170
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 May 2021 22:23:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 338CE83C67;
-	Wed, 26 May 2021 11:33:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0066860674;
+	Wed, 26 May 2021 20:23:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id USOb_wTXjwCh; Wed, 26 May 2021 11:33:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PPCOlxVAWf6T; Wed, 26 May 2021 20:23:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4727183C49;
-	Wed, 26 May 2021 11:33:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 12398605EB;
+	Wed, 26 May 2021 20:23:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6413B1BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 11:33:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D0D371BF35C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 20:23:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 516E2401B1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 11:33:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CB43340621
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 20:23:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J_I60WzjYKiZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 May 2021 11:33:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ze--oh8i9X_h for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 May 2021 20:23:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5794640147
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 11:33:48 +0000 (UTC)
-IronPort-SDR: Ot8cjHdPwABOYsf7PgKpdQLuVTdPCbe5mjLn3Cr9qmwZyVgjzinRzGhHXELOwyCbkFeiHOvR18
- JE3sQEqmQIVg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9995"; a="199389617"
-X-IronPort-AV: E=Sophos;i="5.82,331,1613462400"; d="scan'208";a="199389617"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2021 04:33:45 -0700
-IronPort-SDR: JFpVE7jW+SOT7g1bfLG4Cm1QrjTGygqGs6fCwueKcbVg+hb49qYv29Tcsuwjllj5009HlF6ayg
- Kfr06mB2QiNQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,331,1613462400"; d="scan'208";a="476889846"
-Received: from lkp-server02.sh.intel.com (HELO 1ec8406c5392) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 26 May 2021 04:33:44 -0700
-Received: from kbuild by 1ec8406c5392 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1llrnD-00028J-UU; Wed, 26 May 2021 11:33:43 +0000
-Date: Wed, 26 May 2021 19:32:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60ae31e4.sIY5kAuucyvYR2cn%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BD29640620
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 May 2021 20:23:24 +0000 (UTC)
+IronPort-SDR: DoxeiRqc7n4xHyelwWV1Be10bJAjnnl+felsRENPeo7pKdP1DVX5pQ38uIZvQNbJl0AaoYZVmb
+ zBwY+k2E4rmQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,9996"; a="202328170"
+X-IronPort-AV: E=Sophos;i="5.82,331,1613462400"; d="scan'208";a="202328170"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2021 13:23:23 -0700
+IronPort-SDR: vP7ahVeiHRE1VPWwOcEazezHklg0IoEnAjyoTlHjJnRb/a0bRdYB8DW5H7AwiQKYz2ZElo1rmV
+ +0p7SthFv9vA==
+X-IronPort-AV: E=Sophos;i="5.82,331,1613462400"; d="scan'208";a="472142323"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2021 13:23:21 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Anthony Nguyen <anthony.l.nguyen@intel.com>
+Date: Wed, 26 May 2021 13:23:13 -0700
+Message-Id: <20210526202313.3354027-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 928c8f51df0fd67cf165c18b82fe9b99a687ed08
+Subject: [Intel-wired-lan] [PATCH] fixup! ice: add support for sideband
+ messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,132 +64,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 928c8f51df0fd67cf165c18b82fe9b99a687ed08  igc: change default return of igc_read_phy_reg()
+The check in ice_clean_sbq_subtask for whether to exit early
+accidentally checked for if the sbq was supported. This check should be
+negated, so that we only try to clean the sideband queue on devices
+which support it. Otherwise without this fix, on devices that do not
+support the sideband queue, the following message may get spammed into
+the log:
 
-elapsed time: 730m
+ice 0000:af:00.0: Sideband Receive Queue event error ICE_ERR_AQ_EMPTY
 
-configs tested: 103
-configs skipped: 2
+Additionally, on devices which do support the sideband queue, the
+receive portion will never be properly cleaned.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                  mpc866_ads_defconfig
-mips                  maltasmvp_eva_defconfig
-powerpc                     tqm8548_defconfig
-powerpc                      ppc44x_defconfig
-sh                           se7780_defconfig
-arm                        spear3xx_defconfig
-sh                          sdk7786_defconfig
-arm                            pleb_defconfig
-sh                           se7343_defconfig
-powerpc                mpc7448_hpc2_defconfig
-arm                       spear13xx_defconfig
-arm                         lpc18xx_defconfig
-arm                            qcom_defconfig
-mips                      fuloong2e_defconfig
-powerpc                      obs600_defconfig
-sparc                       sparc64_defconfig
-m68k                        stmark2_defconfig
-m68k                          hp300_defconfig
-s390                          debug_defconfig
-arm                       aspeed_g5_defconfig
-arc                            hsdk_defconfig
-mips                          rb532_defconfig
-arm                        trizeps4_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a005-20210526
-x86_64               randconfig-a001-20210526
-x86_64               randconfig-a006-20210526
-x86_64               randconfig-a003-20210526
-x86_64               randconfig-a004-20210526
-x86_64               randconfig-a002-20210526
-i386                 randconfig-a001-20210526
-i386                 randconfig-a002-20210526
-i386                 randconfig-a005-20210526
-i386                 randconfig-a004-20210526
-i386                 randconfig-a003-20210526
-i386                 randconfig-a006-20210526
-i386                 randconfig-a011-20210526
-i386                 randconfig-a016-20210526
-i386                 randconfig-a015-20210526
-i386                 randconfig-a012-20210526
-i386                 randconfig-a014-20210526
-i386                 randconfig-a013-20210526
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-b001-20210526
-x86_64               randconfig-a013-20210526
-x86_64               randconfig-a012-20210526
-x86_64               randconfig-a014-20210526
-x86_64               randconfig-a016-20210526
-x86_64               randconfig-a015-20210526
-x86_64               randconfig-a011-20210526
-
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+Tony, if you wouldn't mind squashing this into the noted patch in the
+description before we send this to netdev.
+
+ drivers/net/ethernet/intel/ice/ice_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 3cc1237a2ebe..ca80b858ef20 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1430,7 +1430,8 @@ static void ice_clean_sbq_subtask(struct ice_pf *pf)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 
+-	if (ice_is_sbq_supported(hw)) {
++	/* Nothing to do here if sideband queue is not supported */
++	if (!ice_is_sbq_supported(hw)) {
+ 		clear_bit(ICE_SIDEBANDQ_EVENT_PENDING, pf->state);
+ 		return;
+ 	}
+
+base-commit: 80e0251735737d53ea5dc85e2cf5596df721ddc5
+-- 
+2.31.1.331.gb0c09ab8796f
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
