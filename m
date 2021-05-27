@@ -1,153 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4924F393013
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 May 2021 15:47:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 958F2392DCD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 May 2021 14:16:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B44D08250B;
-	Thu, 27 May 2021 13:47:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0BE78608D1;
+	Thu, 27 May 2021 12:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bUUhfAvGyfzu; Thu, 27 May 2021 13:47:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FKxNfF94XAJ6; Thu, 27 May 2021 12:16:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9753782E75;
-	Thu, 27 May 2021 13:47:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E17FD608B4;
+	Thu, 27 May 2021 12:16:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F30441BF41A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 10:23:30 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B96291BF418
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 12:16:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DFE5A83D25
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 10:23:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B463640288
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 12:16:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ru3UZSRgtUlv for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 May 2021 10:23:29 +0000 (UTC)
-X-Greylist: delayed 00:19:28 by SQLgrey-1.8.0
-Received: from de-smtp-delivery-102.mimecast.com
- (de-smtp-delivery-102.mimecast.com [194.104.109.102])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 21E7E83CEC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 10:23:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com;
- s=mimecast20200619; t=1622111007;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dDJT6X4zSDczVsL85ePLb2edlKxANz9DzYCuH+VrkBU=;
- b=L41BtFtZRef9zfNo9b7Sn2eC7wfiNOsy8xRsitnc7DRGEG1HiTW3fp+zxLi/0fcpjtnAJF
- steNHdpD9DzRmoglr1KDlZp1PzE7N+wPYAOSkBptwyWMgPxbNBe5HInw3GLTuoBmpmYYRO
- 9k3WBExVxDBy3Cs0G7QUiZRLIt+gJRs=
-Received: from EUR02-HE1-obe.outbound.protection.outlook.com
- (mail-he1eur02lp2050.outbound.protection.outlook.com [104.47.5.50]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- de-mta-40-WzIlkBHxPHKuom-AeqfSXg-1; Thu, 27 May 2021 12:22:16 +0200
-X-MC-Unique: WzIlkBHxPHKuom-AeqfSXg-1
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OEFAL7/fLHGpH/Hj+UsjkOZtSk3nyW6G7d9Wsb90r3laD585mCdpaP46GFzLJS0SDADb+H/Z08K465lz9mMtFfc2KC3Gbyz1dvyKP+Q/vrQTM4XIX86yTyCzODK8TywrrK8hjAbgY01A96JB6HHGB0yvlwEONJW78qhf/70ZJGMtWp1KlB+lv1HyLG95ADvoCGjET9o1HpHuQUyeamv9IxoIR+C5GDGtJnRP1tRCnBr0SjC09heGu+sHne/nNvZMicVQSZyek7eiYEisCemBovJbnbADtKEZlK3dCDchD+Cn0i5AE8XaD1LqSpAnhjPNP0XgwF7e109TgtjQjyuGLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dDJT6X4zSDczVsL85ePLb2edlKxANz9DzYCuH+VrkBU=;
- b=bxYG9rLeOTkwBH/ZAVktqdtPtxgEF/r6y11gGV8k1DvmMg0TVnz6Y+A7LaisonbW7p+DS2VOFx9dKb2cafuhxQVjui2zEAxIuMpBQ9NUyBMSYtrsrIKPUifwKxG1UCBAv1mXmoTw+b5u8xJfadLDt988hcpVEjf0orpuLIxVAkQ9VcPNfiO2LmkhbaZ5VO0x1tPAJVTYvyjOzv2buezBK8k8dMiXKIO/h3r2zR9plcD9Jp1OPrT3xZyVLhNLvetw0VUnUDghcU1AECLJCRmOvF/S10lV0RqtrJdnPXmcG/aubcPcQ7wAkfjBB1zQlD36FOiqZslpzk01LYNw+yqAAQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Authentication-Results: linutronix.de; dkim=none (message not signed)
- header.d=none;linutronix.de; dmarc=none action=none header.from=suse.com;
-Received: from DB7PR04MB5177.eurprd04.prod.outlook.com (2603:10a6:10:20::21)
- by DBBPR04MB8059.eurprd04.prod.outlook.com (2603:10a6:10:1e9::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.25; Thu, 27 May
- 2021 10:22:12 +0000
-Received: from DB7PR04MB5177.eurprd04.prod.outlook.com
- ([fe80::790f:c865:4660:1565]) by DB7PR04MB5177.eurprd04.prod.outlook.com
- ([fe80::790f:c865:4660:1565%7]) with mapi id 15.20.4173.021; Thu, 27 May 2021
- 10:22:12 +0000
-Date: Thu, 27 May 2021 18:21:57 +0800
-From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Message-ID: <YK9yxQoBPeUfQG05@syu-laptop>
-References: <20210504092340.00006c61@intel.com>
- <87pmxpdr32.ffs@nanos.tec.linutronix.de>
- <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
- <87im3gewlu.ffs@nanos.tec.linutronix.de>
- <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
- <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
- <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
- <87zgwo9u79.ffs@nanos.tec.linutronix.de>
- <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
- <YK9ucRrjq+eck/G7@syu-laptop>
-Content-Disposition: inline
-In-Reply-To: <YK9ucRrjq+eck/G7@syu-laptop>
-X-Originating-IP: [27.242.200.212]
-X-ClientProxiedBy: PR3P189CA0040.EURP189.PROD.OUTLOOK.COM
- (2603:10a6:102:53::15) To DB7PR04MB5177.eurprd04.prod.outlook.com
- (2603:10a6:10:20::21)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TlsuC9fM7Jup for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 May 2021 12:16:30 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6DCA740160
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 12:16:30 +0000 (UTC)
+IronPort-SDR: mEgyc0YKiV2/Y6Y6DQ1rm9Kw3QOJr9JoYASr8FTHe7BfGDCBHZC9U9BgdUpGmXay0okpMyR00N
+ WBA1Ybf4OA3Q==
+X-IronPort-AV: E=McAfee;i="6200,9189,9996"; a="190089562"
+X-IronPort-AV: E=Sophos;i="5.82,334,1613462400"; d="scan'208";a="190089562"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 05:16:27 -0700
+IronPort-SDR: alcuhG2KYvp/fySxatDnjpHLoIJnAsol4mNYMYyLG0HQpj+eOozORgoqfx/yWZtmxF/WhI6i5l
+ bqxPo/9d2CBg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,334,1613462400"; d="scan'208";a="547594556"
+Received: from lkp-server02.sh.intel.com (HELO 1ec8406c5392) ([10.239.97.151])
+ by orsmga004.jf.intel.com with ESMTP; 27 May 2021 05:16:26 -0700
+Received: from kbuild by 1ec8406c5392 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lmEw5-0002km-Up; Thu, 27 May 2021 12:16:25 +0000
+Date: Thu, 27 May 2021 20:16:20 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <60af8d94.MDOyQiecfOZORgyP%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from syu-laptop (27.242.200.212) by
- PR3P189CA0040.EURP189.PROD.OUTLOOK.COM (2603:10a6:102:53::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4173.20 via Frontend Transport; Thu, 27 May 2021 10:22:03 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 69c3169f-7bc4-4362-6cd7-08d920f94a39
-X-MS-TrafficTypeDiagnostic: DBBPR04MB8059:
-X-Microsoft-Antispam-PRVS: <DBBPR04MB8059E3B7D3E61BD47316F47EBF239@DBBPR04MB8059.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: HB4GEiW1mioq+juFay0vOhwywXNlI/ZLEvuPDqzkhZ61XuOkaez90uwtCEOIEgr3+EW/EoY7DZgl9o3P/yLbWT0bflgllxMQeum3t254WpXjxTNMh1QGSJ3EzT4CZqqAf/25zX/hcTEUhfhtK7dTwHqIAq8Dk/tq5/E+qsyFknyYEJqAP+Wnfdzv2UcmiXSZy0vvYQr3tBsKZnIzvAk/nXtzAsEiCW/k250PUyWREwP/oZmFoHKIgK3lOqYEUe1o4X3npYm0xiAPjQTydj6cXbATL/EGhkFpy7ROOvI040Xj6oPEE4pM65FSBQYlXkj2u3v93w7O6e8HNXSR7fUAyPyv8O8VX06pLdTxR9g16xFNRniM2b04bHQwrf0pfiOuywROgbrLRhKczmsy9zPnpnsNBMuTtYpKZhHeqDWhdwodw1WX/NfamvKqSELNK8kM5hqBxnZAU8aUMa8BYN16WvqmbNbfIn6DU5ajLTgjVMoCLsAsu7FSfZaxdL7FZq9qkJ1aMYybJJnNMujtb/T7BKnF1DRcSE3CtfxKHOzopiIzGtZT0pUnioeOeQM5KppXa8rerM7bsRxrCWpL+ojzHaQBsLV1724vPxl3C+G+8+lBJ3Q3edYzP9Wm5Hs3Ct6Y1rzRhmduHp56B1FKZVO2iHgXpCMNDRK5mKB+t5HBoeEEuKLIXGEqp9ybgELd+KayIYQCHPna+PwKTdmRvl+l8vRW/kcvzArgfhvFBQtosBY=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DB7PR04MB5177.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(4326008)(9686003)(8676002)(6496006)(66476007)(966005)(66946007)(55016002)(54906003)(66556008)(38100700002)(33716001)(5660300002)(6666004)(2906002)(498600001)(6916009)(186003)(26005)(16526019)(83380400001)(8936002)(86362001)(956004)(7416002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: =?utf-8?B?dWNNc3JjdnBNZ3N3bVplMWRIWjM1S0F1MGpUWW1TSzBxRW4yTHg5NWpCUTdz?=
- =?utf-8?B?RS9VdkJNaXNxWWV2YkZVbmIyNG5PTmw0dVZTQ0RIbjVWVllYMm5YTTJqaWpr?=
- =?utf-8?B?d3YzenBOLzVaN0NOQThEbmxwalduZ3hpSzJUKzI4RnBjZTVYc0lGNkJNQWpP?=
- =?utf-8?B?MnBlR0xiQWYwSWVKS3lkcU1rN2FkU3VDclhHNGFJZld0OVhiazB6d0ZnWVhv?=
- =?utf-8?B?OVc5Y3ZOWVRYSVg0QW1DeHhkOUdTN0t4RW1BNit4UWdnWmJVVnc2NzRvR0RR?=
- =?utf-8?B?bS91cTNyYWxJdnY5TWdSano0NHNQUW5sUjlEYzF2T1VzMTZCVkZVVXVLSUFB?=
- =?utf-8?B?VGlnaVdkQ2QvNmJnekg5ZU9zY1BraFdOY0hEeEhISWdOOG5rQnhVdFA0TGlG?=
- =?utf-8?B?TGdpYzNCZDBTL1Z4eGdDRGNJZEFSb3IzSWNhM1dZakRpbmdPejVXd3RjT2Zz?=
- =?utf-8?B?OVM3bEd5UG9rRkFzS24zUkkwajlreTVKbVZ0enp4aVZKWFB5T3hBSXpqTkpT?=
- =?utf-8?B?dktGdENzOU5Sb2taWFBXaGJrTDk4eTZTMk1YRkpwWDI3VXhlaGhFUHREOHNj?=
- =?utf-8?B?VnplWEtPQ3dvRURXYkg2bExxUnB0NXp3MHhFaVZlLytrZDI1Z0V3Wm5aU2d5?=
- =?utf-8?B?Ui9rcEwxRkVOSG4rRlVaVlZVYzgxdExYdmhCQ2hQZStMSEV1akd0K21tRFB2?=
- =?utf-8?B?bGo5a3Z2djZyVmo3VTIxejB5ZUM0MW1RdzJSSkd0Y1h3YlpEY1A5OWIrQjd1?=
- =?utf-8?B?Zkh0YUk4ZERacm1ONVR4RGdKaWdyb0V3UzByQ3l5aGQ1YVE4SWFicTVvckpD?=
- =?utf-8?B?aDF4QVJPS0UwYUo3YlRENTYrVjErZWpZMEFIRzFJRDV2d1grZ0xyL0tnSmow?=
- =?utf-8?B?TG90ZzFKb0lrdFhwaW91TUI2SUtMSG5qaGliUndhdkpZaG1wYm1rWllaaFdz?=
- =?utf-8?B?ZElhUnhpa1h6R0FpUXNDRjZBbXptN2tyMjlPb01YTk1zazZvSzV2ZTY0OHZ3?=
- =?utf-8?B?S0hPYVQ5RUIxL1k2a2kwNlp0TjBHOFZTYlVmSFQrclUwOWpNRGFLMkRFY1dF?=
- =?utf-8?B?dlp6K2VNWTFNYm1oZjNRdk84MW1EOFl1c3Q3U3lmR0FKUWRRaWxuZXR2QW42?=
- =?utf-8?B?Rkx1Skl0dzZrNVdzWC9VMG9EaGhtQ0pTMWNPQVMvdDFyUTcybDQyejFCSU5u?=
- =?utf-8?B?SXh3TlR5L0x3bDhCT25KTWZFTlNPUFZJbW9OTSttQk5zdTJ4Z0Zyc2pncXhE?=
- =?utf-8?B?VytNTjNTLzFXOGhmNWFJaUdDYWxIS01YMzB1eEtWZVpBTWwvaUFXa2dvbmdN?=
- =?utf-8?B?REF5eEZLYzNOZVVQY1RIZ0c0SXhraCtRaFNnZjRRNGJyRmlTcGNUSTdma25x?=
- =?utf-8?B?ZU9HQWpaNjZudnBxeGtiZnFrVkpkL1VZTEpVTXppRmZrZWIxZWpXTHZETHlO?=
- =?utf-8?B?Ty9tV2VCZFZFTlVlUDdWa3ltMFBVMHVYb0xILzZuZXgwWUluNkdhZFZ5c1Q0?=
- =?utf-8?B?TVNxTTVuMGp1TGJtUlFDU04vcnZPR2EwRTUzSFc3Sno1blk4MExFWGNMTEo4?=
- =?utf-8?B?R1BGbVRlOUhJMExaR1B5alFPK2pPTUlPMXVOZkw5T2pTWEZpSGIydldRVitx?=
- =?utf-8?B?cjVZdDQzdTdhbS9NcHRHVkRLblByMWV4WWJpV1ptSzNHeTJwQU1vdDRjM3pk?=
- =?utf-8?B?V1dxMktxQndMbmlpc3lyV0RzRUx1VVBmU3ZqWGlxYjJaRDhoM1dVNjcxbjNG?=
- =?utf-8?Q?zabl/bgvFYILwcdvzh2u5PJAkouZK5w3JJYtw11?=
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 69c3169f-7bc4-4362-6cd7-08d920f94a39
-X-MS-Exchange-CrossTenant-AuthSource: DB7PR04MB5177.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 May 2021 10:22:11.7546 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GAGPz0YnXXcLvFRKt0ziasUuCImVFmSSvommnGC1opvsUFo+aV8JZaMXd+HQjWp/lN9ex7Z4zkESty7iAU/MZg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB8059
-X-Mailman-Approved-At: Thu, 27 May 2021 13:47:19 +0000
-Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
- affinity hints
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ c7a551b2e44a65170b5dceaca0afbd59f3715f11
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,183 +67,194 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "peterz@infradead.org" <peterz@infradead.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
- Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
- intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
- Nitesh Lal <nilal@redhat.com>, "frederic@kernel.org" <frederic@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
- "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
- Neil Horman <nhorman@tuxdriver.com>,
- "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- netdev@vger.kernel.org,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, May 27, 2021 at 06:03:29PM +0800, Shung-Hsi Yu wrote:
-> Hi,
-> 
-> On Fri, May 21, 2021 at 02:03:06PM +0200, Thomas Gleixner wrote:
-> > The discussion about removing the side effect of irq_set_affinity_hint() of
-> > actually applying the cpumask (if not NULL) as affinity to the interrupt,
-> > unearthed a few unpleasantries:
-> > 
-> >   1) The modular perf drivers rely on the current behaviour for the very
-> >      wrong reasons.
-> > 
-> >   2) While none of the other drivers prevents user space from changing
-> >      the affinity, a cursorily inspection shows that there are at least
-> >      expectations in some drivers.
-> > 
-> > #1 needs to be cleaned up anyway, so that's not a problem
-> > 
-> > #2 might result in subtle regressions especially when irqbalanced (which
-> >    nowadays ignores the affinity hint) is disabled.
-> > 
-> > Provide new interfaces:
-> > 
-> >   irq_update_affinity_hint() - Only sets the affinity hint pointer
-> >   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
-> >   			       the interrupt
-> > 
-> > Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
-> > document it to be phased out.
-> 
-> Is there recommended way to retrieve the CPU number that the interrupt has
-> affinity?
-> 
-> Previously a driver (I'm looking at drivers/net/ethernet/amazon/ena) that
-> uses irq_set_affinity_hint() to spread out IRQ knows the corresponding CPU
-> number since they're using their own spreading scheme. Now, phasing out
-> irq_set_affinity_hint(), and thus relying on request_irq() to spread the
-> load instead, there don't seem to be a easy way to get the CPU number.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
+branch HEAD: c7a551b2e44a65170b5dceaca0afbd59f3715f11  nfc: st-nci: remove unnecessary labels
 
-I should add that the main use-case for retrieving CPU number seems to be
-ensuring memory is allocated on the same NUMA node that serves the interrupt
-(again, looking at ena driver only, haven't check others yet).
+elapsed time: 953m
 
-    int cpu = i % num_online_cpu();
-    cpumask_set_cpu(cpu, &affinity_hint_mask);
-    request_irq(irq, ...);
-    irq_set_affinity_hint(irq, &affinity_hint_mask);
-    int node = cpu_to_node(cpu);
-    buffer = vzalloc(node);
+configs tested: 165
+configs skipped: 3
 
-> In theory the following could work, but including irq.h does not look like a
-> good idea given that the comment in its explicitly ask not to be included in
-> generic code.
-> 
->     #include <linux/irq.h>
->     int irq = request_irq(...);
->     struct irq_data *data = irq_get_irq_data(irq);
->     struct cpumask *mask = irq_data_get_effective_affinity_mask(data);
->     int cpu = cpumask_first(mask);
-> 
-> Any suggestions?
-> 
-> 
-> Thanks,
-> Shung-Hsi
-> 
-> > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> > Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
-> > ---
-> > Applies on:
-> >    git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/core
-> > ---
-> >  include/linux/interrupt.h |   41 ++++++++++++++++++++++++++++++++++++++++-
-> >  kernel/irq/manage.c       |    8 ++++----
-> >  2 files changed, 44 insertions(+), 5 deletions(-)
-> > 
-> > --- a/include/linux/interrupt.h
-> > +++ b/include/linux/interrupt.h
-> > @@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned i
-> >  extern int irq_can_set_affinity(unsigned int irq);
-> >  extern int irq_select_affinity(unsigned int irq);
-> >  
-> > -extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
-> > +extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> > +				     bool setaffinity);
-> > +
-> > +/**
-> > + * irq_update_affinity_hint - Update the affinity hint
-> > + * @irq:	Interrupt to update
-> > + * @cpumask:	cpumask pointer (NULL to clear the hint)
-> > + *
-> > + * Updates the affinity hint, but does not change the affinity of the interrupt.
-> > + */
-> > +static inline int
-> > +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +	return __irq_apply_affinity_hint(irq, m, true);
-> > +}
-> > +
-> > +/**
-> > + * irq_apply_affinity_hint - Update the affinity hint and apply the provided
-> > + *			     cpumask to the interrupt
-> > + * @irq:	Interrupt to update
-> > + * @cpumask:	cpumask pointer (NULL to clear the hint)
-> > + *
-> > + * Updates the affinity hint and if @cpumask is not NULL it applies it as
-> > + * the affinity of that interrupt.
-> > + */
-> > +static inline int
-> > +irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +	return __irq_apply_affinity_hint(irq, m, true);
-> > +}
-> > +
-> > +/*
-> > + * Deprecated. Use irq_update_affinity_hint() or irq_apply_affinity_hint()
-> > + * instead.
-> > + */
-> > +static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +	return irq_apply_affinity_hint(irq, cpumask);
-> > +}
-> > +
-> >  extern int irq_update_affinity_desc(unsigned int irq,
-> >  				    struct irq_affinity_desc *affinity);
-> >  
-> > --- a/kernel/irq/manage.c
-> > +++ b/kernel/irq/manage.c
-> > @@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq,
-> >  }
-> >  EXPORT_SYMBOL_GPL(irq_force_affinity);
-> >  
-> > -int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> > +			      bool setaffinity)
-> >  {
-> >  	unsigned long flags;
-> >  	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
-> > @@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int i
-> >  		return -EINVAL;
-> >  	desc->affinity_hint = m;
-> >  	irq_put_desc_unlock(desc, flags);
-> > -	/* set the initial affinity to prevent every interrupt being on CPU0 */
-> > -	if (m)
-> > +	if (m && setaffinity)
-> >  		__irq_set_affinity(irq, m, false);
-> >  	return 0;
-> >  }
-> > -EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
-> > +EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
-> >  
-> >  static void irq_affinity_notify(struct work_struct *work)
-> >  {
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+m68k                         amcore_defconfig
+mips                        jmr3927_defconfig
+powerpc                      ppc44x_defconfig
+mips                        nlm_xlp_defconfig
+powerpc                  iss476-smp_defconfig
+powerpc                    sam440ep_defconfig
+sh                        edosk7760_defconfig
+arm                          iop32x_defconfig
+arm                         lpc32xx_defconfig
+arm                          ixp4xx_defconfig
+sh                          lboxre2_defconfig
+powerpc                       maple_defconfig
+sh                          sdk7780_defconfig
+mips                      malta_kvm_defconfig
+arm                         palmz72_defconfig
+mips                       bmips_be_defconfig
+arm                           sunxi_defconfig
+powerpc                     tqm8560_defconfig
+powerpc                     skiroot_defconfig
+m68k                        m5307c3_defconfig
+sh                           se7712_defconfig
+arm                        keystone_defconfig
+m68k                       m5475evb_defconfig
+m68k                         apollo_defconfig
+mips                  maltasmvp_eva_defconfig
+arm                      footbridge_defconfig
+mips                  decstation_64_defconfig
+openrisc                 simple_smp_defconfig
+um                               allyesconfig
+powerpc                 mpc8313_rdb_defconfig
+arc                     nsimosci_hs_defconfig
+mips                         tb0287_defconfig
+arm64                            alldefconfig
+mips                        bcm47xx_defconfig
+h8300                               defconfig
+sh                     sh7710voipgw_defconfig
+mips                           ip22_defconfig
+powerpc                    amigaone_defconfig
+mips                    maltaup_xpa_defconfig
+powerpc                 xes_mpc85xx_defconfig
+powerpc                       ebony_defconfig
+mips                        vocore2_defconfig
+mips                        workpad_defconfig
+arm                          moxart_defconfig
+mips                          malta_defconfig
+powerpc                     pseries_defconfig
+powerpc                 mpc834x_mds_defconfig
+mips                          rm200_defconfig
+riscv                    nommu_virt_defconfig
+arm                          ep93xx_defconfig
+sh                           se7343_defconfig
+ia64                             allyesconfig
+powerpc                   lite5200b_defconfig
+powerpc                mpc7448_hpc2_defconfig
+powerpc                     tqm8548_defconfig
+arm                        multi_v5_defconfig
+mips                            e55_defconfig
+alpha                               defconfig
+mips                        omega2p_defconfig
+arm                        mini2440_defconfig
+arm                          badge4_defconfig
+ia64                             alldefconfig
+powerpc                 mpc836x_mds_defconfig
+arm                      jornada720_defconfig
+powerpc                      mgcoge_defconfig
+openrisc                            defconfig
+mips                     loongson1c_defconfig
+m68k                             allmodconfig
+nios2                         3c120_defconfig
+sh                          kfr2r09_defconfig
+arc                      axs103_smp_defconfig
+arm                        cerfcube_defconfig
+mips                           ci20_defconfig
+xtensa                  cadence_csp_defconfig
+arm                       omap2plus_defconfig
+arc                    vdk_hs38_smp_defconfig
+powerpc                     mpc83xx_defconfig
+microblaze                          defconfig
+arm                            qcom_defconfig
+arm                       cns3420vb_defconfig
+arc                        nsim_700_defconfig
+mips                        nlm_xlr_defconfig
+mips                         rt305x_defconfig
+arm                        mvebu_v5_defconfig
+powerpc                      bamboo_defconfig
+sparc64                          alldefconfig
+mips                      maltaaprp_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a005-20210526
+x86_64               randconfig-a001-20210526
+x86_64               randconfig-a006-20210526
+x86_64               randconfig-a003-20210526
+x86_64               randconfig-a004-20210526
+x86_64               randconfig-a002-20210526
+i386                 randconfig-a001-20210526
+i386                 randconfig-a002-20210526
+i386                 randconfig-a005-20210526
+i386                 randconfig-a004-20210526
+i386                 randconfig-a003-20210526
+i386                 randconfig-a006-20210526
+i386                 randconfig-a011-20210526
+i386                 randconfig-a016-20210526
+i386                 randconfig-a015-20210526
+i386                 randconfig-a012-20210526
+i386                 randconfig-a014-20210526
+i386                 randconfig-a013-20210526
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                            kunit_defconfig
+um                               allmodconfig
+um                                allnoconfig
+um                                  defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-b001-20210526
+x86_64               randconfig-a013-20210526
+x86_64               randconfig-a012-20210526
+x86_64               randconfig-a014-20210526
+x86_64               randconfig-a016-20210526
+x86_64               randconfig-a015-20210526
+x86_64               randconfig-a011-20210526
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
