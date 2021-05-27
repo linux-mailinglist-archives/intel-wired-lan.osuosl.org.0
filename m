@@ -1,158 +1,158 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0FB23934BF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 May 2021 19:27:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2545C3934C4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 May 2021 19:27:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2B08D4068C;
-	Thu, 27 May 2021 17:27:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFC1383E04;
+	Thu, 27 May 2021 17:27:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7N8wueN4JjpC; Thu, 27 May 2021 17:27:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l3OhaTyWve6g; Thu, 27 May 2021 17:27:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 85E804068B;
-	Thu, 27 May 2021 17:27:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A388A83DF9;
+	Thu, 27 May 2021 17:27:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AE7811BF341
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B52B41BF341
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9D8D7402AB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A3A226064A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ir-6eiEvWdXV for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 May 2021 17:27:14 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6AO8qOiLf4iP for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 May 2021 17:27:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9268C4019A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:14 +0000 (UTC)
-IronPort-SDR: ogEZyzfmMWBtH4znq28+2w88XhRpD+t8CCijvUd9N3GfwhJQ9aA9S76Y/D/2SuF39rxr1d/5Lw
- s3ZxWeu0eCfw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="189909385"
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="189909385"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2021 10:27:10 -0700
-IronPort-SDR: yN+g/J5kKUriXTTkoG0WHzFhfAF8XWutOHX9bdpgF2MroIlqc4mHfU/dN9E5mXcli/KNdx+3Eq
- 6iCTvumpU5LQ==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D607D60644
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 May 2021 17:27:40 +0000 (UTC)
+IronPort-SDR: OebumrbB5N05jR1HeLhM7k234e4c8Q5/qlUMykSj1Y/Tpx1SiI4neBra4r78vg2w/cHHNDLytg
+ JKQnisIdNaOw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="199752031"
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="199752031"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 10:27:33 -0700
+IronPort-SDR: jXCwBNoTSuiaU8OlN6Sl5ptSBshLRoEYwrMas8HPXFUqHuHqjslUpnEJiDxb9JukqpSqMw8CZm
+ OCl0dIA/k0aw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="443662083"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga008.jf.intel.com with ESMTP; 27 May 2021 10:27:09 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="472677153"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by FMSMGA003.fm.intel.com with ESMTP; 27 May 2021 10:27:33 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.4; Thu, 27 May 2021 10:27:08 -0700
+ 15.1.2242.4; Thu, 27 May 2021 10:27:32 -0700
 Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
- via Frontend Transport; Thu, 27 May 2021 10:27:08 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
+ via Frontend Transport; Thu, 27 May 2021 10:27:32 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.174)
  by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.4; Thu, 27 May 2021 10:27:07 -0700
+ 15.1.2242.4; Thu, 27 May 2021 10:27:31 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kf5m04BpE+KvQ6QEq3DP5VafeVpIW60uzS5Edk9Lc1OPE9lE/+8vDBN8XJCR6UbMwO7sh5k0SGqwn3MP8Y6dhoyfw9i1CsY7hrai6lkSgHjloS+i9BcFCb+m1m8K3ziAKWgP9C7K6YZPvk5aJsO39GVyq1wkXUpJIW1NAh8/MQZKbwP6I0oajQj373bF2PtSv8Hng5xiBcIvKcq/UVYv3lZtHqRgJh2poR1qCUGcBPuYXQobfhEP/rHSrzpGuQ7QufbfVKcAYjP4l2ETRsIsYKNY2G6qr5F8XvPMgO5DxErrIbBkR7RAttS8UeMQavK2Q00EeU6B8So/kPYIrHkghA==
+ b=EYyvqMk3iXgBhwLw4jOvJyq7qh1u3dklQTqg8/GQgLml2Ub2W9d7fFOyhU5VY57cRGfj/JhvxaxISUcnGIvPlLwALlaK9EumXD3jH4U+1KeRGzvkaCrMIPbGif7HdVcs2cgcwzCdL6MJJpFKdIqWvl2bVj7tKEi1JA3/e5RuzI71Ann1CPjOnISGq1p5YDceui05aD7id5WQ3ssOviWN1haVOsl4AasSPNjx2kaU02Hmte4DcdIPTnsr8q4NCpcKfpOVkXAJABYBhdUbFJBQQPSQuLTyvjsYxpQZN9GliARt0Qa8uXObjpWgQyj3+8duMW1sgiTgAguiXcQ1Tvk+wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SLpadN1MoXfsQoU8kRinTlKwNR39DXwRK3Ahxc/GJMA=;
- b=GpXahJGroGPx2MkeIkng3jIhV/mual5qfO8qWuS+nSijzi6Zv23rORm8x2WFQlLNbIf2uLsjLB+KY6HwCfR9DhV3tooOVOGa7eZ+1QTMqAMy2Rvg2vp3n7SV6+9UV7IVnCeoaOyLOaJ5QL/OA/Iz9C9xfs27hFW9dVD1Izj9K8XIMZPwXA/AriX4Il0Pf/KQVr5HElSHGUqiTWI3X4FOBG8e8GyUCI1maa4wKDPzrg6nO3kmG6PlsCMISlxRoFyhPCTilMm3eNfWnSZpC4UoJv+8DD3w1cBM0KQg5oVUz3BMWl80Bn5w13hdIG701HN45Sy0aYdXxtCqwEv8GzbZ5Q==
+ bh=tMYK8vbFlYy9HeOr2recWAe+FW7BnVnNU/glMSTUflM=;
+ b=BhJbBDprhF4PT9o5e/nhjrIOxmTT9K0fw5kJTCLSk7qDXvDudRkgrH5jpSWYRB1pgYqfTKMDFq+SHnqW6ZR72N6QlxsCgIvqgWIsSKk4Hs+Z6jQIWkAD+Efpn5rIAuJyen5DC5JiH/jkz52tVwRbCeBjrHlyq9QyZkRW+eXQUk4R3K6MeQyJeSWXMTfrOshlmJVoHrb8mOJOScfU2KadXBO/Qak5D6kD001v6YaZIa3avb5xW5Lei4ZIIJMCt261HdINWSny2V6bltZK8iQbHzIxWZPWhbSTgRmhIhbfXDVexsB2dmYJdoBUYR/jNWrL2Y8FyTmr/mud8IxKmQOHyQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SLpadN1MoXfsQoU8kRinTlKwNR39DXwRK3Ahxc/GJMA=;
- b=kY3tJD17+bL6z0u0a0nIBQrCgH1AnVLdJNdi+2PA9QN/gHYscuYY59ukQs3kMWeuw8GdpOIXA7Y7vW0sxU4NndDOinKs9tfvBzdP45rPFs1HeaexGn+5EonXBxMN3IdhnENVkpO4jl/FnMi6Sy1doM7iHxzlrdVDYkqmsLoUi9g=
-Received: from CY4PR11MB1576.namprd11.prod.outlook.com (2603:10b6:910:d::15)
- by CY4PR11MB1623.namprd11.prod.outlook.com (2603:10b6:910:f::17) with
+ bh=tMYK8vbFlYy9HeOr2recWAe+FW7BnVnNU/glMSTUflM=;
+ b=ReoxD5jFUJJIM2dqS2hteWuzb0/Xi14gzZR3gWb3oON4wxdtKYt86jVKIhnxGN4y6zyu11GzFba3L2kIHA3UHgJHc0oy+/hrXqq0NA6du7jFDWcHKaPynKwmP3X71Ikm2LwVI4Rhon2Vwgd+lKzizcp1u5kdk15XcYh1Un9GQ8Q=
+Received: from CO1PR11MB5105.namprd11.prod.outlook.com (2603:10b6:303:9f::7)
+ by MWHPR1101MB2285.namprd11.prod.outlook.com (2603:10b6:301:57::13) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.26; Thu, 27 May
- 2021 17:27:06 +0000
-Received: from CY4PR11MB1576.namprd11.prod.outlook.com
- ([fe80::8177:30c8:3373:c4ea]) by CY4PR11MB1576.namprd11.prod.outlook.com
- ([fe80::8177:30c8:3373:c4ea%12]) with mapi id 15.20.4150.027; Thu, 27 May
- 2021 17:27:06 +0000
-From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S53 03/15] ice: Save VF's MAC across
- reboot
-Thread-Index: AQHWjTAXzjTH5ZfQy0yJnBOSB3erTKr5IIkg
-Date: Thu, 27 May 2021 17:27:06 +0000
-Message-ID: <CY4PR11MB1576A358E7CCD6D2ECED4CA7AB239@CY4PR11MB1576.namprd11.prod.outlook.com>
-References: <20200917201347.81570-1-anthony.l.nguyen@intel.com>
- <20200917201347.81570-3-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200917201347.81570-3-anthony.l.nguyen@intel.com>
-Accept-Language: pl-PL, en-US
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.25; Thu, 27 May
+ 2021 17:27:27 +0000
+Received: from CO1PR11MB5105.namprd11.prod.outlook.com
+ ([fe80::4db9:fe34:a884:4e43]) by CO1PR11MB5105.namprd11.prod.outlook.com
+ ([fe80::4db9:fe34:a884:4e43%7]) with mapi id 15.20.4173.020; Thu, 27 May 2021
+ 17:27:27 +0000
+From: "Brelinski, TonyX" <tonyx.brelinski@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, Intel Wired LAN
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 8/8] ice: enable transmit timestamps
+ for E810 devices
+Thread-Index: AQHXTZhJhl9wC9a0F06p5H+ouWPPy6r3n9hA
+Date: Thu, 27 May 2021 17:27:27 +0000
+Message-ID: <CO1PR11MB51056922FF0048F6B268D481FA239@CO1PR11MB5105.namprd11.prod.outlook.com>
+References: <20210520164850.1884656-1-jacob.e.keller@intel.com>
+ <20210520164850.1884656-9-jacob.e.keller@intel.com>
+In-Reply-To: <20210520164850.1884656-9-jacob.e.keller@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
 dlp-product: dlpe-windows
+dlp-version: 11.6.0.76
 dlp-reaction: no-action
 authentication-results: intel.com; dkim=none (message not signed)
  header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [188.147.96.41]
+x-originating-ip: [71.236.132.75]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: aee9365e-5541-4e19-26b0-08d92134a680
-x-ms-traffictypediagnostic: CY4PR11MB1623:
+x-ms-office365-filtering-correlation-id: 128749e5-57f9-4633-2e86-08d92134b2d9
+x-ms-traffictypediagnostic: MWHPR1101MB2285:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CY4PR11MB1623A5D30E76A68895697C17AB239@CY4PR11MB1623.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-microsoft-antispam-prvs: <MWHPR1101MB2285CC480C4A7D6936F7A8A1FA239@MWHPR1101MB2285.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: DmvTyw0K9t+TUz+LsK8WkLwrZJW7DtdViF9bsTkrPOd9rz8MizfYke93U4Z3/NaO8HTT20BLYg/KgXLANgJ9HLDxWK52sZX29+/SUipDs8csZIgOZdku1LR9YHdIByc0lREz3bN2c4hepxe9yxp0Rm+ekfvYlmxRaeSYAriELe6f2u6hF0kA/KAHweVrRyAsclpfZ+/JzMyF0Y6L7QWFqWjb8tAsPHONvkj7VMYe+r+yiUxAta/MAh5XXUx97Vgo/+STsqG7/LYwW7SZLQ7Oz3tvpQFi7SDubLkWBtGbjav1g98jEnJdQhOHffagE6GlJeWzc+s1AQ+WVXHtI8lvl4VXRHk9LS2AeCGNHXvtDhJ8O+eoSSJMZZr4PF5WaQAOcEUpAkafPcrynowbEtWbi+0ljgQkSatmqevL362QFkQd31T0khV1iya55shRpzNeC8aUFjsjZh/HjeWBJP6WJFe5ZFkEgnUCPhusIz1OfY+6qLzkgoChRRU+SDUBOA+B9amalEoggVsK13+iWCy//25ymw9rdLLiCwrKU8s6TW5fqZY3aFxDF1G/q6TYzeHIypNXOLC+JNdN++OZxbJm8a6GfY22tnta9k+Qeym7wYI=
+x-microsoft-antispam-message-info: /7biKUDbZQ59LGP4N1FvSHA7DtmN0MU7eTede+Z7w1DnjX4xRtTu/ismgCzUf/L4ylSvPEK6FWXYs8rzYb0leFDDTEGtKvK3jkf+R8xQYRm2SBzzLPcd+AuKnp0P0NSuRaOHtYvmuK8q/YKHW5LExx40lR3yGpPs7pBp1Vo3uy96U3DpC0oxmVZjYNSNbvxMdbJJA/CMxU+0pFzcnyjTnIWWo8FkRc2eG/lmomyRsya/VMS/CjQZr08FyjXVv+UHe61WooTjQKgIrjHEuL7pPmiM3ZvUivofVEGnCEq9wnFjPmuNs0/XSCTT7Ty7UhEJJCQz/beQjyPvkVEsyvA3ynETA5VTetItLs8jvAKp84bNWHf6tI1Sh4fCP0zhcW0rcVMFa+/SP6ovm2k8R/dvGo6/hCl/uwscAcoc/H9UOu6vl9aNxaAMcw0/MidczpHPwB7YYECNyNgEzeEsqzAGklt0tRHz7mAzI7SNwqeMflFRsMZLWlwQs7Sc9lbtqtIGScIszYtlCHon3ekljf3Mp1klEE2wtnEVMm8t0Zgs4hsjBkEckhHKyInaYR9uaY/aQUfyeGYYrmZOjNjA3QYcYhFE18t3asqg9hifm7mxp1w=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR11MB1576.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(39860400002)(366004)(396003)(346002)(376002)(136003)(316002)(7696005)(5660300002)(186003)(76116006)(8936002)(86362001)(55016002)(38100700002)(110136005)(66556008)(66574015)(52536014)(478600001)(83380400001)(66476007)(122000001)(64756008)(8676002)(33656002)(26005)(9686003)(6506007)(66946007)(2906002)(66446008)(53546011)(71200400001);
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5105.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(396003)(39860400002)(376002)(136003)(346002)(366004)(5660300002)(8676002)(9686003)(2906002)(316002)(52536014)(66476007)(86362001)(71200400001)(110136005)(7696005)(66556008)(64756008)(66446008)(66946007)(478600001)(33656002)(107886003)(186003)(26005)(76116006)(8936002)(122000001)(6506007)(53546011)(55016002)(83380400001)(38100700002)(4326008);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?iso-8859-2?Q?G8W9ejqyZuO9LHAynuEbJR25nwgMAVuGHND19OfRSwM962t8lY3TJy2MEU?=
- =?iso-8859-2?Q?qZkcgcDi6Yhb8yJm9NVJUYQOObXJL+pjks6yx27DY6r9GUd8uprZNsKKBR?=
- =?iso-8859-2?Q?CYxifaNt8bRjNevdVp3qH98eDv0ojxRDSYJha0tY+fl75rxpOuBKci9aJY?=
- =?iso-8859-2?Q?KiuxXqnG93vA6OXxCRgm+qrqyGmSC+6gI8Eu45JuiG6jbBtYAjIsqsj1tb?=
- =?iso-8859-2?Q?hHb9QpBd0Rk36fKGylzae824K7V/pmeniqXn26+yk6M2MSwEJnfcR/nArV?=
- =?iso-8859-2?Q?hhEdVyay6P+VCZ4UVKjcm378ZEZpZco8BMIoGJdg2NHZ3nVtfA45cDcI8u?=
- =?iso-8859-2?Q?PvxgPpcptztWtCn2oyl/amB7o6G9N0hY8OYAXutYcwzVttiruA9tLwT9l5?=
- =?iso-8859-2?Q?xxARRrtbTT6yBZNIhsalmV+AKTZo5makGAaYZ+BgohRTbj3gZ/LbxKPXbO?=
- =?iso-8859-2?Q?5l7rzDQs8tbYOmBAYVtWJ8o2Vmw+AiIjzaTAJqKeEe/FLAyv7uYfHw9zcF?=
- =?iso-8859-2?Q?s80nORSe4XjDG6dYNTmgMGIY5z6oEj0BP8gSNorsI8AflTIvgHjoud9ARz?=
- =?iso-8859-2?Q?DtD5RnAusTAj7ZHngB9alATscwN/aN7tx5IbqGSJA4rUKTBVmx8SNBS/6V?=
- =?iso-8859-2?Q?BU6WrO5KqylB8yXweFaJOGCsqGYwo9w4Kt53SIuJej8hcp2AK2HhPk6CcV?=
- =?iso-8859-2?Q?Yrs5UBYbChJHWT+OP599Sy0zHUMIni/YA9dsI3n1p18cV6r1GBMR42YkRu?=
- =?iso-8859-2?Q?lLjsl1KVD8IkdwVUKfoOOnMLxFXhQyvwQD9jyyh73alMuGS3oxQbjueN4G?=
- =?iso-8859-2?Q?yqu3pc2NVNxE94D4iQJKniKHHaS9xeawMsbD2tVrs1gbSHIFv2j2chBAKu?=
- =?iso-8859-2?Q?HgSvxn/ei9YEXzlf5afseOR+qWvCX7HqEBf2UdY37lO3oPjY7W8OsfwgOx?=
- =?iso-8859-2?Q?EeH8AIhs6qFXHnS4kL8xPs16Kw/0IJ3UAa2VSs+dArqX4FOhQI0r36D/mn?=
- =?iso-8859-2?Q?qLeSguSbq/AVQEnriMv9ni7XPMSvcG8RNmygNLoMNx7LUK/uU/kmy24YCC?=
- =?iso-8859-2?Q?FvHWtehcebaFm8mJdltKc6AZ47YKLAbvy+kHUNL3bOEKulFsBJgMUk5XlI?=
- =?iso-8859-2?Q?hjp9n75ILbfE/OTzseB6rC6NpIfC8ZOJv3q7Vk3hy5zeWTe5eZKwgUrw/U?=
- =?iso-8859-2?Q?qJI2f3OEI8ZyToYVGXn/EY5jeSzRV/ShP250FPWk5DdFMggPtUbSRU1t6R?=
- =?iso-8859-2?Q?86tu61LcVIZ9wYTGVPxOVNENtAwwJVtaSzzZdiF2ncY7rTD440j2cRy3dL?=
- =?iso-8859-2?Q?IID38lOax5csqOJZ9AV/0JlfQTqGsMGO3ELSVsmCnE3YUb1n/FxOoqkS40?=
- =?iso-8859-2?Q?KVNCC2oLPS?=
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?dFUT6UZqOODb+71ozA6+yD9VYs7pni5Ho62907mNynjJZBWHoqPnpuXr6VSz?=
+ =?us-ascii?Q?NNcEfK/Z3ZQLzaBVC8kyP4Je0E+2eRHWmNXQ42JhhwxV92ucf79mhsjQsQie?=
+ =?us-ascii?Q?zlhcJAa79dRpvYqeBTWcLzyiJP4Onkkc17VVQz2NrX0OoWAYA73i2gIDhfBM?=
+ =?us-ascii?Q?dNQxL8Gppz47gXIT6ItldrT8I/yCl6V7b/ZwdW9JOA4As+QB71Bda8XfzXro?=
+ =?us-ascii?Q?vDZdx2n89FCCkDzJY1IKBPT7qHxHiOAzR4X3MgCUgYJAMUPzjkPi+UUos1bQ?=
+ =?us-ascii?Q?5liXsaTf1vkmHpBUMwkOvRnj4HpcgH9KaC+0UzcTlIX23OtRqbxBGz/C17Nn?=
+ =?us-ascii?Q?8UAOa+Pbyy7afXCOWNut1FHfpvU8td2pmd+NndXlNo0kjzuOMOfJCV6OVZG7?=
+ =?us-ascii?Q?hmO9PQP1H8VwSoI2PezbHkD7Ux7w1F/KH78eqi7H5dB4SxWpM3ZuoGN/NsN9?=
+ =?us-ascii?Q?+8rOooOtlnIH0TF9i8VgbdIDni8q/TIOvf0J2rlAXdAifkcT/iCuh9Hd26dQ?=
+ =?us-ascii?Q?5iUbrLg7MssLdPNH96wylfheW1B3EKFDY8Vd1pl5bKlhqR9uw6xvIoAdPWZu?=
+ =?us-ascii?Q?kTbS82wFkM/4TH1oPpcQU/yqH17bbW2j5DJZOh4cD5dva5TKTSocIY7guHBO?=
+ =?us-ascii?Q?enChJJY4vfcqptmmlsrTu+VGF4kFiuffs7Mx2UESeu/+Y8h5IE5V7ZILA3Cc?=
+ =?us-ascii?Q?scoORUFmdVBk+H5Oham1hD+laIfi7VjEvSz4JWquvROI5IO6wdK+150P+QX6?=
+ =?us-ascii?Q?uBpR0hbJ38/CBF2idP/NqUXhewKR2f7UzyC+1wAaRAMPLU59rmnNC1+1G5Em?=
+ =?us-ascii?Q?/IuagF/OhCkGGFWLgNpESR4dVH6t1fAUoYGv1SIFkhSDzyO/Ux5pwksc7EYW?=
+ =?us-ascii?Q?BQ2GYG6T3ArcIjVYy7sm3ImOVJgbDpNdonGldpC9y9KLNNvGpvzU/pO/m6+3?=
+ =?us-ascii?Q?TbZMMfyqj6AXqZBs/UZyG7lig93qTfSWwDpTI4Ko9Z3wM1AmAVGxlPKPjXCi?=
+ =?us-ascii?Q?hCvxEbw3QvgIVofsZUbtFc8x/NbSZ1vAJsiAEKL6hvYSNV+Dt8mksBuaaUaJ?=
+ =?us-ascii?Q?9epGPlkjMDWlnyZYYWeK6BmFkJsu7GNS2jPzG/Hc5CUE55PS4J886KB+WvsE?=
+ =?us-ascii?Q?lDr+2RBCifg1R9V4zttxAp/0xj4oTe9DGTyppp9frOLzUdCPt5ISmvS6Msze?=
+ =?us-ascii?Q?8J4DbSgumLXwZ+3nJ2kK9DKcPav8hkh+KK5W3+0eDm/VV4TQQyPJ35WJpcjm?=
+ =?us-ascii?Q?VCozA97yivqA1/uGLRqytUEZQtc8HA/U5oenSp8kEj89bvnxl8We6QSxKnIV?=
+ =?us-ascii?Q?xIS+v2qPGCbf8yUT5R9zXXmE?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1576.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aee9365e-5541-4e19-26b0-08d92134a680
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 May 2021 17:27:06.3618 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5105.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 128749e5-57f9-4633-2e86-08d92134b2d9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 May 2021 17:27:27.1124 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: y1sae3XWxp0wKaHTgLUL2zG6urK7LxIHeGgV/kDAvxkGFF31BzErNtSVJhBGP80hXTG6v8j+3GbbZcEiy9fFhwp8N2qQX299DybgRyWWdFg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR11MB1623
+X-MS-Exchange-CrossTenant-userprincipalname: XUCf/91vWaIug0/L5Kwxrv90eW+1RB1vCUPB2+u3MK8NKE6RFAn7s08pYdHl0QxrzKNoBMOarmGBpajdELoKuPu8tbZT8ZKMddOvTmsY3o8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2285
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S53 03/15] ice: Save VF's MAC across
- reboot
+Subject: Re: [Intel-wired-lan] [PATCH 8/8] ice: enable transmit timestamps
+ for E810 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -165,249 +165,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Cc: "Lion, Sean" <sean.lion@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: czwartek, 17 wrze=B6nia 2020 22:14
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S53 03/15] ice: Save VF's MAC across
-> reboot
-> =
-
-> From: Brett Creeley <brett.creeley@intel.com>
-> =
-
-> If a VM reboots and/or VF driver is unloaded, its cached hardware MAC
-> address (hw_lan_addr.addr) is cleared in some cases. If the VF is trusted,
-> then the PF driver allows the VF to clear its old MAC address even if thi=
-s MAC
-> was configured by a host administrator. If the VF is untrusted, then the =
-PF
-> driver allows the VF to clear its old MAC address only if the host admin =
-did
-> not set it.
-> =
-
-> For the trusted VF case, this is unexpected and will cause issues because=
- the
-> host configured MAC (i.e. via XML) will be cleared on VM reboot. For the
-> untrusted VF case, this is done to be consistent and it will allow the VF=
- to
-> keep the same MAC across VM reboot.
-> =
-
-> Fix this by introducing dev_lan_addr to the VF structure. This will be th=
-e VF's
-> MAC address when it's up and running and in most cases will be the same as
-> the hw_lan_addr. However, to address the VM reboot and unload/reload
-> problem, the driver will never allow the hw_lan_addr to be cleared via
-> VIRTCHNL_OP_DEL_ETH_ADDR. When the VF's MAC is changed, the
-> dev_lan_addr and hw_lan_addr will always be updated with the same value.
-> The only ways the VF's MAC can change are the following:
-> =
-
-> - Set the VF's MAC administratively on the host via iproute2.
-> - If the VF is trusted and changes/sets its own MAC.
-> - If the VF is untrusted and the host has not set the MAC via iproute2.
-> =
-
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> Jacob Keller
+> Sent: Thursday, May 20, 2021 9:49 AM
+> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+> Cc: Lion, Sean <sean.lion@intel.com>
+> Subject: [Intel-wired-lan] [PATCH 8/8] ice: enable transmit timestamps for
+> E810 devices
+> 
+> Add support for enabling Tx timestamp requests for outgoing packets on
+> E810 devices.
+> 
+> The ice hardware can support multiple outstanding Tx timestamp requests.
+> When sending a descriptor to hardware, a Tx timestamp request is made by
+> setting a request bit, and assigning an index that represents which Tx
+> timestamp index to store the timestamp in.
+> 
+> Hardware makes no effort to synchronize the index use, so it is up to
+> software to ensure that Tx timestamp indexes are not re-used before the
+> timestamp is reported back.
+> 
+> To do this, introduce a Tx timestamp tracker which will keep track of currently
+> in-use indexes.
+> 
+> In the hot path, if a packet has a timestamp request, an index will be
+> requested from the tracker. Unfortunately, this does require a lock as the
+> indexes are shared across all queues on a PHY. There are not enough indexes
+> to reliably assign only 1 to each queue.
+> 
+> For the E810 devices, the timestamp indexes are not shared across PHYs, so
+> each port can have its own tracking.
+> 
+> Once hardware captures a timestamp, an interrupt is fired. In this interrupt,
+> trigger a new work item that will figure out which timestamp was completed,
+> and report the timestamp back to the stack.
+> 
+> This function loops through the Tx timestamp indexes and checks whether
+> there is now a valid timestamp. If so, it clears the PHY timestamp indication in
+> the PHY memory, locks and removes the SKB and bit in the tracker, then
+> reports the timestamp to the stack.
+> 
+> It is possible in some cases that a timestamp request will be initiated but
+> never completed. This might occur if the packet is dropped by software or
+> hardware before it reaches the PHY.
+> 
+> Add a task to the periodic work function that will check whether a timestamp
+> request is more than a few seconds old. If so, the timestamp index is cleared
+> in the PHY, and the SKB is released.
+> 
+> Just as with Rx timestamps, the Tx timestamps are only 40 bits wide, and use
+> the same overall logic for extending to 64 bits of nanoseconds.
+> 
+> With this change, E810 devices should be able to perform basic PTP
+> functionality.
+> 
+> Future changes will extend the support to cover the E822-based devices.
+> 
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 45 ++++++++++++-------
-> .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  1 +
->  2 files changed, 30 insertions(+), 16 deletions(-)
-> =
+>  drivers/net/ethernet/intel/ice/ice_base.c     |   9 +
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c  |   6 +-
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |   1 +
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |   1 +
+>  drivers/net/ethernet/intel/ice/ice_main.c     |   5 +
+>  drivers/net/ethernet/intel/ice/ice_ptp.c      | 369 +++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_ptp.h      |  91 +++++
+>  drivers/net/ethernet/intel/ice/ice_txrx.c     |  37 ++
+>  drivers/net/ethernet/intel/ice/ice_txrx.h     |   3 +
+>  9 files changed, 518 insertions(+), 4 deletions(-)
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> index 627c4e36c1bd..ed5cca603949 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> @@ -647,6 +647,8 @@ static int ice_vf_rebuild_host_mac_cfg(struct ice_vf
-> *vf)
->  			return ice_status_to_errno(status);
->  		}
->  		vf->num_mac++;
-> +
-> +		ether_addr_copy(vf->dev_lan_addr.addr, vf-
-> >hw_lan_addr.addr);
->  	}
-> =
-
->  	return 0;
-> @@ -3068,17 +3070,19 @@ ice_vfhw_mac_add(struct ice_vf *vf, struct
-> virtchnl_ether_addr *vc_ether_addr)
->  	if (!is_valid_ether_addr(mac_addr))
->  		return;
-> =
-
-> -	/* only allow legacy VF drivers to set the hardware MAC if it is zero
-> -	 * and allow new VF drivers to set the hardware MAC if the type was
-> -	 * correctly specified over VIRTCHNL
-> +	/* only allow legacy VF drivers to set the device and hardware MAC if
-> it
-> +	 * is zero and allow new VF drivers to set the hardware MAC if the
-> type
-> +	 * was correctly specified over VIRTCHNL
->  	 */
->  	if ((ice_is_vc_addr_legacy(vc_ether_addr) &&
->  	     is_zero_ether_addr(vf->hw_lan_addr.addr)) ||
-> -	    ice_is_vc_addr_primary(vc_ether_addr))
-> +	    ice_is_vc_addr_primary(vc_ether_addr)) {
-> +		ether_addr_copy(vf->dev_lan_addr.addr, mac_addr);
->  		ether_addr_copy(vf->hw_lan_addr.addr, mac_addr);
-> +	}
-> =
-
-> -	/* hardware MAC is already set, but its possible that the VF driver
-> sent
-> -	 * the VIRTCHNL_OP_ADD_ETH_ADDR message before the
-> +	/* hardware and device MACs are already set, but its possible that
-> the
-> +	 * VF driver sent the VIRTCHNL_OP_ADD_ETH_ADDR message
-> before the
->  	 * VIRTCHNL_OP_DEL_ETH_ADDR when trying to update its MAC, so
-> save it
->  	 * away for the legacy VF driver case as it will be updated in the
->  	 * delete flow for this case
-> @@ -3104,8 +3108,8 @@ ice_vc_add_mac_addr(struct ice_vf *vf, struct
-> ice_vsi *vsi,
->  	u8 *mac_addr =3D vc_ether_addr->addr;
->  	enum ice_status status;
-> =
-
-> -	/* default unicast MAC already added */
-> -	if (ether_addr_equal(mac_addr, vf->hw_lan_addr.addr))
-> +	/* device MAC already added */
-> +	if (ether_addr_equal(mac_addr, vf->dev_lan_addr.addr))
->  		return 0;
-> =
-
->  	if (is_unicast_ether_addr(mac_addr) &&
-> !ice_can_vf_change_mac(vf)) { @@ -3153,19 +3157,26 @@
-> ice_vfhw_mac_del(struct ice_vf *vf, struct virtchnl_ether_addr
-> *vc_ether_addr)
->  	u8 *mac_addr =3D vc_ether_addr->addr;
-> =
-
->  	if (!is_valid_ether_addr(mac_addr) ||
-> -	    !ether_addr_equal(vf->hw_lan_addr.addr, mac_addr))
-> +	    !ether_addr_equal(vf->dev_lan_addr.addr, mac_addr))
->  		return;
-> =
-
-> -	/* allow the hardware MAC to be repopulated in the add flow */
-> -	eth_zero_addr(vf->hw_lan_addr.addr);
-> +	/* allow the device MAC to be repopulated in the add flow and don't
-> +	 * clear the hardware MAC (i.e. hw_lan_addr.addr) here as that is
-> meant
-> +	 * to be persistent on VM reboot and across driver unload/load,
-> which
-> +	 * won't work if we clear the hardware MAC here
-> +	 */
-> +	eth_zero_addr(vf->dev_lan_addr.addr);
-> =
-
->  	/* only update cached hardware MAC for legacy VF drivers on delete
->  	 * because we cannot guarantee order/type of MAC from the VF
-> driver
->  	 */
->  	if (ice_is_vc_addr_legacy(vc_ether_addr) &&
-> -	    !ice_is_legacy_umac_expired(&vf->legacy_last_added_umac))
-> +	    !ice_is_legacy_umac_expired(&vf->legacy_last_added_umac)) {
-> +		ether_addr_copy(vf->dev_lan_addr.addr,
-> +				vf->legacy_last_added_umac.addr);
->  		ether_addr_copy(vf->hw_lan_addr.addr,
->  				vf->legacy_last_added_umac.addr);
-> +	}
->  }
-> =
-
->  /**
-> @@ -3183,7 +3194,7 @@ ice_vc_del_mac_addr(struct ice_vf *vf, struct
-> ice_vsi *vsi,
->  	enum ice_status status;
-> =
-
->  	if (!ice_can_vf_change_mac(vf) &&
-> -	    ether_addr_equal(mac_addr, vf->hw_lan_addr.addr))
-> +	    ether_addr_equal(vf->dev_lan_addr.addr, mac_addr))
->  		return 0;
-> =
-
->  	status =3D ice_fltr_remove_mac(vsi, mac_addr, ICE_FWD_TO_VSI);
-> @@ -3963,7 +3974,8 @@ int ice_set_vf_mac(struct net_device *netdev, int
-> vf_id, u8 *mac)
-> =
-
->  	vf =3D &pf->vf[vf_id];
->  	/* nothing left to do, unicast MAC already set */
-> -	if (ether_addr_equal(vf->hw_lan_addr.addr, mac))
-> +	if (ether_addr_equal(vf->dev_lan_addr.addr, mac) &&
-> +	    ether_addr_equal(vf->hw_lan_addr.addr, mac))
->  		return 0;
-> =
-
->  	ret =3D ice_check_vf_ready_for_cfg(vf);
-> @@ -3979,6 +3991,7 @@ int ice_set_vf_mac(struct net_device *netdev, int
-> vf_id, u8 *mac)
->  	/* VF is notified of its new MAC via the PF's response to the
->  	 * VIRTCHNL_OP_GET_VF_RESOURCES message after the VF has
-> been reset
->  	 */
-> +	ether_addr_copy(vf->dev_lan_addr.addr, mac);
->  	ether_addr_copy(vf->hw_lan_addr.addr, mac);
->  	if (is_zero_ether_addr(mac)) {
->  		/* VF will send VIRTCHNL_OP_ADD_ETH_ADDR message
-> with its MAC */ @@ -4132,7 +4145,7 @@ void
-> ice_print_vf_rx_mdd_event(struct ice_vf *vf)
-> =
-
->  	dev_info(dev, "%d Rx Malicious Driver Detection events detected on
-> PF %d VF %d MAC %pM. mdd-auto-reset-vfs=3D%s\n",
->  		 vf->mdd_rx_events.count, pf->hw.pf_id, vf->vf_id,
-> -		 vf->hw_lan_addr.addr,
-> +		 vf->dev_lan_addr.addr,
->  		 test_bit(ICE_FLAG_MDD_AUTO_RESET_VF, pf->flags)
->  			  ? "on" : "off");
->  }
-> @@ -4176,7 +4189,7 @@ void ice_print_vfs_mdd_events(struct ice_pf *pf)
-> =
-
->  			dev_info(dev, "%d Tx Malicious Driver Detection
-> events detected on PF %d VF %d MAC %pM.\n",
->  				 vf->mdd_tx_events.count, hw->pf_id, i,
-> -				 vf->hw_lan_addr.addr);
-> +				 vf->dev_lan_addr.addr);
->  		}
->  	}
->  }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-> index f440b290e02e..f379d13acc97 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-> @@ -80,6 +80,7 @@ struct ice_vf {
->  	struct ice_sw *vf_sw_id;	/* switch ID the VF VSIs connect to */
->  	struct virtchnl_version_info vf_ver;
->  	u32 driver_caps;		/* reported by VF driver */
-> +	struct virtchnl_ether_addr dev_lan_addr;
->  	struct virtchnl_ether_addr hw_lan_addr;
->  	struct ice_time_mac legacy_last_added_umac;
->  	DECLARE_BITMAP(txq_ena, ICE_MAX_RSS_QS_PER_VF);
-> --
-> 2.20.1
-> =
+Tested-by: Tony Brelinski <tonyx.brelinski@intel.com> (A Contingent Worker at Intel)
 
 
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
