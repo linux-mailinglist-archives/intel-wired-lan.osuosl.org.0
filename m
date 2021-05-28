@@ -1,56 +1,163 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8736E393B30
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 May 2021 03:49:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16037393C44
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 May 2021 06:17:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2A42D83F09;
-	Fri, 28 May 2021 01:49:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6BF1C843E2;
+	Fri, 28 May 2021 04:16:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qe2Gd28QBUXN; Fri, 28 May 2021 01:49:50 +0000 (UTC)
+	with ESMTP id FP956LIkn_yS; Fri, 28 May 2021 04:16:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 41CBD82ECF;
-	Fri, 28 May 2021 01:49:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6DC67843DC;
+	Fri, 28 May 2021 04:16:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 773A01BF841
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 01:49:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 61DC91BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 04:16:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 72A8682ECF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 01:49:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5CA6C843DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 04:16:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id doZxYc9Glh2k for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 May 2021 01:49:44 +0000 (UTC)
+ with ESMTP id BRWXRYktsNvN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 May 2021 04:16:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4CD0082EAD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 01:49:44 +0000 (UTC)
-IronPort-SDR: WxJztuN4+HnIvxwfwUTlEZF9rGipEbqQCeVBC90vqrljgntCWoG1KIMSuYXTXgoGBeLjWQ4uN7
- MVa26OkdFteA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="182533690"
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="182533690"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2021 18:49:43 -0700
-IronPort-SDR: 5pz2+2YNWvkYeVHcl5d0XfuGHEeEF+6+8hgLCjQwF1wiGY5LwwVYtj7UmGB8KVcMA83gPBbcqX
- M59M722DoC7g==
-X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="634196242"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2021 18:49:43 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 May 2021 18:49:43 -0700
-Message-Id: <20210528014943.3036054-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.31.1
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7A630843DA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 04:16:51 +0000 (UTC)
+IronPort-SDR: V2HO/qlyIrNqEsjwIuAoU2EZm5CJBo+ZyhpVe8strQjkNOjkgXHChn6qX4QGtQnLY9TWRVsMYN
+ dqJbrSI90x9g==
+X-IronPort-AV: E=McAfee;i="6200,9189,9997"; a="202925935"
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="202925935"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 21:16:50 -0700
+IronPort-SDR: cmN6MOSHH6VinIMLikSrYxrMuo2jrHrijOnftYI3tdtczKAeNn9Go6HrIY/Vu+0M6BI4riru8t
+ fw+yuFBUjuhw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,228,1616482800"; d="scan'208";a="443848585"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga008.jf.intel.com with ESMTP; 27 May 2021 21:16:50 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.4; Thu, 27 May 2021 21:16:49 -0700
+Received: from orsmsx606.amr.corp.intel.com (10.22.229.19) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.4; Thu, 27 May 2021 21:16:49 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
+ via Frontend Transport; Thu, 27 May 2021 21:16:49 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.4; Thu, 27 May 2021 21:16:49 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iY3c1oWSKd+FnWFvg4H0RtX8FRvDMyVEhRjy95Tad8Bdya6Afg6hKnOEU3nLqlD7mjfYUi7gCKqi7ROLunwsHy7GPtc8Hau6T1dnFWoSJfuB+cE9zBixL1Gnsxchyf+kbsVAFhDUTILKj6uu/91ZWgtnQpEcHg+verIhNVq5X59OGN3PWcCQoILwTh1y4DGSWXuLKJae7aZKTf/p2eImCv2AFFELGolO5M5wJp+bYOws0PS8h7885f8TaZgOVhP3oKbuYVMqEbasxhfFOqa9cLU2XPCXmFJwerNwujflb8Lq5G7y0PLyAR7yQ7n7RSiUmRn3uIJyul5pKWEeTh1RJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GPEUEU/k7XS8A0YEqe0BQCFgHGFsjAWtW2GPub0hZMA=;
+ b=Iwxr9anylH/GJPJsWsAqBB3m+rytqDOKBnYl6H+r5MaWHnMonw1kH7GFR8BDhbPluuxXcca1LrmYEOSVh0uM4Sm7pdPWd49N4yVzCTdZjFhandWxXXpthc6UQKwe6SU4w2RD7hzRGGfUTK8HdFrQGenpMLZwYjF0e0E86zGYRuRzSq4jaQhLHH80hxxEU9egbM/pr4bhwMpXrlJcsP69p7a1kvaSsBh/1lLGFZEW+ZdVXSyTqONR5QjNZwgedfuuy0UBpFrNPSAEOd3bQ+iF27tTuDK/pHd/VFnjAdnPh8lmMjAD/fRAYeKAD4pIGzLmdTzaZCZ77/L7hGr9KH06tg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GPEUEU/k7XS8A0YEqe0BQCFgHGFsjAWtW2GPub0hZMA=;
+ b=PhfDCPttmQDshmk9ha+2bA55e/ecUnZb72N8qv/MeoerVbB9G0G1DbFD7U4pKd0eCtu5Q06FYotYAF2ZmER69OfxhtDkGG3oR0/oNLZ14KkzRtuhjoglBR84HahVZn4BlGZN1Nnkh1CGPBrCnXOSxHHxoPF6Vcof0fLnxYKMzn4=
+Received: from SA2PR11MB4940.namprd11.prod.outlook.com (2603:10b6:806:fa::13)
+ by SA0PR11MB4624.namprd11.prod.outlook.com (2603:10b6:806:98::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4173.24; Fri, 28 May
+ 2021 04:16:47 +0000
+Received: from SA2PR11MB4940.namprd11.prod.outlook.com
+ ([fe80::2852:d6e4:3f0b:b949]) by SA2PR11MB4940.namprd11.prod.outlook.com
+ ([fe80::2852:d6e4:3f0b:b949%7]) with mapi id 15.20.4173.024; Fri, 28 May 2021
+ 04:16:47 +0000
+From: "Jambekar, Vishakha" <vishakha.jambekar@intel.com>
+To: Magnus Karlsson <magnus.karlsson@gmail.com>, "Karlsson, Magnus"
+ <magnus.karlsson@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Fijalkowski, Maciej"
+ <maciej.fijalkowski@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH intel-net v2 3/6] ixgbe: add correct
+ exception tracing for XDP
+Thread-Index: AQHXRYBsCAjqVYIOx0+WyyjLvif/VKr4Y+Qw
+Date: Fri, 28 May 2021 04:16:46 +0000
+Message-ID: <SA2PR11MB49400C2397D9B13A1BEDB54BFF229@SA2PR11MB4940.namprd11.prod.outlook.com>
+References: <20210510093854.31652-1-magnus.karlsson@gmail.com>
+ <20210510093854.31652-4-magnus.karlsson@gmail.com>
+In-Reply-To: <20210510093854.31652-4-magnus.karlsson@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [150.129.164.174]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 23dc4241-b00d-4929-ecd1-08d9218f68bd
+x-ms-traffictypediagnostic: SA0PR11MB4624:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SA0PR11MB46240CEF72DB16E2DAE83CE8FF229@SA0PR11MB4624.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: P9TvuRRoxFH5T32V0xnGLC4ms8POc25nKjeq2cJFJtzirIf9yzUQX6/uzHbpc8RLYW82zGz3LOA1+IKNK/hWLGj8PRUFSDGvHE/1HfTr7gqspadjS03B92J3veeygkglcEASVyxL4j37mTADTHOtMvz1E1b6kjI+3nnl2aBJuJzLCkB8Dv3D2NTav1jSaATZ9N6dOiYopACu6grgVvE5aCL8ZrLEyscB6iY75zfGYJkTUak9+A9aoN/GW6NrIYgurEHGCNOz/04cQm2UgaxcPrs05GD7LY/+/UI1y8/ObFOQHpp3Y4vUROf77G21MFhcSi4yafC6xP44Zi1+8WMi0sxZ1APxxCwgIWw8+mz7VFcJhjM4wvvO26Y5mWHgjrs0l31B4a8okLY68rJLegt3Q3t/lvFL/N/TtHjailxLRUj47++C/OU1Gt1VGjCKyu99S1FaXfgcAr5eAwukjSS9EdWTurgmlNk4XsV1VIiWt1WLnPXQEiDd4/wETwnUl9/WTpWNDFywy67p4g6dsGYsrueqptDx+f3BVDU3lB45JR1yQ+aOX6INpLszefq7/y0z2aYT3tQZMN38oEz2zqWmCnky4PcqSl7QqyLpuPM1/2k=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA2PR11MB4940.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(366004)(396003)(136003)(39860400002)(346002)(64756008)(66556008)(7696005)(66946007)(66476007)(6506007)(8936002)(52536014)(5660300002)(9686003)(86362001)(6636002)(186003)(66446008)(33656002)(53546011)(76116006)(38100700002)(83380400001)(55016002)(478600001)(2906002)(122000001)(4326008)(316002)(71200400001)(8676002)(54906003)(26005)(110136005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: =?us-ascii?Q?0wIsjObwJF1Q45YxAHFBsYUynhrSpZ/yg3LB28qmauAYbGDW2bqdghBwnki9?=
+ =?us-ascii?Q?PjgWQsoRun2HE9JH+ZunxaoyQT53P9EFW9Epq7U36Ux2vHrLVjkNwUBq7EJL?=
+ =?us-ascii?Q?1cHwypjKhTZnO576CAANDRDVLmgOCblu5KMLQ4J+yr0pldHunIOrEMOM+Z7y?=
+ =?us-ascii?Q?xnxVUgvSoEDfO5pPfAdkMFZXvmAF0WxUyOE03EqKRXenVDQEqrFcWwFs/EgT?=
+ =?us-ascii?Q?niyJjBaeKafKhustuauaWyLQyOLJYVBwDNquaTdrc9dj8uSJHFEL6Dw4RaNB?=
+ =?us-ascii?Q?R+1YWbgI6Fevf98JdRt04vHb0CYbXHWzpBXrIW3BfmV+N+0jzgk2w/6G1j2H?=
+ =?us-ascii?Q?FflGCCTxDE66hBY27ckokjAQqkbt+7TX1lwJJl77Lpi2LpweIJcIc5+vu5u2?=
+ =?us-ascii?Q?CM8Po3h5DSNof0fYXxr5uILl9pb9OXJNnrQn6ehQNGYPW3J8ow3ocUsYE2mH?=
+ =?us-ascii?Q?ZmVeV/kT/NfLqx1b0l8CP2lw8V7P+6nwA9x8xmmSov5ljD37VbX5GVTCK6x0?=
+ =?us-ascii?Q?N8LuHt/adlJ4vxMKNRTms4EjqDm3/pRlexfFGm9Q/f2FYl1gz8n959RtV/Qj?=
+ =?us-ascii?Q?T940cZD/V+bm7J+ZQ5v+olXLuOgK0RsyoVNrbTCZlJ168F08fWo4SKNFbMZb?=
+ =?us-ascii?Q?9MiGLKWUBXOFnyPLHO1MJb+hE23Zv4+yIB8h5IZdAfTD/JEBNrHTitw30kl3?=
+ =?us-ascii?Q?dKAxp3s20w86sqPYIP+e4NpYMrAG5rElfRfulPoLrmbOygDSEofOg5uXbwHe?=
+ =?us-ascii?Q?7oaT11kRPQ7J3UwiIAL3YSrrPKNGO0AzPa0BCPKh0CAAiqHZ01SqtqWjBG9t?=
+ =?us-ascii?Q?5khgyCi9wpIIQgDwVZlZFWC43q3b/pSHRRww7LK/BetYOkrl8I7Q0TpCsHN1?=
+ =?us-ascii?Q?yqS3WVyuhTNCzuXQZJCEIKF8ZkKygI2r0c630j3JrI5zbl1leP5alIkoa8Zy?=
+ =?us-ascii?Q?JQvxI8ijNZCURI97g6Sz1NmNqRz48Q8iGsj9s9kWYKfdgCIiZ5ds5XneK5Je?=
+ =?us-ascii?Q?DmDIKlBajRnrW+pGCbgthkFWjRiujJijNDj+NKi/yt+zIjltmd8CGj7Q439B?=
+ =?us-ascii?Q?9dLWCQEh4Z8f/bE92LU67GzzG2Hatl69JuJpeHxIo1fWhdjFJxZVyu1u/8XT?=
+ =?us-ascii?Q?VFDoikvsx9D/5lIVbID8PCj9nGU2iYaKK94kVKtyMzzhoncVaz9qn5FS115r?=
+ =?us-ascii?Q?tivnF5Y3oSJuw1rQWdXaHL0+uP7IGaFSXLMR7xdMc+i+8bDO78CfwDet8lzW?=
+ =?us-ascii?Q?x6nFhKCJPgKSG/X2kOtHjh8miDJDY1+B0CXxjzma4CuCYRs7p9+/Jt6zsCdN?=
+ =?us-ascii?Q?HqRh89B8FoSBp0TWm8250dc7?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2] ice: add tracepoints
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA2PR11MB4940.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23dc4241-b00d-4929-ecd1-08d9218f68bd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2021 04:16:46.9947 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 4QFD5/CYwjDHzoL4tgVk/XkvpkCFUryg6WO5gywyeMgYSPwCHvCQ47E4ep2cGHl/oxGrHK3VgARxAa6owd2txMBMsWC0CUO4wYr+GNvd12c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4624
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH intel-net v2 3/6] ixgbe: add correct
+ exception tracing for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,406 +170,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ben Shelton <benjamin.h.shelton@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "brouer@redhat.com" <brouer@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch is modeled after one by Scott Peterson for i40e.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Magnus Karlsson
+> Sent: Monday, May 10, 2021 3:09 PM
+> To: Karlsson, Magnus <magnus.karlsson@intel.com>; intel-wired-
+> lan@lists.osuosl.org; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
+> Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+> Cc: netdev@vger.kernel.org; brouer@redhat.com
+> Subject: [Intel-wired-lan] [PATCH intel-net v2 3/6] ixgbe: add correct
+> exception tracing for XDP
+> 
+> From: Magnus Karlsson <magnus.karlsson@intel.com>
+> 
+> Add missing exception tracing to XDP when a number of different errors can
+> occur. The support was only partial. Several errors where not logged which
+> would confuse the user quite a lot not knowing where and why the packets
+> disappeared.
+> 
+> Fixes: 33fdc82f0883 ("ixgbe: add support for XDP_TX action")
+> Fixes: d0bcacd0a130 ("ixgbe: add AF_XDP zero-copy Rx support")
+> Reported-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 ++++++++--------
+> drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 14 ++++++++------
+>  2 files changed, 16 insertions(+), 14 deletions(-)
+> 
 
-Add tracepoints to the driver, via a new file ice_trace.h and some new
-trace calls added in interesting places in the driver. Add some tracing
-for DIMLIB to help debug interrupt moderation problems.
-
-Performance should not be affected, and this can be very useful
-for debugging and adding new trace events to paths in the future.
-
-Note eBPF programs can attach to these events, as well as perf
-can count them since we're attaching to the events subsystem
-in the kernel.
-
-Co-developed-by: Ben Shelton <benjamin.h.shelton@intel.com>
-Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
-
-NOTE: checkpatch will complain about this patch due to the macros
-defining the new trace functionality being formatted for readability.
-
-Testing Hints:
-See that performance is unaffected while tracepoints are present but
-disabled (default state). Enable them all and see they appear in
-/sys/kernel/debug/tracing/trace when exercised, and after 'make install'
-you can see the events in perf list.
-
-When disabled, a tracepoint reduces to a 5-byte no-op. When enabled,
-that code is patched to jump to the tracepoint clause, which is located
-somewhere nearby.  See include/linux/jump_label.h for info in static
-keys, and samples/trace-events/trace-events-samples.[ch] for info on the
-trace events.
-
-To test tracepoints:
-insmod ice and bring up a link
-cd /sys/kernel/debug/tracing
-echo > trace
-echo 1 > events/ice/enable
-send something over ice
-cat trace
-echo 0 > events/ice/enable
-
----
-v2: updated commit message and copyright on new file
----
- drivers/net/ethernet/intel/ice/ice_main.c  |   8 +
- drivers/net/ethernet/intel/ice/ice_trace.h | 232 +++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_txrx.c  |   9 +
- 3 files changed, 249 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_trace.h
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ca80b858ef20..4fcbd26df767 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -13,6 +13,12 @@
- #include "ice_dcb_lib.h"
- #include "ice_dcb_nl.h"
- #include "ice_devlink.h"
-+/* Including ice_trace.h with CREATE_TRACE_POINTS defined will generate the
-+ * ice tracepoint functions. This must be done exactly once across the
-+ * ice driver.
-+ */
-+#define CREATE_TRACE_POINTS
-+#include "ice_trace.h"
- 
- #define DRV_SUMMARY	"Intel(R) Ethernet Connection E800 Series Linux Driver"
- static const char ice_driver_string[] = DRV_SUMMARY;
-@@ -5410,6 +5416,7 @@ static void ice_tx_dim_work(struct work_struct *work)
- 	itr = tx_profile[dim->profile_ix].itr;
- 	intrl = tx_profile[dim->profile_ix].intrl;
- 
-+	ice_trace(tx_dim_work, q_vector, dim);
- 	ice_write_itr(rc, itr);
- 	ice_write_intrl(q_vector, intrl);
- 
-@@ -5434,6 +5441,7 @@ static void ice_rx_dim_work(struct work_struct *work)
- 	itr = rx_profile[dim->profile_ix].itr;
- 	intrl = rx_profile[dim->profile_ix].intrl;
- 
-+	ice_trace(rx_dim_work, q_vector, dim);
- 	ice_write_itr(rc, itr);
- 	ice_write_intrl(q_vector, intrl);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_trace.h b/drivers/net/ethernet/intel/ice/ice_trace.h
-new file mode 100644
-index 000000000000..b74ff2ea4edc
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_trace.h
-@@ -0,0 +1,232 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (C) 2021 Intel Corporation. */
-+
-+/* Modeled on trace-events-sample.h */
-+
-+/* The trace subsystem name for ice will be "ice".
-+ *
-+ * This file is named ice_trace.h.
-+ *
-+ * Since this include file's name is different from the trace
-+ * subsystem name, we'll have to define TRACE_INCLUDE_FILE at the end
-+ * of this file.
-+ */
-+#undef TRACE_SYSTEM
-+#define TRACE_SYSTEM ice
-+
-+/* See trace-events-sample.h for a detailed description of why this
-+ * guard clause is different from most normal include files.
-+ */
-+#if !defined(_ICE_TRACE_H_) || defined(TRACE_HEADER_MULTI_READ)
-+#define _ICE_TRACE_H_
-+
-+#include <linux/tracepoint.h>
-+
-+/* ice_trace() macro enables shared code to refer to trace points
-+ * like:
-+ *
-+ * trace_ice_example(args...)
-+ *
-+ * ... as:
-+ *
-+ * ice_trace(example, args...)
-+ *
-+ * ... to resolve to the PF version of the tracepoint without
-+ * ifdefs, and to allow tracepoints to be disabled entirely at build
-+ * time.
-+ *
-+ * Trace point should always be referred to in the driver via this
-+ * macro.
-+ *
-+ * Similarly, ice_trace_enabled(trace_name) wraps references to
-+ * trace_ice_<trace_name>_enabled() functions.
-+ * @trace_name: name of tracepoint
-+ */
-+#define _ICE_TRACE_NAME(trace_name) (trace_##ice##_##trace_name)
-+#define ICE_TRACE_NAME(trace_name) _ICE_TRACE_NAME(trace_name)
-+
-+#define ice_trace(trace_name, args...) ICE_TRACE_NAME(trace_name)(args)
-+
-+#define ice_trace_enabled(trace_name) ICE_TRACE_NAME(trace_name##_enabled)()
-+
-+/* This is for events common to PF. Corresponding versions will be named
-+ * trace_ice_*. The ice_trace() macro above will select the right trace point
-+ * name for the driver.
-+ */
-+
-+/* Begin tracepoints */
-+
-+/* Global tracepoints */
-+
-+/* Events related to DIM, q_vectors and ring containers */
-+DECLARE_EVENT_CLASS(ice_rx_dim_template,
-+		    TP_PROTO(struct ice_q_vector *q_vector, struct dim *dim),
-+		    TP_ARGS(q_vector, dim),
-+		    TP_STRUCT__entry(__field(struct ice_q_vector *, q_vector)
-+				     __field(struct dim *, dim)
-+				     __string(devname, q_vector->rx.ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->q_vector = q_vector;
-+				   __entry->dim = dim;
-+				   __assign_str(devname, q_vector->rx.ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s Rx-Q: %d dim-state: %d dim-profile: %d dim-tune: %d dim-st-right: %d dim-st-left: %d dim-tired: %d",
-+			      __get_str(devname),
-+			      __entry->q_vector->rx.ring->q_index,
-+			      __entry->dim->state,
-+			      __entry->dim->profile_ix,
-+			      __entry->dim->tune_state,
-+			      __entry->dim->steps_right,
-+			      __entry->dim->steps_left,
-+			      __entry->dim->tired)
-+);
-+
-+DEFINE_EVENT(ice_rx_dim_template, ice_rx_dim_work,
-+	     TP_PROTO(struct ice_q_vector *q_vector, struct dim *dim),
-+	     TP_ARGS(q_vector, dim)
-+);
-+
-+DECLARE_EVENT_CLASS(ice_tx_dim_template,
-+		    TP_PROTO(struct ice_q_vector *q_vector, struct dim *dim),
-+		    TP_ARGS(q_vector, dim),
-+		    TP_STRUCT__entry(__field(struct ice_q_vector *, q_vector)
-+				     __field(struct dim *, dim)
-+				     __string(devname, q_vector->tx.ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->q_vector = q_vector;
-+				   __entry->dim = dim;
-+				   __assign_str(devname, q_vector->tx.ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s Tx-Q: %d dim-state: %d dim-profile: %d dim-tune: %d dim-st-right: %d dim-st-left: %d dim-tired: %d",
-+			      __get_str(devname),
-+			      __entry->q_vector->rx.ring->q_index,
-+			      __entry->dim->state,
-+			      __entry->dim->profile_ix,
-+			      __entry->dim->tune_state,
-+			      __entry->dim->steps_right,
-+			      __entry->dim->steps_left,
-+			      __entry->dim->tired)
-+);
-+
-+DEFINE_EVENT(ice_tx_dim_template, ice_tx_dim_work,
-+	     TP_PROTO(struct ice_q_vector *q_vector, struct dim *dim),
-+	     TP_ARGS(q_vector, dim)
-+);
-+
-+/* Events related to a vsi & ring */
-+DECLARE_EVENT_CLASS(ice_tx_template,
-+		    TP_PROTO(struct ice_ring *ring, struct ice_tx_desc *desc,
-+			     struct ice_tx_buf *buf),
-+
-+		    TP_ARGS(ring, desc, buf),
-+		    TP_STRUCT__entry(__field(void *, ring)
-+				     __field(void *, desc)
-+				     __field(void *, buf)
-+				     __string(devname, ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->ring = ring;
-+				   __entry->desc = desc;
-+				   __entry->buf = buf;
-+				   __assign_str(devname, ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s ring: %pK desc: %pK buf %pK", __get_str(devname),
-+			      __entry->ring, __entry->desc, __entry->buf)
-+);
-+
-+#define DEFINE_TX_TEMPLATE_OP_EVENT(name) \
-+DEFINE_EVENT(ice_tx_template, name, \
-+	     TP_PROTO(struct ice_ring *ring, \
-+		      struct ice_tx_desc *desc, \
-+		      struct ice_tx_buf *buf), \
-+	     TP_ARGS(ring, desc, buf))
-+
-+DEFINE_TX_TEMPLATE_OP_EVENT(ice_clean_tx_irq);
-+DEFINE_TX_TEMPLATE_OP_EVENT(ice_clean_tx_irq_unmap);
-+DEFINE_TX_TEMPLATE_OP_EVENT(ice_clean_tx_irq_unmap_eop);
-+
-+DECLARE_EVENT_CLASS(ice_rx_template,
-+		    TP_PROTO(struct ice_ring *ring, union ice_32b_rx_flex_desc *desc),
-+
-+		    TP_ARGS(ring, desc),
-+
-+		    TP_STRUCT__entry(__field(void *, ring)
-+				     __field(void *, desc)
-+				     __string(devname, ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->ring = ring;
-+				   __entry->desc = desc;
-+				   __assign_str(devname, ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s ring: %pK desc: %pK", __get_str(devname),
-+			      __entry->ring, __entry->desc)
-+);
-+DEFINE_EVENT(ice_rx_template, ice_clean_rx_irq,
-+	     TP_PROTO(struct ice_ring *ring, union ice_32b_rx_flex_desc *desc),
-+	     TP_ARGS(ring, desc)
-+);
-+
-+DECLARE_EVENT_CLASS(ice_rx_indicate_template,
-+		    TP_PROTO(struct ice_ring *ring, union ice_32b_rx_flex_desc *desc,
-+			     struct sk_buff *skb),
-+
-+		    TP_ARGS(ring, desc, skb),
-+
-+		    TP_STRUCT__entry(__field(void *, ring)
-+				     __field(void *, desc)
-+				     __field(void *, skb)
-+				     __string(devname, ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->ring = ring;
-+				   __entry->desc = desc;
-+				   __entry->skb = skb;
-+				   __assign_str(devname, ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s ring: %pK desc: %pK skb %pK", __get_str(devname),
-+			      __entry->ring, __entry->desc, __entry->skb)
-+);
-+
-+DEFINE_EVENT(ice_rx_indicate_template, ice_clean_rx_irq_indicate,
-+	     TP_PROTO(struct ice_ring *ring, union ice_32b_rx_flex_desc *desc,
-+		      struct sk_buff *skb),
-+	     TP_ARGS(ring, desc, skb)
-+);
-+
-+DECLARE_EVENT_CLASS(ice_xmit_template,
-+		    TP_PROTO(struct ice_ring *ring, struct sk_buff *skb),
-+
-+		    TP_ARGS(ring, skb),
-+
-+		    TP_STRUCT__entry(__field(void *, ring)
-+				     __field(void *, skb)
-+				     __string(devname, ring->netdev->name)),
-+
-+		    TP_fast_assign(__entry->ring = ring;
-+				   __entry->skb = skb;
-+				   __assign_str(devname, ring->netdev->name);),
-+
-+		    TP_printk("netdev: %s skb: %pK ring: %pK", __get_str(devname),
-+			      __entry->skb, __entry->ring)
-+);
-+
-+#define DEFINE_XMIT_TEMPLATE_OP_EVENT(name) \
-+DEFINE_EVENT(ice_xmit_template, name, \
-+	     TP_PROTO(struct ice_ring *ring, struct sk_buff *skb), \
-+	     TP_ARGS(ring, skb))
-+
-+DEFINE_XMIT_TEMPLATE_OP_EVENT(ice_xmit_frame_ring);
-+DEFINE_XMIT_TEMPLATE_OP_EVENT(ice_xmit_frame_ring_drop);
-+
-+/* End tracepoints */
-+
-+#endif /* _ICE_TRACE_H_ */
-+/* This must be outside ifdef _ICE_TRACE_H */
-+
-+/* This trace include file is not located in the .../include/trace
-+ * with the kernel tracepoint definitions, because we're a loadable
-+ * module.
-+ */
-+#undef TRACE_INCLUDE_PATH
-+#define TRACE_INCLUDE_PATH .
-+#undef TRACE_INCLUDE_FILE
-+#define TRACE_INCLUDE_FILE ../../drivers/net/ethernet/intel/ice/ice_trace
-+#include <trace/define_trace.h>
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index e9e9edb32c6f..a63d5916ebb0 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -10,6 +10,7 @@
- #include "ice_txrx_lib.h"
- #include "ice_lib.h"
- #include "ice.h"
-+#include "ice_trace.h"
- #include "ice_dcb_lib.h"
- #include "ice_xsk.h"
- 
-@@ -224,6 +225,7 @@ static bool ice_clean_tx_irq(struct ice_ring *tx_ring, int napi_budget)
- 
- 		smp_rmb();	/* prevent any other reads prior to eop_desc */
- 
-+		ice_trace(clean_tx_irq, tx_ring, tx_desc, tx_buf);
- 		/* if the descriptor isn't done, no work yet to do */
- 		if (!(eop_desc->cmd_type_offset_bsz &
- 		      cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)))
-@@ -254,6 +256,7 @@ static bool ice_clean_tx_irq(struct ice_ring *tx_ring, int napi_budget)
- 
- 		/* unmap remaining buffers */
- 		while (tx_desc != eop_desc) {
-+			ice_trace(clean_tx_irq_unmap, tx_ring, tx_desc, tx_buf);
- 			tx_buf++;
- 			tx_desc++;
- 			i++;
-@@ -272,6 +275,7 @@ static bool ice_clean_tx_irq(struct ice_ring *tx_ring, int napi_budget)
- 				dma_unmap_len_set(tx_buf, len, 0);
- 			}
- 		}
-+		ice_trace(clean_tx_irq_unmap_eop, tx_ring, tx_desc, tx_buf);
- 
- 		/* move us one more past the eop_desc for start of next pkt */
- 		tx_buf++;
-@@ -1102,6 +1106,7 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		 */
- 		dma_rmb();
- 
-+		ice_trace(clean_rx_irq, rx_ring, rx_desc);
- 		if (rx_desc->wb.rxdid == FDIR_DESC_RXDID || !rx_ring->netdev) {
- 			struct ice_vsi *ctrl_vsi = rx_ring->vsi;
- 
-@@ -1207,6 +1212,7 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 
- 		ice_process_skb_fields(rx_ring, rx_desc, skb, rx_ptype);
- 
-+		ice_trace(clean_rx_irq_indicate, rx_ring, rx_desc, skb);
- 		/* send completed skb up the stack */
- 		ice_receive_skb(rx_ring, skb, vlan_tag);
- 		skb = NULL;
-@@ -2188,6 +2194,8 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
- 	unsigned int count;
- 	int tso, csum;
- 
-+	ice_trace(xmit_frame_ring, tx_ring, skb);
-+
- 	count = ice_xmit_desc_count(skb);
- 	if (ice_chk_linearize(skb, count)) {
- 		if (__skb_linearize(skb))
-@@ -2262,6 +2270,7 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
- 	return NETDEV_TX_OK;
- 
- out_drop:
-+	ice_trace(xmit_frame_ring_drop, tx_ring, skb);
- 	dev_kfree_skb_any(skb);
- 	return NETDEV_TX_OK;
- }
--- 
-2.31.1
-
+Tested-by: Vishakha Jambekar<vishakha.jambekar@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
