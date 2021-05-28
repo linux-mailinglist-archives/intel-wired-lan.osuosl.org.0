@@ -1,69 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6474F39491C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 May 2021 01:25:32 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9E14394923
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 May 2021 01:32:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B2AFB405C8;
-	Fri, 28 May 2021 23:25:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 21C9E84585;
+	Fri, 28 May 2021 23:32:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pEnb4YzlAXW8; Fri, 28 May 2021 23:25:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XyLUW3Vu5RPf; Fri, 28 May 2021 23:32:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9B7DE405BE;
-	Fri, 28 May 2021 23:25:29 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B16791BF420
- for <intel-wired-lan@osuosl.org>; Fri, 28 May 2021 23:25:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 096DC84578;
+	Fri, 28 May 2021 23:32:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C4991BF420
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 23:32:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9F5E260E01
- for <intel-wired-lan@osuosl.org>; Fri, 28 May 2021 23:25:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 89B6E40F07
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 23:32:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=embeddedor.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oCIsotF90dno for <intel-wired-lan@osuosl.org>;
- Fri, 28 May 2021 23:25:24 +0000 (UTC)
-X-Greylist: delayed 00:22:37 by SQLgrey-1.8.0
-Received: from gateway34.websitewelcome.com (gateway34.websitewelcome.com
- [192.185.148.231])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7BCD660DCC
- for <intel-wired-lan@osuosl.org>; Fri, 28 May 2021 23:25:24 +0000 (UTC)
-Received: from cm17.websitewelcome.com (cm17.websitewelcome.com [100.42.49.20])
- by gateway34.websitewelcome.com (Postfix) with ESMTP id BAEA11188984
- for <intel-wired-lan@osuosl.org>; Fri, 28 May 2021 18:02:41 -0500 (CDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HP3PtSKhmDKw for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 May 2021 23:32:04 +0000 (UTC)
+X-Greylist: delayed 00:24:46 by SQLgrey-1.8.0
+Received: from gateway31.websitewelcome.com (gateway31.websitewelcome.com
+ [192.185.143.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 37CAD40F2B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 23:32:04 +0000 (UTC)
+Received: from cm11.websitewelcome.com (cm11.websitewelcome.com [100.42.49.5])
+ by gateway31.websitewelcome.com (Postfix) with ESMTP id A35D82A97
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 May 2021 18:03:55 -0500 (CDT)
 Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id mlV3lMFKlMGeEmlV3lINdC; Fri, 28 May 2021 18:02:41 -0500
+ id mlWFlyp60nrr4mlWFlqAwG; Fri, 28 May 2021 18:03:55 -0500
 X-Authority-Reason: nr=8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Sender:
- Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=l0QiEp4fOc8S5QViRiss/YOyViBh54YK1qbk6itUu3Y=; b=RZLmRodNgWoXvm/iE6NkoadKf1
- D/UTYIemG9sW2tMdvYgQqktDIXP3asvBIn6KEs9CwFrR6DXiPqVhArfyM1/Bs1VDuoSMuwi8E2if2
- /jBrLFw6TRk5kPWq0ibKAcawEpL9FU7siruUHaQTjG6981fcHpoYVcIZnjd0I2KZWKa/GjF4R8YKH
- ZwePWTsbcjBx/0rHIUVwbwhuKILgsEiZX0UaOhYTkG9Fve+Jb92JmjVwOzUxRuf2+etQVhiU0xFXb
- Twjw7qPWamQTLUE6MwyS1FM6y0kLFx8kONxHWIIR4S2KjVmzciXDtAIotL1t5RIwkbTt+oINojvLy
- bvXqCAqg==;
-Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:39020
+ bh=l0QiEp4fOc8S5QViRiss/YOyViBh54YK1qbk6itUu3Y=; b=hfHFdB2gtMTdm+yR9F0X8Y8+Q7
+ WWt4ZoW+rct8us9Qm9jDnJ/hIWmWK1vXP/HixYtmhOmu2IRaNSqrVdkfY4WUfY91EwGDuPm7Am6ar
+ sWuhSQ+AUbNrl0HlBVzjAudg3OYKRCRvTEZ+oXJhLAywfG7jkI0U76h8ToOpG/mXHY8N3LQRO1eXc
+ n3MPtDG+iL6meF7nnhJPLzOJJ0M3HeEZaUMSvaiP3BeqtHUBonxZrNxCiUNAKZVEyM/nrFTIGmR2C
+ /0vBA+O7+f2dOkhDJT9asucCecvfegs6WAaBKVeaD0/pM61wTZQyT9VGe0ZLpQQ5402htBSFbsxo7
+ MD+905Vw==;
+Received: from 187-162-31-110.static.axtel.net ([187.162.31.110]:39030
  helo=[192.168.15.8])
  by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <gustavo@embeddedor.com>) id 1lmlV2-002nfb-Ri
- for intel-wired-lan@osuosl.org; Fri, 28 May 2021 18:02:40 -0500
-To: intel-wired-lan@osuosl.org
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1lmlWD-002pRA-6Z; Fri, 28 May 2021 18:03:53 -0500
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
+ "gustavoars@kernel.org" <gustavoars@kernel.org>
 References: <20210525231658.GA176466@embeddedor>
  <f3674339c0390ced22b365101f2d3e3a2bf26845.camel@intel.com>
 From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Message-ID: <f5a2ce54-4a53-9dcd-e5dc-4d7d51451df4@embeddedor.com>
-Date: Fri, 28 May 2021 18:03:41 -0500
+Message-ID: <85e62583-5db9-ac5c-fdf9-8e3f6a50f3fa@embeddedor.com>
+Date: Fri, 28 May 2021 18:04:51 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
@@ -72,20 +74,20 @@ Content-Language: en-US
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - osuosl.org
+X-AntiAbuse: Original Domain - lists.osuosl.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - embeddedor.com
 X-BWhitelist: no
 X-Source-IP: 187.162.31.110
 X-Source-L: No
-X-Exim-ID: 1lmlV2-002nfb-Ri
+X-Exim-ID: 1lmlWD-002pRA-6Z
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
 X-Source-Sender: 187-162-31-110.static.axtel.net ([192.168.15.8])
- [187.162.31.110]:39020
+ [187.162.31.110]:39030
 X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 1
+X-Email-Count: 5
 X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
 X-Local-Domain: yes
 Subject: Re: [Intel-wired-lan] [PATCH][next] virtchnl: Replace one-element
@@ -102,6 +104,9 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
