@@ -1,60 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26109397927
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Jun 2021 19:32:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FF793979A3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Jun 2021 19:59:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B088E404BF;
-	Tue,  1 Jun 2021 17:32:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0F1B360656;
+	Tue,  1 Jun 2021 17:59:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b32QNx0lVuHO; Tue,  1 Jun 2021 17:32:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 063rv50zAnor; Tue,  1 Jun 2021 17:59:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 26398404BC;
-	Tue,  1 Jun 2021 17:32:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 11849605EE;
+	Tue,  1 Jun 2021 17:59:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 790821BF5A5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:32:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EA8101BF5A5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:42:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 71B4D60715
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:32:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D81D060656
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:42:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JIFeYA4qASF1 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Jun 2021 17:32:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8AE12605D2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:32:23 +0000 (UTC)
-IronPort-SDR: OScqBTruJqCwwWkvuRO0KIbKEJU58de27a0pqrt0w9kzlc/5Ecyi1mW2RVKtJC+1DjIaO5Pp+z
- rHIGwu9VoKbQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,10002"; a="203591787"
-X-IronPort-AV: E=Sophos;i="5.83,240,1616482800"; d="scan'208";a="203591787"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2021 10:32:12 -0700
-IronPort-SDR: 9snbrzLiQ+QAUW20++AzX5Hagri11LcaaoFbrophn6qn52Anlw+B/s67wM3kCAGfvMb5MBpLO5
- gjaz/wn4/Z0Q==
-X-IronPort-AV: E=Sophos;i="5.83,240,1616482800"; d="scan'208";a="549812008"
-Received: from jbrandeb-mobl4.amr.corp.intel.com (HELO localhost)
- ([10.212.201.74])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2021 10:32:11 -0700
-Date: Tue, 1 Jun 2021 10:32:10 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: =?UTF-8?Q?J=C4=99drzej?= Jagielski <jedrzej.jagielski@intel.com>
-Message-ID: <20210601103210.00004ca0@intel.com>
-In-Reply-To: <20210602004324.392848-1-jedrzej.jagielski@intel.com>
-References: <20210602004324.392848-1-jedrzej.jagielski@intel.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+ with ESMTP id VaZpAbMlpRc3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Jun 2021 17:42:20 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qk1-x733.google.com (mail-qk1-x733.google.com
+ [IPv6:2607:f8b0:4864:20::733])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 35C336060D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jun 2021 17:42:20 +0000 (UTC)
+Received: by mail-qk1-x733.google.com with SMTP id i5so15102552qkf.12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Jun 2021 10:42:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9MohaJcbxFVYSnX31aM9HSDnOhmBxW3aa4nKD3vvtGk=;
+ b=q4Mswj45AOw5p0wm2tN+SJ9lEDiwbrs4mSFbvbJMb8cIl5poSO0vjh0lS1HeOUaW7Z
+ h8T0ssfEyAn+iJmHsfRlIvdYaHSJ4NCEqYurrSSqIqGqVnaSjmZS+WIk/zMSTOYexPjC
+ Kkg5wbTVq1AkDI82LHGE72t+nQIi1roh+cGwkXiIx1LvzpdQlrnVzKCLvWvwQ3zV1TDH
+ gc8Q2LeVKMkkfSStHjC4nbBtgyEXTF1cCPnWxHDLVlBp5kdkk6wSSlgYpSyT0ruPKEZa
+ 310R+LSTGt0i0P4wOgozsEGyLGYJaI0hl6aK3eRhaJBmwUJPtwhhvSIy9JAyv5MA+zif
+ 0C3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9MohaJcbxFVYSnX31aM9HSDnOhmBxW3aa4nKD3vvtGk=;
+ b=EFrqD6O4XHt2YiRvm1L3RYDq6q5TzHKz4fTmhOfPq7t9Om/Pl422+4Zd1p8Wx+daQ3
+ t3iFum61DTCYV1NvzDvmkr6uOHRRGDFBTlBa7k54p/havZE1HEMjPkR3VifrqHM8FYD1
+ 7G/FgLI2B31pWJRzcGUkj3HF7iQ+2P4t+Ho9k1fxNdbwBFoFFvil6duNxr20U7oT6aLc
+ /wf0qh2lNwDrgN/sJ6BNQVSJmQMiyut29LIGG0+tk+HFDtvImY2go1UF3ylFkRKt0w24
+ 4bbBrxTP5wNDxlEgo0u5TM5YLtGChyXf476Nj/kfollw64t2rhTJF0KclR41vJLtq+My
+ elVQ==
+X-Gm-Message-State: AOAM53055l7YkBEf4OVtZixF79TwWWxbFVtstPCxn9o5qyNEIe2tQV7P
+ teWzukuS06VDlMifqYqE8ey+WmDh7ouA66m1ew==
+X-Google-Smtp-Source: ABdhPJxb9G4H7H2iZTBbmY6dvvnDCTaeConQExPqDshL4kHeRVQImQJr4o/p2VCeQCsEHu0g66HzA8KIEIqznYDHyW4=
+X-Received: by 2002:a37:424c:: with SMTP id p73mr23344013qka.465.1622569338850; 
+ Tue, 01 Jun 2021 10:42:18 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix to various static
- analysis warnings
+References: <CAHn8xckNXci+X_Eb2WMv4uVYjO2331UWB2JLtXr_58z0Av8+8A@mail.gmail.com>
+ <cc58c09e-bbb5-354a-2030-bf8ebb2adc86@iogearbox.net>
+ <7f048c57-423b-68ba-eede-7e194c1fea4e@arm.com>
+In-Reply-To: <7f048c57-423b-68ba-eede-7e194c1fea4e@arm.com>
+From: Jussi Maki <joamaki@gmail.com>
+Date: Tue, 1 Jun 2021 19:42:07 +0200
+Message-ID: <CAHn8xckNt3smeQPi3dgq5i_3vP7KwU45pnP5OCF8nOV_QEdyMA@mail.gmail.com>
+To: Robin Murphy <robin.murphy@arm.com>
+X-Mailman-Approved-At: Tue, 01 Jun 2021 17:59:11 +0000
+Subject: Re: [Intel-wired-lan] Regression 5.12.0-rc4 net: ice: significant
+ throughput drop
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,82 +83,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: jroedel@suse.de, Daniel Borkmann <daniel@iogearbox.net>,
+ netdev@vger.kernel.org, hch@lst.de, iommu@lists.linux-foundation.org,
+ intel-wired-lan@lists.osuosl.org, suravee.suthikulpanit@amd.com,
+ bpf <bpf@vger.kernel.org>, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SsSZZHJ6ZWogSmFnaWVsc2tpIHdyb3RlOgoKPiBGaXggc3RhdGljIGFuYWx5c2lzIHdhcm5pbmdz
-IGZyb20gc3BhcnNlLgoKV2FzIHRoaXMgb24gdG9wIG9mIHRoZSBzZXJpZXMgdGhhdCBJIGhhZCBh
-bHJlYWR5IHNlbnQgdXBzdHJlYW0/IEl0IGp1c3QKd2VudCB0byBuZXQtbmV4dCBsYXN0IHdlZWsg
-KGFmdGVyIHNldmVyYWwgbW9udGhzKQoKV2hlbiBJIHNlbnQgYSBzZXJpZXMgbGlrZSB0aGlzIGJl
-Zm9yZSwgZGF2ZW0gcmVxdWlyZWQgdGhhdCBJIHB1dCBhbGwKdGhlIGZpeGVkIGVycm9ycyBpbiB0
-aGUgY29tbWl0IG1lc3NhZ2UgKG5vdCBhIGZ1bGwgdGV4dCwgYnV0IGEKc3VtbWFyeSksIGFuZCBJ
-IHRoZW4gcHJvY2VlZGVkIHRvIHB1dCB0aGUgZnVsbCB0ZXh0IG9mIHRoZSBlcnJvcnMgaW4KdGhl
-IGNvbW1pdCBtZXNzYWdlIGFmdGVyIGEgInRyaXBsZS1kYXNoIiBzbyB0aGV5IHdvdWxkIGJlIHRo
-ZXJlIGZvcgpyZXZpZXdlcnMsIGJ1dCBnb25lIGZyb20gY29tbWl0IGxvZy4KCgo+IAo+IEZpeGVz
-OiBlNzkzMDk1ZThhNTcgKCJpNDBlOiBhZGQgcGFyc2luZyBvZiBmbGV4aWJsZSBmaWx0ZXIgZmll
-bGRzIGZyb20gdXNlcmRlZiIpCj4gU2lnbmVkLW9mZi1ieTogU3lsd2VzdGVyIER6aWVkeml1Y2gg
-PHN5bHdlc3RlcnguZHppZWR6aXVjaEBpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSmVkcnpl
-aiBKYWdpZWxza2kgPGplZHJ6ZWouamFnaWVsc2tpQGludGVsLmNvbT4KPiBTdWdnZXN0ZWQtYnk6
-IEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPgo+IC0tLQo+ICBk
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfZXRodG9vbC5jICAgICB8IDE0ICsr
-KysrKystLS0tLS0tCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0
-Y2hubF9wZi5oIHwgIDIgKy0KPiAgMiBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDgg
-ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2k0MGUvaTQwZV9ldGh0b29sLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
-MGVfZXRodG9vbC5jCj4gaW5kZXggM2U4MjJiYWQ0Li5jYmQ2NDBlMGUgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYwo+ICsrKyBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9ldGh0b29sLmMKPiBAQCAtMzEzOCw4
-ICszMTM4LDggQEAgc3RhdGljIGludCBpNDBlX3BhcnNlX3J4X2Zsb3dfdXNlcl9kYXRhKHN0cnVj
-dCBldGh0b29sX3J4X2Zsb3dfc3BlYyAqZnNwLAo+ICAJaWYgKCEoZnNwLT5mbG93X3R5cGUgJiBG
-TE9XX0VYVCkpCj4gIAkJcmV0dXJuIDA7Cj4gIAo+IC0JdmFsdWUgPSBiZTY0X3RvX2NwdSgqKChf
-X2JlNjQgKilmc3AtPmhfZXh0LmRhdGEpKTsKPiAtCW1hc2sgPSBiZTY0X3RvX2NwdSgqKChfX2Jl
-NjQgKilmc3AtPm1fZXh0LmRhdGEpKTsKPiArCXZhbHVlID0gYmU2NF90b19jcHUoKigoX19mb3Jj
-ZSBfX2JlNjQgKilmc3AtPmhfZXh0LmRhdGEpKTsKPiArCW1hc2sgPSBiZTY0X3RvX2NwdSgqKChf
-X2ZvcmNlIF9fYmU2NCAqKWZzcC0+bV9leHQuZGF0YSkpOwo+ICAKPiAgI2RlZmluZSBJNDBFX1VT
-RVJERUZfRkxFWF9XT1JECQlHRU5NQVNLX1VMTCgxNSwgMCkKPiAgI2RlZmluZSBJNDBFX1VTRVJE
-RUZfRkxFWF9PRkZTRVQJR0VOTUFTS19VTEwoMzEsIDE2KQo+IEBAIC0zMTgwLDggKzMxODAsOCBA
-QCBzdGF0aWMgdm9pZCBpNDBlX2ZpbGxfcnhfZmxvd191c2VyX2RhdGEoc3RydWN0IGV0aHRvb2xf
-cnhfZmxvd19zcGVjICpmc3AsCj4gIAlpZiAodmFsdWUgfHwgbWFzaykKPiAgCQlmc3AtPmZsb3df
-dHlwZSB8PSBGTE9XX0VYVDsKPiAgCj4gLQkqKChfX2JlNjQgKilmc3AtPmhfZXh0LmRhdGEpID0g
-Y3B1X3RvX2JlNjQodmFsdWUpOwo+IC0JKigoX19iZTY0ICopZnNwLT5tX2V4dC5kYXRhKSA9IGNw
-dV90b19iZTY0KG1hc2spOwo+ICsJKigoX19mb3JjZSBfX2JlNjQgKilmc3AtPmhfZXh0LmRhdGEp
-ID0gY3B1X3RvX2JlNjQodmFsdWUpOwo+ICsJKigoX19mb3JjZSBfX2JlNjQgKilmc3AtPm1fZXh0
-LmRhdGEpID0gY3B1X3RvX2JlNjQobWFzayk7Cj4gIH0KPiAgCj4gIC8qKgo+IEBAIC00MTUwLDkg
-KzQxNTAsOSBAQCBzdGF0aWMgaW50IGk0MGVfY2hlY2tfZmRpcl9pbnB1dF9zZXQoc3RydWN0IGk0
-MGVfdnNpICp2c2ksCj4gIAkJCQkgICAgIHN0cnVjdCBldGh0b29sX3J4X2Zsb3dfc3BlYyAqZnNw
-LAo+ICAJCQkJICAgICBzdHJ1Y3QgaTQwZV9yeF9mbG93X3VzZXJkZWYgKnVzZXJkZWYpCj4gIHsK
-PiAtCXN0YXRpYyBjb25zdCBfX2JlMzIgaXB2Nl9mdWxsX21hc2tbNF0gPSB7Y3B1X3RvX2JlMzIo
-MHhmZmZmZmZmZiksCj4gKwlzdGF0aWMgY29uc3QgX19iZTMyIGlwdjZfZnVsbF9tYXNrWzRdID0g
-ewo+ICAJCWNwdV90b19iZTMyKDB4ZmZmZmZmZmYpLCBjcHVfdG9fYmUzMigweGZmZmZmZmZmKSwK
-PiAtCQljcHVfdG9fYmUzMigweGZmZmZmZmZmKX07Cj4gKwkJY3B1X3RvX2JlMzIoMHhmZmZmZmZm
-ZiksIGNwdV90b19iZTMyKDB4ZmZmZmZmZmYpfTsKClRoaXMgbG9va3MgbGlrZSBqdXN0IGEgd2hp
-dGVzcGFjZSBjaGFuZ2UsIHdoeSBpbmNsdWRlIGl0IGluIHRoaXMgcGF0Y2g/Cgo+ICAJc3RydWN0
-IGV0aHRvb2xfdGNwaXA2X3NwZWMgKnRjcF9pcDZfc3BlYzsKPiAgCXN0cnVjdCBldGh0b29sX3Vz
-cmlwNl9zcGVjICp1c3JfaXA2X3NwZWM7Cj4gIAlzdHJ1Y3QgZXRodG9vbF90Y3BpcDRfc3BlYyAq
-dGNwX2lwNF9zcGVjOwo+IEBAIC01NTk5LDcgKzU1OTksNyBAQCBzdGF0aWMgaW50IGk0MGVfc2V0
-X2VlZShzdHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2LCBzdHJ1Y3QgZXRodG9vbF9lZWUgKmVkYXRh
-KQo+ICAJCWNvbmZpZy5lZWVyIHw9IGNwdV90b19sZTMyKEk0MEVfUFJUUE1fRUVFUl9UWF9MUElf
-RU5fTUFTSyk7Cj4gIAl9IGVsc2Ugewo+ICAJCWNvbmZpZy5lZWVfY2FwYWJpbGl0eSA9IDA7Cj4g
-LQkJY29uZmlnLmVlZXIgJj0gY3B1X3RvX2xlMzIofkk0MEVfUFJUUE1fRUVFUl9UWF9MUElfRU5f
-TUFTSyk7Cj4gKwkJY29uZmlnLmVlZXIgJj0gfmNwdV90b19sZTMyKEk0MEVfUFJUUE1fRUVFUl9U
-WF9MUElfRU5fTUFTSyk7Cj4gIAl9Cj4gIAo+ICAJLyogQXBwbHkgbW9kaWZpZWQgUEhZIGNvbmZp
-Z3VyYXRpb24gKi8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQw
-ZS9pNDBlX3ZpcnRjaG5sX3BmLmggYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
-MGVfdmlydGNobmxfcGYuaAo+IGluZGV4IDQ5NTc1YTY0MC4uZTQwNmZlZTkzIDEwMDY0NAo+IC0t
-LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5oCj4g
-KysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3ZpcnRjaG5sX3BmLmgK
-PiBAQCAtNzcsNyArNzcsNyBAQCBzdHJ1Y3QgaTQwZV92ZiB7Cj4gIAl1MTYgc3RhZzsKPiAgCj4g
-IAlzdHJ1Y3QgdmlydGNobmxfZXRoZXJfYWRkciBkZWZhdWx0X2xhbl9hZGRyOwo+IC0JdTE2IHBv
-cnRfdmxhbl9pZDsKPiArCXMxNiBwb3J0X3ZsYW5faWQ7CgpIb3cgY291bGQgdmxhbiBldmVyIGJl
-IG5lZ2F0aXZlPyBJIGRvbid0IHRoaW5rIHRoaXMgaXMgYSBnb29kIGNoYW5nZSwKaXQgc2VlbXMg
-bGlrZSBpdCBtaWdodCBpbnRyb2R1Y2UgYnVncywgbm90IGZpeCB0aGVtLiBBbmQgSSBkb24ndCBr
-bm93CndoeSBpdCB3b3VsZCBiZSB1c2VmdWwgb3Igd2h5IHlvdSBtYWRlIHRoZSBjaGFuZ2UuCgo+
-ICAJYm9vbCBwZl9zZXRfbWFjOwkvKiBUaGUgVk1NIGFkbWluIHNldCB0aGUgVkYgTUFDIGFkZHJl
-c3MgKi8KPiAgCWJvb2wgdHJ1c3RlZDsKPiAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13
-aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hi Robin,
+
+On Tue, Jun 1, 2021 at 2:39 PM Robin Murphy <robin.murphy@arm.com> wrote:
+> >> The regression shows as a significant drop in throughput as measured
+> >> with "super_netperf" [0],
+> >> with measured bandwidth of ~95Gbps before and ~35Gbps after:
+>
+> I guess that must be the difference between using the flush queue
+> vs. strict invalidation. On closer inspection, it seems to me that
+> there's a subtle pre-existing bug in the AMD IOMMU driver, in that
+> amd_iommu_init_dma_ops() actually runs *after* amd_iommu_init_api()
+> has called bus_set_iommu(). Does the patch below work?
+
+Thanks for the quick response & patch. I tried it out and indeed it
+does solve the issue:
+
+# uname -a
+Linux zh-lab-node-3 5.13.0-rc3-amd-iommu+ #31 SMP Tue Jun 1 17:12:57
+UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
+95341.2
+
+root@zh-lab-node-3:~# uname -a
+Linux zh-lab-node-3 5.13.0-rc3-amd-iommu-unpatched #32 SMP Tue Jun 1
+17:29:34 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
+33989.5
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
