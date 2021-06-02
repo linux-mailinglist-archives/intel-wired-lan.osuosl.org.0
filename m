@@ -1,61 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1D63983DF
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Jun 2021 10:09:55 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B10BF3985BB
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Jun 2021 11:53:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43C3540349;
-	Wed,  2 Jun 2021 08:09:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 503ED402DD;
+	Wed,  2 Jun 2021 09:53:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oI6_1EbGzsIr; Wed,  2 Jun 2021 08:09:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GT5yi--7m-pd; Wed,  2 Jun 2021 09:53:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF49240354;
-	Wed,  2 Jun 2021 08:09:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E481B40249;
+	Wed,  2 Jun 2021 09:53:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F0D8E1BF3E8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 08:09:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4690A1BF3DF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 09:53:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DD3BA8293D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 08:09:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 41884607F0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 09:53:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YbqlbRbqVnP3 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Jun 2021 08:09:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C6BA9828FB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 08:09:40 +0000 (UTC)
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www62.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3) (envelope-from <daniel@iogearbox.net>)
- id 1loLwV-0002ok-8U; Wed, 02 Jun 2021 10:09:35 +0200
-Received: from [85.7.101.30] (helo=linux-2.home)
- by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
- id 1loLwU-000CT0-Vm; Wed, 02 Jun 2021 10:09:35 +0200
-To: Jussi Maki <joamaki@gmail.com>, Robin Murphy <robin.murphy@arm.com>
-References: <CAHn8xckNXci+X_Eb2WMv4uVYjO2331UWB2JLtXr_58z0Av8+8A@mail.gmail.com>
- <cc58c09e-bbb5-354a-2030-bf8ebb2adc86@iogearbox.net>
- <7f048c57-423b-68ba-eede-7e194c1fea4e@arm.com>
- <CAHn8xckNt3smeQPi3dgq5i_3vP7KwU45pnP5OCF8nOV_QEdyMA@mail.gmail.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <7c04eeea-22d3-c265-8e1e-b3f173f2179f@iogearbox.net>
-Date: Wed, 2 Jun 2021 10:09:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nkf--VlmRBku for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Jun 2021 09:53:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 829F260705
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 09:53:21 +0000 (UTC)
+IronPort-SDR: 9Qh34UhMdTT0cITxkdzqaQmHG8g0IEvdQUcglzoJ0dp3sHxPRhKltpMVO7RbHwtV4ozIypdRb1
+ b4QpgnxXFkDQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10002"; a="190863587"
+X-IronPort-AV: E=Sophos;i="5.83,241,1616482800"; d="scan'208";a="190863587"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2021 02:53:20 -0700
+IronPort-SDR: yVxHL4RoWweP4KQKbhLW829ED5pQVNxTNf/44j9Qzz4fTAhPwgNdQ/rzhbNuqXRNIOKDWEo5Br
+ r8zvKpRm9YVA==
+X-IronPort-AV: E=Sophos;i="5.83,241,1616482800"; d="scan'208";a="479643443"
+Received: from dfuxbrux-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2021 02:53:19 -0700
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20210514003104.1360697-1-vinicius.gomes@intel.com>
+From: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <ff59a98e-8496-764c-04ce-d765a8b65402@linux.intel.com>
+Date: Wed, 2 Jun 2021 12:52:51 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAHn8xckNt3smeQPi3dgq5i_3vP7KwU45pnP5OCF8nOV_QEdyMA@mail.gmail.com>
+In-Reply-To: <20210514003104.1360697-1-vinicius.gomes@intel.com>
 Content-Language: en-US
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.103.2/26188/Tue Jun  1 13:07:16 2021)
-Subject: Re: [Intel-wired-lan] Regression 5.12.0-rc4 net: ice: significant
- throughput drop
+Subject: Re: [Intel-wired-lan] [PATCH net-queue v1 1/2] igc: Fix
+ user-after-free error during reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,56 +70,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jroedel@suse.de, netdev@vger.kernel.org, hch@lst.de,
- iommu@lists.linux-foundation.org, suravee.suthikulpanit@amd.com,
- gregkh@linuxfoundation.org, intel-wired-lan@lists.osuosl.org,
- bpf <bpf@vger.kernel.org>, davem@davemloft.net
+Cc: erez.geva.ext@siemens.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 6/1/21 7:42 PM, Jussi Maki wrote:
-> Hi Robin,
+On 14/05/2021 03:31, Vinicius Costa Gomes wrote:
+> Cleans the next descriptor to watch (next_to_watch) when cleaning the
+> TX ring.
 > 
-> On Tue, Jun 1, 2021 at 2:39 PM Robin Murphy <robin.murphy@arm.com> wrote:
->>>> The regression shows as a significant drop in throughput as measured
->>>> with "super_netperf" [0],
->>>> with measured bandwidth of ~95Gbps before and ~35Gbps after:
->>
->> I guess that must be the difference between using the flush queue
->> vs. strict invalidation. On closer inspection, it seems to me that
->> there's a subtle pre-existing bug in the AMD IOMMU driver, in that
->> amd_iommu_init_dma_ops() actually runs *after* amd_iommu_init_api()
->> has called bus_set_iommu(). Does the patch below work?
+> Failure to do so can cause invalid memory accesses. If igc_poll() runs
+> while the controller is being reset this can lead to the driver try to
+> free a skb that was already freed.
 > 
-> Thanks for the quick response & patch. I tried it out and indeed it
-> does solve the issue:
+> Log message:
 > 
-> # uname -a
-> Linux zh-lab-node-3 5.13.0-rc3-amd-iommu+ #31 SMP Tue Jun 1 17:12:57
-> UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
-> root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
-> 95341.2
+>   [  101.525242] refcount_t: underflow; use-after-free.
+>   [  101.525251] WARNING: CPU: 1 PID: 646 at lib/refcount.c:28 refcount_warn_saturate+0xab/0xf0
+>   [  101.525259] Modules linked in: sch_etf(E) sch_mqprio(E) rfkill(E) intel_rapl_msr(E) intel_rapl_common(E)
+>   x86_pkg_temp_thermal(E) intel_powerclamp(E) coretemp(E) binfmt_misc(E) kvm_intel(E) kvm(E) irqbypass(E) crc32_pclmul(E)
+>   ghash_clmulni_intel(E) aesni_intel(E) mei_wdt(E) libaes(E) crypto_simd(E) cryptd(E) glue_helper(E) snd_hda_codec_hdmi(E)
+>   rapl(E) intel_cstate(E) snd_hda_intel(E) snd_intel_dspcfg(E) sg(E) soundwire_intel(E) intel_uncore(E) at24(E)
+>   soundwire_generic_allocation(E) iTCO_wdt(E) soundwire_cadence(E) intel_pmc_bxt(E) serio_raw(E) snd_hda_codec(E)
+>   iTCO_vendor_support(E) watchdog(E) snd_hda_core(E) snd_hwdep(E) snd_soc_core(E) snd_compress(E) snd_pcsp(E)
+>   soundwire_bus(E) snd_pcm(E) evdev(E) snd_timer(E) mei_me(E) snd(E) soundcore(E) mei(E) configfs(E) ip_tables(E) x_tables(E)
+>   autofs4(E) ext4(E) crc32c_generic(E) crc16(E) mbcache(E) jbd2(E) sd_mod(E) t10_pi(E) crc_t10dif(E) crct10dif_generic(E)
+>   i915(E) ahci(E) libahci(E) ehci_pci(E) igb(E) xhci_pci(E) ehci_hcd(E)
+>   [  101.525303]  drm_kms_helper(E) dca(E) xhci_hcd(E) libata(E) crct10dif_pclmul(E) cec(E) crct10dif_common(E) tsn(E) igc(E)
+>   e1000e(E) ptp(E) i2c_i801(E) crc32c_intel(E) psmouse(E) i2c_algo_bit(E) i2c_smbus(E) scsi_mod(E) lpc_ich(E) pps_core(E)
+>   usbcore(E) drm(E) button(E) video(E)
+>   [  101.525318] CPU: 1 PID: 646 Comm: irq/37-enp7s0-T Tainted: G            E     5.10.30-rt37-tsn1-rt-ipipe #ipipe
+>   [  101.525320] Hardware name: SIEMENS AG SIMATIC IPC427D/A5E31233588, BIOS V17.02.09 03/31/2017
+>   [  101.525322] RIP: 0010:refcount_warn_saturate+0xab/0xf0
+>   [  101.525325] Code: 05 31 48 44 01 01 e8 f0 c6 42 00 0f 0b c3 80 3d 1f 48 44 01 00 75 90 48 c7 c7 78 a8 f3 a6 c6 05 0f 48
+>   44 01 01 e8 d1 c6 42 00 <0f> 0b c3 80 3d fe 47 44 01 00 0f 85 6d ff ff ff 48 c7 c7 d0 a8 f3
+>   [  101.525327] RSP: 0018:ffffbdedc0917cb8 EFLAGS: 00010286
+>   [  101.525329] RAX: 0000000000000000 RBX: ffff98fd6becbf40 RCX: 0000000000000001
+>   [  101.525330] RDX: 0000000000000001 RSI: ffffffffa6f2700c RDI: 00000000ffffffff
+>   [  101.525332] RBP: ffff98fd6becc14c R08: ffffffffa7463d00 R09: ffffbdedc0917c50
+>   [  101.525333] R10: ffffffffa74c3578 R11: 0000000000000034 R12: 00000000ffffff00
+>   [  101.525335] R13: ffff98fd6b0b1000 R14: 0000000000000039 R15: ffff98fd6be35c40
+>   [  101.525337] FS:  0000000000000000(0000) GS:ffff98fd6e240000(0000) knlGS:0000000000000000
+>   [  101.525339] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+>   [  101.525341] CR2: 00007f34135a3a70 CR3: 0000000150210003 CR4: 00000000001706e0
+>   [  101.525343] Call Trace:
+>   [  101.525346]  sock_wfree+0x9c/0xa0
+>   [  101.525353]  unix_destruct_scm+0x7b/0xa0
+>   [  101.525358]  skb_release_head_state+0x40/0x90
+>   [  101.525362]  skb_release_all+0xe/0x30
+>   [  101.525364]  napi_consume_skb+0x57/0x160
+>   [  101.525367]  igc_poll+0xb7/0xc80 [igc]
+>   [  101.525376]  ? sched_clock+0x5/0x10
+>   [  101.525381]  ? sched_clock_cpu+0xe/0x100
+>   [  101.525385]  net_rx_action+0x14c/0x410
+>   [  101.525388]  __do_softirq+0xe9/0x2f4
+>   [  101.525391]  __local_bh_enable_ip+0xe3/0x110
+>   [  101.525395]  ? irq_finalize_oneshot.part.47+0xe0/0xe0
+>   [  101.525398]  irq_forced_thread_fn+0x6a/0x80
+>   [  101.525401]  irq_thread+0xe8/0x180
+>   [  101.525403]  ? wake_threads_waitq+0x30/0x30
+>   [  101.525406]  ? irq_thread_check_affinity+0xd0/0xd0
+>   [  101.525408]  kthread+0x183/0x1a0
+>   [  101.525412]  ? kthread_park+0x80/0x80
+>   [  101.525415]  ret_from_fork+0x22/0x30
 > 
-> root@zh-lab-node-3:~# uname -a
-> Linux zh-lab-node-3 5.13.0-rc3-amd-iommu-unpatched #32 SMP Tue Jun 1
-> 17:29:34 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
-> root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
-> 33989.5
-
-Robin, probably goes without saying, but please make sure to include ...
-
-Fixes: a250c23f15c2 ("iommu: remove DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE")
-
-... to your fix in [0], maybe along with another Fixes tag pointing to the original
-commit adding this issue. But certainly a250c23f15c2 would be good given the regression
-was uncovered on that one first, so that Greg et al have a chance to pick this fix up
-for stable kernels.
-
-Thanks everyone!
-
-   [0] https://lore.kernel.org/bpf/7f048c57-423b-68ba-eede-7e194c1fea4e@arm.com/
+> Fixes: 13b5b7fd6a4a ("igc: Add support for Tx/Rx rings")
+> Reported-by: Erez Geva <erez.geva.ext@siemens.com>
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
