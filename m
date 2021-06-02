@@ -1,58 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBB8E398A03
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Jun 2021 14:49:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE4913991B8
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Jun 2021 19:32:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0B744402E2;
-	Wed,  2 Jun 2021 12:49:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 797D583D70;
+	Wed,  2 Jun 2021 17:32:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uZddtNsnZh4f; Wed,  2 Jun 2021 12:49:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DsW8h5miTuOO; Wed,  2 Jun 2021 17:32:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2BEEC402F0;
-	Wed,  2 Jun 2021 12:49:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8FFBB83D6E;
+	Wed,  2 Jun 2021 17:32:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 432891BF2B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 12:49:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F1D9C1BF990
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 17:31:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2F8AD403A5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 12:49:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EC17340500
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 17:31:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RhadCZe8fBSD for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Jun 2021 12:49:02 +0000 (UTC)
+ with ESMTP id Eu9D8lxV3pqH for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Jun 2021 17:31:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by smtp4.osuosl.org (Postfix) with ESMTP id CCD91402C8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 12:49:02 +0000 (UTC)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 07AC46D;
- Wed,  2 Jun 2021 05:49:02 -0700 (PDT)
-Received: from [10.57.73.64] (unknown [10.57.73.64])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 080E53F719;
- Wed,  2 Jun 2021 05:48:59 -0700 (PDT)
-To: Daniel Borkmann <daniel@iogearbox.net>, Jussi Maki <joamaki@gmail.com>
-References: <CAHn8xckNXci+X_Eb2WMv4uVYjO2331UWB2JLtXr_58z0Av8+8A@mail.gmail.com>
- <cc58c09e-bbb5-354a-2030-bf8ebb2adc86@iogearbox.net>
- <7f048c57-423b-68ba-eede-7e194c1fea4e@arm.com>
- <CAHn8xckNt3smeQPi3dgq5i_3vP7KwU45pnP5OCF8nOV_QEdyMA@mail.gmail.com>
- <7c04eeea-22d3-c265-8e1e-b3f173f2179f@iogearbox.net>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <705f90c3-b933-8863-2124-3fea7fdbd81a@arm.com>
-Date: Wed, 2 Jun 2021 13:48:54 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6B541404E8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Jun 2021 17:31:57 +0000 (UTC)
+IronPort-SDR: 4G6HrKBgNFBNTT73DqL9JHlANFlm8tYTiPSqjHTad61VxFYihbNNbFhax9HWpJbtT5Rx4Ndtr9
+ j7rY3e9FzXEA==
+X-IronPort-AV: E=McAfee;i="6200,9189,10003"; a="183527611"
+X-IronPort-AV: E=Sophos;i="5.83,242,1616482800"; d="scan'208";a="183527611"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2021 10:31:54 -0700
+IronPort-SDR: 3JSLSKDcBIRpUJKDZLjwRBaShCEDmQwZIfspYvVWO8rTPNwaL/6pIIWmv7bD0AvsUfdEcXtX9c
+ o3iNzZi7Ieag==
+X-IronPort-AV: E=Sophos;i="5.83,242,1616482800"; d="scan'208";a="617279495"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2021 10:31:54 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Anthony Nguyen <anthony.l.nguyen@intel.com>
+Date: Wed,  2 Jun 2021 10:31:34 -0700
+Message-Id: <20210602173134.4167891-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 MIME-Version: 1.0
-In-Reply-To: <7c04eeea-22d3-c265-8e1e-b3f173f2179f@iogearbox.net>
-Content-Language: en-GB
-Subject: Re: [Intel-wired-lan] Regression 5.12.0-rc4 net: ice: significant
- throughput drop
+Subject: [Intel-wired-lan] [PATCH] squash! ice: enable receive hardware
+ timestamping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,73 +64,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jroedel@suse.de, netdev@vger.kernel.org, hch@lst.de,
- iommu@lists.linux-foundation.org, suravee.suthikulpanit@amd.com,
- gregkh@linuxfoundation.org, intel-wired-lan@lists.osuosl.org,
- bpf <bpf@vger.kernel.org>, davem@davemloft.net
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2021-06-02 09:09, Daniel Borkmann wrote:
-> On 6/1/21 7:42 PM, Jussi Maki wrote:
->> Hi Robin,
->>
->> On Tue, Jun 1, 2021 at 2:39 PM Robin Murphy <robin.murphy@arm.com> wrote:
->>>>> The regression shows as a significant drop in throughput as measured
->>>>> with "super_netperf" [0],
->>>>> with measured bandwidth of ~95Gbps before and ~35Gbps after:
->>>
->>> I guess that must be the difference between using the flush queue
->>> vs. strict invalidation. On closer inspection, it seems to me that
->>> there's a subtle pre-existing bug in the AMD IOMMU driver, in that
->>> amd_iommu_init_dma_ops() actually runs *after* amd_iommu_init_api()
->>> has called bus_set_iommu(). Does the patch below work?
->>
->> Thanks for the quick response & patch. I tried it out and indeed it
->> does solve the issue:
+The ice_ptp_extend_32b_ts function is used to calculate the corrected
+64bit timestamp from a 32bit timestamp and a cached copy of the PHC
+time.
 
-Cool, thanks Jussi. May I infer a Tested-by tag from that?
+This function uses a local mask constant generated by GENMASK_ULL. This
+value is identical to U32_MAX. Some static analyzers (such as Klocwork)
+appear to incorrectly expand GENMASK_ULL(31, 0) into the wrong value.
 
->> # uname -a
->> Linux zh-lab-node-3 5.13.0-rc3-amd-iommu+ #31 SMP Tue Jun 1 17:12:57
->> UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
->> root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
->> 95341.2
->>
->> root@zh-lab-node-3:~# uname -a
->> Linux zh-lab-node-3 5.13.0-rc3-amd-iommu-unpatched #32 SMP Tue Jun 1
->> 17:29:34 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
->> root@zh-lab-node-3:~# ./super_netperf 32 -H 172.18.0.2
->> 33989.5
-> 
-> Robin, probably goes without saying, but please make sure to include ...
-> 
-> Fixes: a250c23f15c2 ("iommu: remove DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE")
-> 
-> ... to your fix in [0], maybe along with another Fixes tag pointing to 
-> the original
-> commit adding this issue. But certainly a250c23f15c2 would be good given 
-> the regression
-> was uncovered on that one first, so that Greg et al have a chance to 
-> pick this fix up
-> for stable kernels.
+This causes the static analyzer to report that the "delta > (mask / 2)"
+calculation is redundant since delta can never be large enough to be
+greater than the mask divided by 2.
 
-Given that the race looks to have been pretty theoretical until now, I'm 
-not convinced it's worth the bother of digging through the long history 
-of default domain and DMA ops movement to figure where it started, much 
-less attempt invasive backports. The flush queue change which made it 
-apparent only landed in 5.13-rc1, so as long as we can get this in as a 
-fix in the current cycle we should be golden - in the meantime, note 
-that booting with "iommu.strict=0" should also restore the expected 
-behaviour.
+We can fix this by removing the constant mask value and replacing it
+with U32_MAX. Once we've done this, it's clear that cached_phc_time
+& U32_MASK is the same as (u32)cached_phc_time, since casting down to
+a u32 will just discard the high bits. Make this explicit by using a new
+local variable, phc_time_lo.
 
-FWIW I do still plan to resend the patch "properly" soon (in all honesty 
-it wasn't even compile-tested!)
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-Cheers,
-Robin.
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 4608a69acba2..71cd5474ec86 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -329,23 +329,25 @@ static void ice_ptp_update_cached_phctime(struct ice_pf *pf)
+  */
+ static u64 ice_ptp_extend_32b_ts(u64 cached_phc_time, u32 in_tstamp)
+ {
+-	const u64 mask = GENMASK_ULL(31, 0);
+-	u32 delta;
++	u32 delta, phc_time_lo;
+ 	u64 ns;
+ 
++	/* Extract the lower 32 bits of the PHC time */
++	phc_time_lo = (u32)cached_phc_time;
++
+ 	/* Calculate the delta between the lower 32bits of the cached PHC
+ 	 * time and the in_tstamp value
+ 	 */
+-	delta = (in_tstamp - (u32)(cached_phc_time & mask));
++	delta = (in_tstamp - phc_time_lo);
+ 
+ 	/* Do not assume that the in_tstamp is always more recent than the
+ 	 * cached PHC time. If the delta is large, it indicates that the
+ 	 * in_tstamp was taken in the past, and should be converted
+ 	 * forward.
+ 	 */
+-	if (delta > (mask / 2)) {
++	if (delta > (U32_MAX / 2)) {
+ 		/* reverse the delta calculation here */
+-		delta = ((u32)(cached_phc_time & mask) - in_tstamp);
++		delta = (phc_time_lo - in_tstamp);
+ 		ns = cached_phc_time - delta;
+ 	} else {
+ 		ns = cached_phc_time + delta;
+-- 
+2.31.1.331.gb0c09ab8796f
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
