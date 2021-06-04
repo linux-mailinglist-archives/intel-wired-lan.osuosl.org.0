@@ -1,59 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7A9939DC15
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 14:17:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0904839DE15
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 15:52:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5B5E76064C;
-	Mon,  7 Jun 2021 12:17:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9FBD5400FE;
+	Mon,  7 Jun 2021 13:52:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R8MPgkwpRnxA; Mon,  7 Jun 2021 12:16:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id htDuHkzjXCvL; Mon,  7 Jun 2021 13:52:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C74F560687;
-	Mon,  7 Jun 2021 12:16:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A2B971BF35A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 12:16:48 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E8D8F40125;
+	Mon,  7 Jun 2021 13:52:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C13581BF2E5
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Jun 2021 05:42:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8CE9240314
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 12:16:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BC4486F939
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Jun 2021 05:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oO1wlcjDq1qI for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Jun 2021 12:16:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B0CD940312
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 12:16:42 +0000 (UTC)
-Received: from dggeme766-chm.china.huawei.com (unknown [172.30.72.54])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FzC2k5bF6zYspX;
- Mon,  7 Jun 2021 20:13:50 +0800 (CST)
-Received: from huawei.com (10.175.113.133) by dggeme766-chm.china.huawei.com
- (10.3.19.112) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Mon, 7 Jun
- 2021 20:16:38 +0800
-From: Wang Hai <wanghai38@huawei.com>
-To: <jesse.brandeburg@intel.com>, <anthony.l.nguyen@intel.com>,
- <davem@davemloft.net>, <ast@kernel.org>, <kuba@kernel.org>,
- <daniel@iogearbox.net>, <hawk@kernel.org>, <john.fastabend@gmail.com>,
- <jeffrey.t.kirsher@intel.com>, <jan.sokolowski@intel.com>,
- <magnus.karlsson@intel.com>
-Date: Mon, 7 Jun 2021 20:26:44 +0800
-Message-ID: <20210607122644.59021-1-wanghai38@huawei.com>
-X-Mailer: git-send-email 2.17.1
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CGM84JsFiP7e for <intel-wired-lan@osuosl.org>;
+ Fri,  4 Jun 2021 05:42:57 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd2b.google.com (mail-io1-xd2b.google.com
+ [IPv6:2607:f8b0:4864:20::d2b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F1B226F935
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Jun 2021 05:42:56 +0000 (UTC)
+Received: by mail-io1-xd2b.google.com with SMTP id b25so8827003iot.5
+ for <intel-wired-lan@osuosl.org>; Thu, 03 Jun 2021 22:42:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=pbB2/f3pLYEMuWgsFXiqd/fbchhFqX1Af7pd7z/GYJI=;
+ b=tVQoQ/5ncfM+T7HyMko+UCqXp0Oj1+ZEmTwrWiJVaLqNMRwL6GmLKhmd9RiLIF5Di/
+ +m65IMeqR2mPYvnqupNETk0uiUXDRvOFTZ0QcEk0I+1jwv1vokkCT/ZSdd/50Oc+FB4Y
+ kOxEELUa8o22LGIpQ91Q75yOE/ozPfD36Xko2vI+sWwUq7XWph/CSNqUii+5KD7Whyvv
+ JlhnSAR/3J+xXENV1KPfIbKsQr8XjniX3HUdyTR3H3/nXfMguZ0Wack0xYWnGpq7RNsX
+ qeM4m2NEfwr8s/srrit1liraFjFYFugHnxNmywMeSeK5g3DfLbYKbBM9jwhzjlQjQx/V
+ cPuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=pbB2/f3pLYEMuWgsFXiqd/fbchhFqX1Af7pd7z/GYJI=;
+ b=iLGa0/sqPCbzY8o3QY7aLpjqKHA3zNA9/+P/37g3fT9ubPY4b3X74gHt2/w3wft+Ri
+ 4dEX9uTJX4z78GDn87BjVFicdGas+7JhyjsJbKR0ZBm58j/OFogCxntypNa2Z4KRjArQ
+ WKdZq5FHmaz3vYRnANQcZjwrsbpxBjg2YQb4QSOS+IJs9ZgJpXgSVLQpuxNBSt/VaePq
+ L78x+5+Him9w5ykj5ejppJ/VGo9LfSeBasic1eJFP3EVBFbJ7qIAT8JgnXbuI3S2Fc7p
+ NtVGxJJ1gEtro7uxdEwNgAmjL9ch2Ysi+pYCnwu2vz8hk50jCOY9wAGx5CPZS03K4Q11
+ TR9w==
+X-Gm-Message-State: AOAM532x10xCKBP6DQAPTCH24po/5hYUdytqgOCXOG8cDEi9RAEX72bx
+ FLgdAX2peSZH8j/w7jp3azC0hFtzsedtslVsVMOiXximQH0=
+X-Google-Smtp-Source: ABdhPJy9ryWMCXF23bEXo2VDq/3G818oRDKCLOYmfvZU438ndos4HWhWasymfplw9sgPQ8tKY4HXGoJn+b05R50G+EA=
+X-Received: by 2002:a05:6602:38d:: with SMTP id
+ f13mr2433756iov.109.1622785375918; 
+ Thu, 03 Jun 2021 22:42:55 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.133]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggeme766-chm.china.huawei.com (10.3.19.112)
-X-CFilter-Loop: Reflected
-Subject: [Intel-wired-lan] [PATCH net] ixgbe,
- xsk: clean up the resources in ixgbe_xsk_pool_enable error path
+From: manty kuma <mantykuma@gmail.com>
+Date: Fri, 4 Jun 2021 14:42:45 +0900
+Message-ID: <CAB6A5-B6kH6hiOJHZ-8JY0H8PqXeab07vUGMdBvfCgGPR8QzBw@mail.gmail.com>
+To: intel-wired-lan@osuosl.org
+X-Mailman-Approved-At: Mon, 07 Jun 2021 13:52:11 +0000
+Subject: [Intel-wired-lan] igb: Random NIC down for 3-4 seconds and then UP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,46 +80,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6595672629383865204=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In ixgbe_xsk_pool_enable(), if ixgbe_xsk_wakeup() fails,
-We should restore the previous state and clean up the
-resources. Add the missing clear af_xdp_zc_qps and unmap dma
-to fix this bug.
+--===============6595672629383865204==
+Content-Type: multipart/alternative; boundary="000000000000e0dc5f05c3ea29ef"
 
-Fixes: d49e286d354e ("ixgbe: add tracking of AF_XDP zero-copy state for each queue pair")
-Fixes: 4a9b32f30f80 ("ixgbe: fix potential RX buffer starvation for AF_XDP")
-Signed-off-by: Wang Hai <wanghai38@huawei.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+--000000000000e0dc5f05c3ea29ef
+Content-Type: text/plain; charset="UTF-8"
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index 91ad5b902673..d912f14d2ba4 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -52,8 +52,11 @@ static int ixgbe_xsk_pool_enable(struct ixgbe_adapter *adapter,
- 
- 		/* Kick start the NAPI context so that receiving will start */
- 		err = ixgbe_xsk_wakeup(adapter->netdev, qid, XDP_WAKEUP_RX);
--		if (err)
-+		if (err) {
-+			clear_bit(qid, adapter->af_xdp_zc_qps);
-+			xsk_pool_dma_unmap(pool, IXGBE_RX_DMA_ATTR);
- 			return err;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.17.1
+We see random NIC down like shown below. It lasts for a few seconds and
+then the connection is back up.
+
+From kernel Log:
+```
+[ 3306.560431] igb 0000:03:00.0 enp3s0: igb: enp3s0 NIC Link is Down
+[ 3309.532558] igb 0000:03:00.0 enp3s0: igb: enp3s0 NIC Link is Up 1000
+Mbps Full Duplex, Flow Control: RX\/TX
+
+[ 3337.380117] igb 0000:02:00.0 enp2s0: igb: enp2s0 NIC Link is Down
+[ 3341.672189] igb 0000:02:00.0 enp2s0: igb: enp2s0 NIC Link is Up 100 Mbps
+Half Duplex, Flow Control: None
+```
+Steps to reproduce: Unknown. Happens randomly
+Frequency: once in a couple of weeks so far.
+
+Kernel: 5.10
+Firmware version: 3.25, 0x800005cf
+driver: igb
+
+Is it a known issue?
+What can we do to better understand the reason for this behavior and fix it?
+
+--000000000000e0dc5f05c3ea29ef
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div>We see random NIC down like shown below. It last=
+s for a few seconds and then the connection is back up.</div></div><div><br=
+></div><div>From kernel Log:</div><div>```<br></div><div>[ 3306.560431] igb=
+ 0000:03:00.0 enp3s0: igb: enp3s0 NIC Link is Down</div><div>[ 3309.532558]=
+ igb 0000:03:00.0 enp3s0: igb: enp3s0 NIC Link is Up 1000 Mbps Full Duplex,=
+ Flow Control: RX\/TX</div><div><br></div><div>[ 3337.380117] igb 0000:02:0=
+0.0 enp2s0: igb: enp2s0 NIC Link is Down<br>[ 3341.672189] igb 0000:02:00.0=
+ enp2s0: igb: enp2s0 NIC Link is Up 100 Mbps Half Duplex, Flow Control: Non=
+e</div><div>```</div><div><div>Steps to reproduce: Unknown. Happens randoml=
+y</div><div>Frequency: once in a couple of weeks so far.<br></div><div><br>=
+</div><div>Kernel: 5.10</div><div>Firmware version: 3.25, 0x800005cf</div><=
+/div><div>driver: igb</div><div><br></div><div>Is it a known issue?<br></di=
+v><div></div><div>What can we do to better understand the reason for this b=
+ehavior and fix it?</div></div>
+
+--000000000000e0dc5f05c3ea29ef--
+
+--===============6595672629383865204==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============6595672629383865204==--
