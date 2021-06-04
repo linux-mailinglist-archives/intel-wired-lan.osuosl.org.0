@@ -1,97 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A74A39C16C
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 22:36:17 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54D1839C348
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Jun 2021 00:10:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0467540638;
-	Fri,  4 Jun 2021 20:36:16 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B746A40278;
+	Fri,  4 Jun 2021 22:10:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GjhHtvrxGbYX; Fri,  4 Jun 2021 20:36:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IKmlvP3NBmv9; Fri,  4 Jun 2021 22:10:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 748A040677;
-	Fri,  4 Jun 2021 20:36:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BA8D9401D3;
+	Fri,  4 Jun 2021 22:10:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 94CD81BF834
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BB60F1BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 22:10:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8305C401E8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A9BAB40385
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 22:10:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LutDLiwY8_OA for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Jun 2021 20:36:02 +0000 (UTC)
+ with ESMTP id jHCK8vptHjAf for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Jun 2021 22:10:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5A12D40164
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1622838961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Y6Thexy0S9yAdfMWlPeLLADSbYeQgKUJsnhXYbRk/4M=;
- b=LX8Qqs7BVgCL9at8Bj4fCgiqP/bmt04jRoEtUvBDk0T1UaN6pIzOXBtZ+33FgUi6Dp8ukr
- xBOwAcaiO3597eAZppToLkBuOsNXAhzENa6vkNUxkKGt4dgyW/EBOWoEzctSg4ddi2XjNg
- sxc817Efquq+XVHI+u2aC2wFxaEVuoM=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-407-yWt6gqQROreJKPCT_UMFEA-1; Fri, 04 Jun 2021 16:35:59 -0400
-X-MC-Unique: yWt6gqQROreJKPCT_UMFEA-1
-Received: by mail-lj1-f198.google.com with SMTP id
- z19-20020a2eb5330000b02900eeda415d13so4780592ljm.23
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Jun 2021 13:35:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Y6Thexy0S9yAdfMWlPeLLADSbYeQgKUJsnhXYbRk/4M=;
- b=NtMfaSEKKXLK5EmQ9N9pL9OvBf79QaMOJ58tLov0NfHTELRLBc0PNfj/4NVanuIeDt
- OJ90nzJursde7Zrj8IpxG3A07a3O3dPT9fqYf09Pgud98crJwFtA6VGZtPceMGQitqbY
- zMVJlHwnH2h+0DOA784JPthyDMluOQ1htJdEx0YCnpISCJC6p4M8yCTJx/GmMzcTZabf
- NM7Gm6Qk7AS8JIxskhATOnRKclUAHeH+OZNE6Lm6s2tVY22DgY2X2zjp9SyQU9NqKSHJ
- 8/X18MJCgAEKLXaJNEKpdrHF8QoPq8NLHmYSzVm+66AZGG17X6pUBCu0MjLLkrhNjE4W
- wpag==
-X-Gm-Message-State: AOAM531h2cX02Q3XPnUcUkNaH0cTOK0sBA+JfRpi4DZ4d9Dd6VFNd46I
- gXOUPqpOqYcP64919f/WvTW+GKSwDx/YmJR77ExMrnrfs77gdKRS9dgW2ugL8VQNoW3PLuqrRyw
- ybOIN1V/mdlpR0QmtgUGGj3+ZsMQzAn4yQszf/N67TD27cQ==
-X-Received: by 2002:a2e:83ce:: with SMTP id s14mr4802998ljh.30.1622838957784; 
- Fri, 04 Jun 2021 13:35:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyA8sfpDISd7W3a8IsW6/YiM57Zw+/p+NaHoiuAPg8X6bW9cLXRUw/b5biIXrpjtTnIR6xsL3IgHzsQtEI3hbs=
-X-Received: by 2002:a2e:83ce:: with SMTP id s14mr4802957ljh.30.1622838957476; 
- Fri, 04 Jun 2021 13:35:57 -0700 (PDT)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 038A140252
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 22:10:05 +0000 (UTC)
+IronPort-SDR: HXYvkHnUDc3tFbyX4RVmJ1qmgfYWQidD9kHnqwP6uK0dIbQbx1yPy1CPrOKoOkXriPhkDpo6AW
+ AysKZhvD7KoQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="204192243"
+X-IronPort-AV: E=Sophos;i="5.83,249,1616482800"; d="scan'208";a="204192243"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2021 15:10:04 -0700
+IronPort-SDR: fH1wBMzQEaV0sQM2oOdiGTN+FdFsUnuXdxMYDC3JP6bLCm6TUMnV41BL/Gg07EWpgM9XIudCsA
+ PFiI3f2LyT/g==
+X-IronPort-AV: E=Sophos;i="5.83,249,1616482800"; d="scan'208";a="439326605"
+Received: from lmrivera-mobl.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.251.24.65])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2021 15:10:03 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  4 Jun 2021 15:09:29 -0700
+Message-Id: <20210604220933.3974558-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20210504092340.00006c61@intel.com>
- <87pmxpdr32.ffs@nanos.tec.linutronix.de>
- <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
- <87im3gewlu.ffs@nanos.tec.linutronix.de>
- <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
- <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
- <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
- <87zgwo9u79.ffs@nanos.tec.linutronix.de>
- <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
- <CAFki+LkqBHnVYB5VBx_8Ch0u8RfXrJsRzxyuDfHhbR-dCeN3Lg@mail.gmail.com>
- <87bl93ahc4.ffs@nanos.tec.linutronix.de>
-In-Reply-To: <87bl93ahc4.ffs@nanos.tec.linutronix.de>
-From: Nitesh Lal <nilal@redhat.com>
-Date: Fri, 4 Jun 2021 16:35:45 -0400
-Message-ID: <CAFki+LmW1d1f-mdFq8ovGERDRMkM7o=urmmQZi9cwXoR+Ydm=w@mail.gmail.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
- affinity hints
+Subject: [Intel-wired-lan] [PATCH next-queue v4 0/4] igc: Add support for
+ PCIe PTM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,68 +65,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "peterz@infradead.org" <peterz@infradead.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
- Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
- intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
- "frederic@kernel.org" <frederic@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
- "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
- Neil Horman <nhorman@tuxdriver.com>,
- "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- netdev@vger.kernel.org,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: linux-pci@vger.kernel.org, richardcochran@gmail.com, hch@infradead.org,
+ netdev@vger.kernel.org, bhelgaas@google.com, helgaas@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, May 21, 2021 at 5:48 PM Thomas Gleixner <tglx@linutronix.de> wrote:
->
-> On Fri, May 21 2021 at 12:13, Nitesh Lal wrote:
-> > On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
-> >> Provide new interfaces:
-> >>
-> >>   irq_update_affinity_hint() - Only sets the affinity hint pointer
-> >>   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
-> >>                                the interrupt
-> >>
-> >
-> > Any reason why you ruled out the usage of irq_set_affinity_and_hint()?
-> > IMHO the latter makes it very clear what the function is meant to do.
->
-> You're right. I was trying to phase the existing hint setter out, but
-> that's probably pointless overengineering for no real value. Let me redo
-> that.
->
+Hi,
 
-Thomas, are you planning to send a v2 for this soon or did I somehow miss
-it?
+Changes from v3:
+  - More descriptive commit messages and comments (Bjorn Helgaas);
+  - Added a pcie_ptm_enabled() helper (Bjorn Helgaas);
 
-Since your other patch "genirq: Export affinity setter for modules" is
-already in linux-next, I have started looking into the drivers where
-we can use that.
+Changes from v2:
+  - Now the PTM timestamps are retrieved synchronously with the
+    ioctl();
+  - Fixed some typos in constants;
+  - The IGC_PTM_STAT register is write-1-to-clear, document this more
+    clearly;
 
-On thinking about this whole chunk a little more, I do wonder about the
-reason why we are still sticking with the hints.
+Changes from v1:
+  - This now should cross compile better, convert_art_ns_to_tsc() will
+    only be used if CONFIG_X86_TSC is enabled;
+  - PCIe PTM errors reported by the NIC are logged and PTM cycles are
+    restarted in case an error is detected;
 
-The two reasons that I could come up with are:
-- We are not entirely sure if irqbalance still consumes this or not
-- For future use by some other userspace daemon  (?)
+Original cover letter (lightly edited):
 
-Does that sound right?
+This adds support for PCIe PTM (Precision Time Measurement) to the igc
+driver. PCIe PTM allows the NIC and Host clocks to be compared more
+precisely, improving the clock synchronization accuracy.
+
+Patch 1/4 reverts a commit that made pci_enable_ptm() private to the
+PCI subsystem, reverting makes it possible for it to be called from
+the drivers.
+
+Patch 2/4 adds the pcie_ptm_enabled() helper.
+
+Patch 3/4 calls pci_enable_ptm() from the igc driver.
+
+Patch 4/4 implements the PCIe PTM support. It adds a workqueue that
+reads the PTM registers periodically and collects the information so a
+subsequent call to getcrosststamp() has all the timestamps needed.
+
+Some questions are raised (also pointed out in the commit message):
+
+1. Using convert_art_ns_to_tsc() is too x86 specific, there should be
+   a common way to create a 'system_counterval_t' from a timestamp.
+
+2. convert_art_ns_to_tsc() says that it should only be used when
+   X86_FEATURE_TSC_KNOWN_FREQ is true, but during tests it works even
+   when it returns false. Should that check be done?
+
+Cheers,
+
+Vinicius Costa Gomes (4):
+  Revert "PCI: Make pci_enable_ptm() private"
+  PCI: Add pcie_ptm_enabled()
+  igc: Enable PCIe PTM
+  igc: Add support for PTP getcrosststamp()
+
+ drivers/net/ethernet/intel/igc/igc.h         |   1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  31 ++++
+ drivers/net/ethernet/intel/igc/igc_main.c    |   6 +
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 182 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  23 +++
+ drivers/pci/pci.h                            |   3 -
+ drivers/pci/pcie/ptm.c                       |   9 +
+ include/linux/pci.h                          |  10 +
+ 8 files changed, 262 insertions(+), 3 deletions(-)
 
 -- 
-Thanks
-Nitesh
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
