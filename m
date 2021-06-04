@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7258839BE03
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:05:29 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0FFBB843DF;
-	Fri,  4 Jun 2021 17:05:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zZkVCpk7J4Xv; Fri,  4 Jun 2021 17:05:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0D722843E0;
-	Fri,  4 Jun 2021 17:05:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 474961C1170
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F25D439BE05
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:05:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 32AD641DAC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7495E40198;
+	Fri,  4 Jun 2021 17:05:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VUYSn--KsnwD for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id e1Ytr9YllpLj; Fri,  4 Jun 2021 17:05:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id B48BA40664;
+	Fri,  4 Jun 2021 17:05:25 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 106B31BF863
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 18C91415E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PDpKLoweCbpW for <intel-wired-lan@lists.osuosl.org>;
  Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6A62C40198
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3AC48415EB
  for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
-IronPort-SDR: K02e919JfDi5oW/6LtsMNU0zEmXCGSXc73UMGy2Zh5gNggKJxoBPZ2A2TzIh43m6TB/RXs8lQd
- GtgQBwkqsT9w==
-X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666471"
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666471"
+IronPort-SDR: LVJta9ZvtteXlVrdoc3D7ufgMWb+kkp4WXyw/aDvdgJHIn81p4JmUb0/G9vAQxEtYeAbHcEWWm
+ Se+9jVCYf1KA==
+X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666472"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666472"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 Jun 2021 10:05:02 -0700
-IronPort-SDR: ftAVq6KdkaipxMm8CiN/oSI58lehuyNtU/l7D2+0BFspYxKF5rWmy9EjiWodF/P47Ntf2YKv+O
- SBPonLHoTn6g==
+IronPort-SDR: 25nZiq7Mr7Prsyoc5yXS+iUWvRD37Q33+1FgyOArwvCC9Q7hnTYXSR/8YpvvbCZB7hZRs1DTte
+ WypWEbSFyvgg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086370"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086374"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
  by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2021 10:05:02 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  4 Jun 2021 09:53:23 -0700
-Message-Id: <20210604165335.33329-3-anthony.l.nguyen@intel.com>
+Date: Fri,  4 Jun 2021 09:53:24 -0700
+Message-Id: <20210604165335.33329-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 References: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 03/15] iavf: obtain crit_section
- lock in iavf_close() immediately
+Subject: [Intel-wired-lan] [PATCH net-next 04/15] iavf: wrap driver state
+ change in crit_section lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,45 +73,31 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Nicholas Nunley <nicholas.d.nunley@intel.com>
 
-iavf_close() checks the adapter state outside of the crit_section lock
-so that it can quickly bail out of the function if the interface is already
-down. This doesn't work as intended, though, since it may be seeing a
-transient state if iavf_reset_task() is running on a separate thread. If
-this happens the driver will hit a panic later in iavf_remove() since the
-active resources were never unconfigured correctly.
-
-To fix this the adapter state is checked after grabbing the crit_section
-lock.
+The changes to driver state in iavf_disable_vf() should be made inside
+the crit_section lock, not outside of it, since the complete configuration
+flow needs to be seen as one atomic operation.
 
 Signed-off-by: Nicholas Nunley <nicholas.d.nunley@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 4c55773c6ee1..f97d04b47292 100644
+index f97d04b47292..91818ba7c8a3 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3271,13 +3271,15 @@ static int iavf_close(struct net_device *netdev)
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	int status;
- 
--	if (adapter->state <= __IAVF_DOWN_PENDING)
--		return 0;
--
- 	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
- 				&adapter->crit_section))
- 		usleep_range(500, 1000);
- 
-+	if (adapter->state <= __IAVF_DOWN_PENDING) {
-+		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		return 0;
-+	}
-+
- 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state);
- 	if (CLIENT_ENABLED(adapter))
- 		adapter->flags |= IAVF_FLAG_CLIENT_NEEDS_CLOSE;
+@@ -2071,9 +2071,9 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
+ 	memset(adapter->vf_res, 0, IAVF_VIRTCHNL_VF_RESOURCE_SIZE);
+ 	iavf_shutdown_adminq(&adapter->hw);
+ 	adapter->netdev->flags &= ~IFF_UP;
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ 	adapter->flags &= ~IAVF_FLAG_RESET_PENDING;
+ 	adapter->state = __IAVF_DOWN;
++	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+ 	wake_up(&adapter->down_waitqueue);
+ 	dev_info(&adapter->pdev->dev, "Reset task did not complete, VF disabled\n");
+ }
 -- 
 2.20.1
 
