@@ -1,59 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A402639BE0D
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:05:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D97339BE0B
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:05:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3A9B5607BB;
-	Fri,  4 Jun 2021 17:05:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BCF8B415E8;
+	Fri,  4 Jun 2021 17:05:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5ucRSasgFTHD; Fri,  4 Jun 2021 17:05:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Uwx3fui8MZvA; Fri,  4 Jun 2021 17:05:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3187E607B5;
-	Fri,  4 Jun 2021 17:05:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A33BE415BC;
+	Fri,  4 Jun 2021 17:05:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3F74E1C1170
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EDEEE1C1170
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9DB714023E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D9F3F415B7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rYbAo982I-vN for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j5uXsJE4N6uT for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Jun 2021 17:05:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C6F5B41DAB
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E39AF415E5
  for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
-IronPort-SDR: Lj8Zpo/QTjdngSOQvzuNbgFvPCxL+VG/QIthjSXGBiyR2rOIOmFY1ibqzL0GbvUqg9Ge8m5MSa
- SsbsRuvwAQbg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666477"
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666477"
+IronPort-SDR: m/cr0R7VKwkC365t7FAV34P73k46SJl1nxibHH6mzIrchXR1Dv3CwY3yMuW1NePZUr+L7fCqPo
+ ZufS/VQltL/A==
+X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666478"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666478"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 Jun 2021 10:05:03 -0700
-IronPort-SDR: ai+cT1PlK62T4ZYNJBLFz+CoSgir9LzPfbxv+Vo/KId2gka2Damri0AElElOMJsGHwHk+g2lFO
- QHfm1KwtlSBw==
+IronPort-SDR: BL8nqY9JR6rflfi/S/HM/2rEutMoTdp3FPfbK4yGdyFvwJJirB4pm3T1v5gdoIpsT7bUJrbSqA
+ iQ/dg3JnCI8Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086386"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086388"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
  by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2021 10:05:03 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  4 Jun 2021 09:53:28 -0700
-Message-Id: <20210604165335.33329-8-anthony.l.nguyen@intel.com>
+Date: Fri,  4 Jun 2021 09:53:29 -0700
+Message-Id: <20210604165335.33329-9-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 References: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 08/15] iavf: restore MSI state on
- reset
+Subject: [Intel-wired-lan] [PATCH net-next 09/15] iavf: Fix carrier on state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,35 +70,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mitch Williams <mitch.a.williams@intel.com>
+From: Paul Greenwalt <paul.greenwalt@intel.com>
 
-If the PF experiences an FLR, the VF's MSI and MSI-X configuration will
-be conveniently and silently removed in the process. When this happens,
-reset recovery will appear to complete normally but no traffic will
-pass. The netdev watchdog will helpfully notify everyone of this issue.
+Carrier on is not set if the link up event (VIRTCHNL_EVENT_LINK_CHANGE)
+occurs before the queues are enabled (VIRTCHNL_OP_ENABLE_QUEUES) since
+setting carrier on during a link up event when queues are not enabled
+can result in a Tx hang.
 
-To prevent such public embarrassment, restore MSI configuration at every
-reset. For normal resets, this will do no harm, but for VF resets
-resulting from a PF FLR, this will keep the VF working.
+Therefore set carrier on when queues are enabled if link is up and carrier
+is off.
 
-Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 06db563a6190..2c639c7ebd1b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2183,6 +2183,7 @@ static void iavf_reset_task(struct work_struct *work)
- 	}
- 
- 	pci_set_master(adapter->pdev);
-+	pci_restore_msi_state(adapter->pdev);
- 
- 	if (i == IAVF_RESET_WAIT_COMPLETE_COUNT) {
- 		dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 69e479eb5534..3c3fd604218e 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1685,8 +1685,17 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		break;
+ 	case VIRTCHNL_OP_ENABLE_QUEUES:
+ 		/* enable transmits */
+-		if (adapter->state == __IAVF_RUNNING)
++		if (adapter->state == __IAVF_RUNNING) {
+ 			iavf_irq_enable(adapter, true);
++
++			/* If queues not enabled when handling link event,
++			 * then set carrier on now
++			 */
++			if (adapter->link_up && !netif_carrier_ok(netdev)) {
++				netif_tx_start_all_queues(netdev);
++				netif_carrier_on(netdev);
++			}
++		}
+ 		adapter->flags &= ~IAVF_FLAG_QUEUES_DISABLED;
+ 		break;
+ 	case VIRTCHNL_OP_DISABLE_QUEUES:
 -- 
 2.20.1
 
