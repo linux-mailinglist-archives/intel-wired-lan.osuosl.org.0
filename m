@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D97339BE0B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:05:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 630A939BE0E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:06:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BCF8B415E8;
-	Fri,  4 Jun 2021 17:05:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DA109843DF;
+	Fri,  4 Jun 2021 17:06:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uwx3fui8MZvA; Fri,  4 Jun 2021 17:05:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ehu6IuaEv2Cz; Fri,  4 Jun 2021 17:05:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A33BE415BC;
-	Fri,  4 Jun 2021 17:05:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C99CC843E0;
+	Fri,  4 Jun 2021 17:05:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EDEEE1C1170
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 26E051BF863
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D9F3F415B7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D6D2640222
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j5uXsJE4N6uT for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Jun 2021 17:05:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id djlel7SI84vE for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E39AF415E5
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1323A41D9B
  for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
-IronPort-SDR: m/cr0R7VKwkC365t7FAV34P73k46SJl1nxibHH6mzIrchXR1Dv3CwY3yMuW1NePZUr+L7fCqPo
- ZufS/VQltL/A==
-X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666478"
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666478"
+IronPort-SDR: 0HYnaknodR/WLB8G7qycj/aCgWSMDWrC9HBCP/+AwK4zb6niI9BNj84bsk7cpGxGCCE4w+KcIA
+ RZZS10SneO+A==
+X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="191666479"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="191666479"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 Jun 2021 10:05:03 -0700
-IronPort-SDR: BL8nqY9JR6rflfi/S/HM/2rEutMoTdp3FPfbK4yGdyFvwJJirB4pm3T1v5gdoIpsT7bUJrbSqA
- iQ/dg3JnCI8Q==
+IronPort-SDR: VLR565XhH8nBaC0cX+hyzeF0L7jYykx5cqpehvQ01XROc6yfKLOIu4nGe1gg/8ek8Cf2t79ZVB
+ urwzMe6lgPTQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086388"
+X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086390"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
  by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2021 10:05:03 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  4 Jun 2021 09:53:29 -0700
-Message-Id: <20210604165335.33329-9-anthony.l.nguyen@intel.com>
+Date: Fri,  4 Jun 2021 09:53:30 -0700
+Message-Id: <20210604165335.33329-10-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 References: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 09/15] iavf: Fix carrier on state
+Subject: [Intel-wired-lan] [PATCH net-next 10/15] iavf: Add change MTU
+ message
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,54 +66,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-
-Carrier on is not set if the link up event (VIRTCHNL_EVENT_LINK_CHANGE)
-occurs before the queues are enabled (VIRTCHNL_OP_ENABLE_QUEUES) since
-setting carrier on during a link up event when queues are not enabled
-can result in a Tx hang.
-
-Therefore set carrier on when queues are enabled if link is up and carrier
-is off.
-
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 69e479eb5534..3c3fd604218e 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1685,8 +1685,17 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		break;
- 	case VIRTCHNL_OP_ENABLE_QUEUES:
- 		/* enable transmits */
--		if (adapter->state == __IAVF_RUNNING)
-+		if (adapter->state == __IAVF_RUNNING) {
- 			iavf_irq_enable(adapter, true);
-+
-+			/* If queues not enabled when handling link event,
-+			 * then set carrier on now
-+			 */
-+			if (adapter->link_up && !netif_carrier_ok(netdev)) {
-+				netif_tx_start_all_queues(netdev);
-+				netif_carrier_on(netdev);
-+			}
-+		}
- 		adapter->flags &= ~IAVF_FLAG_QUEUES_DISABLED;
- 		break;
- 	case VIRTCHNL_OP_DISABLE_QUEUES:
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogUGF0cnlrIE1hxYJlayA8cGF0cnlrLm1hbGVrQGludGVsLmNvbT4KCkFkZCBhIG5ldGRl
+dl9pbmZvIGxvZyBlbnRyeSBpbiBjYXNlIG9mIGEgY2hhbmdlIG9mIE1UVSBzbyB0aGF0IHVzZXIg
+aXMKbm90aWZpZWQgYWJvdXQgdGhpcyBjaGFuZ2UgaW4gdGhlIHNhbWUgbWFubmVyIGFzIGluIGNh
+c2Ugb2YgcGYgZHJpdmVyLgoKU2lnbmVkLW9mZi1ieTogUGF0cnlrIE1hxYJlayA8cGF0cnlrLm1h
+bGVrQGludGVsLmNvbT4KU2lnbmVkLW9mZi1ieTogVG9ueSBOZ3V5ZW4gPGFudGhvbnkubC5uZ3V5
+ZW5AaW50ZWwuY29tPgotLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9t
+YWluLmMgfCAyICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX21haW4uYyBiL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWluLmMKaW5kZXggMmM2MzljN2ViZDFiLi5l
+N2I5YzY0ZGIzYjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYv
+aWF2Zl9tYWluLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX21h
+aW4uYwpAQCAtMzM2NCw2ICszMzY0LDggQEAgc3RhdGljIGludCBpYXZmX2NoYW5nZV9tdHUoc3Ry
+dWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgaW50IG5ld19tdHUpCiB7CiAJc3RydWN0IGlhdmZfYWRh
+cHRlciAqYWRhcHRlciA9IG5ldGRldl9wcml2KG5ldGRldik7CiAKKwluZXRkZXZfaW5mbyhuZXRk
+ZXYsICJjaGFuZ2luZyBNVFUgZnJvbSAlZCB0byAlZFxuIiwKKwkJICAgIG5ldGRldi0+bXR1LCBu
+ZXdfbXR1KTsKIAluZXRkZXYtPm10dSA9IG5ld19tdHU7CiAJaWYgKENMSUVOVF9FTkFCTEVEKGFk
+YXB0ZXIpKSB7CiAJCWlhdmZfbm90aWZ5X2NsaWVudF9sMl9wYXJhbXMoJmFkYXB0ZXItPnZzaSk7
+Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5v
+cmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQt
+bGFuCg==
