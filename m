@@ -1,58 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8032739BE0F
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 19:06:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A74A39C16C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Jun 2021 22:36:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26E54843E0;
-	Fri,  4 Jun 2021 17:06:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0467540638;
+	Fri,  4 Jun 2021 20:36:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AWUKiFXDcrT3; Fri,  4 Jun 2021 17:06:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GjhHtvrxGbYX; Fri,  4 Jun 2021 20:36:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 700B4843CE;
-	Fri,  4 Jun 2021 17:05:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 748A040677;
+	Fri,  4 Jun 2021 20:36:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 43C001BF863
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 94CD81BF834
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 24AF740198
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:15 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8305C401E8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IxIHdqvDZ_gj for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Jun 2021 17:05:10 +0000 (UTC)
+ with ESMTP id LutDLiwY8_OA for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Jun 2021 20:36:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D15B740275
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 17:05:05 +0000 (UTC)
-IronPort-SDR: q44OFP/qlSqVfKNpZ07m/A5KX5+eAwv3FmVYaOdQYwBbkD5aKhp2vXrGDhykV5HyC/Py7k26Vh
- C/5swL4QZoiA==
-X-IronPort-AV: E=McAfee;i="6200,9189,10005"; a="225649935"
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="225649935"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2021 10:05:04 -0700
-IronPort-SDR: GqvfeWYMUZdnLXOtpL6fYiyaq7Ee54VFW4wtAl0e7xjh8xB6Yd1za+BgbiNojmcsZDutbbcB0p
- Eky7LqjUPFng==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,248,1616482800"; d="scan'208";a="634086403"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
- by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2021 10:05:03 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  4 Jun 2021 09:53:35 -0700
-Message-Id: <20210604165335.33329-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
-References: <20210604165335.33329-1-anthony.l.nguyen@intel.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5A12D40164
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Jun 2021 20:36:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1622838961;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y6Thexy0S9yAdfMWlPeLLADSbYeQgKUJsnhXYbRk/4M=;
+ b=LX8Qqs7BVgCL9at8Bj4fCgiqP/bmt04jRoEtUvBDk0T1UaN6pIzOXBtZ+33FgUi6Dp8ukr
+ xBOwAcaiO3597eAZppToLkBuOsNXAhzENa6vkNUxkKGt4dgyW/EBOWoEzctSg4ddi2XjNg
+ sxc817Efquq+XVHI+u2aC2wFxaEVuoM=
+Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
+ [209.85.208.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-yWt6gqQROreJKPCT_UMFEA-1; Fri, 04 Jun 2021 16:35:59 -0400
+X-MC-Unique: yWt6gqQROreJKPCT_UMFEA-1
+Received: by mail-lj1-f198.google.com with SMTP id
+ z19-20020a2eb5330000b02900eeda415d13so4780592ljm.23
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Jun 2021 13:35:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Y6Thexy0S9yAdfMWlPeLLADSbYeQgKUJsnhXYbRk/4M=;
+ b=NtMfaSEKKXLK5EmQ9N9pL9OvBf79QaMOJ58tLov0NfHTELRLBc0PNfj/4NVanuIeDt
+ OJ90nzJursde7Zrj8IpxG3A07a3O3dPT9fqYf09Pgud98crJwFtA6VGZtPceMGQitqbY
+ zMVJlHwnH2h+0DOA784JPthyDMluOQ1htJdEx0YCnpISCJC6p4M8yCTJx/GmMzcTZabf
+ NM7Gm6Qk7AS8JIxskhATOnRKclUAHeH+OZNE6Lm6s2tVY22DgY2X2zjp9SyQU9NqKSHJ
+ 8/X18MJCgAEKLXaJNEKpdrHF8QoPq8NLHmYSzVm+66AZGG17X6pUBCu0MjLLkrhNjE4W
+ wpag==
+X-Gm-Message-State: AOAM531h2cX02Q3XPnUcUkNaH0cTOK0sBA+JfRpi4DZ4d9Dd6VFNd46I
+ gXOUPqpOqYcP64919f/WvTW+GKSwDx/YmJR77ExMrnrfs77gdKRS9dgW2ugL8VQNoW3PLuqrRyw
+ ybOIN1V/mdlpR0QmtgUGGj3+ZsMQzAn4yQszf/N67TD27cQ==
+X-Received: by 2002:a2e:83ce:: with SMTP id s14mr4802998ljh.30.1622838957784; 
+ Fri, 04 Jun 2021 13:35:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyA8sfpDISd7W3a8IsW6/YiM57Zw+/p+NaHoiuAPg8X6bW9cLXRUw/b5biIXrpjtTnIR6xsL3IgHzsQtEI3hbs=
+X-Received: by 2002:a2e:83ce:: with SMTP id s14mr4802957ljh.30.1622838957476; 
+ Fri, 04 Jun 2021 13:35:57 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 15/15] iavf: don't be so alarming
+References: <20210504092340.00006c61@intel.com>
+ <87pmxpdr32.ffs@nanos.tec.linutronix.de>
+ <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
+ <87im3gewlu.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+ <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
+ <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
+ <87zgwo9u79.ffs@nanos.tec.linutronix.de>
+ <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
+ <CAFki+LkqBHnVYB5VBx_8Ch0u8RfXrJsRzxyuDfHhbR-dCeN3Lg@mail.gmail.com>
+ <87bl93ahc4.ffs@nanos.tec.linutronix.de>
+In-Reply-To: <87bl93ahc4.ffs@nanos.tec.linutronix.de>
+From: Nitesh Lal <nilal@redhat.com>
+Date: Fri, 4 Jun 2021 16:35:45 -0400
+Message-ID: <CAFki+LmW1d1f-mdFq8ovGERDRMkM7o=urmmQZi9cwXoR+Ydm=w@mail.gmail.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
+ affinity hints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,54 +104,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+ "peterz@infradead.org" <peterz@infradead.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
+ Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
+ "frederic@kernel.org" <frederic@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "rostedt@goodmis.org" <rostedt@goodmis.org>,
+ "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
+ "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
+ Neil Horman <nhorman@tuxdriver.com>,
+ "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ netdev@vger.kernel.org,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mitch Williams <mitch.a.williams@intel.com>
+On Fri, May 21, 2021 at 5:48 PM Thomas Gleixner <tglx@linutronix.de> wrote:
+>
+> On Fri, May 21 2021 at 12:13, Nitesh Lal wrote:
+> > On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
+> >> Provide new interfaces:
+> >>
+> >>   irq_update_affinity_hint() - Only sets the affinity hint pointer
+> >>   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
+> >>                                the interrupt
+> >>
+> >
+> > Any reason why you ruled out the usage of irq_set_affinity_and_hint()?
+> > IMHO the latter makes it very clear what the function is meant to do.
+>
+> You're right. I was trying to phase the existing hint setter out, but
+> that's probably pointless overengineering for no real value. Let me redo
+> that.
+>
 
-Reduce the log level of a couple of messages. These can appear during normal
-reset and rmmod processing, and the driver recovers just fine. Debug
-level is fine for these.
+Thomas, are you planning to send a v2 for this soon or did I somehow miss
+it?
 
-Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c     | 2 +-
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Since your other patch "genirq: Export affinity setter for modules" is
+already in linux-next, I have started looking into the drivers where
+we can use that.
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 7730de0ef236..06be785c0d82 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3352,7 +3352,7 @@ static int iavf_close(struct net_device *netdev)
- 				    adapter->state == __IAVF_DOWN,
- 				    msecs_to_jiffies(500));
- 	if (!status)
--		netdev_warn(netdev, "Device resources not yet released\n");
-+		netdev_dbg(netdev, "Device resources not yet released\n");
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index d78206e168bc..ba27b2168fd3 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1866,8 +1866,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		break;
- 	default:
- 		if (adapter->current_op && (v_opcode != adapter->current_op))
--			dev_warn(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
--				 adapter->current_op, v_opcode);
-+			dev_dbg(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
-+				adapter->current_op, v_opcode);
- 		break;
- 	} /* switch v_opcode */
- 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+On thinking about this whole chunk a little more, I do wonder about the
+reason why we are still sticking with the hints.
+
+The two reasons that I could come up with are:
+- We are not entirely sure if irqbalance still consumes this or not
+- For future use by some other userspace daemon  (?)
+
+Does that sound right?
+
 -- 
-2.20.1
+Thanks
+Nitesh
 
 _______________________________________________
 Intel-wired-lan mailing list
