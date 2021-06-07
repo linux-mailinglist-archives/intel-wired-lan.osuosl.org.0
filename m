@@ -2,56 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78ED339D4DA
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 08:19:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0192B39D531
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 08:43:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7E38A40285;
-	Mon,  7 Jun 2021 06:19:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 84FB640236;
+	Mon,  7 Jun 2021 06:43:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DsMHpITofuBu; Mon,  7 Jun 2021 06:19:24 +0000 (UTC)
+	with ESMTP id 6tOp9xr2WEA0; Mon,  7 Jun 2021 06:43:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B8FC940147;
-	Mon,  7 Jun 2021 06:19:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 078B44019B;
+	Mon,  7 Jun 2021 06:43:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 332901BF328
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:19:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 56B791BF328
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:43:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2ECBD401CB
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:19:19 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4379740361
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:43:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0oi_0yFyMkC0 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Jun 2021 06:19:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1O2Q0m194vLE for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Jun 2021 06:43:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0D4814019B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:19:17 +0000 (UTC)
-IronPort-SDR: nwe2ZPljQ9/rowksuOEPqbA47JpJi/FdLeBnLzuoG8LGwIzTm3yx7rmRor4wFl6KHvZ0aYtYwq
- qHPqm17oCDeQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,10007"; a="204590289"
-X-IronPort-AV: E=Sophos;i="5.83,254,1616482800"; d="scan'208";a="204590289"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2021 23:19:16 -0700
-IronPort-SDR: ymRQu7XKvZOxqTV/LuSfFrf44i4fRYqmkJgWRIK3kzWzrxV+0c/Y3sesD/5YurNzQXXNBKUW77
- aVJ1lf3pSPuA==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1CD5E40368
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 06:43:16 +0000 (UTC)
+IronPort-SDR: VU1JnEqZfWdoicTiNE1zzzwnVhQq/ZqdZCLAV3qaVYy91dOfuE8FJ7on7UOExl90p2lyW6pYJp
+ QwDdEvWZ1m3Q==
+X-IronPort-AV: E=McAfee;i="6200,9189,10007"; a="204541005"
+X-IronPort-AV: E=Sophos;i="5.83,254,1616482800"; d="scan'208";a="204541005"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2021 23:43:15 -0700
+IronPort-SDR: e69GvhjFpH4Ub6Mza5nYMRwBgvvZnYlymjENhVKKHhvUlLPOxBVafrclMiNmWuem09lrDWk48i
+ iGVuz9AyMALw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,254,1616482800"; d="scan'208";a="448981891"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by fmsmga008.fm.intel.com with ESMTP; 06 Jun 2021 23:19:15 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org, dvorax.fuxbrumer@linux.intel.com,
- michael.edri@intel.com
-Date: Mon,  7 Jun 2021 09:19:12 +0300
-Message-Id: <20210607061912.2356057-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+X-IronPort-AV: E=Sophos;i="5.83,254,1616482800"; d="scan'208";a="401593123"
+Received: from amlin-019-051.igk.intel.com ([10.102.19.51])
+ by orsmga003.jf.intel.com with ESMTP; 06 Jun 2021 23:43:14 -0700
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  7 Jun 2021 08:43:38 +0200
+Message-Id: <20210607064338.252336-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Check the PCIm state
+Subject: [Intel-wired-lan] [PATCH net-next v1] i40e: Add placeholder for ndo
+ set VLANs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,60 +64,259 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Complete to commit def4ec6dce393e ("e1000e: PCIm function state support")
-Check the PCIm state only on CSME systems. There is no point to do this
-check on none CSME systems.
-This patch fixes a generation a false-positive warning:
-"Error in exiting dmoff"
+VLANs set by ndo, were not accounted.
+Implement placeholder, by which driver can account VLANs set by
+ndo. Ensure that once PF changes trunk, every guest filter
+is removed from the list 'vm_vlan_list'.
+Implement logic for deletion/addition of guest(from VM) filters.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Karen Sornek <karen.sornek@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 24 ++++++++++++----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 131 ++++++++++++++++--
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   9 ++
+ 2 files changed, 130 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 781b751f066f..6a20c7f82fc9 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -5225,18 +5225,20 @@ static void e1000_watchdog_task(struct work_struct *work)
- 			pm_runtime_resume(netdev->dev.parent);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index edfdce5f6..0fba4f1b4 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -986,6 +986,81 @@ static void i40e_disable_vf_mappings(struct i40e_vf *vf)
+ 	i40e_flush(hw);
+ }
  
- 			/* Checking if MAC is in DMoff state*/
--			pcim_state = er32(STATUS);
--			while (pcim_state & E1000_STATUS_PCIM_STATE) {
--				if (tries++ == dmoff_exit_timeout) {
--					e_dbg("Error in exiting dmoff\n");
--					break;
--				}
--				usleep_range(10000, 20000);
-+			if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
- 				pcim_state = er32(STATUS);
--
--				/* Checking if MAC exited DMoff state */
--				if (!(pcim_state & E1000_STATUS_PCIM_STATE))
--					e1000_phy_hw_reset(&adapter->hw);
-+				while (pcim_state & E1000_STATUS_PCIM_STATE) {
-+					if (tries++ == dmoff_exit_timeout) {
-+						e_dbg("Error in exiting dmoff\n");
-+						break;
-+					}
-+					usleep_range(10000, 20000);
-+					pcim_state = er32(STATUS);
++/**
++ * i40e_add_vmvlan_to_list
++ * @vf: pointer to the VF info
++ * @vfl:  pointer to the VF VLAN tag filters list
++ * @vlan_idx: vlan_id index in VLAN tag filters list
++ *
++ * add VLAN tag into the VLAN list for VM
++ **/
++static i40e_status
++i40e_add_vmvlan_to_list(struct i40e_vf *vf,
++			struct virtchnl_vlan_filter_list *vfl,
++			int vlan_idx)
++{
++	struct i40e_vm_vlan *vlan_elem;
 +
-+					/* Checking if MAC exited DMoff state */
-+					if (!(pcim_state & E1000_STATUS_PCIM_STATE))
-+						e1000_phy_hw_reset(&adapter->hw);
-+				}
- 			}
++	vlan_elem = kzalloc(sizeof(*vlan_elem), GFP_KERNEL);
++	if (!vlan_elem)
++		return I40E_ERR_NO_MEMORY;
++	vlan_elem->vlan = vfl->vlan_id[vlan_idx];
++	vlan_elem->vsi_id = vfl->vsi_id;
++	INIT_LIST_HEAD(&vlan_elem->list);
++	vf->num_vlan++;
++	list_add(&vlan_elem->list, &vf->vm_vlan_list);
++	return I40E_SUCCESS;
++}
++
++/**
++ * i40e_del_vmvlan_from_list
++ * @vsi: pointer to the VSI structure
++ * @vf: pointer to the VF info
++ * @vlan: VLAN tag to be removed from the list
++ *
++ * delete VLAN tag from the VLAN list for VM
++ **/
++static void i40e_del_vmvlan_from_list(struct i40e_vsi *vsi,
++				      struct i40e_vf *vf, u16 vlan)
++{
++	struct i40e_vm_vlan *entry, *tmp;
++
++	list_for_each_entry_safe(entry, tmp,
++				 &vf->vm_vlan_list, list) {
++		if (vlan == entry->vlan) {
++			i40e_vsi_kill_vlan(vsi, vlan);
++			vf->num_vlan--;
++			list_del(&entry->list);
++			kfree(entry);
++			break;
++		}
++	}
++}
++
++/**
++ * i40e_free_vmvlan_list
++ * @vsi: pointer to the VSI structure
++ * @vf: pointer to the VF info
++ *
++ * remove whole list of VLAN tags for VM
++ **/
++static void i40e_free_vmvlan_list(struct i40e_vsi *vsi, struct i40e_vf *vf)
++{
++	struct i40e_vm_vlan *entry, *tmp;
++
++	if (list_empty(&vf->vm_vlan_list))
++		return;
++
++	list_for_each_entry_safe(entry, tmp,
++				 &vf->vm_vlan_list, list) {
++		if (vsi)
++			i40e_vsi_kill_vlan(vsi, entry->vlan);
++		list_del(&entry->list);
++		kfree(entry);
++	}
++	vf->num_vlan = 0;
++}
++
+ /**
+  * i40e_free_vf_res
+  * @vf: pointer to the VF info
+@@ -1061,6 +1136,10 @@ static void i40e_free_vf_res(struct i40e_vf *vf)
+ 		wr32(hw, reg_idx, reg);
+ 		i40e_flush(hw);
+ 	}
++
++	i40e_free_vmvlan_list(NULL, vf);
++
++
+ 	/* reset some of the state variables keeping track of the resources */
+ 	vf->num_queue_pairs = 0;
+ 	clear_bit(I40E_VF_STATE_MC_PROMISC, &vf->vf_states);
+@@ -1766,6 +1845,7 @@ int i40e_alloc_vfs(struct i40e_pf *pf, u16 num_alloc_vfs)
  
- 			/* update snapshot of PHY registers on LSC */
+ 		set_bit(I40E_VF_STATE_PRE_ENABLE, &vfs[i].vf_states);
+ 
++		INIT_LIST_HEAD(&vfs[i].vm_vlan_list);
+ 	}
+ 	pf->num_alloc_vfs = num_alloc_vfs;
+ 
+@@ -2787,6 +2867,28 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 	return 0;
+ }
+ 
++/**
++ * i40e_check_vf_vlan_cap
++ * @vf: pointer to the VF info
++ *
++ * Check if VF can add another VLAN filter.
++ */
++static i40e_status
++i40e_check_vf_vlan_cap(struct i40e_vf *vf)
++{
++        struct i40e_pf *pf = vf->pf;
++
++        if ((vf->num_vlan + 1 > I40E_VC_MAX_VLAN_PER_VF) &&
++            !test_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps)) {
++                dev_err(&pf->pdev->dev,
++                        "VF is not trusted, switch the VF to trusted to add more VLAN addresses\n");
++
++                return I40E_ERR_CONFIG;
++        }
++
++        return I40E_SUCCESS;
++}
++
+ /**
+  * i40e_vc_add_mac_addr_msg
+  * @vf: pointer to the VF info
+@@ -2944,10 +3046,11 @@ static int i40e_vc_add_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_vlan_filter_list *vfl =
+ 	    (struct virtchnl_vlan_filter_list *)msg;
++	i40e_status aq_ret = I40E_SUCCESS;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+-	i40e_status aq_ret = 0;
+-	int i;
++	int ret;
++	u16 i;
+ 
+ 	if ((vf->num_vlan >= I40E_VC_MAX_VLAN_PER_VF) &&
+ 	    !test_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps)) {
+@@ -2976,12 +3079,19 @@ static int i40e_vc_add_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	i40e_vlan_stripping_enable(vsi);
++
+ 	for (i = 0; i < vfl->num_elements; i++) {
+-		/* add new VLAN filter */
+-		int ret = i40e_vsi_add_vlan(vsi, vfl->vlan_id[i]);
+-		if (!ret)
+-			vf->num_vlan++;
++		aq_ret = i40e_check_vf_vlan_cap(vf);
++		if (aq_ret)
++			goto error_param;
++
++		ret = i40e_vsi_add_vlan(vsi, vfl->vlan_id[i]);
+ 
++		if (!ret && vfl->vlan_id[i]) {
++			aq_ret = i40e_add_vmvlan_to_list(vf, vfl, i);
++			if (aq_ret)
++				goto error_param;
++		}
+ 		if (test_bit(I40E_VF_STATE_UC_PROMISC, &vf->vf_states))
+ 			i40e_aq_set_vsi_uc_promisc_on_vlan(&pf->hw, vsi->seid,
+ 							   true,
+@@ -3015,10 +3125,10 @@ static int i40e_vc_remove_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_vlan_filter_list *vfl =
+ 	    (struct virtchnl_vlan_filter_list *)msg;
++	i40e_status aq_ret = I40E_SUCCESS;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+-	i40e_status aq_ret = 0;
+-	int i;
++	u16 i;
+ 
+ 	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+ 	    !i40e_vc_isvalid_vsi_id(vf, vfl->vsi_id)) {
+@@ -3041,8 +3151,7 @@ static int i40e_vc_remove_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	for (i = 0; i < vfl->num_elements; i++) {
+-		i40e_vsi_kill_vlan(vsi, vfl->vlan_id[i]);
+-		vf->num_vlan--;
++		i40e_del_vmvlan_from_list(vsi, vf, vfl->vlan_id[i]);
+ 
+ 		if (test_bit(I40E_VF_STATE_UC_PROMISC, &vf->vf_states))
+ 			i40e_aq_set_vsi_uc_promisc_on_vlan(&pf->hw, vsi->seid,
+@@ -4200,6 +4309,8 @@ int i40e_ndo_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 	}
+ 	ether_addr_copy(vf->default_lan_addr.addr, mac);
+ 
++	i40e_free_vmvlan_list(NULL, vf);
++
+ 	if (is_zero_ether_addr(mac)) {
+ 		vf->pf_set_mac = false;
+ 		dev_info(&pf->pdev->dev, "Removing MAC on VF %d\n", vf_id);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 49575a640..6ba48b398 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -62,6 +62,13 @@ struct i40evf_channel {
+ 	u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+ };
+ 
++/* used for VLAN list 'vm_vlan_list' by VM for trusted and untrusted VF */
++struct i40e_vm_vlan {
++	struct list_head list;
++	s16 vlan;
++	u16 vsi_id;
++};
++
+ /* VF information structure */
+ struct i40e_vf {
+ 	struct i40e_pf *pf;
+@@ -103,6 +110,8 @@ struct i40e_vf {
+ 	bool spoofchk;
+ 	u16 num_vlan;
+ 
++	/* VLAN list created by VM for trusted and untrusted VF */
++	struct list_head vm_vlan_list;
+ 	/* ADq related variables */
+ 	bool adq_enabled; /* flag to enable adq */
+ 	u8 num_tc;
 -- 
-2.25.1
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
