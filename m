@@ -2,161 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9098539E141
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 17:52:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0AF339E4A6
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Jun 2021 19:00:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2421883942;
-	Mon,  7 Jun 2021 15:52:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 66D9A831EF;
+	Mon,  7 Jun 2021 17:00:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JRFJ356qPnsM; Mon,  7 Jun 2021 15:52:11 +0000 (UTC)
+	with ESMTP id BGHyyizRHg4V; Mon,  7 Jun 2021 17:00:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 990D083530;
-	Mon,  7 Jun 2021 15:52:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6910883131;
+	Mon,  7 Jun 2021 17:00:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AB4A91BF292
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 15:32:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7E8DD1BF335
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 17:00:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 98CC840241
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 15:32:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6BF524002B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 17:00:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d_CdcrvameTr for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Jun 2021 15:32:20 +0000 (UTC)
+ with ESMTP id 0h13XLI22n0S for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Jun 2021 17:00:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9A7B34021C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 15:32:20 +0000 (UTC)
-IronPort-SDR: +yd/RUSmX7YYr+fwvf7PIaZIvpulG7v/jOVUj8z9XtsSFr6JJ3QrvFPxw8ISo6asl2uvOZgI6e
- xZocgB9KsQ0w==
-X-IronPort-AV: E=McAfee;i="6200,9189,10008"; a="201623967"
-X-IronPort-AV: E=Sophos;i="5.83,255,1616482800"; d="scan'208";a="201623967"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2021 08:32:17 -0700
-IronPort-SDR: 83+55YP48jKDSvIPo9GevfU/3jxIycAmRGHECHA+9xnz8jHoyk2Ohcujr6Q0LTcgCf+NSlf+c3
- sLKxR4ltiZtg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,255,1616482800"; d="scan'208";a="440090670"
-Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
- by orsmga007.jf.intel.com with ESMTP; 07 Jun 2021 08:32:15 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.4; Mon, 7 Jun 2021 08:32:15 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.4; Mon, 7 Jun 2021 08:32:14 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
- via Frontend Transport; Mon, 7 Jun 2021 08:32:14 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.105)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.4; Mon, 7 Jun 2021 08:32:13 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ecvwh4heagMoHTEb6QWOqiqHXjVASrpw8YPTw0RGKTdGj8vpkyHrugMfR3v8P/YNkberoT03ebmDYHsWXb01XtmPtPdWna1RRIoVROxnmShb1NoUMltbaoAOIEp9E9infcTDkgpaa0xP1U53FP8UBpuYTtxcbQKGQhsh4p87GPbW5qyOSHvjd0Ngt+dM/m4EwzKSuHdeIbrAIoVpnrsEJTx1ZsS5ORgQHZnqo5xA7ZkOnpj+efk5kpoU7/qfp42XlKv+Xuq1S7OTtpbxr1ZPzUztV6JS9MYcR2KMSkwrfFYsc0Q1Kq2jETEz0zo7XJ62Epaim1l3/v1Wz7njfBg8+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=THD/WKQVINWY/J4/kCwisjNlDrK4bq4Po/xF1vTF35c=;
- b=CypRorhfkpq5WUzJ9hWKC9xdVZ8LuflmmPrPasnWJrrACIUa2ZbjcLQnoFP3BDk7hwyuTbxgi+dBEsomzl/rW6HGh4gFRxIUjxtSKK+mNaIYRUT2CE604bzdpyNX3f8pTHXNhRtF9wxnMB2kUYOx2Ny7vEmDhWGZL0nMYRyN3ilEgtisT7n3GPeK7G/bHEV+mIGmlijvl70XHVWVQxhZvoWGxJSwC64LSAk5Ld27aj8NFtay9Thmvjw9LNzosZp4ninNOKDf7zjjcCbXMNHo+AFJZfJpuP52mSPS1hplDY8x+8tXPwxAa8ef/msT3/R6kvKU0rkUh4glJY8ErhWtTg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=THD/WKQVINWY/J4/kCwisjNlDrK4bq4Po/xF1vTF35c=;
- b=JBnBaNvS7SFk1Q8UDkN6nl8FLOifZ9SBD6uBzpsMZ2x8hISvJGkA5FXt88QNd7DwXRpG2TJH+n+ufvEZXJPFcNxgEws++Uus3PX/V5L78tgOoFRoCsGSUnkcW0+32NIJRvCtj0SJNiU7Zdn02sCigg7KzXRiHNeBkIZ4I+y+D4c=
-Received: from DM6PR11MB3292.namprd11.prod.outlook.com (2603:10b6:5:5a::21) by
- DM6PR11MB4723.namprd11.prod.outlook.com (2603:10b6:5:2a0::16) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4195.20; Mon, 7 Jun 2021 15:32:10 +0000
-Received: from DM6PR11MB3292.namprd11.prod.outlook.com
- ([fe80::ac71:f532:33f7:a9d7]) by DM6PR11MB3292.namprd11.prod.outlook.com
- ([fe80::ac71:f532:33f7:a9d7%3]) with mapi id 15.20.4195.030; Mon, 7 Jun 2021
- 15:32:10 +0000
-From: "Bhandare, KiranX" <kiranx.bhandare@intel.com>
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v2 intel-net 2/2] ice: parametrize
- functions responsible for Tx ring management
-Thread-Index: AQHXTUQC2ZaCXc4NikWDjO7/8JOhqqsIycSg
-Date: Mon, 7 Jun 2021 15:32:09 +0000
-Message-ID: <DM6PR11MB329297990325F28CCF5CD35DF1389@DM6PR11MB3292.namprd11.prod.outlook.com>
-References: <20210520063500.62037-1-maciej.fijalkowski@intel.com>
- <20210520063500.62037-3-maciej.fijalkowski@intel.com>
-In-Reply-To: <20210520063500.62037-3-maciej.fijalkowski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [198.175.68.48]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9a816aff-3a4b-43ba-df0d-08d929c96a88
-x-ms-traffictypediagnostic: DM6PR11MB4723:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB472324729C1068C53F87D5D4F1389@DM6PR11MB4723.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4125;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iAmzjPbF3gEyWut5n15Yc3M5SwIfuFTEGJWpfZme0SA0ILI0cgWDgr7s/xOdlAtLZIT3JjqS7Bg2Hxgl6AjNQPfIDhi1Fwq8xi44YDq6N3kU9+sG7RXSQhod68f+eilUX6xG++Pabv6XOJeFoM6L0dDNZzAsLDz3Dhf3MNc9NGlXQvAgVQcRCFh8l/ITJaYTHHBdTuVoLMG730j/fraPlzXn4Dig/wHRjaf7x4sv6iVEbva9hsfylNwyAo+2mvLGSbXJrqP+PeDBhEQo+X8A4RocjF7XP+NwyR0AcnCszBnhZHAKEuLT4PJEO+k+ZWTfs7VTZnapV2htBz1MP0pKSC8CnV69JtlqZjgqtW2qT6tTCphAEoLDblo6GMJ254KFoxw7z9MDCQ3DmfBVL0urToFnl18CDatr0WJ9FwsvuqUN6TWALY9cdrodVaVofjQ/Nr1vHW62fV0wKUYeGi55KTZ2xlvuan/IQGjouF236tp+j+t9Rk6B58mv4Ji8xl9uX4f7gcZ7xPbbbH8te8bp1ZIhHhqO2juLCDiqQSvSFx+ipfp3wRglXcvvA5baF5J4264ZnT+gm+gt5pNphCMBN7tfT2ARsHX21JBaVUi9Ppc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3292.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(366004)(376002)(39860400002)(346002)(396003)(478600001)(55016002)(83380400001)(4326008)(9686003)(53546011)(6506007)(52536014)(66946007)(66476007)(64756008)(66556008)(5660300002)(66446008)(26005)(122000001)(38100700002)(33656002)(8936002)(2906002)(76116006)(316002)(8676002)(86362001)(107886003)(54906003)(110136005)(7696005)(71200400001)(186003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?yVjq7fhrD20T5wgdKbqJ03Gm5TKAI+me9YopmL77R70GcnCsn3bpF30pAl2T?=
- =?us-ascii?Q?jDG2FDr3nDuncWPGcWsnEeV9H3eXgnuq30bqcNQIKo61TFu7/cQVazSZX04p?=
- =?us-ascii?Q?IpCQhEVmk2ySqWsSMXBa8iKVWdLj4pC1kXbvhPbPpNQbIeF24XVoavvnBN9v?=
- =?us-ascii?Q?5vqTvIzIyFXv9r0xYSudFUk653Q2VUPeyEdqWrSazRGw+QcDo0YAkrvyWEfU?=
- =?us-ascii?Q?6NHRycGX20IjmVaF1h/o495WMyyW/2jaGNRJwdrLJMUeQNOX5BkQpGgLzkF7?=
- =?us-ascii?Q?QmDIzM0aqe3uVrZwey1ehxBZfdHGBqmIi2cfPG7/venTJhF+aoXDVQvHs8RF?=
- =?us-ascii?Q?AIsHB4F0QncHZ+ZKNvdjSu78PHH4/bsC9gOR2yRV2QzqdoroiHPcQR0/+4UK?=
- =?us-ascii?Q?ijG25maObdyB0+V5jbBGNBGhS+kiRcOznR/imhdiDZPh7gN/TcQBsz55N9x4?=
- =?us-ascii?Q?b1wV7fw5rUA/8YJ9FwTmajiBL1P6zMX9/gzDARYEjjB25V1RTUMh3ecu93GA?=
- =?us-ascii?Q?MfpkR6a5GFIaT0yQNP6XixEgNySG0I5sy4UTzWR5yN8eCYWTG1LGqNqKbsC+?=
- =?us-ascii?Q?yoKD1U0I/T4cxfmGgpvcgF8m3ijtyUqNHhIXFWZ+XEDgK4Y0cxuo+c51M7sn?=
- =?us-ascii?Q?KRYikAiagAKcLLOy/taTrZg/lOJ6GJ6H7zMfzJa0kWkw/VTN08etb27ESVJj?=
- =?us-ascii?Q?gMEpD/f0hF4i7j8b23bSYkok0q3bXC30kf4zwvvj8Y/wBGdS4bQeSOQapt72?=
- =?us-ascii?Q?C2I1qxrB11NEF8W57mZBFq2M4PjytvoQFnmlHPR9TMxG9q8Ry+EjLNN5yblU?=
- =?us-ascii?Q?/MOw3iDXqJ8wevXFd5IhCpiqGyz9+geO0kenqYcjPi9cmxiBRpXErw2urzZz?=
- =?us-ascii?Q?1LuVoLJQDbi/HRI/y/LuT5h1OhGsCIJwVpZLR7gYTvxtth2dCnbQEKunngPM?=
- =?us-ascii?Q?32GrmBVYGo0X5rmD6F6OGVLlsdL2ZpzBCZAiu1H8a74wB5XqJkymrZ7RGmnn?=
- =?us-ascii?Q?HNukZgCOLnLGatFAsN5b/EzlX7eNs8dhin9u16w6A+FXJ7t6H/JmeJJAzFQ3?=
- =?us-ascii?Q?+lnuAH4rvAy18ZfCixpYfW765lm6OWojli7poYdrMzHZwds7D36rY4GuYZ1g?=
- =?us-ascii?Q?nrUjOhkM0lHgnh0oeH3qwLU9myj1THetjfbfqWAPi/DMP46VJK32yOV7MR2S?=
- =?us-ascii?Q?wZbZoRfnP5VP8tN3NGWrkwShFteCOFJ9vO8r0Tuc+AQg5kQCKsWhR7J52agZ?=
- =?us-ascii?Q?hKyRwe47F2IIvHCxPKK5WRPPLHu5S8zY+vuZFOhdrGMrCHRW2lMET5rsAKXD?=
- =?us-ascii?Q?v9+czwjzRNytqTF9wLAuT4ZI?=
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4BDD34019A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Jun 2021 17:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623085222;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TImFWC0HTGVlVbnQIUSZh0jMNDwAtpjYOcXi7DdGfsg=;
+ b=FTahAt7ov24tYmlT2WGqFvaFpgsc7XXA4oAP1XtBdCHeTdj0b6KMVxnPP8s/d0XG8fUalg
+ qLRY4PAZa1slBgpE1ATqMsUK2JI0YhNrPJAbFxhZPXDIKZVJT8yvNl5ulq71YEqSHw6h8y
+ LLwfgdy2j00Tm2BETdO01Z5TT8uXPEQ=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-4-wRMCi4QuOW2OscLX1kzK4g-1; Mon, 07 Jun 2021 13:00:18 -0400
+X-MC-Unique: wRMCi4QuOW2OscLX1kzK4g-1
+Received: by mail-lf1-f70.google.com with SMTP id
+ o138-20020a1941900000b02902a5ff0b6936so6442741lfa.9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Jun 2021 10:00:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TImFWC0HTGVlVbnQIUSZh0jMNDwAtpjYOcXi7DdGfsg=;
+ b=JCUwFoZKOXTjEXgOiDrgLOdnuLNMAq+W8IzepO44bFVLXvnwEvs9VSwrR09bic+k0N
+ RwlR/WX2KBMAmnNNQIZ7Pmb/LJytSeJO8dY1bRDDcGntiF2rm7FfteH67clSluzM/bMF
+ C+CJhJngOnGnscWuq+GBMMo1iYLixKK1zATQ2nGyAZdr867sbdef1jUOC08RmVaLlzoK
+ OWTq5oSr5Z9VzpZFDagk0MtkbVrSJgO1J60oEs35ULGEaCG76OVdZ695E6HW3XgVfVTe
+ Mh/TPWJzL85j/wSUcN+ISWUl3LM2x+ZqFF4Y2L/EnRK/42t/p6TTsdgtNQ3IRCa2nS+0
+ uoWQ==
+X-Gm-Message-State: AOAM530ggmHmfPYWUSjH3UxSNPHJq0siI0KhoL2et2TfNyumUOGcPo2Q
+ 6IU+ZXwiJhqEk8A70duk1/N51k7n76mUd9CdqC+PusaqV1WoijYHcNA1ZCZN3bpyqms/v4woPfU
+ tps6gpShfGK9VPh1yI/DVzbTHC0g3vd2v0VFNj4arZo4VTg==
+X-Received: by 2002:a2e:580e:: with SMTP id m14mr7269771ljb.197.1623085217230; 
+ Mon, 07 Jun 2021 10:00:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTkhzmxCJi6PS7y4jmDE+BJDdiD5YSK4954D2dCrGy7KysHZPt6B2LiTHdtA/lDYEXA8GWz+cruQBsawKJZwc=
+X-Received: by 2002:a2e:580e:: with SMTP id m14mr7269730ljb.197.1623085216890; 
+ Mon, 07 Jun 2021 10:00:16 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3292.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a816aff-3a4b-43ba-df0d-08d929c96a88
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jun 2021 15:32:10.0429 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z0IW3z8klcThaHi4HMJXG8yW0wTz1Ekompk9LT3W4pDiNCs1nCkK+koJeT0t5YANDjbWXqsi/eDhGFU8U1tFPfy6bEDskYOLcCuTZ5sHAZU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4723
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v2 intel-net 2/2] ice: parametrize
- functions responsible for Tx ring management
+References: <20210504092340.00006c61@intel.com>
+ <87pmxpdr32.ffs@nanos.tec.linutronix.de>
+ <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
+ <87im3gewlu.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+ <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
+ <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
+ <87zgwo9u79.ffs@nanos.tec.linutronix.de>
+ <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
+In-Reply-To: <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
+From: Nitesh Lal <nilal@redhat.com>
+Date: Mon, 7 Jun 2021 13:00:05 -0400
+Message-ID: <CAFki+L=QTOu_O=1uNobVMi2s9mbcxXgSdTLADCpeBWBoPAikgQ@mail.gmail.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
+ affinity hints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,50 +102,154 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "bjorn@kernel.org" <bjorn@kernel.org>, "kuba@kernel.org" <kuba@kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
+Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+ "peterz@infradead.org" <peterz@infradead.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
+ Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
+ "frederic@kernel.org" <frederic@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "rostedt@goodmis.org" <rostedt@goodmis.org>,
+ "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
+ "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
+ Neil Horman <nhorman@tuxdriver.com>,
+ "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ netdev@vger.kernel.org,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Maciej Fijalkowski
-> Sent: Thursday, May 20, 2021 12:05 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; bjorn@kernel.org; kuba@kernel.org;
-> bpf@vger.kernel.org; davem@davemloft.net; Karlsson, Magnus
-> <magnus.karlsson@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v2 intel-net 2/2] ice: parametrize functions
-> responsible for Tx ring management
-> 
-> Commit ae15e0ba1b33 ("ice: Change number of XDP Tx queues to match
-> number of Rx queues") tried to address the incorrect setting of XDP queue
-> count that was based on the Tx queue count, whereas in theory we should
-> provide the XDP queue per Rx queue. However, the routines that setup and
-> destroy the set of Tx resources are still based on the
-> vsi->num_txq.
-> 
-> Ice supports the asynchronous Tx/Rx queue count, so for a setup where
-> vsi->num_txq > vsi->num_rxq, ice_vsi_stop_tx_rings and ice_vsi_cfg_txqs
-> will be accessing the vsi->xdp_rings out of the bounds.
-> 
-> Parametrize two mentioned functions so they get the size of Tx resources
-> array as the input.
-> 
-> Fixes: ae15e0ba1b33 ("ice: Change number of XDP Tx queues to match
-> number of Rx queues")
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
+>
+> The discussion about removing the side effect of irq_set_affinity_hint() of
+> actually applying the cpumask (if not NULL) as affinity to the interrupt,
+> unearthed a few unpleasantries:
+>
+>   1) The modular perf drivers rely on the current behaviour for the very
+>      wrong reasons.
+>
+>   2) While none of the other drivers prevents user space from changing
+>      the affinity, a cursorily inspection shows that there are at least
+>      expectations in some drivers.
+>
+> #1 needs to be cleaned up anyway, so that's not a problem
+>
+> #2 might result in subtle regressions especially when irqbalanced (which
+>    nowadays ignores the affinity hint) is disabled.
+>
+> Provide new interfaces:
+>
+>   irq_update_affinity_hint() - Only sets the affinity hint pointer
+>   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
+>                                the interrupt
+>
+> Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
+> document it to be phased out.
+>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
 > ---
->  drivers/net/ethernet/intel/ice/ice_lib.c | 18 ++++++++++--------
->  1 file changed, 10 insertions(+), 8 deletions(-)
-> 
+> Applies on:
+>    git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/core
+> ---
+>  include/linux/interrupt.h |   41 ++++++++++++++++++++++++++++++++++++++++-
+>  kernel/irq/manage.c       |    8 ++++----
+>  2 files changed, 44 insertions(+), 5 deletions(-)
+>
+> --- a/include/linux/interrupt.h
+> +++ b/include/linux/interrupt.h
+> @@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned i
+>  extern int irq_can_set_affinity(unsigned int irq);
+>  extern int irq_select_affinity(unsigned int irq);
+>
+> -extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
+> +extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
+> +                                    bool setaffinity);
+> +
+> +/**
+> + * irq_update_affinity_hint - Update the affinity hint
+> + * @irq:       Interrupt to update
+> + * @cpumask:   cpumask pointer (NULL to clear the hint)
+> + *
+> + * Updates the affinity hint, but does not change the affinity of the interrupt.
+> + */
+> +static inline int
+> +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
+> +{
+> +       return __irq_apply_affinity_hint(irq, m, true);
+> +}
+> +
+> +/**
+> + * irq_apply_affinity_hint - Update the affinity hint and apply the provided
+> + *                          cpumask to the interrupt
+> + * @irq:       Interrupt to update
+> + * @cpumask:   cpumask pointer (NULL to clear the hint)
+> + *
+> + * Updates the affinity hint and if @cpumask is not NULL it applies it as
+> + * the affinity of that interrupt.
+> + */
+> +static inline int
+> +irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m)
+> +{
+> +       return __irq_apply_affinity_hint(irq, m, true);
+> +}
+> +
+> +/*
+> + * Deprecated. Use irq_update_affinity_hint() or irq_apply_affinity_hint()
+> + * instead.
+> + */
+> +static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
+> +{
+> +       return irq_apply_affinity_hint(irq, cpumask);
 
-Tested-by: Kiran Bhandare <kiranx.bhandare@intel.com>  A Contingent Worker at Intel
+Another change required here, the above should be 'm' instead of 'cpumask'.
+
+> +}
+> +
+>  extern int irq_update_affinity_desc(unsigned int irq,
+>                                     struct irq_affinity_desc *affinity);
+>
+> --- a/kernel/irq/manage.c
+> +++ b/kernel/irq/manage.c
+> @@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq,
+>  }
+>  EXPORT_SYMBOL_GPL(irq_force_affinity);
+>
+> -int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
+> +int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
+> +                             bool setaffinity)
+>  {
+>         unsigned long flags;
+>         struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
+> @@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int i
+>                 return -EINVAL;
+>         desc->affinity_hint = m;
+>         irq_put_desc_unlock(desc, flags);
+> -       /* set the initial affinity to prevent every interrupt being on CPU0 */
+> -       if (m)
+> +       if (m && setaffinity)
+>                 __irq_set_affinity(irq, m, false);
+>         return 0;
+>  }
+> -EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
+> +EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
+>
+>  static void irq_affinity_notify(struct work_struct *work)
+>  {
+>
+
+
+-- 
+Thanks
+Nitesh
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
