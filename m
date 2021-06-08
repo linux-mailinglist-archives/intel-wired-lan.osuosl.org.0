@@ -1,75 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8215A39F49E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Jun 2021 13:07:34 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC9D639F682
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Jun 2021 14:25:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF8C183BDA;
-	Tue,  8 Jun 2021 11:07:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9D37483BC7;
+	Tue,  8 Jun 2021 12:25:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vSgJnJqCimcV; Tue,  8 Jun 2021 11:07:32 +0000 (UTC)
+	with ESMTP id nKA6VGQtHboN; Tue,  8 Jun 2021 12:25:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9526683BD9;
-	Tue,  8 Jun 2021 11:07:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 984DF83A77;
+	Tue,  8 Jun 2021 12:25:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC3EC1BF869
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 11:07:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F0D361BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 12:25:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BA023400E6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 11:07:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E690483A77
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 12:25:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AbDGnbZu8RIM for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Jun 2021 11:07:22 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com
- [IPv6:2607:f8b0:4864:20::435])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 93EB9400D0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 11:07:22 +0000 (UTC)
-Received: by mail-pf1-x435.google.com with SMTP id p13so5867938pfw.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Jun 2021 04:07:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UJVsqI/ei0WczshYuB8pLAQsFgqQWwx9v5zxVqgopwU=;
- b=B9ab52pbsKXDXa+qRWwLhBk1hn1Q5Y5Epsog2G5yDfhkg5IOo9jKJ2yFIQFwMAzGud
- AcSRIaZ8KgYDCs+rim+4y/6lRxahUee70hAve0OSKrKrsbZZQij7nBPhyvvDc1HBnS6M
- ngcCKuustZvvUxVhpJYky5CuYcYU4kUvomXBT9SOle0uV5+XZoXfXEQH4t9GhG2hbRS3
- Bj3KqAasLfgPV7LJBkffZQB5uBR+wC3S/r/+wrwD79PoJZgN9ov0Q6SlyNIkVznJzrKx
- VikGD3Fo8rv+94mK8O47KXO6kqFcS+lnDOMXrGGMWVpyB8mztLWH4TukVO7Hh8ZWKPf7
- eXaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UJVsqI/ei0WczshYuB8pLAQsFgqQWwx9v5zxVqgopwU=;
- b=j7qOl+MGroMocVMY5Ep3Kquhid9CzH2VmAXj/HClxAYT5F4JxHt+55tZkLduh5xU2l
- gjF0VKKY1Ac83AioDj+C1vVJZCKdHCm/oIGgd40bmCIjFjXwTFqgJ/B2G3ni7pRTxRUh
- 4t7QMTX2BAir+R+hjdcMr+6cw/ml3qWZPyk5VWhWZToPZk9MzxfvMV6DU7G3QV350bot
- d6cBd1jumM1hUPL1tDMAvcbVveBWZd45IM+mGrCoJPajXhzfYqcQI4ikJ/zmsL2qykKq
- J8/vLEDTThjDo1Z1nBYLytOra2qFbK7f9GpK7AGOSuywswLD3U6q9FxuefHAxDdgtUau
- Vn0w==
-X-Gm-Message-State: AOAM532vXfODIcx4xDxmyeZrx2BW1ylWt0kh5ue9iIDbz61wEXgEb34n
- mzonOjisaIJvjHam2M5sKg47bJb0jJfzcV7Gxu4=
-X-Google-Smtp-Source: ABdhPJxjGu8PU0C2DW8HKf2a2BcxewJ3P/4FVJ4FKwCahJzQrzq27XcDUuxYrsnQ3WmcxDTGCfmmKI5172RPm/6SJlM=
-X-Received: by 2002:a63:4e4f:: with SMTP id o15mr22260611pgl.208.1623150442052; 
- Tue, 08 Jun 2021 04:07:22 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xJZ7fRfLLPWh for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Jun 2021 12:25:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E2240839CD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jun 2021 12:25:24 +0000 (UTC)
+IronPort-SDR: fBN2bWPtbjE+l0SJiSeGFU8gJOt9FVfLRqmFX2WAt/No5tqoa34Bpf/G/KS3YUxPYQ6SwsZUeU
+ saSEnxnez+iQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10008"; a="184518390"
+X-IronPort-AV: E=Sophos;i="5.83,258,1616482800"; d="scan'208";a="184518390"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jun 2021 05:25:23 -0700
+IronPort-SDR: sbkex1kQN+oipfZ8Fi4p1JpS9pBfCXTA30ARhmKW1+ucTihjRN2D02xeChg8fAN6bZY9piqcWR
+ siasmMqqDa1Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,258,1616482800"; d="scan'208";a="402051926"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by orsmga003.jf.intel.com with ESMTP; 08 Jun 2021 05:25:19 -0700
+Date: Tue, 8 Jun 2021 14:12:59 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>
+Message-ID: <20210608121259.GA1971@ranger.igk.intel.com>
+References: <20210601113236.42651-1-maciej.fijalkowski@intel.com>
+ <20210601113236.42651-3-maciej.fijalkowski@intel.com>
+ <87czt5dal0.fsf@toke.dk>
 MIME-Version: 1.0
-References: <20210607122644.59021-1-wanghai38@huawei.com>
-In-Reply-To: <20210607122644.59021-1-wanghai38@huawei.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Tue, 8 Jun 2021 13:07:11 +0200
-Message-ID: <CAJ8uoz2mfCGNmEaAhGZAaSs=Mrer008f3+C7MdoAySsLn=busw@mail.gmail.com>
-To: Wang Hai <wanghai38@huawei.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe,
- xsk: clean up the resources in ixgbe_xsk_pool_enable error path
+Content-Disposition: inline
+In-Reply-To: <87czt5dal0.fsf@toke.dk>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH intel-next 2/2] ice: introduce XDP Tx
+ fallback path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,62 +69,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: open list <linux-kernel@vger.kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Network Development <netdev@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- bpf <bpf@vger.kernel.org>, intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, bjorn@kernel.org, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org, davem@davemloft.net,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 7, 2021 at 2:17 PM Wang Hai <wanghai38@huawei.com> wrote:
->
-> In ixgbe_xsk_pool_enable(), if ixgbe_xsk_wakeup() fails,
-> We should restore the previous state and clean up the
-> resources. Add the missing clear af_xdp_zc_qps and unmap dma
-> to fix this bug.
->
-> Fixes: d49e286d354e ("ixgbe: add tracking of AF_XDP zero-copy state for each queue pair")
-> Fixes: 4a9b32f30f80 ("ixgbe: fix potential RX buffer starvation for AF_XDP")
-> Signed-off-by: Wang Hai <wanghai38@huawei.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+On Tue, Jun 01, 2021 at 02:38:03PM +0200, Toke H=F8iland-J=F8rgensen wrote:
+> Maciej Fijalkowski <maciej.fijalkowski@intel.com> writes:
+> =
 
-Thanks Wang.
+> > Under rare circumstances there might be a situation where a requirement
+> > of having a XDP Tx queue per core could not be fulfilled and some of the
+> > Tx resources would have to be shared between cores. This yields a need
+> > for placing accesses to xdp_rings array onto critical section protected
+> > by spinlock.
+> >
+> > Design of handling such scenario is to at first find out how many queues
+> > are there that XDP could use. Any number that is not less than the half
+> > of a count of cores of platform is allowed. XDP queue count < cpu count
+> > is signalled via new VSI state ICE_VSI_XDP_FALLBACK which carries the
+> > information further down to Rx rings where new ICE_TX_XDP_LOCKED is set
+> > based on the mentioned VSI state. This ring flag indicates that locking
+> > variants for getting/putting xdp_ring need to be used in fast path.
+> >
+> > For XDP_REDIRECT the impact on standard case (one XDP ring per CPU) can
+> > be reduced a bit by providing a separate ndo_xdp_xmit and swap it at
+> > configuration time. However, due to the fact that net_device_ops struct
+> > is a const, it is not possible to replace a single ndo, so for the
+> > locking variant of ndo_xdp_xmit, whole net_device_ops needs to be
+> > replayed.
+> >
+> > It has an impact on performance (1-2 %) of a non-fallback path as
+> > branches are introduced.
+> =
 
-Acked-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> I generally feel this is the right approach, although the performance
+> impact is a bit unfortunately, obviously. Maybe it could be avoided by
+> the use of static_branch? I.e., keep a global refcount of how many
+> netdevs are using the locked path and only activate the check in the
+> fast path while that refcount is >0?
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> index 91ad5b902673..d912f14d2ba4 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> @@ -52,8 +52,11 @@ static int ixgbe_xsk_pool_enable(struct ixgbe_adapter *adapter,
->
->                 /* Kick start the NAPI context so that receiving will start */
->                 err = ixgbe_xsk_wakeup(adapter->netdev, qid, XDP_WAKEUP_RX);
-> -               if (err)
-> +               if (err) {
-> +                       clear_bit(qid, adapter->af_xdp_zc_qps);
-> +                       xsk_pool_dma_unmap(pool, IXGBE_RX_DMA_ATTR);
->                         return err;
-> +               }
->         }
->
->         return 0;
-> --
-> 2.17.1
->
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+This would be an ideal solution if we would be able to have it PF-scoped,
+which AFAICT is not possible as static key is per module, right?
+
+I checked that before the bank holiday here in Poland and indeed I was not
+observing perf drops. Only thing that is questionable is the fact that a
+single PF would affect all the others that ice driver is serving.
+
+OTOH I see that Jesper acked that work.
+
+Let me play with this a bit more as I'm in the middle of switching my HW
+lab, but I wanted to break the silence over here. I didn't manage to check
+that one fallback path will affect other PFs.
+
+Thanks Toke for that great idea :) any other opinions are more than
+welcome.
+
+> =
+
+> -Toke
+> =
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
