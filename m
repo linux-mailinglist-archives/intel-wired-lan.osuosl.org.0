@@ -1,59 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 910BB3A38F4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Jun 2021 02:40:42 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D84FC3A3B84
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Jun 2021 07:55:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 34F2160AB8;
-	Fri, 11 Jun 2021 00:40:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5FFD560703;
+	Fri, 11 Jun 2021 05:55:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S3kenOnY0Igv; Fri, 11 Jun 2021 00:40:40 +0000 (UTC)
+	with ESMTP id BCKI83-vcSnK; Fri, 11 Jun 2021 05:55:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0CF5160AAA;
-	Fri, 11 Jun 2021 00:40:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28F5A606D6;
+	Fri, 11 Jun 2021 05:55:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 25F131C1178
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:22 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 688151BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 05:55:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D62F482FCB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 55CBB4062B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 05:55:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s6apWQ-jebMG for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Jun 2021 00:40:17 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EB528831F1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:16 +0000 (UTC)
-IronPort-SDR: ZP7HYm8iDfc5p6uLxbyyWRKhq5i2ng9n3wgDuPl/zznzhKKboknATiJJwVG1Zr5mFf+mq+W+Dw
- ecnXHZdiyelg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10011"; a="205397145"
-X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="205397145"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jun 2021 17:40:16 -0700
-IronPort-SDR: 0Z7BHUuknDerMfyfy77TTJ7Q6tuaDmq6u473iynnb5pv2v34hL0KukLyyuoLCGGfg8lXAf4sTs
- OFYEwe1/rDoA==
-X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="448932920"
-Received: from caclark-mobl.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.212.156.65])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jun 2021 17:40:16 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 10 Jun 2021 17:39:24 -0700
-Message-Id: <20210611003924.492853-6-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210611003924.492853-1-vinicius.gomes@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id H1iIYKL6qVMu for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Jun 2021 05:55:34 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 04D45405B3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 05:55:33 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aeeed.dynamic.kabel-deutschland.de
+ [95.90.238.237])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id E2B1361E5FE33;
+ Fri, 11 Jun 2021 07:55:30 +0200 (CEST)
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 References: <20210611003924.492853-1-vinicius.gomes@intel.com>
+ <20210611003924.492853-6-vinicius.gomes@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <37283593-408d-cdfd-ed5c-f2c215af87d8@molgen.mpg.de>
+Date: Fri, 11 Jun 2021 07:55:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v1 5/5] igc: Export LEDs
+In-Reply-To: <20210611003924.492853-6-vinicius.gomes@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 5/5] igc: Export LEDs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,263 +63,160 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Kurt Kanzenbach <kurt@linutronix.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Kurt Kanzenbach <kurt@linutronix.de>, intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Kurt Kanzenbach <kurt@linutronix.de>
-
-Each i225 has three LEDs. Export them via the LED class framework.
-
-Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
-Reviewed-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
----
- drivers/net/ethernet/intel/Kconfig           |   1 +
- drivers/net/ethernet/intel/igc/igc.h         |  10 ++
- drivers/net/ethernet/intel/igc/igc_defines.h |  10 ++
- drivers/net/ethernet/intel/igc/igc_main.c    | 132 +++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |   2 +
- 5 files changed, 155 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 82744a7501c7..3639cf79cfae 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -335,6 +335,7 @@ config IGC
- 	tristate "Intel(R) Ethernet Controller I225-LM/I225-V support"
- 	default n
- 	depends on PCI
-+	depends on LEDS_CLASS
- 	help
- 	  This driver supports Intel(R) Ethernet Controller I225-LM/I225-V
- 	  family of adapters.
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 5710e5420b40..17b31072b291 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -13,6 +13,7 @@
- #include <linux/ptp_clock_kernel.h>
- #include <linux/timecounter.h>
- #include <linux/net_tstamp.h>
-+#include <linux/leds.h>
- 
- #include "igc_hw.h"
- 
-@@ -239,8 +240,17 @@ struct igc_adapter {
- 		struct timespec64 start;
- 		struct timespec64 period;
- 	} perout[IGC_N_PEROUT];
-+
-+	/* LEDs */
-+	struct mutex led_mutex;
-+	struct led_classdev led0;
-+	struct led_classdev led1;
-+	struct led_classdev led2;
- };
- 
-+#define led_to_igc(ldev, led)                          \
-+	container_of(ldev, struct igc_adapter, led)
-+
- void igc_up(struct igc_adapter *adapter);
- void igc_down(struct igc_adapter *adapter);
- int igc_open(struct net_device *netdev);
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 7bdd0b1abf20..deb4819f1e27 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -144,6 +144,16 @@
- #define IGC_CTRL_SDP0_DIR	0x00400000  /* SDP0 Data direction */
- #define IGC_CTRL_SDP1_DIR	0x00800000  /* SDP1 Data direction */
- 
-+/* LED Control */
-+#define IGC_LEDCTL_LED0_MODE_SHIFT	0
-+#define IGC_LEDCTL_LED0_MODE_MASK	GENMASK(3, 0)
-+#define IGC_LEDCTL_LED1_MODE_SHIFT	8
-+#define IGC_LEDCTL_LED1_MODE_MASK	GENMASK(11, 8)
-+#define IGC_LEDCTL_LED2_MODE_SHIFT	16
-+#define IGC_LEDCTL_LED2_MODE_MASK	GENMASK(19, 16)
-+
-+#define IGC_CONNSW_AUTOSENSE_EN		0x1
-+
- /* As per the EAS the maximum supported size is 9.5KB (9728 bytes) */
- #define MAX_JUMBO_FRAME_SIZE	0x2600
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index ac558a6defe7..e58f07bbf127 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6138,6 +6138,134 @@ int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
- 	return -EINVAL;
- }
- 
-+static void igc_select_led(struct igc_adapter *adapter, int led,
-+			   u32 *mask, u32 *shift)
-+{
-+	switch (led) {
-+	case 0:
-+		*mask  = IGC_LEDCTL_LED0_MODE_MASK;
-+		*shift = IGC_LEDCTL_LED0_MODE_SHIFT;
-+		break;
-+	case 1:
-+		*mask  = IGC_LEDCTL_LED1_MODE_MASK;
-+		*shift = IGC_LEDCTL_LED1_MODE_SHIFT;
-+		break;
-+	case 2:
-+		*mask  = IGC_LEDCTL_LED2_MODE_MASK;
-+		*shift = IGC_LEDCTL_LED2_MODE_SHIFT;
-+		break;
-+	default:
-+		*mask = *shift = 0;
-+		dev_err(&adapter->pdev->dev, "Unknown led %d selected!", led);
-+	}
-+}
-+
-+static void igc_led_set(struct igc_adapter *adapter, int led, u16 brightness)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 shift, mask, ledctl;
-+
-+	igc_select_led(adapter, led, &mask, &shift);
-+
-+	mutex_lock(&adapter->led_mutex);
-+	ledctl = rd32(IGC_LEDCTL);
-+	ledctl &= ~mask;
-+	ledctl |= brightness << shift;
-+	wr32(IGC_LEDCTL, ledctl);
-+	mutex_unlock(&adapter->led_mutex);
-+}
-+
-+static enum led_brightness igc_led_get(struct igc_adapter *adapter, int led)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 shift, mask, ledctl;
-+
-+	igc_select_led(adapter, led, &mask, &shift);
-+
-+	mutex_lock(&adapter->led_mutex);
-+	ledctl = rd32(IGC_LEDCTL);
-+	mutex_unlock(&adapter->led_mutex);
-+
-+	return (ledctl & mask) >> shift;
-+}
-+
-+static void igc_led0_set(struct led_classdev *ldev, enum led_brightness b)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led0);
-+
-+	igc_led_set(adapter, 0, b);
-+}
-+
-+static enum led_brightness igc_led0_get(struct led_classdev *ldev)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led0);
-+
-+	return igc_led_get(adapter, 0);
-+}
-+
-+static void igc_led1_set(struct led_classdev *ldev, enum led_brightness b)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led1);
-+
-+	igc_led_set(adapter, 1, b);
-+}
-+
-+static enum led_brightness igc_led1_get(struct led_classdev *ldev)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led1);
-+
-+	return igc_led_get(adapter, 1);
-+}
-+
-+static void igc_led2_set(struct led_classdev *ldev, enum led_brightness b)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led2);
-+
-+	igc_led_set(adapter, 2, b);
-+}
-+
-+static enum led_brightness igc_led2_get(struct led_classdev *ldev)
-+{
-+	struct igc_adapter *adapter = led_to_igc(ldev, led2);
-+
-+	return igc_led_get(adapter, 2);
-+}
-+
-+static int igc_led_setup(struct igc_adapter *adapter)
-+{
-+	/* Setup */
-+	mutex_init(&adapter->led_mutex);
-+
-+	adapter->led0.name	     = "igc_led0";
-+	adapter->led0.max_brightness = 15;
-+	adapter->led0.brightness_set = igc_led0_set;
-+	adapter->led0.brightness_get = igc_led0_get;
-+
-+	adapter->led1.name	     = "igc_led1";
-+	adapter->led1.max_brightness = 15;
-+	adapter->led1.brightness_set = igc_led1_set;
-+	adapter->led1.brightness_get = igc_led1_get;
-+
-+	adapter->led2.name	     = "igc_led2";
-+	adapter->led2.max_brightness = 15;
-+	adapter->led2.brightness_set = igc_led2_set;
-+	adapter->led2.brightness_get = igc_led2_get;
-+
-+	/* Register leds */
-+	led_classdev_register(&adapter->pdev->dev, &adapter->led0);
-+	led_classdev_register(&adapter->pdev->dev, &adapter->led1);
-+	led_classdev_register(&adapter->pdev->dev, &adapter->led2);
-+
-+	return 0;
-+}
-+
-+static void igc_led_destroy(struct igc_adapter *adapter)
-+{
-+	led_classdev_unregister(&adapter->led0);
-+	led_classdev_unregister(&adapter->led1);
-+	led_classdev_unregister(&adapter->led2);
-+}
-+
- /**
-  * igc_probe - Device Initialization Routine
-  * @pdev: PCI device information struct
-@@ -6366,6 +6494,8 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	pm_runtime_put_noidle(&pdev->dev);
- 
-+	igc_led_setup(adapter);
-+
- 	return 0;
- 
- err_register:
-@@ -6406,6 +6536,8 @@ static void igc_remove(struct pci_dev *pdev)
- 
- 	igc_ptp_stop(adapter);
- 
-+	igc_led_destroy(adapter);
-+
- 	set_bit(__IGC_DOWN, &adapter->state);
- 
- 	del_timer_sync(&adapter->watchdog_timer);
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 828c3501c448..f6247b00c4e3 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -10,6 +10,8 @@
- #define IGC_EECD		0x00010  /* EEPROM/Flash Control - RW */
- #define IGC_CTRL_EXT		0x00018  /* Extended Device Control - RW */
- #define IGC_MDIC		0x00020  /* MDI Control - RW */
-+#define IGC_LEDCTL		0x00E00	 /* LED Control - RW */
-+#define IGC_MDICNFG		0x00E04  /* MDC/MDIO Configuration - RW */
- #define IGC_CONNSW		0x00034  /* Copper/Fiber switch control - RW */
- #define IGC_VET			0x00038  /* VLAN Ether Type - RW */
- #define IGC_I225_PHPM		0x00E14  /* I225 PHY Power Management */
--- 
-2.32.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBWaW5pY2l1cywgZGVhciBLdXJ0LAoKCkFtIDExLjA2LjIxIHVtIDAyOjM5IHNjaHJpZWIg
+VmluaWNpdXMgQ29zdGEgR29tZXM6Cj4gRnJvbTogS3VydCBLYW56ZW5iYWNoIDxrdXJ0QGxpbnV0
+cm9uaXguZGU+Cj4gCj4gRWFjaCBpMjI1IGhhcyB0aHJlZSBMRURzLiBFeHBvcnQgdGhlbSB2aWEg
+dGhlIExFRCBjbGFzcyBmcmFtZXdvcmsuCgpWZXJ5IG5pY2UuIEZvciB0aG9zZSBub3QgZmFtaWxp
+YXIgd2l0aCB0aGUgTEVEIGNsYXNzIGZyYW1ld29yaywgY291bGQgCnlvdSBhZGQgb25lIGV4YW1w
+bGUgaG93IHRvIGNvbnRyb2wgb25lIG9mIHRoZSBMRURzPwoKQWxzbyBpdOKAmWQgYmUgbmljZSB0
+byBkb2N1bWVudCwgaG93IHRoaXMgd2FzIHRlc3RlZC4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoK
+PiBTaWduZWQtb2ZmLWJ5OiBLdXJ0IEthbnplbmJhY2ggPGt1cnRAbGludXRyb25peC5kZT4KPiBS
+ZXZpZXdlZC1ieTogU2ViYXN0aWFuIEFuZHJ6ZWogU2lld2lvciA8YmlnZWFzeUBsaW51dHJvbml4
+LmRlPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvS2NvbmZpZyAgICAgICAg
+ICAgfCAgIDEgKwo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnYy5oICAgICAg
+ICAgfCAgMTAgKysKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfZGVmaW5l
+cy5oIHwgIDEwICsrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4u
+YyAgICB8IDEzMiArKysrKysrKysrKysrKysrKysrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pZ2MvaWdjX3JlZ3MuaCAgICB8ICAgMiArCj4gICA1IGZpbGVzIGNoYW5nZWQsIDE1NSBp
+bnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L0tjb25maWcgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9LY29uZmlnCj4gaW5kZXggODI3
+NDRhNzUwMWM3Li4zNjM5Y2Y3OWNmYWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvS2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL0tjb25m
+aWcKPiBAQCAtMzM1LDYgKzMzNSw3IEBAIGNvbmZpZyBJR0MKPiAgIAl0cmlzdGF0ZSAiSW50ZWwo
+UikgRXRoZXJuZXQgQ29udHJvbGxlciBJMjI1LUxNL0kyMjUtViBzdXBwb3J0Igo+ICAgCWRlZmF1
+bHQgbgo+ICAgCWRlcGVuZHMgb24gUENJCj4gKwlkZXBlbmRzIG9uIExFRFNfQ0xBU1MKPiAgIAlo
+ZWxwCj4gICAJICBUaGlzIGRyaXZlciBzdXBwb3J0cyBJbnRlbChSKSBFdGhlcm5ldCBDb250cm9s
+bGVyIEkyMjUtTE0vSTIyNS1WCj4gICAJICBmYW1pbHkgb2YgYWRhcHRlcnMuCj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2MuaCBiL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lnYy9pZ2MuaAo+IGluZGV4IDU3MTBlNTQyMGI0MC4uMTdiMzEwNzJiMjkx
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2MuaAo+ICsr
+KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2MuaAo+IEBAIC0xMyw2ICsxMyw3
+IEBACj4gICAjaW5jbHVkZSA8bGludXgvcHRwX2Nsb2NrX2tlcm5lbC5oPgo+ICAgI2luY2x1ZGUg
+PGxpbnV4L3RpbWVjb3VudGVyLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvbmV0X3RzdGFtcC5oPgo+
+ICsjaW5jbHVkZSA8bGludXgvbGVkcy5oPgo+ICAgCj4gICAjaW5jbHVkZSAiaWdjX2h3LmgiCj4g
+ICAKPiBAQCAtMjM5LDggKzI0MCwxNyBAQCBzdHJ1Y3QgaWdjX2FkYXB0ZXIgewo+ICAgCQlzdHJ1
+Y3QgdGltZXNwZWM2NCBzdGFydDsKPiAgIAkJc3RydWN0IHRpbWVzcGVjNjQgcGVyaW9kOwo+ICAg
+CX0gcGVyb3V0W0lHQ19OX1BFUk9VVF07Cj4gKwo+ICsJLyogTEVEcyAqLwo+ICsJc3RydWN0IG11
+dGV4IGxlZF9tdXRleDsKPiArCXN0cnVjdCBsZWRfY2xhc3NkZXYgbGVkMDsKPiArCXN0cnVjdCBs
+ZWRfY2xhc3NkZXYgbGVkMTsKPiArCXN0cnVjdCBsZWRfY2xhc3NkZXYgbGVkMjsKPiAgIH07Cj4g
+ICAKPiArI2RlZmluZSBsZWRfdG9faWdjKGxkZXYsIGxlZCkgICAgICAgICAgICAgICAgICAgICAg
+ICAgIFwKPiArCWNvbnRhaW5lcl9vZihsZGV2LCBzdHJ1Y3QgaWdjX2FkYXB0ZXIsIGxlZCkKPiAr
+Cj4gICB2b2lkIGlnY191cChzdHJ1Y3QgaWdjX2FkYXB0ZXIgKmFkYXB0ZXIpOwo+ICAgdm9pZCBp
+Z2NfZG93bihzdHJ1Y3QgaWdjX2FkYXB0ZXIgKmFkYXB0ZXIpOwo+ICAgaW50IGlnY19vcGVuKHN0
+cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pZ2MvaWdjX2RlZmluZXMuaCBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2lnYy9pZ2NfZGVmaW5lcy5oCj4gaW5kZXggN2JkZDBiMWFiZjIwLi5kZWI0ODE5ZjFlMjcgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19kZWZpbmVzLmgK
+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX2RlZmluZXMuaAo+IEBA
+IC0xNDQsNiArMTQ0LDE2IEBACj4gICAjZGVmaW5lIElHQ19DVFJMX1NEUDBfRElSCTB4MDA0MDAw
+MDAgIC8qIFNEUDAgRGF0YSBkaXJlY3Rpb24gKi8KPiAgICNkZWZpbmUgSUdDX0NUUkxfU0RQMV9E
+SVIJMHgwMDgwMDAwMCAgLyogU0RQMSBEYXRhIGRpcmVjdGlvbiAqLwo+ICAgCj4gKy8qIExFRCBD
+b250cm9sICovCj4gKyNkZWZpbmUgSUdDX0xFRENUTF9MRUQwX01PREVfU0hJRlQJMAo+ICsjZGVm
+aW5lIElHQ19MRURDVExfTEVEMF9NT0RFX01BU0sJR0VOTUFTSygzLCAwKQo+ICsjZGVmaW5lIElH
+Q19MRURDVExfTEVEMV9NT0RFX1NISUZUCTgKPiArI2RlZmluZSBJR0NfTEVEQ1RMX0xFRDFfTU9E
+RV9NQVNLCUdFTk1BU0soMTEsIDgpCj4gKyNkZWZpbmUgSUdDX0xFRENUTF9MRUQyX01PREVfU0hJ
+RlQJMTYKPiArI2RlZmluZSBJR0NfTEVEQ1RMX0xFRDJfTU9ERV9NQVNLCUdFTk1BU0soMTksIDE2
+KQo+ICsKPiArI2RlZmluZSBJR0NfQ09OTlNXX0FVVE9TRU5TRV9FTgkJMHgxCj4gKwo+ICAgLyog
+QXMgcGVyIHRoZSBFQVMgdGhlIG1heGltdW0gc3VwcG9ydGVkIHNpemUgaXMgOS41S0IgKDk3Mjgg
+Ynl0ZXMpICovCj4gICAjZGVmaW5lIE1BWF9KVU1CT19GUkFNRV9TSVpFCTB4MjYwMAo+ICAgCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19tYWluLmMKPiBpbmRleCBhYzU1OGE2
+ZGVmZTcuLmU1OGYwN2JiZjEyNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pZ2MvaWdjX21haW4uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ln
+Yy9pZ2NfbWFpbi5jCj4gQEAgLTYxMzgsNiArNjEzOCwxMzQgQEAgaW50IGlnY19zZXRfc3BkX2Rw
+bHgoc3RydWN0IGlnY19hZGFwdGVyICphZGFwdGVyLCB1MzIgc3BkLCB1OCBkcGx4KQo+ICAgCXJl
+dHVybiAtRUlOVkFMOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyB2b2lkIGlnY19zZWxlY3RfbGVkKHN0
+cnVjdCBpZ2NfYWRhcHRlciAqYWRhcHRlciwgaW50IGxlZCwKPiArCQkJICAgdTMyICptYXNrLCB1
+MzIgKnNoaWZ0KQo+ICt7Cj4gKwlzd2l0Y2ggKGxlZCkgewo+ICsJY2FzZSAwOgo+ICsJCSptYXNr
+ICA9IElHQ19MRURDVExfTEVEMF9NT0RFX01BU0s7Cj4gKwkJKnNoaWZ0ID0gSUdDX0xFRENUTF9M
+RUQwX01PREVfU0hJRlQ7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIDE6Cj4gKwkJKm1hc2sgID0gSUdD
+X0xFRENUTF9MRUQxX01PREVfTUFTSzsKPiArCQkqc2hpZnQgPSBJR0NfTEVEQ1RMX0xFRDFfTU9E
+RV9TSElGVDsKPiArCQlicmVhazsKPiArCWNhc2UgMjoKPiArCQkqbWFzayAgPSBJR0NfTEVEQ1RM
+X0xFRDJfTU9ERV9NQVNLOwo+ICsJCSpzaGlmdCA9IElHQ19MRURDVExfTEVEMl9NT0RFX1NISUZU
+Owo+ICsJCWJyZWFrOwo+ICsJZGVmYXVsdDoKPiArCQkqbWFzayA9ICpzaGlmdCA9IDA7Cj4gKwkJ
+ZGV2X2VycigmYWRhcHRlci0+cGRldi0+ZGV2LCAiVW5rbm93biBsZWQgJWQgc2VsZWN0ZWQhIiwg
+bGVkKTsKPiArCX0KPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaWdjX2xlZF9zZXQoc3RydWN0IGln
+Y19hZGFwdGVyICphZGFwdGVyLCBpbnQgbGVkLCB1MTYgYnJpZ2h0bmVzcykKPiArewo+ICsJc3Ry
+dWN0IGlnY19odyAqaHcgPSAmYWRhcHRlci0+aHc7Cj4gKwl1MzIgc2hpZnQsIG1hc2ssIGxlZGN0
+bDsKPiArCj4gKwlpZ2Nfc2VsZWN0X2xlZChhZGFwdGVyLCBsZWQsICZtYXNrLCAmc2hpZnQpOwo+
+ICsKPiArCW11dGV4X2xvY2soJmFkYXB0ZXItPmxlZF9tdXRleCk7Cj4gKwlsZWRjdGwgPSByZDMy
+KElHQ19MRURDVEwpOwo+ICsJbGVkY3RsICY9IH5tYXNrOwo+ICsJbGVkY3RsIHw9IGJyaWdodG5l
+c3MgPDwgc2hpZnQ7Cj4gKwl3cjMyKElHQ19MRURDVEwsIGxlZGN0bCk7Cj4gKwltdXRleF91bmxv
+Y2soJmFkYXB0ZXItPmxlZF9tdXRleCk7Cj4gK30KPiArCj4gK3N0YXRpYyBlbnVtIGxlZF9icmln
+aHRuZXNzIGlnY19sZWRfZ2V0KHN0cnVjdCBpZ2NfYWRhcHRlciAqYWRhcHRlciwgaW50IGxlZCkK
+PiArewo+ICsJc3RydWN0IGlnY19odyAqaHcgPSAmYWRhcHRlci0+aHc7Cj4gKwl1MzIgc2hpZnQs
+IG1hc2ssIGxlZGN0bDsKPiArCj4gKwlpZ2Nfc2VsZWN0X2xlZChhZGFwdGVyLCBsZWQsICZtYXNr
+LCAmc2hpZnQpOwo+ICsKPiArCW11dGV4X2xvY2soJmFkYXB0ZXItPmxlZF9tdXRleCk7Cj4gKwls
+ZWRjdGwgPSByZDMyKElHQ19MRURDVEwpOwo+ICsJbXV0ZXhfdW5sb2NrKCZhZGFwdGVyLT5sZWRf
+bXV0ZXgpOwo+ICsKPiArCXJldHVybiAobGVkY3RsICYgbWFzaykgPj4gc2hpZnQ7Cj4gK30KPiAr
+Cj4gK3N0YXRpYyB2b2lkIGlnY19sZWQwX3NldChzdHJ1Y3QgbGVkX2NsYXNzZGV2ICpsZGV2LCBl
+bnVtIGxlZF9icmlnaHRuZXNzIGIpCj4gK3sKPiArCXN0cnVjdCBpZ2NfYWRhcHRlciAqYWRhcHRl
+ciA9IGxlZF90b19pZ2MobGRldiwgbGVkMCk7Cj4gKwo+ICsJaWdjX2xlZF9zZXQoYWRhcHRlciwg
+MCwgYik7Cj4gK30KPiArCj4gK3N0YXRpYyBlbnVtIGxlZF9icmlnaHRuZXNzIGlnY19sZWQwX2dl
+dChzdHJ1Y3QgbGVkX2NsYXNzZGV2ICpsZGV2KQo+ICt7Cj4gKwlzdHJ1Y3QgaWdjX2FkYXB0ZXIg
+KmFkYXB0ZXIgPSBsZWRfdG9faWdjKGxkZXYsIGxlZDApOwo+ICsKPiArCXJldHVybiBpZ2NfbGVk
+X2dldChhZGFwdGVyLCAwKTsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaWdjX2xlZDFfc2V0KHN0
+cnVjdCBsZWRfY2xhc3NkZXYgKmxkZXYsIGVudW0gbGVkX2JyaWdodG5lc3MgYikKPiArewo+ICsJ
+c3RydWN0IGlnY19hZGFwdGVyICphZGFwdGVyID0gbGVkX3RvX2lnYyhsZGV2LCBsZWQxKTsKPiAr
+Cj4gKwlpZ2NfbGVkX3NldChhZGFwdGVyLCAxLCBiKTsKPiArfQo+ICsKPiArc3RhdGljIGVudW0g
+bGVkX2JyaWdodG5lc3MgaWdjX2xlZDFfZ2V0KHN0cnVjdCBsZWRfY2xhc3NkZXYgKmxkZXYpCj4g
+K3sKPiArCXN0cnVjdCBpZ2NfYWRhcHRlciAqYWRhcHRlciA9IGxlZF90b19pZ2MobGRldiwgbGVk
+MSk7Cj4gKwo+ICsJcmV0dXJuIGlnY19sZWRfZ2V0KGFkYXB0ZXIsIDEpOwo+ICt9Cj4gKwo+ICtz
+dGF0aWMgdm9pZCBpZ2NfbGVkMl9zZXQoc3RydWN0IGxlZF9jbGFzc2RldiAqbGRldiwgZW51bSBs
+ZWRfYnJpZ2h0bmVzcyBiKQo+ICt7Cj4gKwlzdHJ1Y3QgaWdjX2FkYXB0ZXIgKmFkYXB0ZXIgPSBs
+ZWRfdG9faWdjKGxkZXYsIGxlZDIpOwo+ICsKPiArCWlnY19sZWRfc2V0KGFkYXB0ZXIsIDIsIGIp
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgZW51bSBsZWRfYnJpZ2h0bmVzcyBpZ2NfbGVkMl9nZXQoc3Ry
+dWN0IGxlZF9jbGFzc2RldiAqbGRldikKPiArewo+ICsJc3RydWN0IGlnY19hZGFwdGVyICphZGFw
+dGVyID0gbGVkX3RvX2lnYyhsZGV2LCBsZWQyKTsKPiArCj4gKwlyZXR1cm4gaWdjX2xlZF9nZXQo
+YWRhcHRlciwgMik7Cj4gK30KPiArCj4gK3N0YXRpYyBpbnQgaWdjX2xlZF9zZXR1cChzdHJ1Y3Qg
+aWdjX2FkYXB0ZXIgKmFkYXB0ZXIpCj4gK3sKPiArCS8qIFNldHVwICovCj4gKwltdXRleF9pbml0
+KCZhZGFwdGVyLT5sZWRfbXV0ZXgpOwo+ICsKPiArCWFkYXB0ZXItPmxlZDAubmFtZQkgICAgID0g
+ImlnY19sZWQwIjsKPiArCWFkYXB0ZXItPmxlZDAubWF4X2JyaWdodG5lc3MgPSAxNTsKPiArCWFk
+YXB0ZXItPmxlZDAuYnJpZ2h0bmVzc19zZXQgPSBpZ2NfbGVkMF9zZXQ7Cj4gKwlhZGFwdGVyLT5s
+ZWQwLmJyaWdodG5lc3NfZ2V0ID0gaWdjX2xlZDBfZ2V0Owo+ICsKPiArCWFkYXB0ZXItPmxlZDEu
+bmFtZQkgICAgID0gImlnY19sZWQxIjsKPiArCWFkYXB0ZXItPmxlZDEubWF4X2JyaWdodG5lc3Mg
+PSAxNTsKPiArCWFkYXB0ZXItPmxlZDEuYnJpZ2h0bmVzc19zZXQgPSBpZ2NfbGVkMV9zZXQ7Cj4g
+KwlhZGFwdGVyLT5sZWQxLmJyaWdodG5lc3NfZ2V0ID0gaWdjX2xlZDFfZ2V0Owo+ICsKPiArCWFk
+YXB0ZXItPmxlZDIubmFtZQkgICAgID0gImlnY19sZWQyIjsKPiArCWFkYXB0ZXItPmxlZDIubWF4
+X2JyaWdodG5lc3MgPSAxNTsKPiArCWFkYXB0ZXItPmxlZDIuYnJpZ2h0bmVzc19zZXQgPSBpZ2Nf
+bGVkMl9zZXQ7Cj4gKwlhZGFwdGVyLT5sZWQyLmJyaWdodG5lc3NfZ2V0ID0gaWdjX2xlZDJfZ2V0
+Owo+ICsKPiArCS8qIFJlZ2lzdGVyIGxlZHMgKi8KPiArCWxlZF9jbGFzc2Rldl9yZWdpc3Rlcigm
+YWRhcHRlci0+cGRldi0+ZGV2LCAmYWRhcHRlci0+bGVkMCk7Cj4gKwlsZWRfY2xhc3NkZXZfcmVn
+aXN0ZXIoJmFkYXB0ZXItPnBkZXYtPmRldiwgJmFkYXB0ZXItPmxlZDEpOwo+ICsJbGVkX2NsYXNz
+ZGV2X3JlZ2lzdGVyKCZhZGFwdGVyLT5wZGV2LT5kZXYsICZhZGFwdGVyLT5sZWQyKTsKPiArCj4g
+KwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgaWdjX2xlZF9kZXN0cm95KHN0cnVj
+dCBpZ2NfYWRhcHRlciAqYWRhcHRlcikKPiArewo+ICsJbGVkX2NsYXNzZGV2X3VucmVnaXN0ZXIo
+JmFkYXB0ZXItPmxlZDApOwo+ICsJbGVkX2NsYXNzZGV2X3VucmVnaXN0ZXIoJmFkYXB0ZXItPmxl
+ZDEpOwo+ICsJbGVkX2NsYXNzZGV2X3VucmVnaXN0ZXIoJmFkYXB0ZXItPmxlZDIpOwo+ICt9Cj4g
+Kwo+ICAgLyoqCj4gICAgKiBpZ2NfcHJvYmUgLSBEZXZpY2UgSW5pdGlhbGl6YXRpb24gUm91dGlu
+ZQo+ICAgICogQHBkZXY6IFBDSSBkZXZpY2UgaW5mb3JtYXRpb24gc3RydWN0Cj4gQEAgLTYzNjYs
+NiArNjQ5NCw4IEBAIHN0YXRpYyBpbnQgaWdjX3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LAo+
+ICAgCj4gICAJcG1fcnVudGltZV9wdXRfbm9pZGxlKCZwZGV2LT5kZXYpOwo+ICAgCj4gKwlpZ2Nf
+bGVkX3NldHVwKGFkYXB0ZXIpOwo+ICsKPiAgIAlyZXR1cm4gMDsKPiAgIAo+ICAgZXJyX3JlZ2lz
+dGVyOgo+IEBAIC02NDA2LDYgKzY1MzYsOCBAQCBzdGF0aWMgdm9pZCBpZ2NfcmVtb3ZlKHN0cnVj
+dCBwY2lfZGV2ICpwZGV2KQo+ICAgCj4gICAJaWdjX3B0cF9zdG9wKGFkYXB0ZXIpOwo+ICAgCj4g
+KwlpZ2NfbGVkX2Rlc3Ryb3koYWRhcHRlcik7Cj4gKwo+ICAgCXNldF9iaXQoX19JR0NfRE9XTiwg
+JmFkYXB0ZXItPnN0YXRlKTsKPiAgIAo+ICAgCWRlbF90aW1lcl9zeW5jKCZhZGFwdGVyLT53YXRj
+aGRvZ190aW1lcik7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ln
+Yy9pZ2NfcmVncy5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19yZWdzLmgK
+PiBpbmRleCA4MjhjMzUwMWM0NDguLmY2MjQ3YjAwYzRlMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX3JlZ3MuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lnYy9pZ2NfcmVncy5oCj4gQEAgLTEwLDYgKzEwLDggQEAKPiAgICNkZWZp
+bmUgSUdDX0VFQ0QJCTB4MDAwMTAgIC8qIEVFUFJPTS9GbGFzaCBDb250cm9sIC0gUlcgKi8KPiAg
+ICNkZWZpbmUgSUdDX0NUUkxfRVhUCQkweDAwMDE4ICAvKiBFeHRlbmRlZCBEZXZpY2UgQ29udHJv
+bCAtIFJXICovCj4gICAjZGVmaW5lIElHQ19NRElDCQkweDAwMDIwICAvKiBNREkgQ29udHJvbCAt
+IFJXICovCj4gKyNkZWZpbmUgSUdDX0xFRENUTAkJMHgwMEUwMAkgLyogTEVEIENvbnRyb2wgLSBS
+VyAqLwo+ICsjZGVmaW5lIElHQ19NRElDTkZHCQkweDAwRTA0ICAvKiBNREMvTURJTyBDb25maWd1
+cmF0aW9uIC0gUlcgKi8KPiAgICNkZWZpbmUgSUdDX0NPTk5TVwkJMHgwMDAzNCAgLyogQ29wcGVy
+L0ZpYmVyIHN3aXRjaCBjb250cm9sIC0gUlcgKi8KPiAgICNkZWZpbmUgSUdDX1ZFVAkJCTB4MDAw
+MzggIC8qIFZMQU4gRXRoZXIgVHlwZSAtIFJXICovCj4gICAjZGVmaW5lIElHQ19JMjI1X1BIUE0J
+CTB4MDBFMTQgIC8qIEkyMjUgUEhZIFBvd2VyIE1hbmFnZW1lbnQgKi8KPiAKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
+bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
