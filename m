@@ -2,59 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 748C23A38F2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Jun 2021 02:40:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 910BB3A38F4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Jun 2021 02:40:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BE4B60AB5;
-	Fri, 11 Jun 2021 00:40:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34F2160AB8;
+	Fri, 11 Jun 2021 00:40:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YYXz8W7gEVVc; Fri, 11 Jun 2021 00:40:32 +0000 (UTC)
+	with ESMTP id S3kenOnY0Igv; Fri, 11 Jun 2021 00:40:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F41F60AAA;
-	Fri, 11 Jun 2021 00:40:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0CF5160AAA;
+	Fri, 11 Jun 2021 00:40:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 057101C1178
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 25F131C1178
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6C46A830B8
+ by smtp1.osuosl.org (Postfix) with ESMTP id D62F482FCB
  for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6w3YCaQqplb6 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Jun 2021 00:40:16 +0000 (UTC)
+ with ESMTP id s6apWQ-jebMG for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Jun 2021 00:40:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B573383189
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EB528831F1
  for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Jun 2021 00:40:16 +0000 (UTC)
-IronPort-SDR: 9k0Ct1tBuQim5SZyQHwSSXm63JcHV+qDjxGz3/+N2tah7LV4xV34DNBHvUczQavBmhd23c9hny
- Hny2izEeSgHw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10011"; a="205397143"
-X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="205397143"
+IronPort-SDR: ZP7HYm8iDfc5p6uLxbyyWRKhq5i2ng9n3wgDuPl/zznzhKKboknATiJJwVG1Zr5mFf+mq+W+Dw
+ ecnXHZdiyelg==
+X-IronPort-AV: E=McAfee;i="6200,9189,10011"; a="205397145"
+X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="205397145"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  10 Jun 2021 17:40:16 -0700
-IronPort-SDR: 6+i0KuQ26yirgK5elB9ZjB//YokrXcjfwVZ63BXNysj8AhknxxuGhbIC1T1fRzsUGKvsN85t/X
- sRuJplZI9GBA==
-X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="448932918"
+IronPort-SDR: 0Z7BHUuknDerMfyfy77TTJ7Q6tuaDmq6u473iynnb5pv2v34hL0KukLyyuoLCGGfg8lXAf4sTs
+ OFYEwe1/rDoA==
+X-IronPort-AV: E=Sophos;i="5.83,264,1616482800"; d="scan'208";a="448932920"
 Received: from caclark-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.212.156.65])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jun 2021 17:40:15 -0700
+ 10 Jun 2021 17:40:16 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 10 Jun 2021 17:39:23 -0700
-Message-Id: <20210611003924.492853-5-vinicius.gomes@intel.com>
+Date: Thu, 10 Jun 2021 17:39:24 -0700
+Message-Id: <20210611003924.492853-6-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210611003924.492853-1-vinicius.gomes@intel.com>
 References: <20210611003924.492853-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v1 4/5] igc: Make flex filter
- more flexible
+Subject: [Intel-wired-lan] [PATCH next-queue v1 5/5] igc: Export LEDs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,117 +75,251 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Kurt Kanzenbach <kurt@linutronix.de>
 
-Currently flex filters are only used for filters containing user data.
-However, it makes sense to utilize them also for filters having
-multiple conditions, because that's not supported by the driver at the
-moment. Add it.
+Each i225 has three LEDs. Export them via the LED class framework.
 
 Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 Reviewed-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  1 +
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 27 ++++++++++++--------
- drivers/net/ethernet/intel/igc/igc_main.c    | 14 ++++------
- 3 files changed, 22 insertions(+), 20 deletions(-)
+ drivers/net/ethernet/intel/Kconfig           |   1 +
+ drivers/net/ethernet/intel/igc/igc.h         |  10 ++
+ drivers/net/ethernet/intel/igc/igc_defines.h |  10 ++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 132 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |   2 +
+ 5 files changed, 155 insertions(+)
 
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 82744a7501c7..3639cf79cfae 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -335,6 +335,7 @@ config IGC
+ 	tristate "Intel(R) Ethernet Controller I225-LM/I225-V support"
+ 	default n
+ 	depends on PCI
++	depends on LEDS_CLASS
+ 	help
+ 	  This driver supports Intel(R) Ethernet Controller I225-LM/I225-V
+ 	  family of adapters.
 diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 54a1779fa53a..5710e5420b40 100644
+index 5710e5420b40..17b31072b291 100644
 --- a/drivers/net/ethernet/intel/igc/igc.h
 +++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -507,6 +507,7 @@ struct igc_nfc_rule {
- 	struct igc_nfc_filter filter;
- 	u32 location;
- 	u16 action;
-+	bool flex;
+@@ -13,6 +13,7 @@
+ #include <linux/ptp_clock_kernel.h>
+ #include <linux/timecounter.h>
+ #include <linux/net_tstamp.h>
++#include <linux/leds.h>
+ 
+ #include "igc_hw.h"
+ 
+@@ -239,8 +240,17 @@ struct igc_adapter {
+ 		struct timespec64 start;
+ 		struct timespec64 period;
+ 	} perout[IGC_N_PEROUT];
++
++	/* LEDs */
++	struct mutex led_mutex;
++	struct led_classdev led0;
++	struct led_classdev led1;
++	struct led_classdev led2;
  };
  
- /* IGC supports a total of 32 NFC rules: 16 MAC address based, 8 VLAN priority
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 5a7b27b2a95c..d3e84416248e 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1222,19 +1222,29 @@ static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
- 				fsp->h_u.ether_spec.h_dest);
- 	}
- 
-+	/* VLAN etype matching */
-+	if ((fsp->flow_type & FLOW_EXT) && fsp->h_ext.vlan_etype) {
-+		rule->filter.vlan_etype = fsp->h_ext.vlan_etype;
-+		rule->filter.match_flags |= IGC_FILTER_FLAG_VLAN_ETYPE;
-+	}
++#define led_to_igc(ldev, led)                          \
++	container_of(ldev, struct igc_adapter, led)
 +
- 	/* Check for user defined data */
- 	if ((fsp->flow_type & FLOW_EXT) &&
- 	    (fsp->h_ext.data[0] || fsp->h_ext.data[1])) {
- 		rule->filter.match_flags |= IGC_FILTER_FLAG_USER_DATA;
- 		memcpy(rule->filter.user_data, fsp->h_ext.data, sizeof(fsp->h_ext.data));
- 		memcpy(rule->filter.user_mask, fsp->m_ext.data, sizeof(fsp->m_ext.data));
--
--		/* VLAN etype matching is only valid using flex filter */
--		if ((fsp->flow_type & FLOW_EXT) && fsp->h_ext.vlan_etype) {
--			rule->filter.vlan_etype = fsp->h_ext.vlan_etype;
--			rule->filter.match_flags |= IGC_FILTER_FLAG_VLAN_ETYPE;
--		}
- 	}
+ void igc_up(struct igc_adapter *adapter);
+ void igc_down(struct igc_adapter *adapter);
+ int igc_open(struct net_device *netdev);
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 7bdd0b1abf20..deb4819f1e27 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -144,6 +144,16 @@
+ #define IGC_CTRL_SDP0_DIR	0x00400000  /* SDP0 Data direction */
+ #define IGC_CTRL_SDP1_DIR	0x00800000  /* SDP1 Data direction */
+ 
++/* LED Control */
++#define IGC_LEDCTL_LED0_MODE_SHIFT	0
++#define IGC_LEDCTL_LED0_MODE_MASK	GENMASK(3, 0)
++#define IGC_LEDCTL_LED1_MODE_SHIFT	8
++#define IGC_LEDCTL_LED1_MODE_MASK	GENMASK(11, 8)
++#define IGC_LEDCTL_LED2_MODE_SHIFT	16
++#define IGC_LEDCTL_LED2_MODE_MASK	GENMASK(19, 16)
 +
-+	/* When multiple filter options or user data or vlan etype is set, use a
-+	 * flex filter.
-+	 */
-+	if ((rule->filter.match_flags & IGC_FILTER_FLAG_USER_DATA) ||
-+	    (rule->filter.match_flags & IGC_FILTER_FLAG_VLAN_ETYPE) ||
-+	    (rule->filter.match_flags & (rule->filter.match_flags - 1)))
-+		rule->flex = true;
-+	else
-+		rule->flex = false;
- }
++#define IGC_CONNSW_AUTOSENSE_EN		0x1
++
+ /* As per the EAS the maximum supported size is 9.5KB (9728 bytes) */
+ #define MAX_JUMBO_FRAME_SIZE	0x2600
  
- /**
-@@ -1264,11 +1274,6 @@ static int igc_ethtool_check_nfc_rule(struct igc_adapter *adapter,
- 		return -EINVAL;
- 	}
- 
--	if (flags & (flags - 1)) {
--		netdev_dbg(dev, "Rule with multiple matches not supported\n");
--		return -EOPNOTSUPP;
--	}
--
- 	list_for_each_entry(tmp, &adapter->nfc_rule_list, list) {
- 		if (!memcmp(&rule->filter, &tmp->filter,
- 			    sizeof(rule->filter)) &&
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 9abcecc57534..ac558a6defe7 100644
+index ac558a6defe7..e58f07bbf127 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -3391,14 +3391,8 @@ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
- {
- 	int err;
+@@ -6138,6 +6138,134 @@ int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
+ 	return -EINVAL;
+ }
  
--	/* Check for user data first: When user data is set, the only option is
--	 * to use a flex filter. When more options are set (ethertype, vlan tci,
--	 * ...) construct a flex filter matching all of that.
--	 */
--	if (rule->filter.match_flags & IGC_FILTER_FLAG_USER_DATA) {
--		err = igc_add_flex_filter(adapter, rule);
--		if (err)
--			return err;
-+	if (rule->flex) {
-+		return igc_add_flex_filter(adapter, rule);
- 	}
- 
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE) {
-@@ -3437,8 +3431,10 @@ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
- static void igc_disable_nfc_rule(struct igc_adapter *adapter,
- 				 const struct igc_nfc_rule *rule)
- {
--	if (rule->filter.match_flags & IGC_FILTER_FLAG_USER_DATA)
-+	if (rule->flex) {
- 		igc_del_flex_filter(adapter, rule->filter.flex_index);
-+		return;
++static void igc_select_led(struct igc_adapter *adapter, int led,
++			   u32 *mask, u32 *shift)
++{
++	switch (led) {
++	case 0:
++		*mask  = IGC_LEDCTL_LED0_MODE_MASK;
++		*shift = IGC_LEDCTL_LED0_MODE_SHIFT;
++		break;
++	case 1:
++		*mask  = IGC_LEDCTL_LED1_MODE_MASK;
++		*shift = IGC_LEDCTL_LED1_MODE_SHIFT;
++		break;
++	case 2:
++		*mask  = IGC_LEDCTL_LED2_MODE_MASK;
++		*shift = IGC_LEDCTL_LED2_MODE_SHIFT;
++		break;
++	default:
++		*mask = *shift = 0;
++		dev_err(&adapter->pdev->dev, "Unknown led %d selected!", led);
 +	}
++}
++
++static void igc_led_set(struct igc_adapter *adapter, int led, u16 brightness)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 shift, mask, ledctl;
++
++	igc_select_led(adapter, led, &mask, &shift);
++
++	mutex_lock(&adapter->led_mutex);
++	ledctl = rd32(IGC_LEDCTL);
++	ledctl &= ~mask;
++	ledctl |= brightness << shift;
++	wr32(IGC_LEDCTL, ledctl);
++	mutex_unlock(&adapter->led_mutex);
++}
++
++static enum led_brightness igc_led_get(struct igc_adapter *adapter, int led)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 shift, mask, ledctl;
++
++	igc_select_led(adapter, led, &mask, &shift);
++
++	mutex_lock(&adapter->led_mutex);
++	ledctl = rd32(IGC_LEDCTL);
++	mutex_unlock(&adapter->led_mutex);
++
++	return (ledctl & mask) >> shift;
++}
++
++static void igc_led0_set(struct led_classdev *ldev, enum led_brightness b)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led0);
++
++	igc_led_set(adapter, 0, b);
++}
++
++static enum led_brightness igc_led0_get(struct led_classdev *ldev)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led0);
++
++	return igc_led_get(adapter, 0);
++}
++
++static void igc_led1_set(struct led_classdev *ldev, enum led_brightness b)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led1);
++
++	igc_led_set(adapter, 1, b);
++}
++
++static enum led_brightness igc_led1_get(struct led_classdev *ldev)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led1);
++
++	return igc_led_get(adapter, 1);
++}
++
++static void igc_led2_set(struct led_classdev *ldev, enum led_brightness b)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led2);
++
++	igc_led_set(adapter, 2, b);
++}
++
++static enum led_brightness igc_led2_get(struct led_classdev *ldev)
++{
++	struct igc_adapter *adapter = led_to_igc(ldev, led2);
++
++	return igc_led_get(adapter, 2);
++}
++
++static int igc_led_setup(struct igc_adapter *adapter)
++{
++	/* Setup */
++	mutex_init(&adapter->led_mutex);
++
++	adapter->led0.name	     = "igc_led0";
++	adapter->led0.max_brightness = 15;
++	adapter->led0.brightness_set = igc_led0_set;
++	adapter->led0.brightness_get = igc_led0_get;
++
++	adapter->led1.name	     = "igc_led1";
++	adapter->led1.max_brightness = 15;
++	adapter->led1.brightness_set = igc_led1_set;
++	adapter->led1.brightness_get = igc_led1_get;
++
++	adapter->led2.name	     = "igc_led2";
++	adapter->led2.max_brightness = 15;
++	adapter->led2.brightness_set = igc_led2_set;
++	adapter->led2.brightness_get = igc_led2_get;
++
++	/* Register leds */
++	led_classdev_register(&adapter->pdev->dev, &adapter->led0);
++	led_classdev_register(&adapter->pdev->dev, &adapter->led1);
++	led_classdev_register(&adapter->pdev->dev, &adapter->led2);
++
++	return 0;
++}
++
++static void igc_led_destroy(struct igc_adapter *adapter)
++{
++	led_classdev_unregister(&adapter->led0);
++	led_classdev_unregister(&adapter->led1);
++	led_classdev_unregister(&adapter->led2);
++}
++
+ /**
+  * igc_probe - Device Initialization Routine
+  * @pdev: PCI device information struct
+@@ -6366,6 +6494,8 @@ static int igc_probe(struct pci_dev *pdev,
  
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE)
- 		igc_del_etype_filter(adapter, rule->filter.etype);
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 
++	igc_led_setup(adapter);
++
+ 	return 0;
+ 
+ err_register:
+@@ -6406,6 +6536,8 @@ static void igc_remove(struct pci_dev *pdev)
+ 
+ 	igc_ptp_stop(adapter);
+ 
++	igc_led_destroy(adapter);
++
+ 	set_bit(__IGC_DOWN, &adapter->state);
+ 
+ 	del_timer_sync(&adapter->watchdog_timer);
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 828c3501c448..f6247b00c4e3 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -10,6 +10,8 @@
+ #define IGC_EECD		0x00010  /* EEPROM/Flash Control - RW */
+ #define IGC_CTRL_EXT		0x00018  /* Extended Device Control - RW */
+ #define IGC_MDIC		0x00020  /* MDI Control - RW */
++#define IGC_LEDCTL		0x00E00	 /* LED Control - RW */
++#define IGC_MDICNFG		0x00E04  /* MDC/MDIO Configuration - RW */
+ #define IGC_CONNSW		0x00034  /* Copper/Fiber switch control - RW */
+ #define IGC_VET			0x00038  /* VLAN Ether Type - RW */
+ #define IGC_I225_PHPM		0x00E14  /* I225 PHY Power Management */
 -- 
 2.32.0
 
