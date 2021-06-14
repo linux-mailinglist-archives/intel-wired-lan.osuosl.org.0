@@ -1,98 +1,161 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E1013A6B5D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 18:13:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EF243A6CE4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 19:15:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EEA7D60801;
-	Mon, 14 Jun 2021 16:13:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0CECB401D9;
+	Mon, 14 Jun 2021 17:15:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0m3GJQ9JoiHL; Mon, 14 Jun 2021 16:13:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o7Rwdi0zctuE; Mon, 14 Jun 2021 17:15:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD44C6064F;
-	Mon, 14 Jun 2021 16:13:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0EC5B40191;
+	Mon, 14 Jun 2021 17:15:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 67A0C1BF3EA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 331621BF3D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 17:15:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 562ED82E5F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2E2F740191
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 17:15:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zSFRAWeZXCZa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Jun 2021 16:12:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id P5SP8C0MRC6Q for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Jun 2021 17:15:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2A39182CFD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623687175;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U/Ya1k1nXvvGjrRExG8q3FmOawUUZX1h7T0TrtPnmSM=;
- b=QAngivRxe+uiRW8zx6PjhU3dbeweK0ron/E3bJcGLgONSr5JdgaAevxxo+8bjA1A2roAtb
- 7wWAHU02f8VBndohw4LWIt4NjKw/UD91TWgoiPaJvD3RdsyDax49lAXFl9pZV9heqK1PC4
- e0HtWxTplt8PXwovID2Yo6+/SQ3aHZo=
-Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
- [209.85.167.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-581-Wi6IRnXbOgOSwUuOZZ4rhg-1; Mon, 14 Jun 2021 12:12:52 -0400
-X-MC-Unique: Wi6IRnXbOgOSwUuOZZ4rhg-1
-Received: by mail-lf1-f71.google.com with SMTP id
- bu14-20020a056512168eb029031226594940so416314lfb.15
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 09:12:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U/Ya1k1nXvvGjrRExG8q3FmOawUUZX1h7T0TrtPnmSM=;
- b=GwEn6uVoMoNXeYEeoeDj0huzlileir3UWjYUbrgiXFIpEbnrK00A+kHVKUAo9Scjac
- jV6Hc5vQ4qsmLFHdCTKynoVF7V7ikOrhq+1i093Og+2cBjFek0vJIGtn3LVdBmpBKQn8
- PSrOIG1u0hOjXKXXO9SoHLPpO04BaXWFIjP8RnzIhaEHWGVaQCN0eV5Pceu4o1Vrchgd
- Sw5N6gasWRG5UJN9BpNQsiN1g/ciSdklz+E5wHKu4fYPt6F1lzLKi54GNsOaDvYtvx7L
- 6sxcZzrIEq+EN4dOEK3CPw5Vfk/0cPVu6XmWyEBHjqinkpQq+IBBngpNa++TKKliRfoi
- S91g==
-X-Gm-Message-State: AOAM533VwocaeTW4ADgv4NuZ3GmJp9gsmGwEXI/OJlxC0JYeKZZsmwcU
- g88epmQdLidf+T05CEFQFX7Q3K/ljx8UJUYX42aSbLNVj+BnHau/XkabIzPHICjjkMxl0EzMxiJ
- ixLuCTxbD0oBMkIL7acoksHZv3VBsQbR+5REjzWBzbKqr1w==
-X-Received: by 2002:a05:6512:2101:: with SMTP id
- q1mr8877574lfr.647.1623687170948; 
- Mon, 14 Jun 2021 09:12:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwAbGhpPvqkcHhSsuAdQ1FpWwNWtaQWb83YFBtFmuq7Xr7R/t1YH4+Rj9W+tz1cElNmEXnhxmp8Ko9KgVy5pjU=
-X-Received: by 2002:a05:6512:2101:: with SMTP id
- q1mr8877529lfr.647.1623687170605; 
- Mon, 14 Jun 2021 09:12:50 -0700 (PDT)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9B7D4400C3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 17:15:46 +0000 (UTC)
+IronPort-SDR: ZAkTohuhKZK6wxMkXC6jCjCdmNKXBuA+iwtkE55lP5csldmeR+AA7pekmnBt6PNNj2u0ViPIX3
+ p7qRNroYd7Vw==
+X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="227303924"
+X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="227303924"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2021 10:15:23 -0700
+IronPort-SDR: 0+dZfhMi6+Bzl/xg0SABfUysE3GGTvd0z0fg/VXKbouuhxqv9MX/M7UaK0NnZtRD8N83QIBEYE
+ y5NdN0SHkOCw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="449961518"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga008.jf.intel.com with ESMTP; 14 Jun 2021 10:15:23 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.4; Mon, 14 Jun 2021 10:15:22 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
+ via Frontend Transport; Mon, 14 Jun 2021 10:15:22 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.107)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.4; Mon, 14 Jun 2021 10:15:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fXCNci3L1MMHRvBXfQbse70AsHDjPiigV7RK+LNoST00x1Yt30yL8mYLyofX2CKYm89P05amTZbn2+Tv6bHyVwiDYX0H23/lJclfIMzR1kECl6j239pTctqxUUX831YeaqY0YgwsMh4RmxtRhLeqqWClyEHCiXlii9aOcgoWbTaszBMlw9Po7BKYhlEZ2zij8swJ6XNCDZ8Ipy+LDIuQZBGzkoScw+d+bo1nnfYRRdxHyxW2KV6Z0YPhD38ckTFHJK8fk4PwTPlVflvqw4D76o/Kyi7I+EkRd/hqucGsw1qQe0qnDrAzM6m1zIfBifi/WvOZ4drXS2md0SAhsEQwYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3xjtleI2fCZinGzQoPVqzu0k9N+MdC6v26N/RB3nXSM=;
+ b=Lq4WobH7EDO2yZTG2dIm0SrscKADiMNF02sj4TNDpXvE8JjlDnpkjrBVerLo7QdFJGM2K96uBXBZZV34wgsgp3CScRmTneUGxnIFZ9NNt0fLKwn4sYQQUN58KiA1ROvPiL3uetoImPMsiOFGQBgwWj9O1wMIEY5vTW3jfbp1G67va9FmrYs8Z8TO0FDRVH0/BqZdG4JoMVsSQazAMCwS+Ef8Q6V895pUVqN7w56+I8yxwrVAVa6EWPmvR5wotyh3dSElR6hOoF4Buaa2GbF/4xSJMBNCwNA9CH4PG/3Ngp+52d6luIlW0wEUBCnvoqIV3rDE6jZCYelQJpOYtqHHWg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3xjtleI2fCZinGzQoPVqzu0k9N+MdC6v26N/RB3nXSM=;
+ b=cIEeZ1Nc8D9qFHYLdD6+7bJIIH9i5bhGF445k6PpVZwpzJjar6mlT7dLiB27dvJeplx81Ru+Ta05wKsEWqVN7TCm/Mywz7DnKx8k6ky+rv8EjVkTg+pIpMZ4Elo9KrBcsSbi4CdYMoys7VsowRji6uUVzp67enbpOf7VMZU9vSk=
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SA2PR11MB4843.namprd11.prod.outlook.com (2603:10b6:806:fb::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4219.22; Mon, 14 Jun
+ 2021 17:15:20 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::15ab:e6bc:fd6e:2a1]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::15ab:e6bc:fd6e:2a1%5]) with mapi id 15.20.4219.025; Mon, 14 Jun 2021
+ 17:15:20 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH] ice: add support for auxiliary input/output pins
+Thread-Index: AQHXXW5TVfrEsQVurUCCJqU5k/aeeKsTx5qA
+Date: Mon, 14 Jun 2021 17:15:20 +0000
+Message-ID: <81762743e833402ca3c959050862cbdbacf47e86.camel@intel.com>
+References: <20210609202937.1135836-1-jacob.e.keller@intel.com>
+In-Reply-To: <20210609202937.1135836-1-jacob.e.keller@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [134.134.136.219]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 719798a8-1a24-4634-f34a-08d92f57fd4c
+x-ms-traffictypediagnostic: SA2PR11MB4843:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SA2PR11MB484379153E3D15637D6E4227C6319@SA2PR11MB4843.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 1hqBNivu37gPtpG5HGGHqe90CqySfZBkpCnAf6Ec2Z+OTQL2r5LEb2ok1I6386fzUr/HWb1MbxedB7/PvyWEQeDJpWWAvAy8TLjYjfPWKH+2gVucuAlzpB5sqtjtFeDxNVvDXqd9Gf5lTDF1hCWJAGJO9hmCoxoHSeJ7imRXRivIiI26Z47Gt3igMOHNySLgTMlLQYp+tsYgRClbZEVaLTkCmP9C0mD1UILdZteRU4wqEcHyvLIsdoadvY5CXW1MQZdEdG9djg7Cwbvhwe+4FpHIk8s1nPwy1kwayc89d8/wHEh3lx48nAi5iWOYIi2Y0COTSBUGwDBeTHGQycvIhuS45PbgwTFJ84exQ68xwdaR/KtOXuXX/5CBx8ua3YGT/PQBDrEdZp6IdbI2S9nB/aMNaSq2uHA5MAid7Nerkz8Eog8WvY/aWGNfnG1fV92SSaSkCdUVcOXUbWIryTml2UF5HHnjPIYfT4wfiwhVltyoePudgGwpj9FXrqyrZPeeVvOYeIHf6/Ps46hXHjwzjKPUjcx84q4wLLpumnkEA56f0tJNuuIPd8JjjColRYWrETrSs/S60L3BnoZH/iMMzVqmn3c8VadjSr+J6N8MNLk=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(346002)(396003)(366004)(136003)(39860400002)(71200400001)(6512007)(6506007)(2906002)(8936002)(107886003)(478600001)(83380400001)(4326008)(5660300002)(36756003)(8676002)(110136005)(122000001)(66476007)(66446008)(66946007)(6486002)(76116006)(64756008)(186003)(66556008)(86362001)(2616005)(26005)(91956017)(316002)(38100700002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cyt0U2RtejZKWlJCdVB2ZzlEaVJDVnUrNmdzeUVSVXVzL1ArVnU3dUxDbXFz?=
+ =?utf-8?B?ejdBaCtTSjArTHJSeWpKdFpxWkFBQ3JSa3dISXV5RHNRMGRQTWxYNWkzOFVD?=
+ =?utf-8?B?NjhjRmdMR2hPd09CYjRWcjRDSGFlc0FOYkk1L05uTzRyVDA1SGh6bC9BNG9I?=
+ =?utf-8?B?NHBpNUd4ODFvc1JpcFFaVjR3MmU2TUpnMUV2RGIyWklqamJ4YTRBYXlUc1VZ?=
+ =?utf-8?B?Um1aMllMN0x5THUwVUxTQ2JtY1g2dzhjRWZBdDc4aXBTdHB1cVhXNWRyMlBy?=
+ =?utf-8?B?L2VLcitIcE9CaFlmT21KeFcxYzRhY2V4bGI1bkozVGpMSGhjSUxXNml3aXZW?=
+ =?utf-8?B?ZDNqdEcxK0lKMEJoMUNZeVM1bXhPYXMrOU5jOVNVSzdrUWwwQlo3WWpBVWNs?=
+ =?utf-8?B?V1A4R0srTVovMFZ2WDZjQ2syLzdkZ2VDcjRIdGZVQUE0WFlJNjdxbGN2azFC?=
+ =?utf-8?B?Y0YzbUxBeXltWjhMNUd0TUtTZjJvSXI0djRpZmNjUHNyQlEyci93R29vc2xN?=
+ =?utf-8?B?dmZnbWRINWJvZ2NVb2ovSnBkMUFmOXpYcXpNb1dKenZ0NFlqM2UyU29EZUR4?=
+ =?utf-8?B?UWJrY2ZLWENiTE1uZ2hKTlV0V3B1UDJZMGNObGpjSXhKdFpPUm9xQVEvYmZp?=
+ =?utf-8?B?VGNXZkphZXB6YmNRUU14Q1B6S0dnOHdLaGM3MG9QRzR6SWtkZ0ZCLzUxc0x4?=
+ =?utf-8?B?VXVHOTNFbGhNMHFRUk9aUGRUWmRhd1ZocWNpWWhQWnFmTnNOR1VSVHRBZHdQ?=
+ =?utf-8?B?VGRUeWFBN1hYVVE3SUlQWEpXWkFLVXFJd20xeFJ5SHZaaFlvaFNqU2NUa3Fu?=
+ =?utf-8?B?RjMxMEkzaVNmakw2YWI1aWc1ZHhqZzFwejZYeDArSThrTGxZaW5LNkpraDRo?=
+ =?utf-8?B?SVRscDJERC80TTB6bkwvMnhqTHN4QjZ0TWhwTjc0b0ZCMEI1R1JxK0QxTmtG?=
+ =?utf-8?B?ellFZW9PeTJhckNoSGxrZENTTUpKWjVEYitlSFdrbHQ0WjRpa2piZTEvbW1J?=
+ =?utf-8?B?YUdlVE9LT1g2UjVuZXVHNTFJWmk1cjhBeHBVbzhQdU5icGowVkFPaUNaOFdJ?=
+ =?utf-8?B?NFRQTjJMb3k0SlVEYTRqcnJxZlMwUFlsM2lweHZZVjZKMnlXMHpPY3VQL0oy?=
+ =?utf-8?B?VDRoMjd1WFVlTnQ4OUZhbW1aTzAxUlNSRTJhd0pCaytzQ3ZaSDJ4SFdCU3BE?=
+ =?utf-8?B?bE9MT1JKWDVsVzdFQi9jR2hUeHV2eDllSWVDeVpGUTk5U3VWZ2pVNmswWUdM?=
+ =?utf-8?B?SjJzRU5OWEVHN1JqWDRkOEgzL1hZQzdhbG16ekFvbFIxbjRvRFpBQVZqV25p?=
+ =?utf-8?B?OW9EZEgrTWJOaFJxcFhLcVlCK3JiWS9xOG8rNzYvSDNPQzkrZ29SQnZDNVRV?=
+ =?utf-8?B?V3h1OHZTTzdvQ0ZHN29mWE02Nlh4WXVLOHE5a2x2aFpreEUwZWFmZi9HUlUy?=
+ =?utf-8?B?OTFLdnNJMGk2eVdHVS9iYmpnK2NCZ3ozNmVwY3VKeWZycS9vOGZLdys0aVdt?=
+ =?utf-8?B?cUhhTGJ3bU5NLzhBRUxHUEVGYmwyTmNYK085YmN5Z3hFRlI1S25IU3hkNlhr?=
+ =?utf-8?B?cHhUNjl0bnhsdzFYWm1GNktXbTdwaXZRYWdCT2o3MUd1dzMxcGlSNS8rc1lu?=
+ =?utf-8?B?clZKUG84WVZVQzJGcitxQzNqNG02emxyUlBrQ3llSVNwSk13QzBpbjRQdjRW?=
+ =?utf-8?B?TExwR2lqb3Nyd1hGWXd1WUgvQWpJb0dBTGZmOTA4VGdPTFRBMjZldDRRNEpy?=
+ =?utf-8?Q?7WCEg6WZnn7rBEkXu8HkA8s6FOaJY516Kupds0X?=
+Content-ID: <5017D7F715B40840B059C724C6185AC4@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-References: <20210504092340.00006c61@intel.com>
- <87pmxpdr32.ffs@nanos.tec.linutronix.de>
- <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
- <87im3gewlu.ffs@nanos.tec.linutronix.de>
- <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
- <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
- <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
- <87zgwo9u79.ffs@nanos.tec.linutronix.de>
- <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
- <CAFki+L=QTOu_O=1uNobVMi2s9mbcxXgSdTLADCpeBWBoPAikgQ@mail.gmail.com>
-In-Reply-To: <CAFki+L=QTOu_O=1uNobVMi2s9mbcxXgSdTLADCpeBWBoPAikgQ@mail.gmail.com>
-From: Nitesh Lal <nilal@redhat.com>
-Date: Mon, 14 Jun 2021 12:12:38 -0400
-Message-ID: <CAFki+LkJ9kj0TMz8dhGXLXdfwgYLibkMCRvKBwVVX5+F-DP37w@mail.gmail.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
- affinity hints
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 719798a8-1a24-4634-f34a-08d92f57fd4c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2021 17:15:20.6495 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: w8zSMCJSEIsPEG6IR+Xzq3i9nicgwqxoamH49H16fOzfXSyyXd4RbDmCS1nEmy+o+1xWkuuQ03uwho8LwC57s7E5UgEhTYvYbWV/4HJvXEg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4843
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH] ice: add support for auxiliary
+ input/output pins
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,166 +168,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "peterz@infradead.org" <peterz@infradead.org>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
- Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
- intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
- "frederic@kernel.org" <frederic@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
- "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
- "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
- Neil Horman <nhorman@tuxdriver.com>,
- "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- netdev@vger.kernel.org,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 7, 2021 at 1:00 PM Nitesh Lal <nilal@redhat.com> wrote:
->
-> On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
-> >
-> > The discussion about removing the side effect of irq_set_affinity_hint() of
-> > actually applying the cpumask (if not NULL) as affinity to the interrupt,
-> > unearthed a few unpleasantries:
-> >
-> >   1) The modular perf drivers rely on the current behaviour for the very
-> >      wrong reasons.
-> >
-> >   2) While none of the other drivers prevents user space from changing
-> >      the affinity, a cursorily inspection shows that there are at least
-> >      expectations in some drivers.
-> >
-> > #1 needs to be cleaned up anyway, so that's not a problem
-> >
-> > #2 might result in subtle regressions especially when irqbalanced (which
-> >    nowadays ignores the affinity hint) is disabled.
-> >
-> > Provide new interfaces:
-> >
-> >   irq_update_affinity_hint() - Only sets the affinity hint pointer
-> >   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
-> >                                the interrupt
-> >
-> > Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
-> > document it to be phased out.
-> >
-> > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> > Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
-> > ---
-> > Applies on:
-> >    git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/core
-> > ---
-> >  include/linux/interrupt.h |   41 ++++++++++++++++++++++++++++++++++++++++-
-> >  kernel/irq/manage.c       |    8 ++++----
-> >  2 files changed, 44 insertions(+), 5 deletions(-)
-> >
-> > --- a/include/linux/interrupt.h
-> > +++ b/include/linux/interrupt.h
-> > @@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned i
-> >  extern int irq_can_set_affinity(unsigned int irq);
-> >  extern int irq_select_affinity(unsigned int irq);
-> >
-> > -extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
-> > +extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> > +                                    bool setaffinity);
-> > +
-> > +/**
-> > + * irq_update_affinity_hint - Update the affinity hint
-> > + * @irq:       Interrupt to update
-> > + * @cpumask:   cpumask pointer (NULL to clear the hint)
-> > + *
-> > + * Updates the affinity hint, but does not change the affinity of the interrupt.
-> > + */
-> > +static inline int
-> > +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +       return __irq_apply_affinity_hint(irq, m, true);
-> > +}
-> > +
-> > +/**
-> > + * irq_apply_affinity_hint - Update the affinity hint and apply the provided
-> > + *                          cpumask to the interrupt
-> > + * @irq:       Interrupt to update
-> > + * @cpumask:   cpumask pointer (NULL to clear the hint)
-> > + *
-> > + * Updates the affinity hint and if @cpumask is not NULL it applies it as
-> > + * the affinity of that interrupt.
-> > + */
-> > +static inline int
-> > +irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +       return __irq_apply_affinity_hint(irq, m, true);
-> > +}
-> > +
-> > +/*
-> > + * Deprecated. Use irq_update_affinity_hint() or irq_apply_affinity_hint()
-> > + * instead.
-> > + */
-> > +static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +{
-> > +       return irq_apply_affinity_hint(irq, cpumask);
->
-> Another change required here, the above should be 'm' instead of 'cpumask'.
+On Wed, 2021-06-09 at 13:29 -0700, Jacob Keller wrote:
+> From: Maciej Machnikowski <maciej.machnikowski@intel.com>
+> 
+> The E810 device supports programmable pins for enabling both input
+> and
+> output events related to the PTP hardware clock. This includes both
+> output signals with programmable period, as well as timestamping of
+> events on input pins.
+> 
+> Add support for enabling these using the CONFIG_PTP_1588_CLOCK
+> interface.
+> 
+> This allows programming the software defined pins to take advantage
+> of
+> the hardware clock features.
+> 
+> Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> ---
 
-I am going to and make the suggested changes to this patch and will post it
-with driver patches.
-Please let me know if there are any objections to that.
+I'm seeing this for a 32bit build:
 
->
-> > +}
-> > +
-> >  extern int irq_update_affinity_desc(unsigned int irq,
-> >                                     struct irq_affinity_desc *affinity);
-> >
-> > --- a/kernel/irq/manage.c
-> > +++ b/kernel/irq/manage.c
-> > @@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq,
-> >  }
-> >  EXPORT_SYMBOL_GPL(irq_force_affinity);
-> >
-> > -int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> > +int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> > +                             bool setaffinity)
-> >  {
-> >         unsigned long flags;
-> >         struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
-> > @@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int i
-> >                 return -EINVAL;
-> >         desc->affinity_hint = m;
-> >         irq_put_desc_unlock(desc, flags);
-> > -       /* set the initial affinity to prevent every interrupt being on CPU0 */
-> > -       if (m)
-> > +       if (m && setaffinity)
-> >                 __irq_set_affinity(irq, m, false);
-> >         return 0;
-> >  }
-> > -EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
-> > +EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
-> >
-> >  static void irq_affinity_notify(struct work_struct *work)
-> >  {
-> >
->
->
-> --
-> Thanks
-> Nitesh
-
-
-
--- 
-Thanks
-Nitesh
+> make[2]: *** Deleting file 'modules-only.symvers'
+> ERROR: modpost: "__udivdi3" [drivers/net/ethernet/intel/ice/ice.ko]
+undefined!
+> ERROR: modpost: "__umoddi3" [drivers/net/ethernet/intel/ice/ice.ko]
+undefined!
+> make[2]: *** [../scripts/Makefile.modpost:150: modules-only.symvers]
+Error 1
+> make[1]: *** [/next-queue/Makefile:1754: modules] Error 2
+> make: *** [Makefile:215: __sub-make] Error 2
 
 _______________________________________________
 Intel-wired-lan mailing list
