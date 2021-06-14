@@ -1,53 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B96713A507E
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Jun 2021 22:16:16 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A84E73A5DA7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 09:25:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 230B8607D3;
-	Sat, 12 Jun 2021 20:16:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1FD6740274;
+	Mon, 14 Jun 2021 07:25:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k0OnZjxZCKUS; Sat, 12 Jun 2021 20:16:14 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XzW_Uo8yI6g9; Mon, 14 Jun 2021 07:25:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 23DC060733;
-	Sat, 12 Jun 2021 20:16:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3E34840100;
+	Mon, 14 Jun 2021 07:25:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1C0FF1BF276
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Jun 2021 20:16:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E54821BF3FD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 07:24:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 095F760733
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Jun 2021 20:16:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D326D83B2A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 07:24:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W-NfwY8IzZoD for <intel-wired-lan@lists.osuosl.org>;
- Sat, 12 Jun 2021 20:16:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ODEd8RrpzGuu for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Jun 2021 07:24:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp.smtpout.orange.fr (smtp03.smtpout.orange.fr
- [80.12.242.125])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3A6C2606CF
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Jun 2021 20:16:08 +0000 (UTC)
-Received: from localhost.localdomain ([86.243.172.93]) by mwinf5d33 with ME
- id GL8a2500G21Fzsu03L8aoJ; Sat, 12 Jun 2021 22:08:35 +0200
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 12 Jun 2021 22:08:35 +0200
-X-ME-IP: 86.243.172.93
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, jeffrey.t.kirsher@intel.com,
- alexander.h.duyck@intel.com
-Date: Sat, 12 Jun 2021 22:08:33 +0200
-Message-Id: <0b5cab7b74ca2544d3c616da89f50635e827bc6f.1623528463.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.30.2
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AAF4F83B28
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 07:24:57 +0000 (UTC)
+IronPort-SDR: C60iQ8E0CgVRfoEhPaFWFwtiq2gB64GsP3A83zX3kbAmFFLEn5uOe8C64VdB7XUsSbXete+xet
+ 5aIiFtIkNQsQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10014"; a="202744530"
+X-IronPort-AV: E=Sophos;i="5.83,272,1616482800"; d="scan'208";a="202744530"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2021 00:24:57 -0700
+IronPort-SDR: 8yxbK/J91mcuwyapaGc/hik0TWGwRWz1QJxNC+KQB6Ie2zzTq9XZ3ezZmtF+mGdJZhEbyqrOHT
+ LhL7jKB8k0wQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,272,1616482800"; d="scan'208";a="553285500"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by orsmga004.jf.intel.com with ESMTP; 14 Jun 2021 00:24:55 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	michael.edri@intel.com
+Date: Mon, 14 Jun 2021 10:24:52 +0300
+Message-Id: <20210614072452.480186-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] igb: Fix an error handling path in
- 'igb_probe()'
+Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Add space to the debug
+ print
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,38 +65,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If an error occurs after a 'pci_enable_pcie_error_reporting()' call, it
-must be undone by a corresponding 'pci_disable_pcie_error_reporting()'
-call, as already done in the remove function.
+Complete to commit 3cf31b1a9eff ("e1000e: bump up timeout to
+wait when ME un-configures ULP mode")
+Minor fixes to allow debug prints more readable.
 
-Fixes: 40a914fa72ab ("igb: Add support for pci-e Advanced Error Reporting")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Fixes: 3cf31b1a9eff ("e1000e: bump up timeout to
+wait when ME un-configures ULP mode")
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 5db303d64d14..cf1de2b9ab71 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3615,6 +3615,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- err_ioremap:
- 	free_netdev(netdev);
- err_alloc_etherdev:
-+	pci_disable_pcie_error_reporting(pdev);
- 	pci_release_mem_regions(pdev);
- err_pci_reg:
- err_dma:
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index 5b008c88beb7..a3cf0af7aedd 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -1271,9 +1271,9 @@ static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force)
+ 			usleep_range(10000, 11000);
+ 		}
+ 		if (firmware_bug)
+-			e_warn("ULP_CONFIG_DONE took %dmsec.  This is a firmware bug\n", i * 10);
++			e_warn("ULP_CONFIG_DONE took %d msec.  This is a firmware bug\n", i * 10);
+ 		else
+-			e_dbg("ULP_CONFIG_DONE cleared after %dmsec\n", i * 10);
++			e_dbg("ULP_CONFIG_DONE cleared after %d msec\n", i * 10);
+ 
+ 		if (force) {
+ 			mac_reg = er32(H2ME);
 -- 
-2.30.2
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
