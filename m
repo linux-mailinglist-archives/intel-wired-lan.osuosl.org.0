@@ -1,58 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A82E3A6664
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 14:19:54 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E1013A6B5D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 18:13:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 202E0402E8;
-	Mon, 14 Jun 2021 12:19:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EEA7D60801;
+	Mon, 14 Jun 2021 16:13:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 31MBcFJQmGJN; Mon, 14 Jun 2021 12:19:52 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0m3GJQ9JoiHL; Mon, 14 Jun 2021 16:13:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E115F402E7;
-	Mon, 14 Jun 2021 12:19:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AD44C6064F;
+	Mon, 14 Jun 2021 16:13:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 016A81BF3F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 12:19:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 67A0C1BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EFA40402E7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 12:19:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 562ED82E5F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wYz18AtF11qs for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Jun 2021 12:19:45 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zSFRAWeZXCZa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Jun 2021 16:12:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4598240295
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 12:19:44 +0000 (UTC)
-IronPort-SDR: lKegp6WglFWDO/TpH+iKUrtNjhuSKdh4yXZaTyOUI2hBV1FtUvQH4kvi0gOLZW5JAeFMlQycq5
- 6T9nCIOUnTdg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10014"; a="266949054"
-X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="266949054"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2021 05:19:43 -0700
-IronPort-SDR: bPpyzwvFI4IdW2KqiPzQoefiFI0wvMGXm5sY6jy5bWGtG3VBRLU5jsQGq9WxIfywIwwBamCtPB
- kEoK9W3cB/3Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="420764962"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by orsmga002.jf.intel.com with ESMTP; 14 Jun 2021 05:19:42 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	michael.edri@intel.com
-Date: Mon, 14 Jun 2021 15:19:39 +0300
-Message-Id: <20210614121939.1246251-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2A39182CFD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 16:12:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1623687175;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U/Ya1k1nXvvGjrRExG8q3FmOawUUZX1h7T0TrtPnmSM=;
+ b=QAngivRxe+uiRW8zx6PjhU3dbeweK0ron/E3bJcGLgONSr5JdgaAevxxo+8bjA1A2roAtb
+ 7wWAHU02f8VBndohw4LWIt4NjKw/UD91TWgoiPaJvD3RdsyDax49lAXFl9pZV9heqK1PC4
+ e0HtWxTplt8PXwovID2Yo6+/SQ3aHZo=
+Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
+ [209.85.167.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-581-Wi6IRnXbOgOSwUuOZZ4rhg-1; Mon, 14 Jun 2021 12:12:52 -0400
+X-MC-Unique: Wi6IRnXbOgOSwUuOZZ4rhg-1
+Received: by mail-lf1-f71.google.com with SMTP id
+ bu14-20020a056512168eb029031226594940so416314lfb.15
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 09:12:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=U/Ya1k1nXvvGjrRExG8q3FmOawUUZX1h7T0TrtPnmSM=;
+ b=GwEn6uVoMoNXeYEeoeDj0huzlileir3UWjYUbrgiXFIpEbnrK00A+kHVKUAo9Scjac
+ jV6Hc5vQ4qsmLFHdCTKynoVF7V7ikOrhq+1i093Og+2cBjFek0vJIGtn3LVdBmpBKQn8
+ PSrOIG1u0hOjXKXXO9SoHLPpO04BaXWFIjP8RnzIhaEHWGVaQCN0eV5Pceu4o1Vrchgd
+ Sw5N6gasWRG5UJN9BpNQsiN1g/ciSdklz+E5wHKu4fYPt6F1lzLKi54GNsOaDvYtvx7L
+ 6sxcZzrIEq+EN4dOEK3CPw5Vfk/0cPVu6XmWyEBHjqinkpQq+IBBngpNa++TKKliRfoi
+ S91g==
+X-Gm-Message-State: AOAM533VwocaeTW4ADgv4NuZ3GmJp9gsmGwEXI/OJlxC0JYeKZZsmwcU
+ g88epmQdLidf+T05CEFQFX7Q3K/ljx8UJUYX42aSbLNVj+BnHau/XkabIzPHICjjkMxl0EzMxiJ
+ ixLuCTxbD0oBMkIL7acoksHZv3VBsQbR+5REjzWBzbKqr1w==
+X-Received: by 2002:a05:6512:2101:: with SMTP id
+ q1mr8877574lfr.647.1623687170948; 
+ Mon, 14 Jun 2021 09:12:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwAbGhpPvqkcHhSsuAdQ1FpWwNWtaQWb83YFBtFmuq7Xr7R/t1YH4+Rj9W+tz1cElNmEXnhxmp8Ko9KgVy5pjU=
+X-Received: by 2002:a05:6512:2101:: with SMTP id
+ q1mr8877529lfr.647.1623687170605; 
+ Mon, 14 Jun 2021 09:12:50 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Check if num of q_vectors is
- smaller than max before array access
+References: <20210504092340.00006c61@intel.com>
+ <87pmxpdr32.ffs@nanos.tec.linutronix.de>
+ <CAFki+Lkjn2VCBcLSAfQZ2PEkx-TR0Ts_jPnK9b-5ne3PUX37TQ@mail.gmail.com>
+ <87im3gewlu.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=gp10W1ygv7zdsee=BUGpx9yPAckKr7pyo=tkFJPciEg@mail.gmail.com>
+ <CAFki+L=eQoMq+mWhw_jVT-biyuDXpxbXY5nO+F6HvCtpbG9V2w@mail.gmail.com>
+ <CAFki+LkB1sk3mOv4dd1D-SoPWHOs28ZwN-PqL_6xBk=Qkm40Lw@mail.gmail.com>
+ <87zgwo9u79.ffs@nanos.tec.linutronix.de>
+ <87wnrs9tvp.ffs@nanos.tec.linutronix.de>
+ <CAFki+L=QTOu_O=1uNobVMi2s9mbcxXgSdTLADCpeBWBoPAikgQ@mail.gmail.com>
+In-Reply-To: <CAFki+L=QTOu_O=1uNobVMi2s9mbcxXgSdTLADCpeBWBoPAikgQ@mail.gmail.com>
+From: Nitesh Lal <nilal@redhat.com>
+Date: Mon, 14 Jun 2021 12:12:38 -0400
+Message-ID: <CAFki+LkJ9kj0TMz8dhGXLXdfwgYLibkMCRvKBwVVX5+F-DP37w@mail.gmail.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: Re: [Intel-wired-lan] [PATCH] genirq: Provide new interfaces for
+ affinity hints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,52 +105,166 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Cc: "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
+ "peterz@infradead.org" <peterz@infradead.org>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Ingo Molnar <mingo@kernel.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
+ Marc Zyngier <maz@kernel.org>, "jinyuqi@huawei.com" <jinyuqi@huawei.com>,
+ intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
+ "frederic@kernel.org" <frederic@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "rostedt@goodmis.org" <rostedt@goodmis.org>,
+ "zhangshaokun@hisilicon.com" <zhangshaokun@hisilicon.com>,
+ "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
+ "bhelgaas@google.com" <bhelgaas@google.com>, pjwaskiewicz@gmail.com,
+ Neil Horman <nhorman@tuxdriver.com>,
+ "linux-api@vger.kernel.org" <linux-api@vger.kernel.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ netdev@vger.kernel.org,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, jbrandeb@kernel.org,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ensure that the adapter->q_vector[MAX_Q_VECTORS] array isn't accessed
-beyond its size. It was fixed by using a local variable num_q_vectors
-as a limit for loop index, and ensure that num_q_vectors is not bigger
-than MAX_Q_VECTORS.
+On Mon, Jun 7, 2021 at 1:00 PM Nitesh Lal <nilal@redhat.com> wrote:
+>
+> On Fri, May 21, 2021 at 8:03 AM Thomas Gleixner <tglx@linutronix.de> wrote:
+> >
+> > The discussion about removing the side effect of irq_set_affinity_hint() of
+> > actually applying the cpumask (if not NULL) as affinity to the interrupt,
+> > unearthed a few unpleasantries:
+> >
+> >   1) The modular perf drivers rely on the current behaviour for the very
+> >      wrong reasons.
+> >
+> >   2) While none of the other drivers prevents user space from changing
+> >      the affinity, a cursorily inspection shows that there are at least
+> >      expectations in some drivers.
+> >
+> > #1 needs to be cleaned up anyway, so that's not a problem
+> >
+> > #2 might result in subtle regressions especially when irqbalanced (which
+> >    nowadays ignores the affinity hint) is disabled.
+> >
+> > Provide new interfaces:
+> >
+> >   irq_update_affinity_hint() - Only sets the affinity hint pointer
+> >   irq_apply_affinity_hint()  - Set the pointer and apply the affinity to
+> >                                the interrupt
+> >
+> > Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
+> > document it to be phased out.
+> >
+> > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> > Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
+> > ---
+> > Applies on:
+> >    git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/core
+> > ---
+> >  include/linux/interrupt.h |   41 ++++++++++++++++++++++++++++++++++++++++-
+> >  kernel/irq/manage.c       |    8 ++++----
+> >  2 files changed, 44 insertions(+), 5 deletions(-)
+> >
+> > --- a/include/linux/interrupt.h
+> > +++ b/include/linux/interrupt.h
+> > @@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned i
+> >  extern int irq_can_set_affinity(unsigned int irq);
+> >  extern int irq_select_affinity(unsigned int irq);
+> >
+> > -extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
+> > +extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
+> > +                                    bool setaffinity);
+> > +
+> > +/**
+> > + * irq_update_affinity_hint - Update the affinity hint
+> > + * @irq:       Interrupt to update
+> > + * @cpumask:   cpumask pointer (NULL to clear the hint)
+> > + *
+> > + * Updates the affinity hint, but does not change the affinity of the interrupt.
+> > + */
+> > +static inline int
+> > +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
+> > +{
+> > +       return __irq_apply_affinity_hint(irq, m, true);
+> > +}
+> > +
+> > +/**
+> > + * irq_apply_affinity_hint - Update the affinity hint and apply the provided
+> > + *                          cpumask to the interrupt
+> > + * @irq:       Interrupt to update
+> > + * @cpumask:   cpumask pointer (NULL to clear the hint)
+> > + *
+> > + * Updates the affinity hint and if @cpumask is not NULL it applies it as
+> > + * the affinity of that interrupt.
+> > + */
+> > +static inline int
+> > +irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m)
+> > +{
+> > +       return __irq_apply_affinity_hint(irq, m, true);
+> > +}
+> > +
+> > +/*
+> > + * Deprecated. Use irq_update_affinity_hint() or irq_apply_affinity_hint()
+> > + * instead.
+> > + */
+> > +static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
+> > +{
+> > +       return irq_apply_affinity_hint(irq, cpumask);
+>
+> Another change required here, the above should be 'm' instead of 'cpumask'.
 
-Suggested-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+I am going to and make the suggested changes to this patch and will post it
+with driver patches.
+Please let me know if there are any objections to that.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index ff3c7bc1f0ef..be0d5baf77b7 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4817,6 +4817,7 @@ static irqreturn_t igc_msix_ring(int irq, void *data)
-  */
- static int igc_request_msix(struct igc_adapter *adapter)
- {
-+	unsigned int num_q_vectors = adapter->num_q_vectors;
- 	int i = 0, err = 0, vector = 0, free_vector = 0;
- 	struct net_device *netdev = adapter->netdev;
- 
-@@ -4825,7 +4826,13 @@ static int igc_request_msix(struct igc_adapter *adapter)
- 	if (err)
- 		goto err_out;
- 
--	for (i = 0; i < adapter->num_q_vectors; i++) {
-+	if (num_q_vectors > MAX_Q_VECTORS) {
-+		num_q_vectors = MAX_Q_VECTORS;
-+		dev_warn(&adapter->pdev->dev,
-+			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
-+			 adapter->num_q_vectors, MAX_Q_VECTORS);
-+	}
-+	for (i = 0; i < num_q_vectors; i++) {
- 		struct igc_q_vector *q_vector = adapter->q_vector[i];
- 
- 		vector++;
+>
+> > +}
+> > +
+> >  extern int irq_update_affinity_desc(unsigned int irq,
+> >                                     struct irq_affinity_desc *affinity);
+> >
+> > --- a/kernel/irq/manage.c
+> > +++ b/kernel/irq/manage.c
+> > @@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq,
+> >  }
+> >  EXPORT_SYMBOL_GPL(irq_force_affinity);
+> >
+> > -int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
+> > +int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
+> > +                             bool setaffinity)
+> >  {
+> >         unsigned long flags;
+> >         struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
+> > @@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int i
+> >                 return -EINVAL;
+> >         desc->affinity_hint = m;
+> >         irq_put_desc_unlock(desc, flags);
+> > -       /* set the initial affinity to prevent every interrupt being on CPU0 */
+> > -       if (m)
+> > +       if (m && setaffinity)
+> >                 __irq_set_affinity(irq, m, false);
+> >         return 0;
+> >  }
+> > -EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
+> > +EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
+> >
+> >  static void irq_affinity_notify(struct work_struct *work)
+> >  {
+> >
+>
+>
+> --
+> Thanks
+> Nitesh
+
+
+
 -- 
-2.25.1
+Thanks
+Nitesh
 
 _______________________________________________
 Intel-wired-lan mailing list
