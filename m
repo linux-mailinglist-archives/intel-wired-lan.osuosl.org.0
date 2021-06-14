@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C2603A71A5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 23:58:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A5FE3A71A4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Jun 2021 23:58:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1EA9C404FB;
-	Mon, 14 Jun 2021 21:58:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E2CA860B91;
+	Mon, 14 Jun 2021 21:58:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0Jtw8tg98Brq; Mon, 14 Jun 2021 21:58:09 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Dkrxd0s8Lykp; Mon, 14 Jun 2021 21:58:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF1CE404EF;
-	Mon, 14 Jun 2021 21:58:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1951360A41;
+	Mon, 14 Jun 2021 21:58:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1BBC91BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 21:58:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 067E9404EF
+ by ash.osuosl.org (Postfix) with ESMTP id 092561BF2B9
  for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 21:58:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id EA1DA404F4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 21:57:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fkT7OOwyuURz for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id xstMs9yDEmbD for <intel-wired-lan@lists.osuosl.org>;
  Mon, 14 Jun 2021 21:57:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 445F3404CF
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8BC26404EF
  for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Jun 2021 21:57:58 +0000 (UTC)
-IronPort-SDR: Z/dwlv/2ttpO7jZySSfrWWILaHuY/OmPcr5BlQ1GIxip+5DEj6zfyEwT8xwZCV1ulr1wyDevTV
- rXGTW5M19d8w==
-X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="193000231"
-X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="193000231"
+IronPort-SDR: hzPUJJ4FrjX6ns8vw3iCzaGUzfJIHONn1MIQiVRpeE67R7SA8IL1jNR+tpaBe6tiPuKLniz6q6
+ xVe7i77dP18g==
+X-IronPort-AV: E=McAfee;i="6200,9189,10015"; a="193000233"
+X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="193000233"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  14 Jun 2021 14:57:56 -0700
-IronPort-SDR: +8h7/xHt0RXUIlvll040ENboXUNRZqGHl/Q4M1ITha3UDydG1B9keOeR+xxOUunQ1dVq2ATC7C
- mZzDfgGaqOuA==
+IronPort-SDR: 4dRaSuGYzaPdxlv2BdSV4/H+OawgamQMtTo4s2F6iZAxJ1XKn8bmHYaWvYK0lJL/bFPOC5Rb4U
+ 8hCdE+Gv5ySw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="451730664"
+X-IronPort-AV: E=Sophos;i="5.83,273,1616482800"; d="scan'208";a="451730665"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
  by fmsmga008.fm.intel.com with ESMTP; 14 Jun 2021 14:57:56 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 14 Jun 2021 14:46:06 -0700
-Message-Id: <20210614214607.41749-1-anthony.l.nguyen@intel.com>
+Date: Mon, 14 Jun 2021 14:46:07 -0700
+Message-Id: <20210614214607.41749-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210614214607.41749-1-anthony.l.nguyen@intel.com>
+References: <20210614214607.41749-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 1/2] ice: remove the VSI info
- from previous agg
+Subject: [Intel-wired-lan] [PATCH net-next 2/2] ice: remove unnecessary VSI
+ assignment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,65 +71,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Victor Raj <victor.raj@intel.com>
+ice_get_vf_vsi() is being called twice for the same VSI. Remove the
+unnecessary call/assignment.
 
-Remove the VSI info from previous aggregator after moving the VSI to a
-new aggregator.
-
-Signed-off-by: Victor Raj <victor.raj@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_sched.c | 24 ++++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index a17e24e54cf3..9f07b6641705 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -2745,8 +2745,8 @@ static enum ice_status
- ice_sched_assoc_vsi_to_agg(struct ice_port_info *pi, u32 agg_id,
- 			   u16 vsi_handle, unsigned long *tc_bitmap)
- {
--	struct ice_sched_agg_vsi_info *agg_vsi_info;
--	struct ice_sched_agg_info *agg_info;
-+	struct ice_sched_agg_vsi_info *agg_vsi_info, *old_agg_vsi_info = NULL;
-+	struct ice_sched_agg_info *agg_info, *old_agg_info;
- 	enum ice_status status = 0;
- 	struct ice_hw *hw = pi->hw;
- 	u8 tc;
-@@ -2756,6 +2756,20 @@ ice_sched_assoc_vsi_to_agg(struct ice_port_info *pi, u32 agg_id,
- 	agg_info = ice_get_agg_info(hw, agg_id);
- 	if (!agg_info)
- 		return ICE_ERR_PARAM;
-+	/* If the VSI is already part of another aggregator then update
-+	 * its VSI info list
-+	 */
-+	old_agg_info = ice_get_vsi_agg_info(hw, vsi_handle);
-+	if (old_agg_info && old_agg_info != agg_info) {
-+		struct ice_sched_agg_vsi_info *vtmp;
-+
-+		list_for_each_entry_safe(old_agg_vsi_info, vtmp,
-+					 &old_agg_info->agg_vsi_list,
-+					 list_entry)
-+			if (old_agg_vsi_info->vsi_handle == vsi_handle)
-+				break;
-+	}
-+
- 	/* check if entry already exist */
- 	agg_vsi_info = ice_get_agg_vsi_info(agg_info, vsi_handle);
- 	if (!agg_vsi_info) {
-@@ -2780,6 +2794,12 @@ ice_sched_assoc_vsi_to_agg(struct ice_port_info *pi, u32 agg_id,
- 			break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index ccf5d117e008..699e0a842b85 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1665,7 +1665,6 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 		else
+ 			promisc_m = ICE_UCAST_PROMISC_BITS;
  
- 		set_bit(tc, agg_vsi_info->tc_bitmap);
-+		if (old_agg_vsi_info)
-+			clear_bit(tc, old_agg_vsi_info->tc_bitmap);
-+	}
-+	if (old_agg_vsi_info && !old_agg_vsi_info->tc_bitmap[0]) {
-+		list_del(&old_agg_vsi_info->list_entry);
-+		devm_kfree(ice_hw_to_dev(pi->hw), old_agg_vsi_info);
+-		vsi = ice_get_vf_vsi(vf);
+ 		if (ice_vf_clear_vsi_promisc(vf, vsi, promisc_m))
+ 			dev_err(dev, "disabling promiscuous mode failed\n");
  	}
- 	return status;
- }
 -- 
 2.20.1
 
