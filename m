@@ -1,98 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92BE33A8361
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Jun 2021 16:55:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FA923A8A03
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Jun 2021 22:14:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF5EC4016F;
-	Tue, 15 Jun 2021 14:55:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C652983CCC;
+	Tue, 15 Jun 2021 20:14:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IoEkl_3qTenY; Tue, 15 Jun 2021 14:55:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nWiOKv2HW6sK; Tue, 15 Jun 2021 20:14:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ADD27401FD;
-	Tue, 15 Jun 2021 14:55:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7326983CCD;
+	Tue, 15 Jun 2021 20:14:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6FEBA1BF409
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 14:55:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 585661BF427
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 20:14:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6B96183A4D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 14:55:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4599383CCC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 20:14:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JQpVWOdZ3Pvn for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Jun 2021 14:55:14 +0000 (UTC)
+ with ESMTP id VJtZKdRF8dJB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Jun 2021 20:14:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5CF9683AD0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 14:55:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623768913;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g/1dUDyNZZrs33xk0mFJ4m/UiP5685UlgffhChjEESM=;
- b=XUjhBSex2bj3aFF5phvGCUQbwWmtngxz5PAduXoFPO3xAdNRPckm0/8lkZwSVpsjx/etD5
- c2ha4fAX5xjwoDg8oABr5+8xaAIkZUlmeO08ehKVzgvMFbAlZgeu9PT9bqmGPptFuDih7z
- X+oZqFgnwynP/tScy8P8MxEch2B1Gzk=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-126-AzcvNJcsPF-_vTkxD7NDKA-1; Tue, 15 Jun 2021 10:55:11 -0400
-X-MC-Unique: AzcvNJcsPF-_vTkxD7NDKA-1
-Received: by mail-ed1-f70.google.com with SMTP id
- h23-20020aa7c5d70000b029038fed7b27d5so22254286eds.21
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 07:55:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=g/1dUDyNZZrs33xk0mFJ4m/UiP5685UlgffhChjEESM=;
- b=BYfD6DdhDl2aTbs8HGE76H418nYSedn/BDL53erceVvkfLT49PAswkyyRfNiVjwEIY
- Xpwg59a5T14vf5NCvzQdLHAHkYgTmNcFYktu2IhXQnP0E4ZghssQ9Gqn5FWbvla9v1n6
- 3w8F8HM6a75pfzTkQSGp+0fb9Or6xOCjd3lyHupf+pfqMV8gK+TfWrOQnLn3KsuaiYo+
- vP08eOPgCx8xMG8ec9WanoNBttw35pghzTvDCkhbjwlsOVYz20UTIMMgLwOzTe2xpI1X
- Y7YFXfj9ePT0xF1M4tP4uLwNBKY1nRXX2MDZOH6mL+B83h6Un6sdY6Re1ag3uP6ayjzZ
- Uv8Q==
-X-Gm-Message-State: AOAM532PfmnGGhco8aYc4uFZomyZjcPkoUQHL+/RzlaCkaem603YR90o
- VHZcUKjUaOtSccM8AFdEX/ey25M5bH0iSDGPA5Ghk5iYTY64d+P+QT7anhWk2iqv4FQzjjiYNlx
- JjvboHGKgMKepentocKQzYb7YEKJSLQ==
-X-Received: by 2002:a05:6402:128d:: with SMTP id
- w13mr24062076edv.38.1623768910450; 
- Tue, 15 Jun 2021 07:55:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCDxZA5428OnKpa9GZb7yrE5vaWiO0ZAS3v/w0w55ygu8BMKcn1QLYrEOPu83LXEhSAk3gSw==
-X-Received: by 2002:a05:6402:128d:: with SMTP id
- w13mr24062041edv.38.1623768910200; 
- Tue, 15 Jun 2021 07:55:10 -0700 (PDT)
-Received: from alrua-x1.borgediget.toke.dk ([2a0c:4d80:42:443::2])
- by smtp.gmail.com with ESMTPSA id w24sm8609477eju.73.2021.06.15.07.55.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Jun 2021 07:55:06 -0700 (PDT)
-Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
- id E1C88180731; Tue, 15 Jun 2021 16:54:58 +0200 (CEST)
-From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-To: bpf@vger.kernel.org,
-	netdev@vger.kernel.org
-Date: Tue, 15 Jun 2021 16:54:47 +0200
-Message-Id: <20210615145455.564037-9-toke@redhat.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210615145455.564037-1-toke@redhat.com>
-References: <20210615145455.564037-1-toke@redhat.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 593BD83CCA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jun 2021 20:14:38 +0000 (UTC)
+IronPort-SDR: ExQuZ6vq+J6XjVXjOK6yVggTnpTV/AQEGeXMMlp1rKuMGzuc8wVmMMFGGxFvadJZWIB8F2I/Sr
+ KvbYVs6ZwR9g==
+X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="193371390"
+X-IronPort-AV: E=Sophos;i="5.83,276,1616482800"; d="scan'208";a="193371390"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2021 13:14:36 -0700
+IronPort-SDR: PHhUll40RYm35dg3yqqFPhKpDZ7yshvpMsTBDDARg17+WnDHjVujatg1sal+6ymz5AmAjrF77A
+ xtv2Txr4EJhQ==
+X-IronPort-AV: E=Sophos;i="5.83,276,1616482800"; d="scan'208";a="639767445"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2021 13:14:35 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Tue, 15 Jun 2021 13:14:20 -0700
+Message-Id: <20210615201420.2001937-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=toke@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [PATCH bpf-next v2 08/16] net: intel: remove
- rcu_read_lock() around XDP program invocation
+Subject: [Intel-wired-lan] [PATCH net] ice: do not abort devlink info if PBA
+ can't be found
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,197 +64,322 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Paul E . McKenney" <paulmck@kernel.org>,
- =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
- Hangbin Liu <liuhangbin@gmail.com>, Jesper Dangaard Brouer <brouer@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Martin KaFai Lau <kafai@fb.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VGhlIEludGVsIGRyaXZlcnMgYWxsIGhhdmUgcmN1X3JlYWRfbG9jaygpL3JjdV9yZWFkX3VubG9j
-aygpIHBhaXJzIGFyb3VuZApYRFAgcHJvZ3JhbSBpbnZvY2F0aW9ucy4gSG93ZXZlciwgdGhlIGFj
-dHVhbCBsaWZldGltZSBvZiB0aGUgb2JqZWN0cwpyZWZlcnJlZCBieSB0aGUgWERQIHByb2dyYW0g
-aW52b2NhdGlvbiBpcyBsb25nZXIsIGFsbCB0aGUgd2F5IHRocm91Z2ggdG8KdGhlIGNhbGwgdG8g
-eGRwX2RvX2ZsdXNoKCksIG1ha2luZyB0aGUgc2NvcGUgb2YgdGhlIHJjdV9yZWFkX2xvY2soKSB0
-b28Kc21hbGwuIFRoaXMgdHVybnMgb3V0IHRvIGJlIGhhcm1sZXNzIGJlY2F1c2UgaXQgYWxsIGhh
-cHBlbnMgaW4gYSBzaW5nbGUKTkFQSSBwb2xsIGN5Y2xlIChhbmQgdGh1cyB1bmRlciBsb2NhbF9i
-aF9kaXNhYmxlKCkpLCBidXQgaXQgbWFrZXMgdGhlCnJjdV9yZWFkX2xvY2soKSBtaXNsZWFkaW5n
-LgoKUmF0aGVyIHRoYW4gZXh0ZW5kIHRoZSBzY29wZSBvZiB0aGUgcmN1X3JlYWRfbG9jaygpLCBq
-dXN0IGdldCByaWQgb2YgaXQKZW50aXJlbHkuIFdpdGggdGhlIGFkZGl0aW9uIG9mIFJDVSBhbm5v
-dGF0aW9ucyB0byB0aGUgWERQX1JFRElSRUNUIG1hcAp0eXBlcyB0aGF0IHRha2UgYmggZXhlY3V0
-aW9uIGludG8gYWNjb3VudCwgbG9ja2RlcCBldmVuIHVuZGVyc3RhbmRzIHRoaXMgdG8KYmUgc2Fm
-ZSwgc28gdGhlcmUncyByZWFsbHkgbm8gcmVhc29uIHRvIGtlZXAgaXQgYXJvdW5kLgoKQ2M6IEpl
-c3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPgpDYzogVG9ueSBOZ3V5
-ZW4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPgpDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3Rz
-Lm9zdW9zbC5vcmcKVGVzdGVkLWJ5OiBKZXNwZXIgRGFuZ2FhcmQgQnJvdWVyIDxicm91ZXJAcmVk
-aGF0LmNvbT4gIyBpNDBlClNpZ25lZC1vZmYtYnk6IFRva2UgSMO4aWxhbmQtSsO4cmdlbnNlbiA8
-dG9rZUByZWRoYXQuY29tPgotLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
-ZV90eHJ4LmMgICAgICAgfCAgNSArKystLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQw
-ZS9pNDBlX3hzay5jICAgICAgICB8IDExICsrKysrLS0tLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pY2UvaWNlX3R4cnguYyAgICAgICAgIHwgIDYgKy0tLS0tCiBkcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hzay5jICAgICAgICAgIHwgIDYgKy0tLS0tCiBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYyAgICAgICAgIHwgIDUgKysrLS0KIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jICAgICAgICAgfCAxMCArKysr
-Ky0tLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgICAg
-IHwgIDUgKysrLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5j
-ICAgICAgfCAgOSArKysrLS0tLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JldmYv
-aXhnYmV2Zl9tYWluLmMgfCAgNSArKystLQogOSBmaWxlcyBjaGFuZ2VkLCAyOCBpbnNlcnRpb25z
-KCspLCAzNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pNDBlL2k0MGVfdHhyeC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9p
-NDBlX3R4cnguYwppbmRleCBkZTcwYzE2ZWY2MTkuLjdmYzViZGI1Y2Q5ZSAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYworKysgYi9kcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhyeC5jCkBAIC0yMjk4LDcgKzIyOTgsNiBA
-QCBzdGF0aWMgaW50IGk0MGVfcnVuX3hkcChzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCBzdHJ1
-Y3QgeGRwX2J1ZmYgKnhkcCkKIAlzdHJ1Y3QgYnBmX3Byb2cgKnhkcF9wcm9nOwogCXUzMiBhY3Q7
-CiAKLQlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cgPSBSRUFEX09OQ0UocnhfcmluZy0+eGRw
-X3Byb2cpOwogCiAJaWYgKCF4ZHBfcHJvZykKQEAgLTIzMDYsNiArMjMwNSw5IEBAIHN0YXRpYyBp
-bnQgaTQwZV9ydW5feGRwKHN0cnVjdCBpNDBlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVm
-ZiAqeGRwKQogCiAJcHJlZmV0Y2h3KHhkcC0+ZGF0YV9oYXJkX3N0YXJ0KTsgLyogeGRwX2ZyYW1l
-IHdyaXRlICovCiAKKwkvKiBUaGlzIGNvZGUgaXMgaW52b2tlZCB3aXRoaW4gYSBzaW5nbGUgTkFQ
-SSBwb2xsIGN5Y2xlIGFuZCB0aHVzIHVuZGVyCisJICogbG9jYWxfYmhfZGlzYWJsZSgpLCB3aGlj
-aCBwcm92aWRlcyB0aGUgbmVlZGVkIFJDVSBwcm90ZWN0aW9uLgorCSAqLwogCWFjdCA9IGJwZl9w
-cm9nX3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7CiAJc3dpdGNoIChhY3QpIHsKIAljYXNlIFhEUF9Q
-QVNTOgpAQCAtMjMyOSw3ICsyMzMxLDYgQEAgc3RhdGljIGludCBpNDBlX3J1bl94ZHAoc3RydWN0
-IGk0MGVfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZmICp4ZHApCiAJCWJyZWFrOwogCX0K
-IHhkcF9vdXQ6Ci0JcmN1X3JlYWRfdW5sb2NrKCk7CiAJcmV0dXJuIHJlc3VsdDsKIH0KIApkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jIGIvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCmluZGV4IDQ2ZDg4NDQxN2M2
-My4uYTU5ODJjZDExMmJlIDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-NDBlL2k0MGVfeHNrLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBl
-X3hzay5jCkBAIC0xNTMsOCArMTUzLDEwIEBAIHN0YXRpYyBpbnQgaTQwZV9ydW5feGRwX3pjKHN0
-cnVjdCBpNDBlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQogCXN0cnVjdCBi
-cGZfcHJvZyAqeGRwX3Byb2c7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2soKTsKLQkvKiBO
-QiEgeGRwX3Byb2cgd2lsbCBhbHdheXMgYmUgIU5VTEwsIGR1ZSB0byB0aGUgZmFjdCB0aGF0CisJ
-LyogVGhpcyBjb2RlIGlzIGludm9rZWQgd2l0aGluIGEgc2luZ2xlIE5BUEkgcG9sbCBjeWNsZSBh
-bmQgdGh1cyB1bmRlcgorCSAqIGxvY2FsX2JoX2Rpc2FibGUoKSwgd2hpY2ggcHJvdmlkZXMgdGhl
-IG5lZWRlZCBSQ1UgcHJvdGVjdGlvbi4KKwkgKgorCSAqIE5CISB4ZHBfcHJvZyB3aWxsIGFsd2F5
-cyBiZSAhTlVMTCwgZHVlIHRvIHRoZSBmYWN0IHRoYXQKIAkgKiB0aGlzIHBhdGggaXMgZW5hYmxl
-ZCBieSBzZXR0aW5nIGFuIFhEUCBwcm9ncmFtLgogCSAqLwogCXhkcF9wcm9nID0gUkVBRF9PTkNF
-KHJ4X3JpbmctPnhkcF9wcm9nKTsKQEAgLTE2Miw5ICsxNjQsNyBAQCBzdGF0aWMgaW50IGk0MGVf
-cnVuX3hkcF96YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCBzdHJ1Y3QgeGRwX2J1ZmYgKnhk
-cCkKIAogCWlmIChsaWtlbHkoYWN0ID09IFhEUF9SRURJUkVDVCkpIHsKIAkJZXJyID0geGRwX2Rv
-X3JlZGlyZWN0KHJ4X3JpbmctPm5ldGRldiwgeGRwLCB4ZHBfcHJvZyk7Ci0JCXJlc3VsdCA9ICFl
-cnIgPyBJNDBFX1hEUF9SRURJUiA6IEk0MEVfWERQX0NPTlNVTUVEOwotCQlyY3VfcmVhZF91bmxv
-Y2soKTsKLQkJcmV0dXJuIHJlc3VsdDsKKwkJcmV0dXJuICFlcnIgPyBJNDBFX1hEUF9SRURJUiA6
-IEk0MEVfWERQX0NPTlNVTUVEOwogCX0KIAogCXN3aXRjaCAoYWN0KSB7CkBAIC0xODQsNyArMTg0
-LDYgQEAgc3RhdGljIGludCBpNDBlX3J1bl94ZHBfemMoc3RydWN0IGk0MGVfcmluZyAqcnhfcmlu
-Zywgc3RydWN0IHhkcF9idWZmICp4ZHApCiAJCXJlc3VsdCA9IEk0MEVfWERQX0NPTlNVTUVEOwog
-CQlicmVhazsKIAl9Ci0JcmN1X3JlYWRfdW5sb2NrKCk7CiAJcmV0dXJuIHJlc3VsdDsKIH0KIApk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMgYi9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguYwppbmRleCBlMmI0YjI5ZWEy
-MDcuLjFhMzExZTkxZmI2ZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlL2ljZV90eHJ4LmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90
-eHJ4LmMKQEAgLTExMjksMTUgKzExMjksMTEgQEAgaW50IGljZV9jbGVhbl9yeF9pcnEoc3RydWN0
-IGljZV9yaW5nICpyeF9yaW5nLCBpbnQgYnVkZ2V0KQogCQl4ZHAuZnJhbWVfc3ogPSBpY2Vfcnhf
-ZnJhbWVfdHJ1ZXNpemUocnhfcmluZywgc2l6ZSk7CiAjZW5kaWYKIAotCQlyY3VfcmVhZF9sb2Nr
-KCk7CiAJCXhkcF9wcm9nID0gUkVBRF9PTkNFKHJ4X3JpbmctPnhkcF9wcm9nKTsKLQkJaWYgKCF4
-ZHBfcHJvZykgewotCQkJcmN1X3JlYWRfdW5sb2NrKCk7CisJCWlmICgheGRwX3Byb2cpCiAJCQln
-b3RvIGNvbnN0cnVjdF9za2I7Ci0JCX0KIAogCQl4ZHBfcmVzID0gaWNlX3J1bl94ZHAocnhfcmlu
-ZywgJnhkcCwgeGRwX3Byb2cpOwotCQlyY3VfcmVhZF91bmxvY2soKTsKIAkJaWYgKCF4ZHBfcmVz
-KQogCQkJZ290byBjb25zdHJ1Y3Rfc2tiOwogCQlpZiAoeGRwX3JlcyAmIChJQ0VfWERQX1RYIHwg
-SUNFX1hEUF9SRURJUikpIHsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2ljZS9pY2VfeHNrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hzay5j
-CmluZGV4IGZhYTdiOGQ5NmFkYi4uZDZkYTM3N2Y1YWMzIDEwMDY0NAotLS0gYS9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfeHNrLmMKQEAgLTQ2Myw3ICs0NjMsNiBAQCBpY2VfcnVuX3hkcF96Yyhz
-dHJ1Y3QgaWNlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQogCXN0cnVjdCBp
-Y2VfcmluZyAqeGRwX3Jpbmc7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2soKTsKIAkvKiBa
-QyBwYXRjaCBpcyBlbmFibGVkIG9ubHkgd2hlbiBYRFAgcHJvZ3JhbSBpcyBzZXQsCiAJICogc28g
-aGVyZSBpdCBjYW4gbm90IGJlIE5VTEwKIAkgKi8KQEAgLTQ3Myw5ICs0NzIsNyBAQCBpY2VfcnVu
-X3hkcF96YyhzdHJ1Y3QgaWNlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQog
-CiAJaWYgKGxpa2VseShhY3QgPT0gWERQX1JFRElSRUNUKSkgewogCQllcnIgPSB4ZHBfZG9fcmVk
-aXJlY3QocnhfcmluZy0+bmV0ZGV2LCB4ZHAsIHhkcF9wcm9nKTsKLQkJcmVzdWx0ID0gIWVyciA/
-IElDRV9YRFBfUkVESVIgOiBJQ0VfWERQX0NPTlNVTUVEOwotCQlyY3VfcmVhZF91bmxvY2soKTsK
-LQkJcmV0dXJuIHJlc3VsdDsKKwkJcmV0dXJuICFlcnIgPyBJQ0VfWERQX1JFRElSIDogSUNFX1hE
-UF9DT05TVU1FRDsKIAl9CiAKIAlzd2l0Y2ggKGFjdCkgewpAQCAtNDk2LDcgKzQ5Myw2IEBAIGlj
-ZV9ydW5feGRwX3pjKHN0cnVjdCBpY2VfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZmICp4
-ZHApCiAJCWJyZWFrOwogCX0KIAotCXJjdV9yZWFkX3VubG9jaygpOwogCXJldHVybiByZXN1bHQ7
-CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFp
-bi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKaW5kZXggMDM4
-YTlmZDFhZjQ0Li4wYjY4ZDU4OTIxOGEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2lnYi9pZ2JfbWFpbi5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ln
-Yi9pZ2JfbWFpbi5jCkBAIC04Mzg3LDcgKzgzODcsNiBAQCBzdGF0aWMgc3RydWN0IHNrX2J1ZmYg
-KmlnYl9ydW5feGRwKHN0cnVjdCBpZ2JfYWRhcHRlciAqYWRhcHRlciwKIAlzdHJ1Y3QgYnBmX3By
-b2cgKnhkcF9wcm9nOwogCXUzMiBhY3Q7CiAKLQlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cg
-PSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3Byb2cpOwogCiAJaWYgKCF4ZHBfcHJvZykKQEAgLTgz
-OTUsNiArODM5NCw5IEBAIHN0YXRpYyBzdHJ1Y3Qgc2tfYnVmZiAqaWdiX3J1bl94ZHAoc3RydWN0
-IGlnYl9hZGFwdGVyICphZGFwdGVyLAogCiAJcHJlZmV0Y2h3KHhkcC0+ZGF0YV9oYXJkX3N0YXJ0
-KTsgLyogeGRwX2ZyYW1lIHdyaXRlICovCiAKKwkvKiBUaGlzIGNvZGUgaXMgaW52b2tlZCB3aXRo
-aW4gYSBzaW5nbGUgTkFQSSBwb2xsIGN5Y2xlIGFuZCB0aHVzIHVuZGVyCisJICogbG9jYWxfYmhf
-ZGlzYWJsZSgpLCB3aGljaCBwcm92aWRlcyB0aGUgbmVlZGVkIFJDVSBwcm90ZWN0aW9uLgorCSAq
-LwogCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7CiAJc3dpdGNoIChhY3Qp
-IHsKIAljYXNlIFhEUF9QQVNTOgpAQCAtODQyMCw3ICs4NDIyLDYgQEAgc3RhdGljIHN0cnVjdCBz
-a19idWZmICppZ2JfcnVuX3hkcChzdHJ1Y3QgaWdiX2FkYXB0ZXIgKmFkYXB0ZXIsCiAJCWJyZWFr
-OwogCX0KIHhkcF9vdXQ6Ci0JcmN1X3JlYWRfdW5sb2NrKCk7CiAJcmV0dXJuIEVSUl9QVFIoLXJl
-c3VsdCk7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9p
-Z2NfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19tYWluLmMKaW5k
-ZXggZWE5OThkMmRlZmE0Li4zMzMwNTdjZTYwYzcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2lnYy9pZ2NfbWFpbi5jCkBAIC0yMTc1LDE4ICsyMTc1LDE4IEBAIHN0YXRpYyBzdHJ1Y3Qg
-c2tfYnVmZiAqaWdjX3hkcF9ydW5fcHJvZyhzdHJ1Y3QgaWdjX2FkYXB0ZXIgKmFkYXB0ZXIsCiAJ
-c3RydWN0IGJwZl9wcm9nICpwcm9nOwogCWludCByZXM7CiAKLQlyY3VfcmVhZF9sb2NrKCk7Ci0K
-IAlwcm9nID0gUkVBRF9PTkNFKGFkYXB0ZXItPnhkcF9wcm9nKTsKIAlpZiAoIXByb2cpIHsKIAkJ
-cmVzID0gSUdDX1hEUF9QQVNTOwotCQlnb3RvIHVubG9jazsKKwkJZ290byBvdXQ7CiAJfQogCisJ
-LyogVGhpcyBjb2RlIGlzIGludm9rZWQgd2l0aGluIGEgc2luZ2xlIE5BUEkgcG9sbCBjeWNsZSBh
-bmQgdGh1cyB1bmRlcgorCSAqIGxvY2FsX2JoX2Rpc2FibGUoKSwgd2hpY2ggcHJvdmlkZXMgdGhl
-IG5lZWRlZCBSQ1UgcHJvdGVjdGlvbi4KKwkgKi8KIAlyZXMgPSBfX2lnY194ZHBfcnVuX3Byb2co
-YWRhcHRlciwgcHJvZywgeGRwKTsKIAotdW5sb2NrOgotCXJjdV9yZWFkX3VubG9jaygpOworb3V0
-OgogCXJldHVybiBFUlJfUFRSKC1yZXMpOwogfQogCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9peGdiZS9peGdiZV9tYWluLmMKaW5kZXggYzVlYzE3ZDE5YzU5Li45Y2ViZTc4OTQxMTEg
-MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4u
-YworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKQEAg
-LTIxOTksNyArMjE5OSw2IEBAIHN0YXRpYyBzdHJ1Y3Qgc2tfYnVmZiAqaXhnYmVfcnVuX3hkcChz
-dHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAlzdHJ1Y3QgeGRwX2ZyYW1lICp4ZHBmOwog
-CXUzMiBhY3Q7CiAKLQlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cgPSBSRUFEX09OQ0Uocnhf
-cmluZy0+eGRwX3Byb2cpOwogCiAJaWYgKCF4ZHBfcHJvZykKQEAgLTIyMDcsNiArMjIwNiw5IEBA
-IHN0YXRpYyBzdHJ1Y3Qgc2tfYnVmZiAqaXhnYmVfcnVuX3hkcChzdHJ1Y3QgaXhnYmVfYWRhcHRl
-ciAqYWRhcHRlciwKIAogCXByZWZldGNodyh4ZHAtPmRhdGFfaGFyZF9zdGFydCk7IC8qIHhkcF9m
-cmFtZSB3cml0ZSAqLwogCisJLyogVGhpcyBjb2RlIGlzIGludm9rZWQgd2l0aGluIGEgc2luZ2xl
-IE5BUEkgcG9sbCBjeWNsZSBhbmQgdGh1cyB1bmRlcgorCSAqIGxvY2FsX2JoX2Rpc2FibGUoKSwg
-d2hpY2ggcHJvdmlkZXMgdGhlIG5lZWRlZCBSQ1UgcHJvdGVjdGlvbi4KKwkgKi8KIAlhY3QgPSBi
-cGZfcHJvZ19ydW5feGRwKHhkcF9wcm9nLCB4ZHApOwogCXN3aXRjaCAoYWN0KSB7CiAJY2FzZSBY
-RFBfUEFTUzoKQEAgLTIyMzcsNyArMjIzOSw2IEBAIHN0YXRpYyBzdHJ1Y3Qgc2tfYnVmZiAqaXhn
-YmVfcnVuX3hkcChzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAkJYnJlYWs7CiAJfQog
-eGRwX291dDoKLQlyY3VfcmVhZF91bmxvY2soKTsKIAlyZXR1cm4gRVJSX1BUUigtcmVzdWx0KTsK
-IH0KIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVf
-eHNrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYwppbmRl
-eCA5MWFkNWI5MDI2NzMuLjRhMDc1ZTY2NzA4MiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMKQEAgLTEwMCwxNSArMTAwLDE1IEBAIHN0YXRpYyBpbnQg
-aXhnYmVfcnVuX3hkcF96YyhzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAlzdHJ1Y3Qg
-eGRwX2ZyYW1lICp4ZHBmOwogCXUzMiBhY3Q7CiAKLQlyY3VfcmVhZF9sb2NrKCk7CisJLyogVGhp
-cyBjb2RlIGlzIGludm9rZWQgd2l0aGluIGEgc2luZ2xlIE5BUEkgcG9sbCBjeWNsZSBhbmQgdGh1
-cyB1bmRlcgorCSAqIGxvY2FsX2JoX2Rpc2FibGUoKSwgd2hpY2ggcHJvdmlkZXMgdGhlIG5lZWRl
-ZCBSQ1UgcHJvdGVjdGlvbi4KKwkgKi8KIAl4ZHBfcHJvZyA9IFJFQURfT05DRShyeF9yaW5nLT54
-ZHBfcHJvZyk7CiAJYWN0ID0gYnBmX3Byb2dfcnVuX3hkcCh4ZHBfcHJvZywgeGRwKTsKIAogCWlm
-IChsaWtlbHkoYWN0ID09IFhEUF9SRURJUkVDVCkpIHsKIAkJZXJyID0geGRwX2RvX3JlZGlyZWN0
-KHJ4X3JpbmctPm5ldGRldiwgeGRwLCB4ZHBfcHJvZyk7Ci0JCXJlc3VsdCA9ICFlcnIgPyBJWEdC
-RV9YRFBfUkVESVIgOiBJWEdCRV9YRFBfQ09OU1VNRUQ7Ci0JCXJjdV9yZWFkX3VubG9jaygpOwot
-CQlyZXR1cm4gcmVzdWx0OworCQlyZXR1cm4gIWVyciA/IElYR0JFX1hEUF9SRURJUiA6IElYR0JF
-X1hEUF9DT05TVU1FRDsKIAl9CiAKIAlzd2l0Y2ggKGFjdCkgewpAQCAtMTMyLDcgKzEzMiw2IEBA
-IHN0YXRpYyBpbnQgaXhnYmVfcnVuX3hkcF96YyhzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRl
-ciwKIAkJcmVzdWx0ID0gSVhHQkVfWERQX0NPTlNVTUVEOwogCQlicmVhazsKIAl9Ci0JcmN1X3Jl
-YWRfdW5sb2NrKCk7CiAJcmV0dXJuIHJlc3VsdDsKIH0KIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2l4Z2JldmYvaXhnYmV2Zl9tYWluLmMKaW5kZXggYmEyZWQ4YTQzZDJkLi5h
-YjA1ZWJjM2QzNTAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
-dmYvaXhnYmV2Zl9tYWluLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2
-Zi9peGdiZXZmX21haW4uYwpAQCAtMTA1NCwxMiArMTA1NCwxNCBAQCBzdGF0aWMgc3RydWN0IHNr
-X2J1ZmYgKml4Z2JldmZfcnVuX3hkcChzdHJ1Y3QgaXhnYmV2Zl9hZGFwdGVyICphZGFwdGVyLAog
-CXN0cnVjdCBicGZfcHJvZyAqeGRwX3Byb2c7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2so
-KTsKIAl4ZHBfcHJvZyA9IFJFQURfT05DRShyeF9yaW5nLT54ZHBfcHJvZyk7CiAKIAlpZiAoIXhk
-cF9wcm9nKQogCQlnb3RvIHhkcF9vdXQ7CiAKKwkvKiBUaGlzIGNvZGUgaXMgaW52b2tlZCB3aXRo
-aW4gYSBzaW5nbGUgTkFQSSBwb2xsIGN5Y2xlIGFuZCB0aHVzIHVuZGVyCisJICogbG9jYWxfYmhf
-ZGlzYWJsZSgpLCB3aGljaCBwcm92aWRlcyB0aGUgbmVlZGVkIFJDVSBwcm90ZWN0aW9uLgorCSAq
-LwogCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7CiAJc3dpdGNoIChhY3Qp
-IHsKIAljYXNlIFhEUF9QQVNTOgpAQCAtMTA3OSw3ICsxMDgxLDYgQEAgc3RhdGljIHN0cnVjdCBz
-a19idWZmICppeGdiZXZmX3J1bl94ZHAoc3RydWN0IGl4Z2JldmZfYWRhcHRlciAqYWRhcHRlciwK
-IAkJYnJlYWs7CiAJfQogeGRwX291dDoKLQlyY3VfcmVhZF91bmxvY2soKTsKIAlyZXR1cm4gRVJS
-X1BUUigtcmVzdWx0KTsKIH0KIAotLSAKMi4zMS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVs
-LXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+The devlink dev info command reports version information about the
+device and firmware running on the board. This includes the "board.id"
+field which is supposed to represent an identifier of the board design.
+The ice driver uses the Product Board Assembly identifier for this.
+
+In some cases, the PBA is not present in the NVM. If this happens,
+devlink dev info will fail with an error. Instead, modify the
+ice_info_pba function to just exit without filling in the context
+buffer. This will cause the board.id field to be skipped. Log a dev_dbg
+message in case someone wants to confirm why board.id is not showing up
+for them.
+
+While at it, notice that none of the getter/fallback() functions report
+an error anymore. Convert the interface to a void so that it is no
+longer possible to add a version field that is fatal. This makes sense,
+because we should not fail to report other versions just because one of
+the version pieces could not be found.
+
+Finally, clean up the getter functions line wrapping so that none of
+them take more than 80 columns, as is the usual style for networking
+files.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 137 +++++++------------
+ 1 file changed, 53 insertions(+), 84 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index cf685eeea198..ba6d375d696f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -22,7 +22,7 @@ struct ice_info_ctx {
+  *
+  * If a version does not exist, for example when attempting to get the
+  * inactive version of flash when there is no pending update, the function
+- * should leave the buffer in the ctx structure empty and return 0.
++ * should leave the buffer in the ctx structure empty.
+  */
+ 
+ static void ice_info_get_dsn(struct ice_pf *pf, struct ice_info_ctx *ctx)
+@@ -35,156 +35,137 @@ static void ice_info_get_dsn(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%8phD", dsn);
+ }
+ 
+-static int ice_info_pba(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_pba(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 	enum ice_status status;
+ 
+ 	status = ice_read_pba_string(hw, (u8 *)ctx->buf, sizeof(ctx->buf));
+ 	if (status)
+-		return -EIO;
+-
+-	return 0;
++		/* We failed to locate the PBA, so just skip this entry */
++		dev_dbg(ice_pf_to_dev(pf), "Failed to read Product Board Assembly string, status %s\n",
++			ice_stat_str(status));
+ }
+ 
+-static int ice_info_fw_mgmt(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_fw_mgmt(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 
+-	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u", hw->fw_maj_ver, hw->fw_min_ver,
+-		 hw->fw_patch);
+-
+-	return 0;
++	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u",
++		 hw->fw_maj_ver, hw->fw_min_ver, hw->fw_patch);
+ }
+ 
+-static int ice_info_fw_api(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_fw_api(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 
+-	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u", hw->api_maj_ver, hw->api_min_ver);
+-
+-	return 0;
++	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u",
++		 hw->api_maj_ver, hw->api_min_ver);
+ }
+ 
+-static int ice_info_fw_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_fw_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", hw->fw_build);
+-
+-	return 0;
+ }
+ 
+-static int ice_info_orom_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_orom_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_orom_info *orom = &pf->hw.flash.orom;
+ 
+-	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u", orom->major, orom->build, orom->patch);
+-
+-	return 0;
++	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u",
++		 orom->major, orom->build, orom->patch);
+ }
+ 
+-static int
+-ice_info_pending_orom_ver(struct ice_pf __always_unused *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_pending_orom_ver(struct ice_pf __always_unused *pf,
++			  struct ice_info_ctx *ctx)
+ {
+ 	struct ice_orom_info *orom = &ctx->pending_orom;
+ 
+ 	if (ctx->dev_caps.common_cap.nvm_update_pending_orom)
+ 		snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u",
+ 			 orom->major, orom->build, orom->patch);
+-
+-	return 0;
+ }
+ 
+-static int ice_info_nvm_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_nvm_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_nvm_info *nvm = &pf->hw.flash.nvm;
+ 
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x", nvm->major, nvm->minor);
+-
+-	return 0;
+ }
+ 
+-static int
+-ice_info_pending_nvm_ver(struct ice_pf __always_unused *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_pending_nvm_ver(struct ice_pf __always_unused *pf,
++			 struct ice_info_ctx *ctx)
+ {
+ 	struct ice_nvm_info *nvm = &ctx->pending_nvm;
+ 
+ 	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm)
+-		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x", nvm->major, nvm->minor);
+-
+-	return 0;
++		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x",
++			 nvm->major, nvm->minor);
+ }
+ 
+-static int ice_info_eetrack(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_eetrack(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_nvm_info *nvm = &pf->hw.flash.nvm;
+ 
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm->eetrack);
+-
+-	return 0;
+ }
+ 
+-static int
+-ice_info_pending_eetrack(struct ice_pf __always_unused *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_pending_eetrack(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_nvm_info *nvm = &ctx->pending_nvm;
+ 
+ 	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm)
+ 		snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm->eetrack);
+-
+-	return 0;
+ }
+ 
+-static int ice_info_ddp_pkg_name(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_ddp_pkg_name(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_hw *hw = &pf->hw;
+ 
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%s", hw->active_pkg_name);
+-
+-	return 0;
+ }
+ 
+-static int ice_info_ddp_pkg_version(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_ddp_pkg_version(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_pkg_ver *pkg = &pf->hw.active_pkg_ver;
+ 
+-	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u.%u", pkg->major, pkg->minor, pkg->update,
+-		 pkg->draft);
+-
+-	return 0;
++	snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u.%u",
++		 pkg->major, pkg->minor, pkg->update, pkg->draft);
+ }
+ 
+-static int ice_info_ddp_pkg_bundle_id(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_ddp_pkg_bundle_id(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", pf->hw.active_track_id);
+-
+-	return 0;
+ }
+ 
+-static int ice_info_netlist_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_netlist_ver(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_netlist_info *netlist = &pf->hw.flash.netlist;
+ 
+ 	/* The netlist version fields are BCD formatted */
+-	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x-%x.%x.%x", netlist->major, netlist->minor,
+-		 netlist->type >> 16, netlist->type & 0xFFFF, netlist->rev,
+-		 netlist->cust_ver);
+-
+-	return 0;
++	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x-%x.%x.%x",
++		 netlist->major, netlist->minor,
++		 netlist->type >> 16, netlist->type & 0xFFFF,
++		 netlist->rev, netlist->cust_ver);
+ }
+ 
+-static int ice_info_netlist_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
++static void ice_info_netlist_build(struct ice_pf *pf, struct ice_info_ctx *ctx)
+ {
+ 	struct ice_netlist_info *netlist = &pf->hw.flash.netlist;
+ 
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", netlist->hash);
+-
+-	return 0;
+ }
+ 
+-static int
+-ice_info_pending_netlist_ver(struct ice_pf __always_unused *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_pending_netlist_ver(struct ice_pf __always_unused *pf,
++			     struct ice_info_ctx *ctx)
+ {
+ 	struct ice_netlist_info *netlist = &ctx->pending_netlist;
+ 
+@@ -192,21 +173,18 @@ ice_info_pending_netlist_ver(struct ice_pf __always_unused *pf, struct ice_info_
+ 	if (ctx->dev_caps.common_cap.nvm_update_pending_netlist)
+ 		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x-%x.%x.%x",
+ 			 netlist->major, netlist->minor,
+-			 netlist->type >> 16, netlist->type & 0xFFFF, netlist->rev,
+-			 netlist->cust_ver);
+-
+-	return 0;
++			 netlist->type >> 16, netlist->type & 0xFFFF,
++			 netlist->rev, netlist->cust_ver);
+ }
+ 
+-static int
+-ice_info_pending_netlist_build(struct ice_pf __always_unused *pf, struct ice_info_ctx *ctx)
++static void
++ice_info_pending_netlist_build(struct ice_pf __always_unused *pf,
++			       struct ice_info_ctx *ctx)
+ {
+ 	struct ice_netlist_info *netlist = &ctx->pending_netlist;
+ 
+ 	if (ctx->dev_caps.common_cap.nvm_update_pending_netlist)
+ 		snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", netlist->hash);
+-
+-	return 0;
+ }
+ 
+ #define fixed(key, getter) { ICE_VERSION_FIXED, key, getter, NULL }
+@@ -236,8 +214,8 @@ enum ice_version_type {
+ static const struct ice_devlink_version {
+ 	enum ice_version_type type;
+ 	const char *key;
+-	int (*getter)(struct ice_pf *pf, struct ice_info_ctx *ctx);
+-	int (*fallback)(struct ice_pf *pf, struct ice_info_ctx *ctx);
++	void (*getter)(struct ice_pf *pf, struct ice_info_ctx *ctx);
++	void (*fallback)(struct ice_pf *pf, struct ice_info_ctx *ctx);
+ } ice_devlink_versions[] = {
+ 	fixed(DEVLINK_INFO_VERSION_GENERIC_BOARD_ID, ice_info_pba),
+ 	running(DEVLINK_INFO_VERSION_GENERIC_FW_MGMT, ice_info_fw_mgmt),
+@@ -340,24 +318,15 @@ static int ice_devlink_info_get(struct devlink *devlink,
+ 
+ 		memset(ctx->buf, 0, sizeof(ctx->buf));
+ 
+-		err = ice_devlink_versions[i].getter(pf, ctx);
+-		if (err) {
+-			NL_SET_ERR_MSG_MOD(extack, "Unable to obtain version info");
+-			goto out_free_ctx;
+-		}
++		ice_devlink_versions[i].getter(pf, ctx);
+ 
+ 		/* If the default getter doesn't report a version, use the
+ 		 * fallback function. This is primarily useful in the case of
+ 		 * "stored" versions that want to report the same value as the
+ 		 * running version in the normal case of no pending update.
+ 		 */
+-		if (ctx->buf[0] == '\0' && ice_devlink_versions[i].fallback) {
+-			err = ice_devlink_versions[i].fallback(pf, ctx);
+-			if (err) {
+-				NL_SET_ERR_MSG_MOD(extack, "Unable to obtain version info");
+-				goto out_free_ctx;
+-			}
+-		}
++		if (ctx->buf[0] == '\0' && ice_devlink_versions[i].fallback)
++			ice_devlink_versions[i].fallback(pf, ctx);
+ 
+ 		/* Do not report missing versions */
+ 		if (ctx->buf[0] == '\0')
+
+base-commit: 0fb695405d6a624582cb07f8009f37ccae78c250
+-- 
+2.31.1.331.gb0c09ab8796f
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
