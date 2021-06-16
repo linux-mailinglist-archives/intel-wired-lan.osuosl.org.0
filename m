@@ -1,92 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34B933AA4BF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Jun 2021 21:53:57 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 043523AA774
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 01:28:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BFB6F406B9;
-	Wed, 16 Jun 2021 19:53:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6BC6783C58;
+	Wed, 16 Jun 2021 23:28:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bpFDVStanidK; Wed, 16 Jun 2021 19:53:54 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UfSgpfH7q9Q6; Wed, 16 Jun 2021 23:28:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9C43940234;
-	Wed, 16 Jun 2021 19:53:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8F73C8354D;
+	Wed, 16 Jun 2021 23:28:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8E6271BF45A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 19:53:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CF3361BF42E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 23:27:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7D33560797
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 19:53:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BCE7160A97
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 23:27:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=chromium.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RtbUHXVAoWJx for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Jun 2021 19:53:48 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com
- [IPv6:2607:f8b0:4864:20::633])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DD40560771
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 19:53:48 +0000 (UTC)
-Received: by mail-pl1-x633.google.com with SMTP id h12so1676259plf.4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 12:53:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NzHup0H6Vegu59qU+atIUwPpdONAxlTyUHNty9ohr3s=;
- b=CSCRXMIMvz3qd+sf9SNCKVEfrrcvoVXugabEeD9iBEFHR2z5bA1g/qwK3IelLRbF+0
- vEKoMhMXQX6ULMQAY6b8FyNwUnMea8CB9dWCEnjp+48WQk4LX6Lx5XI9k9f7KnXDkEH8
- kx4+c+y4jvdbtVYjL7hpxDJEDhVtJzK4AZx6Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NzHup0H6Vegu59qU+atIUwPpdONAxlTyUHNty9ohr3s=;
- b=h8OoibciinFsZZfRS8KVFnATSEcfvp2V+pfjFU0EVvW5mzTlVPhf4AxSR9IfMqSl1G
- UT22txxFUK1KXCEovW3/3gODlpoi8AuXkxgmMsK/NuJsM41Sq3VmKCFRKSstyOeRY/1W
- hbUu4245v/2FO2MjDE5olsMfDUheicxMA2trUFtPx6mXV7IYTYUFiG408cXH5X7q920v
- pjkcpemyDmlLN95bgtQ9/bk54wBWdJlkrhPpnNaRr9kRT3D2JnK1l9lUw6rXnLgZVJLZ
- j8rVglYWi4hKhR0CW0jzlHH3clvTKee6KScXKci4TvBL9obEU9g/BV3mgT/LnE94tQU/
- wnZQ==
-X-Gm-Message-State: AOAM532rdVxaK9FL+33VGED39Ef9gs+JGmL4auUVcxZE/E0anLkn2qRM
- MSoGC/AE5hTgc+broU6pneOIbA==
-X-Google-Smtp-Source: ABdhPJy/Y52NcvPMMjqRk40SyVKghvJv+lgF6vsqbYRpbjyBW3HMlkExU8OnZrsBDz31Np3iOpPS7A==
-X-Received: by 2002:a17:90b:3e89:: with SMTP id
- rj9mr1523673pjb.114.1623873228411; 
- Wed, 16 Jun 2021 12:53:48 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id f15sm3007836pgg.23.2021.06.16.12.53.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 12:53:47 -0700 (PDT)
-From: Kees Cook <keescook@chromium.org>
-To: netdev@vger.kernel.org
-Date: Wed, 16 Jun 2021 12:53:44 -0700
-Message-Id: <20210616195344.1231850-1-keescook@chromium.org>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id FtQvwoUq9Pve for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Jun 2021 23:27:55 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 77213607A7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Jun 2021 23:27:54 +0000 (UTC)
+IronPort-SDR: U1yvMNcLvIQaDEYStTn0kAjHR2IWGQS0iA/yIp+lXWUYr15upCUwDdFqFscEEnzHkEcEHKBL64
+ Hio9W8kAUi/g==
+X-IronPort-AV: E=McAfee;i="6200,9189,10017"; a="227779999"
+X-IronPort-AV: E=Sophos;i="5.83,278,1616482800"; d="scan'208";a="227779999"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jun 2021 16:27:53 -0700
+IronPort-SDR: c/uhERQyM+sCgOUqZHbGxAylMWWwjSLqhn+8dqVDprMkHlPe6u7GA6VFA4cVP64YtyRNR/QyBq
+ +DtCdxpl9d1A==
+X-IronPort-AV: E=Sophos;i="5.83,278,1616482800"; d="scan'208";a="479269628"
+Received: from jekeller-mobl1.amr.corp.intel.com (HELO [10.209.42.204])
+ ([10.209.42.204])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jun 2021 16:27:52 -0700
+To: Colin King <colin.king@canonical.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+References: <20210615142847.60161-1-colin.king@canonical.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+Organization: Intel Corporation
+Message-ID: <2a347503-9879-0a13-555b-a007acfdec3c@intel.com>
+Date: Wed, 16 Jun 2021 16:27:50 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Patch-Hashes: v=1; h=sha256; g=4478c5fecbde1e0721ac67faca5780db5a883da6;
- i=fkpCCG3twRCnzgbx6tnA60/xgpLIFo7OVVMVyUOI52M=;
- m=CF57NG64wUjRAJMr07rJpYR31VG7hNQuEGsWk+kxwfo=;
- p=0rZkHGyxgtrru4XR+5wKed0CXqik4Lmw7Ni3XpznuwU=
-X-Patch-Sig: m=pgp; i=keescook@chromium.org; s=0x0x8972F4DFDC6DC026;
- b=iQIzBAABCgAdFiEEpcP2jyKd1g9yPm4TiXL039xtwCYFAmDKVsgACgkQiXL039xtwCZCeg/+P5j
- WLT5CuaEh2UcftJai0qrhkuUHyev0+BVMDvbeGZ6VdaLbvqmcqsXRhc1JsJSOwLFJj851Nvc6a/Ty
- 5oVLkVa3RW6qr1UsR/9B5jnnm2DPI2+d4dBhHWRTDC8seJIIbKzKp1cOnJydFG97c8/uHgMyhPJap
- k/Yk3IrFJVLuGGwhmbdf0VXquNch9ph6x8pZBJRUi35mEmIVw1KTI2T8/obkd3I8jJsVwLlM1CxT3
- SXVtX2nU1pZY3xjqVF0oNdiLz5gl/4crHtt4VXXpyh8Q391+4ypojwRYXZyYyqxhBYmMek1igCKZ/
- Zwnat30HmlP5PWJayhnv01I7BUt/GQmvc4JPWm1qE9mbNAEKrGg3tIYSyMg4egu1pmh+Kd9gQpztt
- PMABu0r+VJdpq5TvpdckyZeo59jc4mOr797arZQ6gnmDWTPH/TLJDRCo/Q3WLHHqtk02oYhji3Set
- BGA+1hbRyfeiVgU1eA0tCl8iVwVdJRfMp9rJSS66qZJm5W0gEhH3BuOpZEYaECDA4OBcv3GYgCSsF
- nRkzfc0TqXP4vpBQiRdtj7dgoHFvfXPncL4H6lZ3zpNybTWwEOvbX708tq3DIlpm4cO7ZjghyZvoM
- 2xFRSxsCBcbrlP1eV5jxudJx3jLaAnA91nGp3wXIz4vFx++il4A05k5BsW3Nm940=
-Subject: [Intel-wired-lan] [PATCH] e100: Avoid memcpy() over-reading of
- ETH_SS_STATS
+In-Reply-To: <20210615142847.60161-1-colin.king@canonical.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH][next] ice: remove redundant continue
+ statement in a for-loop
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,47 +74,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kees Cook <keescook@chromium.org>, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation for FORTIFY_SOURCE performing compile-time and run-time
-field bounds checking for memcpy(), memmove(), and memset(), avoid
-intentionally reading across neighboring array fields.
 
-The memcpy() is copying the entire structure, not just the first array.
-Adjust the source argument so the compiler can do appropriate bounds
-checking.
 
-Signed-off-by: Kees Cook <keescook@chromium.org>
----
- drivers/net/ethernet/intel/e100.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 6/15/2021 7:28 AM, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> The continue statement in the for-loop is redundant. Re-work the hw_lock
+> check to remove it.
+> 
+> Addresses-Coverity: ("Continue has no effect")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
 
-diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 1b0958bd24f6..1ec924c556c5 100644
---- a/drivers/net/ethernet/intel/e100.c
-+++ b/drivers/net/ethernet/intel/e100.c
-@@ -2715,10 +2715,10 @@ static void e100_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- {
- 	switch (stringset) {
- 	case ETH_SS_TEST:
--		memcpy(data, *e100_gstrings_test, sizeof(e100_gstrings_test));
-+		memcpy(data, e100_gstrings_test, sizeof(e100_gstrings_test));
- 		break;
- 	case ETH_SS_STATS:
--		memcpy(data, *e100_gstrings_stats, sizeof(e100_gstrings_stats));
-+		memcpy(data, e100_gstrings_stats, sizeof(e100_gstrings_stats));
- 		break;
- 	}
- }
--- 
-2.25.1
+Yep, that logic makes more sense.
 
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> index 267312fad59a..3eca0e4eab0b 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> @@ -410,13 +410,11 @@ bool ice_ptp_lock(struct ice_hw *hw)
+>  	for (i = 0; i < MAX_TRIES; i++) {
+>  		hw_lock = rd32(hw, PFTSYN_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
+>  		hw_lock = hw_lock & PFTSYN_SEM_BUSY_M;
+> -		if (hw_lock) {
+> -			/* Somebody is holding the lock */
+> -			usleep_range(10000, 20000);
+> -			continue;
+> -		} else {
+> +		if (!hw_lock)
+>  			break;
+> -		}
+> +
+> +		/* Somebody is holding the lock */
+> +		usleep_range(10000, 20000);
+>  	}
+>  
+>  	return !hw_lock;
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
