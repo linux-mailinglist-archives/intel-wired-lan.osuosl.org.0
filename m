@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F3D33ABB85
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:42 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D979B3ABB87
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B705742280;
-	Thu, 17 Jun 2021 18:24:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2371560E94;
+	Thu, 17 Jun 2021 18:24:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qXQFNXBKlUW8; Thu, 17 Jun 2021 18:24:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 779Y-AYf15tk; Thu, 17 Jun 2021 18:24:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 952AD4227A;
-	Thu, 17 Jun 2021 18:24:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3259060E88;
+	Thu, 17 Jun 2021 18:24:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 836A91BF339
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B9AC1BF339
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7F35283ED3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8A06F83ED4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ex1W1-Zgk3lW for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jun 2021 18:24:05 +0000 (UTC)
+ with ESMTP id v5dHxFzqQYTM for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jun 2021 18:24:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D22C983ECE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:04 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6035283ED3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623954243;
+ s=mimecast20190719; t=1623954250;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yGtGwjM0HqOorIAs5Vljr+3B7rxAzLOFx0Bg3o4IjhM=;
- b=Wtb+d6j+aGY/6H6DsaGASkO1RTYo/fLcOtTXJbJ5jlLI4smqTYrwUqd7HHRFUjgZnQIZ3f
- EZasd0lQdN0x3Ali1sKNqapf+qUTC1D9GsyrFyWQwkyloaiWsvUX6LEnTfddo26ZmBmdQy
- uke8U9Z6c9TVWjdocmS37CdStlir/HA=
+ bh=zdhH/7GSsMcK5gWWa+Gk4osz1ePkb7fUnCltv6ZYe7Q=;
+ b=V76r5ABnCSvZDtqzhIqI91H+hZAA7jKbU+M9sNyl2Og86QCRh9YMzF/LZqa5kRR7nkuzzg
+ PTOpFCpb01me6M9R5Vfcxf0ELj2uq5CzHbSxvuS5ew7ocT/Gj6D4uARN4Tdu67meWGAiDF
+ XX2VGIXLVoroWkYRpFJhMALQrujvuoY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-239-0R0f6V6_PCKTQDqRXIZhfQ-1; Thu, 17 Jun 2021 14:23:57 -0400
-X-MC-Unique: 0R0f6V6_PCKTQDqRXIZhfQ-1
+ us-mta-406-PLp3f9dKOiSzzVnrxKVwLQ-1; Thu, 17 Jun 2021 14:24:08 -0400
+X-MC-Unique: PLp3f9dKOiSzzVnrxKVwLQ-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43D54100C619;
- Thu, 17 Jun 2021 18:23:51 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CD121084F47;
+ Thu, 17 Jun 2021 18:24:04 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0CFCF60C05;
- Thu, 17 Jun 2021 18:23:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C82861140;
+ Thu, 17 Jun 2021 18:23:51 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -80,14 +80,14 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  jassisinghbrar@gmail.com, luobin9@huawei.com, ajit.khaparde@broadcom.com,
  sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
  nilal@redhat.com
-Date: Thu, 17 Jun 2021 14:22:34 -0400
-Message-Id: <20210617182242.8637-7-nitesh@redhat.com>
+Date: Thu, 17 Jun 2021 14:22:35 -0400
+Message-Id: <20210617182242.8637-8-nitesh@redhat.com>
 In-Reply-To: <20210617182242.8637-1-nitesh@redhat.com>
 References: <20210617182242.8637-1-nitesh@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mailman-Approved-At: Thu, 17 Jun 2021 18:24:31 +0000
-Subject: [Intel-wired-lan] [PATCH v1 06/14] RDMA/i40iw: Use
+Subject: [Intel-wired-lan] [PATCH v1 07/14] enic: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -119,31 +119,35 @@ that only updates the affinity_hint pointer.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/infiniband/hw/i40iw/i40iw_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/cisco/enic/enic_main.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/infiniband/hw/i40iw/i40iw_main.c b/drivers/infiniband/hw/i40iw/i40iw_main.c
-index b496f30ce066..433d91c30cae 100644
---- a/drivers/infiniband/hw/i40iw/i40iw_main.c
-+++ b/drivers/infiniband/hw/i40iw/i40iw_main.c
-@@ -266,7 +266,7 @@ static void i40iw_disable_irq(struct i40iw_sc_dev *dev,
- 		i40iw_wr32(dev->hw, I40E_PFINT_DYN_CTLN(msix_vec->idx - 1), 0);
- 	else
- 		i40iw_wr32(dev->hw, I40E_VFINT_DYN_CTLN1(msix_vec->idx - 1), 0);
--	irq_set_affinity_hint(msix_vec->irq, NULL);
-+	irq_update_affinity_hint(msix_vec->irq, NULL);
- 	free_irq(msix_vec->irq, dev_id);
+diff --git a/drivers/net/ethernet/cisco/enic/enic_main.c b/drivers/net/ethernet/cisco/enic/enic_main.c
+index d0a8f7106958..29b7f0ab6b5e 100644
+--- a/drivers/net/ethernet/cisco/enic/enic_main.c
++++ b/drivers/net/ethernet/cisco/enic/enic_main.c
+@@ -150,10 +150,10 @@ static void enic_set_affinity_hint(struct enic *enic)
+ 		    !cpumask_available(enic->msix[i].affinity_mask) ||
+ 		    cpumask_empty(enic->msix[i].affinity_mask))
+ 			continue;
+-		err = irq_set_affinity_hint(enic->msix_entry[i].vector,
++		err = irq_update_affinity_hint(enic->msix_entry[i].vector,
+ 					    enic->msix[i].affinity_mask);
+ 		if (err)
+-			netdev_warn(enic->netdev, "irq_set_affinity_hint failed, err %d\n",
++			netdev_warn(enic->netdev, "irq_update_affinity_hint failed, err %d\n",
+ 				    err);
+ 	}
+ 
+@@ -173,7 +173,7 @@ static void enic_unset_affinity_hint(struct enic *enic)
+ 	int i;
+ 
+ 	for (i = 0; i < enic->intr_count; i++)
+-		irq_set_affinity_hint(enic->msix_entry[i].vector, NULL);
++		irq_update_affinity_hint(enic->msix_entry[i].vector, NULL);
  }
  
-@@ -696,7 +696,7 @@ static enum i40iw_status_code i40iw_configure_ceq_vector(struct i40iw_device *iw
- 
- 	cpumask_clear(&msix_vec->mask);
- 	cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
--	irq_set_affinity_hint(msix_vec->irq, &msix_vec->mask);
-+	irq_update_affinity_hint(msix_vec->irq, &msix_vec->mask);
- 
- 	if (status) {
- 		i40iw_pr_err("ceq irq config fail\n");
+ static int enic_udp_tunnel_set_port(struct net_device *netdev,
 -- 
 2.27.0
 
