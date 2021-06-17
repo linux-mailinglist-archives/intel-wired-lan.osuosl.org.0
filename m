@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D979B3ABB87
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 464413ABB8A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2371560E94;
-	Thu, 17 Jun 2021 18:24:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BCC22401DB;
+	Thu, 17 Jun 2021 18:24:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 779Y-AYf15tk; Thu, 17 Jun 2021 18:24:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id whhgOTYCjaXi; Thu, 17 Jun 2021 18:24:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3259060E88;
-	Thu, 17 Jun 2021 18:24:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D323A401D6;
+	Thu, 17 Jun 2021 18:24:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9B9AC1BF339
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C7CE71BF339
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8A06F83ED4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C2C3C60E88
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v5dHxFzqQYTM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jun 2021 18:24:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NEGaCpSmoYoK for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jun 2021 18:24:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6035283ED3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:11 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 161F560E86
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623954250;
+ s=mimecast20190719; t=1623954260;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zdhH/7GSsMcK5gWWa+Gk4osz1ePkb7fUnCltv6ZYe7Q=;
- b=V76r5ABnCSvZDtqzhIqI91H+hZAA7jKbU+M9sNyl2Og86QCRh9YMzF/LZqa5kRR7nkuzzg
- PTOpFCpb01me6M9R5Vfcxf0ELj2uq5CzHbSxvuS5ew7ocT/Gj6D4uARN4Tdu67meWGAiDF
- XX2VGIXLVoroWkYRpFJhMALQrujvuoY=
+ bh=rMqIBkdEXGlTcUEG0kKj8faaNsrXX5tYRRo5QyPGYzw=;
+ b=OHzhyMXIMJ5fKmquzjDOXlBnjXV/Lnj8MG+i7iD1JHHiQNKUcsBoe2xA3VavRU8saHpxz0
+ bAHVwq6/bw5/GXJW5FWiE6AJ4PMwwtP7Y89JjNRrveLo+tAhkZrbs89sf7Plt17p+uy7zQ
+ KTZ4mXTLzHySHIz5eUAJktqBIAX4LYY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-406-PLp3f9dKOiSzzVnrxKVwLQ-1; Thu, 17 Jun 2021 14:24:08 -0400
-X-MC-Unique: PLp3f9dKOiSzzVnrxKVwLQ-1
+ us-mta-217-GCfrhH0RPW6H-2tbd6OyUw-1; Thu, 17 Jun 2021 14:24:18 -0400
+X-MC-Unique: GCfrhH0RPW6H-2tbd6OyUw-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CD121084F47;
- Thu, 17 Jun 2021 18:24:04 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B0DF28018A7;
+ Thu, 17 Jun 2021 18:24:12 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5C82861140;
- Thu, 17 Jun 2021 18:23:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 450E760E3A;
+ Thu, 17 Jun 2021 18:24:04 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -80,14 +80,14 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  jassisinghbrar@gmail.com, luobin9@huawei.com, ajit.khaparde@broadcom.com,
  sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
  nilal@redhat.com
-Date: Thu, 17 Jun 2021 14:22:35 -0400
-Message-Id: <20210617182242.8637-8-nitesh@redhat.com>
+Date: Thu, 17 Jun 2021 14:22:36 -0400
+Message-Id: <20210617182242.8637-9-nitesh@redhat.com>
 In-Reply-To: <20210617182242.8637-1-nitesh@redhat.com>
 References: <20210617182242.8637-1-nitesh@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mailman-Approved-At: Thu, 17 Jun 2021 18:24:31 +0000
-Subject: [Intel-wired-lan] [PATCH v1 07/14] enic: Use
+Subject: [Intel-wired-lan] [PATCH v1 08/14] be2net: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -119,35 +119,31 @@ that only updates the affinity_hint pointer.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/net/ethernet/cisco/enic/enic_main.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/emulex/benet/be_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/cisco/enic/enic_main.c b/drivers/net/ethernet/cisco/enic/enic_main.c
-index d0a8f7106958..29b7f0ab6b5e 100644
---- a/drivers/net/ethernet/cisco/enic/enic_main.c
-+++ b/drivers/net/ethernet/cisco/enic/enic_main.c
-@@ -150,10 +150,10 @@ static void enic_set_affinity_hint(struct enic *enic)
- 		    !cpumask_available(enic->msix[i].affinity_mask) ||
- 		    cpumask_empty(enic->msix[i].affinity_mask))
- 			continue;
--		err = irq_set_affinity_hint(enic->msix_entry[i].vector,
-+		err = irq_update_affinity_hint(enic->msix_entry[i].vector,
- 					    enic->msix[i].affinity_mask);
- 		if (err)
--			netdev_warn(enic->netdev, "irq_set_affinity_hint failed, err %d\n",
-+			netdev_warn(enic->netdev, "irq_update_affinity_hint failed, err %d\n",
- 				    err);
+diff --git a/drivers/net/ethernet/emulex/benet/be_main.c b/drivers/net/ethernet/emulex/benet/be_main.c
+index b6eba29d8e99..7b7d97fcf008 100644
+--- a/drivers/net/ethernet/emulex/benet/be_main.c
++++ b/drivers/net/ethernet/emulex/benet/be_main.c
+@@ -3491,7 +3491,7 @@ static int be_msix_register(struct be_adapter *adapter)
+ 		if (status)
+ 			goto err_msix;
+ 
+-		irq_set_affinity_hint(vec, eqo->affinity_mask);
++		irq_update_affinity_hint(vec, eqo->affinity_mask);
  	}
  
-@@ -173,7 +173,7 @@ static void enic_unset_affinity_hint(struct enic *enic)
- 	int i;
+ 	return 0;
+@@ -3552,7 +3552,7 @@ static void be_irq_unregister(struct be_adapter *adapter)
+ 	/* MSIx */
+ 	for_all_evt_queues(adapter, eqo, i) {
+ 		vec = be_msix_vec_get(adapter, eqo);
+-		irq_set_affinity_hint(vec, NULL);
++		irq_update_affinity_hint(vec, NULL);
+ 		free_irq(vec, eqo);
+ 	}
  
- 	for (i = 0; i < enic->intr_count; i++)
--		irq_set_affinity_hint(enic->msix_entry[i].vector, NULL);
-+		irq_update_affinity_hint(enic->msix_entry[i].vector, NULL);
- }
- 
- static int enic_udp_tunnel_set_port(struct net_device *netdev,
 -- 
 2.27.0
 
