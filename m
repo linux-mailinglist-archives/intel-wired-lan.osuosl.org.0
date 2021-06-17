@@ -1,62 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 869813ABB79
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:13 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3B1F3ABB7B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jun 2021 20:24:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B4C6260E89;
-	Thu, 17 Jun 2021 18:24:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3803D401DB;
+	Thu, 17 Jun 2021 18:24:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FmsXSTYMhqIJ; Thu, 17 Jun 2021 18:24:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E3kRcQw-qRDc; Thu, 17 Jun 2021 18:24:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A477D60E88;
-	Thu, 17 Jun 2021 18:24:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 29ED1401D6;
+	Thu, 17 Jun 2021 18:24:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A3EB71BF339
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B94FF1C1178
  for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:23:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9E82B83D8B
+ by smtp2.osuosl.org (Postfix) with ESMTP id B521F40105
  for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:23:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DXv8XLRox8KH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jun 2021 18:23:14 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5lAWIoam4jV7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jun 2021 18:23:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A5DCF83ECE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:23:14 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9982D401D6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jun 2021 18:23:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623954193;
+ s=mimecast20190719; t=1623954194;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=zM68hbAHAIMOq7xMr7KE4zrDHYPaxIaEF68LhoRJqFo=;
- b=amhsLiSbiioMStGQ9D1bpY8F2dKPo+LfKfrmlPeSPdoTU+CKb64Y0jfdRa1WxXuZJAuiq4
- HNoynDXnycT2m6UJz2rRRKbOSRtd6/TdqPBVP9Zh3y9npp3/wyS5d6ZkQBHYvngcJKJ4gw
- eL/Oar4+qOphtBVfzcRLqlIAkO3VO5w=
+ to:to:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+fujp3QAK7toof5XH30ixthLfJis68X5x/5AvnoBsFI=;
+ b=M7srBX54bRHgHEbcqqouOMQnqFsAmAoCZbqwYaMNgHEQ8fwZd6Zzzs/eK/M4jnFmMuhJT8
+ h4DTr3X1BW0+Ti4ye+cSf1z8DAJpnomAKWYWX8ewmF3/ylQ/Faxwk5UYmItaLXu2thkbnR
+ VF19WJG+mbjzlQNWiefT9nBdvd9ugrE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-49-ZpU273kTOTWQ_4Ywm7JjkQ-1; Thu, 17 Jun 2021 14:23:10 -0400
-X-MC-Unique: ZpU273kTOTWQ_4Ywm7JjkQ-1
+ us-mta-536-3x-O830-NKiEp5d6bRD5zA-1; Thu, 17 Jun 2021 14:23:12 -0400
+X-MC-Unique: 3x-O830-NKiEp5d6bRD5zA-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D2940C7405;
- Thu, 17 Jun 2021 18:23:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9F4A1850600;
+ Thu, 17 Jun 2021 18:23:07 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9ED1860E3A;
- Thu, 17 Jun 2021 18:22:49 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EBBB261008;
+ Thu, 17 Jun 2021 18:23:03 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -79,13 +78,15 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  jassisinghbrar@gmail.com, luobin9@huawei.com, ajit.khaparde@broadcom.com,
  sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
  nilal@redhat.com
-Date: Thu, 17 Jun 2021 14:22:28 -0400
-Message-Id: <20210617182242.8637-1-nitesh@redhat.com>
+Date: Thu, 17 Jun 2021 14:22:29 -0400
+Message-Id: <20210617182242.8637-2-nitesh@redhat.com>
+In-Reply-To: <20210617182242.8637-1-nitesh@redhat.com>
+References: <20210617182242.8637-1-nitesh@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mailman-Approved-At: Thu, 17 Jun 2021 18:24:06 +0000
-Subject: [Intel-wired-lan] [PATCH v1 00/14] genirq: Cleanup the usage of
- irq_set_affinity_hint
+Subject: [Intel-wired-lan] [PATCH v1 01/14] genirq: Provide new interfaces
+ for affinity hints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,92 +99,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VGhlIGRyaXZlcnMgY3VycmVudGx5IHJlbHkgb24gaXJxX3NldF9hZmZpbml0eV9oaW50KCkgdG8g
-ZWl0aGVyIHNldCB0aGUKYWZmaW5pdHlfaGludCB0aGF0IGlzIGNvbnN1bWVkIGJ5IHRoZSB1c2Vy
-c3BhY2UgYW5kL29yIHRvIGVuZm9yY2UgYSBjdXN0b20KYWZmaW5pdHkuCgppcnFfc2V0X2FmZmlu
-aXR5X2hpbnQoKSBhcyB0aGUgbmFtZSBzdWdnZXN0cyBpcyBvcmlnaW5hbGx5IGludHJvZHVjZWQg
-dG8Kb25seSBzZXQgdGhlIGFmZmluaXR5X2hpbnQgdG8gaGVscCB0aGUgdXNlcnNwYWNlIGluIGd1
-aWRpbmcgdGhlIGludGVycnVwdHMKYW5kIG5vdCB0aGUgYWZmaW5pdHkgaXRzZWxmLiBIb3dldmVy
-LCBzaW5jZSB0aGUgY29tbWl0CgoJZTJlNjRhOTMyNTU2ICJnZW5pcnE6IFNldCBpbml0aWFsIGFm
-ZmluaXR5IGluIGlycV9zZXRfYWZmaW5pdHlfaGludCgpIgoKaXJxX3NldF9hZmZpbml0eV9oaW50
-KCkgYWxzbyBzdGFydGVkIGFwcGx5aW5nIHRoZSBwcm92aWRlZCBjcHVtYXNrIChpZiBub3QKTlVM
-TCkgYXMgdGhlIGFmZmluaXR5IGZvciB0aGUgaW50ZXJydXB0cy4gVGhlIGlzc3VlIHRoYXQgdGhp
-cyBjb21taXQgd2FzCnRyeWluZyB0byBzb2x2ZSBpcyB0byBhbGxvdyB0aGUgZHJpdmVycyB0byBl
-bmZvcmNlIHRoZWlyIGFmZmluaXR5IG1hc2sgdG8KZGlzdHJpYnV0ZSB0aGUgaW50ZXJydXB0cyBh
-Y3Jvc3MgdGhlIENQVXMgc3VjaCB0aGF0IHRoZXkgZG9uJ3QgYWx3YXlzIGVuZAp1cCBvbiBDUFUw
-LiBUaGlzIGlzc3VlIGhhcyBiZWVuIHJlc29sdmVkIHdpdGhpbiB0aGUgaXJxIHN1YnN5c3RlbSBz
-aW5jZSB0aGUKY29tbWl0CgoJYTBjOTI1OWRjNGUxICJpcnEvbWF0cml4OiBTcHJlYWQgaW50ZXJy
-dXB0cyBvbiBhbGxvY2F0aW9uIgoKSGVuY2UsIHRoZXJlIGlzIG5vIG5lZWQgZm9yIHRoZSBkcml2
-ZXJzIHRvIG92ZXJ3cml0ZSB0aGUgYWZmaW5pdHkgdG8gc3ByZWFkCmFzIGl0IGlzIGR5bmFtaWNh
-bGx5IHBlcmZvcm1lZCBhdCB0aGUgdGltZSBvZiBhbGxvY2F0aW9uLgoKQWxzbywgaXJxX3NldF9h
-ZmZpbml0eV9oaW50KCkgc2V0dGluZyBhZmZpbml0eSB1bmNvbmRpdGlvbmFsbHkgaW50cm9kdWNl
-cwppc3N1ZXMgZm9yIHRoZSBkcml2ZXJzIHRoYXQgb25seSB3YW50IHRvIHNldCB0aGVpciBhZmZp
-bml0eV9oaW50IGFuZCBub3QgdGhlCmFmZmluaXR5IGl0c2VsZiBhcyBmb3IgdGhlc2UgZHJpdmVy
-IGludGVycnVwdHMgdGhlIGRlZmF1bHRfc21wX2FmZmluaXR5X21hc2sKaXMgY29tcGxldGVseSBp
-Z25vcmVkIChmb3IgZGV0YWlsZWQgaW52ZXN0aWdhdGlvbiBwbGVhc2UgcmVmZXIgdG8gWzFdKS4K
-ClVuZm9ydHVuYXRlbHkgcmV2ZXJ0aW5nIHRoZSBjb21taXQgZTJlNjRhOTMyNTU2IGlzIG5vdCBh
-biBvcHRpb24gYXQgdGhpcwpwb2ludCBmb3IgdHdvIHJlYXNvbnMgWzJdOgoKLSBTZXZlcmFsIGRy
-aXZlcnMgZm9yIGEgdmFsaWQgcmVhc29uIChwZXJmb3JtYW5jZSkgcmVseSBvbiB0aGlzIEFQSSB0
-bwrCoCBlbmZvcmNlIHRoZWlyIG93biBhZmZpbml0eSBtYXNrCgotIFVudGlsIHZlcnkgcmVjZW50
-bHkgdGhpcyB3YXMgdGhlIG9ubHkgZXhwb3J0ZWQgaW50ZXJmYWNlIHRoYXQgd2FzCsKgIGF2YWls
-YWJsZQoKVG8gY2xlYXIgdGhpcyBvdXQgVGhvbWFzIGhhcyBjb21lIHVwIHdpdGggdGhlIGZvbGxv
-d2luZyBpbnRlcmZhY2VzOgoKLSBpcnFfc2V0X2FmZmluaXR5KCk6IG9ubHkgc2V0cyBhZmZpbml0
-eSBvZiBhbiBJUlEgWzNdCi0gaXJxX3VwZGF0ZV9hZmZpbml0eV9oaW50KCk6IE9ubHkgc2V0cyB0
-aGUgaGludCBbNF0KLSBpcnFfc2V0X2FmZmluaXR5X2FuZF9oaW50KCk6IFNldHMgYm90aCBhZmZp
-bml0eSBhbmQgdGhlIGhpbnQgbWFzayBbNF0KClRoZSBmaXJzdCBBUEkgaXMgYWxyZWFkeSBtZXJn
-ZWQgaW4gdGhlIGxpbnV4LW5leHQgdHJlZSBhbmQgYSB2MiBmb3IgdGhlCnJlbWFpbmluZyB0d28g
-aXMgaW5jbHVkZWQgd2l0aCB0aGlzIHBhdGNoLXNldC4KClRvIG1vdmUgdG8gdGhlIHN0YWdlIHdo
-ZXJlIHdlIGNhbiBzYWZlbHkgZ2V0IHJpZCBvZiB0aGUKaXJxX3NldF9hZmZpbml0eV9oaW50KCks
-IHdoaWNoIGhhcyBiZWVuIG1hcmtlZCBkZXByZWNhdGVkLCB3ZSBoYXZlIHRvCm1vdmUgYWxsIGl0
-cyBjb25zdW1lcnMgdG8gdGhlc2UgbmV3IGludGVyZmFjZXMuIEluIHRoaXMgcGF0Y2gtc2V0LCBJ
-IGhhdmUKZG9uZSB0aGF0IGZvciBhIGZldyBkcml2ZXJzIGFuZCB3aWxsIGhvcGVmdWxseSB0cnkg
-dG8gbW92ZSB0aGUgcmVtYWluaW5nIG9mCnRoZW0gaW4gdGhlIGNvbWluZyBkYXlzLgoKVGVzdGlu
-ZwotLS0tLS0tCkluIHRlcm1zIG9mIHRlc3RpbmcsIEkgaGF2ZSBwZXJmb3JtZWQgc29tZSBiYXNp
-YyB0ZXN0aW5nIG9uIHg4NiB0byB2ZXJpZnkKdGhpbmdzIHN1Y2ggYXMgdGhlIGludGVycnVwdHMg
-YXJlIGV2ZW5seSBzcHJlYWQgb24gYWxsIENQVXMsIGhpbnQgbWFzayBpcwpjb3JyZWN0bHkgc2V0
-IGV0Yy4gZm9yIHRoZSBkcml2ZXJzIC0gaTQwZSwgaWF2ZiwgbWx4NSwgbWx4NCwgaXhnYmUsIGk0
-MGl3CmFuZCBlbmljIG9uIHRvcCBvZjoKCWdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
-dXgva2VybmVsL2dpdC90aXAvdGlwLmdpdCAKCW1hc3RlciAtIDUuMTMuMC1yYzYKU28gbW9yZSB0
-ZXN0aW5nIGlzIHByb2JhYmx5IHJlcXVpcmVkIGZvciB0aGVzZSBhbmQgdGhlIGRyaXZlcnMgdGhh
-dCBJIGRpZG4ndAp0ZXN0IGFuZCBhbnkgaGVscCB3aWxsIGJlIG11Y2ggYXBwcmVjaWF0ZWQuCgpb
-MV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8xYTA0NGExNC0wODg0LWVlZGItNWQzMC0y
-OGI0YmVjMjRiMjNAcmVkaGF0LmNvbS8KWzJdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4
-LXBjaS9kMWQ1ZTc5Ny00OWVlLTQ5NjgtODhjNi1jMDcxMTkzNDM0OTJAYXJtLmNvbS8KWzNdIGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWFybS1rZXJuZWwvMjAyMTA1MTgwOTE3MjUuMDQ2
-Nzc0NzkyQGxpbnV0cm9uaXguZGUvCls0XSBodHRwczovL2xvcmUua2VybmVsLm9yZy9wYXRjaHdv
-cmsvcGF0Y2gvMTQzNDMyNi8KCgpOaXRlc2ggTmFyYXlhbiBMYWwgKDEzKToKICBpYXZmOiBVc2Ug
-aXJxX3VwZGF0ZV9hZmZpbml0eV9oaW50CiAgaTQwZTogVXNlIGlycV91cGRhdGVfYWZmaW5pdHlf
-aGludAogIHNjc2k6IG1lZ2FyYWlkX3NhczogVXNlIGlycV9zZXRfYWZmaW5pdHlfYW5kX2hpbnQK
-ICBzY3NpOiBtcHQzc2FzOiBVc2UgaXJxX3NldF9hZmZpbml0eV9hbmRfaGludAogIFJETUEvaTQw
-aXc6IFVzZSBpcnFfdXBkYXRlX2FmZmluaXR5X2hpbnQKICBlbmljOiBVc2UgaXJxX3VwZGF0ZV9h
-ZmZpbml0eV9oaW50CiAgYmUybmV0OiBVc2UgaXJxX3VwZGF0ZV9hZmZpbml0eV9oaW50CiAgaXhn
-YmU6IFVzZSBpcnFfdXBkYXRlX2FmZmluaXR5X2hpbnQKICBtYWlsYm94OiBVc2UgaXJxX3VwZGF0
-ZV9hZmZpbml0eV9oaW50CiAgc2NzaTogbHBmYzogVXNlIGlycV9zZXRfYWZmaW5pdHkKICBoaW5p
-YzogVXNlIGlycV9zZXRfYWZmaW5pdHlfYW5kX2hpbnQKICBuZXQvbWx4NTogVXNlIGlycV91cGRh
-dGVfYWZmaW5pdHlfaGludAogIG5ldC9tbHg0OiBVc2UgaXJxX3VwZGF0ZV9hZmZpbml0eV9oaW50
-CgpUaG9tYXMgR2xlaXhuZXIgKDEpOgogIGdlbmlycTogUHJvdmlkZSBuZXcgaW50ZXJmYWNlcyBm
-b3IgYWZmaW5pdHkgaGludHMKCiBkcml2ZXJzL2luZmluaWJhbmQvaHcvaTQwaXcvaTQwaXdfbWFp
-bi5jICAgICAgfCAgNCArLQogZHJpdmVycy9tYWlsYm94L2JjbS1mbGV4cm0tbWFpbGJveC5jICAg
-ICAgICAgIHwgIDQgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2Npc2NvL2VuaWMvZW5pY19tYWlu
-LmMgICB8ICA2ICstLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvZW11bGV4L2JlbmV0L2JlX21haW4u
-YyAgIHwgIDQgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2h1YXdlaS9oaW5pYy9oaW5pY19yeC5j
-ICB8ICA0ICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jICAg
-fCAgOCArKy0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfbWFpbi5jICAg
-fCAgOCArKy0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMg
-fCAgNiArLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L21lbGxhbm94L21seDQvZXEuYyAgICAgICB8
-ICA2ICstLQogLi4uL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2NvcmUvcGNpX2lycS5jIHwg
-IDYgKy0tCiBkcml2ZXJzL3Njc2kvbHBmYy9scGZjX2luaXQuYyAgICAgICAgICAgICAgICAgfCAg
-NCArLQogZHJpdmVycy9zY3NpL21lZ2FyYWlkL21lZ2FyYWlkX3Nhc19iYXNlLmMgICAgIHwgMjUg
-KysrKysrLS0tLS0KIGRyaXZlcnMvc2NzaS9tcHQzc2FzL21wdDNzYXNfYmFzZS5jICAgICAgICAg
-ICB8IDE1ICsrKystLS0KIGluY2x1ZGUvbGludXgvaW50ZXJydXB0LmggICAgICAgICAgICAgICAg
-ICAgICB8IDQxICsrKysrKysrKysrKysrKysrKy0KIGtlcm5lbC9pcnEvbWFuYWdlLmMgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB8ICA4ICsrLS0KIDE1IGZpbGVzIGNoYW5nZWQsIDk1IGluc2Vy
-dGlvbnMoKyksIDU0IGRlbGV0aW9ucygtKQoKLS0gIAoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRl
-bC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+From: Thomas Gleixner <tglx@linutronix.de>
+
+The discussion about removing the side effect of irq_set_affinity_hint() of
+actually applying the cpumask (if not NULL) as affinity to the interrupt,
+unearthed a few unpleasantries:
+
+  1) The modular perf drivers rely on the current behaviour for the very
+     wrong reasons.
+
+  2) While none of the other drivers prevents user space from changing
+     the affinity, a cursorily inspection shows that there are at least
+     expectations in some drivers.
+
+#1 needs to be cleaned up anyway, so that's not a problem
+
+#2 might result in subtle regressions especially when irqbalanced (which
+   nowadays ignores the affinity hint) is disabled.
+
+Provide new interfaces:
+
+  irq_update_affinity_hint()  - Only sets the affinity hint pointer
+  irq_set_affinity_and_hint() - Set the pointer and apply the affinity to
+                                the interrupt
+
+Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
+document it to be phased out.
+
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
+---
+ include/linux/interrupt.h | 41 ++++++++++++++++++++++++++++++++++++++-
+ kernel/irq/manage.c       |  8 ++++----
+ 2 files changed, 44 insertions(+), 5 deletions(-)
+
+diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
+index 2ed65b01c961..4ca491a76033 100644
+--- a/include/linux/interrupt.h
++++ b/include/linux/interrupt.h
+@@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned int irq, const struct cpumask *cpumask);
+ extern int irq_can_set_affinity(unsigned int irq);
+ extern int irq_select_affinity(unsigned int irq);
+ 
+-extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
++extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
++				     bool setaffinity);
++
++/**
++ * irq_update_affinity_hint - Update the affinity hint
++ * @irq:	Interrupt to update
++ * @cpumask:	cpumask pointer (NULL to clear the hint)
++ *
++ * Updates the affinity hint, but does not change the affinity of the interrupt.
++ */
++static inline int
++irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
++{
++	return __irq_apply_affinity_hint(irq, m, false);
++}
++
++/**
++ * irq_set_affinity_and_hint - Update the affinity hint and apply the provided
++ *			     cpumask to the interrupt
++ * @irq:	Interrupt to update
++ * @cpumask:	cpumask pointer (NULL to clear the hint)
++ *
++ * Updates the affinity hint and if @cpumask is not NULL it applies it as
++ * the affinity of that interrupt.
++ */
++static inline int
++irq_set_affinity_and_hint(unsigned int irq, const struct cpumask *m)
++{
++	return __irq_apply_affinity_hint(irq, m, true);
++}
++
++/*
++ * Deprecated. Use irq_update_affinity_hint() or irq_set_affinity_and_hint()
++ * instead.
++ */
++static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
++{
++	return irq_set_affinity_and_hint(irq, m);
++}
++
+ extern int irq_update_affinity_desc(unsigned int irq,
+ 				    struct irq_affinity_desc *affinity);
+ 
+diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
+index ef30b4762947..837b63e63111 100644
+--- a/kernel/irq/manage.c
++++ b/kernel/irq/manage.c
+@@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq, const struct cpumask *cpumask)
+ }
+ EXPORT_SYMBOL_GPL(irq_force_affinity);
+ 
+-int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
++int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
++			      bool setaffinity)
+ {
+ 	unsigned long flags;
+ 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
+@@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
+ 		return -EINVAL;
+ 	desc->affinity_hint = m;
+ 	irq_put_desc_unlock(desc, flags);
+-	/* set the initial affinity to prevent every interrupt being on CPU0 */
+-	if (m)
++	if (m && setaffinity)
+ 		__irq_set_affinity(irq, m, false);
+ 	return 0;
+ }
+-EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
++EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
+ 
+ static void irq_affinity_notify(struct work_struct *work)
+ {
+-- 
+2.27.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
