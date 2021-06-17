@@ -1,60 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 793353AC3BB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jun 2021 08:19:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 365453AC4CC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jun 2021 09:18:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E6E0F401EC;
-	Fri, 18 Jun 2021 06:19:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C01866065F;
+	Fri, 18 Jun 2021 07:18:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HSEY5Cf6BLTV; Fri, 18 Jun 2021 06:19:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gy4tMdqqIbBw; Fri, 18 Jun 2021 07:18:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DC5C5400BA;
-	Fri, 18 Jun 2021 06:19:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CBA53605AA;
+	Fri, 18 Jun 2021 07:18:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2F7671BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 06:19:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F18101BF392
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 07:18:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1E01E83C4F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 06:19:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 55F2140119
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 07:18:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8e2u1BnrXTcu for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Jun 2021 06:19:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iJmWisq7GZtQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Jun 2021 07:18:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F1EFF83C4E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 06:19:44 +0000 (UTC)
-IronPort-SDR: JEaSks3p5F4xYHeCapmH9v4tdA7WRPaYCjuiPrvQypskTlHZBsnv88MBJ+OijMd+JLKi/oAvGW
- 39/MVV3TXdqQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,10018"; a="186196028"
-X-IronPort-AV: E=Sophos;i="5.83,283,1616482800"; d="scan'208";a="186196028"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2021 23:19:43 -0700
-IronPort-SDR: 8T11B9IGsqwCEqKoRcHeYobG6Ac5ELIR5GbkiOIoMDoUKB/j2a5VmIGJmzyzCXYUx+/3FBQvw/
- kfv/IsZSZJlg==
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1589941480
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jun 2021 07:18:24 +0000 (UTC)
+IronPort-SDR: 0XEnWo61lffayWhtFgAA+wGdmXeFc5iDTeUrIY3CzmtlCCaXrv+95zUiRqB9e16mgQIsh3TJT/
+ AINd4BV0/QHA==
+X-IronPort-AV: E=McAfee;i="6200,9189,10018"; a="193822113"
+X-IronPort-AV: E=Sophos;i="5.83,283,1616482800"; d="scan'208";a="193822113"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2021 00:18:23 -0700
+IronPort-SDR: oXrtGHUK04oQgncOC6Hh7R4cEasBeqz/66meJfBkUGcOOKJq15hcpdbmdTICHyw823nqn3XplB
+ zJ16BnfUYRgg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,283,1616482800"; d="scan'208";a="638068430"
-Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 17 Jun 2021 23:19:42 -0700
-Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1lu7qw-0002fO-9S; Fri, 18 Jun 2021 06:19:42 +0000
-Date: Fri, 18 Jun 2021 14:19:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60cc3ae8.bSeIEZ35b+a0ASaB%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.83,283,1616482800"; d="scan'208";a="485588344"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by orsmga001.jf.intel.com with ESMTP; 18 Jun 2021 00:18:22 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 18 Jun 2021 01:44:01 +0200
+Message-Id: <20210617234413.104069-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- 587b839de733a8cdef3cbb805014e05229e7c96b
+Subject: [Intel-wired-lan] [PATCH net-next 00/12] Add switchdev driver model
+ for ice driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,131 +69,72 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: 587b839de733a8cdef3cbb805014e05229e7c96b  ice: remove redundant continue statement in a for-loop
+The following patch series introduces basic switchdev model
+support in ice driver. Implement the following blocks of
+switchdev framework:
+- VF port representors creation
+- control plane VSI definition 
+- exception path (a. k. a. "slow-path") - to allow a virtual
+switch or linux bridge to receive any packet that doesn't match
+any hw filter
+- link state management of virtual ports
+- query virtual port statistics
 
-elapsed time: 723m
+Hardware offload support in switchdev mode is out of scope of
+this patchset. Devlink interface is used to toggle between
+switchdev and legacy (the default) modes of the driver.
 
-configs tested: 107
-configs skipped: 2
+Grzegorz Nitka (5):
+  ice: setting and releasing switchdev environment
+  ice: introduce new type of VSI for switchdev
+  ice: enable/disable switchdev when managing VFs
+  ice: rebuild switchdev when resetting all VFs
+  ice: switchdev slow path
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Michal Swiatkowski (5):
+  ice: basic support for eswitch mode management
+  ice: introduce VF port representor
+  ice: allow process vf opcodes in different ways
+  ice: manage VSI antispoof and destination override
+  ice: allow changing lan_en and lb_en on dflt rules
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                       maple_defconfig
-m68k                          hp300_defconfig
-x86_64                           alldefconfig
-mips                        jmr3927_defconfig
-arm                   milbeaut_m10v_defconfig
-powerpc                       eiger_defconfig
-nios2                         3c120_defconfig
-powerpc                     sbc8548_defconfig
-powerpc                  storcenter_defconfig
-s390                             alldefconfig
-powerpc                mpc7448_hpc2_defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-x86_64                            allnoconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a004-20210617
-x86_64               randconfig-a001-20210617
-x86_64               randconfig-a002-20210617
-x86_64               randconfig-a003-20210617
-x86_64               randconfig-a006-20210617
-x86_64               randconfig-a005-20210617
-i386                 randconfig-a002-20210617
-i386                 randconfig-a006-20210617
-i386                 randconfig-a001-20210617
-i386                 randconfig-a004-20210617
-i386                 randconfig-a005-20210617
-i386                 randconfig-a003-20210617
-i386                 randconfig-a002-20210618
-i386                 randconfig-a006-20210618
-i386                 randconfig-a004-20210618
-i386                 randconfig-a001-20210618
-i386                 randconfig-a005-20210618
-i386                 randconfig-a003-20210618
-x86_64               randconfig-a015-20210618
-x86_64               randconfig-a011-20210618
-x86_64               randconfig-a012-20210618
-x86_64               randconfig-a014-20210618
-x86_64               randconfig-a016-20210618
-x86_64               randconfig-a013-20210618
-i386                 randconfig-a015-20210617
-i386                 randconfig-a013-20210617
-i386                 randconfig-a016-20210617
-i386                 randconfig-a012-20210617
-i386                 randconfig-a014-20210617
-i386                 randconfig-a011-20210617
-i386                 randconfig-a015-20210618
-i386                 randconfig-a016-20210618
-i386                 randconfig-a013-20210618
-i386                 randconfig-a014-20210618
-i386                 randconfig-a012-20210618
-i386                 randconfig-a011-20210618
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
+Wojciech Drewek (2):
+  ice: Move devlink port to PF/VF struct
+  ice: add port representor ethtool ops and stats
 
-clang tested configs:
-x86_64               randconfig-a002-20210618
-x86_64               randconfig-a001-20210618
-x86_64               randconfig-a004-20210618
-x86_64               randconfig-a003-20210618
-x86_64               randconfig-a006-20210618
-x86_64               randconfig-a005-20210618
+ drivers/net/ethernet/intel/Kconfig            |  10 +
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  48 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |  37 +-
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 109 ++-
+ drivers/net/ethernet/intel/ice/ice_devlink.h  |   6 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 656 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_eswitch.h  |  82 +++
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  32 +-
+ drivers/net/ethernet/intel/ice/ice_fltr.c     |  80 +++
+ drivers/net/ethernet/intel/ice/ice_fltr.h     |   7 +
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |  43 ++
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 112 ++-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |  11 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |  47 +-
+ drivers/net/ethernet/intel/ice/ice_repr.c     | 329 +++++++++
+ drivers/net/ethernet/intel/ice/ice_repr.h     |  27 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   |   2 +-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   6 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   3 +
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |   4 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 196 +++++-
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  45 ++
+ 24 files changed, 1817 insertions(+), 80 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_repr.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_repr.h
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+-- 
+2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
