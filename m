@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FD213AEA27
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jun 2021 15:38:18 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD5533AEA28
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jun 2021 15:38:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 38C8540136;
-	Mon, 21 Jun 2021 13:38:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B049E83163;
+	Mon, 21 Jun 2021 13:38:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tpPDHgiCEgU9; Mon, 21 Jun 2021 13:38:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yuvqKc6bigAB; Mon, 21 Jun 2021 13:38:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 364A4400F0;
-	Mon, 21 Jun 2021 13:38:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CD82A82F9B;
+	Mon, 21 Jun 2021 13:38:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 234621BF59F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 903CD1BF59F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0F7ED403DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8BA8C60689
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XI-AXbG2PfJL for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Jun 2021 08:01:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 95RxytUGoVTQ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Jun 2021 08:01:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2C6C240378
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:10 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9F3816109F;
- Mon, 21 Jun 2021 08:01:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 139656066F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:01:23 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1B5F961156;
+ Mon, 21 Jun 2021 08:01:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1624262469;
- bh=gPO/dZoq96/4oBsyGc1ThSkFDnPfX3ZoVFD1snea8ck=;
+ s=k20201202; t=1624262483;
+ bh=xkIVlbEuJDCy/58h9s+rXKkCBkl+0cKos+yjyqiA2ks=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HoNf1YGzRXgmHTU0loB2T4/SVEkLSsgPC2LdgggESiQ/uR8KVA7Vc9FK+lMaTqEn3
- LCRUsDfVsGZ96ib/C5wbKl9kCzUcPfOYfn/MEH75lKXjG2Zm/TiV6awVNAKtdtCTM6
- JwR+eb3iepOdUsq7+qZp6+Ls9y2fPIbHlDgID+r0bqzE4Jpkh2E75XwNcCxIwPGCvD
- S6QIF89nU708IuCQcUBIQ/f3kUCMfYrUZTabOAvyNZLYAiz2pe+PADAE3lLRajHYDg
- VuEVdVy4jo0EFD+c3bqZ4hMTpFn+OiBNEuhL+eZpl0rb6ax5Culn7vFTzt6buowbaw
- eKMm/dci8g3Mg==
-Date: Mon, 21 Jun 2021 11:01:06 +0300
+ b=u2g8JzKD4v4BtPFaM377n22YOz19qDW8FDr/F6xVWyQRWzCgygQYMyg2ToGzRI8EU
+ F+y+BRT0TzfXol6Be0CqTpJ2Ug5vR+2GX3SPKM36A8yGVoqtoHi1Ab4nqfBBF2Xn00
+ t1Iv53NuBY0HAIj1hIbMHjJz/NaXQ4HZOHQ1TPdqGosS6/c/dZKDRUJMwEh7CT1R89
+ awvM/3rgZ2BNiCGuZ7AQLyAelNCYbPafo6JHOFLxnrmwUszf30dhVra0yrnAfUg1ZS
+ kByFHj5hDrRnB+FYupkp4/Epz+uTj6N7x1U8lSSdIlplOZdDT/Xl72oGga+5K5/F+y
+ EjUbrIZ3Fp8Jw==
+Date: Mon, 21 Jun 2021 11:01:20 +0300
 From: Leon Romanovsky <leon@kernel.org>
 To: Nitesh Narayan Lal <nitesh@redhat.com>
-Message-ID: <YNBHQvo1uDfBbr5c@unreal>
+Message-ID: <YNBHUMRqc+s0JesY@unreal>
 References: <20210617182242.8637-1-nitesh@redhat.com>
- <20210617182242.8637-15-nitesh@redhat.com>
+ <20210617182242.8637-14-nitesh@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210617182242.8637-15-nitesh@redhat.com>
+In-Reply-To: <20210617182242.8637-14-nitesh@redhat.com>
 X-Mailman-Approved-At: Mon, 21 Jun 2021 13:38:11 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v1 14/14] net/mlx4: Use
+Subject: Re: [Intel-wired-lan] [PATCH v1 13/14] net/mlx5: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -92,7 +92,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 17, 2021 at 02:22:42PM -0400, Nitesh Narayan Lal wrote:
+On Thu, Jun 17, 2021 at 02:22:41PM -0400, Nitesh Narayan Lal wrote:
 > The driver uses irq_set_affinity_hint() to update the affinity_hint mask
 > that is consumed by the userspace to distribute the interrupts. However,
 > under the hood irq_set_affinity_hint() also applies the provided cpumask
@@ -106,34 +106,9 @@ On Thu, Jun 17, 2021 at 02:22:42PM -0400, Nitesh Narayan Lal wrote:
 > 
 > Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 > ---
->  drivers/net/ethernet/mellanox/mlx4/eq.c | 6 +++---
+>  drivers/net/ethernet/mellanox/mlx5/core/pci_irq.c | 6 +++---
 >  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/mellanox/mlx4/eq.c b/drivers/net/ethernet/mellanox/mlx4/eq.c
-> index 9e48509ed3b2..f549d697ca95 100644
-> --- a/drivers/net/ethernet/mellanox/mlx4/eq.c
-> +++ b/drivers/net/ethernet/mellanox/mlx4/eq.c
-> @@ -244,9 +244,9 @@ static void mlx4_set_eq_affinity_hint(struct mlx4_priv *priv, int vec)
->  	    cpumask_empty(eq->affinity_mask))
->  		return;
->  
-> -	hint_err = irq_set_affinity_hint(eq->irq, eq->affinity_mask);
-> +	hint_err = irq_update_affinity_hint(eq->irq, eq->affinity_mask);
->  	if (hint_err)
-> -		mlx4_warn(dev, "irq_set_affinity_hint failed, err %d\n", hint_err);
-> +		mlx4_warn(dev, "irq_update_affinity_hint failed, err %d\n", hint_err);
->  }
->  #endif
->  
-> @@ -1124,7 +1124,7 @@ static void mlx4_free_irqs(struct mlx4_dev *dev)
->  		if (eq_table->eq[i].have_irq) {
->  			free_cpumask_var(eq_table->eq[i].affinity_mask);
->  #if defined(CONFIG_SMP)
-> -			irq_set_affinity_hint(eq_table->eq[i].irq, NULL);
-> +			irq_update_affinity_hint(eq_table->eq[i].irq, NULL);
->  #endif
-
-This #if/endif can be deleted.
 
 Thanks,
 Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
