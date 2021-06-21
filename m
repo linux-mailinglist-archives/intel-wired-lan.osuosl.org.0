@@ -2,54 +2,53 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04C923AE4FC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jun 2021 10:34:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2ECB23AE50C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jun 2021 10:37:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9221D40186;
-	Mon, 21 Jun 2021 08:34:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A7372400D5;
+	Mon, 21 Jun 2021 08:37:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id plw-02GG4APk; Mon, 21 Jun 2021 08:34:37 +0000 (UTC)
+	with ESMTP id CM4-2fH8M-26; Mon, 21 Jun 2021 08:37:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7549040197;
-	Mon, 21 Jun 2021 08:34:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C30F400D0;
+	Mon, 21 Jun 2021 08:37:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4A0B71BF41F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:34:32 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A811E1BF41F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:37:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 352FD402DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:34:32 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9622E606A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:37:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4eDYYx8p6-vD for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Jun 2021 08:34:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ASvHU2lo42W9 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Jun 2021 08:37:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5AEDD402C3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:34:30 +0000 (UTC)
-IronPort-SDR: TEAGRZUYtComIY4fhMwybNr9hcDFx8sEh9V1WoSvRHsrnsQLSaZF7N+FeL07A79UGnXBdgMPXJ
- 665VGYqj18Nw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10021"; a="270647393"
-X-IronPort-AV: E=Sophos;i="5.83,289,1616482800"; d="scan'208";a="270647393"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BDBBD60689
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jun 2021 08:37:35 +0000 (UTC)
+IronPort-SDR: Gu3FSi4I/x2zvtr3PJEZVJTShTgbePObC1d48EyUJRBE01Q2uRaZBTEnmGeOQpowP6pHpdHFSS
+ 8fO+QoPnkQew==
+X-IronPort-AV: E=McAfee;i="6200,9189,10021"; a="206843475"
+X-IronPort-AV: E=Sophos;i="5.83,289,1616482800"; d="scan'208";a="206843475"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2021 01:34:27 -0700
-IronPort-SDR: q9XwmIybxGf39flOyoEryVsgIZRTGLdmWerrYzYRoyCO2jF55fu3ea2o4F66Ao7H8tkGfvjLwe
- ZqraWKKml4Yw==
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jun 2021 01:37:34 -0700
+IronPort-SDR: yyhLCTdtJ6tSh9j6PjO4Dn1jpX0ZWN15o5xD4Q/V33sYMR9jsTZpYatxNxDJDZ342Fsuoz5294
+ ENPPmvmuoCdQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,289,1616482800"; d="scan'208";a="486408101"
+X-IronPort-AV: E=Sophos;i="5.83,289,1616482800"; d="scan'208";a="486409216"
 Received: from amlin-018-224.igk.intel.com ([10.102.18.224])
- by orsmga001.jf.intel.com with ESMTP; 21 Jun 2021 01:34:26 -0700
+ by orsmga001.jf.intel.com with ESMTP; 21 Jun 2021 01:37:33 -0700
 From: =?UTF-8?q?J=C4=99drzej=20Jagielski?= <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 21 Jun 2021 08:33:34 +0000
-Message-Id: <1624264414-10328-1-git-send-email-jedrzej.jagielski@intel.com>
+Date: Mon, 21 Jun 2021 08:37:31 +0000
+Message-Id: <1624264651-10706-1-git-send-email-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 1.8.3.1
-MIME-Version: 1.0
 Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix creation of first queue
  by omitting it if is not power of two
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -65,13 +64,11 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: =?UTF-8?q?J=C4=99drzej=20Jagielski?= <jedrzej.jagielski@intel.com>
-Content-Type: multipart/mixed; boundary="===============9182820898891811588=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-
---===============9182820898891811588==
-Content-Type: text/plain; charset=y
-Content-Transfer-Encoding: 8bit
 
 Reject TCs creation with proper message if the first queue
 assignment is not equal to the power of two.
@@ -81,7 +78,7 @@ is not a power of two, then trying to create qdisc will be rejected.
 
 Fixes: 8f88b3034db3 ("i40e: Add infrastructure for queue channel support")
 Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Jędrzej Jagielski <jedrzej.jagielski@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
  drivers/net/ethernet/intel/i40e/i40e_main.c | 59 ++++++++++-------------------
  1 file changed, 19 insertions(+), 40 deletions(-)
@@ -177,16 +174,7 @@ index 7a0a740..7ddd414 100644
 -- 
 1.8.3.1
 
-
---===============9182820898891811588==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============9182820898891811588==--
