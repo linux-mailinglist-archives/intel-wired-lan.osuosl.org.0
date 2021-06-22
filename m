@@ -1,62 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA6223AFC7C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Jun 2021 07:11:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B85A3AFD50
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Jun 2021 08:50:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C35E0403CF;
-	Tue, 22 Jun 2021 05:11:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2693940333;
+	Tue, 22 Jun 2021 06:50:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m9FloYVsg-sI; Tue, 22 Jun 2021 05:11:46 +0000 (UTC)
+	with ESMTP id ztBcR4HtNM9F; Tue, 22 Jun 2021 06:50:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8AE4940393;
-	Tue, 22 Jun 2021 05:11:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F12E840338;
+	Tue, 22 Jun 2021 06:50:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8BA5C1BF2F2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 05:11:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E675D1BF2F1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 06:50:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7B042839BB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 05:11:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D227C40331
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 06:50:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dQCSuX9UjAcw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Jun 2021 05:11:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Zp3Ge-kioGKF for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Jun 2021 06:50:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4F0308398E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 05:11:40 +0000 (UTC)
-IronPort-SDR: GoE5GYvZoniVSMUxpA+AxOiEe/x1ljdsZUMWVRXNRJW6WsMOe4mDvRSntmaAv4V7pXTSDtH2ya
- mMy5wvnxpDxQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,10022"; a="228538892"
-X-IronPort-AV: E=Sophos;i="5.83,291,1616482800"; d="scan'208";a="228538892"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 46858402C5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Jun 2021 06:50:34 +0000 (UTC)
+IronPort-SDR: HXoBCpL9WjKLm/NJojNx/NOoLobkKjzGhstHqWucjoGp8N6QbnL+KNeOA7DlFX4w/5FZ8De02C
+ AXUdyvZR77IQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10022"; a="228549730"
+X-IronPort-AV: E=Sophos;i="5.83,291,1616482800"; d="scan'208";a="228549730"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2021 22:11:39 -0700
-IronPort-SDR: qmcrLX70qp8Rwgg6+HEs+6+W+XwdtCR44ZH0qMhyAW6Bc35U66FT6ck/0ftQ5sWMZLxX8xja3F
- 6VxIO5FdGDyQ==
-X-IronPort-AV: E=Sophos;i="5.83,291,1616482800"; d="scan'208";a="452471712"
-Received: from unknown (HELO localhost.localdomain) ([10.102.102.63])
+ 21 Jun 2021 23:50:29 -0700
+IronPort-SDR: 8unCcfD5ddFdqBvR0Zig+AEb7mF+wfvk+nfcu68tYWrtcJNnPk1H4LOXccr7XEBA5YYYft4D1u
+ Sg2smDxwYhHg==
+X-IronPort-AV: E=Sophos;i="5.83,291,1616482800"; d="scan'208";a="452498302"
+Received: from unknown (HELO [10.185.169.18]) ([10.185.169.18])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2021 22:11:37 -0700
-Date: Mon, 21 Jun 2021 21:18:56 -0400
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Message-ID: <YNE6gDaubIydNmGz@localhost.localdomain>
-References: <20210617234413.104069-1-michal.swiatkowski@linux.intel.com>
- <20210617234413.104069-8-michal.swiatkowski@linux.intel.com>
- <a6a0b9064847e6106cca2ae4a9669b84f4322926.camel@intel.com>
- <YNEwV42hOSAhtbiX@localhost.localdomain>
+ 21 Jun 2021 23:50:23 -0700
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, davem@davemloft.net,
+ kuba@kernel.org
+References: <f24ae8234fedd1689fa0116038e10e4d3a033802.1623527947.git.christophe.jaillet@wanadoo.fr>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <ae67bbc1-3bd9-c64c-b507-d2fd30da08e0@intel.com>
+Date: Tue, 22 Jun 2021 09:50:21 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YNEwV42hOSAhtbiX@localhost.localdomain>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 07/12] ice: setting and
- releasing switchdev environment
+In-Reply-To: <f24ae8234fedd1689fa0116038e10e4d3a033802.1623527947.git.christophe.jaillet@wanadoo.fr>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Fix an error handling path in
+ 'igc_probe()'
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,97 +70,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "Edri, Michael" <michael.edri@intel.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 21, 2021 at 08:35:35PM -0400, Michal Swiatkowski wrote:
-> On Mon, Jun 21, 2021 at 06:21:15PM +0000, Nguyen, Anthony L wrote:
-> > On Fri, 2021-06-18 at 01:44 +0200, Michal Swiatkowski wrote:
-> > > From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> > > 
-> > > Switchdev environment has to be set up when user create VFs
-> > > and eswitch mode is switchdev. Release is done when user
-> > > delete all VFs.
-> > > 
-> > > Data path in this implementation is based on control plane VSI.
-> > > This VSI is used to pass traffic from port representors to
-> > > coresponfing VFs and vice versa. Default TX rule has to be
-> > > added to forward packet to control plane VSI. This will redirect
-> > > packets from VFs which don't match other rules to control plane
-> > > VSI.
-> > > 
-> > > On RX site default rule is added on uplink VSI to receive all
-> > > traffic that doesn't match other rules. When setting switchdev
-> > > environment all other rules from VFs should be removed. Packet to
-> > > VFs will be forwarded by control plane VSI.
-> > > 
-> > > As VF without any mac rules can't send any packet because of
-> > > antispoof mechanism, VSI antispoof should be turned off on each VFs.
-> > > 
-> > > To send packet from representor to correct VSI, destintion VSI
-> > > field in TX descriptor will have to be filled. Allow that by
-> > > setting destination override bit in control plane VSI security
-> > > config.
-> > > 
-> > > Packet from VFs will be received on control plane VSI. Driver
-> > > should decide to which netdev forward the packet. Decision is
-> > > made based on src_vsi field from descriptor. There is a target
-> > > netdev list in control plane VSI struct which choose netdev
-> > > based on src_vsi number.
-> > > 
-> > > Co-developed-by: Michal Swiatkowski <
-> > > michal.swiatkowski@linux.intel.com>
-> > > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com
-> > > >
-> > > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> > > ---
-> > 
-> > <snip>
-> > 
-> > > +/**
-> > > + * ice_eswitch_vsi_setup - configure switchdev control VSI
-> > > + * @pf: pointer to PF structure
-> > > + * @pi: pointer to port_info structure
-> > > + */
-> > > +static struct ice_vsi *
-> > > +ice_eswitch_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi)
-> > > +{
-> > > +	return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
-> > > ICE_INVAL_VFID);
-> > 
-> > This doesn't build; the switchdev VSI doesn't get introduced until the
-> > next patch. 
-> > 
+On 6/12/2021 23:00, Christophe JAILLET wrote:
+> If an error occurs after a 'pci_enable_pcie_error_reporting()' call, it
+> must be undone by a corresponding 'pci_disable_pcie_error_reporting()'
+> call, as already done in the remove function.
 > 
-> Sorry, I missed that, will fix it in next version.
+> Fixes: c9a11c23ceb6 ("igc: Add netdev")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-
-This patchset is already on your dev-queue branch, what should I do in
-this case? You will reveret this, or I should send fixed version without
-applying it on top of the dev-queue?
-
-> > drivers/net/ethernet/intel/ice/ice_eswitch.c: In function
-> > ice_eswitch_vsi_setup:
-> > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: error:
-> > ICE_VSI_SWITCHDEV_CTRL undeclared (first use in this function)
-> >   263 |  return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
-> > ICE_INVAL_VFID);
-> >       |                               ^~~~~~~~~~~~~~~~~~~~~~
-> > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: note: each
-> > undeclared identifier is reported only once for each function it
-> > appears in
-> > drivers/net/ethernet/intel/ice/ice_eswitch.c:264:1: error: control
-> > reaches end of non-void function [-Werror=return-type]
-> >   264 | }
-> > 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 3f6b6d4543a8..6389a41cacc1 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -6057,6 +6057,7 @@ static int igc_probe(struct pci_dev *pdev,
+>   err_ioremap:
+>   	free_netdev(netdev);
+>   err_alloc_etherdev:
+> +	pci_disable_pcie_error_reporting(pdev);
+>   	pci_release_mem_regions(pdev);
+>   err_pci_reg:
+>   err_dma:
+> 
+Thanks for this patch.
+Acked-by: Sasha Neftin <sasha.neftin@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
