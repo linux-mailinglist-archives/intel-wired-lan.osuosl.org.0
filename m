@@ -2,58 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FB813B1313
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 06:56:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 724813B1317
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 06:57:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E1DC0403D2;
-	Wed, 23 Jun 2021 04:56:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1C654403AA;
+	Wed, 23 Jun 2021 04:57:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 26EmviptsXuo; Wed, 23 Jun 2021 04:56:30 +0000 (UTC)
+	with ESMTP id d0UAUt5ZZZ8E; Wed, 23 Jun 2021 04:57:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D404E403DC;
-	Wed, 23 Jun 2021 04:56:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 15FE140391;
+	Wed, 23 Jun 2021 04:57:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 301061BF364
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:55:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 329E91BF364
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 982A86069C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:55:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2067260694
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kCkKHM28Q3Hz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jun 2021 04:55:48 +0000 (UTC)
+ with ESMTP id VizQsJ6un5Su for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jun 2021 04:57:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D77FC60670
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:55:48 +0000 (UTC)
-IronPort-SDR: eGYi+Wh5pzwzIdn20HWgQnM3/4Blxo/8aZf9guT/OXGUvb1pWM9DNrHM0SYm1cXa9QTIl0Qb9U
- cq0b6odfzc9g==
-X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="204186000"
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="204186000"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jun 2021 21:55:48 -0700
-IronPort-SDR: ydxM74Hp9vmgN97mgNXoT+YU7e7FeSN7C/J9Iv7wWAiVG34FLJDqR40d1T5OTeWAGb2+OK7XYn
- Fptffar49EiQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="490547928"
-Received: from wasp.igk.intel.com ([10.102.20.192])
- by fmsmga002.fm.intel.com with ESMTP; 22 Jun 2021 21:55:47 -0700
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 06B1260670
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:38 +0000 (UTC)
+IronPort-SDR: P8ZmFpbaz4Px/5mggqYcFALhISTNio83Wtnjreuwi/F0/pQlOuw98CEUm6/Pk61E6yjzd3COfa
+ UPk0AeAU/Knw==
+X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="271038049"
+X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="271038049"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jun 2021 21:57:38 -0700
+IronPort-SDR: 1wFf5bZMM6cxVYKsEuE+LuMEnZ0FqRqmm5eaGKNAKA4IZYswZ+s0ynDQW4FQi2BO/UciN1Tcv5
+ N3pvRrpbE/ZA==
+X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="487165825"
+Received: from unknown (HELO localhost.localdomain) ([10.102.102.63])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jun 2021 21:57:36 -0700
+Date: Tue, 22 Jun 2021 21:04:51 -0400
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 22 Jun 2021 23:21:35 +0200
-Message-Id: <20210622212134.341728-13-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210622212134.341728-1-michal.swiatkowski@linux.intel.com>
-References: <20210622212134.341728-1-michal.swiatkowski@linux.intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Message-ID: <YNKIs8QbWusOKzXp@localhost.localdomain>
+References: <20210617234413.104069-1-michal.swiatkowski@linux.intel.com>
+ <20210617234413.104069-8-michal.swiatkowski@linux.intel.com>
+ <a6a0b9064847e6106cca2ae4a9669b84f4322926.camel@intel.com>
+ <YNEwV42hOSAhtbiX@localhost.localdomain>
+ <YNE6gDaubIydNmGz@localhost.localdomain>
+ <6b4044c85a27076d4ce8a0a4f96a04e72abcc63a.camel@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 12/12] ice: add port
- representor ethtool ops and stats
+Content-Disposition: inline
+In-Reply-To: <6b4044c85a27076d4ce8a0a4f96a04e72abcc63a.camel@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next 07/12] ice: setting and
+ releasing switchdev environment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,209 +71,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Wojciech Drewek <wojciech.drewek@intel.com>
+On Tue, Jun 22, 2021 at 03:14:58PM +0000, Nguyen, Anthony L wrote:
+> On Mon, 2021-06-21 at 21:18 -0400, Michal Swiatkowski wrote:
+> > On Mon, Jun 21, 2021 at 08:35:35PM -0400, Michal Swiatkowski wrote:
+> > > On Mon, Jun 21, 2021 at 06:21:15PM +0000, Nguyen, Anthony L wrote:
+> > > > On Fri, 2021-06-18 at 01:44 +0200, Michal Swiatkowski wrote:
+> > > > > From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> > > > > 
+> > > > > Switchdev environment has to be set up when user create VFs
+> > > > > and eswitch mode is switchdev. Release is done when user
+> > > > > delete all VFs.
+> > > > > 
+> > > > > Data path in this implementation is based on control plane VSI.
+> > > > > This VSI is used to pass traffic from port representors to
+> > > > > coresponfing VFs and vice versa. Default TX rule has to be
+> > > > > added to forward packet to control plane VSI. This will
+> > > > > redirect
+> > > > > packets from VFs which don't match other rules to control plane
+> > > > > VSI.
+> > > > > 
+> > > > > On RX site default rule is added on uplink VSI to receive all
+> > > > > traffic that doesn't match other rules. When setting switchdev
+> > > > > environment all other rules from VFs should be removed. Packet
+> > > > > to
+> > > > > VFs will be forwarded by control plane VSI.
+> > > > > 
+> > > > > As VF without any mac rules can't send any packet because of
+> > > > > antispoof mechanism, VSI antispoof should be turned off on each
+> > > > > VFs.
+> > > > > 
+> > > > > To send packet from representor to correct VSI, destintion VSI
+> > > > > field in TX descriptor will have to be filled. Allow that by
+> > > > > setting destination override bit in control plane VSI security
+> > > > > config.
+> > > > > 
+> > > > > Packet from VFs will be received on control plane VSI. Driver
+> > > > > should decide to which netdev forward the packet. Decision is
+> > > > > made based on src_vsi field from descriptor. There is a target
+> > > > > netdev list in control plane VSI struct which choose netdev
+> > > > > based on src_vsi number.
+> > > > > 
+> > > > > Co-developed-by: Michal Swiatkowski <
+> > > > > michal.swiatkowski@linux.intel.com>
+> > > > > Signed-off-by: Michal Swiatkowski <
+> > > > > michal.swiatkowski@linux.intel.com
+> > > > > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> > > > > ---
+> > > > 
+> > > > <snip>
+> > > > 
+> > > > > +/**
+> > > > > + * ice_eswitch_vsi_setup - configure switchdev control VSI
+> > > > > + * @pf: pointer to PF structure
+> > > > > + * @pi: pointer to port_info structure
+> > > > > + */
+> > > > > +static struct ice_vsi *
+> > > > > +ice_eswitch_vsi_setup(struct ice_pf *pf, struct ice_port_info
+> > > > > *pi)
+> > > > > +{
+> > > > > +	return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
+> > > > > ICE_INVAL_VFID);
+> > > > 
+> > > > This doesn't build; the switchdev VSI doesn't get introduced
+> > > > until the
+> > > > next patch. 
+> > > > 
+> > > 
+> > > Sorry, I missed that, will fix it in next version.
+> > > 
+> > 
+> > This patchset is already on your dev-queue branch, what should I do
+> > in
+> > this case? You will reveret this, or I should send fixed version
+> > without
+> > applying it on top of the dev-queue?
+> 
+> I forgot to drop the patches from dev-queue. Everything should be clear
+> now.
+> 
 
-Introduce the following ethtool operations for VF's representor:
-	-get_drvinfo
-	-get_strings
-	-get_ethtool_stats
-	-get_sset_count
-	-get_link
-
-In all cases, exsisting operations were used with minor
-changes which allow us to detect if ethtool op was called for
-representor. Only VF VSI stats will be available for representor.
-
-Implement ndo_get_stats64 for port representor. This will update
-VF VSI stats and read them.
-
-Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h         | 14 +++++++++
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 32 ++++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_repr.c    | 29 ++++++++++++++++++
- 3 files changed, 72 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index fcddec1c1849..7ea539d47ae3 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -605,6 +605,19 @@ static inline struct ice_vsi *ice_get_main_vsi(struct ice_pf *pf)
- 	return NULL;
- }
- 
-+/**
-+ * ice_get_netdev_priv_vsi - return VSI associated with netdev priv.
-+ * @np: private netdev structure
-+ */
-+static inline struct ice_vsi *ice_get_netdev_priv_vsi(struct ice_netdev_priv *np)
-+{
-+	/* In case of port representor return source port VSI. */
-+	if (np->repr)
-+		return np->repr->src_vsi;
-+	else
-+		return np->vsi;
-+}
-+
- /**
-  * ice_get_ctrl_vsi - Get the control VSI
-  * @pf: PF instance
-@@ -660,6 +673,7 @@ int ice_vsi_setup_rx_rings(struct ice_vsi *vsi);
- int ice_vsi_open_ctrl(struct ice_vsi *vsi);
- int ice_vsi_open(struct ice_vsi *vsi);
- void ice_set_ethtool_ops(struct net_device *netdev);
-+void ice_set_ethtool_repr_ops(struct net_device *netdev);
- void ice_set_ethtool_safe_mode_ops(struct net_device *netdev);
- u16 ice_get_avail_txq_count(struct ice_pf *pf);
- u16 ice_get_avail_rxq_count(struct ice_pf *pf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index d95a5daca114..2858805cdeea 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -173,7 +173,7 @@ static void
- ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
- {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
-+	struct ice_vsi *vsi = ice_get_netdev_priv_vsi(np);
- 	struct ice_pf *pf = vsi->back;
- 	struct ice_hw *hw = &pf->hw;
- 	struct ice_orom_info *orom;
-@@ -869,7 +869,7 @@ ice_self_test(struct net_device *netdev, struct ethtool_test *eth_test,
- static void ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
-+	struct ice_vsi *vsi = ice_get_netdev_priv_vsi(np);
- 	unsigned int i;
- 	u8 *p = data;
- 
-@@ -879,6 +879,9 @@ static void ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
- 			ethtool_sprintf(&p,
- 					ice_gstrings_vsi_stats[i].stat_string);
- 
-+		if (ice_is_port_repr_netdev(netdev))
-+			return;
-+
- 		ice_for_each_alloc_txq(vsi, i) {
- 			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
- 			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
-@@ -1301,6 +1304,9 @@ static int ice_get_sset_count(struct net_device *netdev, int sset)
- 		 * order of strings will suffer from race conditions and are
- 		 * not safe.
- 		 */
-+		if (ice_is_port_repr_netdev(netdev))
-+			return ICE_VSI_STATS_LEN;
-+
- 		return ICE_ALL_STATS_LEN(netdev);
- 	case ETH_SS_TEST:
- 		return ICE_TEST_LEN;
-@@ -1316,7 +1322,7 @@ ice_get_ethtool_stats(struct net_device *netdev,
- 		      struct ethtool_stats __always_unused *stats, u64 *data)
- {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
-+	struct ice_vsi *vsi = ice_get_netdev_priv_vsi(np);
- 	struct ice_pf *pf = vsi->back;
- 	struct ice_ring *ring;
- 	unsigned int j;
-@@ -1332,6 +1338,9 @@ ice_get_ethtool_stats(struct net_device *netdev,
- 			     sizeof(u64)) ? *(u64 *)p : *(u32 *)p;
- 	}
- 
-+	if (ice_is_port_repr_netdev(netdev))
-+		return;
-+
- 	/* populate per queue stats */
- 	rcu_read_lock();
- 
-@@ -4051,6 +4060,23 @@ void ice_set_ethtool_safe_mode_ops(struct net_device *netdev)
- 	netdev->ethtool_ops = &ice_ethtool_safe_mode_ops;
- }
- 
-+static const struct ethtool_ops ice_ethtool_repr_ops = {
-+	.get_drvinfo		= ice_get_drvinfo,
-+	.get_link		= ethtool_op_get_link,
-+	.get_strings		= ice_get_strings,
-+	.get_ethtool_stats      = ice_get_ethtool_stats,
-+	.get_sset_count		= ice_get_sset_count,
-+};
-+
-+/**
-+ * ice_set_ethtool_repr_ops - setup VF's port representor ethtool ops
-+ * @netdev: network interface device structure
-+ */
-+void ice_set_ethtool_repr_ops(struct net_device *netdev)
-+{
-+	netdev->ethtool_ops = &ice_ethtool_repr_ops;
-+}
-+
- /**
-  * ice_set_ethtool_ops - setup netdev ethtool ops
-  * @netdev: network interface device structure
-diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index 76d8086278c6..ababed89f25a 100644
---- a/drivers/net/ethernet/intel/ice/ice_repr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -39,6 +39,33 @@ ice_repr_get_phys_port_name(struct net_device *netdev, char *buf, size_t len)
- 	return 0;
- }
- 
-+/**
-+ * ice_repr_get_stats64 - get VF stats for VFPR use
-+ * @netdev: pointer to port representor netdev
-+ * @stats: pointer to struct where stats can be stored
-+ */
-+static void
-+ice_repr_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->repr->src_vsi;
-+	struct ice_eth_stats *eth_stats;
-+
-+	ice_update_vsi_stats(vsi);
-+	eth_stats = &vsi->eth_stats;
-+
-+	stats->tx_packets = eth_stats->tx_unicast + eth_stats->tx_broadcast +
-+			    eth_stats->tx_multicast;
-+	stats->rx_packets = eth_stats->rx_unicast + eth_stats->rx_broadcast +
-+			    eth_stats->rx_multicast;
-+	stats->tx_bytes = eth_stats->tx_bytes;
-+	stats->rx_bytes = eth_stats->rx_bytes;
-+	stats->multicast = eth_stats->rx_multicast;
-+	stats->tx_errors = eth_stats->tx_errors;
-+	stats->tx_dropped = eth_stats->tx_discards;
-+	stats->rx_dropped = eth_stats->rx_discards;
-+}
-+
- /**
-  * ice_netdev_to_repr - Get port representor for given netdevice
-  * @netdev: pointer to port representor netdev
-@@ -112,6 +139,7 @@ ice_repr_get_devlink_port(struct net_device *netdev)
- 
- static const struct net_device_ops ice_repr_netdev_ops = {
- 	.ndo_get_phys_port_name = ice_repr_get_phys_port_name,
-+	.ndo_get_stats64 = ice_repr_get_stats64,
- 	.ndo_open = ice_repr_open,
- 	.ndo_stop = ice_repr_stop,
- 	.ndo_start_xmit = ice_eswitch_port_start_xmit,
-@@ -136,6 +164,7 @@ ice_repr_reg_netdev(struct net_device *netdev)
- {
- 	eth_hw_addr_random(netdev);
- 	netdev->netdev_ops = &ice_repr_netdev_ops;
-+	ice_set_ethtool_repr_ops(netdev);
- 
- 	netif_carrier_off(netdev);
- 	netif_tx_stop_all_queues(netdev);
--- 
-2.30.2
-
+Yeah, everything is fine now, thanks
+> > 
+> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c: In function
+> > > > ice_eswitch_vsi_setup:
+> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: error:
+> > > > ICE_VSI_SWITCHDEV_CTRL undeclared (first use in this function)
+> > > >   263 |  return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
+> > > > ICE_INVAL_VFID);
+> > > >       |                               ^~~~~~~~~~~~~~~~~~~~~~
+> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: note: each
+> > > > undeclared identifier is reported only once for each function it
+> > > > appears in
+> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:264:1: error:
+> > > > control
+> > > > reaches end of non-void function [-Werror=return-type]
+> > > >   264 | }
+> > > > 
+> > > _______________________________________________
+> > > Intel-wired-lan mailing list
+> > > Intel-wired-lan@osuosl.org
+> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
