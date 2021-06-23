@@ -1,64 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 724813B1317
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 06:57:47 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 60F993B135E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 07:48:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1C654403AA;
-	Wed, 23 Jun 2021 04:57:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A397340247;
+	Wed, 23 Jun 2021 05:48:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d0UAUt5ZZZ8E; Wed, 23 Jun 2021 04:57:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o0_XfAjYfJK1; Wed, 23 Jun 2021 05:48:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 15FE140391;
-	Wed, 23 Jun 2021 04:57:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 77519401D2;
+	Wed, 23 Jun 2021 05:48:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 329E91BF364
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FA0F1BF584
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 05:48:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2067260694
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5F098400D7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 05:48:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VizQsJ6un5Su for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jun 2021 04:57:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 06B1260670
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:57:38 +0000 (UTC)
-IronPort-SDR: P8ZmFpbaz4Px/5mggqYcFALhISTNio83Wtnjreuwi/F0/pQlOuw98CEUm6/Pk61E6yjzd3COfa
- UPk0AeAU/Knw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="271038049"
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="271038049"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jun 2021 21:57:38 -0700
-IronPort-SDR: 1wFf5bZMM6cxVYKsEuE+LuMEnZ0FqRqmm5eaGKNAKA4IZYswZ+s0ynDQW4FQi2BO/UciN1Tcv5
- N3pvRrpbE/ZA==
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="487165825"
-Received: from unknown (HELO localhost.localdomain) ([10.102.102.63])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jun 2021 21:57:36 -0700
-Date: Tue, 22 Jun 2021 21:04:51 -0400
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Message-ID: <YNKIs8QbWusOKzXp@localhost.localdomain>
-References: <20210617234413.104069-1-michal.swiatkowski@linux.intel.com>
- <20210617234413.104069-8-michal.swiatkowski@linux.intel.com>
- <a6a0b9064847e6106cca2ae4a9669b84f4322926.camel@intel.com>
- <YNEwV42hOSAhtbiX@localhost.localdomain>
- <YNE6gDaubIydNmGz@localhost.localdomain>
- <6b4044c85a27076d4ce8a0a4f96a04e72abcc63a.camel@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RB7bEIw9yMbg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jun 2021 05:48:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 97DA9400BE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 05:48:32 +0000 (UTC)
+Received: from [192.168.0.5] (ip5f5ae8bc.dynamic.kabel-deutschland.de
+ [95.90.232.188])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 71F7461E5FE33;
+ Wed, 23 Jun 2021 07:48:29 +0200 (CEST)
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+References: <20210622212134.341728-1-michal.swiatkowski@linux.intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <c2378b90-a307-aa00-471b-247a15423527@molgen.mpg.de>
+Date: Wed, 23 Jun 2021 07:48:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6b4044c85a27076d4ce8a0a4f96a04e72abcc63a.camel@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 07/12] ice: setting and
- releasing switchdev environment
+In-Reply-To: <20210622212134.341728-1-michal.swiatkowski@linux.intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/12] Add switchdev
+ driver model for ice driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,114 +62,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 22, 2021 at 03:14:58PM +0000, Nguyen, Anthony L wrote:
-> On Mon, 2021-06-21 at 21:18 -0400, Michal Swiatkowski wrote:
-> > On Mon, Jun 21, 2021 at 08:35:35PM -0400, Michal Swiatkowski wrote:
-> > > On Mon, Jun 21, 2021 at 06:21:15PM +0000, Nguyen, Anthony L wrote:
-> > > > On Fri, 2021-06-18 at 01:44 +0200, Michal Swiatkowski wrote:
-> > > > > From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> > > > > 
-> > > > > Switchdev environment has to be set up when user create VFs
-> > > > > and eswitch mode is switchdev. Release is done when user
-> > > > > delete all VFs.
-> > > > > 
-> > > > > Data path in this implementation is based on control plane VSI.
-> > > > > This VSI is used to pass traffic from port representors to
-> > > > > coresponfing VFs and vice versa. Default TX rule has to be
-> > > > > added to forward packet to control plane VSI. This will
-> > > > > redirect
-> > > > > packets from VFs which don't match other rules to control plane
-> > > > > VSI.
-> > > > > 
-> > > > > On RX site default rule is added on uplink VSI to receive all
-> > > > > traffic that doesn't match other rules. When setting switchdev
-> > > > > environment all other rules from VFs should be removed. Packet
-> > > > > to
-> > > > > VFs will be forwarded by control plane VSI.
-> > > > > 
-> > > > > As VF without any mac rules can't send any packet because of
-> > > > > antispoof mechanism, VSI antispoof should be turned off on each
-> > > > > VFs.
-> > > > > 
-> > > > > To send packet from representor to correct VSI, destintion VSI
-> > > > > field in TX descriptor will have to be filled. Allow that by
-> > > > > setting destination override bit in control plane VSI security
-> > > > > config.
-> > > > > 
-> > > > > Packet from VFs will be received on control plane VSI. Driver
-> > > > > should decide to which netdev forward the packet. Decision is
-> > > > > made based on src_vsi field from descriptor. There is a target
-> > > > > netdev list in control plane VSI struct which choose netdev
-> > > > > based on src_vsi number.
-> > > > > 
-> > > > > Co-developed-by: Michal Swiatkowski <
-> > > > > michal.swiatkowski@linux.intel.com>
-> > > > > Signed-off-by: Michal Swiatkowski <
-> > > > > michal.swiatkowski@linux.intel.com
-> > > > > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> > > > > ---
-> > > > 
-> > > > <snip>
-> > > > 
-> > > > > +/**
-> > > > > + * ice_eswitch_vsi_setup - configure switchdev control VSI
-> > > > > + * @pf: pointer to PF structure
-> > > > > + * @pi: pointer to port_info structure
-> > > > > + */
-> > > > > +static struct ice_vsi *
-> > > > > +ice_eswitch_vsi_setup(struct ice_pf *pf, struct ice_port_info
-> > > > > *pi)
-> > > > > +{
-> > > > > +	return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
-> > > > > ICE_INVAL_VFID);
-> > > > 
-> > > > This doesn't build; the switchdev VSI doesn't get introduced
-> > > > until the
-> > > > next patch. 
-> > > > 
-> > > 
-> > > Sorry, I missed that, will fix it in next version.
-> > > 
-> > 
-> > This patchset is already on your dev-queue branch, what should I do
-> > in
-> > this case? You will reveret this, or I should send fixed version
-> > without
-> > applying it on top of the dev-queue?
-> 
-> I forgot to drop the patches from dev-queue. Everything should be clear
-> now.
-> 
-
-Yeah, everything is fine now, thanks
-> > 
-> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c: In function
-> > > > ice_eswitch_vsi_setup:
-> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: error:
-> > > > ICE_VSI_SWITCHDEV_CTRL undeclared (first use in this function)
-> > > >   263 |  return ice_vsi_setup(pf, pi, ICE_VSI_SWITCHDEV_CTRL,
-> > > > ICE_INVAL_VFID);
-> > > >       |                               ^~~~~~~~~~~~~~~~~~~~~~
-> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:263:31: note: each
-> > > > undeclared identifier is reported only once for each function it
-> > > > appears in
-> > > > drivers/net/ethernet/intel/ice/ice_eswitch.c:264:1: error:
-> > > > control
-> > > > reaches end of non-void function [-Werror=return-type]
-> > > >   264 | }
-> > > > 
-> > > _______________________________________________
-> > > Intel-wired-lan mailing list
-> > > Intel-wired-lan@osuosl.org
-> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBNaWNoYWwsCgoKQW0gMjIuMDYuMjEgdW0gMjM6MjEgc2NocmllYiBNaWNoYWwgU3dpYXRr
+b3dza2k6Cj4gVGhlIGZvbGxvd2luZyBwYXRjaCBzZXJpZXMgaW50cm9kdWNlcyBiYXNpYyBzd2l0
+Y2hkZXYgbW9kZWwKPiBzdXBwb3J0IGluIGljZSBkcml2ZXIuIEltcGxlbWVudCB0aGUgZm9sbG93
+aW5nIGJsb2NrcyBvZgo+IHN3aXRjaGRldiBmcmFtZXdvcms6Cj4gLSBWRiBwb3J0IHJlcHJlc2Vu
+dG9ycyBjcmVhdGlvbgo+IC0gY29udHJvbCBwbGFuZSBWU0kgZGVmaW5pdGlvbgo+IC0gZXhjZXB0
+aW9uIHBhdGggKGEuIGsuIGEuICJzbG93LXBhdGgiKSAtIHRvIGFsbG93IGEgdmlydHVhbAo+IHN3
+aXRjaCBvciBsaW51eCBicmlkZ2UgdG8gcmVjZWl2ZSBhbnkgcGFja2V0IHRoYXQgZG9lc24ndCBt
+YXRjaAo+IGFueSBodyBmaWx0ZXIKPiAtIGxpbmsgc3RhdGUgbWFuYWdlbWVudCBvZiB2aXJ0dWFs
+IHBvcnRzCj4gLSBxdWVyeSB2aXJ0dWFsIHBvcnQgc3RhdGlzdGljcwo+IAo+IEhhcmR3YXJlIG9m
+ZmxvYWQgc3VwcG9ydCBpbiBzd2l0Y2hkZXYgbW9kZSBpcyBvdXQgb2Ygc2NvcGUgb2YKPiB0aGlz
+IHBhdGNoc2V0LiBEZXZsaW5rIGludGVyZmFjZSBpcyB1c2VkIHRvIHRvZ2dsZSBiZXR3ZWVuCj4g
+c3dpdGNoZGV2IGFuZCBsZWdhY3kgKHRoZSBkZWZhdWx0KSBtb2RlcyBvZiB0aGUgZHJpdmVyLgoK
+VGhlc2UgYXJlIGdyZWF0IG5ld3MuIENvdWxkIHlvdSBwbGVhc2UgZWxhYm9yYXRlIGluIHRoZSBz
+dW1tYXJ5IGhvdyB0byAKc3dpdGNoIHRvIHRoZSBuZXcgbW9kZSBvZiB0aGUgZHJpdmVyPyBXaGF0
+IGFyZSB0aGUgYmVuZWZpdHMgb2Ygc3dpdGNoZGV2IAppbiB0aGlzIGNhc2U/IExlc3MgbWFpbnRl
+bmFuY2Ugb3IgYmV0dGVyIHBlcmZvcm1hbmNlPwoKU2hvdWxkIHRoZSBzd2l0Y2hkZXYgZm9sa3Mg
+YmUgaW52b2x2ZWQgaW4gcmV2aWV3PwoKPiBDaGFuZ2Vsb2c6Cj4gICB2MjoKPiAgICAqIGZpeCBi
+dWlsZCBpc3N1ZSBpbiBpY2U6IHNldHRpbmcgYW5kIHJlbGVhc2luZyBzd2l0Y2hkZXYgZW52aXJv
+bm1lbnQKPiAgICBieSBtb3ZpbmcgY2FsbCBvZiBpY2VfdnNpX3NldHVwIHRvIG5leHQgcGF0Y2gg
+d2hpY2ggaGF2ZSBkZWZpbml0aW9uCj4gICAgZm9yIHN3aXRjaGRldiBWU0kKPiAKPiBHcnplZ29y
+eiBOaXRrYSAoNSk6Cj4gICAgaWNlOiBzZXR0aW5nIGFuZCByZWxlYXNpbmcgc3dpdGNoZGV2IGVu
+dmlyb25tZW50CgpJdOKAmWQgYmUgZ3JlYXQgaWYgeW91IGNvdWxkIHVzZSB2ZXJicyBpbiBpbXBl
+cmF0aXZlIG1vb2QuCgoKS2luZCByZWdhcmRzLAoKUGF1bAoKCj4gICAgaWNlOiBpbnRyb2R1Y2Ug
+bmV3IHR5cGUgb2YgVlNJIGZvciBzd2l0Y2hkZXYKPiAgICBpY2U6IGVuYWJsZS9kaXNhYmxlIHN3
+aXRjaGRldiB3aGVuIG1hbmFnaW5nIFZGcwo+ICAgIGljZTogcmVidWlsZCBzd2l0Y2hkZXYgd2hl
+biByZXNldHRpbmcgYWxsIFZGcwo+ICAgIGljZTogc3dpdGNoZGV2IHNsb3cgcGF0aAo+IAo+IE1p
+Y2hhbCBTd2lhdGtvd3NraSAoNSk6Cj4gICAgaWNlOiBiYXNpYyBzdXBwb3J0IGZvciBlc3dpdGNo
+IG1vZGUgbWFuYWdlbWVudAo+ICAgIGljZTogaW50cm9kdWNlIFZGIHBvcnQgcmVwcmVzZW50b3IK
+PiAgICBpY2U6IGFsbG93IHByb2Nlc3MgdmYgb3Bjb2RlcyBpbiBkaWZmZXJlbnQgd2F5cwo+ICAg
+IGljZTogbWFuYWdlIFZTSSBhbnRpc3Bvb2YgYW5kIGRlc3RpbmF0aW9uIG92ZXJyaWRlCj4gICAg
+aWNlOiBhbGxvdyBjaGFuZ2luZyBsYW5fZW4gYW5kIGxiX2VuIG9uIGRmbHQgcnVsZXMKPiAKPiBX
+b2pjaWVjaCBEcmV3ZWsgKDIpOgo+ICAgIGljZTogTW92ZSBkZXZsaW5rIHBvcnQgdG8gUEYvVkYg
+c3RydWN0Cj4gICAgaWNlOiBhZGQgcG9ydCByZXByZXNlbnRvciBldGh0b29sIG9wcyBhbmQgc3Rh
+dHMKPiAKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL0tjb25maWcgICAgICAgICAgICB8
+ICAxMCArCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvTWFrZWZpbGUgICAgICAg
+fCAgIDQgKy0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2UuaCAgICAgICAg
+ICB8ICA0OCArLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9iYXNlLmMg
+ICAgIHwgIDM3ICstCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2Rldmxp
+bmsuYyAgfCAxMDkgKystCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2Rl
+dmxpbmsuaCAgfCAgIDYgKy0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vf
+ZXN3aXRjaC5jICB8IDY1NiArKysrKysrKysrKysrKysrKysKPiAgIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2ljZS9pY2VfZXN3aXRjaC5oICB8ICA4MiArKysKPiAgIGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2ljZS9pY2VfZXRodG9vbC5jICB8ICAzMiArLQo+ICAgZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9mbHRyLmMgICAgIHwgIDgwICsrKwo+ICAgZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9mbHRyLmggICAgIHwgICA3ICsKPiAgIC4uLi9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9sYW5fdHhfcnguaCAgICB8ICA0MyArKwo+ICAgZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYyAgICAgIHwgMTEyICsrLQo+ICAgZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuaCAgICAgIHwgIDExICsKPiAgIGRy
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jICAgICB8ICA0NyArLQo+ICAg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9yZXByLmMgICAgIHwgMzI5ICsrKysr
+KysrKwo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9yZXByLmggICAgIHwg
+IDI3ICsKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfc3dpdGNoLmMgICB8
+ICAgMiArLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zd2l0Y2guaCAg
+IHwgICA2ICsKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeC5jICAg
+ICB8ICAgMyArCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnhfbGli
+LmMgfCAgIDQgKy0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHlwZS5o
+ICAgICB8ICAgMSArCj4gICAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdmlydGNobmxf
+cGYuYyAgfCAxOTYgKysrKystCj4gICAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfdmly
+dGNobmxfcGYuaCAgfCAgNDUgKysKPiAgIDI0IGZpbGVzIGNoYW5nZWQsIDE4MTcgaW5zZXJ0aW9u
+cygrKSwgODAgZGVsZXRpb25zKC0pCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9lc3dpdGNoLmMKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2Vzd2l0Y2guaAo+ICAgY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcmVwci5jCj4gICBj
+cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9yZXBy
+LmgKPiAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
+ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
+czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
