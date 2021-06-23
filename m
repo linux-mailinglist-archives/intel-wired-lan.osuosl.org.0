@@ -1,56 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 673973B17D2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 12:08:33 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 754473B189F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 13:13:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC3A160661;
-	Wed, 23 Jun 2021 10:08:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E8B3A82F03;
+	Wed, 23 Jun 2021 11:13:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4RSFFdXOLSXs; Wed, 23 Jun 2021 10:08:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xGuJubTr4Ceu; Wed, 23 Jun 2021 11:13:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 97C0460611;
-	Wed, 23 Jun 2021 10:08:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CC34682EFC;
+	Wed, 23 Jun 2021 11:13:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4D8F01BF39C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 10:08:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E72BC1BF3E8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:13:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 48E4740140
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 10:08:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D097E401EB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:13:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qaEvm5aZcFHc for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jun 2021 10:08:24 +0000 (UTC)
+ with ESMTP id UnCALbURxuB6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jun 2021 11:13:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3C7A740003
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 10:08:24 +0000 (UTC)
-IronPort-SDR: pVg62QPXww6d7VsYYzbVPSGk5MgXdoH3N6V6MsfAAy00V5qhv2xwm7Su2mQ2F6OIckSYRfUlBp
- zHJF8RVBNv2A==
-X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="268372287"
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="268372287"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2021 03:08:23 -0700
-IronPort-SDR: sarDQF5pbQWQb98gvNrzSW2VVfW508ILTe1+tOw2iwcw5WkLOqyD56hUfX37bMBgUI4qLISb8s
- iASyfFtzQbVw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="487249097"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga001.jf.intel.com with ESMTP; 23 Jun 2021 03:08:18 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 23 Jun 2021 10:08:02 +0000
-Message-Id: <20210623100802.10997-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net-next v4 3/3] iavf: Fix init and
- watchdog state machines
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A3DD1401E1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:13:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1624446827;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Qk5GBiM0tj1/P0/7gaLS65wrkya24n+AVH6Pdae+6a0=;
+ b=gtHQynnXtxXcyczySwSLNs1njkQRoiXjlu2rOPJYUf8KbvfT8AhFR0RMXcg7BWprOkhbEH
+ O+6haeGWW4QDoT79UkiHj/SOi82EZkb+hDqxCxxjTy25mw0V73Vj+Jm4AEscdia3kzlTED
+ 4IRllsMZ1ajm4nOHYZ8rVF3yG4I/aPI=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-255-00wa7NknOc2I7HktgxaOqQ-1; Wed, 23 Jun 2021 07:13:45 -0400
+X-MC-Unique: 00wa7NknOc2I7HktgxaOqQ-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ j19-20020aa7c4130000b029039497d5cdbeso1097363edq.15
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 04:13:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Qk5GBiM0tj1/P0/7gaLS65wrkya24n+AVH6Pdae+6a0=;
+ b=stBwQsnXR6Rod0C0ndTmGJ3PUFRAoyNna3jq5HtGwj0tTRv6F39ptNgyBvu1xRckyG
+ Nasj4sfG2xgjDOFs7x9+pPCzZXX02xnkHRh/5lkAkzAmJzRAs68yiqXLBuKojpHC0PJn
+ kq+Ub101s5sks7M/zgKY/6seK6Me7+FUkoL2FzTm+dTs7xQdhOnpgz7LiVh3gjenLKhk
+ vA6rg4Vs1j4Yhhz/XaG0cMjOYTgbIbnm9GF7OcoDwCJm1/d/S15uCfpU2yl8DvOqMyYl
+ CIPRW6+KZeLzlK4i0TxceBBlIOR9zyp/G2hONFFlzIHwboeI9apmvMvMRznu6qx2Xu+y
+ d7CQ==
+X-Gm-Message-State: AOAM532o5Nca/DRym0+WcIRiVZqTZ6P6KVLIiQ+LlxzKl2Q07t4/eGSz
+ A0cZu5lsqWh3sLCgDrUGdTu2X0ArRKJp3JxKtGANaaOVYCF8XZxnZufRHnA0P9LmHozF6lD9TIA
+ 5U6QsfiafvZYLbTfY8IIPOHmoHc8T/g==
+X-Received: by 2002:aa7:c50d:: with SMTP id o13mr11372740edq.9.1624446824013; 
+ Wed, 23 Jun 2021 04:13:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztF5ae03ntoyILjp8pqHlp+iOfl1HNxJXBQz0XPbt2+lIDWho8ON30nAuFqqxYDRxnx9LSsA==
+X-Received: by 2002:aa7:c50d:: with SMTP id o13mr11372696edq.9.1624446823683; 
+ Wed, 23 Jun 2021 04:13:43 -0700 (PDT)
+Received: from alrua-x1.borgediget.toke.dk ([45.145.92.2])
+ by smtp.gmail.com with ESMTPSA id g8sm13567784edw.89.2021.06.23.04.13.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Jun 2021 04:13:43 -0700 (PDT)
+Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
+ id 3EFD618073B; Wed, 23 Jun 2021 13:07:28 +0200 (CEST)
+From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+To: bpf@vger.kernel.org,
+	netdev@vger.kernel.org
+Date: Wed, 23 Jun 2021 13:07:19 +0200
+Message-Id: <20210623110727.221922-12-toke@redhat.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20210623110727.221922-1-toke@redhat.com>
+References: <20210623110727.221922-1-toke@redhat.com>
+MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=toke@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: [Intel-wired-lan] [PATCH bpf-next v4 11/19] net: intel: remove
+ rcu_read_lock() around XDP program invocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,281 +103,163 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Jakub Pawlak <jakub.pawlak@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Paul E . McKenney" <paulmck@kernel.org>,
+ =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
+ Hangbin Liu <liuhangbin@gmail.com>, Jesper Dangaard Brouer <brouer@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Martin KaFai Lau <kafai@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jan Sokolowski <jan.sokolowski@intel.com>
-
-Use single state machine for driver initialization
-and for service initialized driver. The init state
-machine implemented in init_task() is merged
-into the watchdog_task(). The init_task() function
-is removed.
-
-Testing-Hints: Change is only for VF driver state machine,
-               should be checked load/unload/reset and
-               set/get driver parameters.
-
-Fixes: bac8486116b0 ("iavf: Refactor the watchdog state machine")
-Signed-off-by: Jakub Pawlak <jakub.pawlak@intel.com>
-Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
-v4: Removed unnecessary line
-v3: Added new file to patch series
-v2: Splitted the patch into 2 to make them smaller
----
- drivers/net/ethernet/intel/iavf/iavf.h      |   1 -
- drivers/net/ethernet/intel/iavf/iavf_main.c | 139 +++++++++-----------
- 2 files changed, 59 insertions(+), 81 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 468a2e1..6516c85 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -233,7 +233,6 @@ struct iavf_adapter {
- 	struct work_struct reset_task;
- 	struct work_struct adminq_task;
- 	struct delayed_work client_task;
--	struct delayed_work init_task;
- 	wait_queue_head_t down_waitqueue;
- 	struct iavf_q_vector *q_vectors;
- 	struct list_head vlan_filter_list;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 59e4c72..8564ae8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1973,7 +1973,49 @@ static void iavf_watchdog_task(struct work_struct *work)
- 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
- 		iavf_change_state(adapter, __IAVF_COMM_FAILED);
- 
-+	if (adapter->flags & IAVF_FLAG_RESET_NEEDED &&
-+	    adapter->state != __IAVF_RESETTING) {
-+		iavf_change_state(adapter, __IAVF_RESETTING);
-+		adapter->aq_required = 0;
-+		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
-+	}
-+
- 	switch (adapter->state) {
-+	case __IAVF_STARTUP:
-+		iavf_startup(adapter);
-+		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
-+				   msecs_to_jiffies(30));
-+		return;
-+	case __IAVF_INIT_VERSION_CHECK:
-+		iavf_init_version_check(adapter);
-+		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
-+				   msecs_to_jiffies(30));
-+		return;
-+	case __IAVF_INIT_GET_RESOURCES:
-+		iavf_init_get_resources(adapter);
-+		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
-+				   msecs_to_jiffies(1));
-+		return;
-+	case __IAVF_INIT_FAILED:
-+		if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
-+			dev_err(&adapter->pdev->dev,
-+				"Failed to communicate with PF; waiting before retry\n");
-+			adapter->flags |= IAVF_FLAG_PF_COMMS_FAILED;
-+			iavf_shutdown_adminq(hw);
-+			clear_bit(__IAVF_IN_CRITICAL_TASK,
-+				  &adapter->crit_section);
-+			queue_delayed_work(iavf_wq,
-+					   &adapter->watchdog_task, (5 * HZ));
-+			return;
-+		}
-+		/* Try again from failed step*/
-+		iavf_change_state(adapter, adapter->last_state);
-+		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ);
-+		return;
- 	case __IAVF_COMM_FAILED:
- 		reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
- 			  IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
-@@ -1982,17 +2024,12 @@ static void iavf_watchdog_task(struct work_struct *work)
- 			/* A chance for redemption! */
- 			dev_err(&adapter->pdev->dev,
- 				"Hardware came out of reset. Attempting reinit.\n");
--			iavf_change_state(adapter, __IAVF_STARTUP);
--			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
--			queue_delayed_work(iavf_wq, &adapter->init_task, 10);
--			clear_bit(__IAVF_IN_CRITICAL_TASK,
--				  &adapter->crit_section);
--			/* Don't reschedule the watchdog, since we've restarted
--			 * the init task. When init_task contacts the PF and
-+			/* When init task contacts the PF and
- 			 * gets everything set up again, it'll restart the
- 			 * watchdog for us. Down, boy. Sit. Stay. Woof.
- 			 */
--			return;
-+			iavf_change_state(adapter, __IAVF_STARTUP);
-+			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
- 		}
- 		adapter->aq_required = 0;
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
-@@ -2001,7 +2038,7 @@ static void iavf_watchdog_task(struct work_struct *work)
- 		queue_delayed_work(iavf_wq,
- 				   &adapter->watchdog_task,
- 				   msecs_to_jiffies(10));
--		goto watchdog_done;
-+		return;
- 	case __IAVF_RESETTING:
- 		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
-@@ -2024,12 +2061,14 @@ static void iavf_watchdog_task(struct work_struct *work)
- 			    adapter->state == __IAVF_RUNNING)
- 				iavf_request_stats(adapter);
- 		}
-+		if (adapter->state == __IAVF_RUNNING)
-+			iavf_detect_recover_hung(&adapter->vsi);
- 		break;
- 	case __IAVF_REMOVE:
- 		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- 		return;
- 	default:
--		goto restart_watchdog;
-+		return;
- 	}
- 
- 	/* check for hw reset */
-@@ -2041,22 +2080,22 @@ static void iavf_watchdog_task(struct work_struct *work)
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- 		dev_err(&adapter->pdev->dev, "Hardware reset detected\n");
- 		queue_work(iavf_wq, &adapter->reset_task);
--		goto watchdog_done;
-+		clear_bit(__IAVF_IN_CRITICAL_TASK,
-+			  &adapter->crit_section);
-+		queue_delayed_work(iavf_wq,
-+				   &adapter->watchdog_task, HZ * 2);
-+		return;
- 	}
- 
- 	schedule_delayed_work(&adapter->client_task, msecs_to_jiffies(5));
--watchdog_done:
--	if (adapter->state == __IAVF_RUNNING ||
--	    adapter->state == __IAVF_COMM_FAILED)
--		iavf_detect_recover_hung(&adapter->vsi);
- 	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- restart_watchdog:
-+	queue_work(iavf_wq, &adapter->adminq_task);
- 	if (adapter->aq_required)
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
- 				   msecs_to_jiffies(20));
- 	else
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
--	queue_work(iavf_wq, &adapter->adminq_task);
- }
- 
- static void iavf_disable_vf(struct iavf_adapter *adapter)
-@@ -2342,6 +2381,8 @@ continue_reset:
- 
- 	return;
- reset_err:
-+	if (running)
-+		iavf_change_state(adapter, __IAVF_RUNNING);
- 	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
- 	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
-@@ -3693,67 +3734,6 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 	return 0;
- }
- 
--/**
-- * iavf_init_task - worker thread to perform delayed initialization
-- * @work: pointer to work_struct containing our data
-- *
-- * This task completes the work that was begun in probe. Due to the nature
-- * of VF-PF communications, we may need to wait tens of milliseconds to get
-- * responses back from the PF. Rather than busy-wait in probe and bog down the
-- * whole system, we'll do it in a task so we can sleep.
-- * This task only runs during driver init. Once we've established
-- * communications with the PF driver and set up our netdev, the watchdog
-- * takes over.
-- **/
--static void iavf_init_task(struct work_struct *work)
--{
--	struct iavf_adapter *adapter = container_of(work,
--						    struct iavf_adapter,
--						    init_task.work);
--	struct iavf_hw *hw = &adapter->hw;
--
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000)) {
--		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
--		return;
--	}
--	switch (adapter->state) {
--	case __IAVF_STARTUP:
--		iavf_startup(adapter);
--		if (adapter->state == __IAVF_INIT_FAILED)
--			goto init_failed;
--		break;
--	case __IAVF_INIT_VERSION_CHECK:
--		iavf_init_version_check(adapter);
--		if (adapter->state == __IAVF_INIT_FAILED)
--			goto init_failed;
--		break;
--	case __IAVF_INIT_GET_RESOURCES:
--		iavf_init_get_resources(adapter);
--		if (adapter->state == __IAVF_INIT_FAILED)
--			goto init_failed;
--		goto out;
--	default:
--		goto init_failed;
--	}
--
--	queue_delayed_work(iavf_wq, &adapter->init_task,
--			   msecs_to_jiffies(30));
--	goto out;
--init_failed:
--	if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
--		dev_err(&adapter->pdev->dev,
--			"Failed to communicate with PF; waiting before retry\n");
--		adapter->flags |= IAVF_FLAG_PF_COMMS_FAILED;
--		iavf_shutdown_adminq(hw);
--		iavf_change_state(adapter, __IAVF_STARTUP);
--		queue_delayed_work(iavf_wq, &adapter->init_task, HZ * 5);
--		goto out;
--	}
--	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
--out:
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
--}
--
- /**
-  * iavf_shutdown - Shutdown the device in preparation for a reboot
-  * @pdev: pci device structure
-@@ -3885,8 +3865,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	INIT_WORK(&adapter->adminq_task, iavf_adminq_task);
- 	INIT_DELAYED_WORK(&adapter->watchdog_task, iavf_watchdog_task);
- 	INIT_DELAYED_WORK(&adapter->client_task, iavf_client_task);
--	INIT_DELAYED_WORK(&adapter->init_task, iavf_init_task);
--	queue_delayed_work(iavf_wq, &adapter->init_task,
-+	queue_delayed_work(iavf_wq, &adapter->watchdog_task,
- 			   msecs_to_jiffies(5 * (pdev->devfn & 0x07)));
- 
- 	/* Setup the wait queue for indicating transition to down status */
-@@ -3995,8 +3974,8 @@ static void iavf_remove(struct pci_dev *pdev)
- 	 * to run/schedule any driver tasks
- 	 */
- 	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
--	cancel_delayed_work_sync(&adapter->init_task);
- 	cancel_work_sync(&adapter->reset_task);
-+	cancel_delayed_work_sync(&adapter->watchdog_task);
- 	cancel_delayed_work_sync(&adapter->client_task);
- 	iavf_misc_irq_disable(adapter);
- 	if (adapter->netdev_registered) {
--- 
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhlIEludGVsIGRyaXZlcnMgYWxsIGhhdmUgcmN1X3JlYWRfbG9jaygpL3JjdV9yZWFkX3VubG9j
+aygpIHBhaXJzIGFyb3VuZApYRFAgcHJvZ3JhbSBpbnZvY2F0aW9ucy4gSG93ZXZlciwgdGhlIGFj
+dHVhbCBsaWZldGltZSBvZiB0aGUgb2JqZWN0cwpyZWZlcnJlZCBieSB0aGUgWERQIHByb2dyYW0g
+aW52b2NhdGlvbiBpcyBsb25nZXIsIGFsbCB0aGUgd2F5IHRocm91Z2ggdG8KdGhlIGNhbGwgdG8g
+eGRwX2RvX2ZsdXNoKCksIG1ha2luZyB0aGUgc2NvcGUgb2YgdGhlIHJjdV9yZWFkX2xvY2soKSB0
+b28Kc21hbGwuIFRoaXMgdHVybnMgb3V0IHRvIGJlIGhhcm1sZXNzIGJlY2F1c2UgaXQgYWxsIGhh
+cHBlbnMgaW4gYSBzaW5nbGUKTkFQSSBwb2xsIGN5Y2xlIChhbmQgdGh1cyB1bmRlciBsb2NhbF9i
+aF9kaXNhYmxlKCkpLCBidXQgaXQgbWFrZXMgdGhlCnJjdV9yZWFkX2xvY2soKSBtaXNsZWFkaW5n
+LgoKUmF0aGVyIHRoYW4gZXh0ZW5kIHRoZSBzY29wZSBvZiB0aGUgcmN1X3JlYWRfbG9jaygpLCBq
+dXN0IGdldCByaWQgb2YgaXQKZW50aXJlbHkuIFdpdGggdGhlIGFkZGl0aW9uIG9mIFJDVSBhbm5v
+dGF0aW9ucyB0byB0aGUgWERQX1JFRElSRUNUIG1hcAp0eXBlcyB0aGF0IHRha2UgYmggZXhlY3V0
+aW9uIGludG8gYWNjb3VudCwgbG9ja2RlcCBldmVuIHVuZGVyc3RhbmRzIHRoaXMgdG8KYmUgc2Fm
+ZSwgc28gdGhlcmUncyByZWFsbHkgbm8gcmVhc29uIHRvIGtlZXAgaXQgYXJvdW5kLgoKQ2M6IEpl
+c3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPgpDYzogVG9ueSBOZ3V5
+ZW4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPgpDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3Rz
+Lm9zdW9zbC5vcmcKVGVzdGVkLWJ5OiBKZXNwZXIgRGFuZ2FhcmQgQnJvdWVyIDxicm91ZXJAcmVk
+aGF0LmNvbT4gIyBpNDBlClNpZ25lZC1vZmYtYnk6IFRva2UgSMO4aWxhbmQtSsO4cmdlbnNlbiA8
+dG9rZUByZWRoYXQuY29tPgotLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
+ZV90eHJ4LmMgICAgICAgfCAyIC0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
+MGVfeHNrLmMgICAgICAgIHwgNiArLS0tLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lj
+ZS9pY2VfdHhyeC5jICAgICAgICAgfCA2ICstLS0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaWNlL2ljZV94c2suYyAgICAgICAgICB8IDYgKy0tLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pZ2IvaWdiX21haW4uYyAgICAgICAgIHwgMiAtLQogZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvaWdjL2lnY19tYWluLmMgICAgICAgICB8IDcgKystLS0tLQogZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jICAgICB8IDIgLS0KIGRyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jICAgICAgfCA2ICstLS0tLQogZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYyB8IDIgLS0KIDkgZmls
+ZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCAzMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhyeC5jIGIvZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYwppbmRleCBkZTcwYzE2ZWY2MTkuLmFl
+M2E2NGI2ZjVmOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9p
+NDBlX3R4cnguYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhy
+eC5jCkBAIC0yMjk4LDcgKzIyOTgsNiBAQCBzdGF0aWMgaW50IGk0MGVfcnVuX3hkcChzdHJ1Y3Qg
+aTQwZV9yaW5nICpyeF9yaW5nLCBzdHJ1Y3QgeGRwX2J1ZmYgKnhkcCkKIAlzdHJ1Y3QgYnBmX3By
+b2cgKnhkcF9wcm9nOwogCXUzMiBhY3Q7CiAKLQlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cg
+PSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3Byb2cpOwogCiAJaWYgKCF4ZHBfcHJvZykKQEAgLTIz
+MjksNyArMjMyOCw2IEBAIHN0YXRpYyBpbnQgaTQwZV9ydW5feGRwKHN0cnVjdCBpNDBlX3Jpbmcg
+KnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQogCQlicmVhazsKIAl9CiB4ZHBfb3V0Ogot
+CXJjdV9yZWFkX3VubG9jaygpOwogCXJldHVybiByZXN1bHQ7CiB9CiAKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwppbmRleCA0NmQ4ODQ0MTdjNjMuLjhkY2E1M2I3
+ZGFmZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hz
+ay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwpAQCAt
+MTUzLDcgKzE1Myw2IEBAIHN0YXRpYyBpbnQgaTQwZV9ydW5feGRwX3pjKHN0cnVjdCBpNDBlX3Jp
+bmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQogCXN0cnVjdCBicGZfcHJvZyAqeGRw
+X3Byb2c7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2soKTsKIAkvKiBOQiEgeGRwX3Byb2cg
+d2lsbCBhbHdheXMgYmUgIU5VTEwsIGR1ZSB0byB0aGUgZmFjdCB0aGF0CiAJICogdGhpcyBwYXRo
+IGlzIGVuYWJsZWQgYnkgc2V0dGluZyBhbiBYRFAgcHJvZ3JhbS4KIAkgKi8KQEAgLTE2Miw5ICsx
+NjEsNyBAQCBzdGF0aWMgaW50IGk0MGVfcnVuX3hkcF96YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9y
+aW5nLCBzdHJ1Y3QgeGRwX2J1ZmYgKnhkcCkKIAogCWlmIChsaWtlbHkoYWN0ID09IFhEUF9SRURJ
+UkVDVCkpIHsKIAkJZXJyID0geGRwX2RvX3JlZGlyZWN0KHJ4X3JpbmctPm5ldGRldiwgeGRwLCB4
+ZHBfcHJvZyk7Ci0JCXJlc3VsdCA9ICFlcnIgPyBJNDBFX1hEUF9SRURJUiA6IEk0MEVfWERQX0NP
+TlNVTUVEOwotCQlyY3VfcmVhZF91bmxvY2soKTsKLQkJcmV0dXJuIHJlc3VsdDsKKwkJcmV0dXJu
+ICFlcnIgPyBJNDBFX1hEUF9SRURJUiA6IEk0MEVfWERQX0NPTlNVTUVEOwogCX0KIAogCXN3aXRj
+aCAoYWN0KSB7CkBAIC0xODQsNyArMTgxLDYgQEAgc3RhdGljIGludCBpNDBlX3J1bl94ZHBfemMo
+c3RydWN0IGk0MGVfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZmICp4ZHApCiAJCXJlc3Vs
+dCA9IEk0MEVfWERQX0NPTlNVTUVEOwogCQlicmVhazsKIAl9Ci0JcmN1X3JlYWRfdW5sb2NrKCk7
+CiAJcmV0dXJuIHJlc3VsdDsKIH0KIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWNlL2ljZV90eHJ4LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
+X3R4cnguYwppbmRleCBlMmI0YjI5ZWEyMDcuLjFhMzExZTkxZmI2ZCAxMDA2NDQKLS0tIGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMKKysrIGIvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMKQEAgLTExMjksMTUgKzExMjksMTEgQEAgaW50
+IGljZV9jbGVhbl9yeF9pcnEoc3RydWN0IGljZV9yaW5nICpyeF9yaW5nLCBpbnQgYnVkZ2V0KQog
+CQl4ZHAuZnJhbWVfc3ogPSBpY2VfcnhfZnJhbWVfdHJ1ZXNpemUocnhfcmluZywgc2l6ZSk7CiAj
+ZW5kaWYKIAotCQlyY3VfcmVhZF9sb2NrKCk7CiAJCXhkcF9wcm9nID0gUkVBRF9PTkNFKHJ4X3Jp
+bmctPnhkcF9wcm9nKTsKLQkJaWYgKCF4ZHBfcHJvZykgewotCQkJcmN1X3JlYWRfdW5sb2NrKCk7
+CisJCWlmICgheGRwX3Byb2cpCiAJCQlnb3RvIGNvbnN0cnVjdF9za2I7Ci0JCX0KIAogCQl4ZHBf
+cmVzID0gaWNlX3J1bl94ZHAocnhfcmluZywgJnhkcCwgeGRwX3Byb2cpOwotCQlyY3VfcmVhZF91
+bmxvY2soKTsKIAkJaWYgKCF4ZHBfcmVzKQogCQkJZ290byBjb25zdHJ1Y3Rfc2tiOwogCQlpZiAo
+eGRwX3JlcyAmIChJQ0VfWERQX1RYIHwgSUNFX1hEUF9SRURJUikpIHsKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeHNrLmMgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pY2UvaWNlX3hzay5jCmluZGV4IGZhYTdiOGQ5NmFkYi4uZDZkYTM3N2Y1YWMz
+IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hzay5jCisr
+KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeHNrLmMKQEAgLTQ2Myw3ICs0
+NjMsNiBAQCBpY2VfcnVuX3hkcF96YyhzdHJ1Y3QgaWNlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4
+ZHBfYnVmZiAqeGRwKQogCXN0cnVjdCBpY2VfcmluZyAqeGRwX3Jpbmc7CiAJdTMyIGFjdDsKIAot
+CXJjdV9yZWFkX2xvY2soKTsKIAkvKiBaQyBwYXRjaCBpcyBlbmFibGVkIG9ubHkgd2hlbiBYRFAg
+cHJvZ3JhbSBpcyBzZXQsCiAJICogc28gaGVyZSBpdCBjYW4gbm90IGJlIE5VTEwKIAkgKi8KQEAg
+LTQ3Myw5ICs0NzIsNyBAQCBpY2VfcnVuX3hkcF96YyhzdHJ1Y3QgaWNlX3JpbmcgKnJ4X3Jpbmcs
+IHN0cnVjdCB4ZHBfYnVmZiAqeGRwKQogCiAJaWYgKGxpa2VseShhY3QgPT0gWERQX1JFRElSRUNU
+KSkgewogCQllcnIgPSB4ZHBfZG9fcmVkaXJlY3QocnhfcmluZy0+bmV0ZGV2LCB4ZHAsIHhkcF9w
+cm9nKTsKLQkJcmVzdWx0ID0gIWVyciA/IElDRV9YRFBfUkVESVIgOiBJQ0VfWERQX0NPTlNVTUVE
+OwotCQlyY3VfcmVhZF91bmxvY2soKTsKLQkJcmV0dXJuIHJlc3VsdDsKKwkJcmV0dXJuICFlcnIg
+PyBJQ0VfWERQX1JFRElSIDogSUNFX1hEUF9DT05TVU1FRDsKIAl9CiAKIAlzd2l0Y2ggKGFjdCkg
+ewpAQCAtNDk2LDcgKzQ5Myw2IEBAIGljZV9ydW5feGRwX3pjKHN0cnVjdCBpY2VfcmluZyAqcnhf
+cmluZywgc3RydWN0IHhkcF9idWZmICp4ZHApCiAJCWJyZWFrOwogCX0KIAotCXJjdV9yZWFkX3Vu
+bG9jaygpOwogCXJldHVybiByZXN1bHQ7CiB9CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWdiL2lnYl9tYWluLmMKaW5kZXggMDM4YTlmZDFhZjQ0Li44YTExYjdlNTUzMjYgMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCisrKyBiL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCkBAIC04Mzg3LDcgKzgzODcsNiBA
+QCBzdGF0aWMgc3RydWN0IHNrX2J1ZmYgKmlnYl9ydW5feGRwKHN0cnVjdCBpZ2JfYWRhcHRlciAq
+YWRhcHRlciwKIAlzdHJ1Y3QgYnBmX3Byb2cgKnhkcF9wcm9nOwogCXUzMiBhY3Q7CiAKLQlyY3Vf
+cmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cgPSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3Byb2cpOwog
+CiAJaWYgKCF4ZHBfcHJvZykKQEAgLTg0MjAsNyArODQxOSw2IEBAIHN0YXRpYyBzdHJ1Y3Qgc2tf
+YnVmZiAqaWdiX3J1bl94ZHAoc3RydWN0IGlnYl9hZGFwdGVyICphZGFwdGVyLAogCQlicmVhazsK
+IAl9CiB4ZHBfb3V0OgotCXJjdV9yZWFkX3VubG9jaygpOwogCXJldHVybiBFUlJfUFRSKC1yZXN1
+bHQpOwogfQogCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdj
+X21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jCmluZGV4
+IGVhOTk4ZDJkZWZhNC4uMmI2NjZhNmVjOTg5IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pZ2MvaWdjX21haW4uYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pZ2MvaWdjX21haW4uYwpAQCAtMjE3NSwxOCArMjE3NSwxNSBAQCBzdGF0aWMgc3RydWN0IHNr
+X2J1ZmYgKmlnY194ZHBfcnVuX3Byb2coc3RydWN0IGlnY19hZGFwdGVyICphZGFwdGVyLAogCXN0
+cnVjdCBicGZfcHJvZyAqcHJvZzsKIAlpbnQgcmVzOwogCi0JcmN1X3JlYWRfbG9jaygpOwotCiAJ
+cHJvZyA9IFJFQURfT05DRShhZGFwdGVyLT54ZHBfcHJvZyk7CiAJaWYgKCFwcm9nKSB7CiAJCXJl
+cyA9IElHQ19YRFBfUEFTUzsKLQkJZ290byB1bmxvY2s7CisJCWdvdG8gb3V0OwogCX0KIAogCXJl
+cyA9IF9faWdjX3hkcF9ydW5fcHJvZyhhZGFwdGVyLCBwcm9nLCB4ZHApOwogCi11bmxvY2s6Ci0J
+cmN1X3JlYWRfdW5sb2NrKCk7CitvdXQ6CiAJcmV0dXJuIEVSUl9QVFIoLXJlcyk7CiB9CiAKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYyBi
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYwppbmRleCBjNWVj
+MTdkMTljNTkuLjI3ZDc0Njc1MzRlMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2l4Z2JlL2l4Z2JlX21haW4uYwpAQCAtMjE5OSw3ICsyMTk5LDYgQEAgc3RhdGljIHN0cnVjdCBz
+a19idWZmICppeGdiZV9ydW5feGRwKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVyLAogCXN0
+cnVjdCB4ZHBfZnJhbWUgKnhkcGY7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2soKTsKIAl4
+ZHBfcHJvZyA9IFJFQURfT05DRShyeF9yaW5nLT54ZHBfcHJvZyk7CiAKIAlpZiAoIXhkcF9wcm9n
+KQpAQCAtMjIzNyw3ICsyMjM2LDYgQEAgc3RhdGljIHN0cnVjdCBza19idWZmICppeGdiZV9ydW5f
+eGRwKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVyLAogCQlicmVhazsKIAl9CiB4ZHBfb3V0
+OgotCXJjdV9yZWFkX3VubG9jaygpOwogCXJldHVybiBFUlJfUFRSKC1yZXN1bHQpOwogfQogCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYyBi
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jCmluZGV4IDkxYWQ1
+YjkwMjY3My4uZmZiZjhhNjk0MzYyIDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9peGdiZS9peGdiZV94c2suYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+eGdiZS9peGdiZV94c2suYwpAQCAtMTAwLDE1ICsxMDAsMTIgQEAgc3RhdGljIGludCBpeGdiZV9y
+dW5feGRwX3pjKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVyLAogCXN0cnVjdCB4ZHBfZnJh
+bWUgKnhkcGY7CiAJdTMyIGFjdDsKIAotCXJjdV9yZWFkX2xvY2soKTsKIAl4ZHBfcHJvZyA9IFJF
+QURfT05DRShyeF9yaW5nLT54ZHBfcHJvZyk7CiAJYWN0ID0gYnBmX3Byb2dfcnVuX3hkcCh4ZHBf
+cHJvZywgeGRwKTsKIAogCWlmIChsaWtlbHkoYWN0ID09IFhEUF9SRURJUkVDVCkpIHsKIAkJZXJy
+ID0geGRwX2RvX3JlZGlyZWN0KHJ4X3JpbmctPm5ldGRldiwgeGRwLCB4ZHBfcHJvZyk7Ci0JCXJl
+c3VsdCA9ICFlcnIgPyBJWEdCRV9YRFBfUkVESVIgOiBJWEdCRV9YRFBfQ09OU1VNRUQ7Ci0JCXJj
+dV9yZWFkX3VubG9jaygpOwotCQlyZXR1cm4gcmVzdWx0OworCQlyZXR1cm4gIWVyciA/IElYR0JF
+X1hEUF9SRURJUiA6IElYR0JFX1hEUF9DT05TVU1FRDsKIAl9CiAKIAlzd2l0Y2ggKGFjdCkgewpA
+QCAtMTMyLDcgKzEyOSw2IEBAIHN0YXRpYyBpbnQgaXhnYmVfcnVuX3hkcF96YyhzdHJ1Y3QgaXhn
+YmVfYWRhcHRlciAqYWRhcHRlciwKIAkJcmVzdWx0ID0gSVhHQkVfWERQX0NPTlNVTUVEOwogCQli
+cmVhazsKIAl9Ci0JcmN1X3JlYWRfdW5sb2NrKCk7CiAJcmV0dXJuIHJlc3VsdDsKIH0KIApkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4u
+YyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JldmYvaXhnYmV2Zl9tYWluLmMKaW5k
+ZXggYmEyZWQ4YTQzZDJkLi5mYWJhZGE0Y2UzMTUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2l4Z2JldmYvaXhnYmV2Zl9tYWluLmMKKysrIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYwpAQCAtMTA1NCw3ICsxMDU0LDYgQEAg
+c3RhdGljIHN0cnVjdCBza19idWZmICppeGdiZXZmX3J1bl94ZHAoc3RydWN0IGl4Z2JldmZfYWRh
+cHRlciAqYWRhcHRlciwKIAlzdHJ1Y3QgYnBmX3Byb2cgKnhkcF9wcm9nOwogCXUzMiBhY3Q7CiAK
+LQlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cgPSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3By
+b2cpOwogCiAJaWYgKCF4ZHBfcHJvZykKQEAgLTEwNzksNyArMTA3OCw2IEBAIHN0YXRpYyBzdHJ1
+Y3Qgc2tfYnVmZiAqaXhnYmV2Zl9ydW5feGRwKHN0cnVjdCBpeGdiZXZmX2FkYXB0ZXIgKmFkYXB0
+ZXIsCiAJCWJyZWFrOwogCX0KIHhkcF9vdXQ6Ci0JcmN1X3JlYWRfdW5sb2NrKCk7CiAJcmV0dXJu
+IEVSUl9QVFIoLXJlc3VsdCk7CiB9CiAKLS0gCjIuMzIuMAoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
+bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
