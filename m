@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 672893B192E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 13:43:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4884D3B1AC3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jun 2021 15:09:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7047340215;
-	Wed, 23 Jun 2021 11:43:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id ADD34838C9;
+	Wed, 23 Jun 2021 13:09:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ofPZ_IDVMNNt; Wed, 23 Jun 2021 11:43:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xjXSAnU_QExh; Wed, 23 Jun 2021 13:08:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 255414021F;
-	Wed, 23 Jun 2021 11:43:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6AF1280892;
+	Wed, 23 Jun 2021 13:08:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC83F1BF3E8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:43:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8C44A1BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 13:08:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E72D440211
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:43:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7654340245
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 13:08:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j8aY0IwTr-25 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jun 2021 11:43:28 +0000 (UTC)
+ with ESMTP id GdWroEZAu0vf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jun 2021 13:08:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 89ECD40164
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 11:43:28 +0000 (UTC)
-IronPort-SDR: MOwgzrgmPoButyULFUVzZfmUQ9e9ybV/1O5pDXHRekDmI+ictw41WoAwBbAhPkQqoukk1kMkxS
- Cr6mfhPGqi8A==
-X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="207181273"
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="207181273"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6B90940243
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 13:08:47 +0000 (UTC)
+IronPort-SDR: PDzeQFWIfdMj90v7zo1dxNy6cSQ/OEoIFo/C765V8+BkcGqC1A1eqBJeRrG/86D98Fwm9hhBXz
+ Lzab1HeSRp/Q==
+X-IronPort-AV: E=McAfee;i="6200,9189,10023"; a="207193724"
+X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="207193724"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2021 04:43:23 -0700
-IronPort-SDR: I0EHS3KhYa8OOaBn/2/tjRsTb3dU8ob1dyQtWWTreRlw+WTPv4lYSuDzGkQ9T0k3XA9Ikx9mAh
- EcDrZoUzyk6Q==
-X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="487273327"
-Received: from unknown (HELO localhost.localdomain) ([10.102.102.63])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2021 04:43:22 -0700
-Date: Wed, 23 Jun 2021 03:50:40 -0400
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <YNLn0GpjuoQ2OHuN@localhost.localdomain>
-References: <20210622212134.341728-1-michal.swiatkowski@linux.intel.com>
- <c2378b90-a307-aa00-471b-247a15423527@molgen.mpg.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c2378b90-a307-aa00-471b-247a15423527@molgen.mpg.de>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/12] Add switchdev
- driver model for ice driver
+ 23 Jun 2021 06:08:46 -0700
+IronPort-SDR: ltqnysbv1X40cPXxj2gVFXxZtG1NJgGlCSjzio3ynh3idTq10qg7QiArqXgqA1soiE64cnPJ3Y
+ dCctgwjMULcQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,293,1616482800"; d="scan'208";a="623835270"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by orsmga005.jf.intel.com with ESMTP; 23 Jun 2021 06:08:44 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 23 Jun 2021 13:08:42 +0000
+Message-Id: <20210623130842.9956-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix ping is lost after
+ untrusted VF had tried to change MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,89 +63,138 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gV2VkLCBKdW4gMjMsIDIwMjEgYXQgMDc6NDg6MjlBTSArMDIwMCwgUGF1bCBNZW56ZWwgd3Jv
-dGU6Cj4gRGVhciBNaWNoYWwsCj4gCj4gCj4gQW0gMjIuMDYuMjEgdW0gMjM6MjEgc2NocmllYiBN
-aWNoYWwgU3dpYXRrb3dza2k6Cj4gPiBUaGUgZm9sbG93aW5nIHBhdGNoIHNlcmllcyBpbnRyb2R1
-Y2VzIGJhc2ljIHN3aXRjaGRldiBtb2RlbAo+ID4gc3VwcG9ydCBpbiBpY2UgZHJpdmVyLiBJbXBs
-ZW1lbnQgdGhlIGZvbGxvd2luZyBibG9ja3Mgb2YKPiA+IHN3aXRjaGRldiBmcmFtZXdvcms6Cj4g
-PiAtIFZGIHBvcnQgcmVwcmVzZW50b3JzIGNyZWF0aW9uCj4gPiAtIGNvbnRyb2wgcGxhbmUgVlNJ
-IGRlZmluaXRpb24KPiA+IC0gZXhjZXB0aW9uIHBhdGggKGEuIGsuIGEuICJzbG93LXBhdGgiKSAt
-IHRvIGFsbG93IGEgdmlydHVhbAo+ID4gc3dpdGNoIG9yIGxpbnV4IGJyaWRnZSB0byByZWNlaXZl
-IGFueSBwYWNrZXQgdGhhdCBkb2Vzbid0IG1hdGNoCj4gPiBhbnkgaHcgZmlsdGVyCj4gPiAtIGxp
-bmsgc3RhdGUgbWFuYWdlbWVudCBvZiB2aXJ0dWFsIHBvcnRzCj4gPiAtIHF1ZXJ5IHZpcnR1YWwg
-cG9ydCBzdGF0aXN0aWNzCj4gPiAKPiA+IEhhcmR3YXJlIG9mZmxvYWQgc3VwcG9ydCBpbiBzd2l0
-Y2hkZXYgbW9kZSBpcyBvdXQgb2Ygc2NvcGUgb2YKPiA+IHRoaXMgcGF0Y2hzZXQuIERldmxpbmsg
-aW50ZXJmYWNlIGlzIHVzZWQgdG8gdG9nZ2xlIGJldHdlZW4KPiA+IHN3aXRjaGRldiBhbmQgbGVn
-YWN5ICh0aGUgZGVmYXVsdCkgbW9kZXMgb2YgdGhlIGRyaXZlci4KPiAKPiBUaGVzZSBhcmUgZ3Jl
-YXQgbmV3cy4gQ291bGQgeW91IHBsZWFzZSBlbGFib3JhdGUgaW4gdGhlIHN1bW1hcnkgaG93IHRv
-Cj4gc3dpdGNoIHRvIHRoZSBuZXcgbW9kZSBvZiB0aGUgZHJpdmVyPyBXaGF0IGFyZSB0aGUgYmVu
-ZWZpdHMgb2Ygc3dpdGNoZGV2IGluCj4gdGhpcyBjYXNlPyBMZXNzIG1haW50ZW5hbmNlIG9yIGJl
-dHRlciBwZXJmb3JtYW5jZT8KPiAKPiBTaG91bGQgdGhlIHN3aXRjaGRldiBmb2xrcyBiZSBpbnZv
-bHZlZCBpbiByZXZpZXc/Cj4gCgpZb3UgY2FuIHN3aXRjaCB0byBuZXcgbW9kZSB1c2luZyBkZXZs
-aW5rIHRvb2wuIENvbW1hbmRzIGFyZSBkZXNjcmliZWQgaW4KZmlyc3QgcGF0Y2guIFdlIGFyZSBz
-dGlsbCB3b3JraW5nIG9uIHJlYWRtZSB3aXRoIGFsbCBpbmZvcm1hdGlvbiBhYm91dApzd2l0Y2hk
-ZXYgaW4gaWNlLiBUaGUgbWFpbiBiZW5lZml0cyBpcyBiZXR0ZXIgcGVyZm9ybWFuY2UuIFdpdGgK
-c3dpdGNoZGV2IFlvdSB3aWxsIGJlIGFibGUgdG8gb2ZmbG9hZCBzcGVjaWZpYyBraW5kIG9mIHJ1
-bGVzIGluIGhhcmR3YXJlCnVzaW5nIHRjLXRvb2wgKG9yIE9WUykuIFRoaXMgd2lsbCBiZSBpbnRy
-b2R1Y2VkIGluIGZvbGxvdyB1cCBwYXRjaHNldC4KCkkgdGhpbmsgdGhleSBzaG91bGQuIERvIFlv
-dSBrbm93IGFueW9uZSB0aGF0IEkgc2hvdWxkIGFkZCB0byBDQz8KCj4gPiBDaGFuZ2Vsb2c6Cj4g
-PiAgIHYyOgo+ID4gICAgKiBmaXggYnVpbGQgaXNzdWUgaW4gaWNlOiBzZXR0aW5nIGFuZCByZWxl
-YXNpbmcgc3dpdGNoZGV2IGVudmlyb25tZW50Cj4gPiAgICBieSBtb3ZpbmcgY2FsbCBvZiBpY2Vf
-dnNpX3NldHVwIHRvIG5leHQgcGF0Y2ggd2hpY2ggaGF2ZSBkZWZpbml0aW9uCj4gPiAgICBmb3Ig
-c3dpdGNoZGV2IFZTSQo+ID4gCj4gPiBHcnplZ29yeiBOaXRrYSAoNSk6Cj4gPiAgICBpY2U6IHNl
-dHRpbmcgYW5kIHJlbGVhc2luZyBzd2l0Y2hkZXYgZW52aXJvbm1lbnQKPiAKPiBJdOKAmWQgYmUg
-Z3JlYXQgaWYgeW91IGNvdWxkIHVzZSB2ZXJicyBpbiBpbXBlcmF0aXZlIG1vb2QuCj4KCkkgd2ls
-bCBmaXggdGhpcyBhbmQgdHJ5IHRvIHVzZSBpbXBlcmF0aXZlIG1vb2QuCgo+IAo+IEtpbmQgcmVn
-YXJkcywKPiAKPiBQYXVsCj4gCj4gCj4gPiAgICBpY2U6IGludHJvZHVjZSBuZXcgdHlwZSBvZiBW
-U0kgZm9yIHN3aXRjaGRldgo+ID4gICAgaWNlOiBlbmFibGUvZGlzYWJsZSBzd2l0Y2hkZXYgd2hl
-biBtYW5hZ2luZyBWRnMKPiA+ICAgIGljZTogcmVidWlsZCBzd2l0Y2hkZXYgd2hlbiByZXNldHRp
-bmcgYWxsIFZGcwo+ID4gICAgaWNlOiBzd2l0Y2hkZXYgc2xvdyBwYXRoCj4gPiAKPiA+IE1pY2hh
-bCBTd2lhdGtvd3NraSAoNSk6Cj4gPiAgICBpY2U6IGJhc2ljIHN1cHBvcnQgZm9yIGVzd2l0Y2gg
-bW9kZSBtYW5hZ2VtZW50Cj4gPiAgICBpY2U6IGludHJvZHVjZSBWRiBwb3J0IHJlcHJlc2VudG9y
-Cj4gPiAgICBpY2U6IGFsbG93IHByb2Nlc3MgdmYgb3Bjb2RlcyBpbiBkaWZmZXJlbnQgd2F5cwo+
-ID4gICAgaWNlOiBtYW5hZ2UgVlNJIGFudGlzcG9vZiBhbmQgZGVzdGluYXRpb24gb3ZlcnJpZGUK
-PiA+ICAgIGljZTogYWxsb3cgY2hhbmdpbmcgbGFuX2VuIGFuZCBsYl9lbiBvbiBkZmx0IHJ1bGVz
-Cj4gPiAKPiA+IFdvamNpZWNoIERyZXdlayAoMik6Cj4gPiAgICBpY2U6IE1vdmUgZGV2bGluayBw
-b3J0IHRvIFBGL1ZGIHN0cnVjdAo+ID4gICAgaWNlOiBhZGQgcG9ydCByZXByZXNlbnRvciBldGh0
-b29sIG9wcyBhbmQgc3RhdHMKPiA+IAo+ID4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9L
-Y29uZmlnICAgICAgICAgICAgfCAgMTAgKwo+ID4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvTWFrZWZpbGUgICAgICAgfCAgIDQgKy0KPiA+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZS5oICAgICAgICAgIHwgIDQ4ICstCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2ljZS9pY2VfYmFzZS5jICAgICB8ICAzNyArLQo+ID4gICBkcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX2RldmxpbmsuYyAgfCAxMDkgKystCj4gPiAgIGRyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZGV2bGluay5oICB8ICAgNiArLQo+ID4gICBkcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2Vzd2l0Y2guYyAgfCA2NTYgKysrKysrKysr
-KysrKysrKysrCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXN3aXRj
-aC5oICB8ICA4MiArKysKPiA+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9l
-dGh0b29sLmMgIHwgIDMyICstCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfZmx0ci5jICAgICB8ICA4MCArKysKPiA+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlL2ljZV9mbHRyLmggICAgIHwgICA3ICsKPiA+ICAgLi4uL25ldC9ldGhlcm5ldC9pbnRlbC9p
-Y2UvaWNlX2xhbl90eF9yeC5oICAgIHwgIDQzICsrCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbGliLmMgICAgICB8IDExMiArKy0KPiA+ICAgZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuaCAgICAgIHwgIDExICsKPiA+ICAgZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9tYWluLmMgICAgIHwgIDQ3ICstCj4gPiAgIGRyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcmVwci5jICAgICB8IDMyOSArKysrKysrKysKPiA+
-ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9yZXByLmggICAgIHwgIDI3ICsK
-PiA+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zd2l0Y2guYyAgIHwgICAy
-ICstCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfc3dpdGNoLmggICB8
-ICAgNiArCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeC5jICAg
-ICB8ICAgMyArCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdHhyeF9s
-aWIuYyB8ICAgNCArLQo+ID4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R5
-cGUuaCAgICAgfCAgIDEgKwo+ID4gICAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfdmly
-dGNobmxfcGYuYyAgfCAxOTYgKysrKystCj4gPiAgIC4uLi9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV92aXJ0Y2hubF9wZi5oICB8ICA0NSArKwo+ID4gICAyNCBmaWxlcyBjaGFuZ2VkLCAxODE3
-IGluc2VydGlvbnMoKyksIDgwIGRlbGV0aW9ucygtKQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9lc3dpdGNoLmMKPiA+ICAgY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXN3aXRjaC5o
-Cj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2Uv
-aWNlX3JlcHIuYwo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9yZXByLmgKPiA+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVk
-LWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2ludGVsLXdpcmVkLWxhbgo=
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+
+Make changes to MAC address dependent on the response of PF.
+Disallow changes to hw mac address and mac filter from untrusted
+VF, thanks to that ping is not lost if VF tries to change MAC.
+Add a new field in iavf_mac_filter, to indicate whether there
+was response from PF for given filter. Based on this field pass
+or discard the filter.
+If untrusted VF tried to change it's address, it's not changed.
+Still filter was changed, because of that ping couldn't go through.
+
+Fixes: c5c922b3e09b ("iavf: fix MAC address setting for VFs when filter is rejected")
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h        |  1 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  1 +
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 47 ++++++++++++++++++-
+ 3 files changed, 47 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 9ccb88e..b79d02f 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -137,6 +137,7 @@ struct iavf_q_vector {
+ struct iavf_mac_filter {
+ 	struct list_head list;
+ 	u8 macaddr[ETH_ALEN];
++	bool is_new_mac;	/* filter is new, wait for PF decision */
+ 	bool remove;		/* filter needs to be removed */
+ 	bool add;		/* filter needs to be added */
+ };
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index d64e256..c9d9bf9 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -797,6 +797,7 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
+ 
+ 		list_add_tail(&f->list, &adapter->mac_filter_list);
+ 		f->add = true;
++		f->is_new_mac = true;
+ 		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
+ 	} else {
+ 		f->remove = false;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index bc403b7..1dd4681 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -540,6 +540,47 @@ void iavf_del_ether_addrs(struct iavf_adapter *adapter)
+ 	kfree(veal);
+ }
+ 
++/**
++ * iavf_is_mac_add_ok
++ * @adapter: adapter structure
++ *
++ * Submit list of filters based on PF response.
++ **/
++static void iavf_mac_add_ok(struct iavf_adapter *adapter)
++{
++	struct iavf_mac_filter *f, *ftmp;
++
++	spin_lock_bh(&adapter->mac_vlan_list_lock);
++	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
++		f->is_new_mac = false;
++	}
++	spin_unlock_bh(&adapter->mac_vlan_list_lock);
++}
++
++/**
++ * iavf_is_mac_add_reject
++ * @adapter: adapter structure
++ *
++ * Remove filters from list based on PF response.
++ **/
++static void iavf_mac_add_reject(struct iavf_adapter *adapter)
++{
++	struct net_device *netdev = adapter->netdev;
++	struct iavf_mac_filter *f, *ftmp;
++
++	spin_lock_bh(&adapter->mac_vlan_list_lock);
++	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
++		if (f->remove && ether_addr_equal(f->macaddr, netdev->dev_addr))
++			f->remove = false;
++
++		if (f->is_new_mac) {
++			list_del(&f->list);
++			kfree(f);
++		}
++	}
++	spin_unlock_bh(&adapter->mac_vlan_list_lock);
++}
++
+ /**
+  * iavf_add_vlans
+  * @adapter: adapter structure
+@@ -1500,6 +1541,7 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		case VIRTCHNL_OP_ADD_ETH_ADDR:
+ 			dev_err(&adapter->pdev->dev, "Failed to add MAC filter, error %s\n",
+ 				iavf_stat_str(&adapter->hw, v_retval));
++			iavf_mac_add_reject(adapter);
+ 			/* restore administratively set MAC address */
+ 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
+ 			break;
+@@ -1647,10 +1689,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		}
+ 	}
+ 	switch (v_opcode) {
+-	case VIRTCHNL_OP_ADD_ETH_ADDR: {
++	case VIRTCHNL_OP_ADD_ETH_ADDR:
++		if (!v_retval)
++			iavf_mac_add_ok(adapter);
+ 		if (!ether_addr_equal(netdev->dev_addr, adapter->hw.mac.addr))
+ 			ether_addr_copy(netdev->dev_addr, adapter->hw.mac.addr);
+-		}
+ 		break;
+ 	case VIRTCHNL_OP_GET_STATS: {
+ 		struct iavf_eth_stats *stats =
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
