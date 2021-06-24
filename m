@@ -1,52 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D728F3B2A46
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jun 2021 10:22:57 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83B3D3B2E34
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jun 2021 13:53:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4FC744157D;
-	Thu, 24 Jun 2021 08:22:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 106CD40422;
+	Thu, 24 Jun 2021 11:53:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rWmfYvqXzxLY; Thu, 24 Jun 2021 08:22:53 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LOATwVj9stBE; Thu, 24 Jun 2021 11:53:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 852E341573;
-	Thu, 24 Jun 2021 08:22:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A8C27401A4;
+	Thu, 24 Jun 2021 11:53:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 45EBC1BF36D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:22:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A9D3F1BF37A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 11:53:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4129883BF0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:22:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9627441597
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 11:53:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UZ9YsAlR1WFp for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jun 2021 08:22:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4AB2283B44
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:22:46 +0000 (UTC)
-Received: from [192.168.0.7] (ip5f5ae88e.dynamic.kabel-deutschland.de
- [95.90.232.142])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id AE86361E30B8D;
- Thu, 24 Jun 2021 10:22:42 +0200 (CEST)
-To: Sasha Neftin <sasha.neftin@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yfk0kIZDVOR1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jun 2021 11:53:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D543E41590
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 11:53:20 +0000 (UTC)
+IronPort-SDR: jDIeduC4EX3phOGjQert4JjxuLDvZn+ycyAPqMHEzbhv4z8VwkVCY79rJKe2kgj9fbbLLNpaBK
+ RFeyeT3fP8HQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10024"; a="268585984"
+X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="268585984"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2021 04:53:18 -0700
+IronPort-SDR: +1HhfcCSomry6lP9US44RcH6BUMMrx8UTXejKBvi1waer4E3eW668wpI8OJueQ4o3RuVlADk8v
+ 9F2zHGYd6blA==
+X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="487728742"
+Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.251.162.40])
+ ([10.251.162.40])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2021 04:53:13 -0700
+To: Paul Menzel <pmenzel@molgen.mpg.de>
 References: <20210624081827.568657-1-sasha.neftin@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <00356b48-f9a6-1864-26f8-a64ed8ee5b95@molgen.mpg.de>
-Date: Thu, 24 Jun 2021 10:22:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ <00356b48-f9a6-1864-26f8-a64ed8ee5b95@molgen.mpg.de>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <12fedb62-3047-631c-d9fb-333072741d11@intel.com>
+Date: Thu, 24 Jun 2021 14:53:09 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210624081827.568657-1-sasha.neftin@intel.com>
+In-Reply-To: <00356b48-f9a6-1864-26f8-a64ed8ee5b95@molgen.mpg.de>
 Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH v1 1/3] e1000e: Add handshake with the
  CSME to support s0ix
@@ -64,424 +72,309 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: michael.edri@intel.com, Dima Ruinskiy <dima.ruinskiy@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Sasha,
-
-
-Am 24.06.21 um 10:18 schrieb Sasha Neftin:
-> On the corporate system, the driver will ask from the CSME
-> (manageability engine) to perform device settings are required
-> to allow s0ix residency.
-> This patch provides initial support.
-
-Please give more details, and list the (public) datasheets documenting 
-this procedure.
-
-As this has caused problems in the past, please document the performed 
-tests (including used devices and firmware versions) in detail in the 
-commit message.
-
-
-Kind regards,
-
-Paul
-
-
-> Reviewed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/ich8lan.h |   2 +
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 328 +++++++++++---------
->   2 files changed, 176 insertions(+), 154 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> index 1502895eb45d..e59456d867db 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> @@ -47,6 +47,8 @@
->   #define E1000_SHRAH_PCH_LPT(_i)		(0x0540C + ((_i) * 8))
->   
->   #define E1000_H2ME		0x05B50	/* Host to ME */
-> +#define E1000_H2ME_START_DPG	0x00000001	/* indicate the ME of DPG */
-> +#define E1000_H2ME_EXIT_DPG	0x00000002	/* indicate the ME exit DPG */
->   #define E1000_H2ME_ULP		0x00000800	/* ULP Indication Bit */
->   #define E1000_H2ME_ENFORCE_SETTINGS	0x00001000	/* Enforce Settings */
->   
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 646bfb83a18b..786719890f2b 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6345,42 +6345,104 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->   	u32 mac_data;
->   	u16 phy_data;
->   
-> -	/* Disable the periodic inband message,
-> -	 * don't request PCIe clock in K1 page770_17[10:9] = 10b
-> -	 */
-> -	e1e_rphy(hw, HV_PM_CTRL, &phy_data);
-> -	phy_data &= ~HV_PM_CTRL_K1_CLK_REQ;
-> -	phy_data |= BIT(10);
-> -	e1e_wphy(hw, HV_PM_CTRL, phy_data);
-> +	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
-> +		/* Request ME configure the device for s0ix */
-> +		mac_data = er32(H2ME);
-> +		mac_data |= E1000_H2ME_START_DPG;
-> +		mac_data &= ~E1000_H2ME_EXIT_DPG;
-> +		ew32(H2ME, mac_data);
-> +	} else {
-> +		/* Request driver configure the device to s0ix */
-> +		/* Disable the periodic inband message,
-> +		 * don't request PCIe clock in K1 page770_17[10:9] = 10b
-> +		 */
-> +		e1e_rphy(hw, HV_PM_CTRL, &phy_data);
-> +		phy_data &= ~HV_PM_CTRL_K1_CLK_REQ;
-> +		phy_data |= BIT(10);
-> +		e1e_wphy(hw, HV_PM_CTRL, phy_data);
->   
-> -	/* Make sure we don't exit K1 every time a new packet arrives
-> -	 * 772_29[5] = 1 CS_Mode_Stay_In_K1
-> -	 */
-> -	e1e_rphy(hw, I217_CGFREG, &phy_data);
-> -	phy_data |= BIT(5);
-> -	e1e_wphy(hw, I217_CGFREG, phy_data);
-> +		/* Make sure we don't exit K1 every time a new packet arrives
-> +		 * 772_29[5] = 1 CS_Mode_Stay_In_K1
-> +		 */
-> +		e1e_rphy(hw, I217_CGFREG, &phy_data);
-> +		phy_data |= BIT(5);
-> +		e1e_wphy(hw, I217_CGFREG, phy_data);
->   
-> -	/* Change the MAC/PHY interface to SMBus
-> -	 * Force the SMBus in PHY page769_23[0] = 1
-> -	 * Force the SMBus in MAC CTRL_EXT[11] = 1
-> -	 */
-> -	e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
-> -	phy_data |= CV_SMB_CTRL_FORCE_SMBUS;
-> -	e1e_wphy(hw, CV_SMB_CTRL, phy_data);
-> -	mac_data = er32(CTRL_EXT);
-> -	mac_data |= E1000_CTRL_EXT_FORCE_SMBUS;
-> -	ew32(CTRL_EXT, mac_data);
-> +		/* Change the MAC/PHY interface to SMBus
-> +		 * Force the SMBus in PHY page769_23[0] = 1
-> +		 * Force the SMBus in MAC CTRL_EXT[11] = 1
-> +		 */
-> +		e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
-> +		phy_data |= CV_SMB_CTRL_FORCE_SMBUS;
-> +		e1e_wphy(hw, CV_SMB_CTRL, phy_data);
-> +		mac_data = er32(CTRL_EXT);
-> +		mac_data |= E1000_CTRL_EXT_FORCE_SMBUS;
-> +		ew32(CTRL_EXT, mac_data);
-> +
-> +		/* DFT control: PHY bit: page769_20[0] = 1
-> +		 * Gate PPW via EXTCNF_CTRL - set 0x0F00[7] = 1
-> +		 */
-> +		e1e_rphy(hw, I82579_DFT_CTRL, &phy_data);
-> +		phy_data |= BIT(0);
-> +		e1e_wphy(hw, I82579_DFT_CTRL, phy_data);
-> +
-> +		mac_data = er32(EXTCNF_CTRL);
-> +		mac_data |= E1000_EXTCNF_CTRL_GATE_PHY_CFG;
-> +		ew32(EXTCNF_CTRL, mac_data);
-> +
-> +		/* Enable the Dynamic Power Gating in the MAC */
-> +		mac_data = er32(FEXTNVM7);
-> +		mac_data |= BIT(22);
-> +		ew32(FEXTNVM7, mac_data);
-> +
-> +		/* Disable disconnected cable conditioning for Power Gating */
-> +		mac_data = er32(DPGFR);
-> +		mac_data |= BIT(2);
-> +		ew32(DPGFR, mac_data);
-> +
-> +		/* Don't wake from dynamic Power Gating with clock request */
-> +		mac_data = er32(FEXTNVM12);
-> +		mac_data |= BIT(12);
-> +		ew32(FEXTNVM12, mac_data);
-> +
-> +		/* Ungate PGCB clock */
-> +		mac_data = er32(FEXTNVM9);
-> +		mac_data &= ~BIT(28);
-> +		ew32(FEXTNVM9, mac_data);
-> +
-> +		/* Enable K1 off to enable mPHY Power Gating */
-> +		mac_data = er32(FEXTNVM6);
-> +		mac_data |= BIT(31);
-> +		ew32(FEXTNVM6, mac_data);
-> +
-> +		/* Enable mPHY power gating for any link and speed */
-> +		mac_data = er32(FEXTNVM8);
-> +		mac_data |= BIT(9);
-> +		ew32(FEXTNVM8, mac_data);
-> +
-> +		/* Enable the Dynamic Clock Gating in the DMA and MAC */
-> +		mac_data = er32(CTRL_EXT);
-> +		mac_data |= E1000_CTRL_EXT_DMA_DYN_CLK_EN;
-> +		ew32(CTRL_EXT, mac_data);
-> +
-> +		/* No MAC DPG gating SLP_S0 in modern standby
-> +		 * Switch the logic of the lanphypc to use PMC counter
-> +		 */
-> +		mac_data = er32(FEXTNVM5);
-> +		mac_data |= BIT(7);
-> +		ew32(FEXTNVM5, mac_data);
-> +	}
->   
-> -	/* DFT control: PHY bit: page769_20[0] = 1
-> -	 * Gate PPW via EXTCNF_CTRL - set 0x0F00[7] = 1
-> -	 */
-> -	e1e_rphy(hw, I82579_DFT_CTRL, &phy_data);
-> -	phy_data |= BIT(0);
-> -	e1e_wphy(hw, I82579_DFT_CTRL, phy_data);
-> +	/* Disable the time synchronization clock */
-> +	mac_data = er32(FEXTNVM7);
-> +	mac_data |= BIT(31);
-> +	mac_data &= ~BIT(0);
-> +	ew32(FEXTNVM7, mac_data);
->   
-> -	mac_data = er32(EXTCNF_CTRL);
-> -	mac_data |= E1000_EXTCNF_CTRL_GATE_PHY_CFG;
-> -	ew32(EXTCNF_CTRL, mac_data);
-> +	/* Dynamic Power Gating Enable */
-> +	mac_data = er32(CTRL_EXT);
-> +	mac_data |= BIT(3);
-> +	ew32(CTRL_EXT, mac_data);
->   
->   	/* Check MAC Tx/Rx packet buffer pointers.
->   	 * Reset MAC Tx/Rx packet buffer pointers to suppress any
-> @@ -6416,59 +6478,6 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->   	mac_data = er32(RDFPC);
->   	if (mac_data)
->   		ew32(RDFPC, 0);
-> -
-> -	/* Enable the Dynamic Power Gating in the MAC */
-> -	mac_data = er32(FEXTNVM7);
-> -	mac_data |= BIT(22);
-> -	ew32(FEXTNVM7, mac_data);
-> -
-> -	/* Disable the time synchronization clock */
-> -	mac_data = er32(FEXTNVM7);
-> -	mac_data |= BIT(31);
-> -	mac_data &= ~BIT(0);
-> -	ew32(FEXTNVM7, mac_data);
-> -
-> -	/* Dynamic Power Gating Enable */
-> -	mac_data = er32(CTRL_EXT);
-> -	mac_data |= BIT(3);
-> -	ew32(CTRL_EXT, mac_data);
-> -
-> -	/* Disable disconnected cable conditioning for Power Gating */
-> -	mac_data = er32(DPGFR);
-> -	mac_data |= BIT(2);
-> -	ew32(DPGFR, mac_data);
-> -
-> -	/* Don't wake from dynamic Power Gating with clock request */
-> -	mac_data = er32(FEXTNVM12);
-> -	mac_data |= BIT(12);
-> -	ew32(FEXTNVM12, mac_data);
-> -
-> -	/* Ungate PGCB clock */
-> -	mac_data = er32(FEXTNVM9);
-> -	mac_data &= ~BIT(28);
-> -	ew32(FEXTNVM9, mac_data);
-> -
-> -	/* Enable K1 off to enable mPHY Power Gating */
-> -	mac_data = er32(FEXTNVM6);
-> -	mac_data |= BIT(31);
-> -	ew32(FEXTNVM6, mac_data);
-> -
-> -	/* Enable mPHY power gating for any link and speed */
-> -	mac_data = er32(FEXTNVM8);
-> -	mac_data |= BIT(9);
-> -	ew32(FEXTNVM8, mac_data);
-> -
-> -	/* Enable the Dynamic Clock Gating in the DMA and MAC */
-> -	mac_data = er32(CTRL_EXT);
-> -	mac_data |= E1000_CTRL_EXT_DMA_DYN_CLK_EN;
-> -	ew32(CTRL_EXT, mac_data);
-> -
-> -	/* No MAC DPG gating SLP_S0 in modern standby
-> -	 * Switch the logic of the lanphypc to use PMC counter
-> -	 */
-> -	mac_data = er32(FEXTNVM5);
-> -	mac_data |= BIT(7);
-> -	ew32(FEXTNVM5, mac_data);
->   }
->   
->   static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
-> @@ -6477,87 +6486,98 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
->   	u32 mac_data;
->   	u16 phy_data;
->   
-> -	/* Disable the Dynamic Power Gating in the MAC */
-> -	mac_data = er32(FEXTNVM7);
-> -	mac_data &= 0xFFBFFFFF;
-> -	ew32(FEXTNVM7, mac_data);
-> +	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
-> +		/* Request ME un configure the device from s0ix */
-> +		mac_data = er32(H2ME);
-> +		mac_data &= ~E1000_H2ME_START_DPG;
-> +		mac_data |= E1000_H2ME_EXIT_DPG;
-> +		ew32(H2ME, mac_data);
-> +	} else {
-> +		/* Request driver un configure the device from s0ix */
-> +
-> +		/* Disable the Dynamic Power Gating in the MAC */
-> +		mac_data = er32(FEXTNVM7);
-> +		mac_data &= 0xFFBFFFFF;
-> +		ew32(FEXTNVM7, mac_data);
-> +
-> +		/* Disable mPHY power gating for any link and speed */
-> +		mac_data = er32(FEXTNVM8);
-> +		mac_data &= ~BIT(9);
-> +		ew32(FEXTNVM8, mac_data);
-> +
-> +		/* Disable K1 off */
-> +		mac_data = er32(FEXTNVM6);
-> +		mac_data &= ~BIT(31);
-> +		ew32(FEXTNVM6, mac_data);
-> +
-> +		/* Disable Ungate PGCB clock */
-> +		mac_data = er32(FEXTNVM9);
-> +		mac_data |= BIT(28);
-> +		ew32(FEXTNVM9, mac_data);
-> +
-> +		/* Cancel not waking from dynamic
-> +		 * Power Gating with clock request
-> +		 */
-> +		mac_data = er32(FEXTNVM12);
-> +		mac_data &= ~BIT(12);
-> +		ew32(FEXTNVM12, mac_data);
->   
-> -	/* Enable the time synchronization clock */
-> -	mac_data = er32(FEXTNVM7);
-> -	mac_data |= BIT(0);
-> -	ew32(FEXTNVM7, mac_data);
-> +		/* Cancel disable disconnected cable conditioning
-> +		 * for Power Gating
-> +		 */
-> +		mac_data = er32(DPGFR);
-> +		mac_data &= ~BIT(2);
-> +		ew32(DPGFR, mac_data);
->   
-> -	/* Disable mPHY power gating for any link and speed */
-> -	mac_data = er32(FEXTNVM8);
-> -	mac_data &= ~BIT(9);
-> -	ew32(FEXTNVM8, mac_data);
-> +		/* Disable the Dynamic Clock Gating in the DMA and MAC */
-> +		mac_data = er32(CTRL_EXT);
-> +		mac_data &= 0xFFF7FFFF;
-> +		ew32(CTRL_EXT, mac_data);
->   
-> -	/* Disable K1 off */
-> -	mac_data = er32(FEXTNVM6);
-> -	mac_data &= ~BIT(31);
-> -	ew32(FEXTNVM6, mac_data);
-> +		/* Revert the lanphypc logic to use the internal Gbe counter
-> +		 * and not the PMC counter
-> +		 */
-> +		mac_data = er32(FEXTNVM5);
-> +		mac_data &= 0xFFFFFF7F;
-> +		ew32(FEXTNVM5, mac_data);
->   
-> -	/* Disable Ungate PGCB clock */
-> -	mac_data = er32(FEXTNVM9);
-> -	mac_data |= BIT(28);
-> -	ew32(FEXTNVM9, mac_data);
-> +		/* Enable the periodic inband message,
-> +		 * Request PCIe clock in K1 page770_17[10:9] =01b
-> +		 */
-> +		e1e_rphy(hw, HV_PM_CTRL, &phy_data);
-> +		phy_data &= 0xFBFF;
-> +		phy_data |= HV_PM_CTRL_K1_CLK_REQ;
-> +		e1e_wphy(hw, HV_PM_CTRL, phy_data);
->   
-> -	/* Cancel not waking from dynamic
-> -	 * Power Gating with clock request
-> -	 */
-> -	mac_data = er32(FEXTNVM12);
-> -	mac_data &= ~BIT(12);
-> -	ew32(FEXTNVM12, mac_data);
-> +		/* Return back configuration
-> +		 * 772_29[5] = 0 CS_Mode_Stay_In_K1
-> +		 */
-> +		e1e_rphy(hw, I217_CGFREG, &phy_data);
-> +		phy_data &= 0xFFDF;
-> +		e1e_wphy(hw, I217_CGFREG, phy_data);
->   
-> -	/* Cancel disable disconnected cable conditioning
-> -	 * for Power Gating
-> -	 */
-> -	mac_data = er32(DPGFR);
-> -	mac_data &= ~BIT(2);
-> -	ew32(DPGFR, mac_data);
-> +		/* Change the MAC/PHY interface to Kumeran
-> +		 * Unforce the SMBus in PHY page769_23[0] = 0
-> +		 * Unforce the SMBus in MAC CTRL_EXT[11] = 0
-> +		 */
-> +		e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
-> +		phy_data &= ~CV_SMB_CTRL_FORCE_SMBUS;
-> +		e1e_wphy(hw, CV_SMB_CTRL, phy_data);
-> +		mac_data = er32(CTRL_EXT);
-> +		mac_data &= ~E1000_CTRL_EXT_FORCE_SMBUS;
-> +		ew32(CTRL_EXT, mac_data);
-> +	}
->   
->   	/* Disable Dynamic Power Gating */
->   	mac_data = er32(CTRL_EXT);
->   	mac_data &= 0xFFFFFFF7;
->   	ew32(CTRL_EXT, mac_data);
->   
-> -	/* Disable the Dynamic Clock Gating in the DMA and MAC */
-> -	mac_data = er32(CTRL_EXT);
-> -	mac_data &= 0xFFF7FFFF;
-> -	ew32(CTRL_EXT, mac_data);
-> -
-> -	/* Revert the lanphypc logic to use the internal Gbe counter
-> -	 * and not the PMC counter
-> -	 */
-> -	mac_data = er32(FEXTNVM5);
-> -	mac_data &= 0xFFFFFF7F;
-> -	ew32(FEXTNVM5, mac_data);
-> -
-> -	/* Enable the periodic inband message,
-> -	 * Request PCIe clock in K1 page770_17[10:9] =01b
-> -	 */
-> -	e1e_rphy(hw, HV_PM_CTRL, &phy_data);
-> -	phy_data &= 0xFBFF;
-> -	phy_data |= HV_PM_CTRL_K1_CLK_REQ;
-> -	e1e_wphy(hw, HV_PM_CTRL, phy_data);
-> -
-> -	/* Return back configuration
-> -	 * 772_29[5] = 0 CS_Mode_Stay_In_K1
-> -	 */
-> -	e1e_rphy(hw, I217_CGFREG, &phy_data);
-> -	phy_data &= 0xFFDF;
-> -	e1e_wphy(hw, I217_CGFREG, phy_data);
-> -
-> -	/* Change the MAC/PHY interface to Kumeran
-> -	 * Unforce the SMBus in PHY page769_23[0] = 0
-> -	 * Unforce the SMBus in MAC CTRL_EXT[11] = 0
-> -	 */
-> -	e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
-> -	phy_data &= ~CV_SMB_CTRL_FORCE_SMBUS;
-> -	e1e_wphy(hw, CV_SMB_CTRL, phy_data);
-> -	mac_data = er32(CTRL_EXT);
-> -	mac_data &= ~E1000_CTRL_EXT_FORCE_SMBUS;
-> -	ew32(CTRL_EXT, mac_data);
-> +	/* Enable the time synchronization clock */
-> +	mac_data = er32(FEXTNVM7);
-> +	mac_data &= ~BIT(31);
-> +	mac_data |= BIT(0);
-> +	ew32(FEXTNVM7, mac_data);
->   }
->   
->   static int e1000e_pm_freeze(struct device *dev)
-> 
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gNi8yNC8yMDIxIDExOjIyLCBQYXVsIE1lbnplbCB3cm90ZToKPiBEZWFyIFNhc2hhLAo+IAo+
+IAo+IEFtIDI0LjA2LjIxIHVtIDEwOjE4IHNjaHJpZWIgU2FzaGEgTmVmdGluOgo+PiBPbiB0aGUg
+Y29ycG9yYXRlIHN5c3RlbSwgdGhlIGRyaXZlciB3aWxsIGFzayBmcm9tIHRoZSBDU01FCj4+ICht
+YW5hZ2VhYmlsaXR5IGVuZ2luZSkgdG8gcGVyZm9ybSBkZXZpY2Ugc2V0dGluZ3MgYXJlIHJlcXVp
+cmVkCj4+IHRvIGFsbG93IHMwaXggcmVzaWRlbmN5Lgo+PiBUaGlzIHBhdGNoIHByb3ZpZGVzIGlu
+aXRpYWwgc3VwcG9ydC4KPiAKPiBQbGVhc2UgZ2l2ZSBtb3JlIGRldGFpbHMsIGFuZCBsaXN0IHRo
+ZSAocHVibGljKSBkYXRhc2hlZXRzIGRvY3VtZW50aW5nIAo+IHRoaXMgcHJvY2VkdXJlLgpBZ3Jl
+ZS4gSSB3aWxsIGNoZWNrIHdpdGggb3VyIHRlY2huaWNhbCB3cml0ZXJzIGhvdyB3ZSBjYW4gcHJv
+Y2VzcyAKZG9jdW1lbnRhdGlvbi4gQ1NNRSBjb2RlIGlzIG5vdCBvcGVuIHNvdXJjZSAtIEkgbmVl
+ZCB0byBjaGVjayBob3cgYW5kIAp3aGF0IHdlIGNhbiBjb21tdW5pY2F0ZS4KPiAKPiBBcyB0aGlz
+IGhhcyBjYXVzZWQgcHJvYmxlbXMgaW4gdGhlIHBhc3QsIHBsZWFzZSBkb2N1bWVudCB0aGUgcGVy
+Zm9ybWVkIAo+IHRlc3RzIChpbmNsdWRpbmcgdXNlZCBkZXZpY2VzIGFuZCBmaXJtd2FyZSB2ZXJz
+aW9ucykgaW4gZGV0YWlsIGluIHRoZSAKPiBjb21taXQgbWVzc2FnZS4KPiAKV2UgaGF2ZSB0ZXN0
+ZWQgb24gVEdMVSBwbGF0Zm9ybSAoSTIxOSBMTSAxNUZCIDFHYmUgY29udHJvbGxlcikgd2l0aCBD
+U01FIAowOjE1LjAuMjMuMTcwNi4gQ2hlY2tlZCBzMmlkbGUgcGF0Y2ggYW5kIHMwaXggcmVzaWRl
+bmN5Lgo+IAo+IEtpbmQgcmVnYXJkcywKPiAKPiBQYXVsCj4gCj4gCj4+IFJldmlld2VkLWJ5OiBE
+aW1hIFJ1aW5za2l5IDxkaW1hLnJ1aW5za2l5QGludGVsLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTog
+U2FzaGEgTmVmdGluIDxzYXNoYS5uZWZ0aW5AaW50ZWwuY29tPgo+PiAtLS0KPj4gwqAgZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uaCB8wqDCoCAyICsKPj4gwqAgZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jwqAgfCAzMjggKysrKysrKysr
+KystLS0tLS0tLS0KPj4gwqAgMiBmaWxlcyBjaGFuZ2VkLCAxNzYgaW5zZXJ0aW9ucygrKSwgMTU0
+IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvZTEwMDBlL2ljaDhsYW4uaCAKPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAw
+MGUvaWNoOGxhbi5oCj4+IGluZGV4IDE1MDI4OTVlYjQ1ZC4uZTU5NDU2ZDg2N2RiIDEwMDY0NAo+
+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5oCj4+ICsr
+KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmgKPj4gQEAgLTQ3
+LDYgKzQ3LDggQEAKPj4gwqAgI2RlZmluZSBFMTAwMF9TSFJBSF9QQ0hfTFBUKF9pKcKgwqDCoMKg
+wqDCoMKgICgweDA1NDBDICsgKChfaSkgKiA4KSkKPj4gwqAgI2RlZmluZSBFMTAwMF9IMk1FwqDC
+oMKgwqDCoMKgwqAgMHgwNUI1MMKgwqDCoCAvKiBIb3N0IHRvIE1FICovCj4+ICsjZGVmaW5lIEUx
+MDAwX0gyTUVfU1RBUlRfRFBHwqDCoMKgIDB4MDAwMDAwMDHCoMKgwqAgLyogaW5kaWNhdGUgdGhl
+IE1FIG9mIAo+PiBEUEcgKi8KPj4gKyNkZWZpbmUgRTEwMDBfSDJNRV9FWElUX0RQR8KgwqDCoCAw
+eDAwMDAwMDAywqDCoMKgIC8qIGluZGljYXRlIHRoZSBNRSBleGl0IAo+PiBEUEcgKi8KPj4gwqAg
+I2RlZmluZSBFMTAwMF9IMk1FX1VMUMKgwqDCoMKgwqDCoMKgIDB4MDAwMDA4MDDCoMKgwqAgLyog
+VUxQIEluZGljYXRpb24gQml0ICovCj4+IMKgICNkZWZpbmUgRTEwMDBfSDJNRV9FTkZPUkNFX1NF
+VFRJTkdTwqDCoMKgIDB4MDAwMDEwMDDCoMKgwqAgLyogRW5mb3JjZSAKPj4gU2V0dGluZ3MgKi8K
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYu
+YyAKPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMKPj4gaW5k
+ZXggNjQ2YmZiODNhMThiLi43ODY3MTk4OTBmMmIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+PiArKysgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMKPj4gQEAgLTYzNDUsNDIgKzYzNDUsMTA0IEBAIHN0
+YXRpYyB2b2lkIGUxMDAwZV9zMGl4X2VudHJ5X2Zsb3coc3RydWN0IAo+PiBlMTAwMF9hZGFwdGVy
+ICphZGFwdGVyKQo+PiDCoMKgwqDCoMKgIHUzMiBtYWNfZGF0YTsKPj4gwqDCoMKgwqDCoCB1MTYg
+cGh5X2RhdGE7Cj4+IC3CoMKgwqAgLyogRGlzYWJsZSB0aGUgcGVyaW9kaWMgaW5iYW5kIG1lc3Nh
+Z2UsCj4+IC3CoMKgwqDCoCAqIGRvbid0IHJlcXVlc3QgUENJZSBjbG9jayBpbiBLMSBwYWdlNzcw
+XzE3WzEwOjldID0gMTBiCj4+IC3CoMKgwqDCoCAqLwo+PiAtwqDCoMKgIGUxZV9ycGh5KGh3LCBI
+Vl9QTV9DVFJMLCAmcGh5X2RhdGEpOwo+PiAtwqDCoMKgIHBoeV9kYXRhICY9IH5IVl9QTV9DVFJM
+X0sxX0NMS19SRVE7Cj4+IC3CoMKgwqAgcGh5X2RhdGEgfD0gQklUKDEwKTsKPj4gLcKgwqDCoCBl
+MWVfd3BoeShodywgSFZfUE1fQ1RSTCwgcGh5X2RhdGEpOwo+PiArwqDCoMKgIGlmIChlcjMyKEZX
+U00pICYgRTEwMDBfSUNIX0ZXU01fRldfVkFMSUQpIHsKPj4gK8KgwqDCoMKgwqDCoMKgIC8qIFJl
+cXVlc3QgTUUgY29uZmlndXJlIHRoZSBkZXZpY2UgZm9yIHMwaXggKi8KPj4gK8KgwqDCoMKgwqDC
+oMKgIG1hY19kYXRhID0gZXIzMihIMk1FKTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhIHw9
+IEUxMDAwX0gyTUVfU1RBUlRfRFBHOwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgJj0gfkUx
+MDAwX0gyTUVfRVhJVF9EUEc7Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKEgyTUUsIG1hY19kYXRh
+KTsKPj4gK8KgwqDCoCB9IGVsc2Ugewo+PiArwqDCoMKgwqDCoMKgwqAgLyogUmVxdWVzdCBkcml2
+ZXIgY29uZmlndXJlIHRoZSBkZXZpY2UgdG8gczBpeCAqLwo+PiArwqDCoMKgwqDCoMKgwqAgLyog
+RGlzYWJsZSB0aGUgcGVyaW9kaWMgaW5iYW5kIG1lc3NhZ2UsCj4+ICvCoMKgwqDCoMKgwqDCoMKg
+ICogZG9uJ3QgcmVxdWVzdCBQQ0llIGNsb2NrIGluIEsxIHBhZ2U3NzBfMTdbMTA6OV0gPSAxMGIK
+Pj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8KPj4gK8KgwqDCoMKgwqDCoMKgIGUxZV9ycGh5KGh3LCBI
+Vl9QTV9DVFJMLCAmcGh5X2RhdGEpOwo+PiArwqDCoMKgwqDCoMKgwqAgcGh5X2RhdGEgJj0gfkhW
+X1BNX0NUUkxfSzFfQ0xLX1JFUTsKPj4gK8KgwqDCoMKgwqDCoMKgIHBoeV9kYXRhIHw9IEJJVCgx
+MCk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBlMWVfd3BoeShodywgSFZfUE1fQ1RSTCwgcGh5X2RhdGEp
+Owo+PiAtwqDCoMKgIC8qIE1ha2Ugc3VyZSB3ZSBkb24ndCBleGl0IEsxIGV2ZXJ5IHRpbWUgYSBu
+ZXcgcGFja2V0IGFycml2ZXMKPj4gLcKgwqDCoMKgICogNzcyXzI5WzVdID0gMSBDU19Nb2RlX1N0
+YXlfSW5fSzEKPj4gLcKgwqDCoMKgICovCj4+IC3CoMKgwqAgZTFlX3JwaHkoaHcsIEkyMTdfQ0dG
+UkVHLCAmcGh5X2RhdGEpOwo+PiAtwqDCoMKgIHBoeV9kYXRhIHw9IEJJVCg1KTsKPj4gLcKgwqDC
+oCBlMWVfd3BoeShodywgSTIxN19DR0ZSRUcsIHBoeV9kYXRhKTsKPj4gK8KgwqDCoMKgwqDCoMKg
+IC8qIE1ha2Ugc3VyZSB3ZSBkb24ndCBleGl0IEsxIGV2ZXJ5IHRpbWUgYSBuZXcgcGFja2V0IGFy
+cml2ZXMKPj4gK8KgwqDCoMKgwqDCoMKgwqAgKiA3NzJfMjlbNV0gPSAxIENTX01vZGVfU3RheV9J
+bl9LMQo+PiArwqDCoMKgwqDCoMKgwqDCoCAqLwo+PiArwqDCoMKgwqDCoMKgwqAgZTFlX3JwaHko
+aHcsIEkyMTdfQ0dGUkVHLCAmcGh5X2RhdGEpOwo+PiArwqDCoMKgwqDCoMKgwqAgcGh5X2RhdGEg
+fD0gQklUKDUpOwo+PiArwqDCoMKgwqDCoMKgwqAgZTFlX3dwaHkoaHcsIEkyMTdfQ0dGUkVHLCBw
+aHlfZGF0YSk7Cj4+IC3CoMKgwqAgLyogQ2hhbmdlIHRoZSBNQUMvUEhZIGludGVyZmFjZSB0byBT
+TUJ1cwo+PiAtwqDCoMKgwqAgKiBGb3JjZSB0aGUgU01CdXMgaW4gUEhZIHBhZ2U3NjlfMjNbMF0g
+PSAxCj4+IC3CoMKgwqDCoCAqIEZvcmNlIHRoZSBTTUJ1cyBpbiBNQUMgQ1RSTF9FWFRbMTFdID0g
+MQo+PiAtwqDCoMKgwqAgKi8KPj4gLcKgwqDCoCBlMWVfcnBoeShodywgQ1ZfU01CX0NUUkwsICZw
+aHlfZGF0YSk7Cj4+IC3CoMKgwqAgcGh5X2RhdGEgfD0gQ1ZfU01CX0NUUkxfRk9SQ0VfU01CVVM7
+Cj4+IC3CoMKgwqAgZTFlX3dwaHkoaHcsIENWX1NNQl9DVFJMLCBwaHlfZGF0YSk7Cj4+IC3CoMKg
+wqAgbWFjX2RhdGEgPSBlcjMyKENUUkxfRVhUKTsKPj4gLcKgwqDCoCBtYWNfZGF0YSB8PSBFMTAw
+MF9DVFJMX0VYVF9GT1JDRV9TTUJVUzsKPj4gLcKgwqDCoCBldzMyKENUUkxfRVhULCBtYWNfZGF0
+YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBDaGFuZ2UgdGhlIE1BQy9QSFkgaW50ZXJmYWNlIHRv
+IFNNQnVzCj4+ICvCoMKgwqDCoMKgwqDCoMKgICogRm9yY2UgdGhlIFNNQnVzIGluIFBIWSBwYWdl
+NzY5XzIzWzBdID0gMQo+PiArwqDCoMKgwqDCoMKgwqDCoCAqIEZvcmNlIHRoZSBTTUJ1cyBpbiBN
+QUMgQ1RSTF9FWFRbMTFdID0gMQo+PiArwqDCoMKgwqDCoMKgwqDCoCAqLwo+PiArwqDCoMKgwqDC
+oMKgwqAgZTFlX3JwaHkoaHcsIENWX1NNQl9DVFJMLCAmcGh5X2RhdGEpOwo+PiArwqDCoMKgwqDC
+oMKgwqAgcGh5X2RhdGEgfD0gQ1ZfU01CX0NUUkxfRk9SQ0VfU01CVVM7Cj4+ICvCoMKgwqDCoMKg
+wqDCoCBlMWVfd3BoeShodywgQ1ZfU01CX0NUUkwsIHBoeV9kYXRhKTsKPj4gK8KgwqDCoMKgwqDC
+oMKgIG1hY19kYXRhID0gZXIzMihDVFJMX0VYVCk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0
+YSB8PSBFMTAwMF9DVFJMX0VYVF9GT1JDRV9TTUJVUzsKPj4gK8KgwqDCoMKgwqDCoMKgIGV3MzIo
+Q1RSTF9FWFQsIG1hY19kYXRhKTsKPj4gKwo+PiArwqDCoMKgwqDCoMKgwqAgLyogREZUIGNvbnRy
+b2w6IFBIWSBiaXQ6IHBhZ2U3NjlfMjBbMF0gPSAxCj4+ICvCoMKgwqDCoMKgwqDCoMKgICogR2F0
+ZSBQUFcgdmlhIEVYVENORl9DVFJMIC0gc2V0IDB4MEYwMFs3XSA9IDEKPj4gK8KgwqDCoMKgwqDC
+oMKgwqAgKi8KPj4gK8KgwqDCoMKgwqDCoMKgIGUxZV9ycGh5KGh3LCBJODI1NzlfREZUX0NUUkws
+ICZwaHlfZGF0YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBwaHlfZGF0YSB8PSBCSVQoMCk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBlMWVfd3BoeShodywgSTgyNTc5X0RGVF9DVFJMLCBwaHlfZGF0YSk7Cj4+
+ICsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhID0gZXIzMihFWFRDTkZfQ1RSTCk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBtYWNfZGF0YSB8PSBFMTAwMF9FWFRDTkZfQ1RSTF9HQVRFX1BIWV9DRkc7
+Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKEVYVENORl9DVFJMLCBtYWNfZGF0YSk7Cj4+ICsKPj4g
+K8KgwqDCoMKgwqDCoMKgIC8qIEVuYWJsZSB0aGUgRHluYW1pYyBQb3dlciBHYXRpbmcgaW4gdGhl
+IE1BQyAqLwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk03KTsKPj4g
+K8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhIHw9IEJJVCgyMik7Cj4+ICvCoMKgwqDCoMKgwqDCoCBl
+dzMyKEZFWFROVk03LCBtYWNfZGF0YSk7Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgIC8qIERpc2Fi
+bGUgZGlzY29ubmVjdGVkIGNhYmxlIGNvbmRpdGlvbmluZyBmb3IgUG93ZXIgR2F0aW5nICovCj4+
+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSA9IGVyMzIoRFBHRlIpOwo+PiArwqDCoMKgwqDCoMKg
+wqAgbWFjX2RhdGEgfD0gQklUKDIpOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihEUEdGUiwgbWFj
+X2RhdGEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBEb24ndCB3YWtlIGZyb20gZHluYW1p
+YyBQb3dlciBHYXRpbmcgd2l0aCBjbG9jayByZXF1ZXN0ICovCj4+ICvCoMKgwqDCoMKgwqDCoCBt
+YWNfZGF0YSA9IGVyMzIoRkVYVE5WTTEyKTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhIHw9
+IEJJVCgxMik7Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk0xMiwgbWFjX2RhdGEpOwo+
+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBVbmdhdGUgUEdDQiBjbG9jayAqLwo+PiArwqDCoMKg
+wqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk05KTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1h
+Y19kYXRhICY9IH5CSVQoMjgpOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihGRVhUTlZNOSwgbWFj
+X2RhdGEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBFbmFibGUgSzEgb2ZmIHRvIGVuYWJs
+ZSBtUEhZIFBvd2VyIEdhdGluZyAqLwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMy
+KEZFWFROVk02KTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhIHw9IEJJVCgzMSk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk02LCBtYWNfZGF0YSk7Cj4+ICsKPj4gK8KgwqDCoMKg
+wqDCoMKgIC8qIEVuYWJsZSBtUEhZIHBvd2VyIGdhdGluZyBmb3IgYW55IGxpbmsgYW5kIHNwZWVk
+ICovCj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSA9IGVyMzIoRkVYVE5WTTgpOwo+PiArwqDC
+oMKgwqDCoMKgwqAgbWFjX2RhdGEgfD0gQklUKDkpOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihG
+RVhUTlZNOCwgbWFjX2RhdGEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBFbmFibGUgdGhl
+IER5bmFtaWMgQ2xvY2sgR2F0aW5nIGluIHRoZSBETUEgYW5kIE1BQyAqLwo+PiArwqDCoMKgwqDC
+oMKgwqAgbWFjX2RhdGEgPSBlcjMyKENUUkxfRVhUKTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19k
+YXRhIHw9IEUxMDAwX0NUUkxfRVhUX0RNQV9EWU5fQ0xLX0VOOwo+PiArwqDCoMKgwqDCoMKgwqAg
+ZXczMihDVFJMX0VYVCwgbWFjX2RhdGEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBObyBN
+QUMgRFBHIGdhdGluZyBTTFBfUzAgaW4gbW9kZXJuIHN0YW5kYnkKPj4gK8KgwqDCoMKgwqDCoMKg
+wqAgKiBTd2l0Y2ggdGhlIGxvZ2ljIG9mIHRoZSBsYW5waHlwYyB0byB1c2UgUE1DIGNvdW50ZXIK
+Pj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8KPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhID0gZXIz
+MihGRVhUTlZNNSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSB8PSBCSVQoNyk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk01LCBtYWNfZGF0YSk7Cj4+ICvCoMKgwqAgfQo+PiAt
+wqDCoMKgIC8qIERGVCBjb250cm9sOiBQSFkgYml0OiBwYWdlNzY5XzIwWzBdID0gMQo+PiAtwqDC
+oMKgwqAgKiBHYXRlIFBQVyB2aWEgRVhUQ05GX0NUUkwgLSBzZXQgMHgwRjAwWzddID0gMQo+PiAt
+wqDCoMKgwqAgKi8KPj4gLcKgwqDCoCBlMWVfcnBoeShodywgSTgyNTc5X0RGVF9DVFJMLCAmcGh5
+X2RhdGEpOwo+PiAtwqDCoMKgIHBoeV9kYXRhIHw9IEJJVCgwKTsKPj4gLcKgwqDCoCBlMWVfd3Bo
+eShodywgSTgyNTc5X0RGVF9DVFJMLCBwaHlfZGF0YSk7Cj4+ICvCoMKgwqAgLyogRGlzYWJsZSB0
+aGUgdGltZSBzeW5jaHJvbml6YXRpb24gY2xvY2sgKi8KPj4gK8KgwqDCoCBtYWNfZGF0YSA9IGVy
+MzIoRkVYVE5WTTcpOwo+PiArwqDCoMKgIG1hY19kYXRhIHw9IEJJVCgzMSk7Cj4+ICvCoMKgwqAg
+bWFjX2RhdGEgJj0gfkJJVCgwKTsKPj4gK8KgwqDCoCBldzMyKEZFWFROVk03LCBtYWNfZGF0YSk7
+Cj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEVYVENORl9DVFJMKTsKPj4gLcKgwqDCoCBtYWNf
+ZGF0YSB8PSBFMTAwMF9FWFRDTkZfQ1RSTF9HQVRFX1BIWV9DRkc7Cj4+IC3CoMKgwqAgZXczMihF
+WFRDTkZfQ1RSTCwgbWFjX2RhdGEpOwo+PiArwqDCoMKgIC8qIER5bmFtaWMgUG93ZXIgR2F0aW5n
+IEVuYWJsZSAqLwo+PiArwqDCoMKgIG1hY19kYXRhID0gZXIzMihDVFJMX0VYVCk7Cj4+ICvCoMKg
+wqAgbWFjX2RhdGEgfD0gQklUKDMpOwo+PiArwqDCoMKgIGV3MzIoQ1RSTF9FWFQsIG1hY19kYXRh
+KTsKPj4gwqDCoMKgwqDCoCAvKiBDaGVjayBNQUMgVHgvUnggcGFja2V0IGJ1ZmZlciBwb2ludGVy
+cy4KPj4gwqDCoMKgwqDCoMKgICogUmVzZXQgTUFDIFR4L1J4IHBhY2tldCBidWZmZXIgcG9pbnRl
+cnMgdG8gc3VwcHJlc3MgYW55Cj4+IEBAIC02NDE2LDU5ICs2NDc4LDYgQEAgc3RhdGljIHZvaWQg
+ZTEwMDBlX3MwaXhfZW50cnlfZmxvdyhzdHJ1Y3QgCj4+IGUxMDAwX2FkYXB0ZXIgKmFkYXB0ZXIp
+Cj4+IMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMyKFJERlBDKTsKPj4gwqDCoMKgwqDCoCBpZiAo
+bWFjX2RhdGEpCj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBldzMyKFJERlBDLCAwKTsKPj4gLQo+PiAt
+wqDCoMKgIC8qIEVuYWJsZSB0aGUgRHluYW1pYyBQb3dlciBHYXRpbmcgaW4gdGhlIE1BQyAqLwo+
+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNNyk7Cj4+IC3CoMKgwqAgbWFjX2RhdGEg
+fD0gQklUKDIyKTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk03LCBtYWNfZGF0YSk7Cj4+IC0KPj4g
+LcKgwqDCoCAvKiBEaXNhYmxlIHRoZSB0aW1lIHN5bmNocm9uaXphdGlvbiBjbG9jayAqLwo+PiAt
+wqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNNyk7Cj4+IC3CoMKgwqAgbWFjX2RhdGEgfD0g
+QklUKDMxKTsKPj4gLcKgwqDCoCBtYWNfZGF0YSAmPSB+QklUKDApOwo+PiAtwqDCoMKgIGV3MzIo
+RkVYVE5WTTcsIG1hY19kYXRhKTsKPj4gLQo+PiAtwqDCoMKgIC8qIER5bmFtaWMgUG93ZXIgR2F0
+aW5nIEVuYWJsZSAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihDVFJMX0VYVCk7Cj4+IC3C
+oMKgwqAgbWFjX2RhdGEgfD0gQklUKDMpOwo+PiAtwqDCoMKgIGV3MzIoQ1RSTF9FWFQsIG1hY19k
+YXRhKTsKPj4gLQo+PiAtwqDCoMKgIC8qIERpc2FibGUgZGlzY29ubmVjdGVkIGNhYmxlIGNvbmRp
+dGlvbmluZyBmb3IgUG93ZXIgR2F0aW5nICovCj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKERQ
+R0ZSKTsKPj4gLcKgwqDCoCBtYWNfZGF0YSB8PSBCSVQoMik7Cj4+IC3CoMKgwqAgZXczMihEUEdG
+UiwgbWFjX2RhdGEpOwo+PiAtCj4+IC3CoMKgwqAgLyogRG9uJ3Qgd2FrZSBmcm9tIGR5bmFtaWMg
+UG93ZXIgR2F0aW5nIHdpdGggY2xvY2sgcmVxdWVzdCAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0g
+ZXIzMihGRVhUTlZNMTIpOwo+PiAtwqDCoMKgIG1hY19kYXRhIHw9IEJJVCgxMik7Cj4+IC3CoMKg
+wqAgZXczMihGRVhUTlZNMTIsIG1hY19kYXRhKTsKPj4gLQo+PiAtwqDCoMKgIC8qIFVuZ2F0ZSBQ
+R0NCIGNsb2NrICovCj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk05KTsKPj4gLcKg
+wqDCoCBtYWNfZGF0YSAmPSB+QklUKDI4KTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk05LCBtYWNf
+ZGF0YSk7Cj4+IC0KPj4gLcKgwqDCoCAvKiBFbmFibGUgSzEgb2ZmIHRvIGVuYWJsZSBtUEhZIFBv
+d2VyIEdhdGluZyAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNNik7Cj4+IC3C
+oMKgwqAgbWFjX2RhdGEgfD0gQklUKDMxKTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk02LCBtYWNf
+ZGF0YSk7Cj4+IC0KPj4gLcKgwqDCoCAvKiBFbmFibGUgbVBIWSBwb3dlciBnYXRpbmcgZm9yIGFu
+eSBsaW5rIGFuZCBzcGVlZCAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNOCk7
+Cj4+IC3CoMKgwqAgbWFjX2RhdGEgfD0gQklUKDkpOwo+PiAtwqDCoMKgIGV3MzIoRkVYVE5WTTgs
+IG1hY19kYXRhKTsKPj4gLQo+PiAtwqDCoMKgIC8qIEVuYWJsZSB0aGUgRHluYW1pYyBDbG9jayBH
+YXRpbmcgaW4gdGhlIERNQSBhbmQgTUFDICovCj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKENU
+UkxfRVhUKTsKPj4gLcKgwqDCoCBtYWNfZGF0YSB8PSBFMTAwMF9DVFJMX0VYVF9ETUFfRFlOX0NM
+S19FTjsKPj4gLcKgwqDCoCBldzMyKENUUkxfRVhULCBtYWNfZGF0YSk7Cj4+IC0KPj4gLcKgwqDC
+oCAvKiBObyBNQUMgRFBHIGdhdGluZyBTTFBfUzAgaW4gbW9kZXJuIHN0YW5kYnkKPj4gLcKgwqDC
+oMKgICogU3dpdGNoIHRoZSBsb2dpYyBvZiB0aGUgbGFucGh5cGMgdG8gdXNlIFBNQyBjb3VudGVy
+Cj4+IC3CoMKgwqDCoCAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNNSk7Cj4+
+IC3CoMKgwqAgbWFjX2RhdGEgfD0gQklUKDcpOwo+PiAtwqDCoMKgIGV3MzIoRkVYVE5WTTUsIG1h
+Y19kYXRhKTsKPj4gwqAgfQo+PiDCoCBzdGF0aWMgdm9pZCBlMTAwMGVfczBpeF9leGl0X2Zsb3co
+c3RydWN0IGUxMDAwX2FkYXB0ZXIgKmFkYXB0ZXIpCj4+IEBAIC02NDc3LDg3ICs2NDg2LDk4IEBA
+IHN0YXRpYyB2b2lkIGUxMDAwZV9zMGl4X2V4aXRfZmxvdyhzdHJ1Y3QgCj4+IGUxMDAwX2FkYXB0
+ZXIgKmFkYXB0ZXIpCj4+IMKgwqDCoMKgwqAgdTMyIG1hY19kYXRhOwo+PiDCoMKgwqDCoMKgIHUx
+NiBwaHlfZGF0YTsKPj4gLcKgwqDCoCAvKiBEaXNhYmxlIHRoZSBEeW5hbWljIFBvd2VyIEdhdGlu
+ZyBpbiB0aGUgTUFDICovCj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk03KTsKPj4g
+LcKgwqDCoCBtYWNfZGF0YSAmPSAweEZGQkZGRkZGOwo+PiAtwqDCoMKgIGV3MzIoRkVYVE5WTTcs
+IG1hY19kYXRhKTsKPj4gK8KgwqDCoCBpZiAoZXIzMihGV1NNKSAmIEUxMDAwX0lDSF9GV1NNX0ZX
+X1ZBTElEKSB7Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBSZXF1ZXN0IE1FIHVuIGNvbmZpZ3VyZSB0
+aGUgZGV2aWNlIGZyb20gczBpeCAqLwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMy
+KEgyTUUpOwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgJj0gfkUxMDAwX0gyTUVfU1RBUlRf
+RFBHOwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgfD0gRTEwMDBfSDJNRV9FWElUX0RQRzsK
+Pj4gK8KgwqDCoMKgwqDCoMKgIGV3MzIoSDJNRSwgbWFjX2RhdGEpOwo+PiArwqDCoMKgIH0gZWxz
+ZSB7Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBSZXF1ZXN0IGRyaXZlciB1biBjb25maWd1cmUgdGhl
+IGRldmljZSBmcm9tIHMwaXggKi8KPj4gKwo+PiArwqDCoMKgwqDCoMKgwqAgLyogRGlzYWJsZSB0
+aGUgRHluYW1pYyBQb3dlciBHYXRpbmcgaW4gdGhlIE1BQyAqLwo+PiArwqDCoMKgwqDCoMKgwqAg
+bWFjX2RhdGEgPSBlcjMyKEZFWFROVk03KTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhICY9
+IDB4RkZCRkZGRkY7Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk03LCBtYWNfZGF0YSk7
+Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgIC8qIERpc2FibGUgbVBIWSBwb3dlciBnYXRpbmcgZm9y
+IGFueSBsaW5rIGFuZCBzcGVlZCAqLwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMy
+KEZFWFROVk04KTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhICY9IH5CSVQoOSk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk04LCBtYWNfZGF0YSk7Cj4+ICsKPj4gK8KgwqDCoMKg
+wqDCoMKgIC8qIERpc2FibGUgSzEgb2ZmICovCj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSA9
+IGVyMzIoRkVYVE5WTTYpOwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgJj0gfkJJVCgzMSk7
+Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKEZFWFROVk02LCBtYWNfZGF0YSk7Cj4+ICsKPj4gK8Kg
+wqDCoMKgwqDCoMKgIC8qIERpc2FibGUgVW5nYXRlIFBHQ0IgY2xvY2sgKi8KPj4gK8KgwqDCoMKg
+wqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNOSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNf
+ZGF0YSB8PSBCSVQoMjgpOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihGRVhUTlZNOSwgbWFjX2Rh
+dGEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBDYW5jZWwgbm90IHdha2luZyBmcm9tIGR5
+bmFtaWMKPj4gK8KgwqDCoMKgwqDCoMKgwqAgKiBQb3dlciBHYXRpbmcgd2l0aCBjbG9jayByZXF1
+ZXN0Cj4+ICvCoMKgwqDCoMKgwqDCoMKgICovCj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSA9
+IGVyMzIoRkVYVE5WTTEyKTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhICY9IH5CSVQoMTIp
+Owo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihGRVhUTlZNMTIsIG1hY19kYXRhKTsKPj4gLcKgwqDC
+oCAvKiBFbmFibGUgdGhlIHRpbWUgc3luY2hyb25pemF0aW9uIGNsb2NrICovCj4+IC3CoMKgwqAg
+bWFjX2RhdGEgPSBlcjMyKEZFWFROVk03KTsKPj4gLcKgwqDCoCBtYWNfZGF0YSB8PSBCSVQoMCk7
+Cj4+IC3CoMKgwqAgZXczMihGRVhUTlZNNywgbWFjX2RhdGEpOwo+PiArwqDCoMKgwqDCoMKgwqAg
+LyogQ2FuY2VsIGRpc2FibGUgZGlzY29ubmVjdGVkIGNhYmxlIGNvbmRpdGlvbmluZwo+PiArwqDC
+oMKgwqDCoMKgwqDCoCAqIGZvciBQb3dlciBHYXRpbmcKPj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8K
+Pj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhID0gZXIzMihEUEdGUik7Cj4+ICvCoMKgwqDCoMKg
+wqDCoCBtYWNfZGF0YSAmPSB+QklUKDIpOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihEUEdGUiwg
+bWFjX2RhdGEpOwo+PiAtwqDCoMKgIC8qIERpc2FibGUgbVBIWSBwb3dlciBnYXRpbmcgZm9yIGFu
+eSBsaW5rIGFuZCBzcGVlZCAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNOCk7
+Cj4+IC3CoMKgwqAgbWFjX2RhdGEgJj0gfkJJVCg5KTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk04
+LCBtYWNfZGF0YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBEaXNhYmxlIHRoZSBEeW5hbWljIENs
+b2NrIEdhdGluZyBpbiB0aGUgRE1BIGFuZCBNQUMgKi8KPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19k
+YXRhID0gZXIzMihDVFJMX0VYVCk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSAmPSAweEZG
+RjdGRkZGOwo+PiArwqDCoMKgwqDCoMKgwqAgZXczMihDVFJMX0VYVCwgbWFjX2RhdGEpOwo+PiAt
+wqDCoMKgIC8qIERpc2FibGUgSzEgb2ZmICovCj4+IC3CoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZF
+WFROVk02KTsKPj4gLcKgwqDCoCBtYWNfZGF0YSAmPSB+QklUKDMxKTsKPj4gLcKgwqDCoCBldzMy
+KEZFWFROVk02LCBtYWNfZGF0YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBSZXZlcnQgdGhlIGxh
+bnBoeXBjIGxvZ2ljIHRvIHVzZSB0aGUgaW50ZXJuYWwgR2JlIGNvdW50ZXIKPj4gK8KgwqDCoMKg
+wqDCoMKgwqAgKiBhbmQgbm90IHRoZSBQTUMgY291bnRlcgo+PiArwqDCoMKgwqDCoMKgwqDCoCAq
+Lwo+PiArwqDCoMKgwqDCoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk01KTsKPj4gK8KgwqDC
+oMKgwqDCoMKgIG1hY19kYXRhICY9IDB4RkZGRkZGN0Y7Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMy
+KEZFWFROVk01LCBtYWNfZGF0YSk7Cj4+IC3CoMKgwqAgLyogRGlzYWJsZSBVbmdhdGUgUEdDQiBj
+bG9jayAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihGRVhUTlZNOSk7Cj4+IC3CoMKgwqAg
+bWFjX2RhdGEgfD0gQklUKDI4KTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk05LCBtYWNfZGF0YSk7
+Cj4+ICvCoMKgwqDCoMKgwqDCoCAvKiBFbmFibGUgdGhlIHBlcmlvZGljIGluYmFuZCBtZXNzYWdl
+LAo+PiArwqDCoMKgwqDCoMKgwqDCoCAqIFJlcXVlc3QgUENJZSBjbG9jayBpbiBLMSBwYWdlNzcw
+XzE3WzEwOjldID0wMWIKPj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8KPj4gK8KgwqDCoMKgwqDCoMKg
+IGUxZV9ycGh5KGh3LCBIVl9QTV9DVFJMLCAmcGh5X2RhdGEpOwo+PiArwqDCoMKgwqDCoMKgwqAg
+cGh5X2RhdGEgJj0gMHhGQkZGOwo+PiArwqDCoMKgwqDCoMKgwqAgcGh5X2RhdGEgfD0gSFZfUE1f
+Q1RSTF9LMV9DTEtfUkVROwo+PiArwqDCoMKgwqDCoMKgwqAgZTFlX3dwaHkoaHcsIEhWX1BNX0NU
+UkwsIHBoeV9kYXRhKTsKPj4gLcKgwqDCoCAvKiBDYW5jZWwgbm90IHdha2luZyBmcm9tIGR5bmFt
+aWMKPj4gLcKgwqDCoMKgICogUG93ZXIgR2F0aW5nIHdpdGggY2xvY2sgcmVxdWVzdAo+PiAtwqDC
+oMKgwqAgKi8KPj4gLcKgwqDCoCBtYWNfZGF0YSA9IGVyMzIoRkVYVE5WTTEyKTsKPj4gLcKgwqDC
+oCBtYWNfZGF0YSAmPSB+QklUKDEyKTsKPj4gLcKgwqDCoCBldzMyKEZFWFROVk0xMiwgbWFjX2Rh
+dGEpOwo+PiArwqDCoMKgwqDCoMKgwqAgLyogUmV0dXJuIGJhY2sgY29uZmlndXJhdGlvbgo+PiAr
+wqDCoMKgwqDCoMKgwqDCoCAqIDc3Ml8yOVs1XSA9IDAgQ1NfTW9kZV9TdGF5X0luX0sxCj4+ICvC
+oMKgwqDCoMKgwqDCoMKgICovCj4+ICvCoMKgwqDCoMKgwqDCoCBlMWVfcnBoeShodywgSTIxN19D
+R0ZSRUcsICZwaHlfZGF0YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBwaHlfZGF0YSAmPSAweEZGREY7
+Cj4+ICvCoMKgwqDCoMKgwqDCoCBlMWVfd3BoeShodywgSTIxN19DR0ZSRUcsIHBoeV9kYXRhKTsK
+Pj4gLcKgwqDCoCAvKiBDYW5jZWwgZGlzYWJsZSBkaXNjb25uZWN0ZWQgY2FibGUgY29uZGl0aW9u
+aW5nCj4+IC3CoMKgwqDCoCAqIGZvciBQb3dlciBHYXRpbmcKPj4gLcKgwqDCoMKgICovCj4+IC3C
+oMKgwqAgbWFjX2RhdGEgPSBlcjMyKERQR0ZSKTsKPj4gLcKgwqDCoCBtYWNfZGF0YSAmPSB+QklU
+KDIpOwo+PiAtwqDCoMKgIGV3MzIoRFBHRlIsIG1hY19kYXRhKTsKPj4gK8KgwqDCoMKgwqDCoMKg
+IC8qIENoYW5nZSB0aGUgTUFDL1BIWSBpbnRlcmZhY2UgdG8gS3VtZXJhbgo+PiArwqDCoMKgwqDC
+oMKgwqDCoCAqIFVuZm9yY2UgdGhlIFNNQnVzIGluIFBIWSBwYWdlNzY5XzIzWzBdID0gMAo+PiAr
+wqDCoMKgwqDCoMKgwqDCoCAqIFVuZm9yY2UgdGhlIFNNQnVzIGluIE1BQyBDVFJMX0VYVFsxMV0g
+PSAwCj4+ICvCoMKgwqDCoMKgwqDCoMKgICovCj4+ICvCoMKgwqDCoMKgwqDCoCBlMWVfcnBoeSho
+dywgQ1ZfU01CX0NUUkwsICZwaHlfZGF0YSk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBwaHlfZGF0YSAm
+PSB+Q1ZfU01CX0NUUkxfRk9SQ0VfU01CVVM7Cj4+ICvCoMKgwqDCoMKgwqDCoCBlMWVfd3BoeSho
+dywgQ1ZfU01CX0NUUkwsIHBoeV9kYXRhKTsKPj4gK8KgwqDCoMKgwqDCoMKgIG1hY19kYXRhID0g
+ZXIzMihDVFJMX0VYVCk7Cj4+ICvCoMKgwqDCoMKgwqDCoCBtYWNfZGF0YSAmPSB+RTEwMDBfQ1RS
+TF9FWFRfRk9SQ0VfU01CVVM7Cj4+ICvCoMKgwqDCoMKgwqDCoCBldzMyKENUUkxfRVhULCBtYWNf
+ZGF0YSk7Cj4+ICvCoMKgwqAgfQo+PiDCoMKgwqDCoMKgIC8qIERpc2FibGUgRHluYW1pYyBQb3dl
+ciBHYXRpbmcgKi8KPj4gwqDCoMKgwqDCoCBtYWNfZGF0YSA9IGVyMzIoQ1RSTF9FWFQpOwo+PiDC
+oMKgwqDCoMKgIG1hY19kYXRhICY9IDB4RkZGRkZGRjc7Cj4+IMKgwqDCoMKgwqAgZXczMihDVFJM
+X0VYVCwgbWFjX2RhdGEpOwo+PiAtwqDCoMKgIC8qIERpc2FibGUgdGhlIER5bmFtaWMgQ2xvY2sg
+R2F0aW5nIGluIHRoZSBETUEgYW5kIE1BQyAqLwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihD
+VFJMX0VYVCk7Cj4+IC3CoMKgwqAgbWFjX2RhdGEgJj0gMHhGRkY3RkZGRjsKPj4gLcKgwqDCoCBl
+dzMyKENUUkxfRVhULCBtYWNfZGF0YSk7Cj4+IC0KPj4gLcKgwqDCoCAvKiBSZXZlcnQgdGhlIGxh
+bnBoeXBjIGxvZ2ljIHRvIHVzZSB0aGUgaW50ZXJuYWwgR2JlIGNvdW50ZXIKPj4gLcKgwqDCoMKg
+ICogYW5kIG5vdCB0aGUgUE1DIGNvdW50ZXIKPj4gLcKgwqDCoMKgICovCj4+IC3CoMKgwqAgbWFj
+X2RhdGEgPSBlcjMyKEZFWFROVk01KTsKPj4gLcKgwqDCoCBtYWNfZGF0YSAmPSAweEZGRkZGRjdG
+Owo+PiAtwqDCoMKgIGV3MzIoRkVYVE5WTTUsIG1hY19kYXRhKTsKPj4gLQo+PiAtwqDCoMKgIC8q
+IEVuYWJsZSB0aGUgcGVyaW9kaWMgaW5iYW5kIG1lc3NhZ2UsCj4+IC3CoMKgwqDCoCAqIFJlcXVl
+c3QgUENJZSBjbG9jayBpbiBLMSBwYWdlNzcwXzE3WzEwOjldID0wMWIKPj4gLcKgwqDCoMKgICov
+Cj4+IC3CoMKgwqAgZTFlX3JwaHkoaHcsIEhWX1BNX0NUUkwsICZwaHlfZGF0YSk7Cj4+IC3CoMKg
+wqAgcGh5X2RhdGEgJj0gMHhGQkZGOwo+PiAtwqDCoMKgIHBoeV9kYXRhIHw9IEhWX1BNX0NUUkxf
+SzFfQ0xLX1JFUTsKPj4gLcKgwqDCoCBlMWVfd3BoeShodywgSFZfUE1fQ1RSTCwgcGh5X2RhdGEp
+Owo+PiAtCj4+IC3CoMKgwqAgLyogUmV0dXJuIGJhY2sgY29uZmlndXJhdGlvbgo+PiAtwqDCoMKg
+wqAgKiA3NzJfMjlbNV0gPSAwIENTX01vZGVfU3RheV9Jbl9LMQo+PiAtwqDCoMKgwqAgKi8KPj4g
+LcKgwqDCoCBlMWVfcnBoeShodywgSTIxN19DR0ZSRUcsICZwaHlfZGF0YSk7Cj4+IC3CoMKgwqAg
+cGh5X2RhdGEgJj0gMHhGRkRGOwo+PiAtwqDCoMKgIGUxZV93cGh5KGh3LCBJMjE3X0NHRlJFRywg
+cGh5X2RhdGEpOwo+PiAtCj4+IC3CoMKgwqAgLyogQ2hhbmdlIHRoZSBNQUMvUEhZIGludGVyZmFj
+ZSB0byBLdW1lcmFuCj4+IC3CoMKgwqDCoCAqIFVuZm9yY2UgdGhlIFNNQnVzIGluIFBIWSBwYWdl
+NzY5XzIzWzBdID0gMAo+PiAtwqDCoMKgwqAgKiBVbmZvcmNlIHRoZSBTTUJ1cyBpbiBNQUMgQ1RS
+TF9FWFRbMTFdID0gMAo+PiAtwqDCoMKgwqAgKi8KPj4gLcKgwqDCoCBlMWVfcnBoeShodywgQ1Zf
+U01CX0NUUkwsICZwaHlfZGF0YSk7Cj4+IC3CoMKgwqAgcGh5X2RhdGEgJj0gfkNWX1NNQl9DVFJM
+X0ZPUkNFX1NNQlVTOwo+PiAtwqDCoMKgIGUxZV93cGh5KGh3LCBDVl9TTUJfQ1RSTCwgcGh5X2Rh
+dGEpOwo+PiAtwqDCoMKgIG1hY19kYXRhID0gZXIzMihDVFJMX0VYVCk7Cj4+IC3CoMKgwqAgbWFj
+X2RhdGEgJj0gfkUxMDAwX0NUUkxfRVhUX0ZPUkNFX1NNQlVTOwo+PiAtwqDCoMKgIGV3MzIoQ1RS
+TF9FWFQsIG1hY19kYXRhKTsKPj4gK8KgwqDCoCAvKiBFbmFibGUgdGhlIHRpbWUgc3luY2hyb25p
+emF0aW9uIGNsb2NrICovCj4+ICvCoMKgwqAgbWFjX2RhdGEgPSBlcjMyKEZFWFROVk03KTsKPj4g
+K8KgwqDCoCBtYWNfZGF0YSAmPSB+QklUKDMxKTsKPj4gK8KgwqDCoCBtYWNfZGF0YSB8PSBCSVQo
+MCk7Cj4+ICvCoMKgwqAgZXczMihGRVhUTlZNNywgbWFjX2RhdGEpOwo+PiDCoCB9Cj4+IMKgIHN0
+YXRpYyBpbnQgZTEwMDBlX3BtX2ZyZWV6ZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+ClBhdWwsCnNl
+ZSBteSBhbnN3ZXIgaW5saW5lLlRoYW5rcywgU2FzaGEKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRl
+bC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
