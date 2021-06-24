@@ -1,68 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 136483B23A4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jun 2021 00:43:34 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 256EF3B2A32
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jun 2021 10:19:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 52D5D83B24;
-	Wed, 23 Jun 2021 22:43:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A0E2405ED;
+	Thu, 24 Jun 2021 08:19:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1CCsxsP2bBRR; Wed, 23 Jun 2021 22:43:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id B9xP2dal9xJb; Thu, 24 Jun 2021 08:19:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3ABB283B23;
-	Wed, 23 Jun 2021 22:43:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E8A7A405E4;
+	Thu, 24 Jun 2021 08:19:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B9B81BF385
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 22:43:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 925771BF36D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:18:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 36935606CF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 22:43:26 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C2B2405E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:18:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lrcjM0uA41le for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jun 2021 22:43:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lnAUgGRmoNUW for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jun 2021 08:18:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 98D7A605E9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jun 2021 22:43:23 +0000 (UTC)
-IronPort-SDR: a/5Anzar1ON1L0phpHFFQbkqhl0wNuzTWUuJAdelLVPALP0KBzpmuu/bto4+RhNsLaCUQQ72kf
- x4PHGj89eLew==
-X-IronPort-AV: E=McAfee;i="6200,9189,10024"; a="271200948"
-X-IronPort-AV: E=Sophos;i="5.83,295,1616482800"; d="scan'208";a="271200948"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2021 15:43:18 -0700
-IronPort-SDR: r2ALTYhtcQaFt1FYvRTU+9GAwyO3yXFltGrDZSQyz3Nyv/TrIhdXyls0/aMbJf3MgkoWLy9Kpr
- QgEIRsdAM61w==
-X-IronPort-AV: E=Sophos;i="5.83,295,1616482800"; d="scan'208";a="406835421"
-Received: from samudral-mobl.amr.corp.intel.com (HELO [10.212.149.45])
- ([10.212.149.45])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2021 15:43:17 -0700
-To: "Singhai, Anjali" <anjali.singhai@intel.com>,
- "Creeley, Brett" <brett.creeley@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-References: <20210426181940.14847-1-sridhar.samudrala@intel.com>
- <CO1PR11MB48359F4AB09484353280CBA9F52D9@CO1PR11MB4835.namprd11.prod.outlook.com>
- <c78efee5-d864-7903-98b5-207aadae19fa@intel.com>
- <DM6PR11MB32913145E3D57435455C206893089@DM6PR11MB3291.namprd11.prod.outlook.com>
-From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-Message-ID: <31788b56-c3aa-f17f-b788-8a0f3129ad4e@intel.com>
-Date: Wed, 23 Jun 2021 15:43:16 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 37A5640510
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 08:18:54 +0000 (UTC)
+IronPort-SDR: BbqSDvmFdZOw4e7Hjwl4dxsuMy8ShD+wrta6pe71cY/HkeNcpYLLQIiJMOrb5lVUCdVfcoq5Ly
+ Sz3ft4idIDoA==
+X-IronPort-AV: E=McAfee;i="6200,9189,10024"; a="207465253"
+X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="207465253"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2021 01:18:32 -0700
+IronPort-SDR: verP9T0/YK9Kw7wLEjeBTGoiVljKKWVPkk3y5Qkeky/vN41U0I6LZoVqjFtSTVmehIDAyCrabn
+ +u/GeoJOH5Kw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="624111293"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by orsmga005.jf.intel.com with ESMTP; 24 Jun 2021 01:18:30 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	michael.edri@intel.com
+Date: Thu, 24 Jun 2021 11:18:27 +0300
+Message-Id: <20210624081827.568657-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <DM6PR11MB32913145E3D57435455C206893089@DM6PR11MB3291.namprd11.prod.outlook.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ice: Enable configuration
- of number of qps per VF via devlink
+Subject: [Intel-wired-lan] [PATCH v1 1/3] e1000e: Add handshake with the
+ CSME to support s0ix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,90 +65,410 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Ismail, Mustafa" <mustafa.ismail@intel.com>, "Saleem,
- Shiraz" <shiraz.saleem@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gNi8yMy8yMDIxIDM6MTUgUE0sIFNpbmdoYWksIEFuamFsaSB3cm90ZToKPiBTcmlkaGFyLCBo
-b3cgZG8geW91IGRvIGFzeW1tZXRyaWMgbnVtYmVyIG9mIHF1ZXVlcyBhbmQgdmVjdG9ycyB0byB0
-aGUgVkYgdXNpbmcgZGV2bGluaz8gT3IgdGhpcyBlbmRzIHVwIGFzIGEgY29uZmlndXJhdGlvbiBv
-biBWRiByZXByZXNlbnRvcnMuLi4gSSBob3BlIG5vdC4KPgo+IFNvIEkgYW0gZ3Vlc3NpbmcgeW91
-IGNhbiBlaXRoZXIgYnVsayBzZXQgdGhlIG51bWJlciBvZiBxdWV1ZXMgZm9yIGVhY2ggb2YgdGhl
-IFZGcyBvciB5b3UgY2FuIHNldCBpdCBwZXIgU1JJT1YgVkYgcG9ydHM/CgpUaGlzIGlzIGZpcnN0
-IHN0ZXAgaW4gYSBzZXJpZXMgb2YgcGF0Y2hlcyB0byBtYWtlIFZGIHJlc291cmNlcyBjb25maWd1
-cmFibGUuClRoZSBuZXh0IHN0ZXAgaXMgdG8gZW5hYmxlIGNyZWF0aW5nIGEgZGV2bGluayBwb3J0
-IGZvciBlYWNoIFZGIGFuZCAKc3VwcG9ydCBwb3J0IHNwZWNpZmljIHBhcmFtZXRlcnMKdmlhIHRo
-ZSBkZXZsaW5rIHBvcnQuClRoZW4gd2UgY2FuIGVuYWJsZSBjaGFuZ2luZyB0aGUgcXVldWUgcGFp
-cnMgb3IgbXNpeC12ZWN0b3JzIGZvciBhIApzcGVjaWZpYyBpbnN0YW5jZSBvZiBhIFZGCmJlZm9y
-ZSBpdCBpcyBhY3RpdmF0ZWQgcmF0aGVywqAgdGhhbiBhbGwgVkZzIGhhdmluZyBlcXVhbCBudW1i
-ZXIgb2YgCnJlc291cmNlcy4KCj4KPiBUaGFua3MKPiBBbmphbGkKPgo+IC0tLS0tT3JpZ2luYWwg
-TWVzc2FnZS0tLS0tCj4gRnJvbTogSW50ZWwtd2lyZWQtbGFuIDxpbnRlbC13aXJlZC1sYW4tYm91
-bmNlc0Bvc3Vvc2wub3JnPiBPbiBCZWhhbGYgT2YgU2FtdWRyYWxhLCBTcmlkaGFyCj4gU2VudDog
-V2VkbmVzZGF5LCBKdW5lIDIzLCAyMDIxIDk6MjEgQU0KPiBUbzogQ3JlZWxleSwgQnJldHQgPGJy
-ZXR0LmNyZWVsZXlAaW50ZWwuY29tPjsgaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc7
-IE5ndXllbiwgQW50aG9ueSBMIDxhbnRob255Lmwubmd1eWVuQGludGVsLmNvbT4KPiBDYzogSXNt
-YWlsLCBNdXN0YWZhIDxtdXN0YWZhLmlzbWFpbEBpbnRlbC5jb20+OyBTYWxlZW0sIFNoaXJheiA8
-c2hpcmF6LnNhbGVlbUBpbnRlbC5jb20+Cj4gU3ViamVjdDogUmU6IFtJbnRlbC13aXJlZC1sYW5d
-IFtQQVRDSCBuZXQtbmV4dCB2Ml0gaWNlOiBFbmFibGUgY29uZmlndXJhdGlvbiBvZiBudW1iZXIg
-b2YgcXBzIHBlciBWRiB2aWEgZGV2bGluawo+Cj4gT24gNS8xNy8yMDIxIDI6NDkgUE0sIENyZWVs
-ZXksIEJyZXR0IHdyb3RlOgo+Pj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0KPj4+IEZyb206
-IEludGVsLXdpcmVkLWxhbiA8aW50ZWwtd2lyZWQtbGFuLWJvdW5jZXNAb3N1b3NsLm9yZz4gT24g
-QmVoYWxmCj4+PiBPZiBTcmlkaGFyIFNhbXVkcmFsYQo+Pj4gU2VudDogTW9uZGF5LCBBcHJpbCAy
-NiwgMjAyMSAxMToyMCBBTQo+Pj4gVG86IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3Jn
-OyBOZ3V5ZW4sIEFudGhvbnkgTAo+Pj4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPjsgU2Ft
-dWRyYWxhLCBTcmlkaGFyCj4+PiA8c3JpZGhhci5zYW11ZHJhbGFAaW50ZWwuY29tPgo+Pj4gU3Vi
-amVjdDogW0ludGVsLXdpcmVkLWxhbl0gW1BBVENIIG5ldC1uZXh0IHYyXSBpY2U6IEVuYWJsZQo+
-Pj4gY29uZmlndXJhdGlvbiBvZiBudW1iZXIgb2YgcXBzIHBlciBWRiB2aWEgZGV2bGluawo+Pj4K
-Pj4+IEludHJvZHVjZSBhIGRldmxpbmsgcGFyYW1ldGVyICdudW1fcXBzX3Blcl92ZicgdG8gYWxs
-b3cgdXNlciB0bwo+Pj4gY29uZmlndXJlIHRoZSBtYXhpbXVtIG51bWJlciBvZiBxdWV1ZSBwYWly
-cyBnaXZlbiB0byBTUi1JT1YgVkZzCj4+PiBiZWZvcmUgdGhleSBhcmUgY3JlYXRlZC4KPj4+Cj4+
-PiBUaGlzIGlzIGN1cnJlbnRseSBkZXRlcm1pbmVkIGJ5IHRoZSBkcml2ZXIgYmFzZWQgb24gdGhl
-IG51bWJlciBvZgo+Pj4gU1ItSU9WIFZGcyBjcmVhdGVkLiBJbiBvcmRlciB0byBrZWVwIHRoaXMg
-YmVoYXZpb3IgYnkgZGVmYXVsdCB0aGUKPj4+IHBhcmFtZXRlciBpcyBpbml0aWFsaXplZCB0byAw
-LiBUbyBjaGFuZ2UgdGhlIGRlZmF1bHQgYmVoYXZpb3IsIHVzZXIKPj4+IGNhbiBzZXQgbnVtX3Fw
-c19wZXJfdmYgcGFyYW1ldGVyIHZpYSBkZXZsaW5rIGFuZCB0aGlzIHdpbGwgYmUgdXNlZCBhcwo+
-Pj4gdGhlIHByZWZlcnJlZCB2YWx1ZSB0byBkZXRlcm1pbmUgdGhlIHF1ZXVlcyBhbmQgdmVjdG9y
-cyBhc3NpZ25lZCBwZXIKPj4+IFZGLgo+PiBXaGF0IGlmIHRoZSBob3N0IGFkbWluaXN0cmF0b3Ig
-d2FudHMgdG8gZ2l2ZSB0aGUgVkYgYSBkaWZmZXJlbnQgbnVtYmVyCj4+IG9mIHZlY3RvcnMgdGhh
-biBxdWV1ZXM/IEZvciBleGFtcGxlLCBpZiB0aGUgYWRtaW4ga25vd3MgdGhlIFZGCj4+IGluc3Rh
-bmNlIHdpbGwgYmUgZXhlcmNpc2luZyBWRiBSRE1BIGFuZCB0aGUgVkYgbmVlZHMgbW9yZSB2ZWN0
-b3JzIGZvcgo+PiBSRE1BIHRyYWZmaWMuCj4+Cj4+IFNob3VsZCB3ZSBoYXZlIDIgc2VwYXJhdGUg
-dmFsdWVzLCBpLmUuICJudW1fcXBzX3Blcl92ZiIgYW5kCj4+ICJudW1fbXNpeF9wZXJfdmYiPwo+
-IEkgbWlzc2VkIHJlc3BvbmRpbmcgdG8gdGhpcyBjb21tZW50Lgo+IFN1cmUuIFdlIGNhbiBhZGQg
-bnVtX21zaXhfcHJfdmYgYXMgYSBsYXRlciBwYXRjaCB0byBlbmFibGUgYWRkaXRpb25hbCB2ZWN0
-b3JzIGZvciBSRE1BLgo+Cj4gVG9ueSwKPiBDYW4gdGhpcyBwYXRjaCBiZSBpbmNsdWRlZCBpbiB5
-b3VyIHNlcmllcyB3aGVuIHlvdSBzdWJtaXQgdG8gbmV0ZGV2Pwo+IE9SIGRvIGkgbmVlZCB0byBy
-ZWJhc2UgaXQgYmFzZWQgb24gdGhlIGxhdGVzdCBuZXQtbmV4dD8KPgo+IFRoYW5rcwo+IFNyaWRo
-YXIKPj4+IFVTQUdFOgo+Pj4gT24gYSAyIHBvcnQgTklDCj4+PiAgICAjIGRldmxpbmsgZGV2IHBh
-cmFtIHNob3cKPj4+ICAgIHBjaS8wMDAwOjQyOjAwLjA6Cj4+PiAgICAgIG5hbWUgbnVtX3Fwc19w
-ZXJfdmYgdHlwZSBkcml2ZXItc3BlY2lmaWMKPj4+ICAgICAgICB2YWx1ZXM6Cj4+PiAgICAgICAg
-ICBjbW9kZSBydW50aW1lIHZhbHVlIDAKPj4+ICAgIHBjaS8wMDAwOjQyOjAwLjE6Cj4+PiAgICAg
-IG5hbWUgbnVtX3Fwc19wZXJfdmYgdHlwZSBkcml2ZXItc3BlY2lmaWMKPj4+ICAgICAgICB2YWx1
-ZXM6Cj4+PiAgICAgICAgICBjbW9kZSBydW50aW1lIHZhbHVlIDAKPj4+Cj4+PiAgICAvKiBTZXQg
-bnVtX3Fwc19wZXJfdmYgdG8gNCAqLwo+Pj4gICAgIyBkZXZsaW5rIGRldiBwYXJhbSBzZXQgcGNp
-LzAwMDA6NDI6MDAuMCBuYW1lIG51bV9xcHNfcGVyX3ZmIHZhbHVlCj4+PiA0IGNtb2RlIHJ1bnRp
-bWUKPj4+Cj4+PiAgICAjIGRldmxpbmsgZGV2IHBhcmFtIHNob3cgcGNpLzAwMDA6NDI6MDAuMCBu
-YW1lIG51bV9xcHNfcGVyX3ZmCj4+PiAgICBwY2kvMDAwMDo0MjowMC4wOgo+Pj4gICAgICBuYW1l
-IG51bV9xcHNfcGVyX3ZmIHR5cGUgZHJpdmVyLXNwZWNpZmljCj4+PiAgICAgICAgdmFsdWVzOgo+
-Pj4gICAgICAgICAgY21vZGUgcnVudGltZSB2YWx1ZSA0Cj4+Pgo+Pj4gICAgIyBlY2hvIDggPiAv
-c3lzL2NsYXNzL25ldC9lbnA2NnMwZjAvZGV2aWNlL3NyaW92X251bXZmcwo+Pj4KPj4+IFRoaXMg
-d2lsbCBjcmVhdGUgOCBWRnMgd2l0aCA0IHF1ZXVlIHBhaXJzIGFuZCA1IHZlY3RvcnMgcGVyIFZG
-Cj4+PiBjb21wYXJlZCB0byB0aGUgZGVmYXVsdCBiZWhhdmlvciBvZiAxNiBxdWV1ZSBwYWlycyBh
-bmQgMTcgdmVjdG9ycyBwZXIKPj4+IFZGLgo+Pj4KPj4+IHYyOgo+Pj4gRml4ZWQga2RvYyBmb3Ig
-aWNlX2RldmxpbmtfbnVtX3Fwc19wZXJfdmZfdmFsaWRhdGUoKQo+Pj4KPj4+IFNpZ25lZC1vZmYt
-Ynk6IFNyaWRoYXIgU2FtdWRyYWxhIDxzcmlkaGFyLnNhbXVkcmFsYUBpbnRlbC5jb20+Cj4+PiAt
-LS0KPj4+ICAgIERvY3VtZW50YXRpb24vbmV0d29ya2luZy9kZXZsaW5rL2ljZS5yc3QgICAgICB8
-ICAyMyArKysrCj4+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2Rldmxp
-bmsuYyAgfCAxMTAgKysrKysrKysrKysrKysrKystCj4+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pY2UvaWNlX21haW4uYyAgICAgfCAgIDMgKwo+Pj4gICAgLi4uL25ldC9ldGhlcm5l
-dC9pbnRlbC9pY2UvaWNlX3ZpcnRjaG5sX3BmLmMgIHwgICA1ICstCj4+PiAgICA0IGZpbGVzIGNo
-YW5nZWQsIDEzOSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pj4KPj4gPHNuaXA+Cj4+
-Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBJbnRl
-bC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKPiBo
-dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdp
-cmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9s
-aXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+On the corporate system, the driver will ask from the CSME
+(manageability engine) to perform device settings are required
+to allow s0ix residency.
+This patch provides initial support.
+
+Reviewed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/ich8lan.h |   2 +
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 328 +++++++++++---------
+ 2 files changed, 176 insertions(+), 154 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
+index 1502895eb45d..e59456d867db 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
+@@ -47,6 +47,8 @@
+ #define E1000_SHRAH_PCH_LPT(_i)		(0x0540C + ((_i) * 8))
+ 
+ #define E1000_H2ME		0x05B50	/* Host to ME */
++#define E1000_H2ME_START_DPG	0x00000001	/* indicate the ME of DPG */
++#define E1000_H2ME_EXIT_DPG	0x00000002	/* indicate the ME exit DPG */
+ #define E1000_H2ME_ULP		0x00000800	/* ULP Indication Bit */
+ #define E1000_H2ME_ENFORCE_SETTINGS	0x00001000	/* Enforce Settings */
+ 
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 646bfb83a18b..786719890f2b 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6345,42 +6345,104 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+ 	u32 mac_data;
+ 	u16 phy_data;
+ 
+-	/* Disable the periodic inband message,
+-	 * don't request PCIe clock in K1 page770_17[10:9] = 10b
+-	 */
+-	e1e_rphy(hw, HV_PM_CTRL, &phy_data);
+-	phy_data &= ~HV_PM_CTRL_K1_CLK_REQ;
+-	phy_data |= BIT(10);
+-	e1e_wphy(hw, HV_PM_CTRL, phy_data);
++	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
++		/* Request ME configure the device for s0ix */
++		mac_data = er32(H2ME);
++		mac_data |= E1000_H2ME_START_DPG;
++		mac_data &= ~E1000_H2ME_EXIT_DPG;
++		ew32(H2ME, mac_data);
++	} else {
++		/* Request driver configure the device to s0ix */
++		/* Disable the periodic inband message,
++		 * don't request PCIe clock in K1 page770_17[10:9] = 10b
++		 */
++		e1e_rphy(hw, HV_PM_CTRL, &phy_data);
++		phy_data &= ~HV_PM_CTRL_K1_CLK_REQ;
++		phy_data |= BIT(10);
++		e1e_wphy(hw, HV_PM_CTRL, phy_data);
+ 
+-	/* Make sure we don't exit K1 every time a new packet arrives
+-	 * 772_29[5] = 1 CS_Mode_Stay_In_K1
+-	 */
+-	e1e_rphy(hw, I217_CGFREG, &phy_data);
+-	phy_data |= BIT(5);
+-	e1e_wphy(hw, I217_CGFREG, phy_data);
++		/* Make sure we don't exit K1 every time a new packet arrives
++		 * 772_29[5] = 1 CS_Mode_Stay_In_K1
++		 */
++		e1e_rphy(hw, I217_CGFREG, &phy_data);
++		phy_data |= BIT(5);
++		e1e_wphy(hw, I217_CGFREG, phy_data);
+ 
+-	/* Change the MAC/PHY interface to SMBus
+-	 * Force the SMBus in PHY page769_23[0] = 1
+-	 * Force the SMBus in MAC CTRL_EXT[11] = 1
+-	 */
+-	e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
+-	phy_data |= CV_SMB_CTRL_FORCE_SMBUS;
+-	e1e_wphy(hw, CV_SMB_CTRL, phy_data);
+-	mac_data = er32(CTRL_EXT);
+-	mac_data |= E1000_CTRL_EXT_FORCE_SMBUS;
+-	ew32(CTRL_EXT, mac_data);
++		/* Change the MAC/PHY interface to SMBus
++		 * Force the SMBus in PHY page769_23[0] = 1
++		 * Force the SMBus in MAC CTRL_EXT[11] = 1
++		 */
++		e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
++		phy_data |= CV_SMB_CTRL_FORCE_SMBUS;
++		e1e_wphy(hw, CV_SMB_CTRL, phy_data);
++		mac_data = er32(CTRL_EXT);
++		mac_data |= E1000_CTRL_EXT_FORCE_SMBUS;
++		ew32(CTRL_EXT, mac_data);
++
++		/* DFT control: PHY bit: page769_20[0] = 1
++		 * Gate PPW via EXTCNF_CTRL - set 0x0F00[7] = 1
++		 */
++		e1e_rphy(hw, I82579_DFT_CTRL, &phy_data);
++		phy_data |= BIT(0);
++		e1e_wphy(hw, I82579_DFT_CTRL, phy_data);
++
++		mac_data = er32(EXTCNF_CTRL);
++		mac_data |= E1000_EXTCNF_CTRL_GATE_PHY_CFG;
++		ew32(EXTCNF_CTRL, mac_data);
++
++		/* Enable the Dynamic Power Gating in the MAC */
++		mac_data = er32(FEXTNVM7);
++		mac_data |= BIT(22);
++		ew32(FEXTNVM7, mac_data);
++
++		/* Disable disconnected cable conditioning for Power Gating */
++		mac_data = er32(DPGFR);
++		mac_data |= BIT(2);
++		ew32(DPGFR, mac_data);
++
++		/* Don't wake from dynamic Power Gating with clock request */
++		mac_data = er32(FEXTNVM12);
++		mac_data |= BIT(12);
++		ew32(FEXTNVM12, mac_data);
++
++		/* Ungate PGCB clock */
++		mac_data = er32(FEXTNVM9);
++		mac_data &= ~BIT(28);
++		ew32(FEXTNVM9, mac_data);
++
++		/* Enable K1 off to enable mPHY Power Gating */
++		mac_data = er32(FEXTNVM6);
++		mac_data |= BIT(31);
++		ew32(FEXTNVM6, mac_data);
++
++		/* Enable mPHY power gating for any link and speed */
++		mac_data = er32(FEXTNVM8);
++		mac_data |= BIT(9);
++		ew32(FEXTNVM8, mac_data);
++
++		/* Enable the Dynamic Clock Gating in the DMA and MAC */
++		mac_data = er32(CTRL_EXT);
++		mac_data |= E1000_CTRL_EXT_DMA_DYN_CLK_EN;
++		ew32(CTRL_EXT, mac_data);
++
++		/* No MAC DPG gating SLP_S0 in modern standby
++		 * Switch the logic of the lanphypc to use PMC counter
++		 */
++		mac_data = er32(FEXTNVM5);
++		mac_data |= BIT(7);
++		ew32(FEXTNVM5, mac_data);
++	}
+ 
+-	/* DFT control: PHY bit: page769_20[0] = 1
+-	 * Gate PPW via EXTCNF_CTRL - set 0x0F00[7] = 1
+-	 */
+-	e1e_rphy(hw, I82579_DFT_CTRL, &phy_data);
+-	phy_data |= BIT(0);
+-	e1e_wphy(hw, I82579_DFT_CTRL, phy_data);
++	/* Disable the time synchronization clock */
++	mac_data = er32(FEXTNVM7);
++	mac_data |= BIT(31);
++	mac_data &= ~BIT(0);
++	ew32(FEXTNVM7, mac_data);
+ 
+-	mac_data = er32(EXTCNF_CTRL);
+-	mac_data |= E1000_EXTCNF_CTRL_GATE_PHY_CFG;
+-	ew32(EXTCNF_CTRL, mac_data);
++	/* Dynamic Power Gating Enable */
++	mac_data = er32(CTRL_EXT);
++	mac_data |= BIT(3);
++	ew32(CTRL_EXT, mac_data);
+ 
+ 	/* Check MAC Tx/Rx packet buffer pointers.
+ 	 * Reset MAC Tx/Rx packet buffer pointers to suppress any
+@@ -6416,59 +6478,6 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+ 	mac_data = er32(RDFPC);
+ 	if (mac_data)
+ 		ew32(RDFPC, 0);
+-
+-	/* Enable the Dynamic Power Gating in the MAC */
+-	mac_data = er32(FEXTNVM7);
+-	mac_data |= BIT(22);
+-	ew32(FEXTNVM7, mac_data);
+-
+-	/* Disable the time synchronization clock */
+-	mac_data = er32(FEXTNVM7);
+-	mac_data |= BIT(31);
+-	mac_data &= ~BIT(0);
+-	ew32(FEXTNVM7, mac_data);
+-
+-	/* Dynamic Power Gating Enable */
+-	mac_data = er32(CTRL_EXT);
+-	mac_data |= BIT(3);
+-	ew32(CTRL_EXT, mac_data);
+-
+-	/* Disable disconnected cable conditioning for Power Gating */
+-	mac_data = er32(DPGFR);
+-	mac_data |= BIT(2);
+-	ew32(DPGFR, mac_data);
+-
+-	/* Don't wake from dynamic Power Gating with clock request */
+-	mac_data = er32(FEXTNVM12);
+-	mac_data |= BIT(12);
+-	ew32(FEXTNVM12, mac_data);
+-
+-	/* Ungate PGCB clock */
+-	mac_data = er32(FEXTNVM9);
+-	mac_data &= ~BIT(28);
+-	ew32(FEXTNVM9, mac_data);
+-
+-	/* Enable K1 off to enable mPHY Power Gating */
+-	mac_data = er32(FEXTNVM6);
+-	mac_data |= BIT(31);
+-	ew32(FEXTNVM6, mac_data);
+-
+-	/* Enable mPHY power gating for any link and speed */
+-	mac_data = er32(FEXTNVM8);
+-	mac_data |= BIT(9);
+-	ew32(FEXTNVM8, mac_data);
+-
+-	/* Enable the Dynamic Clock Gating in the DMA and MAC */
+-	mac_data = er32(CTRL_EXT);
+-	mac_data |= E1000_CTRL_EXT_DMA_DYN_CLK_EN;
+-	ew32(CTRL_EXT, mac_data);
+-
+-	/* No MAC DPG gating SLP_S0 in modern standby
+-	 * Switch the logic of the lanphypc to use PMC counter
+-	 */
+-	mac_data = er32(FEXTNVM5);
+-	mac_data |= BIT(7);
+-	ew32(FEXTNVM5, mac_data);
+ }
+ 
+ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+@@ -6477,87 +6486,98 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+ 	u32 mac_data;
+ 	u16 phy_data;
+ 
+-	/* Disable the Dynamic Power Gating in the MAC */
+-	mac_data = er32(FEXTNVM7);
+-	mac_data &= 0xFFBFFFFF;
+-	ew32(FEXTNVM7, mac_data);
++	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
++		/* Request ME un configure the device from s0ix */
++		mac_data = er32(H2ME);
++		mac_data &= ~E1000_H2ME_START_DPG;
++		mac_data |= E1000_H2ME_EXIT_DPG;
++		ew32(H2ME, mac_data);
++	} else {
++		/* Request driver un configure the device from s0ix */
++
++		/* Disable the Dynamic Power Gating in the MAC */
++		mac_data = er32(FEXTNVM7);
++		mac_data &= 0xFFBFFFFF;
++		ew32(FEXTNVM7, mac_data);
++
++		/* Disable mPHY power gating for any link and speed */
++		mac_data = er32(FEXTNVM8);
++		mac_data &= ~BIT(9);
++		ew32(FEXTNVM8, mac_data);
++
++		/* Disable K1 off */
++		mac_data = er32(FEXTNVM6);
++		mac_data &= ~BIT(31);
++		ew32(FEXTNVM6, mac_data);
++
++		/* Disable Ungate PGCB clock */
++		mac_data = er32(FEXTNVM9);
++		mac_data |= BIT(28);
++		ew32(FEXTNVM9, mac_data);
++
++		/* Cancel not waking from dynamic
++		 * Power Gating with clock request
++		 */
++		mac_data = er32(FEXTNVM12);
++		mac_data &= ~BIT(12);
++		ew32(FEXTNVM12, mac_data);
+ 
+-	/* Enable the time synchronization clock */
+-	mac_data = er32(FEXTNVM7);
+-	mac_data |= BIT(0);
+-	ew32(FEXTNVM7, mac_data);
++		/* Cancel disable disconnected cable conditioning
++		 * for Power Gating
++		 */
++		mac_data = er32(DPGFR);
++		mac_data &= ~BIT(2);
++		ew32(DPGFR, mac_data);
+ 
+-	/* Disable mPHY power gating for any link and speed */
+-	mac_data = er32(FEXTNVM8);
+-	mac_data &= ~BIT(9);
+-	ew32(FEXTNVM8, mac_data);
++		/* Disable the Dynamic Clock Gating in the DMA and MAC */
++		mac_data = er32(CTRL_EXT);
++		mac_data &= 0xFFF7FFFF;
++		ew32(CTRL_EXT, mac_data);
+ 
+-	/* Disable K1 off */
+-	mac_data = er32(FEXTNVM6);
+-	mac_data &= ~BIT(31);
+-	ew32(FEXTNVM6, mac_data);
++		/* Revert the lanphypc logic to use the internal Gbe counter
++		 * and not the PMC counter
++		 */
++		mac_data = er32(FEXTNVM5);
++		mac_data &= 0xFFFFFF7F;
++		ew32(FEXTNVM5, mac_data);
+ 
+-	/* Disable Ungate PGCB clock */
+-	mac_data = er32(FEXTNVM9);
+-	mac_data |= BIT(28);
+-	ew32(FEXTNVM9, mac_data);
++		/* Enable the periodic inband message,
++		 * Request PCIe clock in K1 page770_17[10:9] =01b
++		 */
++		e1e_rphy(hw, HV_PM_CTRL, &phy_data);
++		phy_data &= 0xFBFF;
++		phy_data |= HV_PM_CTRL_K1_CLK_REQ;
++		e1e_wphy(hw, HV_PM_CTRL, phy_data);
+ 
+-	/* Cancel not waking from dynamic
+-	 * Power Gating with clock request
+-	 */
+-	mac_data = er32(FEXTNVM12);
+-	mac_data &= ~BIT(12);
+-	ew32(FEXTNVM12, mac_data);
++		/* Return back configuration
++		 * 772_29[5] = 0 CS_Mode_Stay_In_K1
++		 */
++		e1e_rphy(hw, I217_CGFREG, &phy_data);
++		phy_data &= 0xFFDF;
++		e1e_wphy(hw, I217_CGFREG, phy_data);
+ 
+-	/* Cancel disable disconnected cable conditioning
+-	 * for Power Gating
+-	 */
+-	mac_data = er32(DPGFR);
+-	mac_data &= ~BIT(2);
+-	ew32(DPGFR, mac_data);
++		/* Change the MAC/PHY interface to Kumeran
++		 * Unforce the SMBus in PHY page769_23[0] = 0
++		 * Unforce the SMBus in MAC CTRL_EXT[11] = 0
++		 */
++		e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
++		phy_data &= ~CV_SMB_CTRL_FORCE_SMBUS;
++		e1e_wphy(hw, CV_SMB_CTRL, phy_data);
++		mac_data = er32(CTRL_EXT);
++		mac_data &= ~E1000_CTRL_EXT_FORCE_SMBUS;
++		ew32(CTRL_EXT, mac_data);
++	}
+ 
+ 	/* Disable Dynamic Power Gating */
+ 	mac_data = er32(CTRL_EXT);
+ 	mac_data &= 0xFFFFFFF7;
+ 	ew32(CTRL_EXT, mac_data);
+ 
+-	/* Disable the Dynamic Clock Gating in the DMA and MAC */
+-	mac_data = er32(CTRL_EXT);
+-	mac_data &= 0xFFF7FFFF;
+-	ew32(CTRL_EXT, mac_data);
+-
+-	/* Revert the lanphypc logic to use the internal Gbe counter
+-	 * and not the PMC counter
+-	 */
+-	mac_data = er32(FEXTNVM5);
+-	mac_data &= 0xFFFFFF7F;
+-	ew32(FEXTNVM5, mac_data);
+-
+-	/* Enable the periodic inband message,
+-	 * Request PCIe clock in K1 page770_17[10:9] =01b
+-	 */
+-	e1e_rphy(hw, HV_PM_CTRL, &phy_data);
+-	phy_data &= 0xFBFF;
+-	phy_data |= HV_PM_CTRL_K1_CLK_REQ;
+-	e1e_wphy(hw, HV_PM_CTRL, phy_data);
+-
+-	/* Return back configuration
+-	 * 772_29[5] = 0 CS_Mode_Stay_In_K1
+-	 */
+-	e1e_rphy(hw, I217_CGFREG, &phy_data);
+-	phy_data &= 0xFFDF;
+-	e1e_wphy(hw, I217_CGFREG, phy_data);
+-
+-	/* Change the MAC/PHY interface to Kumeran
+-	 * Unforce the SMBus in PHY page769_23[0] = 0
+-	 * Unforce the SMBus in MAC CTRL_EXT[11] = 0
+-	 */
+-	e1e_rphy(hw, CV_SMB_CTRL, &phy_data);
+-	phy_data &= ~CV_SMB_CTRL_FORCE_SMBUS;
+-	e1e_wphy(hw, CV_SMB_CTRL, phy_data);
+-	mac_data = er32(CTRL_EXT);
+-	mac_data &= ~E1000_CTRL_EXT_FORCE_SMBUS;
+-	ew32(CTRL_EXT, mac_data);
++	/* Enable the time synchronization clock */
++	mac_data = er32(FEXTNVM7);
++	mac_data &= ~BIT(31);
++	mac_data |= BIT(0);
++	ew32(FEXTNVM7, mac_data);
+ }
+ 
+ static int e1000e_pm_freeze(struct device *dev)
+-- 
+2.25.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
