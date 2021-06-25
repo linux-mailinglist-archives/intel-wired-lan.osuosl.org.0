@@ -1,90 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BF4C3B48A5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Jun 2021 20:12:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 492013B49FC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Jun 2021 23:09:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A9A6242280;
-	Fri, 25 Jun 2021 18:12:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8DBB040592;
+	Fri, 25 Jun 2021 21:09:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2S2wGOZAzrXB; Fri, 25 Jun 2021 18:12:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R1Hiy-RDtZwN; Fri, 25 Jun 2021 21:09:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0695F4227D;
-	Fri, 25 Jun 2021 18:12:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 778D0400BD;
+	Fri, 25 Jun 2021 21:09:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 506A41BF303
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 17:52:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C16041BF85D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 21:08:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4878D4227D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 17:52:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AA26B400BD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 21:08:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h7_c1j97tthM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Jun 2021 17:52:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 45Ug7UiqCY24 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Jun 2021 21:08:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D80CE4227C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 17:52:22 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4C02840025
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 21:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624643541;
+ s=mimecast20190719; t=1624655298;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Np0xO1RJa8Fe+o0fE+8kFFb6yFJ3EzhbKHebm61tvY8=;
- b=EMsy/twQiSuiWXxDvsqMXKElfFERbu+jKS+iBmRoj8bxzjJHtTjmc6r1n79zCy2lTZr6Xd
- Aol6V7D/3tLjzIACkY4zhFov46ZSfVA/FfUKahyBLPiaYZEb36i/OsSfQxE86xjLzYVEMG
- LW4+gHO1Ej/9EKoAmqeQDXMP5pi/NLA=
+ bh=8ZDICObM3KXek2Hb3yoYurGVvyXCqbMuKZU9WccmR1E=;
+ b=DWfL8hLf6RsN8v6vR+QK3l/KkUsTnb4xTrOPKeCaQuvJ22XJd9/PpXIYkyi8dCO3t/ynyk
+ 9oq0zDAWEfaXZRuvg6QYmirBVzi248iY+DHLUr//hUGFS1I9n4Y+wG4PjAsFDbePGJllHJ
+ 0r5WWvPaXf9biEAhxSqXUCBlz1V3YcE=
 Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
  [209.85.208.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-490-lPb54kZRNbS1ZjG8iO_SmA-1; Fri, 25 Jun 2021 13:52:20 -0400
-X-MC-Unique: lPb54kZRNbS1ZjG8iO_SmA-1
+ us-mta-43-NY6VJSL2P5Gy47rc5xlY2w-1; Fri, 25 Jun 2021 17:08:16 -0400
+X-MC-Unique: NY6VJSL2P5Gy47rc5xlY2w-1
 Received: by mail-lj1-f197.google.com with SMTP id
- z8-20020a2e8e880000b02901703789676bso3562743ljk.10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 10:52:19 -0700 (PDT)
+ v3-20020a2e99030000b0290144dc7b6cf0so3806890lji.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 14:08:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Np0xO1RJa8Fe+o0fE+8kFFb6yFJ3EzhbKHebm61tvY8=;
- b=K+rULtyC6sjonhB0HnZJz0o0mn7dNtrOz0vM2M1Va9dyq8ICjgJ4IFL7vzGYINX9RC
- y8bZed4kD6slnLqMdmBMHACDuzr7GG+79zqFXyXG+UhGH+ojHdYMWJxBSHWf4b6RR2CV
- 8/E3MZbqO5DcJsKeX2g8Bfrelyeo629udnoKFxewyVOiz4bfGGCnGc48lsjCnDt/sF25
- CIpCVZQ0c6gTrqx7p/XDdyeTYazwMWzuxYUhDaUtK08HNOwldy7Vc6TnWnPpORhYDdfk
- t0hwIdyVoJmVa4bUBvNhq6XljFgKhtuvDE9VQHi/kyKLX20/5d4L3L6uepLH0JFQBp3O
- mM8g==
-X-Gm-Message-State: AOAM5320ykXSkywptDtT7ZC3Wxd5Vb+GrAeUaqV+lub2bcvRgh3xPzhV
- 0Y/PAYBJYvuK4eKIOoqrY0QHprC5pfStTpQ4iqyTltBL4NaJUyJIgmacA8u1ONA6rugo/OT/eCU
- z4Ho6Mmj3CLbjLu6Tk07+lf3SNn8ziYBEDXB5kLDJY/rXbg==
-X-Received: by 2002:a05:6512:1188:: with SMTP id
- g8mr9091340lfr.114.1624643538722; 
- Fri, 25 Jun 2021 10:52:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwv3ONlbYdOAJeKoocH2JT7i37U2k3Ba34lvXyyU9Xl8b/vh+ACiLOhDBLiq7MSlh/s914KOVChB9p0l3+RVAk=
-X-Received: by 2002:a05:6512:1188:: with SMTP id
- g8mr9091276lfr.114.1624643538381; 
- Fri, 25 Jun 2021 10:52:18 -0700 (PDT)
+ bh=8ZDICObM3KXek2Hb3yoYurGVvyXCqbMuKZU9WccmR1E=;
+ b=BMWNAxBSkbWLpiCyvbQJ+j37zrx+ODsADdfLc+vHCOr6mldZHifXUAa2yRtnzCpFGM
+ VhkhKltfh13QfYrrsBPCdEztcbhKyBtc0KfgUotuqqP7fYBaYcUTliqBGX9KlzWO1vyu
+ fa7rnddprNr/M7Hkeaunp/w8jSYubPW+yRtj9GF2uPZZNz8fvivB+qoX0bocFsiLrs5e
+ 2LVrI3qcsy4pqcjzNjcuF1GesQRjqA5LodUx4OwIyfLkKzXjuAeFvYRf+EKmd/wtl1il
+ +PwdeVO5bqNkgJT4xA5vgopqsdB72xORcEzmCrRLXJhSuUfI5n8ER4gKy9rJ880n0bMQ
+ 5uWA==
+X-Gm-Message-State: AOAM531l3/geKeqj2bna4RrXGanb+lutT12kVtOsvmI/6T/IouFZFvjg
+ X0M6fhklnDKTA1o9fKjiKflXrl59kpWcKErfbInlcH8dYb89t6H0fxOk9C4YGbIlU8fzpQNPyqk
+ VYhsscm4v12dhxLH7xjkMz1c6+9QWIgLpvIdekvXoThT63A==
+X-Received: by 2002:a19:520b:: with SMTP id m11mr9732704lfb.548.1624655295111; 
+ Fri, 25 Jun 2021 14:08:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUexlIFHXeeKXO03SmwGePdENz2CjY0tC2d9T70zel0UdMzzrYS7rF2Shg08+5Cqm1V6fr5JNcCCdgzQuLKqk=
+X-Received: by 2002:a19:520b:: with SMTP id m11mr9732628lfb.548.1624655294717; 
+ Fri, 25 Jun 2021 14:08:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210617182242.8637-1-nitesh@redhat.com>
- <20210617182242.8637-2-nitesh@redhat.com>
-In-Reply-To: <20210617182242.8637-2-nitesh@redhat.com>
+ <20210617182242.8637-15-nitesh@redhat.com>
+ <YNBHQvo1uDfBbr5c@unreal>
+In-Reply-To: <YNBHQvo1uDfBbr5c@unreal>
 From: Nitesh Lal <nilal@redhat.com>
-Date: Fri, 25 Jun 2021 13:52:04 -0400
-Message-ID: <CAFki+Ln=OS1unuybbD0MKmeJwZci66j6m5OjpNvKDN74E0qw2Q@mail.gmail.com>
-To: linux-kernel@vger.kernel.org, linux-api@vger.kernel.org, 
- linux-scsi@vger.kernel.org
+Date: Fri, 25 Jun 2021 17:08:03 -0400
+Message-ID: <CAFki+L=2nVA3FB03BjuXbj+di28LhVUzo9P9WoJyxoQFggt0VQ@mail.gmail.com>
+To: Leon Romanovsky <leon@kernel.org>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-X-Mailman-Approved-At: Fri, 25 Jun 2021 18:12:01 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v1 01/14] genirq: Provide new
- interfaces for affinity hints
+X-Mailman-Approved-At: Fri, 25 Jun 2021 21:09:28 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v1 14/14] net/mlx4: Use
+ irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,162 +95,89 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, ajit.khaparde@broadcom.com,
- jassisinghbrar@gmail.com, peterz@infradead.org, linux-pci@vger.kernel.org,
- james.smart@broadcom.com, govind@gmx.com, Alaa Hleihel <ahleihel@redhat.com>,
- Ingo Molnar <mingo@kernel.org>, Stefan Assmann <sassmann@redhat.com>,
- sfr@canb.auug.org.au, borisp@nvidia.com, Marc Zyngier <maz@kernel.org>,
- sathya.prakash@broadcom.com, kashyap.desai@broadcom.com,
- intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
+Cc: juri.lelli@redhat.com, ajit.khaparde@broadcom.com, jassisinghbrar@gmail.com,
+ peterz@infradead.org, linux-pci@vger.kernel.org, james.smart@broadcom.com,
+ govind@gmx.com, ahleihel@redhat.com, mingo@kernel.org, sassmann@redhat.com,
+ sfr@canb.auug.org.au, linux-scsi@vger.kernel.org, borisp@nvidia.com,
+ maz@kernel.org, sathya.prakash@broadcom.com, kashyap.desai@broadcom.com,
+ intel-wired-lan@lists.osuosl.org, abelits@marvell.com,
  dick.kennedy@broadcom.com, faisal.latif@intel.com,
  suganath-prabu.subramani@broadcom.com, frederic@kernel.org,
- Robin Murphy <robin.murphy@arm.com>, rostedt@goodmis.org,
- rppt@linux.vnet.ibm.com, Bjorn Helgaas <bhelgaas@google.com>,
- Thomas Gleixner <tglx@linutronix.de>, somnath.kotur@broadcom.com,
- shiraz.saleem@intel.com, pjwaskiewicz@gmail.com,
- Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
- sriharsha.basavapatna@broadcom.com, Neil Horman <nhorman@tuxdriver.com>,
- shivasharan.srikanteshwara@broadcom.com, netdev@vger.kernel.org,
- Marcelo Tosatti <mtosatti@redhat.com>, Kamal Heib <kheib@redhat.com>,
- tariqt@nvidia.com, stephen@networkplumber.org,
- Sumit Saxena <sumit.saxena@broadcom.com>, Tomas Henzl <thenzl@redhat.com>,
- saeedm@nvidia.com, akpm@linux-foundation.org, Ken Cox <jkc@redhat.com>,
- jbrandeb@kernel.org, davem@davemloft.net, benve@cisco.com
+ robin.murphy@arm.com, rostedt@goodmis.org, luobin9@huawei.com,
+ rppt@linux.vnet.ibm.com, bhelgaas@google.com, tglx@linutronix.de,
+ somnath.kotur@broadcom.com, shiraz.saleem@intel.com, pjwaskiewicz@gmail.com,
+ Nitesh Narayan Lal <nitesh@redhat.com>, sreekanth.reddy@broadcom.com,
+ sriharsha.basavapatna@broadcom.com, nhorman@tuxdriver.com,
+ shivasharan.srikanteshwara@broadcom.com, linux-api@vger.kernel.org,
+ mtosatti@redhat.com, kheib@redhat.com, linux-kernel@vger.kernel.org,
+ tariqt@nvidia.com, stephen@networkplumber.org, sumit.saxena@broadcom.com,
+ thenzl@redhat.com, netdev@vger.kernel.org, saeedm@nvidia.com,
+ akpm@linux-foundation.org, jkc@redhat.com, jbrandeb@kernel.org,
+ davem@davemloft.net, benve@cisco.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 17, 2021 at 2:23 PM Nitesh Narayan Lal <nitesh@redhat.com> wrote:
+On Mon, Jun 21, 2021 at 4:02 AM Leon Romanovsky <leon@kernel.org> wrote:
 >
-> From: Thomas Gleixner <tglx@linutronix.de>
+> On Thu, Jun 17, 2021 at 02:22:42PM -0400, Nitesh Narayan Lal wrote:
+> > The driver uses irq_set_affinity_hint() to update the affinity_hint mask
+> > that is consumed by the userspace to distribute the interrupts. However,
+> > under the hood irq_set_affinity_hint() also applies the provided cpumask
+> > (if not NULL) as the affinity for the given interrupt which is an
+> > undocumented side effect.
+> >
+> > To remove this side effect irq_set_affinity_hint() has been marked
+> > as deprecated and new interfaces have been introduced. Hence, replace the
+> > irq_set_affinity_hint() with the new interface irq_update_affinity_hint()
+> > that only updates the affinity_hint pointer.
+> >
+> > Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+> > ---
+> >  drivers/net/ethernet/mellanox/mlx4/eq.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/mellanox/mlx4/eq.c b/drivers/net/ethernet/mellanox/mlx4/eq.c
+> > index 9e48509ed3b2..f549d697ca95 100644
+> > --- a/drivers/net/ethernet/mellanox/mlx4/eq.c
+> > +++ b/drivers/net/ethernet/mellanox/mlx4/eq.c
+> > @@ -244,9 +244,9 @@ static void mlx4_set_eq_affinity_hint(struct mlx4_priv *priv, int vec)
+> >           cpumask_empty(eq->affinity_mask))
+> >               return;
+> >
+> > -     hint_err = irq_set_affinity_hint(eq->irq, eq->affinity_mask);
+> > +     hint_err = irq_update_affinity_hint(eq->irq, eq->affinity_mask);
+> >       if (hint_err)
+> > -             mlx4_warn(dev, "irq_set_affinity_hint failed, err %d\n", hint_err);
+> > +             mlx4_warn(dev, "irq_update_affinity_hint failed, err %d\n", hint_err);
+> >  }
+> >  #endif
+> >
+> > @@ -1124,7 +1124,7 @@ static void mlx4_free_irqs(struct mlx4_dev *dev)
+> >               if (eq_table->eq[i].have_irq) {
+> >                       free_cpumask_var(eq_table->eq[i].affinity_mask);
+> >  #if defined(CONFIG_SMP)
+> > -                     irq_set_affinity_hint(eq_table->eq[i].irq, NULL);
+> > +                     irq_update_affinity_hint(eq_table->eq[i].irq, NULL);
+> >  #endif
 >
-> The discussion about removing the side effect of irq_set_affinity_hint() of
-> actually applying the cpumask (if not NULL) as affinity to the interrupt,
-> unearthed a few unpleasantries:
+> This #if/endif can be deleted.
+
+I think we also can get rid of the other #if/endif CONFIG_SMP
+occurrences that are present around mlx4_set_eq_affinity_hint()
+definition and call, isn't it?
+There is already a check-in interrupt.h so doing it again in the
+driver looks like an unwanted repetition IMHO.
+
 >
->   1) The modular perf drivers rely on the current behaviour for the very
->      wrong reasons.
->
->   2) While none of the other drivers prevents user space from changing
->      the affinity, a cursorily inspection shows that there are at least
->      expectations in some drivers.
->
-> #1 needs to be cleaned up anyway, so that's not a problem
->
-> #2 might result in subtle regressions especially when irqbalanced (which
->    nowadays ignores the affinity hint) is disabled.
->
-> Provide new interfaces:
->
->   irq_update_affinity_hint()  - Only sets the affinity hint pointer
->   irq_set_affinity_and_hint() - Set the pointer and apply the affinity to
->                                 the interrupt
->
-> Make irq_set_affinity_hint() a wrapper around irq_apply_affinity_hint() and
-> document it to be phased out.
->
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
-> Link: https://lore.kernel.org/r/20210501021832.743094-1-jesse.brandeburg@intel.com
-> ---
->  include/linux/interrupt.h | 41 ++++++++++++++++++++++++++++++++++++++-
->  kernel/irq/manage.c       |  8 ++++----
->  2 files changed, 44 insertions(+), 5 deletions(-)
->
-> diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
-> index 2ed65b01c961..4ca491a76033 100644
-> --- a/include/linux/interrupt.h
-> +++ b/include/linux/interrupt.h
-> @@ -328,7 +328,46 @@ extern int irq_force_affinity(unsigned int irq, const struct cpumask *cpumask);
->  extern int irq_can_set_affinity(unsigned int irq);
->  extern int irq_select_affinity(unsigned int irq);
->
-> -extern int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m);
-> +extern int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> +                                    bool setaffinity);
-> +
-> +/**
-> + * irq_update_affinity_hint - Update the affinity hint
-> + * @irq:       Interrupt to update
-> + * @cpumask:   cpumask pointer (NULL to clear the hint)
-> + *
-> + * Updates the affinity hint, but does not change the affinity of the interrupt.
-> + */
-> +static inline int
-> +irq_update_affinity_hint(unsigned int irq, const struct cpumask *m)
-> +{
-> +       return __irq_apply_affinity_hint(irq, m, false);
-> +}
-> +
-> +/**
-> + * irq_set_affinity_and_hint - Update the affinity hint and apply the provided
-> + *                          cpumask to the interrupt
-> + * @irq:       Interrupt to update
-> + * @cpumask:   cpumask pointer (NULL to clear the hint)
-> + *
-> + * Updates the affinity hint and if @cpumask is not NULL it applies it as
-> + * the affinity of that interrupt.
-> + */
-> +static inline int
-> +irq_set_affinity_and_hint(unsigned int irq, const struct cpumask *m)
-> +{
-> +       return __irq_apply_affinity_hint(irq, m, true);
-> +}
-> +
-> +/*
-> + * Deprecated. Use irq_update_affinity_hint() or irq_set_affinity_and_hint()
-> + * instead.
-> + */
-> +static inline int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> +{
-> +       return irq_set_affinity_and_hint(irq, m);
-> +}
-> +
->  extern int irq_update_affinity_desc(unsigned int irq,
->                                     struct irq_affinity_desc *affinity);
->
-> diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
-> index ef30b4762947..837b63e63111 100644
-> --- a/kernel/irq/manage.c
-> +++ b/kernel/irq/manage.c
-> @@ -487,7 +487,8 @@ int irq_force_affinity(unsigned int irq, const struct cpumask *cpumask)
->  }
->  EXPORT_SYMBOL_GPL(irq_force_affinity);
->
-> -int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
-> +int __irq_apply_affinity_hint(unsigned int irq, const struct cpumask *m,
-> +                             bool setaffinity)
->  {
->         unsigned long flags;
->         struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
-> @@ -496,12 +497,11 @@ int irq_set_affinity_hint(unsigned int irq, const struct cpumask *m)
->                 return -EINVAL;
->         desc->affinity_hint = m;
->         irq_put_desc_unlock(desc, flags);
-> -       /* set the initial affinity to prevent every interrupt being on CPU0 */
-> -       if (m)
-> +       if (m && setaffinity)
->                 __irq_set_affinity(irq, m, false);
->         return 0;
->  }
-> -EXPORT_SYMBOL_GPL(irq_set_affinity_hint);
-> +EXPORT_SYMBOL_GPL(__irq_apply_affinity_hint);
->
->  static void irq_affinity_notify(struct work_struct *work)
->  {
-> --
-> 2.27.0
+> Thanks,
+> Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
 >
 
-It turns out that this patch has an issue. The new interfaces are not
-added under the #ifdef (CONFIG_SMP)'s else section.
-I will fix it and send a v2 with other changes.
 
-
---
+-- 
 Thanks
-
 Nitesh
 
 _______________________________________________
