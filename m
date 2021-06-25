@@ -1,64 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88BD23B3776
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jun 2021 21:58:51 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 086D63B4160
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Jun 2021 12:18:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F1E7F83C9C;
-	Thu, 24 Jun 2021 19:58:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5FAF7400EC;
+	Fri, 25 Jun 2021 10:18:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N3Q8H496Lni5; Thu, 24 Jun 2021 19:58:49 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yvy4j3bbhHhg; Fri, 25 Jun 2021 10:18:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 20B5583C88;
-	Thu, 24 Jun 2021 19:58:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6041740462;
+	Fri, 25 Jun 2021 10:18:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D72541BF346
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 19:58:44 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D1A7C1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 10:18:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C4C4A405C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 19:58:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CDD7883CC5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 10:18:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FkGXO-LU-_Z0 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jun 2021 19:58:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sn1hSkj29OXm for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Jun 2021 10:18:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E64A540510
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jun 2021 19:58:41 +0000 (UTC)
-IronPort-SDR: mek0JGHP1NjsWK7CnJpVUGpIXeHc6uijlSEmg68uFfICN7OYwfYxdCmRP7jc/pI9rhWEbKqh6w
- kltZtU2/Zyow==
-X-IronPort-AV: E=McAfee;i="6200,9189,10025"; a="205722417"
-X-IronPort-AV: E=Sophos;i="5.83,297,1616482800"; d="scan'208";a="205722417"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 12:58:39 -0700
-IronPort-SDR: 9kxQzp6jeZmOIo5W0vvGj+HLZ5lymwQKayMgXxAO3XSx+C1pp2yhYHcsk0VR3FPe9/HKBPUZg+
- a416MsUFmuHw==
-X-IronPort-AV: E=Sophos;i="5.83,297,1616482800"; d="scan'208";a="487896188"
-Received: from rsharon-mobl1.ger.corp.intel.com (HELO [10.214.203.125])
- ([10.214.203.125])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 12:58:32 -0700
-To: trix@redhat.com, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, jeffrey.t.kirsher@intel.com,
- sasha.neftin@intel.com
-References: <20210521195019.2078661-1-trix@redhat.com>
-From: "Fuxbrumer, Dvora" <dvorax.fuxbrumer@linux.intel.com>
-Message-ID: <1c0592d7-7d54-7834-61d4-f6b3183b5cf2@linux.intel.com>
-Date: Thu, 24 Jun 2021 22:58:28 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 73E8683C38
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jun 2021 10:18:47 +0000 (UTC)
+IronPort-SDR: SuWvpo3/sODSiaEp6UQudR0c8F15r1RbCdSICUENm/AMdni7/9+q9AxQ6gCre5Gh/Ujw5D+RNp
+ WsekS+xBPkPQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10025"; a="194787961"
+X-IronPort-AV: E=Sophos;i="5.83,298,1616482800"; d="scan'208";a="194787961"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2021 03:18:44 -0700
+IronPort-SDR: 4hciZw2lJDfj8vKrc4JUiDn3ie38GU9t92Z5epj07onrZ/Ka25jxQV+Y7RMVaWDo01ekAyAYRN
+ uD5u1xezlOVw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,298,1616482800"; d="scan'208";a="474832783"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by fmsmga004.fm.intel.com with ESMTP; 25 Jun 2021 03:18:42 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 25 Jun 2021 04:44:49 +0200
+Message-Id: <20210625024501.6126-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <20210521195019.2078661-1-trix@redhat.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igc: change default return of
- igc_read_phy_reg()
+Subject: [Intel-wired-lan] [PATCH net-next v3 00/12] Add switchdev driver
+ model for ice driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,34 +64,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 5/21/2021 22:50, trix@redhat.com wrote:
-> From: Tom Rix <trix@redhat.com>
-> 
-> Static analysis reports this problem
-> 
-> igc_main.c:4944:20: warning: The left operand of '&'
->    is a garbage value
->      if (!(phy_data & SR_1000T_REMOTE_RX_STATUS) &&
->            ~~~~~~~~ ^
-> 
-> pyy_data is set by the call to igc_read_phy_reg() only if
-> there is a read_reg() op, else it is unset and a 0 is
-> returned.  Change the return to -EOPNOTSUPP.
-> 
-> Fixes: 208983f099d9 ("igc: Add watchdog")
-> Signed-off-by: Tom Rix <trix@redhat.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+The following patch series introduces basic switchdev model
+support in ice driver. Implement the following blocks of
+switchdev framework:
+- VF port representors creation
+- control plane VSI definition 
+- exception path (a. k. a. "slow-path") - to allow a virtual
+switch or linux bridge to receive any packet that doesn't match
+any hw filter
+- link state management of virtual ports
+- query virtual port statistics
+
+Hardware offload support in switchdev mode is out of scope of
+this patchset. Devlink interface is used to toggle between
+switchdev and legacy (the default) modes of the driver.
+
+Changelog:
+ v3:
+  * add more info to Kconfig ICE_SWITCHDEV flag
+  * correct spealing  
+ v2:
+  * fix build issue in ice: set and release switchdev environment
+  by moving call of ice_vsi_setup to next patch which have definition
+  of switchdev VSI
+
+Grzegorz Nitka (5):
+  ice: set and release switchdev environment
+  ice: introduce new type of VSI for switchdev
+  ice: enable/disable switchdev when managing VFs
+  ice: rebuild switchdev when resetting all VFs
+  ice: switchdev slow path
+
+Michal Swiatkowski (5):
+  ice: support basic E-Switch mode control
+  ice: introduce VF port representor
+  ice: allow process vf opcodes in different ways
+  ice: manage VSI antispoof and destination override
+  ice: allow changing lan_en and lb_en on dflt rules
+
+Wojciech Drewek (2):
+  ice: Move devlink port to PF/VF struct
+  ice: add port representor ethtool ops and stats
+
+ drivers/net/ethernet/intel/Kconfig            |  14 +
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  48 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |  37 +-
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 109 ++-
+ drivers/net/ethernet/intel/ice/ice_devlink.h  |   6 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 656 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_eswitch.h  |  82 +++
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  32 +-
+ drivers/net/ethernet/intel/ice/ice_fltr.c     |  80 +++
+ drivers/net/ethernet/intel/ice/ice_fltr.h     |   7 +
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |  43 ++
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 112 ++-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |  11 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |  47 +-
+ drivers/net/ethernet/intel/ice/ice_repr.c     | 329 +++++++++
+ drivers/net/ethernet/intel/ice/ice_repr.h     |  27 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   |   2 +-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   6 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   3 +
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |   4 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 196 +++++-
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  45 ++
+ 24 files changed, 1821 insertions(+), 80 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_repr.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_repr.h
+
+-- 
+2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
