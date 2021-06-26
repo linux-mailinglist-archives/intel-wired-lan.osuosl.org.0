@@ -2,57 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 529063B4B9F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Jun 2021 02:34:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D86873B4B9E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Jun 2021 02:34:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EDC5C6065A;
-	Sat, 26 Jun 2021 00:34:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8F5566063F;
+	Sat, 26 Jun 2021 00:34:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PQ7ebOt_wSD9; Sat, 26 Jun 2021 00:34:32 +0000 (UTC)
+	with ESMTP id N19kguNHJVep; Sat, 26 Jun 2021 00:34:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D932F60642;
-	Sat, 26 Jun 2021 00:34:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F370F605E7;
+	Sat, 26 Jun 2021 00:34:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 373C51C11AD
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BAD621C11AD
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 56763402AA
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1399A404B9
  for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nJU56bh00o1V for <intel-wired-lan@lists.osuosl.org>;
- Sat, 26 Jun 2021 00:33:45 +0000 (UTC)
+ with ESMTP id gSOM5jk1JqP9 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 26 Jun 2021 00:33:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5438240500
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:44 +0000 (UTC)
-IronPort-SDR: +uh8X5MmHnJ5DwoJNdV6fyuMUALhIh1ccgpRA6PfaMOS4I9j9WjfhTZY7uxPJbAANFxEsoBexG
- SVfJErd1WJvg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10026"; a="268890547"
-X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="268890547"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1ADF8402AA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:43 +0000 (UTC)
+IronPort-SDR: RlE+cFN4oZ3Bet7lOkdeA8cRluHYPCn2sbIFf+kZfi4iQqnJZP0c1yQqwrBkIMLrkCeUVRZnoU
+ 1h19MPctrR1A==
+X-IronPort-AV: E=McAfee;i="6200,9189,10026"; a="268890549"
+X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="268890549"
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2021 17:33:40 -0700
-IronPort-SDR: GqdBDBdxUL9Es7PEfXblA2eVd+27IFX+2tzCKGQ3JALDbpTNcWD6agBTwaafUBbiVKe7x4EA9D
- YIFPDxci/0jw==
-X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="557008593"
+ 25 Jun 2021 17:33:41 -0700
+IronPort-SDR: H+Jb59LWjtQJkSeSQmTFZGo2TN4usWUHklJQORk0LiAwOaxCnCyrnCuqBxN4DeksPsqQQfgppe
+ Paqzwkic7k4g==
+X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="557008595"
 Received: from aschmalt-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.212.160.59])
  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Jun 2021 17:33:40 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: netdev@vger.kernel.org
-Date: Fri, 25 Jun 2021 17:33:02 -0700
-Message-Id: <20210626003314.3159402-1-vinicius.gomes@intel.com>
+Date: Fri, 25 Jun 2021 17:33:03 -0700
+Message-Id: <20210626003314.3159402-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20210626003314.3159402-1-vinicius.gomes@intel.com>
+References: <20210626003314.3159402-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v4 00/12] ethtool: Add support
- for frame preemption
+Subject: [Intel-wired-lan] [PATCH net-next v4 01/12] ethtool: Add support
+ for configuring frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,128 +75,451 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Frame preemption (described in IEEE 802.3-2018, Section 99 in
+particular) defines the concept of preemptible and express queues. It
+allows traffic from express queues to "interrupt" traffic from
+preemptible queues, which are "resumed" after the express traffic has
+finished transmitting.
 
-When the APIs, now including verification, are fine, I can separate
-this series into smaller pieces, to make further review easier. I am
-proposing this as one series so it's easier to get the full picture.
+Frame preemption can only be used when both the local device and the
+link partner support it.
 
+Only parameters for enabling/disabling frame preemption and
+configuring the minimum fragment size are included here. Expressing
+which queues are marked as preemptible is left to mqprio/taprio, as
+having that information there should be easier on the user.
 
-Changes from v3:
- - Added early support for sending/receiving support for verification
-   frames (Vladimir Oltean). This is a bit more than RFC-quality, but
-   adding this so people can see how it fits together with the rest.
-   The driver specific bits are interesting because the hardware does
-   the absolute minimum, the driver needs to do the heavy lifting.
-
- - Added support for setting preemptible/express traffic classes via
-   tc-mqprio (Vladimir Oltean). mqprio parsing of configuration
-   options is... interesting, so comments here are going to be useful,
-   I may have missed something.
-
-Changes from v2:
- - Fixed some copy&paste mistakes, documentation formatting and
-   slightly improved error reporting (Jakub Kicinski);
-
-Changes from v1:
- - The minimum fragment size configuration was changed to be
-   configured in bytes to be more future proof, in case the standard
-   changes this (the previous definition was '(X + 1) * 64', X being
-   [0..3]) (Michal Kubecek);
- - In taprio, frame preemption is now configured by traffic classes (was
-   done by queues) (Jakub Kicinski, Vladimir Oltean);
- - Various netlink protocol validation improvements (Jakub Kicinski);
- - Dropped the IGC register dump for frame preemption registers, until a
-   stardandized way of exposing that is agreed (Jakub Kicinski);
-
-Changes from RFC v2:
- - Reorganised the offload enabling/disabling on the driver size;
- - Added a few igc fixes;
-
-Changes from RFC v1:
- - The per-queue preemptible/express setting is moved to applicable
-   qdiscs (Jakub Kicinski and others);
- - "min-frag-size" now follows the 802.3br specification more closely,
-   it's expressed as X in '64(1 + X) + 4' (Joergen Andreasen);
-
-Another point that should be noted is the addition of the
-TC_SETUP_PREEMPT offload type, the idea behind this is to allow other
-qdiscs (was thinking of mqprio) to also configure which traffic
-classes should be marked as express/preemptible.
-
-Original cover letter (lightly edited):
-
-This is still an RFC because two main reasons, I want to confirm that
-this approach (per-queue settings via qdiscs, device settings via
-ethtool) looks good, even though there aren't much more options left ;-)
-The other reason is that while testing this I found some weirdness
-in the driver that I would need a bit more time to investigate.
-
-(In case these patches are not enough to give an idea of how things
-work, I can send the userspace patches, of course.)
-
-The idea of this "hybrid" approach is that applications/users would do
-the following steps to configure frame preemption:
-
-$ tc qdisc replace dev $IFACE parent root handle 100 taprio \
-      num_tc 3 \
-      map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \
-      queues 1@0 1@1 2@2 \
-      base-time $BASE_TIME \
-      sched-entry S 0f 10000000 \
-      preempt 1110 \
-      flags 0x2 
-
-The "preempt" parameter is the only difference, it configures which
-traffic classes are marked as preemptible, in this example, traffic
-class 0 is marked as "not preemptible", so it is express, the rest of
-the four traffic classes are preemptible.
-
-The next step, of this example, would be to enable frame preemption in
-the device, via ethtool, and set the minimum fragment size to 192 bytes:
-
-$ sudo ./ethtool --set-frame-preemption $IFACE fp on min-frag-size 192
-
-Cheers,
-
-
-Vinicius Costa Gomes (12):
-  ethtool: Add support for configuring frame preemption
-  taprio: Add support for frame preemption offload
-  core: Introduce netdev_tc_map_to_queue_mask()
-  taprio: Replace tc_map_to_queue_mask()
-  mqprio: Add support for frame preemption offload
-  igc: Add support for enabling frame preemption via ethtool
-  igc: Add support for TC_SETUP_PREEMPT
-  igc: Simplify TSN flags handling
-  igc: Add support for setting frame preemption configuration
-  ethtool: Add support for Frame Preemption verification
-  igc: Check incompatible configs for Frame Preemption
-  igc: Add support for Frame Preemption verification
-
- Documentation/networking/ethtool-netlink.rst |  41 +++
- drivers/net/ethernet/intel/igc/igc.h         |  27 ++
- drivers/net/ethernet/intel/igc/igc_defines.h |  17 ++
- drivers/net/ethernet/intel/igc/igc_ethtool.c |  45 ++++
- drivers/net/ethernet/intel/igc/igc_main.c    | 249 ++++++++++++++++++-
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 127 ++++++----
- drivers/net/ethernet/intel/igc/igc_tsn.h     |   1 +
- include/linux/ethtool.h                      |  24 ++
- include/linux/netdevice.h                    |   2 +
- include/net/pkt_sched.h                      |   4 +
- include/uapi/linux/ethtool_netlink.h         |  19 ++
- include/uapi/linux/pkt_sched.h               |   2 +
- net/core/dev.c                               |  20 ++
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ Documentation/networking/ethtool-netlink.rst |  38 +++++
+ include/linux/ethtool.h                      |  22 +++
+ include/uapi/linux/ethtool_netlink.h         |  17 +++
  net/ethtool/Makefile                         |   2 +-
- net/ethtool/common.c                         |  25 ++
- net/ethtool/netlink.c                        |  19 ++
+ net/ethtool/common.c                         |  25 ++++
+ net/ethtool/netlink.c                        |  19 +++
  net/ethtool/netlink.h                        |   4 +
- net/ethtool/preempt.c                        | 157 ++++++++++++
- net/sched/sch_mqprio.c                       |  41 ++-
- net/sched/sch_taprio.c                       |  65 +++--
- 20 files changed, 815 insertions(+), 76 deletions(-)
+ net/ethtool/preempt.c                        | 146 +++++++++++++++++++
+ 8 files changed, 272 insertions(+), 1 deletion(-)
  create mode 100644 net/ethtool/preempt.c
 
+diff --git a/Documentation/networking/ethtool-netlink.rst b/Documentation/networking/ethtool-netlink.rst
+index 6ea91e41593f..a87f1716944e 100644
+--- a/Documentation/networking/ethtool-netlink.rst
++++ b/Documentation/networking/ethtool-netlink.rst
+@@ -1477,6 +1477,44 @@ Low and high bounds are inclusive, for example:
+  etherStatsPkts512to1023Octets 512  1023
+  ============================= ==== ====
+ 
++PREEMPT_GET
++===========
++
++Get information about frame preemption state.
++
++Request contents:
++
++  ====================================  ======  ==========================
++  ``ETHTOOL_A_PREEMPT_HEADER``          nested  request header
++  ====================================  ======  ==========================
++
++Request contents:
++
++  =====================================  ======  ==========================
++  ``ETHTOOL_A_PREEMPT_HEADER``           nested  reply header
++  ``ETHTOOL_A_PREEMPT_ENABLED``          u8      frame preemption enabled
++  ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``    u32     Min additional frag size
++  =====================================  ======  ==========================
++
++``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
++fragment size that the receiver device supports.
++
++PREEMPT_SET
++===========
++
++Sets frame preemption parameters.
++
++Request contents:
++
++  =====================================  ======  ==========================
++  ``ETHTOOL_A_CHANNELS_HEADER``          nested  reply header
++  ``ETHTOOL_A_PREEMPT_ENABLED``          u8      frame preemption enabled
++  ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``    u32     Min additional frag size
++  =====================================  ======  ==========================
++
++``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
++fragment size that the receiver device supports.
++
+ Request translation
+ ===================
+ 
+diff --git a/include/linux/ethtool.h b/include/linux/ethtool.h
+index 29dbb603bc91..7e449be8f335 100644
+--- a/include/linux/ethtool.h
++++ b/include/linux/ethtool.h
+@@ -409,6 +409,19 @@ struct ethtool_module_eeprom {
+ 	u8	*data;
+ };
+ 
++/**
++ * struct ethtool_fp - Frame Preemption information
++ *
++ * @enabled: Enable frame preemption.
++ * @add_frag_size: Minimum size for additional (non-final) fragments
++ * in bytes, for the value defined in the IEEE 802.3-2018 standard see
++ * ethtool_frag_size_to_mult().
++ */
++struct ethtool_fp {
++	u8 enabled;
++	u32 add_frag_size;
++};
++
+ /**
+  * struct ethtool_ops - optional netdev operations
+  * @cap_link_lanes_supported: indicates if the driver supports lanes
+@@ -561,6 +574,8 @@ struct ethtool_module_eeprom {
+  *	not report statistics.
+  * @get_fecparam: Get the network device Forward Error Correction parameters.
+  * @set_fecparam: Set the network device Forward Error Correction parameters.
++ * @get_preempt: Get the network device Frame Preemption parameters.
++ * @set_preempt: Set the network device Frame Preemption parameters.
+  * @get_ethtool_phy_stats: Return extended statistics about the PHY device.
+  *	This is only useful if the device maintains PHY statistics and
+  *	cannot use the standard PHY library helpers.
+@@ -675,6 +690,10 @@ struct ethtool_ops {
+ 				      struct ethtool_fecparam *);
+ 	int	(*set_fecparam)(struct net_device *,
+ 				      struct ethtool_fecparam *);
++	int	(*get_preempt)(struct net_device *,
++			       struct ethtool_fp *);
++	int	(*set_preempt)(struct net_device *, struct ethtool_fp *,
++			       struct netlink_ext_ack *);
+ 	void	(*get_ethtool_phy_stats)(struct net_device *,
+ 					 struct ethtool_stats *, u64 *);
+ 	int	(*get_phy_tunable)(struct net_device *,
+@@ -766,4 +785,7 @@ ethtool_params_from_link_mode(struct ethtool_link_ksettings *link_ksettings,
+  * next string.
+  */
+ extern __printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...);
++
++u8 ethtool_frag_size_to_mult(u32 frag_size);
++
+ #endif /* _LINUX_ETHTOOL_H */
+diff --git a/include/uapi/linux/ethtool_netlink.h b/include/uapi/linux/ethtool_netlink.h
+index c7135c9c37a5..4600aba1c693 100644
+--- a/include/uapi/linux/ethtool_netlink.h
++++ b/include/uapi/linux/ethtool_netlink.h
+@@ -44,6 +44,8 @@ enum {
+ 	ETHTOOL_MSG_TUNNEL_INFO_GET,
+ 	ETHTOOL_MSG_FEC_GET,
+ 	ETHTOOL_MSG_FEC_SET,
++	ETHTOOL_MSG_PREEMPT_GET,
++	ETHTOOL_MSG_PREEMPT_SET,
+ 	ETHTOOL_MSG_MODULE_EEPROM_GET,
+ 	ETHTOOL_MSG_STATS_GET,
+ 
+@@ -86,6 +88,8 @@ enum {
+ 	ETHTOOL_MSG_TUNNEL_INFO_GET_REPLY,
+ 	ETHTOOL_MSG_FEC_GET_REPLY,
+ 	ETHTOOL_MSG_FEC_NTF,
++	ETHTOOL_MSG_PREEMPT_GET_REPLY,
++	ETHTOOL_MSG_PREEMPT_NTF,
+ 	ETHTOOL_MSG_MODULE_EEPROM_GET_REPLY,
+ 	ETHTOOL_MSG_STATS_GET_REPLY,
+ 
+@@ -664,6 +668,19 @@ enum {
+ 	ETHTOOL_A_FEC_STAT_MAX = (__ETHTOOL_A_FEC_STAT_CNT - 1)
+ };
+ 
++/* FRAME PREEMPTION */
++
++enum {
++	ETHTOOL_A_PREEMPT_UNSPEC,
++	ETHTOOL_A_PREEMPT_HEADER,			/* nest - _A_HEADER_* */
++	ETHTOOL_A_PREEMPT_ENABLED,			/* u8 */
++	ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE,		/* u32 */
++
++	/* add new constants above here */
++	__ETHTOOL_A_PREEMPT_CNT,
++	ETHTOOL_A_PREEMPT_MAX = (__ETHTOOL_A_PREEMPT_CNT - 1)
++};
++
+ /* MODULE EEPROM */
+ 
+ enum {
+diff --git a/net/ethtool/Makefile b/net/ethtool/Makefile
+index 723c9a8a8cdf..4b84b2d34c7a 100644
+--- a/net/ethtool/Makefile
++++ b/net/ethtool/Makefile
+@@ -7,4 +7,4 @@ obj-$(CONFIG_ETHTOOL_NETLINK)	+= ethtool_nl.o
+ ethtool_nl-y	:= netlink.o bitset.o strset.o linkinfo.o linkmodes.o \
+ 		   linkstate.o debug.o wol.o features.o privflags.o rings.o \
+ 		   channels.o coalesce.o pause.o eee.o tsinfo.o cabletest.o \
+-		   tunnels.o fec.o eeprom.o stats.o
++		   tunnels.o fec.o preempt.o eeprom.o stats.o
+diff --git a/net/ethtool/common.c b/net/ethtool/common.c
+index f9dcbad84788..68d123dd500b 100644
+--- a/net/ethtool/common.c
++++ b/net/ethtool/common.c
+@@ -579,3 +579,28 @@ ethtool_params_from_link_mode(struct ethtool_link_ksettings *link_ksettings,
+ 	link_ksettings->base.duplex = link_info->duplex;
+ }
+ EXPORT_SYMBOL_GPL(ethtool_params_from_link_mode);
++
++/**
++ * ethtool_frag_size_to_mult() - Convert from a Frame Preemption
++ * Additional Fragment size in bytes to a multiplier.
++ * @frag_size: minimum non-final fragment size in bytes.
++ *
++ * The multiplier is defined as:
++ *	"A 2-bit integer value used to indicate the minimum size of
++ *	non-final fragments supported by the receiver on the given port
++ *	associated with the local System. This value is expressed in units
++ *	of 64 octets of additional fragment length."
++ *	Equivalent to `30.14.1.7 aMACMergeAddFragSize` from the IEEE 802.3-2018
++ *	standard.
++ *
++ * Return: the multiplier is a number in the [0, 2] interval.
++ */
++u8 ethtool_frag_size_to_mult(u32 frag_size)
++{
++	u8 mult = (frag_size / 64) - 1;
++
++	mult = clamp_t(u8, mult, 0, 3);
++
++	return mult;
++}
++EXPORT_SYMBOL_GPL(ethtool_frag_size_to_mult);
+diff --git a/net/ethtool/netlink.c b/net/ethtool/netlink.c
+index a7346346114f..f4e07b740790 100644
+--- a/net/ethtool/netlink.c
++++ b/net/ethtool/netlink.c
+@@ -246,6 +246,7 @@ ethnl_default_requests[__ETHTOOL_MSG_USER_CNT] = {
+ 	[ETHTOOL_MSG_EEE_GET]		= &ethnl_eee_request_ops,
+ 	[ETHTOOL_MSG_FEC_GET]		= &ethnl_fec_request_ops,
+ 	[ETHTOOL_MSG_TSINFO_GET]	= &ethnl_tsinfo_request_ops,
++	[ETHTOOL_MSG_PREEMPT_GET]	= &ethnl_preempt_request_ops,
+ 	[ETHTOOL_MSG_MODULE_EEPROM_GET]	= &ethnl_module_eeprom_request_ops,
+ 	[ETHTOOL_MSG_STATS_GET]		= &ethnl_stats_request_ops,
+ };
+@@ -561,6 +562,7 @@ ethnl_default_notify_ops[ETHTOOL_MSG_KERNEL_MAX + 1] = {
+ 	[ETHTOOL_MSG_PAUSE_NTF]		= &ethnl_pause_request_ops,
+ 	[ETHTOOL_MSG_EEE_NTF]		= &ethnl_eee_request_ops,
+ 	[ETHTOOL_MSG_FEC_NTF]		= &ethnl_fec_request_ops,
++	[ETHTOOL_MSG_PREEMPT_NTF]	= &ethnl_preempt_request_ops,
+ };
+ 
+ /* default notification handler */
+@@ -654,6 +656,7 @@ static const ethnl_notify_handler_t ethnl_notify_handlers[] = {
+ 	[ETHTOOL_MSG_PAUSE_NTF]		= ethnl_default_notify,
+ 	[ETHTOOL_MSG_EEE_NTF]		= ethnl_default_notify,
+ 	[ETHTOOL_MSG_FEC_NTF]		= ethnl_default_notify,
++	[ETHTOOL_MSG_PREEMPT_NTF]	= ethnl_default_notify,
+ };
+ 
+ void ethtool_notify(struct net_device *dev, unsigned int cmd, const void *data)
+@@ -958,6 +961,22 @@ static const struct genl_ops ethtool_genl_ops[] = {
+ 		.policy = ethnl_stats_get_policy,
+ 		.maxattr = ARRAY_SIZE(ethnl_stats_get_policy) - 1,
+ 	},
++	{
++		.cmd	= ETHTOOL_MSG_PREEMPT_GET,
++		.doit	= ethnl_default_doit,
++		.start	= ethnl_default_start,
++		.dumpit	= ethnl_default_dumpit,
++		.done	= ethnl_default_done,
++		.policy = ethnl_preempt_get_policy,
++		.maxattr = ARRAY_SIZE(ethnl_preempt_get_policy) - 1,
++	},
++	{
++		.cmd	= ETHTOOL_MSG_PREEMPT_SET,
++		.flags	= GENL_UNS_ADMIN_PERM,
++		.doit	= ethnl_set_preempt,
++		.policy = ethnl_preempt_set_policy,
++		.maxattr = ARRAY_SIZE(ethnl_preempt_set_policy) - 1,
++	},
+ };
+ 
+ static const struct genl_multicast_group ethtool_nl_mcgrps[] = {
+diff --git a/net/ethtool/netlink.h b/net/ethtool/netlink.h
+index 3e25a47fd482..cc90a463a81c 100644
+--- a/net/ethtool/netlink.h
++++ b/net/ethtool/netlink.h
+@@ -345,6 +345,7 @@ extern const struct ethnl_request_ops ethnl_pause_request_ops;
+ extern const struct ethnl_request_ops ethnl_eee_request_ops;
+ extern const struct ethnl_request_ops ethnl_tsinfo_request_ops;
+ extern const struct ethnl_request_ops ethnl_fec_request_ops;
++extern const struct ethnl_request_ops ethnl_preempt_request_ops;
+ extern const struct ethnl_request_ops ethnl_module_eeprom_request_ops;
+ extern const struct ethnl_request_ops ethnl_stats_request_ops;
+ 
+@@ -381,6 +382,8 @@ extern const struct nla_policy ethnl_tunnel_info_get_policy[ETHTOOL_A_TUNNEL_INF
+ extern const struct nla_policy ethnl_fec_get_policy[ETHTOOL_A_FEC_HEADER + 1];
+ extern const struct nla_policy ethnl_fec_set_policy[ETHTOOL_A_FEC_AUTO + 1];
+ extern const struct nla_policy ethnl_module_eeprom_get_policy[ETHTOOL_A_MODULE_EEPROM_I2C_ADDRESS + 1];
++extern const struct nla_policy ethnl_preempt_get_policy[ETHTOOL_A_PREEMPT_HEADER + 1];
++extern const struct nla_policy ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE + 1];
+ extern const struct nla_policy ethnl_stats_get_policy[ETHTOOL_A_STATS_GROUPS + 1];
+ 
+ int ethnl_set_linkinfo(struct sk_buff *skb, struct genl_info *info);
+@@ -400,6 +403,7 @@ int ethnl_tunnel_info_doit(struct sk_buff *skb, struct genl_info *info);
+ int ethnl_tunnel_info_start(struct netlink_callback *cb);
+ int ethnl_tunnel_info_dumpit(struct sk_buff *skb, struct netlink_callback *cb);
+ int ethnl_set_fec(struct sk_buff *skb, struct genl_info *info);
++int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info);
+ 
+ extern const char stats_std_names[__ETHTOOL_STATS_CNT][ETH_GSTRING_LEN];
+ extern const char stats_eth_phy_names[__ETHTOOL_A_STATS_ETH_PHY_CNT][ETH_GSTRING_LEN];
+diff --git a/net/ethtool/preempt.c b/net/ethtool/preempt.c
+new file mode 100644
+index 000000000000..4f96d3c2b1d5
+--- /dev/null
++++ b/net/ethtool/preempt.c
+@@ -0,0 +1,146 @@
++// SPDX-License-Identifier: GPL-2.0-only
++
++#include "netlink.h"
++#include "common.h"
++
++struct preempt_req_info {
++	struct ethnl_req_info		base;
++};
++
++struct preempt_reply_data {
++	struct ethnl_reply_data		base;
++	struct ethtool_fp		fp;
++};
++
++#define PREEMPT_REPDATA(__reply_base) \
++	container_of(__reply_base, struct preempt_reply_data, base)
++
++const struct nla_policy
++ethnl_preempt_get_policy[] = {
++	[ETHTOOL_A_PREEMPT_HEADER]		= NLA_POLICY_NESTED(ethnl_header_policy),
++};
++
++static int preempt_prepare_data(const struct ethnl_req_info *req_base,
++				struct ethnl_reply_data *reply_base,
++				struct genl_info *info)
++{
++	struct preempt_reply_data *data = PREEMPT_REPDATA(reply_base);
++	struct net_device *dev = reply_base->dev;
++	int ret;
++
++	if (!dev->ethtool_ops->get_preempt)
++		return -EOPNOTSUPP;
++
++	ret = ethnl_ops_begin(dev);
++	if (ret < 0)
++		return ret;
++
++	ret = dev->ethtool_ops->get_preempt(dev, &data->fp);
++	ethnl_ops_complete(dev);
++
++	return ret;
++}
++
++static int preempt_reply_size(const struct ethnl_req_info *req_base,
++			      const struct ethnl_reply_data *reply_base)
++{
++	int len = 0;
++
++	len += nla_total_size(sizeof(u8)); /* _PREEMPT_ENABLED */
++	len += nla_total_size(sizeof(u32)); /* _PREEMPT_ADD_FRAG_SIZE */
++
++	return len;
++}
++
++static int preempt_fill_reply(struct sk_buff *skb,
++			      const struct ethnl_req_info *req_base,
++			      const struct ethnl_reply_data *reply_base)
++{
++	const struct preempt_reply_data *data = PREEMPT_REPDATA(reply_base);
++	const struct ethtool_fp *preempt = &data->fp;
++
++	if (nla_put_u8(skb, ETHTOOL_A_PREEMPT_ENABLED, preempt->enabled))
++		return -EMSGSIZE;
++
++	if (nla_put_u32(skb, ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE,
++			preempt->add_frag_size))
++		return -EMSGSIZE;
++
++	return 0;
++}
++
++const struct ethnl_request_ops ethnl_preempt_request_ops = {
++	.request_cmd		= ETHTOOL_MSG_PREEMPT_GET,
++	.reply_cmd		= ETHTOOL_MSG_PREEMPT_GET_REPLY,
++	.hdr_attr		= ETHTOOL_A_PREEMPT_HEADER,
++	.req_info_size		= sizeof(struct preempt_req_info),
++	.reply_data_size	= sizeof(struct preempt_reply_data),
++
++	.prepare_data		= preempt_prepare_data,
++	.reply_size		= preempt_reply_size,
++	.fill_reply		= preempt_fill_reply,
++};
++
++const struct nla_policy
++ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_MAX + 1] = {
++	[ETHTOOL_A_PREEMPT_HEADER]			= NLA_POLICY_NESTED(ethnl_header_policy),
++	[ETHTOOL_A_PREEMPT_ENABLED]			= NLA_POLICY_RANGE(NLA_U8, 0, 1),
++	[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE]		= { .type = NLA_U32 },
++};
++
++int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info)
++{
++	struct ethnl_req_info req_info = {};
++	struct nlattr **tb = info->attrs;
++	struct ethtool_fp preempt = {};
++	struct net_device *dev;
++	bool mod = false;
++	int ret;
++
++	ret = ethnl_parse_header_dev_get(&req_info,
++					 tb[ETHTOOL_A_PREEMPT_HEADER],
++					 genl_info_net(info), info->extack,
++					 true);
++	if (ret < 0)
++		return ret;
++	dev = req_info.dev;
++	ret = -EOPNOTSUPP;
++	if (!dev->ethtool_ops->get_preempt ||
++	    !dev->ethtool_ops->set_preempt)
++		goto out_dev;
++
++	rtnl_lock();
++	ret = ethnl_ops_begin(dev);
++	if (ret < 0)
++		goto out_rtnl;
++
++	ret = dev->ethtool_ops->get_preempt(dev, &preempt);
++	if (ret < 0) {
++		GENL_SET_ERR_MSG(info, "failed to retrieve frame preemption settings");
++		goto out_ops;
++	}
++
++	ethnl_update_u8(&preempt.enabled,
++			tb[ETHTOOL_A_PREEMPT_ENABLED], &mod);
++	ethnl_update_u32(&preempt.add_frag_size,
++			 tb[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE], &mod);
++	ret = 0;
++	if (!mod)
++		goto out_ops;
++
++	ret = dev->ethtool_ops->set_preempt(dev, &preempt, info->extack);
++	if (ret < 0) {
++		GENL_SET_ERR_MSG(info, "frame preemption settings update failed");
++		goto out_ops;
++	}
++
++	ethtool_notify(dev, ETHTOOL_MSG_PREEMPT_NTF, NULL);
++
++out_ops:
++	ethnl_ops_complete(dev);
++out_rtnl:
++	rtnl_unlock();
++out_dev:
++	dev_put(dev);
++	return ret;
++}
 -- 
 2.32.0
 
