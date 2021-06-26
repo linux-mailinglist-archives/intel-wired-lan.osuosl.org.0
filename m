@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12B653B4B9A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Jun 2021 02:34:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22E0C3B4DDE
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Jun 2021 11:56:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B11E483BC7;
-	Sat, 26 Jun 2021 00:34:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 60E4A40423;
+	Sat, 26 Jun 2021 09:56:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kxqDfa5g1rrA; Sat, 26 Jun 2021 00:34:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hiaS-RetvRXL; Sat, 26 Jun 2021 09:56:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5963483BB4;
-	Sat, 26 Jun 2021 00:34:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D55D403B7;
+	Sat, 26 Jun 2021 09:56:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F2F201C11AD
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 841601BF488
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 09:55:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4759283BB3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7D6B1400D0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 09:55:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qQu-J21NKelo for <intel-wired-lan@lists.osuosl.org>;
- Sat, 26 Jun 2021 00:33:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 57q-ScRqAGtS for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 26 Jun 2021 09:55:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3F18D83BB8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 00:33:45 +0000 (UTC)
-IronPort-SDR: 6zxkMk0iWgmPtM5UqaJcdttzJVEkD0lt9HAR+4z5W0E3TxaoASdLJd2XVcrUVlkN93WHDpe1Xr
- xu3fs0Ax4KCw==
-X-IronPort-AV: E=McAfee;i="6200,9189,10026"; a="188141373"
-X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="188141373"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2021 17:33:44 -0700
-IronPort-SDR: Di6NiHd182cYjYlOATfADzRXlXMHsQL2U95/yaTmTrIKE9fYgvpgYm6Ecgx+v2jwXerDOJoI+f
- TroL3Xa+B/2A==
-X-IronPort-AV: E=Sophos;i="5.83,300,1616482800"; d="scan'208";a="557008632"
-Received: from aschmalt-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.212.160.59])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2021 17:33:44 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: netdev@vger.kernel.org
-Date: Fri, 25 Jun 2021 17:33:14 -0700
-Message-Id: <20210626003314.3159402-13-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210626003314.3159402-1-vinicius.gomes@intel.com>
-References: <20210626003314.3159402-1-vinicius.gomes@intel.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0BADF40022
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Jun 2021 09:55:51 +0000 (UTC)
+IronPort-SDR: 399S7z8z0A8FVc1Q1ICbfGSestCoB+6rVYqGc2S+YYNJerb86KgGyf6EKWLHY+7kYN4pjSioO+
+ ZzRMLSOY6cCg==
+X-IronPort-AV: E=McAfee;i="6200,9189,10026"; a="229384641"
+X-IronPort-AV: E=Sophos;i="5.83,301,1616482800"; d="scan'208";a="229384641"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jun 2021 02:55:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,301,1616482800"; d="scan'208";a="455689678"
+Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 26 Jun 2021 02:55:49 -0700
+Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1lx52S-0007gg-PL; Sat, 26 Jun 2021 09:55:48 +0000
+Date: Sat, 26 Jun 2021 17:55:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <60d6f989.dtZWU1zZFXyn5/9z%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v4 12/12] igc: Add support for
- Frame Preemption verification
+Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
+ b81c191c468bb9f9e63cb19cdf090732e3218dce
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,425 +65,183 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mkubecek@suse.cz, jiri@resnulli.us, vladimir.oltean@nxp.com, po.liu@nxp.com,
- jhs@mojatatu.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- xiyou.wangcong@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for sending/receiving Frame Preemption verification
-frames.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
+branch HEAD: b81c191c468bb9f9e63cb19cdf090732e3218dce  ice: Fix a memory leak in an error handling path in 'ice_pf_dcb_cfg()'
 
-The i225 hardware doesn't implement the process of verification
-internally, this is left to the driver.
+elapsed time: 865m
 
-Add a simple implementation of the state machine defined in IEEE
-802.3-2018, Section 99.4.7.
+configs tested: 154
+configs skipped: 3
 
-For now, the state machine is started manually by the user, when
-enabling verification. Example:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-$ ethtool --set-frame-preemption IFACE disable-verify off
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                             pxa_defconfig
+sh                          rsk7264_defconfig
+sh                             espt_defconfig
+powerpc                      ppc64e_defconfig
+arm                          simpad_defconfig
+mips                  maltasmvp_eva_defconfig
+mips                         db1xxx_defconfig
+sh                        apsh4ad0a_defconfig
+mips                         tb0226_defconfig
+powerpc                           allnoconfig
+mips                        bcm47xx_defconfig
+powerpc                     skiroot_defconfig
+microblaze                          defconfig
+powerpc                 mpc836x_mds_defconfig
+sh                          rsk7201_defconfig
+s390                          debug_defconfig
+powerpc                 mpc832x_mds_defconfig
+arc                            hsdk_defconfig
+arc                           tb10x_defconfig
+ia64                            zx1_defconfig
+powerpc                         ps3_defconfig
+powerpc                      mgcoge_defconfig
+sh                        sh7785lcr_defconfig
+sh                           se7721_defconfig
+sh                        edosk7705_defconfig
+arm                         bcm2835_defconfig
+sh                               j2_defconfig
+sh                          r7785rp_defconfig
+h8300                            alldefconfig
+mips                 decstation_r4k_defconfig
+powerpc                     mpc5200_defconfig
+h8300                       h8s-sim_defconfig
+sparc64                             defconfig
+arm                      footbridge_defconfig
+xtensa                           alldefconfig
+arm                          pxa3xx_defconfig
+arm                          moxart_defconfig
+arm                           u8500_defconfig
+arm                         palmz72_defconfig
+powerpc                 mpc834x_mds_defconfig
+mips                        workpad_defconfig
+powerpc                    ge_imp3a_defconfig
+mips                         tb0219_defconfig
+powerpc                      pasemi_defconfig
+sh                             shx3_defconfig
+arm                            zeus_defconfig
+arc                          axs101_defconfig
+sh                          landisk_defconfig
+ia64                          tiger_defconfig
+sh                        dreamcast_defconfig
+arm                        mini2440_defconfig
+arm                       versatile_defconfig
+powerpc                 canyonlands_defconfig
+arc                          axs103_defconfig
+m68k                         amcore_defconfig
+sh                           sh2007_defconfig
+arm                           viper_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+x86_64                            allnoconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+i386                 randconfig-a002-20210625
+i386                 randconfig-a001-20210625
+i386                 randconfig-a003-20210625
+i386                 randconfig-a006-20210625
+i386                 randconfig-a005-20210625
+i386                 randconfig-a004-20210625
+x86_64               randconfig-a012-20210622
+x86_64               randconfig-a016-20210622
+x86_64               randconfig-a015-20210622
+x86_64               randconfig-a014-20210622
+x86_64               randconfig-a013-20210622
+x86_64               randconfig-a011-20210622
+x86_64               randconfig-a002-20210625
+x86_64               randconfig-a001-20210625
+x86_64               randconfig-a005-20210625
+x86_64               randconfig-a003-20210625
+x86_64               randconfig-a004-20210625
+x86_64               randconfig-a006-20210625
+i386                 randconfig-a011-20210622
+i386                 randconfig-a014-20210622
+i386                 randconfig-a013-20210622
+i386                 randconfig-a015-20210622
+i386                 randconfig-a012-20210622
+i386                 randconfig-a016-20210622
+i386                 randconfig-a011-20210625
+i386                 randconfig-a014-20210625
+i386                 randconfig-a013-20210625
+i386                 randconfig-a015-20210625
+i386                 randconfig-a012-20210625
+i386                 randconfig-a016-20210625
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                            kunit_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-The "verified" condition is set to true when the SMD-V frame is sent,
-and the SMD-R frame is received. So, it only tracks the transmission
-side. This seems to be what's expected from IEEE 802.3-2018.
+clang tested configs:
+x86_64               randconfig-b001-20210625
+x86_64               randconfig-b001-20210622
+x86_64               randconfig-a002-20210626
+x86_64               randconfig-a001-20210626
+x86_64               randconfig-a005-20210626
+x86_64               randconfig-a003-20210626
+x86_64               randconfig-a004-20210626
+x86_64               randconfig-a006-20210626
+x86_64               randconfig-a002-20210622
+x86_64               randconfig-a001-20210622
+x86_64               randconfig-a005-20210622
+x86_64               randconfig-a003-20210622
+x86_64               randconfig-a004-20210622
+x86_64               randconfig-a006-20210622
 
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  15 ++
- drivers/net/ethernet/intel/igc/igc_defines.h |  13 ++
- drivers/net/ethernet/intel/igc/igc_ethtool.c |  20 +-
- drivers/net/ethernet/intel/igc/igc_main.c    | 216 +++++++++++++++++++
- 4 files changed, 261 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 9b2ddcbf65fb..84234efed781 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -122,6 +122,13 @@ struct igc_ring {
- 	struct xsk_buff_pool *xsk_pool;
- } ____cacheline_internodealigned_in_smp;
- 
-+enum frame_preemption_state {
-+	FRAME_PREEMPTION_STATE_FAILED,
-+	FRAME_PREEMPTION_STATE_DONE,
-+	FRAME_PREEMPTION_STATE_START,
-+	FRAME_PREEMPTION_STATE_SENT,
-+};
-+
- /* Board specific private data structure */
- struct igc_adapter {
- 	struct net_device *netdev;
-@@ -240,6 +247,14 @@ struct igc_adapter {
- 		struct timespec64 start;
- 		struct timespec64 period;
- 	} perout[IGC_N_PEROUT];
-+
-+	struct delayed_work fp_verification_work;
-+	unsigned long fp_start;
-+	bool fp_received_smd_v;
-+	bool fp_received_smd_r;
-+	unsigned int fp_verify_cnt;
-+	enum frame_preemption_state fp_tx_state;
-+	bool fp_disable_verify;
- };
- 
- void igc_up(struct igc_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index a2ea057d8e6e..cf46f5d5a505 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -268,6 +268,8 @@
- #define IGC_TXD_DTYP_C		0x00000000 /* Context Descriptor */
- #define IGC_TXD_POPTS_IXSM	0x01       /* Insert IP checksum */
- #define IGC_TXD_POPTS_TXSM	0x02       /* Insert TCP/UDP checksum */
-+#define IGC_TXD_POPTS_SMD_V	0x10       /* Transmitted packet is a SMD-Verify */
-+#define IGC_TXD_POPTS_SMD_R	0x20       /* Transmitted packet is a SMD-Response */
- #define IGC_TXD_CMD_EOP		0x01000000 /* End of Packet */
- #define IGC_TXD_CMD_IC		0x04000000 /* Insert Checksum */
- #define IGC_TXD_CMD_DEXT	0x20000000 /* Desc extension (0 = legacy) */
-@@ -327,9 +329,20 @@
- 
- #define IGC_RXDEXT_STATERR_LB	0x00040000
- 
-+#define IGC_RXD_STAT_SMD_V	0x2000  /* Received packet is SMD-Verify packet */
-+#define IGC_RXD_STAT_SMD_R	0x4000  /* Received packet is SMD-Response packet */
-+
- /* Advanced Receive Descriptor bit definitions */
- #define IGC_RXDADV_STAT_TSIP	0x08000 /* timestamp in packet */
- 
-+#define IGC_RXDADV_STAT_SMD_TYPE_MASK	0x06000
-+#define IGC_RXDADV_STAT_SMD_TYPE_SHIFT	13
-+
-+#define IGC_SMD_TYPE_SFD		0x0
-+#define IGC_SMD_TYPE_SMD_V		0x1
-+#define IGC_SMD_TYPE_SMD_R		0x2
-+#define IGC_SMD_TYPE_COMPLETE		0x3
-+
- #define IGC_RXDEXT_STATERR_L4E		0x20000000
- #define IGC_RXDEXT_STATERR_IPE		0x40000000
- #define IGC_RXDEXT_STATERR_RXE		0x80000000
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 84d5afe92154..f52a7be3af66 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1649,6 +1649,8 @@ static int igc_ethtool_get_preempt(struct net_device *netdev,
- 
- 	fpcmd->enabled = adapter->frame_preemption_active;
- 	fpcmd->add_frag_size = adapter->add_frag_size;
-+	fpcmd->verified = adapter->fp_tx_state == FRAME_PREEMPTION_STATE_DONE;
-+	fpcmd->disable_verify = adapter->fp_disable_verify;
- 
- 	return 0;
- }
-@@ -1664,10 +1666,22 @@ static int igc_ethtool_set_preempt(struct net_device *netdev,
- 		return -EINVAL;
- 	}
- 
--	adapter->frame_preemption_active = fpcmd->enabled;
--	adapter->add_frag_size = fpcmd->add_frag_size;
-+	if (!fpcmd->disable_verify && adapter->fp_disable_verify) {
-+		adapter->fp_tx_state = FRAME_PREEMPTION_STATE_START;
-+		schedule_delayed_work(&adapter->fp_verification_work, msecs_to_jiffies(10));
-+	}
- 
--	return igc_tsn_offload_apply(adapter);
-+	adapter->fp_disable_verify = fpcmd->disable_verify;
-+
-+	if (adapter->frame_preemption_active != fpcmd->enabled ||
-+	    adapter->add_frag_size != fpcmd->add_frag_size) {
-+		adapter->frame_preemption_active = fpcmd->enabled;
-+		adapter->add_frag_size = fpcmd->add_frag_size;
-+
-+		return igc_tsn_offload_apply(adapter);
-+	}
-+
-+	return 0;
- }
- 
- static int igc_ethtool_begin(struct net_device *netdev)
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 20dac04a02f2..ed55bd13e4a1 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -28,6 +28,11 @@
- #define IGC_XDP_TX		BIT(1)
- #define IGC_XDP_REDIRECT	BIT(2)
- 
-+#define IGC_FP_TIMEOUT msecs_to_jiffies(100)
-+#define IGC_MAX_VERIFY_CNT 3
-+
-+#define IGC_FP_SMD_FRAME_SIZE 60
-+
- static int debug = -1;
- 
- MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
-@@ -2169,6 +2174,79 @@ static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
- 	return 0;
- }
- 
-+static int igc_fp_init_smd_frame(struct igc_ring *ring, struct igc_tx_buffer *buffer,
-+				 struct sk_buff *skb)
-+{
-+	dma_addr_t dma;
-+	unsigned int size;
-+
-+	size = skb_headlen(skb);
-+
-+	dma = dma_map_single(ring->dev, skb->data, size, DMA_TO_DEVICE);
-+	if (dma_mapping_error(ring->dev, dma)) {
-+		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
-+		return -ENOMEM;
-+	}
-+
-+	buffer->skb = skb;
-+	buffer->protocol = 0;
-+	buffer->bytecount = skb->len;
-+	buffer->gso_segs = 1;
-+	buffer->time_stamp = jiffies;
-+	dma_unmap_len_set(buffer, len, skb->len);
-+	dma_unmap_addr_set(buffer, dma, dma);
-+
-+	return 0;
-+}
-+
-+static int igc_fp_init_tx_descriptor(struct igc_ring *ring,
-+				     struct sk_buff *skb, int type)
-+{
-+	struct igc_tx_buffer *buffer;
-+	union igc_adv_tx_desc *desc;
-+	u32 cmd_type, olinfo_status;
-+	int err;
-+
-+	if (!igc_desc_unused(ring))
-+		return -EBUSY;
-+
-+	buffer = &ring->tx_buffer_info[ring->next_to_use];
-+	err = igc_fp_init_smd_frame(ring, buffer, skb);
-+	if (err)
-+		return err;
-+
-+	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
-+		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
-+		   buffer->bytecount;
-+	olinfo_status = buffer->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
-+
-+	switch (type) {
-+	case IGC_SMD_TYPE_SMD_V:
-+		olinfo_status |= (IGC_TXD_POPTS_SMD_V << 8);
-+		break;
-+	case IGC_SMD_TYPE_SMD_R:
-+		olinfo_status |= (IGC_TXD_POPTS_SMD_R << 8);
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	desc = IGC_TX_DESC(ring, ring->next_to_use);
-+	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
-+	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(buffer, dma));
-+
-+	netdev_tx_sent_queue(txring_txq(ring), skb->len);
-+
-+	buffer->next_to_watch = desc;
-+
-+	ring->next_to_use++;
-+	if (ring->next_to_use == ring->count)
-+		ring->next_to_use = 0;
-+
-+	return 0;
-+}
-+
- static struct igc_ring *igc_xdp_get_tx_ring(struct igc_adapter *adapter,
- 					    int cpu)
- {
-@@ -2299,6 +2377,19 @@ static void igc_update_rx_stats(struct igc_q_vector *q_vector,
- 	q_vector->rx.total_bytes += bytes;
- }
- 
-+static int igc_rx_desc_smd_type(union igc_adv_rx_desc *rx_desc)
-+{
-+	u32 status = le32_to_cpu(rx_desc->wb.upper.status_error);
-+
-+	return (status & IGC_RXDADV_STAT_SMD_TYPE_MASK)
-+		>> IGC_RXDADV_STAT_SMD_TYPE_SHIFT;
-+}
-+
-+static bool igc_check_smd_frame(struct igc_rx_buffer *rx_buffer, unsigned int size)
-+{
-+	return size == 60;
-+}
-+
- static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- {
- 	unsigned int total_bytes = 0, total_packets = 0;
-@@ -2315,6 +2406,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 		ktime_t timestamp = 0;
- 		struct xdp_buff xdp;
- 		int pkt_offset = 0;
-+		int smd_type;
- 		void *pktbuf;
- 
- 		/* return some buffers to hardware, one at a time is too slow */
-@@ -2346,6 +2438,22 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 			size -= IGC_TS_HDR_LEN;
- 		}
- 
-+		smd_type = igc_rx_desc_smd_type(rx_desc);
-+
-+		if (smd_type == IGC_SMD_TYPE_SMD_V || smd_type == IGC_SMD_TYPE_SMD_R) {
-+			if (igc_check_smd_frame(rx_buffer, size)) {
-+				adapter->fp_received_smd_v = smd_type == IGC_SMD_TYPE_SMD_V;
-+				adapter->fp_received_smd_r = smd_type == IGC_SMD_TYPE_SMD_R;
-+				schedule_delayed_work(&adapter->fp_verification_work, 0);
-+			}
-+
-+			/* Advance the ring next-to-clean */
-+			igc_is_non_eop(rx_ring, rx_desc);
-+
-+			cleaned_count++;
-+			continue;
-+		}
-+
- 		if (!skb) {
- 			xdp_init_buff(&xdp, truesize, &rx_ring->xdp_rxq);
- 			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
-@@ -5607,6 +5715,107 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+/* I225 doesn't send the SMD frames automatically, we need to handle
-+ * them ourselves.
-+ */
-+static int igc_xmit_smd_frame(struct igc_adapter *adapter, int type)
-+{
-+	int cpu = smp_processor_id();
-+	struct netdev_queue *nq;
-+	struct igc_ring *ring;
-+	struct sk_buff *skb;
-+	void *data;
-+	int err;
-+
-+	if (!netif_running(adapter->netdev))
-+		return -ENOTCONN;
-+
-+	/* FIXME: rename this function to something less specific, as
-+	 * it can be used outside XDP.
-+	 */
-+	ring = igc_xdp_get_tx_ring(adapter, cpu);
-+	nq = txring_txq(ring);
-+
-+	skb = alloc_skb(IGC_FP_SMD_FRAME_SIZE, GFP_KERNEL);
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	data = skb_put(skb, IGC_FP_SMD_FRAME_SIZE);
-+	memset(data, 0, IGC_FP_SMD_FRAME_SIZE);
-+
-+	__netif_tx_lock(nq, cpu);
-+
-+	err = igc_fp_init_tx_descriptor(ring, skb, type);
-+
-+	igc_flush_tx_descriptors(ring);
-+
-+	__netif_tx_unlock(nq);
-+
-+	return err;
-+}
-+
-+static void igc_fp_verification_work(struct work_struct *work)
-+{
-+	struct delayed_work *dwork = to_delayed_work(work);
-+	struct igc_adapter *adapter;
-+	int err;
-+
-+	adapter = container_of(dwork, struct igc_adapter, fp_verification_work);
-+
-+	if (adapter->fp_disable_verify)
-+		goto done;
-+
-+	switch (adapter->fp_tx_state) {
-+	case FRAME_PREEMPTION_STATE_START:
-+		adapter->fp_received_smd_r = false;
-+		err = igc_xmit_smd_frame(adapter, IGC_SMD_TYPE_SMD_V);
-+		if (err < 0)
-+			netdev_err(adapter->netdev, "Error sending SMD-V frame\n");
-+
-+		adapter->fp_tx_state = FRAME_PREEMPTION_STATE_SENT;
-+		adapter->fp_start = jiffies;
-+		schedule_delayed_work(&adapter->fp_verification_work, IGC_FP_TIMEOUT);
-+		break;
-+
-+	case FRAME_PREEMPTION_STATE_SENT:
-+		if (adapter->fp_received_smd_r) {
-+			adapter->fp_tx_state = FRAME_PREEMPTION_STATE_DONE;
-+			adapter->fp_received_smd_r = false;
-+			break;
-+		}
-+
-+		if (time_is_before_jiffies(adapter->fp_start + IGC_FP_TIMEOUT)) {
-+			adapter->fp_verify_cnt++;
-+			netdev_warn(adapter->netdev, "Timeout waiting for SMD-R frame\n");
-+
-+			if (adapter->fp_verify_cnt > IGC_MAX_VERIFY_CNT) {
-+				adapter->fp_verify_cnt = 0;
-+				adapter->fp_tx_state = FRAME_PREEMPTION_STATE_FAILED;
-+				netdev_err(adapter->netdev,
-+					   "Exceeded number of attempts for frame preemption verification\n");
-+			} else {
-+				adapter->fp_tx_state = FRAME_PREEMPTION_STATE_START;
-+			}
-+			schedule_delayed_work(&adapter->fp_verification_work, IGC_FP_TIMEOUT);
-+		}
-+
-+		break;
-+
-+	case FRAME_PREEMPTION_STATE_FAILED:
-+	case FRAME_PREEMPTION_STATE_DONE:
-+		break;
-+	}
-+
-+done:
-+	if (adapter->fp_received_smd_v) {
-+		err = igc_xmit_smd_frame(adapter, IGC_SMD_TYPE_SMD_R);
-+		if (err < 0)
-+			netdev_err(adapter->netdev, "Error sending SMD-R frame\n");
-+
-+		adapter->fp_received_smd_v = false;
-+	}
-+}
-+
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 			void *type_data)
- {
-@@ -6023,6 +6232,7 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	INIT_WORK(&adapter->reset_task, igc_reset_task);
- 	INIT_WORK(&adapter->watchdog_task, igc_watchdog_task);
-+	INIT_DELAYED_WORK(&adapter->fp_verification_work, igc_fp_verification_work);
- 
- 	/* Initialize link properties that are user-changeable */
- 	adapter->fc_autoneg = true;
-@@ -6044,6 +6254,12 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	igc_ptp_init(adapter);
- 
-+	/* FIXME: This sets the default to not do the verification
-+	 * automatically, when we have support in multiple
-+	 * controllers, this default can be changed.
-+	 */
-+	adapter->fp_disable_verify = true;
-+
- 	/* reset the hardware with the new settings */
- 	igc_reset(adapter);
- 
--- 
-2.32.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
