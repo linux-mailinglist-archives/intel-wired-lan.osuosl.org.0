@@ -1,59 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA3BD3B6178
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Jun 2021 16:33:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C0493B64E9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Jun 2021 17:15:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B54E41D30;
-	Mon, 28 Jun 2021 14:33:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 513874032D;
+	Mon, 28 Jun 2021 15:15:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3QCfnJkLmZhW; Mon, 28 Jun 2021 14:33:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x8PArzHlGDP4; Mon, 28 Jun 2021 15:15:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1A8DC401C9;
-	Mon, 28 Jun 2021 14:33:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 422594032C;
+	Mon, 28 Jun 2021 15:15:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2295C1BF34B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 14:33:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A6B951BF301
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 15:15:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0ECB7401C9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 14:33:52 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 94B58400DB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 15:15:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f6sHlcYRpJhv for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Jun 2021 14:33:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AF8E7400DB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 14:33:50 +0000 (UTC)
-Received: from sslproxy03.your-server.de ([88.198.220.132])
- by www62.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92.3) (envelope-from <daniel@iogearbox.net>)
- id 1lxsKC-0002mF-GH; Mon, 28 Jun 2021 16:33:24 +0200
-Received: from [85.7.101.30] (helo=linux.home)
- by sslproxy03.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
- id 1lxsKB-000XfH-Fo; Mon, 28 Jun 2021 16:33:24 +0200
-To: Xuan Zhuo <xuanzhuo@linux.alibaba.com>, netdev@vger.kernel.org,
- bpf@vger.kernel.org
-References: <20210628114647.75449-1-xuanzhuo@linux.alibaba.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <0a1614c4-19b7-2665-8eb9-7df776fa4c13@iogearbox.net>
-Date: Mon, 28 Jun 2021 16:33:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <20210628114647.75449-1-xuanzhuo@linux.alibaba.com>
-Content-Language: en-US
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.103.2/26215/Mon Jun 28 13:09:26 2021)
-Subject: Re: [Intel-wired-lan] [PATCH net v3] xdp,
- net: fix for construct skb by xdp inside xsk zc rx
+ with ESMTP id mX7Sp9i_QgVB for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Jun 2021 15:15:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E6CC940003
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jun 2021 15:15:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10029"; a="207794571"
+X-IronPort-AV: E=Sophos;i="5.83,306,1616482800"; d="scan'208";a="207794571"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jun 2021 08:15:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,306,1616482800"; d="scan'208";a="640945513"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by fmsmga006.fm.intel.com with ESMTP; 28 Jun 2021 08:15:19 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 28 Jun 2021 15:15:14 +0000
+Message-Id: <20210628151514.28547-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net-next v5 0/3] iavf: Fix init and
+ watchdog state machines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,47 +59,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maximmi@nvidia.com, Alexei Starovoitov <ast@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
- Jose Abreu <joabreu@synopsys.com>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Ong Boon Leong <boon.leong.ong@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Xuan,
+Use single state machine for driver initialization
+and for service initialized driver. The init state
+machine implemented in init_task() is merged
+into the watchdog_task(). The init_task() function
+is removed.
 
-On 6/28/21 1:46 PM, Xuan Zhuo wrote:
-> When each driver supports xsk rx, if the received buff returns XDP_PASS
-> after run xdp prog, it must construct skb based on xdp. This patch
-> extracts this logic into a public function xdp_construct_skb().
-> 
-> There is a bug in the original logic. When constructing skb, we should
-> copy the meta information to skb and then use __skb_pull() to correct
-> the data.
-> 
-> Fixes: 0a714186d3c0f ("i40e: add AF_XDP zero-copy Rx support")
-> Fixes: 2d4238f556972 ("ice: Add support for AF_XDP")
-> Fixes: bba2556efad66 ("net: stmmac: Enable RX via AF_XDP zero-copy")
-> Fixes: d0bcacd0a1309 ("ixgbe: add AF_XDP zero-copy Rx support")
-> Signed-off-by: Xuan Zhuo <xuanzhuo@linux.alibaba.com>
+---
+v5: Fixed the patch so that it applies on net-next tree
+v4: Removed unnecessary line
+v3: Added new file to patch series
+v2: Splitted the patch into 2 to make them smaller
+---
 
-There was still an ongoing discussion on the v2 of your patch between
-Maciej and Maxim (Cc). Before you submit a v3, please let the discussion
-conclude first.
+Jan Sokolowski (3):
+  iavf: Refactor iavf state machine tracking
+  iavf: Add __IAVF_INIT_FAILED state
+  iavf: Fix init and watchdog state machines
 
-Thanks,
-Daniel
+
+ drivers/net/ethernet/intel/iavf/iavf.h        |  12 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 190 +++++++++---------
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |   2 +-
+ 3 files changed, 103 insertions(+), 101 deletions(-)
+
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
