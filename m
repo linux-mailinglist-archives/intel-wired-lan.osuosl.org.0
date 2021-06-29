@@ -1,102 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E98003B76C2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jun 2021 18:57:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECE6B3B774B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jun 2021 19:35:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9C32B40507;
-	Tue, 29 Jun 2021 16:57:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8242A40425;
+	Tue, 29 Jun 2021 17:35:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ujPyoIBnPa8E; Tue, 29 Jun 2021 16:57:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6AqIfvy9_Rpu; Tue, 29 Jun 2021 17:35:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 875B2404F3;
-	Tue, 29 Jun 2021 16:57:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 566B740403;
+	Tue, 29 Jun 2021 17:35:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9BC11BF39D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A3B51BF909
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 17:34:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D5795825B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 769A541D0D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 17:34:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HlOKeb3mKp0w for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Jun 2021 16:56:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7E0B882419
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624985764;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=q2NICKy+eY6u9v6U5C5rPMzRkfmDNI+XJLW4LIKdeOM=;
- b=VgXgZxLX6Re2snoYVLU/w9QJhBDQkwUsSU9tT/7r7j8yBsc+Z4Z0dK+T1ncIrwpz8pqG7D
- ftRA7mIQj3kDlSgzi/uAyb+aZKZlxGazHFN61hDzKw2X9my8GKz1ay4dahbPd3ZIuuLgzB
- etmfZe+fbJaTiQyctOp9C0Z1+/DL4OA=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-174-VSBtupHSMX2dHk6RPL7org-1; Tue, 29 Jun 2021 12:56:02 -0400
-X-MC-Unique: VSBtupHSMX2dHk6RPL7org-1
-Received: by mail-ej1-f72.google.com with SMTP id
- og25-20020a1709071dd9b02904c99c7e61f1so297760ejc.18
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 09:56:02 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KfwrqSO6ya5L for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Jun 2021 17:34:11 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com
+ [IPv6:2a00:1450:4864:20::332])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 525FD41D0E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 17:34:11 +0000 (UTC)
+Received: by mail-wm1-x332.google.com with SMTP id
+ p10-20020a05600c430ab02901df57d735f7so2364317wme.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 10:34:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OEApLvfEbbAnvp84mGU1RbKO0KhbR6D6eEsGaT/iOs4=;
+ b=Ypko322NXIcsKYtbpxEMo8B6odCsAzZFfrpfrRhrSWdfP0FKASoBl+7Au8Eug8cmLL
+ k1mbIefQedeN9l/JtzNt5QMoWayAJXVBQKgnFGJMgSuD+3er19IUj3lqH4hlkEFCo45N
+ yq+esxodICrCXFR3lNAEL5oOEl7dW+ZevPrMZmmz5O/Pludq7hjNejt0jhv+9tfq19KV
+ CsoZ1FqrI1K295YkrRvAlZPShNOP6EWLlCUL+hbll8oa05eqqKNB0U+hwxaZ5V26Vq4y
+ qfXItXHXJjiWyUgOe1YSeNA5UW0IsEGcyjuLiZYh2zXYi4xjIX894e2c9ViYRH9CsPJD
+ SbQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=q2NICKy+eY6u9v6U5C5rPMzRkfmDNI+XJLW4LIKdeOM=;
- b=r/MJUPjwiF/cR2KrdmuaMfXLYLgs4mav/MZ1faIPwaTqf5/x/gWRy1Y22u3YoPI1jv
- YbFd09sHH47qJJj0Bv9Wb4wB3oeXfAzJXH8dr/wOH28rjyqJeS/H5CxMFiwNN/VK7biU
- AZrflppel1WOGta/HvAKgQKsrfP8kA77TxggJBnbWg1qejB+yFfp9YExuEikP6Pzc7Vf
- H1p4rl6smSjzesFUPGu5QmkB2u48496NLM4fj9CJLiS7xSFFZFCoUseRT6j9ic8kp2uG
- +nHwRotKy9/fZhqeCdIHB23hq/y8vl/UyL0C2Wgtlp2puTycQclhHLeZIFDDUnTSynVQ
- gBjg==
-X-Gm-Message-State: AOAM533U6+W+lQnhYi82injoLhGwCjP8+ZsRMAPz+SHrYO00JJ7Lbcct
- Z9fVUXlgsMFdme1izi1aFVKpF/6tfJYJMy3lGxpOhEX0P9U3cUpS76eWN92Ik6AeDqUClRaWSSm
- ozZJ4WHs7vLvhiZU0c9nH92f13HgU3Q==
-X-Received: by 2002:a05:6402:51c9:: with SMTP id
- r9mr10497292edd.326.1624985761797; 
- Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6JX0kG7OliK+69WwEBKZuT8U9A5MzKTXCdCtoFvyGEIz/VAikmU9KP1H/PmK4CJpy/7zJHQ==
-X-Received: by 2002:a05:6402:51c9:: with SMTP id
- r9mr10497251edd.326.1624985761526; 
- Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
-Received: from [192.168.42.238] (3-14-107-185.static.kviknet.dk.
- [185.107.14.3])
- by smtp.gmail.com with ESMTPSA id gv20sm8656803ejc.23.2021.06.29.09.56.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>
-References: <20210617145534.101458-1-xuanzhuo@linux.alibaba.com>
- <20210628104721.GA57589@ranger.igk.intel.com>
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-Message-ID: <f5ce5610-443c-a2d9-43ef-d203f9afb0d8@redhat.com>
-Date: Tue, 29 Jun 2021 18:55:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OEApLvfEbbAnvp84mGU1RbKO0KhbR6D6eEsGaT/iOs4=;
+ b=UkmQppXG78mdxzuejf+LTJfee+2vK2sszlIlMsvMkjoSRGfV5zHyRPoaytjjAlU4vn
+ k2ZtThQ7FHXnrsCrALBh1J0Hc3A0ASFRt82q3e6yWIZYBC72JQl/ffquBpMBScMaBQkY
+ rBRoL2fMEZNHV+x879OxVFtpbtS21npVYCc72FM1H0iC0vQhGNjqmAyRObDatX/OTqrP
+ s2OBNvhAvnFErHQ+s929PrHimH9N73eBGN9EVuoDvABNjRIqLMsmM2QesFr0GbH9mbQK
+ hu48haXFip1OutPZpref0J2MgcFbNPhbDkF62/664jlcTc/wK2/U0yXpfxVSiLk6PeQs
+ F2cg==
+X-Gm-Message-State: AOAM530zgQR84khecQ3m1EpJFHhj78F154F3I//5t/FgTJhMY1Z+6HNB
+ zAFTyY8PQgRINPjcnhjOM1iD01adG7xkkiPK/Bo=
+X-Google-Smtp-Source: ABdhPJxKxfc1rypUard2hE5HKdqZZAN+sOIJow6EXKsq1dLdwMGNYbL4Jl5CkON0kl2w54IXjplc3RTuXyVX5xqZT5c=
+X-Received: by 2002:a05:600c:1d1a:: with SMTP id
+ l26mr33618566wms.21.1624988049531; 
+ Tue, 29 Jun 2021 10:34:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210628104721.GA57589@ranger.igk.intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-X-Mailman-Approved-At: Tue, 29 Jun 2021 16:57:13 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net v2] xdp,
- net: fix for construct skb by xdp inside xsk zc rx
+References: <20210629082128.255988-1-seven.yi.lee@gmail.com>
+ <02ff77ef-e802-8e13-d169-1ab2c250405a@intel.com>
+In-Reply-To: <02ff77ef-e802-8e13-d169-1ab2c250405a@intel.com>
+From: Yee Li <seven.yi.lee@gmail.com>
+Date: Wed, 30 Jun 2021 01:33:57 +0800
+Message-ID: <CALX8JfQymbSmCP0xk0C-=v64__uaH=BR0UZjr2yRyLWVwm9dLQ@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+X-Mailman-Approved-At: Tue, 29 Jun 2021 17:35:31 +0000
+Subject: Re: [Intel-wired-lan] [PATCH] driver core: fix e1000e ltr bug
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,69 +83,233 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexei Starovoitov <ast@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
- Jose Abreu <joabreu@synopsys.com>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Ong Boon Leong <boon.leong.ong@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ kuba@kernel.org, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============0680552461767087837=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 28/06/2021 12.47, Maciej Fijalkowski wrote:
+--===============0680552461767087837==
+Content-Type: multipart/alternative; boundary="00000000000074e42705c5eb036c"
 
-> +static __always_inline struct sk_buff *
-> +xdp_construct_skb(struct xdp_buff *xdp, struct napi_struct *napi)
-> +{
+--00000000000074e42705c5eb036c
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I don't like the generic name "xdp_construct_skb".
+Yes, 18874368ns > 3145728ns.
+But, 0xe40 < 0x1003.
 
-What about calling it "xdp_copy_construct_skb", because below is 
-memcpy'ing the data.
+So, the final lat_enc is 0xe40.
+(Latency encoded is less than maximum LTR encoded by platform)
 
-Functions that use this call free (or recycle) the memory backing the 
-packet, after calling this function.
+Neftin, Sasha <sasha.neftin@intel.com> =E4=BA=8E 2021=E5=B9=B46=E6=9C=8829=
+=E6=97=A5=E5=91=A8=E4=BA=8C 22:49=E5=86=99=E9=81=93=EF=BC=9A
 
-(I'm open to other naming suggestions)
+> On 6/29/2021 11:21, YeeLi wrote:
+> Yeeli,
+> > In e1000e driver, a PCIe-like device, the max snoop/no-snoop latency
+> > is the upper limit.So, directly compare the size of lat_enc and
+> > max_ltr_enc is incorrect.
+> >
+> why?
+> >      In 1000Mbps, 0x8b9 < 0x1003, 189440 ns < 3145728 ns, correct.
+> >
+> >      In 100Mbps, 0xc3a < 0x1003, 1900544 ns < 3145728 ns, correct.
+> >
+> >      In 10Mbps, 0xe40 < 0x1003, 18874368 > 3145728, incorrect.
+> >
+> Platform LTR encoded is 0x1003 - right. It is meant 1048576ns x 3 =3D
+> 3145738ns.
+> Now,
+> for 1000M: 0x08b9 =3D> 185ns x 1024 =3D 189440ns (you are correct)
+> for 100M: 0x0c3a =3D> 58ns x 32768 =3D 1900544ns (correct)
+> for 10M: 0x0e41 =3D> 577ns x 32768 =3D 18907136ns (ok?)
+> 18907136ns > 3145738ns, (latency encoded is great than maximum LTR
+> encoded by platform) - so, there is no point to wait more than platform
+> required, and lat_enc=3Dmax_ltr_enc. It is expected and we sent right
+> value to the power management controller.
+> What is the problem you try solve?
+>
+> > Decoded the lat_enc and max_ltr_enc before compare them is necessary.
+> >
+> > Signed-off-by: YeeLi <seven.yi.lee@gmail.com>
+> > ---
+> >   drivers/net/ethernet/intel/e1000e/ich8lan.c | 23 ++++++++++++++++++++=
+-
+> >   1 file changed, 22 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> > index 590ad110d383..3bff1b570b76 100644
+> > --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> > +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> > @@ -986,6 +986,27 @@ static s32 e1000_k1_workaround_lpt_lp(struct
+> e1000_hw *hw, bool link)
+> >       return ret_val;
+> >   }
+> >
+> > +static u32 convert_e1000e_ltr_scale(u32 val)
+> > +{
+> > +     if (val > 5)
+> > +             return 0;
+> > +
+> > +     return 1U << (5 * val);
+> > +}
+> > +
+> > +static u64 decoded_ltr(u32 val)
+> > +{
+> > +     u64 decoded_latency;
+> > +     u32 value;
+> > +     u32 scale;
+> > +
+> > +     value =3D val & 0x03FF;
+> > +     scale =3D (val & 0x1C00) >> 10;
+> > +     decoded_latency =3D value * convert_e1000e_ltr_scale(scale);
+> > +
+> > +     return decoded_latency;
+> > +}
+> > +
+> >   /**
+> >    *  e1000_platform_pm_pch_lpt - Set platform power management values
+> >    *  @hw: pointer to the HW structure
+> > @@ -1059,7 +1080,7 @@ static s32 e1000_platform_pm_pch_lpt(struct
+> e1000_hw *hw, bool link)
+> >                                    E1000_PCI_LTR_CAP_LPT + 2,
+> &max_nosnoop);
+> >               max_ltr_enc =3D max_t(u16, max_snoop, max_nosnoop);
+> >
+> > -             if (lat_enc > max_ltr_enc)
+> > +             if (decoded_ltr(lat_enc) > decoded_ltr(max_ltr_enc))
+> >                       lat_enc =3D max_ltr_enc;
+> >       }
+> >
+> >
+> sasha
+>
 
+--00000000000074e42705c5eb036c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> +	unsigned int metasize;
-> +	unsigned int datasize;
-> +	unsigned int headroom;
-> +	struct sk_buff *skb;
-> +	unsigned int len;
-> +
-> +	/* this include metasize */
-> +	datasize = xdp->data_end  - xdp->data_meta;
-> +	metasize = xdp->data      - xdp->data_meta;
-> +	headroom = xdp->data_meta - xdp->data_hard_start;
-> +	len      = xdp->data_end  - xdp->data_hard_start;
-> +
-> +	/* allocate a skb to store the frags */
-> +	skb = __napi_alloc_skb(napi, len, GFP_ATOMIC | __GFP_NOWARN);
-> +	if (unlikely(!skb))
-> +		return NULL;
-> +
-> +	skb_reserve(skb, headroom);
-> +	memcpy(__skb_put(skb, datasize), xdp->data_meta, datasize);
-> +	if (metasize) {
-> +		__skb_pull(skb, metasize);
-> +		skb_metadata_set(skb, metasize);
-> +	}
-> +
-> +	return skb;
-> +}
+<div dir=3D"auto"><div dir=3D"auto"><br></div><div dir=3D"auto">Yes,=C2=A0<=
+span style=3D"font-family:sans-serif">18874368ns &gt; 3145728ns.</span></di=
+v><div dir=3D"auto">But, 0xe40 &lt; 0x1003.</div><div dir=3D"auto"><br></di=
+v><div dir=3D"auto">So, the final lat_enc is 0xe40.</div><div dir=3D"auto">=
+(Latency encoded is less than maximum LTR encoded by platform)<br></div><di=
+v><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Neft=
+in, Sasha &lt;<a href=3D"mailto:sasha.neftin@intel.com" target=3D"_blank" r=
+el=3D"noreferrer">sasha.neftin@intel.com</a>&gt; =E4=BA=8E 2021=E5=B9=B46=
+=E6=9C=8829=E6=97=A5=E5=91=A8=E4=BA=8C 22:49=E5=86=99=E9=81=93=EF=BC=9A<br>=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
+eft:1px #ccc solid;padding-left:1ex">On 6/29/2021 11:21, YeeLi wrote:<br>
+Yeeli,<br>
+&gt; In e1000e driver, a PCIe-like device, the max snoop/no-snoop latency<b=
+r>
+&gt; is the upper limit.So, directly compare the size of lat_enc and<br>
+&gt; max_ltr_enc is incorrect.<br>
+&gt; <br>
+why?<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 In 1000Mbps, 0x8b9 &lt; 0x1003, 189440 ns &lt; 314=
+5728 ns, correct.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 In 100Mbps, 0xc3a &lt; 0x1003, 1900544 ns &lt; 314=
+5728 ns, correct.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 In 10Mbps, 0xe40 &lt; 0x1003, 18874368 &gt; 314572=
+8, incorrect.<br>
+&gt; <br>
+Platform LTR encoded is 0x1003 - right. It is meant 1048576ns x 3 =3D <br>
+3145738ns.<br>
+Now,<br>
+for 1000M: 0x08b9 =3D&gt; 185ns x 1024 =3D 189440ns (you are correct)<br>
+for 100M: 0x0c3a =3D&gt; 58ns x 32768 =3D 1900544ns (correct)<br>
+for 10M: 0x0e41 =3D&gt; 577ns x 32768 =3D 18907136ns (ok?)<br>
+18907136ns &gt; 3145738ns, (latency encoded is great than maximum LTR <br>
+encoded by platform) - so, there is no point to wait more than platform <br=
+>
+required, and lat_enc=3Dmax_ltr_enc. It is expected and we sent right <br>
+value to the power management controller.<br>
+What is the problem you try solve?<br>
+<br>
+&gt; Decoded the lat_enc and max_ltr_enc before compare them is necessary.<=
+br>
+&gt; <br>
+&gt; Signed-off-by: YeeLi &lt;<a href=3D"mailto:seven.yi.lee@gmail.com" rel=
+=3D"noreferrer noreferrer" target=3D"_blank">seven.yi.lee@gmail.com</a>&gt;=
+<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/e1000e/ich8lan.c | 23 +++++++++=
++++++++++++-<br>
+&gt;=C2=A0 =C2=A01 file changed, 22 insertions(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net=
+/ethernet/intel/e1000e/ich8lan.c<br>
+&gt; index 590ad110d383..3bff1b570b76 100644<br>
+&gt; --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c<br>
+&gt; +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c<br>
+&gt; @@ -986,6 +986,27 @@ static s32 e1000_k1_workaround_lpt_lp(struct e100=
+0_hw *hw, bool link)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return ret_val;<br>
+&gt;=C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +static u32 convert_e1000e_ltr_scale(u32 val)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if (val &gt; 5)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return 1U &lt;&lt; (5 * val);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static u64 decoded_ltr(u32 val)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0u64 decoded_latency;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0u32 value;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0u32 scale;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0value =3D val &amp; 0x03FF;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0scale =3D (val &amp; 0x1C00) &gt;&gt; 10;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0decoded_latency =3D value * convert_e1000e_ltr_sc=
+ale(scale);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return decoded_latency;<br>
+&gt; +}<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0/**<br>
+&gt;=C2=A0 =C2=A0 *=C2=A0 e1000_platform_pm_pch_lpt - Set platform power ma=
+nagement values<br>
+&gt;=C2=A0 =C2=A0 *=C2=A0 @hw: pointer to the HW structure<br>
+&gt; @@ -1059,7 +1080,7 @@ static s32 e1000_platform_pm_pch_lpt(struct e100=
+0_hw *hw, bool link)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 E1000_PCI_LTR_CAP_L=
+PT + 2, &amp;max_nosnoop);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0max_ltr_enc =3D =
+max_t(u16, max_snoop, max_nosnoop);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (lat_enc &gt; max_=
+ltr_enc)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (decoded_ltr(lat_e=
+nc) &gt; decoded_ltr(max_ltr_enc))<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0lat_enc =3D max_ltr_enc;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; <br>
+sasha<br>
+</blockquote></div></div></div>
+
+--00000000000074e42705c5eb036c--
+
+--===============0680552461767087837==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0680552461767087837==--
