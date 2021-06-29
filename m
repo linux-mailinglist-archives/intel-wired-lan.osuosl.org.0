@@ -1,95 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 930973B7579
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jun 2021 17:31:09 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E98003B76C2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jun 2021 18:57:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 67143404BF;
-	Tue, 29 Jun 2021 15:31:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9C32B40507;
+	Tue, 29 Jun 2021 16:57:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Je4zmiJTGDd7; Tue, 29 Jun 2021 15:31:04 +0000 (UTC)
+	with ESMTP id ujPyoIBnPa8E; Tue, 29 Jun 2021 16:57:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 38A574023F;
-	Tue, 29 Jun 2021 15:31:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 875B2404F3;
+	Tue, 29 Jun 2021 16:57:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 113711BF47D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 15:30:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E9BC11BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F3CD68386E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 15:30:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D5795825B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J7_nm0kZO2Uc for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Jun 2021 15:30:52 +0000 (UTC)
+ with ESMTP id HlOKeb3mKp0w for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Jun 2021 16:56:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 49A9283863
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 15:30:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7E0B882419
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 16:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1624980651;
+ s=mimecast20190719; t=1624985764;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Th3vaV2j817/WDzJbZssbF/Balmf7wt+58Irkccy28s=;
- b=EobHfkf3xW9bbcD2rzr3+kS81yGtr6ANuzdMIgH8StPwaDYehznHVFM/Vgz/Rc6KWeaio2
- iD1oEmmXwzEqR1kZ3Ra32PLnejbUWVND5uqZwX0D93VY5MkaacEDzDuOeZvyGFyB3ZKAcn
- g/0Udw8LvGdkPOKx6e0Akf+eQURMpNk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-282-pJLjhAeOOoyzK9YxMKT_sA-1; Tue, 29 Jun 2021 11:30:49 -0400
-X-MC-Unique: pJLjhAeOOoyzK9YxMKT_sA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 662EF804140;
- Tue, 29 Jun 2021 15:30:44 +0000 (UTC)
-Received: from virtlab719.virt.lab.eng.bos.redhat.com
- (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 52421604CC;
- Tue, 29 Jun 2021 15:30:35 +0000 (UTC)
-From: Nitesh Narayan Lal <nitesh@redhat.com>
-To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-api@vger.kernel.org, linux-pci@vger.kernel.org, tglx@linutronix.de,
- jesse.brandeburg@intel.com, robin.murphy@arm.com, mtosatti@redhat.com,
- mingo@kernel.org, jbrandeb@kernel.org, frederic@kernel.org,
- juri.lelli@redhat.com, abelits@marvell.com, bhelgaas@google.com,
- rostedt@goodmis.org, peterz@infradead.org, davem@davemloft.net,
- akpm@linux-foundation.org, sfr@canb.auug.org.au,
- stephen@networkplumber.org, rppt@linux.vnet.ibm.com,
- chris.friesen@windriver.com, maz@kernel.org, nhorman@tuxdriver.com,
- pjwaskiewicz@gmail.com, sassmann@redhat.com, thenzl@redhat.com,
- kashyap.desai@broadcom.com, sumit.saxena@broadcom.com,
- shivasharan.srikanteshwara@broadcom.com, sathya.prakash@broadcom.com,
- sreekanth.reddy@broadcom.com, suganath-prabu.subramani@broadcom.com,
- james.smart@broadcom.com, dick.kennedy@broadcom.com, jkc@redhat.com,
- faisal.latif@intel.com, shiraz.saleem@intel.com, tariqt@nvidia.com,
- ahleihel@redhat.com, kheib@redhat.com, borisp@nvidia.com,
- saeedm@nvidia.com, benve@cisco.com, govind@gmx.com,
- jassisinghbrar@gmail.com, ajit.khaparde@broadcom.com,
- sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
- nilal@redhat.com, tatyana.e.nikolova@intel.com, mustafa.ismail@intel.com,
- ahs3@redhat.com, leonro@nvidia.com
-Date: Tue, 29 Jun 2021 11:27:46 -0400
-Message-Id: <20210629152746.2953364-15-nitesh@redhat.com>
-In-Reply-To: <20210629152746.2953364-1-nitesh@redhat.com>
-References: <20210629152746.2953364-1-nitesh@redhat.com>
+ bh=q2NICKy+eY6u9v6U5C5rPMzRkfmDNI+XJLW4LIKdeOM=;
+ b=VgXgZxLX6Re2snoYVLU/w9QJhBDQkwUsSU9tT/7r7j8yBsc+Z4Z0dK+T1ncIrwpz8pqG7D
+ ftRA7mIQj3kDlSgzi/uAyb+aZKZlxGazHFN61hDzKw2X9my8GKz1ay4dahbPd3ZIuuLgzB
+ etmfZe+fbJaTiQyctOp9C0Z1+/DL4OA=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-174-VSBtupHSMX2dHk6RPL7org-1; Tue, 29 Jun 2021 12:56:02 -0400
+X-MC-Unique: VSBtupHSMX2dHk6RPL7org-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ og25-20020a1709071dd9b02904c99c7e61f1so297760ejc.18
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 09:56:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=q2NICKy+eY6u9v6U5C5rPMzRkfmDNI+XJLW4LIKdeOM=;
+ b=r/MJUPjwiF/cR2KrdmuaMfXLYLgs4mav/MZ1faIPwaTqf5/x/gWRy1Y22u3YoPI1jv
+ YbFd09sHH47qJJj0Bv9Wb4wB3oeXfAzJXH8dr/wOH28rjyqJeS/H5CxMFiwNN/VK7biU
+ AZrflppel1WOGta/HvAKgQKsrfP8kA77TxggJBnbWg1qejB+yFfp9YExuEikP6Pzc7Vf
+ H1p4rl6smSjzesFUPGu5QmkB2u48496NLM4fj9CJLiS7xSFFZFCoUseRT6j9ic8kp2uG
+ +nHwRotKy9/fZhqeCdIHB23hq/y8vl/UyL0C2Wgtlp2puTycQclhHLeZIFDDUnTSynVQ
+ gBjg==
+X-Gm-Message-State: AOAM533U6+W+lQnhYi82injoLhGwCjP8+ZsRMAPz+SHrYO00JJ7Lbcct
+ Z9fVUXlgsMFdme1izi1aFVKpF/6tfJYJMy3lGxpOhEX0P9U3cUpS76eWN92Ik6AeDqUClRaWSSm
+ ozZJ4WHs7vLvhiZU0c9nH92f13HgU3Q==
+X-Received: by 2002:a05:6402:51c9:: with SMTP id
+ r9mr10497292edd.326.1624985761797; 
+ Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx6JX0kG7OliK+69WwEBKZuT8U9A5MzKTXCdCtoFvyGEIz/VAikmU9KP1H/PmK4CJpy/7zJHQ==
+X-Received: by 2002:a05:6402:51c9:: with SMTP id
+ r9mr10497251edd.326.1624985761526; 
+ Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
+Received: from [192.168.42.238] (3-14-107-185.static.kviknet.dk.
+ [185.107.14.3])
+ by smtp.gmail.com with ESMTPSA id gv20sm8656803ejc.23.2021.06.29.09.56.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Jun 2021 09:56:01 -0700 (PDT)
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>
+References: <20210617145534.101458-1-xuanzhuo@linux.alibaba.com>
+ <20210628104721.GA57589@ranger.igk.intel.com>
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Message-ID: <f5ce5610-443c-a2d9-43ef-d203f9afb0d8@redhat.com>
+Date: Tue, 29 Jun 2021 18:55:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mailman-Approved-At: Tue, 29 Jun 2021 15:30:58 +0000
-Subject: [Intel-wired-lan] [PATCH v2 14/14] net/mlx4: Use
- irq_update_affinity_hint
+In-Reply-To: <20210628104721.GA57589@ranger.igk.intel.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+X-Mailman-Approved-At: Tue, 29 Jun 2021 16:57:13 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net v2] xdp,
+ net: fix for construct skb by xdp inside xsk zc rx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,57 +109,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Alexei Starovoitov <ast@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
+ Jose Abreu <joabreu@synopsys.com>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Ong Boon Leong <boon.leong.ong@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver uses irq_set_affinity_hint() to update the affinity_hint mask
-that is consumed by the userspace to distribute the interrupts. However,
-under the hood irq_set_affinity_hint() also applies the provided cpumask
-(if not NULL) as the affinity for the given interrupt which is an
-undocumented side effect.
+On 28/06/2021 12.47, Maciej Fijalkowski wrote:
 
-To remove this side effect irq_set_affinity_hint() has been marked
-as deprecated and new interfaces have been introduced. Hence, replace the
-irq_set_affinity_hint() with the new interface irq_update_affinity_hint()
-that only updates the affinity_hint pointer.
+> +static __always_inline struct sk_buff *
+> +xdp_construct_skb(struct xdp_buff *xdp, struct napi_struct *napi)
+> +{
 
-Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
-Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
----
- drivers/net/ethernet/mellanox/mlx4/eq.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+I don't like the generic name "xdp_construct_skb".
 
-diff --git a/drivers/net/ethernet/mellanox/mlx4/eq.c b/drivers/net/ethernet/mellanox/mlx4/eq.c
-index 9e48509ed3b2..414e390e6b48 100644
---- a/drivers/net/ethernet/mellanox/mlx4/eq.c
-+++ b/drivers/net/ethernet/mellanox/mlx4/eq.c
-@@ -244,9 +244,9 @@ static void mlx4_set_eq_affinity_hint(struct mlx4_priv *priv, int vec)
- 	    cpumask_empty(eq->affinity_mask))
- 		return;
- 
--	hint_err = irq_set_affinity_hint(eq->irq, eq->affinity_mask);
-+	hint_err = irq_update_affinity_hint(eq->irq, eq->affinity_mask);
- 	if (hint_err)
--		mlx4_warn(dev, "irq_set_affinity_hint failed, err %d\n", hint_err);
-+		mlx4_warn(dev, "irq_update_affinity_hint failed, err %d\n", hint_err);
- }
- #endif
- 
-@@ -1123,9 +1123,7 @@ static void mlx4_free_irqs(struct mlx4_dev *dev)
- 	for (i = 0; i < dev->caps.num_comp_vectors + 1; ++i)
- 		if (eq_table->eq[i].have_irq) {
- 			free_cpumask_var(eq_table->eq[i].affinity_mask);
--#if defined(CONFIG_SMP)
--			irq_set_affinity_hint(eq_table->eq[i].irq, NULL);
--#endif
-+			irq_update_affinity_hint(eq_table->eq[i].irq, NULL);
- 			free_irq(eq_table->eq[i].irq, eq_table->eq + i);
- 			eq_table->eq[i].have_irq = 0;
- 		}
--- 
-2.27.0
+What about calling it "xdp_copy_construct_skb", because below is 
+memcpy'ing the data.
+
+Functions that use this call free (or recycle) the memory backing the 
+packet, after calling this function.
+
+(I'm open to other naming suggestions)
+
+
+> +	unsigned int metasize;
+> +	unsigned int datasize;
+> +	unsigned int headroom;
+> +	struct sk_buff *skb;
+> +	unsigned int len;
+> +
+> +	/* this include metasize */
+> +	datasize = xdp->data_end  - xdp->data_meta;
+> +	metasize = xdp->data      - xdp->data_meta;
+> +	headroom = xdp->data_meta - xdp->data_hard_start;
+> +	len      = xdp->data_end  - xdp->data_hard_start;
+> +
+> +	/* allocate a skb to store the frags */
+> +	skb = __napi_alloc_skb(napi, len, GFP_ATOMIC | __GFP_NOWARN);
+> +	if (unlikely(!skb))
+> +		return NULL;
+> +
+> +	skb_reserve(skb, headroom);
+> +	memcpy(__skb_put(skb, datasize), xdp->data_meta, datasize);
+> +	if (metasize) {
+> +		__skb_pull(skb, metasize);
+> +		skb_metadata_set(skb, metasize);
+> +	}
+> +
+> +	return skb;
+> +}
 
 _______________________________________________
 Intel-wired-lan mailing list
