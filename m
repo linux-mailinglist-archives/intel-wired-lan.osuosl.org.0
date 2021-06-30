@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F6C13B7ECC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jun 2021 10:18:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC85E3B7ECD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jun 2021 10:18:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 097BB60650;
-	Wed, 30 Jun 2021 08:18:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 895B060590;
+	Wed, 30 Jun 2021 08:18:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lWengPtEPlg5; Wed, 30 Jun 2021 08:18:08 +0000 (UTC)
+	with ESMTP id 6-f8NWtCxB6z; Wed, 30 Jun 2021 08:18:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 026286058C;
-	Wed, 30 Jun 2021 08:18:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 89FA96058B;
+	Wed, 30 Jun 2021 08:18:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5144C1BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 09CE81BF5DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2C5B740630
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9BE8740645
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q0GjsQd6iaiX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Jun 2021 08:17:55 +0000 (UTC)
+ with ESMTP id 5fr5Xq76H0YJ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Jun 2021 08:17:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4F7EF4063B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10030"; a="272166283"
-X-IronPort-AV: E=Sophos;i="5.83,311,1616482800"; d="scan'208";a="272166283"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6E04C40602
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 08:17:56 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10030"; a="272166285"
+X-IronPort-AV: E=Sophos;i="5.83,311,1616482800"; d="scan'208";a="272166285"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2021 01:17:54 -0700
-X-IronPort-AV: E=Sophos;i="5.83,311,1616482800"; d="scan'208";a="457128354"
+ 30 Jun 2021 01:17:56 -0700
+X-IronPort-AV: E=Sophos;i="5.83,311,1616482800"; d="scan'208";a="457128363"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.237.94.20])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2021 01:17:53 -0700
+ 30 Jun 2021 01:17:54 -0700
 From: Radoslaw Tyl <radoslawx.tyl@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 30 Jun 2021 10:15:29 +0200
-Message-Id: <20210630081532.3069914-3-radoslawx.tyl@intel.com>
+Date: Wed, 30 Jun 2021 10:15:30 +0200
+Message-Id: <20210630081532.3069914-4-radoslawx.tyl@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210630081532.3069914-1-radoslawx.tyl@intel.com>
 References: <20210630081532.3069914-1-radoslawx.tyl@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 2/5] ixgbevf: Improve error handling in
- mailbox
+Subject: [Intel-wired-lan] [PATCH v2 3/5] ixgbevf: Add legacy suffix to old
+ API mailbox functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,103 +68,95 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add new handling for error codes:
- IXGBE_ERR_CONFIG - ixgbe_mbx_operations is not correctly set
- IXGBE_ERR_TIMEOUT - mailbox operation, e.g. poll for message, timeout
+Add legacy suffix to mailbox functions which should be backwards compatible
+with older PF drivers. Communication during API negotiation always has to
+be done using the earlier implementation.
 
 Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbevf/defines.h |  3 +++
- drivers/net/ethernet/intel/ixgbevf/mbx.c     | 14 ++++++++++----
- drivers/net/ethernet/intel/ixgbevf/mbx.h     |  1 -
- 3 files changed, 13 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf.h      |  2 +-
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c |  2 +-
+ drivers/net/ethernet/intel/ixgbevf/mbx.c          | 14 +++++++-------
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/defines.h b/drivers/net/ethernet/intel/ixgbevf/defines.h
-index 6bace746eaac..46fb1f9eab7f 100644
---- a/drivers/net/ethernet/intel/ixgbevf/defines.h
-+++ b/drivers/net/ethernet/intel/ixgbevf/defines.h
-@@ -281,6 +281,9 @@ struct ixgbe_adv_tx_context_desc {
- #define IXGBE_ERR_INVALID_MAC_ADDR	-1
- #define IXGBE_ERR_RESET_FAILED		-2
- #define IXGBE_ERR_INVALID_ARGUMENT	-3
-+#define IXGBE_ERR_CONFIG		-4
-+#define IXGBE_ERR_MBX			-5
-+#define IXGBE_ERR_TIMEOUT		-6
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+index a0e325774819..5d9284dd04dc 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+@@ -429,7 +429,7 @@ extern const struct ixgbevf_info ixgbevf_82599_vf_info;
+ extern const struct ixgbevf_info ixgbevf_X540_vf_info;
+ extern const struct ixgbevf_info ixgbevf_X550_vf_info;
+ extern const struct ixgbevf_info ixgbevf_X550EM_x_vf_info;
+-extern const struct ixgbe_mbx_operations ixgbevf_mbx_ops;
++extern const struct ixgbe_mbx_operations ixgbevf_mbx_ops_legacy;
+ extern const struct ixgbevf_info ixgbevf_x550em_a_vf_info;
  
- /* Transmit Config masks */
- #define IXGBE_TXDCTL_ENABLE		0x02000000 /* Ena specific Tx Queue */
+ extern const struct ixgbevf_info ixgbevf_82599_vf_hv_info;
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+index dc56931fc1dc..e9b99929588b 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -4567,7 +4567,7 @@ static int ixgbevf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	memcpy(&hw->mac.ops, ii->mac_ops, sizeof(hw->mac.ops));
+ 	hw->mac.type  = ii->mac;
+ 
+-	memcpy(&hw->mbx.ops, &ixgbevf_mbx_ops,
++	memcpy(&hw->mbx.ops, &ixgbevf_mbx_ops_legacy,
+ 	       sizeof(struct ixgbe_mbx_operations));
+ 
+ 	/* setup the private structure */
 diff --git a/drivers/net/ethernet/intel/ixgbevf/mbx.c b/drivers/net/ethernet/intel/ixgbevf/mbx.c
-index 6bc1953263b9..2c3762cb467d 100644
+index 2c3762cb467d..0edcfcbf5296 100644
 --- a/drivers/net/ethernet/intel/ixgbevf/mbx.c
 +++ b/drivers/net/ethernet/intel/ixgbevf/mbx.c
-@@ -15,6 +15,9 @@ static s32 ixgbevf_poll_for_msg(struct ixgbe_hw *hw)
- 	struct ixgbe_mbx_info *mbx = &hw->mbx;
- 	int countdown = mbx->timeout;
- 
-+	if (!countdown || !mbx->ops.check_for_msg)
-+		return IXGBE_ERR_CONFIG;
-+
- 	while (countdown && mbx->ops.check_for_msg(hw)) {
- 		countdown--;
- 		udelay(mbx->udelay);
-@@ -24,7 +27,7 @@ static s32 ixgbevf_poll_for_msg(struct ixgbe_hw *hw)
- 	if (!countdown)
- 		mbx->timeout = 0;
- 
--	return countdown ? 0 : IXGBE_ERR_MBX;
-+	return countdown ? 0 : IXGBE_ERR_TIMEOUT;
+@@ -224,14 +224,14 @@ static s32 ixgbevf_obtain_mbx_lock_vf(struct ixgbe_hw *hw)
  }
  
  /**
-@@ -38,6 +41,9 @@ static s32 ixgbevf_poll_for_ack(struct ixgbe_hw *hw)
- 	struct ixgbe_mbx_info *mbx = &hw->mbx;
- 	int countdown = mbx->timeout;
- 
-+	if (!countdown || !mbx->ops.check_for_ack)
-+		return IXGBE_ERR_CONFIG;
-+
- 	while (countdown && mbx->ops.check_for_ack(hw)) {
- 		countdown--;
- 		udelay(mbx->udelay);
-@@ -47,7 +53,7 @@ static s32 ixgbevf_poll_for_ack(struct ixgbe_hw *hw)
- 	if (!countdown)
- 		mbx->timeout = 0;
- 
--	return countdown ? 0 : IXGBE_ERR_MBX;
-+	return countdown ? 0 : IXGBE_ERR_TIMEOUT;
+- *  ixgbevf_write_mbx_vf - Write a message to the mailbox
++ *  ixgbevf_write_mbx_vf_legacy - Write a message to the mailbox
+  *  @hw: pointer to the HW structure
+  *  @msg: The message buffer
+  *  @size: Length of buffer
+  *
+  *  returns 0 if it successfully copied message into the buffer
+  **/
+-static s32 ixgbevf_write_mbx_vf(struct ixgbe_hw *hw, u32 *msg, u16 size)
++static s32 ixgbevf_write_mbx_vf_legacy(struct ixgbe_hw *hw, u32 *msg, u16 size)
+ {
+ 	s32 ret_val;
+ 	u16 i;
+@@ -260,14 +260,14 @@ static s32 ixgbevf_write_mbx_vf(struct ixgbe_hw *hw, u32 *msg, u16 size)
  }
  
  /**
-@@ -62,7 +68,7 @@ static s32 ixgbevf_poll_for_ack(struct ixgbe_hw *hw)
- static s32 ixgbevf_read_posted_mbx(struct ixgbe_hw *hw, u32 *msg, u16 size)
+- *  ixgbevf_read_mbx_vf - Reads a message from the inbox intended for VF
++ *  ixgbevf_read_mbx_vf_legacy - Reads a message from the inbox intended for VF
+  *  @hw: pointer to the HW structure
+  *  @msg: The message buffer
+  *  @size: Length of buffer
+  *
+  *  returns 0 if it successfully read message from buffer
+  **/
+-static s32 ixgbevf_read_mbx_vf(struct ixgbe_hw *hw, u32 *msg, u16 size)
++static s32 ixgbevf_read_mbx_vf_legacy(struct ixgbe_hw *hw, u32 *msg, u16 size)
  {
- 	struct ixgbe_mbx_info *mbx = &hw->mbx;
--	s32 ret_val = IXGBE_ERR_MBX;
-+	s32 ret_val = IXGBE_ERR_CONFIG;
+ 	s32 ret_val = 0;
+ 	u16 i;
+@@ -318,10 +318,10 @@ static s32 ixgbevf_init_mbx_params_vf(struct ixgbe_hw *hw)
+ 	return 0;
+ }
  
- 	if (!mbx->ops.read)
- 		goto out;
-@@ -88,7 +94,7 @@ static s32 ixgbevf_read_posted_mbx(struct ixgbe_hw *hw, u32 *msg, u16 size)
- static s32 ixgbevf_write_posted_mbx(struct ixgbe_hw *hw, u32 *msg, u16 size)
- {
- 	struct ixgbe_mbx_info *mbx = &hw->mbx;
--	s32 ret_val = IXGBE_ERR_MBX;
-+	s32 ret_val = IXGBE_ERR_CONFIG;
- 
- 	/* exit if either we can't write or there isn't a defined timeout */
- 	if (!mbx->ops.write || !mbx->timeout)
-diff --git a/drivers/net/ethernet/intel/ixgbevf/mbx.h b/drivers/net/ethernet/intel/ixgbevf/mbx.h
-index a461b7d16206..b3b83c95babf 100644
---- a/drivers/net/ethernet/intel/ixgbevf/mbx.h
-+++ b/drivers/net/ethernet/intel/ixgbevf/mbx.h
-@@ -7,7 +7,6 @@
- #include "vf.h"
- 
- #define IXGBE_VFMAILBOX_SIZE	16 /* 16 32 bit words - 64 bytes */
--#define IXGBE_ERR_MBX		-100
- 
- #define IXGBE_VFMAILBOX		0x002FC
- #define IXGBE_VFMBMEM		0x00200
+-const struct ixgbe_mbx_operations ixgbevf_mbx_ops = {
++const struct ixgbe_mbx_operations ixgbevf_mbx_ops_legacy = {
+ 	.init_params	= ixgbevf_init_mbx_params_vf,
+-	.read		= ixgbevf_read_mbx_vf,
+-	.write		= ixgbevf_write_mbx_vf,
++	.read		= ixgbevf_read_mbx_vf_legacy,
++	.write		= ixgbevf_write_mbx_vf_legacy,
+ 	.read_posted	= ixgbevf_read_posted_mbx,
+ 	.write_posted	= ixgbevf_write_posted_mbx,
+ 	.check_for_msg	= ixgbevf_check_for_msg_vf,
 -- 
 2.27.0
 
