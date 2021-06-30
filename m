@@ -1,78 +1,160 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46E703B84F7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jun 2021 16:20:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31E373B8672
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jun 2021 17:44:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE903404B3;
-	Wed, 30 Jun 2021 14:20:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 26DCB415A8;
+	Wed, 30 Jun 2021 15:44:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ophYOCKevWDm; Wed, 30 Jun 2021 14:20:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Mob6m9fsR-WX; Wed, 30 Jun 2021 15:44:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BC8A1403B7;
-	Wed, 30 Jun 2021 14:20:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2CBEC40499;
+	Wed, 30 Jun 2021 15:44:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E18F91BF83C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 06:26:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5CD151BF4E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 15:43:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CF80E4011F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 06:26:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 456C583AE4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 15:43:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0I--fToemY8y for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Jun 2021 06:26:40 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ot1-x336.google.com (mail-ot1-x336.google.com
- [IPv6:2607:f8b0:4864:20::336])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 834344010C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 06:26:40 +0000 (UTC)
-Received: by mail-ot1-x336.google.com with SMTP id
- i12-20020a05683033ecb02903346fa0f74dso1565256otu.10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jun 2021 23:26:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nG0hpuigbqFud9fQQl3gmruYC2xcAwu8juKEquMqLs8=;
- b=H/B8V7HEedqvMlfEJHt0LeaIhxRz9xGzcsM9zfxWCtjU2+1YUULdoQ+D23MglHbcxE
- 4gX6ve/tP5J+d63gxKI6OGAngwhW1r12qITwrX2c+gQUXXirgtVuRblVnKr09CDmaYDt
- KtlzU+adbJLKuWRJKNoyawd45qmdXzBWxEJQUTytm7H8qxAvMbNjuSpzVDSv1snaxAUu
- us7pIUFwv1HxejJEusdcQXdp3kiQt7/uGTzAFA4IUH1+2wAIuCEpLQRF3wbDi6/B19x4
- 5lNRm1VosSEhmSZEb15kpvuD7wM3bbwv3WBJzLQ2npbN+T9Im+5Dil56rq1oiqdkvtg6
- FolA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nG0hpuigbqFud9fQQl3gmruYC2xcAwu8juKEquMqLs8=;
- b=dmZOtoK3o+1YzXI2KaVPNxu7TxDQO6G460uqw0mW7fqTwM/SI/xG8GTcUN4lxbN46b
- nZ3ZbZdR7nMMuKRpsauhqlizmA8LyTe1nv0IisVD/OzeuqHTjDMgH5mcSUjC6iaGtZPE
- rKcd6zMPZT60JouyZ5VafF6GphQEESq4t4l0JT9S4pigs3QL0M/Kthvd6Lp3yRTqqb3g
- YX7ufXpqzTFgWr59ZHc/a+suLiq0EPfCp7oTlialo3KE1jmPc9VXi6jv/3a8F1aKrGlY
- 5YL2Z9fH/zl3OhuirChg7NkKvbznu1Jjb3E+bBsW0l5NwtpBz5hTxrpHyRStyxQad1fz
- jxEA==
-X-Gm-Message-State: AOAM532Y9JtYT6HwFLhJRu4Yrx1hbD090TQXj0i4T3qFFjDtqXfdDC37
- GaXx+Wnp5a4/mY2gxxUlm7qKkNUbS8yda/GujAQ=
-X-Google-Smtp-Source: ABdhPJyh5upNp7juDrJD0yG86AQCsj5H9UPWxqF6osLfU2Qv7BLsYlNEVba/lL+XhH38310HyYgeip8UjLFeG86UWW4=
-X-Received: by 2002:a05:6830:1e99:: with SMTP id
- n25mr7575329otr.279.1625034399592; 
- Tue, 29 Jun 2021 23:26:39 -0700 (PDT)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 29qxZwYt1J2U for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Jun 2021 15:43:51 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BCDA283AE1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jun 2021 15:43:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10031"; a="294008600"
+X-IronPort-AV: E=Sophos;i="5.83,312,1616482800"; d="scan'208";a="294008600"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jun 2021 08:43:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.83,312,1616482800"; d="scan'208";a="559095696"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga001.fm.intel.com with ESMTP; 30 Jun 2021 08:43:50 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.4; Wed, 30 Jun 2021 08:43:49 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
+ via Frontend Transport; Wed, 30 Jun 2021 08:43:49 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.175)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.4; Wed, 30 Jun 2021 08:43:49 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=itYw0TvqPU7YZy8UCe8HtB2+9TvR+jnCbmAgP3zqh3bDqAY4J9ZJfZcwFiSgPdQ6m64RdyptEpWWCPowtG/KaymjnNYAYQLc6TiYTt1hYWiN9vk69s7VAqMQ2T3XZgMGNK2HUu7RY1e5oW4vA/DyAsM8076yKz9I/azX80+OGcTaGbKRM0kJ302C7Knuht/db10fWo+VXWZS5KmhHXx+mkmJHiHTgoTf8YL2PIgaTRynrqiPspp7OxN4EJxWMeWCvsgwyEMX4y3iovhdkTdptcmY53K2XXOEzgVD8/XGYJcp8lJCd02F/ii+0z34Zez7qx2xEstyZ28Z6vxOjZn1Jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zCA+URnZ9MHHe5Lhk+hMqAbuE8yrO/B15QBvLHJLiTE=;
+ b=M27/4kPFbtzoCDBf/pocEmYDov/nBbK5YODg1DHnZujpGKJsVnwadL72Q3LZAmaMVpZnov7uMU0xxgfF6Az+hdR/w5qDiC0FZGTGGY5rUa8/ku52ACSYEBv6+4Bca/ermIT1XDQGFcVezp98eAujvoN7HeSIqATbUKcQXhsSIbsdAXylmOTI6HD9DD1V4v/+B3EDHFbKlXv8qAORamXe+1VNZHHCKgahMaU5qZkumkcZg7zvh4xJHdBjYBsGv3s6P9LlQjhPBUzSki2YSmV8eCb73hriUhiE/tw6Coz3bQh6hu3Bz7SI/Yw3cL2gxmCGvYzmX0sQYIYMsjbSyFR9HA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zCA+URnZ9MHHe5Lhk+hMqAbuE8yrO/B15QBvLHJLiTE=;
+ b=grVU8T5o1HeyiE6RyAJOHkCS0M0aVbU9itOLLdm5vsiBpY2Lq6d4JGnqkYByVNSKh1AvD77KEEWaxUhNUc7OrDDIqy0u1r1emUxRtV1VzVKe/orgZislBMfLeKge6qon+Rsk2nNT0uixGKSnqU5HyorHbwS/UMvuz1ItpE2MGwI=
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SA2PR11MB4796.namprd11.prod.outlook.com (2603:10b6:806:117::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.22; Wed, 30 Jun
+ 2021 15:43:48 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::15ab:e6bc:fd6e:2a1]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::15ab:e6bc:fd6e:2a1%5]) with mapi id 15.20.4287.023; Wed, 30 Jun 2021
+ 15:43:48 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Sornek, Karen" <karen.sornek@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next v1] i40e: Add restoration of
+ VF MSI-X state during PCI reset
+Thread-Index: AQHXUHmpwl65MmcerEWeBcuecbt0Rqss7U6A
+Date: Wed, 30 Jun 2021 15:43:48 +0000
+Message-ID: <991e25356e2ac012bda896bd1a36f900bb5a8aae.camel@intel.com>
+References: <20210524084748.68821-1-karen.sornek@intel.com>
+In-Reply-To: <20210524084748.68821-1-karen.sornek@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [134.134.136.219]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 78cf9bdb-30ef-4e08-b134-08d93bddda3b
+x-ms-traffictypediagnostic: SA2PR11MB4796:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SA2PR11MB47968A7E3D7680BEA21C1718C6019@SA2PR11MB4796.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: YbygBmJDoECdHZVSR+GESVx+nKTg85ZYNZY/YmUc1L+Wwv4TtcT/Ch1QiRbVheA9uf58WElTklfj67aLP1u6ne6vPhlRAAz3RH4g3exUlLI2ehBGemElP/kwG/dbFZG23wjFbpAKFBpZwHH1rwWZ65dWy+Ps63sQEL28nGe3OJs450xTZJ8xdz8t7yOtk1nYYZmbFCc8noOiwvnaFgGy9AiAtL5by2WhP5a7uxA4CHC8szNWa7ht8qIk9FuZXarNLWEEzk3HC7fTxL4zASwv7mqaL6foDns5ZDp/bYUixVVATPf0eEpIDGBELmscU4kk3rjqoDwTQwsGl/n8gS/DoFHrTYWB2VY1z9nPyN4lQEODm6xG8DXVBdShni9k9ifLJlqli61TyyioWKSVPm/wm20KduWZ/vEEjPLB8RrS5iHgUIVrw5gazZ5M6VeS+MBUN7i3r7Vl0DJe2o6VVUfFZzYhbN7M/ANLxVvJoTOycaVI/eYGNBwhgNztuGhFFmTH+Vne76Lq5VySkSke5nW6G5M7/4l/gFujeU+V/PCXb+k0o/P/Pw3ALa5opU+8+9rtFb+ncKle8fzXS/NJsK7gLzYqpzRxZLkAcWv3dN+uArhkeezVmjgRVZE668tCdcTw6O4EYDIidNAU5A2/dLdXzemnNhHcUcCs91Xpw7mCw5HisPm9JZc77pOD9roTYxiBXsjpGt5HUEGQKOltPS0p3UsBbYnap03uX+QQfgMXo9lyHOPAluetwEgFdYiPjxXnZAZH2bBkIzOOSzIYAwbU9ZSlNXuUCQ2VAy2kp9C0ZM3pDH4NlwzdHHi8LIqne0w2yA1RtfeRRGVTQk1okWInYg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(136003)(396003)(39860400002)(346002)(366004)(83380400001)(6512007)(86362001)(966005)(6486002)(5660300002)(478600001)(2616005)(66946007)(6506007)(2906002)(26005)(107886003)(110136005)(8676002)(4326008)(316002)(36756003)(8936002)(66556008)(66446008)(186003)(38100700002)(71200400001)(64756008)(66476007)(122000001)(91956017)(76116006)(533714002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dU1XQyt6enhDeGZ3eWkvSmo1bkRVYU9RVHpoOG5pWXhIWStZMU83ZStHTEhj?=
+ =?utf-8?B?UUVNTnNvTjFuaW5MWVIvamxBT3ZvYWs4NnZGOFJyN1JBTU1Vc1RCK0RPVEEw?=
+ =?utf-8?B?ZHppRmVMa1RWWlNKMU1MU3J2REpOL3JTMVBFY3BUdXE0N2pJR0tBb2dxU3gw?=
+ =?utf-8?B?YVBPT3lLVGVsQW1KQ2lmamFVc3A3KzRxb3ZkOGViaUJkdmlQVld3R0xUaXJi?=
+ =?utf-8?B?am1NbUE2SUJXLzBOMng5VGRqazVRY05DWlROYnBRZzNuOTRkM2ZZUnVpZnZW?=
+ =?utf-8?B?UnRJNW1QK3c4VEZlei9mRFB6blpqU3NwS05GRWl4cGtzd2JlOU02b2pCcVRW?=
+ =?utf-8?B?cnhXVk1nc1JBYjRWcGdGbHRkd1YrZElwSnJJdjAyNlp4bE5nekxxajRCbG5O?=
+ =?utf-8?B?U2szK2hSNk9KczAvT3V4RHVENlZmTUFYdVFta2JQUitsai9SdDVPS2xuVFV5?=
+ =?utf-8?B?MC9OTTZpUjlkWkNiSWJVZytMQ3VBWEdIWVNmNWVmcDJsU0N0dnp1anZXT0dS?=
+ =?utf-8?B?d1JFMm8zNTgzWm5zZ1JJWHpkZlY2WStzTGpxcXlrSVM0UGl5cXN3dmgxMlBD?=
+ =?utf-8?B?ajg3a0N6eDhZZTJkMTd2RzQxRnN1cEFwR0o3V2xiN0tSZGZTTDgrN3VDNk9Y?=
+ =?utf-8?B?eW9IOTlMaGRPdzFYazhGVXRBdm96MlhZK0ZvMDFTYUlQcW1pRDViWDRLNUh2?=
+ =?utf-8?B?NUpTOTdRMjVOUG40MnJKS3U0S2FIV0QxNWRxTTBZTHQ4M2hLMVZRY0RlUW5p?=
+ =?utf-8?B?VGFpV2tpdEpiOGQ2cWxNZkFYYWFLMGVsVjhTVzRiOHJnVVl4NkcxMTZTK1ZW?=
+ =?utf-8?B?a0dLYkhCSXJ5aGtPVTk4akJFWFpqRWtVUHFibUQ4WFE5eE9rNitPNUt6YmJo?=
+ =?utf-8?B?Ym1oa1U1VzRsS2RTdy9zUEI1SnY4R1pEbzFtMGJ2eW55M04zVktCaVVieHkw?=
+ =?utf-8?B?VVUzbFdVa1ZDMmpLdmNsakcxT0dmWVY3TUFLbEpadjB3M2M0dSt3T1VqYmM4?=
+ =?utf-8?B?cnFxeTE5YmdZbkx4RkROTHhOdFYzc0U5a3BCaXFvZko1c3BHN2Q2NVNvSjI0?=
+ =?utf-8?B?Q0ZCcHlkT2hUVnVBc2JKSWQxcnhEdGdQTUNCMFFEcHF3enAxZmgwR0VXRVJu?=
+ =?utf-8?B?OVVDbHpHK1BSckNZRU5aNFZvMldURUJhcXlZbnFLcTJzanpRdEV1TWRPUmM0?=
+ =?utf-8?B?NUNqdjdYTWFSaGlYV2VjYkxnS1MyeExxQVJ1RHlnVll5UG1hc0cxaHZKb2Jy?=
+ =?utf-8?B?Q2x4ZFpoK0kwNktJNGkxL3pIQ29neVlJeFRacll1WnJNOC9uRXBRL3VGbkZz?=
+ =?utf-8?B?aG9kZmNOVXo5eUhNRzRxMHlTSVltRzVuSkVNMUJ1aVpZWFJUdUdnMzk1bFpJ?=
+ =?utf-8?B?MGtyMjA0bW9oZFlWdy9FOUIvcE5OaFJPa2thU2J6a01wWkluSi9vbnR1VCsy?=
+ =?utf-8?B?QU03Y1FhU0VMTVU3djVqTitRbFJ0Qm5MTGRSWFMxc3hXaTVSYWFwNUNuTmVK?=
+ =?utf-8?B?SmkvOTdTUmQraEtKd2xKaTJKV3c1ZEt4dWprUExJbjVBdEQ2cTRhMWZBb05z?=
+ =?utf-8?B?cTkwT3NiUFdqZDN4QXdvaENWVWdqZWwyWGtHajlCQlRiV2U5NWlnU0FSV3RO?=
+ =?utf-8?B?OWpab3hEcGNoYlZSRGIya3lHLzZKV1JYbWkxVE04OVkwOGh5QU5tRWRTRnE5?=
+ =?utf-8?B?OTYrclE3VkNQQnFPM2ZRN0MzM1ByOHpPRU52V1FndG9kNThuK0pOK0dmcVhu?=
+ =?utf-8?B?ZS9qRTk4a0w5WWtKNU9nd20veXJ5Vnp3ZXIzSWV2YWxkV2hETGVxZFRTRnhv?=
+ =?utf-8?B?VkE0ckZsdENiLzVvZkJEUT09?=
+Content-ID: <1D720760C50DE64AA24B895191EE998D@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-References: <20210629082128.255988-1-seven.yi.lee@gmail.com>
- <02ff77ef-e802-8e13-d169-1ab2c250405a@intel.com>
- <CALX8JfQymbSmCP0xk0C-=v64__uaH=BR0UZjr2yRyLWVwm9dLQ@mail.gmail.com>
- <0234b97a-f207-47b0-1545-582ee5282824@intel.com>
-In-Reply-To: <0234b97a-f207-47b0-1545-582ee5282824@intel.com>
-From: Yee Li <seven.yi.lee@gmail.com>
-Date: Wed, 30 Jun 2021 14:26:27 +0800
-Message-ID: <CALX8JfTOG7bXn7gP+4n1_3CfFFk6aL-RJDY03RCOeBSpUeTEPQ@mail.gmail.com>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>
-X-Mailman-Approved-At: Wed, 30 Jun 2021 14:20:29 +0000
-Subject: Re: [Intel-wired-lan] [PATCH] driver core: fix e1000e ltr bug
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 78cf9bdb-30ef-4e08-b134-08d93bddda3b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jun 2021 15:43:48.3872 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0Nhpmf7P8aOVyaXBBv3v8sY7AhXqCfbQ5xa3uPa6rjw4YWqvpM4COwC2aCwg3R3epjI3TVhtCafOqT1n83nx+QRo16xNbcJKv6qkWb1th4U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4796
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1] i40e: Add restoration of
+ VF MSI-X state during PCI reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,329 +167,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Efrati, Nir" <nir.efrati@intel.com>, linux-kernel@vger.kernel.org, "Edri,
- Michael" <michael.edri@intel.com>, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
- davem@davemloft.net
-Content-Type: multipart/mixed; boundary="===============3327556111433571986=="
+Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============3327556111433571986==
-Content-Type: multipart/alternative; boundary="00000000000022b4dc05c5f5cecb"
+On Mon, 2021-05-24 at 10:47 +0200, Karen Sornek wrote:
 
---00000000000022b4dc05c5f5cecb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+<snip>
 
-I agree with you.
-That's better code.
+> +/**
+> + * i40e_restore_all_vfs_msi_state - restore VF MSI state after PF
+> FLR
+> + * @pdev: pointer to a pci_dev structure
+> + *
+> + * Called when recovering from a PF FLR to restore interrupt
+> capability to
+> + * the VFs.
+> + */
+> +void i40e_restore_all_vfs_msi_state(struct pci_dev *pdev)
+> +{
+> +	struct pci_dev *vfdev;
+> +	u16 vf_id;
+> +	int pos;
+> +
+> +	/* Continue only if this is a PF */
+> +	if (!pdev->is_physfn)
+> +		return;
+> +
+> +	if (!pci_num_vf(pdev))
+> +		return;
+> +
+> +	pos = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_SRIOV);
+> +	if (pos) {
+> +		pci_read_config_word(pdev, pos + PCI_SRIOV_VF_DID,
+> &vf_id);
+> +		vfdev = pci_get_device(pdev->vendor, vf_id, NULL);
+> +		while (vfdev) {
+> +			if (vfdev->is_virtfn && vfdev->physfn == pdev)
+> +				pci_restore_msi_state(vfdev);
+> +			vfdev = pci_get_device(pdev->vendor, vf_id,
+> vfdev);
+> +		}
+> +	}
 
-Neftin, Sasha <sasha.neftin@intel.com> =E4=BA=8E2021=E5=B9=B46=E6=9C=8830=
-=E6=97=A5=E5=91=A8=E4=B8=89 =E4=B8=8B=E5=8D=882:13=E5=86=99=E9=81=93=EF=BC=
-=9A
+Can you address the issues reported by the kernel test robot[1][2]?
 
-> On 6/29/2021 20:33, Yee Li wrote:
-> >
-> > Yes, 18874368ns > 3145728ns.
-> > But, 0xe40 < 0x1003.
-> I got you. I would agree, direct comparison is error-prone. (10M is
-> impacted)
-> I would suggest do not use convert function. lat_en should rather
-> presented as lat_enc =3D scale x value:
-> Introduce two u16 variables, u16 lat_enc_d and u16 max_ltr_enc_d;
->
-> lat_enc_d =3D (lat_enc & 0x0x3ff) x (1U << 5*((max_ltr_enc & 0x1c00) >> 1=
-0))
->
-> max_ltr_enc_d =3D (max_ltr_enc & 0x0x3ff) x (1U << 5*((max_ltr_enc &
-> 0x1c00) >> 10))
->
-> Then:
-> if (lat_enc_d > max_ltr_enc_d)
->         lat_enc =3D max_ltr_enc;
-> what do you think?
->
-> >
-> > So, the final lat_enc is 0xe40.
-> > (Latency encoded is less than maximum LTR encoded by platform)
-> >
-> > Neftin, Sasha <sasha.neftin@intel.com <mailto:sasha.neftin@intel.com>>
-> > =E4=BA=8E 2021=E5=B9=B46=E6=9C=8829=E6=97=A5=E5=91=A8=E4=BA=8C 22:49=E5=
-=86=99=E9=81=93=EF=BC=9A
-> >
-> >     On 6/29/2021 11:21, YeeLi wrote:
-> >     Yeeli,
-> >      > In e1000e driver, a PCIe-like device, the max snoop/no-snoop
-> latency
-> >      > is the upper limit.So, directly compare the size of lat_enc and
-> >      > max_ltr_enc is incorrect.
-> >      >
-> >     why?
-> >      >      In 1000Mbps, 0x8b9 < 0x1003, 189440 ns < 3145728 ns, correc=
-t.
-> >      >
-> >      >      In 100Mbps, 0xc3a < 0x1003, 1900544 ns < 3145728 ns, correc=
-t.
-> >      >
-> >      >      In 10Mbps, 0xe40 < 0x1003, 18874368 > 3145728, incorrect.
-> >      >
-> >     Platform LTR encoded is 0x1003 - right. It is meant 1048576ns x 3 =
-=3D
-> >     3145738ns.
-> >     Now,
-> >     for 1000M: 0x08b9 =3D> 185ns x 1024 =3D 189440ns (you are correct)
-> >     for 100M: 0x0c3a =3D> 58ns x 32768 =3D 1900544ns (correct)
-> >     for 10M: 0x0e41 =3D> 577ns x 32768 =3D 18907136ns (ok?)
-> >     18907136ns > 3145738ns, (latency encoded is great than maximum LTR
-> >     encoded by platform) - so, there is no point to wait more than
-> platform
-> >     required, and lat_enc=3Dmax_ltr_enc. It is expected and we sent rig=
-ht
-> >     value to the power management controller.
-> >     What is the problem you try solve?
-> >
-> >      > Decoded the lat_enc and max_ltr_enc before compare them is
-> necessary.
-> >      >
-> >      > Signed-off-by: YeeLi <seven.yi.lee@gmail.com
-> >     <mailto:seven.yi.lee@gmail.com>>
-> >      > ---
-> >      >   drivers/net/ethernet/intel/e1000e/ich8lan.c | 23
-> >     ++++++++++++++++++++-
-> >      >   1 file changed, 22 insertions(+), 1 deletion(-)
-> >      >
-> >      > diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> >     b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> >      > index 590ad110d383..3bff1b570b76 100644
-> >      > --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> >      > +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> >      > @@ -986,6 +986,27 @@ static s32 e1000_k1_workaround_lpt_lp(struc=
-t
-> >     e1000_hw *hw, bool link)
-> >      >       return ret_val;
-> >      >   }
-> >      >
-> >      > +static u32 convert_e1000e_ltr_scale(u32 val)
-> >      > +{
-> >      > +     if (val > 5)
-> >      > +             return 0;
-> >      > +
-> >      > +     return 1U << (5 * val);
-> >      > +}
-> >      > +
-> >      > +static u64 decoded_ltr(u32 val)
-> >      > +{
-> >      > +     u64 decoded_latency;
-> >      > +     u32 value;
-> >      > +     u32 scale;
-> >      > +
-> >      > +     value =3D val & 0x03FF;
-> >      > +     scale =3D (val & 0x1C00) >> 10;
-> >      > +     decoded_latency =3D value * convert_e1000e_ltr_scale(scale=
-);
-> >      > +
-> >      > +     return decoded_latency;
-> >      > +}
-> >      > +
-> >      >   /**
-> >      >    *  e1000_platform_pm_pch_lpt - Set platform power management
-> >     values
-> >      >    *  @hw: pointer to the HW structure
-> >      > @@ -1059,7 +1080,7 @@ static s32 e1000_platform_pm_pch_lpt(struc=
-t
-> >     e1000_hw *hw, bool link)
-> >      >                                    E1000_PCI_LTR_CAP_LPT + 2,
-> >     &max_nosnoop);
-> >      >               max_ltr_enc =3D max_t(u16, max_snoop, max_nosnoop)=
-;
-> >      >
-> >      > -             if (lat_enc > max_ltr_enc)
-> >      > +             if (decoded_ltr(lat_enc) > decoded_ltr(max_ltr_enc=
-))
-> >      >                       lat_enc =3D max_ltr_enc;
-> >      >       }
-> >      >
-> >      >
-> >     sasha
-> >
->
+i40e/i40e_virtchnl_pf.c:180:35: error: 'struct pci_dev' has no member
+named 'physfn'; did you mean 'is_physfn'? 
 
---00000000000022b4dc05c5f5cecb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I'm going to drop this and wait for a version without this issue.
 
-<div dir=3D"ltr">I agree with you.<div>That&#39;s better code.</div></div><=
-br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Neftin,=
- Sasha &lt;<a href=3D"mailto:sasha.neftin@intel.com">sasha.neftin@intel.com=
-</a>&gt; =E4=BA=8E2021=E5=B9=B46=E6=9C=8830=E6=97=A5=E5=91=A8=E4=B8=89 =E4=
-=B8=8B=E5=8D=882:13=E5=86=99=E9=81=93=EF=BC=9A<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">On 6/29/2021 20:33, Yee Li wrote:<br>
-&gt; <br>
-&gt; Yes, 18874368ns &gt; 3145728ns.<br>
-&gt; But, 0xe40 &lt; 0x1003.<br>
-I got you. I would agree, direct comparison is error-prone. (10M is <br>
-impacted)<br>
-I would suggest do not use convert function. lat_en should rather <br>
-presented as lat_enc =3D scale x value:<br>
-Introduce two u16 variables, u16 lat_enc_d and u16 max_ltr_enc_d;<br>
-<br>
-lat_enc_d =3D (lat_enc &amp; 0x0x3ff) x (1U &lt;&lt; 5*((max_ltr_enc &amp; =
-0x1c00) &gt;&gt; 10))<br>
-<br>
-max_ltr_enc_d =3D (max_ltr_enc &amp; 0x0x3ff) x (1U &lt;&lt; 5*((max_ltr_en=
-c &amp; <br>
-0x1c00) &gt;&gt; 10))<br>
-<br>
-Then:<br>
-if (lat_enc_d &gt; max_ltr_enc_d)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 lat_enc =3D max_ltr_enc;<br>
-what do you think?<br>
-<br>
-&gt; <br>
-&gt; So, the final lat_enc is 0xe40.<br>
-&gt; (Latency encoded is less than maximum LTR encoded by platform)<br>
-&gt; <br>
-&gt; Neftin, Sasha &lt;<a href=3D"mailto:sasha.neftin@intel.com" target=3D"=
-_blank">sasha.neftin@intel.com</a> &lt;mailto:<a href=3D"mailto:sasha.nefti=
-n@intel.com" target=3D"_blank">sasha.neftin@intel.com</a>&gt;&gt; <br>
-&gt; =E4=BA=8E 2021=E5=B9=B46=E6=9C=8829=E6=97=A5=E5=91=A8=E4=BA=8C 22:49=
-=E5=86=99=E9=81=93=EF=BC=9A<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 6/29/2021 11:21, YeeLi wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Yeeli,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; In e1000e driver, a PCIe-like device, the max=
- snoop/no-snoop latency<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; is the upper limit.So, directly compare the s=
-ize of lat_enc and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; max_ltr_enc is incorrect.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0why?<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 In 1000Mbps, 0x8b9 &lt; 0=
-x1003, 189440 ns &lt; 3145728 ns, correct.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 In 100Mbps, 0xc3a &lt; 0x=
-1003, 1900544 ns &lt; 3145728 ns, correct.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 In 10Mbps, 0xe40 &lt; 0x1=
-003, 18874368 &gt; 3145728, incorrect.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Platform LTR encoded is 0x1003 - right. It is meant=
- 1048576ns x 3 =3D<br>
-&gt;=C2=A0 =C2=A0 =C2=A03145738ns.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Now,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0for 1000M: 0x08b9 =3D&gt; 185ns x 1024 =3D 189440ns=
- (you are correct)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0for 100M: 0x0c3a =3D&gt; 58ns x 32768 =3D 1900544ns=
- (correct)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0for 10M: 0x0e41 =3D&gt; 577ns x 32768 =3D 18907136n=
-s (ok?)<br>
-&gt;=C2=A0 =C2=A0 =C2=A018907136ns &gt; 3145738ns, (latency encoded is grea=
-t than maximum LTR<br>
-&gt;=C2=A0 =C2=A0 =C2=A0encoded by platform) - so, there is no point to wai=
-t more than platform<br>
-&gt;=C2=A0 =C2=A0 =C2=A0required, and lat_enc=3Dmax_ltr_enc. It is expected=
- and we sent right<br>
-&gt;=C2=A0 =C2=A0 =C2=A0value to the power management controller.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0What is the problem you try solve?<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Decoded the lat_enc and max_ltr_enc before co=
-mpare them is necessary.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: YeeLi &lt;<a href=3D"mailto:se=
-ven.yi.lee@gmail.com" target=3D"_blank">seven.yi.lee@gmail.com</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:seven.yi.lee@gmail.com=
-" target=3D"_blank">seven.yi.lee@gmail.com</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/e1000e=
-/ich8lan.c | 23<br>
-&gt;=C2=A0 =C2=A0 =C2=A0++++++++++++++++++++-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A01 file changed, 22 insertions(+),=
- 1 deletion(-)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/drivers/net/ethernet/intel/e1000=
-e/ich8lan.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0b/drivers/net/ethernet/intel/e1000e/ich8lan.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index 590ad110d383..3bff1b570b76 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/drivers/net/ethernet/intel/e1000e/ich8l=
-an.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/drivers/net/ethernet/intel/e1000e/ich8l=
-an.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -986,6 +986,27 @@ static s32 e1000_k1_work=
-around_lpt_lp(struct<br>
-&gt;=C2=A0 =C2=A0 =C2=A0e1000_hw *hw, bool link)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return ret_val;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static u32 convert_e1000e_ltr_scale(u32 val)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0if (val &gt; 5)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0return 0;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0return 1U &lt;&lt; (5 * =
-val);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +static u64 decoded_ltr(u32 val)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0u64 decoded_latency;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0u32 value;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0u32 scale;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0value =3D val &amp; 0x03=
-FF;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0scale =3D (val &amp; 0x1=
-C00) &gt;&gt; 10;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0decoded_latency =3D valu=
-e * convert_e1000e_ltr_scale(scale);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0return decoded_latency;<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0/**<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 *=C2=A0 e1000_platform_pm_pch_lp=
-t - Set platform power management<br>
-&gt;=C2=A0 =C2=A0 =C2=A0values<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 *=C2=A0 @hw: pointer to the HW s=
-tructure<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -1059,7 +1080,7 @@ static s32 e1000_platfo=
-rm_pm_pch_lpt(struct<br>
-&gt;=C2=A0 =C2=A0 =C2=A0e1000_hw *hw, bool link)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 E1000_PCI_LTR_CAP_LPT + 2,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&amp;max_nosnoop);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0max_ltr_enc =3D max_t(u16, max_snoop, max_nosnoop);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0if (lat_enc &gt; max_ltr_enc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0if (decoded_ltr(lat_enc) &gt; decoded_ltr(max_ltr_enc))<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0lat_enc =3D max_ltr_enc;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0sasha<br>
-&gt;<br>
-</blockquote></div>
-
---00000000000022b4dc05c5f5cecb--
-
---===============3327556111433571986==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+[1] https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-
+20210607/024590.html
+[2] https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-
+20210628/024868.html
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3327556111433571986==--
