@@ -1,81 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 746143BA22E
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jul 2021 16:27:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34D4B3BA4F7
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jul 2021 23:14:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1F5F960B96;
-	Fri,  2 Jul 2021 14:27:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 752804238F;
+	Fri,  2 Jul 2021 21:14:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BXU4GBW_Qkr3; Fri,  2 Jul 2021 14:27:54 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mujowDoVUDUc; Fri,  2 Jul 2021 21:14:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2787260BA4;
-	Fri,  2 Jul 2021 14:27:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 594BD4238D;
+	Fri,  2 Jul 2021 21:14:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8EB6D1BF335
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9163C1BF2C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 21:14:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8AEE660BB0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7FD52605CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 21:14:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m35yqtIA6tcS for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 Jul 2021 14:27:45 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x629.google.com (mail-pl1-x629.google.com
- [IPv6:2607:f8b0:4864:20::629])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0AC6E60BA2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:44 +0000 (UTC)
-Received: by mail-pl1-x629.google.com with SMTP id l19so424057plg.6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 02 Jul 2021 07:27:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=MjLUbGH0MGrlBm4hWaTXQtXhGGiwb0l8vU/Dm19x2C0=;
- b=qvUB4Hp1ERDHSFHgMOLgazpHt96sJfyf8ZvAgp5Oo4qQSxmfjqCrCLiMHcJ2rF3nSL
- ErUHEsL2O/SKK3E6BQQByPYgbTODERF02oCKw90ysLd6N3nob8B0D1KYsWO7Oud+WpvS
- vcMGnwcvzhpngkjnTmaDqYiedEBg+3HoDsDJ5nBucdCRbsM7wbNzvm4fqbfEImZTHSC5
- spJ9TGTH7jOt41HMyZWwkmLogq06oMyOYAEvr66NWZl7u5+1Gr239/s8Z8uwqGmi9S+r
- ISa7LSJ6uchuCfV+cv0l4l3wDNwFZSihBtfPRxhG8cGon0qTYecLfcrIq+9Qgw37ZCT5
- w9ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=MjLUbGH0MGrlBm4hWaTXQtXhGGiwb0l8vU/Dm19x2C0=;
- b=gOtnUw6tbjyW28FatjtLHQRLReoh/1bwWZ7IF28DWP42a5X5BdatCvhODmxUTNMwEA
- 8xkyfUn9AndScJjuqSW1w9XAhX2NWdKS4L2HmDGJzAH5qUO2qrWJJQUarU89Z+Mj24z/
- Ovh/8u0qh3oFF1qWt2STKfkNEWOg7tvFja2qelG1IhoithJQ8pM91IQIatuEKA9RIOPS
- V41vP/LL1Srgdk4lZ5EY9jVJnvvCFlcIV78EXuFrKvi93Qhk7vW6STlFj2Vg0c2Zb0SQ
- CXtaXHp1W/DLOqGtI9wQfzTBwNOWS/D0C2vxLDeOiIKpe8/5sMBwDrYcWXh70HHHlbx8
- e60w==
-X-Gm-Message-State: AOAM533OS0sS7domsLwH8vwhOeI+/tCi+XUXlkl1b9KrcGr9guWw0M5U
- f9+29RAeFXHZ8bIAjIbOKm4=
-X-Google-Smtp-Source: ABdhPJzuGqTXJAuqGlKdJAxPv/xVGKVmguNmlZOMHLMPfj9525bAE8E3BL5e8iGNoVfh+Br0u98U4w==
-X-Received: by 2002:a17:902:c611:b029:122:847c:66e9 with SMTP id
- r17-20020a170902c611b0290122847c66e9mr88936plr.82.1625236064509; 
- Fri, 02 Jul 2021 07:27:44 -0700 (PDT)
-Received: from localhost.localdomain ([49.173.165.50])
- by smtp.gmail.com with ESMTPSA id nr12sm12683747pjb.1.2021.07.02.07.27.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 07:27:44 -0700 (PDT)
-From: Taehee Yoo <ap420073@gmail.com>
-To: davem@davemloft.net, kuba@kernel.org, j.vosburgh@gmail.com,
- vfalico@gmail.com, andy@greyhouse.net, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, jarod@redhat.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Date: Fri,  2 Jul 2021 14:26:48 +0000
-Message-Id: <20210702142648.7677-9-ap420073@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210702142648.7677-1-ap420073@gmail.com>
+ with ESMTP id 600ajG0YTPjx for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 Jul 2021 21:14:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 087976068F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 21:14:32 +0000 (UTC)
+Received: from 1.general.jvosburgh.us.vpn ([10.172.68.206]
+ helo=famine.localdomain)
+ by youngberry.canonical.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
+ (envelope-from <jay.vosburgh@canonical.com>)
+ id 1lzQUT-0002oY-4X; Fri, 02 Jul 2021 21:14:25 +0000
+Received: by famine.localdomain (Postfix, from userid 1000)
+ id 5EE165FDD5; Fri,  2 Jul 2021 14:14:23 -0700 (PDT)
+Received: from famine (localhost [127.0.0.1])
+ by famine.localdomain (Postfix) with ESMTP id 57427A040B;
+ Fri,  2 Jul 2021 14:14:23 -0700 (PDT)
+From: Jay Vosburgh <jay.vosburgh@canonical.com>
+To: Taehee Yoo <ap420073@gmail.com>
+In-reply-to: <20210702142648.7677-7-ap420073@gmail.com>
 References: <20210702142648.7677-1-ap420073@gmail.com>
-Subject: [Intel-wired-lan] [PATCH net 8/8] bonding: fix suspicious RCU usage
- in bond_ipsec_offload_ok()
+ <20210702142648.7677-7-ap420073@gmail.com>
+Comments: In-reply-to Taehee Yoo <ap420073@gmail.com>
+ message dated "Fri, 02 Jul 2021 14:26:46 -0000."
+X-Mailer: MH-E 8.6+git; nmh 1.6; GNU Emacs 27.0.50
+MIME-Version: 1.0
+Content-ID: <14148.1625260463.1@famine>
+Date: Fri, 02 Jul 2021 14:14:23 -0700
+Message-ID: <14149.1625260463@famine>
+Subject: Re: [Intel-wired-lan] [PATCH net 6/8] bonding: disallow setting
+ nested bonding + ipsec offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,98 +69,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ap420073@gmail.com
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, vfalico@gmail.com, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, davem@davemloft.net, andy@greyhouse.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To dereference bond->curr_active_slave, it uses rcu_dereference().
-But it and the caller doesn't acquire RCU so a warning occurs.
-So add rcu_read_lock().
+Taehee Yoo <ap420073@gmail.com> wrote:
 
-Splat looks like:
-WARNING: suspicious RCU usage
-5.13.0-rc6+ #1179 Not tainted
-drivers/net/bonding/bond_main.c:571 suspicious
-rcu_dereference_check() usage!
+>bonding interface can be nested and it supports ipsec offload.
+>So, it allows setting the nested bonding + ipsec scenario.
+>But code does not support this scenario.
+>So, it should be disallowed.
+>
+>interface graph:
+>bond2
+> |
+>bond1
+> |
+>eth0
+>
+>The nested bonding + ipsec offload may not a real usecase.
+>So, disallowing this is fine.
 
-other info that might help us debug this:
+	Is a stack like "bond1 -> VLAN.XX -> bond2 -> eth0" also a
+problem?  I don't believe the change below will detect this
+configuration.
 
-rcu_scheduler_active = 2, debug_locks = 1
-1 lock held by ping/974:
- #0: ffff888109e7db70 (sk_lock-AF_INET){+.+.}-{0:0},
-at: raw_sendmsg+0x1303/0x2cb0
+	-J
 
-stack backtrace:
-CPU: 2 PID: 974 Comm: ping Not tainted 5.13.0-rc6+ #1179
-Call Trace:
- dump_stack+0xa4/0xe5
- bond_ipsec_offload_ok+0x1f4/0x260 [bonding]
- xfrm_output+0x179/0x890
- xfrm4_output+0xfa/0x410
- ? __xfrm4_output+0x4b0/0x4b0
- ? __ip_make_skb+0xecc/0x2030
- ? xfrm4_udp_encap_rcv+0x800/0x800
- ? ip_local_out+0x21/0x3a0
- ip_send_skb+0x37/0xa0
- raw_sendmsg+0x1bfd/0x2cb0
+>Fixes: 18cb261afd7b ("bonding: support hardware encryption offload to slaves")
+>Signed-off-by: Taehee Yoo <ap420073@gmail.com>
+>---
+> drivers/net/bonding/bond_main.c | 15 +++++++++------
+> 1 file changed, 9 insertions(+), 6 deletions(-)
+>
+>diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+>index 7659e1fab19e..f268e67cb2f0 100644
+>--- a/drivers/net/bonding/bond_main.c
+>+++ b/drivers/net/bonding/bond_main.c
+>@@ -419,8 +419,9 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs)
+> 	xs->xso.real_dev = slave->dev;
+> 	bond->xs = xs;
+> 
+>-	if (!(slave->dev->xfrmdev_ops
+>-	      && slave->dev->xfrmdev_ops->xdo_dev_state_add)) {
+>+	if (!slave->dev->xfrmdev_ops ||
+>+	    !slave->dev->xfrmdev_ops->xdo_dev_state_add ||
+>+	    netif_is_bond_master(slave->dev)) {
+> 		slave_warn(bond_dev, slave->dev, "Slave does not support ipsec offload\n");
+> 		rcu_read_unlock();
+> 		return -EINVAL;
+>@@ -453,8 +454,9 @@ static void bond_ipsec_del_sa(struct xfrm_state *xs)
+> 
+> 	xs->xso.real_dev = slave->dev;
+> 
+>-	if (!(slave->dev->xfrmdev_ops
+>-	      && slave->dev->xfrmdev_ops->xdo_dev_state_delete)) {
+>+	if (!slave->dev->xfrmdev_ops ||
+>+	    !slave->dev->xfrmdev_ops->xdo_dev_state_delete ||
+>+	    netif_is_bond_master(slave->dev)) {
+> 		slave_warn(bond_dev, slave->dev, "%s: no slave xdo_dev_state_delete\n", __func__);
+> 		goto out;
+> 	}
+>@@ -479,8 +481,9 @@ static bool bond_ipsec_offload_ok(struct sk_buff *skb, struct xfrm_state *xs)
+> 	if (BOND_MODE(bond) != BOND_MODE_ACTIVEBACKUP)
+> 		return true;
+> 
+>-	if (!(slave_dev->xfrmdev_ops
+>-	      && slave_dev->xfrmdev_ops->xdo_dev_offload_ok)) {
+>+	if (!slave_dev->xfrmdev_ops ||
+>+	    !slave_dev->xfrmdev_ops->xdo_dev_offload_ok ||
+>+	    netif_is_bond_master(slave_dev)) {
+> 		slave_warn(bond_dev, slave_dev, "%s: no slave xdo_dev_offload_ok\n", __func__);
+> 		return false;
+> 	}
+>-- 
+>2.17.1
+>
 
-Fixes: 18cb261afd7b ("bonding: support hardware encryption offload to slaves")
-Signed-off-by: Taehee Yoo <ap420073@gmail.com>
 ---
- drivers/net/bonding/bond_main.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
-index d2d37efb61b6..44c4509528f8 100644
---- a/drivers/net/bonding/bond_main.c
-+++ b/drivers/net/bonding/bond_main.c
-@@ -568,24 +568,34 @@ static bool bond_ipsec_offload_ok(struct sk_buff *skb, struct xfrm_state *xs)
- 	struct net_device *real_dev;
- 	struct slave *curr_active;
- 	struct bonding *bond;
-+	int err;
- 
- 	bond = netdev_priv(bond_dev);
-+	rcu_read_lock();
- 	curr_active = rcu_dereference(bond->curr_active_slave);
- 	real_dev = curr_active->dev;
- 
--	if (BOND_MODE(bond) != BOND_MODE_ACTIVEBACKUP)
--		return true;
-+	if (BOND_MODE(bond) != BOND_MODE_ACTIVEBACKUP) {
-+		err = true;
-+		goto out;
-+	}
- 
--	if (!xs->xso.real_dev)
--		return false;
-+	if (!xs->xso.real_dev) {
-+		err = false;
-+		goto out;
-+	}
- 
- 	if (!real_dev->xfrmdev_ops ||
- 	    !real_dev->xfrmdev_ops->xdo_dev_offload_ok ||
- 	    netif_is_bond_master(real_dev)) {
--		return false;
-+		err = false;
-+		goto out;
- 	}
- 
--	return real_dev->xfrmdev_ops->xdo_dev_offload_ok(skb, xs);
-+	err = real_dev->xfrmdev_ops->xdo_dev_offload_ok(skb, xs);
-+out:
-+	rcu_read_unlock();
-+	return err;
- }
- 
- static const struct xfrmdev_ops bond_xfrmdev_ops = {
--- 
-2.17.1
-
+	-Jay Vosburgh, jay.vosburgh@canonical.com
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
