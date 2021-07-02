@@ -1,84 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E19E73BA220
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jul 2021 16:27:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E25073BA221
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jul 2021 16:27:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 808B64041F;
-	Fri,  2 Jul 2021 14:27:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 22B2F60BA2;
+	Fri,  2 Jul 2021 14:27:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ourIHmc_-p3g; Fri,  2 Jul 2021 14:27:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 03f-ojk_9rHY; Fri,  2 Jul 2021 14:27:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EB9F740259;
-	Fri,  2 Jul 2021 14:27:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8FEFA60BA3;
+	Fri,  2 Jul 2021 14:27:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ECBF31BF335
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:22 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 281801BF335
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DBA9660BA3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 13C52423BF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M1_hW4GLRw8a for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 Jul 2021 14:27:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id g5GXRprO3yxj for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 Jul 2021 14:27:25 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
- [IPv6:2607:f8b0:4864:20::102b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B8A5C60BA0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:21 +0000 (UTC)
-Received: by mail-pj1-x102b.google.com with SMTP id
- p17-20020a17090b0111b02901723ab8d11fso6185679pjz.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 02 Jul 2021 07:27:21 -0700 (PDT)
+Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com
+ [IPv6:2607:f8b0:4864:20::62f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4EE29423BC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jul 2021 14:27:25 +0000 (UTC)
+Received: by mail-pl1-x62f.google.com with SMTP id i13so5625273plb.10
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 02 Jul 2021 07:27:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=aDViKPmzC5DeXMqC6l6nHzYC2hj1+d4hlR2ybtliY5s=;
- b=QORkh6h0BQBCokm1UHRNF6w12HV57wAz0Hl+jHMIsEFOw4JeTQKLYy41lruI+t5XY8
- HwcDmAmWBtxyNMxDp0jF6q0eZuRhaILy5qxo61bC+frlMUS4U1AmNkcpDXEmxXiltPFO
- 6S3vv4x0pxCLJ/WjhPiyLMw+rv2KKkHYiJvgB4wJaHLcnIYPyzi5ofV+T3Xsh+FwXFfu
- YDr8H1W1wsBBT3+4N0k461xVe36QXJCAbLEyIsRhFm4C6giAEwfP1aP1yCCrHlVzZbyh
- v8lu0ivpiLBsWrzQpy1PG45tJMrgRvruYKBDAXZLCL3t1AatZIY93fJLiymZbIIzi2LK
- lnog==
+ bh=5c9yonRBpikN+A7jwgmhiRsocYAMP+mu2erUEYpEtGs=;
+ b=sajdtdVWoa2Z4r8ijBO7Ldnv+JtO/hdY5my6Vt+xnEL0TKP+ril4eKdzsFOmqkhfUv
+ UVM1HyYRs+vFqBSrBpUY9psp/OMav7N9Q5vB7sBUWEra06XY9KYCfk6i5N64Re68PtTP
+ CGhWNqgJJq8snP/Sqt/Y23QKNDtbn+Mi1SOsiaUAwYYBOUDVxsEYn7UM23Q/rkppvU8L
+ LE/7AsF7zTjUxMgnSpI/ovrfkyh6BL3w0k9WpIfx2N5XB8cOaZBgp4IdVpVAwl40okxS
+ kq1b6+f8RJNsP/4ADdiLUtlHnutgHOU8/PLWoOGLvO7wJQXWfrqoxgZa/bjuwXyKZYUM
+ d4yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=aDViKPmzC5DeXMqC6l6nHzYC2hj1+d4hlR2ybtliY5s=;
- b=bO+rSpgUZj59xEg2dj9wQy8nEfjyt1uWX8t+L68vn5ppHJJcyAHzUtB4/MLD1YlpEW
- pm4rqQYlylLbV5Lum4HgwdLGyQFZuWb0GSWjT6wT5sKGbwKi4tP3KpXu3+xgv2cC9J7M
- 5vw8PyRunxOgDGoNtwZAcHH8GocuuNRaFEIUzwTWdLan3Lcjv/F4KVhFRom1VpZj5MEh
- bN1pcmdiWhBDATM+m5WHAHGkkkQHrY2yziutE3hz0JF1HeHhRXM1egY6mb9R6m0GRhgk
- gVPJ456LsQkyFlkuQn3k7JfOZH0KBaxaH5b6p0uD4FpQ7UWI4ycdQGrk7PTu2ujhYlYZ
- jIqg==
-X-Gm-Message-State: AOAM532IjeSo07IPlfQrvOdmv1OC0vh44Iz0xakBh2/+tMQoxCl8CGM+
- LverujJSOwvy20M3DKAhBIE=
-X-Google-Smtp-Source: ABdhPJyAG+rZexoxXvp0A0QlNt0sS20WBJ2rd9TNU/iLdbnWdl82fPk9DBnu6UQomKVSRqK4CHS0Xw==
-X-Received: by 2002:a17:90a:8992:: with SMTP id
- v18mr61000pjn.109.1625236041175; 
- Fri, 02 Jul 2021 07:27:21 -0700 (PDT)
+ bh=5c9yonRBpikN+A7jwgmhiRsocYAMP+mu2erUEYpEtGs=;
+ b=edGoP09BZqcjp9y2htiaPu2XZt/LtKl5BuUBdnFOQPPFKCOl92QrzpPJseygMDnMcu
+ b4N5BiWlF69QXz+zAuHLCaT8EOTZsXpxh0d7iBLRGxwnU6339GsEJxRtOnBkGtGfls27
+ 0YnI+ChjGHMzj/UQSAEl0nm4enhG+bzkMc7k3/U3r1vdbTn7Pnusvcls7IoYHdMqQHN+
+ TWy9hFvXeEOcM9AvrnYm9Fpzauqi1goZI9br8a5yKSmh5wcwt4t8oIIpkQAkQMUR3c+8
+ ud08z5xCxOq+7kr35CGiXdIlOk8Cti4NOJWpVuJXZSpfEJ1Tk2mj5gtrqgCyUm0mmC0k
+ tVOQ==
+X-Gm-Message-State: AOAM533OEw505w8bHPG0JnHbkP22ip+4hMm9Ewgdc1LfFkpkrzcQiFOV
+ klX4YZuHl+p78Z4kvne6wOeWQxEN/CFOpw==
+X-Google-Smtp-Source: ABdhPJyweG76uBYOJYrQh88/3auaWugmpGjNw3MTiddU2Bdwiq6UZn7UyD2uJhbxJtTXKQ5kHnauHQ==
+X-Received: by 2002:a17:90b:1403:: with SMTP id
+ jo3mr91045pjb.160.1625236044705; 
+ Fri, 02 Jul 2021 07:27:24 -0700 (PDT)
 Received: from localhost.localdomain ([49.173.165.50])
- by smtp.gmail.com with ESMTPSA id nr12sm12683747pjb.1.2021.07.02.07.27.18
+ by smtp.gmail.com with ESMTPSA id nr12sm12683747pjb.1.2021.07.02.07.27.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 07:27:20 -0700 (PDT)
+ Fri, 02 Jul 2021 07:27:23 -0700 (PDT)
 From: Taehee Yoo <ap420073@gmail.com>
 To: davem@davemloft.net, kuba@kernel.org, j.vosburgh@gmail.com,
  vfalico@gmail.com, andy@greyhouse.net, jesse.brandeburg@intel.com,
  anthony.l.nguyen@intel.com, jarod@redhat.com, netdev@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org
-Date: Fri,  2 Jul 2021 14:26:41 +0000
-Message-Id: <20210702142648.7677-2-ap420073@gmail.com>
+Date: Fri,  2 Jul 2021 14:26:42 +0000
+Message-Id: <20210702142648.7677-3-ap420073@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210702142648.7677-1-ap420073@gmail.com>
 References: <20210702142648.7677-1-ap420073@gmail.com>
-Subject: [Intel-wired-lan] [PATCH net 1/8] bonding: fix suspicious RCU usage
- in bond_ipsec_add_sa()
+Subject: [Intel-wired-lan] [PATCH net 2/8] bonding: fix null dereference in
+ bond_ipsec_add_sa()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +97,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To dereference bond->curr_active_slave, it uses rcu_dereference().
-But it and the caller doesn't acquire RCU so a warning occurs.
-So add rcu_read_lock().
+If bond doesn't have real device, bond->curr_active_slave is null.
+But bond_ipsec_add_sa() dereferences bond->curr_active_slave without
+null checking.
+So, null-ptr-deref would occur.
 
 Test commands:
-    ip link add dummy0 type dummy
     ip link add bond0 type bond
-    ip link set dummy0 master bond0
-    ip link set dummy0 up
     ip link set bond0 up
-    ip x s add proto esp dst 14.1.1.1 src 15.1.1.1 spi 0x07 \
-	    mode transport \
-	    reqid 0x07 replay-window 32 aead 'rfc4106(gcm(aes))' \
-	    0x44434241343332312423222114131211f4f3f2f1 128 sel \
-	    src 14.0.0.52/24 dst 14.0.0.70/24 proto tcp offload \
-	    dev bond0 dir in
+    ip x s add proto esp dst 14.1.1.1 src 15.1.1.1 spi \
+0x07 mode transport reqid 0x07 replay-window 32 aead 'rfc4106(gcm(aes))' \
+0x44434241343332312423222114131211f4f3f2f1 128 sel src 14.0.0.52/24 \
+dst 14.0.0.70/24 proto tcp offload dev bond0 dir in
 
 Splat looks like:
-=============================
-WARNING: suspicious RCU usage
-5.13.0-rc3+ #1168 Not tainted
------------------------------
-drivers/net/bonding/bond_main.c:411 suspicious rcu_dereference_check() usage!
-
-other info that might help us debug this:
-
-rcu_scheduler_active = 2, debug_locks = 1
-1 lock held by ip/684:
- #0: ffffffff9a2757c0 (&net->xfrm.xfrm_cfg_mutex){+.+.}-{3:3},
-at: xfrm_netlink_rcv+0x59/0x80 [xfrm_user]
-   55.191733][  T684] stack backtrace:
-CPU: 0 PID: 684 Comm: ip Not tainted 5.13.0-rc3+ #1168
+KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007]
+CPU: 4 PID: 680 Comm: ip Not tainted 5.13.0-rc3+ #1168
+RIP: 0010:bond_ipsec_add_sa+0xc4/0x2e0 [bonding]
+Code: 85 21 02 00 00 4d 8b a6 48 0c 00 00 e8 75 58 44 ce 85 c0 0f 85 14
+01 00 00 48 b8 00 00 00 00 00 fc ff df 4c 89 e2 48 c1 ea 03 <80> 3c 02
+00 0f 85 fc 01 00 00 48 8d bb e0 02 00 00 4d 8b 2c 24 48
+RSP: 0018:ffff88810946f508 EFLAGS: 00010246
+RAX: dffffc0000000000 RBX: ffff88810b4e8040 RCX: 0000000000000001
+RDX: 0000000000000000 RSI: ffffffff8fe34280 RDI: ffff888115abe100
+RBP: ffff88810946f528 R08: 0000000000000003 R09: fffffbfff2287e11
+R10: 0000000000000001 R11: ffff888115abe0c8 R12: 0000000000000000
+R13: ffffffffc0aea9a0 R14: ffff88800d7d2000 R15: ffff88810b4e8330
+FS:  00007efc5552e680(0000) GS:ffff888119c00000(0000)
+knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055c2530dbf40 CR3: 0000000103056004 CR4: 00000000003706e0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
 Call Trace:
- dump_stack+0xa4/0xe5
- bond_ipsec_add_sa+0x18c/0x1f0 [bonding]
  xfrm_dev_state_add+0x2a9/0x770
  ? memcpy+0x38/0x60
  xfrm_add_sa+0x2278/0x3b10 [xfrm_user]
@@ -152,46 +149,30 @@ Call Trace:
  netlink_unicast+0x41c/0x610
  ? netlink_attachskb+0x710/0x710
  netlink_sendmsg+0x6b9/0xb70
-[ ... ]
+[ ...]
 
 Fixes: 18cb261afd7b ("bonding: support hardware encryption offload to slaves")
 Signed-off-by: Taehee Yoo <ap420073@gmail.com>
 ---
- drivers/net/bonding/bond_main.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/net/bonding/bond_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
-index 03b1a93d7fea..fd7b7f894917 100644
+index fd7b7f894917..e1009e169d42 100644
 --- a/drivers/net/bonding/bond_main.c
 +++ b/drivers/net/bonding/bond_main.c
-@@ -403,10 +403,12 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs)
- 	struct net_device *bond_dev = xs->xso.dev;
- 	struct bonding *bond;
- 	struct slave *slave;
-+	int err;
- 
- 	if (!bond_dev)
- 		return -EINVAL;
- 
-+	rcu_read_lock();
+@@ -411,6 +411,11 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs)
+ 	rcu_read_lock();
  	bond = netdev_priv(bond_dev);
  	slave = rcu_dereference(bond->curr_active_slave);
- 	xs->xso.real_dev = slave->dev;
-@@ -415,10 +417,13 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs)
- 	if (!(slave->dev->xfrmdev_ops
- 	      && slave->dev->xfrmdev_ops->xdo_dev_state_add)) {
- 		slave_warn(bond_dev, slave->dev, "Slave does not support ipsec offload\n");
++	if (!slave) {
 +		rcu_read_unlock();
- 		return -EINVAL;
- 	}
++		return -ENODEV;
++	}
++
+ 	xs->xso.real_dev = slave->dev;
+ 	bond->xs = xs;
  
--	return slave->dev->xfrmdev_ops->xdo_dev_state_add(xs);
-+	err = slave->dev->xfrmdev_ops->xdo_dev_state_add(xs);
-+	rcu_read_unlock();
-+	return err;
- }
- 
- /**
 -- 
 2.17.1
 
