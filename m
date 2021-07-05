@@ -1,61 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49FE43BC3EE
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 00:35:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 516173BC4ED
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 04:52:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 60314608E7;
-	Mon,  5 Jul 2021 22:35:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D0ED40459;
+	Tue,  6 Jul 2021 02:52:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mjlXqoZNpHUo; Mon,  5 Jul 2021 22:35:46 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id quYU_sgxxu2b; Tue,  6 Jul 2021 02:52:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5C42860777;
-	Mon,  5 Jul 2021 22:35:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 644554041E;
+	Tue,  6 Jul 2021 02:52:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A859D1BF580
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 14:28:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D09B81BF392
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 23:02:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A3E13605A5
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 14:28:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BBA3C60737
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 23:02:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RdcOIf78r-Ne for <intel-wired-lan@lists.osuosl.org>;
- Sun,  4 Jul 2021 14:28:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 048CB6058D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 14:28:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3F0E1613DA;
- Sun,  4 Jul 2021 14:28:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625408891;
- bh=U1oBp2gmy6ssXIaqGEG+DjQ5wAtfrSkeZH5kSDqQSp0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ePyMBFadVb+Lm0dvanwHLQGAqt21H1alU3L/XLJtPgVacczgDPrhi0C+PFPYNubog
- rgfZg4UkpUa501hfbeb1hcPiwl/WbUa3Z57wO3/VdKeczlHx0n1fBk2eEWv7QNaXlf
- ABGvmSYh5rzoGJuzEu4d736X3Znfkq92zk1pw7BpV92c/auhkztJko4jd7kcCqMjHJ
- xmdbtj046Cg5+KWTdQ/m8X3hUPDxbGN4aLKA4duhdATHKP/YriMBOoop4fzGrt2Oxd
- xTjzyW3H0LxvfD++7KhGGMfLFb+s/AEyKIoywjVeG7/xmybuH5NFMS5WcsrVhJHhlu
- 2jN+w5HGh/YKw==
-Received: by pali.im (Postfix)
- id B00009CA; Sun,  4 Jul 2021 16:28:08 +0200 (CEST)
-Date: Sun, 4 Jul 2021 16:28:08 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Aaron Ma <aaron.ma@canonical.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-Message-ID: <20210704142808.f43jbcufk37hundo@pali>
+ with ESMTP id kBrxFMsrsFSk for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jul 2021 23:02:16 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-f48.google.com (mail-lf1-f48.google.com
+ [209.85.167.48])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 04094606F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 23:02:15 +0000 (UTC)
+Received: by mail-lf1-f48.google.com with SMTP id f13so8141052lfh.6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 05 Jul 2021 16:02:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=opgV/1dSlT5CgMY/0CX/nuPAXjFoizd2I+M4agkbai8=;
+ b=ACwX+1GeoTQIhcM8Vvuv82ZgxGesCE/a3rlNidM6bCVqYO3kk9XqVk9wOGiDSzpSuM
+ aqvjVojs1nxcxvOBqGAcFHmeCefIFjQFJl5Kk0fjhEjeX+MfsasMuxqytQH4NcFGQnsl
+ bIWlLDhcvWJkJBbNun0X0wsMmxN70JX+VQ8DPaIZCkRG4PWY3TBZYOlJraCn5FTsUaUN
+ fuWmzukSMs91wXUb43IGlS0qd5y9Li1iyeVPwubyKxn6Pyeg0HOp5cybE19ICK/zCw5Y
+ LK3pORrBwyHk7hUde8M2XrGLvU/ZHg0Tn1EXRHhXDtCqZKyWh50XKltq86cMGBCH9wHI
+ CbAw==
+X-Gm-Message-State: AOAM530WAQN00DIoF8L5Ekc1ws7wBcA8DECaxWbtW1XuxWZnc0iK4kSE
+ Yis+hCYe3vA+Qcn93yrNZzM=
+X-Google-Smtp-Source: ABdhPJxGcdoMlt+O4KlMPB6m89KUIwV/UznGIwolBu//VdjxQJJ6rv4GIHsixITGAHepa6Y807nsfQ==
+X-Received: by 2002:a05:6512:238b:: with SMTP id
+ c11mr4669725lfv.548.1625526133811; 
+ Mon, 05 Jul 2021 16:02:13 -0700 (PDT)
+Received: from rocinante ([95.155.85.46])
+ by smtp.gmail.com with ESMTPSA id s21sm1208097lfc.249.2021.07.05.16.02.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Jul 2021 16:02:13 -0700 (PDT)
+Date: Tue, 6 Jul 2021 01:02:12 +0200
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+Message-ID: <20210705230212.GC142312@rocinante>
 References: <20210702045120.22855-1-aaron.ma@canonical.com>
+ <20210704142808.f43jbcufk37hundo@pali>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210702045120.22855-1-aaron.ma@canonical.com>
-User-Agent: NeoMutt/20180716
-X-Mailman-Approved-At: Mon, 05 Jul 2021 22:35:37 +0000
+In-Reply-To: <20210704142808.f43jbcufk37hundo@pali>
+X-Mailman-Approved-At: Tue, 06 Jul 2021 02:52:47 +0000
 Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
  is removed
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -71,122 +80,42 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-pci@vger.kernel.org, kuba@kernel.org, davem@davemloft.net
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-+ Bjorn, Krzysztof and linux-pci
+Hi Pali,
 
-On Friday 02 July 2021 12:51:19 Aaron Ma wrote:
-> Check PCI state when rd/wr iomem.
-> Implement wr32 function as rd32 too.
-> 
-> When unplug TBT dock with i225, rd/wr PCI iomem will cause error log:
-> Trace:
-> BUG: unable to handle page fault for address: 000000000000b604
-> Oops: 0000 [#1] SMP NOPTI
-> RIP: 0010:igc_rd32+0x1c/0x90 [igc]
-> Call Trace:
-> igc_ptp_suspend+0x6c/0xa0 [igc]
-> igc_ptp_stop+0x12/0x50 [igc]
-> igc_remove+0x7f/0x1c0 [igc]
-> pci_device_remove+0x3e/0xb0
-> __device_release_driver+0x181/0x240
-> 
-> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 16 ++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_regs.h |  7 ++-----
->  2 files changed, 18 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index f1adf154ec4a..606b72cb6193 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -5292,6 +5292,10 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
->  	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
->  	u32 value = 0;
->  
-> +	if (igc->pdev &&
-> +		igc->pdev->error_state == pci_channel_io_perm_failure)
+[...]
+> Aaron: can you check if pci_dev_is_disconnected() is really something
+> which should be used and it helps you?
 
-Hello! This code pattern and commit message looks like that we could use
-pci_dev_is_disconnected() helper function for checking if device is
-still connected or was disconnected.
+While having a closer look, I've noticed that quite a few of the network
+drivers handle this somewhat, as I see that a lot of them have some sort
+of I/O error handles set where a check for "pci_channel_io_perm_failure"
+seem to be having place.  This is also true for this driver looking at
+the igc_io_error_detected().
 
-Apparently pci_dev_is_disconnected() is defined only in private header
-file drivers/pci/pci.h and not in public include/linux/pci.h.
+Is this not working for the igc driver?  Or is this for something
+completely different?
 
-Aaron: can you check if pci_dev_is_disconnected() is really something
-which should be used and it helps you?
+Having said all that, I am not an expert in network drivers, so pardon
+me if I am asking about something completely different, and I apologise
+if that is the case.
 
-Bjorn, Krzysztof: what do you think about lifting helper function
-pci_dev_is_disconnected() to be available to all drivers and not only in
-PCI subsystem?
+> Bjorn, Krzysztof: what do you think about lifting helper function
+> pci_dev_is_disconnected() to be available to all drivers and not only in
+> PCI subsystem?
 
-I think that such helper function makes driver code more readable and
-can be useful also for other drivers which are checking if return value
-is all F's.
+No objections from me, if we believe it's useful and that it might
+encourage people to use a common API.  Currently, I can see at least
+five potential users of this helper.
 
-> +		return 0;
-
-Aaron: should not you return all F's on error? Because few lines below
-in this function is returned value with all F's when PCIe link lost.
-
-> +
->  	value = readl(&hw_addr[reg]);
-
-Anyway, this code looks to be racy. When pci_channel_io_perm_failure is
-set (e.g. by hotplug interrupt) after checking for pdev->error_state and
-prior executing above readl() then mentioned fatal error still occurs.
-
->  
->  	/* reads should not return all F's */
-> @@ -5308,6 +5312,18 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
->  	return value;
->  }
->  
-> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val)
-> +{
-> +	struct igc_adapter *igc = container_of(hw, struct igc_adapter, hw);
-> +	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
-> +
-> +	if (igc->pdev &&
-> +		igc->pdev->error_state == pci_channel_io_perm_failure)
-> +		return;
-> +
-> +	writel((val), &hw_addr[(reg)]);
-> +}
-> +
->  int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
->  {
->  	struct igc_mac_info *mac = &adapter->hw.mac;
-> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-> index cc174853554b..eb4be87d0e8b 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-> @@ -260,13 +260,10 @@ struct igc_hw;
->  u32 igc_rd32(struct igc_hw *hw, u32 reg);
->  
->  /* write operations, indexed using DWORDS */
-> -#define wr32(reg, val) \
-> -do { \
-> -	u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
-> -	writel((val), &hw_addr[(reg)]); \
-> -} while (0)
-> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val);
->  
->  #define rd32(reg) (igc_rd32(hw, reg))
-> +#define wr32(reg, val) (igc_wr32(hw, reg, val))
->  
->  #define wrfl() ((void)rd32(IGC_STATUS))
->  
-> -- 
-> 2.30.2
-> 
+	Krzysztof
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
