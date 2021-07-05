@@ -1,68 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C71833BBC73
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jul 2021 13:54:54 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D89A93BC0E1
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jul 2021 17:38:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23F2C83A05;
-	Mon,  5 Jul 2021 11:54:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 655C1831BD;
+	Mon,  5 Jul 2021 15:38:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uP1l_ZP-9D4J; Mon,  5 Jul 2021 11:54:52 +0000 (UTC)
+	with ESMTP id LbA-ttfP5gCX; Mon,  5 Jul 2021 15:38:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2AEAB8379F;
-	Mon,  5 Jul 2021 11:54:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8634B831A5;
+	Mon,  5 Jul 2021 15:38:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 096F21BF31A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 11:54:48 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BC681BF39A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 15:38:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0398040478
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 11:54:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8175040164
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 15:38:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mVHG-OpPOsx3 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jul 2021 11:54:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4077640364
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 11:54:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10035"; a="196249655"
-X-IronPort-AV: E=Sophos;i="5.83,325,1616482800"; d="scan'208";a="196249655"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2021 04:54:44 -0700
-X-IronPort-AV: E=Sophos;i="5.83,325,1616482800"; d="scan'208";a="485477393"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.185.169.17])
- ([10.185.169.17])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2021 04:54:41 -0700
-To: Aaron Ma <aaron.ma@canonical.com>, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, "Edri, Michael" <michael.edri@intel.com>,
- "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
- "Shalev, Avi" <avi.shalev@intel.com>,
- "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
- "Neftin, Sasha" <sasha.neftin@intel.com>
-References: <20210702045120.22855-1-aaron.ma@canonical.com>
- <20210702045120.22855-2-aaron.ma@canonical.com>
- <613e2106-940a-49ed-6621-0bb00bc7dca5@intel.com>
- <ad3d2d01-1d0a-8887-b057-e6a9531a05f4@canonical.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <f9f9408e-9ba3-7ed9-acc2-1c71913b04f0@intel.com>
-Date: Mon, 5 Jul 2021 14:54:39 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <ad3d2d01-1d0a-8887-b057-e6a9531a05f4@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] igc: wait for the MAC copy when
- enabled MAC passthrough
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XjFyJLgxGF-h for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jul 2021 15:38:25 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com
+ [IPv6:2607:f8b0:4864:20::633])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EA966400EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 15:38:25 +0000 (UTC)
+Received: by mail-pl1-x633.google.com with SMTP id u19so10448134plc.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 05 Jul 2021 08:38:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=6EsKOTvWOjUQo1NWlcS80O57gWZwdcGLpYfT4315Shs=;
+ b=uS/eo1JGtoUHrEoOmxaioV2Dkl3y80LdVCVjTEXsHwDWywF6WmXuenY1Qh0YTtfRNk
+ cOEpBfitkBB7bYpnkvW4Kr3KZ4R3gYCGsXjYsG3GFPysmB+BsSiIU6R5zrW+ADIJNX78
+ aboiERm4zo5PwQYCuHoNwuNdtx9K21UM8JrqvV14Jo+S7/VuZdwCuKv01MGRSekECAsi
+ uhB3CuO7CvVp+RRpJCuMoHgDrzXNg9F2gBcJIPZZSbeqoiBkaQqRlyXE8mfQDYEWii11
+ Xctj3zanXQp7jBONGWm76UBVd/o7siWxjyMmowZfZmPHFwkWnVsla/DAwxUkde286Cpv
+ +epQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=6EsKOTvWOjUQo1NWlcS80O57gWZwdcGLpYfT4315Shs=;
+ b=Et6FeGO0rVUtC3uDZbEFATighlgJF0rugV8taiTcYmf1n3k0mj1CkIbcyDXISDeNKK
+ bI4aYzLDmXvPPlEHbPAhviNrxrBTQBLF7JBQU43RAH608552fQMV3HNK1F0bRWQArajI
+ Ip/GnnG0isxUTN0OqAKlfsFJFHycsHdEX1Bt8iXbg9tkBgdf46FqAYzzFV4y06PxnZrp
+ yhpxK99AS/lsoWU4JtHtTXQOruq9apt8Q3JS8/drIVnXEp4p9GaBPMTE7KNGy9IIgOpR
+ tU3LMkQ4fZCFP9LA+y/FfTitVm1F3fKUddY0cln66GFrPNkJZYIuuEJjdU9PKkeiuLbK
+ QIqg==
+X-Gm-Message-State: AOAM531Gy8Ko698eqqIQZo5mw8BsfR5YCoMbU8Ehwmedu228icv1ou6F
+ 5Mr6tEy/xwgkLxabvwqjT6c=
+X-Google-Smtp-Source: ABdhPJzspn9E8JZ2oPLoi76w30PyAlKf/Z9s/OTru37hzWbSD+LmYJRhgCZepXJXS5CWMNESF9b8Gg==
+X-Received: by 2002:a17:902:7c91:b029:129:8c0f:853 with SMTP id
+ y17-20020a1709027c91b02901298c0f0853mr5315027pll.62.1625499505378; 
+ Mon, 05 Jul 2021 08:38:25 -0700 (PDT)
+Received: from localhost.localdomain ([49.173.165.50])
+ by smtp.gmail.com with ESMTPSA id k10sm9310353pfp.63.2021.07.05.08.38.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Jul 2021 08:38:24 -0700 (PDT)
+From: Taehee Yoo <ap420073@gmail.com>
+To: davem@davemloft.net, kuba@kernel.org, dsahern@kernel.org,
+ netdev@vger.kernel.org, j.vosburgh@gmail.com, vfalico@gmail.com,
+ andy@greyhouse.net, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ jarod@redhat.com, intel-wired-lan@lists.osuosl.org
+Date: Mon,  5 Jul 2021 15:38:05 +0000
+Message-Id: <20210705153814.11453-1-ap420073@gmail.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v2 0/9] net: fix bonding ipsec offload
+ problems
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,56 +87,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: ap420073@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gNy81LzIwMjEgMTA6MzgsIEFhcm9uIE1hIHdyb3RlOgo+IAo+IAo+IE9uIDcvNC8yMSAxOjM2
-IFBNLCBOZWZ0aW4sIFNhc2hhIHdyb3RlOgo+PiBPbiA3LzIvMjAyMSAwNzo1MSwgQWFyb24gTWEg
-d3JvdGU6Cj4+PiBTdWNoIGFzIGRvY2sgaG90IHBsdWcgZXZlbnQgd2hlbiBydW50aW1lLCBmb3Ig
-aGFyZHdhcmUgaW1wbGVtZW50YXRpb24sCj4+PiB0aGUgTUFDIGNvcHkgdGFrZXMgbGVzcyB0aGFu
-IG9uZSBzZWNvbmQgd2hlbiBCSU9TIGVuYWJsZWQgTUFDIAo+Pj4gcGFzc3Rocm91Z2guCj4+PiBB
-ZnRlciB0ZXN0IG9uIExlbm92byBUQlQ0IGRvY2ssIDYwMG1zIGlzIGVub3VnaCB0byB1cGRhdGUg
-dGhlCj4+PiBNQUMgYWRkcmVzcy4KPj4+IE90aGVyd2lzZSBldGhlcm5ldCBmYWlscyB0byB3b3Jr
-Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEFhcm9uIE1hIDxhYXJvbi5tYUBjYW5vbmljYWwuY29t
-Pgo+Pj4gLS0tCj4+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4u
-YyB8IDMgKysrCj4+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4+Pgo+Pj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jIAo+
-Pj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4uYwo+Pj4gaW5kZXgg
-NjA2YjcyY2I2MTkzLi5jOGJjNWYwODkyNTUgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4uYwo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaWdjL2lnY19tYWluLmMKPj4+IEBAIC01NDY4LDYgKzU0NjgsOSBAQCBzdGF0aWMg
-aW50IGlnY19wcm9iZShzdHJ1Y3QgcGNpX2RldiAqcGRldiwKPj4+IMKgwqDCoMKgwqAgbWVtY3B5
-KCZody0+bWFjLm9wcywgZWktPm1hY19vcHMsIHNpemVvZihody0+bWFjLm9wcykpOwo+Pj4gwqDC
-oMKgwqDCoCBtZW1jcHkoJmh3LT5waHkub3BzLCBlaS0+cGh5X29wcywgc2l6ZW9mKGh3LT5waHku
-b3BzKSk7Cj4+PiArwqDCoMKgIGlmIChwY2lfaXNfdGh1bmRlcmJvbHRfYXR0YWNoZWQocGRldikg
-PiArwqDCoMKgwqDCoMKgwqAgbXNsZWVwKDYwMCk7Cj4+IEkgYmVsaWV2ZSBpdCBpcyBhIGJpdCBm
-cmFnaWxlLiBJIHdvdWxkIHJlY29tbWVuZCBoZXJlIGxvb2sgZm9yIGFub3RoZXIgCj4+IGluZGlj
-YXRpb24gaW5zdGVhZCBvZiBkZWxheS4gQ2FuIHdlIHBvbGwgZm9yIGEgJ3BjaV9jaGFubmVsX2lv
-X25vcm1hbCcgCj4+IHN0YXRlPyAoaWdjLT5wZGV2LT5lcnJvcl9zdGF0ZSA9PSBwY2lfY2hhbm5l
-bF9pb19ub3JtYWwpCj4gCj4gSGkgc2FzaGEsCj4gSW4gdGhpcyBzaXR1YXRpb24sIHRoZSBlcnJv
-cl9zdGF0ZSBpcyBhbHdheXMgcGNpX2NoYW5uZWxfaW9fbm9ybWFsLgpPay4KPiBUaGUgZGVsYXkg
-aXMgbmVjZXNzYXJ5Lgo+IAo+IFJlZmVyIHRvICI2MjcyMzktSW50ZWzCriBFdGhlcm5ldCBDb250
-cm9sbGVyIAo+IEkyMjUtTUFDLUFkZHJlc3MtUGFzc3Rocm91Z2gtcmV2MS4yIgo+IHNlY3Rpb24g
-IjMuNQo+ICDCoFRpbWluZyBDb25zaWRlcmF0aW9ucyI6CkhlbGxvIEFhcm9uLCBUaGFua3MgdG8g
-cG9pbnQgbWUgb24gdGhpcyBkb2N1bWVudC4gSSBzZWUuLi4gVGhpcyBpcyAKcmVjb21tZW5kYXRp
-b24gZm9yIFdpbmRvd3MgZHJpdmVyLiBBbnl3YXksICJkZWxheSIgYXBwcm9hY2ggaXMgCmVycm9y
-LXByb25lLiBXZSBuZWVkIHJhdGhlciBhc2sgZm9yIE1ORyBGVyBjb25maXJtYXRpb24gKG1lc3Nh
-Z2UpIHRoYXQgCk1BQyBhZGRyZXNzIGlzIGNvcGllZC4KQ2FuIHdlIGNhbGwgKGluIGNhc2Ugd2Ug
-a25vdyB0aGF0IE1ORyBGVyBjb3BpZWQgTUFDIGFkZHJlc3MpOgppZ2NfcmFyX3NldCAobWV0aG9k
-IGZyb20gaWdjX21hYy5jKSwgdXBkYXRlIHRoZSBtYWMuYWRkciBhbmQgdGhlbiAKcGVyZm9ybSI6
-IG1lbWNweShuZXRkZXYtPmRldl9hZGRyLCBody0+bWFjLmFkZHIsIG5ldGRldi0+YWRkcl9sZW4p
-Oz8KCj4gIkZvciBoYXJkd2FyZSBpbXBsZW1lbnRhdGlvbiwKPiAKPiB3aGVuIHRoZSBvcGVyYXRp
-bmcgc3lzdGVtIGlzIGFscmVhZHkgcnVubmluZywgdGhlIE1BQyBjb3B5IG11c3QgaGFwcGVuIAo+
-IG5vdCBtb3JlIHRoYW4gb25lCj4gCj4gc2Vjb25kIGFmdGVyIFRCVCBsaW5rIGlzIGVzdGFibGlz
-aGVkLgo+IHRoZSBJMjI1IFdpbmRvd3MgZHJpdmVyIHByZXZlbnRzIHRoZSBvcGVyYXRpbmcKPiAK
-PiBzeXN0ZW0gZnJvbSBkZXRlY3RpbmcgdGhlIEkyMjUgZm9yIG9uZSBzZWNvbmQuIFRoaXMgYWxs
-b3dzIGVub3VnaCB0aW1lIAo+IGZvciBoYXJkd2FyZSB0byB1cGRhdGUgdGhlCj4gCj4gTUFDIGFk
-ZHJlc3MuIgo+IAo+IFRoYW5rcyBzYXNoYSwKPiBBYXJvbgo+IAo+Pj4gKwo+Pj4gwqDCoMKgwqDC
-oCAvKiBJbml0aWFsaXplIHNrZXctc3BlY2lmaWMgY29uc3RhbnRzICovCj4+PiDCoMKgwqDCoMKg
-IGVyciA9IGVpLT5nZXRfaW52YXJpYW50cyhodyk7Cj4+PiDCoMKgwqDCoMKgIGlmIChlcnIpCj4+
-Pgo+PiBUaGFua3MgQWFyb24sCj4+IHNhc2hhClNhc2hhCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50
-ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4v
-bGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+This series fixes some problems related to bonding ipsec offload.
+
+The 1, 5, and 8th patches are to add a missing rcu_read_lock().
+The 2nd patch is to add null check code to bond_ipsec_add_sa.
+When bonding interface doesn't have an active real interface, the
+bond->curr_active_slave pointer is null.
+But bond_ipsec_add_sa() uses that pointer without null check.
+So that it results in null-ptr-deref.
+The 3 and 4th patches are to replace xs->xso.dev with xs->xso.real_dev.
+The 6th patch is to disallow to set ipsec offload if a real interface
+type is bonding.
+The 7th patch is to add struct bond_ipsec to manage SA.
+If bond mode is changed, or active real interface is changed, SA should
+be removed from old current active real interface then it should be added
+to new active real interface.
+But it can't, because it doesn't manage SA.
+The 9th patch is to fix incorrect return value of bond_ipsec_offload_ok().
+
+v1 -> v2:
+ - Add 9th patch.
+ - Do not print warning when there is no SA in bond_ipsec_add_sa_all().
+ - Add comment for ipsec_lock.
+
+Taehee Yoo (9):
+  bonding: fix suspicious RCU usage in bond_ipsec_add_sa()
+  bonding: fix null dereference in bond_ipsec_add_sa()
+  net: netdevsim: use xso.real_dev instead of xso.dev in callback
+    functions of struct xfrmdev_ops
+  ixgbevf: use xso.real_dev instead of xso.dev in callback functions of
+    struct xfrmdev_ops
+  bonding: fix suspicious RCU usage in bond_ipsec_del_sa()
+  bonding: disallow setting nested bonding + ipsec offload
+  bonding: Add struct bond_ipesc to manage SA
+  bonding: fix suspicious RCU usage in bond_ipsec_offload_ok()
+  bonding: fix incorrect return value of bond_ipsec_offload_ok()
+
+ drivers/net/bonding/bond_main.c            | 181 +++++++++++++++++----
+ drivers/net/ethernet/intel/ixgbevf/ipsec.c |  20 ++-
+ drivers/net/netdevsim/ipsec.c              |   8 +-
+ include/net/bonding.h                      |   9 +-
+ 4 files changed, 178 insertions(+), 40 deletions(-)
+
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
