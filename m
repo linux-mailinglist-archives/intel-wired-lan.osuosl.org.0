@@ -1,54 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F1EF3BABBC
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  4 Jul 2021 09:12:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9BF03BB78D
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jul 2021 09:12:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AFB8E4058A;
-	Sun,  4 Jul 2021 07:11:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1BCF5830A8;
+	Mon,  5 Jul 2021 07:12:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gCjgIC-tPb4Z; Sun,  4 Jul 2021 07:11:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ioP_oGwIGIFJ; Mon,  5 Jul 2021 07:12:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7F5C6404B7;
-	Sun,  4 Jul 2021 07:11:58 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 71AAB1BF3BD
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 07:11:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F53D82FCE;
+	Mon,  5 Jul 2021 07:12:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AB3E1BF334
+ for <intel-wired-lan@osuosl.org>; Mon,  5 Jul 2021 07:12:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 630C6400C7
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 07:11:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id ED6326067E
+ for <intel-wired-lan@osuosl.org>; Mon,  5 Jul 2021 07:12:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VmmmNCi2gIXG for <intel-wired-lan@lists.osuosl.org>;
- Sun,  4 Jul 2021 07:11:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B9FF8400A8
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Jul 2021 07:11:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10034"; a="196025841"
-X-IronPort-AV: E=Sophos;i="5.83,323,1616482800"; d="scan'208";a="196025841"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2021 00:11:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,323,1616482800"; d="scan'208";a="559384457"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by orsmga004.jf.intel.com with ESMTP; 04 Jul 2021 00:11:44 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	michael.edri@intel.com
-Date: Sun,  4 Jul 2021 10:11:41 +0300
-Message-Id: <20210704071141.1173032-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B66JK7NMsDPb for <intel-wired-lan@osuosl.org>;
+ Mon,  5 Jul 2021 07:12:39 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1FC8C60674
+ for <intel-wired-lan@osuosl.org>; Mon,  5 Jul 2021 07:12:39 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 12B88613E1;
+ Mon,  5 Jul 2021 07:12:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1625469158;
+ bh=Vna4oajZuvLzvcsjivNmu37UU2qWHxuhBDBfFUi7FJk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HY1mazg5/KU0gQ8mP6bWUmqiY2tSQFhIBzKCu/JuYInmWdaGRIBQRGwq5BPbVp4T6
+ CCQWt6fLzLNteKDYeu39qH6gVKI7XFV1hVF7BplU0FSeACkVlIbyVD1l5OpsXGsLVN
+ YmIqEnIwbn7IICvQpWsPuvSiqktPkhrc7jrsgLoA=
+Date: Mon, 5 Jul 2021 09:12:36 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Fujinaka, Todd" <todd.fujinaka@intel.com>
+Message-ID: <YOKw5MzGaUNjxx/y@kroah.com>
+References: <937dd880-f902-aa9c-67d5-2d582a29e122@univention.de>
+ <BYAPR11MB360618A581F56D9054B2148AEF029@BYAPR11MB3606.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Fix the max snoop/no-snoop
- latency for 10M
+Content-Disposition: inline
+In-Reply-To: <BYAPR11MB360618A581F56D9054B2148AEF029@BYAPR11MB3606.namprd11.prod.outlook.com>
+Subject: Re: [Intel-wired-lan] Cherry-pick "i40e: Be much more verbose about
+ what we can and cannot offload"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,75 +65,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Yee Li <seven.yi.lee@gmail.com>
+Cc: "892105@bugs.debian.org" <892105@bugs.debian.org>,
+ "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>,
+ Philipp Hahn <hahn@univention.de>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ Ben Hutchings <benh@debian.org>, "Bonaccorso, Salvatore" <carnil@debian.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We should decode the latency and the max_latency before directly compare.
-The latency should be presented as lat_enc = scale x value:
-lat_enc_d = (lat_enc & 0x0x3ff) x (1U << (5*((max_ltr_enc & 0x1c00)
->> 10)))
+On Tue, Jun 29, 2021 at 06:20:30PM +0000, Fujinaka, Todd wrote:
+> I think I accidentally deleted the forward from the intel-wired-lan spam filter. Re-forwarding and adding Alex's gmail address.
+> 
+> Also, 
+> 
+> Todd Fujinaka
+> Software Application Engineer
+> Data Center Group
+> Intel Corporation
+> todd.fujinaka@intel.com
+> 
+> -----Original Message-----
+> From: Philipp Hahn <hahn@univention.de> 
+> Sent: Tuesday, June 22, 2021 11:19 AM
+> To: stable@vger.kernel.org; 892105@bugs.debian.org; Ben Hutchings <benh@debian.org>
+> Cc: Alexander Duyck <alexander.h.duyck@intel.com>; Andrew Bowers <andrewx.bowers@intel.com>; Bonaccorso, Salvatore <carnil@debian.org>
+> Subject: Cherry-pick "i40e: Be much more verbose about what we can and cannot offload"
+> 
+> Hello,
+> 
+> I request the following patch from v4.10-rc1 to get cherry-picked into
+> "stable/linux-4.9.y":
+> 
+> > commit f114dca2533ca770aebebffb5ed56e5e7d1fb3fb
 
-Suggested-by: Yee Li <seven.yi.lee@gmail.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 14 +++++++++++++-
- drivers/net/ethernet/intel/e1000e/ich8lan.h |  3 +++
- 2 files changed, 16 insertions(+), 1 deletion(-)
+Please provide a working backport, that you have tested works properly,
+as it does not apply cleanly.
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 0f6a0b1b433a..8c5dc72c3bd6 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -1009,6 +1009,8 @@ static s32 e1000_platform_pm_pch_lpt(struct e1000_hw *hw, bool link)
- {
- 	u32 reg = link << (E1000_LTRV_REQ_SHIFT + E1000_LTRV_NOSNOOP_SHIFT) |
- 	    link << E1000_LTRV_REQ_SHIFT | E1000_LTRV_SEND;
-+	u16 max_ltr_enc_d = 0;	/* maximum LTR decoded by platform */
-+	u16 lat_enc_d = 0;	/* latency decoded */
- 	u16 lat_enc = 0;	/* latency encoded */
- 
- 	if (link) {
-@@ -1062,7 +1064,17 @@ static s32 e1000_platform_pm_pch_lpt(struct e1000_hw *hw, bool link)
- 				     E1000_PCI_LTR_CAP_LPT + 2, &max_nosnoop);
- 		max_ltr_enc = max_t(u16, max_snoop, max_nosnoop);
- 
--		if (lat_enc > max_ltr_enc)
-+		lat_enc_d = (lat_enc & E1000_LTRV_VALUE_MASK) *
-+			     (1U << (E1000_LTRV_SCALE_FACTOR *
-+			     ((lat_enc & E1000_LTRV_SCALE_MASK)
-+			     >> E1000_LTRV_SCALE_SHIFT)));
-+
-+		max_ltr_enc_d = (max_ltr_enc & E1000_LTRV_VALUE_MASK) *
-+				 (1U << (E1000_LTRV_SCALE_FACTOR *
-+				 ((max_ltr_enc & E1000_LTRV_SCALE_MASK)
-+				 >> E1000_LTRV_SCALE_SHIFT)));
-+
-+		if (lat_enc_d > max_ltr_enc_d)
- 			lat_enc = max_ltr_enc;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-index 9b145f6248a8..d6a092e5ee74 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-@@ -277,8 +277,11 @@
- 
- /* Latency Tolerance Reporting */
- #define E1000_LTRV			0x000F8
-+#define E1000_LTRV_VALUE_MASK		0x000003FF
- #define E1000_LTRV_SCALE_MAX		5
- #define E1000_LTRV_SCALE_FACTOR		5
-+#define E1000_LTRV_SCALE_SHIFT		10
-+#define E1000_LTRV_SCALE_MASK		0x00001C00
- #define E1000_LTRV_REQ_SHIFT		15
- #define E1000_LTRV_NOSNOOP_SHIFT	16
- #define E1000_LTRV_SEND			(1 << 30)
--- 
-2.25.1
+thanks,
 
+greg k-h
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
