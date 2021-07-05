@@ -1,60 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A8983BB7FD
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jul 2021 09:38:47 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A6FDC3BB82C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jul 2021 09:47:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3A1FB607B2;
-	Mon,  5 Jul 2021 07:38:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2F70183A66;
+	Mon,  5 Jul 2021 07:47:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8bX9Ggtt8v_K; Mon,  5 Jul 2021 07:38:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id v4X2z2cQe9aQ; Mon,  5 Jul 2021 07:47:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4E3E8607A3;
-	Mon,  5 Jul 2021 07:38:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2E95E83A54;
+	Mon,  5 Jul 2021 07:47:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E70771BF334
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:38:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 47CAD1BF334
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:47:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D31BC607A3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:38:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 30B8A83A54
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:47:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mu-JqEvCkG-d for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jul 2021 07:38:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 36D30606E7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:38:39 +0000 (UTC)
-Received: from [222.129.38.159] (helo=[192.168.1.18])
- by youngberry.canonical.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
- (envelope-from <aaron.ma@canonical.com>)
- id 1m0JBc-0001cn-4h; Mon, 05 Jul 2021 07:38:36 +0000
-To: "Neftin, Sasha" <sasha.neftin@intel.com>, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, "Edri, Michael" <michael.edri@intel.com>,
- "Ruinskiy, Dima" <dima.ruinskiy@intel.com>
-References: <20210702045120.22855-1-aaron.ma@canonical.com>
- <20210702045120.22855-2-aaron.ma@canonical.com>
- <613e2106-940a-49ed-6621-0bb00bc7dca5@intel.com>
-From: Aaron Ma <aaron.ma@canonical.com>
-Message-ID: <ad3d2d01-1d0a-8887-b057-e6a9531a05f4@canonical.com>
-Date: Mon, 5 Jul 2021 15:38:29 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oaxxF1YWg7j5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jul 2021 07:47:13 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
+ [IPv6:2a00:1450:4864:20::52a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 610BE83A4E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jul 2021 07:47:13 +0000 (UTC)
+Received: by mail-ed1-x52a.google.com with SMTP id t3so22581691edc.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 05 Jul 2021 00:47:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3lU+yaKyB51Nd0BK8K42+im13NtdWR4bDe3Aamdm8jM=;
+ b=uL2q1Zm27Mou4aR++Qi4k2PhgTcOxmTaP/AvPFFD6VwvtpuVHyKE+SeDhn9TagmhLM
+ gAUS+muSbU17ieGtmK6jbT3cVJ1D2VAdrTPbA2KDHp9BJ47Blcxph91HM9uAxUeHe+xq
+ 6oA9502f2xIpoXh/nGgdlrE07cDFvnvonT3fhqoEyotKc3pba1Evzn7QSt73TMejW+X3
+ 5Dx6/3ghkpKVg76hBPLASmOgrjkx4it6ctWl9fA1+FXW7Z4So0zQLyzyLGqc5LrkHj9m
+ UWRfTqUBaYfHwqKFDN4Z2CTBr+xWVeAk0A1rubFbE1AuVe76++CPrUk5XHWmByVPHqup
+ vHMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3lU+yaKyB51Nd0BK8K42+im13NtdWR4bDe3Aamdm8jM=;
+ b=tWHVheMASMafT8OQnYXc9gzvn2nCDa20lc9bOizxI98SdXKXu0Pn5GCXYwkPmAzTEr
+ SuZ3Lrqr26MM5iADE9zqaJbUXNb5yQCjWPW5kqYwpWn5lb2Rp9hPV7aWYWyTIJ5skedb
+ DJBaHotHQeWO1IBe+ZMgjPOdOPro58usPqlaTYzQirzRA2ATgMrYaWjA0Cc7/bSDd9gG
+ bp3alZp9gTEsIk4HGa2WYGtYTPnLD6uz3r5SGLPhmxUV4wraK0Xur2vM06ADXNfAxbxi
+ aoytpu9fDthZVPG8EpiCLVBav6KRaJ2SLfVIhXNa0Qxlv3BdkcWl/5c1FUB7RsIp0wOP
+ G/GA==
+X-Gm-Message-State: AOAM533oxO3dbpyXjBAdy80KLk6kf3+SDli7dxIJUeRUGrbSnJKVvNA/
+ ahVJUNctjPoE1JxOvcRcIR5S9Ow5+lKdOc0IKGw=
+X-Google-Smtp-Source: ABdhPJz69wsIJaVHAjEsyhlptcdaiCA6lkPbcEgV2ZN7vTcn2KJseSzhclcqBiPPooE+gAluDhZBtkKzSUMJypwiJb4=
+X-Received: by 2002:a05:6402:430f:: with SMTP id
+ m15mr2352655edc.113.1625471231421; 
+ Mon, 05 Jul 2021 00:47:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <613e2106-940a-49ed-6621-0bb00bc7dca5@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] igc: wait for the MAC copy when
- enabled MAC passthrough
+References: <20210702045120.22855-1-aaron.ma@canonical.com>
+In-Reply-To: <20210702045120.22855-1-aaron.ma@canonical.com>
+From: Dave Airlie <airlied@gmail.com>
+Date: Mon, 5 Jul 2021 17:47:00 +1000
+Message-ID: <CAPM=9twzx0aa5Dq-L5oOSk+w8z7audCq_biXwtFVh3QVY1VceA@mail.gmail.com>
+To: Aaron Ma <aaron.ma@canonical.com>
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
+ is removed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,46 +81,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Network Development <netdev@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiA3LzQvMjEgMTozNiBQTSwgTmVmdGluLCBTYXNoYSB3cm90ZToKPiBPbiA3LzIvMjAyMSAw
-Nzo1MSwgQWFyb24gTWEgd3JvdGU6Cj4+IFN1Y2ggYXMgZG9jayBob3QgcGx1ZyBldmVudCB3aGVu
-IHJ1bnRpbWUsIGZvciBoYXJkd2FyZSBpbXBsZW1lbnRhdGlvbiwKPj4gdGhlIE1BQyBjb3B5IHRh
-a2VzIGxlc3MgdGhhbiBvbmUgc2Vjb25kIHdoZW4gQklPUyBlbmFibGVkIE1BQyBwYXNzdGhyb3Vn
-aC4KPj4gQWZ0ZXIgdGVzdCBvbiBMZW5vdm8gVEJUNCBkb2NrLCA2MDBtcyBpcyBlbm91Z2ggdG8g
-dXBkYXRlIHRoZQo+PiBNQUMgYWRkcmVzcy4KPj4gT3RoZXJ3aXNlIGV0aGVybmV0IGZhaWxzIHRv
-IHdvcmsuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEFhcm9uIE1hIDxhYXJvbi5tYUBjYW5vbmljYWwu
-Y29tPgo+PiAtLS0KPj4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19tYWlu
-LmMgfCAzICsrKwo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4+Cj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX21haW4uYyBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jCj4+IGluZGV4IDYwNmI3MmNi
-NjE5My4uYzhiYzVmMDg5MjU1IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pZ2MvaWdjX21haW4uYwo+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-Z2MvaWdjX21haW4uYwo+PiBAQCAtNTQ2OCw2ICs1NDY4LDkgQEAgc3RhdGljIGludCBpZ2NfcHJv
-YmUoc3RydWN0IHBjaV9kZXYgKnBkZXYsCj4+IMKgwqDCoMKgwqAgbWVtY3B5KCZody0+bWFjLm9w
-cywgZWktPm1hY19vcHMsIHNpemVvZihody0+bWFjLm9wcykpOwo+PiDCoMKgwqDCoMKgIG1lbWNw
-eSgmaHctPnBoeS5vcHMsIGVpLT5waHlfb3BzLCBzaXplb2YoaHctPnBoeS5vcHMpKTsKPj4gK8Kg
-wqDCoCBpZiAocGNpX2lzX3RodW5kZXJib2x0X2F0dGFjaGVkKHBkZXYpID4gK8KgwqDCoMKgwqDC
-oMKgIG1zbGVlcCg2MDApOwo+IEkgYmVsaWV2ZSBpdCBpcyBhIGJpdCBmcmFnaWxlLiBJIHdvdWxk
-IHJlY29tbWVuZCBoZXJlIGxvb2sgZm9yIGFub3RoZXIgaW5kaWNhdGlvbiBpbnN0ZWFkIG9mIGRl
-bGF5LiBDYW4gd2UgcG9sbCBmb3IgYSAncGNpX2NoYW5uZWxfaW9fbm9ybWFsJyBzdGF0ZT8gKGln
-Yy0+cGRldi0+ZXJyb3Jfc3RhdGUgPT0gcGNpX2NoYW5uZWxfaW9fbm9ybWFsKQoKSGkgc2FzaGEs
-CkluIHRoaXMgc2l0dWF0aW9uLCB0aGUgZXJyb3Jfc3RhdGUgaXMgYWx3YXlzIHBjaV9jaGFubmVs
-X2lvX25vcm1hbC4KVGhlIGRlbGF5IGlzIG5lY2Vzc2FyeS4KClJlZmVyIHRvICI2MjcyMzktSW50
-ZWzCriBFdGhlcm5ldCBDb250cm9sbGVyIEkyMjUtTUFDLUFkZHJlc3MtUGFzc3Rocm91Z2gtcmV2
-MS4yIgpzZWN0aW9uICIzLjUKICBUaW1pbmcgQ29uc2lkZXJhdGlvbnMiOgoiRm9yIGhhcmR3YXJl
-IGltcGxlbWVudGF0aW9uLAoKd2hlbiB0aGUgb3BlcmF0aW5nIHN5c3RlbSBpcyBhbHJlYWR5IHJ1
-bm5pbmcsIHRoZSBNQUMgY29weSBtdXN0IGhhcHBlbiBub3QgbW9yZSB0aGFuIG9uZQoKc2Vjb25k
-IGFmdGVyIFRCVCBsaW5rIGlzIGVzdGFibGlzaGVkLgp0aGUgSTIyNSBXaW5kb3dzIGRyaXZlciBw
-cmV2ZW50cyB0aGUgb3BlcmF0aW5nCgpzeXN0ZW0gZnJvbSBkZXRlY3RpbmcgdGhlIEkyMjUgZm9y
-IG9uZSBzZWNvbmQuIFRoaXMgYWxsb3dzIGVub3VnaCB0aW1lIGZvciBoYXJkd2FyZSB0byB1cGRh
-dGUgdGhlCgpNQUMgYWRkcmVzcy4iCgpUaGFua3Mgc2FzaGEsCkFhcm9uCgo+PiArCj4+IMKgwqDC
-oMKgwqAgLyogSW5pdGlhbGl6ZSBza2V3LXNwZWNpZmljIGNvbnN0YW50cyAqLwo+PiDCoMKgwqDC
-oMKgIGVyciA9IGVpLT5nZXRfaW52YXJpYW50cyhodyk7Cj4+IMKgwqDCoMKgwqAgaWYgKGVycikK
-Pj4KPiBUaGFua3MgQWFyb24sCj4gc2FzaGEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
-ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9pbnRlbC13aXJlZC1sYW4K
+On Fri, 2 Jul 2021 at 14:53, Aaron Ma <aaron.ma@canonical.com> wrote:
+>
+> Check PCI state when rd/wr iomem.
+> Implement wr32 function as rd32 too.
+>
+> When unplug TBT dock with i225, rd/wr PCI iomem will cause error log:
+> Trace:
+> BUG: unable to handle page fault for address: 000000000000b604
+> Oops: 0000 [#1] SMP NOPTI
+> RIP: 0010:igc_rd32+0x1c/0x90 [igc]
+> Call Trace:
+> igc_ptp_suspend+0x6c/0xa0 [igc]
+> igc_ptp_stop+0x12/0x50 [igc]
+> igc_remove+0x7f/0x1c0 [igc]
+> pci_device_remove+0x3e/0xb0
+> __device_release_driver+0x181/0x240
+>
+> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+> ---
+
+Drive-by, but won't this add a lot of overhead on every register
+access? has this been benchmarked with lots of small network transfers
+or anything?
+
+Dave.
+
+
+>  drivers/net/ethernet/intel/igc/igc_main.c | 16 ++++++++++++++++
+>  drivers/net/ethernet/intel/igc/igc_regs.h |  7 ++-----
+>  2 files changed, 18 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index f1adf154ec4a..606b72cb6193 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -5292,6 +5292,10 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+>         u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+>         u32 value = 0;
+>
+> +       if (igc->pdev &&
+> +               igc->pdev->error_state == pci_channel_io_perm_failure)
+> +               return 0;
+> +
+>         value = readl(&hw_addr[reg]);
+>
+>         /* reads should not return all F's */
+> @@ -5308,6 +5312,18 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+>         return value;
+>  }
+>
+> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val)
+> +{
+> +       struct igc_adapter *igc = container_of(hw, struct igc_adapter, hw);
+> +       u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+> +
+> +       if (igc->pdev &&
+> +               igc->pdev->error_state == pci_channel_io_perm_failure)
+> +               return;
+> +
+> +       writel((val), &hw_addr[(reg)]);
+> +}
+> +
+>  int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
+>  {
+>         struct igc_mac_info *mac = &adapter->hw.mac;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+> index cc174853554b..eb4be87d0e8b 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> @@ -260,13 +260,10 @@ struct igc_hw;
+>  u32 igc_rd32(struct igc_hw *hw, u32 reg);
+>
+>  /* write operations, indexed using DWORDS */
+> -#define wr32(reg, val) \
+> -do { \
+> -       u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
+> -       writel((val), &hw_addr[(reg)]); \
+> -} while (0)
+> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val);
+>
+>  #define rd32(reg) (igc_rd32(hw, reg))
+> +#define wr32(reg, val) (igc_wr32(hw, reg, val))
+>
+>  #define wrfl() ((void)rd32(IGC_STATUS))
+>
+> --
+> 2.30.2
+>
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
