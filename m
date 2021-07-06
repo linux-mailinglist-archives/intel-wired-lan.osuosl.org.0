@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3197E3BCD73
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:20:50 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AF353BCE0C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:22:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D04C4403E9;
-	Tue,  6 Jul 2021 11:20:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CE962830E6;
+	Tue,  6 Jul 2021 11:22:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SxpE5uTB9hrf; Tue,  6 Jul 2021 11:20:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N4SJcrXWSzlu; Tue,  6 Jul 2021 11:22:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF6BF403E0;
-	Tue,  6 Jul 2021 11:20:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E37288309A;
+	Tue,  6 Jul 2021 11:22:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2B45C1BF306
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:20:41 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9FD8C1BF306
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:22:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 191BB4054E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:20:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8AE95403E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:22:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GooJOtu--BdI for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 11:20:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vMY6xJAH_AUs for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 11:22:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8589440548
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:20:40 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8731561D80;
- Tue,  6 Jul 2021 11:20:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CFD80403E0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:22:45 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BFC8461D10;
+ Tue,  6 Jul 2021 11:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570440;
- bh=aAtpwhKuMZGDxNZ3FqxdQXfUEParfME5aHdCkcyIr3M=;
+ s=k20201202; t=1625570565;
+ bh=iyTp4dRrWPbcouAq0W/rTUEBIuDiwEYSot8BdnkRa8A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=iy2UWrtLmCbQQags30F6mNT0dw09pcS2ROezDNSY+Sn1o+Fnx0qL5RKv1pAcG388S
- 5n0tycDcp9RN5DcmuqXGWxL9ye50NTBkbrHreAuUTqf7TpxRcdTEKDG32hyfF0lz4x
- 3HHt7LULYcPVtAmeFr+sSw9XN7Dqw5jjv0S32xbHADT2Bizg4g/T/dC+HpRAFNjyo9
- FALx5U+Zr3oKQyt4372km6hvtE1OYGB8kVkI4+7sydjPhUCL/2eLZCh2AMLxcU3eK6
- o4X3fvk65c4kcSX5uRyck3IPX04JlFjsVplusujdcWkyVFZLF3hSoYWAvy5gor6ca7
- 2LMCUbQvW1WeQ==
+ b=c3bhm1LOjxSrh0TpmpC4ChydkkJlzYOVZav5cR1IeQ6g807M9EIlBjGeAkYxE8+bY
+ 5ciUSH7+h9kwRbJ3s4QEosMoHwkdxM7INmU7OolFXFf9jeWCHRVIfb6E59aTZiRR/q
+ mrFQ8C5Fe70866Rvn6pqZOjR6M/xIi6DDwyXI9Nksfgoo7Rg/5FAByiPdFNX/ov/uH
+ So0c7U+jgmKDmo3jsZmEdqdLFjiZXLXuqPQg5nHgdvQaongsBblPLzCyHGdD8BOzSR
+ jvJ/7NUuPWXce/KlEwmfqW7Xt7VUgaYryJg1UArBGfLaCG0a1IoKz/VimGWHmJQ+5L
+ Q/pBmZWroStjg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue,  6 Jul 2021 07:17:26 -0400
-Message-Id: <20210706111827.2060499-100-sashal@kernel.org>
+Date: Tue,  6 Jul 2021 07:20:18 -0400
+Message-Id: <20210706112203.2062605-32-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210706111827.2060499-1-sashal@kernel.org>
-References: <20210706111827.2060499-1-sashal@kernel.org>
+In-Reply-To: <20210706112203.2062605-1-sashal@kernel.org>
+References: <20210706112203.2062605-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.12 100/160] ice: mark PTYPE 2 as
- reserved
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.10 032/137] e100: handle eeprom
+ as little endian
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,45 +70,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-[ Upstream commit 0c526d440f76676733cb470b454db9d5507a3a50 ]
+[ Upstream commit d4ef55288aa2e1b76033717242728ac98ddc4721 ]
 
-The entry for PTYPE 2 in the ice_ptype_lkup table incorrectly states
-that this is an L2 packet with no payload. According to the datasheet,
-this PTYPE is actually unused and reserved.
+Sparse tool was warning on some implicit conversions from
+little endian data read from the EEPROM on the e100 cards.
 
-Fix the lookup entry to indicate this is an unused entry that is
-reserved.
+Fix these by being explicit about the conversions using
+le16_to_cpu().
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Tested-by: Tony Brelinski <tonyx.brelinski@intel.com>
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/e100.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index 98a7f27c532b..c0ee0541e53f 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -608,7 +608,7 @@ static const struct ice_rx_ptype_decoded ice_ptype_lkup[] = {
- 	/* L2 Packet types */
- 	ICE_PTT_UNUSED_ENTRY(0),
- 	ICE_PTT(1, L2, NONE, NOF, NONE, NONE, NOF, NONE, PAY2),
--	ICE_PTT(2, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT_UNUSED_ENTRY(2),
- 	ICE_PTT_UNUSED_ENTRY(3),
- 	ICE_PTT_UNUSED_ENTRY(4),
- 	ICE_PTT_UNUSED_ENTRY(5),
+diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
+index 8cc651d37a7f..609e47b8287d 100644
+--- a/drivers/net/ethernet/intel/e100.c
++++ b/drivers/net/ethernet/intel/e100.c
+@@ -1395,7 +1395,7 @@ static int e100_phy_check_without_mii(struct nic *nic)
+ 	u8 phy_type;
+ 	int without_mii;
+ 
+-	phy_type = (nic->eeprom[eeprom_phy_iface] >> 8) & 0x0f;
++	phy_type = (le16_to_cpu(nic->eeprom[eeprom_phy_iface]) >> 8) & 0x0f;
+ 
+ 	switch (phy_type) {
+ 	case NoSuchPhy: /* Non-MII PHY; UNTESTED! */
+@@ -1515,7 +1515,7 @@ static int e100_phy_init(struct nic *nic)
+ 		mdio_write(netdev, nic->mii.phy_id, MII_BMCR, bmcr);
+ 	} else if ((nic->mac >= mac_82550_D102) || ((nic->flags & ich) &&
+ 	   (mdio_read(netdev, nic->mii.phy_id, MII_TPISTATUS) & 0x8000) &&
+-		(nic->eeprom[eeprom_cnfg_mdix] & eeprom_mdix_enabled))) {
++	   (le16_to_cpu(nic->eeprom[eeprom_cnfg_mdix]) & eeprom_mdix_enabled))) {
+ 		/* enable/disable MDI/MDI-X auto-switching. */
+ 		mdio_write(netdev, nic->mii.phy_id, MII_NCONFIG,
+ 				nic->mii.force_media ? 0 : NCONFIG_AUTO_SWITCH);
+@@ -2263,9 +2263,9 @@ static int e100_asf(struct nic *nic)
+ {
+ 	/* ASF can be enabled from eeprom */
+ 	return (nic->pdev->device >= 0x1050) && (nic->pdev->device <= 0x1057) &&
+-	   (nic->eeprom[eeprom_config_asf] & eeprom_asf) &&
+-	   !(nic->eeprom[eeprom_config_asf] & eeprom_gcl) &&
+-	   ((nic->eeprom[eeprom_smbus_addr] & 0xFF) != 0xFE);
++	   (le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_asf) &&
++	   !(le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_gcl) &&
++	   ((le16_to_cpu(nic->eeprom[eeprom_smbus_addr]) & 0xFF) != 0xFE);
+ }
+ 
+ static int e100_up(struct nic *nic)
+@@ -2920,7 +2920,7 @@ static int e100_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	/* Wol magic packet can be enabled from eeprom */
+ 	if ((nic->mac >= mac_82558_D101_A4) &&
+-	   (nic->eeprom[eeprom_id] & eeprom_id_wol)) {
++	   (le16_to_cpu(nic->eeprom[eeprom_id]) & eeprom_id_wol)) {
+ 		nic->flags |= wol_magic;
+ 		device_set_wakeup_enable(&pdev->dev, true);
+ 	}
 -- 
 2.30.2
 
