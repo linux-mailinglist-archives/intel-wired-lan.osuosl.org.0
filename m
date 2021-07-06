@@ -2,62 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE2113BD012
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:29:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27A753BD867
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 16:37:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5B2606085F;
-	Tue,  6 Jul 2021 11:29:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA54E60895;
+	Tue,  6 Jul 2021 14:37:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 25GX0qqIbvyq; Tue,  6 Jul 2021 11:29:51 +0000 (UTC)
+	with ESMTP id UAMSMjO3L6h0; Tue,  6 Jul 2021 14:37:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4BE1A60816;
-	Tue,  6 Jul 2021 11:29:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CE4ED60652;
+	Tue,  6 Jul 2021 14:37:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 086AD1BF306
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AC2711BF479
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 14:23:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 026304036E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9651440333
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 14:23:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k7ZhvN8StyL9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 11:29:46 +0000 (UTC)
+ with ESMTP id 2oJzl0EbNl2t for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 14:23:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3E4BC40369
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:46 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2017E61DF7;
- Tue,  6 Jul 2021 11:29:45 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E282940331
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 14:23:18 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5F4A661AC0;
+ Tue,  6 Jul 2021 14:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570985;
- bh=bneTy3l4dtaTdeZs1Xduz3nnufrr2WqhPF/+LlNBZy8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CToDK3YDRtnrUunRZ+oZLIQLQXCwHrOMw4qY/Z1woRTCrpkswujmsxcgu1GYG3m8R
- u9S3nsSWhu8L4g7ch4oLoTxVjFw7UExacelgCfMZ4n3+VoZRVclBMZG8yJfSKMDJol
- I8aOUhs99vCTfF1HU7Mcc/0N9xm7YP/NtclCZHFVMZMlyZajv1YozJNzc4rg5mjVvU
- n3/wF/7IPg3urtjm2taJIlVx+S8GsAuhulRKjYApK8hccpwaHiaQJR03iaSm51Vnca
- lfK6vdMDldXOinXEXA9Gladi+S54ThmSOPcO66DPDKVe1aM/t1peAgjZq3Pv0k21jd
- tCmgxogQJNoWQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Tue,  6 Jul 2021 07:29:11 -0400
-Message-Id: <20210706112931.2066397-11-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210706112931.2066397-1-sashal@kernel.org>
-References: <20210706112931.2066397-1-sashal@kernel.org>
+ s=k20201202; t=1625581398;
+ bh=kLVem+lC4RwgaSvlRxNWh6WClbsCqyCWUybrD/hsjdo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=dvBxQHrmw6EPUmkbmwxaVbFTYhRXd43UhsERgeVTjyeN1Rok/1RGCSSvjSJdC/5IL
+ GrDuLOEZKo2AWon9u7+Be3SWrEOtuXBnZ3J/UgSLqU3q6dUA9JZObFM4oeEtq3LW7i
+ 8/JJaq8D+AMhDJy0bA4rtdwqp2b/CJLsEue/hs2EeqUFUHjX0nJN8e+gLNnugBJLf5
+ GNx3/AIhIMoJalL/yvToUL/G1X9ikKh0hxME4PbsbFo07r8tOKQcvVUCC1vv5Hqzs3
+ JyZEwbtjX2jukib2GAOPYALdIQ2ZqysUaG3sGtFAaHrURNkghH84UJ/OfEOCZrV3pH
+ fM8gEFrTlWXpw==
+Received: by pali.im (Postfix)
+ id D17896E9; Tue,  6 Jul 2021 16:23:15 +0200 (CEST)
+Date: Tue, 6 Jul 2021 16:23:15 +0200
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Message-ID: <20210706142315.ve22wypovdezqnva@pali>
+References: <20210702045120.22855-1-aaron.ma@canonical.com>
+ <20210704142808.f43jbcufk37hundo@pali>
+ <20210705230212.GC142312@rocinante>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.4 11/31] e100: handle eeprom as
- little endian
+Content-Disposition: inline
+In-Reply-To: <20210705230212.GC142312@rocinante>
+User-Agent: NeoMutt/20180716
+X-Mailman-Approved-At: Tue, 06 Jul 2021 14:37:52 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
+ is removed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,78 +73,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-
-[ Upstream commit d4ef55288aa2e1b76033717242728ac98ddc4721 ]
-
-Sparse tool was warning on some implicit conversions from
-little endian data read from the EEPROM on the e100 cards.
-
-Fix these by being explicit about the conversions using
-le16_to_cpu().
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/e100.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 93c29094ceff..9035cb5fc70d 100644
---- a/drivers/net/ethernet/intel/e100.c
-+++ b/drivers/net/ethernet/intel/e100.c
-@@ -1423,7 +1423,7 @@ static int e100_phy_check_without_mii(struct nic *nic)
- 	u8 phy_type;
- 	int without_mii;
- 
--	phy_type = (nic->eeprom[eeprom_phy_iface] >> 8) & 0x0f;
-+	phy_type = (le16_to_cpu(nic->eeprom[eeprom_phy_iface]) >> 8) & 0x0f;
- 
- 	switch (phy_type) {
- 	case NoSuchPhy: /* Non-MII PHY; UNTESTED! */
-@@ -1543,7 +1543,7 @@ static int e100_phy_init(struct nic *nic)
- 		mdio_write(netdev, nic->mii.phy_id, MII_BMCR, bmcr);
- 	} else if ((nic->mac >= mac_82550_D102) || ((nic->flags & ich) &&
- 	   (mdio_read(netdev, nic->mii.phy_id, MII_TPISTATUS) & 0x8000) &&
--		(nic->eeprom[eeprom_cnfg_mdix] & eeprom_mdix_enabled))) {
-+	   (le16_to_cpu(nic->eeprom[eeprom_cnfg_mdix]) & eeprom_mdix_enabled))) {
- 		/* enable/disable MDI/MDI-X auto-switching. */
- 		mdio_write(netdev, nic->mii.phy_id, MII_NCONFIG,
- 				nic->mii.force_media ? 0 : NCONFIG_AUTO_SWITCH);
-@@ -2298,9 +2298,9 @@ static int e100_asf(struct nic *nic)
- {
- 	/* ASF can be enabled from eeprom */
- 	return (nic->pdev->device >= 0x1050) && (nic->pdev->device <= 0x1057) &&
--	   (nic->eeprom[eeprom_config_asf] & eeprom_asf) &&
--	   !(nic->eeprom[eeprom_config_asf] & eeprom_gcl) &&
--	   ((nic->eeprom[eeprom_smbus_addr] & 0xFF) != 0xFE);
-+	   (le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_asf) &&
-+	   !(le16_to_cpu(nic->eeprom[eeprom_config_asf]) & eeprom_gcl) &&
-+	   ((le16_to_cpu(nic->eeprom[eeprom_smbus_addr]) & 0xFF) != 0xFE);
- }
- 
- static int e100_up(struct nic *nic)
-@@ -2952,7 +2952,7 @@ static int e100_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	/* Wol magic packet can be enabled from eeprom */
- 	if ((nic->mac >= mac_82558_D101_A4) &&
--	   (nic->eeprom[eeprom_id] & eeprom_id_wol)) {
-+	   (le16_to_cpu(nic->eeprom[eeprom_id]) & eeprom_id_wol)) {
- 		nic->flags |= wol_magic;
- 		device_set_wakeup_enable(&pdev->dev, true);
- 	}
--- 
-2.30.2
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVHVlc2RheSAwNiBKdWx5IDIwMjEgMDE6MDI6MTIgS3J6eXN6dG9mIFdpbGN6ecWEc2tpIHdy
+b3RlOgo+IEhpIFBhbGksCj4gCj4gWy4uLl0KPiA+IEFhcm9uOiBjYW4geW91IGNoZWNrIGlmIHBj
+aV9kZXZfaXNfZGlzY29ubmVjdGVkKCkgaXMgcmVhbGx5IHNvbWV0aGluZwo+ID4gd2hpY2ggc2hv
+dWxkIGJlIHVzZWQgYW5kIGl0IGhlbHBzIHlvdT8KPiAKPiBXaGlsZSBoYXZpbmcgYSBjbG9zZXIg
+bG9vaywgSSd2ZSBub3RpY2VkIHRoYXQgcXVpdGUgYSBmZXcgb2YgdGhlIG5ldHdvcmsKPiBkcml2
+ZXJzIGhhbmRsZSB0aGlzIHNvbWV3aGF0LCBhcyBJIHNlZSB0aGF0IGEgbG90IG9mIHRoZW0gaGF2
+ZSBzb21lIHNvcnQKPiBvZiBJL08gZXJyb3IgaGFuZGxlcyBzZXQgd2hlcmUgYSBjaGVjayBmb3Ig
+InBjaV9jaGFubmVsX2lvX3Blcm1fZmFpbHVyZSIKPiBzZWVtIHRvIGJlIGhhdmluZyBwbGFjZS4g
+IFRoaXMgaXMgYWxzbyB0cnVlIGZvciB0aGlzIGRyaXZlciBsb29raW5nIGF0Cj4gdGhlIGlnY19p
+b19lcnJvcl9kZXRlY3RlZCgpLgo+IAo+IElzIHRoaXMgbm90IHdvcmtpbmcgZm9yIHRoZSBpZ2Mg
+ZHJpdmVyPyAgT3IgaXMgdGhpcyBmb3Igc29tZXRoaW5nCj4gY29tcGxldGVseSBkaWZmZXJlbnQ/
+CgpJIGd1ZXNzIHRoYXQgdGhpcyBjYWxsYmFjayBpcyBjYWxsZWQgd2hlbiBCcmlkZ2UgcmVjZWl2
+ZSBzb21lIGtpbmQgb2YKZmF0YWwgZXJyb3IuIE5vbi1BRVItYXdhcmUgYnJpZGdlcyBwcm9iYWJs
+eSBkbyBub3QgaGF2ZSB0byBpbmZvcm0gc3lzdGVtCnRoYXQgZXJyb3IgaGFwcGVuZWQgYW5kIGtl
+cm5lbCB3b3VsZCBub3QgY2FsbCB0aGlzIGNhbGxiYWNrLiBTbyBJIGd1ZXNzCml0IGRlcGVuZHMg
+b24gdG8gd2hpY2ggIm1hY2hpbmUiIHlvdSBuZWVkIHRoaXMgbmV0d29yayBhZGFwdGVyLgoKU28g
+aW4gbXkgb3BpbmlvbiB0aGlzIGNhbGxiYWNrIGlzIHRoZXJlIGZvciBQQ0kgc3Vic3lzdGVtIHRv
+IGluZm9ybQpkcml2ZXIgdGhhdCBlcnJvciBoYXBwZW5lZCBhbmQgbGV0IGRyaXZlciB0byBkbyBh
+bnkgaHcgc3BlY2lmaWMgcmVjb3ZlcnkKaWYgaXQgaXMgcG9zc2libGUuCgpCdXQgSSB0aGluayBw
+cm9ibGVtIGRlc2NyaWJlZCBoZXJlIGNhbiBiZSBzbGlnaHRseSBkaWZmZXJlbnQuIEl0IGlzCm5l
+ZWRlZCB0byBjaGVjayBpZiBkZXZpY2UgaXMgc3RpbGwgYWxpdmUgb3Igd2FzIGRpc2Nvbm5lY3Rl
+ZC4KCj4gSGF2aW5nIHNhaWQgYWxsIHRoYXQsIEkgYW0gbm90IGFuIGV4cGVydCBpbiBuZXR3b3Jr
+IGRyaXZlcnMsIHNvIHBhcmRvbgo+IG1lIGlmIEkgYW0gYXNraW5nIGFib3V0IHNvbWV0aGluZyBj
+b21wbGV0ZWx5IGRpZmZlcmVudCwgYW5kIEkgYXBvbG9naXNlCj4gaWYgdGhhdCBpcyB0aGUgY2Fz
+ZS4KPiAKPiA+IEJqb3JuLCBLcnp5c3p0b2Y6IHdoYXQgZG8geW91IHRoaW5rIGFib3V0IGxpZnRp
+bmcgaGVscGVyIGZ1bmN0aW9uCj4gPiBwY2lfZGV2X2lzX2Rpc2Nvbm5lY3RlZCgpIHRvIGJlIGF2
+YWlsYWJsZSB0byBhbGwgZHJpdmVycyBhbmQgbm90IG9ubHkgaW4KPiA+IFBDSSBzdWJzeXN0ZW0/
+Cj4gCj4gTm8gb2JqZWN0aW9ucyBmcm9tIG1lLCBpZiB3ZSBiZWxpZXZlIGl0J3MgdXNlZnVsIGFu
+ZCB0aGF0IGl0IG1pZ2h0Cj4gZW5jb3VyYWdlIHBlb3BsZSB0byB1c2UgYSBjb21tb24gQVBJLiAg
+Q3VycmVudGx5LCBJIGNhbiBzZWUgYXQgbGVhc3QKPiBmaXZlIHBvdGVudGlhbCB1c2VycyBvZiB0
+aGlzIGhlbHBlci4KPiAKPiAJS3J6eXN6dG9mCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
+ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
+Zm8vaW50ZWwtd2lyZWQtbGFuCg==
