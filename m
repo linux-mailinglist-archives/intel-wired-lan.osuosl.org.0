@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C117B3BCFB8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:29:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE2113BD012
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:29:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 778C1838D7;
-	Tue,  6 Jul 2021 11:29:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B2606085F;
+	Tue,  6 Jul 2021 11:29:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fwA0ofSL2IhB; Tue,  6 Jul 2021 11:29:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 25GX0qqIbvyq; Tue,  6 Jul 2021 11:29:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8A2A68376D;
-	Tue,  6 Jul 2021 11:29:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4BE1A60816;
+	Tue,  6 Jul 2021 11:29:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1C4AD1BF306
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 086AD1BF306
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 093E240269
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 026304036E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2J1_6UgDAaA7 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 11:29:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k7ZhvN8StyL9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 11:29:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7B357400CD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:02 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7BD2E61F6A;
- Tue,  6 Jul 2021 11:29:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3E4BC40369
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:46 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2017E61DF7;
+ Tue,  6 Jul 2021 11:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570942;
+ s=k20201202; t=1625570985;
  bh=bneTy3l4dtaTdeZs1Xduz3nnufrr2WqhPF/+LlNBZy8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qiMDxnOUFOi+rse9XEQ7PrxUn6l7ff0Z6Iy7pH1+GcgbmOZ932f+Um9MNZoQtU9xR
- m/6Ga7HU2R19Lty9RMtNfRMQNsj7ID1bUBwNo74RMFZ9XyQHw8FIDC1yXGU2tIlnsY
- jgCw/ilxZVKEEaYOBN/2LU4L/Xa2UmySmOQ40KdCFRYVVOAL3PW5b5OacfEvxbzRqz
- WHErI08EZBRxDVJMygk4SP8SKorOuD7tjuR7V3x+ghfPM1TLn2GGR0lZ1D7Pjf3ObV
- aUn7kIl6rsr3H3w2RtgwIjFel6CnzNF0Q0VBX/FyidGWGzy1hAwxEEix/Su48hc3Sl
- p5nialY0SvH7g==
+ b=CToDK3YDRtnrUunRZ+oZLIQLQXCwHrOMw4qY/Z1woRTCrpkswujmsxcgu1GYG3m8R
+ u9S3nsSWhu8L4g7ch4oLoTxVjFw7UExacelgCfMZ4n3+VoZRVclBMZG8yJfSKMDJol
+ I8aOUhs99vCTfF1HU7Mcc/0N9xm7YP/NtclCZHFVMZMlyZajv1YozJNzc4rg5mjVvU
+ n3/wF/7IPg3urtjm2taJIlVx+S8GsAuhulRKjYApK8hccpwaHiaQJR03iaSm51Vnca
+ lfK6vdMDldXOinXEXA9Gladi+S54ThmSOPcO66DPDKVe1aM/t1peAgjZq3Pv0k21jd
+ tCmgxogQJNoWQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue,  6 Jul 2021 07:28:23 -0400
-Message-Id: <20210706112848.2066036-11-sashal@kernel.org>
+Date: Tue,  6 Jul 2021 07:29:11 -0400
+Message-Id: <20210706112931.2066397-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210706112848.2066036-1-sashal@kernel.org>
-References: <20210706112848.2066036-1-sashal@kernel.org>
+In-Reply-To: <20210706112931.2066397-1-sashal@kernel.org>
+References: <20210706112931.2066397-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.9 11/35] e100: handle eeprom as
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.4 11/31] e100: handle eeprom as
  little endian
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
