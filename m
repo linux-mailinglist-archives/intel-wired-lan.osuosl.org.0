@@ -1,78 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCF123BDE37
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 21:54:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A40413BDE4A
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 22:12:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4FF5A401E3;
-	Tue,  6 Jul 2021 19:54:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5415F831DA;
+	Tue,  6 Jul 2021 20:12:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gZvaxuVJOMY0; Tue,  6 Jul 2021 19:54:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Hw5X5i6HlvdK; Tue,  6 Jul 2021 20:12:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 463CE401D7;
-	Tue,  6 Jul 2021 19:54:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 65EF182B49;
+	Tue,  6 Jul 2021 20:12:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BFA291BF3DF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 19:54:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DF3CC1BF5A0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 20:12:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BAFD0401D7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 19:54:51 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C7716401F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 20:12:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kG9Tz3TSZU38 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 19:54:51 +0000 (UTC)
+ with ESMTP id sGiZUp5tpFYR for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 20:12:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E142C401CF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 19:54:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10037"; a="209228102"
-X-IronPort-AV: E=Sophos;i="5.83,329,1616482800"; d="scan'208";a="209228102"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jul 2021 12:54:50 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,329,1616482800"; d="scan'208";a="410340221"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by orsmga006.jf.intel.com with ESMTP; 06 Jul 2021 12:54:50 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 6 Jul 2021 12:54:49 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 6 Jul 2021 12:54:49 -0700
-Received: from orsmsx610.amr.corp.intel.com ([10.22.229.23]) by
- ORSMSX610.amr.corp.intel.com ([10.22.229.23]) with mapi id 15.01.2242.010;
- Tue, 6 Jul 2021 12:54:49 -0700
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [net-next 04/13] ice: restart periodic outputs
- around time changes
-Thread-Index: AQHXbg/b4NXz4SyGm0aLaw0HeYSpFKs0fpYAgAHmsgA=
-Date: Tue, 6 Jul 2021 19:54:48 +0000
-Message-ID: <f1e78a778b994402b0a85ad59592a426@intel.com>
-References: <20210701002713.3486336-1-jacob.e.keller@intel.com>
- <20210701002713.3486336-5-jacob.e.keller@intel.com>
- <29cb4977-3559-094c-cc18-d2d32819e227@molgen.mpg.de>
-In-Reply-To: <29cb4977-3559-094c-cc18-d2d32819e227@molgen.mpg.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-x-originating-ip: [10.22.254.132]
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 30D0B401E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 20:12:43 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6DA3861C30;
+ Tue,  6 Jul 2021 20:12:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625602362;
+ bh=dMozURTgCDtE/nqPAO74mQrk2jYpZIJHRjna9oZLlBU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=Db9XAFhBa72OXFLdJe6GXAe/gZDR5QG+hGO3+xDnHonYYM+FlgwPWSvgSrm3bQusq
+ osIxRYJYffsfg/KpY4b0tIRSr6pZqEjha6bo02sIuLPPIJBvj647EIJ+DXg0wl5v35
+ qLWfmZPBhiuDvHy5bu8WAfzk1WV9DgRLVUGWwoHSLto66tapyWeaSr6hz7Fu+SK5VH
+ GlqYDmEAtWv9gkTKACbrruIxwI01aGoGf17XGYPVMKysWaM2E+bcJdhXhL1iK/J0Ro
+ W0UCW+oKJri7o2LOVn5bjsEo0uukvIzqnFCIPE6d1Kfvy8V5I1GeFZKiGxbXDdg/Hj
+ sAiqAbLwoPEFQ==
+Date: Tue, 6 Jul 2021 15:12:41 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Aaron Ma <aaron.ma@canonical.com>
+Message-ID: <20210706201241.GA820992@bjorn-Precision-5520>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next 04/13] ice: restart periodic
- outputs around time changes
+Content-Disposition: inline
+In-Reply-To: <20210702045120.22855-1-aaron.ma@canonical.com>
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
+ is removed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,92 +66,124 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-pci@vger.kernel.org, kuba@kernel.org,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGF1bCBNZW56ZWwgPHBt
-ZW56ZWxAbW9sZ2VuLm1wZy5kZT4NCj4gU2VudDogTW9uZGF5LCBKdWx5IDA1LCAyMDIxIDEyOjUy
-IEFNDQo+IFRvOiBLZWxsZXIsIEphY29iIEUgPGphY29iLmUua2VsbGVyQGludGVsLmNvbT4NCj4g
-Q2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3JnDQo+IFN1YmplY3Q6IFJlOiBbSW50
-ZWwtd2lyZWQtbGFuXSBbbmV0LW5leHQgMDQvMTNdIGljZTogcmVzdGFydCBwZXJpb2RpYyBvdXRw
-dXRzIGFyb3VuZA0KPiB0aW1lIGNoYW5nZXMNCj4gDQo+IERlYXIgSmFjb2IsDQo+IA0KPiANCj4g
-QW0gMDEuMDcuMjEgdW0gMDI6Mjcgc2NocmllYiBKYWNvYiBLZWxsZXI6DQo+ID4gV2VuIHdlIGVu
-YWJsZWQgYXV4aWxpYXJ5IGlucHV0L291dHB1dCBzdXBwb3J0IGZvciB0aGUgRTgxMCBkZXZpY2Us
-IHdlDQo+IA0KPiBXaGVuDQo+IA0KPiA+IGZvcmdvdCB0byBhZGQgbG9naWMgdG8gcmVzdGFydCB0
-aGUgb3V0cHV0IHdoZW4gd2UgY2hhbmdlIHRpbWUuIFRoaXMgaXMNCj4gPiBpbXBvcnRhbnQgYXMg
-dGhlIHBlcmlvZGljIG91dHB1dCB3aWxsIGJlIGluY29ycmVjdCBhZnRlciBhIHRpbWUgY2hhbmdl
-DQo+ID4gb3RoZXJ3aXNlLg0KPiA+DQo+ID4gVGhpcyB1bmZvcnR1bmF0ZWx5IGluY2x1ZGVzIHRo
-ZSBhZGp1c3QgdGltZSBmdW5jdGlvbiwgZXZlbiB0aG91Z2ggaXQNCj4gPiB1c2VzIGFuIGF0b21p
-YyBoYXJkd2FyZSBpbnRlcmZhY2UuIFRoZSBhdG9taWMgYWRqdXN0bWVudCBjYW4gc3RpbGwgY2F1
-c2UNCj4gPiB0aGUgcGluIG91dHB1dCB0byBzdGFsbCBwZXJtYW5lbnRseSwgc28gd2UgbmVlZCB0
-byBzdG9wIGFuZCByZXN0YXJ0IGl0Lg0KPiA+DQo+ID4gRml4ZXM6IDE3MmRiNWY5MWQ1ZiAoImlj
-ZTogYWRkIHN1cHBvcnQgZm9yIGF1eGlsaWFyeSBpbnB1dC9vdXRwdXQgcGlucyIpDQo+ID4gU2ln
-bmVkLW9mZi1ieTogSmFjb2IgS2VsbGVyIDxqYWNvYi5lLmtlbGxlckBpbnRlbC5jb20+DQo+ID4g
-LS0tDQo+ID4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3B0cC5jIHwgMzAg
-KysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0
-aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2ljZS9pY2VfcHRwLmMNCj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3B0
-cC5jDQo+ID4gaW5kZXggODNiYTBiZjI4MTdhLi4wOGFjZGIyNDk0ZWQgMTAwNjQ0DQo+ID4gLS0t
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wdHAuYw0KPiA+ICsrKyBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcHRwLmMNCj4gPiBAQCAtNzc2LDYgKzc3
-Niw3IEBAIGljZV9wdHBfc2V0dGltZTY0KHN0cnVjdCBwdHBfY2xvY2tfaW5mbyAqaW5mbywgY29u
-c3QNCj4gc3RydWN0IHRpbWVzcGVjNjQgKnRzKQ0KPiA+ICAgCXN0cnVjdCBpY2VfcGYgKnBmID0g
-cHRwX2luZm9fdG9fcGYoaW5mbyk7DQo+ID4gICAJc3RydWN0IHRpbWVzcGVjNjQgdHM2NCA9ICp0
-czsNCj4gPiAgIAlzdHJ1Y3QgaWNlX2h3ICpodyA9ICZwZi0+aHc7DQo+ID4gKwl1OCBpOw0KPiAN
-Cj4gRm9yIGNvdW50IHZhcmlhYmxlcywgaXTigJlzIGJldHRlciB0byB1c2UgbmF0aXZlIHR5cGVz
-LCBzaXplX3QvdW5zaWduZWQNCj4gaW50IGluIHRoaXMgY2FzZS4NCj4gDQoNClN1cmUuDQoNCj4g
-ICAgICBzdGF0aWMgaW50IGljZV9wdHBfY2ZnX2Nsa291dChzdHJ1Y3QgaWNlX3BmICpwZiwgdW5z
-aWduZWQgaW50IGNoYW4sDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ry
-dWN0IGljZV9wZXJvdXRfY2hhbm5lbCAqY29uZmlnLA0KPiBib29sIHN0b3JlKQ0KPiANCj4gPiAg
-IAlpbnQgZXJyOw0KPiA+DQo+ID4gICAJaWYgKCFpY2VfcHRwX2xvY2soaHcpKSB7DQo+ID4gQEAg
-LTc4MywxMiArNzg0LDIyIEBAIGljZV9wdHBfc2V0dGltZTY0KHN0cnVjdCBwdHBfY2xvY2tfaW5m
-byAqaW5mbywgY29uc3QNCj4gc3RydWN0IHRpbWVzcGVjNjQgKnRzKQ0KPiA+ICAgCQlnb3RvIGV4
-aXQ7DQo+ID4gICAJfQ0KPiA+DQo+ID4gKwkvKiBEaXNhYmxlIHBlcmlvZGljIG91dHB1dHMgKi8N
-Cj4gPiArCWZvciAoaSA9IDA7IGkgPCBpbmZvLT5uX3Blcl9vdXQ7IGkrKykNCj4gPiArCQlpZiAo
-cGYtPnB0cC5wZXJvdXRfY2hhbm5lbHNbaV0uZW5hKQ0KPiA+ICsJCQlpY2VfcHRwX2NmZ19jbGtv
-dXQocGYsIGksIE5VTEwsIGZhbHNlKTsNCj4gPiArDQo+ID4gICAJZXJyID0gaWNlX3B0cF93cml0
-ZV9pbml0KHBmLCAmdHM2NCk7DQo+ID4gICAJaWNlX3B0cF91bmxvY2soaHcpOw0KPiA+DQo+ID4g
-ICAJaWYgKCFlcnIpDQo+ID4gICAJCWljZV9wdHBfdXBkYXRlX2NhY2hlZF9waGN0aW1lKHBmKTsN
-Cj4gPg0KPiA+ICsJLyogUmVlbmFibGUgcGVyaW9kaWMgb3V0cHV0cyAqLw0KPiA+ICsJZm9yIChp
-ID0gMDsgaSA8IGluZm8tPm5fcGVyX291dDsgaSsrKQ0KPiA+ICsJCWlmIChwZi0+cHRwLnBlcm91
-dF9jaGFubmVsc1tpXS5lbmEpDQo+ID4gKwkJCWljZV9wdHBfY2ZnX2Nsa291dChwZiwgaSwgJnBm
-LT5wdHAucGVyb3V0X2NoYW5uZWxzW2ldLA0KPiA+ICsJCQkJCSAgIGZhbHNlKTsNCj4gPiAgIGV4
-aXQ6DQo+ID4gICAJaWYgKGVycikgew0KPiA+ICAgCQlkZXZfZXJyKGljZV9wZl90b19kZXYocGYp
-LCAiUFRQIGZhaWxlZCB0byBzZXQgdGltZSAlZFxuIiwgZXJyKTsNCj4gPiBAQCAtODI1LDYgKzgz
-Niw3IEBAIHN0YXRpYyBpbnQgaWNlX3B0cF9hZGp0aW1lKHN0cnVjdCBwdHBfY2xvY2tfaW5mbyAq
-aW5mbywNCj4gczY0IGRlbHRhKQ0KPiA+ICAgCXN0cnVjdCBpY2VfaHcgKmh3ID0gJnBmLT5odzsN
-Cj4gPiAgIAlzdHJ1Y3QgZGV2aWNlICpkZXY7DQo+ID4gICAJaW50IGVycjsNCj4gPiArCXU4IGk7
-DQo+ID4NCj4gPiAgIAlkZXYgPSBpY2VfcGZfdG9fZGV2KHBmKTsNCj4gPg0KPiA+IEBAIC04NDIs
-OCArODU0LDE5IEBAIHN0YXRpYyBpbnQgaWNlX3B0cF9hZGp0aW1lKHN0cnVjdCBwdHBfY2xvY2tf
-aW5mbyAqaW5mbywNCj4gczY0IGRlbHRhKQ0KPiA+ICAgCQlyZXR1cm4gLUVCVVNZOw0KPiA+ICAg
-CX0NCj4gPg0KPiA+ICsJLyogRGlzYWJsZSBwZXJpb2RpYyBvdXRwdXRzICovDQo+ID4gKwlmb3Ig
-KGkgPSAwOyBpIDwgaW5mby0+bl9wZXJfb3V0OyBpKyspDQo+ID4gKwkJaWYgKHBmLT5wdHAucGVy
-b3V0X2NoYW5uZWxzW2ldLmVuYSkNCj4gPiArCQkJaWNlX3B0cF9jZmdfY2xrb3V0KHBmLCBpLCBO
-VUxMLCBmYWxzZSk7DQo+ID4gKw0KPiA+ICAgCWVyciA9IGljZV9wdHBfd3JpdGVfYWRqKHBmLCBk
-ZWx0YSk7DQo+ID4NCj4gPiArCS8qIFJlZW5hYmxlIHBlcmlvZGljIG91dHB1dHMgKi8NCj4gPiAr
-CWZvciAoaSA9IDA7IGkgPCBpbmZvLT5uX3Blcl9vdXQ7IGkrKykNCj4gPiArCQlpZiAocGYtPnB0
-cC5wZXJvdXRfY2hhbm5lbHNbaV0uZW5hKQ0KPiA+ICsJCQlpY2VfcHRwX2NmZ19jbGtvdXQocGYs
-IGksICZwZi0+cHRwLnBlcm91dF9jaGFubmVsc1tpXSwNCj4gPiArCQkJCQkgICBmYWxzZSk7DQo+
-ID4gKw0KPiA+ICAgCWljZV9wdHBfdW5sb2NrKGh3KTsNCj4gPg0KPiA+ICAgCWlmIChlcnIpIHsN
-Cj4gPiBAQCAtMTUyNiw2ICsxNTQ5LDggQEAgdm9pZCBpY2VfcHRwX2luaXQoc3RydWN0IGljZV9w
-ZiAqcGYpDQo+ID4gICAgKi8NCj4gPiAgIHZvaWQgaWNlX3B0cF9yZWxlYXNlKHN0cnVjdCBpY2Vf
-cGYgKnBmKQ0KPiA+ICAgew0KPiA+ICsJaW50IGk7DQo+ID4gKw0KPiA+ICAgCS8qIERpc2FibGUg
-dGltZXN0YW1waW5nIGZvciBib3RoIFR4IGFuZCBSeCAqLw0KPiA+ICAgCWljZV9wdHBfY2ZnX3Rp
-bWVzdGFtcChwZiwgZmFsc2UpOw0KPiA+DQo+ID4gQEAgLTE1NDMsNiArMTU2OCwxMSBAQCB2b2lk
-IGljZV9wdHBfcmVsZWFzZShzdHJ1Y3QgaWNlX3BmICpwZikNCj4gPiAgIAlpZiAoIXBmLT5wdHAu
-Y2xvY2spDQo+ID4gICAJCXJldHVybjsNCj4gPg0KPiA+ICsJLyogRGlzYWJsZSBwZXJpb2RpYyBv
-dXRwdXRzICovDQo+ID4gKwlmb3IgKGkgPSAwOyBpIDwgcGYtPnB0cC5pbmZvLm5fcGVyX291dDsg
-aSsrKQ0KPiA+ICsJCWlmIChwZi0+cHRwLnBlcm91dF9jaGFubmVsc1tpXS5lbmEpDQo+ID4gKwkJ
-CWljZV9wdHBfY2ZnX2Nsa291dChwZiwgaSwgTlVMTCwgZmFsc2UpOw0KPiA+ICsNCj4gDQo+IENv
-dWxkIHRoaXMgYmUgcHV0IGludG8gYSBkZWRpY2F0ZWQgZW5hYmxlL2Rpc2FibGUgZnVuY3Rpb24g
-KG9ubHkgcGYNCj4gc2VlbXMgdG8gYmUgbmVlZGVkIHRvIGJlIHBhc3NlZCkuDQo+IA0KDQpZZWEg
-dGhhdCBzZWVtcyBsaWtlIGEgZ29vZCBjbGVhbnVwLg0KDQo+ID4gICAJaWNlX2NsZWFyX3B0cF9j
-bG9ja19pbmRleChwZik7DQo+ID4gICAJcHRwX2Nsb2NrX3VucmVnaXN0ZXIocGYtPnB0cC5jbG9j
-ayk7DQo+ID4gICAJcGYtPnB0cC5jbG9jayA9IE5VTEw7DQo+IA0KPiANCj4gS2luZCByZWdhcmRz
-LA0KPiANCj4gUGF1bA0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3Ns
-Lm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJl
-ZC1sYW4K
+On Fri, Jul 02, 2021 at 12:51:19PM +0800, Aaron Ma wrote:
+> Check PCI state when rd/wr iomem.
+> Implement wr32 function as rd32 too.
+> 
+> When unplug TBT dock with i225, rd/wr PCI iomem will cause error log:
+> Trace:
+> BUG: unable to handle page fault for address: 000000000000b604
+> Oops: 0000 [#1] SMP NOPTI
+> RIP: 0010:igc_rd32+0x1c/0x90 [igc]
+> Call Trace:
+> igc_ptp_suspend+0x6c/0xa0 [igc]
+> igc_ptp_stop+0x12/0x50 [igc]
+> igc_remove+0x7f/0x1c0 [igc]
+> pci_device_remove+0x3e/0xb0
+> __device_release_driver+0x181/0x240
+> 
+> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_main.c | 16 ++++++++++++++++
+>  drivers/net/ethernet/intel/igc/igc_regs.h |  7 ++-----
+>  2 files changed, 18 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index f1adf154ec4a..606b72cb6193 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -5292,6 +5292,10 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+>  	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+>  	u32 value = 0;
+>  
+> +	if (igc->pdev &&
+> +		igc->pdev->error_state == pci_channel_io_perm_failure)
+> +		return 0;
+
+I don't think this solves the problem.
+
+  - Driver calls igc_rd32().
+
+  - "if (pci_channel_io_perm_failure)" evaluates to false (error_state
+    does not indicate an error).
+
+  - Device is unplugged.
+
+  - igc_rd32() calls readl(), which performs MMIO read, which fails
+    because the device is no longer present.  readl() returns ~0 on
+    most platforms.
+
+  - Same page fault occurs.
+
+The only way is to check *after* the MMIO read to see whether an error
+occurred.  On most platforms that means checking for ~0 data.  If you
+see that, a PCI error *may* have occurred.
+
+If you know that ~0 can never be valid, e.g., if you're reading a
+register where ~0 is not a valid value, you know for sure that an
+error has occurred.
+
+If ~0 might be a valid value, e.g., if you're reading a buffer that
+contains arbitrary data, you have to look harder.   You might read a
+register than cannot contain ~0, and see if you get the data you
+expect.  Or you might read the Vendor ID or something from config
+space.
+
+>  	value = readl(&hw_addr[reg]);
+>  
+>  	/* reads should not return all F's */
+> @@ -5308,6 +5312,18 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+>  	return value;
+>  }
+>  
+> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val)
+> +{
+> +	struct igc_adapter *igc = container_of(hw, struct igc_adapter, hw);
+> +	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+> +
+> +	if (igc->pdev &&
+> +		igc->pdev->error_state == pci_channel_io_perm_failure)
+> +		return;
+> +
+> +	writel((val), &hw_addr[(reg)]);
+> +}
+> +
+>  int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
+>  {
+>  	struct igc_mac_info *mac = &adapter->hw.mac;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+> index cc174853554b..eb4be87d0e8b 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> @@ -260,13 +260,10 @@ struct igc_hw;
+>  u32 igc_rd32(struct igc_hw *hw, u32 reg);
+>  
+>  /* write operations, indexed using DWORDS */
+> -#define wr32(reg, val) \
+> -do { \
+> -	u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
+> -	writel((val), &hw_addr[(reg)]); \
+> -} while (0)
+> +void igc_wr32(struct igc_hw *hw, u32 reg, u32 val);
+>  
+>  #define rd32(reg) (igc_rd32(hw, reg))
+> +#define wr32(reg, val) (igc_wr32(hw, reg, val))
+>  
+>  #define wrfl() ((void)rd32(IGC_STATUS))
+>  
+> -- 
+> 2.30.2
+> 
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
