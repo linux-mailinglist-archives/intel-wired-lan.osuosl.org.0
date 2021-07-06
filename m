@@ -1,97 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07D503BC7A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 10:06:33 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93C263BC7A3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 10:07:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AB48483403;
-	Tue,  6 Jul 2021 08:06:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 09FDE83403;
+	Tue,  6 Jul 2021 08:07:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zwp6-_y0eYAs; Tue,  6 Jul 2021 08:06:30 +0000 (UTC)
+	with ESMTP id y877IsqFXmMj; Tue,  6 Jul 2021 08:07:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96436833C9;
-	Tue,  6 Jul 2021 08:06:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DAC23833C9;
+	Tue,  6 Jul 2021 08:07:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 997FE1BF300
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:06:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 16CB71BF9C6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:07:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 87B0860687
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:06:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0529F60687
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:07:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MXzg5tIVI3sD for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 08:06:23 +0000 (UTC)
+ with ESMTP id Am_NvvUqE9rW for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 08:07:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 87B8060671
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:06:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10036"; a="209117162"
-X-IronPort-AV: E=Sophos;i="5.83,328,1616482800"; d="scan'208";a="209117162"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jul 2021 01:06:20 -0700
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0533D60671
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 08:07:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10036"; a="196356822"
+X-IronPort-AV: E=Sophos;i="5.83,328,1616482800"; d="scan'208";a="196356822"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jul 2021 01:07:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.83,328,1616482800"; d="scan'208";a="647196452"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by fmsmga005.fm.intel.com with ESMTP; 06 Jul 2021 01:06:20 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.83,328,1616482800"; d="scan'208";a="422761826"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by fmsmga007.fm.intel.com with ESMTP; 06 Jul 2021 01:07:05 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 6 Jul 2021 01:06:19 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ 15.1.2242.10; Tue, 6 Jul 2021 01:07:05 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 6 Jul 2021 01:06:19 -0700
+ 15.1.2242.10; Tue, 6 Jul 2021 01:07:05 -0700
 Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10 via Frontend Transport; Tue, 6 Jul 2021 01:06:19 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
+ 15.1.2242.10 via Frontend Transport; Tue, 6 Jul 2021 01:07:05 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
  by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.4; Tue, 6 Jul 2021 01:06:18 -0700
+ 15.1.2242.4; Tue, 6 Jul 2021 01:07:04 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mLvfNWmEd+d3Bm0lOLtUNJ+AMYF/hHYshvQEHd5iM/DKkI/4wAQbx+j0bQALwuvLKvWSiUC6KQlbTyxD3MRgA3VGh4+0tFC/rWCDEAp2+ispqRjXSI3xE5pvGFssHRFv0lHdI5T0/RxCtCCQZgocnMigv1e90fFctaXhv3b4e8boVvWDH+h2zNzwpKoqJfDsWJniVsiOgZ17Can9Nl42O2mxbMYa2K9cDgIoNsKJLJUZp5Xmjfb5A7dmkCV0OthUlLHfND8ijOAzAXklw+nJT6bJlY4SwpfIMdFfAbLDfQn4YeUmoUZTy9s7ifi2SXnFQa+HW6usynyOzVY+mjmL1Q==
+ b=mSA+QrSDjOgJyGbDJALLwLN+R2xGlBkBE60IAwqInLCdXxx6RXj4a1NRv68q6lhXgMuqZ5Ml3+qbqJ76sxbxoNxzkkoejwsKEFxTd8zrPlfVEpclTfS5IENm5qJhPaHgr+DnAfsAn5mDbTgACdPmOSH/vbhDb8uZSCaLM+5XITD+A+QVCCZ0rUamhiKGgYnCfEG4hMjkS1YZXhnt527WTJiz42KwQss8UJczpy4KiQOPIb3uvqnS+G3PX0HwnENj2Ra3oX0XRFZjl9qvqO9io3NmiGrIbejudfS+bc8Z/gjmpz3tJwKZcFZf2kgLDz4TI7FNTLusvxtiT+43Tk0jBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X7+B2YcpOt0MzGEuPQ+veRFcp4HySR7N6/yXBoMpM3E=;
- b=ECYUyn33dzEcAouccmhwa74IP3Qh0qnvyOS312LNOzZcLDX38yBBdApydZaOKIpySV0HxNm0piaqU7Onm1lG8x+jKX4bGavU4/JZMc5Yiqi0AZvB3BTY5C0ARhkldMTksW8Smyi5X7KfgYRrs3xpTmyec92DPpiPkGGu9IryW+lUOFPUPG9Adw0g0RzspAveuJyoel0a2sOKLnc+xsO3Pmwe1cKuWqDuMvhLMwxrnn3m55LROYoyi79gwLc43GJ9RGih51Cg3TKqg33k2sUBZ0O2jiTkUFeir+2MSRWnavTI+nTM1PxTXcoQrZsfR2sEeoKVinXviKrWc/+85CJ1Yw==
+ bh=8RQGuoEq8NuDjn16zJQHVQV2X19YO8nK6f2I2njFwak=;
+ b=TLI0hCS7u7VDgpRFEQG8VHUsp3rb5/9QBVgBuDti4WNkI4FalZv7Rsxm5kYfAPOSBLzzVJkAiKoYjq4AYk49zJ6i2N/jtVhHcPzOSvK9bYhzraBfgrsieNGLFXZFNnTsiVmrRjFPoLL25WKQ0KBDajwqGfxJdODuSqIDVZwAOO+pMYLdRQzEjcQb4bxx9UfFjDeTSyaCzY4ijyg7Uvpv5fTzhxc4QPBC7KuPc1HyKN8uTNK8eOPBt2GirHCBCEF8oOxe4LtphpxkEQiiekhOBzcZHDwTXHO2lKhbseaMkIMtvyb/vLDXoHkPNVsPhpSXkji8Pen3fDrsveJJmsUVBw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X7+B2YcpOt0MzGEuPQ+veRFcp4HySR7N6/yXBoMpM3E=;
- b=yE3rwVv++P2MuZgV1Lk8olmqEzZJP8LVNoBMT+IcDWSx/2XjdgfNU3jIPh8cNPS1a8Jj5CbsIH2yZIMoMFfkYdwB3CvTKTtILvQqMt0vwaA3zjvPhDi7WpnpgQGQpCUELms9Qzrp0b5ifExj9Cq+rpAV0mN1tKh/HMmCP+IL71g=
+ bh=8RQGuoEq8NuDjn16zJQHVQV2X19YO8nK6f2I2njFwak=;
+ b=GYFXYQZMylGdHiToHE6sM2l8u9tA8phz/UgqhUUn29bC14Z/QBK3+E2yHwhCnDWp45rtQ3HQ0V6fYYDR36kQEtq3YCU26mMhmQDbsQiL2gK2jjQjEMjUIyaiSzKYwX6cc9VyUrDJbWUP5xG7uZeAfDRY9lzDL98P5GxRBcfgR3c=
 Received: from CY4PR11MB1576.namprd11.prod.outlook.com (2603:10b6:910:d::15)
  by CY4PR1101MB2262.namprd11.prod.outlook.com (2603:10b6:910:18::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.32; Tue, 6 Jul
- 2021 08:06:17 +0000
+ 2021 08:07:03 +0000
 Received: from CY4PR11MB1576.namprd11.prod.outlook.com
  ([fe80::b1bd:33e5:3890:e999]) by CY4PR11MB1576.namprd11.prod.outlook.com
  ([fe80::b1bd:33e5:3890:e999%6]) with mapi id 15.20.4287.033; Tue, 6 Jul 2021
- 08:06:17 +0000
+ 08:07:03 +0000
 From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
 To: Stefan Assmann <sassmann@kpanic.de>, "intel-wired-lan@lists.osuosl.org"
  <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] iavf: do not override the adapter
- state in the watchdog task
-Thread-Index: AQHXEbzlOyOerDFHl0GuXa194pDiaas2WATA
-Date: Tue, 6 Jul 2021 08:06:17 +0000
-Message-ID: <CY4PR11MB15767B03803E7D3DAAC4A356AB1B9@CY4PR11MB1576.namprd11.prod.outlook.com>
-References: <20210305123856.14302-1-sassmann@kpanic.de>
-In-Reply-To: <20210305123856.14302-1-sassmann@kpanic.de>
+Thread-Topic: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
+Thread-Index: AQHXGkuHFKGC6SACr0e2u/mNFyyEyqs2Rx7w
+Date: Tue, 6 Jul 2021 08:07:03 +0000
+Message-ID: <CY4PR11MB1576DF9D75817184274CAFC0AB1B9@CY4PR11MB1576.namprd11.prod.outlook.com>
+References: <20210316100141.53551-1-sassmann@kpanic.de>
+In-Reply-To: <20210316100141.53551-1-sassmann@kpanic.de>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -103,56 +102,54 @@ authentication-results: kpanic.de; dkim=none (message not signed)
  header.d=none;kpanic.de; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [188.147.96.41]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 182d1a97-4522-4fdd-a3c2-08d94054eed7
+x-ms-office365-filtering-correlation-id: c9f35f8e-c7cd-45c9-3fb7-08d940550a1a
 x-ms-traffictypediagnostic: CY4PR1101MB2262:
-x-microsoft-antispam-prvs: <CY4PR1101MB22629FAD750997D13B688DBFAB1B9@CY4PR1101MB2262.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CY4PR1101MB2262428A4D62CBAC0CB39282AB1B9@CY4PR1101MB2262.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:95;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: EbEkQ1TzFTznnMpFG+3hA0mIZVghLCJFTvkB2sqK8W4qkUyHZXbzuSlEq6w9+al4pZm0KwByiTGf0rDTgm2uc7p50csulW1Vhpdxa8GHuj2PkCjMWwAe25ILQG+E5Mlod5kDe3a1r7W/GWvIc9x8/9zLbUyCIUrzrj9es8shoS80mhNKSWipac1JmgTTOPM/vJ85zIsdP2EiiIv5VC53duFidAAvWJkyzFT6X22vAVgQ/PxLdWSscGmE6WfrByPanyj0RIoeqDrf5SN6Nl8FR9CX6+AQYytUDumO8QUefKKcNjsxiTGGmetY37zGX4YkjgwIGb0cNLKlclv3FBkPCj5tLuvid1FSuebha6WnFRacO6/5JA/kokBtQhwhJN5DeDNR20MB8SFQkLIJJGSTF7XrI+G3FGsNRPETKmQtVjIO1PCK+1b0g2N0maEGRuvsjaRzw2Vpr3A797f+18Ua9FHC4E36dWLApQm7xwmnLGR5n5giBH4Xz5lZ4vC58DtNCWBoAuBESVwdD5zwjw0MwmB9Xnq2a38TTv5nImYsn5T4kS2knKGJz17xzZ5bPw9Du3FxOQaU6dD2iUUAwOojhn0SihlBMYCZWSYicvDA2JiEQeKQxQJ68RhjOdujktt1rhViZBqP3FbIzIjoKu3ycA==
+x-microsoft-antispam-message-info: TnDj3cil2i6fhnhUibGi5DGAWIpWr32FNKmsDmSi6Wvy6KXPXb070T6BC3IVKLBImNsUot2/FVjdWV4CZ/3JgQB5gC5UbUHRvG0zD6ReCu2JNkseEKu6BFTJ8Bf5zgyDRYLYj4F7uTuQ0Jc9+oPTUbQuKlG9EveU2M7uXTsNL7+jDfZwQCENkV/Ctgaj5p0a6nArxQNHaKwiP2VuW3nSG9mZpB92p/N480rlrt8EP2YVHOrHQd9oY24NCJrZAGMkiKf5YXG8+R8xCUZzQmt7vbtNJHX9Esg4wyOb50elmQ8lkpW03HidaBIZq77CJRYOJCFTMDl8nhLnfzeHJC28ztNxd4WgBTElSra2OGlpe2Lp7P3bG0ZIZvW9/lP37EDLVFSKYCWv/BkG5fjql0Cl5gpywJ+pplzwXUmoxHWk/X+0XliwiDUffM2bp6wmaAsr1/D5wVcvM0SoIf5AjfyCZiVe7RyopCtEOzFpCfVD2MEQh8itdxjtSSO8yc/tUfzqJzfaTmVu38CIaycwZnw0Hnty72/b633QNvWiEpFu2m6fch6PqUl5VC6cUtkSmnhVRHNURaG45qywjoEFp8th9SrDjtQichqvUT62C8AKG0m+th7NlxW0XKw4XBB0uY80Z0zYygMLQXlqq82tYEmnVA==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CY4PR11MB1576.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(39860400002)(366004)(396003)(136003)(346002)(376002)(8936002)(33656002)(186003)(55016002)(6506007)(83380400001)(7696005)(64756008)(66946007)(26005)(52536014)(8676002)(478600001)(4326008)(110136005)(71200400001)(66574015)(9686003)(66476007)(38100700002)(76116006)(66446008)(53546011)(5660300002)(316002)(2906002)(86362001)(122000001)(66556008);
+ SFS:(136003)(376002)(346002)(396003)(366004)(39860400002)(66476007)(38100700002)(76116006)(66446008)(71200400001)(9686003)(122000001)(66556008)(5660300002)(53546011)(2906002)(86362001)(316002)(83380400001)(6506007)(64756008)(7696005)(8936002)(33656002)(186003)(55016002)(54906003)(110136005)(4326008)(66946007)(26005)(478600001)(52536014)(8676002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?/e+rlE1g8nyDC5uLFZnABuHMg260F3W7ltXTczdV+8kJ0VQdY/rUbLaNoP?=
- =?iso-8859-2?Q?SU6Uhi2D1pOLhgbj3JqgAGM8C794ZbXxbqapi2IBDoHozhbtnSRqfUTZHR?=
- =?iso-8859-2?Q?X9tIMotesnYE9ins7Q+A20FtxVPWLQgHzWxvHwjyHll140SFd2z4nreb0A?=
- =?iso-8859-2?Q?ssFNte7lLX9B7fWOTV3r+ySpEmbRS1rWkqOQ0q8pu0n3+8qV+jNuQ/3aoX?=
- =?iso-8859-2?Q?yamZ3dhj6HB4RGoxtrVR6u7Mcvhg60/73EVzvgE6/fUDI34yy7gUNnnZCJ?=
- =?iso-8859-2?Q?ETIeI6l5wk8Du5QvbZM0UmDFYbj2VQ1rqtVar8Izdb4A9PeExU57YlEX6N?=
- =?iso-8859-2?Q?N9sZxnH/Vtn9hclshc3f3ZYGfS4RcKaXE2rHjOBchf6VE5IyOgkq9l+u72?=
- =?iso-8859-2?Q?Y62l2YMgXHrpcdUNxHcSrdJ0SS88GtOByw88kAOQSzSXlMDM4W/RQxtCFJ?=
- =?iso-8859-2?Q?CsQNMl3X64i/pBoDvlQ9qh7amaDjD70Cpjnt9G56mwKMefMQX0JPmXo/6s?=
- =?iso-8859-2?Q?j7fA2MPpR8F4zvmk56QQjVYHjPE1dLTQ12kxcW0jsNeO19/1EcrbUCa1H+?=
- =?iso-8859-2?Q?FsIq2eQUyhrvZzfBY9ntK1pOfcBodluGyKZUqfUDjU/8nCThvoFCAfvUcr?=
- =?iso-8859-2?Q?SRwadyi48Wpn6J3WTGi9HXhjzOydXOYyNIXDiUKYEQdDOxHrAyn0wCtKuP?=
- =?iso-8859-2?Q?MUolCzQEEQuRJxSjgUFRnwTDxkKCRAht+SoUTumyjFcywO+lLhV/c9uxAJ?=
- =?iso-8859-2?Q?yPvDXhUyyXbyl7ZS8CwsDqgooOCjy6cZhFSLvuL1CuYK242kMi32pJR79T?=
- =?iso-8859-2?Q?FE6tgthRDE1LW16tdxxCxhxa4vSuw3+d/LXm5aGGIhIMAOGC2F6PbzOcHG?=
- =?iso-8859-2?Q?BQeyOOzm9/u0GwcB29e6v2MiKtHF75ScX9YARQFJMpEk0vSRQS9POQb6qO?=
- =?iso-8859-2?Q?bIrwONSJ++5Ti8X7hkTogDVPeUKApRZdJni9RBvze2VjmZqFSUyWSo1PMQ?=
- =?iso-8859-2?Q?eEltpNWg4ifULdSJoovec4JHq40N+7FHwur1VuaZ5eZb2tPuFhq+jRtgC+?=
- =?iso-8859-2?Q?PlqfLa5tDgt9a+3kWLamD0mmV/TfG/cunFKbPlLowsmnO7uJRewo3QYD1I?=
- =?iso-8859-2?Q?AapINQVILxTkzg/BJ6fQU3Mjno4D9qLWCnfdpYTgchxSUUQWeTGQWf81OE?=
- =?iso-8859-2?Q?gYA9XOQsoGe0N3L0DD3smg4oRak0Xw1WhmM0OUe6H0qaHgkZz1MhdT9Guj?=
- =?iso-8859-2?Q?pPfzPA0P8Sk4PCpbsR7EbSPZ0UtAawyUWMZwwmKz5L+FQuD+R+jivA4UIq?=
- =?iso-8859-2?Q?kePxOeCluUaab4TUeamVrW56RZInonUaaxPOLE1giysPY/fpNtwamo76AW?=
- =?iso-8859-2?Q?HWsR7JBWEI?=
-x-ms-exchange-transport-forked: True
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?bwALsj9YiS13Azi+yy6Y6qvWQn7gV37WlUs3zDiZM5tmsyhf9vqHb2jiGRj9?=
+ =?us-ascii?Q?JHhh3Mo82pM0DHhpBc67dRC3ebiKzwdp3wCAjB/dRRKbAefSMRyanY11ZHm9?=
+ =?us-ascii?Q?b3ykbZA6Dum1LlV5UxyF0xmSU9DviM0MCvIjs4UEDKJn0C7DRVahtt+T9+w4?=
+ =?us-ascii?Q?tRM0PFerKZXoDHePEoW6BcPJbWnYZ3+YvwLbYvVfG2C0nOfGFi2CIpr+JEDY?=
+ =?us-ascii?Q?lVgOdlf/yv8Gctz1dakq7tSX4dUen7Lk/SQb5Zm4/7OCATzKiOBGFNZb25/r?=
+ =?us-ascii?Q?YUc1JEm/D6B4SB9k3dk7Ncd8xeJpG4BsRQ5R0BpjBo0t+QqvPxCznw8Ex0x8?=
+ =?us-ascii?Q?cUqWhpYUq2FdjTpM8sbcdAqKo1VeDKMwdMjHT11ZR2HeY87MpHTuNa3vWZ2K?=
+ =?us-ascii?Q?+lqLpDwiXCFKfW5eNSwlZymUQjMTSzVOK0TejEnijMu3LTAFMEF7gPVajh0E?=
+ =?us-ascii?Q?ox7+JJWlSrVpP7tuMRCJG+VQoTZ+NIcr5L+aNQhnK0Xlh3Cwyl1zip1fLka2?=
+ =?us-ascii?Q?BYU4lDNVYKNRoBlcTArTZJ9Ty1AvuRHWB17CTlXnYEUEEWncp3N6w/29bPTT?=
+ =?us-ascii?Q?eNkC0iDQjV8uH60bQosfli88eh/xkXfgk0M78REJy4hRh+sMEZuBkXx6hDfM?=
+ =?us-ascii?Q?6Gtwj0aBJYLY+N+26qfzUlqi9s5LexxK4gWoaREmU4DS/djS5epuJdqybWXI?=
+ =?us-ascii?Q?otBy49mMRH1Cdn5hhG6xlMDJMlXFo+usBUlHuz7/p6AChqq6giFZ7JzvHO1J?=
+ =?us-ascii?Q?kTWNP8vUzhh3/YrDVqqTjL3u7PWE+cxFojYpvSUUIiqOY0ZpgTszQVKS0bv3?=
+ =?us-ascii?Q?VfW0CKr7141drGPvUtxdoKWnsnhr9u5tOu8ok2NupoBio0Iw3YwQiuaej+A3?=
+ =?us-ascii?Q?rEZ1Isv9Q4O6U2sJo1tw4OV3EhKIPTnpsafAFaAFcinajGrIJORRjqiFvS3+?=
+ =?us-ascii?Q?HSR0mbrL3OJAsIaQp7EHR5hSbhcujnhVRBHRPRpmOlIcdVLBS8sGLxtB5ces?=
+ =?us-ascii?Q?7wlktLI2p98c7uatmgM1fJFFBHgvvwjtuZoyom4g4govsmkSZwG5jwps4ka+?=
+ =?us-ascii?Q?Yb1l4tNIYwuTya2yNsNbvovJIZ5RLlumGgaIa+Y3xPrz3EOWnMSnUg6gAPP2?=
+ =?us-ascii?Q?Tb9OUJxYKqhJ5uN++gWWuALLjsCsFiuAVbEyuQyelUrDIhct2ko0rbEABsgO?=
+ =?us-ascii?Q?PLI1fDtaJ5mxxtEgv6XIo9DbWi2afEJgIE37JXjxUBBvK8ROvdorVAMUUeWH?=
+ =?us-ascii?Q?bgL3uvtnt6mfznnkrvgttYtj1ImKaJtTO/wFZfzD0p0/msu/afVjhgfAr8ro?=
+ =?us-ascii?Q?INxDsmdQxlyaRofBXwfjK5yI?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1576.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 182d1a97-4522-4fdd-a3c2-08d94054eed7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jul 2021 08:06:17.6186 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c9f35f8e-c7cd-45c9-3fb7-08d940550a1a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jul 2021 08:07:03.4316 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: xJLbF0rNKyyAHLA/evBM5KEQNcl7zupCq/zz7CXaNz+w04YwvEA8lkJr8p9Yip3jh+1vN2qTN6OyJUZshCy2hlgWVkenGLSq++amakXulmI=
+X-MS-Exchange-CrossTenant-userprincipalname: 0phu7hhz+CkU6Hqx+Bw2hep3+ATZ/vJ5kmP4vVLpWWaquC/5N11XJT3xf3axECOFW0q1Tl5iDogPhuI287CRnw3fvqV09E+aVTqud+bt7pM=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1101MB2262
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] iavf: do not override the adapter
- state in the watchdog task
+Subject: Re: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -165,9 +162,10 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
@@ -176,82 +174,191 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
 > Stefan Assmann
-> Sent: pi=B1tek, 5 marca 2021 13:39
+> Sent: wtorek, 16 marca 2021 11:02
 > To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; sassmann@kpanic.de
-> Subject: [Intel-wired-lan] [PATCH] iavf: do not override the adapter stat=
-e in
-> the watchdog task
-> =
-
-> The iavf watchdog task overrides adapter->state to __IAVF_RESETTING
-> when it detects a pending reset. Then schedules iavf_reset_task() which
-> takes care of the reset.
-> =
-
-> The reset task is capable of handling the reset without changing
-> adapter->state. In fact we lose the state information when the watchdog
-> task prematurely changes the adapter state. This may lead to a crash if
-> instead of the reset task the iavf_remove() function gets called before t=
-he
-> reset task.
-> In that case (if we were in state __IAVF_RUNNING previously) the
-> iavf_remove() function triggers iavf_close() which fails to close the dev=
-ice
-> because of the incorrect state information.
-> =
-
-> This may result in a crash due to pending interrupts.
-> kernel BUG at drivers/pci/msi.c:357!
-> [...]
-> Call Trace:
->  [<ffffffffbddf24dd>] pci_disable_msix+0x3d/0x50  [<ffffffffc08d2a63>]
-> iavf_reset_interrupt_capability+0x23/0x40 [iavf]  [<ffffffffc08d312a>]
-> iavf_remove+0x10a/0x350 [iavf]  [<ffffffffbddd3359>]
-> pci_device_remove+0x39/0xc0  [<ffffffffbdeb492f>]
-> __device_release_driver+0x7f/0xf0  [<ffffffffbdeb49c3>]
-> device_release_driver+0x23/0x30  [<ffffffffbddcabb4>]
-> pci_stop_bus_device+0x84/0xa0  [<ffffffffbddcacc2>]
-> pci_stop_and_remove_bus_device+0x12/0x20
->  [<ffffffffbddf361f>] pci_iov_remove_virtfn+0xaf/0x160  [<ffffffffbddf3bc=
-c>]
-> sriov_disable+0x3c/0xf0  [<ffffffffbddf3ca3>] pci_disable_sriov+0x23/0x30
-> [<ffffffffc0667365>] i40e_free_vfs+0x265/0x2d0 [i40e]  [<ffffffffc0667624=
->]
-> i40e_pci_sriov_configure+0x144/0x1f0 [i40e]  [<ffffffffbddd5307>]
-> sriov_numvfs_store+0x177/0x1d0
-> Code: 00 00 e8 3c 25 e3 ff 49 c7 86 88 08 00 00 00 00 00 00 5b 41 5c 41 5=
-d 41 5e
-> 41 5f 5d c3 48 8b 7b 28 e8 0d 44 RIP  [<ffffffffbbbf1068>]
-> free_msi_irqs+0x188/0x190
-> =
-
-> The solution is to not touch the adapter->state in iavf_watchdog_task() a=
-nd
-> let the reset task handle the state transition.
-> =
-
+> Cc: Laba, SlawomirX <slawomirx.laba@intel.com>; netdev@vger.kernel.org;
+> sassmann@kpanic.de
+> Subject: [Intel-wired-lan] [PATCH] iavf: fix locking of critical sections
+> 
+> To avoid races between iavf_init_task(), iavf_reset_task(),
+> iavf_watchdog_task(), iavf_adminq_task() as well as the shutdown and
+> remove functions more locking is required.
+> The current protection by __IAVF_IN_CRITICAL_TASK is needed in additional
+> places.
+> 
+> - The reset task performs state transitions, therefore needs locking.
+> - The adminq task acts on replies from the PF in
+>   iavf_virtchnl_completion() which may alter the states.
+> - The init task is not only run during probe but also if a VF gets stuck
+>   to reinitialize it.
+> - The shutdown function performs a state transition.
+> - The remove function perorms a state transition and also free's
+>   resources.
+> 
+> iavf_lock_timeout() is introduced to avoid waiting infinitely and cause a
+> deadlock. Rather unlock and print a warning.
+> 
 > Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 1 -
->  1 file changed, 1 deletion(-)
-> =
-
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 57 ++++++++++++++++++---
+>  1 file changed, 50 insertions(+), 7 deletions(-)
+> 
 > diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
 > b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index 0a867d64d467..d9e3a70abb47 100644
+> index dc5b3c06d1e0..538b7aa43fa5 100644
 > --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 > +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -1954,7 +1954,6 @@ static void iavf_watchdog_task(struct work_struct
+> @@ -131,6 +131,30 @@ enum iavf_status iavf_free_virt_mem_d(struct
+> iavf_hw *hw,
+>  	return 0;
+>  }
+> 
+> +/**
+> + * iavf_timeout - try to set bit but give up after timeout
+> + * @adapter: board private structure
+> + * @bit: bit to set
+> + * @msecs: timeout in msecs
+> + *
+> + * Returns 0 on success, negative on failure  **/ static inline int
+> +iavf_lock_timeout(struct iavf_adapter *adapter,
+> +				    enum iavf_critical_section_t bit,
+> +				    unsigned int msecs)
+> +{
+> +	unsigned int wait, delay = 10;
+> +
+> +	for (wait = 0; wait < msecs; wait += delay) {
+> +		if (!test_and_set_bit(bit, &adapter->crit_section))
+> +			return 0;
+> +
+> +		msleep(delay);
+> +	}
+> +
+> +	return -1;
+> +}
+> +
+>  /**
+>   * iavf_schedule_reset - Set the flags and schedule a reset event
+>   * @adapter: board private structure
+> @@ -2069,6 +2093,10 @@ static void iavf_reset_task(struct work_struct
 > *work)
->  		/* check for hw reset */
->  	reg_val =3D rd32(hw, IAVF_VF_ARQLEN1) &
-> IAVF_VF_ARQLEN1_ARQENABLE_MASK;
->  	if (!reg_val) {
-> -		adapter->state =3D __IAVF_RESETTING;
->  		adapter->flags |=3D IAVF_FLAG_RESET_PENDING;
->  		adapter->aq_required =3D 0;
->  		adapter->current_op =3D VIRTCHNL_OP_UNKNOWN;
+>  	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
+>  		return;
+> 
+> +	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200)) {
+> +		schedule_work(&adapter->reset_task);
+> +		return;
+> +	}
+>  	while (test_and_set_bit(__IAVF_IN_CLIENT_TASK,
+>  				&adapter->crit_section))
+>  		usleep_range(500, 1000);
+> @@ -2275,6 +2303,8 @@ static void iavf_adminq_task(struct work_struct
+> *work)
+>  	if (!event.msg_buf)
+>  		goto out;
+> 
+> +	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200))
+> +		goto freedom;
+>  	do {
+>  		ret = iavf_clean_arq_element(hw, &event, &pending);
+>  		v_op = (enum
+> virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+> @@ -2288,6 +2318,7 @@ static void iavf_adminq_task(struct work_struct
+> *work)
+>  		if (pending != 0)
+>  			memset(event.msg_buf, 0,
+> IAVF_MAX_AQ_BUF_SIZE);
+>  	} while (pending);
+> +	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+> 
+>  	if ((adapter->flags &
+>  	     (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) ||
+> @@ -3590,6 +3621,10 @@ static void iavf_init_task(struct work_struct
+> *work)
+>  						    init_task.work);
+>  	struct iavf_hw *hw = &adapter->hw;
+> 
+> +	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000)) {
+> +		dev_warn(&adapter->pdev->dev, "failed to set
+> __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
+> +		return;
+> +	}
+>  	switch (adapter->state) {
+>  	case __IAVF_STARTUP:
+>  		if (iavf_startup(adapter) < 0)
+> @@ -3602,14 +3637,14 @@ static void iavf_init_task(struct work_struct
+> *work)
+>  	case __IAVF_INIT_GET_RESOURCES:
+>  		if (iavf_init_get_resources(adapter) < 0)
+>  			goto init_failed;
+> -		return;
+> +		goto out;
+>  	default:
+>  		goto init_failed;
+>  	}
+> 
+>  	queue_delayed_work(iavf_wq, &adapter->init_task,
+>  			   msecs_to_jiffies(30));
+> -	return;
+> +	goto out;
+>  init_failed:
+>  	if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
+>  		dev_err(&adapter->pdev->dev,
+> @@ -3618,9 +3653,11 @@ static void iavf_init_task(struct work_struct
+> *work)
+>  		iavf_shutdown_adminq(hw);
+>  		adapter->state = __IAVF_STARTUP;
+>  		queue_delayed_work(iavf_wq, &adapter->init_task, HZ * 5);
+> -		return;
+> +		goto out;
+>  	}
+>  	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
+> +out:
+> +	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+>  }
+> 
+>  /**
+> @@ -3637,9 +3674,12 @@ static void iavf_shutdown(struct pci_dev *pdev)
+>  	if (netif_running(netdev))
+>  		iavf_close(netdev);
+> 
+> +	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
+> +		dev_warn(&adapter->pdev->dev, "failed to set
+> __IAVF_IN_CRITICAL_TASK
+> +in %s\n", __FUNCTION__);
+>  	/* Prevent the watchdog from running. */
+>  	adapter->state = __IAVF_REMOVE;
+>  	adapter->aq_required = 0;
+> +	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
+> 
+>  #ifdef CONFIG_PM
+>  	pci_save_state(pdev);
+> @@ -3866,10 +3906,6 @@ static void iavf_remove(struct pci_dev *pdev)
+>  				 err);
+>  	}
+> 
+> -	/* Shut down all the garbage mashers on the detention level */
+> -	adapter->state = __IAVF_REMOVE;
+> -	adapter->aq_required = 0;
+> -	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
+>  	iavf_request_reset(adapter);
+>  	msleep(50);
+>  	/* If the FW isn't responding, kick it once, but only once. */ @@ -
+> 3877,6 +3913,13 @@ static void iavf_remove(struct pci_dev *pdev)
+>  		iavf_request_reset(adapter);
+>  		msleep(50);
+>  	}
+> +	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
+> +		dev_warn(&adapter->pdev->dev, "failed to set
+> __IAVF_IN_CRITICAL_TASK
+> +in %s\n", __FUNCTION__);
+> +
+> +	/* Shut down all the garbage mashers on the detention level */
+> +	adapter->state = __IAVF_REMOVE;
+> +	adapter->aq_required = 0;
+> +	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
+>  	iavf_free_all_tx_resources(adapter);
+>  	iavf_free_all_rx_resources(adapter);
+>  	iavf_misc_irq_disable(adapter);
 > --
 > 2.29.2
 
