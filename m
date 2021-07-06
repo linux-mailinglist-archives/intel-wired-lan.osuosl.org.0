@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 115053BCF40
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:28:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C117B3BCFB8
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 13:29:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B6976400CD;
-	Tue,  6 Jul 2021 11:28:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 778C1838D7;
+	Tue,  6 Jul 2021 11:29:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VUNizdj0BMmg; Tue,  6 Jul 2021 11:28:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fwA0ofSL2IhB; Tue,  6 Jul 2021 11:29:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B7E9840269;
-	Tue,  6 Jul 2021 11:28:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8A2A68376D;
+	Tue,  6 Jul 2021 11:29:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BFAEE1BF306
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:28:10 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C4AD1BF306
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AC61D4055E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:28:10 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 093E240269
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IGgcESUhaaMw for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 11:28:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2J1_6UgDAaA7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 11:29:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0D06440562
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:28:09 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F294861F27;
- Tue,  6 Jul 2021 11:28:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7B357400CD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 11:29:02 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7BD2E61F6A;
+ Tue,  6 Jul 2021 11:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570889;
- bh=C5qzixDlRmk0upYPW9j1FH52VLpMsz/AoatQOBsCGKQ=;
+ s=k20201202; t=1625570942;
+ bh=bneTy3l4dtaTdeZs1Xduz3nnufrr2WqhPF/+LlNBZy8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cOWF8J5Zc2hz1tFjrf2Mt5vOoKAnXr4lbi5k0o1zEYDg/9yLGM9bwmrObPBrmmHEn
- y29TOIboH0Lh+5kJEB+v9QysTcXd7UJGDK8vZANODrZnH/J5ZRBSQoI9MZtHP3Z1i2
- 9Cs+4dZbeUJVopI0nZ+1t+6pQgLk3n5VMNNVDxsaqQDj3kUClz2h4MvQCY3BnWS4i6
- cVIaixksw6Uw6BweJncfXBvR+6Jvlhdg2AcsjZ5UvVx91sezcM1wMt5sm3bEZGFzh+
- usvLfyAZUyqpwW8jCP4tjFbOn8QkD+7o8jaxIiVtCCqXIN8qEoCLPc7irHnqM4sA/E
- sSvE8KLMgnvYA==
+ b=qiMDxnOUFOi+rse9XEQ7PrxUn6l7ff0Z6Iy7pH1+GcgbmOZ932f+Um9MNZoQtU9xR
+ m/6Ga7HU2R19Lty9RMtNfRMQNsj7ID1bUBwNo74RMFZ9XyQHw8FIDC1yXGU2tIlnsY
+ jgCw/ilxZVKEEaYOBN/2LU4L/Xa2UmySmOQ40KdCFRYVVOAL3PW5b5OacfEvxbzRqz
+ WHErI08EZBRxDVJMygk4SP8SKorOuD7tjuR7V3x+ghfPM1TLn2GGR0lZ1D7Pjf3ObV
+ aUn7kIl6rsr3H3w2RtgwIjFel6CnzNF0Q0VBX/FyidGWGzy1hAwxEEix/Su48hc3Sl
+ p5nialY0SvH7g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue,  6 Jul 2021 07:27:19 -0400
-Message-Id: <20210706112749.2065541-15-sashal@kernel.org>
+Date: Tue,  6 Jul 2021 07:28:23 -0400
+Message-Id: <20210706112848.2066036-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210706112749.2065541-1-sashal@kernel.org>
-References: <20210706112749.2065541-1-sashal@kernel.org>
+In-Reply-To: <20210706112848.2066036-1-sashal@kernel.org>
+References: <20210706112848.2066036-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.14 15/45] e100: handle eeprom as
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.9 11/35] e100: handle eeprom as
  little endian
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -95,7 +95,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 90974462743b..a73102357bbd 100644
+index 93c29094ceff..9035cb5fc70d 100644
 --- a/drivers/net/ethernet/intel/e100.c
 +++ b/drivers/net/ethernet/intel/e100.c
 @@ -1423,7 +1423,7 @@ static int e100_phy_check_without_mii(struct nic *nic)
@@ -116,7 +116,7 @@ index 90974462743b..a73102357bbd 100644
  		/* enable/disable MDI/MDI-X auto-switching. */
  		mdio_write(netdev, nic->mii.phy_id, MII_NCONFIG,
  				nic->mii.force_media ? 0 : NCONFIG_AUTO_SWITCH);
-@@ -2290,9 +2290,9 @@ static int e100_asf(struct nic *nic)
+@@ -2298,9 +2298,9 @@ static int e100_asf(struct nic *nic)
  {
  	/* ASF can be enabled from eeprom */
  	return (nic->pdev->device >= 0x1050) && (nic->pdev->device <= 0x1057) &&
@@ -129,7 +129,7 @@ index 90974462743b..a73102357bbd 100644
  }
  
  static int e100_up(struct nic *nic)
-@@ -2948,7 +2948,7 @@ static int e100_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+@@ -2952,7 +2952,7 @@ static int e100_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  
  	/* Wol magic packet can be enabled from eeprom */
  	if ((nic->mac >= mac_82558_D101_A4) &&
