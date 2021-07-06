@@ -1,55 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8884B3BC6BB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 08:42:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C140E3BC6DE
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jul 2021 08:47:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 143614016F;
-	Tue,  6 Jul 2021 06:42:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DE0234036E;
+	Tue,  6 Jul 2021 06:47:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TYWkij2Ifyz9; Tue,  6 Jul 2021 06:42:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0KX93fUczok2; Tue,  6 Jul 2021 06:47:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0AA1840104;
-	Tue,  6 Jul 2021 06:42:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC46940369;
+	Tue,  6 Jul 2021 06:47:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 29BD21BF31F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:42:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EEA9E1BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:47:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0BD8B6068C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:42:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D5DF06079C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:47:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ruj1GHUzCTnd for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jul 2021 06:42:12 +0000 (UTC)
+ with ESMTP id xLeRmeS_nvZH for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jul 2021 06:47:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from youngberry.canonical.com (youngberry.canonical.com
  [91.189.89.112])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 49BDA6006A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:42:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 49C4F60748
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jul 2021 06:47:05 +0000 (UTC)
 Received: from [222.129.38.159] (helo=[192.168.1.18])
  by youngberry.canonical.com with esmtpsa (TLS1.2) tls
  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
  (envelope-from <aaron.ma@canonical.com>)
- id 1m0emX-0006MK-IK; Tue, 06 Jul 2021 06:42:09 +0000
-To: Dave Airlie <airlied@gmail.com>
+ id 1m0erG-0006la-0q; Tue, 06 Jul 2021 06:47:02 +0000
+To: "Neftin, Sasha" <sasha.neftin@intel.com>, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "Edri, Michael" <michael.edri@intel.com>,
+ "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ "Shalev, Avi" <avi.shalev@intel.com>
 References: <20210702045120.22855-1-aaron.ma@canonical.com>
- <CAPM=9twzx0aa5Dq-L5oOSk+w8z7audCq_biXwtFVh3QVY1VceA@mail.gmail.com>
+ <20210702045120.22855-2-aaron.ma@canonical.com>
+ <613e2106-940a-49ed-6621-0bb00bc7dca5@intel.com>
+ <ad3d2d01-1d0a-8887-b057-e6a9531a05f4@canonical.com>
+ <f9f9408e-9ba3-7ed9-acc2-1c71913b04f0@intel.com>
 From: Aaron Ma <aaron.ma@canonical.com>
-Message-ID: <53691935-daee-9acc-93d2-414fb11ce2bc@canonical.com>
-Date: Tue, 6 Jul 2021 14:42:01 +0800
+Message-ID: <96106dfe-9844-1d9d-d865-619d78a0d150@canonical.com>
+Date: Tue, 6 Jul 2021 14:46:55 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <CAPM=9twzx0aa5Dq-L5oOSk+w8z7audCq_biXwtFVh3QVY1VceA@mail.gmail.com>
+In-Reply-To: <f9f9408e-9ba3-7ed9-acc2-1c71913b04f0@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
- is removed
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] igc: wait for the MAC copy when
+ enabled MAC passthrough
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,30 +70,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Network Development <netdev@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/5/21 3:47 PM, Dave Airlie wrote:
-> Drive-by, but won't this add a lot of overhead on every register
-> access? has this been benchmarked with lots of small network transfers
-> or anything?
-> 
-
-iperf3 is tested, the result is the same as before.
-Due to the registers are rd/wr even after error_handler and remove.
-Didn't find better fix.
-Please let me know if you have any idea.
-
-Thanks,
-Aaron
-
-> Dave.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Ck9uIDcvNS8yMSA3OjU0IFBNLCBOZWZ0aW4sIFNhc2hhIHdyb3RlOgo+IEhlbGxvIEFhcm9uLCBU
+aGFua3MgdG8gcG9pbnQgbWUgb24gdGhpcyBkb2N1bWVudC4gSSBzZWUuLi4gVGhpcyBpcyByZWNv
+bW1lbmRhdGlvbiBmb3IgV2luZG93cyBkcml2ZXIuIEFueXdheSwgImRlbGF5IiBhcHByb2FjaCBp
+cyBlcnJvci1wcm9uZS4gV2UgbmVlZCByYXRoZXIgYXNrIGZvciBNTkcgRlcgY29uZmlybWF0aW9u
+IChtZXNzYWdlKSB0aGF0IE1BQ8KgYWRkcmVzc8KgaXPCoGNvcGllZC4KPiBDYW7CoHdlwqBjYWxs
+wqAoaW7CoGNhc2XCoHdlwqBrbm93wqB0aGF0wqBNTkfCoEZXwqBjb3BpZWTCoE1BQ8KgYWRkcmVz
+cyk6Cj4gaWdjX3Jhcl9zZXQgKG1ldGhvZCBmcm9tIGlnY19tYWMuYyksIHVwZGF0ZSB0aGUgbWFj
+LmFkZHIgYW5kIHRoZW4gcGVyZm9ybSI6wqBtZW1jcHkobmV0ZGV2LT5kZXZfYWRkcizCoGh3LT5t
+YWMuYWRkcizCoG5ldGRldi0+YWRkcl9sZW4pOz8KCldpdGhvdXQgZGVsYXksIGFmdGVyIGlnY19y
+YXJfc2V0LCB0aGUgTUFDIGFkZHJlc3MgaXMgYWxsIDAuClRoZSBNQUMgYWRkciBpcyB0aGUgZnJv
+bSBkb2NrIGluc3RlYWQgb2YgTUFDIHBhc3N0aHJvdWdoIHdpdGggdGhlIG9yaWdpbmFsIGRyaXZl
+ci4KClRoYW5rcywKQWFyb24KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1
+b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
+aXJlZC1sYW4K
