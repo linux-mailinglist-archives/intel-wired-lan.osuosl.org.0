@@ -2,52 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3526C3BF293
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Jul 2021 01:42:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D69A33BF28E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Jul 2021 01:41:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DAB8140692;
-	Wed,  7 Jul 2021 23:42:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 824BD405DD;
+	Wed,  7 Jul 2021 23:41:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z8C0H4FapHPE; Wed,  7 Jul 2021 23:42:06 +0000 (UTC)
+	with ESMTP id TqSNinlhUqN7; Wed,  7 Jul 2021 23:41:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A287D405DE;
-	Wed,  7 Jul 2021 23:42:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A08240583;
+	Wed,  7 Jul 2021 23:41:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7288D1BF48C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jul 2021 23:41:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3DBBA1BF48C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jul 2021 23:41:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0AC1A8301F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jul 2021 23:41:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8C8C983032
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jul 2021 23:41:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FwOO5_9cWCTh for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id EvQTYwjQT2jj for <intel-wired-lan@lists.osuosl.org>;
  Wed,  7 Jul 2021 23:41:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AF1EE8302F
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8539C83027
  for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jul 2021 23:41:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10037"; a="273250399"
-X-IronPort-AV: E=Sophos;i="5.84,222,1620716400"; d="scan'208";a="273250399"
+X-IronPort-AV: E=McAfee;i="6200,9189,10037"; a="273250412"
+X-IronPort-AV: E=Sophos;i="5.84,222,1620716400"; d="scan'208";a="273250412"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2021 16:41:13 -0700
-X-IronPort-AV: E=Sophos;i="5.84,222,1620716400"; d="scan'208";a="411136294"
+ 07 Jul 2021 16:41:14 -0700
+X-IronPort-AV: E=Sophos;i="5.84,222,1620716400"; d="scan'208";a="411136323"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 Jul 2021 16:41:13 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed,  7 Jul 2021 16:40:55 -0700
-Message-Id: <20210707234108.4071506-1-jacob.e.keller@intel.com>
+Date: Wed,  7 Jul 2021 16:40:56 -0700
+Message-Id: <20210707234108.4071506-2-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
+In-Reply-To: <20210707234108.4071506-1-jacob.e.keller@intel.com>
+References: <20210707234108.4071506-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next v3 00/13] implement support for PTP on
- E822 hardware
+Subject: [Intel-wired-lan] [net-next v3 01/13] ice: fix Tx queue iteration
+ for Tx timestamp enablement
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,88 +67,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Extend the ice driver implementation to support PTP for the E822 based
-devices.
+The driver accidentally copied the ice_for_each_rxq iterator when
+implementing enablement of the ptp_tx bit for the Tx rings. We still
+load the Tx rings and set the ptp_tx field, but we iterate over the
+count of the num_rxq.
 
-This includes a few cleanup patches, that fix some minor issues spotted
-while preparing them. In addition, there are some slight refactors to ease
-the addition of E822 support, followed by adding the new hardware
-implementation ice_ptp_hw.c.
+If the number of Tx and Rx queues differ, this could either cause
+a buffer overrun when accessing the tx_rings list if num_txq is greater
+than num_rxq, or it could cause us to fail to enable Tx timestamps for
+some rings.
 
-There are a few major differences with E822 support compared to E810
-support:
+This was not noticed originally as we generally have the same number of
+Tx and Rx queues.
 
-*) The E822 device has a Clock Generation Unit which must be initialized in
-order to generate proper clock frequencies on the output that drives the PTP
-hardware clock registers
+Fixes: ea9b847cda64 ("ice: enable transmit timestamps for E810 devices")
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-*) The E822 PHY is a bit different and requires a more complex
-initialization procedure which must be rerun any time the link configuration
-changes.
-
-*) The E822 devices support enhanced timestamp calibration by making use of
-a process called Vernier offset measurement. This allows the hardware to
-measure phase offset related to the PHY clocks for Serdes and FEC, reducing
-the inaccuracy of the timestamp relative to the actual packet transmission
-and receipt. Making use of this requires data gathered from the first
-transmitted and received packets, and waiting for the PHY to complete the
-calibration measurements. This is done as part of a new kthread, ov_work.
-Note that to avoid delay in enabling timestamps, we start the PHY in
-'bypass' mode which allows timestamps to be captured without the Vernier
-calibration measurement. Once the first packets have been sent and received,
-we then complete the calibration setup and exit bypass mode and begin using
-the more precise timestamps. According to the datasheet, timestamps without
-calibration data can be incorrect relative to actual receipt or transmission
-by up to 1 clock cycle (~1.25 nanoseconds), while calibrated timestamps
-should be correct to within 1/8th of a clock cycle (~0.15 nanoseconds).
-
-*) E822 devices support crosstimestamping via PCIe PTM, which we enable when
-available on the platform.
-
-There is a fair amount of logic required to perform PHY and CGU
-initialization, which is the vast majority of the new code, but it is fairly
-self contained within ice_ptp_hw.c, with the exception of monitoring for
-offset validity being handled by a kthread.
-
-Changes since v2:
-* introduced helper functions to enable and disable clock outputs
-
-Changes since v1:
-* Rebased on top of IWL to resolve conflict
-* Fixed build against non-X86 arch for the PCIe PTM support
-
-Jacob Keller (13):
-  ice: fix Tx queue iteration for Tx timestamp enablement
-  ice: remove dead code for allocating pin_config
-  ice: add lock around Tx timestamp tracker flush
-  ice: restart periodic outputs around time changes
-  ice: introduce ice_base_incval function
-  ice: PTP: move setting of tstamp_config
-  ice: use 'int err' instead of 'int status'
-  ice: introduce ice_ptp_init_phc function
-  ice: convert clk_freq capability into time_ref
-  ice: implement basic E822 PTP support
-  ice: ensure the hardware Clock Generation Unit is configured
-  ice: exit bypass mode once hardware finishes timestamp calibration
-  ice: support crosstimestamping on E822 devices if supported
-
- drivers/net/ethernet/intel/Kconfig            |   10 +
- drivers/net/ethernet/intel/ice/ice_cgu_regs.h |  116 +
- drivers/net/ethernet/intel/ice/ice_common.c   |   12 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |    9 +
- drivers/net/ethernet/intel/ice/ice_main.c     |    7 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  717 ++++-
- drivers/net/ethernet/intel/ice/ice_ptp.h      |   30 +-
- .../net/ethernet/intel/ice/ice_ptp_consts.h   |  374 +++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 2794 ++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  345 ++
- drivers/net/ethernet/intel/ice/ice_type.h     |   23 +-
- 11 files changed, 4226 insertions(+), 211 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_cgu_regs.h
- create mode 100644 drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-
-
-base-commit: 6e3c27180bcf2635f537ff63164e8df9773b56fb
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 5d5207b56ca9..e176c7484484 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -22,7 +22,7 @@ static void ice_set_tx_tstamp(struct ice_pf *pf, bool on)
+ 		return;
+ 
+ 	/* Set the timestamp enable flag for all the Tx rings */
+-	ice_for_each_rxq(vsi, i) {
++	ice_for_each_txq(vsi, i) {
+ 		if (!vsi->tx_rings[i])
+ 			continue;
+ 		vsi->tx_rings[i]->ptp_tx = on;
 -- 
 2.31.1.331.gb0c09ab8796f
 
