@@ -1,59 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1C293C1640
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Jul 2021 17:46:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71A973C1EBF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jul 2021 07:04:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 393C483C37;
-	Thu,  8 Jul 2021 15:46:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A9AC883CDA;
+	Fri,  9 Jul 2021 05:04:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s7BXQgF5XLh6; Thu,  8 Jul 2021 15:45:59 +0000 (UTC)
+	with ESMTP id sUayO9PgCZKq; Fri,  9 Jul 2021 05:04:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 496FB83C36;
-	Thu,  8 Jul 2021 15:45:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9AB4983AC5;
+	Fri,  9 Jul 2021 05:04:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1F1CE1BF312
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Jul 2021 15:45:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C04821BF287
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jul 2021 05:04:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0B172415BE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Jul 2021 15:45:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BA9D7415A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jul 2021 05:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V4TMJ7WxpP56 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Jul 2021 15:45:52 +0000 (UTC)
+ with ESMTP id oSzSGP2WmPTv for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Jul 2021 05:04:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B80AD415BA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Jul 2021 15:45:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0E64661483;
- Thu,  8 Jul 2021 15:45:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625759152;
- bh=is2esSXTGi4HPbNrzyvxZE08UDJJDrKAa6KsWAWVLfM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=GX8McskDedTlTLJrVfjZb34JA8f5rdAJlKwE8m37vzrTJw9iA7vgMYepWYnsNnMsH
- 0kACvi25IB6lVrfJJdKmiEVWplYdtYj9UY0gA5OC9MaeRoLK9GNiFMADkxtS8g3yFB
- GFnfz7UpqLQOnLACPm2SU+LdDawagvbYCpG2LLSGg8nJaOYa04GD1PIy9W2XL7h5yb
- t/pY3XBm0TWCaz62S7rhF/VXfTPo3BWvcpbNN7EPNXmmkaBmkHaa6MnXEGih6F6/QQ
- TOOKHQ1iV1cl1qdbiQHEfPlHKLT0T9da4NKyQM5MpP93odHDdHFbRksZNH3lJr0VeT
- FULhHpIlib+fA==
-Date: Thu, 8 Jul 2021 10:45:50 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Oliver O'Halloran <oohall@gmail.com>
-Message-ID: <20210708154550.GA1019947@bjorn-Precision-5520>
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 883A14158C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jul 2021 05:04:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10039"; a="207823516"
+X-IronPort-AV: E=Sophos;i="5.84,226,1620716400"; d="scan'208";a="207823516"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2021 22:04:10 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,226,1620716400"; d="scan'208";a="487921197"
+Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 08 Jul 2021 22:04:09 -0700
+Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1m1igK-000Eh8-FT; Fri, 09 Jul 2021 05:04:08 +0000
+Date: Fri, 09 Jul 2021 13:03:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <60e7d88d.0O8pBmxb3l2myEQM%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAOSf1CGVpogQGAatuY_N0db6OL2BFegGtj6VTLA9KFz0TqYBQg@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
- is removed
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ a6c5ae02c186fae2cd3040f328feba345b81a278
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,62 +63,185 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- netdev@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-pci <linux-pci@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org,
- Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jul 08, 2021 at 12:04:02PM +1000, Oliver O'Halloran wrote:
-> On Thu, Jul 8, 2021 at 8:40 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> >
-> > If we add the check as proposed in this patch, I think people will
-> > read it and think this is the correct way to avoid MMIO errors.  It
-> > does happen to avoid some MMIO errors, but it cannot avoid them all,
-> > so it's not a complete solution and it gives a false sense of
-> > security.
-> 
-> I think it's helpful to classify MMIO errors as either benign or
-> poisonous with the poison MMIOs causing some kind of crash. Most of
-> the discussions about pci_dev_is_disconnected(), including this one,
-> seem to stem from people trying to use it to avoid the poison case. I
-> agree that using pci_dev_is_disconnected() that way is hacky and
-> doesn't really fix the problem, but considering poison MMIOs usually
-> stem from broken hardware or firmware maybe we should allow it
-> anyway. We can't do anything better and it's an improvement compared
-> to crashing.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: a6c5ae02c186fae2cd3040f328feba345b81a278  ice: support crosstimestamping on E822 devices if supported
 
-Apologies for rehashing what's probably obvious to everybody but me.
-I'm trying to get a better handle on benign vs poisonous errors.
+elapsed time: 722m
 
-MMIO means CPU reads or writes to the device.  In PCI, writes are
-posted and don't receive a response, so a driver will never see
-writel() return an error (although an error may be reported
-asynchronously via AER or similar).
+configs tested: 156
+configs skipped: 3
 
-So I think we're mostly talking about CPU reads here.  We expect a PCI
-response containing the data.  Sometimes there's no response or an
-error response.  The behavior of the host bridge in these error cases
-is not defined by PCI, so what the CPU sees is not consistent across
-platforms.  In some cases, the bridge handles this as a catastrophic
-error that forces a system restart.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-But in most cases, at least on x86, the bridge logs an error and
-fabricates ~0 data so the CPU read can complete.  Then it's up to
-software to recognize that an error occurred and decide what to do
-about it.  Is this a benign or a poisonous error?
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+mips                      malta_kvm_defconfig
+m68k                       bvme6000_defconfig
+arm                         palmz72_defconfig
+mips                          rb532_defconfig
+sh                           se7721_defconfig
+m68k                         apollo_defconfig
+powerpc                     asp8347_defconfig
+arm                           u8500_defconfig
+arm                            hisi_defconfig
+sh                 kfr2r09-romimage_defconfig
+x86_64                              defconfig
+ia64                            zx1_defconfig
+m68k                          multi_defconfig
+powerpc                       maple_defconfig
+powerpc                   lite5200b_defconfig
+arm                         s5pv210_defconfig
+sh                   rts7751r2dplus_defconfig
+powerpc                  iss476-smp_defconfig
+powerpc                      chrp32_defconfig
+powerpc                   bluestone_defconfig
+powerpc                 mpc832x_rdb_defconfig
+powerpc                     ep8248e_defconfig
+arm                        oxnas_v6_defconfig
+arm                         axm55xx_defconfig
+arm                        clps711x_defconfig
+sparc                       sparc64_defconfig
+mips                        vocore2_defconfig
+powerpc                         ps3_defconfig
+powerpc                    sam440ep_defconfig
+arm                           corgi_defconfig
+arm                  colibri_pxa270_defconfig
+mips                         cobalt_defconfig
+sh                               alldefconfig
+mips                    maltaup_xpa_defconfig
+s390                       zfcpdump_defconfig
+powerpc                    amigaone_defconfig
+sh                               j2_defconfig
+xtensa                           alldefconfig
+arc                          axs103_defconfig
+mips                  cavium_octeon_defconfig
+arm                     eseries_pxa_defconfig
+powerpc                      pasemi_defconfig
+arm                             mxs_defconfig
+sh                           se7712_defconfig
+sh                        edosk7705_defconfig
+mips                     loongson2k_defconfig
+arc                        nsim_700_defconfig
+sparc64                          alldefconfig
+sh                        sh7757lcr_defconfig
+arm                          imote2_defconfig
+arm                           h3600_defconfig
+arm                        mvebu_v7_defconfig
+sh                            hp6xx_defconfig
+arm                       cns3420vb_defconfig
+powerpc                     sbc8548_defconfig
+sh                     magicpanelr2_defconfig
+h8300                       h8s-sim_defconfig
+riscv                            alldefconfig
+xtensa                    smp_lx200_defconfig
+arm                           h5000_defconfig
+sparc                       sparc32_defconfig
+powerpc                  mpc885_ads_defconfig
+arm                     davinci_all_defconfig
+riscv                    nommu_k210_defconfig
+mips                     loongson1c_defconfig
+mips                            gpr_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20210707
+x86_64               randconfig-a002-20210707
+x86_64               randconfig-a005-20210707
+x86_64               randconfig-a006-20210707
+x86_64               randconfig-a003-20210707
+x86_64               randconfig-a001-20210707
+i386                 randconfig-a006-20210708
+i386                 randconfig-a004-20210708
+i386                 randconfig-a001-20210708
+i386                 randconfig-a003-20210708
+i386                 randconfig-a005-20210708
+i386                 randconfig-a002-20210708
+i386                 randconfig-a004-20210707
+i386                 randconfig-a006-20210707
+i386                 randconfig-a001-20210707
+i386                 randconfig-a003-20210707
+i386                 randconfig-a005-20210707
+i386                 randconfig-a002-20210707
+i386                 randconfig-a006-20210709
+i386                 randconfig-a004-20210709
+i386                 randconfig-a001-20210709
+i386                 randconfig-a003-20210709
+i386                 randconfig-a005-20210709
+i386                 randconfig-a002-20210709
+i386                 randconfig-a015-20210707
+i386                 randconfig-a016-20210707
+i386                 randconfig-a012-20210707
+i386                 randconfig-a011-20210707
+i386                 randconfig-a014-20210707
+i386                 randconfig-a013-20210707
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                            kunit_defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
-I'd say this is a benign error.  It certainly can't be ignored, but as
-long as the driver recognizes the error, it should be able to deal
-with it without crashing the whole system and forcing a restart.
+clang tested configs:
+x86_64               randconfig-b001-20210707
+x86_64               randconfig-b001-20210709
+x86_64               randconfig-a015-20210707
+x86_64               randconfig-a014-20210707
+x86_64               randconfig-a012-20210707
+x86_64               randconfig-a011-20210707
+x86_64               randconfig-a016-20210707
+x86_64               randconfig-a013-20210707
 
-Bjorn
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
