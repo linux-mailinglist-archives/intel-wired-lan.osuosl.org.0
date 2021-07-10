@@ -1,56 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BE793C346A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jul 2021 14:00:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A13AE3C35FE
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jul 2021 19:58:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CE6E742267;
-	Sat, 10 Jul 2021 12:00:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C39CA83ABC;
+	Sat, 10 Jul 2021 17:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rg7HS0Tcrx2p; Sat, 10 Jul 2021 12:00:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BFKf8b7c7401; Sat, 10 Jul 2021 17:58:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E31542265;
-	Sat, 10 Jul 2021 12:00:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E4F4B83A8F;
+	Sat, 10 Jul 2021 17:58:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 567B21BF359
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 12:00:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 01E3B1BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5240340137
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 12:00:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E4CAF83A8F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0u9dLix5xfS0 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Jul 2021 12:00:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dv-M7ljY50pU for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Jul 2021 17:58:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6F65E400B5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 12:00:39 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10040"; a="197096422"
-X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="197096422"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2021 05:00:37 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 53D9983143
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:01 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10041"; a="270952653"
+X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="270952653"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2021 10:57:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="411612871"
-Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 10 Jul 2021 05:00:35 -0700
-Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1m2Bet-000FhR-6y; Sat, 10 Jul 2021 12:00:35 +0000
-Date: Sat, 10 Jul 2021 20:00:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60e98bdf.7qQXUq2eZiVc8/nw%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="489960656"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
+ by FMSMGA003.fm.intel.com with ESMTP; 10 Jul 2021 10:57:54 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	michael.edri@intel.com
+Date: Sat, 10 Jul 2021 20:57:50 +0300
+Message-Id: <20210710175750.2088213-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- e84671cd9648eb1f2b346378c100b4ebfbd1b01c
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove phy->type checking
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,133 +65,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: e84671cd9648eb1f2b346378c100b4ebfbd1b01c  ice: fix build issue if CONFIG_1588_PTP_CLOCk=m
+i225 devices have only one phy->type: copper. There is no point checking
+phy->type during the igc_has_link method from the watchdog that
+invoked every 2 seconds.
+This patch comes to clean up these pointless checkings.
 
-elapsed time: 721m
-
-configs tested: 109
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-powerpc                  mpc885_ads_defconfig
-powerpc                        fsp2_defconfig
-arm                          lpd270_defconfig
-mips                      maltasmvp_defconfig
-sh                           se7780_defconfig
-mips                           gcw0_defconfig
-m68k                            q40_defconfig
-mips                        jmr3927_defconfig
-arm                        clps711x_defconfig
-powerpc                      ep88xc_defconfig
-arm                        mvebu_v7_defconfig
-xtensa                generic_kc705_defconfig
-riscv                    nommu_virt_defconfig
-sh                              ul2_defconfig
-arm                         nhk8815_defconfig
-sh                           se7724_defconfig
-m68k                       m5208evb_defconfig
-arm                       aspeed_g5_defconfig
-arc                            hsdk_defconfig
-arm                          ep93xx_defconfig
-powerpc                 xes_mpc85xx_defconfig
-mips                  maltasmvp_eva_defconfig
-powerpc                      acadia_defconfig
-sh                         ecovec24_defconfig
-arm                        multi_v7_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a005-20210710
-x86_64               randconfig-a004-20210710
-x86_64               randconfig-a002-20210710
-x86_64               randconfig-a003-20210710
-x86_64               randconfig-a006-20210710
-x86_64               randconfig-a001-20210710
-i386                 randconfig-a006-20210709
-i386                 randconfig-a004-20210709
-i386                 randconfig-a001-20210709
-i386                 randconfig-a003-20210709
-i386                 randconfig-a005-20210709
-i386                 randconfig-a002-20210709
-i386                 randconfig-a015-20210709
-i386                 randconfig-a016-20210709
-i386                 randconfig-a011-20210709
-i386                 randconfig-a012-20210709
-i386                 randconfig-a013-20210709
-i386                 randconfig-a014-20210709
-x86_64               randconfig-a004-20210709
-x86_64               randconfig-a005-20210709
-x86_64               randconfig-a002-20210709
-x86_64               randconfig-a006-20210709
-x86_64               randconfig-a003-20210709
-x86_64               randconfig-a001-20210709
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                            kunit_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                      rhel-8.3-kbuiltin
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-b001-20210709
-x86_64               randconfig-a015-20210709
-x86_64               randconfig-a011-20210709
-x86_64               randconfig-a012-20210709
-x86_64               randconfig-a014-20210709
-x86_64               randconfig-a016-20210709
-x86_64               randconfig-a013-20210709
-
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/igc/igc_main.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index c8abd7fb70e5..722b79ba2abd 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -5222,17 +5222,10 @@ bool igc_has_link(struct igc_adapter *adapter)
+ 	 * false until the igc_check_for_link establishes link
+ 	 * for copper adapters ONLY
+ 	 */
+-	switch (hw->phy.media_type) {
+-	case igc_media_type_copper:
+-		if (!hw->mac.get_link_status)
+-			return true;
+-		hw->mac.ops.check_for_link(hw);
+-		link_active = !hw->mac.get_link_status;
+-		break;
+-	default:
+-	case igc_media_type_unknown:
+-		break;
+-	}
++	if (!hw->mac.get_link_status)
++		return true;
++	hw->mac.ops.check_for_link(hw);
++	link_active = !hw->mac.get_link_status;
+ 
+ 	if (hw->mac.type == igc_i225) {
+ 		if (!netif_carrier_ok(adapter->netdev)) {
+-- 
+2.25.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
