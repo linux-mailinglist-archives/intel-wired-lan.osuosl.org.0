@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A13AE3C35FE
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jul 2021 19:58:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B77243C5C77
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jul 2021 14:42:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C39CA83ABC;
-	Sat, 10 Jul 2021 17:58:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 640A960748;
+	Mon, 12 Jul 2021 12:42:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BFKf8b7c7401; Sat, 10 Jul 2021 17:58:14 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Xt0F_G7tjud2; Mon, 12 Jul 2021 12:42:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E4F4B83A8F;
-	Sat, 10 Jul 2021 17:58:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B499606EA;
+	Mon, 12 Jul 2021 12:42:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 01E3B1BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B66991BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jul 2021 12:42:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E4CAF83A8F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AA3DD40179
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jul 2021 12:42:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dv-M7ljY50pU for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Jul 2021 17:58:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nvbA2yrNPcpe for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jul 2021 12:42:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 53D9983143
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jul 2021 17:58:01 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10041"; a="270952653"
-X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="270952653"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2021 10:57:55 -0700
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9027940150
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jul 2021 12:42:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10042"; a="209946768"
+X-IronPort-AV: E=Sophos;i="5.84,232,1620716400"; d="scan'208";a="209946768"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jul 2021 05:42:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,229,1620716400"; d="scan'208";a="489960656"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by FMSMGA003.fm.intel.com with ESMTP; 10 Jul 2021 10:57:54 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	michael.edri@intel.com
-Date: Sat, 10 Jul 2021 20:57:50 +0300
-Message-Id: <20210710175750.2088213-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+X-IronPort-AV: E=Sophos;i="5.84,232,1620716400"; d="scan'208";a="486449604"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by fmsmga004.fm.intel.com with ESMTP; 12 Jul 2021 05:42:06 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 12 Jul 2021 01:07:51 -0400
+Message-Id: <20210712050751.20035-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove phy->type checking
+Subject: [Intel-wired-lan] [PATCH net-next] ice: change devlink port number
+ for pf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,44 +65,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i225 devices have only one phy->type: copper. There is no point checking
-phy->type during the igc_has_link method from the watchdog that
-invoked every 2 seconds.
-This patch comes to clean up these pointless checkings.
+Using lport from VSI structure as physical port number for
+PF devlink port introduces inconsistency with netdevice naming scheme
+and PF attribute in VF devlink port.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Change this value to be the same for VF and PF devlink port.
+
+Before this change:
+- devlink phys_port_name for first netdevice (ending name "f0"): p1
+- devlink phys_port_name for VF created on first netdevice: pf0vf0
+
+After this change:
+- devlink phys_port_name for first netdevice (ending name "f0"): p0
+- devlink phys_port_name for VF created on first netdevice: pf0vf0
+
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+This commit should be squashed with "ice: Move devlink port to PF/VF struct"
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index c8abd7fb70e5..722b79ba2abd 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5222,17 +5222,10 @@ bool igc_has_link(struct igc_adapter *adapter)
- 	 * false until the igc_check_for_link establishes link
- 	 * for copper adapters ONLY
- 	 */
--	switch (hw->phy.media_type) {
--	case igc_media_type_copper:
--		if (!hw->mac.get_link_status)
--			return true;
--		hw->mac.ops.check_for_link(hw);
--		link_active = !hw->mac.get_link_status;
--		break;
--	default:
--	case igc_media_type_unknown:
--		break;
--	}
-+	if (!hw->mac.get_link_status)
-+		return true;
-+	hw->mac.ops.check_for_link(hw);
-+	link_active = !hw->mac.get_link_status;
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 59ae94266fcf..792a3972dec3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -624,7 +624,7 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+ 	vsi = ice_get_main_vsi(pf);
  
- 	if (hw->mac.type == igc_i225) {
- 		if (!netif_carrier_ok(adapter->netdev)) {
+ 	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
+-	attrs.phys.port_number = vsi->port_info->lport;
++	attrs.phys.port_number = pf->hw.bus.func;
+ 
+ 	devlink_port_attrs_set(devlink_port, &attrs);
+ 	devlink = priv_to_devlink(pf);
 -- 
-2.25.1
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
