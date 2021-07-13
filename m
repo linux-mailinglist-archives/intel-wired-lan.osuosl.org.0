@@ -1,161 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 359733C7608
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 19:58:25 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D32A3C78C9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 23:17:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BB6F240227;
-	Tue, 13 Jul 2021 17:58:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D26CA40539;
+	Tue, 13 Jul 2021 21:17:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ed_GLQ1t998n; Tue, 13 Jul 2021 17:58:22 +0000 (UTC)
+	with ESMTP id H0qe1Md_CoSv; Tue, 13 Jul 2021 21:17:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9AB534014D;
-	Tue, 13 Jul 2021 17:58:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C3C22404EF;
+	Tue, 13 Jul 2021 21:17:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 272DE1BF328
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 17:58:18 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EF3F61BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:15:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 104384014D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 17:58:18 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E80C8402C2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:15:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id prNl1nhthC6H for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jul 2021 17:58:16 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fgtmdK_epfJt for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jul 2021 21:15:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DA5084012A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 17:58:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10044"; a="197491421"
-X-IronPort-AV: E=Sophos;i="5.84,237,1620716400"; d="scan'208";a="197491421"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2021 10:58:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,237,1620716400"; d="scan'208";a="412536431"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga006.jf.intel.com with ESMTP; 13 Jul 2021 10:58:12 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 13 Jul 2021 10:58:12 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 13 Jul 2021 10:58:11 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10 via Frontend Transport; Tue, 13 Jul 2021 10:58:11 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.176)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Tue, 13 Jul 2021 10:58:10 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cVvJCgZy4dlOm7w2GZXTU+eK6CwMUKhZEzWkgOf7hYvpIP5JPg4IG4GK0zwGZctvi7h8TALPel3ItKelHwx8mwLQ4mXb8FbIKphlDWBzAI/VQQ5eGqrM7NDfx9i39Qi29h3KKwhDGya6YCmxZ1Oc7mUlQv5GZ9lmLk5zSaSzbScBILvYHYxGhUUWbbyCqlh/L4uzUKCzBMeUcH7lNEdwdkPximCGPVL6E2CjixIh5n+XVYfzW00HLw39Hc8njNk2B3mTG0Z4tbh3SkihjLlB/Zddnt3wdH5kbFs5mpA7qhdOl+qggYQhQXXVGKQKQcqXGIh94lnYUGJt7lXJEajysQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=II5Hn4hfsIhP/85mGyrxO48/bCAHCd907I/eiuNFVBQ=;
- b=FtSNsMEpGtJe1EueEml+EVsMlUlt0tvpose3MSY0fODfRBBf+UoBZnl5Q/kGqwAF9IZkAvc2IlHN58iYx5Q7tH4gXwgZ5gVpJfqWeFL3NFxAvuoZmA4z8+MFIXJNauLDSOnTNP6AjLsMyoXbLJR/eQKI8xAenbpLARRQX76Q6c2ZPs7c1IITT507OvE5ZhrMZ1TnrT1JxNtnZskdYPOXKje02qYgqLpK15bkg42vNLdimQWPtRdnyx3/mTJBJNCZYFgND20nyinsxoWrPnC42dg8ac+5xnHj/M4NRq8nIG7AT2n3K+/7cvhB2ykw0BLJMpwo2zDduVQLXT6UHvLnVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=II5Hn4hfsIhP/85mGyrxO48/bCAHCd907I/eiuNFVBQ=;
- b=m1puHMpGryWarfad/HbHt2ySxpduT1niow6tELvhsMKWimBV7hG3fyyS5gzAm8Oz6MKcyeD3Olib0vNpD6TmHaA8E6SyREm8GYOSmstNIbQmENqXEbEUWRR36fzQN6IXkRFR9r+jZZ16s9SB4J17tW361yb+gmDTnCvydmZYWKY=
-Authentication-Results: davemloft.net; dkim=none (message not signed)
- header.d=none;davemloft.net; dmarc=none action=none header.from=intel.com;
-Received: from CO1PR11MB4787.namprd11.prod.outlook.com (2603:10b6:303:6e::10)
- by MWHPR1101MB2254.namprd11.prod.outlook.com (2603:10b6:301:58::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.22; Tue, 13 Jul
- 2021 17:58:08 +0000
-Received: from CO1PR11MB4787.namprd11.prod.outlook.com
- ([fe80::b856:1bc7:d077:6e74]) by CO1PR11MB4787.namprd11.prod.outlook.com
- ([fe80::b856:1bc7:d077:6e74%4]) with mapi id 15.20.4331.021; Tue, 13 Jul 2021
- 17:58:08 +0000
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>, <jesse.brandeburg@intel.com>, 
- <anthony.l.nguyen@intel.com>
-References: <20210712133500.1126371-1-kai.heng.feng@canonical.com>
-From: Sasha Neftin <sasha.neftin@intel.com>
-Message-ID: <d0bc9dbd-9b7a-5807-2ade-e710964a05a1@intel.com>
-Date: Tue, 13 Jul 2021 20:58:00 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.11.0
-In-Reply-To: <20210712133500.1126371-1-kai.heng.feng@canonical.com>
-Content-Language: en-US
-X-ClientProxiedBy: ZR0P278CA0030.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1c::17) To CO1PR11MB4787.namprd11.prod.outlook.com
- (2603:10b6:303:6e::10)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7470E402B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:15:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626210936;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=VMJGkrX22NsvQPy5d9/dm13+Xn72U9Eqcs783OTJsIw=;
+ b=CQiUj50UBIAvT4YGO6zW7L/ieNBN1HN5OAISTAAfzkSaLXIOhqnGfMNsZiD0W9jqUayS4i
+ dwHmCfFgpREjnNbdeAA0eBPhGAbBiTRow+YLfOLDuTogImSKv3I2Xh5p8YANZM1DVeAGyT
+ ezbHM6rrI6m/5y+euOefRLXhhWQIxL4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-583-t7gVGBMqPpiCrJUFuxX7Fg-1; Tue, 13 Jul 2021 17:15:34 -0400
+X-MC-Unique: t7gVGBMqPpiCrJUFuxX7Fg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E57FA804145;
+ Tue, 13 Jul 2021 21:15:28 +0000 (UTC)
+Received: from virtlab719.virt.lab.eng.bos.redhat.com
+ (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A9A9A5D9DD;
+ Tue, 13 Jul 2021 21:15:12 +0000 (UTC)
+From: Nitesh Narayan Lal <nitesh@redhat.com>
+To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-api@vger.kernel.org, linux-pci@vger.kernel.org, tglx@linutronix.de,
+ jesse.brandeburg@intel.com, robin.murphy@arm.com, mtosatti@redhat.com,
+ mingo@kernel.org, jbrandeb@kernel.org, frederic@kernel.org,
+ juri.lelli@redhat.com, abelits@marvell.com, bhelgaas@google.com,
+ rostedt@goodmis.org, peterz@infradead.org, davem@davemloft.net,
+ akpm@linux-foundation.org, sfr@canb.auug.org.au,
+ stephen@networkplumber.org, rppt@linux.vnet.ibm.com,
+ chris.friesen@windriver.com, maz@kernel.org, nhorman@tuxdriver.com,
+ pjwaskiewicz@gmail.com, sassmann@redhat.com, thenzl@redhat.com,
+ kashyap.desai@broadcom.com, sumit.saxena@broadcom.com,
+ shivasharan.srikanteshwara@broadcom.com, sathya.prakash@broadcom.com,
+ sreekanth.reddy@broadcom.com, suganath-prabu.subramani@broadcom.com,
+ james.smart@broadcom.com, dick.kennedy@broadcom.com, jkc@redhat.com,
+ faisal.latif@intel.com, shiraz.saleem@intel.com, tariqt@nvidia.com,
+ ahleihel@redhat.com, kheib@redhat.com, borisp@nvidia.com,
+ saeedm@nvidia.com, benve@cisco.com, govind@gmx.com,
+ jassisinghbrar@gmail.com, ajit.khaparde@broadcom.com,
+ sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
+ nilal@redhat.com, tatyana.e.nikolova@intel.com, mustafa.ismail@intel.com,
+ ahs3@redhat.com, leonro@nvidia.com, chandrakanth.patil@broadcom.com
+Date: Tue, 13 Jul 2021 17:14:48 -0400
+Message-Id: <20210713211502.464259-1-nitesh@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [192.168.1.168] (84.108.64.141) by
- ZR0P278CA0030.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:1c::17) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4331.21 via Frontend Transport; Tue, 13 Jul 2021 17:58:06 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3dfa284c-f654-4fbb-b94a-08d94627c5c9
-X-MS-TrafficTypeDiagnostic: MWHPR1101MB2254:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR1101MB2254A3896ED66BA99F03A68C97149@MWHPR1101MB2254.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: I5Yf5D0jiaG1mN759AEw4GkDNEK4mTAOChZa2PeVuYOnLphGMAvTr5bA5vaKsil0/cMSCcBOaztSZvkZbrpIe6Zbaqxh3RQkbzlFdHuKxchMIs04gZgF/MlvfiRj/3NtP9yI7lkRMLnGr6SgWADz6KbvLe4H9RsqYLu4HO3xQzx78QgeGTKmxMhsooDqbU98vGcb3A6CJbnBPPBC8UQjn/ROZKCKOyHJ3ktSViuIQpP3STQsNpv2w6HIbslu6Yn5PM2DfCp+ReNkPh5956DRcCrccwvohzGC7LflJJP6btpTy5ILssSvRKHPaN2pa/RSmfofAZe+3BLPoQPl0/ttVdriB/gdyzblrqTp14wJQATNxfefH6wHNNmC6EFVVR3p03hKBhbsSPgFRgC1tWOpxWemksOK4jB5CT+x8JpT5k9QwGnuQWE0VJOvyQn9JtaPO3tgcIKJSE/a3Rc2JsPtRItcjGyMhyu5inOB77fvP0qKKnU5QddH7lzXTQLl17JDBIRTft7bfERQeTOHVO/dES2/UysobsjzTxQEQ9sHaIQhZM3cgj7x7fOf3BoXKgCQ15CHuzkA/iNBvu8LQD+cnvRYi9P4C324oMA44cqX5AbTBF4jODOVwCLk6Vy4ntnSsQDGid934KXHb/Mq/8bbDwnO8CZ8LJZWwDBmOYp2TsZnBdiNbjkiGPGaf8O8/bGzyOCdNF2gYUqb76/ofvB0LGf/E90xQhDIjleCrQtcXxMyAZOTZmCTM+4ia1lyExjL
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB4787.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(346002)(366004)(39860400002)(376002)(396003)(8936002)(44832011)(16576012)(6666004)(86362001)(31696002)(36756003)(8676002)(38100700002)(316002)(956004)(6636002)(2616005)(66476007)(26005)(2906002)(5660300002)(478600001)(4326008)(54906003)(66556008)(53546011)(186003)(6486002)(66946007)(31686004)(83380400001)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RWdpVWl1S1RsRTBGbnJ3cHA5aFgwZ1d0eXVwOEJXQ2FlSi9kb2t4VmZUSzFC?=
- =?utf-8?B?RU1pNUZIS0xLWHhwZzA0WU5GSVhoVXdNMlN4RkorSVpoWjgwVUJRZTBLYmY3?=
- =?utf-8?B?UzlLa2hqNEpWdWRBR3kwb1ArSkNOdnN4VVBBbHByazlodHFZK2VWb0svdEdY?=
- =?utf-8?B?VE5vTzg1ak1KbWNXdkQrL05FdDIvcDBkZ2o4ZkxPWjdHQnc1S2FPblo2ZEhQ?=
- =?utf-8?B?ZFAyS25qcjRQM0N4N2s4bnJHQjY2SWZHQ2Rqc2ZiYmNnSTNNcnFTbEY2UUtL?=
- =?utf-8?B?aWxPaUNrYnU3Y0RCeFZpcGhzcnZXR2xBRlRCWGsrSXkvM0t2blNTY0RkS3Ex?=
- =?utf-8?B?dmJuS0RsT291WWE0dWNjcnpHRkxSTDhWSllzcXZic1RDNzRBMFczd3ZLVTVM?=
- =?utf-8?B?WEVkVlJOMm9YSXd6THV6c3BJaHpFUHB1cW1FUkdTT0FPam81aStNQU9CUjFp?=
- =?utf-8?B?VjZoUERQR0VhODYvVThvOHdRNjNEdmZYVnREbUowekJPUU5ueGZPQzNxdTRz?=
- =?utf-8?B?M3pNT3pUQ2NYMGxSYkdnQkNHYUUyY1l5a1FWZVhFTUNIbFBUK21uQUZGVzFv?=
- =?utf-8?B?a1NPdGM0OVJDSWJ6OFN6d1RGdmlFbWIwc2FIZXNQY3hGcllUeC9YQ3hzN0RQ?=
- =?utf-8?B?cHIwUU9KWEU3TEhqVVBnK2c5YzI0K3BnKzEzZllXOVBiNENnV0dyNzJ1ckg3?=
- =?utf-8?B?VkY5d0tpMU1ack9PU0RSZHRFNnljbVBxZ1RsdXRVMVhzdkhMMktQb3paS0Qy?=
- =?utf-8?B?MzBtWU5wYlJsVUhhZWloK205ZUZpbWt0RTArMTgzWWRPTzB0TDVrS1hqVGIr?=
- =?utf-8?B?UzRWRlhpYkdseWJlVi9wdjR2ZE11WXBEdmFxaHM3enZwSXV2bVVHcnpjSmRJ?=
- =?utf-8?B?NFNNSThnWjZibTZock44NEErb0JiOExqdVVPMUZhUG13Q1lZcC9nUmJBVWt5?=
- =?utf-8?B?VitxdE4wcU4wWXhxenVXMjhhWnE1S0lFeXNiTjFzZkFoM2RmQ3huSzA0SmFs?=
- =?utf-8?B?Y01zQVVpMWZHdEFyL3M1M2YvczZpdTRzNHZpRDVhT01oM25yanhkWjhrYktr?=
- =?utf-8?B?U3hDaG5TMHFLL3luUW5oSDZFQ3lDbndia3lmbFNRUHloRlpmS1pDQTZXNzlw?=
- =?utf-8?B?OFdnRFJqaXFpdmV4NG8xMTQxNHQxdm5aaWh2a21sSVBGbjBnVW8ybDJiSTJO?=
- =?utf-8?B?cmRKc3V6bmI3UGNpdURlMml6UkhzY0VTVmZ1d052MFY4MWhFbEQyREw0RmVV?=
- =?utf-8?B?bU9TSFpxOEtjcTYwcmhBc2lVZytSMkp5WXp2aUJEeGxIUEdyb1hkNzFQd3l5?=
- =?utf-8?B?ak9jSllRVE9kV2gwb25ZY0xFc2FYR0NRUUZCM09VQUc0SEZmcXhqVFpZR3Bv?=
- =?utf-8?B?c0YyTlBQYk9sNE9sdlJYaWdmY0NmYmR3TzE2MjYxazZqSmp1Z2FLN0dvZVE4?=
- =?utf-8?B?dDNac1VYT1pIT1c0T0hUNmZxSGxSWk5uWjYxY09SUG4vOHBaamdROU9aTXFU?=
- =?utf-8?B?SHVpNW0rMUJieUFEbTM2UG9IRFJpdWoxbk9TYmdnaXZ1dUc4enIzV2VkVEha?=
- =?utf-8?B?R2hSemVZYU9xVE1xUnZqaE5JcExhWGtNcFpNQy9kajc0V0hQWER0ZjJYQ1Vx?=
- =?utf-8?B?MDRxdGhOeGpLQU1DZUFBTEYrK2QxbUU4Y0Z1VnFVeFJoMldGcStJaS8rNXBP?=
- =?utf-8?B?bUxIY2VwVFNtT1ZkeCtpVmZ3cEhoNXdOczh0Ry90K1FwdDc5ZjZMeTgrcFVJ?=
- =?utf-8?Q?IsMpXFw+76cCR9i1y+r3UE5psk7uL/vWT7cb3HL?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3dfa284c-f654-4fbb-b94a-08d94627c5c9
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4787.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2021 17:58:08.7040 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: rK8nhZDMcPGsgK/j6ww5vqpIY4lDfNCYj75pPcjD+zmJZgdG4fVijFcZkLbgde+CqgsenAXM4tdAwvotkO1XtQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2254
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH 1/3] e1000e: Separate TGP from SPT
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mailman-Approved-At: Tue, 13 Jul 2021 21:16:57 +0000
+Subject: [Intel-wired-lan] [PATCH v3 00/14] genirq: Cleanup the usage of
+ irq_set_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,115 +99,153 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, acelan.kao@canonical.com,
- "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/12/2021 16:34, Kai-Heng Feng wrote:
-> Separate TGP from SPT so we can apply specific quirks to TGP.
-> 
-> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/e1000.h   |  4 +++-
->   drivers/net/ethernet/intel/e1000e/ich8lan.c | 20 ++++++++++++++++++++
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 13 +++++++------
->   3 files changed, 30 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-> index 5b2143f4b1f8..3178efd98006 100644
-> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> @@ -113,7 +113,8 @@ enum e1000_boards {
->   	board_pch2lan,
->   	board_pch_lpt,
->   	board_pch_spt,
-> -	board_pch_cnp
-> +	board_pch_cnp,
-Hello Kai-Heng,
-I would agree with you here. I would suggest extending it also for other 
-PCH (at least ADP and MTP).  The same controller on a different PCH.
-We will be able to differentiate between boards via MAC type and submit 
-quirks if need.
-> +	board_pch_tgp
->   };
->   
->   struct e1000_ps_page {
-> @@ -499,6 +500,7 @@ extern const struct e1000_info e1000_pch2_info;
->   extern const struct e1000_info e1000_pch_lpt_info;
->   extern const struct e1000_info e1000_pch_spt_info;
->   extern const struct e1000_info e1000_pch_cnp_info;
-> +extern const struct e1000_info e1000_pch_tgp_info;
->   extern const struct e1000_info e1000_es2_info;
->   
->   void e1000e_ptp_init(struct e1000_adapter *adapter);
-> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> index cf7b3887da1d..654dbe798e55 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> @@ -5967,3 +5967,23 @@ const struct e1000_info e1000_pch_cnp_info = {
->   	.phy_ops		= &ich8_phy_ops,
->   	.nvm_ops		= &spt_nvm_ops,
->   };
-> +
-> +const struct e1000_info e1000_pch_tgp_info = {
-> +	.mac			= e1000_pch_tgp,
-> +	.flags			= FLAG_IS_ICH
-> +				  | FLAG_HAS_WOL
-> +				  | FLAG_HAS_HW_TIMESTAMP
-> +				  | FLAG_HAS_CTRLEXT_ON_LOAD
-> +				  | FLAG_HAS_AMT
-> +				  | FLAG_HAS_FLASH
-> +				  | FLAG_HAS_JUMBO_FRAMES
-> +				  | FLAG_APME_IN_WUC,
-> +	.flags2			= FLAG2_HAS_PHY_STATS
-> +				  | FLAG2_HAS_EEE,
-> +	.pba			= 26,
-> +	.max_hw_frame_size	= 9022,
-> +	.get_variants		= e1000_get_variants_ich8lan,
-> +	.mac_ops		= &ich8_mac_ops,
-> +	.phy_ops		= &ich8_phy_ops,
-> +	.nvm_ops		= &spt_nvm_ops,
-> +};
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index d150dade06cf..5835d6cf2f51 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -51,6 +51,7 @@ static const struct e1000_info *e1000_info_tbl[] = {
->   	[board_pch_lpt]		= &e1000_pch_lpt_info,
->   	[board_pch_spt]		= &e1000_pch_spt_info,
->   	[board_pch_cnp]		= &e1000_pch_cnp_info,
-> +	[board_pch_tgp]		= &e1000_pch_tgp_info,
->   };
->   
->   struct e1000_reg_info {
-> @@ -7843,12 +7844,12 @@ static const struct pci_device_id e1000_pci_tbl[] = {
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V11), board_pch_cnp },
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_LM12), board_pch_spt },
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V12), board_pch_spt },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM13), board_pch_cnp },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V13), board_pch_cnp },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_cnp },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
-> -	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_cnp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM13), board_pch_tgp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V13), board_pch_tgp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_tgp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_tgp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_tgp },
-> +	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_tgp },
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM16), board_pch_cnp },
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_cnp },
->   	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_cnp },
-> 
-Thanks,
-Sasha
+The drivers currently rely on irq_set_affinity_hint() to either set the
+affinity_hint that is consumed by the userspace and/or to enforce a custom
+affinity.
+
+irq_set_affinity_hint() as the name suggests is originally introduced to
+only set the affinity_hint to help the userspace in guiding the interrupts
+and not the affinity itself. However, since the commit
+
+        e2e64a932556 "genirq: Set initial affinity in irq_set_affinity_hint()"
+
+irq_set_affinity_hint() also started applying the provided cpumask (if not
+NULL) as the affinity for the interrupts. The issue that this commit was
+trying to solve is to allow the drivers to enforce their affinity mask to
+distribute the interrupts across the CPUs such that they don't always end
+up on CPU0. This issue has been resolved within the irq subsystem since the
+commit
+
+        a0c9259dc4e1 "irq/matrix: Spread interrupts on allocation"
+
+Hence, there is no need for the drivers to overwrite the affinity to spread
+as it is dynamically performed at the time of allocation.
+
+Also, irq_set_affinity_hint() setting affinity unconditionally introduces
+issues for the drivers that only want to set their affinity_hint and not the
+affinity itself as for these driver interrupts the default_smp_affinity_mask
+is completely ignored (for detailed investigation please refer to [1]).
+
+Unfortunately reverting the commit e2e64a932556 is not an option at this
+point for two reasons [2]:
+
+- Several drivers for a valid reason (performance) rely on this API to
+  enforce their affinity mask
+
+- Until very recently this was the only exported interface that was
+  available
+
+To clear this out Thomas has come up with the following interfaces:
+
+- irq_set_affinity(): only sets affinity of an IRQ [3]
+- irq_update_affinity_hint(): Only sets the hint [4]
+- irq_set_affinity_and_hint(): Sets both affinity and the hint mask [4]
+
+The first API is already merged in the linus's tree and the patch
+that introduces the other two interfaces is included with this patch-set.
+
+To move to the stage where we can safely get rid of the
+irq_set_affinity_hint(), which has been marked deprecated, we have to
+move all its consumers to these new interfaces. In this patch-set, I have
+done that for a few drivers and will hopefully try to move the remaining of
+them in the coming days.
+
+Testing
+-------
+In terms of testing, I have performed some basic testing on x86 to verify
+things such as the interrupts are evenly spread on all CPUs, hint mask is
+correctly set etc. for the drivers - i40e, iavf, mlx5, mlx4, ixgbe, and
+enic on top of:
+
+        git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git
+
+So more testing is probably required for these and the drivers that I didn't
+test and any help will be much appreciated.
+
+
+Notes
+-----
+- For the mpt3sas driver I decided to go with the usage of
+  irq_set_affinity_and_hint over irq_set_affinity based on my analysis of
+  it and the megaraid driver. However, if we are sure that it is not
+  required then I can replace it with just irq_set_affinity as one of its
+  comment suggests.
+
+Change from v2 [5]
+------------------
+
+- Rebased on top of 5.14-rc1 (Leon Romanovsky)
+  + After discussion with Leon [6], made changes in the mlx5 patch to use
+    irq_set_affinity_and_hint over irq_update_affinity_hint
+  + i40iw is replaced with irdma driver, hence made the respective changes
+    in irdma (also replcaed irq_update_affinity_hint with
+    irq_set_affinity_and_hint).
+
+Change from v1 [7]
+------------------
+- Fixed compilation error by adding the new interface definitions for cases
+  where CONFIG_SMP is not defined
+
+- Fixed function usage in megaraid_sas and removed unnecessary variable
+  (Robin Murphy)
+
+- Removed unwanted #if/endif from mlx4 (Leon Romanovsky)
+
+- Other indentation related fixes
+
+ 
+[1] https://lore.kernel.org/lkml/1a044a14-0884-eedb-5d30-28b4bec24b23@redhat.com/
+[2] https://lore.kernel.org/linux-pci/d1d5e797-49ee-4968-88c6-c07119343492@arm.com/
+[3] https://lore.kernel.org/linux-arm-kernel/20210518091725.046774792@linutronix.de/
+[4] https://lore.kernel.org/patchwork/patch/1434326/
+[5] https://lore.kernel.org/lkml/20210629152746.2953364-1-nitesh@redhat.com/
+[6] https://lore.kernel.org/lkml/YO0eKv2GJcADQTHH@unreal/
+[7] https://lore.kernel.org/linux-scsi/20210617182242.8637-1-nitesh@redhat.com/
+
+
+Nitesh Narayan Lal (13):
+  iavf: Use irq_update_affinity_hint
+  i40e: Use irq_update_affinity_hint
+  scsi: megaraid_sas: Use irq_set_affinity_and_hint
+  scsi: mpt3sas: Use irq_set_affinity_and_hint
+  RDMA/irdma: Use irq_set_affinity_and_hint
+  enic: Use irq_update_affinity_hint
+  be2net: Use irq_update_affinity_hint
+  ixgbe: Use irq_update_affinity_hint
+  mailbox: Use irq_update_affinity_hint
+  scsi: lpfc: Use irq_set_affinity
+  hinic: Use irq_set_affinity_and_hint
+  net/mlx5: Use irq_set_affinity_and_hint
+  net/mlx4: Use irq_update_affinity_hint
+
+Thomas Gleixner (1):
+  genirq: Provide new interfaces for affinity hints
+
+ drivers/infiniband/hw/irdma/hw.c              |  4 +-
+ drivers/mailbox/bcm-flexrm-mailbox.c          |  4 +-
+ drivers/net/ethernet/cisco/enic/enic_main.c   |  8 +--
+ drivers/net/ethernet/emulex/benet/be_main.c   |  4 +-
+ drivers/net/ethernet/huawei/hinic/hinic_rx.c  |  4 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  8 +--
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  8 +--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 10 ++--
+ drivers/net/ethernet/mellanox/mlx4/eq.c       |  8 ++-
+ .../net/ethernet/mellanox/mlx5/core/pci_irq.c |  8 +--
+ drivers/scsi/lpfc/lpfc_init.c                 |  4 +-
+ drivers/scsi/megaraid/megaraid_sas_base.c     | 27 +++++-----
+ drivers/scsi/mpt3sas/mpt3sas_base.c           | 21 ++++----
+ include/linux/interrupt.h                     | 53 ++++++++++++++++++-
+ kernel/irq/manage.c                           |  8 +--
+ 15 files changed, 114 insertions(+), 65 deletions(-)
+
+-- 
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
