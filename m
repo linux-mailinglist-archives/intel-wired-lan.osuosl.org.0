@@ -2,62 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2AAC3C78D5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 23:17:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF32C3C78D6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 23:17:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A3E69402C2;
-	Tue, 13 Jul 2021 21:17:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 79C3C40668;
+	Tue, 13 Jul 2021 21:17:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OeNiB1-sFsbp; Tue, 13 Jul 2021 21:17:27 +0000 (UTC)
+	with ESMTP id UVjDeXR5rFOE; Tue, 13 Jul 2021 21:17:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 74B53402BD;
-	Tue, 13 Jul 2021 21:17:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68496402BD;
+	Tue, 13 Jul 2021 21:17:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1E4E41BF33E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6EF4B1BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1A02A83A87
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6ABAD83AC6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dw7FR_i79fQK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jul 2021 21:16:26 +0000 (UTC)
+ with ESMTP id fznh55yojouA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jul 2021 21:16:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 743EE83A5C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:26 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B35D983A5C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 21:16:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626210985;
+ s=mimecast20190719; t=1626210989;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=O5KXq/z7dZ/+GfJwFgmvdOMFBPu0TxASq5EsvM935Ms=;
- b=GoymLooxi7Cb4xTb0sUVNMfZYBjl1l3J4UuHPcmMOecEEilCmlHIX6nNI7XpxVd//XLDnq
- 5DsrNn541Ax1PDWC5kvw4Pm5zrb7KdGHIcpb9sdcuRoRd7dUVftyzTWsz3tFsutlkfQmq3
- Mym7xra4byCVeqHxiMpz2U/vAAohIC4=
+ bh=ecwwnWDuKz329Qn43UBtKxnyzBVsn+Nsa1FaVaBAbcw=;
+ b=bh71AhPSRLEOyJe3/bVHKsGNh9i5vk0uPcySCyXjQl2f2rjraqh1O07tEGsl+lYFxAFyib
+ 4OYDuu5+9BsP8sppIR+0X/I49nNYwcF/ELn/S4mn9OldK2l8ErixeSrbY+5ZO3Zx/OV0JU
+ oZRFkwtk2jOK+JwOhLn2knDzZDERKhY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-220-NRkAjESkNuyGLyzUSDV6lg-1; Tue, 13 Jul 2021 17:16:23 -0400
-X-MC-Unique: NRkAjESkNuyGLyzUSDV6lg-1
+ us-mta-49-IEkfBda8MUCyuExDFiGBHQ-1; Tue, 13 Jul 2021 17:16:28 -0400
+X-MC-Unique: IEkfBda8MUCyuExDFiGBHQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EE8121084F4B;
- Tue, 13 Jul 2021 21:16:18 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA41D804302;
+ Tue, 13 Jul 2021 21:16:22 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 629B85D9DD;
- Tue, 13 Jul 2021 21:16:05 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 12F835D9DD;
+ Tue, 13 Jul 2021 21:16:19 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -81,14 +81,14 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
  nilal@redhat.com, tatyana.e.nikolova@intel.com, mustafa.ismail@intel.com,
  ahs3@redhat.com, leonro@nvidia.com, chandrakanth.patil@broadcom.com
-Date: Tue, 13 Jul 2021 17:14:55 -0400
-Message-Id: <20210713211502.464259-8-nitesh@redhat.com>
+Date: Tue, 13 Jul 2021 17:14:56 -0400
+Message-Id: <20210713211502.464259-9-nitesh@redhat.com>
 In-Reply-To: <20210713211502.464259-1-nitesh@redhat.com>
 References: <20210713211502.464259-1-nitesh@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mailman-Approved-At: Tue, 13 Jul 2021 21:16:57 +0000
-Subject: [Intel-wired-lan] [PATCH v3 07/14] enic: Use
+Subject: [Intel-wired-lan] [PATCH v3 08/14] be2net: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -120,36 +120,31 @@ that only updates the affinity_hint pointer.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/net/ethernet/cisco/enic/enic_main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/emulex/benet/be_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/cisco/enic/enic_main.c b/drivers/net/ethernet/cisco/enic/enic_main.c
-index d0a8f7106958..97eb5bd62855 100644
---- a/drivers/net/ethernet/cisco/enic/enic_main.c
-+++ b/drivers/net/ethernet/cisco/enic/enic_main.c
-@@ -150,10 +150,10 @@ static void enic_set_affinity_hint(struct enic *enic)
- 		    !cpumask_available(enic->msix[i].affinity_mask) ||
- 		    cpumask_empty(enic->msix[i].affinity_mask))
- 			continue;
--		err = irq_set_affinity_hint(enic->msix_entry[i].vector,
--					    enic->msix[i].affinity_mask);
-+		err = irq_update_affinity_hint(enic->msix_entry[i].vector,
-+					       enic->msix[i].affinity_mask);
- 		if (err)
--			netdev_warn(enic->netdev, "irq_set_affinity_hint failed, err %d\n",
-+			netdev_warn(enic->netdev, "irq_update_affinity_hint failed, err %d\n",
- 				    err);
+diff --git a/drivers/net/ethernet/emulex/benet/be_main.c b/drivers/net/ethernet/emulex/benet/be_main.c
+index 361c1c87c183..ece6c0692826 100644
+--- a/drivers/net/ethernet/emulex/benet/be_main.c
++++ b/drivers/net/ethernet/emulex/benet/be_main.c
+@@ -3491,7 +3491,7 @@ static int be_msix_register(struct be_adapter *adapter)
+ 		if (status)
+ 			goto err_msix;
+ 
+-		irq_set_affinity_hint(vec, eqo->affinity_mask);
++		irq_update_affinity_hint(vec, eqo->affinity_mask);
  	}
  
-@@ -173,7 +173,7 @@ static void enic_unset_affinity_hint(struct enic *enic)
- 	int i;
+ 	return 0;
+@@ -3552,7 +3552,7 @@ static void be_irq_unregister(struct be_adapter *adapter)
+ 	/* MSIx */
+ 	for_all_evt_queues(adapter, eqo, i) {
+ 		vec = be_msix_vec_get(adapter, eqo);
+-		irq_set_affinity_hint(vec, NULL);
++		irq_update_affinity_hint(vec, NULL);
+ 		free_irq(vec, eqo);
+ 	}
  
- 	for (i = 0; i < enic->intr_count; i++)
--		irq_set_affinity_hint(enic->msix_entry[i].vector, NULL);
-+		irq_update_affinity_hint(enic->msix_entry[i].vector, NULL);
- }
- 
- static int enic_udp_tunnel_set_port(struct net_device *netdev,
 -- 
 2.27.0
 
