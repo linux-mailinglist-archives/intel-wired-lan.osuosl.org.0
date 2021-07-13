@@ -1,68 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CEE53C70D7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 15:01:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D0AF93C7199
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 15:57:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 83D6983925;
-	Tue, 13 Jul 2021 13:01:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 589E3402F3;
+	Tue, 13 Jul 2021 13:57:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gwAA7OdaNQii; Tue, 13 Jul 2021 13:00:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id m5LzXEFRC5bf; Tue, 13 Jul 2021 13:57:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F739838F0;
-	Tue, 13 Jul 2021 13:00:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6D35440242;
+	Tue, 13 Jul 2021 13:57:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D6F71BF857
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C830F1BF857
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 592C0400F3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B67BC60895
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=canonical.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CIfCjaoq_Med for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jul 2021 13:00:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-relay-canonical-0.canonical.com
- (smtp-relay-canonical-0.canonical.com [185.125.188.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 767FA400E0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:54 +0000 (UTC)
-Received: from localhost.localdomain (unknown [222.129.38.167])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 95C6E405D1; 
- Tue, 13 Jul 2021 13:00:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1626181251;
- bh=wtJCO3QYrNDXs3ubXQGWVjwF5MFQxhxZ9W+dp4w8uV8=;
- h=From:To:Subject:Date:Message-Id:MIME-Version;
- b=ZbHhxMnkFheoGVQFyShRrFC2aHIvKFaP85Du3D2Z4ryhkQQkcRVRkx9sC/ta67HcQ
- Qg17jNp12JAdFxtei1VM84Er9OjKAzkHb1A79FhRkqXLku7OH5ZOXup56Zf5cdfQ7q
- bB2GD04rS0vbE8EZxd3rprc2n/A4aUbSwky1T2owb6IJcVa3+nTtnPnvqyC3W+iHb3
- Y1uH3wP7BGYRAS1FAadkWQib39xfbr00CRRyC5SQG4sf2+isA7aHhnPl0HllgbL83q
- unH5tAr3pit/9oaN/ZnGn7Hr0l3nVCqTIcIGdNQhlRd3FrPIg/3QmJ6h7Agd6suO5w
- IQiiIz8wvXlNA==
-From: Aaron Ma <aaron.ma@canonical.com>
-To: aaron.ma@canonical.com, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Tue, 13 Jul 2021 21:00:36 +0800
-Message-Id: <20210713130036.741188-1-aaron.ma@canonical.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210702045120.22855-1-aaron.ma@canonical.com>
-References: <20210702045120.22855-1-aaron.ma@canonical.com>
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KggF4Un0Paax for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
+ [IPv6:2607:f8b0:4864:20::52c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 41701606B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
+Received: by mail-pg1-x52c.google.com with SMTP id 37so21466618pgq.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 05:20:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=N12Qt0FbX8/A1qRMnGp6XJs1s3QP6zmQUn6Y4fY3u94=;
+ b=hfylIuaTT2n81A+A5vS0z3hJLKe3dvZTZw1MoT9Kpifs+cFkL+LOJ9zq0o130wRkqe
+ nnp+KeDfqvAkInKZO3PvoCSx5716riVxvltU0TobGnesfnbMUAFW1AExyChi37nacWKK
+ OywwrydZum1BJGoqpIU5hjWDX6+XFc9b2T2t+5qkuPJtlaXoeXcjAKFgKie8bZgh9nrI
+ I8Q4gIIn5jIS6T4NcUR3+MOqgVaH3zA2j18/gTyjVqaagGUymW4TV7U4uV7ZCXYxHbe1
+ BrvS8Sce5SrcltkHn4cuuqSxCL9nncOx7u9/iD9b783lq50K4aDs0ZE6sPge+FHGuLxn
+ SkBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=N12Qt0FbX8/A1qRMnGp6XJs1s3QP6zmQUn6Y4fY3u94=;
+ b=TDS7gWog6iEanypSTM4bLG2evcphHhYndSiSU88INyTp07GdF0+qHvO5Ni1bV1Sdzg
+ Mhz5dBZPsIrrPn/geItQiGng0mQ7s29DM+yz1ykGCkM3x9Whk3xtk0Anxhs6+Ux6+Vcr
+ My6yspt2F+9pejCc/7gcZvMOu1vCujq2vvot/i1n/ze28yaEOyFaAYw+u6peuK0gtw5k
+ J7ES2R6RbVgQArCuDoyov+kX21Dzfuj11KYIX72XQZj7pBvcmrGTDsnRS6V1T6woaAgV
+ Gs/ZK5gi6LIWm5Bv4NjOEq2Y1IDmqj6bsDLxJo/Q1w13EvQfq5fjjKCfq7EL3jxwM9Q5
+ K3OQ==
+X-Gm-Message-State: AOAM533BIHpx9bxS0SYIYfpjM1QO6Q3W1pamr5edednmvOuvqbpOGNcd
+ WvTPu7yV1A89MFSo5ndxsY0=
+X-Google-Smtp-Source: ABdhPJxPMiF0vYDmisrDv8/T6niOAkHikVbq4qnURKb/AumrClNXbcI7A+KC4w3ocfGZkTX2IrtuXA==
+X-Received: by 2002:aa7:90c8:0:b029:32c:935f:de5f with SMTP id
+ k8-20020aa790c80000b029032c935fde5fmr4380311pfk.79.1626178842534; 
+ Tue, 13 Jul 2021 05:20:42 -0700 (PDT)
+Received: from localhost.localdomain ([154.16.166.218])
+ by smtp.gmail.com with ESMTPSA id d14sm20248253pfv.171.2021.07.13.05.20.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jul 2021 05:20:41 -0700 (PDT)
+From: Dongliang Mu <mudongliangabcd@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Shannon Nelson <shannon.nelson@intel.com>,
+ Catherine Sullivan <catherine.sullivan@intel.com>
+Date: Tue, 13 Jul 2021 20:20:27 +0800
+Message-Id: <20210713122028.463450-1-mudongliangabcd@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] igc: fix page fault when thunderbolt
- is unplugged
+X-Mailman-Approved-At: Tue, 13 Jul 2021 13:57:22 +0000
+Subject: [Intel-wired-lan] [PATCH] i40e: Fix error handling code of label
+ err_set_queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,107 +94,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Dongliang Mu <mudongliangabcd@gmail.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After unplug thunerbolt dock with i225, pciehp interrupt is triggered,
-remove call will read/write mmio address which is already disconnected,
-then cause page fault and make system hang.
+If i40e_up_complete fails in i40e_vsi_open, it goes to err_up_complete.
+The label err_set_queues has an issue: if the else branch is executed,
+there is no need to execute i40e_vsi_request_irq.
 
-Check PCI state to remove device safely.
+Fix this by adding a condition of i40e_vsi_free_irq.
 
-Trace:
-BUG: unable to handle page fault for address: 000000000000b604
-Oops: 0000 [#1] SMP NOPTI
-RIP: 0010:igc_rd32+0x1c/0x90 [igc]
-Call Trace:
-igc_ptp_suspend+0x6c/0xa0 [igc]
-igc_ptp_stop+0x12/0x50 [igc]
-igc_remove+0x7f/0x1c0 [igc]
-pci_device_remove+0x3e/0xb0
-__device_release_driver+0x181/0x240
-
-Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+Reported-by: Dongliang Mu (mudongliangabcd@gmail.com)
+Fixes: 9c04cfcd4aad ("i40e: Fix error handling in i40e_vsi_open")
+Fixes: c22e3c6c7912 ("i40e: prep vsi_open logic for non-netdev cases")
+Signed-off-by: Dongliang Mu <mudongliangabcd@gmail.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 32 ++++++++++++++---------
- drivers/net/ethernet/intel/igc/igc_ptp.c  |  3 ++-
- 2 files changed, 21 insertions(+), 14 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 95323095094d..3c72f135fc29 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -149,6 +149,9 @@ static void igc_release_hw_control(struct igc_adapter *adapter)
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 ctrl_ext;
- 
-+	if (!pci_device_is_present(adapter->pdev))
-+		return;
-+
- 	/* Let firmware take over control of h/w */
- 	ctrl_ext = rd32(IGC_CTRL_EXT);
- 	wr32(IGC_CTRL_EXT,
-@@ -4447,26 +4450,29 @@ void igc_down(struct igc_adapter *adapter)
- 
- 	igc_ptp_suspend(adapter);
- 
--	/* disable receives in the hardware */
--	rctl = rd32(IGC_RCTL);
--	wr32(IGC_RCTL, rctl & ~IGC_RCTL_EN);
--	/* flush and sleep below */
--
-+	if (pci_device_is_present(adapter->pdev)) {
-+		/* disable receives in the hardware */
-+		rctl = rd32(IGC_RCTL);
-+		wr32(IGC_RCTL, rctl & ~IGC_RCTL_EN);
-+		/* flush and sleep below */
-+	}
- 	/* set trans_start so we don't get spurious watchdogs during reset */
- 	netif_trans_update(netdev);
- 
- 	netif_carrier_off(netdev);
- 	netif_tx_stop_all_queues(netdev);
- 
--	/* disable transmits in the hardware */
--	tctl = rd32(IGC_TCTL);
--	tctl &= ~IGC_TCTL_EN;
--	wr32(IGC_TCTL, tctl);
--	/* flush both disables and wait for them to finish */
--	wrfl();
--	usleep_range(10000, 20000);
-+	if (pci_device_is_present(adapter->pdev)) {
-+		/* disable transmits in the hardware */
-+		tctl = rd32(IGC_TCTL);
-+		tctl &= ~IGC_TCTL_EN;
-+		wr32(IGC_TCTL, tctl);
-+		/* flush both disables and wait for them to finish */
-+		wrfl();
-+		usleep_range(10000, 20000);
- 
--	igc_irq_disable(adapter);
-+		igc_irq_disable(adapter);
-+	}
- 
- 	adapter->flags &= ~IGC_FLAG_NEED_LINK_UPDATE;
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 69617d2c1be2..4ae19c6a3247 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -849,7 +849,8 @@ void igc_ptp_suspend(struct igc_adapter *adapter)
- 	adapter->ptp_tx_skb = NULL;
- 	clear_bit_unlock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state);
- 
--	igc_ptp_time_save(adapter);
-+	if (pci_device_is_present(adapter->pdev))
-+		igc_ptp_time_save(adapter);
- }
- 
- /**
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 861e59a350bd..ae54468c7001 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -8720,7 +8720,8 @@ int i40e_vsi_open(struct i40e_vsi *vsi)
+ err_up_complete:
+ 	i40e_down(vsi);
+ err_set_queues:
+-	i40e_vsi_free_irq(vsi);
++	if ((vsi->netdev) || (vsi->type == I40E_VSI_FDIR))
++		i40e_vsi_free_irq(vsi);
+ err_setup_rx:
+ 	i40e_vsi_free_rx_resources(vsi);
+ err_setup_tx:
 -- 
-2.30.2
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
