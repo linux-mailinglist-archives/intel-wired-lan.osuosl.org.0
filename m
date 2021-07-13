@@ -1,55 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8F713C6B08
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 09:13:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 24BE540393;
-	Tue, 13 Jul 2021 07:13:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hvb-cFy-5CmF; Tue, 13 Jul 2021 07:13:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E0F4B405C2;
-	Tue, 13 Jul 2021 07:13:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9EA411BF2C8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 07:13:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CEE53C70D7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 15:01:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8D2A38355C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 07:13:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 83D6983925;
+	Tue, 13 Jul 2021 13:01:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wg7ZXy6XpYXv for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jul 2021 07:13:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0D697833A0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 07:13:02 +0000 (UTC)
-Received: from [192.168.0.3] (ip5f5aeb78.dynamic.kabel-deutschland.de
- [95.90.235.120])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gwAA7OdaNQii; Tue, 13 Jul 2021 13:00:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8F739838F0;
+	Tue, 13 Jul 2021 13:00:59 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D6F71BF857
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 592C0400F3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:55 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=canonical.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CIfCjaoq_Med for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jul 2021 13:00:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp-relay-canonical-0.canonical.com
+ (smtp-relay-canonical-0.canonical.com [185.125.188.120])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 767FA400E0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:00:54 +0000 (UTC)
+Received: from localhost.localdomain (unknown [222.129.38.167])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3582061E30BCC;
- Tue, 13 Jul 2021 09:13:00 +0200 (CEST)
-To: Sasha Neftin <sasha.neftin@intel.com>
-References: <20210624081908.568757-1-sasha.neftin@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <b144efbc-9dbd-dd7c-b8df-a504a757bded@molgen.mpg.de>
-Date: Tue, 13 Jul 2021 09:12:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ (No client certificate requested)
+ by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 95C6E405D1; 
+ Tue, 13 Jul 2021 13:00:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1626181251;
+ bh=wtJCO3QYrNDXs3ubXQGWVjwF5MFQxhxZ9W+dp4w8uV8=;
+ h=From:To:Subject:Date:Message-Id:MIME-Version;
+ b=ZbHhxMnkFheoGVQFyShRrFC2aHIvKFaP85Du3D2Z4ryhkQQkcRVRkx9sC/ta67HcQ
+ Qg17jNp12JAdFxtei1VM84Er9OjKAzkHb1A79FhRkqXLku7OH5ZOXup56Zf5cdfQ7q
+ bB2GD04rS0vbE8EZxd3rprc2n/A4aUbSwky1T2owb6IJcVa3+nTtnPnvqyC3W+iHb3
+ Y1uH3wP7BGYRAS1FAadkWQib39xfbr00CRRyC5SQG4sf2+isA7aHhnPl0HllgbL83q
+ unH5tAr3pit/9oaN/ZnGn7Hr0l3nVCqTIcIGdNQhlRd3FrPIg/3QmJ6h7Agd6suO5w
+ IQiiIz8wvXlNA==
+From: Aaron Ma <aaron.ma@canonical.com>
+To: aaron.ma@canonical.com, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Tue, 13 Jul 2021 21:00:36 +0800
+Message-Id: <20210713130036.741188-1-aaron.ma@canonical.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20210702045120.22855-1-aaron.ma@canonical.com>
+References: <20210702045120.22855-1-aaron.ma@canonical.com>
 MIME-Version: 1.0
-In-Reply-To: <20210624081908.568757-1-sasha.neftin@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1 3/3] e1000e: Additional PHY power
- saving in s0ix
+Subject: [Intel-wired-lan] [PATCH v2] igc: fix page fault when thunderbolt
+ is unplugged
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,63 +75,108 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: michael.edri@intel.com, Dima Ruinskiy <dima.ruinskiy@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Sasha, dear Dima,
+After unplug thunerbolt dock with i225, pciehp interrupt is triggered,
+remove call will read/write mmio address which is already disconnected,
+then cause page fault and make system hang.
 
+Check PCI state to remove device safely.
 
-Am 24.06.21 um 10:19 schrieb Sasha Neftin:
+Trace:
+BUG: unable to handle page fault for address: 000000000000b604
+Oops: 0000 [#1] SMP NOPTI
+RIP: 0010:igc_rd32+0x1c/0x90 [igc]
+Call Trace:
+igc_ptp_suspend+0x6c/0xa0 [igc]
+igc_ptp_stop+0x12/0x50 [igc]
+igc_remove+0x7f/0x1c0 [igc]
+pci_device_remove+0x3e/0xb0
+__device_release_driver+0x181/0x240
 
-Could you please use a statement in the commit message summary? Maybe:
+Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 32 ++++++++++++++---------
+ drivers/net/ethernet/intel/igc/igc_ptp.c  |  3 ++-
+ 2 files changed, 21 insertions(+), 14 deletions(-)
 
-> Disable additional PHY features(?) in S0ix
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 95323095094d..3c72f135fc29 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -149,6 +149,9 @@ static void igc_release_hw_control(struct igc_adapter *adapter)
+ 	struct igc_hw *hw = &adapter->hw;
+ 	u32 ctrl_ext;
+ 
++	if (!pci_device_is_present(adapter->pdev))
++		return;
++
+ 	/* Let firmware take over control of h/w */
+ 	ctrl_ext = rd32(IGC_CTRL_EXT);
+ 	wr32(IGC_CTRL_EXT,
+@@ -4447,26 +4450,29 @@ void igc_down(struct igc_adapter *adapter)
+ 
+ 	igc_ptp_suspend(adapter);
+ 
+-	/* disable receives in the hardware */
+-	rctl = rd32(IGC_RCTL);
+-	wr32(IGC_RCTL, rctl & ~IGC_RCTL_EN);
+-	/* flush and sleep below */
+-
++	if (pci_device_is_present(adapter->pdev)) {
++		/* disable receives in the hardware */
++		rctl = rd32(IGC_RCTL);
++		wr32(IGC_RCTL, rctl & ~IGC_RCTL_EN);
++		/* flush and sleep below */
++	}
+ 	/* set trans_start so we don't get spurious watchdogs during reset */
+ 	netif_trans_update(netdev);
+ 
+ 	netif_carrier_off(netdev);
+ 	netif_tx_stop_all_queues(netdev);
+ 
+-	/* disable transmits in the hardware */
+-	tctl = rd32(IGC_TCTL);
+-	tctl &= ~IGC_TCTL_EN;
+-	wr32(IGC_TCTL, tctl);
+-	/* flush both disables and wait for them to finish */
+-	wrfl();
+-	usleep_range(10000, 20000);
++	if (pci_device_is_present(adapter->pdev)) {
++		/* disable transmits in the hardware */
++		tctl = rd32(IGC_TCTL);
++		tctl &= ~IGC_TCTL_EN;
++		wr32(IGC_TCTL, tctl);
++		/* flush both disables and wait for them to finish */
++		wrfl();
++		usleep_range(10000, 20000);
+ 
+-	igc_irq_disable(adapter);
++		igc_irq_disable(adapter);
++	}
+ 
+ 	adapter->flags &= ~IGC_FLAG_NEED_LINK_UPDATE;
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 69617d2c1be2..4ae19c6a3247 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -849,7 +849,8 @@ void igc_ptp_suspend(struct igc_adapter *adapter)
+ 	adapter->ptp_tx_skb = NULL;
+ 	clear_bit_unlock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state);
+ 
+-	igc_ptp_time_save(adapter);
++	if (pci_device_is_present(adapter->pdev))
++		igc_ptp_time_save(adapter);
+ }
+ 
+ /**
+-- 
+2.30.2
 
-> After transferring the MAC-PHY interface to the SMBus the PHY
-> will save power in S0ix low power idle mode.
-
-I do not understand this. Please rewrite, and mention the three PHY 
-features(?) you change.
-
-Please document how you tested this, and exactly how much power is saved.
-
-> Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/netdev.c | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 6e6e2e685e9d..c4f3e5ca7294 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6380,10 +6380,16 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->   		ew32(CTRL_EXT, mac_data);
->   
->   		/* DFT control: PHY bit: page769_20[0] = 1
-> +		 * page769_20[7] - PHY PLL stop
-> +		 * page769_20[8] - PHY go to the electrical idle
-> +		 * page769_20[9] - PHY serdes disable
->   		 * Gate PPW via EXTCNF_CTRL - set 0x0F00[7] = 1
->   		 */
->   		e1e_rphy(hw, I82579_DFT_CTRL, &phy_data);
->   		phy_data |= BIT(0);
-> +		phy_data |= BIT(7);
-> +		phy_data |= BIT(8);
-> +		phy_data |= BIT(9);
->   		e1e_wphy(hw, I82579_DFT_CTRL, phy_data);
->   
->   		mac_data = er32(EXTCNF_CTRL);
-> 
-
-
-Kind regards,
-
-Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
