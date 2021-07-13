@@ -1,87 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0AF93C7199
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 15:57:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA3C43C7167
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jul 2021 15:45:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 589E3402F3;
-	Tue, 13 Jul 2021 13:57:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26CA460871;
+	Tue, 13 Jul 2021 13:45:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m5LzXEFRC5bf; Tue, 13 Jul 2021 13:57:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ukTpXwYe-xTU; Tue, 13 Jul 2021 13:45:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6D35440242;
-	Tue, 13 Jul 2021 13:57:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 420E260839;
+	Tue, 13 Jul 2021 13:45:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C830F1BF857
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 303C61BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:45:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B67BC60895
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 27F2782ACA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:45:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KggF4Un0Paax for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
- [IPv6:2607:f8b0:4864:20::52c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 41701606B6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 12:20:43 +0000 (UTC)
-Received: by mail-pg1-x52c.google.com with SMTP id 37so21466618pgq.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 05:20:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=N12Qt0FbX8/A1qRMnGp6XJs1s3QP6zmQUn6Y4fY3u94=;
- b=hfylIuaTT2n81A+A5vS0z3hJLKe3dvZTZw1MoT9Kpifs+cFkL+LOJ9zq0o130wRkqe
- nnp+KeDfqvAkInKZO3PvoCSx5716riVxvltU0TobGnesfnbMUAFW1AExyChi37nacWKK
- OywwrydZum1BJGoqpIU5hjWDX6+XFc9b2T2t+5qkuPJtlaXoeXcjAKFgKie8bZgh9nrI
- I8Q4gIIn5jIS6T4NcUR3+MOqgVaH3zA2j18/gTyjVqaagGUymW4TV7U4uV7ZCXYxHbe1
- BrvS8Sce5SrcltkHn4cuuqSxCL9nncOx7u9/iD9b783lq50K4aDs0ZE6sPge+FHGuLxn
- SkBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=N12Qt0FbX8/A1qRMnGp6XJs1s3QP6zmQUn6Y4fY3u94=;
- b=TDS7gWog6iEanypSTM4bLG2evcphHhYndSiSU88INyTp07GdF0+qHvO5Ni1bV1Sdzg
- Mhz5dBZPsIrrPn/geItQiGng0mQ7s29DM+yz1ykGCkM3x9Whk3xtk0Anxhs6+Ux6+Vcr
- My6yspt2F+9pejCc/7gcZvMOu1vCujq2vvot/i1n/ze28yaEOyFaAYw+u6peuK0gtw5k
- J7ES2R6RbVgQArCuDoyov+kX21Dzfuj11KYIX72XQZj7pBvcmrGTDsnRS6V1T6woaAgV
- Gs/ZK5gi6LIWm5Bv4NjOEq2Y1IDmqj6bsDLxJo/Q1w13EvQfq5fjjKCfq7EL3jxwM9Q5
- K3OQ==
-X-Gm-Message-State: AOAM533BIHpx9bxS0SYIYfpjM1QO6Q3W1pamr5edednmvOuvqbpOGNcd
- WvTPu7yV1A89MFSo5ndxsY0=
-X-Google-Smtp-Source: ABdhPJxPMiF0vYDmisrDv8/T6niOAkHikVbq4qnURKb/AumrClNXbcI7A+KC4w3ocfGZkTX2IrtuXA==
-X-Received: by 2002:aa7:90c8:0:b029:32c:935f:de5f with SMTP id
- k8-20020aa790c80000b029032c935fde5fmr4380311pfk.79.1626178842534; 
- Tue, 13 Jul 2021 05:20:42 -0700 (PDT)
-Received: from localhost.localdomain ([154.16.166.218])
- by smtp.gmail.com with ESMTPSA id d14sm20248253pfv.171.2021.07.13.05.20.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jul 2021 05:20:41 -0700 (PDT)
-From: Dongliang Mu <mudongliangabcd@gmail.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Shannon Nelson <shannon.nelson@intel.com>,
- Catherine Sullivan <catherine.sullivan@intel.com>
-Date: Tue, 13 Jul 2021 20:20:27 +0800
-Message-Id: <20210713122028.463450-1-mudongliangabcd@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=canonical.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UzG1j5q9Dofu for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jul 2021 13:45:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp-relay-canonical-0.canonical.com
+ (smtp-relay-canonical-0.canonical.com [185.125.188.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5F5ED827A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jul 2021 13:45:24 +0000 (UTC)
+Received: from [192.168.1.18] (unknown [222.129.38.167])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 08DE1405E6; 
+ Tue, 13 Jul 2021 13:45:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1626183922;
+ bh=XFchaAmc9L6ZJAbgvoritLLDGb3RUOvHfIzleghA+mI=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type;
+ b=habbnrJBNcH29BI7CQh8bNqPF/4LUngU9TvbzFiOCYIGJuBzIWvsI16wSn29vO9/o
+ 2PMGpzdlTGZLSp8joo0aiJkCC4tHsoe4gzSPN8fxq39b0ap1od9qrZUUTBeO+NlhvB
+ bAFsl6roxPoTV18hoIdUyjCeu9n7bTq3mNve10yqVUfIps5vjT7XNrjLDxShl20w2r
+ Qg6V+AN9o438AqKbrJldHbtRBTlvXWimys19reH0SEsxDpG2MsYbJ8EEKOHs9Y63OU
+ htdhkg538ytmoern4qT72H8mtHrTgvN7g5CUFUnHIheh9w4FsihIEdt1lEk1EDrMh4
+ IOJdkDFyleHTw==
+To: "Neftin, Sasha" <sasha.neftin@intel.com>, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "Edri, Michael" <michael.edri@intel.com>,
+ "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ "Shalev, Avi" <avi.shalev@intel.com>
+References: <20210702045120.22855-1-aaron.ma@canonical.com>
+ <20210702045120.22855-2-aaron.ma@canonical.com>
+ <613e2106-940a-49ed-6621-0bb00bc7dca5@intel.com>
+ <ad3d2d01-1d0a-8887-b057-e6a9531a05f4@canonical.com>
+ <f9f9408e-9ba3-7ed9-acc2-1c71913b04f0@intel.com>
+ <96106dfe-9844-1d9d-d865-619d78a0d150@canonical.com>
+ <47117935-10d6-98e0-5894-ba104912ce25@intel.com>
+From: Aaron Ma <aaron.ma@canonical.com>
+Message-ID: <1a539d4d-10b4-5b9b-31e7-6aec57120356@canonical.com>
+Date: Tue, 13 Jul 2021 21:45:10 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 13 Jul 2021 13:57:22 +0000
-Subject: [Intel-wired-lan] [PATCH] i40e: Fix error handling code of label
- err_set_queues
+In-Reply-To: <47117935-10d6-98e0-5894-ba104912ce25@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] igc: wait for the MAC copy when
+ enabled MAC passthrough
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,45 +85,25 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Dongliang Mu <mudongliangabcd@gmail.com>, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If i40e_up_complete fails in i40e_vsi_open, it goes to err_up_complete.
-The label err_set_queues has an issue: if the else branch is executed,
-there is no need to execute i40e_vsi_request_irq.
-
-Fix this by adding a condition of i40e_vsi_free_irq.
-
-Reported-by: Dongliang Mu (mudongliangabcd@gmail.com)
-Fixes: 9c04cfcd4aad ("i40e: Fix error handling in i40e_vsi_open")
-Fixes: c22e3c6c7912 ("i40e: prep vsi_open logic for non-netdev cases")
-Signed-off-by: Dongliang Mu <mudongliangabcd@gmail.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 861e59a350bd..ae54468c7001 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -8720,7 +8720,8 @@ int i40e_vsi_open(struct i40e_vsi *vsi)
- err_up_complete:
- 	i40e_down(vsi);
- err_set_queues:
--	i40e_vsi_free_irq(vsi);
-+	if ((vsi->netdev) || (vsi->type == I40E_VSI_FDIR))
-+		i40e_vsi_free_irq(vsi);
- err_setup_rx:
- 	i40e_vsi_free_rx_resources(vsi);
- err_setup_tx:
--- 
-2.25.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Ck9uIDcvOC8yMSAxMjoyNCBQTSwgTmVmdGluLCBTYXNoYSB3cm90ZToKPiBJwqB3b3VsZMKgdG/C
+oGxpa2XCoHN1Z2dlc3TCoGNoZWNraW5nwqB0aGXCoGZvbGxvd2luZ8KgZGlyZWN0aW9uOgo+IDEu
+IHByaW5jaXBhbCBxdWVzdGlvbjogY2FuIHdlIHVwZGF0ZSB0aGUgbmV0ZGV2IGRldmljZSBhZGRy
+ZXNzIGFmdGVyIGl0IGlzwqBhbHJlYWR5wqBzZXTCoGR1cmluZ8KgcHJvYmU/wqBJwqBtZWFudMKg
+cGVyZm9ybcKgYW5vdGhlcjoKPiBtZW1jcHkobmV0ZGV2LT5kZXZfYWRkcizCoGh3LT5tYWMuYWRk
+cizCoG5ldGRldi0+YWRkcl9sZW4pwqB1cMKgdG/CoGRlbWFuZAoKVXBkYXRpbmcgTUFDIGFkZHIg
+bWF5IHdvcmsuCkV2ZW4gYXQgdGhlIGVuZCBvZiBwcm9iZSwgaXQgc3RpbGwgZ290IHRoZSB3cm9u
+ZyBNQUMgYWRkcmVzcywgZGVsYXkgaXMgc3RpbGwgbmVlZGVkLgoKQWFyb24KCj4gMi4gV2UgbmVl
+ZCB0byB3b3JrIHdpdGggSW50ZWwncyBmaXJtd2FyZSBlbmdpbmVlci9ncm91cCBhbmQgZGVmaW5l
+IHRoZSBtZXNzYWdlL2V2ZW50OsKgTUFDwqBhZGRyZXNzaXPCoGNoYW5nZWTCoGFuZMKgc2hvdWxk
+wqBiZcKgdXBkYXRlZC4KPiBBcyBJIGtub3cgTU5HIEZXIHVwZGF0ZXMgc2hhZG93IHJlZ2lzdGVy
+cy4gU2luY2Ugc2hhZG93IHJlZ2lzdGVycyBhcmUgZGlmZmVyZW50IGZyb20gUkFML1JBSCByZWdp
+c3RlcnMgLSBpdCBjb3VsZCBiZSBhIG5vdGlmaWNhdGlvbiB0aGF0IHRoZSBNQUPCoGFkZHJlc3PC
+oGNoYW5nZWQuwqBMZXQnc8KgY2hlY2vCoGl0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
+cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLXdpcmVkLWxhbgo=
