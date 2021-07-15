@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7F6F3C9952
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jul 2021 09:04:05 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61C2A3C9977
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jul 2021 09:15:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DBEBE40304;
-	Thu, 15 Jul 2021 07:04:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C06BD83D59;
+	Thu, 15 Jul 2021 07:15:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B4kW9GY4Px6H; Thu, 15 Jul 2021 07:04:03 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nFQKjxkvjw6U; Thu, 15 Jul 2021 07:15:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD7B04029F;
-	Thu, 15 Jul 2021 07:04:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C3F4783D57;
+	Thu, 15 Jul 2021 07:15:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DEC471BF35E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:03:57 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A8071BF869
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:15:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DA6E260B2F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:03:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 146A842237
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:15:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mEO0VCT8pgPj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jul 2021 07:03:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6C2C760B20
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:03:56 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10045"; a="210300384"
-X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="210300384"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2021 00:03:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="452321238"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.13])
- by orsmga007.jf.intel.com with ESMTP; 15 Jul 2021 00:03:50 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	michael.edri@intel.com
-Date: Thu, 15 Jul 2021 10:03:42 +0300
-Message-Id: <20210715070342.2948195-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4_KpwXmiWoua for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jul 2021 07:15:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1F6C842235
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 07:15:09 +0000 (UTC)
+Received: from [192.168.0.3] (unknown [95.90.235.119])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id ADF3F61E64761;
+ Thu, 15 Jul 2021 09:15:06 +0200 (CEST)
+To: Sasha Neftin <sasha.neftin@intel.com>
+References: <20210715070342.2948195-1-sasha.neftin@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <1f8b5f30-3f46-79eb-6b22-2b2e3da7a7bf@molgen.mpg.de>
+Date: Thu, 15 Jul 2021 09:15:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Do not take care about
+In-Reply-To: <20210715070342.2948195-1-sasha.neftin@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Do not take care about
  recovery NVM checksum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -61,60 +61,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: michael.edri@intel.com, Dima Ruinskiy <dima.ruinskiy@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-According to the HW De, integrated GbE sets to read-only after
-programming a unique MAC address. The driver should not take care of
-NVM checksum updating starting from Tiger Lake.
-
-Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=213667
-Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-Suggested-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 9bae4932a11d..e273e14a3419 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -4140,14 +4140,19 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
- 	if (ret_val)
- 		return ret_val;
- 
--	if (!(data & valid_csum_mask)) {
--		data |= valid_csum_mask;
--		ret_val = e1000_write_nvm(hw, word, 1, &data);
--		if (ret_val)
--			return ret_val;
--		ret_val = e1000e_update_nvm_checksum(hw);
--		if (ret_val)
--			return ret_val;
-+	if (!(data & valid_csum_mask))
-+		e_dbg("NVM Checksum Invalid\n");
-+
-+	if (hw->mac.type < e1000_pch_cnp) {
-+		if (!(data & valid_csum_mask)) {
-+			data |= valid_csum_mask;
-+			ret_val = e1000_write_nvm(hw, word, 1, &data);
-+			if (ret_val)
-+				return ret_val;
-+			ret_val = e1000e_update_nvm_checksum(hw);
-+			if (ret_val)
-+				return ret_val;
-+		}
- 	}
- 
- 	return e1000e_validate_nvm_checksum_generic(hw);
--- 
-2.25.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBTYXNoYSwKCgpBbSAxNS4wNy4yMSB1bSAwOTowMyBzY2hyaWViIFNhc2hhIE5lZnRpbjoK
+ClBsZWFzZSBkZXNjcmliZSB0aGUgcHJvYmxlbSBmaXJzdCAobG9ja3VwKSAobWF5YmUgYnkgc3Vt
+bWFyaXppbmcgdGhlIGJ1ZyAKcmVwb3J0KS4KCj4gQWNjb3JkaW5nIHRvIHRoZSBIVyBEZSwgaW50
+ZWdyYXRlZCBHYkUgc2V0cyB0byByZWFkLW9ubHkgYWZ0ZXIKClBsZWFzZSB1c2UgKmRldmVsb3Bl
+cnMqLgoKPiBwcm9ncmFtbWluZyBhIHVuaXF1ZSBNQUMgYWRkcmVzcy4gVGhlIGRyaXZlciBzaG91
+bGQgbm90IHRha2UgY2FyZSBvZgoKRXhjdXNlIG15IGlnbm9yYW5jZSwgd2hvIGlzIHByb2dyYW1t
+aW5nIHRoZSBNQUMgYWRkcmVzcz8KCj4gTlZNIGNoZWNrc3VtIHVwZGF0aW5nIHN0YXJ0aW5nIGZy
+b20gVGlnZXIgTGFrZS4KCldobyBpcyB1cGRhdGluZyB0aGUgY2hlY2tzdW0/IFBsZWFzZSByZWZl
+cmVuY2Ugc29tZSBkYXRhc2hlZXQgbmFtZSwgCnJldmlzaW9uIGFuZCBzZWN0aW9uLgoKPiBCdWd6
+aWxsYTogaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMTM2NjcK
+PiBTdWdnZXN0ZWQtYnk6IERpbWEgUnVpbnNraXkgPGRpbWEucnVpbnNraXlAaW50ZWwuY29tPgo+
+IFN1Z2dlc3RlZC1ieTogVml0YWx5IExpZnNoaXRzIDx2aXRhbHkubGlmc2hpdHNAaW50ZWwuY29t
+Pgo+IFNpZ25lZC1vZmYtYnk6IFNhc2hhIE5lZnRpbiA8c2FzaGEubmVmdGluQGludGVsLmNvbT4K
+PiAtLS0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMgfCAy
+MSArKysrKysrKysrKysrLS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25z
+KCspLCA4IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEw
+MDBlL2ljaDhsYW4uYwo+IGluZGV4IDliYWU0OTMyYTExZC4uZTI3M2UxNGEzNDE5IDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMKPiArKysg
+Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jCj4gQEAgLTQxNDAs
+MTQgKzQxNDAsMTkgQEAgc3RhdGljIHMzMiBlMTAwMF92YWxpZGF0ZV9udm1fY2hlY2tzdW1faWNo
+OGxhbihzdHJ1Y3QgZTEwMDBfaHcgKmh3KQo+ICAgCWlmIChyZXRfdmFsKQo+ICAgCQlyZXR1cm4g
+cmV0X3ZhbDsKPiAgIAo+IC0JaWYgKCEoZGF0YSAmIHZhbGlkX2NzdW1fbWFzaykpIHsKPiAtCQlk
+YXRhIHw9IHZhbGlkX2NzdW1fbWFzazsKPiAtCQlyZXRfdmFsID0gZTEwMDBfd3JpdGVfbnZtKGh3
+LCB3b3JkLCAxLCAmZGF0YSk7Cj4gLQkJaWYgKHJldF92YWwpCj4gLQkJCXJldHVybiByZXRfdmFs
+Owo+IC0JCXJldF92YWwgPSBlMTAwMGVfdXBkYXRlX252bV9jaGVja3N1bShodyk7Cj4gLQkJaWYg
+KHJldF92YWwpCj4gLQkJCXJldHVybiByZXRfdmFsOwo+ICsJaWYgKCEoZGF0YSAmIHZhbGlkX2Nz
+dW1fbWFzaykpCj4gKwkJZV9kYmcoIk5WTSBDaGVja3N1bSBJbnZhbGlkXG4iKTsKCknigJlkIHNw
+ZWxsIGl0OiBOVk0gY2hlY2tzdW0gaW52YWxpZAoKU2hvdWxkbuKAmXQgdGhpcyBiZSBhdCBsZWFz
+dCBhIHdhcm5pbmc/IEl04oCZZCBiZSBnb29kIHRvIGVsYWJvcmF0ZSBmb3IgCnVzZXJzIHNlZWlu
+ZyB0aGlzIG1lc3NhZ2UuIFNvbWV0aGluZyBsaWtlOiBZb3VyIGRldmljZSBtaWdodCBub3Qgd29y
+ay4gClBsZWFzZSBjaGVjayB5b3VyIGZpcm13YXJlIG9yIGNvbnRhY3QgdGhlIGRldmVsb3BlcnMu
+Cgo+ICsKPiArCWlmIChody0+bWFjLnR5cGUgPCBlMTAwMF9wY2hfY25wKSB7Cj4gKwkJaWYgKCEo
+ZGF0YSAmIHZhbGlkX2NzdW1fbWFzaykpIHsKCkFzIGl04oCZcyB0aGUgc2FtZSBjaGVjayBhcyBh
+Ym92ZSwgSeKAmWQgbW92ZSB0aGlzIHdob2xlIGJsb2NrIGludG8gdGhlIGlmIApjb25kaXRpb24g
+YWJvdmUuCgo+ICsJCQlkYXRhIHw9IHZhbGlkX2NzdW1fbWFzazsKPiArCQkJcmV0X3ZhbCA9IGUx
+MDAwX3dyaXRlX252bShodywgd29yZCwgMSwgJmRhdGEpOwo+ICsJCQlpZiAocmV0X3ZhbCkKPiAr
+CQkJCXJldHVybiByZXRfdmFsOwo+ICsJCQlyZXRfdmFsID0gZTEwMDBlX3VwZGF0ZV9udm1fY2hl
+Y2tzdW0oaHcpOwo+ICsJCQlpZiAocmV0X3ZhbCkKPiArCQkJCXJldHVybiByZXRfdmFsOwo+ICsJ
+CX0KPiAgIAl9Cj4gICAKPiAgIAlyZXR1cm4gZTEwMDBlX3ZhbGlkYXRlX252bV9jaGVja3N1bV9n
+ZW5lcmljKGh3KTsKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRl
+bC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
