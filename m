@@ -1,93 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39BE3C9F72
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jul 2021 15:26:00 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36B323CA089
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jul 2021 16:19:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2148C4038D;
-	Thu, 15 Jul 2021 13:25:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A5675406A3;
+	Thu, 15 Jul 2021 14:19:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BmfYLDBlYwiQ; Thu, 15 Jul 2021 13:25:58 +0000 (UTC)
+	with ESMTP id JEob8c6o1kFd; Thu, 15 Jul 2021 14:19:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 24A9740137;
-	Thu, 15 Jul 2021 13:25:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B2A21402BD;
+	Thu, 15 Jul 2021 14:19:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 578BE1BF3E0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 13:25:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CB701BF399
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 02:34:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 433BC42260
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 13:25:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id ECAED4011D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 02:34:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Lo76BdrloeGo for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jul 2021 13:25:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2858B42211
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 13:25:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626355550;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ah4MbGoLYz8PpeIyy6Wrw1o1Gg/0NPYNIWwDGG2q9MQ=;
- b=Yjhgzq/9+T6TYDTj+dynlj69arM5UrkCmKAk20jjnNhSrYVT8URBEC8oqVsOkxcpTH8Lzm
- NKiP1/RUzrLl++zGnllN90+vhBd6bGAsawFHgHDVW7zvmLWRYnatN+PGuJCNg7QfGUhESt
- 5FRyJX2omwilLAkjRexwCtZ0wBSrp2s=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-537-dEsU7TfjMgCZfpOyWUtkyg-1; Thu, 15 Jul 2021 09:25:49 -0400
-X-MC-Unique: dEsU7TfjMgCZfpOyWUtkyg-1
-Received: by mail-lj1-f198.google.com with SMTP id
- c20-20020a2ea7940000b029013767626146so3192953ljf.15
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 06:25:49 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZmiPo6LhmMzA for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jul 2021 02:34:19 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ot1-x32e.google.com (mail-ot1-x32e.google.com
+ [IPv6:2607:f8b0:4864:20::32e])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 333AD400E5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jul 2021 02:34:19 +0000 (UTC)
+Received: by mail-ot1-x32e.google.com with SMTP id
+ v32-20020a0568300920b02904b90fde9029so4623363ott.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jul 2021 19:34:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Q7hIjlSBVcaNYjNod+L81MaSkTH8TYHb/gTtAOF6jJo=;
+ b=ZBsljYwRuvhrbEDuxSsBZPJHvWQRDU790+yd9diu9bhjvcbrjCs11eAzPFwb8sAFc1
+ l3Tlzy6JZAHHvgx9yXMydp6838LmXocEvHEV+tVtZFTF10JLyqZcXT8GZa3ci0N1nGsA
+ VJjQQFP+wIHf+C0M0xRXWe3WlJrTqafl4+iXBvcnRaQRaLsE10asUcqe90hWO0RDmPp6
+ vahPIDk0H6y6LWPi9BBc/kciHPuLaDHfZvPzODOztVU+n8fAvl7yTSy+pXnhOEAbh0No
+ ki6O7XMSL/FcqL0XiU416e9EGI/CRLa33iqZdMGlY79zHHIDLFQHLd7Q5/fVyU20mpso
+ 7bXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ah4MbGoLYz8PpeIyy6Wrw1o1Gg/0NPYNIWwDGG2q9MQ=;
- b=KQ97UN52oM4W5PEgcV4VFi2aW9wo2/K/OYl7wlxaEPH7y9ZtwKJVWCE8NQG/vYDlNS
- IprrXyWWsYl+HvOeUgPBpLps/ynlGVFYpR79R74czKCn8kmthNU6sVjGXuJhDoQNNeia
- PKlI+cw7LuavVkbWMdNu8xwmeO2/yG5a1gCQkk2bhvLV4ufpw1yaG4dpYKI63go+N1SR
- BVkn7a/f10UopLt2zZTVt5bdk8/Yut+vy4wKuhyVaNrtGwOFu9XJetTcTsv6HeHPTS0F
- VfNkxPq0muCxktkKGMkcysBAH2ByL9Yn70rYJ3tjqbl2V2YjT81DzNFtcxhA2UsTEeL6
- Ip0w==
-X-Gm-Message-State: AOAM532epESx8Vut8dTYGNkU7MiFA690H4CaTWhhAjQvmB/RmP0AVxOp
- cwBg8B41o0IHKRmYvkVGXzbWcVW23iA4Oi1eeXQFz95XqM5W2BKdmHYxBFgkxUSdAabIW6cVvnZ
- TMBUm0wYNSU589tSoIOK49j8M11FqH/ikuw3uPnrk9vtb+g==
-X-Received: by 2002:a05:6512:3a86:: with SMTP id
- q6mr3149863lfu.548.1626355548046; 
- Thu, 15 Jul 2021 06:25:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4dI6Pl2Y//20EnkEGgAcCVbyTORH0YWaTKsr2JdguYEYFI2ihDlt/NUiNtPNi9bYu/OMUSwAlGGsYWpUxV5M=
-X-Received: by 2002:a05:6512:3a86:: with SMTP id
- q6mr3149783lfu.548.1626355547649; 
- Thu, 15 Jul 2021 06:25:47 -0700 (PDT)
+ bh=Q7hIjlSBVcaNYjNod+L81MaSkTH8TYHb/gTtAOF6jJo=;
+ b=n1u5cGGDLXt+s+XNYyH+s/3LH0niA3dW7uTaWi/imYezyjFWsh4U5V4mTAasRJME5d
+ JTogbhTn4M1TPYtmKWXXDclVWpxZGZ3Gf46Pv5ur1HFhlpHoxI/1/u3hcPkyELbsJCwz
+ JQhCNqfNQNemoVqOTHl+8Lu9SlBhhgW5+MbxeL1O4Ydtcal8yEyd37djUuUNRvD1SnNp
+ dj7JbcUg4XCU5VFPF2n2BedmISxMHUVVfqf2sHNqVS+IJQDgKCdW53viqiruf4FnsnDk
+ Slx8rGPaREoSYHf8fvOmpljdMWsIKzRgTx+bCsKT4UKBnq5ZZ/kQ4i18IhmEfE482UCj
+ 9hoA==
+X-Gm-Message-State: AOAM533AGpuEiajHlpVMNykGitcij1wKTWvW4w2aUON8A2gu9Hx25zd8
+ BmN6YX/kxfBUrd7Xh2CvON7TVzKuEOQTiiHi2v0=
+X-Google-Smtp-Source: ABdhPJwQ4c8bBGOr9cTjRZ00J0YonoK1W5QubqFUgsmrA/tzA8zeo3mQv8ePNTcI9kGkhFWfkFkZXmAhnKuBTBaJMHQ=
+X-Received: by 2002:a9d:4c9a:: with SMTP id m26mr1217555otf.110.1626316458173; 
+ Wed, 14 Jul 2021 19:34:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210713211502.464259-1-nitesh@redhat.com>
- <20210713211502.464259-7-nitesh@redhat.com>
- <YO7SiFE1dE0dFhkE@unreal>
- <CAFki+Lm-CpKZai1fV5aMJzEb-x+003m8wLQShSrYpyNh3XC50Q@mail.gmail.com>
- <YO7ggLW78FWE4z+1@unreal>
-In-Reply-To: <YO7ggLW78FWE4z+1@unreal>
-From: Nitesh Lal <nilal@redhat.com>
-Date: Thu, 15 Jul 2021 09:25:36 -0400
-Message-ID: <CAFki+L=KoVzAv-_tLjAJV91BR+fHTPffMsCs-AgSCNyE0d-0DQ@mail.gmail.com>
-To: Leon Romanovsky <leonro@nvidia.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nilal@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: Re: [Intel-wired-lan] [PATCH v3 06/14] RDMA/irdma: Use
- irq_set_affinity_and_hint
+References: <20210707094133.24597-1-kerneljasonxing@gmail.com>
+ <CAL+tcoCc+r96Bv8aDXTwY5h_OYTz8sHxdpPW7OuNfdDz+ssYYg@mail.gmail.com>
+ <03b846e9906d27ef7a6e84196a0840fdd54ca13d.camel@intel.com>
+In-Reply-To: <03b846e9906d27ef7a6e84196a0840fdd54ca13d.camel@intel.com>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Thu, 15 Jul 2021 10:33:42 +0800
+Message-ID: <CAL+tcoAtFTmFtKR2QLY_UdQWkc9Avyw3ZtaA_cD_4cXAGXRBDQ@mail.gmail.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+X-Mailman-Approved-At: Thu, 15 Jul 2021 14:19:30 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: introduce pseudo number of
+ cpus for compatibility
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,107 +84,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, ajit.khaparde@broadcom.com,
- jassisinghbrar@gmail.com, peterz@infradead.org, linux-pci@vger.kernel.org,
- james.smart@broadcom.com, "Ismail, Mustafa" <mustafa.ismail@intel.com>,
- govind@gmx.com, Alaa Hleihel <ahleihel@redhat.com>,
- Ingo Molnar <mingo@kernel.org>, Stefan Assmann <sassmann@redhat.com>,
- sfr@canb.auug.org.au, linux-scsi@vger.kernel.org, borisp@nvidia.com,
- Marc Zyngier <maz@kernel.org>, sathya.prakash@broadcom.com,
- kashyap.desai@broadcom.com, "Nikolova,
- Tatyana E" <tatyana.e.nikolova@intel.com>,
- Chandrakanth Patil <chandrakanth.patil@broadcom.com>,
- intel-wired-lan@lists.osuosl.org, Alex Belits <abelits@marvell.com>,
- Dick Kennedy <dick.kennedy@broadcom.com>, faisal.latif@intel.com,
- suganath-prabu.subramani@broadcom.com, frederic@kernel.org,
- Robin Murphy <robin.murphy@arm.com>, rostedt@goodmis.org,
- rppt@linux.vnet.ibm.com, Bjorn Helgaas <bhelgaas@google.com>,
- Thomas Gleixner <tglx@linutronix.de>, somnath.kotur@broadcom.com,
- shiraz.saleem@intel.com, Al Stone <ahs3@redhat.com>, pjwaskiewicz@gmail.com,
- Nitesh Narayan Lal <nitesh@redhat.com>,
- Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
- sriharsha.basavapatna@broadcom.com, Neil Horman <nhorman@tuxdriver.com>,
- shivasharan.srikanteshwara@broadcom.com, linux-api@vger.kernel.org,
- Marcelo Tosatti <mtosatti@redhat.com>, Kamal Heib <kheib@redhat.com>,
- linux-kernel@vger.kernel.org, tariqt@nvidia.com, stephen@networkplumber.org,
- Sumit Saxena <sumit.saxena@broadcom.com>, Tomas Henzl <thenzl@redhat.com>,
- netdev@vger.kernel.org, saeedm@nvidia.com, akpm@linux-foundation.org,
- Ken Cox <jkc@redhat.com>, jbrandeb@kernel.org, davem@davemloft.net,
- benve@cisco.com
+Cc: "songliubraving@fb.com" <songliubraving@fb.com>,
+ "lishujin@kuaishou.com" <lishujin@kuaishou.com>,
+ "ast@kernel.org" <ast@kernel.org>, "hawk@kernel.org" <hawk@kernel.org>,
+ "daniel@iogearbox.net" <daniel@iogearbox.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "andrii@kernel.org" <andrii@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "yhs@fb.com" <yhs@fb.com>, "kpsingh@kernel.org" <kpsingh@kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>, "kafai@fb.com" <kafai@fb.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "xingwanli@kuaishou.com" <xingwanli@kuaishou.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 14, 2021 at 9:03 AM Leon Romanovsky <leonro@nvidia.com> wrote:
+On Thu, Jul 15, 2021 at 4:52 AM Nguyen, Anthony L
+<anthony.l.nguyen@intel.com> wrote:
 >
-> On Wed, Jul 14, 2021 at 08:56:41AM -0400, Nitesh Lal wrote:
-> > On Wed, Jul 14, 2021 at 8:03 AM Leon Romanovsky <leonro@nvidia.com> wrote:
-> > >
-> > > On Tue, Jul 13, 2021 at 05:14:54PM -0400, Nitesh Narayan Lal wrote:
-> > > > The driver uses irq_set_affinity_hint() to update the affinity_hint mask
-> > > > that is consumed by the userspace to distribute the interrupts and to apply
-> > > > the provided mask as the affinity for its interrupts. However,
-> > > > irq_set_affinity_hint() applying the provided cpumask as an affinity for
-> > > > the interrupt is an undocumented side effect.
-> > > >
-> > > > To remove this side effect irq_set_affinity_hint() has been marked
-> > > > as deprecated and new interfaces have been introduced. Hence, replace the
-> > > > irq_set_affinity_hint() with the new interface irq_set_affinity_and_hint()
-> > > > where the provided mask needs to be applied as the affinity and
-> > > > affinity_hint pointer needs to be set and replace with
-> > > > irq_update_affinity_hint() where only affinity_hint needs to be updated.
-> > > >
-> > > > Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
-> > > > ---
-> > > >  drivers/infiniband/hw/irdma/hw.c | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
-> > > > index 7afb8a6a0526..7f13a051d4de 100644
-> > > > --- a/drivers/infiniband/hw/irdma/hw.c
-> > > > +++ b/drivers/infiniband/hw/irdma/hw.c
-> > > > @@ -537,7 +537,7 @@ static void irdma_destroy_irq(struct irdma_pci_f *rf,
-> > > >       struct irdma_sc_dev *dev = &rf->sc_dev;
-> > > >
-> > > >       dev->irq_ops->irdma_dis_irq(dev, msix_vec->idx);
-> > > > -     irq_set_affinity_hint(msix_vec->irq, NULL);
-> > > > +     irq_update_affinity_hint(msix_vec->irq, NULL);
-> > > >       free_irq(msix_vec->irq, dev_id);
-> > > >  }
-> > > >
-> > > > @@ -1087,7 +1087,7 @@ irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
-> > > >       }
-> > > >       cpumask_clear(&msix_vec->mask);
-> > > >       cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
-> > > > -     irq_set_affinity_hint(msix_vec->irq, &msix_vec->mask);
-> > > > +     irq_set_affinity_and_hint(msix_vec->irq, &msix_vec->mask);
-> > >
-> > > I think that it needs to be irq_update_affinity_hint().
-> > >
+> On Fri, 2021-07-09 at 15:13 +0800, Jason Xing wrote:
+> > Oh, one more thing I missed in the last email is that all the
+> > failures
+> > are happening on the combination of X722 10GbE and 1GbE. So the value
+> > of @num_tx_qp  the driver fetches is 384 while the value is 768
+> > without x722 1GbE.
 > >
-> > Ah! I got a little confused from our last conversation about mlx5.
+> > I get that information back here:
+> > $ lspci | grep -i ether
+> > 5a:00.0 Ethernet controller: Intel Corporation Ethernet Connection
+> > X722 for 10GbE SFP+ (rev 09)
+> > 5a:00.1 Ethernet controller: Intel Corporation Ethernet Connection
+> > X722 for 10GbE SFP+ (rev 09)
+> > 5a:00.2 Ethernet controller: Intel Corporation Ethernet Connection
+> > X722 for 1GbE (rev 09)
+> > 5a:00.3 Ethernet controller: Intel Corporation Ethernet Connection
+> > X722 for 1GbE (rev 09)
 > >
-> > IIUC mlx5 sub-function use case uses irdma (?) and that's why I thought
-> > that perhaps we would also want to define the affinity here from the beginning.
+> > I know it's really stupid to control the number of online cpus, but
+> > finding a good way only to limit the @alloc_queue_pairs is not easy
+> > to
+> > go. So could someone point out a better way to fix this issue and
+> > take
+> > care of some relatively old nics with the number of cpus increasing?
 >
-> mlx5 is connected to mlx5_ib/mlx5_vdpa e.t.c.
+> Hi Jason,
 >
-> Not sure about that, but I think that only mlx5 implements SIOV model.
->
-> >
-> > In any case, I will make the change and re-post.
-> >
+> Sorry for the slow response; I was trying to talk to the i40e team
+> about this.
 
-Just FYI, I am hoping to collect more comments in the non-reviewed
-patches and address them in v4.
-Hence, I will wait for this week if I don't get anything I will just
-post another version by making the change in this driver.
+Thanks for your kind help really. It indeed has a big impact on thousands
+of machines.
 
--- 
-Thanks
-Nitesh
+>
+> I agree, the limiting of number of online CPUs doesn't seem like a
+> solution we want to pursue. The team is working on a patch that deals
 
+As I said above, if the machine is equipped with only 10GbE nic, the maximum
+online cpus would be 256 and so on. For now, it depends on the num of cpus.
+
+> with the same, or similiar, issue; it is reworking the allocations of
+> the queue pile. I'll make sure that they add you on the patch when it
+
+It's not easy to cover all kinds of cases. But I still believe it's
+the only proper
+way to fix the issue. Looking forward to your patch :)
+
+> is sent so that you can try this and see if it resolves your issue.
+>
+
+Yeah, sure, I will double-check and then see if it's really fixed.
+
+Thanks,
+Jason
+
+> Thanks,
+> Tony
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
