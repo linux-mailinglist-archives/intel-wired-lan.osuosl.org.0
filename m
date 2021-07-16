@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BD773CBF48
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Jul 2021 00:29:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E656A3CBF44
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Jul 2021 00:29:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 33665423EB;
-	Fri, 16 Jul 2021 22:29:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9985F402B7;
+	Fri, 16 Jul 2021 22:29:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NJQcEkj9wBh2; Fri, 16 Jul 2021 22:29:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ah2R4Hv2gQkj; Fri, 16 Jul 2021 22:29:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F22C742361;
-	Fri, 16 Jul 2021 22:29:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9CE0A40156;
+	Fri, 16 Jul 2021 22:29:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1ED4E1BF39D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jul 2021 22:29:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 87D171BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jul 2021 22:29:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3CE4760736
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7916342243
  for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jul 2021 22:29:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DnS7RZPYwSb1 for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WzR08cWHu8h8 for <intel-wired-lan@lists.osuosl.org>;
  Fri, 16 Jul 2021 22:29:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7BF046073D
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8149342211
  for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jul 2021 22:29:15 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10047"; a="208981785"
-X-IronPort-AV: E=Sophos;i="5.84,246,1620716400"; d="scan'208";a="208981785"
+X-IronPort-AV: E=McAfee;i="6200,9189,10047"; a="208981786"
+X-IronPort-AV: E=Sophos;i="5.84,246,1620716400"; d="scan'208";a="208981786"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Jul 2021 15:29:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,246,1620716400"; d="scan'208";a="497176523"
+X-IronPort-AV: E=Sophos;i="5.84,246,1620716400"; d="scan'208";a="497176524"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
  by FMSMGA003.fm.intel.com with ESMTP; 16 Jul 2021 15:29:13 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 16 Jul 2021 15:16:41 -0700
-Message-Id: <20210716221644.45946-5-anthony.l.nguyen@intel.com>
+Date: Fri, 16 Jul 2021 15:16:42 -0700
+Message-Id: <20210716221644.45946-6-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210716221644.45946-1-anthony.l.nguyen@intel.com>
 References: <20210716221644.45946-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 4/7] ice: Add feature bitmap,
- helpers and a check for DSCP
+Subject: [Intel-wired-lan] [PATCH net-next 5/7] ice: Add package PTYPE
+ enable information
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,155 +67,178 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+From: Haiyue Wang <haiyue.wang@intel.com>
 
-DSCP a.k.a L3 QoS is only supported on certain devices. To enforce this,
-this patch introduces a bitmap of features and helper functions.
+Scan the 'Marker Ptype TCAM' section to retrieve the Rx parser PTYPE
+enable information from the current package.
 
-The feature bitmap is set based on device IDs on driver init. Currently,
-DSCP is the only feature in this bitmap, but there will be more in the
-future. In the DCB netlink flow, check if the feature bit is set before
-exercising DSCP.
-
-Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h        |  6 +++
- drivers/net/ethernet/intel/ice/ice_dcb_nl.c |  8 +++-
- drivers/net/ethernet/intel/ice/ice_lib.c    | 47 +++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_lib.h    |  2 +
- drivers/net/ethernet/intel/ice/ice_main.c   |  2 +
- 5 files changed, 63 insertions(+), 2 deletions(-)
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    | 76 +++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |  4 +
+ .../net/ethernet/intel/ice/ice_flex_type.h    | 20 +++++
+ drivers/net/ethernet/intel/ice/ice_type.h     |  1 +
+ 4 files changed, 101 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index d2b8fd8daf4a..be5ce0dfc9e1 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -159,6 +159,11 @@
- 
- DECLARE_STATIC_KEY_FALSE(ice_xdp_locking_key);
- 
-+enum ice_feature {
-+	ICE_F_DSCP,
-+	ICE_F_MAX
-+};
-+
- struct ice_txq_meta {
- 	u32 q_teid;	/* Tx-scheduler element identifier */
- 	u16 q_id;	/* Entry in VSI's txq_map bitmap */
-@@ -451,6 +456,7 @@ struct ice_pf {
- 	/* used to ratelimit the MDD event logging */
- 	unsigned long last_printed_mdd_jiffies;
- 	DECLARE_BITMAP(malvfs, ICE_MAX_VF_COUNT);
-+	DECLARE_BITMAP(features, ICE_F_MAX);
- 	DECLARE_BITMAP(state, ICE_STATE_NBITS);
- 	DECLARE_BITMAP(flags, ICE_PF_FLAGS_NBITS);
- 	unsigned long *avail_txqs;	/* bitmap to track PF Tx queue usage */
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-index 0121dbc62c8a..7fdeb411b6df 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-@@ -710,6 +710,9 @@ static int ice_dcbnl_setapp(struct net_device *netdev, struct dcb_app *app)
- 	if (!(pf->dcbx_cap & DCB_CAP_DCBX_VER_IEEE))
- 		return -EINVAL;
- 
-+	if (!ice_is_feature_supported(pf, ICE_F_DSCP))
-+		return -EOPNOTSUPP;
-+
- 	if (app->protocol >= ICE_DSCP_NUM_VAL) {
- 		netdev_err(netdev, "DSCP value 0x%04X out of range\n",
- 			   app->protocol);
-@@ -861,8 +864,9 @@ static int ice_dcbnl_delapp(struct net_device *netdev, struct dcb_app *app)
- 		new_cfg->app[j].priority = old_cfg->app[j + 1].priority;
- 	}
- 
--	/* if not a DSCP APP TLV, then we are done */
--	if (app->selector != IEEE_8021QAZ_APP_SEL_DSCP) {
-+	/* if not a DSCP APP TLV or DSCP is not supported, we are done */
-+	if (app->selector != IEEE_8021QAZ_APP_SEL_DSCP ||
-+	    !ice_is_feature_supported(pf, ICE_F_DSCP)) {
- 		ret = ICE_DCB_HW_CHG;
- 		goto delapp_out;
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 81f77cced42a..5906783344d0 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3689,3 +3689,50 @@ void ice_vsi_ctx_clear_allow_override(struct ice_vsi_ctx *ctx)
- {
- 	ctx->info.sec_flags &= ~ICE_AQ_VSI_SEC_FLAG_ALLOW_DEST_OVRD;
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index 06ac9badee77..915a00f73d34 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -313,6 +313,81 @@ ice_pkg_enum_entry(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+ 	return entry;
  }
-+
+ 
 +/**
-+ * ice_is_feature_supported
-+ * @pf: pointer to the struct ice_pf instance
-+ * @f: feature enum to be checked
-+ *
-+ * returns true if feature is supported, false otherwise
++ * ice_hw_ptype_ena - check if the PTYPE is enabled or not
++ * @hw: pointer to the HW structure
++ * @ptype: the hardware PTYPE
 + */
-+bool ice_is_feature_supported(struct ice_pf *pf, enum ice_feature f)
++bool ice_hw_ptype_ena(struct ice_hw *hw, u16 ptype)
 +{
-+	if (f < 0 || f >= ICE_F_MAX)
-+		return false;
-+
-+	return test_bit(f, pf->features);
++	return ptype < ICE_FLOW_PTYPE_MAX &&
++	       test_bit(ptype, hw->hw_ptype);
 +}
 +
 +/**
-+ * ice_set_feature_support
-+ * @pf: pointer to the struct ice_pf instance
-+ * @f: feature enum to set
++ * ice_marker_ptype_tcam_handler
++ * @sect_type: section type
++ * @section: pointer to section
++ * @index: index of the Marker PType TCAM entry to be returned
++ * @offset: pointer to receive absolute offset, always 0 for ptype TCAM sections
++ *
++ * This is a callback function that can be passed to ice_pkg_enum_entry.
++ * Handles enumeration of individual Marker PType TCAM entries.
 + */
-+static void ice_set_feature_support(struct ice_pf *pf, enum ice_feature f)
++static void *
++ice_marker_ptype_tcam_handler(u32 sect_type, void *section, u32 index,
++			      u32 *offset)
 +{
-+	if (f < 0 || f >= ICE_F_MAX)
++	struct ice_marker_ptype_tcam_section *marker_ptype;
++
++	if (!section)
++		return NULL;
++
++	if (sect_type != ICE_SID_RXPARSER_MARKER_PTYPE)
++		return NULL;
++
++	if (index > ICE_MAX_MARKER_PTYPE_TCAMS_IN_BUF)
++		return NULL;
++
++	if (offset)
++		*offset = 0;
++
++	marker_ptype = section;
++	if (index >= le16_to_cpu(marker_ptype->count))
++		return NULL;
++
++	return marker_ptype->tcam + index;
++}
++
++/**
++ * ice_fill_hw_ptype - fill the enabled PTYPE bit information
++ * @hw: pointer to the HW structure
++ */
++static void ice_fill_hw_ptype(struct ice_hw *hw)
++{
++	struct ice_marker_ptype_tcam_entry *tcam;
++	struct ice_seg *seg = hw->seg;
++	struct ice_pkg_enum state;
++
++	bitmap_zero(hw->hw_ptype, ICE_FLOW_PTYPE_MAX);
++	if (!seg)
 +		return;
 +
-+	set_bit(f, pf->features);
++	memset(&state, 0, sizeof(state));
++
++	do {
++		tcam = ice_pkg_enum_entry(seg, &state,
++					  ICE_SID_RXPARSER_MARKER_PTYPE, NULL,
++					  ice_marker_ptype_tcam_handler);
++		if (tcam &&
++		    le16_to_cpu(tcam->addr) < ICE_MARKER_PTYPE_TCAM_ADDR_MAX &&
++		    le16_to_cpu(tcam->ptype) < ICE_FLOW_PTYPE_MAX)
++			set_bit(le16_to_cpu(tcam->ptype), hw->hw_ptype);
++
++		seg = NULL;
++	} while (tcam);
 +}
 +
-+/**
-+ * ice_init_feature_support
-+ * @pf: pointer to the struct ice_pf instance
-+ *
-+ * called during init to setup supported feature
-+ */
-+void ice_init_feature_support(struct ice_pf *pf)
-+{
-+	switch (pf->hw.device_id) {
-+	case ICE_DEV_ID_E810C_BACKPLANE:
-+	case ICE_DEV_ID_E810C_QSFP:
-+	case ICE_DEV_ID_E810C_SFP:
-+		ice_set_feature_support(pf, ICE_F_DSCP);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index 781eba6c1991..b443ea46274f 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -127,4 +127,6 @@ void ice_vsi_ctx_clear_antispoof(struct ice_vsi_ctx *ctx);
- void ice_vsi_ctx_set_allow_override(struct ice_vsi_ctx *ctx);
+ /**
+  * ice_boost_tcam_handler
+  * @sect_type: section type
+@@ -1408,6 +1483,7 @@ enum ice_status ice_init_pkg(struct ice_hw *hw, u8 *buf, u32 len)
+ 		 */
+ 		ice_init_pkg_regs(hw);
+ 		ice_fill_blk_tbls(hw);
++		ice_fill_hw_ptype(hw);
+ 	} else {
+ 		ice_debug(hw, ICE_DBG_INIT, "package load failed, %d\n",
+ 			  status);
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+index 8a58e79729b9..995b33d37b67 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+@@ -25,6 +25,10 @@ int ice_udp_tunnel_set_port(struct net_device *netdev, unsigned int table,
+ int ice_udp_tunnel_unset_port(struct net_device *netdev, unsigned int table,
+ 			      unsigned int idx, struct udp_tunnel_info *ti);
  
- void ice_vsi_ctx_clear_allow_override(struct ice_vsi_ctx *ctx);
-+bool ice_is_feature_supported(struct ice_pf *pf, enum ice_feature f);
-+void ice_init_feature_support(struct ice_pf *pf);
- #endif /* !_ICE_LIB_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 6e3f9fb86c04..4f5ce08b2624 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4329,6 +4329,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 		goto err_exit_unroll;
- 	}
- 
-+	ice_init_feature_support(pf);
++/* Rx parser PTYPE functions */
++bool ice_hw_ptype_ena(struct ice_hw *hw, u16 ptype);
 +
- 	ice_request_fw(pf);
++/* XLT2/VSI group functions */
+ enum ice_status
+ ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
+ 	     const struct ice_ptype_attributes *attr, u16 attr_cnt,
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_type.h b/drivers/net/ethernet/intel/ice/ice_flex_type.h
+index 7d8b517a63c9..647304f88b78 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_flex_type.h
+@@ -158,6 +158,7 @@ struct ice_meta_sect {
+ #define ICE_SID_CDID_KEY_BUILDER_RSS	47
+ #define ICE_SID_CDID_REDIR_RSS		48
  
- 	/* if ice_request_fw fails, ICE_FLAG_ADV_FEATURES bit won't be
++#define ICE_SID_RXPARSER_MARKER_PTYPE	55
+ #define ICE_SID_RXPARSER_BOOST_TCAM	56
+ #define ICE_SID_TXPARSER_BOOST_TCAM	66
+ 
+@@ -321,6 +322,25 @@ struct ice_boost_tcam_section {
+ 	sizeof(struct ice_boost_tcam_entry), \
+ 	sizeof(struct ice_boost_tcam_entry))
+ 
++/* package Marker Ptype TCAM entry */
++struct ice_marker_ptype_tcam_entry {
++#define ICE_MARKER_PTYPE_TCAM_ADDR_MAX	1024
++	__le16 addr;
++	__le16 ptype;
++	u8 keys[20];
++};
++
++struct ice_marker_ptype_tcam_section {
++	__le16 count;
++	__le16 reserved;
++	struct ice_marker_ptype_tcam_entry tcam[];
++};
++
++#define ICE_MAX_MARKER_PTYPE_TCAMS_IN_BUF	\
++	ICE_MAX_ENTRIES_IN_BUF(struct_size((struct ice_marker_ptype_tcam_section *)0, tcam, 1) - \
++	sizeof(struct ice_marker_ptype_tcam_entry), \
++	sizeof(struct ice_marker_ptype_tcam_entry))
++
+ struct ice_xlt1_section {
+ 	__le16 count;
+ 	__le16 offset;
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 95bf4fd6f6b8..dcaa6bfab484 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -933,6 +933,7 @@ struct ice_hw {
+ 	struct mutex rss_locks;	/* protect RSS configuration */
+ 	struct list_head rss_list_head;
+ 	struct ice_mbx_snapshot mbx_snapshot;
++	DECLARE_BITMAP(hw_ptype, ICE_FLOW_PTYPE_MAX);
+ };
+ 
+ /* Statistics collected by each port, VSI, VEB, and S-channel */
 -- 
 2.20.1
 
