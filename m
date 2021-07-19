@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 866EA3CEAE1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:11 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03C2E3CEAE2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 27957607DC;
-	Mon, 19 Jul 2021 18:11:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9DA4B40241;
+	Mon, 19 Jul 2021 18:11:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jRMNjS5MX0am; Mon, 19 Jul 2021 18:11:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R_ZVsKqnhAIp; Mon, 19 Jul 2021 18:11:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 315E660655;
-	Mon, 19 Jul 2021 18:11:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B75E640231;
+	Mon, 19 Jul 2021 18:11:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6BB801BF33A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7F1CE1BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6661B836E1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6C383836F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b0AErNpj7C6C for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jul 2021 18:09:52 +0000 (UTC)
+ with ESMTP id YQHYJLE-FEFH for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jul 2021 18:09:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AEF7B83658
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:52 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AB2EE83658
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626718191;
+ s=mimecast20190719; t=1626718196;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pTIHCu/v1m6aglqrxVgqlM1EFt4mjK9q8YlegEPDsXA=;
- b=bB7mi90AKAPfY/P71Y8vLNkfAQ1Zyq+TWARN5S8b8VwNEoVCy+d4gygBaou8uLGVLMANFx
- lq6RAogJtjeX/lLPEZEwUpEUNvcfqT03dxf+Ovh1BsIr1v33V/qwf2D5rJBQkduIa9bzlc
- Y/zkFVjIutIXYlTxfMGsQCMCxYWLCiA=
+ bh=mzNBCx76Oue97s85xgfDBxjBA71n2ChlEIMSiGVXCV8=;
+ b=H722aqH/akaT6te+f8s8qWuziSEkGe/DYNAoB/74uNv36pxBR1Z63ML5j7H6ILrJmsLKeF
+ pPdIcejq30Yg64BoITvKcOzHm1NSR2a7qUCWsXxEKW29lxXH2SpXXXWGdnlsove/kKeyQP
+ L6nsmu9fdImjtyN3urAM1yVtNOKD9Nw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-bzlMlsCZOGGu148R-_3nMw-1; Mon, 19 Jul 2021 14:09:49 -0400
-X-MC-Unique: bzlMlsCZOGGu148R-_3nMw-1
+ us-mta-255-NLTO4vtNPlO1sag3OagRoQ-1; Mon, 19 Jul 2021 14:09:55 -0400
+X-MC-Unique: NLTO4vtNPlO1sag3OagRoQ-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B22E192D788;
- Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 752F5804301;
+ Mon, 19 Jul 2021 18:09:49 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5C88F60CA0;
- Mon, 19 Jul 2021 18:09:36 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A7618610D0;
+ Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -87,8 +87,8 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  martin.petersen@oracle.com, _govind@gmx.com, ley.foon.tan@intel.com,
  kabel@kernel.org, viresh.kumar@linaro.org, Tushar.Khandelwal@arm.com,
  luobin9@huawei.com
-Date: Mon, 19 Jul 2021 14:07:42 -0400
-Message-Id: <20210719180746.1008665-11-nitesh@redhat.com>
+Date: Mon, 19 Jul 2021 14:07:43 -0400
+Message-Id: <20210719180746.1008665-12-nitesh@redhat.com>
 In-Reply-To: <20210719180746.1008665-1-nitesh@redhat.com>
 References: <20210719180746.1008665-1-nitesh@redhat.com>
 MIME-Version: 1.0
@@ -98,8 +98,7 @@ Authentication-Results: relay.mimecast.com;
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-Mailman-Approved-At: Mon, 19 Jul 2021 18:10:27 +0000
-Subject: [Intel-wired-lan] [PATCH v4 10/14] mailbox: Use
- irq_update_affinity_hint
+Subject: [Intel-wired-lan] [PATCH v4 11/14] scsi: lpfc: Use irq_set_affinity
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,55 +116,60 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver uses irq_set_affinity_hint() to:
+The driver uses irq_set_affinity_hint to set the affinity for the lpfc
+interrupts to a mask corresponding to the local NUMA node to avoid
+performance overhead on AMD architectures.
 
-- Set the affinity_hint which is consumed by the userspace for
-  distributing the interrupts
+However, irq_set_affinity_hint() setting the affinity is an undocumented
+side effect that this function also sets the affinity under the hood.
+To remove this side effect irq_set_affinity_hint() has been marked as
+deprecated and new interfaces have been introduced.
 
-- Enforce affinity
+Also, as per the commit dcaa21367938 ("scsi: lpfc: Change default IRQ model
+on AMD architectures"):
+"On AMD architecture, revert the irq allocation to the normal style
+(non-managed) and then use irq_set_affinity_hint() to set the cpu affinity
+and disable user-space rebalancing."
+we don't really need to set the affinity_hint as user-space rebalancing for
+the lpfc interrupts is not desired.
 
-As per commit 6ac17fe8c14a ("mailbox: bcm-flexrm-mailbox: Set IRQ affinity
-hint for FlexRM ring IRQs") the latter is done to ensure that the FlexRM
-ring interrupts are evenly spread across all available CPUs. However, since
-commit a0c9259dc4e1 ("irq/matrix: Spread interrupts on allocation") the
-spreading of interrupts is dynamically performed at the time of allocation.
-Hence, there is no need for the drivers to enforce their own affinity for
-the spreading of interrupts.
-
-Also, irq_set_affinity_hint() applying the provided cpumask as an affinity
-for the interrupt is an undocumented side effect. To remove this side
-effect irq_set_affinity_hint() has been marked as deprecated and new
-interfaces have been introduced. Hence, replace the irq_set_affinity_hint()
-with the new interface irq_update_affinity_hint() that only sets the
-affinity_hint pointer.
+Hence, replace the irq_set_affinity_hint() with irq_set_affinity() which
+only applies the affinity for the interrupts.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/mailbox/bcm-flexrm-mailbox.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/lpfc/lpfc_init.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/mailbox/bcm-flexrm-mailbox.c b/drivers/mailbox/bcm-flexrm-mailbox.c
-index 78073ad1f2f1..16982c13d323 100644
---- a/drivers/mailbox/bcm-flexrm-mailbox.c
-+++ b/drivers/mailbox/bcm-flexrm-mailbox.c
-@@ -1298,7 +1298,7 @@ static int flexrm_startup(struct mbox_chan *chan)
- 	val = (num_online_cpus() < val) ? val / num_online_cpus() : 1;
- 	cpumask_set_cpu((ring->num / val) % num_online_cpus(),
- 			&ring->irq_aff_hint);
--	ret = irq_set_affinity_hint(ring->irq, &ring->irq_aff_hint);
-+	ret = irq_update_affinity_hint(ring->irq, &ring->irq_aff_hint);
- 	if (ret) {
- 		dev_err(ring->mbox->dev,
- 			"failed to set IRQ affinity hint for ring%d\n",
-@@ -1425,7 +1425,7 @@ static void flexrm_shutdown(struct mbox_chan *chan)
+diff --git a/drivers/scsi/lpfc/lpfc_init.c b/drivers/scsi/lpfc/lpfc_init.c
+index 5983e05b648f..8a16bacb8c93 100644
+--- a/drivers/scsi/lpfc/lpfc_init.c
++++ b/drivers/scsi/lpfc/lpfc_init.c
+@@ -11455,7 +11455,7 @@ lpfc_irq_set_aff(struct lpfc_hba_eq_hdl *eqhdl, unsigned int cpu)
+ 	cpumask_clear(&eqhdl->aff_mask);
+ 	cpumask_set_cpu(cpu, &eqhdl->aff_mask);
+ 	irq_set_status_flags(eqhdl->irq, IRQ_NO_BALANCING);
+-	irq_set_affinity_hint(eqhdl->irq, &eqhdl->aff_mask);
++	irq_set_affinity(eqhdl->irq, &eqhdl->aff_mask);
+ }
  
- 	/* Release IRQ */
- 	if (ring->irq_requested) {
--		irq_set_affinity_hint(ring->irq, NULL);
-+		irq_update_affinity_hint(ring->irq, NULL);
- 		free_irq(ring->irq, ring);
- 		ring->irq_requested = false;
+ /**
+@@ -11744,7 +11744,6 @@ lpfc_sli4_enable_msix(struct lpfc_hba *phba)
+ 	for (--index; index >= 0; index--) {
+ 		eqhdl = lpfc_get_eq_hdl(index);
+ 		lpfc_irq_clear_aff(eqhdl);
+-		irq_set_affinity_hint(eqhdl->irq, NULL);
+ 		free_irq(eqhdl->irq, eqhdl);
  	}
+ 
+@@ -11905,7 +11904,6 @@ lpfc_sli4_disable_intr(struct lpfc_hba *phba)
+ 		for (index = 0; index < phba->cfg_irq_chann; index++) {
+ 			eqhdl = lpfc_get_eq_hdl(index);
+ 			lpfc_irq_clear_aff(eqhdl);
+-			irq_set_affinity_hint(eqhdl->irq, NULL);
+ 			free_irq(eqhdl->irq, eqhdl);
+ 		}
+ 	} else {
 -- 
 2.27.0
 
