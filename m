@@ -1,78 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 247F03CCB41
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 00:08:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 556D03CD3CA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 13:28:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A861F605A0;
-	Sun, 18 Jul 2021 22:08:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0098440435;
+	Mon, 19 Jul 2021 11:28:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5cr6UI54WaDa; Sun, 18 Jul 2021 22:08:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1ve2dAdp_Ov7; Mon, 19 Jul 2021 11:28:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BA72C6058C;
-	Sun, 18 Jul 2021 22:08:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B976140416;
+	Mon, 19 Jul 2021 11:28:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5F3FB1BF29D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jul 2021 16:31:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C726C1BF427
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 11:28:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 55B7E40144
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jul 2021 16:31:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B31EA4040C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 11:28:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qJMPFzZa7OZ8 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 18 Jul 2021 16:31:22 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qk1-x72c.google.com (mail-qk1-x72c.google.com
- [IPv6:2607:f8b0:4864:20::72c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 99BA7400D4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jul 2021 16:31:22 +0000 (UTC)
-Received: by mail-qk1-x72c.google.com with SMTP id 23so14345731qke.0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jul 2021 09:31:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lbh05RiC9h+30ZwLSJuzKF/YhVuILafOxJla7vQvCA0=;
- b=jmNWNzfIx2VINMPbOuBUsWw7VW5Q/BWYX9XhYEVPT4sPwF5HDm7MQrRaAbcG3JFPTj
- V0fsbZaWmM54ex9ja8pt32rWm5SqOzpPoisihs/387WycF2t43snthLEc08kMWxmHPg4
- 9GSFYDG9wcdXDTrwtVfR6oqOzF3JvuwMnkDPR6jflnc2USTr0Qc18ygfc2E78DrBoEgI
- 8mbrnnJje1MliJf/CTdrJC2F12vdPXdKvmJ39Rwy/qupeDIUmI9QkLh56j4WCeQR0a83
- I2lrPzaM8bGJno6oAXaAHm98gsP+nvZqxrCJmyf+MpTP/fddxjO3LMTnD/6mXjFXX/zg
- d3+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lbh05RiC9h+30ZwLSJuzKF/YhVuILafOxJla7vQvCA0=;
- b=mWhnSvwrbuEQ4WK3pII2q3+rm0FB4O+TxXAIAkDtmOHYyK4YK3SAaV8QIEBeSLANAg
- kMyb1TiZMvbCEzutY1F+cz0E7Qx1z+r7t3okDzBa0igUM5xpTwwkM4e+v+vULH2U/NH+
- BbV5OJGXmoEitYNPygZNPorWG3W11swshLDXKziU1O4Um+cGBb9BAtTEK7eflxWYd8H4
- za4lBChKOIGSVAZOqAB174CB1ZQzUBJSfxhaCd8lOPEBIy8JCCwWF65FNr90ouZl5JoV
- X6ABiKkabVbp1zrPri5e8uPl0xSF1xP55hItNtK0tTQlcoqpXyUVxEyR4zW/bdbadlIb
- ZMvw==
-X-Gm-Message-State: AOAM530gBhnTqyTbUtGIZpMNjlhpBWByOs78Znavu8MN3gI3u6dwE0On
- kVh9m+OMk+28a4Oqj5v+gca9P9LONEDiVzjZTpA=
-X-Google-Smtp-Source: ABdhPJwdZrYq6+2AmWIqGSoKlOkdc1j95wY48iXw7BxS7NWHlKR+ilQMiiMkB4+eflmAtVVIaWMOKxa9rEMT2tFF+/A=
-X-Received: by 2002:a05:620a:24c7:: with SMTP id
- m7mr19929203qkn.143.1626625881476; 
- Sun, 18 Jul 2021 09:31:21 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAOSf1CGVpogQGAatuY_N0db6OL2BFegGtj6VTLA9KFz0TqYBQg@mail.gmail.com>
- <20210708154550.GA1019947@bjorn-Precision-5520>
-In-Reply-To: <20210708154550.GA1019947@bjorn-Precision-5520>
-From: "Oliver O'Halloran" <oohall@gmail.com>
-Date: Mon, 19 Jul 2021 02:31:10 +1000
-Message-ID: <CAOSf1CHtHLyEHC58jwemZS6j=jAU2OrrYitkUYmdisJtuFu4dw@mail.gmail.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-X-Mailman-Approved-At: Sun, 18 Jul 2021 22:08:02 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
- is removed
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9VnrAJ4K70hT for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jul 2021 11:28:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B4891403DC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 11:28:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10049"; a="232807350"
+X-IronPort-AV: E=Sophos;i="5.84,252,1620716400"; d="scan'208";a="232807350"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2021 04:28:05 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,252,1620716400"; d="scan'208";a="432080043"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga002.jf.intel.com with ESMTP; 19 Jul 2021 04:28:03 -0700
+Received: from gklab-229-137.igk.intel.com (gklab-229-137.igk.intel.com
+ [172.22.229.137])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 16JBS2ak021597; Mon, 19 Jul 2021 12:28:02 +0100
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 19 Jul 2021 13:27:59 +0200
+Message-Id: <1626694079-4328-1-git-send-email-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 1.8.3.1
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix crash in switchdev mode
+ during VFR
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,67 +63,136 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- netdev@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-pci <linux-pci@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org,
- =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jul 9, 2021 at 1:45 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> *snip*
->
-> Apologies for rehashing what's probably obvious to everybody but me.
-> I'm trying to get a better handle on benign vs poisonous errors.
->
-> MMIO means CPU reads or writes to the device.  In PCI, writes are
-> posted and don't receive a response, so a driver will never see
-> writel() return an error (although an error may be reported
-> asynchronously via AER or similar).
->
-> So I think we're mostly talking about CPU reads here.  We expect a PCI
-> response containing the data.  Sometimes there's no response or an
-> error response.  The behavior of the host bridge in these error cases
-> is not defined by PCI, so what the CPU sees is not consistent across
-> platforms.  In some cases, the bridge handles this as a catastrophic
-> error that forces a system restart.
->
-> But in most cases, at least on x86, the bridge logs an error and
-> fabricates ~0 data so the CPU read can complete.  Then it's up to
-> software to recognize that an error occurred and decide what to do
-> about it.  Is this a benign or a poisonous error?
->
-> I'd say this is a benign error. It certainly can't be ignored, but as
-> long as the driver recognizes the error, it should be able to deal
-> with it without crashing the whole system and forcing a restart.
+During VF reset VF VSI is released, because of that there was
+a risk of calling ice_repr_get_stats64 or ice_get_drvinfo when
+VF VSI was NULL. The solution is to use ice_check_vf_ready_for_cfg
+function.
 
-I was thinking more in terms of what the driver author sees rather
-than what's happening on the CPU side. The crash seen in the OP
-appears to be because the code is "doing an MMIO." However, the
-reasons for the crash have nothing to do with the actual mechanics of
-the operation (which should be benign). The point I was making is that
-the pattern of:
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c     | 27 ++++++++++++++++++++----
+ drivers/net/ethernet/intel/ice/ice_repr.c        |  6 +++++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  2 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h |  6 ++++++
+ 4 files changed, 35 insertions(+), 6 deletions(-)
 
-if (is_disconnected())
-    return failure;
-return do_mmio_read(addr);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 2858805cdeea..1abe756f9f46 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -170,10 +170,9 @@ struct ice_priv_flag {
+ #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
+ 
+ static void
+-ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
++__ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo,
++		  struct ice_vsi *vsi)
+ {
+-	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	struct ice_vsi *vsi = ice_get_netdev_priv_vsi(np);
+ 	struct ice_pf *pf = vsi->back;
+ 	struct ice_hw *hw = &pf->hw;
+ 	struct ice_orom_info *orom;
+@@ -196,6 +195,26 @@ struct ice_priv_flag {
+ 	drvinfo->n_priv_flags = ICE_PRIV_FLAG_ARRAY_SIZE;
+ }
+ 
++static void
++ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
++{
++	struct ice_netdev_priv *np = netdev_priv(netdev);
++
++	__ice_get_drvinfo(netdev, drvinfo, np->vsi);
++}
++
++static void
++ice_repr_get_drvinfo(struct net_device *netdev,
++		     struct ethtool_drvinfo *drvinfo)
++{
++	struct ice_repr *repr = ice_netdev_to_repr(netdev);
++
++	if (ice_check_vf_ready_for_cfg(repr->vf))
++		return;
++
++	__ice_get_drvinfo(netdev, drvinfo, repr->src_vsi);
++}
++
+ static int ice_get_regs_len(struct net_device __always_unused *netdev)
+ {
+ 	return sizeof(ice_regs_dump_list);
+@@ -4061,7 +4080,7 @@ void ice_set_ethtool_safe_mode_ops(struct net_device *netdev)
+ }
+ 
+ static const struct ethtool_ops ice_ethtool_repr_ops = {
+-	.get_drvinfo		= ice_get_drvinfo,
++	.get_drvinfo		= ice_repr_get_drvinfo,
+ 	.get_link		= ethtool_op_get_link,
+ 	.get_strings		= ice_get_strings,
+ 	.get_ethtool_stats      = ice_get_ethtool_stats,
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+index ababed89f25a..b02e5462b851 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.c
++++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+@@ -48,8 +48,12 @@ static int ice_repr_get_sw_port_id(struct ice_repr *repr)
+ ice_repr_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	struct ice_vsi *vsi = np->repr->src_vsi;
+ 	struct ice_eth_stats *eth_stats;
++	struct ice_vsi *vsi;
++
++	if (ice_check_vf_ready_for_cfg(np->repr->vf))
++		return;
++	vsi = np->repr->src_vsi;
+ 
+ 	ice_update_vsi_stats(vsi);
+ 	eth_stats = &vsi->eth_stats;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 501331b6f70b..0600ccf096f0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -2815,7 +2815,7 @@ static void ice_wait_on_vf_reset(struct ice_vf *vf)
+  * disabled, and initialized so it can be configured and/or queried by a host
+  * administrator.
+  */
+-static int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
++int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
+ {
+ 	struct ice_pf *pf;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 6bad277d16fc..8aed26a86dd1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -176,6 +176,8 @@ struct ice_vf {
+ 
+ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state);
+ 
++int ice_check_vf_ready_for_cfg(struct ice_vf *vf);
++
+ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena);
+ 
+ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector);
+@@ -203,6 +205,10 @@ static inline void ice_vc_notify_link_state(struct ice_pf *pf) { }
+ static inline void ice_vc_notify_reset(struct ice_pf *pf) { }
+ static inline void ice_vc_notify_vf_link_state(struct ice_vf *vf) { }
+ static inline void ice_vc_change_ops_to_repr(struct ice_vc_vf_ops *ops) { }
++static inline int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
++{
++	return -EOPNOTSUPP;
++}
+ static inline void ice_vc_set_dflt_vf_ops(struct ice_vc_vf_ops *ops) { }
+ static inline void ice_set_vf_state_qs_dis(struct ice_vf *vf) { }
+ static inline
+-- 
+1.8.3.1
 
-does have some utility as a last-ditch attempt to prevent crashes in
-the face of obnoxious bridges or bad hardware. Granted, that should be
-a platform concern rather than something that should ever appear in
-driver code, but considering drivers open-code readl()/writel() calls
-there's not really any place to put that sort of workaround.
-
-That all said, the case in the OP is due to an entirely avoidable
-driver bug and that sort of hack is absolutely the wrong thing to do.
-
-Oliver
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
