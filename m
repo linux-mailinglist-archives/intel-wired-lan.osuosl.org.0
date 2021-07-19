@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 186283CEAE0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 866EA3CEAE1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B62EE403A1;
-	Mon, 19 Jul 2021 18:11:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 27957607DC;
+	Mon, 19 Jul 2021 18:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tJOhkjkWZR9C; Mon, 19 Jul 2021 18:11:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jRMNjS5MX0am; Mon, 19 Jul 2021 18:11:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F4F8403B2;
-	Mon, 19 Jul 2021 18:11:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 315E660655;
+	Mon, 19 Jul 2021 18:11:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7C77C1BF33A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BB801BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 765B540231
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6661B836E1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2BeBhqE9-fyO for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id b0AErNpj7C6C for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jul 2021 18:09:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9F551400BE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AEF7B83658
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626718183;
+ s=mimecast20190719; t=1626718191;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MHX6VgCVwY3EOyxVkU/Jky0Gontpyo3T9jeHgUtLjNU=;
- b=U0jX8u4NLAJE6fTZQ8lLnaUhVwTItwIEdXdr1v3dvb2J4gwVjKrFJxoxlJr6nU1cBeGh4C
- nQDl891jLbcDHofYa6azFYljUK7oS+6XHjwarIUldtsyJKnzlZOrpYQCFK40Sm/L5MSInZ
- eWSPikDp4a9GD3UFDRbxd4ywf191T+I=
+ bh=pTIHCu/v1m6aglqrxVgqlM1EFt4mjK9q8YlegEPDsXA=;
+ b=bB7mi90AKAPfY/P71Y8vLNkfAQ1Zyq+TWARN5S8b8VwNEoVCy+d4gygBaou8uLGVLMANFx
+ lq6RAogJtjeX/lLPEZEwUpEUNvcfqT03dxf+Ovh1BsIr1v33V/qwf2D5rJBQkduIa9bzlc
+ Y/zkFVjIutIXYlTxfMGsQCMCxYWLCiA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-461-gj_lTFx2M6eI4ZLFHt5WUQ-1; Mon, 19 Jul 2021 14:09:42 -0400
-X-MC-Unique: gj_lTFx2M6eI4ZLFHt5WUQ-1
+ us-mta-18-bzlMlsCZOGGu148R-_3nMw-1; Mon, 19 Jul 2021 14:09:49 -0400
+X-MC-Unique: bzlMlsCZOGGu148R-_3nMw-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43B7B10C1ADC;
- Mon, 19 Jul 2021 18:09:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B22E192D788;
+ Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5308260CA0;
- Mon, 19 Jul 2021 18:09:28 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5C88F60CA0;
+ Mon, 19 Jul 2021 18:09:36 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -87,8 +87,8 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  martin.petersen@oracle.com, _govind@gmx.com, ley.foon.tan@intel.com,
  kabel@kernel.org, viresh.kumar@linaro.org, Tushar.Khandelwal@arm.com,
  luobin9@huawei.com
-Date: Mon, 19 Jul 2021 14:07:41 -0400
-Message-Id: <20210719180746.1008665-10-nitesh@redhat.com>
+Date: Mon, 19 Jul 2021 14:07:42 -0400
+Message-Id: <20210719180746.1008665-11-nitesh@redhat.com>
 In-Reply-To: <20210719180746.1008665-1-nitesh@redhat.com>
 References: <20210719180746.1008665-1-nitesh@redhat.com>
 MIME-Version: 1.0
@@ -98,7 +98,7 @@ Authentication-Results: relay.mimecast.com;
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-Mailman-Approved-At: Mon, 19 Jul 2021 18:10:27 +0000
-Subject: [Intel-wired-lan] [PATCH v4 09/14] ixgbe: Use
+Subject: [Intel-wired-lan] [PATCH v4 10/14] mailbox: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -117,57 +117,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver uses irq_set_affinity_hint() to update the affinity_hint mask
-that is consumed by the userspace to distribute the interrupts. However,
-under the hood irq_set_affinity_hint() also applies the provided cpumask
-(if not NULL) as the affinity for the given interrupt which is an
-undocumented side effect.
+The driver uses irq_set_affinity_hint() to:
 
-To remove this side effect irq_set_affinity_hint() has been marked
-as deprecated and new interfaces have been introduced. Hence, replace the
-irq_set_affinity_hint() with the new interface irq_update_affinity_hint()
-that only updates the affinity_hint pointer.
+- Set the affinity_hint which is consumed by the userspace for
+  distributing the interrupts
+
+- Enforce affinity
+
+As per commit 6ac17fe8c14a ("mailbox: bcm-flexrm-mailbox: Set IRQ affinity
+hint for FlexRM ring IRQs") the latter is done to ensure that the FlexRM
+ring interrupts are evenly spread across all available CPUs. However, since
+commit a0c9259dc4e1 ("irq/matrix: Spread interrupts on allocation") the
+spreading of interrupts is dynamically performed at the time of allocation.
+Hence, there is no need for the drivers to enforce their own affinity for
+the spreading of interrupts.
+
+Also, irq_set_affinity_hint() applying the provided cpumask as an affinity
+for the interrupt is an undocumented side effect. To remove this side
+effect irq_set_affinity_hint() has been marked as deprecated and new
+interfaces have been introduced. Hence, replace the irq_set_affinity_hint()
+with the new interface irq_update_affinity_hint() that only sets the
+affinity_hint pointer.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
-Acked-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/mailbox/bcm-flexrm-mailbox.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 913253f8ecb4..3b7db68ef860 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -3241,8 +3241,8 @@ static int ixgbe_request_msix_irqs(struct ixgbe_adapter *adapter)
- 		/* If Flow Director is enabled, set interrupt affinity */
- 		if (adapter->flags & IXGBE_FLAG_FDIR_HASH_CAPABLE) {
- 			/* assign the mask for this irq */
--			irq_set_affinity_hint(entry->vector,
--					      &q_vector->affinity_mask);
-+			irq_update_affinity_hint(entry->vector,
-+						 &q_vector->affinity_mask);
- 		}
- 	}
+diff --git a/drivers/mailbox/bcm-flexrm-mailbox.c b/drivers/mailbox/bcm-flexrm-mailbox.c
+index 78073ad1f2f1..16982c13d323 100644
+--- a/drivers/mailbox/bcm-flexrm-mailbox.c
++++ b/drivers/mailbox/bcm-flexrm-mailbox.c
+@@ -1298,7 +1298,7 @@ static int flexrm_startup(struct mbox_chan *chan)
+ 	val = (num_online_cpus() < val) ? val / num_online_cpus() : 1;
+ 	cpumask_set_cpu((ring->num / val) % num_online_cpus(),
+ 			&ring->irq_aff_hint);
+-	ret = irq_set_affinity_hint(ring->irq, &ring->irq_aff_hint);
++	ret = irq_update_affinity_hint(ring->irq, &ring->irq_aff_hint);
+ 	if (ret) {
+ 		dev_err(ring->mbox->dev,
+ 			"failed to set IRQ affinity hint for ring%d\n",
+@@ -1425,7 +1425,7 @@ static void flexrm_shutdown(struct mbox_chan *chan)
  
-@@ -3258,8 +3258,8 @@ static int ixgbe_request_msix_irqs(struct ixgbe_adapter *adapter)
- free_queue_irqs:
- 	while (vector) {
- 		vector--;
--		irq_set_affinity_hint(adapter->msix_entries[vector].vector,
--				      NULL);
-+		irq_update_affinity_hint(adapter->msix_entries[vector].vector,
-+					 NULL);
- 		free_irq(adapter->msix_entries[vector].vector,
- 			 adapter->q_vector[vector]);
- 	}
-@@ -3392,7 +3392,7 @@ static void ixgbe_free_irq(struct ixgbe_adapter *adapter)
- 			continue;
- 
- 		/* clear the affinity_mask in the IRQ descriptor */
--		irq_set_affinity_hint(entry->vector, NULL);
-+		irq_update_affinity_hint(entry->vector, NULL);
- 
- 		free_irq(entry->vector, q_vector);
+ 	/* Release IRQ */
+ 	if (ring->irq_requested) {
+-		irq_set_affinity_hint(ring->irq, NULL);
++		irq_update_affinity_hint(ring->irq, NULL);
+ 		free_irq(ring->irq, ring);
+ 		ring->irq_requested = false;
  	}
 -- 
 2.27.0
