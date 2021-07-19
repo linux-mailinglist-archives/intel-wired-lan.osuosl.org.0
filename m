@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03C2E3CEAE2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:15 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9602B3CEAE3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 20:11:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9DA4B40241;
-	Mon, 19 Jul 2021 18:11:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34E3D6081F;
+	Mon, 19 Jul 2021 18:11:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R_ZVsKqnhAIp; Mon, 19 Jul 2021 18:11:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Yo5vsxT_kPmg; Mon, 19 Jul 2021 18:11:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B75E640231;
-	Mon, 19 Jul 2021 18:11:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3A3536069D;
+	Mon, 19 Jul 2021 18:11:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F1CE1BF33A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 38A1D1BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:10:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6C383836F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1EFA040398
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:10:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YQHYJLE-FEFH for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jul 2021 18:09:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bb-vG9vMVC8T for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jul 2021 18:10:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AB2EE83658
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:09:57 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id ECD6940319
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 18:10:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626718196;
+ s=mimecast20190719; t=1626718200;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mzNBCx76Oue97s85xgfDBxjBA71n2ChlEIMSiGVXCV8=;
- b=H722aqH/akaT6te+f8s8qWuziSEkGe/DYNAoB/74uNv36pxBR1Z63ML5j7H6ILrJmsLKeF
- pPdIcejq30Yg64BoITvKcOzHm1NSR2a7qUCWsXxEKW29lxXH2SpXXXWGdnlsove/kKeyQP
- L6nsmu9fdImjtyN3urAM1yVtNOKD9Nw=
+ bh=zD/AaGcE7EIGISn2zwz3u10joSTkCMi6Zhxs5OikZmo=;
+ b=NilyxyZx9vqrUFpQQIqURAfWcRWkvpU93P/bNEVVO2aGaKPLyXCSfJlnp+ke3yMEYKQXhN
+ sIFr4RkFs3cMQ+sL3VyWPovmlzzLC6ELr2b1kqGW80s6IT8mRdOWUnhzNirQrmNFBStKvT
+ qV39gwmhVBvdBEGnESv4obpF6i5bDB8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-NLTO4vtNPlO1sag3OagRoQ-1; Mon, 19 Jul 2021 14:09:55 -0400
-X-MC-Unique: NLTO4vtNPlO1sag3OagRoQ-1
+ us-mta-354-ormbCBA6NqipBaNT5aZc5g-1; Mon, 19 Jul 2021 14:09:59 -0400
+X-MC-Unique: ormbCBA6NqipBaNT5aZc5g-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 752F5804301;
- Mon, 19 Jul 2021 18:09:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 105795074B;
+ Mon, 19 Jul 2021 18:09:54 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A7618610D0;
- Mon, 19 Jul 2021 18:09:44 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 727D7610AF;
+ Mon, 19 Jul 2021 18:09:49 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -87,8 +87,8 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  martin.petersen@oracle.com, _govind@gmx.com, ley.foon.tan@intel.com,
  kabel@kernel.org, viresh.kumar@linaro.org, Tushar.Khandelwal@arm.com,
  luobin9@huawei.com
-Date: Mon, 19 Jul 2021 14:07:43 -0400
-Message-Id: <20210719180746.1008665-12-nitesh@redhat.com>
+Date: Mon, 19 Jul 2021 14:07:44 -0400
+Message-Id: <20210719180746.1008665-13-nitesh@redhat.com>
 In-Reply-To: <20210719180746.1008665-1-nitesh@redhat.com>
 References: <20210719180746.1008665-1-nitesh@redhat.com>
 MIME-Version: 1.0
@@ -98,7 +98,8 @@ Authentication-Results: relay.mimecast.com;
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-Mailman-Approved-At: Mon, 19 Jul 2021 18:10:27 +0000
-Subject: [Intel-wired-lan] [PATCH v4 11/14] scsi: lpfc: Use irq_set_affinity
+Subject: [Intel-wired-lan] [PATCH v4 12/14] hinic: Use
+ irq_set_affinity_and_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,60 +117,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver uses irq_set_affinity_hint to set the affinity for the lpfc
-interrupts to a mask corresponding to the local NUMA node to avoid
-performance overhead on AMD architectures.
+The driver uses irq_set_affinity_hint() to:
 
-However, irq_set_affinity_hint() setting the affinity is an undocumented
-side effect that this function also sets the affinity under the hood.
+- Set the affinity_hint which is consumed by the userspace for
+  distributing the interrupts
+
+- Enforce affinity
+
+As per commit 352f58b0d9f2 ("net-next/hinic: Set Rxq irq to specific cpu
+for NUMA"), the hinic driver enforces its own affinity to bind IRQs to the
+local NUMA node. However, irq_set_affinity_hint() applying the provided
+cpumask as an affinity for the interrupt is an undocumented side effect.
+
 To remove this side effect irq_set_affinity_hint() has been marked as
-deprecated and new interfaces have been introduced.
-
-Also, as per the commit dcaa21367938 ("scsi: lpfc: Change default IRQ model
-on AMD architectures"):
-"On AMD architecture, revert the irq allocation to the normal style
-(non-managed) and then use irq_set_affinity_hint() to set the cpu affinity
-and disable user-space rebalancing."
-we don't really need to set the affinity_hint as user-space rebalancing for
-the lpfc interrupts is not desired.
-
-Hence, replace the irq_set_affinity_hint() with irq_set_affinity() which
-only applies the affinity for the interrupts.
+deprecated and new interfaces have been introduced. Hence, replace the
+irq_set_affinity_hint() with the new interface irq_set_affinity_and_hint()
+where the provided mask needs to be applied as the affinity and
+affinity_hint pointer needs to be set and replace with
+irq_update_affinity_hint() where only affinity_hint needs to be updated.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/scsi/lpfc/lpfc_init.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/net/ethernet/huawei/hinic/hinic_rx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/scsi/lpfc/lpfc_init.c b/drivers/scsi/lpfc/lpfc_init.c
-index 5983e05b648f..8a16bacb8c93 100644
---- a/drivers/scsi/lpfc/lpfc_init.c
-+++ b/drivers/scsi/lpfc/lpfc_init.c
-@@ -11455,7 +11455,7 @@ lpfc_irq_set_aff(struct lpfc_hba_eq_hdl *eqhdl, unsigned int cpu)
- 	cpumask_clear(&eqhdl->aff_mask);
- 	cpumask_set_cpu(cpu, &eqhdl->aff_mask);
- 	irq_set_status_flags(eqhdl->irq, IRQ_NO_BALANCING);
--	irq_set_affinity_hint(eqhdl->irq, &eqhdl->aff_mask);
-+	irq_set_affinity(eqhdl->irq, &eqhdl->aff_mask);
+diff --git a/drivers/net/ethernet/huawei/hinic/hinic_rx.c b/drivers/net/ethernet/huawei/hinic/hinic_rx.c
+index fed3b6bc0d76..b33ed4d92b71 100644
+--- a/drivers/net/ethernet/huawei/hinic/hinic_rx.c
++++ b/drivers/net/ethernet/huawei/hinic/hinic_rx.c
+@@ -548,7 +548,7 @@ static int rx_request_irq(struct hinic_rxq *rxq)
+ 		goto err_req_irq;
+ 
+ 	cpumask_set_cpu(qp->q_id % num_online_cpus(), &rq->affinity_mask);
+-	err = irq_set_affinity_hint(rq->irq, &rq->affinity_mask);
++	err = irq_set_affinity_and_hint(rq->irq, &rq->affinity_mask);
+ 	if (err)
+ 		goto err_irq_affinity;
+ 
+@@ -565,7 +565,7 @@ static void rx_free_irq(struct hinic_rxq *rxq)
+ {
+ 	struct hinic_rq *rq = rxq->rq;
+ 
+-	irq_set_affinity_hint(rq->irq, NULL);
++	irq_update_affinity_hint(rq->irq, NULL);
+ 	free_irq(rq->irq, rxq);
+ 	rx_del_napi(rxq);
  }
- 
- /**
-@@ -11744,7 +11744,6 @@ lpfc_sli4_enable_msix(struct lpfc_hba *phba)
- 	for (--index; index >= 0; index--) {
- 		eqhdl = lpfc_get_eq_hdl(index);
- 		lpfc_irq_clear_aff(eqhdl);
--		irq_set_affinity_hint(eqhdl->irq, NULL);
- 		free_irq(eqhdl->irq, eqhdl);
- 	}
- 
-@@ -11905,7 +11904,6 @@ lpfc_sli4_disable_intr(struct lpfc_hba *phba)
- 		for (index = 0; index < phba->cfg_irq_chann; index++) {
- 			eqhdl = lpfc_get_eq_hdl(index);
- 			lpfc_irq_clear_aff(eqhdl);
--			irq_set_affinity_hint(eqhdl->irq, NULL);
- 			free_irq(eqhdl->irq, eqhdl);
- 		}
- 	} else {
 -- 
 2.27.0
 
