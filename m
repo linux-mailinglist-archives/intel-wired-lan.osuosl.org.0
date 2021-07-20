@@ -1,53 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93ADE3CF47B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jul 2021 08:27:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B0DF13CF4A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jul 2021 08:40:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EAC4D82423;
-	Tue, 20 Jul 2021 06:27:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 59063839BC;
+	Tue, 20 Jul 2021 06:40:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ktCNMyPDHBlt; Tue, 20 Jul 2021 06:27:43 +0000 (UTC)
+	with ESMTP id KLOAGxeLK6_O; Tue, 20 Jul 2021 06:40:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F16B823F6;
-	Tue, 20 Jul 2021 06:27:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5A0B8839C0;
+	Tue, 20 Jul 2021 06:40:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D279F1BF321
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:27:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8163D1BF321
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:40:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C1142823F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:27:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6F80F607F4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:40:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SHmTuwPh2jvH for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jul 2021 06:27:37 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 821C5823AA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:27:37 +0000 (UTC)
-Received: from [192.168.0.3] (unknown [95.90.235.94])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7A71961E5FE33;
- Tue, 20 Jul 2021 08:27:34 +0200 (CEST)
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-References: <20210719194931.11173-1-arkadiusz.kubalewski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <8bc5e9a3-36a1-e90e-7e29-dba1a700bd56@molgen.mpg.de>
-Date: Tue, 20 Jul 2021 08:27:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Gl0zrm1PsD5Z for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jul 2021 06:40:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8487C60793
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 06:40:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10050"; a="198457897"
+X-IronPort-AV: E=Sophos;i="5.84,254,1620716400"; d="scan'208";a="198457897"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2021 23:40:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,254,1620716400"; d="scan'208";a="494557333"
+Received: from lkp-server02.sh.intel.com (HELO 1b5a72ed9419) ([10.239.97.151])
+ by fmsmga004.fm.intel.com with ESMTP; 19 Jul 2021 23:40:33 -0700
+Received: from kbuild by 1b5a72ed9419 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1m5jQe-00005u-Fk; Tue, 20 Jul 2021 06:40:32 +0000
+Date: Tue, 20 Jul 2021 14:39:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <60f66fbf.7MLelAPVZekDKuLJ%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20210719194931.11173-1-arkadiusz.kubalewski@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Fix ATR queue selection
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 51393387d059c3579131ce39d859a744b4969404
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,58 +63,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Arkadiusz,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 51393387d059c3579131ce39d859a744b4969404  i40e: Fix pre-set max number of queues for VF
 
+elapsed time: 723m
 
-Am 19.07.21 um 21:49 schrieb Arkadiusz Kubalewski:
-> If traffic classes are not configured for PF, then use
-> netdev_pick_tx function for selecting queue for packet transmission.
-> Instead of calling i40e_swdcb_skb_tx_hash, call netdev_pick_tx,
-> which ensures that packet is transmitted/received from CPU that is
-> running the application.
-> Without this patch, ATR does not work. Receive/transmit uses queue
-> selection based on SW DCB hashing method.
+configs tested: 111
+configs skipped: 3
 
-For the future, the problem statement should go first in my opinion.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Do you have a recipe, how to reproduce the problem?
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                  colibri_pxa300_defconfig
+arm                       netwinder_defconfig
+powerpc                    gamecube_defconfig
+riscv                               defconfig
+m68k                           sun3_defconfig
+sh                            hp6xx_defconfig
+arm                        shmobile_defconfig
+mips                     loongson1c_defconfig
+powerpc                      bamboo_defconfig
+powerpc                      katmai_defconfig
+sh                           se7780_defconfig
+arm                        mvebu_v5_defconfig
+arm                         lubbock_defconfig
+arm                   milbeaut_m10v_defconfig
+um                               alldefconfig
+powerpc                  iss476-smp_defconfig
+sh                          urquell_defconfig
+sh                          r7780mp_defconfig
+powerpc                     rainier_defconfig
+powerpc                         wii_defconfig
+sh                          rsk7201_defconfig
+arm                    vt8500_v6_v7_defconfig
+nds32                             allnoconfig
+arm                            mmp2_defconfig
+mips                           ci20_defconfig
+arm                        trizeps4_defconfig
+h8300                            allyesconfig
+h8300                     edosk2674_defconfig
+powerpc                     tqm8548_defconfig
+sh                   rts7751r2dplus_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20210720
+i386                 randconfig-a003-20210720
+i386                 randconfig-a004-20210720
+i386                 randconfig-a002-20210720
+i386                 randconfig-a001-20210720
+i386                 randconfig-a006-20210720
+x86_64               randconfig-a013-20210719
+x86_64               randconfig-a012-20210719
+x86_64               randconfig-a015-20210719
+x86_64               randconfig-a014-20210719
+x86_64               randconfig-a011-20210719
+x86_64               randconfig-a016-20210719
+i386                 randconfig-a016-20210720
+i386                 randconfig-a013-20210720
+i386                 randconfig-a012-20210720
+i386                 randconfig-a014-20210720
+i386                 randconfig-a011-20210720
+i386                 randconfig-a015-20210720
+x86_64               randconfig-a005-20210718
+x86_64               randconfig-a004-20210718
+x86_64               randconfig-a002-20210718
+x86_64               randconfig-a003-20210718
+x86_64               randconfig-a006-20210718
+x86_64               randconfig-a001-20210718
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                      rhel-8.3-kbuiltin
+x86_64                                  kexec
 
+clang tested configs:
+x86_64               randconfig-b001-20210720
+x86_64               randconfig-a011-20210720
+x86_64               randconfig-a016-20210720
+x86_64               randconfig-a013-20210720
+x86_64               randconfig-a014-20210720
+x86_64               randconfig-a012-20210720
+x86_64               randconfig-a015-20210720
 
-Kind regards,
-
-Paul
-
-> Fixes: 821bd0c990ba ("i40e: Fix queue-to-TC mapping on Tx")
-> Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_txrx.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index 3f25bd8..10a83e5 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -3663,8 +3663,7 @@ u16 i40e_lan_select_queue(struct net_device *netdev,
->   
->   	/* is DCB enabled at all? */
->   	if (vsi->tc_config.numtc == 1)
-> -		return i40e_swdcb_skb_tx_hash(netdev, skb,
-> -					      netdev->real_num_tx_queues);
-> +		return netdev_pick_tx(netdev, skb, sb_dev);
->   
->   	prio = skb->priority;
->   	hw = &vsi->back->hw;
-> 
-> base-commit: e84671cd9648eb1f2b346378c100b4ebfbd1b01c
-> 
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
