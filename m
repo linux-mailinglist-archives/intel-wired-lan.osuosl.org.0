@@ -2,60 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31D483D0555
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jul 2021 01:28:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE5D43D055F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jul 2021 01:29:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A68A56082E;
-	Tue, 20 Jul 2021 23:28:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 52ABE60AB4;
+	Tue, 20 Jul 2021 23:29:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qCW5ssGt3MSr; Tue, 20 Jul 2021 23:28:56 +0000 (UTC)
+	with ESMTP id qDvuykpUVv9C; Tue, 20 Jul 2021 23:29:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A980F605A6;
-	Tue, 20 Jul 2021 23:28:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 61632605A6;
+	Tue, 20 Jul 2021 23:29:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DB0361BF32A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4D9F31BF32A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C914F6082E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3C0254011C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vG8I-Hg1gOJY for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jul 2021 23:27:14 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HZHcuQG5mV7K for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jul 2021 23:27:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F1B0A6062E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 88455400E2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 23:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1626823632;
+ s=mimecast20190719; t=1626823637;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tDrUtUc2aE0pRbBZzR884Ce25w6F59XVVpHlm8q8sCM=;
- b=YYQkC3fv/HAv7xp7P0BbKzvb3zFZg0m2MA+1lKSTgFscq01gwhU7F4nW2wXNp7JCKJ8IJL
- BSOjSb5QDJsLIBhuKB6BbE6hKlZcYvUB+wGmhLRAdHMZrsth2Nbw7Tg2Z0cZrc3bMAajpq
- GB3xF8Yt5bQkZdP75Q5Dkf1hUb+g1KU=
+ bh=zuZd/erhcH5JqKd76Lbo99r5gRHYSZoylCGlNGoCcSY=;
+ b=Pd14uTGo2yDF8CNTTfEQIEqQR8PE92MfwYLcp8JmXbs8ITJlzFIZgPk0shekeS5Ac4y0Nv
+ iXhLVJR0bgyVOcS8KXrMxETyNsJE7T42XNotOyWoXBW4hr0Zm25dBGArRiJnpDqHEO+uAh
+ 68XUbJuRkHIdjPPfoTmTefKKS0ly2Nc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-565-tJVnnM_7MCeE_Py_1RoR9g-1; Tue, 20 Jul 2021 19:27:11 -0400
-X-MC-Unique: tJVnnM_7MCeE_Py_1RoR9g-1
+ us-mta-309-5fuSedl0MtaTGX6OuilP8A-1; Tue, 20 Jul 2021 19:27:15 -0400
+X-MC-Unique: 5fuSedl0MtaTGX6OuilP8A-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95C90100C609;
- Tue, 20 Jul 2021 23:27:05 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6056B800050;
+ Tue, 20 Jul 2021 23:27:10 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0E78F69FAD;
- Tue, 20 Jul 2021 23:27:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AED9669CB4;
+ Tue, 20 Jul 2021 23:27:05 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -84,8 +86,8 @@ To: linux-kernel@vger.kernel.org, linux-scsi@vger.kernel.org,
  minlei@redhat.com, emilne@redhat.com, jejb@linux.ibm.com,
  martin.petersen@oracle.com, _govind@gmx.com, kabel@kernel.org,
  viresh.kumar@linaro.org, Tushar.Khandelwal@arm.com, kuba@kernel.org
-Date: Tue, 20 Jul 2021 19:26:15 -0400
-Message-Id: <20210720232624.1493424-6-nitesh@redhat.com>
+Date: Tue, 20 Jul 2021 19:26:16 -0400
+Message-Id: <20210720232624.1493424-7-nitesh@redhat.com>
 In-Reply-To: <20210720232624.1493424-1-nitesh@redhat.com>
 References: <20210720232624.1493424-1-nitesh@redhat.com>
 MIME-Version: 1.0
@@ -94,8 +96,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nitesh@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [PATCH v5 05/14] scsi: mpt3sas: Use
- irq_set_affinity_and_hint
+Subject: [Intel-wired-lan] [PATCH v5 06/14] RDMA/irdma: Use
+ irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,91 +115,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver uses irq_set_affinity_hint() specifically for the high IOPS
-queue interrupts for two purposes:
-
-- To set the affinity_hint which is consumed by the userspace for
-  distributing the interrupts
-
-- To apply an affinity that it provides
-
-The driver enforces its own affinity to bind the high IOPS queue interrupts
-to the local NUMA node. However, irq_set_affinity_hint() applying the
-provided cpumask as an affinity (if not NULL) for the interrupt is an
+The driver uses irq_set_affinity_hint() to update the affinity_hint mask
+that is consumed by the userspace to distribute the interrupts. However,
+under the hood irq_set_affinity_hint() also applies the provided cpumask
+(if not NULL) as the affinity for the given interrupt which is an
 undocumented side effect.
 
 To remove this side effect irq_set_affinity_hint() has been marked
 as deprecated and new interfaces have been introduced. Hence, replace the
-irq_set_affinity_hint() with the new interface irq_set_affinity_and_hint()
-where the provided mask needs to be applied as the affinity and
-affinity_hint pointer needs to be set and replace with
-irq_update_affinity_hint() where only affinity_hint needs to be updated.
+irq_set_affinity_hint() with the new interface irq_update_affinity_hint()
+that only updates the affinity_hint pointer.
 
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
 ---
- drivers/scsi/mpt3sas/mpt3sas_base.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+ drivers/infiniband/hw/irdma/hw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/scsi/mpt3sas/mpt3sas_base.c b/drivers/scsi/mpt3sas/mpt3sas_base.c
-index c39955239d1c..c1a11962f227 100644
---- a/drivers/scsi/mpt3sas/mpt3sas_base.c
-+++ b/drivers/scsi/mpt3sas/mpt3sas_base.c
-@@ -2991,6 +2991,7 @@ _base_check_enable_msix(struct MPT3SAS_ADAPTER *ioc)
- static void
- _base_free_irq(struct MPT3SAS_ADAPTER *ioc)
- {
-+	unsigned int irq;
- 	struct adapter_reply_queue *reply_q, *next;
+diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
+index 7afb8a6a0526..ec8de708a4df 100644
+--- a/drivers/infiniband/hw/irdma/hw.c
++++ b/drivers/infiniband/hw/irdma/hw.c
+@@ -537,7 +537,7 @@ static void irdma_destroy_irq(struct irdma_pci_f *rf,
+ 	struct irdma_sc_dev *dev = &rf->sc_dev;
  
- 	if (list_empty(&ioc->reply_queue_list))
-@@ -2998,9 +2999,10 @@ _base_free_irq(struct MPT3SAS_ADAPTER *ioc)
+ 	dev->irq_ops->irdma_dis_irq(dev, msix_vec->idx);
+-	irq_set_affinity_hint(msix_vec->irq, NULL);
++	irq_update_affinity_hint(msix_vec->irq, NULL);
+ 	free_irq(msix_vec->irq, dev_id);
+ }
  
- 	list_for_each_entry_safe(reply_q, next, &ioc->reply_queue_list, list) {
- 		list_del(&reply_q->list);
--		if (ioc->smp_affinity_enable)
--			irq_set_affinity_hint(pci_irq_vector(ioc->pdev,
--			    reply_q->msix_index), NULL);
-+		if (ioc->smp_affinity_enable) {
-+			irq = pci_irq_vector(ioc->pdev, reply_q->msix_index);
-+			irq_update_affinity_hint(irq, NULL);
-+		}
- 		free_irq(pci_irq_vector(ioc->pdev, reply_q->msix_index),
- 			 reply_q);
- 		kfree(reply_q);
-@@ -3056,16 +3058,13 @@ _base_request_irq(struct MPT3SAS_ADAPTER *ioc, u8 index)
-  * @ioc: per adapter object
-  *
-  * The enduser would need to set the affinity via /proc/irq/#/smp_affinity
-- *
-- * It would nice if we could call irq_set_affinity, however it is not
-- * an exported symbol
-  */
- static void
- _base_assign_reply_queues(struct MPT3SAS_ADAPTER *ioc)
- {
--	unsigned int cpu, nr_cpus, nr_msix, index = 0;
-+	unsigned int cpu, nr_cpus, nr_msix, index = 0, irq;
- 	struct adapter_reply_queue *reply_q;
--	int local_numa_node;
-+	const struct cpumask *mask;
- 
- 	if (!_base_is_controller_msix_enabled(ioc))
- 		return;
-@@ -3088,11 +3087,11 @@ _base_assign_reply_queues(struct MPT3SAS_ADAPTER *ioc)
- 		 * corresponding to high iops queues.
- 		 */
- 		if (ioc->high_iops_queues) {
--			local_numa_node = dev_to_node(&ioc->pdev->dev);
-+			mask = cpumask_of_node(dev_to_node(&ioc->pdev->dev));
- 			for (index = 0; index < ioc->high_iops_queues;
- 			    index++) {
--				irq_set_affinity_hint(pci_irq_vector(ioc->pdev,
--				    index), cpumask_of_node(local_numa_node));
-+				irq = pci_irq_vector(ioc->pdev, index);
-+				irq_set_affinity_and_hint(irq, mask);
- 			}
- 		}
- 
+@@ -1087,7 +1087,7 @@ irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
+ 	}
+ 	cpumask_clear(&msix_vec->mask);
+ 	cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
+-	irq_set_affinity_hint(msix_vec->irq, &msix_vec->mask);
++	irq_update_affinity_hint(msix_vec->irq, &msix_vec->mask);
+ 	if (status) {
+ 		ibdev_dbg(&rf->iwdev->ibdev, "ERR: ceq irq config fail\n");
+ 		return IRDMA_ERR_CFG;
 -- 
 2.27.0
 
