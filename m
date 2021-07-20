@@ -1,52 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 177123CEB86
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jul 2021 21:59:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1968E3CF09E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jul 2021 02:17:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9D61C607E1;
-	Mon, 19 Jul 2021 19:59:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9AE55607BC;
+	Tue, 20 Jul 2021 00:17:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N6Cj0-COSQ_9; Mon, 19 Jul 2021 19:59:19 +0000 (UTC)
+	with ESMTP id hYKpqB0jZ4P4; Tue, 20 Jul 2021 00:17:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A1F5060682;
-	Mon, 19 Jul 2021 19:59:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 93DC2607AF;
+	Tue, 20 Jul 2021 00:17:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 69B8A1BF290
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 19:59:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 009B31BF995
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 00:17:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 641D5402EA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 19:59:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E1C3840398
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 00:17:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BOdVNBwsQ5NF for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jul 2021 19:59:10 +0000 (UTC)
+ with ESMTP id CznZ55wsyQwW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jul 2021 00:17:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5636E402D2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jul 2021 19:59:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10050"; a="210844304"
-X-IronPort-AV: E=Sophos;i="5.84,253,1620716400"; d="scan'208";a="210844304"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2021 12:59:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,253,1620716400"; d="scan'208";a="509489331"
-Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
- by fmsmga002.fm.intel.com with ESMTP; 19 Jul 2021 12:59:08 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 19 Jul 2021 21:49:31 +0200
-Message-Id: <20210719194931.11173-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D77304038F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jul 2021 00:17:15 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 13FC960E0B;
+ Tue, 20 Jul 2021 00:17:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1626740235;
+ bh=ThAzBxkXRInNWnuCLj/2tYEXJI4QZ0qGGXACtEnXypk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=N9vo0oCzvSPqM5AAbzt5aELIl+pvnm98LRqL9Gad2lSDy0L6vK2L/NVDw3HYhII3c
+ CXtQSwzp1DLHTvwCOMmkDoXfu/dZCz4R9FXk5NuFA90a2qZof63QI4JmbcbT6mEi9B
+ h1ih9S0n4P1PSZGM1IGJAjGGqicUb56mAv6uZdoPqzZvwSi6t1jsfDRw9R/pS20SYx
+ JswE5eXjXXtR7S5xbJPQM6i0WvBpj/HorP1PL2mSc676T0y3Qxp0al7VtRYGis8t8V
+ 42DdW8w9kH0FgHB+9iCvnSvwMooTK5jkLBbvKR+so53U3CmPzckto2d+PmMO7DEYAY
+ cvq9pJtbajRZA==
+Date: Mon, 19 Jul 2021 19:17:13 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Oliver O'Halloran <oohall@gmail.com>
+Message-ID: <20210720001713.GA38755@bjorn-Precision-5520>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] i40e: Fix ATR queue selection
+Content-Disposition: inline
+In-Reply-To: <CAOSf1CHOrUBfibO0t6Zr2=SZ7GjLTiAzfoKBeZL8RXdcC+Ou3A@mail.gmail.com>
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: don't rd/wr iomem when PCI
+ is removed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,46 +66,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ netdev@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-pci <linux-pci@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If traffic classes are not configured for PF, then use
-netdev_pick_tx function for selecting queue for packet transmission.
-Instead of calling i40e_swdcb_skb_tx_hash, call netdev_pick_tx,
-which ensures that packet is transmitted/received from CPU that is
-running the application.
-Without this patch, ATR does not work. Receive/transmit uses queue
-selection based on SW DCB hashing method.
+On Mon, Jul 19, 2021 at 12:49:18PM +1000, Oliver O'Halloran wrote:
+> On Mon, Jul 19, 2021 at 8:51 AM Pali Roh=E1r <pali@kernel.org> wrote:
+> >
+> > And do we have some solution for this kind of issue? There are more PCIe
+> > controllers / platforms which do not like MMIO read/write operation when
+> > card / link is not connected.
+> =
 
-Fixes: 821bd0c990ba ("i40e: Fix queue-to-TC mapping on Tx")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+> Do you have some actual examples? The few times I've seen those
+> crashes were due to broken firmware-first error handling. The AER
+> notifications would be escalated into some kind of ACPI error which
+> the kernel didn't have a good way of dealing with so it panicked
+> instead.
+> =
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 3f25bd8..10a83e5 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -3663,8 +3663,7 @@ u16 i40e_lan_select_queue(struct net_device *netdev,
- 
- 	/* is DCB enabled at all? */
- 	if (vsi->tc_config.numtc == 1)
--		return i40e_swdcb_skb_tx_hash(netdev, skb,
--					      netdev->real_num_tx_queues);
-+		return netdev_pick_tx(netdev, skb, sb_dev);
- 
- 	prio = skb->priority;
- 	hw = &vsi->back->hw;
+> Assuming it is a real problem then as Bjorn pointed out this sort of
+> hack doesn't really fix the issue because hotplug and AER
+> notifications are fundamentally asynchronous. If the driver is
+> actively using the device when the error / removal happens then the
+> pci_dev_is_disconnected() check will pass and the MMIO will go
+> through. If the MMIO is poisonous because of dumb hardware then this
+> sort of hack will only paper over the issue.
+> =
 
-base-commit: e84671cd9648eb1f2b346378c100b4ebfbd1b01c
--- 
-2.18.4
+> > If we do not provide a way how to solve these problems then we can
+> > expect that people would just hack ethernet / wifi / ... device drivers
+> > which are currently crashing by patches like in this thread.
+> >
+> > Maybe PCI subsystem could provide wrapper function which implements
+> > above pattern and which can be used by device drivers?
+> =
 
+> We could do that and I think there was a proposal to add some
+> pci_readl(pdev, <addr>) style wrappers at one point.
+
+Obviously this wouldn't help user-space mmaps, but in the kernel,
+Documentation/driver-api/device-io.rst [1] does say that drivers are
+supposed to use readl() et al even though on most arches it "works"
+to just dereference the result of ioremap(), so maybe we could make
+a useful wrapper.
+
+Seems like we should do *something*, even if it's just a generic
+#define and some examples.  I took a stab at this [2] a couple years
+ago, but it was only for the PCI core, and it didn't go anywhere.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
+/Documentation/driver-api/device-io.rst?id=3Dv5.13#n160
+[2] https://lore.kernel.org/linux-pci/20190822200551.129039-1-helgaas@kerne=
+l.org/
+
+> On powerpc
+> there's hooks in the arch provided MMIO functions to detect error
+> responses and kick off the error handling machinery when a problem is
+> detected. Those hooks are mainly there to help the platform detect
+> errors though and they don't make life much easier for drivers. Due to
+> locking concerns the driver's .error_detected() callback cannot be
+> called in the MMIO hook so even when the platform detects errors
+> synchronously the driver notifications must happen asynchronously. In
+> the meanwhile the driver still needs to handle the 0xFFs response
+> safely and there's not much we can do from the platform side to help
+> there.
+> =
+
+> Oliver
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
