@@ -1,56 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A5EE3D396F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jul 2021 13:26:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A16E0606A5;
-	Fri, 23 Jul 2021 11:26:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h_b0KqLGR5N7; Fri, 23 Jul 2021 11:26:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A34F36066F;
-	Fri, 23 Jul 2021 11:26:49 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 01A5C1BF33F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 11:26:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34BB73D3A37
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jul 2021 14:29:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E38C140609
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 11:26:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DB198405DA;
+	Fri, 23 Jul 2021 12:28:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 838fou5YwGyV for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Jul 2021 11:26:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C2DC44046B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 11:26:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10053"; a="208749044"
-X-IronPort-AV: E=Sophos;i="5.84,263,1620716400"; d="scan'208";a="208749044"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2021 04:26:42 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,263,1620716400"; d="scan'208";a="577967584"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 23 Jul 2021 04:26:41 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1m6tKD-0001eh-0c; Fri, 23 Jul 2021 11:26:41 +0000
-Date: Fri, 23 Jul 2021 19:26:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <60faa768.qZlwR6j2w4+31Oc+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FGkY-s2Pq8y9; Fri, 23 Jul 2021 12:28:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id D3ECB405D5;
+	Fri, 23 Jul 2021 12:28:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7508B1BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 12:28:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 604274021B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 12:28:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SQiE1TMB4XZp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Jul 2021 12:28:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5417A400A4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jul 2021 12:28:52 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id C658661E6478B;
+ Fri, 23 Jul 2021 14:28:48 +0200 (CEST)
+To: David Ertman <david.m.ertman@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <04a175b6-797c-ab25-dbd4-f8bdbb165674@molgen.mpg.de>
+Date: Fri, 23 Jul 2021 14:28:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 6a5961bf9e006306f36dad7e2e1497b6eaf35bd8
+Content-Language: en-US
+Subject: [Intel-wired-lan] What to do with info log message: `e1000e: EEE TX
+ LPI TIMER: 00000011`?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,163 +59,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 6a5961bf9e006306f36dad7e2e1497b6eaf35bd8  i40e: Fix pre-set max number of queues for VF
+Dear David, dear Linux folks,
 
-elapsed time: 1166m
 
-configs tested: 134
-configs skipped: 3
+On several devices, like the Dell OptiPlex 3620, Linux 5.10.47 (and 
+others) log the message below with info level (often during shutdown):
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+     e1000e: EEE TX LPI TIMER: 00000011
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210723
-i386                 randconfig-c001-20210722
-arm                       aspeed_g4_defconfig
-arm                            qcom_defconfig
-sh                          r7780mp_defconfig
-arm                          ep93xx_defconfig
-xtensa                          iss_defconfig
-mips                  decstation_64_defconfig
-arm                     davinci_all_defconfig
-mips                        workpad_defconfig
-powerpc                        fsp2_defconfig
-arm                         vf610m4_defconfig
-m68k                                defconfig
-arm                            zeus_defconfig
-powerpc                     sbc8548_defconfig
-xtensa                  audio_kc705_defconfig
-sh                              ul2_defconfig
-arm                         axm55xx_defconfig
-mips                     loongson2k_defconfig
-sh                          sdk7780_defconfig
-powerpc                 mpc8560_ads_defconfig
-arm                            xcep_defconfig
-ia64                            zx1_defconfig
-m68k                            q40_defconfig
-powerpc                      obs600_defconfig
-powerpc                 mpc832x_mds_defconfig
-mips                           rs90_defconfig
-powerpc                     tqm8540_defconfig
-powerpc                     pq2fads_defconfig
-riscv                            allyesconfig
-mips                           ci20_defconfig
-openrisc                    or1ksim_defconfig
-powerpc                           allnoconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a003-20210722
-x86_64               randconfig-a006-20210722
-x86_64               randconfig-a001-20210722
-x86_64               randconfig-a005-20210722
-x86_64               randconfig-a004-20210722
-x86_64               randconfig-a002-20210722
-i386                 randconfig-a005-20210722
-i386                 randconfig-a003-20210722
-i386                 randconfig-a004-20210722
-i386                 randconfig-a002-20210722
-i386                 randconfig-a001-20210722
-i386                 randconfig-a006-20210722
-i386                 randconfig-a005-20210723
-i386                 randconfig-a003-20210723
-i386                 randconfig-a004-20210723
-i386                 randconfig-a002-20210723
-i386                 randconfig-a001-20210723
-i386                 randconfig-a006-20210723
-x86_64               randconfig-a011-20210723
-x86_64               randconfig-a016-20210723
-x86_64               randconfig-a013-20210723
-x86_64               randconfig-a014-20210723
-x86_64               randconfig-a012-20210723
-x86_64               randconfig-a015-20210723
-i386                 randconfig-a016-20210723
-i386                 randconfig-a013-20210723
-i386                 randconfig-a012-20210723
-i386                 randconfig-a011-20210723
-i386                 randconfig-a014-20210723
-i386                 randconfig-a015-20210723
-i386                 randconfig-a016-20210722
-i386                 randconfig-a013-20210722
-i386                 randconfig-a012-20210722
-i386                 randconfig-a011-20210722
-i386                 randconfig-a014-20210722
-i386                 randconfig-a015-20210722
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+     $ git grep "LPI TIMER"
+     drivers/net/ethernet/intel/e1000e/netdev.c:     pr_info("EEE TX LPI 
+TIMER: %08X\n",
 
-clang tested configs:
-x86_64               randconfig-c001-20210723
-x86_64               randconfig-c001-20210722
-x86_64               randconfig-b001-20210722
-x86_64               randconfig-b001-20210723
-x86_64               randconfig-a003-20210723
-x86_64               randconfig-a006-20210723
-x86_64               randconfig-a001-20210723
-x86_64               randconfig-a005-20210723
-x86_64               randconfig-a004-20210723
-x86_64               randconfig-a002-20210723
-x86_64               randconfig-a011-20210722
-x86_64               randconfig-a016-20210722
-x86_64               randconfig-a013-20210722
-x86_64               randconfig-a014-20210722
-x86_64               randconfig-a012-20210722
-x86_64               randconfig-a015-20210722
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+What information is that supposed to provide? For a normal user it looks 
+like spam.
+
+Could you please extend the message what to do about it? Or should it be 
+made a debug message?
+
+
+Kind regards,
+
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
