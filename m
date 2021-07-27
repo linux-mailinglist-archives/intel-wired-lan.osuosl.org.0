@@ -1,56 +1,166 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D0283D6CE4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 05:37:43 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 484763D77C9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 16:04:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 179C8403B1;
-	Tue, 27 Jul 2021 03:37:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7LgdZzkALEMy; Tue, 27 Jul 2021 03:37:40 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 81AA740377;
-	Tue, 27 Jul 2021 03:37:40 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8567F1BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 74D3A607C6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A6DD6072F;
+	Tue, 27 Jul 2021 14:04:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S4_guoPJREk4 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Jul 2021 03:37:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 36011607CC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10057"; a="212348881"
-X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="212348881"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2021 20:37:22 -0700
-X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="474230317"
-Received: from nmanikan-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.209.99.32])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2021 20:37:21 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 26 Jul 2021 20:36:57 -0700
-Message-Id: <20210727033657.39885-5-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210727033657.39885-1-vinicius.gomes@intel.com>
-References: <20210727033657.39885-1-vinicius.gomes@intel.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9Sab-2et_fQB; Tue, 27 Jul 2021 14:04:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 811E86066C;
+	Tue, 27 Jul 2021 14:04:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B2C4C1BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id AE429400F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=juniper.net header.b="Z25TWRSK";
+ dkim=pass (1024-bit key) header.d=juniper.net header.b="XRUjKYbe"
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WGQtnAsxwtma for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jul 2021 07:38:50 +0000 (UTC)
+X-Greylist: delayed 01:15:43 by SQLgrey-1.8.0
+Received: from mx0b-00273201.pphosted.com (mx0b-00273201.pphosted.com
+ [67.231.152.164])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 84B1E400CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:50 +0000 (UTC)
+Received: from pps.filterd (m0108162.ppops.net [127.0.0.1])
+ by mx0b-00273201.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 16R6FiPN012633; Mon, 26 Jul 2021 23:23:04 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juniper.net;
+ h=from : to : cc :
+ subject : date : message-id : content-type : mime-version; s=PPS1017;
+ bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
+ b=Z25TWRSKxE1TubsrxDRtH/WU4nUrpNvOL5BSeGjkgAfXFQU0onX31qR242VRkDkkY9yE
+ zx4jmHl39KrZE2kS23eoTxilzgdHf9kmoB0X0iGhbk7++P+9+rxJdjjCqyTfeH4/yKTF
+ FvyIKCfGbPQqpoYFtNT6uF5wdum16kLc4OYjBL8QGNxblp0VlitSoAoKNXE6ARVCpTCY
+ GKdbhGlBqW08Ka5XG3fD3HHF606x/QYy27jzX7tZEcBOaOxNEOPazpGopnVdffLm/G+L
+ yo5zZxHs1Edtn6JerHWt1IEm3XXNnY8AtMQw0Va/in4BBJyb6KdaoAoN64e6jjBx6emu Wg== 
+Received: from nam11-co1-obe.outbound.protection.outlook.com
+ (mail-co1nam11lp2171.outbound.protection.outlook.com [104.47.56.171])
+ by mx0b-00273201.pphosted.com with ESMTP id 3a2369gua2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 26 Jul 2021 23:23:04 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=P8NI+uoS7JXTBlRoK/Jcqi7F3M/Cq6JQ2/UZ+6PhMS6CacDyLCPBYEsv4DQY4yuyz8EubAbN3xqJzEi1OreUFCuRhLVqnhju30snZFTO6J2vqq1kSALXjWKG9igaK0NRQ/M/GmqRfutV2srnd7gSfC3XA5CVaytx2mkZS8hCAANgWUQ40SsLrWULU6UUdA0OTYOIMKaLotWbX+pbsr+iM58vWxjKJpTLTz4lT0QVqTeCKxlpUw6e1bykMMa1hSI2jbjLhfHIDFzVbPCchaWRMxsBNLdH1FQ5gNN4pQazopnJDGxORlredXk1Y8d291Wm65lRRAyL33FLjJqMPiC2/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
+ b=SOhnbNOqdfTRjJkLGemSZ9XPbT9m1ujoGibk+MuP4jA77abDM9clYCJ5UkcsQIYjZoj8x5fRIa9SxicPKXElnKuEOWZC2kekuWN9E/9F7uc7HMOacIVlCxGhSPd9oceoVNTYIGnswkcJHgszjnbCWo2R4kbGJNxZY98gT3f+HICjaGa5nG8IRv/kSmfgcZVLrfYtCzJCIyh6chKQ0Ex8FgNGG/RT/W7lrKbvjGJy+AvwFmhe4IrAA76+b0BXw7zVs+5DXmoubrTC2gYeDur+VubghlQwg85aBQpKuZkGKI7wriF7AzhE+yH/4piHZMx08ciIBGkmCD2zSls9RUXFxA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=juniper.net; dmarc=pass action=none header.from=juniper.net;
+ dkim=pass header.d=juniper.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juniper.net;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
+ b=XRUjKYbe+SxXmKSLVlfF4xd2ACjQeRt0W/Dx/qEP79c6BLmygOjhLyRSzkB5B5/Kx9z1O8r9n6+NPahIRsVO6nlLg9ZPoGR+elzGckXgvIfhgVyN5dGmHOonkMoQH3RxoToe6cGpeuEAvJK7JIoJf6gk91sgc6P2lu9XnSSVbY0=
+Received: from BY3PR05MB8356.namprd05.prod.outlook.com (2603:10b6:a03:3c3::5)
+ by BYAPR05MB6392.namprd05.prod.outlook.com (2603:10b6:a03:ed::28)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.12; Tue, 27 Jul
+ 2021 06:23:00 +0000
+Received: from BY3PR05MB8356.namprd05.prod.outlook.com
+ ([fe80::8938:c857:d001:ec4d]) by BY3PR05MB8356.namprd05.prod.outlook.com
+ ([fe80::8938:c857:d001:ec4d%5]) with mapi id 15.20.4373.018; Tue, 27 Jul 2021
+ 06:23:00 +0000
+From: Yuvaraj Ranganathan <yranganathan@juniper.net>
+To: "e1000-devel@lists.sourceforge.net" <e1000-devel@lists.sourceforge.net>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: Traffic not passing for VLAN ID >= 32 on the I350 SR-IOV enabled
+ NIC 
+Thread-Index: AQHXgqzxV++qPwNWaU27fCWwrDJgLg==
+Date: Tue, 27 Jul 2021 06:23:00 +0000
+Message-ID: <BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99@BY3PR05MB8356.namprd05.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_Enabled=True;
+ MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_SiteId=bea78b3c-4cdb-4130-854a-1d193232e5f4;
+ MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_SetDate=2021-07-27T06:02:13.3131859Z;
+ MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_ContentBits=0;
+ MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_Method=Standard
+authentication-results: lists.sourceforge.net; dkim=none (message not signed)
+ header.d=none; lists.sourceforge.net;
+ dmarc=none action=none header.from=juniper.net;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6f7188ee-3b13-404b-76ed-08d950c6fbc0
+x-ms-traffictypediagnostic: BYAPR05MB6392:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR05MB63924E772CD5226EB2BF9AFBCAE99@BYAPR05MB6392.namprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: cuAGHk6dtLOHzjBz/esY4o+OBxNEQ5ddwnCi8drg5Blu5TWmn5BerpZMjVMGTMQBrcRD6eEwmKsVDtUphV4aU7f9K3HqQ30kLUjTzyAtWUgb9L2/shYcdhdGh4nQg51ZSRRgRFcDAsGWNjH3nMXeLlyer57kcdAj2cpustF+glNqrfFWPcFaatCVi8Ws+/EluRFjoZz2YJOuH9u8aPCEz7uyR1jexaQ5VI5FUIv9qp/3JnTQiPXlhxD8QomyrEF1XCWUSsXKLy7q1KGk+037ONa1sBDbdf6lZt/fRVyZ1vvfeA/D8WqXp3y4FdQLVVDo8jz6HUyRCP5+1eYQ1pgUMPQUkXbk+eD2UtbVpuJh7OXzACEcKJ4vDidiRzcoUycXf4Nx6trQhEI0h2Ad/pHe+cURzblowagFxdzFdaEeAmt8QxUmsOX/NA79llf2VfmlJP4K64Wk0I9+kFOCl3kdGOda67IlhzaF+O7FQNx6K3VMo9Nyg0Kdu8Y8w1RLg+/fL33fyFg8hCiM9rSROrMvm8uOdVtbx9AaRh5H83i29fCnOI0kkT2JAHDp7ttQAvugIQEfX68eOLsdfmPPr+vlsm+LlYZjwnLFsmj727WUMErxadC2QVZ2J9ClenyU87bnJP7uCN2ipZdhZudqSIWCapcg3AnOgn2d4vq/VuFXowuRYHm4l4TnoonuCa8hSMZ2Rn3dC2kPzB3/Sc6cnOUcvg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY3PR05MB8356.namprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(316002)(7696005)(33656002)(8676002)(122000001)(186003)(2906002)(86362001)(508600001)(38100700002)(110136005)(6506007)(52536014)(8936002)(9686003)(4326008)(66556008)(71200400001)(66946007)(66446008)(55016002)(9326002)(66476007)(64756008)(107886003)(4744005)(54906003)(26005)(91956017)(5660300002)(4743002)(76116006)(38070700004);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?sPRMiJWxr8wLwbou42o1zW+SQV+AkK4tGRORCizL59X6nV4Nr/EkmrMV?=
+ =?Windows-1252?Q?e5h4LICQcYK1OfLDbhRQS2H9Y9sXiinXFM/r+DXXC5IK4OQJX4tRxB+C?=
+ =?Windows-1252?Q?Qjr2c0Dvg5QNhMwozLmIgXKQ47/djkhywJtV3f8djEvmslfhGdShXttb?=
+ =?Windows-1252?Q?U1nxD7nqKBMp548+pvMdErpjPofVsfQTYhmkZ4XPpTw25EVWvRfzIhQR?=
+ =?Windows-1252?Q?lRkI6d53+DCyXO4KvFbxFmc22GPTnHlEQbT/2Hfc2Nfqrv5rf6EtMeia?=
+ =?Windows-1252?Q?e/d+mJWHhO1NAeGtXppAovzQX+itLJVHCqJSe9RpClJmfUtVtMBdBlM5?=
+ =?Windows-1252?Q?8C23ZvBw2tYUWYVhx7IZ6YvWf6ozW1turl6B98jNsmc6z9nYwrFxz2cO?=
+ =?Windows-1252?Q?LuHEMVesQS7nrnHYAE4zVekn+Q8m8lgokDja/OLrx+vYp7vNYE8xkoZY?=
+ =?Windows-1252?Q?6Rpm7vqcxy0OEVHAzgF9IYBiEskfBH+/6NgZ7sxJRzqGdueBNHIOTqDx?=
+ =?Windows-1252?Q?gUGHvmbl1gV85m6iZHe4BzdKTkHD9nMhRO8hZHtAPMk63RhR5Kg0yPvw?=
+ =?Windows-1252?Q?s3hYcvs5lieK6/JJ7Vu5mmm922pg23l3nTvxltDdvzDBfOXJhvyDVM/s?=
+ =?Windows-1252?Q?ZLNHQxciqyN+mqUQjAVQL0qvz8AOQ4PQG0jZ9tIymXdwG06z9d9S8EYI?=
+ =?Windows-1252?Q?RxXBMZr2mTnbQTs+LF1hMMek7qnVeMMAcy3tatHX47Ur496Mso4IBhfQ?=
+ =?Windows-1252?Q?2Fhxg+wDupj9d4Uqe7J3pidLYc3nB7xxCokFonYiv7+WEst7SFrVE1yb?=
+ =?Windows-1252?Q?86oB6S2Wz8or21x+wlOfYpjENpfXrP67J0ril1gv558xrXilKSe0Yuj/?=
+ =?Windows-1252?Q?WxolwVXJT6pEe1TTI51O/pZPRnnIyLfFDUS9U8E4CRaGiSbQ4v8Lsmt9?=
+ =?Windows-1252?Q?AHyfWCTop7fBgvEBCElZke+ioAgDkKvQkSvyeLuxr/kCSPbPMTyJWSDU?=
+ =?Windows-1252?Q?NG0e1fYsQKmpGL/bE03xuyTSulrX/F0tQbt4g6c+Z3qSHDP+mnEwsW4I?=
+ =?Windows-1252?Q?n7H8KwrCShABIAajwy0fZnxmd1Rp7Bdugx15QBv70wAYq4x3lk0PvTBa?=
+ =?Windows-1252?Q?AJlfciVVcMA8AbXgacShkxae4VSs0HOTIjaDC+Kxa+fs18Bh5CNPCa63?=
+ =?Windows-1252?Q?zpO6CErODUe5q0mofH6ur8rFfhZLCIv48O2gIofT+3PR6vfoVODggV/u?=
+ =?Windows-1252?Q?UsVcpaacGQD4l8fKtEPL66pBZE7FEMp3i17HanRAYchFdhebdxoM0MOY?=
+ =?Windows-1252?Q?28/+KJ9nA1M0aKBVjWa3v1loWznn8B168sElvi1jV70DOjVPNqBpyRrm?=
+ =?Windows-1252?Q?8E1ic9tuGr1Yc4x8G3BGLKCdBCrXCVhdVqg9gyu2NWJXTdMLRnzPhLuX?=
+ =?Windows-1252?Q?dOnCf/txA7mJeHVFFvzLBA=3D=3D?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v6 4/4] igc: Add support for
- PTP getcrosststamp()
+X-OriginatorOrg: juniper.net
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY3PR05MB8356.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6f7188ee-3b13-404b-76ed-08d950c6fbc0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Jul 2021 06:23:00.5464 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: bea78b3c-4cdb-4130-854a-1d193232e5f4
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KcGQQuXjkcJoCyPY+kG8oZlXVqkntGHN2QzC3JROgvZvX32qZCmjolsva0xAdovDJ1q3mSB3iSXgAB5Kk7dGsuUwKMVED3OJMDziCgziSIk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR05MB6392
+X-Proofpoint-ORIG-GUID: oGBy4y2qJ22b99cK9U6WbtJDITR7UFgd
+X-Proofpoint-GUID: oGBy4y2qJ22b99cK9U6WbtJDITR7UFgd
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
+ definitions=2021-07-27_04:2021-07-27,
+ 2021-07-27 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_spam_notspam policy=outbound_spam
+ score=0 mlxlogscore=953
+ impostorscore=0 clxscore=1011 priorityscore=1501 adultscore=0 phishscore=0
+ suspectscore=0 lowpriorityscore=0 mlxscore=0 spamscore=0 bulkscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2107140000 definitions=main-2107270037
+X-Mailman-Approved-At: Tue, 27 Jul 2021 14:03:59 +0000
+Subject: [Intel-wired-lan] Traffic not passing for VLAN ID >= 32 on the I350
+ SR-IOV enabled NIC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,459 +173,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, linux-pci@vger.kernel.org, richardcochran@gmail.com,
- hch@infradead.org, netdev@vger.kernel.org, bhelgaas@google.com,
- helgaas@kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Pushp Saurav <psaurav@juniper.net>, "Navare,
+ Anup D" <anup.d.navare@intel.com>
+Content-Type: multipart/mixed; boundary="===============6632834210584403554=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i225 supports PCIe Precision Time Measurement (PTM), allowing us to
-support the PTP_SYS_OFFSET_PRECISE ioctl() in the driver via the
-getcrosststamp() function.
+--===============6632834210584403554==
+Content-Language: en-US
+Content-Type: multipart/alternative;
+	boundary="_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_"
 
-The easiest way to expose the PTM registers would be to configure the PTM
-dialogs to run periodically, but the PTP_SYS_OFFSET_PRECISE ioctl()
-semantics are more aligned to using a kind of "one-shot" way of retrieving
-the PTM timestamps. But this causes a bit more code to be written: the
-trigger registers for the PTM dialogs are not cleared automatically.
+--_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
 
-i225 can be configured to send "fake" packets with the PTM
-information, adding support for handling these types of packets is
-left for the future.
+Hi Team,
 
-PTM improves the accuracy of time synchronization, for example, using
-phc2sys, while a simple application is sending packets as fast as
-possible. First, without .getcrosststamp():
+With the SR-IOV enabled on I350 NIC which has 4 VF=92s, on configuring VLAN=
+ ID from range 1 to 31 on the VM interface, network traffic is fine and no =
+issues. When trying to create an interface with VLAN ID >=3D 32 on the VM, =
+traffic is not passing to that interface and as per HW specs, VLAN ID=92s f=
+rom 1 to 4096 are supported.
 
-phc2sys[191.382]: enp4s0 sys offset      -959 s2 freq    -454 delay   4492
-phc2sys[191.482]: enp4s0 sys offset       798 s2 freq   +1015 delay   4069
-phc2sys[191.583]: enp4s0 sys offset       962 s2 freq   +1418 delay   3849
-phc2sys[191.683]: enp4s0 sys offset       924 s2 freq   +1669 delay   3753
-phc2sys[191.783]: enp4s0 sys offset       664 s2 freq   +1686 delay   3349
-phc2sys[191.883]: enp4s0 sys offset       218 s2 freq   +1439 delay   2585
-phc2sys[191.983]: enp4s0 sys offset       761 s2 freq   +2048 delay   3750
-phc2sys[192.083]: enp4s0 sys offset       756 s2 freq   +2271 delay   4061
-phc2sys[192.183]: enp4s0 sys offset       809 s2 freq   +2551 delay   4384
-phc2sys[192.283]: enp4s0 sys offset      -108 s2 freq   +1877 delay   2480
-phc2sys[192.383]: enp4s0 sys offset     -1145 s2 freq    +807 delay   4438
-phc2sys[192.484]: enp4s0 sys offset       571 s2 freq   +2180 delay   3849
-phc2sys[192.584]: enp4s0 sys offset       241 s2 freq   +2021 delay   3389
-phc2sys[192.684]: enp4s0 sys offset       405 s2 freq   +2257 delay   3829
-phc2sys[192.784]: enp4s0 sys offset        17 s2 freq   +1991 delay   3273
-phc2sys[192.884]: enp4s0 sys offset       152 s2 freq   +2131 delay   3948
-phc2sys[192.984]: enp4s0 sys offset      -187 s2 freq   +1837 delay   3162
-phc2sys[193.084]: enp4s0 sys offset     -1595 s2 freq    +373 delay   4557
-phc2sys[193.184]: enp4s0 sys offset       107 s2 freq   +1597 delay   3740
-phc2sys[193.284]: enp4s0 sys offset       199 s2 freq   +1721 delay   4010
-phc2sys[193.385]: enp4s0 sys offset      -169 s2 freq   +1413 delay   3701
-phc2sys[193.485]: enp4s0 sys offset       -47 s2 freq   +1484 delay   3581
-phc2sys[193.585]: enp4s0 sys offset       -65 s2 freq   +1452 delay   3778
-phc2sys[193.685]: enp4s0 sys offset        95 s2 freq   +1592 delay   3888
-phc2sys[193.785]: enp4s0 sys offset       206 s2 freq   +1732 delay   4445
-phc2sys[193.885]: enp4s0 sys offset      -652 s2 freq    +936 delay   2521
-phc2sys[193.985]: enp4s0 sys offset      -203 s2 freq   +1189 delay   3391
-phc2sys[194.085]: enp4s0 sys offset      -376 s2 freq    +955 delay   2951
-phc2sys[194.185]: enp4s0 sys offset      -134 s2 freq   +1084 delay   3330
-phc2sys[194.285]: enp4s0 sys offset       -22 s2 freq   +1156 delay   3479
-phc2sys[194.386]: enp4s0 sys offset        32 s2 freq   +1204 delay   3602
-phc2sys[194.486]: enp4s0 sys offset       122 s2 freq   +1303 delay   3731
+VM=92s interface is directly mapped to one of the VF on I350 NIC. I am usin=
+g IGB PF driver version 5.7.2(latest).
 
-Statistics for this run (total of 2179 lines), in nanoseconds:
-  average: -1.12
-  stdev: 634.80
-  max: 1551
-  min: -2215
+Could somebody please help!
 
-With .getcrosststamp() via PCIe PTM:
+Thanks in advance,
+Yuvaraj.
 
-phc2sys[367.859]: enp4s0 sys offset         6 s2 freq   +1727 delay      0
-phc2sys[367.959]: enp4s0 sys offset        -2 s2 freq   +1721 delay      0
-phc2sys[368.059]: enp4s0 sys offset         5 s2 freq   +1727 delay      0
-phc2sys[368.160]: enp4s0 sys offset        -1 s2 freq   +1723 delay      0
-phc2sys[368.260]: enp4s0 sys offset        -4 s2 freq   +1719 delay      0
-phc2sys[368.360]: enp4s0 sys offset        -5 s2 freq   +1717 delay      0
-phc2sys[368.460]: enp4s0 sys offset         1 s2 freq   +1722 delay      0
-phc2sys[368.560]: enp4s0 sys offset        -3 s2 freq   +1718 delay      0
-phc2sys[368.660]: enp4s0 sys offset         5 s2 freq   +1725 delay      0
-phc2sys[368.760]: enp4s0 sys offset        -1 s2 freq   +1721 delay      0
-phc2sys[368.860]: enp4s0 sys offset         0 s2 freq   +1721 delay      0
-phc2sys[368.960]: enp4s0 sys offset         0 s2 freq   +1721 delay      0
-phc2sys[369.061]: enp4s0 sys offset         4 s2 freq   +1725 delay      0
-phc2sys[369.161]: enp4s0 sys offset         1 s2 freq   +1724 delay      0
-phc2sys[369.261]: enp4s0 sys offset         4 s2 freq   +1727 delay      0
-phc2sys[369.361]: enp4s0 sys offset         8 s2 freq   +1732 delay      0
-phc2sys[369.461]: enp4s0 sys offset         7 s2 freq   +1733 delay      0
-phc2sys[369.561]: enp4s0 sys offset         4 s2 freq   +1733 delay      0
-phc2sys[369.661]: enp4s0 sys offset         1 s2 freq   +1731 delay      0
-phc2sys[369.761]: enp4s0 sys offset         1 s2 freq   +1731 delay      0
-phc2sys[369.861]: enp4s0 sys offset        -5 s2 freq   +1725 delay      0
-phc2sys[369.961]: enp4s0 sys offset        -4 s2 freq   +1725 delay      0
-phc2sys[370.062]: enp4s0 sys offset         2 s2 freq   +1730 delay      0
-phc2sys[370.162]: enp4s0 sys offset        -7 s2 freq   +1721 delay      0
-phc2sys[370.262]: enp4s0 sys offset        -3 s2 freq   +1723 delay      0
-phc2sys[370.362]: enp4s0 sys offset         1 s2 freq   +1726 delay      0
-phc2sys[370.462]: enp4s0 sys offset        -3 s2 freq   +1723 delay      0
-phc2sys[370.562]: enp4s0 sys offset        -1 s2 freq   +1724 delay      0
-phc2sys[370.662]: enp4s0 sys offset        -4 s2 freq   +1720 delay      0
-phc2sys[370.762]: enp4s0 sys offset        -7 s2 freq   +1716 delay      0
-phc2sys[370.862]: enp4s0 sys offset        -2 s2 freq   +1719 delay      0
 
-Statistics for this run (total of 2179 lines), in nanoseconds:
-  average: 0.14
-  stdev: 5.03
-  max: 48
-  min: -27
+Juniper Business Use Only
 
-For reference, the statistics for runs without PCIe congestion show
-that the improvements from enabling PTM are less dramatic. For two
-runs of 16466 entries:
-  without PTM: avg -0.04 stdev 10.57 max 39 min -42
-  with PTM: avg 0.01 stdev 4.20 max 19 min -16
+--_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
 
-One possible explanation is that when PTM is not enabled, and there's a lot
-of traffic in the PCIe fabric, some register reads will take more time
-than the others because of congestion on the PCIe fabric.
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:sc=
+hemas-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/of=
+fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:12.0pt;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style>
+</head>
+<body lang=3D"EN-IN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
+break-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Hi Team,<br>
+<br>
+With the SR-IOV enabled on I350 NIC which has 4 VF=92s, on configuring VLAN=
+ ID from range 1 to 31 on the VM interface, network traffic is fine and no =
+issues. When trying to create an interface with VLAN ID &gt;=3D 32 on the V=
+M, traffic is not passing to that interface
+ and as per HW specs, VLAN ID=92s from 1 to 4096 are supported.<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><br>
+VM=92s interface is directly mapped to one of the VF on I350 NIC. I am usin=
+g IGB&nbsp;PF driver version
+<b>5.7.2(latest).</b><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><br>
+Could somebody please help!<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Thanks in advance,<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Yuvaraj.<o:p></o:p>=
+</span></p>
+</div>
+<br>
+<p style=3D"font-family:Calibri;font-size:7pt;color:#000000;margin:15pt;" a=
+lign=3D"Center">
+Juniper Business Use Only<br>
+</p>
+</body>
+</html>
 
-When PTM is enabled, even if the PTM dialogs take more time to
-complete under heavy traffic, the time measurements do not depend on
-the time to read the registers.
+--_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_--
 
-This was implemented following the i225 EAS version 0.993.
-
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h         |   1 +
- drivers/net/ethernet/intel/igc/igc_defines.h |  31 ++++
- drivers/net/ethernet/intel/igc/igc_ptp.c     | 179 +++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |  23 +++
- 4 files changed, 234 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index a0ecfe5a4078..2d17a6da63cf 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -227,6 +227,7 @@ struct igc_adapter {
- 	struct timecounter tc;
- 	struct timespec64 prev_ptp_time; /* Pre-reset PTP clock */
- 	ktime_t ptp_reset_start; /* Reset time in clock mono */
-+	struct system_time_snapshot snapshot;
- 
- 	char fw_version[32];
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 136108687f35..33e5d89d17a3 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -523,6 +523,37 @@
- #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
- #define IGC_RXCSUM_PCSD		0x00002000   /* packet checksum disabled */
- 
-+/* PCIe PTM Control */
-+#define IGC_PTM_CTRL_START_NOW	BIT(29) /* Start PTM Now */
-+#define IGC_PTM_CTRL_EN		BIT(30) /* Enable PTM */
-+#define IGC_PTM_CTRL_TRIG	BIT(31) /* PTM Cycle trigger */
-+#define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x2f) << 2)
-+#define IGC_PTM_CTRL_PTM_TO(usec)	(((usec) & 0xff) << 8)
-+
-+#define IGC_PTM_SHORT_CYC_DEFAULT	10  /* Default Short/interrupted cycle interval */
-+#define IGC_PTM_CYC_TIME_DEFAULT	5   /* Default PTM cycle time */
-+#define IGC_PTM_TIMEOUT_DEFAULT		255 /* Default timeout for PTM errors */
-+
-+/* PCIe Digital Delay */
-+#define IGC_PCIE_DIG_DELAY_DEFAULT	0x01440000
-+
-+/* PCIe PHY Delay */
-+#define IGC_PCIE_PHY_DELAY_DEFAULT	0x40900000
-+
-+#define IGC_TIMADJ_ADJUST_METH		0x40000000
-+
-+/* PCIe PTM Status */
-+#define IGC_PTM_STAT_VALID		BIT(0) /* PTM Status */
-+#define IGC_PTM_STAT_RET_ERR		BIT(1) /* Root port timeout */
-+#define IGC_PTM_STAT_BAD_PTM_RES	BIT(2) /* PTM Response msg instead of PTM Response Data */
-+#define IGC_PTM_STAT_T4M1_OVFL		BIT(3) /* T4 minus T1 overflow */
-+#define IGC_PTM_STAT_ADJUST_1ST		BIT(4) /* 1588 timer adjusted during 1st PTM cycle */
-+#define IGC_PTM_STAT_ADJUST_CYC		BIT(5) /* 1588 timer adjusted during non-1st PTM cycle */
-+
-+/* PCIe PTM Cycle Control */
-+#define IGC_PTM_CYCLE_CTRL_CYC_TIME(msec)	((msec) & 0x3ff) /* PTM Cycle Time (msec) */
-+#define IGC_PTM_CYCLE_CTRL_AUTO_CYC_EN		BIT(31) /* PTM Cycle Control */
-+
- /* GPY211 - I225 defines */
- #define GPY_MMD_MASK		0xFFFF0000
- #define GPY_MMD_SHIFT		16
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 4ae19c6a3247..ca1b728f1d97 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -9,6 +9,8 @@
- #include <linux/ptp_classify.h>
- #include <linux/clocksource.h>
- #include <linux/ktime.h>
-+#include <linux/delay.h>
-+#include <linux/iopoll.h>
- 
- #define INCVALUE_MASK		0x7fffffff
- #define ISGN			0x80000000
-@@ -16,6 +18,9 @@
- #define IGC_SYSTIM_OVERFLOW_PERIOD	(HZ * 60 * 9)
- #define IGC_PTP_TX_TIMEOUT		(HZ * 15)
- 
-+#define IGC_PTM_STAT_SLEEP		2
-+#define IGC_PTM_STAT_TIMEOUT		100
-+
- /* SYSTIM read access for I225 */
- void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts)
- {
-@@ -752,6 +757,147 @@ int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr)
- 		-EFAULT : 0;
- }
- 
-+/* The two conditions below must be met for cross timestamping via
-+ * PCIe PTM:
-+ *
-+ * 1. We have an way to convert the timestamps in the PTM messages
-+ *    to something related to the system clocks (right now, only
-+ *    X86 systems with support for the Always Running Timer allow that);
-+ *
-+ * 2. We have PTM enabled in the path from the device to the PCIe root port.
-+ */
-+static bool igc_is_crosststamp_supported(struct igc_adapter *adapter)
-+{
-+	return IS_ENABLED(CONFIG_X86_TSC) ? pcie_ptm_enabled(adapter->pdev) : false;
-+}
-+
-+static struct system_counterval_t igc_device_tstamp_to_system(u64 tstamp)
-+{
-+#if IS_ENABLED(CONFIG_X86_TSC)
-+	return convert_art_ns_to_tsc(tstamp);
-+#else
-+	return (struct system_counterval_t) { };
-+#endif
-+}
-+
-+static void igc_ptm_log_error(struct igc_adapter *adapter, u32 ptm_stat)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+
-+	switch (ptm_stat) {
-+	case IGC_PTM_STAT_RET_ERR:
-+		netdev_err(netdev, "PTM Error: Root port timeout\n");
-+		break;
-+	case IGC_PTM_STAT_BAD_PTM_RES:
-+		netdev_err(netdev, "PTM Error: Bad response, PTM Response Data expected\n");
-+		break;
-+	case IGC_PTM_STAT_T4M1_OVFL:
-+		netdev_err(netdev, "PTM Error: T4 minus T1 overflow\n");
-+		break;
-+	case IGC_PTM_STAT_ADJUST_1ST:
-+		netdev_err(netdev, "PTM Error: 1588 timer adjusted during first PTM cycle\n");
-+		break;
-+	case IGC_PTM_STAT_ADJUST_CYC:
-+		netdev_err(netdev, "PTM Error: 1588 timer adjusted during non-first PTM cycle\n");
-+		break;
-+	default:
-+		netdev_err(netdev, "PTM Error: Unknown error (%#x)\n", ptm_stat);
-+		break;
-+	}
-+}
-+
-+static int igc_phc_get_syncdevicetime(ktime_t *device,
-+				      struct system_counterval_t *system,
-+				      void *ctx)
-+{
-+	struct igc_adapter *adapter = ctx;
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 stat, t2_curr_h, t2_curr_l, ctrl;
-+	int err, count = 100;
-+	ktime_t t1, t2_curr;
-+
-+	/* Get a snapshot of system clocks to use as historic value. */
-+	ktime_get_snapshot(&adapter->snapshot);
-+
-+	do {
-+		/* Doing this in a loop because in the event of a
-+		 * badly timed (ha!) system clock adjustment, we may
-+		 * get PTM errors from the PCI root, but these errors
-+		 * are transitory. Repeating the process returns valid
-+		 * data eventually.
-+		 */
-+
-+		/* To "manually" start the PTM cycle we need to clear and
-+		 * then set again the TRIG bit.
-+		 */
-+		ctrl = rd32(IGC_PTM_CTRL);
-+		ctrl &= ~IGC_PTM_CTRL_TRIG;
-+		wr32(IGC_PTM_CTRL, ctrl);
-+		ctrl |= IGC_PTM_CTRL_TRIG;
-+		wr32(IGC_PTM_CTRL, ctrl);
-+
-+		/* The cycle only starts "for real" when software notifies
-+		 * that it has read the registers, this is done by setting
-+		 * VALID bit.
-+		 */
-+		wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
-+
-+		err = readx_poll_timeout(rd32, IGC_PTM_STAT, stat,
-+					 stat, IGC_PTM_STAT_SLEEP,
-+					 IGC_PTM_STAT_TIMEOUT);
-+		if (err < 0) {
-+			netdev_err(adapter->netdev, "Timeout reading IGC_PTM_STAT register\n");
-+			return err;
-+		}
-+
-+		if ((stat & IGC_PTM_STAT_VALID) == IGC_PTM_STAT_VALID)
-+			break;
-+
-+		if (stat & ~IGC_PTM_STAT_VALID) {
-+			/* An error occurred, log it. */
-+			igc_ptm_log_error(adapter, stat);
-+			/* The STAT register is write-1-to-clear (W1C),
-+			 * so write the previous error status to clear it.
-+			 */
-+			wr32(IGC_PTM_STAT, stat);
-+			continue;
-+		}
-+	} while (--count);
-+
-+	if (!count) {
-+		netdev_err(adapter->netdev, "Exceeded number of tries for PTM cycle\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	t1 = ktime_set(rd32(IGC_PTM_T1_TIM0_H), rd32(IGC_PTM_T1_TIM0_L));
-+
-+	t2_curr_l = rd32(IGC_PTM_CURR_T2_L);
-+	t2_curr_h = rd32(IGC_PTM_CURR_T2_H);
-+
-+	/* FIXME: When the register that tells the endianness of the
-+	 * PTM registers are implemented, check them here and add the
-+	 * appropriate conversion.
-+	 */
-+	t2_curr_h = swab32(t2_curr_h);
-+
-+	t2_curr = ((s64)t2_curr_h << 32 | t2_curr_l);
-+
-+	*device = t1;
-+	*system = igc_device_tstamp_to_system(t2_curr);
-+
-+	return 0;
-+}
-+
-+static int igc_ptp_getcrosststamp(struct ptp_clock_info *ptp,
-+				  struct system_device_crosststamp *cts)
-+{
-+	struct igc_adapter *adapter = container_of(ptp, struct igc_adapter,
-+						   ptp_caps);
-+
-+	return get_device_system_crosststamp(igc_phc_get_syncdevicetime,
-+					     adapter, &adapter->snapshot, cts);
-+}
-+
- /**
-  * igc_ptp_init - Initialize PTP functionality
-  * @adapter: Board private structure
-@@ -788,6 +934,11 @@ void igc_ptp_init(struct igc_adapter *adapter)
- 		adapter->ptp_caps.n_per_out = IGC_N_PEROUT;
- 		adapter->ptp_caps.n_pins = IGC_N_SDP;
- 		adapter->ptp_caps.verify = igc_ptp_verify_pin;
-+
-+		if (!igc_is_crosststamp_supported(adapter))
-+			break;
-+
-+		adapter->ptp_caps.getcrosststamp = igc_ptp_getcrosststamp;
- 		break;
- 	default:
- 		adapter->ptp_clock = NULL;
-@@ -879,7 +1030,9 @@ void igc_ptp_stop(struct igc_adapter *adapter)
- void igc_ptp_reset(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
-+	u32 cycle_ctrl, ctrl;
- 	unsigned long flags;
-+	u32 timadj;
- 
- 	/* reset the tstamp_config */
- 	igc_ptp_set_timestamp_mode(adapter, &adapter->tstamp_config);
-@@ -888,12 +1041,38 @@ void igc_ptp_reset(struct igc_adapter *adapter)
- 
- 	switch (adapter->hw.mac.type) {
- 	case igc_i225:
-+		timadj = rd32(IGC_TIMADJ);
-+		timadj |= IGC_TIMADJ_ADJUST_METH;
-+		wr32(IGC_TIMADJ, timadj);
-+
- 		wr32(IGC_TSAUXC, 0x0);
- 		wr32(IGC_TSSDP, 0x0);
- 		wr32(IGC_TSIM,
- 		     IGC_TSICR_INTERRUPTS |
- 		     (adapter->pps_sys_wrap_on ? IGC_TSICR_SYS_WRAP : 0));
- 		wr32(IGC_IMS, IGC_IMS_TS);
-+
-+		if (!igc_is_crosststamp_supported(adapter))
-+			break;
-+
-+		wr32(IGC_PCIE_DIG_DELAY, IGC_PCIE_DIG_DELAY_DEFAULT);
-+		wr32(IGC_PCIE_PHY_DELAY, IGC_PCIE_PHY_DELAY_DEFAULT);
-+
-+		cycle_ctrl = IGC_PTM_CYCLE_CTRL_CYC_TIME(IGC_PTM_CYC_TIME_DEFAULT);
-+
-+		wr32(IGC_PTM_CYCLE_CTRL, cycle_ctrl);
-+
-+		ctrl = IGC_PTM_CTRL_EN |
-+			IGC_PTM_CTRL_START_NOW |
-+			IGC_PTM_CTRL_SHRT_CYC(IGC_PTM_SHORT_CYC_DEFAULT) |
-+			IGC_PTM_CTRL_PTM_TO(IGC_PTM_TIMEOUT_DEFAULT) |
-+			IGC_PTM_CTRL_TRIG;
-+
-+		wr32(IGC_PTM_CTRL, ctrl);
-+
-+		/* Force the first cycle to run. */
-+		wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
-+
- 		break;
- 	default:
- 		/* No work to do. */
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 828c3501c448..dbba2eb2a247 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -245,6 +245,29 @@
- #define IGC_TXSTMPL	0x0B618  /* Tx timestamp value Low - RO */
- #define IGC_TXSTMPH	0x0B61C  /* Tx timestamp value High - RO */
- 
-+#define IGC_TIMADJ	0x0B60C  /* Time Adjustment Offset Register */
-+
-+/* PCIe Registers */
-+#define IGC_PTM_CTRL		0x12540  /* PTM Control */
-+#define IGC_PTM_STAT		0x12544  /* PTM Status */
-+#define IGC_PTM_CYCLE_CTRL	0x1254C  /* PTM Cycle Control */
-+
-+/* PTM Time registers */
-+#define IGC_PTM_T1_TIM0_L	0x12558  /* T1 on Timer 0 Low */
-+#define IGC_PTM_T1_TIM0_H	0x1255C  /* T1 on Timer 0 High */
-+
-+#define IGC_PTM_CURR_T2_L	0x1258C  /* Current T2 Low */
-+#define IGC_PTM_CURR_T2_H	0x12590  /* Current T2 High */
-+#define IGC_PTM_PREV_T2_L	0x12584  /* Previous T2 Low */
-+#define IGC_PTM_PREV_T2_H	0x12588  /* Previous T2 High */
-+#define IGC_PTM_PREV_T4M1	0x12578  /* T4 Minus T1 on previous PTM Cycle */
-+#define IGC_PTM_CURR_T4M1	0x1257C  /* T4 Minus T1 on this PTM Cycle */
-+#define IGC_PTM_PREV_T3M2	0x12580  /* T3 Minus T2 on previous PTM Cycle */
-+#define IGC_PTM_TDELAY		0x12594  /* PTM PCIe Link Delay */
-+
-+#define IGC_PCIE_DIG_DELAY	0x12550  /* PCIe Digital Delay */
-+#define IGC_PCIE_PHY_DELAY	0x12554  /* PCIe PHY Delay */
-+
- /* Management registers */
- #define IGC_MANC	0x05820  /* Management Control - RW */
- 
--- 
-2.32.0
+--===============6632834210584403554==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============6632834210584403554==--
