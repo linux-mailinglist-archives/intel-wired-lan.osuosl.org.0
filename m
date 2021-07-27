@@ -1,64 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CB923D7C34
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 19:33:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F25F3D83C9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jul 2021 01:18:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B745440146;
-	Tue, 27 Jul 2021 17:33:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 632956082A;
+	Tue, 27 Jul 2021 23:18:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id do590ZhozEU0; Tue, 27 Jul 2021 17:33:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gPAeXoPuvZvW; Tue, 27 Jul 2021 23:18:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CFF9F4013F;
-	Tue, 27 Jul 2021 17:33:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 545056082F;
+	Tue, 27 Jul 2021 23:18:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 02CCB1BF359
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 17:33:24 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EC1931BF423
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 23:18:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F28E7400DF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 17:33:23 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0D5346083B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 23:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AQ7wwD_sfnyb for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Jul 2021 17:33:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hC8kv8iiJxzM for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jul 2021 23:18:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-relay-canonical-1.canonical.com
- (smtp-relay-canonical-1.canonical.com [185.125.188.121])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A318F400BF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 17:33:22 +0000 (UTC)
-Received: from localhost (1.general.cking.uk.vpn [10.172.193.212])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 93F3F3F22C; 
- Tue, 27 Jul 2021 17:33:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1627407199;
- bh=cBQwGCAj7Np0JZQGOqZ79HMB7qL2mXEkmrdNgg4EJ4E=;
- h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type;
- b=mfTD8IsCtnM8DhI3A9RQumKOhdpf7ZkKijfXkyOWFCQko26ZHn5khfdTsC/i6ttXy
- 6WUd8CwBtSFSMHHXsGfQx9cjBy20PSAYjLCQLj9JdjKsuzdnx8QAg1p1lDrd3h0kGF
- mFBD7q0kubdi1Ks4c0Tw8FK7FD0Vq9IbA4bp2PqJbTCDbRfVimCiT5ckbDriwtH+Gg
- 728Pksb2SVbSble2fxbYTg/8ls7rwjRrHoVhkhCxlBcT0S78ZLGnC5wKCprbo1m+vY
- MkhxwqTCsiSxmmL1z6FYFohA942fyGoqweUHiR6RAIkMJNowfBHEAOmOqK/GRi4gQX
- eT+Kp6H2/WdJA==
-From: Colin King <colin.king@canonical.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Date: Tue, 27 Jul 2021 18:33:18 +0100
-Message-Id: <20210727173318.78154-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.31.1
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 20E2E60890
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 23:18:15 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10058"; a="234421598"
+X-IronPort-AV: E=Sophos;i="5.84,275,1620716400"; d="scan'208";a="234421598"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jul 2021 16:18:15 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,275,1620716400"; d="scan'208";a="517146746"
+Received: from bcreeley-st-desk.jf.intel.com ([10.166.244.126])
+ by fmsmga002.fm.intel.com with ESMTP; 27 Jul 2021 16:18:06 -0700
+From: Brett Creeley <brett.creeley@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 27 Jul 2021 16:15:48 -0700
+Message-Id: <20210727231548.50360-1-brett.creeley@intel.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH][next] i40e: Fix spelling mistake
- "dissable" -> "disable"
+Subject: [Intel-wired-lan] [PATCH] ice: Add support to print error on PHY FW
+ load failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,36 +60,161 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+Some devices have support for loading the PHY FW and in some cases this
+can fail. When this fails, the FW will set the corresponding bit in the
+link info structure. Also, the FW will send a link event if the correct
+link event mask bit is set. Add support for printing an error message
+when the PHY FW load fails during any link configuration flow and the
+link event flow.
 
-There is a spelling mistake in a dev_info message. Fix it.
+Since ice_check_module_power() is already doing something very similar
+add a new function ice_check_link_cfg_err() so any failures reported in
+the link info's link_cfg_err member can be printed in this one function.
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Also, add the new ICE_FLAG_PHY_FW_LOAD_FAILED bit to the PF's flags so
+we don't constantly print this error message during link polling if the
+value never changed.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice.h          |  1 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 49 +++++++++++++++++--
+ 3 files changed, 46 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index b4a57251256a..4eb9005e85da 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -4638,7 +4638,7 @@ void i40e_vsi_stop_rings(struct i40e_vsi *vsi)
- 		err = i40e_control_wait_rx_q(pf, pf_q, false);
- 		if (err)
- 			dev_info(&pf->pdev->dev,
--				 "VSI seid %d Rx ring %d dissable timeout\n",
-+				 "VSI seid %d Rx ring %d disable timeout\n",
- 				 vsi->seid, pf_q);
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index be5ce0dfc9e1..5517e13bcba1 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -403,6 +403,7 @@ enum ice_pf_flags {
+ 	ICE_FLAG_NO_MEDIA,
+ 	ICE_FLAG_FW_LLDP_AGENT,
+ 	ICE_FLAG_MOD_POWER_UNSUPPORTED,
++	ICE_FLAG_PHY_FW_LOAD_FAILED,
+ 	ICE_FLAG_ETHTOOL_CTXT,		/* set when ethtool holds RTNL lock */
+ 	ICE_FLAG_LEGACY_RX,
+ 	ICE_FLAG_VF_TRUE_PROMISC_ENA,
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 012af71dcbff..f05d78319d11 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1222,6 +1222,7 @@ struct ice_aqc_set_event_mask {
+ #define ICE_AQ_LINK_EVENT_AN_COMPLETED		BIT(7)
+ #define ICE_AQ_LINK_EVENT_MODULE_QUAL_FAIL	BIT(8)
+ #define ICE_AQ_LINK_EVENT_PORT_TX_SUSPENDED	BIT(9)
++#define ICE_AQ_LINK_EVENT_PHY_FW_LOAD_FAIL      BIT(12)
+ 	u8	reserved1[6];
+ };
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 4f5ce08b2624..fbb84709962e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -893,6 +893,29 @@ static void ice_set_dflt_mib(struct ice_pf *pf)
+ 	kfree(lldpmib);
+ }
+ 
++/**
++ * ice_check_phy_fw_load - check if PHY FW load failed
++ * @pf: pointer to PF struct
++ * @link_cfg_err: bitmap from the link info structure
++ *
++ * check if external PHY FW load failed and print an error message if it did
++ */
++static void ice_check_phy_fw_load(struct ice_pf *pf, u8 link_cfg_err)
++{
++	if (!(link_cfg_err & ICE_AQ_LINK_EVENT_PHY_FW_LOAD_FAIL)) {
++		clear_bit(ICE_FLAG_PHY_FW_LOAD_FAILED, pf->flags);
++		return;
++	}
++
++	if (test_bit(ICE_FLAG_PHY_FW_LOAD_FAILED, pf->flags))
++		return;
++
++	if (link_cfg_err & ICE_AQ_LINK_EVENT_PHY_FW_LOAD_FAIL) {
++		dev_err(ice_pf_to_dev(pf), "Device failed to load the FW for the external PHY. Please download and install the latest NVM for your device and try again\n");
++		set_bit(ICE_FLAG_PHY_FW_LOAD_FAILED, pf->flags);
++	}
++}
++
+ /**
+  * ice_check_module_power
+  * @pf: pointer to PF struct
+@@ -925,6 +948,20 @@ static void ice_check_module_power(struct ice_pf *pf, u8 link_cfg_err)
+ 	}
+ }
+ 
++/**
++ * ice_check_link_cfg_err - check if link configuration failed
++ * @pf: pointer to the PF struct
++ * @link_cfg_err: bitmap from the link info structure
++ *
++ * print if any link configuration failure happens due to the value in the
++ * link_cfg_err parameter in the link info structure
++ */
++static void ice_check_link_cfg_err(struct ice_pf *pf, u8 link_cfg_err)
++{
++	ice_check_module_power(pf, link_cfg_err);
++	ice_check_phy_fw_load(pf, link_cfg_err);
++}
++
+ /**
+  * ice_link_event - process the link event
+  * @pf: PF that the link event is associated with
+@@ -960,7 +997,7 @@ ice_link_event(struct ice_pf *pf, struct ice_port_info *pi, bool link_up,
+ 			pi->lport, ice_stat_str(status),
+ 			ice_aq_str(pi->hw->adminq.sq_last_status));
+ 
+-	ice_check_module_power(pf, pi->phy.link_info.link_cfg_err);
++	ice_check_link_cfg_err(pf, pi->phy.link_info.link_cfg_err);
+ 
+ 	/* Check if the link state is up after updating link info, and treat
+ 	 * this event as an UP event since the link is actually UP now.
+@@ -1041,7 +1078,8 @@ static int ice_init_link_events(struct ice_port_info *pi)
+ 	u16 mask;
+ 
+ 	mask = ~((u16)(ICE_AQ_LINK_EVENT_UPDOWN | ICE_AQ_LINK_EVENT_MEDIA_NA |
+-		       ICE_AQ_LINK_EVENT_MODULE_QUAL_FAIL));
++		       ICE_AQ_LINK_EVENT_MODULE_QUAL_FAIL |
++		       ICE_AQ_LINK_EVENT_PHY_FW_LOAD_FAIL));
+ 
+ 	if (ice_aq_set_event_mask(pi->hw, pi->lport, mask, NULL)) {
+ 		dev_dbg(ice_hw_to_dev(pi->hw), "Failed to set link event mask for port %d\n",
+@@ -2112,7 +2150,7 @@ static void ice_check_media_subtask(struct ice_pf *pf)
+ 	if (err)
+ 		return;
+ 
+-	ice_check_module_power(pf, pi->phy.link_info.link_cfg_err);
++	ice_check_link_cfg_err(pf, pi->phy.link_info.link_cfg_err);
+ 
+ 	if (pi->phy.link_info.link_info & ICE_AQ_MEDIA_AVAILABLE) {
+ 		if (!test_bit(ICE_PHY_INIT_COMPLETE, pf->state))
+@@ -4467,7 +4505,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 
+ 	ice_init_link_dflt_override(pf->hw.port_info);
+ 
+-	ice_check_module_power(pf, pf->hw.port_info->phy.link_info.link_cfg_err);
++	ice_check_link_cfg_err(pf,
++			       pf->hw.port_info->phy.link_info.link_cfg_err);
+ 
+ 	/* if media available, initialize PHY settings */
+ 	if (pf->hw.port_info->phy.link_info.link_info &
+@@ -7181,7 +7220,7 @@ int ice_open_internal(struct net_device *netdev)
+ 		return -EIO;
  	}
  
+-	ice_check_module_power(pf, pi->phy.link_info.link_cfg_err);
++	ice_check_link_cfg_err(pf, pi->phy.link_info.link_cfg_err);
+ 
+ 	/* Set PHY if there is media, otherwise, turn off PHY */
+ 	if (pi->phy.link_info.link_info & ICE_AQ_MEDIA_AVAILABLE) {
 -- 
-2.31.1
+2.26.3
 
 _______________________________________________
 Intel-wired-lan mailing list
