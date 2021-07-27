@@ -1,155 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D7E03D6891
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jul 2021 23:21:23 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9B163D6CE2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 05:37:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 82E2C40383;
-	Mon, 26 Jul 2021 21:21:21 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5CCED403AE;
+	Tue, 27 Jul 2021 03:37:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v3HqivAUHyLN; Mon, 26 Jul 2021 21:21:20 +0000 (UTC)
+	with ESMTP id eCypSUouzAjx; Tue, 27 Jul 2021 03:37:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 585B540375;
-	Mon, 26 Jul 2021 21:21:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6247240377;
+	Tue, 27 Jul 2021 03:37:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A15561BF2F1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jul 2021 21:21:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 114441BF2AB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8EB5582E22
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jul 2021 21:21:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F16DF607D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K_7c2fgUZ5gh for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Jul 2021 21:21:14 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Bpl1xwkxPC64 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jul 2021 03:37:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A076C82C2E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jul 2021 21:21:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10057"; a="212041382"
-X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="212041382"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 55BD7607C6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 03:37:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10057"; a="212348865"
+X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="212348865"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2021 14:21:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="474132883"
-Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
- by fmsmga008.fm.intel.com with ESMTP; 26 Jul 2021 14:21:13 -0700
-Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
- fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.4; Mon, 26 Jul 2021 14:21:13 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
- via Frontend Transport; Mon, 26 Jul 2021 14:21:12 -0700
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.40) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Mon, 26 Jul 2021 14:21:12 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eAtOBCJYOpOGPIVG8+iZnY/3pNTua8UuiPhyLW6l6KfqzhBAvK5sHuqsYvBKkBXsmw6bGlYa8jrtOJGh069VNzJXhyyTwND5nNNL3mFBE7LlK1Q5bWWdqjOx10JMTpdRAG3M/TRyJGtCVcmIsJZtGQ/I1JA2VePdh7/yvVPYculJT5FNnDp3Pf3FZKFGlaT2B/YmGoep5LRZ9ADW5OPQBr9e7ib3mAK12gUATR23rH/yY9DTJrux6ekf0t/GEadqBVMJir3Z+He9w5xYfO+KO6/YPwrwQqP0DVc6vw1dE82ZpLqoSVyWzMW3hEJxTlkeT/mvENzusmexOF4XCyh//w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mcQ7pMH8NjeZPNLdn3MzvaqkijSl+6bW7Mjtce7iJCI=;
- b=TbAiuR30qEhhQkB/c6GL6U1TTzSm1LB4/fDpazFFBt6YiG5fBLsNb6mhPaDyhd4p1maeDJY26kQCuxUSrgiIMaFK9Xx9FrxYr5geT70GXWt9g8epZf4bxf59PAmwS7P54WCY/5ux1WsX5SYQgDauKIxK1lCCJd9fJrHvcBBxOmjHFI0IArHZwQ/eUZEKrphiHWwU1X37t13mq2tThcIiJPh+duHkqho1dGHdKj8fyh7G2fYPHYSUHdSZq9RPwrJA/G2eXVccod7hqMc5cZLp8+jdEJJBXMVV0n2pmYKRGejhryCey6VgAMeT1YXZiYaynUgre98skHPtZgerhQIddQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mcQ7pMH8NjeZPNLdn3MzvaqkijSl+6bW7Mjtce7iJCI=;
- b=lKpS/l5ujM1LRBfaH3XX4odTzJzDUemyoLWUbcWiZt/L4Bh+7+ecV1et0If4EevoxxUDgJezWlAQwibzAM+Mi26pYdJD+xZMp6vGew4I+9pgJYNCbFTYkomz++iXLpCiRxN94CO1N5NaYSEfeQ7TIE1jCZ6sqzqkJRvvXnCvahk=
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by CO1PR11MB4963.namprd11.prod.outlook.com (2603:10b6:303:91::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4352.25; Mon, 26 Jul
- 2021 21:21:09 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::bd85:7a6a:a04c:af3a]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::bd85:7a6a:a04c:af3a%4]) with mapi id 15.20.4352.031; Mon, 26 Jul 2021
- 21:21:09 +0000
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Arnd Bergmann <arnd@kernel.org>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Jakub
- Kicinski" <kuba@kernel.org>
-Thread-Topic: [PATCH] ethernet/intel: fix PTP_1588_CLOCK dependencies
-Thread-Index: AQHXgfqoenHufbyXQU60AsxIki/9gatVwt5Q
-Date: Mon, 26 Jul 2021 21:21:09 +0000
-Message-ID: <CO1PR11MB5089F97937FF0141FD02D3B3D6E89@CO1PR11MB5089.namprd11.prod.outlook.com>
-References: <20210726084540.3282344-1-arnd@kernel.org>
-In-Reply-To: <20210726084540.3282344-1-arnd@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 51a0df4c-5ec0-4e8b-40aa-08d9507b4965
-x-ms-traffictypediagnostic: CO1PR11MB4963:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CO1PR11MB4963E9C5D68E2C1BEED3EAE3D6E89@CO1PR11MB4963.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: wwbCZIZoidIe2n1mZ/3WIQ36UpiGAU8llBtcQ9OpvC6sSXzvS24kfRWt5iJvnBIZyT8NNAMSKLWwRhJHnX9aQjd3eWiojp/eHNj1Lgy5MIIRZMe9oyf096vnvGts2SwWAg2AWXAg1Sa1AsVKU2X0PVHszNubOMj/BJCzqp0umh0ugzO/XvP+nbXq0e1qOr2WOZ/9NyO3hShDKpimg1RpLJuSRAsp8tIeigXlIVLHptLGj2+QPstmxObIUkoN4mgw9XF1pspOurZO4LnICt3RDq9qV14bjRzB3N7xHgZD9j0E8Yw1PhhoFhbD+3+Qh4cUhh2HQrEnRUSqgqxjYjI6tv1xYM6OZvZ/GpKeYFTvRYT5Nn6cLUE5kEf+R4NFKcgYs3qQUdBua5KMyt+de9fT/GT4DsCvEgV6Dk48abSRjAtGOKNIaQFy3UjbLhdgdBOGqfWPKJObQ2Q5nYdTXc7vb6rxd2OUY9H5MWjE0Wwapginpb91f+u+TJ49ADueqXTI/R8fyAVCf/HIigqnTpLq+v+/sAcnTSDGvyESKBn14N6v7OzQ3EwdF+Jlg2ZgguZ+XeWUtUoAy5ACReWOcx69sZWHZ1geFkyGssp/ogyg9CEm4oH7H+9lClK9Z18xPj6C6nfsE19/Qd6Z6mhzpKklUhz5Pgm4QnxqjtN6DGLbB9HX6zejd2b3O1C/XPKLB0CRLc2pAOyUy0/U6AXHQl26bQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(396003)(366004)(376002)(346002)(39860400002)(54906003)(4326008)(83380400001)(38100700002)(5660300002)(86362001)(186003)(110136005)(66446008)(64756008)(66476007)(52536014)(122000001)(66556008)(76116006)(33656002)(71200400001)(7696005)(55016002)(9686003)(6506007)(8936002)(316002)(2906002)(66946007)(478600001)(8676002)(26005)(53546011)(38070700004);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?B57owayahNyp0NjnrryyEW2s2EiTyiCf7CBgijfzMFp3hr6KG3qrUMHFI5Cc?=
- =?us-ascii?Q?jtnJc21Z85Nv+TPZ36EZdwtKxxupX4tBsQTunfKoK5RfmynWgYpp+Y3FL/Zz?=
- =?us-ascii?Q?EtYYdU3QPNvdCOwnSsxx/d/vVWK8+mAa5K3Th1YZ7FIcJwarAkINF19pt0Eg?=
- =?us-ascii?Q?fsZasbL/vdClCIA+BfTI3e9xYbulPVaWKc3t5rhOBfPOHJIg+iHC2MDYygLI?=
- =?us-ascii?Q?pnTOlG+G70UPWHexVoRwktXrUBvMw4sOlc0IVKZCM54NHq2DMLLZWdZ6vuIC?=
- =?us-ascii?Q?uVkOmMKQY1sIILV5aDp/Eko2780T5Cc0Wn/YOfm/x0LypxL3CQHiXATELcTZ?=
- =?us-ascii?Q?InRniGtvoTR887wGSYre6dR2bVk69rtIdVz0GjXbvumedwoKbNHiC5/aLuY1?=
- =?us-ascii?Q?o4O1STioN3c1uxFa44YXJNWjvjDSorD+jVEw1GFFU/O2rU4OUhY6Ka0N5JPE?=
- =?us-ascii?Q?ytN03cQsEabXhcVaJ4OFbhBBXU3j1wHEvD0z+562jgOyKjQznHhLoeTh7B1z?=
- =?us-ascii?Q?ZTMsMuqBhyP8KQglo7DNp5opuVU1y0sQ7fKN2tdjFSYHLZsUz84nJg0OOiLs?=
- =?us-ascii?Q?I0CMrawYCODbrinjeSy507mbC8rquOro7KdmuJWSDPQ13wJj5iHam7fqgA/s?=
- =?us-ascii?Q?fUED3n9O5XEXdP4yBS3fI/an8FHCtPmyGLSG8g1UJ2sA9A1LFNjVd5kNA37m?=
- =?us-ascii?Q?lmTvq9u3UkSxEeuNKFK9+eu6p3R+9YCLL8BXeQN6pnxcl2ZuZQCDjIbRg/7G?=
- =?us-ascii?Q?JHO6VtrNK/IP/5JLPb6FXi/VgsqUlzksvg4s2XruSsk7DO47KjEgcCcwC3Mb?=
- =?us-ascii?Q?o/UT8IGZeLxtwX97AnX9F87PpUDkpqmeZS9xNyQy0ZkXQw+yGsbuiWkMozDC?=
- =?us-ascii?Q?HS6b6cveLgN/8ODWk4HQURPndBG4kdQox85YLX5+u06Du4zzo3n0xneT8Jhz?=
- =?us-ascii?Q?+gL5bcySpn333qCEXGA2PwxO5Yk2wUaXqbURbT4MedMWBXCN5SqURUecPqTw?=
- =?us-ascii?Q?G2VTeQpt6svxgh+yFVLZTcBPdKK7SmuDufokHXjSUFND604ScxKq3M2SBYkv?=
- =?us-ascii?Q?W1TnoEMDFXNvOOHyRl1xUbtrtUzhY7A/ZlcZVK/EdS/j2mp++OF9Hq2SzwA/?=
- =?us-ascii?Q?kW7mROvoTV24VBV2ZPefYO2DTkuIeOO2XlJ+FDbBbTpnrNtdA3veaXo3vosM?=
- =?us-ascii?Q?PL/+JwvfBrq5tkllKWvuLrblAWrebCAEx6rsMwKvVDoI2k0cXbhoccoQxbBO?=
- =?us-ascii?Q?vNklNjXgqTORCnw36hYcw8vKvgL+nw0p7H8PYol+bZjxTTaEacRN5bf7ayiw?=
- =?us-ascii?Q?/JE=3D?=
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jul 2021 20:37:18 -0700
+X-IronPort-AV: E=Sophos;i="5.84,272,1620716400"; d="scan'208";a="474230278"
+Received: from nmanikan-mobl1.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.209.99.32])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jul 2021 20:37:17 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 26 Jul 2021 20:36:53 -0700
+Message-Id: <20210727033657.39885-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 51a0df4c-5ec0-4e8b-40aa-08d9507b4965
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jul 2021 21:21:09.1291 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ap15PLRd7tsbdpSjQ7TyUCBh+ovZ14I7mN8zY0HdkYHimaOKZR+w3Z7rzhHfQFji2D1GGkROeYcUS+dJ5WFBfD3TtXZKHunwxFMEnRX63nw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4963
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] ethernet/intel: fix PTP_1588_CLOCK
- dependencies
+Subject: [Intel-wired-lan] [PATCH next-queue v6 0/4] igc: Add support for
+ PCIe PTM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,153 +61,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@arndb.de>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Saleem,
- Shiraz" <shiraz.saleem@intel.com>
+Cc: pmenzel@molgen.mpg.de, linux-pci@vger.kernel.org, richardcochran@gmail.com,
+ hch@infradead.org, netdev@vger.kernel.org, bhelgaas@google.com,
+ helgaas@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi,
+
+Changes from v5:
+  - Improved commit messages (Paul Menzel);
+  - Clearer loop for PCIe PTM timestamps retrieval (Paul Menzel);
+
+Changes from v4:
+  - Improved commit messages (Bjorn Helgaas);
+
+Changes from v3:
+  - More descriptive commit messages and comments (Bjorn Helgaas);
+  - Added a pcie_ptm_enabled() helper (Bjorn Helgaas);
+
+Changes from v2:
+  - Now the PTM timestamps are retrieved synchronously with the
+    ioctl();
+  - Fixed some typos in constants;
+  - The IGC_PTM_STAT register is write-1-to-clear, document this more
+    clearly;
+
+Changes from v1:
+  - This now should cross compile better, convert_art_ns_to_tsc() will
+    only be used if CONFIG_X86_TSC is enabled;
+  - PCIe PTM errors reported by the NIC are logged and PTM cycles are
+    restarted in case an error is detected;
+
+Original cover letter (lightly edited):
+
+This adds support for PCIe PTM (Precision Time Measurement) to the igc
+driver. PCIe PTM allows the NIC and Host clocks to be compared more
+precisely, improving the clock synchronization accuracy.
+
+Patch 1/4 reverts a commit that made pci_enable_ptm() private to the
+PCI subsystem, reverting makes it possible for it to be called from
+the drivers.
+
+Patch 2/4 adds the pcie_ptm_enabled() helper.
+
+Patch 3/4 calls pci_enable_ptm() from the igc driver.
+
+Patch 4/4 implements the PCIe PTM support. Exposing it via the
+.getcrosststamp() API implies that the time measurements are made
+synchronously with the ioctl(). The hardware was implemented so the
+most convenient way to retrieve that information would be
+asynchronously. So, to follow the expectations of the ioctl() we have
+to use less convenient ways, triggering an PCIe PTM dialog every time
+a ioctl() is received.
+
+Some questions are raised (also pointed out in the commit message):
+
+1. Using convert_art_ns_to_tsc() is too x86 specific, there should be
+   a common way to create a 'system_counterval_t' from a timestamp.
+
+2. convert_art_ns_to_tsc() says that it should only be used when
+   X86_FEATURE_TSC_KNOWN_FREQ is true, but during tests it works even
+   when it returns false. Should that check be done?
+
+Cheers,
 
 
-> -----Original Message-----
-> From: Arnd Bergmann <arnd@kernel.org>
-> Sent: Monday, July 26, 2021 1:45 AM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub
-> Kicinski <kuba@kernel.org>; Keller, Jacob E <jacob.e.keller@intel.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>; Kurt Kanzenbach <kurt@linutronix.de>;
-> Saleem, Shiraz <shiraz.saleem@intel.com>; Ertman, David M
-> <david.m.ertman@intel.com>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org
-> Subject: [PATCH] ethernet/intel: fix PTP_1588_CLOCK dependencies
-> 
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> The 'imply' keyword does not do what most people think it does, it only
-> politely asks Kconfig to turn on another symbol, but does not prevent
-> it from being disabled manually or built as a loadable module when the
-> user is built-in. In the ICE driver, the latter now causes a link failure:
-> 
-> aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function
-> `ice_eth_ioctl':
-> ice_main.c:(.text+0x13b0): undefined reference to `ice_ptp_get_ts_config'
-> ice_main.c:(.text+0x13b0): relocation truncated to fit: R_AARCH64_CALL26
-> against undefined symbol `ice_ptp_get_ts_config'
-> aarch64-linux-ld: ice_main.c:(.text+0x13bc): undefined reference to
-> `ice_ptp_set_ts_config'
-> ice_main.c:(.text+0x13bc): relocation truncated to fit: R_AARCH64_CALL26
-> against undefined symbol `ice_ptp_set_ts_config'
-> aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function
-> `ice_prepare_for_reset':
-> ice_main.c:(.text+0x31fc): undefined reference to `ice_ptp_release'
-> ice_main.c:(.text+0x31fc): relocation truncated to fit: R_AARCH64_CALL26 against
-> undefined symbol `ice_ptp_release'
-> aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function
-> `ice_rebuild':
-> 
-> For the other Intel network drivers, there is no link error when the
-> drivers are built-in and PTP is a loadable module, because
-> linux/ptp_clock_kernel.h contains an IS_REACHABLE() check, but this
-> just changes the compile-time failure to a runtime failure, which is
-> arguably worse.
-> 
-> Change all the Intel drivers to use the 'depends on PTP_1588_CLOCK ||
-> !PTP_1588_CLOCK' trick to prevent the broken configuration, as we
-> already do for several other drivers. To avoid circular dependencies,
-> this also requires changing the IGB driver back to using the normal
-> 'depends on I2C' instead of 'select I2C'.
-> 
-> Fixes: 06c16d89d2cb ("ice: register 1588 PTP clock device object for E810 devices")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Vinicius Costa Gomes (4):
+  Revert "PCI: Make pci_enable_ptm() private"
+  PCI: Add pcie_ptm_enabled()
+  igc: Enable PCIe PTM
+  igc: Add support for PTP getcrosststamp()
 
-Thanks for fixing this!
+ drivers/net/ethernet/intel/igc/igc.h         |   1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  31 ++++
+ drivers/net/ethernet/intel/igc/igc_main.c    |   6 +
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 179 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  23 +++
+ drivers/pci/pci.h                            |   3 -
+ drivers/pci/pcie/ptm.c                       |   9 +
+ include/linux/pci.h                          |  10 ++
+ 8 files changed, 259 insertions(+), 3 deletions(-)
 
-It feels like Kconfig should have a simpler way to write this, and/or we should update the doc, since I would expect this to be a common issue with optional dependencies
-
-Obviously "depends" handles this right but it forces a dependency in all cases, instead of being optional. select is used to ensure that some bit is turned on if you turn on that item, and imply is supposed to be that but optional...
-
-
-> ---
->  drivers/net/ethernet/intel/Kconfig | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/Kconfig
-> b/drivers/net/ethernet/intel/Kconfig
-> index 2aa84bd97287..ab75cde0c4ec 100644
-> --- a/drivers/net/ethernet/intel/Kconfig
-> +++ b/drivers/net/ethernet/intel/Kconfig
-> @@ -58,8 +58,8 @@ config E1000
->  config E1000E
->  	tristate "Intel(R) PRO/1000 PCI-Express Gigabit Ethernet support"
->  	depends on PCI && (!SPARC32 || BROKEN)
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	select CRC32
-> -	imply PTP_1588_CLOCK
->  	help
->  	  This driver supports the PCI-Express Intel(R) PRO/1000 gigabit
->  	  ethernet family of adapters. For PCI or PCI-X e1000 adapters,
-> @@ -87,7 +87,7 @@ config E1000E_HWTS
->  config IGB
->  	tristate "Intel(R) 82575/82576 PCI-Express Gigabit Ethernet support"
->  	depends on PCI
-> -	imply PTP_1588_CLOCK
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	select I2C
-
-
-Commit message said you changed IGB to use depends I2C, but the content doesn't...
-
->  	select I2C_ALGOBIT
->  	help
-> @@ -159,9 +159,9 @@ config IXGB
->  config IXGBE
->  	tristate "Intel(R) 10GbE PCI Express adapters support"
->  	depends on PCI
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	select MDIO
->  	select PHYLIB
-> -	imply PTP_1588_CLOCK
->  	help
->  	  This driver supports Intel(R) 10GbE PCI Express family of
->  	  adapters.  For more information on how to identify your adapter, go
-> @@ -239,7 +239,7 @@ config IXGBEVF_IPSEC
-> 
->  config I40E
->  	tristate "Intel(R) Ethernet Controller XL710 Family support"
-> -	imply PTP_1588_CLOCK
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	depends on PCI
->  	select AUXILIARY_BUS
->  	help
-> @@ -295,11 +295,11 @@ config ICE
->  	tristate "Intel(R) Ethernet Connection E800 Series Support"
->  	default n
->  	depends on PCI_MSI
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	select AUXILIARY_BUS
->  	select DIMLIB
->  	select NET_DEVLINK
->  	select PLDMFW
-> -	imply PTP_1588_CLOCK
->  	help
->  	  This driver supports Intel(R) Ethernet Connection E800 Series of
->  	  devices.  For more information on how to identify your adapter, go
-> @@ -317,7 +317,7 @@ config FM10K
->  	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
->  	default n
->  	depends on PCI_MSI
-> -	imply PTP_1588_CLOCK
-> +	depends on PTP_1588_CLOCK || !PTP_1588_CLOCK
->  	help
->  	  This driver supports Intel(R) FM10000 Ethernet Switch Host
->  	  Interface.  For more information on how to identify your adapter,
-> --
-> 2.29.2
+-- 
+2.32.0
 
 _______________________________________________
 Intel-wired-lan mailing list
