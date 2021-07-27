@@ -1,166 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 484763D77C9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 16:04:06 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C3663D6FBC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jul 2021 08:53:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9A6DD6072F;
-	Tue, 27 Jul 2021 14:04:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 83073607EC;
+	Tue, 27 Jul 2021 06:53:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9Sab-2et_fQB; Tue, 27 Jul 2021 14:04:03 +0000 (UTC)
+	with ESMTP id QxgPhP_oxAIz; Tue, 27 Jul 2021 06:53:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 811E86066C;
-	Tue, 27 Jul 2021 14:04:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 861B2605C0;
+	Tue, 27 Jul 2021 06:53:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B2C4C1BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:51 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 46F421BF2BF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 06:53:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AE429400F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 34F7440359
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 06:53:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=juniper.net header.b="Z25TWRSK";
- dkim=pass (1024-bit key) header.d=juniper.net header.b="XRUjKYbe"
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WGQtnAsxwtma for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Jul 2021 07:38:50 +0000 (UTC)
-X-Greylist: delayed 01:15:43 by SQLgrey-1.8.0
-Received: from mx0b-00273201.pphosted.com (mx0b-00273201.pphosted.com
- [67.231.152.164])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 84B1E400CA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 07:38:50 +0000 (UTC)
-Received: from pps.filterd (m0108162.ppops.net [127.0.0.1])
- by mx0b-00273201.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 16R6FiPN012633; Mon, 26 Jul 2021 23:23:04 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juniper.net;
- h=from : to : cc :
- subject : date : message-id : content-type : mime-version; s=PPS1017;
- bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
- b=Z25TWRSKxE1TubsrxDRtH/WU4nUrpNvOL5BSeGjkgAfXFQU0onX31qR242VRkDkkY9yE
- zx4jmHl39KrZE2kS23eoTxilzgdHf9kmoB0X0iGhbk7++P+9+rxJdjjCqyTfeH4/yKTF
- FvyIKCfGbPQqpoYFtNT6uF5wdum16kLc4OYjBL8QGNxblp0VlitSoAoKNXE6ARVCpTCY
- GKdbhGlBqW08Ka5XG3fD3HHF606x/QYy27jzX7tZEcBOaOxNEOPazpGopnVdffLm/G+L
- yo5zZxHs1Edtn6JerHWt1IEm3XXNnY8AtMQw0Va/in4BBJyb6KdaoAoN64e6jjBx6emu Wg== 
-Received: from nam11-co1-obe.outbound.protection.outlook.com
- (mail-co1nam11lp2171.outbound.protection.outlook.com [104.47.56.171])
- by mx0b-00273201.pphosted.com with ESMTP id 3a2369gua2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 26 Jul 2021 23:23:04 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=P8NI+uoS7JXTBlRoK/Jcqi7F3M/Cq6JQ2/UZ+6PhMS6CacDyLCPBYEsv4DQY4yuyz8EubAbN3xqJzEi1OreUFCuRhLVqnhju30snZFTO6J2vqq1kSALXjWKG9igaK0NRQ/M/GmqRfutV2srnd7gSfC3XA5CVaytx2mkZS8hCAANgWUQ40SsLrWULU6UUdA0OTYOIMKaLotWbX+pbsr+iM58vWxjKJpTLTz4lT0QVqTeCKxlpUw6e1bykMMa1hSI2jbjLhfHIDFzVbPCchaWRMxsBNLdH1FQ5gNN4pQazopnJDGxORlredXk1Y8d291Wm65lRRAyL33FLjJqMPiC2/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
- b=SOhnbNOqdfTRjJkLGemSZ9XPbT9m1ujoGibk+MuP4jA77abDM9clYCJ5UkcsQIYjZoj8x5fRIa9SxicPKXElnKuEOWZC2kekuWN9E/9F7uc7HMOacIVlCxGhSPd9oceoVNTYIGnswkcJHgszjnbCWo2R4kbGJNxZY98gT3f+HICjaGa5nG8IRv/kSmfgcZVLrfYtCzJCIyh6chKQ0Ex8FgNGG/RT/W7lrKbvjGJy+AvwFmhe4IrAA76+b0BXw7zVs+5DXmoubrTC2gYeDur+VubghlQwg85aBQpKuZkGKI7wriF7AzhE+yH/4piHZMx08ciIBGkmCD2zSls9RUXFxA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=juniper.net; dmarc=pass action=none header.from=juniper.net;
- dkim=pass header.d=juniper.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juniper.net;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F10GzWMn01aDkN9XqS/naFQiBZRH1W61PIhJJySJ+Us=;
- b=XRUjKYbe+SxXmKSLVlfF4xd2ACjQeRt0W/Dx/qEP79c6BLmygOjhLyRSzkB5B5/Kx9z1O8r9n6+NPahIRsVO6nlLg9ZPoGR+elzGckXgvIfhgVyN5dGmHOonkMoQH3RxoToe6cGpeuEAvJK7JIoJf6gk91sgc6P2lu9XnSSVbY0=
-Received: from BY3PR05MB8356.namprd05.prod.outlook.com (2603:10b6:a03:3c3::5)
- by BYAPR05MB6392.namprd05.prod.outlook.com (2603:10b6:a03:ed::28)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.12; Tue, 27 Jul
- 2021 06:23:00 +0000
-Received: from BY3PR05MB8356.namprd05.prod.outlook.com
- ([fe80::8938:c857:d001:ec4d]) by BY3PR05MB8356.namprd05.prod.outlook.com
- ([fe80::8938:c857:d001:ec4d%5]) with mapi id 15.20.4373.018; Tue, 27 Jul 2021
- 06:23:00 +0000
-From: Yuvaraj Ranganathan <yranganathan@juniper.net>
-To: "e1000-devel@lists.sourceforge.net" <e1000-devel@lists.sourceforge.net>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: Traffic not passing for VLAN ID >= 32 on the I350 SR-IOV enabled
- NIC 
-Thread-Index: AQHXgqzxV++qPwNWaU27fCWwrDJgLg==
-Date: Tue, 27 Jul 2021 06:23:00 +0000
-Message-ID: <BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99@BY3PR05MB8356.namprd05.prod.outlook.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_Enabled=True;
- MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_SiteId=bea78b3c-4cdb-4130-854a-1d193232e5f4;
- MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_SetDate=2021-07-27T06:02:13.3131859Z;
- MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_ContentBits=0;
- MSIP_Label_0633b888-ae0d-4341-a75f-06e04137d755_Method=Standard
-authentication-results: lists.sourceforge.net; dkim=none (message not signed)
- header.d=none; lists.sourceforge.net;
- dmarc=none action=none header.from=juniper.net;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6f7188ee-3b13-404b-76ed-08d950c6fbc0
-x-ms-traffictypediagnostic: BYAPR05MB6392:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR05MB63924E772CD5226EB2BF9AFBCAE99@BYAPR05MB6392.namprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cuAGHk6dtLOHzjBz/esY4o+OBxNEQ5ddwnCi8drg5Blu5TWmn5BerpZMjVMGTMQBrcRD6eEwmKsVDtUphV4aU7f9K3HqQ30kLUjTzyAtWUgb9L2/shYcdhdGh4nQg51ZSRRgRFcDAsGWNjH3nMXeLlyer57kcdAj2cpustF+glNqrfFWPcFaatCVi8Ws+/EluRFjoZz2YJOuH9u8aPCEz7uyR1jexaQ5VI5FUIv9qp/3JnTQiPXlhxD8QomyrEF1XCWUSsXKLy7q1KGk+037ONa1sBDbdf6lZt/fRVyZ1vvfeA/D8WqXp3y4FdQLVVDo8jz6HUyRCP5+1eYQ1pgUMPQUkXbk+eD2UtbVpuJh7OXzACEcKJ4vDidiRzcoUycXf4Nx6trQhEI0h2Ad/pHe+cURzblowagFxdzFdaEeAmt8QxUmsOX/NA79llf2VfmlJP4K64Wk0I9+kFOCl3kdGOda67IlhzaF+O7FQNx6K3VMo9Nyg0Kdu8Y8w1RLg+/fL33fyFg8hCiM9rSROrMvm8uOdVtbx9AaRh5H83i29fCnOI0kkT2JAHDp7ttQAvugIQEfX68eOLsdfmPPr+vlsm+LlYZjwnLFsmj727WUMErxadC2QVZ2J9ClenyU87bnJP7uCN2ipZdhZudqSIWCapcg3AnOgn2d4vq/VuFXowuRYHm4l4TnoonuCa8hSMZ2Rn3dC2kPzB3/Sc6cnOUcvg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY3PR05MB8356.namprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(316002)(7696005)(33656002)(8676002)(122000001)(186003)(2906002)(86362001)(508600001)(38100700002)(110136005)(6506007)(52536014)(8936002)(9686003)(4326008)(66556008)(71200400001)(66946007)(66446008)(55016002)(9326002)(66476007)(64756008)(107886003)(4744005)(54906003)(26005)(91956017)(5660300002)(4743002)(76116006)(38070700004);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?sPRMiJWxr8wLwbou42o1zW+SQV+AkK4tGRORCizL59X6nV4Nr/EkmrMV?=
- =?Windows-1252?Q?e5h4LICQcYK1OfLDbhRQS2H9Y9sXiinXFM/r+DXXC5IK4OQJX4tRxB+C?=
- =?Windows-1252?Q?Qjr2c0Dvg5QNhMwozLmIgXKQ47/djkhywJtV3f8djEvmslfhGdShXttb?=
- =?Windows-1252?Q?U1nxD7nqKBMp548+pvMdErpjPofVsfQTYhmkZ4XPpTw25EVWvRfzIhQR?=
- =?Windows-1252?Q?lRkI6d53+DCyXO4KvFbxFmc22GPTnHlEQbT/2Hfc2Nfqrv5rf6EtMeia?=
- =?Windows-1252?Q?e/d+mJWHhO1NAeGtXppAovzQX+itLJVHCqJSe9RpClJmfUtVtMBdBlM5?=
- =?Windows-1252?Q?8C23ZvBw2tYUWYVhx7IZ6YvWf6ozW1turl6B98jNsmc6z9nYwrFxz2cO?=
- =?Windows-1252?Q?LuHEMVesQS7nrnHYAE4zVekn+Q8m8lgokDja/OLrx+vYp7vNYE8xkoZY?=
- =?Windows-1252?Q?6Rpm7vqcxy0OEVHAzgF9IYBiEskfBH+/6NgZ7sxJRzqGdueBNHIOTqDx?=
- =?Windows-1252?Q?gUGHvmbl1gV85m6iZHe4BzdKTkHD9nMhRO8hZHtAPMk63RhR5Kg0yPvw?=
- =?Windows-1252?Q?s3hYcvs5lieK6/JJ7Vu5mmm922pg23l3nTvxltDdvzDBfOXJhvyDVM/s?=
- =?Windows-1252?Q?ZLNHQxciqyN+mqUQjAVQL0qvz8AOQ4PQG0jZ9tIymXdwG06z9d9S8EYI?=
- =?Windows-1252?Q?RxXBMZr2mTnbQTs+LF1hMMek7qnVeMMAcy3tatHX47Ur496Mso4IBhfQ?=
- =?Windows-1252?Q?2Fhxg+wDupj9d4Uqe7J3pidLYc3nB7xxCokFonYiv7+WEst7SFrVE1yb?=
- =?Windows-1252?Q?86oB6S2Wz8or21x+wlOfYpjENpfXrP67J0ril1gv558xrXilKSe0Yuj/?=
- =?Windows-1252?Q?WxolwVXJT6pEe1TTI51O/pZPRnnIyLfFDUS9U8E4CRaGiSbQ4v8Lsmt9?=
- =?Windows-1252?Q?AHyfWCTop7fBgvEBCElZke+ioAgDkKvQkSvyeLuxr/kCSPbPMTyJWSDU?=
- =?Windows-1252?Q?NG0e1fYsQKmpGL/bE03xuyTSulrX/F0tQbt4g6c+Z3qSHDP+mnEwsW4I?=
- =?Windows-1252?Q?n7H8KwrCShABIAajwy0fZnxmd1Rp7Bdugx15QBv70wAYq4x3lk0PvTBa?=
- =?Windows-1252?Q?AJlfciVVcMA8AbXgacShkxae4VSs0HOTIjaDC+Kxa+fs18Bh5CNPCa63?=
- =?Windows-1252?Q?zpO6CErODUe5q0mofH6ur8rFfhZLCIv48O2gIofT+3PR6vfoVODggV/u?=
- =?Windows-1252?Q?UsVcpaacGQD4l8fKtEPL66pBZE7FEMp3i17HanRAYchFdhebdxoM0MOY?=
- =?Windows-1252?Q?28/+KJ9nA1M0aKBVjWa3v1loWznn8B168sElvi1jV70DOjVPNqBpyRrm?=
- =?Windows-1252?Q?8E1ic9tuGr1Yc4x8G3BGLKCdBCrXCVhdVqg9gyu2NWJXTdMLRnzPhLuX?=
- =?Windows-1252?Q?dOnCf/txA7mJeHVFFvzLBA=3D=3D?=
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=canonical.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JjGnoxMuipQx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jul 2021 06:53:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp-relay-canonical-0.canonical.com
+ (smtp-relay-canonical-0.canonical.com [185.125.188.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 023174030C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 06:53:39 +0000 (UTC)
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPS id 68AFA3F375
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jul 2021 06:53:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1627368817;
+ bh=qN8OJFf6Po6PVFEhUmeuvpneJoBvci7+fruSnaLegCQ=;
+ h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+ To:Cc:Content-Type;
+ b=F+x1uhk8/nK5d2FZ6QzarA6QXWJUw4IZamJk8vbyyPDOCqGNnRakCsTtp8D5PNyqH
+ LwjUZHwDbczofMoUf3Ly4D249pBT+haqt3tpJtSgNz6V/uPlsdVZK7buVDTmDqgTmo
+ az3+RbLnyY7GF/el27U/zTmrH+f2PYVAs2MPWVRlpZZowZ3ojoq8Lkn88P8ow7Cj3p
+ cnEyvJ4X3WakflehWVyQMJR+47N6Pz+t8tZKNsM3ZiDxxCbqHWhsU5ZtFSj5eVved7
+ fb1KoTslM84CHEbJXSU5/RRlenMuugxy9Ahw4iJ+Xa1UmQdo0Rb8087x6eWS0PSRbx
+ /M1Ec+dBHpQXQ==
+Received: by mail-ej1-f72.google.com with SMTP id
+ hb18-20020a1709071612b029052883e9de3eso2732318ejc.19
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jul 2021 23:53:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qN8OJFf6Po6PVFEhUmeuvpneJoBvci7+fruSnaLegCQ=;
+ b=auu7qydI8st1TkcAESfuh3sXQusWPN/uhb6/T/0jies08+613cbC+wtdv1aDkLv5J5
+ zzd/86axu+dg9iKOTRycYEQ2aSOH17OPgoBQSlJCgob/CS2CuB5bCVSl4GcaYzqpeaqV
+ Mcguvvvk8t0UKa3J6OV2Q6gvKt1bWpvKlpruMjP0NYWACqPk6Qp8dgsupFfOMHISca+i
+ pkFtz83btjMsFqhs0UHeUSvj2R1iodKcuX2dwW93crCQqPCHTSHoeI2nBcunvnj0IM7C
+ W5mb7NT2KlrtDwupphy50vQq9JMQ38m9/euEBrU3nGhyML2czd83NIVYAbsPyfB97gv1
+ Wf7w==
+X-Gm-Message-State: AOAM533xEZ7gUeTrBo3uhaf4Hte1yB+s4REPZ7LQGPjaEVF1XDy9ZIyW
+ juHdrFh0O2/31X4q2ONnlJUTrXiR0FhOgID+Rn+AFdvKVVf7mkALA8Lr6len/4N+oYloKwZsLze
+ thrKWzQ93lPRifnhgwTb56G008otnCkJiEMaOkeitnBddptv8OgzFwRT8AIz1LnI=
+X-Received: by 2002:a05:6402:1846:: with SMTP id
+ v6mr8052324edy.198.1627368816996; 
+ Mon, 26 Jul 2021 23:53:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYdD2hDnkETruFxQmylsUBZw88ismuEmU2WP6U9HAo2K2rEXtDKURDvsFgfMewoRu4uhjd2VcTqS0lweEkMF8=
+X-Received: by 2002:a05:6402:1846:: with SMTP id
+ v6mr8052290edy.198.1627368816680; 
+ Mon, 26 Jul 2021 23:53:36 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: juniper.net
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY3PR05MB8356.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6f7188ee-3b13-404b-76ed-08d950c6fbc0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Jul 2021 06:23:00.5464 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: bea78b3c-4cdb-4130-854a-1d193232e5f4
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KcGQQuXjkcJoCyPY+kG8oZlXVqkntGHN2QzC3JROgvZvX32qZCmjolsva0xAdovDJ1q3mSB3iSXgAB5Kk7dGsuUwKMVED3OJMDziCgziSIk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR05MB6392
-X-Proofpoint-ORIG-GUID: oGBy4y2qJ22b99cK9U6WbtJDITR7UFgd
-X-Proofpoint-GUID: oGBy4y2qJ22b99cK9U6WbtJDITR7UFgd
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.391, 18.0.790
- definitions=2021-07-27_04:2021-07-27,
- 2021-07-27 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_spam_notspam policy=outbound_spam
- score=0 mlxlogscore=953
- impostorscore=0 clxscore=1011 priorityscore=1501 adultscore=0 phishscore=0
- suspectscore=0 lowpriorityscore=0 mlxscore=0 spamscore=0 bulkscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2107140000 definitions=main-2107270037
-X-Mailman-Approved-At: Tue, 27 Jul 2021 14:03:59 +0000
-Subject: [Intel-wired-lan] Traffic not passing for VLAN ID >= 32 on the I350
- SR-IOV enabled NIC
+References: <20210712133500.1126371-1-kai.heng.feng@canonical.com>
+ <20210712133500.1126371-3-kai.heng.feng@canonical.com>
+In-Reply-To: <20210712133500.1126371-3-kai.heng.feng@canonical.com>
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Tue, 27 Jul 2021 14:53:23 +0800
+Message-ID: <CAAd53p5B5f5U_J1L+SpjZ46AFEr1kMqwgqnF2dYKvDwY2x3GzA@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH 3/3] e1000e: Serialize TGP e1000e PM
+ ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,119 +98,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Pushp Saurav <psaurav@juniper.net>, "Navare,
- Anup D" <anup.d.navare@intel.com>
-Content-Type: multipart/mixed; boundary="===============6632834210584403554=="
+Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ AceLan Kao <acelan.kao@canonical.com>, Jakub Kicinski <kuba@kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============6632834210584403554==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_"
+Hi Sasha,
 
---_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_
-Content-Type: text/plain; charset="Windows-1252"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jul 12, 2021 at 9:35 PM Kai-Heng Feng
+<kai.heng.feng@canonical.com> wrote:
+>
+> On TGL systems, PCI_COMMAND may randomly flip to 0 on system resume.
+> This is devastating to drivers that use pci_set_master(), like NVMe and
+> xHCI, to enable DMA in their resume routine, as pci_set_master() can
+> inadvertently disable PCI_COMMAND_IO and PCI_COMMAND_MEMORY, making
+> resources inaccessible.
+>
+> The issue is reproducible on all kernel releases, but the situation is
+> exacerbated by commit 6cecf02e77ab ("Revert "e1000e: disable s0ix entry
+> and exit flows for ME systems"").
+>
+> Seems like ME can do many things to other PCI devices until it's finally out of
+> ULP polling. So ensure e1000e PM ops are serialized by enforcing suspend/resume
+> order to workaround the issue.
+>
+> Of course this will make system suspend and resume a bit slower, but we
+> probably need to settle on this workaround until ME is fully supported.
+>
+> Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=212039
+> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 
-Hi Team,
+Series "e1000e: Add handshake with the CSME to support s0ix" doesn't
+fix the issue, so this patch is still needed.
 
-With the SR-IOV enabled on I350 NIC which has 4 VF=92s, on configuring VLAN=
- ID from range 1 to 31 on the VM interface, network traffic is fine and no =
-issues. When trying to create an interface with VLAN ID >=3D 32 on the VM, =
-traffic is not passing to that interface and as per HW specs, VLAN ID=92s f=
-rom 1 to 4096 are supported.
+Kai-Heng
 
-VM=92s interface is directly mapped to one of the VF on I350 NIC. I am usin=
-g IGB PF driver version 5.7.2(latest).
-
-Could somebody please help!
-
-Thanks in advance,
-Yuvaraj.
-
-
-Juniper Business Use Only
-
---_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_
-Content-Type: text/html; charset="Windows-1252"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:sc=
-hemas-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/of=
-fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
-252">
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	font-size:12.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-fareast-language:EN-US;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-size:12.0pt;
-	mso-fareast-language:EN-US;}
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
---></style>
-</head>
-<body lang=3D"EN-IN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
-break-word">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Hi Team,<br>
-<br>
-With the SR-IOV enabled on I350 NIC which has 4 VF=92s, on configuring VLAN=
- ID from range 1 to 31 on the VM interface, network traffic is fine and no =
-issues. When trying to create an interface with VLAN ID &gt;=3D 32 on the V=
-M, traffic is not passing to that interface
- and as per HW specs, VLAN ID=92s from 1 to 4096 are supported.<o:p></o:p><=
-/span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><br>
-VM=92s interface is directly mapped to one of the VF on I350 NIC. I am usin=
-g IGB&nbsp;PF driver version
-<b>5.7.2(latest).</b><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><br>
-Could somebody please help!<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
-span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Thanks in advance,<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Yuvaraj.<o:p></o:p>=
-</span></p>
-</div>
-<br>
-<p style=3D"font-family:Calibri;font-size:7pt;color:#000000;margin:15pt;" a=
-lign=3D"Center">
-Juniper Business Use Only<br>
-</p>
-</body>
-</html>
-
---_000_BY3PR05MB835694E97F5EA0D60B0DD2B3CAE99BY3PR05MB8356namp_--
-
---===============6632834210584403554==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> ---
+>  drivers/net/ethernet/intel/e1000e/netdev.c | 14 +++++++++++++-
+>  1 file changed, 13 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index e63445a8ce12..0244d3dd90a3 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -7319,7 +7319,8 @@ static const struct net_device_ops e1000e_netdev_ops = {
+>
+>  static void e1000e_create_device_links(struct pci_dev *pdev)
+>  {
+> -       struct pci_dev *tgp_mei_me;
+> +       struct pci_bus *bus = pdev->bus;
+> +       struct pci_dev *tgp_mei_me, *p;
+>
+>         /* Find TGP mei_me devices and make e1000e power depend on mei_me */
+>         tgp_mei_me = pci_get_device(PCI_VENDOR_ID_INTEL, 0xa0e0, NULL);
+> @@ -7335,6 +7336,17 @@ static void e1000e_create_device_links(struct pci_dev *pdev)
+>                 pci_info(pdev, "System and runtime PM depends on %s\n",
+>                          pci_name(tgp_mei_me));
+>
+> +       /* Find other devices in the SoC and make them depend on e1000e */
+> +       list_for_each_entry(p, &bus->devices, bus_list) {
+> +               if (&p->dev == &pdev->dev || &p->dev == &tgp_mei_me->dev)
+> +                       continue;
+> +
+> +               if (device_link_add(&p->dev, &pdev->dev,
+> +                                   DL_FLAG_AUTOREMOVE_SUPPLIER))
+> +                       pci_info(p, "System PM depends on %s\n",
+> +                                pci_name(pdev));
+> +       }
+> +
+>         pci_dev_put(tgp_mei_me);
+>  }
+>
+> --
+> 2.31.1
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6632834210584403554==--
