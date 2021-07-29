@@ -1,43 +1,41 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26A9F3DA815
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jul 2021 17:57:19 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CB633DA814
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jul 2021 17:57:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3B85E839B4;
-	Thu, 29 Jul 2021 15:57:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C488D40592;
+	Thu, 29 Jul 2021 15:57:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BnVwfCNeAQ0H; Thu, 29 Jul 2021 15:57:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yEn6cuKMzluP; Thu, 29 Jul 2021 15:57:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 50C308367C;
-	Thu, 29 Jul 2021 15:57:16 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2709A1BF292
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jul 2021 15:57:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C6AE940577;
+	Thu, 29 Jul 2021 15:57:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 29AE51C115D
+ for <intel-wired-lan@osuosl.org>; Thu, 29 Jul 2021 15:57:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 111B06063A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jul 2021 15:57:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1295040576
+ for <intel-wired-lan@osuosl.org>; Thu, 29 Jul 2021 15:57:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HG4_aPF_pzhH for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jfHpjQXXE2z0 for <intel-wired-lan@osuosl.org>;
  Thu, 29 Jul 2021 15:57:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 39BE260A64
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jul 2021 15:57:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10060"; a="200091666"
-X-IronPort-AV: E=Sophos;i="5.84,278,1620716400"; d="scan'208";a="200091666"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EB6B840577
+ for <intel-wired-lan@osuosl.org>; Thu, 29 Jul 2021 15:57:03 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10060"; a="193191257"
+X-IronPort-AV: E=Sophos;i="5.84,278,1620716400"; d="scan'208";a="193191257"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2021 08:57:02 -0700
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2021 08:57:01 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.84,278,1620716400"; d="scan'208";a="518324906"
 Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
