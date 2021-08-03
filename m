@@ -1,86 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1214A3DE359
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Aug 2021 02:03:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F0093DE6EE
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Aug 2021 08:59:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9AF296FB4B;
-	Tue,  3 Aug 2021 00:03:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9DAD860769;
+	Tue,  3 Aug 2021 06:59:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jFEvUERuA6rC; Tue,  3 Aug 2021 00:03:13 +0000 (UTC)
+	with ESMTP id VHaVga4gFxq8; Tue,  3 Aug 2021 06:59:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E8DD6FB47;
-	Tue,  3 Aug 2021 00:03:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BCD09606C2;
+	Tue,  3 Aug 2021 06:59:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DF2211BF9AA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 00:03:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B3C191BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 06:59:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CC06C4015D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 00:03:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9F6A54038A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 06:59:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 119HI-W8bhvS for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Aug 2021 00:03:08 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
- [IPv6:2607:f8b0:4864:20::1036])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F270B400A9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 00:03:07 +0000 (UTC)
-Received: by mail-pj1-x1036.google.com with SMTP id
- dw2-20020a17090b0942b0290177cb475142so1395152pjb.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Aug 2021 17:03:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=8/q4C1bwlgB68t92asml5IhaRoB/GuHV7IviWSKcBGg=;
- b=pkgId/O8dOIgWQYV8LeIUsXWg43hnj4kmjrpusRJEDNgZwVoexR9fJ98vVjyvgdhLN
- i8OEihmGulpvailYIIeNRw0uxqGbAih/BzzL6rJi9qmrX7NiGRkqFs32NPepZIEazcou
- 8TTpJKyEyTOYWs8ceLjCHwf2FIel9exgSwN3ZchQgbBqrE2SP61yUB2t1UcP1WByekvd
- KqezjOqH96akdkIXiJvQ9ElJ8kDqK1+HZYVh3r/fczOQsgAnleUaLp/s4hEg2men0Z0F
- FMSXlykixNY5opLFE81fp40kYdP2aNuKtDo5sWOro4ZUYokgvWWJ8RUTZ5iPj60fCueE
- nbEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8/q4C1bwlgB68t92asml5IhaRoB/GuHV7IviWSKcBGg=;
- b=YWbwoCi/mbxd5XKf7OtwbFoMyONpbqh6VsBh+CW2vL9zcdYraJuFkTRixTV4BTRCUw
- 7y42KrpRccm5JG4eJwQ+OYZBn7febHKC02CkiVNri1hYjEVRlii1OYLc5yK/Y1FjljFE
- uZriyGlY8I/PKcIzvT0QoAjOtOZkj1eUxmESRRrLrua4HwZS1lq+mRKh8QqosXyspBUK
- 36Kdp2wVGUY3YS0oMTBoONza88wAQK450Sanjv96XDU8jfaoWutVkuB9mVMvKaOkccox
- FQwZdYGvj6xBeJogeoMB2qC78PBZFO4DTDM6SGm60JBVyOJvVGoUzml9cnzaBW6m/QdJ
- VFOw==
-X-Gm-Message-State: AOAM532OR3pV49RzadSeBXyYtCYBDWtHBRcOXA7ci7KKI7JoePRECx+c
- v+GwuLRDMLZoFjMZiUgo/hE=
-X-Google-Smtp-Source: ABdhPJy5vhcjJPVyM5rzN3CyVwIuiVCNmYRHO+711Nw8B8gB1aaeoc3HF06VT9Ak/yKjNyW72SemGA==
-X-Received: by 2002:a05:6a00:1390:b029:32a:e2a2:74de with SMTP id
- t16-20020a056a001390b029032ae2a274demr19136371pfg.6.1627948987452; 
- Mon, 02 Aug 2021 17:03:07 -0700 (PDT)
-Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id r3sm11683878pjj.0.2021.08.02.17.03.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Aug 2021 17:03:06 -0700 (PDT)
-Date: Mon, 2 Aug 2021 17:03:04 -0700
-From: Richard Cochran <richardcochran@gmail.com>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>
-Message-ID: <20210803000304.GA19119@hoboy.vegasvil.org>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zxEnY2SnlgC3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Aug 2021 06:59:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2315340389
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 06:59:20 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AB9AE61078
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 06:59:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1627973959;
+ bh=4Sb+0NOSFm85LKdgmKosHIsr0gryivEtorknGClKzc0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=TGnes8jOpj6iNpciHe/Ich4G5+4pDqiCAGNBduT9YDitlBkjcuK6yWBmWN67IgPVS
+ EswliryEaIBjUMyDgglxZtwmwywFImbRj713uEMW+GbIkae9ihlWz5OLO0xgtssbYi
+ cPXN2ncD2qg/IxeHwGB3C7ksdJC9Ghar9qCCn/gJxj6h7WTxexd4VFBacy5LxEjRVz
+ LK5NOrskOw/eW/IjraAfBO/3NFoL5dm61FW1hu8vYvWl2wUvAPT1ejwSUGSEjTVyts
+ 3vPhByIal78BBCpNgCQFWGwY/meu3yj6Ad1trz9Sl/h3MJ1Vnp6mlWl3kDctf2z2Q3
+ yk7w93q4b3SFQ==
+Received: by mail-wm1-f43.google.com with SMTP id
+ d131-20020a1c1d890000b02902516717f562so1396034wmd.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Aug 2021 23:59:19 -0700 (PDT)
+X-Gm-Message-State: AOAM530m1VSZG019MFGDZ7VGF+OHK+4nGppqPjsDFd6WqoUa4y1mhTXp
+ RPLWv1UoI0IgAWgVf9roYRidoDFlTgtfyUC5DW8=
+X-Google-Smtp-Source: ABdhPJw6f6eacQ6aHBp9WoW5eKY4Ovz5FQXgdVsMZJU/hB32fKJbdMrav10kWSfqlmfhDt2zauF+Yc3fWxlYRpp9M8g=
+X-Received: by 2002:a05:600c:3641:: with SMTP id
+ y1mr11424785wmq.43.1627973958225; 
+ Mon, 02 Aug 2021 23:59:18 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210802145937.1155571-1-arnd@kernel.org>
  <20210802164907.GA9832@hoboy.vegasvil.org>
  <bd631e36-1701-b120-a9b0-8825d14cc694@intel.com>
  <20210802230921.GA13623@hoboy.vegasvil.org>
- <CO1PR11MB508917A17F68DD927CD26A82D6EF9@CO1PR11MB5089.namprd11.prod.outlook.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CO1PR11MB508917A17F68DD927CD26A82D6EF9@CO1PR11MB5089.namprd11.prod.outlook.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210802230921.GA13623@hoboy.vegasvil.org>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Tue, 3 Aug 2021 08:59:02 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a2XjgbEkYs6R7Q3RCZMV7v90gu_v82RVfFVs-VtUzw+_w@mail.gmail.com>
+Message-ID: <CAK8P3a2XjgbEkYs6R7Q3RCZMV7v90gu_v82RVfFVs-VtUzw+_w@mail.gmail.com>
+To: Richard Cochran <richardcochran@gmail.com>
 Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ethernet/intel: fix
  PTP_1588_CLOCK dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -95,8 +79,7 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Nicolas Pitre <nico@fluxnic.net>,
+Cc: Nicolas Pitre <nicolas.pitre@linaro.org>, Arnd Bergmann <arnd@arndb.de>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  Kurt Kanzenbach <kurt@linutronix.de>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
@@ -108,24 +91,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 02, 2021 at 11:45:09PM +0000, Keller, Jacob E wrote:
-> Ok, so basically: if any driver that needs PTP core is on, PTP core is on, with no way to disable it.
+On Tue, Aug 3, 2021 at 1:09 AM Richard Cochran <richardcochran@gmail.com> wrote:
+>
+> On Mon, Aug 02, 2021 at 07:54:20PM +0000, Keller, Jacob E wrote:
+> > So go back to "select"?
+>
+> Why not keep it simple?
+>
+> PTP core:
+>    Boolean PTP_1588_CLOCK
+>
+> drivers:
+>    depends on PTP_1588_CLOCK
+>
+> Also, make Posix timers always part of the core.  Tinification is a
+> lost cause.
 
-Right.  Some MAC drivers keep the PTP stuff under a second Kconfig option.
+It may well be a lost cause, but a build fix is not the time to nail down
+that decision. The fix I proposed (with the added MAY_USE_PTP_1588_CLOCK
+symbol) is only two extra lines and leaves everything else working for the
+moment. I would suggest we merge that first and then raise the question
+about whether to give up on tinyfication on the summit list, there are a few
+other things that have come up that would also benefit from trying less hard,
+but if we overdo this, we can get to the point of hurting even systems that are
+otherwise still well supported (64MB MIPS/ARMv5 SoCs, small boot partitions,
+etc.).
 
-IIRC, we (davem and netdev) decided not to do that going forwards.  If
-a MAC has PTP features, then users will sure want it enabled.
-
-So, let the MACs use "depends" or "select" PTP core.  I guess that
-"select" is more user friendly.
-
-And Posix timers: never disable this.  After all, who wants an
-embedded system without timer_create()?  Seriously?
-
-Thanks,
-Richard
-
-
+        Arnd
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
