@@ -1,88 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D3E73DF245
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Aug 2021 18:14:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDF593DF2C3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Aug 2021 18:38:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2BBC683506;
-	Tue,  3 Aug 2021 16:14:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 517C9402CB;
+	Tue,  3 Aug 2021 16:38:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c5GxpLME4eMn; Tue,  3 Aug 2021 16:14:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id G9eZEIffqymO; Tue,  3 Aug 2021 16:38:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 300A181AF4;
-	Tue,  3 Aug 2021 16:14:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21C4F402BB;
+	Tue,  3 Aug 2021 16:38:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EE5831BF868
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:14:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 30ABC1BF868
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:38:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E91E4402C0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:14:38 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1D54140139
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:38:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Yx4FscaFf04z for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Aug 2021 16:14:38 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
- [IPv6:2607:f8b0:4864:20::635])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 70E1940271
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:14:38 +0000 (UTC)
-Received: by mail-pl1-x635.google.com with SMTP id u16so15784368ple.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 03 Aug 2021 09:14:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=E9dbUJDad8OiM9R3ggYpWCXMN+1fcOESzDIg2KJQygw=;
- b=DXb1TeufSEOKzA1N8WwwJgNTA95J9va75S/3IZ1UmG4lb1BCe1SX7mW2nTIWgWHvIp
- haLoj13+rka/QsRm9dtIcjP3Q6ICjbi0VZwwEsWARisrhmKJKhku4HKRLDmzksA7GB7J
- BiIVSAo2zCKyiv8NDcS8PslY1pq4GMKTDEkxn/TQimOqOvh8vwDDNzPKXhZCd47F3mDA
- fQYVucAuQP8buLmOP6fkGFNCVwzG7vWWO+ZBSq2jROFSTVzGRAquHYkBgmuTK6V7UEKU
- 4zhc48KTyOpUSjn8skQ6LWN8uWfELZ9eYOwXg0cFWLhGun8NamGjNOX6GDp9NNCy5Gt+
- Qfzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=E9dbUJDad8OiM9R3ggYpWCXMN+1fcOESzDIg2KJQygw=;
- b=R99JNaoDthGwq/j/nz6r0/UlWE7y6T8FCpQ4Ks19jg0rNqIL5WNw5V7fkPj4vCHrJI
- ldPtxSRGJ2C2RcWHxWYNMnHx0cpn2YyjMg+0ftwtYyVz7mYLGI/IdY7d0l1jrB0js75R
- vwTc6GKvcCGqPxQ4hcohHa2ThbmQlW7BJHoBhKRQIXSfhnCiwl9BVSLQaz+2DjfofOtV
- TtkHtNxxffJGpcVdt8J8QwlQfEhUNwAbF24z+sBVJDyuHTcXqbHHFLGabFWkWF2e1lhu
- CIfR2XW1+zMPuiPJwo5Pwbs8gnFRGRLtJQFFpZYlT5bsfVyLKLh2iG70aSmzSW7NpnKj
- SK3g==
-X-Gm-Message-State: AOAM531K3JFrPKeEC3xUW4n0HEWX2lxTl8b1tC2+lVYlcqTCOf8uTckW
- 7hD6YS3DoBqm8FfBa1SHAzM=
-X-Google-Smtp-Source: ABdhPJxVcHpsP99XpPOvvXRfpcDZM8Dnodn7xITd7SwrzdMcSWsPw5ipwGU/7tr/vJQZGRcWCj6LPA==
-X-Received: by 2002:aa7:99c1:0:b029:39a:56d1:6d43 with SMTP id
- v1-20020aa799c10000b029039a56d16d43mr22828297pfi.58.1628007277881; 
- Tue, 03 Aug 2021 09:14:37 -0700 (PDT)
-Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id t8sm18482127pgh.18.2021.08.03.09.14.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Aug 2021 09:14:37 -0700 (PDT)
-Date: Tue, 3 Aug 2021 09:14:34 -0700
-From: Richard Cochran <richardcochran@gmail.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Message-ID: <20210803161434.GE32663@hoboy.vegasvil.org>
-References: <20210802145937.1155571-1-arnd@kernel.org>
- <20210802164907.GA9832@hoboy.vegasvil.org>
- <bd631e36-1701-b120-a9b0-8825d14cc694@intel.com>
- <20210802230921.GA13623@hoboy.vegasvil.org>
- <CAK8P3a2XjgbEkYs6R7Q3RCZMV7v90gu_v82RVfFVs-VtUzw+_w@mail.gmail.com>
- <20210803155556.GD32663@hoboy.vegasvil.org>
+ with ESMTP id SnsnW3kVVCN8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Aug 2021 16:38:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 40C4E40148
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Aug 2021 16:38:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10065"; a="211865607"
+X-IronPort-AV: E=Sophos;i="5.84,292,1620716400"; d="scan'208";a="211865607"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Aug 2021 09:37:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,292,1620716400"; d="scan'208";a="670507986"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 03 Aug 2021 09:37:51 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mAxQN-000E5H-9t; Tue, 03 Aug 2021 16:37:51 +0000
+Date: Wed, 04 Aug 2021 00:36:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <610970a5.k+DaoMzqt3SceePr%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210803155556.GD32663@hoboy.vegasvil.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ethernet/intel: fix
- PTP_1588_CLOCK dependencies
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ db41c826ca93574d2eb117059b3592fb80361c66
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,60 +63,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@arndb.de>, Nicolas Pitre <nico@fluxnic.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Saleem,
- Shiraz" <shiraz.saleem@intel.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 03, 2021 at 08:55:56AM -0700, Richard Cochran wrote:
-> On Tue, Aug 03, 2021 at 08:59:02AM +0200, Arnd Bergmann wrote:
-> > It may well be a lost cause, but a build fix is not the time to nail down
-> > that decision. The fix I proposed (with the added MAY_USE_PTP_1588_CLOCK
-> > symbol) is only two extra lines and leaves everything else working for the
-> > moment.
-> 
-> Well, then we'll have TWO ugly and incomprehensible Kconfig hacks,
-> imply and MAY_USE.
-> 
-> Can't we fix this once and for all?
-> 
-> Seriously, "imply" has been nothing but a major PITA since day one,
-> and all to save 22 kb.  I can't think of another subsystem which
-> tolerates so much pain for so little gain.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: db41c826ca93574d2eb117059b3592fb80361c66  igc: Add support for PTP getcrosststamp()
 
-Here is what I want to have, in accordance with the KISS principle:
+elapsed time: 837m
 
-config PTP_1588_CLOCK
-	bool "PTP clock support"
-	select NET
-	select POSIX_TIMERS
-	select PPS
-	select NET_PTP_CLASSIFY
+configs tested: 83
+configs skipped: 3
 
-# driver variant 1:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-config ACME_MAC
-	select PTP_1588_CLOCK
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                          pxa3xx_defconfig
+sh                           se7751_defconfig
+arm                         assabet_defconfig
+arm                          pxa910_defconfig
+powerpc                 mpc8315_rdb_defconfig
+arm                            dove_defconfig
+h8300                            alldefconfig
+sh                           se7619_defconfig
+powerpc                    socrates_defconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+sh                        sh7763rdp_defconfig
+sh                          sdk7786_defconfig
+powerpc                 mpc832x_mds_defconfig
+sh                   sh7770_generic_defconfig
+ia64                            zx1_defconfig
+arm                        neponset_defconfig
+sh                           se7721_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+x86_64                            allnoconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a012-20210802
+i386                 randconfig-a011-20210802
+i386                 randconfig-a015-20210802
+i386                 randconfig-a013-20210802
+i386                 randconfig-a014-20210802
+i386                 randconfig-a016-20210802
+x86_64               randconfig-a002-20210803
+x86_64               randconfig-a004-20210803
+x86_64               randconfig-a006-20210803
+x86_64               randconfig-a003-20210803
+x86_64               randconfig-a001-20210803
+x86_64               randconfig-a005-20210803
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-# driver variant 2:
+clang tested configs:
+x86_64               randconfig-c001-20210803
 
-config ACME_MAC
-
-config ACME_MAC_PTP
-	depends on ACME_MAC
-	select PTP_1588_CLOCK
-
-Hm?	
-
-Thanks,
-Richard
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
