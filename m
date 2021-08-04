@@ -1,54 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90CEF3E02EE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 16:19:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18C9A3E0325
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 16:28:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 306134035F;
-	Wed,  4 Aug 2021 14:19:37 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vW1DeubMc_r7; Wed,  4 Aug 2021 14:19:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC8E6402C2;
-	Wed,  4 Aug 2021 14:19:35 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0276B1BF5E9
- for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0E00681CA7
- for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9CED983C6B;
+	Wed,  4 Aug 2021 14:28:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pxfy4tbjIF9N for <intel-wired-lan@osuosl.org>;
- Wed,  4 Aug 2021 14:19:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1BCDD81AD7
- for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:22 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10065"; a="213956880"
-X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="213956880"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2021 07:19:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="668088333"
-Received: from inlubt0152.iind.intel.com ([10.67.198.206])
- by fmsmga006.fm.intel.com with ESMTP; 04 Aug 2021 07:19:19 -0700
-From: aravindhan.gunasekaran@intel.com
-To: intel-wired-lan@osuosl.org
-Date: Wed,  4 Aug 2021 19:49:12 +0530
-Message-Id: <1628086752-20213-4-git-send-email-aravindhan.gunasekaran@intel.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1628086752-20213-1-git-send-email-aravindhan.gunasekaran@intel.com>
-References: <1628086752-20213-1-git-send-email-aravindhan.gunasekaran@intel.com>
-Subject: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support for
- CBS offloading
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WUG5s0XCpeMf; Wed,  4 Aug 2021 14:28:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id A1C2383BA6;
+	Wed,  4 Aug 2021 14:28:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 906ED1BF5E9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 14:28:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 89393401D8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 14:28:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0aIcCC-bHLST for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Aug 2021 14:28:19 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
+ [IPv6:2607:f8b0:4864:20::62b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C0AE640100
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 14:28:19 +0000 (UTC)
+Received: by mail-pl1-x62b.google.com with SMTP id z3so3165073plg.8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Aug 2021 07:28:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=zVcpGvB1fjh2beX8VuQl4JyzQJhoYo0herXV11yWWbs=;
+ b=DlPJi8NTGYgpF0kLDymlbx/qsIOw+YUJUFd0uee97CrNMiv5C8uJX2CvB0NAcvZ7uL
+ /J9nw6aGFEKDFRk0IcEblVwVfqUNh2KG2l8ncEAnYeknHDLISdeXNIkUtuzYnCbzyH41
+ w2mWpkWBaGQ4AsUpB8tpaNoogZgJhiiw1nhZ/8SNi+qSbN4RU4Ix3nlaU1VCkLGbSz2x
+ Q1p1RAgKkY96CljmN0eDfxb6B4kK+aeleRhAHNg+KNvKiDzgAMBRYiDe+zY3Ye5NfHJ0
+ Jp65G9d0dH8GhuAABGDmC4otkfYcbBJisXNvfhmxey5BQuH/IuDS0qaEpvs7wKE1EKcM
+ Wr+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=zVcpGvB1fjh2beX8VuQl4JyzQJhoYo0herXV11yWWbs=;
+ b=Q+78o2fmku90VRJEyyXGoSRHd58o9rsoc8KLyRQ7kHi3EUieVrqX17u4CP9Dq+RHrK
+ HPbezFCT+4GjTwtGUISSExLoMGCX2c21EhTioSJqx+hUuPcHsDRFGC7ORTWOhnj1bWKR
+ jNVeGoYXe4ExR1qofpv1xz/evNGTwWnebmobDpmSAgyHFUEureje8WXw9CQo5D+hLwIO
+ Uw2Cf3uJtV3bnCsZaDguQpy+WaDqmh/rSWEEoUZ0BajjS1XqbNxoaN+6Zq3RJ1IWZ8X8
+ 10Yk8+5Xbgj0lbaXHOroV9Nn1qsU7AaYDQ/n5T14WJ+Hl1Ec72/K3NIM33vMeVtqiPMJ
+ HVSw==
+X-Gm-Message-State: AOAM5333WxkDC3ueCp8+QHZwcg6LFskl+56QaMvPoLH/gR83X3MGJBwD
+ AGfmp8VfLaGSDFFe/f2hP/A=
+X-Google-Smtp-Source: ABdhPJwpgB+G6j9ZEhkZr+2iv541VWgYpL+xsaxdbxqVoJgpZCcbeqTou5qmsHLrcKhA6pnVjWPPaA==
+X-Received: by 2002:a17:902:c391:b029:12c:f2:f5f with SMTP id
+ g17-20020a170902c391b029012c00f20f5fmr10522935plg.48.1628087299216; 
+ Wed, 04 Aug 2021 07:28:19 -0700 (PDT)
+Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id s31sm3816465pgm.27.2021.08.04.07.28.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Aug 2021 07:28:18 -0700 (PDT)
+Date: Wed, 4 Aug 2021 07:28:14 -0700
+From: Richard Cochran <richardcochran@gmail.com>
+To: Arnd Bergmann <arnd@kernel.org>
+Message-ID: <20210804142814.GB1645@hoboy.vegasvil.org>
+References: <20210804121318.337276-1-arnd@kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210804121318.337276-1-arnd@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3] ethernet: fix
+ PTP_1588_CLOCK dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,327 +90,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: velmurugan.chenniyappan@intel.com, aravindhan.gunasekaran@intel.com,
- mallikarjuna.chilakala@intel.com
-MIME-Version: 1.0
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
+ Florian Fainelli <f.fainelli@gmail.com>, Leon Romanovsky <leon@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Jose Abreu <joabreu@synopsys.com>, intel-wired-lan@lists.osuosl.org,
+ Simon Horman <simon.horman@netronome.com>, Jakub Kicinski <kuba@kernel.org>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
+ Ido Schimmel <idosch@nvidia.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Jiri Pirko <jiri@nvidia.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ drivers@pensando.io, Salil Mehta <salil.mehta@huawei.com>,
+ Shannon Nelson <snelson@pensando.io>, netdev@vger.kernel.org,
+ Randy Dunlap <rdunlap@infradead.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Tariq Toukan <tariqt@nvidia.com>,
+ UNGLinuxDriver@microchip.com, Edward Cree <ecree.xilinx@gmail.com>,
+ Sergei Shtylyov <sergei.shtylyov@gmail.com>, Yangbo Lu <yangbo.lu@nxp.com>,
+ Martin Habets <habetsm.xilinx@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+On Wed, Aug 04, 2021 at 01:57:04PM +0200, Arnd Bergmann wrote:
 
-Implemented support for CBS Qdisc hardware offload mode in the
-driver. There are two sets of CBS HW logic in i225 controller
-and this patch supports enabling them in the top two priority
-TX queues.
+> Since this should cover the dependencies correctly, the IS_REACHABLE()
+> hack in the header is no longer needed now, and can be turned back
+> into a normal IS_ENABLED() check. Any driver that gets the dependency
+> wrong will now cause a link time failure rather than being unable to use
+> PTP support when that is in a loadable module.
 
-In-order for CBS algorithm to work as intended and provide BW
-reservation CBS should be enabled in highest priority queue first.
-If we enable CBS on any of low priority queues, the traffic
-in high priority queue does not allow low priority queue
-to be selected for transmission and bandwidth reservation
-is not guaranteed.
+yes!
 
-Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h         |  11 ++-
- drivers/net/ethernet/intel/igc/igc_defines.h |   8 +++
- drivers/net/ethernet/intel/igc/igc_main.c    |  71 ++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |   3 +
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 103 +++++++++++++++++++++++++++
- 5 files changed, 195 insertions(+), 1 deletion(-)
+> Changes in v3:
+> - rewrite to introduce a new PTP_1588_CLOCK_OPTIONAL symbol
+> - use it for all driver, not just Intel's
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 58488ba..a125aaf 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -98,6 +98,13 @@ struct igc_ring {
- 	u32 start_time;
- 	u32 end_time;
- 
-+	/* CBS parameters */
-+	bool cbs_enable;                /* indicates if CBS is enabled */
-+	s32 idleslope;                  /* idleSlope in kbps */
-+	s32 sendslope;                  /* sendSlope in kbps */
-+	s32 hicredit;                   /* hiCredit in bytes */
-+	s32 locredit;                   /* loCredit in bytes */
-+
- 	/* everything past this point are written often */
- 	u16 next_to_clean;
- 	u16 next_to_use;
-@@ -289,8 +296,10 @@ extern char igc_driver_name[];
- #define IGC_FLAG_VLAN_PROMISC		BIT(15)
- #define IGC_FLAG_RX_LEGACY		BIT(16)
- #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
-+#define IGC_FLAG_TSN_QAV_ENABLED	BIT(18)
- 
--#define IGC_FLAG_TSN_ANY_ENABLED	IGC_FLAG_TSN_QBV_ENABLED
-+#define IGC_FLAG_TSN_ANY_ENABLED \
-+	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED)
- 
- #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
- #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 1361086..244edbc 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -518,6 +518,14 @@
- #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
- #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
- #define IGC_TXQCTL_STRICT_END		0x00000004
-+#define IGC_TXQCTL_QAV_SEL_MASK		0x000000C0
-+#define IGC_TXQCTL_QAV_SEL_CBS0		0x00000080
-+#define IGC_TXQCTL_QAV_SEL_CBS1		0x000000C0
-+
-+#define IGC_TQAVCC_IDLESLOPE_MASK	0xFFFF
-+#define IGC_TQAVCC_KEEP_CREDITS		BIT(30)
-+
-+#define IGC_MAX_SR_QUEUES		2
- 
- /* Receive Checksum Control */
- #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 3eb4f9e..ea12633 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5905,6 +5905,74 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+static int igc_save_cbs_params(struct igc_adapter *adapter, int queue,
-+			       bool enable, int idleslope, int sendslope,
-+			       int hicredit, int locredit)
-+{
-+	bool cbs_status[IGC_MAX_SR_QUEUES] = { false };
-+	struct net_device *netdev = adapter->netdev;
-+	struct igc_ring *ring;
-+	int i;
-+
-+	/* i225 has two sets of credit-based shaper logic.
-+	 * Supporting it only on the top two priority queues
-+	 */
-+	if (queue < 0 || queue > 1)
-+		return -EINVAL;
-+
-+	ring = adapter->tx_ring[queue];
-+
-+	for (i = 0; i < IGC_MAX_SR_QUEUES; i++)
-+		if (adapter->tx_ring[i])
-+			cbs_status[i] = adapter->tx_ring[i]->cbs_enable;
-+
-+	/* CBS should be enabled on the highest priority queue first inorder
-+	 * for the CBS algorithm to operate as intended.
-+	 */
-+	if (enable) {
-+		if (queue == 1 && !cbs_status[0]) {
-+			netdev_err(netdev,
-+				   "Enabling CBS on queue1 before queue0\n");
-+			return -EINVAL;
-+		}
-+	} else {
-+		if (queue == 0 && cbs_status[1]) {
-+			netdev_err(netdev,
-+				   "Disabling CBS on queue0 before queue1\n");
-+			return -EINVAL;
-+		}
-+	}
-+
-+	ring->cbs_enable = enable;
-+	ring->idleslope = idleslope;
-+	ring->sendslope = sendslope;
-+	ring->hicredit = hicredit;
-+	ring->locredit = locredit;
-+
-+	return 0;
-+}
-+
-+static int igc_tsn_enable_cbs(struct igc_adapter *adapter,
-+			      struct tc_cbs_qopt_offload *qopt)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	int err;
-+
-+	if (hw->mac.type != igc_i225)
-+		return -EOPNOTSUPP;
-+
-+	if (qopt->queue < 0 || qopt->queue > 1)
-+		return -EINVAL;
-+
-+	err = igc_save_cbs_params(adapter, qopt->queue, qopt->enable,
-+				  qopt->idleslope, qopt->sendslope,
-+				  qopt->hicredit, qopt->locredit);
-+	if (err)
-+		return err;
-+
-+	return igc_tsn_offload_apply(adapter);
-+}
-+
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 			void *type_data)
- {
-@@ -5917,6 +5985,9 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 	case TC_SETUP_QDISC_ETF:
- 		return igc_tsn_enable_launchtime(adapter, type_data);
- 
-+	case TC_SETUP_QDISC_CBS:
-+		return igc_tsn_enable_cbs(adapter, type_data);
-+
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 828c350..f90a644 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -236,6 +236,9 @@
- #define IGC_ENDQT(_n)		(0x3334 + 0x4 * (_n))
- #define IGC_DTXMXPKTSZ		0x355C
- 
-+#define IGC_TQAVCC(_n)		(0x3004 + ((_n) * 0x40))
-+#define IGC_TQAVHC(_n)		(0x300C + ((_n) * 0x40))
-+
- /* System Time Registers */
- #define IGC_SYSTIML	0x0B600  /* System time register Low - RO */
- #define IGC_SYSTIMH	0x0B604  /* System time register High - RO */
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 2935d57..0fce22d 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -18,6 +18,20 @@ static bool is_any_launchtime(struct igc_adapter *adapter)
- 	return false;
- }
- 
-+static bool is_cbs_enabled(struct igc_adapter *adapter)
-+{
-+	int i;
-+
-+	for (i = 0; i < adapter->num_tx_queues; i++) {
-+		struct igc_ring *ring = adapter->tx_ring[i];
-+
-+		if (ring->cbs_enable)
-+			return true;
-+	}
-+
-+	return false;
-+}
-+
- static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- {
- 	unsigned int new_flags = adapter->flags & ~IGC_FLAG_TSN_ANY_ENABLED;
-@@ -28,6 +42,9 @@ static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- 	if (is_any_launchtime(adapter))
- 		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
- 
-+	if (is_cbs_enabled(adapter))
-+		new_flags |= IGC_FLAG_TSN_QAV_ENABLED;
-+
- 	return new_flags;
- }
- 
-@@ -87,6 +104,8 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
- 		struct igc_ring *ring = adapter->tx_ring[i];
- 		u32 txqctl = 0;
-+		u16 cbs_value;
-+		u32 tqavcc;
- 
- 		wr32(IGC_STQT(i), ring->start_time);
- 		wr32(IGC_ENDQT(i), ring->end_time);
-@@ -104,6 +123,90 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
- 
-+		/* Skip configuring CBS for Q2 and Q3 */
-+		if (i > 1)
-+			goto skip_cbs;
-+
-+		if (ring->cbs_enable) {
-+			if (i == 0)
-+				txqctl |= IGC_TXQCTL_QAV_SEL_CBS0;
-+			else
-+				txqctl |= IGC_TXQCTL_QAV_SEL_CBS1;
-+
-+			/* According to i225 datasheet section 7.5.2.7, we
-+			 * should set the 'idleSlope' field from TQAVCC
-+			 * register following the equation:
-+			 *
-+			 * value = link-speed   0x7736 * BW * 0.2
-+			 *         ---------- *  -----------------         (E1)
-+			 *          100Mbps            2.5
-+			 *
-+			 * Note that 'link-speed' is in Mbps.
-+			 *
-+			 * 'BW' is the percentage bandwidth out of full
-+			 * link speed which can be found with the
-+			 * following equation. Note that idleSlope here
-+			 * is the parameter from this function
-+			 * which is in kbps.
-+			 *
-+			 *     BW =     idleSlope
-+			 *          -----------------                      (E2)
-+			 *          link-speed * 1000
-+			 *
-+			 * That said, we can come up with a generic
-+			 * equation to calculate the value we should set
-+			 * it TQAVCC register by replacing 'BW' in E1 by E2.
-+			 * The resulting equation is:
-+			 *
-+			 * value = link-speed * 0x7736 * idleSlope * 0.2
-+			 *         -------------------------------------   (E3)
-+			 *             100 * 2.5 * link-speed * 1000
-+			 *
-+			 * 'link-speed' is present in both sides of the
-+			 * fraction so it is canceled out. The final
-+			 * equation is the following:
-+			 *
-+			 *     value = idleSlope * 61036
-+			 *             -----------------                   (E4)
-+			 *                  2500000
-+			 *
-+			 * NOTE: For i225, given the above, we can see
-+			 *       that idleslope is represented in
-+			 *       40.959433 kbps units by the value at
-+			 *       the TQAVCC register (2.5Gbps / 61036),
-+			 *       which reduces the granularity for
-+			 *       idleslope increments.
-+			 *
-+			 * In i225 controller, the sendSlope and loCredit
-+			 * parameters from CBS are not configurable
-+			 * by software so we don't do any
-+			 * 'controller configuration' in respect to
-+			 * these parameters.
-+			 */
-+			cbs_value = DIV_ROUND_UP_ULL(ring->idleslope
-+						     * 61036ULL, 2500000);
-+
-+			tqavcc = rd32(IGC_TQAVCC(i));
-+			tqavcc &= ~IGC_TQAVCC_IDLESLOPE_MASK;
-+			tqavcc |= cbs_value | IGC_TQAVCC_KEEP_CREDITS;
-+			wr32(IGC_TQAVCC(i), tqavcc);
-+
-+			wr32(IGC_TQAVHC(i),
-+			     0x80000000 + ring->hicredit * 0x7735);
-+		} else {
-+			/* Disable any CBS for the queue */
-+			txqctl &= ~(IGC_TXQCTL_QAV_SEL_MASK);
-+
-+			/* Set idleSlope to zero. */
-+			tqavcc = rd32(IGC_TQAVCC(i));
-+			tqavcc &= ~(IGC_TQAVCC_IDLESLOPE_MASK |
-+				    IGC_TQAVCC_KEEP_CREDITS);
-+			wr32(IGC_TQAVCC(i), tqavcc);
-+
-+			/* Set hiCredit to zero. */
-+			wr32(IGC_TQAVHC(i), 0);
-+		}
-+skip_cbs:
- 		wr32(IGC_TXQCTL(i), txqctl);
- 	}
- 
--- 
-2.7.4
+Thanks for following up.
 
+> diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+> index 82744a7501c7..9c1d0b715748 100644
+> --- a/drivers/net/ethernet/intel/Kconfig
+> +++ b/drivers/net/ethernet/intel/Kconfig
+> @@ -58,8 +58,8 @@ config E1000
+>  config E1000E
+>  	tristate "Intel(R) PRO/1000 PCI-Express Gigabit Ethernet support"
+>  	depends on PCI && (!SPARC32 || BROKEN)
+> +	depends on PTP_1588_CLOCK_OPTIONAL
+>  	select CRC32
+> -	imply PTP_1588_CLOCK
+>  	help
+>  	  This driver supports the PCI-Express Intel(R) PRO/1000 gigabit
+>  	  ethernet family of adapters. For PCI or PCI-X e1000 adapters,
+> @@ -87,8 +87,8 @@ config E1000E_HWTS
+>  config IGB
+>  	tristate "Intel(R) 82575/82576 PCI-Express Gigabit Ethernet support"
+>  	depends on PCI
+> -	imply PTP_1588_CLOCK
+> -	select I2C
+> +	depends on PTP_1588_CLOCK_OPTIONAL
+> +	depends on I2C
+
+This little i2c bit sneaks in, but I guess you considered any possible
+trouble with it?
+
+Acked-by: Richard Cochran <richardcochran@gmail.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
