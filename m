@@ -1,54 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11D853E02EB
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 16:19:28 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2BF03E02EC
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 16:19:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A64F8401B8;
-	Wed,  4 Aug 2021 14:19:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2F1214025F;
+	Wed,  4 Aug 2021 14:19:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fqtjDoVTiJRk; Wed,  4 Aug 2021 14:19:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6NN52SlxHAUK; Wed,  4 Aug 2021 14:19:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2532840111;
-	Wed,  4 Aug 2021 14:19:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D009240210;
+	Wed,  4 Aug 2021 14:19:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1162F1BF5E9
- for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0B1391BF5E9
+ for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 08E1881BC0
+ by smtp1.osuosl.org (Postfix) with ESMTP id BDD0481BC0
  for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dwK0EGXuFSfA for <intel-wired-lan@osuosl.org>;
- Wed,  4 Aug 2021 14:19:17 +0000 (UTC)
+ with ESMTP id 2sPB1xO-7vgg for <intel-wired-lan@osuosl.org>;
+ Wed,  4 Aug 2021 14:19:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CEE8E81B26
- for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10065"; a="213956873"
-X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="213956873"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0AC3F81C11
+ for <intel-wired-lan@osuosl.org>; Wed,  4 Aug 2021 14:19:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10065"; a="213956877"
+X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="213956877"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2021 07:19:17 -0700
+ 04 Aug 2021 07:19:19 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="668088315"
+X-IronPort-AV: E=Sophos;i="5.84,294,1620716400"; d="scan'208";a="668088324"
 Received: from inlubt0152.iind.intel.com ([10.67.198.206])
- by fmsmga006.fm.intel.com with ESMTP; 04 Aug 2021 07:19:15 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 04 Aug 2021 07:19:17 -0700
 From: aravindhan.gunasekaran@intel.com
 To: intel-wired-lan@osuosl.org
-Date: Wed,  4 Aug 2021 19:49:10 +0530
-Message-Id: <1628086752-20213-2-git-send-email-aravindhan.gunasekaran@intel.com>
+Date: Wed,  4 Aug 2021 19:49:11 +0530
+Message-Id: <1628086752-20213-3-git-send-email-aravindhan.gunasekaran@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1628086752-20213-1-git-send-email-aravindhan.gunasekaran@intel.com>
 References: <1628086752-20213-1-git-send-email-aravindhan.gunasekaran@intel.com>
-Subject: [Intel-wired-lan] [PATCH next-queue v2 1/3] igc: Use default cycle
- 'start' and 'end' values for queues
+Subject: [Intel-wired-lan] [PATCH next-queue v2 2/3] igc: Simplify TSN flags
+ handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,112 +71,170 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
-Sets default values for each queue cycle start and cycle end. This
-allows some simplification in the handling of these configurations as
-most TSN features in i225 require a cycle to be configured.
+Separates the procedure done during reset from applying a
+configuration, knowing when the code is executing allow us to separate
+the better what changes the hardware state from what changes only the
+driver state.
 
-In i225, cycle start and end time is required to be programmed for
-CBS to work properly.
+Introduces a flag for bookkeeping the driver state of TSN features.
+When Qav and frame-preemption is also implemented this flag makes it easier
+to keep track on whether a TSN feature driver state is enabled or not
+though controller state changes, say, during a reset.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 37 ++++++++++++++++++-------------
- drivers/net/ethernet/intel/igc/igc_tsn.c  |  6 -----
- 2 files changed, 21 insertions(+), 22 deletions(-)
+ drivers/net/ethernet/intel/igc/igc.h      |  2 +
+ drivers/net/ethernet/intel/igc/igc_main.c |  2 +-
+ drivers/net/ethernet/intel/igc/igc_tsn.c  | 65 ++++++++++++++++++-------------
+ drivers/net/ethernet/intel/igc/igc_tsn.h  |  1 +
+ 4 files changed, 43 insertions(+), 27 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index a0ecfe5..58488ba 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -290,6 +290,8 @@ extern char igc_driver_name[];
+ #define IGC_FLAG_RX_LEGACY		BIT(16)
+ #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
+ 
++#define IGC_FLAG_TSN_ANY_ENABLED	IGC_FLAG_TSN_QBV_ENABLED
++
+ #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
+ #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
+ 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 4dc7c4d..fec0358 100644
+index fec0358..3eb4f9e 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5750,7 +5750,6 @@ static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
- 				      bool enable)
+@@ -118,7 +118,7 @@ void igc_reset(struct igc_adapter *adapter)
+ 	igc_ptp_reset(adapter);
+ 
+ 	/* Re-enable TSN offloading, where applicable. */
+-	igc_tsn_offload_apply(adapter);
++	igc_tsn_reset(adapter);
+ 
+ 	igc_get_phy_info(hw);
+ }
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+index 5bcdf75..2935d57 100644
+--- a/drivers/net/ethernet/intel/igc/igc_tsn.c
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+@@ -18,8 +18,21 @@ static bool is_any_launchtime(struct igc_adapter *adapter)
+ 	return false;
+ }
+ 
++static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
++{
++	unsigned int new_flags = adapter->flags & ~IGC_FLAG_TSN_ANY_ENABLED;
++
++	if (adapter->base_time)
++		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
++
++	if (is_any_launchtime(adapter))
++		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
++
++	return new_flags;
++}
++
+ /* Returns the TSN specific registers to their default values after
+- * TSN offloading is disabled.
++ * the adapter is reset.
+  */
+ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
  {
- 	struct igc_ring *ring;
--	int i;
+@@ -27,11 +40,6 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
+ 	u32 tqavctrl;
+ 	int i;
  
- 	if (queue < 0 || queue >= adapter->num_tx_queues)
- 		return -EINVAL;
-@@ -5758,17 +5757,6 @@ static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
- 	ring = adapter->tx_ring[queue];
- 	ring->launchtime_enable = enable;
- 
--	if (adapter->base_time)
+-	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED))
 -		return 0;
 -
--	adapter->cycle_time = NSEC_PER_SEC;
+-	adapter->cycle_time = 0;
 -
--	for (i = 0; i < adapter->num_tx_queues; i++) {
--		ring = adapter->tx_ring[i];
--		ring->start_time = 0;
--		ring->end_time = NSEC_PER_SEC;
--	}
+ 	wr32(IGC_TXPBS, I225_TXPBSIZE_DEFAULT);
+ 	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_DEFAULT);
+ 
+@@ -62,9 +70,6 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+ 	ktime_t base_time, systim;
+ 	int i;
+ 
+-	if (adapter->flags & IGC_FLAG_TSN_QBV_ENABLED)
+-		return 0;
+-
+ 	cycle = adapter->cycle_time;
+ 	base_time = adapter->base_time;
+ 
+@@ -119,33 +124,41 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+ 	wr32(IGC_BASET_H, baset_h);
+ 	wr32(IGC_BASET_L, baset_l);
+ 
+-	adapter->flags |= IGC_FLAG_TSN_QBV_ENABLED;
 -
  	return 0;
  }
  
-@@ -5841,16 +5829,31 @@ static int igc_tsn_enable_launchtime(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+static int igc_tsn_clear_schedule(struct igc_adapter *adapter)
-+{
-+	int i;
-+
-+	adapter->base_time = 0;
-+	adapter->cycle_time = NSEC_PER_SEC;
-+
-+	for (i = 0; i < adapter->num_tx_queues; i++) {
-+		struct igc_ring *ring = adapter->tx_ring[i];
-+
-+		ring->start_time = 0;
-+		ring->end_time = NSEC_PER_SEC;
-+	}
-+
-+	return 0;
-+}
-+
- static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 				 struct tc_taprio_qopt_offload *qopt)
+-int igc_tsn_offload_apply(struct igc_adapter *adapter)
++int igc_tsn_reset(struct igc_adapter *adapter)
  {
- 	u32 start_time = 0, end_time = 0;
- 	size_t n;
+-	bool is_any_enabled = adapter->base_time || is_any_launchtime(adapter);
++	unsigned int new_flags;
++	int err = 0;
  
--	if (!qopt->enable) {
--		adapter->base_time = 0;
+-	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED) && !is_any_enabled)
 -		return 0;
--	}
-+	if (!qopt->enable)
-+		return igc_tsn_clear_schedule(adapter);
- 
- 	if (adapter->base_time)
- 		return -EALREADY;
-@@ -6337,6 +6340,8 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	igc_ptp_init(adapter);
- 
-+	igc_tsn_clear_schedule(adapter);
++	new_flags = igc_tsn_new_flags(adapter);
 +
- 	/* reset the hardware with the new settings */
- 	igc_reset(adapter);
++	if (!(new_flags & IGC_FLAG_TSN_ANY_ENABLED))
++		return igc_tsn_disable_offload(adapter);
++
++	err = igc_tsn_enable_offload(adapter);
++	if (err < 0)
++		return err;
  
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 4dbbb8a..5bcdf75 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -41,12 +41,6 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_TQAVCTRL, tqavctrl);
+-	if (!is_any_enabled) {
+-		int err = igc_tsn_disable_offload(adapter);
++	adapter->flags = new_flags;
  
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
--		struct igc_ring *ring = adapter->tx_ring[i];
--
--		ring->start_time = 0;
--		ring->end_time = 0;
--		ring->launchtime_enable = false;
--
- 		wr32(IGC_TXQCTL(i), 0);
- 		wr32(IGC_STQT(i), 0);
- 		wr32(IGC_ENDQT(i), NSEC_PER_SEC);
+-		if (err < 0)
+-			return err;
++	return err;
++}
+ 
+-		/* The BASET registers aren't cleared when writing
+-		 * into them, force a reset if the interface is
+-		 * running.
+-		 */
+-		if (netif_running(adapter->netdev))
+-			schedule_work(&adapter->reset_task);
++int igc_tsn_offload_apply(struct igc_adapter *adapter)
++{
++	int err;
+ 
++	if (netif_running(adapter->netdev)) {
++		schedule_work(&adapter->reset_task);
+ 		return 0;
+ 	}
+ 
+-	return igc_tsn_enable_offload(adapter);
++	err = igc_tsn_enable_offload(adapter);
++	if (err < 0)
++		return err;
++
++	adapter->flags = igc_tsn_new_flags(adapter);
++	return 0;
+ }
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
+index f76bc86..1512307 100644
+--- a/drivers/net/ethernet/intel/igc/igc_tsn.h
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
+@@ -5,5 +5,6 @@
+ #define _IGC_TSN_H_
+ 
+ int igc_tsn_offload_apply(struct igc_adapter *adapter);
++int igc_tsn_reset(struct igc_adapter *adapter);
+ 
+ #endif /* _IGC_BASE_H */
 -- 
 2.7.4
 
