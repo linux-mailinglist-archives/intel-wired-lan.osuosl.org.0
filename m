@@ -1,69 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 565383E040C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 17:21:31 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3FBB3E08BC
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Aug 2021 21:25:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B706A608D7;
-	Wed,  4 Aug 2021 15:21:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D293405C0;
+	Wed,  4 Aug 2021 19:25:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lON_sjtdNsOS; Wed,  4 Aug 2021 15:21:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o2ft1AdIhZ29; Wed,  4 Aug 2021 19:25:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B3FCF606F5;
-	Wed,  4 Aug 2021 15:21:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 23117405EE;
+	Wed,  4 Aug 2021 19:25:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 249D61BF2B6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 15:21:24 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E9C0E1BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 19:25:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0D9394023A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 15:21:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E447860620
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 19:25:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oy1dmJE4K_X1 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Aug 2021 15:21:23 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uRIqi2e6EV7X for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Aug 2021 19:25:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 43D7C40169
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 15:21:23 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BC15060F0F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 15:21:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628090482;
- bh=ResC44EGJwfafk1EP1TTehAscV+PxNhFSYCS7gE+NbQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=o+YAX3nM7ZsbINM78zsss9kmETucTr8eDJ9XhnmF7IP3KkvYQ3LrpWozYDakmvuqB
- S3yXsaByYojvDBAEfD7SKPIP+AuODwWjLhiTquQFwiOYruaq+Aj16RfopXAKd/j3yl
- RXJXhPIV3Is/ghDJpWSSwzmKI+TGdMME/TRcZ0n4xX/H3NHR930cx13Cv6BCSqEYcw
- +RiNUYvXiT6ChCAgwC2XvaSnGKXemw3kK1vZIaIY4Td6Lwk8kP7TEapAuLnWfphqcC
- 6JxTuPdxgDJFPMbZFGzPWN9rtKMofElwX6pQKmmJR81MfSWbtCsJFt9oVLYPr/Vuc5
- 9251zhWAfSnvA==
-Received: by mail-wm1-f50.google.com with SMTP id n11so1438256wmd.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Aug 2021 08:21:22 -0700 (PDT)
-X-Gm-Message-State: AOAM531EU7Re4HSobDxjXmQzLzTHaVcAQ5TMlA33cGrZ0rKbj7mZb5eV
- zmvY6oEYwl/wfE7O8BTqjhXAtW/UycwtIoj6fpU=
-X-Google-Smtp-Source: ABdhPJyhsDZiH6C0oIXqOf2mYVpZRorsqoPP39EpX0oNA364INwgFOyHPCUYK+yr5luDHjm6eIbPPD+iF8pKEjFkMH0=
-X-Received: by 2002:a05:600c:3b08:: with SMTP id
- m8mr10383643wms.84.1628090481196; 
- Wed, 04 Aug 2021 08:21:21 -0700 (PDT)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DEE90605FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Aug 2021 19:25:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10066"; a="299585007"
+X-IronPort-AV: E=Sophos;i="5.84,295,1620716400"; d="scan'208";a="299585007"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Aug 2021 12:25:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,295,1620716400"; d="scan'208";a="569142548"
+Received: from shasta.jf.intel.com ([10.166.241.42])
+ by orsmga004.jf.intel.com with ESMTP; 04 Aug 2021 12:25:28 -0700
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  4 Aug 2021 12:12:42 -0700
+Message-Id: <20210804191242.871950-1-anirudh.venkataramanan@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20210804121318.337276-1-arnd@kernel.org>
- <20210804142814.GB1645@hoboy.vegasvil.org>
-In-Reply-To: <20210804142814.GB1645@hoboy.vegasvil.org>
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Wed, 4 Aug 2021 17:21:05 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a1EBwd+DvqnQSHL03zqaoRz_bhxj6TGw2ivpWLDT7jorw@mail.gmail.com>
-Message-ID: <CAK8P3a1EBwd+DvqnQSHL03zqaoRz_bhxj6TGw2ivpWLDT7jorw@mail.gmail.com>
-To: Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3] ethernet: fix
- PTP_1588_CLOCK dependencies
+Subject: [Intel-wired-lan] [PATCH net] ice: Stop processing VF messages
+ during teardown
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,63 +60,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Russell King <linux@armlinux.org.uk>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Leon Romanovsky <leon@kernel.org>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Simon Horman <simon.horman@netronome.com>, Jakub Kicinski <kuba@kernel.org>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Vivien Didelot <vivien.didelot@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
- Ido Schimmel <idosch@nvidia.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Jiri Pirko <jiri@nvidia.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- drivers@pensando.io, Salil Mehta <salil.mehta@huawei.com>,
- Shannon Nelson <snelson@pensando.io>, Networking <netdev@vger.kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Tariq Toukan <tariqt@nvidia.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Edward Cree <ecree.xilinx@gmail.com>,
- Sergei Shtylyov <sergei.shtylyov@gmail.com>, Yangbo Lu <yangbo.lu@nxp.com>,
- Martin Habets <habetsm.xilinx@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Aug 4, 2021 at 4:28 PM Richard Cochran <richardcochran@gmail.com> wrote:
-> > @@ -87,8 +87,8 @@ config E1000E_HWTS
-> >  config IGB
-> >       tristate "Intel(R) 82575/82576 PCI-Express Gigabit Ethernet support"
-> >       depends on PCI
-> > -     imply PTP_1588_CLOCK
-> > -     select I2C
-> > +     depends on PTP_1588_CLOCK_OPTIONAL
-> > +     depends on I2C
->
-> This little i2c bit sneaks in, but I guess you considered any possible
-> trouble with it?
+When VFs are setup and torn down in quick succession, it is possible
+that a VF is torn down by the PF while the VF's virtchnl requests are
+still in the PF's mailbox ring. Processing the VF's virtchnl request
+when the VF itself doesn't exist results in undefined behavior. Fix
+this by adding a check to stop processing virtchnl requests when VF
+teardown is in progress.
 
-Good catch!
+Fixes: ddf30f7ff840 ("ice: Add handler to configure SR-IOV")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h             | 1 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 7 +++++++
+ 2 files changed, 8 insertions(+)
 
-I did need this with v2, as it was causing a circular dependency against
-(IIRC) CONFIG_MLXSW_I2C, but I'm fairly sure it's not needed any
-more after everything else uses 'depends on' now.
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 5517e13..e452397 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -240,6 +240,7 @@ enum ice_pf_state {
+ 	ICE_VFLR_EVENT_PENDING,
+ 	ICE_FLTR_OVERFLOW_PROMISC,
+ 	ICE_VF_DIS,
++	ICE_VF_DEINIT_IN_PROGRESS,
+ 	ICE_CFG_BUSY,
+ 	ICE_SERVICE_SCHED,
+ 	ICE_SERVICE_DIS,
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 85d98a8..9779519 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -499,6 +499,8 @@ void ice_free_vfs(struct ice_pf *pf)
+ 	struct ice_hw *hw = &pf->hw;
+ 	unsigned int tmp, i;
+ 
++	set_bit(ICE_VF_DEINIT_IN_PROGRESS, pf->state);
++
+ 	if (!pf->vf)
+ 		return;
+ 
+@@ -567,6 +569,7 @@ void ice_free_vfs(struct ice_pf *pf)
+ 				i);
+ 
+ 	clear_bit(ICE_VF_DIS, pf->state);
++	clear_bit(ICE_VF_DEINIT_IN_PROGRESS, pf->state);
+ 	clear_bit(ICE_FLAG_SRIOV_ENA, pf->flags);
+ }
+ 
+@@ -4527,6 +4530,10 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 	struct device *dev;
+ 	int err = 0;
+ 
++	/* if de-init is underway, don't process messages from VF */
++	if (test_bit(ICE_VF_DEINIT_IN_PROGRESS, pf->state))
++		return;
++
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id)) {
+ 		err = -EINVAL;
+-- 
+2.31.1
 
-I'm happy to resend a v4 without that change, as it doesn't belong in here,
-or we just leave it because it is correct after all, depending on what the Intel
-ethernet people prefer.
-
-> Acked-by: Richard Cochran <richardcochran@gmail.com>
-
-Thanks,
-
-      Arnd
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
