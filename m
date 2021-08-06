@@ -1,59 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 033FB3E2666
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Aug 2021 10:49:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F8B63E2C56
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Aug 2021 16:16:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9A94A60ACA;
-	Fri,  6 Aug 2021 08:49:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 04D314059F;
+	Fri,  6 Aug 2021 14:16:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4m09zKFWRGXZ; Fri,  6 Aug 2021 08:49:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TV-DR90NWICw; Fri,  6 Aug 2021 14:16:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD0E4608B8;
-	Fri,  6 Aug 2021 08:49:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E89EE40581;
+	Fri,  6 Aug 2021 14:16:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 835111BF82F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:49:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DE071BF82F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:55:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 61DD0608B8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:49:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3968540410
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:55:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ozZs4iwcJXai for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Aug 2021 08:49:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3B018605E5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:49:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10067"; a="212476400"
-X-IronPort-AV: E=Sophos;i="5.84,300,1620716400"; d="scan'208";a="212476400"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2021 01:49:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,300,1620716400"; d="scan'208";a="669339319"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga006.fm.intel.com with ESMTP; 06 Aug 2021 01:49:09 -0700
-Received: from gklab-229-137.igk.intel.com (gklab-229-137.igk.intel.com
- [172.22.229.137])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1768n6kY030013
- for <intel-wired-lan@lists.osuosl.org>; Fri, 6 Aug 2021 09:49:09 +0100
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  6 Aug 2021 10:49:06 +0200
-Message-Id: <1628239746-17380-10-git-send-email-wojciech.drewek@intel.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1628239746-17380-1-git-send-email-wojciech.drewek@intel.com>
-References: <1628239746-17380-1-git-send-email-wojciech.drewek@intel.com>
-Subject: [Intel-wired-lan] [PATCH net-next v6 9/9] ice: ndo_setup_tc
- implementation for PR
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VEMbHIRRL-TG for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Aug 2021 08:55:02 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ot1-x32d.google.com (mail-ot1-x32d.google.com
+ [IPv6:2607:f8b0:4864:20::32d])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BF51740403
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 08:55:02 +0000 (UTC)
+Received: by mail-ot1-x32d.google.com with SMTP id
+ z6-20020a0568302906b02904f268d34f86so7856420otu.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 06 Aug 2021 01:55:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vQ3UgSf4xT50NaOBc6M36wI32J1L7fLqBH5vbSjkalc=;
+ b=bjBzkosPXiPitvlhiVG6dOyOTbeWtMNEgU5suraax7zSp21b90oEW9/LQFvXogQxis
+ VLraQuJ1yXZu/Lm0BeE/QtlfE/novNjjgoKaOvrkvNi83w0Sca3NbIwEdykqO6tJL+x4
+ /RtjyLVhRnrtJT/JstldUvOQEvMvXx1CZgpQE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vQ3UgSf4xT50NaOBc6M36wI32J1L7fLqBH5vbSjkalc=;
+ b=oMcfTWHrC/jn7Ff8/OBR7iyPGq0Q3eKdlp0jU2ctH1leZkddb7SVQcM4wwrrYFMe0S
+ Gt81fkUBQUpiRHWIEdtrQaUZayf8Vq6I140fs7iU2MAOGwl+qqmfPj3StyumfFq4ytmM
+ ftC0Zk8lsKzmU+vVyWzE5sxHYIxZJ2SmY9CRU4RXGSGJCcq6Fw/nu+YjI0sfHTag1HBO
+ GVpy33vpJehm4FLvaEMDJe+ApIVzTRLpk7DSsAkhwCofX2Y37jgkGuWLIeesGjl8TP/M
+ 7wwTCamMkbp30LtvNh7/ej0Lp0npxyPwpupRyeswpw56obDPgpiupEVbB8W1Q9IXnRx0
+ Jbew==
+X-Gm-Message-State: AOAM533ShllwE6CKDZj5HJf/GFdG6QxIUxV7PTVlyQByS4vrmnHRDdA8
+ 8YEjqGwihtVCsH0yQeIW6oFmuj4kw+8Od2fhFwRHoQ==
+X-Google-Smtp-Source: ABdhPJwUbALNSlNSC8icYgxyFUrSEnrWJP5ENADRBHlZgfsVbbKz5g2OW38CCOeAgzI1FNK4mxJJwvIvgUo4wj9XYvU=
+X-Received: by 2002:a05:6830:1d73:: with SMTP id
+ l19mr6671887oti.316.1628240101470; 
+ Fri, 06 Aug 2021 01:55:01 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210720232624.1493424-1-nitesh@redhat.com>
+ <20210720232624.1493424-6-nitesh@redhat.com>
+In-Reply-To: <20210720232624.1493424-6-nitesh@redhat.com>
+From: Sreekanth Reddy <sreekanth.reddy@broadcom.com>
+Date: Fri, 6 Aug 2021 14:24:49 +0530
+Message-ID: <CAK=zhgo29UsFsK_q9RYnEocmTA20kUVX4BNnrpJPh35Ssb49zw@mail.gmail.com>
+To: Nitesh Narayan Lal <nitesh@redhat.com>
+X-Mailman-Approved-At: Fri, 06 Aug 2021 14:16:51 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v5 05/14] scsi: mpt3sas: Use
+ irq_set_affinity_and_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,180 +81,234 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: juri.lelli@redhat.com, ajit.khaparde@broadcom.com, jassisinghbrar@gmail.com,
+ Peter Zijlstra <peterz@infradead.org>, linux-pci@vger.kernel.org,
+ viresh.kumar@linaro.org, _govind@gmx.com, james.smart@broadcom.com,
+ mustafa.ismail@intel.com, govind@gmx.com, Tushar.Khandelwal@arm.com,
+ minlei@redhat.com, ahleihel@redhat.com, Ingo Molnar <mingo@kernel.org>,
+ sassmann@redhat.com, kabel@kernel.org, Stephen Rothwell <sfr@canb.auug.org.au>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ linux-scsi <linux-scsi@vger.kernel.org>, borisp@nvidia.com, maz@kernel.org,
+ Sathya Prakash Veerichetty <sathya.prakash@broadcom.com>,
+ "Ewan D. Milne" <emilne@redhat.com>,
+ Kashyap Desai <kashyap.desai@broadcom.com>, tatyana.e.nikolova@intel.com,
+ Chandrakanth Patil <chandrakanth.patil@broadcom.com>,
+ intel-wired-lan@lists.osuosl.org, yongqiang.niu@mediatek.com,
+ abelits@marvell.com, nilal@redhat.com,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, chunkuang.hu@kernel.org,
+ dick.kennedy@broadcom.com, faisal.latif@intel.com,
+ Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
+ frederic@kernel.org, robin.murphy@arm.com, rostedt@goodmis.org,
+ rppt@linux.vnet.ibm.com, kuba@kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Thomas Gleixner <tglx@linutronix.de>, somnath.kotur@broadcom.com,
+ shiraz.saleem@intel.com, ahs3@redhat.com, pjwaskiewicz@gmail.com,
+ sriharsha.basavapatna@broadcom.com, Neil Horman <nhorman@tuxdriver.com>,
+ Shivasharan Srikanteshwara <shivasharan.srikanteshwara@broadcom.com>,
+ netdev@vger.kernel.org, mtosatti@redhat.com, kheib@redhat.com,
+ linux-kernel@vger.kernel.org, tariqt@nvidia.com, stephen@networkplumber.org,
+ Sumit Saxena <sumit.saxena@broadcom.com>, poros@redhat.com,
+ bjorn.andersson@linaro.org, Tomas Henzl <thenzl@redhat.com>,
+ linux-api@vger.kernel.org, baolin.wang7@gmail.com, saeedm@nvidia.com,
+ Andrew Morton <akpm@linux-foundation.org>, jkc@redhat.com, jbrandeb@kernel.org,
+ David Miller <davem@davemloft.net>, leonro@nvidia.com, benve@cisco.com
+Content-Type: multipart/mixed; boundary="===============2976346374072884076=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Swiatkowski <michal.swiatkowski@intel.com>
+--===============2976346374072884076==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
+	boundary="000000000000e2a15305c8e03057"
 
-Add tc-flower support for VF port representor devices.
+--000000000000e2a15305c8e03057
+Content-Type: text/plain; charset="UTF-8"
 
-Implement ndo_setup_tc callback for TC HW offload on VF port representors
-devices. Implemented both methods: add and delete tc-flower flows.
+On Wed, Jul 21, 2021 at 4:57 AM Nitesh Narayan Lal <nitesh@redhat.com> wrote:
+>
+> The driver uses irq_set_affinity_hint() specifically for the high IOPS
+> queue interrupts for two purposes:
+>
+> - To set the affinity_hint which is consumed by the userspace for
+>   distributing the interrupts
+>
+> - To apply an affinity that it provides
+>
+> The driver enforces its own affinity to bind the high IOPS queue interrupts
+> to the local NUMA node. However, irq_set_affinity_hint() applying the
+> provided cpumask as an affinity (if not NULL) for the interrupt is an
+> undocumented side effect.
+>
+> To remove this side effect irq_set_affinity_hint() has been marked
+> as deprecated and new interfaces have been introduced. Hence, replace the
+> irq_set_affinity_hint() with the new interface irq_set_affinity_and_hint()
+> where the provided mask needs to be applied as the affinity and
+> affinity_hint pointer needs to be set and replace with
+> irq_update_affinity_hint() where only affinity_hint needs to be updated.
+>
 
-Mark NETIF_F_HW_TC bit in net device's feature set to enable offload TC
-infrastructure for port representor.
+Changes looks good and also verified that the high iops queue's IRQs
+are affinitied to local numa node.
 
-Implement TC filters replay function required to restore filters settings
-while switchdev configuration is rebuilt.
+Reviewed-by: Sreekanth Reddy <sreekanth.reddy@broadcom.com>
+> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+> ---
+>  drivers/scsi/mpt3sas/mpt3sas_base.c | 21 ++++++++++-----------
+>  1 file changed, 10 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/scsi/mpt3sas/mpt3sas_base.c b/drivers/scsi/mpt3sas/mpt3sas_base.c
+> index c39955239d1c..c1a11962f227 100644
+> --- a/drivers/scsi/mpt3sas/mpt3sas_base.c
+> +++ b/drivers/scsi/mpt3sas/mpt3sas_base.c
+> @@ -2991,6 +2991,7 @@ _base_check_enable_msix(struct MPT3SAS_ADAPTER *ioc)
+>  static void
+>  _base_free_irq(struct MPT3SAS_ADAPTER *ioc)
+>  {
+> +       unsigned int irq;
+>         struct adapter_reply_queue *reply_q, *next;
+>
+>         if (list_empty(&ioc->reply_queue_list))
+> @@ -2998,9 +2999,10 @@ _base_free_irq(struct MPT3SAS_ADAPTER *ioc)
+>
+>         list_for_each_entry_safe(reply_q, next, &ioc->reply_queue_list, list) {
+>                 list_del(&reply_q->list);
+> -               if (ioc->smp_affinity_enable)
+> -                       irq_set_affinity_hint(pci_irq_vector(ioc->pdev,
+> -                           reply_q->msix_index), NULL);
+> +               if (ioc->smp_affinity_enable) {
+> +                       irq = pci_irq_vector(ioc->pdev, reply_q->msix_index);
+> +                       irq_update_affinity_hint(irq, NULL);
+> +               }
+>                 free_irq(pci_irq_vector(ioc->pdev, reply_q->msix_index),
+>                          reply_q);
+>                 kfree(reply_q);
+> @@ -3056,16 +3058,13 @@ _base_request_irq(struct MPT3SAS_ADAPTER *ioc, u8 index)
+>   * @ioc: per adapter object
+>   *
+>   * The enduser would need to set the affinity via /proc/irq/#/smp_affinity
+> - *
+> - * It would nice if we could call irq_set_affinity, however it is not
+> - * an exported symbol
+>   */
+>  static void
+>  _base_assign_reply_queues(struct MPT3SAS_ADAPTER *ioc)
+>  {
+> -       unsigned int cpu, nr_cpus, nr_msix, index = 0;
+> +       unsigned int cpu, nr_cpus, nr_msix, index = 0, irq;
+>         struct adapter_reply_queue *reply_q;
+> -       int local_numa_node;
+> +       const struct cpumask *mask;
+>
+>         if (!_base_is_controller_msix_enabled(ioc))
+>                 return;
+> @@ -3088,11 +3087,11 @@ _base_assign_reply_queues(struct MPT3SAS_ADAPTER *ioc)
+>                  * corresponding to high iops queues.
+>                  */
+>                 if (ioc->high_iops_queues) {
+> -                       local_numa_node = dev_to_node(&ioc->pdev->dev);
+> +                       mask = cpumask_of_node(dev_to_node(&ioc->pdev->dev));
+>                         for (index = 0; index < ioc->high_iops_queues;
+>                             index++) {
+> -                               irq_set_affinity_hint(pci_irq_vector(ioc->pdev,
+> -                                   index), cpumask_of_node(local_numa_node));
+> +                               irq = pci_irq_vector(ioc->pdev, index);
+> +                               irq_set_affinity_and_hint(irq, mask);
+>                         }
+>                 }
+>
+> --
+> 2.27.0
+>
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
-Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_eswitch.c |  3 ++
- drivers/net/ethernet/intel/ice/ice_repr.c    | 53 ++++++++++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_tc_lib.c  | 17 +++++++++
- drivers/net/ethernet/intel/ice/ice_tc_lib.h  |  1 +
- 4 files changed, 74 insertions(+)
+--000000000000e2a15305c8e03057
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-index ec2aa789e214..ef6ca61c9859 100644
---- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-@@ -7,6 +7,7 @@
- #include "ice_fltr.h"
- #include "ice_repr.h"
- #include "ice_devlink.h"
-+#include "ice_tc_lib.h"
- 
- /**
-  * ice_eswitch_setup_env - configure switchdev HW filters
-@@ -644,6 +645,8 @@ int ice_eswitch_rebuild(struct ice_pf *pf)
- 
- 	ice_eswitch_remap_rings_to_vectors(pf);
- 
-+	ice_replay_tc_fltrs(pf);
-+
- 	status = ice_vsi_open(ctrl_vsi);
- 	if (status)
- 		return status;
-diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index 23e27bec4a16..8fd90ac661b1 100644
---- a/drivers/net/ethernet/intel/ice/ice_repr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -5,6 +5,7 @@
- #include "ice_eswitch.h"
- #include "ice_devlink.h"
- #include "ice_virtchnl_pf.h"
-+#include "ice_tc_lib.h"
- 
- /**
-  * ice_repr_get_sw_port_id - get port ID associated with representor
-@@ -141,6 +142,55 @@ static int ice_repr_stop(struct net_device *netdev)
- 	return &repr->vf->devlink_port;
- }
- 
-+static int
-+ice_repr_setup_tc_cls_flower(struct ice_repr *repr,
-+			     struct flow_cls_offload *flower)
-+{
-+	switch (flower->command) {
-+	case FLOW_CLS_REPLACE:
-+		return ice_add_cls_flower(repr->netdev, repr->src_vsi, flower);
-+	case FLOW_CLS_DESTROY:
-+		return ice_del_cls_flower(repr->src_vsi, flower);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int
-+ice_repr_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
-+			   void *cb_priv)
-+{
-+	struct flow_cls_offload *flower = (struct flow_cls_offload *)type_data;
-+	struct ice_netdev_priv *np = (struct ice_netdev_priv *)cb_priv;
-+
-+	switch (type) {
-+	case TC_SETUP_CLSFLOWER:
-+		return ice_repr_setup_tc_cls_flower(np->repr, flower);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+static LIST_HEAD(ice_repr_block_cb_list);
-+
-+static int
-+ice_repr_setup_tc(struct net_device *netdev, enum tc_setup_type type,
-+		  void *type_data)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+
-+	switch (type) {
-+	case TC_SETUP_BLOCK:
-+		return flow_block_cb_setup_simple((struct flow_block_offload *)
-+						  type_data,
-+						  &ice_repr_block_cb_list,
-+						  ice_repr_setup_tc_block_cb,
-+						  np, np, true);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- static const struct net_device_ops ice_repr_netdev_ops = {
- 	.ndo_get_phys_port_name = ice_repr_get_phys_port_name,
- 	.ndo_get_stats64 = ice_repr_get_stats64,
-@@ -148,6 +198,7 @@ static int ice_repr_stop(struct net_device *netdev)
- 	.ndo_stop = ice_repr_stop,
- 	.ndo_start_xmit = ice_eswitch_port_start_xmit,
- 	.ndo_get_devlink_port = ice_repr_get_devlink_port,
-+	.ndo_setup_tc = ice_repr_setup_tc,
- };
- 
- /**
-@@ -170,6 +221,8 @@ bool ice_is_port_repr_netdev(struct net_device *netdev)
- 	netdev->netdev_ops = &ice_repr_netdev_ops;
- 	ice_set_ethtool_repr_ops(netdev);
- 
-+	netdev->hw_features |= NETIF_F_HW_TC;
-+
- 	netif_carrier_off(netdev);
- 	netif_tx_stop_all_queues(netdev);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 6a61888f80aa..34fe725b4a53 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -836,3 +836,20 @@ static int ice_del_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 
- 	return 0;
- }
-+
-+/**
-+ * ice_replay_tc_fltrs - replay TC filters
-+ * @pf: pointer to PF struct
-+ */
-+void ice_replay_tc_fltrs(struct ice_pf *pf)
-+{
-+	struct ice_tc_flower_fltr *fltr;
-+	struct hlist_node *node;
-+
-+	hlist_for_each_entry_safe(fltr, node,
-+				  &pf->tc_flower_fltr_list,
-+				  tc_flower_node) {
-+		fltr->extack = NULL;
-+		ice_add_switch_fltr(fltr->src_vsi, fltr);
-+	}
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index 883d2891f92c..d90e9e37ae25 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -125,5 +125,6 @@ struct ice_tc_flower_fltr {
- 		   struct flow_cls_offload *cls_flower);
- int
- ice_del_cls_flower(struct ice_vsi *vsi, struct flow_cls_offload *cls_flower);
-+void ice_replay_tc_fltrs(struct ice_pf *pf);
- 
- #endif /* _ICE_TC_LIB_H_ */
--- 
-1.8.3.1
+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
+5AGo2E3pe+2yEgkxKvM2fnniZHUiSjbrfKk6nl9RIXPOKUP5HntZFdA5XuNYXWM+HPs3O0AJwBm/
+VCZsZtkjVjxeBmTXiXDnxytdsHdGrHGymPfjJYatDu6d1KRVDlMCAwEAAaOCAd0wggHZMA4GA1Ud
+DwEB/wQEAwIFoDCBowYIKwYBBQUHAQEEgZYwgZMwTgYIKwYBBQUHMAKGQmh0dHA6Ly9zZWN1cmUu
+Z2xvYmFsc2lnbi5jb20vY2FjZXJ0L2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNydDBBBggr
+BgEFBQcwAYY1aHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyM3BlcnNvbmFsc2lnbjJj
+YTIwMjAwTQYDVR0gBEYwRDBCBgorBgEEAaAyASgKMDQwMgYIKwYBBQUHAgEWJmh0dHBzOi8vd3d3
+Lmdsb2JhbHNpZ24uY29tL3JlcG9zaXRvcnkvMAkGA1UdEwQCMAAwSQYDVR0fBEIwQDA+oDygOoY4
+aHR0cDovL2NybC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWduMmNhMjAyMC5jcmww
+JwYDVR0RBCAwHoEcc3JlZWthbnRoLnJlZGR5QGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggrBgEF
+BQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUClVHbAvhzGT8
+s2/6xOf58NkGMQ8wDQYJKoZIhvcNAQELBQADggEBAENRsP1H3calKC2Sstg/8li8byKiqljCFkfi
+IhcJsjPOOR9UZnMFxAoH/s2AlM7mQDR7rZ2MxRuUnIa6Cp5W5w1lUJHktjCUHnQq5nIAZ9GH5SDY
+pgzbFsoYX8U2QCmkAC023FF++ZDJuc9aj0R/nhABxmUYErIze2jV/VO8Pj7TnCrBONZ/Qvf8G5CQ
+X1hfOcCDBgT7eSvf9YRLaV935mB9/V+KYX8lT4E0lB4wQ0OLV8qUS9UuNoG2lCJ5UQTMrBgeUFFY
+eKKhn+R91COmRlKGlaCdTtzKG5atS6dPnGEYUHjcpUvzejmJ5ghBk6P01HqSACsszDOzmBvdiOs+
+Ux0xggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNh
+MTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgxyeqr1
+0keLkvPdYw4wDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIHGcjA9kKHvPIHX+klsZ
+wzPQtoRt275a2289l8ZnwnDsMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkF
+MQ8XDTIxMDgwNjA4NTUwMVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZIAWUD
+BAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEHMAsG
+CWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQAJePjWHiUI9thsxtmg+5mkHJIkX1IPFlpSIzId
+iGditYwulmUWSateElSnXlRdIpbMK5cD3U4B9KmPIJo2+tWkF0o7Aq7Q2NGRXVztfpXNNMcgmual
+K32mbTudUOntuMl+eBW+JHbKOYYxBU1ojm7dA4RRppxIK36nmZlKpxtd9izofqog0okJM6OQLbX5
+H2KB4FUkVs3xBfZ0UvTY1v6VA/nxW/uA0L4UefhEhk3W/DGjS/fZOJYpb9JXnyDr5nok9xAM8bGR
+HFJDhCwjOy0Ge2w06Q4XmhJ994BHFousratRFbu4qeeTDwhBUeevaDWEeOuwy46IPuw/lUca/hN1
+--000000000000e2a15305c8e03057--
+
+--===============2976346374072884076==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2976346374072884076==--
