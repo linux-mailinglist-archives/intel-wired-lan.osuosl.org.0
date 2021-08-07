@@ -1,53 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B4953E3151
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Aug 2021 23:45:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3AEC940409;
-	Fri,  6 Aug 2021 21:45:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4DhPeLXPFnkT; Fri,  6 Aug 2021 21:45:14 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 93746402A3;
-	Fri,  6 Aug 2021 21:45:14 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6A8761BF5B5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 21:45:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C53403E3415
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Aug 2021 10:24:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 58AAC40140
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 21:45:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B9E314023C;
+	Sat,  7 Aug 2021 08:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CIsTDbsYj86u for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Aug 2021 21:45:07 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8Hd51lzVaa0a; Sat,  7 Aug 2021 08:24:35 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1D95840018;
+	Sat,  7 Aug 2021 08:24:35 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F2401BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 08:24:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id E78BB606AE
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 08:24:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zd6NeNwCjsTQ for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  7 Aug 2021 08:24:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 036E1400DF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Aug 2021 21:45:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10068"; a="214476021"
-X-IronPort-AV: E=Sophos;i="5.84,301,1620716400"; d="scan'208";a="214476021"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2021 14:45:04 -0700
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CB3E760689
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 08:24:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10068"; a="201664512"
+X-IronPort-AV: E=Sophos;i="5.84,301,1620716400"; 
+ d="gz'50?scan'50,208,50";a="201664512"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2021 01:24:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,301,1620716400"; d="scan'208";a="637859742"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
- by orsmga005.jf.intel.com with ESMTP; 06 Aug 2021 14:45:03 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  6 Aug 2021 14:31:47 -0700
-Message-Id: <20210806213147.20581-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+X-IronPort-AV: E=Sophos;i="5.84,301,1620716400"; 
+ d="gz'50?scan'50,208,50";a="504269355"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 07 Aug 2021 01:24:25 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mCHd2-000Hg6-Sg; Sat, 07 Aug 2021 08:24:24 +0000
+Date: Sat, 7 Aug 2021 16:24:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <202108071616.TxA4HRdX-lkp@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Add support for VF rate
- limiting
+Content-Type: multipart/mixed; boundary="2fHTh5uZTiUOsy+g"
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 80/118]
+ ice_main.c:undefined reference to `ice_ptp_link_change'
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,654 +67,755 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, kbuild-all@lists.01.org,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
 
-Implement ndo_set_vf_rate to support setting of min_tx_rate and
-max_tx_rate; set the appropriate bandwidth in the scheduler for the
-node representing the specified VF VSI.
+--2fHTh5uZTiUOsy+g
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Co-developed-by: Tarun Singh <tarun.k.singh@intel.com>
-Signed-off-by: Tarun Singh <tarun.k.singh@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+head:   96ea8bee7ce727581d6cc6f23ed4b277dc0e3355
+commit: 5ef81503204bb4b80757b03ff40129ad038cd7c0 [80/118] ice: implement basic E822 PTP support
+config: arm-randconfig-r003-20210804 (attached as .config)
+compiler: arm-linux-gnueabi-gcc (GCC) 10.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=5ef81503204bb4b80757b03ff40129ad038cd7c0
+        git remote add tnguy-next-queue https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
+        git fetch --no-tags tnguy-next-queue dev-queue
+        git checkout 5ef81503204bb4b80757b03ff40129ad038cd7c0
+        # save the attached .config to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-10.3.0 make.cross O=build_dir ARCH=arm SHELL=/bin/bash
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_eth_ioctl':
+   ice_main.c:(.text+0x1724): undefined reference to `ice_ptp_get_ts_config'
+   arm-linux-gnueabi-ld: ice_main.c:(.text+0x1734): undefined reference to `ice_ptp_set_ts_config'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_prepare_for_reset':
+   ice_main.c:(.text+0x6678): undefined reference to `ice_ptp_release'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_rebuild':
+   ice_main.c:(.text+0x8148): undefined reference to `ice_ptp_init'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_remove':
+   ice_main.c:(.text+0x912c): undefined reference to `ice_ptp_release'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_link_event':
+>> ice_main.c:(.text+0xb91c): undefined reference to `ice_ptp_link_change'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_misc_intr':
+   ice_main.c:(.text+0xd62c): undefined reference to `ice_ptp_process_ts'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_up_complete':
+   ice_main.c:(.text+0xdc58): undefined reference to `ice_ptp_link_change'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_down':
+>> (.text+0x1038c): undefined reference to `ice_ptp_link_change'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_probe':
+   ice_main.c:(.text+0x122b8): undefined reference to `ice_ptp_init'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_txrx_lib.o: in function `ice_process_skb_fields':
+   ice_txrx_lib.c:(.text+0x5b4): undefined reference to `ice_ptp_rx_hwtstamp'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_txrx.o: in function `ice_tstamp':
+   ice_txrx.c:(.text+0xab8): undefined reference to `ice_ptp_request_ts'
+   arm-linux-gnueabi-ld: drivers/net/ethernet/intel/ice/ice_ethtool.o: in function `ice_get_ts_info':
+   ice_ethtool.c:(.text+0x4074): undefined reference to `ice_get_ptp_clock_index'
+   arm-linux-gnueabi-ld: drivers/firmware/qcom_scm-smc.o: in function `__scm_smc_do_quirk':
+   qcom_scm-smc.c:(.text+0x74): undefined reference to `__arm_smccc_smc'
+   arm-linux-gnueabi-ld: drivers/firmware/qcom_scm-legacy.o: in function `scm_legacy_call':
+   qcom_scm-legacy.c:(.text+0x3a0): undefined reference to `__arm_smccc_smc'
+   arm-linux-gnueabi-ld: drivers/firmware/qcom_scm-legacy.o: in function `scm_legacy_call_atomic':
+   qcom_scm-legacy.c:(.text+0x634): undefined reference to `__arm_smccc_smc'
+
+Kconfig warnings: (for reference only)
+   WARNING: unmet direct dependencies detected for QCOM_SCM
+   Depends on (ARM || ARM64) && HAVE_ARM_SMCCC
+   Selected by
+   - ARM_QCOM_SPM_CPUIDLE && CPU_IDLE && (ARM || ARM64) && (ARCH_QCOM || COMPILE_TEST && !ARM64 && MMU
+
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c      | 174 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_lib.h      |   4 +-
- drivers/net/ethernet/intel/ice/ice_main.c     |   1 +
- drivers/net/ethernet/intel/ice/ice_sched.c    | 129 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_sched.h    |  10 +
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 160 +++++++++++++++-
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  15 +-
- 7 files changed, 489 insertions(+), 4 deletions(-)
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 5906783344d0..4c77ee5a1984 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3592,6 +3592,180 @@ int ice_clear_dflt_vsi(struct ice_sw *sw)
- 	return 0;
- }
- 
-+/**
-+ * ice_get_link_speed_mbps - get link speed in Mbps
-+ * @vsi: the VSI whose link speed is being queried
-+ *
-+ * Return current VSI link speed and 0 if the speed is unknown.
-+ */
-+int ice_get_link_speed_mbps(struct ice_vsi *vsi)
-+{
-+	switch (vsi->port_info->phy.link_info.link_speed) {
-+	case ICE_AQ_LINK_SPEED_100GB:
-+		return SPEED_100000;
-+	case ICE_AQ_LINK_SPEED_50GB:
-+		return SPEED_50000;
-+	case ICE_AQ_LINK_SPEED_40GB:
-+		return SPEED_40000;
-+	case ICE_AQ_LINK_SPEED_25GB:
-+		return SPEED_25000;
-+	case ICE_AQ_LINK_SPEED_20GB:
-+		return SPEED_20000;
-+	case ICE_AQ_LINK_SPEED_10GB:
-+		return SPEED_10000;
-+	case ICE_AQ_LINK_SPEED_5GB:
-+		return SPEED_5000;
-+	case ICE_AQ_LINK_SPEED_2500MB:
-+		return SPEED_2500;
-+	case ICE_AQ_LINK_SPEED_1000MB:
-+		return SPEED_1000;
-+	case ICE_AQ_LINK_SPEED_100MB:
-+		return SPEED_100;
-+	case ICE_AQ_LINK_SPEED_10MB:
-+		return SPEED_10;
-+	case ICE_AQ_LINK_SPEED_UNKNOWN:
-+	default:
-+		return 0;
-+	}
-+}
-+
-+/**
-+ * ice_get_link_speed_kbps - get link speed in Kbps
-+ * @vsi: the VSI whose link speed is being queried
-+ *
-+ * Return current VSI link speed and 0 if the speed is unknown.
-+ */
-+static int ice_get_link_speed_kbps(struct ice_vsi *vsi)
-+{
-+	int speed_mbps;
-+
-+	speed_mbps = ice_get_link_speed_mbps(vsi);
-+
-+	return speed_mbps * 1000;
-+}
-+
-+/**
-+ * ice_set_min_bw_limit - setup minimum BW limit for Tx based on min_tx_rate
-+ * @vsi: VSI to be configured
-+ * @min_tx_rate: min Tx rate in Kbps to be configured as BW limit
-+ *
-+ * If the min_tx_rate is specified as 0 that means to clear the minimum BW limit
-+ * profile, otherwise a non-zero value will force a minimum BW limit for the VSI
-+ * on TC 0.
-+ */
-+int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate)
-+{
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status status;
-+	struct device *dev;
-+	int speed;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (!vsi->port_info) {
-+		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
-+			vsi->idx, vsi->type);
-+		return -EINVAL;
-+	}
-+
-+	speed = ice_get_link_speed_kbps(vsi);
-+	if (min_tx_rate > (u64)speed) {
-+		dev_err(dev, "invalid min Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
-+			min_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
-+			speed);
-+		return -EINVAL;
-+	}
-+
-+	/* Configure min BW for VSI limit */
-+	if (min_tx_rate) {
-+		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
-+						   ICE_MIN_BW, min_tx_rate);
-+		if (status) {
-+			dev_err(dev, "failed to set min Tx rate(%llu Kbps) for %s %d\n",
-+				min_tx_rate, ice_vsi_type_str(vsi->type),
-+				vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "set min Tx rate(%llu Kbps) for %s\n",
-+			min_tx_rate, ice_vsi_type_str(vsi->type));
-+	} else {
-+		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
-+							vsi->idx, 0,
-+							ICE_MIN_BW);
-+		if (status) {
-+			dev_err(dev, "failed to clear min Tx rate configuration for %s %d\n",
-+				ice_vsi_type_str(vsi->type), vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "cleared min Tx rate configuration for %s %d\n",
-+			ice_vsi_type_str(vsi->type), vsi->idx);
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_set_max_bw_limit - setup maximum BW limit for Tx based on max_tx_rate
-+ * @vsi: VSI to be configured
-+ * @max_tx_rate: max Tx rate in Kbps to be configured as BW limit
-+ *
-+ * If the max_tx_rate is specified as 0 that means to clear the maximum BW limit
-+ * profile, otherwise a non-zero value will force a maximum BW limit for the VSI
-+ * on TC 0.
-+ */
-+int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate)
-+{
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status status;
-+	struct device *dev;
-+	int speed;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (!vsi->port_info) {
-+		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
-+			vsi->idx, vsi->type);
-+		return -EINVAL;
-+	}
-+
-+	speed = ice_get_link_speed_kbps(vsi);
-+	if (max_tx_rate > (u64)speed) {
-+		dev_err(dev, "invalid max Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
-+			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
-+			speed);
-+		return -EINVAL;
-+	}
-+
-+	/* Configure max BW for VSI limit */
-+	if (max_tx_rate) {
-+		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
-+						   ICE_MAX_BW, max_tx_rate);
-+		if (status) {
-+			dev_err(dev, "failed setting max Tx rate(%llu Kbps) for %s %d\n",
-+				max_tx_rate, ice_vsi_type_str(vsi->type),
-+				vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "set max Tx rate(%llu Kbps) for %s %d\n",
-+			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx);
-+	} else {
-+		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
-+							vsi->idx, 0,
-+							ICE_MAX_BW);
-+		if (status) {
-+			dev_err(dev, "failed clearing max Tx rate configuration for %s %d\n",
-+				ice_vsi_type_str(vsi->type), vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "cleared max Tx rate configuration for %s %d\n",
-+			ice_vsi_type_str(vsi->type), vsi->idx);
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_set_link - turn on/off physical link
-  * @vsi: VSI to modify physical link on
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index b443ea46274f..0cef9b665d8c 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -116,7 +116,9 @@ bool ice_is_vsi_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
- int ice_set_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
- 
- int ice_clear_dflt_vsi(struct ice_sw *sw);
--
-+int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate);
-+int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate);
-+int ice_get_link_speed_mbps(struct ice_vsi *vsi);
- int ice_vsi_update_security(struct ice_vsi *vsi,
- 			    void (*fill)(struct ice_vsi_ctx *));
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 62326f7e6a48..2ae76c3a7c01 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -7443,6 +7443,7 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_set_vf_vlan = ice_set_vf_port_vlan,
- 	.ndo_set_vf_link_state = ice_set_vf_link_state,
- 	.ndo_get_vf_stats = ice_get_vf_stats,
-+	.ndo_set_vf_rate = ice_set_vf_bw,
- 	.ndo_vlan_rx_add_vid = ice_vlan_rx_add_vid,
- 	.ndo_vlan_rx_kill_vid = ice_vlan_rx_kill_vid,
- 	.ndo_setup_tc = ice_setup_tc,
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index 2d9b10277186..8f2f25f2cbf8 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -3011,6 +3011,45 @@ static void ice_set_clear_shared_bw(struct ice_bw_type_info *bw_t_info, u32 bw)
- 	}
- }
- 
-+/**
-+ * ice_cfg_vsi_bw_lmt_per_tc - configure VSI BW limit per TC
-+ * @pi: port information structure
-+ * @vsi_handle: software VSI handle
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ * @bw: bandwidth in Kbps
-+ *
-+ * This function configures BW limit of VSI scheduling node based on TC
-+ * information.
-+ */
-+enum ice_status
-+ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			  enum ice_rl_type rl_type, u32 bw)
-+{
-+	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
-+						ICE_AGG_TYPE_VSI, tc, rl_type,
-+						bw);
-+}
-+
-+/**
-+ * ice_cfg_vsi_bw_dflt_lmt_per_tc - configure default VSI BW limit per TC
-+ * @pi: port information structure
-+ * @vsi_handle: software VSI handle
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ *
-+ * This function configures default BW limit of VSI scheduling node based on TC
-+ * information.
-+ */
-+enum ice_status
-+ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			       enum ice_rl_type rl_type)
-+{
-+	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
-+						ICE_AGG_TYPE_VSI, tc, rl_type,
-+						ICE_SCHED_DFLT_BW);
-+}
-+
- /**
-  * ice_sched_calc_wakeup - calculate RL profile wakeup parameter
-  * @hw: pointer to the HW struct
-@@ -3783,6 +3822,96 @@ ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 				      ICE_SCHED_DFLT_BW);
- }
- 
-+/**
-+ * ice_sched_get_node_by_id_type - get node from ID type
-+ * @pi: port information structure
-+ * @id: identifier
-+ * @agg_type: type of aggregator
-+ * @tc: traffic class
-+ *
-+ * This function returns node identified by ID of type aggregator, and
-+ * based on traffic class (TC). This function needs to be called with
-+ * the scheduler lock held.
-+ */
-+static struct ice_sched_node *
-+ice_sched_get_node_by_id_type(struct ice_port_info *pi, u32 id,
-+			      enum ice_agg_type agg_type, u8 tc)
-+{
-+	struct ice_sched_node *node = NULL;
-+
-+	switch (agg_type) {
-+	case ICE_AGG_TYPE_VSI: {
-+		struct ice_vsi_ctx *vsi_ctx;
-+		u16 vsi_handle = (u16)id;
-+
-+		if (!ice_is_vsi_valid(pi->hw, vsi_handle))
-+			break;
-+		/* Get sched_vsi_info */
-+		vsi_ctx = ice_get_vsi_ctx(pi->hw, vsi_handle);
-+		if (!vsi_ctx)
-+			break;
-+		node = vsi_ctx->sched.vsi_node[tc];
-+		break;
-+	}
-+
-+	case ICE_AGG_TYPE_AGG: {
-+		struct ice_sched_node *tc_node;
-+
-+		tc_node = ice_sched_get_tc_node(pi, tc);
-+		if (tc_node)
-+			node = ice_sched_get_agg_node(pi, tc_node, id);
-+		break;
-+	}
-+
-+	default:
-+		break;
-+	}
-+
-+	return node;
-+}
-+
-+/**
-+ * ice_sched_set_node_bw_lmt_per_tc - set node BW limit per TC
-+ * @pi: port information structure
-+ * @id: ID (software VSI handle or AGG ID)
-+ * @agg_type: aggregator type (VSI or AGG type node)
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ * @bw: bandwidth in Kbps
-+ *
-+ * This function sets BW limit of VSI or Aggregator scheduling node
-+ * based on TC information from passed in argument BW.
-+ */
-+enum ice_status
-+ice_sched_set_node_bw_lmt_per_tc(struct ice_port_info *pi, u32 id,
-+				 enum ice_agg_type agg_type, u8 tc,
-+				 enum ice_rl_type rl_type, u32 bw)
-+{
-+	enum ice_status status = ICE_ERR_PARAM;
-+	struct ice_sched_node *node;
-+
-+	if (!pi)
-+		return status;
-+
-+	if (rl_type == ICE_UNKNOWN_BW)
-+		return status;
-+
-+	mutex_lock(&pi->sched_lock);
-+	node = ice_sched_get_node_by_id_type(pi, id, agg_type, tc);
-+	if (!node) {
-+		ice_debug(pi->hw, ICE_DBG_SCHED, "Wrong id, agg type, or tc\n");
-+		goto exit_set_node_bw_lmt_per_tc;
-+	}
-+	if (bw == ICE_SCHED_DFLT_BW)
-+		status = ice_sched_set_node_bw_dflt_lmt(pi, node, rl_type);
-+	else
-+		status = ice_sched_set_node_bw_lmt(pi, node, rl_type, bw);
-+
-+exit_set_node_bw_lmt_per_tc:
-+	mutex_unlock(&pi->sched_lock);
-+	return status;
-+}
-+
- /**
-  * ice_cfg_rl_burst_size - Set burst size value
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.h b/drivers/net/ethernet/intel/ice/ice_sched.h
-index fdf7a5882f07..7c0b1d424707 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.h
-@@ -104,6 +104,16 @@ ice_cfg_q_bw_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- enum ice_status
- ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 		      u16 q_handle, enum ice_rl_type rl_type);
-+enum ice_status
-+ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			  enum ice_rl_type rl_type, u32 bw);
-+enum ice_status
-+ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			       enum ice_rl_type rl_type);
-+enum ice_status
-+ice_sched_set_node_bw_lmt_per_tc(struct ice_port_info *pi, u32 id,
-+				 enum ice_agg_type agg_type, u8 tc,
-+				 enum ice_rl_type rl_type, u32 bw);
- enum ice_status ice_cfg_rl_burst_size(struct ice_hw *hw, u32 bytes);
- void ice_sched_replay_agg_vsi_preinit(struct ice_hw *hw);
- void ice_sched_replay_agg(struct ice_hw *hw);
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 9779519639c1..0ed7f1ec6172 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -5,6 +5,7 @@
- #include "ice_base.h"
- #include "ice_lib.h"
- #include "ice_fltr.h"
-+#include "ice_dcb_lib.h"
- #include "ice_flow.h"
- #include "ice_eswitch.h"
- #include "ice_virtchnl_allowlist.h"
-@@ -768,6 +769,40 @@ static int ice_calc_vf_first_vector_idx(struct ice_pf *pf, struct ice_vf *vf)
- 	return pf->sriov_base_vector + vf->vf_id * pf->num_msix_per_vf;
- }
- 
-+/**
-+ * ice_vf_rebuild_host_tx_rate_cfg - re-apply the Tx rate limiting configuration
-+ * @vf: VF to re-apply the configuration for
-+ *
-+ * Called after a VF VSI has been re-added/rebuild during reset. The PF driver
-+ * needs to re-apply the host configured Tx rate limiting configuration.
-+ */
-+static int ice_vf_rebuild_host_tx_rate_cfg(struct ice_vf *vf)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-+	int err;
-+
-+	if (vf->min_tx_rate) {
-+		err = ice_set_min_bw_limit(vsi, (u64)vf->min_tx_rate * 1000);
-+		if (err) {
-+			dev_err(dev, "failed to set min Tx rate to %d Mbps for VF %u, error %d\n",
-+				vf->min_tx_rate, vf->vf_id, err);
-+			return err;
-+		}
-+	}
-+
-+	if (vf->max_tx_rate) {
-+		err = ice_set_max_bw_limit(vsi, (u64)vf->max_tx_rate * 1000);
-+		if (err) {
-+			dev_err(dev, "failed to set max Tx rate to %d Mbps for VF %u, error %d\n",
-+				vf->max_tx_rate, vf->vf_id, err);
-+			return err;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_vf_rebuild_host_vlan_cfg - add VLAN 0 filter or rebuild the Port VLAN
-  * @vf: VF to add MAC filters for
-@@ -1309,6 +1344,11 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
- 	if (ice_vf_rebuild_host_vlan_cfg(vf))
- 		dev_err(dev, "failed to rebuild VLAN configuration for VF %u\n",
- 			vf->vf_id);
-+
-+	if (ice_vf_rebuild_host_tx_rate_cfg(vf))
-+		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
-+			vf->vf_id);
-+
- 	/* rebuild aggregator node config for main VF VSI */
- 	ice_vf_rebuild_aggregator_node_cfg(vsi);
- }
-@@ -4702,8 +4742,8 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
- 		ivi->linkstate = IFLA_VF_LINK_STATE_ENABLE;
- 	else
- 		ivi->linkstate = IFLA_VF_LINK_STATE_DISABLE;
--	ivi->max_tx_rate = vf->tx_rate;
--	ivi->min_tx_rate = 0;
-+	ivi->max_tx_rate = vf->max_tx_rate;
-+	ivi->min_tx_rate = vf->min_tx_rate;
- 	return 0;
- }
- 
-@@ -4882,6 +4922,122 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
- 	return 0;
- }
- 
-+/**
-+ * ice_calc_all_vfs_min_tx_rate - calculate cumulative min Tx rate on all VFs
-+ * @pf: PF associated with VFs
-+ */
-+static int ice_calc_all_vfs_min_tx_rate(struct ice_pf *pf)
-+{
-+	int rate = 0, i;
-+
-+	ice_for_each_vf(pf, i)
-+		rate += pf->vf[i].min_tx_rate;
-+
-+	return rate;
-+}
-+
-+/**
-+ * ice_min_tx_rate_oversubscribed - check if min Tx rate causes oversubscription
-+ * @vf: VF trying to configure min_tx_rate
-+ * @min_tx_rate: min Tx rate in Mbps
-+ *
-+ * Check if the min_tx_rate being passed in will cause oversubscription of total
-+ * min_tx_rate based on the current link speed and all other VFs configured
-+ * min_tx_rate
-+ *
-+ * Return true if the passed min_tx_rate would cause oversubscription, else
-+ * return false
-+ */
-+static bool
-+ice_min_tx_rate_oversubscribed(struct ice_vf *vf, int min_tx_rate)
-+{
-+	int link_speed_mbps = ice_get_link_speed_mbps(ice_get_vf_vsi(vf));
-+	int all_vfs_min_tx_rate = ice_calc_all_vfs_min_tx_rate(vf->pf);
-+
-+	/* this VF's previous rate is being overwritten */
-+	all_vfs_min_tx_rate -= vf->min_tx_rate;
-+
-+	if (all_vfs_min_tx_rate + min_tx_rate > link_speed_mbps) {
-+		dev_err(ice_pf_to_dev(vf->pf), "min_tx_rate of %d Mbps on VF %u would cause oversubscription of %d Mbps based on the current link speed %d Mbps\n",
-+			min_tx_rate, vf->vf_id,
-+			all_vfs_min_tx_rate + min_tx_rate - link_speed_mbps,
-+			link_speed_mbps);
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
-+/**
-+ * ice_set_vf_bw - set min/max VF bandwidth
-+ * @netdev: network interface device structure
-+ * @vf_id: VF identifier
-+ * @min_tx_rate: Minimum Tx rate in Mbps
-+ * @max_tx_rate: Maximum Tx rate in Mbps
-+ */
-+int
-+ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
-+	      int max_tx_rate)
-+{
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
-+	struct ice_vsi *vsi;
-+	struct device *dev;
-+	struct ice_vf *vf;
-+	int ret;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (ice_validate_vf_id(pf, vf_id))
-+		return -EINVAL;
-+
-+	vf = &pf->vf[vf_id];
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
-+
-+	vsi = ice_get_vf_vsi(vf);
-+
-+	/* when max_tx_rate is zero that means no max Tx rate limiting, so only
-+	 * check if max_tx_rate is non-zero
-+	 */
-+	if (max_tx_rate && min_tx_rate > max_tx_rate) {
-+		dev_err(dev, "Cannot set min Tx rate %d Mbps greater than max Tx rate %d Mbps\n",
-+			min_tx_rate, max_tx_rate);
-+		return -EINVAL;
-+	}
-+
-+	if (min_tx_rate && ice_is_dcb_active(pf)) {
-+		dev_err(dev, "DCB on PF is currently enabled. VF min Tx rate limiting not allowed on this PF.\n");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (ice_min_tx_rate_oversubscribed(vf, min_tx_rate))
-+		return -EINVAL;
-+
-+	if (vf->min_tx_rate != (unsigned int)min_tx_rate) {
-+		ret = ice_set_min_bw_limit(vsi, (u64)min_tx_rate * 1000);
-+		if (ret) {
-+			dev_err(dev, "Unable to set min-tx-rate for VF %d\n",
-+				vf->vf_id);
-+			return ret;
-+		}
-+
-+		vf->min_tx_rate = min_tx_rate;
-+	}
-+
-+	if (vf->max_tx_rate != (unsigned int)max_tx_rate) {
-+		ret = ice_set_max_bw_limit(vsi, (u64)max_tx_rate * 1000);
-+		if (ret) {
-+			dev_err(dev, "Unable to set max-tx-rate for VF %d\n",
-+				vf->vf_id);
-+			return ret;
-+		}
-+
-+		vf->max_tx_rate = max_tx_rate;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_get_vf_stats - populate some stats for the VF
-  * @netdev: the netdev of the PF
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 4be4eb816d70..9c2cad78231f 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -125,7 +125,8 @@ struct ice_vf {
- 	 * the main LAN VSI for the PF.
- 	 */
- 	u16 lan_vsi_num;		/* ID as used by firmware */
--	unsigned int tx_rate;		/* Tx bandwidth limit in Mbps */
-+	unsigned int min_tx_rate;	/* Minimum Tx bandwidth limit in Mbps */
-+	unsigned int max_tx_rate;	/* Maximum Tx bandwidth limit in Mbps */
- 	DECLARE_BITMAP(vf_states, ICE_VF_STATES_NBITS);	/* VF runtime states */
- 
- 	u64 num_inval_msgs;		/* number of continuous invalid msgs */
-@@ -172,6 +173,10 @@ int
- ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 		     __be16 vlan_proto);
- 
-+int
-+ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
-+	      int max_tx_rate);
-+
- int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted);
- 
- int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state);
-@@ -297,6 +302,14 @@ ice_set_vf_link_state(struct net_device __always_unused *netdev,
- 	return -EOPNOTSUPP;
- }
- 
-+static inline int
-+ice_set_vf_bw(struct net_device __always_unused *netdev,
-+	      int __always_unused vf_id, int __always_unused min_tx_rate,
-+	      int __always_unused max_tx_rate)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline int
- ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
- 		    struct ice_q_vector __always_unused *q_vector)
--- 
-2.20.1
+--2fHTh5uZTiUOsy+g
+Content-Type: application/gzip
+Content-Disposition: attachment; filename=".config.gz"
+Content-Transfer-Encoding: base64
+
+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
+LAIA
+
+--2fHTh5uZTiUOsy+g
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--2fHTh5uZTiUOsy+g--
