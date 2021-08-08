@@ -1,56 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9CE23E3729
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Aug 2021 23:45:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C11DF3E3992
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  8 Aug 2021 10:35:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 489E18343F;
-	Sat,  7 Aug 2021 21:45:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F0EBE82BA7;
+	Sun,  8 Aug 2021 08:35:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dzp9yoT466Mf; Sat,  7 Aug 2021 21:45:10 +0000 (UTC)
+	with ESMTP id bhqxz5XGqxJH; Sun,  8 Aug 2021 08:35:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 588DC831F5;
-	Sat,  7 Aug 2021 21:45:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 031698299E;
+	Sun,  8 Aug 2021 08:35:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F3A71BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 21:45:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 66A411BF580
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 08:35:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2C0E7831F5
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 21:45:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 626A18299E
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 08:35:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YyUsv8_8_pyz for <intel-wired-lan@lists.osuosl.org>;
- Sat,  7 Aug 2021 21:45:04 +0000 (UTC)
+ with ESMTP id QvZQA_wvA_wh for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  8 Aug 2021 08:35:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3F19B82A3B
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Aug 2021 21:45:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10069"; a="236515403"
-X-IronPort-AV: E=Sophos;i="5.84,304,1620716400"; d="scan'208";a="236515403"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2021 14:45:03 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,304,1620716400"; d="scan'208";a="587483195"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 07 Aug 2021 14:45:02 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mCU7p-000IBy-U4; Sat, 07 Aug 2021 21:45:01 +0000
-Date: Sun, 08 Aug 2021 05:44:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <610efebf.Yp5L9csgICWiko4t%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D8D6C82980
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 08:35:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10069"; a="275594720"
+X-IronPort-AV: E=Sophos;i="5.84,305,1620716400"; d="scan'208";a="275594720"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2021 01:35:19 -0700
+X-IronPort-AV: E=Sophos;i="5.84,305,1620716400"; d="scan'208";a="524699325"
+Received: from iburi1-mobl2.ger.corp.intel.com (HELO [10.214.240.171])
+ ([10.214.240.171])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2021 01:35:17 -0700
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
+ michael.edri@intel.com
+References: <20210704071141.1173032-1-sasha.neftin@intel.com>
+From: "Fuxbrumer, Dvora" <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <9bc33892-3179-3787-4f2d-99aeec6fbdca@linux.intel.com>
+Date: Sun, 8 Aug 2021 11:35:06 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- a462f21664d160b1f372d2d75486640f1846a814
+In-Reply-To: <20210704071141.1173032-1-sasha.neftin@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Fix the max
+ snoop/no-snoop latency for 10M
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,131 +66,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Yee Li <seven.yi.lee@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: a462f21664d160b1f372d2d75486640f1846a814  ice: don't remove netdev->dev_addr from uc sync list
-
-elapsed time: 1524m
-
-configs tested: 102
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210804
-i386                 randconfig-c001-20210805
-ia64                             allmodconfig
-mips                     loongson1b_defconfig
-arm                           sama5_defconfig
-sh                     sh7710voipgw_defconfig
-powerpc                     mpc5200_defconfig
-mips                           mtx1_defconfig
-sh                            titan_defconfig
-mips                          rb532_defconfig
-m68k                            mac_defconfig
-powerpc                 mpc836x_mds_defconfig
-arm                          gemini_defconfig
-mips                       bmips_be_defconfig
-parisc                           allyesconfig
-s390                                defconfig
-powerpc                  mpc885_ads_defconfig
-powerpc                      obs600_defconfig
-powerpc                      walnut_defconfig
-arm                       spear13xx_defconfig
-arm                         nhk8815_defconfig
-x86_64                            allnoconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a005-20210805
-i386                 randconfig-a004-20210805
-i386                 randconfig-a002-20210805
-i386                 randconfig-a006-20210805
-i386                 randconfig-a003-20210805
-i386                 randconfig-a001-20210805
-x86_64               randconfig-a012-20210804
-x86_64               randconfig-a016-20210804
-x86_64               randconfig-a011-20210804
-x86_64               randconfig-a013-20210804
-x86_64               randconfig-a014-20210804
-x86_64               randconfig-a015-20210804
-i386                 randconfig-a012-20210805
-i386                 randconfig-a011-20210805
-i386                 randconfig-a015-20210805
-i386                 randconfig-a013-20210805
-i386                 randconfig-a014-20210805
-i386                 randconfig-a016-20210805
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-c001-20210804
-x86_64               randconfig-c001-20210805
-x86_64               randconfig-a012-20210805
-x86_64               randconfig-a016-20210805
-x86_64               randconfig-a011-20210805
-x86_64               randconfig-a013-20210805
-x86_64               randconfig-a014-20210805
-x86_64               randconfig-a015-20210805
-x86_64               randconfig-a002-20210804
-x86_64               randconfig-a006-20210804
-x86_64               randconfig-a004-20210804
-x86_64               randconfig-a003-20210804
-x86_64               randconfig-a001-20210804
-x86_64               randconfig-a005-20210804
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+On 7/4/2021 10:11, Sasha Neftin wrote:
+> We should decode the latency and the max_latency before directly compare.
+> The latency should be presented as lat_enc = scale x value:
+> lat_enc_d = (lat_enc & 0x0x3ff) x (1U << (5*((max_ltr_enc & 0x1c00)
+>>> 10)))
+> 
+> Suggested-by: Yee Li <seven.yi.lee@gmail.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 14 +++++++++++++-
+>   drivers/net/ethernet/intel/e1000e/ich8lan.h |  3 +++
+>   2 files changed, 16 insertions(+), 1 deletion(-)
+> 
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
