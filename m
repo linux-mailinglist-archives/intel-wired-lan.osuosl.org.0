@@ -2,57 +2,164 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFA883E3C4E
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  8 Aug 2021 20:57:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F04B43E4038
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Aug 2021 08:38:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4BF9B606C4;
-	Sun,  8 Aug 2021 18:57:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F4F26070E;
+	Mon,  9 Aug 2021 06:38:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G5TymgCBjLIJ; Sun,  8 Aug 2021 18:57:56 +0000 (UTC)
+	with ESMTP id iFPypI0GdpiA; Mon,  9 Aug 2021 06:38:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 28CB2605DE;
-	Sun,  8 Aug 2021 18:57:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C04C606A6;
+	Mon,  9 Aug 2021 06:38:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 17C3F1BF4D8
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 18:57:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4E5A21BF3B5
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 06:38:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 112AA82B1A
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 18:57:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3967C82C99
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 06:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Bro73ZY68jd for <intel-wired-lan@lists.osuosl.org>;
- Sun,  8 Aug 2021 18:57:49 +0000 (UTC)
+ with ESMTP id vzjnDwoBXv-V for <intel-wired-lan@osuosl.org>;
+ Mon,  9 Aug 2021 06:37:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 62A5C82A6C
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Aug 2021 18:57:49 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C858B60462;
- Sun,  8 Aug 2021 18:57:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628449069;
- bh=Y+2JLGlyvbJqMvyEVMqEGlnHMHMJDeHF/UAdVmGp5iY=;
- h=From:To:Cc:Subject:Date:From;
- b=XG56aCwn4CpAXHXSzKBjkpX5S27rTfpCgdPSjWTAlA7IvcMaVzm4rdGIf3kehr12+
- ppT4fCAqRu/E0LXmilY+ZQJROk/p/Hv5mj7N5/CwUs1pVcbTlPFMjEHkVggpPCtJls
- HcoXeakCxHBMuKXkKAoJEDYNz3eOYt6pEW/+VQk8DjVaqfakVnk8Y+ljk6iZYvRoh4
- JyKaxXD6aXdzmi75jcnutl1Jj5Il3HKbH6I5IXqdRX3TLK3MOvfXFz7V66oo3d6+3M
- vGjJ0AF1MZwOdh11+S2koCiem4SMQ3SHvXqvLHoZUGH+DiirqDQw5L0N029LDrQ0du
- Q1rItDc+//yow==
-From: Leon Romanovsky <leon@kernel.org>
-To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun,  8 Aug 2021 21:57:43 +0300
-Message-Id: <6859503f7e3e6cd706bf01ef06f1cae8c0b0970b.1628449004.git.leonro@nvidia.com>
-X-Mailer: git-send-email 2.31.1
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0821D82C98
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 06:37:58 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10070"; a="212773471"
+X-IronPort-AV: E=Sophos;i="5.84,305,1620716400"; d="scan'208";a="212773471"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2021 23:37:58 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,305,1620716400"; d="scan'208";a="525099884"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by fmsmga002.fm.intel.com with ESMTP; 08 Aug 2021 23:37:58 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Sun, 8 Aug 2021 23:37:57 -0700
+Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Sun, 8 Aug 2021 23:37:57 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10 via Frontend Transport; Sun, 8 Aug 2021 23:37:57 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.47) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Sun, 8 Aug 2021 23:37:57 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ln+Dx5WJCm2q0Gb0YQVTIQbxp3z5j1dfvxw4i/cz2FWM5lvqjiyzxYFkicufGou7L+cRyFzt+2xb3F6OKaFXScXqmG/JSI9xCOkzWx9D0cUtQq1Y1KQLJypLohMCv9hEx+JUQEOB+hNeOyI7NQOhJXtUVFTTSi4Rw1lcBaj50mLXMcbZPZUrsGz8wbtXlY7GgBCgWP4Hr2rzPlXf89arsyRhMOy2jpxuqR1rH/Rlcr2G1ZD4Oc04aLjyr1aPDawN8DFrlQ9o1pDbV/xHbMYI49ZhgPmri5aLM407aiRCI3WjtZmXASU47SiFIZg+61PP1IkFNp30DpiIDBAK7MPGmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RQezsuvjrno5oWSG2t3H8LnchpwQ3wABpwFIOAjqewA=;
+ b=nUt/aaWJ5pl8a3vBXcaCteL2+9jfDQE3OQrQBA/R8J3gSq3HPfWvJzOPS/0y2cMWpWeqx1lejXj5wWQuxKeV3L4jIGJXX0bZpvdUIsUzhRghC31RgcgrYkx2RDRrqXoZnbOVOubawFZfGhzYxGTkhnB33mNhO9W0fjsoUx7bfr+5EUOYcr4VBMMa8dtmpec7ZKYzfn1Rn3/H+nZrYRAz2K3g+zwYB5jgsJTmbrOzxYRvaYhKLfcfm/lSeYd7e8fIYMrZv3G6cBH0AlJkEbGNbXOcN36TKzjrQ5X/a38TjbgpkHMmHPwxYS3m41DYkySY+hosmEDxsGfaSRzzsZpcNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RQezsuvjrno5oWSG2t3H8LnchpwQ3wABpwFIOAjqewA=;
+ b=F46BNxPxfrwUTtf5QS8/ogrePjnql5CJXjqC+gk7FHA4o5B7JSWFcEJfGMs9VKVeV1iXpt/Nrwg2znAI2C+/vE+kKDhj+CXoJUnsnm+HBeA/FxfiL4X0Gq5PiF2fK91ODnCY5Jh1+b0p743ZyooPSG/yRlLNyRNzEMqNVYSi0vk=
+Received: from BL1PR11MB5399.namprd11.prod.outlook.com (2603:10b6:208:318::12)
+ by BL1PR11MB5285.namprd11.prod.outlook.com (2603:10b6:208:309::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.18; Mon, 9 Aug
+ 2021 06:37:56 +0000
+Received: from BL1PR11MB5399.namprd11.prod.outlook.com
+ ([fe80::e525:2182:4820:4082]) by BL1PR11MB5399.namprd11.prod.outlook.com
+ ([fe80::e525:2182:4820:4082%7]) with mapi id 15.20.4394.022; Mon, 9 Aug 2021
+ 06:37:56 +0000
+From: "Gunasekaran, Aravindhan" <aravindhan.gunasekaran@intel.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Thread-Topic: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support for
+ CBS offloading
+Thread-Index: AQHXiTu8m/4GpN4a6U+II6scyeGucqtjauoAgAdUkBA=
+Date: Mon, 9 Aug 2021 06:37:55 +0000
+Message-ID: <BL1PR11MB5399CF91B8123270CF5FB7FD9DF69@BL1PR11MB5399.namprd11.prod.outlook.com>
+References: <1628086752-20213-1-git-send-email-aravindhan.gunasekaran@intel.com>
+ <1628086752-20213-4-git-send-email-aravindhan.gunasekaran@intel.com>
+ <64f7fe7b-feca-dae2-adc3-96b8ac1fbc70@molgen.mpg.de>
+In-Reply-To: <64f7fe7b-feca-dae2-adc3-96b8ac1fbc70@molgen.mpg.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+authentication-results: molgen.mpg.de; dkim=none (message not signed)
+ header.d=none;molgen.mpg.de; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 1d61a3db-91c9-4a16-3eca-08d95b0038c6
+x-ms-traffictypediagnostic: BL1PR11MB5285:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BL1PR11MB52854E9AEC601BA11EE6E8AE9DF69@BL1PR11MB5285.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1091;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: bO6x/QdPsu+t59dUeM8FMeLE04QsTQVlJY5tvqmc1blQyPK0qcg2tLEg1u5KacKdMq48kvC5jkC50mx5N7IQgSZgxlt8Ju44WVW0IKHOVgWQErn1c84ZELvaiXjcekHY+ceVACDEX4cXVtZ2lze0vUjM38AWm4rDX4DNuid1c4so5T2/5S+4JA6K1f+c/YkY6TeTErk6l4r69c27i5tT2cWuAVDb60Y2kHmqc7LN1OzDC9WgoFa1yjDPgEySGYUVLjvlVPU7p0NpJpQFxjydiyR6gst43uJkXFSjXYbpbzRhL44Rd7lavNz5mAN6qYaiL0c2IlOYSezUiZ2foxsl+VOb1aoeKzAkEnVAvG0fQJgL6baTe8iuArBcXfjMgMUe+KTX5ThWT8NYzp49L2Npt9xTsR5avn0nTkbbApY6Dv1NzEtkUUCiY6Z/o1DQSwPNyHiqp5oP5m0/pZjwKphDsM2atf5OCbwoa+lZyjZD1F/r93kxiPChe2YSGnCbtOCxd/JBWtAQBR3GgloWD0dxKHABS6rvkbpz8ubdPLWv/k1FwMLDpjRWLv+mICqjoeLKOiwQQHlaWCy2a8uh0rg/toExi5Q/MzNMUkjiXIjCfV7Z98Ht5iW5TXpeH8MoDYovOcQeorcsTeLDl7jsIOxNjRKrOtoLoK2DbrQ0jAr5SnK65nHOc0pDmJ5DZBGOIwo0uNyy31Qoua2/1MYHg8xutQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL1PR11MB5399.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(4326008)(52536014)(8676002)(64756008)(5660300002)(66946007)(66476007)(66446008)(30864003)(55016002)(83380400001)(8936002)(76116006)(66556008)(186003)(38070700005)(53546011)(6506007)(508600001)(26005)(33656002)(9686003)(2906002)(7696005)(38100700002)(71200400001)(86362001)(316002)(122000001)(6916009)(54906003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VzJyU0ZzanJ4T0l4OUlFUHBHOFNyR0dwRm1QMVhBZnRSYUxuczBZWjd2dHpE?=
+ =?utf-8?B?R0E5V2o2R29vdlVFODVtcHZmSlU1V0ZqWURoeW5ENlN6MmRCdXhtZlFRcUR5?=
+ =?utf-8?B?aWxoUFZVQW1KTW1Kd3dFelhiRVEzb1FVMGo3M2cyRThYRG53MGhheitYSnNv?=
+ =?utf-8?B?TlBrUW5YVGc2ZThTS0d2cjFiazlQZVRadXF2amhGeDNoMnl3Mm1SQVZqNWpB?=
+ =?utf-8?B?eUJOMWRndmRrOE9HUm5YOFZLcjZHV1phblZndExXakV5Nk04Z0ZVRFA3R05P?=
+ =?utf-8?B?Z2FrVFJTbkErdHBFT09SYm1GRlV3b1UrRi9CRm1JczhzMGJSSWZsQmFqcFEw?=
+ =?utf-8?B?N1hsVStrREp6d1VsV2d4bGtvc2VwOFFSVkRCMDBveXM1R1J0UmVBWEhPSXE5?=
+ =?utf-8?B?NDdlTE1GN1k0czhpai9rK1dIZlBGeHBLTFRrM1oyOVlpakZwMkE0WlZmVVhX?=
+ =?utf-8?B?MXlsa1hRUVlsK0NaTFB4TStrZldUQkc5dXNZSDV0SHJFTXoxUkpuOW5DSjFM?=
+ =?utf-8?B?ZU4yY2JqcitrbU9FV3VBS3l4ZTNUQ0JuZG9UakxIR09BK0hYWEQ4bHhnR1ZR?=
+ =?utf-8?B?L2VGZVB4YVZpS3QrRlFkS0NvTmtlYUROZldtRUdnWmpIY2VhT1Z4UXRWYUdL?=
+ =?utf-8?B?WnFQMWF0NnpzTkVrdTJ6cksvMitMUFBxeGJlYjJQeDMvUEl1VVhpNHVxeUZz?=
+ =?utf-8?B?RGluSGNFTGRWUTNxZUsreXdPVm4xVmxKY0Q1RlBhakpLYVBiOVRuU0I1WDRJ?=
+ =?utf-8?B?V3pYbENaTUlML3BhWUFjeWRLUG5MZktqM3FGT1p2TzltWUtXdklTVisyWmVO?=
+ =?utf-8?B?NG9rb2FYak9Kcm5FeGovQkFMejNibERBYmxXayt5eVplTkJnNEd5WlM2dFh4?=
+ =?utf-8?B?YXU3UFhsV3VTQTFWSElUTFNNbEpwQko4MTlwWmpTajFqcjFqYlNBT1ZiU055?=
+ =?utf-8?B?eXE0ZHp5OVJCRXVxM0c0d0lOSzBSb1J1d2RLNUNYb041WU5XLzRiTy9iUkYv?=
+ =?utf-8?B?U2txSFJiWndwN1gvOXBGSE1vWHU0R0VzSUphUGg5Z3lWZWcwRkU5SlB2ck1q?=
+ =?utf-8?B?UmJNS1ZBQTZ3NWdwbjVEeHRlYWJKN0tqMTVYZk1FUHJoZkkxbXlqWDNtNnRX?=
+ =?utf-8?B?OEJPbC91Uno5eG43b05XU2N1UGpNcXR0K0Y2cEx3QkJBdjY1V09qWkN0eXVM?=
+ =?utf-8?B?MWVTaDdpdVorckhjUDBETFlKNlNiWmlDUDBUeDB2UmlDZGVWejJNclAxclMv?=
+ =?utf-8?B?ZDdoUDBCcXNrTjhvTmlJM0RRQ1R4VUhyN3g0RkVkbDVvWFNBSUlnSCs1S3N6?=
+ =?utf-8?B?bGhLaWJEajkzYTFLZlhsaktEWm41NFVtWW9YdjlCcVkzMWhlWUhxeXNXWFhZ?=
+ =?utf-8?B?M2xYWUp0TEFMSHI0YnNncVY5N3lIZHBsU0pLYVBOaDA2NllZbWNHVDRwT08r?=
+ =?utf-8?B?bHlLUVJyZ2k3V3p6cVZKLzB2MkNtT2NJTnJiN21rYTk0NmZzbUJSeGNZc1or?=
+ =?utf-8?B?b3JmYzZUT0diTE1mbVRhamZOTU1GNTl1czhRNnZZUk1wTTZnMmNBMVh0UE5s?=
+ =?utf-8?B?N050bjV4ZWhacVMwaFFQQ1BRSkYwNW5mQ0tKeEdUazBQNmkwSW9FSUtQMW9R?=
+ =?utf-8?B?RXpJZjdySWZVcktSRzJ4R2hjeCtsWkE3QjdIU0hPSlhyZTFsV2hMVS8zZGhH?=
+ =?utf-8?B?bzJkaStsa25Ed290SEtQVGZHcVVxRldSZDZwdVZuTlJ3WFNkZ1MrL1BwR1VD?=
+ =?utf-8?Q?TmT4Yd0oER/FL5pJG376bwWuj6yiMLpWP9yjfKu?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] devlink: Set device as early as
- possible
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL1PR11MB5399.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1d61a3db-91c9-4a16-3eca-08d95b0038c6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Aug 2021 06:37:55.8885 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8fwOqKZobsMiqxWXJkUyIGHxzFAEtudDvKFPhUT0pYNkM4aQgzKpiSbJtpGvjgxIh+RpuLPo4LHqAA5gB0AXgV59h4Zg5gTc6FxR2a5e0QleGF8coukjaaKAyk/dckiZ
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5285
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support
+ for CBS offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,854 +172,369 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
- Jerin Jacob <jerinj@marvell.com>, GR-everest-linux-l2@marvell.com,
- Subbaraya Sundeep <sbhatta@marvell.com>, Ioana Ciornei <ioana.ciornei@nxp.com>,
- Leon Romanovsky <leonro@nvidia.com>, Michael Chan <michael.chan@broadcom.com>,
- Linu Cherian <lcherian@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Manish Chopra <manishc@marvell.com>,
- linux-staging@lists.linux.dev, Shannon Nelson <snelson@pensando.io>,
- intel-wired-lan@lists.osuosl.org, Vadym Kochan <vkochan@marvell.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
- Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
- Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
- drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
- Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
- Coiby Xu <coiby.xu@gmail.com>, UNGLinuxDriver@microchip.com,
- Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
- netdev@vger.kernel.org, Derek Chickles <dchickles@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Geetha sowjanya <gakula@marvell.com>
+Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>, "Chenniyappan,
+ Velmurugan" <velmurugan.chenniyappan@intel.com>, "Chilakala,
+ Mallikarjuna" <mallikarjuna.chilakala@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Leon Romanovsky <leonro@nvidia.com>
 
-All kernel devlink implementations call to devlink_alloc() during
-initialization routine for specific device which is used later as
-a parent device for devlink_register().
 
-Such late device assignment causes to the situation which requires us to
-call to device_register() before setting other parameters, but that call
-opens devlink to the world and makes accessible for the netlink users.
+> -----Original Message-----
+> From: Paul Menzel <pmenzel@molgen.mpg.de>
+> Sent: Wednesday, August 4, 2021 8:11 PM
+> To: Gunasekaran, Aravindhan <aravindhan.gunasekaran@intel.com>
+> Cc: Chenniyappan, Velmurugan <velmurugan.chenniyappan@intel.com>;
+> Chilakala, Mallikarjuna <mallikarjuna.chilakala@intel.com>; intel-wired-
+> lan@osuosl.org
+> Subject: Re: [Intel-wired-lan] [PATCH next-queue v2 3/3] igc: Add support for
+> CBS offloading
+> 
+> Dear Aravindhan,
+> 
+> 
+> Am 04.08.21 um 16:19 schrieb aravindhan.gunasekaran@intel.com:
+> > From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+> >
+> > Implemented support for CBS Qdisc hardware offload mode in the driver.
+> > There are two sets of CBS HW logic in i225 controller and this patch
+> > supports enabling them in the top two priority TX queues.
+> >
+> > In-order for CBS algorithm to work as intended and provide BW
+> > reservation CBS should be enabled in highest priority queue first.
+> > If we enable CBS on any of low priority queues, the traffic in high
+> > priority queue does not allow low priority queue to be selected for
+> > transmission and bandwidth reservation is not guaranteed.
+> 
+> Nit: Please re-flow for 75 characters per line.
+> 
+> Please mention IEEE802.1Qav (CBS) in the commit message, the datasheet
+> name and revision you used for the implementation (I see it in one of the
+> comments), and maybe how to configure it.
+> 
+> Should Linux log a message, if support is detected and used?
+> 
+> 
+> Kind regards,
+> 
+> Paul
 
-Any attempt to move devlink_register() to be the last call generates the
-following error due to access to the devlink->dev pointer.
+This is my response.
 
-[    8.758862]  devlink_nl_param_fill+0x2e8/0xe50
-[    8.760305]  devlink_param_notify+0x6d/0x180
-[    8.760435]  __devlink_params_register+0x2f1/0x670
-[    8.760558]  devlink_params_register+0x1e/0x20
-
-The simple change of API to set devlink device in the devlink_alloc()
-instead of devlink_register() fixes all this above and ensures that
-prior to call to devlink_register() everything already set.
-
-Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
----
- .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |  9 ++++---
- .../net/ethernet/cavium/liquidio/lio_main.c   |  5 ++--
- .../freescale/dpaa2/dpaa2-eth-devlink.c       |  5 ++--
- .../hisilicon/hns3/hns3pf/hclge_devlink.c     |  4 +--
- .../hisilicon/hns3/hns3vf/hclgevf_devlink.c   |  7 ++---
- .../net/ethernet/huawei/hinic/hinic_devlink.c |  8 +++---
- .../net/ethernet/huawei/hinic/hinic_devlink.h |  4 +--
- .../net/ethernet/huawei/hinic/hinic_hw_dev.c  |  2 +-
- .../net/ethernet/huawei/hinic/hinic_main.c    |  2 +-
- drivers/net/ethernet/intel/ice/ice_devlink.c  |  4 +--
- .../marvell/octeontx2/af/rvu_devlink.c        |  5 ++--
- .../marvell/prestera/prestera_devlink.c       |  7 ++---
- .../marvell/prestera/prestera_devlink.h       |  2 +-
- .../ethernet/marvell/prestera/prestera_main.c |  2 +-
- drivers/net/ethernet/mellanox/mlx4/main.c     |  4 +--
- .../net/ethernet/mellanox/mlx5/core/devlink.c |  9 ++++---
- .../net/ethernet/mellanox/mlx5/core/devlink.h |  4 +--
- .../net/ethernet/mellanox/mlx5/core/main.c    |  4 +--
- .../mellanox/mlx5/core/sf/dev/driver.c        |  2 +-
- drivers/net/ethernet/mellanox/mlxsw/core.c    |  5 ++--
- drivers/net/ethernet/mscc/ocelot_vsc7514.c    |  5 ++--
- drivers/net/ethernet/netronome/nfp/nfp_main.c |  2 +-
- .../net/ethernet/netronome/nfp/nfp_net_main.c |  2 +-
- .../ethernet/pensando/ionic/ionic_devlink.c   |  4 +--
- drivers/net/ethernet/qlogic/qed/qed_devlink.c |  5 ++--
- drivers/net/ethernet/ti/am65-cpsw-nuss.c      |  4 +--
- drivers/net/ethernet/ti/cpsw_new.c            |  4 +--
- drivers/net/netdevsim/dev.c                   |  4 +--
- drivers/ptp/ptp_ocp.c                         | 26 +++----------------
- drivers/staging/qlge/qlge_main.c              |  5 ++--
- include/net/devlink.h                         | 10 ++++---
- net/core/devlink.c                            | 15 +++++------
- net/dsa/dsa2.c                                |  5 ++--
- 33 files changed, 91 insertions(+), 94 deletions(-)
-
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-index 64381be935a8..2cd8bb37e641 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-@@ -743,14 +743,17 @@ static void bnxt_dl_params_unregister(struct bnxt *bp)
- 
- int bnxt_dl_register(struct bnxt *bp)
- {
-+	const struct devlink_ops *devlink_ops;
- 	struct devlink_port_attrs attrs = {};
- 	struct devlink *dl;
- 	int rc;
- 
- 	if (BNXT_PF(bp))
--		dl = devlink_alloc(&bnxt_dl_ops, sizeof(struct bnxt_dl));
-+		devlink_ops = &bnxt_dl_ops;
- 	else
--		dl = devlink_alloc(&bnxt_vf_dl_ops, sizeof(struct bnxt_dl));
-+		devlink_ops = &bnxt_vf_dl_ops;
-+
-+	dl = devlink_alloc(devlink_ops, sizeof(struct bnxt_dl), &bp->pdev->dev);
- 	if (!dl) {
- 		netdev_warn(bp->dev, "devlink_alloc failed\n");
- 		return -ENOMEM;
-@@ -763,7 +766,7 @@ int bnxt_dl_register(struct bnxt *bp)
- 	    bp->hwrm_spec_code > 0x10803)
- 		bp->eswitch_mode = DEVLINK_ESWITCH_MODE_LEGACY;
- 
--	rc = devlink_register(dl, &bp->pdev->dev);
-+	rc = devlink_register(dl);
- 	if (rc) {
- 		netdev_warn(bp->dev, "devlink_register failed. rc=%d\n", rc);
- 		goto err_dl_free;
-diff --git a/drivers/net/ethernet/cavium/liquidio/lio_main.c b/drivers/net/ethernet/cavium/liquidio/lio_main.c
-index af116ef83bad..2907e13b9df6 100644
---- a/drivers/net/ethernet/cavium/liquidio/lio_main.c
-+++ b/drivers/net/ethernet/cavium/liquidio/lio_main.c
-@@ -3750,7 +3750,8 @@ static int setup_nic_devices(struct octeon_device *octeon_dev)
- 	}
- 
- 	devlink = devlink_alloc(&liquidio_devlink_ops,
--				sizeof(struct lio_devlink_priv));
-+				sizeof(struct lio_devlink_priv),
-+				&octeon_dev->pci_dev->dev);
- 	if (!devlink) {
- 		dev_err(&octeon_dev->pci_dev->dev, "devlink alloc failed\n");
- 		goto setup_nic_dev_free;
-@@ -3759,7 +3760,7 @@ static int setup_nic_devices(struct octeon_device *octeon_dev)
- 	lio_devlink = devlink_priv(devlink);
- 	lio_devlink->oct = octeon_dev;
- 
--	if (devlink_register(devlink, &octeon_dev->pci_dev->dev)) {
-+	if (devlink_register(devlink)) {
- 		devlink_free(devlink);
- 		dev_err(&octeon_dev->pci_dev->dev,
- 			"devlink registration failed\n");
-diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
-index 8e09f65ea295..605a39f892b9 100644
---- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
-+++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
-@@ -196,7 +196,8 @@ int dpaa2_eth_dl_register(struct dpaa2_eth_priv *priv)
- 	struct dpaa2_eth_devlink_priv *dl_priv;
- 	int err;
- 
--	priv->devlink = devlink_alloc(&dpaa2_eth_devlink_ops, sizeof(*dl_priv));
-+	priv->devlink =
-+		devlink_alloc(&dpaa2_eth_devlink_ops, sizeof(*dl_priv), dev);
- 	if (!priv->devlink) {
- 		dev_err(dev, "devlink_alloc failed\n");
- 		return -ENOMEM;
-@@ -204,7 +205,7 @@ int dpaa2_eth_dl_register(struct dpaa2_eth_priv *priv)
- 	dl_priv = devlink_priv(priv->devlink);
- 	dl_priv->dpaa2_priv = priv;
- 
--	err = devlink_register(priv->devlink, dev);
-+	err = devlink_register(priv->devlink);
- 	if (err) {
- 		dev_err(dev, "devlink_register() = %d\n", err);
- 		goto devlink_free;
-diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
-index 06d29945d4e1..448f29aa4e6b 100644
---- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
-+++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
-@@ -112,14 +112,14 @@ int hclge_devlink_init(struct hclge_dev *hdev)
- 	int ret;
- 
- 	devlink = devlink_alloc(&hclge_devlink_ops,
--				sizeof(struct hclge_devlink_priv));
-+				sizeof(struct hclge_devlink_priv), &pdev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 
- 	priv = devlink_priv(devlink);
- 	priv->hdev = hdev;
- 
--	ret = devlink_register(devlink, &pdev->dev);
-+	ret = devlink_register(devlink);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to register devlink, ret = %d\n",
- 			ret);
-diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c b/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
-index 21a45279fd99..1e6061fb8ed4 100644
---- a/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
-+++ b/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
-@@ -112,15 +112,16 @@ int hclgevf_devlink_init(struct hclgevf_dev *hdev)
- 	struct devlink *devlink;
- 	int ret;
- 
--	devlink = devlink_alloc(&hclgevf_devlink_ops,
--				sizeof(struct hclgevf_devlink_priv));
-+	devlink =
-+		devlink_alloc(&hclgevf_devlink_ops,
-+			      sizeof(struct hclgevf_devlink_priv), &pdev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 
- 	priv = devlink_priv(devlink);
- 	priv->hdev = hdev;
- 
--	ret = devlink_register(devlink, &pdev->dev);
-+	ret = devlink_register(devlink);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to register devlink, ret = %d\n",
- 			ret);
-diff --git a/drivers/net/ethernet/huawei/hinic/hinic_devlink.c b/drivers/net/ethernet/huawei/hinic/hinic_devlink.c
-index 58d5646444b0..6e11ee339f12 100644
---- a/drivers/net/ethernet/huawei/hinic/hinic_devlink.c
-+++ b/drivers/net/ethernet/huawei/hinic/hinic_devlink.c
-@@ -293,9 +293,9 @@ static const struct devlink_ops hinic_devlink_ops = {
- 	.flash_update = hinic_devlink_flash_update,
- };
- 
--struct devlink *hinic_devlink_alloc(void)
-+struct devlink *hinic_devlink_alloc(struct device *dev)
- {
--	return devlink_alloc(&hinic_devlink_ops, sizeof(struct hinic_dev));
-+	return devlink_alloc(&hinic_devlink_ops, sizeof(struct hinic_dev), dev);
- }
- 
- void hinic_devlink_free(struct devlink *devlink)
-@@ -303,11 +303,11 @@ void hinic_devlink_free(struct devlink *devlink)
- 	devlink_free(devlink);
- }
- 
--int hinic_devlink_register(struct hinic_devlink_priv *priv, struct device *dev)
-+int hinic_devlink_register(struct hinic_devlink_priv *priv)
- {
- 	struct devlink *devlink = priv_to_devlink(priv);
- 
--	return devlink_register(devlink, dev);
-+	return devlink_register(devlink);
- }
- 
- void hinic_devlink_unregister(struct hinic_devlink_priv *priv)
-diff --git a/drivers/net/ethernet/huawei/hinic/hinic_devlink.h b/drivers/net/ethernet/huawei/hinic/hinic_devlink.h
-index a090ebcfaabb..9e315011015c 100644
---- a/drivers/net/ethernet/huawei/hinic/hinic_devlink.h
-+++ b/drivers/net/ethernet/huawei/hinic/hinic_devlink.h
-@@ -108,9 +108,9 @@ struct host_image_st {
- 	u32 device_id;
- };
- 
--struct devlink *hinic_devlink_alloc(void);
-+struct devlink *hinic_devlink_alloc(struct device *dev);
- void hinic_devlink_free(struct devlink *devlink);
--int hinic_devlink_register(struct hinic_devlink_priv *priv, struct device *dev);
-+int hinic_devlink_register(struct hinic_devlink_priv *priv);
- void hinic_devlink_unregister(struct hinic_devlink_priv *priv);
- 
- int hinic_health_reporters_create(struct hinic_devlink_priv *priv);
-diff --git a/drivers/net/ethernet/huawei/hinic/hinic_hw_dev.c b/drivers/net/ethernet/huawei/hinic/hinic_hw_dev.c
-index 428108eb10d2..56b6b04e209b 100644
---- a/drivers/net/ethernet/huawei/hinic/hinic_hw_dev.c
-+++ b/drivers/net/ethernet/huawei/hinic/hinic_hw_dev.c
-@@ -754,7 +754,7 @@ static int init_pfhwdev(struct hinic_pfhwdev *pfhwdev)
- 		return err;
- 	}
- 
--	err = hinic_devlink_register(hwdev->devlink_dev, &pdev->dev);
-+	err = hinic_devlink_register(hwdev->devlink_dev);
- 	if (err) {
- 		dev_err(&hwif->pdev->dev, "Failed to register devlink\n");
- 		hinic_pf_to_mgmt_free(&pfhwdev->pf_to_mgmt);
-diff --git a/drivers/net/ethernet/huawei/hinic/hinic_main.c b/drivers/net/ethernet/huawei/hinic/hinic_main.c
-index 405ee4d2d2b1..881d0b247561 100644
---- a/drivers/net/ethernet/huawei/hinic/hinic_main.c
-+++ b/drivers/net/ethernet/huawei/hinic/hinic_main.c
-@@ -1183,7 +1183,7 @@ static int nic_dev_init(struct pci_dev *pdev)
- 	struct devlink *devlink;
- 	int err, num_qps;
- 
--	devlink = hinic_devlink_alloc();
-+	devlink = hinic_devlink_alloc(&pdev->dev);
- 	if (!devlink) {
- 		dev_err(&pdev->dev, "Hinic devlink alloc failed\n");
- 		return -ENOMEM;
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 91b545ab8b8f..8c863d64930b 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -475,7 +475,7 @@ struct ice_pf *ice_allocate_pf(struct device *dev)
- {
- 	struct devlink *devlink;
- 
--	devlink = devlink_alloc(&ice_devlink_ops, sizeof(struct ice_pf));
-+	devlink = devlink_alloc(&ice_devlink_ops, sizeof(struct ice_pf), dev);
- 	if (!devlink)
- 		return NULL;
- 
-@@ -502,7 +502,7 @@ int ice_devlink_register(struct ice_pf *pf)
- 	struct device *dev = ice_pf_to_dev(pf);
- 	int err;
- 
--	err = devlink_register(devlink, dev);
-+	err = devlink_register(devlink);
- 	if (err) {
- 		dev_err(dev, "devlink registration failed: %d\n", err);
- 		return err;
-diff --git a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
-index 6f963b2f54a7..a55b46ad162d 100644
---- a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
-@@ -1503,13 +1503,14 @@ int rvu_register_dl(struct rvu *rvu)
- 	struct devlink *dl;
- 	int err;
- 
--	dl = devlink_alloc(&rvu_devlink_ops, sizeof(struct rvu_devlink));
-+	dl = devlink_alloc(&rvu_devlink_ops, sizeof(struct rvu_devlink),
-+			   rvu->dev);
- 	if (!dl) {
- 		dev_warn(rvu->dev, "devlink_alloc failed\n");
- 		return -ENOMEM;
- 	}
- 
--	err = devlink_register(dl, rvu->dev);
-+	err = devlink_register(dl);
- 	if (err) {
- 		dev_err(rvu->dev, "devlink register failed with error %d\n", err);
- 		devlink_free(dl);
-diff --git a/drivers/net/ethernet/marvell/prestera/prestera_devlink.c b/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
-index fa7a0682ad1e..68b442eb6d69 100644
---- a/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
-+++ b/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
-@@ -390,11 +390,12 @@ static const struct devlink_ops prestera_dl_ops = {
- 	.trap_drop_counter_get = prestera_drop_counter_get,
- };
- 
--struct prestera_switch *prestera_devlink_alloc(void)
-+struct prestera_switch *prestera_devlink_alloc(struct prestera_device *dev)
- {
- 	struct devlink *dl;
- 
--	dl = devlink_alloc(&prestera_dl_ops, sizeof(struct prestera_switch));
-+	dl = devlink_alloc(&prestera_dl_ops, sizeof(struct prestera_switch),
-+			   dev->dev);
- 
- 	return devlink_priv(dl);
- }
-@@ -411,7 +412,7 @@ int prestera_devlink_register(struct prestera_switch *sw)
- 	struct devlink *dl = priv_to_devlink(sw);
- 	int err;
- 
--	err = devlink_register(dl, sw->dev->dev);
-+	err = devlink_register(dl);
- 	if (err) {
- 		dev_err(prestera_dev(sw), "devlink_register failed: %d\n", err);
- 		return err;
-diff --git a/drivers/net/ethernet/marvell/prestera/prestera_devlink.h b/drivers/net/ethernet/marvell/prestera/prestera_devlink.h
-index 5d73aa9db897..cc34c3db13a2 100644
---- a/drivers/net/ethernet/marvell/prestera/prestera_devlink.h
-+++ b/drivers/net/ethernet/marvell/prestera/prestera_devlink.h
-@@ -6,7 +6,7 @@
- 
- #include "prestera.h"
- 
--struct prestera_switch *prestera_devlink_alloc(void);
-+struct prestera_switch *prestera_devlink_alloc(struct prestera_device *dev);
- void prestera_devlink_free(struct prestera_switch *sw);
- 
- int prestera_devlink_register(struct prestera_switch *sw);
-diff --git a/drivers/net/ethernet/marvell/prestera/prestera_main.c b/drivers/net/ethernet/marvell/prestera/prestera_main.c
-index 7c569c1abefc..44c670807fb3 100644
---- a/drivers/net/ethernet/marvell/prestera/prestera_main.c
-+++ b/drivers/net/ethernet/marvell/prestera/prestera_main.c
-@@ -905,7 +905,7 @@ int prestera_device_register(struct prestera_device *dev)
- 	struct prestera_switch *sw;
- 	int err;
- 
--	sw = prestera_devlink_alloc();
-+	sw = prestera_devlink_alloc(dev);
- 	if (!sw)
- 		return -ENOMEM;
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx4/main.c b/drivers/net/ethernet/mellanox/mlx4/main.c
-index 28ac4693da3c..7267c6c6d2e2 100644
---- a/drivers/net/ethernet/mellanox/mlx4/main.c
-+++ b/drivers/net/ethernet/mellanox/mlx4/main.c
-@@ -4005,7 +4005,7 @@ static int mlx4_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	printk_once(KERN_INFO "%s", mlx4_version);
- 
--	devlink = devlink_alloc(&mlx4_devlink_ops, sizeof(*priv));
-+	devlink = devlink_alloc(&mlx4_devlink_ops, sizeof(*priv), &pdev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 	priv = devlink_priv(devlink);
-@@ -4024,7 +4024,7 @@ static int mlx4_init_one(struct pci_dev *pdev, const struct pci_device_id *id)
- 	mutex_init(&dev->persist->interface_state_mutex);
- 	mutex_init(&dev->persist->pci_status_mutex);
- 
--	ret = devlink_register(devlink, &pdev->dev);
-+	ret = devlink_register(devlink);
- 	if (ret)
- 		goto err_persist_free;
- 	ret = devlink_params_register(devlink, mlx4_devlink_params,
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
-index d791d351b489..f38553ff538b 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
-@@ -359,9 +359,10 @@ int mlx5_devlink_traps_get_action(struct mlx5_core_dev *dev, int trap_id,
- 	return 0;
- }
- 
--struct devlink *mlx5_devlink_alloc(void)
-+struct devlink *mlx5_devlink_alloc(struct device *dev)
- {
--	return devlink_alloc(&mlx5_devlink_ops, sizeof(struct mlx5_core_dev));
-+	return devlink_alloc(&mlx5_devlink_ops, sizeof(struct mlx5_core_dev),
-+			     dev);
- }
- 
- void mlx5_devlink_free(struct devlink *devlink)
-@@ -638,11 +639,11 @@ static void mlx5_devlink_traps_unregister(struct devlink *devlink)
- 				       ARRAY_SIZE(mlx5_trap_groups_arr));
- }
- 
--int mlx5_devlink_register(struct devlink *devlink, struct device *dev)
-+int mlx5_devlink_register(struct devlink *devlink)
- {
- 	int err;
- 
--	err = devlink_register(devlink, dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		return err;
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/devlink.h b/drivers/net/ethernet/mellanox/mlx5/core/devlink.h
-index 7318d44b774b..30bf4882779b 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/devlink.h
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/devlink.h
-@@ -31,9 +31,9 @@ int mlx5_devlink_trap_get_num_active(struct mlx5_core_dev *dev);
- int mlx5_devlink_traps_get_action(struct mlx5_core_dev *dev, int trap_id,
- 				  enum devlink_trap_action *action);
- 
--struct devlink *mlx5_devlink_alloc(void);
-+struct devlink *mlx5_devlink_alloc(struct device *dev);
- void mlx5_devlink_free(struct devlink *devlink);
--int mlx5_devlink_register(struct devlink *devlink, struct device *dev);
-+int mlx5_devlink_register(struct devlink *devlink);
- void mlx5_devlink_unregister(struct devlink *devlink);
- 
- #endif /* __MLX5_DEVLINK_H__ */
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/main.c b/drivers/net/ethernet/mellanox/mlx5/core/main.c
-index eb1b316560a8..a8efd9f1af4c 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/main.c
-@@ -1271,7 +1271,7 @@ int mlx5_init_one(struct mlx5_core_dev *dev)
- 
- 	set_bit(MLX5_INTERFACE_STATE_UP, &dev->intf_state);
- 
--	err = mlx5_devlink_register(priv_to_devlink(dev), dev->device);
-+	err = mlx5_devlink_register(priv_to_devlink(dev));
- 	if (err)
- 		goto err_devlink_reg;
- 
-@@ -1452,7 +1452,7 @@ static int probe_one(struct pci_dev *pdev, const struct pci_device_id *id)
- 	struct devlink *devlink;
- 	int err;
- 
--	devlink = mlx5_devlink_alloc();
-+	devlink = mlx5_devlink_alloc(&pdev->dev);
- 	if (!devlink) {
- 		dev_err(&pdev->dev, "devlink alloc failed\n");
- 		return -ENOMEM;
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/driver.c b/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/driver.c
-index 42c8ee03fe3e..052f48068dc1 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/driver.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/driver.c
-@@ -14,7 +14,7 @@ static int mlx5_sf_dev_probe(struct auxiliary_device *adev, const struct auxilia
- 	struct devlink *devlink;
- 	int err;
- 
--	devlink = mlx5_devlink_alloc();
-+	devlink = mlx5_devlink_alloc(&adev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 
-diff --git a/drivers/net/ethernet/mellanox/mlxsw/core.c b/drivers/net/ethernet/mellanox/mlxsw/core.c
-index e775f08fb464..f080fab3de2b 100644
---- a/drivers/net/ethernet/mellanox/mlxsw/core.c
-+++ b/drivers/net/ethernet/mellanox/mlxsw/core.c
-@@ -1927,7 +1927,8 @@ __mlxsw_core_bus_device_register(const struct mlxsw_bus_info *mlxsw_bus_info,
- 
- 	if (!reload) {
- 		alloc_size = sizeof(*mlxsw_core) + mlxsw_driver->priv_size;
--		devlink = devlink_alloc(&mlxsw_devlink_ops, alloc_size);
-+		devlink = devlink_alloc(&mlxsw_devlink_ops, alloc_size,
-+					mlxsw_bus_info->dev);
- 		if (!devlink) {
- 			err = -ENOMEM;
- 			goto err_devlink_alloc;
-@@ -1974,7 +1975,7 @@ __mlxsw_core_bus_device_register(const struct mlxsw_bus_info *mlxsw_bus_info,
- 		goto err_emad_init;
- 
- 	if (!reload) {
--		err = devlink_register(devlink, mlxsw_bus_info->dev);
-+		err = devlink_register(devlink);
- 		if (err)
- 			goto err_devlink_register;
- 	}
-diff --git a/drivers/net/ethernet/mscc/ocelot_vsc7514.c b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-index 4bd7e9d9ec61..aa41c9cde643 100644
---- a/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-+++ b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-@@ -1103,7 +1103,8 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 	if (!np && !pdev->dev.platform_data)
- 		return -ENODEV;
- 
--	devlink = devlink_alloc(&ocelot_devlink_ops, sizeof(*ocelot));
-+	devlink =
-+		devlink_alloc(&ocelot_devlink_ops, sizeof(*ocelot), &pdev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 
-@@ -1187,7 +1188,7 @@ static int mscc_ocelot_probe(struct platform_device *pdev)
- 	if (err)
- 		goto out_put_ports;
- 
--	err = devlink_register(devlink, ocelot->dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		goto out_ocelot_deinit;
- 
-diff --git a/drivers/net/ethernet/netronome/nfp/nfp_main.c b/drivers/net/ethernet/netronome/nfp/nfp_main.c
-index 742a420152b3..bb3b8a7f6c5d 100644
---- a/drivers/net/ethernet/netronome/nfp/nfp_main.c
-+++ b/drivers/net/ethernet/netronome/nfp/nfp_main.c
-@@ -692,7 +692,7 @@ static int nfp_pci_probe(struct pci_dev *pdev,
- 		goto err_pci_disable;
- 	}
- 
--	devlink = devlink_alloc(&nfp_devlink_ops, sizeof(*pf));
-+	devlink = devlink_alloc(&nfp_devlink_ops, sizeof(*pf), &pdev->dev);
- 	if (!devlink) {
- 		err = -ENOMEM;
- 		goto err_rel_regions;
-diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_main.c b/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
-index 921db40047d7..d10a93801344 100644
---- a/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
-+++ b/drivers/net/ethernet/netronome/nfp/nfp_net_main.c
-@@ -701,7 +701,7 @@ int nfp_net_pci_probe(struct nfp_pf *pf)
- 	if (err)
- 		goto err_unmap;
- 
--	err = devlink_register(devlink, &pf->pdev->dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		goto err_app_clean;
- 
-diff --git a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-index cd520e4c5522..c7d0e195d176 100644
---- a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-+++ b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-@@ -64,7 +64,7 @@ struct ionic *ionic_devlink_alloc(struct device *dev)
- {
- 	struct devlink *dl;
- 
--	dl = devlink_alloc(&ionic_dl_ops, sizeof(struct ionic));
-+	dl = devlink_alloc(&ionic_dl_ops, sizeof(struct ionic), dev);
- 
- 	return devlink_priv(dl);
- }
-@@ -82,7 +82,7 @@ int ionic_devlink_register(struct ionic *ionic)
- 	struct devlink_port_attrs attrs = {};
- 	int err;
- 
--	err = devlink_register(dl, ionic->dev);
-+	err = devlink_register(dl);
- 	if (err) {
- 		dev_warn(ionic->dev, "devlink_register failed: %d\n", err);
- 		return err;
-diff --git a/drivers/net/ethernet/qlogic/qed/qed_devlink.c b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-index cf7f4da68e69..4c7501b9c284 100644
---- a/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-+++ b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-@@ -207,14 +207,15 @@ struct devlink *qed_devlink_register(struct qed_dev *cdev)
- 	struct devlink *dl;
- 	int rc;
- 
--	dl = devlink_alloc(&qed_dl_ops, sizeof(struct qed_devlink));
-+	dl = devlink_alloc(&qed_dl_ops, sizeof(struct qed_devlink),
-+			   &cdev->pdev->dev);
- 	if (!dl)
- 		return ERR_PTR(-ENOMEM);
- 
- 	qdevlink = devlink_priv(dl);
- 	qdevlink->cdev = cdev;
- 
--	rc = devlink_register(dl, &cdev->pdev->dev);
-+	rc = devlink_register(dl);
- 	if (rc)
- 		goto err_free;
- 
-diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-index 588e7df0b1cc..130346f74ee8 100644
---- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-+++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-@@ -2422,14 +2422,14 @@ static int am65_cpsw_nuss_register_devlink(struct am65_cpsw_common *common)
- 	int i;
- 
- 	common->devlink =
--		devlink_alloc(&am65_cpsw_devlink_ops, sizeof(*dl_priv));
-+		devlink_alloc(&am65_cpsw_devlink_ops, sizeof(*dl_priv), dev);
- 	if (!common->devlink)
- 		return -ENOMEM;
- 
- 	dl_priv = devlink_priv(common->devlink);
- 	dl_priv->common = common;
- 
--	ret = devlink_register(common->devlink, dev);
-+	ret = devlink_register(common->devlink);
- 	if (ret) {
- 		dev_err(dev, "devlink reg fail ret:%d\n", ret);
- 		goto dl_free;
-diff --git a/drivers/net/ethernet/ti/cpsw_new.c b/drivers/net/ethernet/ti/cpsw_new.c
-index ae167223e87f..192394fe4c1c 100644
---- a/drivers/net/ethernet/ti/cpsw_new.c
-+++ b/drivers/net/ethernet/ti/cpsw_new.c
-@@ -1800,14 +1800,14 @@ static int cpsw_register_devlink(struct cpsw_common *cpsw)
- 	struct cpsw_devlink *dl_priv;
- 	int ret = 0;
- 
--	cpsw->devlink = devlink_alloc(&cpsw_devlink_ops, sizeof(*dl_priv));
-+	cpsw->devlink = devlink_alloc(&cpsw_devlink_ops, sizeof(*dl_priv), dev);
- 	if (!cpsw->devlink)
- 		return -ENOMEM;
- 
- 	dl_priv = devlink_priv(cpsw->devlink);
- 	dl_priv->cpsw = cpsw;
- 
--	ret = devlink_register(cpsw->devlink, dev);
-+	ret = devlink_register(cpsw->devlink);
- 	if (ret) {
- 		dev_err(dev, "DL reg fail ret:%d\n", ret);
- 		goto dl_free;
-diff --git a/drivers/net/netdevsim/dev.c b/drivers/net/netdevsim/dev.c
-index 53068e184c90..54313bd57797 100644
---- a/drivers/net/netdevsim/dev.c
-+++ b/drivers/net/netdevsim/dev.c
-@@ -1449,7 +1449,7 @@ int nsim_dev_probe(struct nsim_bus_dev *nsim_bus_dev)
- 	int err;
- 
- 	devlink = devlink_alloc_ns(&nsim_dev_devlink_ops, sizeof(*nsim_dev),
--				   nsim_bus_dev->initial_net);
-+				 nsim_bus_dev->initial_net, &nsim_bus_dev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 	nsim_dev = devlink_priv(devlink);
-@@ -1470,7 +1470,7 @@ int nsim_dev_probe(struct nsim_bus_dev *nsim_bus_dev)
- 	if (err)
- 		goto err_devlink_free;
- 
--	err = devlink_register(devlink, &nsim_bus_dev->dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		goto err_resources_unregister;
- 
-diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
-index 6b9c14586987..92edf772feed 100644
---- a/drivers/ptp/ptp_ocp.c
-+++ b/drivers/ptp/ptp_ocp.c
-@@ -735,24 +735,6 @@ ptp_ocp_info(struct ptp_ocp *bp)
- 	ptp_ocp_tod_info(bp);
- }
- 
--static int
--ptp_ocp_devlink_register(struct devlink *devlink, struct device *dev)
--{
--	int err;
--
--	err = devlink_register(devlink, dev);
--	if (err)
--		return err;
--
--	return 0;
--}
--
--static void
--ptp_ocp_devlink_unregister(struct devlink *devlink)
--{
--	devlink_unregister(devlink);
--}
--
- static struct device *
- ptp_ocp_find_flash(struct ptp_ocp *bp)
- {
-@@ -1437,13 +1419,13 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	struct ptp_ocp *bp;
- 	int err;
- 
--	devlink = devlink_alloc(&ptp_ocp_devlink_ops, sizeof(*bp));
-+	devlink = devlink_alloc(&ptp_ocp_devlink_ops, sizeof(*bp), &pdev->dev);
- 	if (!devlink) {
- 		dev_err(&pdev->dev, "devlink_alloc failed\n");
- 		return -ENOMEM;
- 	}
- 
--	err = ptp_ocp_devlink_register(devlink, &pdev->dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		goto out_free;
- 
-@@ -1497,7 +1479,7 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	pci_disable_device(pdev);
- 	pci_set_drvdata(pdev, NULL);
- out_unregister:
--	ptp_ocp_devlink_unregister(devlink);
-+	devlink_unregister(devlink);
- out_free:
- 	devlink_free(devlink);
- 
-@@ -1514,7 +1496,7 @@ ptp_ocp_remove(struct pci_dev *pdev)
- 	pci_disable_device(pdev);
- 	pci_set_drvdata(pdev, NULL);
- 
--	ptp_ocp_devlink_unregister(devlink);
-+	devlink_unregister(devlink);
- 	devlink_free(devlink);
- }
- 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index 19a02e958865..8fcdf89da8aa 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -4547,7 +4547,8 @@ static int qlge_probe(struct pci_dev *pdev,
- 	static int cards_found;
- 	int err;
- 
--	devlink = devlink_alloc(&qlge_devlink_ops, sizeof(struct qlge_adapter));
-+	devlink = devlink_alloc(&qlge_devlink_ops, sizeof(struct qlge_adapter),
-+				&pdev->dev);
- 	if (!devlink)
- 		return -ENOMEM;
- 
-@@ -4613,7 +4614,7 @@ static int qlge_probe(struct pci_dev *pdev,
- 		goto netdev_free;
- 	}
- 
--	err = devlink_register(devlink, &pdev->dev);
-+	err = devlink_register(devlink);
- 	if (err)
- 		goto netdev_free;
- 
-diff --git a/include/net/devlink.h b/include/net/devlink.h
-index ccbfb3a844aa..0236c77f2fd0 100644
---- a/include/net/devlink.h
-+++ b/include/net/devlink.h
-@@ -1544,13 +1544,15 @@ struct net *devlink_net(const struct devlink *devlink);
-  * Drivers that operate on real HW must use devlink_alloc() instead.
-  */
- struct devlink *devlink_alloc_ns(const struct devlink_ops *ops,
--				 size_t priv_size, struct net *net);
-+				 size_t priv_size, struct net *net,
-+				 struct device *dev);
- static inline struct devlink *devlink_alloc(const struct devlink_ops *ops,
--					    size_t priv_size)
-+					    size_t priv_size,
-+					    struct device *dev)
- {
--	return devlink_alloc_ns(ops, priv_size, &init_net);
-+	return devlink_alloc_ns(ops, priv_size, &init_net, dev);
- }
--int devlink_register(struct devlink *devlink, struct device *dev);
-+int devlink_register(struct devlink *devlink);
- void devlink_unregister(struct devlink *devlink);
- void devlink_reload_enable(struct devlink *devlink);
- void devlink_reload_disable(struct devlink *devlink);
-diff --git a/net/core/devlink.c b/net/core/devlink.c
-index ee95eee8d0ed..d3b16dd9f64e 100644
---- a/net/core/devlink.c
-+++ b/net/core/devlink.c
-@@ -8768,24 +8768,26 @@ static bool devlink_reload_actions_valid(const struct devlink_ops *ops)
-  *	@ops: ops
-  *	@priv_size: size of user private data
-  *	@net: net namespace
-+ *	@dev: parent device
-  *
-  *	Allocate new devlink instance resources, including devlink index
-  *	and name.
-  */
- struct devlink *devlink_alloc_ns(const struct devlink_ops *ops,
--				 size_t priv_size, struct net *net)
-+				 size_t priv_size, struct net *net,
-+				 struct device *dev)
- {
- 	struct devlink *devlink;
- 
--	if (WARN_ON(!ops))
--		return NULL;
--
-+	WARN_ON(!ops || !dev);
- 	if (!devlink_reload_actions_valid(ops))
- 		return NULL;
- 
- 	devlink = kzalloc(sizeof(*devlink) + priv_size, GFP_KERNEL);
- 	if (!devlink)
- 		return NULL;
-+
-+	devlink->dev = dev;
- 	devlink->ops = ops;
- 	xa_init_flags(&devlink->snapshot_ids, XA_FLAGS_ALLOC);
- 	write_pnet(&devlink->_net, net);
-@@ -8810,12 +8812,9 @@ EXPORT_SYMBOL_GPL(devlink_alloc_ns);
-  *	devlink_register - Register devlink instance
-  *
-  *	@devlink: devlink
-- *	@dev: parent device
-  */
--int devlink_register(struct devlink *devlink, struct device *dev)
-+int devlink_register(struct devlink *devlink)
- {
--	WARN_ON(devlink->dev);
--	devlink->dev = dev;
- 	mutex_lock(&devlink_mutex);
- 	list_add_tail(&devlink->list, &devlink_list);
- 	devlink_notify(devlink, DEVLINK_CMD_NEW);
-diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
-index a4c525f1cb17..8150e16aaa55 100644
---- a/net/dsa/dsa2.c
-+++ b/net/dsa/dsa2.c
-@@ -746,13 +746,14 @@ static int dsa_switch_setup(struct dsa_switch *ds)
- 	/* Add the switch to devlink before calling setup, so that setup can
- 	 * add dpipe tables
- 	 */
--	ds->devlink = devlink_alloc(&dsa_devlink_ops, sizeof(*dl_priv));
-+	ds->devlink =
-+		devlink_alloc(&dsa_devlink_ops, sizeof(*dl_priv), ds->dev);
- 	if (!ds->devlink)
- 		return -ENOMEM;
- 	dl_priv = devlink_priv(ds->devlink);
- 	dl_priv->ds = ds;
- 
--	err = devlink_register(ds->devlink, ds->dev);
-+	err = devlink_register(ds->devlink);
- 	if (err)
- 		goto free_devlink;
- 
--- 
-2.31.1
-
+> 
+> 
+> > Signed-off-by: Aravindhan Gunasekaran
+> > <aravindhan.gunasekaran@intel.com>
+> > ---
+> >   drivers/net/ethernet/intel/igc/igc.h         |  11 ++-
+> >   drivers/net/ethernet/intel/igc/igc_defines.h |   8 +++
+> >   drivers/net/ethernet/intel/igc/igc_main.c    |  71 ++++++++++++++++++
+> >   drivers/net/ethernet/intel/igc/igc_regs.h    |   3 +
+> >   drivers/net/ethernet/intel/igc/igc_tsn.c     | 103
+> +++++++++++++++++++++++++++
+> >   5 files changed, 195 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igc/igc.h
+> > b/drivers/net/ethernet/intel/igc/igc.h
+> > index 58488ba..a125aaf 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc.h
+> > +++ b/drivers/net/ethernet/intel/igc/igc.h
+> > @@ -98,6 +98,13 @@ struct igc_ring {
+> >   	u32 start_time;
+> >   	u32 end_time;
+> >
+> > +	/* CBS parameters */
+> > +	bool cbs_enable;                /* indicates if CBS is enabled */
+> > +	s32 idleslope;                  /* idleSlope in kbps */
+> > +	s32 sendslope;                  /* sendSlope in kbps */
+> > +	s32 hicredit;                   /* hiCredit in bytes */
+> > +	s32 locredit;                   /* loCredit in bytes */
+> > +
+> >   	/* everything past this point are written often */
+> >   	u16 next_to_clean;
+> >   	u16 next_to_use;
+> > @@ -289,8 +296,10 @@ extern char igc_driver_name[];
+> >   #define IGC_FLAG_VLAN_PROMISC		BIT(15)
+> >   #define IGC_FLAG_RX_LEGACY		BIT(16)
+> >   #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
+> > +#define IGC_FLAG_TSN_QAV_ENABLED	BIT(18)
+> >
+> > -#define IGC_FLAG_TSN_ANY_ENABLED
+> 	IGC_FLAG_TSN_QBV_ENABLED
+> > +#define IGC_FLAG_TSN_ANY_ENABLED \
+> > +	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED)
+> >
+> >   #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
+> >   #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h
+> > b/drivers/net/ethernet/intel/igc/igc_defines.h
+> > index 1361086..244edbc 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> > +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> > @@ -518,6 +518,14 @@
+> >   #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
+> >   #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
+> >   #define IGC_TXQCTL_STRICT_END		0x00000004
+> > +#define IGC_TXQCTL_QAV_SEL_MASK		0x000000C0
+> > +#define IGC_TXQCTL_QAV_SEL_CBS0		0x00000080
+> > +#define IGC_TXQCTL_QAV_SEL_CBS1		0x000000C0
+> > +
+> > +#define IGC_TQAVCC_IDLESLOPE_MASK	0xFFFF
+> > +#define IGC_TQAVCC_KEEP_CREDITS		BIT(30)
+> > +
+> > +#define IGC_MAX_SR_QUEUES		2
+> >
+> >   /* Receive Checksum Control */
+> >   #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable
+> */
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+> > b/drivers/net/ethernet/intel/igc/igc_main.c
+> > index 3eb4f9e..ea12633 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> > @@ -5905,6 +5905,74 @@ static int igc_tsn_enable_qbv_scheduling(struct
+> igc_adapter *adapter,
+> >   	return igc_tsn_offload_apply(adapter);
+> >   }
+> >
+> > +static int igc_save_cbs_params(struct igc_adapter *adapter, int queue,
+> > +			       bool enable, int idleslope, int sendslope,
+> > +			       int hicredit, int locredit) {
+> > +	bool cbs_status[IGC_MAX_SR_QUEUES] = { false };
+> > +	struct net_device *netdev = adapter->netdev;
+> > +	struct igc_ring *ring;
+> > +	int i;
+> > +
+> > +	/* i225 has two sets of credit-based shaper logic.
+> > +	 * Supporting it only on the top two priority queues
+> > +	 */
+> > +	if (queue < 0 || queue > 1)
+> > +		return -EINVAL;
+> > +
+> > +	ring = adapter->tx_ring[queue];
+> > +
+> > +	for (i = 0; i < IGC_MAX_SR_QUEUES; i++)
+> > +		if (adapter->tx_ring[i])
+> > +			cbs_status[i] = adapter->tx_ring[i]->cbs_enable;
+> > +
+> > +	/* CBS should be enabled on the highest priority queue first inorder
+> > +	 * for the CBS algorithm to operate as intended.
+> > +	 */
+> > +	if (enable) {
+> > +		if (queue == 1 && !cbs_status[0]) {
+> > +			netdev_err(netdev,
+> > +				   "Enabling CBS on queue1 before
+> queue0\n");
+> > +			return -EINVAL;
+> > +		}
+> > +	} else {
+> > +		if (queue == 0 && cbs_status[1]) {
+> > +			netdev_err(netdev,
+> > +				   "Disabling CBS on queue0 before
+> queue1\n");
+> > +			return -EINVAL;
+> > +		}
+> > +	}
+> > +
+> > +	ring->cbs_enable = enable;
+> > +	ring->idleslope = idleslope;
+> > +	ring->sendslope = sendslope;
+> > +	ring->hicredit = hicredit;
+> > +	ring->locredit = locredit;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int igc_tsn_enable_cbs(struct igc_adapter *adapter,
+> > +			      struct tc_cbs_qopt_offload *qopt) {
+> > +	struct igc_hw *hw = &adapter->hw;
+> > +	int err;
+> > +
+> > +	if (hw->mac.type != igc_i225)
+> > +		return -EOPNOTSUPP;
+> > +
+> > +	if (qopt->queue < 0 || qopt->queue > 1)
+> > +		return -EINVAL;
+> > +
+> > +	err = igc_save_cbs_params(adapter, qopt->queue, qopt->enable,
+> > +				  qopt->idleslope, qopt->sendslope,
+> > +				  qopt->hicredit, qopt->locredit);
+> > +	if (err)
+> > +		return err;
+> > +
+> > +	return igc_tsn_offload_apply(adapter); }
+> > +
+> >   static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
+> >   			void *type_data)
+> >   {
+> > @@ -5917,6 +5985,9 @@ static int igc_setup_tc(struct net_device *dev,
+> enum tc_setup_type type,
+> >   	case TC_SETUP_QDISC_ETF:
+> >   		return igc_tsn_enable_launchtime(adapter, type_data);
+> >
+> > +	case TC_SETUP_QDISC_CBS:
+> > +		return igc_tsn_enable_cbs(adapter, type_data);
+> > +
+> >   	default:
+> >   		return -EOPNOTSUPP;
+> >   	}
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h
+> > b/drivers/net/ethernet/intel/igc/igc_regs.h
+> > index 828c350..f90a644 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> > +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> > @@ -236,6 +236,9 @@
+> >   #define IGC_ENDQT(_n)		(0x3334 + 0x4 * (_n))
+> >   #define IGC_DTXMXPKTSZ		0x355C
+> >
+> > +#define IGC_TQAVCC(_n)		(0x3004 + ((_n) * 0x40))
+> > +#define IGC_TQAVHC(_n)		(0x300C + ((_n) * 0x40))
+> > +
+> >   /* System Time Registers */
+> >   #define IGC_SYSTIML	0x0B600  /* System time register Low - RO */
+> >   #define IGC_SYSTIMH	0x0B604  /* System time register High - RO */
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c
+> > b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> > index 2935d57..0fce22d 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> > @@ -18,6 +18,20 @@ static bool is_any_launchtime(struct igc_adapter
+> *adapter)
+> >   	return false;
+> >   }
+> >
+> > +static bool is_cbs_enabled(struct igc_adapter *adapter) {
+> > +	int i;
+> > +
+> > +	for (i = 0; i < adapter->num_tx_queues; i++) {
+> > +		struct igc_ring *ring = adapter->tx_ring[i];
+> > +
+> > +		if (ring->cbs_enable)
+> > +			return true;
+> > +	}
+> > +
+> > +	return false;
+> > +}
+> > +
+> >   static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
+> >   {
+> >   	unsigned int new_flags = adapter->flags &
+> > ~IGC_FLAG_TSN_ANY_ENABLED; @@ -28,6 +42,9 @@ static unsigned int
+> igc_tsn_new_flags(struct igc_adapter *adapter)
+> >   	if (is_any_launchtime(adapter))
+> >   		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
+> >
+> > +	if (is_cbs_enabled(adapter))
+> > +		new_flags |= IGC_FLAG_TSN_QAV_ENABLED;
+> > +
+> >   	return new_flags;
+> >   }
+> >
+> > @@ -87,6 +104,8 @@ static int igc_tsn_enable_offload(struct igc_adapter
+> *adapter)
+> >   	for (i = 0; i < adapter->num_tx_queues; i++) {
+> >   		struct igc_ring *ring = adapter->tx_ring[i];
+> >   		u32 txqctl = 0;
+> > +		u16 cbs_value;
+> > +		u32 tqavcc;
+> >
+> >   		wr32(IGC_STQT(i), ring->start_time);
+> >   		wr32(IGC_ENDQT(i), ring->end_time); @@ -104,6 +123,90
+> @@ static
+> > int igc_tsn_enable_offload(struct igc_adapter *adapter)
+> >   		if (ring->launchtime_enable)
+> >   			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
+> >
+> > +		/* Skip configuring CBS for Q2 and Q3 */
+> > +		if (i > 1)
+> > +			goto skip_cbs;
+> > +
+> > +		if (ring->cbs_enable) {
+> > +			if (i == 0)
+> > +				txqctl |= IGC_TXQCTL_QAV_SEL_CBS0;
+> > +			else
+> > +				txqctl |= IGC_TXQCTL_QAV_SEL_CBS1;
+> > +
+> > +			/* According to i225 datasheet section 7.5.2.7, we
+> > +			 * should set the 'idleSlope' field from TQAVCC
+> > +			 * register following the equation:
+> > +			 *
+> > +			 * value = link-speed   0x7736 * BW * 0.2
+> > +			 *         ---------- *  -----------------         (E1)
+> > +			 *          100Mbps            2.5
+> > +			 *
+> > +			 * Note that 'link-speed' is in Mbps.
+> > +			 *
+> > +			 * 'BW' is the percentage bandwidth out of full
+> > +			 * link speed which can be found with the
+> > +			 * following equation. Note that idleSlope here
+> > +			 * is the parameter from this function
+> > +			 * which is in kbps.
+> > +			 *
+> > +			 *     BW =     idleSlope
+> > +			 *          -----------------                      (E2)
+> > +			 *          link-speed * 1000
+> > +			 *
+> > +			 * That said, we can come up with a generic
+> > +			 * equation to calculate the value we should set
+> > +			 * it TQAVCC register by replacing 'BW' in E1 by E2.
+> > +			 * The resulting equation is:
+> > +			 *
+> > +			 * value = link-speed * 0x7736 * idleSlope * 0.2
+> > +			 *         -------------------------------------   (E3)
+> > +			 *             100 * 2.5 * link-speed * 1000
+> > +			 *
+> > +			 * 'link-speed' is present in both sides of the
+> > +			 * fraction so it is canceled out. The final
+> > +			 * equation is the following:
+> > +			 *
+> > +			 *     value = idleSlope * 61036
+> > +			 *             -----------------                   (E4)
+> > +			 *                  2500000
+> > +			 *
+> > +			 * NOTE: For i225, given the above, we can see
+> > +			 *       that idleslope is represented in
+> > +			 *       40.959433 kbps units by the value at
+> > +			 *       the TQAVCC register (2.5Gbps / 61036),
+> > +			 *       which reduces the granularity for
+> > +			 *       idleslope increments.
+> > +			 *
+> > +			 * In i225 controller, the sendSlope and loCredit
+> > +			 * parameters from CBS are not configurable
+> > +			 * by software so we don't do any
+> > +			 * 'controller configuration' in respect to
+> > +			 * these parameters.
+> > +			 */
+> > +			cbs_value = DIV_ROUND_UP_ULL(ring->idleslope
+> > +						     * 61036ULL, 2500000);
+> > +
+> > +			tqavcc = rd32(IGC_TQAVCC(i));
+> > +			tqavcc &= ~IGC_TQAVCC_IDLESLOPE_MASK;
+> > +			tqavcc |= cbs_value | IGC_TQAVCC_KEEP_CREDITS;
+> > +			wr32(IGC_TQAVCC(i), tqavcc);
+> > +
+> > +			wr32(IGC_TQAVHC(i),
+> > +			     0x80000000 + ring->hicredit * 0x7735);
+> > +		} else {
+> > +			/* Disable any CBS for the queue */
+> > +			txqctl &= ~(IGC_TXQCTL_QAV_SEL_MASK);
+> > +
+> > +			/* Set idleSlope to zero. */
+> > +			tqavcc = rd32(IGC_TQAVCC(i));
+> > +			tqavcc &= ~(IGC_TQAVCC_IDLESLOPE_MASK |
+> > +				    IGC_TQAVCC_KEEP_CREDITS);
+> > +			wr32(IGC_TQAVCC(i), tqavcc);
+> > +
+> > +			/* Set hiCredit to zero. */
+> > +			wr32(IGC_TQAVHC(i), 0);
+> > +		}
+> > +skip_cbs:
+> >   		wr32(IGC_TXQCTL(i), txqctl);
+> >   	}
+> >
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
