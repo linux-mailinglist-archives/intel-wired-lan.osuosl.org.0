@@ -1,154 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D6FB3E439C
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Aug 2021 12:09:03 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2385C3E45EC
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Aug 2021 14:50:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F049A401EB;
-	Mon,  9 Aug 2021 10:09:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9363F402A0;
+	Mon,  9 Aug 2021 12:50:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RacB6GkGRSCj; Mon,  9 Aug 2021 10:08:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RXfdokFbS_sl; Mon,  9 Aug 2021 12:50:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A0EE9401E7;
-	Mon,  9 Aug 2021 10:08:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 41681403F7;
+	Mon,  9 Aug 2021 12:50:13 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 99EE41BF334
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Aug 2021 10:08:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F25801BF392
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 12:50:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8753982A28
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Aug 2021 10:08:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DEDD0826C2
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 12:50:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vjZwJqMFMP1h for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Aug 2021 10:08:53 +0000 (UTC)
+ with ESMTP id Oa2BqnBHELuv for <intel-wired-lan@osuosl.org>;
+ Mon,  9 Aug 2021 12:50:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4FDFF8291C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Aug 2021 10:08:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10070"; a="214390614"
-X-IronPort-AV: E=Sophos;i="5.84,307,1620716400"; d="scan'208";a="214390614"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2021 03:08:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,307,1620716400"; d="scan'208";a="420804255"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga006.jf.intel.com with ESMTP; 09 Aug 2021 03:08:50 -0700
-Received: from orsmsx604.amr.corp.intel.com (10.22.229.17) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Mon, 9 Aug 2021 03:08:49 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10 via Frontend Transport; Mon, 9 Aug 2021 03:08:49 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.173)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Mon, 9 Aug 2021 03:08:48 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=T/5rXi8UUzdqxHPO3mz2fBvhns2tVNIT12obrgV8HMN7OZYNVkF6p+oXOk8tSEj/dL7ZqImb0+HKTBpwC2u38dfTLNpERWVAS39+g4hyLXBqZfU0Yj2HESuWku9pbbYjKEgrghHm27w9LCZssWV5sfQi/WubwPh3L6bL5QJ78PuMOTU3bDPiHBFvbrJxPN5odnBA5m789n2BubiZf/QFWwFOh/MtVZJzZsqApl7seTfTxK3/ZGIlXGxqIKvEoqV23I4aU2mn4hn80lO73TrKjy5YboPVaSqmxWpTXqcLKJAneojhYJd09XQ18JMYi9Je2IcEeURx/JxKolYNy10icQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NhU1MrksKrPBrqdn0og1+WpZcxuvLI6lT0q7uGIsGfk=;
- b=P6htr+v6Q2ToxJAFBs+JIPpqbmAUK7h25HMvoGIj1NWGffBtnIE6ZFp2uvfGC067Z1DaYQOXe9IRc2LD8K+Lh7S+q6hsaI0kharWazxXR0m0IUJDZXEkVHxlRL+TQnpT5f4LvdR8jEYpT+7pf7JsfFh1YUFjGWWRuZLO5futUh9xmLP16id+V+GtBP5QrjQMyukZPKEUkQ2QFfeGxAx2gwvXukwHUOdUcZiBhi+eW5+2OsoH+K4cdZw4HdoNSof+WeSxCVBtYSLz5w7J2R/tkAXwsKGv5yjUBer3Iq7DG1VI8TCa3lneg4Bp26ELyBg+n8LK50u8uqnOLQJM1eqjlQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NhU1MrksKrPBrqdn0og1+WpZcxuvLI6lT0q7uGIsGfk=;
- b=JN1eTj3fwNQ9Wzqe3K0IF85h/F9bmHXEUZeuGZ1lyKg837gnA2Nz2LfMWmSUouWKNtRixtHDJzPwFFJ8qs7N9MyPVc358TujMAnVvWdGETUPkhdix6rn7D6DnxM5Z/K6G44NkVQ2uV1tayjANsGFtpW8XQj8dmzGvvf4uKFatZo=
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by BYAPR11MB3831.namprd11.prod.outlook.com (2603:10b6:a03:b0::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.21; Mon, 9 Aug
- 2021 10:08:47 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::4d0f:77de:b513:595d]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::4d0f:77de:b513:595d%5]) with mapi id 15.20.4394.023; Mon, 9 Aug 2021
- 10:08:47 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 7/7] ice: Fix macro name for
- IPv4 fragment flag
-Thread-Index: AQHXepIU/euir6q8KUS3OmzVd+tgQqtrF44w
-Date: Mon, 9 Aug 2021 10:08:47 +0000
-Message-ID: <BYAPR11MB33673D166DD721B3F127A2BBFCF69@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20210716221644.45946-1-anthony.l.nguyen@intel.com>
- <20210716221644.45946-8-anthony.l.nguyen@intel.com>
-In-Reply-To: <20210716221644.45946-8-anthony.l.nguyen@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6a304f49-1491-4c33-78b4-08d95b1dadbf
-x-ms-traffictypediagnostic: BYAPR11MB3831:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR11MB3831E97DE1745D1862EFF065FCF69@BYAPR11MB3831.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4125;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Sim+9aIBq+/KZzVQ9q5iiOld8i8ZIq/SEi8f6riOx8ujoZUbCKrBTmgIwLHvtew1Bt4spqD6K4YmHySHuomRymD20raoTJtPzL1eIEvPL6M46QYZrTHRjDy2wwxgWdciVmVju8c5Wq/i1NgoIgwDzn1LfNeGY82cYpAt1QA22EYShznB6QFDeEGROi5EOvXe0P7yEjT9JOX0ki+PkFkRqMlq+8Jc0q57JX2skX9BW8KNXiElQ32umN8XzFNYalh+IdLLNiekYjl/LESV9BMCcvDs5dCpnUmb3edSsOeEiHrWrWSSX7hX7/DScv8vxAhkRmhgcB1vju9SUMC3lBtA/6snhBCssGn+/YsE3mqQjk8u9zIEswGZ+cutIf0gmOwPH8nWPVJP7CQ8D++xAre4AXU1XfL8yxnNaSOmT/fbr0lwVlPR4qbcRUSLb0368aysD7fTE2eRfllHybBBb6/m33NCCiMV3QXOEqmuk2MHSzPO4GYDNcgmvAX2e3ub+nMnb0weqpZRQeq4D4Li1cA4AVDPoEuP4O/RmuDIaZ0JJ5mgUM4ghaE6Hdtq0+QlDxgEMofOSSawSPogAVejgzbdB8bJgR8EkxZxKP26RyWEp9WZxGGgbqyIf4D9N3YZq0wuZViFpd4OTExM6NMGcm/JLW2Z7H9B9j8ZSl5VEfml2Lq6I78tey5JSK6jiibIA88ExZuZw5aSUkmxc0Ef/reTsg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(39860400002)(346002)(396003)(376002)(366004)(110136005)(316002)(8676002)(4744005)(2906002)(55016002)(53546011)(6506007)(52536014)(5660300002)(26005)(9686003)(33656002)(186003)(83380400001)(86362001)(66446008)(66556008)(66946007)(76116006)(478600001)(7696005)(71200400001)(8936002)(122000001)(64756008)(66476007)(38070700005)(38100700002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?36JRT24Uy0tXejQghAkP81VdzU/WaonXIR+6Dz2mtqwSMsmT13hSxOpzgRBI?=
- =?us-ascii?Q?wSKnDjr0DY+3UGU/TqQiuRkTJkhuK2marnuDl2a03OZNcAEZZuTg6KydRjmy?=
- =?us-ascii?Q?SBMGxZKmIO8ubGuByIz8EzAivPonMlbPsSWI113UcEP6akAFXwdaGny+p1kw?=
- =?us-ascii?Q?zzePPKaiQdrJDbhTBKTe36djYdbx1OhQrRHZWJDlNPqL+3VvVkYArmH3lfXf?=
- =?us-ascii?Q?k2DE9NVE++Rqaqy0GLw64ajohPAEQnvSr/AOs36YE+bvFjrqkw0twJVGvItB?=
- =?us-ascii?Q?azr0fnI/Eh5zoQp/rftSds0MawOU+s8Nnmvg8Njc5rhlbpO3rx5dmsJUoJDH?=
- =?us-ascii?Q?KHkLG6GQSaRv2cwzwjTKJWDhbgjkwqZzfHYvf6mnnafShaHM1NqRHB8NVxH1?=
- =?us-ascii?Q?pfVHhvCRUUmfP8Ytu35y6BBWG3ad2+NcRxdz538oPUEXEp/YCEPLaG8nXrih?=
- =?us-ascii?Q?B+N5jhC64w3CrRdyAfUSP1YpbgMcpSj0NzX3RSSrAzp3sGGj36b9migZ+p4v?=
- =?us-ascii?Q?bIFtTPVKHxMrHiKICwqgFclLnOvcE/V+zigZkbdDRxupDPvGK2kqO2fCqUC8?=
- =?us-ascii?Q?0oZ8Z/ranGXACqJ5e2ehhjSbOURJktdvsq0n6bBUfy8NAIJN9E0MJDX1Cuno?=
- =?us-ascii?Q?n+KsLl6KZ47+NpbcJma2ClIZPI9oUd+30E7msNcvRrXdaQsn3l7KrI9+cdyx?=
- =?us-ascii?Q?LPp9WaerrklpbhRD/8zixqOP4Qzo6X1QqeUf05fynKWUyJLHtq7jqGPSFjID?=
- =?us-ascii?Q?nWpDD+7HDttdnLSTfcm8fEWFMZAB9OWRpxkxx3j+HedeG2aQWet9LwFCUxWG?=
- =?us-ascii?Q?LUZZnoUu2qDSg7W2HSn/QOM6SG2HYT+BOHRWoTjadf8t3IfOYs8d/+hMRSrs?=
- =?us-ascii?Q?Lvejz0BzisagCvWVAZpI8KVuV3leCl4JsrM+XaiQ62T6Ijh9TAcVv7SIwT/O?=
- =?us-ascii?Q?mJhEpuy+5+2e9LV2pRnwhFi6tEJHdTZCqgHlBDGbwjLZNkT1hzMpORTp25fH?=
- =?us-ascii?Q?MdFfwoX5FrRcjTHvMTp+mTt7mu/XaxQr0i4OeTn477IkeEPBByw1nsXJIBz5?=
- =?us-ascii?Q?p4+GCFlcXKWyvPABiS28qnkpXUrEXmXx3y+pL8uZ4P24zXufSfYW6jeJF4WV?=
- =?us-ascii?Q?Y9MT84ilDXHVYrQQHmnQT8eknGa8OQYLxSbRlatKKRKl3m2i1s6mY4xF9wNx?=
- =?us-ascii?Q?gAqSjDGA2+19UG3GtDwepV1EtkaWRezcFBmINYwM7IzhH7ArxUCDNgy+Hocf?=
- =?us-ascii?Q?mH86PkEBF4hnJKGzj4jd7k1eD0IuDbZWlXLu2TQ62pHPAgaK8vqeI8VD/4au?=
- =?us-ascii?Q?SjP96ix7SFPO6jM0hey+iXR/?=
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 240E9826C7
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 12:50:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1628513405;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=PF2shsaiKcJKLxNjRhQX0NG83Iyu9Y8Gvz5IiAlHwIg=;
+ b=ZrHFmqbZPB6BZTUj1ZV6Z1amUg18e2pb+Eju+qCJlvUOVm2dOLxW7Y5gUs0GzOypBnGcYr
+ 8wSlrgFAZD9rYF70NTKxdafQzHmlosTNgUqQd0FLqJyYP0lSvBx531heOsd/i+EQpF2aRJ
+ 7MtSAIXapcEmLwWkiLA3qNttcaIt/h0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-490-wym1J8KBPGWhb6rLDGzzoQ-1; Mon, 09 Aug 2021 08:50:04 -0400
+X-MC-Unique: wym1J8KBPGWhb6rLDGzzoQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 10DB6801AEB
+ for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 12:50:04 +0000 (UTC)
+Received: from wideload.redhat.com (unknown [10.22.32.66])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AD9635E26A;
+ Mon,  9 Aug 2021 12:50:03 +0000 (UTC)
+From: Ken Cox <jkc@redhat.com>
+To: intel-wired-lan@osuosl.org
+Date: Mon,  9 Aug 2021 07:50:03 -0500
+Message-Id: <20210809125003.679140-1-jkc@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6a304f49-1491-4c33-78b4-08d95b1dadbf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Aug 2021 10:08:47.5842 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: lcKLN8siolgB/uuU+i18MZ14GVq9nXRkyNZG+sS1H7Fvj3lyhafDJKceWGD1KvWS/IEC2YywDghqDzhsGaOBzw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3831
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next 7/7] ice: Fix macro name for
- IPv4 fragment flag
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jkc@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Subject: [Intel-wired-lan] [PATCH] ixgbe: Add locking to prevent panic when
+ setting sriov_numvfs to zero.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,35 +80,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ken Cox <jkc@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+It is possible to disable VFs while the PF driver is processing requests
+from the VF driver.  This can result in a panic.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Saturday, July 17, 2021 3:47 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net-next 7/7] ice: Fix macro name for IPv4
-> fragment flag
-> 
-> From: Jeff Guo <jia.guo@intel.com>
-> 
-> In IPv4 header, fragment flags indicate whether the packet needs to be
-> fragmented or not. The value 0x20 represents MF (More Fragment); fix the
-> macro name to match this.
-> 
-> Signed-off-by: Ting Xu <ting.xu@intel.com>
-> Signed-off-by: Jeff Guo <jia.guo@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_fdir.c | 2 +-
-> drivers/net/ethernet/intel/ice/ice_fdir.h | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
+BUG: unable to handle kernel paging request at 000000000000106c
+PGD 0 P4D 0
+Oops: 0000 [#1] SMP NOPTI
+CPU: 8 PID: 0 Comm: swapper/8 Kdump: loaded Tainted: G          I      --------- -  -
+Hardware name: Dell Inc. PowerEdge R740/06WXJT, BIOS 2.8.2 08/27/2020
+RIP: 0010:ixgbe_msg_task+0x4c8/0x1690 [ixgbe]
+Code: 00 00 48 8d 04 40 48 c1 e0 05 89 7c 24 24 89 fd 48 89 44 24 10 83 ff 01 0f 84 b8 04 00 00 4c 8b 64 24 10 4d 03 a5 48 22 00 00 <41> 80 7c 24 4c 00 0f 84 8a 03 00 00 0f b7 c7 83 f8 08 0f 84 8f 0a
+RSP: 0018:ffffb337869f8df8 EFLAGS: 00010002
+RAX: 0000000000001020 RBX: 0000000000000000 RCX: 000000000000002b
+RDX: 0000000000000002 RSI: 0000000000000008 RDI: 0000000000000006
+RBP: 0000000000000006 R08: 0000000000000002 R09: 0000000000029780
+R10: 00006957d8f42832 R11: 0000000000000000 R12: 0000000000001020
+R13: ffff8a00e8978ac0 R14: 000000000000002b R15: ffff8a00e8979c80
+FS:  0000000000000000(0000) GS:ffff8a07dfd00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000000000000106c CR3: 0000000063e10004 CR4: 00000000007726e0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+PKRU: 55555554
+Call Trace:
+ <IRQ>
+ ? ttwu_do_wakeup+0x19/0x140
+ ? try_to_wake_up+0x1cd/0x550
+ ? ixgbevf_update_xcast_mode+0x71/0xc0 [ixgbevf]
+ ixgbe_msix_other+0x17e/0x310 [ixgbe]
+ __handle_irq_event_percpu+0x40/0x180
+ handle_irq_event_percpu+0x30/0x80
+ handle_irq_event+0x36/0x53
+ handle_edge_irq+0x82/0x190
+ handle_irq+0x1c/0x30
+ do_IRQ+0x49/0xd0
+ common_interrupt+0xf/0xf
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+This can be eventually be reproduced with the following script:
+
+while :
+do
+	echo 63 > /sys/class/net/ens3f0/device/sriov_numvfs
+	sleep 1
+	echo 0 > /sys/class/net/ens3f0/device/sriov_numvfs
+        sleep 1
+done
+
+Signed-off-by: Ken Cox <jkc@redhat.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h       | 1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 9 +++++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index a604552fa634..696bb2a61ea7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -807,6 +807,7 @@ enum ixgbe_state_t {
+ 	__IXGBE_PTP_RUNNING,
+ 	__IXGBE_PTP_TX_IN_PROGRESS,
+ 	__IXGBE_RESET_REQUESTED,
++	__IXGBE_DISABLING_VFS,
+ };
+ 
+ struct ixgbe_cb {
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index 214a38de3f41..e2df7729876d 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -206,8 +206,12 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
+ 	unsigned int num_vfs = adapter->num_vfs, vf;
+ 	int rss;
+ 
++       while (test_and_set_bit(__IXGBE_DISABLING_VFS, &adapter->state))
++               usleep_range(1000, 2000);
++
+ 	/* set num VFs to 0 to prevent access to vfinfo */
+ 	adapter->num_vfs = 0;
++	clear_bit(__IXGBE_DISABLING_VFS, &adapter->state);
+ 
+ 	/* put the reference to all of the vf devices */
+ 	for (vf = 0; vf < num_vfs; ++vf) {
+@@ -1292,6 +1296,7 @@ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ 	return retval;
+ }
+ 
++
+ static void ixgbe_rcv_ack_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ {
+ 	struct ixgbe_hw *hw = &adapter->hw;
+@@ -1307,6 +1312,9 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 vf;
+ 
++	if (test_and_set_bit(__IXGBE_DISABLING_VFS, &adapter->state))
++		return;
++
+ 	for (vf = 0; vf < adapter->num_vfs; vf++) {
+ 		/* process any reset requests */
+ 		if (!ixgbe_check_for_rst(hw, vf))
+@@ -1320,6 +1328,7 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
+ 		if (!ixgbe_check_for_ack(hw, vf))
+ 			ixgbe_rcv_ack_from_vf(adapter, vf);
+ 	}
++	clear_bit(__IXGBE_DISABLING_VFS, &adapter->state);
+ }
+ 
+ void ixgbe_disable_tx_rx(struct ixgbe_adapter *adapter)
+-- 
+2.26.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
