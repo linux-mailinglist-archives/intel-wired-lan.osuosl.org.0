@@ -2,60 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B3113E5C0F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Aug 2021 15:45:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D80433E7C1D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Aug 2021 17:25:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C9D7D402E3;
-	Tue, 10 Aug 2021 13:45:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3490F4022D;
+	Tue, 10 Aug 2021 15:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZWF_Xf0-T2_k; Tue, 10 Aug 2021 13:45:31 +0000 (UTC)
+	with ESMTP id Yir8rKuRSKQV; Tue, 10 Aug 2021 15:25:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 26C40402EE;
-	Tue, 10 Aug 2021 13:45:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 485A5401F8;
+	Tue, 10 Aug 2021 15:25:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6114A1BF5A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 13:45:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A04E01BF4D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 15:25:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4E26A60672
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 13:45:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8F369831CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 15:25:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6LtJq78-V3s6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Aug 2021 13:45:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ISlWhqKYbl1Q for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Aug 2021 15:24:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 22365605A7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 13:45:25 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0AEC561075;
- Tue, 10 Aug 2021 13:45:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628603124;
- bh=Glql89CKaEO2bKO5D0IqlIuTd5q4oxJ9Hn2ZSRZr+6k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=W3pWCgta7DCxFxMKzABYUZSAlENjwlFpfuHFoXXv2Eit9eMl2Z+UCcO5Dc43YQQMt
- WTVNyQ8MROBG3w8rJQO0Vcp2otFrz65A5789N/iQ/b/3s13ylFpmZfF1fcAyaedt3N
- ovC4qeJXiHZ331CjANyr3NzVzEvoZfFX9lJQHWfWjQT7fe/rRrKM6xabrSL4pAwcGO
- WAsrZtoEL2msoqVQ9ZFYcuNKnb/5PkDkqbuYEJEXJF/iG5535KgIcyS7mmOTgv7IMD
- CA0tzZ8OzXMMcuEEsgbziGo3jbol8i+tLifnzLmNjQRUT3CMMibJPFoNQ8K7rON1B/
- /tR/laAwFJygA==
-Date: Tue, 10 Aug 2021 16:45:20 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Prabhakar Kushwaha <prabhakar.pkin@gmail.com>
-Message-ID: <YRKC8NKClMyaQOmt@unreal>
-References: <6859503f7e3e6cd706bf01ef06f1cae8c0b0970b.1628449004.git.leonro@nvidia.com>
- <CAJ2QiJLJk73RDS_XwQ0FY0ODq9qXbmiEZ2Y8Fkz9vVheK4he8g@mail.gmail.com>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 692E582751
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 15:24:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10072"; a="275961670"
+X-IronPort-AV: E=Sophos;i="5.84,310,1620716400"; d="scan'208";a="275961670"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Aug 2021 08:24:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,310,1620716400"; d="scan'208";a="503165894"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 10 Aug 2021 08:24:55 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mDTcd-000KhD-3u; Tue, 10 Aug 2021 15:24:55 +0000
+Date: Tue, 10 Aug 2021 23:24:26 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61129a2a.m6NYKE++zWoy0k3Q%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJ2QiJLJk73RDS_XwQ0FY0ODq9qXbmiEZ2Y8Fkz9vVheK4he8g@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next] devlink: Set device as early
- as possible
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 27f4ca7ae0526781e7c754c822c9cee5eed07cdc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,111 +63,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
- Jerin Jacob <jerinj@marvell.com>, GR-everest-linux-l2@marvell.com,
- Subbaraya Sundeep <sbhatta@marvell.com>, Ioana Ciornei <ioana.ciornei@nxp.com>,
- UNGLinuxDriver@microchip.com, Michael Chan <michael.chan@broadcom.com>,
- Linu Cherian <lcherian@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
- Shai Malin <smalin@marvell.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Manish Chopra <manishc@marvell.com>, linux-staging@lists.linux.dev,
- rtoshniwal@marvell.com, Shannon Nelson <snelson@pensando.io>,
- intel-wired-lan@lists.osuosl.org, Vadym Kochan <vkochan@marvell.com>,
- Jakub Kicinski <kuba@kernel.org>, Prabhakar Kushwaha <pkushwaha@marvell.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
- Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
- Satanand Burla <sburla@marvell.com>, Shai Malin <malin1024@gmail.com>,
- Bin Luo <luobin9@huawei.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Jiri Pirko <jiri@nvidia.com>, drivers@pensando.io, linux-omap@vger.kernel.org,
- Omkar Kulkarni <okulkarni@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
- Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Coiby Xu <coiby.xu@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
- netdev@vger.kernel.org, Derek Chickles <dchickles@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Geetha sowjanya <gakula@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 10, 2021 at 06:08:51PM +0530, Prabhakar Kushwaha wrote:
-> Hi Leon,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 27f4ca7ae0526781e7c754c822c9cee5eed07cdc  ice: don't remove netdev->dev_addr from uc sync list
 
-<...>
+elapsed time: 1271m
 
-> >  struct devlink *devlink_alloc_ns(const struct devlink_ops *ops,
-> > -                                size_t priv_size, struct net *net)
-> > +                                size_t priv_size, struct net *net,
-> > +                                struct device *dev)
-> >  {
-> >         struct devlink *devlink;
-> >
-> > -       if (WARN_ON(!ops))
-> > -               return NULL;
-> > -
-> > +       WARN_ON(!ops || !dev);
-> >         if (!devlink_reload_actions_valid(ops))
-> >                 return NULL;
-> >
-> >         devlink = kzalloc(sizeof(*devlink) + priv_size, GFP_KERNEL);
-> >         if (!devlink)
-> >                 return NULL;
-> > +
-> > +       devlink->dev = dev;
-> >         devlink->ops = ops;
-> >         xa_init_flags(&devlink->snapshot_ids, XA_FLAGS_ALLOC);
-> >         write_pnet(&devlink->_net, net);
-> > @@ -8810,12 +8812,9 @@ EXPORT_SYMBOL_GPL(devlink_alloc_ns);
-> >   *     devlink_register - Register devlink instance
-> >   *
-> >   *     @devlink: devlink
-> > - *     @dev: parent device
-> >   */
-> 
-> This patch is converting devlink_alloc() to devlink_alloc_register().
-> 
-> There are 2 APIs: devlink_alloc() and devlink_register().
-> Both APIs can be used in a scenario,
->               Where devlink_alloc() can be done by code written around
-> one struct dev and used by another struct dev.
-> or
-> This scenario is not even a valid scenario?
+configs tested: 133
+configs skipped: 4
 
-devlink_alloc() is used to allocated netdev structures for newly
-initialized device, it is not possible to share same devlink instance
-between different devices.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> 
-> > -int devlink_register(struct devlink *devlink, struct device *dev)
-> > +int devlink_register(struct devlink *devlink)
-> >  {
-> > -       WARN_ON(devlink->dev);
-> > -       devlink->dev = dev;
-> >         mutex_lock(&devlink_mutex);
-> >         list_add_tail(&devlink->list, &devlink_list);
-> >         devlink_notify(devlink, DEVLINK_CMD_NEW);
-> 
-> Considering device registration has been moved to devlink_alloc().
-> Can the remaining code of devlink_register() be also moved in devlink_alloc()?
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20210809
+s390                          debug_defconfig
+arm                            xcep_defconfig
+arm                        multi_v5_defconfig
+arm                          pxa168_defconfig
+arm                    vt8500_v6_v7_defconfig
+arc                                 defconfig
+arm                           corgi_defconfig
+mips                           rs90_defconfig
+powerpc                      acadia_defconfig
+mips                            gpr_defconfig
+sh                          rsk7264_defconfig
+ia64                        generic_defconfig
+sh                        sh7785lcr_defconfig
+xtensa                  nommu_kc705_defconfig
+sh                          landisk_defconfig
+openrisc                         alldefconfig
+arm                           stm32_defconfig
+powerpc                      ppc64e_defconfig
+powerpc                     tqm8540_defconfig
+riscv                          rv32_defconfig
+x86_64                            allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+sh                               allmodconfig
+s390                                defconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210809
+x86_64               randconfig-a004-20210809
+x86_64               randconfig-a006-20210809
+x86_64               randconfig-a003-20210809
+x86_64               randconfig-a001-20210809
+x86_64               randconfig-a005-20210809
+i386                 randconfig-a004-20210808
+i386                 randconfig-a005-20210808
+i386                 randconfig-a006-20210808
+i386                 randconfig-a002-20210808
+i386                 randconfig-a001-20210808
+i386                 randconfig-a003-20210808
+i386                 randconfig-a004-20210809
+i386                 randconfig-a005-20210809
+i386                 randconfig-a006-20210809
+i386                 randconfig-a002-20210809
+i386                 randconfig-a001-20210809
+i386                 randconfig-a003-20210809
+i386                 randconfig-a004-20210810
+i386                 randconfig-a002-20210810
+i386                 randconfig-a001-20210810
+i386                 randconfig-a003-20210810
+i386                 randconfig-a006-20210810
+i386                 randconfig-a005-20210810
+x86_64               randconfig-a016-20210808
+x86_64               randconfig-a012-20210808
+x86_64               randconfig-a013-20210808
+x86_64               randconfig-a011-20210808
+x86_64               randconfig-a014-20210808
+x86_64               randconfig-a015-20210808
+i386                 randconfig-a012-20210808
+i386                 randconfig-a015-20210808
+i386                 randconfig-a011-20210808
+i386                 randconfig-a013-20210808
+i386                 randconfig-a014-20210808
+i386                 randconfig-a016-20210808
+i386                 randconfig-a012-20210809
+i386                 randconfig-a015-20210809
+i386                 randconfig-a011-20210809
+i386                 randconfig-a013-20210809
+i386                 randconfig-a014-20210809
+i386                 randconfig-a016-20210809
+i386                 randconfig-a011-20210810
+i386                 randconfig-a015-20210810
+i386                 randconfig-a013-20210810
+i386                 randconfig-a014-20210810
+i386                 randconfig-a016-20210810
+i386                 randconfig-a012-20210810
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
 
-The line "list_add_tail(&devlink->list, &devlink_list);" makes the
-devlink instance visible to the devlink netlink users. We need to be
-sure that it is happening when the device is already initialized, while
-devlink_alloc() is performed usually as first line in .probe() routine.
+clang tested configs:
+x86_64               randconfig-c001-20210809
+x86_64               randconfig-c001-20210810
+x86_64               randconfig-a013-20210810
+x86_64               randconfig-a011-20210810
+x86_64               randconfig-a012-20210810
+x86_64               randconfig-a016-20210810
+x86_64               randconfig-a014-20210810
+x86_64               randconfig-a015-20210810
+x86_64               randconfig-a016-20210809
+x86_64               randconfig-a012-20210809
+x86_64               randconfig-a013-20210809
+x86_64               randconfig-a011-20210809
+x86_64               randconfig-a014-20210809
+x86_64               randconfig-a015-20210809
 
-This means that we can't combine alloc an register and
-devlink_alloc_register() can't be valid scenario.
-
-Thanks
-
-> 
-> --pk
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
