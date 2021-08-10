@@ -1,54 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B9273E47FF
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Aug 2021 16:54:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 876263E5366
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Aug 2021 08:21:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 193DA40241;
-	Mon,  9 Aug 2021 14:54:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2B50181D18;
+	Tue, 10 Aug 2021 06:21:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d-jktjLc5e2a; Mon,  9 Aug 2021 14:54:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XYl0IzzGIUpO; Tue, 10 Aug 2021 06:21:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9DF7F400EA;
-	Mon,  9 Aug 2021 14:54:01 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8E1201BF3DE
- for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 14:53:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1B4F283005;
+	Tue, 10 Aug 2021 06:21:25 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D1C661BF30D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 06:21:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7BFA840248
- for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 14:53:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BD80E82FD5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 06:21:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cWh-YTdVGInN for <intel-wired-lan@osuosl.org>;
- Mon,  9 Aug 2021 14:53:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ni4z4mR4Ke93 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Aug 2021 06:21:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 96FEF401F7
- for <intel-wired-lan@osuosl.org>; Mon,  9 Aug 2021 14:53:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10070"; a="214736011"
-X-IronPort-AV: E=Sophos;i="5.84,307,1620716400"; d="scan'208";a="214736011"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2021 07:53:50 -0700
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B061581D18
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Aug 2021 06:21:16 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10070"; a="278591828"
+X-IronPort-AV: E=Sophos;i="5.84,309,1620716400"; d="scan'208";a="278591828"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2021 23:21:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,307,1620716400"; d="scan'208";a="483450734"
-Received: from inlubt0152.iind.intel.com ([10.67.198.206])
- by fmsmga008.fm.intel.com with ESMTP; 09 Aug 2021 07:53:48 -0700
-From: aravindhan.gunasekaran@intel.com
-To: intel-wired-lan@osuosl.org
-Date: Mon,  9 Aug 2021 20:23:40 +0530
-Message-Id: <1628520820-28907-4-git-send-email-aravindhan.gunasekaran@intel.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1628520820-28907-1-git-send-email-aravindhan.gunasekaran@intel.com>
-References: <1628520820-28907-1-git-send-email-aravindhan.gunasekaran@intel.com>
-Subject: [Intel-wired-lan] [PATCH next-queue v3 3/3] igc: Add support for
- CBS offloading
+X-IronPort-AV: E=Sophos;i="5.84,309,1620716400"; d="scan'208";a="506017347"
+Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 09 Aug 2021 23:21:13 -0700
+Received: from kbuild by d053b881505b with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mDL8S-000KHh-UO; Tue, 10 Aug 2021 06:21:12 +0000
+Date: Tue, 10 Aug 2021 14:20:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61121aae.5dHT0dnsSbf5hMN9%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ a7550f8b1c9712894f9e98d6caf5f49451ebd058
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,333 +63,138 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: velmurugan.chenniyappan@intel.com, aravindhan.gunasekaran@intel.com,
- mallikarjuna.chilakala@intel.com
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: a7550f8b1c9712894f9e98d6caf5f49451ebd058  iavf: Set RSS LUT and key in reset handle path
 
-Implemented support for Credit-based shaper(CBS) Qdisc hardware
-offload mode in the driver. There are two sets of IEEE802.1Qav
-(CBS) HW logic in i225 controller and this patch supports
-enabling them in the top two priority TX queues.
+elapsed time: 727m
 
-Driver implemented as recommended by Foxville External
-Architecture Specification v0.993. Idleslope and Hi-credit are
-the CBS tunable parameters for i225 NIC, programmed in TQAVCC
-and TQAVHC registers respectively.
+configs tested: 109
+configs skipped: 4
 
-In-order for IEEE802.1Qav (CBS) algorithm to work as intended
-and provide BW reservation CBS should be enabled in highest
-priority queue first. If we enable CBS on any of low priority
-queues, the traffic in high priority queue does not allow low
-priority queue to be selected for transmission and bandwidth
-reservation is not guaranteed.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
-Signed-off-by: Mallikarjuna Chilakala <mallikarjuna.chilakala@intel.com>
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+s390                          debug_defconfig
+arm                            xcep_defconfig
+arm                        multi_v5_defconfig
+arm                          pxa168_defconfig
+sh                          polaris_defconfig
+alpha                            alldefconfig
+xtensa                    smp_lx200_defconfig
+parisc                generic-32bit_defconfig
+arm                          imote2_defconfig
+powerpc                     powernv_defconfig
+mips                         bigsur_defconfig
+powerpc                     pseries_defconfig
+mips                          ath79_defconfig
+mips                           ci20_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+x86_64                            allnoconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20210809
+x86_64               randconfig-a004-20210809
+x86_64               randconfig-a006-20210809
+x86_64               randconfig-a003-20210809
+x86_64               randconfig-a001-20210809
+x86_64               randconfig-a005-20210809
+i386                 randconfig-a004-20210808
+i386                 randconfig-a005-20210808
+i386                 randconfig-a006-20210808
+i386                 randconfig-a002-20210808
+i386                 randconfig-a001-20210808
+i386                 randconfig-a003-20210808
+i386                 randconfig-a004-20210809
+i386                 randconfig-a005-20210809
+i386                 randconfig-a006-20210809
+i386                 randconfig-a002-20210809
+i386                 randconfig-a001-20210809
+i386                 randconfig-a003-20210809
+x86_64               randconfig-a016-20210808
+x86_64               randconfig-a012-20210808
+x86_64               randconfig-a013-20210808
+x86_64               randconfig-a011-20210808
+x86_64               randconfig-a014-20210808
+x86_64               randconfig-a015-20210808
+i386                 randconfig-a012-20210808
+i386                 randconfig-a015-20210808
+i386                 randconfig-a011-20210808
+i386                 randconfig-a013-20210808
+i386                 randconfig-a014-20210808
+i386                 randconfig-a016-20210808
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-c001-20210809
+x86_64               randconfig-a013-20210810
+x86_64               randconfig-a011-20210810
+x86_64               randconfig-a012-20210810
+x86_64               randconfig-a016-20210810
+x86_64               randconfig-a014-20210810
+x86_64               randconfig-a015-20210810
+x86_64               randconfig-a016-20210809
+x86_64               randconfig-a012-20210809
+x86_64               randconfig-a013-20210809
+x86_64               randconfig-a011-20210809
+x86_64               randconfig-a014-20210809
+x86_64               randconfig-a015-20210809
+
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  11 ++-
- drivers/net/ethernet/intel/igc/igc_defines.h |   8 +++
- drivers/net/ethernet/intel/igc/igc_main.c    |  71 ++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |   3 +
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 103 +++++++++++++++++++++++++++
- 5 files changed, 195 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 58488ba..a125aaf 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -98,6 +98,13 @@ struct igc_ring {
- 	u32 start_time;
- 	u32 end_time;
- 
-+	/* CBS parameters */
-+	bool cbs_enable;                /* indicates if CBS is enabled */
-+	s32 idleslope;                  /* idleSlope in kbps */
-+	s32 sendslope;                  /* sendSlope in kbps */
-+	s32 hicredit;                   /* hiCredit in bytes */
-+	s32 locredit;                   /* loCredit in bytes */
-+
- 	/* everything past this point are written often */
- 	u16 next_to_clean;
- 	u16 next_to_use;
-@@ -289,8 +296,10 @@ extern char igc_driver_name[];
- #define IGC_FLAG_VLAN_PROMISC		BIT(15)
- #define IGC_FLAG_RX_LEGACY		BIT(16)
- #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
-+#define IGC_FLAG_TSN_QAV_ENABLED	BIT(18)
- 
--#define IGC_FLAG_TSN_ANY_ENABLED	IGC_FLAG_TSN_QBV_ENABLED
-+#define IGC_FLAG_TSN_ANY_ENABLED \
-+	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED)
- 
- #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
- #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 1361086..244edbc 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -518,6 +518,14 @@
- #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
- #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
- #define IGC_TXQCTL_STRICT_END		0x00000004
-+#define IGC_TXQCTL_QAV_SEL_MASK		0x000000C0
-+#define IGC_TXQCTL_QAV_SEL_CBS0		0x00000080
-+#define IGC_TXQCTL_QAV_SEL_CBS1		0x000000C0
-+
-+#define IGC_TQAVCC_IDLESLOPE_MASK	0xFFFF
-+#define IGC_TQAVCC_KEEP_CREDITS		BIT(30)
-+
-+#define IGC_MAX_SR_QUEUES		2
- 
- /* Receive Checksum Control */
- #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 3eb4f9e..ea12633 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5905,6 +5905,74 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+static int igc_save_cbs_params(struct igc_adapter *adapter, int queue,
-+			       bool enable, int idleslope, int sendslope,
-+			       int hicredit, int locredit)
-+{
-+	bool cbs_status[IGC_MAX_SR_QUEUES] = { false };
-+	struct net_device *netdev = adapter->netdev;
-+	struct igc_ring *ring;
-+	int i;
-+
-+	/* i225 has two sets of credit-based shaper logic.
-+	 * Supporting it only on the top two priority queues
-+	 */
-+	if (queue < 0 || queue > 1)
-+		return -EINVAL;
-+
-+	ring = adapter->tx_ring[queue];
-+
-+	for (i = 0; i < IGC_MAX_SR_QUEUES; i++)
-+		if (adapter->tx_ring[i])
-+			cbs_status[i] = adapter->tx_ring[i]->cbs_enable;
-+
-+	/* CBS should be enabled on the highest priority queue first inorder
-+	 * for the CBS algorithm to operate as intended.
-+	 */
-+	if (enable) {
-+		if (queue == 1 && !cbs_status[0]) {
-+			netdev_err(netdev,
-+				   "Enabling CBS on queue1 before queue0\n");
-+			return -EINVAL;
-+		}
-+	} else {
-+		if (queue == 0 && cbs_status[1]) {
-+			netdev_err(netdev,
-+				   "Disabling CBS on queue0 before queue1\n");
-+			return -EINVAL;
-+		}
-+	}
-+
-+	ring->cbs_enable = enable;
-+	ring->idleslope = idleslope;
-+	ring->sendslope = sendslope;
-+	ring->hicredit = hicredit;
-+	ring->locredit = locredit;
-+
-+	return 0;
-+}
-+
-+static int igc_tsn_enable_cbs(struct igc_adapter *adapter,
-+			      struct tc_cbs_qopt_offload *qopt)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	int err;
-+
-+	if (hw->mac.type != igc_i225)
-+		return -EOPNOTSUPP;
-+
-+	if (qopt->queue < 0 || qopt->queue > 1)
-+		return -EINVAL;
-+
-+	err = igc_save_cbs_params(adapter, qopt->queue, qopt->enable,
-+				  qopt->idleslope, qopt->sendslope,
-+				  qopt->hicredit, qopt->locredit);
-+	if (err)
-+		return err;
-+
-+	return igc_tsn_offload_apply(adapter);
-+}
-+
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 			void *type_data)
- {
-@@ -5917,6 +5985,9 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 	case TC_SETUP_QDISC_ETF:
- 		return igc_tsn_enable_launchtime(adapter, type_data);
- 
-+	case TC_SETUP_QDISC_CBS:
-+		return igc_tsn_enable_cbs(adapter, type_data);
-+
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 828c350..f90a644 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -236,6 +236,9 @@
- #define IGC_ENDQT(_n)		(0x3334 + 0x4 * (_n))
- #define IGC_DTXMXPKTSZ		0x355C
- 
-+#define IGC_TQAVCC(_n)		(0x3004 + ((_n) * 0x40))
-+#define IGC_TQAVHC(_n)		(0x300C + ((_n) * 0x40))
-+
- /* System Time Registers */
- #define IGC_SYSTIML	0x0B600  /* System time register Low - RO */
- #define IGC_SYSTIMH	0x0B604  /* System time register High - RO */
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 2935d57..0fce22d 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -18,6 +18,20 @@ static bool is_any_launchtime(struct igc_adapter *adapter)
- 	return false;
- }
- 
-+static bool is_cbs_enabled(struct igc_adapter *adapter)
-+{
-+	int i;
-+
-+	for (i = 0; i < adapter->num_tx_queues; i++) {
-+		struct igc_ring *ring = adapter->tx_ring[i];
-+
-+		if (ring->cbs_enable)
-+			return true;
-+	}
-+
-+	return false;
-+}
-+
- static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- {
- 	unsigned int new_flags = adapter->flags & ~IGC_FLAG_TSN_ANY_ENABLED;
-@@ -28,6 +42,9 @@ static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- 	if (is_any_launchtime(adapter))
- 		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
- 
-+	if (is_cbs_enabled(adapter))
-+		new_flags |= IGC_FLAG_TSN_QAV_ENABLED;
-+
- 	return new_flags;
- }
- 
-@@ -87,6 +104,8 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
- 		struct igc_ring *ring = adapter->tx_ring[i];
- 		u32 txqctl = 0;
-+		u16 cbs_value;
-+		u32 tqavcc;
- 
- 		wr32(IGC_STQT(i), ring->start_time);
- 		wr32(IGC_ENDQT(i), ring->end_time);
-@@ -104,6 +123,90 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
- 
-+		/* Skip configuring CBS for Q2 and Q3 */
-+		if (i > 1)
-+			goto skip_cbs;
-+
-+		if (ring->cbs_enable) {
-+			if (i == 0)
-+				txqctl |= IGC_TXQCTL_QAV_SEL_CBS0;
-+			else
-+				txqctl |= IGC_TXQCTL_QAV_SEL_CBS1;
-+
-+			/* According to i225 datasheet section 7.5.2.7, we
-+			 * should set the 'idleSlope' field from TQAVCC
-+			 * register following the equation:
-+			 *
-+			 * value = link-speed   0x7736 * BW * 0.2
-+			 *         ---------- *  -----------------         (E1)
-+			 *          100Mbps            2.5
-+			 *
-+			 * Note that 'link-speed' is in Mbps.
-+			 *
-+			 * 'BW' is the percentage bandwidth out of full
-+			 * link speed which can be found with the
-+			 * following equation. Note that idleSlope here
-+			 * is the parameter from this function
-+			 * which is in kbps.
-+			 *
-+			 *     BW =     idleSlope
-+			 *          -----------------                      (E2)
-+			 *          link-speed * 1000
-+			 *
-+			 * That said, we can come up with a generic
-+			 * equation to calculate the value we should set
-+			 * it TQAVCC register by replacing 'BW' in E1 by E2.
-+			 * The resulting equation is:
-+			 *
-+			 * value = link-speed * 0x7736 * idleSlope * 0.2
-+			 *         -------------------------------------   (E3)
-+			 *             100 * 2.5 * link-speed * 1000
-+			 *
-+			 * 'link-speed' is present in both sides of the
-+			 * fraction so it is canceled out. The final
-+			 * equation is the following:
-+			 *
-+			 *     value = idleSlope * 61036
-+			 *             -----------------                   (E4)
-+			 *                  2500000
-+			 *
-+			 * NOTE: For i225, given the above, we can see
-+			 *       that idleslope is represented in
-+			 *       40.959433 kbps units by the value at
-+			 *       the TQAVCC register (2.5Gbps / 61036),
-+			 *       which reduces the granularity for
-+			 *       idleslope increments.
-+			 *
-+			 * In i225 controller, the sendSlope and loCredit
-+			 * parameters from CBS are not configurable
-+			 * by software so we don't do any
-+			 * 'controller configuration' in respect to
-+			 * these parameters.
-+			 */
-+			cbs_value = DIV_ROUND_UP_ULL(ring->idleslope
-+						     * 61036ULL, 2500000);
-+
-+			tqavcc = rd32(IGC_TQAVCC(i));
-+			tqavcc &= ~IGC_TQAVCC_IDLESLOPE_MASK;
-+			tqavcc |= cbs_value | IGC_TQAVCC_KEEP_CREDITS;
-+			wr32(IGC_TQAVCC(i), tqavcc);
-+
-+			wr32(IGC_TQAVHC(i),
-+			     0x80000000 + ring->hicredit * 0x7735);
-+		} else {
-+			/* Disable any CBS for the queue */
-+			txqctl &= ~(IGC_TXQCTL_QAV_SEL_MASK);
-+
-+			/* Set idleSlope to zero. */
-+			tqavcc = rd32(IGC_TQAVCC(i));
-+			tqavcc &= ~(IGC_TQAVCC_IDLESLOPE_MASK |
-+				    IGC_TQAVCC_KEEP_CREDITS);
-+			wr32(IGC_TQAVCC(i), tqavcc);
-+
-+			/* Set hiCredit to zero. */
-+			wr32(IGC_TQAVHC(i), 0);
-+		}
-+skip_cbs:
- 		wr32(IGC_TXQCTL(i), txqctl);
- 	}
- 
--- 
-2.7.4
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
