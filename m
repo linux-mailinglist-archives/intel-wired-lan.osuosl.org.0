@@ -1,57 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF9193ED92F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 16:49:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DB433EDAA7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 18:17:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 56E1680B01;
-	Mon, 16 Aug 2021 14:49:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EFC2740426;
+	Mon, 16 Aug 2021 16:17:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2kK7i1z-OjZg; Mon, 16 Aug 2021 14:49:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j6qRRFa7Y_It; Mon, 16 Aug 2021 16:17:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D205980B0A;
-	Mon, 16 Aug 2021 14:49:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9F4C540434;
+	Mon, 16 Aug 2021 16:17:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B14D51BF33F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 14:49:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ABC221BF3F9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:17:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AA6704025E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 14:49:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 92EE16078B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:17:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vwFO9tu92fEP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Aug 2021 14:49:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QydDFPv-BL_u for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Aug 2021 16:17:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BFA554023B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 14:49:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="212755864"
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="212755864"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 763F260625
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:17:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="214041169"
+X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="214041169"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Aug 2021 07:49:15 -0700
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2021 09:17:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="487437707"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga008.fm.intel.com with ESMTP; 16 Aug 2021 07:49:14 -0700
-Received: from gklab-229-137.igk.intel.com (gklab-229-137.igk.intel.com
- [172.22.229.137])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 17GEnD5H026003; Mon, 16 Aug 2021 15:49:13 +0100
-From: Marcin Szycik <marcin.szycik@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 16 Aug 2021 16:48:48 +0200
-Message-Id: <20210816144848.437-1-marcin.szycik@intel.com>
-X-Mailer: git-send-email 2.30.1
+X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="487523670"
+Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
+ by fmsmga008.fm.intel.com with ESMTP; 16 Aug 2021 09:17:31 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kselftest@vger.kernel.org
+Date: Mon, 16 Aug 2021 18:07:10 +0200
+Message-Id: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: fix ethtool set channel
- when in switchdev mode
+Subject: [Intel-wired-lan] [RFC net-next 0/7] Add basic SyncE interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,60 +60,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: cong.wang@bytedance.com, arnd@arndb.de, gustavoars@kernel.org,
+ richardcochran@gmail.com, nikolay@nvidia.com, colin.king@canonical.com,
+ kuba@kernel.org, shuah@kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+SyncE - Synchronous Ethernet is defined in ITU-T Rec. G.8264
+(https://www.itu.int/rec/T-REC-G.8264)
 
-When running ethtool set channel (-L) command on PF interface,
-DCB reconfiguration is triggered which in turn involves TC
-re-configuration and ring to vector mapping. It applies to
-all VSI instances, regardles of VSI type, so also including
-switchdev ctrl VSI when device is running in switchdev mode.
+SyncE allows synchronizing the frequency of ethernet PHY clock signal
+(the frequency used to send the data onto wire), to some reference
+clock signal.
 
-Skip ring to vector mapping for switchdev ctrl VSI, as it
-uses non-standard mapping and is already properly configured
-when PF VSI is rebuilt.
+Multiple reference clock sources can be available. PHY ports recover
+the frequency at which the transmitter sent the data on the RX side.
+Alternatively, we can use external sources like 1PPS GPS, etc.
 
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Signed-off-by: Marcin Szycik <marcin.szycik@intel.com>
----
-This commit should be squashed with "ice: add port representor ethtool
-ops and stats"
+This patch series introduces basic interfaces for communication
+with a SyncE capable device.
 
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 5 +++++
- 1 file changed, 5 insertions(+)
+The first part of the interface allows acquiring the synchronization
+state of DPLL (Digital Phase Locked Loop). DPLL LOCKED state means
+that the frequency generated by it is locked to the input frequency.
+As a result, PHYs connected to it are synchronized to the chosen input
+frequency signal.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 26b4d5f579e6..73714685fb68 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -683,6 +683,11 @@ void ice_pf_dcb_recfg(struct ice_pf *pf)
- 				vsi->idx);
- 			continue;
- 		}
-+		/* no need to proceed with remaining cfg if it is switchdev
-+		 * VSI
-+		 */
-+		if (vsi->type == ICE_VSI_SWITCHDEV_CTRL)
-+			continue;
- 
- 		ice_vsi_map_rings_to_vectors(vsi);
- 		if (vsi->type == ICE_VSI_PF)
+The second part can be used to select the port from which the clock
+gets recovered. Each PHY chip can have multiple pins on which the
+recovered clock can be propagated. For example, a SyncE-capable PHY
+can recover the carrier frequency of the first port, divide it
+internally, and output it as a reference clock on PIN 0.
+When such a signal is enabled, the DPLL can LOCK to the frequency
+recovered on PIN 0.
+
+Next steps:
+ - Add CONFIG_SYNCE definition into Kconfig
+ - Add more configuration interfaces. Aiming at devlink, since this
+   would be device-wide configuration
+
+Arkadiusz Kubalewski (7):
+  ptp: Add interface for acquiring DPLL state
+  selftests/ptp: Add usage of PTP_DPLL_GETSTATE ioctl in testptp
+  ice: add get_dpll_state ptp interface usage
+  net: add ioctl interface for recover reference clock on netdev
+  selftests/net: Add test app for SIOC{S|G}SYNCE
+  ice: add SIOC{S|G}SYNCE interface usage to recover reference signal
+  ice: add sysfs interface to configure PHY recovered reference signal
+
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  62 +++++
+ drivers/net/ethernet/intel/ice/ice_common.c   | 101 ++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |   9 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |   4 +
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 234 +++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   9 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   6 +
+ drivers/ptp/ptp_chardev.c                     |  15 ++
+ drivers/ptp/ptp_clockmatrix.h                 |  12 -
+ drivers/ptp/ptp_private.h                     |   2 +
+ drivers/ptp/ptp_sysfs.c                       |  48 ++++
+ include/linux/ptp_clock_kernel.h              |   9 +
+ include/uapi/linux/net_synce.h                |  21 ++
+ include/uapi/linux/ptp_clock.h                |  27 ++
+ include/uapi/linux/sockios.h                  |   4 +
+ net/core/dev_ioctl.c                          |   6 +-
+ tools/testing/selftests/net/Makefile          |   1 +
+ tools/testing/selftests/net/phy_ref_clk.c     | 138 +++++++++++
+ tools/testing/selftests/ptp/testptp.c         |  27 +-
+ 19 files changed, 720 insertions(+), 15 deletions(-)
+ create mode 100644 include/uapi/linux/net_synce.h
+ create mode 100644 tools/testing/selftests/net/phy_ref_clk.c
+
+
+base-commit: aba1e4adb54e020d3ca85a4df3ef0f8febe87548
 -- 
-2.30.1
-
---------------------------------------------------------------------
-
-Intel Technology Poland sp. z o.o.
-ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
-
-Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek
-przegladanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by
-others is strictly prohibited.
+2.24.0
 
 _______________________________________________
 Intel-wired-lan mailing list
