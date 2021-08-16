@@ -2,84 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 989993EE092
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 01:54:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB7ED3EE095
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 01:54:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0487F607AF;
-	Mon, 16 Aug 2021 23:54:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7CC80607AF;
+	Mon, 16 Aug 2021 23:54:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gTfwR7IawBrE; Mon, 16 Aug 2021 23:54:12 +0000 (UTC)
+	with ESMTP id cVtDo7o2VF61; Mon, 16 Aug 2021 23:54:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E698607BF;
-	Mon, 16 Aug 2021 23:54:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E3A2607BF;
+	Mon, 16 Aug 2021 23:54:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 210BB1BF34E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:06 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B1E531BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0D2D0400DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A025A60706
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kagGg_PfFo-X for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Aug 2021 23:54:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GPN1yFTW57ZS for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Aug 2021 23:54:42 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
- [IPv6:2607:f8b0:4864:20::102f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DDA5840012
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:04 +0000 (UTC)
-Received: by mail-pj1-x102f.google.com with SMTP id
- fa24-20020a17090af0d8b0290178bfa69d97so3098048pjb.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:54:04 -0700 (PDT)
+Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com
+ [IPv6:2607:f8b0:4864:20::1031])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7DE8F6058B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 23:54:42 +0000 (UTC)
+Received: by mail-pj1-x1031.google.com with SMTP id n5so8565676pjt.4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:54:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=BfKdf9a3hP34qKR/Mu7UQ/p8Ys9XbVUMS00Wm/SH9LQ=;
- b=UJFjdn57R6ZLNJdG0nVgoLuWUYaatE4olliznOIEMTOe4jP2jVkDNBSpyzoQPGFDR0
- w2Ikwnl1/uLRFDnkJsikom7nQtU17Wy909Rq+AzCda8uMx3ZhFfMEwWknBwZji7NzHfl
- uXM7X4JEcVRTetC57db52g7f/8h+sKJOgA4RAQcEJ1q72QkgWYbKUrk/EUIGxFHJ+dCx
- 3Er17K7y9y+kYqJ0lJF3wGbLZK30ZhmOiA4gfhWJv/aYmydmvE2wCHKnWKYYBhFaerB6
- xAROqR8kQIscSZ2RFLm/njtx3CaJmWmA7c8tUJDyiXT7d8kGhw3G1xgFbFTAp+KsWL14
- whzQ==
+ bh=4PjLjvPfXT6Ggu3+t/3QP9ZYwtLwsOxNZwtphc9DHvg=;
+ b=CSEOy5KO9iJTDIo3e37VnNXhTN22pbnAt5piZzqfDuw22OvJCuHL2liA37WQxtshTe
+ 2UPZFMEwEGj18zaR5Y6GNbhN7Spso/idQpqzlyjPjBcXMZ3pZZrG3kFQRFRqFwvgrAAc
+ nDp1sxWDXoGO81ZpkgqudfjzNREc53948zr6wlsohTAX4mYRZF+6olvs2Sx3YfcianP2
+ gMt6mP9Z1ySAFCV7OXZruILfMIuls0EfVEd25d8k/vpnTIsc0zjVF3JTh5Ricv1TfrpC
+ ILxWHJxynUmswpwTU9c4KA7RCDx7YSIL1ZgdIjdyw3tvWqELDrvZio3LRRHiyk4P/BvD
+ tT6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=BfKdf9a3hP34qKR/Mu7UQ/p8Ys9XbVUMS00Wm/SH9LQ=;
- b=BzuXRowHpuMBBpkvmS8iLmWs+cD/U0OeMrv+rWj4UxrQrrPDER/vn9hTmU6RZmk0Hd
- bb/yX8Wy0tgde7hY1+dMsfkB76aaxuZgBtqzBHKVEwhR7LZGqB07xRaV38x1h5HHinTH
- 7ffbv8jTSqpkdh2UIdQzw62Kvfuz6upKz7MRpt5bvSOraSvhgHXCOibtogihyuOLnOBl
- h7heli6uTsPwI9A747AB8/MOpzLhku15ECw/S7quTWr+n5sPDfO9pOfrMolVy2GMapun
- Dfiw0aT5vFyQFOMOeYMFXOGKmnFqIISNlpXjmqzOJ88iFbGBUkzkwPvf5vqZzOF8ZI81
- 7uJA==
-X-Gm-Message-State: AOAM532UKrf74SGTXPO/iYVrb8MX+TXv3K49MyfuAU+ddlK4DCPU7Fmi
- Ppm41XlbYbVV3zeq6n0hT44=
-X-Google-Smtp-Source: ABdhPJzuObTX2O4HdVDdN2xZN1VLKtwH0j49aJ1LdWs7/hdHxR6rkYhccmayDtowJcSMryggNMIhXQ==
-X-Received: by 2002:a17:90b:438e:: with SMTP id
- in14mr464775pjb.66.1629158044351; 
- Mon, 16 Aug 2021 16:54:04 -0700 (PDT)
+ bh=4PjLjvPfXT6Ggu3+t/3QP9ZYwtLwsOxNZwtphc9DHvg=;
+ b=bnfHcKcuS51oiuwTB1YggLdzIN8HIRh48SlqqLNsNJgebgpfm5va5htvkuF78Bwuka
+ 4YribOSiOQqL16ps+lvn0TbTU8hvUYhlx6MBLUlUQBJ7+OMy02Mz2stfa4WKfirmv0tf
+ xVDDW56dulzdEfdpI9WFzEJ8g/hyC1Nkp+RyYPzTK/Szmxky3rNprYGTW+1AwTHzxqnP
+ yCKObDk09cOOFWs9KLQZkVOLbAks3pZVJhuTQ98Zez5gpPRLkqF8NM9R314pVN/F+e6d
+ IwyXFEveJHxKCfPQOybJotjHiEt8fUxON7EWQXBBBmLx1OhxXWVOHzs+UtT/cIoIZT3E
+ 4Oew==
+X-Gm-Message-State: AOAM532NZe7IycNBhfkd8j1x7taNoDaPnkN1tUmC427ZfFvtiNqFvEpc
+ +Mkr/Jju5v8jNOmsMfFivJE=
+X-Google-Smtp-Source: ABdhPJyR9MZhcHW80mqUzt9wrkKCjfK4t8KnWh9xQXq9WiK1alp/wk2DT4zGO9AZJak/kcTRB5Q51Q==
+X-Received: by 2002:a17:902:fe82:b029:12d:61a2:3674 with SMTP id
+ x2-20020a170902fe82b029012d61a23674mr511388plm.60.1629158082029; 
+ Mon, 16 Aug 2021 16:54:42 -0700 (PDT)
 Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id j21sm267883pfj.66.2021.08.16.16.54.02
+ by smtp.gmail.com with ESMTPSA id 31sm316012pgy.26.2021.08.16.16.54.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Aug 2021 16:54:03 -0700 (PDT)
-Date: Mon, 16 Aug 2021 16:54:01 -0700
+ Mon, 16 Aug 2021 16:54:41 -0700 (PDT)
+Date: Mon, 16 Aug 2021 16:54:38 -0700
 From: Richard Cochran <richardcochran@gmail.com>
 To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Message-ID: <20210816235400.GA24680@hoboy.vegasvil.org>
+Message-ID: <20210816235438.GB24680@hoboy.vegasvil.org>
 References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
- <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-3-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+In-Reply-To: <20210816160717.31285-3-arkadiusz.kubalewski@intel.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
- acquiring DPLL state
+Subject: Re: [Intel-wired-lan] [RFC net-next 2/7] selftests/ptp: Add usage
+ of PTP_DPLL_GETSTATE ioctl in testptp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,19 +98,11 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 16, 2021 at 06:07:11PM +0200, Arkadiusz Kubalewski wrote:
-> Previously there was no common interface for monitoring
-> synchronization state of Digital Phase Locked Loop.
-> 
-> Add interface through PTP ioctl subsystem for tools,
-> as well as sysfs human-friendly part of the interface.
-> 
-> enum dpll_state moved to uapi definition, it is required to
-> have common definition of DPLL states in uapi.
+On Mon, Aug 16, 2021 at 06:07:12PM +0200, Arkadiusz Kubalewski wrote:
+> Allow get Digital Phase Locked Loop state of ptp enabled device
+> through ptp related ioctl PTP_DPLL_GETSTATE.
 
-This has nothing to do with PTP, right?
-
-So why isn't it a RTNL feature instead?
+So I think this should go into ethtool instead.
 
 Thanks,
 Richard
