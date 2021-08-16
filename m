@@ -1,56 +1,155 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3913A3EDABB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 18:18:18 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AF333EDB48
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 18:51:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF98F60788;
-	Mon, 16 Aug 2021 16:18:16 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6BF964034A;
+	Mon, 16 Aug 2021 16:51:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vuq9BKjV3sZl; Mon, 16 Aug 2021 16:18:13 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5SHJTkRm0RHg; Mon, 16 Aug 2021 16:51:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C6BD4607B6;
-	Mon, 16 Aug 2021 16:18:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0962F40339;
+	Mon, 16 Aug 2021 16:51:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B2D0F1BF3F9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:18:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3F1D21BF2CD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:51:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A0BF06078B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:18:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2C38B60773
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:51:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3v0zyNAcv7Et for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Aug 2021 16:18:01 +0000 (UTC)
+ with ESMTP id DpAlQaaA7gBv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Aug 2021 16:51:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 00C2D60791
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:18:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="214041232"
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="214041232"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Aug 2021 09:18:00 -0700
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D810860633
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 16:51:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="215623243"
+X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="215623243"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2021 09:51:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="487524589"
-Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
- by fmsmga008.fm.intel.com with ESMTP; 16 Aug 2021 09:17:57 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kselftest@vger.kernel.org
-Date: Mon, 16 Aug 2021 18:07:17 +0200
-Message-Id: <20210816160717.31285-8-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
-In-Reply-To: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
-References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="423602429"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga003.jf.intel.com with ESMTP; 16 Aug 2021 09:51:09 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Mon, 16 Aug 2021 09:51:09 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10 via Frontend Transport; Mon, 16 Aug 2021 09:51:09 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.102)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Mon, 16 Aug 2021 09:51:08 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XGR7kIVur+rtTH3AqEiTS9pIDOP3UxxOFX1I08L5S+UaFqy2dl3khwGeykHOQusI5+rnQEbkiPQBrH5fWutUDaRg3bQcrOVtds9RuhwpKrzCkYJ4YFHCkXncEYA4E9h6mfiFfNosWlaCeWpeKlH2QXMnnYqYFPMLRXktS3CfrkJJ/rJTAkB4IF+EOqZ5Ea3IVGiEUQnNEypOE1n65n8txmfNh5FZ0fHFree0/8B9Zrdy7+JyQqkqpzaelRmIEcOHbHyzAL4bmlGYXfJ+/cm1ST3L2WYCJcfBUFwpjsvz3J09+HraGNIWbS5DrD0HKmcM4Cux5jR8f52yhXVzZGJevQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TFunNEddNvjf5/3QARDcqvJBuuk2htaoMcbgeGB6VF8=;
+ b=de1DNxgxAH4evACPGX4tmBMOl/vb+s7+9s6SaH7NW8fWBqqF0UiVavD7nQ213itc9tWaXQem206le8NQUDC3mOwNk3GDRt6Nmd70uPsS1a8O8hnR/Ps4YYn0JjkzMQKkW/fszHeNVGckBZ/GbIq1lmFq6PnU6TZ0aSHt62s0sML1vGNdmUPKUCRrMyGNWTtn3wYE40GdJnbAbw9fLc6Y/ie07ooBsDdMEKI4XYI6GFUykAVtMsdTf3Q5C3nxfcME3OCwqfn47Pq3J3vCnmADb6Xj2pE3oDS0Qz8E+7qXomxDfJTTttVkIO8l6gSVkqiTNX6O6wgvNtMyf8z0Q046pg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TFunNEddNvjf5/3QARDcqvJBuuk2htaoMcbgeGB6VF8=;
+ b=dQGd1CbINcoRjE3SmLWUWkyq9JcGac7y5QvDfw4qyt8Ouh8QFNCsIzEDHcJKf3kkxlIlLM1vvKmKMW0h/9duzq2hgX9DBMdmWAtBuWEYbgswlIOSUerJvOTfmyPEphFEfu65rPAjhriFMX70zkK+GxZtA0ol0zyjX7jHdSr8GzQ=
+Received: from CO1PR11MB4835.namprd11.prod.outlook.com (2603:10b6:303:9e::22)
+ by MWHPR1101MB2256.namprd11.prod.outlook.com (2603:10b6:301:57::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.17; Mon, 16 Aug
+ 2021 16:51:06 +0000
+Received: from CO1PR11MB4835.namprd11.prod.outlook.com
+ ([fe80::d3c:c53a:cb70:76d2]) by CO1PR11MB4835.namprd11.prod.outlook.com
+ ([fe80::d3c:c53a:cb70:76d2%5]) with mapi id 15.20.4415.023; Mon, 16 Aug 2021
+ 16:51:06 +0000
+From: "Creeley, Brett" <brett.creeley@intel.com>
+To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH v5 intel-next 2/9] ice: move ice_container_type onto
+ ice_ring_container
+Thread-Index: AQHXkRfnnLcP/Y6ye0SH974DeescXat2Wr/Q
+Date: Mon, 16 Aug 2021 16:51:06 +0000
+Message-ID: <CO1PR11MB4835F0FDF2ABA2578B722095F5FD9@CO1PR11MB4835.namprd11.prod.outlook.com>
+References: <20210814140812.46632-1-maciej.fijalkowski@intel.com>
+ <20210814140812.46632-3-maciej.fijalkowski@intel.com>
+In-Reply-To: <20210814140812.46632-3-maciej.fijalkowski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.5.1.3
+dlp-reaction: no-action
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 62adff4b-137c-4ef2-318e-08d960d60a72
+x-ms-traffictypediagnostic: MWHPR1101MB2256:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MWHPR1101MB22566D562CD2AD6AD2BCB170F5FD9@MWHPR1101MB2256.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:288;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: yCreu1oooRC8HPEG/57HX0JqrcM6yu6g/YfoSpShalDrvIVRgDjatHug3kEh78jRwP5YAqiiNARqE37Z/ZPbKGgjUIdrFsgSG23ffe3ITJX17wJGw/xsncaYIXGqzcVW1efq/5sMYy0m6lA2n3PHxZALkgcOOegaPjnpqJUwdrnCsLWQ3IFw85VZh1IEnlGiD/b2hsPiOtU85bAmFglqEcifPB3rw4sH+KSLVewGKHGIR2j0a8eP7QZ4GNEaps0CyDGzPI6Itl0+Q9i24GCfpt8A1mIuCdrlqZHRojVKNvxf43lvMtDa5pT5u4R6Mj4BUiFuU+Ptz1NMzUjXoTkAA+pMiCjg8jqAj6BCKcxeuMaMdGFLPQrS0uZY6QrP5gRFoJYpfMciEUNARYVtuDRqPDJcYsoXgavMzf5OBYAIlGBVO3OjY9sVE08FNzifYugF1yt4AlZhapqGLKUiysk9AfS8HrYTc0Dt4/O0tHwO9s3QxAzhCLABGFyMqaWSnMFzFSbUN4qbc3zU6Z1ArtGlwKptaG0pO9uMcCVJSYZlrMcgrVxO+yGTpBrFxo838mnbG58zcHo9CffIOFcQJ2mmlJsW/K2VNUUWnUC9e2Bv0Ycx7ohInAb+jROm0WySSEdQlt/fpXioeC0J69u7oUNWRkKrAkGpzTRL2qtS7IyY7Wq4wZyqCR8d07NQw6RasVL3EW4hVLZtxdg6Q1F3PNmR6Q==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB4835.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(39860400002)(346002)(366004)(396003)(136003)(86362001)(33656002)(4326008)(8936002)(8676002)(71200400001)(38100700002)(2906002)(83380400001)(186003)(55016002)(7696005)(38070700005)(478600001)(5660300002)(53546011)(52536014)(26005)(6506007)(316002)(110136005)(54906003)(66446008)(64756008)(122000001)(76116006)(9686003)(66556008)(66946007)(66476007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?hG2Yy/Hg3mtOdnySIBpHrW6FLY3zYb6UqvfS9ap0IoOmppyk1EUt3JIQIMh6?=
+ =?us-ascii?Q?Z4iHolI1S/v/z1sgvzmvzgj6HG5NILIp1TTalxgT+EXLhG3faEM8P9ALxmwc?=
+ =?us-ascii?Q?B67r7IcpW7vq2j5WnRDdpxGKwzV7NTzoFFSKg3VJVQrk8HhMIiliHeYUCUt9?=
+ =?us-ascii?Q?7begzKyuu+HRy4ROrnDFkloHC+AwOViMtSR9RdDfrF5Xopqu6lHhZj9NBHbz?=
+ =?us-ascii?Q?5KPsUZsdxqhAcjNj1r60HkW1Gs+QDQf73mVrQN7k70TQdsgrHzcxK3g/awys?=
+ =?us-ascii?Q?bZ25qpZJEd0yojlI4biyZNuy2AgfDqFFmceyIo2LYUq2cZThTVQuD6OkqrFt?=
+ =?us-ascii?Q?rxioiRodRka7QkFG1b1ZsAAufvwXlkq5jFzM11UjX5RLWlL2sxYZEHv32Ya5?=
+ =?us-ascii?Q?LHUZPg4gNkT054Wt2jm+n+AhTmrgmjMKx1DyfjVMmNN1XClQGTMDmLbCyl89?=
+ =?us-ascii?Q?YPhJv4d78cf+7NX0Q/4Bw+BXPLWujiNdXMXwqh4sBQYv7nuzQeqFLbYO6R/p?=
+ =?us-ascii?Q?pdaN+vuNPE53u/XkrEC/b20mLpjgmXl7A12mU1wY2MigaJe/Y1OCIWCpaRZE?=
+ =?us-ascii?Q?qwnkHjw/96UWid06kzFGdjt/2rwH+DsCtEMDukrlqpnCrMuNxVqki9FALm5o?=
+ =?us-ascii?Q?9MukI5cecOR9VF7tgdbj9lEeVMkaNLcKqb8X/3/iFmvtQqQ5vpgyW5nPQwzJ?=
+ =?us-ascii?Q?lDpxgX4z6CZhk69zN27jsqNZyViDhVDd8SATqxMrbbYpcQxUwAQUidDt6tYH?=
+ =?us-ascii?Q?AGCkgSRkF3/dl47T8QzaJevXvSUrpTAaNRJ/p+ufsmE32cq2I1t9Bsgk1QpZ?=
+ =?us-ascii?Q?4UfJq/BO1hQai6MhlHB9rO6AqFEHdEcb51KRPqvSih+KfYRusAIpTKtbX3Lu?=
+ =?us-ascii?Q?lfvZQtPgA/HpwEOkPd/WRY+wp3Z+JrabgLSToavACSm7Gz2hQTFbbSPf8U1/?=
+ =?us-ascii?Q?Oq4+w6qMvjXcS/bmHo2KBj61XFFml6r56NCIQ+f/3fPjcOsG19Epel/4CxoN?=
+ =?us-ascii?Q?6Zma+TajKpNuannAlahfC1rwEVPHSHsmmZpDU3sIGhunqLGe7TAVIc2494+v?=
+ =?us-ascii?Q?PO6tJpgZ/kUvzWCChoy9ZjLcwyE5e4UFazGUa5gjMB0E1JrQCAwSU60zD0DB?=
+ =?us-ascii?Q?eB641uygdfLFjacjT71NeLufyR8fB5he/X4jsmjtvFlsDz0/t7JCVx1b4IN2?=
+ =?us-ascii?Q?sQkCVDLhyQQbb+RoTWAQBAwbK2B/z8/JarxzGcNLCQRdpc2FAw/xURAQEYwK?=
+ =?us-ascii?Q?OkxmtyJX5Qb2yuCEr1mMhdQyH/vc+bMycECqkVHkXf2jUV/qhe3SlbNshFJp?=
+ =?us-ascii?Q?a8t3l03SsyZa/dDGHPTPXusi?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC net-next 7/7] ice: add sysfs interface to
- configure PHY recovered reference signal
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4835.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 62adff4b-137c-4ef2-318e-08d960d60a72
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Aug 2021 16:51:06.1919 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yy0Pq7PsNBEhyytn8VZ17LPuTzx2qEh2QwTBoam4Yf+k8XZ3sTnN6mMvw1E2hLpWZJG1pnMNqWJHEM/Q4jynhA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2256
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v5 intel-next 2/9] ice: move
+ ice_container_type onto ice_ring_container
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,174 +162,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: cong.wang@bytedance.com, arnd@arndb.de, gustavoars@kernel.org,
- richardcochran@gmail.com, nikolay@nvidia.com, colin.king@canonical.com,
- kuba@kernel.org, shuah@kernel.org, davem@davemloft.net
+Cc: "joamaki@gmail.com" <joamaki@gmail.com>, "Lobakin,
+ Alexandr" <alexandr.lobakin@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "toke@redhat.com" <toke@redhat.com>, "bjorn@kernel.org" <bjorn@kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Allow user to enable or disable propagation of PHY recovered clock
-signal onto requested output pin with new human friendly device private
-sysfs interface.
+> -----Original Message-----
+> From: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+> Sent: Saturday, August 14, 2021 7:08 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; bpf@vger.kernel.org; davem@davemloft.net; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
+> kuba@kernel.org; bjorn@kernel.org; Karlsson, Magnus <magnus.karlsson@intel.com>; Brandeburg, Jesse
+> <jesse.brandeburg@intel.com>; Lobakin, Alexandr <alexandr.lobakin@intel.com>; joamaki@gmail.com; toke@redhat.com; Creeley,
+> Brett <brett.creeley@intel.com>; Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+> Subject: [PATCH v5 intel-next 2/9] ice: move ice_container_type onto ice_ring_container
+> 
+> Currently ice_container_type is scoped only for ice_ethtool.c. Next
+> commit that will split the ice_ring struct onto Rx/Tx specific ring
+> structs is going to also modify the type of linked list of rings that is
+> within ice_ring_container. Therefore, the functions that are taking the
+> ice_ring_container as an input argument will need to be aware of a ring
+> type that will be looked up.
+> 
+> Embed ice_container_type within ice_ring_container and initialize it
+> properly when allocating the q_vectors.
+> 
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_base.c    |  2 ++
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c | 36 ++++++++------------
+>  drivers/net/ethernet/intel/ice/ice_txrx.h    |  6 ++++
+>  3 files changed, 23 insertions(+), 21 deletions(-)
 
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp.c | 111 ++++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ptp.h |   1 +
- 2 files changed, 111 insertions(+), 1 deletion(-)
+<snip>
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 23ab85dbbfc8..054346a8fdbd 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -9,6 +9,114 @@
- 
- #define UNKNOWN_INCVAL_E822 0x100000000ULL
- 
-+static ssize_t ice_sysfs_phy_write(struct kobject *kobj,
-+				   struct kobj_attribute *attr,
-+				   const char *buf, size_t count);
-+
-+static struct kobj_attribute phy_attribute = __ATTR(synce, 0220,
-+	NULL, ice_sysfs_phy_write);
-+
-+/**
-+ * __get_pf_pdev - helper function to get the pdev
-+ * @kobj:       kobject passed
-+ * @pdev:       PCI device information struct
-+ *
-+ * Raturns 0 on success, negative on failure
-+ */
-+static int __get_pf_pdev(struct kobject *kobj, struct pci_dev **pdev)
-+{
-+	struct device *dev;
-+
-+	if (!kobj->parent)
-+		return -EINVAL;
-+
-+	/* get pdev */
-+	dev = kobj_to_dev(kobj->parent);
-+	*pdev = to_pci_dev(dev);
-+
-+	return 0;
-+}
-+
-+#define ICE_C827_RCLKB_PIN      1 /* SDA pin */
-+
-+/**
-+ * ice_sysfs_phy_write - sysfs interface for setting PHY recovered clock pins
-+ * @kobj:  sysfs node
-+ * @attr:  sysfs node attributes
-+ * @buf:   string representing enable and pin number
-+ * @count: length of the 'buf' string
-+ *
-+ * Return number of bytes written on success or negative value on failure.
-+ **/
-+static ssize_t
-+ice_sysfs_phy_write(struct kobject *kobj, struct kobj_attribute *attr,
-+		    const char *buf, size_t count)
-+{
-+	enum ice_status ret = 0;
-+	unsigned int ena, pin;
-+	struct pci_dev *pdev;
-+	struct ice_pf *pf;
-+	u32 freq = 0;
-+	int cnt;
-+
-+	if (__get_pf_pdev(kobj, &pdev))
-+		return -EPERM;
-+
-+	pf = pci_get_drvdata(pdev);
-+
-+	cnt = sscanf(buf, "%u %u", &ena, &pin);
-+	if (cnt != 2 || pin > ICE_C827_RCLKB_PIN)
-+		return -EINVAL;
-+
-+	ret = ice_aq_set_phy_rec_clk_out(&pf->hw, pin, !!ena, &freq);
-+	if (ret)
-+		return -EIO;
-+
-+	return count;
-+}
-+
-+/**
-+ * ice_phy_sysfs_init - initialize sysfs for DPLL
-+ * @pf: pointer to pf structure
-+ *
-+ * Initialize sysfs for handling DPLL in HW.
-+ **/
-+static void ice_phy_sysfs_init(struct ice_pf *pf)
-+{
-+	struct kobject *phy_kobj;
-+
-+	phy_kobj = kobject_create_and_add("phy", &pf->pdev->dev.kobj);
-+	if (!phy_kobj) {
-+		dev_info(&pf->pdev->dev, "Failed to create PHY kobject\n");
-+		return;
-+	}
-+
-+	if (sysfs_create_file(phy_kobj, &phy_attribute.attr)) {
-+		dev_info(&pf->pdev->dev, "Failed to create synce kobject\n");
-+		kobject_put(phy_kobj);
-+		return;
-+	}
-+
-+	pf->ptp.phy_kobj = phy_kobj;
-+}
-+
-+/**
-+ * ice_ptp_sysfs_release - release sysfs resources of ptp and synce features
-+ * @pf: pointer to pf structure
-+ *
-+ * Release sysfs interface resources for handling configuration of
-+ * ptp and synce features.
-+ */
-+static void ice_ptp_sysfs_release(struct ice_pf *pf)
-+{
-+	if (pf->ptp.phy_kobj) {
-+		sysfs_remove_file(pf->ptp.phy_kobj, &phy_attribute.attr);
-+		kobject_del(pf->ptp.phy_kobj);
-+		kobject_put(pf->ptp.phy_kobj);
-+		pf->ptp.phy_kobj = 0;
-+	}
-+}
-+
- /**
-  * ice_set_tx_tstamp - Enable or disable Tx timestamping
-  * @pf: The PF pointer to search in
-@@ -2121,6 +2229,7 @@ void ice_ptp_init(struct ice_pf *pf)
- 			return;
- 	}
- 
-+	ice_phy_sysfs_init(pf);
- 	/* Disable timestamping for both Tx and Rx */
- 	ice_ptp_cfg_timestamp(pf, false);
- 
-@@ -2180,7 +2289,7 @@ void ice_ptp_release(struct ice_pf *pf)
- {
- 	/* Disable timestamping for both Tx and Rx */
- 	ice_ptp_cfg_timestamp(pf, false);
--
-+	ice_ptp_sysfs_release(pf);
- 	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
- 
- 	clear_bit(ICE_FLAG_PTP, pf->flags);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 75656eb3084a..9b526782a977 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -143,6 +143,7 @@ struct ice_ptp {
- 	struct ptp_clock_info info;
- 	struct ptp_clock *clock;
- 	struct hwtstamp_config tstamp_config;
-+	struct kobject *phy_kobj;
- };
- 
- #define __ptp_port_to_ptp(p) \
--- 
-2.24.0
+> +enum ice_container_type {
+> +	ICE_RX_CONTAINER,
+> +	ICE_TX_CONTAINER,
+> +};
+> +
+>  struct ice_ring_container {
+>  	/* head of linked-list of rings */
+>  	struct ice_ring *ring;
+> @@ -347,6 +352,7 @@ struct ice_ring_container {
+>  	u16 itr_setting:13;
+>  	u16 itr_reserved:2;
+>  	u16 itr_mode:1;
+> +	enum ice_container_type type;
+
+It may not matter, but should you make sure
+the size of "type" doesn't negativelly affect this
+structure?
+
+>  };
+> 
+>  struct ice_coalesce_stored {
+> --
+> 2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
