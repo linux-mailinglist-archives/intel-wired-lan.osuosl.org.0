@@ -2,57 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 875DC3EDD60
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 20:54:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19AF43EDE0E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 21:47:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1047E401F5;
-	Mon, 16 Aug 2021 18:54:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8B024044D;
+	Mon, 16 Aug 2021 19:47:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HlisikbXfgcZ; Mon, 16 Aug 2021 18:54:32 +0000 (UTC)
+	with ESMTP id OTY6HPE7x13m; Mon, 16 Aug 2021 19:47:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E5701401FE;
-	Mon, 16 Aug 2021 18:54:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 432154045B;
+	Mon, 16 Aug 2021 19:47:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 558AD1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:54:27 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E7BC1BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 19:47:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3A66D60625
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:54:27 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 88302402C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 19:47:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n0fSwMfA6l9J for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Aug 2021 18:54:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 846F460600
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:54:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="195504668"
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="195504668"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Aug 2021 11:54:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,326,1620716400"; d="scan'208";a="423658813"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga003.jf.intel.com with ESMTP; 16 Aug 2021 11:54:12 -0700
-Date: Mon, 16 Aug 2021 20:39:33 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: "Creeley, Brett" <brett.creeley@intel.com>
-Message-ID: <20210816183933.GA1521@ranger.igk.intel.com>
-References: <20210814140812.46632-1-maciej.fijalkowski@intel.com>
- <20210814140812.46632-3-maciej.fijalkowski@intel.com>
- <CO1PR11MB4835F0FDF2ABA2578B722095F5FD9@CO1PR11MB4835.namprd11.prod.outlook.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7eE7tQenck10 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Aug 2021 19:47:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4A0C540155
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 19:47:00 +0000 (UTC)
+Received: from mail-wr1-f45.google.com ([209.85.221.45]) by
+ mrelayeu.kundenserver.de (mreue010 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1MeTkC-1mpsjm0qyi-00aVeb for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug
+ 2021 21:46:58 +0200
+Received: by mail-wr1-f45.google.com with SMTP id q11so25158083wrr.9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 12:46:57 -0700 (PDT)
+X-Gm-Message-State: AOAM5315YUDuQ2mIbfahOudgn2+Hdgv2eYC4mWYxld8xG7jp28V4ic5h
+ fNBTH919PBwHDAJbP3Or5AbdG8KiuLvREGifkwI=
+X-Google-Smtp-Source: ABdhPJz5KjKHIA5/4EOwJb7Ma2A00qBnJujFrxAsE6LdiU6qcLYPR0auEFNX3ZzUUJs3kVABWL/CCX9eg5zq7HVAbSw=
+X-Received: by 2002:adf:f202:: with SMTP id p2mr103174wro.361.1629143217650;
+ Mon, 16 Aug 2021 12:46:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CO1PR11MB4835F0FDF2ABA2578B722095F5FD9@CO1PR11MB4835.namprd11.prod.outlook.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH v5 intel-next 2/9] ice: move
- ice_container_type onto ice_ring_container
+References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-5-arkadiusz.kubalewski@intel.com>
+In-Reply-To: <20210816160717.31285-5-arkadiusz.kubalewski@intel.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 16 Aug 2021 21:46:41 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a0N3N3mFvoPj_fkqOY30uudJceox=uwSW+nd0B0kf8-ng@mail.gmail.com>
+Message-ID: <CAK8P3a0N3N3mFvoPj_fkqOY30uudJceox=uwSW+nd0B0kf8-ng@mail.gmail.com>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+X-Provags-ID: V03:K1:Ba/l4bJTnDQWFQq4wqX5L4gDfl4o8bGRY5H26kgLx3FXUywUNjb
+ c3FN1VnvQulVv/SqNOKo6npCJlgt03GnaP5b9NpJZU3/DusWiHHrHJEj7idXOHAmnOOERDr
+ cjxwNauOHOVxvOR8Xud/SP/M4fLQY0Vcd0e0R/DKWEqQUOt0W4NkyejxMwD/FSc/B8eBXwe
+ MJcywLv346wYQJsNxvEqw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WmDUcyzPOAQ=:luBwNL9cTF53w/gaQxso55
+ SV7dBUFPcnW8XjsbhF+hWgEJ2tRfitDiqRIGuHNRoNOqjiajQ02Yb//g9Cojkg6x6nTvHlSOv
+ lMr8kIWJen+ZAY3apeHoymixI/SUr/hdoyoMVzJ2sVKc+el6wCp5Zeg7sdxZwfREV72ErxvlJ
+ /JwfrDFupHx5k44QckMTyX2wMYpg1q9n0AaGMAKqx7uh+ZhDq+dxkcr6FtnE/McAlR5y1Qh76
+ Uy9CI9gkK9jRkMCTbrBxAJA4jDJurEHersfdyMgih2oS0lQNDc8JP2TvRtipLwZH7oEqAj3yl
+ qtipDG6P4UeTKkCfjWBzLJHI8HUi2QWaatknLQEwkXlubNFjjHpL6Y92Lst4md79jPdWxVvCo
+ 2trIA5sqoZfK+GV5TZnH7fl3z+CvZaFc/5NWqo0jBj3wzkdIPfqZbGo8TILxR8nDL3NdC/5YL
+ O7H9VPsbn0CNMGfGQS6rf5Vjpxyi7ylPpMUOc3HHIESnIYh+kg+3HLaQNSa53Sk0KNym/UgJM
+ qkExlYi1GNI4e2uP/xQegNN8yI9HHxSXah510AU3P+WdT3521DnDbej4ueJd37AkUDAOdxi3v
+ DezvEi2pmVItbjSIigtN3tFhw2SzTLk3QL7dc6CyMv8v8ea1Ws2XAvj/tA/HCzTITU7u+WuNM
+ tlrINMU4hpyiD5btzS46G3rn7WTgAtpQH3B0o6e0Qm/EKrKfb0C9BDgTolZagk1eN4BrJRC5y
+ OuwoyuLnDezrm1XYqgndz8ADqznkAujgIWw8XPMlZ/lU3o5FDb6g8js87Ts6nb4YtMYaUYrWf
+ XDITt1lOgHfxaEm4HbKGSqZsaaXCRqXvh9IlPhiG1Uh5ki17jajtHiN9Dj6k4YZr96ReJWaTl
+ 0DVqPsPSnaFecJ6K6IsfD5OERwDeRCbHa5cT+Pd2w8EJS2JftwuOXZWb1wfrfLibSHwkJmtk6
+ I5oNmQGubiLGQYRFfDU/N87I39HAaQK2ZgOG8uQorxnPhGlKYnXxa
+Subject: Re: [Intel-wired-lan] [RFC net-next 4/7] net: add ioctl interface
+ for recover reference clock on netdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,120 +84,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "joamaki@gmail.com" <joamaki@gmail.com>, "Lobakin,
- Alexandr" <alexandr.lobakin@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "toke@redhat.com" <toke@redhat.com>, "bjorn@kernel.org" <bjorn@kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
+Cc: cong.wang@bytedance.com, Arnd Bergmann <arnd@arndb.de>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Networking <netdev@vger.kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Colin Ian King <colin.king@canonical.com>,
+ Nikolay Aleksandrov <nikolay@nvidia.com>,
+ "open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Shuah Khan <shuah@kernel.org>, David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 16, 2021 at 05:51:06PM +0100, Creeley, Brett wrote:
-> > -----Original Message-----
-> > From: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
-> > Sent: Saturday, August 14, 2021 7:08 AM
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: netdev@vger.kernel.org; bpf@vger.kernel.org; davem@davemloft.net; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
-> > kuba@kernel.org; bjorn@kernel.org; Karlsson, Magnus <magnus.karlsson@intel.com>; Brandeburg, Jesse
-> > <jesse.brandeburg@intel.com>; Lobakin, Alexandr <alexandr.lobakin@intel.com>; joamaki@gmail.com; toke@redhat.com; Creeley,
-> > Brett <brett.creeley@intel.com>; Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
-> > Subject: [PATCH v5 intel-next 2/9] ice: move ice_container_type onto ice_ring_container
-> >
-> > Currently ice_container_type is scoped only for ice_ethtool.c. Next
-> > commit that will split the ice_ring struct onto Rx/Tx specific ring
-> > structs is going to also modify the type of linked list of rings that is
-> > within ice_ring_container. Therefore, the functions that are taking the
-> > ice_ring_container as an input argument will need to be aware of a ring
-> > type that will be looked up.
-> >
-> > Embed ice_container_type within ice_ring_container and initialize it
-> > properly when allocating the q_vectors.
-> >
-> > Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice_base.c    |  2 ++
-> >  drivers/net/ethernet/intel/ice/ice_ethtool.c | 36 ++++++++------------
-> >  drivers/net/ethernet/intel/ice/ice_txrx.h    |  6 ++++
-> >  3 files changed, 23 insertions(+), 21 deletions(-)
-> 
-> <snip>
-> 
-> > +enum ice_container_type {
-> > +     ICE_RX_CONTAINER,
-> > +     ICE_TX_CONTAINER,
-> > +};
-> > +
-> >  struct ice_ring_container {
-> >       /* head of linked-list of rings */
-> >       struct ice_ring *ring;
-> > @@ -347,6 +352,7 @@ struct ice_ring_container {
-> >       u16 itr_setting:13;
-> >       u16 itr_reserved:2;
-> >       u16 itr_mode:1;
-> > +     enum ice_container_type type;
-> 
-> It may not matter, but should you make sure
-> the size of "type" doesn't negativelly affect this
-> structure?
+On Mon, Aug 16, 2021 at 6:18 PM Arkadiusz Kubalewski
+<arkadiusz.kubalewski@intel.com> wrote:
 
-Seems that it doesn't matter.
+> +/*
+> + * Structure used for passing data with SIOCSSYNCE and SIOCGSYNCE ioctls
+> + */
+> +struct synce_ref_clk_cfg {
+> +       __u8 pin_id;
+> +       _Bool enable;
+> +};
 
-Before:
-struct ice_ring_container {
-        struct ice_ring *          ring;                 /*     0     8 */
-        struct dim                 dim;                  /*     8   120 */
+I'm not sure if there are any guarantees about the size and alignment of _Bool,
+maybe better use __u8 here as well, if only for clarity.
 
-        /* XXX last struct has 2 bytes of padding */
+> +#endif /* _NET_SYNCE_H */
+> diff --git a/include/uapi/linux/sockios.h b/include/uapi/linux/sockios.h
+> index 7d1bccbbef78..32c7d4909c31 100644
+> --- a/include/uapi/linux/sockios.h
+> +++ b/include/uapi/linux/sockios.h
+> @@ -153,6 +153,10 @@
+>  #define SIOCSHWTSTAMP  0x89b0          /* set and get config           */
+>  #define SIOCGHWTSTAMP  0x89b1          /* get config                   */
+>
+> +/* synchronous ethernet config per physical function */
+> +#define SIOCSSYNCE     0x89c0          /* set and get config           */
+> +#define SIOCGSYNCE     0x89c1          /* get config                   */
 
-        /* --- cacheline 2 boundary (128 bytes) --- */
-        u16                        itr_idx;              /*   128     2 */
-        u16                        itr_setting:13;       /*   130: 0  2 */
-        u16                        itr_reserved:2;       /*   130:13  2 */
-        u16                        itr_mode:1;           /*   130:15  2 */
+I understand that these are traditionally using the old-style 16-bit
+numbers, but is there any reason to keep doing that rather than
+making them modern like this?
 
-        /* size: 136, cachelines: 3, members: 6 */
-        /* padding: 4 */
-        /* paddings: 1, sum paddings: 2 */
-        /* last cacheline: 8 bytes */
+#define SIOCSSYNCE     _IOWR(0x89, 0xc0, struct  synce_ref_clk_cfg)
+/* set and get config   */
+#define SIOCGSYNCE     _IOR(0x89, 0xc1, struct  synce_ref_clk_cfg)
+/* get config   */
 
-
-After:
-struct ice_ring_container {
-        union {
-                struct ice_rx_ring * rx_ring;            /*     0     8 */
-                struct ice_tx_ring * tx_ring;            /*     0     8 */
-        };                                               /*     0     8 */
-        struct dim                 dim;                  /*     8   120 */
-
-        /* XXX last struct has 2 bytes of padding */
-
-        /* --- cacheline 2 boundary (128 bytes) --- */
-        u16                        itr_idx;              /*   128     2 */
-        u16                        itr_setting:13;       /*   130: 0  2 */
-        u16                        itr_reserved:2;       /*   130:13  2 */
-        u16                        itr_mode:1;           /*   130:15  2 */
-        enum ice_container_type    type;                 /*   132     4 */
-
-        /* size: 136, cachelines: 3, members: 7 */
-        /* paddings: 1, sum paddings: 2 */
-        /* last cacheline: 8 bytes */
-
-Still 3 cachelines and same sizes.
-
-
-> 
-> >  };
-> >
-> >  struct ice_coalesce_stored {
-> > --
-> > 2.20.1
-> 
+        Arnd
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
