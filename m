@@ -1,240 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 816C43EDCC0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 20:02:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 422683EDCF2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Aug 2021 20:16:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C9008402AE;
-	Mon, 16 Aug 2021 18:02:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CDD460795;
+	Mon, 16 Aug 2021 18:16:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AGi2weDdepjZ; Mon, 16 Aug 2021 18:01:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9_dR1jSpN6-g; Mon, 16 Aug 2021 18:16:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DC5AC402CB;
-	Mon, 16 Aug 2021 18:01:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 665B260788;
+	Mon, 16 Aug 2021 18:16:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A20491BF3F3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:00:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EBF9C1BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:11:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8C2E440163
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:00:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D4E8D4043C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:11:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OQFGfHlYyHMu for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Aug 2021 18:00:35 +0000 (UTC)
-X-Greylist: delayed 00:07:05 by SQLgrey-1.8.0
-Received: from rcdn-iport-5.cisco.com (rcdn-iport-5.cisco.com [173.37.86.76])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 41CB1402A3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:00:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=cisco.com; i=@cisco.com; l=2779; q=dns/txt; s=iport;
- t=1629136835; x=1630346435;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=2Wt06gvNZE58DEbCRXvp7vlIAT9vRQqK1pCfOOxraQw=;
- b=ewNJz8UCcu4rxjByWjw2sSV6B7hSR65Es/Ln51T7esY/vTxleIIbtTPB
- JDu71x6UXtCqyYogGaOHepQet6lhuuPPJryczsP9W9QnE1h7Db6b+ftRW
- VGhooPJGRCUHvWLo6IMHhgIvQMFhiG9HVy9vVskfzqIQHzmo74eleE9fb Y=;
-IronPort-PHdr: =?us-ascii?q?A9a23=3AQ13tohFcU/gJeHBo3Vqf6J1Gfj4Y04WdBeZdw?=
- =?us-ascii?q?oAqh7JHbuKo+JGxdEDc5PA4iljPUM2b7v9fkOPZvujmXnBI+peOtn0OMfkuH?=
- =?us-ascii?q?x8IgMkbhUosVciCD0CoNvPmbyUmWs9FUQwt83SyK0MAHsH4ahXbqWGz6jhHH?=
- =?us-ascii?q?BL5OEJ1K+35F5SUgd6w0rW5+obYZENDgz/uCY4=3D?=
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AA8gx0ah/cO6VQJ76+EH25QL94HBQX3t13D?=
- =?us-ascii?q?Abv31ZSRFFG/FwyPrOoB1L73HJYWgqN03IwerwRJVoMkmsiqKdhrNhfItKPT?=
- =?us-ascii?q?OW9ldASbsD0WKM+UyZJ8STzJ856U4kSdkCNDSSNyk7sS+Z2njCLz9I+rDum8?=
- =?us-ascii?q?rE6Za8vhVQpENRGttdBmxCe2Gm+zhNNXB77O0CZfyhD6R81l6dUEVSSv7+Km?=
- =?us-ascii?q?gOXuDFqdGOvonhewQ6Cxku7xTLpS+06ZbheiLonSs2Yndq+/MP4GLFmwv26u?=
- =?us-ascii?q?GIqPeg0CLR0GfV8tB/hMbh8N1eH8aB4/JlaAkEyzzYIbiJaYfy+wzdk9vfrm?=
- =?us-ascii?q?rCV+O8+ivICv4Dr085uFvF+ScFlTOQiwrGoEWSt2NwyUGT0PARAghKUfaoQe?=
- =?us-ascii?q?liA0fkA41KhqAg7EsD5RPoi7NHSRzHhyjz/N7OSlVjkVe1u2MrlaoJg2VYSp?=
- =?us-ascii?q?Z2Us4akWUzxjIcLH47JlOw1GnnKpgbMOjMoPJNNV+KZXHQuWdihNSqQ3QoBx?=
- =?us-ascii?q?+DBkwPoNac3TRalG1wixJw/r1Sol4QsJYmD5VU7eXNNapl0LlIU88NdKp4QO?=
- =?us-ascii?q?MMW9G+BGDBSQ/FdGiSPVPkHqcaPG+lke+73JwloOWxPJAYxpo7n5rMFFteqG?=
- =?us-ascii?q?4pYkrrTdaD2ZVamyq9CVlVnQ6dvP22wqIJ9YEUaICbQxFreWpe5PdI+c9vcf?=
- =?us-ascii?q?Ezc8zDTa5rPw=3D=3D?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0AXCgD9pBph/5pdJa1agQmBWYFTUQe?=
- =?us-ascii?q?BUTcxiA8DhTmGRYIniluLTIQTgS6BJQNUCwEBAQ0BASoXBAEBgSiDOQKCbAI?=
- =?us-ascii?q?lNAkOAQIEAQEBEgEBBQEBAQIBBgSBEROFaA2GQgEBAQEDAREoBgEBOAsEAgE?=
- =?us-ascii?q?IEQQBAR8QIQcKHQgCBAESCBqFJQMvAZtBAYE6AoofeIEzgQGCBwEBBgQEhS4?=
- =?us-ascii?q?NC4I0CYE6gn6KdSccgg2BFUOCYj6CIIImg0uCLocCZRereJEZJl4KgyiBMpV?=
- =?us-ascii?q?QgWuFfhKDZaMQLZVkgh6NVpUoAgQCBAUCDgEBBoFgOzmBIHAVgyRQGQ6SEoJ?=
- =?us-ascii?q?ChCuDNAE8cwI2AgYLAQEDCYl1AQE?=
-X-IronPort-AV: E=Sophos;i="5.84,326,1620691200"; d="scan'208";a="650995374"
-Received: from rcdn-core-3.cisco.com ([173.37.93.154])
- by rcdn-iport-5.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
- 16 Aug 2021 17:53:28 +0000
-Received: from mail.cisco.com (xbe-aln-002.cisco.com [173.36.7.17])
- by rcdn-core-3.cisco.com (8.15.2/8.15.2) with ESMTPS id 17GHrSKf006685
- (version=TLSv1.2 cipher=AES256-SHA bits=256 verify=OK);
- Mon, 16 Aug 2021 17:53:28 GMT
-Received: from xfe-rtp-003.cisco.com (64.101.210.233) by xbe-aln-002.cisco.com
- (173.36.7.17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.15; Mon, 16 Aug
- 2021 12:53:27 -0500
-Received: from xfe-rtp-004.cisco.com (64.101.210.234) by xfe-rtp-003.cisco.com
- (64.101.210.233) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.15; Mon, 16 Aug
- 2021 13:53:27 -0400
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (64.101.32.56) by
- xfe-rtp-004.cisco.com (64.101.210.234) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.15
- via Frontend Transport; Mon, 16 Aug 2021 13:53:26 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dfnQBrV41hPt5DIU+nXUTl4osXyMBvwVrFNkJhNn04SCtHqZXEzLGWFaDli1hlrYfbblyieG6L5x4pgFuleixcb2YmLUWz/mRvwiRoBhY0S/LxpmpRfYVFgbLCTc20cUUXvDoEaDA2lSl+PVjuuKqWsYuU/M9mMXhQwCshwmZIdnf4WY4riT4EvxYq4yCNMgMaChIyRTrTfVXfdFoSwXgLzQQ2M+8szTKorwuDjwMexpJNrqndfsm07U2wUXxSnKn1ZC5QPgxtqVxOq8n3FEa5Tjz+Y+9TlWtMZVV6iq89ffp2dwndmBCKz7yiEPh9w7ADUiP3trGlK2WIhz9OAzwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2Wt06gvNZE58DEbCRXvp7vlIAT9vRQqK1pCfOOxraQw=;
- b=K6rSV1+/JDLgnZ66e6vg/r2tX+xnfZ1plQtaQykwjBGtQ0yfUm/pveIMAzsmbRhLo8C8ZGqL6lKhQNp2IHnnSNdNrhX1XyFFPfDhGLIveZxLcTsEzkLsATFYsyt0RkHBFoTnm1ReFwYHYHCH7AZjY1QYyCXYOJ12VU1FVn74yePsHJA7m/UWsAsml2IqwIoyvI5pC+YBekme0SRb/096kTKzhxGwNG430Jfog2REMpgzPNw6MFdlccXEyUjcHiY1xdEnTCY/bup/e4vg6KWkmB4tlvyu7o4D8DdX6k547AdoH3TdTon8/YxLaJr5O6NmPkudJN1HwrlA86lysls+ew==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cisco.com; dmarc=pass action=none header.from=cisco.com;
- dkim=pass header.d=cisco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cisco.onmicrosoft.com; 
- s=selector2-cisco-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2Wt06gvNZE58DEbCRXvp7vlIAT9vRQqK1pCfOOxraQw=;
- b=jIy85MnscNDDZo+joeCuL84GDjZO/cntsJ5pxvLafMFOsd/NeAUqJN4mhsvnwso+JquT4vMnmIglZVCxqsiqLHvElbGZxoB2YRLvFXbiiqvHn30j3xRygtdkO3AesvDwuqZTYm7IOfRbg0pP4BC5wPkBEkWKx+vba7SrG61u8BA=
-Received: from BYAPR11MB3799.namprd11.prod.outlook.com (2603:10b6:a03:fb::19)
- by SJ0PR11MB5182.namprd11.prod.outlook.com (2603:10b6:a03:2ae::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.15; Mon, 16 Aug
- 2021 17:53:25 +0000
-Received: from BYAPR11MB3799.namprd11.prod.outlook.com
- ([fe80::b06c:c552:f96f:a7f1]) by BYAPR11MB3799.namprd11.prod.outlook.com
- ([fe80::b06c:c552:f96f:a7f1%7]) with mapi id 15.20.4415.023; Mon, 16 Aug 2021
- 17:53:25 +0000
-From: "Christian Benvenuti (benve)" <benve@cisco.com>
-To: Nitesh Narayan Lal <nitesh@redhat.com>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "linux-api@vger.kernel.org"
- <linux-api@vger.kernel.org>, "linux-pci@vger.kernel.org"
- <linux-pci@vger.kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
- "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>, "mtosatti@redhat.com"
- <mtosatti@redhat.com>, "mingo@kernel.org" <mingo@kernel.org>,
- "jbrandeb@kernel.org" <jbrandeb@kernel.org>, "frederic@kernel.org"
- <frederic@kernel.org>, "juri.lelli@redhat.com" <juri.lelli@redhat.com>,
- "abelits@marvell.com" <abelits@marvell.com>, "bhelgaas@google.com"
- <bhelgaas@google.com>, "rostedt@goodmis.org" <rostedt@goodmis.org>,
- "peterz@infradead.org" <peterz@infradead.org>, "davem@davemloft.net"
- <davem@davemloft.net>, "akpm@linux-foundation.org"
- <akpm@linux-foundation.org>, "sfr@canb.auug.org.au" <sfr@canb.auug.org.au>,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- "rppt@linux.vnet.ibm.com" <rppt@linux.vnet.ibm.com>,
- "chris.friesen@windriver.com" <chris.friesen@windriver.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "nhorman@tuxdriver.com" <nhorman@tuxdriver.com>,
- "pjwaskiewicz@gmail.com" <pjwaskiewicz@gmail.com>, "sassmann@redhat.com"
- <sassmann@redhat.com>, "thenzl@redhat.com" <thenzl@redhat.com>,
- "kashyap.desai@broadcom.com" <kashyap.desai@broadcom.com>,
- "sumit.saxena@broadcom.com" <sumit.saxena@broadcom.com>,
- "shivasharan.srikanteshwara@broadcom.com"
- <shivasharan.srikanteshwara@broadcom.com>, "sathya.prakash@broadcom.com"
- <sathya.prakash@broadcom.com>, "sreekanth.reddy@broadcom.com"
- <sreekanth.reddy@broadcom.com>, "suganath-prabu.subramani@broadcom.com"
- <suganath-prabu.subramani@broadcom.com>, "james.smart@broadcom.com"
- <james.smart@broadcom.com>, "dick.kennedy@broadcom.com"
- <dick.kennedy@broadcom.com>, "jkc@redhat.com" <jkc@redhat.com>,
- "faisal.latif@intel.com" <faisal.latif@intel.com>,
- "shiraz.saleem@intel.com" <shiraz.saleem@intel.com>,
- "tariqt@nvidia.com" <tariqt@nvidia.com>,
- "ahleihel@redhat.com" <ahleihel@redhat.com>, "kheib@redhat.com"
- <kheib@redhat.com>, "borisp@nvidia.com" <borisp@nvidia.com>,
- "saeedm@nvidia.com" <saeedm@nvidia.com>, "govind@gmx.com" <govind@gmx.com>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
- "ajit.khaparde@broadcom.com" <ajit.khaparde@broadcom.com>,
- "sriharsha.basavapatna@broadcom.com" <sriharsha.basavapatna@broadcom.com>,
- "somnath.kotur@broadcom.com" <somnath.kotur@broadcom.com>,
- "nilal@redhat.com" <nilal@redhat.com>, "tatyana.e.nikolova@intel.com"
- <tatyana.e.nikolova@intel.com>, "mustafa.ismail@intel.com"
- <mustafa.ismail@intel.com>, "ahs3@redhat.com" <ahs3@redhat.com>,
- "leonro@nvidia.com" <leonro@nvidia.com>, "chandrakanth.patil@broadcom.com"
- <chandrakanth.patil@broadcom.com>, "bjorn.andersson@linaro.org"
- <bjorn.andersson@linaro.org>, "chunkuang.hu@kernel.org"
- <chunkuang.hu@kernel.org>, "yongqiang.niu@mediatek.com"
- <yongqiang.niu@mediatek.com>, "baolin.wang7@gmail.com"
- <baolin.wang7@gmail.com>, "poros@redhat.com" <poros@redhat.com>,
- "minlei@redhat.com" <minlei@redhat.com>, "emilne@redhat.com"
- <emilne@redhat.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "_govind@gmx.com" <_govind@gmx.com>, "kabel@kernel.org" <kabel@kernel.org>,
- "viresh.kumar@linaro.org" <viresh.kumar@linaro.org>,
- "Tushar.Khandelwal@arm.com" <Tushar.Khandelwal@arm.com>, "kuba@kernel.org"
- <kuba@kernel.org>
-Thread-Topic: [PATCH v5 07/14] enic: Use irq_update_affinity_hint
-Thread-Index: AQHXfb7sMOBjDjkJHU6TF0PX7txZbKt2ksPA
-Date: Mon, 16 Aug 2021 17:53:25 +0000
-Message-ID: <BYAPR11MB3799AA4F4FBB502D22DEB259BAFD9@BYAPR11MB3799.namprd11.prod.outlook.com>
-References: <20210720232624.1493424-1-nitesh@redhat.com>
- <20210720232624.1493424-8-nitesh@redhat.com>
-In-Reply-To: <20210720232624.1493424-8-nitesh@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=cisco.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6eaeefec-2e1f-420b-7f6f-08d960debf0c
-x-ms-traffictypediagnostic: SJ0PR11MB5182:
-x-microsoft-antispam-prvs: <SJ0PR11MB51822DBE34773018EEBAA352BAFD9@SJ0PR11MB5182.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4303;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 7eAPI2gwVdO8h1sVgxQUAIwufFsSZnfNQPUbU/VW7cLM/T3d/VwC5vARRCcCi4aGuZtyMVF3bLgCtloBlR3yq3Z6XQpSY9HF9LAJiSE4xMRKNgtbX/9D83mOQzy4w+8jSLIHGZ+oXHSNdYfrMC4Kyz84RRQXDW4WKOZ/4p5nRgMaTwWI9hLHnyA5P0qlAiBSPIz/s0QQygMClekXk1TrFcEf1Jczv86kyYGN1BJhP4eQEAElroupX1fgHmxK5t99TvPJKIOwGhz3gBFdsRjml4S0f5L9OURK8VpqhCEnhfi/fFPDj8dT/Z85cHQde/13iV+gYjgI9yIMTcRN2O4Bwfjqf8HgHL+biMapb93a5a9NQXs3XMWhgjT+mUiX0HyHBWEKbFZPCq1q+znWPhwTmy8O6/2eIMFq84ODUlQuiVz4C05mYEjvwVd4t8X4d8iXedYC96HO9Xor2BMWXlU0PQo3QwBEl8hQhEEM/1/XkYEY8LUIa9HTGbvpArzvWx1/ligJgQfOjB600RfPgYSmqZE++hTLWub78BnPL39uV5ovjKPuXhPCzWW9guXDH1fy/INPZ00xHPAfbE38EDtBX4KbVigisFxNv4PL0yx6JaBSrN+mzrtbF0I9WXLaOejZ+CNti+h1LtBOeWW3PVJNanJPXCRGagZyfVLcJt1kXXikffNKEZQvsWtIiuY2pniFBdKcO7QdrZVBIBFKHgX5WARhuiA4FtZJDEcvawrFyt4GyNQsREMorGJS+DhS5y70
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3799.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(39860400002)(366004)(136003)(376002)(346002)(396003)(53546011)(6506007)(86362001)(7406005)(33656002)(7696005)(7416002)(7366002)(5660300002)(921005)(8676002)(26005)(83380400001)(1191002)(2906002)(478600001)(8936002)(66556008)(52536014)(64756008)(66446008)(38070700005)(66946007)(9686003)(110136005)(55016002)(122000001)(76116006)(38100700002)(71200400001)(316002)(186003)(66476007)(518174003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?OJt/4gTUd3J8fOkTvV4qBBey0PbX8xtRpw6DZAvIetxF5QQLpffrAavYX9kM?=
- =?us-ascii?Q?wbV1gnD22rwgN1N6hkhrf55xyhNC3b5FZ6HT23JYCZSget1d1YcaOr4GWbCs?=
- =?us-ascii?Q?MRxIzexJmiCFJBRRNwVET72uKGXAKM6/1kQwWnwpbsg73xVl85u/mRLIE+dk?=
- =?us-ascii?Q?MGpncMu6ON/nIsTAjE+xBdwl2mXHTrs2OzFKdm8YvdQe87JOFJeeOVV62EDZ?=
- =?us-ascii?Q?2CdobdWjJzD8M6xmj2rY3KRPa/ewGwOhNu2VHbJoSWijrTu7nwacHEWMxBGh?=
- =?us-ascii?Q?hB4BT9NMtSh1KBLDoobuj5Aa6cROt2X2vjviNyYy55/eO2+gYvM1Ti7LHzbi?=
- =?us-ascii?Q?y5KKe2QePytT893YE7AnxhwWFrooxD+5Tvcccjc7FR+FWAc5zcfLyqZqWBHw?=
- =?us-ascii?Q?NCzxdVsvhu5YYv2Ug7kGWsyMHumjqfwtmud3mxpRwiuBOlbUjn6/nNL+MHwZ?=
- =?us-ascii?Q?qjf0EaoBf4NKKOe2GMcWuAHb1dc6NOhjgft8Y3FSyYuBM5T2IG7gMqmMPa0s?=
- =?us-ascii?Q?l+abo2UxjiWnhAJZplowUa3MU1f9WVmjwxnLQOqZqdFE0hBkxEIuweF9z53f?=
- =?us-ascii?Q?SPz71msRiN1AkHhKI+SviLCgPjF4Eg1CtD/ee0P0M12ulfuqJN90Yiunvm9T?=
- =?us-ascii?Q?BR2tSYdmQYDD58GH1/Y5SwRfVXboX5ihqzNiVeEq6nteUXDxFAQgtaEKAnzK?=
- =?us-ascii?Q?ikDcfh3K3zl1gh1sGjOgdwC0SRviUvqyaB21lCPiBO+PFkiazCN+ySFPMyJF?=
- =?us-ascii?Q?XMFotRkEpYO01uvgQXHoMuewaupaAW3gjeZ7ehXdaCd7jq5hVrVNpsAxm52x?=
- =?us-ascii?Q?573iX8i8O60D6XS/27y7MS7hMGGW7fo8JvoRy8wUGXRKwhWYxvGyBeAppjKI?=
- =?us-ascii?Q?Xzj/l4dZKwYONxYFimgVqjMz584+8Sc1a2bZVY5TD2fek9OAZYth37W9sFHt?=
- =?us-ascii?Q?leTNUbpEokkMoIPDIm/GlpOR4nL0zwGxKsvxoMtEfeCibLOhPiGL7lpYczVC?=
- =?us-ascii?Q?CNJs76f695plUp+Fch9hPKcp7MQMotMHs3bBp0+IMbxHStR7Ej3wBANPBa52?=
- =?us-ascii?Q?0xlciGImniMZTP2EIvmY9QPnRfr4DQLwHh23OiYvhCjxDs0ako56JDEp8kYM?=
- =?us-ascii?Q?EY3jG9oZR4cbTLaAyqqJvsXz52GuGOCHgVOGCY/Uw6US1cNvXSHAsy/Vt/fw?=
- =?us-ascii?Q?6801TcLftJtoPJH3ViLFbPFGOY4Zjsnj9Rxh8lRsrw6ZqkgrWrYcmCg61ZUP?=
- =?us-ascii?Q?7neI6h9M7aJxUAldY6GpI9r/L//aWRb3KmnDuvIxa9TDVRhXDRt9F/cEus0T?=
- =?us-ascii?Q?g5IR86tjuwSNMQdIYzPPHrU9?=
-x-ms-exchange-transport-forked: True
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id blKFmCj8YFJY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Aug 2021 18:11:58 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd35.google.com (mail-io1-xd35.google.com
+ [IPv6:2607:f8b0:4864:20::d35])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9384C403BB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 18:11:58 +0000 (UTC)
+Received: by mail-io1-xd35.google.com with SMTP id a21so9233456ioq.6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Aug 2021 11:11:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OgXtNKQVWNS/t9DnTxT4k+sKuavXVHdSyozmTrDmIzs=;
+ b=VQMcJfqDIF28JPMngb0oQ/7fJS4RV/h/jGqHDfDcji1nnRVIW5va2razqqgzHvBHOS
+ TGfaCQjdn1vsY7Aam4D1pRST+6Ff/b4jXbQdLkSUS/jeJp2FMDX4bx1t2rZgASQVXNPn
+ WOJw/pN70skdHEW9+0y1qly5biPDnQ+jn9qcKqMzwA6DZEksN2oYTuSgCkTJlXiMqKBz
+ Et09bRVTahG0zDEiaW3HwGOd6dqWseR7SEYxBZQ4cNJ2DaOZuDpgFczJoNGB3XsmyVO1
+ YQZzJ7c0yfYdDp8kx9lkckpUCjm21/JIkZG4vjROEk/KkAooM4GdibKsTu5Il6ecpfmq
+ 277w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OgXtNKQVWNS/t9DnTxT4k+sKuavXVHdSyozmTrDmIzs=;
+ b=E1V4BeOyb4QYpGKkVI2XSMHOkEfEnlM9QEmU3y3VMM/dGlOQgcS465kX38/jeE4POx
+ MQAAw2yKQKgPX/VUodQPdsefoYaW/AWHIlgZzW5MukHM5OD0DUw1epA5/hR/luZY+RFU
+ AK11bg0zd76+rvpxw7awtIGDOEgs/9Jh3edAD7Ewny/ZZun1QDJ4a3vQ8ehblgMqZ5Eg
+ qJcXUmqYjJMlxTdAG8Y1UKDj9zfv59vcJkIQbwS4BvRvL0z3gBsIYczZiZW4shSfOKCU
+ Q501bDi3/7ff4rEhISzlv1eehepqM+xdbnIuWSpz8VstoyGwyiihV9VFmmFvs+KYTNMG
+ VjLg==
+X-Gm-Message-State: AOAM533gYJZp2Z3jbIriQ40/U5XwlZn2qiIFjyIjVuJNz6Cb+SO+JV/a
+ tfBmVaDctpCR+xcaamCIpLYlWXKAQXYRn8XHYyU=
+X-Google-Smtp-Source: ABdhPJxe4xcrw0U4Dd1whvty55tfoYVW3p2Pw16+UKKJO6nXVsQXetYWVAQeXSpRs8A+FqzmkFphq0Q/eIfOk9SMXqI=
+X-Received: by 2002:a5d:9eda:: with SMTP id a26mr150414ioe.166.1629137517690; 
+ Mon, 16 Aug 2021 11:11:57 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3799.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6eaeefec-2e1f-420b-7f6f-08d960debf0c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Aug 2021 17:53:25.1390 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 5ae1af62-9505-4097-a69a-c1553ef7840e
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CfirkLaELQLMgMTeZU2QOQ8fDrJL+L0in6QWwERi0jg8PdX8DEbw4casYzGwlL9P
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5182
-X-OriginatorOrg: cisco.com
-X-Outbound-SMTP-Client: 173.36.7.17, xbe-aln-002.cisco.com
-X-Outbound-Node: rcdn-core-3.cisco.com
-X-Mailman-Approved-At: Mon, 16 Aug 2021 18:01:51 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v5 07/14] enic: Use
+References: <20210720232624.1493424-1-nitesh@redhat.com>
+ <20210720232624.1493424-11-nitesh@redhat.com>
+In-Reply-To: <20210720232624.1493424-11-nitesh@redhat.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Mon, 16 Aug 2021 13:11:47 -0500
+Message-ID: <CABb+yY3Wz57dYZ8pa5zHatGRu1RFmyRK+UvN+B8txCcOUTPQzw@mail.gmail.com>
+To: Nitesh Narayan Lal <nitesh@redhat.com>
+X-Mailman-Approved-At: Mon, 16 Aug 2021 18:16:25 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v5 10/14] mailbox: Use
  irq_update_affinity_hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -248,63 +84,97 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: juri.lelli@redhat.com, ajit.khaparde@broadcom.com, mustafa.ismail@intel.com,
+ peterz@infradead.org, linux-pci@vger.kernel.org,
+ Viresh Kumar <viresh.kumar@linaro.org>, _govind@gmx.com,
+ james.smart@broadcom.com, govind@gmx.com,
+ Tushar Khandelwal <Tushar.Khandelwal@arm.com>, minlei@redhat.com,
+ ahleihel@redhat.com, mingo@kernel.org, sassmann@redhat.com, kabel@kernel.org,
+ Stephen Rothwell <sfr@canb.auug.org.au>, martin.petersen@oracle.com,
+ linux-scsi@vger.kernel.org, borisp@nvidia.com, Marc Zyngier <maz@kernel.org>,
+ sathya.prakash@broadcom.com, emilne@redhat.com, kashyap.desai@broadcom.com,
+ tatyana.e.nikolova@intel.com, chandrakanth.patil@broadcom.com,
+ intel-wired-lan@lists.osuosl.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ abelits@marvell.com, nilal@redhat.com, jejb@linux.ibm.com,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, dick.kennedy@broadcom.com,
+ faisal.latif@intel.com, suganath-prabu.subramani@broadcom.com,
+ frederic@kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, rppt@linux.vnet.ibm.com,
+ Jakub Kicinski <kuba@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Thomas Gleixner <tglx@linutronix.de>, somnath.kotur@broadcom.com,
+ shiraz.saleem@intel.com, ahs3@redhat.com, pjwaskiewicz@gmail.com,
+ sreekanth.reddy@broadcom.com, sriharsha.basavapatna@broadcom.com,
+ nhorman@tuxdriver.com, shivasharan.srikanteshwara@broadcom.com,
+ "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, mtosatti@redhat.com,
+ kheib@redhat.com, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ tariqt@nvidia.com, stephen@networkplumber.org, sumit.saxena@broadcom.com,
+ poros@redhat.com, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ thenzl@redhat.com, linux-api@vger.kernel.org,
+ Baolin Wang <baolin.wang7@gmail.com>, saeedm@nvidia.com,
+ Andrew Morton <akpm@linux-foundation.org>, jkc@redhat.com, jbrandeb@kernel.org,
+ "David S . Miller" <davem@davemloft.net>, leonro@nvidia.com, benve@cisco.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Nitesh Narayan Lal <nitesh@redhat.com>
-> Sent: Tuesday, July 20, 2021 4:26 PM
-> To: linux-kernel@vger.kernel.org; linux-scsi@vger.kernel.org; intel-wired-
-> lan@lists.osuosl.org; netdev@vger.kernel.org; linux-api@vger.kernel.org;
-> linux-pci@vger.kernel.org; tglx@linutronix.de; jesse.brandeburg@intel.com;
-> robin.murphy@arm.com; mtosatti@redhat.com; mingo@kernel.org;
-> jbrandeb@kernel.org; frederic@kernel.org; juri.lelli@redhat.com;
-> abelits@marvell.com; bhelgaas@google.com; rostedt@goodmis.org;
-> peterz@infradead.org; davem@davemloft.net; akpm@linux-foundation.org;
-> sfr@canb.auug.org.au; stephen@networkplumber.org;
-> rppt@linux.vnet.ibm.com; chris.friesen@windriver.com; maz@kernel.org;
-> nhorman@tuxdriver.com; pjwaskiewicz@gmail.com;
-> sassmann@redhat.com; thenzl@redhat.com;
-> kashyap.desai@broadcom.com; sumit.saxena@broadcom.com;
-> shivasharan.srikanteshwara@broadcom.com;
-> sathya.prakash@broadcom.com; sreekanth.reddy@broadcom.com;
-> suganath-prabu.subramani@broadcom.com; james.smart@broadcom.com;
-> dick.kennedy@broadcom.com; jkc@redhat.com; faisal.latif@intel.com;
-> shiraz.saleem@intel.com; tariqt@nvidia.com; ahleihel@redhat.com;
-> kheib@redhat.com; borisp@nvidia.com; saeedm@nvidia.com; Christian
-> Benvenuti (benve) <benve@cisco.com>; govind@gmx.com;
-> jassisinghbrar@gmail.com; ajit.khaparde@broadcom.com;
-> sriharsha.basavapatna@broadcom.com; somnath.kotur@broadcom.com;
-> nilal@redhat.com; tatyana.e.nikolova@intel.com; mustafa.ismail@intel.com;
-> ahs3@redhat.com; leonro@nvidia.com; chandrakanth.patil@broadcom.com;
-> bjorn.andersson@linaro.org; chunkuang.hu@kernel.org;
-> yongqiang.niu@mediatek.com; baolin.wang7@gmail.com;
-> poros@redhat.com; minlei@redhat.com; emilne@redhat.com;
-> jejb@linux.ibm.com; martin.petersen@oracle.com; _govind@gmx.com;
-> kabel@kernel.org; viresh.kumar@linaro.org; Tushar.Khandelwal@arm.com;
-> kuba@kernel.org
-> Subject: [PATCH v5 07/14] enic: Use irq_update_affinity_hint
-> 
-> The driver uses irq_set_affinity_hint() to update the affinity_hint mask that
-> is consumed by the userspace to distribute the interrupts. However, under
-> the hood irq_set_affinity_hint() also applies the provided cpumask (if not
-> NULL) as the affinity for the given interrupt which is an undocumented side
-> effect.
-> 
-> To remove this side effect irq_set_affinity_hint() has been marked as
-> deprecated and new interfaces have been introduced. Hence, replace the
-> irq_set_affinity_hint() with the new interface irq_update_affinity_hint() that
-> only updates the affinity_hint pointer.
-> 
+On Tue, Jul 20, 2021 at 6:27 PM Nitesh Narayan Lal <nitesh@redhat.com> wrote:
+>
+> The driver uses irq_set_affinity_hint() to:
+>
+> - Set the affinity_hint which is consumed by the userspace for
+>   distributing the interrupts
+>
+> - Enforce affinity
+>
+> As per commit 6ac17fe8c14a ("mailbox: bcm-flexrm-mailbox: Set IRQ affinity
+> hint for FlexRM ring IRQs") the latter is done to ensure that the FlexRM
+> ring interrupts are evenly spread across all available CPUs. However, since
+> commit a0c9259dc4e1 ("irq/matrix: Spread interrupts on allocation") the
+> spreading of interrupts is dynamically performed at the time of allocation.
+> Hence, there is no need for the drivers to enforce their own affinity for
+> the spreading of interrupts.
+>
+> Also, irq_set_affinity_hint() applying the provided cpumask as an affinity
+> for the interrupt is an undocumented side effect. To remove this side
+> effect irq_set_affinity_hint() has been marked as deprecated and new
+> interfaces have been introduced. Hence, replace the irq_set_affinity_hint()
+> with the new interface irq_update_affinity_hint() that only sets the
+> affinity_hint pointer.
+>
 > Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+> ---
+>  drivers/mailbox/bcm-flexrm-mailbox.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mailbox/bcm-flexrm-mailbox.c b/drivers/mailbox/bcm-flexrm-mailbox.c
+> index 78073ad1f2f1..16982c13d323 100644
+> --- a/drivers/mailbox/bcm-flexrm-mailbox.c
+> +++ b/drivers/mailbox/bcm-flexrm-mailbox.c
+> @@ -1298,7 +1298,7 @@ static int flexrm_startup(struct mbox_chan *chan)
+>         val = (num_online_cpus() < val) ? val / num_online_cpus() : 1;
+>         cpumask_set_cpu((ring->num / val) % num_online_cpus(),
+>                         &ring->irq_aff_hint);
+> -       ret = irq_set_affinity_hint(ring->irq, &ring->irq_aff_hint);
+> +       ret = irq_update_affinity_hint(ring->irq, &ring->irq_aff_hint);
+>         if (ret) {
+>                 dev_err(ring->mbox->dev,
+>                         "failed to set IRQ affinity hint for ring%d\n",
+> @@ -1425,7 +1425,7 @@ static void flexrm_shutdown(struct mbox_chan *chan)
+>
+>         /* Release IRQ */
+>         if (ring->irq_requested) {
+> -               irq_set_affinity_hint(ring->irq, NULL);
+> +               irq_update_affinity_hint(ring->irq, NULL);
+>                 free_irq(ring->irq, ring);
+>                 ring->irq_requested = false;
+>         }
+>
+Seems ok to me. But I don't have the h/w to test.
 
-Thanks Nitesh for the patch.
+Acked-by: Jassi Brar <jaswinder.singh@linaro.org>
 
-Reviewed-by: Christian Benvenuti <benve@cisco.com>
-
-
+cheers.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
