@@ -1,157 +1,154 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1A4C3EE858
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 10:23:07 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 087CF3EEA21
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 11:42:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E08B6081C;
-	Tue, 17 Aug 2021 08:23:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0749780D46;
+	Tue, 17 Aug 2021 09:42:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HuVwG9xuzVV1; Tue, 17 Aug 2021 08:23:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LWbtcPUUlBMD; Tue, 17 Aug 2021 09:41:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D42F160802;
-	Tue, 17 Aug 2021 08:23:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A6E780DE2;
+	Tue, 17 Aug 2021 09:41:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C28411BF2AE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 66AE41BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 09:41:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B0146402D8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 54E2E40332
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 09:41:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wlfhUZaW8280 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Aug 2021 08:22:53 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ImVz2UWAf2yP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Aug 2021 09:41:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8085A402A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="203220437"
-X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="203220437"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Aug 2021 01:22:52 -0700
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BD2F7402F4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 09:41:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="238113360"
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="238113360"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Aug 2021 02:41:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="471079997"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by orsmga008.jf.intel.com with ESMTP; 17 Aug 2021 01:22:52 -0700
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="676417550"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga006.fm.intel.com with ESMTP; 17 Aug 2021 02:41:50 -0700
+Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 17 Aug 2021 01:22:52 -0700
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Tue, 17 Aug 2021 01:22:51 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10 via Frontend Transport; Tue, 17 Aug 2021 01:22:51 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2242.10; Tue, 17 Aug 2021 02:41:50 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4
+ via Frontend Transport; Tue, 17 Aug 2021 02:41:50 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.49) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Tue, 17 Aug 2021 01:22:51 -0700
+ 15.1.2242.10; Tue, 17 Aug 2021 02:41:50 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nlXyBi29lWlySqeiCOHQpw/df1/boWj3Ztgy7DLFgXExXZMBIEj77pgJAGBv2SORdk+Xf9ZS7ZZ87vPqV3jgLFySK30K2kw/W066Gmo2x/ISmLRP7gazGFBPJfOkHfi/fx0G/LoMBo0bfljTTACpPXq5D404tgzzmrRpXODA9C4Ta0ScBJuN3om3fJe8z2cqJY1C7fHJyUBJMgl88ayNId4GIuFedti1XTSUjM5jJQD2KjmwErJDdwyX9SGd1kHl3XWmT9UIcZu41HN+RaAoh3jkcICEk7KCs3k8U1BppkTVJy1ueMjtNqDc1U+054lnOe51OgvfdYTlYswd1LoiBQ==
+ b=gTYB72Uk7EheqTKEPAenK2GlOsffc0kS8J3iGNLDlwHEk5QAbd0RlOf3HDEFbHGj55G431LQLBNW+xJ5HDbIhNhx2Av/CyPI2wFuoNXx7CeU5jHuJjvB8vOpliE7FWVgntLbIBYUiTrc8lENvzWAiJDmbM8MNYWIm6ScHtYOWJPpEquOwmWHdsPOYEW9vlo19wwNiuu3h6orlpxhYUWvvwKcVTe0EnfVJiBU48mhX1DtPMqwfzkgKHpjHyAzvwF0X8YgOWbMuBgTg0VssB9CKwzq6a5rPEWguY2vM/AYn3X77PtZt1uCAyQe2ZQcjuzqLEY7LbsYAMCLqXU/yGlqeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W1PffyItwalBeaX0Zh61/vv8RFCY50JI6H5bOKIzEYU=;
- b=RzCBkCMNO+rO7GVPyGev2G7cOQ5XPfIss++BIyl/EkW52r1yWJbdNe3u3HGR3i6WtVq/PTjsoonrIBvhiSRvCad4a0FKdEa8lV3anV4Gxj3AMgN+zaqL6V7BWR4PjlFq3yTJ97uq6JlLUOErLytAq4tQgVKoWEm3KPTzid14L3zAaEKJJn/dN58AAyyyvbTxnA0E9YMVzuTsXhcnUWOgQ4vEOpcNKEWzf7d1xJqVxC9h8Im3D/evCfKkefQ95CoUui3ctiknCvY2PBB3a99Fhn3JMnjdfXtgnKZvlbCqRxOz2WibT1P9ooasZAYj0bEuWXbJLz4QgaxhWPU+r+GeYw==
+ bh=mloQqeISMyIi3QWpGOP+d1N/T7FomygTInDKv/whBzM=;
+ b=H/aWJonkn0MqvvUhvfb2onI/Lfsldne9IeJcbjYb3ZwZbfhLU0RPtcdS1A3H7T19p8eRrtrNhEKu/FXYZlTdHK7POxMLm1v3KHLlUMQDpK1yEaCZ76cSNNbawenbzLNjSdZK5sPFWUMl/YdbqEocNbyqCWWI3e7IcriRYmKtrW9IzzZP/+zanxv9Vbx1iD0uob1wcT378m94F58fxDkiMg28InZcl6FHfyUlJx268ra17HL2QmZbnmNZtCg2VrXL98YtguHpRwe/PflEv7B/layqFnHlWKYqtX0WfSbZO4p/kGfTCJOYhiFYUoBuOin7FlAlzzhAqAohg9cYlZuqdw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W1PffyItwalBeaX0Zh61/vv8RFCY50JI6H5bOKIzEYU=;
- b=CkOr9hGIRRUF9aBvQuhcg1YeT5cJwq5s1Jjx9olD6LpI04ZOFDFXFKEdk49p7oAup+GmNs9lCNOiz1AOAP6khRCWmjpRmqc0Y6SKlbREpE2jgIpHp+yPCe5nfPRhOuXfX91o2rau1CI2gimzvZFbHU9rk5LC7w0mINzGaPAEKwY=
-Received: from BYAPR11MB3079.namprd11.prod.outlook.com (2603:10b6:a03:92::16)
- by SJ0PR11MB4944.namprd11.prod.outlook.com (2603:10b6:a03:2ae::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.14; Tue, 17 Aug
- 2021 08:22:51 +0000
-Received: from BYAPR11MB3079.namprd11.prod.outlook.com
- ([fe80::dcf9:9373:540f:8014]) by BYAPR11MB3079.namprd11.prod.outlook.com
- ([fe80::dcf9:9373:540f:8014%4]) with mapi id 15.20.4415.024; Tue, 17 Aug 2021
- 08:22:50 +0000
-From: "Szlosek, Marek" <marek.szlosek@intel.com>
-To: Stefan Assmann <sassmann@kpanic.de>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH net-next] iavf: use mutexes for locking of critical
- sections
-Thread-Index: AQHXiQn7jwa4jbvQ1EqjxTfrr/4QA6t3bqsg
-Date: Tue, 17 Aug 2021 08:22:50 +0000
-Message-ID: <BYAPR11MB3079F80FB5BAED591DD28125E6FE9@BYAPR11MB3079.namprd11.prod.outlook.com>
-References: <20210804082224.15368-1-sassmann@kpanic.de>
-In-Reply-To: <20210804082224.15368-1-sassmann@kpanic.de>
+ bh=mloQqeISMyIi3QWpGOP+d1N/T7FomygTInDKv/whBzM=;
+ b=B2AQ6j553jMX9c1KDrXVGT0SVYkT/O3ArS7LOi687xqbohf6awe2n7A1d6UH+NbrjoVXWTRpStgQpUJVCPnPWB5w6KL+uG+4CyPQ+JmU5jN/dFLoRuCXXAteI/SCor49YwuYZJ9ol64WzLSwR2UG7dChzxwVfwKK/evftmm/Ixw=
+Received: from PH0PR11MB4951.namprd11.prod.outlook.com (2603:10b6:510:43::5)
+ by PH0PR11MB4871.namprd11.prod.outlook.com (2603:10b6:510:30::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.18; Tue, 17 Aug
+ 2021 09:41:49 +0000
+Received: from PH0PR11MB4951.namprd11.prod.outlook.com
+ ([fe80::58cd:3e24:745c:e221]) by PH0PR11MB4951.namprd11.prod.outlook.com
+ ([fe80::58cd:3e24:745c:e221%7]) with mapi id 15.20.4415.019; Tue, 17 Aug 2021
+ 09:41:49 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>, "Kubalewski, Arkadiusz"
+ <arkadiusz.kubalewski@intel.com>
+Thread-Topic: [RFC net-next 1/7] ptp: Add interface for acquiring DPLL state
+Thread-Index: AQHXkrpDE4/97678+kqD5jc+QEB2qKt2zoSAgACcQzA=
+Date: Tue, 17 Aug 2021 09:41:49 +0000
+Message-ID: <PH0PR11MB4951762ECB04D90D634E905DEAFE9@PH0PR11MB4951.namprd11.prod.outlook.com>
+References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+ <20210816235400.GA24680@hoboy.vegasvil.org>
+In-Reply-To: <20210816235400.GA24680@hoboy.vegasvil.org>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
 dlp-version: 11.5.1.3
 dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: kpanic.de; dkim=none (message not signed)
- header.d=none;kpanic.de; dmarc=none action=none header.from=intel.com;
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9ce63938-85e0-4354-5589-08d961583413
-x-ms-traffictypediagnostic: SJ0PR11MB4944:
+x-ms-office365-filtering-correlation-id: 775e8d8f-7768-4ec6-a7ef-08d961633c77
+x-ms-traffictypediagnostic: PH0PR11MB4871:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SJ0PR11MB4944EBEC5F03CEE02372AB52E6FE9@SJ0PR11MB4944.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:51;
+x-microsoft-antispam-prvs: <PH0PR11MB48710B7098AC147EA4534602EAFE9@PH0PR11MB4871.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cF333TKvKoEPdWp3NVRShMgXfm+nfBeF284Oz3SCVky28S0eb2HUArBKhrvF25U/06+YxeHqvS6+WVIJOF/uPsr+Z0qPteVZLNsOrLF8w6TuK1LnXsw/7eQ0+bkGQ0bGgYZTD3/SVgi+zsJwlyZV23odTZeQW8iKMyLG+R6+5rUOJXTbEnATDHS4xeqt7bdt+bSFi2YImRthR4dJn9pp/lQ2VXGKG4r1T+X5UrVE+IE6P8TET5uYA54CE1top8WI9MouX1CYjth1OVFzYpepjGYaKAujtOcFMHbWvwn3/nX0vF0F4dBAicaWGdTyPrlodo1DWVvwmx92lg6DGQMLivkgCyuj4NVZ2FFyqRFZ+lYa8awtOcVo+H+yIscEFgnC5j33cSIVbZm0yJ1m14Lg6flu5OfIs4fFlLF4XTAJfyo4AVV7Wq1GnP9Hwkcf3GwZSqb3NOkMdND6pLt2uvI5rY+W4jk7oU+f9MbcIA1nfFfGiT4cwLbq1PFwNYn2v+XObPhAOUdIAlwA/a0B9XF6uAkJXN+VdgaUnbKecb7OnFSmd51Qfb7ZrJe5/lQ2X5m+rFmC08CRnNOTZ6OjHel6q3+dIni9XDogn8NRbTKVk7JUpUyGptb/FRbHOIyhv/hguQ29tcpHf/CXRDRIiz3jbeQLjXRmuQGXmlZ0MwVBwVi4rbeNQyXp0ZmR8Zt3z5QQUzfgxf4XrcuprYlOm+Qyk0fwtM6Nq5zb9K4Y41ZPMxkpy735Vsy278WXq/7ZwzBFC/SEZjnRBrqm04lV96KKErwTvQZpp1qbOT+LufT1EI8=
+x-microsoft-antispam-message-info: jdkq5WOFuSO05YlAosMAO2dsyoDzvxIWdoy/PU1vjTyEZ/w1JBg3fWtpOV0gnGRjT8SyhZ7ULf+muK0Kz6vKpn6mb0GPpoGfdFsWGZ7RWaZJexlALLjvr3RSRfmN3BUoMdJVq/O32tQwXORadZdEfV21xBuCQWWtmBrTEDbeO4aSj6cS2bYIqIc3Pl0XboCtBRvtwRPWwncTGH8FvxR/1uG5SUf2FrrrpDrhzHcPoHvdKUsw3JiemGQWCYdOriLCfniijAyE2/oFhN7b/jS4VQLm9EpkJ4zJN+7BPR//rGEwwA4HM/LtS/1I0peVIzxddXlBYkZ7lLplls7IXGNXTdSYulNDy5avEJB1XQ7DpD2dcYFJbxFw/iRDrXEfVNySbDzgq3as6sziVcAjF8BDs8qKe8xY+pxp0A0Hj63/kHxHimZk64DmJNVl6ynsESxVVlMxxpnwJmdgrUf5y3Snq81d/+fR6pk+ZVQzDrYKqJEt8P2WYSRydGeWe1bPt2m2Sw61KWz/D4rMmm1WckKtRNUNHxN+TExUtMcE+gBENlCRjKeGKwG0pE9/bh7VMy+qT2JzmaOVIP5XJBR9sEENPf7tXdqem35AJxFAlbBW6fcbqMRRWvdgkLoo2k2bSs1dGONoZqNZ3bgmvXUAHZhha7XDVE8W3ly7yUaK/MFKuAL8ohs6aiI6IIJ6Eeg+GD65+SyukZVFBdggJ3WLmHQ8BQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3079.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(376002)(136003)(346002)(396003)(39860400002)(186003)(2906002)(33656002)(6506007)(66446008)(52536014)(64756008)(107886003)(55016002)(316002)(38100700002)(5660300002)(83380400001)(8676002)(122000001)(478600001)(71200400001)(26005)(9686003)(76116006)(54906003)(86362001)(966005)(66476007)(30864003)(8936002)(38070700005)(4326008)(110136005)(7696005)(66946007)(66556008);
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB4951.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(136003)(346002)(376002)(396003)(39860400002)(26005)(6506007)(33656002)(86362001)(186003)(2906002)(316002)(71200400001)(38100700002)(122000001)(6636002)(7696005)(110136005)(54906003)(7416002)(478600001)(52536014)(5660300002)(38070700005)(9686003)(55016002)(66476007)(66946007)(76116006)(8936002)(8676002)(4326008)(64756008)(66556008)(66446008)(83380400001);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8XUSw1e116VS465WPhofOY3bMe93m+Cs3syPjKCtv2BMBI9kzgxecE5rVJ1i?=
- =?us-ascii?Q?bGvWEVXh9JsVIJMK+yWZkj5/l0i3LFajk2wQkopJVbLshpqd4Vkv2bGNuBNt?=
- =?us-ascii?Q?XbS/DK3MQj51R5FcGuRA0GYeiEnxSB1ppSqJHPiMYKaj73LFzUacPc5BBpiV?=
- =?us-ascii?Q?tpf43Ch1S3MEtluNMj+TEKnKXzyGSVvg5ttsUCnR/4qLRFnsNtf8tzazdlCd?=
- =?us-ascii?Q?hGzlxZW1jcmTfWJjTzef2H09f/9c0ikfaDa1koK+NHqz30SsS37gCnWS0pef?=
- =?us-ascii?Q?v0XQ93CcZaVtyyocaAPlq1AMYA5gB77nRuCnqsLMsvihuTLjqnOw5S3kSC5X?=
- =?us-ascii?Q?khCJfW/s7UrcWXFXFUa6zWEY2CcHsA/I1nkQugL+9I0CbSCmHKO3ylw2fWZs?=
- =?us-ascii?Q?/oXMBzn4fElr7WofAXf3Z1pwgBb+y44DFwMBKrdwsFCU92kNVILwFbGqrFlB?=
- =?us-ascii?Q?R8CfuJWqNKRI19Bvhn10RU17StdNOSXbxEL+1/iIn97Pk607HwsS3F4sSS36?=
- =?us-ascii?Q?T6CV3LR5KWts9YoOhPh66b0+l/AHNlirLj3eTc3eI5CXm9cNHbxi52eO1zyU?=
- =?us-ascii?Q?n9N+3C3CJedIHMS8T46DxDYVkr9kqIOJH/fbfk3evyZyrA/wXCwWTFq37TW6?=
- =?us-ascii?Q?oDyBmZPDpmiDVFRA34Gbu6WLuJXWGSMcmxrHeKGBZsgkBuktFgLk6EPJJZzj?=
- =?us-ascii?Q?gDBC2TA7HMI6hq5hYo9558WMAsz0YQ6rGOsT59BU/evr9rNn5gvysqLcQ2ZY?=
- =?us-ascii?Q?XEQnI5xvwVyLxFfmmARdJcd4huu+K5GTeU33HqTcIg/xDH8Ptl2h1IIKilTZ?=
- =?us-ascii?Q?ncJfh3S08fnwfyOumerz1vW0orPWc9dWH0l5+cAw6QZKKXAy99Sy2406r+yA?=
- =?us-ascii?Q?XMROXBTp383bXUPVqR2aWfRh3L4J7HEyP/epraceV7FcA1y3X74FtEXtIoxW?=
- =?us-ascii?Q?fQfXSTZu1chY1v9dbm9Uza4sO7PTJvsKyr7uGZZK4/70aIz2Jy8bPEDaHAbn?=
- =?us-ascii?Q?vw4glDjwB/4SvfLGwbDC1CIs2+etYybt12Nk5cWmvfKQH8mnUPse0BSBTxUe?=
- =?us-ascii?Q?15lL92R+IDIvQqHs4Mr9FH/x6GrRGgl+XC4VqAx7PZDb42apgb6RTbUxrk+k?=
- =?us-ascii?Q?8YJFNeGILgiGauAzlhKS8D5TdbC45jmFTrO+oJ0p9PbjeP9QjgNsPEAbMrUR?=
- =?us-ascii?Q?6k16UY378DEf1n7skhGj0zpITCYsAi4s5hXO3SrJ9edW3vuPmuWVVwuybB+V?=
- =?us-ascii?Q?GjBuhS+oRaNsmEzHx+JXJ+YP7c/o5hPKgIXAZh+QQFqgPXSH11/+GtEU+f+U?=
- =?us-ascii?Q?8Q4PpXOYJ/zNcfa6bL9OrjGB?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?co3Ul0emSzqiI8WIU5XfSUmyEoUjR/vzL5IznLJre1O0HUYYM2cbd+hTL460?=
+ =?us-ascii?Q?T4XrHkXaVMQuhdOHAZ2B9lyf6y22EAu7r7suh7ApB4X4fHvGOizaEmToOgK0?=
+ =?us-ascii?Q?yYf25c8kpSfQIsiCBvF7H4qlt9/tYY1BwFQZguC/6lc3DE/fUZbXtil7mi7H?=
+ =?us-ascii?Q?dv/9snDkTQaLf40uLpaHHn6DnEuX904DZn/DmcIvzPjR2Pgd8EFQOI0tes8L?=
+ =?us-ascii?Q?+6of/nQbWf6caAPokAAC+Ir00oy2+bKhN3YTdDkPKgXpPNRgoOGp3sf10S0s?=
+ =?us-ascii?Q?5hNOgzLvAbwcafIn6VZPZva4AgkDMDwYxokQ91laiFc89ljsQ9LXkXk2IZj1?=
+ =?us-ascii?Q?ieY/wn4xzyhi/xYeQtUnmnJ2p+TnMpBVvbpOQhny7dbe4gTF7ZaACsxfT7Z0?=
+ =?us-ascii?Q?xYblL7rF641jks3PA7EBt8+soDRWLjJd1Dt+iLUXW5eXtcrYtAa4B34WM/d3?=
+ =?us-ascii?Q?hMAq0BKgBzf1twZl54lbL0XyCMCvhsUrJX4yGF9/qbaIh5W8VphxB81u/JG4?=
+ =?us-ascii?Q?IkgWM18dAe1HU+Yx1k1a9ouHw13vyN9f3p/acQHREG6nUzgUuDStGTSsD1kr?=
+ =?us-ascii?Q?tPC3zVfAINkWPQJbdL3CK0fL1u9U5bUQ9EOkVt9hTRiJopKFFnr7oKm+fpmI?=
+ =?us-ascii?Q?gp+mfTAHGKByKPcWt9ILUg4iWK0qfA9CLkTw+M12QDI+J6rNFsddV7Zivc4m?=
+ =?us-ascii?Q?SRjpyz+BO5bkkGy1+l6bYd0V8XzIfXV1kPX60RMjYmcv/h96pJuBcedJ5V+w?=
+ =?us-ascii?Q?je8xHFH3DwZivniABexKngPQWKWDLroh9ty6SD6zU135S9/TUh93slaW2tUp?=
+ =?us-ascii?Q?Yw6s5tFKtLgbRzCoLfGAtbZnLWMsvHD2LV7wSW01D40tJWEnqNh+dniBeGok?=
+ =?us-ascii?Q?i8gAj6jf/zX1Evn0duX0q/OAu7iFntqop9x1amixdIIteUbpUyqU9UxmuGdO?=
+ =?us-ascii?Q?NYmosfeqqO/42QHR6jISHosA+YvulCFwZwwV/EpqKBuBkcVGCTOUZ+ZEoA42?=
+ =?us-ascii?Q?5dMO3CEdcZn6Hn+807/vckB/JYu2G+YrZ6uTrmV0T3zcLyicrBfkQpX0dOkW?=
+ =?us-ascii?Q?iB+BrjZSn++ncuHnwKvkdk19MqRqYuHkRxC0f/MdSfbQSOujVXtGEQwZnDp6?=
+ =?us-ascii?Q?5/VyOjzPM360AJncjyhNmWVCRnRHejKpyhJAQhcJrFN7oiA2Mlhuk2yZKqUK?=
+ =?us-ascii?Q?DTNKmRy01XbQxVXZrbqLaScgzt6cb5EHvUzZyei/IjlhxezFnv64Tuy2AoqS?=
+ =?us-ascii?Q?PFiM6MrkOrh+ZvfV/lDhvymzHTj+h/m4/xT2O+HLRLjK2JwpOxmJW65I1iYC?=
+ =?us-ascii?Q?qFU=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3079.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ce63938-85e0-4354-5589-08d961583413
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Aug 2021 08:22:50.7121 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB4951.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 775e8d8f-7768-4ec6-a7ef-08d961633c77
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Aug 2021 09:41:49.2741 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CTW3abuHtfAj4NDXgQRoI6KvegEdNwuDe9qKQmMCQG+vUTWq99jonWVtKY+VV2XL4Q4qF4fmtRg1acOZl66vQQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4944
+X-MS-Exchange-CrossTenant-userprincipalname: 9qevwDose/OFCQCgZYxCCCos4yyQJ6YHOiiajYigJ55V07YDimPgikSeQbVhPmxq51wGzEp5NgEGVUe2fKMqlpC5iImwX/9wyZELY/LXV1U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4871
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next] iavf: use mutexes for
- locking of critical sections
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
+ acquiring DPLL state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -164,435 +161,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>,
+Cc: "cong.wang@bytedance.com" <cong.wang@bytedance.com>,
+ "arnd@arndb.de" <arnd@arndb.de>,
+ "gustavoars@kernel.org" <gustavoars@kernel.org>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "colin.king@canonical.com" <colin.king@canonical.com>,
+ "nikolay@nvidia.com" <nikolay@nvidia.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "shuah@kernel.org" <shuah@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org; kuba@kernel.org; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Laba, SlawomirX <slawomirx.laba@intel.com>; Yang, Lihong <lihong.yang@intel.com>; sassmann@kpanic.de
-Subject: [PATCH net-next] iavf: use mutexes for locking of critical sections
+> > Previously there was no common interface for monitoring
+> > synchronization state of Digital Phase Locked Loop.
+> >
+> > Add interface through PTP ioctl subsystem for tools, as well as sysfs
+> > human-friendly part of the interface.
+> >
+> > enum dpll_state moved to uapi definition, it is required to have
+> > common definition of DPLL states in uapi.
+> 
+> This has nothing to do with PTP, right?
+> 
+> So why isn't it a RTNL feature instead?
+> 
+> Thanks,
+> Richard
 
-As follow-up to the discussion with Jakub Kicinski about iavf locking being insufficient [1] convert iavf to use mutexes instead of bitops.
-The locking logic is kept as is, just a drop-in replacement of enum iavf_critical_section_t with separate mutexes.
-The only difference is that the mutexes will be destroyed before the module is unloaded.
 
-[1] https://lwn.net/ml/netdev/20210316150210.00007249%40intel.com/
+The logic behind adding the DPLL state to the PTP subsystem is that SyncE DPLL on Network adapters, in most cases, drive the PTP timer.
+Having access to it in the PTP subsystem is beneficial, as Telco standards, like G.8275.1/2, require a different behavior depending on the SyncE availability and state.
+Multiport adapters use a single PLL to drive all ports. If we add the PLL interface to the PTP device - a tool that would implement support for Telco standards would have a single source of information about the presence and state of physical sync.
 
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |   9 +-
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |  10 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 100 +++++++++---------
- 3 files changed, 56 insertions(+), 63 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index e8bd04100ecd..b351ad653d12 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -185,12 +185,6 @@ enum iavf_state_t {
- 	__IAVF_RUNNING,		/* opened, working */
- };
+Moreover, it'll open the path for implementing PLL state-aware ext_ts that would generate events only when the PLL device is locked to the incoming signals improving the quality of external TS events. I.e. an external PLL can be used to monitor incoming 1PPS signal and disable event generation when its frequency drifts off 1Hz by preset margins.
  
--enum iavf_critical_section_t {
--	__IAVF_IN_CRITICAL_TASK,	/* cannot be interrupted */
--	__IAVF_IN_CLIENT_TASK,
--	__IAVF_IN_REMOVE_TASK,	/* device being removed */
--};
--
- #define IAVF_CLOUD_FIELD_OMAC		0x01
- #define IAVF_CLOUD_FIELD_IMAC		0x02
- #define IAVF_CLOUD_FIELD_IVLAN	0x04
-@@ -235,6 +229,9 @@ struct iavf_adapter {
- 	struct iavf_q_vector *q_vectors;
- 	struct list_head vlan_filter_list;
- 	struct list_head mac_filter_list;
-+	struct mutex crit_lock;
-+	struct mutex client_lock;
-+	struct mutex remove_lock;
- 	/* Lock to protect accesses to MAC and VLAN lists */
- 	spinlock_t mac_vlan_list_lock;
- 	char misc_vector_name[IFNAMSIZ + 9];
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index af43fbd8cb75..edbeb27213f8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1352,8 +1352,7 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- 	if (!fltr)
- 		return -ENOMEM;
+If we bind it to the Network port, a tool would need to find the port that owns the PLL and read the state from a different place, which sounds suboptimal. Additionally we'll lose ability to rely on external HW to monitor external TS events.
  
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section)) {
-+	while (!mutex_trylock(&adapter->crit_lock)) {
- 		if (--count == 0) {
- 			kfree(fltr);
- 			return -EINVAL;
-@@ -1378,7 +1377,7 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- 	if (err && fltr)
- 		kfree(fltr);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 	return err;
- }
- 
-@@ -1563,8 +1562,7 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
- 		return -EINVAL;
- 	}
- 
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section)) {
-+	while (!mutex_trylock(&adapter->crit_lock)) {
- 		if (--count == 0) {
- 			kfree(rss_new);
- 			return -EINVAL;
-@@ -1600,7 +1598,7 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
- 	if (!err)
- 		mod_delayed_work(iavf_wq, &adapter->watchdog_task, 0);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	if (!rss_new_add)
- 		kfree(rss_new);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index fa6cf20da911..cd0a424bd5f4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -132,21 +132,18 @@ enum iavf_status iavf_free_virt_mem_d(struct iavf_hw *hw,  }
- 
- /**
-- * iavf_lock_timeout - try to set bit but give up after timeout
-- * @adapter: board private structure
-- * @bit: bit to set
-+ * iavf_lock_timeout - try to lock mutex but give up after timeout
-+ * @lock: mutex that should be locked
-  * @msecs: timeout in msecs
-  *
-  * Returns 0 on success, negative on failure
-  **/
--static int iavf_lock_timeout(struct iavf_adapter *adapter,
--			     enum iavf_critical_section_t bit,
--			     unsigned int msecs)
-+static int iavf_lock_timeout(struct mutex *lock, unsigned int msecs)
- {
- 	unsigned int wait, delay = 10;
- 
- 	for (wait = 0; wait < msecs; wait += delay) {
--		if (!test_and_set_bit(bit, &adapter->crit_section))
-+		if (mutex_trylock(lock))
- 			return 0;
- 
- 		msleep(delay);
-@@ -1944,7 +1941,7 @@ static void iavf_watchdog_task(struct work_struct *work)
- 	struct iavf_hw *hw = &adapter->hw;
- 	u32 reg_val;
- 
--	if (test_and_set_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section))
-+	if (!mutex_trylock(&adapter->crit_lock))
- 		goto restart_watchdog;
- 
- 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) @@ -1962,8 +1959,7 @@ static void iavf_watchdog_task(struct work_struct *work)
- 			adapter->state = __IAVF_STARTUP;
- 			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
- 			queue_delayed_work(iavf_wq, &adapter->init_task, 10);
--			clear_bit(__IAVF_IN_CRITICAL_TASK,
--				  &adapter->crit_section);
-+			mutex_unlock(&adapter->crit_lock);
- 			/* Don't reschedule the watchdog, since we've restarted
- 			 * the init task. When init_task contacts the PF and
- 			 * gets everything set up again, it'll restart the @@ -1973,14 +1969,13 @@ static void iavf_watchdog_task(struct work_struct *work)
- 		}
- 		adapter->aq_required = 0;
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
--		clear_bit(__IAVF_IN_CRITICAL_TASK,
--			  &adapter->crit_section);
-+		mutex_unlock(&adapter->crit_lock);
- 		queue_delayed_work(iavf_wq,
- 				   &adapter->watchdog_task,
- 				   msecs_to_jiffies(10));
- 		goto watchdog_done;
- 	case __IAVF_RESETTING:
--		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		mutex_unlock(&adapter->crit_lock);
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
- 		return;
- 	case __IAVF_DOWN:
-@@ -2003,7 +1998,7 @@ static void iavf_watchdog_task(struct work_struct *work)
- 		}
- 		break;
- 	case __IAVF_REMOVE:
--		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+		mutex_unlock(&adapter->crit_lock);
- 		return;
- 	default:
- 		goto restart_watchdog;
-@@ -2025,7 +2020,7 @@ static void iavf_watchdog_task(struct work_struct *work)
- 	if (adapter->state == __IAVF_RUNNING ||
- 	    adapter->state == __IAVF_COMM_FAILED)
- 		iavf_detect_recover_hung(&adapter->vsi);
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- restart_watchdog:
- 	if (adapter->aq_required)
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, @@ -2089,7 +2084,7 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
- 	memset(adapter->vf_res, 0, IAVF_VIRTCHNL_VF_RESOURCE_SIZE);
- 	iavf_shutdown_adminq(&adapter->hw);
- 	adapter->netdev->flags &= ~IFF_UP;
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 	adapter->flags &= ~IAVF_FLAG_RESET_PENDING;
- 	adapter->state = __IAVF_DOWN;
- 	wake_up(&adapter->down_waitqueue);
-@@ -2122,15 +2117,14 @@ static void iavf_reset_task(struct work_struct *work)
- 	/* When device is being removed it doesn't make sense to run the reset
- 	 * task, just return in such a case.
- 	 */
--	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-+	if (mutex_is_locked(&adapter->remove_lock))
- 		return;
- 
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200)) {
-+	if (iavf_lock_timeout(&adapter->crit_lock, 200)) {
- 		schedule_work(&adapter->reset_task);
- 		return;
- 	}
--	while (test_and_set_bit(__IAVF_IN_CLIENT_TASK,
--				&adapter->crit_section))
-+	while (!mutex_trylock(&adapter->client_lock))
- 		usleep_range(500, 1000);
- 	if (CLIENT_ENABLED(adapter)) {
- 		adapter->flags &= ~(IAVF_FLAG_CLIENT_NEEDS_OPEN | @@ -2182,7 +2176,7 @@ static void iavf_reset_task(struct work_struct *work)
- 		dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
- 			reg_val);
- 		iavf_disable_vf(adapter);
--		clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
-+		mutex_unlock(&adapter->client_lock);
- 		return; /* Do not attempt to reinit. It's dead, Jim. */
- 	}
- 
-@@ -2301,13 +2295,13 @@ static void iavf_reset_task(struct work_struct *work)
- 		adapter->state = __IAVF_DOWN;
- 		wake_up(&adapter->down_waitqueue);
- 	}
--	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->client_lock);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	return;
- reset_err:
--	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->client_lock);
-+	mutex_unlock(&adapter->crit_lock);
- 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
- 	iavf_close(netdev);
- }
-@@ -2335,7 +2329,7 @@ static void iavf_adminq_task(struct work_struct *work)
- 	if (!event.msg_buf)
- 		goto out;
- 
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200))
-+	if (iavf_lock_timeout(&adapter->crit_lock, 200))
- 		goto freedom;
- 	do {
- 		ret = iavf_clean_arq_element(hw, &event, &pending); @@ -2350,7 +2344,7 @@ static void iavf_adminq_task(struct work_struct *work)
- 		if (pending != 0)
- 			memset(event.msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
- 	} while (pending);
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	if ((adapter->flags &
- 	     (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) || @@ -2417,7 +2411,7 @@ static void iavf_client_task(struct work_struct *work)
- 	 * later.
- 	 */
- 
--	if (test_and_set_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section))
-+	if (!mutex_trylock(&adapter->client_lock))
- 		return;
- 
- 	if (adapter->flags & IAVF_FLAG_SERVICE_CLIENT_REQUESTED) { @@ -2440,7 +2434,7 @@ static void iavf_client_task(struct work_struct *work)
- 		adapter->flags &= ~IAVF_FLAG_CLIENT_NEEDS_OPEN;
- 	}
- out:
--	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->client_lock);
- }
- 
- /**
-@@ -3043,8 +3037,7 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
- 	if (!filter)
- 		return -ENOMEM;
- 
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section)) {
-+	while (!mutex_trylock(&adapter->crit_lock)) {
- 		if (--count == 0)
- 			goto err;
- 		udelay(1);
-@@ -3075,7 +3068,7 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
- 	if (err)
- 		kfree(filter);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 	return err;
- }
- 
-@@ -3222,8 +3215,7 @@ static int iavf_open(struct net_device *netdev)
- 		return -EIO;
- 	}
- 
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section))
-+	while (!mutex_trylock(&adapter->crit_lock))
- 		usleep_range(500, 1000);
- 
- 	if (adapter->state != __IAVF_DOWN) {
-@@ -3258,7 +3250,7 @@ static int iavf_open(struct net_device *netdev)
- 
- 	iavf_irq_enable(adapter, true);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	return 0;
- 
-@@ -3270,7 +3262,7 @@ static int iavf_open(struct net_device *netdev)
- err_setup_tx:
- 	iavf_free_all_tx_resources(adapter);
- err_unlock:
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	return err;
- }
-@@ -3294,8 +3286,7 @@ static int iavf_close(struct net_device *netdev)
- 	if (adapter->state <= __IAVF_DOWN_PENDING)
- 		return 0;
- 
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section))
-+	while (!mutex_trylock(&adapter->crit_lock))
- 		usleep_range(500, 1000);
- 
- 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state); @@ -3306,7 +3297,7 @@ static int iavf_close(struct net_device *netdev)
- 	adapter->state = __IAVF_DOWN_PENDING;
- 	iavf_free_traffic_irqs(adapter);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	/* We explicitly don't free resources here because the hardware is
- 	 * still active and can DMA into memory. Resources are cleared in @@ -3655,8 +3646,8 @@ static void iavf_init_task(struct work_struct *work)
- 						    init_task.work);
- 	struct iavf_hw *hw = &adapter->hw;
- 
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000)) {
--		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
-+	if (iavf_lock_timeout(&adapter->crit_lock, 5000)) {
-+		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
-+__FUNCTION__);
- 		return;
- 	}
- 	switch (adapter->state) {
-@@ -3691,7 +3682,7 @@ static void iavf_init_task(struct work_struct *work)
- 	}
- 	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
- out:
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- }
- 
- /**
-@@ -3708,12 +3699,12 @@ static void iavf_shutdown(struct pci_dev *pdev)
- 	if (netif_running(netdev))
- 		iavf_close(netdev);
- 
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
--		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
-+	if (iavf_lock_timeout(&adapter->crit_lock, 5000))
-+		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
-+__FUNCTION__);
- 	/* Prevent the watchdog from running. */
- 	adapter->state = __IAVF_REMOVE;
- 	adapter->aq_required = 0;
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- #ifdef CONFIG_PM
- 	pci_save_state(pdev);
-@@ -3807,6 +3798,9 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* set up the locks for the AQ, do this only once in probe
- 	 * and destroy them only once in remove
- 	 */
-+	mutex_init(&adapter->crit_lock);
-+	mutex_init(&adapter->client_lock);
-+	mutex_init(&adapter->remove_lock);
- 	mutex_init(&hw->aq.asq_mutex);
- 	mutex_init(&hw->aq.arq_mutex);
- 
-@@ -3858,8 +3852,7 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
- 
- 	netif_device_detach(netdev);
- 
--	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
--				&adapter->crit_section))
-+	while (!mutex_trylock(&adapter->crit_lock))
- 		usleep_range(500, 1000);
- 
- 	if (netif_running(netdev)) {
-@@ -3870,7 +3863,7 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
- 	iavf_free_misc_irq(adapter);
- 	iavf_reset_interrupt_capability(adapter);
- 
--	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
-+	mutex_unlock(&adapter->crit_lock);
- 
- 	return 0;
- }
-@@ -3932,7 +3925,7 @@ static void iavf_remove(struct pci_dev *pdev)
- 	struct iavf_hw *hw = &adapter->hw;
- 	int err;
- 	/* Indicate we are in remove and not to run reset_task */
--	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
-+	mutex_lock(&adapter->remove_lock);
- 	cancel_delayed_work_sync(&adapter->init_task);
- 	cancel_work_sync(&adapter->reset_task);
- 	cancel_delayed_work_sync(&adapter->client_task);
-@@ -3954,8 +3947,8 @@ static void iavf_remove(struct pci_dev *pdev)
- 		iavf_request_reset(adapter);
- 		msleep(50);
- 	}
--	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
--		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
-+	if (iavf_lock_timeout(&adapter->crit_lock, 5000))
-+		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
-+__FUNCTION__);
- 
- 	/* Shut down all the garbage mashers on the detention level */
- 	adapter->state = __IAVF_REMOVE;
-@@ -3980,6 +3973,11 @@ static void iavf_remove(struct pci_dev *pdev)
- 	/* destroy the locks only once, here */
- 	mutex_destroy(&hw->aq.arq_mutex);
- 	mutex_destroy(&hw->aq.asq_mutex);
-+	mutex_destroy(&adapter->client_lock);
-+	mutex_unlock(&adapter->crit_lock);
-+	mutex_destroy(&adapter->crit_lock);
-+	mutex_unlock(&adapter->remove_lock);
-+	mutex_destroy(&adapter->remove_lock);
- 
- 	iounmap(hw->hw_addr);
- 	pci_release_regions(pdev);
---
-2.31.1
-
-Tested-by: Marek Szlosek <marek.szlosek@intel.com>
+Regards
+Maciek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
