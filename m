@@ -1,85 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61E9C3EEDBA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 15:49:47 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE76B3EED27
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 15:16:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E915F80BD0;
-	Tue, 17 Aug 2021 13:49:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A75A40540;
+	Tue, 17 Aug 2021 13:16:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C9859otNvYc0; Tue, 17 Aug 2021 13:49:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Wqj9HDCODJsp; Tue, 17 Aug 2021 13:16:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F5CC80BE2;
-	Tue, 17 Aug 2021 13:49:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6E82940495;
+	Tue, 17 Aug 2021 13:16:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3696E1BF396
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:54:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D92791BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 13:16:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3252060600
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:54:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C634B40153
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 13:16:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=bytedance-com.20150623.gappssmtp.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6UKlZfjkc1WW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Aug 2021 07:54:20 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
- [IPv6:2607:f8b0:4864:20::102d])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 85A22605D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:54:20 +0000 (UTC)
-Received: by mail-pj1-x102d.google.com with SMTP id oa17so30852406pjb.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 00:54:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ypyY+Uqc+Z2ZZW93qVfCBhIjoZdHXKViPbFJWksLXyw=;
- b=zT3Q4BfuKTe1/h5Cue4i0alXI++5/qEOTcetPdbWNDd5BT1u+30szX/nxKKtPTtRYq
- OyAMbpKI3Pg3UuoEf8zSfz6l9unAlkyNJaeaL3Xtfq1lTw68wHfq2l5ruVozMW+e3H52
- //iG+wCIP7yoaBRB2Bc+mMrPeNGQPH+vJ2ydbT8NyCMra+lTstYuSk5bYmajOJPHvjwW
- syFKeRkNKYYmkpMX7lrasN2P2JdkhYdVrOpwCgSRSMGehDR0zc1MIyqbBoYgifWtf5w+
- Xkad6k7S9ga6IAk/T00DYnvU0m0R+x5RFYEcaAy6pX4GZh6vVWY39lEgGhJivvRbS/TO
- +IIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ypyY+Uqc+Z2ZZW93qVfCBhIjoZdHXKViPbFJWksLXyw=;
- b=DcaF+8s2cohwBv8LUr482beBRavJY/jT9h7cxxpqU3HLjmcQIxTn/kpnOo7R3MXQ4P
- +FpWY66lZwreED7pi5cgHyw74d7t2kWcep/bw5zP4eGQ5NN4ANZqweF8HVr4ApJ/YR0N
- uqIdS37U8l4G06BFzgb61t7bgEoRhtWf+VazOWKjIEC0olVV9oTpOLa0AsLUutcm4Zh9
- KCsZPuAiRYqT359KQn42FzIR+fLwL6sf5Q4Pqi9vPpAyQlx7g0mFK7amw//2XD+Guew/
- tyy+kGorYE4z9lxndejGIPP+NNJt1J4WhzDaTYp9u5dyGXzD4rE7VaenhDfNUNd1lHqk
- SlfA==
-X-Gm-Message-State: AOAM531dUViF2AmnRur/plkXXVDHi5IGBrYRGQehfpozU0z8HSFIhPFH
- nI01vtQ4cuQcSAJNrw4KslqeLg==
-X-Google-Smtp-Source: ABdhPJye1vzAfWWx07/uMcHku/JU3zMK/QgXPEu+ekIr4KWMO6ud6T6xHHof6LTdTXnfKmiOfg5fCw==
-X-Received: by 2002:aa7:800b:0:b029:330:455f:57a8 with SMTP id
- j11-20020aa7800b0000b0290330455f57a8mr2381541pfi.7.1629186859912; 
- Tue, 17 Aug 2021 00:54:19 -0700 (PDT)
-Received: from FVFX41FWHV2J.bytedance.net ([139.177.225.231])
- by smtp.gmail.com with ESMTPSA id j6sm1722212pgh.17.2021.08.17.00.54.12
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 17 Aug 2021 00:54:19 -0700 (PDT)
-From: Feng zhou <zhoufeng.zf@bytedance.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, ast@kernel.org, daniel@iogearbox.net,
- hawk@kernel.org, john.fastabend@gmail.com, jeffrey.t.kirsher@intel.com,
- magnus.karlsson@intel.com
-Date: Tue, 17 Aug 2021 15:54:07 +0800
-Message-Id: <20210817075407.11961-1-zhoufeng.zf@bytedance.com>
-X-Mailer: git-send-email 2.27.0
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RQsU62cKGXLr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Aug 2021 13:16:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E4A8A40018
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 13:16:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1629206184;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=tY2DkNn1KWzfNwhYq4xPDtbKiq0jqQ/cJFXAjPSHimo=;
+ b=To9yEl0A9jiaN4vBRz4EmUYZCpBAb9q2BKJhqIMgUPjwalHpW4Ajls55GApcFyX+nVu50b
+ zTf1LI7/2i25jT4bS92Z792hZ6kwYZNnJIHkt3osu4knEZVYXLAPymx7TKsl/m3YWlAq+Q
+ d3GOScGyc/dT8C9MagiZc3mzlGse77M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-193-1610L80ROLGT7-rbfTFT7A-1; Tue, 17 Aug 2021 09:16:22 -0400
+X-MC-Unique: 1610L80ROLGT7-rbfTFT7A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0948100960A;
+ Tue, 17 Aug 2021 13:16:21 +0000 (UTC)
+Received: from calimero.vinschen.de (ovpn-112-10.ams2.redhat.com
+ [10.36.112.10])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A32C960916;
+ Tue, 17 Aug 2021 13:16:21 +0000 (UTC)
+Received: by calimero.vinschen.de (Postfix, from userid 500)
+ id 3459CA80DE8; Tue, 17 Aug 2021 15:16:20 +0200 (CEST)
+From: Corinna Vinschen <vinschen@redhat.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 17 Aug 2021 15:16:20 +0200
+Message-Id: <20210817131620.566614-1-vinschen@redhat.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 17 Aug 2021 13:49:34 +0000
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix NULL pointer dereference in
- ixgbe_xdp_setup
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Subject: [Intel-wired-lan] [PATCH] igc: fix tunnel offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,100 +78,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: duanxiongchun@bytedance.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, zhengqi.arch@bytedance.com,
- chenying.kernel@bytedance.com, intel-wired-lan@lists.osuosl.org,
- songmuchun@bytedance.com, zhoufeng.zf@bytedance.com, bpf@vger.kernel.org,
- wangdongdong.6@bytedance.com, zhouchengming@bytedance.com
+Cc: netdev@vger.kernel.org, pabeni@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Feng Zhou <zhoufeng.zf@bytedance.com>
+From: Paolo Abeni <pabeni@redhat.com>
 
-The ixgbe driver currently generates a NULL pointer dereference with
-some machine (online cpus < 63). This is due to the fact that the
-maximum value of num_xdp_queues is nr_cpu_ids. Code is in
-"ixgbe_set_rss_queues"".
+Checking tunnel offloading, it turns out that offloading doesn't work
+as expected.  The following script allows to reproduce the issue.
+Call it as `testscript DEVICE LOCALIP REMOTEIP NETMASK'
 
-Here's how the problem repeats itself:
-Some machine (online cpus < 63), And user set num_queues to 63 through
-ethtool. Code is in the "ixgbe_set_channels",
-adapter->ring_feature[RING_F_FDIR].limit = count;
-It becames 63.
-When user use xdp, "ixgbe_set_rss_queues" will set queues num.
-adapter->num_rx_queues = rss_i;
-adapter->num_tx_queues = rss_i;
-adapter->num_xdp_queues = ixgbe_xdp_queues(adapter);
-And rss_i's value is from
-f = &adapter->ring_feature[RING_F_FDIR];
-rss_i = f->indices = f->limit;
-So "num_rx_queues" > "num_xdp_queues", when run to "ixgbe_xdp_setup",
-for (i = 0; i < adapter->num_rx_queues; i++)
-	if (adapter->xdp_ring[i]->xsk_umem)
-lead to panic.
-Call trace:
-[exception RIP: ixgbe_xdp+368]
-RIP: ffffffffc02a76a0  RSP: ffff9fe16202f8d0  RFLAGS: 00010297
-RAX: 0000000000000000  RBX: 0000000000000020  RCX: 0000000000000000
-RDX: 0000000000000000  RSI: 000000000000001c  RDI: ffffffffa94ead90
-RBP: ffff92f8f24c0c18   R8: 0000000000000000   R9: 0000000000000000
-R10: ffff9fe16202f830  R11: 0000000000000000  R12: ffff92f8f24c0000
-R13: ffff9fe16202fc01  R14: 000000000000000a  R15: ffffffffc02a7530
-ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
- 7 [ffff9fe16202f8f0] dev_xdp_install at ffffffffa89fbbcc
- 8 [ffff9fe16202f920] dev_change_xdp_fd at ffffffffa8a08808
- 9 [ffff9fe16202f960] do_setlink at ffffffffa8a20235
-10 [ffff9fe16202fa88] rtnl_setlink at ffffffffa8a20384
-11 [ffff9fe16202fc78] rtnetlink_rcv_msg at ffffffffa8a1a8dd
-12 [ffff9fe16202fcf0] netlink_rcv_skb at ffffffffa8a717eb
-13 [ffff9fe16202fd40] netlink_unicast at ffffffffa8a70f88
-14 [ffff9fe16202fd80] netlink_sendmsg at ffffffffa8a71319
-15 [ffff9fe16202fdf0] sock_sendmsg at ffffffffa89df290
-16 [ffff9fe16202fe08] __sys_sendto at ffffffffa89e19c8
-17 [ffff9fe16202ff30] __x64_sys_sendto at ffffffffa89e1a64
-18 [ffff9fe16202ff38] do_syscall_64 at ffffffffa84042b9
-19 [ffff9fe16202ff50] entry_SYSCALL_64_after_hwframe at ffffffffa8c0008c
+=== SNIP ===
+if [ $# -ne 4 ]
+then
+  echo "Usage $0 DEVICE LOCALIP REMOTEIP NETMASK"
+  exit 1
+fi
+DEVICE="$1"
+LOCAL_ADDRESS="$2"
+REMOTE_ADDRESS="$3"
+NWMASK="$4"
+echo "Driver: $(ethtool -i ${DEVICE} | awk '/^driver:/{print $2}') "
+ethtool -k "${DEVICE}" | grep tx-udp
+echo
+echo "Set up NIC and tunnel..."
+ip addr add "${LOCAL_ADDRESS}/${NWMASK}" dev "${DEVICE}"
+ip link set "${DEVICE}" up
+sleep 2
+ip link add vxlan1 type vxlan id 42 \
+		   remote "${REMOTE_ADDRESS}" \
+		   local "${LOCAL_ADDRESS}" \
+		   dstport 0 \
+		   dev "${DEVICE}"
+ip addr add fc00::1/64 dev vxlan1
+ip link set vxlan1 up
+sleep 2
+rm -f vxlan.pcap
+echo "Running tcpdump and iperf3..."
+( nohup tcpdump -i any -w vxlan.pcap >/dev/null 2>&1 ) &
+sleep 2
+iperf3 -c fc00::2 >/dev/null
+pkill tcpdump
+echo
+echo -n "Max. Paket Size: "
+tcpdump -r vxlan.pcap -nnle 2>/dev/null \
+| grep "${LOCAL_ADDRESS}.*> ${REMOTE_ADDRESS}.*OTV" \
+| awk '{print $8}' | awk -F ':' '{print $1}' \
+| sort -n | tail -1
+echo
+ip link del vxlan1
+ip addr del ${LOCAL_ADDRESS}/${NWMASK} dev "${DEVICE}"
+=== SNAP ===
 
-Fixes: 4a9b32f30f80 ("ixgbe: fix potential RX buffer starvation for
-AF_XDP")
-Signed-off-by: Feng Zhou <zhoufeng.zf@bytedance.com>
+The expected outcome is
+
+  Max. Paket Size: 64904
+
+This is what you see on igb, the code igc has been taken from.
+However, on igc the output is
+
+  Max. Paket Size: 1516
+
+so the GSO aggregate packets are segmented by the kernel before calling
+igc_xmit_frame.  Inside the subsequent call to igc_tso, the check for
+skb_is_gso(skb) fails and the function returns prematurely.
+
+It turns out that this occurs because the feature flags aren't set
+entirely correctly in igc_probe.  In contrast to the original code
+from igb_probe, igc_probe neglects to set the flags required to allow
+tunnel offloading.
+
+Setting the same flags as igb fixes the issue on igc.
+
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+Tested-by: Corinna Vinschen <vinschen@redhat.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 14aea40da50f..5db496cc5070 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -10112,6 +10112,7 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
- 	struct ixgbe_adapter *adapter = netdev_priv(dev);
- 	struct bpf_prog *old_prog;
- 	bool need_reset;
-+	int num_queues;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index b7aab35c1132..79efb3e6a03e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6264,7 +6264,9 @@ static int igc_probe(struct pci_dev *pdev,
+ 	if (pci_using_dac)
+ 		netdev->features |= NETIF_F_HIGHDMA;
  
- 	if (adapter->flags & IXGBE_FLAG_SRIOV_ENABLED)
- 		return -EINVAL;
-@@ -10161,11 +10162,14 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
- 	/* Kick start the NAPI context if there is an AF_XDP socket open
- 	 * on that queue id. This so that receiving will start.
- 	 */
--	if (need_reset && prog)
--		for (i = 0; i < adapter->num_rx_queues; i++)
-+	if (need_reset && prog) {
-+		num_queues = min_t(int, adapter->num_rx_queues,
-+			adapter->num_xdp_queues);
-+		for (i = 0; i < num_queues; i++)
- 			if (adapter->xdp_ring[i]->xsk_pool)
- 				(void)ixgbe_xsk_wakeup(adapter->netdev, i,
- 						       XDP_WAKEUP_RX);
-+	}
+-	netdev->vlan_features |= netdev->features;
++	netdev->vlan_features |= netdev->features | NETIF_F_TSO_MANGLEID;
++	netdev->mpls_features |= NETIF_F_HW_CSUM;
++	netdev->hw_enc_features |= netdev->vlan_features;
  
- 	return 0;
- }
+ 	/* MTU range: 68 - 9216 */
+ 	netdev->min_mtu = ETH_MIN_MTU;
 -- 
-2.11.0
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
