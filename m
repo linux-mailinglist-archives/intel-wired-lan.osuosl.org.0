@@ -1,56 +1,157 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 108B93EE767
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 09:44:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1A4C3EE858
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Aug 2021 10:23:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9BCDA401CE;
-	Tue, 17 Aug 2021 07:44:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R2YVfYU058qI; Tue, 17 Aug 2021 07:44:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8879B40237;
-	Tue, 17 Aug 2021 07:44:24 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0B5F31BF396
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:44:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E4E7F607F2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:44:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7E08B6081C;
+	Tue, 17 Aug 2021 08:23:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xrzm5_Yvz3sI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Aug 2021 07:44:16 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HuVwG9xuzVV1; Tue, 17 Aug 2021 08:23:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id D42F160802;
+	Tue, 17 Aug 2021 08:23:01 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C28411BF2AE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id B0146402D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wlfhUZaW8280 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Aug 2021 08:22:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D343760594
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 07:44:15 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="279757061"
-X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="279757061"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Aug 2021 00:44:15 -0700
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8085A402A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Aug 2021 08:22:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="203220437"
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="203220437"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Aug 2021 01:22:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="676384587"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 17 Aug 2021 00:44:14 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mFtld-000RWh-Cq; Tue, 17 Aug 2021 07:44:13 +0000
-Date: Tue, 17 Aug 2021 15:44:05 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <611b68c5.fYMd5oVeuoP2S+Em%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="471079997"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by orsmga008.jf.intel.com with ESMTP; 17 Aug 2021 01:22:52 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Tue, 17 Aug 2021 01:22:52 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Tue, 17 Aug 2021 01:22:51 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10 via Frontend Transport; Tue, 17 Aug 2021 01:22:51 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Tue, 17 Aug 2021 01:22:51 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nlXyBi29lWlySqeiCOHQpw/df1/boWj3Ztgy7DLFgXExXZMBIEj77pgJAGBv2SORdk+Xf9ZS7ZZ87vPqV3jgLFySK30K2kw/W066Gmo2x/ISmLRP7gazGFBPJfOkHfi/fx0G/LoMBo0bfljTTACpPXq5D404tgzzmrRpXODA9C4Ta0ScBJuN3om3fJe8z2cqJY1C7fHJyUBJMgl88ayNId4GIuFedti1XTSUjM5jJQD2KjmwErJDdwyX9SGd1kHl3XWmT9UIcZu41HN+RaAoh3jkcICEk7KCs3k8U1BppkTVJy1ueMjtNqDc1U+054lnOe51OgvfdYTlYswd1LoiBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=W1PffyItwalBeaX0Zh61/vv8RFCY50JI6H5bOKIzEYU=;
+ b=RzCBkCMNO+rO7GVPyGev2G7cOQ5XPfIss++BIyl/EkW52r1yWJbdNe3u3HGR3i6WtVq/PTjsoonrIBvhiSRvCad4a0FKdEa8lV3anV4Gxj3AMgN+zaqL6V7BWR4PjlFq3yTJ97uq6JlLUOErLytAq4tQgVKoWEm3KPTzid14L3zAaEKJJn/dN58AAyyyvbTxnA0E9YMVzuTsXhcnUWOgQ4vEOpcNKEWzf7d1xJqVxC9h8Im3D/evCfKkefQ95CoUui3ctiknCvY2PBB3a99Fhn3JMnjdfXtgnKZvlbCqRxOz2WibT1P9ooasZAYj0bEuWXbJLz4QgaxhWPU+r+GeYw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=W1PffyItwalBeaX0Zh61/vv8RFCY50JI6H5bOKIzEYU=;
+ b=CkOr9hGIRRUF9aBvQuhcg1YeT5cJwq5s1Jjx9olD6LpI04ZOFDFXFKEdk49p7oAup+GmNs9lCNOiz1AOAP6khRCWmjpRmqc0Y6SKlbREpE2jgIpHp+yPCe5nfPRhOuXfX91o2rau1CI2gimzvZFbHU9rk5LC7w0mINzGaPAEKwY=
+Received: from BYAPR11MB3079.namprd11.prod.outlook.com (2603:10b6:a03:92::16)
+ by SJ0PR11MB4944.namprd11.prod.outlook.com (2603:10b6:a03:2ae::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.14; Tue, 17 Aug
+ 2021 08:22:51 +0000
+Received: from BYAPR11MB3079.namprd11.prod.outlook.com
+ ([fe80::dcf9:9373:540f:8014]) by BYAPR11MB3079.namprd11.prod.outlook.com
+ ([fe80::dcf9:9373:540f:8014%4]) with mapi id 15.20.4415.024; Tue, 17 Aug 2021
+ 08:22:50 +0000
+From: "Szlosek, Marek" <marek.szlosek@intel.com>
+To: Stefan Assmann <sassmann@kpanic.de>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH net-next] iavf: use mutexes for locking of critical
+ sections
+Thread-Index: AQHXiQn7jwa4jbvQ1EqjxTfrr/4QA6t3bqsg
+Date: Tue, 17 Aug 2021 08:22:50 +0000
+Message-ID: <BYAPR11MB3079F80FB5BAED591DD28125E6FE9@BYAPR11MB3079.namprd11.prod.outlook.com>
+References: <20210804082224.15368-1-sassmann@kpanic.de>
+In-Reply-To: <20210804082224.15368-1-sassmann@kpanic.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: kpanic.de; dkim=none (message not signed)
+ header.d=none;kpanic.de; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 9ce63938-85e0-4354-5589-08d961583413
+x-ms-traffictypediagnostic: SJ0PR11MB4944:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SJ0PR11MB4944EBEC5F03CEE02372AB52E6FE9@SJ0PR11MB4944.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:51;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: cF333TKvKoEPdWp3NVRShMgXfm+nfBeF284Oz3SCVky28S0eb2HUArBKhrvF25U/06+YxeHqvS6+WVIJOF/uPsr+Z0qPteVZLNsOrLF8w6TuK1LnXsw/7eQ0+bkGQ0bGgYZTD3/SVgi+zsJwlyZV23odTZeQW8iKMyLG+R6+5rUOJXTbEnATDHS4xeqt7bdt+bSFi2YImRthR4dJn9pp/lQ2VXGKG4r1T+X5UrVE+IE6P8TET5uYA54CE1top8WI9MouX1CYjth1OVFzYpepjGYaKAujtOcFMHbWvwn3/nX0vF0F4dBAicaWGdTyPrlodo1DWVvwmx92lg6DGQMLivkgCyuj4NVZ2FFyqRFZ+lYa8awtOcVo+H+yIscEFgnC5j33cSIVbZm0yJ1m14Lg6flu5OfIs4fFlLF4XTAJfyo4AVV7Wq1GnP9Hwkcf3GwZSqb3NOkMdND6pLt2uvI5rY+W4jk7oU+f9MbcIA1nfFfGiT4cwLbq1PFwNYn2v+XObPhAOUdIAlwA/a0B9XF6uAkJXN+VdgaUnbKecb7OnFSmd51Qfb7ZrJe5/lQ2X5m+rFmC08CRnNOTZ6OjHel6q3+dIni9XDogn8NRbTKVk7JUpUyGptb/FRbHOIyhv/hguQ29tcpHf/CXRDRIiz3jbeQLjXRmuQGXmlZ0MwVBwVi4rbeNQyXp0ZmR8Zt3z5QQUzfgxf4XrcuprYlOm+Qyk0fwtM6Nq5zb9K4Y41ZPMxkpy735Vsy278WXq/7ZwzBFC/SEZjnRBrqm04lV96KKErwTvQZpp1qbOT+LufT1EI8=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3079.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(376002)(136003)(346002)(396003)(39860400002)(186003)(2906002)(33656002)(6506007)(66446008)(52536014)(64756008)(107886003)(55016002)(316002)(38100700002)(5660300002)(83380400001)(8676002)(122000001)(478600001)(71200400001)(26005)(9686003)(76116006)(54906003)(86362001)(966005)(66476007)(30864003)(8936002)(38070700005)(4326008)(110136005)(7696005)(66946007)(66556008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8XUSw1e116VS465WPhofOY3bMe93m+Cs3syPjKCtv2BMBI9kzgxecE5rVJ1i?=
+ =?us-ascii?Q?bGvWEVXh9JsVIJMK+yWZkj5/l0i3LFajk2wQkopJVbLshpqd4Vkv2bGNuBNt?=
+ =?us-ascii?Q?XbS/DK3MQj51R5FcGuRA0GYeiEnxSB1ppSqJHPiMYKaj73LFzUacPc5BBpiV?=
+ =?us-ascii?Q?tpf43Ch1S3MEtluNMj+TEKnKXzyGSVvg5ttsUCnR/4qLRFnsNtf8tzazdlCd?=
+ =?us-ascii?Q?hGzlxZW1jcmTfWJjTzef2H09f/9c0ikfaDa1koK+NHqz30SsS37gCnWS0pef?=
+ =?us-ascii?Q?v0XQ93CcZaVtyyocaAPlq1AMYA5gB77nRuCnqsLMsvihuTLjqnOw5S3kSC5X?=
+ =?us-ascii?Q?khCJfW/s7UrcWXFXFUa6zWEY2CcHsA/I1nkQugL+9I0CbSCmHKO3ylw2fWZs?=
+ =?us-ascii?Q?/oXMBzn4fElr7WofAXf3Z1pwgBb+y44DFwMBKrdwsFCU92kNVILwFbGqrFlB?=
+ =?us-ascii?Q?R8CfuJWqNKRI19Bvhn10RU17StdNOSXbxEL+1/iIn97Pk607HwsS3F4sSS36?=
+ =?us-ascii?Q?T6CV3LR5KWts9YoOhPh66b0+l/AHNlirLj3eTc3eI5CXm9cNHbxi52eO1zyU?=
+ =?us-ascii?Q?n9N+3C3CJedIHMS8T46DxDYVkr9kqIOJH/fbfk3evyZyrA/wXCwWTFq37TW6?=
+ =?us-ascii?Q?oDyBmZPDpmiDVFRA34Gbu6WLuJXWGSMcmxrHeKGBZsgkBuktFgLk6EPJJZzj?=
+ =?us-ascii?Q?gDBC2TA7HMI6hq5hYo9558WMAsz0YQ6rGOsT59BU/evr9rNn5gvysqLcQ2ZY?=
+ =?us-ascii?Q?XEQnI5xvwVyLxFfmmARdJcd4huu+K5GTeU33HqTcIg/xDH8Ptl2h1IIKilTZ?=
+ =?us-ascii?Q?ncJfh3S08fnwfyOumerz1vW0orPWc9dWH0l5+cAw6QZKKXAy99Sy2406r+yA?=
+ =?us-ascii?Q?XMROXBTp383bXUPVqR2aWfRh3L4J7HEyP/epraceV7FcA1y3X74FtEXtIoxW?=
+ =?us-ascii?Q?fQfXSTZu1chY1v9dbm9Uza4sO7PTJvsKyr7uGZZK4/70aIz2Jy8bPEDaHAbn?=
+ =?us-ascii?Q?vw4glDjwB/4SvfLGwbDC1CIs2+etYybt12Nk5cWmvfKQH8mnUPse0BSBTxUe?=
+ =?us-ascii?Q?15lL92R+IDIvQqHs4Mr9FH/x6GrRGgl+XC4VqAx7PZDb42apgb6RTbUxrk+k?=
+ =?us-ascii?Q?8YJFNeGILgiGauAzlhKS8D5TdbC45jmFTrO+oJ0p9PbjeP9QjgNsPEAbMrUR?=
+ =?us-ascii?Q?6k16UY378DEf1n7skhGj0zpITCYsAi4s5hXO3SrJ9edW3vuPmuWVVwuybB+V?=
+ =?us-ascii?Q?GjBuhS+oRaNsmEzHx+JXJ+YP7c/o5hPKgIXAZh+QQFqgPXSH11/+GtEU+f+U?=
+ =?us-ascii?Q?8Q4PpXOYJ/zNcfa6bL9OrjGB?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 0bbc7ebe6d99111bdd4ea837c0e9101a5a3bc219
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3079.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ce63938-85e0-4354-5589-08d961583413
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Aug 2021 08:22:50.7121 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: CTW3abuHtfAj4NDXgQRoI6KvegEdNwuDe9qKQmMCQG+vUTWq99jonWVtKY+VV2XL4Q4qF4fmtRg1acOZl66vQQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4944
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next] iavf: use mutexes for
+ locking of critical sections
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,125 +164,435 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 0bbc7ebe6d99111bdd4ea837c0e9101a5a3bc219  i40e: Fix ATR queue selection
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org; kuba@kernel.org; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Laba, SlawomirX <slawomirx.laba@intel.com>; Yang, Lihong <lihong.yang@intel.com>; sassmann@kpanic.de
+Subject: [PATCH net-next] iavf: use mutexes for locking of critical sections
 
-elapsed time: 722m
+As follow-up to the discussion with Jakub Kicinski about iavf locking being insufficient [1] convert iavf to use mutexes instead of bitops.
+The locking logic is kept as is, just a drop-in replacement of enum iavf_critical_section_t with separate mutexes.
+The only difference is that the mutexes will be destroyed before the module is unloaded.
 
-configs tested: 95
-configs skipped: 3
+[1] https://lwn.net/ml/netdev/20210316150210.00007249%40intel.com/
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210816
-powerpc                         ps3_defconfig
-powerpc                  mpc866_ads_defconfig
-arm                         lpc18xx_defconfig
-arm                         lubbock_defconfig
-arm                         cm_x300_defconfig
-arm                             pxa_defconfig
-arm                       omap2plus_defconfig
-arm                        spear6xx_defconfig
-powerpc                       maple_defconfig
-arm                       imx_v4_v5_defconfig
-arm                         axm55xx_defconfig
-powerpc                   lite5200b_defconfig
-arm                        mvebu_v7_defconfig
-arm                         mv78xx0_defconfig
-sh                           se7750_defconfig
-powerpc                   bluestone_defconfig
-m68k                       m5208evb_defconfig
-arm                         s5pv210_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20210816
-x86_64               randconfig-a004-20210816
-x86_64               randconfig-a003-20210816
-x86_64               randconfig-a001-20210816
-x86_64               randconfig-a005-20210816
-x86_64               randconfig-a002-20210816
-i386                 randconfig-a004-20210816
-i386                 randconfig-a003-20210816
-i386                 randconfig-a002-20210816
-i386                 randconfig-a001-20210816
-i386                 randconfig-a006-20210816
-i386                 randconfig-a005-20210816
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-i386                 randconfig-c001-20210816
-x86_64               randconfig-a011-20210816
-x86_64               randconfig-a013-20210816
-x86_64               randconfig-a016-20210816
-x86_64               randconfig-a012-20210816
-x86_64               randconfig-a015-20210816
-x86_64               randconfig-a014-20210816
-i386                 randconfig-a011-20210816
-i386                 randconfig-a015-20210816
-i386                 randconfig-a013-20210816
-i386                 randconfig-a014-20210816
-i386                 randconfig-a016-20210816
-i386                 randconfig-a012-20210816
-
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/iavf/iavf.h        |   9 +-
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |  10 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 100 +++++++++---------
+ 3 files changed, 56 insertions(+), 63 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index e8bd04100ecd..b351ad653d12 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -185,12 +185,6 @@ enum iavf_state_t {
+ 	__IAVF_RUNNING,		/* opened, working */
+ };
+ 
+-enum iavf_critical_section_t {
+-	__IAVF_IN_CRITICAL_TASK,	/* cannot be interrupted */
+-	__IAVF_IN_CLIENT_TASK,
+-	__IAVF_IN_REMOVE_TASK,	/* device being removed */
+-};
+-
+ #define IAVF_CLOUD_FIELD_OMAC		0x01
+ #define IAVF_CLOUD_FIELD_IMAC		0x02
+ #define IAVF_CLOUD_FIELD_IVLAN	0x04
+@@ -235,6 +229,9 @@ struct iavf_adapter {
+ 	struct iavf_q_vector *q_vectors;
+ 	struct list_head vlan_filter_list;
+ 	struct list_head mac_filter_list;
++	struct mutex crit_lock;
++	struct mutex client_lock;
++	struct mutex remove_lock;
+ 	/* Lock to protect accesses to MAC and VLAN lists */
+ 	spinlock_t mac_vlan_list_lock;
+ 	char misc_vector_name[IFNAMSIZ + 9];
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index af43fbd8cb75..edbeb27213f8 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -1352,8 +1352,7 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
+ 	if (!fltr)
+ 		return -ENOMEM;
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section)) {
++	while (!mutex_trylock(&adapter->crit_lock)) {
+ 		if (--count == 0) {
+ 			kfree(fltr);
+ 			return -EINVAL;
+@@ -1378,7 +1377,7 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
+ 	if (err && fltr)
+ 		kfree(fltr);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 	return err;
+ }
+ 
+@@ -1563,8 +1562,7 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
+ 		return -EINVAL;
+ 	}
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section)) {
++	while (!mutex_trylock(&adapter->crit_lock)) {
+ 		if (--count == 0) {
+ 			kfree(rss_new);
+ 			return -EINVAL;
+@@ -1600,7 +1598,7 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
+ 	if (!err)
+ 		mod_delayed_work(iavf_wq, &adapter->watchdog_task, 0);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	if (!rss_new_add)
+ 		kfree(rss_new);
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index fa6cf20da911..cd0a424bd5f4 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -132,21 +132,18 @@ enum iavf_status iavf_free_virt_mem_d(struct iavf_hw *hw,  }
+ 
+ /**
+- * iavf_lock_timeout - try to set bit but give up after timeout
+- * @adapter: board private structure
+- * @bit: bit to set
++ * iavf_lock_timeout - try to lock mutex but give up after timeout
++ * @lock: mutex that should be locked
+  * @msecs: timeout in msecs
+  *
+  * Returns 0 on success, negative on failure
+  **/
+-static int iavf_lock_timeout(struct iavf_adapter *adapter,
+-			     enum iavf_critical_section_t bit,
+-			     unsigned int msecs)
++static int iavf_lock_timeout(struct mutex *lock, unsigned int msecs)
+ {
+ 	unsigned int wait, delay = 10;
+ 
+ 	for (wait = 0; wait < msecs; wait += delay) {
+-		if (!test_and_set_bit(bit, &adapter->crit_section))
++		if (mutex_trylock(lock))
+ 			return 0;
+ 
+ 		msleep(delay);
+@@ -1944,7 +1941,7 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 	struct iavf_hw *hw = &adapter->hw;
+ 	u32 reg_val;
+ 
+-	if (test_and_set_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section))
++	if (!mutex_trylock(&adapter->crit_lock))
+ 		goto restart_watchdog;
+ 
+ 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) @@ -1962,8 +1959,7 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 			adapter->state = __IAVF_STARTUP;
+ 			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
+ 			queue_delayed_work(iavf_wq, &adapter->init_task, 10);
+-			clear_bit(__IAVF_IN_CRITICAL_TASK,
+-				  &adapter->crit_section);
++			mutex_unlock(&adapter->crit_lock);
+ 			/* Don't reschedule the watchdog, since we've restarted
+ 			 * the init task. When init_task contacts the PF and
+ 			 * gets everything set up again, it'll restart the @@ -1973,14 +1969,13 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		}
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+-		clear_bit(__IAVF_IN_CRITICAL_TASK,
+-			  &adapter->crit_section);
++		mutex_unlock(&adapter->crit_lock);
+ 		queue_delayed_work(iavf_wq,
+ 				   &adapter->watchdog_task,
+ 				   msecs_to_jiffies(10));
+ 		goto watchdog_done;
+ 	case __IAVF_RESETTING:
+-		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		mutex_unlock(&adapter->crit_lock);
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
+ 		return;
+ 	case __IAVF_DOWN:
+@@ -2003,7 +1998,7 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		}
+ 		break;
+ 	case __IAVF_REMOVE:
+-		clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++		mutex_unlock(&adapter->crit_lock);
+ 		return;
+ 	default:
+ 		goto restart_watchdog;
+@@ -2025,7 +2020,7 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 	if (adapter->state == __IAVF_RUNNING ||
+ 	    adapter->state == __IAVF_COMM_FAILED)
+ 		iavf_detect_recover_hung(&adapter->vsi);
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ restart_watchdog:
+ 	if (adapter->aq_required)
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, @@ -2089,7 +2084,7 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
+ 	memset(adapter->vf_res, 0, IAVF_VIRTCHNL_VF_RESOURCE_SIZE);
+ 	iavf_shutdown_adminq(&adapter->hw);
+ 	adapter->netdev->flags &= ~IFF_UP;
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 	adapter->flags &= ~IAVF_FLAG_RESET_PENDING;
+ 	adapter->state = __IAVF_DOWN;
+ 	wake_up(&adapter->down_waitqueue);
+@@ -2122,15 +2117,14 @@ static void iavf_reset_task(struct work_struct *work)
+ 	/* When device is being removed it doesn't make sense to run the reset
+ 	 * task, just return in such a case.
+ 	 */
+-	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
++	if (mutex_is_locked(&adapter->remove_lock))
+ 		return;
+ 
+-	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200)) {
++	if (iavf_lock_timeout(&adapter->crit_lock, 200)) {
+ 		schedule_work(&adapter->reset_task);
+ 		return;
+ 	}
+-	while (test_and_set_bit(__IAVF_IN_CLIENT_TASK,
+-				&adapter->crit_section))
++	while (!mutex_trylock(&adapter->client_lock))
+ 		usleep_range(500, 1000);
+ 	if (CLIENT_ENABLED(adapter)) {
+ 		adapter->flags &= ~(IAVF_FLAG_CLIENT_NEEDS_OPEN | @@ -2182,7 +2176,7 @@ static void iavf_reset_task(struct work_struct *work)
+ 		dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
+ 			reg_val);
+ 		iavf_disable_vf(adapter);
+-		clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
++		mutex_unlock(&adapter->client_lock);
+ 		return; /* Do not attempt to reinit. It's dead, Jim. */
+ 	}
+ 
+@@ -2301,13 +2295,13 @@ static void iavf_reset_task(struct work_struct *work)
+ 		adapter->state = __IAVF_DOWN;
+ 		wake_up(&adapter->down_waitqueue);
+ 	}
+-	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->client_lock);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	return;
+ reset_err:
+-	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->client_lock);
++	mutex_unlock(&adapter->crit_lock);
+ 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
+ 	iavf_close(netdev);
+ }
+@@ -2335,7 +2329,7 @@ static void iavf_adminq_task(struct work_struct *work)
+ 	if (!event.msg_buf)
+ 		goto out;
+ 
+-	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200))
++	if (iavf_lock_timeout(&adapter->crit_lock, 200))
+ 		goto freedom;
+ 	do {
+ 		ret = iavf_clean_arq_element(hw, &event, &pending); @@ -2350,7 +2344,7 @@ static void iavf_adminq_task(struct work_struct *work)
+ 		if (pending != 0)
+ 			memset(event.msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
+ 	} while (pending);
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	if ((adapter->flags &
+ 	     (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) || @@ -2417,7 +2411,7 @@ static void iavf_client_task(struct work_struct *work)
+ 	 * later.
+ 	 */
+ 
+-	if (test_and_set_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section))
++	if (!mutex_trylock(&adapter->client_lock))
+ 		return;
+ 
+ 	if (adapter->flags & IAVF_FLAG_SERVICE_CLIENT_REQUESTED) { @@ -2440,7 +2434,7 @@ static void iavf_client_task(struct work_struct *work)
+ 		adapter->flags &= ~IAVF_FLAG_CLIENT_NEEDS_OPEN;
+ 	}
+ out:
+-	clear_bit(__IAVF_IN_CLIENT_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->client_lock);
+ }
+ 
+ /**
+@@ -3043,8 +3037,7 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
+ 	if (!filter)
+ 		return -ENOMEM;
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section)) {
++	while (!mutex_trylock(&adapter->crit_lock)) {
+ 		if (--count == 0)
+ 			goto err;
+ 		udelay(1);
+@@ -3075,7 +3068,7 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
+ 	if (err)
+ 		kfree(filter);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 	return err;
+ }
+ 
+@@ -3222,8 +3215,7 @@ static int iavf_open(struct net_device *netdev)
+ 		return -EIO;
+ 	}
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section))
++	while (!mutex_trylock(&adapter->crit_lock))
+ 		usleep_range(500, 1000);
+ 
+ 	if (adapter->state != __IAVF_DOWN) {
+@@ -3258,7 +3250,7 @@ static int iavf_open(struct net_device *netdev)
+ 
+ 	iavf_irq_enable(adapter, true);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	return 0;
+ 
+@@ -3270,7 +3262,7 @@ static int iavf_open(struct net_device *netdev)
+ err_setup_tx:
+ 	iavf_free_all_tx_resources(adapter);
+ err_unlock:
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	return err;
+ }
+@@ -3294,8 +3286,7 @@ static int iavf_close(struct net_device *netdev)
+ 	if (adapter->state <= __IAVF_DOWN_PENDING)
+ 		return 0;
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section))
++	while (!mutex_trylock(&adapter->crit_lock))
+ 		usleep_range(500, 1000);
+ 
+ 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state); @@ -3306,7 +3297,7 @@ static int iavf_close(struct net_device *netdev)
+ 	adapter->state = __IAVF_DOWN_PENDING;
+ 	iavf_free_traffic_irqs(adapter);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	/* We explicitly don't free resources here because the hardware is
+ 	 * still active and can DMA into memory. Resources are cleared in @@ -3655,8 +3646,8 @@ static void iavf_init_task(struct work_struct *work)
+ 						    init_task.work);
+ 	struct iavf_hw *hw = &adapter->hw;
+ 
+-	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000)) {
+-		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
++	if (iavf_lock_timeout(&adapter->crit_lock, 5000)) {
++		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
++__FUNCTION__);
+ 		return;
+ 	}
+ 	switch (adapter->state) {
+@@ -3691,7 +3682,7 @@ static void iavf_init_task(struct work_struct *work)
+ 	}
+ 	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
+ out:
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ }
+ 
+ /**
+@@ -3708,12 +3699,12 @@ static void iavf_shutdown(struct pci_dev *pdev)
+ 	if (netif_running(netdev))
+ 		iavf_close(netdev);
+ 
+-	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
+-		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
++	if (iavf_lock_timeout(&adapter->crit_lock, 5000))
++		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
++__FUNCTION__);
+ 	/* Prevent the watchdog from running. */
+ 	adapter->state = __IAVF_REMOVE;
+ 	adapter->aq_required = 0;
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ #ifdef CONFIG_PM
+ 	pci_save_state(pdev);
+@@ -3807,6 +3798,9 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	/* set up the locks for the AQ, do this only once in probe
+ 	 * and destroy them only once in remove
+ 	 */
++	mutex_init(&adapter->crit_lock);
++	mutex_init(&adapter->client_lock);
++	mutex_init(&adapter->remove_lock);
+ 	mutex_init(&hw->aq.asq_mutex);
+ 	mutex_init(&hw->aq.arq_mutex);
+ 
+@@ -3858,8 +3852,7 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
+ 
+ 	netif_device_detach(netdev);
+ 
+-	while (test_and_set_bit(__IAVF_IN_CRITICAL_TASK,
+-				&adapter->crit_section))
++	while (!mutex_trylock(&adapter->crit_lock))
+ 		usleep_range(500, 1000);
+ 
+ 	if (netif_running(netdev)) {
+@@ -3870,7 +3863,7 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
+ 	iavf_free_misc_irq(adapter);
+ 	iavf_reset_interrupt_capability(adapter);
+ 
+-	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
++	mutex_unlock(&adapter->crit_lock);
+ 
+ 	return 0;
+ }
+@@ -3932,7 +3925,7 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	struct iavf_hw *hw = &adapter->hw;
+ 	int err;
+ 	/* Indicate we are in remove and not to run reset_task */
+-	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
++	mutex_lock(&adapter->remove_lock);
+ 	cancel_delayed_work_sync(&adapter->init_task);
+ 	cancel_work_sync(&adapter->reset_task);
+ 	cancel_delayed_work_sync(&adapter->client_task);
+@@ -3954,8 +3947,8 @@ static void iavf_remove(struct pci_dev *pdev)
+ 		iavf_request_reset(adapter);
+ 		msleep(50);
+ 	}
+-	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
+-		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
++	if (iavf_lock_timeout(&adapter->crit_lock, 5000))
++		dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n", 
++__FUNCTION__);
+ 
+ 	/* Shut down all the garbage mashers on the detention level */
+ 	adapter->state = __IAVF_REMOVE;
+@@ -3980,6 +3973,11 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	/* destroy the locks only once, here */
+ 	mutex_destroy(&hw->aq.arq_mutex);
+ 	mutex_destroy(&hw->aq.asq_mutex);
++	mutex_destroy(&adapter->client_lock);
++	mutex_unlock(&adapter->crit_lock);
++	mutex_destroy(&adapter->crit_lock);
++	mutex_unlock(&adapter->remove_lock);
++	mutex_destroy(&adapter->remove_lock);
+ 
+ 	iounmap(hw->hw_addr);
+ 	pci_release_regions(pdev);
+--
+2.31.1
+
+Tested-by: Marek Szlosek <marek.szlosek@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
