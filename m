@@ -1,56 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2817D3EFA03
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Aug 2021 07:24:52 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47BC93EFEB5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Aug 2021 10:08:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B0E4380C6D;
-	Wed, 18 Aug 2021 05:24:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D8B6240474;
+	Wed, 18 Aug 2021 08:08:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZdPjnD56heks; Wed, 18 Aug 2021 05:24:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wYFJJrLCRrkn; Wed, 18 Aug 2021 08:07:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 98E7F80C10;
-	Wed, 18 Aug 2021 05:24:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 08A1E40019;
+	Wed, 18 Aug 2021 08:07:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CAA131BF954
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 05:24:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B2691BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 08:07:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B865D40178
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 05:24:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EC71E401CD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 08:07:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b0lahtFuftIH for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Aug 2021 05:24:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xzB64J14jQGI for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Aug 2021 08:07:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A23E44021A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 05:24:33 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10079"; a="279994309"
-X-IronPort-AV: E=Sophos;i="5.84,330,1620716400"; d="scan'208";a="279994309"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Aug 2021 22:24:32 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D4582401B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Aug 2021 08:07:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10079"; a="277302939"
+X-IronPort-AV: E=Sophos;i="5.84,330,1620716400"; d="scan'208";a="277302939"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2021 01:07:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,330,1620716400"; d="scan'208";a="488298664"
-Received: from lkp-server01.sh.intel.com (HELO d053b881505b) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 17 Aug 2021 22:24:31 -0700
-Received: from kbuild by d053b881505b with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mGE3z-000Scw-2M; Wed, 18 Aug 2021 05:24:31 +0000
-Date: Wed, 18 Aug 2021 13:23:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <611c995a.aHGaX9HzUjw9EAt+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.84,330,1620716400"; d="scan'208";a="510768096"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by fmsmga004.fm.intel.com with ESMTP; 18 Aug 2021 01:07:47 -0700
+Date: Wed, 18 Aug 2021 09:52:56 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Message-ID: <20210818075256.GA16780@ranger.igk.intel.com>
+References: <20210814140812.46632-1-maciej.fijalkowski@intel.com>
+ <86e7bcc04d8211fe5796bd7ecbea9458a725ad03.camel@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- c81eb2249a9350386b983130a97df993117fbff4
+Content-Disposition: inline
+In-Reply-To: <86e7bcc04d8211fe5796bd7ecbea9458a725ad03.camel@intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH v5 intel-next 0/9] XDP_TX improvements
+ for ice
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,152 +64,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "joamaki@gmail.com" <joamaki@gmail.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "toke@redhat.com" <toke@redhat.com>, "bjorn@kernel.org" <bjorn@kernel.org>,
+ "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: c81eb2249a9350386b983130a97df993117fbff4  i40e: Fix ATR queue selection
+On Tue, Aug 17, 2021 at 09:59:01PM +0100, Nguyen, Anthony L wrote:
+> On Sat, 2021-08-14 at 16:08 +0200, Maciej Fijalkowski wrote:
+> > With the v5, I think it's time for a proper change log.
+> 
+> This isn't applying to the Intel-wired-LAN tree. If you want it to go
+> through there, could you base the patches on that tree?
 
-elapsed time: 723m
+Interestingly this is the first time that happens to me and I always based
+my XDP related driver work on bpf-next.
 
-configs tested: 123
-configs skipped: 4
+iwl tree is some standalone tree or is it just the net-next ?
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> 
+> Also, looking at NIPA, it looks like patches 2 and 3 have kdoc issues.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210816
-powerpc                     pq2fads_defconfig
-powerpc                      walnut_defconfig
-powerpc                       holly_defconfig
-arm                             ezx_defconfig
-powerpc                     mpc512x_defconfig
-xtensa                  nommu_kc705_defconfig
-arm                         at91_dt_defconfig
-mips                     loongson1c_defconfig
-mips                          rb532_defconfig
-mips                       bmips_be_defconfig
-arm                            dove_defconfig
-sh                     magicpanelr2_defconfig
-powerpc                      mgcoge_defconfig
-arc                         haps_hs_defconfig
-arm                       aspeed_g5_defconfig
-powerpc                mpc7448_hpc2_defconfig
-ia64                             alldefconfig
-powerpc                   microwatt_defconfig
-arm                  colibri_pxa270_defconfig
-um                               alldefconfig
-sh                           se7721_defconfig
-sh                          rsk7201_defconfig
-sh                          r7780mp_defconfig
-x86_64                           alldefconfig
-mips                        jmr3927_defconfig
-powerpc                      acadia_defconfig
-mips                   sb1250_swarm_defconfig
-sh                           se7724_defconfig
-powerpc                        cell_defconfig
-openrisc                 simple_smp_defconfig
-mips                        vocore2_defconfig
-powerpc                        icon_defconfig
-powerpc                       maple_defconfig
-powerpc                     tqm8541_defconfig
-arm                           sama5_defconfig
-arm                           u8500_defconfig
-sparc                       sparc32_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20210816
-x86_64               randconfig-a004-20210816
-x86_64               randconfig-a003-20210816
-x86_64               randconfig-a001-20210816
-x86_64               randconfig-a005-20210816
-x86_64               randconfig-a002-20210816
-i386                 randconfig-a004-20210816
-i386                 randconfig-a003-20210816
-i386                 randconfig-a002-20210816
-i386                 randconfig-a001-20210816
-i386                 randconfig-a006-20210816
-i386                 randconfig-a005-20210816
-i386                 randconfig-a011-20210817
-i386                 randconfig-a015-20210817
-i386                 randconfig-a014-20210817
-i386                 randconfig-a013-20210817
-i386                 randconfig-a016-20210817
-i386                 randconfig-a012-20210817
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+Yeah I saw kdoc issue on patch 3 and wanted to ask you to fix this if you
+would be applying that set but given that you're asking for a re-submit
+i'll fix those by myself.
 
-clang tested configs:
-i386                 randconfig-a004-20210817
-i386                 randconfig-a006-20210817
-i386                 randconfig-a005-20210817
-x86_64               randconfig-a011-20210816
-x86_64               randconfig-a013-20210816
-x86_64               randconfig-a016-20210816
-x86_64               randconfig-a012-20210816
-x86_64               randconfig-a015-20210816
-x86_64               randconfig-a014-20210816
-i386                 randconfig-a011-20210816
-i386                 randconfig-a015-20210816
-i386                 randconfig-a013-20210816
-i386                 randconfig-a014-20210816
-i386                 randconfig-a016-20210816
-i386                 randconfig-a012-20210816
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> 
+> Thanks,
+> Tony
+> 
+> > v4->v5:
+> > * fix issues pointed by lkp; variables used for updating ring stats
+> >   could be un-inited
+> > * s/ice_ring/ice_rx_ring; it looks now symmetric given that we have
+> >   ice_tx_ring struct dedicated for Tx ring
+> > * go through the code and use ice_for_each_* macros; it was spotted
+> > by
+> >   Brett that there was a place around that code that this set is
+> >   touching that was not using the ice_for_each_txq. Turned out that
+> > there
+> >   were more such places
+> > * take care of coalesce related code; carry the info about type of
+> > ring
+> >   container in ice_ring_container
+> > * pull out getting rid of @ring_active onto separate patch, as
+> > suggested
+> >   by Brett
+> >
+> > v3->v4:
+> > * fix lkp issues;
+> >
+> > v2->v3:
+> > * improve XDP_TX in a proper way
+> > * split ice_ring
+> > * propagate XDP ring pointer to Rx ring
+> >
+> > v1->v2:
+> > * try to improve XDP_TX processing
+> >
+> > v4 :
+> > https://lore.kernel.org/bpf/20210806095539.34423-1-maciej.fijalkowski@intel.com/
+> > v3 :
+> > https://lore.kernel.org/bpf/20210805230046.28715-1-maciej.fijalkowski@intel.com/
+> > v2 :
+> > https://lore.kernel.org/bpf/20210705164338.58313-1-maciej.fijalkowski@intel.com/
+> > v1 :
+> > https://lore.kernel.org/bpf/20210601113236.42651-1-maciej.fijalkowski@intel.com/
+> >
+> > Thanks!
+> > Maciej
+> >
+> > Maciej Fijalkowski (9):
+> >   ice: remove ring_active from ice_ring
+> >   ice: move ice_container_type onto ice_ring_container
+> >   ice: split ice_ring onto Tx/Rx separate structs
+> >   ice: unify xdp_rings accesses
+> >   ice: do not create xdp_frame on XDP_TX
+> >   ice: propagate xdp_ring onto rx_ring
+> >   ice: optimize XDP_TX workloads
+> >   ice: introduce XDP_TX fallback path
+> >   ice: make use of ice_for_each_* macros
+> >
+> >  drivers/net/ethernet/intel/ice/ice.h          |  41 +++-
+> >  drivers/net/ethernet/intel/ice/ice_arfs.c     |   2 +-
+> >  drivers/net/ethernet/intel/ice/ice_base.c     |  51 ++---
+> >  drivers/net/ethernet/intel/ice/ice_base.h     |   8 +-
+> >  drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   9 +-
+> >  drivers/net/ethernet/intel/ice/ice_dcb_lib.h  |  10 +-
+> >  drivers/net/ethernet/intel/ice/ice_ethtool.c  |  93 +++++----
+> >  drivers/net/ethernet/intel/ice/ice_lib.c      |  88 +++++----
+> >  drivers/net/ethernet/intel/ice/ice_lib.h      |   6 +-
+> >  drivers/net/ethernet/intel/ice/ice_main.c     | 142 +++++++++-----
+> >  drivers/net/ethernet/intel/ice/ice_ptp.c      |   2 +-
+> >  drivers/net/ethernet/intel/ice/ice_ptp.h      |   4 +-
+> >  drivers/net/ethernet/intel/ice/ice_trace.h    |  28 +--
+> >  drivers/net/ethernet/intel/ice/ice_txrx.c     | 183 +++++++++++-----
+> > --
+> >  drivers/net/ethernet/intel/ice/ice_txrx.h     | 126 +++++++-----
+> >  drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  98 ++++++++--
+> >  drivers/net/ethernet/intel/ice/ice_txrx_lib.h |  14 +-
+> >  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |   2 +-
+> >  drivers/net/ethernet/intel/ice/ice_xsk.c      |  70 ++++---
+> >  drivers/net/ethernet/intel/ice/ice_xsk.h      |  20 +-
+> >  20 files changed, 607 insertions(+), 390 deletions(-)
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
