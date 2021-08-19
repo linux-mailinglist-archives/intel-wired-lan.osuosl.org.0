@@ -1,55 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51D8F3F1902
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Aug 2021 14:16:10 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F7B93F1CE9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Aug 2021 17:34:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED9F6407D7;
-	Thu, 19 Aug 2021 12:16:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 72218404E5;
+	Thu, 19 Aug 2021 15:34:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O5exvWTXkmrL; Thu, 19 Aug 2021 12:16:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OPgRblWl-yC6; Thu, 19 Aug 2021 15:34:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C5A2407CA;
-	Thu, 19 Aug 2021 12:16:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 05498404BD;
+	Thu, 19 Aug 2021 15:34:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DC8E11BF280
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 12:15:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 353AC1BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 15:34:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D8EC7606EF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 12:15:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2938040198
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 15:34:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WatHn0WIO0QH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Aug 2021 12:15:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 00A7A606C8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 12:15:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10080"; a="280275762"
-X-IronPort-AV: E=Sophos;i="5.84,334,1620716400"; d="scan'208";a="280275762"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2021 05:15:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,334,1620716400"; d="scan'208";a="532195271"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga002.fm.intel.com with ESMTP; 19 Aug 2021 05:15:39 -0700
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 19 Aug 2021 14:00:04 +0200
-Message-Id: <20210819120004.34392-10-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210819120004.34392-1-maciej.fijalkowski@intel.com>
-References: <20210819120004.34392-1-maciej.fijalkowski@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jFn8gb4_E5pH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Aug 2021 15:34:18 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
+ [IPv6:2607:f8b0:4864:20::634])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7BA3E40151
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 15:34:18 +0000 (UTC)
+Received: by mail-pl1-x634.google.com with SMTP id q2so4101074plr.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 08:34:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Yf76Syz4brtNT2TPVq7X0dadrTNOLoFmj1QJaJIiTh0=;
+ b=cAJ6RiRT86QPYqR0X26s7mSswyRpVowPuUsENIZx1l6egJXH0ozLyWgnnWjt2u7puP
+ UJWhVXiq3RHn27K0KkiDtwEZxSo8ZCNpAIkf0kSPeuy1IelUA66tK+LhJQsoJbFUlVG1
+ Ei9sPJmvHZqgJB2/JjS5mTmtWKYnUHZcmpUDn2L4ztjC8CGx47AvJHsDoApVN9uEQI2I
+ CU1LH353mENYzuk5uHHyU3JqmU2mU4l0xz02sn8fI5gb2I3pEH4ei18k2xQQSKRT5AG0
+ +9sPyqv5HD5VAxy2VxYFz2EKqap3RLoSGSCR1Xelpi/giM9T9y2pe7KsSwZcMNgVa9tX
+ 1b6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Yf76Syz4brtNT2TPVq7X0dadrTNOLoFmj1QJaJIiTh0=;
+ b=KP0wvWzPOCvp7HyPC5SLMevuxJBjOvxOW4EsPk6diEc4OIQbfzsAhraiLJodMhHCS3
+ cA+0roXeqdbq6/pCOEQP2/3FsHZR8gx7fUwvp/EwenZ0DufIwfJyZ7cNgsAPPfEAAJ8C
+ 4/em+PtSCIDI+L4TxoyONG5hRFOgeHAWuW5q7qEclt3P4F5npUZmqTkX6pfAxxTGHhDQ
+ KGuimBavCx5HG0QtuWDi1RwO0ssdzpm1/KCooStw9dsgCQBDEP7nXs4KtE877hUFfdgI
+ HWKs5dbyY4b+x/PVtZvtnFr5G//wKvReMhLpBPsGiaBHErtgHHvbvMwV3rWZX7cgPamY
+ T29Q==
+X-Gm-Message-State: AOAM5321PGnb44Yusq3tCX198CVolWEofAyi2JYGuINhzs0suljNVF2n
+ Eyh+Ax2roHRl0xDGfrIHTH8=
+X-Google-Smtp-Source: ABdhPJzyiL3n2Xh1QDko3bDrys5TfB9fCfpwSIu0S/f9HqoWzmiD8ThaywV883OAlAo1goG1/F5lcg==
+X-Received: by 2002:a17:902:8c81:b029:12c:ee37:3f58 with SMTP id
+ t1-20020a1709028c81b029012cee373f58mr12328918plo.45.1629387257981; 
+ Thu, 19 Aug 2021 08:34:17 -0700 (PDT)
+Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id t13sm3532881pjg.25.2021.08.19.08.34.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Aug 2021 08:34:17 -0700 (PDT)
+Date: Thu, 19 Aug 2021 08:34:14 -0700
+From: Richard Cochran <richardcochran@gmail.com>
+To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+Message-ID: <20210819153414.GC26242@hoboy.vegasvil.org>
+References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+ <20210816235400.GA24680@hoboy.vegasvil.org>
+ <PH0PR11MB4951762ECB04D90D634E905DEAFE9@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210818170259.GD9992@hoboy.vegasvil.org>
+ <PH0PR11MB495162EC9116F197D79589F5EAFF9@PH0PR11MB4951.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v7 intel-next 9/9] ice: make use of
- ice_for_each_* macros
+Content-Disposition: inline
+In-Reply-To: <PH0PR11MB495162EC9116F197D79589F5EAFF9@PH0PR11MB4951.namprd11.prod.outlook.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
+ acquiring DPLL state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,283 +93,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: joamaki@gmail.com, alexandr.lobakin@intel.com, netdev@vger.kernel.org,
- toke@redhat.com, bjorn@kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
- davem@davemloft.net, magnus.karlsson@intel.com
+Cc: "cong.wang@bytedance.com" <cong.wang@bytedance.com>, "Stanton,
+ Kevin B" <kevin.b.stanton@intel.com>, "arnd@arndb.de" <arnd@arndb.de>,
+ "gustavoars@kernel.org" <gustavoars@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Bross,
+ Kevin" <kevin.bross@intel.com>,
+ "colin.king@canonical.com" <colin.king@canonical.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "nikolay@nvidia.com" <nikolay@nvidia.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>, "shuah@kernel.org" <shuah@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, Ahmad Byagowi <abyagowi@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Go through the code base and use ice_for_each_* macros.  While at it,
-introduce ice_for_each_xdp_txq() macro that can be used for looping over
-xdp_rings array.
+On Wed, Aug 18, 2021 at 10:36:03PM +0000, Machnikowski, Maciej wrote:
 
-Commit is not introducing any new functionality.
+> OK, Let's take a step back and forget about SyncE. 
 
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h         |  5 ++++-
- drivers/net/ethernet/intel/ice/ice_arfs.c    |  2 +-
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  4 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 ++++-----
- drivers/net/ethernet/intel/ice/ice_lib.c     | 22 ++++++++++----------
- drivers/net/ethernet/intel/ice/ice_main.c    | 14 ++++++-------
- 6 files changed, 30 insertions(+), 27 deletions(-)
+Ahem, the title of this series is:
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 7a489381dbe2..62d00c82cf2d 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -125,10 +125,13 @@
- #define ice_for_each_vsi(pf, i) \
- 	for ((i) = 0; (i) < (pf)->num_alloc_vsi; (i)++)
- 
--/* Macros for each Tx/Rx ring in a VSI */
-+/* Macros for each Tx/Xdp/Rx ring in a VSI */
- #define ice_for_each_txq(vsi, i) \
- 	for ((i) = 0; (i) < (vsi)->num_txq; (i)++)
- 
-+#define ice_for_each_xdp_txq(vsi, i) \
-+	for ((i) = 0; (i) < (vsi)->num_xdp_txq; (i)++)
-+
- #define ice_for_each_rxq(vsi, i) \
- 	for ((i) = 0; (i) < (vsi)->num_rxq; (i)++)
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_arfs.c b/drivers/net/ethernet/intel/ice/ice_arfs.c
-index 88d98c9e5f91..87f630b73b2b 100644
---- a/drivers/net/ethernet/intel/ice/ice_arfs.c
-+++ b/drivers/net/ethernet/intel/ice/ice_arfs.c
-@@ -614,7 +614,7 @@ int ice_set_cpu_rx_rmap(struct ice_vsi *vsi)
- 		return -EINVAL;
- 
- 	base_idx = vsi->base_vector;
--	for (i = 0; i < vsi->num_q_vectors; i++)
-+	ice_for_each_q_vector(vsi, i)
- 		if (irq_cpu_rmap_add(netdev->rx_cpu_rmap,
- 				     pf->msix_entries[base_idx + i].vector)) {
- 			ice_free_cpu_rx_rmap(vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 4366626e0eb4..4284526e9e24 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -201,11 +201,11 @@ void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi)
- 
- 	if (!test_bit(ICE_FLAG_DCB_ENA, vsi->back->flags)) {
- 		/* Reset the TC information */
--		for (i = 0; i < vsi->num_txq; i++) {
-+		ice_for_each_txq(vsi, i) {
- 			tx_ring = vsi->tx_rings[i];
- 			tx_ring->dcb_tc = 0;
- 		}
--		for (i = 0; i < vsi->num_rxq; i++) {
-+		ice_for_each_rxq(vsi, i) {
- 			rx_ring = vsi->rx_rings[i];
- 			rx_ring->dcb_tc = 0;
- 		}
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 746e0faf5501..cf6b1fbef584 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2756,12 +2756,12 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring)
- 
- 	/* set for the next time the netdev is started */
- 	if (!netif_running(vsi->netdev)) {
--		for (i = 0; i < vsi->alloc_txq; i++)
-+		ice_for_each_alloc_txq(vsi, i)
- 			vsi->tx_rings[i]->count = new_tx_cnt;
--		for (i = 0; i < vsi->alloc_rxq; i++)
-+		ice_for_each_alloc_rxq(vsi, i)
- 			vsi->rx_rings[i]->count = new_rx_cnt;
- 		if (ice_is_xdp_ena_vsi(vsi))
--			for (i = 0; i < vsi->num_xdp_txq; i++)
-+			ice_for_each_xdp_txq(vsi, i)
- 				vsi->xdp_rings[i]->count = new_tx_cnt;
- 		vsi->num_tx_desc = (u16)new_tx_cnt;
- 		vsi->num_rx_desc = (u16)new_rx_cnt;
-@@ -2810,7 +2810,7 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring)
- 		goto free_tx;
- 	}
- 
--	for (i = 0; i < vsi->num_xdp_txq; i++) {
-+	ice_for_each_xdp_txq(vsi, i) {
- 		/* clone ring and setup updated count */
- 		xdp_rings[i] = *vsi->xdp_rings[i];
- 		xdp_rings[i].count = new_tx_cnt;
-@@ -2904,7 +2904,7 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring)
- 		}
- 
- 		if (xdp_rings) {
--			for (i = 0; i < vsi->num_xdp_txq; i++) {
-+			ice_for_each_xdp_txq(vsi, i) {
- 				ice_free_tx_ring(vsi->xdp_rings[i]);
- 				*vsi->xdp_rings[i] = xdp_rings[i];
- 			}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 61152fc78773..f9f060da3f04 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -46,12 +46,12 @@ static int ice_vsi_ctrl_all_rx_rings(struct ice_vsi *vsi, bool ena)
- 	int ret = 0;
- 	u16 i;
- 
--	for (i = 0; i < vsi->num_rxq; i++)
-+	ice_for_each_rxq(vsi, i)
- 		ice_vsi_ctrl_one_rx_ring(vsi, ena, i, false);
- 
- 	ice_flush(&vsi->back->hw);
- 
--	for (i = 0; i < vsi->num_rxq; i++) {
-+	ice_for_each_rxq(vsi, i) {
- 		ret = ice_vsi_wait_one_rx_ring(vsi, ena, i);
- 		if (ret)
- 			break;
-@@ -639,12 +639,12 @@ static void ice_vsi_put_qs(struct ice_vsi *vsi)
- 
- 	mutex_lock(&pf->avail_q_mutex);
- 
--	for (i = 0; i < vsi->alloc_txq; i++) {
-+	ice_for_each_alloc_txq(vsi, i) {
- 		clear_bit(vsi->txq_map[i], pf->avail_txqs);
- 		vsi->txq_map[i] = ICE_INVAL_Q_INDEX;
- 	}
- 
--	for (i = 0; i < vsi->alloc_rxq; i++) {
-+	ice_for_each_alloc_rxq(vsi, i) {
- 		clear_bit(vsi->rxq_map[i], pf->avail_rxqs);
- 		vsi->rxq_map[i] = ICE_INVAL_Q_INDEX;
- 	}
-@@ -1298,7 +1298,7 @@ static void ice_vsi_clear_rings(struct ice_vsi *vsi)
- 	}
- 
- 	if (vsi->tx_rings) {
--		for (i = 0; i < vsi->alloc_txq; i++) {
-+		ice_for_each_alloc_txq(vsi, i) {
- 			if (vsi->tx_rings[i]) {
- 				kfree_rcu(vsi->tx_rings[i], rcu);
- 				WRITE_ONCE(vsi->tx_rings[i], NULL);
-@@ -1306,7 +1306,7 @@ static void ice_vsi_clear_rings(struct ice_vsi *vsi)
- 		}
- 	}
- 	if (vsi->rx_rings) {
--		for (i = 0; i < vsi->alloc_rxq; i++) {
-+		ice_for_each_alloc_rxq(vsi, i) {
- 			if (vsi->rx_rings[i]) {
- 				kfree_rcu(vsi->rx_rings[i], rcu);
- 				WRITE_ONCE(vsi->rx_rings[i], NULL);
-@@ -1327,7 +1327,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 
- 	dev = ice_pf_to_dev(pf);
- 	/* Allocate Tx rings */
--	for (i = 0; i < vsi->alloc_txq; i++) {
-+	ice_for_each_alloc_txq(vsi, i) {
- 		struct ice_tx_ring *ring;
- 
- 		/* allocate with kzalloc(), free with kfree_rcu() */
-@@ -1346,7 +1346,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 	}
- 
- 	/* Allocate Rx rings */
--	for (i = 0; i < vsi->alloc_rxq; i++) {
-+	ice_for_each_alloc_rxq(vsi, i) {
- 		struct ice_rx_ring *ring;
- 
- 		/* allocate with kzalloc(), free with kfree_rcu() */
-@@ -1857,7 +1857,7 @@ int ice_vsi_cfg_xdp_txqs(struct ice_vsi *vsi)
- 	if (ret)
- 		return ret;
- 
--	for (i = 0; i < vsi->num_xdp_txq; i++)
-+	ice_for_each_xdp_txq(vsi, i)
- 		vsi->xdp_rings[i]->xsk_pool = ice_tx_xsk_pool(vsi->xdp_rings[i]);
- 
- 	return ret;
-@@ -1955,7 +1955,7 @@ void ice_vsi_cfg_msix(struct ice_vsi *vsi)
- 	u16 txq = 0, rxq = 0;
- 	int i, q;
- 
--	for (i = 0; i < vsi->num_q_vectors; i++) {
-+	ice_for_each_q_vector(vsi, i) {
- 		struct ice_q_vector *q_vector = vsi->q_vectors[i];
- 		u16 reg_idx = q_vector->reg_idx;
- 
-@@ -2646,7 +2646,7 @@ static void ice_vsi_release_msix(struct ice_vsi *vsi)
- 	u32 rxq = 0;
- 	int i, q;
- 
--	for (i = 0; i < vsi->num_q_vectors; i++) {
-+	ice_for_each_q_vector(vsi, i) {
- 		struct ice_q_vector *q_vector = vsi->q_vectors[i];
- 
- 		ice_write_intrl(q_vector, 0);
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 014762048fcb..59cc7d04ab27 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -103,7 +103,7 @@ static void ice_check_for_hang_subtask(struct ice_pf *pf)
- 
- 	hw = &vsi->back->hw;
- 
--	for (i = 0; i < vsi->num_txq; i++) {
-+	ice_for_each_txq(vsi, i) {
- 		struct ice_tx_ring *tx_ring = vsi->tx_rings[i];
- 
- 		if (tx_ring && tx_ring->desc) {
-@@ -2433,7 +2433,7 @@ static int ice_xdp_alloc_setup_rings(struct ice_vsi *vsi)
- 	struct ice_tx_desc *tx_desc;
- 	int i, j;
- 
--	for (i = 0; i < vsi->num_xdp_txq; i++) {
-+	ice_for_each_xdp_txq(vsi, i) {
- 		u16 xdp_q_idx = vsi->alloc_txq + i;
- 		struct ice_tx_ring *xdp_ring;
- 
-@@ -2582,7 +2582,7 @@ int ice_prepare_xdp_rings(struct ice_vsi *vsi, struct bpf_prog *prog)
- 
- 	return 0;
- clear_xdp_rings:
--	for (i = 0; i < vsi->num_xdp_txq; i++)
-+	ice_for_each_xdp_txq(vsi, i)
- 		if (vsi->xdp_rings[i]) {
- 			kfree_rcu(vsi->xdp_rings[i], rcu);
- 			vsi->xdp_rings[i] = NULL;
-@@ -2590,7 +2590,7 @@ int ice_prepare_xdp_rings(struct ice_vsi *vsi, struct bpf_prog *prog)
- 
- err_map_xdp:
- 	mutex_lock(&pf->avail_q_mutex);
--	for (i = 0; i < vsi->num_xdp_txq; i++) {
-+	ice_for_each_xdp_txq(vsi, i) {
- 		clear_bit(vsi->txq_map[i + vsi->alloc_txq], pf->avail_txqs);
- 		vsi->txq_map[i + vsi->alloc_txq] = ICE_INVAL_Q_INDEX;
- 	}
-@@ -2635,13 +2635,13 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi)
- 
- free_qmap:
- 	mutex_lock(&pf->avail_q_mutex);
--	for (i = 0; i < vsi->num_xdp_txq; i++) {
-+	ice_for_each_xdp_txq(vsi, i) {
- 		clear_bit(vsi->txq_map[i + vsi->alloc_txq], pf->avail_txqs);
- 		vsi->txq_map[i + vsi->alloc_txq] = ICE_INVAL_Q_INDEX;
- 	}
- 	mutex_unlock(&pf->avail_q_mutex);
- 
--	for (i = 0; i < vsi->num_xdp_txq; i++)
-+	ice_for_each_xdp_txq(vsi, i)
- 		if (vsi->xdp_rings[i]) {
- 			if (vsi->xdp_rings[i]->desc)
- 				ice_free_tx_ring(vsi->xdp_rings[i]);
-@@ -7131,7 +7131,7 @@ static void ice_tx_timeout(struct net_device *netdev, unsigned int txqueue)
- 	}
- 
- 	/* now that we have an index, find the tx_ring struct */
--	for (i = 0; i < vsi->num_txq; i++)
-+	ice_for_each_txq(vsi, i)
- 		if (vsi->tx_rings[i] && vsi->tx_rings[i]->desc)
- 			if (txqueue == vsi->tx_rings[i]->q_index) {
- 				tx_ring = vsi->tx_rings[i];
--- 
-2.20.1
+    [RFC net-next 0/7] Add basic SyncE interfaces
 
+I'd be happy to see support for configuring SyncE.
+
+But I guess this series is about something totally different.
+
+
+Thanks,
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
