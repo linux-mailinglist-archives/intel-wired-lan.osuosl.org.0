@@ -1,55 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A35E33F209D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Aug 2021 21:30:17 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AFEA3F21FE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Aug 2021 22:58:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0BD9D4253F;
-	Thu, 19 Aug 2021 19:30:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 294EA613DC;
+	Thu, 19 Aug 2021 20:58:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6Vjp1dFxwbxe; Thu, 19 Aug 2021 19:30:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rq0l5uhDhJIA; Thu, 19 Aug 2021 20:58:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0AE89404C5;
-	Thu, 19 Aug 2021 19:30:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3A3A9613DA;
+	Thu, 19 Aug 2021 20:58:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2C0481BF59F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 19:30:05 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DE7B71BF297
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 20:57:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D7F97424F7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 19:30:03 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CCB9B801DA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 20:57:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OiJ96nEGxYSV for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Aug 2021 19:30:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CVqSAmMmJjSm for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Aug 2021 20:57:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A08A442504
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 19:30:01 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10081"; a="216665557"
-X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="216665557"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2021 12:30:00 -0700
-X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="451749606"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2021 12:29:59 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B0366819F3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Aug 2021 20:57:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10081"; a="277669081"
+X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="277669081"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Aug 2021 13:57:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,335,1620716400"; d="scan'208";a="532656367"
+Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
+ by fmsmga002.fm.intel.com with ESMTP; 19 Aug 2021 13:57:53 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 19 Aug 2021 12:29:59 -0700
-Message-Id: <20210819192959.590146-4-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210819192959.590146-1-jesse.brandeburg@intel.com>
-References: <20210819192959.590146-1-jesse.brandeburg@intel.com>
+Date: Thu, 19 Aug 2021 13:44:49 -0700
+Message-Id: <20210819204449.14148-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 3/3] ice-linux: fix software
- generating extra interrupts
+Subject: [Intel-wired-lan] [PATCH net v2] ice: do not abort devlink info if
+ board identifier can't be found
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,84 +65,47 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver tried to work around missing completion events that occurred
-while interrupts are disabled, by triggering a software interrupt
-whenever we exit polling (but we had to have polled at least once).
+From: Jacob Keller <jacob.e.keller@intel.com>
 
-This was causing a *lot* of extra interrupts for some workloads like
-NVMe over TCP, which resulted in regressions in performance. It was also
-visible when polling didn't prevent interrupts when busy_poll was
-enabled.
+The devlink dev info command reports version information about the
+device and firmware running on the board. This includes the "board.id"
+field which is supposed to represent an identifier of the board design.
+The ice driver uses the Product Board Assembly identifier for this.
 
-Fix the extra interrupts by utilizing our previously unused 3rd ITR
-(interrupt throttle) index and set it to 20K interrupts per second, and
-then trigger a software interrupt within that rate limit.
+In some cases, the PBA is not present in the NVM. If this happens,
+devlink dev info will fail with an error. Instead, modify the
+ice_info_pba function to just exit without filling in the context
+buffer. This will cause the board.id field to be skipped. Log a dev_dbg
+message in case someone wants to confirm why board.id is not showing up
+for them.
 
-While here, slightly refactor the code to avoid an overwrite of a local
-variable in the case of wb_en = true.
-
-Fixes: b7306b42beaf ("ice: manage interrupts during poll exit")
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Fixes: e961b679fb0b ("ice: add board identifier info to devlink .info_get")
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |  1 +
- drivers/net/ethernet/intel/ice/ice_txrx.c     | 26 +++++++++++--------
- 2 files changed, 16 insertions(+), 11 deletions(-)
+v2:
+- Removed refactors - to be submitted later as separate patch to next-queue
+- Changed 'PBA' to 'board identifier' in title
+---
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index ab5065b5e748..d16738a3d3a7 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -183,6 +183,7 @@
- #define GLINT_DYN_CTL_INTERVAL_S		5
- #define GLINT_DYN_CTL_INTERVAL_M		ICE_M(0xFFF, 5)
- #define GLINT_DYN_CTL_SW_ITR_INDX_ENA_M		BIT(24)
-+#define GLINT_DYN_CTL_SW_ITR_INDX_S		25
- #define GLINT_DYN_CTL_SW_ITR_INDX_M		ICE_M(0x3, 25)
- #define GLINT_DYN_CTL_WB_ON_ITR_M		BIT(30)
- #define GLINT_DYN_CTL_INTENA_MSK_M		BIT(31)
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index fec95ea486e4..b95cb4c3d86e 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1323,21 +1323,25 @@ static void ice_enable_interrupt(struct ice_q_vector *q_vector)
- 	if (test_bit(ICE_DOWN, vsi->state))
- 		return;
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index e9c66e99d92d..5a9aa8b26819 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -42,7 +42,9 @@ static int ice_info_pba(struct ice_pf *pf, struct ice_info_ctx *ctx)
  
--	/* When exiting WB_ON_ITR, let ITR resume its normal
--	 * interrupts-enabled path.
-+	/* trigger an ITR delayed software interrupt when exiting busy poll, to
-+	 * make sure to catch any pending cleanups that might have been missed
-+	 * due to interrupt state transition. If busy poll or poll isn't
-+	 * enabled, then don't update ITR, and just enable the interrupt.
- 	 */
--	if (wb_en)
-+	if (!wb_en) {
-+		itr_val = ice_buildreg_itr(ICE_ITR_NONE, 0);
-+	} else {
- 		q_vector->wb_on_itr = false;
+ 	status = ice_read_pba_string(hw, (u8 *)ctx->buf, sizeof(ctx->buf));
+ 	if (status)
+-		return -EIO;
++		/* We failed to locate the PBA, so just skip this entry */
++		dev_dbg(ice_pf_to_dev(pf), "Failed to read Product Board Assembly string, status %s\n",
++			ice_stat_str(status));
  
--	itr_val = ice_buildreg_itr(ICE_ITR_NONE, 0);
--	/* trigger an immediate software interrupt when exiting
--	 * busy poll, to make sure to catch any pending cleanups
--	 * that might have been missed due to interrupt state
--	 * transition.
--	 */
--	if (wb_en) {
-+		/* do two things here with a single write. Set up the third ITR
-+		 * index to be used for software interrupt moderation, and then
-+		 * trigger a software interrupt with a rate limit of 20K on
-+		 * software interrupts, this will help avoid high interrupt
-+		 * loads due to frequently polling and exiting polling.
-+		 */
-+		itr_val = ice_buildreg_itr(ICE_IDX_ITR2, ICE_ITR_20K);
- 		itr_val |= GLINT_DYN_CTL_SWINT_TRIG_M |
--			   GLINT_DYN_CTL_SW_ITR_INDX_M |
-+			   ICE_IDX_ITR2 << GLINT_DYN_CTL_SW_ITR_INDX_S |
- 			   GLINT_DYN_CTL_SW_ITR_INDX_ENA_M;
- 	}
- 	wr32(&vsi->back->hw, GLINT_DYN_CTL(q_vector->reg_idx), itr_val);
+ 	return 0;
+ }
 -- 
-2.31.1
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
