@@ -1,64 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78EC63F2EA7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Aug 2021 17:15:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 356153F3047
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Aug 2021 17:55:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 584614025C;
-	Fri, 20 Aug 2021 15:15:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9A5FA40105;
+	Fri, 20 Aug 2021 15:55:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EQDV1IMZGuGM; Fri, 20 Aug 2021 15:15:08 +0000 (UTC)
+	with ESMTP id gdHqZuSanA72; Fri, 20 Aug 2021 15:55:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1CFA54025D;
-	Fri, 20 Aug 2021 15:15:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 310A9406D0;
+	Fri, 20 Aug 2021 15:55:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A41A11BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:12:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 46ACE1BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:55:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 912034011C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:12:11 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 32CCD80F11
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:55:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id smIVudBdb-FN for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Aug 2021 15:12:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ssl.serverraum.org (ssl.serverraum.org [176.9.125.105])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C8E824051A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:12:06 +0000 (UTC)
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id 96B7722205;
- Fri, 20 Aug 2021 17:12:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1629472322;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=s2eDUoxB5xMh/Sao7EA/guMPzvomiMUF6SN9C2zr2a8=;
- b=r/GEuIwEReoi8tVm8Zqy+uV6vGSjS4l3Zbcs/0IwG8w7UPVgwmyp4OVjYXtsxnK01BaqtQ
- iOBjPJCLDjZPO5uFQpuo24D8+g/HGm08ufJ0n201SGUa0WhGLAmi2WRYVUfVKa7RtPXSmQ
- 0Ch4WZAVMA9rVRc9qckVvJHd5A8uSPM=
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pHMKwSUP5mGb for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Aug 2021 15:55:42 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
+ [IPv6:2607:f8b0:4864:20::42f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 727D980ED8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 15:55:42 +0000 (UTC)
+Received: by mail-pf1-x42f.google.com with SMTP id y190so8979142pfg.7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Aug 2021 08:55:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=MIoupKU3Moruzsm8QPKL5bg4Lip5l5y1B47NuZC/4IM=;
+ b=r+PvnCwYImSiC3Nut0xm3m3wb4UrN969SsszBr9JKgB77hlBUNTQNyfL6roOkkOGRa
+ KrBKP9+u4YE7Ktfu/AAprpCxD5Yxi9YNuiDNBsGi7iHpzasmrGfQ6JmV4o1AL+IFHzNc
+ JzQU5IOIFznyFiNTx+N5FPFBFbPh50YpyRsWSimyeF/56PotRBuV7PTrZVwYD1+GyhPv
+ boxGSl6k1FfmQCZ7qUDKTxwcBYb8LhG393aAuVYqWgs/wN9/O2qwT+mHojzrfu4+5shE
+ dd6+hsApWdJ6Iwz6PF0weL9bsbojahtIhj2aOxhIYjZE/fg49rq5CWwNKQhdbA+R7mAO
+ hr4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=MIoupKU3Moruzsm8QPKL5bg4Lip5l5y1B47NuZC/4IM=;
+ b=TgtmKk+ibpLaOiE28BblHPYqbzlexavI6Z4VpX6oTtMitcWTAP8eGHIHqKt52uUYEX
+ nCj5DBXHORhgFVIycbKKKf0V0w+NjoxtACSKOB2X2eJ5kGgnqLKMoUY2YCLgNDHVMJms
+ 9ij9pOPglax/1Z0eiQiiAyyEQeTb2ATu+wlmgYSSuVqONb80Db8GlgnMXsEiOCDod30v
+ TbBB+nyyOUJid9gTytmsrkE0NuSrwlQytLBDA2WqwCCJzeCTHSmra54w6Y/6Ri5k1Fki
+ gYnz4CjV63swdStF9CMlosCGwzlZ4cHlUtCLN0hl3yCCfwrVg6kTauqT+azlymiYElFw
+ IcOw==
+X-Gm-Message-State: AOAM532Cb6H/vnfrkGKJ/T3TEbTJPChWq+Xaff1oiNCmvjq5l/TLLl+H
+ nVbVluHDRXZwiRaaWahrIBo=
+X-Google-Smtp-Source: ABdhPJzRSioBxgzRHifQYGk7LPxW9/eAyxuZnBnOOY1SstliQrJ2oxeWZsCv7JeKODoMIZGifx1H3g==
+X-Received: by 2002:a62:154b:0:b0:3e2:c15d:f173 with SMTP id
+ 72-20020a62154b000000b003e2c15df173mr16637025pfv.9.1629474941955; 
+ Fri, 20 Aug 2021 08:55:41 -0700 (PDT)
+Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id p15sm7632095pff.14.2021.08.20.08.55.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Aug 2021 08:55:41 -0700 (PDT)
+Date: Fri, 20 Aug 2021 08:55:38 -0700
+From: Richard Cochran <richardcochran@gmail.com>
+To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+Message-ID: <20210820155538.GB9604@hoboy.vegasvil.org>
+References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+ <20210816235400.GA24680@hoboy.vegasvil.org>
+ <PH0PR11MB4951762ECB04D90D634E905DEAFE9@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210818170259.GD9992@hoboy.vegasvil.org>
+ <PH0PR11MB495162EC9116F197D79589F5EAFF9@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210819153414.GC26242@hoboy.vegasvil.org>
+ <PH0PR11MB4951F51CBA231DFD65806CDAEAC09@PH0PR11MB4951.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Date: Fri, 20 Aug 2021 17:12:01 +0200
-From: Michael Walle <michael@walle.cc>
-To: Bjorn Helgaas <helgaas@kernel.org>
-In-Reply-To: <d2c7ec0e416dd6bb6818892750bff6d7@walle.cc>
-References: <20210201222010.GA31234@bjorn-Precision-5520>
- <d2c7ec0e416dd6bb6818892750bff6d7@walle.cc>
-User-Agent: Roundcube Webmail/1.4.11
-Message-ID: <5d41bad0e0607e68d9189667a45f7519@walle.cc>
-X-Sender: michael@walle.cc
-X-Mailman-Approved-At: Fri, 20 Aug 2021 15:15:02 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+Content-Disposition: inline
+In-Reply-To: <PH0PR11MB4951F51CBA231DFD65806CDAEAC09@PH0PR11MB4951.namprd11.prod.outlook.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
+ acquiring DPLL state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,79 +97,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: "cong.wang@bytedance.com" <cong.wang@bytedance.com>, "Stanton,
+ Kevin B" <kevin.b.stanton@intel.com>, "arnd@arndb.de" <arnd@arndb.de>,
+ "gustavoars@kernel.org" <gustavoars@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Bross,
+ Kevin" <kevin.bross@intel.com>,
+ "colin.king@canonical.com" <colin.king@canonical.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "nikolay@nvidia.com" <nikolay@nvidia.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>, "shuah@kernel.org" <shuah@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, Ahmad Byagowi <abyagowi@fb.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Am 2021-03-15 22:51, schrieb Michael Walle:
-> Am 2021-02-01 23:20, schrieb Bjorn Helgaas:
->> On Mon, Feb 01, 2021 at 08:49:16PM +0100, Michael Walle wrote:
->>> Am 2021-01-17 20:27, schrieb Michael Walle:
->>> > Am 2021-01-16 00:57, schrieb Bjorn Helgaas:
->>> > > On Wed, Jan 13, 2021 at 12:32:32AM +0100, Michael Walle wrote:
->>> > > > Am 2021-01-12 23:58, schrieb Bjorn Helgaas:
->>> > > > > On Sat, Jan 09, 2021 at 07:31:46PM +0100, Michael Walle wrote:
->>> > > > > > Am 2021-01-08 22:20, schrieb Bjorn Helgaas:
->>> > >
->>> > > > > > > 3) If the Intel i210 is defective in how it handles an Expansion ROM
->>> > > > > > > that overlaps another BAR, a quirk might be the right fix. But my
->>> > > > > > > guess is the device is working correctly per spec and there's
->>> > > > > > > something wrong in how firmware/Linux is assigning things.  That would
->>> > > > > > > mean we need a more generic fix that's not a quirk and not tied to the
->>> > > > > > > Intel i210.
->>> > > > > >
->>> > > > > > Agreed, but as you already stated (and I've also found that in
->>> > > > > > the PCI spec) the Expansion ROM address decoder can be shared by
->>> > > > > > the other BARs and it shouldn't matter as long as the ExpROM BAR
->>> > > > > > is disabled, which is the case here.
->>> > > > >
->>> > > > > My point is just that if this could theoretically affect devices
->>> > > > > other than the i210, the fix should not be an i210-specific quirk.
->>> > > > > I'll assume this is a general problem and wait for a generic PCI
->>> > > > > core solution unless it's i210-specific.
->>> > > >
->>> > > > I guess the culprit here is that linux skips the programming of the
->>> > > > BAR because of some broken Matrox card. That should have been a
->>> > > > quirk instead, right? But I don't know if we want to change that, do
->>> > > > we? How many other cards depend on that?
->>> > >
->>> > > Oh, right.  There's definitely some complicated history there that
->>> > > makes me a little scared to change things.  But it's also unfortunate
->>> > > if we have to pile quirks on top of quirks.
->>> > >
->>> > > > And still, how do we find out that the i210 is behaving correctly?
->>> > > > In my opinion it is clearly not. You can change the ExpROM BAR value
->>> > > > during runtime and it will start working (while keeping it
->>> > > > disabled).  Am I missing something here?
->>> > >
->>> > > I agree; if the ROM BAR is disabled, I don't think it should matter at
->>> > > all what it contains, so this does look like an i210 defect.
->>> > >
->>> > > Would you mind trying the patch below?  It should update the ROM BAR
->>> > > value even when it is disabled.  With the current pci_enable_rom()
->>> > > code that doesn't rely on the value read from the BAR, I *think* this
->>> > > should be safe even on the Matrox and similar devices.
->>> >
->>> > Your patch will fix my issue:
->>> >
->>> > Tested-by: Michael Walle <michael@walle.cc>
->>> 
->>> any news on this?
->> 
->> Thanks for the reminder.  I was thinking this morning that I need to
->> get back to this.  I'm trying to convince myself that doing this
->> wouldn't break the problem fixed by 755528c860b0 ("Ignore disabled ROM
->> resources at setup").  So far I haven't quite succeeded.
-> 
-> ping #2 ;)
+On Thu, Aug 19, 2021 at 03:40:22PM +0000, Machnikowski, Maciej wrote:
 
-ping #3, soon we can celebrate our first one year anniversary :p
+> If it helps we'd be happy to separate that in 2 separate RFCs.
 
--michael
+It would help me if you could explain the connection.  I have a
+totally different understanding of SyncE which I explained here:
+
+   https://lore.kernel.org/netdev/20150317161128.GA8793@localhost.localdomain/
+
+So you need to implement two things, one in kernel and one in user
+space.
+
+1. Control bits according to IEEE 802.3 Section 40.5.2 as Ethtool or RTNL.
+
+2. User space Ethernet Synchronization Messaging Channel (ESMC)
+   service according to IEEE 802.3ay
+
+The PHY should be automatically controlled by #1.
+
+As I said before, none of this belongs in the PHC subsystem.
+
+Thanks,
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
