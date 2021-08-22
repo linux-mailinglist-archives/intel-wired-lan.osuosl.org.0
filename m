@@ -1,74 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 535233F3D0D
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 22 Aug 2021 03:51:00 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 177783F3D27
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 22 Aug 2021 04:31:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 43DCC4021E;
-	Sun, 22 Aug 2021 01:50:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 32E3A40221;
+	Sun, 22 Aug 2021 02:31:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6yRFmtYpyk2I; Sun, 22 Aug 2021 01:50:49 +0000 (UTC)
+	with ESMTP id fxTqkHGaKoQT; Sun, 22 Aug 2021 02:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9C86A40221;
-	Sun, 22 Aug 2021 01:50:48 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B437B40155;
+	Sun, 22 Aug 2021 02:31:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 010641BF95A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 01:50:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FBF61BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 02:31:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E18CF40155
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 01:50:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5DEAC6065F
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 02:31:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I5TV9Fetkaqg for <intel-wired-lan@lists.osuosl.org>;
- Sun, 22 Aug 2021 01:50:39 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j5MLvcyFiZvH for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 22 Aug 2021 02:31:01 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com
- [IPv6:2607:f8b0:4864:20::633])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C603540137
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 01:50:39 +0000 (UTC)
-Received: by mail-pl1-x633.google.com with SMTP id c4so8116641plh.7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Aug 2021 18:50:39 -0700 (PDT)
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4FB0C6062E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Aug 2021 02:31:01 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id r2so13211267pgl.10
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Aug 2021 19:31:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=oWp1bCl+FkafN8ehqG1SL+8snffxC7uBzDFP9htK1G0=;
- b=EDsXk0O+yaU/ooYbZDgUp+OQydPSecEWpi1/jVpkgCJW/dnOMhbWGVZ1Ypd8CM9SYM
- CjSb+2+pJAwZSQO5VeeymUWEChwYjinlhBjrPFVIE3Z1uWHlKj4D2sYChyODlzPJ8PtN
- mdNxFgPWKIEmqmERV7Wmd4tlCCYPpEjhrpxYICDRnSoCoRE23hnuLXUwFDY/xwemASUD
- mQ4mfyaBZvWv+SDSDsLsvq3vV6It1okuSMTacA+aH+h8Ykha/V9j3YD54QVvKKgclY4y
- Ar4D/3hNHk4RSPIPfasFrzf1dYHSpEwOEyqgkvc8FLbNpxABPTchc74w+Xk9PAOb6SyN
- 4vOA==
+ bh=XSTqDa97zOWgSBwGLOjBEzY0W1HCbmfHTpND18fwsyA=;
+ b=PhbRgYaQFfP7M8LtuZ0DJCgRqBc2hijhPP12YvRUKwgoWfGJfWjb4yDuFfii56KLZx
+ UApdP4wFmmp+bk/JkRzpa0RZ0bNMO6dk2YGX3PubQBqiSvbPWBns8puXAyEgDCmG00B7
+ tr1Ug/czFutolnj2Qe36ZPYYZhOAnccfghpigop6gfOoSkm04XMamwXZxuQ23biWfg5r
+ QTc60M6NIaNGgnBLGkI/blXBoEWtl6MR0PEvsYzfewnZge+ORNa8GokVvugIQtnbX9vk
+ Cb5bInAXy/ZIHsL06t2tqvp3KODH+/9slG/it09ZgKWWEofwipch7QXYfXPvXvEqC1LS
+ OC1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=oWp1bCl+FkafN8ehqG1SL+8snffxC7uBzDFP9htK1G0=;
- b=sQCf25s6b8BJ98sKMY+DjjRsB4Ii6WdCr4nbEyVbCTBn07mb62LjMIep+dSKKKmcE6
- +8lVQPqN2B3dyKojHJYesQjltiJbP+LSPrQBW5QvQBZq7RyHP5xFU8Ry7WnaxyKqEXOn
- mu6+6lBS7FVn27wnhcYLJTLfA02O26nHO/lxvzPSS4W75Ow1ZiL5QGk+SPDs//woSPHL
- ldGvFxUmb9irmV4EgWYxNTf0fTMs9Pf8h0gX/zy3atbs2VpWAcqzqlKa3jvMVQMbCMMH
- n4A+xBJrimYDbuNDgSXMiL3/nHWNAMNfwoC702V+v2RerLsf9S7wTE4xB+4KYwrS0G1L
- 42RA==
-X-Gm-Message-State: AOAM532AGvoASZoQCeRJp366u5W68xVY5CiDLDsNZqc76hCzJf08WkMZ
- VTTH48qqzTzxmuct2M3+JJw=
-X-Google-Smtp-Source: ABdhPJx/tnhxP6xZoi5T1FkxGUSKU/5c7OQbRfs54tq3YF8VsW0rc//ElWYFLWb2Ibxemaog9uPggw==
-X-Received: by 2002:a17:90a:fa3:: with SMTP id
- 32mr12633225pjz.68.1629597039169; 
- Sat, 21 Aug 2021 18:50:39 -0700 (PDT)
+ bh=XSTqDa97zOWgSBwGLOjBEzY0W1HCbmfHTpND18fwsyA=;
+ b=bq+I84zbSJBv/vOpvzs9sCXFIfZRuSRJIIhaSlqIDz0vmY1lJkGP6a5nnKjYOiwsAQ
+ SB3lFtuh0qUbaaZ8dFY0dmkgd+tnZxhSLI+xwsUg/HFZcrHfxW1bDhhoOkcrIYwMFxuk
+ bZvR2XOhKpqNugmigGkqrR67UDlPRtttmPZ6Qk1vVXC8aJpuH7O6BHIZsDpTvUapJ1ul
+ LbtjcqVda89OnMdHBbN+DRr0O16KJ6LPbsXk48Q6fjny58Cq9N4i9eYfbiHlk89H8JGW
+ 2mjOP42vqsEivNr3ilvDgSPDfeuQQ/HMGT5mP/aSdLSwdTbxOtTYVISUb2uUss/5qkM2
+ xMgQ==
+X-Gm-Message-State: AOAM530AEdXaJnrpNuvnQAi7TNdPMQbjFlhGjgvG5HTO0qEbuMSXwn8D
+ 415CrxpH2RCaKSada19ZMt8=
+X-Google-Smtp-Source: ABdhPJwWkVfbhs8JZCkYB40Ea1nyaA/y97j+qEa6V5jVVdosZTc+l16NXyb9birWU12gqKpy95GIYQ==
+X-Received: by 2002:a63:2541:: with SMTP id l62mr26438157pgl.183.1629599460655; 
+ Sat, 21 Aug 2021 19:31:00 -0700 (PDT)
 Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id o10sm9699171pjg.34.2021.08.21.18.50.36
+ by smtp.gmail.com with ESMTPSA id mq18sm9743976pjb.45.2021.08.21.19.30.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Aug 2021 18:50:38 -0700 (PDT)
-Date: Sat, 21 Aug 2021 18:50:35 -0700
+ Sat, 21 Aug 2021 19:31:00 -0700 (PDT)
+Date: Sat, 21 Aug 2021 19:30:57 -0700
 From: Richard Cochran <richardcochran@gmail.com>
 To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-Message-ID: <20210822015035.GB4545@hoboy.vegasvil.org>
+Message-ID: <20210822023057.GA6481@hoboy.vegasvil.org>
 References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
  <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
  <20210816235400.GA24680@hoboy.vegasvil.org>
@@ -116,68 +117,20 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On Fri, Aug 20, 2021 at 06:30:02PM +0000, Machnikowski, Maciej wrote:
 
-> I did a talk at netDev 0x15 covering SyncE - you can refer to the slides for more detailed info, and hopefully the recording will be available soon as well:
-> https://netdevconf.info/0x15/session.html?Introduction-to-time-synchronization-over-Ethernet
-
-These slides are very clear and nicely done!
-
-( And they also confirm that (ab)using the PHC chardev ioctl for the DPLL
-stuff is the wrong interface ;^)
-
-> The SyncE capable PHY is a PHY that can recover the physical clock,
-> at which the data symbols are transferred, (usually) divide it and
-> output it to the external PLL. It can also redirect the recovered
-> and divided clock to more than one pin.
-
-Right, and as your slides show so clearly, the DPLL is connected to
-the PHY, not to the time stamping unit with the PTP clock.
-
 > Since the 40.5.2 is not applicable to higher-speed ethernet which
 > don't use auto-negotiation, but rather the link training sequence
 > where the RX side always syncs its clock to the TX side.
 
-I really want an interface that will also work with Gigabit and even
-100 Megabit like the PHYTER (which does support SyncE).
- 
-> The external DPLL tunes the frequency generated by a crystal to the frequency recovered by the PHY, and drives the outputs.
-> 
-> On the other end - the SyncE PHY uses the clock generated by the DPLL to transmit the data to the next element.
+By "the RX side always syncs its clock to the TX side" do you mean the
+RX channel synchronizes to the link partner's TX channel?
 
-So I guess that this is an implementation detail of the higher speed PHYs.
+Wow, that brings back the 100 megabit scheme I guess.  That's cool,
+because the same basic idea applies to the PHYTER then.
 
-> That's why the RFC proposes 2 interfaces:
-> - one for enabling redirected clock on a selected pin of the PHY
-> - one for the physical frequency lock of the DPLL
-> 
-> The connection with the PTP subsystem is that in most use cases I
-> heard about SyncE is used as a physical frequency syntonization for
-> PTP clocks.
-
-As your slides correctly show, SyncE is about distributing frequency
-and not about Phase/ToD.  Of course you can combine SyncE with PTP to
-get both, provided that you disable frequency adjustment in the PTP
-software stack (in linuxptp, this is the "nullf" servo).  But SyncE in
-fact predates PTP, and it can and should be configurable even on
-interfaces that lack PHC altogther (or on kernels without PHC
-enabled).
-
-> Let me know if that makes more sense now. We could add a separate
-> SyncE and separate PTP DPLL monitoring interfaces, but in most cases
-> they will point to the same device.
-
-This is just a coincidence of the device you are working with.  The
-kernel really needs an interface that works with all kind of hardware
-setups.  Imagine a computer with discrete MACs with HW time
-stamping/PHC and discrete PHYs with SyncE support.  The PHC driver
-won't have any connection to the PHY+DPLL.
-
-Your API must be on the interface/MAC, with the possibility being
-handled directly by the MAC driver (for integrated devices) or calling
-into the PHY layers (phylib, phylink, and drivers/phy).
-
-If you need a DPLL monitoring interface for your card, it ought to go
-through the network interface to the MAC/PHY driver and then to the
-DPLL itself.  That way, it will work with different types of hardware.
+Still we are doing to need a way for user space to query the HW
+topology to discover whether a given ports may be syntonized from a
+second port.  I don't think your pin selection thing works unless user
+space can tell what the pins are connected to.
 
 Thanks,
 Richard
