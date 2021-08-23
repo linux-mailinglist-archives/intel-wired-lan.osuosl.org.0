@@ -1,165 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 519133F469B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Aug 2021 10:29:34 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D56E3F49FC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Aug 2021 13:44:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E0D240347;
-	Mon, 23 Aug 2021 08:29:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E617380C41;
+	Mon, 23 Aug 2021 11:44:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nEeZ4KwSU44d; Mon, 23 Aug 2021 08:29:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WPCIYm38S9Zt; Mon, 23 Aug 2021 11:44:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C7B54032C;
-	Mon, 23 Aug 2021 08:29:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 850A180CA4;
+	Mon, 23 Aug 2021 11:44:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6C511BF3BE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 08:29:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EAF401BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 11:44:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 87F036067F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 08:29:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E324780BC4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 11:44:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gemZbfG23F3v for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Aug 2021 08:29:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3UXGndA0IkNW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Aug 2021 11:44:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D28A56060E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 08:29:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10084"; a="213929957"
-X-IronPort-AV: E=Sophos;i="5.84,344,1620716400"; d="scan'208";a="213929957"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Aug 2021 01:29:16 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C70E080BB1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Aug 2021 11:44:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10084"; a="278097175"
+X-IronPort-AV: E=Sophos;i="5.84,344,1620716400"; d="scan'208";a="278097175"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Aug 2021 04:44:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,344,1620716400"; d="scan'208";a="492617635"
-Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
- by fmsmga008.fm.intel.com with ESMTP; 23 Aug 2021 01:29:16 -0700
-Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
- fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.4; Mon, 23 Aug 2021 01:29:16 -0700
-Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
- fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Mon, 23 Aug 2021 01:29:15 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10 via Frontend Transport; Mon, 23 Aug 2021 01:29:15 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.105)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Mon, 23 Aug 2021 01:29:15 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NLesO4mpFjiutlkEMbKi9f4y4UpkJ9FCWfTpJm2/jNxCs0Laa1jPwKcUA1qCVQjQhnFLAMyxZ7DvmXindWgm9MuezhCjDyfbqIaNJnLQS7vNDAWQfHEGpIugy2wuSXN7Nlj+rh+Opd1kzQ7H4Nwrrsvg/LAcColL2ILakF1UUfxNsELnfVJWDIOvGyW32yC/j79L0QjTSkNLn5uB3PDhMMVL7tF+HvinxDANj+ygo0DheUbP7YVrzarNXLHQrocTfyVc9bXXx5eaXkj+oLOPoWfhZEU15v9aLm8xkbJjS/RVF1ypqSJPL3PhkpY7I5pN3D2l2jt4wbgiU31buDYWIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/lj59PPqhANlYkYGFOANKIrAxEZUOAfmhEEzftqWDdI=;
- b=KWT0fieY1vPjrlybWk6L3LSAwrjHdWYi6wfisw3c7mTR3auAmQ3lJfcx9ccQs6iW/LkR5UF10tPwerGbODbyjYA/PUqFk05eCScgRbcAQYcHnEEKJ3B6S04CbiS6I4uyoRdFY8NwZLS/8vEwTLj/b5efgTTF7QoGjpauR3TtKtkffI6mKpVbBjSyX2RQZWCAUuisMwtNjd2c6O2MZ21Cj0DFoReyTjjybfi2TxSBVxQjfk3AYq1o91UR+8/TGbPHT9VbZ6LUEmyzbzfioKprUbvn5GVGRhyffFN6/aD6rjb4JyxWzhXQHPYpm8BwTj9ZmsjywDVVyBzIlmuws3ro2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/lj59PPqhANlYkYGFOANKIrAxEZUOAfmhEEzftqWDdI=;
- b=Sw1OSjpPdE6p5Jm9RWfooMZf+ROL90sDjsIo2CrJmhSTHj+DzBEyZ/9iRRRxGuceKRcczOYJUKJHSKTZgpKfr580gf6MpAwmBxPl0zwjzrlhSxqDQibLyi1Fd311vmggbkGxlgJxKLssLeYdvu9GCQGMs3fFDxLTTmtbn3zAYRQ=
-Received: from PH0PR11MB4951.namprd11.prod.outlook.com (2603:10b6:510:43::5)
- by PH0PR11MB4950.namprd11.prod.outlook.com (2603:10b6:510:33::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.23; Mon, 23 Aug
- 2021 08:29:14 +0000
-Received: from PH0PR11MB4951.namprd11.prod.outlook.com
- ([fe80::58cd:3e24:745c:e221]) by PH0PR11MB4951.namprd11.prod.outlook.com
- ([fe80::58cd:3e24:745c:e221%7]) with mapi id 15.20.4415.019; Mon, 23 Aug 2021
- 08:29:14 +0000
-From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-To: Richard Cochran <richardcochran@gmail.com>
-Thread-Topic: [RFC net-next 1/7] ptp: Add interface for acquiring DPLL state
-Thread-Index: AQHXkrpDE4/97678+kqD5jc+QEB2qKt2zoSAgACcQzCAAhWPgIAAVWdwgAEkIgCAAAB9kIABl9IAgAAdxFCAAiYTgIAB8I3g
-Date: Mon, 23 Aug 2021 08:29:14 +0000
-Message-ID: <PH0PR11MB4951C8C972C5123E7FC5DAFEEAC49@PH0PR11MB4951.namprd11.prod.outlook.com>
-References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
- <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
- <20210816235400.GA24680@hoboy.vegasvil.org>
- <PH0PR11MB4951762ECB04D90D634E905DEAFE9@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210818170259.GD9992@hoboy.vegasvil.org>
- <PH0PR11MB495162EC9116F197D79589F5EAFF9@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210819153414.GC26242@hoboy.vegasvil.org>
- <PH0PR11MB4951F51CBA231DFD65806CDAEAC09@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210820155538.GB9604@hoboy.vegasvil.org>
- <PH0PR11MB49518ED9AAF8B543FD8324B9EAC19@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210822023057.GA6481@hoboy.vegasvil.org>
-In-Reply-To: <20210822023057.GA6481@hoboy.vegasvil.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: bdcbb92a-730c-4d2f-5b5c-08d966101715
-x-ms-traffictypediagnostic: PH0PR11MB4950:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <PH0PR11MB4950078AE2897456DC37F649EAC49@PH0PR11MB4950.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3513;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: K00jnlCYO4JtuzYsIFnCqwxucSNDUbCyk/BBE+yAGSPtrXcGoSVCbHCpNRMGqknkokPe0t1HjUfnhfP9k9eDeobOnGb5chm4ZQiF8ko+DeIDqD+NsAVO07tbj9afPfVMFuwL4l6SbA9UY7QNnX/sS6R8j73wYNx7SM9kG9NbKv4HNGUk0p2N1fAOY2Tb+dk6AHdfGV8L00YHVeT/lzX9f4EWiBNmnuDksVjSuQXTwQuRRrh7+KyPk+Xpn6xtX9CPgePsZWIbHyPRifYoaLM5N3CUCNgX4ZpyKbP0c3xo4UYG9tc4KpgDbN13o847B9QG68133u+SJyIGuQp22T9/XvquzVTwvQ2m2q3odMQKcu4fGBuUtV6vO1QlTee4O2ttBOwU6MnZCmCr6pVjFQVmW3ZGj9PydPc5bk7FdNETWLR71wJj26ZKMOzX+evyfH9ujkHfRTSjzttZIcw5B7XQq1fNnnZHxOsZiardfz54okZjXccXVqKq27bEM3qIBN3LwBi+I2awmx05Jcc8tsv60imXaRPftoYf8f0zpBOWe/HpraPo+Kv7WVFd6abqAfSNzqkXXDodxBy8edrurLDRXKi1Ya618EMQE0V5arIRA1BZB8pn4Xd9LTebskhXp1P/uQrgqX+NxfXxWZyyXzgPbFg7hkBf2RNyQBiIKyWg6fbpqRafzMZkbsg21uIqJLcMWLGe1dptyXGC5KH9iBefCg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB4951.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(6916009)(66946007)(4326008)(8676002)(26005)(66556008)(316002)(38100700002)(186003)(66476007)(5660300002)(55016002)(7696005)(7416002)(122000001)(71200400001)(64756008)(33656002)(52536014)(8936002)(6506007)(2906002)(66446008)(86362001)(83380400001)(38070700005)(54906003)(53546011)(9686003)(76116006)(508600001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?hxCXeIFks2VnjPioWWqQ7KL7buZiraETtWYa2d8DzUTgiv0RdPcfGvRfdnH1?=
- =?us-ascii?Q?I3HSdvKiJTSTHmIVWb9POR3lghRfuUdVJqvx/62uFumW9VuFAk7cA76IlZjA?=
- =?us-ascii?Q?la0x7wfA7Yj1djcrVlS680mvA6n5bFazgYEKlXGSswpZkzZXLRFt8zbwtJrN?=
- =?us-ascii?Q?Aj9enS1m72HP52FEFvekNVFGBcy7HN+0/HddlLZeAkiCUWWqtoF3295LqwTu?=
- =?us-ascii?Q?cY3h2cNmCwkgr/zm2eDMYu6MCJF1cxzaSDmMo2T/dDHwvv1uxuUgIwfkpsuZ?=
- =?us-ascii?Q?GC5+oYz9cg//uk5J/IA+gi8EPa2wF+QQGKR9PvKImEjp1fLDDY4t8YxX6Ld+?=
- =?us-ascii?Q?9R0jHfpTz/1BRYS3YusmI0fsdEri/4TdzZM/yWiPf7oBUVyJaWcp5iv11yyi?=
- =?us-ascii?Q?O4tsGyYOSQdZBDcTfdWGk3Q584diWCVwo6MhIM4GoDaMARh5MIl4suMh0otJ?=
- =?us-ascii?Q?OxKy+x9onBgbu1phcAKeS4JD73QrEJcPxp4ks+X/8RwHCFsfjvaxRLiMNAJv?=
- =?us-ascii?Q?QpUUfH6qYRB2QzxzyQFZiQqfx23Z2ha/HmfVCoyjZlw0dKaVCCBGMjK4K1y7?=
- =?us-ascii?Q?AqORYxGkMrBecwWGv8+7Uvs/shmwnVZZHFgP8QTx3AXMBeCKFHnnQHCpMUNz?=
- =?us-ascii?Q?MX6vVSiboOmNNAkcaPhfHTdFzk6N9w1pCSF7iO73fbX2ogpr0miYlKgER+AS?=
- =?us-ascii?Q?R1tUFfPQNGtsLyS51shgLKTPMgdwzfRBir15DbTmXIsOIupXZ2Z6bsmxtec+?=
- =?us-ascii?Q?rucsPXX8Twc9qds5o5J6Iv/BVW1ECZn7iU7AYORFN+Hq4tl3kbDWkACH2ZvQ?=
- =?us-ascii?Q?eoT36WR0B+RgZrrZXSqBnS1yCxYfTSzsNO3+K9w0boEbK1IT3M6z/GQMldEi?=
- =?us-ascii?Q?uaF8Do1a1eYw8dPmOy+42BSVNEpLW/EJxFmMtWtB06ZH9ND9Cs7Uf9ozUGFC?=
- =?us-ascii?Q?Yz+HNvjY2Ygw1Fu1wclr1UU3N/UX3QGw7OAZMnd5h3sPDklmGolKfLctit6y?=
- =?us-ascii?Q?Uc80TgOjuKnscWyhXJ1BZ8t/z63lYmfBZamaYkIxMhk5ZuVj+X1BBq2IAS2m?=
- =?us-ascii?Q?XNBzk1j8Pu7rcNxtFPUPwhYGWijDnDavU4RxIC3sdDyJS7EvadcOgWr3QvDv?=
- =?us-ascii?Q?r10a1+2tjjrBZhzKiA6mduHEyJ6dSWkf7tS4x3zaZn1glwokfADjNGHGgmIb?=
- =?us-ascii?Q?4YlHPjHY7HlbOQJZcKSyLtx7J/Fai2F16yosKBXWHdMUUBnmuav44whgSbBJ?=
- =?us-ascii?Q?DlyPJXZCDmW8uCX8ZVPKa38VSVi1HFkBIpehz45eoEo+6jn+ScqyKFLgg91p?=
- =?us-ascii?Q?ViY=3D?=
+X-IronPort-AV: E=Sophos;i="5.84,344,1620716400"; d="scan'208";a="425114419"
+Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
+ by orsmga006.jf.intel.com with ESMTP; 23 Aug 2021 04:44:40 -0700
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 23 Aug 2021 11:43:44 +0000
+Message-Id: <20210823114344.7058-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB4951.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bdcbb92a-730c-4d2f-5b5c-08d966101715
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2021 08:29:14.0778 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pmsu8Vy+OpX6so8oFaRnW20RDZhapJLs9/AlsyoA70UwubByuW/pyyfqmI/hY6ln2MPCQgJAgTgkwtCrYmZx2L72POFm9FuvnSGyiNJR+8A=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4950
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
- acquiring DPLL state
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix issue when maximum
+ queues is exceeded
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,56 +60,250 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "cong.wang@bytedance.com" <cong.wang@bytedance.com>, "Stanton,
- Kevin B" <kevin.b.stanton@intel.com>, "arnd@arndb.de" <arnd@arndb.de>,
- "gustavoars@kernel.org" <gustavoars@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Bross,
- Kevin" <kevin.bross@intel.com>,
- "colin.king@canonical.com" <colin.king@canonical.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "nikolay@nvidia.com" <nikolay@nvidia.com>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "shuah@kernel.org" <shuah@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>, Ahmad Byagowi <abyagowi@fb.com>
+Cc: Jaroslaw Gawin <jaroslawx.gawin@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Before this patch VF interface vanished when maximum queue
+number was exceeded. Driver tried to add next queues even
+if there was not enough space. PF sent incorrect number of
+queues to the VF when there were not enough of them.
 
+Add an additional condition introduced to check
+available space in 'qp_pile' before proceeding.
+Also add the search for free space in PF queue pair piles.
 
-> -----Original Message-----
-> From: Richard Cochran <richardcochran@gmail.com>
-> Sent: Sunday, August 22, 2021 4:31 AM
-> Subject: Re: [RFC net-next 1/7] ptp: Add interface for acquiring DPLL state
-> 
-> On Fri, Aug 20, 2021 at 06:30:02PM +0000, Machnikowski, Maciej wrote:
-> 
-> > Since the 40.5.2 is not applicable to higher-speed ethernet which
-> > don't use auto-negotiation, but rather the link training sequence
-> > where the RX side always syncs its clock to the TX side.
-> 
-> By "the RX side always syncs its clock to the TX side" do you mean the RX
-> channel synchronizes to the link partner's TX channel?
-> 
-> Wow, that brings back the 100 megabit scheme I guess.  That's cool, because
-> the same basic idea applies to the PHYTER then.
-> 
+Without this patch VF interfaces are not seen when available
+space for queues has been exceeded and following logs appears
+permanently in dmesg:
+"Unable to get VF config (-32)".
+"VF 62 failed opcode 3, retval: -5"
+"Unable to get VF config due to PF error condition, not retrying"
 
-Yes! Sounds very similar! :)
+Fixes: 7daa6bf3294e ("i40e: driver core headers")
+Fixes: 41c445ff0f48 ("i40e: main driver core")
+Signed-off-by: Jaroslaw Gawin <jaroslawx.gawin@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h        |  2 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 49 +++++++++++----
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 59 +++++++++++++++++++
+ 3 files changed, 96 insertions(+), 14 deletions(-)
 
-> Still we are doing to need a way for user space to query the HW topology to
-> discover whether a given ports may be syntonized from a second port.  I
-> don't think your pin selection thing works unless user space can tell what the
-> pins are connected to.
-> 
-> Thanks,
-> Richard
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index b10bc59c5700..fdfa96ece5f3 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -174,7 +174,6 @@ enum i40e_interrupt_policy {
+ 
+ struct i40e_lump_tracking {
+ 	u16 num_entries;
+-	u16 search_hint;
+ 	u16 list[0];
+ #define I40E_PILE_VALID_BIT  0x8000
+ #define I40E_IWARP_IRQ_PILE_ID  (I40E_PILE_VALID_BIT - 2)
+@@ -1156,6 +1155,7 @@ int i40e_reconfig_rss_queues(struct i40e_pf *pf, int queue_count);
+ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags, u16 uplink_seid,
+ 				u16 downlink_seid, u8 enabled_tc);
+ void i40e_veb_release(struct i40e_veb *veb);
++int i40e_max_lump_qp(struct i40e_pf *pf);
+ 
+ int i40e_veb_config_tc(struct i40e_veb *veb, u8 enabled_tc);
+ int i40e_vsi_add_pvid(struct i40e_vsi *vsi, u16 vid);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 000991afcf27..32382d4a90e7 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -178,16 +178,12 @@ int i40e_free_virt_mem_d(struct i40e_hw *hw, struct i40e_virt_mem *mem)
+  * @id: an owner id to stick on the items assigned
+  *
+  * Returns the base item index of the lump, or negative for error
+- *
+- * The search_hint trick and lack of advanced fit-finding only work
+- * because we're highly likely to have all the same size lump requests.
+- * Linear search time and any fragmentation should be minimal.
+  **/
+ static int i40e_get_lump(struct i40e_pf *pf, struct i40e_lump_tracking *pile,
+ 			 u16 needed, u16 id)
+ {
+ 	int ret = -ENOMEM;
+-	int i, j;
++	u16 i, j;
+ 
+ 	if (!pile || needed == 0 || id >= I40E_PILE_VALID_BIT) {
+ 		dev_info(&pf->pdev->dev,
+@@ -196,8 +192,7 @@ static int i40e_get_lump(struct i40e_pf *pf, struct i40e_lump_tracking *pile,
+ 		return -EINVAL;
+ 	}
+ 
+-	/* start the linear search with an imperfect hint */
+-	i = pile->search_hint;
++	i = 0;
+ 	while (i < pile->num_entries) {
+ 		/* skip already allocated entries */
+ 		if (pile->list[i] & I40E_PILE_VALID_BIT) {
+@@ -216,7 +211,6 @@ static int i40e_get_lump(struct i40e_pf *pf, struct i40e_lump_tracking *pile,
+ 			for (j = 0; j < needed; j++)
+ 				pile->list[i+j] = id | I40E_PILE_VALID_BIT;
+ 			ret = i;
+-			pile->search_hint = i + j;
+ 			break;
+ 		}
+ 
+@@ -239,7 +233,7 @@ static int i40e_put_lump(struct i40e_lump_tracking *pile, u16 index, u16 id)
+ {
+ 	int valid_id = (id | I40E_PILE_VALID_BIT);
+ 	int count = 0;
+-	int i;
++	u16 i;
+ 
+ 	if (!pile || index >= pile->num_entries)
+ 		return -EINVAL;
+@@ -251,12 +245,43 @@ static int i40e_put_lump(struct i40e_lump_tracking *pile, u16 index, u16 id)
+ 		count++;
+ 	}
+ 
+-	if (count && index < pile->search_hint)
+-		pile->search_hint = index;
+ 
+ 	return count;
+ }
+ 
++/**
++ * i40e_max_lump_qp - find a biggest size of lump available in qp_pile
++ * @pf: pointer to private device data structure
++ *
++ * Returns the max size of lump in a qp_pile, or negative for error
++ */
++int i40e_max_lump_qp(struct i40e_pf *pf)
++{
++	struct i40e_lump_tracking *pile = pf->qp_pile;
++	int pool_size, max_size;
++	u16 i;
++
++	if (!pile) {
++		dev_info(&pf->pdev->dev,
++			 "param err: pile=%s\n",
++			 pile ? "<valid>" : "<null>");
++		return -EINVAL;
++	}
++
++	pool_size = 0;
++	max_size = 0;
++	for (i = 0; i < pile->num_entries; i++) {
++		if (pile->list[i] & I40E_PILE_VALID_BIT) {
++			pool_size = 0;
++			continue;
++		}
++		if (max_size < ++pool_size)
++			max_size = pool_size;
++	}
++
++	return max_size;
++}
++
+ /**
+  * i40e_find_vsi_from_id - searches for the vsi with the given id
+  * @pf: the pf structure to search for the vsi
+@@ -11753,7 +11778,6 @@ static int i40e_init_interrupt_scheme(struct i40e_pf *pf)
+ 		return -ENOMEM;
+ 
+ 	pf->irq_pile->num_entries = vectors;
+-	pf->irq_pile->search_hint = 0;
+ 
+ 	/* track first vector for misc interrupts, ignore return */
+ 	(void)i40e_get_lump(pf, pf->irq_pile, 1, I40E_PILE_VALID_BIT - 1);
+@@ -12556,7 +12580,6 @@ static int i40e_sw_init(struct i40e_pf *pf)
+ 		goto sw_init_done;
+ 	}
+ 	pf->qp_pile->num_entries = pf->hw.func_caps.num_tx_qp;
+-	pf->qp_pile->search_hint = 0;
+ 
+ 	pf->tx_timeout_recovery_level = 1;
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index c007fba3d1dd..5a488ce5451b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2616,6 +2616,59 @@ error_param:
+ 				       aq_ret);
+ }
+ 
++/**
++ * i40e_check_enough_queue - find enough queue
++ * @vf: pointer to the VF info
++ * @needed: the number of items needed
++ *
++ * Returns the base item index of the queue, or negative for error
++ **/
++static int i40e_check_enough_queue(struct i40e_vf *vf, u16 needed)
++{
++	u16 i, cur_queues, more, pool_size;
++	struct i40e_lump_tracking *pile;
++	struct i40e_pf *pf = vf->pf;
++	struct i40e_vsi *vsi;
++
++	vsi = pf->vsi[vf->lan_vsi_idx];
++	cur_queues = vsi->alloc_queue_pairs;
++
++	/* if current allocated queues is enough for need */
++	if (cur_queues >= needed)
++		return vsi->base_queue;
++
++	pile = pf->qp_pile;
++	if (cur_queues > 0) {
++		/* if queues of allocated not zero, just check if
++		 * there is enough queues behind the allocated queues
++		 * for more.
++		 */
++		more = needed - cur_queues;
++		for (i = vsi->base_queue + cur_queues;
++			i < pile->num_entries; i++) {
++			if (pile->list[i] & I40E_PILE_VALID_BIT)
++				break;
++
++			if (more-- == 1)
++				/* there is enough */
++				return vsi->base_queue;
++		}
++	}
++
++	pool_size = 0;
++	for (i = 0; i < pile->num_entries; i++) {
++		if (pile->list[i] & I40E_PILE_VALID_BIT) {
++			pool_size = 0;
++			continue;
++		}
++		if (needed <= ++pool_size)
++			/* there is enough */
++			return i;
++	}
++
++	return -ENOMEM;
++}
++
+ /**
+  * i40e_vc_request_queues_msg
+  * @vf: pointer to the VF info
+@@ -2650,6 +2703,12 @@ static int i40e_vc_request_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 			 req_pairs - cur_pairs,
+ 			 pf->queues_left);
+ 		vfres->num_queue_pairs = pf->queues_left + cur_pairs;
++	} else if (i40e_check_enough_queue(vf, req_pairs) < 0) {
++		dev_warn(&pf->pdev->dev,
++			 "VF %d requested %d more queues, but there is not enough for it.\n",
++			 vf->vf_id,
++			 req_pairs - cur_pairs);
++		vfres->num_queue_pairs = cur_pairs;
+ 	} else {
+ 		/* successful request */
+ 		vf->num_req_queues = req_pairs;
+-- 
+2.27.0
 
-And a good catch! I'll update the RFC to add the query functionality and move the SyncE logic/pins to the netdev subsystem.
-
-Thanks 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
