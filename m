@@ -1,68 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DB493F59EC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Aug 2021 10:38:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6CA03F5BB7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Aug 2021 12:07:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E75EE4051E;
-	Tue, 24 Aug 2021 08:38:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5958C608DA;
+	Tue, 24 Aug 2021 10:07:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dXJEuRDcgMX3; Tue, 24 Aug 2021 08:38:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3cCk31uNNSGE; Tue, 24 Aug 2021 10:07:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7104640547;
-	Tue, 24 Aug 2021 08:38:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D795C608D5;
+	Tue, 24 Aug 2021 10:07:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 456841BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 08:38:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3191D1BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 10:07:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 33EB5406BB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 08:38:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1EAFA405C9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 10:07:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eMZASDJSyi_2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Aug 2021 08:38:29 +0000 (UTC)
-X-Greylist: delayed 00:12:49 by SQLgrey-1.8.0
-Received: from mout.kundenserver.de (mout.kundenserver.de [217.72.192.75])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 453794057C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 08:38:21 +0000 (UTC)
-Received: from [192.168.0.48] ([217.24.224.38]) by mrelayeu.kundenserver.de
- (mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
- 1MrQR7-1mmoTJ0Tsl-00oVEn; Tue, 24 Aug 2021 10:25:26 +0200
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20210824081039.GA16756@kili>
+ with ESMTP id F0cgehzWOiVG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Aug 2021 10:06:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-44.mimecast.com
+ (us-smtp-delivery-44.mimecast.com [207.211.30.44])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3514D40267
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Aug 2021 10:06:57 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-393-3oBWNdzdMaOgtug7uCYZbQ-1; Tue, 24 Aug 2021 06:06:47 -0400
+X-MC-Unique: 3oBWNdzdMaOgtug7uCYZbQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0C333800493;
+ Tue, 24 Aug 2021 10:06:46 +0000 (UTC)
+Received: from x230.redhat.com (unknown [10.39.194.191])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 603CB5C1A3;
+ Tue, 24 Aug 2021 10:06:44 +0000 (UTC)
 From: Stefan Assmann <sassmann@kpanic.de>
-Message-ID: <74732a5e-b9c4-c119-ea38-b604e252ec33@kpanic.de>
-Date: Tue, 24 Aug 2021 10:25:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 24 Aug 2021 12:06:39 +0200
+Message-Id: <20210824100639.60076-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-In-Reply-To: <20210824081039.GA16756@kili>
-Content-Language: en-US
-X-Provags-ID: V03:K1:r5f6TREO74ADV/66oSBnpOWeq+cuEtad2Aidv/F5xfJ/jDF5R0H
- YWvVSrcRit90hjzw0TTTMNAe4TQFgHm0JX0YLMLkH7hPNOBQFLFCmvjOhcD8WZBHUJqmpmY
- nCUaigbLbjqBcF2/yilrC8xMMzJ4FP1n8n+oG2jbPumt+FZlKBPy2ZVU0TeA0u857cbx8sQ
- 4Yg2uwfAEgVdvs/0u47YA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PsC8L1WnYmg=:gkCMXzSKnDwRTNR6iSINnA
- jDuENqmLpP5Cwm6zmhUnUbtxc5mUBznwqdYkyzPZt6o5dSWOJ2b+h3gpvUgvP8RGwQUnPamqL
- 6MrO4rgtn6A0dSqbNyVGRnj3OEpHB5qN+RLeIwHrIw5DTswc6niM+j3ZUP7XrG3o7Eg0yPRq8
- nHou8UK+ZSoNuvf3UOlliBBo2D8LVYJWeJkMlHKtbexA+Z9BLrc0QHR1JcqlYTwt6rquaiTW9
- NzOK1osqyzm9V+6ISwmvd+zxZAfe8sJ0V5LQLtHVzp1JEp2oNdYry9lMekO8a6UhM1N8ggX1f
- 2V/4G7bFu+XXk4xKqZvcztm7+mRD2nj2CmLpVkMsMenQDOEjfL/kBo9RJ2AbBUlJpSlSx/Zi6
- ohS8NZtft/b97HYryCbDAJBX3mMGMyTqyiNoLtx/T3LmIbNa5rzXaecHn5BiN9e4vDXx8oMsr
- 2qUICfzOvKEIJsOZ/GH+ekJZc8Ee2XWI4dds+jZet5i1g9vt5Na3wp685LA6pcu98O67KOyAg
- iuNy98PYgQzYI++GLxN/GZ4W3NUHNlV0Ng3jIb6P6MFTkik2z/icJ97uppR+EkwNdZtwrOOWS
- q4oCcStnC/s5vQtipLzJw1ougqutq8ghN69m432dE9a4fHfzbFtF7OanbzbBdDtoayUCr/qqn
- AjkbxFAdklTmUZcAtD2edueGmYSO832gaEAejdVSZ7vjUTuXfEnOzXHNtiVzJmIk1VPm80vUq
- GjTsQFYxkaXT0o0O3HzjzdaLL5ouWhaQwE0b8tKkryPrk/MlpAaLdWwpTnC3yJK6BffmMGOZj
- 2KRKy0Y522GKn890YAE9HYcjtVIKEwthTOlB34wNtc3Efpx80LKxybeEp0HsoIKBJQYBvSR
-Subject: Re: [Intel-wired-lan] [bug report] iavf: use mutexes for locking of
- critical sections
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sassmann@kpanic.de
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kpanic.de
+Subject: [Intel-wired-lan] [PATCH] iavf: fix double unlock of crit_lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,136 +68,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, dan.carpenter@oracle.com, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 24.08.21 10:10, Dan Carpenter wrote:
-> Hello Stefan Assmann,
-> 
-> The patch 5ac49f3c2702: "iavf: use mutexes for locking of critical
-> sections" from Aug 4, 2021, leads to the following
-> Smatch static checker warning:
+The crit_lock mutex could be unlocked twice as reported here
+https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20210823/025525.html
 
-Thanks for the report, I'll take a look!
+Remove the superfluous unlock. Technically the problem was already
+present before 5ac49f3c2702 as that commit only replaced the locking
+primitive, but no functional change.
 
-  Stefan
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Fixes: 5ac49f3c2702 ("iavf: use mutexes for locking of critical sections")
+Fixes: bac8486116b0 ("iavf: Refactor the watchdog state machine")
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+---
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> 	drivers/net/ethernet/intel/iavf/iavf_main.c:2019 iavf_watchdog_task()
-> 	error: double unlocked '&adapter->crit_lock' (orig line 1968)
-> 
-> drivers/net/ethernet/intel/iavf/iavf_main.c
->     1932 static void iavf_watchdog_task(struct work_struct *work)
->     1933 {
->     1934 	struct iavf_adapter *adapter = container_of(work,
->     1935 						    struct iavf_adapter,
->     1936 						    watchdog_task.work);
->     1937 	struct iavf_hw *hw = &adapter->hw;
->     1938 	u32 reg_val;
->     1939 
->     1940 	if (!mutex_trylock(&adapter->crit_lock))
->     1941 		goto restart_watchdog;
->     1942 
->     1943 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
->     1944 		adapter->state = __IAVF_COMM_FAILED;
->     1945 
->     1946 	switch (adapter->state) {
->     1947 	case __IAVF_COMM_FAILED:
->     1948 		reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
->     1949 			  IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
->     1950 		if (reg_val == VIRTCHNL_VFR_VFACTIVE ||
->     1951 		    reg_val == VIRTCHNL_VFR_COMPLETED) {
->     1952 			/* A chance for redemption! */
->     1953 			dev_err(&adapter->pdev->dev,
->     1954 				"Hardware came out of reset. Attempting reinit.\n");
->     1955 			adapter->state = __IAVF_STARTUP;
->     1956 			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
->     1957 			queue_delayed_work(iavf_wq, &adapter->init_task, 10);
->     1958 			mutex_unlock(&adapter->crit_lock);
->     1959 			/* Don't reschedule the watchdog, since we've restarted
->     1960 			 * the init task. When init_task contacts the PF and
->     1961 			 * gets everything set up again, it'll restart the
->     1962 			 * watchdog for us. Down, boy. Sit. Stay. Woof.
->     1963 			 */
->     1964 			return;
->     1965 		}
->     1966 		adapter->aq_required = 0;
->     1967 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
->     1968 		mutex_unlock(&adapter->crit_lock);
->                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> Unlocked here
-> 
->     1969 		queue_delayed_work(iavf_wq,
->     1970 				   &adapter->watchdog_task,
->     1971 				   msecs_to_jiffies(10));
->     1972 		goto watchdog_done;
->                         ^^^^^^^^^^^^^^^^^^^
-> Goto
-> 
->     1973 	case __IAVF_RESETTING:
->     1974 		mutex_unlock(&adapter->crit_lock);
->     1975 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
->     1976 		return;
->     1977 	case __IAVF_DOWN:
->     1978 	case __IAVF_DOWN_PENDING:
->     1979 	case __IAVF_TESTING:
->     1980 	case __IAVF_RUNNING:
->     1981 		if (adapter->current_op) {
->     1982 			if (!iavf_asq_done(hw)) {
->     1983 				dev_dbg(&adapter->pdev->dev,
->     1984 					"Admin queue timeout\n");
->     1985 				iavf_send_api_ver(adapter);
->     1986 			}
->     1987 		} else {
->     1988 			/* An error will be returned if no commands were
->     1989 			 * processed; use this opportunity to update stats
->     1990 			 */
->     1991 			if (iavf_process_aq_command(adapter) &&
->     1992 			    adapter->state == __IAVF_RUNNING)
->     1993 				iavf_request_stats(adapter);
->     1994 		}
->     1995 		break;
->     1996 	case __IAVF_REMOVE:
->     1997 		mutex_unlock(&adapter->crit_lock);
->     1998 		return;
->     1999 	default:
->     2000 		goto restart_watchdog;
->     2001 	}
->     2002 
->     2003 		/* check for hw reset */
->     2004 	reg_val = rd32(hw, IAVF_VF_ARQLEN1) & IAVF_VF_ARQLEN1_ARQENABLE_MASK;
->     2005 	if (!reg_val) {
->     2006 		adapter->flags |= IAVF_FLAG_RESET_PENDING;
->     2007 		adapter->aq_required = 0;
->     2008 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
->     2009 		dev_err(&adapter->pdev->dev, "Hardware reset detected\n");
->     2010 		queue_work(iavf_wq, &adapter->reset_task);
->     2011 		goto watchdog_done;
->     2012 	}
->     2013 
->     2014 	schedule_delayed_work(&adapter->client_task, msecs_to_jiffies(5));
->     2015 watchdog_done:
->     2016 	if (adapter->state == __IAVF_RUNNING ||
->     2017 	    adapter->state == __IAVF_COMM_FAILED)
->     2018 		iavf_detect_recover_hung(&adapter->vsi);
-> --> 2019 	mutex_unlock(&adapter->crit_lock);
->                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> Double unlock.
-> 
->     2020 restart_watchdog:
->     2021 	if (adapter->aq_required)
->     2022 		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
->     2023 				   msecs_to_jiffies(20));
->     2024 	else
->     2025 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
->     2026 	queue_work(iavf_wq, &adapter->adminq_task);
->     2027 }
-> 
-> regards,
-> dan carpenter
-> 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 23762a7ef740..cada4e0e40b4 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -1965,7 +1965,6 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		}
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+-		mutex_unlock(&adapter->crit_lock);
+ 		queue_delayed_work(iavf_wq,
+ 				   &adapter->watchdog_task,
+ 				   msecs_to_jiffies(10));
+-- 
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
