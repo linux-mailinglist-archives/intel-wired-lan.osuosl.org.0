@@ -1,54 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C888B3F76BC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Aug 2021 16:00:31 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85E0A3F76BE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Aug 2021 16:00:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 66B71407AB;
-	Wed, 25 Aug 2021 14:00:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 490A2403B6;
+	Wed, 25 Aug 2021 14:00:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wASzygKwBXR1; Wed, 25 Aug 2021 14:00:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ighUB93eebym; Wed, 25 Aug 2021 14:00:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 70AB340415;
-	Wed, 25 Aug 2021 14:00:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24BA240107;
+	Wed, 25 Aug 2021 14:00:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A8AB1BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:30:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CBB7A1BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:38:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 78E2B80DC0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:30:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B158C613C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:38:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oedZePyMZ6lI for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Aug 2021 13:30:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iPC5qPVF-xj1 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Aug 2021 13:38:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E4A5080D9E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:30:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3AE1A613C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Aug 2021 13:38:25 +0000 (UTC)
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 99B8F6113A;
- Wed, 25 Aug 2021 13:30:06 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E2959610FA;
+ Wed, 25 Aug 2021 13:38:24 +0000 (UTC)
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1mIsyi-00798k-Ia; Wed, 25 Aug 2021 14:30:04 +0100
-Date: Wed, 25 Aug 2021 14:30:04 +0100
-Message-ID: <87czq1ps83.wl-maz@kernel.org>
+ id 1mIt6k-0079Ci-Vi; Wed, 25 Aug 2021 14:38:23 +0100
+Date: Wed, 25 Aug 2021 14:38:22 +0100
+Message-ID: <87bl5lpru9.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Barry Song <21cnbao@gmail.com>
-In-Reply-To: <20210825102636.52757-3-21cnbao@gmail.com>
+In-Reply-To: <20210825102636.52757-4-21cnbao@gmail.com>
 References: <20210825102636.52757-1-21cnbao@gmail.com>
- <20210825102636.52757-3-21cnbao@gmail.com>
+ <20210825102636.52757-4-21cnbao@gmail.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
  (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -65,8 +65,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-Mailman-Approved-At: Wed, 25 Aug 2021 14:00:04 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v3 2/3] PCI/sysfs: Don't depend on
- pci_dev.irq for IRQ entry
+Subject: Re: [Intel-wired-lan] [PATCH v3 3/3] PCI/MSI: remove
+ msi_attrib.default_irq in msi_desc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,57 +90,27 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 25 Aug 2021 11:26:35 +0100,
+On Wed, 25 Aug 2021 11:26:36 +0100,
 Barry Song <21cnbao@gmail.com> wrote:
 > 
-> From: Barry Song <song.bao.hua@hisilicon.com>
+> From: Marc Zyngier <maz@kernel.org>
 > 
-> Explicitly use IRQ number from MSI list for IRQ sysfs entry. Then sysfs
-> will decouple with the odd implementation depending on pci_dev.irq.
-> 
-> Signed-off-by: Barry Song <song.bao.hua@hisilicon.com>
-> ---
->  drivers/pci/pci-sysfs.c | 23 ++++++++++++++++++++++-
->  1 file changed, 22 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/pci-sysfs.c b/drivers/pci/pci-sysfs.c
-> index 7bbf2673..f5a06b9 100644
-> --- a/drivers/pci/pci-sysfs.c
-> +++ b/drivers/pci/pci-sysfs.c
-> @@ -26,6 +26,7 @@
->  #include <linux/slab.h>
->  #include <linux/vgaarb.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/msi.h>
->  #include <linux/of.h>
->  #include "pci.h"
->  
-> @@ -49,7 +50,27 @@ static DEVICE_ATTR_RO(field)
->  pci_config_attr(subsystem_device, "0x%04x\n");
->  pci_config_attr(revision, "0x%02x\n");
->  pci_config_attr(class, "0x%06x\n");
-> -pci_config_attr(irq, "%u\n");
-> +
-> +static ssize_t irq_show(struct device *dev,
-> +			struct device_attribute *attr,
-> +			char *buf)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(dev);
-> +#ifdef CONFIG_PCI_MSI
-> +	/*
-> +	 * For MSI, return the 1st IRQ in IRQ vector; for all other cases
-> +	 * including MSI-X, return legacy INTx
-> +	 */
-> +	if (pdev->msi_enabled) {
-> +		struct msi_desc *desc = first_pci_msi_entry(pdev);
-> +
-> +		return sysfs_emit(buf, "%u\n", desc->irq);
-> +	}
-> +#endif
+> default_irq is hideous as it should be per-device but not per-desc.
+> On the other hand, MSI-X case doesn't use it at all. Since sysfs
+> IRQ has moved to use the msi_entry instead of pci_dev.irq, now it
+> seems it is safe to remove msi_attrib.default_irq.
 
-nit: It would be worth adding a comment indicating that we only do
-this to preserve an existing userspace ABI. Just in case someone
-thinks it is pointless and remove it... ;-)
+Thanks for doing the write-up. Maybe worth adding that drivers that
+use dev->irq while having enabled MSI will break (INTx will be
+disabled while MSI is enabled). That should give people a clue about
+what to fix when they bisect the problem to this patch.
+
+Also, a link to the discussion that lead to this patch would be useful
+to give some context.
+
+No need to respin this for now, let's give it a shake after 5.14.
+
+Thanks,
 
 	M.
 
