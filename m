@@ -1,78 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80B7D3F914E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Aug 2021 02:26:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 216923F9D9D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Aug 2021 19:22:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ED3E283005;
-	Fri, 27 Aug 2021 00:26:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B748E427C0;
+	Fri, 27 Aug 2021 17:22:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nY-qK5yHHMvs; Fri, 27 Aug 2021 00:26:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0e8fuKp7F56l; Fri, 27 Aug 2021 17:22:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 61CBC82FDE;
-	Fri, 27 Aug 2021 00:26:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB419427AB;
+	Fri, 27 Aug 2021 17:22:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 72E381C1148
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 00:26:35 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 94D3D1BF2B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 17:15:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 605F682F06
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 00:26:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 82E7B61538
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 17:15:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4maN_Xpsn5Y5 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Aug 2021 00:26:34 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oo1-xc29.google.com (mail-oo1-xc29.google.com
- [IPv6:2607:f8b0:4864:20::c29])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BC6DC82C21
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 00:26:34 +0000 (UTC)
-Received: by mail-oo1-xc29.google.com with SMTP id
- v20-20020a4a2554000000b0028f8cc17378so1517747ooe.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Aug 2021 17:26:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pnwBhL+bIRZ+1AujOyithEsycI0iSDtmHs6X+/x+Fhc=;
- b=sBP1y9OgvieB5CccQH32mPE+X+ashq9FrlnUIlsj20FzDRksOusy3AEq18QQTjGlTN
- j7HCMqzoDTKGUfxl+NjSTSPWAUvFySjZO2ED4rFuZfmfE1hI6G1UxrJ+xMKI6/Q8ot8S
- Sm1unDbFtNAXi53kHjGwYPwHpcpv93aMMdzCexVagDs0dEy6PmXV9BWlHWVWJrBKn2Jn
- EnWBCmWzEhsA6E9EqeyVzjiW0afuEbMkhoV+ivtaNJW8PaDxbtZr/xwdBRfdeY0D/S86
- HUhj6QWPmCd3lNBSskZ67qX+MG9QVqCHfVaCI+HGe84L3JR3YSDQtuQ4mlLI5azhbI50
- YxGw==
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dU3u9wLxF_iT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Aug 2021 17:15:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D333D61531
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 17:15:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1630084534;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9Gafj8sxsDqc97Bfoh5OIubdmjwxbqAMG/Cf5EW4CHA=;
+ b=QEcGXsvE/nLQ1/bOJKKI73ep35BJUe0dq00k8RJKKgTXJJMu6wm1auYsFf3Gb/OYdICTbI
+ JQ2NHyDYTJ9M4616zi6rQNiOYq/EXr67059W1vpxG0Yckvg9BysQIChBN8vfsetNqkPB2M
+ MGbVRsj6Uzf4+8WcXPDVflEYE1M9EgA=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-198-fz6_NOlPNyOVO1tYZ96k4g-1; Fri, 27 Aug 2021 13:15:31 -0400
+X-MC-Unique: fz6_NOlPNyOVO1tYZ96k4g-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ s206-20020a3745d70000b02903b9207abc7bso4344474qka.4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Aug 2021 10:15:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pnwBhL+bIRZ+1AujOyithEsycI0iSDtmHs6X+/x+Fhc=;
- b=JMYEkn0CO6XtSM3xwxNTDZxBT48gVXZOhqWD40yjQkbGAMgDoFmgsflN6m4PbYqp/V
- XVyDzIi6s1U40NZV92w0N8GcTpgy2zMoKIvRenTWzInQ+BO4DGznbnWeKeEWAvQvPR8y
- aXkP+wzdA+p167bCewp6IqDgEl96m/q+k9lbjonDUGP7ynyybcZ5bps8wjX9VDVlju6v
- 9RXRtGJ6lUBsoT0qnhFMS1UFA3qRGFqLvC+1vW+a3AP6g8WfeqbG1SlWPuD1IioOaqS/
- CR1NILjONorHGDX13yKbQwmonwcGQl3OaKqVyY+Jk6/d/diTXdawbGvfhVk1mUBM8nWC
- OtzA==
-X-Gm-Message-State: AOAM5312OybjDlYUipf9cFSZT0gX622+/TwViz6hkho9n8egoBz5Cal7
- 6NR5KHPf/aXWxR87Ah/MIoKeLQNBjBIsqVxuNFI=
-X-Google-Smtp-Source: ABdhPJzaoHbOjah8e/X215Kp/Z3xDTS2cp8NQupcSAzhDxBFPFu/G55Fo9UBoorbueobdipf4Ayxle3exSXBftAU5DA=
-X-Received: by 2002:a4a:5742:: with SMTP id u63mr5507687ooa.87.1630023993563; 
- Thu, 26 Aug 2021 17:26:33 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9Gafj8sxsDqc97Bfoh5OIubdmjwxbqAMG/Cf5EW4CHA=;
+ b=HZ6dmF+ehPoM1UrvHmgbSzsOnLWRi3i23b7F346x/bcXeZ6yiDB8HfkwGqdqVvUhPX
+ QVSCxv7FP32SScF2DHegb2T1h+6TC6RydCGDw8WJIRh8JrcHrJRS6GC28gN1URR0/RJ2
+ 02J758KHkUhga+5YmLc6i+Dphy5Zzn8N6ih1cvF0cN/eGMoBIMHtZqaTofvA1AnVRAmZ
+ ajCMVjy5RrExyuZW/bb94c+/yYUkNlTqxcFNN8v4irWr9lv4ykzvY1yQW+Gx5LVdrJob
+ VunUwbQesBHPaA/E+WN9aOmH0Omsfy93uVlac7PwuoQERfBl/hSYipoNgyhy3ZF1PwPp
+ FCOA==
+X-Gm-Message-State: AOAM533LiVCcnbCJSpCp0x+XWrx90aOeZ3PmuZdueBhzIdMp+Q7/2DmC
+ C15xBRqxw/fdmuebLu2+vbwzIWLIy0BVxiXivC1vkIPqE3D1pSlYv10+p+sjd+ZLKrM5cgwY9OG
+ mm78lFwHTYaRJ6kLb3tcm+BainTBGeA==
+X-Received: by 2002:a05:622a:650:: with SMTP id
+ a16mr9368933qtb.157.1630084530828; 
+ Fri, 27 Aug 2021 10:15:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+mGVdS88FWRCD11ZTp8zbd10l92FiowGcA/FEWX67lzhyonxWS4Z0phgbqe+R7LCZiA3JOA==
+X-Received: by 2002:a05:622a:650:: with SMTP id
+ a16mr9368915qtb.157.1630084530614; 
+ Fri, 27 Aug 2021 10:15:30 -0700 (PDT)
+Received: from localhost.localdomain.com (075-142-250-213.res.spectrum.com.
+ [75.142.250.213])
+ by smtp.gmail.com with ESMTPSA id q14sm5119552qkl.44.2021.08.27.10.15.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Aug 2021 10:15:30 -0700 (PDT)
+From: trix@redhat.com
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, kuba@kernel.org
+Date: Fri, 27 Aug 2021 10:15:15 -0700
+Message-Id: <20210827171515.2518713-1-trix@redhat.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-References: <20210826141623.8151-1-kerneljasonxing@gmail.com>
- <00890ff4-3264-337a-19cc-521a6434d1d0@gmail.com>
- <860ead37-87f4-22fa-e4f3-5cadd0f2c85c@intel.com>
- <CAL+tcoCovfAQmN_c43ScmjpO9D54CKP5XFTpx6VQpwJVxZhAdg@mail.gmail.com>
- <da5da485-9dc7-e731-a8d9-f5ad7c7dffde@gmail.com>
-In-Reply-To: <da5da485-9dc7-e731-a8d9-f5ad7c7dffde@gmail.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Fri, 27 Aug 2021 08:25:57 +0800
-Message-ID: <CAL+tcoCyYeb+ppM4gBU3MZWKcm4513J49QNu2yLjY2O8-KaRog@mail.gmail.com>
-To: Eric Dumazet <eric.dumazet@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH v4] ixgbe: let the xdpdrv work with
- more than 64 cpus
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Approved-At: Fri, 27 Aug 2021 17:22:11 +0000
+Subject: [Intel-wired-lan] [PATCH] igc: optimize igc_ptp_systim_to_hwtstamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,44 +101,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: songliubraving@fb.com, kafai@fb.com, hawk@kernel.org, daniel@iogearbox.net,
- netdev <netdev@vger.kernel.org>, ast@kernel.org, andrii@kernel.org,
- Shujin Li <lishujin@kuaishou.com>, yhs@fb.com, kpsingh@kernel.org,
- kuba@kernel.org, bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- David Miller <davem@davemloft.net>, LKML <linux-kernel@vger.kernel.org>,
- Jason Xing <xingwanli@kuaishou.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Tom Rix <trix@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Aug 27, 2021 at 2:19 AM Eric Dumazet <eric.dumazet@gmail.com> wrote:
->
->
->
-> On 8/26/21 10:03 AM, Jason Xing wrote:
->
-> >
-> > Honestly, I'm a little confused right now. @nr_cpu_ids is the fixed
-> > number which means the total number of cpus the machine has.
-> > I think, using @nr_cpu_ids is safe one way or the other regardless of
-> > whether the cpu goes offline or not. What do you think?
-> >
->
-> More exactly, nr_cpu_ids is the max number cpu id can reach,
-> even in presence of holes.
->
-> I think that most/many num_online_cpus() in drivers/net are simply broken
-> and should be replaced by nr_cpu_ids.
->
+From: Tom Rix <trix@redhat.com>
 
-Thank you, Eric, really. I nearly made a terrible mistake.
+Static analysis reports this representative problem
+igc_ptp.c:676:3: warning: The left operand of '+' is a garbage value
+                ktime_add_ns(shhwtstamps.hwtstamp, adjust);
+                ^            ~~~~~~~~~~~~~~~~~~~~
 
-> The assumptions of cpus being nicely numbered from [0 to X-1],
-> with X==num_online_cpus() is wrong.
->
-> Same remark for num_possible_cpus(), see commit
-> 88d4f0db7fa8 ("perf: Fix alloc_callchain_buffers()") for reference.
+The issue is flagged because the setting of shhwtstamps is
+in igc_ptp_systim_to_hwtstamp() it is set only in one path through
+this switch.
+
+	switch (adapter->hw.mac.type) {
+	case igc_i225:
+		memset(hwtstamps, 0, sizeof(*hwtstamps));
+		/* Upper 32 bits contain s, lower 32 bits contain ns. */
+		hwtstamps->hwtstamp = ktime_set(systim >> 32,
+						systim & 0xFFFFFFFF);
+		break;
+	default:
+		break;
+	}
+
+Changing the memset the a caller initialization is a small optimization
+and will resolve uninitialized use issue.
+
+A switch statement with one case is overkill, convert to an if statement.
+
+This function is small and only called once, change to inline for an
+expected small runtime and size improvement.
+
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 0f021909b430a0..1443a2da246e22 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -417,20 +417,14 @@ static int igc_ptp_verify_pin(struct ptp_clock_info *ptp, unsigned int pin,
+  * We need to convert the system time value stored in the RX/TXSTMP registers
+  * into a hwtstamp which can be used by the upper level timestamping functions.
+  **/
+-static void igc_ptp_systim_to_hwtstamp(struct igc_adapter *adapter,
+-				       struct skb_shared_hwtstamps *hwtstamps,
+-				       u64 systim)
++static inline void igc_ptp_systim_to_hwtstamp(struct igc_adapter *adapter,
++					      struct skb_shared_hwtstamps *hwtstamps,
++					      u64 systim)
+ {
+-	switch (adapter->hw.mac.type) {
+-	case igc_i225:
+-		memset(hwtstamps, 0, sizeof(*hwtstamps));
+-		/* Upper 32 bits contain s, lower 32 bits contain ns. */
++	/* Upper 32 bits contain s, lower 32 bits contain ns. */
++	if (adapter->hw.mac.type == igc_i225)
+ 		hwtstamps->hwtstamp = ktime_set(systim >> 32,
+ 						systim & 0xFFFFFFFF);
+-		break;
+-	default:
+-		break;
+-	}
+ }
+ 
+ /**
+@@ -645,7 +639,7 @@ void igc_ptp_tx_hang(struct igc_adapter *adapter)
+ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+ {
+ 	struct sk_buff *skb = adapter->ptp_tx_skb;
+-	struct skb_shared_hwtstamps shhwtstamps;
++	struct skb_shared_hwtstamps shhwtstamps = { 0 };
+ 	struct igc_hw *hw = &adapter->hw;
+ 	int adjust = 0;
+ 	u64 regval;
+-- 
+2.26.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
