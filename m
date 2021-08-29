@@ -1,56 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 843433FA826
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 29 Aug 2021 03:42:59 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 925723FAA1E
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 29 Aug 2021 10:21:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A1E840191;
-	Sun, 29 Aug 2021 01:42:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NYsJm15l6aed; Sun, 29 Aug 2021 01:42:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6BA0D400D8;
-	Sun, 29 Aug 2021 01:42:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E5B0D1BF2F1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 01:42:47 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C96B3825B1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 01:42:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 128C580F80;
+	Sun, 29 Aug 2021 08:20:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YV8FGS3D0XxY for <intel-wired-lan@lists.osuosl.org>;
- Sun, 29 Aug 2021 01:42:43 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id w9kAJVl8StoK; Sun, 29 Aug 2021 08:20:53 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F17980EF8;
+	Sun, 29 Aug 2021 08:20:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 04F0F1BF364
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 08:20:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E7547404A0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 08:20:47 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id o12lCbyuB1Ig for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 29 Aug 2021 08:20:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C1F698257D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 01:42:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10090"; a="217848623"
-X-IronPort-AV: E=Sophos;i="5.84,360,1620716400"; d="scan'208";a="217848623"
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 642D24049E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Aug 2021 08:20:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10090"; a="215017425"
+X-IronPort-AV: E=Sophos;i="5.84,361,1620716400"; d="scan'208";a="215017425"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Aug 2021 18:42:42 -0700
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2021 01:20:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,360,1620716400"; d="scan'208";a="518150031"
-Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 28 Aug 2021 18:42:41 -0700
-Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mK9qL-0003ud-5a; Sun, 29 Aug 2021 01:42:41 +0000
-Date: Sun, 29 Aug 2021 09:42:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <612ae5e9.pY6KdM5qFpEr+2KT%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.84,361,1620716400"; d="scan'208";a="518329730"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
+ by fmsmga004.fm.intel.com with ESMTP; 29 Aug 2021 01:20:44 -0700
+From: Maciej Machnikowski <maciej.machnikowski@intel.com>
+To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Date: Sun, 29 Aug 2021 10:05:10 +0200
+Message-Id: <20210829080512.3573627-1-maciej.machnikowski@intel.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:1GbE] BUILD SUCCESS
- 1ab011b0bf073ef02abf15344bb59e383aa15457
+Subject: [Intel-wired-lan] [RFC v2 net-next 0/2] Add RTNL interface for SyncE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,132 +60,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: abyagowi@fb.com, richardcochran@gmail.com, linux-kselftest@vger.kernel.org,
+ kuba@kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 1GbE
-branch HEAD: 1ab011b0bf073ef02abf15344bb59e383aa15457  igc: Add support for CBS offloading
+Synchronous Ethernet networks use a physical layer clock to syntonize
+the frequency across different network elements.
 
-elapsed time: 1890m
+Multiple reference clock sources can be used. Clocks recovered from 
+PHY ports on the RX side or external sources like 1PPS GPS, etc.
 
-configs tested: 102
-configs skipped: 4
+This patch series introduces basic interface for reading the DPLL
+state on a SyncE capable device. This state gives us information
+about the source of the syntonization signal and whether the DPLL
+circuit is tuned to the incoming signal.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Next steps:
+ - add interface to enable recovered clocks and get information
+   about them
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20210827
-arm                         lpc18xx_defconfig
-m68k                       m5275evb_defconfig
-mips                         mpc30x_defconfig
-mips                           ip32_defconfig
-m68k                        m5272c3_defconfig
-arm                       imx_v4_v5_defconfig
-mips                           xway_defconfig
-mips                        maltaup_defconfig
-arm                         palmz72_defconfig
-sh                         apsh4a3a_defconfig
-arm                        keystone_defconfig
-sh                           sh2007_defconfig
-sh                        edosk7705_defconfig
-powerpc                 mpc836x_rdk_defconfig
-arm                         s3c6400_defconfig
-powerpc                       holly_defconfig
-x86_64                            allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a014-20210827
-x86_64               randconfig-a015-20210827
-x86_64               randconfig-a016-20210827
-x86_64               randconfig-a013-20210827
-x86_64               randconfig-a012-20210827
-x86_64               randconfig-a011-20210827
-i386                 randconfig-a011-20210827
-i386                 randconfig-a016-20210827
-i386                 randconfig-a012-20210827
-i386                 randconfig-a014-20210827
-i386                 randconfig-a013-20210827
-i386                 randconfig-a015-20210827
-arc                  randconfig-r043-20210827
-riscv                randconfig-r042-20210827
-s390                 randconfig-r044-20210827
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+v2:
+- removed whitespace changes
+- fix issues reported by test robot
 
-clang tested configs:
-s390                 randconfig-c005-20210827
-i386                 randconfig-c001-20210827
-arm                  randconfig-c002-20210827
-riscv                randconfig-c006-20210827
-powerpc              randconfig-c003-20210827
-x86_64               randconfig-c007-20210827
-mips                 randconfig-c004-20210827
-x86_64               randconfig-a005-20210827
-x86_64               randconfig-a001-20210827
-x86_64               randconfig-a006-20210827
-x86_64               randconfig-a003-20210827
-x86_64               randconfig-a004-20210827
-x86_64               randconfig-a002-20210827
-i386                 randconfig-a006-20210827
-i386                 randconfig-a001-20210827
-i386                 randconfig-a002-20210827
-i386                 randconfig-a005-20210827
-i386                 randconfig-a004-20210827
-i386                 randconfig-a003-20210827
+Maciej Machnikowski (2):
+  rtnetlink: Add new RTM_GETSYNCESTATE message to get SyncE status
+  ice: add support for reading SyncE DPLL state
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/ice/ice.h          |  5 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 34 ++++++++
+ drivers/net/ethernet/intel/ice/ice_common.c   | 62 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  4 +
+ drivers/net/ethernet/intel/ice/ice_devids.h   |  3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 55 +++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 35 +++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 44 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   | 22 ++++++
+ include/linux/netdevice.h                     |  6 ++
+ include/uapi/linux/if_link.h                  | 43 +++++++++++
+ include/uapi/linux/rtnetlink.h                | 11 ++-
+ net/core/rtnetlink.c                          | 77 +++++++++++++++++++
+ security/selinux/nlmsgtab.c                   |  3 +-
+ 14 files changed, 399 insertions(+), 5 deletions(-)
+
+-- 
+2.26.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
