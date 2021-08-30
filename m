@@ -2,52 +2,53 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE8C3FB275
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Aug 2021 10:26:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19A283FB2B0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Aug 2021 10:49:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BBF4160762;
-	Mon, 30 Aug 2021 08:26:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ABCE2605A4;
+	Mon, 30 Aug 2021 08:49:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0q2Tl0poGS_M; Mon, 30 Aug 2021 08:26:45 +0000 (UTC)
+	with ESMTP id n1GJLYM9a0vW; Mon, 30 Aug 2021 08:49:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 55C1160768;
-	Mon, 30 Aug 2021 08:26:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A9CBE60771;
+	Mon, 30 Aug 2021 08:49:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 73BF41BF28D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:26:40 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4ED3C1BF28D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:49:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6136E403CF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:26:40 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 391F06076D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:49:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CphPn1vfOOvP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Aug 2021 08:26:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CC87A403CA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:26:39 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10091"; a="216386889"
-X-IronPort-AV: E=Sophos;i="5.84,362,1620716400"; d="scan'208";a="216386889"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2021 01:26:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,362,1620716400"; d="scan'208";a="427060352"
-Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by orsmga006.jf.intel.com with ESMTP; 30 Aug 2021 01:26:37 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 30 Aug 2021 08:25:36 +0000
-Message-Id: <20210830082536.274203-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QE4dL8LGxVWO for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Aug 2021 08:49:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F36A860644
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 08:49:14 +0000 (UTC)
+Received: from [192.168.0.4] (unknown [95.90.237.148])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 8CCAD61E64761;
+ Mon, 30 Aug 2021 10:49:11 +0200 (CEST)
+To: Karen Sornek <karen.sornek@intel.com>
+References: <20210830090220.271120-1-karen.sornek@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <26ac1d2d-941b-91ee-9f79-91065cae69ed@molgen.mpg.de>
+Date: Mon, 30 Aug 2021 10:49:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: Refactor
- iavf_mac_filter struct memory usage
+In-Reply-To: <20210830090220.271120-1-karen.sornek@intel.com>
+Content-Language: en-US
+Subject: [Intel-wired-lan] Incorrect time (was: [PATCH net v1] iavf: Fix
+ limit of total number of queues to active queues of VF)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,48 +61,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: intel-wired-lan@lists.osuosl.org,
+ Ashwin Vijayavel <ashwin.vijayavel@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-iavf_mac_filter struct contained couple boolean
-flags using up more memory than is necessary.
-Change the flags to be bitfields in an anonymous struct
-so all the flags now fit in one byte.
+Dear Karen,
 
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 21c95775509a..3feb9edb8131 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -137,9 +137,13 @@ struct iavf_q_vector {
- struct iavf_mac_filter {
- 	struct list_head list;
- 	u8 macaddr[ETH_ALEN];
--	bool is_new_mac;	/* filter is new, wait for PF decision */
--	bool remove;		/* filter needs to be removed */
--	bool add;		/* filter needs to be added */
-+	struct {
-+		u8 is_new_mac:1;    /* filter is new, wait for PF decision */
-+		u8 remove:1;        /* filter needs to be removed */
-+		u8 add:1;           /* filter needs to be added */
-+		u8 is_primary:1;    /* filter is a default VF MAC */
-+		u8 padding:4;
-+	};
- };
- 
- struct iavf_vlan_filter {
--- 
-2.27.0
+The date of your mail is from the future influencing the email sorting. 
+This has been a problem in the past for emails from Intel accounts. Can 
+you please look into it and fix it?
 
+
+Kind regards,
+
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
