@@ -1,54 +1,159 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7C823FC499
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 11:06:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C9BF3FC4B7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 11:29:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3637280EDF;
-	Tue, 31 Aug 2021 09:06:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 20B364034D;
+	Tue, 31 Aug 2021 09:29:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ek1dHVCHvbCV; Tue, 31 Aug 2021 09:06:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0Ms5-VmZXdmO; Tue, 31 Aug 2021 09:29:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 28EE080F15;
-	Tue, 31 Aug 2021 09:06:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AAB93403A5;
+	Tue, 31 Aug 2021 09:29:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F88F1BF355
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:06:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8384A1BF355
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:29:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2DE4180EF9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:06:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7EA1B4033E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:29:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KvltrD5-mpwe for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Aug 2021 09:06:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 20C8680EE4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:06:22 +0000 (UTC)
-Received: from [192.168.0.4] (ip5f5aeb24.dynamic.kabel-deutschland.de
- [95.90.235.36])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5BFCB61E64784;
- Tue, 31 Aug 2021 11:06:20 +0200 (CEST)
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-References: <20210831085728.14673-1-mateusz.palczewski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <3ee7d975-f8d6-d356-97da-b51ab3e55a93@molgen.mpg.de>
-Date: Tue, 31 Aug 2021 11:06:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20210831085728.14673-1-mateusz.palczewski@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gsuNwSrOqM5C for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Aug 2021 09:29:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B933C40308
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 09:29:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="218155649"
+X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="218155649"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Aug 2021 02:29:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="689843533"
+Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
+ by fmsmga005.fm.intel.com with ESMTP; 31 Aug 2021 02:29:24 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10; Tue, 31 Aug 2021 02:29:24 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Tue, 31 Aug 2021 02:29:24 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.173)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Tue, 31 Aug 2021 02:29:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YGK4wIb8swI+4Tn8jhPzOaEA/dLaA9pYuxtK0+xVBwlgIFQZNXUcbJxXlUHhqnnsDUKogzqKKxbWOjjP82puISvhFs3bKexf/TLDK0U+o3yMlriGvXL3iIzhaSRgs8yxWsk5gUIc9xWTPc5l/LfmoIm4eq7Q7iq0NXqcDh4I7o0wjQge1xpvwGsIvQwSTKCRs/ImZ7P+o7LaYeGhZYHee/dYvqHeXFMCmODjZFFmNG69AL6Jhd3GgKBKkRdJLs5FcGbUFvPY/IB02A74uV1vJ4r2vS+eZvGZ5x5u9W8DmUrudfh/jLXSmDI4qu2u4zeNoTs2Mqj+PNhnpjbTWG1xBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LjrE77+B3f6/SbRBIcCXl6EcBH14Shvf+UnA/ecslSE=;
+ b=k6PxKsbhmtceVle7CDAiUM8bT/mdpY0YXAAAkrYUCglFzsZnKhhY0NrBEmVFwyXrKIQi7B8t4IeMDSqR5oHqjBV8Aa0KIuowm6QFekllFbG1sL9jLrEMWuawn+cTHPiuxT5T9Dp/qb7rOeIMN/Xscqxz03QOFa4tY0++oAApYoE7SUNAazvZPZcRhGcIBpKDRrOmPTNX0Qh21jWUvP1/ZG3C99Lj7P4T46Ku5bcRe255WiAaQohmLvL30/lXNPTverX9t7ubZD5+fRMWFafpdDeFBDTP8CmsCfWAEg+7XNREbVTQ3uxz9qWWH8U5mQ9FNJAoJAl7tflFanJ1TE7UyA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LjrE77+B3f6/SbRBIcCXl6EcBH14Shvf+UnA/ecslSE=;
+ b=WtnVqATX5NxgtX27UEX0/x3Tr7zITEpYWhOL83i4xupAGgItzqxuc8Ny0x0+sNWa1GPg/AUHdFmAzfed5frMH+FYHDNPwPRyxdb5EypSskDr1APvJdLFJQhYm+Di9+FhDF+Eh/y+myYXVOVBLllDq3+zyhEx4/a/qJ1tLK6Kxis=
+Received: from SJ0PR11MB4958.namprd11.prod.outlook.com (2603:10b6:a03:2ae::24)
+ by BYAPR11MB3271.namprd11.prod.outlook.com (2603:10b6:a03:7b::26)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.24; Tue, 31 Aug
+ 2021 09:29:22 +0000
+Received: from SJ0PR11MB4958.namprd11.prod.outlook.com
+ ([fe80::7865:f66:4ed9:5062]) by SJ0PR11MB4958.namprd11.prod.outlook.com
+ ([fe80::7865:f66:4ed9:5062%7]) with mapi id 15.20.4373.031; Tue, 31 Aug 2021
+ 09:29:22 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>
+Thread-Topic: [RFC net-next 1/7] ptp: Add interface for acquiring DPLL state
+Thread-Index: AQHXkrpDE4/97678+kqD5jc+QEB2qKt2zoSAgACcQzCAAhWPgIAAVWdwgAEkIgCAAAB9kIABl9IAgAAdxFCAD/BQAIAAzDmA
+Date: Tue, 31 Aug 2021 09:29:22 +0000
+Message-ID: <SJ0PR11MB4958827821D5CFBC897E43B3EACC9@SJ0PR11MB4958.namprd11.prod.outlook.com>
+References: <20210816160717.31285-1-arkadiusz.kubalewski@intel.com>
+ <20210816160717.31285-2-arkadiusz.kubalewski@intel.com>
+ <20210816235400.GA24680@hoboy.vegasvil.org>
+ <PH0PR11MB4951762ECB04D90D634E905DEAFE9@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210818170259.GD9992@hoboy.vegasvil.org>
+ <PH0PR11MB495162EC9116F197D79589F5EAFF9@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210819153414.GC26242@hoboy.vegasvil.org>
+ <PH0PR11MB4951F51CBA231DFD65806CDAEAC09@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210820155538.GB9604@hoboy.vegasvil.org>
+ <PH0PR11MB49518ED9AAF8B543FD8324B9EAC19@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210830210610.GB26230@hoboy.vegasvil.org>
+In-Reply-To: <20210830210610.GB26230@hoboy.vegasvil.org>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] i40e: Add VF VLAN pruning
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: e4d3bbbf-a086-4012-9969-08d96c61d146
+x-ms-traffictypediagnostic: BYAPR11MB3271:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR11MB3271837617464958B28491F7EACC9@BYAPR11MB3271.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: fyV951Kog0MGomLpWzLyA9Rnh1lzKoeh5Q4y3UaNVWFQ3VgxY6mZWhA781vRs5fR/kp7xfVHUW2jZwJ2MpwdpisaVpOYDpBjF0lzEODzJeTsYiA3ZfXsDtm6irMLH/StQEyfRAQSMzcpFbOLBepVsc64wPz6Gg4PU0Wot+wYTZoYCxuy+l8thpCFxhos65/AO46H6YLWoBVUgfq/w3ZokU3hAzncYjdtHPvtRGEcSzfMhpF/N0E59NY2vQDO0ifUFcPkwtVFZqM94zaYtWoL5HBuBe9jqnp5rovfOeEjQls7gBDLF9L/di8IQtg/zgEQhfFS3DBbrgZR2MD7Fp/F1cga6YsB5dSLmOSb/uffnA9YKgfXXaM5MalbGVTRjeiL1JANgiiSIw+mqE8Xz32RrqBBaRv9wOFahbe5qhmE29NdbO8xD5V0JH6zU5ofnrbZFJZ89C4nhzD7KGaKJexBpXeiaLmZkRXPNgwk0uEQcJPdG1u75lzV7V73GMkpNNjqXq8aupPgADj9JV1ceicc8bVR0R6l95+x50DrrJIUw6mzSTFxaSlY3Bhw9Wvl0gODM1lsiQhftYEgdFg4jI83bSjOWgbQXSbjEPTVrYUwkRBBOEw9wMOecKDbDSCvmQ6WCrsel2FgAnoV6Unb43b1Jli/XKvVZyJ5s8iMWV80RxzYtqjEEmLC+JyqPU+cvot5UqP0SGFWZndLLgoCXaw6gQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB4958.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(136003)(346002)(376002)(366004)(396003)(8936002)(52536014)(4326008)(7416002)(6916009)(66446008)(71200400001)(66476007)(9686003)(33656002)(2906002)(83380400001)(186003)(26005)(316002)(66556008)(38070700005)(86362001)(8676002)(38100700002)(54906003)(5660300002)(122000001)(6506007)(7696005)(53546011)(66946007)(55016002)(478600001)(64756008)(76116006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?VrUZcIPEPmwkmzbqapchx1rQQK+1LnATgYSeeSiiuzUPCtm5SE0j/3TnlK6Y?=
+ =?us-ascii?Q?AfKrIHv43WQIpKR84KpnN24IS3jN1TEqkBblttMAVL3QyE6lQW7S/R8Kuqy7?=
+ =?us-ascii?Q?PyJZasYfkH7+doQ2MIyXi6DrY6clzTY56/BBcH71HjO0Ok619xEAFeV2Ns/v?=
+ =?us-ascii?Q?7c8WG8BJ66PYLib57aDsIlFoaoVrYpgT/pQx+tu+8Lnz8lBa5+XwR8LZ6htP?=
+ =?us-ascii?Q?1Kop267eQXtwL0pWacWlK6pREIEqefNXJAOTpyzPpNxhn5x/kXbW2qr1LPU6?=
+ =?us-ascii?Q?cEDJySOeDXT0XQCI4XPoHMsG9zWo6b+N4xCaf/1G0u9g3us4DoxFRWUh5Qa/?=
+ =?us-ascii?Q?cVPg7SgjiG2I2dufozq2M290Q/+wpE5v7L+4ia5g0DrUJiXeZDya9RJMA4+k?=
+ =?us-ascii?Q?7TGhKuEbw0vUATY/eJj6JYJcH3IGmOeIvGALJ/QcmO4bIGNQ1QQLB4ERi1ZL?=
+ =?us-ascii?Q?8qwxon3i7jR/lTaMTIQwaap9/KRM2BIWrHEYa9c+dKniOQ/a+BeDZ7PxcElR?=
+ =?us-ascii?Q?+RMNeLdqd5ki4eRL4+gBB0VQNbiYC3/w/eBNNMW0gZtPAprcfUU8YYCwWnHq?=
+ =?us-ascii?Q?NatZB/RBlj6+4qP5Ak9OcM/EXnrlT/Gx8X+tUe9RJFwpWHJOXHoGG9CSOp3w?=
+ =?us-ascii?Q?CWih0VCHWqZM6F/VUoI90rSMs/ZWD9XzBj+Ty/7qxLfQen0ARAMDLtrph/sk?=
+ =?us-ascii?Q?dN1MxyZ0zpsGWkvUsyiAy12YHdcZmjJUKbpEgwHmhahD34KzuHFxCCj8QAXn?=
+ =?us-ascii?Q?K/jdkAzmmEVp5bHmH/QPSKf8W566F5rnbekQNFGBGeq6vs7KGJecxtnck4xB?=
+ =?us-ascii?Q?K//viArF/kU0z9YTOG+i9jHZPQI0IjoSSgHPWJWxGayIr65T6AelaDr6eB5E?=
+ =?us-ascii?Q?hgJ9sBeBy36Udm+fCegMv+iz3ZbAVkxgRVb7YuH/wpy0eYNcfzSCkE0WiL3D?=
+ =?us-ascii?Q?A5QEVZoANMTRsmRNqndpnJ85SC5ocY3RyOU2H+nu8VWmCqIRQZB2u2NqUf7b?=
+ =?us-ascii?Q?UBe/bgPtsTCLtUFozOdgOYd+xcKbfwFcap5UhpkMeHQTMlQ4vY4IZSnw5h7W?=
+ =?us-ascii?Q?q+PJn4nIIIDWZEETDI67N7fv9BZjUwQFAN2lAhiOB2hRQ5OyzWe9hdgY6BoU?=
+ =?us-ascii?Q?25Cva67F/PibKabj9JXK+RcXqIBYeaEEOmRjEnUEykEKGOBHHhcQVfLktBy0?=
+ =?us-ascii?Q?xnGshTj/4pD2veVzwHQuPMhex3y34sYOobINW0PYP6+I+olr76mydopZLnzY?=
+ =?us-ascii?Q?rxNu6/zFEVX4HEdeTvH6Zu36uuHLi6arIhsK8uiyT3K/9AxjeiR3CJbaO45Z?=
+ =?us-ascii?Q?xqA=3D?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB4958.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e4d3bbbf-a086-4012-9969-08d96c61d146
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2021 09:29:22.5859 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: q309ij15vUoBWLdTv0Om2qErxJpSeRFvgBIo+v5C0wi2GRcX9KG4SFOVyBQC9lmuvwSzioe549n6qCkvH3VzR6brz+5EdKtw+0J6BLhE7+I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3271
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/7] ptp: Add interface for
+ acquiring DPLL state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,313 +166,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: "cong.wang@bytedance.com" <cong.wang@bytedance.com>, "Stanton,
+ Kevin B" <kevin.b.stanton@intel.com>, "arnd@arndb.de" <arnd@arndb.de>,
+ "gustavoars@kernel.org" <gustavoars@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Bross,
+ Kevin" <kevin.bross@intel.com>,
+ "colin.king@canonical.com" <colin.king@canonical.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "nikolay@nvidia.com" <nikolay@nvidia.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>, "shuah@kernel.org" <shuah@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, Ahmad Byagowi <abyagowi@fb.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Sylwester, dear Mateusz,
-
-
-Am 31.08.21 um 10:57 schrieb Mateusz Palczewski:
-> From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+> -----Original Message-----
+> From: Richard Cochran <richardcochran@gmail.com>
+> Sent: Monday, August 30, 2021 11:06 PM
+> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> Subject: Re: [RFC net-next 1/7] ptp: Add interface for acquiring DPLL state
 > 
-> VFs were able to see all tagged traffic regardless of trust
-> and VLAN filters configured.
-> Change the default VLAN filters settings for an untrusted VF
-> so it is able to receive only untagged traffic or traffic with VLAN tags
-> it has created interfaces for.
+> On Fri, Aug 20, 2021 at 06:30:02PM +0000, Machnikowski, Maciej wrote:
 > 
-> Add new private flag vf-vlan-prune-disable that allows disabling
-> of VF vlan pruning for all VF types.
-> The flag is off by default and can only be changed
-> if there are no VFs spawned on the PF.
-> This flag will only be effective when no PVID is set
-> on VF and VF is not trusted.
-> Add new function that computes the correct VLAN ID
-> for VF VLAN filters based on trust, PVID,
-> vf-vlan-prune-disable flag and current VLAN ID.
-
-This is not very readable. Please reformat to not wrap line after each 
-sentence or comma.
-
-While at it, please add an example, how to test it.
-
-
-Kind regards,
-
-Paul
-
-
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->   drivers/net/ethernet/intel/i40e/i40e.h        |   1 +
->   .../net/ethernet/intel/i40e/i40e_ethtool.c    |   9 ++
->   drivers/net/ethernet/intel/i40e/i40e_main.c   | 138 +++++++++++++++++-
->   .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  12 +-
->   4 files changed, 151 insertions(+), 9 deletions(-)
+> > So to be able to control SyncE we need 2 interfaces:
+> > - Interface to enable the recovered clock output at the given pin
+> > - interface to monitor the DPLL to see if the clock that we got is valid, or
+> not.
+> >
+> > If it comes to ESMC (G.8264) messages, SyncE itself can run in 2 modes
+> (slides 29/30 will give you more details):
+> > - QL-Disabled - with no ESMC messages - it base on the local information
+> from the PLL to make all decisions
+> > - QL-Enabled - that adds ESMC and quality message transfer between the
+> nodes.
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-> index b10bc59..5fda78b 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
-> @@ -565,6 +565,7 @@ struct i40e_pf {
->   #define I40E_FLAG_DISABLE_FW_LLDP		BIT(24)
->   #define I40E_FLAG_RS_FEC			BIT(25)
->   #define I40E_FLAG_BASE_R_FEC			BIT(26)
-> +#define I40E_FLAG_VF_VLAN_PRUNE_DISABLE		BIT(27)
->   /* TOTAL_PORT_SHUTDOWN
->    * Allows to physically disable the link on the NIC's port.
->    * If enabled, (after link down request from the OS)
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index 2c9e4ee..d47832b 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -451,6 +451,8 @@ static const struct i40e_priv_flags i40e_gstrings_priv_flags[] = {
->   	I40E_PRIV_FLAG("disable-fw-lldp", I40E_FLAG_DISABLE_FW_LLDP, 0),
->   	I40E_PRIV_FLAG("rs-fec", I40E_FLAG_RS_FEC, 0),
->   	I40E_PRIV_FLAG("base-r-fec", I40E_FLAG_BASE_R_FEC, 0),
-> +	I40E_PRIV_FLAG("vf-vlan-prune-disable",
-> +		       I40E_FLAG_VF_VLAN_PRUNE_DISABLE, 0),
->   };
->   
->   #define I40E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(i40e_gstrings_priv_flags)
-> @@ -5273,6 +5275,13 @@ flags_complete:
->   		dev_warn(&pf->pdev->dev,
->   			 "Turning on link-down-on-close flag may affect other partitions\n");
->   
-> +	if ((changed_flags & I40E_FLAG_VF_VLAN_PRUNE_DISABLE) &&
-> +	    pf->num_alloc_vfs) {
-> +		dev_warn(&pf->pdev->dev,
-> +			 "Changing vf-vlan-prune-disable flag while VF(s) are active is not supported");
-> +		return -EOPNOTSUPP;
-> +	}
-> +
->   	if (changed_flags & I40E_FLAG_DISABLE_FW_LLDP) {
->   		if (new_flags & I40E_FLAG_DISABLE_FW_LLDP) {
->   #ifdef CONFIG_I40E_DCB
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 000991a..6ed27c0 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -1327,6 +1327,114 @@ static int i40e_correct_mac_vlan_filters(struct i40e_vsi *vsi,
->   	return 0;
->   }
->   
-> +/**
-> + * i40e_get_vf_new_vlan - Get new vlan id on a vf
-> + * @vsi: the vsi to configure
-> + * @new_mac: new mac filter to be added
-> + * @f: existing mac filter, replaced with new_mac->f if new_mac is not NULL
-> + * @vlan_filters: the number of active VLAN filters
-> + * @trusted: flag if the VF is trusted
-> + *
-> + * Get new VLAN id based on current VLAN filters, trust, PVID
-> + * and vf-vlan-prune-disable flag.
-> + *
-> + * Returns the value of the new vlan filter or
-> + * the old value if no new filter is needed.
-> + */
-> +static s16 i40e_get_vf_new_vlan(struct i40e_vsi *vsi,
-> +				struct i40e_new_mac_filter *new_mac,
-> +				struct i40e_mac_filter *f,
-> +				int vlan_filters,
-> +				bool trusted)
-> +{
-> +	s16 pvid = le16_to_cpu(vsi->info.pvid);
-> +	struct i40e_pf *pf = vsi->back;
-> +	bool is_any;
-> +
-> +	if (new_mac)
-> +		f = new_mac->f;
-> +
-> +	if (pvid && f->vlan != pvid)
-> +		return pvid;
-> +
-> +	is_any = (trusted ||
-> +		  (pf->flags & I40E_FLAG_VF_VLAN_PRUNE_DISABLE));
-> +
-> +	if ((vlan_filters && f->vlan == I40E_VLAN_ANY) ||
-> +	    (!is_any && !vlan_filters && f->vlan == I40E_VLAN_ANY) ||
-> +	    (is_any && !vlan_filters && f->vlan == 0)) {
-> +		if (is_any)
-> +			return I40E_VLAN_ANY;
-> +		else
-> +			return 0;
-> +	}
-> +
-> +	return f->vlan;
-> +}
-> +
-> +/**
-> + * i40e_correct_vf_mac_vlan_filters - Correct non-VLAN VF filters if necessary
-> + * @vsi: the vsi to configure
-> + * @tmp_add_list: list of filters ready to be added
-> + * @tmp_del_list: list of filters ready to be deleted
-> + * @vlan_filters: the number of active VLAN filters
-> + * @trusted: flag if the VF is trusted
-> + *
-> + * Correct VF VLAN filters based on current VLAN filters, trust, PVID
-> + * and vf-vlan-prune-disable flag.
-> + *
-> + * In case of memory allocation failure return -ENOMEM. Otherwise, return 0.
-> + *
-> + * This function is only expected to be called from within
-> + * i40e_sync_vsi_filters.
-> + *
-> + * NOTE: This function expects to be called while under the
-> + * mac_filter_hash_lock
-> + */
-> +static int i40e_correct_vf_mac_vlan_filters(struct i40e_vsi *vsi,
-> +					    struct hlist_head *tmp_add_list,
-> +					    struct hlist_head *tmp_del_list,
-> +					    int vlan_filters,
-> +					    bool trusted)
-> +{
-> +	struct i40e_mac_filter *f, *add_head;
-> +	struct i40e_new_mac_filter *new_mac;
-> +	struct hlist_node *h;
-> +	int bkt, new_vlan;
-> +
-> +	hlist_for_each_entry(new_mac, tmp_add_list, hlist) {
-> +		new_mac->f->vlan = i40e_get_vf_new_vlan(vsi, new_mac, NULL,
-> +							vlan_filters, trusted);
-> +	}
-> +
-> +	hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
-> +		new_vlan = i40e_get_vf_new_vlan(vsi, NULL, f, vlan_filters,
-> +						trusted);
-> +		if (new_vlan != f->vlan) {
-> +			add_head = i40e_add_filter(vsi, f->macaddr, new_vlan);
-> +			if (!add_head)
-> +				return -ENOMEM;
-> +			/* Create a temporary i40e_new_mac_filter */
-> +			new_mac = kzalloc(sizeof(*new_mac), GFP_ATOMIC);
-> +			if (!new_mac)
-> +				return -ENOMEM;
-> +			new_mac->f = add_head;
-> +			new_mac->state = add_head->state;
-> +
-> +			/* Add the new filter to the tmp list */
-> +			hlist_add_head(&new_mac->hlist, tmp_add_list);
-> +
-> +			/* Put the original filter into the delete list */
-> +			f->state = I40E_FILTER_REMOVE;
-> +			hash_del(&f->hlist);
-> +			hlist_add_head(&f->hlist, tmp_del_list);
-> +		}
-> +	}
-> +
-> +	vsi->has_vlan_filter = !!vlan_filters;
-> +	return 0;
-> +}
-> +
->   /**
->    * i40e_rm_default_mac_filter - Remove the default MAC filter set by NVM
->    * @vsi: the PF Main VSI - inappropriate for any other VSI
-> @@ -1501,7 +1609,7 @@ struct i40e_mac_filter *i40e_add_mac_filter(struct i40e_vsi *vsi,
->   				       le16_to_cpu(vsi->info.pvid));
->   
->   	if (!i40e_is_vsi_in_vlan(vsi))
-> -		return i40e_add_filter(vsi, macaddr, I40E_VLAN_ANY);
-> +		return i40e_add_filter(vsi, macaddr, 0);
->   
->   	hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
->   		if (f->state == I40E_FILTER_REMOVE)
-> @@ -2379,10 +2487,15 @@ int i40e_sync_vsi_filters(struct i40e_vsi *vsi)
->   				vlan_filters++;
->   		}
->   
-> -		retval = i40e_correct_mac_vlan_filters(vsi,
-> -						       &tmp_add_list,
-> -						       &tmp_del_list,
-> -						       vlan_filters);
-> +		if (vsi->type != I40E_VSI_SRIOV)
-> +			retval = i40e_correct_mac_vlan_filters
-> +				(vsi, &tmp_add_list, &tmp_del_list,
-> +				 vlan_filters);
-> +		else
-> +			retval = i40e_correct_vf_mac_vlan_filters
-> +				(vsi, &tmp_add_list, &tmp_del_list,
-> +				 vlan_filters, pf->vf[vsi->vf_id].trusted);
-> +
->   		if (retval)
->   			goto err_no_memory_locked;
->   
-> @@ -2806,8 +2919,21 @@ int i40e_add_vlan_all_mac(struct i40e_vsi *vsi, s16 vid)
->   	int bkt;
->   
->   	hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
-> -		if (f->state == I40E_FILTER_REMOVE)
-> +		/* If we're asked to add a filter that has been marked for
-> +		 * removal, it is safe to simply restore it to active state.
-> +		 * __i40e_del_filter will have simply deleted any filters which
-> +		 * were previously marked NEW or FAILED, so if it is currently
-> +		 * marked REMOVE it must have previously been ACTIVE. Since we
-> +		 * haven't yet run the sync filters task, just restore this
-> +		 * filter to the ACTIVE state so that the sync task leaves it
-> +		 * in place.
-> +		 */
-> +		if (f->state == I40E_FILTER_REMOVE && f->vlan == vid) {
-> +			f->state = I40E_FILTER_ACTIVE;
->   			continue;
-> +		} else if (f->state == I40E_FILTER_REMOVE) {
-> +			continue;
-> +		}
->   		add_f = i40e_add_filter(vsi, f->macaddr, vid);
->   		if (!add_f) {
->   			dev_info(&vsi->back->pdev->dev,
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> index c007fba..23a708f 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> @@ -4295,6 +4295,7 @@ int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id,
->   		/* duplicate request, so just return success */
->   		goto error_pvid;
->   
-> +	i40e_vlan_stripping_enable(vsi);
->   	i40e_vc_reset_vf(vf, true);
->   	/* During reset the VF got a new VSI, so refresh a pointer. */
->   	vsi = pf->vsi[vf->lan_vsi_idx];
-> @@ -4310,9 +4311,9 @@ int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id,
->   	 * MAC addresses deleted.
->   	 */
->   	if ((!(vlan_id || qos) ||
-> -	    vlanprio != le16_to_cpu(vsi->info.pvid)) &&
-> +	     vlanprio != le16_to_cpu(vsi->info.pvid)) &&
->   	    vsi->info.pvid) {
-> -		ret = i40e_add_vlan_all_mac(vsi, I40E_VLAN_ANY);
-> +		ret = i40e_add_vlan_all_mac(vsi, 0);
->   		if (ret) {
->   			dev_info(&vsi->back->pdev->dev,
->   				 "add VF VLAN failed, ret=%d aq_err=%d\n", ret,
-> @@ -4359,7 +4360,7 @@ int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id,
->   		}
->   
->   		/* remove the previously added non-VLAN MAC filters */
-> -		i40e_rm_vlan_all_mac(vsi, I40E_VLAN_ANY);
-> +		i40e_rm_vlan_all_mac(vsi, 0);
->   	}
->   
->   	spin_unlock_bh(&vsi->mac_filter_hash_lock);
-> @@ -4673,6 +4674,11 @@ int i40e_ndo_set_vf_trust(struct net_device *netdev, int vf_id, bool setting)
->   		goto out;
->   
->   	vf->trusted = setting;
-> +
-> +	/* request PF to sync mac/vlan filters for the VF */
-> +	set_bit(__I40E_MACVLAN_SYNC_PENDING, pf->state);
-> +	pf->vsi[vf->lan_vsi_idx]->flags |= I40E_VSI_FLAG_FILTER_CHANGED;
-> +
->   	i40e_vc_reset_vf(vf, true);
->   	dev_info(&pf->pdev->dev, "VF %u is now %strusted\n",
->   		 vf_id, setting ? "" : "un");
+> How do you get the QL codes from this?
 > 
+> +enum if_eec_state {
+> +       IF_EEC_STATE_INVALID = 0,
+> +       IF_EEC_STATE_FREERUN,
+> +       IF_EEC_STATE_LOCKACQ,
+> +       IF_EEC_STATE_LOCKREC,
+> +       IF_EEC_STATE_LOCKED,
+> +       IF_EEC_STATE_HOLDOVER,
+> +       IF_EEC_STATE_OPEN_LOOP,
+> +       __IF_EEC_STATE_MAX,
+> +};
+
+This structure is for monitoring the lock state - or in other words - quality 
+of incoming sync signal. 
+
+The Locked state here means that the frequency used for transmitting the 
+data is syntonized with the input one. If something goes wrong, like the 
+frequency you recover from the link goes beyond the specified range or 
+the external signal is lost, the QL level will change accordingly.
+
+The application layer running on top of this API needs to get the proper
+QL level from the config file (just like the clockClass in PTP) and broadcast
+it when the state is locked and switch to QL-DNU when you get out of 
+the lock state and expire preset hw-dependent holdover clock.
+
+Also, if you are syntonizing to the SyncE clock you need to wait with
+passing along QL-levels until the state reported by the EEC changes
+to LOCKED.
+
+Regards
+Maciek
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
