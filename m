@@ -1,53 +1,154 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E02E63FC5D5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 13:16:52 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AAFAA3FC632
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 13:33:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 71CA860BB9;
-	Tue, 31 Aug 2021 11:16:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B74A440493;
+	Tue, 31 Aug 2021 11:33:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sIE34RktRGlF; Tue, 31 Aug 2021 11:16:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OkSL1eRvPbiD; Tue, 31 Aug 2021 11:33:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2210C60BA5;
-	Tue, 31 Aug 2021 11:16:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5757D40485;
+	Tue, 31 Aug 2021 11:33:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 111FC1BF39C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:16:42 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5231A1BF39C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:33:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EFB27819D5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:16:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0CBFB60BB9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:33:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Lyb8kRhmlAgL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Aug 2021 11:16:41 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WHcKDkgL6OWh for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Aug 2021 11:33:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 450B98101A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:16:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="215323807"
-X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="215323807"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Aug 2021 04:16:40 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D619960BA6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 11:33:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="279463355"
+X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="279463355"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Aug 2021 04:33:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="428149646"
-Received: from amlin-019-051.igk.intel.com ([10.102.19.51])
- by orsmga003.jf.intel.com with ESMTP; 31 Aug 2021 04:16:39 -0700
-From: Karen Sornek <karen.sornek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 31 Aug 2021 13:16:35 +0200
-Message-Id: <20210831111635.16161-1-karen.sornek@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.84,366,1620716400"; d="scan'208";a="531061833"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by FMSMGA003.fm.intel.com with ESMTP; 31 Aug 2021 04:33:27 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.4; Tue, 31 Aug 2021 04:33:26 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.10 via Frontend Transport; Tue, 31 Aug 2021 04:33:26 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Tue, 31 Aug 2021 04:33:26 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jLMVz4wy+nU8mvFJTPD6hk0cm0dlNE+3AeUTv7M2Hxo41++KJEM9ZVn1e65tb4pI+Vos6F2JfwXTUdA1KRsLiFvhnSc3Jj319Bw8I2mwkqCy5iF6IeL6mg/tjrejCBQp6na70Oaw0pDO93TSBAi3xNWrkvo/XtSQeRbajnWbHFyOedHOxyHGAOcyR2sOA0LjD/2uQc7Jix9ArlREgbcFA1G7E6ofp+gnP0s0esGVdZTEeDDks80W5cuGdK0lvzfLcvZI6+eFVQmBMWmBtIsrZZFAiqryyORO7LwFcAu/o32WcaFaPD2RnbrNeSobUQIlTH+FE657HwOocbvCLQzyaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5aUoZ7vgJ8jKF+1dw+X/wTqdLiVmZFsVi7URc1LUYSs=;
+ b=dtbd+KyTkZSI/Q7Lqpy3su3Sr/+Z54PouHj8GXtknFAW7IrKTM4gLECdRexjWm3jfCBl4BGnCaWSAeTlC/2RRGtgeHXYqdsmvF+dOgMPwv/u+/592gm7pWcYC/9SYoxw79Zb7dQHl0XUGjL4rpx7Z/oIWeqFST4QvTxajTf9yTJiyNeCwYf7lYcEeLh/CJ3yOawpFl+filntFJLp5rpK9PL8FBdfColdgw1xN41ps50vIcKV4e5LtBiouQj7QuyBK0/66nWja/NuGAa6eWyK+UVCFwZyBVb2yR2uaTCKDUM3cMB6M7QzUIihylb4ki09Aybh6/Wr3FStytnuh1MCzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5aUoZ7vgJ8jKF+1dw+X/wTqdLiVmZFsVi7URc1LUYSs=;
+ b=CEohaXzlsnpHmPlVsM9q2dzrOUL2vKqLxzamKdZvImNoqO8G8QthdsaDO+sXx2KQfQmtQLdsWAryNKdiUcsxCDku9Kpt4KvpLnwk/81SONpjvgXfJOLHsUlB/nwW4AYodQKdzgxi4qywvit+mrToPwHgCcbkXGex+LVWdPXUo1M=
+Received: from SJ0PR11MB4958.namprd11.prod.outlook.com (2603:10b6:a03:2ae::24)
+ by BYAPR11MB3045.namprd11.prod.outlook.com (2603:10b6:a03:88::33)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.23; Tue, 31 Aug
+ 2021 11:33:25 +0000
+Received: from SJ0PR11MB4958.namprd11.prod.outlook.com
+ ([fe80::7865:f66:4ed9:5062]) by SJ0PR11MB4958.namprd11.prod.outlook.com
+ ([fe80::7865:f66:4ed9:5062%7]) with mapi id 15.20.4373.031; Tue, 31 Aug 2021
+ 11:33:25 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Thread-Topic: [RFC v3 net-next 1/2] rtnetlink: Add new RTM_GETEECSTATE message
+ to get SyncE status
+Thread-Index: AQHXnP8G0rXtbOmRxkCrNLlOsBrAhKuMW7EAgAEBqeA=
+Date: Tue, 31 Aug 2021 11:33:25 +0000
+Message-ID: <SJ0PR11MB495871A89632732B0028404EEACC9@SJ0PR11MB4958.namprd11.prod.outlook.com>
+References: <20210829173934.3683561-1-maciej.machnikowski@intel.com>
+ <20210829173934.3683561-2-maciej.machnikowski@intel.com>
+ <20210830111416.34a8362d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210830111416.34a8362d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+authentication-results: kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 0d980634-9030-4a76-6bb3-08d96c732549
+x-ms-traffictypediagnostic: BYAPR11MB3045:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR11MB304554FFDD1FCD19225DDC1CEACC9@BYAPR11MB3045.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: J7sIqF0fA0ND6Zk/szC1nSTsEfDR1blOwz6PYj0nTwKsZ6b1BXuZ4vs4Zd2QCYfR7erEE8rg17RoFkzbTd1dM+W7MekE1hbWq+4FaKuNjiTR/gD2+IIOfkeJmCTuFLgoLKc+doAw+szeVNm6lhqdemKZbrUP5/2zf2wcblrVdkYay43v6RuLMAIguBsf6pv4fbc5NNjfJWQ9K88oPFCuOgGpgHalylvRslylSLMAztwaiNuhLX4lQw5fuFWQbVQg4kM7D+2WBDLiXaEvWXvFRBsTW4tcBrC2hS3HV4M8XXciyHqZlH6Mx8R4kPzMuihvKfPpoPT1eHyX32fHpxaiX98HACbKcB542nfqM15n/Zb0z2tmecD7XcLPuv56KscbX/saXYF+ah7/6jG3WPrF1O+9Sft+nfvr+tqINSkf2q2N5QIKi6PZ22Fr7hO5Pg0RqkbeU0wcaiHJMYcj1echv0obB56edylC36pB2kg8HQF02pkwZjkEcIiR+9TvKc1USpcTL5qyXPvs7SipLZECAEl45uef2uCJWrl+PBkOcs5wBteqHbwJKaprGLmMl+KPL1Y6LSvJburP4GdLC1FOBJRuvB3IvTwdvFkkdp9GhNCkxKzQs0oSgWJkM8IWqD99LtS+aABPZhuvjcPngxBsDoZsYvVc8NHJ0XxH5TeYYvzUfWy8mIh7a4lZQYo+jEIzVyP2FQ/zQP5DOGrVFaOegw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB4958.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(39860400002)(366004)(396003)(376002)(136003)(7696005)(4744005)(6506007)(66946007)(66556008)(83380400001)(8676002)(186003)(76116006)(8936002)(2906002)(38070700005)(64756008)(478600001)(5660300002)(9686003)(6916009)(53546011)(15650500001)(66476007)(54906003)(55016002)(38100700002)(26005)(52536014)(122000001)(4326008)(71200400001)(33656002)(316002)(86362001)(66446008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0ddnniKkhDHkhElkq7hTLNLBag//vrrTT1js3hO3Jkf+J2Zrr0WCvb1jhVKe?=
+ =?us-ascii?Q?7J+V3jHjvZ7hP8TWyStFIPV7hamBhp3xMFWqW1AunpG1F1mUijetx0+tSdDw?=
+ =?us-ascii?Q?TbEkgab2NM/LnrP6LJDknwXK2C7jkQTM3mQovqo87OpgFRq39+N5apHJQvuZ?=
+ =?us-ascii?Q?ECKOb2twvTYlKoMXEnjSCArr0n3bpX1k9HnRVQ2InauyGTD8PTnvDiTuN2Ii?=
+ =?us-ascii?Q?MSEOrv/0G5GpsKFixW5U3Wnf6Rvtj3b4yU3k9Bt6HMyfyk0PTFD9XIg4YZpR?=
+ =?us-ascii?Q?0yOuVZ+nkmnA+E1Tv+XSKKJpI+AL7uLn8ocgqpI6Ejb14OvyLYxueMRQPYvU?=
+ =?us-ascii?Q?JdiyX3TEKP5Qd9HYX6nePHl3jv80RGa9bf5gRU4+lJ7wu8ORs9QKKElAkuRS?=
+ =?us-ascii?Q?gfSBl1Q1HnvkD0lUr0DiXJo85uSp3STjlXa0hfgnBMWEqZTYhlT+jttMHHjV?=
+ =?us-ascii?Q?hL+fdsFkcc9f9Xl8hHvGtme/tm8nitpfHfuxOsJu+1MdJ2FdCki0HfABFlub?=
+ =?us-ascii?Q?xcwWxB2fPe21pMh7RvTGo6EQGP3db5VL7LQNHx2zt4Lulgue3shbZJTOKvoW?=
+ =?us-ascii?Q?kvKiHX/fxzlRQ+6PFVtEKH0kGk6Dul8M7D3wvge//Yt7WYwp77N+qSBd4L5U?=
+ =?us-ascii?Q?4epbDHrZMyMUg1fRaFsg7Ak7ChdOnl2HnGHZLGhC9orXIRd7lCOfv5P0RpFX?=
+ =?us-ascii?Q?dmv00j1VnzirE4BgAPYeflF0rj7ZW+yODff6zsjb+B0H6GvZypdK7u7t03d1?=
+ =?us-ascii?Q?X/lfFPu4/0YW3GkjplyPcTwSoY+YL1zIKZZ1XEarTCx5h7ggOF2UsasI9zZV?=
+ =?us-ascii?Q?UGPf337dIzAeT52pb4oCvwA9Ec2cHe5AdhGpy1lFaeW/oYLbFPHL4mNSqfc0?=
+ =?us-ascii?Q?cyW8dqp+EogYJ1iJ85pwQrc4G1S559+IRaWvbxMwPAOceNA1XbP5Y9F6JxJT?=
+ =?us-ascii?Q?GW9xYKfQAEmWUMz9wrz7X61LZcxutAdIa2aKuR+gZZNL9eXsIqT5zPKO+Ptj?=
+ =?us-ascii?Q?TcDm+zmc9RsOH2RcasPLkVUe16cHhJ+v6WDkfaxTG6mQ40GgPGsvsqeJLrdL?=
+ =?us-ascii?Q?ywtQfya6MJqCfELCdghKnHD9Ovh9Z+bNKm6B6IyOqN65AuL80JtYILNvMReH?=
+ =?us-ascii?Q?aGceSxrE/2wrBJ3lzgS/rq9+sypDwpwdd5cWJtBymwnkytiu/jLP11xpWqzX?=
+ =?us-ascii?Q?8gWfaKZd+on6wPgcDdybm9syKZZh015zZ/9qn2DnZkQ/38jYblCB2Y6ylZjJ?=
+ =?us-ascii?Q?dlkR/55mNNP8DQz9tHgavLhqBB5gk00U7kha6NT/HZWZrdlPOJDHx8syXL2h?=
+ =?us-ascii?Q?h30=3D?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] igb: Fix removal of unicast MAC
- filters of VFs
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB4958.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0d980634-9030-4a76-6bb3-08d96c732549
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2021 11:33:25.1267 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KvoOL9O/p34XkjnC7j8LYQtg+M4EiMvpBmIw3kHxlUWBtw0shk3PEOCF2lH0He6hxKPDIpz2XrMXMg8o6I6EP0SIjvJjf0deaX6+AAY2MkM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3045
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [RFC v3 net-next 1/2] rtnetlink: Add new
+ RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,70 +161,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karen Sornek <karen.sornek@intel.com>
+Cc: "abyagowi@fb.com" <abyagowi@fb.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Move checking condition of VF MAC filter before clearing
-or adding MAC filter to VF to prevent potential blackout caused
-by removal of neccessary and working VF's MAC filer.
+> -----Original Message-----
+> From: Jakub Kicinski <kuba@kernel.org>
+> Sent: Monday, August 30, 2021 8:14 PM
+> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> Subject: Re: [RFC v3 net-next 1/2] rtnetlink: Add new RTM_GETEECSTATE
 
-Fixes: 1b8b062a99dc ("igb: add VF trust infrastructure")
-Signed-off-by: Karen Sornek <karen.sornek@intel.com>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 28 +++++++++++------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+> > +#define IF_EEC_PIN_UNKNOWN	0xFF
+> > +
+> > +struct if_eec_state_msg {
+> > +	__u32 ifindex;
+> > +	__u8 state;
+> > +	__u8 src;
+> > +	__u8 pin;
+> > +	__u8 pad;
+> > +};
+> 
+> Please break this structure up into individual attributes.
+> 
+> This way you won't have to expose the special PIN_UNKNOWN value to user
+> space (skip the invalid attrs instead).
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 842b50cc9..98e977fe5 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -7648,6 +7648,20 @@ static int igb_set_vf_mac_filter(struct igb_adapter *adapter, const int vf,
- 	struct vf_mac_filter *entry = NULL;
- 	int ret = 0;
- 
-+	if ((vf_data->flags & IGB_VF_FLAG_PF_SET_MAC) &&
-+	    !vf_data->trusted) {
-+		dev_warn(&pdev->dev,
-+			 "VF %d requested MAC filter but is administratively denied\n",
-+			  vf);
-+		return -EINVAL;
-+	}
-+	if (!is_valid_ether_addr(addr)) {
-+		dev_warn(&pdev->dev,
-+			 "VF %d attempted to set invalid MAC filter\n",
-+			  vf);
-+		return -EINVAL;
-+	}
-+
- 	switch (info) {
- 	case E1000_VF_MAC_FILTER_CLR:
- 		/* remove all unicast MAC filters related to the current VF */
-@@ -7661,20 +7675,6 @@ static int igb_set_vf_mac_filter(struct igb_adapter *adapter, const int vf,
- 		}
- 		break;
- 	case E1000_VF_MAC_FILTER_ADD:
--		if ((vf_data->flags & IGB_VF_FLAG_PF_SET_MAC) &&
--		    !vf_data->trusted) {
--			dev_warn(&pdev->dev,
--				 "VF %d requested MAC filter but is administratively denied\n",
--				 vf);
--			return -EINVAL;
--		}
--		if (!is_valid_ether_addr(addr)) {
--			dev_warn(&pdev->dev,
--				 "VF %d attempted to set invalid MAC filter\n",
--				 vf);
--			return -EINVAL;
--		}
--
- 		/* try to find empty slot in the list */
- 		list_for_each(pos, &adapter->vf_macs.l) {
- 			entry = list_entry(pos, struct vf_mac_filter, l);
--- 
-2.27.0
+Addressed all other comments. 
+For this one - I'll add flags which will indicate validity of all values. Since 
+this structure is self-contained and addresses the generic need for state 
+report.
+
+Will resubmit as a patch.
+
+Thanks!
+Maciek
 
 _______________________________________________
 Intel-wired-lan mailing list
