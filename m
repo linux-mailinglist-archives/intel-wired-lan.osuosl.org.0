@@ -1,61 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 961363FBF6C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 01:29:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BFD33FC1B5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Aug 2021 05:59:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2EDFB60B4F;
-	Mon, 30 Aug 2021 23:29:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C933B80CE2;
+	Tue, 31 Aug 2021 03:59:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UH7eZuE6d3CD; Mon, 30 Aug 2021 23:29:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rVoC1tyoDXa9; Tue, 31 Aug 2021 03:59:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A573660B5D;
-	Mon, 30 Aug 2021 23:29:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E238280CE5;
+	Tue, 31 Aug 2021 03:59:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1DDD01BF401
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 23:29:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EFFBE1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 03:59:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F19D0608FE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 23:29:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CE2D2402FF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 03:59:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tVy3yREQIJJC for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Aug 2021 23:29:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sSEg4eUIi9gX for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Aug 2021 03:59:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 53D1D605D4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Aug 2021 23:29:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 803B260FC0;
- Mon, 30 Aug 2021 23:29:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630366150;
- bh=xq8XScnmTK4fr9P3i7S760aCutNMN+7LDzGhcmVTh4s=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=aprqEKThxV+fIq/CmJneljvgQ33CjmgOaY7cZuBQkpsGCkoENprHmGElGAfxTWEQq
- CRWRsd1Pjyqdh+3a9EtrIA94B7Slf0p2QkFhkDUYiVsvTIe4sueBas55hGulzNscmb
- DM7d8pAIL630qA2N3o8QN/vsWQntuZUIWxayfp9Q8GT342bxUE5u8aDitg10EYF1ey
- cUIcR2zkOJQiGK3QgB8Q1sqhkmYNyB3BYKnB+xlFU9oD3ohYBLCcjOUJRydYfMGOxG
- 9mfzbPSyPXTFoeMtuZ30jYzKikRxJjhfS7nZrPPZtqmnhYLINFHuZh2xmJbYF4ZW0p
- 3R0j2vPi4KehQ==
-Date: Mon, 30 Aug 2021 16:29:09 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Richard Cochran <richardcochran@gmail.com>
-Message-ID: <20210830162909.110753ec@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20210830205758.GA26230@hoboy.vegasvil.org>
-References: <20210829080512.3573627-1-maciej.machnikowski@intel.com>
- <20210829080512.3573627-2-maciej.machnikowski@intel.com>
- <20210829151017.GA6016@hoboy.vegasvil.org>
- <PH0PR11MB495126A63998DABA5B5DE184EACA9@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210830205758.GA26230@hoboy.vegasvil.org>
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B0D98402FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Aug 2021 03:59:00 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10092"; a="218404729"
+X-IronPort-AV: E=Sophos;i="5.84,365,1620716400"; d="scan'208";a="218404729"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2021 20:58:59 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,365,1620716400"; d="scan'208";a="540852766"
+Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 30 Aug 2021 20:58:58 -0700
+Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mKuvJ-0005rG-WD; Tue, 31 Aug 2021 03:58:57 +0000
+Date: Tue, 31 Aug 2021 11:58:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <612da8d4.1rwuskK8w7DwApU/%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC v2 net-next 1/2] rtnetlink: Add new
- RTM_GETSYNCESTATE message to get SyncE status
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ f3af7110b111b479ea612d726b5c67e70d9d87f5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,52 +63,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bsd@fb.com, "abyagowi@fb.com" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Machnikowski,
- Maciej" <maciej.machnikowski@intel.com>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 30 Aug 2021 13:57:58 -0700 Richard Cochran wrote:
-> > Please take a look at the 10.2 Operation modes of the G.8264 and at the Figure A.1
-> > which depicts the EEC. This interface is to report the status of the EEC.  
-> 
-> Well, I read it, and it is still fairly high level with no mention at
-> all of "DPLL".  I hope that the new RTNL states will cover other
-> possible EEC implementations, too.
-> 
-> The "Reference source selection mechanism" is also quite vague.  Your
-> patch is more specific:
-> 
-> +enum if_eec_src {
-> +       IF_EEC_SRC_INVALID = 0,
-> +       IF_EEC_SRC_UNKNOWN,
-> +       IF_EEC_SRC_SYNCE,
-> +       IF_EEC_SRC_GNSS,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: f3af7110b111b479ea612d726b5c67e70d9d87f5  i40e: Fix issue when maximum queues is exceeded
 
-Hmm, IDK if this really belongs in RTNL. The OCP time card that
-Jonathan works on also wants to report signal lock, and it locks
-to GNSS. It doesn't have any networking functionality whatsoever.
+elapsed time: 723m
 
-Can we add a genetlink family for clock info/configuration? From 
-what I understood discussing this with Jonathan it sounded like most
-clocks today have a vendor-specific character device for configuration
-and reading status.
+configs tested: 111
+configs skipped: 3
 
-I'm happy to write the plumbing if this seems like an okay idea 
-but too much work for anyone to commit.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> +       IF_EEC_SRC_PTP,
-> +       IF_EEC_SRC_EXT,
-> +       __IF_EEC_SRC_MAX,
-> +};
-> 
-> But I guess your list is reasonable.  It can always be expanded, right?
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+m68k                       m5275evb_defconfig
+riscv             nommu_k210_sdcard_defconfig
+powerpc                      pmac32_defconfig
+um                                  defconfig
+arm                          collie_defconfig
+mips                            ar7_defconfig
+ia64                        generic_defconfig
+sparc64                             defconfig
+arm                          iop32x_defconfig
+arm                        neponset_defconfig
+m68k                             alldefconfig
+mips                     loongson2k_defconfig
+mips                      fuloong2e_defconfig
+powerpc                      bamboo_defconfig
+arm                         s3c2410_defconfig
+arm                           sunxi_defconfig
+h8300                       h8s-sim_defconfig
+sh                           se7724_defconfig
+m68k                        m5407c3_defconfig
+sh                         apsh4a3a_defconfig
+powerpc                 mpc834x_mds_defconfig
+mips                        vocore2_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a014-20210830
+x86_64               randconfig-a015-20210830
+x86_64               randconfig-a013-20210830
+x86_64               randconfig-a016-20210830
+x86_64               randconfig-a012-20210830
+x86_64               randconfig-a011-20210830
+i386                 randconfig-a016-20210830
+i386                 randconfig-a011-20210830
+i386                 randconfig-a015-20210830
+i386                 randconfig-a014-20210830
+i386                 randconfig-a012-20210830
+i386                 randconfig-a013-20210830
+s390                 randconfig-r044-20210830
+arc                  randconfig-r043-20210830
+riscv                randconfig-r042-20210830
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+i386                 randconfig-c001-20210830
+s390                 randconfig-c005-20210830
+riscv                randconfig-c006-20210830
+powerpc              randconfig-c003-20210830
+mips                 randconfig-c004-20210830
+arm                  randconfig-c002-20210830
+x86_64               randconfig-c007-20210830
+i386                 randconfig-a005-20210830
+i386                 randconfig-a002-20210830
+i386                 randconfig-a003-20210830
+i386                 randconfig-a006-20210830
+i386                 randconfig-a004-20210830
+i386                 randconfig-a001-20210830
+x86_64               randconfig-a005-20210830
+x86_64               randconfig-a001-20210830
+x86_64               randconfig-a003-20210830
+x86_64               randconfig-a002-20210830
+x86_64               randconfig-a004-20210830
+x86_64               randconfig-a006-20210830
+s390                 randconfig-r044-20210831
+hexagon              randconfig-r041-20210831
+hexagon              randconfig-r045-20210831
+riscv                randconfig-r042-20210831
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
