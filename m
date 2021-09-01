@@ -1,53 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20C153FD5DE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Sep 2021 10:48:32 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 412FB3FD60A
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Sep 2021 10:57:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B396081D7D;
-	Wed,  1 Sep 2021 08:48:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C2245406D3;
+	Wed,  1 Sep 2021 08:57:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cX31T1AmEtVE; Wed,  1 Sep 2021 08:48:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l4iTcWgSX6bG; Wed,  1 Sep 2021 08:57:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 567EB81DA0;
-	Wed,  1 Sep 2021 08:48:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B28F406F3;
+	Wed,  1 Sep 2021 08:57:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8F1481BF834
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:48:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BB0B91BF834
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:57:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 76107400F0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:48:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A73F8400F0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:57:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id koalwfvApbE6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Sep 2021 08:48:19 +0000 (UTC)
+ with ESMTP id wTQuAElr8ZZL for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Sep 2021 08:57:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A0CB5400C3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:48:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EDF2E400C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 08:57:10 +0000 (UTC)
 Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
  (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id ADCC861E64784;
- Wed,  1 Sep 2021 10:48:16 +0200 (CEST)
-To: Karen Sornek <karen.sornek@intel.com>
-References: <20210901082731.74893-1-karen.sornek@intel.com>
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5E79D61E64784;
+ Wed,  1 Sep 2021 10:57:09 +0200 (CEST)
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Witold Fijalkowski <witoldx.fijalkowski@intel.com>
+References: <20210901082657.25109-1-jedrzej.jagielski@intel.com>
 From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <40332f79-5018-cf22-92f9-e94595dd5a68@molgen.mpg.de>
-Date: Wed, 1 Sep 2021 10:48:16 +0200
+Message-ID: <09fab5e6-532f-85a1-3232-223d4870551f@molgen.mpg.de>
+Date: Wed, 1 Sep 2021 10:57:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210901082731.74893-1-karen.sornek@intel.com>
+In-Reply-To: <20210901082657.25109-1-jedrzej.jagielski@intel.com>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix not to overload flags
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix displaying queue
+ statistics shown by ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,70 +62,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mitch Williams <mitch.a.williams@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Karen,
+Dear Witold, dear Jedrzej,
 
 
-Am 01.09.21 um 10:27 schrieb Karen Sornek:
-> The IAVF_FLAG_REINIT_ITR_NEEDED flag was being used for two different
-> purposes. As originally written, it indicates to the ITR mechanism to
-> update the interrupt registers to a new setting. Sometime later, it was
-> overloaded to indicate that interrupts need to be completely
-> reinitialized during reset. This causes problems when ethtool -C is used
-> while a reset is in progress, and can lead to RTNL deadlocks.
-> 
-> To fix this, add a new flag with a new name and use that to trigger
-> MSI-X reinit.
+Am 01.09.21 um 10:26 schrieb Jedrzej Jagielski:
+> Change the number of used queues amount in the NIC statistics. The
+> defined number was displaced with actual amount of queues. This fixes
 
-Please mention the macro name in the commit message.
+Maybe add the variable names in brackets after it?
 
-For the summary, please use a statement (with a verb in imperative 
-mood). Maybe:
+> problem with displaying queues statistics, that were not configured.
 
-iavf: Fix RTNL deadlock with new flag IAVF_FLAG_REINIT_MSIX_NEEDED
+Example outputs showing the problem might be helpful and useful for testing.
 
-> Fixes: 5b36e8d04b44 ("i40evf: Enable VF to request an alternate queue allocation")
-> Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
-> Signed-off-by: Karen Sornek <karen.sornek@intel.com>
+> Fixes: 6dba41cd02fc ("i40evf: update ethtool stats code and use helper functions")
+> Signed-off-by: Witold Fijalkowski <witoldx.fijalkowski@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 > ---
->   drivers/net/ethernet/intel/iavf/iavf.h      | 1 +
->   drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
->   2 files changed, 2 insertions(+), 1 deletion(-)
+>   drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-> index 21c957755..5a36af8b9 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf.h
-> @@ -272,6 +272,7 @@ struct iavf_adapter {
->   #define IAVF_FLAG_LEGACY_RX			BIT(15)
->   #define IAVF_FLAG_REINIT_ITR_NEEDED		BIT(16)
->   #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
-> +#define IAVF_FLAG_REINIT_MSIX_NEEDED		BIT(20)
->   /* duplicates for common code */
->   #define IAVF_FLAG_DCB_ENABLED			0
->   	/* flags for admin queue service task */
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index 80437ef26..4b7a670de 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -3556,7 +3556,7 @@ int iavf_process_config(struct iavf_adapter *adapter)
->   			"Requested %d queues, but PF only gave us %d.\n",
->   			num_req_queues,
->   			adapter->vsi_res->num_queue_pairs);
-> -		adapter->flags |= IAVF_FLAG_REINIT_ITR_NEEDED;
-> +		adapter->flags |= IAVF_FLAG_REINIT_MSIX_NEEDED;
->   		adapter->num_req_queues = adapter->vsi_res->num_queue_pairs;
->   		iavf_schedule_reset(adapter);
->   		return -ENODEV;
-> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> index 7cbe59beeebb..6d67cd3b96bd 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> @@ -404,10 +404,10 @@ static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
+>   
+>   	iavf_add_stat_strings(&data, iavf_gstrings_stats);
+>   
+> -	/* Queues are always allocated in pairs, so we just use num_tx_queues
+> -	 * for both Tx and Rx queues.
+> -	 */
+> -	for (i = 0; i < netdev->num_tx_queues; i++) {
+> +	/* Queues are always allocated in pairs, so we just use
+> +	* real_num_tx_queues for both Tx and Rx queues.
+> +	*/
 
-The diff looks good to me.
+The alignment of the comment characters looks off.
+
+> +	for (i = 0; i < netdev->real_num_tx_queues; i++) {
+>   		iavf_add_stat_strings(&data, iavf_gstrings_queue_stats,
+>   				      "tx", i);
+>   		iavf_add_stat_strings(&data, iavf_gstrings_queue_stats,
+> 
 
 
 Kind regards,
