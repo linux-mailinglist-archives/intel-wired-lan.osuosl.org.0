@@ -1,83 +1,154 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E03B43FD76A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Sep 2021 12:12:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 085953FD7D8
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Sep 2021 12:41:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F0FB1404B0;
-	Wed,  1 Sep 2021 10:12:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A3EBF60703;
+	Wed,  1 Sep 2021 10:41:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vj5fY6acOcfS; Wed,  1 Sep 2021 10:12:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ib4XAFO7SjJq; Wed,  1 Sep 2021 10:41:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3616A4022F;
-	Wed,  1 Sep 2021 10:12:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4FCE26072C;
+	Wed,  1 Sep 2021 10:41:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DF5801BF681
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:12:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C3A91BF681
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:41:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CD35782779
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:12:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7794340117
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:41:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jsmge7e7vBwD for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Sep 2021 10:12:34 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x532.google.com (mail-pg1-x532.google.com
- [IPv6:2607:f8b0:4864:20::532])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 99B0A80B27
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:12:34 +0000 (UTC)
-Received: by mail-pg1-x532.google.com with SMTP id k24so2238532pgh.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 01 Sep 2021 03:12:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Blh2sCCWmLbhLSQpe3+Jm96zIa4flfmEN7PrfkdI5v4=;
- b=Q2EgLASQd2uJSXQumfXWCrXyPH8dvnuzjWnOS9Qr6E1Xyw+KQ97MQq8SPrG6ZpgJag
- 20Su6W1ASZiTcFz4oljVwA/e4CEupIG57pEkVRnatI/h56QYeoYoMREjcxmPhBa5kD7p
- 5FKREXC+WpxuV/EnIbbIht5dyYczPONSVm15wli3yBdIP1Xw8iFnW2hMkNsTXF40ZDw0
- 9wJdUx/6sBXFlpKYomE1PCBSqDfL5/YW9fjOEmJbScYVgIyPr6FlP5nZTaVworzYtBKH
- MzyZeot5i2rDezsLXba15f5MQOGltTDJ4XR/TxCa/7DHhkK/S357aSa1MiO88Z5tIsGZ
- IAsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Blh2sCCWmLbhLSQpe3+Jm96zIa4flfmEN7PrfkdI5v4=;
- b=Xk1B8kfC3qxB41dbgWpi6cTeeuByGC9i7QJUR0crBeGb+y/AIPQIrOcrTSyJwlDuj+
- ie/Xm+tOOQ85bC30EaspuWCHeiJI4FqkPBbmKhvsYiR/CLQ/ZIpnvcgCvbiAk2AtQ78H
- UirjKQxQHRTt5HHvHLhq2q/zwydsv5vIeiL0LXRumv9Qvoji9pHKNuf8akkA5t+c3hAo
- OQjJKbVt+iK6gU6fAeH7KbSAizxRa0P53wI+VGyGq62pxZicKOH+ssl601GH9j2y6ohM
- SKcLGslyMPMHskUrmuL2vL/O6ik9mR0xxE9466MkO2hkG+k8BPmDu0+Q+ssa3cccS5Fb
- 9shg==
-X-Gm-Message-State: AOAM53218R3KwtW+MtW3eSQ2nBZVC1owIEVbWe3CbKfhxYMyX7zlDe6d
- rUFOLYL4/V+F6cg7XQCal8A=
-X-Google-Smtp-Source: ABdhPJzAJUV8QGS+RJb0NCebYyBMWY9FvzSXiEZ7iJivAxx1WOzwmIyZwRN+3iQp84ep7MhjOqMHqA==
-X-Received: by 2002:a62:2fc1:0:b0:3f5:176f:67c8 with SMTP id
- v184-20020a622fc1000000b003f5176f67c8mr25775375pfv.17.1630491153965; 
- Wed, 01 Sep 2021 03:12:33 -0700 (PDT)
-Received: from localhost.localdomain ([162.219.34.246])
- by smtp.gmail.com with ESMTPSA id j6sm19966718pfn.107.2021.09.01.03.12.29
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 01 Sep 2021 03:12:33 -0700 (PDT)
-From: kerneljasonxing@gmail.com
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org, ast@kernel.org, daniel@iogearbox.net,
- hawk@kernel.org, john.fastabend@gmail.com, andrii@kernel.org, kafai@fb.com,
- songliubraving@fb.com, yhs@fb.com, kpsingh@kernel.org
-Date: Wed,  1 Sep 2021 18:12:06 +0800
-Message-Id: <20210901101206.50274-1-kerneljasonxing@gmail.com>
-X-Mailer: git-send-email 2.30.1 (Apple Git-130)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Zg1qcAFLv_ss for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Sep 2021 10:41:30 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 664DD400F0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Sep 2021 10:41:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10093"; a="215579227"
+X-IronPort-AV: E=Sophos;i="5.84,369,1620716400"; d="scan'208";a="215579227"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Sep 2021 03:41:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,369,1620716400"; d="scan'208";a="520224218"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by fmsmga004.fm.intel.com with ESMTP; 01 Sep 2021 03:41:25 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Wed, 1 Sep 2021 03:41:25 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Wed, 1 Sep 2021 03:41:24 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.41) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Wed, 1 Sep 2021 03:41:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H/Q1zScwSZIcqdF/qMheE9VsL0cdrQGX4aQwzCxr+GEYB9Mf6+Xe8QfhxmG9MiAs+HHxL6KU9UTO7lo6RNoCCv8mY84BSbqvZw0HImHGprPMith1UZn4zJH8dsfl7CI/10NUsufc5n0QO2SUimoMmJhGcxgec73kSTCY5eOOchlu+0lumV0T4l7RClX5SLwRtqbDbHQbVxJRwhtPe9CKdCpTQipziH3QmE3SPdMTwguAQGjtono0jsjhnxcVIuAF4cAbKkZlS+zlYGFBRm12u9YreOnaYnPXYrwY8Q6XC5iMguxD+huCvQEUcG+3/h5MIAzyzuaxrg6zvgqvaqKOmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=u/Hqa8ZGq8VnqJ18n12VgtNb0Xig+zT1cM0TbaX46lQ=;
+ b=Lu6IJTyscKabcfh2PGkR/lPNnw1g45YX6xoGy5WOXcivW37VJSwkQwzfbUqL5OH5Qwt2b4FcNMU+zF8moeUD6i1i6SSSK+t+LCx0DjwWZvh9WY/Qnn5CQTJ65JFwbnldYFqjD/1wj52AR8dGNcWuRSUR8CeLscESxgtVP5xd4i+Z4fm++TiUPDnF7IUKcBOkZcifyePLUUazKezr+39FvGN4nlr1/6dXr+cKMGlDGrnv+EUESB7vkaugCvxmEeKqEu1Q0ln4fSsv4NYg+KMg7WkX+dYqm3NcmhUAiKcPUUVgvG3Yat8UhBtliEiGLp3+bnuswsJ/03QzQMm1ZgDRNg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=u/Hqa8ZGq8VnqJ18n12VgtNb0Xig+zT1cM0TbaX46lQ=;
+ b=AJKperDL19fe7C6mUEIoA/Ku2/eeYYPaYSk0dwZ4+bh6gDQQ2opgdl1eQJa0WpOgRPZKLTEUeoFBhAW8WnBObMihisubSqzbUZ/nDu0tnYYwtxzG5gfSXL5wluh0FbocvXI+uSMS6Wl9o6UYtIxeWx+5q/seISnNeECZn4Eesio=
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com (2603:10b6:303:5d::7)
+ by MW3PR11MB4650.namprd11.prod.outlook.com (2603:10b6:303:54::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.17; Wed, 1 Sep
+ 2021 10:41:22 +0000
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::a8a8:6311:c417:ebdf]) by MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::a8a8:6311:c417:ebdf%8]) with mapi id 15.20.4478.019; Wed, 1 Sep 2021
+ 10:41:22 +0000
+From: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [next-queue v4 12/12] ice: add port
+ representor ethtool ops and stats
+Thread-Index: AQHXlVdNmjJ5kDuxuEuWyOMyKmX6/6uPEPrA
+Date: Wed, 1 Sep 2021 10:41:22 +0000
+Message-ID: <MW3PR11MB4554325EF24F737D6CEEE6DD9CCD9@MW3PR11MB4554.namprd11.prod.outlook.com>
+References: <20210820000859.680522-1-anthony.l.nguyen@intel.com>
+ <20210820000859.680522-13-anthony.l.nguyen@intel.com>
+In-Reply-To: <20210820000859.680522-13-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 63c0b1eb-4ed1-4c2f-9411-08d96d350a79
+x-ms-traffictypediagnostic: MW3PR11MB4650:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MW3PR11MB4650697FAA87577600D562099CCD9@MW3PR11MB4650.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2201;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 6Ham+Udj/yh5vdUCIWTcAHMRUpg3vukmD4c6QjoubYdIWq3ZjGLs2PTl+JkrZrsAcgxWdCY9o+9AJul0ie+HmL0EhpxpQRvFS+K/7Do4wpl1AxD1pMAAr72n/eYu+UwJ1HcLPvnKqR1gYaYzRkDikHkg6yjwt1+6jWk45phCLj2HOpFoTPoZ0rOb7E4vikrxcdi7WYEigs66+MjvGBDwu08PhcabLO/tPo8QEnWq2OjhBaJ6C1GQP280TZ4aIh7UAzHVKt3wXJOnuxOPKbw4YZi03IL3uqz/NWaUZC+Oh5rReE2pxHsi4MQwXykyOSkTUF4cOF6OQvLvjSEvyXCN66tOhQw5vSQv7z6DM0119AilfwE2eogfdbe7py7jKSQoDa5yP4lmLq0bSaX/0UsVI3uzqdhAj5Pu2TC4T64eQWWsj8bo2odnj0syi18yLjGwt7pdax0DrmJY0o/J4zOQ5jAdPvGEX8XWT2XFwkQg6G8fLlSP4M68hmymuUet9WX3noGvluuGzFMdKPoVsJ7mUIlLjJpvPpab2A4K+MPelrKFuwTy/89oWkVcB6LIzEH35A8VUL8I4gqDSusSt5u09tq0wdppoC6FH7/mzXFGP684MqfKf+XL52R45nLyAR4g/VmSeA1GcD01wUjoGzQmTe14j1jbOWf1wY/F17610pmoSlaBg+nLeCcjhBCjX8yUQnKYCuhwekU5DS1fhf0E7w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW3PR11MB4554.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(376002)(366004)(346002)(396003)(39860400002)(83380400001)(26005)(64756008)(66476007)(110136005)(66556008)(316002)(66946007)(71200400001)(55016002)(33656002)(5660300002)(9686003)(66446008)(186003)(76116006)(8676002)(38100700002)(8936002)(6506007)(7696005)(38070700005)(122000001)(478600001)(86362001)(2906002)(52536014);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?YFGAU/q9x6021H1U0UnD3cwcoAyqpu+VvtObl6a0Ru9tZNjs/lpkWPDnRMPg?=
+ =?us-ascii?Q?5nl/9x6jbpXOs0PCdO2gsNpngiyw3I9tV6zQH1XoeWR4zUuoNQl4OcMXYFU4?=
+ =?us-ascii?Q?fTaSWNKHRIMRwgtPsBCHzitT/JZu750UfX8aQZ/tzjAdJ8U7OujY5wvUAaNn?=
+ =?us-ascii?Q?sJ3zuwDY1GZVF0NUZeY160J8IOHgbW5g666kEQreqsnu5KLpNHzlVbDsfMME?=
+ =?us-ascii?Q?722NduKedRjFEccp1ON9rs9tbprQushepa4spE9pg8BGiHyxu2FZbyaa9DND?=
+ =?us-ascii?Q?/erNn27Dd1wOUIlH19s0ywBOsWcgm4Vu7Hb1LCOD/h8MQXhKIQJQyDdItkSG?=
+ =?us-ascii?Q?plXZqNH0ZhQZaEPaIeKIe4FDxl/prHGHapXK4Btdt0w4VjY4WxoIsvjuE07a?=
+ =?us-ascii?Q?+1gvn+2WGXtLZ3ozn73iQnkBncjy+y1w+EDEyDONw1bOK+Dyayjml1thSri5?=
+ =?us-ascii?Q?h/mn8oRbahTV6Gc8EsaXDlRm29Q5ed7M/KFjdPnQDQNeG8xL/caH/6A1hSpE?=
+ =?us-ascii?Q?DyGNaTVOiDD7il09LdzfkyHm/dFRHWw/b8105IhlrWHQ+4M29bDEKQ8MNwM+?=
+ =?us-ascii?Q?JYgkMwBB04VqrbiDNyjEfZYhxUd1awO8tCe5/EeI94Om+PtGRTqwaz8n4+bF?=
+ =?us-ascii?Q?e/hr/E1y2DuwZLJnK5qtHpvMLX7c+XlVghSyLfBJqiRmpVi5hkNDOHGhzTwc?=
+ =?us-ascii?Q?VT+mV+6hAiXD97d3G8p7OdF7djNHUzGRLQz4qDPZ+jt0DRvux6aOQHVCHlSO?=
+ =?us-ascii?Q?LB2t8MfMxmzVCnvkYUThJ6yAPSUWTJNG1TZEkrERejyAFWiAWQfMv8pz9i2S?=
+ =?us-ascii?Q?IOlGmWNfOPthxgr4+RWi4uW+ycy//QHuJogCsJDc/SL1KCc4Uj4BU7DJT5uy?=
+ =?us-ascii?Q?5nnbVoKqtUizhRH0VV2smnd7oHcY5HIb+ikCcoZdPEndBW1g8Cz3XOPcZFvb?=
+ =?us-ascii?Q?aiV5adEQu1LBtrfmLHOs2fxv4ZqqP8+YKMYyduEym02usG8FnEfyNQXHZw0i?=
+ =?us-ascii?Q?loKhqzZy8ZI3OrZa9FpwTWrKMP6TTHl6tUDdG0YmRkFuoX2wrz6x/6wio+pw?=
+ =?us-ascii?Q?Ib9GKLJf4d7qbDeTYUeWJWMVfGyAjxMRbRWxnrFnRrzHkknCJ+N6g+sOrS76?=
+ =?us-ascii?Q?mSBkrhcUB+CP17ZHEEb2szJgiMcTwGATddZDV+iePcq1TxLJvzKu7xftHpU+?=
+ =?us-ascii?Q?H9FiGaqBFxfPgsDF0RFW9BqMLrzUUyHgp6HJoFRTVu/BpZhtfZ1LW0wqI6CU?=
+ =?us-ascii?Q?0p92RGB3lmcuHBeHV4uozfmNHI/Bh0FTitZLigvD+YQkyqGi+lF0UNipF8Ia?=
+ =?us-ascii?Q?hx2jHehCpVi1YEkTRUQrJ6Pp?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with more
- than 64 cpus
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4554.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 63c0b1eb-4ed1-4c2f-9411-08d96d350a79
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2021 10:41:22.4880 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UXNcLUCLhO8pKHjiARvGaDZvZncnjf4ErOfUO0JmqizwahYrwwIAoQEwF5wQlFy/dHGvvyz2ebAns/BErkUJh86gyocdDUW6eZ/Heq8coVs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4650
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [next-queue v4 12/12] ice: add port
+ representor ethtool ops and stats
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,389 +161,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shujin Li <lishujin@kuaishou.com>, Jason Xing <xingwanli@kuaishou.com>,
- kerneljasonxing@gmail.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jason Xing <xingwanli@kuaishou.com>
-
-Originally, ixgbe driver doesn't allow the mounting of xdpdrv if the
-server is equipped with more than 64 cpus online. So it turns out that
-the loading of xdpdrv causes the "NOMEM" failure.
-
-Actually, we can adjust the algorithm and then make it work through
-mapping the current cpu to some xdp ring with the protect of @tx_lock.
-
-Here're some numbers before/after applying this patch with xdp-example
-loaded on the eth0X:
-
-As client (tx path):
-                     Before    After
-TCP_STREAM send-64   734.14    714.20
-TCP_STREAM send-128  1401.91   1395.05
-TCP_STREAM send-512  5311.67   5292.84
-TCP_STREAM send-1k   9277.40   9356.22 (not stable)
-TCP_RR     send-1    22559.75  21844.22
-TCP_RR     send-128  23169.54  22725.13
-TCP_RR     send-512  21670.91  21412.56
-
-As server (rx path):
-                     Before    After
-TCP_STREAM send-64   1416.49   1383.12
-TCP_STREAM send-128  3141.49   3055.50
-TCP_STREAM send-512  9488.73   9487.44
-TCP_STREAM send-1k   9491.17   9356.22 (not stable)
-TCP_RR     send-1    23617.74  23601.60
-...
-
-Notice: the TCP_RR mode is unstable as the official document explaines.
-
-I tested many times with different parameters combined through netperf.
-Though the result is not that accurate, I cannot see much influence on
-this patch. The static key is places on the hot path, but it actually
-shouldn't cause a huge regression theoretically.
-
-Fixes: 33fdc82f08 ("ixgbe: add support for XDP_TX action")
-Reported-by: kernel test robot <lkp@intel.com>
-Co-developed-by: Shujin Li <lishujin@kuaishou.com>
-Signed-off-by: Shujin Li <lishujin@kuaishou.com>
-Signed-off-by: Jason Xing <xingwanli@kuaishou.com>
----
-v7:
-- Factorized to a single spin_lock/unlock in ixgbe_xdp_xmit() (Eric)
-- Handle other parts of lock/unlock in ixgbe_run_xdp()/_zc() (Jason)
-
-v6:
-- Move the declaration of static-key to the proper position (Test Robot)
-- Add reported-by tag (Jason)
-- Add more detailed performance test results (Jason)
-
-v5:
-- Change back to nr_cpu_ids (Eric)
-
-v4:
-- Update the wrong commit messages. (Jason)
-
-v3:
-- Change nr_cpu_ids to num_online_cpus() (Maciej)
-- Rename MAX_XDP_QUEUES to IXGBE_MAX_XDP_QS (Maciej)
-- Rename ixgbe_determine_xdp_cpu() to ixgbe_determine_xdp_q_idx() (Maciej)
-- Wrap ixgbe_xdp_ring_update_tail() with lock into one function (Maciej)
-
-v2:
-- Adjust cpu id in ixgbe_xdp_xmit(). (Jesper)
-- Add a fallback path. (Maciej)
-- Adjust other parts related to xdp ring.
----
- drivers/net/ethernet/intel/ixgbe/ixgbe.h           | 23 +++++++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c       |  9 +++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      | 50 ++++++++++++++++------
- .../net/ethernet/intel/ixgbe/ixgbe_txrx_common.h   |  3 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c       | 16 ++++---
- 5 files changed, 77 insertions(+), 24 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index a604552..4a69823 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -351,6 +351,7 @@ struct ixgbe_ring {
- 	};
- 	u16 rx_offset;
- 	struct xdp_rxq_info xdp_rxq;
-+	spinlock_t tx_lock;	/* used in XDP mode */
- 	struct xsk_buff_pool *xsk_pool;
- 	u16 ring_idx;		/* {rx,tx,xdp}_ring back reference idx */
- 	u16 rx_buf_len;
-@@ -375,11 +376,13 @@ enum ixgbe_ring_f_enum {
- #define IXGBE_MAX_FCOE_INDICES		8
- #define MAX_RX_QUEUES			(IXGBE_MAX_FDIR_INDICES + 1)
- #define MAX_TX_QUEUES			(IXGBE_MAX_FDIR_INDICES + 1)
--#define MAX_XDP_QUEUES			(IXGBE_MAX_FDIR_INDICES + 1)
-+#define IXGBE_MAX_XDP_QS		(IXGBE_MAX_FDIR_INDICES + 1)
- #define IXGBE_MAX_L2A_QUEUES		4
- #define IXGBE_BAD_L2A_QUEUE		3
- #define IXGBE_MAX_MACVLANS		63
- 
-+DECLARE_STATIC_KEY_FALSE(ixgbe_xdp_locking_key);
-+
- struct ixgbe_ring_feature {
- 	u16 limit;	/* upper limit on feature indices */
- 	u16 indices;	/* current value of indices */
-@@ -629,7 +632,7 @@ struct ixgbe_adapter {
- 
- 	/* XDP */
- 	int num_xdp_queues;
--	struct ixgbe_ring *xdp_ring[MAX_XDP_QUEUES];
-+	struct ixgbe_ring *xdp_ring[IXGBE_MAX_XDP_QS];
- 	unsigned long *af_xdp_zc_qps; /* tracks AF_XDP ZC enabled rings */
- 
- 	/* TX */
-@@ -772,6 +775,22 @@ struct ixgbe_adapter {
- #endif /* CONFIG_IXGBE_IPSEC */
- };
- 
-+static inline int ixgbe_determine_xdp_q_idx(int cpu)
-+{
-+	if (static_key_enabled(&ixgbe_xdp_locking_key))
-+		return cpu % IXGBE_MAX_XDP_QS;
-+	else
-+		return cpu;
-+}
-+
-+static inline
-+struct ixgbe_ring *ixgbe_determine_xdp_ring(struct ixgbe_adapter *adapter)
-+{
-+	int index = ixgbe_determine_xdp_q_idx(smp_processor_id());
-+
-+	return adapter->xdp_ring[index];
-+}
-+
- static inline u8 ixgbe_max_rss_indices(struct ixgbe_adapter *adapter)
- {
- 	switch (adapter->hw.mac.type) {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-index 0218f6c..86b1116 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
-@@ -299,7 +299,10 @@ static void ixgbe_cache_ring_register(struct ixgbe_adapter *adapter)
- 
- static int ixgbe_xdp_queues(struct ixgbe_adapter *adapter)
- {
--	return adapter->xdp_prog ? nr_cpu_ids : 0;
-+	int queues;
-+
-+	queues = min_t(int, IXGBE_MAX_XDP_QS, nr_cpu_ids);
-+	return adapter->xdp_prog ? queues : 0;
- }
- 
- #define IXGBE_RSS_64Q_MASK	0x3F
-@@ -947,6 +950,7 @@ static int ixgbe_alloc_q_vector(struct ixgbe_adapter *adapter,
- 		ring->count = adapter->tx_ring_count;
- 		ring->queue_index = xdp_idx;
- 		set_ring_xdp(ring);
-+		spin_lock_init(&ring->tx_lock);
- 
- 		/* assign ring to adapter */
- 		WRITE_ONCE(adapter->xdp_ring[xdp_idx], ring);
-@@ -1032,6 +1036,9 @@ static void ixgbe_free_q_vector(struct ixgbe_adapter *adapter, int v_idx)
- 	adapter->q_vector[v_idx] = NULL;
- 	__netif_napi_del(&q_vector->napi);
- 
-+	if (static_key_enabled(&ixgbe_xdp_locking_key))
-+		static_branch_dec(&ixgbe_xdp_locking_key);
-+
- 	/*
- 	 * after a call to __netif_napi_del() napi may still be used and
- 	 * ixgbe_get_stats64() might access the rings on this vector,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 14aea40..8b9e21b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -165,6 +165,9 @@ static int ixgbe_notify_dca(struct notifier_block *, unsigned long event,
- MODULE_DESCRIPTION("Intel(R) 10 Gigabit PCI Express Network Driver");
- MODULE_LICENSE("GPL v2");
- 
-+DEFINE_STATIC_KEY_FALSE(ixgbe_xdp_locking_key);
-+EXPORT_SYMBOL(ixgbe_xdp_locking_key);
-+
- static struct workqueue_struct *ixgbe_wq;
- 
- static bool ixgbe_check_cfg_remove(struct ixgbe_hw *hw, struct pci_dev *pdev);
-@@ -2197,6 +2200,7 @@ static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
- {
- 	int err, result = IXGBE_XDP_PASS;
- 	struct bpf_prog *xdp_prog;
-+	struct ixgbe_ring *ring;
- 	struct xdp_frame *xdpf;
- 	u32 act;
- 
-@@ -2215,7 +2219,12 @@ static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
- 		xdpf = xdp_convert_buff_to_frame(xdp);
- 		if (unlikely(!xdpf))
- 			goto out_failure;
--		result = ixgbe_xmit_xdp_ring(adapter, xdpf);
-+		ring = ixgbe_determine_xdp_ring(adapter);
-+		if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+			spin_lock(&ring->tx_lock);
-+		result = ixgbe_xmit_xdp_ring(ring, xdpf);
-+		if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+			spin_unlock(&ring->tx_lock);
- 		if (result == IXGBE_XDP_CONSUMED)
- 			goto out_failure;
- 		break;
-@@ -2422,13 +2431,9 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
- 		xdp_do_flush_map();
- 
- 	if (xdp_xmit & IXGBE_XDP_TX) {
--		struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
-+		struct ixgbe_ring *ring = ixgbe_determine_xdp_ring(adapter);
- 
--		/* Force memory writes to complete before letting h/w
--		 * know there are new descriptors to fetch.
--		 */
--		wmb();
--		writel(ring->next_to_use, ring->tail);
-+		ixgbe_xdp_ring_update_tail_locked(ring);
- 	}
- 
- 	u64_stats_update_begin(&rx_ring->syncp);
-@@ -6320,7 +6325,7 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
- 	if (ixgbe_init_rss_key(adapter))
- 		return -ENOMEM;
- 
--	adapter->af_xdp_zc_qps = bitmap_zalloc(MAX_XDP_QUEUES, GFP_KERNEL);
-+	adapter->af_xdp_zc_qps = bitmap_zalloc(IXGBE_MAX_XDP_QS, GFP_KERNEL);
- 	if (!adapter->af_xdp_zc_qps)
- 		return -ENOMEM;
- 
-@@ -8536,10 +8541,9 @@ static u16 ixgbe_select_queue(struct net_device *dev, struct sk_buff *skb,
- }
- 
- #endif
--int ixgbe_xmit_xdp_ring(struct ixgbe_adapter *adapter,
-+int ixgbe_xmit_xdp_ring(struct ixgbe_ring *ring,
- 			struct xdp_frame *xdpf)
- {
--	struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
- 	struct ixgbe_tx_buffer *tx_buffer;
- 	union ixgbe_adv_tx_desc *tx_desc;
- 	u32 len, cmd_type;
-@@ -10130,8 +10134,13 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
- 			return -EINVAL;
- 	}
- 
--	if (nr_cpu_ids > MAX_XDP_QUEUES)
-+	/* if the number of cpus is much larger than the maximum of queues,
-+	 * we should stop it and then return with NOMEM like before.
-+	 */
-+	if (nr_cpu_ids > IXGBE_MAX_XDP_QS * 2)
- 		return -ENOMEM;
-+	else if (nr_cpu_ids > IXGBE_MAX_XDP_QS)
-+		static_branch_inc(&ixgbe_xdp_locking_key);
- 
- 	old_prog = xchg(&adapter->xdp_prog, prog);
- 	need_reset = (!!prog != !!old_prog);
-@@ -10195,6 +10204,15 @@ void ixgbe_xdp_ring_update_tail(struct ixgbe_ring *ring)
- 	writel(ring->next_to_use, ring->tail);
- }
- 
-+void ixgbe_xdp_ring_update_tail_locked(struct ixgbe_ring *ring)
-+{
-+	if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+		spin_lock(&ring->tx_lock);
-+	ixgbe_xdp_ring_update_tail(ring);
-+	if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+		spin_unlock(&ring->tx_lock);
-+}
-+
- static int ixgbe_xdp_xmit(struct net_device *dev, int n,
- 			  struct xdp_frame **frames, u32 flags)
- {
-@@ -10212,18 +10230,21 @@ static int ixgbe_xdp_xmit(struct net_device *dev, int n,
- 	/* During program transitions its possible adapter->xdp_prog is assigned
- 	 * but ring has not been configured yet. In this case simply abort xmit.
- 	 */
--	ring = adapter->xdp_prog ? adapter->xdp_ring[smp_processor_id()] : NULL;
-+	ring = adapter->xdp_prog ? ixgbe_determine_xdp_ring(adapter) : NULL;
- 	if (unlikely(!ring))
- 		return -ENXIO;
- 
- 	if (unlikely(test_bit(__IXGBE_TX_DISABLED, &ring->state)))
- 		return -ENXIO;
- 
-+	if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+		spin_lock(&ring->tx_lock);
-+
- 	for (i = 0; i < n; i++) {
- 		struct xdp_frame *xdpf = frames[i];
- 		int err;
- 
--		err = ixgbe_xmit_xdp_ring(adapter, xdpf);
-+		err = ixgbe_xmit_xdp_ring(ring, xdpf);
- 		if (err != IXGBE_XDP_TX)
- 			break;
- 		nxmit++;
-@@ -10232,6 +10253,9 @@ static int ixgbe_xdp_xmit(struct net_device *dev, int n,
- 	if (unlikely(flags & XDP_XMIT_FLUSH))
- 		ixgbe_xdp_ring_update_tail(ring);
- 
-+	if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+		spin_unlock(&ring->tx_lock);
-+
- 	return nxmit;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-index 2aeec78..a82533f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-@@ -12,7 +12,7 @@
- #define IXGBE_TXD_CMD (IXGBE_TXD_CMD_EOP | \
- 		       IXGBE_TXD_CMD_RS)
- 
--int ixgbe_xmit_xdp_ring(struct ixgbe_adapter *adapter,
-+int ixgbe_xmit_xdp_ring(struct ixgbe_ring *ring,
- 			struct xdp_frame *xdpf);
- bool ixgbe_cleanup_headers(struct ixgbe_ring *rx_ring,
- 			   union ixgbe_adv_rx_desc *rx_desc,
-@@ -23,6 +23,7 @@ void ixgbe_process_skb_fields(struct ixgbe_ring *rx_ring,
- void ixgbe_rx_skb(struct ixgbe_q_vector *q_vector,
- 		  struct sk_buff *skb);
- void ixgbe_xdp_ring_update_tail(struct ixgbe_ring *ring);
-+void ixgbe_xdp_ring_update_tail_locked(struct ixgbe_ring *ring);
- void ixgbe_irq_rearm_queues(struct ixgbe_adapter *adapter, u64 qmask);
- 
- void ixgbe_txrx_ring_disable(struct ixgbe_adapter *adapter, int ring);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index b1d22e4..db2bc58 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -100,6 +100,7 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
- {
- 	int err, result = IXGBE_XDP_PASS;
- 	struct bpf_prog *xdp_prog;
-+	struct ixgbe_ring *ring;
- 	struct xdp_frame *xdpf;
- 	u32 act;
- 
-@@ -120,7 +121,12 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
- 		xdpf = xdp_convert_buff_to_frame(xdp);
- 		if (unlikely(!xdpf))
- 			goto out_failure;
--		result = ixgbe_xmit_xdp_ring(adapter, xdpf);
-+		ring = ixgbe_determine_xdp_ring(adapter);
-+		if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+			spin_lock(&ring->tx_lock);
-+		result = ixgbe_xmit_xdp_ring(ring, xdpf);
-+		if (static_branch_unlikely(&ixgbe_xdp_locking_key))
-+			spin_unlock(&ring->tx_lock);
- 		if (result == IXGBE_XDP_CONSUMED)
- 			goto out_failure;
- 		break;
-@@ -334,13 +340,9 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
- 		xdp_do_flush_map();
- 
- 	if (xdp_xmit & IXGBE_XDP_TX) {
--		struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
-+		struct ixgbe_ring *ring = ixgbe_determine_xdp_ring(adapter);
- 
--		/* Force memory writes to complete before letting h/w
--		 * know there are new descriptors to fetch.
--		 */
--		wmb();
--		writel(ring->next_to_use, ring->tail);
-+		ixgbe_xdp_ring_update_tail_locked(ring);
- 	}
- 
- 	u64_stats_update_begin(&rx_ring->syncp);
--- 
-1.8.3.1
-
+>-----Original Message-----
+>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>Tony Nguyen
+>Sent: Friday, August 20, 2021 5:39 AM
+>To: intel-wired-lan@lists.osuosl.org
+>Subject: [Intel-wired-lan] [next-queue v4 12/12] ice: add port representor
+>ethtool ops and stats
+>
+>From: Wojciech Drewek <wojciech.drewek@intel.com>
+>
+>Introduce the following ethtool operations for VF's representor:
+>	-get_drvinfo
+>	-get_strings
+>	-get_ethtool_stats
+>	-get_sset_count
+>	-get_link
+>
+>In all cases, existing operations were used with minor changes which allow us
+>to detect if ethtool op was called for representor. Only VF VSI stats will be
+>available for representor.
+>
+>Implement ndo_get_stats64 for port representor. This will update VF VSI stats
+>and read them.
+>
+>Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+>---
+> drivers/net/ethernet/intel/ice/ice.h          | 14 +++++
+> drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |  5 ++
+>drivers/net/ethernet/intel/ice/ice_ethtool.c  | 55 +++++++++++++++++--
+> drivers/net/ethernet/intel/ice/ice_repr.c     | 33 +++++++++++
+> .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  4 +-
+>.../net/ethernet/intel/ice/ice_virtchnl_pf.h  | 13 +++++
+> 6 files changed, 117 insertions(+), 7 deletions(-)
+>
+Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
