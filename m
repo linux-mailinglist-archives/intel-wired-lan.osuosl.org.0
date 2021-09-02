@@ -1,52 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90C613FEAA0
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Sep 2021 10:30:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4F1E3FEB16
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Sep 2021 11:19:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 151A340754;
-	Thu,  2 Sep 2021 08:30:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1B25A80F70;
+	Thu,  2 Sep 2021 09:19:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kCs5m5Y2N1Fq; Thu,  2 Sep 2021 08:29:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DfVj5jrJtelT; Thu,  2 Sep 2021 09:19:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A13FD4075E;
-	Thu,  2 Sep 2021 08:29:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 281D680F43;
+	Thu,  2 Sep 2021 09:19:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D6F571BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 08:29:50 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8682B1BF9CB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 09:19:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C443940752
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 08:29:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 71C8F406C0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 09:19:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7unFfJDKEKAc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Sep 2021 08:29:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id w7u0XT5OU3pY for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Sep 2021 09:19:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 132F84074D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 08:29:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10094"; a="280039467"
-X-IronPort-AV: E=Sophos;i="5.84,371,1620716400"; d="scan'208";a="280039467"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2021 01:29:49 -0700
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5637F401E9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 09:19:34 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10094"; a="219102266"
+X-IronPort-AV: E=Sophos;i="5.84,371,1620716400"; d="scan'208";a="219102266"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2021 02:19:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,371,1620716400"; d="scan'208";a="467289979"
-Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by orsmga007.jf.intel.com with ESMTP; 02 Sep 2021 01:29:47 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  2 Sep 2021 08:28:46 +0000
-Message-Id: <20210902082846.49744-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.84,371,1620716400"; d="scan'208";a="461549459"
+Received: from lkp-server01.sh.intel.com (HELO 4fbc2b3ce5aa) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 02 Sep 2021 02:19:32 -0700
+Received: from kbuild by 4fbc2b3ce5aa with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mLisd-0008p8-Nl; Thu, 02 Sep 2021 09:19:31 +0000
+Date: Thu, 02 Sep 2021 17:18:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <613096f9.9WZcHAP7E1X9w+de%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix queues reservation scheme
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 95107817215eb51fc967b9fe64b5370f6114512d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,80 +63,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
- Lukasz Cieplicki <lukaszx.cieplicki@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Depending on the CPU count and NVM configuration, PF reset and
-rebuild may fail if more queues are allocated (e.g. attach XDP program),
-causes kernel NULL pointer dereference. The issue is that during rebuild,
-FDIR VSI's queue pile is not zeroed, despite no VSIs, but PF exisiting.
-The change causes all queue pairs released from the queue pile.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 95107817215eb51fc967b9fe64b5370f6114512d  igb: Fix removal of unicast MAC filters of VFs
 
-Fixes: bc7d338fbb3f ("i40e: reinit flow for the main VSI")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Lukasz Cieplicki <lukaszx.cieplicki@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+elapsed time: 2051m
+
+configs tested: 61
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a005-20210831
+x86_64               randconfig-a001-20210831
+x86_64               randconfig-a003-20210831
+x86_64               randconfig-a002-20210831
+x86_64               randconfig-a004-20210831
+x86_64               randconfig-a006-20210831
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+s390                 randconfig-r044-20210831
+hexagon              randconfig-r041-20210831
+hexagon              randconfig-r045-20210831
+riscv                randconfig-r042-20210831
+
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 24 +++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 000991afcf27..61ec0b6c1d05 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -196,7 +196,7 @@ static int i40e_get_lump(struct i40e_pf *pf, struct i40e_lump_tracking *pile,
- 		return -EINVAL;
- 	}
- 
--	/* start the linear search with an imperfect hint */
-+	/* start from beginning because earlier areas may have been freed */
- 	i = pile->search_hint;
- 	while (i < pile->num_entries) {
- 		/* skip already allocated entries */
-@@ -227,6 +227,26 @@ static int i40e_get_lump(struct i40e_pf *pf, struct i40e_lump_tracking *pile,
- 	return ret;
- }
- 
-+/**
-+ * i40e_put_all_lump - return a lump of generic resource
-+ * @pile: the pile of resource to search
-+ *
-+ * Returns the count of items in the lump
-+ **/
-+static void i40e_put_all_lump(struct i40e_lump_tracking *pile)
-+{
-+	u16 i;
-+
-+	if (!pile)
-+		return;
-+
-+	for (i = 0;
-+	     i < pile->num_entries;
-+	     i++) {
-+		pile->list[i] = 0;
-+	}
-+}
-+
- /**
-  * i40e_put_lump - return a lump of generic resource
-  * @pile: the pile of resource to search
-@@ -13966,7 +13986,7 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
- 
- 	pf = vsi->back;
- 
--	i40e_put_lump(pf->qp_pile, vsi->base_queue, vsi->idx);
-+	i40e_put_all_lump(pf->qp_pile);
- 	i40e_vsi_clear_rings(vsi);
- 
- 	i40e_vsi_free_arrays(vsi, false);
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
