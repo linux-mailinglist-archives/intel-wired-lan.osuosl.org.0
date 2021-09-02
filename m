@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 778DD3FED1F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Sep 2021 13:47:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3052E3FED39
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Sep 2021 13:55:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E6D4B406FF;
-	Thu,  2 Sep 2021 11:47:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lSt8apU94CuM; Thu,  2 Sep 2021 11:47:33 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 57169406FB;
-	Thu,  2 Sep 2021 11:47:32 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CC1E01BF844
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:47:27 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B938742576
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:47:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 99E5B42578;
+	Thu,  2 Sep 2021 11:55:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wCXdwhCoGHvL for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Sep 2021 11:47:25 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bzydzFKuwZjt; Thu,  2 Sep 2021 11:55:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 17797403FA;
+	Thu,  2 Sep 2021 11:55:13 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 346BF1BF844
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:55:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 225F7614CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:55:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Z8IUhDuMRZr3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Sep 2021 11:55:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B4D8D42574
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:47:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10094"; a="282793939"
-X-IronPort-AV: E=Sophos;i="5.84,372,1620716400"; d="scan'208";a="282793939"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2021 04:47:11 -0700
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 23A0F61472
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 11:55:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10094"; a="217228326"
+X-IronPort-AV: E=Sophos;i="5.84,372,1620716400"; d="scan'208";a="217228326"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2021 04:55:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,372,1620716400"; d="scan'208";a="499747735"
+X-IronPort-AV: E=Sophos;i="5.84,372,1620716400"; d="scan'208";a="476699793"
 Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by fmsmga008.fm.intel.com with ESMTP; 02 Sep 2021 04:47:09 -0700
+ by orsmga008.jf.intel.com with ESMTP; 02 Sep 2021 04:55:04 -0700
 From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  2 Sep 2021 13:47:07 +0200
-Message-Id: <20210902114707.19297-1-mateusz.palczewski@intel.com>
+Date: Thu,  2 Sep 2021 13:55:02 +0200
+Message-Id: <20210902115502.19455-1-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2] i40e: Add VF VLAN pruning
+Subject: [Intel-wired-lan] [PATCH net-next v3] i40e: Add VF VLAN pruning
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,26 +81,27 @@ This flag will only be effective when no PVID is set on VF and VF is not trusted
 Add new function that computes the correct VLAN ID for VF VLAN filters
 based on trust, PVID, vf-vlan-prune-disable flag and current VLAN ID.
 
-Testing hits:
-scenario 1: spawn 1 VF
-bring VF up
-turn on packet capturing on a VF
-send untagged packet to VF
-VF should receive untagged packet
-send tagged packet to VF
-VF should not see the tagged packet
-scenario 2: set vf-vlan-prune-disable flag to off
-spawn 1 VF
-turn on packet capturing on a VF
-send untagged packet to VF
-VF should receive untagged packet
-send tagged packet to VF
-VF should receive tagged packet
+Testing hints:
+  scenario 1: spawn 1 VF
+              bring VF up
+              turn on packet capturing on a VF
+              send untagged packet to VF
+              VF should receive untagged packet
+              send tagged packet to VF
+              VF should not see the tagged packet
+  scenario 2: set vf-vlan-prune-disable flag to off
+              spawn 1 VF
+              turn on packet capturing on a VF
+              send untagged packet to VF
+              VF should receive untagged packet
+              send tagged packet to VF
+              VF should receive tagged packet
 
 Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
+ v3: Fixed Testing hints
  v2: Fixed commit message
 ---
  drivers/net/ethernet/intel/i40e/i40e.h        |   1 +
