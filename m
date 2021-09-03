@@ -1,68 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88E6F3FF444
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Sep 2021 21:35:02 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E20F3FFA7A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Sep 2021 08:37:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04BBF82ECF;
-	Thu,  2 Sep 2021 19:35:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 665A26069D;
+	Fri,  3 Sep 2021 06:37:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f1LdaUWN5tI2; Thu,  2 Sep 2021 19:35:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o4k8eWyVQqzu; Fri,  3 Sep 2021 06:37:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D8EA582C8F;
-	Thu,  2 Sep 2021 19:34:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6897760673;
+	Fri,  3 Sep 2021 06:37:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 72D9E1BF59E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 19:34:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F8BF1BF44C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:37:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 601C34041E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 19:34:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8A8EA425D4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:37:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bp4hWJhmUv-V for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Sep 2021 19:34:51 +0000 (UTC)
+ with ESMTP id enxjok-skF68 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Sep 2021 06:37:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BC92A40314
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Sep 2021 19:34:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10095"; a="216086406"
-X-IronPort-AV: E=Sophos;i="5.85,263,1624345200"; d="scan'208";a="216086406"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2021 12:34:42 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 86090425D3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:37:38 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10095"; a="280359252"
+X-IronPort-AV: E=Sophos;i="5.85,264,1624345200"; d="scan'208";a="280359252"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2021 23:37:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,263,1624345200"; d="scan'208";a="521312767"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga004.fm.intel.com with ESMTP; 02 Sep 2021 12:34:42 -0700
-Received: from shsmsx604.ccr.corp.intel.com (10.109.6.214) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.85,264,1624345200"; d="scan'208";a="511355876"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga001.jf.intel.com with ESMTP; 02 Sep 2021 23:37:37 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Thu, 2 Sep 2021 12:34:41 -0700
-Received: from hasmsx602.ger.corp.intel.com (10.184.107.142) by
- SHSMSX604.ccr.corp.intel.com (10.109.6.214) with Microsoft SMTP Server
+ 15.1.2242.12; Thu, 2 Sep 2021 23:37:36 -0700
+Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.10; Fri, 3 Sep 2021 03:34:38 +0800
-Received: from hasmsx602.ger.corp.intel.com ([10.184.107.142]) by
- HASMSX602.ger.corp.intel.com ([10.184.107.142]) with mapi id 15.01.2242.010;
- Thu, 2 Sep 2021 22:34:36 +0300
-From: "Winkler, Tomas" <tomas.winkler@intel.com>
-To: Barry Song <21cnbao@gmail.com>, "Sang, Oliver" <oliver.sang@intel.com>
-Thread-Topic: [PCI/MSI] a4fc4cf388:
- dmesg.genirq:Flags_mismatch_irq##(mei_me)vs.#(xhci_hcd)
-Thread-Index: AQHXnginGRfCkYvOzEKHZKqjivRGPKuRJldQ
-Date: Thu, 2 Sep 2021 19:34:35 +0000
-Message-ID: <8ab95f7f784448038d7777c45f1f2d55@intel.com>
-References: <20210825102636.52757-4-21cnbao@gmail.com>
- <20210829145552.GA11556@xsang-OptiPlex-9020>
- <CAGsJ_4yYwjuWsEeK3CvnOhc10mbBNYWXqxqp+mR5587R2FD3gQ@mail.gmail.com>
- <CAGsJ_4zwRdR2QuoR0K0_J86w0=t=mFh=tAKRuP1+Tx8aLn4kKw@mail.gmail.com>
-In-Reply-To: <CAGsJ_4zwRdR2QuoR0K0_J86w0=t=mFh=tAKRuP1+Tx8aLn4kKw@mail.gmail.com>
+ 15.1.2242.12; Thu, 2 Sep 2021 23:37:36 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Thu, 2 Sep 2021 23:37:36 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.103)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.10; Thu, 2 Sep 2021 23:37:35 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CrgIz8KFyePqFHv5Aqw3XV8XflBSGM3kttOmHTnmbEDaLJGcJ4QayBGDTEcPg91WS6anqNplx/BnP5qIUn94O29FQHhF+SODpmC0L/+wfsy6lXadDAia6g8mua3vaWW3QJngs0f5OjXzy0KGxKB8iTTp4emTKZhFy21rPrZNScszrbQI8SO4xMLwEaEM9tSNZCo6DoH6ZJK38m71KVI5iwAU0dS7mS+zXz0U/e5KJBojDCMSADY2Dv7To7nxQ4cXtTN5PVsiAv2t8xcDzY7cAbIhfS+9Mv/014IvXeSpTUAQdzorNHgYubGGhwSmfSK/V3LHPSJicU/M715BK68pAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=TbhKoIXLai8Qd0rtLlCxNO04fPq6zIFi61T/RS7VkS8=;
+ b=MZGY7dv/CVu48F2PrpJRQRVtLyrdvjB6yZh/d3PODV3hNfnx9n/8dMOoSDR0Lxagjmg0gkaRMoUoLXCPs5a10iLRr3bRq60BJxdXIoFLbZcTHjIouQ9/3RUFmoUxADeBRtVpGLPYoGb8tEjWaPX0c9zebearL+X55KQxQP/t5rZoxZx3l2K7dMHh1qWLw6eXrRB/QHI4q002ElkzUkYfxCAAjWJf2uuYu8cn0fpxM+TbGQSdzAq7hSOajMkq0lZP3aR84QDULaexUeF2M3+oxcD0WwndCdILDTomJUX2huheh5xuANQEIlvaMdy+fEYcU+VN7kupf+WWKzjNm/5cAQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TbhKoIXLai8Qd0rtLlCxNO04fPq6zIFi61T/RS7VkS8=;
+ b=M8GVKTip0IkJ7Cq7ZLbuQPG1kcnc2ADNLcwjP0zzVcrOvZGEXdmQEajZ/cMkF/asTt8raBxka7qo5CC8ouggDz5S1bAZrREAoRkxaHaTF62QkayKMC7hO1t7gIQJnaHTH2onM6A3edD/B1tiCKIifwTjiMtU8YtkLAhTR/vqgko=
+Received: from PH0PR11MB5144.namprd11.prod.outlook.com (2603:10b6:510:3e::20)
+ by PH0PR11MB5191.namprd11.prod.outlook.com (2603:10b6:510:3e::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.20; Fri, 3 Sep
+ 2021 06:37:31 +0000
+Received: from PH0PR11MB5144.namprd11.prod.outlook.com
+ ([fe80::105f:b75f:c95e:f885]) by PH0PR11MB5144.namprd11.prod.outlook.com
+ ([fe80::105f:b75f:c95e:f885%3]) with mapi id 15.20.4478.022; Fri, 3 Sep 2021
+ 06:37:31 +0000
+From: "Kuruvinakunnel, George" <george.kuruvinakunnel@intel.com>
+To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v7 intel-next 4/9] ice: unify xdp_rings
+ accesses
+Thread-Index: AQHXlPP/ZEGLNWooXUu480nb0gYvq6uR8dVg
+Date: Fri, 3 Sep 2021 06:37:31 +0000
+Message-ID: <PH0PR11MB51448229AD1C3E3DFCBA97D6E2CF9@PH0PR11MB5144.namprd11.prod.outlook.com>
+References: <20210819120004.34392-1-maciej.fijalkowski@intel.com>
+ <20210819120004.34392-5-maciej.fijalkowski@intel.com>
+In-Reply-To: <20210819120004.34392-5-maciej.fijalkowski@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,10 +100,60 @@ X-MS-TNEF-Correlator:
 dlp-product: dlpe-windows
 dlp-reaction: no-action
 dlp-version: 11.5.1.3
-x-originating-ip: [10.184.70.1]
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6042d62f-836a-48a6-c9fe-08d96ea54e89
+x-ms-traffictypediagnostic: PH0PR11MB5191:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <PH0PR11MB51916F49D8E5CE62122029FBE2CF9@PH0PR11MB5191.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Qk0z9dEEZc//0Ek/p2miTkPlgdtwsv6rN18dowzAhndwsCbgtDNnC7PqjuupMj22yKgzT/AeZYeJO9QHYcdqRgpmuYpzBFogqwNTT34QRhQlmu/ixqjtFsHqU918XPPPyb98cxBt9wLXqJffDc42uVjPgEvwsO3W0/W87BevUgrLFkctUYnTQToAhvpf2EVhCkX3Z1hD0ca4mX/2OJ9fLCEXjP/fYxq7OScZNeYJpnV3Af3AfSYlGzWR72FeFldJsoNrMbUZBte9yywmezYImbTi4p1f4qNMTGzXc1zwpOhEorXDtx8MbGqBsVoG6UOabXMsUlktLCfyzxg2U6xDMRDWWsCtHJi/0o8Njl1UAfp3q1g1np7GMaE0BYGmdjcuCuvuGJnwWauC7YdsTQTkcx9QPs+df2wKIDbVt6/EawZsGZO6Tkq01cwB6B15YtpLo1tW2zqFLTCpTmUDosq7OtRXyZrp8GQiZFqDTtkQbj/iU6PXJakzWBUTb2WfSRVpAAc1i1h56uxuwqfJjUnCpWP8zZ28VhKC7PqcYrM1JFTjQvit2YStfPRCRjlfrdHbsvzozXCwJ+qqmLm2SWYqnkfvBIu83ljvWFfthEscGZTkzDZlbiL7rTIfw/W6mLnlZ8FeMGTud8aQjL1X+7icTnqC7acl0pgDYdfCo36TOBxK2q2jS3KivVQS2aXcuZ8nmwqv8mzbVWpT9KNjEYwxx6gv+0D8TMhu6HQDlmVYFFU=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5144.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(346002)(396003)(39860400002)(376002)(136003)(66946007)(7696005)(66446008)(64756008)(66556008)(76116006)(55016002)(53546011)(6506007)(66476007)(8676002)(122000001)(71200400001)(54906003)(110136005)(478600001)(4326008)(38100700002)(38070700005)(107886003)(33656002)(186003)(26005)(86362001)(316002)(52536014)(9686003)(5660300002)(83380400001)(2906002)(8936002)(557034005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?XmGmuxG5oS0AVOZ+1a7kuDlP379fR7FZJ7REW2Tc+RHQC/Zlc/io3klood5S?=
+ =?us-ascii?Q?x1diJqjMRThvDiYL3vB5O/tK18S22WswUsfc94MalNHpDHHsM6VukhYWVgwD?=
+ =?us-ascii?Q?0bI+LyvV/2zFdXWyfsBa/lEQZkfjE/j8qO+E2Hq/Rhi6Ln0goqYub4/a97C4?=
+ =?us-ascii?Q?x1wo9609uB3zMTUPWApNkNha+zA93mhQ9Segu4YjYhqalKq7YAlZa7yAklVz?=
+ =?us-ascii?Q?stuSbfimoroRj55BOVuQgPUvqedmDmwa8XeTSx9WfoSWeo3MKwqKjLHv7DpM?=
+ =?us-ascii?Q?vdXnFjelfjPWwnp0RTcS+V8Fje8L2oedKYE9sqASEbpCmO5mQvHXrwp9V9ee?=
+ =?us-ascii?Q?WSAYAopCDU5yXA/41Tv2Eo9hae0cGH/dTxgWe5zotsdH0y7ClfaMHnIYjoG4?=
+ =?us-ascii?Q?Twigu74Qa0FySHA+0EsS/r63DX+NC03rFrtvhrSo4sj2DoACDxqomZUKJGGt?=
+ =?us-ascii?Q?HSAab4jtDalC/hxCD6DuHrVVXdfN9/hv/YeoDkpFh0ViISy7NMc6YN3GTfdj?=
+ =?us-ascii?Q?BkSCCoKKMK265vRa1D2OwnlyNQnrYpFxrGmJulZpNqZ9RpWB+TwEtO4Wzv+X?=
+ =?us-ascii?Q?rNeMtm1pBE6QU92LTwKUpuyontv7QtM4KLPzKO84vSRmT95lr6zEqpMOSP6N?=
+ =?us-ascii?Q?GRmdcBBkN8ZacvotG67aG18wUNUs9SXrStZiEv79K7Y9zWdUPtPJEUpLZGLo?=
+ =?us-ascii?Q?OlItBlzqRzVIvy43INQaTA5/30RhgFi9NoqgUeKtLov8C9/lcBUf1Sd13c8w?=
+ =?us-ascii?Q?U2MlXTInoLevJ6fK7i33nT+xAB8bIWFq1oCS6MPGvxRyA6ZolBlTt2wBfS7p?=
+ =?us-ascii?Q?8HE+4NC8oOZOmkKUkzJwxoDU7J8iZAvy9kn4f1UNk6PB2P4fGNgD9bbncV9F?=
+ =?us-ascii?Q?AB57eutBtkL6zFppZJ+PcZAchIbSH5Eckwu+wovyTiw5Dl/H9VMlXpSQ5UX8?=
+ =?us-ascii?Q?GSJdJbvBcSn/NtcSrUC6pRVKKkQ78yf0ybIJBkGhYR9LEe3hyGZ2/WEIwt3O?=
+ =?us-ascii?Q?zTvIghw0j5/7tfFVz4nyTHqVlhVC1uwh5Dxv0ZWmA5gE5IuVMChkMlTAdWyr?=
+ =?us-ascii?Q?EzkWI4ql3IVCh8Wvc64qQt42ouOw2y7WA8k5SoUDBmBrI1wbJoRIBloRB3Fh?=
+ =?us-ascii?Q?gVMDF9TmNU0W5oaiXcyhFyMxUn7720UjSDYc7ZSQe18o6ZVq5ptLYJx6fnsJ?=
+ =?us-ascii?Q?ADsk+xKd+zFFSw2uKJ/gEon/ohIJ8KRqP+D1utvsFHzr8o9OaoxLpCNAm1HQ?=
+ =?us-ascii?Q?RcKWpoI3oIJF57M3rKPBjNWtxUO790nBwzmr3rF7oOU97lruRihfN6dLkMYy?=
+ =?us-ascii?Q?tBM=3D?=
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PCI/MSI] a4fc4cf388:
- dmesg.genirq:Flags_mismatch_irq##(mei_me)vs.#(xhci_hcd)
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5144.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6042d62f-836a-48a6-c9fe-08d96ea54e89
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2021 06:37:31.4315 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: de3YYupiAR8KQjJJ1VIsEIr97SR1TkGYuzOmErdZkJSJ3vKDA3rZkVEfUT+IEusI4EmVsApLtJltIkd0QHj6xU+T27kRg9LFWq4geDwla8E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5191
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v7 intel-next 4/9] ice: unify
+ xdp_rings accesses
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,189 +166,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Barry Song <song.bao.hua@hisilicon.com>,
- "leon@kernel.org" <leon@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- "mchehab+huawei@kernel.org" <mchehab+huawei@kernel.org>,
- Marc Zyngier <maz@kernel.org>,
- "schnelle@linux.ibm.com" <schnelle@linux.ibm.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, Linuxarm <linuxarm@huawei.com>,
- "lkp@lists.01.org" <lkp@lists.01.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Jonathan.Cameron@huawei.com" <Jonathan.Cameron@huawei.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- "luzmaximilian@gmail.com" <luzmaximilian@gmail.com>,
- "bilbao@vt.edu" <bilbao@vt.edu>
+Cc: "joamaki@gmail.com" <joamaki@gmail.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "toke@redhat.com" <toke@redhat.com>, "bjorn@kernel.org" <bjorn@kernel.org>,
+ "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> dmesg.genirq:Flags_mismatch_irq##(mei_me)vs.#(xhci_hcd)
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Maciej
+> Fijalkowski
+> Sent: Thursday, August 19, 2021 5:30 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: joamaki@gmail.com; Lobakin, Alexandr <alexandr.lobakin@intel.com>;
+> netdev@vger.kernel.org; toke@redhat.com; bjorn@kernel.org; kuba@kernel.org;
+> bpf@vger.kernel.org; davem@davemloft.net; Karlsson, Magnus
+> <magnus.karlsson@intel.com>
+> Subject: [Intel-wired-lan] [PATCH v7 intel-next 4/9] ice: unify xdp_rings accesses
 > 
-> On Tue, Aug 31, 2021 at 1:21 PM Barry Song <21cnbao@gmail.com> wrote:
-> >
-> > On Mon, Aug 30, 2021 at 2:38 AM kernel test robot
-> <oliver.sang@intel.com> wrote:
-> > >
-> > >
-> > >
-> > > Greeting,
-> > >
-> > > FYI, we noticed the following commit (built with gcc-9):
-> > >
-> > > commit: a4fc4cf388319ea957ffbdab5073bdd267de9082 ("[PATCH v3 3/3]
-> > > PCI/MSI: remove msi_attrib.default_irq in msi_desc")
-> > > url:
-> > > https://github.com/0day-ci/linux/commits/Barry-Song/PCI-MSI-Clarify-
-> > > the-IRQ-sysfs-ABI-for-PCI-devices/20210825-183018
-> > > base:
-> > > https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
-> > > 6e764bcd1cf72a2846c0e53d3975a09b242c04c9
-> > >
-> > > in testcase: kernel-selftests
-> > > version: kernel-selftests-x86_64-ebaa603b-1_20210825
-> > > with following parameters:
-> > >
-> > >         group: pidfd
-> > >         ucode: 0xe2
-> > >
-> > > test-description: The kernel contains a set of "self tests" under the
-> tools/testing/selftests/ directory. These are intended to be small unit tests
-> to exercise individual code paths in the kernel.
-> > > test-url: https://www.kernel.org/doc/Documentation/kselftest.txt
-> > >
-> > >
-> > > on test machine: 4 threads Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
-> > > with 32G memory
-> > >
-> > > caused below changes (please refer to attached dmesg/kmsg for entire
-> log/backtrace):
-> > >
-> > >
-> > >
-> > > If you fix the issue, kindly add following tag
-> > > Reported-by: kernel test robot <oliver.sang@intel.com>
-> > >
-> > >
-> > >
-> > > [  179.602028][   T34] genirq: Flags mismatch irq 16. 00002000 (mei_me) vs.
-> 00000000 (xhci_hcd)
-> > > [  179.614073][   T34] CPU: 2 PID: 34 Comm: kworker/u8:2 Not tainted
-> 5.14.0-rc7-00014-ga4fc4cf38831 #1
-> > > [  179.623225][   T34] Hardware name: Dell Inc. OptiPlex 7040/0Y7WYT,
-> BIOS 1.8.1 12/05/2017
-> > > [  179.631432][   T34] Workqueue: events_unbound async_run_entry_fn
-> > > [  179.637543][   T34] Call Trace:
-> > > [  179.640789][   T34]  dump_stack_lvl+0x45/0x59
-> > > [  179.645253][   T34]  __setup_irq.cold+0x50/0xd4
-> > > [  179.649893][   T34]  ? mei_me_pg_exit_sync+0x480/0x480 [mei_me]
-> > > [  179.655923][   T34]  request_threaded_irq+0x10c/0x180
-> > > [  179.661073][   T34]  ? mei_me_irq_quick_handler+0x240/0x240
-> [mei_me]
-> > > [  179.667528][   T34]  mei_me_probe+0x131/0x300 [mei_me]
-> > > [  179.672767][   T34]  local_pci_probe+0x42/0x80
-> > > [  179.677313][   T34]  pci_device_probe+0x107/0x1c0
-> > > [  179.682118][   T34]  really_probe+0xb6/0x380
-> > > [  179.687094][   T34]  __driver_probe_device+0xfe/0x180
-> > > [  179.692242][   T34]  driver_probe_device+0x1e/0xc0
-> > > [  179.697133][   T34]  __driver_attach_async_helper+0x2b/0x80
-> > > [  179.702802][   T34]  async_run_entry_fn+0x30/0x140
-> > > [  179.707693][   T34]  process_one_work+0x274/0x5c0
-> > > [  179.712503][   T34]  worker_thread+0x50/0x3c0
-> > > [  179.716959][   T34]  ? process_one_work+0x5c0/0x5c0
-> > > [  179.721936][   T34]  kthread+0x14f/0x180
-> > > [  179.725958][   T34]  ? set_kthread_struct+0x40/0x40
-> > > [  179.730935][   T34]  ret_from_fork+0x22/0x30
-> > > [  179.735699][   T34] mei_me 0000:00:16.0: request_threaded_irq failure.
-> irq = 16
-> > > [  179.743125][   T34] mei_me 0000:00:16.0: initialization failed.
-> > > [  179.749399][   T34] mei_me: probe of 0000:00:16.0 failed with error -16
-> > >
-> > >
-> >
-> > it seems there is a direct reference to pdev->irq.
-> > Hi Oliver, would you try if the below patch can fix the problem:
+> There has been a long lasting issue of improper xdp_rings indexing for XDP_TX
+> and XDP_REDIRECT actions. Given that currently rx_ring->q_index is mixed with
+> smp_processor_id(), there could be a situation where Tx descriptors are produced
+> onto XDP Tx ring, but tail is never bumped - for example pin a particular queue id
+> to non-matching IRQ line.
 > 
-> + Tomas
+> Address this problem by ignoring the user ring count setting and always initialize
+> the xdp_rings array to be of num_possible_cpus() size. Then, always use the
+> smp_processor_id() as an index to xdp_rings array. This provides serialization as
+> at given time only a single softirq can run on a particular CPU.
 > 
-> sorry. after second looking, drivers/misc/mei/pci-me.c has many places using
-> pdev->irq directly. We really need this driver's maintainers to address the
-> problem.
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_lib.c      | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_main.c     | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+> 
 
-Will look at that. 
-> 
-> On the other hand, "struct mei_me_hw *hw" seems to be totally not used in
-> this driver except here:
-> 164 static int mei_me_probe(struct pci_dev *pdev, const struct
-> pci_device_id *ent)
-> 165 {
-> 166         const struct mei_cfg *cfg;
-> 167         struct mei_device *dev;
-> 168         struct mei_me_hw *hw;
-> 169         unsigned int irqflags;
-> 170         int err;
-> .....
-> 219         hw->irq = pdev->irq;
-> ...
-> 
-> this looks wrong. maybe we can leverage hw->irq in other places such as
-> shutdown, suspend, resume.
-
-We need this, usage will follow.
-> 
-> Thanks
-> barry
-> 
-> 
-> >
-> > diff --git a/drivers/misc/mei/pci-me.c b/drivers/misc/mei/pci-me.c
-> > index c3393b383e59..a45a2d4257a6 100644
-> > --- a/drivers/misc/mei/pci-me.c
-> > +++ b/drivers/misc/mei/pci-me.c
-> > @@ -216,7 +216,7 @@ static int mei_me_probe(struct pci_dev *pdev,
-> > const struct pci_device_id *ent)
-> >
-> >         pci_enable_msi(pdev);
-> >
-> > -       hw->irq = pdev->irq;
-> > +       hw->irq = pci_irq_vector(pdev, 0);
-> >
-> >          /* request and enable interrupt */
-> >         irqflags = pci_dev_msi_enabled(pdev) ? IRQF_ONESHOT :
-> > IRQF_SHARED;
-> >
-> >
-> > I don't have any hardware to test.
-
-
-Hard to believe, MEI is on every Intel client platform :)
-
-> >
-> > >
-> > > To reproduce:
-> > >
-> > >         git clone https://github.com/intel/lkp-tests.git
-> > >         cd lkp-tests
-> > >         bin/lkp install                job.yaml  # job file is attached in this email
-> > >         bin/lkp split-job --compatible job.yaml  # generate the yaml file for
-> lkp run
-> > >         bin/lkp run                    generated-yaml-file
-> > >
-> > >
-> > >
-> > > ---
-> > > 0DAY/LKP+ Test Infrastructure                   Open Source Technology Center
-> > > https://lists.01.org/hyperkitty/list/lkp@lists.01.org       Intel Corporation
-> > >
-> > > Thanks,
-> > > Oliver Sang
-> > >
-> >
-> > Thanks
-> > barry
+Tested-by: George Kuruvinakunnel <george.kuruvinakunnel@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
