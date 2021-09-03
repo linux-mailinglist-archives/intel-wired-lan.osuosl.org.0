@@ -1,56 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B4DC40025B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Sep 2021 17:30:44 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A2384002FC
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Sep 2021 18:08:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 03A2F4073D;
-	Fri,  3 Sep 2021 15:30:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B068C4028D;
+	Fri,  3 Sep 2021 16:08:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pzTvdrZqw-Sh; Fri,  3 Sep 2021 15:30:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Lo5oskWxWN9r; Fri,  3 Sep 2021 16:08:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 55FB6401C4;
-	Fri,  3 Sep 2021 15:30:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 650344021C;
+	Fri,  3 Sep 2021 16:08:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2E2AD1BF2EB
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 15:30:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 007A41BF327
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 16:08:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1858442681
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 15:30:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E2D8640193
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 16:08:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CrrbIR8AWZcu for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Sep 2021 15:30:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1885542682
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 15:30:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10096"; a="198992648"
-X-IronPort-AV: E=Sophos;i="5.85,265,1624345200"; d="scan'208";a="198992648"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Sep 2021 08:30:19 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,265,1624345200"; d="scan'208";a="500491572"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
- by fmsmga008.fm.intel.com with ESMTP; 03 Sep 2021 08:30:16 -0700
-From: Maciej Machnikowski <maciej.machnikowski@intel.com>
-To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Date: Fri,  3 Sep 2021 17:14:36 +0200
-Message-Id: <20210903151436.529478-3-maciej.machnikowski@intel.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20210903151436.529478-1-maciej.machnikowski@intel.com>
-References: <20210903151436.529478-1-maciej.machnikowski@intel.com>
+ with ESMTP id pF4z-I16b19F for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Sep 2021 16:08:25 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com
+ [IPv6:2607:f8b0:4864:20::231])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A563140135
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 16:08:25 +0000 (UTC)
+Received: by mail-oi1-x231.google.com with SMTP id y128so7456024oie.4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 03 Sep 2021 09:08:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=95vc7j645Giw7pgm0LPbTQoMXq0lNn25nYeMz4b7vQQ=;
+ b=d3aRozP+MdGqu3bBJI16gBesVBilPsDSHsmJ35oYg8XB7CLgd4BxKoiCkX1xFb5qwQ
+ 6sBylX2dMSzIB0XflbZspPUnBkYW5Z4ZPL2lWqMLujvqvmQieXzzFFv4vvCDvRCeOgOw
+ XhTGMSlawVgd75VdhcCr0GBbCs3YdVrNzqdMWhvIJSUDTfQV5O4J+F/+1ejBUN1dnqX+
+ kMm+qY+UMHHuFQdvqwpe59ph3nyLFEv8gng1GLXaxdQLCWsCsVnIUaExYscGVA/dfu38
+ tAzqIdskuTCsOyivbqeGi00Es+YvEIBVwwl7I0zrUFxdiurDVa1k4kTcq67a1wO8B2/d
+ qrxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=95vc7j645Giw7pgm0LPbTQoMXq0lNn25nYeMz4b7vQQ=;
+ b=hBS4gv0q788Zr4PwcKswKNEoeAbm2o6/Cl9OqSPaHUDJvlLszvFsHPg7uLfdu3gUfk
+ tWOo0EiW+TymdAhR1VwedLhieYr/xyOa8CgoSbQbLD4G023AIqFxNDnA499EUHOmQeMa
+ BHYg5jwKZt/HBuvq0N6AZGC+YvfIVtJ3IIZI4bHJ85RS0uRl7dmfY6/njKqWFKZnha4z
+ n71Vk7HtnoSHtXaTzMuZDD0eiWUezd7VA3MJa7aXLFmvVfQGWpl8MYgyz7lmIhhOtQMw
+ uuOu4TtDfUvywLkMrBBodXbTEzS79K3FVbln7M+hmgv3nLCpwcY+GNP5ZOezFnEy8VyO
+ 6ikg==
+X-Gm-Message-State: AOAM530kJHPg8/lzCa7EKdAqfenVyvOSHjWxl41VnrpaBlNSTYQ0NKKR
+ V4DtQTU6hfh7RGID/OVNQpYtuyr6nsEqOZQkpXY=
+X-Google-Smtp-Source: ABdhPJzsHV9woT1enKCdPb+YWhHRoSxixF1VZVhDQ4YtcYGokfdS0gAZFXaZzxa4UbxE0k9QgsrDP3UR98c27jnmINY=
+X-Received: by 2002:a05:6808:208b:: with SMTP id
+ s11mr6859608oiw.95.1630685304608; 
+ Fri, 03 Sep 2021 09:08:24 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 2/2] ice: add support for reading
- SyncE DPLL state
+References: <20210901101206.50274-1-kerneljasonxing@gmail.com>
+In-Reply-To: <20210901101206.50274-1-kerneljasonxing@gmail.com>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Sat, 4 Sep 2021 00:07:48 +0800
+Message-ID: <CAL+tcoCv5-0NHakg0j9yfwps9bi0RWYR_Upi14ndoVa7B-64KQ@mail.gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ David Miller <davem@davemloft.net>, kuba@kernel.org, 
+ ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org, 
+ john.fastabend@gmail.com, andrii@kernel.org, kafai@fb.com, 
+ songliubraving@fb.com, yhs@fb.com, kpsingh@kernel.org
+Subject: Re: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with
+ more than 64 cpus
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,424 +86,398 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: abyagowi@fb.com, richardcochran@gmail.com, linux-kselftest@vger.kernel.org,
- kuba@kernel.org, davem@davemloft.net
+Cc: Shujin Li <lishujin@kuaishou.com>, netdev <netdev@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, Jason Xing <xingwanli@kuaishou.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement SyncE DPLL monitoring for E810-T devices.
-Poll loop will periodically check the state of the DPLL and cache it
-in the pf structure. State changes will be logged in the system log.
+On Wed, Sep 1, 2021 at 6:12 PM <kerneljasonxing@gmail.com> wrote:
+>
+> From: Jason Xing <xingwanli@kuaishou.com>
+>
+> Originally, ixgbe driver doesn't allow the mounting of xdpdrv if the
+> server is equipped with more than 64 cpus online. So it turns out that
+> the loading of xdpdrv causes the "NOMEM" failure.
+>
+> Actually, we can adjust the algorithm and then make it work through
+> mapping the current cpu to some xdp ring with the protect of @tx_lock.
+>
+> Here're some numbers before/after applying this patch with xdp-example
+> loaded on the eth0X:
+>
+> As client (tx path):
+>                      Before    After
+> TCP_STREAM send-64   734.14    714.20
+> TCP_STREAM send-128  1401.91   1395.05
+> TCP_STREAM send-512  5311.67   5292.84
+> TCP_STREAM send-1k   9277.40   9356.22 (not stable)
+> TCP_RR     send-1    22559.75  21844.22
+> TCP_RR     send-128  23169.54  22725.13
+> TCP_RR     send-512  21670.91  21412.56
+>
+> As server (rx path):
+>                      Before    After
+> TCP_STREAM send-64   1416.49   1383.12
+> TCP_STREAM send-128  3141.49   3055.50
+> TCP_STREAM send-512  9488.73   9487.44
+> TCP_STREAM send-1k   9491.17   9356.22 (not stable)
+> TCP_RR     send-1    23617.74  23601.60
+> ...
+>
+> Notice: the TCP_RR mode is unstable as the official document explaines.
+>
+> I tested many times with different parameters combined through netperf.
+> Though the result is not that accurate, I cannot see much influence on
+> this patch. The static key is places on the hot path, but it actually
+> shouldn't cause a huge regression theoretically.
+>
+> Fixes: 33fdc82f08 ("ixgbe: add support for XDP_TX action")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Co-developed-by: Shujin Li <lishujin@kuaishou.com>
+> Signed-off-by: Shujin Li <lishujin@kuaishou.com>
+> Signed-off-by: Jason Xing <xingwanli@kuaishou.com>
+> ---
+> v7:
+> - Factorized to a single spin_lock/unlock in ixgbe_xdp_xmit() (Eric)
+> - Handle other parts of lock/unlock in ixgbe_run_xdp()/_zc() (Jason)
+>
 
-Cached state can be read using the RTM_GETEECSTATE rtnetlink
-message.
+Does this change make any sense? I think it is much clearer than the
+v6 patch and they both have the same idea. Now I'm looking for more
+advice :-)
 
-Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h          |  5 ++
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 34 ++++++++++
- drivers/net/ethernet/intel/ice/ice_common.c   | 62 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_common.h   |  4 ++
- drivers/net/ethernet/intel/ice/ice_devids.h   |  3 +
- drivers/net/ethernet/intel/ice/ice_main.c     | 29 +++++++++
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 35 +++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 44 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   | 22 +++++++
- 9 files changed, 238 insertions(+)
+Thanks,
+Jason
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index eadcb9958346..6fb7e07e8a62 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -508,6 +508,11 @@ struct ice_pf {
- #define ICE_VF_AGG_NODE_ID_START	65
- #define ICE_MAX_VF_AGG_NODES		32
- 	struct ice_agg_node vf_agg_node[ICE_MAX_VF_AGG_NODES];
-+
-+	enum if_eec_state synce_dpll_state;
-+	u8 synce_dpll_pin;
-+	enum if_eec_state ptp_dpll_state;
-+	u8 ptp_dpll_pin;
- };
- 
- struct ice_netdev_priv {
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 21b4c7cd6f05..b84da5e9d025 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1727,6 +1727,36 @@ struct ice_aqc_add_rdma_qset_data {
- 	struct ice_aqc_add_tx_rdma_qset_entry rdma_qsets[];
- };
- 
-+/* Get CGU DPLL status (direct 0x0C66) */
-+struct ice_aqc_get_cgu_dpll_status {
-+	u8 dpll_num;
-+	u8 ref_state;
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_LOS		BIT(0)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_SCM		BIT(1)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_CFM		BIT(2)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_GST		BIT(3)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_PFM		BIT(4)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_REF_SW_ESYNC	BIT(6)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_FAST_LOCK_EN	BIT(7)
-+	__le16 dpll_state;
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_LOCK		BIT(0)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_HO		BIT(1)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_HO_READY	BIT(2)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_FLHIT		BIT(5)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_PSLHIT	BIT(7)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_CLK_REF_SHIFT	8
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_CLK_REF_SEL	\
-+	ICE_M(0x1F, ICE_AQC_GET_CGU_DPLL_STATUS_STATE_CLK_REF_SHIFT)
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_MODE_SHIFT	13
-+#define ICE_AQC_GET_CGU_DPLL_STATUS_STATE_MODE \
-+	ICE_M(0x7, ICE_AQC_GET_CGU_DPLL_STATUS_STATE_MODE_SHIFT)
-+	__le32 phase_offset_h;
-+	__le32 phase_offset_l;
-+	u8 eec_mode;
-+	u8 rsvd[1];
-+	__le16 node_handle;
-+};
-+
- /* Configure Firmware Logging Command (indirect 0xFF09)
-  * Logging Information Read Response (indirect 0xFF10)
-  * Note: The 0xFF10 command has no input parameters.
-@@ -1954,6 +1984,7 @@ struct ice_aq_desc {
- 		struct ice_aqc_fw_logging fw_logging;
- 		struct ice_aqc_get_clear_fw_log get_clear_fw_log;
- 		struct ice_aqc_download_pkg download_pkg;
-+		struct ice_aqc_get_cgu_dpll_status get_cgu_dpll_status;
- 		struct ice_aqc_driver_shared_params drv_shared_params;
- 		struct ice_aqc_set_mac_lb set_mac_lb;
- 		struct ice_aqc_alloc_free_res_cmd sw_res_ctrl;
-@@ -2108,6 +2139,9 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_update_pkg				= 0x0C42,
- 	ice_aqc_opc_get_pkg_info_list			= 0x0C43,
- 
-+	/* 1588/SyncE commands/events */
-+	ice_aqc_opc_get_cgu_dpll_status			= 0x0C66,
-+
- 	ice_aqc_opc_driver_shared_params		= 0x0C90,
- 
- 	/* Standalone Commands/Events */
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 2fb81e359cdf..e7474643a421 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -69,6 +69,31 @@ bool ice_is_e810(struct ice_hw *hw)
- 	return hw->mac_type == ICE_MAC_E810;
- }
- 
-+/**
-+ * ice_is_e810t
-+ * @hw: pointer to the hardware structure
-+ *
-+ * returns true if the device is E810T based, false if not.
-+ */
-+bool ice_is_e810t(struct ice_hw *hw)
-+{
-+	switch (hw->device_id) {
-+	case ICE_DEV_ID_E810C_SFP:
-+		if (hw->subsystem_device_id == ICE_SUBDEV_ID_E810T ||
-+		    hw->subsystem_device_id == ICE_SUBDEV_ID_E810T2)
-+			return true;
-+		break;
-+	case ICE_DEV_ID_E810C_QSFP:
-+		if (hw->subsystem_device_id == ICE_SUBDEV_ID_E810T2)
-+			return true;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return false;
-+}
-+
- /**
-  * ice_clear_pf_cfg - Clear PF configuration
-  * @hw: pointer to the hardware structure
-@@ -4520,6 +4545,42 @@ ice_dis_vsi_rdma_qset(struct ice_port_info *pi, u16 count, u32 *qset_teid,
- 	return ice_status_to_errno(status);
- }
- 
-+/**
-+ * ice_aq_get_cgu_dpll_status
-+ * @hw: pointer to the HW struct
-+ * @dpll_num: DPLL index
-+ * @ref_state: Reference clock state
-+ * @dpll_state: DPLL state
-+ * @phase_offset: Phase offset in ps
-+ * @eec_mode: EEC_mode
-+ *
-+ * Get CGU DPLL status (0x0C66)
-+ */
-+enum ice_status
-+ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
-+			   u16 *dpll_state, u64 *phase_offset, u8 *eec_mode)
-+{
-+	struct ice_aqc_get_cgu_dpll_status *cmd;
-+	struct ice_aq_desc desc;
-+	enum ice_status status;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_cgu_dpll_status);
-+	cmd = &desc.params.get_cgu_dpll_status;
-+	cmd->dpll_num = dpll_num;
-+
-+	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-+	if (!status) {
-+		*ref_state = cmd->ref_state;
-+		*dpll_state = le16_to_cpu(cmd->dpll_state);
-+		*phase_offset = le32_to_cpu(cmd->phase_offset_h);
-+		*phase_offset <<= 32;
-+		*phase_offset += le32_to_cpu(cmd->phase_offset_l);
-+		*eec_mode = cmd->eec_mode;
-+	}
-+
-+	return status;
-+}
-+
- /**
-  * ice_replay_pre_init - replay pre initialization
-  * @hw: pointer to the HW struct
-@@ -4974,3 +5035,4 @@ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw)
- 	}
- 	return false;
- }
-+
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index fb16070f02e2..ccd76c0cbf2c 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -100,6 +100,7 @@ enum ice_status
- ice_aq_manage_mac_write(struct ice_hw *hw, const u8 *mac_addr, u8 flags,
- 			struct ice_sq_cd *cd);
- bool ice_is_e810(struct ice_hw *hw);
-+bool ice_is_e810t(struct ice_hw *hw);
- enum ice_status ice_clear_pf_cfg(struct ice_hw *hw);
- enum ice_status
- ice_aq_set_phy_cfg(struct ice_hw *hw, struct ice_port_info *pi,
-@@ -156,6 +157,9 @@ ice_cfg_vsi_rdma(struct ice_port_info *pi, u16 vsi_handle, u16 tc_bitmap,
- int
- ice_ena_vsi_rdma_qset(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 		      u16 *rdma_qset, u16 num_qsets, u32 *qset_teid);
-+enum ice_status
-+ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
-+			   u16 *dpll_state, u64 *phase_offset, u8 *eec_mode);
- int
- ice_dis_vsi_rdma_qset(struct ice_port_info *pi, u16 count, u32 *qset_teid,
- 		      u16 *q_id);
-diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
-index 9d8194671f6a..e52dbeddb783 100644
---- a/drivers/net/ethernet/intel/ice/ice_devids.h
-+++ b/drivers/net/ethernet/intel/ice/ice_devids.h
-@@ -52,4 +52,7 @@
- /* Intel(R) Ethernet Connection E822-L 1GbE */
- #define ICE_DEV_ID_E822L_SGMII		0x189A
- 
-+#define ICE_SUBDEV_ID_E810T		0x000E
-+#define ICE_SUBDEV_ID_E810T2		0x000F
-+
- #endif /* _ICE_DEVIDS_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 0d6c143f6653..62a011f135bd 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5978,6 +5978,34 @@ static void ice_napi_disable_all(struct ice_vsi *vsi)
- 	}
- }
- 
-+/**
-+ * ice_get_eec_state - get state of SyncE DPLL
-+ * @netdev: network interface device structure
-+ * @state: state of SyncE DPLL
-+ * @sync_src: port is a source of the sync signal
-+ */
-+static int
-+ice_get_eec_state(struct net_device *netdev, enum if_eec_state *state,
-+		  u32 *eec_flags, struct netlink_ext_ack *extack)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+
-+	if (!ice_is_e810t(&pf->hw))
-+		return -EOPNOTSUPP;
-+
-+	*state = pf->synce_dpll_state;
-+
-+	*eec_flags = 0;
-+	if (pf->synce_dpll_pin == REF1P || pf->synce_dpll_pin == REF1N) {
-+		/* Add check if the current PF drives the EEC clock */
-+		*eec_flags |= EEC_SRC_PORT;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_down - Shutdown the connection
-  * @vsi: The VSI being stopped
-@@ -7268,4 +7296,5 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_bpf = ice_xdp,
- 	.ndo_xdp_xmit = ice_xdp_xmit,
- 	.ndo_xsk_wakeup = ice_xsk_wakeup,
-+	.ndo_get_eec_state = ice_get_eec_state,
- };
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 05cc5870e4ef..ccbc2d1cc754 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1409,6 +1409,36 @@ static void ice_ptp_tx_tstamp_cleanup(struct ice_ptp_tx *tx)
- 	}
- }
- 
-+static void ice_handle_cgu_state(struct ice_pf *pf)
-+{
-+	enum if_eec_state cgu_state;
-+	u8 pin;
-+
-+	cgu_state = ice_get_dpll_state(&pf->hw, ICE_CGU_DPLL_SYNCE, &pin);
-+	if (pf->synce_dpll_state != cgu_state) {
-+		pf->synce_dpll_state = cgu_state;
-+		pf->synce_dpll_pin = pin;
-+
-+		dev_warn(ice_pf_to_dev(pf),
-+			 "<DPLL%i> state changed to: %d, pin %d",
-+			 ICE_CGU_DPLL_SYNCE,
-+			 pf->synce_dpll_state,
-+			 pin);
-+	}
-+
-+	cgu_state = ice_get_dpll_state(&pf->hw, ICE_CGU_DPLL_PTP, &pin);
-+	if (pf->ptp_dpll_state != cgu_state) {
-+		pf->ptp_dpll_state = cgu_state;
-+		pf->ptp_dpll_pin = pin;
-+
-+		dev_warn(ice_pf_to_dev(pf),
-+			 "<DPLL%i> state changed to: %d, pin %d",
-+			 ICE_CGU_DPLL_PTP,
-+			 pf->ptp_dpll_state,
-+			 pin);
-+	}
-+}
-+
- static void ice_ptp_periodic_work(struct kthread_work *work)
- {
- 	struct ice_ptp *ptp = container_of(work, struct ice_ptp, work.work);
-@@ -1417,6 +1447,10 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- 	if (!test_bit(ICE_FLAG_PTP, pf->flags))
- 		return;
- 
-+	if (ice_is_e810t(&pf->hw) &&
-+	    &pf->hw.func_caps.ts_func_info.src_tmr_owned)
-+		ice_handle_cgu_state(pf);
-+
- 	ice_ptp_update_cached_phctime(pf);
- 
- 	ice_ptp_tx_tstamp_cleanup(&pf->ptp.port.tx);
-@@ -1598,3 +1632,4 @@ void ice_ptp_release(struct ice_pf *pf)
- 
- 	dev_info(ice_pf_to_dev(pf), "Removed PTP clock\n");
- }
-+
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 3eca0e4eab0b..df09f176512b 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -375,6 +375,50 @@ static int ice_ptp_port_cmd_e810(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	return 0;
- }
- 
-+/**
-+ * ice_get_dpll_state - get the state of the DPLL
-+ * @hw: pointer to the hw struct
-+ * @dpll_idx: Index of internal DPLL unit
-+ * @pin: pointer to a buffer for returning currently active pin
-+ *
-+ * This function will read the state of the DPLL(dpll_idx). If optional
-+ * parameter pin is given it'll be used to retrieve currently active pin.
-+ *
-+ * Return: state of the DPLL
-+ */
-+enum if_eec_state
-+ice_get_dpll_state(struct ice_hw *hw, u8 dpll_idx, u8 *pin)
-+{
-+	enum ice_status status;
-+	u64 phase_offset;
-+	u16 dpll_state;
-+	u8 ref_state;
-+	u8 eec_mode;
-+
-+	if (dpll_idx >= ICE_CGU_DPLL_MAX)
-+		return IF_EEC_STATE_INVALID;
-+
-+	status = ice_aq_get_cgu_dpll_status(hw, dpll_idx, &ref_state,
-+					    &dpll_state, &phase_offset,
-+					    &eec_mode);
-+	if (status)
-+		return IF_EEC_STATE_INVALID;
-+
-+	if (pin) {
-+		/* current ref pin in dpll_state_refsel_status_X register */
-+		*pin = (dpll_state &
-+			ICE_AQC_GET_CGU_DPLL_STATUS_STATE_CLK_REF_SEL) >>
-+		       ICE_AQC_GET_CGU_DPLL_STATUS_STATE_CLK_REF_SHIFT;
-+	}
-+
-+	if (dpll_state & ICE_AQC_GET_CGU_DPLL_STATUS_STATE_LOCK)
-+		return IF_EEC_STATE_LOCKED;
-+	else if (dpll_state & ICE_AQC_GET_CGU_DPLL_STATUS_STATE_HO)
-+		return IF_EEC_STATE_HOLDOVER;
-+
-+	return IF_EEC_STATE_FREERUN;
-+}
-+
- /* Device agnostic functions
-  *
-  * The following functions implement useful behavior to hide the differences
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 55a414e87018..cc5dc79fc926 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -30,6 +30,8 @@ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
- 
- /* E810 family functions */
- int ice_ptp_init_phy_e810(struct ice_hw *hw);
-+enum if_eec_state
-+ice_get_dpll_state(struct ice_hw *hw, u8 dpll_idx, u8 *pin);
- 
- #define PFTSYN_SEM_BYTES	4
- 
-@@ -76,4 +78,24 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw);
- #define LOW_TX_MEMORY_BANK_START	0x03090000
- #define HIGH_TX_MEMORY_BANK_START	0x03090004
- 
-+enum ice_e810t_cgu_dpll {
-+	ICE_CGU_DPLL_SYNCE,
-+	ICE_CGU_DPLL_PTP,
-+	ICE_CGU_DPLL_MAX
-+};
-+
-+enum ice_e810t_cgu_pins {
-+	REF0P,
-+	REF0N,
-+	REF1P,
-+	REF1N,
-+	REF2P,
-+	REF2N,
-+	REF3P,
-+	REF3N,
-+	REF4P,
-+	REF4N,
-+	NUM_E810T_CGU_PINS
-+};
-+
- #endif /* _ICE_PTP_HW_H_ */
--- 
-2.26.3
-
+> v6:
+> - Move the declaration of static-key to the proper position (Test Robot)
+> - Add reported-by tag (Jason)
+> - Add more detailed performance test results (Jason)
+>
+> v5:
+> - Change back to nr_cpu_ids (Eric)
+>
+> v4:
+> - Update the wrong commit messages. (Jason)
+>
+> v3:
+> - Change nr_cpu_ids to num_online_cpus() (Maciej)
+> - Rename MAX_XDP_QUEUES to IXGBE_MAX_XDP_QS (Maciej)
+> - Rename ixgbe_determine_xdp_cpu() to ixgbe_determine_xdp_q_idx() (Maciej)
+> - Wrap ixgbe_xdp_ring_update_tail() with lock into one function (Maciej)
+>
+> v2:
+> - Adjust cpu id in ixgbe_xdp_xmit(). (Jesper)
+> - Add a fallback path. (Maciej)
+> - Adjust other parts related to xdp ring.
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe.h           | 23 +++++++++-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c       |  9 +++-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      | 50 ++++++++++++++++------
+>  .../net/ethernet/intel/ixgbe/ixgbe_txrx_common.h   |  3 +-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c       | 16 ++++---
+>  5 files changed, 77 insertions(+), 24 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> index a604552..4a69823 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> @@ -351,6 +351,7 @@ struct ixgbe_ring {
+>         };
+>         u16 rx_offset;
+>         struct xdp_rxq_info xdp_rxq;
+> +       spinlock_t tx_lock;     /* used in XDP mode */
+>         struct xsk_buff_pool *xsk_pool;
+>         u16 ring_idx;           /* {rx,tx,xdp}_ring back reference idx */
+>         u16 rx_buf_len;
+> @@ -375,11 +376,13 @@ enum ixgbe_ring_f_enum {
+>  #define IXGBE_MAX_FCOE_INDICES         8
+>  #define MAX_RX_QUEUES                  (IXGBE_MAX_FDIR_INDICES + 1)
+>  #define MAX_TX_QUEUES                  (IXGBE_MAX_FDIR_INDICES + 1)
+> -#define MAX_XDP_QUEUES                 (IXGBE_MAX_FDIR_INDICES + 1)
+> +#define IXGBE_MAX_XDP_QS               (IXGBE_MAX_FDIR_INDICES + 1)
+>  #define IXGBE_MAX_L2A_QUEUES           4
+>  #define IXGBE_BAD_L2A_QUEUE            3
+>  #define IXGBE_MAX_MACVLANS             63
+>
+> +DECLARE_STATIC_KEY_FALSE(ixgbe_xdp_locking_key);
+> +
+>  struct ixgbe_ring_feature {
+>         u16 limit;      /* upper limit on feature indices */
+>         u16 indices;    /* current value of indices */
+> @@ -629,7 +632,7 @@ struct ixgbe_adapter {
+>
+>         /* XDP */
+>         int num_xdp_queues;
+> -       struct ixgbe_ring *xdp_ring[MAX_XDP_QUEUES];
+> +       struct ixgbe_ring *xdp_ring[IXGBE_MAX_XDP_QS];
+>         unsigned long *af_xdp_zc_qps; /* tracks AF_XDP ZC enabled rings */
+>
+>         /* TX */
+> @@ -772,6 +775,22 @@ struct ixgbe_adapter {
+>  #endif /* CONFIG_IXGBE_IPSEC */
+>  };
+>
+> +static inline int ixgbe_determine_xdp_q_idx(int cpu)
+> +{
+> +       if (static_key_enabled(&ixgbe_xdp_locking_key))
+> +               return cpu % IXGBE_MAX_XDP_QS;
+> +       else
+> +               return cpu;
+> +}
+> +
+> +static inline
+> +struct ixgbe_ring *ixgbe_determine_xdp_ring(struct ixgbe_adapter *adapter)
+> +{
+> +       int index = ixgbe_determine_xdp_q_idx(smp_processor_id());
+> +
+> +       return adapter->xdp_ring[index];
+> +}
+> +
+>  static inline u8 ixgbe_max_rss_indices(struct ixgbe_adapter *adapter)
+>  {
+>         switch (adapter->hw.mac.type) {
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+> index 0218f6c..86b1116 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+> @@ -299,7 +299,10 @@ static void ixgbe_cache_ring_register(struct ixgbe_adapter *adapter)
+>
+>  static int ixgbe_xdp_queues(struct ixgbe_adapter *adapter)
+>  {
+> -       return adapter->xdp_prog ? nr_cpu_ids : 0;
+> +       int queues;
+> +
+> +       queues = min_t(int, IXGBE_MAX_XDP_QS, nr_cpu_ids);
+> +       return adapter->xdp_prog ? queues : 0;
+>  }
+>
+>  #define IXGBE_RSS_64Q_MASK     0x3F
+> @@ -947,6 +950,7 @@ static int ixgbe_alloc_q_vector(struct ixgbe_adapter *adapter,
+>                 ring->count = adapter->tx_ring_count;
+>                 ring->queue_index = xdp_idx;
+>                 set_ring_xdp(ring);
+> +               spin_lock_init(&ring->tx_lock);
+>
+>                 /* assign ring to adapter */
+>                 WRITE_ONCE(adapter->xdp_ring[xdp_idx], ring);
+> @@ -1032,6 +1036,9 @@ static void ixgbe_free_q_vector(struct ixgbe_adapter *adapter, int v_idx)
+>         adapter->q_vector[v_idx] = NULL;
+>         __netif_napi_del(&q_vector->napi);
+>
+> +       if (static_key_enabled(&ixgbe_xdp_locking_key))
+> +               static_branch_dec(&ixgbe_xdp_locking_key);
+> +
+>         /*
+>          * after a call to __netif_napi_del() napi may still be used and
+>          * ixgbe_get_stats64() might access the rings on this vector,
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 14aea40..8b9e21b 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -165,6 +165,9 @@ static int ixgbe_notify_dca(struct notifier_block *, unsigned long event,
+>  MODULE_DESCRIPTION("Intel(R) 10 Gigabit PCI Express Network Driver");
+>  MODULE_LICENSE("GPL v2");
+>
+> +DEFINE_STATIC_KEY_FALSE(ixgbe_xdp_locking_key);
+> +EXPORT_SYMBOL(ixgbe_xdp_locking_key);
+> +
+>  static struct workqueue_struct *ixgbe_wq;
+>
+>  static bool ixgbe_check_cfg_remove(struct ixgbe_hw *hw, struct pci_dev *pdev);
+> @@ -2197,6 +2200,7 @@ static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
+>  {
+>         int err, result = IXGBE_XDP_PASS;
+>         struct bpf_prog *xdp_prog;
+> +       struct ixgbe_ring *ring;
+>         struct xdp_frame *xdpf;
+>         u32 act;
+>
+> @@ -2215,7 +2219,12 @@ static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
+>                 xdpf = xdp_convert_buff_to_frame(xdp);
+>                 if (unlikely(!xdpf))
+>                         goto out_failure;
+> -               result = ixgbe_xmit_xdp_ring(adapter, xdpf);
+> +               ring = ixgbe_determine_xdp_ring(adapter);
+> +               if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +                       spin_lock(&ring->tx_lock);
+> +               result = ixgbe_xmit_xdp_ring(ring, xdpf);
+> +               if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +                       spin_unlock(&ring->tx_lock);
+>                 if (result == IXGBE_XDP_CONSUMED)
+>                         goto out_failure;
+>                 break;
+> @@ -2422,13 +2431,9 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
+>                 xdp_do_flush_map();
+>
+>         if (xdp_xmit & IXGBE_XDP_TX) {
+> -               struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
+> +               struct ixgbe_ring *ring = ixgbe_determine_xdp_ring(adapter);
+>
+> -               /* Force memory writes to complete before letting h/w
+> -                * know there are new descriptors to fetch.
+> -                */
+> -               wmb();
+> -               writel(ring->next_to_use, ring->tail);
+> +               ixgbe_xdp_ring_update_tail_locked(ring);
+>         }
+>
+>         u64_stats_update_begin(&rx_ring->syncp);
+> @@ -6320,7 +6325,7 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
+>         if (ixgbe_init_rss_key(adapter))
+>                 return -ENOMEM;
+>
+> -       adapter->af_xdp_zc_qps = bitmap_zalloc(MAX_XDP_QUEUES, GFP_KERNEL);
+> +       adapter->af_xdp_zc_qps = bitmap_zalloc(IXGBE_MAX_XDP_QS, GFP_KERNEL);
+>         if (!adapter->af_xdp_zc_qps)
+>                 return -ENOMEM;
+>
+> @@ -8536,10 +8541,9 @@ static u16 ixgbe_select_queue(struct net_device *dev, struct sk_buff *skb,
+>  }
+>
+>  #endif
+> -int ixgbe_xmit_xdp_ring(struct ixgbe_adapter *adapter,
+> +int ixgbe_xmit_xdp_ring(struct ixgbe_ring *ring,
+>                         struct xdp_frame *xdpf)
+>  {
+> -       struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
+>         struct ixgbe_tx_buffer *tx_buffer;
+>         union ixgbe_adv_tx_desc *tx_desc;
+>         u32 len, cmd_type;
+> @@ -10130,8 +10134,13 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+>                         return -EINVAL;
+>         }
+>
+> -       if (nr_cpu_ids > MAX_XDP_QUEUES)
+> +       /* if the number of cpus is much larger than the maximum of queues,
+> +        * we should stop it and then return with NOMEM like before.
+> +        */
+> +       if (nr_cpu_ids > IXGBE_MAX_XDP_QS * 2)
+>                 return -ENOMEM;
+> +       else if (nr_cpu_ids > IXGBE_MAX_XDP_QS)
+> +               static_branch_inc(&ixgbe_xdp_locking_key);
+>
+>         old_prog = xchg(&adapter->xdp_prog, prog);
+>         need_reset = (!!prog != !!old_prog);
+> @@ -10195,6 +10204,15 @@ void ixgbe_xdp_ring_update_tail(struct ixgbe_ring *ring)
+>         writel(ring->next_to_use, ring->tail);
+>  }
+>
+> +void ixgbe_xdp_ring_update_tail_locked(struct ixgbe_ring *ring)
+> +{
+> +       if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +               spin_lock(&ring->tx_lock);
+> +       ixgbe_xdp_ring_update_tail(ring);
+> +       if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +               spin_unlock(&ring->tx_lock);
+> +}
+> +
+>  static int ixgbe_xdp_xmit(struct net_device *dev, int n,
+>                           struct xdp_frame **frames, u32 flags)
+>  {
+> @@ -10212,18 +10230,21 @@ static int ixgbe_xdp_xmit(struct net_device *dev, int n,
+>         /* During program transitions its possible adapter->xdp_prog is assigned
+>          * but ring has not been configured yet. In this case simply abort xmit.
+>          */
+> -       ring = adapter->xdp_prog ? adapter->xdp_ring[smp_processor_id()] : NULL;
+> +       ring = adapter->xdp_prog ? ixgbe_determine_xdp_ring(adapter) : NULL;
+>         if (unlikely(!ring))
+>                 return -ENXIO;
+>
+>         if (unlikely(test_bit(__IXGBE_TX_DISABLED, &ring->state)))
+>                 return -ENXIO;
+>
+> +       if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +               spin_lock(&ring->tx_lock);
+> +
+>         for (i = 0; i < n; i++) {
+>                 struct xdp_frame *xdpf = frames[i];
+>                 int err;
+>
+> -               err = ixgbe_xmit_xdp_ring(adapter, xdpf);
+> +               err = ixgbe_xmit_xdp_ring(ring, xdpf);
+>                 if (err != IXGBE_XDP_TX)
+>                         break;
+>                 nxmit++;
+> @@ -10232,6 +10253,9 @@ static int ixgbe_xdp_xmit(struct net_device *dev, int n,
+>         if (unlikely(flags & XDP_XMIT_FLUSH))
+>                 ixgbe_xdp_ring_update_tail(ring);
+>
+> +       if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +               spin_unlock(&ring->tx_lock);
+> +
+>         return nxmit;
+>  }
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+> index 2aeec78..a82533f 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+> @@ -12,7 +12,7 @@
+>  #define IXGBE_TXD_CMD (IXGBE_TXD_CMD_EOP | \
+>                        IXGBE_TXD_CMD_RS)
+>
+> -int ixgbe_xmit_xdp_ring(struct ixgbe_adapter *adapter,
+> +int ixgbe_xmit_xdp_ring(struct ixgbe_ring *ring,
+>                         struct xdp_frame *xdpf);
+>  bool ixgbe_cleanup_headers(struct ixgbe_ring *rx_ring,
+>                            union ixgbe_adv_rx_desc *rx_desc,
+> @@ -23,6 +23,7 @@ void ixgbe_process_skb_fields(struct ixgbe_ring *rx_ring,
+>  void ixgbe_rx_skb(struct ixgbe_q_vector *q_vector,
+>                   struct sk_buff *skb);
+>  void ixgbe_xdp_ring_update_tail(struct ixgbe_ring *ring);
+> +void ixgbe_xdp_ring_update_tail_locked(struct ixgbe_ring *ring);
+>  void ixgbe_irq_rearm_queues(struct ixgbe_adapter *adapter, u64 qmask);
+>
+>  void ixgbe_txrx_ring_disable(struct ixgbe_adapter *adapter, int ring);
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> index b1d22e4..db2bc58 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> @@ -100,6 +100,7 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
+>  {
+>         int err, result = IXGBE_XDP_PASS;
+>         struct bpf_prog *xdp_prog;
+> +       struct ixgbe_ring *ring;
+>         struct xdp_frame *xdpf;
+>         u32 act;
+>
+> @@ -120,7 +121,12 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
+>                 xdpf = xdp_convert_buff_to_frame(xdp);
+>                 if (unlikely(!xdpf))
+>                         goto out_failure;
+> -               result = ixgbe_xmit_xdp_ring(adapter, xdpf);
+> +               ring = ixgbe_determine_xdp_ring(adapter);
+> +               if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +                       spin_lock(&ring->tx_lock);
+> +               result = ixgbe_xmit_xdp_ring(ring, xdpf);
+> +               if (static_branch_unlikely(&ixgbe_xdp_locking_key))
+> +                       spin_unlock(&ring->tx_lock);
+>                 if (result == IXGBE_XDP_CONSUMED)
+>                         goto out_failure;
+>                 break;
+> @@ -334,13 +340,9 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+>                 xdp_do_flush_map();
+>
+>         if (xdp_xmit & IXGBE_XDP_TX) {
+> -               struct ixgbe_ring *ring = adapter->xdp_ring[smp_processor_id()];
+> +               struct ixgbe_ring *ring = ixgbe_determine_xdp_ring(adapter);
+>
+> -               /* Force memory writes to complete before letting h/w
+> -                * know there are new descriptors to fetch.
+> -                */
+> -               wmb();
+> -               writel(ring->next_to_use, ring->tail);
+> +               ixgbe_xdp_ring_update_tail_locked(ring);
+>         }
+>
+>         u64_stats_update_begin(&rx_ring->syncp);
+> --
+> 1.8.3.1
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
