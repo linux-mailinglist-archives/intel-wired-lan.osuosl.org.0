@@ -1,159 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F7213FFABA
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Sep 2021 08:55:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 915A13FFB3C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Sep 2021 09:43:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C3F1383027;
-	Fri,  3 Sep 2021 06:55:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0D0EB4028B;
+	Fri,  3 Sep 2021 07:43:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8qouww0nLZK9; Fri,  3 Sep 2021 06:55:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wMeOPWfqSayH; Fri,  3 Sep 2021 07:43:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF03B83032;
-	Fri,  3 Sep 2021 06:55:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 058584016F;
+	Fri,  3 Sep 2021 07:43:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A9EC61BF44C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:54:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BF3991BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 07:43:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 946874254A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:54:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A9E758330B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 07:43:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id reD5M-NgL53P for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Sep 2021 06:54:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D3DA742548
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 06:54:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10095"; a="280362417"
-X-IronPort-AV: E=Sophos;i="5.85,264,1624345200"; d="scan'208";a="280362417"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2021 23:54:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,264,1624345200"; d="scan'208";a="521571636"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga004.fm.intel.com with ESMTP; 02 Sep 2021 23:54:54 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Thu, 2 Sep 2021 23:54:54 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Thu, 2 Sep 2021 23:54:54 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Thu, 2 Sep 2021 23:54:54 -0700
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.49) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.10; Thu, 2 Sep 2021 23:54:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g0frTMOtGjCoH+lwugvg56B5TR2bpBfc3HfrkCMtVy/O2pmZm/NCPngKzrdZmTfFafzOzUpYjTGwDLldZVudC8hMeabBIk5UTPd1PQmJFPHjwohEAIqTCUh1xclAM8hUiKFFnDSYXnUasiD5GzB5kVp+50kpwyCohHwoaN93xyuSqhlPDXnfvjZ/qXPBblnwKtN13Ekd4ej3mb4ifRWeeqJCh8QhztETLt/07uY/izVbE5InvOk/DL7Gdi3T6oVFL/FGdKdHfw0swYwqXCyiFbSZQ8w/7zLJUcfcWexxkF3SpkQ5/ShE9GLiuDjZWz5XNBfn1W8myKIq2zSxv3fcgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3o/7GK4qnybP/C7+DAp+G3xob3++VtoqaYhLQ05qnqA=;
- b=QEJZ0JfoaU5MpsBtgP5o24ji0xVo6UkuUvsS7qRaWxM+mOEvTtQs/FXD5g1O/pTbj8eqDeuW5X6JFZBLsEduNdeu/J7cGlIlTBzSrApfqacRgromw4NfRV73DZz0kbaJ4pghpiA8+tYA/vmU4wKT1LqjH16VmOjn4n4uWhaH28uF8+GVRqezXq0v9gBNdB8za9nGGatG6Njq5X+2wopjrUiBAocn/AoQ6myAB9rhKSPEMeNnyunBE9iVOFFVbe0ojPvrJJmEOHaS5dtgFNp6uYkwIKGOotF3EwU8/D7oVjHA+caKh//hTRSIvsDdhq8R8d+p+v1ghe9LWOY4G75lRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3o/7GK4qnybP/C7+DAp+G3xob3++VtoqaYhLQ05qnqA=;
- b=kUkXjS4kRD08QSjDiB/RGvA9vv5cKkNWHshBHpXZWlfGq96m+hYEa//4b5MYqjQslUh3mOwP9hKhucX9LOxPv2auFZpwhDX2UxUrLW/C1ufdNKcrHiquJQd83HBana2VH5pK6YyYTw38Ubd1Y2tJwA1K63Jp5PhSHlzGhBpdUSk=
-Received: from PH0PR11MB5144.namprd11.prod.outlook.com (2603:10b6:510:3e::20)
- by PH0PR11MB4837.namprd11.prod.outlook.com (2603:10b6:510:41::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.23; Fri, 3 Sep
- 2021 06:54:50 +0000
-Received: from PH0PR11MB5144.namprd11.prod.outlook.com
- ([fe80::105f:b75f:c95e:f885]) by PH0PR11MB5144.namprd11.prod.outlook.com
- ([fe80::105f:b75f:c95e:f885%3]) with mapi id 15.20.4478.022; Fri, 3 Sep 2021
- 06:54:50 +0000
-From: "Kuruvinakunnel, George" <george.kuruvinakunnel@intel.com>
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v6 intel-next 9/9] ice: make use of
- ice_for_each_* macros
-Thread-Index: AQHXlDuPuciqmagVJ0uDushRzeP+L6uR+JhQ
-Date: Fri, 3 Sep 2021 06:54:50 +0000
-Message-ID: <PH0PR11MB51445B9EAB6E3DE927E8FBAEE2CF9@PH0PR11MB5144.namprd11.prod.outlook.com>
-References: <20210818135916.25007-1-maciej.fijalkowski@intel.com>
- <20210818135916.25007-10-maciej.fijalkowski@intel.com>
-In-Reply-To: <20210818135916.25007-10-maciej.fijalkowski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5d427bc8-ad77-4507-4cca-08d96ea7b9d4
-x-ms-traffictypediagnostic: PH0PR11MB4837:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <PH0PR11MB4837FEC5BCD8A1D7589FA09BE2CF9@PH0PR11MB4837.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1417;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ljUGXCfyQLkD3oeT+Z+HmqANzMbRatH3pfIXEieYty1egUrvGU+HIXZMqGBALWIYOk2FA6Jjs9AFh4nIdFhlvNq5XLRI3vDXMuRjSIJU/M6Uv2noole6rtGZeIRyQlsPIZHVGOwJlNm/Vvgc+DOL392ye/t75FXjmwVpu/wlGKifLXTQDNNynS0sqK4a/B7lHp8sRipaSlT+djVFUQDqvln/H6BMIf3DYEsy1Tuqh27/YsiqOnCDntNIf7LZzrlgWUwa0mYrc5v60hRdhLkNBUIWZ4nNqx/ei+NFsTwoJbM2AN04V5PywUtGpaubv57nFCWdxTBNBzvWT/bCTnFmnoCGr/7fDROU6NbMVlm6Rbuqn/p6Y3glpG2ve6y57GhTwlViVWbyLNfcYsj6PwKNB0eUui//ZcmT+46Y+dBrC7sJVRX6p+hFtjFU+TLca78TQoWRypRz2H7peLXgq3ISoFVyirJqf3RQ628b19YD+s5E7Zm0kVL2kMZWREPhZDEcgXrrCmU2AP3uIsNV6EViJOZ7UOuBZVP3CDF81h+HXHt2fDJEBQseC5QWup+hKa9Baws57Vk+UCS+Y1NcXnHYSLGEXzuKp8QsciwO1/xT9pTvQbK/AOzAy4pCqQSDlQMSqS61QsqIwJCLkYjJ5rAgI0Mu/isLfDMAtvOQwUg1jYXa8c5UIRIB+fsRTrrHSOcC1hd98QCUb1mc4JoJTlKHkw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5144.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(39860400002)(396003)(366004)(346002)(136003)(316002)(83380400001)(4326008)(110136005)(33656002)(7696005)(38070700005)(8676002)(122000001)(6506007)(26005)(76116006)(66946007)(107886003)(55016002)(71200400001)(53546011)(38100700002)(8936002)(52536014)(54906003)(2906002)(64756008)(66476007)(66556008)(86362001)(66446008)(186003)(9686003)(5660300002)(478600001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RF0UFL8dJbzIzSM97n5fqP6kv6yuJrL4JSVjwJoFPDWXPQJHakXXOVwX7/pY?=
- =?us-ascii?Q?8q+nLwjgPe6h5aIyqb3SGI8dSQmfG58iqauapW5bHZeqgf1BtIFwjVhGTjJz?=
- =?us-ascii?Q?hP6IrbUwiHDgqGXADtGZHLtF/1S7Ocnslmu5SX/LDnOifu+GIvhSflYaDXwh?=
- =?us-ascii?Q?XQTW2SHHhUgpVuiJBBxiHGdLkLw5MiQdurvBpG/yo3k6h4S9v92Os3GjsP3i?=
- =?us-ascii?Q?geveQ2chdP/zyBM7Z1NKb2/pKAxNyHWIcNgQuwzwllk3iHRJBrkcyyz/5yXr?=
- =?us-ascii?Q?iwFOkkScLiTnNqsVpKSvyV8+/2BcrVaffDx6kG2ESFQqqf5pZ5D8jGVC5h8p?=
- =?us-ascii?Q?HlqHl8bOyn5eIKHDJSoIS6fkbi6tzUyLS/6fMYx3KK2diW47ojP2yiQh6fKf?=
- =?us-ascii?Q?jYXLCMmtvjbjSCY48o5oDIkbW9KGgPW+clhCI/t7N9mS+sTGs/tzG2CRSkTF?=
- =?us-ascii?Q?DdYFpfmmM9RvUNNkfwR8GKWpPfd9IOTVC1SGF189b0kNq7mORsmQDQ+DbCKR?=
- =?us-ascii?Q?M0rjv561lV/KkN40BpXsbZ4MXEhXn+O/c/MUuwIpfsfezCtb5ablwqoyZUJR?=
- =?us-ascii?Q?CwuaQ41eZZsF3xYJK2hSWXDEDyAZ1QywO1VFkGX4ktpLwFF6xDSqksi+0UZg?=
- =?us-ascii?Q?3HqKF+hs4y7lWT6ChoPMXWlwYqT9mm55ZFbshDIGfoYhK5UhIkUBgWpE/Mv6?=
- =?us-ascii?Q?mqKZpwbAAKR/O3+QPOJHZgFChZ+lTN4oOpJKxjpcJiWa+/sP4D9C3krMzeID?=
- =?us-ascii?Q?o2bFaPJWNh+NCzAWCgwTKDZadU6o39cytiOU3BGq0bK3WfUBRPEdrCa/H6RL?=
- =?us-ascii?Q?GZSgZE5tXSV8Jiz0vO9iuPx9Ewppt1MtLHSXrt/wf2TrgTz0mdZeBwiwdj+L?=
- =?us-ascii?Q?8O0OBC7U61V7c1OHU6uKhmTJaUoOLZhqrgspk3flNQvHYFW61RuMDoPDxHjB?=
- =?us-ascii?Q?VmHL0paQiD82Pudi9yE63KHswk9tQ9qP86a4mq1pw9kvkqIqkp7HaYF1vJki?=
- =?us-ascii?Q?h8bz+i7Hd7kwRSd/zudf4RXwEyABIbbMOaR6E0KPtMiOWdRwjUbjCtnelJMo?=
- =?us-ascii?Q?iX9nzhcFuNMrm65MoTnHieAz1OH45cNT2xUwYBlsZ+Jt4lG+WJcVTv8nWpF3?=
- =?us-ascii?Q?iXSmQkSX8kSnSjuubgdAbPSkKAOmBDLtixvgnpcB3a8rWdXT77rKx6B3b75T?=
- =?us-ascii?Q?nuwVq6omimxj1YwiGqH3FxovpqL1QRZNUailaT6K7oHDyL4XudsoZSLZZmst?=
- =?us-ascii?Q?w9XgYPOaVUp9/mqNX1C4oAk8kuD8N4T4gi6zqpmG2Kp0TUsNba9k32EMl5e3?=
- =?us-ascii?Q?k/umwVWrkVFQ4hbCr0uGq8LF?=
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hMfIIh5zPMeq for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Sep 2021 07:43:21 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DB4BF832EB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Sep 2021 07:43:20 +0000 (UTC)
+Received: from [192.168.0.4] (ip5f5aed59.dynamic.kabel-deutschland.de
+ [95.90.237.89])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 80A8461E5FE33;
+ Fri,  3 Sep 2021 09:43:17 +0200 (CEST)
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+References: <20210903064846.71507-1-jedrzej.jagielski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <f4a7fedd-968f-f683-f3ac-a444a927d397@molgen.mpg.de>
+Date: Fri, 3 Sep 2021 09:43:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5144.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d427bc8-ad77-4507-4cca-08d96ea7b9d4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2021 06:54:50.5151 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5Ro+EHth5s8MEzXYUqRaT4Cx21iH6BvcOU1DG7KxvZmNwCrYDG2wQYf1C+l7OaDe9HdXJe26MsXbNr62juqodwBK5dwWxWm2US/ZzC/FmO4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4837
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v6 intel-next 9/9] ice: make use of
- ice_for_each_* macros
+In-Reply-To: <20210903064846.71507-1-jedrzej.jagielski@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix refreshing iavf
+ adapter stats on ethtool request
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -166,47 +62,114 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "joamaki@gmail.com" <joamaki@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "toke@redhat.com" <toke@redhat.com>, "bjorn@kernel.org" <bjorn@kernel.org>,
- "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Maciej
-> Fijalkowski
-> Sent: Wednesday, August 18, 2021 7:29 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: joamaki@gmail.com; Lobakin, Alexandr <alexandr.lobakin@intel.com>;
-> netdev@vger.kernel.org; toke@redhat.com; bjorn@kernel.org; kuba@kernel.org;
-> bpf@vger.kernel.org; davem@davemloft.net; Karlsson, Magnus
-> <magnus.karlsson@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v6 intel-next 9/9] ice: make use of ice_for_each_*
-> macros
-> 
-> Go through the code base and use ice_for_each_* macros.  While at it, introduce
-> ice_for_each_xdp_txq() macro that can be used for looping over xdp_rings array.
-> 
-> Commit is not introducing any new functionality.
-> 
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice.h         |  5 ++++-
->  drivers/net/ethernet/intel/ice/ice_arfs.c    |  2 +-
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  4 ++--
-> drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 ++++-----
->  drivers/net/ethernet/intel/ice/ice_lib.c     | 22 ++++++++++----------
->  drivers/net/ethernet/intel/ice/ice_main.c    | 14 ++++++-------
->  6 files changed, 30 insertions(+), 27 deletions(-)
-> 
+Dear Jedrzej,
 
-Tested-by: George Kuruvinakunnel <george.kuruvinakunnel@intel.com>
+
+Am 03.09.21 um 08:48 schrieb Jedrzej Jagielski:
+
+Should the summary have a net prefix or so? Also shorter:
+
+> iavf: Refresh iavf adapter stats on ethtool request
+
+
+> Currently iavf adapter statistics are refreshed only in a
+> watchdog task, triggered approximately every two seconds,
+> which causes some ethtool requests to return outdated values.
+> 
+> Add explicit statistics refresh when requested by ethtool -S.
+> 
+> Fixes: b476b0030e61 ("iavf: Move commands processing to the separate function")
+> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> ---
+>   drivers/net/ethernet/intel/iavf/iavf.h         |  2 ++
+>   drivers/net/ethernet/intel/iavf/iavf_ethtool.c |  3 +++
+>   drivers/net/ethernet/intel/iavf/iavf_main.c    | 18 ++++++++++++++++++
+>   3 files changed, 23 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+> index 21c95775509a..afe6b0d24a9a 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf.h
+> +++ b/drivers/net/ethernet/intel/iavf/iavf.h
+> @@ -306,6 +306,7 @@ struct iavf_adapter {
+>   #define IAVF_FLAG_AQ_DEL_FDIR_FILTER		BIT(26)
+>   #define IAVF_FLAG_AQ_ADD_ADV_RSS_CFG		BIT(27)
+>   #define IAVF_FLAG_AQ_DEL_ADV_RSS_CFG		BIT(28)
+> +#define IAVF_FLAG_AQ_REQUEST_STATS		BIT(29)
+>   
+>   	/* OS defined structs */
+>   	struct net_device *netdev;
+> @@ -399,6 +400,7 @@ int iavf_up(struct iavf_adapter *adapter);
+>   void iavf_down(struct iavf_adapter *adapter);
+>   int iavf_process_config(struct iavf_adapter *adapter);
+>   void iavf_schedule_reset(struct iavf_adapter *adapter);
+> +void iavf_schedule_request_stats(struct iavf_adapter *adapter);
+>   void iavf_reset(struct iavf_adapter *adapter);
+>   void iavf_set_ethtool_ops(struct net_device *netdev);
+>   void iavf_update_stats(struct iavf_adapter *adapter);
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> index 7cbe59beeebb..21c4d4180f3e 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+> @@ -354,6 +354,9 @@ static void iavf_get_ethtool_stats(struct net_device *netdev,
+>   	struct iavf_adapter *adapter = netdev_priv(netdev);
+>   	unsigned int i;
+>   
+> +	/* Explicitly request stats refresh */
+> +	iavf_schedule_request_stats(adapter);
+> +
+>   	iavf_add_ethtool_stats(&data, adapter, iavf_gstrings_stats);
+>   
+>   	rcu_read_lock();
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 80437ef26391..e7ac6356772b 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -165,6 +165,19 @@ void iavf_schedule_reset(struct iavf_adapter *adapter)
+>   	}
+>   }
+>   
+> +/**
+> + * iavf_schedule_request_stats - Set the flags and schedule statistics request
+> + * @adapter: board private structure
+> + *
+> + * Sets IAVF_FLAG_AQ_REQUEST_STATS flag so iavf_watchdog_task() will explicitly
+> + * request and refresh ethtool stats
+> + **/
+> +void iavf_schedule_request_stats(struct iavf_adapter *adapter)
+> +{
+> +	adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_STATS;
+> +	queue_work(iavf_wq, &adapter->watchdog_task.work);
+> +}
+> +
+>   /**
+>    * iavf_tx_timeout - Respond to a Tx Hang
+>    * @netdev: network interface device structure
+> @@ -1700,6 +1713,11 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
+>   		iavf_del_adv_rss_cfg(adapter);
+>   		return 0;
+>   	}
+> +	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_STATS) {
+> +		iavf_request_stats(adapter);
+
+Should that be `iavf_schedule_request_stats()`?
+
+> +		return IAVF_SUCCESS;
+> +	}
+> +
+>   	return -EAGAIN;
+>   }
+
+
+Kind regards,
+
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
