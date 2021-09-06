@@ -1,81 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC2AF401215
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Sep 2021 01:24:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5201940167E
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Sep 2021 08:39:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5F00980C24;
-	Sun,  5 Sep 2021 23:24:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8D7F640241;
+	Mon,  6 Sep 2021 06:39:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xxIopmzA3R7A; Sun,  5 Sep 2021 23:24:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gz4twAHm3STn; Mon,  6 Sep 2021 06:39:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 64E1B80B49;
-	Sun,  5 Sep 2021 23:24:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 696C240180;
+	Mon,  6 Sep 2021 06:39:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5645C1BF2B8
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Sep 2021 06:51:09 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 626411BF372
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 06:37:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 43B94401C8
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Sep 2021 06:51:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5D51080FC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 06:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=gmx.net
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ob8HmxPyubi1 for <intel-wired-lan@lists.osuosl.org>;
- Sun,  5 Sep 2021 06:51:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 520BE40015
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Sep 2021 06:51:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1630824651;
- bh=6y4lA42xc7tbqPJz5XFWFgyW1+53pCMMuYhyZwSm6Ro=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=NwV3+hdVBu6FFKg/gaTjSLrOPfLGDyyRXwKwz7rMO8LzfxKN6wwC8gU1vvrd0QrY+
- JU5pi9afRmoVHXSABFDYCOwT4868KsuhCH05H1YwbIBaFXfzfGjGANRMKjrwUDoR1V
- OT2ohUu0IoSylgB5xfxsLoxps6BBv5fWuhDY4xsw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from localhost.localdomain ([79.150.72.99]) by mail.gmx.net
- (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
- 1N2mFi-1n5tpf1DNk-0136Ew; Sun, 05 Sep 2021 08:50:51 +0200
-From: Len Baker <len.baker@gmx.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun,  5 Sep 2021 08:50:20 +0200
-Message-Id: <20210905065020.8402-1-len.baker@gmx.com>
-X-Mailer: git-send-email 2.25.1
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9OPF29uVZe5p for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Sep 2021 06:37:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4D01D80F6E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 06:37:36 +0000 (UTC)
+Received: from [192.168.0.4] (ip5f5ae911.dynamic.kabel-deutschland.de
+ [95.90.233.17])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id C480A61E64784;
+ Mon,  6 Sep 2021 08:37:29 +0200 (CEST)
+To: Feng Zhou <zhoufeng.zf@bytedance.com>
+References: <20210903064013.9842-1-zhoufeng.zf@bytedance.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <2ee172ab-836c-d464-be59-935030d01f4b@molgen.mpg.de>
+Date: Mon, 6 Sep 2021 08:37:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:+8UMAYn+RM81PwzAkSSA8SCmKnqFtkt58lXmqMqyJoXaChR1nGw
- 3Q2wbyks2rcsgf0CJuEOCx5SIeql4noaCvDaVlGM8v+7uIEm/Z08j5d88OykfcD5eCJX03I
- wybeEl4uqzweayVCmpmKZOrkhm//QBmpTWMFX3NaiWTKBE5/6Up5aXsm0hlC1vAaChB2B/P
- me/ix+WjvAW/M0bkZa1Tw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YsDFeOrnaks=:cWqMkulV7aAz3pbocBPWEO
- ESlov06l7+ocXmDR2HU3lAv7ke9LKojHaQ7+s9oYKa7xLjJthx3i41tOuF+CMm5x3G8K6PcuS
- /MirnAO9PjdOi3zAVdO05Vzwe7EOYAh9nQoPKOVQbpYnjobHsYtG/5Mam2cltYtjbfLcS9Vbg
- xyYfpFFmV8qGa+y8b4lIbyov6ZqzbzL/5U6xJ+udOoSdt0xtWIbSTEfR6Em/9gsHQMQ1rZy4T
- oCoy5HTxHwSyHF3NMo7KF3ps6vBqkvM5ebQ8lRIUTpN3IzTKkBFFy94HcYq7WxytHWpp/C5kc
- tOv2MYL2zB4yXkY0k0FSe2wduXeJHf2/C0uf0oBY/apeRLKJYAFS72T/2959Qqvx5MtEvaAOI
- cE2lgEtYxHu6hXbES9fvOs3vsAh1cWJnCPcCA1OvPx39rbUJNj7xw/H09nEDYoDyK1AABf+hR
- F5ekU5CKKsFTQPcIT4kSoi8GJCwLjQLGKmvGhew8gnz6/qJVWdZ4F+F1ja4lQjILjgqkNr22/
- Xyggj2ktllCejurrth17c4jvR4yvOD8hijgrIE3QL1OOlSNeATokEck10oNb6wyrUXq+JZxC4
- mH3EYANuokHeM4TNcg0M2v56TPehvyQr18DLkZJmERGFzABeaHWrLlvcuMcrydS0cMhPaCdPa
- PhgLRYpkb+sC0bnYRlQ1/O6/Y58CdEIPAcisA6yAEWBzVJKaCrUU4+UtWhX8bN0s5Dt1oiE4S
- O+VlUEYDhFJpAAhS3SNnVbdslNuY6uyqjO3scf3l6q2n/ybkFJ1gAaKrIx2bXZ42Og/kH8fWC
- HanbF+rCOpiYUwKnkWtpiVRT8NoM8ACMkVdvcedOSpKCH9n7z6je9tCeu2goT7pB6FkZpSx5G
- Pfpz/RKzOOwvkk5f4S/cgZsYxD8CDJiuwYNj03DiQyZxVAU+0K0akDuQwGVgeoAaVS1oTyDHW
- bSoWUtDzcXlq7lcLC5JokjqJCwUH/MpbmDx8Cv/XJQWd8jHRN5wKPQcTnUwWRX4kkwzQtbh6L
- zPxB2yjkz9cSkeLJyCdcYYvMfN71emAz0QDIbNPo36x7iykLEkJGJTA8YD9hzMmuPKxtRN91Z
- CiwTZbqMU0PZGaEf1bTIkTKfovUOOcKkFA/RhZ7CvBe6cTvZfocst8hDw==
-X-Mailman-Approved-At: Sun, 05 Sep 2021 23:23:52 +0000
-Subject: [Intel-wired-lan] [PATCH] ice: Prefer kcalloc over open coded
- arithmetic
+In-Reply-To: <20210903064013.9842-1-zhoufeng.zf@bytedance.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Fix NULL pointer
+ dereference in ixgbe_xdp_setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,52 +62,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-hardening@vger.kernel.org, Len Baker <len.baker@gmx.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: duanxiongchun@bytedance.com, hawk@kernel.org, daniel@iogearbox.net,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ zhengqi.arch@bytedance.com, kuba@kernel.org, chenying.kernel@bytedance.com,
+ intel-wired-lan@lists.osuosl.org, jeffrey.t.kirsher@intel.com,
+ songmuchun@bytedance.com, bpf@vger.kernel.org, wangdongdong.6@bytedance.com,
+ ast@kernel.org, davem@davemloft.net, magnus.karlsson@intel.com,
+ zhouchengming@bytedance.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As noted in the "Deprecated Interfaces, Language Features, Attributes,
-and Conventions" documentation [1], size calculations (especially
-multiplication) should not be performed in memory allocator (or similar)
-function arguments due to the risk of them overflowing. This could lead
-to values wrapping around and a smaller allocation being made than the
-caller was expecting. Using those allocations could lead to linear
-overflows of heap memory and other misbehaviors.
+Dear Feng,
 
-In this case this is not actually dynamic sizes: both sides of the
-multiplication are constant values. However it is best to refactor this
-anyway, just to keep the open-coded math idiom out of code.
 
-So, use the purpose specific kcalloc() function instead of the argument
-size * count in the kzalloc() function.
+Am 03.09.21 um 08:40 schrieb Feng zhou:
 
-[1] https://www.kernel.org/doc/html/v5.14/process/deprecated.html#open-coded-arithmetic-in-allocator-arguments
+(If you care, in your email client, your last name does not start with a 
+capital letter.)
 
-Signed-off-by: Len Baker <len.baker@gmx.com>
----
- drivers/net/ethernet/intel/ice/ice_arfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> From: Feng Zhou <zhoufeng.zf@bytedance.com>
+> 
+> The ixgbe driver currently generates a NULL pointer dereference with
+> some machine (online cpus < 63). This is due to the fact that the
+> maximum value of num_xdp_queues is nr_cpu_ids. Code is in
+> "ixgbe_set_rss_queues"".
+> 
+> Here's how the problem repeats itself:
+> Some machine (online cpus < 63), And user set num_queues to 63 through
+> ethtool. Code is in the "ixgbe_set_channels",
+> adapter->ring_feature[RING_F_FDIR].limit = count;
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_arfs.c b/drivers/net/ethernet/intel/ice/ice_arfs.c
-index 88d98c9e5f91..3071b8e79499 100644
---- a/drivers/net/ethernet/intel/ice/ice_arfs.c
-+++ b/drivers/net/ethernet/intel/ice/ice_arfs.c
-@@ -513,7 +513,7 @@ void ice_init_arfs(struct ice_vsi *vsi)
- 	if (!vsi || vsi->type != ICE_VSI_PF)
- 		return;
+For better legibility, you might want to indent code (blocks) by four 
+spaces and add blank lines around it (also below).
 
--	arfs_fltr_list = kzalloc(sizeof(*arfs_fltr_list) * ICE_MAX_ARFS_LIST,
-+	arfs_fltr_list = kcalloc(ICE_MAX_ARFS_LIST, sizeof(*arfs_fltr_list),
- 				 GFP_KERNEL);
- 	if (!arfs_fltr_list)
- 		return;
---
-2.25.1
+> It becames 63.
 
+becomes
+
+> When user use xdp, "ixgbe_set_rss_queues" will set queues num.
+> adapter->num_rx_queues = rss_i;
+> adapter->num_tx_queues = rss_i;
+> adapter->num_xdp_queues = ixgbe_xdp_queues(adapter);
+> And rss_i's value is from
+> f = &adapter->ring_feature[RING_F_FDIR];
+> rss_i = f->indices = f->limit;
+> So "num_rx_queues" > "num_xdp_queues", when run to "ixgbe_xdp_setup",
+> for (i = 0; i < adapter->num_rx_queues; i++)
+> 	if (adapter->xdp_ring[i]->xsk_umem)
+> lead to panic.
+
+lead*s*?
+
+> Call trace:
+> [exception RIP: ixgbe_xdp+368]
+> RIP: ffffffffc02a76a0  RSP: ffff9fe16202f8d0  RFLAGS: 00010297
+> RAX: 0000000000000000  RBX: 0000000000000020  RCX: 0000000000000000
+> RDX: 0000000000000000  RSI: 000000000000001c  RDI: ffffffffa94ead90
+> RBP: ffff92f8f24c0c18   R8: 0000000000000000   R9: 0000000000000000
+> R10: ffff9fe16202f830  R11: 0000000000000000  R12: ffff92f8f24c0000
+> R13: ffff9fe16202fc01  R14: 000000000000000a  R15: ffffffffc02a7530
+> ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
+>   7 [ffff9fe16202f8f0] dev_xdp_install at ffffffffa89fbbcc
+>   8 [ffff9fe16202f920] dev_change_xdp_fd at ffffffffa8a08808
+>   9 [ffff9fe16202f960] do_setlink at ffffffffa8a20235
+> 10 [ffff9fe16202fa88] rtnl_setlink at ffffffffa8a20384
+> 11 [ffff9fe16202fc78] rtnetlink_rcv_msg at ffffffffa8a1a8dd
+> 12 [ffff9fe16202fcf0] netlink_rcv_skb at ffffffffa8a717eb
+> 13 [ffff9fe16202fd40] netlink_unicast at ffffffffa8a70f88
+> 14 [ffff9fe16202fd80] netlink_sendmsg at ffffffffa8a71319
+> 15 [ffff9fe16202fdf0] sock_sendmsg at ffffffffa89df290
+> 16 [ffff9fe16202fe08] __sys_sendto at ffffffffa89e19c8
+> 17 [ffff9fe16202ff30] __x64_sys_sendto at ffffffffa89e1a64
+> 18 [ffff9fe16202ff38] do_syscall_64 at ffffffffa84042b9
+> 19 [ffff9fe16202ff50] entry_SYSCALL_64_after_hwframe at ffffffffa8c0008c
+
+Please describe the fix in the commit message.
+
+> Fixes: 4a9b32f30f80 ("ixgbe: fix potential RX buffer starvation for
+> AF_XDP")
+> Signed-off-by: Feng Zhou <zhoufeng.zf@bytedance.com>
+> ---
+> Updates since v1:
+> - Fix "ixgbe_max_channels" callback so that it will not allow a setting of
+> queues to be higher than the num_online_cpus().
+> more details can be seen from here:
+> https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20210817075407.11961-1-zhoufeng.zf@bytedance.com/
+> Thanks to Maciej Fijalkowski for your advice.
+> 
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 2 +-
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    | 8 ++++++--
+>   2 files changed, 7 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> index 4ceaca0f6ce3..21321d164708 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> @@ -3204,7 +3204,7 @@ static unsigned int ixgbe_max_channels(struct ixgbe_adapter *adapter)
+>   		max_combined = ixgbe_max_rss_indices(adapter);
+>   	}
+>   
+> -	return max_combined;
+> +	return min_t(int, max_combined, num_online_cpus());
+>   }
+>   
+>   static void ixgbe_get_channels(struct net_device *dev,
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 14aea40da50f..5db496cc5070 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -10112,6 +10112,7 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+>   	struct ixgbe_adapter *adapter = netdev_priv(dev);
+>   	struct bpf_prog *old_prog;
+>   	bool need_reset;
+> +	int num_queues;
+>   
+>   	if (adapter->flags & IXGBE_FLAG_SRIOV_ENABLED)
+>   		return -EINVAL;
+> @@ -10161,11 +10162,14 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+>   	/* Kick start the NAPI context if there is an AF_XDP socket open
+>   	 * on that queue id. This so that receiving will start.
+>   	 */
+> -	if (need_reset && prog)
+> -		for (i = 0; i < adapter->num_rx_queues; i++)
+> +	if (need_reset && prog) {
+> +		num_queues = min_t(int, adapter->num_rx_queues,
+> +			adapter->num_xdp_queues);
+> +		for (i = 0; i < num_queues; i++)
+>   			if (adapter->xdp_ring[i]->xsk_pool)
+>   				(void)ixgbe_xsk_wakeup(adapter->netdev, i,
+>   						       XDP_WAKEUP_RX);
+> +	}
+>   
+>   	return 0;
+>   }
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
