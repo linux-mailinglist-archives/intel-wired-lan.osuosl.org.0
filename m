@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD3E04016F8
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Sep 2021 09:32:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E5564016FF
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Sep 2021 09:33:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3E77040163;
-	Mon,  6 Sep 2021 07:32:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E98B18176B;
+	Mon,  6 Sep 2021 07:33:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6h7DDyhRV6vg; Mon,  6 Sep 2021 07:32:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UoQPRxFqZDz2; Mon,  6 Sep 2021 07:33:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1AFBB4015C;
-	Mon,  6 Sep 2021 07:32:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E3A768104F;
+	Mon,  6 Sep 2021 07:33:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A05EF1BF32E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:32:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BF4101BF32E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:33:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 897F660623
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:32:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A65F08104F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:33:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 13NKvuIOZLhj for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Sep 2021 07:32:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YWHOTid2y_cA for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Sep 2021 07:33:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AE775605F5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:32:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10098"; a="280921876"
-X-IronPort-AV: E=Sophos;i="5.85,271,1624345200"; d="scan'208";a="280921876"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2021 00:32:18 -0700
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 299AA80F82
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Sep 2021 07:33:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10098"; a="242187029"
+X-IronPort-AV: E=Sophos;i="5.85,271,1624345200"; d="scan'208";a="242187029"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2021 00:33:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,271,1624345200"; d="scan'208";a="478206641"
+X-IronPort-AV: E=Sophos;i="5.85,271,1624345200"; d="scan'208";a="502155791"
 Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by orsmga008.jf.intel.com with ESMTP; 06 Sep 2021 00:32:17 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 06 Sep 2021 00:33:33 -0700
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  6 Sep 2021 07:31:12 +0000
-Message-Id: <20210906073112.273838-1-jedrzej.jagielski@intel.com>
+Date: Mon,  6 Sep 2021 07:32:30 +0000
+Message-Id: <20210906073230.273956-1-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix queues reservation scheme
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix queues reservation scheme
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
