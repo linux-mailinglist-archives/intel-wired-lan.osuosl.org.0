@@ -2,67 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E3F34041A9
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 01:14:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 77EC94041E6
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 01:49:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8297818A2;
-	Wed,  8 Sep 2021 23:14:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DE0D982C84;
+	Wed,  8 Sep 2021 23:49:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BdZzQLGDQq3V; Wed,  8 Sep 2021 23:14:46 +0000 (UTC)
+	with ESMTP id pHhWsJS1gWur; Wed,  8 Sep 2021 23:49:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0B39780F83;
-	Wed,  8 Sep 2021 23:14:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC34482C3E;
+	Wed,  8 Sep 2021 23:49:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 61C0A1BF380
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:14:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DA27A1BF380
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:49:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4A3A8402AA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:14:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BDF3F613F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:49:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=lunn.ch
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xJ632EabK1Wx for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Sep 2021 23:14:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B672F4029E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:14:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=bapeTSXWnVrReW5xragxY89xR94ididCYWaqgoqyVsI=; b=KPNr47v/1s3mRi92jt5Y8SCPJM
- q8Y2fQggZY8Hz6Qtlqt4yPloNEXQXzVQbPw5f+n30ONGiqbeTOIkBkoFXl16JZss6HWK+fuHB5WSB
- y0Ij4PgxST1QDpTJyv9ElkH8eWVGeJKPtNwzAqjlpfD22Ye//MW9ash7bj8ID2GEuBwI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1mO6m4-005oeL-2W; Thu, 09 Sep 2021 01:14:36 +0200
-Date: Thu, 9 Sep 2021 01:14:36 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <YTlD3Gok7w/MF+g2@lunn.ch>
-References: <PH0PR11MB49511F2017F48BBAAB2A065CEAD29@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210906180124.33ff49ef@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <PH0PR11MB495152B03F32A5A17EDB2F6CEAD39@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210907075509.0b3cb353@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <PH0PR11MB49512C265E090FC8741D8510EAD39@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210907124730.33852895@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <PH0PR11MB495169997552152891A69B57EAD49@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210908092115.191fdc28@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <PH0PR11MB4951AA3C65DD8E7612F5F396EAD49@PH0PR11MB4951.namprd11.prod.outlook.com>
- <20210908151852.7ad8a0f1@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bwD3DkxQ63IB for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Sep 2021 23:49:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C1151605CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Sep 2021 23:49:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10101"; a="306193162"
+X-IronPort-AV: E=Sophos;i="5.85,279,1624345200"; d="scan'208";a="306193162"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2021 16:49:34 -0700
+X-IronPort-AV: E=Sophos;i="5.85,279,1624345200"; d="scan'208";a="693729494"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.1])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2021 16:49:33 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Wed,  8 Sep 2021 16:49:20 -0700
+Message-Id: <20210908234924.3416592-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210908151852.7ad8a0f1@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] rtnetlink: Add new
- RTM_GETEECSTATE message to get SyncE status
+Subject: [Intel-wired-lan] [net-next 0/4] ice: miscellaneous firmware
+ features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,43 +60,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Kubecek <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>, "Machnikowski,
- Maciej" <maciej.machnikowski@intel.com>, Saeed Mahameed <saeed@kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Michael Chan <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> As you said, pin -> ref mapping is board specific, so the API should
-> not assume knowledge of routing between Port and ECC.
+This series contains a few miscellaneous left over pieces of work related to
+flash update that I've been meaning to submit for a while.
 
-That information will probably end up in device tree. And X different
-implementations of ACPI, unless somebody puts there foot down and
-stops the snow flakes.
+This includes the following:
 
-> Imagine a system with two cascaded switch ASICs and a bunch of PHYs.
-> How do you express that by pure extensions to the proposed API?
+ * a new shadow-ram region similar to NVM region but for the device shadow
+   RAM contents. This is distinct from NVM region because shadow RAM is
+   built up during device init and may be different from the raw NVM flash
+   data. (As I found out while debugging some issues with flash update).
+ * refactoring of the ice_flash_pldm_image to become the main flash update
+   entry point. This is simpler than having both a ice_devlink_flash_update
+   and an ice_flash_pldm_image. It will make additions like dry-run easier
+   in the future
+ * support for firmware activation via devlink reload, when possible.
 
-Device tree is good at that. ACPI might eventually catch up.
+The major new work is the reload support, which allows activating firmware
+immediately without a reboot when possible.
 
-How complex a setup do we actually expect? Can there be multiple
-disjoint SyncE trees within an Ethernet switch cluster? Or would it be
-reasonable to say all you need to configure is the clock source, and
-all other ports of the switches are slaves if SyncE is enabled for the
-port? I've never see any SOHO switch hardware which allows you to have
-disjoint PTP trees, so it does not sound too unreasonable to only
-allow a single SyncE tree per switch cluster.
+As a note, I want to call out that the reload support here only supports
+firmware activation. I really did try to see what it would take to get
+proper driver reload support working. Unfortunately this task requires a
+large amount of rewrite to the entire flow that the driver uses for both
+probe/remove, as well as driver reset.
 
-Also, if you are cascading switches, you generally don't put PHYs in
-the middle, you just connect the SERDES lanes together.
+Jacob Keller (4):
+  ice: devlink: add shadow-ram region to snapshot Shadow RAM
+  ice: move and rename ice_check_for_pending_update
+  ice: refactor ice_flash_pldm_image and combine with
+    ice_devlink_flash_update
+  ice: support immediate firmware activation via devlink reload
 
-	 Andrew
+ drivers/net/ethernet/intel/ice/ice.h          |   9 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   7 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |  12 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 218 ++++++++++---
+ .../net/ethernet/intel/ice/ice_fw_update.c    | 291 ++++++++++++------
+ .../net/ethernet/intel/ice/ice_fw_update.h    |   9 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   4 +
+ 7 files changed, 412 insertions(+), 138 deletions(-)
+
+
+base-commit: 8945c4bc5e8e03b2358974e602dcf8137b448ed9
+-- 
+2.31.1.331.gb0c09ab8796f
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
