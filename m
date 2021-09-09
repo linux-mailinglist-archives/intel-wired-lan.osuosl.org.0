@@ -1,63 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08B71404C37
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 13:55:34 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 443B0405AAA
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 18:20:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 95F0340159;
-	Thu,  9 Sep 2021 11:55:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD1C5849CE;
+	Thu,  9 Sep 2021 16:20:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 96jO18yvaRvL; Thu,  9 Sep 2021 11:55:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Cr5ef64frKiD; Thu,  9 Sep 2021 16:20:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6639B40579;
-	Thu,  9 Sep 2021 11:55:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B65478499C;
+	Thu,  9 Sep 2021 16:20:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 515B11BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:55:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 881D71BF868
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 16:20:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 40F0760AFB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:55:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 80E6F8499C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 16:20:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JnovfGTHkwiI for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Sep 2021 11:55:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QmsG_aYKnSsq for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Sep 2021 16:20:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BCD9660755
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:55:26 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7BA1E61C12;
- Thu,  9 Sep 2021 11:55:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631188526;
- bh=mfBbaY/QwPlxus1dTIJvOTmo7EBirUdNiBi567a2M98=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=m4Db3JlsKlMG/bO7m2CshHiRICwNTJDv1z68cRkUFZv1fVHyAKgDjxKfRMhxMvZ05
- 4y5vPbWVhxE8R+HAScRckWSZPQtdtgErPPBdRWAW1oNJXZqCseZ6lAoXMwUeEO3nvj
- oSH8UEQZiSFaXAPcZ7PGyByeoKSRCk9qNL3/jjduyG79jMQDQacwBE/9GFLeDtfAQ0
- Y+5v6QUauZVMs/Fb57O6oEWhL/GQ4DKNf9G0M2OMKAU08FNHWNhZL9PFKMMfAM3do5
- VWDszshIrp+tup+2UztPOeYurrBkG/sl0NxD/eTK0uWFUHtXEOm3YlGe9Yl4IG0/96
- BqX6H5L7Cvjmw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Thu,  9 Sep 2021 07:53:32 -0400
-Message-Id: <20210909115507.147917-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210909115507.147917-1-sashal@kernel.org>
-References: <20210909115507.147917-1-sashal@kernel.org>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B60798497B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 16:20:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10101"; a="281847867"
+X-IronPort-AV: E=Sophos;i="5.85,280,1624345200"; d="scan'208";a="281847867"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2021 09:18:11 -0700
+X-IronPort-AV: E=Sophos;i="5.85,280,1624345200"; d="scan'208";a="450031774"
+Received: from dmert-dev.jf.intel.com ([10.166.241.5])
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2021 09:18:11 -0700
+From: Dave Ertman <david.m.ertman@intel.com>
+To: davem@davemloft.net,
+	kuba@kernel.org
+Date: Thu,  9 Sep 2021 01:56:12 -0700
+Message-Id: <20210909085612.570229-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 015/109] igc: Check if num of
- q_vectors is smaller than max before array access
+Subject: [Intel-wired-lan] [PATCH net] ice: Correctly deal with PFs that do
+ not support RDMA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,61 +61,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ yongxin.liu@windriver.com, intel-wired-lan@lists.osuosl.org,
+ shiraz.saleem@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sasha Neftin <sasha.neftin@intel.com>
+There are two cases where the current PF does not support RDMA
+functionality.  The first is if the NVM loaded on the device is set
+to not support RDMA (common_caps.rdma is false).  The second is if
+the kernel bonding driver has included the current PF in an active
+link aggregate.
 
-[ Upstream commit 373e2829e7c2e1e606503cdb5c97749f512a4be9 ]
+When the driver has determined that this PF does not support RDMA, then
+auxiliary devices should not be created on the auxiliary bus.  Without
+a device on the auxiliary bus, even if the irdma driver is present, there
+will be no RDMA activity attempted on this PF.
 
-Ensure that the adapter->q_vector[MAX_Q_VECTORS] array isn't accessed
-beyond its size. It was fixed by using a local variable num_q_vectors
-as a limit for loop index, and ensure that num_q_vectors is not bigger
-than MAX_Q_VECTORS.
+Currently, in the reset flow, an attempt to create auxiliary devices is
+performed without regard to the ability of the PF.  There needs to be a
+check in ice_aux_plug_dev (as the central point that creates auxiliary
+devices) to see if the PF is in a state to support the functionality.
 
-Suggested-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
+When disabling and re-enabling RDMA due to the inclusion/removal of the PF
+in a link aggregate, we also need to set/clear the bit which controls
+auxiliary device creation so that a reset recovery in a link aggregate
+situation doesn't try to create auxiliary devices when it shouldn't.
+
+Fixes: f9f5301e7e2d ("ice: Register auxiliary device to provide RDMA")
+Reported-by: Yongxin Liu <yongxin.liu@windriver.com>
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice.h     | 2 ++
+ drivers/net/ethernet/intel/ice/ice_idc.c | 6 ++++++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 084cf4a4114a..9ba05d9aa8e0 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2693,6 +2693,7 @@ static irqreturn_t igc_msix_ring(int irq, void *data)
-  */
- static int igc_request_msix(struct igc_adapter *adapter)
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index eadcb9958346..3c4f08d20414 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -695,6 +695,7 @@ static inline void ice_set_rdma_cap(struct ice_pf *pf)
  {
-+	unsigned int num_q_vectors = adapter->num_q_vectors;
- 	int i = 0, err = 0, vector = 0, free_vector = 0;
- 	struct net_device *netdev = adapter->netdev;
+ 	if (pf->hw.func_caps.common_cap.rdma && pf->num_rdma_msix) {
+ 		set_bit(ICE_FLAG_RDMA_ENA, pf->flags);
++		set_bit(ICE_FLAG_AUX_ENA, pf->flags);
+ 		ice_plug_aux_dev(pf);
+ 	}
+ }
+@@ -707,5 +708,6 @@ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
+ {
+ 	ice_unplug_aux_dev(pf);
+ 	clear_bit(ICE_FLAG_RDMA_ENA, pf->flags);
++	clear_bit(ICE_FLAG_AUX_ENA, pf->flags);
+ }
+ #endif /* _ICE_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
+index 1f2afdf6cd48..adcc9a251595 100644
+--- a/drivers/net/ethernet/intel/ice/ice_idc.c
++++ b/drivers/net/ethernet/intel/ice/ice_idc.c
+@@ -271,6 +271,12 @@ int ice_plug_aux_dev(struct ice_pf *pf)
+ 	struct auxiliary_device *adev;
+ 	int ret;
  
-@@ -2701,7 +2702,13 @@ static int igc_request_msix(struct igc_adapter *adapter)
- 	if (err)
- 		goto err_out;
- 
--	for (i = 0; i < adapter->num_q_vectors; i++) {
-+	if (num_q_vectors > MAX_Q_VECTORS) {
-+		num_q_vectors = MAX_Q_VECTORS;
-+		dev_warn(&adapter->pdev->dev,
-+			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
-+			 adapter->num_q_vectors, MAX_Q_VECTORS);
-+	}
-+	for (i = 0; i < num_q_vectors; i++) {
- 		struct igc_q_vector *q_vector = adapter->q_vector[i];
- 
- 		vector++;
++	/* if this PF doesn't support a technology that requires auxiliary
++	 * devices, then gracefully exit
++	 */
++	if (!ice_is_aux_ena(pf))
++		return 0;
++
+ 	iadev = kzalloc(sizeof(*iadev), GFP_KERNEL);
+ 	if (!iadev)
+ 		return -ENOMEM;
 -- 
-2.30.2
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
