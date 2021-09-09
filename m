@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9F4D404AAF
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 13:47:12 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16065404AB4
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Sep 2021 13:47:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 028F28498A;
-	Thu,  9 Sep 2021 11:47:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5117260AF7;
+	Thu,  9 Sep 2021 11:47:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pJxdzK1At42W; Thu,  9 Sep 2021 11:47:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9Gc_2_wourBH; Thu,  9 Sep 2021 11:47:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D226B83E8F;
-	Thu,  9 Sep 2021 11:47:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5644B60AF6;
+	Thu,  9 Sep 2021 11:47:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4A7371BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 369081BF5A1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 38EC0402F7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2F3AD40577
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s94pGURJZsAk for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Sep 2021 11:47:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0sCZEuxHmOVN for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Sep 2021 11:47:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 987CF4024E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:02 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5407C61503;
- Thu,  9 Sep 2021 11:47:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 78B67400D9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Sep 2021 11:47:16 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 16068617E3;
+ Thu,  9 Sep 2021 11:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631188022;
- bh=+oD3Z40EPoxc+Zp2fbcCpgeZeVQzVYMYQ5lI2GkuKSw=;
+ s=k20201202; t=1631188036;
+ bh=cVzuaQ2uqDC6xVYgHkhTzbNHaKughqasOwpslbxgqfQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=oyDcDvVIaTiaCDcHcZV9LDOKSR/NXh27GcYYUjHDyKwr/mMZTtVc/NNzONqrWwHDM
- Iiw1HkS8xKS4drK8Uk4Yp7kLNctKpe2Pili9xYY7/UBS0u8IZJD/Pk+6Wq4PFl+ogX
- MDd8EN2k2V4xB0aY/TcLVZ1ShTF30BuMQFrbse+AOACKJoB23jdWGo2Dq3alT0gg3z
- 2pp50DHYcRqKN6EmmgGFHNkqI1GtbBelj7M0HH5iHMtQ2X7p09nRCpPgkvI7Ip3Vjc
- EvmPcvUPolKLjNbpCGLqqWfgHsParOcjVH802hqirYwuW1zT4cB0a2UnQoAWe0v+2g
- L8UeCzug3ePpA==
+ b=tx31CNaEWn/hrpoGNNWMV0tlccn0oRhRFC7KqP6vJBZ0EvZRTppjr1oD/ALTifkD7
+ nmWiiljrqrrSmt7vxwHF8nBvlJIrOdXScpT86voR62cgZBu5a8FQyztIkX4KuPY5hF
+ DzQyqxWAcRvy2YRAQD2MN6L3bY6vQLG8aSBt7scvkL/UcMMSJPsrTkInz6vmdwe6zC
+ 9i8Ty0HHGULwdaQPPNx6U8PKcuKDwkcE3waom3ZXX+HeBISMu0fYRdawklIEYxpUfz
+ lGvCkepU93UzUKTfvwRPUuKprtQEXCTn3AXlbs/di8AUJqs5S8Bz3sAxlmA+ZGzxM+
+ ntzHityDkSRvQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Thu,  9 Sep 2021 07:43:16 -0400
-Message-Id: <20210909114635.143983-20-sashal@kernel.org>
+Date: Thu,  9 Sep 2021 07:43:27 -0400
+Message-Id: <20210909114635.143983-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210909114635.143983-1-sashal@kernel.org>
 References: <20210909114635.143983-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.13 020/219] iavf: fix locking of
- critical sections
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.13 031/219] igc: Check if num of
+ q_vectors is smaller than max before array access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,184 +71,58 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Stefan Assmann <sassmann@kpanic.de>, intel-wired-lan@lists.osuosl.org
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Stefan Assmann <sassmann@kpanic.de>
+From: Sasha Neftin <sasha.neftin@intel.com>
 
-[ Upstream commit 226d528512cfac890a1619aea4301f3dd314fe60 ]
+[ Upstream commit 373e2829e7c2e1e606503cdb5c97749f512a4be9 ]
 
-To avoid races between iavf_init_task(), iavf_reset_task(),
-iavf_watchdog_task(), iavf_adminq_task() as well as the shutdown and
-remove functions more locking is required.
-The current protection by __IAVF_IN_CRITICAL_TASK is needed in
-additional places.
+Ensure that the adapter->q_vector[MAX_Q_VECTORS] array isn't accessed
+beyond its size. It was fixed by using a local variable num_q_vectors
+as a limit for loop index, and ensure that num_q_vectors is not bigger
+than MAX_Q_VECTORS.
 
-- The reset task performs state transitions, therefore needs locking.
-- The adminq task acts on replies from the PF in
-  iavf_virtchnl_completion() which may alter the states.
-- The init task is not only run during probe but also if a VF gets stuck
-  to reinitialize it.
-- The shutdown function performs a state transition.
-- The remove function performs a state transition and also free's
-  resources.
-
-iavf_lock_timeout() is introduced to avoid waiting infinitely
-and cause a deadlock. Rather unlock and print a warning.
-
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
+Suggested-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 57 ++++++++++++++++++---
- 1 file changed, 50 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 0d0f16617dde..e5e6a5b11e6d 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -131,6 +131,30 @@ enum iavf_status iavf_free_virt_mem_d(struct iavf_hw *hw,
- 	return 0;
- }
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9b85fdf01297..3e301c5c5270 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4402,6 +4402,7 @@ static irqreturn_t igc_msix_ring(int irq, void *data)
+  */
+ static int igc_request_msix(struct igc_adapter *adapter)
+ {
++	unsigned int num_q_vectors = adapter->num_q_vectors;
+ 	int i = 0, err = 0, vector = 0, free_vector = 0;
+ 	struct net_device *netdev = adapter->netdev;
  
-+/**
-+ * iavf_lock_timeout - try to set bit but give up after timeout
-+ * @adapter: board private structure
-+ * @bit: bit to set
-+ * @msecs: timeout in msecs
-+ *
-+ * Returns 0 on success, negative on failure
-+ **/
-+static int iavf_lock_timeout(struct iavf_adapter *adapter,
-+			     enum iavf_critical_section_t bit,
-+			     unsigned int msecs)
-+{
-+	unsigned int wait, delay = 10;
-+
-+	for (wait = 0; wait < msecs; wait += delay) {
-+		if (!test_and_set_bit(bit, &adapter->crit_section))
-+			return 0;
-+
-+		msleep(delay);
+@@ -4410,7 +4411,13 @@ static int igc_request_msix(struct igc_adapter *adapter)
+ 	if (err)
+ 		goto err_out;
+ 
+-	for (i = 0; i < adapter->num_q_vectors; i++) {
++	if (num_q_vectors > MAX_Q_VECTORS) {
++		num_q_vectors = MAX_Q_VECTORS;
++		dev_warn(&adapter->pdev->dev,
++			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
++			 adapter->num_q_vectors, MAX_Q_VECTORS);
 +	}
-+
-+	return -1;
-+}
-+
- /**
-  * iavf_schedule_reset - Set the flags and schedule a reset event
-  * @adapter: board private structure
-@@ -2097,6 +2121,10 @@ static void iavf_reset_task(struct work_struct *work)
- 	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
- 		return;
++	for (i = 0; i < num_q_vectors; i++) {
+ 		struct igc_q_vector *q_vector = adapter->q_vector[i];
  
-+	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200)) {
-+		schedule_work(&adapter->reset_task);
-+		return;
-+	}
- 	while (test_and_set_bit(__IAVF_IN_CLIENT_TASK,
- 				&adapter->crit_section))
- 		usleep_range(500, 1000);
-@@ -2311,6 +2339,8 @@ static void iavf_adminq_task(struct work_struct *work)
- 	if (!event.msg_buf)
- 		goto out;
- 
-+	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 200))
-+		goto freedom;
- 	do {
- 		ret = iavf_clean_arq_element(hw, &event, &pending);
- 		v_op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
-@@ -2324,6 +2354,7 @@ static void iavf_adminq_task(struct work_struct *work)
- 		if (pending != 0)
- 			memset(event.msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
- 	} while (pending);
-+	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- 
- 	if ((adapter->flags &
- 	     (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) ||
-@@ -3628,6 +3659,10 @@ static void iavf_init_task(struct work_struct *work)
- 						    init_task.work);
- 	struct iavf_hw *hw = &adapter->hw;
- 
-+	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000)) {
-+		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
-+		return;
-+	}
- 	switch (adapter->state) {
- 	case __IAVF_STARTUP:
- 		if (iavf_startup(adapter) < 0)
-@@ -3640,14 +3675,14 @@ static void iavf_init_task(struct work_struct *work)
- 	case __IAVF_INIT_GET_RESOURCES:
- 		if (iavf_init_get_resources(adapter) < 0)
- 			goto init_failed;
--		return;
-+		goto out;
- 	default:
- 		goto init_failed;
- 	}
- 
- 	queue_delayed_work(iavf_wq, &adapter->init_task,
- 			   msecs_to_jiffies(30));
--	return;
-+	goto out;
- init_failed:
- 	if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
- 		dev_err(&adapter->pdev->dev,
-@@ -3656,9 +3691,11 @@ static void iavf_init_task(struct work_struct *work)
- 		iavf_shutdown_adminq(hw);
- 		adapter->state = __IAVF_STARTUP;
- 		queue_delayed_work(iavf_wq, &adapter->init_task, HZ * 5);
--		return;
-+		goto out;
- 	}
- 	queue_delayed_work(iavf_wq, &adapter->init_task, HZ);
-+out:
-+	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- }
- 
- /**
-@@ -3675,9 +3712,12 @@ static void iavf_shutdown(struct pci_dev *pdev)
- 	if (netif_running(netdev))
- 		iavf_close(netdev);
- 
-+	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
-+		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
- 	/* Prevent the watchdog from running. */
- 	adapter->state = __IAVF_REMOVE;
- 	adapter->aq_required = 0;
-+	clear_bit(__IAVF_IN_CRITICAL_TASK, &adapter->crit_section);
- 
- #ifdef CONFIG_PM
- 	pci_save_state(pdev);
-@@ -3911,10 +3951,6 @@ static void iavf_remove(struct pci_dev *pdev)
- 				 err);
- 	}
- 
--	/* Shut down all the garbage mashers on the detention level */
--	adapter->state = __IAVF_REMOVE;
--	adapter->aq_required = 0;
--	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
- 	iavf_request_reset(adapter);
- 	msleep(50);
- 	/* If the FW isn't responding, kick it once, but only once. */
-@@ -3922,6 +3958,13 @@ static void iavf_remove(struct pci_dev *pdev)
- 		iavf_request_reset(adapter);
- 		msleep(50);
- 	}
-+	if (iavf_lock_timeout(adapter, __IAVF_IN_CRITICAL_TASK, 5000))
-+		dev_warn(&adapter->pdev->dev, "failed to set __IAVF_IN_CRITICAL_TASK in %s\n", __FUNCTION__);
-+
-+	/* Shut down all the garbage mashers on the detention level */
-+	adapter->state = __IAVF_REMOVE;
-+	adapter->aq_required = 0;
-+	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
- 	iavf_free_all_tx_resources(adapter);
- 	iavf_free_all_rx_resources(adapter);
- 	iavf_misc_irq_disable(adapter);
+ 		vector++;
 -- 
 2.30.2
 
