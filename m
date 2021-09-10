@@ -1,64 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B316A406B03
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Sep 2021 13:51:14 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25756406D66
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Sep 2021 16:14:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 83FFA401D3;
-	Fri, 10 Sep 2021 11:51:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8D224074D;
+	Fri, 10 Sep 2021 14:14:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k2vg52T62XdC; Fri, 10 Sep 2021 11:51:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XgoWframXNVe; Fri, 10 Sep 2021 14:14:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4BB1640101;
-	Fri, 10 Sep 2021 11:51:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB425407AB;
+	Fri, 10 Sep 2021 14:14:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 47B4F1BF859
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 11:51:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5B36A1BF842
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 14:14:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 35057400D0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 11:51:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 47E6640640
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 14:14:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aJydKp3pR-Tl for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Sep 2021 11:51:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-relay-canonical-0.canonical.com
- (smtp-relay-canonical-0.canonical.com [185.125.188.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A0B3540101
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 11:51:04 +0000 (UTC)
-Received: from localhost (1.general.cking.uk.vpn [10.172.193.212])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id E6A2840198; 
- Fri, 10 Sep 2021 11:51:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1631274661;
- bh=+RWGL6GMLleMJEJELE6w/v8VzwjFlxKfUcLYDwXNzNY=;
- h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type;
- b=nd9Zb/uQMTIQ+I6GT5Tzp6wkA3/qoCGMBdDWW0JxJVHAhrgr7TJRAGYrIF1uRwqJQ
- ghsg1ueNDHWyJJhiUamDe7RY5FIPYPWALUL3ZGexl1niiUIqsdiFmuraHK9PG4inyU
- 0SNpwHi4JoNYGGV1S4ALKcMbZLLyG7ERiVwGLF9dyaX8CzXTfV4DMxGoCXZ9SZfNri
- mH86nigsF78WZXZ2i85BPeZGfqHdzYuiiz6+pKKE1B+sRv6NMfoCXxOHngAziFfa95
- OlGcTGdqg1ZfqyCJb7QzHAarHcP01ExggUJqAK6s6ogdq4KdOiKHc/SLtSFWQUekdR
- OEKAg6R+bhQCQ==
-From: Colin King <colin.king@canonical.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Date: Fri, 10 Sep 2021 12:51:00 +0100
-Message-Id: <20210910115100.45429-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.32.0
+ with ESMTP id otGhKCimspJf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Sep 2021 14:14:27 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-x531.google.com (mail-pg1-x531.google.com
+ [IPv6:2607:f8b0:4864:20::531])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 960BA4022C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 14:14:27 +0000 (UTC)
+Received: by mail-pg1-x531.google.com with SMTP id w7so1911513pgk.13
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Sep 2021 07:14:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=oe4VM1UblhS5+gJIFks4ik7gcc8ov9uDrnYIOA6m+LI=;
+ b=pQ28E8z4ROEJSjDnjaoXfmDVQXV+FaMJ7j2Ao9Iv3Bg8H1ySc3TbHpE/Dp0THKY7x2
+ FrtiekEFA/I87Ge2nyQ+09Xp2IjGeGuIbHNwymknYxUt8d8rzXTXEKZQWZMF/wfyq2SE
+ Pjo6xH7sf5BBHszizp5nykKOB8QNZCDsn6x5lcFHDdUkh+95IYtjPmWz4E1FF4mcFGFQ
+ 5Do9ewuzSPURZXaUEqd4gCNnQ7eJp7atvGmqGwg8jVnPBoTbajC1PhtUf04LhdWUzGgM
+ j4i+9JD/g3SDsWQd0nv7GZER8nywgTRdPdUJwMKLlnYyH+6z5bxezv3tkpZ25Ea4rIhI
+ nhrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=oe4VM1UblhS5+gJIFks4ik7gcc8ov9uDrnYIOA6m+LI=;
+ b=ggrcUc9umhbW5Ag0qLwT63kLQlqjzXRceypjwIWYrApL1g+pwVgDre8eeqzHEACQtg
+ 9VDd19siCGNFwxpu2C/AezF2dME0Vggz/CG04hs72ESY+2QR8hDOAmQolwN/Hq/67i8H
+ TsBBPJnLi1r3jxdnvy2gH919AINY/jHgnMfzzrj+yYvSLC28NBLSnzlHoW363xIGPyFq
+ fTQhAkgOb/DS/HxTVZjJ/nA3B3gy+LzZ87jtLgNFJ619792YwAZ+32ZdIJjw3xUnIRqI
+ 9182V0K8buAdywGrvvTNoAFm0rVrAqbzWqL0RF7Zc7WklHI7O9Ry9d++W6C6XyFwONjT
+ AjGA==
+X-Gm-Message-State: AOAM533mdt52kVE7IALB6w8D10MbAZTMhJkgt5dHY7fVWwD75gLXFiT/
+ EhZQTYdVJBhR2GutD329MlM=
+X-Google-Smtp-Source: ABdhPJwOzKr8hK79NXiiFvMDuPJ5QyQWRVMQ+Hpt1ZMMluuVorlghIuaTIVRcqzGrXZQ3vlrka44rA==
+X-Received: by 2002:a63:131f:: with SMTP id i31mr7547782pgl.207.1631283266990; 
+ Fri, 10 Sep 2021 07:14:26 -0700 (PDT)
+Received: from hoboy.vegasvil.org ([2601:645:c000:2163:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id a15sm5474422pgn.25.2021.09.10.07.14.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Sep 2021 07:14:26 -0700 (PDT)
+Date: Fri, 10 Sep 2021 07:14:23 -0700
+From: Richard Cochran <richardcochran@gmail.com>
+To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+Message-ID: <20210910141423.GA21865@hoboy.vegasvil.org>
+References: <PH0PR11MB49512C265E090FC8741D8510EAD39@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210907124730.33852895@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <PH0PR11MB495169997552152891A69B57EAD49@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <20210908092115.191fdc28@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <PH0PR11MB4951AA3C65DD8E7612F5F396EAD49@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <YTkQTQM6Is4Hqmxh@lunn.ch>
+ <20210908152027.313d7168@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YTlAT+1wkazy3Uge@lunn.ch>
+ <20210909020915.GA30747@hoboy.vegasvil.org>
+ <PH0PR11MB49515C4ACE9BAD7BD9172825EAD59@PH0PR11MB4951.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] net: ixgbevf: Remove redundant
- initialization of variable ret_val
+Content-Disposition: inline
+In-Reply-To: <PH0PR11MB49515C4ACE9BAD7BD9172825EAD59@PH0PR11MB4951.namprd11.prod.outlook.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] rtnetlink: Add new
+ RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,42 +98,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Michal Kubecek <mkubecek@suse.cz>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, "abyagowi@fb.com" <abyagowi@fb.com>,
+ Saeed Mahameed <saeed@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Ido Schimmel <idosch@idosch.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Michael Chan <michael.chan@broadcom.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+On Thu, Sep 09, 2021 at 08:18:10AM +0000, Machnikowski, Maciej wrote:
 
-The variable ret_val is being initialized with a value that is never
-read, it is being updated later on. The assignment is redundant and
-can be removed.
+> Controlling the clock that actually drives any components (PHY/MAC) in
+> runtime can be a good way to brick the part.
 
-Addresses-Coverity: ("Unused value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/net/ethernet/intel/ixgbevf/vf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I didn't say that.
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/vf.c b/drivers/net/ethernet/intel/ixgbevf/vf.c
-index 5fc347abab3c..d459f5c8e98f 100644
---- a/drivers/net/ethernet/intel/ixgbevf/vf.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/vf.c
-@@ -66,9 +66,9 @@ static s32 ixgbevf_reset_hw_vf(struct ixgbe_hw *hw)
- {
- 	struct ixgbe_mbx_info *mbx = &hw->mbx;
- 	u32 timeout = IXGBE_VF_INIT_TIMEOUT;
--	s32 ret_val = IXGBE_ERR_INVALID_MAC_ADDR;
- 	u32 msgbuf[IXGBE_VF_PERMADDR_MSG_LEN];
- 	u8 *addr = (u8 *)(&msgbuf[1]);
-+	s32 ret_val;
- 
- 	/* Call adapter stop to disable tx/rx and clear interrupts */
- 	hw->mac.ops.stop_adapter(hw);
--- 
-2.32.0
+> I feel that, while the reuse 
+> of structures may be a good idea, the userspace API for clocks is not. 
+> They are usually set up once at the board init level and stay like that "forever".
+> 
+> The outputs we need to control are only a subset of all of them and they
+> rather fall in the PTP pins level of details, rather than clock ones.
 
+clk-gate.c
+clk-mux.c
+
+Making that available for user space to twiddle is a better way that
+tacking on to the PTP stuff.
+
+You can model your device as having a multiplexer in front of it.
+
+Thanks,
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
