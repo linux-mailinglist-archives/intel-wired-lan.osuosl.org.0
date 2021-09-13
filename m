@@ -1,53 +1,163 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81F90409C5F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Sep 2021 20:36:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54195409DEE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Sep 2021 22:09:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CE82D4014B;
-	Mon, 13 Sep 2021 18:36:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C954180BF7;
+	Mon, 13 Sep 2021 20:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4C5EypGrFZfu; Mon, 13 Sep 2021 18:36:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YxCU2xJF1XIf; Mon, 13 Sep 2021 20:09:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8BB8E40209;
-	Mon, 13 Sep 2021 18:36:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8DEB980B23;
+	Mon, 13 Sep 2021 20:09:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F05471BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:37 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5074E1BF322
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 20:08:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EC0C7402EC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:37 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A25F6062A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 20:08:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eAJWlKZtnZEG for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Sep 2021 18:36:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 73FCC402F5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10106"; a="282761082"
-X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="282761082"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2021 11:36:35 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="698956502"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
- by fmsmga005.fm.intel.com with ESMTP; 13 Sep 2021 11:36:32 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 13 Sep 2021 11:22:19 -0700
-Message-Id: <20210913182219.70446-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=jumptrading.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sifu_gL63tfW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Sep 2021 20:08:57 +0000 (UTC)
+X-Greylist: delayed 00:31:12 by SQLgrey-1.8.0
+Received: from mx0b-0038a201.pphosted.com (mx0b-0038a201.pphosted.com
+ [148.163.137.80])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D2EFC60030
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 20:08:56 +0000 (UTC)
+Received: from pps.filterd (m0171341.ppops.net [127.0.0.1])
+ by mx0b-0038a201.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 18DJDHav008482; 
+ Mon, 13 Sep 2021 19:37:38 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-0038a201.pphosted.com with ESMTP id 3b1ydq27bh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 13 Sep 2021 19:37:38 +0000
+Received: from m0171341.ppops.net (m0171341.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.43/8.16.0.43) with SMTP id 18DJYv9a031886;
+ Mon, 13 Sep 2021 19:37:38 GMT
+Received: from nam10-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10lp2103.outbound.protection.outlook.com [104.47.55.103])
+ by mx0b-0038a201.pphosted.com with ESMTP id 3b1ydq27be-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 13 Sep 2021 19:37:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NsTkkTiVybPnUNOY0B3jslcf7wEo+F2vM5LUxBf4PeBxyufNXF5GkEztoODwgTcoaCY4k1slF6bUPO7Uu+A8sbtUZLOyarD3Gta72OKxuMDWxjKAClrYo9nplnSAo9PlUhDXE/vPGV1ZfrA33dS7hUUgqOh5vJdMMVq+uW8Ndmgf5XESkDCkAZr5RgsInbjIMhqpkPBWPWZOb6urGunwVXc8PqKsKAaSGnOM6Mj4oPBKfzQrxoStucsyEUFopRb7F+BkuPuc9C5hhhDUB7tuQ/AeGUyJ5M+v06KfvaothoiLC4oeQHTDNkYs2hZVmBPZcDecia3++uvDo8OdbDUVmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=KcHcH3t3kKKd7T10iPSTr5OdCwh/anwOYCH30LuAooI=;
+ b=NzpuONzOZtMTLyMilrmr1DYQJa8apFQTRdZAIf8NsI4uuqwHDoAUT08+SyWmbd5NbiEMBDlzt9omP1VZl2VWKK4YyrKpZWo1j0cSk9flS3MOg0OP5N9XMT2p7zLmwVgqruN+0eSLuZ80dgzZmh3AV6YnnAJde0IfoXVVgJXO0I5k33FOtWa0A9le854OMp25bWWPMqvpPL4EZpZdsrXOICwdcyqYzrSEX0bvYyIydpCizb02EeHNDzcpY+bbDTPIq6u7DYtyTNrm1R22DvfdHxwU3E2vqjWHr4w6MR1C+0IBYMRtb4FCfAxXwGHzuPD64bD7vnBukFuIZDAHiKWelg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=jumptrading.com; dmarc=pass action=none
+ header.from=jumptrading.com; dkim=pass header.d=jumptrading.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jumptrading.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KcHcH3t3kKKd7T10iPSTr5OdCwh/anwOYCH30LuAooI=;
+ b=f1CZHcC9J/2COc0qGXse0WHnBM+Rr4I4QxnlY0ZuQkdLZFITIPx31kwoZ5ZX1VoFTcJrnJcr9YZVaDwb6lf71EEJVx27WlJzc+Tlwp3pjXgin4ZJfXlWd1FsCSrSNWaORIes0Rii8KahWoel5hPwOJDNoA89IE+80YIuRs0peLM=
+Received: from MW4PR14MB4796.namprd14.prod.outlook.com (2603:10b6:303:109::19)
+ by MWHPR14MB1360.namprd14.prod.outlook.com (2603:10b6:300:b9::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.16; Mon, 13 Sep
+ 2021 19:37:34 +0000
+Received: from MW4PR14MB4796.namprd14.prod.outlook.com
+ ([fe80::2c0d:7614:3aed:f97e]) by MW4PR14MB4796.namprd14.prod.outlook.com
+ ([fe80::2c0d:7614:3aed:f97e%9]) with mapi id 15.20.4500.019; Mon, 13 Sep 2021
+ 19:37:34 +0000
+From: PJ Waskiewicz <pwaskiewicz@jumptrading.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Thread-Topic: [PATCH 1/1] i40e: Avoid double IRQ free on error path in probe()
+Thread-Index: AQHXmsh2FN3baon3J0C4ms4cTGoQHauMjGGAgAGT9oCAFFbJcA==
+Date: Mon, 13 Sep 2021 19:37:34 +0000
+Message-ID: <MW4PR14MB4796AE05A868B47FE4F6E12AA1D99@MW4PR14MB4796.namprd14.prod.outlook.com>
+References: <20210826221916.127243-1-pwaskiewicz@jumptrading.com>
+ <50c21a769633c8efa07f49fc8b20fdfb544cf3c5.camel@intel.com>
+ <20210831205831.GA115243@chidv-pwl1.w2k.jumptrading.com>
+In-Reply-To: <20210831205831.GA115243@chidv-pwl1.w2k.jumptrading.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=jumptrading.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bcde45aa-49a5-412b-7018-08d976edef85
+x-ms-traffictypediagnostic: MWHPR14MB1360:
+x-microsoft-antispam-prvs: <MWHPR14MB1360A64589DA34BC50B46FFDA1D99@MWHPR14MB1360.namprd14.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 7SNc7BLUHjILrGEjM7Rm5N9zfBUpTfdV7HSSW2JwS83K0894VgOEM+v4+8SSvxsx1P209q0LzoNR2bUVxWOOc1EBxp7omq5t55hqGhP5rWmEDBlvVYhF5zHb8RJOzkbzwJ1hifcMCuz6/Ox8MnFzvbhk0oCviYzITFjFT3s+u6pHHZDCJps+hbcaQmQT5yEiaPoJNupfnCas8KDBlOFV+28LC/NdzqZZZ23LZv84LX9+E+Gee2NbxnDNCxdFNDhBakRBkXkC7vOnvyh4Ou3ynZ46afzBDF4PYsHOjA+dkvcso7GDTzK985rxjqEh2RlAc3SGAiB9fCYsLyONzNZSKI477amYUQUyIVqNHW/PjX58uYNLmBlmk0LKNA1hhxyEpWnlGzqXNoUFcBBdpSZsOe8iQf25TX88nA6O54s5AsOSoQzoyrfPBFF/d/2IhHiGt+fj/qRXkYbGU07WXPt175j4pJv8jkUNicN2y6AQ1JIOpKaRCMYke+t5Pyc3HSdmWLcO1oBmO+BGqgAebfE/V05zSOBX4Ha/BX4lOkgmOrssPrjWS0LDZec5O6opm7goB7K2Hw5ifsIinXqb/bmrmo4Y2nvxcuLQcyQlmRdyqlHqiGJOElYtcn0KiY2p3h2RU0CJZP8/z2GLGVg3fQ6hRwJuuK20PJ/NyE3cjFwIKZJvYPX1qifxEo5kprCyCG1D5NAR7pQTJ0mXk30huA43KQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW4PR14MB4796.namprd14.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(366004)(39860400002)(376002)(396003)(136003)(122000001)(5660300002)(8936002)(53546011)(7696005)(86362001)(66446008)(66476007)(66946007)(66556008)(64756008)(9686003)(55016002)(6916009)(71200400001)(38100700002)(38070700005)(8676002)(186003)(26005)(4326008)(478600001)(52536014)(316002)(76116006)(2906002)(54906003)(83380400001)(33656002)(6506007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UXNMMkpIQzZxL3l2WXd2WEVBUW9OT2RoVGtNbUFzTjFHMEJyb2JJcjVQK3R1?=
+ =?utf-8?B?akltMkdyNXZ0WEdTUGlKVU1UVjl2a3pYMjAwemgyb3hsUXdHelVEa25zazlh?=
+ =?utf-8?B?dTViaktOMkhOUzI0NXNWTktONDd1TzY3U1oxbWJiRFViT2pvaDMzeUpOSkh5?=
+ =?utf-8?B?b0NIaklnRTBhL3RiaVpRN0JvcTVOYVFBR0NwZi9QWmY4THdlNTN0VjVsRlVv?=
+ =?utf-8?B?dExzd3NIY1U1VGJmUkxlUjlqUEExK2dKcVgrWDBnaFFRcmwyeGtGVGdUMm1j?=
+ =?utf-8?B?ai95UWc4aUFvYlp6MU9EMjhxcU9FWW5vaEVQalIwbFZ0WWxURmxaSXliS2F2?=
+ =?utf-8?B?a0ZwM256aHl4ZmdRVTV1bkl2Nm5sdEN3NUFad0tPeEJpUkFpbzNtK1pnVm1U?=
+ =?utf-8?B?R1R1amNhWXI1NXF4VU5wTjYzc1hwZ0gvbHVJd3FhcXZOR1R4SjMrSVVQWUtE?=
+ =?utf-8?B?TkpnbWRjY2I4UytSb0x6VGUzZHVJNTE5bnM1cW56L2ZWTVlZay93Nm80ekFq?=
+ =?utf-8?B?V3ZkVmtsVkRwMHBXcHNnMnNCMkdLVE5CdXpSZS9yQUx4Rk5rWFE1U3haTWRX?=
+ =?utf-8?B?dER1NWh3OFFjL2N3U0RnN3k4SXNJU3FnNUdYNC9WazJ3U05YZDVEZ0NMaW5k?=
+ =?utf-8?B?OUIyTTZCUU1Ra1NDUG4rQWt3aGUwMmRRWGlZOG1pQThoSThRMTJBdytZZmlV?=
+ =?utf-8?B?MERicDUzUENTaStabjVsYm1OTnI5Um9RaGw2cno4T21tMVV6UFQzVDBjamFk?=
+ =?utf-8?B?K1gwT0dYVzZRTTk1dVhNRTF4M2g1cjdwM1VuZytnNmhNMWY1ZXpBN1JIRWFH?=
+ =?utf-8?B?TjdCR3ZMT2FTQnpoZUlsNkNEK1FoS0xWVTd1aWV3TGovY3dsei9DbjlaMWtP?=
+ =?utf-8?B?bHByWkdLYTE5c3lxdXAxeFRiZnZRZGU0TTBJS2I3N1J6Y1JjVUdDTENOU1JI?=
+ =?utf-8?B?THFIRWJNbGRwT0tyS3FUZVNISkVMdWVqUkhiQkJVaml1L1p6dUdzNWc0N3NQ?=
+ =?utf-8?B?Y2xuWHFyNUduSWpwZHlCWjRlR2ljMHFmRXB2SmVYSkJtRWp4REJoY2hkaWx1?=
+ =?utf-8?B?YXdYOGk4bUR0M0NMaUkreFRPZGJHci81Q3NYdUZ3SjZVNkJrWHJ6RFZ4Z083?=
+ =?utf-8?B?ckNqelV1a1RBa2RadzFFTG5XYi9kcjREWm5hNEZBejJGYzg5MUdmcHZnZjBG?=
+ =?utf-8?B?Z3krT2g2TDVZdlFTN2xaYzlGRHkwektmaGU5Vm5PV0Jtc3A5UTVUQWtQaWFy?=
+ =?utf-8?B?L0VWZGhMYWlIMXdkRittNDVGc2IzY0JhN3lkT3pvOTdyM2cwNytURTlRZVNU?=
+ =?utf-8?B?R3JXQVZoZzZ5azJvVzVGY2NjYWdUZllZQWt3WkJ0SGc1SzlPQXpkWWxBUXRm?=
+ =?utf-8?B?U0M5VjlQZUwrOUFtZXgxckNmUGRjQVR0K29idzBhT2tobWJJZnZmSGVUdklR?=
+ =?utf-8?B?OWNBcnpHSXVvTDBVOXRmT2JmZkszWmpUSXBQakUrSStCZUhQRzFOYWk4a29w?=
+ =?utf-8?B?bkZKNnp1MG5HbjNnU2NGYkVyVjd6M29sWlI4dGhoM1B4b3RoMW9iMWczSkhk?=
+ =?utf-8?B?eHJ5MTJvdVo3Nm5JL0NNLyt5Wlp3S25EZkYzNG4rYjJscm93VUt1SXZaeGZr?=
+ =?utf-8?B?QVk4Qkh3czNlYTlrTE9VK0drazZVUUVEejYxV2ZqU3puSU9wVEhxTTBkVzcr?=
+ =?utf-8?B?czNQN3hkN2tkWGJLTmFIUVpRTWNQOGt1NnA5bWQ3WVBkOVVNVTdSa1BaTWgr?=
+ =?utf-8?Q?Ra3qPjZxt3OtFj+4lREiAjwRbYdDNMR+2fdMLvc?=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2] ice: Add support for VF rate
- limiting
+X-OriginatorOrg: jumptrading.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR14MB4796.namprd14.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bcde45aa-49a5-412b-7018-08d976edef85
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Sep 2021 19:37:34.7048 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 11f2af73-8873-4240-85a3-063ce66fc61c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: I0DGVpbN2N7ZL/Q/iz8as14qSkjsPu5bQr2CXQDFsVYYfFxKwr25zGSrR7q91wZevAAv07N3HeXG8y43FVwOByjjQmmFxTX1SoT0JMPObws=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR14MB1360
+X-Proofpoint-GUID: 3LDAgRAUIRtBtyCyL9uYY1xRQ4IfIXzb
+X-Proofpoint-ORIG-GUID: LFLdcyO7GNDAnTOiQ-B4vTqjKTe94CWp
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
+ definitions=2021-09-13_09,2021-09-09_01,2020-04-07_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=999 mlxscore=0
+ spamscore=0 malwarescore=0 priorityscore=1501 lowpriorityscore=0
+ adultscore=0 impostorscore=0 phishscore=0 bulkscore=0 suspectscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2109030001 definitions=main-2109130117
+Subject: Re: [Intel-wired-lan] [PATCH 1/1] i40e: Avoid double IRQ free on
+ error path in probe()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,649 +170,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "pjwaskiewicz@gmail.com" <pjwaskiewicz@gmail.com>, "Dziedziuch,
+ SylwesterX" <sylwesterx.dziedziuch@intel.com>, "Loktionov,
+ Aleksandr" <aleksandr.loktionov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
-
-Implement ndo_set_vf_rate to support setting of min_tx_rate and
-max_tx_rate; set the appropriate bandwidth in the scheduler for the
-node representing the specified VF VSI.
-
-Co-developed-by: Tarun Singh <tarun.k.singh@intel.com>
-Signed-off-by: Tarun Singh <tarun.k.singh@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
-v2:
- - Make ice_sched_set_node_bw_lmt_per_tc() static
- - Move ice_cfg_vsi_bw_lmt_per_tc() and ice_cfg_dflt_vsi_bw_lmt_per_tc()
-   to avoid forward declaration of ice_sched_set_node_bw_lmt_per_tc()
-
- drivers/net/ethernet/intel/ice/ice_lib.c      | 174 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_lib.h      |   4 +-
- drivers/net/ethernet/intel/ice/ice_main.c     |   1 +
- drivers/net/ethernet/intel/ice/ice_sched.c    | 130 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_sched.h    |   6 +
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 160 +++++++++++++++-
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  15 +-
- 7 files changed, 486 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index c6d849222dfa..fa8f42e80851 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3590,6 +3590,180 @@ int ice_clear_dflt_vsi(struct ice_sw *sw)
- 	return 0;
- }
- 
-+/**
-+ * ice_get_link_speed_mbps - get link speed in Mbps
-+ * @vsi: the VSI whose link speed is being queried
-+ *
-+ * Return current VSI link speed and 0 if the speed is unknown.
-+ */
-+int ice_get_link_speed_mbps(struct ice_vsi *vsi)
-+{
-+	switch (vsi->port_info->phy.link_info.link_speed) {
-+	case ICE_AQ_LINK_SPEED_100GB:
-+		return SPEED_100000;
-+	case ICE_AQ_LINK_SPEED_50GB:
-+		return SPEED_50000;
-+	case ICE_AQ_LINK_SPEED_40GB:
-+		return SPEED_40000;
-+	case ICE_AQ_LINK_SPEED_25GB:
-+		return SPEED_25000;
-+	case ICE_AQ_LINK_SPEED_20GB:
-+		return SPEED_20000;
-+	case ICE_AQ_LINK_SPEED_10GB:
-+		return SPEED_10000;
-+	case ICE_AQ_LINK_SPEED_5GB:
-+		return SPEED_5000;
-+	case ICE_AQ_LINK_SPEED_2500MB:
-+		return SPEED_2500;
-+	case ICE_AQ_LINK_SPEED_1000MB:
-+		return SPEED_1000;
-+	case ICE_AQ_LINK_SPEED_100MB:
-+		return SPEED_100;
-+	case ICE_AQ_LINK_SPEED_10MB:
-+		return SPEED_10;
-+	case ICE_AQ_LINK_SPEED_UNKNOWN:
-+	default:
-+		return 0;
-+	}
-+}
-+
-+/**
-+ * ice_get_link_speed_kbps - get link speed in Kbps
-+ * @vsi: the VSI whose link speed is being queried
-+ *
-+ * Return current VSI link speed and 0 if the speed is unknown.
-+ */
-+static int ice_get_link_speed_kbps(struct ice_vsi *vsi)
-+{
-+	int speed_mbps;
-+
-+	speed_mbps = ice_get_link_speed_mbps(vsi);
-+
-+	return speed_mbps * 1000;
-+}
-+
-+/**
-+ * ice_set_min_bw_limit - setup minimum BW limit for Tx based on min_tx_rate
-+ * @vsi: VSI to be configured
-+ * @min_tx_rate: min Tx rate in Kbps to be configured as BW limit
-+ *
-+ * If the min_tx_rate is specified as 0 that means to clear the minimum BW limit
-+ * profile, otherwise a non-zero value will force a minimum BW limit for the VSI
-+ * on TC 0.
-+ */
-+int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate)
-+{
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status status;
-+	struct device *dev;
-+	int speed;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (!vsi->port_info) {
-+		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
-+			vsi->idx, vsi->type);
-+		return -EINVAL;
-+	}
-+
-+	speed = ice_get_link_speed_kbps(vsi);
-+	if (min_tx_rate > (u64)speed) {
-+		dev_err(dev, "invalid min Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
-+			min_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
-+			speed);
-+		return -EINVAL;
-+	}
-+
-+	/* Configure min BW for VSI limit */
-+	if (min_tx_rate) {
-+		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
-+						   ICE_MIN_BW, min_tx_rate);
-+		if (status) {
-+			dev_err(dev, "failed to set min Tx rate(%llu Kbps) for %s %d\n",
-+				min_tx_rate, ice_vsi_type_str(vsi->type),
-+				vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "set min Tx rate(%llu Kbps) for %s\n",
-+			min_tx_rate, ice_vsi_type_str(vsi->type));
-+	} else {
-+		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
-+							vsi->idx, 0,
-+							ICE_MIN_BW);
-+		if (status) {
-+			dev_err(dev, "failed to clear min Tx rate configuration for %s %d\n",
-+				ice_vsi_type_str(vsi->type), vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "cleared min Tx rate configuration for %s %d\n",
-+			ice_vsi_type_str(vsi->type), vsi->idx);
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_set_max_bw_limit - setup maximum BW limit for Tx based on max_tx_rate
-+ * @vsi: VSI to be configured
-+ * @max_tx_rate: max Tx rate in Kbps to be configured as BW limit
-+ *
-+ * If the max_tx_rate is specified as 0 that means to clear the maximum BW limit
-+ * profile, otherwise a non-zero value will force a maximum BW limit for the VSI
-+ * on TC 0.
-+ */
-+int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate)
-+{
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status status;
-+	struct device *dev;
-+	int speed;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (!vsi->port_info) {
-+		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
-+			vsi->idx, vsi->type);
-+		return -EINVAL;
-+	}
-+
-+	speed = ice_get_link_speed_kbps(vsi);
-+	if (max_tx_rate > (u64)speed) {
-+		dev_err(dev, "invalid max Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
-+			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
-+			speed);
-+		return -EINVAL;
-+	}
-+
-+	/* Configure max BW for VSI limit */
-+	if (max_tx_rate) {
-+		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
-+						   ICE_MAX_BW, max_tx_rate);
-+		if (status) {
-+			dev_err(dev, "failed setting max Tx rate(%llu Kbps) for %s %d\n",
-+				max_tx_rate, ice_vsi_type_str(vsi->type),
-+				vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "set max Tx rate(%llu Kbps) for %s %d\n",
-+			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx);
-+	} else {
-+		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
-+							vsi->idx, 0,
-+							ICE_MAX_BW);
-+		if (status) {
-+			dev_err(dev, "failed clearing max Tx rate configuration for %s %d\n",
-+				ice_vsi_type_str(vsi->type), vsi->idx);
-+			return -EIO;
-+		}
-+
-+		dev_dbg(dev, "cleared max Tx rate configuration for %s %d\n",
-+			ice_vsi_type_str(vsi->type), vsi->idx);
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_set_link - turn on/off physical link
-  * @vsi: VSI to modify physical link on
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index b443ea46274f..0cef9b665d8c 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -116,7 +116,9 @@ bool ice_is_vsi_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
- int ice_set_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
- 
- int ice_clear_dflt_vsi(struct ice_sw *sw);
--
-+int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate);
-+int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate);
-+int ice_get_link_speed_mbps(struct ice_vsi *vsi);
- int ice_vsi_update_security(struct ice_vsi *vsi,
- 			    void (*fill)(struct ice_vsi_ctx *));
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index e8e114db8304..1d1a0a359c7b 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -7411,6 +7411,7 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_set_vf_vlan = ice_set_vf_port_vlan,
- 	.ndo_set_vf_link_state = ice_set_vf_link_state,
- 	.ndo_get_vf_stats = ice_get_vf_stats,
-+	.ndo_set_vf_rate = ice_set_vf_bw,
- 	.ndo_vlan_rx_add_vid = ice_vlan_rx_add_vid,
- 	.ndo_vlan_rx_kill_vid = ice_vlan_rx_kill_vid,
- 	.ndo_setup_tc = ice_setup_tc,
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index 2d9b10277186..a3b957621a03 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -3783,6 +3783,136 @@ ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 				      ICE_SCHED_DFLT_BW);
- }
- 
-+/**
-+ * ice_sched_get_node_by_id_type - get node from ID type
-+ * @pi: port information structure
-+ * @id: identifier
-+ * @agg_type: type of aggregator
-+ * @tc: traffic class
-+ *
-+ * This function returns node identified by ID of type aggregator, and
-+ * based on traffic class (TC). This function needs to be called with
-+ * the scheduler lock held.
-+ */
-+static struct ice_sched_node *
-+ice_sched_get_node_by_id_type(struct ice_port_info *pi, u32 id,
-+			      enum ice_agg_type agg_type, u8 tc)
-+{
-+	struct ice_sched_node *node = NULL;
-+
-+	switch (agg_type) {
-+	case ICE_AGG_TYPE_VSI: {
-+		struct ice_vsi_ctx *vsi_ctx;
-+		u16 vsi_handle = (u16)id;
-+
-+		if (!ice_is_vsi_valid(pi->hw, vsi_handle))
-+			break;
-+		/* Get sched_vsi_info */
-+		vsi_ctx = ice_get_vsi_ctx(pi->hw, vsi_handle);
-+		if (!vsi_ctx)
-+			break;
-+		node = vsi_ctx->sched.vsi_node[tc];
-+		break;
-+	}
-+
-+	case ICE_AGG_TYPE_AGG: {
-+		struct ice_sched_node *tc_node;
-+
-+		tc_node = ice_sched_get_tc_node(pi, tc);
-+		if (tc_node)
-+			node = ice_sched_get_agg_node(pi, tc_node, id);
-+		break;
-+	}
-+
-+	default:
-+		break;
-+	}
-+
-+	return node;
-+}
-+
-+/**
-+ * ice_sched_set_node_bw_lmt_per_tc - set node BW limit per TC
-+ * @pi: port information structure
-+ * @id: ID (software VSI handle or AGG ID)
-+ * @agg_type: aggregator type (VSI or AGG type node)
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ * @bw: bandwidth in Kbps
-+ *
-+ * This function sets BW limit of VSI or Aggregator scheduling node
-+ * based on TC information from passed in argument BW.
-+ */
-+static enum ice_status
-+ice_sched_set_node_bw_lmt_per_tc(struct ice_port_info *pi, u32 id,
-+				 enum ice_agg_type agg_type, u8 tc,
-+				 enum ice_rl_type rl_type, u32 bw)
-+{
-+	enum ice_status status = ICE_ERR_PARAM;
-+	struct ice_sched_node *node;
-+
-+	if (!pi)
-+		return status;
-+
-+	if (rl_type == ICE_UNKNOWN_BW)
-+		return status;
-+
-+	mutex_lock(&pi->sched_lock);
-+	node = ice_sched_get_node_by_id_type(pi, id, agg_type, tc);
-+	if (!node) {
-+		ice_debug(pi->hw, ICE_DBG_SCHED, "Wrong id, agg type, or tc\n");
-+		goto exit_set_node_bw_lmt_per_tc;
-+	}
-+	if (bw == ICE_SCHED_DFLT_BW)
-+		status = ice_sched_set_node_bw_dflt_lmt(pi, node, rl_type);
-+	else
-+		status = ice_sched_set_node_bw_lmt(pi, node, rl_type, bw);
-+
-+exit_set_node_bw_lmt_per_tc:
-+	mutex_unlock(&pi->sched_lock);
-+	return status;
-+}
-+
-+/**
-+ * ice_cfg_vsi_bw_lmt_per_tc - configure VSI BW limit per TC
-+ * @pi: port information structure
-+ * @vsi_handle: software VSI handle
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ * @bw: bandwidth in Kbps
-+ *
-+ * This function configures BW limit of VSI scheduling node based on TC
-+ * information.
-+ */
-+enum ice_status
-+ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			  enum ice_rl_type rl_type, u32 bw)
-+{
-+	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
-+						ICE_AGG_TYPE_VSI,
-+						tc, rl_type, bw);
-+}
-+
-+/**
-+ * ice_cfg_vsi_bw_dflt_lmt_per_tc - configure default VSI BW limit per TC
-+ * @pi: port information structure
-+ * @vsi_handle: software VSI handle
-+ * @tc: traffic class
-+ * @rl_type: min or max
-+ *
-+ * This function configures default BW limit of VSI scheduling node based on TC
-+ * information.
-+ */
-+enum ice_status
-+ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			       enum ice_rl_type rl_type)
-+{
-+	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
-+						ICE_AGG_TYPE_VSI,
-+						tc, rl_type,
-+						ICE_SCHED_DFLT_BW);
-+}
-+
- /**
-  * ice_cfg_rl_burst_size - Set burst size value
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.h b/drivers/net/ethernet/intel/ice/ice_sched.h
-index fdf7a5882f07..11ad8336899f 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.h
-@@ -104,6 +104,12 @@ ice_cfg_q_bw_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- enum ice_status
- ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 		      u16 q_handle, enum ice_rl_type rl_type);
-+enum ice_status
-+ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			  enum ice_rl_type rl_type, u32 bw);
-+enum ice_status
-+ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
-+			       enum ice_rl_type rl_type);
- enum ice_status ice_cfg_rl_burst_size(struct ice_hw *hw, u32 bytes);
- void ice_sched_replay_agg_vsi_preinit(struct ice_hw *hw);
- void ice_sched_replay_agg(struct ice_hw *hw);
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index ee3051b8ed15..42fb112fdea1 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -5,6 +5,7 @@
- #include "ice_base.h"
- #include "ice_lib.h"
- #include "ice_fltr.h"
-+#include "ice_dcb_lib.h"
- #include "ice_flow.h"
- #include "ice_eswitch.h"
- #include "ice_virtchnl_allowlist.h"
-@@ -768,6 +769,40 @@ static int ice_calc_vf_first_vector_idx(struct ice_pf *pf, struct ice_vf *vf)
- 	return pf->sriov_base_vector + vf->vf_id * pf->num_msix_per_vf;
- }
- 
-+/**
-+ * ice_vf_rebuild_host_tx_rate_cfg - re-apply the Tx rate limiting configuration
-+ * @vf: VF to re-apply the configuration for
-+ *
-+ * Called after a VF VSI has been re-added/rebuild during reset. The PF driver
-+ * needs to re-apply the host configured Tx rate limiting configuration.
-+ */
-+static int ice_vf_rebuild_host_tx_rate_cfg(struct ice_vf *vf)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-+	int err;
-+
-+	if (vf->min_tx_rate) {
-+		err = ice_set_min_bw_limit(vsi, (u64)vf->min_tx_rate * 1000);
-+		if (err) {
-+			dev_err(dev, "failed to set min Tx rate to %d Mbps for VF %u, error %d\n",
-+				vf->min_tx_rate, vf->vf_id, err);
-+			return err;
-+		}
-+	}
-+
-+	if (vf->max_tx_rate) {
-+		err = ice_set_max_bw_limit(vsi, (u64)vf->max_tx_rate * 1000);
-+		if (err) {
-+			dev_err(dev, "failed to set max Tx rate to %d Mbps for VF %u, error %d\n",
-+				vf->max_tx_rate, vf->vf_id, err);
-+			return err;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_vf_rebuild_host_vlan_cfg - add VLAN 0 filter or rebuild the Port VLAN
-  * @vf: VF to add MAC filters for
-@@ -1309,6 +1344,11 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
- 	if (ice_vf_rebuild_host_vlan_cfg(vf))
- 		dev_err(dev, "failed to rebuild VLAN configuration for VF %u\n",
- 			vf->vf_id);
-+
-+	if (ice_vf_rebuild_host_tx_rate_cfg(vf))
-+		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
-+			vf->vf_id);
-+
- 	/* rebuild aggregator node config for main VF VSI */
- 	ice_vf_rebuild_aggregator_node_cfg(vsi);
- }
-@@ -4719,8 +4759,8 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
- 		ivi->linkstate = IFLA_VF_LINK_STATE_ENABLE;
- 	else
- 		ivi->linkstate = IFLA_VF_LINK_STATE_DISABLE;
--	ivi->max_tx_rate = vf->tx_rate;
--	ivi->min_tx_rate = 0;
-+	ivi->max_tx_rate = vf->max_tx_rate;
-+	ivi->min_tx_rate = vf->min_tx_rate;
- 	return 0;
- }
- 
-@@ -4899,6 +4939,122 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
- 	return 0;
- }
- 
-+/**
-+ * ice_calc_all_vfs_min_tx_rate - calculate cumulative min Tx rate on all VFs
-+ * @pf: PF associated with VFs
-+ */
-+static int ice_calc_all_vfs_min_tx_rate(struct ice_pf *pf)
-+{
-+	int rate = 0, i;
-+
-+	ice_for_each_vf(pf, i)
-+		rate += pf->vf[i].min_tx_rate;
-+
-+	return rate;
-+}
-+
-+/**
-+ * ice_min_tx_rate_oversubscribed - check if min Tx rate causes oversubscription
-+ * @vf: VF trying to configure min_tx_rate
-+ * @min_tx_rate: min Tx rate in Mbps
-+ *
-+ * Check if the min_tx_rate being passed in will cause oversubscription of total
-+ * min_tx_rate based on the current link speed and all other VFs configured
-+ * min_tx_rate
-+ *
-+ * Return true if the passed min_tx_rate would cause oversubscription, else
-+ * return false
-+ */
-+static bool
-+ice_min_tx_rate_oversubscribed(struct ice_vf *vf, int min_tx_rate)
-+{
-+	int link_speed_mbps = ice_get_link_speed_mbps(ice_get_vf_vsi(vf));
-+	int all_vfs_min_tx_rate = ice_calc_all_vfs_min_tx_rate(vf->pf);
-+
-+	/* this VF's previous rate is being overwritten */
-+	all_vfs_min_tx_rate -= vf->min_tx_rate;
-+
-+	if (all_vfs_min_tx_rate + min_tx_rate > link_speed_mbps) {
-+		dev_err(ice_pf_to_dev(vf->pf), "min_tx_rate of %d Mbps on VF %u would cause oversubscription of %d Mbps based on the current link speed %d Mbps\n",
-+			min_tx_rate, vf->vf_id,
-+			all_vfs_min_tx_rate + min_tx_rate - link_speed_mbps,
-+			link_speed_mbps);
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
-+/**
-+ * ice_set_vf_bw - set min/max VF bandwidth
-+ * @netdev: network interface device structure
-+ * @vf_id: VF identifier
-+ * @min_tx_rate: Minimum Tx rate in Mbps
-+ * @max_tx_rate: Maximum Tx rate in Mbps
-+ */
-+int
-+ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
-+	      int max_tx_rate)
-+{
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
-+	struct ice_vsi *vsi;
-+	struct device *dev;
-+	struct ice_vf *vf;
-+	int ret;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (ice_validate_vf_id(pf, vf_id))
-+		return -EINVAL;
-+
-+	vf = &pf->vf[vf_id];
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
-+
-+	vsi = ice_get_vf_vsi(vf);
-+
-+	/* when max_tx_rate is zero that means no max Tx rate limiting, so only
-+	 * check if max_tx_rate is non-zero
-+	 */
-+	if (max_tx_rate && min_tx_rate > max_tx_rate) {
-+		dev_err(dev, "Cannot set min Tx rate %d Mbps greater than max Tx rate %d Mbps\n",
-+			min_tx_rate, max_tx_rate);
-+		return -EINVAL;
-+	}
-+
-+	if (min_tx_rate && ice_is_dcb_active(pf)) {
-+		dev_err(dev, "DCB on PF is currently enabled. VF min Tx rate limiting not allowed on this PF.\n");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (ice_min_tx_rate_oversubscribed(vf, min_tx_rate))
-+		return -EINVAL;
-+
-+	if (vf->min_tx_rate != (unsigned int)min_tx_rate) {
-+		ret = ice_set_min_bw_limit(vsi, (u64)min_tx_rate * 1000);
-+		if (ret) {
-+			dev_err(dev, "Unable to set min-tx-rate for VF %d\n",
-+				vf->vf_id);
-+			return ret;
-+		}
-+
-+		vf->min_tx_rate = min_tx_rate;
-+	}
-+
-+	if (vf->max_tx_rate != (unsigned int)max_tx_rate) {
-+		ret = ice_set_max_bw_limit(vsi, (u64)max_tx_rate * 1000);
-+		if (ret) {
-+			dev_err(dev, "Unable to set max-tx-rate for VF %d\n",
-+				vf->vf_id);
-+			return ret;
-+		}
-+
-+		vf->max_tx_rate = max_tx_rate;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_get_vf_stats - populate some stats for the VF
-  * @netdev: the netdev of the PF
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 6333b651d18e..9de19cc97f48 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -125,7 +125,8 @@ struct ice_vf {
- 	 * the main LAN VSI for the PF.
- 	 */
- 	u16 lan_vsi_num;		/* ID as used by firmware */
--	unsigned int tx_rate;		/* Tx bandwidth limit in Mbps */
-+	unsigned int min_tx_rate;	/* Minimum Tx bandwidth limit in Mbps */
-+	unsigned int max_tx_rate;	/* Maximum Tx bandwidth limit in Mbps */
- 	DECLARE_BITMAP(vf_states, ICE_VF_STATES_NBITS);	/* VF runtime states */
- 
- 	u64 num_inval_msgs;		/* number of continuous invalid msgs */
-@@ -172,6 +173,10 @@ int
- ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 		     __be16 vlan_proto);
- 
-+int
-+ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
-+	      int max_tx_rate);
-+
- int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted);
- 
- int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state);
-@@ -304,6 +309,14 @@ ice_set_vf_link_state(struct net_device __always_unused *netdev,
- 	return -EOPNOTSUPP;
- }
- 
-+static inline int
-+ice_set_vf_bw(struct net_device __always_unused *netdev,
-+	      int __always_unused vf_id, int __always_unused min_tx_rate,
-+	      int __always_unused max_tx_rate)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline int
- ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
- 		    struct ice_q_vector __always_unused *q_vector)
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGkgVG9ueSwNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQSiBXYXNr
+aWV3aWN6IDxwd2Fza2lld2ljekBqdW1wdHJhZGluZy5jb20+DQo+IFNlbnQ6IFR1ZXNkYXksIEF1
+Z3VzdCAzMSwgMjAyMSAxOjU5IFBNDQo+IFRvOiBOZ3V5ZW4sIEFudGhvbnkgTCA8YW50aG9ueS5s
+Lm5ndXllbkBpbnRlbC5jb20+DQo+IENjOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9y
+ZzsgcGp3YXNraWV3aWN6QGdtYWlsLmNvbTsgTG9rdGlvbm92LA0KPiBBbGVrc2FuZHIgPGFsZWtz
+YW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tPjsgRmlqYWxrb3dza2ksIE1hY2llag0KPiA8bWFjaWVq
+LmZpamFsa293c2tpQGludGVsLmNvbT47IER6aWVkeml1Y2gsIFN5bHdlc3RlclgNCj4gPHN5bHdl
+c3RlcnguZHppZWR6aXVjaEBpbnRlbC5jb20+OyBkYXZlbUBkYXZlbWxvZnQubmV0OyBCcmFuZGVi
+dXJnLA0KPiBKZXNzZSA8amVzc2UuYnJhbmRlYnVyZ0BpbnRlbC5jb20+OyBuZXRkZXZAdmdlci5r
+ZXJuZWwub3JnOyBQSg0KPiBXYXNraWV3aWN6IDxwd2Fza2lld2ljekBqdW1wdHJhZGluZy5jb20+
+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggMS8xXSBpNDBlOiBBdm9pZCBkb3VibGUgSVJRIGZyZWUg
+b24gZXJyb3IgcGF0aCBpbiBwcm9iZSgpDQo+DQo+IE9uIE1vbiwgQXVnIDMwLCAyMDIxIGF0IDA4
+OjUyOjQxUE0gKzAwMDAsIE5ndXllbiwgQW50aG9ueSBMIHdyb3RlOg0KPiA+IE9uIFRodSwgMjAy
+MS0wOC0yNiBhdCAxNzoxOSAtMDUwMCwgUEogV2Fza2lld2ljeiB3cm90ZToNCj4gPiA+IFRoaXMg
+Zml4ZXMgYW4gZXJyb3IgcGF0aCBjb25kaXRpb24gd2hlbiBwcm9iZSgpIGZhaWxzIGR1ZSB0byB0
+aGUNCj4gPiA+IGRlZmF1bHQgVlNJIG5vdCBiZWluZyBhdmFpbGFibGUgb3Igb25saW5lIHlldCBp
+biB0aGUgZmlybXdhcmUuIElmDQo+ID4gPiB0aGF0IGhhcHBlbnMsIHRoZSBwcmV2aW91cyB0ZWFy
+ZG93biBwYXRoIHdvdWxkIGNsZWFyIHRoZSBpbnRlcnJ1cHQNCj4gPiA+IHNjaGVtZSwgd2hpY2gg
+YWxzbyBmcmVlZCB0aGUgSVJRcyB3aXRoIHRoZSBPUy4gVGhlbiB0aGUgZXJyb3IgcGF0aA0KPiA+
+ID4gZm9yIHRoZSBzd2l0Y2ggc2V0dXAgKHByZS1WU0kpIHdvdWxkIGF0dGVtcHQgdG8gZnJlZSB0
+aGUgT1MgSVJRcyBhcw0KPiA+ID4gd2VsbC4NCj4gPg0KPiA+IEhpIFBKLA0KPg0KPiBIaSBUb255
+LA0KPg0KPiA+DQo+ID4gVGhlc2UgY29tbWVudHMgYXJlIGZyb20gdGhlIGk0MGUgdGVhbS4NCj4g
+Pg0KPiA+IFllcyBpbiBjYXNlIHdlIGZhaWwgYW5kIGdvIHRvIGVycl92c2lzIGxhYmVsIGluIGk0
+MGVfcHJvYmUoKSB3ZSB3aWxsDQo+ID4gY2FsbCBpNDBlX3Jlc2V0X2ludGVycnVwdF9jYXBhYmls
+aXR5IHR3aWNlIGJ1dCB0aGlzIGlzIG5vdCBhIHByb2JsZW0uDQo+ID4gVGhpcyBpcyBiZWNhdXNl
+IHBjaV9kaXNhYmxlX21zaS9wY2lfZGlzYWJsZV9tc2l4IHdpbGwgYmUgY2FsbGVkIG9ubHkNCj4g
+PiBpZiBhcHByb3ByaWF0ZSBmbGFncyBhcmUgc2V0IG9uIFBGIGFuZCBpZiB0aGlzIGZ1bmN0aW9u
+IGlzIGNhbGxlZCBvbmVzDQo+ID4gaXQgd2lsbCBjbGVhciB0aG9zZSBmbGFncy4gU28gZXZlbiBp
+ZiB3ZSBjYWxsDQo+ID4gaTQwZV9yZXNldF9pbnRlcnJ1cHRfY2FwYWJpbGl0eSB0d2ljZSB3ZSB3
+aWxsIG5vdCBkaXNhYmxlIG1zaSB2ZWN0b3JzDQo+ID4gdHdpY2UuDQo+ID4NCj4gPiBUaGUgaXNz
+dWUgaGVyZSBpcyBkaWZmZXJlbnQgaG93ZXZlci4gSXQgaXMgZmFpbGluZyBpbiBmcmVlX2lycSBi
+ZWNhdXNlDQo+ID4gd2UgYXJlIHRyeWluZyB0byBmcmVlIGFscmVhZHkgZnJlZSB2ZWN0b3IuIFRo
+aXMgaXMgYmVjYXVzZSBzZXR1cCBvZg0KPiA+IG1pc2MgaXJxIHZlY3RvcnMgaW4gaTQwZV9wcm9i
+ZSBpcyBkb25lIGFmdGVyIGk0MGVfc2V0dXBfcGZfc3dpdGNoLiBJZg0KPiA+IGk0MGVfc2V0dXBf
+cGZfc3dpdGNoIGZhaWxzIHRoZW4gd2Ugd2lsbCBqdW1wIHRvIGVycl92c2lzIGFuZCBjYWxsDQo+
+ID4gaTQwZV9jbGVhcl9pbnRlcnJ1cHRfc2NoZW1lIHdoaWNoIHdpbGwgdHJ5IHRvIGZyZWUgdGhv
+c2UgbWlzYyBpcnENCj4gPiB2ZWN0b3JzIHdoaWNoIHdlcmUgbm90IHlldCBhbGxvY2F0ZWQuIFdl
+IHNob3VsZCBoYXZlIHRoZSBwcm9wZXIgZml4DQo+ID4gZm9yIHRoaXMgcmVhZHkgc29vbi4NCj4N
+Cj4gWWVzLCBJJ20gYXdhcmUgb2Ygd2hhdCdzIGhhcHBlbmluZyBoZXJlIGFuZCB3aHkgaXQncyBm
+YWlsaW5nLiBTYWRseSwgSSBhbQ0KPiBwcmV0dHkgc3VyZSBJIHdyb3RlIHRoaXMgY29kZSBiYWNr
+IGluIGxpa2UgMjAxMSBvciAyMDEyLCBhbmQgYmVpbmcgYW4gZXJyb3INCj4gcGF0aCwgaXQgaGFz
+bid0IHJlYWxseSBiZWVuIHRlc3RlZC4NCj4NCj4gSSBkb24ndCByZWFsbHkgY2FyZSBob3cgdGhp
+cyBnZXRzIGZpeGVkIHRvIGJlIGhvbmVzdC4gV2UgaGl0IHRoaXMgaW4gcHJvZHVjdGlvbg0KPiB3
+aGVuIG91ciBMT00sIGZvciB3aGF0ZXZlciByZWFzb24sIGZhaWxlZCB0byBpbml0aWFsaXplIHRo
+ZSBpbnRlcm5hbCBzd2l0Y2ggb24NCj4gaG9zdCBib290LiBXZSBlc2NhbGF0ZWQgdG8gb3VyIGRp
+c3RybyB2ZW5kb3IsIHRoZXkgZGlkIGVzY2FsYXRlIHRvIEludGVsLCBhbmQNCj4gaXQgd2Fzbid0
+IHJlYWxseSBwcmlvcml0aXplZC4gU28gSSBzZW50IGEgcGF0Y2ggdGhhdCBkb2VzIGZpeCB0aGUg
+aXNzdWUuDQo+DQo+IElmIHRoZSB0ZWFtIHdhbnRzIHRvIHJlc3BpbiB0aGlzIHNvbWVob3csIGdv
+IGFoZWFkLiBCdXQgdGhpcyBkb2VzIGZpeCB0aGUNCj4gaW1tZWRpYXRlIGlzc3VlIHRoYXQgd2hl
+biBiYWlsaW5nIG91dCBpbiBwcm9iZSgpIGR1ZSB0byB0aGUgbWFpbiBWU0kgbm90DQo+IGJlaW5n
+IG9ubGluZSBmb3Igd2hhdGV2ZXIgcmVhc29uLCB0aGUgZHJpdmVyIGJsaW5kbHkgYXR0ZW1wdHMg
+dG8gY2xlYW4gdXAgdGhlDQo+IG1pc2MgTVNJLVggdmVjdG9yIHR3aWNlLiBUaGlzIGNoYW5nZSBm
+aXhlcyB0aGF0IGJlaGF2aW9yLiBJJ2QgbGlrZSB0aGlzIHRvIG5vdA0KPiBsYW5ndWlzaCB3YWl0
+aW5nIGZvciBhIGRpZmZlcmVudCBmaXgsIHNpbmNlIEknZCBsaWtlIHRvIHBvaW50IG91ciBkaXN0
+cm8gdmVuZG9yIHRvDQo+IHRoaXMgKG9yIGFub3RoZXIpIHBhdGNoIHRvIGNoZXJyeS1waWNrLCBz
+byB3ZSBjYW4gZ2V0IHRoaXMgaW50byBwcm9kdWN0aW9uLg0KPiBPdGhlcndpc2Ugb3VyIHBsYXRm
+b3JtIHJvbGxvdXQgaGl0dGluZyB0aGlzIHByb2JsZW0gaXMgZ29pbmcgdG8gYmUgcXVpdGUNCj4g
+YnVtcHksIHdoaWNoIGlzIHZlcnkgbXVjaCBub3QgaWRlYWwuDQoNCkl0J3MgYmVlbiAyIHdlZWtz
+IHNpbmNlIEkgcmVwbGllZC4gIEFueSB1cGRhdGUgb24gdGhpcz8gIE1hY2llaiBoYWQgYWxyZWFk
+eSByZXZpZXdlZCB0aGUgcGF0Y2gsIHNvIGhvcGluZyB3ZSBjYW4ganVzdCBtb3ZlIGFsb25nIHdp
+dGggaXQsIG9yIGdldCBzb21ldGhpbmcgZWxzZSBvdXQgc29vbj8NCg0KSSdkIHJlYWxseSBsaWtl
+IHRoaXMgdG8gbm90IGp1c3QgZmFsbCBpbnRvIGEgdm9pZCB3YWl0aW5nIGZvciBhIGRpZmZlcmVu
+dCBwYXRjaCB3aGVuIHRoaXMgZml4ZXMgdGhlIGlzc3VlLg0KDQotUEoNCg0KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18NCg0KTm90ZTogVGhpcyBlbWFpbCBpcyBmb3IgdGhlIGNvbmZp
+ZGVudGlhbCB1c2Ugb2YgdGhlIG5hbWVkIGFkZHJlc3NlZShzKSBvbmx5IGFuZCBtYXkgY29udGFp
+biBwcm9wcmlldGFyeSwgY29uZmlkZW50aWFsLCBvciBwcml2aWxlZ2VkIGluZm9ybWF0aW9uIGFu
+ZC9vciBwZXJzb25hbCBkYXRhLiBJZiB5b3UgYXJlIG5vdCB0aGUgaW50ZW5kZWQgcmVjaXBpZW50
+LCB5b3UgYXJlIGhlcmVieSBub3RpZmllZCB0aGF0IGFueSByZXZpZXcsIGRpc3NlbWluYXRpb24s
+IG9yIGNvcHlpbmcgb2YgdGhpcyBlbWFpbCBpcyBzdHJpY3RseSBwcm9oaWJpdGVkLCBhbmQgcmVx
+dWVzdGVkIHRvIG5vdGlmeSB0aGUgc2VuZGVyIGltbWVkaWF0ZWx5IGFuZCBkZXN0cm95IHRoaXMg
+ZW1haWwgYW5kIGFueSBhdHRhY2htZW50cy4gRW1haWwgdHJhbnNtaXNzaW9uIGNhbm5vdCBiZSBn
+dWFyYW50ZWVkIHRvIGJlIHNlY3VyZSBvciBlcnJvci1mcmVlLiBUaGUgQ29tcGFueSwgdGhlcmVm
+b3JlLCBkb2VzIG5vdCBtYWtlIGFueSBndWFyYW50ZWVzIGFzIHRvIHRoZSBjb21wbGV0ZW5lc3Mg
+b3IgYWNjdXJhY3kgb2YgdGhpcyBlbWFpbCBvciBhbnkgYXR0YWNobWVudHMuIFRoaXMgZW1haWwg
+aXMgZm9yIGluZm9ybWF0aW9uYWwgcHVycG9zZXMgb25seSBhbmQgZG9lcyBub3QgY29uc3RpdHV0
+ZSBhIHJlY29tbWVuZGF0aW9uLCBvZmZlciwgcmVxdWVzdCwgb3Igc29saWNpdGF0aW9uIG9mIGFu
+eSBraW5kIHRvIGJ1eSwgc2VsbCwgc3Vic2NyaWJlLCByZWRlZW0sIG9yIHBlcmZvcm0gYW55IHR5
+cGUgb2YgdHJhbnNhY3Rpb24gb2YgYSBmaW5hbmNpYWwgcHJvZHVjdC4gUGVyc29uYWwgZGF0YSwg
+YXMgZGVmaW5lZCBieSBhcHBsaWNhYmxlIGRhdGEgcHJvdGVjdGlvbiBhbmQgcHJpdmFjeSBsYXdz
+LCBjb250YWluZWQgaW4gdGhpcyBlbWFpbCBtYXkgYmUgcHJvY2Vzc2VkIGJ5IHRoZSBDb21wYW55
+LCBhbmQgYW55IG9mIGl0cyBhZmZpbGlhdGVkIG9yIHJlbGF0ZWQgY29tcGFuaWVzLCBmb3IgbGVn
+YWwsIGNvbXBsaWFuY2UsIGFuZC9vciBidXNpbmVzcy1yZWxhdGVkIHB1cnBvc2VzLiBZb3UgbWF5
+IGhhdmUgcmlnaHRzIHJlZ2FyZGluZyB5b3VyIHBlcnNvbmFsIGRhdGE7IGZvciBpbmZvcm1hdGlv
+biBvbiBleGVyY2lzaW5nIHRoZXNlIHJpZ2h0cyBvciB0aGUgQ29tcGFueeKAmXMgdHJlYXRtZW50
+IG9mIHBlcnNvbmFsIGRhdGEsIHBsZWFzZSBlbWFpbCBkYXRhcmVxdWVzdHNAanVtcHRyYWRpbmcu
+Y29tLg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
+ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
+czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
