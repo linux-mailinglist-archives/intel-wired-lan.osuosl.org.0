@@ -2,156 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DEDD409860
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Sep 2021 18:07:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81F90409C5F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Sep 2021 20:36:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8E711401C7;
-	Mon, 13 Sep 2021 16:07:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CE82D4014B;
+	Mon, 13 Sep 2021 18:36:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4ilp6LRqUHYx; Mon, 13 Sep 2021 16:07:39 +0000 (UTC)
+	with ESMTP id 4C5EypGrFZfu; Mon, 13 Sep 2021 18:36:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3458D400E4;
-	Mon, 13 Sep 2021 16:07:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8BB8E40209;
+	Mon, 13 Sep 2021 18:36:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D0F31BF2BB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 16:07:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F05471BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 592A6400E4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 16:07:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EC0C7402EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AZGh0UaHCYIE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Sep 2021 16:07:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eAJWlKZtnZEG for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Sep 2021 18:36:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 039F340004
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 16:07:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10105"; a="244043999"
-X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="244043999"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2021 09:07:31 -0700
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 73FCC402F5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 18:36:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10106"; a="282761082"
+X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="282761082"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2021 11:36:35 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="696790351"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga006.fm.intel.com with ESMTP; 13 Sep 2021 09:07:31 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Mon, 13 Sep 2021 09:07:30 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Mon, 13 Sep 2021 09:07:30 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Mon, 13 Sep 2021 09:07:30 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.177)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Mon, 13 Sep 2021 09:07:30 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SKZYPEjUEskL0yytfGOXM0lVKPQdmJZTihelT19fJ9ndR+DMP6b2ueItZkEnlx2kQS7GiMPAI18E3oZ6Dtdg4aqM4Njy23LVvnbvEHO0ripSdaou1AF+HRjbTbUlRRd7/JqInPrNp2hoK1JTPNtv/H4avrW+YmDWV4MhX6Nri1jl/EgQdMm2UuFsEuPKNWphMssyrZQEU/z/1qkgCj52Vc7ihWgbgo09+T8prMll4a19PDJ+LkKmlat2OY84fmEa54xZvwUEVd95X+MPLmaweQV2ZUc5qMVnfMP5f9tR5A1sTV1H1U14v434euoXskY2IkflUfgY7n5pbkAg0tVA2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=Ndwxr8vjtWvOxR2lmmddAChfm/JWfhpajyoQRbqJ5Ro=;
- b=nP/xSdkPtJyxzNhfHi4E8hI6X4Kpd6+v9jXqLog28oRJ6zrtSj9ZytlOfFanfatF/2HZBrEc+JL9qqMPuIRHc3tQItRlAp5hK570zfX45g4/mnD7NcYLXHTtOaa5sIhrtMRNzFUTdU9+q/fNckprw6IbptJD6VaRx2F+ErQojnV6+0tbm37o/MLx0Q4H99zVaX7Wz0jfA+MGGwzxecoFs/23IXLrEAr47oE6ZrslAWM8KouLREhN2DOB8Z+xslb6qb+xqqL1/3n39Z9dDuw7m6+cUGYcUx1gJ6h7X7kUEkZ8W5jwGoPzV/g377tLiP4NGeBLKysiHGZYVBAuyyyT/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ndwxr8vjtWvOxR2lmmddAChfm/JWfhpajyoQRbqJ5Ro=;
- b=NIla59XKDWfB99dgo/lQ3GNfE4p28ufYEh1hdyL2vf7VPvd7tXMOyOQemOR3iGbBqwn3uYOQo46id8NcF5iopRGPIMJPU+d+vxdYA+8C/RPh/8WcfQnmvPAGS2SSdXwL0md4VSk3SofGT3/sHlOTIH4kLP7BGcDVwtNXn1g1JEA=
-Received: from PH0PR11MB4966.namprd11.prod.outlook.com (2603:10b6:510:42::21)
- by PH0PR11MB4965.namprd11.prod.outlook.com (2603:10b6:510:34::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.18; Mon, 13 Sep
- 2021 16:07:28 +0000
-Received: from PH0PR11MB4966.namprd11.prod.outlook.com
- ([fe80::596b:9fa6:18d4:67e7]) by PH0PR11MB4966.namprd11.prod.outlook.com
- ([fe80::596b:9fa6:18d4:67e7%8]) with mapi id 15.20.4500.019; Mon, 13 Sep 2021
- 16:07:28 +0000
-From: "Ertman, David M" <david.m.ertman@intel.com>
-To: "Saleem, Shiraz" <shiraz.saleem@intel.com>, Leon Romanovsky
- <leon@kernel.org>
-Thread-Topic: [PATCH RESEND net] ice: Correctly deal with PFs that do not
- support RDMA
-Thread-Index: AQHXpcrM4iqti0YqkUWIoEY3yjGYRauc/j0AgAUkHYCAAAOgcA==
-Date: Mon, 13 Sep 2021 16:07:28 +0000
-Message-ID: <PH0PR11MB49667F5B029D37D0E257A256DDD99@PH0PR11MB4966.namprd11.prod.outlook.com>
-References: <20210909151223.572918-1-david.m.ertman@intel.com>
- <YTsjDsFbBggL2X/8@unreal> <4bc2664ac89844a79242339f5e971335@intel.com>
-In-Reply-To: <4bc2664ac89844a79242339f5e971335@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.6.200.16
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9e652ce3-ab94-4892-6ad0-08d976d09583
-x-ms-traffictypediagnostic: PH0PR11MB4965:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr,ExtFwd
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <PH0PR11MB496502D50FDF9F74E8AF62BFDDD99@PH0PR11MB4965.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2276;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: f5xcthLnvtTtmpOwON5gZU0Qmfw+i/egjERGw3Z5PcH0PWtn/Zr8y9lgg9HUusNBfCSsTbtAmBlKsaBeImR6tIcHLzUxjRXa0w3hGCJfbn+dDsHF1kA3s4MHa7ikwonto0wl92of7n0DsAiUUkgI2GvUoouPvKAAmAqAUpDWYWK+gSde96j6jsMGMUsRqKnOaRrqzzmD99Nr+RMkhMY9ONVugYC9KD31tFg7ORcTktpRA6CrateAY+TtFr6wT8zICUu1HzWiIK1ibxEH2rGHvCDrMBFyC7iAExeFgTo+BgNsgZewJqAXINQMx30IZh2EP4BVEELkgMIDsRnzsJzS1cXVkPn72kf1ziQXDi2ds3LNFEPpGNHX3E5XYTIk5q6I+w5agphxNHRf65W0jgMf0vv3TMjA3Pp61bwhsE58ZlN47XPGUopN2ZbhWl3pE+MNBIgjcRJV4l1rv6o2q/X8zmd5n9M7LYdyLJtKLv6oVZgn7MsWJaKdczKSPoOGwb4cN98EELeG20jFPCrWWM5Y1O4C7hpkFboH6KlhNBi3iOFrlCTxDrO7rIUxKYXziHqCF53Ev/xpr1oToDoNh7Fvqkwh32FRP6jrEXm4faOqBb2q2WP5bVFjQ/CxOcekXVSbgGubFyHnbeVvz9z3ytMuO0gS5pHlYu7A/NZdskdemI0KRfmdmn7jbzinXl8xcnl7tYR13alhPvpM5FwQ9QvC/w==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB4966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(39860400002)(136003)(346002)(366004)(376002)(83380400001)(38070700005)(66946007)(26005)(6506007)(86362001)(54906003)(110136005)(2906002)(66446008)(64756008)(71200400001)(53546011)(38100700002)(122000001)(76116006)(4326008)(316002)(5660300002)(66476007)(52536014)(9686003)(7696005)(478600001)(33656002)(8676002)(186003)(55016002)(8936002)(7416002)(66556008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?1pDvhQZfN59WopMZBuStIAwBRDNX4Oiic/FaMY0LgltoufopRfFZ23sHfmvQ?=
- =?us-ascii?Q?U0s9Mh/i/rpqPfCZq+hF+YT+brZZ0L1QGWsOFe89I0t689F/VpyA0E+K11on?=
- =?us-ascii?Q?fY771ERefB5XN5SwJ0SANzbnsXtxflxPIWDLsrePs5vaTfPN4MUXEuIMunlp?=
- =?us-ascii?Q?Pv6Qq5DWxNja5fz0lwRUL7CXBZRi3dSAJxr70ADhvIn2bnIh6d8PM41JyojI?=
- =?us-ascii?Q?1rRtLuVgcuaC8TACRc6jSxeOgFxOD+NeYJG0t2JIolhfjH2m5ImsXnOW/in3?=
- =?us-ascii?Q?ol7uBHmhd7TD7evvNbb0TqM0GVFujHeMOXbXyaaps6hTD16aG6PQwCAgffKt?=
- =?us-ascii?Q?csCkcq+TJRrZLL2VmSMp65jLG4MwfOQEdA7or7OboxzsL12fzPcIdOG8ewlW?=
- =?us-ascii?Q?f4LHs0WKyt0tbz7U3/zwAr4kJ+cBtWIM/GVF+faeDahzyiWb4Ze9BuV8O9vP?=
- =?us-ascii?Q?pJDc+pwpzGYhbEGV1Gcdr83r25xh1g8dTjKGa4+aYgTQ2pldsjBG1HBOqR5z?=
- =?us-ascii?Q?AAd9Jym+F6qP5ihIcyqUHIZsrhbHBuhIjLjTGoyIx7rpr/8ui4sOGIRc+nui?=
- =?us-ascii?Q?0xGiGICWLx6RiM28RmiV51wDpTE5mespRJuJbYwKIBJD0oaQZqGqBY8IFBno?=
- =?us-ascii?Q?2gRs/EtUG6lDBoDrXmq9K5h3ichq2CviP4Pkq27RRwlZ97ROk2+2VZ7gGymz?=
- =?us-ascii?Q?7doWCSS1aeIVps3F6eT//gNpGbXU4qqJ/rvG40jQTa30llqm+17xDG7SCuAm?=
- =?us-ascii?Q?okFgoLHscEC4zcG4QEVmWdSdCN4sZ0R436Ke6wknbjSBwjx94tKy+h5F+xrg?=
- =?us-ascii?Q?6tI/ABaaIJfI3LY0SATEEgZ+3N8CEbtJDFTbtB2B5ZkeipOX6tGiOZrMe9Et?=
- =?us-ascii?Q?xnVq31vOAS2LaGVU8mkJ5oLKzXbK7Hyps+5qeevlVRZ8QzurCxp50SPbspXF?=
- =?us-ascii?Q?cS9MIcnXje1lSs8XgpQC4/C7RSPqZAM5huADXubzUzeZGHsmiKD33n13iKcr?=
- =?us-ascii?Q?rZGlVg1S+QxXLKb66anBDuv/XM6zSPQZZsBVoIWD+7YQ6XvMvjMyTkMxM3SV?=
- =?us-ascii?Q?gwh76ADLhZNAzC3TZtsxp7pXFi1dY6b7+5poUj+aeB8GG3ecB3lFlpPqEgmu?=
- =?us-ascii?Q?q6LWygUDyk8IWGn0UwyLfcvYIQtXu5uG+tuQRwg/BxWeMOBkKuGDvYzXXBOa?=
- =?us-ascii?Q?BGNFjcp6aU+/3OC7dv+yLpSe29MPUr0K6JEKEFVUmKQZlpt1lrEIIl6CSlQZ?=
- =?us-ascii?Q?HifvB77zZ+Lv4byOFUeq7bFg1HBT8jY8isiD28WHhO1mqMIBzQbNIB5Z1NpF?=
- =?us-ascii?Q?yJU=3D?=
+X-IronPort-AV: E=Sophos;i="5.85,290,1624345200"; d="scan'208";a="698956502"
+Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.129])
+ by fmsmga005.fm.intel.com with ESMTP; 13 Sep 2021 11:36:32 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 13 Sep 2021 11:22:19 -0700
+Message-Id: <20210913182219.70446-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB4966.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9e652ce3-ab94-4892-6ad0-08d976d09583
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Sep 2021 16:07:28.1506 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MVTpi5dWyBBGu5uatYAsYXn8QGRGZnadGvrkuTRvrrjmd2ahIR7QWZn60VfnzOgO1fWV1HHdF6Ks/w00LVXqTY1kdgS6j8O+1nMmqxgTm8A=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4965
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH RESEND net] ice: Correctly deal with
- PFs that do not support RDMA
+Subject: [Intel-wired-lan] [PATCH net-next v2] ice: Add support for VF rate
+ limiting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -164,80 +60,647 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Parikh,
- Neerav" <neerav.parikh@intel.com>, "jgg@ziepe.ca" <jgg@ziepe.ca>,
- "yongxin.liu@windriver.com" <yongxin.liu@windriver.com>,
- "kuba@kernel.org" <kuba@kernel.org>, "Williams, Dan
- J" <dan.j.williams@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Saleem, Shiraz <shiraz.saleem@intel.com>
-> Sent: Monday, September 13, 2021 8:50 AM
-> To: Leon Romanovsky <leon@kernel.org>; Ertman, David M
-> <david.m.ertman@intel.com>
-> Cc: davem@davemloft.net; kuba@kernel.org; yongxin.liu@windriver.com;
-> Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Brandeburg, Jesse
-> <jesse.brandeburg@intel.com>; intel-wired-lan@lists.osuosl.org; linux-
-> rdma@vger.kernel.org; jgg@ziepe.ca; Williams, Dan J
-> <dan.j.williams@intel.com>; Singhai, Anjali <anjali.singhai@intel.com>;
-> Parikh, Neerav <neerav.parikh@intel.com>; Samudrala, Sridhar
-> <sridhar.samudrala@intel.com>
-> Subject: RE: [PATCH RESEND net] ice: Correctly deal with PFs that do not
-> support RDMA
-> 
-> > Subject: Re: [PATCH RESEND net] ice: Correctly deal with PFs that do not
-> > support RDMA
-> >
-> > On Thu, Sep 09, 2021 at 08:12:23AM -0700, Dave Ertman wrote:
-> > > There are two cases where the current PF does not support RDMA
-> > > functionality.  The first is if the NVM loaded on the device is set to
-> > > not support RDMA (common_caps.rdma is false).  The second is if the
-> > > kernel bonding driver has included the current PF in an active link
-> > > aggregate.
-> > >
-> > > When the driver has determined that this PF does not support RDMA,
-> > > then auxiliary devices should not be created on the auxiliary bus.
-> >
-> > This part is wrong, auxiliary devices should always be created, in your case it
-> will
-> > be one eth device only without extra irdma device.
-> 
-> It is worth considering having an eth aux device/driver but is it a hard-and-
-> fast rule?
-> In this case, the RDMA-capable PCI network device spawns an auxiliary
-> device for RDMA
-> and the core driver is a network driver.
-> 
-> >
-> > Your "bug" is that you mixed auxiliary bus devices with "regular" ones and
-> created
-> > eth device not as auxiliary one. This is why you are calling to
-> auxiliary_device_init()
-> > for RDMA only and fallback to non-auxiliary mode.
-> 
-> It's a design choice on how you carve out function(s) off your PCI core device
-> to be
-> managed by auxiliary driver(s) and not a bug.
-> 
-> Shiraz
+From: Brett Creeley <brett.creeley@intel.com>
 
-Also, regardless of whether netdev functionality is carved out into an auxiliary device or not, this code would still be necessary.
+Implement ndo_set_vf_rate to support setting of min_tx_rate and
+max_tx_rate; set the appropriate bandwidth in the scheduler for the
+node representing the specified VF VSI.
 
-We don't want to carve out an auxiliary device to support a functionality that the base PCI device does not support.  Not having
-the RDMA auxiliary device for an auxiliary driver to bind to is how we differentiate between devices that support RDMA and those
-that don't.
+Co-developed-by: Tarun Singh <tarun.k.singh@intel.com>
+Signed-off-by: Tarun Singh <tarun.k.singh@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+v2:
+ - Make ice_sched_set_node_bw_lmt_per_tc() static
+ - Move ice_cfg_vsi_bw_lmt_per_tc() and ice_cfg_dflt_vsi_bw_lmt_per_tc()
+   to avoid forward declaration of ice_sched_set_node_bw_lmt_per_tc()
 
-Thanks,
-DaveE
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 174 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   1 +
+ drivers/net/ethernet/intel/ice/ice_sched.c    | 130 +++++++++++++
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   6 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 160 +++++++++++++++-
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  15 +-
+ 7 files changed, 486 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index c6d849222dfa..fa8f42e80851 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3590,6 +3590,180 @@ int ice_clear_dflt_vsi(struct ice_sw *sw)
+ 	return 0;
+ }
+ 
++/**
++ * ice_get_link_speed_mbps - get link speed in Mbps
++ * @vsi: the VSI whose link speed is being queried
++ *
++ * Return current VSI link speed and 0 if the speed is unknown.
++ */
++int ice_get_link_speed_mbps(struct ice_vsi *vsi)
++{
++	switch (vsi->port_info->phy.link_info.link_speed) {
++	case ICE_AQ_LINK_SPEED_100GB:
++		return SPEED_100000;
++	case ICE_AQ_LINK_SPEED_50GB:
++		return SPEED_50000;
++	case ICE_AQ_LINK_SPEED_40GB:
++		return SPEED_40000;
++	case ICE_AQ_LINK_SPEED_25GB:
++		return SPEED_25000;
++	case ICE_AQ_LINK_SPEED_20GB:
++		return SPEED_20000;
++	case ICE_AQ_LINK_SPEED_10GB:
++		return SPEED_10000;
++	case ICE_AQ_LINK_SPEED_5GB:
++		return SPEED_5000;
++	case ICE_AQ_LINK_SPEED_2500MB:
++		return SPEED_2500;
++	case ICE_AQ_LINK_SPEED_1000MB:
++		return SPEED_1000;
++	case ICE_AQ_LINK_SPEED_100MB:
++		return SPEED_100;
++	case ICE_AQ_LINK_SPEED_10MB:
++		return SPEED_10;
++	case ICE_AQ_LINK_SPEED_UNKNOWN:
++	default:
++		return 0;
++	}
++}
++
++/**
++ * ice_get_link_speed_kbps - get link speed in Kbps
++ * @vsi: the VSI whose link speed is being queried
++ *
++ * Return current VSI link speed and 0 if the speed is unknown.
++ */
++static int ice_get_link_speed_kbps(struct ice_vsi *vsi)
++{
++	int speed_mbps;
++
++	speed_mbps = ice_get_link_speed_mbps(vsi);
++
++	return speed_mbps * 1000;
++}
++
++/**
++ * ice_set_min_bw_limit - setup minimum BW limit for Tx based on min_tx_rate
++ * @vsi: VSI to be configured
++ * @min_tx_rate: min Tx rate in Kbps to be configured as BW limit
++ *
++ * If the min_tx_rate is specified as 0 that means to clear the minimum BW limit
++ * profile, otherwise a non-zero value will force a minimum BW limit for the VSI
++ * on TC 0.
++ */
++int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate)
++{
++	struct ice_pf *pf = vsi->back;
++	enum ice_status status;
++	struct device *dev;
++	int speed;
++
++	dev = ice_pf_to_dev(pf);
++	if (!vsi->port_info) {
++		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
++			vsi->idx, vsi->type);
++		return -EINVAL;
++	}
++
++	speed = ice_get_link_speed_kbps(vsi);
++	if (min_tx_rate > (u64)speed) {
++		dev_err(dev, "invalid min Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
++			min_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
++			speed);
++		return -EINVAL;
++	}
++
++	/* Configure min BW for VSI limit */
++	if (min_tx_rate) {
++		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
++						   ICE_MIN_BW, min_tx_rate);
++		if (status) {
++			dev_err(dev, "failed to set min Tx rate(%llu Kbps) for %s %d\n",
++				min_tx_rate, ice_vsi_type_str(vsi->type),
++				vsi->idx);
++			return -EIO;
++		}
++
++		dev_dbg(dev, "set min Tx rate(%llu Kbps) for %s\n",
++			min_tx_rate, ice_vsi_type_str(vsi->type));
++	} else {
++		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
++							vsi->idx, 0,
++							ICE_MIN_BW);
++		if (status) {
++			dev_err(dev, "failed to clear min Tx rate configuration for %s %d\n",
++				ice_vsi_type_str(vsi->type), vsi->idx);
++			return -EIO;
++		}
++
++		dev_dbg(dev, "cleared min Tx rate configuration for %s %d\n",
++			ice_vsi_type_str(vsi->type), vsi->idx);
++	}
++
++	return 0;
++}
++
++/**
++ * ice_set_max_bw_limit - setup maximum BW limit for Tx based on max_tx_rate
++ * @vsi: VSI to be configured
++ * @max_tx_rate: max Tx rate in Kbps to be configured as BW limit
++ *
++ * If the max_tx_rate is specified as 0 that means to clear the maximum BW limit
++ * profile, otherwise a non-zero value will force a maximum BW limit for the VSI
++ * on TC 0.
++ */
++int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate)
++{
++	struct ice_pf *pf = vsi->back;
++	enum ice_status status;
++	struct device *dev;
++	int speed;
++
++	dev = ice_pf_to_dev(pf);
++	if (!vsi->port_info) {
++		dev_dbg(dev, "VSI %d, type %u specified doesn't have valid port_info\n",
++			vsi->idx, vsi->type);
++		return -EINVAL;
++	}
++
++	speed = ice_get_link_speed_kbps(vsi);
++	if (max_tx_rate > (u64)speed) {
++		dev_err(dev, "invalid max Tx rate %llu Kbps specified for %s %d is greater than current link speed %u Kbps\n",
++			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx,
++			speed);
++		return -EINVAL;
++	}
++
++	/* Configure max BW for VSI limit */
++	if (max_tx_rate) {
++		status = ice_cfg_vsi_bw_lmt_per_tc(vsi->port_info, vsi->idx, 0,
++						   ICE_MAX_BW, max_tx_rate);
++		if (status) {
++			dev_err(dev, "failed setting max Tx rate(%llu Kbps) for %s %d\n",
++				max_tx_rate, ice_vsi_type_str(vsi->type),
++				vsi->idx);
++			return -EIO;
++		}
++
++		dev_dbg(dev, "set max Tx rate(%llu Kbps) for %s %d\n",
++			max_tx_rate, ice_vsi_type_str(vsi->type), vsi->idx);
++	} else {
++		status = ice_cfg_vsi_bw_dflt_lmt_per_tc(vsi->port_info,
++							vsi->idx, 0,
++							ICE_MAX_BW);
++		if (status) {
++			dev_err(dev, "failed clearing max Tx rate configuration for %s %d\n",
++				ice_vsi_type_str(vsi->type), vsi->idx);
++			return -EIO;
++		}
++
++		dev_dbg(dev, "cleared max Tx rate configuration for %s %d\n",
++			ice_vsi_type_str(vsi->type), vsi->idx);
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_set_link - turn on/off physical link
+  * @vsi: VSI to modify physical link on
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index b443ea46274f..0cef9b665d8c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -116,7 +116,9 @@ bool ice_is_vsi_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
+ int ice_set_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi);
+ 
+ int ice_clear_dflt_vsi(struct ice_sw *sw);
+-
++int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate);
++int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate);
++int ice_get_link_speed_mbps(struct ice_vsi *vsi);
+ int ice_vsi_update_security(struct ice_vsi *vsi,
+ 			    void (*fill)(struct ice_vsi_ctx *));
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index e8e114db8304..1d1a0a359c7b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -7411,6 +7411,7 @@ static const struct net_device_ops ice_netdev_ops = {
+ 	.ndo_set_vf_vlan = ice_set_vf_port_vlan,
+ 	.ndo_set_vf_link_state = ice_set_vf_link_state,
+ 	.ndo_get_vf_stats = ice_get_vf_stats,
++	.ndo_set_vf_rate = ice_set_vf_bw,
+ 	.ndo_vlan_rx_add_vid = ice_vlan_rx_add_vid,
+ 	.ndo_vlan_rx_kill_vid = ice_vlan_rx_kill_vid,
+ 	.ndo_setup_tc = ice_setup_tc,
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
+index 2d9b10277186..a3b957621a03 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.c
++++ b/drivers/net/ethernet/intel/ice/ice_sched.c
+@@ -3783,6 +3783,136 @@ ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
+ 				      ICE_SCHED_DFLT_BW);
+ }
+ 
++/**
++ * ice_sched_get_node_by_id_type - get node from ID type
++ * @pi: port information structure
++ * @id: identifier
++ * @agg_type: type of aggregator
++ * @tc: traffic class
++ *
++ * This function returns node identified by ID of type aggregator, and
++ * based on traffic class (TC). This function needs to be called with
++ * the scheduler lock held.
++ */
++static struct ice_sched_node *
++ice_sched_get_node_by_id_type(struct ice_port_info *pi, u32 id,
++			      enum ice_agg_type agg_type, u8 tc)
++{
++	struct ice_sched_node *node = NULL;
++
++	switch (agg_type) {
++	case ICE_AGG_TYPE_VSI: {
++		struct ice_vsi_ctx *vsi_ctx;
++		u16 vsi_handle = (u16)id;
++
++		if (!ice_is_vsi_valid(pi->hw, vsi_handle))
++			break;
++		/* Get sched_vsi_info */
++		vsi_ctx = ice_get_vsi_ctx(pi->hw, vsi_handle);
++		if (!vsi_ctx)
++			break;
++		node = vsi_ctx->sched.vsi_node[tc];
++		break;
++	}
++
++	case ICE_AGG_TYPE_AGG: {
++		struct ice_sched_node *tc_node;
++
++		tc_node = ice_sched_get_tc_node(pi, tc);
++		if (tc_node)
++			node = ice_sched_get_agg_node(pi, tc_node, id);
++		break;
++	}
++
++	default:
++		break;
++	}
++
++	return node;
++}
++
++/**
++ * ice_sched_set_node_bw_lmt_per_tc - set node BW limit per TC
++ * @pi: port information structure
++ * @id: ID (software VSI handle or AGG ID)
++ * @agg_type: aggregator type (VSI or AGG type node)
++ * @tc: traffic class
++ * @rl_type: min or max
++ * @bw: bandwidth in Kbps
++ *
++ * This function sets BW limit of VSI or Aggregator scheduling node
++ * based on TC information from passed in argument BW.
++ */
++static enum ice_status
++ice_sched_set_node_bw_lmt_per_tc(struct ice_port_info *pi, u32 id,
++				 enum ice_agg_type agg_type, u8 tc,
++				 enum ice_rl_type rl_type, u32 bw)
++{
++	enum ice_status status = ICE_ERR_PARAM;
++	struct ice_sched_node *node;
++
++	if (!pi)
++		return status;
++
++	if (rl_type == ICE_UNKNOWN_BW)
++		return status;
++
++	mutex_lock(&pi->sched_lock);
++	node = ice_sched_get_node_by_id_type(pi, id, agg_type, tc);
++	if (!node) {
++		ice_debug(pi->hw, ICE_DBG_SCHED, "Wrong id, agg type, or tc\n");
++		goto exit_set_node_bw_lmt_per_tc;
++	}
++	if (bw == ICE_SCHED_DFLT_BW)
++		status = ice_sched_set_node_bw_dflt_lmt(pi, node, rl_type);
++	else
++		status = ice_sched_set_node_bw_lmt(pi, node, rl_type, bw);
++
++exit_set_node_bw_lmt_per_tc:
++	mutex_unlock(&pi->sched_lock);
++	return status;
++}
++
++/**
++ * ice_cfg_vsi_bw_lmt_per_tc - configure VSI BW limit per TC
++ * @pi: port information structure
++ * @vsi_handle: software VSI handle
++ * @tc: traffic class
++ * @rl_type: min or max
++ * @bw: bandwidth in Kbps
++ *
++ * This function configures BW limit of VSI scheduling node based on TC
++ * information.
++ */
++enum ice_status
++ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
++			  enum ice_rl_type rl_type, u32 bw)
++{
++	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
++						ICE_AGG_TYPE_VSI,
++						tc, rl_type, bw);
++}
++
++/**
++ * ice_cfg_vsi_bw_dflt_lmt_per_tc - configure default VSI BW limit per TC
++ * @pi: port information structure
++ * @vsi_handle: software VSI handle
++ * @tc: traffic class
++ * @rl_type: min or max
++ *
++ * This function configures default BW limit of VSI scheduling node based on TC
++ * information.
++ */
++enum ice_status
++ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
++			       enum ice_rl_type rl_type)
++{
++	return ice_sched_set_node_bw_lmt_per_tc(pi, vsi_handle,
++						ICE_AGG_TYPE_VSI,
++						tc, rl_type,
++						ICE_SCHED_DFLT_BW);
++}
++
+ /**
+  * ice_cfg_rl_burst_size - Set burst size value
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.h b/drivers/net/ethernet/intel/ice/ice_sched.h
+index fdf7a5882f07..11ad8336899f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.h
++++ b/drivers/net/ethernet/intel/ice/ice_sched.h
+@@ -104,6 +104,12 @@ ice_cfg_q_bw_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
+ enum ice_status
+ ice_cfg_q_bw_dflt_lmt(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
+ 		      u16 q_handle, enum ice_rl_type rl_type);
++enum ice_status
++ice_cfg_vsi_bw_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
++			  enum ice_rl_type rl_type, u32 bw);
++enum ice_status
++ice_cfg_vsi_bw_dflt_lmt_per_tc(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
++			       enum ice_rl_type rl_type);
+ enum ice_status ice_cfg_rl_burst_size(struct ice_hw *hw, u32 bytes);
+ void ice_sched_replay_agg_vsi_preinit(struct ice_hw *hw);
+ void ice_sched_replay_agg(struct ice_hw *hw);
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index ee3051b8ed15..42fb112fdea1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -5,6 +5,7 @@
+ #include "ice_base.h"
+ #include "ice_lib.h"
+ #include "ice_fltr.h"
++#include "ice_dcb_lib.h"
+ #include "ice_flow.h"
+ #include "ice_eswitch.h"
+ #include "ice_virtchnl_allowlist.h"
+@@ -768,6 +769,40 @@ static int ice_calc_vf_first_vector_idx(struct ice_pf *pf, struct ice_vf *vf)
+ 	return pf->sriov_base_vector + vf->vf_id * pf->num_msix_per_vf;
+ }
+ 
++/**
++ * ice_vf_rebuild_host_tx_rate_cfg - re-apply the Tx rate limiting configuration
++ * @vf: VF to re-apply the configuration for
++ *
++ * Called after a VF VSI has been re-added/rebuild during reset. The PF driver
++ * needs to re-apply the host configured Tx rate limiting configuration.
++ */
++static int ice_vf_rebuild_host_tx_rate_cfg(struct ice_vf *vf)
++{
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
++	int err;
++
++	if (vf->min_tx_rate) {
++		err = ice_set_min_bw_limit(vsi, (u64)vf->min_tx_rate * 1000);
++		if (err) {
++			dev_err(dev, "failed to set min Tx rate to %d Mbps for VF %u, error %d\n",
++				vf->min_tx_rate, vf->vf_id, err);
++			return err;
++		}
++	}
++
++	if (vf->max_tx_rate) {
++		err = ice_set_max_bw_limit(vsi, (u64)vf->max_tx_rate * 1000);
++		if (err) {
++			dev_err(dev, "failed to set max Tx rate to %d Mbps for VF %u, error %d\n",
++				vf->max_tx_rate, vf->vf_id, err);
++			return err;
++		}
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_vf_rebuild_host_vlan_cfg - add VLAN 0 filter or rebuild the Port VLAN
+  * @vf: VF to add MAC filters for
+@@ -1309,6 +1344,11 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
+ 	if (ice_vf_rebuild_host_vlan_cfg(vf))
+ 		dev_err(dev, "failed to rebuild VLAN configuration for VF %u\n",
+ 			vf->vf_id);
++
++	if (ice_vf_rebuild_host_tx_rate_cfg(vf))
++		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
++			vf->vf_id);
++
+ 	/* rebuild aggregator node config for main VF VSI */
+ 	ice_vf_rebuild_aggregator_node_cfg(vsi);
+ }
+@@ -4719,8 +4759,8 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 		ivi->linkstate = IFLA_VF_LINK_STATE_ENABLE;
+ 	else
+ 		ivi->linkstate = IFLA_VF_LINK_STATE_DISABLE;
+-	ivi->max_tx_rate = vf->tx_rate;
+-	ivi->min_tx_rate = 0;
++	ivi->max_tx_rate = vf->max_tx_rate;
++	ivi->min_tx_rate = vf->min_tx_rate;
+ 	return 0;
+ }
+ 
+@@ -4899,6 +4939,122 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
+ 	return 0;
+ }
+ 
++/**
++ * ice_calc_all_vfs_min_tx_rate - calculate cumulative min Tx rate on all VFs
++ * @pf: PF associated with VFs
++ */
++static int ice_calc_all_vfs_min_tx_rate(struct ice_pf *pf)
++{
++	int rate = 0, i;
++
++	ice_for_each_vf(pf, i)
++		rate += pf->vf[i].min_tx_rate;
++
++	return rate;
++}
++
++/**
++ * ice_min_tx_rate_oversubscribed - check if min Tx rate causes oversubscription
++ * @vf: VF trying to configure min_tx_rate
++ * @min_tx_rate: min Tx rate in Mbps
++ *
++ * Check if the min_tx_rate being passed in will cause oversubscription of total
++ * min_tx_rate based on the current link speed and all other VFs configured
++ * min_tx_rate
++ *
++ * Return true if the passed min_tx_rate would cause oversubscription, else
++ * return false
++ */
++static bool
++ice_min_tx_rate_oversubscribed(struct ice_vf *vf, int min_tx_rate)
++{
++	int link_speed_mbps = ice_get_link_speed_mbps(ice_get_vf_vsi(vf));
++	int all_vfs_min_tx_rate = ice_calc_all_vfs_min_tx_rate(vf->pf);
++
++	/* this VF's previous rate is being overwritten */
++	all_vfs_min_tx_rate -= vf->min_tx_rate;
++
++	if (all_vfs_min_tx_rate + min_tx_rate > link_speed_mbps) {
++		dev_err(ice_pf_to_dev(vf->pf), "min_tx_rate of %d Mbps on VF %u would cause oversubscription of %d Mbps based on the current link speed %d Mbps\n",
++			min_tx_rate, vf->vf_id,
++			all_vfs_min_tx_rate + min_tx_rate - link_speed_mbps,
++			link_speed_mbps);
++		return true;
++	}
++
++	return false;
++}
++
++/**
++ * ice_set_vf_bw - set min/max VF bandwidth
++ * @netdev: network interface device structure
++ * @vf_id: VF identifier
++ * @min_tx_rate: Minimum Tx rate in Mbps
++ * @max_tx_rate: Maximum Tx rate in Mbps
++ */
++int
++ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
++	      int max_tx_rate)
++{
++	struct ice_pf *pf = ice_netdev_to_pf(netdev);
++	struct ice_vsi *vsi;
++	struct device *dev;
++	struct ice_vf *vf;
++	int ret;
++
++	dev = ice_pf_to_dev(pf);
++	if (ice_validate_vf_id(pf, vf_id))
++		return -EINVAL;
++
++	vf = &pf->vf[vf_id];
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
++
++	vsi = ice_get_vf_vsi(vf);
++
++	/* when max_tx_rate is zero that means no max Tx rate limiting, so only
++	 * check if max_tx_rate is non-zero
++	 */
++	if (max_tx_rate && min_tx_rate > max_tx_rate) {
++		dev_err(dev, "Cannot set min Tx rate %d Mbps greater than max Tx rate %d Mbps\n",
++			min_tx_rate, max_tx_rate);
++		return -EINVAL;
++	}
++
++	if (min_tx_rate && ice_is_dcb_active(pf)) {
++		dev_err(dev, "DCB on PF is currently enabled. VF min Tx rate limiting not allowed on this PF.\n");
++		return -EOPNOTSUPP;
++	}
++
++	if (ice_min_tx_rate_oversubscribed(vf, min_tx_rate))
++		return -EINVAL;
++
++	if (vf->min_tx_rate != (unsigned int)min_tx_rate) {
++		ret = ice_set_min_bw_limit(vsi, (u64)min_tx_rate * 1000);
++		if (ret) {
++			dev_err(dev, "Unable to set min-tx-rate for VF %d\n",
++				vf->vf_id);
++			return ret;
++		}
++
++		vf->min_tx_rate = min_tx_rate;
++	}
++
++	if (vf->max_tx_rate != (unsigned int)max_tx_rate) {
++		ret = ice_set_max_bw_limit(vsi, (u64)max_tx_rate * 1000);
++		if (ret) {
++			dev_err(dev, "Unable to set max-tx-rate for VF %d\n",
++				vf->vf_id);
++			return ret;
++		}
++
++		vf->max_tx_rate = max_tx_rate;
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_get_vf_stats - populate some stats for the VF
+  * @netdev: the netdev of the PF
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 6333b651d18e..9de19cc97f48 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -125,7 +125,8 @@ struct ice_vf {
+ 	 * the main LAN VSI for the PF.
+ 	 */
+ 	u16 lan_vsi_num;		/* ID as used by firmware */
+-	unsigned int tx_rate;		/* Tx bandwidth limit in Mbps */
++	unsigned int min_tx_rate;	/* Minimum Tx bandwidth limit in Mbps */
++	unsigned int max_tx_rate;	/* Maximum Tx bandwidth limit in Mbps */
+ 	DECLARE_BITMAP(vf_states, ICE_VF_STATES_NBITS);	/* VF runtime states */
+ 
+ 	u64 num_inval_msgs;		/* number of continuous invalid msgs */
+@@ -172,6 +173,10 @@ int
+ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 		     __be16 vlan_proto);
+ 
++int
++ice_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
++	      int max_tx_rate);
++
+ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted);
+ 
+ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state);
+@@ -304,6 +309,14 @@ ice_set_vf_link_state(struct net_device __always_unused *netdev,
+ 	return -EOPNOTSUPP;
+ }
+ 
++static inline int
++ice_set_vf_bw(struct net_device __always_unused *netdev,
++	      int __always_unused vf_id, int __always_unused min_tx_rate,
++	      int __always_unused max_tx_rate)
++{
++	return -EOPNOTSUPP;
++}
++
+ static inline int
+ ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
+ 		    struct ice_q_vector __always_unused *q_vector)
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
