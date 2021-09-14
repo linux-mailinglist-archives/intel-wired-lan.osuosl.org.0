@@ -1,96 +1,164 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D75B40BABB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Sep 2021 23:51:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF44940BC46
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Sep 2021 01:37:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 273E8403DC;
-	Tue, 14 Sep 2021 21:51:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1E5AD81B48;
+	Tue, 14 Sep 2021 23:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jXqkRraK2FXK; Tue, 14 Sep 2021 21:51:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3EpVreTvNrfR; Tue, 14 Sep 2021 23:37:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 36AF4403D9;
-	Tue, 14 Sep 2021 21:51:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1E77081B3E;
+	Tue, 14 Sep 2021 23:37:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EE3381BF292
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 21:51:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B536C1BF588
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 23:37:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DA41040375
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 21:51:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 991CD404DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 23:37:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7KK63AVPBDfY for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Sep 2021 21:51:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com
- [IPv6:2a00:1450:4864:20::433])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 66B0C400B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 21:51:37 +0000 (UTC)
-Received: by mail-wr1-x433.google.com with SMTP id b6so513049wrh.10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 14:51:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:cc:references:from:subject:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OPJbwAqXrMsOcJb8XAwTNGK0vR2vI1IDCcn49AAPJO4=;
- b=Ppa4tQ0IHeC1CBzsb5Q2dWHqx6eT4d6nrNQpswjlK/uQOfT/GzFdJQiXnl2/OIWdXm
- OkLOtMHuo1Ol8eNByFXSMlheJiyy4oUs19c2Fbs5xbdXZPNRGkwqMWu1SXnnF3/xwe3M
- v1aM3VvdgTsYjJgD0gcqDTk86wj+uS6+Rd60tc/5ZhyIpgMVIwiEZD0DSZxzOm4GOXxc
- fltX/85Xw8ScOlpsPiHS0wVC37TL+EnBriY5wtj9zX01CEhDETXV+kDSaIDHentrH0Xl
- N56QbInFtK3hXWp6iL3sDGFsGkZgpS7mvTqsLztNzIpSUy0dFEHYJPtSQxJcdnlZ6WWa
- cTQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OPJbwAqXrMsOcJb8XAwTNGK0vR2vI1IDCcn49AAPJO4=;
- b=i0PdTtd0LPQ5QdBy7icmVckzG5zlvLTIyfShtXw/k0x0i67vfljd+jIQlk+c2rFTp5
- +U8WtPc+9yaZpMnrw0QC+iEi0AvV1pHYgicAcUw2BrEZVECzeAVXK0dDgyNTNR6dC1qd
- va39+FOwfWHrtfxX2xJDev6NW95UOpL1gzmVdCTsTk8XR1/BY4Ijm2m0x/nBul2Nbcfd
- rRTgo5Z+qq34A+S8mk30altUrAs5MTsg7ujswcNewdEQlNaN4etlw2jNR+39t7mXemMz
- JWk/mf+j+7ZkQajD12pL7Z/Tj5PD5M1v1/mH0GoG2gtg/VjVqMdro8j18PZ8cec2xPqy
- C1YQ==
-X-Gm-Message-State: AOAM531Z/rb5ej3buk/dPDMRzK9HF9IJGtrwA1tId8Uxa9j1rzQfi1QB
- mvfRgPEir2rDwmEqfoobD0s=
-X-Google-Smtp-Source: ABdhPJymQCXOlgRMbpJLVZXHTSg6rLwtJXzFYryP5jXD71XOResbDlsr+VDOxvGA8SVZJ/HS1R9R7g==
-X-Received: by 2002:adf:ef48:: with SMTP id c8mr1279748wrp.349.1631656295628; 
- Tue, 14 Sep 2021 14:51:35 -0700 (PDT)
-Received: from ?IPv6:2003:ea:8f08:4500:452c:df07:20dd:cf7b?
- (p200300ea8f084500452cdf0720ddcf7b.dip0.t-ipconnect.de.
- [2003:ea:8f08:4500:452c:df07:20dd:cf7b])
- by smtp.googlemail.com with ESMTPSA id w14sm2861964wro.8.2021.09.14.14.51.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Sep 2021 14:51:35 -0700 (PDT)
-To: Hisashi T Fujinaka <htodd@twofifty.com>,
- Dave Jones <davej@codemonkey.org.uk>
-References: <CAHk-=wgbygOb3hRV+7YOpVcMPTP2oQ=iw6tf09Ydspg7o7BsWQ@mail.gmail.com>
- <20210913141818.GA27911@codemonkey.org.uk>
- <ab571d7e-0cf5-ffb3-6bbe-478a4ed749dc@gmail.com>
- <20210913201519.GA15726@codemonkey.org.uk>
- <b84b799d-0aaa-c4e1-b61b-8e2316b62bd1@gmail.com>
- <20210913203234.GA6762@codemonkey.org.uk>
- <b24d81e2-5a1e-3616-5a01-abd58c0712f7@gmail.com>
- <b4b543d4-c0c5-3c56-46b7-e17ec579edcc@twofifty.com>
- <367cc748-d411-8cf8-ff95-07715c55e899@gmail.com>
- <20210914142419.GA32324@codemonkey.org.uk>
- <c02876d7-c3f3-1953-334d-1248af919796@twofifty.com>
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Message-ID: <80718d5e-a4d2-ff85-aa8f-cd790c951278@gmail.com>
-Date: Tue, 14 Sep 2021 23:51:26 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
-MIME-Version: 1.0
-In-Reply-To: <c02876d7-c3f3-1953-334d-1248af919796@twofifty.com>
+ with ESMTP id 2fVS1Wgg2XBS for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Sep 2021 23:37:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 13EB6400B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 23:37:39 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10107"; a="202330551"
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="202330551"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2021 16:37:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="650966146"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by orsmga005.jf.intel.com with ESMTP; 14 Sep 2021 16:37:38 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Tue, 14 Sep 2021 16:37:37 -0700
+Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Tue, 14 Sep 2021 16:37:37 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Tue, 14 Sep 2021 16:37:37 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Tue, 14 Sep 2021 16:37:37 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cHwRTAt09XE44D5Vj1H3cWKRidmQtHdw5UTRZmYuvph7y+mg4Ceb01LmaSjFE6d7avT0NYrMzK1cWhV01nXfpjDAM3PCqZnO3w5cVa7qAkLKRaPhMPoEbJDUUcwFKx7b9EjzDnhe5AUp/uoC6PWdg3bFhLjHQbXodfaps/V7//7CBbC4JMF0ezXFkQeDvrtxHg8FBwOycKziw66G7BXb6S+FEg40WL6jEEJuJf2lzs98Yn5gfmzFBM5vOlt7eL5AUjVzGbxIRDv4ex9Aldco7v5SnxVpoW2hfMti1t1I8TEBj+16stetuMiSsRZG/VoybWc7M8Kr3ROZoBlQM549aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=UcNko14GT+UM4rD+U1vsS9G4HbWrH9g5fChKHSVeJPM=;
+ b=hmlCSu/xsMj1Uvh/yznOaN5xcZmyPHZtOXeZwALC/bUPaVIhVn42Fy0WNvvrFZXzTpT/8E/7Pg0Msehic5QPl9AEbr1ziM7TN3iLMEevweSII4swhB001nafwirtb+oWBWveRFRtNWMIKiASNgcGz7zRu/qWM1PlqhbWirsuN6KE/uI4CXeD4TR3HATZdd1jyS/JhjTiGEm6wgskKs8aiTQjrMAli7G/cfwHFsVtJZysqdPv115khknbI318q6ufLVF2Te6R2ER8fchxh740RRb3iPNKixCzphDEDoZusk4f1PzyxRsAgygQeKhjH/VrlG7/WpKwpSvLEPjfb3kD2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UcNko14GT+UM4rD+U1vsS9G4HbWrH9g5fChKHSVeJPM=;
+ b=YPaEUOeFIf9eYidtaOvClxoDIdqzRpQmQ/GHP9nIoRmix6OUYD/44jETJPkX1pJZlRY1JXTjZJ+xph8Eb/0eKOVIOilPcqvIvHZAVWPNwE2B9iXmxWF5NhZUz2S7dfv9xSV6cyBnhgq+amZcNDv6oKEOzJL+9XPVnSeYffJZReo=
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SN6PR11MB2542.namprd11.prod.outlook.com (2603:10b6:805:60::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.15; Tue, 14 Sep
+ 2021 23:37:34 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::d0d5:c84e:41b8:a9e4]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::d0d5:c84e:41b8:a9e4%3]) with mapi id 15.20.4500.019; Tue, 14 Sep 2021
+ 23:37:34 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Kolacinski, Karol" <karol.kolacinski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH intel-next 1/2] ice: add i2c read/write
+ read commands
+Thread-Index: AQHXqKbKqSMiu6eI7kegLSJdH16wKaukMswA
+Date: Tue, 14 Sep 2021 23:37:34 +0000
+Message-ID: <41417ec2e162d70d207d4a5539fb53e4c48a9e43.camel@intel.com>
+References: <20210913101108.17927-1-karol.kolacinski@intel.com>
+In-Reply-To: <20210913101108.17927-1-karol.kolacinski@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] Linux 5.15-rc1 - 82599ES VPD access isue
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.36.5 (3.36.5-2.fc32) 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d0a6f3a2-ee1e-48f7-fb8e-08d977d8a0d5
+x-ms-traffictypediagnostic: SN6PR11MB2542:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SN6PR11MB2542AE4CCB02AE63C6C4183AC6DA9@SN6PR11MB2542.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 4OXVKaqgLL3h8rRWsj9ROawmjz1SOYzIpu2KwpUrje1aQEeuhQUL+jWzzEpDgeAG/nqDhK+vmjm71Cem+8cvFswjCKD2k9IF2yQ9L3c4Tggb/28yZip1BRq284zUl6z0nA5FDWDgHqi4ndm1O8A0ZJ91+5nDYfXmHm74hSA6izbciuBasx6Pad+jrlBEOrOE9y9lkLLUc8c5GAt+jIwkSN1XUkkNQ3PygEcn+4fDvZi1SUpY5yz2vy45ppm4G16MRJvDX5yQasrwVF+n8t3CFxW0FRY56lRx4DsfTqNdYx8kNa410upDudsQA/x7iQzU4l5ccj3hgW7yfFuUR6ntMtfNYtUgIrBbykwEJGSoScgH2oWp7X3Un++514JeRhN5WATPo09rxjZ/W99Y7ggoVKBxOeG9GOkkoj2f9bMY9pxV+O5pB32rg0BFN9Ts7PNvKIrx9apER2GpojVl3RHDlbEQf6WLQZTsyWvDVVqu2ghfn10CuF1cfF0EWReydaU3/7y+e1ZucX93vI6RIrdA88+1WuqPTtwo4VrBR3RnkJdxJ4fUPNVRstNc2gjkCP7SshGX0NZeMLcTnzrnsI/pX1f5/bk0uUfbtgMe+UdX33xihjlYZY7KL+OWcrV3QtKNvpCEltmP6eq51mo5oWUsWqkZhQkwcNBud9LWri2esdroPLJOjPVXrS0PY5TTkAweY0u8DmZ/fMQ3PIRhUPvCAQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(39860400002)(136003)(366004)(396003)(376002)(110136005)(5660300002)(6512007)(4326008)(2906002)(316002)(2616005)(186003)(66476007)(478600001)(107886003)(36756003)(38070700005)(122000001)(8676002)(76116006)(8936002)(66556008)(83380400001)(71200400001)(66446008)(64756008)(6486002)(66946007)(86362001)(26005)(91956017)(38100700002)(6506007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VDNFa1J1NmJDYlZYTDRMc2JRSTVBeUhaOTZxUmVJQSs3K0h6d3k0Y2tXYUpC?=
+ =?utf-8?B?QWVEWVNYQjJVendVOW5vWkZBTlkvbjF4MlJqYy94TjRDME92NEpTZmxRa2Fw?=
+ =?utf-8?B?alAxTW5nOFhDSHl0dXZlbmZJcmZBMElGZm5GRjV6QmtCZ0pJL3ZCdWdRNTFF?=
+ =?utf-8?B?RGgyRHdLUFA2Z3lOS3ZVNEVTbHdDUmxjU3V1bHBFNWxHbUVpbCszazlUaHJp?=
+ =?utf-8?B?anJkNnc3TmZPZVJMeGxyTzlTb2J0WnRZenNJRndkeW9oaWZuM2ZiU0NDQ1BB?=
+ =?utf-8?B?ZVJkV0s0c2I5UGtNQlA1UnkvaWNvajhWMDdYV2p5OUV5UDlrVlpZSE1HalVZ?=
+ =?utf-8?B?UmhuTVpyNWhzU3pqZUk5SGwyT0FxL0ZjeHFXSG5JQnVsUSttazBXMll4WnJI?=
+ =?utf-8?B?d1RLSVpmMWVhM3QyYkZhQnZRZXVUcGd2ZHVvMUppci8wWm0xT2VrTVY1Y01Q?=
+ =?utf-8?B?RHdpSzdpd245cWNWaFRMdWpMTmhmdU1KNFhJU0VQNFgzL3dYdkZ2Z2JacUtR?=
+ =?utf-8?B?UTZua0dHaElsNjdDeXlwK2JzVlg1Q2NpNzlTQnlrVFoxZlhYRm9IRTdPQUl6?=
+ =?utf-8?B?cXBXRFEyNTVmVkF4VHV0dVN5Y1VHVDBYNEVqcktmZkg1K24wOG10WVByeGlX?=
+ =?utf-8?B?Y2QxK3AwbzNBb3VWV1hkZ1Q5SWlPbkxKTFVZSWErem5PQSsrRURrRWFrWFBj?=
+ =?utf-8?B?anpxekFCOHR5WkZqUkZiVVF2aDBsUnRoUW5TUXU5LzdlMFYxeDRXL0FGZkxU?=
+ =?utf-8?B?MnF4bDJkRUowSzEvV1VsMnZUdDRqTUpoT2pXZDV6d1J5T2hFOEVaQ2NULzRp?=
+ =?utf-8?B?NXhvTGxrYmkvMkJPV3VScjRSQVFsUnZEejRxMFVkRHF0c2U3V3pVQmY1UjJo?=
+ =?utf-8?B?d3o1ZFFGKzJjVVU4WEZhOUQ4MjdGTmQ4cUcvRGdnUVo4KzE4SGRXZ2FrYmdo?=
+ =?utf-8?B?ZGZOZERmRmdxWEU3MnRsS0NVR3czZmJEa1cySEZWQjZFWmVuM0JCcGxHWkZN?=
+ =?utf-8?B?cnBtZFN1eEFhQnd5Yy9VNnJXZldlYzc3Wlg4YnZnV29sL0FNZXhQRmlDbG8y?=
+ =?utf-8?B?SVBGKytYQk5PNXlhRTdWWWxNRkxmRGxLNkR4TXdSamVqdUZOQTNiOTM4KzZL?=
+ =?utf-8?B?L0hrdkRuL3M4TG1ZZzQ0QkE3b3Z1S0tKV0xsQTBNOGdKKzBJU29tSndhR09x?=
+ =?utf-8?B?YjBPZU1iRjZuL0ZFL2dkOUcxK1JGY0tYZS9leGViNU93V05Nb3VMajB5R3c1?=
+ =?utf-8?B?dU9aVXZMdUY5eGxSRVd3dnZYdlNibjhZSmcvcnNZcVd1R1hwSndad1N1NSsw?=
+ =?utf-8?B?bVhOZDNuMWJVL1RncGNwKzd1bG16VTUvVUFHNUtLZ2dOTjBFakNyWXRvcjFI?=
+ =?utf-8?B?U01pVlAzaDJvWXEwK3kxNlpsLzMvdlMyQmZtbDV2Wmk5ZllMRnNDbFVhOXpV?=
+ =?utf-8?B?THlaUVZCRUZvOWFoSXVSc0U1c0grQS9FYlVHZGExN0pYalhwb3lKRWsyOVlM?=
+ =?utf-8?B?YVBkUjFpSnBJUEZKQWpXVGpMZ255ZE9VWUZKMnB5Z2RBaGFOd3FOVFJIeTlC?=
+ =?utf-8?B?NkVJK1pCaWczdmxRd1Fzd0dPemRUNitMMkc4Mmh3ZlZxZm4zVlhDZkVPUncx?=
+ =?utf-8?B?S0pneUI5dTZXZVFDanB6aGc1WEtXZ3Z2TXN4QWNvVTY1aVQ4WTVIcXNFdlk3?=
+ =?utf-8?B?WFRPUit0dEpxeUdybHdVYWxqdzE5R2NoQ0hia2JWQUNoQWN3WEh6aEhaRFlh?=
+ =?utf-8?B?SGtXNlFtTEFyOU5vYTBIOUxEYzlwQ003TzZpWnJlV0lEWXpHWXlTRnhhTFJz?=
+ =?utf-8?B?cER1YXRDdll2UW1VWGZQUT09?=
+Content-ID: <FAC73EFC61A2E748943AB04F2438CA6C@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0a6f3a2-ee1e-48f7-fb8e-08d977d8a0d5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Sep 2021 23:37:34.3196 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VmWduGAuk2Eq5l8IGZpRHwaSMklxxGyeDz2C4/r0ajgaktj0v9lke9LkA8h166haL0LzCT/qjrl1nD6/XBGbmFcZvT0PdPx1wfDLRQnD/dA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2542
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH intel-next 1/2] ice: add i2c
+ read/write read commands
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,54 +171,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTQuMDkuMjAyMSAyMjowMCwgSGlzYXNoaSBUIEZ1amluYWthIHdyb3RlOgo+IE9uIFR1ZSwg
-MTQgU2VwIDIwMjEsIERhdmUgSm9uZXMgd3JvdGU6Cj4gCj4+IE9uIFR1ZSwgU2VwIDE0LCAyMDIx
-IGF0IDA3OjUxOjIyQU0gKzAyMDAsIEhlaW5lciBLYWxsd2VpdCB3cm90ZToKPj4KPj4gPiA+IFNv
-cnJ5IHRvIHJlcGx5IGZyb20gbXkgcGVyc29uYWwgYWNjb3VudC4gSWYgSSBkaWQgaXQgZnJvbSBt
-eSB3b3JrCj4+ID4gPiBhY2NvdW50IEknZCBiZSB0b3AtcG9zdGluZyBiZWNhdXNlIG9mIE91dGxv
-b2sgYW5kIHRoYXQgZ29lcyBvdmVyIGxpa2UgYQo+PiA+ID4gbGVhZCBiYWxsb29uLgo+PiA+ID4K
-Pj4gPiA+IEFueXdheSwgY2FuIHlvdSBzZW5kIHVzIGEgZHVtcCBvZiB5b3VyIGVlcHJvbSB1c2lu
-ZyBldGh0b29sIC1lPyBZb3UgY2FuCj4+ID4gPiBlaXRoZXIgc2VuZCBpdCB2aWEgYSBidWcgb24g
-ZTEwMDAuc291cmNlZm9yZ2UubmV0IG9yIHRyeSBzZW5kaW5nIGl0IHRvCj4+ID4gPiB0b2RkLmZ1
-amluYWthQGludGVsLmNvbQo+PiA+ID4KPj4gPiA+IFRoZSBvdGhlciB0aGluZyBpcyBJJ20gd29u
-ZGVyaW5nIGlzIHdoYXQgdGhlIHN1YnZlbmRvciBkZXZpY2UgSUQgeW91Cj4+ID4gPiBoYXZlIGlz
-IHJlZmVycmluZyB0byBiZWNhdXNlIGl0J3Mgbm90IGluIHRoZSBwY2kgZGF0YWJhc2UuIFNvbWUg
-T0RNcwo+PiA+ID4gbGlrZSBnZXR0aW5nIGNyZWF0aXZlIHdpdGggd2hhdCB0aGV5IHB1dCBpbiB0
-aGUgTlZNLgo+PiA+ID4KPj4gPiA+IFRvZGQgRnVqaW5ha2EgKHRvZGQuZnVqaW5ha2FAaW50ZWwu
-Y29tKQo+PiA+Cj4+ID4gVGhhbmtzIGZvciB0aGUgcHJvbXB0IHJlcGx5LiBEYXZlLCBjb3VsZCB5
-b3UgcGxlYXNlIHByb3ZpZGUgdGhlIHJlcXVlc3RlZAo+PiA+IGluZm9ybWF0aW9uPwo+Pgo+PiBz
-ZW50IG9mZi1saXN0Lgo+Pgo+PiDCoMKgwqDCoERhdmUKPiAKPiBXaG9vcHMuIEkgcmVwbGllZCBm
-cm9tIG91dGxvb2sgYWdhaW4uCj4gCj4gSSBoYXZlIGNvbmZpcm1hdGlvbiB0aGF0IHRoaXMgc2hv
-dWxkIGJlIGEgdmFsaWQgaW1hZ2UuIFRoZSBWUEQgaXMganVzdCBhCj4gc2VyaWVzIG9mIDMncy4g
-VGhlcmUgYXJlIGNoYW5nZXMgdG8gcHJlYm9vdCBoZWFkZXIsIGZsYXNoIGFuZCBCQVIgc2l6ZSwK
-PiBhbmQgYXMgZmFyIGFzIEkgY2FuIHRlbGwsIGEgbm9uc2Vuc2Ugc3ViZGV2aWNlIElELCBidXQg
-dGhpcyBzaG91bGQgd29yay4KPiAKPiBXaGF0IHdhcyB0aGUgb3JpZ2luYWwgcXVlc3Rpb24/Cj4g
-CiJsc3BjaSAtdnYiIGNvbXBsYWlucyBhYm91dCBhbiBpbnZhbGlkIHNob3J0IHRhZyAweDA2IGFu
-ZCB0aGUgUENJIFZQRApjb2RlIHJlc3VsdGVkIGluIGEgc3RhbGwuIFNvIGl0IHNlZW1zIHRoZSBk
-YXRhIGRvZXNuJ3QgaGF2ZSB2YWxpZCBWUEQKZm9ybWF0IGFzIGRlZmluZWQgaW4gUENJIHNwZWNp
-ZmljYXRpb24uCgowMTowMC4wIEV0aGVybmV0IGNvbnRyb2xsZXI6IEludGVsIENvcnBvcmF0aW9u
-IDgyNTk5RVMgMTAtR2lnYWJpdCBTRkkvU0ZQKyBOZXR3b3JrIENvbm5lY3Rpb24gKHJldiAwMSkK
-ICAgICAgICBTdWJzeXN0ZW06IERldmljZSAxZGNmOjAzMGEKCS4uLgoJICAgICAgICBDYXBhYmls
-aXRpZXM6IFtlMF0gVml0YWwgUHJvZHVjdCBEYXRhCiAgICAgICAgICAgICAgICAqVW5rbm93biBz
-bWFsbCByZXNvdXJjZSB0eXBlIDA2LCB3aWxsIG5vdCBkZWNvZGUgbW9yZS4qCgpOb3Qgc3VyZSB3
-aGljaCBtZXRob2QgaXMgdXNlZCBieSB0aGUgZHJpdmVyIHRvIGdldCB0aGUgRUVQUk9NIGNvbnRl
-bnQuCkZvciB0aGUgaXNzdWUgaGVyZSBpcyByZWxldmFudCB3aGF0IGlzIGV4cG9zZWQgdmlhIFBD
-SSBWUEQuCgpUaGUgcmVsYXRlZCBrZXJuZWwgZXJyb3IgbWVzc2FnZSBoYXMgYmVlbiByZXBvcnRl
-ZCBmZXcgdGltZXMsIGUuZy4gaGVyZToKaHR0cHM6Ly9hY2Nlc3MucmVkaGF0LmNvbS9zb2x1dGlv
-bnMvMzAwMTQ1MQpPbmx5IGR1ZSB0byBhIGNoYW5nZSBpbiBrZXJuZWwgY29kZSB0aGlzIGJlY2Ft
-ZSBhIG1vcmUgcHJvbWluZW50Cmlzc3VlIG5vdy4KCllvdSBzYXkgdGhhdCBWUEQgaXMganVzdCBh
-IHNlcmllcyBvZiAzJ3MuIFRoaXMgbWF5IGV4cGxhaW4gd2h5IGtlcm5lbCBhbmQKdG9vbHMgY29t
-cGxhaW4gYWJvdXQgYW4gaW52YWxpZCBWUEQgZm9ybWF0LiBWUEQgbWlzc2VzIHRoZSB0YWcgc3Ry
-dWN0dXJlLgoKPiBUb2RkIEZ1amluYWthIDx0b2RkLmZ1amluYWthQGludGVsLmNvbT4KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxh
-biBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5v
-c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+On Mon, 2021-09-13 at 12:11 +0200, Karol Kolacinski wrote:
+> Add I2C read/write AQ commands. They are now required for controlling
+> the external physical connectors via external I2C port expander on
+> E810-T adapters.
+> 
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> ---
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 29 ++++++
+>  drivers/net/ethernet/intel/ice/ice_common.c   | 94
+> +++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_common.h   |  8 ++
+>  3 files changed, 131 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> index 0f64fbc9d3e8..89448e61c3dd 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> @@ -1341,6 +1341,31 @@ struct ice_aqc_get_link_topo {
+>  	u8 rsvd[9];
+>  };
+>  
+> +/* Read/Write I2C (direct, 0x06E2/0x06E3) */
+> +struct ice_aqc_i2c {
+> +	struct ice_aqc_link_topo_addr topo_addr;
+> +	__le16 i2c_addr;
+> +	u8 i2c_params;
+> +#define ICE_AQC_I2C_DATA_SIZE_S		0
+> +#define ICE_AQC_I2C_DATA_SIZE_M		(0xF <<
+> ICE_AQC_I2C_DATA_SIZE_S)
+> +#define ICE_AQC_I2C_ADDR_TYPE_M		BIT(4)
+> +#define ICE_AQC_I2C_ADDR_TYPE_7BIT	0
+> +#define ICE_AQC_I2C_ADDR_TYPE_10BIT	ICE_AQC_I2C_ADDR_TYPE_M
+> +#define ICE_AQC_I2C_DATA_OFFSET_S	5
+> +#define ICE_AQC_I2C_DATA_OFFSET_M	(0x3 <<
+> ICE_AQC_I2C_DATA_OFFSET_S)
+> +#define ICE_AQC_I2C_USE_REPEATED_START	BIT(7)
+
+Not all of these defines are being used.
+
+> +	u8 rsvd;
+> +	__le16 i2c_bus_addr;
+> +#define ICE_AQC_I2C_ADDR_7BIT_MASK	0x7F
+> +#define ICE_AQC_I2C_ADDR_10BIT_MASK	0x3FF
+
+nor these.
+
+> +	u8 i2c_data[4]; /* Used only by write command, reserved in
+> read. */
+> +};
+
+<snip>
+
+> +/**
+> + * ice_aq_write_i2c
+> + * @hw: pointer to the hw struct
+> + * @topo_addr: topology address for a device to communicate with
+> + * @bus_addr: 7-bit I2C bus address
+> + * @addr: I2C memory address (I2C offset) with up to 16 bits
+> + * @params: I2C parameters: bit [4] - I2C address type, bits [3:0] -
+> data size to write (0-7 bytes)
+> + * @data: pointer to data (0 to 4 bytes) to be written to the I2C
+> device
+> + * @cd: pointer to command details structure or NULL
+> + *
+> + * Write I2C (0x06E3)
+> + */
+> +enum ice_status
+> +ice_aq_write_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr
+> topo_addr,
+> +		 u16 bus_addr, __le16 addr, u8 params, u8 *data,
+> +		 struct ice_sq_cd *cd)
+
+If write functionality will be introduced in the future don't include
+the write implementations until you use them.
+
+It may make sense to squash this with patch 2 after this. Just a
+suggestion though.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
