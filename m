@@ -1,93 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDF5240A655
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Sep 2021 07:56:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5E6040A6D4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Sep 2021 08:44:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5126D80EC9;
-	Tue, 14 Sep 2021 05:56:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 42C9B80E2C;
+	Tue, 14 Sep 2021 06:44:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Nqb7ezgMBYOY; Tue, 14 Sep 2021 05:56:13 +0000 (UTC)
+	with ESMTP id 78zzVQbkkn1S; Tue, 14 Sep 2021 06:44:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 47A5B80EB9;
-	Tue, 14 Sep 2021 05:56:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E94D480CE1;
+	Tue, 14 Sep 2021 06:44:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B635E1BF5DE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 05:56:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E64181BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 06:44:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AFAC4607D9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 05:56:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DCC4E4018C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 06:44:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p-Dqz79G-S5K for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Sep 2021 05:56:07 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
- [IPv6:2a00:1450:4864:20::42d])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7112C607C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 05:56:07 +0000 (UTC)
-Received: by mail-wr1-x42d.google.com with SMTP id m9so18249903wrb.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Sep 2021 22:56:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=73bi6it4gjJbrBuLDIJpdXx+yqm4ktFJ0GsBXEX9Zvc=;
- b=GEj2xA3+IC3xJS5HPubduuXygw3RWFJTkVXFCVJw+n3XPauG6l1Jn9C6LASqjefgp9
- UqEs5LIAOmfknADFilJ21dqXDxJivbpqjJncphkGrwWNgn67m74hVBNEQ+x9JBHYe1zx
- W+GmLzg1YXKJDXMiK3goBYU+NI5UFRXrXJ1W8SBmx5L23yFUH1CJgSnHNECSO5CIfaGn
- 5ziweN1cXuuw5Qk/2FJcAWB3XSgF70Gdx2gCd8v/ocaj4PRobHw2BlJgT5M9kRBsKECh
- qUNT9CnbHpXyqnLKQHLcCH9Ga+k5lpGtzqdz0QkhxY3ciRyz8+vtQlBx0/GJ5N+Ho6Sc
- KDOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=73bi6it4gjJbrBuLDIJpdXx+yqm4ktFJ0GsBXEX9Zvc=;
- b=tebjVW1b0tkxbBfSlxLUL7USG7tcJmx9anEqBAYWrXR45g7HCT/g23BKa302e3XDJX
- DLDuBjvbL993C1l3PTSU5yGhfPsqnbsf4MCg7glVhGE3bO52bSh8kMtPIEI6UTIkC8K5
- d8Uy96UdP+W9NbzNgyWa3iMjJoofdbt9Vnfn+T9c9MG13FxPbJvEZg6AB3+xjaQSPqXm
- q2FV4iwKmEOJJ7DwouvFNQacNPGTzA9T15sdQYWZyi7qs96ykA1kuBauLZj6rw+QF1ez
- eK8QjAbFPT+BUrb4OTdUAh8IZlof3r7EhBN++Z+qq60ekwX+MTZZMAqwRb6BpVRFR5ig
- 3bqA==
-X-Gm-Message-State: AOAM5327g6oCc1tyxzBsmOhvefdqP/XiPPXhxFJMHOntH8Nr8vnYvwNA
- MJiXwMrp1gNlLfABlMVRM4U=
-X-Google-Smtp-Source: ABdhPJwZ6cvA3JEn4sBvohZdyDUgIeRcGsP/+NNKJLqf0RPrjWNdQ0LqDI/DYbbXyaqKgn7r6+GZ2A==
-X-Received: by 2002:a05:6000:1284:: with SMTP id
- f4mr16839464wrx.88.1631598965742; 
- Mon, 13 Sep 2021 22:56:05 -0700 (PDT)
-Received: from ?IPv6:2003:ea:8f08:4500:d493:df4c:6694:d298?
- (p200300ea8f084500d493df4c6694d298.dip0.t-ipconnect.de.
- [2003:ea:8f08:4500:d493:df4c:6694:d298])
- by smtp.googlemail.com with ESMTPSA id h16sm9376626wre.52.2021.09.13.22.56.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Sep 2021 22:56:05 -0700 (PDT)
-To: Dave Jones <davej@codemonkey.org.uk>
-References: <CAHk-=wgbygOb3hRV+7YOpVcMPTP2oQ=iw6tf09Ydspg7o7BsWQ@mail.gmail.com>
- <20210913141818.GA27911@codemonkey.org.uk>
- <ab571d7e-0cf5-ffb3-6bbe-478a4ed749dc@gmail.com>
- <20210913201519.GA15726@codemonkey.org.uk>
- <b84b799d-0aaa-c4e1-b61b-8e2316b62bd1@gmail.com>
- <20210913203234.GA6762@codemonkey.org.uk>
- <b24d81e2-5a1e-3616-5a01-abd58c0712f7@gmail.com>
- <b4b543d4-c0c5-3c56-46b7-e17ec579edcc@twofifty.com>
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Message-ID: <367cc748-d411-8cf8-ff95-07715c55e899@gmail.com>
-Date: Tue, 14 Sep 2021 07:51:22 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3-893r6IbmIH for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Sep 2021 06:44:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7A01B4016A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 06:44:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10106"; a="208996090"
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="208996090"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2021 23:43:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="699361605"
+Received: from amlin-19-169.igk.intel.com ([10.102.19.169])
+ by fmsmga005.fm.intel.com with ESMTP; 13 Sep 2021 23:43:49 -0700
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 14 Sep 2021 08:43:46 +0200
+Message-Id: <20210914064346.3376-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <b4b543d4-c0c5-3c56-46b7-e17ec579edcc@twofifty.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] Linux 5.15-rc1 - 82599ES VPD access isue
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix promiscuous mode
+ configuration flow messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,56 +60,293 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- Hisashi T Fujinaka <htodd@twofifty.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Bjorn Helgaas <bhelgaas@google.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Karen Sornek <karen.sornek@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTQuMDkuMjAyMSAwMTozMiwgSGlzYXNoaSBUIEZ1amluYWthIHdyb3RlOgo+IE9uIE1vbiwg
-MTMgU2VwIDIwMjEsIEhlaW5lciBLYWxsd2VpdCB3cm90ZToKPiAKPj4gT24gMTMuMDkuMjAyMSAy
-MjozMiwgRGF2ZSBKb25lcyB3cm90ZToKPj4KPj4gKyBKZXNzZSBhbmQgVG9ueSBhcyBJbnRlbCBO
-SUMgbWFpbnRhaW5lcnMKPj4KPj4+IE9uIE1vbiwgU2VwIDEzLCAyMDIxIGF0IDEwOjIyOjU3UE0g
-KzAyMDAsIEhlaW5lciBLYWxsd2VpdCB3cm90ZToKPj4+Cj4+PiA+PiBUaGlzIGRpZG4ndCBoZWxw
-IEknbSBhZnJhaWQgOigKPj4+ID4+IEl0IGNoYW5nZWQgdGhlIFZQRCB3YXJuaW5nLCBidXQgdGhh
-dCdzIGFib3V0IGl0Li4uCj4+PiA+Pgo+Pj4gPj4gW8KgIDE4NC4yMzU0OTZdIHBjaSAwMDAwOjAy
-OjAwLjA6IGNhbGxpbmfCoCBxdWlya19ibGFja2xpc3RfdnBkKzB4MC8weDIyIEAgMQo+Pj4gPj4g
-W8KgIDE4NC4yMzU0OTldIHBjaSAwMDAwOjAyOjAwLjA6IFtGaXJtd2FyZSBCdWddOiBkaXNhYmxp
-bmcgVlBEIGFjY2VzcyAoY2FuJ3QgZGV0ZXJtaW5lIHNpemUgb2Ygbm9uLXN0YW5kYXJkIFZQRCBm
-b3JtYXQpCj4+PiA+PiBbwqAgMTg0LjIzNTUwMV0gcGNpIDAwMDA6MDI6MDAuMDogcXVpcmtfYmxh
-Y2tsaXN0X3ZwZCsweDAvMHgyMiB0b29rIDAgdXNlY3MKPj4+ID4+Cj4+PiA+IFdpdGggdGhpcyBw
-YXRjaCB0aGVyZSdzIG5vIFZQRCBhY2Nlc3MgdG8gdGhpcyBkZXZpY2UgYW55IGxvbmdlci4gU28g
-dGhpcyBjYW4ndCBiZQo+Pj4gPiB0aGUgcm9vdCBjYXVzZS4gRG8geW91IGhhdmUgYW55IG90aGVy
-IFBDSSBkZXZpY2UgdGhhdCBoYXMgVlBEIGNhcGFiaWxpdHk/Cj4+PiA+IC0+IENhcGFiaWxpdGll
-czogWy4uLl0gVml0YWwgUHJvZHVjdCBEYXRhCj4+Pgo+Pj4KPj4+IDAxOjAwLjAgRXRoZXJuZXQg
-Y29udHJvbGxlcjogSW50ZWwgQ29ycG9yYXRpb24gODI1OTlFUyAxMC1HaWdhYml0IFNGSS9TRlAr
-IE5ldHdvcmsgQ29ubmVjdGlvbiAocmV2IDAxKQo+Pj4gwqDCoMKgwqDCoMKgwqAgU3Vic3lzdGVt
-OiBEZXZpY2UgMWRjZjowMzBhCj4+PiDCoMKgwqDCoC4uLgo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBDYXBhYmlsaXRpZXM6IFtlMF0gVml0YWwgUHJvZHVjdCBEYXRhCj4+PiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgVW5rbm93biBzbWFsbCByZXNvdXJjZSB0eXBlIDA2LCB3aWxs
-IG5vdCBkZWNvZGUgbW9yZS4KPj4+Cj4+Cj4+IFdoZW4gc2VhcmNoaW5nIEkgZm91bmQgdGhlIHNh
-bWUgc3ltcHRvbSBvZiBpbnZhbGlkIFZQRCBkYXRhIGZvciA4MjU5OUVCLgo+PiBEbyB0aGVzZSBh
-ZGFwdGVycyBoYXZlIG5vbi1WUEQgZGF0YSBpbiBWUEQgYWRkcmVzcyBzcGFjZT8gT3IgaXMgdGhl
-IGFjdHVhbAo+PiBWUEQgZGF0YSBhdCBhbm90aGVyIG9mZnNldCB0aGFuIDA/IEkga25vdyB0aGF0
-IGZldyBDaGVsc2lvIGRldmljZXMgaGF2ZQo+PiBzdWNoIGEgbm9uLXN0YW5kYXJkIFZQRCBzdHJ1
-Y3R1cmUuCj4+Cj4+Pgo+Pj4gSSdsbCBhZGQgdGhhdCB0byB0aGUgcXVpcmsgbGlzdCBhbmQgc2Vl
-IGlmIHRoYXQgaGVscHMuCj4+Pgo+Pj4gwqDCoMKgwqBEYXZlCj4+Pgo+PiBIZWluZXIKPiAKPiBT
-b3JyeSB0byByZXBseSBmcm9tIG15IHBlcnNvbmFsIGFjY291bnQuIElmIEkgZGlkIGl0IGZyb20g
-bXkgd29yawo+IGFjY291bnQgSSdkIGJlIHRvcC1wb3N0aW5nIGJlY2F1c2Ugb2YgT3V0bG9vayBh
-bmQgdGhhdCBnb2VzIG92ZXIgbGlrZSBhCj4gbGVhZCBiYWxsb29uLgo+IAo+IEFueXdheSwgY2Fu
-IHlvdSBzZW5kIHVzIGEgZHVtcCBvZiB5b3VyIGVlcHJvbSB1c2luZyBldGh0b29sIC1lPyBZb3Ug
-Y2FuCj4gZWl0aGVyIHNlbmQgaXQgdmlhIGEgYnVnIG9uIGUxMDAwLnNvdXJjZWZvcmdlLm5ldCBv
-ciB0cnkgc2VuZGluZyBpdCB0bwo+IHRvZGQuZnVqaW5ha2FAaW50ZWwuY29tCj4gCj4gVGhlIG90
-aGVyIHRoaW5nIGlzIEknbSB3b25kZXJpbmcgaXMgd2hhdCB0aGUgc3VidmVuZG9yIGRldmljZSBJ
-RCB5b3UKPiBoYXZlIGlzIHJlZmVycmluZyB0byBiZWNhdXNlIGl0J3Mgbm90IGluIHRoZSBwY2kg
-ZGF0YWJhc2UuIFNvbWUgT0RNcwo+IGxpa2UgZ2V0dGluZyBjcmVhdGl2ZSB3aXRoIHdoYXQgdGhl
-eSBwdXQgaW4gdGhlIE5WTS4KPiAKPiBUb2RkIEZ1amluYWthICh0b2RkLmZ1amluYWthQGludGVs
-LmNvbSkKClRoYW5rcyBmb3IgdGhlIHByb21wdCByZXBseS4gRGF2ZSwgY291bGQgeW91IHBsZWFz
-ZSBwcm92aWRlIHRoZSByZXF1ZXN0ZWQKaW5mb3JtYXRpb24/Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Currently when configuring promiscuous mode on the AVF we detect a
+change in the netdev->flags. We use IFF_PROMISC and IFF_ALLMULTI to
+determine whether or not we need to request/release promiscuous mode
+and/or multicast promiscuous mode. The problem is that the AQ calls for
+setting/clearing promiscuous/multicast mode are treated separately. This
+leads to a case where we can trigger two promiscuous mode AQ calls in
+a row with the incorrect state. To fix this make a few changes.
+
+Use IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE instead of the previous
+IAVF_FLAG_AQ_[REQUEST|RELEASE]_[PROMISC|ALLMULTI] flags.
+
+In iavf_set_rx_mode() detect if there is a change in the
+netdev->flags in comparison with adapter->flags and set the
+IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE aq_required bit. Then in
+iavf_process_aq_command() only check for IAVF_FLAG_CONFIGURE_PROMISC_MODE
+and call iavf_set_promiscuous() if it's set.
+
+In iavf_set_promiscuous() check again to see which (if any)
+promiscuous mode bits have changed when comparing the netdev->flags with
+the adapter->flags. Use this to set the flags which get sent to the PF
+driver.
+
+Add a spinlock that is used for updating current_netdev_promisc_flags
+and only allows one promiscuous mode AQ at a time.
+
+[1] Fixes the fact that we will only have one AQ call in the aq_required
+queue at any one time.
+
+[2] Streamlines the change in promiscuous mode to only set one AQ
+required bit.
+
+[3] This allows us to keep track of the current state of the flags and
+also makes it so we can take the most recent netdev->flags promiscuous
+mode state.
+
+[4] This fixes the problem where a change in the netdev->flags can cause
+IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE to be set in iavf_set_rx_mode(),
+but cleared in iavf_set_promiscuous() before the change is ever made via
+AQ call.
+
+Fixes: 129cf89e5856 ("iavf: rename functions and structs to new name")
+Signed-off-by: Brett Creeley brett.creeley@intel.com
+Signed-off-by: Karen Sornek karen.sornek@intel.com
+---
+ drivers/net/ethernet/intel/iavf/iavf.h        | 16 ++--
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 45 +++++------
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 77 ++++++++++++-------
+ 3 files changed, 76 insertions(+), 62 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 21c957755..ce393b253 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -267,8 +267,6 @@ struct iavf_adapter {
+ #define IAVF_FLAG_CLIENT_NEEDS_OPEN		BIT(10)
+ #define IAVF_FLAG_CLIENT_NEEDS_CLOSE		BIT(11)
+ #define IAVF_FLAG_CLIENT_NEEDS_L2_PARAMS	BIT(12)
+-#define IAVF_FLAG_PROMISC_ON			BIT(13)
+-#define IAVF_FLAG_ALLMULTI_ON			BIT(14)
+ #define IAVF_FLAG_LEGACY_RX			BIT(15)
+ #define IAVF_FLAG_REINIT_ITR_NEEDED		BIT(16)
+ #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
+@@ -292,10 +290,7 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_SET_HENA			BIT(12)
+ #define IAVF_FLAG_AQ_SET_RSS_KEY		BIT(13)
+ #define IAVF_FLAG_AQ_SET_RSS_LUT		BIT(14)
+-#define IAVF_FLAG_AQ_REQUEST_PROMISC		BIT(15)
+-#define IAVF_FLAG_AQ_RELEASE_PROMISC		BIT(16)
+-#define IAVF_FLAG_AQ_REQUEST_ALLMULTI		BIT(17)
+-#define IAVF_FLAG_AQ_RELEASE_ALLMULTI		BIT(18)
++#define IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE	BIT(15)
+ #define IAVF_FLAG_AQ_ENABLE_VLAN_STRIPPING	BIT(19)
+ #define IAVF_FLAG_AQ_DISABLE_VLAN_STRIPPING	BIT(20)
+ #define IAVF_FLAG_AQ_ENABLE_CHANNELS		BIT(21)
+@@ -307,6 +302,12 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_ADD_ADV_RSS_CFG		BIT(27)
+ #define IAVF_FLAG_AQ_DEL_ADV_RSS_CFG		BIT(28)
+ 
++	/* Lock to prevent possible clobbering of
++	 * current_netdev_promisc_flags
++	 */
++	spinlock_t current_netdev_promisc_flags_lock;
++	netdev_features_t current_netdev_promisc_flags;
++
+ 	/* OS defined structs */
+ 	struct net_device *netdev;
+ 	struct pci_dev *pdev;
+@@ -426,7 +427,8 @@ void iavf_add_ether_addrs(struct iavf_adapter *adapter);
+ void iavf_del_ether_addrs(struct iavf_adapter *adapter);
+ void iavf_add_vlans(struct iavf_adapter *adapter);
+ void iavf_del_vlans(struct iavf_adapter *adapter);
+-void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags);
++void iavf_set_promiscuous(struct iavf_adapter *adapter);
++bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter);
+ void iavf_request_stats(struct iavf_adapter *adapter);
+ void iavf_request_reset(struct iavf_adapter *adapter);
+ void iavf_get_hena(struct iavf_adapter *adapter);
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 80437ef26..58ed7da6e 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -889,6 +889,16 @@ static int iavf_addr_unsync(struct net_device *netdev, const u8 *addr)
+ 	return 0;
+ }
+ 
++/**
++ * iavf_promiscuous_mode_changed - check if promiscuous mode bits changed
++ * @adapter: device specific adapter
++ */
++bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter)
++{
++	return (adapter->current_netdev_promisc_flags ^ adapter->netdev->flags)
++		& (IFF_PROMISC | IFF_ALLMULTI);
++}
++
+ /**
+  * iavf_set_rx_mode - NDO callback to set the netdev filters
+  * @netdev: network interface device structure
+@@ -902,19 +912,11 @@ static void iavf_set_rx_mode(struct net_device *netdev)
+ 	__dev_mc_sync(netdev, iavf_addr_sync, iavf_addr_unsync);
+ 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+ 
+-	if (netdev->flags & IFF_PROMISC &&
+-	    !(adapter->flags & IAVF_FLAG_PROMISC_ON))
+-		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_PROMISC;
+-	else if (!(netdev->flags & IFF_PROMISC) &&
+-		 adapter->flags & IAVF_FLAG_PROMISC_ON)
+-		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_PROMISC;
+-
+-	if (netdev->flags & IFF_ALLMULTI &&
+-	    !(adapter->flags & IAVF_FLAG_ALLMULTI_ON))
+-		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_ALLMULTI;
+-	else if (!(netdev->flags & IFF_ALLMULTI) &&
+-		 adapter->flags & IAVF_FLAG_ALLMULTI_ON)
+-		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_ALLMULTI;
++	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
++
++	if (iavf_promiscuous_mode_changed(adapter))
++		adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
++	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
+ }
+ 
+ /**
+@@ -1642,22 +1644,10 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
+ 		return 0;
+ 	}
+ 
+-	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_PROMISC) {
+-		iavf_set_promiscuous(adapter, FLAG_VF_UNICAST_PROMISC |
+-				       FLAG_VF_MULTICAST_PROMISC);
++	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE) {
++		iavf_set_promiscuous(adapter);
+ 		return 0;
+ 	}
+-
+-	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_ALLMULTI) {
+-		iavf_set_promiscuous(adapter, FLAG_VF_MULTICAST_PROMISC);
+-		return 0;
+-	}
+-	if ((adapter->aq_required & IAVF_FLAG_AQ_RELEASE_PROMISC) ||
+-	    (adapter->aq_required & IAVF_FLAG_AQ_RELEASE_ALLMULTI)) {
+-		iavf_set_promiscuous(adapter, 0);
+-		return 0;
+-	}
+-
+ 	if (adapter->aq_required & IAVF_FLAG_AQ_ENABLE_CHANNELS) {
+ 		iavf_enable_channels(adapter);
+ 		return 0;
+@@ -3840,6 +3830,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	spin_lock_init(&adapter->mac_vlan_list_lock);
+ 	spin_lock_init(&adapter->cloud_filter_list_lock);
++	spin_lock_init(&adapter->current_netdev_promisc_flags_lock);
+ 	spin_lock_init(&adapter->fdir_fltr_lock);
+ 	spin_lock_init(&adapter->adv_rss_lock);
+ 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 9c128462e..3435d8fbc 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -729,47 +729,68 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
+  *
+  * Request that the PF enable promiscuous mode for our VSI.
+  **/
+-void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags)
++void iavf_set_promiscuous(struct iavf_adapter *adapter)
+ {
++	struct net_device *netdev = adapter->netdev;
+ 	struct virtchnl_promisc_info vpi;
+-	int promisc_all;
++	unsigned int flags;
+ 
+ 	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
+ 		/* bail because we already have a command pending */
+-		dev_err(&adapter->pdev->dev, "Cannot set promiscuous mode, command %d pending\n",
+-			adapter->current_op);
++		dev_err(&adapter->pdev->dev, "Cannot set promiscuous mode, command %d pending\n",															adapter->current_op);
+ 		return;
+ 	}
+ 
+-	promisc_all = FLAG_VF_UNICAST_PROMISC |
+-		      FLAG_VF_MULTICAST_PROMISC;
+-	if ((flags & promisc_all) == promisc_all) {
+-		adapter->flags |= IAVF_FLAG_PROMISC_ON;
+-		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_PROMISC;
+-		dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
+-	}
++	/* prevent changes to promiscuous flags */
++	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
+ 
+-	if (flags & FLAG_VF_MULTICAST_PROMISC) {
+-		adapter->flags |= IAVF_FLAG_ALLMULTI_ON;
+-		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_ALLMULTI;
+-		dev_info(&adapter->pdev->dev, "%s is entering multicast promiscuous mode\n",
+-			 adapter->netdev->name);
++	/* sanity check to prevent duplicate AQ calls */
++	if (!iavf_promiscuous_mode_changed(adapter)) {
++		adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
++		dev_dbg(&adapter->pdev->dev, "No change in promiscuous mode\n");
++		/* allow changes to promiscuous flags */
++		spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
++		return;
+ 	}
+ 
+-	if (!flags) {
+-		if (adapter->flags & IAVF_FLAG_PROMISC_ON) {
+-			adapter->flags &= ~IAVF_FLAG_PROMISC_ON;
+-			adapter->aq_required &= ~IAVF_FLAG_AQ_RELEASE_PROMISC;
+-			dev_info(&adapter->pdev->dev, "Leaving promiscuous mode\n");
++	/* there are 2 bits, but only 3 states */
++	if (!(netdev->flags & IFF_PROMISC) &&
++	    netdev->flags & IFF_ALLMULTI) {
++		/* State 1  - only multicast promiscuous mode enabled
++		 * - !IFF_PROMISC && IFF_ALLMULTI
++		 */
++		flags = FLAG_VF_MULTICAST_PROMISC;
++		adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
++		adapter->current_netdev_promisc_flags &= ~IFF_PROMISC;
++		dev_info(&adapter->pdev->dev,
++			 "Entering multicast promiscuous mode\n");
++	} else if (!(netdev->flags & IFF_PROMISC) &&
++		   !(netdev->flags & IFF_ALLMULTI)) {
++		/* State 2 - unicast/multicast promiscuous mode disabled
++		 * - !IFF_PROMISC && !IFF_ALLMULTI
++		 */
++		flags = 0;
++		adapter->current_netdev_promisc_flags &=
++			~(IFF_PROMISC | IFF_ALLMULTI);
++		dev_info(&adapter->pdev->dev, "Leaving promiscuous mode\n");
++	} else {
++		/* State 3 - unicast/multicast promiscuous mode enabled
++		 * - IFF_PROMISC && IFF_ALLMULTI
++		 * - IFF_PROMISC && !IFF_ALLMULTI
++		 */
++		flags = FLAG_VF_UNICAST_PROMISC | FLAG_VF_MULTICAST_PROMISC;
++		adapter->current_netdev_promisc_flags |= IFF_PROMISC;
++		if (netdev->flags & IFF_ALLMULTI)
++			adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
++		else
++			adapter->current_netdev_promisc_flags &= ~IFF_ALLMULTI;
+ 		}
++		dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
+ 
+-		if (adapter->flags & IAVF_FLAG_ALLMULTI_ON) {
+-			adapter->flags &= ~IAVF_FLAG_ALLMULTI_ON;
+-			adapter->aq_required &= ~IAVF_FLAG_AQ_RELEASE_ALLMULTI;
+-			dev_info(&adapter->pdev->dev, "%s is leaving multicast promiscuous mode\n",
+-				 adapter->netdev->name);
+-		}
+-	}
++	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
++
++	/* allow changes to promiscuous flags */
++	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
+ 
+ 	adapter->current_op = VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE;
+ 	vpi.vsi_id = adapter->vsi_res->vsi_id;
+-- 
+2.27.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
