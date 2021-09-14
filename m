@@ -1,65 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F9A840A9FD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Sep 2021 10:55:35 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 65D3440ABE6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Sep 2021 12:42:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 97E1C607FF;
-	Tue, 14 Sep 2021 08:55:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5D21C40333;
+	Tue, 14 Sep 2021 10:42:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bkBiue6dRAL8; Tue, 14 Sep 2021 08:55:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uxmkYNbVL0-P; Tue, 14 Sep 2021 10:42:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A0143607E5;
-	Tue, 14 Sep 2021 08:55:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 558BA402E3;
+	Tue, 14 Sep 2021 10:42:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 899151BF379
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 08:55:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D3FC1BF317
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 10:42:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 772374032F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 08:55:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7315E80E6F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 10:42:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rvVp4AXWD43Q for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Sep 2021 08:55:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pd6RYy_vqHqK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Sep 2021 10:42:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 87E8540299
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 08:55:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631609726;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc; bh=c1zAKGDE2iXYAAL+cX9RZAaqxWupsxiAyfmgz4KkeMc=;
- b=PosTZoP8E77IZX78Khmhb5YKYdtcN/+pMXy2Tsbz+3lS+R3+AUUYtM5j+MTpqWPsvwfiKN
- JYSF8df3fyWQ5AdPhhCxRlKx3oklLXE7CjO313ZCI3tCuYRREnb6VQKDghqgFDCy8t/Puu
- 1Pumfdb29zwQAKmAKAoTmAXP3oRISOs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-256-uZFvur7yO-S9KFZwdG1wpg-1; Tue, 14 Sep 2021 04:55:24 -0400
-X-MC-Unique: uZFvur7yO-S9KFZwdG1wpg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A85AA5074C;
- Tue, 14 Sep 2021 08:55:23 +0000 (UTC)
-Received: from griffin.upir.cz (unknown [10.40.193.119])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8AD3F6B55D;
- Tue, 14 Sep 2021 08:55:22 +0000 (UTC)
-From: Jiri Benc <jbenc@redhat.com>
-To: netdev@vger.kernel.org
-Date: Tue, 14 Sep 2021 10:54:42 +0200
-Message-Id: <452ff4ddfef7fc8f558a8c8eb7a8050688760e11.1631609537.git.jbenc@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Subject: [Intel-wired-lan] [PATCH net v2] i40e: fix endless loop under rtnl
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4269A80E4F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Sep 2021 10:42:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10106"; a="221623910"
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="221623910"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2021 03:42:25 -0700
+X-IronPort-AV: E=Sophos;i="5.85,292,1624345200"; d="scan'208";a="543903493"
+Received: from krausnex-mobl.ger.corp.intel.com (HELO [10.13.9.164])
+ ([10.13.9.164])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2021 03:42:23 -0700
+To: Corinna Vinschen <vinschen@redhat.com>, intel-wired-lan@lists.osuosl.org
+References: <20210817131620.566614-1-vinschen@redhat.com>
+From: "Kraus, NechamaX" <nechamax.kraus@linux.intel.com>
+Message-ID: <181feb46-eac6-8bd7-f75a-26d85b05da02@linux.intel.com>
+Date: Tue, 14 Sep 2021 13:42:10 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
+MIME-Version: 1.0
+In-Reply-To: <20210817131620.566614-1-vinschen@redhat.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] igc: fix tunnel offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,60 +64,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, pabeni@redhat.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The loop in i40e_get_capabilities can never end. The problem is that
-although i40e_aq_discover_capabilities returns with an error if there's
-a firmware problem, the returned error is not checked. There is a check for
-pf->hw.aq.asq_last_status but that value is set to I40E_AQ_RC_OK on most
-firmware problems.
-
-When i40e_aq_discover_capabilities encounters a firmware problem, it will
-enocunter the same problem on its next invocation. As the result, the loop
-becomes endless. We hit this with I40E_ERR_ADMIN_QUEUE_TIMEOUT but looking
-at the code, it can happen with a range of other firmware errors.
-
-I don't know what the correct behavior should be: whether the firmware
-should be retried a few times, or whether pf->hw.aq.asq_last_status should
-be always set to the encountered firmware error (but then it would be
-pointless and can be just replaced by the i40e_aq_discover_capabilities
-return value). However, the current behavior with an endless loop under the
-rtnl mutex(!) is unacceptable and Intel has not submitted a fix, although we
-explained the bug to them 7 months ago.
-
-This may not be the best possible fix but it's better than hanging the whole
-system on a firmware bug.
-
-Fixes: 56a62fc86895 ("i40e: init code and hardware support")
-Tested-by: Stefan Assmann <sassmann@redhat.com>
-Signed-off-by: Jiri Benc <jbenc@redhat.com>
----
-v2: added the Fixes tag, no code changes
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 2f20980dd9a5..b5b984754ec9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -10113,7 +10113,7 @@ static int i40e_get_capabilities(struct i40e_pf *pf,
- 		if (pf->hw.aq.asq_last_status == I40E_AQ_RC_ENOMEM) {
- 			/* retry with a larger buffer */
- 			buf_len = data_size;
--		} else if (pf->hw.aq.asq_last_status != I40E_AQ_RC_OK) {
-+		} else if (pf->hw.aq.asq_last_status != I40E_AQ_RC_OK || err) {
- 			dev_info(&pf->pdev->dev,
- 				 "capability discovery failed, err %s aq_err %s\n",
- 				 i40e_stat_str(&pf->hw, err),
--- 
-2.18.1
-
+On 8/17/2021 16:16, Corinna Vinschen wrote:
+> From: Paolo Abeni <pabeni@redhat.com>
+> 
+> Checking tunnel offloading, it turns out that offloading doesn't work
+> as expected.  The following script allows to reproduce the issue.
+> Call it as `testscript DEVICE LOCALIP REMOTEIP NETMASK'
+> 
+> === SNIP ===
+> if [ $# -ne 4 ]
+> then
+>    echo "Usage $0 DEVICE LOCALIP REMOTEIP NETMASK"
+>    exit 1
+> fi
+> DEVICE="$1"
+> LOCAL_ADDRESS="$2"
+> REMOTE_ADDRESS="$3"
+> NWMASK="$4"
+> echo "Driver: $(ethtool -i ${DEVICE} | awk '/^driver:/{print $2}') "
+> ethtool -k "${DEVICE}" | grep tx-udp
+> echo
+> echo "Set up NIC and tunnel..."
+> ip addr add "${LOCAL_ADDRESS}/${NWMASK}" dev "${DEVICE}"
+> ip link set "${DEVICE}" up
+> sleep 2
+> ip link add vxlan1 type vxlan id 42 \
+> 		   remote "${REMOTE_ADDRESS}" \
+> 		   local "${LOCAL_ADDRESS}" \
+> 		   dstport 0 \
+> 		   dev "${DEVICE}"
+> ip addr add fc00::1/64 dev vxlan1
+> ip link set vxlan1 up
+> sleep 2
+> rm -f vxlan.pcap
+> echo "Running tcpdump and iperf3..."
+> ( nohup tcpdump -i any -w vxlan.pcap >/dev/null 2>&1 ) &
+> sleep 2
+> iperf3 -c fc00::2 >/dev/null
+> pkill tcpdump
+> echo
+> echo -n "Max. Paket Size: "
+> tcpdump -r vxlan.pcap -nnle 2>/dev/null \
+> | grep "${LOCAL_ADDRESS}.*> ${REMOTE_ADDRESS}.*OTV" \
+> | awk '{print $8}' | awk -F ':' '{print $1}' \
+> | sort -n | tail -1
+> echo
+> ip link del vxlan1
+> ip addr del ${LOCAL_ADDRESS}/${NWMASK} dev "${DEVICE}"
+> === SNAP ===
+> 
+> The expected outcome is
+> 
+>    Max. Paket Size: 64904
+> 
+> This is what you see on igb, the code igc has been taken from.
+> However, on igc the output is
+> 
+>    Max. Paket Size: 1516
+> 
+> so the GSO aggregate packets are segmented by the kernel before calling
+> igc_xmit_frame.  Inside the subsequent call to igc_tso, the check for
+> skb_is_gso(skb) fails and the function returns prematurely.
+> 
+> It turns out that this occurs because the feature flags aren't set
+> entirely correctly in igc_probe.  In contrast to the original code
+> from igb_probe, igc_probe neglects to set the flags required to allow
+> tunnel offloading.
+> 
+> Setting the same flags as igb fixes the issue on igc.
+> 
+> Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+> Tested-by: Corinna Vinschen <vinschen@redhat.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+Tested-by: Nechama Kraus <nechamax.kraus@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
