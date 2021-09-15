@@ -1,72 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D38C440BFBB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Sep 2021 08:41:41 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DC1940BFB8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Sep 2021 08:41:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5B47F4052D;
-	Wed, 15 Sep 2021 06:41:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7A17960B2B;
+	Wed, 15 Sep 2021 06:41:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kTp1___sNB_b; Wed, 15 Sep 2021 06:41:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CqeagisSHeJb; Wed, 15 Sep 2021 06:41:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 407E540170;
-	Wed, 15 Sep 2021 06:41:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7D98960679;
+	Wed, 15 Sep 2021 06:41:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C6A291BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 542571BF4D6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B657D825CA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:34 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4E9CC40170
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 32foWMwAT8Xz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Sep 2021 06:41:34 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E9CC28258D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1631688092;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nXoAex5h5K9hGtyrBd5LTSnixWgehD/sSo1nO1W/QHY=;
- b=f4uTmqmAGpY5qXSyNdXU0VoiPjrft3AfnA+CEUSg5U4oFrhctx9uOQ51CiMyf3ibmL6gtQ
- qSPBbobJicYi61/vh3mTmAoJiwb+Y0E7Qt7SsSvOm3wuXu5pvtxgrIxF1V71b8sYROzgGo
- oNRwV92qu5+bBzA0rTwft9UgjhcHHvk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-560-9vKSrezqN2WGm3b7DLq0ag-1; Wed, 15 Sep 2021 02:41:30 -0400
-X-MC-Unique: 9vKSrezqN2WGm3b7DLq0ag-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE416800FF4;
- Wed, 15 Sep 2021 06:41:29 +0000 (UTC)
-Received: from localhost (unknown [10.40.193.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7036E1001281;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id no01zL_KvrF6 for <intel-wired-lan@lists.osuosl.org>;
  Wed, 15 Sep 2021 06:41:28 +0000 (UTC)
-Date: Wed, 15 Sep 2021 08:40:22 +0200
-From: Jiri Benc <jbenc@redhat.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20210915084009.4260d7ae@redhat.com>
-In-Reply-To: <b94eb5b1-04b7-a1ba-3040-a8f35d40f426@intel.com>
-References: <4d94f7fbd9dd6476c5adc8967f3db84bc9204f47.1630319620.git.jbenc@redhat.com>
- <b94eb5b1-04b7-a1ba-3040-a8f35d40f426@intel.com>
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 603D34015B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Sep 2021 06:41:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10107"; a="285926312"
+X-IronPort-AV: E=Sophos;i="5.85,294,1624345200"; d="scan'208";a="285926312"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2021 23:41:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,294,1624345200"; d="scan'208";a="544598823"
+Received: from amlin-19-169.igk.intel.com ([10.102.19.169])
+ by FMSMGA003.fm.intel.com with ESMTP; 14 Sep 2021 23:41:25 -0700
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 15 Sep 2021 08:41:23 +0200
+Message-Id: <20210915064123.69945-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: fix endless loop under rtnl
+Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: Add helper function to
+ go from pci_dev to adapter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,34 +60,89 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 14 Sep 2021 16:37:55 -0700, Jesse Brandeburg wrote:
-> The fix seems fine to me on initial review.
-> you can add my
-> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Add helper function to go from pci_dev to adapter to make work simple -
+to go from a pci_dev to the adapter structure and make netdev assigment
+instead of having to go to the net_device then the adapter.
 
-Thanks!
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Karen Sornek <karen.sornek@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 24 +++++++++++++++------
+ 1 file changed, 17 insertions(+), 7 deletions(-)
 
-> but...
-> Missing Fixes: tag?
-
-I should have added that, yes. I sent a v2 yesterday with the tag
-included,
-
-https://patchwork.kernel.org/project/netdevbpf/patch/452ff4ddfef7fc8f558a8c8eb7a8050688760e11.1631609537.git.jbenc@redhat.com/
-
-Could you reply with your Reviewed-by to that one? Alternatively, I can
-send a v3.
-
-Thanks,
-
- Jiri
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 80437ef26..39620fe6c 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -51,6 +51,15 @@ MODULE_LICENSE("GPL v2");
+ static const struct net_device_ops iavf_netdev_ops;
+ struct workqueue_struct *iavf_wq;
+ 
++/**
++ * iavf_pdev_to_adapter - go from pci_dev to adapter
++ * @pdev: pci_dev pointer
++ */
++static struct iavf_adapter *iavf_pdev_to_adapter(struct pci_dev *pdev)
++{
++	return netdev_priv(pci_get_drvdata(pdev));
++}
++
+ /**
+  * iavf_allocate_dma_mem_d - OS specific memory alloc for shared code
+  * @hw:   pointer to the HW structure
+@@ -3725,8 +3734,8 @@ out:
+  **/
+ static void iavf_shutdown(struct pci_dev *pdev)
+ {
+-	struct net_device *netdev = pci_get_drvdata(pdev);
+-	struct iavf_adapter *adapter = netdev_priv(netdev);
++	struct iavf_adapter *adapter = iavf_pdev_to_adapter(pdev);
++	struct net_device *netdev = adapter->netdev;
+ 
+ 	netif_device_detach(netdev);
+ 
+@@ -3911,10 +3920,11 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
+ static int __maybe_unused iavf_resume(struct device *dev_d)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev_d);
+-	struct net_device *netdev = pci_get_drvdata(pdev);
+-	struct iavf_adapter *adapter = netdev_priv(netdev);
++	struct iavf_adapter *adapter;
+ 	u32 err;
+ 
++	adapter = iavf_pdev_to_adapter(pdev);
++
+ 	pci_set_master(pdev);
+ 
+ 	rtnl_lock();
+@@ -3933,7 +3943,7 @@ static int __maybe_unused iavf_resume(struct device *dev_d)
+ 
+ 	queue_work(iavf_wq, &adapter->reset_task);
+ 
+-	netif_device_attach(netdev);
++	netif_device_attach(adapter->netdev);
+ 
+ 	return err;
+ }
+@@ -3949,8 +3959,8 @@ static int __maybe_unused iavf_resume(struct device *dev_d)
+  **/
+ static void iavf_remove(struct pci_dev *pdev)
+ {
+-	struct net_device *netdev = pci_get_drvdata(pdev);
+-	struct iavf_adapter *adapter = netdev_priv(netdev);
++	struct iavf_adapter *adapter = iavf_pdev_to_adapter(pdev);
++	struct net_device *netdev = adapter->netdev;
+ 	struct iavf_fdir_fltr *fdir, *fdirtmp;
+ 	struct iavf_vlan_filter *vlf, *vlftmp;
+ 	struct iavf_adv_rss *rss, *rsstmp;
+-- 
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
