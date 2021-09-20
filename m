@@ -1,55 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2CE94126F0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Sep 2021 21:32:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BAA1412760
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Sep 2021 22:39:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3B2D282A2E;
-	Mon, 20 Sep 2021 19:32:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 46ABD40364;
+	Mon, 20 Sep 2021 20:39:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9COYcQRnZ1_p; Mon, 20 Sep 2021 19:32:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TzhQHUX2UmEK; Mon, 20 Sep 2021 20:39:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3781D82983;
-	Mon, 20 Sep 2021 19:32:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1E7DC400CC;
+	Mon, 20 Sep 2021 20:39:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 051761BF352
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 19:31:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F0B481BF383
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 20:39:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E7447403AB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 19:31:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EA68E4039D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 20:39:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id THF_2VJNPRCt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Sep 2021 19:31:57 +0000 (UTC)
+ with ESMTP id 4PxHyKjnLaOZ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Sep 2021 20:39:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 40E214043B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 19:31:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10113"; a="223252174"
-X-IronPort-AV: E=Sophos;i="5.85,309,1624345200"; d="scan'208";a="223252174"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Sep 2021 12:30:25 -0700
-X-IronPort-AV: E=Sophos;i="5.85,309,1624345200"; d="scan'208";a="483931478"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Sep 2021 12:30:23 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 20 Sep 2021 12:30:14 -0700
-Message-Id: <20210920193014.1148084-4-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210920193014.1148084-1-jesse.brandeburg@intel.com>
-References: <20210920193014.1148084-1-jesse.brandeburg@intel.com>
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6FD8E40389
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Sep 2021 20:39:18 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2E215604DC;
+ Mon, 20 Sep 2021 20:39:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632170358;
+ bh=HSGus3tms+/naFCRfd2OqZSYp0GX+lVXfRB0c7xZaaE=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=VOyWXLhIjft27gGpCqTFtBF9Lad4X9qm6BBibJf/CTf+N7LjMSljUrew/M6TLGR7r
+ 995V8mfqkgdxuO+JzwcfwJUpf7n886+Z1UwpCQSWcuePUzg1jHnnMC1MQqJWszFNaI
+ b5jWc3vH5Ll8FL+zizrkKWFquAZ6Jelv9JXVuYcpDifuC56KUXEV0S/ryQdzVKIHH5
+ Kb0Nd7b0Z4hBVJuMbEeTpWASjbFsfMFt0QotnAxqpEmiCjoIG3VTYi9Gnn1tWtYPY8
+ QWvxlVLr5N4MSYEVTo+J3DCgZzIZxBV/14Fm0a6kZwIGOC8niagziQNAmuSpPkxCZ3
+ SmHf4AEdMHqXQ==
+Date: Mon, 20 Sep 2021 13:39:15 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Leon Romanovsky <leon@kernel.org>
+Message-ID: <20210920133915.59ddfeef@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <2e089a45e03db31bf451d768fc588c02a2f781e8.1632148852.git.leonro@nvidia.com>
+References: <2e089a45e03db31bf451d768fc588c02a2f781e8.1632148852.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v4 3/3] ice: fix software
- generating extra interrupts
+Subject: Re: [Intel-wired-lan] [PATCH net-next] devlink: Make
+ devlink_register to be void
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,91 +66,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
+ netdev@vger.kernel.org, Jerin Jacob <jerinj@marvell.com>,
+ GR-everest-linux-l2@marvell.com, Subbaraya Sundeep <sbhatta@marvell.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, UNGLinuxDriver@microchip.com,
+ Leon Romanovsky <leonro@nvidia.com>, Michael Chan <michael.chan@broadcom.com>,
+ Linu Cherian <lcherian@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Manish Chopra <manishc@marvell.com>,
+ linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev,
+ Shannon Nelson <snelson@pensando.io>, intel-wired-lan@lists.osuosl.org,
+ Vadym Kochan <vkochan@marvell.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
+ Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
+ Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
+ drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
+ Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
+ Coiby Xu <coiby.xu@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Derek Chickles <dchickles@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Geetha sowjanya <gakula@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver tried to work around missing completion events that occurred
-while interrupts are disabled, by triggering a software interrupt
-whenever we exit polling (but we had to have polled at least once).
+On Mon, 20 Sep 2021 17:41:44 +0300 Leon Romanovsky wrote:
+> From: Leon Romanovsky <leonro@nvidia.com>
+> 
+> devlink_register() can't fail and always returns success, but all drivers
+> are obligated to check returned status anyway. This adds a lot of boilerplate
+> code to handle impossible flow.
+> 
+> Make devlink_register() void and simplify the drivers that use that
+> API call.
 
-This was causing a *lot* of extra interrupts for some workloads like
-NVMe over TCP, which resulted in regressions in performance. It was also
-visible when polling didn't prevent interrupts when busy_poll was
-enabled.
-
-Fix the extra interrupts by utilizing our previously unused 3rd ITR
-(interrupt throttle) index and set it to 20K interrupts per second, and
-then trigger a software interrupt within that rate limit.
-
-While here, slightly refactor the code to avoid an overwrite of a local
-variable in the case of wb_en = true.
-
-Fixes: b7306b42beaf ("ice: manage interrupts during poll exit")
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
----
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |  1 +
- drivers/net/ethernet/intel/ice/ice_txrx.c     | 26 +++++++++++--------
- 2 files changed, 16 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index ab5065b5e748..d16738a3d3a7 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -183,6 +183,7 @@
- #define GLINT_DYN_CTL_INTERVAL_S		5
- #define GLINT_DYN_CTL_INTERVAL_M		ICE_M(0xFFF, 5)
- #define GLINT_DYN_CTL_SW_ITR_INDX_ENA_M		BIT(24)
-+#define GLINT_DYN_CTL_SW_ITR_INDX_S		25
- #define GLINT_DYN_CTL_SW_ITR_INDX_M		ICE_M(0x3, 25)
- #define GLINT_DYN_CTL_WB_ON_ITR_M		BIT(30)
- #define GLINT_DYN_CTL_INTENA_MSK_M		BIT(31)
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 1373b97b117a..8f908af9bdd5 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1361,21 +1361,25 @@ static void ice_enable_interrupt(struct ice_q_vector *q_vector)
- 	if (test_bit(ICE_DOWN, vsi->state))
- 		return;
- 
--	/* When exiting WB_ON_ITR, let ITR resume its normal
--	 * interrupts-enabled path.
-+	/* trigger an ITR delayed software interrupt when exiting busy poll, to
-+	 * make sure to catch any pending cleanups that might have been missed
-+	 * due to interrupt state transition. If busy poll or poll isn't
-+	 * enabled, then don't update ITR, and just enable the interrupt.
- 	 */
--	if (wb_en)
-+	if (!wb_en) {
-+		itr_val = ice_buildreg_itr(ICE_ITR_NONE, 0);
-+	} else {
- 		q_vector->wb_on_itr = false;
- 
--	itr_val = ice_buildreg_itr(ICE_ITR_NONE, 0);
--	/* trigger an immediate software interrupt when exiting
--	 * busy poll, to make sure to catch any pending cleanups
--	 * that might have been missed due to interrupt state
--	 * transition.
--	 */
--	if (wb_en) {
-+		/* do two things here with a single write. Set up the third ITR
-+		 * index to be used for software interrupt moderation, and then
-+		 * trigger a software interrupt with a rate limit of 20K on
-+		 * software interrupts, this will help avoid high interrupt
-+		 * loads due to frequently polling and exiting polling.
-+		 */
-+		itr_val = ice_buildreg_itr(ICE_IDX_ITR2, ICE_ITR_20K);
- 		itr_val |= GLINT_DYN_CTL_SWINT_TRIG_M |
--			   GLINT_DYN_CTL_SW_ITR_INDX_M |
-+			   ICE_IDX_ITR2 << GLINT_DYN_CTL_SW_ITR_INDX_S |
- 			   GLINT_DYN_CTL_SW_ITR_INDX_ENA_M;
- 	}
- 	wr32(&vsi->back->hw, GLINT_DYN_CTL(q_vector->reg_idx), itr_val);
--- 
-2.31.1
-
+Unlike unused functions bringing back error handling may be
+non-trivial. I'd rather you deferred such cleanups until you're 
+ready to post your full rework and therefore give us some confidence 
+the revert will not be needed.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
