@@ -2,57 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EFD0413096
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Sep 2021 11:11:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FB9641331A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Sep 2021 14:04:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6965860759;
-	Tue, 21 Sep 2021 09:11:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 054C460613;
+	Tue, 21 Sep 2021 12:04:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y9Q9AGN1Tfwr; Tue, 21 Sep 2021 09:11:01 +0000 (UTC)
+	with ESMTP id eXReDBg6HTlE; Tue, 21 Sep 2021 12:04:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2DA2F60754;
-	Tue, 21 Sep 2021 09:11:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BE162600CC;
+	Tue, 21 Sep 2021 12:04:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AFEAC1BF956
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 09:10:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F5DB1BF4E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 12:04:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D93340317
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 09:10:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 097E14051B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 12:04:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MNEdbGm00ygd for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Sep 2021 09:10:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fZkqzQ3kUDOc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Sep 2021 12:04:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9433D40309
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 09:10:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10113"; a="203466246"
-X-IronPort-AV: E=Sophos;i="5.85,310,1624345200"; d="scan'208";a="203466246"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Sep 2021 02:10:53 -0700
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D48C0403CF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 12:04:34 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10113"; a="308892136"
+X-IronPort-AV: E=Sophos;i="5.85,311,1624345200"; d="scan'208";a="308892136"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2021 05:04:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,310,1624345200"; d="scan'208";a="484118584"
+X-IronPort-AV: E=Sophos;i="5.85,311,1624345200"; d="scan'208";a="549458325"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga008.jf.intel.com with ESMTP; 21 Sep 2021 02:10:52 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 21 Sep 2021 05:04:30 -0700
 Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
  [172.22.229.137])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 18L9Apve004570
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 10:10:52 +0100
+ 18LC4Ttu016145
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Sep 2021 13:04:29 +0100
 From: Wojciech Drewek <wojciech.drewek@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 21 Sep 2021 13:10:42 +0200
-Message-Id: <20210921111042.1697-1-wojciech.drewek@intel.com>
+Date: Tue, 21 Sep 2021 14:04:29 +0200
+Message-Id: <20210921120429.155263-1-wojciech.drewek@intel.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Allow to set lan_en and
- lb_en for switchdev offloads
+Subject: [Intel-wired-lan] [PATCH net-next v2] ice: Manage act flags for
+ switchdev offloads
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,11 +73,15 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 Currently it is not possible to set/unset lb_en and lan_en flags
 for advanced rules during their creation. Both flags are enabled
 by default. In case of switchdev offloads for egress traffic we
-need lb_en to be disabled. Because of that we have to use a
-workaround which is to update rule immediately after its creation.
+need lb_en to be disabled. Because of that, we work around it by
+updating the rule immediately after its creation.
 
-This change allow us to set/unset those flags right
-away and it gets rid of old workaround aswell.
+This change allows us to set/unset those flags right away and it
+gets rid of old workaround as well. Using ice_adv_rule_flags_info
+structure we can pass info about flags we want to be set for
+a given advanced rule. Flags are stored in flags_info.act.
+Values from act would be used only if act_valid was set to true,
+otherwise default values would be used.
 
 Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
 ---
