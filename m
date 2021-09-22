@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 880B1414232
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 08:55:17 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B000414233
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 08:55:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E6BDB406D2;
-	Wed, 22 Sep 2021 06:55:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7A55A40487;
+	Wed, 22 Sep 2021 06:55:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E1QpeI121EDv; Wed, 22 Sep 2021 06:55:15 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id F2JRE54OEuZ5; Wed, 22 Sep 2021 06:55:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C151540330;
-	Wed, 22 Sep 2021 06:55:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5D14740428;
+	Wed, 22 Sep 2021 06:55:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F1301BF409
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 52D7C1BF409
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0D72683F16
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 41A1340715
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wm01vCwyA7Hz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Sep 2021 06:55:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BFDLj8kWKMJr for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Sep 2021 06:55:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CF12683F12
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:09 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10114"; a="210610126"
-X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="210610126"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Sep 2021 23:54:55 -0700
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6AEDE40339
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:55:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10114"; a="220334602"
+X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="220334602"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2021 23:55:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="550134030"
+X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="474409426"
 Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.56])
- by FMSMGA003.fm.intel.com with ESMTP; 21 Sep 2021 23:54:53 -0700
+ by orsmga007.jf.intel.com with ESMTP; 21 Sep 2021 23:55:45 -0700
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Sep 2021 09:54:49 +0300
-Message-Id: <20210922065449.3780338-1-sasha.neftin@intel.com>
+Date: Wed, 22 Sep 2021 09:55:42 +0300
+Message-Id: <20210922065542.3780389-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/2] e1000e: Separate TGP board type
- from SPT
+Subject: [Intel-wired-lan] [PATCH v1 2/2] e1000e: Fixing packet loss issues
+ on new platforms
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,137 +60,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kai-Heng Feng <kai.heng.feng@canonical.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We have a same LAN controller on different PCH.
-Separate TGP board type from SPT will alllow apply specific fixes
-for TGP platforms.
+Update the HW MAC initialization flow. Do not gate DMA clock from
+the modPHY block. Keeping this clock will prevent drop packets sent
+in burst mode on the Kumeran interface.
 
-Suggested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=213651
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=213377
+Fixes: bc7f75fa9788 ("New pci-express e1000 driver");
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/e1000.h   |  4 +-
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 20 +++++++++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 45 +++++++++++----------
- 3 files changed, 46 insertions(+), 23 deletions(-)
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 11 ++++++++++-
+ drivers/net/ethernet/intel/e1000e/ich8lan.h |  3 +++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-index f3424255bd2b..c3def0ee7788 100644
---- a/drivers/net/ethernet/intel/e1000e/e1000.h
-+++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-@@ -114,7 +114,8 @@ enum e1000_boards {
- 	board_pch2lan,
- 	board_pch_lpt,
- 	board_pch_spt,
--	board_pch_cnp
-+	board_pch_cnp,
-+	board_pch_tgp
- };
- 
- struct e1000_ps_page {
-@@ -500,6 +501,7 @@ extern const struct e1000_info e1000_pch2_info;
- extern const struct e1000_info e1000_pch_lpt_info;
- extern const struct e1000_info e1000_pch_spt_info;
- extern const struct e1000_info e1000_pch_cnp_info;
-+extern const struct e1000_info e1000_pch_tgp_info;
- extern const struct e1000_info e1000_es2_info;
- 
- void e1000e_ptp_init(struct e1000_adapter *adapter);
 diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 60c582a16821..66d7196310e2 100644
+index 66d7196310e2..5e4fc9b4e2ad 100644
 --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
 +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -5992,3 +5992,23 @@ const struct e1000_info e1000_pch_cnp_info = {
- 	.phy_ops		= &ich8_phy_ops,
- 	.nvm_ops		= &spt_nvm_ops,
- };
+@@ -4813,7 +4813,7 @@ static s32 e1000_reset_hw_ich8lan(struct e1000_hw *hw)
+ static s32 e1000_init_hw_ich8lan(struct e1000_hw *hw)
+ {
+ 	struct e1000_mac_info *mac = &hw->mac;
+-	u32 ctrl_ext, txdctl, snoop;
++	u32 ctrl_ext, txdctl, snoop, fflt_dbg;
+ 	s32 ret_val;
+ 	u16 i;
+ 
+@@ -4872,6 +4872,15 @@ static s32 e1000_init_hw_ich8lan(struct e1000_hw *hw)
+ 		snoop = (u32)~(PCIE_NO_SNOOP_ALL);
+ 	e1000e_set_pcie_no_snoop(hw, snoop);
+ 
++	/* Enable workaround for packet loss issue on TGP PCH
++	 * Do not gate DMA clock from the modPHY block
++	 */
++	if (mac->type >= e1000_pch_tgp) {
++		fflt_dbg = er32(FFLT_DBG);
++		fflt_dbg |= E1000_FFLT_DBG_DONT_GATE_WAKE_DMA_CLK;
++		ew32(FFLT_DBG, fflt_dbg);
++	}
 +
-+const struct e1000_info e1000_pch_tgp_info = {
-+	.mac			= e1000_pch_tgp,
-+	.flags			= FLAG_IS_ICH
-+				  | FLAG_HAS_WOL
-+				  | FLAG_HAS_HW_TIMESTAMP
-+				  | FLAG_HAS_CTRLEXT_ON_LOAD
-+				  | FLAG_HAS_AMT
-+				  | FLAG_HAS_FLASH
-+				  | FLAG_HAS_JUMBO_FRAMES
-+				  | FLAG_APME_IN_WUC,
-+	.flags2			= FLAG2_HAS_PHY_STATS
-+				  | FLAG2_HAS_EEE,
-+	.pba			= 26,
-+	.max_hw_frame_size	= 9022,
-+	.get_variants		= e1000_get_variants_ich8lan,
-+	.mac_ops		= &ich8_mac_ops,
-+	.phy_ops		= &ich8_phy_ops,
-+	.nvm_ops		= &spt_nvm_ops,
-+};
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 900b3ab998bd..ebcb2a30add0 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -51,6 +51,7 @@ static const struct e1000_info *e1000_info_tbl[] = {
- 	[board_pch_lpt]		= &e1000_pch_lpt_info,
- 	[board_pch_spt]		= &e1000_pch_spt_info,
- 	[board_pch_cnp]		= &e1000_pch_cnp_info,
-+	[board_pch_tgp]		= &e1000_pch_tgp_info,
- };
+ 	ctrl_ext = er32(CTRL_EXT);
+ 	ctrl_ext |= E1000_CTRL_EXT_RO_DIS;
+ 	ew32(CTRL_EXT, ctrl_ext);
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
+index d6a092e5ee74..2504b11c3169 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
+@@ -289,6 +289,9 @@
+ /* Proprietary Latency Tolerance Reporting PCI Capability */
+ #define E1000_PCI_LTR_CAP_LPT		0xA8
  
- struct e1000_reg_info {
-@@ -7896,28 +7897,28 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V11), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_LM12), board_pch_spt },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V12), board_pch_spt },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM13), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V13), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_LM23), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_V23), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM16), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_LM22), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_V22), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM18), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM20), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V20), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM21), board_pch_cnp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V21), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM13), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V13), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_LM23), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_V23), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM16), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_LM22), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_V22), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM18), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM20), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V20), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM21), board_pch_tgp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V21), board_pch_tgp },
- 
- 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
- };
++/* Don't gate wake DMA clock */
++#define E1000_FFLT_DBG_DONT_GATE_WAKE_DMA_CLK	0x1000
++
+ void e1000e_write_protect_nvm_ich8lan(struct e1000_hw *hw);
+ void e1000e_set_kmrn_lock_loss_workaround_ich8lan(struct e1000_hw *hw,
+ 						  bool state);
 -- 
 2.25.1
 
