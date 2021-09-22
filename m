@@ -1,56 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 419DE414731
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 13:01:47 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9C47414B0E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 15:51:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B4A640770;
-	Wed, 22 Sep 2021 11:01:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 61B4740578;
+	Wed, 22 Sep 2021 13:51:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xZBvgeLWPMPm; Wed, 22 Sep 2021 11:01:44 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rycjn3Chw8xg; Wed, 22 Sep 2021 13:51:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 74BC040722;
-	Wed, 22 Sep 2021 11:01:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4706B40576;
+	Wed, 22 Sep 2021 13:51:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 73FF81BF951
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 11:01:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 952FE1BF409
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:22:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6197740722
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 11:01:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 82D5A83EDA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:22:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kb8loI2ukqFm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Sep 2021 11:01:37 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=messagingengine.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QLZcy-MDh4JU for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Sep 2021 06:22:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5010B4035F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 11:01:36 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id C054A61E64784;
- Wed, 22 Sep 2021 13:01:33 +0200 (CEST)
-To: Sasha Neftin <sasha.neftin@intel.com>
-References: <20210922065542.3780389-1-sasha.neftin@intel.com>
- <3bbabd03-317f-7bb5-064e-5e2b648ca689@molgen.mpg.de>
- <f587f383-c5f3-3f47-9618-e15e2ea0939d@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <ae562410-3235-26b2-993d-b5c934344153@molgen.mpg.de>
-Date: Wed, 22 Sep 2021 13:01:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+Received: from wout4-smtp.messagingengine.com (wout4-smtp.messagingengine.com
+ [64.147.123.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D444B83E38
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 06:22:11 +0000 (UTC)
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+ by mailout.west.internal (Postfix) with ESMTP id 8EB733201CF8;
+ Wed, 22 Sep 2021 02:22:10 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Wed, 22 Sep 2021 02:22:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=FxOlqX
+ be295nOShnbwm0vH+4KEHmjGRkKffE/LvQIG8=; b=B/uKbHU/4yHRmy8ekiRoYo
+ y29eNFNK3C3MqHLZ/TpJHAe2tJP7was1/4rsbTMP0JXOhfp7eyWQAiMBPwkUalzP
+ lNlg/VMlhTEuf/GZ+iWwGUW357FwnHbMFL8a1odtUOiAqyoArvAJ8uCdgQZ3e7L4
+ YbS8sAeYxJ8QTObi4iKfWKybuHUUCzKkdy3Zftc3tqZZZwnhUtpozf+6zMj4YviH
+ vaVGwxhPfjEpQN6mZMihhG/yhc63D6mLx+UVtKdTFUu34iBqm8fNwEyT0MCzUiCi
+ Hvq/y5sTzv1DgW9xYlobhHZ2nhpcDuUNiHjVfJzfY5PFRUA/fb8gg7EdEo5MXOgg
+ ==
+X-ME-Sender: <xms:kctKYYlTbXyUEWhXxgnbAJKwzXAoauQ5Pp9GF3mns1-cZEcnT-mtJA>
+ <xme:kctKYX3D20vHMdOHDH-3opUa7dnlT3oGD9w2zC_YB53hETvwcxcD2YwmeePldzj8R
+ rF4wroRDh8DNQE>
+X-ME-Received: <xmr:kctKYWri0FKGOViCtNkz0u7GsVUXt6_DVOMJgpmJOmCb8FMGVDMwMO-kXgUVCrfz1oa4CBDBR4VYwQqrCoiFW3SNNHNCBg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrudeiiedguddtudcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepkfguohcu
+ ufgthhhimhhmvghluceoihguohhstghhsehiughoshgthhdrohhrgheqnecuggftrfgrth
+ htvghrnheptdffkeekfeduffevgeeujeffjefhtefgueeugfevtdeiheduueeukefhudeh
+ leetnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
+ guohhstghhsehiughoshgthhdrohhrgh
+X-ME-Proxy: <xmx:kctKYUkP99iOdwA7vV70_zpMp7duypnGQW9HuJO7Rx_Ov7XF-I1bDQ>
+ <xmx:kctKYW3cfPo64an5WdAI5FAfRi3GgQYDRUXqNGsn9Uuyko60W_Bf6Q>
+ <xmx:kctKYbtklhBX49WPf6wC2F1-loEhSG5OgHbN_VWifgUqOFHaM_41sQ>
+ <xmx:kstKYQqt6lfSuI-vuA9J7knt4heRYYZOyapQa09PZ2qlTRmZd_A_AQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 22 Sep 2021 02:22:08 -0400 (EDT)
+Date: Wed, 22 Sep 2021 09:22:04 +0300
+From: Ido Schimmel <idosch@idosch.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <YUrLjGJwMc/UpqOK@shredder>
+References: <20210903151436.529478-1-maciej.machnikowski@intel.com>
+ <20210903151436.529478-2-maciej.machnikowski@intel.com>
+ <YUnbCzBOPP9hWQ5c@shredder>
+ <PH0PR11MB4951E98FCEC0F1EA230BA1DAEAA19@PH0PR11MB4951.namprd11.prod.outlook.com>
+ <YUny/edqnbdTFnBS@shredder>
+ <20210921141445.24ae714e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
-In-Reply-To: <f587f383-c5f3-3f47-9618-e15e2ea0939d@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1 2/2] e1000e: Fixing packet loss
- issues on new platforms
+Content-Disposition: inline
+In-Reply-To: <20210921141445.24ae714e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+X-Mailman-Approved-At: Wed, 22 Sep 2021 13:51:02 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] rtnetlink: Add new
+ RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,83 +96,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: "abyagowi@fb.com" <abyagowi@fb.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>, "Machnikowski,
+ Maciej" <maciej.machnikowski@intel.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTYXNoYSwKCgpBbSAyMi4wOS4yMSB1bSAwOTozMCBzY2hyaWViIFNhc2hhIE5lZnRpbjoK
-PiBPbiA5LzIyLzIwMjEgMTA6MDksIFBhdWwgTWVuemVsIHdyb3RlOgoKPj4gQW0gMjIuMDkuMjEg
-dW0gMDg6NTUgc2NocmllYiBTYXNoYSBOZWZ0aW46Cj4+Cj4+IFBsZWFzZSB1c2UgaW1wZXJhdGl2
-ZSBtb29kIGluIHRoZSBjb21taXQgbWVzc2FnZSBzdW1tYXJ5OiBGaXgg4oCmLiBNYXliZToKPj4K
-Pj4gZTEwMDBlOiBGaXggcGFja2V0IGxvc3Mgb24gVGlnZXIgTGFrZSBhbmQgbGF0ZXIKPj4KPj4+
-IFVwZGF0ZSB0aGUgSFcgTUFDIGluaXRpYWxpemF0aW9uIGZsb3cuIERvIG5vdCBnYXRlIERNQSBj
-bG9jayBmcm9tCj4+PiB0aGUgbW9kUEhZIGJsb2NrLiBLZWVwaW5nIHRoaXMgY2xvY2sgd2lsbCBw
-cmV2ZW50IGRyb3AgcGFja2V0cyBzZW50Cj4+Cj4+IGRyb3BwZWQKPj4KPj4+IGluIGJ1cnN0IG1v
-ZGUgb24gdGhlIEt1bWVyYW4gaW50ZXJmYWNlLgo+Pgo+PiBXaGF0IGlzIEt1bWVyYW4/Cj4gaW50
-ZXJmYWNlIHRvIGV4dGVybmFsIEdpZ2FiaXQgRXRoZXJuZXQgUEhZCgpUaGFuayB5b3UuIEZvciBz
-b21lYm9keSBub3QgaGF2aW5nIGFsbCBuYW1lcyBtZW1vcml6ZWQsIHRoaXMgd291bGQgYmUgCmdv
-b2QgdG8ga25vdyBpbiBteSBvcGluaW9uLgoKPj4gV2hlcmUgaXMgdGhlIG5ldyBIVyBNQUMgaW5p
-dGlhbGl6YXRpb24gZmxvdyBkb2N1bWVudGVkPyBUaGUgc3BlYyBvciAKPj4gc29tZSBlcnJhdGE/
-Cj4+Cj4+IEhvdyBjYW4gdGhlIGJ1ZyBiZSByZXByb2R1Y2VkPwo+IERlc2NyaWJlZCBpbiBidWd6
-aWxsYSAtIHBsZWFzZSwgbWFrZSBzdXJlIHRoZSBidXJzdCB0cmFmZmljOgo+IHJ1biBjb21tYW5k
-czoKPiB0YyBxZGlzYyBhZGQgZGV2IGVubzEgKGxhbiBkZXZpY2UgbmFtZSkgcm9vdCBuZXRlbSBk
-ZWxheSA1IG1zIG9uIGNsaWVudCBzaWRlCj4gaXBlcmYgLXMgb24gc2VydmVyIHNpZGUKPiBpcGVy
-ZiAtYyBzZXJ2ZXJfSVAgLVIgb24gY2xpZW50IHNpZGUKClRoYW5rIHlvdS4gSW4gbXkgb3Bpbmlv
-biwgcmV2aWV3ZXJzIHNob3VsZCBoYXZlIHRoaXMgaW4gdGhlIGNvbW1pdCAKbWVzc2FnZSwgaW5z
-dGVhZCBvZiByZWFkaW5nIHRocm91Z2ggc2V2ZXJhbCBjb21tZW50cyBpbiB0aGUgTGludXggCkJ1
-Z3ppbGxhLiBBbHNvLCBhdCBsZWFzdCBpbiAjMjEzNjUxIHRoZSB0aXRsZSBhbmQgZmlyc3QgY29t
-bWVudCB0YWxrcyAKYWJvdXQgSW50ZWwgTUUgKE1hbmFnZW1lbnQgRW5naW5lKS4KCj4+PiBCdWd6
-aWxsYTogaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMTM2NTEK
-Pj4+IEJ1Z3ppbGxhOiBodHRwczovL2J1Z3ppbGxhLmtlcm5lbC5vcmcvc2hvd19idWcuY2dpP2lk
-PTIxMzM3Nwo+Pj4gRml4ZXM6IGJjN2Y3NWZhOTc4OCAoIk5ldyBwY2ktZXhwcmVzcyBlMTAwMCBk
-cml2ZXIiKTsKPj4+IFNpZ25lZC1vZmYtYnk6IFNhc2hhIE5lZnRpbiA8c2FzaGEubmVmdGluQGlu
-dGVsLmNvbT4KPj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBl
-L2ljaDhsYW4uYyB8IDExICsrKysrKysrKystCj4+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9lMTAwMGUvaWNoOGxhbi5oIHzCoCAzICsrKwo+Pj4gwqAgMiBmaWxlcyBjaGFuZ2VkLCAx
-MyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMgCj4+PiBiL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMKPj4+IGluZGV4IDY2ZDcxOTYzMTBlMi4u
-NWU0ZmM5YjRlMmFkIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-ZTEwMDBlL2ljaDhsYW4uYwo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEw
-MDBlL2ljaDhsYW4uYwo+Pj4gQEAgLTQ4MTMsNyArNDgxMyw3IEBAIHN0YXRpYyBzMzIgZTEwMDBf
-cmVzZXRfaHdfaWNoOGxhbihzdHJ1Y3QgCj4+PiBlMTAwMF9odyAqaHcpCj4+PiDCoCBzdGF0aWMg
-czMyIGUxMDAwX2luaXRfaHdfaWNoOGxhbihzdHJ1Y3QgZTEwMDBfaHcgKmh3KQo+Pj4gwqAgewo+
-Pj4gwqDCoMKgwqDCoCBzdHJ1Y3QgZTEwMDBfbWFjX2luZm8gKm1hYyA9ICZody0+bWFjOwo+Pj4g
-LcKgwqDCoCB1MzIgY3RybF9leHQsIHR4ZGN0bCwgc25vb3A7Cj4+PiArwqDCoMKgIHUzMiBjdHJs
-X2V4dCwgdHhkY3RsLCBzbm9vcCwgZmZsdF9kYmc7Cj4+PiDCoMKgwqDCoMKgIHMzMiByZXRfdmFs
-Owo+Pj4gwqDCoMKgwqDCoCB1MTYgaTsKPj4+IEBAIC00ODcyLDYgKzQ4NzIsMTUgQEAgc3RhdGlj
-IHMzMiBlMTAwMF9pbml0X2h3X2ljaDhsYW4oc3RydWN0IAo+Pj4gZTEwMDBfaHcgKmh3KQo+Pj4g
-wqDCoMKgwqDCoMKgwqDCoMKgIHNub29wID0gKHUzMil+KFBDSUVfTk9fU05PT1BfQUxMKTsKPj4+
-IMKgwqDCoMKgwqAgZTEwMDBlX3NldF9wY2llX25vX3Nub29wKGh3LCBzbm9vcCk7Cj4+PiArwqDC
-oMKgIC8qIEVuYWJsZSB3b3JrYXJvdW5kIGZvciBwYWNrZXQgbG9zcyBpc3N1ZSBvbiBUR1AgUENI
-Cj4+Cj4+IE1heWJlOgo+Pgo+Pj4gV29yayBhcm91bmQgcGFja2V0IGxvc3MgaXNzdWUgb24gVEdQ
-IFBDSCBhbmQgbGF0ZXIKPj4KPj4+ICvCoMKgwqDCoCAqIERvIG5vdCBnYXRlIERNQSBjbG9jayBm
-cm9tIHRoZSBtb2RQSFkgYmxvY2sKPj4+ICvCoMKgwqDCoCAqLwo+Pj4gK8KgwqDCoCBpZiAobWFj
-LT50eXBlID49IGUxMDAwX3BjaF90Z3ApIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBmZmx0X2RiZyA9
-IGVyMzIoRkZMVF9EQkcpOwo+Pgo+PiBNYXliZSB0aGUgdmFyaWFibGUgYGN0cmxfZXh0YCBjb3Vs
-ZCBiZSByZW5hbWVkIHRvIGB0bXBgIG9yIGB0bXAzMmAsIAo+PiBhbmQgcmV1c2VkLgo+IEkgcHJl
-ZmVyIHRvIHN0YXkgd2l0aCBhIG1lYW5pbmdmdWwgbmFtZQoKVW5kZXJzdG9vZC4gSSBrbm93IGl0
-4oCZcyBwZXJzb25hbCBwcmVmZXJlbmNlLgoKPj4+ICvCoMKgwqDCoMKgwqDCoCBmZmx0X2RiZyB8
-PSBFMTAwMF9GRkxUX0RCR19ET05UX0dBVEVfV0FLRV9ETUFfQ0xLOwo+Pj4gK8KgwqDCoMKgwqDC
-oMKgIGV3MzIoRkZMVF9EQkcsIGZmbHRfZGJnKTsKPj4+ICvCoMKgwqAgfQo+Pj4gKwo+Pj4gwqDC
-oMKgwqDCoCBjdHJsX2V4dCA9IGVyMzIoQ1RSTF9FWFQpOwo+Pj4gwqDCoMKgwqDCoCBjdHJsX2V4
-dCB8PSBFMTAwMF9DVFJMX0VYVF9ST19ESVM7Cj4+PiDCoMKgwqDCoMKgIGV3MzIoQ1RSTF9FWFQs
-IGN0cmxfZXh0KTsKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9l
-MTAwMGUvaWNoOGxhbi5oIAo+Pj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
-aWNoOGxhbi5oCj4+PiBpbmRleCBkNmEwOTJlNWVlNzQuLjI1MDRiMTFjMzE2OSAxMDA2NDQKPj4+
-IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmgKPj4+ICsr
-KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmgKPj4+IEBAIC0y
-ODksNiArMjg5LDkgQEAKPj4+IMKgIC8qIFByb3ByaWV0YXJ5IExhdGVuY3kgVG9sZXJhbmNlIFJl
-cG9ydGluZyBQQ0kgQ2FwYWJpbGl0eSAqLwo+Pj4gwqAgI2RlZmluZSBFMTAwMF9QQ0lfTFRSX0NB
-UF9MUFTCoMKgwqDCoMKgwqDCoCAweEE4Cj4+PiArLyogRG9uJ3QgZ2F0ZSB3YWtlIERNQSBjbG9j
-ayAqLwo+Pj4gKyNkZWZpbmUgRTEwMDBfRkZMVF9EQkdfRE9OVF9HQVRFX1dBS0VfRE1BX0NMS8Kg
-wqDCoCAweDEwMDAKPj4+ICsKPj4+IMKgIHZvaWQgZTEwMDBlX3dyaXRlX3Byb3RlY3RfbnZtX2lj
-aDhsYW4oc3RydWN0IGUxMDAwX2h3ICpodyk7Cj4+PiDCoCB2b2lkIGUxMDAwZV9zZXRfa21ybl9s
-b2NrX2xvc3Nfd29ya2Fyb3VuZF9pY2g4bGFuKHN0cnVjdCBlMTAwMF9odyAqaHcsCj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYm9vbCBz
-dGF0ZSk7Cj4+PgoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRl
-bC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Tue, Sep 21, 2021 at 02:14:45PM -0700, Jakub Kicinski wrote:
+> On Tue, 21 Sep 2021 17:58:05 +0300 Ido Schimmel wrote:
+> > > > The only source type above is 'port' with the ability to set the
+> > > > relevant port, but more can be added. Obviously, 'devlink clock show'
+> > > > will give you the current source in addition to other information such
+> > > > as frequency difference with respect to the input frequency.  
+> > > 
+> > > We considered devlink interface for configuring the clock/DPLL, but a
+> > > new concept was born at the list to add a DPLL subsystem that will
+> > > cover more use cases, like a TimeCard.  
+> > 
+> > The reason I suggested devlink is that it is suited for device-wide
+> > configuration and it is already used by both MAC drivers and the
+> > TimeCard driver. If we have a good reason to create a new generic
+> > netlink family for this stuff, then OK.
+> 
+> For NICs mapping between devlink instances and HW is not clear.
+> Most register devlink per PCI dev which usually maps to a Eth port.
+> So if we have one DPLL on a 2 port NIC mapping will get icky, no?
+
+Yes, having to represent the same EEC in multiple devlink instances is
+not nice.
+
+> 
+> Is the motivation to save the boilerplate code associated with new
+> genetlink family or something more? 
+
+I don't mind either way. I simply wanted to understand the motivation
+for not using any existing framework. The above argument is convincing
+enough, IMO.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
