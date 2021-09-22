@@ -1,163 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E6AF4142A4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 09:31:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E8E74143F0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Sep 2021 10:43:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8E61240480;
-	Wed, 22 Sep 2021 07:31:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 25DCD83FEA;
+	Wed, 22 Sep 2021 08:43:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2R6iCeI4ILci; Wed, 22 Sep 2021 07:31:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y1Tr7CpnFGWF; Wed, 22 Sep 2021 08:43:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0ECE540418;
-	Wed, 22 Sep 2021 07:31:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DAA2E83FA5;
+	Wed, 22 Sep 2021 08:43:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 257B91BF3FD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 07:31:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F3D971BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 08:43:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0CA8B4068E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 07:31:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EBACB40268
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 08:43:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X9i4xzQuOsZv for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Sep 2021 07:31:08 +0000 (UTC)
+ with ESMTP id DSL0i2v37mJg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Sep 2021 08:43:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E48204068C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 07:31:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10114"; a="210773521"
-X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="210773521"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Sep 2021 00:31:04 -0700
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F161F4025E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 08:43:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10114"; a="221661406"
+X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="221661406"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Sep 2021 01:43:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="474461308"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by fmsmga007.fm.intel.com with ESMTP; 22 Sep 2021 00:31:04 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Wed, 22 Sep 2021 00:31:04 -0700
-Received: from orsmsx606.amr.corp.intel.com (10.22.229.19) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Wed, 22 Sep 2021 00:31:03 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Wed, 22 Sep 2021 00:31:03 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Wed, 22 Sep 2021 00:31:03 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Pojnu68FkwgTMqULoHD+N8BXeWpFrTHepvUMgnLy/0crgiGBa5Dhp6Zf9fw0ZuaMmNCTdY++5CcfdUPUMrxbDHlyEb07mY5yo6a5YU2FDf/MEBFlKBSsCJGW+//va6bqDLS/x0cWtv4Crjllhl846epHPPQOQtIgtbux8VB7tqxpk9a5/7qv6Smp8/oxvCVAmdi3phKKBwGzOQGeY91daRnANbrkvRil9dhl0F8one1kACJvxTFN19O13Ns6SBFemLU/oqztx6HBUGp9Wms7KbXN0qUemyDfuJz8iV77z6xWUoO14BDqsLsum/JyOefV2NWKfWn6vU5UQnjPabyOug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=c7KRiIxaYLrhONcgX3VTdXe8F4SsPBBKV7hxd2C6Vmg=;
- b=YevAB92Z+2kFyRL5AC/pQ/ML+GorFxszxNsJOJtsjUTZSIAaKH1M26uha9FxoOO22LvBCB0rGE2QsOrlRjzB7AGFsfp7B9nZ3V7H7CvbogTF01MDnMk8c5E3BeZLmoqmihST/olqQ1bsjqJp309Fxjp//2TlzSeFd3nqr61DO2Vzubai658+P0gFXw89u/rJsBWYrcknLI3sK7d2B9mr5bnSTXcDcmTfJeqWZ1CsNMnGjytQ5oMyc3Ymn1dOKyHgtsKEvVC3bLAHEaDIpA/u9iP+BKk37c+v7vHkjnbZlb57jvVALLTL87qMC4X3jSu/7YDbftRZM2k5YBkkxpoY3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=c7KRiIxaYLrhONcgX3VTdXe8F4SsPBBKV7hxd2C6Vmg=;
- b=SypIoOkYrju9xkX5dW7Y/Cd/L0JQeN3TF1pRItL4zdpiiMluLfe7szN+ldUtnIvMm2zBmpK6d/uETUGZABxknhCyUnJndYnamllFAmc/U9qELOnrKTDX9pcAFHo+chGfKiy5XTT10Zd8bXHhBc0YNXk5xIqTu1IBtraJhrpkx7Q=
-Authentication-Results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-Received: from CO1PR11MB4787.namprd11.prod.outlook.com (2603:10b6:303:6e::10)
- by CO1PR11MB5185.namprd11.prod.outlook.com (2603:10b6:303:95::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.13; Wed, 22 Sep
- 2021 07:31:02 +0000
-Received: from CO1PR11MB4787.namprd11.prod.outlook.com
- ([fe80::a07f:5f13:3a27:40d6]) by CO1PR11MB4787.namprd11.prod.outlook.com
- ([fe80::a07f:5f13:3a27:40d6%6]) with mapi id 15.20.4523.018; Wed, 22 Sep 2021
- 07:31:02 +0000
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-References: <20210922065542.3780389-1-sasha.neftin@intel.com>
- <3bbabd03-317f-7bb5-064e-5e2b648ca689@molgen.mpg.de>
-From: Sasha Neftin <sasha.neftin@intel.com>
-Message-ID: <f587f383-c5f3-3f47-9618-e15e2ea0939d@intel.com>
-Date: Wed, 22 Sep 2021 10:30:57 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.14.0
-In-Reply-To: <3bbabd03-317f-7bb5-064e-5e2b648ca689@molgen.mpg.de>
-Content-Language: en-US
-X-ClientProxiedBy: FR0P281CA0063.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:49::11) To CO1PR11MB4787.namprd11.prod.outlook.com
- (2603:10b6:303:6e::10)
+X-IronPort-AV: E=Sophos;i="5.85,313,1624345200"; d="scan'208";a="613317169"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga001.fm.intel.com with ESMTP; 22 Sep 2021 01:43:32 -0700
+Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
+ [172.22.229.137])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 18M8hV8h015654
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Sep 2021 09:43:31 +0100
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 22 Sep 2021 10:43:32 +0200
+Message-Id: <20210922084332.159306-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Received: from [10.185.169.5] (134.191.232.46) by
- FR0P281CA0063.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:49::11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4544.6 via Frontend Transport; Wed, 22 Sep 2021 07:31:01 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: d3071083-a2f0-49b9-3799-08d97d9aedea
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5185:
-X-Microsoft-Antispam-PRVS: <CO1PR11MB5185B4EDE65E1E678D0FCDF497A29@CO1PR11MB5185.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: NPdgyiH6mC2n18Gsq1ruImz6dSk9N0ailNvbvi3B3aedSa2IMJGQCHK5sXXtMBBFketcjHtlrMXX7Rwvm/hUfT6QHkzm5JGZfoHkxE9WV0QZsfxprsTbVauAnOs42PB+Qavdyli+iG/7WfhAK7T1eV/J2HkgdTUVXURc6//zJOBfuEeAbaaiOzXnKUloOjFglWxinRUM9j3WNSZfvTI1YSjz8Ax+JyeT9TEjwT+1Lb0XJg4a5qRvXZ9soWg8uEkoWtxNjtT6FWKMDnqYztja1CJsaac5U6ducDLZkbVpr5tNPh2N8bFrrjAWZM8CtCmhzAcAWSSYoAt2np66thkn/eknvd9JGjIOoRDQlaXMAP2wYG2250ucMOLRQl7rwRGMG3FvXybJt2O140YHSW9thgvAGtVM/j4HDPtwBvBKW+whqUL7qzr+6PPBzX35Liwp/YDb6a9cibvBQiei/wzk/PKd6auk8nbDBQZtSacV0I+XVI3mM2ZdphH7uD3aPx2cHq7oW409l/H8BH3uKWYNoNJYu+6Xa1bsl7AcATCm64lrwWCPwvoAMIFg1YQGM+rUeHDLtM81+d1EOD3aowotuKfm84HuaeZd0Gc+BcNs9PE+FlpEzJMG2bvUttqTn3eOs+2T9wAfCC00ApB7mSBLYJGwBr2wagO5GGWW2/nkxnvGaMI+1WzAtM+FwWGa+yyukIBvvr5H/v873KrZ067yF9Ku8hz4DnDl0rcjCWykJrnAL0OOaGKbwGPaq/Itd4VJhDHqNMU9xaX46HIfixdlyRhkeKmfNESPhpkyqf9FZKFv9nkAosqToYGKPKAUruWOyF/mq7WdEobUSaXBjIrjl6gsWCJ5tG5W2loJ4hN89zzedokMm86m6o5g7cEcEtZ/
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB4787.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(26005)(4326008)(6666004)(66556008)(31696002)(83380400001)(66476007)(5660300002)(16576012)(66946007)(316002)(31686004)(966005)(44832011)(2906002)(6486002)(38100700002)(86362001)(53546011)(186003)(6916009)(8676002)(2616005)(956004)(508600001)(8936002)(36756003)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SWNNSmxyblcvcEJDeitEa29BVlcvZmR3OFhZdU5McVJXbHZXeFc0OVFjYmJs?=
- =?utf-8?B?bkx1N2l4Q1BybGNtdjFqelFqZkh5YlhBNk5EMzBQS04xa2JiT2U5ZTJETmkv?=
- =?utf-8?B?RzhFUE5rQXlSekVya1VQTVJuZ01NQndaVytUZHdWY3B6djRvYVByTVRFYjB4?=
- =?utf-8?B?OWRQczRteHVPRGVRTFc4OFFmL2hpdGVVRGJMRkp2OWJBUFdoeUNuY1B6dHV1?=
- =?utf-8?B?RDJZRjZTbVA4bWMvUVRMZ3V2NTg0ZW9hOFZPWTQ4UnFieEZpUDRvUkx3ejlr?=
- =?utf-8?B?dStwRVdoRHIySzk2NnhOdUFSaVJiTXlKRjdIdkJGNE9RaW93SXBHeHprSlZn?=
- =?utf-8?B?WXMyeVVTWDhtSDdLV20xa0UzOEZiWnJUdXRoZ0o2RE1UWFRzMmhZc1NHU1RJ?=
- =?utf-8?B?MDFjNzF1Q0xIRDh1N0Z2VW9OUjhld2k3dnZlZGZCVDlKTTkvS0JEdXl5Z2V3?=
- =?utf-8?B?SGRLeW9hOVBoeWZlR3YxU3hLMDBQellBNTRpdUlLN2ZPSEtzMHhYeGpRb0Vw?=
- =?utf-8?B?UmZVSU8zK0lQQlBrQlB0S1hrM25EUW5IbXdWVkdQT1c0ZXlpbXZ5M0RsNHht?=
- =?utf-8?B?OXQ2bVU4SjRjay9LNFMySFNZVUFLZzUvNmlqNHdYOVd2cGRmZmZOU0t5MGlj?=
- =?utf-8?B?L0MyaG9UcEtSQ1NMTlliK1hhT3pvRGdueW5aQlZWeW1HRW12akRPVE5WeU4y?=
- =?utf-8?B?Y2M2clhxMEl4WmZ5RWtOeE4xSjRCdHhEZFRqNlJOcXo1S1liY3hhWm0zcnhQ?=
- =?utf-8?B?bmdHT0lXS3RoZVZSZTd5YWtUeUNzLzJ1d2phWGRLa0J4a1puUTZqSERMMHkr?=
- =?utf-8?B?TG9RRzRxcGVwM2tCZkFXcWtUbkRhckFVeXZ0dkg3QVBJTWdNczE2RE45T05C?=
- =?utf-8?B?TkR3dWFrL0NJcjBZc0lkZTYraUQ4RnpqaTR5NThjZWZCK1R3ZHpvYmxiN3Vl?=
- =?utf-8?B?VmcvQUhSNXJFeURQcDhVRWRyV0FobmFMNUxOSTRLWUtCSGd4d2QvdittbzVi?=
- =?utf-8?B?b0pTR1RqNkxTU2JFaFdKSFk1VGl4U3NBZ1lkWDdVRGdCakxDU0dkZ2E0V0Q3?=
- =?utf-8?B?R1ZXYnZNWExOQW5mbWphNkY0aVJyckc2ekdRc24zOTh1bldsUENZZ3JFdXRF?=
- =?utf-8?B?Ty9yRjFST1hIR3d6V0gvdUZYSVJCVE1YeHpHbGdSV2FVcW1qY0pkRzNxQjY1?=
- =?utf-8?B?Nm5pUzhPYmJ1VDBVZ2VrQVhYOWc2aDR3eEtvQmtleWMzdmkvMERHTGErQXJq?=
- =?utf-8?B?dHJrRE02LzRuaGdwdHRsWEpNbkY1cWZ3VHN2aU9KZmltdzNzaEJSdWxyUjBm?=
- =?utf-8?B?T1VoMWlvdDVGdDVoZEJBTzhEMjNWMnZWa1hCWWtKSWtkUHhJczRFbFpGUlVi?=
- =?utf-8?B?bTBNQXF0M3l6RytPQ3NlQ3lZZktvZng2ODBQQVRjTFFVc2NjUWRrakxTZ1ow?=
- =?utf-8?B?NVRpK25ycG1ZcE5PZTFPaEM4RzRrUWF5cWxDY2VDbUw1WXQxeHgvMlNleGhz?=
- =?utf-8?B?blpxN3ZqT080V3pQcGFWdVRiV09WOW5qSzVtN2VmSk9kT1l2TE5YTGdwbml2?=
- =?utf-8?B?S2xjWjlmeTFhSnhhbnkxNERxU1Rhb1Z1QWYwUXFsR3N3anZuTkpyTm1sU2No?=
- =?utf-8?B?TFZwUzB0bksvRW8raFBNUWxDTUh3VVBzenphUSt0UTNuR24vSXlGSVJLL1Rk?=
- =?utf-8?B?N1FpQkRZWGFRS2Y4WlJTMmMxK2tIQVJIeEorc1hHaWFoZmVTYnZBNUJkZnY3?=
- =?utf-8?Q?/kmJ18gGXsfyno0qsYqGLdgUHBN1qW5TzNK/eVv?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: d3071083-a2f0-49b9-3799-08d97d9aedea
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4787.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2021 07:31:02.0228 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: vN96JDWcDvFqX5GihD3ovtY6oN25ErFm2DrOSqBs0QfORV1MNpFRxeI3OlxDN3JxxUSqPigtmKGkXEWs1vzRrg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5185
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v1 2/2] e1000e: Fixing packet loss
- issues on new platforms
+Subject: [Intel-wired-lan] [PATCH net-next v3] ice: Manage act flags for
+ switchdev offloads
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -170,74 +65,263 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gOS8yMi8yMDIxIDEwOjA5LCBQYXVsIE1lbnplbCB3cm90ZToKPiBEZWFyIFNhc2hhLAo+IAo+
-IAo+IFRIYW5rIHlvdSBmb3IgdGhlIHBhdGNoLgo+IAo+IEFtIDIyLjA5LjIxIHVtIDA4OjU1IHNj
-aHJpZWIgU2FzaGEgTmVmdGluOgo+IAo+IFBsZWFzZSB1c2UgaW1wZXJhdGl2ZSBtb29kIGluIHRo
-ZSBjb21taXQgbWVzc2FnZSBzdW1tYXJ5OiBGaXgg4oCmLiBNYXliZToKPiAKPiBlMTAwMGU6IEZp
-eCBwYWNrZXQgbG9zcyBvbiBUaWdlciBMYWtlIGFuZCBsYXRlcgo+IAo+PiBVcGRhdGUgdGhlIEhX
-IE1BQyBpbml0aWFsaXphdGlvbiBmbG93LiBEbyBub3QgZ2F0ZSBETUEgY2xvY2sgZnJvbQo+PiB0
-aGUgbW9kUEhZIGJsb2NrLiBLZWVwaW5nIHRoaXMgY2xvY2sgd2lsbCBwcmV2ZW50IGRyb3AgcGFj
-a2V0cyBzZW50Cj4gCj4gZHJvcHBlZAo+IAo+PiBpbiBidXJzdCBtb2RlIG9uIHRoZSBLdW1lcmFu
-IGludGVyZmFjZS4KPiAKPiBXaGF0IGlzIEt1bWVyYW4/CmludGVyZmFjZSB0byBleHRlcm5hbCBH
-aWdhYml0IEV0aGVybmV0IFBIWQo+IAo+IFdoZXJlIGlzIHRoZSBuZXcgSFcgTUFDIGluaXRpYWxp
-emF0aW9uIGZsb3cgZG9jdW1lbnRlZD8gVGhlIHNwZWMgb3Igc29tZSAKPiBlcnJhdGE/Cj4gCj4g
-SG93IGNhbiB0aGUgYnVnIGJlIHJlcHJvZHVjZWQ/CkRlc2NyaWJlZCBpbiBidWd6aWxsYSAtIHBs
-ZWFzZSwgbWFrZSBzdXJlIHRoZSBidXJzdCB0cmFmZmljOgpydW4gY29tbWFuZHM6CnRjIHFkaXNj
-IGFkZCBkZXYgZW5vMSAobGFuIGRldmljZSBuYW1lKSByb290IG5ldGVtIGRlbGF5IDUgbXMgb24g
-Y2xpZW50IHNpZGUKaXBlcmYgLXMgb24gc2VydmVyIHNpZGUKaXBlcmYgLWMgc2VydmVyX0lQIC1S
-IG9uIGNsaWVudCBzaWRlCj4gCj4+IEJ1Z3ppbGxhOiBodHRwczovL2J1Z3ppbGxhLmtlcm5lbC5v
-cmcvc2hvd19idWcuY2dpP2lkPTIxMzY1MQo+PiBCdWd6aWxsYTogaHR0cHM6Ly9idWd6aWxsYS5r
-ZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMTMzNzcKPj4gRml4ZXM6IGJjN2Y3NWZhOTc4OCAo
-Ik5ldyBwY2ktZXhwcmVzcyBlMTAwMCBkcml2ZXIiKTsKPj4gU2lnbmVkLW9mZi1ieTogU2FzaGEg
-TmVmdGluIDxzYXNoYS5uZWZ0aW5AaW50ZWwuY29tPgo+PiAtLS0KPj4gwqAgZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uYyB8IDExICsrKysrKysrKystCj4+IMKgIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmggfMKgIDMgKysrCj4+IMKg
-IDIgZmlsZXMgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uYyAK
-Pj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jCj4+IGluZGV4
-IDY2ZDcxOTYzMTBlMi4uNWU0ZmM5YjRlMmFkIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jCj4+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMKPj4gQEAgLTQ4MTMsNyArNDgxMyw3IEBAIHN0YXRp
-YyBzMzIgZTEwMDBfcmVzZXRfaHdfaWNoOGxhbihzdHJ1Y3QgCj4+IGUxMDAwX2h3ICpodykKPj4g
-wqAgc3RhdGljIHMzMiBlMTAwMF9pbml0X2h3X2ljaDhsYW4oc3RydWN0IGUxMDAwX2h3ICpodykK
-Pj4gwqAgewo+PiDCoMKgwqDCoMKgIHN0cnVjdCBlMTAwMF9tYWNfaW5mbyAqbWFjID0gJmh3LT5t
-YWM7Cj4+IC3CoMKgwqAgdTMyIGN0cmxfZXh0LCB0eGRjdGwsIHNub29wOwo+PiArwqDCoMKgIHUz
-MiBjdHJsX2V4dCwgdHhkY3RsLCBzbm9vcCwgZmZsdF9kYmc7Cj4+IMKgwqDCoMKgwqAgczMyIHJl
-dF92YWw7Cj4+IMKgwqDCoMKgwqAgdTE2IGk7Cj4+IEBAIC00ODcyLDYgKzQ4NzIsMTUgQEAgc3Rh
-dGljIHMzMiBlMTAwMF9pbml0X2h3X2ljaDhsYW4oc3RydWN0IAo+PiBlMTAwMF9odyAqaHcpCj4+
-IMKgwqDCoMKgwqDCoMKgwqDCoCBzbm9vcCA9ICh1MzIpfihQQ0lFX05PX1NOT09QX0FMTCk7Cj4+
-IMKgwqDCoMKgwqAgZTEwMDBlX3NldF9wY2llX25vX3Nub29wKGh3LCBzbm9vcCk7Cj4+ICvCoMKg
-wqAgLyogRW5hYmxlIHdvcmthcm91bmQgZm9yIHBhY2tldCBsb3NzIGlzc3VlIG9uIFRHUCBQQ0gK
-PiAKPiBNYXliZToKPiAKPj4gV29yayBhcm91bmQgcGFja2V0IGxvc3MgaXNzdWUgb24gVEdQIFBD
-SCBhbmQgbGF0ZXIKPiAKPj4gK8KgwqDCoMKgICogRG8gbm90IGdhdGUgRE1BIGNsb2NrIGZyb20g
-dGhlIG1vZFBIWSBibG9jawo+PiArwqDCoMKgwqAgKi8KPj4gK8KgwqDCoCBpZiAobWFjLT50eXBl
-ID49IGUxMDAwX3BjaF90Z3ApIHsKPj4gK8KgwqDCoMKgwqDCoMKgIGZmbHRfZGJnID0gZXIzMihG
-RkxUX0RCRyk7Cj4gCj4gTWF5YmUgdGhlIHZhcmlhYmxlIGBjdHJsX2V4dGAgY291bGQgYmUgcmVu
-YW1lZCB0byBgdG1wYCBvciBgdG1wMzJgLCBhbmQgCj4gcmV1c2VkLgpJIHByZWZlciB0byBzdGF5
-IHdpdGggYSBtZWFuaW5nZnVsIG5hbWUKPiAKPj4gK8KgwqDCoMKgwqDCoMKgIGZmbHRfZGJnIHw9
-IEUxMDAwX0ZGTFRfREJHX0RPTlRfR0FURV9XQUtFX0RNQV9DTEs7Cj4+ICvCoMKgwqDCoMKgwqDC
-oCBldzMyKEZGTFRfREJHLCBmZmx0X2RiZyk7Cj4+ICvCoMKgwqAgfQo+PiArCj4+IMKgwqDCoMKg
-wqAgY3RybF9leHQgPSBlcjMyKENUUkxfRVhUKTsKPj4gwqDCoMKgwqDCoCBjdHJsX2V4dCB8PSBF
-MTAwMF9DVFJMX0VYVF9ST19ESVM7Cj4+IMKgwqDCoMKgwqAgZXczMihDVFJMX0VYVCwgY3RybF9l
-eHQpOwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2lj
-aDhsYW4uaCAKPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5o
-Cj4+IGluZGV4IGQ2YTA5MmU1ZWU3NC4uMjUwNGIxMWMzMTY5IDEwMDY0NAo+PiAtLS0gYS9kcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5oCj4+ICsrKyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmgKPj4gQEAgLTI4OSw2ICsyODksOSBA
-QAo+PiDCoCAvKiBQcm9wcmlldGFyeSBMYXRlbmN5IFRvbGVyYW5jZSBSZXBvcnRpbmcgUENJIENh
-cGFiaWxpdHkgKi8KPj4gwqAgI2RlZmluZSBFMTAwMF9QQ0lfTFRSX0NBUF9MUFTCoMKgwqDCoMKg
-wqDCoCAweEE4Cj4+ICsvKiBEb24ndCBnYXRlIHdha2UgRE1BIGNsb2NrICovCj4+ICsjZGVmaW5l
-IEUxMDAwX0ZGTFRfREJHX0RPTlRfR0FURV9XQUtFX0RNQV9DTEvCoMKgwqAgMHgxMDAwCj4+ICsK
-Pj4gwqAgdm9pZCBlMTAwMGVfd3JpdGVfcHJvdGVjdF9udm1faWNoOGxhbihzdHJ1Y3QgZTEwMDBf
-aHcgKmh3KTsKPj4gwqAgdm9pZCBlMTAwMGVfc2V0X2ttcm5fbG9ja19sb3NzX3dvcmthcm91bmRf
-aWNoOGxhbihzdHJ1Y3QgZTEwMDBfaHcgKmh3LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYm9vbCBzdGF0ZSk7Cj4+Cl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWls
-aW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wu
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Currently it is not possible to set/unset lb_en and lan_en flags
+for advanced rules during their creation. Both flags are enabled
+by default. In case of switchdev offloads for egress traffic we
+need lb_en to be disabled. Because of that, we work around it by
+updating the rule immediately after its creation.
+
+This change allows us to set/unset those flags right away and it
+gets rid of old workaround as well. Using ice_adv_rule_flags_info
+structure we can pass info about flags we want to be set for
+a given advanced rule. Flags are stored in flags_info.act.
+Values from act would be used only if act_valid was set to true,
+otherwise default values would be used.
+
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_fltr.c   | 127 --------------------
+ drivers/net/ethernet/intel/ice/ice_fltr.h   |   4 -
+ drivers/net/ethernet/intel/ice/ice_switch.c |   9 +-
+ drivers/net/ethernet/intel/ice/ice_switch.h |  11 ++
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c |   8 +-
+ 5 files changed, 21 insertions(+), 138 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.c b/drivers/net/ethernet/intel/ice/ice_fltr.c
+index f22ca4354f84..e49378893390 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fltr.c
++++ b/drivers/net/ethernet/intel/ice/ice_fltr.c
+@@ -509,133 +509,6 @@ static u32 ice_fltr_build_action(u16 vsi_id)
+ 		ICE_SINGLE_ACT_VSI_FORWARDING | ICE_SINGLE_ACT_VALID_BIT;
+ }
+ 
+-/**
+- * ice_fltr_find_adv_entry - find advanced rule
+- * @rules: list of rules
+- * @rule_id: id of wanted rule
+- */
+-static struct ice_adv_fltr_mgmt_list_entry *
+-ice_fltr_find_adv_entry(struct list_head *rules, u16 rule_id)
+-{
+-	struct ice_adv_fltr_mgmt_list_entry *entry;
+-
+-	list_for_each_entry(entry, rules, list_entry) {
+-		if (entry->rule_info.fltr_rule_id == rule_id)
+-			return entry;
+-	}
+-
+-	return NULL;
+-}
+-
+-/**
+- * ice_fltr_update_adv_rule_flags - update flags on advanced rule
+- * @vsi: pointer to VSI
+- * @recipe_id: id of recipe
+- * @entry: advanced rule entry
+- * @new_flags: flags to update
+- */
+-static enum ice_status
+-ice_fltr_update_adv_rule_flags(struct ice_vsi *vsi, u16 recipe_id,
+-			       struct ice_adv_fltr_mgmt_list_entry *entry,
+-			       u32 new_flags)
+-{
+-	struct ice_adv_rule_info *info = &entry->rule_info;
+-	struct ice_sw_act_ctrl *act = &info->sw_act;
+-	u32 action;
+-
+-	if (act->fltr_act != ICE_FWD_TO_VSI)
+-		return ICE_ERR_NOT_SUPPORTED;
+-
+-	action = ice_fltr_build_action(act->fwd_id.hw_vsi_id);
+-
+-	return ice_fltr_update_rule_flags(&vsi->back->hw, info->fltr_rule_id,
+-					  recipe_id, action, info->sw_act.flag,
+-					  act->src, new_flags);
+-}
+-
+-/**
+- * ice_fltr_find_regular_entry - find regular rule
+- * @rules: list of rules
+- * @rule_id: id of wanted rule
+- */
+-static struct ice_fltr_mgmt_list_entry *
+-ice_fltr_find_regular_entry(struct list_head *rules, u16 rule_id)
+-{
+-	struct ice_fltr_mgmt_list_entry *entry;
+-
+-	list_for_each_entry(entry, rules, list_entry) {
+-		if (entry->fltr_info.fltr_rule_id == rule_id)
+-			return entry;
+-	}
+-
+-	return NULL;
+-}
+-
+-/**
+- * ice_fltr_update_regular_rule - update flags on regular rule
+- * @vsi: pointer to VSI
+- * @recipe_id: id of recipe
+- * @entry: regular rule entry
+- * @new_flags: flags to update
+- */
+-static enum ice_status
+-ice_fltr_update_regular_rule(struct ice_vsi *vsi, u16 recipe_id,
+-			     struct ice_fltr_mgmt_list_entry *entry,
+-			     u32 new_flags)
+-{
+-	struct ice_fltr_info *info = &entry->fltr_info;
+-	u32 action;
+-
+-	if (info->fltr_act != ICE_FWD_TO_VSI)
+-		return ICE_ERR_NOT_SUPPORTED;
+-
+-	action = ice_fltr_build_action(info->fwd_id.hw_vsi_id);
+-
+-	return ice_fltr_update_rule_flags(&vsi->back->hw, info->fltr_rule_id,
+-					  recipe_id, action, info->flag,
+-					  info->src, new_flags);
+-}
+-
+-/**
+- * ice_fltr_update_flags - update flags on rule
+- * @vsi: pointer to VSI
+- * @rule_id: id of rule
+- * @recipe_id: id of recipe
+- * @new_flags: flags to update
+- *
+- * Function updates flags on regular and advance rule.
+- *
+- * Flags should be a combination of ICE_SINGLE_ACT_LB_ENABLE and
+- * ICE_SINGLE_ACT_LAN_ENABLE.
+- */
+-enum ice_status
+-ice_fltr_update_flags(struct ice_vsi *vsi, u16 rule_id, u16 recipe_id,
+-		      u32 new_flags)
+-{
+-	struct ice_adv_fltr_mgmt_list_entry *adv_entry;
+-	struct ice_fltr_mgmt_list_entry *regular_entry;
+-	struct ice_hw *hw = &vsi->back->hw;
+-	struct ice_sw_recipe *recp_list;
+-	struct list_head *fltr_rules;
+-
+-	recp_list = &hw->switch_info->recp_list[recipe_id];
+-	if (!recp_list)
+-		return ICE_ERR_DOES_NOT_EXIST;
+-
+-	fltr_rules = &recp_list->filt_rules;
+-	regular_entry = ice_fltr_find_regular_entry(fltr_rules, rule_id);
+-	if (regular_entry)
+-		return ice_fltr_update_regular_rule(vsi, recipe_id,
+-						    regular_entry, new_flags);
+-
+-	adv_entry = ice_fltr_find_adv_entry(fltr_rules, rule_id);
+-	if (adv_entry)
+-		return ice_fltr_update_adv_rule_flags(vsi, recipe_id,
+-						      adv_entry, new_flags);
+-
+-	return ICE_ERR_DOES_NOT_EXIST;
+-}
+-
+ /**
+  * ice_fltr_update_flags_dflt_rule - update flags on default rule
+  * @vsi: pointer to VSI
+diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.h b/drivers/net/ethernet/intel/ice/ice_fltr.h
+index 339da5fef577..db59cbbeda32 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fltr.h
++++ b/drivers/net/ethernet/intel/ice/ice_fltr.h
+@@ -46,10 +46,6 @@ enum ice_status
+ ice_fltr_remove_eth(struct ice_vsi *vsi, u16 ethertype, u16 flag,
+ 		    enum ice_sw_fwd_act_type action);
+ void ice_fltr_remove_all(struct ice_vsi *vsi);
+-
+-enum ice_status
+-ice_fltr_update_flags(struct ice_vsi *vsi, u16 rule_id, u16 recipe_id,
+-		      u32 new_flags);
+ enum ice_status
+ ice_fltr_update_flags_dflt_rule(struct ice_vsi *vsi, u16 rule_id, u8 direction,
+ 				u32 new_flags);
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index ca039a4c3a79..1bbb52bf2279 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -4841,7 +4841,14 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	s_rule = kzalloc(rule_buf_sz, GFP_KERNEL);
+ 	if (!s_rule)
+ 		return ICE_ERR_NO_MEMORY;
+-	act |= ICE_SINGLE_ACT_LB_ENABLE | ICE_SINGLE_ACT_LAN_ENABLE;
++	if (!rinfo->flags_info.act_valid) {
++		act |= ICE_SINGLE_ACT_LAN_ENABLE;
++		act |= ICE_SINGLE_ACT_LB_ENABLE;
++	} else {
++		act |= rinfo->flags_info.act & (ICE_SINGLE_ACT_LAN_ENABLE |
++						ICE_SINGLE_ACT_LB_ENABLE);
++	}
++
+ 	switch (rinfo->sw_act.fltr_act) {
+ 	case ICE_FWD_TO_VSI:
+ 		act |= (rinfo->sw_act.fwd_id.hw_vsi_id <<
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index cd5421a41002..c03a6dfcc5fb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -169,11 +169,22 @@ struct ice_rule_query_data {
+ 	u16 vsi_handle;
+ };
+ 
++/* This structure allows to pass info about lb_en and lan_en
++ * flags to ice_add_adv_rule. Values in act would be used
++ * only if act_valid was set to true, otherwise default
++ * values would be used.
++ */
++struct ice_adv_rule_flags_info {
++	u32 act;
++	u8 act_valid;		/* indicate if flags in act are valid */
++};
++
+ struct ice_adv_rule_info {
+ 	struct ice_sw_act_ctrl sw_act;
+ 	u32 priority;
+ 	u8 rx; /* true means LOOKUP_RX otherwise LOOKUP_TX */
+ 	u16 fltr_rule_id;
++	struct ice_adv_rule_flags_info flags_info;
+ };
+ 
+ /* A collection of one or more four word recipe */
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index e01b16419923..5e132832044d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -274,6 +274,8 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
+ 		rule_info.sw_act.flag |= ICE_FLTR_TX;
+ 		rule_info.sw_act.src = vsi->idx;
+ 		rule_info.rx = false;
++		rule_info.flags_info.act = ICE_SINGLE_ACT_LAN_ENABLE;
++		rule_info.flags_info.act_valid = true;
+ 	}
+ 
+ 	/* specify the cookie as filter_rule_id */
+@@ -296,12 +298,6 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
+ 	fltr->rid = rule_added.rid;
+ 	fltr->rule_id = rule_added.rule_id;
+ 
+-	if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS) {
+-		if (ice_fltr_update_flags(vsi, fltr->rule_id, fltr->rid,
+-					  ICE_SINGLE_ACT_LAN_ENABLE))
+-			ice_rem_adv_rule_by_id(hw, &rule_added);
+-	}
+-
+ exit:
+ 	kfree(list);
+ 	return ret;
+-- 
+2.31.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
