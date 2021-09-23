@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73B3E41677D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 23:31:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1059F41677E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 23:31:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DAE8340425;
-	Thu, 23 Sep 2021 21:31:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9598584142;
+	Thu, 23 Sep 2021 21:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3y5dR67BLVMz; Thu, 23 Sep 2021 21:31:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CnlKmEqojViu; Thu, 23 Sep 2021 21:31:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6E6D440249;
-	Thu, 23 Sep 2021 21:31:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7980D840D0;
+	Thu, 23 Sep 2021 21:31:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 295251BF317
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:12:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 21BEA1BF317
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:24:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 135A16064B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:12:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0799E40162
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=broadcom.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6BWJfHlnY9wY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Sep 2021 21:12:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rWkE5QYcAk7e for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Sep 2021 21:24:15 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
- [IPv6:2607:f8b0:4864:20::b35])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EFC2C60624
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:12:17 +0000 (UTC)
-Received: by mail-yb1-xb35.google.com with SMTP id i12so1204334ybq.9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 14:12:17 -0700 (PDT)
+Received: from mail-yb1-xb32.google.com (mail-yb1-xb32.google.com
+ [IPv6:2607:f8b0:4864:20::b32])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C0902400F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 21:24:15 +0000 (UTC)
+Received: by mail-yb1-xb32.google.com with SMTP id f133so1274586yba.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 14:24:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e4I0eibrZ4QXFLaZnyg/T68NEGU52nG0wW6n1XbQIjQ=;
- b=dG37ybSuZM/2PWO2WUAlCFTgei4CWvCR+/3V/ba5AqbouIgMtK6R/N88t2fL6e8ES2
- HXlfmDfLIxlNVt61DT2aeO3iHi1ERInV9PLlsO/SPeZ8qseDFM20DxIJnOXzZymLl5ma
- Sf4KMe1TIhD6jwCpVfOKcATIO++tuc9tkqgIc=
+ :cc; bh=4NFD50f4D8OM/NybzmgBINAYXaCydfgGt6oGYeUyWVM=;
+ b=a01KcFjfZE09aHK//1COGS+XgNwDx2f7ZNE1rGu2p5KFmmN7BH3qDdeknK+KiHCmF8
+ l8FgeRboJYMsUN2OmKIWF9+qycX0wTwfirMsltIADGBAYuiRn8JvgxQiJCksG6iyd6NC
+ 7VNJFgLAbEll/y3DRc7wUIlZ9cWX089qCdBZ4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=e4I0eibrZ4QXFLaZnyg/T68NEGU52nG0wW6n1XbQIjQ=;
- b=a5TOUMPgkZ4nOCybizYw8XYCyO4btn7cKPDQDHYwdf84IVnAkm2RUmdZOZnPo5Cxzq
- jYpboKRTdU5ZATJB/q967Aeg7FzlFgVTutK0PytiSsGjSuF7zrjT1kUsUg7k6gAWfgl+
- mm13055WgUl3NmUPeCx8owUGEC37h77H394HLpeIX32JVEtde2Efsjj5z+91w54ALGVi
- iKLeqEW2Hmwv8bSX1epPnSmJENCugRDQwTVCEdEpnZeHYGnQd0r+fcgu4eeNBrh3ppdp
- WTXu0JEhilMY5zQ2mwj6dUIiF6UCkqzwJBCWibl06ZDPDBjGja3nx4RyKuEgaypdldMW
- 4jdQ==
-X-Gm-Message-State: AOAM533qZo1xDaVM0tdZW6A8eeG1jSOtQeqFm7i+KnMDXgRTkEwdPcM+
- 4sGQssAVSFxwcD+s5iQZOx+AFxNE+vct06JQ/brLEw==
-X-Google-Smtp-Source: ABdhPJzPbZJuTOrMwImBU82x1iGNKaxl7ZrrpRIXcHLQEZ89VXGY0DTN1rpeXB3OFka4syEsC81GUEXozb35nSZ2MSQ=
-X-Received: by 2002:a25:748c:: with SMTP id p134mr7788992ybc.361.1632431536689; 
- Thu, 23 Sep 2021 14:12:16 -0700 (PDT)
+ bh=4NFD50f4D8OM/NybzmgBINAYXaCydfgGt6oGYeUyWVM=;
+ b=3+uH5fGXZbt/GQdSfY5Tlx3D8Gnpgn4tpFVKLiYz38KMOqtIl36vRt2JgMSzAGWxDI
+ VbXN0xf5SFhxioxll2N5MoCr31Y7pw6T6JreeUPSPkLl+4E2oBNLBbvkub6jdJUBhyaO
+ t5iKAmqhE6Cx6QqAl+5XbY6VJakaIselKyJPFeMjqoh08ZXJTPDEoaE7ggoLzQHbYtBv
+ T9PdvaTJ1919CpiaM8mgskDybYqjqjaiROYuXrfoxalgrnNoF5RRakyL41Of6SZ7IVLa
+ QUSG27NMaa251qq3uc4npDT8VvYL4tHpYbX+dpxkUnv9vT+47PWtBGVUvVvb+ImLPJGn
+ fE9w==
+X-Gm-Message-State: AOAM530S8Mjh3Hzo53NDjJzpf1tBu+UfsrAwiDPmRTGmNIJHFB3XRJE1
+ 34o3eYRJ0md4r6rxPk7CR+2gsdts10r55O2tzP24fg==
+X-Google-Smtp-Source: ABdhPJyZItCG+2qGFbPGCky+CLR7O1xm1lchqIXJehrltvrT3SdTl4WvTGugSEg3MJCKJkRphhP5e6yaOzEESqTdIa0=
+X-Received: by 2002:a25:81c5:: with SMTP id n5mr8514500ybm.276.1632432254531; 
+ Thu, 23 Sep 2021 14:24:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1632420430.git.leonro@nvidia.com>
- <e7708737fadf4fe6f152afc76145c728c201adad.1632420430.git.leonro@nvidia.com>
-In-Reply-To: <e7708737fadf4fe6f152afc76145c728c201adad.1632420430.git.leonro@nvidia.com>
+ <7b85ce0d2a5056af2c7e14dbd16c55d86aac659c.1632420431.git.leonro@nvidia.com>
+In-Reply-To: <7b85ce0d2a5056af2c7e14dbd16c55d86aac659c.1632420431.git.leonro@nvidia.com>
 From: Edwin Peer <edwin.peer@broadcom.com>
-Date: Thu, 23 Sep 2021 14:11:40 -0700
-Message-ID: <CAKOOJTz4A2ER8MQE1dW27Spocds09SYafjeuLcFDJ0nL6mKyOw@mail.gmail.com>
+Date: Thu, 23 Sep 2021 14:23:38 -0700
+Message-ID: <CAKOOJTzz1Pp9CYCWAO=gi3099xy2oBtdREp8iOftVzKqEC0hvQ@mail.gmail.com>
 To: Leon Romanovsky <leon@kernel.org>
 X-Mailman-Approved-At: Thu, 23 Sep 2021 21:31:15 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/6] bnxt_en: Check devlink
- allocation and registration status
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/6] bnxt_en: Properly remove
+ port parameter support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,137 +106,60 @@ On Thu, Sep 23, 2021 at 11:13 AM Leon Romanovsky <leon@kernel.org> wrote:
 >
 > From: Leon Romanovsky <leonro@nvidia.com>
 >
-> devlink is a software interface that doesn't depend on any hardware
-> capabilities. The failure in SW means memory issues, wrong parameters,
-> programmer error e.t.c.
+> This driver doesn't have any port parameters and registers
+> devlink port parameters with empty table. Remove the useless
+> calls to devlink_port_params_register and _unregister.
 >
-> Like any other such interface in the kernel, the returned status of
-> devlink APIs should be checked and propagated further and not ignored.
->
-> Fixes: 4ab0c6a8ffd7 ("bnxt_en: add support to enable VF-representors")
+> Fixes: da203dfa89ce ("Revert "devlink: Add a generic wake_on_lan port parameter"")
 > Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 > ---
->  drivers/net/ethernet/broadcom/bnxt/bnxt.c         |  5 ++++-
->  drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c | 13 ++++++-------
->  drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h | 13 -------------
->  3 files changed, 10 insertions(+), 21 deletions(-)
->
-> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> index 037767b370d5..4c483fd91dbe 100644
-> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> @@ -13370,7 +13370,9 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
->         }
->
->         bnxt_inv_fw_health_reg(bp);
-> -       bnxt_dl_register(bp);
-> +       rc = bnxt_dl_register(bp);
-> +       if (rc)
-> +               goto init_err_dl;
->
->         rc = register_netdev(dev);
->         if (rc)
-> @@ -13390,6 +13392,7 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
->
->  init_err_cleanup:
->         bnxt_dl_unregister(bp);
-> +init_err_dl:
->         bnxt_shutdown_tc(bp);
->         bnxt_clear_int_mode(bp);
+>  drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c | 13 -------------
+>  1 file changed, 13 deletions(-)
 >
 > diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-> index bf7d3c17049b..dc0851f709f5 100644
+> index dc0851f709f5..ed95e28d60ef 100644
 > --- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
 > +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-> @@ -134,7 +134,7 @@ void bnxt_dl_fw_reporters_create(struct bnxt *bp)
+> @@ -736,9 +736,6 @@ static const struct devlink_param bnxt_dl_params[] = {
+>                              NULL),
+>  };
+>
+> -static const struct devlink_param bnxt_dl_port_params[] = {
+> -};
+> -
+>  static int bnxt_dl_params_register(struct bnxt *bp)
 >  {
->         struct bnxt_fw_health *health = bp->fw_health;
->
-> -       if (!bp->dl || !health)
-> +       if (!health)
->                 return;
->
->         if (!(bp->fw_cap & BNXT_FW_CAP_HOT_RESET) || health->fw_reset_reporter)
-> @@ -188,7 +188,7 @@ void bnxt_dl_fw_reporters_destroy(struct bnxt *bp, bool all)
->  {
->         struct bnxt_fw_health *health = bp->fw_health;
->
-> -       if (!bp->dl || !health)
-> +       if (!health)
->                 return;
->
->         if ((all || !(bp->fw_cap & BNXT_FW_CAP_HOT_RESET)) &&
-> @@ -781,6 +781,7 @@ int bnxt_dl_register(struct bnxt *bp)
->  {
->         const struct devlink_ops *devlink_ops;
->         struct devlink_port_attrs attrs = {};
-> +       struct bnxt_dl *bp_dl;
->         struct devlink *dl;
 >         int rc;
->
-> @@ -795,7 +796,9 @@ int bnxt_dl_register(struct bnxt *bp)
->                 return -ENOMEM;
+> @@ -753,14 +750,6 @@ static int bnxt_dl_params_register(struct bnxt *bp)
+>                             rc);
+>                 return rc;
 >         }
->
-> -       bnxt_link_bp_to_dl(bp, dl);
-> +       bp->dl = dl;
-> +       bp_dl = devlink_priv(dl);
-> +       bp_dl->bp = bp;
->
->         /* Add switchdev eswitch mode setting, if SRIOV supported */
->         if (pci_find_ext_capability(bp->pdev, PCI_EXT_CAP_ID_SRIOV) &&
-> @@ -826,7 +829,6 @@ int bnxt_dl_register(struct bnxt *bp)
->  err_dl_port_unreg:
->         devlink_port_unregister(&bp->dl_port);
->  err_dl_free:
-> -       bnxt_link_bp_to_dl(bp, NULL);
->         devlink_free(dl);
->         return rc;
->  }
-> @@ -835,9 +837,6 @@ void bnxt_dl_unregister(struct bnxt *bp)
->  {
->         struct devlink *dl = bp->dl;
->
-> -       if (!dl)
-> -               return;
-> -
-
-minor nit: There's obviously nothing incorrect about doing this (and
-adding the additional error label in the cleanup code above), but bnxt
-has generally adopted a style of having cleanup functions being
-idempotent. It generally makes error handling simpler and less error
-prone.
-
->         if (BNXT_PF(bp)) {
->                 bnxt_dl_params_unregister(bp);
->                 devlink_port_unregister(&bp->dl_port);
-> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
-> index d889f240da2b..406dc655a5fc 100644
-> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
-> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
-> @@ -20,19 +20,6 @@ static inline struct bnxt *bnxt_get_bp_from_dl(struct devlink *dl)
->         return ((struct bnxt_dl *)devlink_priv(dl))->bp;
->  }
->
-> -/* To clear devlink pointer from bp, pass NULL dl */
-> -static inline void bnxt_link_bp_to_dl(struct bnxt *bp, struct devlink *dl)
-> -{
-> -       bp->dl = dl;
-> -
-> -       /* add a back pointer in dl to bp */
-> -       if (dl) {
-> -               struct bnxt_dl *bp_dl = devlink_priv(dl);
-> -
-> -               bp_dl->bp = bp;
+> -       rc = devlink_port_params_register(&bp->dl_port, bnxt_dl_port_params,
+> -                                         ARRAY_SIZE(bnxt_dl_port_params));
+> -       if (rc) {
+> -               netdev_err(bp->dev, "devlink_port_params_register failed\n");
+> -               devlink_params_unregister(bp->dl, bnxt_dl_params,
+> -                                         ARRAY_SIZE(bnxt_dl_params));
+> -               return rc;
 > -       }
-> -}
-> -
->  #define NVM_OFF_MSIX_VEC_PER_PF_MAX    108
->  #define NVM_OFF_MSIX_VEC_PER_PF_MIN    114
->  #define NVM_OFF_IGNORE_ARI             164
+>         devlink_params_publish(bp->dl);
+>
+>         return 0;
+> @@ -773,8 +762,6 @@ static void bnxt_dl_params_unregister(struct bnxt *bp)
+>
+>         devlink_params_unregister(bp->dl, bnxt_dl_params,
+>                                   ARRAY_SIZE(bnxt_dl_params));
+> -       devlink_port_params_unregister(&bp->dl_port, bnxt_dl_port_params,
+> -                                      ARRAY_SIZE(bnxt_dl_port_params));
+>  }
+>
+>  int bnxt_dl_register(struct bnxt *bp)
 > --
 > 2.31.1
 >
+
+Ah, looks like the revert in da203dfa89ce wasn't complete. Thanks for
+the cleanup.
 
 Reviewed-by: Edwin Peer <edwin.peer@broadcom.com>
 
