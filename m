@@ -2,57 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 811624164E0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 20:13:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DBBC84164E1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 20:13:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C1E64158F;
-	Thu, 23 Sep 2021 18:13:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 74AA741613;
+	Thu, 23 Sep 2021 18:13:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u7EmEY7cF2_z; Thu, 23 Sep 2021 18:13:04 +0000 (UTC)
+	with ESMTP id ijf_R2TomvKp; Thu, 23 Sep 2021 18:13:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2AE194148C;
-	Thu, 23 Sep 2021 18:13:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 39BBD415AB;
+	Thu, 23 Sep 2021 18:13:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1059C1BF389
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:00 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B0381BF389
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EC9DB400B5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:12:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 361BF60ADB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5U55C1uF67Vr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Sep 2021 18:12:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Yk9ma877oVS6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Sep 2021 18:13:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4CB624000B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:12:59 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3820360F43;
- Thu, 23 Sep 2021 18:12:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 91B7D60774
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:02 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7F3C6610C8;
+ Thu, 23 Sep 2021 18:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632420778;
- bh=mXvrfKC+e6Fp2msO1e9dvOO8RC/ii9We36xFgFUas8g=;
- h=From:To:Cc:Subject:Date:From;
- b=QqLZnuaHT8QqfyojGiczmUWMS8siMAdkDvolM75Q84+AiRhzknbPi0WqWHzhE5p33
- xJdzMF2B52hs/UCKQtZikWC/1/BbqRTc3EQzYJaJMJJLZ5s9Zv4FpRw1eFkajMMV4f
- t5sRXEGpTVHlZBxkIetdwTAE1b0fJihXnA5wUMUr02maJeFpYrE3IprsIPH+joGpL/
- pci6nd0BgQZd3FXo2vRMQevQK5B/munYkvA9GajE4nIKkNWPiBRAlIcRHSz0SLnshP
- FErUmwhcStUMdFLBaId569v8Gt5vMQfOzlCB+qcUGQu03mMyIz3U9Ryex66gLKfCG7
- /kzgI9+ckOGdg==
+ s=k20201202; t=1632420782;
+ bh=JszZEhzKH2ZrJM1/H0dQz59yU6fi6F4Uu7Kc5qdwk7g=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=ff5SllCWr49nkhlXvN/aQF7WHB3ftLia70sKOmrhq+JYaRWuVZ6uczQsgjBp1sSXI
+ BJfeIp0x6OIE+Av8JKwPc52Matuj5OU4x4LkRDM9/FyE0ZnhgqkVq4PluCFYpIwZfo
+ GoInaFxJWicEzbDIHRdC+I/RpJrDI+lI9VM+kvEFC2oh9+TJUdMgJaiP/YiPB2RWZk
+ 6gvRcXrSELrxdI2U84K1fDVXnyMFppq82SSwZ+rPqQlBQ9rVN0f8Q0WDJm1RYwWRlE
+ 0ijCq3hNSZLYYKpGAeqrrYjMJhIuYnIDPQYycgV9f4pXoFddFdyd5DscPDOqfNVEur
+ qtCVJKcajsE7A==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Thu, 23 Sep 2021 21:12:47 +0300
-Message-Id: <cover.1632420430.git.leonro@nvidia.com>
+Date: Thu, 23 Sep 2021 21:12:48 +0300
+Message-Id: <e7708737fadf4fe6f152afc76145c728c201adad.1632420430.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <cover.1632420430.git.leonro@nvidia.com>
+References: <cover.1632420430.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 0/6] Batch of devlink related
- fixes
+Subject: [Intel-wired-lan] [PATCH net-next 1/6] bnxt_en: Check devlink
+ allocation and registration status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,34 +88,127 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Leon Romanovsky <leonro@nvidia.com>
 
-Hi,
+devlink is a software interface that doesn't depend on any hardware
+capabilities. The failure in SW means memory issues, wrong parameters,
+programmer error e.t.c.
 
-I'm asking to apply this batch of devlink fixes to net-next and not to
-net, because most if not all fixes are for old code or/and can be considered
-as cleanup.
+Like any other such interface in the kernel, the returned status of
+devlink APIs should be checked and propagated further and not ignored.
 
-It will cancel the need to deal with merge conflicts for my next devlink series :).
+Fixes: 4ab0c6a8ffd7 ("bnxt_en: add support to enable VF-representors")
+Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
+---
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c         |  5 ++++-
+ drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c | 13 ++++++-------
+ drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h | 13 -------------
+ 3 files changed, 10 insertions(+), 21 deletions(-)
 
-Thanks
-
-Leon Romanovsky (6):
-  bnxt_en: Check devlink allocation and registration status
-  bnxt_en: Properly remove port parameter support
-  devlink: Delete not used port parameters APIs
-  devlink: Remove single line function obfuscations
-  ice: Delete always true check of PF pointer
-  qed: Don't ignore devlink allocation failures
-
- drivers/net/ethernet/broadcom/bnxt/bnxt.c     |   5 +-
- .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |  26 +---
- .../net/ethernet/broadcom/bnxt/bnxt_devlink.h |  13 --
- drivers/net/ethernet/intel/ice/ice_main.c     |   3 -
- drivers/net/ethernet/qlogic/qede/qede_main.c  |  12 +-
- drivers/scsi/qedf/qedf_main.c                 |   2 +
- include/net/devlink.h                         |   6 -
- net/core/devlink.c                            | 123 +++++-------------
- 8 files changed, 47 insertions(+), 143 deletions(-)
-
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index 037767b370d5..4c483fd91dbe 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -13370,7 +13370,9 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	}
+ 
+ 	bnxt_inv_fw_health_reg(bp);
+-	bnxt_dl_register(bp);
++	rc = bnxt_dl_register(bp);
++	if (rc)
++		goto init_err_dl;
+ 
+ 	rc = register_netdev(dev);
+ 	if (rc)
+@@ -13390,6 +13392,7 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ init_err_cleanup:
+ 	bnxt_dl_unregister(bp);
++init_err_dl:
+ 	bnxt_shutdown_tc(bp);
+ 	bnxt_clear_int_mode(bp);
+ 
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
+index bf7d3c17049b..dc0851f709f5 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
+@@ -134,7 +134,7 @@ void bnxt_dl_fw_reporters_create(struct bnxt *bp)
+ {
+ 	struct bnxt_fw_health *health = bp->fw_health;
+ 
+-	if (!bp->dl || !health)
++	if (!health)
+ 		return;
+ 
+ 	if (!(bp->fw_cap & BNXT_FW_CAP_HOT_RESET) || health->fw_reset_reporter)
+@@ -188,7 +188,7 @@ void bnxt_dl_fw_reporters_destroy(struct bnxt *bp, bool all)
+ {
+ 	struct bnxt_fw_health *health = bp->fw_health;
+ 
+-	if (!bp->dl || !health)
++	if (!health)
+ 		return;
+ 
+ 	if ((all || !(bp->fw_cap & BNXT_FW_CAP_HOT_RESET)) &&
+@@ -781,6 +781,7 @@ int bnxt_dl_register(struct bnxt *bp)
+ {
+ 	const struct devlink_ops *devlink_ops;
+ 	struct devlink_port_attrs attrs = {};
++	struct bnxt_dl *bp_dl;
+ 	struct devlink *dl;
+ 	int rc;
+ 
+@@ -795,7 +796,9 @@ int bnxt_dl_register(struct bnxt *bp)
+ 		return -ENOMEM;
+ 	}
+ 
+-	bnxt_link_bp_to_dl(bp, dl);
++	bp->dl = dl;
++	bp_dl = devlink_priv(dl);
++	bp_dl->bp = bp;
+ 
+ 	/* Add switchdev eswitch mode setting, if SRIOV supported */
+ 	if (pci_find_ext_capability(bp->pdev, PCI_EXT_CAP_ID_SRIOV) &&
+@@ -826,7 +829,6 @@ int bnxt_dl_register(struct bnxt *bp)
+ err_dl_port_unreg:
+ 	devlink_port_unregister(&bp->dl_port);
+ err_dl_free:
+-	bnxt_link_bp_to_dl(bp, NULL);
+ 	devlink_free(dl);
+ 	return rc;
+ }
+@@ -835,9 +837,6 @@ void bnxt_dl_unregister(struct bnxt *bp)
+ {
+ 	struct devlink *dl = bp->dl;
+ 
+-	if (!dl)
+-		return;
+-
+ 	if (BNXT_PF(bp)) {
+ 		bnxt_dl_params_unregister(bp);
+ 		devlink_port_unregister(&bp->dl_port);
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
+index d889f240da2b..406dc655a5fc 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.h
+@@ -20,19 +20,6 @@ static inline struct bnxt *bnxt_get_bp_from_dl(struct devlink *dl)
+ 	return ((struct bnxt_dl *)devlink_priv(dl))->bp;
+ }
+ 
+-/* To clear devlink pointer from bp, pass NULL dl */
+-static inline void bnxt_link_bp_to_dl(struct bnxt *bp, struct devlink *dl)
+-{
+-	bp->dl = dl;
+-
+-	/* add a back pointer in dl to bp */
+-	if (dl) {
+-		struct bnxt_dl *bp_dl = devlink_priv(dl);
+-
+-		bp_dl->bp = bp;
+-	}
+-}
+-
+ #define NVM_OFF_MSIX_VEC_PER_PF_MAX	108
+ #define NVM_OFF_MSIX_VEC_PER_PF_MIN	114
+ #define NVM_OFF_IGNORE_ARI		164
 -- 
 2.31.1
 
