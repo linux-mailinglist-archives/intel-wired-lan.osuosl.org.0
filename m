@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D35AD4164F0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 20:13:26 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3509E4164EC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Sep 2021 20:13:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 52B6D401B2;
-	Thu, 23 Sep 2021 18:13:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E5A4B60BB5;
+	Thu, 23 Sep 2021 18:13:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cB6Qc5uXU-94; Thu, 23 Sep 2021 18:13:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Fcd2f8IwWz9K; Thu, 23 Sep 2021 18:13:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 30034400C3;
-	Thu, 23 Sep 2021 18:13:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E362260B2C;
+	Thu, 23 Sep 2021 18:13:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 03D731BF389
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ECD4C1BF389
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F3B9260BAF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DB83060B2C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EzyRIIkA7fDj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Sep 2021 18:13:19 +0000 (UTC)
+ with ESMTP id zvd9PsaksEaq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Sep 2021 18:13:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 91CF360B2C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:19 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9B13F61211;
- Thu, 23 Sep 2021 18:13:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 62E1660B3F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Sep 2021 18:13:16 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 29F4560F43;
+ Thu, 23 Sep 2021 18:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632420799;
- bh=jwrL23NbCo2fsm514Iz5xIfaNN+I2B1pwpVoLvCR6TI=;
+ s=k20201202; t=1632420796;
+ bh=pJhaA0qw+tHxdURheOHj0z2IzCKBecFnWm0GNA5bbeE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hqK4EjhPz3dvY3xJm/awyd9QJ6c+1DSwBOJp8FO+vKbRtw3RaEgqoqjr/tan5lpfk
- rIJdAf0U0FDjGvaZfpV5+OimJrS7e9+vyi/ZFl9fvlscuHKGEEXDYR7aiu9vqMj0+7
- aioSEAu1XkXpaAZ3Me++nEoAJs9I3XndjgG1LER+QZYQm7dJy8GDLF/0O4GHgRUZWb
- L5oHsMkRgRoQSgsFUoaJBQxuORLgjWHsr1INekH1rC9Bu0oB6w3MvvuZUaxid6AFRT
- GrCWLfysdWtvDS+ihvjy3w1pnlwv1uvSoV0CrVqRJCYxICLvYYkTwB01cLXwlvNKls
- 3aWJocAOiUBUw==
+ b=Hr251mLslci+HiCYqTS4C9w0scjBN8ggWi8fnxO2gMBOZmeEvJu+w1sHzscsy2JOX
+ wVurErB3bUIfnn5XJrqPbPM7fdx0pL2/haxOibKmVH2b/BxzjiHcYrVVv/ecy6/JP8
+ U9ySQGbJOI3t7TCCfYZGHxPqRG+B8vCxZy18xLXAtm54+6OGrFDleAJ7qZOgFA2oXX
+ Akx6xGBd5SNSMXEb8w5n3pI7gQEnBQQGS1fUWWhs7oUc0earEuqAbiKTGQ7TKrQ7TF
+ q9v4ODYqOk+53LqJsIh3Rm/7NiR6pa8otjW3JDgrv0sboVdeoxIGQjQtqQ876ZtpHg
+ 2T1xsuSULFTnA==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Thu, 23 Sep 2021 21:12:52 +0300
-Message-Id: <1e19cd378b76b891acd4cff122b622fdb0f99ed0.1632420431.git.leonro@nvidia.com>
+Date: Thu, 23 Sep 2021 21:12:53 +0300
+Message-Id: <c6acd223945669c3c0229afc62b1890810da8145.1632420431.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632420430.git.leonro@nvidia.com>
 References: <cover.1632420430.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 5/6] ice: Delete always true
- check of PF pointer
+Subject: [Intel-wired-lan] [PATCH net-next 6/6] qed: Don't ignore devlink
+ allocation failures
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,29 +86,63 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Leon Romanovsky <leonro@nvidia.com>
 
-PF pointer is always valid when PCI core calls its .shutdown() and
-.remove() callbacks. There is no need to check it again.
+devlink is a software interface that doesn't depend on any hardware
+capabilities. The failure in SW means memory issues, wrong parameters,
+programmer error e.t.c.
 
-Fixes: 837f08fdecbe ("ice: Add basic driver framework for Intel(R) E800 Series")
+Like any other such interface in the kernel, the returned status of
+devlink APIs should be checked and propagated further and not ignored.
+
+Fixes: 755f982bb1ff ("qed/qede: make devlink survive recovery")
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/net/ethernet/qlogic/qede/qede_main.c | 12 +++++-------
+ drivers/scsi/qedf/qedf_main.c                |  2 ++
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 34e64533026a..aacc0b345bbe 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4593,9 +4593,6 @@ static void ice_remove(struct pci_dev *pdev)
- 	struct ice_pf *pf = pci_get_drvdata(pdev);
- 	int i;
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_main.c b/drivers/net/ethernet/qlogic/qede/qede_main.c
+index 9837bdb89cd4..ee4c3bd28a93 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_main.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_main.c
+@@ -1176,19 +1176,17 @@ static int __qede_probe(struct pci_dev *pdev, u32 dp_module, u8 dp_level,
+ 		edev->devlink = qed_ops->common->devlink_register(cdev);
+ 		if (IS_ERR(edev->devlink)) {
+ 			DP_NOTICE(edev, "Cannot register devlink\n");
++			rc = PTR_ERR(edev->devlink);
+ 			edev->devlink = NULL;
+-			/* Go on, we can live without devlink */
++			goto err3;
+ 		}
+ 	} else {
+ 		struct net_device *ndev = pci_get_drvdata(pdev);
++		struct qed_devlink *qdl;
  
--	if (!pf)
--		return;
+ 		edev = netdev_priv(ndev);
 -
- 	for (i = 0; i < ICE_MAX_RESET_WAIT; i++) {
- 		if (!ice_is_reset_in_progress(pf->state))
- 			break;
+-		if (edev->devlink) {
+-			struct qed_devlink *qdl = devlink_priv(edev->devlink);
+-
+-			qdl->cdev = cdev;
+-		}
++		qdl = devlink_priv(edev->devlink);
++		qdl->cdev = cdev;
+ 		edev->cdev = cdev;
+ 		memset(&edev->stats, 0, sizeof(edev->stats));
+ 		memcpy(&edev->dev_info, &dev_info, sizeof(dev_info));
+diff --git a/drivers/scsi/qedf/qedf_main.c b/drivers/scsi/qedf/qedf_main.c
+index 42d0d941dba5..94ee08fab46a 100644
+--- a/drivers/scsi/qedf/qedf_main.c
++++ b/drivers/scsi/qedf/qedf_main.c
+@@ -3416,7 +3416,9 @@ static int __qedf_probe(struct pci_dev *pdev, int mode)
+ 		qedf->devlink = qed_ops->common->devlink_register(qedf->cdev);
+ 		if (IS_ERR(qedf->devlink)) {
+ 			QEDF_ERR(&qedf->dbg_ctx, "Cannot register devlink\n");
++			rc = PTR_ERR(qedf->devlink);
+ 			qedf->devlink = NULL;
++			goto err2;
+ 		}
+ 	}
+ 
 -- 
 2.31.1
 
