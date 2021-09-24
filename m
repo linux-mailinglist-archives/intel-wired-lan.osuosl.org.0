@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F4DF416F2F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Sep 2021 11:41:08 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 543E4405E7;
-	Fri, 24 Sep 2021 09:41:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OjY7UYi4CBaw; Fri, 24 Sep 2021 09:41:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 38E91403E0;
-	Fri, 24 Sep 2021 09:41:05 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9A6B51BF36F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 09:41:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D1CA417526
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Sep 2021 15:14:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 95E7583EAF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 09:41:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 25B0A83E9D;
+	Fri, 24 Sep 2021 13:14:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sCvHu3yuWMgz for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Sep 2021 09:41:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F0DD183EA9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 09:41:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10116"; a="222151911"
-X-IronPort-AV: E=Sophos;i="5.85,319,1624345200"; d="scan'208";a="222151911"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Sep 2021 02:40:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,319,1624345200"; d="scan'208";a="614356548"
-Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by fmsmga001.fm.intel.com with ESMTP; 24 Sep 2021 02:40:54 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Sep 2021 11:40:41 +0200
-Message-Id: <20210924094041.15448-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix freeing of unitialized
- misc IRQ vector
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FubwpAJ2mfAX; Fri, 24 Sep 2021 13:14:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 20C0683EA5;
+	Fri, 24 Sep 2021 13:14:48 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 86E551BF2F0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 13:14:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 81781402AF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 13:14:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s6c6cDWjwnVu for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Sep 2021 13:14:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.monkeyblade.net (shards.monkeyblade.net
+ [IPv6:2620:137:e000::1:9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CE8554024B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 13:14:40 +0000 (UTC)
+Received: from localhost (cpc147930-brnt3-2-0-cust60.4-2.cable.virginm.net
+ [86.15.196.61])
+ by mail.monkeyblade.net (Postfix) with ESMTPSA id 050B74F7CC988;
+ Fri, 24 Sep 2021 06:14:32 -0700 (PDT)
+Date: Fri, 24 Sep 2021 14:14:26 +0100 (BST)
+Message-Id: <20210924.141426.1767931642845359040.davem@davemloft.net>
+To: leon@kernel.org
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <cover.1632420430.git.leonro@nvidia.com>
+References: <cover.1632420430.git.leonro@nvidia.com>
+X-Mailer: Mew version 6.8 on Emacs 27.2
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.2
+ (mail.monkeyblade.net [0.0.0.0]); Fri, 24 Sep 2021 06:14:38 -0700 (PDT)
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/6] Batch of devlink related
+ fixes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,89 +60,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- PJ Waskiewicz <pwaskiewicz@jumptrading.com>,
- Mateusz Palczewski <mateusz.palczewski@intel.com>
+Cc: irusskikh@marvell.com, alobakin@pm.me, jhasan@marvell.com,
+ michal.kalderon@marvell.com, leonro@nvidia.com, linux-scsi@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, jeffrey.t.kirsher@intel.com, jiri@nvidia.com,
+ kuba@kernel.org, aelior@marvell.com, jejb@linux.ibm.com,
+ vasundhara-v.volam@broadcom.com, sathya.perla@broadcom.com,
+ michael.chan@broadcom.com, martin.petersen@oracle.com, skashyap@marvell.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ GR-QLogic-Storage-Upstream@marvell.com, GR-everest-linux-l2@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+From: Leon Romanovsky <leon@kernel.org>
+Date: Thu, 23 Sep 2021 21:12:47 +0300
 
-When VSI set up failed in i40e_probe() as part of PF switch set up
-driver was trying to free misc IRQ vectors in
-i40e_clear_interrupt_scheme and produced a kernel Oops:
+> From: Leon Romanovsky <leonro@nvidia.com>
+> 
+> Hi,
+> 
+> I'm asking to apply this batch of devlink fixes to net-next and not to
+> net, because most if not all fixes are for old code or/and can be considered
+> as cleanup.
+> 
+> It will cancel the need to deal with merge conflicts for my next devlink series :).
 
-   Trying to free already-free IRQ 266
-   WARNING: CPU: 0 PID: 5 at kernel/irq/manage.c:1731 __free_irq+0x9a/0x300
-   Workqueue: events work_for_cpu_fn
-   RIP: 0010:__free_irq+0x9a/0x300
-   Call Trace:
-   ? synchronize_irq+0x3a/0xa0
-   free_irq+0x2e/0x60
-   i40e_clear_interrupt_scheme+0x53/0x190 [i40e]
-   i40e_probe.part.108+0x134b/0x1a40 [i40e]
-   ? kmem_cache_alloc+0x158/0x1c0
-   ? acpi_ut_update_ref_count.part.1+0x8e/0x345
-   ? acpi_ut_update_object_reference+0x15e/0x1e2
-   ? strstr+0x21/0x70
-   ? irq_get_irq_data+0xa/0x20
-   ? mp_check_pin_attr+0x13/0xc0
-   ? irq_get_irq_data+0xa/0x20
-   ? mp_map_pin_to_irq+0xd3/0x2f0
-   ? acpi_register_gsi_ioapic+0x93/0x170
-   ? pci_conf1_read+0xa4/0x100
-   ? pci_bus_read_config_word+0x49/0x70
-   ? do_pci_enable_device+0xcc/0x100
-   local_pci_probe+0x41/0x90
-   work_for_cpu_fn+0x16/0x20
-   process_one_work+0x1a7/0x360
-   worker_thread+0x1cf/0x390
-   ? create_worker+0x1a0/0x1a0
-   kthread+0x112/0x130
-   ? kthread_flush_work_fn+0x10/0x10
-   ret_from_fork+0x1f/0x40
+ok, but just this one time.
 
-The problem is that at that point misc IRQ vectors
-were not allocated yet and we get a call trace
-that driver is trying to free already free IRQ vectors.
+I much rather this kind of stuff goes to net and we deal with the merge
+conflicts that arise.
 
-Add a check in i40e_clear_interrupt_scheme for __I40E_MISC_IRQ_REQUESTED
-PF state before calling i40e_free_misc_vector. This state is set only if
-misc IRQ vectors were properly initialized.
-
-Fixes: c17401a1dd21 ("i40e: use separate state bit for miscellaneous IRQ setup")
-Reported-by: PJ Waskiewicz <pwaskiewicz@jumptrading.com>
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- v3:moved check for __I40E_MISC_IRQ_REQUESTED from i40e_free_misc_vector to
- i40e_clear_interrupt_scheme so i40e_free_misc_vector is not called when
- __I40E_MISC_IRQ_REQUESTED pf state is not set. Added kernel oops and
- reported-by to the commit message as suggested by PJ.
- v2: Fix commmit title typo
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 000991a..8a1dfc3 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -4889,7 +4889,8 @@ static void i40e_clear_interrupt_scheme(struct i40e_pf *pf)
- {
- 	int i;
- 
--	i40e_free_misc_vector(pf);
-+	if (test_bit(__I40E_MISC_IRQ_REQUESTED, pf->state))
-+		i40e_free_misc_vector(pf);
- 
- 	i40e_put_lump(pf->irq_pile, pf->iwarp_base_vector,
- 		      I40E_IWARP_IRQ_PILE_ID);
--- 
-2.27.0
-
+Thsnks!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
