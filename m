@@ -1,131 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCC2B417738
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Sep 2021 17:04:18 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 880CF4179CC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Sep 2021 19:21:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9A01D80E41;
-	Fri, 24 Sep 2021 15:04:16 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7D25C40780;
+	Fri, 24 Sep 2021 17:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DqfsGe-et1Dr; Fri, 24 Sep 2021 15:04:15 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fYhsm-6v55QD; Fri, 24 Sep 2021 17:21:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8C99B80E5C;
-	Fri, 24 Sep 2021 15:04:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 001C440772;
+	Fri, 24 Sep 2021 17:21:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E37111BF8A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 14:10:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BD4D51BF4D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 17:21:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DEA05832B3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 14:10:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id AC04583FBA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 17:21:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=broadcom.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UryuL3qxbOAQ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Sep 2021 14:10:08 +0000 (UTC)
+ with ESMTP id SmvZwE4BscF5 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Sep 2021 17:21:10 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam08on2083.outbound.protection.outlook.com [40.107.100.83])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6E8FB830C5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 14:10:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Nz3sOQNtR79+o2BKP3vrC1Oy3BpMp2CVS6HiIcZS3yUTGVG47+m505CVZdbM/5VxMLwLYvA9O784mVH9puAd5WMqoeI/rsMjePsRlp5Gh4KWZLej7CgXC74wk8rAKo9AGFWIOd7+SDZgsTX29EP6oy9Q3URUzXKI/RguHKZ1g4apksFZ/6rjb8qfl0hRHnUf7pAIE9MWiwXUEU8CFsg1M98yZ/CbmHBor1zkwxNv64xycxx9795X12rBMLlGdaVakDwBS5pZB10GzUW9mXKgrGKySGCLnMsWhx/+R1MD6vV8DXQVnnr5c+18u7VTe8ewzySp3BtgMoppq75sCxsGCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=fFIIiSt4bZzW8MsXWk9abxhLHHzzTzKjE2fZpv3F5lg=;
- b=jX6hTrP+ybjEF0Gs8hG1D+0hHuTd9TXsmMyMknJo8tkQxo/kiYCOwjHpT7q4FuZyxZKuzun2PClDcF2tgXxR25XbX99mGCOK+9W8HS9rB1f/XTuoH9McrzShFB4c6lmNNPbxv8EE4dRYJYSAG7ENK+cfFaeAFFqbh139NWx3sQkUM6UcxB8Jin7USEPtYOgUUeTP4HMhKiDXmAixsnVLmUyGJiJy4BiqP4iiECpo0yDhzu81bPfnQAlCkq/Htb5WTyBz03cBKw7UoWaSFNg8OVQVY1/m4jwBH75grFWsEuJ0677l/SWTGzL1Gfs5vvjmiuDzHCpfllOZLxWCm/4E/w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fFIIiSt4bZzW8MsXWk9abxhLHHzzTzKjE2fZpv3F5lg=;
- b=kFkw+8pP2H2RSnyoCbxnq4IK94I5p/Ea5U+QMjyQRUe6y88RxJRhySXBh0KulrRZQfzkOe9GKa4h55Y5wMFcqH37Thf7q/Jn/lNL/ZPEmx6zp/9C+WZw1pwqDcXPTE8b2+PkuNI7u3l/3mXxGgNkRSkOP/VOP51w9HaER52UZ4vFWTNu6JEU1AaYrKxMZKsJnDh0kQREOmfG5SpnuxBXCnw02b+PBiUpuu+RSSOOW5MgsBX8EakzA9W1PZE5xOrmu7sjq4ptTZeJKODSQUmXT03b2Uhg/1wuhx2w1+iD2gwG2DkON1yPjhwcq7MMpCs96pnJBpADYvnA13YA0q7oRg==
-Authentication-Results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=nvidia.com;
-Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
- by BL1PR12MB5112.namprd12.prod.outlook.com (2603:10b6:208:316::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.15; Fri, 24 Sep
- 2021 14:10:06 +0000
-Received: from BL0PR12MB5506.namprd12.prod.outlook.com
- ([fe80::e8af:232:915e:2f95]) by BL0PR12MB5506.namprd12.prod.outlook.com
- ([fe80::e8af:232:915e:2f95%8]) with mapi id 15.20.4544.018; Fri, 24 Sep 2021
- 14:10:06 +0000
-Date: Fri, 24 Sep 2021 11:10:04 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Dave Ertman <david.m.ertman@intel.com>
-Message-ID: <20210924141004.GA1237721@nvidia.com>
-References: <20210909151223.572918-1-david.m.ertman@intel.com>
-Content-Disposition: inline
-In-Reply-To: <20210909151223.572918-1-david.m.ertman@intel.com>
-X-ClientProxiedBy: BL1PR13CA0356.namprd13.prod.outlook.com
- (2603:10b6:208:2c6::31) To BL0PR12MB5506.namprd12.prod.outlook.com
- (2603:10b6:208:1cb::22)
+Received: from mail-yb1-xb33.google.com (mail-yb1-xb33.google.com
+ [IPv6:2607:f8b0:4864:20::b33])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 93FA983F8C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 17:21:10 +0000 (UTC)
+Received: by mail-yb1-xb33.google.com with SMTP id r4so7252203ybp.4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Sep 2021 10:21:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s4aBU9hVptJACVXCGvcssMyH4GtcIwSagpPyw2kwXkY=;
+ b=Qg8lIckWZ6QdcUhs3oi3WYUQvebJvsPzGz4Ggd06zDmyXsPv09i+j1hxlq89HJeAJ4
+ jpzTkzF0TfKy2qFxodY3KTvJRuSt14izCkjmyfQkjMz+JRK0lD5W9hrdCB7i8GvS3DTy
+ RueUXWzAodwjLjwYjQgS7Igq2UQlJAOrDs2Uc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s4aBU9hVptJACVXCGvcssMyH4GtcIwSagpPyw2kwXkY=;
+ b=LbP+9lvZoQIWzxJ1EFLVNqS65od8QFXn9h2zHtGdmQt6C4wC4IogKCnsdzVCW98zXW
+ 5GPH/yOOWrkUslJpaGChPb6uiKSU8dInFaXoo4yTTfkcuDcM1aCdTvQ9Td37EO4XaXKF
+ yy5kI1vyfNql5u5sHaLZDcLYNh6s8cYs4tJOetVpLU8c5j0Wx6Lb4e8HRYc251L15Jmi
+ yBL3to3YN3jktGBPZ0mLEhFpv6V7LLO9320tiGFiorO/rYpmh2aJNsi1P/wTFijYqupL
+ qSTLvAbxqBS+cCkGQLnYjIesh408grS3bqHQf395pF2gtA++WmQjbEAo9/TT3POl8Wi4
+ qokQ==
+X-Gm-Message-State: AOAM533V2JRqr0x/z0w/kGaubzj6vvpRivFCjqb8vWOZcG71kghJY1SW
+ 1AF/owY+7y9apAi/kjXC2I+t0HA5Ti+NwVMYZQaCzw==
+X-Google-Smtp-Source: ABdhPJw7sidVyzpxBf4Z23QuW71wp38GW2fuO1RQ+xJSKeJDQqvrm+cVUNF71j/yXC17knITQy0pQ0WvIe2Kt0WgTO0=
+X-Received: by 2002:a05:6902:1248:: with SMTP id
+ t8mr14318420ybu.85.1632504069110; 
+ Fri, 24 Sep 2021 10:21:09 -0700 (PDT)
 MIME-Version: 1.0
-Received: from mlx.ziepe.ca (142.162.113.129) by
- BL1PR13CA0356.namprd13.prod.outlook.com (2603:10b6:208:2c6::31) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.8 via Frontend
- Transport; Fri, 24 Sep 2021 14:10:05 +0000
-Received: from jgg by mlx with local (Exim 4.94)	(envelope-from
- <jgg@nvidia.com>)	id 1mTlts-005C75-Ug; Fri, 24 Sep 2021 11:10:04 -0300
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ff3869d1-c19a-4708-dc56-08d97f650270
-X-MS-TrafficTypeDiagnostic: BL1PR12MB5112:
-X-Microsoft-Antispam-PRVS: <BL1PR12MB51121B8646F67E720F34A043C2A49@BL1PR12MB5112.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 4mdJwUVunVpUI332J+0nD0Cz9JA/1Njjj7PrcCb0MkK9DuEVW094M6xmn+iaBrZWNbBQmgLUcG0MqTrg3O6rLmuVta5kx6V9hYjpq02/FYD6mwGeTuj6Dz8az74wUaw6ycUPripfSpshsm23CpCLi8QtJqpd57VAj0U4JXR972tD4lI5BY482M1hv6LmgClxREXlP874JLtf4t5kmKg/0BKmL+9DYE8fNeDNviewW1LBGgW1AiGy+usVJQnDxumkgLxYyAu5LV5YwIe9a142UH+Pfblgs4wEZEvwjS5WNoL8oVCq7UpSsyeR/sd+tkZL4cpGPMgDTHhW/Oj8n1wrw2WCcDfMPXU5opkA2VLf2rq31LPbjwQ9FH6a8sTYBsIOd7VO2A4JKOW+X2BJMbgTiIdEpRi3r1popbGezFHnTQluvc9JWpWQV/apttqbyVan/CX1s4PUbRddxROCFtn+lWGJ+NSgHp12ZY5l0aLbdi7n+fbf2Zwhu3vYPOpqekKaEtbphqPNTE8wTpD4Y0BMlyoTQ33v+FTq+JPvYs5zhWFG7kljs1hc3KYR69PbeI7jEl8cUGhCkwb2lkmF6cYuJB/NN5YgbIvi79BJDJg6dU0ZwEkI5mOY4vlBJkMIQ+MMtht5l7e332hMV2WArIwkcQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR12MB5506.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(8676002)(6916009)(26005)(9746002)(66476007)(86362001)(66556008)(36756003)(5660300002)(33656002)(2906002)(4326008)(186003)(1076003)(316002)(8936002)(66946007)(38100700002)(83380400001)(508600001)(426003)(7416002)(9786002)(2616005);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cHj1hn4REdQ23Ua8yEGB0/ZkmssLqtXjTADonzM9invMSBP2DdTE3VUItGcC?=
- =?us-ascii?Q?f+tQyFZk7Oq5sT4wwkn1Oa8I+EuRj2iUyfCFhwAWoD40sm2HRrOaTvjVixkf?=
- =?us-ascii?Q?a6IL7H7MUMQNJuxfGpO+n18WiFjtI7ehIkTOClIciEFiZvwuC26YVnUN+nwz?=
- =?us-ascii?Q?+nslbb106KZ7Np7xIoDNzfKSmVQq4Kn4xUN9ffGAuQWeFZW552sLVIITjd6a?=
- =?us-ascii?Q?ddUbqobGbfqB9l9SM3bU5wtpCMEuNib50UF4l26TbmpFPeWUhKP/lys3liBg?=
- =?us-ascii?Q?gvWWzL0DezehLJzG2mmHw+Tofz1svNpnu05yhK0pidHzGOOzp+kxwEiXoDEC?=
- =?us-ascii?Q?pUPUZeZIbbCOTgfm3XZuZWkwryFYv4J8L6945cG2nTPx/xhmekeQAq084sWy?=
- =?us-ascii?Q?fLp92YiCdK0UeAOOV+XXzpQhT1jlratoGu/YTpmiOJcNvYm5qndL3teGcvZL?=
- =?us-ascii?Q?m5LlzmGSlMFIWSfSdBvM2+igpsW6e8wLXuT0Cdtr3AIK0PYpYa5IYfXfHXxx?=
- =?us-ascii?Q?DXIlKCkUDLtY9AQvPm4q71UUHmca9RmAbfe8wun6WfrCQtdeAsq3ZrQTrieD?=
- =?us-ascii?Q?xsxYlh/lKPCXCYgcEU30mN5oG9mFjb18zlWy3EJCkKHjC5Au52ECCv410EPM?=
- =?us-ascii?Q?qd2HF3QNDxL+uaMSmim/+MK9SClQ/Jm2H5VIhrAwf0Jv7vFZ8CR5FP4aO/sf?=
- =?us-ascii?Q?+8QjzCzQzOEK2n5gKcfM8hIKm3UR9Yet/iirZp1gYt7FikFG+D/QTcHOprcy?=
- =?us-ascii?Q?SUxWmkawDkiE4eIhwp8vXtVhpH0y+J9FrSY4soJNOH8ykv9K2aPQQrpRqoY3?=
- =?us-ascii?Q?JdYa5nsP7aARhwHxcJJvHZ+7MlpsLc/80JcAHnOiCplfmtGEGjhpVMsRjNv+?=
- =?us-ascii?Q?yO23Vv9wU8CEnYmiSbWpx66NxSPNkTaLyP+Jtm9Z9rtFIpCy7J37BDst6wE/?=
- =?us-ascii?Q?gJvTupIEI9bwNi9i+kdik01ZoiDUlgvvEkL1YfagiyqSUiT6z2ZGhZTibFsj?=
- =?us-ascii?Q?8yZAPB12vAgV7VdKmfyqAp7GlQzicQwS6XVHLFRzau92QzdmvEBfUXqKdjr+?=
- =?us-ascii?Q?Sp64MipqYr3Gr838HP+SRX9mH8exko2/adhM7dED18k9ceQzb4RARq38vpId?=
- =?us-ascii?Q?nkHzPqord0sOVITVbo7Ak/0WOnX2WfhowNUoX+Blb7RObuK5+WaYjaE5JSyL?=
- =?us-ascii?Q?pr5357C5ys1p7pJKmMkT2pYOYX/fJdooglwq1gc9BMf9BycSVwwXC10X261t?=
- =?us-ascii?Q?lOzn6aBhty+nDyN51mi1KLccYgpokJ83FHS05JD+W07FvRDIK9CBxcvgIGmF?=
- =?us-ascii?Q?al7XHP7tP0NLztDIi81N1FXv?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ff3869d1-c19a-4708-dc56-08d97f650270
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2021 14:10:06.1609 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: isEF8Hb1gvmEFAmZCc3iYzwGBVDKUo573WXUaiBefiQdjV6MK/CBHRyHlciUZoWt
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5112
-X-Mailman-Approved-At: Fri, 24 Sep 2021 15:04:11 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RESEND net] ice: Correctly deal with
- PFs that do not support RDMA
+References: <cover.1632420430.git.leonro@nvidia.com>
+ <e7708737fadf4fe6f152afc76145c728c201adad.1632420430.git.leonro@nvidia.com>
+ <CAKOOJTz4A2ER8MQE1dW27Spocds09SYafjeuLcFDJ0nL6mKyOw@mail.gmail.com>
+ <YU0JlzFOa7kpKgnd@unreal>
+ <20210923183956.506bfde2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210923183956.506bfde2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+From: Edwin Peer <edwin.peer@broadcom.com>
+Date: Fri, 24 Sep 2021 10:20:32 -0700
+Message-ID: <CAKOOJTwh6TnNM4uSM2rbaij=xO92UzF2hs11pgOFUniOb3HAkA@mail.gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/6] bnxt_en: Check devlink
+ allocation and registration status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,68 +84,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: leon@kernel.org, linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, yongxin.liu@windriver.com, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, shiraz.saleem@intel.com, davem@davemloft.net
+Cc: Igor Russkikh <irusskikh@marvell.com>, Alexander Lobakin <alobakin@pm.me>,
+ Javed Hasan <jhasan@marvell.com>,
+ Michal Kalderon <michal.kalderon@marvell.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Leon Romanovsky <leon@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jiri Pirko <jiri@nvidia.com>,
+ Ariel Elior <aelior@marvell.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Vasundhara Volam <vasundhara-v.volam@broadcom.com>,
+ Sathya Perla <sathya.perla@broadcom.com>,
+ Michael Chan <michael.chan@broadcom.com>, linux-scsi@vger.kernel.org,
+ Saurav Kashyap <skashyap@marvell.com>, netdev <netdev@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ GR-QLogic-Storage-Upstream@marvell.com,
+ "David S . Miller" <davem@davemloft.net>, GR-everest-linux-l2@marvell.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 09, 2021 at 08:12:23AM -0700, Dave Ertman wrote:
-> There are two cases where the current PF does not support RDMA
-> functionality.  The first is if the NVM loaded on the device is set
-> to not support RDMA (common_caps.rdma is false).  The second is if
-> the kernel bonding driver has included the current PF in an active
-> link aggregate.
-> 
-> When the driver has determined that this PF does not support RDMA, then
-> auxiliary devices should not be created on the auxiliary bus.  Without
-> a device on the auxiliary bus, even if the irdma driver is present, there
-> will be no RDMA activity attempted on this PF.
-> 
-> Currently, in the reset flow, an attempt to create auxiliary devices is
-> performed without regard to the ability of the PF.  There needs to be a
-> check in ice_aux_plug_dev (as the central point that creates auxiliary
-> devices) to see if the PF is in a state to support the functionality.
-> 
-> When disabling and re-enabling RDMA due to the inclusion/removal of the PF
-> in a link aggregate, we also need to set/clear the bit which controls
-> auxiliary device creation so that a reset recovery in a link aggregate
-> situation doesn't try to create auxiliary devices when it shouldn't.
-> 
-> Fixes: f9f5301e7e2d ("ice: Register auxiliary device to provide RDMA")
-> Reported-by: Yongxin Liu <yongxin.liu@windriver.com>
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
->  drivers/net/ethernet/intel/ice/ice.h     | 2 ++
->  drivers/net/ethernet/intel/ice/ice_idc.c | 6 ++++++
->  2 files changed, 8 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index eadcb9958346..3c4f08d20414 100644
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -695,6 +695,7 @@ static inline void ice_set_rdma_cap(struct ice_pf *pf)
->  {
->  	if (pf->hw.func_caps.common_cap.rdma && pf->num_rdma_msix) {
->  		set_bit(ICE_FLAG_RDMA_ENA, pf->flags);
-> +		set_bit(ICE_FLAG_AUX_ENA, pf->flags);
->  		ice_plug_aux_dev(pf);
+On Thu, Sep 23, 2021 at 6:39 PM Jakub Kicinski <kuba@kernel.org> wrote:
 
-I agree with Leon, there shouldn't be a flag for "aux en". aux is
-enabled when a device on the aux bus is required. It should all be
-rdma en, which already seems to have a bit.
+> On Fri, 24 Sep 2021 02:11:19 +0300 Leon Romanovsky wrote:
+> > > minor nit: There's obviously nothing incorrect about doing this (and
+> > > adding the additional error label in the cleanup code above), but bnxt
+> > > has generally adopted a style of having cleanup functions being
+> > > idempotent. It generally makes error handling simpler and less error
+> > > prone.
+> >
+> > I would argue that opposite is true. Such "impossible" checks hide unwind
+> > flow errors, missing releases e.t.c.
+>
+> +1, fwiw
 
-Th only existing place that uses aux_ena immediately calls
+I appreciate that being more explicit can improve visibility, but it
+does not make error handling inherently less error prone, nor is it
+simpler (ie. the opposite isn't true). Idempotency is orthogonal to
+unwind flow or the presence or not of a particular unwind handler (one
+can still enforce either in review). But, if release handlers are
+independent (most in bnxt are), then permitting other orderings can be
+perfectly valid and places less burden on achieving the canonical form
+for correctness (ie. usage is simpler and less error prone). That's
+not to say we should throw caution to the wind and allow arbitrary
+unwind flows, but it does mean certain mistakes don't result in actual
+bugs. There are other flexibility benefits too. A single, unwind
+everything, handler can be reused in more than one context.
 
-		err = ice_init_rdma(pf);
+That said, isn't the more important question what style and
+assumptions the surrounding code has adopted? In this particular case,
+I checked that this change wouldn't introduce the possibility of a
+double unwind, but in other contexts in this driver code base,
+changing error handling in this piecemeal way might actually introduce
+a bug in contexts where the caller has assumed the overall function is
+idempotent. Isn't local consistency of style a more important concern,
+especially given that you are not predominantly responsible for
+maintenance of this driver? Dealing with this exception to the norm in
+our driver certainly places an additional burden on us to remember to
+treat this particular case with special care. We should either rework
+all of bnxt error handling to adopt the more accepted canonical form,
+or we should adopt the surrounding conventions. What we shouldn't do
+is mix approaches in one driver.
 
-So I'd just delete the whole thing and use rdma_ena. Frankly it looks
-structured confusingly, the mlx implementation is better where this is
-one function that synchronizes the aux bus with the current state of
-the driver - adding/removing as required
-
-Jason
+Regards,
+Edwin Peer
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
