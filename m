@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 889F241817C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:22 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E302A418177
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2697B606D9;
-	Sat, 25 Sep 2021 11:24:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 96D9C4022A;
+	Sat, 25 Sep 2021 11:24:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pKcYMaRZHlge; Sat, 25 Sep 2021 11:24:20 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p839yvQd_6Yl; Sat, 25 Sep 2021 11:24:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2A3F5606AF;
-	Sat, 25 Sep 2021 11:24:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A68DB40190;
+	Sat, 25 Sep 2021 11:24:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 251431BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 488B21BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 13AB8606D9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 362AE40190
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GSRYroK14HAZ for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:24:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KsCEmXEaToWK for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:24:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8FDFB606AF
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:15 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6C0A561350;
- Sat, 25 Sep 2021 11:24:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BA11340181
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:08 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CC77061288;
+ Sat, 25 Sep 2021 11:24:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569055;
- bh=7fuwMn0UcxFbiik3Z+N/XOLwJAq59/miUfWhpOwdqE0=;
+ s=k20201202; t=1632569048;
+ bh=UGe1xR5nQjl5sitWRrZO39MCG615CkI/XgeO5EfkyHA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Ge34eptxt6ik9tM4bBGWV+EhWY2pUsDmBrBnZIJGDR8WqRukI42+ESfMMMV9+gmyk
- NzOJ5DLBu2o6NL6oi1jrLFHILSXlbaTkjCziDiYsxegSE/Jrp/gGgvJVR7RaEimH2k
- u2KZhp8p3Q+odnSJGYZYpzbjUOdLrNqJ2GAMUiwsAT61gUQdMMmLpIZkJsjPKLDgja
- 951E4DCRpAC2brIp9LRFyfkQegtVBAkmpGV+8JNtEYeEpLtKlgfwpF/3fdAikKH6yb
- 0nLBFwTJ2r2zmbCo8w91OLQqyLpu05TcH/BXTltlVcbcWo+yMP4awblDvVJZGPBPj9
- feyG+jP8SLazQ==
+ b=eXJnTqgMbORVHaUsGV03ryKJr6A1PfdhYoeVsyCNEges2Dn9WZ7FE4+7QH3xqJvR9
+ Mz5qz1HhsuOgoYQOxRRc2geSU+85mrlqpccGRTMS5HNtlTD9qpZiA6BDhj7DVZhKv7
+ sj2HzVf0JYXhCn2l9u3cBQBv5vEik7dYiF8tPoahtV6EPb5DdE99UK8bicH0CXAY1W
+ HNyqws6BMBbppxtt3484q7TdwfEfbBOeq/bgChcm6v6hSMl1crla5Ovo4z8W/DKqtc
+ ElB0gliFBoCj4F940uxkATHVFsfX4EYpq0KC0xZ9LpCNrkxbV9d5shVyGsAIldIE1K
+ SK3ShGOLcii1A==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:58 +0300
-Message-Id: <6a63d8f6484a46c9120155082a396b44ce86bd1c.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:22:59 +0300
+Message-Id: <1541e7cd8262ce9db7544669438d0f4360068dd2.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 18/21] net: wwan: iosm: Move
- devlink_register to be last devlink command
+Subject: [Intel-wired-lan] [PATCH net-next v1 19/21] ptp: ocp: Move devlink
+ registration to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,68 +102,55 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 From: Leon Romanovsky <leonro@nvidia.com>
 
 This change prevents from users to access device before devlink is
-fully configured. Indirectly this change fixes the commit mentioned
-below where devlink_unregister() was prematurely removed.
+fully configured.
 
-Fixes: db4278c55fa5 ("devlink: Make devlink_register to be void")
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/wwan/iosm/iosm_ipc_devlink.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/ptp/ptp_ocp.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wwan/iosm/iosm_ipc_devlink.c b/drivers/net/wwan/iosm/iosm_ipc_devlink.c
-index 42dbe7fe663c..6fe56f73011b 100644
---- a/drivers/net/wwan/iosm/iosm_ipc_devlink.c
-+++ b/drivers/net/wwan/iosm/iosm_ipc_devlink.c
-@@ -305,7 +305,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
- 	ipc_devlink->devlink_ctx = devlink_ctx;
- 	ipc_devlink->pcie = ipc_imem->pcie;
- 	ipc_devlink->dev = ipc_imem->dev;
--	devlink_register(devlink_ctx);
- 
- 	rc = devlink_params_register(devlink_ctx, iosm_devlink_params,
- 				     ARRAY_SIZE(iosm_devlink_params));
-@@ -315,7 +314,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
- 		goto param_reg_fail;
+diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
+index 4c25467198e3..34f943c8c9fd 100644
+--- a/drivers/ptp/ptp_ocp.c
++++ b/drivers/ptp/ptp_ocp.c
+@@ -2455,7 +2455,6 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 		return -ENOMEM;
  	}
  
--	devlink_params_publish(devlink_ctx);
- 	ipc_devlink->cd_file_info = list;
+-	devlink_register(devlink);
+ 	err = pci_enable_device(pdev);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "pci_enable_device\n");
+@@ -2497,7 +2496,7 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 		goto out;
  
- 	rc = ipc_devlink_create_region(ipc_devlink);
-@@ -334,6 +332,7 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
- 	init_completion(&ipc_devlink->devlink_sio.read_sem);
- 	skb_queue_head_init(&ipc_devlink->devlink_sio.rx_list);
+ 	ptp_ocp_info(bp);
+-
++	devlink_register(devlink);
+ 	return 0;
  
-+	devlink_register(devlink_ctx);
- 	dev_dbg(ipc_devlink->dev, "iosm devlink register success");
- 
- 	return ipc_devlink;
-@@ -341,7 +340,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
- chnl_get_fail:
- 	ipc_devlink_destroy_region(ipc_devlink);
- region_create_fail:
--	devlink_params_unpublish(devlink_ctx);
- 	devlink_params_unregister(devlink_ctx, iosm_devlink_params,
- 				  ARRAY_SIZE(iosm_devlink_params));
- param_reg_fail:
-@@ -358,8 +356,8 @@ void ipc_devlink_deinit(struct iosm_devlink *ipc_devlink)
- {
- 	struct devlink *devlink_ctx = ipc_devlink->devlink_ctx;
- 
-+	devlink_unregister(devlink_ctx);
- 	ipc_devlink_destroy_region(ipc_devlink);
--	devlink_params_unpublish(devlink_ctx);
- 	devlink_params_unregister(devlink_ctx, iosm_devlink_params,
- 				  ARRAY_SIZE(iosm_devlink_params));
- 	if (ipc_devlink->devlink_sio.devlink_read_pend) {
-@@ -370,6 +368,5 @@ void ipc_devlink_deinit(struct iosm_devlink *ipc_devlink)
- 		skb_queue_purge(&ipc_devlink->devlink_sio.rx_list);
- 
- 	ipc_imem_sys_devlink_close(ipc_devlink);
--	devlink_unregister(devlink_ctx);
- 	devlink_free(devlink_ctx);
+ out:
+@@ -2506,7 +2505,6 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ out_disable:
+ 	pci_disable_device(pdev);
+ out_unregister:
+-	devlink_unregister(devlink);
+ 	devlink_free(devlink);
+ 	return err;
  }
+@@ -2517,11 +2515,11 @@ ptp_ocp_remove(struct pci_dev *pdev)
+ 	struct ptp_ocp *bp = pci_get_drvdata(pdev);
+ 	struct devlink *devlink = priv_to_devlink(bp);
+ 
++	devlink_unregister(devlink);
+ 	ptp_ocp_detach(bp);
+ 	pci_set_drvdata(pdev, NULL);
+ 	pci_disable_device(pdev);
+ 
+-	devlink_unregister(devlink);
+ 	devlink_free(devlink);
+ }
+ 
 -- 
 2.31.1
 
