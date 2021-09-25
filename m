@@ -1,58 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E302A418177
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16D53418178
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96D9C4022A;
-	Sat, 25 Sep 2021 11:24:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AAE678101D;
+	Sat, 25 Sep 2021 11:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p839yvQd_6Yl; Sat, 25 Sep 2021 11:24:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XpTwFJQYVLIl; Sat, 25 Sep 2021 11:24:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A68DB40190;
-	Sat, 25 Sep 2021 11:24:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B5E9E80FDE;
+	Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 488B21BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BD7951BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 362AE40190
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id ABB3A6070B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KsCEmXEaToWK for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:24:08 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 04Bn2H9I1A2f for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BA11340181
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:08 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CC77061288;
- Sat, 25 Sep 2021 11:24:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3812D606D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0ACD06128E;
+ Sat, 25 Sep 2021 11:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569048;
- bh=UGe1xR5nQjl5sitWRrZO39MCG615CkI/XgeO5EfkyHA=;
+ s=k20201202; t=1632569051;
+ bh=hIaU3zuCJ66VCcfkvkXkjfrXrZk0nBwoxqfW+xbNAI4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eXJnTqgMbORVHaUsGV03ryKJr6A1PfdhYoeVsyCNEges2Dn9WZ7FE4+7QH3xqJvR9
- Mz5qz1HhsuOgoYQOxRRc2geSU+85mrlqpccGRTMS5HNtlTD9qpZiA6BDhj7DVZhKv7
- sj2HzVf0JYXhCn2l9u3cBQBv5vEik7dYiF8tPoahtV6EPb5DdE99UK8bicH0CXAY1W
- HNyqws6BMBbppxtt3484q7TdwfEfbBOeq/bgChcm6v6hSMl1crla5Ovo4z8W/DKqtc
- ElB0gliFBoCj4F940uxkATHVFsfX4EYpq0KC0xZ9LpCNrkxbV9d5shVyGsAIldIE1K
- SK3ShGOLcii1A==
+ b=hBZGKXwn8MuXnfyIESlBTW1o1wITt4RwTx900BqVAekSocAOEd7gZDaIl7tnVZv6M
+ q3Q21JYh+9eSN/awnLVNufvGKHgKSaIWRJy5ivfUktMueUS9g5/hLo0Uv9rxmHf4Ne
+ 211pPeYPpZMV6Ds75i05viWIuvhchW2NqqBhX4a07FEQj6wHLw3UpJKiYkdxkk0lFm
+ bSZeh9Ke9vA+QngTRqW5Hu6S/Ti3v116zfBVCHrWYNiVgXRCmPHe0DYiSJ82TIpPaL
+ C4vY9albBFHKQVnNf6fAbGot8HbEqBfjq0pJUTWDackF/nuQF7xemq0NLd1sc8oYoz
+ jySHQjT6V/w9w==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:59 +0300
-Message-Id: <1541e7cd8262ce9db7544669438d0f4360068dd2.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:23:00 +0300
+Message-Id: <87eb1893ae465eb0ec1ed726c9ca078edc8298ac.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 19/21] ptp: ocp: Move devlink
- registration to be last devlink command
+Subject: [Intel-wired-lan] [PATCH net-next v1 20/21] staging: qlge: Move
+ devlink registration to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,51 +108,52 @@ fully configured.
 
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/ptp/ptp_ocp.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/staging/qlge/qlge_main.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
-index 4c25467198e3..34f943c8c9fd 100644
---- a/drivers/ptp/ptp_ocp.c
-+++ b/drivers/ptp/ptp_ocp.c
-@@ -2455,7 +2455,6 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 		return -ENOMEM;
+diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
+index 33539f6c254d..1dc849378a0f 100644
+--- a/drivers/staging/qlge/qlge_main.c
++++ b/drivers/staging/qlge/qlge_main.c
+@@ -4614,10 +4614,9 @@ static int qlge_probe(struct pci_dev *pdev,
+ 		goto netdev_free;
  	}
  
 -	devlink_register(devlink);
- 	err = pci_enable_device(pdev);
- 	if (err) {
- 		dev_err(&pdev->dev, "pci_enable_device\n");
-@@ -2497,7 +2496,7 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 		goto out;
+ 	err = qlge_health_create_reporters(qdev);
+ 	if (err)
+-		goto devlink_unregister;
++		goto netdev_free;
  
- 	ptp_ocp_info(bp);
--
+ 	/* Start up the timer to trigger EEH if
+ 	 * the bus goes dead
+@@ -4628,10 +4627,9 @@ static int qlge_probe(struct pci_dev *pdev,
+ 	qlge_display_dev_info(ndev);
+ 	atomic_set(&qdev->lb_count, 0);
+ 	cards_found++;
 +	devlink_register(devlink);
  	return 0;
  
- out:
-@@ -2506,7 +2505,6 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- out_disable:
- 	pci_disable_device(pdev);
- out_unregister:
+-devlink_unregister:
 -	devlink_unregister(devlink);
- 	devlink_free(devlink);
- 	return err;
- }
-@@ -2517,11 +2515,11 @@ ptp_ocp_remove(struct pci_dev *pdev)
- 	struct ptp_ocp *bp = pci_get_drvdata(pdev);
- 	struct devlink *devlink = priv_to_devlink(bp);
+ netdev_free:
+ 	free_netdev(ndev);
+ devlink_free:
+@@ -4656,13 +4654,13 @@ static void qlge_remove(struct pci_dev *pdev)
+ 	struct net_device *ndev = qdev->ndev;
+ 	struct devlink *devlink = priv_to_devlink(qdev);
  
 +	devlink_unregister(devlink);
- 	ptp_ocp_detach(bp);
- 	pci_set_drvdata(pdev, NULL);
+ 	del_timer_sync(&qdev->timer);
+ 	qlge_cancel_all_work_sync(qdev);
+ 	unregister_netdev(ndev);
+ 	qlge_release_all(pdev);
  	pci_disable_device(pdev);
- 
+ 	devlink_health_reporter_destroy(qdev->reporter);
 -	devlink_unregister(devlink);
  	devlink_free(devlink);
+ 	free_netdev(ndev);
  }
- 
 -- 
 2.31.1
 
