@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02073418141
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:23:21 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A97D418144
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:23:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5021840477;
-	Sat, 25 Sep 2021 11:23:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E23640266;
+	Sat, 25 Sep 2021 11:23:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2LiVlKVowUWY; Sat, 25 Sep 2021 11:23:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4TuVrJ1EpM5r; Sat, 25 Sep 2021 11:23:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5264140475;
-	Sat, 25 Sep 2021 11:23:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 51AE44024C;
+	Sat, 25 Sep 2021 11:23:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0FBA81BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6104E1BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0B46F607E0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5C13482E19
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z1WJY5c2iQM4 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:23:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ls8LfLa927EP for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:23:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7A05B607CC
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:13 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7CC4A6127A;
- Sat, 25 Sep 2021 11:23:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B380382DD9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:23 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 853346128B;
+ Sat, 25 Sep 2021 11:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632568993;
- bh=0iCrJmusuY+MMUEQ//ywNHOofwBQzIGVnKfBKsYhLkY=;
+ s=k20201202; t=1632569003;
+ bh=02xRTwet1c5l8qRgcXs4VCpKQJvqfYPSwFUrWIoc2cM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Un2ZXGs141wGHS2WheoisAp7znQPAsLcvAkFWEs/VT1FH8znj6ZuQ78vXW/UxmcNq
- DdEkagR3qqP2rfbHNVlg6STPvOVaZ0+ZfxAwDMiP0rNwXsJsLCfO7CIY/3nmp31XVw
- mcfvBqqu2/PDLgeC0sROwOWx1xKrrBzrswzkASx/156P4VKWx/jPoSaUSBLxOv+cne
- PBEte5Wz8kBJRU98ig/0GffGqKLmxAn3wYIyNB6qUMMgQN1ttlgrI02XyYZXimYavH
- eVXwwgstpU2BJ4eCFTUjvdEV6IX0VLMZ42T2n7f7/dAzBcN+b2XqdPVm20ncAAMeFq
- wP3LrJfUtJRLQ==
+ b=eBdkOeQZAzQfx/m/yxFbsJIGBvkhRpE2hSfkJbHrHeRhC5LOGgZSfk4qdoFd5jXLC
+ 4cajFeDHROqHcKL6Uxo3t/x66TBMHadOtMGgbKbHUJLVc+EoKzRywI13DAUuwL4Nmy
+ XdaiN+sF1pwhdlQ+uSs0w4bITD8GdZlM7wYUfcvrz8HaBW66RC6ITexIAdOoJUX2tS
+ NdMaGkjmUePmj+YdIJxYmXTz6HRjqnWB052FPKJjeF22nVurS6AbIJA54sOsNoQIvo
+ MozNtLmeX9dcJkGV28/X2nazhnG4nqa89dbG8o8cBxCkZF4jyGYcMvQtjkCR91Gadf
+ 06/PrR1PnbLsA==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:42 +0300
-Message-Id: <54d36bce5a78cdb4d51a9eaff6f2216fbbdd1004.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:22:43 +0300
+Message-Id: <4e78bd8c6f45eef8093547a37c4d00ef0d1fef56.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 02/21] bnxt_en: Register
- devlink instance at the end devlink configuration
+Subject: [Intel-wired-lan] [PATCH net-next v1 03/21] liquidio: Overcome
+ missing device lock protection in init/remove flows
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,71 +103,84 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Leon Romanovsky <leonro@nvidia.com>
 
-Move devlink_register() to be last command in devlink configuration
-sequence, so no user space access will be possible till devlink instance
-is fully operable. As part of this change, the devlink_params_publish
-call is removed as not needed.
+The liquidio driver is broken by design. It initialize PCI devices
+in separate delayed works. It causes to the situation where device lock
+is dropped during initialize and remove sequences.
 
-This change fixes forgotten devlink_params_unpublish() too.
+That lock is part of driver/core and needed to protect from races during
+init, destroy and bus invocations.
+
+In addition to lack of locking protection, it has incorrect order of
+destroy flows and very questionable synchronization scheme based on
+atomic_t.
+
+This change doesn't fix that driver but makes sure that rest of the
+netdev subsystem doesn't suffer from such basic protection by adding
+device_lock over devlink_*() APIs and by moving devlink_register()
+to be last command in setup_nic_devices().
 
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ .../net/ethernet/cavium/liquidio/lio_main.c   | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-index ed95e28d60ef..951c0c00cc95 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
-@@ -745,14 +745,10 @@ static int bnxt_dl_params_register(struct bnxt *bp)
+diff --git a/drivers/net/ethernet/cavium/liquidio/lio_main.c b/drivers/net/ethernet/cavium/liquidio/lio_main.c
+index a34b3bb2dd4f..dafc79bd34f4 100644
+--- a/drivers/net/ethernet/cavium/liquidio/lio_main.c
++++ b/drivers/net/ethernet/cavium/liquidio/lio_main.c
+@@ -1279,6 +1279,14 @@ static int liquidio_stop_nic_module(struct octeon_device *oct)
+ 	struct lio *lio;
  
- 	rc = devlink_params_register(bp->dl, bnxt_dl_params,
- 				     ARRAY_SIZE(bnxt_dl_params));
--	if (rc) {
-+	if (rc)
- 		netdev_warn(bp->dev, "devlink_params_register failed. rc=%d\n",
- 			    rc);
--		return rc;
+ 	dev_dbg(&oct->pci_dev->dev, "Stopping network interfaces\n");
++	device_lock(&oct->pci_dev->dev);
++	if (oct->devlink) {
++		devlink_unregister(oct->devlink);
++		devlink_free(oct->devlink);
++		oct->devlink = NULL;
++	}
++	device_unlock(&oct->pci_dev->dev);
++
+ 	if (!oct->ifcount) {
+ 		dev_err(&oct->pci_dev->dev, "Init for Octeon was not completed\n");
+ 		return 1;
+@@ -1300,12 +1308,6 @@ static int liquidio_stop_nic_module(struct octeon_device *oct)
+ 	for (i = 0; i < oct->ifcount; i++)
+ 		liquidio_destroy_nic_device(oct, i);
+ 
+-	if (oct->devlink) {
+-		devlink_unregister(oct->devlink);
+-		devlink_free(oct->devlink);
+-		oct->devlink = NULL;
 -	}
--	devlink_params_publish(bp->dl);
 -
--	return 0;
-+	return rc;
+ 	dev_dbg(&oct->pci_dev->dev, "Network interfaces stopped\n");
+ 	return 0;
  }
+@@ -3749,10 +3751,12 @@ static int setup_nic_devices(struct octeon_device *octeon_dev)
+ 		}
+ 	}
  
- static void bnxt_dl_params_unregister(struct bnxt *bp)
-@@ -792,9 +788,8 @@ int bnxt_dl_register(struct bnxt *bp)
- 	    bp->hwrm_spec_code > 0x10803)
- 		bp->eswitch_mode = DEVLINK_ESWITCH_MODE_LEGACY;
++	device_lock(&octeon_dev->pci_dev->dev);
+ 	devlink = devlink_alloc(&liquidio_devlink_ops,
+ 				sizeof(struct lio_devlink_priv),
+ 				&octeon_dev->pci_dev->dev);
+ 	if (!devlink) {
++		device_unlock(&octeon_dev->pci_dev->dev);
+ 		dev_err(&octeon_dev->pci_dev->dev, "devlink alloc failed\n");
+ 		goto setup_nic_dev_free;
+ 	}
+@@ -3760,9 +3764,10 @@ static int setup_nic_devices(struct octeon_device *octeon_dev)
+ 	lio_devlink = devlink_priv(devlink);
+ 	lio_devlink->oct = octeon_dev;
  
--	devlink_register(dl);
- 	if (!BNXT_PF(bp))
--		return 0;
-+		goto out;
+-	devlink_register(devlink);
+ 	octeon_dev->devlink = devlink;
+ 	octeon_dev->eswitch_mode = DEVLINK_ESWITCH_MODE_LEGACY;
++	devlink_register(devlink);
++	device_unlock(&octeon_dev->pci_dev->dev);
  
- 	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
- 	attrs.phys.port_number = bp->pf.port_id;
-@@ -811,6 +806,8 @@ int bnxt_dl_register(struct bnxt *bp)
- 	if (rc)
- 		goto err_dl_port_unreg;
- 
-+out:
-+	devlink_register(dl);
  	return 0;
  
- err_dl_port_unreg:
-@@ -824,10 +821,10 @@ void bnxt_dl_unregister(struct bnxt *bp)
- {
- 	struct devlink *dl = bp->dl;
- 
-+	devlink_unregister(dl);
- 	if (BNXT_PF(bp)) {
- 		bnxt_dl_params_unregister(bp);
- 		devlink_port_unregister(&bp->dl_port);
- 	}
--	devlink_unregister(dl);
- 	devlink_free(dl);
- }
 -- 
 2.31.1
 
