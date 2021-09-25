@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16D53418178
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE05641817E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AAE678101D;
-	Sat, 25 Sep 2021 11:24:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 82C3A402E3;
+	Sat, 25 Sep 2021 11:24:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XpTwFJQYVLIl; Sat, 25 Sep 2021 11:24:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ymwWrZ98QnGX; Sat, 25 Sep 2021 11:24:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B5E9E80FDE;
-	Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 69C734024C;
+	Sat, 25 Sep 2021 11:24:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BD7951BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 603351BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ABB3A6070B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5B8C440190
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 04Bn2H9I1A2f for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id omTacdZQ6_xI for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:24:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3812D606D9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:12 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0ACD06128E;
- Sat, 25 Sep 2021 11:24:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CA2F340181
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:18 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D1B0761352;
+ Sat, 25 Sep 2021 11:24:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569051;
- bh=hIaU3zuCJ66VCcfkvkXkjfrXrZk0nBwoxqfW+xbNAI4=;
+ s=k20201202; t=1632569058;
+ bh=iRLV6v3e7JYAyZzq3uX24jBWmOHmWur2DvK8Vt/2i+0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hBZGKXwn8MuXnfyIESlBTW1o1wITt4RwTx900BqVAekSocAOEd7gZDaIl7tnVZv6M
- q3Q21JYh+9eSN/awnLVNufvGKHgKSaIWRJy5ivfUktMueUS9g5/hLo0Uv9rxmHf4Ne
- 211pPeYPpZMV6Ds75i05viWIuvhchW2NqqBhX4a07FEQj6wHLw3UpJKiYkdxkk0lFm
- bSZeh9Ke9vA+QngTRqW5Hu6S/Ti3v116zfBVCHrWYNiVgXRCmPHe0DYiSJ82TIpPaL
- C4vY9albBFHKQVnNf6fAbGot8HbEqBfjq0pJUTWDackF/nuQF7xemq0NLd1sc8oYoz
- jySHQjT6V/w9w==
+ b=pR22exCjUS7YCkjkCvD8Rnb9sosGeBFWlArr/YA3QFWWrtyauBEi7+Tuhqd4afoJR
+ eRUaq5hWn2OMw9LPTV8rZEfeRlENaJNpc2E4GJnYKmRa7zvr8b5JTcEqZmvEYOvhf/
+ 2YLSW8fytAdZTjkgmt/8HJ/SHvzIf7/eRAOikZt9Oa1UDm8a+EloI0pZzg2GkXLWp/
+ kbdu3Un5+qwR8prVYLnTt23VXb+LJjt7pgc76zL+oyZsh181Sb/7IqLOeqFUK9InuA
+ voqdYkfrjahsfJjF/DzkF/YIBNWKLGBMyC3/4eZXseBdGBO3ITOoLCyUVllM0CXPr8
+ 8zF7KKkx596zg==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:23:00 +0300
-Message-Id: <87eb1893ae465eb0ec1ed726c9ca078edc8298ac.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:23:01 +0300
+Message-Id: <66dd7979b44ac307711c382054f428f9287666a8.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 20/21] staging: qlge: Move
- devlink registration to be last devlink command
+Subject: [Intel-wired-lan] [PATCH net-next v1 21/21] net: dsa: Move devlink
+ registration to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,57 +103,70 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Leon Romanovsky <leonro@nvidia.com>
 
-This change prevents from users to access device before devlink is
-fully configured.
+This change prevents from users to access device before devlink
+is fully configured.
 
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/staging/qlge/qlge_main.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ net/dsa/dsa2.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index 33539f6c254d..1dc849378a0f 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -4614,10 +4614,9 @@ static int qlge_probe(struct pci_dev *pdev,
- 		goto netdev_free;
+diff --git a/net/dsa/dsa2.c b/net/dsa/dsa2.c
+index a020339e1973..8ca6a1170c9d 100644
+--- a/net/dsa/dsa2.c
++++ b/net/dsa/dsa2.c
+@@ -848,7 +848,6 @@ static int dsa_switch_setup(struct dsa_switch *ds)
+ 	dl_priv = devlink_priv(ds->devlink);
+ 	dl_priv->ds = ds;
+ 
+-	devlink_register(ds->devlink);
+ 	/* Setup devlink port instances now, so that the switch
+ 	 * setup() can register regions etc, against the ports
+ 	 */
+@@ -874,8 +873,6 @@ static int dsa_switch_setup(struct dsa_switch *ds)
+ 	if (err)
+ 		goto teardown;
+ 
+-	devlink_params_publish(ds->devlink);
+-
+ 	if (!ds->slave_mii_bus && ds->ops->phy_read) {
+ 		ds->slave_mii_bus = mdiobus_alloc();
+ 		if (!ds->slave_mii_bus) {
+@@ -891,7 +888,7 @@ static int dsa_switch_setup(struct dsa_switch *ds)
  	}
  
--	devlink_register(devlink);
- 	err = qlge_health_create_reporters(qdev);
- 	if (err)
--		goto devlink_unregister;
-+		goto netdev_free;
- 
- 	/* Start up the timer to trigger EEH if
- 	 * the bus goes dead
-@@ -4628,10 +4627,9 @@ static int qlge_probe(struct pci_dev *pdev,
- 	qlge_display_dev_info(ndev);
- 	atomic_set(&qdev->lb_count, 0);
- 	cards_found++;
-+	devlink_register(devlink);
+ 	ds->setup = true;
+-
++	devlink_register(ds->devlink);
  	return 0;
  
--devlink_unregister:
--	devlink_unregister(devlink);
- netdev_free:
- 	free_netdev(ndev);
- devlink_free:
-@@ -4656,13 +4654,13 @@ static void qlge_remove(struct pci_dev *pdev)
- 	struct net_device *ndev = qdev->ndev;
- 	struct devlink *devlink = priv_to_devlink(qdev);
+ free_slave_mii_bus:
+@@ -906,7 +903,6 @@ static int dsa_switch_setup(struct dsa_switch *ds)
+ 	list_for_each_entry(dp, &ds->dst->ports, list)
+ 		if (dp->ds == ds)
+ 			dsa_port_devlink_teardown(dp);
+-	devlink_unregister(ds->devlink);
+ 	devlink_free(ds->devlink);
+ 	ds->devlink = NULL;
+ 	return err;
+@@ -919,6 +915,9 @@ static void dsa_switch_teardown(struct dsa_switch *ds)
+ 	if (!ds->setup)
+ 		return;
  
-+	devlink_unregister(devlink);
- 	del_timer_sync(&qdev->timer);
- 	qlge_cancel_all_work_sync(qdev);
- 	unregister_netdev(ndev);
- 	qlge_release_all(pdev);
- 	pci_disable_device(pdev);
- 	devlink_health_reporter_destroy(qdev->reporter);
--	devlink_unregister(devlink);
- 	devlink_free(devlink);
- 	free_netdev(ndev);
- }
++	if (ds->devlink)
++		devlink_unregister(ds->devlink);
++
+ 	if (ds->slave_mii_bus && ds->ops->phy_read) {
+ 		mdiobus_unregister(ds->slave_mii_bus);
+ 		mdiobus_free(ds->slave_mii_bus);
+@@ -934,7 +933,6 @@ static void dsa_switch_teardown(struct dsa_switch *ds)
+ 		list_for_each_entry(dp, &ds->dst->ports, list)
+ 			if (dp->ds == ds)
+ 				dsa_port_devlink_teardown(dp);
+-		devlink_unregister(ds->devlink);
+ 		devlink_free(ds->devlink);
+ 		ds->devlink = NULL;
+ 	}
 -- 
 2.31.1
 
