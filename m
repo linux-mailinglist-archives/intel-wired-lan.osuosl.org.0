@@ -1,59 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F7AC418162
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:23:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B990418174
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9D1094038F;
-	Sat, 25 Sep 2021 11:23:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8F85E6072E;
+	Sat, 25 Sep 2021 11:24:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SWmcnrQqtYEQ; Sat, 25 Sep 2021 11:23:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9loHZq8m4Scf; Sat, 25 Sep 2021 11:24:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A2B3740190;
-	Sat, 25 Sep 2021 11:23:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 918CC606D9;
+	Sat, 25 Sep 2021 11:24:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5C09F1BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 435E91BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5816B82E19
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3248A606D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GpoaI1gKvPTX for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:23:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qLtpHykFepyB for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:24:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D9B6982EB6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:51 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B775B6128C;
- Sat, 25 Sep 2021 11:23:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9A6CD606AF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:05 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 68AA66127C;
+ Sat, 25 Sep 2021 11:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569031;
- bh=xa9GziJGjO+uYR+6TLvwaU0ghnPSlFl4J+UcvATj0rM=;
+ s=k20201202; t=1632569045;
+ bh=ghHAU3D0r/NE4ZoiVTD12PA4CEB5+DDXgtVw+z6KtRc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Sh5UCjWPwOf2FQDfkuASXPFp/fNpsJHp5uxIvwgGsrxq4+tYmgNyYTY30hIF2jbP0
- FOZ80qEQnPV2vSc/Tv9uRTO+IDefIr7Ysc8W8FcVPJN+HViEyz0m7eIWHdt93GGo7a
- HUrEErXyzrYmBaJadre4duxUrAj/tJVTh87LQS1CSQKHDIS5bxRigi/BGcuLTlSoS+
- A2HJqVcXKjt75hbAM8bIVgc2/Si6Ibd7nFYBFjBLt18A+LxshbWa+yxcfHNJVBVQJI
- xKOy57wtXFbtDXyaPBt9Cb5QkNXwWVIEDUXaffiJAl8dT224YWEEmPlxFFRh61STQw
- jkPCR4A3oV7nA==
+ b=SwqFg7wTZGt5iCU3qK7f4wQnVFfowX010H/dNk0sKyf2Fpcrv5KOUcXlAIBhvhPoY
+ /sJUWV49DzbUxeN8p6I3AF6ECdTN7PmNiEByCCKEnxzM+ANBeNrqDkUBsa8wvx7pjY
+ l7gK1Mg98ck7OMfilfsXCN1BXu4T2LFhFzqSpS1+7D7Ik5V4yCfVtNXCTqVdBBLNgU
+ RYeFsB5DtlzpqCfBNk5OFoaCcrIqNg2aZv4c8yF/fZrRpXnW24LDPNyQYqG2Q48wD7
+ ygTcKaPuygBRzHa5ObPnkA9FWV/kwePaSjWQtO8VR3EO/b6nHsGW0c+0vdXzTYphjW
+ eun1aIUbsGYZg==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:54 +0300
-Message-Id: <cb187a035b75dbcc27f6dd10d72f18f1101bad44.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:22:55 +0300
+Message-Id: <01bc35bd99dc5d2dcbf55bbf4a86f0bde1c50087.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 14/21] ionic: Move devlink
+Subject: [Intel-wired-lan] [PATCH net-next v1 15/21] qed: Move devlink
  registration to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -108,36 +106,50 @@ fully configured.
 
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/ethernet/pensando/ionic/ionic_devlink.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/qlogic/qed/qed_devlink.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-index 93282394d332..2267da95640b 100644
---- a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-+++ b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
-@@ -82,7 +82,6 @@ int ionic_devlink_register(struct ionic *ionic)
- 	struct devlink_port_attrs attrs = {};
- 	int err;
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_devlink.c b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
+index c51f9590fe19..6bb4e165b592 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_devlink.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
+@@ -215,7 +215,6 @@ struct devlink *qed_devlink_register(struct qed_dev *cdev)
+ 	qdevlink = devlink_priv(dl);
+ 	qdevlink->cdev = cdev;
  
 -	devlink_register(dl);
- 	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
- 	devlink_port_attrs_set(&ionic->dl_port, &attrs);
- 	err = devlink_port_register(dl, &ionic->dl_port, 0);
-@@ -93,6 +92,7 @@ int ionic_devlink_register(struct ionic *ionic)
- 	}
+ 	rc = devlink_params_register(dl, qed_devlink_params,
+ 				     ARRAY_SIZE(qed_devlink_params));
+ 	if (rc)
+@@ -226,15 +225,13 @@ struct devlink *qed_devlink_register(struct qed_dev *cdev)
+ 					   QED_DEVLINK_PARAM_ID_IWARP_CMT,
+ 					   value);
  
- 	devlink_port_type_eth_set(&ionic->dl_port, ionic->lif->netdev);
+-	devlink_params_publish(dl);
+ 	cdev->iwarp_cmt = false;
+ 
+ 	qed_fw_reporters_create(dl);
+-
 +	devlink_register(dl);
- 	return 0;
- }
+ 	return dl;
  
-@@ -100,6 +100,6 @@ void ionic_devlink_unregister(struct ionic *ionic)
- {
- 	struct devlink *dl = priv_to_devlink(ionic);
+ err_unregister:
+-	devlink_unregister(dl);
+ 	devlink_free(dl);
  
--	devlink_port_unregister(&ionic->dl_port);
- 	devlink_unregister(dl);
-+	devlink_port_unregister(&ionic->dl_port);
+ 	return ERR_PTR(rc);
+@@ -245,11 +242,11 @@ void qed_devlink_unregister(struct devlink *devlink)
+ 	if (!devlink)
+ 		return;
+ 
++	devlink_unregister(devlink);
+ 	qed_fw_reporters_destroy(devlink);
+ 
+ 	devlink_params_unregister(devlink, qed_devlink_params,
+ 				  ARRAY_SIZE(qed_devlink_params));
+ 
+-	devlink_unregister(devlink);
+ 	devlink_free(devlink);
  }
 -- 
 2.31.1
