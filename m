@@ -1,58 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B990418174
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A4A2341816E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F85E6072E;
-	Sat, 25 Sep 2021 11:24:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3FE5D80F80;
+	Sat, 25 Sep 2021 11:24:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9loHZq8m4Scf; Sat, 25 Sep 2021 11:24:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O-B8p_ZczYL1; Sat, 25 Sep 2021 11:24:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 918CC606D9;
-	Sat, 25 Sep 2021 11:24:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3C34C80EB2;
+	Sat, 25 Sep 2021 11:24:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 435E91BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B2F471BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3248A606D9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AC44F4024C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qLtpHykFepyB for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:24:05 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SgttwaxFZuA5 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:23:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9A6CD606AF
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:05 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 68AA66127C;
- Sat, 25 Sep 2021 11:24:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CD8AD40217
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:23:58 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 90E1461283;
+ Sat, 25 Sep 2021 11:23:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569045;
- bh=ghHAU3D0r/NE4ZoiVTD12PA4CEB5+DDXgtVw+z6KtRc=;
+ s=k20201202; t=1632569038;
+ bh=jJTdFkVIbFrNcti+vSAvnsUyuqLnAsTFH1czjUjL+4Q=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SwqFg7wTZGt5iCU3qK7f4wQnVFfowX010H/dNk0sKyf2Fpcrv5KOUcXlAIBhvhPoY
- /sJUWV49DzbUxeN8p6I3AF6ECdTN7PmNiEByCCKEnxzM+ANBeNrqDkUBsa8wvx7pjY
- l7gK1Mg98ck7OMfilfsXCN1BXu4T2LFhFzqSpS1+7D7Ik5V4yCfVtNXCTqVdBBLNgU
- RYeFsB5DtlzpqCfBNk5OFoaCcrIqNg2aZv4c8yF/fZrRpXnW24LDPNyQYqG2Q48wD7
- ygTcKaPuygBRzHa5ObPnkA9FWV/kwePaSjWQtO8VR3EO/b6nHsGW0c+0vdXzTYphjW
- eun1aIUbsGYZg==
+ b=GPWtcrmfDyDMddu/oC/QnkpL4YXGkCgVKNf3L07H+kjGHXs6Chmk67nPjUN2TMJYc
+ Y9kmkd1dw01fVgTD+LUXZlcZ3cg5+8TF1hIIkMUJ4X/ZApnmufzf6TAJ5x76nwkVGT
+ 39XuQ3/cKiPEhvAeAvluRwX/2k6/3qKwkZnOmrrXSdGNSptpGR2ZjNtLp2BV5aBgCH
+ O7dxVzOWEOsE10/q7niHhLSdvaOjOhSiRQVT26AgVpzP+XKdVRwGrt31w+yq2whnTX
+ jhfG5XJRtdzNemLyEOPxruOxcTh87Sovqe4PVHjmzMpcIbDWBa9VDvcW77pxSJNqC4
+ 0r0M29pUOynaQ==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:55 +0300
-Message-Id: <01bc35bd99dc5d2dcbf55bbf4a86f0bde1c50087.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:22:56 +0300
+Message-Id: <080c8889f80e48971dd9a1dadb4107882d83998d.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 15/21] qed: Move devlink
- registration to be last devlink command
+Subject: [Intel-wired-lan] [PATCH net-next v1 16/21] net: ethernet: ti: Move
+ devlink registration to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,51 +108,109 @@ fully configured.
 
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/ethernet/qlogic/qed/qed_devlink.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c | 15 ++++++---------
+ drivers/net/ethernet/ti/cpsw_new.c       |  7 ++-----
+ 2 files changed, 8 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/net/ethernet/qlogic/qed/qed_devlink.c b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-index c51f9590fe19..6bb4e165b592 100644
---- a/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-+++ b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
-@@ -215,7 +215,6 @@ struct devlink *qed_devlink_register(struct qed_dev *cdev)
- 	qdevlink = devlink_priv(dl);
- 	qdevlink->cdev = cdev;
+diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+index c2ea53ca92b6..0de5f4a4fe08 100644
+--- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
++++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
+@@ -2429,7 +2429,6 @@ static int am65_cpsw_nuss_register_devlink(struct am65_cpsw_common *common)
+ 	dl_priv = devlink_priv(common->devlink);
+ 	dl_priv->common = common;
  
--	devlink_register(dl);
- 	rc = devlink_params_register(dl, qed_devlink_params,
- 				     ARRAY_SIZE(qed_devlink_params));
- 	if (rc)
-@@ -226,15 +225,13 @@ struct devlink *qed_devlink_register(struct qed_dev *cdev)
- 					   QED_DEVLINK_PARAM_ID_IWARP_CMT,
- 					   value);
+-	devlink_register(common->devlink);
+ 	/* Provide devlink hook to switch mode when multiple external ports
+ 	 * are present NUSS switchdev driver is enabled.
+ 	 */
+@@ -2442,7 +2441,6 @@ static int am65_cpsw_nuss_register_devlink(struct am65_cpsw_common *common)
+ 			dev_err(dev, "devlink params reg fail ret:%d\n", ret);
+ 			goto dl_unreg;
+ 		}
+-		devlink_params_publish(common->devlink);
+ 	}
  
--	devlink_params_publish(dl);
- 	cdev->iwarp_cmt = false;
- 
- 	qed_fw_reporters_create(dl);
+ 	for (i = 1; i <= common->port_num; i++) {
+@@ -2463,7 +2461,7 @@ static int am65_cpsw_nuss_register_devlink(struct am65_cpsw_common *common)
+ 		}
+ 		devlink_port_type_eth_set(dl_port, port->ndev);
+ 	}
 -
-+	devlink_register(dl);
- 	return dl;
++	devlink_register(common->devlink);
+ 	return ret;
  
- err_unregister:
--	devlink_unregister(dl);
- 	devlink_free(dl);
- 
- 	return ERR_PTR(rc);
-@@ -245,11 +242,11 @@ void qed_devlink_unregister(struct devlink *devlink)
- 	if (!devlink)
- 		return;
- 
-+	devlink_unregister(devlink);
- 	qed_fw_reporters_destroy(devlink);
- 
- 	devlink_params_unregister(devlink, qed_devlink_params,
- 				  ARRAY_SIZE(qed_devlink_params));
- 
--	devlink_unregister(devlink);
- 	devlink_free(devlink);
+ dl_port_unreg:
+@@ -2474,7 +2472,6 @@ static int am65_cpsw_nuss_register_devlink(struct am65_cpsw_common *common)
+ 		devlink_port_unregister(dl_port);
+ 	}
+ dl_unreg:
+-	devlink_unregister(common->devlink);
+ 	devlink_free(common->devlink);
+ 	return ret;
  }
+@@ -2485,6 +2482,8 @@ static void am65_cpsw_unregister_devlink(struct am65_cpsw_common *common)
+ 	struct am65_cpsw_port *port;
+ 	int i;
+ 
++	devlink_unregister(common->devlink);
++
+ 	for (i = 1; i <= common->port_num; i++) {
+ 		port = am65_common_get_port(common, i);
+ 		dl_port = &port->devlink_port;
+@@ -2493,13 +2492,11 @@ static void am65_cpsw_unregister_devlink(struct am65_cpsw_common *common)
+ 	}
+ 
+ 	if (!AM65_CPSW_IS_CPSW2G(common) &&
+-	    IS_ENABLED(CONFIG_TI_K3_AM65_CPSW_SWITCHDEV)) {
+-		devlink_params_unpublish(common->devlink);
+-		devlink_params_unregister(common->devlink, am65_cpsw_devlink_params,
++	    IS_ENABLED(CONFIG_TI_K3_AM65_CPSW_SWITCHDEV))
++		devlink_params_unregister(common->devlink,
++					  am65_cpsw_devlink_params,
+ 					  ARRAY_SIZE(am65_cpsw_devlink_params));
+-	}
+ 
+-	devlink_unregister(common->devlink);
+ 	devlink_free(common->devlink);
+ }
+ 
+diff --git a/drivers/net/ethernet/ti/cpsw_new.c b/drivers/net/ethernet/ti/cpsw_new.c
+index 204b4826303c..1530532748a8 100644
+--- a/drivers/net/ethernet/ti/cpsw_new.c
++++ b/drivers/net/ethernet/ti/cpsw_new.c
+@@ -1810,7 +1810,6 @@ static int cpsw_register_devlink(struct cpsw_common *cpsw)
+ 	dl_priv = devlink_priv(cpsw->devlink);
+ 	dl_priv->cpsw = cpsw;
+ 
+-	devlink_register(cpsw->devlink);
+ 	ret = devlink_params_register(cpsw->devlink, cpsw_devlink_params,
+ 				      ARRAY_SIZE(cpsw_devlink_params));
+ 	if (ret) {
+@@ -1818,21 +1817,19 @@ static int cpsw_register_devlink(struct cpsw_common *cpsw)
+ 		goto dl_unreg;
+ 	}
+ 
+-	devlink_params_publish(cpsw->devlink);
++	devlink_register(cpsw->devlink);
+ 	return ret;
+ 
+ dl_unreg:
+-	devlink_unregister(cpsw->devlink);
+ 	devlink_free(cpsw->devlink);
+ 	return ret;
+ }
+ 
+ static void cpsw_unregister_devlink(struct cpsw_common *cpsw)
+ {
+-	devlink_params_unpublish(cpsw->devlink);
++	devlink_unregister(cpsw->devlink);
+ 	devlink_params_unregister(cpsw->devlink, cpsw_devlink_params,
+ 				  ARRAY_SIZE(cpsw_devlink_params));
+-	devlink_unregister(cpsw->devlink);
+ 	devlink_free(cpsw->devlink);
+ }
+ 
 -- 
 2.31.1
 
