@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F099B41816F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 889F241817C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Sep 2021 13:24:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9F19C402E3;
-	Sat, 25 Sep 2021 11:24:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2697B606D9;
+	Sat, 25 Sep 2021 11:24:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p_oMKx6obeaQ; Sat, 25 Sep 2021 11:24:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pKcYMaRZHlge; Sat, 25 Sep 2021 11:24:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 73DA44024E;
-	Sat, 25 Sep 2021 11:24:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A3F5606AF;
+	Sat, 25 Sep 2021 11:24:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ABD861BF869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 251431BF869
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9AB0D404A1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 13AB8606D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i63rXA3ghZf5 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Sep 2021 11:24:02 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GSRYroK14HAZ for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Sep 2021 11:24:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 23C54402C0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:02 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 002256128A;
- Sat, 25 Sep 2021 11:24:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8FDFB606AF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Sep 2021 11:24:15 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6C0A561350;
+ Sat, 25 Sep 2021 11:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632569041;
- bh=Cl3NV1NYQWAcpVSM6GygwU59q/PE56ay+2A5k8m+/J0=;
+ s=k20201202; t=1632569055;
+ bh=7fuwMn0UcxFbiik3Z+N/XOLwJAq59/miUfWhpOwdqE0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BFN1GH5Yf1Hsh8UTT6arSQ8EKwmk0uMdcSCGgM/dgkyj3ocPsN9Vib6wa5dZd1Vwz
- u8rLDRoYW6di1kveNeOMohk6xPKcEvcce/XHpWBXbVjOIlFhpzFhJHHK+3QOzz2Zr9
- UPBq95GV2ADYPAzc6L51cg9xLwD9Le8xe4Vc4UqonE/62LqGC9UUMf9agd++VJIEnk
- 1BjNKGV/rp1lfPh2q4rxGAM52rDVmF/gwCAivI1rzyB7FhJa0oKEDBVXsd+6pTJ0ZD
- KPsnfCNXWwdH+x7un/bTHw9zKjbfqAmmcjpTdlnAKXgf/Elqbq1UnyzIKCBdF0jyOH
- RvSInpbsT4LUg==
+ b=Ge34eptxt6ik9tM4bBGWV+EhWY2pUsDmBrBnZIJGDR8WqRukI42+ESfMMMV9+gmyk
+ NzOJ5DLBu2o6NL6oi1jrLFHILSXlbaTkjCziDiYsxegSE/Jrp/gGgvJVR7RaEimH2k
+ u2KZhp8p3Q+odnSJGYZYpzbjUOdLrNqJ2GAMUiwsAT61gUQdMMmLpIZkJsjPKLDgja
+ 951E4DCRpAC2brIp9LRFyfkQegtVBAkmpGV+8JNtEYeEpLtKlgfwpF/3fdAikKH6yb
+ 0nLBFwTJ2r2zmbCo8w91OLQqyLpu05TcH/BXTltlVcbcWo+yMP4awblDvVJZGPBPj9
+ feyG+jP8SLazQ==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sat, 25 Sep 2021 14:22:57 +0300
-Message-Id: <87822c7b4f20182c37758a2c0b9bb84a0a3edaf8.1632565508.git.leonro@nvidia.com>
+Date: Sat, 25 Sep 2021 14:22:58 +0300
+Message-Id: <6a63d8f6484a46c9120155082a396b44ce86bd1c.1632565508.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632565508.git.leonro@nvidia.com>
 References: <cover.1632565508.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 17/21] netdevsim: Move devlink
- registration to be last devlink command
+Subject: [Intel-wired-lan] [PATCH net-next v1 18/21] net: wwan: iosm: Move
+ devlink_register to be last devlink command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,60 +102,67 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 From: Leon Romanovsky <leonro@nvidia.com>
 
 This change prevents from users to access device before devlink is
-fully configured.
+fully configured. Indirectly this change fixes the commit mentioned
+below where devlink_unregister() was prematurely removed.
 
+Fixes: db4278c55fa5 ("devlink: Make devlink_register to be void")
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- drivers/net/netdevsim/dev.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ drivers/net/wwan/iosm/iosm_ipc_devlink.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/netdevsim/dev.c b/drivers/net/netdevsim/dev.c
-index b2214bc9efe2..cb6645012a30 100644
---- a/drivers/net/netdevsim/dev.c
-+++ b/drivers/net/netdevsim/dev.c
-@@ -1470,7 +1470,6 @@ int nsim_dev_probe(struct nsim_bus_dev *nsim_bus_dev)
- 	if (err)
- 		goto err_devlink_free;
+diff --git a/drivers/net/wwan/iosm/iosm_ipc_devlink.c b/drivers/net/wwan/iosm/iosm_ipc_devlink.c
+index 42dbe7fe663c..6fe56f73011b 100644
+--- a/drivers/net/wwan/iosm/iosm_ipc_devlink.c
++++ b/drivers/net/wwan/iosm/iosm_ipc_devlink.c
+@@ -305,7 +305,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
+ 	ipc_devlink->devlink_ctx = devlink_ctx;
+ 	ipc_devlink->pcie = ipc_imem->pcie;
+ 	ipc_devlink->dev = ipc_imem->dev;
+-	devlink_register(devlink_ctx);
  
--	devlink_register(devlink);
- 	err = devlink_params_register(devlink, nsim_devlink_params,
- 				      ARRAY_SIZE(nsim_devlink_params));
- 	if (err)
-@@ -1511,9 +1510,9 @@ int nsim_dev_probe(struct nsim_bus_dev *nsim_bus_dev)
- 	if (err)
- 		goto err_psample_exit;
+ 	rc = devlink_params_register(devlink_ctx, iosm_devlink_params,
+ 				     ARRAY_SIZE(iosm_devlink_params));
+@@ -315,7 +314,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
+ 		goto param_reg_fail;
+ 	}
  
--	devlink_params_publish(devlink);
--	devlink_reload_enable(devlink);
- 	nsim_dev->esw_mode = DEVLINK_ESWITCH_MODE_LEGACY;
-+	devlink_register(devlink);
-+	devlink_reload_enable(devlink);
- 	return 0;
+-	devlink_params_publish(devlink_ctx);
+ 	ipc_devlink->cd_file_info = list;
  
- err_psample_exit:
-@@ -1534,7 +1533,6 @@ int nsim_dev_probe(struct nsim_bus_dev *nsim_bus_dev)
- 	devlink_params_unregister(devlink, nsim_devlink_params,
- 				  ARRAY_SIZE(nsim_devlink_params));
- err_dl_unregister:
--	devlink_unregister(devlink);
- 	devlink_resources_unregister(devlink, NULL);
- err_devlink_free:
- 	devlink_free(devlink);
-@@ -1569,6 +1567,7 @@ void nsim_dev_remove(struct nsim_bus_dev *nsim_bus_dev)
- 	struct devlink *devlink = priv_to_devlink(nsim_dev);
+ 	rc = ipc_devlink_create_region(ipc_devlink);
+@@ -334,6 +332,7 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
+ 	init_completion(&ipc_devlink->devlink_sio.read_sem);
+ 	skb_queue_head_init(&ipc_devlink->devlink_sio.rx_list);
  
- 	devlink_reload_disable(devlink);
-+	devlink_unregister(devlink);
++	devlink_register(devlink_ctx);
+ 	dev_dbg(ipc_devlink->dev, "iosm devlink register success");
  
- 	nsim_dev_reload_destroy(nsim_dev);
+ 	return ipc_devlink;
+@@ -341,7 +340,6 @@ struct iosm_devlink *ipc_devlink_init(struct iosm_imem *ipc_imem)
+ chnl_get_fail:
+ 	ipc_devlink_destroy_region(ipc_devlink);
+ region_create_fail:
+-	devlink_params_unpublish(devlink_ctx);
+ 	devlink_params_unregister(devlink_ctx, iosm_devlink_params,
+ 				  ARRAY_SIZE(iosm_devlink_params));
+ param_reg_fail:
+@@ -358,8 +356,8 @@ void ipc_devlink_deinit(struct iosm_devlink *ipc_devlink)
+ {
+ 	struct devlink *devlink_ctx = ipc_devlink->devlink_ctx;
  
-@@ -1576,7 +1575,6 @@ void nsim_dev_remove(struct nsim_bus_dev *nsim_bus_dev)
- 	nsim_dev_debugfs_exit(nsim_dev);
- 	devlink_params_unregister(devlink, nsim_devlink_params,
- 				  ARRAY_SIZE(nsim_devlink_params));
--	devlink_unregister(devlink);
- 	devlink_resources_unregister(devlink, NULL);
- 	devlink_free(devlink);
++	devlink_unregister(devlink_ctx);
+ 	ipc_devlink_destroy_region(ipc_devlink);
+-	devlink_params_unpublish(devlink_ctx);
+ 	devlink_params_unregister(devlink_ctx, iosm_devlink_params,
+ 				  ARRAY_SIZE(iosm_devlink_params));
+ 	if (ipc_devlink->devlink_sio.devlink_read_pend) {
+@@ -370,6 +368,5 @@ void ipc_devlink_deinit(struct iosm_devlink *ipc_devlink)
+ 		skb_queue_purge(&ipc_devlink->devlink_sio.rx_list);
+ 
+ 	ipc_imem_sys_devlink_close(ipc_devlink);
+-	devlink_unregister(devlink_ctx);
+ 	devlink_free(devlink_ctx);
  }
 -- 
 2.31.1
