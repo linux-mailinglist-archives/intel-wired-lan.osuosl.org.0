@@ -1,82 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95C404189A0
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Sep 2021 16:56:33 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 483934193AA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Sep 2021 13:53:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B0B7C60689;
-	Sun, 26 Sep 2021 14:56:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 936F18176F;
+	Mon, 27 Sep 2021 11:53:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R28QMRzqHigB; Sun, 26 Sep 2021 14:56:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s6QSA25ayyNI; Mon, 27 Sep 2021 11:53:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C4D65605E9;
-	Sun, 26 Sep 2021 14:56:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0AA48176D;
+	Mon, 27 Sep 2021 11:53:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D69091BF41F
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Sep 2021 14:56:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F33481BF293
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 11:53:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C39DF605E9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Sep 2021 14:56:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DFF53607E8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 11:53:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tQX0QaCP93gj for <intel-wired-lan@lists.osuosl.org>;
- Sun, 26 Sep 2021 14:56:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from new4-smtp.messagingengine.com (new4-smtp.messagingengine.com
- [66.111.4.230])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 14276605E1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Sep 2021 14:56:23 +0000 (UTC)
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailnew.nyi.internal (Postfix) with ESMTP id 5A6CC580E5A;
- Sun, 26 Sep 2021 10:56:20 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute1.internal (MEProxy); Sun, 26 Sep 2021 10:56:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=1SwiLo
- 0OKzrgae4gARfd9XtQ8Pfr/C7RtDkZYQvq+Zg=; b=KBG2mbIWFypeGTDA9ukwZC
- Savr3ve9ghFgzW+47++suGkjfTn8IUgdskA1e1Fmq+2Zq65GqH8vzvr/rp1w4zuF
- WHyhzfZbYSwjgTImHz0ce55HU9h0rf0nI8lt+Xu6oLVTSUN+ZJdFlq3gZouTev6v
- AZ50bV6l9xWh7R5PropJfcGY0I+40wasmcYkVCSl1fo6oGkEmmCGuSEYR3sMKkjt
- S/WBzvQ4to7Ythk3Y+qj2OuS5EqRs8U8qfPDccFDg10R98P11jm0ThngMC0bWnRr
- pT4oRUoxf4oztch6dNt4h3oiK2AIOib/gA49p0WDrMSSBDspfP54i03xpTpWCklg
- ==
-X-ME-Sender: <xms:EopQYZuKY-wnuTHI3n3YNNlj836zAWFflpNAqplVMrOL5Y2tNxWHkg>
- <xme:EopQYSdiw41V7repoJJNFKpvgH4U2aBdDU5Pj0MNb3GrPksmrsPyf-jGHw2tJVSkB
- gd1N5HMqXap-Yw>
-X-ME-Received: <xmr:EopQYcwstCsOU4Z_p68cMIlcEMb3hVnYwslc6YfFWgOB93fhDAaFtaha-7si25STMNqTY_HRq0425NLsRqbHBICeGlzqhg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrudejiedgkeduucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefkughoucfu
- tghhihhmmhgvlhcuoehiughoshgthhesihguohhstghhrdhorhhgqeenucggtffrrghtth
- gvrhhnpedtffekkeefudffveegueejffejhfetgfeuuefgvedtieehudeuueekhfduheel
- teenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehiug
- hoshgthhesihguohhstghhrdhorhhg
-X-ME-Proxy: <xmx:EopQYQPH6fS_kSAXkwpoRrga7m7P7o_kMYSgUegnKfpcyPV56t8etQ>
- <xmx:EopQYZ8yXp1UBxlU1AWoyJrpuNoSGVm1Egd65OrtWZqGjWYuSr1yMA>
- <xmx:EopQYQUEEbB_HClKbhfwf5wQ4Cqon53BsD1txQrhSArqcRAjYdcKKA>
- <xmx:FIpQYeYCbRFkSd5u4Mh_xIjItI9js46gZfOLDMA8h_Pobpt2EHM_sA>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 26 Sep 2021 10:56:17 -0400 (EDT)
-Date: Sun, 26 Sep 2021 17:56:13 +0300
-From: Ido Schimmel <idosch@idosch.org>
-To: Leon Romanovsky <leon@kernel.org>
-Message-ID: <YVCKDR1pyHaH2sR5@shredder>
+ with ESMTP id OLGn4PSv_vNJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Sep 2021 11:53:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 31B7F607E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 11:53:29 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BA30360F6C;
+ Mon, 27 Sep 2021 11:53:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632743608;
+ bh=Q2dHeySo3zRsXGknIbLs6i+yTpWx2dDgGoEFYPDr5/8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YaUXTiQmxWntMdcP1V6UabAj5J8Y25L1/E0AYpGsph11k51k6VvuI8uPokBfxbcAk
+ m2uUNUxT0DP/R0xJf6IGUC8maz/OqFGDLCwx0qK2IoUljTtiFro1XMJp+GmLED5ssx
+ T1ku5NlihRu34GIj81fPeIw7ebnIWBENHWl+gsXCpbVoVK2JoPlPV9W9/7Ky2991FF
+ arzkdMMFq4EaH/2DLzzcuKPhUe4TrV024+K0jMiavouR22LFvA7VwYQ1mEsRJO8slE
+ 0+cd42Ha63JskwWD96PNT2Osmj6PMhlOW5OdUO22AYB3Y6mybJGQC1TChNKODmw7Ew
+ 1Cj5jreVMvoQQ==
+Date: Mon, 27 Sep 2021 14:53:24 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Simon Horman <simon.horman@corigine.com>
+Message-ID: <YVGwtNEcWSgYvyyV@unreal>
 References: <cover.1632565508.git.leonro@nvidia.com>
- <ca198a30949abb3bdf283ff87e6e718be355d0cf.1632565508.git.leonro@nvidia.com>
+ <f393212ad3906808ee7eb5cff06ef2e053eb9d2b.1632565508.git.leonro@nvidia.com>
+ <20210927083923.GC17484@corigine.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ca198a30949abb3bdf283ff87e6e718be355d0cf.1632565508.git.leonro@nvidia.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 11/21] mlxsw: core:
- Register devlink instance last
+In-Reply-To: <20210927083923.GC17484@corigine.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 13/21] nfp: Move
+ delink_register to be last command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,20 +76,20 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  netdev@vger.kernel.org, Jerin Jacob <jerinj@marvell.com>,
  GR-everest-linux-l2@marvell.com, Subbaraya Sundeep <sbhatta@marvell.com>,
  Ioana Ciornei <ioana.ciornei@nxp.com>, UNGLinuxDriver@microchip.com,
- Leon Romanovsky <leonro@nvidia.com>, Michael Chan <michael.chan@broadcom.com>,
- Linu Cherian <lcherian@marvell.com>, Intel Corporation <linuxwwan@intel.com>,
- Tariq Toukan <tariqt@nvidia.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Manish Chopra <manishc@marvell.com>, linux-rdma@vger.kernel.org,
- linux-staging@lists.linux.dev, Shannon Nelson <snelson@pensando.io>,
- intel-wired-lan@lists.osuosl.org, Simon Horman <simon.horman@corigine.com>,
- Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Michael Chan <michael.chan@broadcom.com>, Linu Cherian <lcherian@marvell.com>,
+ Intel Corporation <linuxwwan@intel.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Manish Chopra <manishc@marvell.com>,
+ linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev,
+ Shannon Nelson <snelson@pensando.io>, intel-wired-lan@lists.osuosl.org,
+ Vadym Kochan <vkochan@marvell.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
  Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
  Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
- Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
+ Satanand Burla <sburla@marvell.com>, Bin Luo <luobin9@huawei.com>,
  Claudiu Manoil <claudiu.manoil@nxp.com>,
  Loic Poulain <loic.poulain@linaro.org>, Jiri Pirko <jiri@nvidia.com>,
- drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
- GR-Linux-NIC-Dev@marvell.com, Vadym Kochan <vkochan@marvell.com>,
+ drivers@pensando.io, linux-omap@vger.kernel.org,
+ Felix Manlunas <fmanlunas@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
  Coiby Xu <coiby.xu@gmail.com>, "David S . Miller" <davem@davemloft.net>,
@@ -123,16 +103,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Sep 25, 2021 at 02:22:51PM +0300, Leon Romanovsky wrote:
-> From: Leon Romanovsky <leonro@nvidia.com>
+On Mon, Sep 27, 2021 at 10:39:24AM +0200, Simon Horman wrote:
+> On Sat, Sep 25, 2021 at 02:22:53PM +0300, Leon Romanovsky wrote:
+> > From: Leon Romanovsky <leonro@nvidia.com>
+> > 
+> > Open user space access to the devlink after driver is probed.
 > 
-> Make sure that devlink is open to receive user input when all
-> parameters are initialized.
+> Hi Leon,
 > 
-> Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
+> I think a description of why is warranted here.
 
-Reviewed-by: Ido Schimmel <idosch@nvidia.com>
-Tested-by: Ido Schimmel <idosch@nvidia.com>
+After devlink_register(), users can send GET and SET netlink commands to
+the uninitialized driver. In some cases, nothing will happen, but not in
+all and hard to prove that ALL drivers are safe with such early access.
+
+It means that local users can (in theory for some and in practice for
+others) crash the system (or leverage permissions) with early devlink_register()
+by accessing internal to driver pointers that are not set yet.
+
+Like I said in the commit message, I'm not fixing all drivers.
+https://lore.kernel.org/netdev/cover.1632565508.git.leonro@nvidia.com/T/#m063eb4e67389bafcc3b3ddc07197bf43181b7209
+
+Because some of the driver authors made a wonderful job to obfuscate their
+driver and write completely unmanageable code.
+
+I do move devlink_register() to be last devlink command for all drivers,
+to allow me to clean devlink core locking and API in next series.
+
+This series should raise your eyebrow and trigger a question: "is my
+driver vulnerable too?". And the answer will depend on devlink_register()
+position in the .probe() call.
+
+Thanks
+
+> 
+> > Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
