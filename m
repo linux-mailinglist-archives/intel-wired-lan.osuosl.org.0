@@ -1,57 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDFCF419B3B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Sep 2021 19:15:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D034E419CD7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Sep 2021 19:33:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 71FA7406BF;
-	Mon, 27 Sep 2021 17:14:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 45C8C406BE;
+	Mon, 27 Sep 2021 17:33:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id smwyjSneyJse; Mon, 27 Sep 2021 17:14:58 +0000 (UTC)
+	with ESMTP id gX5pI1as8IHV; Mon, 27 Sep 2021 17:33:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7C7B1404E4;
-	Mon, 27 Sep 2021 17:14:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4F057406BD;
+	Mon, 27 Sep 2021 17:33:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E225A1BF5F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:14:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AE65C1BF5F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:33:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CEDFD4028F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:14:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8E26181A30
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:33:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2aevTv_nrM-E for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Sep 2021 17:14:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 130D24011D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:14:52 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CB5CB613B5;
- Mon, 27 Sep 2021 17:14:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1632762892;
- bh=hynGQikisgJ7MtRjGpKUx4LEZ/MlwhPK1EYInONPbf0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CydkNwMJ/pL8V+KvOjosOkHihilHUeRDlaSuR7zGgyA1N5wPJdnNmrxyqc/W5KnDR
- KN0i++EUS3szvVGclYoMqaJJxJt4h9AFwCQ69bHneWWTlVvqoVKoZidDl2Trs8+s91
- FldCWwQoU65VJ7tCKmbtDO75JnIrX6YxlNaEn+4k=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: linux-kernel@vger.kernel.org
-Date: Mon, 27 Sep 2021 19:01:44 +0200
-Message-Id: <20210927170235.491648102@linuxfoundation.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20210927170233.453060397@linuxfoundation.org>
-References: <20210927170233.453060397@linuxfoundation.org>
-User-Agent: quilt/0.66
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=infradead.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s-5QYxS-yxEk for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Sep 2021 17:33:04 +0000 (UTC)
+X-Greylist: delayed 00:07:24 by SQLgrey-1.8.0
+Received: from bombadil.infradead.org (unknown [IPv6:2607:7c80:54:e::133])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8DF7181A39
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 17:33:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=nupAYdVd/L9EJ9TKD+Kr1KJXgckH0yIhskHZjtigLq4=; b=YCSbayd/IXfFev4BOg+sI0IMgf
+ DGrnCgHR+/iiUZdxn9NT7LO54pxmHqPD2GisW2GT7+rjLh8AmMeG/GluK9DNrUGsIME0oDtFyCiiY
+ lHfA8xtw40JH3jhlMPGbuQcITHQWUjXg18y/t7zAsvGnEzjrcmOoeP+o89BKhgjjNZc1PENEPh4D5
+ R63dr0G1z9FIXV0dUX4HTUJxeMt8rYNPmhTCmpw8+pDdmVaEIQg4lpjM+Lk5qHfiXyw1ns2HMAVZ0
+ 4IDFKxKM1lzN0R55SVCvyBQr3pSFX0bdqjQ71HmZG2xauet9bifcAaqz6B62Y+OLuSsXDKtCHipNA
+ fQ6KtviA==;
+Received: from [2601:1c0:6280:3f0::aa0b]
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mUuUw-003chs-Vy; Mon, 27 Sep 2021 17:33:03 +0000
+To: Arnd Bergmann <arnd@kernel.org>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+References: <20210927131730.1587671-1-arnd@kernel.org>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <938261c5-62c7-dc0d-d4bb-fd45f20063bf@infradead.org>
+Date: Mon, 27 Sep 2021 10:33:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 5.14 058/162] igc: fix build errors for PTP
+In-Reply-To: <20210927131730.1587671-1-arnd@kernel.org>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] igc: fix PTP dependency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,81 +72,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Randy Dunlap <rdunlap@infradead.org>, stable@vger.kernel.org,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Arnd Bergmann <arnd@arndb.de>, Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Shannon Nelson <snelson@pensando.io>, Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Randy Dunlap <rdunlap@infradead.org>
+On 9/27/21 6:17 AM, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> The igc driver was accidentally left out of the Kconfig rework for PTP,
+> it needs the same dependency as the others:
+> 
+> arm-linux-gnueabi-ld: drivers/net/ethernet/intel/igc/igc_main.o: in function `igc_tsync_interrupt':
+> igc_main.c:(.text+0x1b288): undefined reference to `ptp_clock_event'
+> arm-linux-gnueabi-ld: igc_main.c:(.text+0x1b308): undefined reference to `ptp_clock_event'
+> arm-linux-gnueabi-ld: igc_main.c:(.text+0x1b8cc): undefined reference to `ptp_clock_event'
+> arm-linux-gnueabi-ld: drivers/net/ethernet/intel/igc/igc_ethtool.o: in function `igc_ethtool_get_ts_info':
+> 
+> Fixes: e5f31552674e ("ethernet: fix PTP_1588_CLOCK dependencies")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-[ Upstream commit 87758511075ec961486fe78d7548dd709b524433 ]
+Same patch is already merged in mainline.
+Thanks.
 
-When IGC=y and PTP_1588_CLOCK=m, the ptp_*() interface family is
-not available to the igc driver. Make this driver depend on
-PTP_1588_CLOCK_OPTIONAL so that it will build without errors.
+(Sorry if someone receives my reply 2x. I had an email glitch.)
 
-Various igc commits have used ptp_*() functions without checking
-that PTP_1588_CLOCK is enabled. Fix all of these here.
+> ---
+>   drivers/net/ethernet/intel/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+> index b0b6f90deb7d..ed8ea63bb172 100644
+> --- a/drivers/net/ethernet/intel/Kconfig
+> +++ b/drivers/net/ethernet/intel/Kconfig
+> @@ -335,6 +335,7 @@ config IGC
+>   	tristate "Intel(R) Ethernet Controller I225-LM/I225-V support"
+>   	default n
+>   	depends on PCI
+> +	depends on PTP_1588_CLOCK_OPTIONAL
+>   	help
+>   	  This driver supports Intel(R) Ethernet Controller I225-LM/I225-V
+>   	  family of adapters.
+> 
 
-Fixes these build errors:
 
-ld: drivers/net/ethernet/intel/igc/igc_main.o: in function `igc_msix_other':
-igc_main.c:(.text+0x6494): undefined reference to `ptp_clock_event'
-ld: igc_main.c:(.text+0x64ef): undefined reference to `ptp_clock_event'
-ld: igc_main.c:(.text+0x6559): undefined reference to `ptp_clock_event'
-ld: drivers/net/ethernet/intel/igc/igc_ethtool.o: in function `igc_ethtool_get_ts_info':
-igc_ethtool.c:(.text+0xc7a): undefined reference to `ptp_clock_index'
-ld: drivers/net/ethernet/intel/igc/igc_ptp.o: in function `igc_ptp_feature_enable_i225':
-igc_ptp.c:(.text+0x330): undefined reference to `ptp_find_pin'
-ld: igc_ptp.c:(.text+0x36f): undefined reference to `ptp_find_pin'
-ld: drivers/net/ethernet/intel/igc/igc_ptp.o: in function `igc_ptp_init':
-igc_ptp.c:(.text+0x11cd): undefined reference to `ptp_clock_register'
-ld: drivers/net/ethernet/intel/igc/igc_ptp.o: in function `igc_ptp_stop':
-igc_ptp.c:(.text+0x12dd): undefined reference to `ptp_clock_unregister'
-ld: drivers/platform/x86/dell/dell-wmi-privacy.o: in function `dell_privacy_wmi_probe':
-
-Fixes: 64433e5bf40ab ("igc: Enable internal i225 PPS")
-Fixes: 60dbede0c4f3d ("igc: Add support for ethtool GET_TS_INFO command")
-Fixes: 87938851b6efb ("igc: enable auxiliary PHC functions for the i225")
-Fixes: 5f2958052c582 ("igc: Add basic skeleton for PTP")
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: Ederson de Souza <ederson.desouza@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org
-Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 82744a7501c7..c11d974a62d8 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -335,6 +335,7 @@ config IGC
- 	tristate "Intel(R) Ethernet Controller I225-LM/I225-V support"
- 	default n
- 	depends on PCI
-+	depends on PTP_1588_CLOCK_OPTIONAL
- 	help
- 	  This driver supports Intel(R) Ethernet Controller I225-LM/I225-V
- 	  family of adapters.
 -- 
-2.33.0
-
-
-
+~Randy
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
