@@ -1,155 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6176041A326
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Sep 2021 00:35:48 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D26C41A5A9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Sep 2021 04:49:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B79BD80D6A;
-	Mon, 27 Sep 2021 22:35:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A67E180E98;
+	Tue, 28 Sep 2021 02:49:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oax33wgDiMTq; Mon, 27 Sep 2021 22:35:45 +0000 (UTC)
+	with ESMTP id RuaEgNOt5Mog; Tue, 28 Sep 2021 02:49:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A152280D57;
-	Mon, 27 Sep 2021 22:35:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5126680E90;
+	Tue, 28 Sep 2021 02:49:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E031A1BF477
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 22:35:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8DB321BF861
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 02:49:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CDC47606C4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 22:35:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 830E3406D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 02:49:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TsZHsXjTEcW8 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Sep 2021 22:35:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 399EB6062D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 22:35:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10120"; a="204727871"
-X-IronPort-AV: E=Sophos;i="5.85,327,1624345200"; d="scan'208";a="204727871"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Sep 2021 15:35:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,327,1624345200"; d="scan'208";a="707473627"
-Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
- by fmsmga005.fm.intel.com with ESMTP; 27 Sep 2021 15:35:39 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Mon, 27 Sep 2021 15:35:39 -0700
-Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Mon, 27 Sep 2021 15:35:38 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Mon, 27 Sep 2021 15:35:38 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Mon, 27 Sep 2021 15:35:38 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IEqeZQ4uaDd0AL+PTpO5IOAONOO5zOOYvY0KIRpXJLJw3z0EIBYH+lvv94Tey8nOvjbP3VcjFPkiuLhvzcgwbCUZN+0PDqZi0//xqjc3nX5Ko7QPR57+beV3m/gk3rRdeuZSABOnvvBWv1pWy4jH2Iplf5Xxer5uhaU57xE+EisAn7eUO5lBK/UyxvG65jN/qQNg6tPtdtm5ze4MRum+1Y/C2BMTL2gii4PUQkIe5LdAruGJQaIecK1emg0GTk+u/QukuN/gmiEVqu78qWwqogt5ryjLopXD2CnUY/QDKUTBsQHFpH8K9j0xpmcSxXxHRelhx4nJZ8gwKMg7v3X6dg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=VSHUsBd5G/O9SlZlgABlXhMH2RxpD4cjyX7SLj69EVk=;
- b=DeHIEepZYY8tm2E7lAVEK4GRwHbHrIKvZI7MpcPr/e31dXIGIMc4O8JrOiNyZZtSoxdew0x+qlneswtNUP9UZOb1SHQGFJ5DfLpLnXo/HonZEwDGq1rat2eGvFsAG0jkiWDRgWPXxP6yiPN9s+Yk7/H3tYwSY5GxuTcre+p2nui4Gb40rbqV3RL5p/t5Zwtg++uj1HkOHKDTU6TE33GzBifqHev0iVEmJ9eC5xg1h4S6Zy5VMN0eV0wEc/sDMIoS1SzxU30rkFqTTDru03c992CILSVDRY1K55hR1xTPHtOMX2QvFaCUWtLWUnQ/pd6OVXLLjUUBvyEhRBcEuhU0GQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VSHUsBd5G/O9SlZlgABlXhMH2RxpD4cjyX7SLj69EVk=;
- b=tlPE6YSjELn1AnAhPlqe1FhD5jSkjtAOPI6tx9jj1XvhAHgxSwUIMxF8L9YZvbiA/N2siRGXUVaE0/eaLv7BYzfhstTHwTuaukPy+ZQrxh17RKTf2/W1FjOOVeUp5dJgTKfXpmsB3kEGNdhPOIKgbf4tg3vI4wqGV/l94woyMRE=
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by MW3PR11MB4633.namprd11.prod.outlook.com (2603:10b6:303:5b::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.14; Mon, 27 Sep
- 2021 22:35:34 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::adb0:ecb3:3ddb:8d3c]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::adb0:ecb3:3ddb:8d3c%5]) with mapi id 15.20.4544.021; Mon, 27 Sep 2021
- 22:35:34 +0000
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Arnd Bergmann <arnd@kernel.org>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Jakub
- Kicinski" <kuba@kernel.org>
-Thread-Topic: [PATCH] igc: fix PTP dependency
-Thread-Index: AQHXs6IOGDZvzKltAUSzD1rjhyQtZ6u4eKPA
-Date: Mon, 27 Sep 2021 22:35:34 +0000
-Message-ID: <CO1PR11MB5089ACD68BA016202174D9A2D6A79@CO1PR11MB5089.namprd11.prod.outlook.com>
-References: <20210927131730.1587671-1-arnd@kernel.org>
-In-Reply-To: <20210927131730.1587671-1-arnd@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6e3dff11-120f-4f47-b58b-08d982071f03
-x-ms-traffictypediagnostic: MW3PR11MB4633:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MW3PR11MB46336EA46CB997EDE583AC55D6A79@MW3PR11MB4633.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4941;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: L2np0DlqxaVMUm92uS1ikJzPerfoJl+ghVdEFbfI1Kpm/5YEy4Zgh7Pwecp6NKMyDMMrM49KMkXHi1DTvkG1MUfEjhxlkJHmIYSdMCurQLnrIC7+Km6Ct8sbzOalWBGW6lGcIOC4bzxJ9GAGOocviaeyz2loHxlnhLXxHEvmtMw+PGOtSvrK3rvc+EGyLwqhMRPzIPqT7YTzMLRGOu7Cmi67O2Uyv0TX9cJ5wK/PTM3QWyLL6ecOPIDDdqwT0JdAEnu98MIxqEANT6JyQq5SecIXXzPPp1Hvp+RAbUBtv0KUTtDPS65oe3f25cs3bYMEzwLMs4oeYi5jC3mnrwUit0Rar3F9lYENatIf9Hzn8N0nnPE3vmEwF31I/6G5JvKzeuxVHt5WCzCabN9PoXFPs/9Lm2d06Ajr5nI3iKI6HAldxBeZ333NvBDXqnHGhkWBPnNpNrZ88FuoIrOzlwoK2oeqXV15eHZLzLCiSqzL8Rq3iHaGgOIANj/GyQtWCD0uJb3gP3QFIVFt4XbtGj2ZTIrJPweY/ssNBiqI4BGqf1CsGYkhQgrdBaZv9BDTUCn1LF4NsLKEo5JWnf2k61lXhRn7w1HDDCWVTfFmvsaQ7+PGi4X/kqGwcVNPY1b08jHcLft/f0tbtxKgaYwsZxB4HAEh3DtCZCrHxf7ktiFPVQzNm+TXSPKb+VtLOJ5nS5jFKr4GG5T6kjdCxmFJcrujvg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(53546011)(122000001)(38100700002)(7696005)(66446008)(64756008)(66476007)(66946007)(66556008)(508600001)(4326008)(26005)(33656002)(6506007)(38070700005)(71200400001)(7416002)(186003)(55016002)(52536014)(86362001)(54906003)(110136005)(316002)(83380400001)(8676002)(9686003)(5660300002)(8936002)(76116006)(2906002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7P6lBvBt9Alxa0X8TO9t25/TGKzxN/YZQNFy6WmHwC3fCZQb29yBR+GAvKJk?=
- =?us-ascii?Q?fTd+1JKfjc/VonIefx8ap3YTkKnWKAFRLWvE386xGbLRp7vdIWQbTtiNtDJG?=
- =?us-ascii?Q?QqBBa1rnHpSbvq+YsFoA+UeVOQPulnZrkIFV5CDG0NWvvNLS8V8nUuqCvtX0?=
- =?us-ascii?Q?pHIpLB1Hh6vWABS85qYK2jgQzIqNR3ojhVl9rqnBeG01Q7EWt+VLc6mTc+j/?=
- =?us-ascii?Q?8bNdjgAxILz9siolUhpVnoxsuNA8zFmhfDlFml/DgtWRvgsEAST/6e/EmgDF?=
- =?us-ascii?Q?F7Ti7gmYr5w5cZSOmx8u+mSL3fed4VOfIR+igenWVgwq6jKXGFo8kEKpx+lz?=
- =?us-ascii?Q?/hxJrtscL8ZSNV/K9nZZbKWXvio19YytrcDfCOBM2XiTKK9CU/PYbEjNPiZY?=
- =?us-ascii?Q?KHpM1HR6sfDcE+UhvbdfZRaWoByMh5BgWjWyG9d2Nt3l+q1qdf1lFk9P/Fot?=
- =?us-ascii?Q?Fax/vWC39hZigXP6Vfpwboy4GU7pxOtL4cJC2hFPaUsflSg97YOuxbNO7d9O?=
- =?us-ascii?Q?W1ACGL7bUn4aOf+9dbuAr8Tiv6poZRRFCjK7dLiaY99RiiV6hZqrxcQlkoX0?=
- =?us-ascii?Q?8JLj991yDdQcvzfecceYbO3hD49yI0ayBP2EAazJbdFmoDsIq2Mia6Bof9XX?=
- =?us-ascii?Q?j1yoX5+W45U2PksQaXjkOPhEdDZ80m57aQ9xDzTX+ZSkyueS8IqAcylA4bhl?=
- =?us-ascii?Q?1jOZXEyIpRpyviJP89aGhTpzFrRn+AjF7az5WAfsJnmA6PbVL3sBJE+47SBw?=
- =?us-ascii?Q?39hFiJ7Uo+OR0Ump27z07FIAmQOlEMi3t20XlQduxYzgqFvv8Q4dHyI/6JD0?=
- =?us-ascii?Q?rxXM3dSJWb4qmR4PgvFMsfQQVZTQxmWbaj/RE/3s+w8Vai77HFmslwwkCdSV?=
- =?us-ascii?Q?MG02esQpO+Ql2zF1uYgNPCqrzHeCnf5Yz+Y9v2U6sQwGF43RftGKQ62UrZBb?=
- =?us-ascii?Q?mVp+bRDzYlNo3GJcGKabGZJIadsNcA8jm1MkCzBjR9uNPwa3dGNbhXah1U0Y?=
- =?us-ascii?Q?91BEJUikL7ecVUSgRD/gDapKKnUtmFwn2yi2xo6v3XoHSOX2bN/ahtogehaU?=
- =?us-ascii?Q?oBfDWeIGqFs8UKLpGBwFeVMbSnzo2Dek2nq6aBcqIqp1tAoJWEILX6marK0R?=
- =?us-ascii?Q?99S3V3+fJtjiULnb+87q5M98qFWA78K/u+1kqKbGGRTJrYiWaxL6UZNiPf5Y?=
- =?us-ascii?Q?sO4p+UUvUZNItt0/6RqDRU/mYTUzZ2yYh4BK4KJ7cd9TUlNEsDIUB9R/G8eg?=
- =?us-ascii?Q?gONnJfoLdCCLm6CGpjHltllwTPeJbqguwtQ/OOZQv96R40Ck5OyVWvLdJZBM?=
- =?us-ascii?Q?bZk=3D?=
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xzBEdA-dtjag for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Sep 2021 02:49:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
+ [IPv6:2607:f8b0:4864:20::1033])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8928540453
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 02:49:24 +0000 (UTC)
+Received: by mail-pj1-x1033.google.com with SMTP id k23so13916546pji.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Sep 2021 19:49:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=KdRo+Cz1avyjeJcs19XkK76tvTgy7+yGSf3K2YFwI3k=;
+ b=kLTQJAYIMl0IrK3nQxWVQpYrfSV3PxQCCy4GvVBJ8QAQnS4FB7zO1J0YHOkonmCIzv
+ OSCA0tMbLlwL/orYYfLfPawiBsUHJUA7XYi52C8PBz8mDjtFMp0j6L2v90Yi0dmZubrn
+ izc8d2djOsOqwGAU7xfEdr0JVDQbFGdHngOp61o9+ChQcZDyjRUlfQQtb0PoB7DpYWBE
+ CHWvgBObC5YNxQZFAZ2J4mNaGWbHIYesPWl4iefibLEoaXtRlIPFBEKLYwdKjkaw4Oq7
+ MkhwTDe8hZ0W+I+pmkn54yyL/WbNIsz0zTIs6RnQ6GjPlOnzwmAHvbLqD6xN5qbCv9nZ
+ npKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=KdRo+Cz1avyjeJcs19XkK76tvTgy7+yGSf3K2YFwI3k=;
+ b=FpnxENxqFgHK2WNlrsA5VMZshdDAuijRtVPeLb2VwvI11pOWjmKMHn8mrCVjvngLj+
+ aU6RnWeCvpWACi4SJsA43iOSr2e26EDht4WHT0JB6LH8eBsXxl7K7yg2w+S1Afd12ckS
+ Agp5B0nxot3BrhWVqgMA3wMyog9uUkvkIsC9n/4qRFaz+HXC2JKxiqEuLgJ/8bhWsB0+
+ 77XgUBYTrpjTJqQhfexTI44Stjxf4pyplekUQxqgwo2AHrVOjrACTLoFuYzmfdtV/7aI
+ wO563Ukt19JzqZhniDyVf50Ws1bsxLrxyBx9NaE6EK3rRpbfpgnnFJj4m8BIL6cUXAlo
+ sf4Q==
+X-Gm-Message-State: AOAM533AiO0kicIBkTSuXsYlJtUpaTdlS/q46QNoIXa+Ke7Fv/xJ2UOB
+ StKJsP7dUm/uqqzX+QzVa8I=
+X-Google-Smtp-Source: ABdhPJxZJPG+esLFDCVQRqvSFj9ndW+00MnTobQgt3orU+nxh01t7r8Ots+FQA2ddImNLgPl9dHEYQ==
+X-Received: by 2002:a17:902:dcca:b0:13e:4139:8f0f with SMTP id
+ t10-20020a170902dcca00b0013e41398f0fmr2865291pll.65.1632797363938; 
+ Mon, 27 Sep 2021 19:49:23 -0700 (PDT)
+Received: from [192.168.86.235] (c-73-241-150-58.hsd1.ca.comcast.net.
+ [73.241.150.58])
+ by smtp.gmail.com with ESMTPSA id e1sm21211592pgi.43.2021.09.27.19.49.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Sep 2021 19:49:23 -0700 (PDT)
+To: Leon Romanovsky <leon@kernel.org>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+References: <cover.1632565508.git.leonro@nvidia.com>
+ <0f7f201a059b24c96eac837e1f424e2483254e1c.1632565508.git.leonro@nvidia.com>
+From: Eric Dumazet <eric.dumazet@gmail.com>
+Message-ID: <97c1ba9d-52b9-5689-19ab-ad4a82e55ae2@gmail.com>
+Date: Mon, 27 Sep 2021 19:49:18 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e3dff11-120f-4f47-b58b-08d982071f03
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2021 22:35:34.4373 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: eapbzNw1hEy/lO+GmuI4e0Vhm6uKI4+BxrPGL1bH5Y/ozK1dJKJlSTqHK9LyUInbcZEhEAZXHaMCgYqLiCohYKfFjwScGe5CSVeS8AM4XQg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4633
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] igc: fix PTP dependency
+In-Reply-To: <0f7f201a059b24c96eac837e1f424e2483254e1c.1632565508.git.leonro@nvidia.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 01/21] devlink: Notify
+ users when objects are accessible
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,14 +95,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@arndb.de>, Vladimir Oltean <vladimir.oltean@nxp.com>,
- Richard
- Cochran <richardcochran@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Shannon Nelson <snelson@pensando.io>, "Saleem,
- Shiraz" <shiraz.saleem@intel.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+ Michael Guralnik <michaelgur@mellanox.com>, oss-drivers@corigine.com,
+ netdev@vger.kernel.org, Jerin Jacob <jerinj@marvell.com>,
+ GR-everest-linux-l2@marvell.com, Subbaraya Sundeep <sbhatta@marvell.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Leon Romanovsky <leonro@nvidia.com>,
+ Michael Chan <michael.chan@broadcom.com>, Linu Cherian <lcherian@marvell.com>,
+ Intel Corporation <linuxwwan@intel.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Manish Chopra <manishc@marvell.com>,
+ linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev,
+ Shannon Nelson <snelson@pensando.io>, intel-wired-lan@lists.osuosl.org,
+ Simon Horman <simon.horman@corigine.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
+ Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
+ Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Loic Poulain <loic.poulain@linaro.org>, Jiri Pirko <jiri@nvidia.com>,
+ drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
+ GR-Linux-NIC-Dev@marvell.com, Vadym Kochan <vkochan@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
+ Coiby Xu <coiby.xu@gmail.com>, UNGLinuxDriver@microchip.com,
+ Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ M Chetan Kumar <m.chetan.kumar@intel.com>,
+ Derek Chickles <dchickles@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Geetha sowjanya <gakula@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -177,63 +131,319 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-> -----Original Message-----
-> From: Arnd Bergmann <arnd@kernel.org>
-> Sent: Monday, September 27, 2021 6:17 AM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub
-> Kicinski <kuba@kernel.org>
-> Cc: Arnd Bergmann <arnd@arndb.de>; Keller, Jacob E
-> <jacob.e.keller@intel.com>; Saleem, Shiraz <shiraz.saleem@intel.com>; Kurt
-> Kanzenbach <kurt@linutronix.de>; Ertman, David M
-> <david.m.ertman@intel.com>; Shannon Nelson <snelson@pensando.io>;
-> Richard Cochran <richardcochran@gmail.com>; Vladimir Oltean
-> <vladimir.oltean@nxp.com>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org
-> Subject: [PATCH] igc: fix PTP dependency
+On 9/25/21 4:22 AM, Leon Romanovsky wrote:
+> From: Leon Romanovsky <leonro@nvidia.com>
 > 
-> From: Arnd Bergmann <arnd@arndb.de>
+> The devlink core code notified users about add/remove objects without
+> relation if this object can be accessible or not. In this patch we unify
+> such user visible notifications in one place.
 > 
-> The igc driver was accidentally left out of the Kconfig rework for PTP,
-> it needs the same dependency as the others:
-> 
-> arm-linux-gnueabi-ld: drivers/net/ethernet/intel/igc/igc_main.o: in function
-> `igc_tsync_interrupt':
-> igc_main.c:(.text+0x1b288): undefined reference to `ptp_clock_event'
-> arm-linux-gnueabi-ld: igc_main.c:(.text+0x1b308): undefined reference to
-> `ptp_clock_event'
-> arm-linux-gnueabi-ld: igc_main.c:(.text+0x1b8cc): undefined reference to
-> `ptp_clock_event'
-> arm-linux-gnueabi-ld: drivers/net/ethernet/intel/igc/igc_ethtool.o: in function
-> `igc_ethtool_get_ts_info':
-> 
-> Fixes: e5f31552674e ("ethernet: fix PTP_1588_CLOCK dependencies")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Thanks!
-
--Jake
-
+> Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 > ---
->  drivers/net/ethernet/intel/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  net/core/devlink.c | 107 +++++++++++++++++++++++++++++++++++++++------
+>  1 file changed, 93 insertions(+), 14 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/Kconfig
-> b/drivers/net/ethernet/intel/Kconfig
-> index b0b6f90deb7d..ed8ea63bb172 100644
-> --- a/drivers/net/ethernet/intel/Kconfig
-> +++ b/drivers/net/ethernet/intel/Kconfig
-> @@ -335,6 +335,7 @@ config IGC
->  	tristate "Intel(R) Ethernet Controller I225-LM/I225-V support"
->  	default n
->  	depends on PCI
-> +	depends on PTP_1588_CLOCK_OPTIONAL
->  	help
->  	  This driver supports Intel(R) Ethernet Controller I225-LM/I225-V
->  	  family of adapters.
-> --
-> 2.29.2
+> diff --git a/net/core/devlink.c b/net/core/devlink.c
+> index 3ea33c689790..06edb2f1d21e 100644
+> --- a/net/core/devlink.c
+> +++ b/net/core/devlink.c
+> @@ -742,6 +742,7 @@ static void devlink_notify(struct devlink *devlink, enum devlink_command cmd)
+>  	int err;
+>  
+>  	WARN_ON(cmd != DEVLINK_CMD_NEW && cmd != DEVLINK_CMD_DEL);
+> +	WARN_ON(!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED));
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -1040,11 +1041,15 @@ static int devlink_nl_port_fill(struct sk_buff *msg,
+>  static void devlink_port_notify(struct devlink_port *devlink_port,
+>  				enum devlink_command cmd)
+>  {
+> +	struct devlink *devlink = devlink_port->devlink;
+>  	struct sk_buff *msg;
+>  	int err;
+>  
+>  	WARN_ON(cmd != DEVLINK_CMD_PORT_NEW && cmd != DEVLINK_CMD_PORT_DEL);
+>  
+> +	if (!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED))
+> +		return;
+> +
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+>  		return;
+> @@ -1055,18 +1060,19 @@ static void devlink_port_notify(struct devlink_port *devlink_port,
+>  		return;
+>  	}
+>  
+> -	genlmsg_multicast_netns(&devlink_nl_family,
+> -				devlink_net(devlink_port->devlink), msg, 0,
+> -				DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+> +	genlmsg_multicast_netns(&devlink_nl_family, devlink_net(devlink), msg,
+> +				0, DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+>  }
+>  
+>  static void devlink_rate_notify(struct devlink_rate *devlink_rate,
+>  				enum devlink_command cmd)
+>  {
+> +	struct devlink *devlink = devlink_rate->devlink;
+>  	struct sk_buff *msg;
+>  	int err;
+>  
+>  	WARN_ON(cmd != DEVLINK_CMD_RATE_NEW && cmd != DEVLINK_CMD_RATE_DEL);
+> +	WARN_ON(!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED));
 
+
+FYI, this new warning was triggered by syzbot :
+
+WARNING: CPU: 1 PID: 6540 at net/core/devlink.c:5158 devlink_nl_region_notify+0x184/0x1e0 net/core/devlink.c:5158
+Modules linked in:
+CPU: 1 PID: 6540 Comm: syz-executor.0 Not tainted 5.15.0-rc2-syzkaller #0
+Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
+RIP: 0010:devlink_nl_region_notify+0x184/0x1e0 net/core/devlink.c:5158
+Code: 38 41 b8 c0 0c 00 00 31 d2 48 89 ee 4c 89 e7 e8 72 1a 26 00 48 83 c4 08 5b 5d 41 5c 41 5d 41 5e e9 01 bd 41 fa e8 fc bc 41 fa <0f> 0b e9 f7 fe ff ff e8 f0 bc 41 fa 0f 0b eb da 4c 89 e7 e8 c4 18
+RSP: 0018:ffffc90002d6f658 EFLAGS: 00010293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: ffff88801f08d580 RSI: ffffffff87344e94 RDI: 0000000000000003
+RBP: ffff88801ee42100 R08: 0000000000000000 R09: 0000000000000000
+R10: ffffffff87344d8a R11: 0000000000000000 R12: ffff88801c1dc000
+R13: 0000000000000000 R14: 000000000000002c R15: ffff88801c1dc070
+FS:  0000555555e8e400(0000) GS:ffff8880b9d00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055dd7c590310 CR3: 0000000069a09000 CR4: 00000000003506e0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+Call Trace:
+ devlink_region_create+0x39f/0x4c0 net/core/devlink.c:10327
+ nsim_dev_dummy_region_init drivers/net/netdevsim/dev.c:481 [inline]
+ nsim_dev_probe+0x5f6/0x1150 drivers/net/netdevsim/dev.c:1479
+ call_driver_probe drivers/base/dd.c:517 [inline]
+ really_probe+0x245/0xcc0 drivers/base/dd.c:596
+ __driver_probe_device+0x338/0x4d0 drivers/base/dd.c:751
+ driver_probe_device+0x4c/0x1a0 drivers/base/dd.c:781
+ __device_attach_driver+0x20b/0x2f0 drivers/base/dd.c:898
+ bus_for_each_drv+0x15f/0x1e0 drivers/base/bus.c:427
+ __device_attach+0x228/0x4a0 drivers/base/dd.c:969
+ bus_probe_device+0x1e4/0x290 drivers/base/bus.c:487
+ device_add+0xc35/0x21b0 drivers/base/core.c:3359
+ nsim_bus_dev_new drivers/net/netdevsim/bus.c:435 [inline]
+ new_device_store+0x48b/0x770 drivers/net/netdevsim/bus.c:302
+ bus_attr_store+0x72/0xa0 drivers/base/bus.c:122
+ sysfs_kf_write+0x110/0x160 fs/sysfs/file.c:139
+ kernfs_fop_write_iter+0x342/0x500 fs/kernfs/file.c:296
+ call_write_iter include/linux/fs.h:2163 [inline]
+ new_sync_write+0x429/0x660 fs/read_write.c:507
+ vfs_write+0x7cf/0xae0 fs/read_write.c:594
+ ksys_write+0x12d/0x250 fs/read_write.c:647
+ do_syscall_x64 arch/x86/entry/common.c:50 [inline]
+ do_syscall_64+0x35/0xb0 arch/x86/entry/common.c:80
+ entry_SYSCALL_64_after_hwframe+0x44/0xae
+RIP: 0033:0x7f328409d3ef
+Code: 89 54 24 18 48 89 74 24 10 89 7c 24 08 e8 99 fd ff ff 48 8b 54 24 18 48 8b 74 24 10 41 89 c0 8b 7c 24 08 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 31 44 89 c7 48 89 44 24 08 e8 cc fd ff ff 48
+RSP: 002b:00007ffdc6851140 EFLAGS: 00000293 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 0000000000000003 RCX: 00007f328409d3ef
+RDX: 0000000000000003 RSI: 00007ffdc6851190 RDI: 0000000000000004
+RBP: 0000000000000004 R08: 0000000000000000 R09: 00007ffdc68510e0
+R10: 0000000000000000 R11: 0000000000000293 R12: 00007f3284144971
+R13: 00007ffdc6851190 R14: 0000000000000000 R15: 00007ffdc6851860
+
+05:42PM
+
+
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -1078,9 +1084,8 @@ static void devlink_rate_notify(struct devlink_rate *devlink_rate,
+>  		return;
+>  	}
+>  
+> -	genlmsg_multicast_netns(&devlink_nl_family,
+> -				devlink_net(devlink_rate->devlink), msg, 0,
+> -				DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+> +	genlmsg_multicast_netns(&devlink_nl_family, devlink_net(devlink), msg,
+> +				0, DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+>  }
+>  
+>  static int devlink_nl_cmd_rate_get_dumpit(struct sk_buff *msg,
+> @@ -4150,6 +4155,7 @@ static void __devlink_flash_update_notify(struct devlink *devlink,
+>  	WARN_ON(cmd != DEVLINK_CMD_FLASH_UPDATE &&
+>  		cmd != DEVLINK_CMD_FLASH_UPDATE_END &&
+>  		cmd != DEVLINK_CMD_FLASH_UPDATE_STATUS);
+> +	WARN_ON(!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED));
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -5145,17 +5151,18 @@ static void devlink_nl_region_notify(struct devlink_region *region,
+>  				     struct devlink_snapshot *snapshot,
+>  				     enum devlink_command cmd)
+>  {
+> +	struct devlink *devlink = region->devlink;
+>  	struct sk_buff *msg;
+>  
+>  	WARN_ON(cmd != DEVLINK_CMD_REGION_NEW && cmd != DEVLINK_CMD_REGION_DEL);
+> +	WARN_ON(!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED));
+>  
+>  	msg = devlink_nl_region_notify_build(region, snapshot, cmd, 0, 0);
+>  	if (IS_ERR(msg))
+>  		return;
+>  
+> -	genlmsg_multicast_netns(&devlink_nl_family,
+> -				devlink_net(region->devlink), msg, 0,
+> -				DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+> +	genlmsg_multicast_netns(&devlink_nl_family, devlink_net(devlink), msg,
+> +				0, DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+>  }
+>  
+>  /**
+> @@ -6920,10 +6927,12 @@ devlink_nl_health_reporter_fill(struct sk_buff *msg,
+>  static void devlink_recover_notify(struct devlink_health_reporter *reporter,
+>  				   enum devlink_command cmd)
+>  {
+> +	struct devlink *devlink = reporter->devlink;
+>  	struct sk_buff *msg;
+>  	int err;
+>  
+>  	WARN_ON(cmd != DEVLINK_CMD_HEALTH_REPORTER_RECOVER);
+> +	WARN_ON(!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED));
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -6935,9 +6944,8 @@ static void devlink_recover_notify(struct devlink_health_reporter *reporter,
+>  		return;
+>  	}
+>  
+> -	genlmsg_multicast_netns(&devlink_nl_family,
+> -				devlink_net(reporter->devlink),
+> -				msg, 0, DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+> +	genlmsg_multicast_netns(&devlink_nl_family, devlink_net(devlink), msg,
+> +				0, DEVLINK_MCGRP_CONFIG, GFP_KERNEL);
+>  }
+>  
+>  void
+> @@ -8955,6 +8963,68 @@ struct devlink *devlink_alloc_ns(const struct devlink_ops *ops,
+>  }
+>  EXPORT_SYMBOL_GPL(devlink_alloc_ns);
+>  
+> +static void
+> +devlink_trap_policer_notify(struct devlink *devlink,
+> +			    const struct devlink_trap_policer_item *policer_item,
+> +			    enum devlink_command cmd);
+> +static void
+> +devlink_trap_group_notify(struct devlink *devlink,
+> +			  const struct devlink_trap_group_item *group_item,
+> +			  enum devlink_command cmd);
+> +static void devlink_trap_notify(struct devlink *devlink,
+> +				const struct devlink_trap_item *trap_item,
+> +				enum devlink_command cmd);
+> +
+> +static void devlink_notify_register(struct devlink *devlink)
+> +{
+> +	struct devlink_trap_policer_item *policer_item;
+> +	struct devlink_trap_group_item *group_item;
+> +	struct devlink_trap_item *trap_item;
+> +	struct devlink_port *devlink_port;
+> +
+> +	devlink_notify(devlink, DEVLINK_CMD_NEW);
+> +	list_for_each_entry(devlink_port, &devlink->port_list, list)
+> +		devlink_port_notify(devlink_port, DEVLINK_CMD_PORT_NEW);
+> +
+> +	list_for_each_entry(policer_item, &devlink->trap_policer_list, list)
+> +		devlink_trap_policer_notify(devlink, policer_item,
+> +					    DEVLINK_CMD_TRAP_POLICER_NEW);
+> +
+> +	list_for_each_entry(group_item, &devlink->trap_group_list, list)
+> +		devlink_trap_group_notify(devlink, group_item,
+> +					  DEVLINK_CMD_TRAP_GROUP_NEW);
+> +
+> +	list_for_each_entry(trap_item, &devlink->trap_list, list)
+> +		devlink_trap_notify(devlink, trap_item, DEVLINK_CMD_TRAP_NEW);
+> +
+> +	devlink_params_publish(devlink);
+> +}
+> +
+> +static void devlink_notify_unregister(struct devlink *devlink)
+> +{
+> +	struct devlink_trap_policer_item *policer_item;
+> +	struct devlink_trap_group_item *group_item;
+> +	struct devlink_trap_item *trap_item;
+> +	struct devlink_port *devlink_port;
+> +
+> +	devlink_params_unpublish(devlink);
+> +
+> +	list_for_each_entry_reverse(trap_item, &devlink->trap_list, list)
+> +		devlink_trap_notify(devlink, trap_item, DEVLINK_CMD_TRAP_DEL);
+> +
+> +	list_for_each_entry_reverse(group_item, &devlink->trap_group_list, list)
+> +		devlink_trap_group_notify(devlink, group_item,
+> +					  DEVLINK_CMD_TRAP_GROUP_DEL);
+> +	list_for_each_entry_reverse(policer_item, &devlink->trap_policer_list,
+> +				    list)
+> +		devlink_trap_policer_notify(devlink, policer_item,
+> +					    DEVLINK_CMD_TRAP_POLICER_DEL);
+> +
+> +	list_for_each_entry_reverse(devlink_port, &devlink->port_list, list)
+> +		devlink_port_notify(devlink_port, DEVLINK_CMD_PORT_DEL);
+> +	devlink_notify(devlink, DEVLINK_CMD_DEL);
+> +}
+> +
+>  /**
+>   *	devlink_register - Register devlink instance
+>   *
+> @@ -8964,7 +9034,7 @@ void devlink_register(struct devlink *devlink)
+>  {
+>  	mutex_lock(&devlink_mutex);
+>  	xa_set_mark(&devlinks, devlink->index, DEVLINK_REGISTERED);
+> -	devlink_notify(devlink, DEVLINK_CMD_NEW);
+> +	devlink_notify_register(devlink);
+>  	mutex_unlock(&devlink_mutex);
+>  }
+>  EXPORT_SYMBOL_GPL(devlink_register);
+> @@ -8982,7 +9052,7 @@ void devlink_unregister(struct devlink *devlink)
+>  	mutex_lock(&devlink_mutex);
+>  	WARN_ON(devlink_reload_supported(devlink->ops) &&
+>  		devlink->reload_enabled);
+> -	devlink_notify(devlink, DEVLINK_CMD_DEL);
+> +	devlink_notify_unregister(devlink);
+>  	xa_clear_mark(&devlinks, devlink->index, DEVLINK_REGISTERED);
+>  	mutex_unlock(&devlink_mutex);
+>  }
+> @@ -10086,6 +10156,9 @@ void devlink_params_publish(struct devlink *devlink)
+>  {
+>  	struct devlink_param_item *param_item;
+>  
+> +	if (!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED))
+> +		return;
+> +
+>  	list_for_each_entry(param_item, &devlink->param_list, list) {
+>  		if (param_item->published)
+>  			continue;
+> @@ -10631,6 +10704,8 @@ devlink_trap_group_notify(struct devlink *devlink,
+>  
+>  	WARN_ON_ONCE(cmd != DEVLINK_CMD_TRAP_GROUP_NEW &&
+>  		     cmd != DEVLINK_CMD_TRAP_GROUP_DEL);
+> +	if (!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED))
+> +		return;
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -10672,6 +10747,8 @@ static void devlink_trap_notify(struct devlink *devlink,
+>  
+>  	WARN_ON_ONCE(cmd != DEVLINK_CMD_TRAP_NEW &&
+>  		     cmd != DEVLINK_CMD_TRAP_DEL);
+> +	if (!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED))
+> +		return;
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> @@ -11053,6 +11130,8 @@ devlink_trap_policer_notify(struct devlink *devlink,
+>  
+>  	WARN_ON_ONCE(cmd != DEVLINK_CMD_TRAP_POLICER_NEW &&
+>  		     cmd != DEVLINK_CMD_TRAP_POLICER_DEL);
+> +	if (!xa_get_mark(&devlinks, devlink->index, DEVLINK_REGISTERED))
+> +		return;
+>  
+>  	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+>  	if (!msg)
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
