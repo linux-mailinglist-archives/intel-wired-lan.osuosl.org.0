@@ -1,100 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 969E041A646
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Sep 2021 06:03:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF15241A66D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Sep 2021 06:21:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 89D81404A8;
-	Tue, 28 Sep 2021 04:03:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2480780F8C;
+	Tue, 28 Sep 2021 04:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pgriUBQxJXPK; Tue, 28 Sep 2021 04:03:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id h1Eu5Yaml9LC; Tue, 28 Sep 2021 04:21:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 431634018D;
-	Tue, 28 Sep 2021 04:03:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EF46580F6A;
+	Tue, 28 Sep 2021 04:21:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D7AB01BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:03:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A37F1BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:21:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C175460ACF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:03:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 025EE4018D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:21:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kxl4XYgpMMK7 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Sep 2021 04:03:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rFY-pT0uSc86 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Sep 2021 04:21:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CA99F60ACE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:03:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10120"; a="211698745"
-X-IronPort-AV: E=Sophos;i="5.85,328,1624345200"; d="scan'208";a="211698745"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Sep 2021 21:03:05 -0700
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ADBD84013E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 04:21:21 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10120"; a="211865285"
+X-IronPort-AV: E=Sophos;i="5.85,328,1624345200"; d="scan'208";a="211865285"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Sep 2021 21:21:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,328,1624345200"; d="scan'208";a="456475276"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga002.jf.intel.com with ESMTP; 27 Sep 2021 21:03:05 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.85,328,1624345200"; d="scan'208";a="476152443"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by orsmga007.jf.intel.com with ESMTP; 27 Sep 2021 21:21:20 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Mon, 27 Sep 2021 21:03:04 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2242.12; Mon, 27 Sep 2021 21:21:20 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Mon, 27 Sep 2021 21:03:04 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2242.12 via Frontend Transport; Mon, 27 Sep 2021 21:21:20 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Mon, 27 Sep 2021 21:03:04 -0700
+ 15.1.2242.12; Mon, 27 Sep 2021 21:21:19 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NwhnnJRUS4TnQtxRkX9+eow2MvUqRNeaiSDRi6jSsD6TBcIAvntLyn8eWpGiM7FhqRbim2RjFEkGQoodjq+Nq8N/2o6r/d30xVJOzhxveLtaDfQ7qxItzNfB/MTZ5z0gkCXphaT07G5UUAnRKPbpXSbVF1Z7jWf0yxcMFy953jOOtZLNAKeQtR/LcHceVh2Y9B85azmrlnAvyhs4jd6alp1SdCCIAjxrPXHynp50Q83drM/15yQCzXKpsLRpT/RcGuGXkLKWVn4mTN2P+rP3LeT14yT8uCInuI7OotG0JQCs2o5fMHtf8jVkUkxEKxRRIUJI81oCfWcL2viEZwvUag==
+ b=k97Knyu3YLzD6PpeOtQVT16izXv+tl7JPCRw4NaDOVo28r8Nx17RJrCcxV82xohaL1d5OCzAtYOnocfi3YwnNazF+7X3XkywZwwu+F8DmfZdUc/GclpS/fAPwApEuC9tj+XCAmRAW5iYQvB2FmbIBjhGmEywmn8spTbgg1jnAWNJKr4ubWrmEjzEP3qw7sixweCX6Q39zejz9ZRIjoicJUO7n6lb2LpgSATONDgaTpbSMc4vBYtCw64u4c49HotCDQmj+fMMs0Vx3fGPgzcnJkW1imGlwVGtP0roKjdcZnQWr06vbK5dtuD5Y0y+dOPtM3ypw1dFyrZ3qNF1JcbvyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=h7fxcbnQyMKUSDyMr6MjGItktorKIQiBfq3YE3PbpQo=;
- b=IT1OlQAZwW7x7LloNG0TQIkHBV5X7jYmN28YpfOhTYPjUEWXp/XHrjsGaiCgKCoz1otKf0NeJHjZo70XXdUJ2l1jb9mOWNOFuRGvyMdgvrUb4XPLMy0MSJShrvoxERmvIZvXyYOltSAyRBzS3fLNDpWSI4cvG3YZizLp3R7txdfPPq3eKYcXVbzh/xPvgbxCVbrjVOgR4o1XTGyK+q36mvJO+hkBWDloxSaQvvbzOcELbUF8jbu/3ICKsCeh6Ougd0PbH0CCQOb50rcfh6Cosil8IoTYcuQ6qeBNMzMVxASZzdrVAm5IZtc3ge4ReAni3kC0BK894oKV3FMlDOxzMw==
+ bh=3rAMGLQFr2ZRJxAbAYwZLfg0vqTXblWBx27I2XF6Dqo=;
+ b=jmHZn4z3/0qLQGijk6824xF62hf4IMYa29PxjditPoQj+lLF6+atiAXKuc6DPRysJKha7kC/tByswAv8yDc+6ckhpGnnkIBiNjkMOsreNZXQ+b6QDobD2RVc2+tLC7c5LTNaHDQRF6v6jyTgvu79nbjemo7ZZ6eeeeTjxd0Tl+lVSLG6FJkX7an0mi4Mneo2lffexkT/lRlKBvdvcBdzXFJwaosydQc1lO4TDl1qKSGPD+rMAW8QcLsg3LmldlTPHIhbpiGB8xiDDvrLrehSimDBDjwZD69rRMEe/zErgL3Kzw4TbQZAzgRE4+ygS6NxdcpTmXILW44DSSL8q79G4w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h7fxcbnQyMKUSDyMr6MjGItktorKIQiBfq3YE3PbpQo=;
- b=kHqEm3UE7qEmzaqCY6B0zmaS5gapgn5SPefj792zpNNkHOtPwuvoq4VhR2Y5Fu6uHuCv2oI0l9E9gLAsevIWiH6hVj15Ns+8KY/NC0B+F2iLWuw/7Mw12KEBmSBtakj9426B23FHYisieHdWv6/UrF6mt0Fk6wp88biMSUmF6Gs=
+ bh=3rAMGLQFr2ZRJxAbAYwZLfg0vqTXblWBx27I2XF6Dqo=;
+ b=snKbAeR8zBldY7b1O7EOb3uuy5nkfEWeCuSPlh0pj6sSw6dtEM6Da6bH3m0a/PhSAEH+e6SrqhrfZda4wO2uyyqmSWhUJjB6whDonP2cjigNm8fi3pTlKo2laJQSA0K/Y99Zo/xrpzI1KKj/Mx8a/7cBB170l/SdHoRbXt4wQDU=
 Received: from MW3PR11MB4554.namprd11.prod.outlook.com (2603:10b6:303:5d::7)
- by MWHPR11MB1375.namprd11.prod.outlook.com (2603:10b6:300:23::11) with
+ by CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.13; Tue, 28 Sep
- 2021 04:03:02 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.14; Tue, 28 Sep
+ 2021 04:21:13 +0000
 Received: from MW3PR11MB4554.namprd11.prod.outlook.com
  ([fe80::a8a8:6311:c417:ebdf]) by MW3PR11MB4554.namprd11.prod.outlook.com
  ([fe80::a8a8:6311:c417:ebdf%7]) with mapi id 15.20.4544.021; Tue, 28 Sep 2021
- 04:03:02 +0000
+ 04:21:13 +0000
 From: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
-To: "kerneljasonxing@gmail.com" <kerneljasonxing@gmail.com>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
+To: Feng zhou <zhoufeng.zf@bytedance.com>, "Brandeburg, Jesse"
+ <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
  <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
  "kuba@kernel.org" <kuba@kernel.org>, "ast@kernel.org" <ast@kernel.org>,
  "daniel@iogearbox.net" <daniel@iogearbox.net>, "hawk@kernel.org"
  <hawk@kernel.org>, "john.fastabend@gmail.com" <john.fastabend@gmail.com>,
- "andrii@kernel.org" <andrii@kernel.org>, "kafai@fb.com" <kafai@fb.com>,
- "songliubraving@fb.com" <songliubraving@fb.com>, "yhs@fb.com" <yhs@fb.com>,
- "kpsingh@kernel.org" <kpsingh@kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with
- more than 64 cpus
-Thread-Index: AQHXnxodNuAOE0/4vU+mtMk0gqjMO6u4/REw
-Date: Tue, 28 Sep 2021 04:03:02 +0000
-Message-ID: <MW3PR11MB455445ABC2EE8E063D72AEF89CA89@MW3PR11MB4554.namprd11.prod.outlook.com>
-References: <20210901101206.50274-1-kerneljasonxing@gmail.com>
-In-Reply-To: <20210901101206.50274-1-kerneljasonxing@gmail.com>
+ "jeffrey.t.kirsher@intel.com" <jeffrey.t.kirsher@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>, "Fijalkowski, Maciej"
+ <maciej.fijalkowski@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v3] ixgbe: Fix NULL pointer dereference
+ in ixgbe_xdp_setup
+Thread-Index: AQHXqgARPe10IxtL/0exW61B+339qau47EmQ
+Date: Tue, 28 Sep 2021 04:21:13 +0000
+Message-ID: <MW3PR11MB45543254E1F9F87512A25A6F9CA89@MW3PR11MB4554.namprd11.prod.outlook.com>
+References: <20210915070440.6540-1-zhoufeng.zf@bytedance.com>
+In-Reply-To: <20210915070440.6540-1-zhoufeng.zf@bytedance.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -102,59 +102,60 @@ X-MS-TNEF-Correlator:
 dlp-reaction: no-action
 dlp-version: 11.6.200.16
 dlp-product: dlpe-windows
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
+authentication-results: bytedance.com; dkim=none (message not signed)
+ header.d=none;bytedance.com; dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a4375506-5f6b-44ff-8fc8-08d98234de3e
-x-ms-traffictypediagnostic: MWHPR11MB1375:
+x-ms-office365-filtering-correlation-id: d851acdb-e5b8-49e1-0be2-08d982376860
+x-ms-traffictypediagnostic: CO1PR11MB4914:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MWHPR11MB13752B671A71FBF9EA305F7C9CA89@MWHPR11MB1375.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3383;
+x-microsoft-antispam-prvs: <CO1PR11MB4914ADAC4FCD2EE7709ECC029CA89@CO1PR11MB4914.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2043;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MOO52P3l+gMsFKfroWLg9OsG5MvB+KLHloboaPRV3lbQbHa06waNM/Hz6gvS9kuLGen+yGhRSPP2n5s65z04OqJpGMx99+t/JiBmbboI1qzm96n08m2H7geiAa5NWjqduabMEi1kqH2DtPiRaxXuc82+s1cLUd8lPfGu+9snaUMnuyu03ZguE/SGPFBbi9H/lX5IwIErefeHu5IllP3a74n7DKCo0Iu+QTbJIa3bnUrnM/miEofUL+OKvurpIz6AlYZZg7rR0cSXQMBygkVkOD+hyazjQC2q1xL5kGw5me/pBdQ3y6ye+fS7VSo3sErr+Hf9PGzuxbo/iqV9WJ2zZCQUJjxKXxeaAkhoMl4qdnQG7wObyUSoL/p/7dtAOpu1PPK1Alw4exnp036JtaCB5pm2GHyPxxI4O2cBvc3q5/lnXUWOG5OpxqIqquFYJAOESpAQyt0SY1NCGYTIOLhFW9SohhY7KHvmhT8Tb/8DlAJ2KP4RNV5NBTrcL9YwhHXxd6/iyk43429hCZu/+t9Ga+u7Each9XVSgbuT1vJOeR3XRo+Or/aVuqgc8cWl83Bay7wywtT7l4h+dQqpcejUw2ccb8TSGtIU+eCL4naw8+1Yo/g40CoXp0Emwt9c67M+YRasZPmwhRrmnOLwn8usPgOU9kc2qXTNVDq/O1bgxADAop00AlUomykrLdYMtlRgM/L7ZBxNX9fksazIkZZ1TXGRJ3ZmYlvoBngBP3XuJst/vFC38JnMPXneCNMoK/z6
+x-microsoft-antispam-message-info: ymd3o/U5Vq8v3VsTShrh5ECr3Im9dhWbeIMFUIplP3J6FSE9BvvBuOW2jzc0UylaJPHEnunGc5l2qujUcPqhLVGZpDpCD1z4ZQHifWXJF+9Q4FulFSvc/MInBFFzExyFED09IlQPsglBgecucp4QbIfX+KUUgqYKmu0QsVN5rmC7C4ksHDfE0Dj6UdUquNtb0P3Ohe8zL1LXUXahqjQMq7ZNT+GhyLqTixL/fjAgmrZmnReHlPtcpwPgua9NbWk7JK6mptOm3LhBCHSSCecrQGTUDhCVWOgprALFN02wx/kcuLLUqgvE8cYoDQ9P6GTMCHNuuLBqhHGpBRQRpXscUQLRyN7Oe+Gj69REXZbGSqSBDHUl4kPkMRbX6m2AyHiZYS8K/Z6HUIvtdjuKZ4aplL2EUOuRGnvJyQgINWwkOEUhmy/tet6I1ePXYytzbie64HkHROC/0NVwfrodyrHmuc7PTJEj+whBFcc4+PqIzodBGL0M4ML1CIjJ0ftiHb0vgxcAg0Nvbjw0AuPluG3GYF7TI6WQJIEoLYUfawAYEoZs3X/yePrw4RFLZftCog8qPQM0R4c9gf4szmA5pXloCIT13bqf6jDoV9vJbtAOUE4MWd1tOXDEpkYNLfr2kXCr1wH5L/Ol4lXZ+ErIMorTirs2ryj3c1/+iQQoHNrPWVVnmIc8/F7BjTQpFkWAoxSU3uMXr0S8ojR6xCz9Rd2ENeTT6XP3r8IRH8GrdKHONc8XFXLFobD++yC1hX101BBMhJRtOn/FnahVEokWr8fT7iuxM8mFfNfsreRbDpiVXZUrINiW6sl/GOHR9G051QhuigyhoEn61oynPtX9UPWx/x7FOUoyksEzPFKYBmIr/wQ=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MW3PR11MB4554.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(9686003)(38100700002)(6506007)(7416002)(55016002)(83380400001)(66556008)(2906002)(66476007)(86362001)(66446008)(921005)(64756008)(4326008)(5660300002)(508600001)(7696005)(8676002)(52536014)(66946007)(110136005)(122000001)(33656002)(71200400001)(76116006)(38070700005)(54906003)(186003)(316002)(8936002)(26005)(40753002);
+ SFS:(4636009)(366004)(7416002)(83380400001)(54906003)(86362001)(26005)(9686003)(8676002)(8936002)(122000001)(7696005)(110136005)(508600001)(55016002)(52536014)(71200400001)(66446008)(66556008)(66476007)(2906002)(64756008)(66946007)(6506007)(186003)(4326008)(38070700005)(921005)(33656002)(6636002)(316002)(38100700002)(76116006)(5660300002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?eGGwxR2zG/FMkmzxU1s9P2YuaNdNhUb4qd5DGMdkNlF+ZldmGuhcLZSXck89?=
- =?us-ascii?Q?Odxj2IxEf0GQojekBha/m2t7yJ2ARd4jXotr5rAb5oSvBa4jqnxc7K2qv5SQ?=
- =?us-ascii?Q?UK0mEZ1z4z1iWG4GsHlBqv1JpJfd1wOp4JlNdZi5e8apCbQ8MqNrdX7eLVqk?=
- =?us-ascii?Q?AoIypF5j2/J42et/5m/AHi1JwTA96VKDjy8AJQC7RCDzszz1ME68j+3e849S?=
- =?us-ascii?Q?yiahwa+hANmip/AXSRleSaE4JGscVWFZVHYH/E+x/Z0HSvNuWcL71mrFpmFn?=
- =?us-ascii?Q?dqloC0exJWGLf9SJCJkTVdhJdqnoh2qmpcc8ua7pbPiVcRC+vSE9EOAAiKW+?=
- =?us-ascii?Q?YYUp75zWS8olXWSD98HlqEK/4NS5Z2jco1UXerTExTmHhqOIJRIC2WGvkYBG?=
- =?us-ascii?Q?BD/kltQMJFxoL7Uk5jjGPFJhV4wjayN9X7XrkPYPMDsYurz929348CAZ0ByH?=
- =?us-ascii?Q?hfM/8MGtTLgDCGpIp59UzHnCTrXqSz+c3wmo9LvI3Gdsf5WHIpvG/NMNXIoc?=
- =?us-ascii?Q?g49dSqMk82FznnQoUgOqN8YQmKv3k/eLOQHh3EsNJum9SjkGzYOGtvIWSgfW?=
- =?us-ascii?Q?JriN5Gm6eNn4ZgD/6mQm2UqsQG1xFIjf0uRQUhTqeoyVobH7lybf3BNATf0F?=
- =?us-ascii?Q?igwLIw4t7cLDZgQ90LsKaNrMpRZvbHPKV9coiREtEthRuGHvlCLZ14TVYr4b?=
- =?us-ascii?Q?1jUYM46oAW5pOdYMcKJjhuR4mCu17nD6bjW2/0IXsErB2j1Pi1tBWYKwus+W?=
- =?us-ascii?Q?fWSk6fzZXNGfxIUl14ZBWI7Q7+1ac0Z8m6EYh02pg5da56xz/QpnejGJHvyP?=
- =?us-ascii?Q?J27INWcU5aKbKyVtlP9HQZCneMznkYOwOhW+ECrQJ1jtsdxHoB9uRSdkJ2RK?=
- =?us-ascii?Q?2GXbKwmW7KoPYpSNU+kJl5Jv60K2tlrd30OTYLE3Ph48Lg3vhY12ngVSPnxr?=
- =?us-ascii?Q?A5JBq/3JLIXreYdDUcsEKOUTune/3moNNTGUModQJ9+6VrnBZsceHdDbwDMW?=
- =?us-ascii?Q?/a4ZKXUcGJD8hqWIfT8g9bd9tDGRYFsL8ZFcsfWCdNj8/ImZQ8mTtukC+vji?=
- =?us-ascii?Q?9eM9gNPzKQErzuOw0fC8naGVnsdmIJRuCHK9dV8Vx3jqH/Mb8NxmZzYBlMn8?=
- =?us-ascii?Q?GYL3m5xbv7B0vZm5eYCxXM1JMGzwqpHLyudvkczc6wdnBaqT1XvpSGoFp5/t?=
- =?us-ascii?Q?NTb+2KSXPa1KPcafJnqQUBYXPVYzfWX9hk0fTijoUMbDBFn3uj4kCMjgO7Pu?=
- =?us-ascii?Q?WgiI1QckMZ6TM7o+PWQ3kn1SFGDhQdIxVb/hnzAU18qt8Hbj7dTYRVArQoLY?=
- =?us-ascii?Q?GXwE7wTrNAzp3gJCj23EJdER?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?gL0UoDRKyf7YmHgWl8ALomvooPf09bgB8Tj+aHFb+JbsV8ZzwPI8Gz6cY0TQ?=
+ =?us-ascii?Q?HiIUXwCTZ8t0woxbfTzBLzgFrfEwsTBh7q9Hiz+yAZvFqhDwOC07JNjQy5O4?=
+ =?us-ascii?Q?JuMFjsOIFj/qALZEc8ub5Zb2I5F5nBHY2+KlLw86Zcwdbkt+5l3fGUuWkYqr?=
+ =?us-ascii?Q?Gnlzun5sIef3PssiXWL5bZ6G60PbfSr/wqUrGBbzZXM7ZVEXqRnpT5pT4O2p?=
+ =?us-ascii?Q?dXBBFR0xRXim6ci9AFATp+qo7lhD2h+LUEyMY3CbOuYOw8VtDhWOC1YlDG2X?=
+ =?us-ascii?Q?g0iZTeSDeCWBK57MSgBQScCjPA3rtrHMTcC+01ubVitzGpuOnv9D87h2qflA?=
+ =?us-ascii?Q?/67jDnMRhQ5t5sd8a3iGxY0KCIyNHJsugaPX1zQCfwJXXY7/xTyHo8kPQUX/?=
+ =?us-ascii?Q?C4Q8e1V5NtlhKgVkKCmMmDCotoihDks0+ifyDL1RT7iBQ4yc4Y+tSDzrWJr/?=
+ =?us-ascii?Q?8BC83fPAEkjRW2+Py2n6NVgQQS9rBPPT6F//axxCtm1Dc9ED3SSQb2GxuTX1?=
+ =?us-ascii?Q?DuGwsCreHCP2hygLth2Dr/xHMeyWtAnk9Bw9yQpnn/5bCToTW0htOpg6LFwX?=
+ =?us-ascii?Q?jqgs/Ev+dZb1Y6LKVEzBNpyyjg4fHv/8YhjS3wrxj+cH/TT95F5ltg6UYSfr?=
+ =?us-ascii?Q?AabnSrY02qIkJyiZCFdfI/6dNazvb3TwW77jiYze4OALtULmJg1evGfVD7vU?=
+ =?us-ascii?Q?ld9MI/fgpzbfarbg3bKyFG71kS7uuj4aTbKrRXUiTjOKK2UfNi+aP9M19lP1?=
+ =?us-ascii?Q?RKGneKBSf42qpUrvWYnvUAb8k9HfBtSO/D5EPpQ401d7YpCqvwo8L36JlMKu?=
+ =?us-ascii?Q?h1iwHcnS7NYnXd6l/JN4z4NM3IjTtX+2zH7IeBmdtSPOPdcaukR+pVw6fNf1?=
+ =?us-ascii?Q?M3upv/m2r7xnN5PeKhuBFLuPdeCxgyl6IlKLdT9UYY8La+tHOK6bntWWmtLH?=
+ =?us-ascii?Q?e6sAYgfTxQw9/sR0XXHoduas+gf2j5vEoGDLSTMiL3ymBpDc4FBFwBfscwTc?=
+ =?us-ascii?Q?zx2iyKrY7CYhPbeToOlRfXfSjUiA+xxvsGc28iNqq4mUfF3ebYvIb1Kc/jrQ?=
+ =?us-ascii?Q?ELuGfgxafEhv4GucMGjuUq1kVZPnDmeSNygkefMMCyRi+o/u3b8tZekV3hYl?=
+ =?us-ascii?Q?HRHITox1skk3ZySC0snCYpwrytADuzZpDmQM6b82juP1wZTc+aW2/R8NmaEX?=
+ =?us-ascii?Q?4MWkQ4LiM4W14izBejMS+QrSgnA9dnj2Uv+VCYcqaqNpYs2LAzhGuRr8JVXT?=
+ =?us-ascii?Q?Swrs2x/t5dSgm6sriN0Q1WUVo66uCZz63n8LQWfS5P/ur/Et5EF3VOK4s1Ob?=
+ =?us-ascii?Q?xBX6sQmQ1QrGwTuRwFWv5UdC?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4554.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a4375506-5f6b-44ff-8fc8-08d98234de3e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Sep 2021 04:03:02.7361 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d851acdb-e5b8-49e1-0be2-08d982376860
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Sep 2021 04:21:13.4198 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PIhUVX2rcM44qjV00WquzvsuHTxvEIlAsAYwsCracjGBTzdaUw57F9K6hdEI4marU77M2AC7KPxsIihPkYXH5v488AWsBbGYWNI3ppGqa+M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1375
+X-MS-Exchange-CrossTenant-userprincipalname: +A+zvKiqlDOXH+aXgrrW1QcNVa58ernEz3a4u7fPzyveQJ4NfsOSRjXwJnSuOMLUXAXPGuJ1uyaemleFcrslWi5d+/qLHnQv7u2wjwz38dc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4914
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with
- more than 64 cpus
+Subject: Re: [Intel-wired-lan] [PATCH v3] ixgbe: Fix NULL pointer
+ dereference in ixgbe_xdp_setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,11 +168,16 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shujin Li <lishujin@kuaishou.com>, Jason Xing <xingwanli@kuaishou.com>,
+Cc: "duanxiongchun@bytedance.com" <duanxiongchun@bytedance.com>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhengqi.arch@bytedance.com" <zhengqi.arch@bytedance.com>,
+ "chenying.kernel@bytedance.com" <chenying.kernel@bytedance.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>
+ "songmuchun@bytedance.com" <songmuchun@bytedance.com>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "wangdongdong.6@bytedance.com" <wangdongdong.6@bytedance.com>,
+ "zhouchengming@bytedance.com" <zhouchengming@bytedance.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -179,98 +185,97 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 >-----Original Message-----
 >From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->kerneljasonxing@gmail.com
->Sent: Wednesday, September 1, 2021 3:42 PM
+>Feng zhou
+>Sent: Wednesday, September 15, 2021 12:35 PM
 >To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
 ><anthony.l.nguyen@intel.com>; davem@davemloft.net; kuba@kernel.org;
 >ast@kernel.org; daniel@iogearbox.net; hawk@kernel.org;
->john.fastabend@gmail.com; andrii@kernel.org; kafai@fb.com;
->songliubraving@fb.com; yhs@fb.com; kpsingh@kernel.org
->Cc: Shujin Li <lishujin@kuaishou.com>; Jason Xing
-><xingwanli@kuaishou.com>; kerneljasonxing@gmail.com;
->netdev@vger.kernel.org; linux-kernel@vger.kernel.org; intel-wired-
->lan@lists.osuosl.org; bpf@vger.kernel.org
->Subject: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with more
->than 64 cpus
+>john.fastabend@gmail.com; jeffrey.t.kirsher@intel.com; Karlsson, Magnus
+><magnus.karlsson@intel.com>; Fijalkowski, Maciej
+><maciej.fijalkowski@intel.com>
+>Cc: duanxiongchun@bytedance.com; netdev@vger.kernel.org; linux-
+>kernel@vger.kernel.org; zhengqi.arch@bytedance.com;
+>chenying.kernel@bytedance.com; intel-wired-lan@lists.osuosl.org;
+>songmuchun@bytedance.com; zhoufeng.zf@bytedance.com;
+>bpf@vger.kernel.org; wangdongdong.6@bytedance.com;
+>zhouchengming@bytedance.com
+>Subject: [Intel-wired-lan] [PATCH v3] ixgbe: Fix NULL pointer dereference in
+>ixgbe_xdp_setup
 >
->From: Jason Xing <xingwanli@kuaishou.com>
+>From: Feng Zhou <zhoufeng.zf@bytedance.com>
 >
->Originally, ixgbe driver doesn't allow the mounting of xdpdrv if the server is
->equipped with more than 64 cpus online. So it turns out that the loading of
->xdpdrv causes the "NOMEM" failure.
+>The ixgbe driver currently generates a NULL pointer dereference with some
+>machine (online cpus < 63). This is due to the fact that the maximum value of
+>num_xdp_queues is nr_cpu_ids. Code is in "ixgbe_set_rss_queues"".
 >
->Actually, we can adjust the algorithm and then make it work through mapping
->the current cpu to some xdp ring with the protect of @tx_lock.
+>Here's how the problem repeats itself:
+>Some machine (online cpus < 63), And user set num_queues to 63 through
+>ethtool. Code is in the "ixgbe_set_channels",
+>	adapter->ring_feature[RING_F_FDIR].limit = count;
 >
->Here're some numbers before/after applying this patch with xdp-example
->loaded on the eth0X:
+>It becomes 63.
 >
->As client (tx path):
->                     Before    After
->TCP_STREAM send-64   734.14    714.20
->TCP_STREAM send-128  1401.91   1395.05
->TCP_STREAM send-512  5311.67   5292.84
->TCP_STREAM send-1k   9277.40   9356.22 (not stable)
->TCP_RR     send-1    22559.75  21844.22
->TCP_RR     send-128  23169.54  22725.13
->TCP_RR     send-512  21670.91  21412.56
+>When user use xdp, "ixgbe_set_rss_queues" will set queues num.
+>	adapter->num_rx_queues = rss_i;
+>	adapter->num_tx_queues = rss_i;
+>	adapter->num_xdp_queues = ixgbe_xdp_queues(adapter);
 >
->As server (rx path):
->                     Before    After
->TCP_STREAM send-64   1416.49   1383.12
->TCP_STREAM send-128  3141.49   3055.50
->TCP_STREAM send-512  9488.73   9487.44
->TCP_STREAM send-1k   9491.17   9356.22 (not stable)
->TCP_RR     send-1    23617.74  23601.60
->...
+>And rss_i's value is from
+>	f = &adapter->ring_feature[RING_F_FDIR];
+>	rss_i = f->indices = f->limit;
 >
->Notice: the TCP_RR mode is unstable as the official document explaines.
+>So "num_rx_queues" > "num_xdp_queues", when run to "ixgbe_xdp_setup",
+>	for (i = 0; i < adapter->num_rx_queues; i++)
+>		if (adapter->xdp_ring[i]->xsk_umem)
 >
->I tested many times with different parameters combined through netperf.
->Though the result is not that accurate, I cannot see much influence on this
->patch. The static key is places on the hot path, but it actually shouldn't cause a
->huge regression theoretically.
+>It leads to panic.
 >
->Fixes: 33fdc82f08 ("ixgbe: add support for XDP_TX action")
->Reported-by: kernel test robot <lkp@intel.com>
->Co-developed-by: Shujin Li <lishujin@kuaishou.com>
->Signed-off-by: Shujin Li <lishujin@kuaishou.com>
->Signed-off-by: Jason Xing <xingwanli@kuaishou.com>
+>Call trace:
+>[exception RIP: ixgbe_xdp+368]
+>RIP: ffffffffc02a76a0  RSP: ffff9fe16202f8d0  RFLAGS: 00010297
+>RAX: 0000000000000000  RBX: 0000000000000020  RCX: 0000000000000000
+>RDX: 0000000000000000  RSI: 000000000000001c  RDI: ffffffffa94ead90
+>RBP: ffff92f8f24c0c18   R8: 0000000000000000   R9: 0000000000000000
+>R10: ffff9fe16202f830  R11: 0000000000000000  R12: ffff92f8f24c0000
+>R13: ffff9fe16202fc01  R14: 000000000000000a  R15: ffffffffc02a7530
+>ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
+> 7 [ffff9fe16202f8f0] dev_xdp_install at ffffffffa89fbbcc
+> 8 [ffff9fe16202f920] dev_change_xdp_fd at ffffffffa8a08808
+> 9 [ffff9fe16202f960] do_setlink at ffffffffa8a20235
+>10 [ffff9fe16202fa88] rtnl_setlink at ffffffffa8a20384
+>11 [ffff9fe16202fc78] rtnetlink_rcv_msg at ffffffffa8a1a8dd
+>12 [ffff9fe16202fcf0] netlink_rcv_skb at ffffffffa8a717eb
+>13 [ffff9fe16202fd40] netlink_unicast at ffffffffa8a70f88
+>14 [ffff9fe16202fd80] netlink_sendmsg at ffffffffa8a71319
+>15 [ffff9fe16202fdf0] sock_sendmsg at ffffffffa89df290
+>16 [ffff9fe16202fe08] __sys_sendto at ffffffffa89e19c8
+>17 [ffff9fe16202ff30] __x64_sys_sendto at ffffffffa89e1a64
+>18 [ffff9fe16202ff38] do_syscall_64 at ffffffffa84042b9
+>19 [ffff9fe16202ff50] entry_SYSCALL_64_after_hwframe at ffffffffa8c0008c
+>
+>So I fix ixgbe_max_channels so that it will not allow a setting of queues to be
+>higher than the num_online_cpus(). And when run to ixgbe_xdp_setup, take
+>the smaller value of num_rx_queues and num_xdp_queues.
+>
+>Fixes: 4a9b32f30f80 ("ixgbe: fix potential RX buffer starvation for
+>AF_XDP")
+>Signed-off-by: Feng Zhou <zhoufeng.zf@bytedance.com>
 >---
->v7:
->- Factorized to a single spin_lock/unlock in ixgbe_xdp_xmit() (Eric)
->- Handle other parts of lock/unlock in ixgbe_run_xdp()/_zc() (Jason)
->
->v6:
->- Move the declaration of static-key to the proper position (Test Robot)
->- Add reported-by tag (Jason)
->- Add more detailed performance test results (Jason)
->
->v5:
->- Change back to nr_cpu_ids (Eric)
->
->v4:
->- Update the wrong commit messages. (Jason)
->
->v3:
->- Change nr_cpu_ids to num_online_cpus() (Maciej)
->- Rename MAX_XDP_QUEUES to IXGBE_MAX_XDP_QS (Maciej)
->- Rename ixgbe_determine_xdp_cpu() to ixgbe_determine_xdp_q_idx()
->(Maciej)
->- Wrap ixgbe_xdp_ring_update_tail() with lock into one function (Maciej)
->
+>v1:
+>- Fix "ixgbe_max_channels" callback so that it will not allow a setting of
+>queues to be higher than the num_online_cpus().
 >v2:
->- Adjust cpu id in ixgbe_xdp_xmit(). (Jesper)
->- Add a fallback path. (Maciej)
->- Adjust other parts related to xdp ring.
->---
-> drivers/net/ethernet/intel/ixgbe/ixgbe.h           | 23 +++++++++-
-> drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c       |  9 +++-
-> drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      | 50 ++++++++++++++++-----
->-
-> .../net/ethernet/intel/ixgbe/ixgbe_txrx_common.h   |  3 +-
-> drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c       | 16 ++++---
-> 5 files changed, 77 insertions(+), 24 deletions(-)
+>- Modify commit message
+>more details can be seen from here:
+>https://patchwork.ozlabs.org/project/intel-wired-
+>lan/patch/20210817075407.11961-1-zhoufeng.zf@bytedance.com/
+>https://lore.kernel.org/netdev/20210903064013.9842-1-
+>zhoufeng.zf@bytedance.com/
+>Thanks to Maciej Fijalkowski and Paul Menzel for yours advice.
+>
+> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 2 +-
+> drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    | 8 ++++++--
+> 2 files changed, 7 insertions(+), 3 deletions(-)
 >
 Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>
 _______________________________________________
