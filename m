@@ -1,78 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A182041BCA7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 04:20:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D22F41C26B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 12:16:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C19AE40258;
-	Wed, 29 Sep 2021 02:20:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0642C606C8;
+	Wed, 29 Sep 2021 10:16:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3TRbzQ8RjRP3; Wed, 29 Sep 2021 02:20:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RUAC-wCXDuBU; Wed, 29 Sep 2021 10:16:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6C12140249;
-	Wed, 29 Sep 2021 02:20:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C25A60673;
+	Wed, 29 Sep 2021 10:16:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0FEED1BF359
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 02:20:42 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A6CBC1BF954
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:16:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0A85980D47
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 02:20:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 909A160670
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:16:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BSxfWwhqdhLM for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Sep 2021 02:20:41 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com
- [IPv6:2607:f8b0:4864:20::329])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5CE4780C97
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 02:20:41 +0000 (UTC)
-Received: by mail-ot1-x329.google.com with SMTP id
- d12-20020a05683025cc00b0054d8486c6b8so1080828otu.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Sep 2021 19:20:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/m3v6wHyU+gceCsGIGZQW1YYbgSsrVq1u5VD7Wq+RWY=;
- b=bf8iVuGnsm91udbcvDyigQaau+zWTHvOV48qzQjwWUM9o7fSzCvX/zvHLCyAEseY+a
- fTo7Snk0oXSgXYkOvn/xksR8uIdJESgFU+iy3yqSTlbk8CG1y5VyKDlFAoLPvYsYfNRx
- HBtxV9mM7E4Q0CqmQhsRt6HtcvCMzeqs/vPeRjfc+NTxdK2+JnogFu7+MGSwRHkIHwEK
- cM1saWqdOp3EPEUFneggP3sjPPVpLf0iKO37khA7a972EQk42XdmGcaIcHWeuTv4ddhn
- PEhxz0YukqRjtmO/WBHw318COSpoViXwe2dXJ7YFQwWAjp8+yluQ6jj/ZME8KtARTlB1
- sf7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/m3v6wHyU+gceCsGIGZQW1YYbgSsrVq1u5VD7Wq+RWY=;
- b=carzvo10+f0Eqjh3MyzjkUFHqMKvByyrSH2ayG3POsLQ13iAs6zLuX2dfCGwloB77c
- YemySgsUIZyu2wQvfqZd9EgazULyb/8TlaajPXmmz5WIWuvieblEBTDtqD9ME4yw7P95
- PTqYs71N2cGqEXuxiskEi4CxdM0IKqxyzS5vLj1c3HvyJblQq/DilTry6CXpazqL/CKc
- 5lXz3dH0KKWCRF8nNODbdxBu08bXklrOSfjHBFfBoJns1RAwEdu3gxtI8x7eaTsuz7xq
- sk27ZG+jqe/YkktT47NVwwn7gYosAxPqU4xm3oTUm8x0HfUTL+FLbzwlPAF7aTASkO6q
- ZxPg==
-X-Gm-Message-State: AOAM53283oxlpkjEF3aq4BP5JrCb4O/YXV4E1mLbupBVeTAM83zq2VKM
- e+S0JfPvR6m6Ec8diCZiWqIMCyJBHKmvC5K8uI4=
-X-Google-Smtp-Source: ABdhPJx1IMWZ/bsJWfzsNpMgmYvbhuD0LF11DiYOzktOGL+jMle4FLXwNSC2UIWIEYvahPBvQbTjH58u6SxFFZyowMk=
-X-Received: by 2002:a9d:6143:: with SMTP id c3mr8009609otk.124.1632882040342; 
- Tue, 28 Sep 2021 19:20:40 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CStFoWQ0wK73 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Sep 2021 10:16:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0980460673
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:16:44 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BCB2461246;
+ Wed, 29 Sep 2021 10:16:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632910604;
+ bh=qFw7P+hcQO8gyog1G00tPfDMkEj0DfJDAtYJY+PxoXw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=cbvOltDAkYA38s+2BT60i6dhPXyjFnohHHO0GecqYsMKg5aor5jao+3l8IUt4UdZ7
+ oi8hqdbIO1yW8eci7z6Pvfs9PT742Ys1obggWu2qRy3zfy6e8nhmNbpBelWPUGhGvs
+ d1gD6u19l2hxY11Eyqi6d+hhzizNGu9MLfE4v6VOTBNJgxZ9tGPDRedn5HR1jZgTVN
+ BOMVNOw9DIWvF5YWMB68X6iUxxjJnQfAqxISyqvKDu8B9OKZH5MxWzZ3mw0tZ/rMEd
+ xNyUveZbgz+EO5FATa5of/5+WbJ0wrAmaAl4ae9v+j0vN68YE5MyakJr2/CWVHlz+1
+ bPb7UHb61PA4w==
+From: Leon Romanovsky <leon@kernel.org>
+To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Date: Wed, 29 Sep 2021 13:16:34 +0300
+Message-Id: <cover.1632909221.git.leonro@nvidia.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <20210901101206.50274-1-kerneljasonxing@gmail.com>
- <CAL+tcoCOnCpxLXLyAxb+BgumQBpo2PPqSQXY=Xvs-8R48Om=cw@mail.gmail.com>
- <a1ea0abaadc59bdbc6504a64bae594b059c26cdf.camel@intel.com>
-In-Reply-To: <a1ea0abaadc59bdbc6504a64bae594b059c26cdf.camel@intel.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Wed, 29 Sep 2021 10:20:02 +0800
-Message-ID: <CAL+tcoALdQQPy+9G_azrGqSugGcNjFfYqmf72aNRPahgggeeVA@mail.gmail.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v7] ixgbe: let the xdpdrv work with
- more than 64 cpus
+Subject: [Intel-wired-lan] [PATCH net-next 0/5] Devlink reload and missed
+ notifications fix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,109 +63,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "songliubraving@fb.com" <songliubraving@fb.com>,
- "lishujin@kuaishou.com" <lishujin@kuaishou.com>,
- "ast@kernel.org" <ast@kernel.org>, "hawk@kernel.org" <hawk@kernel.org>,
- "daniel@iogearbox.net" <daniel@iogearbox.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "john.fastabend@gmail.com" <john.fastabend@gmail.com>,
- "andrii@kernel.org" <andrii@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "yhs@fb.com" <yhs@fb.com>, "kpsingh@kernel.org" <kpsingh@kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "xingwanli@kuaishou.com" <xingwanli@kuaishou.com>,
- "kafai@fb.com" <kafai@fb.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
+ netdev@vger.kernel.org, Jerin Jacob <jerinj@marvell.com>,
+ GR-everest-linux-l2@marvell.com, Subbaraya Sundeep <sbhatta@marvell.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Leon Romanovsky <leonro@nvidia.com>,
+ Michael Chan <michael.chan@broadcom.com>, Linu Cherian <lcherian@marvell.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Eric Dumazet <eric.dumazet@gmail.com>, linux-rdma@vger.kernel.org,
+ Moshe Shemesh <moshe@nvidia.com>, linux-staging@lists.linux.dev,
+ Shannon Nelson <snelson@pensando.io>, intel-wired-lan@lists.osuosl.org,
+ Vadym Kochan <vkochan@marvell.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
+ Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
+ Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
+ drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
+ Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
+ Manish Chopra <manishc@marvell.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
+ Coiby Xu <coiby.xu@gmail.com>, UNGLinuxDriver@microchip.com,
+ Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Shay Drory <shayd@nvidia.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Derek Chickles <dchickles@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Geetha sowjanya <gakula@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 29, 2021 at 6:17 AM Nguyen, Anthony L
-<anthony.l.nguyen@intel.com> wrote:
->
-> On Thu, 2021-09-16 at 14:41 +0800, Jason Xing wrote:
-> > Hello guys,
-> >
-> > any suggestions or comments on this v7 patch?
-> >
-> > Thanks,
-> > Jason
-> >
-> > On Wed, Sep 1, 2021 at 6:12 PM <kerneljasonxing@gmail.com> wrote:
-> > > From: Jason Xing <xingwanli@kuaishou.com>
-> > >
-> > > Originally, ixgbe driver doesn't allow the mounting of xdpdrv if
-> > > the
-> > > server is equipped with more than 64 cpus online. So it turns out
-> > > that
-> > > the loading of xdpdrv causes the "NOMEM" failure.
-> > >
-> > > Actually, we can adjust the algorithm and then make it work through
-> > > mapping the current cpu to some xdp ring with the protect of
-> > > @tx_lock.
-> > >
-> > > Here're some numbers before/after applying this patch with xdp-
-> > > example
-> > > loaded on the eth0X:
-> > >
-> > > As client (tx path):
-> > >                      Before    After
-> > > TCP_STREAM send-64   734.14    714.20
-> > > TCP_STREAM send-128  1401.91   1395.05
-> > > TCP_STREAM send-512  5311.67   5292.84
-> > > TCP_STREAM send-1k   9277.40   9356.22 (not stable)
-> > > TCP_RR     send-1    22559.75  21844.22
-> > > TCP_RR     send-128  23169.54  22725.13
-> > > TCP_RR     send-512  21670.91  21412.56
-> > >
-> > > As server (rx path):
-> > >                      Before    After
-> > > TCP_STREAM send-64   1416.49   1383.12
-> > > TCP_STREAM send-128  3141.49   3055.50
-> > > TCP_STREAM send-512  9488.73   9487.44
-> > > TCP_STREAM send-1k   9491.17   9356.22 (not stable)
-> > > TCP_RR     send-1    23617.74  23601.60
-> > > ...
-> > >
-> > > Notice: the TCP_RR mode is unstable as the official document
-> > > explaines.
-> > >
-> > > I tested many times with different parameters combined through
-> > > netperf.
-> > > Though the result is not that accurate, I cannot see much influence
-> > > on
-> > > this patch. The static key is places on the hot path, but it
-> > > actually
-> > > shouldn't cause a huge regression theoretically.
-> > >
-> > > Fixes: 33fdc82f08 ("ixgbe: add support for XDP_TX action")
->
-> Hi Jason,
->
-> The patch doesn't have an explicit target of net or net-next. I assume
-> since you put a Fixes tag you're wanting it to go through net, however,
-> this seems more like an improvement that should go through net-next.
+From: Leon Romanovsky <leonro@nvidia.com>
 
-Yes, it is like an improvement. At first I wanted to label it as net,
-but it isn't a fix as you said. So I agree with you and please help me
-send it to net-next.
+Hi,
 
-thanks,
-Jason
+This series starts from the fixing the bug introduced by implementing
+devlink delayed notifications logic, where I missed some of the
+notifications functions.
 
-> Please let me know if you disagree, otherwise I will send to net-next.
->
-> Thanks,
-> Tony
->
-> > > Reported-by: kernel test robot <lkp@intel.com>
-> > > Co-developed-by: Shujin Li <lishujin@kuaishou.com>
-> > > Signed-off-by: Shujin Li <lishujin@kuaishou.com>
-> > > Signed-off-by: Jason Xing <xingwanli@kuaishou.com>
-> >
+The rest series provides a way to dynamically set devlink ops that is
+needed for mlx5 multiport device and starts cleanup by removing
+not-needed logic.
+
+In the next series, we will delete various publish API, drop general
+lock, annotate the code and rework logic around devlink->lock.
+
+All this is possible because driver initialization is separated from the
+user input now.
+
+Thanks
+
+Leon Romanovsky (5):
+  devlink: Add missed notifications iterators
+  devlink: Allow modification of devlink ops
+  devlink: Allow set specific ops callbacks dynamically
+  net/mlx5: Register separate reload devlink ops for multiport device
+  devlink: Delete reload enable/disable interface
+
+ .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |   6 +-
+ .../net/ethernet/cavium/liquidio/lio_main.c   |   2 +-
+ .../freescale/dpaa2/dpaa2-eth-devlink.c       |   2 +-
+ .../hisilicon/hns3/hns3pf/hclge_devlink.c     |   5 +-
+ .../hisilicon/hns3/hns3vf/hclgevf_devlink.c   |   5 +-
+ .../net/ethernet/huawei/hinic/hinic_devlink.c |   2 +-
+ drivers/net/ethernet/intel/ice/ice_devlink.c  |   2 +-
+ .../marvell/octeontx2/af/rvu_devlink.c        |   2 +-
+ .../marvell/prestera/prestera_devlink.c       |   2 +-
+ drivers/net/ethernet/mellanox/mlx4/main.c     |   4 +-
+ .../net/ethernet/mellanox/mlx5/core/devlink.c |  15 +-
+ .../net/ethernet/mellanox/mlx5/core/main.c    |   3 -
+ .../mellanox/mlx5/core/sf/dev/driver.c        |   5 +-
+ drivers/net/ethernet/mellanox/mlxsw/core.c    |  12 +-
+ drivers/net/ethernet/mscc/ocelot.h            |   2 +-
+ drivers/net/ethernet/mscc/ocelot_net.c        |   2 +-
+ .../net/ethernet/netronome/nfp/nfp_devlink.c  |   2 +-
+ drivers/net/ethernet/netronome/nfp/nfp_main.h |   2 +-
+ .../ethernet/pensando/ionic/ionic_devlink.c   |   2 +-
+ drivers/net/ethernet/qlogic/qed/qed_devlink.c |   2 +-
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c      |   2 +-
+ drivers/net/ethernet/ti/cpsw_new.c            |   2 +-
+ drivers/net/netdevsim/dev.c                   |   5 +-
+ drivers/ptp/ptp_ocp.c                         |   2 +-
+ drivers/staging/qlge/qlge_main.c              |   2 +-
+ include/net/devlink.h                         |  15 +-
+ net/core/devlink.c                            | 155 ++++++++++--------
+ net/dsa/dsa2.c                                |   2 +-
+ 28 files changed, 131 insertions(+), 133 deletions(-)
+
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
