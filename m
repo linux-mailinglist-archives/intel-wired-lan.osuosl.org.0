@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 381C341C416
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 14:01:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BCB441C41C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 14:01:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CCCA760BDD;
-	Wed, 29 Sep 2021 12:01:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1B89460C02;
+	Wed, 29 Sep 2021 12:01:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sXbkMuiJeWZc; Wed, 29 Sep 2021 12:01:05 +0000 (UTC)
+	with ESMTP id rfWvbPAcxRWE; Wed, 29 Sep 2021 12:01:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CB81060B0D;
-	Wed, 29 Sep 2021 12:01:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0112560B0D;
+	Wed, 29 Sep 2021 12:01:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 40FD91BF2F6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A12451BF2F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:01:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2F913827B1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8F93A41966
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:01:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MWxkBU1YfoYm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Sep 2021 12:00:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Dw_T21N20LSc for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Sep 2021 12:01:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 928D982FE4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:58 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5F75561414;
- Wed, 29 Sep 2021 12:00:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9D8E0421E4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:01:08 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 571F161458;
+ Wed, 29 Sep 2021 12:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632916858;
- bh=sWOMc53F6fyjiBJQ3ELzEBwFAXedaQQqVi7cxDeJKLU=;
+ s=k20201202; t=1632916868;
+ bh=lXfh5WGrONF4SJ4gvPOiSDik2vUfqacZzHc0ckI9xmU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=rs/XvNYxmfzCfL9jh91wFmivkm84vokPpMn/jA+yIEPJXh+T0IRl7w5dJyY6tHPX8
- Spof3xyYVDwokJtnoqfRfDVC35T8dDtJlCZ0CcXK3XoIcFVUDR1CYuUzaUJAjkecru
- 15O0f1m9pRiLpiZuMaU7nSSoSd5Yh8UzS4Ioy4/kIpTuxaa/aZEl92wcdYJWHlDwsS
- 8h2TCijNo0rJfapU0b+HI+hfEji8mA7wK+HwJqQLgiG9q71uRANLbC4nY+RqjENwFL
- OR1ZxPGIB4JYvN2pGlck1ysSDYcDwQh4wMkYJnGejtJlttb3ipc/7uPP+ppTXYrHJE
- 1axdAYORcnFLw==
+ b=k+SaC/XRY78lkMZMf/9ZlPVWz42NJag/7vrrv5aq1Qk9gs+mNu44Vtn3x3bQFUTS6
+ bo6gzrBWbPMMqnjABLLOQkgqYgq5KoJPUn5+IaUw4y9RtWKEf12NLXQMNyPvhaEzlk
+ /zS4g9c83rDl9j/TeAYmTBrLJh7VbEuCPQfOwhsr9YdUu640cKCYUx05tJSyODsBU1
+ YBM70A+4307elg6yASJ0lZKBW2Mga7XtrtWiv2stlfdWGniA3H1BqVKfXZXro2OrMt
+ FJHV6ztCZ5eVuovmB933WtgXaWZWooVOOyFyribGiEnRY+Nnghr9ezH40H3wCZXMB1
+ ffC3REvybWkdw==
 From: Leon Romanovsky <leon@kernel.org>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Wed, 29 Sep 2021 15:00:44 +0300
-Message-Id: <aac64d4861d6207a90a6d45245ee5ed59114659a.1632916329.git.leonro@nvidia.com>
+Date: Wed, 29 Sep 2021 15:00:45 +0300
+Message-Id: <a8bf9a036fe0a590df830a77a31cc81c355f525d.1632916329.git.leonro@nvidia.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <cover.1632916329.git.leonro@nvidia.com>
 References: <cover.1632916329.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 3/5] devlink: Allow set
- specific ops callbacks dynamically
+Subject: [Intel-wired-lan] [PATCH net-next v1 4/5] net/mlx5: Register
+ separate reload devlink ops for multiport device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,101 +101,63 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Leon Romanovsky <leonro@nvidia.com>
 
-Introduce new devlink call to set specific ops callback during
-device initialization phase after devlink_alloc() is already
-called.
+Mulitport slave device doesn't support devlink reload, so instead of
+complicating initialization flow with devlink_reload_enable() which
+will be removed in next patch, set specialized devlink ops callbacks
+for reload operations.
 
-This allows us to set reload_* specific ops based on device property
-which sometimes is known almost at the end of driver initialization.
+This fixes an error when reload counters exposed (and equal zero) for
+the mode that is not supported at all.
 
-For the sake of simplicity, this API lacks any type of locking and
-needs to be called before devlink_register() to make sure that no
-parallel access to the ops is possible at this stage.
-
+Fixes: d89ddaae1766 ("net/mlx5: Disable devlink reload for multi port slave device")
 Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
 ---
- include/net/devlink.h |  1 +
- net/core/devlink.c    | 41 +++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 40 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mellanox/mlx5/core/devlink.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/include/net/devlink.h b/include/net/devlink.h
-index 317b09917c41..305be548ac21 100644
---- a/include/net/devlink.h
-+++ b/include/net/devlink.h
-@@ -1565,6 +1565,7 @@ static inline struct devlink *devlink_alloc(struct devlink_ops *ops,
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
+index 47c9f7f5bb79..e85eca6976a9 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
+@@ -309,14 +309,17 @@ static struct devlink_ops mlx5_devlink_ops = {
+ #endif
+ 	.flash_update = mlx5_devlink_flash_update,
+ 	.info_get = mlx5_devlink_info_get,
++	.trap_init = mlx5_devlink_trap_init,
++	.trap_fini = mlx5_devlink_trap_fini,
++	.trap_action_set = mlx5_devlink_trap_action_set,
++};
++
++static struct devlink_ops mlx5_devlink_reload = {
+ 	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT) |
+ 			  BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
+ 	.reload_limits = BIT(DEVLINK_RELOAD_LIMIT_NO_RESET),
+ 	.reload_down = mlx5_devlink_reload_down,
+ 	.reload_up = mlx5_devlink_reload_up,
+-	.trap_init = mlx5_devlink_trap_init,
+-	.trap_fini = mlx5_devlink_trap_fini,
+-	.trap_action_set = mlx5_devlink_trap_action_set,
+ };
+ 
+ void mlx5_devlink_trap_report(struct mlx5_core_dev *dev, int trap_id, struct sk_buff *skb,
+@@ -791,6 +794,7 @@ static void mlx5_devlink_traps_unregister(struct devlink *devlink)
+ 
+ int mlx5_devlink_register(struct devlink *devlink)
  {
- 	return devlink_alloc_ns(ops, priv_size, &init_net, dev);
- }
-+void devlink_set_ops(struct devlink *devlink, struct devlink_ops *ops);
- void devlink_register(struct devlink *devlink);
- void devlink_unregister(struct devlink *devlink);
- void devlink_reload_enable(struct devlink *devlink);
-diff --git a/net/core/devlink.c b/net/core/devlink.c
-index 9ae38128d6e1..67a846d424b7 100644
---- a/net/core/devlink.c
-+++ b/net/core/devlink.c
-@@ -8906,6 +8906,43 @@ static bool devlink_reload_actions_valid(struct devlink_ops *ops)
- 	return true;
- }
++	struct mlx5_core_dev *dev = devlink_priv(devlink);
+ 	int err;
  
-+/**
-+ *	devlink_set_ops - Set devlink ops dynamically
-+ *
-+ *	@devlink: devlink
-+ *	@ops: devlink ops to set
-+ *
-+ *	This interface allows us to set ops based on device property
-+ *	which is known after devlink_alloc() was already called. For now,
-+ *	it is applicable for reload_* assignments only and all other
-+ *	callbacks are ignored.
-+ *
-+ *	It should be called before devlink_register(), so doesn't have any
-+ *	protection from concurent access.
-+ */
-+void devlink_set_ops(struct devlink *devlink, struct devlink_ops *ops)
-+{
-+	struct devlink_ops *dev_ops = devlink->ops;
-+
-+	WARN_ON(!devlink_reload_actions_valid(ops));
-+
-+#define SET_DEVICE_OP(ptr, op, name)                                           \
-+	do {                                                                   \
-+		if ((op)->name)                                                \
-+			if (!((ptr)->name))                                    \
-+				(ptr)->name = (op)->name;                      \
-+	} while (0)
-+
-+	/* Keep sorted */
-+	SET_DEVICE_OP(dev_ops, ops, reload_actions);
-+	SET_DEVICE_OP(dev_ops, ops, reload_down);
-+	SET_DEVICE_OP(dev_ops, ops, reload_limits);
-+	SET_DEVICE_OP(dev_ops, ops, reload_up);
-+
-+#undef SET_DEVICE_OP
-+}
-+EXPORT_SYMBOL_GPL(devlink_set_ops);
-+
- /**
-  *	devlink_alloc_ns - Allocate new devlink instance resources
-  *	in specific namespace
-@@ -8926,8 +8963,6 @@ struct devlink *devlink_alloc_ns(struct devlink_ops *ops, size_t priv_size,
- 	int ret;
+ 	err = devlink_params_register(devlink, mlx5_devlink_params,
+@@ -808,6 +812,9 @@ int mlx5_devlink_register(struct devlink *devlink)
+ 	if (err)
+ 		goto traps_reg_err;
  
- 	WARN_ON(!ops || !dev);
--	if (!devlink_reload_actions_valid(ops))
--		return NULL;
++	if (!mlx5_core_is_mp_slave(dev))
++		devlink_set_ops(devlink, &mlx5_devlink_reload);
++
+ 	return 0;
  
- 	devlink = kzalloc(sizeof(*devlink) + priv_size, GFP_KERNEL);
- 	if (!devlink)
-@@ -8942,6 +8977,8 @@ struct devlink *devlink_alloc_ns(struct devlink_ops *ops, size_t priv_size,
- 
- 	devlink->dev = dev;
- 	devlink->ops = ops;
-+	/* To check validity of reload actions */
-+	devlink_set_ops(devlink, ops);
- 	xa_init_flags(&devlink->snapshot_ids, XA_FLAGS_ALLOC);
- 	write_pnet(&devlink->_net, net);
- 	INIT_LIST_HEAD(&devlink->port_list);
+ traps_reg_err:
 -- 
 2.31.1
 
