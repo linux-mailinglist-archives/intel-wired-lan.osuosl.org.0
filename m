@@ -1,62 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4100241C2E7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 12:43:18 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D5C641C40B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 14:00:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD69282F84;
-	Wed, 29 Sep 2021 10:43:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D050960BD2;
+	Wed, 29 Sep 2021 12:00:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id laFg80tIZgh3; Wed, 29 Sep 2021 10:43:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id emeFKQAno9d5; Wed, 29 Sep 2021 12:00:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B0812825C6;
-	Wed, 29 Sep 2021 10:43:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CF6DD60BBB;
+	Wed, 29 Sep 2021 12:00:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8CEDA1BF954
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:43:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F8C51BF2F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 75CEE4013B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:43:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7C6F560BBB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y2NNE5JbcWNx for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Sep 2021 10:43:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QzLqtfrpNFi8 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Sep 2021 12:00:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED7E340012
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 10:43:10 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A563161159;
- Wed, 29 Sep 2021 10:43:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B3C4F60B0D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 12:00:51 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 96DCF61409;
+ Wed, 29 Sep 2021 12:00:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632912190;
- bh=+dWbv6MK792jqAAiE3Iu+92XjoDmSSphFkEX4olyN/k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kkT0wJpXtOU1jKHLvTLEHDcFzyGsaTW2KbNFDDkSceiRF44orOxlmvEdUXPiAg1ne
- T9iBP5MvAqpqlvvpT2eQB5LUHDWmHoBVhcaxAgfyBZK3m0dp5WUM2VzbZTPT1Q2vDn
- TGpnO6rLO17kCzczJQTqNS6nN6cJkMUC9kAhjLV2CX+gL4IkIfAtJuTnHOB4GnObl5
- f6AOUTYLHsTOjT+xKpBB8WraodAp0Rvr8Ol2OtCxF+vGeaZ48SswJ/7MMLvV00Wto8
- 70Uen1mLSDQS6ubpjqE94UZnhj+4JQMmVTwAgxMEhyVRUvZkuZ0qdZEMSs6jN352r7
- LTzEfohSacJDQ==
-Date: Wed, 29 Sep 2021 13:43:06 +0300
+ s=k20201202; t=1632916851;
+ bh=hZUZHfgfiTNNYSpnegZKCRZ4rkRJapfY17ImCztFpso=;
+ h=From:To:Cc:Subject:Date:From;
+ b=noEJzrN8+a7bB2Ia3WV/RbudWF03qf8/UhZ3QzTdnCN1X5OLGFysMqcf1SkC3DZWG
+ drQm3kpAV2CfhKxC2Q0FDh+hNwzaK2MApcI1pvoLamseqt8tsBOTXDEV7SBnXlC4Aj
+ Zlb0BbN6MFK4TTJN7yJZKyDQZcHKM/InshW14ECHmH8AX8+hb8+j6GapFI8b438cdX
+ MFYahDhd59cBpE3tQ2NufCayJdtET2WSuwk3xi7RNb7VwmgXcWKv9521E7WZfXdlas
+ 5Q3F8diYv/2raIFAG7sdhp4nnl/UggE6K0ia4pimnsBGxu1jrJjSQkF/W7Ox59ka87
+ aBlDM9L2fCvWw==
 From: Leon Romanovsky <leon@kernel.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Message-ID: <YVRDOijPHji2vg82@unreal>
-References: <cover.1632909221.git.leonro@nvidia.com>
- <4e99e3996118ce0e2da5367b8fc2a427095dfffd.1632909221.git.leonro@nvidia.com>
- <20210929103823.GK2048@kadam>
+To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Date: Wed, 29 Sep 2021 15:00:41 +0300
+Message-Id: <cover.1632916329.git.leonro@nvidia.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210929103823.GK2048@kadam>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/5] devlink: Allow set
- specific ops callbacks dynamically
+Subject: [Intel-wired-lan] [PATCH net-next v1 0/5] Devlink reload and missed
+ notifications fix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,25 +68,24 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
  netdev@vger.kernel.org, Jerin Jacob <jerinj@marvell.com>,
  GR-everest-linux-l2@marvell.com, Subbaraya Sundeep <sbhatta@marvell.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, UNGLinuxDriver@microchip.com,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Leon Romanovsky <leonro@nvidia.com>,
  Michael Chan <michael.chan@broadcom.com>, Linu Cherian <lcherian@marvell.com>,
  Tariq Toukan <tariqt@nvidia.com>, Florian Fainelli <f.fainelli@gmail.com>,
  Eric Dumazet <eric.dumazet@gmail.com>, linux-rdma@vger.kernel.org,
  Moshe Shemesh <moshe@nvidia.com>, linux-staging@lists.linux.dev,
  Shannon Nelson <snelson@pensando.io>, intel-wired-lan@lists.osuosl.org,
- Vadym Kochan <vkochan@marvell.com>, Jakub Kicinski <kuba@kernel.org>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Vadym Kochan <vkochan@marvell.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
  Vivien Didelot <vivien.didelot@gmail.com>,
  Sunil Goutham <sgoutham@marvell.com>, Ariel Elior <aelior@marvell.com>,
  Ido Schimmel <idosch@nvidia.com>, Richard Cochran <richardcochran@gmail.com>,
- Satanand Burla <sburla@marvell.com>, Bin Luo <luobin9@huawei.com>,
+ Satanand Burla <sburla@marvell.com>, Felix Manlunas <fmanlunas@marvell.com>,
  Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
- drivers@pensando.io, linux-omap@vger.kernel.org,
- Felix Manlunas <fmanlunas@marvell.com>, Salil Mehta <salil.mehta@huawei.com>,
- GR-Linux-NIC-Dev@marvell.com, Manish Chopra <manishc@marvell.com>,
+ drivers@pensando.io, linux-omap@vger.kernel.org, Bin Luo <luobin9@huawei.com>,
+ Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
+ Manish Chopra <manishc@marvell.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Vladimir Oltean <vladimir.oltean@nxp.com>, linux-kernel@vger.kernel.org,
- Coiby Xu <coiby.xu@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Coiby Xu <coiby.xu@gmail.com>, UNGLinuxDriver@microchip.com,
  Taras Chornyi <tchornyi@marvell.com>, hariprasad <hkelam@marvell.com>,
  Shay Drory <shayd@nvidia.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
  Derek Chickles <dchickles@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
@@ -102,40 +95,73 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 29, 2021 at 01:38:23PM +0300, Dan Carpenter wrote:
-> On Wed, Sep 29, 2021 at 01:16:37PM +0300, Leon Romanovsky wrote:
-> > +void devlink_set_ops(struct devlink *devlink, struct devlink_ops *ops)
-> > +{
-> > +	struct devlink_ops *dev_ops = devlink->ops;
-> > +
-> > +	WARN_ON(!devlink_reload_actions_valid(ops));
-> > +
-> > +#define SET_DEVICE_OP(ptr, name)                                               \
-> > +	do {                                                                   \
-> > +		if (ops->name)                                                 \
-> 
-> Could you make "ops" a parameter of the macro instead of hard coding it?
+From: Leon Romanovsky <leonro@nvidia.com>
 
-Sure
+Changelog:
+v1:
+ * Missed removal of extra WARN_ON
+ * Added "ops parameter to macro as Dan suggested.
+v0: https://lore.kernel.org/all/cover.1632909221.git.leonro@nvidia.com
 
-> 
-> regards,
-> dan carpenter
-> 
-> > +			if (!((ptr)->name))				       \
-> > +				(ptr)->name = ops->name;                       \
-> > +	} while (0)
-> > +
-> > +	/* Keep sorted */
-> > +	SET_DEVICE_OP(dev_ops, reload_actions);
-> > +	SET_DEVICE_OP(dev_ops, reload_down);
-> > +	SET_DEVICE_OP(dev_ops, reload_limits);
-> > +	SET_DEVICE_OP(dev_ops, reload_up);
-> > +
-> > +#undef SET_DEVICE_OP
-> > +}
-> > +EXPORT_SYMBOL_GPL(devlink_set_ops);
-> 
+-------------------------------------------------------------------
+Hi,
+
+This series starts from the fixing the bug introduced by implementing
+devlink delayed notifications logic, where I missed some of the
+notifications functions.
+
+The rest series provides a way to dynamically set devlink ops that is
+needed for mlx5 multiport device and starts cleanup by removing
+not-needed logic.
+
+In the next series, we will delete various publish API, drop general
+lock, annotate the code and rework logic around devlink->lock.
+
+All this is possible because driver initialization is separated from the
+user input now.
+
+Thanks
+
+Leon Romanovsky (5):
+  devlink: Add missed notifications iterators
+  devlink: Allow modification of devlink ops
+  devlink: Allow set specific ops callbacks dynamically
+  net/mlx5: Register separate reload devlink ops for multiport device
+  devlink: Delete reload enable/disable interface
+
+ .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |   6 +-
+ .../net/ethernet/cavium/liquidio/lio_main.c   |   2 +-
+ .../freescale/dpaa2/dpaa2-eth-devlink.c       |   2 +-
+ .../hisilicon/hns3/hns3pf/hclge_devlink.c     |   5 +-
+ .../hisilicon/hns3/hns3vf/hclgevf_devlink.c   |   5 +-
+ .../net/ethernet/huawei/hinic/hinic_devlink.c |   2 +-
+ drivers/net/ethernet/intel/ice/ice_devlink.c  |   2 +-
+ .../marvell/octeontx2/af/rvu_devlink.c        |   2 +-
+ .../marvell/prestera/prestera_devlink.c       |   2 +-
+ drivers/net/ethernet/mellanox/mlx4/main.c     |   4 +-
+ .../net/ethernet/mellanox/mlx5/core/devlink.c |  15 +-
+ .../net/ethernet/mellanox/mlx5/core/main.c    |   3 -
+ .../mellanox/mlx5/core/sf/dev/driver.c        |   5 +-
+ drivers/net/ethernet/mellanox/mlxsw/core.c    |  12 +-
+ drivers/net/ethernet/mscc/ocelot.h            |   2 +-
+ drivers/net/ethernet/mscc/ocelot_net.c        |   2 +-
+ .../net/ethernet/netronome/nfp/nfp_devlink.c  |   2 +-
+ drivers/net/ethernet/netronome/nfp/nfp_main.h |   2 +-
+ .../ethernet/pensando/ionic/ionic_devlink.c   |   2 +-
+ drivers/net/ethernet/qlogic/qed/qed_devlink.c |   2 +-
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c      |   2 +-
+ drivers/net/ethernet/ti/cpsw_new.c            |   2 +-
+ drivers/net/netdevsim/dev.c                   |   5 +-
+ drivers/ptp/ptp_ocp.c                         |   2 +-
+ drivers/staging/qlge/qlge_main.c              |   2 +-
+ include/net/devlink.h                         |  15 +-
+ net/core/devlink.c                            | 156 ++++++++++--------
+ net/dsa/dsa2.c                                |   2 +-
+ 28 files changed, 131 insertions(+), 134 deletions(-)
+
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
