@@ -2,58 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E25641C672
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 16:13:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B17B41C680
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 16:16:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8F195406FC;
-	Wed, 29 Sep 2021 14:13:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E016406F9;
+	Wed, 29 Sep 2021 14:16:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y5FYngnDU7j5; Wed, 29 Sep 2021 14:13:37 +0000 (UTC)
+	with ESMTP id FgBZRUOh2J9O; Wed, 29 Sep 2021 14:16:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4CE9A402DD;
-	Wed, 29 Sep 2021 14:13:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 65B094024A;
+	Wed, 29 Sep 2021 14:16:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 95C481BF426
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:13:33 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 71B3C1BF426
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:16:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E14C402DD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:13:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5C96382BC8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:16:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v5CuX61wsIcp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Sep 2021 14:13:32 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id L34jj_1lT0Ik for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Sep 2021 14:16:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CE38840015
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:13:32 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 89A87613A5;
- Wed, 29 Sep 2021 14:13:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CB4E082AC6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:16:31 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CCAB4613A7;
+ Wed, 29 Sep 2021 14:16:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632924812;
- bh=eTAv1pPSQ34h7VzKpHo4amccmSX8My0viltKfGFPAcs=;
+ s=k20201202; t=1632924991;
+ bh=x8PJgYHBfZYy5vbHjr7vMOaIkyPKYTkxWVBFHp1eeg4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=a0WROnPxlwaBTjZsiibH7NJovqQtTcIp/K8ms+STDcB0ptV8A0iGu7jLOLUA/zrUB
- INOdkTNqEr+HXCsQa1FZU+yqpPcoGYOARxzTUh4ePsGKUBDxazH19ImM81Ssee+Mva
- nxmG8NM2AaOVNzG/J2UsGMAVksZFTUppR7ziA8M1mXemH97Vk+d8qoG0kYGWYdGish
- B9Qy4lryafOY6AelPhxlIm1cVnoVDb/CTbTE2vOsJMA/xb1kJPJdpk1+5jbmmd2KC3
- vu3OyQvXaUDO9c51VtuIqQLJ54Y/7pkwRb/Ky5I0hyfeuWwgf9qtylbgp9JyDEXnTB
- kSVVs8i8WEI2Q==
-Date: Wed, 29 Sep 2021 17:13:28 +0300
+ b=BGIbu/AGlYFcQKLeJl04hR8MvgPE1d1akDokD6itR1bgBlPElkeaHjQx8b9s1Ymuz
+ rnHg724w0U0TGgmuRYa1eHCai5JMHXj1ifyKegB++KTqB9iDoVdgTVgfLotJ2/TyZ1
+ DdN68VCwdXXxT36Ly3efz3HJ7qZrHrvX8gytj8GGpcIzpSiVG/hgUDV10GzodN1g6k
+ u4zFNgbjNcTbb7weVWrq/JWAijjVLRXb0DSPhop90H1FXzaKPMywXqIfoKSG7c9a9r
+ gVLcnKb/RmxNGe/jznBrXa/HEsVN11EVYbKMjwGBXJikb4RfhdhQo91BWLcVObrTWp
+ +X4HpqZlazHNQ==
+Date: Wed, 29 Sep 2021 17:16:28 +0300
 From: Leon Romanovsky <leon@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <YVR0iKIRYDXQbD+o@unreal>
+Message-ID: <YVR1PKQjsBfvUTPU@unreal>
 References: <cover.1632916329.git.leonro@nvidia.com>
- <20210929064004.3172946e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <a8bf9a036fe0a590df830a77a31cc81c355f525d.1632916329.git.leonro@nvidia.com>
+ <20210929065549.43b13203@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210929064004.3172946e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 0/5] Devlink reload and
- missed notifications fix
+In-Reply-To: <20210929065549.43b13203@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 4/5] net/mlx5: Register
+ separate reload devlink ops for multiport device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,51 +96,61 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Shay Drory <shayd@nvidia.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
  Derek Chickles <dchickles@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
  Geetha sowjanya <gakula@marvell.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 29, 2021 at 06:40:04AM -0700, Jakub Kicinski wrote:
-> On Wed, 29 Sep 2021 15:00:41 +0300 Leon Romanovsky wrote:
-> > This series starts from the fixing the bug introduced by implementing
-> > devlink delayed notifications logic, where I missed some of the
-> > notifications functions.
-> > 
-> > The rest series provides a way to dynamically set devlink ops that is
-> > needed for mlx5 multiport device and starts cleanup by removing
-> > not-needed logic.
-> > 
-> > In the next series, we will delete various publish API, drop general
-> > lock, annotate the code and rework logic around devlink->lock.
-> > 
-> > All this is possible because driver initialization is separated from the
-> > user input now.
-> 
-> Swapping ops is a nasty hack in my book.
-> 
-> And all that to avoid having two op structures in one driver.
-> Or to avoid having counters which are always 0?
-
-We don't need to advertise counters for feature that is not supported.
-In multiport mlx5 devices, the reload functionality is not supported, so
-this change at least make that device to behave like all other netdev
-devices that don't support devlink reload.
-
-The ops structure is set very early to make sure that internal devlink
-routines will be able access driver back during initialization (btw very
-questionable design choice), and at that stage the driver doesn't know
-yet which device type it is going to drive.
-
-So the answer is:
-1. Can't have two structures.
-2. Same behaviour across all netdev devices.
-
-> 
-> Sorry, at the very least you need better explanation for this.
-
-Was it better explained now?
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gV2VkLCBTZXAgMjksIDIwMjEgYXQgMDY6NTU6NDlBTSAtMDcwMCwgSmFrdWIgS2ljaW5za2kg
+d3JvdGU6Cj4gT24gV2VkLCAyOSBTZXAgMjAyMSAxNTowMDo0NSArMDMwMCBMZW9uIFJvbWFub3Zz
+a3kgd3JvdGU6Cj4gPiBGcm9tOiBMZW9uIFJvbWFub3Zza3kgPGxlb25yb0BudmlkaWEuY29tPgo+
+ID4gCj4gPiBNdWxpdHBvcnQgc2xhdmUgZGV2aWNlIGRvZXNuJ3Qgc3VwcG9ydCBkZXZsaW5rIHJl
+bG9hZCwgc28gaW5zdGVhZCBvZgo+ID4gY29tcGxpY2F0aW5nIGluaXRpYWxpemF0aW9uIGZsb3cg
+d2l0aCBkZXZsaW5rX3JlbG9hZF9lbmFibGUoKSB3aGljaAo+ID4gd2lsbCBiZSByZW1vdmVkIGlu
+IG5leHQgcGF0Y2gsIHNldCBzcGVjaWFsaXplZCBkZXZsaW5rIG9wcyBjYWxsYmFja3MKPiA+IGZv
+ciByZWxvYWQgb3BlcmF0aW9ucy4KPiA+IAo+ID4gVGhpcyBmaXhlcyBhbiBlcnJvciB3aGVuIHJl
+bG9hZCBjb3VudGVycyBleHBvc2VkIChhbmQgZXF1YWwgemVybykgZm9yCj4gPiB0aGUgbW9kZSB0
+aGF0IGlzIG5vdCBzdXBwb3J0ZWQgYXQgYWxsLgo+ID4gCj4gPiBGaXhlczogZDg5ZGRhYWUxNzY2
+ICgibmV0L21seDU6IERpc2FibGUgZGV2bGluayByZWxvYWQgZm9yIG11bHRpIHBvcnQgc2xhdmUg
+ZGV2aWNlIikKPiA+IFNpZ25lZC1vZmYtYnk6IExlb24gUm9tYW5vdnNreSA8bGVvbnJvQG52aWRp
+YS5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2Nv
+cmUvZGV2bGluay5jIHwgMTMgKysrKysrKysrKy0tLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBp
+bnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvbWVsbGFub3gvbWx4NS9jb3JlL2RldmxpbmsuYyBiL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L21lbGxhbm94L21seDUvY29yZS9kZXZsaW5rLmMKPiA+IGluZGV4IDQ3YzlmN2Y1
+YmI3OS4uZTg1ZWNhNjk3NmE5IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+bWVsbGFub3gvbWx4NS9jb3JlL2RldmxpbmsuYwo+ID4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvbWVsbGFub3gvbWx4NS9jb3JlL2RldmxpbmsuYwo+ID4gQEAgLTMwOSwxNCArMzA5LDE3IEBA
+IHN0YXRpYyBzdHJ1Y3QgZGV2bGlua19vcHMgbWx4NV9kZXZsaW5rX29wcyA9IHsKPiA+ICAjZW5k
+aWYKPiA+ICAJLmZsYXNoX3VwZGF0ZSA9IG1seDVfZGV2bGlua19mbGFzaF91cGRhdGUsCj4gPiAg
+CS5pbmZvX2dldCA9IG1seDVfZGV2bGlua19pbmZvX2dldCwKPiA+ICsJLnRyYXBfaW5pdCA9IG1s
+eDVfZGV2bGlua190cmFwX2luaXQsCj4gPiArCS50cmFwX2ZpbmkgPSBtbHg1X2RldmxpbmtfdHJh
+cF9maW5pLAo+ID4gKwkudHJhcF9hY3Rpb25fc2V0ID0gbWx4NV9kZXZsaW5rX3RyYXBfYWN0aW9u
+X3NldCwKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRpYyBzdHJ1Y3QgZGV2bGlua19vcHMgbWx4NV9k
+ZXZsaW5rX3JlbG9hZCA9IHsKPiA+ICAJLnJlbG9hZF9hY3Rpb25zID0gQklUKERFVkxJTktfUkVM
+T0FEX0FDVElPTl9EUklWRVJfUkVJTklUKSB8Cj4gPiAgCQkJICBCSVQoREVWTElOS19SRUxPQURf
+QUNUSU9OX0ZXX0FDVElWQVRFKSwKPiA+ICAJLnJlbG9hZF9saW1pdHMgPSBCSVQoREVWTElOS19S
+RUxPQURfTElNSVRfTk9fUkVTRVQpLAo+ID4gIAkucmVsb2FkX2Rvd24gPSBtbHg1X2Rldmxpbmtf
+cmVsb2FkX2Rvd24sCj4gPiAgCS5yZWxvYWRfdXAgPSBtbHg1X2RldmxpbmtfcmVsb2FkX3VwLAo+
+ID4gLQkudHJhcF9pbml0ID0gbWx4NV9kZXZsaW5rX3RyYXBfaW5pdCwKPiA+IC0JLnRyYXBfZmlu
+aSA9IG1seDVfZGV2bGlua190cmFwX2ZpbmksCj4gPiAtCS50cmFwX2FjdGlvbl9zZXQgPSBtbHg1
+X2RldmxpbmtfdHJhcF9hY3Rpb25fc2V0LAo+ID4gIH07Cj4gPiAgCj4gPiAgdm9pZCBtbHg1X2Rl
+dmxpbmtfdHJhcF9yZXBvcnQoc3RydWN0IG1seDVfY29yZV9kZXYgKmRldiwgaW50IHRyYXBfaWQs
+IHN0cnVjdCBza19idWZmICpza2IsCj4gPiBAQCAtNzkxLDYgKzc5NCw3IEBAIHN0YXRpYyB2b2lk
+IG1seDVfZGV2bGlua190cmFwc191bnJlZ2lzdGVyKHN0cnVjdCBkZXZsaW5rICpkZXZsaW5rKQo+
+ID4gIAo+ID4gIGludCBtbHg1X2RldmxpbmtfcmVnaXN0ZXIoc3RydWN0IGRldmxpbmsgKmRldmxp
+bmspCj4gPiAgewo+ID4gKwlzdHJ1Y3QgbWx4NV9jb3JlX2RldiAqZGV2ID0gZGV2bGlua19wcml2
+KGRldmxpbmspOwo+ID4gIAlpbnQgZXJyOwo+ID4gIAo+ID4gIAllcnIgPSBkZXZsaW5rX3BhcmFt
+c19yZWdpc3RlcihkZXZsaW5rLCBtbHg1X2RldmxpbmtfcGFyYW1zLAo+ID4gQEAgLTgwOCw2ICs4
+MTIsOSBAQCBpbnQgbWx4NV9kZXZsaW5rX3JlZ2lzdGVyKHN0cnVjdCBkZXZsaW5rICpkZXZsaW5r
+KQo+ID4gIAlpZiAoZXJyKQo+ID4gIAkJZ290byB0cmFwc19yZWdfZXJyOwo+ID4gIAo+ID4gKwlp
+ZiAoIW1seDVfY29yZV9pc19tcF9zbGF2ZShkZXYpKQo+ID4gKwkJZGV2bGlua19zZXRfb3BzKGRl
+dmxpbmssICZtbHg1X2RldmxpbmtfcmVsb2FkKTsKPiAKPiBEb2VzIHRoaXMgd29yaz8gV2hlcmUg
+ZG8geW91IG1ha2UgYSBjb3B5IG9mIHRoZSBvcHM/IPCfpJQgWW91IGNhbid0IG1vZGlmeQo+IHRo
+ZSBkcml2ZXItZ2xvYmFsIG9wcywgdG8gc3RhdGUgdGhlIG9idmlvdXMuCgpkZXZsaW5rX29wcyBw
+b2ludGVyIGlzIG5vdCBjb25zdGFudCBhdCB0aGlzIHN0YWdlLCBzbyB3aHkgY2FuJ3QgSSBjb3B5
+CnJlbG9hZF8qIHBvaW50ZXJzIHRvIHRoZSAibWFpbiIgZGV2bGluayBvcHM/CgpJIHdhbnRlZCB0
+byBhdm9pZCB0byBjb3B5IGFsbCBwb2ludGVycy4KClRoYW5rcwpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
+CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
