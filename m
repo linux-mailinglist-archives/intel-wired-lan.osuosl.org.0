@@ -1,61 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1152541C6F9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 16:39:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F3F6D41C84B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Sep 2021 17:24:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A5CCB60BED;
-	Wed, 29 Sep 2021 14:39:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 83B3A83372;
+	Wed, 29 Sep 2021 15:24:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PFriUesTqhVK; Wed, 29 Sep 2021 14:39:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tMYt10KtWkLO; Wed, 29 Sep 2021 15:24:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AE0AF6060A;
-	Wed, 29 Sep 2021 14:39:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 795B28336F;
+	Wed, 29 Sep 2021 15:24:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C0A021BF426
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:39:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 100CE1BF21A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 15:24:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id ACD5A4024A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:39:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0A53F60624
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 15:24:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hvuQGjK9aBm7 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Sep 2021 14:39:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PrUj4jbsApmt for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Sep 2021 15:24:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E1FC640015
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 14:39:43 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D7FC061288;
- Wed, 29 Sep 2021 14:39:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 74A59605B2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Sep 2021 15:24:48 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 604FF61440;
+ Wed, 29 Sep 2021 15:24:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632926383;
- bh=nnq87NutyIOGGif5N+QrkzjWO+6VWs0z6DZ46avoARs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=eqiziXnfY6Gb8Aqa7QR6beBqHy27XIjRrNUvvAZpBe8wAWCnLdAtcFyomIe7AQOpr
- 4y5Asa4+B80UxnB1HHcJhWNrtHtO1xZ3wY/gSf+jYnf98cFaKFzj08VOrxUhrIW7Xl
- WhtES6XqwCW5MPr95wOLYo64luS6u1zSPfI8WRAF7ohJTYNANFQJlfrV9MLvFa+BQB
- qRGrx+33hqKztnR5yfNuHpe7tcbvP77g91NjW7WEy/hhDjv2PbU7F3vMSN5g+9a7XX
- 6BT/cH+dKXao9KYoRKv24DJNK8fNaz/UswWiMxA+XjskLExRXFjir7NSfinIiFeJQq
- T9KesJYV0X2ng==
-Date: Wed, 29 Sep 2021 07:39:40 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Leon Romanovsky <leon@kernel.org>
-Message-ID: <20210929073940.5d7ed022@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <YVR0iKIRYDXQbD+o@unreal>
+ s=k20201202; t=1632929088;
+ bh=xBRRX1rYjiTzPEoPMHw1rL24TvrnK+689UnwZagbnsQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=aP/SzhecYqJ59hW7NpP/05VpI6etnlUtWV51qr4Sjrsj7iIglusLMXx2XNaO0fT0M
+ RyFp76HRYmy1cib0bH0hsp/eVZnogcmCelT/ZwaymqsJegIyZJRgdg5tNKJsghh0RX
+ h735xxlR9XptIYNPpeHPeVEIWeiC9Q4ek0t3XMoih4QzIJ1mz04rG59BZZLxMrAzht
+ MHpF9eFzGaB22t5a325IB+YbBszRNGWukMKfRmsCWK+zMzKR3DD/rQmxK4ETBnoB+G
+ hvBLRT6RtSXZYMSVRvFbB12XrLiTkxZUMC0ZQ7vldriFuDLP8cPBDmDxWn6bw8TPTP
+ TWgYqiOk6HtYQ==
+Date: Wed, 29 Sep 2021 18:24:44 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <YVSFPNq+IDUlZAeI@unreal>
 References: <cover.1632916329.git.leonro@nvidia.com>
- <20210929064004.3172946e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <YVR0iKIRYDXQbD+o@unreal>
+ <a8bf9a036fe0a590df830a77a31cc81c355f525d.1632916329.git.leonro@nvidia.com>
+ <20210929065549.43b13203@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YVR1PKQjsBfvUTPU@unreal>
+ <20210929072631.437ffad9@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YVR4qDxiQw95jaWK@unreal>
+ <20210929073551.16dd2267@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 0/5] Devlink reload and
- missed notifications fix
+Content-Disposition: inline
+In-Reply-To: <20210929073551.16dd2267@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 4/5] net/mlx5: Register
+ separate reload devlink ops for multiport device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,55 +105,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 29 Sep 2021 17:13:28 +0300 Leon Romanovsky wrote:
-> On Wed, Sep 29, 2021 at 06:40:04AM -0700, Jakub Kicinski wrote:
-> > On Wed, 29 Sep 2021 15:00:41 +0300 Leon Romanovsky wrote:  
-> > > This series starts from the fixing the bug introduced by implementing
-> > > devlink delayed notifications logic, where I missed some of the
-> > > notifications functions.
+On Wed, Sep 29, 2021 at 07:35:51AM -0700, Jakub Kicinski wrote:
+> On Wed, 29 Sep 2021 17:31:04 +0300 Leon Romanovsky wrote:
+> > On Wed, Sep 29, 2021 at 07:26:31AM -0700, Jakub Kicinski wrote:
+> > > On Wed, 29 Sep 2021 17:16:28 +0300 Leon Romanovsky wrote:  
+> > > > devlink_ops pointer is not constant at this stage, so why can't I copy
+> > > > reload_* pointers to the "main" devlink ops?
+> > > > 
+> > > > I wanted to avoid to copy all pointers.  
 > > > 
-> > > The rest series provides a way to dynamically set devlink ops that is
-> > > needed for mlx5 multiport device and starts cleanup by removing
-> > > not-needed logic.
+> > > Hm. I must be missing a key piece here. IIUC you want to have different
+> > > ops based on some device property. But there is only one
 > > > 
-> > > In the next series, we will delete various publish API, drop general
-> > > lock, annotate the code and rework logic around devlink->lock.
+> > > static struct devlink_ops mlx5_devlink_ops;
 > > > 
-> > > All this is possible because driver initialization is separated from the
-> > > user input now.  
+> > > so how can two devlink instances in the system use that and have
+> > > different ops without a copy?  
 > > 
-> > Swapping ops is a nasty hack in my book.
-> > 
-> > And all that to avoid having two op structures in one driver.
-> > Or to avoid having counters which are always 0?  
+> > No, I have two:
+> > * Base ops - mlx5_devlink_ops
+> > * Extra reload commands - mlx5_devlink_reload
 > 
-> We don't need to advertise counters for feature that is not supported.
-> In multiport mlx5 devices, the reload functionality is not supported, so
-> this change at least make that device to behave like all other netdev
-> devices that don't support devlink reload.
+> Still those are global for the driver, no?
+
+Ugh, yes
+
 > 
-> The ops structure is set very early to make sure that internal devlink
-> routines will be able access driver back during initialization (btw very
-> questionable design choice)
+> What if you have multiple NICs or whatever.
 
-Indeed, is this fixable? Or now that devlink_register() was moved to 
-the end of probe netdev can call ops before instance is registered?
+I missed it and always tested with one device L(.
 
-> and at that stage the driver doesn't know
-> yet which device type it is going to drive.
-> 
-> So the answer is:
-> 1. Can't have two structures.
+I'll add copy-all-ops code.
 
-I still don't understand why. To be clear - swapping full op structures
-is probably acceptable if it's a pure upgrade (existing pointers match).
-Poking new ops into a structure (in alphabetical order if I understand
-your reply to Greg, not destructor-before-contructor) is what I deem
-questionable.
-
-> 2. Same behaviour across all netdev devices.
-
-Unclear what this is referring to.
+Thanks
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
