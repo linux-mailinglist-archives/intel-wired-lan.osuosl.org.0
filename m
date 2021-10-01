@@ -1,42 +1,42 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE58F41F0C3
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Oct 2021 17:12:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32CFE41F0EE
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Oct 2021 17:13:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4B86B844A8;
-	Fri,  1 Oct 2021 15:12:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C7ECB4041D;
+	Fri,  1 Oct 2021 15:13:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3ct71whd7U8q; Fri,  1 Oct 2021 15:12:16 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 55AB2844A5;
-	Fri,  1 Oct 2021 15:12:16 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8C5401BF41E
- for <intel-wired-lan@osuosl.org>; Fri,  1 Oct 2021 15:12:12 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7A05C4163F
- for <intel-wired-lan@osuosl.org>; Fri,  1 Oct 2021 15:12:12 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5blkYa581yDw for <intel-wired-lan@osuosl.org>;
- Fri,  1 Oct 2021 15:12:11 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id d8bnggt-vBHL; Fri,  1 Oct 2021 15:13:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id C7A23403EE;
+	Fri,  1 Oct 2021 15:13:42 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4088F1BF9CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 15:13:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 30995844A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 15:13:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FeYSg5msiyFb for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Oct 2021 15:13:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C86994050D
- for <intel-wired-lan@osuosl.org>; Fri,  1 Oct 2021 15:12:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10124"; a="222261033"
-X-IronPort-AV: E=Sophos;i="5.85,339,1624345200"; d="scan'208";a="222261033"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 56B2B844A5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 15:13:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10124"; a="204946937"
+X-IronPort-AV: E=Sophos;i="5.85,339,1624345200"; d="scan'208";a="204946937"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  01 Oct 2021 08:10:04 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.85,339,1624345200"; d="scan'208";a="619202805"
