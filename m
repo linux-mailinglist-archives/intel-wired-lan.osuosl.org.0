@@ -1,150 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA2E641E34B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Sep 2021 23:23:14 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 009D141E96A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Oct 2021 11:07:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 07C7E61469;
-	Thu, 30 Sep 2021 21:23:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 91BE2614B5;
+	Fri,  1 Oct 2021 09:07:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-Hi3hjGzOKO; Thu, 30 Sep 2021 21:23:12 +0000 (UTC)
+	with ESMTP id W5b7cUF6K25M; Fri,  1 Oct 2021 09:07:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 048D661463;
-	Thu, 30 Sep 2021 21:23:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B6F9D614A0;
+	Fri,  1 Oct 2021 09:07:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 825C31BF3D5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Sep 2021 21:23:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 475251BF473
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 09:07:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6EAFA403D1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Sep 2021 21:23:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 407CB84414
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 09:07:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qUyO0ju3OB5z for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Sep 2021 21:23:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LuRGEYRdpjed for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Oct 2021 09:06:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 302274035B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Sep 2021 21:23:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10123"; a="204775219"
-X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="204775219"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2021 14:23:05 -0700
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B964584413
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 09:06:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10123"; a="222177996"
+X-IronPort-AV: E=Sophos;i="5.85,337,1624345200"; d="scan'208";a="222177996"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Oct 2021 02:06:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,336,1624345200"; d="scan'208";a="555963036"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by FMSMGA003.fm.intel.com with ESMTP; 30 Sep 2021 14:23:05 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Thu, 30 Sep 2021 14:23:04 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Thu, 30 Sep 2021 14:23:04 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.40) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Thu, 30 Sep 2021 14:23:04 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gmLQFE4ISZ+hhxTUl/84t5bBcJEVum0Gn88ZX1fdWX/CT/XQHzV/d1UJh9cicGGsvE8bD2xXp+bPxDuft7PEAfAl93RlB7k7W2NeU75OGjRdkq6WgfTOJm1xd/NlEoVlYSXbLC9hB1hKNshmmmKrlZ9ETeNWGC+15StMgalTXW7i8QHocjdReQq/vWVh+H36cXFthCG5ggnl5J2LJznBKNbQvS/vZIZG59wE0a59NSsBWgd3uS5eLFULva0EzReSP1JpxTutAa8PR7GezlmpCn/0hkmOtwFxIXYxrVoDXzTkwCzr0fvVLvhH2CQIyE/BC55vWnOSVQ8HjOEaZcCHeQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kYoNCT+5CzbjBhu/PG+bteWAqptN8xo55+iJ1tOKM4g=;
- b=TeJg86LbHGEIaLU1AVi+7fq/MkEvJl5CKSW7fBSZeYvBxMqs7CGvARQ+qx/08w5hV83DkSCcYm11sA7/RWbpXoEjSNk8ew0W6/JWv5kvBGz/L9A5UUI9t+/HmrIUIuYrCnB1U08nrzReEE4akdVV0uR1fERNVy71iaG075itRqWkDhuwPEb+e8rq4J+jPWeaxP+mk4a1e+qsN0+m+7fOi2lWWwArcX8KHon0ukEPfwPnZ8FY+15RrdmuXtLuDGZ35WYTb0+OUjB6hMFtFV9HaF9HU1ZLIqWVrgH1sr6oqoi4Gp52w0ADJc16H9XAwTtkJz78wn6jLD9tQ+3eCMYFBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kYoNCT+5CzbjBhu/PG+bteWAqptN8xo55+iJ1tOKM4g=;
- b=UkhoJfpz2Qms/3ZIiGBUBmusryqnVyOMoj0ohbvAhJUcVjRP87GGV3u0YYPVAQpOwRauxEiDsrgizdcd5w8h2bkLmexUchsUXZIgyHLVnFWYmB5Ls4oAkpqBC37uhmbtxbBXtCWUwniNPAN24c5d15o9roOByNiScd+zoQPm4u8=
-Received: from PH0PR11MB5095.namprd11.prod.outlook.com (2603:10b6:510:3b::14)
- by PH0PR11MB4840.namprd11.prod.outlook.com (2603:10b6:510:43::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4544.13; Thu, 30 Sep
- 2021 21:23:03 +0000
-Received: from PH0PR11MB5095.namprd11.prod.outlook.com
- ([fe80::21ee:3ed8:d6c2:29b2]) by PH0PR11MB5095.namprd11.prod.outlook.com
- ([fe80::21ee:3ed8:d6c2:29b2%9]) with mapi id 15.20.4566.014; Thu, 30 Sep 2021
- 21:23:02 +0000
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Jiri Benc <jbenc@redhat.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e: fix endless loop under
- rtnl
-Thread-Index: AQHXqUZWGtY/N9egjUCevcX6BkSdk6u9MBCw
-Date: Thu, 30 Sep 2021 21:23:02 +0000
-Message-ID: <PH0PR11MB50959F0358EEED7AB520D4C5D6AA9@PH0PR11MB5095.namprd11.prod.outlook.com>
-References: <452ff4ddfef7fc8f558a8c8eb7a8050688760e11.1631609537.git.jbenc@redhat.com>
-In-Reply-To: <452ff4ddfef7fc8f558a8c8eb7a8050688760e11.1631609537.git.jbenc@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4ce10040-99d2-4db8-ff9b-08d984587c74
-x-ms-traffictypediagnostic: PH0PR11MB4840:
-x-microsoft-antispam-prvs: <PH0PR11MB4840EB37FAB72667FDC96268D6AA9@PH0PR11MB4840.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1923;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: LgAdSl5+GpMqmEzpZkJW1YHM5WTGzaKgcszuvUhURGyr6QN0m01qZjS58ncwN7QmhvaE5NfCLNakfvZRdS3/Bqf9+nL3gDqFkPki1MhWUoEXwkRqd6qmqjw27vpSl3CwJh/kobDjr18rRP2Y0M2ZmDWyiTCoqwPQCMV+m9VU9cgDbkBfp+/qyWxavLp3KDipUGsOCcxPPmQu3FphlRMVhTafkMcdbEele/s3baYE4V7oMQlwSAY4dk0xfakJuKjYlSw4mPsrZQqk8Rc51H8rDPLGnkaauwmroD5PB8+YBuoeKvBu1zLoXrxHsR+wHPd2zwPIpaHkWicZGkjMERBWdzsnd4G9IOl7ZzAJQKoo2RmIJPKQSfvblfibK3J2HvdRkYy24/XlBTY6xY1PEdYN2vGUC8tMGqpPee92feLPdgLCQIAvDVv3FiNi0Aw3ypqazKhhaWs/IoA69lEB/InAmMyN5Kz4BOw/1tiAsX/MuSml6MB93m8C/f3WUpDKWtc7dqM8vOndDLksez2w6n+tIPvnFTeUwCDr5HSJq2F3jJBGH+0LPr3svuprsdTLF0yitWg6A+bvCbo/quhduI5HTaOHI6gajbUb1FkzaWXZ8r6kXMuZLExQyFaj2bvYkJdTxKUndZxHFKOZr1pbbfULoZi3/N8eVCgyeocx2O69SsxzV4WjALX0XOFVm0Pg3nRjXseKOkeIvvnLhN4ircWSfJePqYhak05gMV31LSZBgiR3sAMG50ExV29KTswjj6AQmUGVH3iWRPpb7k1CEuly7Snd9YGnyABrs6OMDTMe0PE=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5095.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(83380400001)(33656002)(66946007)(38100700002)(76116006)(316002)(7696005)(2906002)(4326008)(5660300002)(6506007)(966005)(55016002)(110136005)(9686003)(64756008)(38070700005)(26005)(8676002)(508600001)(86362001)(66556008)(71200400001)(66446008)(122000001)(52536014)(8936002)(186003)(53546011)(66476007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?T78wFYIcBAvBJNX6ttWw4RT8jdBGb5M8ULk18o11Erwox8zfUPXplcNDLeyL?=
- =?us-ascii?Q?kxAngZsxy6fvifFd1Iwa90n/E2UuaNavQS0zJwxPXeN9PpvXksbr/zO+fg/D?=
- =?us-ascii?Q?pEBrRaH35CXDhXZw2aItyoQgnvhliWfsQeEf4FRGHWPTJNOyvrEXUpA8hLHp?=
- =?us-ascii?Q?qXd1p9/wlAwlct8Gf6bjUnYDca/0ZOuGTGK2fKgAfii6og4XnyWRSmOPBys0?=
- =?us-ascii?Q?yDqpiQDD8lI6iiljcouMXBdQb9sohWyy0lcvF4XFLpQWG55ee/4TC1mUqlDJ?=
- =?us-ascii?Q?NfEo/6b63Fp1zIP1jPpDGdeahgjV+R+DrtSKwJJlm1Giajpr8zXVJ3xG27Df?=
- =?us-ascii?Q?JBVyQbdvMZgEPjIXIBMELML/GuhupRgJJKfrSZQ9iVwVgcTV7EReMX9AHvq5?=
- =?us-ascii?Q?4eOUGt5SKn8SQhflJjb/BHZt7GfafpdSmQgTBszAk2R8VnJgy6tTMJOIoQDk?=
- =?us-ascii?Q?48sSK41qoaxv/307AyLdYB/8//WwHMc6Ig6a1HPeI73OOyz9dq6vSCmx/zZj?=
- =?us-ascii?Q?ziBGqevMkG590cOlwxNTwKDFuPI9qeE2hRIdIR2i/DoGypsAkt/c9WZ2U3JA?=
- =?us-ascii?Q?vPRjkXinSD6dtZ+35GDCQNktdarvNOlnecUxR/SuEgTynMROsDSHbBlWu0wa?=
- =?us-ascii?Q?dzWPIeaG6DV8TjuF1zEcMVKHQwaLvtaBX52f8rhWNzlGl3LJwIDiszC1joYf?=
- =?us-ascii?Q?xmsRiWjVEei2mG3xPKuNKGEfaP3DPkU2otYNuaQ2X6Z0HI0tjdpQfsDEdA+X?=
- =?us-ascii?Q?1D6p+zfLx8L1qIJbjSwLyMb5o0B4O3Us5D8Be2rcLYnX9nXQ+ERvUPzSrkSt?=
- =?us-ascii?Q?2t/UeMxZeyRE4gpLqLrF5UwUzZA1ebUScMehYlb7pCCKM5i3kuFyzu2LScS3?=
- =?us-ascii?Q?415It1MMa0CFaqKuCG8S3oqMTpYpQIMMsy8aponJG03Lbwau1Bg9Vqp53qH+?=
- =?us-ascii?Q?U0LUU01QhVnFw9q7Mvo5Gi3qY72U6BojEqqWsZntmw5zK+7FETT6gUvY4akD?=
- =?us-ascii?Q?s9jvlr5kAJtfSsKD5owYaZoKbBZCHdDufp7yCv4BqOs2JAWsscxRbHYffpWt?=
- =?us-ascii?Q?nOOzrroaxCTjjd4WnFsjTTjlXo0nAfvfgS1KPMEVHDV0XPtAJByc595EC0TU?=
- =?us-ascii?Q?2EitldI4b2b82w81Jh95BK4PDVMkgIVaWVjvVp+yzs/fbQt3IM2agQm+NwYP?=
- =?us-ascii?Q?DZzKLi06gHRrkS7d1JOW853XdEC/BEbAwNFPjQphtV2wnWVNHQxLlr3YKFaa?=
- =?us-ascii?Q?Xwz3YXkrIpST5u/VXsub4HSmyg6XYSH1j6/yaDLLcztosbV69cmV+zN5N0Hd?=
- =?us-ascii?Q?UTU=3D?=
-x-ms-exchange-transport-forked: True
+X-IronPort-AV: E=Sophos;i="5.85,337,1624345200"; d="scan'208";a="618911631"
+Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
+ by fmsmga001.fm.intel.com with ESMTP; 01 Oct 2021 02:06:57 -0700
+From: Karol Kolacinski <karol.kolacinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  1 Oct 2021 11:06:38 +0200
+Message-Id: <20211001090638.175419-1-karol.kolacinski@intel.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5095.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ce10040-99d2-4db8-ff9b-08d984587c74
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2021 21:23:02.8521 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7dSL6nYSEAiwQrthwtekDfec9MGGnfIJJi3HLhu0KOU8ZRp/u+lTrC06UiUrCHCGnOMFn/rb66f79+XvgRgTzZiF82nzn0LIyRXLckSxNMQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4840
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: fix endless loop under
- rtnl
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
+Subject: [Intel-wired-lan] [PATCH intel-next] ice: add TTY device for GNSS
+ module for E810T device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,78 +62,775 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Sudhansu Sekhar Mishra <sudhansu.mishra@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>, maciej.machnikowski@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Add a new ice_gnss.c file for holding the basic GNSS module functions.
+If the device supports GNSS module, call the new ice_gnss_init and
+ice_gnss_release functions where appropriate.
 
+Implement basic functionality for reading the data from GNSS module
+using TTY device.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jiri
-> Benc
-> Sent: Tuesday, September 14, 2021 1:55 AM
-> To: netdev@vger.kernel.org
-> Cc: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net v2] i40e: fix endless loop under rtnl
-> 
-> The loop in i40e_get_capabilities can never end. The problem is that
-> although i40e_aq_discover_capabilities returns with an error if there's
-> a firmware problem, the returned error is not checked. There is a check for
-> pf->hw.aq.asq_last_status but that value is set to I40E_AQ_RC_OK on most
-> firmware problems.
-> 
-> When i40e_aq_discover_capabilities encounters a firmware problem, it will
-> enocunter the same problem on its next invocation. As the result, the loop
-> becomes endless. We hit this with I40E_ERR_ADMIN_QUEUE_TIMEOUT but
-> looking
-> at the code, it can happen with a range of other firmware errors.
-> 
-> I don't know what the correct behavior should be: whether the firmware
-> should be retried a few times, or whether pf->hw.aq.asq_last_status should
-> be always set to the encountered firmware error (but then it would be
-> pointless and can be just replaced by the i40e_aq_discover_capabilities
-> return value). However, the current behavior with an endless loop under the
-> rtnl mutex(!) is unacceptable and Intel has not submitted a fix, although we
-> explained the bug to them 7 months ago.
-> 
-> This may not be the best possible fix but it's better than hanging the whole
-> system on a firmware bug.
+Add I2C read AQ command. It is now required for controlling the external
+physical connectors via external I2C port expander on E810-T adapters.
 
-Yea this is a strict improvement.
+Future changes will introduce write functionality.
 
-> 
-> Fixes: 56a62fc86895 ("i40e: init code and hardware support")
-> Tested-by: Stefan Assmann <sassmann@redhat.com>
-> Signed-off-by: Jiri Benc <jbenc@redhat.com>
-> ---
-> v2: added the Fixes tag, no code changes
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 2f20980dd9a5..b5b984754ec9 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -10113,7 +10113,7 @@ static int i40e_get_capabilities(struct i40e_pf *pf,
->  		if (pf->hw.aq.asq_last_status == I40E_AQ_RC_ENOMEM) {
->  			/* retry with a larger buffer */
->  			buf_len = data_size;
-> -		} else if (pf->hw.aq.asq_last_status != I40E_AQ_RC_OK) {
-> +		} else if (pf->hw.aq.asq_last_status != I40E_AQ_RC_OK || err) {
->  			dev_info(&pf->pdev->dev,
->  				 "capability discovery failed, err %s aq_err %s\n",
->  				 i40e_stat_str(&pf->hw, err),
-> --
-> 2.18.1
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Signed-off-by: Sudhansu Sekhar Mishra <sudhansu.mishra@intel.com>
+---
+ drivers/net/ethernet/intel/ice/Makefile       |   2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   6 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  21 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |  54 +++
+ drivers/net/ethernet/intel/ice/ice_common.h   |   4 +
+ drivers/net/ethernet/intel/ice/ice_gnss.c     | 368 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_gnss.h     |  42 ++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   5 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  11 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  36 ++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   8 +
+ 11 files changed, 555 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_gnss.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_gnss.h
+
+diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+index c36faa7d1471..c22434a3ec4d 100644
+--- a/drivers/net/ethernet/intel/ice/Makefile
++++ b/drivers/net/ethernet/intel/ice/Makefile
+@@ -31,7 +31,7 @@ ice-y := ice_main.o	\
+ 	 ice_tc_lib.o
+ ice-$(CONFIG_PCI_IOV) += ice_virtchnl_allowlist.o
+ ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o ice_virtchnl_fdir.o
+-ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o
++ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_gnss.o
+ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+ ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
+ ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index fdd51e5c02c8..6a8252b8de77 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -66,6 +66,7 @@
+ #include "ice_repr.h"
+ #include "ice_eswitch.h"
+ #include "ice_lag.h"
++#include "ice_gnss.h"
+ 
+ #define ICE_BAR0		0
+ #define ICE_REQ_DESC_MULTIPLE	32
+@@ -164,6 +165,7 @@
+ enum ice_feature {
+ 	ICE_F_DSCP,
+ 	ICE_F_SMA_CTRL,
++	ICE_F_GNSS,
+ 	ICE_F_MAX
+ };
+ 
+@@ -416,6 +418,7 @@ enum ice_pf_flags {
+ 	ICE_FLAG_VF_TRUE_PROMISC_ENA,
+ 	ICE_FLAG_MDD_AUTO_RESET_VF,
+ 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
++	ICE_FLAG_GNSS,			/* GNSS successfully initialized */
+ 	ICE_PF_FLAGS_NBITS		/* must be last */
+ };
+ 
+@@ -486,6 +489,9 @@ struct ice_pf {
+ 	struct mutex tc_mutex;		/* lock to protect TC changes */
+ 	u32 msg_enable;
+ 	struct ice_ptp ptp;
++	struct tty_driver *ice_gnss_tty_driver;
++	struct tty_port gnss_tty_port;
++	struct gnss_serial *gnss_serial;
+ 	u16 num_rdma_msix;		/* Total MSIX vectors for RDMA driver */
+ 	u16 rdma_base_vector;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index d535a5265574..ac4600aef0c7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1338,6 +1338,24 @@ struct ice_aqc_get_link_topo {
+ 	u8 rsvd[9];
+ };
+ 
++/* Read I2C (direct, 0x06E2) */
++struct ice_aqc_i2c {
++	struct ice_aqc_link_topo_addr topo_addr;
++	__le16 i2c_addr;
++	u8 i2c_params;
++#define ICE_AQC_I2C_DATA_SIZE_S		0
++#define ICE_AQC_I2C_DATA_SIZE_M		(0xF << ICE_AQC_I2C_DATA_SIZE_S)
++#define ICE_AQC_I2C_USE_REPEATED_START	BIT(7)
++	u8 rsvd;
++	__le16 i2c_bus_addr;
++	u8 rsvd2[4];
++};
++
++/* Read I2C Response (direct, 0x06E2) */
++struct ice_aqc_read_i2c_resp {
++	u8 i2c_data[16];
++};
++
+ /* Set Port Identification LED (direct, 0x06E9) */
+ struct ice_aqc_set_port_id_led {
+ 	u8 lport_num;
+@@ -2048,6 +2066,8 @@ struct ice_aq_desc {
+ 		struct ice_aqc_get_link_status get_link_status;
+ 		struct ice_aqc_event_lan_overflow lan_overflow;
+ 		struct ice_aqc_get_link_topo get_link_topo;
++		struct ice_aqc_i2c read_i2c;
++		struct ice_aqc_read_i2c_resp read_i2c_resp;
+ 	} params;
+ };
+ 
+@@ -2159,6 +2179,7 @@ enum ice_adminq_opc {
+ 	ice_aqc_opc_set_event_mask			= 0x0613,
+ 	ice_aqc_opc_set_mac_lb				= 0x0620,
+ 	ice_aqc_opc_get_link_topo			= 0x06E0,
++	ice_aqc_opc_read_i2c				= 0x06E2,
+ 	ice_aqc_opc_set_port_id_led			= 0x06E9,
+ 	ice_aqc_opc_set_gpio				= 0x06EC,
+ 	ice_aqc_opc_get_gpio				= 0x06ED,
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 952e5d6af2d6..64adb4e651c6 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -4752,6 +4752,60 @@ ice_sched_query_elem(struct ice_hw *hw, u32 node_teid,
+ 	return status;
+ }
+ 
++/**
++ * ice_aq_read_i2c
++ * @hw: pointer to the hw struct
++ * @topo_addr: topology address for a device to communicate with
++ * @bus_addr: 7-bit I2C bus address
++ * @addr: I2C memory address (I2C offset) with up to 16 bits
++ * @params: I2C parameters: bit [7] - Repeated start,
++ *			    bits [6:5] data offset size,
++ *			    bit [4] - I2C address type,
++ *			    bits [3:0] - data size to read (0-16 bytes)
++ * @data: pointer to data (0 to 16 bytes) to be read from the I2C device
++ * @cd: pointer to command details structure or NULL
++ *
++ * Read I2C (0x06E2)
++ */
++enum ice_status
++ice_aq_read_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
++		u16 bus_addr, __le16 addr, u8 params, u8 *data,
++		struct ice_sq_cd *cd)
++{
++	struct ice_aq_desc desc = { 0 };
++	struct ice_aqc_i2c *cmd;
++	enum ice_status status;
++	u8 data_size;
++
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_read_i2c);
++	cmd = &desc.params.read_i2c;
++
++	if (!data)
++		return ICE_ERR_PARAM;
++
++	data_size = (params & ICE_AQC_I2C_DATA_SIZE_M) >>
++		    ICE_AQC_I2C_DATA_SIZE_S;
++
++	cmd->i2c_bus_addr = cpu_to_le16(bus_addr);
++	cmd->topo_addr = topo_addr;
++	cmd->i2c_params = params;
++	cmd->i2c_addr = addr;
++
++	status = ice_aq_send_cmd(hw, &desc, NULL, 0, cd);
++	if (!status) {
++		struct ice_aqc_read_i2c_resp *resp;
++		u8 i;
++
++		resp = &desc.params.read_i2c_resp;
++		for (i = 0; i < data_size; i++) {
++			*data = resp->i2c_data[i];
++			data++;
++		}
++	}
++
++	return status;
++}
++
+ /**
+  * ice_aq_set_driver_param - Set driver parameter to share via firmware
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 3b3981f0a87b..146cd5f6674f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -205,5 +205,9 @@ ice_aq_set_lldp_mib(struct ice_hw *hw, u8 mib_type, void *buf, u16 buf_size,
+ bool ice_fw_supports_lldp_fltr_ctrl(struct ice_hw *hw);
+ enum ice_status
+ ice_lldp_fltr_add_remove(struct ice_hw *hw, u16 vsi_num, bool add);
++enum ice_status
++ice_aq_read_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
++		u16 bus_addr, __le16 addr, u8 params, u8 *data,
++		struct ice_sq_cd *cd);
+ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw);
+ #endif /* _ICE_COMMON_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+new file mode 100644
+index 000000000000..e0bbdbaa6f8a
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+@@ -0,0 +1,368 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (C) 2018-2021, Intel Corporation. */
++
++#include "ice.h"
++#include "ice_lib.h"
++#include <linux/tty_driver.h>
++
++/**
++ * ice_gnss_read - Read data from internal GNSS module
++ * @work: GNSS read work structure
++ *
++ * Read the data from internal GNSS receiver, number of bytes read will be
++ * returned in *read_data parameter.
++ */
++static void ice_gnss_read(struct kthread_work *work)
++{
++	struct gnss_serial *gnss = container_of(work, struct gnss_serial,
++						read_work.work);
++	struct ice_aqc_link_topo_addr link_topo;
++	u8 i2c_params, bytes_read;
++	struct tty_port *port;
++	struct ice_pf *pf;
++	struct ice_hw *hw;
++	__be16 data_len_b;
++	char *buf = NULL;
++	u16 i, data_len;
++	int err = 0;
++
++	pf = gnss->back;
++	if (!pf || !&pf->hw || !gnss->tty || !gnss->tty->port) {
++		err = -EFAULT;
++		goto exit;
++	}
++
++	hw = &pf->hw;
++	port = gnss->tty->port;
++
++	buf = (char *)get_zeroed_page(GFP_KERNEL);
++	if (!buf) {
++		err = -ENOMEM;
++		goto exit;
++	}
++
++	memset(&link_topo, 0, sizeof(struct ice_aqc_link_topo_addr));
++	link_topo.topo_params.index = ICE_E810T_GNSS_I2C_BUS;
++	link_topo.topo_params.node_type_ctx |=
++		ICE_AQC_LINK_TOPO_NODE_CTX_OVERRIDE <<
++		ICE_AQC_LINK_TOPO_NODE_CTX_S;
++
++	i2c_params = ICE_GNSS_UBX_DATA_LEN_WIDTH |
++		     ICE_AQC_I2C_USE_REPEATED_START;
++
++	/* Read data length in a loop, when it's not 0 the data is ready */
++	for (i = 0; i < ICE_MAX_UBX_READ_TRIES; i++) {
++		enum ice_status status;
++
++		status = ice_aq_read_i2c(hw, link_topo,
++					 ICE_GNSS_UBX_I2C_BUS_ADDR,
++					 cpu_to_le16(ICE_GNSS_UBX_DATA_LEN_H),
++					 i2c_params, (u8 *)&data_len_b, NULL);
++		if (status) {
++			err = ice_status_to_errno(status);
++			goto exit_buf;
++		}
++
++		data_len = be16_to_cpu(data_len_b);
++		if (data_len != 0 && data_len != U16_MAX)
++			break;
++
++		mdelay(10);
++	}
++
++	data_len = min(data_len, (u16)PAGE_SIZE);
++	data_len = tty_buffer_request_room(port, data_len);
++	if (!data_len) {
++		err = -ENOMEM;
++		goto exit_buf;
++	}
++
++	/* Read received data */
++	for (i = 0; i < data_len; i += bytes_read) {
++		enum ice_status status;
++
++		u16 bytes_left = data_len - i;
++
++		bytes_read = bytes_left < ICE_MAX_I2C_DATA_SIZE ? bytes_left :
++					  ICE_MAX_I2C_DATA_SIZE;
++
++		status = ice_aq_read_i2c(hw, link_topo,
++					 ICE_GNSS_UBX_I2C_BUS_ADDR,
++					 cpu_to_le16(ICE_GNSS_UBX_EMPTY_DATA),
++					 bytes_read, &buf[i], NULL);
++		if (status) {
++			err = ice_status_to_errno(status);
++			goto exit_buf;
++		}
++	}
++
++	/* Send the data to the tty layer for users to read. This doesn't
++	 * actually push the data through unless tty->low_latency is set.
++	 */
++	tty_insert_flip_string(port, buf, i);
++	tty_flip_buffer_push(port);
++
++exit_buf:
++	free_page((unsigned long)buf);
++	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work,
++				   ICE_GNSS_TIMER_DELAY_TIME);
++exit:
++	if (err)
++		dev_dbg(ice_pf_to_dev(pf), "GNSS failed to read err=%d\n", err);
++}
++
++/**
++ * ice_gnss_struct_init - Initialize GNSS structure for the TTY
++ * @pf: Board private structure
++ */
++static struct gnss_serial *ice_gnss_struct_init(struct ice_pf *pf)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++	struct kthread_worker *kworker;
++	struct gnss_serial *gnss;
++
++	gnss = kzalloc(sizeof(*gnss), GFP_KERNEL);
++	if (!gnss)
++		return NULL;
++
++	mutex_init(&gnss->gnss_mutex);
++	gnss->open_count = 0;
++	gnss->back = pf;
++	pf->gnss_serial = gnss;
++
++	kthread_init_delayed_work(&gnss->read_work, ice_gnss_read);
++	/* Allocate a kworker for handling work required for the GNSS TTY
++	 * writes.
++	 */
++	kworker = kthread_create_worker(0, "ice-gnss-%s", dev_name(dev));
++	if (!kworker) {
++		kfree(gnss);
++		return NULL;
++	}
++
++	gnss->kworker = kworker;
++
++	return gnss;
++}
++
++/**
++ * ice_gnss_tty_open - Initialize GNSS structures on TTY device open
++ * @tty: pointer to the tty_struct
++ * @filp: pointer to the file
++ *
++ * This routine is mandatory. If this routine is not filled in, the attempted
++ * open will fail with ENODEV.
++ */
++static int ice_gnss_tty_open(struct tty_struct *tty, struct file *filp)
++{
++	struct gnss_serial *gnss;
++	struct ice_pf *pf;
++
++	pf = (struct ice_pf *)tty->driver->driver_state;
++	if (!pf)
++		return -EFAULT;
++
++	/* Clear the pointer in case something fails */
++	tty->driver_data = NULL;
++	/* Get the serial object associated with this tty pointer */
++	gnss = pf->gnss_serial;
++
++	if (!gnss) {
++		/* Initialize GNSS struct on the first device open */
++		gnss = ice_gnss_struct_init(pf);
++		if (!gnss)
++			return -ENOMEM;
++	}
++
++	mutex_lock(&gnss->gnss_mutex);
++
++	/* Save our structure within the tty structure */
++	tty->driver_data = gnss;
++	gnss->tty = tty;
++	gnss->open_count++;
++	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, 0);
++
++	mutex_unlock(&gnss->gnss_mutex);
++
++	return 0;
++}
++
++/**
++ * ice_gnss_tty_close - Cleanup GNSS structures on tty device close
++ * @tty: pointer to the tty_struct
++ * @filp: pointer to the file
++ */
++static void ice_gnss_tty_close(struct tty_struct *tty, struct file *filp)
++{
++	struct gnss_serial *gnss = tty->driver_data;
++	struct ice_pf *pf;
++
++	if (!gnss)
++		return;
++
++	pf = (struct ice_pf *)tty->driver->driver_state;
++	if (!pf)
++		return;
++
++	mutex_lock(&gnss->gnss_mutex);
++
++	if (!gnss->open_count) {
++		/* Port was never opened */
++		dev_err(ice_pf_to_dev(pf), "GNSS port not opened\n");
++		goto exit;
++	}
++
++	gnss->open_count--;
++	if (gnss->open_count <= 0) {
++		/* Port is in shutdown state */
++		kthread_cancel_delayed_work_sync(&gnss->read_work);
++	}
++exit:
++	mutex_unlock(&gnss->gnss_mutex);
++}
++
++/**
++ * ice_gnss_tty_write - Dummy TTY write function to avoid kernel panic
++ * @tty: pointer to the tty_struct
++ * @buf: pointer to the user data
++ * @cnt: the number of characters that was able to be sent to the hardware (or
++ *       queued to be sent at a later time)
++ */
++static int
++ice_gnss_tty_write(struct tty_struct *tty, const unsigned char *buf, int cnt)
++{
++	return 0;
++}
++
++/**
++ * ice_gnss_tty_write_room - Dummy TTY write_room function to avoid kernel panic
++ * @tty: pointer to the tty_struct
++ */
++static unsigned int ice_gnss_tty_write_room(struct tty_struct *tty)
++{
++	return 0;
++}
++
++static const struct tty_operations tty_gps_ops = {
++	.open =		ice_gnss_tty_open,
++	.close =	ice_gnss_tty_close,
++	.write =	ice_gnss_tty_write,
++	.write_room =	ice_gnss_tty_write_room,
++};
++
++/**
++ * ice_gnss_create_tty_driver - Create a TTY driver for GNSS
++ * @pf: Board private structure
++ */
++static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++	struct tty_driver *tty_driver;
++	int err;
++
++	tty_driver = tty_alloc_driver(1, TTY_DRIVER_REAL_RAW);
++	if (!tty_driver) {
++		dev_err(ice_pf_to_dev(pf), "Failed to allocate memory for GNSS TTY\n");
++		return NULL;
++	}
++	/* Initialize the tty driver*/
++	tty_driver->owner = THIS_MODULE;
++	tty_driver->driver_name = dev_driver_string(dev);
++	tty_driver->name = "ttyGNSS";
++	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
++	tty_driver->subtype = SERIAL_TYPE_NORMAL;
++	tty_driver->init_termios = tty_std_termios;
++	tty_driver->init_termios.c_iflag &= ~INLCR;
++	tty_driver->init_termios.c_iflag |= IGNCR;
++	tty_driver->init_termios.c_oflag &= ~OPOST;
++	tty_driver->init_termios.c_lflag &= ~ICANON;
++	tty_driver->init_termios.c_cflag &= ~(CSIZE | CBAUD | CBAUDEX);
++	/* baud rate 9600 */
++	tty_termios_encode_baud_rate(&tty_driver->init_termios, 9600, 9600);
++	tty_driver->driver_state = pf;
++	tty_set_operations(tty_driver, &tty_gps_ops);
++
++	pf->gnss_serial = NULL;
++
++	tty_port_init(&pf->gnss_tty_port);
++	tty_port_link_device(&pf->gnss_tty_port, tty_driver, 0);
++
++	err = tty_register_driver(tty_driver);
++	if (err) {
++		dev_err(ice_pf_to_dev(pf),
++			"Failed to register TTY driver err=%d\n", err);
++
++		tty_port_destroy(&pf->gnss_tty_port);
++		tty_driver_kref_put(pf->ice_gnss_tty_driver);
++
++		return NULL;
++	}
++
++	return tty_driver;
++}
++
++/**
++ * ice_gnss_init - Initialize GNSS TTY support
++ * @pf: Board private structure
++ */
++void ice_gnss_init(struct ice_pf *pf)
++{
++	struct tty_driver *tty_driver;
++
++	tty_driver = ice_gnss_create_tty_driver(pf);
++	if (!tty_driver)
++		return;
++
++	pf->ice_gnss_tty_driver = tty_driver;
++
++	set_bit(ICE_FLAG_GNSS, pf->flags);
++	dev_info(ice_pf_to_dev(pf), "GNSS TTY init successful\n");
++}
++
++/**
++ * ice_gnss_exit - Disable GNSS TTY support
++ * @pf: Board private structure
++ */
++void ice_gnss_exit(struct ice_pf *pf)
++{
++	if (!test_bit(ICE_FLAG_GNSS, pf->flags) || !pf->ice_gnss_tty_driver)
++		return;
++
++	tty_port_destroy(&pf->gnss_tty_port);
++
++	if (pf->gnss_serial) {
++		struct gnss_serial *gnss = pf->gnss_serial;
++
++		kthread_cancel_delayed_work_sync(&gnss->read_work);
++		kfree(gnss);
++		pf->gnss_serial = NULL;
++	}
++
++	tty_unregister_driver(pf->ice_gnss_tty_driver);
++	tty_driver_kref_put(pf->ice_gnss_tty_driver);
++	pf->ice_gnss_tty_driver = NULL;
++}
++
++/**
++ * ice_gnss_is_gps_present - Check if GPS HW is present
++ * @hw: pointer to HW struct
++ */
++bool ice_gnss_is_gps_present(struct ice_hw *hw)
++{
++	if (!hw->func_caps.ts_func_info.src_tmr_owned)
++		return false;
++
++	if (ice_is_e810t(hw)) {
++		enum ice_status status;
++		u8 data;
++
++		status = ice_read_pca9575_reg_e810t(hw, ICE_PCA9575_P0_IN,
++						    &data);
++		if (status || !!(data & ICE_E810T_P0_GNSS_PRSNT_N))
++			return false;
++	} else {
++		return false;
++	}
++
++	return true;
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/ethernet/intel/ice/ice_gnss.h
+new file mode 100644
+index 000000000000..1290c531daa2
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
+@@ -0,0 +1,42 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (C) 2018-2021, Intel Corporation. */
++
++#ifndef _ICE_GNSS_H_
++#define _ICE_GNSS_H_
++
++#include <linux/tty.h>
++#include <linux/tty_flip.h>
++
++#define ICE_E810T_GNSS_I2C_BUS		0x2
++#define ICE_GNSS_UBX_I2C_BUS_ADDR	0x42
++/* Data length register is big endian */
++#define ICE_GNSS_UBX_DATA_LEN_H		0xFD
++#define ICE_GNSS_UBX_DATA_LEN_WIDTH	2
++#define ICE_GNSS_UBX_EMPTY_DATA		0xFF
++#define ICE_GNSS_TIMER_DELAY_TIME	(HZ / 10) /* 0.1 second per message */
++#define ICE_MAX_I2C_DATA_SIZE		(ICE_AQC_I2C_DATA_SIZE_M >> \
++					ICE_AQC_I2C_DATA_SIZE_S)
++#define ICE_MAX_UBX_READ_TRIES		255
++
++/**
++ * struct gnss_serial - data used to initialize GNSS TTY port
++ * @back: back pointer to PF
++ * @tty: pointer to the tty for this device
++ * @open_count: number of times this port has been opened
++ * @gnss_mutex: gnss_mutex used to protect GNSS serial operations
++ * @kworker: kwork thread for handling periodic work
++ * @read_work: read_work function for handling GNSS reads
++ */
++struct gnss_serial {
++	struct ice_pf *back;
++	struct tty_struct *tty;
++	int open_count;
++	struct mutex gnss_mutex; /* protects GNSS serial structure */
++	struct kthread_worker *kworker;
++	struct kthread_delayed_work read_work;
++};
++
++void ice_gnss_init(struct ice_pf *pf);
++void ice_gnss_exit(struct ice_pf *pf);
++bool ice_gnss_is_gps_present(struct ice_hw *hw);
++#endif /* _ICE_GNSS_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index a23825e7f361..74bce9433c81 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3957,8 +3957,11 @@ void ice_init_feature_support(struct ice_pf *pf)
+ 	case ICE_DEV_ID_E810C_QSFP:
+ 	case ICE_DEV_ID_E810C_SFP:
+ 		ice_set_feature_support(pf, ICE_F_DSCP);
+-		if (ice_is_e810t(&pf->hw))
++		if (ice_is_e810t(&pf->hw)) {
+ 			ice_set_feature_support(pf, ICE_F_SMA_CTRL);
++			if (ice_gnss_is_gps_present(&pf->hw))
++				ice_set_feature_support(pf, ICE_F_GNSS);
++		}
+ 		break;
+ 	default:
+ 		break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 084857079e9e..482522e543a0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -506,6 +506,9 @@ ice_prepare_for_reset(struct ice_pf *pf)
+ 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+ 		ice_ptp_release(pf);
+ 
++	if (ice_is_feature_supported(pf, ICE_F_GNSS))
++		ice_gnss_exit(pf);
++
+ 	if (hw->port_info)
+ 		ice_sched_clear_port(hw->port_info);
+ 
+@@ -4570,6 +4573,9 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+ 		ice_ptp_init(pf);
+ 
++	if (ice_is_feature_supported(pf, ICE_F_GNSS))
++		ice_gnss_init(pf);
++
+ 	/* Note: Flow director init failure is non-fatal to load */
+ 	if (ice_init_fdir(pf))
+ 		dev_err(dev, "could not initialize flow director\n");
+@@ -4740,6 +4746,8 @@ static void ice_remove(struct pci_dev *pdev)
+ 	ice_deinit_lag(pf);
+ 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+ 		ice_ptp_release(pf);
++	if (ice_is_feature_supported(pf, ICE_F_GNSS))
++		ice_gnss_exit(pf);
+ 	if (!ice_is_safe_mode(pf))
+ 		ice_remove_arfs(pf);
+ 	ice_setup_mc_magic_wake(pf);
+@@ -6564,6 +6572,9 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+ 		ice_ptp_init(pf);
+ 
++	if (ice_is_feature_supported(pf, ICE_F_GNSS))
++		ice_gnss_init(pf);
++
+ 	/* rebuild PF VSI */
+ 	err = ice_vsi_rebuild_by_type(pf, ICE_VSI_PF);
+ 	if (err) {
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index a38a69c10132..ca88017598e1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -785,6 +785,42 @@ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data)
+ 	return status;
+ }
+ 
++/**
++ * ice_read_pca9575_reg_e810t
++ * @hw: pointer to the hw struct
++ * @offset: GPIO controller register offset
++ * @data: pointer to data to be read from the GPIO controller
++ *
++ * Read the register from the GPIO controller
++ */
++int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data)
++{
++	struct ice_aqc_link_topo_addr link_topo;
++	enum ice_status status;
++	__le16 addr;
++	u16 handle;
++	int err;
++
++	memset(&link_topo, 0, sizeof(link_topo));
++
++	err = ice_get_pca9575_handle(hw, &handle);
++	if (err)
++		return err;
++
++	link_topo.handle = cpu_to_le16(handle);
++	link_topo.topo_params.node_type_ctx =
++		(ICE_AQC_LINK_TOPO_NODE_CTX_PROVIDED <<
++		 ICE_AQC_LINK_TOPO_NODE_CTX_S);
++
++	addr = cpu_to_le16((u16)offset);
++
++	status = ice_aq_read_i2c(hw, link_topo, 0, addr, 1, data, NULL);
++	if (status)
++		return -ENODEV;
++
++	return 0;
++}
++
+ /**
+  * ice_is_pca9575_present
+  * @hw: pointer to the hw struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index b2984b5c22c1..ee8ac2849d7c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -32,6 +32,8 @@ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
+ int ice_ptp_init_phy_e810(struct ice_hw *hw);
+ int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data);
+ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
++enum ice_status
++ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data);
+ bool ice_is_pca9575_present(struct ice_hw *hw);
+ 
+ #define PFTSYN_SEM_BYTES	4
+@@ -98,4 +100,10 @@ bool ice_is_pca9575_present(struct ice_hw *hw);
+ #define ICE_SMA_MAX_BIT_E810T	7
+ #define ICE_PCA9575_P1_OFFSET	8
+ 
++/* E810T PCA9575 IO controller registers */
++#define ICE_PCA9575_P0_IN	0x0
++
++/* E810T PCA9575 IO controller pin control */
++#define ICE_E810T_P0_GNSS_PRSNT_N	BIT(4)
++
+ #endif /* _ICE_PTP_HW_H_ */
+-- 
+2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
