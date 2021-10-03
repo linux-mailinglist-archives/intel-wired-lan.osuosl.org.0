@@ -1,155 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FF3441F72D
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Oct 2021 23:59:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D987B42047F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Oct 2021 02:12:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D0E1C60753;
-	Fri,  1 Oct 2021 21:59:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B563849C8;
+	Mon,  4 Oct 2021 00:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fYwSoBSwU3fi; Fri,  1 Oct 2021 21:59:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xuVBbeyjo06y; Mon,  4 Oct 2021 00:12:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C9C3C60718;
-	Fri,  1 Oct 2021 21:59:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 062B4849B6;
+	Mon,  4 Oct 2021 00:12:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3088C1BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 21:59:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F9541BF5A4
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Oct 2021 08:32:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1F7F160718
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 21:59:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 96B3E4019B
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Oct 2021 08:32:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wedCd8uRiZl9 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Oct 2021 21:59:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 743E760711
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Oct 2021 21:59:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10124"; a="223694123"
-X-IronPort-AV: E=Sophos;i="5.85,340,1624345200"; d="scan'208";a="223694123"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Oct 2021 14:59:11 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,340,1624345200"; d="scan'208";a="565296363"
-Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
- by fmsmga002.fm.intel.com with ESMTP; 01 Oct 2021 14:59:11 -0700
-Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
- fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Fri, 1 Oct 2021 14:59:11 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Fri, 1 Oct 2021 14:59:11 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Fri, 1 Oct 2021 14:59:11 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Fri, 1 Oct 2021 14:59:06 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bQ6ANNh+G773Wx9ZB/Wj1KMl4Gre3eRiCFiNhPFjhEKEinAifz+I5iZr3hWPAGA0sjL+LKqDT/sfImKj1DODtzPhi5NfhvS78qWFhVXs8OXNhKJePh/+VndIZ/oDXR6MTEC+8UYczVWOyjQcHZe3uYLiEq8m0NWIUXQZsRaUAyIHxEmuaDxgVzo0oSU4ergEyn11PoxMGCXIuJ5SNCAtuvQwrj+hPO2DPWELrwi1qC8j/UZx06/rPXjE7JGHRPn8zfzwJWGcZyDYWp778ZvaKPjyKBHd9Ohu1fREBylEFEUA41Gl9dODUkvzgt+T8qRSHbWvgMVkEATNXDCLWEFzzg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+Narlp8NLpusxVGeIR/LXn00UaJgul6+q4v5Y1eC0F4=;
- b=O47KV2yESV0mg30PmEFYLgXbOYU2Wasb/KbkIldlBSHjFAn21A9Qq+PqkmYjV5MkWDAsiuV8KxxNlTAPgEeeP8c0ZKk1Rr4qUXPbyxXavJwxhVSJGxivJZq8le/jgCrZrXJGgmD4MGtvIKVolZPWIHabpNNXCz7QhvbdnLr4UR/rkbvq/Fn6PhCiNb8QzT8L+QnO2Zb4vKmNk4u4joqcqTCFqGPlKcPplp021C4o66xK39J8C1qNWfNuXBR6LxOFCkPZTgM7bzpM5GtQrCSLrpZhKLOsDrEwm8+4CjWvuy/QejlKXNFIYoLZm9fKMsS5B1wb7UwbpMl7cAx2oqqJpA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+Narlp8NLpusxVGeIR/LXn00UaJgul6+q4v5Y1eC0F4=;
- b=b1SvL5sFPFZryy7gtCeCeeKY1pMM4W2tDNWgqhm17mfADrip1FzctASamfKASD1A5Vf0HYYjpgg3sPwzLJ8ysjU8AdMfLFgPawg5vZda1AGLZ03ONtjyiOMhb7yvawUhpzoMmrXQkMYd3ls8YBf7F5rz3z6+qucH+FbAFxOad5Y=
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
- by SN6PR11MB3120.namprd11.prod.outlook.com (2603:10b6:805:d6::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14; Fri, 1 Oct
- 2021 21:59:05 +0000
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::d0d5:c84e:41b8:a9e4]) by SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::d0d5:c84e:41b8:a9e4%3]) with mapi id 15.20.4566.017; Fri, 1 Oct 2021
- 21:59:05 +0000
-From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-To: "Sornek, Karen" <karen.sornek@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v1] iavf: Add support for
- VIRTCHNL_VF_OFFLOAD_VLAN_V2
-Thread-Index: AQHXtTcr4KGKjWnxZkWTba36qw6v6Ku+sALA
-Date: Fri, 1 Oct 2021 21:59:05 +0000
-Message-ID: <SN6PR11MB3229FD578A9B1B87A33327FBC6AB9@SN6PR11MB3229.namprd11.prod.outlook.com>
-References: <20210929133715.149736-1-karen.sornek@intel.com>
-In-Reply-To: <20210929133715.149736-1-karen.sornek@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.6.200.16
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: df8b4f23-80c6-4c03-3e26-08d98526b004
-x-ms-traffictypediagnostic: SN6PR11MB3120:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SN6PR11MB3120081DA5473E7B100BB69CC6AB9@SN6PR11MB3120.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3044;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: pOvMk8RiGov6u9yJSerZz7qbibZLQQt2FHFiz0IFt9sMKBurJxV1Nnxnv+3WHOtskoi484oTJY9Wc20q2TooPGJe2PRUCnnHbnZZoM1D3fEHyDeCzc5kwqOFIwvZ3HT2P/N1waIC0scszQuHam/ZQ6d57+2uBq74rmDipSs57hH9xT7W2x/wnkhheNvnBCXzEqKZNVvT5zIv828UHlcAJNV56JDN7e99+JipDBZkArYAzUJObOzkfCt3xZa145cSI5f5UK6lHIKYyJwHhAhqJubg49y1HnQYZcD6+f9InCMpSEmjeUgfFVgKlRlxC3RBV0U8bloDDVjOc9Hp8VuJsTDesAoM2xzM9K0sT2l8i7Q7Hn5FRIW5Uo+kjmbddLDLXsRiQpOgLORgSyDfWyQJY7tyfrMVKkGTmMJa/e/L5FoaqgRe4DTOykm77vnT23WaCSyfojccp2GK5WACRLWqF0qvum78iiS/xw/PunFzEW/iMN1gSXLNjBrfabMi/jeAGNGu6MtpXk9i0QiKcxHeY5FI8+WgRISGldfu3lNet3ECfaZTmlz/DlD8qo9lVjdPwZoWTqzatso2fYKFiRKXatJq89GP8Uij6UC3wJtZnAX8juvf0Ryf5G89jFwHzA/P/ZfoC3DTGGBmu9Dteel969ZQPPkXH8g1erarnRm24Ev9xTwUpHQJDRdzpM/DsiQKaWa6RcGnPimlF94zNlNQqg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(7696005)(52536014)(55016002)(54906003)(76116006)(26005)(186003)(122000001)(86362001)(6506007)(53546011)(71200400001)(316002)(8936002)(9686003)(4744005)(4326008)(110136005)(38070700005)(8676002)(33656002)(83380400001)(107886003)(64756008)(66446008)(66946007)(2906002)(508600001)(66556008)(38100700002)(66476007)(5660300002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ERMC1q/RmgQ0ko/5ptW+iOrK/74v1rJaKqKo1P5VnYkToUmGdxK5w4/m+k53?=
- =?us-ascii?Q?1Q2Bdd7OEBgEMzul6XVgINFUgowfREupXmrEx6XJYZI6PjhD3E0+oSAzu9Rq?=
- =?us-ascii?Q?YH95nBWJdavQDdIrGRiqOaW/NWs64NtWUnzXWCuFSn9kNBd4qoW+j8sOyeQh?=
- =?us-ascii?Q?8u6QRik/oIsdFxnJaAm9Lz+D7jVFHskaM5ra8U8pzs4B15Dxa1KxyVldCGhT?=
- =?us-ascii?Q?1lTVLsN+WvkHGrHjsryyNW6J/NkGFgSiA/LxVYOcmxDJxHmx9QRn3mS5Bx1b?=
- =?us-ascii?Q?ongQT9QEfsKKntmuhbOxDkXgyKgmJEY4doMxQbYtj789KwB7JmVPmopA0b84?=
- =?us-ascii?Q?s/jEvbYDdd4yJbCgQVDDvNYdWO1GDhaZeeDt2lbO+slYO8gf3hX8T93Uxkf+?=
- =?us-ascii?Q?jV0uT5RZy1GB2GWqmkkrCSqnUdqdWzK27SUNx0EvTxb1WiBSy9ppGHlrHR8+?=
- =?us-ascii?Q?kcHuycMHe9yqV0ScN4z0rgkRAHigA5UpV7UMvi6zAn/gYt7bKWDgtlR09z6C?=
- =?us-ascii?Q?5fWtfcoynZqKDVrDUm4otetG82P8nb8ToLLuwW1MpQoErZ753/K17JcFn3ig?=
- =?us-ascii?Q?+mtZtBULCHnPZd5o+W/0JCebXctqXe0xNGdz7UVNOoesh0HgUJVZJ8n6yNsf?=
- =?us-ascii?Q?FAJD5d+pRBv++hpXfSHrh2R5gQtwlMx5kpc3Z35PcrHBsl0X0DeZxvLhbIy2?=
- =?us-ascii?Q?KhmNxkrjm2Gj9Z62cDXUr03KCwLodu7fO/K6FYW+NN+Q0x9GDQ7fUpwjJXDs?=
- =?us-ascii?Q?49ro3Q1lQgrTyVtoaBSsfQbDarhY9AhfSVLz2ej2i2NFEP8uIJrpbCtM4bLO?=
- =?us-ascii?Q?I0ZIlFf/pKu++jTKhbSgoGmNCaHXeUl1BR5MhfrhYOy3AjlMiit3gyw5+C/f?=
- =?us-ascii?Q?HmLzPdiZ6THn7YLrR/i1EqK+w/znj185gSSgcdOuEDO8m6htdW/z6WakNJ1W?=
- =?us-ascii?Q?Y1YV7q5A4Chw/H3HeZmGixGjqMwjWXK5mcdoH8ONrJA4F2hyawf64QV8ie2g?=
- =?us-ascii?Q?Tq5WhF4i4D7zNNQ6V7POrD9hmDhNO4Z7QrD5CahL3MKkFIiYUdLB4pkq80S1?=
- =?us-ascii?Q?lVtdPHrvuBCP+iaJ7EElea5uSqyG9yeDWq0Peq/HNDUx2oP0fJo+Q6p9hxiV?=
- =?us-ascii?Q?uLOnjl7PZxd1Ok3/FeJm05lsJakZoWBuStSW6JBxwxhTSn4HIpRUoDtA7I/f?=
- =?us-ascii?Q?u+/At0F0PVmjQWW28gC2rXUb9sxbo4h0OEYjnwcKmIhaPgkc42sxOVZ5h7lj?=
- =?us-ascii?Q?f275IwPiUX3ldBwCo5cW6lKtOBVDpLSY658GnXko0Ls+5L0wRMMVEya6wSsP?=
- =?us-ascii?Q?kKHKi/IRNzS4lt3yjyt0UzX8?=
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4XAi5-2Nhtnn for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  3 Oct 2021 08:32:42 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x536.google.com (mail-ed1-x536.google.com
+ [IPv6:2a00:1450:4864:20::536])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1D1DB400F3
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Oct 2021 08:32:42 +0000 (UTC)
+Received: by mail-ed1-x536.google.com with SMTP id x7so50778409edd.6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 03 Oct 2021 01:32:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kPIObBVVgnXoudMBLnu91RHq8erONgyj0SqjFXcGnsc=;
+ b=DwhO3ws8FAT1mTK09qNmgbwgFycVAG7Z8JsNEnW9YabhC01Xc9apw35+JERTpTf06L
+ alVgopwY+AgEJayvhfBJW41V94vNYL0WQTmm6i+Lh9Gb7bTxAiaRuSPGhqwy1qLQiuQt
+ ikEoP6jiPVLLCSE8i2TNgUsTHOe7OEeRFXFTiBFN59Kbesm2hoWrTbRleOX2Etn0N/YD
+ 3ah3RZ6AcAtsksafD2TB57NxUArvbvXsQKhnjKgusbPH6Ebx6aJ24HJ6EqXDMaJ4a1uY
+ 32vHBFqfrTc2t91RFYGKcCkIYVRFzMM+9hWl5qQNrFc7T2YXbVEr9LwCm5kvDgInhDzK
+ IhUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kPIObBVVgnXoudMBLnu91RHq8erONgyj0SqjFXcGnsc=;
+ b=7+RfOnPCOelAidq/zam4sCWrP8t8XHMeNMr9MjtSm+cwoLR9Y+eW1RJu4Il3O8tgAp
+ G1w0Y92qfE1uhF3twUFmFWWgIuJFm4IYEyN7dTyFapk5Grj79NqNQ4xFQPRDxBipPQeT
+ +Ymh9KO8pGVFYIz1uvYQr7835finvj6jcyTZLSsBc8ChVse2s3Pzilq8CUUa4LPnFovM
+ sd9fpGfXmWXfIL4wiYdiZ9P/tpm75doBKkrqYUZzkMy8DagKv47tMJrl2lnHxsqZBuAq
+ qpwDUrrHrqYWngTZYxdqUqu1bN19LiFSnydvdWXFWVRzpSvGvsf/Ze5jy5iZ5OpAZAay
+ sjRg==
+X-Gm-Message-State: AOAM5314nv55bmjC7+6O4BYDlkauQnfXsLaeVU6/D18agtiTTsoghh5d
+ 0JQ6Tfz0zFyHjO86au3BpV0netf+81yvc/bytwA=
+X-Google-Smtp-Source: ABdhPJwh0nQr1w1Lj5SRzFQcfXjMdXb7w+vZV4VO4oWFFPjCrnKnNAyUEmpeRFe//S4jOBF/xys5vJU42onnHy0ka3c=
+X-Received: by 2002:a50:cd87:: with SMTP id p7mr9578535edi.294.1633249959979; 
+ Sun, 03 Oct 2021 01:32:39 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: df8b4f23-80c6-4c03-3e26-08d98526b004
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Oct 2021 21:59:05.7675 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3nCvoTFUS1X7/2gvQEFzPz1ss0AMlvs7RxftHx2lQJjlp4m+8Ydt8BEplYEQIYyRZ/nbIYOhQUJ2HctMtg0xPkn8ProzdYZ77K7IHhkSyr8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3120
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] iavf: Add support for
- VIRTCHNL_VF_OFFLOAD_VLAN_V2
+References: <20210825102636.52757-4-21cnbao@gmail.com>
+ <20210829145552.GA11556@xsang-OptiPlex-9020>
+ <CAGsJ_4yYwjuWsEeK3CvnOhc10mbBNYWXqxqp+mR5587R2FD3gQ@mail.gmail.com>
+ <CAGsJ_4zwRdR2QuoR0K0_J86w0=t=mFh=tAKRuP1+Tx8aLn4kKw@mail.gmail.com>
+ <8ab95f7f784448038d7777c45f1f2d55@intel.com>
+In-Reply-To: <8ab95f7f784448038d7777c45f1f2d55@intel.com>
+From: Barry Song <21cnbao@gmail.com>
+Date: Sun, 3 Oct 2021 21:32:28 +1300
+Message-ID: <CAGsJ_4ygPbLFqpRu7_N4RvfTY++OumQCFz=yxgcnb3VoqPwRAg@mail.gmail.com>
+To: "Winkler, Tomas" <tomas.winkler@intel.com>
+X-Mailman-Approved-At: Mon, 04 Oct 2021 00:12:24 +0000
+Subject: Re: [Intel-wired-lan] [PCI/MSI] a4fc4cf388:
+ dmesg.genirq:Flags_mismatch_irq##(mei_me)vs.#(xhci_hcd)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,40 +87,213 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Sornek, Karen" <karen.sornek@intel.com>
+Cc: Barry Song <song.bao.hua@hisilicon.com>,
+ "leon@kernel.org" <leon@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ "mchehab+huawei@kernel.org" <mchehab+huawei@kernel.org>,
+ Marc Zyngier <maz@kernel.org>,
+ "schnelle@linux.ibm.com" <schnelle@linux.ibm.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, Linuxarm <linuxarm@huawei.com>,
+ "lkp@lists.01.org" <lkp@lists.01.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Jonathan.Cameron@huawei.com" <Jonathan.Cameron@huawei.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, "Sang, Oliver" <oliver.sang@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "luzmaximilian@gmail.com" <luzmaximilian@gmail.com>,
+ "bilbao@vt.edu" <bilbao@vt.edu>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Fri, Sep 3, 2021 at 7:34 AM Winkler, Tomas <tomas.winkler@intel.com> wrote:
+>
+> > dmesg.genirq:Flags_mismatch_irq##(mei_me)vs.#(xhci_hcd)
+> >
+> > On Tue, Aug 31, 2021 at 1:21 PM Barry Song <21cnbao@gmail.com> wrote:
+> > >
+> > > On Mon, Aug 30, 2021 at 2:38 AM kernel test robot
+> > <oliver.sang@intel.com> wrote:
+> > > >
+> > > >
+> > > >
+> > > > Greeting,
+> > > >
+> > > > FYI, we noticed the following commit (built with gcc-9):
+> > > >
+> > > > commit: a4fc4cf388319ea957ffbdab5073bdd267de9082 ("[PATCH v3 3/3]
+> > > > PCI/MSI: remove msi_attrib.default_irq in msi_desc")
+> > > > url:
+> > > > https://github.com/0day-ci/linux/commits/Barry-Song/PCI-MSI-Clarify-
+> > > > the-IRQ-sysfs-ABI-for-PCI-devices/20210825-183018
+> > > > base:
+> > > > https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
+> > > > 6e764bcd1cf72a2846c0e53d3975a09b242c04c9
+> > > >
+> > > > in testcase: kernel-selftests
+> > > > version: kernel-selftests-x86_64-ebaa603b-1_20210825
+> > > > with following parameters:
+> > > >
+> > > >         group: pidfd
+> > > >         ucode: 0xe2
+> > > >
+> > > > test-description: The kernel contains a set of "self tests" under the
+> > tools/testing/selftests/ directory. These are intended to be small unit tests
+> > to exercise individual code paths in the kernel.
+> > > > test-url: https://www.kernel.org/doc/Documentation/kselftest.txt
+> > > >
+> > > >
+> > > > on test machine: 4 threads Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
+> > > > with 32G memory
+> > > >
+> > > > caused below changes (please refer to attached dmesg/kmsg for entire
+> > log/backtrace):
+> > > >
+> > > >
+> > > >
+> > > > If you fix the issue, kindly add following tag
+> > > > Reported-by: kernel test robot <oliver.sang@intel.com>
+> > > >
+> > > >
+> > > >
+> > > > [  179.602028][   T34] genirq: Flags mismatch irq 16. 00002000 (mei_me) vs.
+> > 00000000 (xhci_hcd)
+> > > > [  179.614073][   T34] CPU: 2 PID: 34 Comm: kworker/u8:2 Not tainted
+> > 5.14.0-rc7-00014-ga4fc4cf38831 #1
+> > > > [  179.623225][   T34] Hardware name: Dell Inc. OptiPlex 7040/0Y7WYT,
+> > BIOS 1.8.1 12/05/2017
+> > > > [  179.631432][   T34] Workqueue: events_unbound async_run_entry_fn
+> > > > [  179.637543][   T34] Call Trace:
+> > > > [  179.640789][   T34]  dump_stack_lvl+0x45/0x59
+> > > > [  179.645253][   T34]  __setup_irq.cold+0x50/0xd4
+> > > > [  179.649893][   T34]  ? mei_me_pg_exit_sync+0x480/0x480 [mei_me]
+> > > > [  179.655923][   T34]  request_threaded_irq+0x10c/0x180
+> > > > [  179.661073][   T34]  ? mei_me_irq_quick_handler+0x240/0x240
+> > [mei_me]
+> > > > [  179.667528][   T34]  mei_me_probe+0x131/0x300 [mei_me]
+> > > > [  179.672767][   T34]  local_pci_probe+0x42/0x80
+> > > > [  179.677313][   T34]  pci_device_probe+0x107/0x1c0
+> > > > [  179.682118][   T34]  really_probe+0xb6/0x380
+> > > > [  179.687094][   T34]  __driver_probe_device+0xfe/0x180
+> > > > [  179.692242][   T34]  driver_probe_device+0x1e/0xc0
+> > > > [  179.697133][   T34]  __driver_attach_async_helper+0x2b/0x80
+> > > > [  179.702802][   T34]  async_run_entry_fn+0x30/0x140
+> > > > [  179.707693][   T34]  process_one_work+0x274/0x5c0
+> > > > [  179.712503][   T34]  worker_thread+0x50/0x3c0
+> > > > [  179.716959][   T34]  ? process_one_work+0x5c0/0x5c0
+> > > > [  179.721936][   T34]  kthread+0x14f/0x180
+> > > > [  179.725958][   T34]  ? set_kthread_struct+0x40/0x40
+> > > > [  179.730935][   T34]  ret_from_fork+0x22/0x30
+> > > > [  179.735699][   T34] mei_me 0000:00:16.0: request_threaded_irq failure.
+> > irq = 16
+> > > > [  179.743125][   T34] mei_me 0000:00:16.0: initialization failed.
+> > > > [  179.749399][   T34] mei_me: probe of 0000:00:16.0 failed with error -16
+> > > >
+> > > >
+> > >
+> > > it seems there is a direct reference to pdev->irq.
+> > > Hi Oliver, would you try if the below patch can fix the problem:
+> >
+> > + Tomas
+> >
+> > sorry. after second looking, drivers/misc/mei/pci-me.c has many places using
+> > pdev->irq directly. We really need this driver's maintainers to address the
+> > problem.
+>
+> Will look at that.
+
+Hi Tomas,
+
+I assume using hw->irq or not is a separate topic, does vim command
+%s/pdev->irq/pci_irq_vector(pdev, 0)/g
+as below fix the current crash problem because of directly dereferencing
+pdev->irq?
+
+diff --git a/drivers/misc/mei/pci-me.c b/drivers/misc/mei/pci-me.c
+index c3393b383e59..97495931fadd 100644
+--- a/drivers/misc/mei/pci-me.c
++++ b/drivers/misc/mei/pci-me.c
+@@ -216,18 +216,18 @@ static int mei_me_probe(struct pci_dev *pdev,
+const struct pci_device_id *ent)
+
+  pci_enable_msi(pdev);
+
+- hw->irq = pdev->irq;
++ hw->irq = pci_irq_vector(pdev, 0);
+
+  /* request and enable interrupt */
+  irqflags = pci_dev_msi_enabled(pdev) ? IRQF_ONESHOT : IRQF_SHARED;
+
+- err = request_threaded_irq(pdev->irq,
++ err = request_threaded_irq(pci_irq_vector(pdev, 0),
+  mei_me_irq_quick_handler,
+  mei_me_irq_thread_handler,
+  irqflags, KBUILD_MODNAME, dev);
+  if (err) {
+  dev_err(&pdev->dev, "request_threaded_irq failure. irq = %d\n",
+-        pdev->irq);
++        pci_irq_vector(pdev, 0));
+  goto end;
+  }
+
+@@ -278,7 +278,7 @@ static int mei_me_probe(struct pci_dev *pdev,
+const struct pci_device_id *ent)
+ release_irq:
+  mei_cancel_work(dev);
+  mei_disable_interrupts(dev);
+- free_irq(pdev->irq, dev);
++ free_irq(pci_irq_vector(pdev, 0), dev);
+ end:
+  dev_err(&pdev->dev, "initialization failed.\n");
+  return err;
+@@ -307,7 +307,7 @@ static void mei_me_shutdown(struct pci_dev *pdev)
+  mei_me_unset_pm_domain(dev);
+
+  mei_disable_interrupts(dev);
+- free_irq(pdev->irq, dev);
++ free_irq(pci_irq_vector(pdev, 0), dev);
+ }
+
+ /**
+@@ -336,7 +336,7 @@ static void mei_me_remove(struct pci_dev *pdev)
+
+  mei_disable_interrupts(dev);
+
+- free_irq(pdev->irq, dev);
++ free_irq(pci_irq_vector(pdev, 0), dev);
+
+  mei_deregister(dev);
+ }
+@@ -356,7 +356,7 @@ static int mei_me_pci_suspend(struct device *device)
+
+  mei_disable_interrupts(dev);
+
+- free_irq(pdev->irq, dev);
++ free_irq(pci_irq_vector(pdev, 0), dev);
+  pci_disable_msi(pdev);
+
+  return 0;
+@@ -378,14 +378,14 @@ static int mei_me_pci_resume(struct device *device)
+  irqflags = pci_dev_msi_enabled(pdev) ? IRQF_ONESHOT : IRQF_SHARED;
+
+  /* request and enable interrupt */
+- err = request_threaded_irq(pdev->irq,
++ err = request_threaded_irq(pci_irq_vector(pdev, 0),
+  mei_me_irq_quick_handler,
+  mei_me_irq_thread_handler,
+  irqflags, KBUILD_MODNAME, dev);
+
+  if (err) {
+  dev_err(&pdev->dev, "request_threaded_irq failed: irq = %d.\n",
+- pdev->irq);
++ pci_irq_vector(pdev, 0));
+  return err;
+  }
 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Karen Sornek
-> Sent: Wednesday, September 29, 2021 6:37 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Sornek, Karen <karen.sornek@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: Add support for
-> VIRTCHNL_VF_OFFLOAD_VLAN_V2
-
-Why is this the same title as the other patch? As this is for the virtchnl file, it should use 'virtchnl:' and reflect what this patch is doing.
-
-> Changes required for iavf patch "Add support for
-> VIRTCHNL_VF_OFFLOAD_VLAN_V2"
-> to work properly.
-
-Please explain what this patch is introducing; more information is needed here.
-
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-> Signed-off-by: Karen Sornek <karen.sornek@intel.com>
-> ---
->  include/linux/avf/virtchnl.h | 330
-> +++++++++++++++++++++++++++++++++++
->  1 file changed, 330 insertions(+)
-> 
-> diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h index
-
+Thanks
+barry
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
