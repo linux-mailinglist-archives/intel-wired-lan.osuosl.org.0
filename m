@@ -1,58 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA862423DB1
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Oct 2021 14:24:00 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87DA5424596
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Oct 2021 20:05:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DD36583F60;
-	Wed,  6 Oct 2021 12:23:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2061E83E30;
+	Wed,  6 Oct 2021 18:05:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qrAoT75tgM4K; Wed,  6 Oct 2021 12:23:58 +0000 (UTC)
+	with ESMTP id WzWi3wfLWI8D; Wed,  6 Oct 2021 18:05:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CF57C83E85;
-	Wed,  6 Oct 2021 12:23:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3078783CF4;
+	Wed,  6 Oct 2021 18:05:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 30F171BF42C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 12:23:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6413F1BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1DBD040163
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 12:23:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5FB1460EFF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aTaaQt4fq_wh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Oct 2021 12:23:52 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id w_SuZvz_MP5H for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Oct 2021 18:05:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0E09E40100
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 12:23:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10128"; a="206790697"
-X-IronPort-AV: E=Sophos;i="5.85,350,1624345200"; d="scan'208";a="206790697"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Oct 2021 05:23:51 -0700
-X-IronPort-AV: E=Sophos;i="5.85,350,1624345200"; d="scan'208";a="478099426"
-Received: from krausnex-mobl.ger.corp.intel.com (HELO [10.12.48.165])
- ([10.12.48.165])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Oct 2021 05:23:50 -0700
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20210922065449.3780338-1-sasha.neftin@intel.com>
-From: "Kraus, NechamaX" <nechamax.kraus@linux.intel.com>
-Message-ID: <1945444a-ed8a-d230-1334-3c2485ea2f94@linux.intel.com>
-Date: Wed, 6 Oct 2021 15:23:48 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5DC6260EFC
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:03 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 60CA661037;
+ Wed,  6 Oct 2021 18:05:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1633543503;
+ bh=mphWiOSjWVve4063iT9iLB+Ae/xfjYf+gdyYkUHB2/Y=;
+ h=Date:From:To:Cc:Subject:From;
+ b=e9HZWeueYaTquf0esaeqBWa+qbUPx9RRyl1y3/SlMhT0F4LiGEEpruzhqsIcVOExJ
+ Il5t2TN7bFbTG3YnDOEQA9+MCerGxYNZ0uZvYHehxgKy5syHlbYsfqhdaL67Nn0F9k
+ 8SLgZoM2/uewdLe3CLgkzhuN8aL16jj2x9Y/SjeugZQxhxTDGER6SSRg3q8nM41Bfn
+ 7BnIz/5DAGCpJo/QvWxZ5cmQ/mfAGvlBSNZOAfxHBvqPZOJz0lbxl6VkWlqC99gz6e
+ UillWofcVuceyoH5OSO4cqbX4S+8sG6w3uX1L207aLtgyvwVF4fLR6uQaBUL+v6KHq
+ 082UUeqLM0iXA==
+Date: Wed, 6 Oct 2021 13:09:08 -0500
+From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20211006180908.GA913430@embeddedor>
 MIME-Version: 1.0
-In-Reply-To: <20210922065449.3780338-1-sasha.neftin@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/2] e1000e: Separate TGP board
- type from SPT
+Content-Disposition: inline
+Subject: [Intel-wired-lan] [PATCH][next] ice: use devm_kcalloc() instead of
+ devm_kzalloc()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,26 +67,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Cc: linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/22/2021 09:54, Sasha Neftin wrote:
-> We have a same LAN controller on different PCH.
-> Separate TGP board type from SPT will alllow apply specific fixes
-> for TGP platforms.
-> 
-> Suggested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/e1000.h   |  4 +-
->   drivers/net/ethernet/intel/e1000e/ich8lan.c | 20 +++++++++
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 45 +++++++++++----------
->   3 files changed, 46 insertions(+), 23 deletions(-)
-> 
-Tested-by: Nechama Kraus <nechamax.kraus@linux.intel.com>
+Use 2-factor multiplication argument form devm_kcalloc() instead
+of devm_kzalloc().
+
+Link: https://github.com/KSPP/linux/issues/162
+Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c | 4 ++--
+ drivers/net/ethernet/intel/ice/ice_txrx.c         | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+index 16de603b280c..38960bcc384c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+@@ -706,7 +706,7 @@ ice_create_init_fdir_rule(struct ice_pf *pf, enum ice_fltr_ptype flow)
+ 	if (!seg)
+ 		return -ENOMEM;
+ 
+-	tun_seg = devm_kzalloc(dev, sizeof(*seg) * ICE_FD_HW_SEG_MAX,
++	tun_seg = devm_kcalloc(dev, sizeof(*seg), ICE_FD_HW_SEG_MAX,
+ 			       GFP_KERNEL);
+ 	if (!tun_seg) {
+ 		devm_kfree(dev, seg);
+@@ -1068,7 +1068,7 @@ ice_cfg_fdir_xtrct_seq(struct ice_pf *pf, struct ethtool_rx_flow_spec *fsp,
+ 	if (!seg)
+ 		return -ENOMEM;
+ 
+-	tun_seg = devm_kzalloc(dev, sizeof(*seg) * ICE_FD_HW_SEG_MAX,
++	tun_seg = devm_kcalloc(dev, sizeof(*seg), ICE_FD_HW_SEG_MAX,
+ 			       GFP_KERNEL);
+ 	if (!tun_seg) {
+ 		devm_kfree(dev, seg);
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 13b2bdc25b0d..fd10f8548feb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -340,7 +340,7 @@ int ice_setup_tx_ring(struct ice_ring *tx_ring)
+ 	/* warn if we are about to overwrite the pointer */
+ 	WARN_ON(tx_ring->tx_buf);
+ 	tx_ring->tx_buf =
+-		devm_kzalloc(dev, sizeof(*tx_ring->tx_buf) * tx_ring->count,
++		devm_kcalloc(dev, sizeof(*tx_ring->tx_buf), tx_ring->count,
+ 			     GFP_KERNEL);
+ 	if (!tx_ring->tx_buf)
+ 		return -ENOMEM;
+@@ -464,7 +464,7 @@ int ice_setup_rx_ring(struct ice_ring *rx_ring)
+ 	/* warn if we are about to overwrite the pointer */
+ 	WARN_ON(rx_ring->rx_buf);
+ 	rx_ring->rx_buf =
+-		devm_kzalloc(dev, sizeof(*rx_ring->rx_buf) * rx_ring->count,
++		devm_kcalloc(dev, sizeof(*rx_ring->rx_buf), rx_ring->count,
+ 			     GFP_KERNEL);
+ 	if (!rx_ring->rx_buf)
+ 		return -ENOMEM;
+-- 
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
