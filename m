@@ -1,54 +1,158 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1631425FB9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Oct 2021 00:16:36 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFC0F426091
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Oct 2021 01:39:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6AD3E40207;
-	Thu,  7 Oct 2021 22:16:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 02372842CA;
+	Thu,  7 Oct 2021 23:39:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3HFqqkVz9k-d; Thu,  7 Oct 2021 22:16:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 90ktQCqMZsmq; Thu,  7 Oct 2021 23:39:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3F567400E5;
-	Thu,  7 Oct 2021 22:16:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BCDE2842AE;
+	Thu,  7 Oct 2021 23:39:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6A6671BF368
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 22:16:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D3B481BF321
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 23:38:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 591B26080B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 22:16:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CBB29842AE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 23:38:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vVS6WiW5euoO for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Oct 2021 22:16:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hbmhkJmX8_Sc for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Oct 2021 23:38:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AEACD60796
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 22:16:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="226331564"
-X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; d="scan'208";a="226331564"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Oct 2021 15:16:24 -0700
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C812480BE9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 23:38:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="289892366"
+X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; d="scan'208";a="289892366"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Oct 2021 16:38:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; d="scan'208";a="590327190"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.133])
- by orsmga004.jf.intel.com with ESMTP; 07 Oct 2021 15:16:23 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  7 Oct 2021 15:01:27 -0700
-Message-Id: <20211007220127.70514-8-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20211007220127.70514-1-anthony.l.nguyen@intel.com>
-References: <20211007220127.70514-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.85,355,1624345200"; d="scan'208";a="522780909"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga001.jf.intel.com with ESMTP; 07 Oct 2021 16:38:54 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Thu, 7 Oct 2021 16:38:54 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Thu, 7 Oct 2021 16:38:54 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Thu, 7 Oct 2021 16:38:53 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EN8HxDhAoRgDuhlk5DZM8fHf+WOvH6qDrRHu0aj8aikmaXj2ISiWcBqC9Z7/32AI5YxQ7XqnlUO7bqUu3SvMl32bvmAclDszr1HlX0AEdwVemBhRLXRGDAmO8G9AI6/H1P4+PW7jXnQBRYdAqtb0lIyoL7x0u34/IaDDpeXyBuWNcn2282fD5yt2ZXJoR3zwKD3b3uebCf0VD/zdR2GRiMldKR+bJBsKMjUoZRyl96oi/AEOKUqyppogb8y9CPPYeTR1fbg831YlDkJJsd66HwM1Fs6Eu309AeaMUwQESu2iHbiobo0Q4kxBoRZMbRyo5mDj8Oiks5LnGx0Wxe5Zrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yY6lSajakksGoin4xhIZBxZvytNs50JsAXoiFWo57Do=;
+ b=WJiNFRif3MC5Kjwd0gKd20/ygmSRm6DXtAyVbYJHL6h5E78FutLj7bFbNpmpwrTonFWsN47ytdKiacSEDX7syVqdEg9poeWR7drwkHvenRpKZRD+0OLU5RAr41wPIluAO1R3CLpwKwXVdcsC7+lphLVRPEEU/kET6syihJKaNGlyLp0CoUSWBEJgDfA+nRiiBSnGm0V22v8iNLh1ezBupsa4z+li/cw8ExTGMqB3gfroZiyIsaCG42ynSr4W5VGLxbSv8a/ReOoiYo45fNyXJ+VR5rQQx6IwJiJQUNvDYigBR9ovvQwTheYVI90XIczVPx3THxutisDt19yJ9wKYdQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yY6lSajakksGoin4xhIZBxZvytNs50JsAXoiFWo57Do=;
+ b=QutoKLvYZTpfRKw2ar088XC6Zu0CtBA0S5YhttnRP8avft8sNj79Hd8zq9/mBiGGiZnX5HLOLH+kztPtmHlYs+PU/HMhaXjEuY66CyRrf9HZ86IGmCN1RKWNzlrxxPAMKgDVD2wyzjqVFSd2ep35vEdBDEhF+pZUs6gvh4+z3Vc=
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SN6PR11MB3136.namprd11.prod.outlook.com (2603:10b6:805:da::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.22; Thu, 7 Oct
+ 2021 23:38:51 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::d0d5:c84e:41b8:a9e4]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::d0d5:c84e:41b8:a9e4%3]) with mapi id 15.20.4587.020; Thu, 7 Oct 2021
+ 23:38:51 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Maloszewski, Michal" <michal.maloszewski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan
+ strip virtual channel messages
+Thread-Index: AQHXu3rG+hAdghphAkuWC2iK4UTUkqvIMXeA
+Date: Thu, 7 Oct 2021 23:38:50 +0000
+Message-ID: <5806d8bccb949333e39f432bf162956d9797ff5f.camel@intel.com>
+References: <20211007125611.50277-1-michal.maloszewski@intel.com>
+In-Reply-To: <20211007125611.50277-1-michal.maloszewski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.40.4 (3.40.4-1.fc34) 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7e275bb5-7e03-4e3b-c9f8-08d989eb9df5
+x-ms-traffictypediagnostic: SN6PR11MB3136:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SN6PR11MB313655799EF73DE6C04320C0C6B19@SN6PR11MB3136.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: CtIsWqqbwx4H+i66DAGCJqaBxkh2D5638NJESjPbyqV+B3Alb7hTyrBOLMdx3tT6TPslqt34GNeUn3u/5541apM74qOzjGaUVHFKiBHcYQ28OpqskH1Aabhpp57ogIWey3m8kYn31UB/Tvcmr2bdFos7Za5DYCcBCVby0ZPNNa/NX01AKBgKp0y7xjDVDB/0RuGPHe96JAGJzX3rXRQTheB1bCTCaADagooKa0Xo8Ns0lhhN1d2IvNBsvYF9MFOu2pzVwPpGHQzdc22LdQLyft3SZ3n8o8WNirmYFUkVTyurtS3Mnyh7fVbvyribTr3dtMnpYwTu0D3hZPYo4vFokR9V+lxRk7G9cKQezI8eCWuYSYXPPNLjdd0tp/Z6Hs635h1tYkBBQv/lrWjmt1ciMUKRI4wXO+1+CFzTnYwCL1UzAzF6tue44x46ssREbadGWBKZzXS7PMGALrWacvdaBXSG+OUP3upvtggvnm805EC+/8Y2Jj8GcMBu3aKfrJoEGlfwHZFFzVfpxkFTh+W7uRYZ5hw3dWWMsOOTFsei3Hr33DTeTMvdHLfMAgxrpAdC0mN0g0dHLstOK2e9/kegQqWeviyu/DxMIuyz6wCimJ74pxWhaT+dNX1SQesrEdNI1XmeCaviceUPMyRBz6Aw2OIkSgLOBVm4vsd0Nb4BZvRbyeqTKpteUA03ipBKZGNHijReaWcFfTQIPbbYXCJEORr3XtkVmtPWZctzsK+duPmD244N43smWaT1T1PTqoR/HWM5RDZbMbNR4Lo1YEhaITEbYebqTFuRBAN7TkaRKbPHI+RHBfpXxmHUKUzxogVKrgX2wiyeU7wgychthv25zw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(36756003)(8676002)(91956017)(6512007)(2616005)(5660300002)(26005)(64756008)(71200400001)(186003)(66446008)(66476007)(66556008)(316002)(66946007)(4326008)(76116006)(107886003)(83380400001)(6486002)(2906002)(38070700005)(8936002)(38100700002)(122000001)(966005)(15650500001)(110136005)(508600001)(86362001)(6506007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?amRRN1JxUTFKY1F4M3gxbitheEhUUG4vL1RpUno0UkJOZkxVUWY1Nk8xc2o2?=
+ =?utf-8?B?UU5QU3B5dGNpVktldGZCY0QyNi9SUFlRMEFLOGhWRjE3T3o1dkptdlMxUHNY?=
+ =?utf-8?B?Q3R1cFRwSElhZTVNVE1Sc0t4NlliSVlsRkN6Q3lUcG5BV0dUOUZkY25XcTZT?=
+ =?utf-8?B?UlUxcEM3WFZrMFNBQ3REaEJTMWdQVVFidWYvc3hXUUpyamZaSjRpSWNaeW5U?=
+ =?utf-8?B?QjcyYXZyRzhMeFErcllzbTRkYTVzRjNOVUJmb29aME1HU1Zoa2YzOXh3dmRZ?=
+ =?utf-8?B?T2JWckpPTnpEaDBrNk1yQVhMSGNERGc4dXpBM3pTUTJwQlZ5UHhBU05HM21u?=
+ =?utf-8?B?aWI4TE9mZFV1b2hpL2JsNmNxajNWbmtnYVZ0TjVrTDZ0OWZ5cXRUTUFWNEJz?=
+ =?utf-8?B?cGw3dExBM085ZzRWbmpHK3JZbG5Rb082dCs5R2Qrb3FGMkYra3l0SlRBUjY3?=
+ =?utf-8?B?SGNXVUNsMmQ0ZUN0UjFKNi9XRGlYWTFhVmpVNHpYVzlHenNoVGlFSFZGYmZI?=
+ =?utf-8?B?cFlxcFc5NTZzR0UvWUcveS9PVFgxSXhJN0dKM0wxTWRTRDBGMVZ2eWNmeHd0?=
+ =?utf-8?B?T3A0eHJaVDhlU0lDZFVSNGQvYkY5bmx1NCtMalB2WXV3M0FGQmIyTVhTdG40?=
+ =?utf-8?B?WFpXQmt5ZzlSUUVoRlRVZ3diYnY2UFo2dVg5cWt6WEQ0bDcrZVBCMHp0aDRw?=
+ =?utf-8?B?WWlQTEorOTlUUnNGVStrSnZXVUE3eTQ3dXMzU2dMZnNqK0lsQkU1VTJvSytK?=
+ =?utf-8?B?Y090YjlxVWRWaFdKbm9KYkI2ZTZFczB6TEZiSWpQbVZoa3N3dUp6dDlaS2Rj?=
+ =?utf-8?B?VmRMRnNVRGxkbktGUXdjRzNBQzRkY2RNeldyNEk0aUxjMU1PYmhpSm0xUEFz?=
+ =?utf-8?B?MERwek1wL3VrdEVKZ0REMFlnblRkZHFnMXEzcE9iejNmNmtVUzNpMW4zZTdy?=
+ =?utf-8?B?bmtVeWdwc0RUOGVZeWVUdHI2RndnNFBueU11K0g2cDNEWTUvU1haSG5ISit4?=
+ =?utf-8?B?M1JKMUVOQmdEV3BBaTkyT0ppTks4TVk4MVc4dnVQbE81Vk12Zk1kRi9HV1RE?=
+ =?utf-8?B?N1o3U1dEYXpmTldDM09Vc1pFeTVHSWVCUkE2WmQrMThJdEJ1UmFwZlZ2ckxy?=
+ =?utf-8?B?SndZUTBxM2t5eC8xWWwybE5YVTQvaUtzUzhtY2ZTTmpvYmZkQ3VYQlVmWjdy?=
+ =?utf-8?B?Vm50TnJGdUllVE4wWjdtWjY5NTYvWi9iVCszanFUa0xsWElSSWhYZ0EySisy?=
+ =?utf-8?B?elh6MXJWQlhWTmQwTjBEYmhNRnV6eFVkQTc4Zll3VitYbStUNHZrOXByOTNL?=
+ =?utf-8?B?M3lTVEdJcUtrMzk5bjQvaXk2UWFnUlZCN2RBUmNSZWJsUFN3d01rdHNTY3RM?=
+ =?utf-8?B?RlVoc2tYY3plWXdOUUFVVXBiOWFVUFVUSDV1RGFhZ084c3BLb3NVUjFYRjBH?=
+ =?utf-8?B?ZUFYMlBaQW1xVExNS0NCNnc4bG5PUDBFQVJHeTZUL0JSaHdlMWEwSURTOHZL?=
+ =?utf-8?B?a1ViNlB2c0pFVVBQMDFZRE9oV2htYThlbEtZRzl0L2V2cmt1NUZDTGZxOThD?=
+ =?utf-8?B?cXFRcEE2VEwxd0hwMU9CNmNDNFVhZmRNZ1dPZ1k4M3RnYU5vZG0vME1CSTFK?=
+ =?utf-8?B?UWlsMGhhalFPVFVsQzhLSHFQNXFmbkZuOTVycENIZXl2MTRYK1VDVWlRazdY?=
+ =?utf-8?B?UTYyNHFPMUdzRlJzYXltY1R0TVgxOTNJekVIdHorM1dVazFJM1grbDZ3d2wr?=
+ =?utf-8?Q?cddOcCk0j0YNzUaDMM98y8zkFd6e3N96pwEzsxV?=
+Content-ID: <613D33F5F690FD4F80253D9A137A04F0@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 7/7] ice: Propagate error codes
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7e275bb5-7e03-4e3b-c9f8-08d989eb9df5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Oct 2021 23:38:50.9297 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: iF/dLsm8DcnIkP+OCg1e5f8nOHRIQk0Yk+/szErCKrqOumqUDoQTLqEWIAE/JqpAnGiC8gH31F9IMflJhsN/4nXoS7U2bceR7UuBnuiKwPk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3136
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan
+ strip virtual channel messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,633 +165,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Ciosek, NorbertX" <norbertx.ciosek@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As all functions now return Linux error codes, propagate the values being
-returned instead of converting them to more generic values.
-
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c     |  4 +-
- drivers/net/ethernet/intel/ice/ice_devlink.c  | 13 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c  | 37 ++++-------
- drivers/net/ethernet/intel/ice/ice_lib.c      | 23 +++----
- drivers/net/ethernet/intel/ice/ice_main.c     | 63 ++++++-------------
- drivers/net/ethernet/intel/ice/ice_tc_lib.c   |  1 -
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  4 +-
- 7 files changed, 48 insertions(+), 97 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index b7869c510cba..5cfc36b5572b 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -791,7 +791,7 @@ ice_vsi_cfg_txq(struct ice_vsi *vsi, struct ice_tx_ring *ring,
- 	if (status) {
- 		dev_err(ice_pf_to_dev(pf), "Failed to set LAN Tx queue context, error: %d\n",
- 			status);
--		return -ENODEV;
-+		return status;
- 	}
- 
- 	/* Add Tx Queue TEID into the VSI Tx ring from the
-@@ -949,7 +949,7 @@ ice_vsi_stop_tx_ring(struct ice_vsi *vsi, enum ice_disq_rst_src rst_src,
- 	} else if (status) {
- 		dev_dbg(ice_pf_to_dev(vsi->back), "Failed to disable LAN Tx queues, error: %d\n",
- 			status);
--		return -ENODEV;
-+		return status;
- 	}
- 
- 	return 0;
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 3b50d1f6d18d..d48ff08c3e92 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -270,7 +270,6 @@ static int ice_devlink_info_get(struct devlink *devlink,
- 		dev_dbg(dev, "Failed to discover device capabilities, status %d aq_err %s\n",
- 			err, ice_aq_str(hw->adminq.sq_last_status));
- 		NL_SET_ERR_MSG_MOD(extack, "Unable to discover device capabilities");
--		err = -EIO;
- 		goto out_free_ctx;
- 	}
- 
-@@ -421,7 +420,7 @@ ice_devlink_reload_down(struct devlink *devlink, bool netns_change,
- 			dev_err(dev, "Failed to trigger EMP device reset to reload firmware, err %d aq_err %s\n",
- 				err, ice_aq_str(hw->adminq.sq_last_status));
- 			NL_SET_ERR_MSG_MOD(extack, "Failed to trigger EMP device reset to reload firmware");
--			return -EIO;
-+			return err;
- 		}
- 
- 		break;
-@@ -797,7 +796,7 @@ static int ice_devlink_nvm_snapshot(struct devlink *devlink,
- 			status, hw->adminq.sq_last_status);
- 		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire NVM semaphore");
- 		vfree(nvm_data);
--		return -EIO;
-+		return status;
- 	}
- 
- 	status = ice_read_flat_nvm(hw, 0, &nvm_size, nvm_data, false);
-@@ -807,7 +806,7 @@ static int ice_devlink_nvm_snapshot(struct devlink *devlink,
- 		NL_SET_ERR_MSG_MOD(extack, "Failed to read NVM contents");
- 		ice_release_nvm(hw);
- 		vfree(nvm_data);
--		return -EIO;
-+		return status;
- 	}
- 
- 	ice_release_nvm(hw);
-@@ -855,7 +854,7 @@ ice_devlink_sram_snapshot(struct devlink *devlink,
- 			status, hw->adminq.sq_last_status);
- 		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire NVM semaphore");
- 		vfree(sram_data);
--		return -EIO;
-+		return status;
- 	}
- 
- 	/* Read from the Shadow RAM, rather than directly from NVM */
-@@ -867,7 +866,7 @@ ice_devlink_sram_snapshot(struct devlink *devlink,
- 				   "Failed to read Shadow RAM contents");
- 		ice_release_nvm(hw);
- 		vfree(sram_data);
--		return -EIO;
-+		return status;
- 	}
- 
- 	ice_release_nvm(hw);
-@@ -913,7 +912,7 @@ ice_devlink_devcaps_snapshot(struct devlink *devlink,
- 			status, hw->adminq.sq_last_status);
- 		NL_SET_ERR_MSG_MOD(extack, "Failed to read device capabilities");
- 		vfree(devcaps);
--		return -EIO;
-+		return status;
- 	}
- 
- 	*data = (u8 *)devcaps;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index e54775aab31c..f6c4c476b62d 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -298,7 +298,6 @@ ice_get_eeprom(struct net_device *netdev, struct ethtool_eeprom *eeprom,
- 	if (ret) {
- 		dev_err(dev, "ice_acquire_nvm failed, err %d aq_err %s\n",
- 			ret, ice_aq_str(hw->adminq.sq_last_status));
--		ret = -EIO;
- 		goto out;
- 	}
- 
-@@ -307,7 +306,6 @@ ice_get_eeprom(struct net_device *netdev, struct ethtool_eeprom *eeprom,
- 	if (ret) {
- 		dev_err(dev, "ice_read_flat_nvm failed, err %d aq_err %s\n",
- 			ret, ice_aq_str(hw->adminq.sq_last_status));
--		ret = -EIO;
- 		goto release;
- 	}
- 
-@@ -1080,10 +1078,8 @@ ice_get_fecparam(struct net_device *netdev, struct ethtool_fecparam *fecparam)
- 
- 	err = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP_MEDIA,
- 				  caps, NULL);
--	if (err) {
--		err = -EAGAIN;
-+	if (err)
- 		goto done;
--	}
- 
- 	/* Set supported/configured FEC modes based on PHY capability */
- 	if (caps->caps & ICE_AQC_PHY_EN_AUTO_FEC)
-@@ -1985,10 +1981,8 @@ ice_get_link_ksettings(struct net_device *netdev,
- 
- 	err = ice_aq_get_phy_caps(vsi->port_info, false,
- 				  ICE_AQC_REPORT_ACTIVE_CFG, caps, NULL);
--	if (err) {
--		err = -EIO;
-+	if (err)
- 		goto done;
--	}
- 
- 	/* Set the advertised flow control based on the PHY capability */
- 	if ((caps->caps & ICE_AQC_PHY_EN_TX_LINK_PAUSE) &&
-@@ -2022,10 +2016,8 @@ ice_get_link_ksettings(struct net_device *netdev,
- 
- 	err = ice_aq_get_phy_caps(vsi->port_info, false,
- 				  ICE_AQC_REPORT_TOPO_CAP_MEDIA, caps, NULL);
--	if (err) {
--		err = -EIO;
-+	if (err)
- 		goto done;
--	}
- 
- 	/* Set supported FEC modes based on PHY capability */
- 	ethtool_link_ksettings_add_link_mode(ks, supported, FEC_NONE);
-@@ -2231,10 +2223,8 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	else
- 		err = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP_MEDIA,
- 					  phy_caps, NULL);
--	if (err) {
--		err = -EIO;
-+	if (err)
- 		goto done;
--	}
- 
- 	/* save autoneg out of ksettings */
- 	autoneg = copy_ks.base.autoneg;
-@@ -2301,10 +2291,8 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	/* Call to get the current link speed */
- 	pi->phy.get_link_info = true;
- 	err = ice_get_link_status(pi, &linkup);
--	if (err) {
--		err = -EIO;
-+	if (err)
- 		goto done;
--	}
- 
- 	curr_link_speed = pi->phy.link_info.link_speed;
- 	adv_link_speed = ice_ksettings_find_adv_link_speed(ks);
-@@ -2376,7 +2364,6 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	err = ice_aq_set_phy_cfg(&pf->hw, pi, &config, NULL);
- 	if (err) {
- 		netdev_info(netdev, "Set phy config failed,\n");
--		err = -EIO;
- 		goto done;
- 	}
- 
-@@ -2544,7 +2531,7 @@ ice_set_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
- 	if (status) {
- 		dev_dbg(dev, "ice_add_rss_cfg failed, vsi num = %d, error = %d\n",
- 			vsi->vsi_num, status);
--		return -EINVAL;
-+		return status;
- 	}
- 
- 	return 0;
-@@ -3024,7 +3011,7 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
- 				  NULL);
- 	if (err) {
- 		kfree(pcaps);
--		return -EIO;
-+		return err;
- 	}
- 
- 	is_an = ice_is_phy_caps_an_enabled(pcaps) ? AUTONEG_ENABLE :
-@@ -3863,7 +3850,7 @@ ice_get_module_info(struct net_device *netdev,
- 	status = ice_aq_sff_eeprom(hw, 0, ICE_I2C_EEPROM_DEV_ADDR, 0x00, 0x00,
- 				   0, &value, 1, 0, NULL);
- 	if (status)
--		return -EIO;
-+		return status;
- 
- 	switch (value) {
- 	case ICE_MODULE_TYPE_SFP:
-@@ -3871,12 +3858,12 @@ ice_get_module_info(struct net_device *netdev,
- 					   ICE_MODULE_SFF_8472_COMP, 0x00, 0,
- 					   &sff8472_comp, 1, 0, NULL);
- 		if (status)
--			return -EIO;
-+			return status;
- 		status = ice_aq_sff_eeprom(hw, 0, ICE_I2C_EEPROM_DEV_ADDR,
- 					   ICE_MODULE_SFF_8472_SWAP, 0x00, 0,
- 					   &sff8472_swap, 1, 0, NULL);
- 		if (status)
--			return -EIO;
-+			return status;
- 
- 		if (sff8472_swap & ICE_MODULE_SFF_ADDR_MODE) {
- 			modinfo->type = ETH_MODULE_SFF_8079;
-@@ -3896,7 +3883,7 @@ ice_get_module_info(struct net_device *netdev,
- 					   ICE_MODULE_REVISION_ADDR, 0x00, 0,
- 					   &sff8636_rev, 1, 0, NULL);
- 		if (status)
--			return -EIO;
-+			return status;
- 		/* Check revision compliance */
- 		if (sff8636_rev > 0x02) {
- 			/* Module is SFF-8636 compliant */
-@@ -3943,7 +3930,7 @@ ice_get_module_eeprom(struct net_device *netdev,
- 	status = ice_aq_sff_eeprom(hw, 0, addr, offset, page, 0, value, 1, 0,
- 				   NULL);
- 	if (status)
--		return -EIO;
-+		return status;
- 
- 	if (value[0] == ICE_MODULE_TYPE_SFP)
- 		is_sfp = true;
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index c98c4e1050e3..afd04f7f7caa 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1670,16 +1670,14 @@ int ice_vsi_kill_vlan(struct ice_vsi *vsi, u16 vid)
- 	dev = ice_pf_to_dev(pf);
- 
- 	err = ice_fltr_remove_vlan(vsi, vid, ICE_FWD_TO_VSI);
--	if (!err) {
-+	if (!err)
- 		vsi->num_vlan--;
--	} else if (err == -ENOENT) {
-+	else if (err == -ENOENT)
- 		dev_dbg(dev, "Failed to remove VLAN %d on VSI %i, it does not exist, error: %d\n",
- 			vid, vsi->vsi_num, err);
--	} else {
-+	else
- 		dev_err(dev, "Error removing VLAN %d on vsi %i error: %d\n",
- 			vid, vsi->vsi_num, err);
--		err = -EIO;
--	}
- 
- 	return err;
- }
-@@ -2040,7 +2038,6 @@ int ice_vsi_manage_vlan_insertion(struct ice_vsi *vsi)
- 	if (ret) {
- 		dev_err(ice_pf_to_dev(vsi->back), "update VSI for VLAN insert failed, err %d aq_err %s\n",
- 			ret, ice_aq_str(hw->adminq.sq_last_status));
--		ret = -EIO;
- 		goto out;
- 	}
- 
-@@ -3411,7 +3408,6 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- 	ret = ice_update_vsi(&pf->hw, vsi->idx, ctx, NULL);
- 	if (ret) {
- 		dev_info(dev, "Failed VSI Update\n");
--		ret = -EIO;
- 		goto out;
- 	}
- 
-@@ -3421,7 +3417,6 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- 	if (ret) {
- 		dev_err(dev, "VSI %d failed TC config, error %d\n",
- 			vsi->vsi_num, ret);
--		ret = -EIO;
- 		goto out;
- 	}
- 	ice_vsi_update_q_map(vsi, ctx);
-@@ -3541,7 +3536,7 @@ int ice_set_dflt_vsi(struct ice_sw *sw, struct ice_vsi *vsi)
- 	if (status) {
- 		dev_err(dev, "Failed to set VSI %d as the default forwarding VSI, error %d\n",
- 			vsi->vsi_num, status);
--		return -EIO;
-+		return status;
- 	}
- 
- 	sw->dflt_vsi = vsi;
-@@ -3680,7 +3675,7 @@ int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate)
- 			dev_err(dev, "failed to set min Tx rate(%llu Kbps) for %s %d\n",
- 				min_tx_rate, ice_vsi_type_str(vsi->type),
- 				vsi->idx);
--			return -EIO;
-+			return status;
- 		}
- 
- 		dev_dbg(dev, "set min Tx rate(%llu Kbps) for %s\n",
-@@ -3692,7 +3687,7 @@ int ice_set_min_bw_limit(struct ice_vsi *vsi, u64 min_tx_rate)
- 		if (status) {
- 			dev_err(dev, "failed to clear min Tx rate configuration for %s %d\n",
- 				ice_vsi_type_str(vsi->type), vsi->idx);
--			return -EIO;
-+			return status;
- 		}
- 
- 		dev_dbg(dev, "cleared min Tx rate configuration for %s %d\n",
-@@ -3741,7 +3736,7 @@ int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate)
- 			dev_err(dev, "failed setting max Tx rate(%llu Kbps) for %s %d\n",
- 				max_tx_rate, ice_vsi_type_str(vsi->type),
- 				vsi->idx);
--			return -EIO;
-+			return status;
- 		}
- 
- 		dev_dbg(dev, "set max Tx rate(%llu Kbps) for %s %d\n",
-@@ -3753,7 +3748,7 @@ int ice_set_max_bw_limit(struct ice_vsi *vsi, u64 max_tx_rate)
- 		if (status) {
- 			dev_err(dev, "failed clearing max Tx rate configuration for %s %d\n",
- 				ice_vsi_type_str(vsi->type), vsi->idx);
--			return -EIO;
-+			return status;
- 		}
- 
- 		dev_dbg(dev, "cleared max Tx rate configuration for %s %d\n",
-@@ -3794,7 +3789,7 @@ int ice_set_link(struct ice_vsi *vsi, bool ena)
- 		dev_err(dev, "can't set link to %s, err %d aq_err %s\n",
- 			(ena ? "ON" : "OFF"), status,
- 			ice_aq_str(hw->adminq.sq_last_status));
--		return -EIO;
-+		return status;
- 	}
- 
- 	return 0;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 9336e3d701ad..e4cfbcfa87c9 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -152,7 +152,7 @@ static int ice_init_mac_fltr(struct ice_pf *pf)
- 	perm_addr = vsi->port_info->mac.perm_addr;
- 	status = ice_fltr_add_mac_and_broadcast(vsi, perm_addr, ICE_FWD_TO_VSI);
- 	if (status)
--		return -EIO;
-+		return status;
- 
- 	return 0;
- }
-@@ -240,10 +240,7 @@ static int ice_set_promisc(struct ice_vsi *vsi, u8 promisc_m)
- 	else
- 		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m, 0);
- 
--	if (status)
--		return -EIO;
--
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -264,10 +261,7 @@ static int ice_clear_promisc(struct ice_vsi *vsi, u8 promisc_m)
- 	else
- 		status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m, 0);
- 
--	if (status)
--		return -EIO;
--
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -344,7 +338,6 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
- 			netdev_warn(netdev, "Reached MAC filter limit, forcing promisc mode on VSI %d\n",
- 				    vsi->vsi_num);
- 		} else {
--			err = -EIO;
- 			goto out;
- 		}
- 	}
-@@ -1843,7 +1836,6 @@ static int ice_init_nvm_phy_type(struct ice_port_info *pi)
- 
- 	if (err) {
- 		dev_err(ice_pf_to_dev(pf), "Get PHY capability failed.\n");
--		err = -EIO;
- 		goto out;
- 	}
- 
-@@ -1959,7 +1951,6 @@ static int ice_init_phy_user_cfg(struct ice_port_info *pi)
- 					  pcaps, NULL);
- 	if (err) {
- 		dev_err(ice_pf_to_dev(pf), "Get PHY capability failed.\n");
--		err = -EIO;
- 		goto err_out;
- 	}
- 
-@@ -2038,7 +2029,6 @@ static int ice_configure_phy(struct ice_vsi *vsi)
- 	if (err) {
- 		dev_err(dev, "Failed to get PHY configuration, VSI %d error %d\n",
- 			vsi->vsi_num, err);
--		err = -EIO;
- 		goto done;
- 	}
- 
-@@ -2060,7 +2050,6 @@ static int ice_configure_phy(struct ice_vsi *vsi)
- 	if (err) {
- 		dev_err(dev, "Failed to get PHY caps, VSI %d error %d\n",
- 			vsi->vsi_num, err);
--		err = -EIO;
- 		goto done;
- 	}
- 
-@@ -2114,11 +2103,9 @@ static int ice_configure_phy(struct ice_vsi *vsi)
- 	cfg->caps |= ICE_AQ_PHY_ENA_AUTO_LINK_UPDT | ICE_AQ_PHY_ENA_LINK;
- 
- 	err = ice_aq_set_phy_cfg(&pf->hw, pi, cfg, NULL);
--	if (err) {
-+	if (err)
- 		dev_err(dev, "Failed to set phy config, VSI %d error %d\n",
- 			vsi->vsi_num, err);
--		err = -EIO;
--	}
- 
- 	kfree(cfg);
- done:
-@@ -3412,10 +3399,8 @@ static int ice_setup_pf_sw(struct ice_pf *pf)
- 		return -ENOMEM;
- 
- 	status = ice_cfg_netdev(vsi);
--	if (status) {
--		status = -ENODEV;
-+	if (status)
- 		goto unroll_vsi_setup;
--	}
- 	/* netdev has to be configured before setting frame size */
- 	ice_vsi_cfg_frame_size(vsi);
- 
-@@ -3432,7 +3417,6 @@ static int ice_setup_pf_sw(struct ice_pf *pf)
- 	if (status) {
- 		dev_err(ice_pf_to_dev(pf), "Failed to set CPU Rx map VSI %d error %d\n",
- 			vsi->vsi_num, status);
--		status = -EINVAL;
- 		goto unroll_napi_add;
- 	}
- 	status = ice_init_mac_fltr(pf);
-@@ -5339,13 +5323,11 @@ ice_set_tx_maxrate(struct net_device *netdev, int queue_index, u32 maxrate)
- 	else
- 		status = ice_cfg_q_bw_lmt(vsi->port_info, vsi->idx, tc,
- 					  q_handle, ICE_MAX_BW, maxrate * 1000);
--	if (status) {
-+	if (status)
- 		netdev_err(netdev, "Unable to set Tx max rate, error %d\n",
- 			   status);
--		return -EIO;
--	}
- 
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -6375,7 +6357,7 @@ static int ice_vsi_rebuild_by_type(struct ice_pf *pf, enum ice_vsi_type type)
- 		if (err) {
- 			dev_err(dev, "replay VSI failed, error %d, VSI index %d, type %s\n",
- 				err, vsi->idx, ice_vsi_type_str(type));
--			return -EIO;
-+			return err;
- 		}
- 
- 		/* Re-map HW VSI number, using VSI handle that has been
-@@ -6773,13 +6755,11 @@ int ice_set_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size)
- 	params.lut = lut;
- 
- 	status = ice_aq_set_rss_lut(hw, &params);
--	if (status) {
-+	if (status)
- 		dev_err(ice_pf_to_dev(vsi->back), "Cannot set RSS lut, err %d aq_err %s\n",
- 			status, ice_aq_str(hw->adminq.sq_last_status));
--		return -EIO;
--	}
- 
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -6798,13 +6778,11 @@ int ice_set_rss_key(struct ice_vsi *vsi, u8 *seed)
- 		return -EINVAL;
- 
- 	status = ice_aq_set_rss_key(hw, vsi->idx, (struct ice_aqc_get_set_rss_keys *)seed);
--	if (status) {
-+	if (status)
- 		dev_err(ice_pf_to_dev(vsi->back), "Cannot set RSS key, err %d aq_err %s\n",
- 			status, ice_aq_str(hw->adminq.sq_last_status));
--		return -EIO;
--	}
- 
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -6830,13 +6808,11 @@ int ice_get_rss_lut(struct ice_vsi *vsi, u8 *lut, u16 lut_size)
- 	params.lut = lut;
- 
- 	status = ice_aq_get_rss_lut(hw, &params);
--	if (status) {
-+	if (status)
- 		dev_err(ice_pf_to_dev(vsi->back), "Cannot get RSS lut, err %d aq_err %s\n",
- 			status, ice_aq_str(hw->adminq.sq_last_status));
--		return -EIO;
--	}
- 
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -6855,13 +6831,11 @@ int ice_get_rss_key(struct ice_vsi *vsi, u8 *seed)
- 		return -EINVAL;
- 
- 	status = ice_aq_get_rss_key(hw, vsi->idx, (struct ice_aqc_get_set_rss_keys *)seed);
--	if (status) {
-+	if (status)
- 		dev_err(ice_pf_to_dev(vsi->back), "Cannot get RSS key, err %d aq_err %s\n",
- 			status, ice_aq_str(hw->adminq.sq_last_status));
--		return -EIO;
--	}
- 
--	return 0;
-+	return status;
- }
- 
- /**
-@@ -6924,7 +6898,6 @@ static int ice_vsi_update_bridge_mode(struct ice_vsi *vsi, u16 bmode)
- 	if (ret) {
- 		dev_err(ice_pf_to_dev(vsi->back), "update VSI for bridge mode failed, bmode = %d err %d aq_err %s\n",
- 			bmode, ret, ice_aq_str(hw->adminq.sq_last_status));
--		ret = -EIO;
- 		goto out;
- 	}
- 	/* Update sw flags for book keeping */
-@@ -6996,7 +6969,7 @@ ice_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh,
- 				   ice_aq_str(hw->adminq.sq_last_status));
- 			/* revert hw->evb_veb */
- 			hw->evb_veb = (pf_sw->bridge_mode == BRIDGE_MODE_VEB);
--			return -EIO;
-+			return err;
- 		}
- 
- 		pf_sw->bridge_mode = mode;
-@@ -7206,7 +7179,7 @@ int ice_open_internal(struct net_device *netdev)
- 	err = ice_update_link_info(pi);
- 	if (err) {
- 		netdev_err(netdev, "Failed to get link info, error %d\n", err);
--		return -EIO;
-+		return err;
- 	}
- 
- 	ice_check_link_cfg_err(pf, pi->phy.link_info.link_cfg_err);
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 092b26d0de91..dc6672bd4613 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -287,7 +287,6 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 		goto exit;
- 	} else if (ret) {
- 		NL_SET_ERR_MSG_MOD(fltr->extack, "Unable to add filter due to error");
--		ret = -EIO;
- 		goto exit;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 34ada576a9e2..6d0ef1adb199 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -681,7 +681,6 @@ static int ice_vsi_manage_pvid(struct ice_vsi *vsi, u16 pvid_info, bool enable)
- 	if (ret) {
- 		dev_info(ice_hw_to_dev(hw), "update VSI for port VLAN failed, err %d aq_err %s\n",
- 			 ret, ice_aq_str(hw->adminq.sq_last_status));
--		ret = -EIO;
- 		goto out;
- 	}
- 
-@@ -2946,7 +2945,6 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 	if (ret) {
- 		dev_err(dev, "Failed to %sable spoofchk on VF %d VSI %d\n error %d\n",
- 			ena ? "en" : "dis", vf->vf_id, vf_vsi->vsi_num, ret);
--		ret = -EIO;
- 		goto out;
- 	}
- 
-@@ -3802,7 +3800,7 @@ ice_vc_add_mac_addr(struct ice_vf *vf, struct ice_vsi *vsi,
- 	} else if (ret) {
- 		dev_err(dev, "Failed to add MAC %pM for VF %d\n, error %d\n",
- 			mac_addr, vf->vf_id, ret);
--		return -EIO;
-+		return ret;
- 	} else {
- 		vf->num_mac++;
- 	}
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVGh1LCAyMDIxLTEwLTA3IGF0IDEyOjU2ICswMDAwLCBNaWNoYWwgTWFsb3N6ZXdza2kgd3Jv
+dGU6Cj4gTW9kaWZ5IG5ldGRldi0+ZmVhdHVyZXMgZm9yIHZsYW4gc3RyaXBwaW5nIGJhc2VkIG9u
+IHZpcnR1YWwKPiBjaGFubmVsIG1lc3NhZ2VzIHJlY2VpdmVkIGZyb20gdGhlIFBGLiBDaGFuZ2Ug
+aXMgbmVlZGVkCj4gdG8gc3luY2hyb25pemUgdmxhbiBzdHJpcCBzdGF0dXMgYmV0d2VlbiBQRiBz
+eXNmcyBhbmQgaWF2ZiBldGh0b29sLgoKClRoaXMgcGF0Y2ggZG9lc24ndCBhcHBseS4KCj4gRml4
+ZXM6IGlhdmY6IDEyOWNmODllNTg1NjcgKCJyZW5hbWUgZnVuY3Rpb25zIGFuZCBzdHJ1Y3RzIHRv
+IG5ldwo+IG5hbWUiKQoKVGhlIEZpeGVzIHRhZyBpcyBpbmNvcnJlY3QuIEl0IHNob3VsZCBsb29r
+IGxpa2UgdGhpczoKCkZpeGVzOiA1NGE0ZjAyMzlmMmUgKCJLVk06IE1NVTogbWFrZSBrdm1fbW11
+X3phcF9wYWdlKCkgcmV0dXJuIHRoZQpudW1iZXIgb2YgcGFnZXMgaXQgYWN0dWFsbHkgZnJlZWQi
+KQoKaHR0cHM6Ly93d3cua2VybmVsLm9yZy9kb2MvaHRtbC9sYXRlc3QvcHJvY2Vzcy9zdWJtaXR0
+aW5nLQpwYXRjaGVzLmh0bWwjdXNpbmctcmVwb3J0ZWQtYnktdGVzdGVkLWJ5LXJldmlld2VkLWJ5
+LXN1Z2dlc3RlZC1ieS1hbmQtCmZpeGVzCgo+IFNpZ25lZC1vZmYtYnk6IE5vcmJlcnQgQ2lvc2Vr
+IDxub3JiZXJ0eC5jaW9zZWtAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhbCBNYWxv
+c3pld3NraSA8bWljaGFsLm1hbG9zemV3c2tpQGludGVsLmNvbT4KPiAtLS0KPiDCoC4uLi9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX3ZpcnRjaG5sLmPCoMKgIHwgNDgKPiArKysrKysrKysr
+KysrKysrKystCj4gwqAxIGZpbGUgY2hhbmdlZCwgNDcgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlv
+bigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lh
+dmZfdmlydGNobmwuYwo+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX3Zp
+cnRjaG5sLmMKPiBpbmRleCA5YzEyODQ2MmUuLjhlMThhZTBiNSAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYwo+ICsrKyBiL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4gQEAgLTE0NTYsNiAr
+MTQ1NiwyMiBAQCB2b2lkIGlhdmZfcmVxdWVzdF9yZXNldChzdHJ1Y3QgaWF2Zl9hZGFwdGVyCj4g
+KmFkYXB0ZXIpCj4gwqDCoMKgwqDCoMKgwqDCoGFkYXB0ZXItPmN1cnJlbnRfb3AgPSBWSVJUQ0hO
+TF9PUF9VTktOT1dOOwo+IMKgfQo+IMKgCj4gKy8qKgo+ICsgKiBpYXZmX25ldGRldl9mZWF0dXJl
+c192bGFuX3N0cmlwX3NldAo+ICsgKiBAbmV0ZGV2OiBwdHIgdG8gbmV0ZGV2IGJlaW5nIGFkanVz
+dGVkCj4gKyAqIEBlbmFibGU6IGVuYWJsZSBvciBkaXNhYmxlIHZsYW4gc3RyaXAKPiArICoKPiAr
+ICogSGVscGVyIGZ1bmN0aW9uIHRvIGNoYW5nZSB2bGFuIHN0cmlwIHN0YXR1cyBpbiBuZXRkZXYt
+PmZlYXR1cmVzLgo+ICsgKiovCj4gK3N0YXRpYyB2b2lkIGlhdmZfbmV0ZGV2X2ZlYXR1cmVzX3Zs
+YW5fc3RyaXBfc2V0KHN0cnVjdCBuZXRfZGV2aWNlCj4gKm5ldGRldiwKPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbnN0IGJvb2wgZW5hYmxlKQo+ICt7Cj4gK8KgwqDCoMKg
+wqDCoMKgaWYgKGVuYWJsZSkKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBuZXRkZXYtPmZlYXR1
+cmVzIHw9IE5FVElGX0ZfSFdfVkxBTl9DVEFHX1JYIHwKPiBORVRJRl9GX0hXX1ZMQU5fUlg7Cj4g
+K8KgwqDCoMKgwqDCoMKgZWxzZQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG5ldGRldi0+ZmVh
+dHVyZXMgJj0gfk5FVElGX0ZfSFdfVkxBTl9DVEFHX1JYICYKPiB+TkVUSUZfRl9IV19WTEFOX1JY
+Owo+ICt9Cj4gKwo+IMKgLyoqCj4gwqAgKiBpYXZmX3ZpcnRjaG5sX2NvbXBsZXRpb24KPiDCoCAq
+IEBhZGFwdGVyOiBhZGFwdGVyIHN0cnVjdHVyZQo+IEBAIC0xNjc5LDggKzE2OTUsMjIgQEAgdm9p
+ZCBpYXZmX3ZpcnRjaG5sX2NvbXBsZXRpb24oc3RydWN0Cj4gaWF2Zl9hZGFwdGVyICphZGFwdGVy
+LAo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0KPiDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNhc2UgVklSVENITkxfT1BfRU5BQkxFX1ZM
+QU5fU1RSSVBQSU5HOgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgZGV2X3dhcm4oJmFkYXB0ZXItPnBkZXYtPmRldiwKPiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgIkNoYW5naW5nIFZM
+QU4gU3RyaXBwaW5nIGlzIG5vdAo+IGFsbG93ZWQgd2hlbiBQb3J0IFZMQU4gaXMgY29uZmlndXJl
+ZFxuIik7CgpzcGxpdHRpbmcgdGhpcyBsaW5lIGlzbid0IG5lZWRlZAoKPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC8qCj4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKiBWbGFuIHN0cmlwcGluZyBjb3VsZCBub3Qg
+YmUgZW5hYmxlZCBieQo+IGV0aHRvb2wuCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgKiBEaXNhYmxlIGl0IGluIG5ldGRldi0+ZmVhdHVyZXMuCj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKi8KPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlhdmZfbmV0ZGV2X2ZlYXR1
+cmVzX3ZsYW5fc3RyaXBfc2V0KG5ldGRldiwKPiBmYWxzZSk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoGNhc2UgVklSVENITkxfT1BfRElTQUJMRV9WTEFOX1NUUklQUElORzoKPiAt
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGRldl93YXJuKCZh
+ZGFwdGVyLT5wZGV2LT5kZXYsICJDaGFuZ2luZyBWTEFOCj4gU3RyaXBwaW5nIGlzIG5vdCBhbGxv
+d2VkIHdoZW4gUG9ydCBWTEFOIGlzIGNvbmZpZ3VyZWRcbiIpOwo+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgZGV2X3dhcm4oJmFkYXB0ZXItPnBkZXYtPmRl
+diwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgIkNoYW5naW5nIFZMQU4gU3RyaXBwaW5nIGlzIG5vdAo+IGFsbG93ZWQgd2hl
+biBQb3J0IFZMQU4gaXMgY29uZmlndXJlZFxuIik7CgpXaHkgdGhlIGNoYW5nZT8gU3RyaW5ncyBj
+YW4gYmUgbG9uZyBsaW5lCgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgLyoKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCAqIFZsYW4gc3RyaXBwaW5nIGNvdWxkIG5vdCBiZSBkaXNhYmxlZCBieQo+IGV0aHRvb2wu
+Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKiBFbmFi
+bGUgaXQgaW4gbmV0ZGV2LT5mZWF0dXJlcy4KPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCAqLwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgaWF2Zl9uZXRkZXZfZmVhdHVyZXNfdmxhbl9zdHJpcF9zZXQobmV0ZGV2
+LAo+IHRydWUpOwoKVGhpcyBjb21tZW50IHN0eWxlIGlzIGluY29ycmVjdCBmb3IgbmV0ZGV2IHBh
+dGNoZXMuCgpGb3IgZmlsZXMgaW4gbmV0LyBhbmQgZHJpdmVycy9uZXQvIHRoZSBwcmVmZXJyZWQg
+c3R5bGUgZm9yIGxvbmcgKG11bHRpLQpsaW5lKSBjb21tZW50cyBpcyBhIGxpdHRsZSBkaWZmZXJl
+bnQuCgovKiBUaGUgcHJlZmVycmVkIGNvbW1lbnQgc3R5bGUgZm9yIGZpbGVzIGluIG5ldC8gYW5k
+IGRyaXZlcnMvbmV0CiAqIGxvb2tzIGxpa2UgdGhpcy4KICoKICogSXQgaXMgbmVhcmx5IHRoZSBz
+YW1lIGFzIHRoZSBnZW5lcmFsbHkgcHJlZmVycmVkIGNvbW1lbnQgc3R5bGUsCiAqIGJ1dCB0aGVy
+ZSBpcyBubyBpbml0aWFsIGFsbW9zdC1ibGFuayBsaW5lLgogKi8KCmh0dHBzOi8vd3d3Lmtlcm5l
+bC5vcmcvZG9jL2h0bWwvbGF0ZXN0L3Byb2Nlc3MvY29kaW5nLXN0eWxlLmh0bWwKCj4gwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYnJlYWs7Cj4gwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBkZWZhdWx0Ogo+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGRldl9lcnIoJmFkYXB0ZXItPnBkZXYtPmRldiwg
+IlBGIHJldHVybmVkCj4gZXJyb3IgJWQgKCVzKSB0byBvdXIgcmVxdWVzdCAlZFxuIiwKPiBAQCAt
+MTg5Nyw2ICsxOTI3LDIyIEBAIHZvaWQgaWF2Zl92aXJ0Y2hubF9jb21wbGV0aW9uKHN0cnVjdAo+
+IGlhdmZfYWRhcHRlciAqYWRhcHRlciwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oHNwaW5fdW5sb2NrX2JoKCZhZGFwdGVyLT5hZHZfcnNzX2xvY2spOwo+IMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgfQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYnJl
+YWs7Cj4gK8KgwqDCoMKgwqDCoMKgY2FzZSBWSVJUQ0hOTF9PUF9FTkFCTEVfVkxBTl9TVFJJUFBJ
+Tkc6Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC8qCj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCAqIEdvdCBpbmZvcm1hdGlvbiB0aGF0IFBGIGVuYWJsZWQgdmxhbiBz
+dHJpcCBvbiB0aGlzCj4gVkYuCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIFVw
+ZGF0ZSBuZXRkZXYtPmZlYXR1cmVzIGlmIG5lZWRlZCB0byBiZSBpbiBzeW5jCj4gd2l0aCBldGh0
+b29sLgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKi8KCmRpdHRvIGZvciBjb21t
+ZW50IHN0eWxlCgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpZiAoIXZfcmV0dmFs
+KQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaWF2Zl9u
+ZXRkZXZfZmVhdHVyZXNfdmxhbl9zdHJpcF9zZXQobmV0ZGV2LAo+IHRydWUpOwo+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBicmVhazsKPiArwqDCoMKgwqDCoMKgwqBjYXNlIFZJUlRD
+SE5MX09QX0RJU0FCTEVfVkxBTl9TVFJJUFBJTkc6Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoC8qCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIEdvdCBpbmZvcm1h
+dGlvbiB0aGF0IFBGIGRpc2FibGVkIHZsYW4gc3RyaXAgb24KPiB0aGlzIFZGLgo+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKiBVcGRhdGUgbmV0ZGV2LT5mZWF0dXJlcyBpZiBuZWVk
+ZWQgdG8gYmUgaW4gc3luYwo+IHdpdGggZXRodG9vbC4KPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgICovCgpkaXR0byBmb3IgY29tbWVudCBzdHlsZQoKPiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgaWYgKCF2X3JldHZhbCkKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlhdmZfbmV0ZGV2X2ZlYXR1cmVzX3ZsYW5fc3RyaXBfc2V0
+KG5ldGRldiwKPiBmYWxzZSk7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGJyZWFr
+Owo+IMKgwqDCoMKgwqDCoMKgwqBkZWZhdWx0Ogo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgaWYgKGFkYXB0ZXItPmN1cnJlbnRfb3AgJiYgKHZfb3Bjb2RlICE9IGFkYXB0ZXItCj4g
+PmN1cnJlbnRfb3ApKQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoGRldl9kYmcoJmFkYXB0ZXItPnBkZXYtPmRldiwgIkV4cGVjdGVkCj4gcmVzcG9uc2Ug
+JWQgZnJvbSBQRiwgcmVjZWl2ZWQgJWRcbiIsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
+cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLXdpcmVkLWxhbgo=
