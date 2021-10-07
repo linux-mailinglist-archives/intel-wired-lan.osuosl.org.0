@@ -1,60 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87DA5424596
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Oct 2021 20:05:11 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4DE2425384
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Oct 2021 14:56:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2061E83E30;
-	Wed,  6 Oct 2021 18:05:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0057240A27;
+	Thu,  7 Oct 2021 12:56:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WzWi3wfLWI8D; Wed,  6 Oct 2021 18:05:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5WmQZW1Ufi58; Thu,  7 Oct 2021 12:56:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3078783CF4;
-	Wed,  6 Oct 2021 18:05:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F360840A21;
+	Thu,  7 Oct 2021 12:56:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6413F1BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D5D61BF861
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 12:56:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5FB1460EFF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 06662842D3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 12:56:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w_SuZvz_MP5H for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Oct 2021 18:05:03 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qmZH6ZHcYR4S for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Oct 2021 12:56:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5DC6260EFC
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Oct 2021 18:05:03 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 60CA661037;
- Wed,  6 Oct 2021 18:05:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1633543503;
- bh=mphWiOSjWVve4063iT9iLB+Ae/xfjYf+gdyYkUHB2/Y=;
- h=Date:From:To:Cc:Subject:From;
- b=e9HZWeueYaTquf0esaeqBWa+qbUPx9RRyl1y3/SlMhT0F4LiGEEpruzhqsIcVOExJ
- Il5t2TN7bFbTG3YnDOEQA9+MCerGxYNZ0uZvYHehxgKy5syHlbYsfqhdaL67Nn0F9k
- 8SLgZoM2/uewdLe3CLgkzhuN8aL16jj2x9Y/SjeugZQxhxTDGER6SSRg3q8nM41Bfn
- 7BnIz/5DAGCpJo/QvWxZ5cmQ/mfAGvlBSNZOAfxHBvqPZOJz0lbxl6VkWlqC99gz6e
- UillWofcVuceyoH5OSO4cqbX4S+8sG6w3uX1L207aLtgyvwVF4fLR6uQaBUL+v6KHq
- 082UUeqLM0iXA==
-Date: Wed, 6 Oct 2021 13:09:08 -0500
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20211006180908.GA913430@embeddedor>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 23C5084213
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Oct 2021 12:56:09 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10129"; a="287125113"
+X-IronPort-AV: E=Sophos;i="5.85,354,1624345200"; d="scan'208";a="287125113"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Oct 2021 05:56:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,354,1624345200"; d="scan'208";a="478549583"
+Received: from amlin-019-242.igk.intel.com ([10.102.19.242])
+ by orsmga007.jf.intel.com with ESMTP; 07 Oct 2021 05:56:06 -0700
+From: Michal Maloszewski <michal.maloszewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  7 Oct 2021 12:56:11 +0000
+Message-Id: <20211007125611.50277-1-michal.maloszewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-Subject: [Intel-wired-lan] [PATCH][next] ice: use devm_kcalloc() instead of
- devm_kzalloc()
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan strip
+ virtual channel messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,68 +60,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: Michal Maloszewski <michal.maloszewski@intel.com>,
+ Norbert Ciosek <norbertx.ciosek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use 2-factor multiplication argument form devm_kcalloc() instead
-of devm_kzalloc().
+Modify netdev->features for vlan stripping based on virtual
+channel messages received from the PF. Change is needed
+to synchronize vlan strip status between PF sysfs and iavf ethtool.
 
-Link: https://github.com/KSPP/linux/issues/162
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+Fixes: iavf: 129cf89e58567 ("rename functions and structs to new name")
+Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
+Signed-off-by: Michal Maloszewski <michal.maloszewski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c | 4 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c         | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 48 ++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-index 16de603b280c..38960bcc384c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-@@ -706,7 +706,7 @@ ice_create_init_fdir_rule(struct ice_pf *pf, enum ice_fltr_ptype flow)
- 	if (!seg)
- 		return -ENOMEM;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 9c128462e..8e18ae0b5 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1456,6 +1456,22 @@ void iavf_request_reset(struct iavf_adapter *adapter)
+ 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+ }
  
--	tun_seg = devm_kzalloc(dev, sizeof(*seg) * ICE_FD_HW_SEG_MAX,
-+	tun_seg = devm_kcalloc(dev, sizeof(*seg), ICE_FD_HW_SEG_MAX,
- 			       GFP_KERNEL);
- 	if (!tun_seg) {
- 		devm_kfree(dev, seg);
-@@ -1068,7 +1068,7 @@ ice_cfg_fdir_xtrct_seq(struct ice_pf *pf, struct ethtool_rx_flow_spec *fsp,
- 	if (!seg)
- 		return -ENOMEM;
- 
--	tun_seg = devm_kzalloc(dev, sizeof(*seg) * ICE_FD_HW_SEG_MAX,
-+	tun_seg = devm_kcalloc(dev, sizeof(*seg), ICE_FD_HW_SEG_MAX,
- 			       GFP_KERNEL);
- 	if (!tun_seg) {
- 		devm_kfree(dev, seg);
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 13b2bdc25b0d..fd10f8548feb 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -340,7 +340,7 @@ int ice_setup_tx_ring(struct ice_ring *tx_ring)
- 	/* warn if we are about to overwrite the pointer */
- 	WARN_ON(tx_ring->tx_buf);
- 	tx_ring->tx_buf =
--		devm_kzalloc(dev, sizeof(*tx_ring->tx_buf) * tx_ring->count,
-+		devm_kcalloc(dev, sizeof(*tx_ring->tx_buf), tx_ring->count,
- 			     GFP_KERNEL);
- 	if (!tx_ring->tx_buf)
- 		return -ENOMEM;
-@@ -464,7 +464,7 @@ int ice_setup_rx_ring(struct ice_ring *rx_ring)
- 	/* warn if we are about to overwrite the pointer */
- 	WARN_ON(rx_ring->rx_buf);
- 	rx_ring->rx_buf =
--		devm_kzalloc(dev, sizeof(*rx_ring->rx_buf) * rx_ring->count,
-+		devm_kcalloc(dev, sizeof(*rx_ring->rx_buf), rx_ring->count,
- 			     GFP_KERNEL);
- 	if (!rx_ring->rx_buf)
- 		return -ENOMEM;
++/**
++ * iavf_netdev_features_vlan_strip_set
++ * @netdev: ptr to netdev being adjusted
++ * @enable: enable or disable vlan strip
++ *
++ * Helper function to change vlan strip status in netdev->features.
++ **/
++static void iavf_netdev_features_vlan_strip_set(struct net_device *netdev,
++					       const bool enable)
++{
++	if (enable)
++	     netdev->features |= NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_RX;
++	else
++	     netdev->features &= ~NETIF_F_HW_VLAN_CTAG_RX & ~NETIF_F_HW_VLAN_RX;
++}
++
+ /**
+  * iavf_virtchnl_completion
+  * @adapter: adapter structure
+@@ -1679,8 +1695,22 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			}
+ 			break;
+ 		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
++			dev_warn(&adapter->pdev->dev,
++				 "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			/*
++			 * Vlan stripping could not be enabled by ethtool.
++			 * Disable it in netdev->features.
++			 */
++			iavf_netdev_features_vlan_strip_set(netdev, false);
++			break;
+ 		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
+-			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			dev_warn(&adapter->pdev->dev,
++				 "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			/*
++			 * Vlan stripping could not be disabled by ethtool.
++			 * Enable it in netdev->features.
++			 */
++			iavf_netdev_features_vlan_strip_set(netdev, true);
+ 			break;
+ 		default:
+ 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
+@@ -1897,6 +1927,22 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		spin_unlock_bh(&adapter->adv_rss_lock);
+ 		}
+ 		break;
++	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
++		/*
++		 * Got information that PF enabled vlan strip on this VF.
++		 * Update netdev->features if needed to be in sync with ethtool.
++		 */
++		if (!v_retval)
++			iavf_netdev_features_vlan_strip_set(netdev, true);
++		break;
++	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
++		/*
++		 * Got information that PF disabled vlan strip on this VF.
++		 * Update netdev->features if needed to be in sync with ethtool.
++		 */
++		if (!v_retval)
++			iavf_netdev_features_vlan_strip_set(netdev, false);
++		break;
+ 	default:
+ 		if (adapter->current_op && (v_opcode != adapter->current_op))
+ 			dev_dbg(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
 -- 
 2.27.0
 
