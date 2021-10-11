@@ -1,56 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75282429936
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Oct 2021 23:55:38 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 09A7B4037E;
-	Mon, 11 Oct 2021 21:55:37 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zAzQSVEUtDj6; Mon, 11 Oct 2021 21:55:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7B7864022F;
-	Mon, 11 Oct 2021 21:55:35 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E2A0E1BF865
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 21:55:14 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDFBA42995B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 00:12:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 002984033A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 21:55:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C4C67404B3;
+	Mon, 11 Oct 2021 22:12:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZfybGpqiplxg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Oct 2021 21:55:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C97BB40378
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 21:55:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="313172225"
-X-IronPort-AV: E=Sophos;i="5.85,365,1624345200"; d="scan'208";a="313172225"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2021 14:55:09 -0700
-X-IronPort-AV: E=Sophos;i="5.85,365,1624345200"; d="scan'208";a="526178479"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.138])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2021 14:55:09 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Mon, 11 Oct 2021 14:54:33 -0700
-Message-Id: <20211011215433.1525457-10-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
-In-Reply-To: <20211011215433.1525457-1-jacob.e.keller@intel.com>
-References: <20211011215433.1525457-1-jacob.e.keller@intel.com>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6Kr6sSi8qO_F; Mon, 11 Oct 2021 22:12:20 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC00640491;
+	Mon, 11 Oct 2021 22:12:19 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 68A4F1BF40E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 22:10:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 573CA80E8D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 22:10:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel-dk.20210112.gappssmtp.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UeBvqEBwdVlo for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Oct 2021 22:09:59 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd35.google.com (mail-io1-xd35.google.com
+ [IPv6:2607:f8b0:4864:20::d35])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 55B7280E79
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 22:09:59 +0000 (UTC)
+Received: by mail-io1-xd35.google.com with SMTP id q205so21478472iod.8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Oct 2021 15:09:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel-dk.20210112.gappssmtp.com; s=20210112;
+ h=to:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=ewhdJrewVq9UEL9ms3PbdhPQHnTnwYJKNVbu3hDDnIs=;
+ b=IW0C+PtTLYAOsNNnPt1srFJ3vnwYp8cTzRFDW9PTdE6eywhNJQcbYesMh5ktmVfTdV
+ 4yVMv795uwYKZLgaGTvGWYeQYp1QiBqMLREhAZ4tRoDZqiqkDTjhBicTtyYrP1DmLsi5
+ ByFeaz+GU8WtD6fpIOHGLYG0b7WeQN2R7A86CUJVF0g5Ua+WRf2INPoG7Dorf8fbBQgw
+ Z7qPfas0rrOJkahgzWLVIq7KYdyAjlH/XBaAubUO8PkQcusrKMOTNcqIvz3LpuZBTeWI
+ ZimtmOpIkQts7yJ/nSLZyROyf735KSOoUbpmc7VSYUTgizBitf9D4TchvtD29ILXSEKs
+ 733g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:to:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=ewhdJrewVq9UEL9ms3PbdhPQHnTnwYJKNVbu3hDDnIs=;
+ b=AdPnYgBhB9UL9i91R6PI+siHKkxNUfew277rRcwdJOBoWCicERMYPNkfydHRcLsLsK
+ 0hZQilf1Nm0HU5V4utuubwMmdRQ6orOtiAQBifoChXMoVhxjdZ8S2A3RIzBo62zIVcin
+ VqX3TVV+2EOFIOptk5VYC9yGwkgyxQN5D2cPXTBmzkZug2V/j1rcr3AKaaVkXn4dinUe
+ pCbMRA57uH7PfPB3fivuy5o1lmcxykMIyuOWcpEG8caeNFH9EquFB18VqfMSmLamtNni
+ UeZvlLR2XvW5Zt6rL45U6YeYK8DRaiscDQ8KaAwoe5pWX9KBLUR6NPDBQYIFObVLHQrr
+ Yd4w==
+X-Gm-Message-State: AOAM530Ol61KhPhG5PtZVf7EVDVYR+F2S0w+4lo3Nsp9UOpyjYlcYuRU
+ QMIjHLLeckntzKY/3dQi94iIoxaX2JsElw==
+X-Google-Smtp-Source: ABdhPJxlfRyNFDKh8WUUfjOVdiWiy9UCbwOf95eYRbcSUppoG4u6/fi+RinFfsDmAl1Y9TI52Ln9uA==
+X-Received: by 2002:a5d:8242:: with SMTP id n2mr21382606ioo.170.1633990197757; 
+ Mon, 11 Oct 2021 15:09:57 -0700 (PDT)
+Received: from [192.168.1.116] ([66.219.217.159])
+ by smtp.gmail.com with ESMTPSA id k4sm4640029ilc.10.2021.10.11.15.09.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Oct 2021 15:09:57 -0700 (PDT)
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org
+From: Jens Axboe <axboe@kernel.dk>
+Message-ID: <2757afa0-1b27-8480-0830-9638b2495a85@kernel.dk>
+Date: Mon, 11 Oct 2021 16:09:55 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 9/9] ice: support
- crosstimestamping on E822 devices if supported
+Content-Language: en-US
+X-Mailman-Approved-At: Mon, 11 Oct 2021 22:12:15 +0000
+Subject: [Intel-wired-lan] Potential bio_vec networking/igb size dependency?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,194 +96,51 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E822 devices on supported platforms can generate a cross timestamp
-between the platform ART and the device time. This process allows for
-very precise measurement of the difference between the PTP hardware
-clock and the platform time.
+Hi,
 
-This is only supported if we know the TSC frequency relative to ART, so
-we do not enable this unless the boot CPU has a known TSC frequency (as
-required by convert_art_ns_to_tsc).
+Been working on a change today that changes struct bio_vec, and it works
+fine on the storage side. But when I boot the box with the change, I
+can't ssh in. If I attempt to use networking on the box (eg to update
+packages), it looks like the data is corrupt. Basic things work - I can
+dhcp and get an IP and so on, but ssh in yields:
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 ++
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 113 ++++++++++++++++++
- 2 files changed, 121 insertions(+)
+ssh -v box
+[...]
+debug1: Local version string SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
+debug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
+debug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000
+debug1: Authenticating to box as 'axboe'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ecdsa-sha2-nistp256
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+Connection closed by 207.135.234.126 port 22
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 7bff0450b76c..d16738a3d3a7 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -441,6 +441,10 @@
- #define GLV_UPRCL(_i)				(0x003B2000 + ((_i) * 8))
- #define GLV_UPTCL(_i)				(0x0030A000 + ((_i) * 8))
- #define PRTRPB_RDPC				0x000AC260
-+#define GLHH_ART_CTL				0x000A41D4
-+#define GLHH_ART_CTL_ACTIVE_M			BIT(0)
-+#define GLHH_ART_TIME_H				0x000A41D8
-+#define GLHH_ART_TIME_L				0x000A41DC
- #define GLTSYN_AUX_IN_0(_i)			(0x000889D8 + ((_i) * 4))
- #define GLTSYN_AUX_IN_0_INT_ENA_M		BIT(4)
- #define GLTSYN_AUX_OUT_0(_i)			(0x00088998 + ((_i) * 4))
-@@ -453,6 +457,8 @@
- #define GLTSYN_ENA_TSYN_ENA_M			BIT(0)
- #define GLTSYN_EVNT_H_0(_i)			(0x00088970 + ((_i) * 4))
- #define GLTSYN_EVNT_L_0(_i)			(0x00088968 + ((_i) * 4))
-+#define GLTSYN_HHTIME_H(_i)			(0x00088900 + ((_i) * 4))
-+#define GLTSYN_HHTIME_L(_i)			(0x000888F8 + ((_i) * 4))
- #define GLTSYN_INCVAL_H(_i)			(0x00088920 + ((_i) * 4))
- #define GLTSYN_INCVAL_L(_i)			(0x00088918 + ((_i) * 4))
- #define GLTSYN_SHADJ_H(_i)			(0x00088910 + ((_i) * 4))
-@@ -469,6 +475,8 @@
- #define GLTSYN_TGT_L_0(_i)			(0x00088928 + ((_i) * 4))
- #define GLTSYN_TIME_H(_i)			(0x000888D8 + ((_i) * 4))
- #define GLTSYN_TIME_L(_i)			(0x000888D0 + ((_i) * 4))
-+#define PFHH_SEM				0x000A4200 /* Reset Source: PFR */
-+#define PFHH_SEM_BUSY_M				BIT(0)
- #define PFTSYN_SEM				0x00088880
- #define PFTSYN_SEM_BUSY_M			BIT(0)
- #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 047914111389..ea853a744376 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1598,6 +1598,99 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 	return 0;
- }
+I've got a vm image that I boot on my laptop, and that seems to
+work fine. Hence I'm thinking maybe it's an igb issue? But for the
+life of me, I cannot figure out wtf it is. I've looked at the skb_frag_t
+uses and nothing pops out at me.
+
+Trivial to reproduce, just add the below patch.
+
+diff --git a/include/linux/bvec.h b/include/linux/bvec.h
+index 0e9bdd42dafb..e61967fb4643 100644
+--- a/include/linux/bvec.h
++++ b/include/linux/bvec.h
+@@ -33,6 +33,7 @@ struct bio_vec {
+ 	struct page	*bv_page;
+ 	unsigned int	bv_len;
+ 	unsigned int	bv_offset;
++	unsigned long	foo;
+ };
  
-+/**
-+ * ice_ptp_get_syncdevicetime - Get the cross time stamp info
-+ * @device: Current device time
-+ * @system: System counter value read synchronously with device time
-+ * @ctx: Context provided by timekeeping code
-+ *
-+ * Read device and system (ART) clock simultaneously and return the corrected
-+ * clock values in ns.
-+ */
-+static int
-+ice_ptp_get_syncdevicetime(ktime_t *device,
-+			   struct system_counterval_t *system,
-+			   void *ctx)
-+{
-+	struct ice_pf *pf = (struct ice_pf *)ctx;
-+	struct ice_hw *hw = &pf->hw;
-+	u32 hh_lock, hh_art_ctl;
-+	int i;
-+
-+	/* Get the HW lock */
-+	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
-+	if (hh_lock & PFHH_SEM_BUSY_M) {
-+		dev_err(ice_pf_to_dev(pf), "PTP failed to get hh lock\n");
-+		return -EFAULT;
-+	}
-+
-+	/* Start the ART and device clock sync sequence */
-+	hh_art_ctl = rd32(hw, GLHH_ART_CTL);
-+	hh_art_ctl = hh_art_ctl | GLHH_ART_CTL_ACTIVE_M;
-+	wr32(hw, GLHH_ART_CTL, hh_art_ctl);
-+
-+#define MAX_HH_LOCK_TRIES 100
-+
-+	for (i = 0; i < MAX_HH_LOCK_TRIES; i++) {
-+		/* Wait for sync to complete */
-+		hh_art_ctl = rd32(hw, GLHH_ART_CTL);
-+		if (hh_art_ctl & GLHH_ART_CTL_ACTIVE_M) {
-+			udelay(1);
-+			continue;
-+		} else {
-+			u32 hh_ts_lo, hh_ts_hi, tmr_idx;
-+			u64 hh_ts;
-+
-+			tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
-+			/* Read ART time */
-+			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
-+			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
-+			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
-+			*system = convert_art_ns_to_tsc(hh_ts);
-+			/* Read Device source clock time */
-+			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
-+			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
-+			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
-+			*device = ns_to_ktime(hh_ts);
-+			break;
-+		}
-+	}
-+	/* Release HW lock */
-+	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
-+	hh_lock = hh_lock & ~PFHH_SEM_BUSY_M;
-+	wr32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), hh_lock);
-+
-+	if (i == MAX_HH_LOCK_TRIES)
-+		return -ETIMEDOUT;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_ptp_getcrosststamp_e822 - Capture a device cross timestamp
-+ * @info: the driver's PTP info structure
-+ * @cts: The memory to fill the cross timestamp info
-+ *
-+ * Capture a cross timestamp between the ART and the device PTP hardware
-+ * clock. Fill the cross timestamp information and report it back to the
-+ * caller.
-+ *
-+ * This is only valid for E822 devices which have support for generating the
-+ * cross timestamp via PCIe PTM.
-+ *
-+ * In order to correctly correlate the ART timestamp back to the TSC time, the
-+ * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
-+ */
-+static int
-+ice_ptp_getcrosststamp_e822(struct ptp_clock_info *info,
-+			    struct system_device_crosststamp *cts)
-+{
-+	struct ice_pf *pf = ptp_info_to_pf(info);
-+
-+	return get_device_system_crosststamp(ice_ptp_get_syncdevicetime,
-+					     pf, NULL, cts);
-+}
-+
- /**
-  * ice_ptp_get_ts_config - ioctl interface to read the timestamping config
-  * @pf: Board private structure
-@@ -1822,6 +1915,24 @@ static void ice_ptp_setup_pins_e810(struct ptp_clock_info *info)
- 	info->n_ext_ts = N_EXT_TS_E810;
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e822 - Set specialized functions for E822 support
-+ * @pf: Board private structure
-+ * @info: PTP info to fill
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E822 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E822
-+ * devices.
-+ */
-+static void
-+ice_ptp_set_funcs_e822(struct ice_pf *pf, struct ptp_clock_info *info)
-+{
-+	if (boot_cpu_has(X86_FEATURE_ART) &&
-+	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
-+		info->getcrosststamp = ice_ptp_getcrosststamp_e822;
-+}
-+
- /**
-  * ice_ptp_set_funcs_e810 - Set specialized functions for E810 support
-  * @pf: Board private structure
-@@ -1863,6 +1974,8 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 
- 	if (ice_is_e810(&pf->hw))
- 		ice_ptp_set_funcs_e810(pf, info);
-+	else
-+		ice_ptp_set_funcs_e822(pf, info);
- }
- 
- /**
+ struct bvec_iter {
+
 -- 
-2.31.1.331.gb0c09ab8796f
+Jens Axboe
 
 _______________________________________________
 Intel-wired-lan mailing list
