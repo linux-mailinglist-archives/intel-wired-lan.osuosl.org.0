@@ -1,56 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 881D242A761
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 16:38:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B15C42A9CF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 18:43:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B5B7C403D3;
-	Tue, 12 Oct 2021 14:38:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7300840400;
+	Tue, 12 Oct 2021 16:43:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KcUUC0w2ypvX; Tue, 12 Oct 2021 14:37:59 +0000 (UTC)
+	with ESMTP id gFoMST5zhhLm; Tue, 12 Oct 2021 16:43:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3F2304015E;
-	Tue, 12 Oct 2021 14:37:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2D9FA40256;
+	Tue, 12 Oct 2021 16:43:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EB6B81BF9B6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:37:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A6D761BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 16:43:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D008B406EA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:37:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8D3D9406F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 16:43:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hhxs1naQ0XW5 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Oct 2021 14:37:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D3B8140608
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:37:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227121203"
-X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="227121203"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2021 07:37:30 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="480379113"
-Received: from lkp-server02.sh.intel.com (HELO 08b2c502c3de) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 12 Oct 2021 07:37:29 -0700
-Received: from kbuild by 08b2c502c3de with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1maIuG-0003ZW-Iz; Tue, 12 Oct 2021 14:37:28 +0000
-Date: Tue, 12 Oct 2021 22:37:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61659d95.jToMhRuRF+8sOhOT%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id WDfizrKgtHMz for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Oct 2021 16:43:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx3.uni-regensburg.de (mx3.uni-regensburg.de [194.94.157.148])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 82076406DC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 16:43:08 +0000 (UTC)
+Received: from mx3.uni-regensburg.de (localhost [127.0.0.1])
+ by localhost (Postfix) with SMTP id F17076000057;
+ Tue, 12 Oct 2021 18:34:37 +0200 (CEST)
+Received: from smtp1.uni-regensburg.de (smtp1.uni-regensburg.de
+ [194.94.157.129])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client CN "smtp.uni-regensburg.de",
+ Issuer "DFN-Verein Global Issuing CA" (not verified))
+ by mx3.uni-regensburg.de (Postfix) with ESMTPS id D1C506000051;
+ Tue, 12 Oct 2021 18:34:37 +0200 (CEST)
+From: "Andreas K. Huettel" <andreas.huettel@ur.de>
+To: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Tue, 12 Oct 2021 18:34:35 +0200
+Message-ID: <2801801.e9J7NaK4W3@kailua>
+Organization: Universitaet Regensburg
+In-Reply-To: <c75203e9-0ef4-20bd-87a5-ad0846863886@intel.com>
+References: <1823864.tdWV9SEqCh@kailua> <2944777.ktpJ11cQ8Q@pinacolada>
+ <c75203e9-0ef4-20bd-87a5-ad0846863886@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 01febf11b72e486288629835bd0fa938eda055e1
+Subject: Re: [Intel-wired-lan] [EXT] Re: Intel I350 regression 5.10 -> 5.14
+ ("The NVM Checksum Is Not Valid") [8086:1521]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,136 +65,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jakub Kicinski <kubakici@wp.pl>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 01febf11b72e486288629835bd0fa938eda055e1  ice: check whether PTP is initialized in ice_ptp_release()
+> > The messages easily identifiable are:
+> > 
+> > huettel@pinacolada ~/tmp $ cat kernel-messages-5.10.59.txt |grep igb
+> > Oct  5 15:11:18 dilfridge kernel: [    2.090675] igb: Intel(R) Gigabit Ethernet Network Driver
+> > Oct  5 15:11:18 dilfridge kernel: [    2.090676] igb: Copyright (c) 2007-2014 Intel Corporation.
+> > Oct  5 15:11:18 dilfridge kernel: [    2.090728] igb 0000:01:00.0: enabling device (0000 -> 0002)
+> 
+> This line is missing below, it indicates that the kernel couldn't or
+> didn't power up the PCIe for some reason. We're looking for something
+> like ACPI or PCI patches (possibly PCI-Power management) to be the
+> culprit here.
+> 
 
-elapsed time: 1221m
+So I did a git bisect from linux-v5.10 (good) to linux-v5.14.11 (bad).
 
-configs tested: 107
-configs skipped: 3
+The result was:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+dilfridge /usr/src/linux-git # git bisect bad
+6381195ad7d06ef979528c7452f3ff93659f86b1 is the first bad commit
+commit 6381195ad7d06ef979528c7452f3ff93659f86b1
+Author: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Date:   Mon May 24 17:26:16 2021 +0200
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211011
-sh                           se7705_defconfig
-m68k                             alldefconfig
-sh                              ul2_defconfig
-sh                            hp6xx_defconfig
-powerpc                 mpc837x_rdb_defconfig
-mips                   sb1250_swarm_defconfig
-sh                 kfr2r09-romimage_defconfig
-arm                           u8500_defconfig
-powerpc                     tqm8548_defconfig
-powerpc                      tqm8xx_defconfig
-powerpc               mpc834x_itxgp_defconfig
-arm                            mmp2_defconfig
-arm                        mvebu_v5_defconfig
-powerpc                        fsp2_defconfig
-um                                  defconfig
-riscv                    nommu_k210_defconfig
-m68k                            q40_defconfig
-mips                         mpc30x_defconfig
-powerpc                      ppc44x_defconfig
-arm                  randconfig-c002-20211011
-x86_64               randconfig-c001-20211011
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-parisc                              defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                             allyesconfig
-arc                              allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a015-20211011
-x86_64               randconfig-a012-20211011
-x86_64               randconfig-a016-20211011
-x86_64               randconfig-a014-20211011
-x86_64               randconfig-a013-20211011
-x86_64               randconfig-a011-20211011
-i386                 randconfig-a016-20211011
-i386                 randconfig-a014-20211011
-i386                 randconfig-a011-20211011
-i386                 randconfig-a015-20211011
-i386                 randconfig-a012-20211011
-i386                 randconfig-a013-20211011
-arc                  randconfig-r043-20211011
-s390                 randconfig-r044-20211011
-riscv                randconfig-r042-20211011
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
+    ACPI: power: Rework turning off unused power resources
+[...]
 
-clang tested configs:
-arm                  randconfig-c002-20211012
-mips                 randconfig-c004-20211012
-i386                 randconfig-c001-20211012
-s390                 randconfig-c005-20211012
-x86_64               randconfig-c007-20211012
-powerpc              randconfig-c003-20211012
-i386                 randconfig-a001-20211011
-i386                 randconfig-a003-20211011
-i386                 randconfig-a004-20211011
-i386                 randconfig-a005-20211011
-i386                 randconfig-a002-20211011
-i386                 randconfig-a006-20211011
-x86_64               randconfig-a004-20211011
-x86_64               randconfig-a006-20211011
-x86_64               randconfig-a001-20211011
-x86_64               randconfig-a005-20211011
-x86_64               randconfig-a002-20211011
-x86_64               randconfig-a003-20211011
-hexagon              randconfig-r041-20211011
-hexagon              randconfig-r045-20211011
+I tried naive reverting of this commit on top of 5.14.11. That applies nearly cleanly, 
+and after a reboot the additional ethernet interfaces show up with their MAC in the
+boot messages.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+(Not knowing how safe that experiment was, I did not go further than single mode and
+immediately rebooted into 5.10 afterwards.)
+
+-- 
+PD Dr. Andreas K. Huettel
+Institute for Experimental and Applied Physics
+University of Regensburg
+93040 Regensburg
+Germany
+
+e-mail andreas.huettel@ur.de
+http://www.akhuettel.de/
+http://www.physik.uni-r.de/forschung/huettel/
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
