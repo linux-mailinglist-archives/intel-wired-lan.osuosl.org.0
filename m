@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F4D9429AC4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 03:08:15 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9047A429F6B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 10:10:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2DC0C608B0;
-	Tue, 12 Oct 2021 01:08:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D227F405E3;
+	Tue, 12 Oct 2021 08:10:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MTI9dQk53ojf; Tue, 12 Oct 2021 01:08:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jHohGLJirR3o; Tue, 12 Oct 2021 08:10:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E0E6B608A9;
-	Tue, 12 Oct 2021 01:08:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B6410405E2;
+	Tue, 12 Oct 2021 08:10:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 16FA41BF616
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 01:07:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 08B841BF5DE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 08:10:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0EAC0608A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 01:07:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 047A480E68
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 08:10:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dWMWvFpyCH-3 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Oct 2021 01:07:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 28BF960907
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 01:07:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="214155965"
-X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="214155965"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2021 18:07:48 -0700
-X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="490711213"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.138])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2021 18:07:48 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Mon, 11 Oct 2021 18:07:15 -0700
-Message-Id: <20211012010715.1684027-10-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
-In-Reply-To: <20211012010715.1684027-1-jacob.e.keller@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id knG_KGdaD_jp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Oct 2021 08:10:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 419F680E5F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 08:10:29 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5ae924.dynamic.kabel-deutschland.de
+ [95.90.233.36])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 009C661E64760;
+ Tue, 12 Oct 2021 10:10:25 +0200 (CEST)
+To: Jacob Keller <jacob.e.keller@intel.com>
 References: <20211012010715.1684027-1-jacob.e.keller@intel.com>
+ <20211012010715.1684027-3-jacob.e.keller@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <97277fe9-ab9a-78c6-2456-1dfe643f69e9@molgen.mpg.de>
+Date: Tue, 12 Oct 2021 10:10:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 9/9] ice: support
- crosstimestamping on E822 devices if supported
+In-Reply-To: <20211012010715.1684027-3-jacob.e.keller@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [net-next PATCH v2 2/9] ice: PTP: move
+ setting of tstamp_config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,231 +63,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E822 devices on supported platforms can generate a cross timestamp
-between the platform ART and the device time. This process allows for
-very precise measurement of the difference between the PTP hardware
-clock and the platform time.
-
-This is only supported if we know the TSC frequency relative to ART, so
-we do not enable this unless the boot CPU has a known TSC frequency (as
-required by convert_art_ns_to_tsc).
-
-Because PCIe PTM support is not available on all platforms, introduce
-CONFIG_ICE_HWTS and make it depend on X86 where we know the support
-exists.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/net/ethernet/intel/Kconfig            |  10 ++
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 ++
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 117 ++++++++++++++++++
- 3 files changed, 135 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 0b274d8fa45b..3facb55b7161 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -327,6 +327,16 @@ config ICE_SWITCHDEV
- 
- 	  If unsure, say N.
- 
-+config ICE_HWTS
-+	bool "Support HW cross-timestamp on platforms with PTM support"
-+	default y
-+	depends on ICE && X86
-+	help
-+	  Say Y to enable hardware supported cross-timestamping on platforms
-+	  with PCIe PTM support. The cross-timestamp is available through
-+	  the PTP clock driver precise cross-timestamp ioctl
-+	  (PTP_SYS_OFFSET_PRECISE).
-+
- config FM10K
- 	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
- 	default n
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 7bff0450b76c..d16738a3d3a7 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -441,6 +441,10 @@
- #define GLV_UPRCL(_i)				(0x003B2000 + ((_i) * 8))
- #define GLV_UPTCL(_i)				(0x0030A000 + ((_i) * 8))
- #define PRTRPB_RDPC				0x000AC260
-+#define GLHH_ART_CTL				0x000A41D4
-+#define GLHH_ART_CTL_ACTIVE_M			BIT(0)
-+#define GLHH_ART_TIME_H				0x000A41D8
-+#define GLHH_ART_TIME_L				0x000A41DC
- #define GLTSYN_AUX_IN_0(_i)			(0x000889D8 + ((_i) * 4))
- #define GLTSYN_AUX_IN_0_INT_ENA_M		BIT(4)
- #define GLTSYN_AUX_OUT_0(_i)			(0x00088998 + ((_i) * 4))
-@@ -453,6 +457,8 @@
- #define GLTSYN_ENA_TSYN_ENA_M			BIT(0)
- #define GLTSYN_EVNT_H_0(_i)			(0x00088970 + ((_i) * 4))
- #define GLTSYN_EVNT_L_0(_i)			(0x00088968 + ((_i) * 4))
-+#define GLTSYN_HHTIME_H(_i)			(0x00088900 + ((_i) * 4))
-+#define GLTSYN_HHTIME_L(_i)			(0x000888F8 + ((_i) * 4))
- #define GLTSYN_INCVAL_H(_i)			(0x00088920 + ((_i) * 4))
- #define GLTSYN_INCVAL_L(_i)			(0x00088918 + ((_i) * 4))
- #define GLTSYN_SHADJ_H(_i)			(0x00088910 + ((_i) * 4))
-@@ -469,6 +475,8 @@
- #define GLTSYN_TGT_L_0(_i)			(0x00088928 + ((_i) * 4))
- #define GLTSYN_TIME_H(_i)			(0x000888D8 + ((_i) * 4))
- #define GLTSYN_TIME_L(_i)			(0x000888D0 + ((_i) * 4))
-+#define PFHH_SEM				0x000A4200 /* Reset Source: PFR */
-+#define PFHH_SEM_BUSY_M				BIT(0)
- #define PFTSYN_SEM				0x00088880
- #define PFTSYN_SEM_BUSY_M			BIT(0)
- #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 047914111389..a6c17876fde6 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1598,6 +1598,101 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 	return 0;
- }
- 
-+#ifdef CONFIG_ICE_HWTS
-+/**
-+ * ice_ptp_get_syncdevicetime - Get the cross time stamp info
-+ * @device: Current device time
-+ * @system: System counter value read synchronously with device time
-+ * @ctx: Context provided by timekeeping code
-+ *
-+ * Read device and system (ART) clock simultaneously and return the corrected
-+ * clock values in ns.
-+ */
-+static int
-+ice_ptp_get_syncdevicetime(ktime_t *device,
-+			   struct system_counterval_t *system,
-+			   void *ctx)
-+{
-+	struct ice_pf *pf = (struct ice_pf *)ctx;
-+	struct ice_hw *hw = &pf->hw;
-+	u32 hh_lock, hh_art_ctl;
-+	int i;
-+
-+	/* Get the HW lock */
-+	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
-+	if (hh_lock & PFHH_SEM_BUSY_M) {
-+		dev_err(ice_pf_to_dev(pf), "PTP failed to get hh lock\n");
-+		return -EFAULT;
-+	}
-+
-+	/* Start the ART and device clock sync sequence */
-+	hh_art_ctl = rd32(hw, GLHH_ART_CTL);
-+	hh_art_ctl = hh_art_ctl | GLHH_ART_CTL_ACTIVE_M;
-+	wr32(hw, GLHH_ART_CTL, hh_art_ctl);
-+
-+#define MAX_HH_LOCK_TRIES 100
-+
-+	for (i = 0; i < MAX_HH_LOCK_TRIES; i++) {
-+		/* Wait for sync to complete */
-+		hh_art_ctl = rd32(hw, GLHH_ART_CTL);
-+		if (hh_art_ctl & GLHH_ART_CTL_ACTIVE_M) {
-+			udelay(1);
-+			continue;
-+		} else {
-+			u32 hh_ts_lo, hh_ts_hi, tmr_idx;
-+			u64 hh_ts;
-+
-+			tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
-+			/* Read ART time */
-+			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
-+			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
-+			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
-+			*system = convert_art_ns_to_tsc(hh_ts);
-+			/* Read Device source clock time */
-+			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
-+			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
-+			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
-+			*device = ns_to_ktime(hh_ts);
-+			break;
-+		}
-+	}
-+	/* Release HW lock */
-+	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
-+	hh_lock = hh_lock & ~PFHH_SEM_BUSY_M;
-+	wr32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), hh_lock);
-+
-+	if (i == MAX_HH_LOCK_TRIES)
-+		return -ETIMEDOUT;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_ptp_getcrosststamp_e822 - Capture a device cross timestamp
-+ * @info: the driver's PTP info structure
-+ * @cts: The memory to fill the cross timestamp info
-+ *
-+ * Capture a cross timestamp between the ART and the device PTP hardware
-+ * clock. Fill the cross timestamp information and report it back to the
-+ * caller.
-+ *
-+ * This is only valid for E822 devices which have support for generating the
-+ * cross timestamp via PCIe PTM.
-+ *
-+ * In order to correctly correlate the ART timestamp back to the TSC time, the
-+ * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
-+ */
-+static int
-+ice_ptp_getcrosststamp_e822(struct ptp_clock_info *info,
-+			    struct system_device_crosststamp *cts)
-+{
-+	struct ice_pf *pf = ptp_info_to_pf(info);
-+
-+	return get_device_system_crosststamp(ice_ptp_get_syncdevicetime,
-+					     pf, NULL, cts);
-+}
-+#endif /* CONFIG_ICE_HWTS */
-+
- /**
-  * ice_ptp_get_ts_config - ioctl interface to read the timestamping config
-  * @pf: Board private structure
-@@ -1822,6 +1917,26 @@ static void ice_ptp_setup_pins_e810(struct ptp_clock_info *info)
- 	info->n_ext_ts = N_EXT_TS_E810;
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e822 - Set specialized functions for E822 support
-+ * @pf: Board private structure
-+ * @info: PTP info to fill
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E822 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E822
-+ * devices.
-+ */
-+static void
-+ice_ptp_set_funcs_e822(struct ice_pf *pf, struct ptp_clock_info *info)
-+{
-+#ifdef CONFIG_ICE_HWTS
-+	if (boot_cpu_has(X86_FEATURE_ART) &&
-+	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
-+		info->getcrosststamp = ice_ptp_getcrosststamp_e822;
-+#endif /* CONFIG_ICE_HWTS */
-+}
-+
- /**
-  * ice_ptp_set_funcs_e810 - Set specialized functions for E810 support
-  * @pf: Board private structure
-@@ -1863,6 +1978,8 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 
- 	if (ice_is_e810(&pf->hw))
- 		ice_ptp_set_funcs_e810(pf, info);
-+	else
-+		ice_ptp_set_funcs_e822(pf, info);
- }
- 
- /**
--- 
-2.31.1.331.gb0c09ab8796f
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKYWNvYiwKCgpBbSAxMi4xMC4yMSB1bSAwMzowNyBzY2hyaWViIEphY29iIEtlbGxlcjoK
+PiBUaGUgdHN0YW1wX2NvbmZpZyBzdHJ1Y3R1cmUgaXMgYmVpbmcgc2V0IGluc2lkZSBvZgo+IGlj
+ZV9wdHBfY2ZnX3RpbWVzdGFtcCwgd2hpY2ggaXMgdGhlIGZ1bmN0aW9uIHVzZWQgdG8gc2V0IFR4
+IGFuZAo+IFJ4IHRpbWVzdGFtcGluZyBkdXJpbmcgaW5pdGlhbGl6YXRpb24uCj4gCj4gVGhpcyBm
+dW5jdGlvbiBpcyBhbHNvIHVzZWQgaW4gb3JkZXIgdG8gc2V0IHRoZSBQSFkgcG9ydCB0aW1lc3Rh
+bXBpbmcKPiBzdGF0dXMuIEhvd2V2ZXIsIGl0IG1ha2VzIHNlbnNlIHRvIGFsd2F5cyBzZXQgdGhl
+IHRzdGFtcF9jb25maWcgZGlyZWN0bHkKPiB3aGVuZXZlciB0aGUgaWNlX3NldF90eF90c3RhbXAg
+b3IgaWNlX3NldF9yeF90c3RhbXAgZnVuY3Rpb25zIGFyZQo+IGNhbGxlZC4KPiAKPiBNb3ZlIGFz
+c2lnbm1lbnQgb2YgdHN0YW1wX2NvbmZpZyBpbnRvIHRoZSByZWxhdGVkIGZ1bmN0aW9ucyBhbmQg
+b3V0IG9mCj4gaWNlX3B0cF9jZmdfdGltZXN0YW1wLgo+IAo+IE5vdyB0aGF0IHdlIGFzc2lnbiB0
+aGUgdGltZXN0YW1wIG1vZGUgaW4gdGhlIHJlbGV2YW50IGZ1bmN0aW9ucywgd2Ugbm8KPiBsb25n
+ZXIgbW9kaWZ5IHRoZSBjb25maWcgdmFsdWllIGluIGljZV9zZXRfdGltZXN0YW1wX21vZGUuIElu
+IHR1cm4sIHdlCgpOaXQ6IHZhbHVlCgo+IG5vIGxvbmdlciB3YW50IHRvIGNvcHkgdGhhdCBjb25m
+aWcgdmFsdWUgaW50byB0aGUgUEYgY2FjaGVkIHN0cnVjdHVyZS4KPiBJbnN0ZWFkLCB0aGlzIGlz
+IG5vdyB0aGUgc291cmNlIG9mIHRydXRoIGZvciBhY3R1YWwgY29uZmlndXJhdGlvbi4gT24KPiBz
+dWNjZXNzIG9mIGljZV9zZXRfdGltZXN0YW1wX21vZGUsIGNvcHkgdGhlIHJlYWwgY29uZmlndXJl
+ZCBtb2RlIGJhY2sgdG8KPiByZXBvcnQgaXQgb3V0IHRvIHVzZXJzcGFjZS4KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBKYWNvYiBLZWxsZXIgPGphY29iLmUua2VsbGVyQGludGVsLmNvbT4KPiAtLS0KPiAg
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcHRwLmMgfCAyMyArKysrKysrKysr
+KystLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDExIGRl
+bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+Y2UvaWNlX3B0cC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wdHAuYwo+
+IGluZGV4IDcxZTcxNWM3YmU0Zi4uMTU1ODQyNDQ3ZWJlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcHRwLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pY2UvaWNlX3B0cC5jCj4gQEAgLTI4NSw2ICsyODUsMTEgQEAgc3RhdGljIHZv
+aWQgaWNlX3NldF90eF90c3RhbXAoc3RydWN0IGljZV9wZiAqcGYsIGJvb2wgb24pCj4gICAJZWxz
+ZQo+ICAgCQl2YWwgJj0gflBGSU5UX09JQ1JfVFNZTl9UWF9NOwo+ICAgCXdyMzIoJnBmLT5odywg
+UEZJTlRfT0lDUl9FTkEsIHZhbCk7Cj4gKwo+ICsJaWYgKG9uKQo+ICsJCXBmLT5wdHAudHN0YW1w
+X2NvbmZpZy50eF90eXBlID0gSFdUU1RBTVBfVFhfT047Cj4gKwllbHNlCj4gKwkJcGYtPnB0cC50
+c3RhbXBfY29uZmlnLnR4X3R5cGUgPSBIV1RTVEFNUF9UWF9PRkY7CgpJ4oCZZCB1c2UgdGhlIHRl
+cm5hcnkgb3BlcmF0b3I6CgogICAgIHBmLT5wdHAudHN0YW1wX2NvbmZpZy50eF90eXBlID0gb24g
+PyBIV1RTVEFNUF9UWF9PTiA6IEhXVFNUQU1QX1RYX09GRjsKCj4gICB9Cj4gICAKPiAgIC8qKgo+
+IEBAIC0zMDcsNiArMzEyLDExIEBAIHN0YXRpYyB2b2lkIGljZV9zZXRfcnhfdHN0YW1wKHN0cnVj
+dCBpY2VfcGYgKnBmLCBib29sIG9uKQo+ICAgCQkJY29udGludWU7Cj4gICAJCXZzaS0+cnhfcmlu
+Z3NbaV0tPnB0cF9yeCA9IG9uOwo+ICAgCX0KPiArCj4gKwlpZiAob24pCj4gKwkJcGYtPnB0cC50
+c3RhbXBfY29uZmlnLnJ4X2ZpbHRlciA9IEhXVFNUQU1QX0ZJTFRFUl9BTEw7Cj4gKwllbHNlCj4g
+KwkJcGYtPnB0cC50c3RhbXBfY29uZmlnLnJ4X2ZpbHRlciA9IEhXVFNUQU1QX0ZJTFRFUl9OT05F
+Owo+ICAgfQo+ICAgCj4gICAvKioKPiBAQCAtMzIxLDE0ICszMzEsNiBAQCBzdGF0aWMgdm9pZCBp
+Y2VfcHRwX2NmZ190aW1lc3RhbXAoc3RydWN0IGljZV9wZiAqcGYsIGJvb2wgZW5hKQo+ICAgewo+
+ICAgCWljZV9zZXRfdHhfdHN0YW1wKHBmLCBlbmEpOwo+ICAgCWljZV9zZXRfcnhfdHN0YW1wKHBm
+LCBlbmEpOwo+IC0KPiAtCWlmIChlbmEpIHsKPiAtCQlwZi0+cHRwLnRzdGFtcF9jb25maWcucnhf
+ZmlsdGVyID0gSFdUU1RBTVBfRklMVEVSX0FMTDsKPiAtCQlwZi0+cHRwLnRzdGFtcF9jb25maWcu
+dHhfdHlwZSA9IEhXVFNUQU1QX1RYX09OOwo+IC0JfSBlbHNlIHsKPiAtCQlwZi0+cHRwLnRzdGFt
+cF9jb25maWcucnhfZmlsdGVyID0gSFdUU1RBTVBfRklMVEVSX05PTkU7Cj4gLQkJcGYtPnB0cC50
+c3RhbXBfY29uZmlnLnR4X3R5cGUgPSBIV1RTVEFNUF9UWF9PRkY7Cj4gLQl9Cj4gICB9Cj4gICAK
+PiAgIC8qKgo+IEBAIC0xMjU2LDcgKzEyNTgsNiBAQCBpY2VfcHRwX3NldF90aW1lc3RhbXBfbW9k
+ZShzdHJ1Y3QgaWNlX3BmICpwZiwgc3RydWN0IGh3dHN0YW1wX2NvbmZpZyAqY29uZmlnKQo+ICAg
+CWNhc2UgSFdUU1RBTVBfRklMVEVSX1BUUF9WMl9MNF9ERUxBWV9SRVE6Cj4gICAJY2FzZSBIV1RT
+VEFNUF9GSUxURVJfTlRQX0FMTDoKPiAgIAljYXNlIEhXVFNUQU1QX0ZJTFRFUl9BTEw6Cj4gLQkJ
+Y29uZmlnLT5yeF9maWx0ZXIgPSBIV1RTVEFNUF9GSUxURVJfQUxMOwo+ICAgCQlpY2Vfc2V0X3J4
+X3RzdGFtcChwZiwgdHJ1ZSk7Cj4gICAJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gQEAgLTEyODgs
+OCArMTI4OSw4IEBAIGludCBpY2VfcHRwX3NldF90c19jb25maWcoc3RydWN0IGljZV9wZiAqcGYs
+IHN0cnVjdCBpZnJlcSAqaWZyKQo+ICAgCWlmIChlcnIpCj4gICAJCXJldHVybiBlcnI7Cj4gICAK
+PiAtCS8qIFNhdmUgdGhlc2Ugc2V0dGluZ3MgZm9yIGZ1dHVyZSByZWZlcmVuY2UgKi8KPiAtCXBm
+LT5wdHAudHN0YW1wX2NvbmZpZyA9IGNvbmZpZzsKPiArCS8qIFJldHVybiB0aGUgYWN0dWFsIGNv
+bmZpZ3VyYXRpb24gc2V0ICovCj4gKwljb25maWcgPSBwZi0+cHRwLnRzdGFtcF9jb25maWc7Cj4g
+ICAKPiAgIAlyZXR1cm4gY29weV90b191c2VyKGlmci0+aWZyX2RhdGEsICZjb25maWcsIHNpemVv
+Zihjb25maWcpKSA/Cj4gICAJCS1FRkFVTFQgOiAwOwo+IAoKQWNrZWQtYnk6IFBhdWwgTWVuemVs
+IDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
