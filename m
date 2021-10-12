@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2199742AF09
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 23:33:24 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 730B642AF07
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 23:33:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C0C0B80D6C;
-	Tue, 12 Oct 2021 21:33:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3DC280D4E;
+	Tue, 12 Oct 2021 21:33:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eFc_E83X4sKk; Tue, 12 Oct 2021 21:33:22 +0000 (UTC)
+	with ESMTP id lALKkde7TnFe; Tue, 12 Oct 2021 21:33:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7C91380D69;
-	Tue, 12 Oct 2021 21:33:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D0C8A80D69;
+	Tue, 12 Oct 2021 21:33:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2AAD01BF59B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C7C5A1BF59B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0060682846
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B6310407A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V4uQ2h87cWyK for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FvjNIuPP22Yl for <intel-wired-lan@lists.osuosl.org>;
  Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1B9CD80D78
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 25831405F5
  for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227174431"
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="227174431"
+X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227174432"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="227174432"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  12 Oct 2021 14:33:03 -0700
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="460529396"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="460529398"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.138])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  12 Oct 2021 14:33:02 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
  Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 12 Oct 2021 14:32:25 -0700
-Message-Id: <20211012213230.2684338-5-jacob.e.keller@intel.com>
+Date: Tue, 12 Oct 2021 14:32:26 -0700
+Message-Id: <20211012213230.2684338-6-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 In-Reply-To: <20211012213230.2684338-1-jacob.e.keller@intel.com>
 References: <20211012213230.2684338-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v3 4/9] ice: introduce
- ice_ptp_init_phc function
+Subject: [Intel-wired-lan] [net-next PATCH v3 5/9] ice: convert clk_freq
+ capability into time_ref
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,162 +63,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When we enable support for E822 devices, there are some additional
-steps required to initialize the PTP hardware clock. To make this easier
-to implement as device-specific behavior, refactor the register setups
-in ice_ptp_init_owner to a new ice_ptp_init_phc function defined in
-ice_ptp_hw.c
-
-This function will have a common section, and an e810 specific
-sub-implementation.
-
-This will enable easily extending the functionality to cover the E822
-specific setup required to initialize the hardware clock generation
-unit. It also makes it clear which steps are E810 specific vs which ones
-are necessary for all ice devices.
+Convert the clk_freq value into the associated time_ref frequency value
+for E822 devices. This simplifies determining the time reference value
+for the clock.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 38 +++++++++------------
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 34 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 +
- 3 files changed, 52 insertions(+), 21 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c | 12 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_type.h   | 23 ++++++++++++++++++++-
+ 2 files changed, 34 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index d275078d6737..076599202d57 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1810,24 +1810,14 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw *hw = &pf->hw;
- 	struct timespec64 ts;
--	u8 src_idx;
- 	int err;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 3ab115c3bdf9..1f3689848ec5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -2176,6 +2176,18 @@ ice_parse_1588_func_caps(struct ice_hw *hw, struct ice_hw_func_caps *func_p,
+ 	info->clk_freq = (number & ICE_TS_CLK_FREQ_M) >> ICE_TS_CLK_FREQ_S;
+ 	info->clk_src = ((number & ICE_TS_CLK_SRC_M) != 0);
  
--	wr32(hw, GLTSYN_SYNC_DLAY, 0);
--
--	/* Clear some HW residue and enable source clock */
--	src_idx = hw->func_caps.ts_func_info.tmr_index_owned;
--
--	/* Enable source clocks */
--	wr32(hw, GLTSYN_ENA(src_idx), GLTSYN_ENA_TSYN_ENA_M);
--
--	/* Enable PHY time sync */
--	err = ice_ptp_init_phy_e810(hw);
--	if (err)
--		goto err_exit;
--
--	/* Clear event status indications for auxiliary pins */
--	(void)rd32(hw, GLTSYN_STAT(src_idx));
-+	err = ice_ptp_init_phc(hw);
-+	if (err) {
-+		dev_err(dev, "Failed to initialize PHC, err %d\n",
-+			err);
-+		return err;
++	if (info->clk_freq < NUM_ICE_TIME_REF_FREQ) {
++		info->time_ref = (enum ice_time_ref_freq)info->clk_freq;
++	} else {
++		/* Unknown clock frequency, so assume a (probably incorrect)
++		 * default to avoid out-of-bounds look ups of frequency
++		 * related information.
++		 */
++		ice_debug(hw, ICE_DBG_INIT, "1588 func caps: unknown clock frequency %u\n",
++			  info->clk_freq);
++		info->time_ref = ICE_TIME_REF_FREQ_25_000;
 +	}
- 
- 	/* Acquire the global hardware lock */
- 	if (!ice_ptp_lock(hw)) {
-@@ -1872,12 +1862,16 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- }
- 
- /**
-- * ice_ptp_init - Initialize the PTP support after device probe or reset
-+ * ice_ptp_init - Initialize PTP hardware clock support
-  * @pf: Board private structure
-  *
-- * This function sets device up for PTP support. The first time it is run, it
-- * will create a clock device. It does not create a clock device if one
-- * already exists. It also reconfigures the device after a reset.
-+ * Set up the device for interacting with the PTP hardware clock for all
-+ * functions, both the function that owns the clock hardware, and the
-+ * functions connected to the clock hardware.
-+ *
-+ * The clock owner will allocate and register a ptp_clock with the
-+ * PTP_1588_CLOCK infrastructure. All functions allocate a kthread and work
-+ * items used for asynchronous work such as Tx timestamps and periodic work.
-  */
- void ice_ptp_init(struct ice_pf *pf)
- {
-@@ -1890,7 +1884,9 @@ void ice_ptp_init(struct ice_pf *pf)
- 	if (!ice_is_e810(hw))
- 		return;
- 
--	/* Check if this PF owns the source timer */
-+	/* If this function owns the clock hardware, it must allocate and
-+	 * configure the PTP clock device to represent it.
-+	 */
- 	if (hw->func_caps.ts_func_info.src_tmr_owned) {
- 		err = ice_ptp_init_owner(pf);
- 		if (err)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index b75aa7bcd421..9787d45c2fdb 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -213,6 +213,21 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw)
- 	return err;
- }
- 
-+/**
-+ * ice_ptp_init_phc_e810 - Perform E810 specific PHC initialization
-+ * @hw: pointer to HW struct
-+ *
-+ * Perform E810-specific PTP hardware clock initialization steps.
-+ */
-+static int ice_ptp_init_phc_e810(struct ice_hw *hw)
-+{
-+	/* Ensure synchronization delay is zero */
-+	wr32(hw, GLTSYN_SYNC_DLAY, 0);
 +
-+	/* Initialize the PHY */
-+	return ice_ptp_init_phy_e810(hw);
-+}
-+
- /**
-  * ice_ptp_prep_phy_time_e810 - Prepare PHY port with initial time
-  * @hw: Board private structure
-@@ -840,3 +855,22 @@ bool ice_is_pca9575_present(struct ice_hw *hw)
+ 	ice_debug(hw, ICE_DBG_INIT, "func caps: ieee_1588 = %u\n",
+ 		  func_p->common_cap.ieee_1588);
+ 	ice_debug(hw, ICE_DBG_INIT, "func caps: src_tmr_owned = %u\n",
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 069451c9c4b4..aa87b1ed92bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -293,9 +293,30 @@ struct ice_hw_common_caps {
+ #define ICE_TS_TMR_IDX_ASSOC_S		24
+ #define ICE_TS_TMR_IDX_ASSOC_M		BIT(24)
  
- 	return false;
- }
++/* TIME_REF clock rate specification */
++enum ice_time_ref_freq {
++	ICE_TIME_REF_FREQ_25_000	= 0,
++	ICE_TIME_REF_FREQ_122_880	= 1,
++	ICE_TIME_REF_FREQ_125_000	= 2,
++	ICE_TIME_REF_FREQ_153_600	= 3,
++	ICE_TIME_REF_FREQ_156_250	= 4,
++	ICE_TIME_REF_FREQ_245_760	= 5,
 +
-+/**
-+ * ice_ptp_init_phc - Initialize PTP hardware clock
-+ * @hw: pointer to the HW struct
-+ *
-+ * Perform the steps required to initialize the PTP hardware clock.
-+ */
-+int ice_ptp_init_phc(struct ice_hw *hw)
-+{
-+	u8 src_idx = hw->func_caps.ts_func_info.tmr_index_owned;
++	NUM_ICE_TIME_REF_FREQ
++};
 +
-+	/* Enable source clocks */
-+	wr32(hw, GLTSYN_ENA(src_idx), GLTSYN_ENA_TSYN_ENA_M);
++/* Clock source specification */
++enum ice_clk_src {
++	ICE_CLK_SRC_TCX0	= 0, /* Temperature compensated oscillator  */
++	ICE_CLK_SRC_TIME_REF	= 1, /* Use TIME_REF reference clock */
 +
-+	/* Clear event err indications for auxiliary pins */
-+	(void)rd32(hw, GLTSYN_STAT(src_idx));
++	NUM_ICE_CLK_SRC
++};
 +
-+	return ice_ptp_init_phc_e810(hw);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 4ca1b6fc5ba8..06819d91e3bc 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -27,6 +27,7 @@ int ice_ptp_write_incval_locked(struct ice_hw *hw, u64 incval);
- int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj);
- int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp);
- int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
-+int ice_ptp_init_phc(struct ice_hw *hw);
- 
- /* E810 family functions */
- int ice_ptp_init_phy_e810(struct ice_hw *hw);
+ struct ice_ts_func_info {
+ 	/* Function specific info */
+-	u32 clk_freq;
++	enum ice_time_ref_freq time_ref;
++	u8 clk_freq;
+ 	u8 clk_src;
+ 	u8 tmr_index_assoc;
+ 	u8 ena;
 -- 
 2.31.1.331.gb0c09ab8796f
 
