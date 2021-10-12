@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C60DC42AF0A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 23:33:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2199742AF09
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 23:33:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 784B0404AF;
-	Tue, 12 Oct 2021 21:33:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0C0B80D6C;
+	Tue, 12 Oct 2021 21:33:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NDi7SjubqiPF; Tue, 12 Oct 2021 21:33:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eFc_E83X4sKk; Tue, 12 Oct 2021 21:33:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0297E404A0;
-	Tue, 12 Oct 2021 21:33:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7C91380D69;
+	Tue, 12 Oct 2021 21:33:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 115BF1BF59B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2AAD01BF59B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 58D6D80D78
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0060682846
  for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dcbOLSsPPJNy for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id V4uQ2h87cWyK for <intel-wired-lan@lists.osuosl.org>;
  Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 10DD680D6C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227174430"
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="227174430"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1B9CD80D78
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 21:33:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="227174431"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="227174431"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2021 14:33:02 -0700
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="460529392"
+ 12 Oct 2021 14:33:03 -0700
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="460529396"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.138])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  12 Oct 2021 14:33:02 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
  Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 12 Oct 2021 14:32:24 -0700
-Message-Id: <20211012213230.2684338-4-jacob.e.keller@intel.com>
+Date: Tue, 12 Oct 2021 14:32:25 -0700
+Message-Id: <20211012213230.2684338-5-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 In-Reply-To: <20211012213230.2684338-1-jacob.e.keller@intel.com>
 References: <20211012213230.2684338-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v3 3/9] ice: use 'int err'
- instead of 'int status' in ice_ptp_hw.c
+Subject: [Intel-wired-lan] [net-next PATCH v3 4/9] ice: introduce
+ ice_ptp_init_phc function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,438 +63,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_ptp_hw.c file introduced a bunch of uses of "int status" instead
-of the more traditional "int err" or "int ret". These are actually
-traditional Linux error codes (as opposed to the recently removed
-ice_status enumeration values).
+When we enable support for E822 devices, there are some additional
+steps required to initialize the PTP hardware clock. To make this easier
+to implement as device-specific behavior, refactor the register setups
+in ice_ptp_init_owner to a new ice_ptp_init_phc function defined in
+ice_ptp_hw.c
 
-We're about to add a bunch of new functions to ice_ptp_hw.c. It's
-normally preferred in the ice driver to use "int ret" or "int err" when
-dealing with error code values.
+This function will have a common section, and an e810 specific
+sub-implementation.
 
-Instead of making the new functions use "int status" lets just fix all
-of ice_ptp_hw.c to use "int err". This will match the new functions and
-ensures a consistent style across at least the PTP related files.
+This will enable easily extending the functionality to cover the E822
+specific setup required to initialize the hardware clock generation
+unit. It also makes it clear which steps are E810 specific vs which ones
+are necessary for all ice devices.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 206 ++++++++++----------
- 1 file changed, 103 insertions(+), 103 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c    | 38 +++++++++------------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 34 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 +
+ 3 files changed, 52 insertions(+), 21 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index d275078d6737..076599202d57 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -1810,24 +1810,14 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_hw *hw = &pf->hw;
+ 	struct timespec64 ts;
+-	u8 src_idx;
+ 	int err;
+ 
+-	wr32(hw, GLTSYN_SYNC_DLAY, 0);
+-
+-	/* Clear some HW residue and enable source clock */
+-	src_idx = hw->func_caps.ts_func_info.tmr_index_owned;
+-
+-	/* Enable source clocks */
+-	wr32(hw, GLTSYN_ENA(src_idx), GLTSYN_ENA_TSYN_ENA_M);
+-
+-	/* Enable PHY time sync */
+-	err = ice_ptp_init_phy_e810(hw);
+-	if (err)
+-		goto err_exit;
+-
+-	/* Clear event status indications for auxiliary pins */
+-	(void)rd32(hw, GLTSYN_STAT(src_idx));
++	err = ice_ptp_init_phc(hw);
++	if (err) {
++		dev_err(dev, "Failed to initialize PHC, err %d\n",
++			err);
++		return err;
++	}
+ 
+ 	/* Acquire the global hardware lock */
+ 	if (!ice_ptp_lock(hw)) {
+@@ -1872,12 +1862,16 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
+ }
+ 
+ /**
+- * ice_ptp_init - Initialize the PTP support after device probe or reset
++ * ice_ptp_init - Initialize PTP hardware clock support
+  * @pf: Board private structure
+  *
+- * This function sets device up for PTP support. The first time it is run, it
+- * will create a clock device. It does not create a clock device if one
+- * already exists. It also reconfigures the device after a reset.
++ * Set up the device for interacting with the PTP hardware clock for all
++ * functions, both the function that owns the clock hardware, and the
++ * functions connected to the clock hardware.
++ *
++ * The clock owner will allocate and register a ptp_clock with the
++ * PTP_1588_CLOCK infrastructure. All functions allocate a kthread and work
++ * items used for asynchronous work such as Tx timestamps and periodic work.
+  */
+ void ice_ptp_init(struct ice_pf *pf)
+ {
+@@ -1890,7 +1884,9 @@ void ice_ptp_init(struct ice_pf *pf)
+ 	if (!ice_is_e810(hw))
+ 		return;
+ 
+-	/* Check if this PF owns the source timer */
++	/* If this function owns the clock hardware, it must allocate and
++	 * configure the PTP clock device to represent it.
++	 */
+ 	if (hw->func_caps.ts_func_info.src_tmr_owned) {
+ 		err = ice_ptp_init_owner(pf);
+ 		if (err)
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index f0b36b8324c4..b75aa7bcd421 100644
+index b75aa7bcd421..9787d45c2fdb 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -68,18 +68,18 @@ u8 ice_get_ptp_src_clock_index(struct ice_hw *hw)
- static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
- {
- 	struct ice_sbq_msg_input msg = {0};
--	int status;
-+	int err;
- 
- 	msg.msg_addr_low = lower_16_bits(addr);
- 	msg.msg_addr_high = upper_16_bits(addr);
- 	msg.opcode = ice_sbq_msg_rd;
- 	msg.dest_dev = rmn_0;
- 
--	status = ice_sbq_rw_reg(hw, &msg);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, status %d\n",
--			  status);
--		return status;
-+	err = ice_sbq_rw_reg(hw, &msg);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	*val = msg.data;
-@@ -98,7 +98,7 @@ static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
- static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
- {
- 	struct ice_sbq_msg_input msg = {0};
--	int status;
-+	int err;
- 
- 	msg.msg_addr_low = lower_16_bits(addr);
- 	msg.msg_addr_high = upper_16_bits(addr);
-@@ -106,11 +106,11 @@ static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
- 	msg.dest_dev = rmn_0;
- 	msg.data = val;
- 
--	status = ice_sbq_rw_reg(hw, &msg);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, status %d\n",
--			  status);
--		return status;
-+	err = ice_sbq_rw_reg(hw, &msg);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -130,23 +130,23 @@ static int
- ice_read_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx, u64 *tstamp)
- {
- 	u32 lo_addr, hi_addr, lo, hi;
--	int status;
-+	int err;
- 
- 	lo_addr = TS_EXT(LOW_TX_MEMORY_BANK_START, lport, idx);
- 	hi_addr = TS_EXT(HIGH_TX_MEMORY_BANK_START, lport, idx);
- 
--	status = ice_read_phy_reg_e810(hw, lo_addr, &lo);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to read low PTP timestamp register, status %d\n",
--			  status);
--		return status;
-+	err = ice_read_phy_reg_e810(hw, lo_addr, &lo);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to read low PTP timestamp register, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
--	status = ice_read_phy_reg_e810(hw, hi_addr, &hi);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to read high PTP timestamp register, status %d\n",
--			  status);
--		return status;
-+	err = ice_read_phy_reg_e810(hw, hi_addr, &hi);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to read high PTP timestamp register, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	/* For E810 devices, the timestamp is reported with the lower 32 bits
-@@ -169,23 +169,23 @@ ice_read_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx, u64 *tstamp)
- static int ice_clear_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx)
- {
- 	u32 lo_addr, hi_addr;
--	int status;
-+	int err;
- 
- 	lo_addr = TS_EXT(LOW_TX_MEMORY_BANK_START, lport, idx);
- 	hi_addr = TS_EXT(HIGH_TX_MEMORY_BANK_START, lport, idx);
- 
--	status = ice_write_phy_reg_e810(hw, lo_addr, 0);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to clear low PTP timestamp register, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, lo_addr, 0);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to clear low PTP timestamp register, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
--	status = ice_write_phy_reg_e810(hw, hi_addr, 0);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to clear high PTP timestamp register, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, hi_addr, 0);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to clear high PTP timestamp register, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -200,17 +200,17 @@ static int ice_clear_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx)
-  */
- int ice_ptp_init_phy_e810(struct ice_hw *hw)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_ENA(tmr_idx),
--					GLTSYN_ENA_TSYN_ENA_M);
--	if (status)
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_ENA(tmr_idx),
-+				     GLTSYN_ENA_TSYN_ENA_M);
-+	if (err)
- 		ice_debug(hw, ICE_DBG_PTP, "PTP failed in ena_phy_time_syn %d\n",
--			  status);
-+			  err);
- 
--	return status;
-+	return err;
+@@ -213,6 +213,21 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw)
+ 	return err;
  }
  
++/**
++ * ice_ptp_init_phc_e810 - Perform E810 specific PHC initialization
++ * @hw: pointer to HW struct
++ *
++ * Perform E810-specific PTP hardware clock initialization steps.
++ */
++static int ice_ptp_init_phc_e810(struct ice_hw *hw)
++{
++	/* Ensure synchronization delay is zero */
++	wr32(hw, GLTSYN_SYNC_DLAY, 0);
++
++	/* Initialize the PHY */
++	return ice_ptp_init_phy_e810(hw);
++}
++
  /**
-@@ -227,22 +227,22 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw)
-  */
- static int ice_ptp_prep_phy_time_e810(struct ice_hw *hw, u32 time)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
+  * ice_ptp_prep_phy_time_e810 - Prepare PHY port with initial time
+  * @hw: Board private structure
+@@ -840,3 +855,22 @@ bool ice_is_pca9575_present(struct ice_hw *hw)
  
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHTIME_0(tmr_idx), 0);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write SHTIME_0, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHTIME_0(tmr_idx), 0);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write SHTIME_0, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHTIME_L(tmr_idx), time);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write SHTIME_L, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHTIME_L(tmr_idx), time);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write SHTIME_L, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -263,26 +263,26 @@ static int ice_ptp_prep_phy_time_e810(struct ice_hw *hw, u32 time)
-  */
- static int ice_ptp_prep_phy_adj_e810(struct ice_hw *hw, s32 adj)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	/* Adjustments are represented as signed 2's complement values in
- 	 * nanoseconds. Sub-nanosecond adjustment is not supported.
- 	 */
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_L(tmr_idx), 0);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write adj to PHY SHADJ_L, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_L(tmr_idx), 0);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write adj to PHY SHADJ_L, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_H(tmr_idx), adj);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write adj to PHY SHADJ_H, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_H(tmr_idx), adj);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write adj to PHY SHADJ_H, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -300,25 +300,25 @@ static int ice_ptp_prep_phy_adj_e810(struct ice_hw *hw, s32 adj)
- static int ice_ptp_prep_phy_incval_e810(struct ice_hw *hw, u64 incval)
- {
- 	u32 high, low;
--	int status;
- 	u8 tmr_idx;
-+	int err;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 	low = lower_32_bits(incval);
- 	high = upper_32_bits(incval);
- 
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_L(tmr_idx), low);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write incval to PHY SHADJ_L, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_L(tmr_idx), low);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write incval to PHY SHADJ_L, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_H(tmr_idx), high);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write incval PHY SHADJ_H, status %d\n",
--			  status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_SHADJ_H(tmr_idx), high);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write incval PHY SHADJ_H, err %d\n",
-+			  err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -335,7 +335,7 @@ static int ice_ptp_prep_phy_incval_e810(struct ice_hw *hw, u64 incval)
- static int ice_ptp_port_cmd_e810(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- {
- 	u32 cmd_val, val;
--	int status;
-+	int err;
- 
- 	switch (cmd) {
- 	case INIT_TIME:
-@@ -356,20 +356,20 @@ static int ice_ptp_port_cmd_e810(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	}
- 
- 	/* Read, modify, write */
--	status = ice_read_phy_reg_e810(hw, ETH_GLTSYN_CMD, &val);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to read GLTSYN_CMD, status %d\n", status);
--		return status;
-+	err = ice_read_phy_reg_e810(hw, ETH_GLTSYN_CMD, &val);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to read GLTSYN_CMD, err %d\n", err);
-+		return err;
- 	}
- 
- 	/* Modify necessary bits only and perform write */
- 	val &= ~TS_CMD_MASK_E810;
- 	val |= cmd_val;
- 
--	status = ice_write_phy_reg_e810(hw, ETH_GLTSYN_CMD, val);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to write back GLTSYN_CMD, status %d\n", status);
--		return status;
-+	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_CMD, val);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to write back GLTSYN_CMD, err %d\n", err);
-+		return err;
- 	}
- 
- 	return 0;
-@@ -480,17 +480,17 @@ static void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
-  */
- static int ice_ptp_tmr_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- {
--	int status;
-+	int err;
- 
- 	/* First, prepare the source timer */
- 	ice_ptp_src_cmd(hw, cmd);
- 
- 	/* Next, prepare the ports */
--	status = ice_ptp_port_cmd_e810(hw, cmd);
--	if (status) {
--		ice_debug(hw, ICE_DBG_PTP, "Failed to prepare PHY ports for timer command %u, status %d\n",
--			  cmd, status);
--		return status;
-+	err = ice_ptp_port_cmd_e810(hw, cmd);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to prepare PHY ports for timer command %u, err %d\n",
-+			  cmd, err);
-+		return err;
- 	}
- 
- 	/* Write the sync command register to drive both source and PHY timer commands
-@@ -516,8 +516,8 @@ static int ice_ptp_tmr_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
-  */
- int ice_ptp_init_time(struct ice_hw *hw, u64 time)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
-@@ -528,9 +528,9 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
- 
- 	/* PHY timers */
- 	/* Fill Rx and Tx ports and send msg to PHY */
--	status = ice_ptp_prep_phy_time_e810(hw, time & 0xFFFFFFFF);
--	if (status)
--		return status;
-+	err = ice_ptp_prep_phy_time_e810(hw, time & 0xFFFFFFFF);
-+	if (err)
-+		return err;
- 
- 	return ice_ptp_tmr_cmd(hw, INIT_TIME);
+ 	return false;
  }
-@@ -551,8 +551,8 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
-  */
- int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
++
++/**
++ * ice_ptp_init_phc - Initialize PTP hardware clock
++ * @hw: pointer to the HW struct
++ *
++ * Perform the steps required to initialize the PTP hardware clock.
++ */
++int ice_ptp_init_phc(struct ice_hw *hw)
++{
++	u8 src_idx = hw->func_caps.ts_func_info.tmr_index_owned;
++
++	/* Enable source clocks */
++	wr32(hw, GLTSYN_ENA(src_idx), GLTSYN_ENA_TSYN_ENA_M);
++
++	/* Clear event err indications for auxiliary pins */
++	(void)rd32(hw, GLTSYN_STAT(src_idx));
++
++	return ice_ptp_init_phc_e810(hw);
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index 4ca1b6fc5ba8..06819d91e3bc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -27,6 +27,7 @@ int ice_ptp_write_incval_locked(struct ice_hw *hw, u64 incval);
+ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj);
+ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp);
+ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
++int ice_ptp_init_phc(struct ice_hw *hw);
  
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
-@@ -560,9 +560,9 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
- 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), lower_32_bits(incval));
- 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), upper_32_bits(incval));
- 
--	status = ice_ptp_prep_phy_incval_e810(hw, incval);
--	if (status)
--		return status;
-+	err = ice_ptp_prep_phy_incval_e810(hw, incval);
-+	if (err)
-+		return err;
- 
- 	return ice_ptp_tmr_cmd(hw, INIT_INCVAL);
- }
-@@ -576,16 +576,16 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
-  */
- int ice_ptp_write_incval_locked(struct ice_hw *hw, u64 incval)
- {
--	int status;
-+	int err;
- 
- 	if (!ice_ptp_lock(hw))
- 		return -EBUSY;
- 
--	status = ice_ptp_write_incval(hw, incval);
-+	err = ice_ptp_write_incval(hw, incval);
- 
- 	ice_ptp_unlock(hw);
- 
--	return status;
-+	return err;
- }
- 
- /**
-@@ -603,8 +603,8 @@ int ice_ptp_write_incval_locked(struct ice_hw *hw, u64 incval)
-  */
- int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
- {
--	int status;
- 	u8 tmr_idx;
-+	int err;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
-@@ -616,9 +616,9 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
- 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), 0);
- 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), adj);
- 
--	status = ice_ptp_prep_phy_adj_e810(hw, adj);
--	if (status)
--		return status;
-+	err = ice_ptp_prep_phy_adj_e810(hw, adj);
-+	if (err)
-+		return err;
- 
- 	return ice_ptp_tmr_cmd(hw, ADJ_TIME);
- }
+ /* E810 family functions */
+ int ice_ptp_init_phy_e810(struct ice_hw *hw);
 -- 
 2.31.1.331.gb0c09ab8796f
 
