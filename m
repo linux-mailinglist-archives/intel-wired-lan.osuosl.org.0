@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BB5142A541
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 15:16:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A23242A6A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 16:02:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A2016607D2;
-	Tue, 12 Oct 2021 13:16:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A028C6064B;
+	Tue, 12 Oct 2021 14:02:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cEMPXBnvuWAX; Tue, 12 Oct 2021 13:16:45 +0000 (UTC)
+	with ESMTP id 180nomRE_T60; Tue, 12 Oct 2021 14:02:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3922860635;
-	Tue, 12 Oct 2021 13:16:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 778AA6079C;
+	Tue, 12 Oct 2021 14:02:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0F2311BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 13:16:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 761281BF5B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:02:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0AFF140358
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 13:16:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 640056079C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:02:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KaCFNYZeXXh6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Oct 2021 13:16:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hRCvBApgIXPt for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Oct 2021 14:02:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4BC5E40341
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 13:16:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="227033618"
-X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="227033618"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2021 06:04:39 -0700
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9839160724
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 14:02:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="290645271"
+X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="290645271"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2021 06:52:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="490958163"
+X-IronPort-AV: E=Sophos;i="5.85,367,1624345200"; d="scan'208";a="441234397"
 Received: from amlin-019-242.igk.intel.com ([10.102.19.242])
- by orsmga008.jf.intel.com with ESMTP; 12 Oct 2021 06:04:38 -0700
+ by orsmga006.jf.intel.com with ESMTP; 12 Oct 2021 06:52:36 -0700
 From: Michal Maloszewski <michal.maloszewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 Oct 2021 13:04:47 +0000
-Message-Id: <20211012130447.6177-1-michal.maloszewski@intel.com>
+Date: Tue, 12 Oct 2021 13:52:45 +0000
+Message-Id: <20211012135245.6979-1-michal.maloszewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan strip
- virtual channel messages
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix reporting when setting
+ descriptor count
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,97 +60,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Maloszewski <michal.maloszewski@intel.com>,
- Norbert Ciosek <norbertx.ciosek@intel.com>
+Cc: Michal Maloszewski <michal.maloszewski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Modify netdev->features for vlan stripping based on virtual
-channel messages received from the PF. Change is needed
-to synchronize vlan strip status between PF sysfs and iavf ethtool.
+iavf_set_ringparams doesn't communicate to the user that
 
-Fixes: 54a4f0239f2e ("KVM: MMU: make kvm_mmu_zap_page() return the number of pages it actually freed")
-Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
+1. The user requested descriptor count is out of range. Instead it
+   just quietly sets descriptors to the "clamped" value and calls it
+   done. This makes it look an invalid value was successfully set as
+   the descriptor count when this isn't actually true.
+
+2. The user provided descriptor count needs to be inflated for alignment
+   reasons.
+
+This behavior is confusing. The ice driver has already addressed this
+by rejecting invalid values for descriptor count and messaging for alignment adjustments.
+Do the same thing here by adding the error and info messages.
+
+Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 Signed-off-by: Michal Maloszewski <michal.maloszewski@intel.com>
 ---
-v2: commit message and comments corrected
-    note that splitting lines is necessary because the number of allowable characters on the line is exceeded
+v3: Commit with fixes tag changed.
 ---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 44 ++++++++++++++++++-
- 1 file changed, 43 insertions(+), 1 deletion(-)
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 43 ++++++++++++++-----
+ 1 file changed, 32 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 9c128462ed..68761b92f6 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1456,6 +1456,22 @@ void iavf_request_reset(struct iavf_adapter *adapter)
- 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- }
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 7cbe59beee..cbfc8d07a0 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -612,23 +612,44 @@ static int iavf_set_ringparam(struct net_device *netdev,
+ 	if ((ring->rx_mini_pending) || (ring->rx_jumbo_pending))
+ 		return -EINVAL;
  
-+/**
-+ * iavf_netdev_features_vlan_strip_set
-+ * @netdev: ptr to netdev being adjusted
-+ * @enable: enable or disable vlan strip
-+ *
-+ * Helper function to change vlan strip status in netdev->features.
-+ **/
-+static void iavf_netdev_features_vlan_strip_set(struct net_device *netdev,
-+					       const bool enable)
-+{
-+	if (enable)
-+	     netdev->features |= NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_RX;
-+	else
-+	     netdev->features &= ~NETIF_F_HW_VLAN_CTAG_RX & ~NETIF_F_HW_VLAN_RX;
-+}
+-	new_tx_count = clamp_t(u32, ring->tx_pending,
+-			       IAVF_MIN_TXD,
+-			       IAVF_MAX_TXD);
+-	new_tx_count = ALIGN(new_tx_count, IAVF_REQ_DESCRIPTOR_MULTIPLE);
++	if (ring->tx_pending > IAVF_MAX_TXD ||
++	    ring->tx_pending < IAVF_MIN_TXD ||
++	    ring->rx_pending > IAVF_MAX_RXD ||
++	    ring->rx_pending < IAVF_MIN_RXD) {
++		  netdev_err(netdev, "Descriptors requested (Tx: %d / Rx: %d) out of range [%d-%d] (increment %d)\n",
++			     ring->tx_pending, ring->rx_pending, IAVF_MIN_TXD,
++			     IAVF_MAX_RXD, IAVF_REQ_DESCRIPTOR_MULTIPLE);
++		  return -EINVAL;
++	}
 +
- /**
-  * iavf_virtchnl_completion
-  * @adapter: adapter structure
-@@ -1679,8 +1695,20 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			}
- 			break;
- 		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
-+			dev_warn(&adapter->pdev->dev,
-+				 "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-+			/*Vlan stripping could not be enabled by ethtool.
-+			 * Disable it in netdev->features.
-+			 */
-+			iavf_netdev_features_vlan_strip_set(netdev, false);
-+			break;
- 		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
--			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-+			dev_warn(&adapter->pdev->dev,
-+				 "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-+			/*Vlan stripping could not be disabled by ethtool.
-+			 * Enable it in netdev->features.
-+			 */
-+			iavf_netdev_features_vlan_strip_set(netdev, true);
- 			break;
- 		default:
- 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
-@@ -1897,6 +1925,20 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		spin_unlock_bh(&adapter->adv_rss_lock);
- 		}
- 		break;
-+	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
-+		/*Got information that PF enabled vlan strip on this VF.
-+		 * Update netdev->features if needed to be in sync with ethtool.
-+		 */
-+		if (!v_retval)
-+			iavf_netdev_features_vlan_strip_set(netdev, true);
-+		break;
-+	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
-+		/* Got information that PF disabled vlan strip on this VF.
-+		 * Update netdev->features if needed to be in sync with ethtool.
-+		 */
-+		if (!v_retval)
-+			iavf_netdev_features_vlan_strip_set(netdev, false);
-+		break;
- 	default:
- 		if (adapter->current_op && (v_opcode != adapter->current_op))
- 			dev_dbg(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
++	new_tx_count = ALIGN(ring->tx_pending, IAVF_REQ_DESCRIPTOR_MULTIPLE);
++	if (new_tx_count != ring->tx_pending)
++		netdev_info(netdev, "Requested Tx descriptor count rounded up to %d\n",
++			    new_tx_count);
+ 
+-	new_rx_count = clamp_t(u32, ring->rx_pending,
+-			       IAVF_MIN_RXD,
+-			       IAVF_MAX_RXD);
+-	new_rx_count = ALIGN(new_rx_count, IAVF_REQ_DESCRIPTOR_MULTIPLE);
++	new_rx_count = ALIGN(ring->rx_pending, IAVF_REQ_DESCRIPTOR_MULTIPLE);
++	if (new_rx_count != ring->rx_pending)
++		netdev_info(netdev, "Requested Rx descriptor count rounded up to %d\n",
++			    new_rx_count);
+ 
+ 	/* if nothing to do return success */
+ 	if ((new_tx_count == adapter->tx_desc_count) &&
+-	    (new_rx_count == adapter->rx_desc_count))
++	    (new_rx_count == adapter->rx_desc_count)) {
++		netdev_dbg(netdev, "Nothing to change, descriptor count is same as requested\n");
+ 		return 0;
++	}
+ 
+-	adapter->tx_desc_count = new_tx_count;
+-	adapter->rx_desc_count = new_rx_count;
++	if (new_tx_count != adapter->tx_desc_count) {
++		netdev_info(netdev, "Changing Tx descriptor count from %d to %d\n",
++			    adapter->tx_desc_count, new_tx_count);
++		adapter->tx_desc_count = new_tx_count;
++	}
++
++	if (new_rx_count != adapter->rx_desc_count) {
++		netdev_info(netdev, "Changing Rx descriptor count from %d to %d\n",
++			    adapter->rx_desc_count, new_rx_count);
++		adapter->rx_desc_count = new_rx_count;
++	}
+ 
+ 	if (netif_running(netdev)) {
+ 		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
 -- 
 2.27.0
 
