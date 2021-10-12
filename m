@@ -2,67 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EED142AB61
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 19:59:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 817E542ABF3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 20:33:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8107681C18;
-	Tue, 12 Oct 2021 17:59:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E4F4181858;
+	Tue, 12 Oct 2021 18:33:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QxGj4AfB8_YP; Tue, 12 Oct 2021 17:59:03 +0000 (UTC)
+	with ESMTP id 6FkfJHqTKYzb; Tue, 12 Oct 2021 18:33:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7F48681C11;
-	Tue, 12 Oct 2021 17:59:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DF6098183D;
+	Tue, 12 Oct 2021 18:33:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EA6BC1BF9B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 17:58:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7EEDC1BF317
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DAB6A403FB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 17:58:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 65B0C405DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qwMV0BFNLT_G for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Oct 2021 17:58:59 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ot1-f43.google.com (mail-ot1-f43.google.com
- [209.85.210.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1A8FC40196
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 17:58:59 +0000 (UTC)
-Received: by mail-ot1-f43.google.com with SMTP id
- g62-20020a9d2dc4000000b0054752cfbc59so404556otb.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 10:58:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c2wHi0IsvvbTH5QwojHP29Nw/ht55S854mw0G0+05o0=;
- b=1x/3+dDMnIz3hwkj6fHfpdLDDe3tp28CvhUBkqa+ckxXkyIxh84lVWtJiLnekGmBge
- FtV8Nf0368QYkrYHLIxbLu4Etq4C1vr0TxFACKgkZNiEW3YkKtnObpT6jM4PkGfgT0io
- quCmKzdrzSoKAxCAfjrYbZkW/fj6tPUBy+X1qzaFgEsv60E4NHPET9SB2TWN2/TDhqtE
- ofPPi4qpzhdTHeREUU/aqnofMN3cgQJPFvS7KJhbzHlPzz3xwsVmHZW00GyLen/56tFe
- osypiouLb7RBfMugI47nhe3YjYFkyCW5KXtAaKjEt3P/34bA/kVAZcR+sww9DpCbNePp
- AS2Q==
-X-Gm-Message-State: AOAM533GdlsUMnQX8KsAFAuITt/Je332mndw0K9oTTFybd/fkxr3Tuug
- PQF/wA4TTl5e90jEO1WGMQC+At/9Hmc6SsLlHss=
-X-Google-Smtp-Source: ABdhPJwkV3+7VqGccFRlX/nVgDFie+jFqR5G8Jl/Z4xr89wPEnQZO0oUkBCcsthggrRRQ4FA82xwXHIZxYklyLJUq/k=
-X-Received: by 2002:a05:6830:1af0:: with SMTP id
- c16mr14382990otd.16.1634061538134; 
- Tue, 12 Oct 2021 10:58:58 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eMCRaCfVcyoY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Oct 2021 18:33:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6355B4028C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="250640569"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="250640569"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2021 11:33:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="491100328"
+Received: from anguy11-desk2.jf.intel.com ([10.166.244.147])
+ by orsmga008.jf.intel.com with ESMTP; 12 Oct 2021 11:33:02 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 12 Oct 2021 11:31:02 -0700
+Message-Id: <20211012183106.2315477-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <1823864.tdWV9SEqCh@kailua> <2944777.ktpJ11cQ8Q@pinacolada>
- <c75203e9-0ef4-20bd-87a5-ad0846863886@intel.com> <2801801.e9J7NaK4W3@kailua>
- <6faf4b92-78d5-47a4-63df-cc2bab7769d0@molgen.mpg.de>
-In-Reply-To: <6faf4b92-78d5-47a4-63df-cc2bab7769d0@molgen.mpg.de>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 12 Oct 2021 19:58:47 +0200
-Message-ID: <CAJZ5v0gf0y6qDHUJOsvLFctqn8tgKeuTYn5S9rb6+T0Sj26aKw@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Subject: Re: [Intel-wired-lan] [EXT] Re: Intel I350 regression 5.10 -> 5.14
- ("The NVM Checksum Is Not Valid") [8086:1521]
+Subject: [Intel-wired-lan] [next-queue v2 0/4] support for tunnel in ice
+ eswitch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,59 +60,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Jakub Kicinski <kubakici@wp.pl>,
- netdev <netdev@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
- intel-wired-lan@lists.osuosl.org, Len Brown <lenb@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Oct 12, 2021 at 7:42 PM Paul Menzel <pmenzel@molgen.mpg.de> wrote:
->
-> [Cc: +ACPI maintainers]
->
-> Am 12.10.21 um 18:34 schrieb Andreas K. Huettel:
-> >>> The messages easily identifiable are:
-> >>>
-> >>> huettel@pinacolada ~/tmp $ cat kernel-messages-5.10.59.txt |grep igb
-> >>> Oct  5 15:11:18 dilfridge kernel: [    2.090675] igb: Intel(R) Gigabit Ethernet Network Driver
-> >>> Oct  5 15:11:18 dilfridge kernel: [    2.090676] igb: Copyright (c) 2007-2014 Intel Corporation.
-> >>> Oct  5 15:11:18 dilfridge kernel: [    2.090728] igb 0000:01:00.0: enabling device (0000 -> 0002)
-> >>
-> >> This line is missing below, it indicates that the kernel couldn't or
-> >> didn't power up the PCIe for some reason. We're looking for something
-> >> like ACPI or PCI patches (possibly PCI-Power management) to be the
-> >> culprit here.
-> >
-> > So I did a git bisect from linux-v5.10 (good) to linux-v5.14.11 (bad).
-> >
-> > The result was:
-> >
-> > dilfridge /usr/src/linux-git # git bisect bad
-> > 6381195ad7d06ef979528c7452f3ff93659f86b1 is the first bad commit
-> > commit 6381195ad7d06ef979528c7452f3ff93659f86b1
-> > Author: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> > Date:   Mon May 24 17:26:16 2021 +0200
-> >
-> >      ACPI: power: Rework turning off unused power resources
-> > [...]
-> >
-> > I tried naive reverting of this commit on top of 5.14.11. That applies nearly cleanly,
-> > and after a reboot the additional ethernet interfaces show up with their MAC in the
-> > boot messages.
-> >
-> > (Not knowing how safe that experiment was, I did not go further than single mode and
-> > immediately rebooted into 5.10 afterwards.)
+This series adds the support for ice VXLAN, Geneve and GRE offload.
 
-Reverting this is rather not an option, because the code before it was
-a one-off fix of an earlier issue, but it should be fixable given some
-more information.
+Support adding drop and redirect filter from and to this tunnel devices.
+From means from uplink to VF and to means from VF to uplink. There is no
+support for decapsulation and encapsulation offload.
 
-Basically, I need a boot log from both the good and bad cases and the
-acpidump output from the affected machine.
+example:
+- VXLAN from uplink to VF:
+tc filter add dev $VXLAN_DEV protocol ip parent ffff: flower enc_dst_ip  \
+$VF1_IP enc_key_id $VXLAN_VNI action mirred egress redirect dev $VF1_PR
+- VXLAN from VF to uplink:
+tc filter add dev $VF1_PR protocol ip parent ffff: flower enc_dst_ip \
+$LP_IP enc_key_id $VXLAN_VNI action mirred egress redirect dev
+$VXLAN_DEV
+---
+v2:
+- Fix sparse error and kdoc issues
+- Fix abbreviations
+
+Michal Swiatkowski (4):
+  ice: support for indirect notification
+  ice: VXLAN and Geneve TC support
+  ice: low level support for tunnels
+  ice: support for GRE in eswitch
+
+ drivers/net/ethernet/intel/ice/ice.h          |   8 +
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  30 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   4 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 196 ++++++++-
+ .../ethernet/intel/ice/ice_protocol_type.h    |  35 ++
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 375 ++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   3 +
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 392 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h   |  10 +
+ 9 files changed, 1004 insertions(+), 49 deletions(-)
+
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
