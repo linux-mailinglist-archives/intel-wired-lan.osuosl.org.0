@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9017242ABF4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 20:33:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C621942ABF6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 20:33:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44FB081CE1;
-	Tue, 12 Oct 2021 18:33:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6331D81CA0;
+	Tue, 12 Oct 2021 18:33:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8aEzN6DJDhfk; Tue, 12 Oct 2021 18:33:14 +0000 (UTC)
+	with ESMTP id 7IEP9qMJw4fw; Tue, 12 Oct 2021 18:33:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3884F80E8D;
-	Tue, 12 Oct 2021 18:33:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E56580E8D;
+	Tue, 12 Oct 2021 18:33:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 83F771BF9BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 975761BF317
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7388E60BE5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 913EB4028C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qadE7VXJA8WH for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VXoruynjddar for <intel-wired-lan@lists.osuosl.org>;
  Tue, 12 Oct 2021 18:33:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EEEE560BE4
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D8848403E9
  for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 18:33:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="250640572"
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="250640572"
+X-IronPort-AV: E=McAfee;i="6200,9189,10135"; a="250640575"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="250640575"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2021 11:33:02 -0700
+ 12 Oct 2021 11:33:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="491100331"
+X-IronPort-AV: E=Sophos;i="5.85,368,1624345200"; d="scan'208";a="491100332"
 Received: from anguy11-desk2.jf.intel.com ([10.166.244.147])
  by orsmga008.jf.intel.com with ESMTP; 12 Oct 2021 11:33:02 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 Oct 2021 11:31:04 -0700
-Message-Id: <20211012183106.2315477-3-anthony.l.nguyen@intel.com>
+Date: Tue, 12 Oct 2021 11:31:05 -0700
+Message-Id: <20211012183106.2315477-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20211012183106.2315477-1-anthony.l.nguyen@intel.com>
 References: <20211012183106.2315477-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue v2 2/4] ice: VXLAN and Geneve TC
- support
+Subject: [Intel-wired-lan] [next-queue v2 3/4] ice: low level support for
+ tunnels
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,736 +69,521 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-Add definition for VXLAN and Geneve dummy packet. Define VXLAN and
-Geneve type of fields to match on correct UDP tunnel header.
+Add definition of UDP tunnel dummy packets. Fill destination port value
+in filter based on UDP tunnel port. Append tunnel flags to switch filter
+definition in case of matching the tunnel.
 
-Parse tunnel specific fields from TC tool like outer MACs, outer IPs,
-outer destination port and VNI. Save values and masks in outer header
-struct and move header pointer to inner to simplify parsing inner
-values.
-
-There are two cases for redirect action:
-- from uplink to VF - TC filter is added on tunnel device
-- from VF to uplink - TC filter is added on PR, for this case check if
-  redirect device is tunnel device
-
-VXLAN example:
-- create tunnel device
-ip l add $VXLAN_DEV type vxlan id $VXLAN_VNI dstport $VXLAN_PORT \
-dev $PF
-- add TC filter (in switchdev mode)
-tc filter add dev $VXLAN_DEV protocol ip parent ffff: flower \
-enc_dst_ip $VF1_IP enc_key_id $VXLAN_VNI action mirred egress \
-redirect dev $VF1_PR
-
-Geneve example:
-- create tunnel device
-ip l add $GENEVE_DEV type geneve id $GENEVE_VNI dstport $GENEVE_PORT \
-remote $GENEVE_IP
-- add TC filter (in switchdev mode)
-tc filter add dev $GENEVE_DEV protocol ip parent ffff: flower \
-enc_key_id $GENEVE_VNI dst_ip $GENEVE1_IP action mirred egress \
-redirect dev $VF1_PR
+Both vxlan and geneve are UDP tunnels, so only one new header is needed.
 
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
- .../ethernet/intel/ice/ice_protocol_type.h    |  16 +
- drivers/net/ethernet/intel/ice/ice_switch.h   |   1 +
- drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 384 ++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   4 +
- 5 files changed, 363 insertions(+), 48 deletions(-)
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  26 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   2 +
+ .../ethernet/intel/ice/ice_protocol_type.h    |   9 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 264 +++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   2 +
+ 5 files changed, 300 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 600c8444d23b..3545d2d3409f 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -7390,11 +7390,9 @@ ice_indr_setup_tc_block(struct net_device *netdev, struct Qdisc *sch,
- 	struct ice_indr_block_priv *indr_priv;
- 	struct flow_block_cb *block_cb;
- 
--	int tunnel_type = 0;
--
--	if (tunnel_type != TNL_VXLAN && tunnel_type != TNL_GENEVE &&
-+	if (!ice_is_tunnel_supported(netdev) &&
- 	    !(is_vlan_dev(netdev) &&
--	    vlan_dev_real_dev(netdev) == np->vsi->netdev))
-+	      vlan_dev_real_dev(netdev) == np->vsi->netdev))
- 		return -EOPNOTSUPP;
- 
- 	if (f->binder_type != FLOW_BLOCK_BINDER_TYPE_CLSACT_INGRESS)
-diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-index 0b220dfa7457..d717d1158545 100644
---- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-@@ -37,10 +37,19 @@ enum ice_protocol_type {
- 	ICE_TCP_IL,
- 	ICE_UDP_OF,
- 	ICE_UDP_ILOS,
-+	ICE_VXLAN,
-+	ICE_GENEVE,
-+	ICE_VXLAN_GPE,
- 	ICE_SCTP_IL,
- 	ICE_PROTOCOL_LAST
- };
- 
-+enum ice_sw_tunnel_type {
-+	ICE_NON_TUN = 0,
-+	ICE_SW_TUN_VXLAN,
-+	ICE_SW_TUN_GENEVE,
-+};
-+
- /* Decoders for ice_prot_id:
-  * - F: First
-  * - I: Inner
-@@ -152,6 +161,12 @@ struct ice_l4_hdr {
- 	__be16 check;
- };
- 
-+struct ice_udp_tnl_hdr {
-+	__be16 field;
-+	__be16 proto_type;
-+	__be32 vni;     /* only use lower 24-bits */
-+};
-+
- union ice_prot_hdr {
- 	struct ice_ether_hdr eth_hdr;
- 	struct ice_ethtype_hdr ethertype;
-@@ -160,6 +175,7 @@ union ice_prot_hdr {
- 	struct ice_ipv6_hdr ipv6_hdr;
- 	struct ice_l4_hdr l4_hdr;
- 	struct ice_sctp_hdr sctp_hdr;
-+	struct ice_udp_tnl_hdr tnl_hdr;
- };
- 
- /* This is mapping table entry that maps every word within a given protocol
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index d4c0a3b594af..e779681da59e 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -171,6 +171,7 @@ struct ice_adv_rule_flags_info {
- };
- 
- struct ice_adv_rule_info {
-+	enum ice_sw_tunnel_type tun_type;
- 	struct ice_sw_act_ctrl sw_act;
- 	u32 priority;
- 	u8 rx; /* true means LOOKUP_RX otherwise LOOKUP_TX */
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 1dccfd116bc9..30a276d789f3 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -3,8 +3,9 @@
- 
- #include "ice.h"
- #include "ice_tc_lib.h"
--#include "ice_lib.h"
- #include "ice_fltr.h"
-+#include "ice_lib.h"
-+#include "ice_protocol_type.h"
- 
- /**
-  * ice_tc_count_lkups - determine lookup count for switch filter
-@@ -20,7 +21,21 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- {
- 	int lkups_cnt = 0;
- 
--	if (flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID)
-+	if (flags & ICE_TC_FLWR_FIELD_TENANT_ID)
-+		lkups_cnt++;
-+
-+	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
-+		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4 |
-+		     ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
-+		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV6))
-+		lkups_cnt++;
-+
-+	if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT)
-+		lkups_cnt++;
-+
-+	/* currently inner etype filter isn't supported */
-+	if ((flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID) &&
-+	    fltr->tunnel_type == TNL_LAST)
- 		lkups_cnt++;
- 
- 	/* are MAC fields specified? */
-@@ -32,10 +47,8 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 		lkups_cnt++;
- 
- 	/* are IPv[4|6] fields specified? */
--	if (flags & (ICE_TC_FLWR_FIELD_DEST_IPV4 | ICE_TC_FLWR_FIELD_SRC_IPV4))
--		lkups_cnt++;
--	else if (flags & (ICE_TC_FLWR_FIELD_DEST_IPV6 |
--			  ICE_TC_FLWR_FIELD_SRC_IPV6))
-+	if (flags & (ICE_TC_FLWR_FIELD_DEST_IPV4 | ICE_TC_FLWR_FIELD_SRC_IPV4 |
-+		     ICE_TC_FLWR_FIELD_DEST_IPV6 | ICE_TC_FLWR_FIELD_SRC_IPV6))
- 		lkups_cnt++;
- 
- 	/* is L4 (TCP/UDP/any other L4 protocol fields) specified? */
-@@ -46,6 +59,135 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 	return lkups_cnt;
- }
- 
-+static enum ice_protocol_type
-+ice_proto_type_from_mac(bool inner)
-+{
-+	return inner ? ICE_MAC_IL : ICE_MAC_OFOS;
-+}
-+
-+static enum ice_protocol_type
-+ice_proto_type_from_ipv4(bool inner)
-+{
-+	return inner ? ICE_IPV4_IL : ICE_IPV4_OFOS;
-+}
-+
-+static enum ice_protocol_type
-+ice_proto_type_from_ipv6(bool inner)
-+{
-+	return inner ? ICE_IPV6_IL : ICE_IPV6_OFOS;
-+}
-+
-+static enum ice_protocol_type
-+ice_proto_type_from_l4_port(bool inner, u16 ip_proto)
-+{
-+	if (inner) {
-+		switch (ip_proto) {
-+		case IPPROTO_UDP:
-+			return ICE_UDP_ILOS;
-+		}
-+	} else {
-+		switch (ip_proto) {
-+		case IPPROTO_TCP:
-+			return ICE_TCP_IL;
-+		case IPPROTO_UDP:
-+			return ICE_UDP_OF;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static enum ice_protocol_type
-+ice_proto_type_from_tunnel(enum ice_tunnel_type type)
-+{
-+	switch (type) {
-+	case TNL_VXLAN:
-+		return ICE_VXLAN;
-+	case TNL_GENEVE:
-+		return ICE_GENEVE;
-+	default:
-+		return 0;
-+	}
-+}
-+
-+static enum ice_sw_tunnel_type
-+ice_sw_type_from_tunnel(enum ice_tunnel_type type)
-+{
-+	switch (type) {
-+	case TNL_VXLAN:
-+		return ICE_SW_TUN_VXLAN;
-+	case TNL_GENEVE:
-+		return ICE_SW_TUN_GENEVE;
-+	default:
-+		return ICE_NON_TUN;
-+	}
-+}
-+
-+static int
-+ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
-+			 struct ice_adv_lkup_elem *list)
-+{
-+	struct ice_tc_flower_lyr_2_4_hdrs *hdr = &fltr->outer_headers;
-+	int i = 0;
-+
-+	if (flags & ICE_TC_FLWR_FIELD_TENANT_ID) {
-+		u32 tenant_id;
-+
-+		list[i].type = ice_proto_type_from_tunnel(fltr->tunnel_type);
-+		tenant_id = be32_to_cpu(fltr->tenant_id) << 8;
-+		list[i].h_u.tnl_hdr.vni = cpu_to_be32(tenant_id);
-+		memcpy(&list[i].m_u.tnl_hdr.vni, "\xff\xff\xff\x00", 4);
-+		i++;
-+	}
-+
-+	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
-+		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4)) {
-+		list[i].type = ice_proto_type_from_ipv4(false);
-+
-+		if (flags & ICE_TC_FLWR_FIELD_ENC_SRC_IPV4) {
-+			list[i].h_u.ipv4_hdr.src_addr = hdr->l3_key.src_ipv4;
-+			list[i].m_u.ipv4_hdr.src_addr = hdr->l3_mask.src_ipv4;
-+		}
-+		if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_IPV4) {
-+			list[i].h_u.ipv4_hdr.dst_addr = hdr->l3_key.dst_ipv4;
-+			list[i].m_u.ipv4_hdr.dst_addr = hdr->l3_mask.dst_ipv4;
-+		}
-+		i++;
-+	}
-+
-+	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
-+		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV6)) {
-+		list[i].type = ice_proto_type_from_ipv6(false);
-+
-+		if (flags & ICE_TC_FLWR_FIELD_ENC_SRC_IPV6) {
-+			memcpy(&list[i].h_u.ipv6_hdr.src_addr,
-+			       &hdr->l3_key.src_ipv6_addr,
-+			       sizeof(hdr->l3_key.src_ipv6_addr));
-+			memcpy(&list[i].m_u.ipv6_hdr.src_addr,
-+			       &hdr->l3_mask.src_ipv6_addr,
-+			       sizeof(hdr->l3_mask.src_ipv6_addr));
-+		}
-+		if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_IPV6) {
-+			memcpy(&list[i].h_u.ipv6_hdr.dst_addr,
-+			       &hdr->l3_key.dst_ipv6_addr,
-+			       sizeof(hdr->l3_key.dst_ipv6_addr));
-+			memcpy(&list[i].m_u.ipv6_hdr.dst_addr,
-+			       &hdr->l3_mask.dst_ipv6_addr,
-+			       sizeof(hdr->l3_mask.dst_ipv6_addr));
-+		}
-+		i++;
-+	}
-+
-+	if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) {
-+		list[i].type = ice_proto_type_from_l4_port(false, hdr->l3_key.ip_proto);
-+		list[i].h_u.l4_hdr.dst_port = hdr->l4_key.dst_port;
-+		list[i].m_u.l4_hdr.dst_port = hdr->l4_mask.dst_port;
-+		i++;
-+	}
-+
-+	return i;
-+}
-+
- /**
-  * ice_tc_fill_rules - fill filter rules based on TC fltr
-  * @hw: pointer to HW structure
-@@ -67,9 +209,16 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		  u16 *l4_proto)
- {
- 	struct ice_tc_flower_lyr_2_4_hdrs *headers = &tc_fltr->outer_headers;
-+	bool inner = false;
- 	int i = 0;
- 
--	if (flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID) {
-+	rule_info->tun_type = ice_sw_type_from_tunnel(tc_fltr->tunnel_type);
-+	if (tc_fltr->tunnel_type != TNL_LAST) {
-+		i = ice_tc_fill_tunnel_outer(flags, tc_fltr, list);
-+
-+		headers = &tc_fltr->inner_headers;
-+		inner = true;
-+	} else if (flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID) {
- 		list[i].type = ICE_ETYPE_OL;
- 		list[i].h_u.ethertype.ethtype_id = headers->l2_key.n_proto;
- 		list[i].m_u.ethertype.ethtype_id = headers->l2_mask.n_proto;
-@@ -83,7 +232,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		l2_key = &headers->l2_key;
- 		l2_mask = &headers->l2_mask;
- 
--		list[i].type = ICE_MAC_OFOS;
-+		list[i].type = ice_proto_type_from_mac(inner);
- 		if (flags & ICE_TC_FLWR_FIELD_DST_MAC) {
- 			ether_addr_copy(list[i].h_u.eth_hdr.dst_addr,
- 					l2_key->dst_mac);
-@@ -112,7 +261,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		     ICE_TC_FLWR_FIELD_SRC_IPV4)) {
- 		struct ice_tc_l3_hdr *l3_key, *l3_mask;
- 
--		list[i].type = ICE_IPV4_OFOS;
-+		list[i].type = ice_proto_type_from_ipv4(inner);
- 		l3_key = &headers->l3_key;
- 		l3_mask = &headers->l3_mask;
- 		if (flags & ICE_TC_FLWR_FIELD_DEST_IPV4) {
-@@ -129,7 +278,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		struct ice_ipv6_hdr *ipv6_hdr, *ipv6_mask;
- 		struct ice_tc_l3_hdr *l3_key, *l3_mask;
- 
--		list[i].type = ICE_IPV6_OFOS;
-+		list[i].type = ice_proto_type_from_ipv6(inner);
- 		ipv6_hdr = &list[i].h_u.ipv6_hdr;
- 		ipv6_mask = &list[i].m_u.ipv6_hdr;
- 		l3_key = &headers->l3_key;
-@@ -155,19 +304,10 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		     ICE_TC_FLWR_FIELD_SRC_L4_PORT)) {
- 		struct ice_tc_l4_hdr *l4_key, *l4_mask;
- 
-+		list[i].type = ice_proto_type_from_l4_port(inner, headers->l3_key.ip_proto);
- 		l4_key = &headers->l4_key;
- 		l4_mask = &headers->l4_mask;
--		if (headers->l3_key.ip_proto == IPPROTO_TCP) {
--			list[i].type = ICE_TCP_IL;
--			/* detected L4 proto is TCP */
--			if (l4_proto)
--				*l4_proto = IPPROTO_TCP;
--		} else if (headers->l3_key.ip_proto == IPPROTO_UDP) {
--			list[i].type = ICE_UDP_ILOS;
--			/* detected L4 proto is UDP */
--			if (l4_proto)
--				*l4_proto = IPPROTO_UDP;
--		}
-+
- 		if (flags & ICE_TC_FLWR_FIELD_DEST_L4_PORT) {
- 			list[i].h_u.l4_hdr.dst_port = l4_key->dst_port;
- 			list[i].m_u.l4_hdr.dst_port = l4_mask->dst_port;
-@@ -182,6 +322,27 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 	return i;
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index 3013411e4a5b..171df32cef33 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -1641,6 +1641,26 @@ static struct ice_buf_build *ice_pkg_buf_alloc(struct ice_hw *hw)
+ 	return bld;
  }
  
 +/**
-+ * ice_tc_tun_get_type - get the tunnel type
-+ * @tunnel_dev: ptr to tunnel device
-+ *
-+ * This function detects appropriate tunnel_type if specified device is
-+ * tunnel device such as VXLAN/Geneve
++ * ice_get_sw_prof_type - determine switch profile type
++ * @hw: pointer to the HW structure
++ * @fv: pointer to the switch field vector
 + */
-+static int ice_tc_tun_get_type(struct net_device *tunnel_dev)
++static enum ice_prof_type
++ice_get_sw_prof_type(struct ice_hw *hw, struct ice_fv *fv)
 +{
-+	if (netif_is_vxlan(tunnel_dev))
-+		return TNL_VXLAN;
-+	if (netif_is_geneve(tunnel_dev))
-+		return TNL_GENEVE;
-+	return TNL_LAST;
++	u16 i;
++
++	for (i = 0; i < hw->blk[ICE_BLK_SW].es.fvw; i++) {
++		/* UDP tunnel will have UDP_OF protocol ID and VNI offset */
++		if (fv->ew[i].prot_id == (u8)ICE_PROT_UDP_OF &&
++		    fv->ew[i].off == ICE_VNI_OFFSET)
++			return ICE_PROF_TUN_UDP;
++	}
++
++	return ICE_PROF_NON_TUN;
 +}
 +
-+bool ice_is_tunnel_supported(struct net_device *dev)
-+{
-+	return ice_tc_tun_get_type(dev) != TNL_LAST;
-+}
+ /**
+  * ice_get_sw_fv_bitmap - Get switch field vector bitmap based on profile type
+  * @hw: pointer to hardware structure
+@@ -1664,6 +1684,7 @@ ice_get_sw_fv_bitmap(struct ice_hw *hw, enum ice_prof_type req_profs,
+ 	bitmap_zero(bm, ICE_MAX_NUM_PROFILES);
+ 	ice_seg = hw->seg;
+ 	do {
++		enum ice_prof_type prof_type;
+ 		u32 offset;
+ 
+ 		fv = ice_pkg_enum_entry(ice_seg, &state, ICE_SID_FLD_VEC_SW,
+@@ -1671,7 +1692,10 @@ ice_get_sw_fv_bitmap(struct ice_hw *hw, enum ice_prof_type req_profs,
+ 		ice_seg = NULL;
+ 
+ 		if (fv) {
+-			if (req_profs & ICE_PROF_NON_TUN)
++			/* Determine field vector type */
++			prof_type = ice_get_sw_prof_type(hw, fv);
 +
- static int
- ice_eswitch_tc_parse_action(struct ice_tc_flower_fltr *fltr,
- 			    struct flow_action_entry *act)
-@@ -201,10 +362,7 @@ ice_eswitch_tc_parse_action(struct ice_tc_flower_fltr *fltr,
++			if (req_profs & prof_type)
+ 				set_bit((u16)offset, bm);
+ 		}
+ 	} while (fv);
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_type.h b/drivers/net/ethernet/intel/ice/ice_flex_type.h
+index c73fde45b266..fce1bd929467 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_flex_type.h
+@@ -656,6 +656,8 @@ struct ice_chs_chg {
  
- 			fltr->dest_vsi = repr->src_vsi;
- 			fltr->direction = ICE_ESWITCH_FLTR_INGRESS;
--		} else if (netif_is_ice(act->dev)) {
--			struct ice_netdev_priv *np = netdev_priv(act->dev);
--
--			fltr->dest_vsi = np->vsi;
-+		} else if (netif_is_ice(act->dev) || ice_is_tunnel_supported(act->dev)) {
- 			fltr->direction = ICE_ESWITCH_FLTR_EGRESS;
- 		} else {
- 			NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported netdevice in switchdev mode");
-@@ -235,11 +393,7 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 	int ret = 0;
- 	int i;
+ enum ice_prof_type {
+ 	ICE_PROF_NON_TUN = 0x1,
++	ICE_PROF_TUN_UDP = 0x2,
++	ICE_PROF_TUN_ALL = 0x6,
+ 	ICE_PROF_ALL = 0xFF,
+ };
+ #endif /* _ICE_FLEX_TYPE_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
+index d717d1158545..e4a8024de3f7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
+@@ -48,6 +48,7 @@ enum ice_sw_tunnel_type {
+ 	ICE_NON_TUN = 0,
+ 	ICE_SW_TUN_VXLAN,
+ 	ICE_SW_TUN_GENEVE,
++	ICE_ALL_TUNNELS /* All tunnel types including NVGRE */
+ };
  
--	if (!flags || (flags & (ICE_TC_FLWR_FIELD_ENC_DEST_IPV4 |
--				ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
--				ICE_TC_FLWR_FIELD_ENC_DEST_IPV6 |
--				ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
--				ICE_TC_FLWR_FIELD_ENC_SRC_L4_PORT))) {
-+	if (!flags || (flags & ICE_TC_FLWR_FIELD_ENC_SRC_L4_PORT)) {
- 		NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported encap field(s)");
- 		return -EOPNOTSUPP;
- 	}
-@@ -255,6 +409,10 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 		goto exit;
- 	}
+ /* Decoders for ice_prot_id:
+@@ -83,6 +84,8 @@ enum ice_prot_id {
+ 	ICE_PROT_INVALID	= 255  /* when offset == ICE_FV_OFFSET_INVAL */
+ };
  
-+	/* egress traffic is always redirect to uplink */
-+	if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS)
-+		fltr->dest_vsi = vsi->back->switchdev.uplink_vsi;
++#define ICE_VNI_OFFSET		12 /* offset of VNI from ICE_PROT_UDP_OF */
 +
- 	rule_info.sw_act.fltr_act = fltr->action.fltr_act;
- 	if (fltr->action.fltr_act != ICE_DROP_PACKET)
- 		rule_info.sw_act.vsi_handle = fltr->dest_vsi->idx;
-@@ -308,19 +466,26 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
-  * @match: Pointer to flow match structure
-  * @fltr: Pointer to filter structure
-  * @headers: inner or outer header fields
-+ * @is_encap: set true for tunnel IPv4 address
-  */
- static int
- ice_tc_set_ipv4(struct flow_match_ipv4_addrs *match,
- 		struct ice_tc_flower_fltr *fltr,
--		struct ice_tc_flower_lyr_2_4_hdrs *headers)
-+		struct ice_tc_flower_lyr_2_4_hdrs *headers, bool is_encap)
- {
- 	if (match->key->dst) {
--		fltr->flags |= ICE_TC_FLWR_FIELD_DEST_IPV4;
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_DEST_IPV4;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_DEST_IPV4;
- 		headers->l3_key.dst_ipv4 = match->key->dst;
- 		headers->l3_mask.dst_ipv4 = match->mask->dst;
- 	}
- 	if (match->key->src) {
--		fltr->flags |= ICE_TC_FLWR_FIELD_SRC_IPV4;
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_SRC_IPV4;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_SRC_IPV4;
- 		headers->l3_key.src_ipv4 = match->key->src;
- 		headers->l3_mask.src_ipv4 = match->mask->src;
- 	}
-@@ -332,11 +497,12 @@ ice_tc_set_ipv4(struct flow_match_ipv4_addrs *match,
-  * @match: Pointer to flow match structure
-  * @fltr: Pointer to filter structure
-  * @headers: inner or outer header fields
-+ * @is_encap: set true for tunnel IPv6 address
-  */
- static int
- ice_tc_set_ipv6(struct flow_match_ipv6_addrs *match,
- 		struct ice_tc_flower_fltr *fltr,
--		struct ice_tc_flower_lyr_2_4_hdrs *headers)
-+		struct ice_tc_flower_lyr_2_4_hdrs *headers, bool is_encap)
- {
- 	struct ice_tc_l3_hdr *l3_key, *l3_mask;
+ #define ICE_MAC_OFOS_HW		1
+ #define ICE_MAC_IL_HW		4
+ #define ICE_ETYPE_OL_HW		9
+@@ -96,6 +99,12 @@ enum ice_prot_id {
+ #define ICE_UDP_ILOS_HW		53
  
-@@ -354,21 +520,31 @@ ice_tc_set_ipv6(struct flow_match_ipv6_addrs *match,
- 		NL_SET_ERR_MSG_MOD(fltr->extack, "Bad src/dest IPv6, addr is any");
- 		return -EINVAL;
- 	}
--	if (!ipv6_addr_any(&match->mask->dst))
--		fltr->flags |= ICE_TC_FLWR_FIELD_DEST_IPV6;
--	if (!ipv6_addr_any(&match->mask->src))
--		fltr->flags |= ICE_TC_FLWR_FIELD_SRC_IPV6;
-+	if (!ipv6_addr_any(&match->mask->dst)) {
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_DEST_IPV6;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_DEST_IPV6;
-+	}
-+	if (!ipv6_addr_any(&match->mask->src)) {
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_SRC_IPV6;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_SRC_IPV6;
-+	}
+ #define ICE_UDP_OF_HW	52 /* UDP Tunnels */
++#define ICE_META_DATA_ID_HW 255 /* this is used for tunnel type */
++
++#define ICE_MDID_SIZE 2
++#define ICE_TUN_FLAG_MDID 21
++#define ICE_TUN_FLAG_MDID_OFF (ICE_MDID_SIZE * ICE_TUN_FLAG_MDID)
++#define ICE_TUN_FLAG_MASK 0xFF
  
- 	l3_key = &headers->l3_key;
- 	l3_mask = &headers->l3_mask;
+ #define ICE_TUN_FLAG_FV_IND 2
  
--	if (fltr->flags & ICE_TC_FLWR_FIELD_SRC_IPV6) {
-+	if (fltr->flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
-+			   ICE_TC_FLWR_FIELD_SRC_IPV6)) {
- 		memcpy(&l3_key->src_ipv6_addr, &match->key->src.s6_addr,
- 		       sizeof(match->key->src.s6_addr));
- 		memcpy(&l3_mask->src_ipv6_addr, &match->mask->src.s6_addr,
- 		       sizeof(match->mask->src.s6_addr));
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index a4a299012f9f..b0df70688189 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -35,6 +35,105 @@ struct ice_dummy_pkt_offsets {
+ 	u16 offset; /* ICE_PROTOCOL_LAST indicates end of list */
+ };
+ 
++static const struct ice_dummy_pkt_offsets dummy_udp_tun_tcp_packet_offsets[] = {
++	{ ICE_MAC_OFOS,		0 },
++	{ ICE_ETYPE_OL,		12 },
++	{ ICE_IPV4_OFOS,	14 },
++	{ ICE_UDP_OF,		34 },
++	{ ICE_VXLAN,		42 },
++	{ ICE_GENEVE,		42 },
++	{ ICE_VXLAN_GPE,	42 },
++	{ ICE_MAC_IL,		50 },
++	{ ICE_IPV4_IL,		64 },
++	{ ICE_TCP_IL,		84 },
++	{ ICE_PROTOCOL_LAST,	0 },
++};
++
++static const u8 dummy_udp_tun_tcp_packet[] = {
++	0x00, 0x00, 0x00, 0x00,  /* ICE_MAC_OFOS 0 */
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x08, 0x00,		/* ICE_ETYPE_OL 12 */
++
++	0x45, 0x00, 0x00, 0x5a, /* ICE_IPV4_OFOS 14 */
++	0x00, 0x01, 0x00, 0x00,
++	0x40, 0x11, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x12, 0xb5, /* ICE_UDP_OF 34 */
++	0x00, 0x46, 0x00, 0x00,
++
++	0x00, 0x00, 0x65, 0x58, /* ICE_VXLAN 42 */
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_IL 50 */
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x08, 0x00,
++
++	0x45, 0x00, 0x00, 0x28, /* ICE_IPV4_IL 64 */
++	0x00, 0x01, 0x00, 0x00,
++	0x40, 0x06, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 84 */
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x50, 0x02, 0x20, 0x00,
++	0x00, 0x00, 0x00, 0x00
++};
++
++static const struct ice_dummy_pkt_offsets dummy_udp_tun_udp_packet_offsets[] = {
++	{ ICE_MAC_OFOS,		0 },
++	{ ICE_ETYPE_OL,		12 },
++	{ ICE_IPV4_OFOS,	14 },
++	{ ICE_UDP_OF,		34 },
++	{ ICE_VXLAN,		42 },
++	{ ICE_GENEVE,		42 },
++	{ ICE_VXLAN_GPE,	42 },
++	{ ICE_MAC_IL,		50 },
++	{ ICE_IPV4_IL,		64 },
++	{ ICE_UDP_ILOS,		84 },
++	{ ICE_PROTOCOL_LAST,	0 },
++};
++
++static const u8 dummy_udp_tun_udp_packet[] = {
++	0x00, 0x00, 0x00, 0x00,  /* ICE_MAC_OFOS 0 */
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x08, 0x00,		/* ICE_ETYPE_OL 12 */
++
++	0x45, 0x00, 0x00, 0x4e, /* ICE_IPV4_OFOS 14 */
++	0x00, 0x01, 0x00, 0x00,
++	0x00, 0x11, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x12, 0xb5, /* ICE_UDP_OF 34 */
++	0x00, 0x3a, 0x00, 0x00,
++
++	0x00, 0x00, 0x65, 0x58, /* ICE_VXLAN 42 */
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_IL 50 */
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x08, 0x00,
++
++	0x45, 0x00, 0x00, 0x1c, /* ICE_IPV4_IL 64 */
++	0x00, 0x01, 0x00, 0x00,
++	0x00, 0x11, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00,
++
++	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 84 */
++	0x00, 0x08, 0x00, 0x00,
++};
++
+ /* offset info for MAC + IPv4 + UDP dummy packet */
+ static const struct ice_dummy_pkt_offsets dummy_udp_packet_offsets[] = {
+ 	{ ICE_MAC_OFOS,		0 },
+@@ -3463,6 +3562,8 @@ static const struct ice_prot_ext_tbl_entry ice_prot_ext[ICE_PROTOCOL_LAST] = {
+ 	{ ICE_TCP_IL,		{ 0, 2 } },
+ 	{ ICE_UDP_OF,		{ 0, 2 } },
+ 	{ ICE_UDP_ILOS,		{ 0, 2 } },
++	{ ICE_VXLAN,		{ 8, 10, 12, 14 } },
++	{ ICE_GENEVE,		{ 8, 10, 12, 14 } },
+ };
+ 
+ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+@@ -3477,6 +3578,8 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+ 	{ ICE_TCP_IL,		ICE_TCP_IL_HW },
+ 	{ ICE_UDP_OF,		ICE_UDP_OF_HW },
+ 	{ ICE_UDP_ILOS,		ICE_UDP_ILOS_HW },
++	{ ICE_VXLAN,		ICE_UDP_OF_HW },
++	{ ICE_GENEVE,		ICE_UDP_OF_HW },
+ };
+ 
+ /**
+@@ -4080,6 +4183,7 @@ ice_add_sw_recipe(struct ice_hw *hw, struct ice_sw_recipe *rm,
+ 		recp->chain_idx = entry->chain_idx;
+ 		recp->priority = buf[buf_idx].content.act_ctrl_fwd_priority;
+ 		recp->n_grp_count = rm->n_grp_count;
++		recp->tun_type = rm->tun_type;
+ 		recp->recp_created = true;
  	}
--	if (fltr->flags & ICE_TC_FLWR_FIELD_DEST_IPV6) {
-+	if (fltr->flags & (ICE_TC_FLWR_FIELD_ENC_DEST_IPV6 |
-+			   ICE_TC_FLWR_FIELD_DEST_IPV6)) {
- 		memcpy(&l3_key->dst_ipv6_addr, &match->key->dst.s6_addr,
- 		       sizeof(match->key->dst.s6_addr));
- 		memcpy(&l3_mask->dst_ipv6_addr, &match->mask->dst.s6_addr,
-@@ -383,18 +559,27 @@ ice_tc_set_ipv6(struct flow_match_ipv6_addrs *match,
-  * @match: Flow match structure
-  * @fltr: Pointer to filter structure
-  * @headers: inner or outer header fields
-+ * @is_encap: set true for tunnel port
-  */
- static int
- ice_tc_set_port(struct flow_match_ports match,
- 		struct ice_tc_flower_fltr *fltr,
--		struct ice_tc_flower_lyr_2_4_hdrs *headers)
-+		struct ice_tc_flower_lyr_2_4_hdrs *headers, bool is_encap)
- {
- 	if (match.key->dst) {
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_DEST_L4_PORT;
- 		fltr->flags |= ICE_TC_FLWR_FIELD_DEST_L4_PORT;
- 		headers->l4_key.dst_port = match.key->dst;
- 		headers->l4_mask.dst_port = match.mask->dst;
- 	}
- 	if (match.key->src) {
-+		if (is_encap)
-+			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_SRC_L4_PORT;
-+		else
-+			fltr->flags |= ICE_TC_FLWR_FIELD_SRC_L4_PORT;
- 		fltr->flags |= ICE_TC_FLWR_FIELD_SRC_L4_PORT;
- 		headers->l4_key.src_port = match.key->src;
- 		headers->l4_mask.src_port = match.mask->src;
-@@ -402,6 +587,85 @@ ice_tc_set_port(struct flow_match_ports match,
- 	return 0;
+ 	rm->root_buf = buf;
+@@ -4160,6 +4264,54 @@ ice_get_fv(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 	return status;
  }
  
-+static struct net_device *
-+ice_get_tunnel_device(struct net_device *dev, struct flow_rule *rule)
++/**
++ * ice_tun_type_match_word - determine if tun type needs a match mask
++ * @tun_type: tunnel type
++ * @mask: mask to be used for the tunnel
++ */
++static bool ice_tun_type_match_word(enum ice_sw_tunnel_type tun_type, u16 *mask)
 +{
-+	struct flow_action_entry *act;
-+	int i;
++	switch (tun_type) {
++	case ICE_SW_TUN_GENEVE:
++	case ICE_SW_TUN_VXLAN:
++		*mask = ICE_TUN_FLAG_MASK;
++		return true;
 +
-+	if (ice_is_tunnel_supported(dev))
-+		return dev;
-+
-+	flow_action_for_each(i, act, &rule->action) {
-+		if (act->id == FLOW_ACTION_REDIRECT &&
-+		    ice_is_tunnel_supported(act->dev))
-+			return act->dev;
++	default:
++		*mask = 0;
++		return false;
 +	}
-+
-+	return NULL;
 +}
 +
-+static int
-+ice_parse_tunnel_attr(struct net_device *dev, struct flow_rule *rule,
-+		      struct ice_tc_flower_fltr *fltr)
++/**
++ * ice_add_special_words - Add words that are not protocols, such as metadata
++ * @rinfo: other information regarding the rule e.g. priority and action info
++ * @lkup_exts: lookup word structure
++ */
++static enum ice_status
++ice_add_special_words(struct ice_adv_rule_info *rinfo,
++		      struct ice_prot_lkup_ext *lkup_exts)
 +{
-+	struct ice_tc_flower_lyr_2_4_hdrs *headers = &fltr->outer_headers;
-+	struct flow_match_control enc_control;
++	u16 mask;
 +
-+	fltr->tunnel_type = ice_tc_tun_get_type(dev);
-+	headers->l3_key.ip_proto = IPPROTO_UDP;
++	/* If this is a tunneled packet, then add recipe index to match the
++	 * tunnel bit in the packet metadata flags.
++	 */
++	if (ice_tun_type_match_word(rinfo->tun_type, &mask)) {
++		if (lkup_exts->n_val_words < ICE_MAX_CHAIN_WORDS) {
++			u8 word = lkup_exts->n_val_words++;
 +
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_KEYID)) {
-+		struct flow_match_enc_keyid enc_keyid;
-+
-+		flow_rule_match_enc_keyid(rule, &enc_keyid);
-+
-+		if (!enc_keyid.mask->keyid ||
-+		    enc_keyid.mask->keyid != cpu_to_be32(ICE_TC_FLOWER_MASK_32))
-+			return -EINVAL;
-+
-+		fltr->flags |= ICE_TC_FLWR_FIELD_TENANT_ID;
-+		fltr->tenant_id = enc_keyid.key->keyid;
-+	}
-+
-+	flow_rule_match_enc_control(rule, &enc_control);
-+
-+	if (enc_control.key->addr_type == FLOW_DISSECTOR_KEY_IPV4_ADDRS) {
-+		struct flow_match_ipv4_addrs match;
-+
-+		flow_rule_match_enc_ipv4_addrs(rule, &match);
-+		if (ice_tc_set_ipv4(&match, fltr, headers, true))
-+			return -EINVAL;
-+	} else if (enc_control.key->addr_type ==
-+					FLOW_DISSECTOR_KEY_IPV6_ADDRS) {
-+		struct flow_match_ipv6_addrs match;
-+
-+		flow_rule_match_enc_ipv6_addrs(rule, &match);
-+		if (ice_tc_set_ipv6(&match, fltr, headers, true))
-+			return -EINVAL;
-+	}
-+
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_IP)) {
-+		struct flow_match_ip match;
-+
-+		flow_rule_match_enc_ip(rule, &match);
-+		headers->l3_key.tos = match.key->tos;
-+		headers->l3_key.ttl = match.key->ttl;
-+		headers->l3_mask.tos = match.mask->tos;
-+		headers->l3_mask.ttl = match.mask->ttl;
-+	}
-+
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_PORTS)) {
-+		struct flow_match_ports match;
-+
-+		flow_rule_match_enc_ports(rule, &match);
-+		if (ice_tc_set_port(match, fltr, headers, true))
-+			return -EINVAL;
++			lkup_exts->fv_words[word].prot_id = ICE_META_DATA_ID_HW;
++			lkup_exts->fv_words[word].off = ICE_TUN_FLAG_MDID_OFF;
++			lkup_exts->field_mask[word] = mask;
++		} else {
++			return ICE_ERR_MAX_LIMIT;
++		}
 +	}
 +
 +	return 0;
 +}
 +
- /**
-  * ice_parse_cls_flower - Parse TC flower filters provided by kernel
-  * @vsi: Pointer to the VSI
-@@ -429,12 +693,44 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
- 	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
- 	      BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
-+	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
-+	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
-+	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
-+	      BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) |
- 	      BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
- 	      BIT(FLOW_DISSECTOR_KEY_PORTS))) {
- 		NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported key used");
- 		return -EOPNOTSUPP;
- 	}
+ /* ice_get_compat_fv_bitmap - Get compatible field vector bitmap for rule
+  * @hw: pointer to hardware structure
+  * @rinfo: other information regarding the rule e.g. priority and action info
+@@ -4169,9 +4321,27 @@ static void
+ ice_get_compat_fv_bitmap(struct ice_hw *hw, struct ice_adv_rule_info *rinfo,
+ 			 unsigned long *bm)
+ {
++	enum ice_prof_type prof_type;
++
+ 	bitmap_zero(bm, ICE_MAX_NUM_PROFILES);
  
-+	if ((flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) ||
-+	     flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) ||
-+	     flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_KEYID) ||
-+	     flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_PORTS))) {
-+		int err;
-+
-+		filter_dev = ice_get_tunnel_device(filter_dev, rule);
-+		if (!filter_dev) {
-+			NL_SET_ERR_MSG_MOD(fltr->extack,
-+					   "Tunnel device not found");
-+			return -EOPNOTSUPP;
-+		}
-+
-+		err = ice_parse_tunnel_attr(filter_dev, rule, fltr);
-+		if (err) {
-+			NL_SET_ERR_MSG_MOD(fltr->extack,
-+					   "Failed to parse TC flower tunnel attributes");
-+			return err;
-+		}
-+
-+		/* header pointers should point to the inner headers, outer
-+		 * header were already set by ice_parse_tunnel_attr
-+		 */
-+		headers = &fltr->inner_headers;
-+	} else {
-+		fltr->tunnel_type = TNL_LAST;
+-	ice_get_sw_fv_bitmap(hw, ICE_PROF_NON_TUN, bm);
++	switch (rinfo->tun_type) {
++	case ICE_NON_TUN:
++		prof_type = ICE_PROF_NON_TUN;
++		break;
++	case ICE_ALL_TUNNELS:
++		prof_type = ICE_PROF_TUN_ALL;
++		break;
++	case ICE_SW_TUN_GENEVE:
++	case ICE_SW_TUN_VXLAN:
++		prof_type = ICE_PROF_TUN_UDP;
++		break;
++	default:
++		prof_type = ICE_PROF_ALL;
++		break;
 +	}
 +
- 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_BASIC)) {
- 		struct flow_match_basic match;
++	ice_get_sw_fv_bitmap(hw, prof_type, bm);
+ }
  
-@@ -521,7 +817,7 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		struct flow_match_ipv4_addrs match;
+ /**
+@@ -4197,6 +4367,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	enum ice_status status = 0;
+ 	struct ice_sw_recipe *rm;
+ 	u16 match_tun_mask = 0;
++	u16 mask;
+ 	u8 i;
  
- 		flow_rule_match_ipv4_addrs(rule, &match);
--		if (ice_tc_set_ipv4(&match, fltr, headers))
-+		if (ice_tc_set_ipv4(&match, fltr, headers, false))
- 			return -EINVAL;
- 	}
+ 	if (!lkups_cnt)
+@@ -4253,6 +4424,10 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	if (status)
+ 		goto err_unroll;
  
-@@ -529,7 +825,7 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		struct flow_match_ipv6_addrs match;
- 
- 		flow_rule_match_ipv6_addrs(rule, &match);
--		if (ice_tc_set_ipv6(&match, fltr, headers))
-+		if (ice_tc_set_ipv6(&match, fltr, headers, false))
- 			return -EINVAL;
- 	}
- 
-@@ -537,7 +833,7 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		struct flow_match_ports match;
- 
- 		flow_rule_match_ports(rule, &match);
--		if (ice_tc_set_port(match, fltr, headers))
-+		if (ice_tc_set_port(match, fltr, headers, false))
- 			return -EINVAL;
- 		switch (headers->l3_key.ip_proto) {
- 		case IPPROTO_TCP:
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index 332c70342f1f..28c33b850ffb 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -23,6 +23,8 @@
- #define ICE_TC_FLWR_FIELD_ENC_DST_MAC		BIT(16)
- #define ICE_TC_FLWR_FIELD_ETH_TYPE_ID		BIT(17)
- 
-+#define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
++	if (ice_tun_type_match_word(rinfo->tun_type, &mask) &&
++	    rm->n_grp_count > 1)
++		match_tun_mask = mask;
 +
- struct ice_indr_block_priv {
- 	struct net_device *netdev;
- 	struct ice_netdev_priv *np;
-@@ -118,6 +120,7 @@ struct ice_tc_flower_fltr {
- 	struct ice_vsi *src_vsi;
- 	__be32 tenant_id;
- 	u32 flags;
-+	u8 tunnel_type;
- 	struct ice_tc_flower_action	action;
+ 	/* set the recipe priority if specified */
+ 	rm->priority = (u8)rinfo->priority;
  
- 	/* cache ptr which is used wherever needed to communicate netlink
-@@ -132,5 +135,6 @@ ice_add_cls_flower(struct net_device *netdev, struct ice_vsi *vsi,
- int
- ice_del_cls_flower(struct ice_vsi *vsi, struct flow_cls_offload *cls_flower);
- void ice_replay_tc_fltrs(struct ice_pf *pf);
-+bool ice_is_tunnel_supported(struct net_device *dev);
+@@ -4270,6 +4445,13 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 		set_bit((u16)fvit->profile_id, profiles);
+ 	}
  
- #endif /* _ICE_TC_LIB_H_ */
++	/* Create any special protocol/offset pairs, such as looking at tunnel
++	 * bits by extracting metadata
++	 */
++	status = ice_add_special_words(rinfo, lkup_exts);
++	if (status)
++		goto err_free_lkup_exts;
++
+ 	/* Look for a recipe which matches our requested fv / mask list */
+ 	*rid = ice_find_recp(hw, lkup_exts);
+ 	if (*rid < ICE_MAX_NUM_RECIPES)
+@@ -4353,6 +4535,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+  */
+ static void
+ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
++		      enum ice_sw_tunnel_type tun_type,
+ 		      const u8 **pkt, u16 *pkt_len,
+ 		      const struct ice_dummy_pkt_offsets **offsets)
+ {
+@@ -4376,6 +4559,21 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 			ipv6 = true;
+ 	}
+ 
++	if (tun_type == ICE_SW_TUN_VXLAN ||
++	    tun_type == ICE_SW_TUN_GENEVE) {
++		if (tcp) {
++			*pkt = dummy_udp_tun_tcp_packet;
++			*pkt_len = sizeof(dummy_udp_tun_tcp_packet);
++			*offsets = dummy_udp_tun_tcp_packet_offsets;
++			return;
++		}
++
++		*pkt = dummy_udp_tun_udp_packet;
++		*pkt_len = sizeof(dummy_udp_tun_udp_packet);
++		*offsets = dummy_udp_tun_udp_packet_offsets;
++		return;
++	}
++
+ 	if (udp && !ipv6) {
+ 		if (vlan) {
+ 			*pkt = dummy_vlan_udp_packet;
+@@ -4496,6 +4694,10 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 		case ICE_SCTP_IL:
+ 			len = sizeof(struct ice_sctp_hdr);
+ 			break;
++		case ICE_VXLAN:
++		case ICE_GENEVE:
++			len = sizeof(struct ice_udp_tnl_hdr);
++			break;
+ 		default:
+ 			return ICE_ERR_PARAM;
+ 		}
+@@ -4525,6 +4727,48 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 	return 0;
+ }
+ 
++/**
++ * ice_fill_adv_packet_tun - fill dummy packet with udp tunnel port
++ * @hw: pointer to the hardware structure
++ * @tun_type: tunnel type
++ * @pkt: dummy packet to fill in
++ * @offsets: offset info for the dummy packet
++ */
++static enum ice_status
++ice_fill_adv_packet_tun(struct ice_hw *hw, enum ice_sw_tunnel_type tun_type,
++			u8 *pkt, const struct ice_dummy_pkt_offsets *offsets)
++{
++	u16 open_port, i;
++
++	switch (tun_type) {
++	case ICE_SW_TUN_VXLAN:
++	case ICE_SW_TUN_GENEVE:
++		if (!ice_get_open_tunnel_port(hw, &open_port))
++			return ICE_ERR_CFG;
++		break;
++
++	default:
++		/* Nothing needs to be done for this tunnel type */
++		return 0;
++	}
++
++	/* Find the outer UDP protocol header and insert the port number */
++	for (i = 0; offsets[i].type != ICE_PROTOCOL_LAST; i++) {
++		if (offsets[i].type == ICE_UDP_OF) {
++			struct ice_l4_hdr *hdr;
++			u16 offset;
++
++			offset = offsets[i].offset;
++			hdr = (struct ice_l4_hdr *)&pkt[offset];
++			hdr->dst_port = cpu_to_be16(open_port);
++
++			return 0;
++		}
++	}
++
++	return ICE_ERR_CFG;
++}
++
+ /**
+  * ice_find_adv_rule_entry - Search a rule entry
+  * @hw: pointer to the hardware structure
+@@ -4559,6 +4803,7 @@ ice_find_adv_rule_entry(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 				break;
+ 			}
+ 		if (rinfo->sw_act.flag == list_itr->rule_info.sw_act.flag &&
++		    rinfo->tun_type == list_itr->rule_info.tun_type &&
+ 		    lkups_matched)
+ 			return list_itr;
+ 	}
+@@ -4733,7 +4978,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 		return ICE_ERR_PARAM;
+ 
+ 	/* make sure that we can locate a dummy packet */
+-	ice_find_dummy_packet(lkups, lkups_cnt, &pkt, &pkt_len,
++	ice_find_dummy_packet(lkups, lkups_cnt, rinfo->tun_type, &pkt, &pkt_len,
+ 			      &pkt_offsets);
+ 	if (!pkt) {
+ 		status = ICE_ERR_PARAM;
+@@ -4844,6 +5089,14 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	if (status)
+ 		goto err_ice_add_adv_rule;
+ 
++	if (rinfo->tun_type != ICE_NON_TUN) {
++		status = ice_fill_adv_packet_tun(hw, rinfo->tun_type,
++						 s_rule->pdata.lkup_tx_rx.hdr,
++						 pkt_offsets);
++		if (status)
++			goto err_ice_add_adv_rule;
++	}
++
+ 	status = ice_aq_sw_rules(hw, (struct ice_aqc_sw_rules *)s_rule,
+ 				 rule_buf_sz, 1, ice_aqc_opc_add_sw_rules,
+ 				 NULL);
+@@ -5079,6 +5332,13 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 			return ICE_ERR_CFG;
+ 	}
+ 
++	/* Create any special protocol/offset pairs, such as looking at tunnel
++	 * bits by extracting metadata
++	 */
++	status = ice_add_special_words(rinfo, &lkup_exts);
++	if (status)
++		return status;
++
+ 	rid = ice_find_recp(hw, &lkup_exts);
+ 	/* If did not find a recipe that match the existing criteria */
+ 	if (rid == ICE_MAX_NUM_RECIPES)
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index e779681da59e..d898b25db385 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -212,6 +212,8 @@ struct ice_sw_recipe {
+ 	/* Bit map specifying the IDs associated with this group of recipe */
+ 	DECLARE_BITMAP(r_bitmap, ICE_MAX_NUM_RECIPES);
+ 
++	enum ice_sw_tunnel_type tun_type;
++
+ 	/* List of type ice_fltr_mgmt_list_entry or adv_rule */
+ 	u8 adv_rule;
+ 	struct list_head filt_rules;
 -- 
 2.31.1
 
