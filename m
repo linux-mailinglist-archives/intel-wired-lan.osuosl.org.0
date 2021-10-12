@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF269429A7C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 02:42:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 466AD429A7D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Oct 2021 02:42:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D67A9404DE;
-	Tue, 12 Oct 2021 00:41:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 857684019F;
+	Tue, 12 Oct 2021 00:42:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iCinbYIK_eCA; Tue, 12 Oct 2021 00:41:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PMbs_kOXIi8e; Tue, 12 Oct 2021 00:42:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A1011404CB;
-	Tue, 12 Oct 2021 00:41:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0BE1A4019E;
+	Tue, 12 Oct 2021 00:42:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 622F91BF3B5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 00:41:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 73B271BF3B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 00:41:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B20364019E
+ by smtp2.osuosl.org (Postfix) with ESMTP id ED00B4019F
  for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 00:41:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W75SE7F852P3 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id APShO5hasVDP for <intel-wired-lan@lists.osuosl.org>;
  Tue, 12 Oct 2021 00:41:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 31CFF401A1
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A1018401A2
  for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Oct 2021 00:41:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="226961366"
-X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="226961366"
+X-IronPort-AV: E=McAfee;i="6200,9189,10134"; a="226961367"
+X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="226961367"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  11 Oct 2021 17:41:46 -0700
-X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="524017496"
+X-IronPort-AV: E=Sophos;i="5.85,366,1624345200"; d="scan'208";a="524017498"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.138])
  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2021 17:41:45 -0700
+ 11 Oct 2021 17:41:46 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
  Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Mon, 11 Oct 2021 17:41:11 -0700
-Message-Id: <20211012004113.1583133-3-jacob.e.keller@intel.com>
+Date: Mon, 11 Oct 2021 17:41:12 -0700
+Message-Id: <20211012004113.1583133-4-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
 In-Reply-To: <20211012004113.1583133-1-jacob.e.keller@intel.com>
 References: <20211012004113.1583133-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 2/4] ice: move and rename
- ice_check_for_pending_update
+Subject: [Intel-wired-lan] [net-next PATCH v2 3/4] ice: move
+ ice_devlink_flash_update and merge with ice_flash_pldm_image
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,75 +68,163 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_devlink_flash_update function performs a few checks and then
-calls ice_flash_pldm_image. One of these checks is to call
-ice_check_for_pending_update. This function checks if the device has
-a pending update, and cancels it if so. This is necessary to allow
-a new flash update to proceed.
+The ice_devlink_flash_update function performs a few upfront checks and
+then calls ice_flash_pldm_image.
 
-We want to refactor the ice code to eliminate ice_devlink_flash_update,
-moving its checks into ice_flash_pldm_image.
+Most if these checks make more sense in the context of code within
+ice_flash_pldm_image. Merge ice_devlink_flash_update and
+ice_flash_pldm_image into one function, placing it in ice_fw_update.c
 
-To do this, ice_check_for_pending_update will become static, and only
-called by ice_flash_pldm_image. To make this change easier to review,
-first just move the function up within the ice_fw_update.c file.
+Since this is still the entry point for devlink, call the function
+ice_devlink_flash_update instead of ice_flash_pldm_image. This leaves a
+single function which handles the devlink parameters and then initiates
+a PLDM update.
 
-While at it, note that the function has a misleading name. Its primary
-action is to cancel a pending update. Using the verb "check" does not
-imply this. Rename it to ice_cancel_pending_update.
+When merging the calls to ice_cancel_pending_update function, notice
+that both it and the main flash update process take the NVM hardware
+semaphore. We can eliminate the call to get the semaphore from
+ice_cancel_pending_update by placing the check after we acquire the
+semaphore during ice_flash_pldm_image.
+
+With this change, the ice_devlink_flash_update function in
+ice_fw_update.c becomes the main entry point for flash update. It
+elimintes some unnecessary boiler plate code between the two previous
+functions. The ultimate motivation for this is that it eases supporting
+a dry run with the PLDM library in a future change.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_devlink.c  |   2 +-
- .../net/ethernet/intel/ice/ice_fw_update.c    | 148 +++++++++---------
- .../net/ethernet/intel/ice/ice_fw_update.h    |   4 +-
- 3 files changed, 77 insertions(+), 77 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 50 --------------
+ .../net/ethernet/intel/ice/ice_fw_update.c    | 69 ++++++++++---------
+ .../net/ethernet/intel/ice/ice_fw_update.h    |  7 +-
+ 3 files changed, 41 insertions(+), 85 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 5dc3ee03d219..34ceb8e964fe 100644
+index 34ceb8e964fe..c64286aad7be 100644
 --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
 +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -411,7 +411,7 @@ ice_devlink_flash_update(struct devlink *devlink,
- 		return -EOPNOTSUPP;
- 	}
+@@ -370,56 +370,6 @@ static int ice_devlink_info_get(struct devlink *devlink,
+ 	return err;
+ }
  
--	err = ice_check_for_pending_update(pf, NULL, extack);
-+	err = ice_cancel_pending_update(pf, NULL, extack);
- 	if (err)
- 		return err;
- 
+-/**
+- * ice_devlink_flash_update - Update firmware stored in flash on the device
+- * @devlink: pointer to devlink associated with device to update
+- * @params: flash update parameters
+- * @extack: netlink extended ACK structure
+- *
+- * Perform a device flash update. The bulk of the update logic is contained
+- * within the ice_flash_pldm_image function.
+- *
+- * Returns: zero on success, or an error code on failure.
+- */
+-static int
+-ice_devlink_flash_update(struct devlink *devlink,
+-			 struct devlink_flash_update_params *params,
+-			 struct netlink_ext_ack *extack)
+-{
+-	struct ice_pf *pf = devlink_priv(devlink);
+-	struct ice_hw *hw = &pf->hw;
+-	u8 preservation;
+-	int err;
+-
+-	if (!params->overwrite_mask) {
+-		/* preserve all settings and identifiers */
+-		preservation = ICE_AQC_NVM_PRESERVE_ALL;
+-	} else if (params->overwrite_mask == DEVLINK_FLASH_OVERWRITE_SETTINGS) {
+-		/* overwrite settings, but preserve the vital device identifiers */
+-		preservation = ICE_AQC_NVM_PRESERVE_SELECTED;
+-	} else if (params->overwrite_mask == (DEVLINK_FLASH_OVERWRITE_SETTINGS |
+-					      DEVLINK_FLASH_OVERWRITE_IDENTIFIERS)) {
+-		/* overwrite both settings and identifiers, preserve nothing */
+-		preservation = ICE_AQC_NVM_NO_PRESERVATION;
+-	} else {
+-		NL_SET_ERR_MSG_MOD(extack, "Requested overwrite mask is not supported");
+-		return -EOPNOTSUPP;
+-	}
+-
+-	if (!hw->dev_caps.common_cap.nvm_unified_update) {
+-		NL_SET_ERR_MSG_MOD(extack, "Current firmware does not support unified update");
+-		return -EOPNOTSUPP;
+-	}
+-
+-	err = ice_cancel_pending_update(pf, NULL, extack);
+-	if (err)
+-		return err;
+-
+-	devlink_flash_update_status_notify(devlink, "Preparing to flash", NULL, 0, 0);
+-
+-	return ice_flash_pldm_image(pf, params->fw, preservation, extack);
+-}
+-
+ static const struct devlink_ops ice_devlink_ops = {
+ 	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
+ 	.eswitch_mode_get = ice_eswitch_mode_get,
 diff --git a/drivers/net/ethernet/intel/ice/ice_fw_update.c b/drivers/net/ethernet/intel/ice/ice_fw_update.c
-index ccdfd2f030d8..489766e6ca6b 100644
+index 489766e6ca6b..9de7f6cb4b93 100644
 --- a/drivers/net/ethernet/intel/ice/ice_fw_update.c
 +++ b/drivers/net/ethernet/intel/ice/ice_fw_update.c
-@@ -642,87 +642,18 @@ static const struct pldmfw_ops ice_fwu_ops = {
- };
+@@ -652,8 +652,9 @@ static const struct pldmfw_ops ice_fwu_ops = {
+  *
+  * Returns: zero on success, or a negative error code on failure.
+  */
+-int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
+-			      struct netlink_ext_ack *extack)
++static int
++ice_cancel_pending_update(struct ice_pf *pf, const char *component,
++			  struct netlink_ext_ack *extack)
+ {
+ 	struct devlink *devlink = priv_to_devlink(pf);
+ 	struct device *dev = ice_pf_to_dev(pf);
+@@ -720,27 +721,14 @@ int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
+ 					   "Canceling previous pending update",
+ 					   component, 0, 0);
+ 
+-	err = ice_acquire_nvm(hw, ICE_RES_WRITE);
+-	if (err) {
+-		dev_err(dev, "Failed to acquire device flash lock, err %d aq_err %s\n",
+-			err, ice_aq_str(hw->adminq.sq_last_status));
+-		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire device flash lock");
+-		return err;
+-	}
+-
+ 	pending |= ICE_AQC_NVM_REVERT_LAST_ACTIV;
+-	err = ice_switch_flash_banks(pf, pending, extack);
+-
+-	ice_release_nvm(hw);
+-
+-	return err;
++	return ice_switch_flash_banks(pf, pending, extack);
+ }
  
  /**
 - * ice_flash_pldm_image - Write a PLDM-formatted firmware image to the device
 - * @pf: private device driver structure
 - * @fw: firmware object pointing to the relevant firmware file
 - * @preservation: preservation level to request from firmware
-- * @extack: netlink extended ACK structure
-- *
-- * Parse the data for a given firmware file, verifying that it is a valid PLDM
-- * formatted image that matches this device.
-- *
-- * Extract the device record Package Data and Component Tables and send them
-- * to the firmware. Extract and write the flash data for each of the three
-- * main flash components, "fw.mgmt", "fw.undi", and "fw.netlist". Notify
-- * firmware once the data is written to the inactive banks.
-- *
-- * Returns: zero on success or a negative error code on failure.
-- */
++ * ice_devlink_flash_update - Write a firmware image to the device
++ * @devlink: pointer to devlink associated with the device to update
++ * @params: devlink flash update parameters
+  * @extack: netlink extended ACK structure
+  *
+  * Parse the data for a given firmware file, verifying that it is a valid PLDM
+@@ -753,23 +741,35 @@ int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
+  *
+  * Returns: zero on success or a negative error code on failure.
+  */
 -int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
 -			 u8 preservation, struct netlink_ext_ack *extack)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	struct ice_hw *hw = &pf->hw;
--	struct ice_fwu_priv priv;
--	int err;
--
++int ice_devlink_flash_update(struct devlink *devlink,
++			     struct devlink_flash_update_params *params,
++			     struct netlink_ext_ack *extack)
+ {
++	struct ice_pf *pf = devlink_priv(devlink);
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_hw *hw = &pf->hw;
+ 	struct ice_fwu_priv priv;
++	u8 preservation;
+ 	int err;
+ 
 -	switch (preservation) {
 -	case ICE_AQC_NVM_PRESERVE_ALL:
 -	case ICE_AQC_NVM_PRESERVE_SELECTED:
@@ -146,147 +234,72 @@ index ccdfd2f030d8..489766e6ca6b 100644
 -	default:
 -		WARN(1, "Unexpected preservation level request %u", preservation);
 -		return -EINVAL;
--	}
--
--	memset(&priv, 0, sizeof(priv));
--
--	priv.context.ops = &ice_fwu_ops;
--	priv.context.dev = dev;
--	priv.extack = extack;
--	priv.pf = pf;
--	priv.activate_flags = preservation;
--
--	err = ice_acquire_nvm(hw, ICE_RES_WRITE);
--	if (err) {
--		dev_err(dev, "Failed to acquire device flash lock, err %d aq_err %s\n",
--			err, ice_aq_str(hw->adminq.sq_last_status));
--		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire device flash lock");
--		return err;
--	}
--
++	if (!params->overwrite_mask) {
++		/* preserve all settings and identifiers */
++		preservation = ICE_AQC_NVM_PRESERVE_ALL;
++	} else if (params->overwrite_mask == DEVLINK_FLASH_OVERWRITE_SETTINGS) {
++		/* overwrite settings, but preserve the vital device identifiers */
++		preservation = ICE_AQC_NVM_PRESERVE_SELECTED;
++	} else if (params->overwrite_mask == (DEVLINK_FLASH_OVERWRITE_SETTINGS |
++					      DEVLINK_FLASH_OVERWRITE_IDENTIFIERS)) {
++		/* overwrite both settings and identifiers, preserve nothing */
++		preservation = ICE_AQC_NVM_NO_PRESERVATION;
++	} else {
++		NL_SET_ERR_MSG_MOD(extack, "Requested overwrite mask is not supported");
++		return -EOPNOTSUPP;
++	}
++
++	if (!hw->dev_caps.common_cap.nvm_unified_update) {
++		NL_SET_ERR_MSG_MOD(extack, "Current firmware does not support unified update");
++		return -EOPNOTSUPP;
+ 	}
+ 
+ 	memset(&priv, 0, sizeof(priv));
+@@ -780,6 +780,8 @@ int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
+ 	priv.pf = pf;
+ 	priv.activate_flags = preservation;
+ 
++	devlink_flash_update_status_notify(devlink, "Preparing to flash", NULL, 0, 0);
++
+ 	err = ice_acquire_nvm(hw, ICE_RES_WRITE);
+ 	if (err) {
+ 		dev_err(dev, "Failed to acquire device flash lock, err %d aq_err %s\n",
+@@ -788,7 +790,11 @@ int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
+ 		return err;
+ 	}
+ 
 -	err = pldmfw_flash_image(&priv.context, fw);
--	if (err == -ENOENT) {
--		dev_err(dev, "Firmware image has no record matching this device\n");
--		NL_SET_ERR_MSG_MOD(extack, "Firmware image has no record matching this device");
--	} else if (err) {
--		/* Do not set a generic extended ACK message here. A more
--		 * specific message may already have been set by one of our
--		 * ops.
--		 */
--		dev_err(dev, "Failed to flash PLDM image, err %d", err);
--	}
--
--	ice_release_nvm(hw);
--
--	return err;
--}
--
--/**
-- * ice_check_for_pending_update - Check for a pending flash update
-+ * ice_cancel_pending_update - Cancel any pending update for a component
-  * @pf: the PF driver structure
-  * @component: if not NULL, the name of the component being updated
-  * @extack: Netlink extended ACK structure
-  *
-- * Check whether the device already has a pending flash update. If such an
-- * update is found, cancel it so that the requested update may proceed.
-+ * Cancel any pending update for the specified component. If component is
-+ * NULL, all device updates will be canceled.
-  *
-  * Returns: zero on success, or a negative error code on failure.
-  */
--int ice_check_for_pending_update(struct ice_pf *pf, const char *component,
--				 struct netlink_ext_ack *extack)
-+int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
-+			      struct netlink_ext_ack *extack)
- {
- 	struct devlink *devlink = priv_to_devlink(pf);
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -804,3 +735,72 @@ int ice_check_for_pending_update(struct ice_pf *pf, const char *component,
++	err = ice_cancel_pending_update(pf, NULL, extack);
++	if (err)
++		goto out_release_nvm;
++
++	err = pldmfw_flash_image(&priv.context, params->fw);
+ 	if (err == -ENOENT) {
+ 		dev_err(dev, "Firmware image has no record matching this device\n");
+ 		NL_SET_ERR_MSG_MOD(extack, "Firmware image has no record matching this device");
+@@ -800,6 +806,7 @@ int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
+ 		dev_err(dev, "Failed to flash PLDM image, err %d", err);
+ 	}
+ 
++out_release_nvm:
+ 	ice_release_nvm(hw);
  
  	return err;
- }
-+
-+/**
-+ * ice_flash_pldm_image - Write a PLDM-formatted firmware image to the device
-+ * @pf: private device driver structure
-+ * @fw: firmware object pointing to the relevant firmware file
-+ * @preservation: preservation level to request from firmware
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Parse the data for a given firmware file, verifying that it is a valid PLDM
-+ * formatted image that matches this device.
-+ *
-+ * Extract the device record Package Data and Component Tables and send them
-+ * to the firmware. Extract and write the flash data for each of the three
-+ * main flash components, "fw.mgmt", "fw.undi", and "fw.netlist". Notify
-+ * firmware once the data is written to the inactive banks.
-+ *
-+ * Returns: zero on success or a negative error code on failure.
-+ */
-+int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
-+			 u8 preservation, struct netlink_ext_ack *extack)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_hw *hw = &pf->hw;
-+	struct ice_fwu_priv priv;
-+	int err;
-+
-+	switch (preservation) {
-+	case ICE_AQC_NVM_PRESERVE_ALL:
-+	case ICE_AQC_NVM_PRESERVE_SELECTED:
-+	case ICE_AQC_NVM_NO_PRESERVATION:
-+	case ICE_AQC_NVM_FACTORY_DEFAULT:
-+		break;
-+	default:
-+		WARN(1, "Unexpected preservation level request %u", preservation);
-+		return -EINVAL;
-+	}
-+
-+	memset(&priv, 0, sizeof(priv));
-+
-+	priv.context.ops = &ice_fwu_ops;
-+	priv.context.dev = dev;
-+	priv.extack = extack;
-+	priv.pf = pf;
-+	priv.activate_flags = preservation;
-+
-+	err = ice_acquire_nvm(hw, ICE_RES_WRITE);
-+	if (err) {
-+		dev_err(dev, "Failed to acquire device flash lock, err %d aq_err %s\n",
-+			err, ice_aq_str(hw->adminq.sq_last_status));
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire device flash lock");
-+		return err;
-+	}
-+
-+	err = pldmfw_flash_image(&priv.context, fw);
-+	if (err == -ENOENT) {
-+		dev_err(dev, "Firmware image has no record matching this device\n");
-+		NL_SET_ERR_MSG_MOD(extack, "Firmware image has no record matching this device");
-+	} else if (err) {
-+		/* Do not set a generic extended ACK message here. A more
-+		 * specific message may already have been set by one of our
-+		 * ops.
-+		 */
-+		dev_err(dev, "Failed to flash PLDM image, err %d", err);
-+	}
-+
-+	ice_release_nvm(hw);
-+
-+	return err;
-+}
 diff --git a/drivers/net/ethernet/intel/ice/ice_fw_update.h b/drivers/net/ethernet/intel/ice/ice_fw_update.h
-index c6390f6851ff..1f84ef18bfd1 100644
+index 1f84ef18bfd1..be6d222124f2 100644
 --- a/drivers/net/ethernet/intel/ice/ice_fw_update.h
 +++ b/drivers/net/ethernet/intel/ice/ice_fw_update.h
-@@ -6,7 +6,7 @@
+@@ -4,9 +4,8 @@
+ #ifndef _ICE_FW_UPDATE_H_
+ #define _ICE_FW_UPDATE_H_
  
- int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
- 			 u8 preservation, struct netlink_ext_ack *extack);
--int ice_check_for_pending_update(struct ice_pf *pf, const char *component,
--				 struct netlink_ext_ack *extack);
-+int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
-+			      struct netlink_ext_ack *extack);
+-int ice_flash_pldm_image(struct ice_pf *pf, const struct firmware *fw,
+-			 u8 preservation, struct netlink_ext_ack *extack);
+-int ice_cancel_pending_update(struct ice_pf *pf, const char *component,
+-			      struct netlink_ext_ack *extack);
++int ice_devlink_flash_update(struct devlink *devlink,
++			     struct devlink_flash_update_params *params,
++			     struct netlink_ext_ack *extack);
  
  #endif
 -- 
