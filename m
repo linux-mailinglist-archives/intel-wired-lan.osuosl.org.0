@@ -1,131 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49C0042D5A7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Oct 2021 11:05:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FEB842D8E5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Oct 2021 14:09:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5A3CB40251;
-	Thu, 14 Oct 2021 09:05:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4AFA582F50;
+	Thu, 14 Oct 2021 12:09:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pbyLsYg8L2W6; Thu, 14 Oct 2021 09:05:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ljyEeUvaeVyv; Thu, 14 Oct 2021 12:09:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1CD2A4041F;
-	Thu, 14 Oct 2021 09:05:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E50B982F03;
+	Thu, 14 Oct 2021 12:09:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AC3AE1BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 09:05:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 082241BF3C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 12:09:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A2F5A60605
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 09:05:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0276A60EAE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 12:09:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id StIdp-HixIiv for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Oct 2021 09:05:21 +0000 (UTC)
+ with ESMTP id AMxSMCn36BbS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Oct 2021 12:09:52 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-sn1anam02on2124.outbound.protection.outlook.com [40.107.96.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 791B6605E8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 09:05:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bK5B5cB07r/HIIq70D6tftpV2EoAnNMTW8RjueQ0DBtJm955dV51gkVXRKaYPf1j6ZG8ojGi0fNT5M1xrt4qsxFxWINKy6tl9USynvyYBOS5Ac7V0ZaImR+JUKFKMuOLEiUQQ8PQG5HAOGOs3SpgMN5yIIphr4LHiJdHzmYxVkne/c8sTBgextY/s6rvAJH6CdLRea3DluTcChVkXIlwbOWNSKyyl/E3eCJ8rCm0PnHePiY6D1XRkfhijzGJGXU3Miq/XuMj47xFJbug0fSmPfxEzzspZJJfN+nsSdzkLX80bO2YYxHy7j9doEl3dnbaiJOa/vQ6QplbuX80RVtB9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=s7Medaztcjg5jyOAFW8zFBsApUhR+KUfLquwfhFLF0c=;
- b=Ky8qZSkAXQvCvq3POf7HsLblGI5EpeyT0u+BYNSc17bYFoTYDJ6KU4YQdWDSrZwuTQq3x+f5xn2iGVfIOBPEZqqjlFbQ60Fz3uJYHYLfkLdpgSIMzmvF/+bWsYQuhyxAQJHu/lER2RglJ2UO3pQp8lZgZMpuA2GznYvmpXit79hj1iH9cbMMWWFe4TSxXTywEUyfr2yj1Sji4RSXoK3T2IFWQikqSIIXxmbATL1dDVZ3UkEdUVUlRZfxQKZ92UbZGqmkRJT4YxrWhUsmlZTC+zEJygBG77uC0j9uFtE552nZerOJ5Blb/W6knc9GCiMhi/hFpV0NPMb/a4DcZQTolQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=s7Medaztcjg5jyOAFW8zFBsApUhR+KUfLquwfhFLF0c=;
- b=GQU2Evorc035RERLXnSWsw+IUQezZ01wieu3KMMDi6tSofbV6Qr51xP4hdCP8EVJHVBgX+v0Zd8BdQ6kYUgFtYHAUpAjdeiqcHKsTsD1iYmoJpWwWyPIUylwu6rAnj9fm0DviVj47h+o7ILbsrAKY3gyOg700P5H6ZKRo8iMbx8=
-Authentication-Results: oracle.com; dkim=none (message not signed)
- header.d=none;oracle.com; dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by PH0PR13MB5379.namprd13.prod.outlook.com (2603:10b6:510:fd::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4608.13; Thu, 14 Oct
- 2021 09:05:19 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::e1d9:64d0:cb4f:3e90]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::e1d9:64d0:cb4f:3e90%7]) with mapi id 15.20.4608.016; Thu, 14 Oct 2021
- 09:05:19 +0000
-Date: Thu, 14 Oct 2021 11:05:13 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Message-ID: <20211014090510.GA20127@corigine.com>
-References: <20211013080012.GB6010@kili>
-Content-Disposition: inline
-In-Reply-To: <20211013080012.GB6010@kili>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: AM0PR04CA0088.eurprd04.prod.outlook.com
- (2603:10a6:208:be::29) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+Received: from mail-oi1-f171.google.com (mail-oi1-f171.google.com
+ [209.85.167.171])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1C94A60EAC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 12:09:52 +0000 (UTC)
+Received: by mail-oi1-f171.google.com with SMTP id t4so8158978oie.5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Oct 2021 05:09:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3z60rehR7ZVtst9ELJ9rSkUSBJLTKGRibeWcRwMSZgk=;
+ b=7lXNNZNNYtGYHVwmO2+WemStTxX0j4xElFdrkzwWQvWvnzEIvQ4yMEjJnsTZ/ce6JB
+ JRir8AQoz546XfytERoM13kVbuetk+XqHmOF9xJqTbkuoze2zb7g0HMk6HbOJReo05Is
+ pzPo8iEFcX3YzFyUkVD8x+UpwnE8nTBSXOxz8GEdEsGFYC1m78vntA5tFCuiy9uvjK3c
+ 31Sc4+UtUEHFit9FB+HazxR8zoA0E53hznmdkR9yTuS/oACUsVsCuVMNbJcw5x3waHwc
+ Gp5XULMqsrC9F0frjR3RBgRHEUUnKPqY0fsFtuqDikY5i3oYv3Mjsm2JpXODIbfDm//7
+ nfmw==
+X-Gm-Message-State: AOAM532FUFcR5L6enl1m7coJc0zGzsoriiLIrnifH0AJ5tkHKZ8SGjcj
+ evQHFTwHW8staLLa2hJ0M+ZLAcWLQ6ad+OJ43PM=
+X-Google-Smtp-Source: ABdhPJxGAKTqMZdcGrmTBxMlNXrs3khgKNdNraJU8W3NnLPs+6KomixExRjU+vkSjfTKzdLZsQ1cbMQoQpDPjctKKZ8=
+X-Received: by 2002:aca:b5c3:: with SMTP id e186mr12931946oif.51.1634213391218; 
+ Thu, 14 Oct 2021 05:09:51 -0700 (PDT)
 MIME-Version: 1.0
-Received: from corigine.com (2001:982:756:703:d63d:7eff:fe99:ac9d) by
- AM0PR04CA0088.eurprd04.prod.outlook.com (2603:10a6:208:be::29) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4608.15 via Frontend Transport; Thu, 14 Oct 2021 09:05:17 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 83146fec-b6b9-4a91-eeb3-08d98ef1bec2
-X-MS-TrafficTypeDiagnostic: PH0PR13MB5379:
-X-Microsoft-Antispam-PRVS: <PH0PR13MB537972F83429C34ABBFFD932E8B89@PH0PR13MB5379.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:328;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +/FL7SccpbnawwWMVd94yXC/aIcXEO+Tku6219EiPH9ro/8DzWrBtatwdEtRTbQVQJNJZgrhViJMRpAVzSzl1bS4t2eaawzxQ8uRuOh/gkvDqV1ziO+Cr2rnu7hJyRVrQOplJxyGGy5WyHfcs6KKAXw6XdZyuGLl07Hwhr2VU8JCikwPL9GOhZf3EiHIn5AqEO/qNdUlX6ogk7cuzWsYCobZQKG+8D8Ip0YkcGUhXF2KovI/zqUTM/5zp/5b/29JxANbAR5VhvLx62L37M2mTsLM068ynZCpGHBg7XsMUHho5q1KXKnW7iQbOKx2jeNWOYUF5YrEohWwdQbD9LCbdZ2HRoFUuuEnsOUoYadRTC7YdvfX9fkdi2OKbhgt7VMpg0H16bCK9FgfRwYgnTH4RrqBhpkTyGSL6GUC6iFJTe7AS1ECxWEMtFjMq+ZYIHeDC15u3kGWyyOmVr5dZmKExv0Flj63zTQSprzy4RB8amIZ62sVXRR7WwLwEDIkZDIpvOcpna0Gljj5LPXo8o8KNG0w/u5O4QKpA/Ehg27rO+n60uTAKs1e9hKWghbgjtArDMp7KZcKhOlPOQdasaaksjsSrar0V62Fa9llTPZnHTXs2FY7QfU5T3L5wKtqQxqhjtn72YZLb2nv0f2mZ3NByQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(396003)(376002)(346002)(39830400003)(366004)(136003)(5660300002)(2616005)(38100700002)(66946007)(66476007)(66556008)(8676002)(7416002)(55016002)(1076003)(8936002)(508600001)(36756003)(8886007)(7696005)(6666004)(86362001)(2906002)(44832011)(316002)(52116002)(186003)(4326008)(33656002)(4744005)(54906003)(6916009);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?UShO+2+VP+9ogvD9NOBoVG7U9C7wPHgldQ1C267BbO90dZqhRveibQ8xZaEG?=
- =?us-ascii?Q?kbUkEqBdtc1kWxi33gvwjSLNuvngrU41XZp/R+K2krMnWyJzRQIbJvTbNtjf?=
- =?us-ascii?Q?2lw5n+GPyuuuwlFYizl4tPXnamAvXELn3Q2VACH7RtsHKbllZ0TOYPsdFPM9?=
- =?us-ascii?Q?OTEhs6+gtOSYZMTZ54vWgQNWioAYV/qE3aPWA79u+kqQVzKXXzHffssTq2qS?=
- =?us-ascii?Q?LrYXqL9dh6SNIWilDwi7E5UzmWm4z+ouiLVY1IPxUMoFivZkr2TmCMdjMaZa?=
- =?us-ascii?Q?1Tr9OVX2oP8NsSHZJzQup5ynfVnx8U/cpzqGinwMsqPcSB8dZxPrit+jhSzs?=
- =?us-ascii?Q?x7PGSyc2P6nJqocVg9cQWP3MhHh820GOMFGNAf+STf3oIQXt9Hnp2cD5x7L2?=
- =?us-ascii?Q?J9She9DGvu3tYU9NK/iVZJ5CEvaKS83bqrakyn8a2bU57RgvvrhhEPqeW/vQ?=
- =?us-ascii?Q?MyoOk3L81xxIAr811K9SBcTBoZZUE9wIXL4ecGJeNlDVs/vvSix1apKB5QOq?=
- =?us-ascii?Q?5dmETR2c/2TeIUCTu04qArTARBZtIYCvinPyXspKbhIPDd5RO8qrg2OgCBpL?=
- =?us-ascii?Q?ysRF33hAt5DoyA38HR3OCaONoxux2e8NjXikjPUh3e7+stRfPkG1nJi1tbnh?=
- =?us-ascii?Q?GV4K5QliYR/vllctGo4EyOMjzIMz1vN7+KDNzGX4pOaJwd2WnU2/1OKkafmw?=
- =?us-ascii?Q?WoP9dUKH1uQdo5OXz9OiZD54Vy4EOzgdtU4Wc2Gsr+hGap/XpAChORb+1TI2?=
- =?us-ascii?Q?KrHjZQS/4dpKW0diWiFC7bjeMszK78H8Or82KGoLm5tgvav/CvzRyFq65s/9?=
- =?us-ascii?Q?KK0aZiqLity7QjxAYUj3bVELmTCRiughPOrGuA69ZPOr3TLCMoSDscPCQuU8?=
- =?us-ascii?Q?Zau0Y36LOFiiqvBS7Q/7JJxNcOqtO4JcSdCy8vC4B9GaJUM9fAJxsvC+CTv4?=
- =?us-ascii?Q?dDxStHD9fS2oPePgpguLJCaRjn9NhCbqAVBAh/3Z7J4g4D0s60S8mlrZu87Q?=
- =?us-ascii?Q?y9d0DE4Hu49atDFwJtWXbcZ8BI0VygH6QW+VyHB0Eu3o0VLhrIs6EUxmNwIA?=
- =?us-ascii?Q?mOgxs70HZuV4SC/IEsTwHvHToR3n7w5xdHcSbfmQPVEe+bWokEfLtQWYrs+b?=
- =?us-ascii?Q?pEwqR3MIq49upJ9y+ZanBqqHV87QQeFu6Xn+akpEzGequXzh7zcBUftc+6xh?=
- =?us-ascii?Q?udpoSXWr7b1AUF1w5BHR6Y6dRWBbPhkH8NuU1i1g7TY0WW8p4rUXSzYh6J3O?=
- =?us-ascii?Q?NCJxCVtlW/33m6TjqOERIX/V22R7Qken8rGKegGX66cLE31MuqypEBsEIJb0?=
- =?us-ascii?Q?8lb66rufA8YRG87TQkB2PR6XolVjaskqRFzrAXcoUjAaFVO5GZBpKWvji17r?=
- =?us-ascii?Q?XsFPFkIYMOlHlMYC80CdNhFo/vvF?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 83146fec-b6b9-4a91-eeb3-08d98ef1bec2
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2021 09:05:18.9300 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mD0iQj1jbxy9PE24+pZUvCD8LJs8rbLw7BHEiBknmX+Dx1gRbhVZC3lbcjWcef5zy5wDwnURPFxveGHF/GlAfELouUKriKoK+9i30G7vAc8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR13MB5379
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: fix an error code in
- ice_ena_vfs()
+References: <1823864.tdWV9SEqCh@kailua>
+ <6faf4b92-78d5-47a4-63df-cc2bab7769d0@molgen.mpg.de>
+ <CAJZ5v0gf0y6qDHUJOsvLFctqn8tgKeuTYn5S9rb6+T0Sj26aKw@mail.gmail.com>
+ <9965462.DAOxP5AVGn@pinacolada>
+In-Reply-To: <9965462.DAOxP5AVGn@pinacolada>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Thu, 14 Oct 2021 14:09:39 +0200
+Message-ID: <CAJZ5v0icUwksYVjKW0H5G0DNpfVHSyfm4oC782+Fsy56mQ330A@mail.gmail.com>
+To: "Andreas K. Huettel" <andreas.huettel@ur.de>
+Content-Type: multipart/mixed; boundary="000000000000abd39305ce4ef4db"
+Subject: Re: [Intel-wired-lan] [EXT] Re: Intel I350 regression 5.10 -> 5.14
+ ("The NVM Checksum Is Not Valid") [8086:1521]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,23 +75,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Jakub Kicinski <kubakici@wp.pl>,
+ netdev <netdev@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+ ACPI Devel Maling List <linux-acpi@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Len Brown <lenb@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 13, 2021 at 11:00:12AM +0300, Dan Carpenter wrote:
-> Return the error code if ice_eswitch_configure() fails.  Don't return
-> success.
-> 
-> Fixes: 1c54c839935b ("ice: enable/disable switchdev when managing VFs")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+--000000000000abd39305ce4ef4db
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+On Tue, Oct 12, 2021 at 9:36 PM Andreas K. Huettel
+<andreas.huettel@ur.de> wrote:
+>
+> Am Dienstag, 12. Oktober 2021, 19:58:47 CEST schrieb Rafael J. Wysocki:
+> > On Tue, Oct 12, 2021 at 7:42 PM Paul Menzel <pmenzel@molgen.mpg.de> wrote:
+> > >
+> > > [Cc: +ACPI maintainers]
+> > >
+> > > Am 12.10.21 um 18:34 schrieb Andreas K. Huettel:
+> > > >>> The messages easily identifiable are:
+> > > >>>
+> > > >>> huettel@pinacolada ~/tmp $ cat kernel-messages-5.10.59.txt |grep igb
+> > > >>> Oct  5 15:11:18 dilfridge kernel: [    2.090675] igb: Intel(R) Gigabit Ethernet Network Driver
+> > > >>> Oct  5 15:11:18 dilfridge kernel: [    2.090676] igb: Copyright (c) 2007-2014 Intel Corporation.
+> > > >>> Oct  5 15:11:18 dilfridge kernel: [    2.090728] igb 0000:01:00.0: enabling device (0000 -> 0002)
+> > > >>
+> > > >> This line is missing below, it indicates that the kernel couldn't or
+> > > >> didn't power up the PCIe for some reason. We're looking for something
+> > > >> like ACPI or PCI patches (possibly PCI-Power management) to be the
+> > > >> culprit here.
+> > > >
+> > > > So I did a git bisect from linux-v5.10 (good) to linux-v5.14.11 (bad).
+> > > >
+> > > > The result was:
+> > > >
+> > > > dilfridge /usr/src/linux-git # git bisect bad
+> > > > 6381195ad7d06ef979528c7452f3ff93659f86b1 is the first bad commit
+> > > > commit 6381195ad7d06ef979528c7452f3ff93659f86b1
+> > > > Author: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> > > > Date:   Mon May 24 17:26:16 2021 +0200
+> > > >
+> > > >      ACPI: power: Rework turning off unused power resources
+> > > > [...]
+> > > >
+> > > > I tried naive reverting of this commit on top of 5.14.11. That applies nearly cleanly,
+> > > > and after a reboot the additional ethernet interfaces show up with their MAC in the
+> > > > boot messages.
+> > > >
+> > > > (Not knowing how safe that experiment was, I did not go further than single mode and
+> > > > immediately rebooted into 5.10 afterwards.)
+> >
+> > Reverting this is rather not an option, because the code before it was
+> > a one-off fix of an earlier issue, but it should be fixable given some
+> > more information.
+> >
+> > Basically, I need a boot log from both the good and bad cases and the
+> > acpidump output from the affected machine.
+> >
+>
+> https://dev.gentoo.org/~dilfridge/igb/
+>
+> ^ Should all be here now.
+>
+> 5.10 -> "good" log (the errors are caused by missing support for my i915 graphics and hopefully unrelated)
+> 5.14 -> "bad" log
+>
+> Thank you for looking at this. If you need anything else, just ask.
+
+You're welcome.
+
+Please test the attached patch and let me know if it helps.
+
+--000000000000abd39305ce4ef4db
+Content-Type: text/x-patch; charset="US-ASCII"; name="acpi-power-turn-off-fixup.patch"
+Content-Disposition: attachment; filename="acpi-power-turn-off-fixup.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_kuqwejst0>
+X-Attachment-Id: f_kuqwejst0
+
+LS0tCiBkcml2ZXJzL2FjcGkvcG93ZXIuYyB8ICAgIDcgKy0tLS0tLQogMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspLCA2IGRlbGV0aW9ucygtKQoKSW5kZXg6IGxpbnV4LXBtL2RyaXZlcnMv
+YWNwaS9wb3dlci5jCj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT0KLS0tIGxpbnV4LXBtLm9yaWcvZHJpdmVycy9hY3BpL3Bv
+d2VyLmMKKysrIGxpbnV4LXBtL2RyaXZlcnMvYWNwaS9wb3dlci5jCkBAIC0xMDM1LDEzICsxMDM1
+LDggQEAgdm9pZCBhY3BpX3R1cm5fb2ZmX3VudXNlZF9wb3dlcl9yZXNvdXJjZQogCWxpc3RfZm9y
+X2VhY2hfZW50cnlfcmV2ZXJzZShyZXNvdXJjZSwgJmFjcGlfcG93ZXJfcmVzb3VyY2VfbGlzdCwg
+bGlzdF9ub2RlKSB7CiAJCW11dGV4X2xvY2soJnJlc291cmNlLT5yZXNvdXJjZV9sb2NrKTsKIAot
+CQkvKgotCQkgKiBUdXJuIG9mZiBwb3dlciByZXNvdXJjZXMgaW4gYW4gdW5rbm93biBzdGF0ZSB0
+b28sIGJlY2F1c2UgdGhlCi0JCSAqIHBsYXRmb3JtIGZpcm13YXJlIG9uIHNvbWUgc3lzdGVtIGV4
+cGVjdHMgdGhlIE9TIHRvIHR1cm4gb2ZmCi0JCSAqIHBvd2VyIHJlc291cmNlcyB3aXRob3V0IGFu
+eSB1c2VycyB1bmNvbmRpdGlvbmFsbHkuCi0JCSAqLwogCQlpZiAoIXJlc291cmNlLT5yZWZfY291
+bnQgJiYKLQkJICAgIHJlc291cmNlLT5zdGF0ZSAhPSBBQ1BJX1BPV0VSX1JFU09VUkNFX1NUQVRF
+X09GRikgeworCQkgICAgcmVzb3VyY2UtPnN0YXRlID09IEFDUElfUE9XRVJfUkVTT1VSQ0VfU1RB
+VEVfT04pIHsKIAkJCWFjcGlfaGFuZGxlX2RlYnVnKHJlc291cmNlLT5kZXZpY2UuaGFuZGxlLCAi
+VHVybmluZyBPRkZcbiIpOwogCQkJX19hY3BpX3Bvd2VyX29mZihyZXNvdXJjZSk7CiAJCX0K
+--000000000000abd39305ce4ef4db
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--000000000000abd39305ce4ef4db--
