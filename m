@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 828AA42F038
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Oct 2021 14:08:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAC1642F1A4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Oct 2021 15:02:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C45AB4021B;
-	Fri, 15 Oct 2021 12:08:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xE8tCm0M0dyQ; Fri, 15 Oct 2021 12:08:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A595F402DC;
-	Fri, 15 Oct 2021 12:08:42 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C58E81BF20F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 12:08:37 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B1B4083B1C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 12:08:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3A8983478;
+	Fri, 15 Oct 2021 13:02:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dyybG96Hgxro for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Oct 2021 12:08:36 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yNCRDFmEhLXd; Fri, 15 Oct 2021 13:02:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC2B483440;
+	Fri, 15 Oct 2021 13:02:44 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 637211BF3C4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 13:02:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 51347606F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 13:02:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7al7owU0_3xz for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Oct 2021 13:02:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 884C483A4A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 12:08:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10137"; a="288766996"
-X-IronPort-AV: E=Sophos;i="5.85,375,1624345200"; d="scan'208";a="288766996"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4D90A605F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Oct 2021 13:02:39 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10137"; a="288772939"
+X-IronPort-AV: E=Sophos;i="5.85,375,1624345200"; d="scan'208";a="288772939"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Oct 2021 05:08:35 -0700
+ 15 Oct 2021 06:02:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,375,1624345200"; d="scan'208";a="525416374"
+X-IronPort-AV: E=Sophos;i="5.85,375,1624345200"; d="scan'208";a="481684198"
 Received: from lkp-server02.sh.intel.com (HELO 08b2c502c3de) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 15 Oct 2021 05:08:34 -0700
+ by orsmga007.jf.intel.com with ESMTP; 15 Oct 2021 06:02:36 -0700
 Received: from kbuild by 08b2c502c3de with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mbM0o-0007r5-7f; Fri, 15 Oct 2021 12:08:34 +0000
-Date: Fri, 15 Oct 2021 20:08:15 +0800
+ id 1mbMr6-0007wY-Aw; Fri, 15 Oct 2021 13:02:36 +0000
+Date: Fri, 15 Oct 2021 21:02:12 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61696f2f.1m9Y5arIyNGfIrCY%lkp@intel.com>
+Message-ID: <61697bd4.xAqfAOg2bvrL8K6i%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 19c75fb22514e05f9c9d88bb5c631edcb9ad5551
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ b726ddf984a56a385c9df406a66c221f3a77c951
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,34 +68,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 19c75fb22514e05f9c9d88bb5c631edcb9ad5551  ice: check whether PTP is initialized in ice_ptp_release()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: b726ddf984a56a385c9df406a66c221f3a77c951  ice: Print the api_patch as part of the fw.mgmt.api
 
-elapsed time: 1226m
+elapsed time: 1133m
 
-configs tested: 116
+configs tested: 123
 configs skipped: 3
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 gcc tested configs:
-arm                              allmodconfig
 arm                                 defconfig
 arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
+arm                              allmodconfig
 i386                 randconfig-c001-20211014
-sh                                  defconfig
-powerpc                 linkstation_defconfig
-powerpc                     mpc83xx_defconfig
-ia64                            zx1_defconfig
-sh                     sh7710voipgw_defconfig
 powerpc                     ep8248e_defconfig
+powerpc                     mpc83xx_defconfig
 mips                           ip32_defconfig
 powerpc                     stx_gp3_defconfig
 mips                        bcm63xx_defconfig
 arm                        spear3xx_defconfig
+xtensa                         virt_defconfig
+um                           x86_64_defconfig
+mips                         bigsur_defconfig
+arc                              alldefconfig
+mips                        workpad_defconfig
+mips                     loongson2k_defconfig
+arc                     haps_hs_smp_defconfig
+m68k                          atari_defconfig
+um                                  defconfig
 powerpc                      tqm8xx_defconfig
 powerpc                    adder875_defconfig
 arc                        nsim_700_defconfig
@@ -110,46 +115,49 @@ arm                         axm55xx_defconfig
 sparc64                             defconfig
 powerpc                     tqm8555_defconfig
 mips                  decstation_64_defconfig
+mips                      malta_kvm_defconfig
+powerpc                      arches_defconfig
+mips                        bcm47xx_defconfig
+xtensa                              defconfig
+riscv                            allmodconfig
 powerpc                    ge_imp3a_defconfig
+nds32                             allnoconfig
 powerpc                   lite5200b_defconfig
 powerpc                     sequoia_defconfig
-nds32                             allnoconfig
 arm                  randconfig-c002-20211015
 i386                 randconfig-c001-20211015
 x86_64               randconfig-c001-20211015
-arm                  randconfig-c002-20211014
-x86_64               randconfig-c001-20211014
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
-m68k                                defconfig
 m68k                             allmodconfig
+m68k                                defconfig
 m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
 nds32                               defconfig
-nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
+nios2                            allyesconfig
 h8300                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
 xtensa                           allyesconfig
 parisc                              defconfig
+s390                             allyesconfig
 s390                             allmodconfig
 parisc                           allyesconfig
 s390                                defconfig
-s390                             allyesconfig
 i386                             allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
 mips                             allyesconfig
 mips                             allmodconfig
+powerpc                           allnoconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
-powerpc                           allnoconfig
 x86_64               randconfig-a006-20211014
 x86_64               randconfig-a004-20211014
 x86_64               randconfig-a001-20211014
@@ -168,9 +176,7 @@ riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
 riscv                            allyesconfig
-riscv                            allmodconfig
 x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
 um                             i386_defconfig
 x86_64                              defconfig
 x86_64                               rhel-8.3
