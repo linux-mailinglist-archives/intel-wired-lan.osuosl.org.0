@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7DD1432A36
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 01:16:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DB26432B86
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 03:39:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5C55A60AD7;
-	Mon, 18 Oct 2021 23:16:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 910F060B03;
+	Tue, 19 Oct 2021 01:38:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mT_y79NJIVNd; Mon, 18 Oct 2021 23:16:34 +0000 (UTC)
+	with ESMTP id sIOk79Uz0FEr; Tue, 19 Oct 2021 01:38:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5EC6460ACB;
-	Mon, 18 Oct 2021 23:16:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7D46060AF2;
+	Tue, 19 Oct 2021 01:38:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D80F1BF400
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Oct 2021 23:16:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 67CEB1BF39C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:38:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E42BD40662
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Oct 2021 23:16:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 63A1160AF2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:38:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MQwtaDlCI0F4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Oct 2021 23:16:26 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6AAD24066B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Oct 2021 23:16:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10141"; a="228655715"
-X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; d="scan'208";a="228655715"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2021 16:16:13 -0700
-X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; d="scan'208";a="629385991"
-Received: from ssaleem-mobl.amr.corp.intel.com ([10.209.135.88])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2021 16:16:12 -0700
-From: Shiraz Saleem <shiraz.saleem@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 18 Oct 2021 18:16:03 -0500
-Message-Id: <20211018231603.1690-4-shiraz.saleem@intel.com>
-X-Mailer: git-send-email 2.31.0
-In-Reply-To: <20211018231603.1690-1-shiraz.saleem@intel.com>
-References: <20211018231603.1690-1-shiraz.saleem@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id neQh3UOCslO9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Oct 2021 01:38:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5728E600D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:38:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10141"; a="215327503"
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; d="scan'208";a="215327503"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Oct 2021 18:38:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; d="scan'208";a="661606945"
+Received: from unknown (HELO intel-73.bj.intel.com) ([10.238.154.73])
+ by orsmga005.jf.intel.com with ESMTP; 18 Oct 2021 18:38:45 -0700
+From: yanjun.zhu@linux.dev
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, yanjun.zhu@linux.dev
+Date: Tue, 19 Oct 2021 05:17:43 -0400
+Message-Id: <20211019091743.12046-1-yanjun.zhu@linux.dev>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next 3/3] RDMA/irdma: Set protocol based on
- PF rdma_mode flag
+Subject: [Intel-wired-lan] [PATCH 1/1] ice: remove the unused function
+ ice_aq_nvm_update_empr
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,36 +62,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Set the RDMA protocol to use at driver bind time based on the ice PF's
-rdma_mode flag.
+From: Zhu Yanjun <yanjun.zhu@linux.dev>
 
-Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
+The function ice_aq_nvm_update_empr is not used, so remove it.
+
+Signed-off-by: Zhu Yanjun <yanjun.zhu@linux.dev>
 ---
- drivers/infiniband/hw/irdma/main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_nvm.c | 16 ----------------
+ drivers/net/ethernet/intel/ice/ice_nvm.h |  1 -
+ 2 files changed, 17 deletions(-)
 
-diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
-index 51a4135..3fda7b7 100644
---- a/drivers/infiniband/hw/irdma/main.c
-+++ b/drivers/infiniband/hw/irdma/main.c
-@@ -228,7 +228,8 @@ static void irdma_fill_device_info(struct irdma_device *iwdev, struct ice_pf *pf
- 	rf->msix_count =  pf->num_rdma_msix;
- 	rf->msix_entries = &pf->msix_entries[pf->rdma_base_vector];
- 	rf->default_vsi.vsi_idx = vsi->vsi_num;
--	rf->protocol_used = IRDMA_ROCE_PROTOCOL_ONLY;
-+	rf->protocol_used = pf->rdma_mode & IIDC_RDMA_PROTOCOL_ROCEV2 ?
-+			    IRDMA_ROCE_PROTOCOL_ONLY : IRDMA_IWARP_PROTOCOL_ONLY;
- 	rf->rdma_ver = IRDMA_GEN_2;
- 	rf->rsrc_profile = IRDMA_HMC_PROFILE_DEFAULT;
- 	rf->rst_to = IRDMA_RST_TIMEOUT_HZ;
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index fee37a5844cf..bad374bd7ab3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -1106,22 +1106,6 @@ enum ice_status ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags)
+ 	return ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
+ }
+ 
+-/**
+- * ice_aq_nvm_update_empr
+- * @hw: pointer to the HW struct
+- *
+- * Update empr (0x0709). This command allows SW to
+- * request an EMPR to activate new FW.
+- */
+-enum ice_status ice_aq_nvm_update_empr(struct ice_hw *hw)
+-{
+-	struct ice_aq_desc desc;
+-
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_nvm_update_empr);
+-
+-	return ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
+-}
+-
+ /* ice_nvm_set_pkg_data
+  * @hw: pointer to the HW struct
+  * @del_pkg_data_flag: If is set then the current pkg_data store by FW
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.h b/drivers/net/ethernet/intel/ice/ice_nvm.h
+index c6f05f43d593..925225905491 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.h
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.h
+@@ -39,7 +39,6 @@ enum ice_status
+ ice_aq_erase_nvm(struct ice_hw *hw, u16 module_typeid, struct ice_sq_cd *cd);
+ enum ice_status ice_nvm_validate_checksum(struct ice_hw *hw);
+ enum ice_status ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags);
+-enum ice_status ice_aq_nvm_update_empr(struct ice_hw *hw);
+ enum ice_status
+ ice_nvm_set_pkg_data(struct ice_hw *hw, bool del_pkg_data_flag, u8 *data,
+ 		     u16 length, struct ice_sq_cd *cd);
 -- 
-1.8.3.1
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
