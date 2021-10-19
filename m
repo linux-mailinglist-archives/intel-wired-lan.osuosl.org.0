@@ -1,63 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 241F0433510
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 13:50:19 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5953F43367A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 14:59:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8EB7683C3E;
-	Tue, 19 Oct 2021 11:50:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D996F606A6;
+	Tue, 19 Oct 2021 12:59:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d88h-ysfWpkk; Tue, 19 Oct 2021 11:50:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iIMcJJGrh44Q; Tue, 19 Oct 2021 12:59:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4B2682503;
-	Tue, 19 Oct 2021 11:50:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EE419607BA;
+	Tue, 19 Oct 2021 12:59:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 135B81BF958
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 11:50:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4FC331BF39C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:42:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 013814077A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 11:50:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3B20583C06
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:42:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w0bDiof46kjZ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Oct 2021 11:50:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wgwhEYKH0yP9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Oct 2021 01:42:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5EF604076A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 11:50:11 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPS id E92DC6137B;
- Tue, 19 Oct 2021 11:50:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 759E783BFF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 01:42:18 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 41B2C61260;
+ Tue, 19 Oct 2021 01:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634644211;
- bh=UHOGUKFhhRXbcfzVbtkZfqKIOunGDgIcbQYsQ7jgDwY=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=CLwEnXZU8oX37i8abkHJOflluMBY8GfBbaR/N0P1Pa85S9Vb2REp2QGCngphHVv5m
- 126p7cJSVhdLx1CQCp5JDNbi5L0kPEzq5o4grkrsbj5gvTsBZU2KiIYmxmlGCGQJ8T
- RRI7cZfQxGvYqHsej/xn8MY4rlhCW6McenJhu7MesGTrhB2iOHEW72xLDk6204Aq7I
- 867JEmZxh0kboRUxhN2rqWa8H/0TUJdxwEszThyHcTRTncp4LWV8T6EPLWSdzGs846
- x5Bn1wsxNR0/rdFi3D+ePpSpoRB0rebsSfzNYoEG0jLIYyxl+4TCdPCbCE0rB5ODrD
- kgXVw57aQ8+yg==
-Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
- [127.0.0.1])
- by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id DB1A160A4E;
- Tue, 19 Oct 2021 11:50:10 +0000 (UTC)
+ s=k20201202; t=1634607738;
+ bh=D7YEQastTxFQdKRaYpytIqKQ/4otb+9xuoq/+a0xTe8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Q1vHyVjPA1YYlW/kk/Au08uMtZBfDh7TNX69DFvVdRf1xD0GS1vp3Oi9sy5fivxYj
+ r5JrbeMLvihQ+uygHe8teqas18pTG0utLYcc+I7xgnlb2Wf4VO3WcpyONxS8N7Tbf4
+ XDC1P44EmhjMkN0GAcpQLAa0G1cF/3FRCqh8sAvvKab+E3DbeQnVOW52mEKr7Vfj+1
+ THhKyJTKesrfOEpOb9vZ/UmaqqgYfHC4xLwJmWhsdu2ssEvO9eoFBSjhCGdn7s16Dg
+ IEYfImJoHV/Z8swOgD7zG9LOVN69KhavBUJtNXTCCWUlMzJ9BBMV3TItaED+Dab/Fz
+ O+wHEroE2revA==
+From: Nathan Chancellor <nathan@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Date: Mon, 18 Oct 2021 18:42:03 -0700
+Message-Id: <20211019014203.1926130-1-nathan@kernel.org>
+X-Mailer: git-send-email 2.33.1.637.gf443b226ca
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <163464421089.25315.8858510384823584691.git-patchwork-notify@kernel.org>
-Date: Tue, 19 Oct 2021 11:50:10 +0000
-References: <20211018085154.853744-1-luo.penghao@zte.com.cn>
-In-Reply-To: <20211018085154.853744-1-luo.penghao@zte.com.cn>
-To: Ye Guojin <cgel.zte@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH linux-next] e1000e: Remove redundant
- statement
+X-Patchwork-Bot: notify
+X-Mailman-Approved-At: Tue, 19 Oct 2021 12:59:10 +0000
+Subject: [Intel-wired-lan] [PATCH] ice: Fix clang -Wimplicit-fallthrough in
+ ice_pull_qvec_from_rc()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,38 +69,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, zealci@zte.com.cn, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, luo.penghao@zte.com.cn,
- davem@davemloft.net
+Cc: netdev@vger.kernel.org, llvm@lists.linux.dev,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Nathan Chancellor <nathan@kernel.org>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+Clang warns:
 
-This patch was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
+drivers/net/ethernet/intel/ice/ice_lib.c:1906:2: error: unannotated fall-through between switch labels [-Werror,-Wimplicit-fallthrough]
+        default:
+        ^
+drivers/net/ethernet/intel/ice/ice_lib.c:1906:2: note: insert 'break;' to avoid fall-through
+        default:
+        ^
+        break;
+1 error generated.
 
-On Mon, 18 Oct 2021 08:51:54 +0000 you wrote:
-> This assignment statement is meaningless, because the statement
-> will execute to the tag "set_itr_now".
-> 
-> The clang_analyzer complains as follows:
-> 
-> drivers/net/ethernet/intel/e1000e/netdev.c:2552:3 warning:
-> 
-> [...]
+Clang is a little more pedantic than GCC, which does not warn when
+falling through to a case that is just break or return. Clang's version
+is more in line with the kernel's own stance in deprecated.rst, which
+states that all switch/case blocks must end in either break,
+fallthrough, continue, goto, or return. Add the missing break to silence
+the warning.
 
-Here is the summary with links:
-  - [linux-next] e1000e: Remove redundant statement
-    https://git.kernel.org/netdev/net-next/c/1bd297988b75
+Link: https://github.com/ClangBuiltLinux/linux/issues/1482
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index f981e77f72ad..03443c060507 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1903,6 +1903,7 @@ static struct ice_q_vector *ice_pull_qvec_from_rc(struct ice_ring_container *rc)
+ 	case ICE_TX_CONTAINER:
+ 		if (rc->tx_ring)
+ 			return rc->tx_ring->q_vector;
++		break;
+ 	default:
+ 		break;
+ 	}
 
+base-commit: 939a6567f976efb8b3e6d601ce35eb56b17babd0
+-- 
+2.33.1.637.gf443b226ca
 
 _______________________________________________
 Intel-wired-lan mailing list
