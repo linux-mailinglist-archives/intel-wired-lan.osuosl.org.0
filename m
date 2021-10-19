@@ -1,53 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72D75433843
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 16:20:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB793433AED
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Oct 2021 17:43:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 217D783C8D;
-	Tue, 19 Oct 2021 14:20:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 47FA660880;
+	Tue, 19 Oct 2021 15:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oAoZJfwqIPRo; Tue, 19 Oct 2021 14:20:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FAbVCKVxeZZO; Tue, 19 Oct 2021 15:43:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EA46683C78;
-	Tue, 19 Oct 2021 14:20:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 436F6606D3;
+	Tue, 19 Oct 2021 15:43:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 824D11BF956
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 14:20:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 667C61BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 15:43:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6D80F4073F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 14:20:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 54CDF606D3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 15:43:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KfNT5AMGN8HG for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Oct 2021 14:20:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XVx2fjsGeoF5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Oct 2021 15:43:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A254B40737
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 14:20:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10142"; a="208625574"
-X-IronPort-AV: E=Sophos;i="5.87,164,1631602800"; d="scan'208";a="208625574"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A1F94606A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Oct 2021 15:43:01 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10142"; a="289399692"
+X-IronPort-AV: E=Sophos;i="5.87,164,1631602800"; d="scan'208";a="289399692"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Oct 2021 06:59:23 -0700
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Oct 2021 08:42:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,164,1631602800"; d="scan'208";a="526665754"
-Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by orsmga001.jf.intel.com with ESMTP; 19 Oct 2021 06:59:20 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.87,164,1631602800"; d="scan'208";a="526704062"
+Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.133])
+ by orsmga001.jf.intel.com with ESMTP; 19 Oct 2021 08:42:57 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 19 Oct 2021 15:59:17 +0200
-Message-Id: <20211019135917.15621-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Date: Tue, 19 Oct 2021 08:27:58 -0700
+Message-Id: <20211019152758.58277-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2] iavf: Fix kernel BUG in
- free_msi_irqs
+Subject: [Intel-wired-lan] [PATCH net] ice: Add missing device ids
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,109 +59,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+As part of support for E810 XXV devices, some device ids were
+inadvertently left out. Add those missing ids.
 
-Fix driver not freeing VF's traffic irqs, prior to calling
-pci_disable_msix in iavf_remove.
-There were possible 2 erroneous states in which, iavf_close would
-not be called.
-One erroneous state is fixed by allowing netdev to register, when state
-is already running. It was possible for VF adapter to enter state loop
-from running to resetting, where iavf_open would subsequently fail.
-If user would then unload driver/remove VF pci, iavf_close would not be
-called, as the netdev was not registered, leaving traffic pcis still
-allocated.
-Fixed this by breaking loop, allowing netdev to open device when adapter
-state is __IAVF_RUNNING and it is not explicitily downed.
-Other possiblity is entering to iavf_remove from __IAVF_RESETTING state,
-where iavf_close would not free irqs, but just return 0.
-Fixed this by checking for last adapter state and then removing irqs.
-
-Kernel panic:
-[ 2773.628585] kernel BUG at drivers/pci/msi.c:375!
-...
-[ 2773.631567] RIP: 0010:free_msi_irqs+0x180/0x1b0
-...
-[ 2773.640939] Call Trace:
-[ 2773.641572]  pci_disable_msix+0xf7/0x120
-[ 2773.642224]  iavf_reset_interrupt_capability.part.41+0x15/0x30 [iavf]
-[ 2773.642897]  iavf_remove+0x12e/0x500 [iavf]
-[ 2773.643578]  pci_device_remove+0x3b/0xc0
-[ 2773.644266]  device_release_driver_internal+0x103/0x1f0
-[ 2773.644948]  pci_stop_bus_device+0x69/0x90
-[ 2773.645576]  pci_stop_and_remove_bus_device+0xe/0x20
-[ 2773.646215]  pci_iov_remove_virtfn+0xba/0x120
-[ 2773.646862]  sriov_disable+0x2f/0xe0
-[ 2773.647531]  ice_free_vfs+0x2f8/0x350 [ice]
-[ 2773.648207]  ice_sriov_configure+0x94/0x960 [ice]
-[ 2773.648883]  ? _kstrtoull+0x3b/0x90
-[ 2773.649560]  sriov_numvfs_store+0x10a/0x190
-[ 2773.650249]  kernfs_fop_write+0x116/0x190
-[ 2773.650948]  vfs_write+0xa5/0x1a0
-[ 2773.651651]  ksys_write+0x4f/0xb0
-[ 2773.652358]  do_syscall_64+0x5b/0x1a0
-[ 2773.653075]  entry_SYSCALL_64_after_hwframe+0x65/0xca
-
-Fixes: 22ead37f8af8 ("i40evf: Add longer wait after remove module")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Fixes: 195fb97766da ("ice: add additional E810 device id")
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- v2: Fixed checkpatch errors
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_common.c | 2 ++
+ drivers/net/ethernet/intel/ice/ice_devids.h | 4 ++++
+ drivers/net/ethernet/intel/ice/ice_main.c   | 2 ++
+ 3 files changed, 8 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index d384de4..45a5a48 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3329,6 +3329,13 @@ static int iavf_open(struct net_device *netdev)
- 		goto err_unlock;
- 	}
- 
-+	if (adapter->state == __IAVF_RUNNING &&
-+	    !test_bit(__IAVF_VSI_DOWN, adapter->vsi.state)) {
-+		dev_dbg(&adapter->pdev->dev, "VF is already open.\n");
-+		err = 0;
-+		goto err_unlock;
-+	}
-+
- 	/* allocate transmit descriptors */
- 	err = iavf_setup_all_tx_resources(adapter);
- 	if (err)
-@@ -3977,6 +3984,7 @@ static void iavf_remove(struct pci_dev *pdev)
- 	struct iavf_mac_filter *f, *ftmp;
- 	struct iavf_cloud_filter *cf, *cftmp;
- 	struct iavf_hw *hw = &adapter->hw;
-+	enum iavf_state_t last_state;
- 	int err;
- 	/* Indicate we are in remove and not to run reset_task */
- 	mutex_lock(&adapter->remove_lock);
-@@ -4009,6 +4017,15 @@ static void iavf_remove(struct pci_dev *pdev)
- 	iavf_change_state(adapter, __IAVF_REMOVE);
- 	adapter->aq_required = 0;
- 	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
-+
-+	/* In case we enter iavf_remove from erroneous state, free traffic irqs
-+	 * here, so as to not cause a kernel crash, when calling
-+	 * iavf_reset_interrupt_capability.
-+	 */
-+	if (!(netdev->flags & IFF_UP) &&
-+	    (last_state == __IAVF_RESETTING ||
-+	     last_state == __IAVF_RUNNING))
-+		iavf_free_traffic_irqs(adapter);
- 	iavf_free_all_tx_resources(adapter);
- 	iavf_free_all_rx_resources(adapter);
- 	iavf_misc_irq_disable(adapter);
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 2fb81e359cdf..df5ad4de1f00 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -25,6 +25,8 @@ static enum ice_status ice_set_mac_type(struct ice_hw *hw)
+ 	case ICE_DEV_ID_E810C_BACKPLANE:
+ 	case ICE_DEV_ID_E810C_QSFP:
+ 	case ICE_DEV_ID_E810C_SFP:
++	case ICE_DEV_ID_E810_XXV_BACKPLANE:
++	case ICE_DEV_ID_E810_XXV_QSFP:
+ 	case ICE_DEV_ID_E810_XXV_SFP:
+ 		hw->mac_type = ICE_MAC_E810;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
+index 9d8194671f6a..ef4392e6e244 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devids.h
++++ b/drivers/net/ethernet/intel/ice/ice_devids.h
+@@ -21,6 +21,10 @@
+ #define ICE_DEV_ID_E810C_QSFP		0x1592
+ /* Intel(R) Ethernet Controller E810-C for SFP */
+ #define ICE_DEV_ID_E810C_SFP		0x1593
++/* Intel(R) Ethernet Controller E810-XXV for backplane */
++#define ICE_DEV_ID_E810_XXV_BACKPLANE	0x1599
++/* Intel(R) Ethernet Controller E810-XXV for QSFP */
++#define ICE_DEV_ID_E810_XXV_QSFP	0x159A
+ /* Intel(R) Ethernet Controller E810-XXV for SFP */
+ #define ICE_DEV_ID_E810_XXV_SFP		0x159B
+ /* Intel(R) Ethernet Connection E823-C for backplane */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 94037881bfd8..06fa93e597fb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5020,6 +5020,8 @@ static const struct pci_device_id ice_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_BACKPLANE), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_QSFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_BACKPLANE), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_QSFP), 0 },
 -- 
-2.27.0
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
