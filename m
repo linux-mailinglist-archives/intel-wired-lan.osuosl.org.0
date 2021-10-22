@@ -1,53 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA1B14373A8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Oct 2021 10:30:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0401D401DB;
-	Fri, 22 Oct 2021 08:30:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9Pesd_vyA3b1; Fri, 22 Oct 2021 08:30:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 75E2B401A2;
-	Fri, 22 Oct 2021 08:30:27 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2A28F1BF342
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Oct 2021 08:30:22 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0935E4373BC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Oct 2021 10:37:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1854340771
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Oct 2021 08:30:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7BEF5407A3;
+	Fri, 22 Oct 2021 08:37:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MZ4XYNqhDUYZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Oct 2021 08:30:20 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0c6Sw1lm5TRi; Fri, 22 Oct 2021 08:37:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 73F1B40775;
+	Fri, 22 Oct 2021 08:37:55 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3EACA1BF342
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2C033836A7
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=gmx.net
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8xiUKapPEat6 for <intel-wired-lan@osuosl.org>;
+ Fri, 22 Oct 2021 08:37:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CF0D440419
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Oct 2021 08:30:20 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10144"; a="228024105"
-X-IronPort-AV: E=Sophos;i="5.87,172,1631602800"; d="scan'208";a="228024105"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2021 01:30:20 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,172,1631602800"; d="scan'208";a="553180659"
-Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by fmsmga004.fm.intel.com with ESMTP; 22 Oct 2021 01:30:18 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 22 Oct 2021 10:30:14 +0200
-Message-Id: <20211022083014.4416-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E219C832B3
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1634891867;
+ bh=Rn5pIvTxhZ/yuXm+5YvcTDnOjUNbf1Qi8W2lB/LB/6U=;
+ h=X-UI-Sender-Class:From:To:Subject:Date;
+ b=ejcJ44dAf05OM7aEW5VHVLNVhAlA6Ofe4kPeUPHEelOW3PE3DLC70pDLbNBo9Z8B5
+ 6WIEWGSNzUo4HCDioSp2+qLXhvVW6CxqGV4AytZBZOSbTLquCTQzHftS6TDkC+nwUz
+ mmmMLy1lVUrvhxn3GbtX7RJeU+jNoLF/pV9/e7mQ=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [91.64.35.151] ([91.64.35.151]) by web-mail.gmx.net
+ (3c-app-gmx-bap44.server.lan [172.19.172.114]) (via HTTP); Fri, 22 Oct 2021
+ 10:37:47 +0200
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2] iavf: Fix kernel BUG in
- free_msi_irqs
+Message-ID: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
+From: Robert Schlabbach <robert_s@gmx.net>
+To: intel-wired-lan@osuosl.org
+Date: Fri, 22 Oct 2021 10:37:47 +0200
+Importance: normal
+Sensitivity: Normal
+X-Priority: 3
+X-Provags-ID: V03:K1:trGhgRRTjF7LQoIxfEcxpCroN6b66db97vjcwtR2MTBLyGjOHaucB55rCv5cNlZYNCzIL
+ sowckNKZs1Y4l6DLqMoE2oOQaslenKZZb4xSLoalb4LMZSphiVXq7baV1f7MKmNUPYRm/KMc67ck
+ VuCksJojifo8YsY5R3ThBp9AyktbN3MeBlgxrg29334j5XhrqJhrOUSi+ASlACu6rSOzpEy8v7br
+ zPOvovBBQKuR8cY1xP6Csip1OqOSc+ne6JfeRtiw0iX4vRA85IMn9Azvk0OsBFglwKwlbubZaYXq
+ Ds=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0RLTWn6Cn1w=:x5uFHzLn1v8eGf2gLiveto
+ HVVHoIYAlL1Vy5MqMDDs2vKngh+a2JJEJCC5J+VyQiWbKp/VNen3yIPKHg+474rLnLQHSo6MH
+ rHXVMa4P6koPtb6Tj6Mkv+lFUrJhtxvNkzSei6OUDF6OXeea5J+0ins0JdeePxyNabmSArSpg
+ UlDFSzWZbMih/gCSYrJEed6WdqPQ2ppFfI7IhOOH35gL+pOh7ZtMgohS7MOE0WJq8NlJJQ6Bn
+ ghTyjnKkhDkpVq7SpaWu68iPkux+S/CYZV3EFHMQS8pE2ZEz9yrnN7qm3IYq4XAt4vjjp95h+
+ JprU7cul/lnlDCXsNw4vVaUOOMr0OHg1LxB3ByjCBT8Uju27kXlsikyj8+KvhGTZBewbHkFmu
+ nZMgJWTdu8fvHTJK3Pyom4f9YQuE7A4/mh2OawTYPVYAP9OCJpXUIvv2fwEczQpZTiqLe7UQK
+ COVYC8IyUJ1DZ3z/C4xg077U2VYPUoTuqKffXhLATjop73dCFidi9gf1vD6T4BCHszBa3kcKu
+ rcM9xkemaYLIBrTcLMLBaTD3i+p49epdQwbXkx9cNiWkE23Qkl1oEbRY023lCfIgiIrGQiHiZ
+ n4rYu5OULaUa2ck+sU6VLc/tWtzpn9DaRXN9Zy9FRUBFuys7AT2GC3CiPG0o+drCBfbsHYPXQ
+ zUpXRLOu80ipynQgb1Yn4dM6YZ0YqC6bOFt+6H1eodDgcyo7TYCRCQ/kg63nXvjHNR14eGA1P
+ ky/70Tbgtma/4kVVAjIz0dx5fujc3PoETrFIo08Akzd9ngPyJSsnskB4LPBXtduv8WL6SYxfU
+ uWAbX/M
+Subject: [Intel-wired-lan] [PATCH v2] ixgbe: Allow disabling NBASE-T
+ suppression hack
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,174 +84,115 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Commit a296d665eae1 ("ixgbe: Add ethtool support to enable 2.5 and 5.0
+Gbps support") introduced a hack which suppresses the advertisement of
+NBASE-T speeds by default, according to Todd Fujinaka to accommodate
+customers with network switches which could not cope with advertised
+NBASE-T speeds. However, this hack was not documented at all, nor was
+the way to work around it. Also, this was a rather unfriendly solution
+for customers with NBASE-T switches.
 
-Fix driver not freeing VF's traffic irqs, prior to calling
-pci_disable_msix in iavf_remove.
-There were possible 2 erroneous states in which, iavf_close would
-not be called.
-One erroneous state is fixed by allowing netdev to register, when state
-is already running. It was possible for VF adapter to enter state loop
-from running to resetting, where iavf_open would subsequently fail.
-If user would then unload driver/remove VF pci, iavf_close would not be
-called, as the netdev was not registered, leaving traffic pcis still
-allocated.
-Fixed this by breaking loop, allowing netdev to open device when adapter
-state is __IAVF_RUNNING and it is not explicitily downed.
-Other possiblity is entering to iavf_remove from __IAVF_RESETTING state,
-where iavf_close would not free irqs, but just return 0.
-Fixed this by checking for last adapter state and then removing irqs.
+Add a module parameter "disable_nbase_t_suppression_hack" to allow
+disabling the hack at boot time, for the benefit of customers with
+NBASE-T switches.
 
-Kernel panic:
-[ 2773.628585] kernel BUG at drivers/pci/msi.c:375!
-...
-[ 2773.631567] RIP: 0010:free_msi_irqs+0x180/0x1b0
-...
-[ 2773.640939] Call Trace:
-[ 2773.641572]  pci_disable_msix+0xf7/0x120
-[ 2773.642224]  iavf_reset_interrupt_capability.part.41+0x15/0x30 [iavf]
-[ 2773.642897]  iavf_remove+0x12e/0x500 [iavf]
-[ 2773.643578]  pci_device_remove+0x3b/0xc0
-[ 2773.644266]  device_release_driver_internal+0x103/0x1f0
-[ 2773.644948]  pci_stop_bus_device+0x69/0x90
-[ 2773.645576]  pci_stop_and_remove_bus_device+0xe/0x20
-[ 2773.646215]  pci_iov_remove_virtfn+0xba/0x120
-[ 2773.646862]  sriov_disable+0x2f/0xe0
-[ 2773.647531]  ice_free_vfs+0x2f8/0x350 [ice]
-[ 2773.648207]  ice_sriov_configure+0x94/0x960 [ice]
-[ 2773.648883]  ? _kstrtoull+0x3b/0x90
-[ 2773.649560]  sriov_numvfs_store+0x10a/0x190
-[ 2773.650249]  kernfs_fop_write+0x116/0x190
-[ 2773.650948]  vfs_write+0xa5/0x1a0
-[ 2773.651651]  ksys_write+0x4f/0xb0
-[ 2773.652358]  do_syscall_64+0x5b/0x1a0
-[ 2773.653075]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+Properly document the hack and how to work around or disable it.
 
-Fixes: 22ead37f8af8 ("i40evf: Add longer wait after remove module")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reported-by: Robert Schlabbach <robert_s@gmx.net>
+Signed-off-by: Robert Schlabbach <robert_s@gmx.net>
 ---
- This is a fix but it needs to be targeted to net-next because this feature
- is not present on net yet.
----
- v2: Targeted to correct tree
----
- drivers/net/ethernet/intel/iavf/iavf.h      | 36 +++++++++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_main.c | 20 ++++++++++++
- 2 files changed, 56 insertions(+)
+ .../device_drivers/ethernet/intel/ixgbe.rst   | 30 +++++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 15 ++++++++--
+ 2 files changed, 43 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 537e790..f48696b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -402,6 +402,38 @@ struct iavf_device {
- extern char iavf_driver_name[];
- extern struct workqueue_struct *iavf_wq;
- 
-+static inline const char *iavf_state_str(enum iavf_state_t state)
-+{
-+	switch (state) {
-+	case __IAVF_STARTUP:
-+		return "__IAVF_STARTUP";
-+	case __IAVF_REMOVE:
-+		return "__IAVF_REMOVE";
-+	case __IAVF_INIT_VERSION_CHECK:
-+		return "__IAVF_INIT_VERSION_CHECK";
-+	case __IAVF_INIT_GET_RESOURCES:
-+		return "__IAVF_INIT_GET_RESOURCES";
-+	case __IAVF_INIT_SW:
-+		return "__IAVF_INIT_SW";
-+	case __IAVF_INIT_FAILED:
-+		return "__IAVF_INIT_FAILED";
-+	case __IAVF_RESETTING:
-+		return "__IAVF_RESETTING";
-+	case __IAVF_COMM_FAILED:
-+		return "__IAVF_COMM_FAILED";
-+	case __IAVF_DOWN:
-+		return "__IAVF_DOWN";
-+	case __IAVF_DOWN_PENDING:
-+		return "__IAVF_DOWN_PENDING";
-+	case __IAVF_TESTING:
-+		return "__IAVF_TESTING";
-+	case __IAVF_RUNNING:
-+		return "__IAVF_RUNNING";
-+	default:
-+		return "__IAVF_UNKNOWN_STATE";
-+	}
-+}
+diff --git a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
+index f1d5233e5e51..46502c7dcba6 100644
+--- a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
++++ b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
+@@ -273,6 +273,16 @@ debug
+ This parameter adjusts the level of debug messages displayed in the system
+ logs.
+
++disable_nbase_t_suppression_hack
++--------------------------------
++:Valid Range: 0,1
++:Default Value: 0 (hack enabled)
 +
- static inline void iavf_change_state(struct iavf_adapter *adapter,
- 				     enum iavf_state_t state)
- {
-@@ -409,6 +441,10 @@ static inline void iavf_change_state(struct iavf_adapter *adapter,
- 		adapter->last_state = adapter->state;
- 		adapter->state = state;
++This parameter disables the hack which suppresses the advertisement of NBASE-T
++speeds to accommodate broken network switches which cannot cope with advertised
++NBASE-T speeds. It is recommended to set this parameter to 1 in all network
++environments with properly functioning network switches.
++
+
+ Additional Features and Configurations
+ ======================================
+@@ -515,6 +525,26 @@ The offload is also supported for ixgbe's VFs, but the VF must be set as
+   ethtool --set-priv-flags eth<x> vf-ipsec on
+   ip link set eth<x> vf <y> trust on
+
++NBASE-T Support
++---------------
++The ixgbe driver supports NBASE-T on some devices. However, the advertisement
++of NBASE-T speeds is suppressed by default, to accommodate broken network
++switches which cannot cope with advertised NBASE-T speeds. There are two ways
++to enable advertising NBASE-T speeds on devices which support it:
++
++1. At runtime using the ethtool command (required after each boot)::
++
++  ethtool -s eth? advertise 0x1800000001028
++
++2. At boot time using the module parameter disable_nbase_t_suppression_hack::
++
++  Create a file /etc/modprobe.d/ixgbe.conf with the line::
++
++  options ixgbe disable_nbase_t_suppression_hack=1
++
++  Note that you may have to rebuild the initial ramdisk image for this change
++  to take effect. On Debian or Ubuntu, this is done via "update-initramfs -u".
++
+
+ Known Issues/Troubleshooting
+ ============================
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 13c4782b920a..f75943879fe7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -156,6 +156,11 @@ module_param(allow_unsupported_sfp, uint, 0);
+ MODULE_PARM_DESC(allow_unsupported_sfp,
+ 		 "Allow unsupported and untested SFP+ modules on 82599-based adapters");
+
++static unsigned int disable_nbase_t_suppression_hack;
++module_param(disable_nbase_t_suppression_hack, uint, 0);
++MODULE_PARM_DESC(disable_nbase_t_suppression_hack,
++		 "Disable hack which suppresses the advertisement of NBASE-T speeds to accommodate broken network switches");
++
+ #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
+ static int debug = -1;
+ module_param(debug, int, 0);
+@@ -5526,8 +5531,14 @@ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
+ 	if (!speed && hw->mac.ops.get_link_capabilities) {
+ 		ret = hw->mac.ops.get_link_capabilities(hw, &speed,
+ 							&autoneg);
+-		speed &= ~(IXGBE_LINK_SPEED_5GB_FULL |
+-			   IXGBE_LINK_SPEED_2_5GB_FULL);
++		if (!disable_nbase_t_suppression_hack) {
++			/* remove NBASE-T speeds from default autonegotiation
++			 * to accommodate broken network switches in the field
++			 * which cannot cope with advertised NBASE-T speeds
++			 */
++			speed &= ~(IXGBE_LINK_SPEED_5GB_FULL |
++				   IXGBE_LINK_SPEED_2_5GB_FULL);
++		}
  	}
-+	dev_dbg(&adapter->pdev->dev,
-+		"state transition from:%s to:%s\n",
-+		iavf_state_str(adapter->last_state),
-+		iavf_state_str(adapter->state));
- }
- 
- int iavf_up(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index d384de4..ca929fe 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3329,6 +3329,13 @@ static int iavf_open(struct net_device *netdev)
- 		goto err_unlock;
- 	}
- 
-+	if (adapter->state == __IAVF_RUNNING &&
-+	    !test_bit(__IAVF_VSI_DOWN, adapter->vsi.state)) {
-+		dev_dbg(&adapter->pdev->dev, "VF is already open.\n");
-+		err = 0;
-+		goto err_unlock;
-+	}
-+
- 	/* allocate transmit descriptors */
- 	err = iavf_setup_all_tx_resources(adapter);
- 	if (err)
-@@ -3970,6 +3977,7 @@ static int __maybe_unused iavf_resume(struct device *dev_d)
- static void iavf_remove(struct pci_dev *pdev)
- {
- 	struct iavf_adapter *adapter = iavf_pdev_to_adapter(pdev);
-+	enum iavf_state_t prev_state = adapter->last_state;
- 	struct net_device *netdev = adapter->netdev;
- 	struct iavf_fdir_fltr *fdir, *fdirtmp;
- 	struct iavf_vlan_filter *vlf, *vlftmp;
-@@ -4009,10 +4017,22 @@ static void iavf_remove(struct pci_dev *pdev)
- 	iavf_change_state(adapter, __IAVF_REMOVE);
- 	adapter->aq_required = 0;
- 	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
-+
- 	iavf_free_all_tx_resources(adapter);
- 	iavf_free_all_rx_resources(adapter);
- 	iavf_misc_irq_disable(adapter);
- 	iavf_free_misc_irq(adapter);
-+
-+	/* In case we enter iavf_remove from erroneous state, free traffic irqs
-+	 * here, so as to not cause a kernel crash, when calling
-+	 * iavf_reset_interrupt_capability.
-+	 */
-+	if ((adapter->last_state == __IAVF_RESETTING &&
-+	     prev_state != __IAVF_DOWN) ||
-+	    (adapter->last_state == __IAVF_RUNNING &&
-+	     !(netdev->flags & IFF_UP)))
-+		iavf_free_traffic_irqs(adapter);
-+
- 	iavf_reset_interrupt_capability(adapter);
- 	iavf_free_q_vectors(adapter);
- 
--- 
-2.27.0
+
+ 	if (ret)
+--
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
