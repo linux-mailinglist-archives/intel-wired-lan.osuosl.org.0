@@ -1,78 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8846B438027
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Oct 2021 00:15:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39D82438044
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Oct 2021 00:33:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D886B6064B;
-	Fri, 22 Oct 2021 22:15:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BD6014041A;
+	Fri, 22 Oct 2021 22:33:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id As-HwRlQeCF7; Fri, 22 Oct 2021 22:15:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6MYZFiN6KUgh; Fri, 22 Oct 2021 22:33:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D709760608;
-	Fri, 22 Oct 2021 22:15:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF618403DF;
+	Fri, 22 Oct 2021 22:33:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2D1301BF3BF
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:15:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BEF4C1BF3BF
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:33:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 28161605BE
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:15:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A9E2860718
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:33:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=gmx.net
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 23iqUoJNFa9F for <intel-wired-lan@osuosl.org>;
- Fri, 22 Oct 2021 22:15:50 +0000 (UTC)
+ with ESMTP id 9q5W9GVwWcAV for <intel-wired-lan@osuosl.org>;
+ Fri, 22 Oct 2021 22:33:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mout.gmx.net (mout.gmx.net [212.227.15.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 375D5605B7
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:15:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9389B606E7
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 22:33:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1634940936;
- bh=yfuSBcU/BUHx3lr9cbwfnXBBcyGWpUsbDr0jlcjRENM=;
+ s=badeba3b8450; t=1634941984;
+ bh=j0gw7xPCURn7I4a9I4b3UFcj5NYCXE7k8u/oAdHBVmU=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Tj/Sg/RHnJlx6SA/efg0SlnW2kME/xLw97Ket1nTI65TqX3Dwd5bVHmAhzVqfXY4y
- X95P+uLERPai+bYGdulKrinVHtIiR5C83mdcOj+OPOqAfqBJd63Enwy3l+ab9Ah8Yc
- lbrdhu4njKbrsc3t1bj/V8Ri4iYdm+ft8nJIt430=
+ b=V9BbEXS/skhAXOKzing5HzIZS6/MfgCSVD6k1MzHNO3o633fbNWs7cHmhHjDm4SIz
+ TqaEJ0nEsDWSCBG2+aI4omKbs228tCsyfWX0oyqTcMJHRCzv7I/Lqkn3w8G4YrJgj+
+ ag30Rt7AmMsRLodH2bwxqElyaKuOHvKUCGndCKhM=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from [91.64.35.151] ([91.64.35.151]) by web-mail.gmx.net
  (3c-app-gmx-bs49.server.lan [172.19.170.102]) (via HTTP); Sat, 23 Oct 2021
- 00:15:36 +0200
+ 00:33:04 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-7ec48fc1-b568-49df-8837-218ec2c431c4-1634940936574@3c-app-gmx-bs49>
+Message-ID: <trinity-54948f1a-ae2c-42ab-a18f-6714e5ffc4bf-1634941984414@3c-app-gmx-bs49>
 From: Robert Schlabbach <robert_s@gmx.net>
-To: Hisashi T Fujinaka <htodd@twofifty.com>
-Date: Sat, 23 Oct 2021 00:15:36 +0200
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Sat, 23 Oct 2021 00:33:04 +0200
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <392a6fe-e920-31b-42dc-a214e311233c@twofifty.com>
+In-Reply-To: <9f4603a5-7811-c653-951b-777070f7ce54@molgen.mpg.de>
 References: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
  <9f4603a5-7811-c653-951b-777070f7ce54@molgen.mpg.de>
- <392a6fe-e920-31b-42dc-a214e311233c@twofifty.com>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:ceEDIy0Bpy19V4Uf1A75BNC/SbzoZ0iBaBcQ/SlPNuTzLYGiGVSDQXxCtHI7CRnhEp0K/
- aWI/1380gdzkBx8OyyUjjdP/Zon8azxo52lAK5JtZQLFdUBExXGRFP8BI6XU8Sn5XxEofxRK2X0M
- baau+Ct4hJJRNP6bMytHmV9szJ48+wYF8SdBGbhZSi9VwU9Pd+KN0C8ZpDaTt01fziX5Q0eJgZOh
- FxHjBopc6SAi/9ZKdMI8yMPvIp6vC+2USwus/Q8vX6J5rmj3lDxHu46dd8WTlYapWf6cc/66uzmZ
- zk=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mpeXptIL95c=:cIuUnFHAEyu9Qx7npmePHr
- wKIIHZWiB/F8bxhS6HBJzLkEedCzmnBh64S0HLWhxXP8sHcJSxldXGAND8ZMZmdazpSeI6HwP
- 4EYqFKkcWEMbYeZ2mzVpcJwcC7Qw0iGYdfs524wurY1h2MKKXwUMX9RD0I/keIHUDN1e/P3N3
- N+xbtH5R05fCfJtlNWLl+inVdXPaD7VMHh24b+kUquF3Jq6R4VZQprkDMF8yUG00F3gb+fTXu
- LjAoS9/EjRZAYo94g+ghITa4Erzp59k6SQD6OflVqXcySPmFidDGOuAAA4n1q25LtqO0GQlI/
- gcAQxKxHlsbnX7kw7f2CPB8f4pkNWEVoxT5obbJ6i92+Ve3OO50IcAfQFDOthTGvy0yQeFROS
- tRmcHswRK1CMioqk7C7XuUHqvWsu7L9oSi/GQQqjMMm5L4Hh5BQ6VIZGhMB3vYoXS6/fUq/gp
- qOiXhoXFvC9QnFlQ0OkAI3uBhBKB4E4PJH/hyMJBAJO0DCkFSuUhTjKXPtJw61bF7eYyWklBQ
- DnJyE7Q/Rb73Sn1l2tR6mvXuYW9eID2G0MpcweS+XrI90hfEl74otNkvx582EYFjW5t8Uv65p
- ehIuhbnWrWGHNrrUkEq5kitjqQLwmjoJcm0W+RZ7FBcRKVJYGI+bk/Ax69M4Jb5+hFqh+OZ99
- 6doMqO/iELnWqGSHLZfi1L29nRDFHI/ziSHmaqpLSIBB01CiQeZ8XPvqB20LAzAWf3J46TbFK
- fVgrQ9f5G/Uhl3Wl8xm8z9Z1HAHz/zjgT8zTfR25PJdJ3DWUBuqAgVQNUZgPOvmI8opLjYj2Y
- byobpWa
+X-Provags-ID: V03:K1:/b0lPzqV4/UAK82A3w6pb9RJsgyuPD/Q1ZGGjAe/PB4vqumV4VfZIwEQxUR7P5EUtJNud
+ ak6C6XzsfiajOUWsFxeXdnba72GykfYPEWQMZgSawLMC/ZJnyYw4bLemVAtiqLpLTJy9PXLk8Beh
+ Nj4ktOSrHF/Lzs9shSyc8UT8IfH+EU8dvr/TyXYDNml2wpMb2VMiWxMataooW7cT4QGw1arAw35F
+ kMGrkxERnf0xf+CJq+AfY5fe25+Px8kvi6vz73u2Lma+/MEoFZ/BWJoX2m/J46YwASd+mPoLOm/n
+ G4=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:IW20d6O/GRo=:LQHWxsSUOHqZQz7yc35snG
+ Tm5MyeHCIYSdzF7z25zV0C4w9nHp9Dp9TWEhCxogyW3YDLSQDA5qtXEMQX0GPnFu9ThVGXO3/
+ JlKPZ/sAdb6xmcZuLX9PDymJj4FdJf65ah47CMmYxNtbWAQOlrQTXuBTPn7o6Z6bKlG1TRCwa
+ nK7r1XJ+N/YTqI4/ogxKiZdzhe95XQW3KEKTLx58ew8A2UGdSNd1Q9Q/RN4C3EygSnV9xThVC
+ Rd0r9oyb4EeX4Tad3zRSsECA4X5kp2mMvbyRTEEjGxO+gLYp5Mo9Hc/1dBkuDjRcVNbMNmZxt
+ BhVJQ6DRtcJBRzqK58CrT9sFA1/lcQ8QfEgDO4jf8SD125BKcQZcUK6ee+POU960EK3oWeQqM
+ q4zGqDjbjZu9EemiYP+TLuoxRzA7PhkoKsA4oKez3GKzlzqZqZS5q0xzPnFB2nv3zOCPpKjII
+ PSBiK4uxAJ4dUoF5QCoAQ4USF+cNXo9ex3QBawidsTHk81nf9RPC7fcfMUR6iCdk085Ki2vKg
+ AcfGcGmNV3i6pQVrEcozWRnCeP6jVclAMlA3vRbENTXNNc+s855WGI7+MnBksTR/Cx2fMHg8T
+ yzqhjVDFwWamOoea2Uo6hIb4iBhw/Frz3pLxE/LsRwNxT4YA5W6GvT3CLeTKyEif6/t1+mk2W
+ Ne5Lf5/mwcDXIgLCT9npcyXpuK9fpG8azHNeZxuHpXgwuTEvFoyPNwPULGgf7z7CezhA4PLzw
+ csvvz60FonkK86R+iymJuo9RG+DvZ5MsINlG6Gk/rfqteVweaUrx7Y5g4SrRXeGfKoDjFgVEQ
+ kuR1qjE
 Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Allow disabling NBASE-T
  suppression hack
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -88,61 +89,31 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: intel-wired-lan@osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 22 Oct 2021, Hisashi T Fujinaka wrote:
-
-> We're not likely to accept this patch because it adds a private module
-> parameter and upstream will not accept it.
-
-I don't understand. The module already has 3 parameters, so why is a 4th not acceptable?
-
-> Also, why can't you set advertising for 2.5G and 5G on boot with ethtool?
-
-Using ethtool to fix the advertised speeds after boot renegiotiates the link, meaning
-additional time for the network to come back up. I don't see why I should have to put up
-with inferior results just because others have faulty devices on their networks.
-
-Note also that in the current documentation, the required ethtool command to do this is
-not mentioned.
-
-> Interoperability with existing hardware was more important than adding a
-> feature that, honestly, hasn't been requested much (autoneg of 2.5G and
-> 5G). The x550 is mainly being sold mainly into the server market and
-> outside of the comms market, 2.5G and 5G has mainly been a "gamer"
-> feature that's just coming out on normal motherboards now.
-
-But to take a broader view: Competing multi-gigabit-speed-hardware devices like e.g.
-Marvell/Aquantia's AQC107 do not have such interoperability hacks in their drivers. They
-just work as expected in any network environment. This hack makes Intel's products
-effectively inferior and seem problem-ridden, even though it was just unlucky to be earlier
-to market.
-
-> Also keep in mind that interoperability issues were reported by
-> customers who maintain large data centers (pick a big bank and you'd
-> probably get the idea here) and you'll see why we thought this was
-> necessary.
-
-Your reasoning is completely acceptable, but the way it was implemented is not.
-
-> The fix was documented in my initial patch, but I see that as it worked
-> through the company that was removed. It was not in any external
-> documentation, and that is a failure on our part.
-
-Yes, that patch change should never have passed approval like this. The regression fix
-should have been a dedicated patch with proper documentation, also in the code. And there
-should have been an option to disable it.
-
-I've submitted a patch to right the wrongs. If you have a better patch, you're welcome to
-submit it. If not, I do not think it is right to leave things in the half-baked state they
-are now.
-
-Best Regards,
--Robert Schlabbach
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCAyMiBPY3QgMjAyMSwgUGF1bCBNZW56ZWwgd3JvdGU6Cgo+IEluIG15IG9waW5pb24g
+eW91IHNob3VsZCBjYWxsIGl0IG91dCBhcyBhICpyZWdyZXNzaW9uKiwgd2hpY2ggaXMgYWdhaW5z
+dAo+IExpbnV44oCZIG5vIHJlZ3Jlc3Npb24gcG9saWN5LiAoSSBzdGlsbCB0aGluaywgdGhlIGRl
+ZmF1bHQgbmVlZHMgdG8gYmUKPiBjaGFuZ2VkLikKCkkgd291bGQgYWdyZWUgdGhhdCB0aGUgZGVm
+YXVsdCBtb2RlIG9mIG9wZXJhdGlvbiBzaG91bGQgYmUgdGhlIGZ1bGx5IGZ1bmN0aW9uYWwKb25l
+LCBhbmQgdGhhdCBpbnRlcm9wZXJhYmlsaXR5IGhhY2tzIGZvciBvbGQgc2V0dXBzIHNob3VsZCBi
+ZSBvcHRpb25hbCwgYnV0IEkKc3VwcG9zZSB0aGlzIGlzIHdoZXJlIHRoZSBpbnRlcmVzdHMgb2Yg
+dGhlIExpbnV4IGNvbW11bml0eSBhbmQgSW50ZWwncyBidXNpbmVzcwpuZWVkcyBjb2xsaWRlLiBJ
+J2QgYmUgd2lsbGluZyB0byBnaXZlIHdheSBmb3IgdGhlIGxhdHRlciBhcyBmYXIgYXMgdGhlIGRl
+ZmF1bHQKYmVoYXZpb3IgZ29lcywgYnV0IG1ha2UgaXQgbW9yZSBjbGVhciB0aGF0IHRoaXMgaXMg
+bm90IGFzIGRlc2lyZWQ6CgpGb3IgcGF0Y2ggdjMsIEkndmUgcmVuYW1lZCB0aGUgcGFyYW1ldGVy
+IHRvICJlbmFibGVfbmJhc2VfdF9zdXBwcmVzc2lvbl9oYWNrIgp3aGljaCBpcyBtb3JlIGNvbXBy
+ZWhlbnNpdmUgZnJvbSB0aGUgbG9naWMgcG9pbnQgb2YgdmlldywgYW5kIG1ha2VzIGl0IG1vcmUK
+b2J2aW91cyB0aGF0IDAgbGVhZHMgdG8gc3RhbmRhcmQgYmVoYXZpb3IuIEJ1dCBieSBkZWZhdWx0
+LCBpdCdsbCBiZSAxLgoKPiBJIGZhaW50bHkgcmVtZW1iZXIgdGhlIGRpc2N1c3Npb24sIGJ1dCBk
+aWRu4oCZdCBmaW5kIGl0LiBDYW4geW91IHBsZWFzZQo+IGFkZCBhbiBVUkw/Cj4gCj4gQWxzbyBh
+IEZpeGVzIHRhZyBtaWdodCBiZSB1c2VmdWwuCj4gCj4gWW91IG1pZ2h0IHdhbnQgdG8gbWFyayBp
+dCB1cCBgYHVwZGF0ZS1pbml0cmFtZnMgLXVgYC4KCldpbGwgYWxsIGJlIGluIHBhdGNoIHYzLgoK
+VGhhbmsgeW91IHZlcnkgbXVjaCBmb3IgeW91ciBpbnB1dC4KCkJlc3QgUmVnYXJkcywKLVJvYmVy
+dCBTY2hsYWJiYWNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5v
+cmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQt
+bGFuCg==
