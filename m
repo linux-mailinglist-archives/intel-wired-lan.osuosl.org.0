@@ -1,76 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0935E4373BC
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Oct 2021 10:37:58 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ACD14374F6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Oct 2021 11:43:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7BEF5407A3;
-	Fri, 22 Oct 2021 08:37:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E3D804027F;
+	Fri, 22 Oct 2021 09:43:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0c6Sw1lm5TRi; Fri, 22 Oct 2021 08:37:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id E2KRVtLBhr6i; Fri, 22 Oct 2021 09:43:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 73F1B40775;
-	Fri, 22 Oct 2021 08:37:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 08E1940172;
+	Fri, 22 Oct 2021 09:43:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3EACA1BF342
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E59C1BF86B
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 09:42:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2C033836A7
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0295D60675
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 09:42:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=gmx.net
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8xiUKapPEat6 for <intel-wired-lan@osuosl.org>;
- Fri, 22 Oct 2021 08:37:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E219C832B3
- for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 08:37:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1634891867;
- bh=Rn5pIvTxhZ/yuXm+5YvcTDnOjUNbf1Qi8W2lB/LB/6U=;
- h=X-UI-Sender-Class:From:To:Subject:Date;
- b=ejcJ44dAf05OM7aEW5VHVLNVhAlA6Ofe4kPeUPHEelOW3PE3DLC70pDLbNBo9Z8B5
- 6WIEWGSNzUo4HCDioSp2+qLXhvVW6CxqGV4AytZBZOSbTLquCTQzHftS6TDkC+nwUz
- mmmMLy1lVUrvhxn3GbtX7RJeU+jNoLF/pV9/e7mQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [91.64.35.151] ([91.64.35.151]) by web-mail.gmx.net
- (3c-app-gmx-bap44.server.lan [172.19.172.114]) (via HTTP); Fri, 22 Oct 2021
- 10:37:47 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TjnKyFPwbCT0 for <intel-wired-lan@osuosl.org>;
+ Fri, 22 Oct 2021 09:42:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 389AD60665
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Oct 2021 09:42:56 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5ae8ed.dynamic.kabel-deutschland.de
+ [95.90.232.237])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 8486161E5FE02;
+ Fri, 22 Oct 2021 11:42:53 +0200 (CEST)
+To: Robert Schlabbach <robert_s@gmx.net>
+References: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <9f4603a5-7811-c653-951b-777070f7ce54@molgen.mpg.de>
+Date: Fri, 22 Oct 2021 11:42:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-Message-ID: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
-From: Robert Schlabbach <robert_s@gmx.net>
-To: intel-wired-lan@osuosl.org
-Date: Fri, 22 Oct 2021 10:37:47 +0200
-Importance: normal
-Sensitivity: Normal
-X-Priority: 3
-X-Provags-ID: V03:K1:trGhgRRTjF7LQoIxfEcxpCroN6b66db97vjcwtR2MTBLyGjOHaucB55rCv5cNlZYNCzIL
- sowckNKZs1Y4l6DLqMoE2oOQaslenKZZb4xSLoalb4LMZSphiVXq7baV1f7MKmNUPYRm/KMc67ck
- VuCksJojifo8YsY5R3ThBp9AyktbN3MeBlgxrg29334j5XhrqJhrOUSi+ASlACu6rSOzpEy8v7br
- zPOvovBBQKuR8cY1xP6Csip1OqOSc+ne6JfeRtiw0iX4vRA85IMn9Azvk0OsBFglwKwlbubZaYXq
- Ds=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0RLTWn6Cn1w=:x5uFHzLn1v8eGf2gLiveto
- HVVHoIYAlL1Vy5MqMDDs2vKngh+a2JJEJCC5J+VyQiWbKp/VNen3yIPKHg+474rLnLQHSo6MH
- rHXVMa4P6koPtb6Tj6Mkv+lFUrJhtxvNkzSei6OUDF6OXeea5J+0ins0JdeePxyNabmSArSpg
- UlDFSzWZbMih/gCSYrJEed6WdqPQ2ppFfI7IhOOH35gL+pOh7ZtMgohS7MOE0WJq8NlJJQ6Bn
- ghTyjnKkhDkpVq7SpaWu68iPkux+S/CYZV3EFHMQS8pE2ZEz9yrnN7qm3IYq4XAt4vjjp95h+
- JprU7cul/lnlDCXsNw4vVaUOOMr0OHg1LxB3ByjCBT8Uju27kXlsikyj8+KvhGTZBewbHkFmu
- nZMgJWTdu8fvHTJK3Pyom4f9YQuE7A4/mh2OawTYPVYAP9OCJpXUIvv2fwEczQpZTiqLe7UQK
- COVYC8IyUJ1DZ3z/C4xg077U2VYPUoTuqKffXhLATjop73dCFidi9gf1vD6T4BCHszBa3kcKu
- rcM9xkemaYLIBrTcLMLBaTD3i+p49epdQwbXkx9cNiWkE23Qkl1oEbRY023lCfIgiIrGQiHiZ
- n4rYu5OULaUa2ck+sU6VLc/tWtzpn9DaRXN9Zy9FRUBFuys7AT2GC3CiPG0o+drCBfbsHYPXQ
- zUpXRLOu80ipynQgb1Yn4dM6YZ0YqC6bOFt+6H1eodDgcyo7TYCRCQ/kg63nXvjHNR14eGA1P
- ky/70Tbgtma/4kVVAjIz0dx5fujc3PoETrFIo08Akzd9ngPyJSsnskB4LPBXtduv8WL6SYxfU
- uWAbX/M
-Subject: [Intel-wired-lan] [PATCH v2] ixgbe: Allow disabling NBASE-T
+In-Reply-To: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Allow disabling NBASE-T
  suppression hack
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -84,117 +62,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit a296d665eae1 ("ixgbe: Add ethtool support to enable 2.5 and 5.0
-Gbps support") introduced a hack which suppresses the advertisement of
-NBASE-T speeds by default, according to Todd Fujinaka to accommodate
-customers with network switches which could not cope with advertised
-NBASE-T speeds. However, this hack was not documented at all, nor was
-the way to work around it. Also, this was a rather unfriendly solution
-for customers with NBASE-T switches.
-
-Add a module parameter "disable_nbase_t_suppression_hack" to allow
-disabling the hack at boot time, for the benefit of customers with
-NBASE-T switches.
-
-Properly document the hack and how to work around or disable it.
-
-Reported-by: Robert Schlabbach <robert_s@gmx.net>
-Signed-off-by: Robert Schlabbach <robert_s@gmx.net>
----
- .../device_drivers/ethernet/intel/ixgbe.rst   | 30 +++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 15 ++++++++--
- 2 files changed, 43 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-index f1d5233e5e51..46502c7dcba6 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-@@ -273,6 +273,16 @@ debug
- This parameter adjusts the level of debug messages displayed in the system
- logs.
-
-+disable_nbase_t_suppression_hack
-+--------------------------------
-+:Valid Range: 0,1
-+:Default Value: 0 (hack enabled)
-+
-+This parameter disables the hack which suppresses the advertisement of NBASE-T
-+speeds to accommodate broken network switches which cannot cope with advertised
-+NBASE-T speeds. It is recommended to set this parameter to 1 in all network
-+environments with properly functioning network switches.
-+
-
- Additional Features and Configurations
- ======================================
-@@ -515,6 +525,26 @@ The offload is also supported for ixgbe's VFs, but the VF must be set as
-   ethtool --set-priv-flags eth<x> vf-ipsec on
-   ip link set eth<x> vf <y> trust on
-
-+NBASE-T Support
-+---------------
-+The ixgbe driver supports NBASE-T on some devices. However, the advertisement
-+of NBASE-T speeds is suppressed by default, to accommodate broken network
-+switches which cannot cope with advertised NBASE-T speeds. There are two ways
-+to enable advertising NBASE-T speeds on devices which support it:
-+
-+1. At runtime using the ethtool command (required after each boot)::
-+
-+  ethtool -s eth? advertise 0x1800000001028
-+
-+2. At boot time using the module parameter disable_nbase_t_suppression_hack::
-+
-+  Create a file /etc/modprobe.d/ixgbe.conf with the line::
-+
-+  options ixgbe disable_nbase_t_suppression_hack=1
-+
-+  Note that you may have to rebuild the initial ramdisk image for this change
-+  to take effect. On Debian or Ubuntu, this is done via "update-initramfs -u".
-+
-
- Known Issues/Troubleshooting
- ============================
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 13c4782b920a..f75943879fe7 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -156,6 +156,11 @@ module_param(allow_unsupported_sfp, uint, 0);
- MODULE_PARM_DESC(allow_unsupported_sfp,
- 		 "Allow unsupported and untested SFP+ modules on 82599-based adapters");
-
-+static unsigned int disable_nbase_t_suppression_hack;
-+module_param(disable_nbase_t_suppression_hack, uint, 0);
-+MODULE_PARM_DESC(disable_nbase_t_suppression_hack,
-+		 "Disable hack which suppresses the advertisement of NBASE-T speeds to accommodate broken network switches");
-+
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
- module_param(debug, int, 0);
-@@ -5526,8 +5531,14 @@ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
- 	if (!speed && hw->mac.ops.get_link_capabilities) {
- 		ret = hw->mac.ops.get_link_capabilities(hw, &speed,
- 							&autoneg);
--		speed &= ~(IXGBE_LINK_SPEED_5GB_FULL |
--			   IXGBE_LINK_SPEED_2_5GB_FULL);
-+		if (!disable_nbase_t_suppression_hack) {
-+			/* remove NBASE-T speeds from default autonegotiation
-+			 * to accommodate broken network switches in the field
-+			 * which cannot cope with advertised NBASE-T speeds
-+			 */
-+			speed &= ~(IXGBE_LINK_SPEED_5GB_FULL |
-+				   IXGBE_LINK_SPEED_2_5GB_FULL);
-+		}
- 	}
-
- 	if (ret)
---
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBSb2JlcnQsCgoKQW0gMjIuMTAuMjEgdW0gMTA6Mzcgc2NocmllYiBSb2JlcnQgU2NobGFi
+YmFjaDoKPiBDb21taXQgYTI5NmQ2NjVlYWUxICgiaXhnYmU6IEFkZCBldGh0b29sIHN1cHBvcnQg
+dG8gZW5hYmxlIDIuNSBhbmQgNS4wCj4gR2JwcyBzdXBwb3J0IikgaW50cm9kdWNlZCBhIGhhY2sg
+d2hpY2ggc3VwcHJlc3NlcyB0aGUgYWR2ZXJ0aXNlbWVudCBvZgo+IE5CQVNFLVQgc3BlZWRzIGJ5
+IGRlZmF1bHQsIGFjY29yZGluZyB0byBUb2RkIEZ1amluYWthIHRvIGFjY29tbW9kYXRlCj4gY3Vz
+dG9tZXJzIHdpdGggbmV0d29yayBzd2l0Y2hlcyB3aGljaCBjb3VsZCBub3QgY29wZSB3aXRoIGFk
+dmVydGlzZWQKPiBOQkFTRS1UIHNwZWVkcy4gSG93ZXZlciwgdGhpcyBoYWNrIHdhcyBub3QgZG9j
+dW1lbnRlZCBhdCBhbGwsIG5vciB3YXMKPiB0aGUgd2F5IHRvIHdvcmsgYXJvdW5kIGl0LiBBbHNv
+LCB0aGlzIHdhcyBhIHJhdGhlciB1bmZyaWVuZGx5IHNvbHV0aW9uCj4gZm9yIGN1c3RvbWVycyB3
+aXRoIE5CQVNFLVQgc3dpdGNoZXMuCgpJbiBteSBvcGluaW9uIHlvdSBzaG91bGQgY2FsbCBpdCBv
+dXQgYXMgYSAqcmVncmVzc2lvbiosIHdoaWNoIGlzIGFnYWluc3QgCkxpbnV44oCZIG5vIHJlZ3Jl
+c3Npb24gcG9saWN5LiAoSSBzdGlsbCB0aGluaywgdGhlIGRlZmF1bHQgbmVlZHMgdG8gYmUgCmNo
+YW5nZWQuKQoKPiBBZGQgYSBtb2R1bGUgcGFyYW1ldGVyICJkaXNhYmxlX25iYXNlX3Rfc3VwcHJl
+c3Npb25faGFjayIgdG8gYWxsb3cKPiBkaXNhYmxpbmcgdGhlIGhhY2sgYXQgYm9vdCB0aW1lLCBm
+b3IgdGhlIGJlbmVmaXQgb2YgY3VzdG9tZXJzIHdpdGgKPiBOQkFTRS1UIHN3aXRjaGVzLgo+IAo+
+IFByb3Blcmx5IGRvY3VtZW50IHRoZSBoYWNrIGFuZCBob3cgdG8gd29yayBhcm91bmQgb3IgZGlz
+YWJsZSBpdC4KPiAKPiBSZXBvcnRlZC1ieTogUm9iZXJ0IFNjaGxhYmJhY2ggPHJvYmVydF9zQGdt
+eC5uZXQ+Cj4gU2lnbmVkLW9mZi1ieTogUm9iZXJ0IFNjaGxhYmJhY2ggPHJvYmVydF9zQGdteC5u
+ZXQ+CgpJIGZhaW50bHkgcmVtZW1iZXIgdGhlIGRpc2N1c3Npb24sIGJ1dCBkaWRu4oCZdCBmaW5k
+IGl0LiBDYW4geW91IHBsZWFzZSAKYWRkIGFuIFVSTD8KCkFsc28gYSBGaXhlcyB0YWcgbWlnaHQg
+YmUgdXNlZnVsLgoKPiAtLS0KPiAgIC4uLi9kZXZpY2VfZHJpdmVycy9ldGhlcm5ldC9pbnRlbC9p
+eGdiZS5yc3QgICB8IDMwICsrKysrKysrKysrKysrKysrKysKPiAgIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYyB8IDE1ICsrKysrKysrLS0KPiAgIDIgZmlsZXMg
+Y2hhbmdlZCwgNDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0
+IGEvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVs
+L2l4Z2JlLnJzdCBiL0RvY3VtZW50YXRpb24vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9ldGhl
+cm5ldC9pbnRlbC9peGdiZS5yc3QKPiBpbmRleCBmMWQ1MjMzZTVlNTEuLjQ2NTAyYzdkY2JhNiAx
+MDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMvZXRo
+ZXJuZXQvaW50ZWwvaXhnYmUucnN0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2Rl
+dmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2l4Z2JlLnJzdAo+IEBAIC0yNzMsNiArMjczLDE2
+IEBAIGRlYnVnCj4gICBUaGlzIHBhcmFtZXRlciBhZGp1c3RzIHRoZSBsZXZlbCBvZiBkZWJ1ZyBt
+ZXNzYWdlcyBkaXNwbGF5ZWQgaW4gdGhlIHN5c3RlbQo+ICAgbG9ncy4KPiAKPiArZGlzYWJsZV9u
+YmFzZV90X3N1cHByZXNzaW9uX2hhY2sKPiArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0KPiArOlZhbGlkIFJhbmdlOiAwLDEKPiArOkRlZmF1bHQgVmFsdWU6IDAgKGhhY2sgZW5hYmxl
+ZCkKPiArCj4gK1RoaXMgcGFyYW1ldGVyIGRpc2FibGVzIHRoZSBoYWNrIHdoaWNoIHN1cHByZXNz
+ZXMgdGhlIGFkdmVydGlzZW1lbnQgb2YgTkJBU0UtVAo+ICtzcGVlZHMgdG8gYWNjb21tb2RhdGUg
+YnJva2VuIG5ldHdvcmsgc3dpdGNoZXMgd2hpY2ggY2Fubm90IGNvcGUgd2l0aCBhZHZlcnRpc2Vk
+Cj4gK05CQVNFLVQgc3BlZWRzLiBJdCBpcyByZWNvbW1lbmRlZCB0byBzZXQgdGhpcyBwYXJhbWV0
+ZXIgdG8gMSBpbiBhbGwgbmV0d29yawo+ICtlbnZpcm9ubWVudHMgd2l0aCBwcm9wZXJseSBmdW5j
+dGlvbmluZyBuZXR3b3JrIHN3aXRjaGVzLgo+ICsKCkRvIHlvdSBrbm93IG9uZSBzdWNoIGJyb2tl
+biBtb2RlbD8KCj4gICBBZGRpdGlvbmFsIEZlYXR1cmVzIGFuZCBDb25maWd1cmF0aW9ucwo+ICAg
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPiBAQCAtNTE1LDYgKzUyNSwy
+NiBAQCBUaGUgb2ZmbG9hZCBpcyBhbHNvIHN1cHBvcnRlZCBmb3IgaXhnYmUncyBWRnMsIGJ1dCB0
+aGUgVkYgbXVzdCBiZSBzZXQgYXMKPiAgICAgZXRodG9vbCAtLXNldC1wcml2LWZsYWdzIGV0aDx4
+PiB2Zi1pcHNlYyBvbgo+ICAgICBpcCBsaW5rIHNldCBldGg8eD4gdmYgPHk+IHRydXN0IG9uCj4g
+Cj4gK05CQVNFLVQgU3VwcG9ydAo+ICstLS0tLS0tLS0tLS0tLS0KPiArVGhlIGl4Z2JlIGRyaXZl
+ciBzdXBwb3J0cyBOQkFTRS1UIG9uIHNvbWUgZGV2aWNlcy4gSG93ZXZlciwgdGhlIGFkdmVydGlz
+ZW1lbnQKPiArb2YgTkJBU0UtVCBzcGVlZHMgaXMgc3VwcHJlc3NlZCBieSBkZWZhdWx0LCB0byBh
+Y2NvbW1vZGF0ZSBicm9rZW4gbmV0d29yawo+ICtzd2l0Y2hlcyB3aGljaCBjYW5ub3QgY29wZSB3
+aXRoIGFkdmVydGlzZWQgTkJBU0UtVCBzcGVlZHMuIFRoZXJlIGFyZSB0d28gd2F5cwo+ICt0byBl
+bmFibGUgYWR2ZXJ0aXNpbmcgTkJBU0UtVCBzcGVlZHMgb24gZGV2aWNlcyB3aGljaCBzdXBwb3J0
+IGl0Ogo+ICsKPiArMS4gQXQgcnVudGltZSB1c2luZyB0aGUgZXRodG9vbCBjb21tYW5kIChyZXF1
+aXJlZCBhZnRlciBlYWNoIGJvb3QpOjoKPiArCj4gKyAgZXRodG9vbCAtcyBldGg/IGFkdmVydGlz
+ZSAweDE4MDAwMDAwMDEwMjgKPiArCj4gKzIuIEF0IGJvb3QgdGltZSB1c2luZyB0aGUgbW9kdWxl
+IHBhcmFtZXRlciBkaXNhYmxlX25iYXNlX3Rfc3VwcHJlc3Npb25faGFjazo6Cj4gKwo+ICsgIENy
+ZWF0ZSBhIGZpbGUgL2V0Yy9tb2Rwcm9iZS5kL2l4Z2JlLmNvbmYgd2l0aCB0aGUgbGluZTo6Cj4g
+Kwo+ICsgIG9wdGlvbnMgaXhnYmUgZGlzYWJsZV9uYmFzZV90X3N1cHByZXNzaW9uX2hhY2s9MQo+
+ICsKPiArICBOb3RlIHRoYXQgeW91IG1heSBoYXZlIHRvIHJlYnVpbGQgdGhlIGluaXRpYWwgcmFt
+ZGlzayBpbWFnZSBmb3IgdGhpcyBjaGFuZ2UKPiArICB0byB0YWtlIGVmZmVjdC4gT24gRGViaWFu
+IG9yIFVidW50dSwgdGhpcyBpcyBkb25lIHZpYSAidXBkYXRlLWluaXRyYW1mcyAtdSIuCgpZb3Ug
+bWlnaHQgd2FudCB0byBtYXJrIGl0IHVwIGBgdXBkYXRlLWluaXRyYW1mcyAtdWBgLgoKPiArCj4g
+Cj4gICBLbm93biBJc3N1ZXMvVHJvdWJsZXNob290aW5nCj4gICA9PT09PT09PT09PT09PT09PT09
+PT09PT09PT09Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
+L2l4Z2JlX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21h
+aW4uYwo+IGluZGV4IDEzYzQ3ODJiOTIwYS4uZjc1OTQzODc5ZmU3IDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYwo+ICsrKyBiL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYwo+IEBAIC0xNTYsNiArMTU2
+LDExIEBAIG1vZHVsZV9wYXJhbShhbGxvd191bnN1cHBvcnRlZF9zZnAsIHVpbnQsIDApOwo+ICAg
+TU9EVUxFX1BBUk1fREVTQyhhbGxvd191bnN1cHBvcnRlZF9zZnAsCj4gICAJCSAiQWxsb3cgdW5z
+dXBwb3J0ZWQgYW5kIHVudGVzdGVkIFNGUCsgbW9kdWxlcyBvbiA4MjU5OS1iYXNlZCBhZGFwdGVy
+cyIpOwo+IAo+ICtzdGF0aWMgdW5zaWduZWQgaW50IGRpc2FibGVfbmJhc2VfdF9zdXBwcmVzc2lv
+bl9oYWNrOwo+ICttb2R1bGVfcGFyYW0oZGlzYWJsZV9uYmFzZV90X3N1cHByZXNzaW9uX2hhY2ss
+IHVpbnQsIDApOwo+ICtNT0RVTEVfUEFSTV9ERVNDKGRpc2FibGVfbmJhc2VfdF9zdXBwcmVzc2lv
+bl9oYWNrLAo+ICsJCSAiRGlzYWJsZSBoYWNrIHdoaWNoIHN1cHByZXNzZXMgdGhlIGFkdmVydGlz
+ZW1lbnQgb2YgTkJBU0UtVCBzcGVlZHMgdG8gYWNjb21tb2RhdGUgYnJva2VuIG5ldHdvcmsgc3dp
+dGNoZXMiKTsKPiArCj4gICAjZGVmaW5lIERFRkFVTFRfTVNHX0VOQUJMRSAoTkVUSUZfTVNHX0RS
+VnxORVRJRl9NU0dfUFJPQkV8TkVUSUZfTVNHX0xJTkspCj4gICBzdGF0aWMgaW50IGRlYnVnID0g
+LTE7Cj4gICBtb2R1bGVfcGFyYW0oZGVidWcsIGludCwgMCk7Cj4gQEAgLTU1MjYsOCArNTUzMSwx
+NCBAQCBzdGF0aWMgaW50IGl4Z2JlX25vbl9zZnBfbGlua19jb25maWcoc3RydWN0IGl4Z2JlX2h3
+ICpodykKPiAgIAlpZiAoIXNwZWVkICYmIGh3LT5tYWMub3BzLmdldF9saW5rX2NhcGFiaWxpdGll
+cykgewo+ICAgCQlyZXQgPSBody0+bWFjLm9wcy5nZXRfbGlua19jYXBhYmlsaXRpZXMoaHcsICZz
+cGVlZCwKPiAgIAkJCQkJCQkmYXV0b25lZyk7Cj4gLQkJc3BlZWQgJj0gfihJWEdCRV9MSU5LX1NQ
+RUVEXzVHQl9GVUxMIHwKPiAtCQkJICAgSVhHQkVfTElOS19TUEVFRF8yXzVHQl9GVUxMKTsKPiAr
+CQlpZiAoIWRpc2FibGVfbmJhc2VfdF9zdXBwcmVzc2lvbl9oYWNrKSB7Cj4gKwkJCS8qIHJlbW92
+ZSBOQkFTRS1UIHNwZWVkcyBmcm9tIGRlZmF1bHQgYXV0b25lZ290aWF0aW9uCj4gKwkJCSAqIHRv
+IGFjY29tbW9kYXRlIGJyb2tlbiBuZXR3b3JrIHN3aXRjaGVzIGluIHRoZSBmaWVsZAo+ICsJCQkg
+KiB3aGljaCBjYW5ub3QgY29wZSB3aXRoIGFkdmVydGlzZWQgTkJBU0UtVCBzcGVlZHMKPiArCQkJ
+ICovCj4gKwkJCXNwZWVkICY9IH4oSVhHQkVfTElOS19TUEVFRF81R0JfRlVMTCB8Cj4gKwkJCQkg
+ICBJWEdCRV9MSU5LX1NQRUVEXzJfNUdCX0ZVTEwpOwo+ICsJCX0KPiAgIAl9Cj4gCj4gICAJaWYg
+KHJldCkKPiAtLQo+IDIuMTcuMQoKQWNrZWQtYnk6IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdl
+bi5tcGcuZGU+CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVs
+LXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
