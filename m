@@ -1,83 +1,162 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C46C5438334
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Oct 2021 12:27:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE6A7438EB0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Oct 2021 07:16:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2BE0B40336;
-	Sat, 23 Oct 2021 10:27:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 24B2180E49;
+	Mon, 25 Oct 2021 05:16:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0wh87PWv5FJ4; Sat, 23 Oct 2021 10:27:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DF4904023C;
-	Sat, 23 Oct 2021 10:27:07 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 14C101BF859
- for <intel-wired-lan@osuosl.org>; Sat, 23 Oct 2021 10:27:04 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 02DC9823F6
- for <intel-wired-lan@osuosl.org>; Sat, 23 Oct 2021 10:27:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=gmx.net
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0FkOGFJxPtcO for <intel-wired-lan@osuosl.org>;
- Sat, 23 Oct 2021 10:27:03 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DldkF_A08arA; Mon, 25 Oct 2021 05:16:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3DD8280E47;
+	Mon, 25 Oct 2021 05:16:56 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E1201BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Oct 2021 05:16:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 723C74038B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Oct 2021 05:16:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kwJ93MzEzYXI for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Oct 2021 05:16:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9993A823F4
- for <intel-wired-lan@osuosl.org>; Sat, 23 Oct 2021 10:27:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1634984812;
- bh=qwOrtTYWMLa4m1dTYU4XDEb1fwdvqci49YndT6+Eu0I=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Ita/mG7afJp9/xt1Exmyk0MIowsm7RzIdHtxIREM+hIMItLhEtRaWPYUaJX3fwtgY
- aD9I4egaFVh4Ud3b2K1LE8FH3nupCjC0VNZr2C5wyQkCA+ueQO2NVa1c29IHKfuGcB
- PnPZa2Dg8ZbfZqrkk0b+6RYndBcuvs04iVNFKhu4=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [91.64.35.151] ([91.64.35.151]) by web-mail.gmx.net
- (3c-app-gmx-bs13.server.lan [172.19.170.65]) (via HTTP); Sat, 23 Oct 2021
- 12:26:52 +0200
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id ADCB440124
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Oct 2021 05:16:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10147"; a="253087534"
+X-IronPort-AV: E=Sophos;i="5.87,179,1631602800"; d="scan'208";a="253087534"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Oct 2021 22:16:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,179,1631602800"; d="scan'208";a="493589316"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga007.fm.intel.com with ESMTP; 24 Oct 2021 22:16:50 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Sun, 24 Oct 2021 22:16:50 -0700
+Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Sun, 24 Oct 2021 22:16:49 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Sun, 24 Oct 2021 22:16:49 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Sun, 24 Oct 2021 22:16:49 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Br6jdXrzp1Uay34P3ZAELvfgP9/Pn8+vjgCOrRXeY76DSQkhvfxzDAvpehW4Ay/Opttv0S4sKzqG4nXlwaSq4TrltSEzlFXuQAUNOaw1CPOuWZ00+j+7c/FlWBV2E3SXWp2XN4xxiqw4HruFYenpbvBASnz7asUmrOPS8BMhZcxJyB4qptNeCpn1T9W23V8JvF9orvScV/jbUUHXDNEgYIv+lgQT/huG2t0PzFD82Stkhf/921uE1KDsXG7UWwGhoc0FfpfyGk+el9JG035XjT6kSr0LrpXtoOvBBARYjApA5EZPog+VG4ZduVkGdqKWGkf+vPTk/1rUrolQml+cyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MB4iauL8On/07l5PuleSrhYP2M/BjUCdPf0mtR5am78=;
+ b=I97o9pXUw5lPMYfiVjviL4E0z6k+aDRgPPnS3CnXnJCoz5jPSnjaymLRK9zoc2DAncXNNHXt0RgvVKvBqI4n42dE1Z0T6TotfVMiLCLeE/vkDEZTlVfoqtdSzuIBpkSBuGHi2uA4tdJAhQzk0X8B3XSAEIMrvt+901j9i8qrvZPcO6q0P+ejN1QyTHROu5wplCD6rWSO+gD/ZcvNo8tgj7yzVk3OdE1gbLXT0PG68Fx2nsqzYXxi8DjhU0fCMD1r/bJSX7SAjUfIz+1IfuxHQC6swanW5QIX9KsqEIKi5POOr6Re0rxvbKUOvfTym9O4s2xcI0bQDrk2zXks9HHpoQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MB4iauL8On/07l5PuleSrhYP2M/BjUCdPf0mtR5am78=;
+ b=i7e8DIQioqAhTClepRFrwyGYvTBIMayqeeZM2GKuqbt5itV1Ar72ZT6/MfTw6TX7mJstjrIjc+POjPLtftynSNnajDJoSyWYCS/LMdgMIcH9Xe12HahTYQXCh6WeYq+M7sGA08FNXqQcvtZiM4rqKFYUojAQ2o3FL0zdmWql8Lk=
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com (2603:10b6:303:5d::7)
+ by MW3PR11MB4601.namprd11.prod.outlook.com (2603:10b6:303:59::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4628.18; Mon, 25 Oct
+ 2021 05:16:49 +0000
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::a8a8:6311:c417:ebdf]) by MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::a8a8:6311:c417:ebdf%7]) with mapi id 15.20.4628.020; Mon, 25 Oct 2021
+ 05:16:48 +0000
+From: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
+To: "Szycik, Marcin" <marcin.szycik@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Add support for changing
+ MTU on PR in switchdev mode
+Thread-Index: AQHXxBPOSEMFbMj1VEydvh/js9ZJpqvjNnhg
+Date: Mon, 25 Oct 2021 05:16:48 +0000
+Message-ID: <MW3PR11MB4554671AAC8A638E11EEFBF19C839@MW3PR11MB4554.namprd11.prod.outlook.com>
+References: <20211018113032.76288-1-marcin.szycik@intel.com>
+In-Reply-To: <20211018113032.76288-1-marcin.szycik@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: abb82899-35de-4948-556a-08d99776a581
+x-ms-traffictypediagnostic: MW3PR11MB4601:
+x-microsoft-antispam-prvs: <MW3PR11MB46016D0A750A8ACEA96AD2B39C839@MW3PR11MB4601.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: UbosWMxJ0hE5X638HkB7JwqL46EnU548iOLkA6BAI2kyjjVfv8Dkem1q7/92WFv5EJH+c0ry/Fw3oF8Rr/3aH95d6+Ofxn9kjoNOMmHk3aseNf95ujjWvoVKOQA9WB28pqmkButIuJBkt5EyK2bOBaCKYcDgtbcw6zoqTfnxHJG6OiE2EN6btVzShHQYrGT3NmH+azSwMSv6ebmkw4kONbd7cUYtLccAhe2Tzshk56zD5wIbkoUzPbqgjqTLhf04RhqFEi6DypaxXtHKElr3mK/cXsXMeYdZBo0oMn2erC0eB5Gj5N+kNTerlSxxbHZ3MFaVbEbSM01liwje6fxBthe7IKDZ9/LMdYxf/qmWwsCfSPvtyL/lWJkZ/dfeWzAQFTXhPddMQeGhkPjNz4isJ0INH+jBBqQv60UQngr6aFoypJAAM2p9zTN6s77VffVeQnqFA/QDLKPB4LgJ0REOVpqrYSyb8Sz/2+Ym3HBBJJ6sybvYa8mLLblmK8Gol9ZbRyGbKVQj9d2UPCQY8cDB3aSf/fyAsXg3w7u7yiOL2113oRTeuGi4GPpHevvFnCf3k++OxNW0c4HaSJUazPad0MyuM25+fvaycAENcEEpznB/UCvJVzxl9qg4mn8ItaT5jm8Ui7zpQucAJIOyoRRDpegAaczSKKXZmEBKrsqyBRZdAI6JjlqorpCQaptdWe7TAuze/PVsWgmbrBKbo0yInw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW3PR11MB4554.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(38070700005)(186003)(33656002)(66446008)(66476007)(66556008)(316002)(83380400001)(52536014)(86362001)(2906002)(4744005)(82960400001)(76116006)(26005)(8676002)(110136005)(8936002)(55016002)(508600001)(122000001)(66946007)(5660300002)(38100700002)(9686003)(6506007)(64756008)(71200400001)(7696005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?VVLMWfxd6Qxo3ubiPOuOF5uLnmyImXsBV92HTUfrPUBnoJ8V2qoj4EbB3air?=
+ =?us-ascii?Q?4017Rs9JXfGjAI8LRzxEigr42ygCkzUUyleL168tko1UXTAjKZej7k/KzfVS?=
+ =?us-ascii?Q?3YnGJJpmicgVM+Duv4WvtoNL3wwgmJeZaMvyg+ECSgvAMtokLamDLtFkCf8y?=
+ =?us-ascii?Q?S2+vEn6Tux7s/MJ86hLGASA4HuGZoOp+X9mmzDRUP56hV1N3xaB/1sdJk8W0?=
+ =?us-ascii?Q?1Jb2WTjKOE+gjxIMAwuiZ97/lcPwMVfrHZWPXexf8wPgAW0cc/Hv0fHXyBdX?=
+ =?us-ascii?Q?qxYEsdNmshzKxJ3Qz6YInOqStLfN49A6alRYFiMmfmpyOi6sjyDSrlxh02TX?=
+ =?us-ascii?Q?tXcCYfmBl7ysGyQgDS6nL3UiXJoAwQ3r1oU3ZsDLkvF7TEX1DR3LL/14t0Mt?=
+ =?us-ascii?Q?wZHhkx0FM27iEZEIo79Ro8MgqdQ47TI+AOUkL2hhDh9+C3DrGC+rBJZU9Pth?=
+ =?us-ascii?Q?knr/YhN8ClwBFXSoJX6cUWTsVWeT3nJpuRHbzhgv6PhsVaj/TAMxaQ8KETxU?=
+ =?us-ascii?Q?iqiDUu28VDW7TzSvGrH5ENF0UveJSbV9/lf962xTvLqIW9JA0WJvRXbr1f/t?=
+ =?us-ascii?Q?S4tOazQQRuSrmKkBVxB12VAp/HsWkujmdDgZ4VgoDDAXFDEfcYiHWP7bofb6?=
+ =?us-ascii?Q?wz6O0NA/IFbdVZ9YSk8MlaWmiqVml/sTdDhRzatJ3TR9LVOxb6KeyfirFb6M?=
+ =?us-ascii?Q?QnW0rglVSIAgopahQsIr7ocCW5WKBmQJw5Y+jHmJylny+gYssk9KRcaV9v2r?=
+ =?us-ascii?Q?ju3uKnje4nFLOoQMjyG7AA7L8k/GGz+znkstxCWlA8ffiRGVhfN0kQo9mle6?=
+ =?us-ascii?Q?EPg+sQ5IAXFyeHN6UCK5QnXQhI9r5OvBBsrr7T2vS5aFvn6A/zs25ElvrEIj?=
+ =?us-ascii?Q?jOCEFgysa2rvV5Ia2aKfwKwVYDpm08DNA1ziO/hQ/fG5IAkD+cojPBcemgm1?=
+ =?us-ascii?Q?WjVXNBG7bq/fYtHly4PsNYOZuk+/WXEq4QPBM5642QIq7LkQsY+cPzpb0fsg?=
+ =?us-ascii?Q?iNHQY7TJgRue9xbnITTi3Rm9ptoCdyKY9DGCkYG6Ls2wf2fZnyij33fPgpQX?=
+ =?us-ascii?Q?N2hHcZrcyfUJdPqpg42ZDehWl11yX8R6ae8Ow7SinvEE3UCKbt1vD9hoGpAD?=
+ =?us-ascii?Q?nx4Hh2Ww+1QzxbBNlFKVUktEkPiiSmaCVZS0KchCTspwTNHlXJUTxR2hIGKc?=
+ =?us-ascii?Q?0zRLw2XGKCM1aXbqNRIgDrcDgjBQRrVK6hMFQ6TXcz1bcNdJSeFHV1xQIojJ?=
+ =?us-ascii?Q?e3gLRkh80bDiM80Aa30gcXYBWpm8EgtFlws9V0Txh/UeUOPegj0uSg+XjabK?=
+ =?us-ascii?Q?ev31JYGrKigvD2chiYo55MBTzIN0pIvyYuYELW5KD+gXI/W4+44/v9x1MiDA?=
+ =?us-ascii?Q?VKrmJ0Wch/BDvubPNbt+Y5aEcvi4wf13Rn5Y/S//FDSk1ZogJHcKREZVzvMB?=
+ =?us-ascii?Q?fu4N1Ry8hwqmlf8mf6PcxIOBj5GonEU9it0NjUTZ4NUw3RmqV89+OcsbWvoA?=
+ =?us-ascii?Q?YlWxTyW0Pv2stBzil/y+qg0m6ep5M63an8Q70G5r8rH4W9Xg9mujUMRxDwEV?=
+ =?us-ascii?Q?FOnGxcVpBDz8vl5NpHUGYMukw8gjj56oxO7CmkhbLNEimviFelCqUqcF3DXy?=
+ =?us-ascii?Q?bq+bm9/paeg7PALSYF5ZupN3ISfmFS8tr8ezuS/v4kWXo/0Oq9utM6GEZmK4?=
+ =?us-ascii?Q?VSDPuQ=3D=3D?=
 MIME-Version: 1.0
-Message-ID: <trinity-4996ecb4-40ec-4245-9026-02a0de74e76d-1634984812430@3c-app-gmx-bs13>
-From: Robert Schlabbach <robert_s@gmx.net>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Date: Sat, 23 Oct 2021 12:26:52 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <6eff4d45-00be-2021-338f-b717a4378d65@molgen.mpg.de>
-References: <trinity-58e35e17-0323-4cde-bbed-1582c3520822-1634891867291@3c-app-gmx-bap44>
- <9f4603a5-7811-c653-951b-777070f7ce54@molgen.mpg.de>
- <46f43c5a-d0a8-e743-e246-7f2c5a27e6cc@silicom-usa.com>
- <6eff4d45-00be-2021-338f-b717a4378d65@molgen.mpg.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:JPqMILgRTqTLeMnRE+O5bR77Deo4BYslRKFfj2pJexI6pB6/tHnNPs76l37yyejBrhMiu
- lyGiPj5hbrODmbZdZ/Q3k8xtr+fUp+6B0s94pdHRbfs/NriMGEJuQt1BZm4y/iTTq/II6xVwCqDt
- o68VXdpf1CfsXKtkItJJOn0FHUgsco1Z4KeYOyGH5bmUaqwtJrtdOKVBiHARrilqvDItYiawW0+X
- 7ruAktktIOlVW5P2AoDw/R7EuOOW6jkfZZpCRctaJPhvx6iujn3f1VmF1M/DWfmHYd30KxPoG+n6
- QU=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kBttJetGDm8=:l8GWpySoWVzMHf54QOfW/H
- ScIz00cG8lMIUKroPqLaSZhAVd7qFBU330B4+TEYgAuBHmgnlsZCGycIUkmo2ty2RUwGdXKnR
- x3iCo+246BKhE/P7dr9hx3AhugS8m/L9zCzFd5wM9ywlA7uncb1KBAhrvbwFa71AOi3d+opbl
- tsQT9WU6bex3p4e0KYii+2UJCrGOueE3fr6rZbr9G3+wKYik+R2rLCBwQJ3K1pRH4JWhlpf6q
- +mL7u8bE6/wqC1RJLwsDMcfNd2HcC/XgjrCjRBAeyQsBbf7XzuqurDZwDGZ/i4LyMvj8XcDED
- iVd0ULy94S0WEkXFfeCv4yoA1uHtEH4Y95Dk+6m2P3OwBck95fp3pAuotzBlpGxO5c3+T2TYl
- zPXgy5kGBRzArbUNXiSLrqIaP8+c7ZV/Tq73K/kCt2iRiS/HP1ZJ0U5KwggfdkeFqEETuMvFR
- DRul/AseXpDDEfQxyKGUJtXrOr6QWEQM1iLy76dgsgRzvcuXraoYHPKfbencAApZGb+gW7Fmb
- y8dg/NxV5jISFhT08vbQT4ERnyhEFF6g5+SP2es/FqC89w4pZgepfQfmBRO8LExmhuBXMVj0R
- lCkmOppgCqbfirce68rb1jkvgIoezPethYjrW7Db/0/co+srUO8WPcobv2f4LakoEsKkzdSH1
- u+xt7TkwUabS9AevaR6g+4i+xe115s+MNe+MzzBt995SwltkB82Y5eywprLw9NQAVF4PpEQGf
- 20eIjq+p1SFq3bYUWLhIPyE6GqYa/O7ZqWrv5QxljCHBJltNYQG9KcjnTd1JlyPFPdU+Q/frv
- fF44rWE
-Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Allow disabling NBASE-T
- suppression hack
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4554.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: abb82899-35de-4948-556a-08d99776a581
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Oct 2021 05:16:48.7650 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: CgfSFBPzE7qjHhNpnWkgs7Foo/M+lDsMwfHLSos5Rz7TsrfCNerEh+NIogvhHKEjUAIjj3d55a1u3FAMj0XZXVL13ZIyJAc7cArJ0HcipVg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4601
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: Add support for
+ changing MTU on PR in switchdev mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,64 +169,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-"Paul Menzel" <pmenzel@molgen.mpg.de> wrote:
-> Am 22.10.21 um 17:21 schrieb Stephen Douthit:
-> > I'd agree with Paul that having the default behavior basically revert
-> > a296d665eae1 seems cleaner.
+>-----Original Message-----
+>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>Marcin Szycik
+>Sent: Monday, October 18, 2021 5:01 PM
+>To: intel-wired-lan@lists.osuosl.org
+>Subject: [Intel-wired-lan] [PATCH net-next] ice: Add support for changing MTU
+>on PR in switchdev mode
 >
-> With your information breaking even more systems, the commit should be
-> reverted, and the developers should take a look again.
-
-I third that commit a296d665eae1 rightfully deserves to be reverted. There
-  is just too much wrong with it:
-
-1. Incorrect/misleading commit subject and message: The true nature of this
-   patch is "Disable NBASE-T support, but allow reenabling via ethtool"
-
-2. Incomplete: The ethtool command to control NBASE-T support was not added
-   to the documentation file ixgbe.rst.
-
-3. Collateral damage, as described by Stephen. It seems the patch was
-   rushed without proper consideration, testing nor code review.
-
-4. Incorrect approach: If Intel thinks ethtool is a viable solution to
-   control NBASE-T support, the ethtool support should have been added
-   WITHOUT the offending code lines which disable NBASE-T support by
-   default. Instead, documentation should have been added to ixgbe.rst
-   describing how users with broken network switches may disable NBASE-T
-   support using ethtool.
-
-However, I do not think using ethtool to control NBASE-T support is a
-viable solution, neither for the users with broken network switches, nor
-for the users with NBASE-T switches. I think a module parameter that
-allows controlling NBASE-T support at boot time is the best solution,
-i.e. the patch (v3) I submitted. Thus, I urge the Intel devs to reconsider
-their stance on it and instead engage in a constructive discussion how to
-fix this. I'm open to discussion whether the default should be enabled or
-disabled.
-
-BTW note that the official X550 product brief states:
-
-https://www.intel.com/content/www/us/en/products/docs/network-io/ethernet/network-adapters/ethernet-x550-brief.html
-
-> Supports NBASE-T technology  (2.5 and 5GbE over CAT5e)
+>This change adds support for changing MTU on port representor in switchdev
+>mode, by setting the min/max MTU values on port representor netdev. Before
+>it was possible to change the MTU only in a limited, default range (68-1500).
 >
-> Autonegotiation between 1GbE, 2.5GbE, 5GbE, and 10GbE provides the
-> necessary backwards compatibility required for a smooth transition and
-> easy migration to 10GbE.
-
-So IMHO this is an official feature of the device, and NOT an "option"
-that Intel may deliver or not, nor "hide" from the customers by
-suppressing it in the driver.
-
-Best Regards,
--Robert Schlabbach
+>Signed-off-by: Marcin Szycik <marcin.szycik@intel.com>
+>---
+> drivers/net/ethernet/intel/ice/ice_repr.c | 3 +++
+> 1 file changed, 3 insertions(+)
+>
+Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
