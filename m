@@ -2,63 +2,53 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E00DA43AC71
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 08:51:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1490D43AD2E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 09:27:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8564540444;
-	Tue, 26 Oct 2021 06:51:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C00A4404EA;
+	Tue, 26 Oct 2021 07:27:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jvKALwGFROQZ; Tue, 26 Oct 2021 06:51:28 +0000 (UTC)
+	with ESMTP id k_U6dsbVGD2H; Tue, 26 Oct 2021 07:27:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A4D940401;
-	Tue, 26 Oct 2021 06:51:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C766D404E6;
+	Tue, 26 Oct 2021 07:27:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 474C61BF3AD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 06:51:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B2531BF30B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 07:27:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 349C240225
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 06:51:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 491DD404E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 07:27:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=canonical.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wXsGjgij3qQA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Oct 2021 06:51:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-relay-canonical-0.canonical.com
- (smtp-relay-canonical-0.canonical.com [185.125.188.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 147EC40220
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 06:51:23 +0000 (UTC)
-Received: from HP-EliteBook-840-G7.. (1-171-100-18.dynamic-ip.hinet.net
- [1.171.100.18])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6bMP2gL6_qlZ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Oct 2021 07:27:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F938404DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 07:27:08 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aef5c.dynamic.kabel-deutschland.de
+ [95.90.239.92])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id CA4063F194; 
- Tue, 26 Oct 2021 06:51:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1635231081;
- bh=vGic+H/NifUc+D6vVvdBrQarGqiIlpJuvbTZC/BzH2Q=;
- h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
- b=SdQgsmA7Zy5Sd5A13HUOVfKbW5XmlSj0f1RWHE6XnwFbmpCoTe18+L/J98ThiU371
- qnfOBWPKoi/5QSnCREi1/2nZ8rfCxW5ExIGeiX1TT/b+bXj/TCMjyY46eU/gRmbeED
- 5ZIRXRH6mNTU9UJmRi8JpgPro7b9unHRbNIPsWO5hnqdYnJyjZ8lXJiD87uTwet75R
- FXVmCuV1AUYcNScGk6L8nEhzezsLPp6NLhwFdiwseosBapzXj0mgE9kv1e8lZw25VE
- GTM0yFAvBRwtP3+5bZtjycQKHRP4c0Q5h7SJCabFA6BodGyjVNdINT9lkZjFo4iMmY
- gj7CvAJDefOfw==
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-To: jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com
-Date: Tue, 26 Oct 2021 14:51:12 +0800
-Message-Id: <20211026065112.1366205-1-kai.heng.feng@canonical.com>
-X-Mailer: git-send-email 2.32.0
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 01C9F61E6478B;
+ Tue, 26 Oct 2021 09:27:04 +0200 (CEST)
+Message-ID: <5e3271cb-ea53-496a-1fd7-341e9c57c3a8@molgen.mpg.de>
+Date: Tue, 26 Oct 2021 09:27:04 +0200
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] e1000e: Add a delay to let ME
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.1
+Content-Language: en-US
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+References: <20211026065112.1366205-1-kai.heng.feng@canonical.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20211026065112.1366205-1-kai.heng.feng@canonical.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2] e1000e: Add a delay to let ME
  unconfigure s0ix when DPG_EXIT_DONE is already flagged
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -72,62 +62,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, acelan.kao@canonical.com,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Dima Ruinskiy <dima.ruinskiy@intel.com>,
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ acelan.kao@canonical.com, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Dima Ruinskiy <dima.ruinskiy@intel.com>,
  "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On some ADL platforms, DPG_EXIT_DONE is always flagged so e1000e resume
-polling logic doesn't wait until ME really unconfigures s0ix.
-
-So check DPG_EXIT_DONE before issuing EXIT_DPG, and if it's already
-flagged, wait for 1 second to let ME unconfigure s0ix.
-
-Fixes: 3e55d231716e ("e1000e: Add handshake with the CSME to support S0ix")
-Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=214821
-Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
----
-v2:
- Add missing "Fixes:" tag
-
- drivers/net/ethernet/intel/e1000e/netdev.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 44e2dc8328a22..cd81ba00a6bc9 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6493,14 +6493,21 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
- 	u32 mac_data;
- 	u16 phy_data;
- 	u32 i = 0;
-+	bool dpg_exit_done;
- 
- 	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID) {
-+		dpg_exit_done = er32(EXFWSM) & E1000_EXFWSM_DPG_EXIT_DONE;
- 		/* Request ME unconfigure the device from S0ix */
- 		mac_data = er32(H2ME);
- 		mac_data &= ~E1000_H2ME_START_DPG;
- 		mac_data |= E1000_H2ME_EXIT_DPG;
- 		ew32(H2ME, mac_data);
- 
-+		if (dpg_exit_done) {
-+			e_warn("DPG_EXIT_DONE is already flagged. This is a firmware bug\n");
-+			msleep(1000);
-+		}
-+
- 		/* Poll up to 2.5 seconds for ME to unconfigure DPG.
- 		 * If this takes more than 1 second, show a warning indicating a
- 		 * firmware bug
--- 
-2.32.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBLYWktSGVuZywKCgpPbiAyNi4xMC4yMSAwODo1MSwgS2FpLUhlbmcgRmVuZyB3cm90ZToK
+CkluIHRoZSBjb21taXQgbWVzc2FnZSBzdW1tYXJ5LCBtYXliZSB3cml0ZToKCj4gZTEwMDBlOiBB
+ZGQgMSBzIGRlbGF5IOKApgoKCj4gT24gc29tZSBBREwgcGxhdGZvcm1zLCBEUEdfRVhJVF9ET05F
+IGlzIGFsd2F5cyBmbGFnZ2VkIHNvIGUxMDAwZSByZXN1bWUKPiBwb2xsaW5nIGxvZ2ljIGRvZXNu
+J3Qgd2FpdCB1bnRpbCBNRSByZWFsbHkgdW5jb25maWd1cmVzIHMwaXguCgpQbGVhc2UgbGlzdCBv
+bmUgYnJva2VuIHN5c3RlbS4gVGhlIGxvZyBtZXNzYWdlIHNheXMsIGl04oCZcyBhIGZpcm13YXJl
+IApidWcuIFBsZWFzZSBlbGFib3JhdGUuCgo+IFNvIGNoZWNrIERQR19FWElUX0RPTkUgYmVmb3Jl
+IGlzc3VpbmcgRVhJVF9EUEcsIGFuZCBpZiBpdCdzIGFscmVhZHkKPiBmbGFnZ2VkLCB3YWl0IGZv
+ciAxIHNlY29uZCB0byBsZXQgTUUgdW5jb25maWd1cmUgczBpeC4KCldoZXJlIGRpZCB5b3UgZ2V0
+IHRoZSBvbmUgc2Vjb25kIGZyb20/Cgo+IEZpeGVzOiAzZTU1ZDIzMTcxNmUgKCJlMTAwMGU6IEFk
+ZCBoYW5kc2hha2Ugd2l0aCB0aGUgQ1NNRSB0byBzdXBwb3J0IFMwaXgiKQo+IEJ1Z3ppbGxhOiBo
+dHRwczovL2J1Z3ppbGxhLmtlcm5lbC5vcmcvc2hvd19idWcuY2dpP2lkPTIxNDgyMQo+IFNpZ25l
+ZC1vZmYtYnk6IEthaS1IZW5nIEZlbmcgPGthaS5oZW5nLmZlbmdAY2Fub25pY2FsLmNvbT4KPiAt
+LS0KPiB2MjoKPiAgIEFkZCBtaXNzaW5nICJGaXhlczoiIHRhZwo+IAo+ICAgZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIHwgNyArKysrKysrCj4gICAxIGZpbGUgY2hh
+bmdlZCwgNyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
+MDAwZS9uZXRkZXYuYwo+IGluZGV4IDQ0ZTJkYzgzMjhhMjIuLmNkODFiYTAwYTZiYzkgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gKysr
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gQEAgLTY0OTMs
+MTQgKzY0OTMsMjEgQEAgc3RhdGljIHZvaWQgZTEwMDBlX3MwaXhfZXhpdF9mbG93KHN0cnVjdCBl
+MTAwMF9hZGFwdGVyICphZGFwdGVyKQo+ICAgCXUzMiBtYWNfZGF0YTsKPiAgIAl1MTYgcGh5X2Rh
+dGE7Cj4gICAJdTMyIGkgPSAwOwo+ICsJYm9vbCBkcGdfZXhpdF9kb25lOwo+ICAgCj4gICAJaWYg
+KGVyMzIoRldTTSkgJiBFMTAwMF9JQ0hfRldTTV9GV19WQUxJRCkgewo+ICsJCWRwZ19leGl0X2Rv
+bmUgPSBlcjMyKEVYRldTTSkgJiBFMTAwMF9FWEZXU01fRFBHX0VYSVRfRE9ORTsKPiAgIAkJLyog
+UmVxdWVzdCBNRSB1bmNvbmZpZ3VyZSB0aGUgZGV2aWNlIGZyb20gUzBpeCAqLwo+ICAgCQltYWNf
+ZGF0YSA9IGVyMzIoSDJNRSk7Cj4gICAJCW1hY19kYXRhICY9IH5FMTAwMF9IMk1FX1NUQVJUX0RQ
+RzsKPiAgIAkJbWFjX2RhdGEgfD0gRTEwMDBfSDJNRV9FWElUX0RQRzsKPiAgIAkJZXczMihIMk1F
+LCBtYWNfZGF0YSk7Cj4gICAKPiArCQlpZiAoZHBnX2V4aXRfZG9uZSkgewo+ICsJCQllX3dhcm4o
+IkRQR19FWElUX0RPTkUgaXMgYWxyZWFkeSBmbGFnZ2VkLiBUaGlzIGlzIGEgZmlybXdhcmUgYnVn
+XG4iKTsKCldoYXQgZmlybXdhcmUgZXhhY3RseT8gTWFuYWdlbWVudCBFbmdpbmU/Cgo+ICsJCQlt
+c2xlZXAoMTAwMCk7CgpPbmUgc2Vjb25kIGlzIHF1aXRlIGxvbmcuIENhbiBzb21lIGJpdCBiZSBw
+b2xsZWQgaW5zdGVhZD8KCj4gKwkJfQo+ICsKPiAgIAkJLyogUG9sbCB1cCB0byAyLjUgc2Vjb25k
+cyBmb3IgTUUgdG8gdW5jb25maWd1cmUgRFBHLgo+ICAgCQkgKiBJZiB0aGlzIHRha2VzIG1vcmUg
+dGhhbiAxIHNlY29uZCwgc2hvdyBhIHdhcm5pbmcgaW5kaWNhdGluZyBhCj4gICAJCSAqIGZpcm13
+YXJlIGJ1Zwo+IAoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRl
+bC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
