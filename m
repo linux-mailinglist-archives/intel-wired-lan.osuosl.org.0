@@ -1,53 +1,166 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FB7C43A9FF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 03:56:31 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0E5A43AA0B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 03:57:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04E0A80F61;
-	Tue, 26 Oct 2021 01:56:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F3B1F4015C;
+	Tue, 26 Oct 2021 01:57:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c8r16RJZZ5xR; Tue, 26 Oct 2021 01:56:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zIKouIZKziC3; Tue, 26 Oct 2021 01:57:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C970F80F54;
-	Tue, 26 Oct 2021 01:56:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C320B40106;
+	Tue, 26 Oct 2021 01:57:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 453811BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:56:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 75B011BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:57:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 33A6C80F54
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:56:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6F55A40106
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:57:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EiHpy350qbBU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Oct 2021 01:56:20 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k45rM3wb389V for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Oct 2021 01:57:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D0A1980F4F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:56:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10148"; a="228562255"
-X-IronPort-AV: E=Sophos;i="5.87,181,1631602800"; d="scan'208";a="228562255"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8DB1C400E1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 01:57:39 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10148"; a="228562360"
+X-IronPort-AV: E=Sophos;i="5.87,181,1631602800"; d="scan'208";a="228562360"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2021 18:56:17 -0700
-X-IronPort-AV: E=Sophos;i="5.87,181,1631602800"; d="scan'208";a="664308080"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.11])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2021 18:56:17 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Anthony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Mon, 25 Oct 2021 18:55:37 -0700
-Message-Id: <20211026015537.424232-1-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.31.1.331.gb0c09ab8796f
+ 25 Oct 2021 18:57:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,181,1631602800"; d="scan'208";a="578362211"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by fmsmga002.fm.intel.com with ESMTP; 25 Oct 2021 18:57:35 -0700
+Received: from orsmsx606.amr.corp.intel.com (10.22.229.19) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Mon, 25 Oct 2021 18:57:35 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Mon, 25 Oct 2021 18:57:35 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.106)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Mon, 25 Oct 2021 18:57:35 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=F5nPCnQdDUaAJDV3rWCi5Z6xFmi+F8saP2v86SYT1Y4FnsxO6pj5Kg3z3UsOQL0AESGNXTS+ouCNi6a85OwUWEY3lMHoxt1B9wHsz9ozU5seiREAvXbBTFNPaOzieMyzk2DwtSE1TsIHf0Y6j01f/Sgvy8l97vknkGM8iwauj4dtS3epBLjEBF7wIhLb//TrJ4sD4pbSd6EIpG9MZm5JSoAQWoS/uK1RTd4B6Fy/F5Y7fZX23ORklwKugbQVurUL+lsmCD0/fS5FzTUIOAec/tHMte+5FSIzkKtPnyDiVjDB/sC8tbQO01DfJnVIXw7cHehEplcYvvRoGMvyYxCljg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nBquncx7RRwYjgWBMin4Q0cuFxv/OM59nSFphDKH5gM=;
+ b=oRPyzn79AsDdN2Z/wyKySgp2BiuBdfBqHiVqdv7hrd7+GwwVtTEymLVwuZOkL8FMqJof/xiTb1R+K55j2ft4WKVCC3BuIqhjNtpEQFktSFMTlVyXPNyd0HfZVpBcxOuG68ZzrJhAte5wcO93XQDQb7koETc9RaIpfdtuDsjBjIDxkvQQuJzcJwXCR4EeV1QsOqO/gOq6EKBMxmWnV8hH/IsaV5C/q94mMcVBPAHExel6anz5BXcVTTF8YoW9Mfp+5prmEwkpq8Hegd3/9v+ZGAl5d9kXL5/pkLgfD9NMNo7JVF1TO6On2oLfENkB5IVcjISqV1BrPTMTtn1SR6gtQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nBquncx7RRwYjgWBMin4Q0cuFxv/OM59nSFphDKH5gM=;
+ b=U/RI5zRtPWAPzwHmuveSGPyfOnm7AUGFtcRINKNzPE11HnbnMib1bYHTheXW2uh1wFt62KeR+L2afZLN074+21PGoaKS9aDfcV/LW3Zi/3eDejfuHPsoRHxLTH06eeS8C5sa5859SMrtuS4bmbLwTivACHKyBmyxx+k93sDWlHE=
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by MWHPR11MB1408.namprd11.prod.outlook.com (2603:10b6:300:24::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4628.18; Tue, 26 Oct
+ 2021 01:57:34 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::1c41:b47d:6152:d72]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::1c41:b47d:6152:d72%4]) with mapi id 15.20.4628.020; Tue, 26 Oct 2021
+ 01:57:34 +0000
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Thread-Topic: [Intel-wired-lan] [net-next PATCH v4] ice: support immediate
+ firmware activation via devlink reload
+Thread-Index: AQHXxTP+JhclPrKLtUyBjpH0oBtkhqvc+FeAgAEFoJCAAKGFgIAF78kA
+Date: Tue, 26 Oct 2021 01:57:34 +0000
+Message-ID: <027cc22c-89f9-e4a6-64a1-716bc4cf1c21@intel.com>
+References: <20211019215423.3383750-1-jacob.e.keller@intel.com>
+ <2adb7d96-b114-d5dd-20ef-31f43bc263f0@molgen.mpg.de>
+ <PH0PR11MB5095792EF885D0C6C4EE853FD6BF9@PH0PR11MB5095.namprd11.prod.outlook.com>
+ <9c8faad5-da51-0e1c-793c-b3ae1407c031@molgen.mpg.de>
+In-Reply-To: <9c8faad5-da51-0e1c-793c-b3ae1407c031@molgen.mpg.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+authentication-results: molgen.mpg.de; dkim=none (message not signed)
+ header.d=none;molgen.mpg.de; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3ed0ac13-63cf-4d76-f4e7-08d99823fa68
+x-ms-traffictypediagnostic: MWHPR11MB1408:
+x-microsoft-antispam-prvs: <MWHPR11MB1408F1FE5EAAD89743C90867D6849@MWHPR11MB1408.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2512;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: O9m1QmPDeD5uYYQL0BTKgivnqKjZ7pVkm3WjXmwPARdMUIgs2yM/ySIjN2tRKq31T+7+FPjlvU9nvrwbs3wsMIQPryIZFLvteDjrHQwT11UvMiKu182lAAan+aKXe4F3E6PlW3Q4i1k8xUZ5D+PmUU4IIWGKwYkKsJbGvTJ98x3wl0yAdCKwCSVBg3qa404odIho34DkBaRclXEvJSUXpb1plLz8IpNFue+Q/0J8HWrZw1WNXqMqJcTmDsMxenR/N7WgpiSHQIHhOsXKWPBw0CKkLZbXumIvYw0/ZZhM5MJvpdPQe/aQlWB1i3Uau8KtU/r19i+vN+I0LszrK9DcL/pqHmYHo3mq/u/qsqtwlLZJxuA8cQQrGBC84WD4copjF4OygdvwWxV5zLCVtPCSmMdPzA/KnLXA7WCJJTDPfdkJNE84U77lOXBNb+zQ0XGafSoEAbGHEFSnPuMqsu0qBgi2Kcmwdh9bCAiHKeP5pDanHyq/ODne6bVkqI/ItYUi+1LCzgYW4y3KdeCJtQz2wFIsf2+Ip2xfWNYuB+MPcQQbHSITQnbPLdu1KsgxTl65ySVQeZpOifnSkH72w7w6prY4vtOLMfyVvhuec+7IWkOe21pDqeYjyBEfk1s2gmaaJzXf18adXRt7GiP6Q+v7OOUCoZL8u6bh7NlmADiiF7+6dPk3Kg4AviRs1A5nUlDQ29metuZ/jXCp/XMycQxJEKlNBYBkgmE2tBhXjM3tne4bpVb+u3vjFs0rvZPBzbsAI6dsZnqaa4dcwcGFHLFV1yqN45BDAFreCx27ajRrh58=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(6512007)(53546011)(558084003)(8936002)(31696002)(26005)(82960400001)(83380400001)(2616005)(38100700002)(38070700005)(6486002)(122000001)(64756008)(66556008)(66476007)(76116006)(4326008)(66446008)(2906002)(6916009)(31686004)(54906003)(8676002)(186003)(5660300002)(71200400001)(36756003)(66946007)(86362001)(316002)(6506007)(508600001)(14773001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aGxmZnkvUEIxVG1kOXZzczYzMFRXTHRoWTlDczRUMkNzT0dqZVZycHJ6MFJU?=
+ =?utf-8?B?MHFZUEthQU1iRUtoc005bHR4Z2NydkZON2s3N3pVY3d1WHRrSWtUMGl4VFoy?=
+ =?utf-8?B?elZVdVZueHRYY3VuMS9acUpkeHR0WFk5eXNFd3JQSDNuY2c5RFByQ3FlTU1P?=
+ =?utf-8?B?QndQQ0xheGI1RWNHSWcxV2VQbTFOdWh4YWdGZStxc05JS1p4UW11WVhiQStU?=
+ =?utf-8?B?ZUxLcjFYZUViaDI0dDBoSGJJaW00Y3YwU1ZuRUVNNUh0OUM4ODRyTlJBMTN6?=
+ =?utf-8?B?Wng3ZHg0eW5pNVdOSEpzZnhWMDFIeXIzaHJSTUo4YjJWbWFHVEpjTUdoclQ2?=
+ =?utf-8?B?M0d2WnhsWGdidTBxbTd1azBCQXdPSkdUN2J2QUlPRmQ1YUVoOFVJSklSa1o1?=
+ =?utf-8?B?OXB6aWZpL1kwdzNhaDZERDZvUXVlUWlTb1A2WkZ3TmRNNnZyZ2VLSFFSdFp4?=
+ =?utf-8?B?SDN6dERKVHJkSVM5QStTcDZwQm9DNEhza0ZxMERTQk01Z1hPeFVTODAyd2to?=
+ =?utf-8?B?QjZSaHVhNC9EN0ZuWnppY2JGVERWSWZzZFl3eDBkM053Zi9lTTFvK3h0YWZz?=
+ =?utf-8?B?eG5XK3NOUGJWV2VMY3RCOGFDVXp6TmVSREhJSW9nbmcvelkycTRBMEF5YnI4?=
+ =?utf-8?B?N3cxODRJbWVYS2liOXB5MUlCWkxUenhPMkZ0NGI1TzZiU0Q4QUtWS1VmTXUv?=
+ =?utf-8?B?bXF1WVpMa2M1WFZRZVpxVkJDazVYRXZZenR4ZG9YVWdXdDJkckdwYUdRZ2E3?=
+ =?utf-8?B?M0w0YkVNRWw2bXFaMUxsM0FadWp3RDJUanB1WFN3Uy93MXZBL2xqbk9QUWtk?=
+ =?utf-8?B?ZjFFRE1OSDBzYVNZdHljbnczSlpxZ1poWGNyYUhTeThob2p1aWJkNXpiNVhy?=
+ =?utf-8?B?a1hQMjFkYStnbXVVWUxzUTh5RktxS1NWR2tzcGdyOFN4R0xCQ3lrcGpKdllr?=
+ =?utf-8?B?WjJpWWo4QS85aEZiR3hXbDhzeGNEVGJ1bzNzZGZobm9kbW10L3U4a1IxOWZ1?=
+ =?utf-8?B?cExYK3ZrbXVIZVF0OTZjczZWVlVNeGora2RPMTFOK242TENOZzgzTVVlZG1Z?=
+ =?utf-8?B?Rmpmd05jUFROUmc2aktpNFZIUjBLU2JOZTBzN1JIbjBodWRpekxOWCt3Ymtq?=
+ =?utf-8?B?WnlJSjd2TkxlZUVTOVRMdEpVbk9tMUlidXY2UFlDMHNRT21iemdlQmtuVDV0?=
+ =?utf-8?B?eWs5ZjhzRTUvUmd1TDlnU3dOZEtBV2pJOVZQQk53eVk1Y3U0NnZEZTRCUTNN?=
+ =?utf-8?B?L00rYy8vUU81RWk4NUpFTUlwUXB0NjZTNDhza3JJbTZNZDFOMUlBcDdGLy9K?=
+ =?utf-8?B?eXlvQlFMYndWdjR0QmdxS21kYXhpeGlrSlk2c3c2c3lpbTBEZExVREtoODN2?=
+ =?utf-8?B?ME1kdXpURjFzUTVJWVB6akFialZraGtzeHdCN3BuOWlaMk9MbUpBT0prSmN0?=
+ =?utf-8?B?NlJlc3hFZWJMenY2UnQxcC8xRk5XMUN5bndqWmVoLzFpQmhSSlBzWVJXMlpN?=
+ =?utf-8?B?aHluVE5DRXA5TVRoSUorb0NKOHo3aDVDd3F6T2FYOHBlamE4ZjdvV2xZQ3JN?=
+ =?utf-8?B?ZUJzSnoyUlhzMDZJNWJLWEUwbXFvZ245S2VPTy9HNW1rWnorYkpqYWE3NzFZ?=
+ =?utf-8?B?c05QS2lpQzB0bmpUcHpBNm1SRkcvV2lSUW1xSkEwdjl6Tlp1dmRoRjBDclgw?=
+ =?utf-8?B?MzdtNnUwWjhwMjJsUUV1NzRtVXZudEZQWmhFNFVxdWhPOEtMMURPV1FOeXRD?=
+ =?utf-8?B?SWtheU9hNjN5eVFaVVovejIyWGlCOWhwN0xWMit2YnFWQnAzOTNlS2l6TjNl?=
+ =?utf-8?B?MWJlR0U5TWdoaitOZ1BsWWhPVHFHZjZUamY2VFM0b2dOaGIyeWdQUUFUVTR6?=
+ =?utf-8?B?MXZwajltT1RUcXpoVm1KaGsvT2I3K0E3aVhYc0FlbE5TNVR4RVZVVUQwd3or?=
+ =?utf-8?B?d3JZc3hrZG5oQzdlMURaTDl3TzZoM3hzaEFrZmRXTzUxQ0RnVXdib0E3Uysz?=
+ =?utf-8?B?TjBkakhNOFN3RTQ3c1RMZmJ1TnNnRVNqRDZobWM5cHBvTFBlTWFMQmJuNlA3?=
+ =?utf-8?B?VGVCVnc3anB5Q2F6dXVjWDdVT0x1QTVDZnIzZkNsT3lvRUlTU2ZwbFVGN1BJ?=
+ =?utf-8?B?aHN1WWVtclNHeERTZUlDSWUwUXBzM2VSemJOWmlwSDR2WHJzelZMVnNMa3RV?=
+ =?utf-8?B?d1I5ZG05UUl3KzJhZmFWMDNlMG9iQXlmRHMvSDFnc2xybDc3bHJaalZwRHVZ?=
+ =?utf-8?B?WGxZeXA2ZDUrN0lnZEV6RDBwOGRBPT0=?=
+Content-ID: <B5B598000A7B574888DD4D968F13C1EB@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v5] ice: support immediate
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ed0ac13-63cf-4d76-f4e7-08d99823fa68
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Oct 2021 01:57:34.1279 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YrKus2UOkqfmHblbcTlqIjAN0E0uMLJGiSf9Iky6KuJ8G5ORhU2zkYvyQCHRyaP84gg7iu8D76H9cMXfRYwBdnUvAcckhuuZlSIsKCESno4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1408
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [net-next PATCH v4] ice: support immediate
  firmware activation via devlink reload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -61,854 +174,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice hardware contains an embedded chip with firmware which can be
-updated using devlink flash. The firmware which runs on this chip is
-referred to as the Embedded Management Processor firmware (EMP
-firmware).
+On 10/22/2021 12:18 AM, Paul Menzel wrote:
+> 
+> Dear Jacob,
+> 
+> 
+> Thank you for your reply.
 
-Activating the new firmware image currently requires that the system be
-rebooted. This is not ideal as rebooting the system can cause unwanted
-downtime.
+I sent a v5 with several changes and improvements including your
+suggestions. I significantly re-wrote the commit message for clarity.
 
-In practical terms, activating the firmware does not always require a
-full system reboot. In many cases it is possible to activate the EMP
-firmware immediately. There are a couple of different scenarios to
-cover.
+I appreciate your careful review! Thank you for your time.
 
- * The EMP firmware itself can be reloaded by issuing a special update
-   to the device called an Embedded Management Processor reset (EMP
-   reset). This reset causes the device to reset and reload the EMP
-   firmware.
-
- * PCI configuration changes are only reloaded after a cold PCIe reset.
-   Unfortunately there is no generic way to trigger this for a PCIe
-   device without a system reboot.
-
-When performing a flash update, firmware is capable of responding with
-some information about the specific update requirements.
-
-The driver updates the flash by programming a secondary inactive bank
-with the contents of the new image, and then issuing a command to
-request to switch the active bank starting from the next load.
-
-The response to the final command for updating the inactive NVM flash
-bank includes an indication of the minimum reset required to fully
-update the device. This can be one of the following:
-
- * A full power on is required
- * A cold PCIe reset is required
- * An EMP reset is required
-
-The response to the command to switch flash banks includes an indication
-of whether or not the firmware will allow an EMP reset request.
-
-For most updates, an EMP reset is sufficient to load the new EMP
-firmware without issues. In some cases, this reset is not sufficient
-because the PCI configuration space has changed. When this could cause
-incompatibility with the new EMP image, the firmware is capable of
-rejecting the EMP reset request.
-
-Add logic to ice_fw_update.c to handle the response data flash update
-AdminQ commands.
-
-For the reset level, issue a devlink status notification informing the
-user of how to complete the update with a simple suggestion like
-"Activate new firmware by rebooting the system".
-
-Cache the status of whether or not firmware will restrict the EMP reset
-for use in implementing devlink reload.
-
-Implement support for devlink reload with the "fw_activate" flag. This
-allows user space to request the firmware be activated immediately.
-
-For the .reload_down handler, we will issue a request for the EMP reset
-using the appropriate firmware AdminQ command. If we know that the
-firmware will not allow an EMP reset, simply exit with a suitable
-netlink extended ACK message indicating that the EMP reset is not
-available.
-
-For the .reload_up handler, simply wait until the driver has finished
-resetting. Logic to handle processing of an EMP reset already exists in
-the driver as part of its reset and rebuild flows.
-
-Implement support for the devlink reload interface with the
-"fw_activate" action. This allows userspace to request activation of
-firmware without a reboot.
-
-Note that support for indicating the required reset and EMP reset
-restriction is not supported on old versions of firmware. The driver can
-determine if the two features are supported by checking the device
-capabilities report. I confirmed support has existed since at least
-version 5.5.2 as reported by the 'fw.mgmt' version. Support to issue the
-EMP reset request has existed in all version of the EMP firmware for the
-ice hardware.
-
-Check the device capabilities report to determine whether or not the
-indications are reported by the running firmware. If the reset
-requirement indication is not supported, always assume a full power on
-is necessary. If the reset restriction capability is not supported,
-always assume the EMP reset is available.
-
-Users can verify if the EMP reset has activated the firmware by using
-the devlink info report to check that the 'running' firmware version has
-updated. For example a user might do the following:
-
- # Check current version
- $ devlink dev info
-
- # Update the device
- $ devlink dev flash pci/0000:af:00.0 file firmware.bin
-
- # Confirm stored version updated
- $ devlink dev info
-
- # Reload to activate new firmware
- $ devlink dev reload pci/0000:af:00.0 action fw_activate
-
- # Confirm running version updated
- $ devlink dev info
-
-Finally, this change does *not* implement basic driver-only reload
-support. I did look into trying to do this. However, it requires
-significant refactor of how the ice driver probes and loads everything.
-The ice driver probe and allocation flows were not designed with such
-a reload in mind. Refactoring the flow to support this is beyond the
-scope of this change.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
-Changes since v4
-* completely re-write commit message for clarity
-* Update devlink ice.rst with documentation about reload
-* expand the terms "EMP" and "empr" for clarity
-* Rename the ice_devlink_reload_down to ice_devlink_reload_empr_start and
-  rename ice_devlink_reload_up to ice_devlink_reload_empr_finish. This is
-  done to clarify their functionality. It is also done because any future
-  support for devlink reload with driver reinit will want to continue
-  re-using these functions to support firmware activation.
-* Increase the maximum wait time for EMP reset to complete to 2 minutes.
-  It turns out that in practice the reset might take a while (longer than
-  the original 20 seconds I had in v4 and earlier).
-* Move the clearing of fw_emp_reset_disabled into the ice_rebuild logic.
-  This ensures the flag is properly cleared even when the EMP reset was
-  caused by another physical function.
-* Add comments explaining the various reset levels that the firmware can
-  report.
-
-Changes since v3
-* correctly read response of NVM write activate from synchronous reply value
-  instead of from the ARQ event. This fixes a bug where we never reported
-  that EMP reset is available.
-
-Changes since v2
-* ensure DEVLINK_F_RELOAD gets set
-* rebase to avoid conflicts
-
-
- Documentation/networking/devlink/ice.rst      |  24 ++-
- drivers/net/ethernet/intel/ice/ice.h          |   1 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   7 +
- drivers/net/ethernet/intel/ice/ice_common.c   |  12 ++
- drivers/net/ethernet/intel/ice/ice_devlink.c  | 102 ++++++++++
- .../net/ethernet/intel/ice/ice_fw_update.c    | 181 +++++++++++++++---
- .../net/ethernet/intel/ice/ice_fw_update.h    |   2 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   8 +
- drivers/net/ethernet/intel/ice/ice_nvm.c      |  19 +-
- drivers/net/ethernet/intel/ice/ice_nvm.h      |   2 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |   4 +
- 11 files changed, 333 insertions(+), 29 deletions(-)
-
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 59c78e9717d2..8c082b139bbd 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -26,8 +26,10 @@ The ``ice`` driver reports the following versions
-     * - ``fw.mgmt``
-       - running
-       - 2.1.7
--      - 3-digit version number of the management firmware that controls the
--        PHY, link, etc.
-+      - 3-digit version number of the management firmware running on the
-+        Embedded Management Processor of the device. It controls the PHY,
-+        link, access to device resources, etc. Intel documentation refers to
-+        this as the EMP firmware.
-     * - ``fw.mgmt.api``
-       - running
-       - 1.5.1
-@@ -119,6 +121,24 @@ preserving settings, and thus ``DEVLINK_FLASH_OVERWRITE_IDENTIFIERS`` on its
- own will be rejected. If no overwrite mask is provided, the firmware will be
- instructed to preserve all settings and identifying fields when updating.
- 
-+Reload
-+======
-+
-+The ``ice`` driver supports activating new firmware after a flash update
-+using ``DEVLINK_CMD_RELOAD`` with the ``DEVLINK_RELOAD_ACTION_FW_ACTIVATE``
-+action.
-+
-+.. code:: shell
-+
-+    $ devlink dev reload pci/0000:01:00.0 reload action fw_activate
-+
-+The new firmware is activated by issuing a device specific Embedded
-+Management Processor reset which requests the device to reset and reload the
-+EMP firmware image.
-+
-+The driver does not currently support reloading the driver via
-+``DEVLINK_RELOAD_ACTION_DRIVER_REINIT``.
-+
- Regions
- =======
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index ed85442551ca..b46ebe04879b 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -551,6 +551,7 @@ struct ice_pf {
- 	spinlock_t aq_wait_lock;
- 	struct hlist_head aq_wait_list;
- 	wait_queue_head_t aq_wait_queue;
-+	bool fw_emp_reset_disabled;
- 
- 	wait_queue_head_t reset_wait_queue;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index a5425f0dce3f..88fc7aac915b 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -117,6 +117,8 @@ struct ice_aqc_list_caps_elem {
- #define ICE_AQC_CAPS_NET_VER				0x004C
- #define ICE_AQC_CAPS_PENDING_NET_VER			0x004D
- #define ICE_AQC_CAPS_RDMA				0x0051
-+#define ICE_AQC_CAPS_PCIE_RESET_AVOIDANCE		0x0076
-+#define ICE_AQC_CAPS_POST_UPDATE_RESET_RESTRICT		0x0077
- #define ICE_AQC_CAPS_NVM_MGMT				0x0080
- 
- 	u8 major_ver;
-@@ -1406,6 +1408,11 @@ struct ice_aqc_nvm {
- #define ICE_AQC_NVM_REVERT_LAST_ACTIV	BIT(6) /* Write Activate only */
- #define ICE_AQC_NVM_ACTIV_SEL_MASK	ICE_M(0x7, 3)
- #define ICE_AQC_NVM_FLASH_ONLY		BIT(7)
-+#define ICE_AQC_NVM_RESET_LVL_M		ICE_M(0x3, 0) /* Write reply only */
-+#define ICE_AQC_NVM_POR_FLAG		0
-+#define ICE_AQC_NVM_PERST_FLAG		1
-+#define ICE_AQC_NVM_EMPR_FLAG		2
-+#define ICE_AQC_NVM_EMPR_ENA		BIT(0) /* Write Activate reply only */
- 	__le16 module_typeid;
- 	__le16 length;
- #define ICE_AQC_NVM_ERASE_LEN	0xFFFF
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 830cdc9943ad..01a79b415f00 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -2069,6 +2069,18 @@ ice_parse_common_caps(struct ice_hw *hw, struct ice_hw_common_caps *caps,
- 		ice_debug(hw, ICE_DBG_INIT, "%s: max_mtu = %d\n",
- 			  prefix, caps->max_mtu);
- 		break;
-+	case ICE_AQC_CAPS_PCIE_RESET_AVOIDANCE:
-+		caps->pcie_reset_avoidance = (number > 0);
-+		ice_debug(hw, ICE_DBG_INIT,
-+			  "%s: pcie_reset_avoidance = %d\n", prefix,
-+			  caps->pcie_reset_avoidance);
-+		break;
-+	case ICE_AQC_CAPS_POST_UPDATE_RESET_RESTRICT:
-+		caps->reset_restrict_support = (number == 1);
-+		ice_debug(hw, ICE_DBG_INIT,
-+			  "%s: reset_restrict_support = %d\n", prefix,
-+			  caps->reset_restrict_support);
-+		break;
- 	default:
- 		/* Not one of the recognized common capabilities */
- 		found = false;
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 3774c3a7281d..3be0be8de72e 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -370,8 +370,109 @@ static int ice_devlink_info_get(struct devlink *devlink,
- 	return err;
- }
- 
-+/**
-+ * ice_devlink_reload_empr_start - Start EMP reset to activate new firmware
-+ * @devlink: pointer to the devlink instance to reload
-+ * @netns_change: if true, the network namespace is changing
-+ * @action: the action to perform. Must be DEVLINK_RELOAD_ACTION_FW_ACTIVATE
-+ * @limit: limits on what reload should do, such as not resetting
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Allow user to activate new Embedded Management Processor firmware by
-+ * issuing device specific EMP reset. Called in response to
-+ * a DEVLINK_CMD_RELOAD with the DEVLINK_RELOAD_ACTION_FW_ACTIVATE.
-+ *
-+ * Note that teardown and rebuild of the driver state happens automatically as
-+ * part of an interrupt and watchdog task. This is because all physical
-+ * functions on the device must be able to reset when an EMP reset occurs from
-+ * any source.
-+ */
-+static int
-+ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
-+			      enum devlink_reload_action action,
-+			      enum devlink_reload_limit limit,
-+			      struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_hw *hw = &pf->hw;
-+	u8 pending;
-+	int err;
-+
-+	err = ice_get_pending_updates(pf, &pending, extack);
-+	if (err)
-+		return err;
-+
-+	/* pending is a bitmask of which flash banks have a pending update,
-+	 * including the main NVM bank, the Option ROM bank, and the netlist
-+	 * bank. If any of these bits are set, then there is a pending update
-+	 * waiting to be activated.
-+	 */
-+	if (!pending) {
-+		NL_SET_ERR_MSG_MOD(extack, "No pending firmware update");
-+		return -ECANCELED;
-+	}
-+
-+	if (pf->fw_emp_reset_disabled) {
-+		NL_SET_ERR_MSG_MOD(extack, "EMP reset is not available. To activate firmware, a reboot or power cycle is needed\n");
-+		return -ECANCELED;
-+	}
-+
-+	dev_dbg(dev, "Issuing device EMP reset to activate firmware\n");
-+
-+	err = ice_aq_nvm_update_empr(hw);
-+	if (err) {
-+		dev_err(dev, "Failed to trigger EMP device reset to reload firmware, err %d aq_err %s\n",
-+			err, ice_aq_str(hw->adminq.sq_last_status));
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to trigger EMP device reset to reload firmware");
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_reload_empr_finish - Wait for EMP reset to finish
-+ * @devlink: pointer to the devlink instance reloading
-+ * @action: the action requested
-+ * @limit: limits imposed by userspace, such as not resetting
-+ * @actions_performed: on return, indicate what actions actually performed
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Wait for driver to finish rebuilding after EMP reset is completed. This
-+ * includes time to wait for both the actual device reset as well as the time
-+ * for the driver's rebuild to complete.
-+ */
-+static int
-+ice_devlink_reload_empr_finish(struct devlink *devlink,
-+			       enum devlink_reload_action action,
-+			       enum devlink_reload_limit limit,
-+			       u32 *actions_performed,
-+			       struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	int err;
-+
-+	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
-+
-+	/* It can take a while for the device and driver to complete the reset
-+	 * and rebuild process.
-+	 */
-+	err = ice_wait_for_reset(pf, 120 * HZ);
-+	if (err) {
-+		NL_SET_ERR_MSG_MOD(extack, "Device still resetting");
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
- static const struct devlink_ops ice_devlink_ops = {
- 	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
-+	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
-+	/* The ice driver currently does not support driver reinit */
-+	.reload_down = ice_devlink_reload_empr_start,
-+	.reload_up = ice_devlink_reload_empr_finish,
- 	.eswitch_mode_get = ice_eswitch_mode_get,
- 	.eswitch_mode_set = ice_eswitch_mode_set,
- 	.info_get = ice_devlink_info_get,
-@@ -418,6 +519,7 @@ void ice_devlink_register(struct ice_pf *pf)
- {
- 	struct devlink *devlink = priv_to_devlink(pf);
- 
-+	devlink_set_features(devlink, DEVLINK_F_RELOAD);
- 	devlink_register(devlink);
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_fw_update.c b/drivers/net/ethernet/intel/ice/ice_fw_update.c
-index 1f8e0e5d5660..665a344fb9c0 100644
---- a/drivers/net/ethernet/intel/ice/ice_fw_update.c
-+++ b/drivers/net/ethernet/intel/ice/ice_fw_update.c
-@@ -16,6 +16,18 @@ struct ice_fwu_priv {
- 
- 	/* Track which NVM banks to activate at the end of the update */
- 	u8 activate_flags;
-+
-+	/* Track the firmware response of the required reset to complete the
-+	 * flash update.
-+	 *
-+	 * 0 - ICE_AQC_NVM_POR_FLAG - A full power on is required
-+	 * 1 - ICE_AQC_NVM_PERST_FLAG - A cold PCIe reset is required
-+	 * 2 - ICE_AQC_NVM_EMPR_FLAG - An EMP reset is required
-+	 */
-+	u8 reset_level;
-+
-+	/* Track if EMP reset is available */
-+	u8 emp_reset_available;
- };
- 
- /**
-@@ -257,6 +269,7 @@ ice_send_component_table(struct pldmfw *context, struct pldmfw_component *compon
-  * @block_size: size of the block to write, up to 4k
-  * @block: pointer to block of data to write
-  * @last_cmd: whether this is the last command
-+ * @reset_level: storage for reset level required
-  * @extack: netlink extended ACK structure
-  *
-  * Write a block of data to a flash module, and await for the completion
-@@ -264,12 +277,19 @@ ice_send_component_table(struct pldmfw *context, struct pldmfw_component *compon
-  *
-  * Note this function assumes the caller has acquired the NVM resource.
-  *
-+ * On successful return, reset level indicates the device reset required to
-+ * complete the update.
-+ *
-+ *   0 - ICE_AQC_NVM_POR_FLAG - A full power on is required
-+ *   1 - ICE_AQC_NVM_PERST_FLAG - A cold PCIe reset is required
-+ *   2 - ICE_AQC_NVM_EMPR_FLAG - An EMP reset is required
-+ *
-  * Returns: zero on success, or a negative error code on failure.
-  */
- static int
- ice_write_one_nvm_block(struct ice_pf *pf, u16 module, u32 offset,
- 			u16 block_size, u8 *block, bool last_cmd,
--			struct netlink_ext_ack *extack)
-+			u8 *reset_level, struct netlink_ext_ack *extack)
- {
- 	u16 completion_module, completion_retval;
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -335,6 +355,24 @@ ice_write_one_nvm_block(struct ice_pf *pf, u16 module, u32 offset,
- 		return -EIO;
- 	}
- 
-+	/* For the last command to write the NVM bank, newer versions of
-+	 * firmware indicate the required level of reset to complete
-+	 * activation of firmware. If the firmware supports this, cache the
-+	 * response for indicating to the user later. Otherwise, assume that
-+	 * a full power cycle is required.
-+	 */
-+	if (reset_level && last_cmd && module == ICE_SR_1ST_NVM_BANK_PTR) {
-+		if (hw->dev_caps.common_cap.pcie_reset_avoidance) {
-+			*reset_level = (event.desc.params.nvm.cmd_flags &
-+					ICE_AQC_NVM_RESET_LVL_M);
-+			dev_dbg(dev, "Firmware reported required reset level as %u\n",
-+				*reset_level);
-+		} else {
-+			*reset_level = ICE_AQC_NVM_POR_FLAG;
-+			dev_dbg(dev, "Firmware doesn't support indicating required reset level. Assuming a power cycle is required\n");
-+		}
-+	}
-+
- 	return 0;
- }
- 
-@@ -345,6 +383,7 @@ ice_write_one_nvm_block(struct ice_pf *pf, u16 module, u32 offset,
-  * @component: the name of the component being updated
-  * @image: buffer of image data to write to the NVM
-  * @length: length of the buffer
-+ * @reset_level: storage for reset level required
-  * @extack: netlink extended ACK structure
-  *
-  * Loop over the data for a given NVM module and program it in 4 Kb
-@@ -357,7 +396,7 @@ ice_write_one_nvm_block(struct ice_pf *pf, u16 module, u32 offset,
-  */
- static int
- ice_write_nvm_module(struct ice_pf *pf, u16 module, const char *component,
--		     const u8 *image, u32 length,
-+		     const u8 *image, u32 length, u8 *reset_level,
- 		     struct netlink_ext_ack *extack)
- {
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -391,7 +430,8 @@ ice_write_nvm_module(struct ice_pf *pf, u16 module, const char *component,
- 		memcpy(block, image + offset, block_size);
- 
- 		err = ice_write_one_nvm_block(pf, module, offset, block_size,
--					      block, last_cmd, extack);
-+					      block, last_cmd, reset_level,
-+					      extack);
- 		if (err)
- 			break;
- 
-@@ -507,6 +547,7 @@ ice_erase_nvm_module(struct ice_pf *pf, u16 module, const char *component,
-  * ice_switch_flash_banks - Tell firmware to switch NVM banks
-  * @pf: Pointer to the PF data structure
-  * @activate_flags: flags used for the activation command
-+ * @emp_reset_available: on return, indicates if EMP reset is available
-  * @extack: netlink extended ACK structure
-  *
-  * Notify firmware to activate the newly written flash banks, and wait for the
-@@ -514,18 +555,20 @@ ice_erase_nvm_module(struct ice_pf *pf, u16 module, const char *component,
-  *
-  * Returns: zero on success or an error code on failure.
-  */
--static int ice_switch_flash_banks(struct ice_pf *pf, u8 activate_flags,
--				  struct netlink_ext_ack *extack)
-+static int
-+ice_switch_flash_banks(struct ice_pf *pf, u8 activate_flags,
-+		       u8 *emp_reset_available, struct netlink_ext_ack *extack)
- {
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_rq_event_info event;
- 	struct ice_hw *hw = &pf->hw;
- 	u16 completion_retval;
-+	u8 response_flags;
- 	int err;
- 
- 	memset(&event, 0, sizeof(event));
- 
--	err = ice_nvm_write_activate(hw, activate_flags);
-+	err = ice_nvm_write_activate(hw, activate_flags, &response_flags);
- 	if (err) {
- 		dev_err(dev, "Failed to switch active flash banks, err %d aq_err %s\n",
- 			err, ice_aq_str(hw->adminq.sq_last_status));
-@@ -533,6 +576,22 @@ static int ice_switch_flash_banks(struct ice_pf *pf, u8 activate_flags,
- 		return -EIO;
- 	}
- 
-+	/* Newer versions of firmware have support to indicate whether an EMP
-+	 * reset to reload firmware is available. For older firmware, EMP
-+	 * reset is always available.
-+	 */
-+	if (emp_reset_available) {
-+		if (hw->dev_caps.common_cap.reset_restrict_support) {
-+			*emp_reset_available = response_flags & ICE_AQC_NVM_EMPR_ENA;
-+			dev_dbg(dev, "Firmware indicated that EMP reset is %s\n",
-+				*emp_reset_available ?
-+				"available" : "not available");
-+		} else {
-+			*emp_reset_available = ICE_AQC_NVM_EMPR_ENA;
-+			dev_dbg(dev, "Firmware does not support restricting EMP reset availability\n");
-+		}
-+	}
-+
- 	err = ice_aq_wait_for_event(pf, ice_aqc_opc_nvm_write_activate, 30 * HZ,
- 				    &event);
- 	if (err) {
-@@ -573,6 +632,7 @@ ice_flash_component(struct pldmfw *context, struct pldmfw_component *component)
- 	struct netlink_ext_ack *extack = priv->extack;
- 	struct ice_pf *pf = priv->pf;
- 	const char *name;
-+	u8 *reset_level;
- 	u16 module;
- 	u8 flag;
- 	int err;
-@@ -581,16 +641,19 @@ ice_flash_component(struct pldmfw *context, struct pldmfw_component *component)
- 	case NVM_COMP_ID_OROM:
- 		module = ICE_SR_1ST_OROM_BANK_PTR;
- 		flag = ICE_AQC_NVM_ACTIV_SEL_OROM;
-+		reset_level = NULL;
- 		name = "fw.undi";
- 		break;
- 	case NVM_COMP_ID_NVM:
- 		module = ICE_SR_1ST_NVM_BANK_PTR;
- 		flag = ICE_AQC_NVM_ACTIV_SEL_NVM;
-+		reset_level = &priv->reset_level;
- 		name = "fw.mgmt";
- 		break;
- 	case NVM_COMP_ID_NETLIST:
- 		module = ICE_SR_NETLIST_BANK_PTR;
- 		flag = ICE_AQC_NVM_ACTIV_SEL_NETLIST;
-+		reset_level = NULL;
- 		name = "fw.netlist";
- 		break;
- 	default:
-@@ -610,7 +673,8 @@ ice_flash_component(struct pldmfw *context, struct pldmfw_component *component)
- 		return err;
- 
- 	return ice_write_nvm_module(pf, module, name, component->component_data,
--				    component->component_size, extack);
-+				    component->component_size, reset_level,
-+				    extack);
- }
- 
- /**
-@@ -628,9 +692,48 @@ static int ice_finalize_update(struct pldmfw *context)
- 	struct ice_fwu_priv *priv = container_of(context, struct ice_fwu_priv, context);
- 	struct netlink_ext_ack *extack = priv->extack;
- 	struct ice_pf *pf = priv->pf;
-+	struct devlink *devlink;
-+	int err;
- 
- 	/* Finally, notify firmware to activate the written NVM banks */
--	return ice_switch_flash_banks(pf, priv->activate_flags, extack);
-+	err = ice_switch_flash_banks(pf, priv->activate_flags,
-+				     &priv->emp_reset_available, extack);
-+	if (err)
-+		return err;
-+
-+	devlink = priv_to_devlink(pf);
-+
-+	/* If the required reset is EMPR, but EMPR is disabled, report that
-+	 * a reboot is required instead.
-+	 */
-+	if (priv->reset_level == ICE_AQC_NVM_EMPR_FLAG &&
-+	    !priv->emp_reset_available) {
-+		dev_dbg(ice_pf_to_dev(pf), "Firmware indicated EMP reset as sufficient, but EMP reset is disabled\n");
-+		priv->reset_level = ICE_AQC_NVM_PERST_FLAG;
-+	}
-+
-+	switch (priv->reset_level) {
-+	case ICE_AQC_NVM_EMPR_FLAG:
-+		devlink_flash_update_status_notify(devlink,
-+						   "Activate new firmware by devlink reload",
-+						   NULL, 0, 0);
-+		break;
-+	case ICE_AQC_NVM_PERST_FLAG:
-+		devlink_flash_update_status_notify(devlink,
-+						   "Activate new firmware by rebooting the system",
-+						   NULL, 0, 0);
-+		break;
-+	case ICE_AQC_NVM_POR_FLAG:
-+	default:
-+		devlink_flash_update_status_notify(devlink,
-+						   "Activate new firmware by power cycling the system",
-+						   NULL, 0, 0);
-+		break;
-+	}
-+
-+	pf->fw_emp_reset_disabled = !priv->emp_reset_available;
-+
-+	return 0;
- }
- 
- static const struct pldmfw_ops ice_fwu_ops = {
-@@ -642,25 +745,22 @@ static const struct pldmfw_ops ice_fwu_ops = {
- };
- 
- /**
-- * ice_cancel_pending_update - Cancel any pending update for a component
-+ * ice_get_pending_updates - Check if the component has a pending update
-  * @pf: the PF driver structure
-- * @component: if not NULL, the name of the component being updated
-- * @extack: Netlink extended ACK structure
-+ * @pending: on return, bitmap of updates pending
-+ * @extack: Netlink extended ACK
-  *
-- * Cancel any pending update for the specified component. If component is
-- * NULL, all device updates will be canceled.
-+ * Check if the device has any pending updates on any flash components.
-  *
-- * Returns: zero on success, or a negative error code on failure.
-+ * Returns: zero on success, or a negative error code on failure. Updates
-+ * pending with the bitmap of pending updates.
-  */
--static int
--ice_cancel_pending_update(struct ice_pf *pf, const char *component,
--			  struct netlink_ext_ack *extack)
-+int ice_get_pending_updates(struct ice_pf *pf, u8 *pending,
-+			    struct netlink_ext_ack *extack)
- {
--	struct devlink *devlink = priv_to_devlink(pf);
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw_dev_caps *dev_caps;
- 	struct ice_hw *hw = &pf->hw;
--	u8 pending = 0;
- 	int err;
- 
- 	dev_caps = kzalloc(sizeof(*dev_caps), GFP_KERNEL);
-@@ -679,23 +779,53 @@ ice_cancel_pending_update(struct ice_pf *pf, const char *component,
- 		return err;
- 	}
- 
-+	*pending = 0;
-+
- 	if (dev_caps->common_cap.nvm_update_pending_nvm) {
- 		dev_info(dev, "The fw.mgmt flash component has a pending update\n");
--		pending |= ICE_AQC_NVM_ACTIV_SEL_NVM;
-+		*pending |= ICE_AQC_NVM_ACTIV_SEL_NVM;
- 	}
- 
- 	if (dev_caps->common_cap.nvm_update_pending_orom) {
- 		dev_info(dev, "The fw.undi flash component has a pending update\n");
--		pending |= ICE_AQC_NVM_ACTIV_SEL_OROM;
-+		*pending |= ICE_AQC_NVM_ACTIV_SEL_OROM;
- 	}
- 
- 	if (dev_caps->common_cap.nvm_update_pending_netlist) {
- 		dev_info(dev, "The fw.netlist flash component has a pending update\n");
--		pending |= ICE_AQC_NVM_ACTIV_SEL_NETLIST;
-+		*pending |= ICE_AQC_NVM_ACTIV_SEL_NETLIST;
- 	}
- 
- 	kfree(dev_caps);
- 
-+	return 0;
-+}
-+
-+/**
-+ * ice_cancel_pending_update - Cancel any pending update for a component
-+ * @pf: the PF driver structure
-+ * @component: if not NULL, the name of the component being updated
-+ * @extack: Netlink extended ACK structure
-+ *
-+ * Cancel any pending update for the specified component. If component is
-+ * NULL, all device updates will be canceled.
-+ *
-+ * Returns: zero on success, or a negative error code on failure.
-+ */
-+static int
-+ice_cancel_pending_update(struct ice_pf *pf, const char *component,
-+			  struct netlink_ext_ack *extack)
-+{
-+	struct devlink *devlink = priv_to_devlink(pf);
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_hw *hw = &pf->hw;
-+	u8 pending;
-+	int err;
-+
-+	err = ice_get_pending_updates(pf, &pending, extack);
-+	if (err)
-+		return err;
-+
- 	/* If the flash_update request is for a specific component, ignore all
- 	 * of the other components.
- 	 */
-@@ -730,10 +860,15 @@ ice_cancel_pending_update(struct ice_pf *pf, const char *component,
- 	}
- 
- 	pending |= ICE_AQC_NVM_REVERT_LAST_ACTIV;
--	err = ice_switch_flash_banks(pf, pending, extack);
-+	err = ice_switch_flash_banks(pf, pending, NULL, extack);
- 
- 	ice_release_nvm(hw);
- 
-+	/* Since we've canceled the pending update, we no longer know if EMP
-+	 * reset is restricted.
-+	 */
-+	pf->fw_emp_reset_disabled = false;
-+
- 	return err;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_fw_update.h b/drivers/net/ethernet/intel/ice/ice_fw_update.h
-index be6d222124f2..750574885716 100644
---- a/drivers/net/ethernet/intel/ice/ice_fw_update.h
-+++ b/drivers/net/ethernet/intel/ice/ice_fw_update.h
-@@ -7,5 +7,7 @@
- int ice_devlink_flash_update(struct devlink *devlink,
- 			     struct devlink_flash_update_params *params,
- 			     struct netlink_ext_ack *extack);
-+int ice_get_pending_updates(struct ice_pf *pf, u8 *pending,
-+			    struct netlink_ext_ack *extack);
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index d0c43f98bf58..86b1b8463a34 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6527,6 +6527,14 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 
- 	dev_dbg(dev, "rebuilding PF after reset_type=%d\n", reset_type);
- 
-+	if (reset_type == ICE_RESET_EMPR) {
-+		/* If an EMP reset has occurred, any previously pending flash
-+		 * update will have completed. We no longer know whether or
-+		 * not the NVM update EMP reset is restricted.
-+		 */
-+		pf->fw_emp_reset_disabled = false;
-+	}
-+
- 	err = ice_init_all_ctrlq(hw);
- 	if (err) {
- 		dev_err(dev, "control queues init failed %d\n", err);
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 941bfce97bf4..192e9825be21 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -1088,22 +1088,35 @@ int ice_nvm_validate_checksum(struct ice_hw *hw)
- /**
-  * ice_nvm_write_activate
-  * @hw: pointer to the HW struct
-- * @cmd_flags: NVM activate admin command bits (banks to be validated)
-+ * @cmd_flags: flags for write activate command
-+ * @response_flags: response indicators from firmware
-  *
-  * Update the control word with the required banks' validity bits
-  * and dumps the Shadow RAM to flash (0x0707)
-+ *
-+ * cmd_flags controls which banks to activate, and the preservation level to
-+ * use when activating the NVM bank.
-+ *
-+ * On successful return of the firmware command, the response_flags variable
-+ * is updated with the flags reported by firmware indicating certain status,
-+ * such as whether EMP reset is enabled.
-  */
--int ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags)
-+int ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags, u8 *response_flags)
- {
- 	struct ice_aqc_nvm *cmd;
- 	struct ice_aq_desc desc;
-+	int err;
- 
- 	cmd = &desc.params.nvm;
- 	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_nvm_write_activate);
- 
- 	cmd->cmd_flags = cmd_flags;
- 
--	return ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-+	err = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-+	if (!err && response_flags)
-+		*response_flags = cmd->cmd_flags;
-+
-+	return err;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.h b/drivers/net/ethernet/intel/ice/ice_nvm.h
-index ed5165d24cb1..738546ca09d2 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.h
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.h
-@@ -38,7 +38,7 @@ ice_aq_update_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset,
- int
- ice_aq_erase_nvm(struct ice_hw *hw, u16 module_typeid, struct ice_sq_cd *cd);
- int ice_nvm_validate_checksum(struct ice_hw *hw);
--int ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags);
-+int ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags, u8 *response_flags);
- int ice_aq_nvm_update_empr(struct ice_hw *hw);
- int
- ice_nvm_set_pkg_data(struct ice_hw *hw, bool del_pkg_data_flag, u8 *data,
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index b8644adfba78..58b1907e3ff1 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -278,6 +278,10 @@ struct ice_hw_common_caps {
- #define ICE_NVM_PENDING_NETLIST			BIT(2)
- 	bool nvm_unified_update;
- #define ICE_NVM_MGMT_UNIFIED_UPD_SUPPORT	BIT(3)
-+	/* PCIe reset avoidance */
-+	bool pcie_reset_avoidance;
-+	/* Post update reset restriction */
-+	bool reset_restrict_support;
- };
- 
- /* IEEE 1588 TIME_SYNC specific info */
-
-base-commit: 13fd6654e70b46782cd9e02fc9066056da9dd1e4
--- 
-2.31.1.331.gb0c09ab8796f
-
+Thanks,
+Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
