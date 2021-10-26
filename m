@@ -1,55 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1906943B5A0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 17:30:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05A1F43B612
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Oct 2021 17:50:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F06060A58;
-	Tue, 26 Oct 2021 15:30:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8FA1980F0E;
+	Tue, 26 Oct 2021 15:50:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Fay9KqS4N5v2; Tue, 26 Oct 2021 15:30:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mrxEDPb0NhXD; Tue, 26 Oct 2021 15:50:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B5AC160751;
-	Tue, 26 Oct 2021 15:30:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 851A780C0B;
+	Tue, 26 Oct 2021 15:50:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 957871BF5E6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:30:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6C80B1BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:50:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 83D7360751
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:30:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 682D460A65
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:50:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4DCWQWRBKmRp for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Oct 2021 15:30:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 444CC606CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:30:30 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5aef5c.dynamic.kabel-deutschland.de
- [95.90.239.92])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 1ACA761E5FE33;
- Tue, 26 Oct 2021 17:30:27 +0200 (CEST)
-Message-ID: <745fff43-4649-ac63-5c6e-6fb3877953c0@molgen.mpg.de>
-Date: Tue, 26 Oct 2021 17:30:26 +0200
+ with ESMTP id zQNzny74_rTb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Oct 2021 15:50:08 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C443760747
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Oct 2021 15:50:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10149"; a="316148109"
+X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="316148109"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Oct 2021 08:47:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="537188576"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga008.fm.intel.com with ESMTP; 26 Oct 2021 08:47:35 -0700
+Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
+ [172.22.229.137])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 19QFlYAa027398; Tue, 26 Oct 2021 16:47:34 +0100
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 26 Oct 2021 17:46:28 +0200
+Message-Id: <20211026154628.15787-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.1
-Content-Language: en-US
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-References: <20211026164719.1766911-1-maciej.fijalkowski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20211026164719.1766911-1-maciej.fijalkowski@intel.com>
-Subject: [Intel-wired-lan] Wrong date/time of messages (was: [PATCH
- intel-next 0/2] ice: ethtool -L fixes)
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Clear synchronized addrs
+ when adding VFs in switchdev mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,21 +64,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, marta.a.plantykow@intel.com,
- alexandr.lobakin@intel.com, kuba@kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, davem@davemloft.net,
- magnus.karlsson@intel.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBJbnRlbCBmb2xrcywKCgpPbiAyNi4xMC4yMSAxODo0NywgTWFjaWVqIEZpamFsa293c2tp
-IHdyb3RlOgoKW+KApl0KCk9uY2UgYWdhaW4gbWVzc2FnZXMgd2VyZSBzZW50IHRvIHRoZSBsaXN0
-IHdpdGggYSBEYXRlIGZyb20gdGhlIGZ1dHVyZS4gCldoeSBjYW7igJl0IEludGVsIGVtcGxveWVl
-cyB3b3JrIG9uIHN5c3RlbXMgd2l0aCBhIGNvcnJlY3QgY2xvY2s/CgpJdOKAmWQgd291bGQgYmUg
-Z3JlYXQgaWYgc29tZWJvZHkgZnJvbSBJbnRlbCB3b3VsZCBhdCBsZWFzdCBoYXZlIHRoZSAKY291
-cnRlc3kgdG8gYW5hbHl6ZSBhbmQgZml4IHRoZSByb290IGNhdXNlLgoKCktpbmQgcmVnYXJkcywK
-ClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
-ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
-czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+When spawning VFs in switchdev mode, internal filter list of vsi is
+cleared, which includes MAC rules. However MAC entries stay on netdev's
+multicast list, which causes error message when bringing link up after
+spawning VFs ("Failed to delete MAC filters"). __dev_mc_sync() is
+called and tries to unsync addresses that were already removed
+internally when adding VFs.
+
+This can be reproduced with:
+1) Load ice driver
+2) Change PF to switchdev mode
+3) Bring PF link up
+4) Bring PF link down
+5) Create a VF on PF
+6) Bring PF link up
+
+Added clearing of netdev's multicast (and also unicast) list when
+spawning VFs in switchdev mode, so the state of internal rule list and
+netdev's MAC list is consistent.
+
+Fixes: 1a1c40df2e80 ("ice: set and release switchdev environment")
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_eswitch.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index 6cb50653b18d..d1d7389b0bff 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -19,6 +19,7 @@
+ static int ice_eswitch_setup_env(struct ice_pf *pf)
+ {
+ 	struct ice_vsi *uplink_vsi = pf->switchdev.uplink_vsi;
++	struct net_device *uplink_netdev = uplink_vsi->netdev;
+ 	struct ice_vsi *ctrl_vsi = pf->switchdev.control_vsi;
+ 	struct ice_port_info *pi = pf->hw.port_info;
+ 	bool rule_added = false;
+@@ -27,6 +28,11 @@ static int ice_eswitch_setup_env(struct ice_pf *pf)
+ 
+ 	ice_remove_vsi_fltr(&pf->hw, uplink_vsi->idx);
+ 
++	netif_addr_lock_bh(uplink_netdev);
++	__dev_uc_unsync(uplink_netdev, NULL);
++	__dev_mc_unsync(uplink_netdev, NULL);
++	netif_addr_unlock_bh(uplink_netdev);
++
+ 	if (ice_vsi_add_vlan(uplink_vsi, 0, ICE_FWD_TO_VSI))
+ 		goto err_def_rx;
+ 
+-- 
+2.31.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
