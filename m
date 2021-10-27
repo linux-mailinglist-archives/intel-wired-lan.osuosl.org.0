@@ -1,62 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C12743CC7C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Oct 2021 16:40:33 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EC1943CCB4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Oct 2021 16:49:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7314B606DC;
-	Wed, 27 Oct 2021 14:40:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2F939404F1;
+	Wed, 27 Oct 2021 14:49:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dYDElJXQFVT7; Wed, 27 Oct 2021 14:40:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KMXjWQic7RM7; Wed, 27 Oct 2021 14:48:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7500260665;
-	Wed, 27 Oct 2021 14:40:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 26767404E8;
+	Wed, 27 Oct 2021 14:48:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 50CCF1BF2C5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:40:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 991F61BF2C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:48:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3E5DD80DD9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:40:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 873DF60672
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:48:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gKNfaPLw4O-4 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Oct 2021 14:40:25 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BIqS1_HwkF2P for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Oct 2021 14:48:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C7DEA80DC8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:40:25 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id EFE9760720;
- Wed, 27 Oct 2021 14:40:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1635345625;
- bh=NOqWKfn6Yz4kBIFHpmZu4vO/wZyXegOGpxv8kVU+EH0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=FvWE+yz4d/I5eCSy9m0flmjwqqt7FYfH9yzkx/7HqfQSHToiyg6H0v6c+VVccUCoP
- wd+qEL3kIj86bDjasBojn+b2Jvnvsqtzy3fwUY/AsdaI07CCGD6lz22Tf4HoO3Y6jO
- cw8RYwZmN7ZKVfcvX0iq1nOz6/Q3ZsI4piFRkonPalJ5pC55E8E4vsA3zR9VZztaIL
- kR72HlZhQxgbrWPbksxbp1ztRLOCh2qvrs8WHgEhJ3bPuQKEfgt+UteFBfxmF7W+2J
- diQpFr48CCXuFmx6jrq1lIzwqeH1MUF0IEWZk2Nt9FVAFHdiSn1UQgYiLq/o+yTxXN
- UY+utz71Fh83A==
-Date: Wed, 27 Oct 2021 07:40:23 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-Message-ID: <20211027074023.2589af7a@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <PH0PR11MB495117F04EED3A5D56AFB527EA859@PH0PR11MB4951.namprd11.prod.outlook.com>
-References: <20211026173146.1031412-1-maciej.machnikowski@intel.com>
- <20211026173146.1031412-5-maciej.machnikowski@intel.com>
- <20211026143236.050af4e9@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <PH0PR11MB495117F04EED3A5D56AFB527EA859@PH0PR11MB4951.namprd11.prod.outlook.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 379ED60665
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 14:48:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="217086778"
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; d="scan'208";a="217086778"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Oct 2021 07:48:41 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; d="scan'208";a="635739765"
+Received: from amlin-019-242.igk.intel.com ([10.102.19.242])
+ by fmsmga001.fm.intel.com with ESMTP; 27 Oct 2021 07:48:39 -0700
+From: Michal Maloszewski <michal.maloszewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 27 Oct 2021 14:48:55 +0000
+Message-Id: <20211027144855.53214-1-michal.maloszewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC v5 net-next 4/5] rtnetlink: Add support
- for SyncE recovered clock configuration
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan strip
+ virtual channel messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,28 +60,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
- "saeed@kernel.org" <saeed@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "idosch@idosch.org" <idosch@idosch.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Michal Maloszewski <michal.maloszewski@intel.com>,
+ Norbert Ciosek <norbertx.ciosek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 27 Oct 2021 13:29:40 +0000 Machnikowski, Maciej wrote:
-> > Please add a write up of how things fit together in Documentation/.
-> > I'm sure reviewers and future users will appreciate that.  
->  
-> Sure! Documentation/networking/synce.rst would be the right place to add it?
-> Or is there any better place?
+Modify netdev->features for vlan stripping based on virtual
+channel messages received from the PF. Change is needed
+to synchronize vlan strip status between PF sysfs and iavf ethtool.
 
-SGTM
+Fixes: 310a2ad92e3f ("virtchnl: rename i40e to generic virtchnl")
+Title: Fix handling of vlan strip virtual channel messages
+Change-type: DefectResolution
+HSDES-number: 1809974314
+HSDES-tenant: server_platf_lan.bug
+Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
+Signed-off-by: Michal Maloszewski <michal.maloszewski@intel.com>
+---
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 42 +++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index bdc6040361..dbce5c17ab 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1456,6 +1456,24 @@ void iavf_request_reset(struct iavf_adapter *adapter)
+ 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+ }
+ 
++/**
++ * iavf_netdev_features_vlan_strip_set
++ * @netdev: ptr to netdev being adjusted
++ * @enable: enable or disable vlan strip
++ *
++ * Helper function to change vlan strip status in netdev->features.
++ **/
++static void iavf_netdev_features_vlan_strip_set(struct net_device *netdev,
++						const bool enable)
++{
++	if (enable)
++		netdev->features |=
++			NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_RX;
++	else
++		netdev->features &=
++			~NETIF_F_HW_VLAN_CTAG_RX & ~NETIF_F_HW_VLAN_RX;
++}
++
+ /**
+  * iavf_virtchnl_completion
+  * @adapter: adapter structure
+@@ -1679,8 +1697,18 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			}
+ 			break;
+ 		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
++			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			/* Vlan stripping could not be enabled by ethtool.
++			 * Disable it in netdev->features.
++			 */
++			iavf_netdev_features_vlan_strip_set(netdev, false);
++			break;
+ 		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
+ 			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
++			/* Vlan stripping could not be disabled by ethtool.
++			 * Enable it in netdev->features.
++			 */
++			iavf_netdev_features_vlan_strip_set(netdev, true);
+ 			break;
+ 		default:
+ 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
+@@ -1897,6 +1925,20 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 		spin_unlock_bh(&adapter->adv_rss_lock);
+ 		}
+ 		break;
++	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
++		/* PF enabled vlan strip on this VF.
++		 * Update netdev->features if needed to be in sync with ethtool.
++		 */
++		if (!v_retval)
++			iavf_netdev_features_vlan_strip_set(netdev, true);
++		break;
++	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
++		/* Got information that PF disabled vlan strip on this VF.
++		 * Update netdev->features if needed to be in sync with ethtool.
++		 */
++		if (!v_retval)
++			iavf_netdev_features_vlan_strip_set(netdev, false);
++		break;
+ 	default:
+ 		if (adapter->current_op && (v_opcode != adapter->current_op))
+ 			dev_dbg(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
