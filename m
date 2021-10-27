@@ -1,86 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8915A43CD24
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Oct 2021 17:10:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69BBA43CDFD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Oct 2021 17:52:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A01E40549;
-	Wed, 27 Oct 2021 15:10:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B50E660852;
+	Wed, 27 Oct 2021 15:52:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m1Vd9Kwnxv3Q; Wed, 27 Oct 2021 15:10:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Kd-7yu0HMqtU; Wed, 27 Oct 2021 15:52:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 28AC94052A;
-	Wed, 27 Oct 2021 15:10:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BB1E6607F0;
+	Wed, 27 Oct 2021 15:52:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 86DEA1BF31A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:10:52 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0654B1BF95E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:52:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 756C8605D6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:10:52 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E62D740257
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:52:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=messagingengine.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p-odU-a9XuHt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Oct 2021 15:10:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from new2-smtp.messagingengine.com (new2-smtp.messagingengine.com
- [66.111.4.224])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CF1DD605CC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:10:51 +0000 (UTC)
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 9F55F58061E;
- Wed, 27 Oct 2021 11:10:50 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Wed, 27 Oct 2021 11:10:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=R6eD8s
- U+mUAvQsxnh8GBjddlGvAFTfv9v84Yk822mOM=; b=LV0fxoTbDMe8MHyGGnky6A
- Bgnk5gjxH5INNAiJpwXDmxyKz2Dqfi9xTgUDw/E36C8x1U9sVE7sLqhN06q5i4rp
- BUtIISgNzyN2qDBhlUrJ0TrPZhbPr+H/yZ+0mTXe2vULdzHm5jv3cWqqgYgpWA0v
- 7m4X4PKEAZuVor8NxVdyU0lSH3jrjoFszz4MvWD3TTYeBH5V0JmmSXvBZLHKczNv
- qBL1okooWhZUbxjVukg6h3oIGWi81JmFL4LM0HAfUK723wN9Dhq84O/9BEBz+1uO
- jqjw35zKPgpDwFxDvsSn+UMQamm0WCjWOhhBdnGBaXFLwva9n1YchEiLzKxm3puw
- ==
-X-ME-Sender: <xms:-Wt5Ydu8hVh1RAcM0iqi_mwBmq3mjxvLEtT2wuHtDkhXFNAf_LO2lg>
- <xme:-Wt5YWdHeCTR2y0M7ph280xqL4I7Asrg1G4fxRLyzIhezf-GbvUOqBywlKa3V-IZ_
- sRSJPLTIWRF9Mo>
-X-ME-Received: <xmr:-Wt5YQxJsbPdsCVea1raNhxJNkjz87fbCDG0YFetkuYpLhMgckGRSt-r5g_EAvfsiiKCl_uKZ9Dns0m-_mX-qFMN453B6g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrvdegtddgheefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefkughoucfu
- tghhihhmmhgvlhcuoehiughoshgthhesihguohhstghhrdhorhhgqeenucggtffrrghtth
- gvrhhnpedtffekkeefudffveegueejffejhfetgfeuuefgvedtieehudeuueekhfduheel
- teenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehiug
- hoshgthhesihguohhstghhrdhorhhg
-X-ME-Proxy: <xmx:-Wt5YUNOEM7DEqdq0xlFDONCTTyEAH6RA8AMtoL1Rl99pcNyZ05vSw>
- <xmx:-Wt5Yd9ISd8RDZWJygGj-1qrmMCMlkj6mr-n5OFo7WpedbKTFfk-4A>
- <xmx:-Wt5YUX9JvocFF2Momh29CBeQVumFRHS5_2-Iuh7CCdoF9ZSs8ToSw>
- <xmx:-mt5YcaFMSamRMWoYBDY7qlzyic3L-YBarDYumGYiT8GEDUq_VwsfA>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 27 Oct 2021 11:10:48 -0400 (EDT)
-Date: Wed, 27 Oct 2021 18:10:46 +0300
-From: Ido Schimmel <idosch@idosch.org>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-Message-ID: <YXlr9jEZ6jrywpe9@shredder>
-References: <20211026173146.1031412-1-maciej.machnikowski@intel.com>
- <20211026173146.1031412-3-maciej.machnikowski@intel.com>
- <YXj7WkEb0PagWfSw@shredder>
- <PH0PR11MB495191854BF5470E9BF223F5EA859@PH0PR11MB4951.namprd11.prod.outlook.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dRMVcVCyCjJq for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Oct 2021 15:52:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 222764010B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Oct 2021 15:52:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="210971048"
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; d="scan'208";a="210971048"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Oct 2021 08:51:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; d="scan'208";a="665043454"
+Received: from amlin-019-242.igk.intel.com ([10.102.19.242])
+ by orsmga005.jf.intel.com with ESMTP; 27 Oct 2021 08:51:40 -0700
+From: Michal Maloszewski <michal.maloszewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 27 Oct 2021 15:51:56 +0000
+Message-Id: <20211027155156.54453-1-michal.maloszewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <PH0PR11MB495191854BF5470E9BF223F5EA859@PH0PR11MB4951.namprd11.prod.outlook.com>
-Subject: Re: [Intel-wired-lan] [RFC v5 net-next 2/5] rtnetlink: Add new
- RTM_GETEECSTATE message to get SyncE status
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix adopting new combined
+ setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,69 +60,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "saeed@kernel.org" <saeed@kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Michal Maloszewski <michal.maloszewski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 27, 2021 at 01:16:22PM +0000, Machnikowski, Maciej wrote:
-> 
-> 
-> > -----Original Message-----
-> > From: Ido Schimmel <idosch@idosch.org>
-> > Sent: Wednesday, October 27, 2021 9:10 AM
-> > To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
-> > Subject: Re: [RFC v5 net-next 2/5] rtnetlink: Add new RTM_GETEECSTATE
-> > message to get SyncE status
-> > 
-> > On Tue, Oct 26, 2021 at 07:31:43PM +0200, Maciej Machnikowski wrote:
-> > > +/* SyncE section */
-> > > +
-> > > +enum if_eec_state {
-> > > +	IF_EEC_STATE_INVALID = 0,
-> > > +	IF_EEC_STATE_FREERUN,
-> > > +	IF_EEC_STATE_LOCKED,
-> > > +	IF_EEC_STATE_LOCKED_HO_ACQ,
-> > 
-> > Is this referring to "Locked mode, acquiring holdover: This is a
-> > temporary mode, when coming from free-run, to acquire holdover
-> > memory."
-> > ?
-> 
-> Locked HO ACQ means locked and holdover acquired. It's the state that
-> allows transferring to the holdover state. Locked means that we locked
-> our frequency and started acquiring the holdover memory.
+New combined setting is fixed adopt after VF reset.
+This has been implemented by call reinit interrupt scheme
+during VF reset.
+Without this fix new combined setting has never been adopted.
 
-So that's a transient state, right? FWIW, I find it weird to call such a
-state "LOCKED".
+Fixes: 129cf89e5856 ("iavf: rename functions and structs to new name")
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Michal Maloszewski <michal.maloszewski@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
->  
-> > It seems ice isn't using it, so maybe drop it? Can be added later in
-> > case we have a driver that can report it
-> 
-> I'll update the driver in the next revision
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 80437ef26..355f98924 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -2233,7 +2233,8 @@ continue_reset:
+ 			 err);
+ 	adapter->aq_required = 0;
+ 
+-	if (adapter->flags & IAVF_FLAG_REINIT_ITR_NEEDED) {
++	if ((adapter->flags & IAVF_FLAG_REINIT_MSIX_NEEDED) ||
++	    (adapter->flags & IAVF_FLAG_REINIT_ITR_NEEDED)) {
+ 		err = iavf_reinit_interrupt_scheme(adapter);
+ 		if (err)
+ 			goto reset_err;
+@@ -2304,10 +2305,11 @@ continue_reset:
+ 		if (err)
+ 			goto reset_err;
+ 
+-		if (adapter->flags & IAVF_FLAG_REINIT_ITR_NEEDED) {
+-			err = iavf_request_traffic_irqs(adapter, netdev->name);
+-			if (err)
+-				goto reset_err;
++	if ((adapter->flags & IAVF_FLAG_REINIT_MSIX_NEEDED) ||
++	    (adapter->flags & IAVF_FLAG_REINIT_ITR_NEEDED)) {
++		err = iavf_request_traffic_irqs(adapter, netdev->name);
++		if (err)
++			goto reset_err;
+ 
+ 			adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
+ 		}
+@@ -2321,6 +2323,8 @@ continue_reset:
+ 		adapter->state = __IAVF_DOWN;
+ 		wake_up(&adapter->down_waitqueue);
+ 	}
++
++	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
+ 	mutex_unlock(&adapter->client_lock);
+ 	mutex_unlock(&adapter->crit_lock);
+ 
+-- 
+2.27.0
 
-You mean update it to use "IF_EEC_STATE_LOCKED_HO_ACQ" instead of
-"IF_EEC_STATE_LOCKED"?
-
-Regardless, would be good to document these values.
-
->  
-> > There is also "Locked mode, holdover acquired: This is a steady state
-> > mode, entered when holdover memory is acquired." But I assume that's
-> > "IF_EEC_STATE_LOCKED"
-> > 
-> > > +	IF_EEC_STATE_HOLDOVER,
-> > > +};
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
