@@ -2,52 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 934DE43DFB0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Oct 2021 13:03:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E68143E0C1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Oct 2021 14:21:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ED754607B7;
-	Thu, 28 Oct 2021 11:03:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18A616066D;
+	Thu, 28 Oct 2021 12:21:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MlktWyd-VnS9; Thu, 28 Oct 2021 11:03:27 +0000 (UTC)
+	with ESMTP id rOkizya4gBcW; Thu, 28 Oct 2021 12:21:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD37160612;
-	Thu, 28 Oct 2021 11:03:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 11608607B6;
+	Thu, 28 Oct 2021 12:21:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8CD481BF909
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 11:03:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 05D0F1BF8C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 733F782661
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 11:03:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E5B6960B5E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nGsFYbqPaMob for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Oct 2021 11:03:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T0fLQX94bLfE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Oct 2021 12:21:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C5C5A82660
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 11:03:21 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="230642477"
-X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="230642477"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2021 03:41:21 -0700
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 561EA607A9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="227846015"
+X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="227846015"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2021 05:13:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="725680483"
-Received: from amlin-019-242.igk.intel.com ([10.102.19.242])
- by fmsmga005.fm.intel.com with ESMTP; 28 Oct 2021 03:41:20 -0700
-From: Michal Maloszewski <michal.maloszewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 28 Oct 2021 10:41:14 +0000
-Message-Id: <20211028104114.71879-1-michal.maloszewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="466106547"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
+ by orsmga002.jf.intel.com with ESMTP; 28 Oct 2021 05:13:29 -0700
+From: Maciej Machnikowski <maciej.machnikowski@intel.com>
+To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Date: Thu, 28 Oct 2021 13:58:26 +0200
+Message-Id: <20211028115832.1385376-1-maciej.machnikowski@intel.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix handling of vlan strip
- virtual channel messages
+Subject: [Intel-wired-lan] [RFC v6 net-next 0/6] Add RTNL interface for SyncE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,96 +60,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Maloszewski <michal.maloszewski@intel.com>,
- Norbert Ciosek <norbertx.ciosek@intel.com>
+Cc: mkubecek@suse.cz, abyagowi@fb.com, saeed@kernel.org,
+ richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
+ kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Modify netdev->features for vlan stripping based on virtual
-channel messages received from the PF. Change is needed
-to synchronize vlan strip status between PF sysfs and iavf ethtool.
+Synchronous Ethernet networks use a physical layer clock to syntonize
+the frequency across different network elements.
 
-Fixes: 310a2ad92e3f ("virtchnl: rename i40e to generic virtchnl")
-Signed-off-by: Norbert Ciosek <norbertx.ciosek@intel.com>
-Signed-off-by: Michal Maloszewski <michal.maloszewski@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
----
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 42 +++++++++++++++++++
- 1 file changed, 42 insertions(+)
+Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
+Equipment Clock (EEC) and have the ability to recover synchronization
+from the synchronization inputs - either traffic interfaces or external
+frequency sources.
+The EEC can synchronize its frequency (syntonize) to any of those sources.
+It is also able to select synchronization source through priority tables
+and synchronization status messaging. It also provides neccessary
+filtering and holdover capabilities
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index bdc6040361..ed1c8bc3f4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1456,6 +1456,24 @@ void iavf_request_reset(struct iavf_adapter *adapter)
- 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- }
- 
-+/**
-+ * iavf_netdev_features_vlan_strip_set - update vlan strip status
-+ * @netdev: ptr to netdev being adjusted
-+ * @enable: enable or disable vlan strip
-+ *
-+ * Helper function to change vlan strip status in netdev->features.
-+ */
-+static void iavf_netdev_features_vlan_strip_set(struct net_device *netdev,
-+						const bool enable)
-+{
-+	if (enable)
-+		netdev->features |=
-+			NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_RX;
-+	else
-+		netdev->features &=
-+			~NETIF_F_HW_VLAN_CTAG_RX & ~NETIF_F_HW_VLAN_RX;
-+}
-+
- /**
-  * iavf_virtchnl_completion
-  * @adapter: adapter structure
-@@ -1679,8 +1697,18 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			}
- 			break;
- 		case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
-+			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-+			/* Vlan stripping could not be enabled by ethtool.
-+			 * Disable it in netdev->features.
-+			 */
-+			iavf_netdev_features_vlan_strip_set(netdev, false);
-+			break;
- 		case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
- 			dev_warn(&adapter->pdev->dev, "Changing VLAN Stripping is not allowed when Port VLAN is configured\n");
-+			/* Vlan stripping could not be disabled by ethtool.
-+			 * Enable it in netdev->features.
-+			 */
-+			iavf_netdev_features_vlan_strip_set(netdev, true);
- 			break;
- 		default:
- 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
-@@ -1897,6 +1925,20 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		spin_unlock_bh(&adapter->adv_rss_lock);
- 		}
- 		break;
-+	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
-+		/* PF enabled vlan strip on this VF.
-+		 * Update netdev->features if needed to be in sync with ethtool.
-+		 */
-+		if (!v_retval)
-+			iavf_netdev_features_vlan_strip_set(netdev, true);
-+		break;
-+	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
-+		/* PF disabled vlan strip on this VF.
-+		 * Update netdev->features if needed to be in sync with ethtool.
-+		 */
-+		if (!v_retval)
-+			iavf_netdev_features_vlan_strip_set(netdev, false);
-+		break;
- 	default:
- 		if (adapter->current_op && (v_opcode != adapter->current_op))
- 			dev_dbg(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
+This patch series introduces basic interface for reading the Ethernet
+Equipment Clock (EEC) state on a SyncE capable device. This state gives
+information about the source of the syntonization signal (ether my port,
+or any external one) and the state of EEC. This interface is required\
+to implement Synchronization Status Messaging on upper layers.
+
+v2:
+- removed whitespace changes
+- fix issues reported by test robot
+v3:
+- Changed naming from SyncE to EEC
+- Clarify cover letter and commit message for patch 1
+v4:
+- Removed sync_source and pin_idx info
+- Changed one structure to attributes
+- Added EEC_SRC_PORT flag to indicate that the EEC is synchronized
+  to the recovered clock of a port that returns the state
+v5:
+- add EEC source as an optiona attribute
+- implement support for recovered clocks
+- align states returned by EEC to ITU-T G.781
+v6:
+- fix EEC clock state reporting
+- add documentation
+- fix descriptions in code comments
+
+Maciej Machnikowski (6):
+  ice: add support detecting features based on netlist
+  rtnetlink: Add new RTM_GETEECSTATE message to get SyncE status
+  ice: add support for reading SyncE DPLL state
+  rtnetlink: Add support for SyncE recovered clock configuration
+  ice: add support for SyncE recovered clocks
+  docs: net: Add description of SyncE interfaces
+
+ Documentation/networking/synce.rst            |  88 ++++++
+ drivers/net/ethernet/intel/ice/ice.h          |   7 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  94 ++++++-
+ drivers/net/ethernet/intel/ice/ice_common.c   | 175 ++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  17 +-
+ drivers/net/ethernet/intel/ice/ice_devids.h   |   3 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   6 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     | 138 ++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  34 +++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  98 +++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  25 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ include/linux/netdevice.h                     |  33 +++
+ include/uapi/linux/if_link.h                  |  57 ++++
+ include/uapi/linux/rtnetlink.h                |  10 +
+ net/core/rtnetlink.c                          | 253 ++++++++++++++++++
+ security/selinux/nlmsgtab.c                   |   6 +-
+ 17 files changed, 1041 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/networking/synce.rst
+
 -- 
-2.27.0
+2.26.3
 
 _______________________________________________
 Intel-wired-lan mailing list
