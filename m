@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F41C543E0C4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Oct 2021 14:21:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D72B43E0C2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Oct 2021 14:21:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 81FA640483;
-	Thu, 28 Oct 2021 12:21:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZVuySmJVFPj8; Thu, 28 Oct 2021 12:21:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 04E1B402C1;
-	Thu, 28 Oct 2021 12:21:35 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 463931BF8C7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4A8CE6066D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 750E760B68;
+	Thu, 28 Oct 2021 12:21:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7F9sviENwWF9 for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OH3d8ypCRT-1; Thu, 28 Oct 2021 12:21:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 548DA607B6;
+	Thu, 28 Oct 2021 12:21:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7D0E01BF8C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6C8D3405F0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZyyaE7qSUked for <intel-wired-lan@lists.osuosl.org>;
  Thu, 28 Oct 2021 12:21:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6CF6F607D1
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9A1E9405EF
  for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Oct 2021 12:21:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="227846027"
-X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="227846027"
+X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="227846039"
+X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="227846039"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2021 05:13:36 -0700
+ 28 Oct 2021 05:13:40 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="466106556"
+X-IronPort-AV: E=Sophos;i="5.87,189,1631602800"; d="scan'208";a="466106561"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
- by orsmga002.jf.intel.com with ESMTP; 28 Oct 2021 05:13:33 -0700
+ by orsmga002.jf.intel.com with ESMTP; 28 Oct 2021 05:13:36 -0700
 From: Maciej Machnikowski <maciej.machnikowski@intel.com>
 To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org
-Date: Thu, 28 Oct 2021 13:58:27 +0200
-Message-Id: <20211028115832.1385376-2-maciej.machnikowski@intel.com>
+Date: Thu, 28 Oct 2021 13:58:28 +0200
+Message-Id: <20211028115832.1385376-3-maciej.machnikowski@intel.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20211028115832.1385376-1-maciej.machnikowski@intel.com>
 References: <20211028115832.1385376-1-maciej.machnikowski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC v6 net-next 1/6] ice: add support detecting
- features based on netlist
+Subject: [Intel-wired-lan] [RFC v6 net-next 2/6] rtnetlink: Add new
+ RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,266 +71,228 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add new functions to check netlist of a given board for:
-- Recovered Clock device,
-- Clock Generation Unit,
-- Clock Multiplexer,
+This patch series introduces basic interface for reading the Ethernet
+Equipment Clock (EEC) state on a SyncE capable device. This state gives
+information about the state of EEC. This interface is required to
+implement Synchronization Status Messaging on upper layers.
 
-Initialize feature bits depending on detected components.
+Initial implementation returns SyncE EEC state in the IFLA_EEC_STATE
+attribute. The optional index of input that's used as a source can be
+returned in the IFLA_EEC_SRC_IDX attribute.
+
+SyncE EEC state read needs to be implemented as a ndo_get_eec_state
+function. The index will be read by calling the ndo_get_eec_src.
 
 Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |  2 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  7 +-
- drivers/net/ethernet/intel/ice/ice_common.c   | 73 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_common.h   |  6 ++
- drivers/net/ethernet/intel/ice/ice_lib.c      |  6 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 50 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  3 +
- drivers/net/ethernet/intel/ice/ice_type.h     |  1 +
- 8 files changed, 146 insertions(+), 2 deletions(-)
+ include/linux/netdevice.h      | 13 ++++++
+ include/uapi/linux/if_link.h   | 31 +++++++++++++
+ include/uapi/linux/rtnetlink.h |  3 ++
+ net/core/rtnetlink.c           | 79 ++++++++++++++++++++++++++++++++++
+ security/selinux/nlmsgtab.c    |  3 +-
+ 5 files changed, 128 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 967a90efcb11..c650d27771d3 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -185,6 +185,8 @@
- 
- enum ice_feature {
- 	ICE_F_DSCP,
-+	ICE_F_CGU,
-+	ICE_F_PHY_RCLK,
- 	ICE_F_SMA_CTRL,
- 	ICE_F_MAX
- };
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index a5425f0dce3f..7519ba840e50 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1295,6 +1295,8 @@ struct ice_aqc_link_topo_params {
- #define ICE_AQC_LINK_TOPO_NODE_TYPE_CAGE	6
- #define ICE_AQC_LINK_TOPO_NODE_TYPE_MEZZ	7
- #define ICE_AQC_LINK_TOPO_NODE_TYPE_ID_EEPROM	8
-+#define ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL	9
-+#define ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_MUX	10
- #define ICE_AQC_LINK_TOPO_NODE_CTX_S		4
- #define ICE_AQC_LINK_TOPO_NODE_CTX_M		\
- 				(0xF << ICE_AQC_LINK_TOPO_NODE_CTX_S)
-@@ -1331,7 +1333,10 @@ struct ice_aqc_link_topo_addr {
- struct ice_aqc_get_link_topo {
- 	struct ice_aqc_link_topo_addr addr;
- 	u8 node_part_num;
--#define ICE_AQC_GET_LINK_TOPO_NODE_NR_PCA9575	0x21
-+#define ICE_AQC_GET_LINK_TOPO_NODE_NR_PCA9575		0x21
-+#define ICE_ACQ_GET_LINK_TOPO_NODE_NR_ZL30632_80032	0x24
-+#define ICE_ACQ_GET_LINK_TOPO_NODE_NR_PKVL		0x31
-+#define ICE_ACQ_GET_LINK_TOPO_NODE_NR_GEN_CLK_MUX	0x47
- 	u8 rsvd[9];
+diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+index 3ec42495a43a..ef2b381dae0c 100644
+--- a/include/linux/netdevice.h
++++ b/include/linux/netdevice.h
+@@ -1344,6 +1344,13 @@ struct netdev_net_notifier {
+  *	The caller must be under RCU read context.
+  * int (*ndo_fill_forward_path)(struct net_device_path_ctx *ctx, struct net_device_path *path);
+  *     Get the forwarding path to reach the real device from the HW destination address
++ * int (*ndo_get_eec_state)(struct net_device *dev, enum if_eec_state *state,
++ *			    u32 *src_idx, struct netlink_ext_ack *extack);
++ *	Get state of physical layer frequency synchronization (SyncE)
++ * int (*ndo_get_eec_src)(struct net_device *dev, u32 *src,
++ *			  struct netlink_ext_ack *extack);
++ *	Get the index of the source signal that's currently used as EEC's
++ *	reference
+  */
+ struct net_device_ops {
+ 	int			(*ndo_init)(struct net_device *dev);
+@@ -1563,6 +1570,12 @@ struct net_device_ops {
+ 	struct net_device *	(*ndo_get_peer_dev)(struct net_device *dev);
+ 	int                     (*ndo_fill_forward_path)(struct net_device_path_ctx *ctx,
+                                                          struct net_device_path *path);
++	int			(*ndo_get_eec_state)(struct net_device *dev,
++						     enum if_eec_state *state,
++						     struct netlink_ext_ack *extack);
++	int			(*ndo_get_eec_src)(struct net_device *dev,
++						   u32 *src,
++						   struct netlink_ext_ack *extack);
  };
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index b3066d0fea8b..5da3e86ad5c9 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -274,6 +274,79 @@ ice_aq_get_link_topo_handle(struct ice_port_info *pi, u8 node_type,
- 	return ice_aq_send_cmd(pi->hw, &desc, NULL, 0, cd);
- }
- 
-+/**
-+ * ice_aq_get_netlist_node
-+ * @hw: pointer to the hw struct
-+ * @cmd: get_link_topo AQ structure
-+ * @node_part_number: output node part number if node found
-+ * @node_handle: output node handle parameter if node found
-+ */
-+enum ice_status
-+ice_aq_get_netlist_node(struct ice_hw *hw, struct ice_aqc_get_link_topo *cmd,
-+			u8 *node_part_number, u16 *node_handle)
-+{
-+	struct ice_aq_desc desc;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_link_topo);
-+	desc.params.get_link_topo = *cmd;
-+
-+	if (ice_aq_send_cmd(hw, &desc, NULL, 0, NULL))
-+		return ICE_ERR_NOT_SUPPORTED;
-+
-+	if (node_handle)
-+		*node_handle =
-+			le16_to_cpu(desc.params.get_link_topo.addr.handle);
-+	if (node_part_number)
-+		*node_part_number = desc.params.get_link_topo.node_part_num;
-+
-+	return ICE_SUCCESS;
-+}
-+
-+#define MAX_NETLIST_SIZE 10
-+/**
-+ * ice_find_netlist_node
-+ * @hw: pointer to the hw struct
-+ * @node_type_ctx: type of netlist node to look for
-+ * @node_part_number: node part number to look for
-+ * @node_handle: output parameter if node found - optional
-+ *
-+ * Find and return the node handle for a given node type and part number in the
-+ * netlist. When found ICE_SUCCESS is returned, ICE_ERR_DOES_NOT_EXIST
-+ * otherwise. If @node_handle provided, it would be set to found node handle.
-+ */
-+enum ice_status
-+ice_find_netlist_node(struct ice_hw *hw, u8 node_type_ctx, u8 node_part_number,
-+		      u16 *node_handle)
-+{
-+	struct ice_aqc_get_link_topo cmd;
-+	u8 rec_node_part_number;
-+	enum ice_status status;
-+	u16 rec_node_handle;
-+	u8 idx;
-+
-+	for (idx = 0; idx < MAX_NETLIST_SIZE; idx++) {
-+		memset(&cmd, 0, sizeof(cmd));
-+
-+		cmd.addr.topo_params.node_type_ctx =
-+			(node_type_ctx << ICE_AQC_LINK_TOPO_NODE_TYPE_S);
-+		cmd.addr.topo_params.index = idx;
-+
-+		status = ice_aq_get_netlist_node(hw, &cmd,
-+						 &rec_node_part_number,
-+						 &rec_node_handle);
-+		if (status)
-+			return status;
-+
-+		if (rec_node_part_number == node_part_number) {
-+			if (node_handle)
-+				*node_handle = rec_node_handle;
-+			return ICE_SUCCESS;
-+		}
-+	}
-+
-+	return ICE_ERR_DOES_NOT_EXIST;
-+}
-+
  /**
-  * ice_is_media_cage_present
-  * @pi: port information structure
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index 65c1b3244264..4ef18c2695cd 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -89,6 +89,12 @@ ice_aq_get_phy_caps(struct ice_port_info *pi, bool qual_mods, u8 report_mode,
- 		    struct ice_aqc_get_phy_caps_data *caps,
- 		    struct ice_sq_cd *cd);
- enum ice_status
-+ice_aq_get_netlist_node(struct ice_hw *hw, struct ice_aqc_get_link_topo *cmd,
-+			u8 *node_part_number, u16 *node_handle);
-+enum ice_status
-+ice_find_netlist_node(struct ice_hw *hw, u8 node_type_ctx, u8 node_part_number,
-+		      u16 *node_handle);
-+enum ice_status
- ice_aq_list_caps(struct ice_hw *hw, void *buf, u16 buf_size, u32 *cap_count,
- 		 enum ice_adminq_opc opc, struct ice_sq_cd *cd);
- enum ice_status
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 77dceab9fbbe..d13eace1a035 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -4185,8 +4185,12 @@ void ice_init_feature_support(struct ice_pf *pf)
- 	case ICE_DEV_ID_E810C_QSFP:
- 	case ICE_DEV_ID_E810C_SFP:
- 		ice_set_feature_support(pf, ICE_F_DSCP);
--		if (ice_is_e810t(&pf->hw))
-+		if (ice_is_clock_mux_present_e810t(&pf->hw))
- 			ice_set_feature_support(pf, ICE_F_SMA_CTRL);
-+		if (ice_is_phy_rclk_present_e810t(&pf->hw))
-+			ice_set_feature_support(pf, ICE_F_PHY_RCLK);
-+		if (ice_is_cgu_present_e810t(&pf->hw))
-+			ice_set_feature_support(pf, ICE_F_CGU);
- 		break;
- 	default:
- 		break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 29f947c0cd2e..4d30cc48e1a6 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -800,3 +800,53 @@ bool ice_is_pca9575_present(struct ice_hw *hw)
+diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
+index eebd3894fe89..8eae80f287e9 100644
+--- a/include/uapi/linux/if_link.h
++++ b/include/uapi/linux/if_link.h
+@@ -1273,4 +1273,35 @@ enum {
  
- 	return !status && handle;
+ #define IFLA_MCTP_MAX (__IFLA_MCTP_MAX - 1)
+ 
++/* SyncE section */
++
++enum if_eec_state {
++	IF_EEC_STATE_INVALID = 0,	/* state is not valid */
++	IF_EEC_STATE_FREERUN,		/* clock is free-running */
++	IF_EEC_STATE_LOCKED,		/* clock is locked to the reference,
++					 * but the holdover memory is not valid
++					 */
++	IF_EEC_STATE_LOCKED_HO_ACQ,	/* clock is locked to the reference
++					 * and holdover memory is valid
++					 */
++	IF_EEC_STATE_HOLDOVER,		/* clock is in holdover mode */
++};
++
++#define EEC_SRC_PORT		(1 << 0) /* recovered clock from the port is
++					  * currently the source for the EEC
++					  */
++
++struct if_eec_state_msg {
++	__u32 ifindex;
++};
++
++enum {
++	IFLA_EEC_UNSPEC,
++	IFLA_EEC_STATE,
++	IFLA_EEC_SRC_IDX,
++	__IFLA_EEC_MAX,
++};
++
++#define IFLA_EEC_MAX (__IFLA_EEC_MAX - 1)
++
+ #endif /* _UAPI_LINUX_IF_LINK_H */
+diff --git a/include/uapi/linux/rtnetlink.h b/include/uapi/linux/rtnetlink.h
+index 5888492a5257..1d8662afd6bd 100644
+--- a/include/uapi/linux/rtnetlink.h
++++ b/include/uapi/linux/rtnetlink.h
+@@ -185,6 +185,9 @@ enum {
+ 	RTM_GETNEXTHOPBUCKET,
+ #define RTM_GETNEXTHOPBUCKET	RTM_GETNEXTHOPBUCKET
+ 
++	RTM_GETEECSTATE = 124,
++#define RTM_GETEECSTATE	RTM_GETEECSTATE
++
+ 	__RTM_MAX,
+ #define RTM_MAX		(((__RTM_MAX + 3) & ~3) - 1)
+ };
+diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+index 2af8aeeadadf..03bc773d0e69 100644
+--- a/net/core/rtnetlink.c
++++ b/net/core/rtnetlink.c
+@@ -5467,6 +5467,83 @@ static int rtnl_stats_dump(struct sk_buff *skb, struct netlink_callback *cb)
+ 	return skb->len;
  }
-+
-+/**
-+ * ice_is_phy_rclk_present_e810t
-+ * @hw: pointer to the hw struct
-+ *
-+ * Check if the PHY Recovered Clock device is present in the netlist
-+ */
-+bool ice_is_phy_rclk_present_e810t(struct ice_hw *hw)
+ 
++static int rtnl_fill_eec_state(struct sk_buff *skb, struct net_device *dev,
++			       u32 portid, u32 seq, struct netlink_callback *cb,
++			       int flags, struct netlink_ext_ack *extack)
 +{
-+	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
-+				  ICE_ACQ_GET_LINK_TOPO_NODE_NR_PKVL, NULL))
-+		return false;
++	const struct net_device_ops *ops = dev->netdev_ops;
++	struct if_eec_state_msg *state_msg;
++	enum if_eec_state state;
++	struct nlmsghdr *nlh;
++	u32 src_idx;
++	int err;
 +
-+	return true;
++	ASSERT_RTNL();
++
++	if (!ops->ndo_get_eec_state)
++		return -EOPNOTSUPP;
++
++	err = ops->ndo_get_eec_state(dev, &state, extack);
++	if (err)
++		return err;
++
++	nlh = nlmsg_put(skb, portid, seq, RTM_GETEECSTATE, sizeof(*state_msg),
++			flags);
++	if (!nlh)
++		return -EMSGSIZE;
++
++	state_msg = nlmsg_data(nlh);
++	state_msg->ifindex = dev->ifindex;
++
++	if (nla_put_u32(skb, IFLA_EEC_STATE, state))
++		return -EMSGSIZE;
++
++	if (!ops->ndo_get_eec_src)
++		goto end_msg;
++
++	err = ops->ndo_get_eec_src(dev, &src_idx, extack);
++	if (err)
++		return err;
++
++	if (nla_put_u32(skb, IFLA_EEC_SRC_IDX, src_idx))
++		return -EMSGSIZE;
++
++end_msg:
++	nlmsg_end(skb, nlh);
++	return 0;
 +}
 +
-+/**
-+ * ice_is_cgu_present_e810t
-+ * @hw: pointer to the hw struct
-+ *
-+ * Check if the Clock Generation Unit (CGU) device is present in the netlist
-+ */
-+bool ice_is_cgu_present_e810t(struct ice_hw *hw)
++static int rtnl_eec_state_get(struct sk_buff *skb, struct nlmsghdr *nlh,
++			      struct netlink_ext_ack *extack)
 +{
-+	if (!ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
-+				   ICE_ACQ_GET_LINK_TOPO_NODE_NR_ZL30632_80032,
-+				   NULL)) {
-+		hw->cgu_part_number =
-+			ICE_ACQ_GET_LINK_TOPO_NODE_NR_ZL30632_80032;
-+		return true;
++	struct net *net = sock_net(skb->sk);
++	struct if_eec_state_msg *state;
++	struct net_device *dev;
++	struct sk_buff *nskb;
++	int err;
++
++	state = nlmsg_data(nlh);
++	dev = __dev_get_by_index(net, state->ifindex);
++	if (!dev) {
++		NL_SET_ERR_MSG(extack, "unknown ifindex");
++		return -ENODEV;
 +	}
-+	return false;
++
++	nskb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
++	if (!nskb)
++		return -ENOBUFS;
++
++	err = rtnl_fill_eec_state(nskb, dev, NETLINK_CB(skb).portid,
++				  nlh->nlmsg_seq, NULL, nlh->nlmsg_flags,
++				  extack);
++	if (err < 0)
++		kfree_skb(nskb);
++	else
++		err = rtnl_unicast(nskb, net, NETLINK_CB(skb).portid);
++
++	return err;
 +}
 +
-+/**
-+ * ice_is_clock_mux_present_e810t
-+ * @hw: pointer to the hw struct
-+ *
-+ * Check if the Clock Multiplexer device is present in the netlist
-+ */
-+bool ice_is_clock_mux_present_e810t(struct ice_hw *hw)
-+{
-+	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_MUX,
-+				  ICE_ACQ_GET_LINK_TOPO_NODE_NR_GEN_CLK_MUX,
-+				  NULL))
-+		return false;
-+
-+	return true;
-+}
-+
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index b2984b5c22c1..9faab668dbe8 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -33,6 +33,9 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw);
- int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data);
- int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
- bool ice_is_pca9575_present(struct ice_hw *hw);
-+bool ice_is_phy_rclk_present_e810t(struct ice_hw *hw);
-+bool ice_is_cgu_present_e810t(struct ice_hw *hw);
-+bool ice_is_clock_mux_present_e810t(struct ice_hw *hw);
+ /* Process one rtnetlink message. */
  
- #define PFTSYN_SEM_BYTES	4
+ static int rtnetlink_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
+@@ -5692,4 +5769,6 @@ void __init rtnetlink_init(void)
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 9e0c2923c62e..a9dc16641bd4 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -920,6 +920,7 @@ struct ice_hw {
- 	struct list_head rss_list_head;
- 	struct ice_mbx_snapshot mbx_snapshot;
- 	u16 io_expander_handle;
-+	u8 cgu_part_number;
+ 	rtnl_register(PF_UNSPEC, RTM_GETSTATS, rtnl_stats_get, rtnl_stats_dump,
+ 		      0);
++
++	rtnl_register(PF_UNSPEC, RTM_GETEECSTATE, rtnl_eec_state_get, NULL, 0);
+ }
+diff --git a/security/selinux/nlmsgtab.c b/security/selinux/nlmsgtab.c
+index 94ea2a8b2bb7..2c66e722ea9c 100644
+--- a/security/selinux/nlmsgtab.c
++++ b/security/selinux/nlmsgtab.c
+@@ -91,6 +91,7 @@ static const struct nlmsg_perm nlmsg_route_perms[] =
+ 	{ RTM_NEWNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_WRITE },
+ 	{ RTM_DELNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_WRITE },
+ 	{ RTM_GETNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
++	{ RTM_GETEECSTATE,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
  };
  
- /* Statistics collected by each port, VSI, VEB, and S-channel */
+ static const struct nlmsg_perm nlmsg_tcpdiag_perms[] =
+@@ -176,7 +177,7 @@ int selinux_nlmsg_lookup(u16 sclass, u16 nlmsg_type, u32 *perm)
+ 		 * structures at the top of this file with the new mappings
+ 		 * before updating the BUILD_BUG_ON() macro!
+ 		 */
+-		BUILD_BUG_ON(RTM_MAX != (RTM_NEWNEXTHOPBUCKET + 3));
++		BUILD_BUG_ON(RTM_MAX != (RTM_GETEECSTATE + 3));
+ 		err = nlmsg_perm(nlmsg_type, perm, nlmsg_route_perms,
+ 				 sizeof(nlmsg_route_perms));
+ 		break;
 -- 
 2.26.3
 
