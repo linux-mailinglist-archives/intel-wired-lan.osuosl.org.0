@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2335D445445
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 14:52:45 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBFD7445464
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 14:58:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5ED1260AD2;
-	Thu,  4 Nov 2021 13:52:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 26475818B5;
+	Thu,  4 Nov 2021 13:58:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ypmYpekIV_8e; Thu,  4 Nov 2021 13:52:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pK_zN6NozINp; Thu,  4 Nov 2021 13:58:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 78F846088B;
-	Thu,  4 Nov 2021 13:52:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F75D8101A;
+	Thu,  4 Nov 2021 13:58:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7C0CC1BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:52:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9CE7E1BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7605A403B3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:52:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9835940001
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mbwOJG_CdEbv for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Nov 2021 13:52:36 +0000 (UTC)
+ with ESMTP id GoixhwTdf-yb for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Nov 2021 13:58:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 618F940001
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:52:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="295150428"
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="295150428"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2021 06:52:35 -0700
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B1D4F403B3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="231553746"
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="231553746"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 06:58:50 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="501546359"
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="639351963"
 Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
- by orsmga008.jf.intel.com with ESMTP; 04 Nov 2021 06:52:34 -0700
+ by fmsmga001.fm.intel.com with ESMTP; 04 Nov 2021 06:58:49 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 Nov 2021 14:52:11 +0100
-Message-Id: <20211104135211.21315-1-karol.kolacinski@intel.com>
+Date: Thu,  4 Nov 2021 14:58:36 +0100
+Message-Id: <20211104135836.24301-1-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
  80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Subject: [Intel-wired-lan] [PATCH intel-next] ice: Use div64_u64 instead of
- div_u64 in adjfine
+Subject: [Intel-wired-lan] [PATCH intel-next] ice: Don't put stale
+ timestamps in the skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,28 +68,72 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Change the division in ice_ptp_adjfine from div_u64 to div64_u64.
-div_u64 is used when the divisor is 32 bit but in this case incval is
-64 bit and it caused incorrect calculations and incval adjustments.
-
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+The driver has to check if it does not accidentally put the timestamp in
+the SKB before previous timestamp gets overwritten.
+Timestamp values in the PHY are read only and do not get cleared except
+at hardware reset or when a new timestamp value is captured.
+The cached_tstamp field is used to detect the case where a new timestamp
+has not yet been captured, ensuring that we avoid sending stale
+timestamp data to the stack.
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 11 ++++-------
+ drivers/net/ethernet/intel/ice/ice_ptp.h |  6 ++++++
+ 2 files changed, 10 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 2b3b2060b504..2149595cc632 100644
+index 2b3b2060b504..9a1a09661c78 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1104,7 +1104,7 @@ static int ice_ptp_adjfine(struct ptp_clock_info *info, long scaled_ppm)
- 		scaled_ppm = -scaled_ppm;
- 	}
+@@ -2069,19 +2069,16 @@ static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
+ 		if (err)
+ 			continue;
  
--	while ((u64)scaled_ppm > div_u64(U64_MAX, incval)) {
-+	while ((u64)scaled_ppm > div64_u64(U64_MAX, incval)) {
- 		/* handle overflow by scaling down the scaled_ppm and
- 		 * the divisor, losing some precision
+-		/* Check if the timestamp is valid */
+-		if (!(raw_tstamp & ICE_PTP_TS_VALID))
++		/* Check if the timestamp is invalid or stale */
++		if (!(raw_tstamp & ICE_PTP_TS_VALID) ||
++		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
+ 			continue;
+ 
+-		/* clear the timestamp register, so that it won't show valid
+-		 * again when re-used.
+-		 */
+-		ice_clear_phy_tstamp(hw, tx->quad, phy_idx);
+-
+ 		/* The timestamp is valid, so we'll go ahead and clear this
+ 		 * index and then send the timestamp up to the stack.
  		 */
+ 		spin_lock(&tx->lock);
++		tx->tstamps[idx].cached_tstamp = raw_tstamp;
+ 		clear_bit(idx, tx->in_use);
+ 		skb = tx->tstamps[idx].skb;
+ 		tx->tstamps[idx].skb = NULL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+index 92b202ef3c15..eef8ec894871 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+@@ -55,15 +55,21 @@ struct ice_perout_channel {
+  * struct ice_tx_tstamp - Tracking for a single Tx timestamp
+  * @skb: pointer to the SKB for this timestamp request
+  * @start: jiffies when the timestamp was first requested
++ * @cached_tstamp: last read timestamp
+  *
+  * This structure tracks a single timestamp request. The SKB pointer is
+  * provided when initiating a request. The start time is used to ensure that
+  * we discard old requests that were not fulfilled within a 2 second time
+  * window.
++ * Timestamp values in the PHY are read only and do not get cleared except at
++ * hardware reset or when a new timestamp value is captured. The cached_tstamp
++ * field is used to detect the case where a new timestamp has not yet been
++ * captured, ensuring that we avoid sending stale timestamp data to the stack.
+  */
+ struct ice_tx_tstamp {
+ 	struct sk_buff *skb;
+ 	unsigned long start;
++	u64 cached_tstamp;
+ };
+ 
+ /**
 -- 
 2.32.0
 
