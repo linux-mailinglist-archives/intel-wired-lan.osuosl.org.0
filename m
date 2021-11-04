@@ -1,55 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBFD7445464
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 14:58:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26475818B5;
-	Thu,  4 Nov 2021 13:58:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pK_zN6NozINp; Thu,  4 Nov 2021 13:58:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F75D8101A;
-	Thu,  4 Nov 2021 13:58:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9CE7E1BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06FC2445951
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 19:09:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9835940001
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 32B914040B;
+	Thu,  4 Nov 2021 18:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GoixhwTdf-yb for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Nov 2021 13:58:51 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xF3qpx60-xxb; Thu,  4 Nov 2021 18:09:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 05A3B40361;
+	Thu,  4 Nov 2021 18:09:01 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D34B11BF3AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:08:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id BBC5260703
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:08:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OjdPmzXIIQav for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Nov 2021 18:08:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B1D4F403B3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 13:58:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="231553746"
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="231553746"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2021 06:58:50 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="639351963"
-Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
- by fmsmga001.fm.intel.com with ESMTP; 04 Nov 2021 06:58:49 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 Nov 2021 14:58:36 +0100
-Message-Id: <20211104135836.24301-1-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.32.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 50F12606F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:08:57 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9208B611C3;
+ Thu,  4 Nov 2021 18:08:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1636049336;
+ bh=xnNcXcazwQwUlo5RPHBcBCT74SiT22kEneLRSZIj/FQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Tba14w+sKLD/aZF8PYdg0l92q+C+lx5K1JeX0grlk3OxVCjy6x6x7mJRtWA94BiMm
+ vJen6WSh/YoC/2VRRSXlDRIzivYTN0/AVJCHUBOb1x60r6W+mZ3avmSizsuionzgva
+ 2LI+YVnx+FaoLOarVK3iFJAVSAEzgVBWDz+M7ZKQdoLoEr4jW/8kF7R6vXjecFtxlc
+ 4GwE507rYzZZ9CzXe3UzWYDVOfPA5NkZgvFb0Yt31vCpwVh/hEV+wAuUi/qyQXNgF+
+ XpKYtJGP5IBBpoJhMjlD/J5FMLO1JFA82knblenO2WNNFTubNCSf4tGjubWSIjW8rM
+ zVAtHaXBLWUNg==
+Date: Thu, 4 Nov 2021 11:08:55 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Maciej Machnikowski <maciej.machnikowski@intel.com>
+Message-ID: <20211104110855.3ead1642@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20211104081231.1982753-7-maciej.machnikowski@intel.com>
+References: <20211104081231.1982753-1-maciej.machnikowski@intel.com>
+ <20211104081231.1982753-7-maciej.machnikowski@intel.com>
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Subject: [Intel-wired-lan] [PATCH intel-next] ice: Don't put stale
- timestamps in the skb
+Subject: Re: [Intel-wired-lan] [PATCH net-next 6/6] docs: net: Add
+ description of SyncE interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,81 +67,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karol Kolacinski <karol.kolacinski@intel.com>
+Cc: mkubecek@suse.cz, abyagowi@fb.com, saeed@kernel.org, netdev@vger.kernel.org,
+ richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, michael.chan@broadcom.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver has to check if it does not accidentally put the timestamp in
-the SKB before previous timestamp gets overwritten.
-Timestamp values in the PHY are read only and do not get cleared except
-at hardware reset or when a new timestamp value is captured.
-The cached_tstamp field is used to detect the case where a new timestamp
-has not yet been captured, ensuring that we avoid sending stale
-timestamp data to the stack.
----
- drivers/net/ethernet/intel/ice/ice_ptp.c | 11 ++++-------
- drivers/net/ethernet/intel/ice/ice_ptp.h |  6 ++++++
- 2 files changed, 10 insertions(+), 7 deletions(-)
+On Thu,  4 Nov 2021 09:12:31 +0100 Maciej Machnikowski wrote:
+> +Synchronous Ethernet networks use a physical layer clock to syntonize
+> +the frequency across different network elements.
+> +
+> +Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
+> +Equipment Clock (EEC) and can recover synchronization
+> +from the synchronization inputs - either traffic interfaces or external
+> +frequency sources.
+> +The EEC can synchronize its frequency (syntonize) to any of those sources.
+> +It is also able to select a synchronization source through priority tables
+> +and synchronization status messaging. It also provides necessary
+> +filtering and holdover capabilities.
+> +
+> +The following interface can be applicable to diffferent packet network types
+> +following ITU-T G.8261/G.8262 recommendations.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 2b3b2060b504..9a1a09661c78 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2069,19 +2069,16 @@ static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
- 		if (err)
- 			continue;
- 
--		/* Check if the timestamp is valid */
--		if (!(raw_tstamp & ICE_PTP_TS_VALID))
-+		/* Check if the timestamp is invalid or stale */
-+		if (!(raw_tstamp & ICE_PTP_TS_VALID) ||
-+		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
- 			continue;
- 
--		/* clear the timestamp register, so that it won't show valid
--		 * again when re-used.
--		 */
--		ice_clear_phy_tstamp(hw, tx->quad, phy_idx);
--
- 		/* The timestamp is valid, so we'll go ahead and clear this
- 		 * index and then send the timestamp up to the stack.
- 		 */
- 		spin_lock(&tx->lock);
-+		tx->tstamps[idx].cached_tstamp = raw_tstamp;
- 		clear_bit(idx, tx->in_use);
- 		skb = tx->tstamps[idx].skb;
- 		tx->tstamps[idx].skb = NULL;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 92b202ef3c15..eef8ec894871 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -55,15 +55,21 @@ struct ice_perout_channel {
-  * struct ice_tx_tstamp - Tracking for a single Tx timestamp
-  * @skb: pointer to the SKB for this timestamp request
-  * @start: jiffies when the timestamp was first requested
-+ * @cached_tstamp: last read timestamp
-  *
-  * This structure tracks a single timestamp request. The SKB pointer is
-  * provided when initiating a request. The start time is used to ensure that
-  * we discard old requests that were not fulfilled within a 2 second time
-  * window.
-+ * Timestamp values in the PHY are read only and do not get cleared except at
-+ * hardware reset or when a new timestamp value is captured. The cached_tstamp
-+ * field is used to detect the case where a new timestamp has not yet been
-+ * captured, ensuring that we avoid sending stale timestamp data to the stack.
-  */
- struct ice_tx_tstamp {
- 	struct sk_buff *skb;
- 	unsigned long start;
-+	u64 cached_tstamp;
- };
- 
- /**
--- 
-2.32.0
+Can we get a diagram in here in terms of how the port feeds its
+recovered Rx freq into EEC and that feeds freq of Tx on other ports?
 
+I'm still struggling to understand your reasoning around not making 
+EEC its own object. "We can do this later" seems like trading
+relatively little effort now for extra work for driver and application
+developers for ever.
+
+Also patch 3 still has a kdoc warning.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
