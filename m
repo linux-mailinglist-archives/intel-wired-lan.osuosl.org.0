@@ -1,56 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6443344504F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 09:28:01 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9A874450DE
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Nov 2021 10:06:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 057B560817;
-	Thu,  4 Nov 2021 08:28:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E75440506;
+	Thu,  4 Nov 2021 09:06:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qf7dYhaMpQ4k; Thu,  4 Nov 2021 08:27:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kyQd0rBRVuzw; Thu,  4 Nov 2021 09:06:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DF792607DA;
-	Thu,  4 Nov 2021 08:27:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 18DC640505;
+	Thu,  4 Nov 2021 09:06:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 421BC1BF870
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 08:27:53 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B1C6F1BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 09:05:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 294534015A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 08:27:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9FE26606CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 09:05:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KAXbIpqZ05tP for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Nov 2021 08:27:52 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id npt9EA2R0iT1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Nov 2021 09:05:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1796D40126
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 08:27:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="218857446"
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="218857446"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2021 01:27:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="501438456"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
- by orsmga008.jf.intel.com with ESMTP; 04 Nov 2021 01:27:48 -0700
-From: Maciej Machnikowski <maciej.machnikowski@intel.com>
-To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 Nov 2021 09:12:31 +0100
-Message-Id: <20211104081231.1982753-7-maciej.machnikowski@intel.com>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20211104081231.1982753-1-maciej.machnikowski@intel.com>
-References: <20211104081231.1982753-1-maciej.machnikowski@intel.com>
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 23542605C9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 09:05:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10157"; a="231513318"
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="231513318"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 02:05:55 -0700
+X-IronPort-AV: E=Sophos;i="5.87,208,1631602800"; d="scan'208";a="489883767"
+Received: from krausnex-mobl.ger.corp.intel.com (HELO [10.13.8.200])
+ ([10.13.8.200])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2021 02:05:54 -0700
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20211013061926.464744-1-sasha.neftin@intel.com>
+From: "Kraus, NechamaX" <nechamax.kraus@linux.intel.com>
+Message-ID: <56cf525d-5abe-6b4d-80d8-ae3fae2c5097@linux.intel.com>
+Date: Thu, 4 Nov 2021 11:05:45 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 6/6] docs: net: Add description
- of SyncE interfaces
+In-Reply-To: <20211013061926.464744-1-sasha.neftin@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unused _I_PHY_ID
+ define
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,121 +65,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mkubecek@suse.cz, abyagowi@fb.com, saeed@kernel.org,
- richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
- kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add Documentation/networking/synce.rst describing new RTNL messages
-and respective NDO ops supporting SyncE (Synchronous Ethernet).
-
-Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
----
- Documentation/networking/synce.rst | 88 ++++++++++++++++++++++++++++++
- 1 file changed, 88 insertions(+)
- create mode 100644 Documentation/networking/synce.rst
-
-diff --git a/Documentation/networking/synce.rst b/Documentation/networking/synce.rst
-new file mode 100644
-index 000000000000..986b9e62809f
---- /dev/null
-+++ b/Documentation/networking/synce.rst
-@@ -0,0 +1,88 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+====================
-+Synchronous Ethernet
-+====================
-+
-+Synchronous Ethernet networks use a physical layer clock to syntonize
-+the frequency across different network elements.
-+
-+Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
-+Equipment Clock (EEC) and can recover synchronization
-+from the synchronization inputs - either traffic interfaces or external
-+frequency sources.
-+The EEC can synchronize its frequency (syntonize) to any of those sources.
-+It is also able to select a synchronization source through priority tables
-+and synchronization status messaging. It also provides necessary
-+filtering and holdover capabilities.
-+
-+The following interface can be applicable to diffferent packet network types
-+following ITU-T G.8261/G.8262 recommendations.
-+
-+Interface
-+=========
-+
-+The following RTNL messages are used to read/configure SyncE recovered
-+clocks.
-+
-+RTM_GETRCLKRANGE
-+-----------------
-+Reads the allowed pin index range for the recovered clock outputs.
-+This can be aligned to PHY outputs or to EEC inputs, whichever is
-+better for a given application.
-+Will call the ndo_get_rclk_range function to read the allowed range
-+of output pin indexes.
-+Will call ndo_get_rclk_range to determine the allowed recovered clock
-+range and return them in the IFLA_RCLK_RANGE_MIN_PIN and the
-+IFLA_RCLK_RANGE_MAX_PIN attributes
-+
-+RTM_GETRCLKSTATE
-+-----------------
-+Read the state of recovered pins that output recovered clock from
-+a given port. The message will contain the number of assigned clocks
-+(IFLA_RCLK_STATE_COUNT) and an N pin indexes in IFLA_RCLK_STATE_OUT_IDX
-+To support multiple recovered clock outputs from the same port, this message
-+will return the IFLA_RCLK_STATE_COUNT attribute containing the number of
-+active recovered clock outputs (N) and N IFLA_RCLK_STATE_OUT_IDX attributes
-+listing the active output indexes.
-+This message will call the ndo_get_rclk_range to determine the allowed
-+recovered clock indexes and then will loop through them, calling
-+the ndo_get_rclk_state for each of them.
-+
-+RTM_SETRCLKSTATE
-+-----------------
-+Sets the redirection of the recovered clock for a given pin. This message
-+expects one attribute:
-+struct if_set_rclk_msg {
-+	__u32 ifindex; /* interface index */
-+	__u32 out_idx; /* output index (from a valid range)
-+	__u32 flags; /* configuration flags */
-+};
-+
-+Supported flags are:
-+SET_RCLK_FLAGS_ENA - if set in flags - the given output will be enabled,
-+		     if clear - the output will be disabled.
-+
-+RTM_GETEECSTATE
-+----------------
-+Reads the state of the EEC or equivalent physical clock synchronizer.
-+This message returns the following attributes:
-+IFLA_EEC_STATE - current state of the EEC or equivalent clock generator.
-+		 The states returned in this attribute are aligned to the
-+		 ITU-T G.781 and are:
-+		  IF_EEC_STATE_INVALID - state is not valid
-+		  IF_EEC_STATE_FREERUN - clock is free-running
-+		  IF_EEC_STATE_LOCKED - clock is locked to the reference,
-+		                        but the holdover memory is not valid
-+		  IF_EEC_STATE_LOCKED_HO_ACQ - clock is locked to the reference
-+		                               and holdover memory is valid
-+		  IF_EEC_STATE_HOLDOVER - clock is in holdover mode
-+State is read from the netdev calling the:
-+int (*ndo_get_eec_state)(struct net_device *dev, enum if_eec_state *state,
-+			 u32 *src_idx, struct netlink_ext_ack *extack);
-+
-+IFLA_EEC_SRC_IDX - optional attribute returning the index of the reference that
-+		   is used for the current IFLA_EEC_STATE, i.e., the index of
-+		   the pin that the EEC is locked to.
-+
-+Will be returned only if the ndo_get_eec_src is implemented.
-\ No newline at end of file
--- 
-2.26.3
-
+On 10/13/2021 09:19, Sasha Neftin wrote:
+> _I_PHY_ID not in use. Clean up the code accordingly,
+> and get rid of the unused define
+> 
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_defines.h | 3 ---
+>   1 file changed, 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index fad27a4fea78..910ad1a0d375 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -605,9 +605,6 @@
+>   #define PHY_1000T_CTRL		0x09 /* 1000Base-T Control Reg */
+>   #define PHY_1000T_STATUS	0x0A /* 1000Base-T Status Reg */
+>   
+> -/* Bit definitions for valid PHY IDs. I = Integrated E = External */
+> -#define I225_I_PHY_ID		0x67C9DC00
+> -
+>   /* MDI Control */
+>   #define IGC_MDIC_DATA_MASK	0x0000FFFF
+>   #define IGC_MDIC_REG_MASK	0x001F0000
+> 
+Tested-by: Nechama Kraus <nechamax.kraus@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
