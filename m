@@ -1,120 +1,168 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1758D4476AD
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Nov 2021 00:25:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F4EC447BE6
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Nov 2021 09:35:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 691A740246;
-	Sun,  7 Nov 2021 23:25:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8031940273;
+	Mon,  8 Nov 2021 08:35:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tByOJTuVd1RD; Sun,  7 Nov 2021 23:25:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jxgLPRjM6qDi; Mon,  8 Nov 2021 08:35:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 28A4D40243;
-	Sun,  7 Nov 2021 23:25:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1611E40212;
+	Mon,  8 Nov 2021 08:35:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F13E21BF3AD
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:24:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0557A1BF393
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 08:35:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D999E40012
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:24:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F40F980DC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 08:35:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=nvidia.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ikN6qS_h1bbU for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Nov 2021 18:24:57 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on2081.outbound.protection.outlook.com [40.107.92.81])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9D945401AF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Nov 2021 18:24:57 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GZ-Tu2WLC8_3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Nov 2021 08:35:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 914E780DBC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 08:35:23 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10161"; a="293018563"
+X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; d="scan'208";a="293018563"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Nov 2021 00:35:22 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; d="scan'208";a="451388741"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga006.jf.intel.com with ESMTP; 08 Nov 2021 00:35:22 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Mon, 8 Nov 2021 00:35:21 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Mon, 8 Nov 2021 00:35:21 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.176)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Mon, 8 Nov 2021 00:35:18 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FyPERRHc4/WVYIx8jn/sudxCOJbRiCI4nLsEveiHnaTaPjhOMmRrWdnjea2fkegtq5sZEK450yEnRWx/K+60XBJGJjfUdqFIQ/1RKi84pw5lRhYkA0OxY7HGf4EKlQvs+74Yrvhj7jTeLd58Oe188BDWJ0erAdYLj7/d10qf+lJfCPe/qedtEpGuHPt+PFgBRFSkNHqoQAoPHFVfmodh2dor/pzNVTBxLkwqqGSiyv2U3fvvW1tKJj4p1dJP0XMOdyFNuNFe/EU52ZkyQI2Zel8QL0X7ss181Uz8V/tAmKCReucMH28NyS9vV5hZCoZpyfF3BKIy98mbKrzdB3uxQQ==
+ b=XP85PkSB3IF673fbzTPjrWMA5jrEAaZ3YYLeOYi+OA20/waPgwq8d87fb216OeKJS/G0ymTE8mBejU6VFW5ALB9W+mPVuHh0ztgC2zx+vRxJJ+OQh3s+8ZJAuA72v3lsAPlUHfY6d8+ZcSk+ZcACC9tvxIN5yzl3sBb81bwbCy6H7K7WtnZqQ9nco7MpTOSGvt3nPAwYysCoLKfCyNRMGw/xEMB467JAkLtA0LfWf4LZr3/ws5Kc6mhGYIw4ALK02ngSppS3P8LrbJJ5jyUKg9+SaXF3i8krH1rT7ByWUXjRljYRlYdCMbz2mmtEVyy3A8KWE5fb+hyAPrQY7QtcdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8TaHId3S0y2eFNuc+vb7PXazTn/VCFoQYMQsNmP7sEg=;
- b=U2dlmbIMJTpnmjI/3XwFbkBmnnQznoEQr0N6Nz7yYm1UMTV0+xcpq29yLgFdQ2Avcqzeq1RC3LgsnxPZZ2y14WVj5J7xL2jPVU7mWHXFUkDJ6XURlKMtNFFlmfHLHE4XzCTnLdgolRjxN+kOkHIgPw0+rZfw6CD5Dcnx9LCvuc5Men+W9T9yq14fkBbFAt1BoH9BfWqFUhHUwmIXCovF1tqAXAt9eAgO8whGgicjOJBB1ohWj61O1REU1mxPt5e+CFbnG9XauDfpEKK/VbNGKUR5OXyO5EvcE2c2O+gpYFZnPCgKLtbbd8PCHX1mw0c7FuxTyxMXVUX7l2kiYtu06g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
+ bh=57P0G9+yjBCYMMhdfHpRpggeucnCKw2tg2tf9AJ54W0=;
+ b=leTvFk+MHy18JmOuvymGdCEwijwgYipuz9PTB4M7D2+8eqpZUZYNrObpQ9z5ICuBK5yvHWPSTYQ6VDK026qLCkdKek5eOzw2ZRlOXToIHEyQ6enaInCpdGGJKHiu0lTUOqDB078T+9UJhaUXLI+dWJtrhllrQXzYGITU0NP1UzAZelAYOR56ap6EwfKUPAHKDxVLekhjxQHMal436geLY+AfvfXeKoTsCeWavlUn7cxrKeh9fSb8cTXCrYBOA4SM+qtfb3t0lQHzrolPyNIvbjZkf6gcNRhOTgcT9xOxI2HFSCP/HFaXaUZxOE7R12TDkvnTqxCLsHzd4tGWMVKLFg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8TaHId3S0y2eFNuc+vb7PXazTn/VCFoQYMQsNmP7sEg=;
- b=fCaw2FEb+vfhy6ua+5rMq2EHFGQ1STCkEVG5qQDdtDUoMcWngltpiy5YeSqFIoRIxfVGmDEHC6W33/z1jZXbqa1xhvYlAdbsCTzOYNLMVJCPQTxNwVY41phRsqxmheqz/FOLf4I6Arscft/Hp1hsiy5fz6PhT6s4UOP1cUgzifKSm4vQB3Be/2Pq5PWlt1SZR27bhQKFWmtDayl+CehPEKyhplB9zuqIXc5YhsOHOyHp623uVSdCpNwE9PwXPXBOViX6RQbM+cII7dyuPxG57CuZ+6espY5tatG9+YNSWkJLZiqn4l3PG+sEDOZ5LuiloYVOezNIPdai+w2VgXO0qw==
-Received: from MW4PR03CA0042.namprd03.prod.outlook.com (2603:10b6:303:8e::17)
- by CH0PR12MB5092.namprd12.prod.outlook.com (2603:10b6:610:bf::16)
+ bh=57P0G9+yjBCYMMhdfHpRpggeucnCKw2tg2tf9AJ54W0=;
+ b=H2pbv+QtxO+kvtYqMQWkmnAeEyLHipVeF26wzRAM05AUGuNuRuJpUL6znm8X3oFhSgm+9TZZ0lZQHAfBB7eslmdCmO8Tp7xjsbf9Q8yvsla305Q9R4YU2uOaUkxp9HqDszqemGXplb9jA2LRKofHTi0MIAvhFOGWcheUw4ck6xs=
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com (2603:10b6:303:193::14)
+ by MWHPR11MB1566.namprd11.prod.outlook.com (2603:10b6:301:10::19)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.15; Thu, 4 Nov
- 2021 18:24:53 +0000
-Received: from CO1NAM11FT003.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:8e:cafe::51) by MW4PR03CA0042.outlook.office365.com
- (2603:10b6:303:8e::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.13 via Frontend
- Transport; Thu, 4 Nov 2021 18:24:53 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- CO1NAM11FT003.mail.protection.outlook.com (10.13.175.93) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4669.10 via Frontend Transport; Thu, 4 Nov 2021 18:24:53 +0000
-Received: from [10.2.52.133] (172.20.187.5) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.18; Thu, 4 Nov
- 2021 18:24:52 +0000
-To: Maciej Machnikowski <maciej.machnikowski@intel.com>,
- <netdev@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>
-References: <20211104081231.1982753-1-maciej.machnikowski@intel.com>
- <20211104081231.1982753-5-maciej.machnikowski@intel.com>
-From: Roopa Prabhu <roopa@nvidia.com>
-Message-ID: <2d379392-a381-e60a-7658-5ac695c30df1@nvidia.com>
-Date: Thu, 4 Nov 2021 11:24:46 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20211104081231.1982753-5-maciej.machnikowski@intel.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.13; Mon, 8 Nov
+ 2021 08:35:17 +0000
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::b137:7318:a259:699e]) by MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::b137:7318:a259:699e%9]) with mapi id 15.20.4649.019; Mon, 8 Nov 2021
+ 08:35:17 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Ido Schimmel <idosch@idosch.org>
+Thread-Topic: [PATCH v2 net-next 6/6] docs: net: Add description of SyncE
+ interfaces
+Thread-Index: AQHX0oli6labJUcox0OLXoT9uSo8Gqv4HN8AgAEw1JA=
+Date: Mon, 8 Nov 2021 08:35:17 +0000
+Message-ID: <MW5PR11MB58120F585A5CF1BCA1E7E958EA919@MW5PR11MB5812.namprd11.prod.outlook.com>
+References: <20211105205331.2024623-1-maciej.machnikowski@intel.com>
+ <20211105205331.2024623-7-maciej.machnikowski@intel.com>
+ <YYfd7DCFFtj/x+zQ@shredder>
+In-Reply-To: <YYfd7DCFFtj/x+zQ@shredder>
+Accept-Language: en-US
 Content-Language: en-US
-X-Originating-IP: [172.20.187.5]
-X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
- HQMAIL107.nvidia.com (172.20.187.13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f2ff0abd-f2cb-4251-1f2c-08d99fc06585
-X-MS-TrafficTypeDiagnostic: CH0PR12MB5092:
-X-Microsoft-Antispam-PRVS: <CH0PR12MB5092B7944A0240BD8D375428CB8D9@CH0PR12MB5092.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: umDRsgKw+OcBVuySjs/tOhRyy9094m4T7hP58F07z8lUMYVGUQuXqmXuPrRUzt6DAkxUZTBGi3SBJWT2bb5l5waMp8zWnHs5zRO4YEanDWsMe1OlYpBNcUDZDdx7No1cOmq5Si4sixEfwXpOpEqg6apWiMCdyqCoOuNATwzx8xUtVxYedGhjXMJjojMKcS3PIombOswEBzDDwX2gkf2VzSWcfgZDhHr39R4Zpa/5+H66JxxdvFdhSm3VIb7OKp7cciaF/bWxTFllmnDkWs8on5vdJXYmlDBdN4X5lPjNg2kIJ98WgxmhDN511lrjtSzdM+mUIJOUQqDHq5ORrHiWO0MHNCA+2olJgQIBTQezoy6bGmAhucaKf6z0Ag9By7IIP/O8qoj0CArvA90oD/+Z4QC4MfYonce1pUCH3N5cFAvZAzUGVE7b1I6kmQD+/x6Wk+ygjovzBmqs/Y9rV0iULnTMhlOuoPvxPsL0I/lQ8lAehTKPHpIzYvhkfa7x+NFxO+TC60o2QEZHg5pSqT7E1Y/WtOB/RdfqL2xxyVXBAq/go9Mi2X5IqE9LGX+BEpL1p4yHewwW0HsgfkTTx7fJZHswW3mUaGI2kHJmaix8AcRo/AkmVLZx5CHiJY5zLCUPL9ru4L1c3o66S3ZWbMpGfETe19lNPeDWU8axCZjbtoz85SxZs9VgBxdINYw+nah4ljmggS+NfulbqykNUFJ6nJ3uk+2wwd87qBpX1ixBCvU=
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(36840700001)(46966006)(31696002)(36906005)(70206006)(7636003)(356005)(36756003)(86362001)(186003)(26005)(70586007)(336012)(6666004)(82310400003)(4326008)(31686004)(16526019)(54906003)(8676002)(508600001)(2906002)(83380400001)(53546011)(7416002)(36860700001)(8936002)(47076005)(2616005)(16576012)(110136005)(316002)(5660300002)(426003)(43740500002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2021 18:24:53.3966 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f2ff0abd-f2cb-4251-1f2c-08d99fc06585
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT003.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5092
-X-Mailman-Approved-At: Sun, 07 Nov 2021 23:25:32 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 4/6] rtnetlink: Add support
- for SyncE recovered clock configuration
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+authentication-results: idosch.org; dkim=none (message not signed)
+ header.d=none;idosch.org; dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b1e00a73-9474-4b94-888f-08d9a292b16e
+x-ms-traffictypediagnostic: MWHPR11MB1566:
+x-microsoft-antispam-prvs: <MWHPR11MB15662C1B20B541E07D3C1B90EA919@MWHPR11MB1566.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ASwBan7fmS8KQx4BBqioSseokdA1tme3dlVpfv8EY/nLKl6vANWTuaDbPjCtTwC/PhLHuGnE5/yifylNWm+nQCsc2n+tE4/ukO0UrrOSVAOvW2ygkc0B1OiZGzA8RyF/xcOuvLsNWEvNmH0DC3T1D0nTo23/7A085HMoanIICpUm7XZ53TZBO4CZA/16T9XI/M2nFbSNneFviQqfGmE6QyE+TYLuqn9s7yUqDEOcu3Pn61w6uQ/orXaermFv59FwIc6Hfoe6fVaoTzp1VWsE0xADo6WZNvC0Rwz1v4oCMWe+hMB5WXzpe1mpFeHZ3qSeXxIB6XDMujglEdcJFgHI8nW6RDOtGBIM0mXBHspva1GL0bPlbkgLUtRtche72cvsK20zgIlCjmkKGY+SG7mvEhXXeyAV/UQJXmMGK6WQrIKKMgvmDQJ32TI8jB7A6waCQSwbecRaW+yMIYpzxpFgyv9RbljOpwiYc0f/W7YhLyekXBldj94/97R+zfdZZAP998FJ2IW/6nUDDjkwt4ljvD6Sfv+WSb9iTtvhMiLbp4eSDBvNhvZbZPyy6Bdgzjw7zpCjk3J4pa8Bn4IWaP4vM9y0nbzN0DW4TR5TJs/bgculy55p2J7QQdNLweSBNk7PWK1r3wQegC6gbE8mWjxhcYY6FQN7wNkBOIPCE79vwuAEeJpsq6UAHPBw//NlEe+LC5SFbII4r3C/aYVmEHYUyg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW5PR11MB5812.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(186003)(26005)(122000001)(38070700005)(8676002)(76116006)(83380400001)(66556008)(66476007)(6506007)(66446008)(64756008)(66946007)(508600001)(38100700002)(6916009)(82960400001)(4326008)(55016002)(5660300002)(7696005)(71200400001)(53546011)(2906002)(9686003)(33656002)(8936002)(86362001)(54906003)(316002)(52536014)(7416002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ajBPK1hkbTJwa2F3eW5pL0FCNEI2RmwwV3VCVUNhaHQwUTdQTG1kYTJpTkJt?=
+ =?utf-8?B?OUprUTFTRitmVzc4Z2hxWjcwZWpKcEp4ZmN4L0ZCU2ExWnNEaU5BVmthcktK?=
+ =?utf-8?B?ajVMWmtrZGdtZGR4azc3QUovdEZlVTIwWjg4TlU1aXpnbENKVXprM3pWTWx6?=
+ =?utf-8?B?NTRtb0p2TzRYV2RMdlQ3bzFBN29YWk9RdzhoZDA3bjZGYWgvWlFic2k0K21V?=
+ =?utf-8?B?eWliTjByeHFTeHUwQXZVRVlRUk0vYWt1U050emV6MUgzeUJnMmpjOHZ5UjZR?=
+ =?utf-8?B?b1kydDNoMlRPbG9tWW5ZakMvL2RxTGhNNFZveEQ2YXhhbElaYmZQZGpaQTA2?=
+ =?utf-8?B?dzI4WUlnWmM5R1pzSFNWaUppeDk1SUoxQlR6bWJKS2VNSzE3TERJMjF6dzRs?=
+ =?utf-8?B?VXhsN2c2bG15RzBlbHp2VGFkV3R3b1pJNEdNU1AwVk9JNUJYcjBjL0tJeWFj?=
+ =?utf-8?B?Vno0em93a2VneDZ1QmRCUTFMbEpIeXBhemdtRXBjTExwYk5jb21kV2Jxckt3?=
+ =?utf-8?B?aVdUUGMvcCtpREFoalQrRGpXcjVjZ3pPR3cvOHJPOTlFWWc4UytvblF2dzZs?=
+ =?utf-8?B?di8wT3NzanRIMUI1MU9RdlZhaWpRZjRTQTZkK1VsUWM4RzVKaFFML2NSMFVh?=
+ =?utf-8?B?WkEyMU5JL1VycmQxNVBQMGtGN29xNzBPbWJCb0ZKYzlWTlVDRHB6UndIdVU0?=
+ =?utf-8?B?cWZBVGdMTG5LS2xxbDhmS252cmN2bzZITWhML2s4d2V5c0hjdWFIZGFlY2w3?=
+ =?utf-8?B?V24wMVNvdGVrNXJMd1BaOVE3NCtseG9lREl0anlQZzlSRFBQZGg1ZVhNZG1O?=
+ =?utf-8?B?aXV3dS9BdThDMy91a1ZVb1hLc2pNZTRnaDBCM3RudE51VGpwTUZ1RXR5Wm1F?=
+ =?utf-8?B?V1VPbXZYSloxVVpValZ6ZUMydFRRcTB4QWk3STJSM0VNK0ZqYkdXTzNIbG5D?=
+ =?utf-8?B?bEpQT2h6RThITDV0bFBENkc3cVhUUW94eVZQQldFMmRPNEFiRm9vS0lLQko3?=
+ =?utf-8?B?VjB1S3hEV2ZaYlhMTU5IcU5OTm1td1A0dlo2ZDc4dDB1Q3loUzYwenkrcmJm?=
+ =?utf-8?B?WmVCdkNSUFpyNFlEbHZaZGJKRHl2YzFMMi8vYmhlZ1NuaVNhNGN6ajM1ak1T?=
+ =?utf-8?B?bGgxNk1xZG85c2dxbm8ySGUxVmp6NmtRU3Y4NG00NjcxMjhqRGFNVmIwdnhZ?=
+ =?utf-8?B?Mm5FdHNSUll0b05XMC9OYk54WXdWa05mbW9jU09lQnBWc2VMYnpvT0JFUEhT?=
+ =?utf-8?B?MHJzaVVaRjdEVU1WZHdjbzZaWW5udmM4dkMycm9va1JEZkRtMWZnYWtpMFFX?=
+ =?utf-8?B?SWljY05qaTFvWDdzZVBDaTFNcDNBWDZFNG55c0JtQW1UYTJLRER4b1hHTEc2?=
+ =?utf-8?B?WE9kZjMyYURGNEFPZko1WEhqZDVtK1A4azFxL1RjRVQxQVNmc1FJUHBYZklh?=
+ =?utf-8?B?cTBEUjVYK0k2QzZwNTZkcFlqVGZMaEZtV05SRVNsVHRFSE52NnhXZklObVpC?=
+ =?utf-8?B?M1h6YjhRWlhzNHUvUTkwY3Fvb2xFUmhjTzZnQWRyVUNIM1dmVmh6ME5hNXZE?=
+ =?utf-8?B?TkhDV1p1TE81am9uOEp0d1AwNkFoYWJDcVArZFFiVU1jL2hDQ0xIQklTN0Rh?=
+ =?utf-8?B?bnBPUmJ1NlNzQko1ZWlsR3E5SndBU2ZSVjNhVUpRYTBwbUZXMnVmbU1abTQy?=
+ =?utf-8?B?bkEvY0pZY3F1STBRUnpCSGlaU25IOG5HSkFKTURERloxM1ozN2cwZWlpcFhB?=
+ =?utf-8?B?UTFBL3d1Nk5wSzluNmJXcWFJdFg2RDRLc1d5NXZ6b2taODMvSzA2dzZYcXJ3?=
+ =?utf-8?B?WStCMlBCdVo1UlQxbWlkeU5UZlZGbXRIbGF1aE15dzhDYmFRS2ZRWUh0VWxj?=
+ =?utf-8?B?RE56MFhtTWl4RWJ6QUxWNjEzOEdYcEppNGlndXlpUUgrZDUySmxaTG5ESnFN?=
+ =?utf-8?B?TlRPRzRMa1VxNHZFejBabVh2NTdXQUJObXF4Z2tVT1MreHV1RFRjSHhHUUgw?=
+ =?utf-8?B?M3R1YWFyMVlwTUxMeUN0aGZDcTNwQmJSekt2UDR6SDhTaDhGVWcxNFVsZFdR?=
+ =?utf-8?B?S1B0Z3FwREtLUU5NcEN1c2hRRFY2RXE5WWxNVmV0cXNiK1QwR21vZlgwd09L?=
+ =?utf-8?B?MFlJQVI3bFc4T1d3STNIaE5GOHVXT3NwK1MrL1pteTMzSlJadnVmRjZ2V3FK?=
+ =?utf-8?B?RGo4dk0zSVJIdkhzaU9VekJMZG5JelNtRmFoNWlnd2gzWVpScU1Kdk1jdndx?=
+ =?utf-8?B?b3BPUUppbnlrcVBqVWg5QVQ3ZFB3PT0=?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5812.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b1e00a73-9474-4b94-888f-08d9a292b16e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Nov 2021 08:35:17.3719 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Xbw9q8JQRES5PRfC+3cpsxyrqabWsZ5JNrIoxfihrdBIz7DL03lPtPMU1KTsBjXSLZCsEa58f6es03tQQaUO5yHuZ3NrPK0owUHaRoYGC7A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1566
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/6] docs: net: Add
+ description of SyncE interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,330 +175,153 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mkubecek@suse.cz, abyagowi@fb.com, saeed@kernel.org,
- richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
- kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
+Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "saeed@kernel.org" <saeed@kernel.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> -----Original Message-----
+> From: Ido Schimmel <idosch@idosch.org>
+> Sent: Sunday, November 7, 2021 3:09 PM
+> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> Subject: Re: [PATCH v2 net-next 6/6] docs: net: Add description of SyncE
+> interfaces
+> 
+> On Fri, Nov 05, 2021 at 09:53:31PM +0100, Maciej Machnikowski wrote:
+> > +Interface
+> > +=========
+> > +
+> > +The following RTNL messages are used to read/configure SyncE recovered
+> > +clocks.
+> > +
+> > +RTM_GETRCLKRANGE
+> > +-----------------
+> > +Reads the allowed pin index range for the recovered clock outputs.
+> > +This can be aligned to PHY outputs or to EEC inputs, whichever is
+> > +better for a given application.
+> 
+> Can you explain the difference between PHY outputs and EEC inputs? It is
+> no clear to me from the diagram.
 
-On 11/4/21 1:12 AM, Maciej Machnikowski wrote:
-> Add support for RTNL messages for reading/configuring SyncE recovered
-> clocks.
-> The messages are:
-> RTM_GETRCLKRANGE: Reads the allowed pin index range for the recovered
-> 		  clock outputs. This can be aligned to PHY outputs or
-> 		  to EEC inputs, whichever is better for a given
-> 		  application
->
-> RTM_GETRCLKSTATE: Read the state of recovered pins that output recovered
-> 		  clock from a given port. The message will contain the
-> 		  number of assigned clocks (IFLA_RCLK_STATE_COUNT) and
-> 		  a N pin inexes in IFLA_RCLK_STATE_OUT_IDX
->
-> RTM_SETRCLKSTATE: Sets the redirection of the recovered clock for
-> 		  a given pin
->
-> Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
-> ---
+PHY is the source of frequency for the EEC, so PHY produces the reference
+And EEC synchronizes to it.
 
+Both PHY outputs and EEC inputs are configurable. PHY outputs usually are
+configured using PHY registers, and EEC inputs in the DPLL references
+block
+ 
+> How would the diagram look in a multi-port adapter where you have a
+> single EEC?
 
-Can't we just use a single RTM msg with nested attributes ?
+That depends. It can be either a multiport PHY - in this case it will look
+exactly like the one I drawn. In case we have multiple PHYs their recovered
+clock outputs will go to different recovered clock inputs and each PHY
+TX clock inputs will be driven from different EEC's synchronized outputs
+or from a single one through  clock fan out.
 
-With separate RTM msgtype for each syncE attribute we will end up 
-bloating the RTM msg namespace.
+> > +Will call the ndo_get_rclk_range function to read the allowed range
+> > +of output pin indexes.
+> > +Will call ndo_get_rclk_range to determine the allowed recovered clock
+> > +range and return them in the IFLA_RCLK_RANGE_MIN_PIN and the
+> > +IFLA_RCLK_RANGE_MAX_PIN attributes
+> 
+> The first sentence seems to be redundant
+> 
+> > +
+> > +RTM_GETRCLKSTATE
+> > +-----------------
+> > +Read the state of recovered pins that output recovered clock from
+> > +a given port. The message will contain the number of assigned clocks
+> > +(IFLA_RCLK_STATE_COUNT) and an N pin indexes in
+> IFLA_RCLK_STATE_OUT_IDX
+> > +To support multiple recovered clock outputs from the same port, this
+> message
+> > +will return the IFLA_RCLK_STATE_COUNT attribute containing the number
+> of
+> > +active recovered clock outputs (N) and N IFLA_RCLK_STATE_OUT_IDX
+> attributes
+> > +listing the active output indexes.
+> > +This message will call the ndo_get_rclk_range to determine the allowed
+> > +recovered clock indexes and then will loop through them, calling
+> > +the ndo_get_rclk_state for each of them.
+> 
+> Why do you need both RTM_GETRCLKRANGE and RTM_GETRCLKSTATE? Isn't
+> RTM_GETRCLKSTATE enough? Instead of skipping over "disabled" pins in the
+> range IFLA_RCLK_RANGE_MIN_PIN..IFLA_RCLK_RANGE_MAX_PIN, just
+> report the
+> state (enabled / disable) for all
 
-(these api's could also be in ethtool given its directly querying the 
-drivers)
+Great idea! Will implement it.
+ 
+> > +
+> > +RTM_SETRCLKSTATE
+> > +-----------------
+> > +Sets the redirection of the recovered clock for a given pin. This message
+> > +expects one attribute:
+> > +struct if_set_rclk_msg {
+> > +	__u32 ifindex; /* interface index */
+> > +	__u32 out_idx; /* output index (from a valid range)
+> > +	__u32 flags; /* configuration flags */
+> > +};
+> > +
+> > +Supported flags are:
+> > +SET_RCLK_FLAGS_ENA - if set in flags - the given output will be enabled,
+> > +		     if clear - the output will be disabled.
+> 
+> In the diagram you have two recovered clock outputs going into the EEC.
+> According to which the EEC is synchronized?
 
+That will depend on the future DPLL configuration. For now it'll be based
+on the DPLL's auto select ability and its default configuration.
+ 
+> How does user space know which pins to enable?
 
->   include/linux/netdevice.h      |   9 ++
->   include/uapi/linux/if_link.h   |  26 +++++
->   include/uapi/linux/rtnetlink.h |   7 ++
->   net/core/rtnetlink.c           | 174 +++++++++++++++++++++++++++++++++
->   security/selinux/nlmsgtab.c    |   3 +
->   5 files changed, 219 insertions(+)
->
-> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> index ef2b381dae0c..708bd8336155 100644
-> --- a/include/linux/netdevice.h
-> +++ b/include/linux/netdevice.h
-> @@ -1576,6 +1576,15 @@ struct net_device_ops {
->   	int			(*ndo_get_eec_src)(struct net_device *dev,
->   						   u32 *src,
->   						   struct netlink_ext_ack *extack);
-> +	int			(*ndo_get_rclk_range)(struct net_device *dev,
-> +						      u32 *min_idx, u32 *max_idx,
-> +						      struct netlink_ext_ack *extack);
-> +	int			(*ndo_set_rclk_out)(struct net_device *dev,
-> +						    u32 out_idx, bool ena,
-> +						    struct netlink_ext_ack *extack);
-> +	int			(*ndo_get_rclk_state)(struct net_device *dev,
-> +						      u32 out_idx, bool *ena,
-> +						      struct netlink_ext_ack *extack);
->   };
->   
->   /**
-> diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-> index 8eae80f287e9..e27c153cfba3 100644
-> --- a/include/uapi/linux/if_link.h
-> +++ b/include/uapi/linux/if_link.h
-> @@ -1304,4 +1304,30 @@ enum {
->   
->   #define IFLA_EEC_MAX (__IFLA_EEC_MAX - 1)
->   
-> +struct if_rclk_range_msg {
-> +	__u32 ifindex;
-> +};
-> +
-> +enum {
-> +	IFLA_RCLK_RANGE_UNSPEC,
-> +	IFLA_RCLK_RANGE_MIN_PIN,
-> +	IFLA_RCLK_RANGE_MAX_PIN,
-> +	__IFLA_RCLK_RANGE_MAX,
-> +};
-> +
-> +struct if_set_rclk_msg {
-> +	__u32 ifindex;
-> +	__u32 out_idx;
-> +	__u32 flags;
-> +};
-> +
-> +#define SET_RCLK_FLAGS_ENA	(1U << 0)
-> +
-> +enum {
-> +	IFLA_RCLK_STATE_UNSPEC,
-> +	IFLA_RCLK_STATE_OUT_IDX,
-> +	IFLA_RCLK_STATE_COUNT,
-> +	__IFLA_RCLK_STATE_MAX,
-> +};
-> +
->   #endif /* _UAPI_LINUX_IF_LINK_H */
-> diff --git a/include/uapi/linux/rtnetlink.h b/include/uapi/linux/rtnetlink.h
-> index 1d8662afd6bd..6c0d96d56ec7 100644
-> --- a/include/uapi/linux/rtnetlink.h
-> +++ b/include/uapi/linux/rtnetlink.h
-> @@ -185,6 +185,13 @@ enum {
->   	RTM_GETNEXTHOPBUCKET,
->   #define RTM_GETNEXTHOPBUCKET	RTM_GETNEXTHOPBUCKET
->   
-> +	RTM_GETRCLKRANGE = 120,
-> +#define RTM_GETRCLKRANGE	RTM_GETRCLKRANGE
-> +	RTM_GETRCLKSTATE = 121,
-> +#define RTM_GETRCLKSTATE	RTM_GETRCLKSTATE
-> +	RTM_SETRCLKSTATE = 122,
-> +#define RTM_SETRCLKSTATE	RTM_SETRCLKSTATE
-> +
->   	RTM_GETEECSTATE = 124,
->   #define RTM_GETEECSTATE	RTM_GETEECSTATE
->   
-> diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-> index 03bc773d0e69..bc1e050f6d38 100644
-> --- a/net/core/rtnetlink.c
-> +++ b/net/core/rtnetlink.c
-> @@ -5544,6 +5544,176 @@ static int rtnl_eec_state_get(struct sk_buff *skb, struct nlmsghdr *nlh,
->   	return err;
->   }
->   
-> +static int rtnl_fill_rclk_range(struct sk_buff *skb, struct net_device *dev,
-> +				u32 portid, u32 seq,
-> +				struct netlink_callback *cb, int flags,
-> +				struct netlink_ext_ack *extack)
-> +{
-> +	const struct net_device_ops *ops = dev->netdev_ops;
-> +	struct if_rclk_range_msg *state_msg;
-> +	struct nlmsghdr *nlh;
-> +	u32 min_idx, max_idx;
-> +	int err;
-> +
-> +	ASSERT_RTNL();
-> +
-> +	if (!ops->ndo_get_rclk_range)
-> +		return -EOPNOTSUPP;
-> +
-> +	err = ops->ndo_get_rclk_range(dev, &min_idx, &max_idx, extack);
-> +	if (err)
-> +		return err;
-> +
-> +	nlh = nlmsg_put(skb, portid, seq, RTM_GETRCLKRANGE, sizeof(*state_msg),
-> +			flags);
-> +	if (!nlh)
-> +		return -EMSGSIZE;
-> +
-> +	state_msg = nlmsg_data(nlh);
-> +	state_msg->ifindex = dev->ifindex;
-> +
-> +	if (nla_put_u32(skb, IFLA_RCLK_RANGE_MIN_PIN, min_idx) ||
-> +	    nla_put_u32(skb, IFLA_RCLK_RANGE_MAX_PIN, max_idx))
-> +		return -EMSGSIZE;
-> +
-> +	nlmsg_end(skb, nlh);
-> +	return 0;
-> +}
-> +
-> +static int rtnl_rclk_range_get(struct sk_buff *skb, struct nlmsghdr *nlh,
-> +			       struct netlink_ext_ack *extack)
-> +{
-> +	struct net *net = sock_net(skb->sk);
-> +	struct if_eec_state_msg *state;
-> +	struct net_device *dev;
-> +	struct sk_buff *nskb;
-> +	int err;
-> +
-> +	state = nlmsg_data(nlh);
-> +	dev = __dev_get_by_index(net, state->ifindex);
-> +	if (!dev) {
-> +		NL_SET_ERR_MSG(extack, "unknown ifindex");
-> +		return -ENODEV;
-> +	}
-> +
-> +	nskb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
-> +	if (!nskb)
-> +		return -ENOBUFS;
-> +
-> +	err = rtnl_fill_rclk_range(nskb, dev, NETLINK_CB(skb).portid,
-> +				   nlh->nlmsg_seq, NULL, nlh->nlmsg_flags,
-> +				   extack);
-> +	if (err < 0)
-> +		kfree_skb(nskb);
-> +	else
-> +		err = rtnl_unicast(nskb, net, NETLINK_CB(skb).portid);
-> +
-> +	return err;
-> +}
-> +
-> +static int rtnl_fill_rclk_state(struct sk_buff *skb, struct net_device *dev,
-> +				u32 portid, u32 seq,
-> +				struct netlink_callback *cb, int flags,
-> +				struct netlink_ext_ack *extack)
-> +{
-> +	const struct net_device_ops *ops = dev->netdev_ops;
-> +	u32 min_idx, max_idx, src_idx, count = 0;
-> +	struct if_eec_state_msg *state_msg;
-> +	struct nlmsghdr *nlh;
-> +	bool ena;
-> +	int err;
-> +
-> +	ASSERT_RTNL();
-> +
-> +	if (!ops->ndo_get_rclk_state || !ops->ndo_get_rclk_range)
-> +		return -EOPNOTSUPP;
-> +
-> +	err = ops->ndo_get_rclk_range(dev, &min_idx, &max_idx, extack);
-> +	if (err)
-> +		return err;
-> +
-> +	nlh = nlmsg_put(skb, portid, seq, RTM_GETRCLKSTATE, sizeof(*state_msg),
-> +			flags);
-> +	if (!nlh)
-> +		return -EMSGSIZE;
-> +
-> +	state_msg = nlmsg_data(nlh);
-> +	state_msg->ifindex = dev->ifindex;
-> +
-> +	for (src_idx = min_idx; src_idx <= max_idx; src_idx++) {
-> +		ops->ndo_get_rclk_state(dev, src_idx, &ena, extack);
-> +		if (!ena)
-> +			continue;
-> +
-> +		if (nla_put_u32(skb, IFLA_RCLK_STATE_OUT_IDX, src_idx))
-> +			return -EMSGSIZE;
-> +		count++;
-> +	}
-> +
-> +	if (nla_put_u32(skb, IFLA_RCLK_STATE_COUNT, count))
-> +		return -EMSGSIZE;
-> +
-> +	nlmsg_end(skb, nlh);
-> +	return 0;
-> +}
-> +
-> +static int rtnl_rclk_state_get(struct sk_buff *skb, struct nlmsghdr *nlh,
-> +			       struct netlink_ext_ack *extack)
-> +{
-> +	struct net *net = sock_net(skb->sk);
-> +	struct if_eec_state_msg *state;
-> +	struct net_device *dev;
-> +	struct sk_buff *nskb;
-> +	int err;
-> +
-> +	state = nlmsg_data(nlh);
-> +	dev = __dev_get_by_index(net, state->ifindex);
-> +	if (!dev) {
-> +		NL_SET_ERR_MSG(extack, "unknown ifindex");
-> +		return -ENODEV;
-> +	}
-> +
-> +	nskb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
-> +	if (!nskb)
-> +		return -ENOBUFS;
-> +
-> +	err = rtnl_fill_rclk_state(nskb, dev, NETLINK_CB(skb).portid,
-> +				   nlh->nlmsg_seq, NULL, nlh->nlmsg_flags,
-> +				   extack);
-> +	if (err < 0)
-> +		kfree_skb(nskb);
-> +	else
-> +		err = rtnl_unicast(nskb, net, NETLINK_CB(skb).portid);
-> +
-> +	return err;
-> +}
-> +
-> +static int rtnl_rclk_set(struct sk_buff *skb, struct nlmsghdr *nlh,
-> +			 struct netlink_ext_ack *extack)
-> +{
-> +	struct net *net = sock_net(skb->sk);
-> +	struct if_set_rclk_msg *state;
-> +	struct net_device *dev;
-> +	bool ena;
-> +	int err;
-> +
-> +	state = nlmsg_data(nlh);
-> +	dev = __dev_get_by_index(net, state->ifindex);
-> +	if (!dev) {
-> +		NL_SET_ERR_MSG(extack, "unknown ifindex");
-> +		return -ENODEV;
-> +	}
-> +
-> +	if (!dev->netdev_ops->ndo_set_rclk_out)
-> +		return -EOPNOTSUPP;
-> +
-> +	ena = !!(state->flags & SET_RCLK_FLAGS_ENA);
-> +	err = dev->netdev_ops->ndo_set_rclk_out(dev, state->out_idx, ena,
-> +						extack);
-> +
-> +	return err;
-> +}
-> +
->   /* Process one rtnetlink message. */
->   
->   static int rtnetlink_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh,
-> @@ -5770,5 +5940,9 @@ void __init rtnetlink_init(void)
->   	rtnl_register(PF_UNSPEC, RTM_GETSTATS, rtnl_stats_get, rtnl_stats_dump,
->   		      0);
->   
-> +	rtnl_register(PF_UNSPEC, RTM_GETRCLKRANGE, rtnl_rclk_range_get, NULL, 0);
-> +	rtnl_register(PF_UNSPEC, RTM_GETRCLKSTATE, rtnl_rclk_state_get, NULL, 0);
-> +	rtnl_register(PF_UNSPEC, RTM_SETRCLKSTATE, rtnl_rclk_set, NULL, 0);
-> +
->   	rtnl_register(PF_UNSPEC, RTM_GETEECSTATE, rtnl_eec_state_get, NULL, 0);
->   }
-> diff --git a/security/selinux/nlmsgtab.c b/security/selinux/nlmsgtab.c
-> index 2c66e722ea9c..57c7c85edd4d 100644
-> --- a/security/selinux/nlmsgtab.c
-> +++ b/security/selinux/nlmsgtab.c
-> @@ -91,6 +91,9 @@ static const struct nlmsg_perm nlmsg_route_perms[] =
->   	{ RTM_NEWNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_WRITE },
->   	{ RTM_DELNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_WRITE },
->   	{ RTM_GETNEXTHOPBUCKET,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
-> +	{ RTM_GETRCLKRANGE,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
-> +	{ RTM_GETRCLKSTATE,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
-> +	{ RTM_SETRCLKSTATE,	NETLINK_ROUTE_SOCKET__NLMSG_WRITE },
->   	{ RTM_GETEECSTATE,	NETLINK_ROUTE_SOCKET__NLMSG_READ  },
->   };
->   
+That's why the RTM_GETRCLKRANGE was invented but I like the suggestion
+you made above so will rework the code to remove the range one and
+just return the indexes with enable/disable bit for each of them. In this
+case youserspace will just send the RTM_GETRCLKSTATE to learn what
+can be enabled.
+
+> > +
+> > +RTM_GETEECSTATE
+> > +----------------
+> > +Reads the state of the EEC or equivalent physical clock synchronizer.
+> > +This message returns the following attributes:
+> > +IFLA_EEC_STATE - current state of the EEC or equivalent clock generator.
+> > +		 The states returned in this attribute are aligned to the
+> > +		 ITU-T G.781 and are:
+> > +		  IF_EEC_STATE_INVALID - state is not valid
+> > +		  IF_EEC_STATE_FREERUN - clock is free-running
+> > +		  IF_EEC_STATE_LOCKED - clock is locked to the reference,
+> > +		                        but the holdover memory is not valid
+> > +		  IF_EEC_STATE_LOCKED_HO_ACQ - clock is locked to the
+> reference
+> > +		                               and holdover memory is valid
+> > +		  IF_EEC_STATE_HOLDOVER - clock is in holdover mode
+> > +State is read from the netdev calling the:
+> > +int (*ndo_get_eec_state)(struct net_device *dev, enum if_eec_state
+> *state,
+> > +			 u32 *src_idx, struct netlink_ext_ack *extack);
+> > +
+> > +IFLA_EEC_SRC_IDX - optional attribute returning the index of the
+> reference that
+> > +		   is used for the current IFLA_EEC_STATE, i.e., the index of
+> > +		   the pin that the EEC is locked to.
+> > +
+> > +Will be returned only if the ndo_get_eec_src is implemented.
+> > \ No newline at end of file
+> > --
+> > 2.26.3
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
