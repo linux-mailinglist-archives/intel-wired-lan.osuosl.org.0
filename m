@@ -1,63 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4197449A63
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Nov 2021 18:03:15 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99EC244A77A
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Nov 2021 08:22:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4801980DFE;
-	Mon,  8 Nov 2021 17:03:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 092E740399;
+	Tue,  9 Nov 2021 07:22:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IRhWm5sWpdET; Mon,  8 Nov 2021 17:03:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EjA4NdD5rGI9; Tue,  9 Nov 2021 07:22:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4999880CCA;
-	Mon,  8 Nov 2021 17:03:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EEEFC4020A;
+	Tue,  9 Nov 2021 07:22:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 125621BF34A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 17:03:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 204641BF86C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Nov 2021 07:22:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0AD1B6081F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 17:03:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 02CEE401E2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Nov 2021 07:22:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Uejh7pXty_Fy for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Nov 2021 17:03:04 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 32AFF_Zy-23F for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Nov 2021 07:22:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 75BF260800
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Nov 2021 17:03:04 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 86768613B3;
- Mon,  8 Nov 2021 17:03:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636390984;
- bh=zrbTUgiWFKy9WRGguNicvKrCsEpNnvi38XByEj5zrtU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SysNDm5qCXqdETv6f2JC/bFWsduWWi4GhtvZ0A099MvfewzJyiHEVG5nsZtOET2yq
- MtnxXIznzjxDIVa4tielj+253FglFOZmBdRPo1zqOpTDymwoDM+JbfmTmJaOyY6Ckg
- IhMbvuBygwHjyCAkdyDMnZGVut2w3tCuwPlUbhuFw46NGUxMaUspLdJCzEgm+EcMcl
- 7SPZqtLi0KDP284EDx4ZtCV4v6T/T9svRsRKhyFe1DJm3qX/06OuFbjy8HwsgZP6fW
- JPseQKFyAQ4jWBpn8HS7luxOTt27UKGuK/xykslkhAmr5lKA6UAXXZcTWLoM84AXF9
- BYnhpT6IS8GKA==
-Date: Mon, 8 Nov 2021 09:03:02 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Ido Schimmel <idosch@idosch.org>
-Message-ID: <20211108090302.64ca86a5@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <YYlQfm3eW/jRS4Ra@shredder>
-References: <20211105205331.2024623-1-maciej.machnikowski@intel.com>
- <20211105205331.2024623-7-maciej.machnikowski@intel.com>
- <YYfd7DCFFtj/x+zQ@shredder>
- <MW5PR11MB58120F585A5CF1BCA1E7E958EA919@MW5PR11MB5812.namprd11.prod.outlook.com>
- <YYlQfm3eW/jRS4Ra@shredder>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ACAA240127
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Nov 2021 07:22:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10162"; a="219594678"
+X-IronPort-AV: E=Sophos;i="5.87,219,1631602800"; d="scan'208";a="219594678"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Nov 2021 23:22:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,219,1631602800"; d="scan'208";a="533591418"
+Received: from amlin-019-051.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.19.51])
+ by orsmga001.jf.intel.com with ESMTP; 08 Nov 2021 23:22:18 -0800
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  9 Nov 2021 08:23:31 +0100
+Message-Id: <20211109072331.56673-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/6] docs: net: Add
- description of SyncE interfaces
+Subject: [Intel-wired-lan] [PATCH net-next v1] i40e: Add placeholder for ndo
+ set VLANs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,40 +61,222 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>, "Machnikowski,
- Maciej" <maciej.machnikowski@intel.com>, "saeed@kernel.org" <saeed@kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 8 Nov 2021 18:29:50 +0200 Ido Schimmel wrote:
-> I also want to re-iterate my dissatisfaction with the interface being
-> netdev-centric. By modelling the EEC as a standalone object we will be
-> able to extend it to set the source of the EEC to something other than a
-> netdev in the future. If we don't do it now, we will end up with two
-> ways to report the source of the EEC (i.e., EEC_SRC_PORT and something
-> else).
-> 
-> Other advantages of modelling the EEC as a separate object include the
-> ability for user space to determine the mapping between netdevs and EECs
-> (currently impossible) and reporting additional EEC attributes such as
-> SyncE clockIdentity and default SSM code. There is really no reason to
-> report all of this identical information via multiple netdevs.
+VLANs set by ndo, were not accounted.
+Implement placeholder, by which driver can account VLANs set by
+ndo. Ensure that once PF changes trunk, every guest filter
+is removed from the list 'vm_vlan_list'.
+Implement logic for deletion/addition of guest(from VM) filters.
 
-Indeed, I feel convinced. I believe the OCP timing card will benefit
-from such API as well. I pinged Jonathan if he doesn't have cycles 
-I'll do the typing.
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Karen Sornek <karen.sornek@intel.com>
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 102 ++++++++++++++++--
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  10 ++
+ 2 files changed, 102 insertions(+), 10 deletions(-)
 
-What do you have in mind for driver abstracting away pin selection?
-For a standalone clock fed PPS signal from a backplate this will be
-impossible, so we may need some middle way.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 5a488ce545..cf19e118ee 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -986,6 +986,81 @@ static void i40e_disable_vf_mappings(struct i40e_vf *vf)
+ 	i40e_flush(hw);
+ }
+ 
++/**
++ * i40e_add_vmvlan_to_list
++ * @vf: pointer to the VF info
++ * @vfl:  pointer to the VF VLAN tag filters list
++ * @vlan_idx: vlan_id index in VLAN tag filters list
++ *
++ * add VLAN tag into the VLAN list for VM
++ **/
++static i40e_status
++i40e_add_vmvlan_to_list(struct i40e_vf *vf,
++			struct virtchnl_vlan_filter_list *vfl,
++			u16 vlan_idx)
++{
++	struct i40e_vm_vlan *vlan_elem;
++
++	vlan_elem = kzalloc(sizeof(*vlan_elem), GFP_KERNEL);
++	if (!vlan_elem)
++		return I40E_ERR_NO_MEMORY;
++	vlan_elem->vlan = vfl->vlan_id[vlan_idx];
++	vlan_elem->vsi_id = vfl->vsi_id;
++	INIT_LIST_HEAD(&vlan_elem->list);
++	vf->num_vlan++;
++	list_add(&vlan_elem->list, &vf->vm_vlan_list);
++	return I40E_SUCCESS;
++}
++
++/**
++ * i40e_del_vmvlan_from_list
++ * @vsi: pointer to the VSI structure
++ * @vf: pointer to the VF info
++ * @vlan: VLAN tag to be removed from the list
++ *
++ * delete VLAN tag from the VLAN list for VM
++ **/
++static void i40e_del_vmvlan_from_list(struct i40e_vsi *vsi,
++				      struct i40e_vf *vf, u16 vlan)
++{
++	struct i40e_vm_vlan *entry, *tmp;
++
++	list_for_each_entry_safe(entry, tmp,
++				 &vf->vm_vlan_list, list) {
++		if (vlan == entry->vlan) {
++			i40e_vsi_kill_vlan(vsi, vlan);
++			vf->num_vlan--;
++			list_del(&entry->list);
++			kfree(entry);
++			break;
++		}
++	}
++}
++
++/**
++ * i40e_free_vmvlan_list
++ * @vsi: pointer to the VSI structure
++ * @vf: pointer to the VF info
++ *
++ * remove whole list of VLAN tags for VM
++ **/
++static void i40e_free_vmvlan_list(struct i40e_vsi *vsi, struct i40e_vf *vf)
++{
++	struct i40e_vm_vlan *entry, *tmp;
++
++	if (list_empty(&vf->vm_vlan_list))
++		return;
++
++	list_for_each_entry_safe(entry, tmp,
++				 &vf->vm_vlan_list, list) {
++		if (vsi)
++			i40e_vsi_kill_vlan(vsi, entry->vlan);
++		list_del(&entry->list);
++		kfree(entry);
++	}
++	vf->num_vlan = 0;
++}
++
+ /**
+  * i40e_free_vf_res
+  * @vf: pointer to the VF info
+@@ -1061,6 +1136,9 @@ static void i40e_free_vf_res(struct i40e_vf *vf)
+ 		wr32(hw, reg_idx, reg);
+ 		i40e_flush(hw);
+ 	}
++
++	i40e_free_vmvlan_list(NULL, vf);
++
+ 	/* reset some of the state variables keeping track of the resources */
+ 	vf->num_queue_pairs = 0;
+ 	clear_bit(I40E_VF_STATE_MC_PROMISC, &vf->vf_states);
+@@ -1766,6 +1844,7 @@ int i40e_alloc_vfs(struct i40e_pf *pf, u16 num_alloc_vfs)
+ 
+ 		set_bit(I40E_VF_STATE_PRE_ENABLE, &vfs[i].vf_states);
+ 
++		INIT_LIST_HEAD(&vfs[i].vm_vlan_list);
+ 	}
+ 	pf->num_alloc_vfs = num_alloc_vfs;
+ 
+@@ -3027,15 +3106,16 @@ static int i40e_vc_add_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_vlan_filter_list *vfl =
+ 	    (struct virtchnl_vlan_filter_list *)msg;
++	i40e_status aq_ret = I40E_SUCCESS;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+-	i40e_status aq_ret = 0;
+-	int i;
++	u16 i;
+ 
+-	if ((vf->num_vlan >= I40E_VC_MAX_VLAN_PER_VF) &&
++	if ((vf->num_vlan + vfl->num_elements > I40E_VC_MAX_VLAN_PER_VF) &&
+ 	    !test_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps)) {
+ 		dev_err(&pf->pdev->dev,
+ 			"VF is not trusted, switch the VF to trusted to add more VLAN addresses\n");
++		aq_ret = I40E_ERR_CONFIG;
+ 		goto error_param;
+ 	}
+ 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states) ||
+@@ -3059,11 +3139,14 @@ static int i40e_vc_add_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	i40e_vlan_stripping_enable(vsi);
++
+ 	for (i = 0; i < vfl->num_elements; i++) {
+-		/* add new VLAN filter */
+ 		int ret = i40e_vsi_add_vlan(vsi, vfl->vlan_id[i]);
+-		if (!ret)
+-			vf->num_vlan++;
++		if (!ret && vfl->vlan_id[i]) {
++			aq_ret = i40e_add_vmvlan_to_list(vf, vfl, i);
++			if (aq_ret)
++				goto error_param;
++		}
+ 
+ 		if (test_bit(I40E_VF_STATE_UC_PROMISC, &vf->vf_states))
+ 			i40e_aq_set_vsi_uc_promisc_on_vlan(&pf->hw, vsi->seid,
+@@ -3098,10 +3181,10 @@ static int i40e_vc_remove_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_vlan_filter_list *vfl =
+ 	    (struct virtchnl_vlan_filter_list *)msg;
++	i40e_status aq_ret = I40E_SUCCESS;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+-	i40e_status aq_ret = 0;
+-	int i;
++	u16 i;
+ 
+ 	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+ 	    !i40e_vc_isvalid_vsi_id(vf, vfl->vsi_id)) {
+@@ -3124,8 +3207,7 @@ static int i40e_vc_remove_vlan_msg(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	for (i = 0; i < vfl->num_elements; i++) {
+-		i40e_vsi_kill_vlan(vsi, vfl->vlan_id[i]);
+-		vf->num_vlan--;
++		i40e_del_vmvlan_from_list(vsi, vf, vfl->vlan_id[i]);
+ 
+ 		if (test_bit(I40E_VF_STATE_UC_PROMISC, &vf->vf_states))
+ 			i40e_aq_set_vsi_uc_promisc_on_vlan(&pf->hw, vsi->seid,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 49575a640a..182604bd9a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -62,6 +62,13 @@ struct i40evf_channel {
+ 	u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+ };
+ 
++/* used for VLAN list 'vm_vlan_list' by VM for trusted and untrusted VF */
++struct i40e_vm_vlan {
++	struct list_head list;
++	s16 vlan;
++	u16 vsi_id;
++};
++
+ /* VF information structure */
+ struct i40e_vf {
+ 	struct i40e_pf *pf;
+@@ -103,6 +110,9 @@ struct i40e_vf {
+ 	bool spoofchk;
+ 	u16 num_vlan;
+ 
++	/* VLAN list created by VM for trusted and untrusted VF */
++	struct list_head vm_vlan_list;
++
+ 	/* ADq related variables */
+ 	bool adq_enabled; /* flag to enable adq */
+ 	u8 num_tc;
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
