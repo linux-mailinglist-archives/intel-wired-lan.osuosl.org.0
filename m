@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4186D44C08D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Nov 2021 13:00:27 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 087B944C08E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Nov 2021 13:00:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC7FE80D25;
-	Wed, 10 Nov 2021 12:00:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ACA9560ABE;
+	Wed, 10 Nov 2021 12:00:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LT1wC-Nq85yF; Wed, 10 Nov 2021 12:00:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3daEKluloFiu; Wed, 10 Nov 2021 12:00:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F2C5180D50;
-	Wed, 10 Nov 2021 12:00:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 86B4260A44;
+	Wed, 10 Nov 2021 12:00:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 68BD51BF312
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 13ABB1BF312
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6467D401E8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:15 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F089340178
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GA0kWBOqD8_X for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Nov 2021 12:00:13 +0000 (UTC)
+ with ESMTP id wPUw7Qf_F0eN for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Nov 2021 12:00:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 168ED40178
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10163"; a="293484877"
-X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="293484877"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E5D274040E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 12:00:16 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10163"; a="293484893"
+X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="293484893"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2021 04:00:12 -0800
+ 10 Nov 2021 04:00:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="452276662"
+X-IronPort-AV: E=Sophos;i="5.87,223,1631602800"; d="scan'208";a="452276676"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
- by orsmga003.jf.intel.com with ESMTP; 10 Nov 2021 04:00:09 -0800
+ by orsmga003.jf.intel.com with ESMTP; 10 Nov 2021 04:00:12 -0800
 From: Maciej Machnikowski <maciej.machnikowski@intel.com>
 To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org
-Date: Wed, 10 Nov 2021 12:44:47 +0100
-Message-Id: <20211110114448.2792314-6-maciej.machnikowski@intel.com>
+Date: Wed, 10 Nov 2021 12:44:48 +0100
+Message-Id: <20211110114448.2792314-7-maciej.machnikowski@intel.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
 References: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v3 net-next 5/6] ice: add support for
- SyncE recovered clocks
+Subject: [Intel-wired-lan] [PATCH v3 net-next 6/6] docs: net: Add
+ description of SyncE interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,337 +66,116 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: mkubecek@suse.cz, petrm@nvidia.com, abyagowi@fb.com, saeed@kernel.org,
  richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
  kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement NDO functions for handling SyncE recovered clocks.
-
-Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
----
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 53 +++++++++++
- drivers/net/ethernet/intel/ice/ice_common.c   | 65 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_common.h   |  6 ++
- drivers/net/ethernet/intel/ice/ice_main.c     | 91 +++++++++++++++++++
- include/linux/netdevice.h                     | 11 +++
- 5 files changed, 226 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 11226af7a9a4..dace00a35c44 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1281,6 +1281,31 @@ struct ice_aqc_set_mac_lb {
- 	u8 reserved[15];
- };
- 
-+/* Set PHY recovered clock output (direct 0x0630) */
-+struct ice_aqc_set_phy_rec_clk_out {
-+	u8 phy_output;
-+	u8 port_num;
-+	u8 flags;
-+#define ICE_AQC_SET_PHY_REC_CLK_OUT_OUT_EN	BIT(0)
-+#define ICE_AQC_SET_PHY_REC_CLK_OUT_CURR_PORT	0xFF
-+	u8 rsvd;
-+	__le32 freq;
-+	u8 rsvd2[6];
-+	__le16 node_handle;
-+};
-+
-+/* Get PHY recovered clock output (direct 0x0631) */
-+struct ice_aqc_get_phy_rec_clk_out {
-+	u8 phy_output;
-+	u8 port_num;
-+	u8 flags;
-+#define ICE_AQC_GET_PHY_REC_CLK_OUT_OUT_EN	BIT(0)
-+	u8 rsvd;
-+	__le32 freq;
-+	u8 rsvd2[6];
-+	__le16 node_handle;
-+};
-+
- struct ice_aqc_link_topo_params {
- 	u8 lport_num;
- 	u8 lport_num_valid;
-@@ -1838,6 +1863,28 @@ struct ice_aqc_get_cgu_dpll_status {
- 	__le16 node_handle;
- };
- 
-+/* Read CGU register (direct 0x0C6E) */
-+struct ice_aqc_read_cgu_reg {
-+	__le16 offset;
-+#define ICE_AQC_READ_CGU_REG_MAX_DATA_LEN	16
-+	u8 data_len;
-+	u8 rsvd[13];
-+};
-+
-+/* Read CGU register response (direct 0x0C6E) */
-+struct ice_aqc_read_cgu_reg_resp {
-+	u8 data[ICE_AQC_READ_CGU_REG_MAX_DATA_LEN];
-+};
-+
-+/* Write CGU register (direct 0x0C6F) */
-+struct ice_aqc_write_cgu_reg {
-+	__le16 offset;
-+#define ICE_AQC_WRITE_CGU_REG_MAX_DATA_LEN	7
-+	u8 data_len;
-+	u8 data[ICE_AQC_WRITE_CGU_REG_MAX_DATA_LEN];
-+	u8 rsvd[6];
-+};
-+
- /* Configure Firmware Logging Command (indirect 0xFF09)
-  * Logging Information Read Response (indirect 0xFF10)
-  * Note: The 0xFF10 command has no input parameters.
-@@ -2033,6 +2080,8 @@ struct ice_aq_desc {
- 		struct ice_aqc_get_phy_caps get_phy;
- 		struct ice_aqc_set_phy_cfg set_phy;
- 		struct ice_aqc_restart_an restart_an;
-+		struct ice_aqc_set_phy_rec_clk_out set_phy_rec_clk_out;
-+		struct ice_aqc_get_phy_rec_clk_out get_phy_rec_clk_out;
- 		struct ice_aqc_gpio read_write_gpio;
- 		struct ice_aqc_sff_eeprom read_write_sff_param;
- 		struct ice_aqc_set_port_id_led set_port_id_led;
-@@ -2188,6 +2237,8 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_get_link_status			= 0x0607,
- 	ice_aqc_opc_set_event_mask			= 0x0613,
- 	ice_aqc_opc_set_mac_lb				= 0x0620,
-+	ice_aqc_opc_set_phy_rec_clk_out			= 0x0630,
-+	ice_aqc_opc_get_phy_rec_clk_out			= 0x0631,
- 	ice_aqc_opc_get_link_topo			= 0x06E0,
- 	ice_aqc_opc_set_port_id_led			= 0x06E9,
- 	ice_aqc_opc_set_gpio				= 0x06EC,
-@@ -2238,6 +2289,8 @@ enum ice_adminq_opc {
- 
- 	/* 1588/SyncE commands/events */
- 	ice_aqc_opc_get_cgu_dpll_status			= 0x0C66,
-+	ice_aqc_opc_read_cgu_reg			= 0x0C6E,
-+	ice_aqc_opc_write_cgu_reg			= 0x0C6F,
- 
- 	ice_aqc_opc_driver_shared_params		= 0x0C90,
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 8069141ac105..29d302ea1e56 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -5242,3 +5242,68 @@ bool ice_is_clock_mux_present_e810t(struct ice_hw *hw)
- 	return true;
- }
- 
-+/**
-+ * ice_aq_set_phy_rec_clk_out - set RCLK phy out
-+ * @hw: pointer to the HW struct
-+ * @phy_output: PHY reference clock output pin
-+ * @enable: GPIO state to be applied
-+ * @freq: PHY output frequency
-+ *
-+ * Set CGU reference priority (0x0630)
-+ * Return 0 on success or negative value on failure.
-+ */
-+enum ice_status
-+ice_aq_set_phy_rec_clk_out(struct ice_hw *hw, u8 phy_output, bool enable,
-+			   u32 *freq)
-+{
-+	struct ice_aqc_set_phy_rec_clk_out *cmd;
-+	struct ice_aq_desc desc;
-+	enum ice_status status;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_phy_rec_clk_out);
-+	cmd = &desc.params.set_phy_rec_clk_out;
-+	cmd->phy_output = phy_output;
-+	cmd->port_num = ICE_AQC_SET_PHY_REC_CLK_OUT_CURR_PORT;
-+	cmd->flags = enable & ICE_AQC_SET_PHY_REC_CLK_OUT_OUT_EN;
-+	cmd->freq = cpu_to_le32(*freq);
-+
-+	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-+	if (!status)
-+		*freq = le32_to_cpu(cmd->freq);
-+
-+	return status;
-+}
-+
-+/**
-+ * ice_aq_get_phy_rec_clk_out
-+ * @hw: pointer to the HW struct
-+ * @phy_output: PHY reference clock output pin
-+ * @port_num: Port number
-+ * @flags: PHY flags
-+ * @freq: PHY output frequency
-+ *
-+ * Get PHY recovered clock output (0x0631)
-+ */
-+enum ice_status
-+ice_aq_get_phy_rec_clk_out(struct ice_hw *hw, u8 phy_output, u8 *port_num,
-+			   u8 *flags, u32 *freq)
-+{
-+	struct ice_aqc_get_phy_rec_clk_out *cmd;
-+	struct ice_aq_desc desc;
-+	enum ice_status status;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_phy_rec_clk_out);
-+	cmd = &desc.params.get_phy_rec_clk_out;
-+	cmd->phy_output = phy_output;
-+	cmd->port_num = *port_num;
-+
-+	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-+	if (!status) {
-+		*port_num = cmd->port_num;
-+		*flags = cmd->flags;
-+		*freq = le32_to_cpu(cmd->freq);
-+	}
-+
-+	return status;
-+}
-+
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index aaed388a40a8..8a99c8364173 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -166,6 +166,12 @@ ice_ena_vsi_rdma_qset(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- enum ice_status
- ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
- 			   u16 *dpll_state, u64 *phase_offset, u8 *eec_mode);
-+enum ice_status
-+ice_aq_set_phy_rec_clk_out(struct ice_hw *hw, u8 phy_output, bool enable,
-+			   u32 *freq);
-+enum ice_status
-+ice_aq_get_phy_rec_clk_out(struct ice_hw *hw, u8 phy_output, u8 *port_num,
-+			   u8 *flags, u32 *freq);
- int
- ice_dis_vsi_rdma_qset(struct ice_port_info *pi, u16 count, u32 *qset_teid,
- 		      u16 *q_id);
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 7fac27903ab4..98834aa3f3dc 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6284,6 +6284,94 @@ ice_get_eec_src(struct net_device *netdev, u32 *src,
- 	return 0;
- }
- 
-+/**
-+ * ice_get_rclk_range - get range of recovered clock indices
-+ * @netdev: network interface device structure
-+ * @min_idx: min rclk index
-+ * @max_idx: max rclk index
-+ * @extack: netlink extended ack
-+ */
-+static int
-+ice_get_rclk_range(struct net_device *netdev, u32 *min_idx, u32 *max_idx,
-+		   struct netlink_ext_ack *extack)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+
-+	if (!ice_is_feature_supported(pf, ICE_F_CGU))
-+		return -EOPNOTSUPP;
-+
-+	*min_idx = REF1P;
-+	*max_idx = REF1N;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_set_rclk_out - set recovered clock redirection to the output pin
-+ * @netdev: network interface device structure
-+ * @out_idx: output index
-+ * @ena: true will enable redirection, false will disable it
-+ * @extack: netlink extended ack
-+ */
-+static int
-+ice_set_rclk_out(struct net_device *netdev, u32 out_idx, bool ena,
-+		 struct netlink_ext_ack *extack)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status ret;
-+	u32 freq;
-+
-+	if (!ice_is_feature_supported(pf, ICE_F_CGU))
-+		return -EOPNOTSUPP;
-+
-+	if (out_idx < REF1P || out_idx > REF1N)
-+		return -EINVAL;
-+
-+	ret = ice_aq_set_phy_rec_clk_out(&pf->hw, out_idx - REF1P, ena, &freq);
-+
-+	return ice_status_to_errno(ret);
-+}
-+
-+/**
-+ * ice_get_rclk_state - Get state of recovered clock pin for a given netdev
-+ * @netdev: network interface device structure
-+ * @out_idx: output index
-+ * @ena: returns true if the pin is enabled
-+ * @extack: netlink extended ack
-+ */
-+static int
-+ice_get_rclk_state(struct net_device *netdev, u32 out_idx, bool *ena,
-+		   struct netlink_ext_ack *extack)
-+{
-+	u8 port_num = ICE_AQC_SET_PHY_REC_CLK_OUT_CURR_PORT;
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_status ret;
-+	u32 freq;
-+	u8 flags;
-+
-+	if (!ice_is_feature_supported(pf, ICE_F_CGU))
-+		return -EOPNOTSUPP;
-+
-+	if (out_idx < REF1P || out_idx > REF1N)
-+		return -EINVAL;
-+
-+	ret = ice_aq_get_phy_rec_clk_out(&pf->hw, out_idx - REF1P, &port_num,
-+					 &flags, &freq);
-+
-+	if (!ret && (flags & ICE_AQC_GET_PHY_REC_CLK_OUT_OUT_EN))
-+		*ena = true;
-+	else
-+		*ena = false;
-+
-+	return ice_status_to_errno(ret);
-+}
-+
- /**
-  * ice_down - Shutdown the connection
-  * @vsi: The VSI being stopped
-@@ -8647,4 +8735,7 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_xsk_wakeup = ice_xsk_wakeup,
- 	.ndo_get_eec_state = ice_get_eec_state,
- 	.ndo_get_eec_src = ice_get_eec_src,
-+	.ndo_get_rclk_range = ice_get_rclk_range,
-+	.ndo_set_rclk_out = ice_set_rclk_out,
-+	.ndo_get_rclk_state = ice_get_rclk_state,
- };
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 708bd8336155..9faa005506d1 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -1351,6 +1351,17 @@ struct netdev_net_notifier {
-  *			  struct netlink_ext_ack *extack);
-  *	Get the index of the source signal that's currently used as EEC's
-  *	reference
-+ * int (*ndo_get_rclk_range)(struct net_device *dev, u32 *min_idx, u32 *max_idx,
-+ *			     struct netlink_ext_ack *extack);
-+ *	Get range of valid output indices for the set/get Recovered Clock
-+ *	functions
-+ * int (*ndo_set_rclk_out)(struct net_device *dev, u32 out_idx, bool ena,
-+ *			   struct netlink_ext_ack *extack);
-+ *	Set the receive clock recovery redirection to a given Recovered Clock
-+ *	output.
-+ * int (*ndo_get_rclk_state)(struct net_device *dev, u32 out_idx, bool *ena,
-+ *			     struct netlink_ext_ack *extack);
-+ *	Get current state of the recovered clock to pin mapping.
-  */
- struct net_device_ops {
- 	int			(*ndo_init)(struct net_device *dev);
--- 
-2.26.3
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+QWRkIERvY3VtZW50YXRpb24vbmV0d29ya2luZy9zeW5jZS5yc3QgZGVzY3JpYmluZyBuZXcgUlRO
+TCBtZXNzYWdlcwphbmQgcmVzcGVjdGl2ZSBORE8gb3BzIHN1cHBvcnRpbmcgU3luY0UgKFN5bmNo
+cm9ub3VzIEV0aGVybmV0KS4KClNpZ25lZC1vZmYtYnk6IE1hY2llaiBNYWNobmlrb3dza2kgPG1h
+Y2llai5tYWNobmlrb3dza2lAaW50ZWwuY29tPgotLS0KIERvY3VtZW50YXRpb24vbmV0d29ya2lu
+Zy9zeW5jZS5yc3QgfCAxMjQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBj
+aGFuZ2VkLCAxMjQgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRp
+b24vbmV0d29ya2luZy9zeW5jZS5yc3QKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL25ldHdv
+cmtpbmcvc3luY2UucnN0IGIvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL3N5bmNlLnJzdApuZXcg
+ZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAuLmE3YmI3NTY4NWMwNwotLS0gL2Rl
+di9udWxsCisrKyBiL0RvY3VtZW50YXRpb24vbmV0d29ya2luZy9zeW5jZS5yc3QKQEAgLTAsMCAr
+MSwxMjQgQEAKKy4uIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCisKKz09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09CitTeW5jaHJvbm91cyBFcXVpcG1lbnQgQ2xvY2tzCis9PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PQorCitTeW5jaHJvbm91cyBFcXVpcG1lbnQgQ2xvY2tz
+IHVzZSBhIHBoeXNpY2FsIGxheWVyIGNsb2NrIHRvIHN5bnRvbml6ZQordGhlIGZyZXF1ZW5jeSBh
+Y3Jvc3MgZGlmZmVyZW50IG5ldHdvcmsgZWxlbWVudHMuCisKK0Jhc2ljIFN5bmNocm9ub3VzIG5l
+dHdvcmsgbm9kZSBjb25zaXN0IG9mIGEgU3luY2hyb25vdXMgRXF1aXBtZW50CitDbG9jayAoU0VD
+KSBhbmQgYW5kIGEgUEhZIHRoYXQgaGFzIGRlZGljYXRlZCBvdXRwdXRzIG9mIGNsb2NrcyByZWNv
+dmVyZWQKK2Zyb20gdGhlIFJlY2VpdmUgc2lkZSBhbmQgYSBkZWRpY2F0ZWQgVFggY2xvY2sgaW5w
+dXQgdGhhdCBpcyB1c2VkIGFzCithIHJlZmVyZW5jZSBmb3IgdGhlIHBoeXNpY2FsIGZyZXF1ZW5j
+eSBvZiB0aGUgdHJhbnNtaXQgZGF0YSB0byBvdGhlciBub2Rlcy4KKworVGhlIFBIWSBpcyBhYmxl
+IHRvIHJlY292ZXIgdGhlIHBoeXNpY2FsIHNpZ25hbCBmcmVxdWVuY3kgb2YgdGhlIFJYIGRhdGEK
+K3N0cmVhbSBvbiBSWCBwb3J0cyBhbmQgcmVkaXJlY3QgaXQgKHNvbWV0aW1lcyBkaXZpZGluZyBp
+dCkgdG8gcmVjb3ZlcmVkCitjbG9jayBvdXRwdXRzLiBOdW1iZXIgb2YgcmVjb3ZlcmVkIGNsb2Nr
+IG91dHB1dCBwaW5zIGlzIHVzdWFsbHkgbG93ZXIgdGhhbgordGhlIG51bWJlciBvZiBSWCBwb3J0
+eC4gQXMgYSByZXN1bHQgdGhlIFJYIHBvcnQgdG8gUmVjb3ZlcmVkIENsb2NrIG91dHB1dAorbWFw
+cGluZyBuZWVkcyB0byBiZSBjb25maWd1cmVkLiB0aGUgVFggZnJlcXVlbmN5IGlzIGRpcmVjdGx5
+IGRlcGVuZHMgb24gdGhlCitpbnB1dCBmcmVxdWVuY3kgLSBlaXRoZXIgb24gdGhlIFBIWSBDTEsg
+aW5wdXQsIG9yIG9uIGEgZGVkaWNhdGVkCitUWCBjbG9jayBpbnB1dC4KKworICAgICAg4pSM4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSs4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSQCisgICAgICDilIIgUlggICAgICAg4pSCIFRYICAgICAgIOKUggorICAxICAg4pSCIHBv
+cnRzICAgIOKUgiBwb3J0cyAgICDilIIgMQorICDilIDilIDilIDilrrilJzilIDilIDilIDilIDi
+lIDilJAgICAg4pSCICAgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugorICAyICAg4pSCICAg
+ICDilIIgICAg4pSCICAgICAgICAgIOKUgiAyCisgIOKUgOKUgOKUgOKWuuKUnOKUgOKUgOKUgOKU
+kCDilIIgICAg4pSCICAgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugorICAzICAg4pSCICAg
+4pSCIOKUgiAgICDilIIgICAgICAgICAg4pSCIDMKKyAg4pSA4pSA4pSA4pa64pSc4pSA4pSQIOKU
+giDilIIgICAg4pSCICAgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugorICAgICAg4pSCIOKW
+vCDilrwg4pa8ICAgIOKUgiAgICAgICAgICDilIIKKyAgICAgIOKUgiDilIDilIDilIDilIDilIDi
+lIAgICDilIIgICAgICAgICAg4pSCCisgICAgICDilIIgXF9fX18vICAg4pSCICAgICAgICAgIOKU
+ggorICAgICAg4pSU4pSA4pSA4pS84pSA4pSA4pS84pSA4pSA4pSA4pSA4pS04pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSYCisgICAgICAgIDHilIIgMuKUgiAgICAgICAg4payCisgUkNM
+SyBvdXTilIIgIOKUgiAgICAgICAg4pSCIFRYIENMSyBpbgorICAgICAgICAg4pa8ICDilrwgICAg
+ICAgIOKUggorICAgICAgIOKUjOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUtOKUgOKUgOKUgOKUkAorICAgICAgIOKUgiAgICAgICAgICAgICAgICAg4pSCCisgICAgICAg
+4pSCICAgICAgIFNFQyAgICAgICDilIIKKyAgICAgICDilIIgICAgICAgICAgICAgICAgIOKUggor
+ICAgICAgIOKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUmAorCitUaGUgU0VDIGNhbiBzeW5jaHJvbml6ZSBpdHMgZnJlcXVlbmN5IHRvIG9uZSBv
+ZiB0aGUgc3luY2hyb25pemF0aW9uIGlucHV0cworZWl0aGVyIGNsb2NrcyByZWNvdmVyZWQgb24g
+dHJhZmZpYyBpbnRlcmZhY2VzIG9yIChpbiBhZHZhbmNlZCBkZXBsb3ltZW50cykKK2V4dGVybmFs
+IGZyZXF1ZW5jeSBzb3VyY2VzLgorCitTb21lIFNFQyBpbXBsZW1lbnRhdGlvbnMgY2FuIGF1dG9t
+YXRpY2FsbHkgc2VsZWN0IHN5bmNocm9uaXphdGlvbiBzb3VyY2UKK3Rocm91Z2ggcHJpb3JpdHkg
+dGFibGVzIGFuZCBzeW5jaHJvbml6YXRpb24gc3RhdHVzIG1lc3NhZ2luZyBhbmQgcHJvdmlkZQor
+bmVjZXNzYXJ5IGZpbHRlcmluZyBhbmQgaG9sZG92ZXIgY2FwYWJpbGl0aWVzLgorCitUaGUgZm9s
+bG93aW5nIGludGVyZmFjZSBjYW4gYmUgYXBwbGljYWJsZSB0byBkaWZmZmVyZW50IHBhY2tldCBu
+ZXR3b3JrIHR5cGVzCitmb2xsb3dpbmcgSVRVLVQgRy44MjYxL0cuODI2MiByZWNvbW1lbmRhdGlv
+bnMuCisKK0ludGVyZmFjZQorPT09PT09PT09CisKK1RoZSBmb2xsb3dpbmcgUlROTCBtZXNzYWdl
+cyBhcmUgdXNlZCB0byByZWFkL2NvbmZpZ3VyZSBTeW5jRSByZWNvdmVyZWQKK2Nsb2Nrcy4KKwor
+UlRNX0dFVFJDTEtTVEFURQorLS0tLS0tLS0tLS0tLS0tLS0KK1JlYWQgdGhlIHN0YXRlIG9mIHJl
+Y292ZXJlZCBwaW5zIHRoYXQgb3V0cHV0IHJlY292ZXJlZCBjbG9jayBmcm9tCithIGdpdmVuIHBv
+cnQuIFRoZSBtZXNzYWdlIHdpbGwgY29udGFpbiB0aGUgbnVtYmVyIG9mIGFzc2lnbmVkIGNsb2Nr
+cworKElGTEFfUkNMS19TVEFURV9DT1VOVCkgYW5kIGFuIE4gcGluIGluZGV4ZXMgaW4gSUZMQV9S
+Q0xLX1NUQVRFX09VVF9TVEFURQorVG8gc3VwcG9ydCBtdWx0aXBsZSByZWNvdmVyZWQgY2xvY2sg
+b3V0cHV0cyBmcm9tIHRoZSBzYW1lIHBvcnQsIHRoaXMgbWVzc2FnZQord2lsbCByZXR1cm4gdGhl
+IElGTEFfUkNMS19TVEFURV9DT1VOVCBhdHRyaWJ1dGUgY29udGFpbmluZyB0aGUgbnVtYmVyIG9m
+CityZWNvdmVyZWQgY2xvY2sgb3V0cHV0cyAoTikgYW5kIE4gSUZMQV9SQ0xLX1NUQVRFX09VVF9T
+VEFURSBhdHRyaWJ1dGVzCitsaXN0aW5nIHRoZSBvdXRwdXQgaW5kZXhlcyB3aXRoIHRoZSByZXNw
+ZWN0aXZlIEdFVF9SQ0xLX0ZMQUdTX0VOQSBmbGFnLgorVGhpcyBtZXNzYWdlIHdpbGwgY2FsbCB0
+aGUgbmRvX2dldF9yY2xrX3JhbmdlIHRvIGRldGVybWluZSB0aGUgYWxsb3dlZAorcmVjb3ZlcmVk
+IGNsb2NrIGluZGV4ZXMgYW5kIHRoZW4gd2lsbCBsb29wIHRocm91Z2ggdGhlbSwgY2FsbGluZwor
+dGhlIG5kb19nZXRfcmNsa19zdGF0ZSBmb3IgZWFjaCBvZiB0aGVtLgorCisKK0F0dHJpYnV0ZXM6
+CitJRkxBX1JDTEtfU1RBVEVfQ09VTlQgLSBSZXR1cm5zIHRoZSBudW1iZXIgb2YgcmVjb3ZlcmVk
+IGNsb2NrIG91dHB1dHMKK0lGTEFfUkNMS19TVEFURV9PVVRfU1RBVEUgLSBSZXR1cm5zIHRoZSBj
+dXJyZW50IHN0YXRlIG9mIGEgc2luZ2xlIHJlY292ZXJlZAorCQkJICAgIGNsb2NrIG91dHB1dCBp
+biB0aGUgc3RydWN0IGlmX2dldF9yY2xrX21zZy4KK3N0cnVjdCBpZl9nZXRfcmNsa19tc2cgewor
+CV9fdTMyIG91dF9pZHg7IC8qIG91dHB1dCBpbmRleCAoZnJvbSBhIHZhbGlkIHJhbmdlKSAqLwor
+CV9fdTMyIGZsYWdzOyAgIC8qIGNvbmZpZ3VyYXRpb24gZmxhZ3MgKi8KK307CisKK0N1cnJlbnRs
+eSBzdXBwb3J0ZWQgZmxhZ3M6CisjZGVmaW5lIEdFVF9SQ0xLX0ZMQUdTX0VOQQkoMVUgPDwgMCkK
+KworCitSVE1fU0VUUkNMS1NUQVRFCistLS0tLS0tLS0tLS0tLS0tLQorU2V0cyB0aGUgcmVkaXJl
+Y3Rpb24gb2YgdGhlIHJlY292ZXJlZCBjbG9jayBmb3IgYSBnaXZlbiBwaW4uIFRoaXMgbWVzc2Fn
+ZQorZXhwZWN0cyBvbmUgYXR0cmlidXRlOgorc3RydWN0IGlmX3NldF9yY2xrX21zZyB7CisJX191
+MzIgaWZpbmRleDsgLyogaW50ZXJmYWNlIGluZGV4ICovCisJX191MzIgb3V0X2lkeDsgLyogb3V0
+cHV0IGluZGV4IChmcm9tIGEgdmFsaWQgcmFuZ2UpICovCisJX191MzIgZmxhZ3M7ICAgLyogY29u
+ZmlndXJhdGlvbiBmbGFncyAqLworfTsKKworU3VwcG9ydGVkIGZsYWdzIGFyZToKK1NFVF9SQ0xL
+X0ZMQUdTX0VOQSAtIGlmIHNldCBpbiBmbGFncyAtIHRoZSBnaXZlbiBvdXRwdXQgd2lsbCBiZSBl
+bmFibGVkLAorCQkgICAgIGlmIGNsZWFyIC0gdGhlIG91dHB1dCB3aWxsIGJlIGRpc2FibGVkLgor
+CitSVE1fR0VURUVDU1RBVEUKKy0tLS0tLS0tLS0tLS0tLS0KK1JlYWRzIHRoZSBzdGF0ZSBvZiB0
+aGUgRUVDIG9yIGVxdWl2YWxlbnQgcGh5c2ljYWwgY2xvY2sgc3luY2hyb25pemVyLgorVGhpcyBt
+ZXNzYWdlIHJldHVybnMgdGhlIGZvbGxvd2luZyBhdHRyaWJ1dGVzOgorSUZMQV9FRUNfU1RBVEUg
+LSBjdXJyZW50IHN0YXRlIG9mIHRoZSBFRUMgb3IgZXF1aXZhbGVudCBjbG9jayBnZW5lcmF0b3Iu
+CisJCSBUaGUgc3RhdGVzIHJldHVybmVkIGluIHRoaXMgYXR0cmlidXRlIGFyZSBhbGlnbmVkIHRv
+IHRoZQorCQkgSVRVLVQgRy43ODEgYW5kIGFyZToKKwkJICBJRl9FRUNfU1RBVEVfSU5WQUxJRCAt
+IHN0YXRlIGlzIG5vdCB2YWxpZAorCQkgIElGX0VFQ19TVEFURV9GUkVFUlVOIC0gY2xvY2sgaXMg
+ZnJlZS1ydW5uaW5nCisJCSAgSUZfRUVDX1NUQVRFX0xPQ0tFRCAtIGNsb2NrIGlzIGxvY2tlZCB0
+byB0aGUgcmVmZXJlbmNlLAorCQkgICAgICAgICAgICAgICAgICAgICAgICBidXQgdGhlIGhvbGRv
+dmVyIG1lbW9yeSBpcyBub3QgdmFsaWQKKwkJICBJRl9FRUNfU1RBVEVfTE9DS0VEX0hPX0FDUSAt
+IGNsb2NrIGlzIGxvY2tlZCB0byB0aGUgcmVmZXJlbmNlCisJCSAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBhbmQgaG9sZG92ZXIgbWVtb3J5IGlzIHZhbGlkCisJCSAgSUZfRUVDX1NUQVRF
+X0hPTERPVkVSIC0gY2xvY2sgaXMgaW4gaG9sZG92ZXIgbW9kZQorU3RhdGUgaXMgcmVhZCBmcm9t
+IHRoZSBuZXRkZXYgY2FsbGluZyB0aGU6CitpbnQgKCpuZG9fZ2V0X2VlY19zdGF0ZSkoc3RydWN0
+IG5ldF9kZXZpY2UgKmRldiwgZW51bSBpZl9lZWNfc3RhdGUgKnN0YXRlLAorCQkJIHUzMiAqc3Jj
+X2lkeCwgc3RydWN0IG5ldGxpbmtfZXh0X2FjayAqZXh0YWNrKTsKKworSUZMQV9FRUNfU1JDX0lE
+WCAtIG9wdGlvbmFsIGF0dHJpYnV0ZSByZXR1cm5pbmcgdGhlIGluZGV4IG9mIHRoZSByZWZlcmVu
+Y2UKKwkJICAgdGhhdCBpcyB1c2VkIGZvciB0aGUgY3VycmVudCBJRkxBX0VFQ19TVEFURSwgaS5l
+LiwKKwkJICAgdGhlIGluZGV4IG9mIHRoZSBwaW4gdGhhdCB0aGUgRUVDIGlzIGxvY2tlZCB0by4K
+KworV2lsbCBiZSByZXR1cm5lZCBvbmx5IGlmIHRoZSBuZG9fZ2V0X2VlY19zcmMgaXMgaW1wbGVt
+ZW50ZWQuClwgTm8gbmV3bGluZSBhdCBlbmQgb2YgZmlsZQotLSAKMi4yNi4zCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
