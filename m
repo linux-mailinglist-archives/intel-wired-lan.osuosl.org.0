@@ -1,46 +1,46 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CAEC44C454
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Nov 2021 16:25:28 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B12944C455
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Nov 2021 16:25:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6F8AA80E87;
-	Wed, 10 Nov 2021 15:25:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3B01E40411;
+	Wed, 10 Nov 2021 15:25:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id trW8nh6O34sq; Wed, 10 Nov 2021 15:25:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tSiJJ6FW0kvq; Wed, 10 Nov 2021 15:25:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2356580D8B;
-	Wed, 10 Nov 2021 15:25:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7812E40410;
+	Wed, 10 Nov 2021 15:25:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9FAB41BF5D7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 10:27:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D4A0E1BF5AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 15:15:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8C50440223
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 10:27:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CFFCE80EA0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 15:15:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=nvidia.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IduH3cF2wptV for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Nov 2021 10:27:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FKArLz623E4I for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Nov 2021 15:15:34 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2048.outbound.protection.outlook.com [40.107.236.48])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 889A4401FC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 10:27:17 +0000 (UTC)
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com
+ (mail-dm3nam07on2045.outbound.protection.outlook.com [40.107.95.45])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 66ADA80E87
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 15:15:34 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NDz9A2w1SRnArUFlGppV3h2kmhyyeG4nBZF3heLHLgpkP/inWjBvsntg+hKLNbKA5y40cyqHDR8P2dlsjy9VrbZm0XHgx7E9JuVSY9E1bCm6MSN2Jefxq75yY643Ei4QUYd+VyZOP4Yfq8R6WNNZYnJ98MxlPKzNHlVPj1pQvTvOTa3bs7mLVzmNO874JOc1vGhnnePydzrXcAkXzfljICrHWEqY3xc7+GWSVK9eX5fD150jbOaA3MpApiyZaxIiGZmAnlxY+h5Eo/RfFwVdked02oU++En5OLKIdz6/ahEdoJr0bM+A8bFPACPvRpqjTAdPveHLFd5Xq0cUWSwfEw==
+ b=W4eV8J5aXeZfk2SZ6r1ZU43I6UytZR6vl3niXWCrkUEcZqFynI8BUnnOokCvuB9Sn8ZrHGWq9ZQH82cb4vhSS7cw3WFCRLNOUv0w+uHvUXj9B22P/JeUxw8VcuQeqQImM8IiNFbFG1Y/RB2iAXiG97qQyY2bzYzHFAqfjUisxdr9dy6bbDwBnR+whUQy7JZmM43w6kwYWHN7lBXwQ3Yza+hLb9xxJwKgbRCHKUjNBI9jIn5eqxjTzWIlTGe0WGiVMzlnOps0HWkNGjkqBk4Cu/T+3N+rO9PLzb+XH/GWUoM25QA1RNnfa7yzytUBtCLRzwFLRgsxSKUcCn7Sj/g1zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yv9KV6bSxHaO/U8w/qCKAlZwN1/9p/HIXVFqxjhFfvM=;
- b=GRf2o+nZSEGeJ39UicSvfmMV10OVhAutXWbvl39aM+vlJVr997+iKVR1Ty/QYqy3HREhIPYuzRxFF/4CUA2vvlmC3sqlvvORyeXYyA7q5j+pKY1I0v/R9jjmgDhq0ADYfkKfQHiKyW3QLyzxd3iY6MIF4g1VeYE8N88lM6CmtyFXzf4EgcGK6czHOMZ0hGQMO7t9tqJflF9vdmzVOoejHn7QUWwBlkCmrshmzGjcMEbSoO3xO+3Ak6YHP7Wdl0XlNlhjr8f5d6TH44gLEAgpLt+Zsi3GK2YuAZLTynAygQmH4yrzgwG/KYUxxtvBgkbQPeZEdRqZ/2twyOu2s6PqGw==
+ bh=JPujO2ER1Osddm96glwzzwClCnia+hlODCK+URtQuQk=;
+ b=U0JRIP8T69wwGUFO8kFFTj/CXw9nEepQD///0olBrf+8pfWcMi3YMew0VOcj0+ZDFu4ECJzby6b6XTyQXRmvrrIXgGXozPFfCUQGtftxhJt0estJMRiGYWCABd4eSPsWQhBJixkqU0F9WAEhMdU63C7aIHau4xZyrK/pCinRcBiyKBfHTkJSfRuH2Z+ezmxnq5k7XEvPnizlUsFN8eSkRKX8I7Eq/elMXj5lRQ0d6a9SAtMEx9FfH3ZMmkEN7x2Zdy5ULqgSi5tdsUuX0KWnbhNXtA20ccKKPREJ1gwh/9cbtlvt6y1/XmBFzXtBUoN/4gFvO2fH9PYKzM8wByGGWw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.112.34) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
@@ -48,18 +48,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yv9KV6bSxHaO/U8w/qCKAlZwN1/9p/HIXVFqxjhFfvM=;
- b=JrFvBJctTCfbeKPcKyvryNh5uoPxHYOXVJoMB8mystVfKsKBakVIjEIXwMEvufgujjouHwy7h+XgU6F8+RJuBfa5QE5TtccLGZPn2+hmu7Giqk04ADONIbOtkdXLdZGhXlmPzKb7Tm0YrmAOlDlnP8H0B0XbHf3XgGmrQSX1KXmgALvNNd3m/1W82HsgVthxPMoFw131tcXcLUTmanRzeF88CnA6E0775J+AqtqQ2vv9XYW9ZXQavOwuAXusMLfgu0P3h/xGhMN8J7urcZJRN9+kLd52wBX7mgcwpJDQ+/mlGNrbHdYFF2kMkGZx9loEZN0gbUhdqzba/xm5BVcKpg==
-Received: from DM3PR11CA0006.namprd11.prod.outlook.com (2603:10b6:0:54::16) by
- BL0PR12MB5555.namprd12.prod.outlook.com (2603:10b6:208:1c2::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.16; Wed, 10 Nov
- 2021 10:27:15 +0000
-Received: from DM6NAM11FT045.eop-nam11.prod.protection.outlook.com
- (2603:10b6:0:54:cafe::5) by DM3PR11CA0006.outlook.office365.com
- (2603:10b6:0:54::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.11 via Frontend
- Transport; Wed, 10 Nov 2021 10:27:15 +0000
+ bh=JPujO2ER1Osddm96glwzzwClCnia+hlODCK+URtQuQk=;
+ b=fQjqBAo8u3Hi95vVyp2j+ox4g5nDlifJpCAt3byYgAEOAW2fEqsrAeby52KHb+qk2b96dI8yIm5ycmm6CouuP8qoQPgonuXl+SBO+yWvC+7KBmL2SOIUP+Yldwr9gBhgrJiUsWZeLt+KS+onHi3WtnsXJwqLIEGS4Hb7nOG3f2Z8Z14FGiPEB+G538wjC7CyWKF/WFCXjG25N6WcJ28yi0x7kvlZDUfSeJH2u8AllYnIbkjAJeGmcBhc5Px1n8aiWNGRpmQKQV4PuCEeOwFA2kgtPyqP9wNyry23Nzr9nDkgfbVzqkdK3Obnaa5vnp+X/fLdcvfXdjtcrxZ6oZuCIw==
+Received: from MWHPR13CA0018.namprd13.prod.outlook.com (2603:10b6:300:16::28)
+ by BN9PR12MB5382.namprd12.prod.outlook.com (2603:10b6:408:103::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.15; Wed, 10 Nov
+ 2021 15:15:31 +0000
+Received: from CO1NAM11FT021.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:300:16:cafe::a2) by MWHPR13CA0018.outlook.office365.com
+ (2603:10b6:300:16::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.6 via Frontend
+ Transport; Wed, 10 Nov 2021 15:15:31 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
  smtp.mailfrom=nvidia.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
@@ -67,52 +67,54 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.112.34 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.112.34; helo=mail.nvidia.com;
 Received: from mail.nvidia.com (216.228.112.34) by
- DM6NAM11FT045.mail.protection.outlook.com (10.13.173.123) with Microsoft SMTP
+ CO1NAM11FT021.mail.protection.outlook.com (10.13.175.51) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4690.15 via Frontend Transport; Wed, 10 Nov 2021 10:27:12 +0000
+ 15.20.4690.15 via Frontend Transport; Wed, 10 Nov 2021 15:15:31 +0000
 Received: from yaviefel (172.20.187.5) by HQMAIL107.nvidia.com (172.20.187.13)
  with Microsoft SMTP Server (TLS) id 15.0.1497.18;
- Wed, 10 Nov 2021 10:27:07 +0000
+ Wed, 10 Nov 2021 15:15:14 +0000
 References: <20211105205331.2024623-1-maciej.machnikowski@intel.com>
  <20211105205331.2024623-7-maciej.machnikowski@intel.com>
  <87r1bqcyto.fsf@nvidia.com>
  <MW5PR11MB5812B0A4E6227C6896AC12B5EA929@MW5PR11MB5812.namprd11.prod.outlook.com>
  <87mtmdcrf2.fsf@nvidia.com>
  <MW5PR11MB5812D4A8419C37FE9C890D3AEA929@MW5PR11MB5812.namprd11.prod.outlook.com>
+ <87bl2scnly.fsf@nvidia.com>
+ <MW5PR11MB5812034EA5FC331FA5A2D37CEA939@MW5PR11MB5812.namprd11.prod.outlook.com>
 User-agent: mu4e 1.4.15; emacs 27.2
 From: Petr Machata <petrm@nvidia.com>
 To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-In-Reply-To: <MW5PR11MB5812D4A8419C37FE9C890D3AEA929@MW5PR11MB5812.namprd11.prod.outlook.com>
-Message-ID: <87bl2scnly.fsf@nvidia.com>
-Date: Wed, 10 Nov 2021 11:27:05 +0100
+In-Reply-To: <MW5PR11MB5812034EA5FC331FA5A2D37CEA939@MW5PR11MB5812.namprd11.prod.outlook.com>
+Date: Wed, 10 Nov 2021 16:15:10 +0100
+Message-ID: <874k8kca9t.fsf@nvidia.com>
 MIME-Version: 1.0
 X-Originating-IP: [172.20.187.5]
-X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
+X-ClientProxiedBy: HQMAIL107.nvidia.com (172.20.187.13) To
  HQMAIL107.nvidia.com (172.20.187.13)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: fa2d1f10-0597-4d2f-7e8c-08d9a434a8b8
-X-MS-TrafficTypeDiagnostic: BL0PR12MB5555:
-X-Microsoft-Antispam-PRVS: <BL0PR12MB5555F8A74A995F20C8EF1657D6939@BL0PR12MB5555.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-MS-Office365-Filtering-Correlation-Id: 686d9c86-ba64-4a06-a4f6-08d9a45cefc5
+X-MS-TrafficTypeDiagnostic: BN9PR12MB5382:
+X-Microsoft-Antispam-PRVS: <BN9PR12MB5382FA059E191F3DF1CF36C0D6939@BN9PR12MB5382.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: E+suyXaiMYn5V9m0VShiQm8VapDNHWwpuo+aZnYUVITfddqTLmNjTDtyAXjoNDkkda09SLCmQtQGEKdDLWkq9TDjDdvu7iL/xpyRVWWJMfyGw3FwHf2ibhWxEaO6Yh80PFn04lrB2lUwnZh5GXkfdU/wxCSnqLVp4keTynz0n4gbt67a2dbk24Aonkm20uxnb9gWdRXUo18dG7dDDrn0YKAFOVsiBU2cAB/dmZPVYRtTq6t/HPIw4in/keLrvVoy394z9pu2xqYDrebBUHWWwU4s1Lt0tFZlY0DGQhnoZ0ZcTEVeqoi2QWgrAY3KkPly5g88/qybCN5A7GjoOEPnY3b/tvn2GhMHGsIoLbFCaW79Q2o/lnJrpjdk6pthYujUS4/OtkYgekpC0jVDdfYHSIBbyTRciqAbPq4ehCmb3eLfA0xNFu44XriAaHy7POmqXu+c/KbAcfYwKOGK7IPgOI5qV2leHvREdBzljPX2G1068pPrzNFDmWd3mfAm9ZkFMUDDHIH+fEFLTxtCo4uJSRvLz0mJwdrpjr7vggEenslKerFnpPSNQ1nLVEZtLNKUz9cwCAwF0SwDVliGSrvszA818mm4LhbIv20dP9cUU6mnYFCgnSCHd9M3tldGm6jUKbWx0Zd5jHtFUjEfyTJTxGsoa5qiihZ2Qg7PNUdfOFbIzfIw6lDJ3cpIDDtMkBfR/AEoEgWCOU1+PYe4KTrJfA==
+X-Microsoft-Antispam-Message-Info: rQ+1xCk24XTRf1rpXfH/adFL6jY1rtyXhuFJnLHIZl9pgvkn/oPuTLGsBayW+vD9U54JHdQ3Pgw80SN5rIHKlVsgARUgJEDu5R34pOIYsHhoSDJuGVLslE/5WUsWBc2n+2y6wgSUgvANxv/e+AzkdbcZ/1eVzZNdSP0SsgJhspDmpb8soWx+D6yb25B4M5hiwcBzdOCqZKHyVBh8LDzT6zyMm6GbnfrrFoqmSuvwp02yXUpsIYOFJOcB3NV2uDA8kk1h1z+jka+u78CKJveosMq43dMPpSZquNUTXo4p0HVsztZfoaO0Xwn4Be4Pmho4G8rHkAUTsrER7p3Pstwg6dJ70fyXuc72NNZsJiJL+PSpEMvDZC7iL8J6PGnMwceqwIDOTIp25adWQE7naXI+f5s/hgbsxNOWTlxaFCOKRFMY1atGQS05r+scJDD/ASULInwr2ptHTA4aC7MoeRXsj51wtG0GlAaAVy9NSp9rMw8zO0ljHTl7zPwb9uJW2kPR8MEyJL6c64F9KlUOwn+ZHHVCBhoC8oU1v3Mi5bfGcUll9KAT6WECWJ6V3JbLy2zLATSmonmO0sswTmlaTCxIakBbtij47azB4iMkKZHobxgb817v/wNivzQWiFRMNgdE51OKWSU7xQ33bPycaobl35TnlnCd3V9do0D/UapPrA9gPxZX5AHuu4XJ0bn+lQc2WyqEGlnhV2kH+EIb2knAyw==
 X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(46966006)(36840700001)(2906002)(82310400003)(36860700001)(86362001)(316002)(83380400001)(186003)(336012)(26005)(7416002)(7636003)(5660300002)(508600001)(36756003)(54906003)(426003)(4326008)(70206006)(47076005)(70586007)(8676002)(6916009)(356005)(16526019)(8936002)(2616005);
+ SFS:(4636009)(36840700001)(46966006)(426003)(5660300002)(86362001)(82310400003)(36860700001)(7636003)(36906005)(26005)(54906003)(70586007)(186003)(2906002)(7416002)(47076005)(70206006)(6916009)(2616005)(8936002)(316002)(356005)(508600001)(16526019)(83380400001)(6666004)(4326008)(36756003)(336012)(8676002);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2021 10:27:12.3964 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: fa2d1f10-0597-4d2f-7e8c-08d9a434a8b8
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2021 15:15:31.5130 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 686d9c86-ba64-4a06-a4f6-08d9a45cefc5
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT045.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT021.eop-nam11.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR12MB5555
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5382
 X-Mailman-Approved-At: Wed, 10 Nov 2021 15:25:21 +0000
 Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/6] docs: net: Add
  description of SyncE interfaces
@@ -138,172 +140,204 @@ Cc: Petr Machata <petrm@nvidia.com>, "mkubecek@suse.cz" <mkubecek@suse.cz>,
  "kuba@kernel.org" <kuba@kernel.org>,
  "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
  "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ck1hY2huaWtvd3NraSwgTWFjaWVqIDxtYWNpZWoubWFjaG5pa293c2tpQGludGVsLmNvbT4gd3Jp
-dGVzOgoKPj4gSGEsIG9rLCBzbyB0aGUgUkFOR0UgY2FsbCBnb2VzIGF3YXksIGl0J3MgYWxsIGlu
-IHRoZSBSVE1fR0VUUkNMS1NUQVRFLgo+Cj4gVGhlIGZ1bmN0aW9uYWxpdHkgbmVlZHMgdG8gYmUg
-dGhlcmUsIGJ1dCB0aGUgbWVzc2FnZSB3aWxsIGJlIGdvbmUuCgpHb3RjaGEuCgo+PiA+PiA+ICtS
-VE1fU0VUUkNMS1NUQVRFCj4+ID4+ID4gKy0tLS0tLS0tLS0tLS0tLS0tCj4+ID4+ID4gK1NldHMg
-dGhlIHJlZGlyZWN0aW9uIG9mIHRoZSByZWNvdmVyZWQgY2xvY2sgZm9yIGEgZ2l2ZW4gcGluLiBU
-aGlzCj4+IG1lc3NhZ2UKPj4gPj4gPiArZXhwZWN0cyBvbmUgYXR0cmlidXRlOgo+PiA+PiA+ICtz
-dHJ1Y3QgaWZfc2V0X3JjbGtfbXNnIHsKPj4gPj4gPiArCV9fdTMyIGlmaW5kZXg7IC8qIGludGVy
-ZmFjZSBpbmRleCAqLwo+PiA+PiA+ICsJX191MzIgb3V0X2lkeDsgLyogb3V0cHV0IGluZGV4IChm
-cm9tIGEgdmFsaWQgcmFuZ2UpCj4+ID4+ID4gKwlfX3UzMiBmbGFnczsgLyogY29uZmlndXJhdGlv
-biBmbGFncyAqLwo+PiA+PiA+ICt9Owo+PiA+PiA+ICsKPj4gPj4gPiArU3VwcG9ydGVkIGZsYWdz
-IGFyZToKPj4gPj4gPiArU0VUX1JDTEtfRkxBR1NfRU5BIC0gaWYgc2V0IGluIGZsYWdzIC0gdGhl
-IGdpdmVuIG91dHB1dCB3aWxsIGJlIGVuYWJsZWQsCj4+ID4+ID4gKwkJICAgICBpZiBjbGVhciAt
-IHRoZSBvdXRwdXQgd2lsbCBiZSBkaXNhYmxlZC4KPj4gPj4KPj4gPj4gT0ssIHNvIGhlcmUgSSBz
-ZXQgdXAgdGhlIHRyYWNraW5nLiBpZmluZGV4IHRlbGxzIG1lIHdoaWNoIEVFQyB0bwo+PiA+PiBj
-b25maWd1cmUsIG91dF9pZHggaXMgdGhlIHBpbiB0byB0cmFjaywgZmxhZ3MgdGVsbCBtZSB3aGV0
-aGVyIHRvIHNldCB1cAo+PiA+PiB0aGUgdHJhY2tpbmcgb3IgdGVhciBpdCBkb3duLiBUaHVzIGUu
-Zy4gb24gcG9ydCAyLCB0cmFjayBwaW4gMiwgYmVjYXVzZQo+PiA+PiBJIHNvbWVob3cga25vdyB0
-aGF0IGxhbmUgMiBoYXMgdGhlIGJlc3QgY2xvY2suCj4+ID4KPj4gPiBJdCdzIGJvdW5kIHRvIGlm
-aW5kZXggdG8ga25vdyB3aGljaCBQSFkgcG9ydCB5b3UgaW50ZXJhY3Qgd2l0aC4gSXQKPj4gPiBo
-YXMgbm90aGluZyB0byBkbyB3aXRoIHRoZSBFRUMgeWV0Lgo+Pgo+PiBJdCBoYXMgaW4gdGhlIHNl
-bnNlIHRoYXQgSSdtIGNvbmZpZ3VyaW5nICJUWCBDTEsgaW4iLCB3aGljaCBsZWFkcwo+PiBmcm9t
-IEVFQyB0byB0aGUgcG9ydC4KPgo+IEF0IHRoaXMgc3RhZ2Ugd2Ugb25seSBlbmFibGUgdGhlIHJl
-Y292ZXJlZCBjbG9jay4gRUVDIG1heSBvciBtYXkgbm90Cj4gdXNlIGl0IGRlcGVuZGluZyBvbiBt
-YW55IGFkZGl0aW9uYWwgZmFjdG9ycy4KPgo+PiA+PiBJZiB0aGUgYWJvdmUgaXMgYnJvYWRseSBj
-b3JyZWN0LCBJJ3ZlIGdvdCBzb21lIHF1ZXN0aW9ucy4KPj4gPj4KPj4gPj4gRmlyc3QsIHdoYXQg
-aWYgbW9yZSB0aGFuIG9uZSBvdXRfaWR4IGlzIHNldD8gV2hhdCBhcmUgZHJpdmVycyAvIEhXCj4+
-ID4+IG1lYW50IHRvIGRvIHdpdGggdGhpcz8gV2hhdCBpcyB0aGUgZXhwZWN0ZWQgYmVoYXZpb3I/
-Cj4+ID4KPj4gPiBFeHBlY3RlZCBiZWhhdmlvciBpcyBkZXBsb3ltZW50IHNwZWNpZmljLiBZb3Ug
-Y2FuIHVzZSBkaWZmZXJlbnQgcGh5Cj4+ID4gcmVjb3ZlcmVkIGNsb2NrIG91dHB1dHMgdG8gaW1w
-bGVtZW50IGFjdGl2ZS9wYXNzaXZlIG1vZGUgb2YgY2xvY2sKPj4gPiBmYWlsb3Zlci4KPj4KPj4g
-SG93PyBXaGljaCBvbmUgaXMgcHJpbWFyeSBhbmQgd2hpY2ggb25lIGlzIGJhY2t1cD8gSSBqdXN0
-IGhhdmUgdHdvCj4+IGVuYWJsZWQgcGlucy4uLgo+Cj4gV2l0aCB0aGlzIEFQSSB5b3Ugb25seSBo
-YXZlIHBvcnRzIGFuZCBwaW5zIGFuZCBzZXQgdXAgdGhlIHJlZGlyZWN0aW9uLgoKV2FpdCwgc28g
-aG93IGRvIEkgZG8gZmFpbG92ZXI/IFdoaWNoIG9mIHRoZSBzZXQgcGlucyBpbiBwcmltYXJ5IGFu
-ZAp3aGljaCBpcyBiYWNrdXA/IFNob3VsZCB0aGUgYmFja3VwIGJlIHN0aWNreSwgaS5lLiBkbyBw
-cmltYXJ5IGFuZCBiYWNrdXAKc3dpdGNoIHJvbGVzIGFmdGVyIHByaW1hcnkgZ29lcyBpbnRvIGhv
-bGRvdmVyPyBJdCBsb29rcyBsaWtlIHRoZXJlIGFyZSBhCm51bWJlciBvZiBwb2xpY3kgZGVjaXNp
-b25zIHRoYXQgd291bGQgYmUgYmVzdCBzZXJ2ZWQgYnkgYSB1c2Vyc3BhY2UKdG9vbC4KCj4gVGhl
-IEVFQyBwYXJ0IGlzIG91dCBvZiBwaWN0dXJlIGFuZCB3aWxsIGJlIHBhcnQgb2YgRFBMTCBzdWJz
-eXN0ZW0uCgpTbyBhYm91dCB0aGF0LiBJIGRvbid0IHRoaW5rIGl0J3MgY29udGVudGlvdXMgdG8g
-Y2xhaW0gdGhhdCB5b3UgbmVlZCB0bwpjb21tdW5pY2F0ZSBFRUMgc3RhdGUgc29tZWhvdy4gVGhp
-cyBwcm9wb3NhbCBkb2VzIHRoYXQgdGhyb3VnaCBhIG5ldGRldgpvYmplY3QuIEFmdGVyIHRoZSBE
-UExMIHN1YnN5c3RlbSBjb21lcyBhbG9uZywgdGhhdCB3aWxsIG5lY2Vzc2FyaWx5CnByb3ZpZGUg
-dGhlIHNhbWUgaW5mb3JtYXRpb24sIGFuZCB0aGUgbmV0ZGV2IGludGVyZmFjZSB3aWxsIGJlY29t
-ZQpyZWR1bmRhbnQsIGJ1dCB3ZSB3aWxsIG5lZWQgdG8ga2VlcCBpdCBhcm91bmQuCgpUaGF0IGlz
-IGEgc3Ryb25nIGluZGljYXRpb24gdGhhdCBhIGZpcnN0LWNsYXNzIERQTEwgb2JqZWN0IHNob3Vs
-ZCBiZQpwYXJ0IG9mIHRoZSBpbml0aWFsIHN1Ym1pc3Npb24uCgo+PiBXb3VsZG4ndCBmYWlsb3Zl
-ciBiZSBpbXBsZW1lbnRhYmxlIGluIGEgdXNlcnNwYWNlIGRhZW1vbj8gVGhhdCB3b3VsZCBnZXQK
-Pj4gYSBub3RpZmljYXRpb24gZnJvbSB0aGUgc3lzdGVtIHRoYXQgaG9sZG92ZXIgd2FzIGVudGVy
-ZWQsIGFuZCBjYW4KPj4gcmVjb25maWd1cmUgdHJhY2tpbmcgdG8gYW5vdGhlciBwaW4gYmFzZWQg
-b24gYXJiaXRyYXJ5IHJ1bGVzLgo+Cj4gTm90IG5lY2Vzc2FyaWx5LiBZb3UgY2FuIGRlcGxveSB0
-aGUgUUwtZGlzYWJsZWQgbW9kZSBhbmQgcmVseSBvbiB0aGUKPiBsb2NhbCBEUExMIGNvbmZpZ3Vy
-YXRpb24gdG8gbWFuYWdlIHRoZSBzd2l0Y2hpbmcuIEluIHRoYXQgbW9kZSB5b3UncmUKPiBub3Qg
-cGFzc2luZyB0aGUgcXVhbGl0eSBsZXZlbCBkb3duc3RyZWFtLCBzbyB5b3Ugb25seSBuZWVkIHRv
-IGtub3cgaWYgeW91Cj4gaGF2ZSBhIHNvdXJjZS4KClRoZSBkYWVtb24gY2FuIHJlY29uZmlndXJl
-IHRyYWNraW5nIHRvIGFub3RoZXIgcGluIGJhc2VkIG9uIF9hcmJpdHJhcnlfCnJ1bGVzLiBUaGV5
-IGRvbid0IGhhdmUgdG8gaW52b2x2ZSBRTCBpbiBhbnkgd2F5LiBDYW4gYmUgcm91bmQtcm9iaW4s
-CkZJRk8sIHJhbmRvbSBjaG9pY2UuLi4gSU1PIGl0J3MgYmV0dGVyIHRoYW4ganVzdCBlbmFibGlu
-ZyBhIGJ1bmNoIG9mCnBpbnMgYW5kIG5vdCBwcm92aWRpbmcgYW55IGd1aWRhbmNlIGFzIHRvIHRo
-ZSBwb2xpY3kuCgo+PiA+PiBTZWNvbmQsIGFzIGEgdXNlci1zcGFjZSBjbGllbnQsIGhvdyBkbyBJ
-IGtub3cgdGhhdCBpZiBwb3J0cyAxIGFuZAo+PiA+PiAyIGJvdGggcmVwb3J0IHBpbiByYW5nZSBb
-QTsgQl0sIHRoYXQgdGhleSBib3RoIGFjdHVhbGx5IHNoYXJlIHRoZQo+PiA+PiBzYW1lIHVuZGVy
-bHlpbmcgRUVDPyBJcyB0aGVyZSBzb21lIHNvcnQgb2YgY29vcmRpbmF0aW9uIGFtb25nIHRoZQo+
-PiA+PiBkcml2ZXJzLCBzdWNoIHRoYXQgZWFjaCBwaW4gaW4gdGhlIHN5c3RlbSBoYXMgYSB1bmlx
-dWUgSUQ/Cj4+ID4KPj4gPiBGb3Igbm93IHdlIGRvbid0LCBhcyB3ZSBkb24ndCBoYXZlIEVFQyBz
-dWJzeXN0ZW0uIEJ1dCB0aGF0IGNhbiBiZQo+PiA+IHNvbHZlZCBieSBhIGNvbmZpZyBmaWxlIHRl
-bXBvcmFyaWx5Lgo+Pgo+PiBJIHRoaW5rIGl0IHdvdWxkIGJlIGJldHRlciB0byBtb2RlbCB0aGlz
-IHByb3Blcmx5IGZyb20gZGF5IG9uZS4KPgo+IEkgd2FudCB0byBwcm9wb3NlIHRoZSBzaW1wbGVz
-dCBBUEkgdGhhdCB3aWxsIHdvcmsgZm9yIHRoZSBzaW1wbGVzdAo+IGRldmljZSwgZm9sbG93IHRo
-YXQgd2l0aCB0aGUgdXNlcnNwYWNlIHRvb2wgdGhhdCB3aWxsIGhlbHAgZXZlcnlvbmUKPiB1bmRl
-cnN0YW5kIHdoYXQgd2UgbmVlZCBpbiB0aGUgRFBMTCBzdWJzeXN0ZW0sIG90aGVyd2lzZSBpdCds
-bCBiZSBoYXJkCj4gdG8gZXhwbGFpbiB0aGUgcmVxdWlyZW1lbnRzLiBUaGUgb25seSBjaGFuZ2Ug
-d2lsbCBiZSB0aGUgYWRkaXRpb24gb2YKPiB0aGUgRFBMTCBpbmRleC4KClRoYXQgd291bGQgYmUg
-ZmluZSBpZiB0aGVyZSB3ZXJlIGEgbWlncmF0aW9uIHBhdGggdG8gdGhlIG1vcmUgY29tcGxldGUK
-QVBJLiBCdXQgYXMgRFBMTCBvYmplY3QgaXMgaW50cm9kdWNlZCwgZXZlbiB0aGUgQVBJcyB0aGF0
-IGFyZSBzdXBlcnNlZGVkCmJ5IHRoZSBEUExMIEFQSXMgd2lsbCBuZWVkIHRvIHN0YXkgaW4gYXMg
-YSBiYWdnYWdlLgoKPj4gPj4gRnVydGhlciwgaG93IGRvIEkgYWN0dWFsbHkga25vdyB0aGUgbWFw
-cGluZyBmcm9tIHBvcnRzIHRvIHBpbnM/Cj4+ID4+IEUuZy4gYXMgYSB1c2VyLCBJIG1pZ2h0IGtu
-b3cgbXkgbWFzdGVyIGlzIGJlaGluZCBzd3AxLiBIb3cgZG8gSQo+PiA+PiBrbm93IHdoYXQgcGlu
-cyBjb3JyZXNwb25kIHRvIHRoYXQgcG9ydD8gQXMgYSB1c2VyLXNwYWNlIHRvb2wKPj4gPj4gYXV0
-aG9yLCBob3cgZG8gSSBoZWxwIHVzZXJzIHRvIGRvIHNvbWV0aGluZyBsaWtlICJlZWMgc2V0IGNs
-b2NrCj4+ID4+IGVlYzAgdHJhY2sgc3dwMSI/Cj4+ID4KPj4gPiBUaGF0J3Mgd2h5IGRyaXZlciBu
-ZWVkcyB0byBiZSBzbWFydCB0aGVyZSBhbmQgcmV0dXJuIGluZGV4ZXMKPj4gPiBwcm9wZXJseS4K
-Pj4KPj4gV2hhdCBkbyB5b3UgbWVhbiwgcHJvcGVybHk/IFVwIHRoZXJlIHlvdSBoYXZlIFJUTV9H
-RVRSQ0xLUkFOR0UgdGhhdAo+PiBqdXN0IGdpdmVzIG1lIGEgbWluIGFuZCBhIG1heC4gSXMgdGhl
-cmUgYSBwb2xpY3kgYWJvdXQgaG93IHRvCj4+IGNvcnJlbGF0ZSBudW1iZXJzIGluIHRoYXQgcmFu
-Z2UgdG8uLi4gaWZpbmRpY2VzLCBuZXRkZXZpY2UgbmFtZXMsCj4+IGRldmxpbmsgcG9ydCBudW1i
-ZXJzLCBJIGRvbid0IGtub3csIHNvbWV0aGluZz8KPgo+IFRoZSBkcml2ZXIgbmVlZHMgdG8ga25v
-dyB0aGUgdW5kZXJseWluZyBIVyBhbmQgcmVwb3J0IHRob3NlIHJhbmdlcwo+IGNvcnJlY3RseS4K
-CkhvdyBkbyBJIGtub3cgX2FzIGEgdXNlcl8gdGhvdWdoPyBBcyBhIHVzZXIgSSB3YW50IHRvIGJl
-IGFibGUgdG8gc2F5CnNvbWV0aGluZyBsaWtlICJlZWMgc2V0IGRldiBzd3AxIHRyYWNrIGRldiBz
-d3AyIi4gQnV0IHRoZSAiZWVjIiB0b29sIGhhcwpubyB3YXkgb2Yga25vd2luZyBob3cgdG8gc2V0
-IHRoYXQgdXAuCgo+PiBIb3cgZG8gc2V2ZXJhbCBkcml2ZXJzIGNvb3JkaW5hdGUgdGhpcyBudW1i
-ZXJpbmcgYW1vbmcgdGhlbXNlbHZlcz8gSXMKPj4gdGhlcmUgYSBjb3JlIGtlcm5lbCBhdXRob3Jp
-dHkgdGhhdCBtYW5hZ2VzIHBpbiBudW1iZXIgZGUvYWxsb2NhdGlvbnM/Cj4KPiBJIGJlbGlldmUg
-dGhlIGdvYWwgaXMgdG8gY3JlYXRlIHNvbWV0aGluZyBzaW1pbGFyIHRvIHRoZSBwdHAKPiBzdWJz
-eXN0ZW0uIFRoZSBkcml2ZXIgd2lsbCBuZWVkIHRvIGNvbmZpZ3VyZSB0aGUgcmVsYXRpb25zaGlw
-IGR1cmluZwo+IGluaXRpYWxpemF0aW9uIGFuZCB0aGUgT1Mgd2lsbCBtYW5hZ2UgdGhlIGluZGV4
-ZXMuCgpDYW4geW91IHBvaW50IGF0IHRoZSBpbmRleCBtYW5hZ2VtZW50IGNvZGUsIHBsZWFzZT8K
-Cj4+ID4+IEFkZGl0aW9uYWxseSwgaG93IHdvdWxkIHRoaW5ncyBsaWtlIGV4dGVybmFsIEdQU3Mg
-b3IgMXBwcyBiZQo+PiA+PiBtb2RlbGVkPyBJIGd1ZXNzIHRoZSBkcml2ZXIgd291bGQga25vdyBh
-Ym91dCBzdWNoIGludGVyZmFjZSwgYW5kCj4+ID4+IHdvdWxkIGV4cG9zZSBpdCBhcyBhICJwaW4i
-LiBXaGVuIHRoZSBHUFMgc2lnbmFsIGxvY2tzLCB0aGUgZHJpdmVyCj4+ID4+IHN0YXJ0cyByZXBv
-cnRpbmcgdGhlIHBpbiBpbiB0aGUgUkNMSyBzZXQuIFRoZW4gaXQgaXMgcG9zc2libGUgdG8KPj4g
-Pj4gc2V0IHVwIHRyYWNraW5nIG9mIHRoYXQgcGluLgo+PiA+Cj4+ID4gVGhhdCB3b24ndCBiZSBl
-bmFibGVkIGJlZm9yZSB3ZSBnZXQgdGhlIERQTEwgc3Vic3lzdGVtIHJlYWR5Lgo+Pgo+PiBJdCBt
-aWdodCBwcm92ZSBjaGFsbGVuZ2luZyB0byByZXRyb2ZpdCBhbiBleGlzdGluZyBuZXRkZXYtY2Vu
-dHJpYwo+PiBpbnRlcmZhY2UgaW50byBhIG1vcmUgZ2VuZXJpYyBtb2RlbC4gSXQgd291bGQgYmUg
-YmV0dGVyIHRvIG1vZGVsIHRoaXMKPj4gcHJvcGVybHkgZnJvbSBkYXkgb25lLCBhbmQgT0ssIGlm
-IHdlIGNhbiBjYXJ2ZSBvdXQgYSBzdWJzZXQgb2YgdGhhdAo+PiBtb2RlbCB0byBpbXBsZW1lbnQg
-bm93LCBhbmQgbGVhdmUgdGhlIHJlc3QgZm9yIGxhdGVyLCBmaW5lLiBCdXQgdGhlCj4+IGN1cnJl
-bnQgbW9kZWwgZG9lcyBub3Qgc3RyaWtlIG1lIGFzIGhhdmluZyBhIG5hdHVyYWwgbWlncmF0aW9u
-IHBhdGggdG8KPj4gc29tZXRoaW5nIG1vcmUgZ2VuZXJpYy4gRS5nLiByZXBvcnRpbmcgdGhlIEVF
-QyBzdGF0ZSB0aHJvdWdoIHRoZQo+PiBpbnRlcmZhY2VzIGF0dGFjaGVkIHRvIHRoYXQgRUVDLi4u
-IGxpa2UsIHRoYXQgd2lsbCBoYXZlIHRvIHN0YXksIGV2ZW4gYXQKPj4gYSB0aW1lIHdoZW4gaXQg
-aXMgc3VwZXJzZWRlZCBieSBhIGJldHRlciBpbnRlcmZhY2UuCj4KPiBUaGUgcmVjb3ZlcmVkIGNs
-b2NrIEFQSSB3aWxsIG5vdCBjaGFuZ2UgLSBvbmx5IEVFQ19TVEFURSBpcyBpbgo+IHF1ZXN0aW9u
-LiBXZSBjYW4gZWl0aGVyIHJlZGlyZWN0IHRoZSBjYWxsIHRvIHRoZSBEUExMIHN1YnN5c3RlbSwg
-b3IKPiBqdXN0IGFkZCB0aGUgRFBMTCBJRFggSW50byB0aGF0IGNhbGwgYW5kIHJldHVybiBpdC4K
-Ckl0IHdvdWxkIGJlIGJldHRlciB0byBoYXZlIGEgZmlyc3QtY2xhc3MgRFBMTCBvYmplY3QsIGhv
-d2V2ZXIgdmVzdGlnaWFsLAppbiB0aGUgaW5pdGlhbCBzdWJtaXNzaW9uLgoKPj4gPj4gSXQgc2Vl
-bXMgdG8gbWUgaXQgd291bGQgYmUgZWFzaWVyIHRvIHVuZGVyc3RhbmQsIGFuZCB0byB3cml0ZQo+
-PiA+PiB1c2VyLXNwYWNlIHRvb2xzIGFuZCBkcml2ZXJzIGZvciwgYSBtb2RlbCB0aGF0IGhhcyBF
-RUMgYXMgYW4KPj4gPj4gZXhwbGljaXQgZmlyc3QtY2xhc3Mgb2JqZWN0LiBUaGF0J3Mgd2hlcmUg
-dGhlIEVFQyBzdGF0ZSBuYXR1cmFsbHkKPj4gPj4gYmVsb25ncywgdGhhdCdzIHdoZXJlIHRoZSBw
-aW4gcmFuZ2UgbmF0dXJhbGx5IGJlbG9uZ3MuIE5ldGRldnMKPj4gPj4gc2hvdWxkIGhhdmUgYSBy
-ZWZlcmVuY2UgdG8gRUVDIGFuZCBwaW5zLCBub3QgcHJlc2VudCB0aGlzCj4+ID4+IGluZm9ybWF0
-aW9uIGFzIGlmIHRoZXkgb3duIGl0LiBBIGZpcnN0LWNsYXNzIEVFQyB3b3VsZCBhbHNvIGFsbG93
-Cj4+ID4+IHRvIGxhdGVyIGZpZ3VyZSBvdXQgaG93IHRvIGhvb2sgdXAgUEhDIGFuZCBFRUMuCj4+
-ID4KPj4gPiBXZSBoYXZlIHRoZSB1c2Vyc3BhY2UgdG9vbCwgYnV0IGNhbuKAmXQgdXBzdHJlYW0g
-aXQgdW50aWwgd2UgZGVmaW5lCj4+ID4ga2VybmVsIEludGVyZmFjZXMuIEl0J3MgcGFyYWdyYXBo
-IDIyIDooCj4+Cj4+IEknbSBzdXJlIHlvdSBkbywgcHJlc3VtYWJseSB5b3UgdGVzdCB0aGlzIHNv
-bWVob3cuIFN0aWxsLCBhcyBhCj4+IHBvdGVudGlhbCBjb25zdW1lciBvZiB0aGF0IGludGVyZmFj
-ZSwgSSB3aWxsIGFic29sdXRlbHkgcG9rZSBhdCBpdCB0bwo+PiBmaWd1cmUgb3V0IGhvdyB0byB1
-c2UgaXQsIHdoYXQgaXQgbGV0cyBtZSB0byBkbywgYW5kIHdoYXQgd29uJ3Qgd29yay4KPgo+IFRo
-YXQncyB3aHkgbm93IEkgd2FudCB0byBlbmFibGUgdmVyeSBiYXNpYyBmdW5jdGlvbmFsaXR5IHRo
-YXQgd2lsbCBub3QKPiBnbyBhd2F5IGFueXRpbWUgc29vbi4KClRoZSBpc3N1ZSBpcyB0aGF0IHRo
-ZSBBUElzIHdvbid0IGdvIGF3YXkgYW55IHRpbWUgc29vbiBlaXRoZXIuIFRoYXQncwp3aHkgcGVv
-cGxlIG9iamVjdCB0byB5b3VyIHByb3Bvc2FsIHNvIHN0cm9uZ2x5LiBCZWNhdXNlIHdlIHdvbid0
-IGJlIGFibGUKdG8gZml4IHRoaXMgbGF0ZXIsIGFuZCB3ZSBfYWxyZWFkeV8gc2VlIHNob3J0Y29t
-aW5ncyBub3cuCgo+IE1hcHBpbmcgYmV0d2VlbiBwb3J0IGFuZCByZWNvdmVyZWQgY2xvY2sgKGFz
-IGluIHRha2UgbXkgY2xvY2sgYW5kCj4gb3V0cHV0IG9uIHRoZSBmaXJzdCBQSFkncyByZWNvdmVy
-ZWQgY2xvY2sgb3V0cHV0KSBhbmQgY2hlY2tpbmcgdGhlCj4gc3RhdGUgb2YgdGhlIGNsb2NrLgoK
-V2hlcmUgaXMgdGhhdCBtYXBwaW5nPyBJIHNlZSBhIHBlci1uZXRkZXYgY2FsbCBmb3IgYSBsaXN0
-IG9mIHBpbnMgdGhhdApjYXJyeSBSQ0xLLCBhbmQgdGhlIHN0YXRlIGFzIHdlbGwuIEkgZG9uJ3Qg
-c2VlIGEgd2F5IHRvIGRpc3Rpbmd1aXNoCndoaWNoIGlzIHdoaWNoIGluIGFueSB3YXkuCgo+PiBC
-VFcsIHdoYXQgd2UndmUgZG9uZSBpbiB0aGUgcGFzdCBpbiBhIHNpdHVhdGlvbiBsaWtlIHRoaXMg
-d2FzLCBoZXJlJ3MKPj4gdGhlIGN1cnJlbnQgc3VibWlzc2lvbiwgaGVyZSdzIGEgcG9pbnRlciB0
-byBhIEdJVCB3aXRoIG1vcmUgc3R1ZmYgd2UKPj4gcGxhbiB0byBzZW5kIGxhdGVyIG9uLCBoZXJl
-J3MgYSBwb2ludGVyIHRvIGEgR0lUIHdpdGggdGhlIHVzZXJzcGFjZQo+PiBzdHVmZi4gSSBkb3Vi
-dCBhbnlib2R5IGFjdHVhbGx5IGxvb2tzIGF0IHRoYXQgY29kZSwgYWluJ3Qgbm9ib2R5IGdvdAo+
-PiB0aW1lIGZvciB0aGF0LCBidXQgcmVhbGx5IHRoZXJlJ3Mgbm8gY2F0Y2ggMjIuCj4KPiBVbmZv
-cnR1bmF0ZWx5LCB0aGUgdXNlcnNwYWNlIG9mIGl0IHdpbGwgYmUgYSBwYXJ0IG9mIGxpbnV4cHRw
-IGFuZCB3ZQo+IGNhbid0IHVwc3RyZWFtIGl0IHBhcnRpYWxseSBiZWZvcmUgd2UgZ2V0IHRob3Nl
-IGJhc2ljcyBkZWZpbmVkIGhlcmUuCgpKdXN0IHB1c2ggaXQgdG8gZ2l0aHViIG9yIHdoZXJlZXZl
-cj8KCj4gTW9yZSBhZHZhbmNlZCBmdW5jdGlvbmFsaXR5IHdpbGwgYmUgZ3Jvd24gb3JnYW5pY2Fs
-bHksIGFzIEkgYWxzbyBoYXZlCj4gYSBsaW1pdGVkIHZpZXcgb2YgU3luY0UgYW5kIGFtIG5vdCBl
-eHBlcnQgb24gc3dpdGNoZXMuCgpXZSBhcmUgZ3Jvd2luZyBpdCBvcmdhbmljYWxseSBfcmlnaHQg
-bm93Xy4gSSBhbSBzdHJvbmdseSBhZHZvY2F0aW5nIGFuCm9yZ2FuaWMgZ3Jvd3RoIGluIHRoZSBk
-aXJlY3Rpb24gb2YgYSBmaXJzdC1jbGFzcyBEUExMIG9iamVjdC4KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlz
-dApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+
+>> >> >> First, what if more than one out_idx is set? What are drivers / HW
+>> >> >> meant to do with this? What is the expected behavior?
+>> >> >
+>> >> > Expected behavior is deployment specific. You can use different phy
+>> >> > recovered clock outputs to implement active/passive mode of clock
+>> >> > failover.
+>> >>
+>> >> How? Which one is primary and which one is backup? I just have two
+>> >> enabled pins...
+>> >
+>> > With this API you only have ports and pins and set up the redirection.
+>> 
+>> Wait, so how do I do failover? Which of the set pins in primary and
+>> which is backup? Should the backup be sticky, i.e. do primary and backup
+>> switch roles after primary goes into holdover? It looks like there are a
+>> number of policy decisions that would be best served by a userspace
+>> tool.
+>
+> The clock priority is configured in the SEC/EEC/DPLL. Recovered clock API
+> only configures the redirections (aka. Which clocks will be available to the
+> DPLL as references). In some DPLLs the fallback is automatic as long as
+> secondary clock is available when the primary goes away. Userspace tool
+> can preconfigure that before the failure occurs.
+
+OK, I see. It looks like this priority list implies which pins need to
+be enabled. That makes the netdev interface redundant.
+
+>> > The EEC part is out of picture and will be part of DPLL subsystem.
+>> 
+>> So about that. I don't think it's contentious to claim that you need to
+>> communicate EEC state somehow. This proposal does that through a netdev
+>> object. After the DPLL subsystem comes along, that will necessarily
+>> provide the same information, and the netdev interface will become
+>> redundant, but we will need to keep it around.
+>> 
+>> That is a strong indication that a first-class DPLL object should be
+>> part of the initial submission.
+>
+> That's why only a bare minimum is proposed in this patch - reading the state
+> and which signal is used as a reference.
+
+The proposal includes APIs that we know _right now_ will be historical
+baggage by the time the DPLL object is added. That does not constitute
+bare minimum.
+
+>> >> >> Second, as a user-space client, how do I know that if ports 1 and
+>> >> >> 2 both report pin range [A; B], that they both actually share the
+>> >> >> same underlying EEC? Is there some sort of coordination among the
+>> >> >> drivers, such that each pin in the system has a unique ID?
+>> >> >
+>> >> > For now we don't, as we don't have EEC subsystem. But that can be
+>> >> > solved by a config file temporarily.
+>> >>
+>> >> I think it would be better to model this properly from day one.
+>> >
+>> > I want to propose the simplest API that will work for the simplest
+>> > device, follow that with the userspace tool that will help everyone
+>> > understand what we need in the DPLL subsystem, otherwise it'll be hard
+>> > to explain the requirements. The only change will be the addition of
+>> > the DPLL index.
+>> 
+>> That would be fine if there were a migration path to the more complete
+>> API. But as DPLL object is introduced, even the APIs that are superseded
+>> by the DPLL APIs will need to stay in as a baggage.
+>
+> The migration paths are:
+> A) when the DPLL API is there check if the DPLL object is linked to the given netdev
+>      in the rtnl_eec_state_get - if it is - get the state from the DPLL object there
+> or
+> B) return the DPLL index linked to the given netdev and fail the rtnl_eec_state_get
+>      so that the userspace tool will need to switch to the new API
+
+Well, we call B) an API breakage, and it won't fly. That API is there to
+stay, and operate like it operates now.
+
+That leaves us with A), where the API becomes a redundant wart that we
+can never get rid of.
+
+> Also the rtnl_eec_state_get won't get obsolete in all cases once we get the DPLL
+> subsystem, as there are solutions where SyncE DPLL is embedded in the PHY
+> in which case the rtnl_eec_state_get will return all needed information without
+> the need to create a separate DPLL object.
+
+So the NIC or PHY driver will register the object. Easy peasy.
+
+Allowing the interface to go through a netdev sometimes, and through a
+dedicated object other times, just makes everybody's life harder. It's
+two cases that need to be handled in user documentation, in scripts, in
+UAPI clients, when reviewing kernel code.
+
+This is a "hysterical raisins" sort of baggage, except we see up front
+that's where it goes.
+
+> The DPLL object makes sense for advanced SyncE DPLLs that provide
+> additional functionality, such as external reference/output pins.
+
+That does not need to be the case.
+
+>> >> >> Further, how do I actually know the mapping from ports to pins?
+>> >> >> E.g. as a user, I might know my master is behind swp1. How do I
+>> >> >> know what pins correspond to that port? As a user-space tool
+>> >> >> author, how do I help users to do something like "eec set clock
+>> >> >> eec0 track swp1"?
+>> >> >
+>> >> > That's why driver needs to be smart there and return indexes
+>> >> > properly.
+>> >>
+>> >> What do you mean, properly? Up there you have RTM_GETRCLKRANGE
+>> that
+>> >> just gives me a min and a max. Is there a policy about how to
+>> >> correlate numbers in that range to... ifindices, netdevice names,
+>> >> devlink port numbers, I don't know, something?
+>> >
+>> > The driver needs to know the underlying HW and report those ranges
+>> > correctly.
+>> 
+>> How do I know _as a user_ though? As a user I want to be able to say
+>> something like "eec set dev swp1 track dev swp2". But the "eec" tool has
+>> no way of knowing how to set that up.
+>
+> There's no such flexibility. It's more like timing pins in the PTP subsystem - we
+> expose the API to control them, but it's up to the final user to decide how 
+> to use them.
+
+As a user, say I know the signal coming from swp1 is freqency-locked.
+How can I instruct the switch ASIC to propagate that signal to the other
+ports? Well, I go through swp2..swpN, and issue RTM_SETRCLKSTATE or
+whatever, with flags indicating I set up tracking, and pin number...
+what exactly? How do I know which pin carries clock recovered from swp1?
+
+> If we index the PHY outputs in the same way as the DPLL subsystem will
+> see them in the references part it should be sufficient to make sense
+> out of them.
+
+What do you mean by indexing PHY outputs? Where are those indexed?
+
+>> >> How do several drivers coordinate this numbering among themselves?
+>> >> Is there a core kernel authority that manages pin number
+>> >> de/allocations?
+>> >
+>> > I believe the goal is to create something similar to the ptp
+>> > subsystem. The driver will need to configure the relationship
+>> > during initialization and the OS will manage the indexes.
+>> 
+>> Can you point at the index management code, please?
+>
+> Look for the ptp_clock_register function in the kernel - it owns the
+> registration of the ptp clock to the subsystem.
+
+But I'm talking about the SyncE code.
+
+>> >> >> Additionally, how would things like external GPSs or 1pps be
+>> >> >> modeled? I guess the driver would know about such interface, and
+>> >> >> would expose it as a "pin". When the GPS signal locks, the driver
+>> >> >> starts reporting the pin in the RCLK set. Then it is possible to
+>> >> >> set up tracking of that pin.
+>> >> >
+>> >> > That won't be enabled before we get the DPLL subsystem ready.
+>> >>
+>> >> It might prove challenging to retrofit an existing netdev-centric
+>> >> interface into a more generic model. It would be better to model this
+>> >> properly from day one, and OK, if we can carve out a subset of that
+>> >> model to implement now, and leave the rest for later, fine. But the
+>> >> current model does not strike me as having a natural migration path to
+>> >> something more generic. E.g. reporting the EEC state through the
+>> >> interfaces attached to that EEC... like, that will have to stay, even at
+>> >> a time when it is superseded by a better interface.
+>> >
+>> > The recovered clock API will not change - only EEC_STATE is in
+>> > question. We can either redirect the call to the DPLL subsystem, or
+>> > just add the DPLL IDX Into that call and return it.
+>> 
+>> It would be better to have a first-class DPLL object, however vestigial,
+>> in the initial submission.
+>
+> As stated above - DPLL subsystem won't render EEC state useless.
+
+Of course not, the state is still important. But it will render the API
+useless, and worse, an extra baggage everyone needs to know about and
+support.
+
+>> > More advanced functionality will be grown organically, as I also have
+>> > a limited view of SyncE and am not expert on switches.
+>> 
+>> We are growing it organically _right now_. I am strongly advocating an
+>> organic growth in the direction of a first-class DPLL object.
+>
+> If it helps - I can separate the PHY RCLK control patches and leave EEC state
+> under review
+
+Not sure what you mean by that.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
