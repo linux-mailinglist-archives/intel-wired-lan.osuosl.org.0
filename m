@@ -2,124 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA3D844CB66
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Nov 2021 22:45:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B776144D8AC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Nov 2021 15:55:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E18B5404BD;
-	Wed, 10 Nov 2021 21:45:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 00B65404EF;
+	Thu, 11 Nov 2021 14:55:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wOwt3vtbIgk0; Wed, 10 Nov 2021 21:45:26 +0000 (UTC)
+	with ESMTP id pQcOJztAZvBy; Thu, 11 Nov 2021 14:55:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C95E1404BB;
-	Wed, 10 Nov 2021 21:45:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 195344049F;
+	Thu, 11 Nov 2021 14:55:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C750E1BF59F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 21:06:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B5CA21BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C12EC401F0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 21:06:05 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A94D540459
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=nvidia.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1DsEfCly5Si0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Nov 2021 21:06:04 +0000 (UTC)
+ with ESMTP id y2Q4JA0h87bS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Nov 2021 09:06:06 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2087.outbound.protection.outlook.com [40.107.220.87])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5193740151
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Nov 2021 21:06:04 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jsj0A8VvodnnMPckZSZy2c0rxfe5WT0Gv/2xBz/1swljKi4EqhoDWqx90B4fsSsk6efMqUB+ZYKcdOihxqHMpngbrI7kex7qzxMYz8D8WOpq/+QnfISi3ENmFz6qeLW9NWmAmrLul4an2mlbS4krb1vLfGkWqrUqCZv0KV7v7iZ7AQXaFaWvuonv6AbkgWr3/X7C47gDqW9sevKQIPEeD+FrvmKAVSH62nzBEh5hCPKBkFiqqhpFHSiPEKgnR4wfkE/EclnJXrYBSVVeB+UkxXfaIx8DqMei/KTnztT8/1Pt+inLT3TY2KkHGABqNKmdPXG3T4j2hqmaMHLHFFYuSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qRjGRqq4kbQW+apXd+ghheDDBImx7zD5nXMgw6e8IEY=;
- b=SXMD93+8rVNwIKBOwn8YvKsfnKq77CZ+hoXQjjo7wHTOFhcVq73oOx/diBNGRPjnB2ggKLXOGe24EnGBYBIN7LFBjMf8dlWH0nvrhJL4Frho4fvRT6xGFn3dmPNL1WP3L6TvIxdzvwKuu6zF8SxT/j3IX/re64GQL+fkYUCFPOAwrNkMz+ghnqbF8DDZRyvEJBYq/Gc1TU5qBMtzoS9ApDK5unCWgeIIZVtM1RNt8cyipPw5MYxbailtJ6QViw6oS+hWzyntJPrIlRZNv5dMhqQ+FN5M8BxZBtQJeDScO9+KkPHyEk7rn+fm1/eMtkz8Ar4HYFx7KqYmeoehvnk1jQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qRjGRqq4kbQW+apXd+ghheDDBImx7zD5nXMgw6e8IEY=;
- b=mq0E84oeG/LndZVoHJo/cozZlMiaiMY5PMRISk10ii106RyE3ajHU/vKX1ZbWT8VJU4frdTILTLW/8WVIEHBg2it0NCed99LTxQcanMidY9xcOkDkksKKZH+HckwyLNRaEPyo73z2yupBfIwfib4rjZ8mrxMCTnBbpNE1QXJAydOYl4FaLEiUxxmogZlLaFvakXgDhcuYaAixuxiq/wB1iVT/t07Tz5AlWEwrskIsgRyowIggrKWi2EiYFOSGt7zU8gpPczLd6AIbnLvjdbX3xWEr+2xWHJj1h5vXZSoDfuDhpm9oHH+L/vJByK95GCT1d4x77KPGmYwvF558Oz6wQ==
-Received: from DS7PR03CA0295.namprd03.prod.outlook.com (2603:10b6:5:3ad::30)
- by CO6PR12MB5426.namprd12.prod.outlook.com (2603:10b6:5:35d::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.16; Wed, 10 Nov
- 2021 21:06:02 +0000
-Received: from DM6NAM11FT035.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:3ad:cafe::33) by DS7PR03CA0295.outlook.office365.com
- (2603:10b6:5:3ad::30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10 via Frontend
- Transport; Wed, 10 Nov 2021 21:06:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- DM6NAM11FT035.mail.protection.outlook.com (10.13.172.100) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4690.15 via Frontend Transport; Wed, 10 Nov 2021 21:06:01 +0000
-Received: from yaviefel (172.20.187.5) by HQMAIL107.nvidia.com (172.20.187.13)
- with Microsoft SMTP Server (TLS) id 15.0.1497.18;
- Wed, 10 Nov 2021 21:05:56 +0000
-References: <20211105205331.2024623-1-maciej.machnikowski@intel.com>
- <20211105205331.2024623-7-maciej.machnikowski@intel.com>
- <87r1bqcyto.fsf@nvidia.com>
- <MW5PR11MB5812B0A4E6227C6896AC12B5EA929@MW5PR11MB5812.namprd11.prod.outlook.com>
- <87mtmdcrf2.fsf@nvidia.com>
- <MW5PR11MB5812D4A8419C37FE9C890D3AEA929@MW5PR11MB5812.namprd11.prod.outlook.com>
- <87bl2scnly.fsf@nvidia.com>
- <MW5PR11MB5812034EA5FC331FA5A2D37CEA939@MW5PR11MB5812.namprd11.prod.outlook.com>
- <874k8kca9t.fsf@nvidia.com>
- <MW5PR11MB5812757CFF0ACED1D9CFC5A2EA939@MW5PR11MB5812.namprd11.prod.outlook.com>
-User-agent: mu4e 1.4.15; emacs 27.2
-From: Petr Machata <petrm@nvidia.com>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-In-Reply-To: <MW5PR11MB5812757CFF0ACED1D9CFC5A2EA939@MW5PR11MB5812.namprd11.prod.outlook.com>
-Date: Wed, 10 Nov 2021 22:05:54 +0100
-Message-ID: <87y25vbu19.fsf@nvidia.com>
+Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com
+ [IPv6:2607:f8b0:4864:20::534])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D9E0E40455
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:05 +0000 (UTC)
+Received: by mail-pg1-x534.google.com with SMTP id b4so4631111pgh.10
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KpOAFMNjh0s5tcyNo8DYQ5ka2hkVxOnnrkGeHw7Uvhw=;
+ b=duwMUDVon6KiQ1mxjDWrn2GXPxuZzSM6FJe3QD/BJ7Jk4mex4apDbkCFm7KzE8czLH
+ XDsNlWuAKEhOdv3Hn1umIhJkjZiqs6rtr4b/gW+u63UbqqYYl1ljftYTaJjqMmd3VBcq
+ QFWuhEVNF2WomJClYgnUbGIPpsugOv5ist2Yk+11nSZ+PQL1FWk6Bj4a4iAN1Fh+XMKj
+ avtbGTvNj+pfTNz5C2Rdn4ETIQzvRh5czRjRm9wMBVA2G9YyUxiL+mn8C5kZZMyjHttD
+ zhMvCEYiUgn1LznujFjC3JrRMOTLBkYcfKc5YNKo89GAl6VYggypgSNNb8EPjNUKLavG
+ f/Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KpOAFMNjh0s5tcyNo8DYQ5ka2hkVxOnnrkGeHw7Uvhw=;
+ b=yGw68Yoiv4hnjRag/KG6uUUTHeqoZs46syH/A8LG0dBFiVxk1RryEVLf3Aaa/FRb5l
+ twl9vP29WCOZAmzOgpFSY0Z2JyHEZQcIAKbye8fL7QEJjFS7jxAX/XsGexHbxNHIWqIL
+ it19P5iqvRz/wAaDoOpIzHy2mfebQg1ND38BkAx57z2roeyzBNgNJFqIdiUkfRQwzQiO
+ 2F58L+5kPU0emsRjxJRyHRiurMNirgdIevJeCCpMcwwZEA8jaQ/f9TiOUMdZ4eJmh+Oa
+ gZxuSTmYiZVI3MFyAV7uWRoxTDo/fTQiETeH38LQNgMIY+mAuf/oAjfl4igHDpxYthw1
+ F7TQ==
+X-Gm-Message-State: AOAM531KZFsg3KsaQI3IbsIh8LhDmGL4Z9s9G9zfVw7KSVf8fxLfm0pJ
+ RrvrH915iheqShir5QVNDqE=
+X-Google-Smtp-Source: ABdhPJwWKerb4kjmdY19cwx0Thw11bY7zQ4ZeIflmMBVBm+EM9XX9GzD6HdCPL3iIa8LdnBHSceLlA==
+X-Received: by 2002:a05:6a00:b83:b0:49f:b555:1183 with SMTP id
+ g3-20020a056a000b8300b0049fb5551183mr5426900pfj.32.1636621565302; 
+ Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id e187sm2197788pfe.181.2021.11.11.01.06.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+From: cgel.zte@gmail.com
+X-Google-Original-From: luo.penghao@zte.com.cn
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Thu, 11 Nov 2021 09:05:55 +0000
+Message-Id: <20211111090555.158828-1-luo.penghao@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Originating-IP: [172.20.187.5]
-X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
- HQMAIL107.nvidia.com (172.20.187.13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 36b897ce-cdd6-4108-f597-08d9a48de6a3
-X-MS-TrafficTypeDiagnostic: CO6PR12MB5426:
-X-Microsoft-Antispam-PRVS: <CO6PR12MB54262EC3D8A53F0F69D16E1CD6939@CO6PR12MB5426.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 5ujQLE/jpTvKxCuNYuy7Ae30RKUD5LehO5N/d+tDaR20yOzbvKM15wXapkdukyLQIxkFXXdz0OXAJ2K+WHfzDAs0nf/RvVQBokOg1OTjI1Tbbe4Cs0PJVqxR7EX2SsZv+5EgtkSGCHraVYBCaC9bsSxMzBWqvL+ERdDa4IjDAYhqn8EH5hJVAHwlc1co6ygfL2twEzrg7qfCQYJFSKI4AIneOHKBnZYnPswEaiSGNUUFuaeMMKWnES8P0cVuf6CypaeqaUD52aCVw7h45dyXmgxbkgZV3qctQQnmBW9J66UlYuZOqkUJd1qYAWZ7rBWu+7RaDuUor446FXOMyPm1PX6C3ft4zJC2H5yVMSVk1g8+Wk3iydhKsCcpGthzAX3Q/uMeposFgEsvmh90lUWlQqkBFrRxlRVSQ8j2rUbZ/wAcOsKtHTpQehNxQS/whoH9SE+pd3NTcaW15iehzWzE6yDSbnEU9aE/jnV0QgUj+dcQoxZ9++fgS3ahyA4PCsB/mag5unnB4FygaSy8/IFpopr80w07HJ4E1uy6HPlKjiEllssl9iFG2Vbp01we/M1xKYnKyUsPwR2M6VEjGU5tpt9acf0Rqa82qO9JKesaVc7/chY71/0zD8FaGRMvV/6gJiYtzhlYqZAKh7pccejAxxy/3LExu5y0PlksdGnR5CxHiRXl5GmdIO4kt1N9B7JCxRx8+Lx0PAmalhC6CmS1nQ==
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(46966006)(36840700001)(6916009)(83380400001)(7636003)(186003)(356005)(508600001)(4326008)(16526019)(2616005)(70206006)(47076005)(86362001)(70586007)(336012)(7416002)(426003)(2906002)(54906003)(316002)(26005)(5660300002)(8676002)(36756003)(36860700001)(82310400003)(8936002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2021 21:06:01.5395 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 36b897ce-cdd6-4108-f597-08d9a48de6a3
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT035.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR12MB5426
-X-Mailman-Approved-At: Wed, 10 Nov 2021 21:45:22 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/6] docs: net: Add
- description of SyncE interfaces
+X-Mailman-Approved-At: Thu, 11 Nov 2021 14:55:35 +0000
+Subject: [Intel-wired-lan] [PATCH linux] e1000e: Delete redundant variable
+ definitions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,81 +89,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Petr Machata <petrm@nvidia.com>, "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "abyagowi@fb.com" <abyagowi@fb.com>, "saeed@kernel.org" <saeed@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "idosch@idosch.org" <idosch@idosch.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Zeal Robot <zealci@zte.com.cn>,
+ linux-kernel@vger.kernel.org, luo penghao <luo.penghao@zte.com.cn>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: luo penghao <luo.penghao@zte.com.cn>
 
-Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+The local variable is not used elsewhere in the function
 
->> >> Wait, so how do I do failover? Which of the set pins in primary and
->> >> which is backup? Should the backup be sticky, i.e. do primary and backup
->> >> switch roles after primary goes into holdover? It looks like there are a
->> >> number of policy decisions that would be best served by a userspace
->> >> tool.
->> >
->> > The clock priority is configured in the SEC/EEC/DPLL. Recovered clock API
->> > only configures the redirections (aka. Which clocks will be available to the
->> > DPLL as references). In some DPLLs the fallback is automatic as long as
->> > secondary clock is available when the primary goes away. Userspace tool
->> > can preconfigure that before the failure occurs.
->> 
->> OK, I see. It looks like this priority list implies which pins need to
->> be enabled. That makes the netdev interface redundant.
->
-> Netdev owns the PHY, so it needs to enable/disable clock from a given
-> port/lane - other than that it's EECs task. Technically - those subsystems
-> are separate.
+The clang_analyzer complains as follows:
 
-So why is the UAPI conflating the two?
+drivers/net/ethernet/intel/e1000e/ptp.c:241:19 warning
 
->> As a user, say I know the signal coming from swp1 is freqency-locked.
->> How can I instruct the switch ASIC to propagate that signal to the other
->> ports? Well, I go through swp2..swpN, and issue RTM_SETRCLKSTATE or
->> whatever, with flags indicating I set up tracking, and pin number...
->> what exactly? How do I know which pin carries clock recovered from swp1?
->
-> You send the RTM_SETRCLKSTATE to the port that has the best reference
-> clock available.
-> If you want to know which pin carries the clock you simply send the
-> RTM_GETRCLKSTATE and it'll return the list of possible outputs with the flags
-> saying which of them are enabled (see the newer revision)
+Value stored to 'hw' during its initialization is never read
 
-As a user I would really prefer to have a pin reference reported
-somewhere at the netdev / phy / somewhere. Similarly to how a netdev can
-reference a PHC. But whatever, I won't split hairs over this, this is
-acutally one aspect that is easy to add later.
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: luo penghao <luo.penghao@zte.com.cn>
+---
+ drivers/net/ethernet/intel/e1000e/ptp.c | 1 -
+ 1 file changed, 1 deletion(-)
 
->> >> > More advanced functionality will be grown organically, as I also have
->> >> > a limited view of SyncE and am not expert on switches.
->> >>
->> >> We are growing it organically _right now_. I am strongly advocating an
->> >> organic growth in the direction of a first-class DPLL object.
->> >
->> > If it helps - I can separate the PHY RCLK control patches and leave EEC state
->> > under review
->> 
->> Not sure what you mean by that.
->
-> Commit RTM_GETRCLKSTATE and RTM_SETRCLKSTATE now, wait with 
-> RTM_GETEECSTATE  till we clarify further direction of the DPLL subsystem
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index eb5c014..e6dcac9 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -238,7 +238,6 @@ static void e1000e_systim_overflow_work(struct work_struct *work)
+ {
+ 	struct e1000_adapter *adapter = container_of(work, struct e1000_adapter,
+ 						     systim_overflow_work.work);
+-	struct e1000_hw *hw = &adapter->hw;
+ 	struct timespec64 ts;
+ 	u64 ns;
+ 
+-- 
+2.15.2
 
-It's not just state though. There is another oddity that I am not sure
-is intentional. The proposed UAPI allows me to set up fairly general
-frequency bridging. In a device with a bunch of ports, it would allow me
-to set up, say, swp1 to track RCLK from swp2, then swp3 from swp4, etc.
-But what will be the EEC state in that case?
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
