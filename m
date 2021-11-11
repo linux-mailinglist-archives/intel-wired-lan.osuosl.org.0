@@ -1,82 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B776144D8AC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Nov 2021 15:55:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AADC844D8AD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Nov 2021 15:55:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 00B65404EF;
-	Thu, 11 Nov 2021 14:55:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2951760724;
+	Thu, 11 Nov 2021 14:55:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pQcOJztAZvBy; Thu, 11 Nov 2021 14:55:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Y_NboQeJyLrq; Thu, 11 Nov 2021 14:55:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 195344049F;
-	Thu, 11 Nov 2021 14:55:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28C2360712;
+	Thu, 11 Nov 2021 14:55:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B5CA21BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 728B01BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:07:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A94D540459
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 60A3E606A3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:07:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y2Q4JA0h87bS for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Nov 2021 09:06:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 30U6jWFWW4Bv for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Nov 2021 09:07:19 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com
- [IPv6:2607:f8b0:4864:20::534])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D9E0E40455
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:06:05 +0000 (UTC)
-Received: by mail-pg1-x534.google.com with SMTP id b4so4631111pgh.10
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D602C6067D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 09:07:19 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id t21so5268626plr.6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 01:07:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=KpOAFMNjh0s5tcyNo8DYQ5ka2hkVxOnnrkGeHw7Uvhw=;
- b=duwMUDVon6KiQ1mxjDWrn2GXPxuZzSM6FJe3QD/BJ7Jk4mex4apDbkCFm7KzE8czLH
- XDsNlWuAKEhOdv3Hn1umIhJkjZiqs6rtr4b/gW+u63UbqqYYl1ljftYTaJjqMmd3VBcq
- QFWuhEVNF2WomJClYgnUbGIPpsugOv5ist2Yk+11nSZ+PQL1FWk6Bj4a4iAN1Fh+XMKj
- avtbGTvNj+pfTNz5C2Rdn4ETIQzvRh5czRjRm9wMBVA2G9YyUxiL+mn8C5kZZMyjHttD
- zhMvCEYiUgn1LznujFjC3JrRMOTLBkYcfKc5YNKo89GAl6VYggypgSNNb8EPjNUKLavG
- f/Xg==
+ bh=6tQh7m9CUeENmbF3fMGGxqc/RSUJgVc93rGIOxU+OrI=;
+ b=Qj7l6GMPo48D9KdVSZLmRsdv5Sy9vfmDfwiFu7iFaLtTHHyweRi649OcIvp/R6adc5
+ JwHouP9RlHkPK/hY0vQDVVDB+9DPU/bw5sInaqpf1kfItHoqt43Yp8q7xujK/nUxnqrr
+ 9W/GCNlqvdYAPDORueMS7atLjpOC8gJWZVdHLd5RnpIHKX/jixwkNIsER6/9PTn/aEpn
+ j+QoHnFT71FOLJnRNlWN8K5b60L0AMtJEXm2I2wECJyRm4DBzfsl7eyfTvA9saLJq+Br
+ CahM3izsUhSZAWLSAaD4SUfO8SthKxXcIYBjvUZyxHsrb8jsiSSudLAHEzhfEeg4frXN
+ thmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=KpOAFMNjh0s5tcyNo8DYQ5ka2hkVxOnnrkGeHw7Uvhw=;
- b=yGw68Yoiv4hnjRag/KG6uUUTHeqoZs46syH/A8LG0dBFiVxk1RryEVLf3Aaa/FRb5l
- twl9vP29WCOZAmzOgpFSY0Z2JyHEZQcIAKbye8fL7QEJjFS7jxAX/XsGexHbxNHIWqIL
- it19P5iqvRz/wAaDoOpIzHy2mfebQg1ND38BkAx57z2roeyzBNgNJFqIdiUkfRQwzQiO
- 2F58L+5kPU0emsRjxJRyHRiurMNirgdIevJeCCpMcwwZEA8jaQ/f9TiOUMdZ4eJmh+Oa
- gZxuSTmYiZVI3MFyAV7uWRoxTDo/fTQiETeH38LQNgMIY+mAuf/oAjfl4igHDpxYthw1
- F7TQ==
-X-Gm-Message-State: AOAM531KZFsg3KsaQI3IbsIh8LhDmGL4Z9s9G9zfVw7KSVf8fxLfm0pJ
- RrvrH915iheqShir5QVNDqE=
-X-Google-Smtp-Source: ABdhPJwWKerb4kjmdY19cwx0Thw11bY7zQ4ZeIflmMBVBm+EM9XX9GzD6HdCPL3iIa8LdnBHSceLlA==
-X-Received: by 2002:a05:6a00:b83:b0:49f:b555:1183 with SMTP id
- g3-20020a056a000b8300b0049fb5551183mr5426900pfj.32.1636621565302; 
- Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+ bh=6tQh7m9CUeENmbF3fMGGxqc/RSUJgVc93rGIOxU+OrI=;
+ b=tRjxyeTg2FTQWDYkj7b8I+JpdeFT9G/yUdYJ4InDo+SCLKsRrp6GylNat17gV1jV4D
+ e8K3NFyiftyBejyPjSpJDYgFUcMlz4N7zQI2jsWKslqRonlHqbAVJWxPlxK/P9Crg2cb
+ qBtsqqAcsBiuOur5kuh9r00AKsQRgqaeo69RvwP4C3yr4IAKnP+sPqIq0qyURvvxltPV
+ HGqBhVSRbBd1ibjTpk6NU1nnNd4xPjbCrB+PA7OhZ9xku+sOJjEtJR3uYyJaVOeuTolA
+ FcMc0PECPG463qTEPubEFpCSsKa9jlBDb5gXouqszS8OMy1RJW7L1a/Rcz+tdOL8Oav3
+ wSTg==
+X-Gm-Message-State: AOAM533KMaEa3dBgNNT0LbBjz3onOT4JrG19pMlQArgdf4IIvzic3yo7
+ zycwy57lI9iI+PDB4VO42zM=
+X-Google-Smtp-Source: ABdhPJxQqGX8kuHhJzN+8PQryU0wwT/0jPEfMR0AjotmoYG5i9API1mKERKHS58Y2r+Oh+9MSuvRmA==
+X-Received: by 2002:a17:90a:a88e:: with SMTP id
+ h14mr24345661pjq.41.1636621639398; 
+ Thu, 11 Nov 2021 01:07:19 -0800 (PST)
 Received: from localhost.localdomain ([193.203.214.57])
- by smtp.gmail.com with ESMTPSA id e187sm2197788pfe.181.2021.11.11.01.06.03
+ by smtp.gmail.com with ESMTPSA id v16sm1722731pgo.71.2021.11.11.01.07.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Nov 2021 01:06:05 -0800 (PST)
+ Thu, 11 Nov 2021 01:07:19 -0800 (PST)
 From: cgel.zte@gmail.com
 X-Google-Original-From: luo.penghao@zte.com.cn
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Date: Thu, 11 Nov 2021 09:05:55 +0000
-Message-Id: <20211111090555.158828-1-luo.penghao@zte.com.cn>
+Date: Thu, 11 Nov 2021 09:07:12 +0000
+Message-Id: <20211111090712.158901-1-luo.penghao@zte.com.cn>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Approved-At: Thu, 11 Nov 2021 14:55:35 +0000
-Subject: [Intel-wired-lan] [PATCH linux] e1000e: Delete redundant variable
- definitions
+Subject: [Intel-wired-lan] [PATCH linux-next] e1000e: Remove useless
+ variables
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,32 +98,41 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: luo penghao <luo.penghao@zte.com.cn>
 
-The local variable is not used elsewhere in the function
+This variable is not used in the function.
 
 The clang_analyzer complains as follows:
 
-drivers/net/ethernet/intel/e1000e/ptp.c:241:19 warning
+drivers/net/ethernet/intel/e1000e/netdev.c:916:19 warning
+drivers/net/ethernet/intel/e1000e/netdev.c:1310:19 warning
 
 Value stored to 'hw' during its initialization is never read
 
 Reported-by: Zeal Robot <zealci@zte.com.cn>
 Signed-off-by: luo penghao <luo.penghao@zte.com.cn>
 ---
- drivers/net/ethernet/intel/e1000e/ptp.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/net/ethernet/intel/e1000e/netdev.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
-index eb5c014..e6dcac9 100644
---- a/drivers/net/ethernet/intel/e1000e/ptp.c
-+++ b/drivers/net/ethernet/intel/e1000e/ptp.c
-@@ -238,7 +238,6 @@ static void e1000e_systim_overflow_work(struct work_struct *work)
- {
- 	struct e1000_adapter *adapter = container_of(work, struct e1000_adapter,
- 						     systim_overflow_work.work);
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index ebcb2a3..8a79681 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -914,7 +914,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 	struct e1000_adapter *adapter = rx_ring->adapter;
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct pci_dev *pdev = adapter->pdev;
 -	struct e1000_hw *hw = &adapter->hw;
- 	struct timespec64 ts;
- 	u64 ns;
- 
+ 	union e1000_rx_desc_extended *rx_desc, *next_rxd;
+ 	struct e1000_buffer *buffer_info, *next_buffer;
+ 	u32 length, staterr;
+@@ -1308,7 +1307,6 @@ static bool e1000_clean_rx_irq_ps(struct e1000_ring *rx_ring, int *work_done,
+ 				  int work_to_do)
+ {
+ 	struct e1000_adapter *adapter = rx_ring->adapter;
+-	struct e1000_hw *hw = &adapter->hw;
+ 	union e1000_rx_desc_packet_split *rx_desc, *next_rxd;
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct pci_dev *pdev = adapter->pdev;
 -- 
 2.15.2
 
