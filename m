@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 333F844DD2B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Nov 2021 22:37:46 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF0CF44DD33
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Nov 2021 22:39:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C9F7840589;
-	Thu, 11 Nov 2021 21:37:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 468D8401C9;
+	Thu, 11 Nov 2021 21:39:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r9kuio-jcaVa; Thu, 11 Nov 2021 21:37:44 +0000 (UTC)
+	with ESMTP id fRmG0oifIScK; Thu, 11 Nov 2021 21:39:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CD24B40584;
-	Thu, 11 Nov 2021 21:37:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B90F404CA;
+	Thu, 11 Nov 2021 21:39:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF5EA1BF388
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:37:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A95661BF388
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:38:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 99A0060B73
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:37:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A541B404E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:38:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BuHQX3jrh_wt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Nov 2021 21:37:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iQY76BRIHSxS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Nov 2021 21:38:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CB970607C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:37:38 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10165"; a="231740114"
-X-IronPort-AV: E=Sophos;i="5.87,227,1631602800"; d="scan'208";a="231740114"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2021 13:37:38 -0800
-X-IronPort-AV: E=Sophos;i="5.87,227,1631602800"; d="scan'208";a="546666347"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A4C91404CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Nov 2021 21:38:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10165"; a="296453405"
+X-IronPort-AV: E=Sophos;i="5.87,227,1631602800"; d="scan'208";a="296453405"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2021 13:38:55 -0800
+X-IronPort-AV: E=Sophos;i="5.87,227,1631602800"; d="scan'208";a="565261625"
 Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2021 13:37:38 -0800
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2021 13:38:54 -0800
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 11 Nov 2021 13:37:22 -0800
-Message-Id: <20211111213722.606364-1-jesse.brandeburg@intel.com>
+Date: Thu, 11 Nov 2021 13:38:54 -0800
+Message-Id: <20211111213854.606452-1-jesse.brandeburg@intel.com>
 X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] e100: fix device suspend/resume
+Subject: [Intel-wired-lan] [PATCH net v1] ice: safer stats processing
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,94 +59,115 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexey Kuznetsov <axet@me.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As reported in [1], e100 was no longer working for suspend/resume
-cycles. The previous commit mentioned in the fixes appears to have
-broken things and this attempts to practice best known methods for
-device power management and keep wake-up working while allowing
-suspend/resume to work. To do this, I reorder a little bit of code
-and fix the resume path to make sure the device is enabled.
+The driver was zeroing live stats that could be fetched by
+ndo_get_stats64 at any time. This could result in inconsistent
+statistics, and the telltale sign was when reading stats frequently from
+/proc/net/dev, the stats would go backwards.
 
-[1] https://bugzilla.kernel.org/show_bug.cgi?id=214933
+Fix by collecting stats into a local, and delaying when we write to the
+structure so it's not incremental.
 
-Reported-by: Alexey Kuznetsov <axet@me.com>
+Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
---
-NOTE: Alexey tested it already and it unbreaks his system, which is a
-great start. I would like our internal team to try to do some basic
-testing but given the age of this part, it shouldn't hold up the patch
-going upstream.
 ---
- drivers/net/ethernet/intel/e100.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+v2: changed to use kzalloc instead of stack variable
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 31 +++++++++++++++--------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 09ae1939e6db..36d52246bdc6 100644
---- a/drivers/net/ethernet/intel/e100.c
-+++ b/drivers/net/ethernet/intel/e100.c
-@@ -3003,9 +3003,10 @@ static void __e100_shutdown(struct pci_dev *pdev, bool *enable_wake)
- 	struct net_device *netdev = pci_get_drvdata(pdev);
- 	struct nic *nic = netdev_priv(netdev);
- 
-+	netif_device_detach(netdev);
-+
- 	if (netif_running(netdev))
- 		e100_down(nic);
--	netif_device_detach(netdev);
- 
- 	if ((nic->flags & wol_magic) | e100_asf(nic)) {
- 		/* enable reverse auto-negotiation */
-@@ -3022,7 +3023,7 @@ static void __e100_shutdown(struct pci_dev *pdev, bool *enable_wake)
- 		*enable_wake = false;
- 	}
- 
--	pci_clear_master(pdev);
-+	pci_disable_device(pdev);
- }
- 
- static int __e100_power_off(struct pci_dev *pdev, bool wake)
-@@ -3042,8 +3043,6 @@ static int __maybe_unused e100_suspend(struct device *dev_d)
- 
- 	__e100_shutdown(to_pci_dev(dev_d), &wake);
- 
--	device_wakeup_disable(dev_d);
--
- 	return 0;
- }
- 
-@@ -3051,6 +3050,14 @@ static int __maybe_unused e100_resume(struct device *dev_d)
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index d97385205485..407465b61129 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5924,14 +5924,15 @@ ice_fetch_u64_stats_per_ring(struct u64_stats_sync *syncp, struct ice_q_stats st
+ /**
+  * ice_update_vsi_tx_ring_stats - Update VSI Tx ring stats counters
+  * @vsi: the VSI to be updated
++ * @vsi_stats: the stats struct to be updated
+  * @rings: rings to work on
+  * @count: number of rings
+  */
+ static void
+-ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
+-			     u16 count)
++ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
++			     struct rtnl_link_stats64 *vsi_stats,
++			     struct ice_tx_ring **rings, u16 count)
  {
- 	struct net_device *netdev = dev_get_drvdata(dev_d);
- 	struct nic *nic = netdev_priv(netdev);
-+	int err;
+-	struct rtnl_link_stats64 *vsi_stats = &vsi->net_stats;
+ 	u16 i;
+ 
+ 	for (i = 0; i < count; i++) {
+@@ -5943,6 +5944,7 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
+ 			ice_fetch_u64_stats_per_ring(&ring->syncp, ring->stats, &pkts, &bytes);
+ 		vsi_stats->tx_packets += pkts;
+ 		vsi_stats->tx_bytes += bytes;
 +
-+	err = pci_enable_device(to_pci_dev(dev_d));
-+	if (err) {
-+		netdev_err(netdev, "Resume cannot enable PCI device, aborting\n");
-+		return err;
-+	}
-+	pci_set_master(to_pci_dev(dev_d));
+ 		vsi->tx_restart += ring->tx_stats.restart_q;
+ 		vsi->tx_busy += ring->tx_stats.tx_busy;
+ 		vsi->tx_linearize += ring->tx_stats.tx_linearize;
+@@ -5955,15 +5957,13 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
+  */
+ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ {
+-	struct rtnl_link_stats64 *vsi_stats = &vsi->net_stats;
++	struct rtnl_link_stats64 *vsi_stats;
+ 	u64 pkts, bytes;
+ 	int i;
  
- 	/* disable reverse auto-negotiation */
- 	if (nic->phy == phy_82552_v) {
-@@ -3062,10 +3069,11 @@ static int __maybe_unused e100_resume(struct device *dev_d)
- 		           smartspeed & ~(E100_82552_REV_ANEG));
- 	}
+-	/* reset netdev stats */
+-	vsi_stats->tx_packets = 0;
+-	vsi_stats->tx_bytes = 0;
+-	vsi_stats->rx_packets = 0;
+-	vsi_stats->rx_bytes = 0;
++	vsi_stats = kzalloc(sizeof(*vsi_stats), GFP_KERNEL);
++	if (!vsi_stats)
++		return;
  
--	netif_device_attach(netdev);
- 	if (netif_running(netdev))
- 		e100_up(nic);
+ 	/* reset non-netdev (extended) stats */
+ 	vsi->tx_restart = 0;
+@@ -5975,7 +5975,8 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ 	rcu_read_lock();
  
-+	netif_device_attach(netdev);
+ 	/* update Tx rings counters */
+-	ice_update_vsi_tx_ring_stats(vsi, vsi->tx_rings, vsi->num_txq);
++	ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->tx_rings,
++				     vsi->num_txq);
+ 
+ 	/* update Rx rings counters */
+ 	ice_for_each_rxq(vsi, i) {
+@@ -5990,10 +5991,17 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ 
+ 	/* update XDP Tx rings counters */
+ 	if (ice_is_xdp_ena_vsi(vsi))
+-		ice_update_vsi_tx_ring_stats(vsi, vsi->xdp_rings,
++		ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->xdp_rings,
+ 					     vsi->num_xdp_txq);
+ 
+ 	rcu_read_unlock();
 +
- 	return 0;
++	vsi->net_stats.tx_packets = vsi_stats->tx_packets;
++	vsi->net_stats.tx_bytes = vsi_stats->tx_bytes;
++	vsi->net_stats.rx_packets = vsi_stats->rx_packets;
++	vsi->net_stats.rx_bytes = vsi_stats->rx_bytes;
++
++	kfree(vsi_stats);
  }
  
+ /**
+@@ -6213,6 +6221,7 @@ void ice_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+ 	 */
+ 	if (!test_bit(ICE_VSI_DOWN, vsi->state))
+ 		ice_update_vsi_ring_stats(vsi);
++
+ 	stats->tx_packets = vsi_stats->tx_packets;
+ 	stats->tx_bytes = vsi_stats->tx_bytes;
+ 	stats->rx_packets = vsi_stats->rx_packets;
 -- 
 2.33.1
 
