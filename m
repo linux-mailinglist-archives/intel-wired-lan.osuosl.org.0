@@ -1,82 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00D3E44FBEB
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Nov 2021 22:59:57 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B167B44FBEC
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Nov 2021 23:00:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F17EB401DC;
-	Sun, 14 Nov 2021 21:59:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 20E044024E;
+	Sun, 14 Nov 2021 21:59:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0PsNnf6MO2Sr; Sun, 14 Nov 2021 21:59:54 +0000 (UTC)
+	with ESMTP id gfk-Wtt47RQh; Sun, 14 Nov 2021 21:59:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E2213401D2;
-	Sun, 14 Nov 2021 21:59:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E07C401D2;
+	Sun, 14 Nov 2021 21:59:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A7B321BF3FF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 14:20:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 201EF1BF3DF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 15:08:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9E10680EF2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 14:20:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 05316605D0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 15:08:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1esiSd41pyXH for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Nov 2021 14:20:14 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 83B2180D79
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 14:20:14 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id
- gx15-20020a17090b124f00b001a695f3734aso7713789pjb.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 06:20:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tKyWJgE04HxRAjq5nb7ERjx0vGYGSgiBeT5zkfHPsnw=;
- b=c6tbwnM8EEdXQbXjZ6TBKu/GDieGFFzpHqyAv/x9gtsV7u9AbwnmumGLMO0/EiCoGN
- Yf5qCS4fIkHQGwoyoL4ywdKyumfkWOKyjqw9Ct2rv2+6bZv53d/FbafgVZFrMTIvTt5D
- eA/10d3nD6C+OXYQFt04R4CsZKRFYGumYpPBcd0kA0KkCHJQqztNuFVtkubP0ozjtChk
- BzZ1QUnBwMBOcg41FLNlXK2oM+wpBHHGJxrNrVy//gB9kI7KQGphRKUzKziLBwjktIbz
- 3yfQyasiBzLSaitwbu4fR+QK+p8qI3zUzDDqkXL4GRpNe7PjG6B0XMXkYVuz+q/qHVq5
- gvnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=tKyWJgE04HxRAjq5nb7ERjx0vGYGSgiBeT5zkfHPsnw=;
- b=B1QtLL1FPiv1wmCMmmdzvj7lB9BlcXtj5bAGMNaBKAUY1TxwSYt/kH8L6I2+Wo8TtM
- SNrIQxJoE3BdomJ8+aOuuugq6wIHuzEOFWOaHpkV1f+t4g2VComYXxdUDjkhLgWnx8bo
- +rPt8zUgNGaMOtbXiqvhMn6P93RxaEdZWKMHryLOi2QX49C8NM3hOpPDIhmVKbfpTpS2
- v9QZHnZEthWV2zOrylQjq+qdSJc5gLq1BFra4oXVv1wc/4Pa6vaZVG+jCWpp1w7LQTaE
- LTdPKjKl7/ZRGM7FejSV2hIwW/e29S0ikVlPdPUp4ei8nA1DImg2p3V4WOok/rAt1Lfd
- GbLw==
-X-Gm-Message-State: AOAM532Ry2nRPWLilqLPb92RFIygpM/s0ULnm7Ao+kVA2jKGU/mr8Bs2
- EMg3kJlc4k1F7K6l4kNyHNSdXtiTgfQaVpodFDc=
-X-Google-Smtp-Source: ABdhPJwg92vrA9JI16k61zQqU2yfIiV/eDCJUm5tXXj6752EumHyQSBUbrIuJGcQ45rvBBQI07OUlQ==
-X-Received: by 2002:a17:902:8a93:b0:142:30fe:dd20 with SMTP id
- p19-20020a1709028a9300b0014230fedd20mr8309699plo.29.1636726813724; 
- Fri, 12 Nov 2021 06:20:13 -0800 (PST)
-Received: from fanta-arch.localdomain ([148.163.172.142])
- by smtp.gmail.com with ESMTPSA id i2sm6409532pfe.70.2021.11.12.06.20.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Nov 2021 06:20:13 -0800 (PST)
-From: Letu Ren <fantasquex@gmail.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org
-Date: Fri, 12 Nov 2021 22:20:02 +0800
-Message-Id: <20211112142002.23156-1-fantasquex@gmail.com>
-X-Mailer: git-send-email 2.33.1
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=suse.de header.b="xtrQ8QYB";
+ dkim=neutral reason="invalid (unsupported algorithm ed25519-sha256)"
+ header.d=suse.de header.b="yV692aDY"
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id P5Ex0lpJJTGV for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Nov 2021 15:08:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp-out2.suse.de (smtp-out2.suse.de [195.135.220.29])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A66C5605AD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Nov 2021 15:08:31 +0000 (UTC)
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id A51BF1FD66;
+ Fri, 12 Nov 2021 15:08:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1636729708; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R/1fHuKFgBgw4hV9neRtlv0mhDFE9RH72dHARJzHv1I=;
+ b=xtrQ8QYB3cUMrRALhmU2GVhy5qCSwkncdTDYv8X/uzjEvgbRxFg9ONxcBgbQYRmOUyEQyK
+ tAjfGVNDCgmSRWmUL4ZzgI7RqWLxci/N2PRZFMI8nFLk9YBc5yamlaQ9Xsy2NalJQyOW1T
+ NheZ+hlSfc5JUObB3gdaT4rgN96hGnk=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1636729708;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R/1fHuKFgBgw4hV9neRtlv0mhDFE9RH72dHARJzHv1I=;
+ b=yV692aDYuglUylNYIkwp5IllmIK0n2maEnXKbTY6x+MHHLLPNYBopF0S5G4+HkbXW4SsEh
+ 94Q7RMSvaS8PtEBw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E313213C75;
+ Fri, 12 Nov 2021 15:08:27 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id DSBBM2uDjmGXVgAAMHmgww
+ (envelope-from <dkirjanov@suse.de>); Fri, 12 Nov 2021 15:08:27 +0000
+To: Letu Ren <fantasquex@gmail.com>, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org
+References: <20211112142002.23156-1-fantasquex@gmail.com>
+From: Denis Kirjanov <dkirjanov@suse.de>
+Message-ID: <4246e551-8963-e6aa-a70a-7a7005c7316b@suse.de>
+Date: Fri, 12 Nov 2021 18:08:27 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <20211112142002.23156-1-fantasquex@gmail.com>
+Content-Language: ru
 X-Mailman-Approved-At: Sun, 14 Nov 2021 21:59:50 +0000
-Subject: [Intel-wired-lan] [PATCH] net: igbvf: fix double free in
+Subject: Re: [Intel-wired-lan] [PATCH] net: igbvf: fix double free in
  `igbvf_probe`
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -90,82 +94,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Letu Ren <fantasquex@gmail.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Zheyu Ma <zheyuma97@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, Zheyu Ma <zheyuma97@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In `igbvf_probe`, if register_netdev() fails, the program will go to
-label err_hw_init, and then to label err_ioremap. In free_netdev() which
-is just below label err_ioremap, there is `list_for_each_entry_safe` and
-`netif_napi_del` which aims to delete all entries in `dev->napi_list`.
-The program has added an entry `adapter->rx_ring->napi` which is added by
-`netif_napi_add` in igbvf_alloc_queues(). However, adapter->rx_ring has
-been freed below label err_hw_init. So this a UAF.
-
-In terms of how to patch the problem, we can refer to igbvf_remove() and
-delete the entry before `adapter->rx_ring`.
-
-The KASAN logs are as follows:
-
-[   35.126075] BUG: KASAN: use-after-free in free_netdev+0x1fd/0x450
-[   35.127170] Read of size 8 at addr ffff88810126d990 by task modprobe/366
-[   35.128360]
-[   35.128643] CPU: 1 PID: 366 Comm: modprobe Not tainted 5.15.0-rc2+ #14
-[   35.129789] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS rel-1.12.0-59-gc9ba5276e321-prebuilt.qemu.org 04/01/2014
-[   35.131749] Call Trace:
-[   35.132199]  dump_stack_lvl+0x59/0x7b
-[   35.132865]  print_address_description+0x7c/0x3b0
-[   35.133707]  ? free_netdev+0x1fd/0x450
-[   35.134378]  __kasan_report+0x160/0x1c0
-[   35.135063]  ? free_netdev+0x1fd/0x450
-[   35.135738]  kasan_report+0x4b/0x70
-[   35.136367]  free_netdev+0x1fd/0x450
-[   35.137006]  igbvf_probe+0x121d/0x1a10 [igbvf]
-[   35.137808]  ? igbvf_vlan_rx_add_vid+0x100/0x100 [igbvf]
-[   35.138751]  local_pci_probe+0x13c/0x1f0
-[   35.139461]  pci_device_probe+0x37e/0x6c0
-[   35.165526]
-[   35.165806] Allocated by task 366:
-[   35.166414]  ____kasan_kmalloc+0xc4/0xf0
-[   35.167117]  foo_kmem_cache_alloc_trace+0x3c/0x50 [igbvf]
-[   35.168078]  igbvf_probe+0x9c5/0x1a10 [igbvf]
-[   35.168866]  local_pci_probe+0x13c/0x1f0
-[   35.169565]  pci_device_probe+0x37e/0x6c0
-[   35.179713]
-[   35.179993] Freed by task 366:
-[   35.180539]  kasan_set_track+0x4c/0x80
-[   35.181211]  kasan_set_free_info+0x1f/0x40
-[   35.181942]  ____kasan_slab_free+0x103/0x140
-[   35.182703]  kfree+0xe3/0x250
-[   35.183239]  igbvf_probe+0x1173/0x1a10 [igbvf]
-[   35.184040]  local_pci_probe+0x13c/0x1f0
-
-Reported-by: Zheyu Ma <zheyuma97@gmail.com>
-Signed-off-by: Letu Ren <fantasquex@gmail.com>
----
- drivers/net/ethernet/intel/igbvf/netdev.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
-index d32e72d953c8..d051918dfdff 100644
---- a/drivers/net/ethernet/intel/igbvf/netdev.c
-+++ b/drivers/net/ethernet/intel/igbvf/netdev.c
-@@ -2861,6 +2861,7 @@ static int igbvf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	return 0;
- 
- err_hw_init:
-+	netif_napi_del(&adapter->rx_ring->napi);
- 	kfree(adapter->tx_ring);
- 	kfree(adapter->rx_ring);
- err_sw_init:
--- 
-2.33.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CgoxMS8xMi8yMSA1OjIwIFBNLCBMZXR1IFJlbiDQv9C40YjQtdGCOgo+IEluIGBpZ2J2Zl9wcm9i
+ZWAsIGlmIHJlZ2lzdGVyX25ldGRldigpIGZhaWxzLCB0aGUgcHJvZ3JhbSB3aWxsIGdvIHRvCj4g
+bGFiZWwgZXJyX2h3X2luaXQsIGFuZCB0aGVuIHRvIGxhYmVsIGVycl9pb3JlbWFwLiBJbiBmcmVl
+X25ldGRldigpIHdoaWNoCj4gaXMganVzdCBiZWxvdyBsYWJlbCBlcnJfaW9yZW1hcCwgdGhlcmUg
+aXMgYGxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZWAgYW5kCj4gYG5ldGlmX25hcGlfZGVsYCB3aGlj
+aCBhaW1zIHRvIGRlbGV0ZSBhbGwgZW50cmllcyBpbiBgZGV2LT5uYXBpX2xpc3RgLgo+IFRoZSBw
+cm9ncmFtIGhhcyBhZGRlZCBhbiBlbnRyeSBgYWRhcHRlci0+cnhfcmluZy0+bmFwaWAgd2hpY2gg
+aXMgYWRkZWQgYnkKPiBgbmV0aWZfbmFwaV9hZGRgIGluIGlnYnZmX2FsbG9jX3F1ZXVlcygpLiBI
+b3dldmVyLCBhZGFwdGVyLT5yeF9yaW5nIGhhcwo+IGJlZW4gZnJlZWQgYmVsb3cgbGFiZWwgZXJy
+X2h3X2luaXQuIFNvIHRoaXMgYSBVQUYuCj4gCj4gSW4gdGVybXMgb2YgaG93IHRvIHBhdGNoIHRo
+ZSBwcm9ibGVtLCB3ZSBjYW4gcmVmZXIgdG8gaWdidmZfcmVtb3ZlKCkgYW5kCj4gZGVsZXRlIHRo
+ZSBlbnRyeSBiZWZvcmUgYGFkYXB0ZXItPnJ4X3JpbmdgLgo+IAo+IFRoZSBLQVNBTiBsb2dzIGFy
+ZSBhcyBmb2xsb3dzOgo+IAo+IFsgICAzNS4xMjYwNzVdIEJVRzogS0FTQU46IHVzZS1hZnRlci1m
+cmVlIGluIGZyZWVfbmV0ZGV2KzB4MWZkLzB4NDUwCj4gWyAgIDM1LjEyNzE3MF0gUmVhZCBvZiBz
+aXplIDggYXQgYWRkciBmZmZmODg4MTAxMjZkOTkwIGJ5IHRhc2sgbW9kcHJvYmUvMzY2Cj4gWyAg
+IDM1LjEyODM2MF0KPiBbICAgMzUuMTI4NjQzXSBDUFU6IDEgUElEOiAzNjYgQ29tbTogbW9kcHJv
+YmUgTm90IHRhaW50ZWQgNS4xNS4wLXJjMisgIzE0Cj4gWyAgIDM1LjEyOTc4OV0gSGFyZHdhcmUg
+bmFtZTogUUVNVSBTdGFuZGFyZCBQQyAoUTM1ICsgSUNIOSwgMjAwOSksIEJJT1MgcmVsLTEuMTIu
+MC01OS1nYzliYTUyNzZlMzIxLXByZWJ1aWx0LnFlbXUub3JnIDA0LzAxLzIwMTQKPiBbICAgMzUu
+MTMxNzQ5XSBDYWxsIFRyYWNlOgo+IFsgICAzNS4xMzIxOTldICBkdW1wX3N0YWNrX2x2bCsweDU5
+LzB4N2IKPiBbICAgMzUuMTMyODY1XSAgcHJpbnRfYWRkcmVzc19kZXNjcmlwdGlvbisweDdjLzB4
+M2IwCj4gWyAgIDM1LjEzMzcwN10gID8gZnJlZV9uZXRkZXYrMHgxZmQvMHg0NTAKPiBbICAgMzUu
+MTM0Mzc4XSAgX19rYXNhbl9yZXBvcnQrMHgxNjAvMHgxYzAKPiBbICAgMzUuMTM1MDYzXSAgPyBm
+cmVlX25ldGRldisweDFmZC8weDQ1MAo+IFsgICAzNS4xMzU3MzhdICBrYXNhbl9yZXBvcnQrMHg0
+Yi8weDcwCj4gWyAgIDM1LjEzNjM2N10gIGZyZWVfbmV0ZGV2KzB4MWZkLzB4NDUwCj4gWyAgIDM1
+LjEzNzAwNl0gIGlnYnZmX3Byb2JlKzB4MTIxZC8weDFhMTAgW2lnYnZmXQo+IFsgICAzNS4xMzc4
+MDhdICA/IGlnYnZmX3ZsYW5fcnhfYWRkX3ZpZCsweDEwMC8weDEwMCBbaWdidmZdCj4gWyAgIDM1
+LjEzODc1MV0gIGxvY2FsX3BjaV9wcm9iZSsweDEzYy8weDFmMAo+IFsgICAzNS4xMzk0NjFdICBw
+Y2lfZGV2aWNlX3Byb2JlKzB4MzdlLzB4NmMwCj4gWyAgIDM1LjE2NTUyNl0KPiBbICAgMzUuMTY1
+ODA2XSBBbGxvY2F0ZWQgYnkgdGFzayAzNjY6Cj4gWyAgIDM1LjE2NjQxNF0gIF9fX19rYXNhbl9r
+bWFsbG9jKzB4YzQvMHhmMAo+IFsgICAzNS4xNjcxMTddICBmb29fa21lbV9jYWNoZV9hbGxvY190
+cmFjZSsweDNjLzB4NTAgW2lnYnZmXQo+IFsgICAzNS4xNjgwNzhdICBpZ2J2Zl9wcm9iZSsweDlj
+NS8weDFhMTAgW2lnYnZmXQo+IFsgICAzNS4xNjg4NjZdICBsb2NhbF9wY2lfcHJvYmUrMHgxM2Mv
+MHgxZjAKPiBbICAgMzUuMTY5NTY1XSAgcGNpX2RldmljZV9wcm9iZSsweDM3ZS8weDZjMAo+IFsg
+ICAzNS4xNzk3MTNdCj4gWyAgIDM1LjE3OTk5M10gRnJlZWQgYnkgdGFzayAzNjY6Cj4gWyAgIDM1
+LjE4MDUzOV0gIGthc2FuX3NldF90cmFjaysweDRjLzB4ODAKPiBbICAgMzUuMTgxMjExXSAga2Fz
+YW5fc2V0X2ZyZWVfaW5mbysweDFmLzB4NDAKPiBbICAgMzUuMTgxOTQyXSAgX19fX2thc2FuX3Ns
+YWJfZnJlZSsweDEwMy8weDE0MAo+IFsgICAzNS4xODI3MDNdICBrZnJlZSsweGUzLzB4MjUwCj4g
+WyAgIDM1LjE4MzIzOV0gIGlnYnZmX3Byb2JlKzB4MTE3My8weDFhMTAgW2lnYnZmXQo+IFsgICAz
+NS4xODQwNDBdICBsb2NhbF9wY2lfcHJvYmUrMHgxM2MvMHgxZjAKPiAKPiBSZXBvcnRlZC1ieTog
+WmhleXUgTWEgPHpoZXl1bWE5N0BnbWFpbC5jb20+ClBsZWFzZSBhZGQgRml4ZXMgdGFnCj4gU2ln
+bmVkLW9mZi1ieTogTGV0dSBSZW4gPGZhbnRhc3F1ZXhAZ21haWwuY29tPgo+IC0tLQo+ICAgZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdidmYvbmV0ZGV2LmMgfCAxICsKPiAgIDEgZmlsZSBj
+aGFuZ2VkLCAxIGluc2VydGlvbigrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pZ2J2Zi9uZXRkZXYuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ln
+YnZmL25ldGRldi5jCj4gaW5kZXggZDMyZTcyZDk1M2M4Li5kMDUxOTE4ZGZkZmYgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdidmYvbmV0ZGV2LmMKPiArKysgYi9k
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2J2Zi9uZXRkZXYuYwo+IEBAIC0yODYxLDYgKzI4
+NjEsNyBAQCBzdGF0aWMgaW50IGlnYnZmX3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LCBjb25z
+dCBzdHJ1Y3QgcGNpX2RldmljZV9pZCAqZW50KQo+ICAgCXJldHVybiAwOwo+ICAgCj4gICBlcnJf
+aHdfaW5pdDoKPiArCW5ldGlmX25hcGlfZGVsKCZhZGFwdGVyLT5yeF9yaW5nLT5uYXBpKTsKPiAg
+IAlrZnJlZShhZGFwdGVyLT50eF9yaW5nKTsKPiAgIAlrZnJlZShhZGFwdGVyLT5yeF9yaW5nKTsK
+PiAgIGVycl9zd19pbml0Ogo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
+c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LXdpcmVkLWxhbgo=
