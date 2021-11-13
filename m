@@ -1,52 +1,166 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CD2C44F063
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 Nov 2021 02:06:21 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C245344F064
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 Nov 2021 02:09:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A5602827D9;
-	Sat, 13 Nov 2021 01:06:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 41256403EF;
+	Sat, 13 Nov 2021 01:09:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jrZtjzCXSbHL; Sat, 13 Nov 2021 01:06:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ekD5WZPs0GUw; Sat, 13 Nov 2021 01:09:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9315D827C6;
-	Sat, 13 Nov 2021 01:06:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 238BE40273;
+	Sat, 13 Nov 2021 01:09:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3437F1BF38C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:06:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8605D1BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:09:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2FB484062C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:06:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7172840273
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:09:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sPRzRX3rVp9z for <intel-wired-lan@lists.osuosl.org>;
- Sat, 13 Nov 2021 01:06:13 +0000 (UTC)
+ with ESMTP id x9-TYAmtjisb for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 13 Nov 2021 01:09:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6F17D4062B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:06:13 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10166"; a="319435423"
-X-IronPort-AV: E=Sophos;i="5.87,230,1631602800"; d="scan'208";a="319435423"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2021 17:06:12 -0800
-X-IronPort-AV: E=Sophos;i="5.87,230,1631602800"; d="scan'208";a="670844026"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Nov 2021 17:06:12 -0800
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B352D4026C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Nov 2021 01:09:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10166"; a="256955243"
+X-IronPort-AV: E=Sophos;i="5.87,230,1631602800"; d="scan'208";a="256955243"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Nov 2021 17:09:14 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,230,1631602800"; d="scan'208";a="603196407"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga004.jf.intel.com with ESMTP; 12 Nov 2021 17:09:13 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Fri, 12 Nov 2021 17:09:13 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Fri, 12 Nov 2021 17:09:13 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.103)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Fri, 12 Nov 2021 17:09:12 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=b/QxAF+L2YSEhYuBQUtFWhfuKBa18ygJCX1c7577S7lenOcD2hfjFh2b2CPUYbDPfEtTdErvseUaDS2lSAKsHa+KqAy3RR13zbc2Ssi7TB+44DLdrnDXznTGlfgL0JmHDw93JFnANZ3kqFBrzHJXKmoGBhupfXJXJI0r+iyPTFUvOi1QExTJ1ZjOlyAwBvAmGZtLpw/epXeW4KLzrxka2P1KXaJPNG71A7BgI3bB12LhpI9yL7V4Vib64HB+1OR1bnXTkPraYTBEoPn9QT2g/RKujegSEYJB9C+fFzRDF5gARGwp6VrJRMy7N1ysHw4zAeHvq7tSYzzQD3UnmVzsnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PtGe9KEcHYg95bH8JAJ84zi+hiTS3WdggteoxasEBQA=;
+ b=lwNkvnqTHXrnTmV/Q/CldCMWe8FK+fXZUJSVmX9w3el9B8UmXjYVf+HBQ96m9QsC/W+RAVC4OLwk1gv+a3SOn1JNdooOkvz930AyMGBOwNDuQ8feMgiTu/18zMin0z1jQr0DevbIUL4M68f5G5AI1ypIgAWC0xUrhp0UcP/yR7Ab0rhVbWWKUwzBFd5ihUt/a0tIj1u4jlg3BOUAXXun4CKH9yYY7gAqOjQM4T4hBJa1lf35Omt02Gjt3wiv4AR6jbuoRWsqizEn7DwxlEh8XDgphC9CGDIZsMVxgULY6n5BiG4AiHn6+1O8yjg2PyhtN4vHmUKznkTo0FXmxP9tXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PtGe9KEcHYg95bH8JAJ84zi+hiTS3WdggteoxasEBQA=;
+ b=fDDqVkIYdERRP8oaVAJWYd9rX/7Gn4W2Q3CTyzN7uodc3zMAqbArUTFoKcmS/TEOJfk9iIvuLvJH7SLahsibabEncUzwcH0pdfMQFDdaIWftvj6amy6wm0MsmFRq/5C5TRjpVikSJy1AcTYkpDDnaVcb/QZzWbk7yJriJePQ0zo=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
+ by CO1PR11MB4786.namprd11.prod.outlook.com (2603:10b6:303:9c::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.16; Sat, 13 Nov
+ 2021 01:09:06 +0000
+Received: from CO1PR11MB4914.namprd11.prod.outlook.com
+ ([fe80::3166:ce06:b90:f304]) by CO1PR11MB4914.namprd11.prod.outlook.com
+ ([fe80::3166:ce06:b90:f304%4]) with mapi id 15.20.4690.026; Sat, 13 Nov 2021
+ 01:09:06 +0000
+Message-ID: <b320f02c-a973-e478-e74e-0329b5db699b@intel.com>
+Date: Fri, 12 Nov 2021 17:09:05 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Content-Language: en-US
+To: Karol Kolacinski <karol.kolacinski@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20211112135359.155502-1-karol.kolacinski@intel.com>
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 12 Nov 2021 17:06:02 -0800
-Message-Id: <20211113010602.795866-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20211112135359.155502-1-karol.kolacinski@intel.com>
+X-ClientProxiedBy: MWHPR1601CA0007.namprd16.prod.outlook.com
+ (2603:10b6:300:da::17) To CO1PR11MB4914.namprd11.prod.outlook.com
+ (2603:10b6:303:90::24)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v3] ice: safer stats processing
+Received: from [192.168.1.214] (50.39.107.76) by
+ MWHPR1601CA0007.namprd16.prod.outlook.com (2603:10b6:300:da::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.17 via Frontend
+ Transport; Sat, 13 Nov 2021 01:09:06 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 48be78c6-5fbc-4643-b0a7-08d9a64230ba
+X-MS-TrafficTypeDiagnostic: CO1PR11MB4786:
+X-Microsoft-Antispam-PRVS: <CO1PR11MB478696FD56687D812DAD852697969@CO1PR11MB4786.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Ok15PVnf1YC+aFGro5SkBLOrk8mRO2uymjIdx49J19ObVSttlfbeTfr3m7/vyY/S/ASqGqC0ixDC76qPgyZ6+PePoOZbqL54KB7vuMPOTPSf8lSBRmRWT/2FxBUj8XECOjDILfIMKh/JSVoHng4yygRXiGvwUEwVEfC8dsZZADKY1GiS4LTqiW75z02HJv16z54x/eHMwLlao74QNsRJ71iJpedcRv9lNYhTNuDA+xUji5URxkm7K+8yy7OrWJQkyDMQX8gv2PkXj0vVMNGZ1+KiFcf+7L7NzyZ04b++fM/wA8x6f89WeACYc68tRiALZ1KfORgLCfrpP6a4dov0KvousAtS6Rc1SRmTl6QHm5JpinwsWpVLtopS4Y3YHPTkL0NTpEQu2KL5o6NoAiym343umeYQk3/fgmpsRIpjuAzhOID+TFR8bjE0KPZSnNRPum9LSBClvGkp36Fjl7DEWlVKaJlg9BYe0Z1oRjbASZZh6sn2Z8Y7FWvrs1hUn3jTVfwTLV0Vv2wYQ2JsbqhtjEYzFbRsm1l4nazFLTJnAI+jYYKFoD/imUmDNr4BNGvNNITbzq69iGr7rnmjmKgLv+BiAxyquQGHCSt0oDyesMOG6Rb+6YxT6H5KaAiQ5fS6CfuufppksW1aerk7uv3EI8TEhAS7b40lwyXZKFW1MPG0mg+GgAqycQmnQirVGbrsMdcGrR49nD+bby8Pf7Zhy1F70fDss0IVcUnZ6MElSzY=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB4914.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(316002)(38100700002)(16576012)(26005)(5660300002)(53546011)(36756003)(31686004)(186003)(66476007)(8676002)(66946007)(66556008)(508600001)(2906002)(956004)(2616005)(6486002)(82960400001)(44832011)(86362001)(8936002)(83380400001)(31696002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UkhFRC9hY1k3K0p2dGlUNkUyc0dnRi96RWRoclJoc0Jhd2oxSmdjazhtL0FX?=
+ =?utf-8?B?T2dqUTNkOVM1QXVkVEwyVkx1cjFLMG16SEllK2VDUDVJT1FsSndaWWs4WGsr?=
+ =?utf-8?B?bDV3UGhKWEVkRWVQR3lhMEdOMkNZRjNRdGI4d2dBY1hFNDdxWGR5VmV3UGdq?=
+ =?utf-8?B?VlVNNGdlekdORjFlSXJsMnliYmQzbUg0bmI4WnNhaHBNWCtINTlLQ0xEVStj?=
+ =?utf-8?B?OUpBRlR3Z3ZrcFVLTzJxQlhDTnM1bFlORlc3Z3BTVWNUeUJueVV2bnB5RWJS?=
+ =?utf-8?B?ZHg1ZmRZVFBsQWozeTJ1TWphcFdzZjR3SFUwdDNSZVFDdmsvN3J6aTJnWFJ5?=
+ =?utf-8?B?R3N4Z21mZWxBSzdrZ0NWZHB4YlQxd25MR1c0QkpoU1Q2cWtyeFdtQVcwcDRi?=
+ =?utf-8?B?N2ZrWG1tWUlpM0pKZ01KVjZSQ0xNWVJ4cFFKRFcycE5nUDU0cy9DTXBSN1pn?=
+ =?utf-8?B?NVV6d3E0d2o1S0NHOTAxbndBV3U0QXRGWFUyUEZmSUJLMlFFY2NoNmxKZndk?=
+ =?utf-8?B?Wmg0OCtFc0lqaS9IU3VyOGtPN1V5aEhVMTR3cERnYnh4alJDSVVhZkxSYXl1?=
+ =?utf-8?B?dnMzSTJhN3c5N0ZrcDVxb3lSVGJlMUVDeVRGYXpTdEprWVhsSDlkcCswcWlk?=
+ =?utf-8?B?TkhTbEJQcEFOMW1CK1VHTTlqU0xIVGZnWHc1cmxaV2Znc0YxMDBwdFFJaS8z?=
+ =?utf-8?B?cjZvVENYUDE2bGtFb0FyTGNEenFIUGJTaWlFSllSL0FyMFNrazBhejZvN2pK?=
+ =?utf-8?B?dVZiRW1haTJBaStqUnY2dlJuUDJML2UxVW93d0hjR0RpWWY1bkNHSW9SRnRC?=
+ =?utf-8?B?Z2FQVWRzM001VmxZWjRmNEcray80bmpLc2FYbnovSVZGUktlVTdhWGNXcE0z?=
+ =?utf-8?B?bWZ2N3JFZ2Rwd0l3cXZzbTA3dW1hbjRPK3VBaFROcldKekhNa0QvWStENmF6?=
+ =?utf-8?B?cXpOZGIvR0ZPZmJKckdkdUVoSnNyYjI2eU84SnlBcFdET1RlWHFwa3lKQnlP?=
+ =?utf-8?B?NVVYOWtOZ2liT1RBRFRIckk4cGFQZkVXNnYvTHRPOFIvUzFaSUxWMlUvWjdU?=
+ =?utf-8?B?T1JVLzIweFk3UllTOEpMQTRNQlBCUlp2cndFSW9Na1pkSkVydFgvd3NibEZ5?=
+ =?utf-8?B?VkJ3ZTQ2ZFExMW1FTlQxVUx4bnB6Si9ETU5rclVmRmdXQXlKb1U3WHhodzlE?=
+ =?utf-8?B?cUVYR29oMHAxQjhjRHMySXRvWXJCOGVqUENXMXFrZWlBUFNtY3dEd0JoU2dE?=
+ =?utf-8?B?a0k2MU1jZVdzNUtjOHpWK1d6STZxcXpWUFdOeUR5UG9xQmZ0b2dNbmhRSU9Y?=
+ =?utf-8?B?RUJKdUkzSnBuVFlRaE9FNjBFWVdGUXRRM3dyZkZyODZJM2M5VExzTnd5b2NZ?=
+ =?utf-8?B?VFgzY1llTGNycVloWFF5TzNBQlJRM1U3aVpBUUM0V3Y1aDJmQWpoTHZsdkZq?=
+ =?utf-8?B?WkN4UXovVTJmbDhUa1B1Z21YQytCbkZYUkxFL056R1BSNXlMeXo3eDdDNHNj?=
+ =?utf-8?B?NUdWYlVJV0p3ckVwdVpYOTA0ZGxLWWFMYzhwanZLZmhkcXhHd0F1YzFYcTRo?=
+ =?utf-8?B?V2d6dVB6c0lmSU1jY1VKREUzdWFkRFk0OVpoNFNYWFNHcUhQRDcvMmtLVS9F?=
+ =?utf-8?B?T0d3TlIvenR5SGxCanVEWHRaNVdFbTJrNi9nQ2lYUDl2WUx1OEhJRlZBSXNr?=
+ =?utf-8?B?V1ZpVnFFT2tFQkRWWDFWQWNDVVNLaUlvUFlMeXE2TnlqSUFuWWpPZDlaaDds?=
+ =?utf-8?B?bUgrZW1uSmhCRHYvd3FRWTVGc3IvNmpnVzZlUGRNanNHcGlUU2JUMVVVK0Ev?=
+ =?utf-8?B?ZjdqVllKTXRUUTBKVkJDUHB5NE9Rb2VtcE9ITFFZSzRkOG40K24rK3pXalpm?=
+ =?utf-8?B?RFBsUlBRelQzejZWYldhZ0xuZDB1cFgrUjRkVlBILy9Fc29ZYVZOcGZsa3hm?=
+ =?utf-8?B?eWs5akd3dXVUalJacTBIcUdpeGxHNmxCaGtpanBkQ3hBZHZ3c05iWW00ZmIw?=
+ =?utf-8?B?bktpd0VMQ08zKzVOODZXVUpzUHJYWWlUcFVLMVFBWTM0TGR4L3hjaDNyV2pK?=
+ =?utf-8?B?OXRrZU1iMFZ2Y3pNaHZMV1E0VjBock5WVnVTQkVQQ1M3WU5BTlBQalVGc2RE?=
+ =?utf-8?B?TTE5elIzaHBKaFU4ckhVWXE3TGs1R2tuQ0N3WkxXeTR2UHA4djBpd3VlU0xt?=
+ =?utf-8?B?U1phZmtkTmZES1dzcWRzSkVpeFgyNEw3RkVtc1hsSHdveUlLT1BORTJoeVZn?=
+ =?utf-8?B?S3FPRmhkR0NHVUxmbmFWaVlUTmlBPT0=?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48be78c6-5fbc-4643-b0a7-08d9a64230ba
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2021 01:09:06.6553 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: spjT7knQCw/MgQum1vIF3hyKXk4EFk2iuNffOVYctTDSvPINW/0clcuBNBwG/d0Dg7pGifbApz9j9RgPP4e77PkeNawyH7GTXaH9b/SclX4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4786
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH intel-next] ice: Don't put stale
+ timestamps in the skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,118 +173,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver was zeroing live stats that could be fetched by
-ndo_get_stats64 at any time. This could result in inconsistent
-statistics, and the telltale sign was when reading stats frequently from
-/proc/net/dev, the stats would go backwards.
+On 11/12/2021 5:53 AM, Karol Kolacinski wrote:
+> The driver has to check if it does not accidentally put the timestamp in
+> the SKB before previous timestamp gets overwritten.
+> Timestamp values in the PHY are read only and do not get cleared except
+> at hardware reset or when a new timestamp value is captured.
+> The cached_tstamp field is used to detect the case where a new timestamp
+> has not yet been captured, ensuring that we avoid sending stale
+> timestamp data to the stack.
 
-Fix by collecting stats into a local, and delaying when we write to the
-structure so it's not incremental.
+Missing sign off, please run checkpatch --strict and build tests on your 
+patches before sending to the list.
 
-Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
-v3: change to use GFP_ATOMIC to prevent BUG due to sleeping alloc
-v2: changed to use kzalloc instead of stack variable
----
- drivers/net/ethernet/intel/ice/ice_main.c | 31 +++++++++++++++--------
- 1 file changed, 20 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index d97385205485..0864638b6133 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5924,14 +5924,15 @@ ice_fetch_u64_stats_per_ring(struct u64_stats_sync *syncp, struct ice_q_stats st
- /**
-  * ice_update_vsi_tx_ring_stats - Update VSI Tx ring stats counters
-  * @vsi: the VSI to be updated
-+ * @vsi_stats: the stats struct to be updated
-  * @rings: rings to work on
-  * @count: number of rings
-  */
- static void
--ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
--			     u16 count)
-+ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
-+			     struct rtnl_link_stats64 *vsi_stats,
-+			     struct ice_tx_ring **rings, u16 count)
- {
--	struct rtnl_link_stats64 *vsi_stats = &vsi->net_stats;
- 	u16 i;
- 
- 	for (i = 0; i < count; i++) {
-@@ -5943,6 +5944,7 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
- 			ice_fetch_u64_stats_per_ring(&ring->syncp, ring->stats, &pkts, &bytes);
- 		vsi_stats->tx_packets += pkts;
- 		vsi_stats->tx_bytes += bytes;
-+
- 		vsi->tx_restart += ring->tx_stats.restart_q;
- 		vsi->tx_busy += ring->tx_stats.tx_busy;
- 		vsi->tx_linearize += ring->tx_stats.tx_linearize;
-@@ -5955,15 +5957,13 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi, struct ice_tx_ring **rings,
-  */
- static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- {
--	struct rtnl_link_stats64 *vsi_stats = &vsi->net_stats;
-+	struct rtnl_link_stats64 *vsi_stats;
- 	u64 pkts, bytes;
- 	int i;
- 
--	/* reset netdev stats */
--	vsi_stats->tx_packets = 0;
--	vsi_stats->tx_bytes = 0;
--	vsi_stats->rx_packets = 0;
--	vsi_stats->rx_bytes = 0;
-+	vsi_stats = kzalloc(sizeof(*vsi_stats), GFP_ATOMIC);
-+	if (!vsi_stats)
-+		return;
- 
- 	/* reset non-netdev (extended) stats */
- 	vsi->tx_restart = 0;
-@@ -5975,7 +5975,8 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- 	rcu_read_lock();
- 
- 	/* update Tx rings counters */
--	ice_update_vsi_tx_ring_stats(vsi, vsi->tx_rings, vsi->num_txq);
-+	ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->tx_rings,
-+				     vsi->num_txq);
- 
- 	/* update Rx rings counters */
- 	ice_for_each_rxq(vsi, i) {
-@@ -5990,10 +5991,17 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- 
- 	/* update XDP Tx rings counters */
- 	if (ice_is_xdp_ena_vsi(vsi))
--		ice_update_vsi_tx_ring_stats(vsi, vsi->xdp_rings,
-+		ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->xdp_rings,
- 					     vsi->num_xdp_txq);
- 
- 	rcu_read_unlock();
-+
-+	vsi->net_stats.tx_packets = vsi_stats->tx_packets;
-+	vsi->net_stats.tx_bytes = vsi_stats->tx_bytes;
-+	vsi->net_stats.rx_packets = vsi_stats->rx_packets;
-+	vsi->net_stats.rx_bytes = vsi_stats->rx_bytes;
-+
-+	kfree(vsi_stats);
- }
- 
- /**
-@@ -6213,6 +6221,7 @@ void ice_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
- 	 */
- 	if (!test_bit(ICE_VSI_DOWN, vsi->state))
- 		ice_update_vsi_ring_stats(vsi);
-+
- 	stats->tx_packets = vsi_stats->tx_packets;
- 	stats->tx_bytes = vsi_stats->tx_bytes;
- 	stats->rx_packets = vsi_stats->rx_packets;
--- 
-2.33.1
+> ---
+>   drivers/net/ethernet/intel/ice/ice_ptp.c | 11 ++++-------
+>   drivers/net/ethernet/intel/ice/ice_ptp.h |  6 ++++++
+>   2 files changed, 10 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> index 2b3b2060b504..9a1a09661c78 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -2069,19 +2069,16 @@ static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
+>   		if (err)
+>   			continue;
+>   
+> -		/* Check if the timestamp is valid */
+> -		if (!(raw_tstamp & ICE_PTP_TS_VALID))
+> +		/* Check if the timestamp is invalid or stale */
+> +		if (!(raw_tstamp & ICE_PTP_TS_VALID) ||
+> +		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
+>   			continue;
+>   
+> -		/* clear the timestamp register, so that it won't show valid
+> -		 * again when re-used.
+> -		 */
+> -		ice_clear_phy_tstamp(hw, tx->quad, phy_idx);
+> -
+>   		/* The timestamp is valid, so we'll go ahead and clear this
+>   		 * index and then send the timestamp up to the stack.
+>   		 */
+>   		spin_lock(&tx->lock);
+> +		tx->tstamps[idx].cached_tstamp = raw_tstamp;
+>   		clear_bit(idx, tx->in_use);
+>   		skb = tx->tstamps[idx].skb;
+>   		tx->tstamps[idx].skb = NULL;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> index 92b202ef3c15..eef8ec894871 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> @@ -55,15 +55,21 @@ struct ice_perout_channel {
+>    * struct ice_tx_tstamp - Tracking for a single Tx timestamp
+>    * @skb: pointer to the SKB for this timestamp request
+>    * @start: jiffies when the timestamp was first requested
+> + * @cached_tstamp: last read timestamp
+>    *
+>    * This structure tracks a single timestamp request. The SKB pointer is
+>    * provided when initiating a request. The start time is used to ensure that
+>    * we discard old requests that were not fulfilled within a 2 second time
+>    * window.
+> + * Timestamp values in the PHY are read only and do not get cleared except at
+> + * hardware reset or when a new timestamp value is captured. The cached_tstamp
+> + * field is used to detect the case where a new timestamp has not yet been
+> + * captured, ensuring that we avoid sending stale timestamp data to the stack.
+>    */
+>   struct ice_tx_tstamp {
+>   	struct sk_buff *skb;
+>   	unsigned long start;
+> +	u64 cached_tstamp;
+>   };
+>   
+>   /**
+> 
 
 _______________________________________________
 Intel-wired-lan mailing list
