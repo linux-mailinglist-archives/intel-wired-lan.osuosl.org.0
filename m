@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE6114537A3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 17:36:08 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5BE44537A4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 17:36:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A7C3840389;
-	Tue, 16 Nov 2021 16:36:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B92F60724;
+	Tue, 16 Nov 2021 16:36:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v2PZ95B7_3rw; Tue, 16 Nov 2021 16:36:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8EBhG0WSInGE; Tue, 16 Nov 2021 16:36:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2B50640224;
-	Tue, 16 Nov 2021 16:36:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 51E246070B;
+	Tue, 16 Nov 2021 16:36:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0AE261BF315
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6EE261BF315
+ for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EC98040426
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5E244607D9
+ for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MCWiy8x-6bhE for <intel-wired-lan@osuosl.org>;
- Tue, 16 Nov 2021 09:37:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AqwyL32Sg6jB for <intel-wired-lan@osuosl.org>;
+ Tue, 16 Nov 2021 09:37:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1D24540424
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:42 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="297081699"
-X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="297081699"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2021 01:37:41 -0800
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BE2DB60698
+ for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="233493075"
+X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="233493075"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2021 01:37:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="454386937"
+X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="454188208"
 Received: from wasp.igk.intel.com ([10.102.20.192])
- by orsmga006.jf.intel.com with ESMTP; 16 Nov 2021 01:37:41 -0800
+ by orsmga003.jf.intel.com with ESMTP; 16 Nov 2021 01:37:49 -0800
 From: Michal Swiatkowski <michal.swiatkowski@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Tue, 16 Nov 2021 10:36:06 +0100
-Message-Id: <20211116093606.10635-1-michal.swiatkowski@intel.com>
+Date: Tue, 16 Nov 2021 10:36:15 +0100
+Message-Id: <20211116093615.10740-1-michal.swiatkowski@intel.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 16 Nov 2021 16:36:02 +0000
-Subject: [Intel-wired-lan] [PATCH net] ice: fix adding different tunnels
+Subject: [Intel-wired-lan] [PATCH net] ice: fix choosing udp header type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,178 +67,81 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-Adding filters with the same values inside for VXLAN and geneve causes hw
-error, because it looks exactly the same. To choose between different
-type of tunnels new recipe is needed. Add storing tunnel types in
-creatig recipes function and start checking it in finding function.
+In tunnels packet there can be two UDP headers:
+- outer which for hw should be mark as ICE_UDP_OF
+- inner which for hw should be mark as ICE_UDP_ILOS or as ICE_TCP_IL if
+  inner header is of TCP type
 
-Change getting open tunnels function to return port on correct tunnel
-type. This is needed to copy correct port to dummy packet.
+In none tunnels packet header can be:
+- UDP, which for hw should be mark as ICE_UDP_ILOS
+- TCP, which for hw should be mark as ICE_TCP_IL
 
-Block user from adding enc_dst_port via tc flower, because  VXLAN and
-geneve filters can be created only with destination port which was
-previously opened.
+Change incorrect ICE_UDP_OF for none tunnel packets to ICE_UDP_ILOS.
+ICE_UDP_OF is incorrect for none tunnel packets and setting it leads to
+error from hw while adding this kind of recipe.
 
-Fixes: 8b032a55c1bd5 ("ice: low level support for tunnels")
+In summary, for tunnel outer port type should always be set to
+ICE_UDP_OF, for none tunnel outer and tunnel inner it should always be
+set to ICE_UDP_ILOS.
+
+Fixes: 9e300987d4a81 ("ice: VXLAN and Geneve TC support")
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- .../net/ethernet/intel/ice/ice_ethtool_fdir.c   |  4 ++--
- drivers/net/ethernet/intel/ice/ice_fdir.c       |  2 +-
- drivers/net/ethernet/intel/ice/ice_flex_pipe.c  |  6 ++++--
- drivers/net/ethernet/intel/ice/ice_flex_pipe.h  |  3 ++-
- drivers/net/ethernet/intel/ice/ice_switch.c     | 17 ++++++++++++-----
- drivers/net/ethernet/intel/ice/ice_tc_lib.c     |  3 ++-
- 6 files changed, 23 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 26 ++++++++-------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-index 68ac0be68107..bbc64d6ce4cd 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-@@ -1258,7 +1258,7 @@ ice_fdir_write_all_fltr(struct ice_pf *pf, struct ice_fdir_fltr *input,
- 		bool is_tun = tun == ICE_FD_HW_SEG_TUN;
- 		int err;
- 
--		if (is_tun && !ice_get_open_tunnel_port(&pf->hw, &port_num))
-+		if (is_tun && !ice_get_open_tunnel_port(&pf->hw, &port_num, TNL_ALL))
- 			continue;
- 		err = ice_fdir_write_fltr(pf, input, add, is_tun);
- 		if (err)
-@@ -1642,7 +1642,7 @@ int ice_add_fdir_ethtool(struct ice_vsi *vsi, struct ethtool_rxnfc *cmd)
- 	}
- 
- 	/* return error if not an update and no available filters */
--	fltrs_needed = ice_get_open_tunnel_port(hw, &tunnel_port) ? 2 : 1;
-+	fltrs_needed = ice_get_open_tunnel_port(hw, &tunnel_port, TNL_ALL) ? 2 : 1;
- 	if (!ice_fdir_find_fltr_by_idx(hw, fsp->location) &&
- 	    ice_fdir_num_avail_fltr(hw, pf->vsi[vsi->idx]) < fltrs_needed) {
- 		dev_err(dev, "Failed to add filter.  The maximum number of flow director filters has been reached.\n");
-diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.c b/drivers/net/ethernet/intel/ice/ice_fdir.c
-index 9970ac3884f6..bbef6f4366de 100644
---- a/drivers/net/ethernet/intel/ice/ice_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_fdir.c
-@@ -924,7 +924,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
- 		memcpy(pkt, ice_fdir_pkt[idx].pkt, ice_fdir_pkt[idx].pkt_len);
- 		loc = pkt;
- 	} else {
--		if (!ice_get_open_tunnel_port(hw, &tnl_port))
-+		if (!ice_get_open_tunnel_port(hw, &tnl_port, TNL_ALL))
- 			return -ENOENT;
- 		if (!ice_fdir_pkt[idx].tun_pkt)
- 			return -EINVAL;
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index b12da3cda78b..d98d7e00d542 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -2042,7 +2042,8 @@ static struct ice_buf *ice_pkg_buf(struct ice_buf_build *bld)
-  * @port: returns open port
-  */
- bool
--ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port)
-+ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port,
-+			 enum ice_tunnel_type type)
- {
- 	bool res = false;
- 	u16 i;
-@@ -2050,7 +2051,8 @@ ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port)
- 	mutex_lock(&hw->tnl_lock);
- 
- 	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].port) {
-+		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].port &&
-+		    (type == TNL_LAST || type == hw->tnl.tbl[i].type)) {
- 			*port = hw->tnl.tbl[i].port;
- 			res = true;
- 			break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-index 1c2be376a537..dd602285c78e 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-@@ -90,7 +90,8 @@ int
- ice_get_sw_fv_list(struct ice_hw *hw, u8 *prot_ids, u16 ids_cnt,
- 		   unsigned long *bm, struct list_head *fv_list);
- bool
--ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port);
-+ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port,
-+			 enum ice_tunnel_type type);
- int ice_udp_tunnel_set_port(struct net_device *netdev, unsigned int table,
- 			    unsigned int idx, struct udp_tunnel_info *ti);
- int ice_udp_tunnel_unset_port(struct net_device *netdev, unsigned int table,
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index c1dbac5f8d6b..8948580bdab0 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3795,7 +3795,9 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
-  *
-  * Returns index of matching recipe, or ICE_MAX_NUM_RECIPES if not found.
-  */
--static u16 ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts)
-+static u16
-+ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
-+	      enum ice_sw_tunnel_type tun_type)
- {
- 	bool refresh_required = true;
- 	struct ice_sw_recipe *recp;
-@@ -3856,8 +3858,9 @@ static u16 ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts)
- 			}
- 			/* If for "i"th recipe the found was never set to false
- 			 * then it means we found our match
-+			 * Also tun type of recipe needs to be checked
- 			 */
--			if (found)
-+			if (found && recp[i].tun_type == tun_type)
- 				return i; /* Return the recipe ID */
- 		}
- 	}
-@@ -4647,11 +4650,12 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	}
- 
- 	/* Look for a recipe which matches our requested fv / mask list */
--	*rid = ice_find_recp(hw, lkup_exts);
-+	*rid = ice_find_recp(hw, lkup_exts, rinfo->tun_type);
- 	if (*rid < ICE_MAX_NUM_RECIPES)
- 		/* Success if found a recipe that match the existing criteria */
- 		goto err_unroll;
- 
-+	rm->tun_type = rinfo->tun_type;
- 	/* Recipe we need does not exist, add a recipe */
- 	status = ice_add_sw_recipe(hw, rm, profiles);
- 	if (status)
-@@ -4954,8 +4958,11 @@ ice_fill_adv_packet_tun(struct ice_hw *hw, enum ice_sw_tunnel_type tun_type,
- 
- 	switch (tun_type) {
- 	case ICE_SW_TUN_VXLAN:
-+		if (!ice_get_open_tunnel_port(hw, &open_port, TNL_VXLAN))
-+			return -EIO;
-+		break;
- 	case ICE_SW_TUN_GENEVE:
--		if (!ice_get_open_tunnel_port(hw, &open_port))
-+		if (!ice_get_open_tunnel_port(hw, &open_port, TNL_GENEVE))
- 			return -EIO;
- 		break;
- 
-@@ -5551,7 +5558,7 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	if (status)
- 		return status;
- 
--	rid = ice_find_recp(hw, &lkup_exts);
-+	rid = ice_find_recp(hw, &lkup_exts, rinfo->tun_type);
- 	/* If did not find a recipe that match the existing criteria */
- 	if (rid == ICE_MAX_NUM_RECIPES)
- 		return -EINVAL;
 diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index f243dacda8a0..e8feb41e6dbe 100644
+index 4e1dac813339..29fe359a5598 100644
 --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -800,7 +800,8 @@ ice_parse_tunnel_attr(struct net_device *dev, struct flow_rule *rule,
- 		headers->l3_mask.ttl = match.mask->ttl;
+@@ -78,20 +78,13 @@ ice_proto_type_from_ipv6(bool inner)
+ }
+ 
+ static enum ice_protocol_type
+-ice_proto_type_from_l4_port(bool inner, u16 ip_proto)
++ice_proto_type_from_l4_port(u16 ip_proto)
+ {
+-	if (inner) {
+-		switch (ip_proto) {
+-		case IPPROTO_UDP:
+-			return ICE_UDP_ILOS;
+-		}
+-	} else {
+-		switch (ip_proto) {
+-		case IPPROTO_TCP:
+-			return ICE_TCP_IL;
+-		case IPPROTO_UDP:
+-			return ICE_UDP_OF;
+-		}
++	switch (ip_proto) {
++	case IPPROTO_TCP:
++		return ICE_TCP_IL;
++	case IPPROTO_UDP:
++		return ICE_UDP_ILOS;
  	}
  
--	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_PORTS)) {
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_PORTS) &&
-+	    fltr->tunnel_type != TNL_VXLAN && fltr->tunnel_type != TNL_GENEVE) {
- 		struct flow_match_ports match;
+ 	return 0;
+@@ -194,8 +187,9 @@ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
+ 		i++;
+ 	}
  
- 		flow_rule_match_enc_ports(rule, &match);
+-	if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) {
+-		list[i].type = ice_proto_type_from_l4_port(false, hdr->l3_key.ip_proto);
++	if ((flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) &&
++	    hdr->l3_key.ip_proto == IPPROTO_UDP) {
++		list[i].type = ICE_UDP_OF;
+ 		list[i].h_u.l4_hdr.dst_port = hdr->l4_key.dst_port;
+ 		list[i].m_u.l4_hdr.dst_port = hdr->l4_mask.dst_port;
+ 		i++;
+@@ -320,7 +314,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
+ 		     ICE_TC_FLWR_FIELD_SRC_L4_PORT)) {
+ 		struct ice_tc_l4_hdr *l4_key, *l4_mask;
+ 
+-		list[i].type = ice_proto_type_from_l4_port(inner, headers->l3_key.ip_proto);
++		list[i].type = ice_proto_type_from_l4_port(headers->l3_key.ip_proto);
+ 		l4_key = &headers->l4_key;
+ 		l4_mask = &headers->l4_mask;
+ 
 -- 
 2.31.1
 
