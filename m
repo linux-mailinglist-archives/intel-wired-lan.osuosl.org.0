@@ -1,118 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F2FC453179
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 12:53:07 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB4B44531B3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 13:03:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 91124401B1;
-	Tue, 16 Nov 2021 11:53:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 267E84023C;
+	Tue, 16 Nov 2021 12:03:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jBjT587E5Ol2; Tue, 16 Nov 2021 11:53:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5Zl0pewHTqGz; Tue, 16 Nov 2021 12:03:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 42A4140004;
-	Tue, 16 Nov 2021 11:53:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0B2A240174;
+	Tue, 16 Nov 2021 12:03:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CBEC81BF86B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:52:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 010AF1BF2A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 12:03:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B8F3940107
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:52:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id ECDE940174
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 12:03:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=nvidia.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nz_MwMJJkj32 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Nov 2021 11:52:58 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam08on2061.outbound.protection.outlook.com [40.107.101.61])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A383F400F3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:52:58 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XOmITqNyFdHvOissPuKJwy6ETC9K1ZUzYCEbPkgymJegph9K3ORiOP6bAQRNFs8rNsiUIYql/ocSp16eNlZCPunc+f+ozgmm/ARb41qcjjmkstjzRsyK2OYqnsdg2I1VzdAUsofaW25U8/VKHhfbwONDyQ/4vy8CoVy+0fAPKZCB6SnVXHi3QmeRwC4IJuVbZcmHVH07w2HHssvWXDfr2EOJ5VnKd2Cw+XyB4LBV/RdRb0GVN2faZ77UUPodmCUl7D610VRABOPEJKOmlvduskt9ndi5MKZc4u5vyLc7EUVr6zIWJayICkRXZKDfV4t2jXNt2I8VB6lml8nKIr8wRA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WdzP8Pl81znlfKt/oYDXUm5LzGKuvSo7nFjEE9ZvTus=;
- b=YIRXOxiRb5n7ITfjEZ8EU7AwVF0my3tlq/TThCxyV8/8MNRai7jvk61zmoqu1JGLSO8jgB2q9gAB655OqQ53Bdxrz/HH1McrXn7/F+k5RQ2KgORhJZeajxhl9ZRQi/8EknlIGNN2c2bnWOczXNO/VxLiPmOz46CZGNlxkhTbBp6qenVQ9P865yL4FcXt17PCep1sHvg3QdKJqk+LBy9bV5tq5JjpHgbqq1JKRTMYy71M+RIpiLV9Vqkp9vVXYkvPNrfxe4eEmqkcTfrex6rGn91HVAkRZKRcF7lNg/tUlXxgpAgMxWAvBpcjxeqaJScw13WLqRz6g/qoaFYeOpcVYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WdzP8Pl81znlfKt/oYDXUm5LzGKuvSo7nFjEE9ZvTus=;
- b=mr8eenWwlAPMapkxEiFV5MS02d/1TtD0+JJ6+XlN/LDEYNgjgzqye2/A8oYikFw2U0322jxXmNqJS/soXcyTsI2QBJRv6/NYfrc3OBCXC2sVL/uJu34RHlIHUx+ThCwg8C0+9DRNPGxFWcUAQ3ulgtBjAOm4c3Z1l81/aiNZBCfNovJk4pKvuWN1wEio6x9F8iKhrw7vGRuvHFa1QZ3ieSGUVu1KOjkVDDsAW9xD0XmWRJZoVMzF6WJCsO9+yWKqh2V0rLhUD9PXM5Vo82nuVWvs5Itp8IAiUSj42AKAmB3fIQRkd2zmUOZkgJatsfjo3I8PKCpz0w/WZLGWzT6QMw==
-Received: from BN9PR03CA0170.namprd03.prod.outlook.com (2603:10b6:408:f4::25)
- by BN7PR12MB2803.namprd12.prod.outlook.com (2603:10b6:408:32::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.16; Tue, 16 Nov
- 2021 11:52:55 +0000
-Received: from BN8NAM11FT006.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:f4:cafe::2c) by BN9PR03CA0170.outlook.office365.com
- (2603:10b6:408:f4::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4713.19 via Frontend
- Transport; Tue, 16 Nov 2021 11:52:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- BN8NAM11FT006.mail.protection.outlook.com (10.13.177.21) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4690.15 via Frontend Transport; Tue, 16 Nov 2021 11:52:55 +0000
-Received: from yaviefel (172.20.187.6) by HQMAIL107.nvidia.com (172.20.187.13)
- with Microsoft SMTP Server (TLS) id 15.0.1497.18;
- Tue, 16 Nov 2021 11:52:45 +0000
-References: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
- <20211110114448.2792314-7-maciej.machnikowski@intel.com>
- <87tugic17a.fsf@nvidia.com>
- <MW5PR11MB5812E733ED2BB621A3249CD5EA989@MW5PR11MB5812.namprd11.prod.outlook.com>
-User-agent: mu4e 1.4.15; emacs 27.2
-From: Petr Machata <petrm@nvidia.com>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-In-Reply-To: <MW5PR11MB5812E733ED2BB621A3249CD5EA989@MW5PR11MB5812.namprd11.prod.outlook.com>
-Date: Tue, 16 Nov 2021 12:52:42 +0100
-Message-ID: <87fsrwtj05.fsf@nvidia.com>
+ with ESMTP id FdFI6BtltDem for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Nov 2021 12:03:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1040D40168
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 12:03:13 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="214401240"
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="214401240"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2021 04:03:13 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="454226539"
+Received: from lkp-server02.sh.intel.com (HELO c20d8bc80006) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 16 Nov 2021 04:03:11 -0800
+Received: from kbuild by c20d8bc80006 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mmxB8-0000Q5-VF; Tue, 16 Nov 2021 12:03:10 +0000
+Date: Tue, 16 Nov 2021 20:02:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61939dc7.33lv+CubJdFKwlE9%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Originating-IP: [172.20.187.6]
-X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
- HQMAIL107.nvidia.com (172.20.187.13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c797e935-1d5d-4504-fbda-08d9a8f7a0d0
-X-MS-TrafficTypeDiagnostic: BN7PR12MB2803:
-X-Microsoft-Antispam-PRVS: <BN7PR12MB28034180114AD7A730A15ADFD6999@BN7PR12MB2803.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: R/2WpkLbJUGumdFlFrMQm1vIecCxaREUq2U4V9hQ1I8CCO8/9au5co/mqAMaN3V7kgHgL4498mGXrOaRx6xx0XznChZCy4sB2zoWnznlnqEnMX6l8WJk5km+Z/ynMkixVm7zTRGKMDiYRHsYBbLBSHFxFTK1Gjm12L2NqJ0Ubn3ypwhkmFngUQ/eWdYkQQrBn0pTSWrWfJolImhS+NcEM4JEPaIcd4ppp01dULw6YNSWIuwDcBZIl9YD+G4GZT22fB2uq9hMidBcjmFAVM6E0AJUNJFnZqN29BeGtjOUH3LnYp7En+bZccLcmidxwjpj3CXy2zTiPq3wc3q17Me8DBKyQw+vgHc8DJdL9s0HvWMt3XYYoP+sw40kROssBAcLgfsExPQbzCoSBstTCW+GxEHTux+FZuzoqscGm++q17QWn2MFD0mbX24biHUDqwZGm75t790PA7nKqnjiwx5PJJ03rcsdpsN8IylqgzIpwNOc2iutV64Is40pNOulJgRvCJS2oVAarlOdfZiC0j4urc3CIUoZqgznS6SfmniTPTUjC6x2F/5/hU4UKc8L95ut0mxvEBNhzUdKl/ZNcQbHqtIhAmEK8vQsN5c+jw9kav91+fWd0CoWA0bXfKqrfQ34q40PBt804uBrZm6eb4zEwGsyUrN4xlhfcV6lX1TX/Uyz8QUKabiWEM2fX0qR0TDIEOKBHMVTZv6UAlQ5pm8udA==
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(36840700001)(46966006)(36756003)(8676002)(2906002)(26005)(6916009)(5660300002)(16526019)(2616005)(7636003)(82310400003)(70586007)(186003)(70206006)(4326008)(336012)(426003)(508600001)(86362001)(8936002)(356005)(316002)(83380400001)(36906005)(6666004)(54906003)(7416002)(36860700001)(47076005);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2021 11:52:55.6415 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c797e935-1d5d-4504-fbda-08d9a8f7a0d0
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT006.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR12MB2803
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 6/6] docs: net: Add
- description of SyncE interfaces
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ a9c12f0326b2682923fb0f8bfccf576e27fd4a86
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,72 +63,160 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Petr Machata <petrm@nvidia.com>, "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "abyagowi@fb.com" <abyagowi@fb.com>, "saeed@kernel.org" <saeed@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "idosch@idosch.org" <idosch@idosch.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: a9c12f0326b2682923fb0f8bfccf576e27fd4a86  iavf: Fix VLAN feature flags after VFR
 
-Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+elapsed time: 722m
 
->> - Reporting pins through the netdevices that use them allows for
->>   configurations that are likely invalid, like disjoint "frequency
->>   bridges".
->
-> Not sure if I understand that comment. In target application a given
-> netdev will receive an ESMC message containing the quality of the
-> clock that it has on the receive side. The upper layer software will
-> see QL_PRC on one port and QL_EEC on other and will need to enable
-> clock output from the port that received QL_PRC, as it's the higher clock
-> class. Once the EEC reports Locked state all other ports that are traceable
-> to a given EEC (either using the DPLL subsystem, or the config file)
-> will start reporting QL_PRC to downstream devices.
+configs tested: 129
+configs skipped: 3
 
-I think I had the reading of the UAPI wrong. So RTM_SETRCLKSTATE means,
-take the clock recovered from ifindex, and send it to pins that I have
-marked with the ENA flag.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-But that still does not work well for multi-port devices. I can set it
-up to forward frequency from swp1 to swp2 and swp3, from swp4 to swp5
-and swp6, etc. But in reality I only have one underlying DPLL and can't
-support this. So yeah, obviously, I bounce it in the driver. It also
-means that when I want to switch tracking from swp1 to swp2, I first
-need to unset all the swp1 pins (64 messages or whaveter) and then set
-it up at swp2 (64 more messages). As a user I still don't know which of
-my ports share DPLL. It's just not a great interface for multi-port
-devices.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211116
+m68k                             alldefconfig
+powerpc                 linkstation_defconfig
+ia64                                defconfig
+mips                         db1xxx_defconfig
+mips                malta_qemu_32r6_defconfig
+powerpc                        cell_defconfig
+arm                         lubbock_defconfig
+sh                             shx3_defconfig
+sh                          lboxre2_defconfig
+m68k                       m5208evb_defconfig
+powerpc                     ppa8548_defconfig
+arm                         cm_x300_defconfig
+arm                       cns3420vb_defconfig
+sparc                       sparc64_defconfig
+powerpc                      ppc6xx_defconfig
+powerpc                mpc7448_hpc2_defconfig
+m68k                            mac_defconfig
+arm                          badge4_defconfig
+sh                           sh2007_defconfig
+powerpc                     ksi8560_defconfig
+powerpc                     kilauea_defconfig
+arm                      tct_hammer_defconfig
+sh                          sdk7780_defconfig
+powerpc                      cm5200_defconfig
+powerpc                   microwatt_defconfig
+mips                       bmips_be_defconfig
+um                               alldefconfig
+powerpc                    ge_imp3a_defconfig
+sh                          rsk7203_defconfig
+m68k                        m5407c3_defconfig
+sh                        sh7763rdp_defconfig
+mips                         mpc30x_defconfig
+sh                     sh7710voipgw_defconfig
+arm                  randconfig-c002-20211116
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+nds32                             allnoconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a003-20211115
+i386                 randconfig-a001-20211115
+i386                 randconfig-a004-20211115
+i386                 randconfig-a002-20211115
+i386                 randconfig-a006-20211115
+i386                 randconfig-a005-20211115
+x86_64               randconfig-a015-20211116
+x86_64               randconfig-a013-20211116
+x86_64               randconfig-a012-20211116
+x86_64               randconfig-a011-20211116
+x86_64               randconfig-a016-20211116
+x86_64               randconfig-a014-20211116
+i386                 randconfig-a014-20211116
+i386                 randconfig-a016-20211116
+i386                 randconfig-a012-20211116
+i386                 randconfig-a013-20211116
+i386                 randconfig-a011-20211116
+i386                 randconfig-a015-20211116
+arc                  randconfig-r043-20211115
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                           allyesconfig
 
-Having this stuff at a dedicated DPLL object would make the issue go
-away completely. A driver then instantiates one DPLL, sets it up with
-RCLK pins and TX pins. The DPLL can be configured with which pin to take
-the frequency from, and which subset of pins to forward it to. There are
-as many DPLL objects as there are DPLL circuits in the system.
+clang tested configs:
+x86_64               randconfig-c007-20211116
+i386                 randconfig-c001-20211116
+arm                  randconfig-c002-20211116
+riscv                randconfig-c006-20211116
+powerpc              randconfig-c003-20211116
+s390                 randconfig-c005-20211116
+mips                 randconfig-c004-20211116
+x86_64               randconfig-a005-20211116
+x86_64               randconfig-a003-20211116
+x86_64               randconfig-a001-20211116
+x86_64               randconfig-a002-20211116
+x86_64               randconfig-a006-20211116
+x86_64               randconfig-a004-20211116
+i386                 randconfig-a006-20211116
+i386                 randconfig-a003-20211116
+i386                 randconfig-a005-20211116
+i386                 randconfig-a001-20211116
+i386                 randconfig-a004-20211116
+i386                 randconfig-a002-20211116
+hexagon              randconfig-r045-20211115
+hexagon              randconfig-r041-20211115
+s390                 randconfig-r044-20211115
+riscv                randconfig-r042-20211115
+hexagon              randconfig-r045-20211116
+hexagon              randconfig-r041-20211116
 
-This works for simple port devices as well as switches, as well as
-non-networked devices.
-
-The in-driver LOC overhead is a couple of _init / _fini calls and an ops
-structure that the DPLL subsystem uses to talk to the driver. Everything
-else remains the same.
-
->> - It's not clear what enabling several pins means, and it's not clear
->>   whether this genericity is not going to be an issue in the future when
->>   we know what enabling more pins means.
->
-> It means that the recovered frequency will appear on 2 or more physical
-> pins of the package.
-
-Yes, agreed now.
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
