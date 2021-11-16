@@ -1,52 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7960C45361A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 16:41:29 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F202453A2C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 20:30:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2E7B780F3E;
-	Tue, 16 Nov 2021 15:41:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7805C40410;
+	Tue, 16 Nov 2021 19:30:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VeknmFTfbaI5; Tue, 16 Nov 2021 15:41:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HXT1kTe_eh4Y; Tue, 16 Nov 2021 19:30:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 541D280F29;
-	Tue, 16 Nov 2021 15:41:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 54EC0403E9;
+	Tue, 16 Nov 2021 19:30:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2BD381BF473
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:41:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DE0131BF57F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 19:30:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2693280F29
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:41:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CB1A5403E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 19:30:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Df0kLUl0r4r1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Nov 2021 15:41:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from Chamillionaire.breakpoint.cc (Chamillionaire.breakpoint.cc
- [IPv6:2a0a:51c0:0:12e:520::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4633E80F27
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:41:21 +0000 (UTC)
-Received: from fw by Chamillionaire.breakpoint.cc with local (Exim 4.92)
- (envelope-from <fw@strlen.de>)
- id 1mn0a7-000431-C1; Tue, 16 Nov 2021 16:41:11 +0100
-Date: Tue, 16 Nov 2021 16:41:11 +0100
-From: Florian Westphal <fw@strlen.de>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-Message-ID: <20211116154111.GF6326@breakpoint.cc>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EzpRZIBso4WL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Nov 2021 19:30:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2E9D8403E8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 19:30:43 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5CF336140D;
+ Tue, 16 Nov 2021 19:30:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637091042;
+ bh=+Ty9ThuacF/5qyYxqg9AiudbC/9ecfrcUqPzo23RDEg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Dec4gNcWXRpxxeGuPPN0Je6wnv+GK53gbhZfr3mpa5pvgY7OtTmkM/e3rLFoHcaYE
+ mHYMqBiCMZCDd8e3yCFhvEWcSr9qmsqoxB9IZxePbaqNeZpv2hjpkF5+EVpItygWnR
+ VzntnqfLoYVVxyBSQPjljmfirEMn3BkQZ8ApFVOI5nsoh6Pt7uorlg/KnBS/1DqjSP
+ Ycm3kAvTPjbls6/UTrew9gktgVJ/yxy+G+YUUugRjuQtwD73Ptbo1AbDIqm7k6NfDE
+ quIl5rZJhT8qz13itA1g7U04Nq0ylCDsGWXHmJdudp5dIgu3y7o+mFFy0gHe/PuiqB
+ peIqT0CBDxizA==
+Date: Tue, 16 Nov 2021 11:30:41 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Florian Westphal <fw@strlen.de>
+Message-ID: <20211116113041.17fd8ff2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20211116154111.GF6326@breakpoint.cc>
 References: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
  <20211110114448.2792314-3-maciej.machnikowski@intel.com>
  <YY0+PmNU4MSGfgqA@hog> <20211111162252.GJ16363@breakpoint.cc>
  <MW5PR11MB58124A70268058505368A5C8EA999@MW5PR11MB5812.namprd11.prod.outlook.com>
+ <20211116154111.GF6326@breakpoint.cc>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <MW5PR11MB58124A70268058505368A5C8EA999@MW5PR11MB5812.namprd11.prod.outlook.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 2/6] rtnetlink: Add new
  RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -65,12 +72,11 @@ Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
  "petrm@nvidia.com" <petrm@nvidia.com>, "abyagowi@fb.com" <abyagowi@fb.com>,
  Sabrina Dubroca <sd@queasysnail.net>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- Florian Westphal <fw@strlen.de>, "saeed@kernel.org" <saeed@kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>, "Machnikowski,
+ Maciej" <maciej.machnikowski@intel.com>, "saeed@kernel.org" <saeed@kernel.org>,
  "idosch@idosch.org" <idosch@idosch.org>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
  "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
  "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
  "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
@@ -78,35 +84,17 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Machnikowski, Maciej <maciej.machnikowski@intel.com> wrote:
-> > More importantly, why is this added to rtnetlink (routing sockets)?
-> > It appears to be unrelated?
-> > 
-> > Looks like this should be in ethtool (it has netlink api nowadays) or
-> > devlink.
+On Tue, 16 Nov 2021 16:41:11 +0100 Florian Westphal wrote:
+> > and the concept of that functionality
+> > is - any packet network can implement it - SONET, GPON or even wireless.  
 > 
-> We identified it as a generic place in previous RFCs.
+> Ethtool ops expose a wide range of low-level functions not related to
+> ethernet, e.g. eeprom dump, interrupt coalescing settings of and so on
+> and so forth.
+> 
+> But hey, if net maintainers are ok with rtnetlink...
 
-Doesn't answer my question.  EECSTATE doesn't appear to be related to
-anything else thats currently exposed via rtnetlink from a conceptional
-point of view.
-
-> Ethtool calls are not
-> available in non-ethernet packet networks
-
-Thats news to me.  ethtool ops are linked via netdevice struct.
-
-> and the concept of that functionality
-> is - any packet network can implement it - SONET, GPON or even wireless.
-
-Ethtool ops expose a wide range of low-level functions not related to
-ethernet, e.g. eeprom dump, interrupt coalescing settings of and so on
-and so forth.
-
-But hey, if net maintainers are ok with rtnetlink...
-
-I just feel putting synce interaction in rtnetlink is arbitrary
-and bad precendence.
+I agree, this has been brought up by 5 people or so already.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
