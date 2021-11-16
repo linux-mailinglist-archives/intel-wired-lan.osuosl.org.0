@@ -1,53 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5BE44537A4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 17:36:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C004453572
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 16:13:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5B92F60724;
-	Tue, 16 Nov 2021 16:36:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E9E4C40425;
+	Tue, 16 Nov 2021 15:13:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8EBhG0WSInGE; Tue, 16 Nov 2021 16:36:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MhMf9VBYyjDA; Tue, 16 Nov 2021 15:13:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 51E246070B;
-	Tue, 16 Nov 2021 16:36:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id CFBBE40410;
+	Tue, 16 Nov 2021 15:13:44 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6EE261BF315
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4CA801BF473
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:13:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5E244607D9
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4738A60648
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:13:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AqwyL32Sg6jB for <intel-wired-lan@osuosl.org>;
- Tue, 16 Nov 2021 09:37:50 +0000 (UTC)
+ with ESMTP id 0CZ9ymwgvsyo for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Nov 2021 15:13:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BE2DB60698
- for <intel-wired-lan@osuosl.org>; Tue, 16 Nov 2021 09:37:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="233493075"
-X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="233493075"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2021 01:37:50 -0800
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4028360599
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 15:13:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="213743946"
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="213743946"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2021 07:13:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,238,1631602800"; d="scan'208";a="454188208"
-Received: from wasp.igk.intel.com ([10.102.20.192])
- by orsmga003.jf.intel.com with ESMTP; 16 Nov 2021 01:37:49 -0800
-From: Michal Swiatkowski <michal.swiatkowski@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Tue, 16 Nov 2021 10:36:15 +0100
-Message-Id: <20211116093615.10740-1-michal.swiatkowski@intel.com>
-X-Mailer: git-send-email 2.31.1
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="506471164"
+Received: from lkp-server02.sh.intel.com (HELO c20d8bc80006) ([10.239.97.151])
+ by orsmga008.jf.intel.com with ESMTP; 16 Nov 2021 07:13:16 -0800
+Received: from kbuild by c20d8bc80006 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mn095-0000Zb-Ub; Tue, 16 Nov 2021 15:13:15 +0000
+Date: Tue, 16 Nov 2021 23:12:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6193ca64.3yoUvYVY3l0RmLY5%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 16 Nov 2021 16:36:02 +0000
-Subject: [Intel-wired-lan] [PATCH net] ice: fix choosing udp header type
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 594782e57873aa744ea88ff0773390cd072cc3c2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,86 +68,156 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 594782e57873aa744ea88ff0773390cd072cc3c2  i40e: Update FVL/FPK FW API version
 
-In tunnels packet there can be two UDP headers:
-- outer which for hw should be mark as ICE_UDP_OF
-- inner which for hw should be mark as ICE_UDP_ILOS or as ICE_TCP_IL if
-  inner header is of TCP type
+elapsed time: 914m
 
-In none tunnels packet header can be:
-- UDP, which for hw should be mark as ICE_UDP_ILOS
-- TCP, which for hw should be mark as ICE_TCP_IL
+configs tested: 130
+configs skipped: 3
 
-Change incorrect ICE_UDP_OF for none tunnel packets to ICE_UDP_ILOS.
-ICE_UDP_OF is incorrect for none tunnel packets and setting it leads to
-error from hw while adding this kind of recipe.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-In summary, for tunnel outer port type should always be set to
-ICE_UDP_OF, for none tunnel outer and tunnel inner it should always be
-set to ICE_UDP_ILOS.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                               defconfig
+i386                 randconfig-c001-20211116
+arc                          axs101_defconfig
+sh                          rsk7269_defconfig
+arm                        shmobile_defconfig
+openrisc                 simple_smp_defconfig
+arm                        spear3xx_defconfig
+arm                          imote2_defconfig
+mips                            ar7_defconfig
+mips                             allyesconfig
+powerpc                      arches_defconfig
+m68k                            mac_defconfig
+powerpc                     tqm8560_defconfig
+m68k                          multi_defconfig
+sh                      rts7751r2d1_defconfig
+mips                           gcw0_defconfig
+m68k                       m5208evb_defconfig
+mips                      bmips_stb_defconfig
+powerpc                    klondike_defconfig
+m68k                          amiga_defconfig
+arm                       versatile_defconfig
+m68k                        mvme147_defconfig
+arm                         hackkit_defconfig
+arm                            qcom_defconfig
+sh                          r7780mp_defconfig
+xtensa                       common_defconfig
+sh                            migor_defconfig
+arm                         orion5x_defconfig
+nds32                            alldefconfig
+m68k                       bvme6000_defconfig
+xtensa                  audio_kc705_defconfig
+riscv             nommu_k210_sdcard_defconfig
+mips                            e55_defconfig
+arm                  randconfig-c002-20211116
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                             allmodconfig
+s390                             allyesconfig
+parisc                              defconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a003-20211115
+i386                 randconfig-a001-20211115
+i386                 randconfig-a004-20211115
+i386                 randconfig-a002-20211115
+i386                 randconfig-a006-20211115
+i386                 randconfig-a005-20211115
+x86_64               randconfig-a015-20211116
+x86_64               randconfig-a013-20211116
+x86_64               randconfig-a012-20211116
+x86_64               randconfig-a011-20211116
+x86_64               randconfig-a016-20211116
+x86_64               randconfig-a014-20211116
+arc                  randconfig-r043-20211115
+arc                  randconfig-r043-20211116
+s390                 randconfig-r044-20211116
+riscv                randconfig-r042-20211116
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                           allyesconfig
 
-Fixes: 9e300987d4a81 ("ice: VXLAN and Geneve TC support")
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+clang tested configs:
+x86_64               randconfig-c007-20211116
+i386                 randconfig-c001-20211116
+arm                  randconfig-c002-20211116
+riscv                randconfig-c006-20211116
+powerpc              randconfig-c003-20211116
+s390                 randconfig-c005-20211116
+mips                 randconfig-c004-20211116
+i386                 randconfig-a006-20211116
+i386                 randconfig-a003-20211116
+i386                 randconfig-a005-20211116
+i386                 randconfig-a001-20211116
+i386                 randconfig-a004-20211116
+i386                 randconfig-a002-20211116
+x86_64               randconfig-a005-20211116
+x86_64               randconfig-a003-20211116
+x86_64               randconfig-a001-20211116
+x86_64               randconfig-a002-20211116
+x86_64               randconfig-a006-20211116
+x86_64               randconfig-a004-20211116
+i386                 randconfig-a012-20211115
+i386                 randconfig-a013-20211115
+i386                 randconfig-a011-20211115
+i386                 randconfig-a015-20211115
+i386                 randconfig-a014-20211115
+i386                 randconfig-a016-20211115
+hexagon              randconfig-r045-20211115
+hexagon              randconfig-r041-20211115
+s390                 randconfig-r044-20211115
+riscv                randconfig-r042-20211115
+hexagon              randconfig-r045-20211116
+hexagon              randconfig-r041-20211116
+
 ---
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 26 ++++++++-------------
- 1 file changed, 10 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 4e1dac813339..29fe359a5598 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -78,20 +78,13 @@ ice_proto_type_from_ipv6(bool inner)
- }
- 
- static enum ice_protocol_type
--ice_proto_type_from_l4_port(bool inner, u16 ip_proto)
-+ice_proto_type_from_l4_port(u16 ip_proto)
- {
--	if (inner) {
--		switch (ip_proto) {
--		case IPPROTO_UDP:
--			return ICE_UDP_ILOS;
--		}
--	} else {
--		switch (ip_proto) {
--		case IPPROTO_TCP:
--			return ICE_TCP_IL;
--		case IPPROTO_UDP:
--			return ICE_UDP_OF;
--		}
-+	switch (ip_proto) {
-+	case IPPROTO_TCP:
-+		return ICE_TCP_IL;
-+	case IPPROTO_UDP:
-+		return ICE_UDP_ILOS;
- 	}
- 
- 	return 0;
-@@ -194,8 +187,9 @@ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
- 		i++;
- 	}
- 
--	if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) {
--		list[i].type = ice_proto_type_from_l4_port(false, hdr->l3_key.ip_proto);
-+	if ((flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) &&
-+	    hdr->l3_key.ip_proto == IPPROTO_UDP) {
-+		list[i].type = ICE_UDP_OF;
- 		list[i].h_u.l4_hdr.dst_port = hdr->l4_key.dst_port;
- 		list[i].m_u.l4_hdr.dst_port = hdr->l4_mask.dst_port;
- 		i++;
-@@ -320,7 +314,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 		     ICE_TC_FLWR_FIELD_SRC_L4_PORT)) {
- 		struct ice_tc_l4_hdr *l4_key, *l4_mask;
- 
--		list[i].type = ice_proto_type_from_l4_port(inner, headers->l3_key.ip_proto);
-+		list[i].type = ice_proto_type_from_l4_port(headers->l3_key.ip_proto);
- 		l4_key = &headers->l4_key;
- 		l4_mask = &headers->l4_mask;
- 
--- 
-2.31.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
