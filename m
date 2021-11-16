@@ -1,98 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CC17453425
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 15:26:38 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8AC4453456
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 15:37:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2771E40428;
-	Tue, 16 Nov 2021 14:26:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6B27240437;
+	Tue, 16 Nov 2021 14:37:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BJiY0UaXWqUN; Tue, 16 Nov 2021 14:26:36 +0000 (UTC)
+	with ESMTP id IhauA4fp5sd5; Tue, 16 Nov 2021 14:37:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C453A401B2;
-	Tue, 16 Nov 2021 14:26:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0931D4040E;
+	Tue, 16 Nov 2021 14:37:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B37951BF378
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:26:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DF5261BF378
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:37:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 99ED7401B2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:26:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DB3DF80F43
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:37:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SEJ5T51g46VW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Nov 2021 14:26:30 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id d3Cdn0CLnmL1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Nov 2021 14:37:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5589440422
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:26:30 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="214422765"
-X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="214422765"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2021 06:26:29 -0800
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E9E4380F3A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 14:37:16 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="257459807"
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="257459807"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2021 06:37:15 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="472336168"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga002.jf.intel.com with ESMTP; 16 Nov 2021 06:26:29 -0800
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="592707586"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by fmsmga002.fm.intel.com with ESMTP; 16 Nov 2021 06:37:15 -0800
+Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Tue, 16 Nov 2021 06:26:29 -0800
-Received: from orsmsx605.amr.corp.intel.com (10.22.229.18) by
- ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ 15.1.2242.12; Tue, 16 Nov 2021 06:37:14 -0800
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Tue, 16 Nov 2021 06:26:28 -0800
+ 15.1.2242.12; Tue, 16 Nov 2021 06:37:14 -0800
 Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Tue, 16 Nov 2021 06:26:28 -0800
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.105)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2242.12 via Frontend Transport; Tue, 16 Nov 2021 06:37:14 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Tue, 16 Nov 2021 06:26:28 -0800
+ 15.1.2242.12; Tue, 16 Nov 2021 06:37:14 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DOH1o9CxjeOYOMjVeITKyAFbh8wZEiXnUf8balFkaq0H3gTrGhtpc8VwWRp1vHgjWV/r0E4sUm2ZrcMb+SncBz1/7Lh63ykkesSCqO8lYqkbck7JgHYZfcjnBMx7ckoEWBHN2q11uuoLtbhsXr8KVRODCpYJvfJhgMhz9sysExkrGU+N/Yigl6ReQfbyPccSeqtaWSI/YPzigWhHX163jlqQu657fHCS+RigE5hW++DFac4yoDDBHNRU44ipFph4rBdq0PEkd6ME8x7P1fFxFJ7nqxnVcJ1u4DL9w5kaMy4J/1C57XwN2Oracuqw1A7IDE64WEu7xNed4dZAYedRmQ==
+ b=lxvTnEi9IfJHWnVRzjUwnKSN/LpQpzeblWVG7+4CdjXJQjXiD9MMoLqaKqSy6uBv7tYrJPHM7vxtkbieYiN5IH76+tpcsrDZXzjycabBYW0dUDwKgKLOaGAbEkKO0C++waN4iqWRWLWqoo9aQrLbydzy+bwD8j52Oll5qSanB2wjFedNv4lNZ8uPegyjd6WZqR+Z93jdSq36WGXFQDuP1aMQu6KB3O0ldxhBLTfppmRDwip12dPEFTTwfdIQiByC2KTMZkZ/DfF67su1OsG4HmS65eqBnNHBlwy7V8Fe1bWYLLNlYOeVZrrQRJNLlIdzWVV0Weq29MylEGmQTjaJcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wQeMTKFhaVvrN2KUZCkO9GZ4nDmK0rUSTuA1kINU/vs=;
- b=MfLTTAyXLHQ6hT1M5bIaTrF9c0sIP76jEGhK/y8a4haRrPGFBzcpdgCD+tJH7Emj++patoJ5EKxQ9CQOtlTMxb33/lR5smYOlrKfvClMYgVAxsA8IJZsi7DF1iKiJ9cSpIPVxCGS6hoLdOUCzR0Gis5M+jpl1BrPdf34YTCPyP/2ajLolRoOiZMmlvmwnmz/JLzCh9PfXwmV940tk+3qNw+swxPex7428XExHtFNJcW9jwoyA3AjhKo3OpszEYlNnSRbhsUBWx6papSxwYlSnV4jYcdxo+UULSd/KO6MadRWt3zXg//pQUZ9xk2/j6cOPFvyEtiTH0yqf9hwDul9TQ==
+ bh=/s4w977s1eMQYNb52T+vCb6/viGUmhv6wCsMYVdJBTk=;
+ b=d6liEFiOGgD8rDJqpyapkOc15r9xZtwMzaz9wf/7eiz4cALf5WJrBSS5v9/SdFAJm+rjoFSajl98YROAZXVjIa/cdBMDfEheZGFV1e+5PosCQbEBKWIsUSIaYHEKTIT7vruA0OBfAbXwtUq7MR/G0FeEWbGl58g2cCJwiy/WlzxeT2+QO6zDPNYS2gF6uO2VIWw1ETTq5mJLaWSudXSdJXrFuZIrHKQJmUbPi1nKaQm5kZJhV3U1Dx/arsHYiY6vct8OB7mqSFUXZ7csGOpuNkq1qXb0/gWO115e56c9dTeJvWonRIcIz9X2tfmpqxNUlK6JPMDXHmb3gA1HqPJjrg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wQeMTKFhaVvrN2KUZCkO9GZ4nDmK0rUSTuA1kINU/vs=;
- b=dehwxYORpBmMUzDN1Kt4/iwOh8U0bqg4ZMCTEIGiaY/OJJx2j/dvwLObgA4EC7QOfUhyWSgOPQpzpI79DvXvLAUwKWzp95ESx4Rl3AfU9LqRhEYy9bjMkGQ98G9UdNDzGvvIpDBnYfmkWhulyb5f9V5JpTnqIu8xmgOdYhZvKdg=
+ bh=/s4w977s1eMQYNb52T+vCb6/viGUmhv6wCsMYVdJBTk=;
+ b=E/Cu+JggT5sq+aht5L/6fYAxZ/Q6VHXrlS+GvblyceLENYWjnchI9NvxC6rX9qXqRne7hD/fQAtFdRkD6/6CbQ8WzG78VjEv004fv+QdZwLWqeymQr+cHo/P6IM4I90AtXow9ygk3U1RpYosESWj0K4anoa/MPRsiNdHjjjv/iA=
 Received: from MW5PR11MB5812.namprd11.prod.outlook.com (2603:10b6:303:193::14)
- by CO1PR11MB4788.namprd11.prod.outlook.com (2603:10b6:303:97::11)
+ by MWHPR11MB1727.namprd11.prod.outlook.com (2603:10b6:300:1f::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.16; Tue, 16 Nov
- 2021 14:26:27 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.27; Tue, 16 Nov
+ 2021 14:37:13 +0000
 Received: from MW5PR11MB5812.namprd11.prod.outlook.com
  ([fe80::1127:5635:26df:eca9]) by MW5PR11MB5812.namprd11.prod.outlook.com
  ([fe80::1127:5635:26df:eca9%7]) with mapi id 15.20.4690.027; Tue, 16 Nov 2021
- 14:26:27 +0000
+ 14:37:13 +0000
 From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-To: Petr Machata <petrm@nvidia.com>
-Thread-Topic: [PATCH v3 net-next 6/6] docs: net: Add description of SyncE
- interfaces
-Thread-Index: AQHX1iqaoGL4JrqyH0+WzcbffTt8mqv+RxWAgAYf5ACAAa2eAIAAJTzg
-Date: Tue, 16 Nov 2021 14:26:27 +0000
-Message-ID: <MW5PR11MB5812CBDF240A6D08E76655C1EA999@MW5PR11MB5812.namprd11.prod.outlook.com>
+To: Sabrina Dubroca <sd@queasysnail.net>
+Thread-Topic: [PATCH v3 net-next 2/6] rtnetlink: Add new RTM_GETEECSTATE
+ message to get SyncE status
+Thread-Index: AQHX1iqA5RlGiTEzKkqK25dIf+5Hpav+flEAgAfCi9A=
+Date: Tue, 16 Nov 2021 14:37:13 +0000
+Message-ID: <MW5PR11MB581243EFB3A84BD2912ACBF8EA999@MW5PR11MB5812.namprd11.prod.outlook.com>
 References: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
- <20211110114448.2792314-7-maciej.machnikowski@intel.com>
- <87tugic17a.fsf@nvidia.com>
- <MW5PR11MB5812E733ED2BB621A3249CD5EA989@MW5PR11MB5812.namprd11.prod.outlook.com>
- <87fsrwtj05.fsf@nvidia.com>
-In-Reply-To: <87fsrwtj05.fsf@nvidia.com>
+ <20211110114448.2792314-3-maciej.machnikowski@intel.com>
+ <YY0+PmNU4MSGfgqA@hog>
+In-Reply-To: <YY0+PmNU4MSGfgqA@hog>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -103,61 +103,70 @@ dlp-product: dlpe-windows
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 2f1fa411-7a47-4095-846d-08d9a90d1368
-x-ms-traffictypediagnostic: CO1PR11MB4788:
-x-microsoft-antispam-prvs: <CO1PR11MB4788B01095AAD24C3A56051DEA999@CO1PR11MB4788.namprd11.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 6822d038-4bbf-41b1-6c95-08d9a90e9476
+x-ms-traffictypediagnostic: MWHPR11MB1727:
+x-microsoft-antispam-prvs: <MWHPR11MB1727D2C2A4B5BDD260F606B6EA999@MWHPR11MB1727.namprd11.prod.outlook.com>
 x-ms-oob-tlc-oobclassifiers: OLM:10000;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: RCnII2xPYhqWupoJ6ekJSx9FYoUOkHQGdOBg0oWFkMz6UT0y8ucIsElmvzpdIIb+BNPxp3LcL2PCRQTbnQ0LjbgGVzi2Y02+/L7KEHV9faeVoVE1JwBtibUrDI7zQYfnvtlZviQsMwZE/KV/4/g1+sqSGYALlaGpiwMPZXEaCviDEAJFUvf09+n39g3TUmiG/uTR1Oi8auXItSPiiFcUELYI1ETpp3qS8nqH2Cw1wMfgdE+ysW38S+vDdBZkkPrxBq0+mPIFZNTbGhhPwcnTus8UcD6ntxQbTbSrG8h3HR9NhOfmmPKph+SHPYljh53v7QaOWrLEx5SvyCM28f3O09f+viBtr3IXmq1JrbqqR0cc+O5Ob+bx9eCUULGavV1OeMsO5h3lVX4Mb9vKdjtQZ7oNT063qPGf9gvFK/hQe48BZVYHxsobqwSQ1xKcVtYbvfKfQBhjrEUQN9yEMdam4EwkpIb4Hz3k96yDM0JgBl3NHe38u0vn4gcsKe7BsqlsWebM09GkldMJ7hdVPdMN4Jo+Y5ILtilGUn0+LM+u7pIJwIrZzhfzovy0VPTBQAXa/t89eWzAbyNezZfQBpEhYrErNPbPZIb1FqGFyTwwPlCM3UxxbTOG9ilLCdiV1tjmiR88rR5iWHiLpTfjdQfX2qfsbjXqTKkH8GyFw+SfSdHk4ziY4XagnBIyx5h5ZX4ydBMa9K8Ss7n+4e9H3sk07Q==
+x-microsoft-antispam-message-info: h0WETBY+YimkYkPHQJmLgH27t2cmcyWW9mKQM3lb2/kwvVYWemuJfSmeirhoJcm4P02r5bOHiwshJjnd4t4gGO/ytDBynhz7AkcLVqCYnIvvdwDed06oB4alte+y9TUXocVEbmZKKUk16MsnZEBuTc578PSxVkxZCMPriqZuNxO+5dG7JnfDhP9CZvSPjWH0s0QyS6PGlkkUaVkf55nmaUFGbtjRJF8gC2zCgl9KXyXaI+jhqppfcntxc36hDrDb5mRIh8aw/V06EU6lIWuLJSp9ssPZJBnVycUvNNgjBBn3NmLDIhukSk5YclydI3hAqk5vUhlEfkrHCNXAQHNsPDtBHfYTRDA6To/eO8R/Q1T76olvs0Z3myUVbYMh0C0VEP+C46BIVZfxrGuNLcK2jFmoIZbywuLRtgLz/VhebhjgAhvXbTXPNvw2EuAS6P3PyqHNItUa+YtfgsfyLGHHI6UP1V6J/Ky4w1QSbMeswfh7+F/H/VsrtmTm7cT5LZLMraIEbYr+HTd/2Ut6vnl4dV8Fp8+v3+7ndi8UZadw18vSfwsT13/YpIktTKx5ajn+fhWZoN46o4GZ74s4KjCLvot4adrpmSAuum/9td9oowhSkJUBMPMnj4etHfdGtroTtjxtXndfr7cR5zlQHzjx8G337txAAa7QjDEU5zJvemHP1tcSfhujKKXNPN5LWHuBZMTKXlokvifBtPtHfUEzCQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MW5PR11MB5812.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(4326008)(508600001)(82960400001)(7416002)(66946007)(8936002)(8676002)(55016002)(66476007)(38100700002)(122000001)(66556008)(52536014)(7696005)(6506007)(76116006)(53546011)(71200400001)(2906002)(64756008)(5660300002)(186003)(38070700005)(26005)(86362001)(6916009)(66446008)(9686003)(316002)(83380400001)(54906003)(33656002);
+ SFS:(366004)(4326008)(2906002)(54906003)(66446008)(53546011)(7416002)(6506007)(86362001)(5660300002)(38070700005)(508600001)(122000001)(83380400001)(8936002)(38100700002)(7696005)(8676002)(15650500001)(33656002)(26005)(52536014)(66476007)(66556008)(64756008)(71200400001)(66946007)(55016002)(76116006)(316002)(4001150100001)(186003)(6916009)(82960400001)(9686003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oHuGFXUWJjXrjh9JRyRuURSTqr7tVeC2gW2abg9hBg9hSEVgcImKDh+xBJqS?=
- =?us-ascii?Q?nAxK1Z9WebXijTHr4N8mN8DoN4YL3iCARe3Z26TPEdxb/3FgbMcGKZ41e2SJ?=
- =?us-ascii?Q?yLLKc1rPv+1oVbDqSyZWeCz+nVLJ54eySvsPzZZ/P2RJiX9RWUCu2gV50Yxf?=
- =?us-ascii?Q?xIT0rru7V5BiTY1y65c9rIQ1bjVl662MIstk+H3xWjDLmLmT2ZHoLl1ghBLN?=
- =?us-ascii?Q?hYx21C5/vI9euezO8DTxYAxFCTlRdkmhmgkVZimDjNGOt8uDDZnfjhc8GTnE?=
- =?us-ascii?Q?mrDTXJQEiNMLIN5JuwJYS3rn/i8uibVl+/uwait1etY/ZyLi3mtHCeDuXwwb?=
- =?us-ascii?Q?wJrdBFzV95NGeQaNlwDmiTzIFwd6sq2mN+9CBUMc4+8BcvjHg+BQdTH6RI8E?=
- =?us-ascii?Q?04neBSdLO936qyP3Z4vFRorLUhfDgcv+hL2kpHOSEn7QyrS9nyyk40rjB6J+?=
- =?us-ascii?Q?3pJ3730VfQ5u6wxgqvcnGT4APynSnk9d+Ha3+Xke9upb6rIox5YBGtt41dqC?=
- =?us-ascii?Q?V/JaswDulunnyZN5Q2zg5p5UXyU0JeFpbGwZDqCsRABLiZfcKVmlr1tUGk8/?=
- =?us-ascii?Q?tVH9Hm/aREyAgqQodu7dYpxB6XZ2Zusg9PAj/uiY/cxBbayCYub3lLs0yl96?=
- =?us-ascii?Q?Eewmz5twX3Exmtjs2vKXY3MSKQXNIMU8J7/FlL1tknYk2NCTw0Jy/fHidf5d?=
- =?us-ascii?Q?9zjTcMPgdB654VC5Eh7F2pKzvmANor9Dez+kNkphddL92LmdhxUqUc7URwt+?=
- =?us-ascii?Q?Q75WG9gcSG2RDK5siceU9ubCleW6Bt9Kwi9CjN7NLNGvQt8piDG+aCverGp/?=
- =?us-ascii?Q?36y+PhcneiIMjHEl5Mu4KxYyYg0corw5URYKW+JOJrekqoz8+jaNeBRDUe0b?=
- =?us-ascii?Q?NSQjFPWL1zNzZA0S7xG+2wPHvGxvX58jtRXDb2ZQ/wyNcmihkAzMireLA/1Q?=
- =?us-ascii?Q?6uPwQrvn6eBjH8koOObNCjhfYYEnJt2g23t8Aqc81xRXaxtki2qWPgu9Rw38?=
- =?us-ascii?Q?b7T/MEmDz222xtE9slXwERp5px5wfNbYQ+pj9g3ZDr0kTZjNrEFxseOWuITy?=
- =?us-ascii?Q?bPLj8DM7k0SvltXC3KzAW/NBzxtZkAxbWvkC3wYKvRc+j08x3tWhJxMz+81G?=
- =?us-ascii?Q?vEb2x8z0aQdDnQPaFLIJoEmIJGfEyk3zAK7lFpJf5yAw5V9RVOTFEkFjHw2Q?=
- =?us-ascii?Q?/mVVUB/Qjlr5SIZlrjJr5rNKd6HIvEVKtSQbFI6Sa4XAuCgVYOt+NHnuaVM5?=
- =?us-ascii?Q?CugqO5PWCKVA4+6NEIOXLQxCe++qECuTqF7SaO3PwC9wMM0usB/lT/9sU4op?=
- =?us-ascii?Q?4c7+YenDSMpDi33p7KSiKyNzNKHmR3DvML73Keha++lNo1RMseY3/21FT5Y/?=
- =?us-ascii?Q?Bv00cYbhrCyNpexboQVo8bjTgAr1ddCm+G3931QvowPxiJoE5RlKq5I6g6iL?=
- =?us-ascii?Q?40jZb9WkHC5UIteZOaXETb/huweaXJQwwuVr1EnmOgpLPUEqROQoLUiDBA9D?=
- =?us-ascii?Q?/eBARqo+riUIu6nfIZQ8ikPPmuQnNBra/4DYhikpTA8pLSe/hkI2g5out6n3?=
- =?us-ascii?Q?zzNX1J/QaUaXSFwvHEabHWmaCTO/AznvESDZE206kAQnSSvNB7kjzi9s+Fa3?=
- =?us-ascii?Q?j+3/UDQFITk9Q2i1p5pm7Xa+76PkrD47n1uVWkaTBj28lrHfwaX1n28TdQYc?=
- =?us-ascii?Q?oOl8Cw=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MmV2d0JFS3d0ZzhyUldOQTF0aVVLdFowaWVVbmM2WXhXUEtQMmIvTXNlNHVV?=
+ =?utf-8?B?dm1Gd0RRNm1PdnBuK2c0QmEzUFdkTlZaYW0reVhwMW9qbGthWHBFNzBKcHMz?=
+ =?utf-8?B?cDU1T3M1RktNM2toM3ZlRHZ4a0ZyT29SYXNndkVEclJKeWJOaXE5Wk85clhN?=
+ =?utf-8?B?VUV5cDV5NTJKdWZ3SEN5UllXM0M1ZS9LVVR0OW9SOGt1cDcxdklzY1pnUUc1?=
+ =?utf-8?B?WWNmbFBDVk92T3NyaWU5Mk1EL01DRUVDOEJOOU9rMWdXUnIzcjRvOXdxVy9R?=
+ =?utf-8?B?WFdzRUt4TWt5YyttN0RqWGs4SU05ZmdaU05oMVBXOVY4V25qaW95Vlc2UDJF?=
+ =?utf-8?B?MkR1ZnhFQldSRThZN0JQS1VodlFQV0RnQ0MzTGdkdmNXN2tmS3JqRlFpOFAy?=
+ =?utf-8?B?NnY4UnFtc0tyVnc0K054Z2RqMzNwK1BRMFoyaG5XNXlJZW5xNlI2Wld0Rllk?=
+ =?utf-8?B?aUdQbmVrajdiaklMRTAwSThkMVNRYWRLTnNrRmJzbVRHeWFlYmpGUDRyaHJm?=
+ =?utf-8?B?NDNySjMrajlWRmVQTllVM0FJYUVLYkFzYTY2T2gxV251b1NqQWRwdGp3M1Vm?=
+ =?utf-8?B?eWoyUGUxWWpFUUhOemZyK3RWZWNSYytuN04xNDQrSlNBK3VKQzZ2eHdoTCti?=
+ =?utf-8?B?RW11WHpvV056Q0MrckxwbHF5akIvZlRzd25sNkZIRzhUQnZnRW9RME1xSVU2?=
+ =?utf-8?B?MzRGR2kzbkhBV1RZRGlvS2tYckt6cjZCV1BBRjBIYzJiTFBxS1JDYmpDQklH?=
+ =?utf-8?B?dEY4QitqNHI5ZXpQVlFBRUkwVkhDNUJmZHIwZUJzQnJoNTJITXlxSU03djVo?=
+ =?utf-8?B?cGFBRWxEci9nOXFzc0s2STFIUE9FTllsdGZFd2ViZGhPNDAxNkVIbHVqTU83?=
+ =?utf-8?B?WmJkTzVLalg2c093U3RNWUliODNnUnpjUm92ZkJQZEZSdmR0SlM4Vm9TZEtD?=
+ =?utf-8?B?amptclVzc1FBZnNkNDd6UDkxdkFGMmUvdE9UTllFSFcySGFQbVo0NmNkMkU2?=
+ =?utf-8?B?T3I3OUtMMjdLTkNlT2lXMk5WbFl6QVd0OThVdStEL1JhSG83WEhTT0NDVmFR?=
+ =?utf-8?B?RkdmYVRZSkw2d1Z3QXoxYStXbUdHV1FRYUwyNHRNR0JyUnlLTGNSNzU3LzBZ?=
+ =?utf-8?B?bVRhdXhheTFnWncxdVg2VitwdE1aWSt1bU1GZld6U29GUXlNYXB3ZG9ObURM?=
+ =?utf-8?B?SDRyY3h2bHo5cTZNWGJ0RUFEOWNJVElIdHJybnlvbVpVZXZQeERzU0pGVlZL?=
+ =?utf-8?B?ckFVTGhaNlhzeWZsTGRnZWx2RE52MDY3b3V3cE8xQTdhZkdud1BiclVuQ2cx?=
+ =?utf-8?B?dU1PZ3hUSDRFaUNuWWZTSisrdmFRQVZDYkM0QVpTWVVmUDRCMlRjY1g3SEQw?=
+ =?utf-8?B?TkVNNDk1ekNXL0ZEM25iYlNjallFY2ZKUHhIUXY1TUdyaDJlTCtqWkZBWEZ6?=
+ =?utf-8?B?d1ZJMytvUUg5N1RKdHpXWC9JVzJQQ01ROXJYVHdGc2FNTDcwN3lkNXg5SGt6?=
+ =?utf-8?B?UHcwcGpTV2ZRUTZBOElkRnFMRmxJb2hVZmhBNkRUcUJ1V0E5eGZuL3RjaWQ4?=
+ =?utf-8?B?emNmck1yTDFQM3M1R1ZSSExLN21FWUljN0tDZUVCMGk1cWZFaXp1T28xQ2FJ?=
+ =?utf-8?B?bHRHU2Fhd0Y1ZUgvQVVMT1k5VnFNWkNkeCttMzBObThxUzl4ZTZBWFlaZjQv?=
+ =?utf-8?B?NzhXalJZQ0NQWTlBNDhVRkRKUXF4WU0xQ3prVnpjNVRNUms5TW02dGQ3YU1L?=
+ =?utf-8?B?ZStzUDMwOFhTQjQ4dnQ5Vm5Ia3cvaUZEOE5ncGJGakYzdWg0MUdweDh6dFNz?=
+ =?utf-8?B?VWk2OGRlVDdnSFRzU0c1N20yUGRzdE5WM085Z2U3NVFpK2E4TVhSUllMK0Nk?=
+ =?utf-8?B?bWpJSlZNUERqajZMV0NaN1pMZ3BBWlVvMjBsSUt2TEFmSmdTam5IZkg3Misw?=
+ =?utf-8?B?eC80c0tWOXlOczNYbktrSTVDa2NhbHd1QU9oRXVoK1d6blJSN1UrbnliYzBU?=
+ =?utf-8?B?c1dNeUdWUU54MS9zM1hkWDlZT2xLaUNoQXp6OGdvZDFlL0dmTUY0QkJjSURL?=
+ =?utf-8?B?RFl3OVI1eTM0UVdWN2VZM0JEcXhIOE42WWZSeXZFU2tyVytLeS9RQ012WHhn?=
+ =?utf-8?B?clVyTjVPUm9OcytzRTd3WnZ3SWI3VXBzdWJ1OU4zakZhNDdQdkxCZUszT3Zl?=
+ =?utf-8?B?NXdnQXdkY2lmK1BJeXFDVUdlS0RKSStONGZabkZzUWV0Sy9jR0w0UXBMWjhR?=
+ =?utf-8?B?TUhJNUJwNUJ3TS9GV0hWTkFGbmRnPT0=?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5812.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2f1fa411-7a47-4095-846d-08d9a90d1368
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2021 14:26:27.3567 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6822d038-4bbf-41b1-6c95-08d9a90e9476
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2021 14:37:13.3697 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9/6rbxYg9sYrVkzWthunMlqC1NV8U8bu6+Q6fPe+wTZ2VolMAC3lOZfAjg+4LZrp9ikeFRJRxARMK62b5nH9fIXChdXgTtCQzi8dfkFgvRo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4788
+X-MS-Exchange-CrossTenant-userprincipalname: o4pyIsRzzJD2qEOP+fhh1ZgrYyjZF1r1GzDdkgYoOWM7QagQi2PjFLn6MjCa+LJlY3dgnlz+aObBHMegs2VMBPunLxgpE8L8TNU3pF3BBm0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1727
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 6/6] docs: net: Add
- description of SyncE interfaces
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 2/6] rtnetlink: Add new
+ RTM_GETEECSTATE message to get SyncE status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -170,7 +179,8 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
+Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
+ "petrm@nvidia.com" <petrm@nvidia.com>, "abyagowi@fb.com" <abyagowi@fb.com>,
  "saeed@kernel.org" <saeed@kernel.org>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "richardcochran@gmail.com" <richardcochran@gmail.com>,
@@ -186,80 +196,95 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
-> From: Petr Machata <petrm@nvidia.com>
-> Sent: Tuesday, November 16, 2021 12:53 PM
+> From: Sabrina Dubroca <sd@queasysnail.net>
+> Sent: Thursday, November 11, 2021 5:01 PM
 > To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
-> Subject: Re: [PATCH v3 net-next 6/6] docs: net: Add description of SyncE
-> interfaces
+> Subject: Re: [PATCH v3 net-next 2/6] rtnetlink: Add new RTM_GETEECSTATE
+> message to get SyncE status
 > 
+> Hello Maciej,
 > 
-> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
-> 
-> >> - Reporting pins through the netdevices that use them allows for
-> >>   configurations that are likely invalid, like disjoint "frequency
-> >>   bridges".
+> 2021-11-10, 12:44:44 +0100, Maciej Machnikowski wrote:
+> > diff --git a/include/uapi/linux/rtnetlink.h b/include/uapi/linux/rtnetlink.h
+> > index 5888492a5257..1d8662afd6bd 100644
+> > --- a/include/uapi/linux/rtnetlink.h
+> > +++ b/include/uapi/linux/rtnetlink.h
+> > @@ -185,6 +185,9 @@ enum {
+> >  	RTM_GETNEXTHOPBUCKET,
+> >  #define RTM_GETNEXTHOPBUCKET	RTM_GETNEXTHOPBUCKET
 > >
-> > Not sure if I understand that comment. In target application a given
-> > netdev will receive an ESMC message containing the quality of the
-> > clock that it has on the receive side. The upper layer software will
-> > see QL_PRC on one port and QL_EEC on other and will need to enable
-> > clock output from the port that received QL_PRC, as it's the higher clock
-> > class. Once the EEC reports Locked state all other ports that are traceable
-> > to a given EEC (either using the DPLL subsystem, or the config file)
-> > will start reporting QL_PRC to downstream devices.
+> > +	RTM_GETEECSTATE = 124,
+> > +#define RTM_GETEECSTATE	RTM_GETEECSTATE
 > 
-> I think I had the reading of the UAPI wrong. So RTM_SETRCLKSTATE means,
-> take the clock recovered from ifindex, and send it to pins that I have
-> marked with the ENA flag.
+> I'm not sure about this. All the other RTM_GETxxx are such that
+> RTM_GETxxx % 4 == 2. Following the current pattern, 124 should be
+> reserved for RTM_NEWxxx, and RTM_GETEECSTATE would be 126.
 > 
-> But that still does not work well for multi-port devices. I can set it
-> up to forward frequency from swp1 to swp2 and swp3, from swp4 to swp5
-> and swp6, etc. But in reality I only have one underlying DPLL and can't
-> support this. So yeah, obviously, I bounce it in the driver. It also
-> means that when I want to switch tracking from swp1 to swp2, I first
-> need to unset all the swp1 pins (64 messages or whaveter) and then set
-> it up at swp2 (64 more messages). As a user I still don't know which of
-> my ports share DPLL. It's just not a great interface for multi-port
-> devices.
+> Also, why are you leaving a gap (which you end up filling in patch
+> 4/6)?
 
-This will only be done on init - after everything is configured - you will not
-really need to check anything there.
+Hmmm I missed that - is there any guide how to number them?
+I'd be happy to follow the pattern there - will fix in next revision.
 
-> Having this stuff at a dedicated DPLL object would make the issue go
-> away completely. A driver then instantiates one DPLL, sets it up with
-> RCLK pins and TX pins. The DPLL can be configured with which pin to take
-> the frequency from, and which subset of pins to forward it to. There are
-> as many DPLL objects as there are DPLL circuits in the system.
->
-> This works for simple port devices as well as switches, as well as
-> non-networked devices.
-> 
-> The in-driver LOC overhead is a couple of _init / _fini calls and an ops
-> structure that the DPLL subsystem uses to talk to the driver. Everything
-> else remains the same.
+The gap is there as this was developed first - but most likely this part
+Will be removed in next revision in favor of DPLL subsystem.
 
-That won't work - a single recovered clock may be physically connected
-to more than one DPLL device and a single DPLL device may be used for
-more than one MAC chip at the same time - we shouldn't mix subsystems 
-as recovered clocks belong to PHY/MAC layer.
-
-Also in that case the DPLL would need to track the relation between
-all netdev ports upstream - which will be nightmare to keep track of
-when ports reset/get removed or added.
-
-Also the netdev is the one that will receive the packet containing quality
-so the userspace app will know which netdev received it and not which
-DPLL pin it should configure. I think this approach will make everything
-more complex (unless I'm missing something).
-
-> >> - It's not clear what enabling several pins means, and it's not clear
-> >>   whether this genericity is not going to be an issue in the future when
-> >>   we know what enabling more pins means.
+> > +
+> >  	__RTM_MAX,
+> >  #define RTM_MAX		(((__RTM_MAX + 3) & ~3) - 1)
+> >  };
+> > diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+> > index 2af8aeeadadf..03bc773d0e69 100644
+> > --- a/net/core/rtnetlink.c
+> > +++ b/net/core/rtnetlink.c
+> > @@ -5467,6 +5467,83 @@ static int rtnl_stats_dump(struct sk_buff *skb,
+> struct netlink_callback *cb)
+> >  	return skb->len;
+> >  }
 > >
-> > It means that the recovered frequency will appear on 2 or more physical
-> > pins of the package.
+> > +static int rtnl_fill_eec_state(struct sk_buff *skb, struct net_device *dev,
+> > +			       u32 portid, u32 seq, struct netlink_callback *cb,
+> > +			       int flags, struct netlink_ext_ack *extack)
+> > +{
+> [...]
+> > +	nlh = nlmsg_put(skb, portid, seq, RTM_GETEECSTATE,
+> sizeof(*state_msg),
+> > +			flags);
+> > +	if (!nlh)
+> > +		return -EMSGSIZE;
+> > +
+> > +	state_msg = nlmsg_data(nlh);
+> > +	state_msg->ifindex = dev->ifindex;
 > 
-> Yes, agreed now.
+> Why stuff this in a struct instead of using an attribute?
+
+Since it's the required parameter to identify what port is in question.
+ 
+> > +
+> > +	if (nla_put_u32(skb, IFLA_EEC_STATE, state))
+> > +		return -EMSGSIZE;
+> > +
+> > +	if (!ops->ndo_get_eec_src)
+> > +		goto end_msg;
+> > +
+> > +	err = ops->ndo_get_eec_src(dev, &src_idx, extack);
+> > +	if (err)
+> > +		return err;
+> > +
+> > +	if (nla_put_u32(skb, IFLA_EEC_SRC_IDX, src_idx))
+> > +		return -EMSGSIZE;
+> > +
+> > +end_msg:
+> > +	nlmsg_end(skb, nlh);
+> > +	return 0;
+> > +}
+> > +
+> 
+> Thanks,
+> 
+> --
+> Sabrina
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
