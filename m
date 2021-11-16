@@ -1,160 +1,116 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E32D452FC8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 12:04:58 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EA51452FDD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Nov 2021 12:08:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A2E9D607E7;
-	Tue, 16 Nov 2021 11:04:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5D0F607E7;
+	Tue, 16 Nov 2021 11:08:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eRkM-15n3FeB; Tue, 16 Nov 2021 11:04:56 +0000 (UTC)
+	with ESMTP id ad_Lq-PkhlJ3; Tue, 16 Nov 2021 11:08:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AF0E76073D;
-	Tue, 16 Nov 2021 11:04:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8C64D605BE;
+	Tue, 16 Nov 2021 11:08:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B85DF1BF86B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:04:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A3ECE1BF86B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:08:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B372780CC0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:04:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 917A2605BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:08:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BVpeRSkeUpsg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Nov 2021 11:04:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 779E080CAA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:04:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10169"; a="233911801"
-X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="233911801"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Nov 2021 03:04:49 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,239,1631602800"; d="scan'208";a="735519265"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga005.fm.intel.com with ESMTP; 16 Nov 2021 03:04:49 -0800
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12; Tue, 16 Nov 2021 03:04:49 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2242.12 via Frontend Transport; Tue, 16 Nov 2021 03:04:49 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.102)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Tue, 16 Nov 2021 03:04:48 -0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TfO_33iTWLyE for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Nov 2021 11:08:08 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2084.outbound.protection.outlook.com [40.107.237.84])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 772F860594
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Nov 2021 11:08:08 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aZD6hUttQ7egwUSSC7Zs685loCAeDP8zZxfjf+DHPHnJ8v/NJqXL7+Jbqq06u8ayMIqSloEh0zBpG6vPN4jmIeZuxF95CjtHm/9Y3rnE8DtipV1O4sjGdtTHkmIvsgyHBJimSetc92JBovBImW0wlTOxokZ852kkJPxDuB503L13pczDkzJFKGBFY75vk7idPt4IJcRYt5mstH0qV/r5OzGdiMBHLo7+KDP1LDOD4wSlAl1LDWz0Rq7XSZLADTkSbF4030SHyEEc/i2iF+iPnLq+yP0tdrwKPq85+WfXbWqJq8JjjFaXZtWWXXKDM9cYCbj67IcC0ygDxsjxHJHNWw==
+ b=K5NQXhLmmC/H48B08S/7wBkYBuweWWVMkrcgT1WkD4d942xsU8mAhti0wiMaIDLdAnCyR9170xXGNYo6/B7HjGcxWEc1SfrNo98MxDZo7wI9X4RMF8Zavqao2VnOGI5zeALsDKzW42JFTNniz96uNN5POy4waFP8pFMAsd9vcXpoUX7TVaUXr6K2HJ/mEFoqC8xfk7VAFvP5qql6oYIGEqT5z3HM3bXPabOJym0/+ZcMVfplPyX13GnOgkYQb8BAUR1+W/sE3SX/Ez0pl57VrO+zSFpSokmwanXPf5TZPbpfJuvZ9s+e5MNDc6QcGMZrGzRg4KyRJ9U2S4rGTDRy8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=t+o7IKsdpGEY7bUC0v0dGbnNfI2ZOVsalMfbp2dIIHk=;
- b=ZDiHFaDQ+5dRLQtxjXdCSmCDd8EJt8yUsotvzljNa08fACiqKXyzktHMD8yGPaFQfuMw5IU1c3dPjetGRXSzrzFeyS+J00zrI1J/9a+zn2p7VoA7RJTDXxA8viQfb8EEEYWtBD18pz5GmYon+khOTgvsMuwsbItnLk0SP5mQ7iRqDFDKCSaLKpoZPlKDRzyvuhNhCZdlImLgoDmL6fSoIT8lJDv85EKuSP9sWHBE0xagWgejXv0M16ac39bHFBd+xPst/WqT0NlcctTnBN/Nmxn18YG2wZCTEzdde4PoOw/CP8Rv1LdECnKodbY0aVQJeqfbraoHV1L/22smbx6TSA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
+ bh=g+tLRtg+CISNgiAxjnhpHGk6WhUjhPD7qmpdFrPeAgo=;
+ b=Pe5i9lHacUKjqd8HlNs4gz6lNs5483qMMR+CRX0HWQ44609jNb5/sj8yaOZxer21TOZZuxpKWz61oABol1LsbfdBejf0OwVxrmRQAvWMWbItw78qR4sdP2/jzzyGKK23ymk3tvfHIu96OQppo+qnrVPgVol3Rj0HggN5+zHK9N81exBeqfFWM6464xjlogiPhDMM8l2rQOuKSuSGgw5YWnditDrlEl3Wv3TWZMcs697ViapYfsmy6uviohnHOs8FK7mKgvucUX/CR9I4rxz0dSYhr28gOrydumdQi90rcgKuvaEJRjWXJ8E1I1HAX1WVyJ0xMfORxf3DUoMsswJOJA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.112.34) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
+ header.from=nvidia.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=t+o7IKsdpGEY7bUC0v0dGbnNfI2ZOVsalMfbp2dIIHk=;
- b=Vumd8xriOY6rUdTCMxtewQKTFDPMCJTaHce2tlaN3ly/MBkMsauWdQaicBGD7kJzxMXvzRX+ZRWcdju9dgvLxVf+3+j3PXzTw6xAClr2hfyQtOrWHJmzHL22cw9KgjDU2lhjtA1aBv6LCfjp7jj9OZTK8QbgtX4NND7SNWITiZw=
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
- DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4669.16; Tue, 16 Nov 2021 11:04:48 +0000
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::555a:1e2a:ce25:53ac]) by DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::555a:1e2a:ce25:53ac%8]) with mapi id 15.20.4669.016; Tue, 16 Nov 2021
- 11:04:47 +0000
-From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net 4/4] ice: fix FDIR init missing
- when reset VF
-Thread-Index: AQHXQfWz8vUKqb3Yl02n0sm8yaZ2TqwHL30g
-Date: Tue, 16 Nov 2021 11:04:46 +0000
-Message-ID: <DM8PR11MB56211CF7761C56B42FF6D2E6AB999@DM8PR11MB5621.namprd11.prod.outlook.com>
-References: <20210505211800.11908-1-anthony.l.nguyen@intel.com>
- <20210505211800.11908-4-anthony.l.nguyen@intel.com>
-In-Reply-To: <20210505211800.11908-4-anthony.l.nguyen@intel.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.200.16
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b14ffb84-603a-4760-f6c3-08d9a8f0e70a
-x-ms-traffictypediagnostic: DM8PR11MB5621:
-x-microsoft-antispam-prvs: <DM8PR11MB5621FCA97218C861AA701BDEAB999@DM8PR11MB5621.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1303;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: HM9dAd78N2Sh7rRpVObWEyyWN9+iSi1UCpnmQuLG+F4p7+Q0koStzCZcvy3xn7rZSOfZ8XU76fDdBJrjfKFl8Umw/TqGYjK2rQN3Dp/nIafQZWpneh7KwF1uaracoIcP1tD+LuYlInvgbn0Jb/muhkt8VFKw9/LGom0S3ui3Mo48YjMmAkKCPOER0bnVJS3FXdU/nsXoZQR17ftoEnAF8xWiHrOxbGiC6inZR9158ZcoS2wJFSIux+e+oIGyc3+O5RJ2EVYLxidCfcqV3228OVrGtxEAmqTlLAP9wNwJH+RT+xCEcjrvVMscLGKAgtX1gKrzXMkXTFvzJo6d0eVyk4sdt83YR2oOO6A8xkqY+0x8zngmXYj2OPQ4tnoA3D5q3D8S9/RkeO8wiYMF1IUs8d63zhJmTAQU9tIHxxC6tWRiPEBnmiQJSj/VuTcUAHZi9GpvQsa7kO+z4SvMS6kuIGri7dnECQHicMbyo2t4OExf+uCymEtuPLIwF4EsjB5xsZ0/DiUnbTPvtVS0WWZxbefyn3FlTK+gkU1MXcNUnd7sS5RW2DMGrkG2D6u34QNpXFN2dtQv62YPBe4wbpgzr1BCfMod7za37Aoq9HPVpQffzavknM/ZwdNysnSTsNx56fa7PAo9pYMfJwd+C05z1XU2IaTXvQYk83zTb0fsG3bQEdK5dwnSELwBmu4k3LvQi8j4frmqt3Xe2NT1UVSXoA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(7696005)(508600001)(38100700002)(110136005)(33656002)(71200400001)(38070700005)(186003)(76116006)(6506007)(9686003)(55016002)(66476007)(66446008)(64756008)(66946007)(52536014)(86362001)(82960400001)(66556008)(122000001)(5660300002)(53546011)(83380400001)(316002)(2906002)(4744005)(26005)(8676002)(8936002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?FDs8m5U3E3A/eA6GVHxbiCqIqRoK3/5JqR6Vhurjt9tBDKDJ7dqEmVSpd1?=
- =?iso-8859-2?Q?G4CKDZnzMe+ggZ+amtmwSasf3jJ+pyqqF9bizQaJ0Hv46i4QT/gadAzFkE?=
- =?iso-8859-2?Q?rnmovVR8YYeWwpVu3ScePsLFFMcWHtM4aJiiyd+P2Qvg3XkJkCM3veNqyl?=
- =?iso-8859-2?Q?+Zr/lIo2/xq7dKf9cDVw3Pso2LVtmSWj+531BfOZjPp4Z4pcgVG16yHC3Q?=
- =?iso-8859-2?Q?sNBNbSseYBmS/fMlQOsj84M6LlK6abRMzA8puqnf/0pYgmt/0t74b0Fht6?=
- =?iso-8859-2?Q?/7XSzzgUCkcZxW5TbB0GgA1VF3tvisM0+UMxiDxYwCWX2bHgXGXiqCJABm?=
- =?iso-8859-2?Q?FF3+zTpVS7LceLmh7FTv4DXWHU6/kWilVtc6o23StPq0rZmfIFQs/RPsMB?=
- =?iso-8859-2?Q?XMsrQP/sGkSqRuo5ypYw+J4HYLHzz6+PqFx7kbSSbhcDvNtf5hnKuYKW9R?=
- =?iso-8859-2?Q?uZEbtB+PI2cxN6da2l7n8X4HLspgkg/+GIYW84VdMTmyrdIGZgGhdiQUmk?=
- =?iso-8859-2?Q?iyfix9IE4GZWRrLe1qCZYl1IOFCwPmOCh2ertWbDQpznLhDljR8g/LqlyA?=
- =?iso-8859-2?Q?p+h5P2YGLsbe4rvsUZewW7SWCpSGdaXB7Dx4SUZL0aYvKnzwSirLcndavX?=
- =?iso-8859-2?Q?9lqcRqsRH2px6T+hoGWnvVUlzzVUOnq0fB9Dk9Rlt56uDa1nkgxAWeMsJM?=
- =?iso-8859-2?Q?ckheFB+WIDEllwR8G5NTfEcAlcXzOLQfyzDF4KpiQamnXY65/P0HdYH1z9?=
- =?iso-8859-2?Q?4GT+x3mWCXL1ZpxuOy5xglYdzlV2AFrCWf8becurswL27YP1PPSmX7GSVy?=
- =?iso-8859-2?Q?Hd7qns46OUA2oLq/kWpSEbkKNZ+D6TeZrdckfdyQNNLoyqQuyKwkeJOmpF?=
- =?iso-8859-2?Q?JdefEbOUTkwWPgxIeNspRMgt0XFHW9cRF68pGdXwDtKnDGajJbVNgqYFuq?=
- =?iso-8859-2?Q?Zd/7zzUDnGMjes7dzI7eeYLhUIo9E1nBnDdn6bkIpZZWA/eska+0ZnDeC6?=
- =?iso-8859-2?Q?j2ezqa8pdutrPna93VRjLhar3aKv/kaKgHbUpcJq2/i3b8hzttvOgK3/Dh?=
- =?iso-8859-2?Q?ruc3Ng4ZjMemc5lfnnffOzsbkgUehaKIg7O6iYNzSfyWiAGfBy8cv1FWlo?=
- =?iso-8859-2?Q?r93SEFbpYa5vLDTRz2tL1lRiNCkryEwkYoyCqQ6FDwREEgxavtCzcZTFOc?=
- =?iso-8859-2?Q?YBl6K+nU6uewIL1GeS3598WZehZWgNvUZ/qaalx2rev+D9e59A+4RksOu3?=
- =?iso-8859-2?Q?txfUeglLJ9Nlj3XJRgfw7UE7HwsTw7Ysdioj9RIOGdIw0TulAAEBTXw0Ut?=
- =?iso-8859-2?Q?t5aZcDB6S2u6mYhv4MJWerLGaxJYAtDFoYWHd1oaQZYdebMBh6RfW3rs2t?=
- =?iso-8859-2?Q?xsXTxfPFJZX6OQZ6aIGb/25WbJt8CNpYcgA54RlHXGDmWLACFlhVTtjga0?=
- =?iso-8859-2?Q?bO+UC8MNApMprko1ETgeSE/7yociOmrjXhfgK8FxOgikynZNMJULGUdFSw?=
- =?iso-8859-2?Q?1baupEhuc8OH3uyjawdHVt3M0CuVysUObzB8inaljKLHeBHx/WU+TBPHkm?=
- =?iso-8859-2?Q?Q5QF4qWhA3bwrjL9sUxhUzcHtRN0Lb+kxkm33DBRvcQyi1/xYXJCEoBImQ?=
- =?iso-8859-2?Q?e7irUFRWEwAHhYYN71i10MtaS0AN5hu8DnyqggG+Hh1FwfolJn5MJpJy7X?=
- =?iso-8859-2?Q?sh3mGF0BKmYsxpnxLUyiUk0jFR+Wnrw8OB2ksiseMWbLXVHfqAbAsa61nk?=
- =?iso-8859-2?Q?ljTw=3D=3D?=
+ bh=g+tLRtg+CISNgiAxjnhpHGk6WhUjhPD7qmpdFrPeAgo=;
+ b=fc7PPeTjW4UYnEsQzaSChVrK36V2q04Z10iVbUQr3ryeLVw5hV3tX/Vw9v0hnfpCR4LzQzbb63HKWLZwVDm+0Wf4VofLxXD4O96R42ASQhHvCLcHh7Nn6HWVqo669oGGjJmNx5439w+RJZYaT/M0ZmlC88E0Akqoni4CHs6Nb1+ZL16JK5h5oRVPWmuZKMMHi0VmfWtl13xwDW4uz+m8G/x1CADhxx2StNCnMwVkhChROHRj9xiMx2OvnfIole88XPfLKhQyYwR/sEGuFxT1Hny/SYoj2rP26J+7fyCDjVREd8VXPIZs75x8dSzIwPJv0xiwU3DWxFwklK5hZrQevw==
+Received: from MWHPR19CA0018.namprd19.prod.outlook.com (2603:10b6:300:d4::28)
+ by CH2PR12MB3909.namprd12.prod.outlook.com (2603:10b6:610:21::25)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26; Tue, 16 Nov
+ 2021 11:08:03 +0000
+Received: from CO1NAM11FT067.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:300:d4:cafe::ae) by MWHPR19CA0018.outlook.office365.com
+ (2603:10b6:300:d4::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26 via Frontend
+ Transport; Tue, 16 Nov 2021 11:08:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.112.34; helo=mail.nvidia.com;
+Received: from mail.nvidia.com (216.228.112.34) by
+ CO1NAM11FT067.mail.protection.outlook.com (10.13.174.212) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.4690.15 via Frontend Transport; Tue, 16 Nov 2021 11:08:02 +0000
+Received: from yaviefel (172.20.187.6) by HQMAIL107.nvidia.com (172.20.187.13)
+ with Microsoft SMTP Server (TLS) id 15.0.1497.18;
+ Tue, 16 Nov 2021 11:07:58 +0000
+References: <20211110114448.2792314-1-maciej.machnikowski@intel.com>
+ <20211110114448.2792314-7-maciej.machnikowski@intel.com>
+ <87tugic17a.fsf@nvidia.com>
+ <MW5PR11MB5812E733ED2BB621A3249CD5EA989@MW5PR11MB5812.namprd11.prod.outlook.com>
+User-agent: mu4e 1.4.15; emacs 27.2
+From: Petr Machata <petrm@nvidia.com>
+To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+In-Reply-To: <MW5PR11MB5812E733ED2BB621A3249CD5EA989@MW5PR11MB5812.namprd11.prod.outlook.com>
+Message-ID: <87k0h8tl2s.fsf@nvidia.com>
+Date: Tue, 16 Nov 2021 12:07:55 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b14ffb84-603a-4760-f6c3-08d9a8f0e70a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2021 11:04:47.0513 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TymU8CYIRC6b30wVoVfr9KTl3gJ+g74fHtSISGt6B2aTB4QgJBcugaV7Kekw1zrTaX0dozdVFuElHNVYq5clVvreO+oBCLHx/25QqTBm878=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR11MB5621
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net 4/4] ice: fix FDIR init missing
- when reset VF
+X-Originating-IP: [172.20.187.6]
+X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 81ee197e-60ab-4ed5-8367-08d9a8f15bd6
+X-MS-TrafficTypeDiagnostic: CH2PR12MB3909:
+X-Microsoft-Antispam-PRVS: <CH2PR12MB3909A0A8040BDDD8A39BD15DD6999@CH2PR12MB3909.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Fs51xMbPS2V6uwhS5yZnv0eVRzU6tY/jaIv1p8ETUxQWK1vIMd2C/hZvWeJTkpsw2CjvbmmkzOvk6W+xpE/rBwmUA+EARCbM757Rm4OTznduyAdBoOIsGWmS65vfj3A7gKPcMjRdrfh/SCgHRTGTmVu4lovs2U1/PGFOKhl8RlZpq7pqMQlfAH9psyYKhSIfar6AO2ye9RPnzk0KYBLV2roict65BeKjLpmoI3QltfCSFQUknUSYj7atBRmDHkYOFhHf4sy2zlk8i9ED/DEAFsJd9uI+eFYUDiYU/iI8vOVZ8Dv750cuGwawO50Bgb8jdAP/hNjh6xs8vIqxLMomM6mu/Gq0Ko5ouM626MmZOpbuOfGKa5EhvMoyfj/rivbrV73si8bmXnnu5YDLXhFfcYuVQjZ/lGs3IVVoVJlfULklC3ggAKi5pLTRqoZb/j6l9So0w06tIOoHriw1f/7ieWxT5PrFQ/eGPtF9sarjFCQXHpZuos6KViY73XTAlgp9Bvgx+Nbdge/gHNQbcfgppEO46dRTxEVpJqtjNFtztexk6VqHg+viPecQOQihAONW4V8joSuedLy6c2ETaah6rmGO/BOi7LVewKQ+JD0pxX/2+jdtIrDbJQ+z8S7SVIxNOyxqiRqvPWKiq8kfgsba5PFG6KL5mEpoD9kG6sXE+Ow9tzlRV4DqyAnfKQgHmSyBQ0k46VoKOFemjNj2mfk8OA==
+X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
+ SFS:(4636009)(46966006)(36840700001)(336012)(186003)(36756003)(4326008)(8936002)(83380400001)(356005)(16526019)(2906002)(508600001)(426003)(8676002)(2616005)(7636003)(316002)(6916009)(70206006)(70586007)(5660300002)(86362001)(7416002)(82310400003)(36860700001)(6666004)(47076005)(54906003)(26005)(53546011);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2021 11:08:02.9886 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 81ee197e-60ab-4ed5-8367-08d9a8f15bd6
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT067.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB3909
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 6/6] docs: net: Add
+ description of SyncE interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,46 +123,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Cc: Petr Machata <petrm@nvidia.com>, "mkubecek@suse.cz" <mkubecek@suse.cz>,
+ "abyagowi@fb.com" <abyagowi@fb.com>, "saeed@kernel.org" <saeed@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "idosch@idosch.org" <idosch@idosch.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
+Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: =B6roda, 5 maja 2021 23:18
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net 4/4] ice: fix FDIR init missing when
-> reset VF
-> =
+>> -----Original Message-----
+>> From: Petr Machata <petrm@nvidia.com>
+>> Sent: Thursday, November 11, 2021 1:43 PM
+>> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+>> Subject: Re: [PATCH v3 net-next 6/6] docs: net: Add description of SyncE
+>> interfaces
+>> 
+>> 
+>> Maciej Machnikowski <maciej.machnikowski@intel.com> writes:
+>> 
+>> > Add Documentation/networking/synce.rst describing new RTNL messages
+>> > and respective NDO ops supporting SyncE (Synchronous Ethernet).
+>> >
+>> > Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
+>> > ---
+> ...
+>> > +RTM_GETEECSTATE
+>> > +----------------
+>> > +Reads the state of the EEC or equivalent physical clock synchronizer.
+>> > +This message returns the following attributes:
+>> > +IFLA_EEC_STATE - current state of the EEC or equivalent clock generator.
+>> > +		 The states returned in this attribute are aligned to the
+>> > +		 ITU-T G.781 and are:
+>> > +		  IF_EEC_STATE_INVALID - state is not valid
+>> > +		  IF_EEC_STATE_FREERUN - clock is free-running
+>> > +		  IF_EEC_STATE_LOCKED - clock is locked to the reference,
+>> > +		                        but the holdover memory is not valid
+>> > +		  IF_EEC_STATE_LOCKED_HO_ACQ - clock is locked to the
+>> reference
+>> > +		                               and holdover memory is valid
+>> > +		  IF_EEC_STATE_HOLDOVER - clock is in holdover mode
+>> > +State is read from the netdev calling the:
+>> > +int (*ndo_get_eec_state)(struct net_device *dev, enum if_eec_state
+>> *state,
+>> > +			 u32 *src_idx, struct netlink_ext_ack *extack);
+>> > +
+>> > +IFLA_EEC_SRC_IDX - optional attribute returning the index of the
+>> reference
+>> > +		   that is used for the current IFLA_EEC_STATE, i.e.,
+>> > +		   the index of the pin that the EEC is locked to.
+>> > +
+>> > +Will be returned only if the ndo_get_eec_src is implemented.
+>> > \ No newline at end of file
+>> 
+>> Just to be clear, I have much the same objections to this UAPI as I had
+>> to v2:
+>> 
+>> - RTM_GETEECSTATE will become obsolete as soon as DPLL object is added.
+>
+> Yes for more complex devices and no for simple ones
 
-> From: Yahui Cao <yahui.cao@intel.com>
-> =
-
-> When VF is being reset, ice_reset_vf() will be called and FDIR resource
-> should be released and initialized again.
-> =
-
-> Fixes: 1f7ea1cd6a37 ("ice: Enable FDIR Configure for AVF")
-> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 2 ++
->  1 file changed, 2 insertions(+)
-> =
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> index 4001dc723e1f..c827977f4539 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-> @@ -1565,6 +1565,7 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool
-> is_vflr)
-
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
+If we have an interface suitable for more complex netdevices, the
+simpler ones can use it as well. Should in fact. There should not be two
+interfaces for the same thing. For reasons of maintenance,
+documentation, tool support, user experience.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
