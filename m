@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5996457C19
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Nov 2021 08:29:05 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54AA6457C1A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Nov 2021 08:30:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B554940288;
-	Sat, 20 Nov 2021 07:29:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C85C381B99;
+	Sat, 20 Nov 2021 07:30:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uovjojQn1_Qn; Sat, 20 Nov 2021 07:29:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7aLbC1Pgdokt; Sat, 20 Nov 2021 07:30:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5914340001;
-	Sat, 20 Nov 2021 07:29:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AF9688194A;
+	Sat, 20 Nov 2021 07:30:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B08041BF2A4
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:28:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0778D1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:29:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A0D9940375
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:28:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F34A3401FD
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:29:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z6gvYjyiMyjg for <intel-wired-lan@lists.osuosl.org>;
- Sat, 20 Nov 2021 07:28:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bZs1YQ_axS8G for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 20 Nov 2021 07:29:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8D58C4032A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:28:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10173"; a="258340237"
-X-IronPort-AV: E=Sophos;i="5.87,250,1631602800"; d="scan'208";a="258340237"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Nov 2021 23:28:53 -0800
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ABECE40001
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Nov 2021 07:29:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10173"; a="295353523"
+X-IronPort-AV: E=Sophos;i="5.87,250,1631602800"; d="scan'208";a="295353523"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Nov 2021 23:29:53 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,250,1631602800"; d="scan'208";a="673466547"
+X-IronPort-AV: E=Sophos;i="5.87,250,1631602800"; d="scan'208";a="551512699"
 Received: from lkp-server02.sh.intel.com (HELO c20d8bc80006) ([10.239.97.151])
- by orsmga005.jf.intel.com with ESMTP; 19 Nov 2021 23:28:52 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 19 Nov 2021 23:29:52 -0800
 Received: from kbuild by c20d8bc80006 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1moKnr-0005Vj-K9; Sat, 20 Nov 2021 07:28:51 +0000
-Date: Sat, 20 Nov 2021 15:28:45 +0800
+ id 1moKop-0005Vw-O8; Sat, 20 Nov 2021 07:29:51 +0000
+Date: Sat, 20 Nov 2021 15:28:48 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6198a3ad.YkpznHhukxFA+TlB%lkp@intel.com>
+Message-ID: <6198a3b0.wmww96xdXodDRRx4%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 5fb4e2df55686e5cac3dea8439cadc69dc9a7a42
+Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
+ 5951a2b9812d8227d33f20d1899fae60e4f72c04
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,10 +68,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 5fb4e2df55686e5cac3dea8439cadc69dc9a7a42  net: igbvf: fix double free in `igbvf_probe`
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 40GbE
+branch HEAD: 5951a2b9812d8227d33f20d1899fae60e4f72c04  iavf: Fix VLAN feature flags after VFR
 
-elapsed time: 724m
+elapsed time: 725m
 
 configs tested: 186
 configs skipped: 3
