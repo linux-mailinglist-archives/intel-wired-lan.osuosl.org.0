@@ -1,54 +1,163 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85478458EE9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Nov 2021 14:02:38 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 986E64590CE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Nov 2021 16:03:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 750A240198;
-	Mon, 22 Nov 2021 13:02:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2C17981ABB;
+	Mon, 22 Nov 2021 15:03:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8CcipOtRZY8v; Mon, 22 Nov 2021 13:02:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pKXbcv2om1BG; Mon, 22 Nov 2021 15:03:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C3B49400E5;
-	Mon, 22 Nov 2021 13:02:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BDC6681B26;
+	Mon, 22 Nov 2021 15:03:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D36351BF295
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 13:02:29 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CC1011BF381
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 09:58:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BD61B40457
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 13:02:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BAC4980DBF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 09:58:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fgVjcN2CmjOM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Nov 2021 13:02:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2bpAApvGjUo2 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Nov 2021 09:58:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A17E640454
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 13:02:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10175"; a="258598727"
-X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="258598727"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Nov 2021 05:02:17 -0800
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DD48080D34
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Nov 2021 09:58:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10175"; a="233478681"
+X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="233478681"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Nov 2021 01:58:56 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="496851647"
-Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
- by orsmga007.jf.intel.com with ESMTP; 22 Nov 2021 05:02:16 -0800
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 22 Nov 2021 14:02:13 +0100
-Message-Id: <20211122130213.22130-1-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.32.0
+X-IronPort-AV: E=Sophos;i="5.87,254,1631602800"; d="scan'208";a="649405071"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga001.fm.intel.com with ESMTP; 22 Nov 2021 01:58:56 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Mon, 22 Nov 2021 01:58:56 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Mon, 22 Nov 2021 01:58:55 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12 via Frontend Transport; Mon, 22 Nov 2021 01:58:55 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2242.12; Mon, 22 Nov 2021 01:58:55 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Eqk6mVFAWxOs+wT98GV2/dD6iNZ7YTW8qhEmjhsmPrnl5UY3x8nlG/GaLlohwkjEDy6eQHoq7gS4eI3/8JKkmnG6OUekztyndk6QZ8BYRkz68bU1vvpv/N2w4OJx1IYjSz2dyjDs2JNukCk1ByaU4zkoaRQ/5jUYNPEeiabus8f4k9iy0JFxvBMKeyRfoi0LcxxtQ6dDwO1arhPubd5cw5i1aWYZ6QMzjeBAi59LRE//P0eoTAG10XkJB00/jKwqk/bXHVxkew+O1gdDuxm07wXaAdErGeQoK15tre0wy0nPzYA/3rxb7mSeKrZHMYUIfWdYTpA5ruQBPwCc3Um0Fg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cNmRrGZnZpm11NTQIfvEwXgMHBx/SvkH3wxQXV+UaMQ=;
+ b=R1e9vmiadaprKyOzrm8PTmYQKtfx8wMTaE7ZX/tkOG7bt69wNapSbSz7YWnJwi/+4bxjHMiPLWQ5x2Jnfc7TvWYd4OAO+Kwu8SEZWRMXnAvMXbqwrbjO/bBx7mrYJRvM07cq9rL5eWk2+D0RBy3sQhiMNhh5ul5bwVZfO7YZUWKhRCwmuV2KZguuxFIHt9dzkztoNzxV8wqFW2tWGYMT+lhsERgjzyXt/QV7XZZ0eCmVFBjWteTPnSeel8curADQY1eJjw7GqdqAhlkRqpT5y9JOj47Xj39gcaGMlUMkclXeksrgL6mBCKGwKOVcBx2LiwGGPUV1JfyiY4fYro/BNQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cNmRrGZnZpm11NTQIfvEwXgMHBx/SvkH3wxQXV+UaMQ=;
+ b=wlS2mikhTxK+LamOeopZ4s8sW4wu8pHF8ZwaXZRNTT+17ZGgR5hQspbRFYdfPxwY10ii459+ydC+102wN2aX5uaP2HijFKPoetDRYJLivtWj8eC4j/94aq7nE+Pk4NguzTznMthGVKuVuwCN0H28/u89pWPa7VvyB54d5ZCQ7xY=
+Received: from BYAPR11MB2727.namprd11.prod.outlook.com (2603:10b6:a02:c7::29)
+ by BYAPR11MB2839.namprd11.prod.outlook.com (2603:10b6:a02:c8::33)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26; Mon, 22 Nov
+ 2021 09:58:54 +0000
+Received: from BYAPR11MB2727.namprd11.prod.outlook.com
+ ([fe80::4d4:d2eb:1ad7:b47c]) by BYAPR11MB2727.namprd11.prod.outlook.com
+ ([fe80::4d4:d2eb:1ad7:b47c%6]) with mapi id 15.20.4713.022; Mon, 22 Nov 2021
+ 09:58:53 +0000
+From: "Kaliszczuk, Leszek" <leszek.kaliszczuk@intel.com>
+To: "Saleem, Shiraz" <shiraz.saleem@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [net-next 1/3] devlink: Add 'enable_iwarp'
+ generic device param
+Thread-Index: AQHXxHZPRLZdYMc3QE2I/Wr2re0FlKwPgJog
+Date: Mon, 22 Nov 2021 09:58:53 +0000
+Message-ID: <BYAPR11MB2727B6F343B89C65CFC3C795EE9F9@BYAPR11MB2727.namprd11.prod.outlook.com>
+References: <20211018231603.1690-1-shiraz.saleem@intel.com>
+ <20211018231603.1690-2-shiraz.saleem@intel.com>
+In-Reply-To: <20211018231603.1690-2-shiraz.saleem@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.6.200.16
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 2a0d03c5-a920-4001-c5ba-08d9ad9eb137
+x-ms-traffictypediagnostic: BYAPR11MB2839:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <BYAPR11MB2839A954D7187FC7CF45CDACEE9F9@BYAPR11MB2839.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:185;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JGL27Tn8KllXHKOVCHWTx9hrZhnfEfyNALykaRhGc9CMJQVX/FNLSxZGKoRVA2yhHFLLuFPVwLMNHTlsB76K6LECVpbCa3tmxZJVLHFScPL2UCFlUbCbOmuR+dvJ1C7/cXEc08XdLdxpD6GSOWmDfMxCtGWBJUOzvtXwbF2MJCNmA88FuDM0QuKfsg0pNBVb3BNrPNwMo3kI+6bi0Thdo0wZKnJ7A6MTHrqtkPYF2PybM2mv8LHG9MSFTnup+Xeskrmf+ESOq+zxuOZYn1BksY8Do/AHgFcaiQLyI/Ku8jJXXzJkp1+ttDJDF3mr5zzcymhtpFHMaHph/egsewjrkPRxzQ8/BbCUKZxIWThhm3O/+WhojmqY33vDYqQc1vOdFIpkWSA4/cpqY97hPDwdTYKWlLoHuN/Ty2pIU6GO+mHr77yeJ85BWXWSgTSpljho3bn09050SvxPgrwwD94zEgp5FTThJ5CSK96WC58zYlieYDVPSGaW8rCa9Qlml5v68hpGm7IO7+A83up3drDVeYA+GgrC5LBl1RI+PSgqU9jr5lN2PPMGfeiO/eWRpbt3JVQucE+DeCDPYNRFy1mE1/Z5lU8esxXpq2fE2NO+gj6L3p29F9+6XLWuyeIv3DFlaaH8SNU/eizCVgtNb2/zoxzuvCWaYjjA3p3vjWtrb+OHh+MzandfYzzX0tZeqoOXsxJ8vNd0osxfbGI+ItcB6kTqZpKE5GphdTAXPZ/2zJU=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB2727.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(7696005)(82960400001)(38070700005)(33656002)(122000001)(76116006)(86362001)(316002)(66476007)(508600001)(5660300002)(71200400001)(38100700002)(8676002)(4744005)(9686003)(55016002)(83380400001)(8936002)(26005)(66556008)(52536014)(66446008)(110136005)(186003)(66946007)(2906002)(64756008)(6506007)(53546011)(41533002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?J5lQv0sj1YthzGG6YSB0WBGUFBQU5e1DqyNBscvc+sQK1/HZWf3TPbUGjzMg?=
+ =?us-ascii?Q?NlIcTRkt13aEgc1CGDlhl5fQsltINEXQxLTdTr25rQbilXcg63EjSKCON/Bp?=
+ =?us-ascii?Q?1+Bmsc6M79G7hN7SCIzs6h9Gr4W7XVqLjEwJq67m4Y8LeblBUfq1Dlg8haFs?=
+ =?us-ascii?Q?V359K3258ZZQMwft64zPvM9RFCMQK89Th/ZtgSPF9U8NUdORnZ1ZjH2iMMo2?=
+ =?us-ascii?Q?X+GdG5g4EKz5gZl1Q9ftUih82CW352T77+gIQfMNq57JO9PhpMjM3530p+K4?=
+ =?us-ascii?Q?E5hywOEoH+wVtNx0H/aJuHFqslZqT4N3cYeuRi4SSUBAsESakrh24Q5XJ1yk?=
+ =?us-ascii?Q?rtixfOSWaV30k3RN8Cfy+lZPqJ/uTbx+nQ3uh4UrI5FmXBoGalODgstSAj+d?=
+ =?us-ascii?Q?fGE8qCLRCnG95EuDlBfsfi6ibc0zLb7mcDkcSxcHYXKM1s+eKDh2K3nfmzUy?=
+ =?us-ascii?Q?6w8b6RqqrG6AMCcwz8yivGFSvTg+JHgmIkqPn3+V1JIakz5sgf7YQAOUipGp?=
+ =?us-ascii?Q?snDUeSny5Om7z/PTi26epiuHG7Yv937Vnt1C7NKeniic046l02sFG42bjNhs?=
+ =?us-ascii?Q?TOT7KhBvZHKewn1GpL0KpMnrSiROJFahWA6K/EbZd+5ygaMkECqi5vFmIdmf?=
+ =?us-ascii?Q?LTtyBHejTEiXEZ3a9rEcEfJE8vmQ3PZx06/ur00BdzYcPq35Uv0F+gZnLpxh?=
+ =?us-ascii?Q?LskSneY5Rm2Hgs5/5Xd6RZp9XOwHYsTjb0H8RQJ83hzKFSeCG8l0Z/P4Ig16?=
+ =?us-ascii?Q?qC9rw59zPNlXFk1EJbKezMAEFQT3c0lo4oyMt+RRVK8K5TqMRfdZ4LQuvDwL?=
+ =?us-ascii?Q?221Dmq8uyyOtdnFo/8CYft49PmeEoeUlfL/MtrEWH8CA0mB6817ZzU9IbGPy?=
+ =?us-ascii?Q?HLhxjiSdfCkNTDo2qfDdE2/0KzxOfRx4i0DHgESehgUmk6gABDhYX6laEsJY?=
+ =?us-ascii?Q?YoKgNfieKvYQJLsvyFaH+FygQhzqunJg2UTPcOBhFWRC9qxH3XhVvgy6YO/A?=
+ =?us-ascii?Q?4+lynLW5xHEnMBA8gaObnE5eLqOE+IPrwymgrdZSd8gqUgjoBCIuLphUX9go?=
+ =?us-ascii?Q?Bq5pux24o5FwOT93vzLG7RY+A9u/RR5mNpRy4Lor6DOIfAL3dQCL1hfd0V9/?=
+ =?us-ascii?Q?8B68piEpDZwLYmuR/h63pl06JavwjibyS6pu8f/l/ipGfJxUJ3+yhUgDpezT?=
+ =?us-ascii?Q?SnI4KmTYYEkdhM2aW2kbj6M7qhpqcWmrtXODrJgbhpdGTClj98WaoJnA2Yqy?=
+ =?us-ascii?Q?nQoLXUuOWAckj7MqSH9diZroYL867e8rwZmt0IodJAYKhedXPl9Ph7z5uOoZ?=
+ =?us-ascii?Q?4xEPX8RtocoXqNoatBUv+EyKr9J0X7966kRXr1o0fn8doaMKLecAiK3TCE2E?=
+ =?us-ascii?Q?8ksW6wyHcdg/LGpqohlihV9WIXGTudIDpRNUcnJJmOrsxYmddIR31U7LOaG5?=
+ =?us-ascii?Q?GtygNg/k8twV5XpmdDcV3nXHp31BaF98pSJmWmc30SgzOqdx7Sk5rY766Fy8?=
+ =?us-ascii?Q?RM4SVUT5CM0Xi+wCzbeEOKJEufq49iwyc3LOyqn5tybIafm5NH23Nqj+yWN7?=
+ =?us-ascii?Q?pVJgfodV2SJG/a4f2Ek5Hf9v9qgKbkSe/0SnYSiP8VtiYoFfWLN3qxvWhMwE?=
+ =?us-ascii?Q?hNVIPrWIinYL2IXMLhNwB0GN26J1tq+Be1pkcKhEio3FumQQqjdV/WlTxWRh?=
+ =?us-ascii?Q?8O+zCg=3D=3D?=
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Subject: [Intel-wired-lan] [PATCH intel-next] ice: Fix PTP reset flow
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2727.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2a0d03c5-a920-4001-c5ba-08d9ad9eb137
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Nov 2021 09:58:53.8076 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rn/ZLS6rn2NnkougSRcIMNkjSFyieVxZdrRK4HVUL6fTbNlU/e+V3vavuWbV/qK8vnK6HNjG8DC9x5f2oAHYVnnnF1zpurKG7HiW+9C4Uyo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2839
+X-OriginatorOrg: intel.com
+X-Mailman-Approved-At: Mon, 22 Nov 2021 15:03:16 +0000
+Subject: Re: [Intel-wired-lan] [net-next 1/3] devlink: Add 'enable_iwarp'
+ generic device param
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,405 +170,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karol Kolacinski <karol.kolacinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The PF reset does not reset PHC and PHY clocks so it's unnecessary to
-stop them and reinitialize after the reset.
-Configuring timestamping changes the VSI fields so it needs to be
-performed after VSIs are initialized, which was not done in case of a
-reset.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Saleem, Shiraz
+> Sent: Tuesday, October 19, 2021 1:16 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Saleem, Shiraz <shiraz.saleem@intel.com>
+> Subject: [Intel-wired-lan] [net-next 1/3] devlink: Add 'enable_iwarp' generic
+> device param
+> 
+> Add a new device generic parameter to enable and disable iWARP functionality
+> on a multi-protocol RDMA device.
+> 
+> Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
+> ---
+>  Documentation/networking/devlink/devlink-params.rst | 3 +++
+>  include/net/devlink.h                               | 4 ++++
+>  net/core/devlink.c                                  | 5 +++++
+>  3 files changed, 12 insertions(+)
+> 
 
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c |   6 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c  | 234 ++++++++++++++++++----
- drivers/net/ethernet/intel/ice/ice_ptp.h  |   8 +
- 3 files changed, 204 insertions(+), 44 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index c08d2dcfa3cc..ce1cdebf6cda 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -568,7 +568,7 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	ice_pf_dis_all_vsi(pf, false);
- 
- 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
--		ice_ptp_release(pf);
-+		ice_ptp_prepare_for_reset(pf);
- 
- 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
- 		ice_gnss_exit(pf);
-@@ -6731,7 +6731,7 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	 * fail.
- 	 */
- 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
--		ice_ptp_init(pf);
-+		ice_ptp_reset(pf);
- 
- 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
- 		ice_gnss_init(pf);
-@@ -6748,6 +6748,8 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 		dev_err(dev, "Switchdev CTRL VSI rebuild failed: %d\n", err);
- 		goto err_vsi_rebuild;
- 	}
-+	/* configure PTP timestamping after VSI rebuild */
-+	ice_ptp_cfg_timestamp(pf, false);
- 
- 	if (reset_type == ICE_RESET_PFR) {
- 		err = ice_rebuild_channels(pf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index df846b66a9a7..be2c63f71452 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -320,7 +320,7 @@ static void ice_set_rx_tstamp(struct ice_pf *pf, bool on)
-  * This function will configure timestamping during PTP initialization
-  * and deinitialization
-  */
--static void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena)
-+void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena)
- {
- 	ice_set_tx_tstamp(pf, ena);
- 	ice_set_rx_tstamp(pf, ena);
-@@ -2330,6 +2330,130 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- 				   msecs_to_jiffies(500));
- }
- 
-+/**
-+ * ice_ptp_reset - Initialize PTP hardware clock support after reset
-+ * @pf: Board private structure
-+ */
-+void ice_ptp_reset(struct ice_pf *pf)
-+{
-+	struct ice_ptp *ptp = &pf->ptp;
-+	struct ice_hw *hw = &pf->hw;
-+	struct timespec64 ts;
-+	int err, itr = 1;
-+	u64 time_diff;
-+
-+	if (test_bit(ICE_PFR_REQ, pf->state))
-+		goto pfr;
-+
-+	if (!hw->func_caps.ts_func_info.src_tmr_owned)
-+		goto reset_ts;
-+
-+	err = ice_ptp_init_phc(hw);
-+	if (err)
-+		goto err;
-+
-+	/* Acquire the global hardware lock */
-+	if (!ice_ptp_lock(hw)) {
-+		err = -EBUSY;
-+		goto err;
-+	}
-+
-+	/* Write the increment time value to PHY and LAN */
-+	err = ice_ptp_write_incval(hw, ice_base_incval(pf));
-+	if (err) {
-+		ice_ptp_unlock(hw);
-+		goto err;
-+	}
-+
-+	/* Write the initial Time value to PHY and LAN using the cached PHC
-+	 * time before the reset and time difference between stopping and
-+	 * starting the clock.
-+	 */
-+	if (ptp->cached_phc_time) {
-+		time_diff = ktime_get_real_ns() - ptp->reset_time;
-+		ts = ns_to_timespec64(ptp->cached_phc_time + time_diff);
-+	} else {
-+		ts = ktime_to_timespec64(ktime_get_real());
-+	}
-+	err = ice_ptp_write_init(pf, &ts);
-+	if (err) {
-+		ice_ptp_unlock(hw);
-+		goto err;
-+	}
-+
-+	/* Release the global hardware lock */
-+	ice_ptp_unlock(hw);
-+
-+	if (!ice_is_e810(hw)) {
-+		/* Enable quad interrupts */
-+		err = ice_ptp_tx_ena_intr(pf, true, itr);
-+		if (err)
-+			goto err;
-+	}
-+
-+reset_ts:
-+	/* Restart the PHY timestamping block */
-+	ice_ptp_reset_phy_timestamping(pf);
-+
-+pfr:
-+	/* Init Tx structures */
-+	if (ice_is_e810(&pf->hw)) {
-+		err = ice_ptp_init_tx_e810(pf, &ptp->port.tx);
-+	} else {
-+		kthread_init_delayed_work(&ptp->port.ov_work,
-+					  ice_ptp_wait_for_offset_valid);
-+		err = ice_ptp_init_tx_e822(pf, &ptp->port.tx,
-+					   ptp->port.port_num);
-+	}
-+	if (err)
-+		goto err;
-+
-+	set_bit(ICE_FLAG_PTP, pf->flags);
-+
-+	/* Start periodic work going */
-+	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
-+
-+	dev_info(ice_pf_to_dev(pf), "PTP reset successful\n");
-+	return;
-+
-+err:
-+	dev_err(ice_pf_to_dev(pf), "PTP reset failed %d\n", err);
-+}
-+
-+/**
-+ * ice_ptp_prepare_for_reset - Prepare PTP for reset
-+ * @pf: Board private structure
-+ */
-+void ice_ptp_prepare_for_reset(struct ice_pf *pf)
-+{
-+	struct ice_ptp *ptp = &pf->ptp;
-+	u8 src_tmr;
-+
-+	clear_bit(ICE_FLAG_PTP, pf->flags);
-+
-+	/* Disable timestamping for both Tx and Rx */
-+	ice_ptp_cfg_timestamp(pf, false);
-+
-+	kthread_cancel_delayed_work_sync(&ptp->work);
-+	kthread_cancel_work_sync(&ptp->extts_work);
-+
-+	if (test_bit(ICE_PFR_REQ, pf->state))
-+		return;
-+
-+	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
-+
-+	/* Disable periodic outputs */
-+	ice_ptp_disable_all_clkout(pf);
-+
-+	src_tmr = ice_get_ptp_src_clock_index(&pf->hw);
-+
-+	/* Disable source clock */
-+	wr32(&pf->hw, GLTSYN_ENA(src_tmr), (u32)~GLTSYN_ENA_TSYN_ENA_M);
-+
-+	/* Acquire PHC and system timer to restore after reset */
-+	ptp->reset_time = ktime_get_real_ns();
-+}
-+
- /**
-  * ice_ptp_init_owner - Initialize PTP_1588_CLOCK device
-  * @pf: Board private structure
-@@ -2396,8 +2520,57 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- err_clk:
- 	pf->ptp.clock = NULL;
- err_exit:
--	dev_err(dev, "PTP failed to register clock, err %d\n", err);
-+	return err;
-+}
-+
-+/**
-+ * ice_ptp_init_work - Initialize PTP work threads
-+ * @pf: Board private structure
-+ * @ptp: PF PTP structure
-+ */
-+static int ice_ptp_init_work(struct ice_pf *pf, struct ice_ptp *ptp)
-+{
-+	struct kthread_worker *kworker;
-+
-+	/* Initialize work functions */
-+	kthread_init_delayed_work(&ptp->work, ice_ptp_periodic_work);
-+	kthread_init_work(&ptp->extts_work, ice_ptp_extts_work);
-+
-+	/* Allocate a kworker for handling work required for the ports
-+	 * connected to the PTP hardware clock.
-+	 */
-+	kworker = kthread_create_worker(0, "ice-ptp-%s",
-+					dev_name(ice_pf_to_dev(pf)));
-+	if (IS_ERR(kworker))
-+		return PTR_ERR(kworker);
-+
-+	ptp->kworker = kworker;
- 
-+	/* Start periodic work going */
-+	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_ptp_init_port - Initialize PTP port structure
-+ * @pf: Board private structure
-+ * @ptp_port: PTP port structure
-+ */
-+static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
-+{
-+	int err;
-+
-+	mutex_init(&ptp_port->ps_lock);
-+
-+	if (ice_is_e810(&pf->hw)) {
-+		err = ice_ptp_init_tx_e810(pf, &ptp_port->tx);
-+		return err;
-+	}
-+
-+	kthread_init_delayed_work(&ptp_port->ov_work,
-+				  ice_ptp_wait_for_offset_valid);
-+	err = ice_ptp_init_tx_e822(pf, &ptp_port->tx, ptp_port->port_num);
- 	return err;
- }
- 
-@@ -2405,7 +2578,7 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
-  * ice_ptp_init - Initialize PTP hardware clock support
-  * @pf: Board private structure
-  *
-- * Set up the device for interacting with the PTP hardware clock for all
-+ * Setup the device for interacting with the PTP hardware clock for all
-  * functions, both the function that owns the clock hardware, and the
-  * functions connected to the clock hardware.
-  *
-@@ -2415,8 +2588,7 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
-  */
- void ice_ptp_init(struct ice_pf *pf)
- {
--	struct device *dev = ice_pf_to_dev(pf);
--	struct kthread_worker *kworker;
-+	struct ice_ptp *ptp = &pf->ptp;
- 	struct ice_hw *hw = &pf->hw;
- 	int err;
- 
-@@ -2426,55 +2598,33 @@ void ice_ptp_init(struct ice_pf *pf)
- 	if (hw->func_caps.ts_func_info.src_tmr_owned) {
- 		err = ice_ptp_init_owner(pf);
- 		if (err)
--			return;
-+			goto err;
- 	}
- 
--	/* Disable timestamping for both Tx and Rx */
--	ice_ptp_cfg_timestamp(pf, false);
--
--	/* Initialize PTP port structure */
--	mutex_init(&pf->ptp.port.ps_lock);
--	pf->ptp.port.port_num = pf->hw.pf_id;
--	kthread_init_delayed_work(&pf->ptp.port.ov_work,
--				  ice_ptp_wait_for_offset_valid);
--
--	if (ice_is_e810(hw))
--		ice_ptp_init_tx_e810(pf, &pf->ptp.port.tx);
--	else
--		ice_ptp_init_tx_e822(pf, &pf->ptp.port.tx, pf->hw.pf_id);
--
--	/* Initialize work functions */
--	kthread_init_delayed_work(&pf->ptp.work, ice_ptp_periodic_work);
--	kthread_init_work(&pf->ptp.extts_work, ice_ptp_extts_work);
--
--	/* Allocate a kworker for handling work required for the ports
--	 * connected to the PTP hardware clock.
--	 */
--	kworker = kthread_create_worker(0, "ice-ptp-%s", dev_name(dev));
--	if (IS_ERR(kworker)) {
--		err = PTR_ERR(kworker);
--		goto err_kworker;
--	}
--	pf->ptp.kworker = kworker;
--
--	set_bit(ICE_FLAG_PTP, pf->flags);
--
--	/* Start periodic work going */
--	kthread_queue_delayed_work(pf->ptp.kworker, &pf->ptp.work, 0);
-+	ptp->port.port_num = hw->pf_id;
-+	err = ice_ptp_init_port(pf, &ptp->port);
-+	if (err)
-+		goto err;
- 
- 	/* Start the PHY timestamping block */
- 	ice_ptp_reset_phy_timestamping(pf);
- 
--	dev_info(dev, "PTP init successful\n");
-+	set_bit(ICE_FLAG_PTP, pf->flags);
-+	err = ice_ptp_init_work(pf, ptp);
-+	if (err)
-+		goto err;
-+
-+	dev_info(ice_pf_to_dev(pf), "PTP init successful\n");
- 	return;
- 
--err_kworker:
-+err:
- 	/* If we registered a PTP clock, release it */
- 	if (pf->ptp.clock) {
--		ptp_clock_unregister(pf->ptp.clock);
-+		ptp_clock_unregister(ptp->clock);
- 		pf->ptp.clock = NULL;
- 	}
--	dev_err(dev, "PTP failed %d\n", err);
-+	clear_bit(ICE_FLAG_PTP, pf->flags);
-+	dev_err(ice_pf_to_dev(pf), "PTP failed %d\n", err);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index eef8ec894871..afd048d69959 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -139,6 +139,7 @@ struct ice_ptp_port {
-  * @info: structure defining PTP hardware capabilities
-  * @clock: pointer to registered PTP clock device
-  * @tstamp_config: hardware timestamping configuration
-+ * @reset_time: kernel time after clock stop on reset
-  */
- struct ice_ptp {
- 	struct ice_ptp_port port;
-@@ -152,6 +153,7 @@ struct ice_ptp {
- 	struct ptp_clock_info info;
- 	struct ptp_clock *clock;
- 	struct hwtstamp_config tstamp_config;
-+	u64 reset_time;
- };
- 
- #define __ptp_port_to_ptp(p) \
-@@ -199,6 +201,7 @@ struct ice_ptp {
- struct ice_pf;
- int ice_ptp_set_ts_config(struct ice_pf *pf, struct ifreq *ifr);
- int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr);
-+void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena);
- int ice_get_ptp_clock_index(struct ice_pf *pf);
- 
- s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb);
-@@ -207,6 +210,8 @@ void ice_ptp_process_ts(struct ice_pf *pf);
- void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb);
-+void ice_ptp_reset(struct ice_pf *pf);
-+void ice_ptp_prepare_for_reset(struct ice_pf *pf);
- void ice_ptp_init(struct ice_pf *pf);
- void ice_ptp_release(struct ice_pf *pf);
- int ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup);
-@@ -221,6 +226,7 @@ static inline int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr)
- 	return -EOPNOTSUPP;
- }
- 
-+static inline void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena) { }
- static inline int ice_get_ptp_clock_index(struct ice_pf *pf)
- {
- 	return -1;
-@@ -236,6 +242,8 @@ static inline void ice_ptp_process_ts(struct ice_pf *pf) { }
- static inline void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb) { }
-+static inline void ice_ptp_reset(struct ice_pf *pf) { }
-+static inline void ice_ptp_prepare_for_reset(struct ice_pf *pf) { }
- static inline void ice_ptp_init(struct ice_pf *pf) { }
- static inline void ice_ptp_release(struct ice_pf *pf) { }
- static inline int ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
--- 
-2.32.0
+Tested-by: Leszek Kaliszczuk <leszek.kaliszczuk@intel.com>
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
 
 _______________________________________________
 Intel-wired-lan mailing list
