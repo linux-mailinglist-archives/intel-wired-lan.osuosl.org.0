@@ -1,52 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0ADE45AD7B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Nov 2021 21:40:32 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1329145B03F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Nov 2021 00:33:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5EBD281858;
-	Tue, 23 Nov 2021 20:40:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5E778403CE;
+	Tue, 23 Nov 2021 23:33:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 53np0Dj7R1Jm; Tue, 23 Nov 2021 20:40:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GQ-hxjMc8hXH; Tue, 23 Nov 2021 23:33:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 645F880D59;
-	Tue, 23 Nov 2021 20:40:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2BA01403B0;
+	Tue, 23 Nov 2021 23:33:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC4861BF3A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 20:40:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F7281BF317
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 23:33:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DABBD40357
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 20:40:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 84AF88175B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 23:33:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 83eM1gwyPfyQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Nov 2021 20:40:26 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UyratAwF9qOr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Nov 2021 23:33:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4384340319
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 20:40:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10177"; a="235361902"
-X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="235361902"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2021 12:40:11 -0800
-X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="497420122"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.56])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2021 12:40:11 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Nov 2021 12:40:00 -0800
-Message-Id: <20211123204000.1597971-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.33.1
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F41A180D06
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 23:33:14 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9D28A60FE6;
+ Tue, 23 Nov 2021 23:33:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637710394;
+ bh=kG8n/02UM0CjGGDvJB4iPJ9K02MPrvmSl94Egqf9ZVw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=skemYkfAQOvf20rppso/nQxkkV8H9HKEwDnPlnSg7RXovNYceEX070AP68QuXeQXh
+ TroMsQx4Yy0W6E70/bLP+A9lTLUV6B4P0dOXaGPm4YHd6mVEG4uU224vrSVRt69cAv
+ T4LFsKq3gVS+q5y/9Dyx4Rl5Ld9UQ5OKWd3dv3ykbiRsHL0t/cxivq0y2F+Pve7j3c
+ /AHQ6h5bAKduQdEc86h0mfsWjnJ2MS5FVFeO41QelqcU5KPcju8TObPSX4b5SIxJjD
+ 3CpXbRF3C4AAs+iGZW5PnfzSEtWu/lfgQgI7Tik01HbUbS+1/1ZbF9Kltnhiy59VEW
+ PR1hVF3CO9Ngg==
+Date: Tue, 23 Nov 2021 15:33:12 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Leon Romanovsky <leon@kernel.org>
+Message-ID: <20211123153312.4eecb490@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <YZynSa6s8kBKtSYB@unreal>
+References: <cover.1637173517.git.leonro@nvidia.com>
+ <6176a137a4ded48501e8a06fda0e305f9cfc787c.1637173517.git.leonro@nvidia.com>
+ <20211117204956.6a36963b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZYFvIK9mkP107tD@unreal>
+ <20211118174813.54c3731f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZfFDSnnjOG+wSyK@unreal>
+ <20211119081017.6676843b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZoHGKqLz6UBk2Sx@unreal>
+ <20211122182728.370889f2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZynSa6s8kBKtSYB@unreal>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2] igb: fix netpoll exit with traffic
+Subject: Re: [Intel-wired-lan] [PATCH net-next 5/6] devlink: Reshuffle
+ resource registration logic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,62 +75,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Danielle Ratson <danieller@nvidia.com>,
- Oleksandr Natalenko <oleksandr@natalenko.name>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, drivers@pensando.io,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-rdma@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Ido Schimmel <idosch@nvidia.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
+ Michael Chan <michael.chan@broadcom.com>, Aya Levin <ayal@mellanox.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tariq Toukan <tariqt@nvidia.com>, UNGLinuxDriver@microchip.com,
+ Taras Chornyi <tchornyi@marvell.com>, Shannon Nelson <snelson@pensando.io>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Oleksandr brought a bug report where netpoll causes trace
-messages in the log on igb.
+On Tue, 23 Nov 2021 10:33:13 +0200 Leon Romanovsky wrote:
+> > > You can do it with my approach too. We incremented reference counter
+> > > of devlink instance when devlink_nl_cmd_port_split_doit() was called,
+> > > and we can safely take devlink->port_list_lock lock before returning
+> > > from pre_doit.  
+> > 
+> > Wait, I thought you'd hold devlink->lock around split/unsplit.  
+> 
+> I'm holding.
+> 
+>     519 static int devlink_nl_pre_doit(const struct genl_ops *ops,
+>     520                                struct sk_buff *skb, struct genl_info *info)
+>     521 {
+>     ...
+>     529
+>     530         mutex_lock(&devlink->lock);
 
-Danielle brought this back up as still occuring, so we'll try
-again.
+Then I'm confused why you said you need to hold a ref count on devlink.
+Is it devlink_unregister() that's not taking devlink->lock?
 
-[22038.710800] ------------[ cut here ]------------
-[22038.710801] igb_poll+0x0/0x1440 [igb] exceeded budget in poll
-[22038.710802] WARNING: CPU: 12 PID: 40362 at net/core/netpoll.c:155 netpoll_poll_dev+0x18a/0x1a0
+> > Please look at the port splitting case, mlx5 doesn't implement it
+> > but it's an important feature.  
+> 
+> I'll, but please don't forget that it was RFC, just to present that
+> devlink can be changed internally without exposing internals.
+> 
+> > Either way, IDK how ref count on devlink helps with lifetime of a
+> > subobject. You must assume the sub-objects can only be created outside
+> > of the time devlink instance is visible or under devlink->lock?  
+> 
+> The devlink lifetime is:
+> stages:        I                   II                   III   
+>  devlink_alloc -> devlink_register -> devlink_unregister -> devlink_free.
+> 
+> All sub-objects should be created between devlink_alloc and devlink_free.
+> It will ensure that ->devlink pointer is always valid.
+> 
+> Stage I:
+>  * There is no need to hold any devlink locks or increase reference counter.
+>    If driver doesn't do anything crazy during its init, nothing in devlink
+>    land will run in parallel. 
+> Stage II:
+>  * There is a need to hold devlink->lock and/or play with reference counter
+>    and/or use fine-grained locks. Users can issue "devlink ..." commands.
 
-As Alex suggested, change the driver to return work_done at the
-exit of napi_poll, which should be safe to do in this driver
-because it is not polling multiple queues in this single napi
-context (multiple queues attached to one MSI-X vector). Several
-other drivers contain the same simple sequence, so I hope
-this will not create new problems.
-
-Fixes: 16eb8815c235 ("igb: Refactor clean_rx_irq to reduce overhead and improve performance")
-Reported-by: Oleksandr Natalenko <oleksandr@natalenko.name>
-Reported-by: Danielle Ratson <danieller@nvidia.com>
-Suggested-by: Alexander Duyck <alexander.duyck@gmail.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
-COMPILE TESTED ONLY! I have no way to reproduce this even on a machine I
-have with igb. It works fine to load the igb driver and netconsole with
-no errors.
----
-v2: simplified patch with an attempt to make it work
-v1: original patch that apparently didn't work
----
- drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index e647cc89c239..5e24b7ce5a92 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -8104,7 +8104,7 @@ static int igb_poll(struct napi_struct *napi, int budget)
- 	if (likely(napi_complete_done(napi, work_done)))
- 		igb_ring_irq_enable(q_vector);
- 
--	return min(work_done, budget - 1);
-+	return work_done;
- }
- 
- /**
--- 
-2.33.1
-
+So sub-objects can (dis)appear only in I/III or under devlink->lock.
+Why did you add the per-sub object list locks, then?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
