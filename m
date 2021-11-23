@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAD0345A9F4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Nov 2021 18:24:30 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88E8C45AA02
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Nov 2021 18:24:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 796C680D61;
-	Tue, 23 Nov 2021 17:24:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1257560A42;
+	Tue, 23 Nov 2021 17:24:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gDrjVS_XtayB; Tue, 23 Nov 2021 17:24:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g0OqWxk-Qegz; Tue, 23 Nov 2021 17:24:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 61ACB80D43;
-	Tue, 23 Nov 2021 17:24:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D75E608FD;
+	Tue, 23 Nov 2021 17:24:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC7691BF29F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D98F21BF29F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E92E44017A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C98FA4017A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o6Hl9EjUfBSh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Nov 2021 17:24:19 +0000 (UTC)
+ with ESMTP id P6l2dbzkZLa2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Nov 2021 17:24:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 14D6840027
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:18 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10177"; a="234892526"
-X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="234892526"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Nov 2021 09:20:13 -0800
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1E85740208
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Nov 2021 17:24:45 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10177"; a="298480705"
+X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="298480705"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Nov 2021 09:20:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="606890295"
+X-IronPort-AV: E=Sophos;i="5.87,258,1631602800"; d="scan'208";a="597151909"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga004.jf.intel.com with ESMTP; 23 Nov 2021 09:20:11 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 23 Nov 2021 09:20:11 -0800
 Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
  [10.102.20.203])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1ANHK9Qe024401; Tue, 23 Nov 2021 17:20:09 GMT
+ 1ANHK9Qf024401; Tue, 23 Nov 2021 17:20:10 GMT
 From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Nov 2021 18:18:31 +0100
-Message-Id: <20211123171840.157471-1-alexandr.lobakin@intel.com>
+Date: Tue, 23 Nov 2021 18:18:32 +0100
+Message-Id: <20211123171840.157471-2-alexandr.lobakin@intel.com>
 X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20211123171840.157471-1-alexandr.lobakin@intel.com>
+References: <20211123171840.157471-1-alexandr.lobakin@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 0/9] intel: switch to
- napi_build_skb()
+Subject: [Intel-wired-lan] [PATCH net-next 1/9] e1000: switch to
+ napi_consume_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,51 +73,81 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-napi_build_skb() I introduced earlier this year ([0]) aims
-to decrease MM pressure and the overhead from in-place
-kmem_cache_alloc() on each Rx entry processing by decaching
-skbuff_heads from NAPI per-cpu cache filled prior to that by
-napi_consume_skb() (so it is sort of a direct shortcut for
-free -> mm -> alloc cycle).
-Currently, no in-tree drivers use it. Switch all Intel Ethernet
-drivers to it to get slight-to-medium perf boosts depending on
-the frame size.
+In order to take the best from per-cpu NAPI skbuff_head caches and
+CPU cycles, let's switch from dev_kfree_skb_any(), which passes skb
+back to the mm layer, to napi_consume_skb(), which feeds those
+caches on non-zero budget instead (falls back to the former on 0).
+Do the replacement in e1000_unmap_and_free_tx_resource(). There are
+4 call sites of this function throughout the driver:
+ * e1000_clean_tx_ring(). Slowpath, process context, cleans the
+   whole Tx ring on ifdown. Use budget of 0 here;
+ * e1000_tx_map(). Hotpath, net Tx softirq, unmaps the buffers in
+   case of error. Use 0 as well;
+ * e1000_clean_tx_irq(). Hotpath, NAPI Tx completion polling cycle.
+   As the driver doesn't count completed Tx entries towards the NAPI
+   budget, just use the poll budget of 64 to utilize caches.
 
-ice driver, 50 Gbps link, pktgen + XDP_PASS (local in) sample:
+Apart from being a preparation for switching to napi_build_skb(),
+this is useful on its own as well, as napi_consume_skb() flushes
+skb caches by batches of 32 instead of one-at-a-time.
 
-frame_size/nthreads  64/42  128/20  256/8  512/4  1024/2  1532/1
+Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-net-next (Kpps)      46062  34654   18248  9830   5343    2714
-series               47438  34708   18330  9875   5435    2777
-increase             2.9%   0.15%   0.45%  0.46%  1.72%   2.32%
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 669060a2e6aa..975a145d48ef 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -1953,7 +1953,8 @@ void e1000_free_all_tx_resources(struct e1000_adapter *adapter)
 
-Additionally, e1000's been switched to napi_consume_skb() as it's
-safe and works fine there, and there's no point in napi_build_skb()
-without paired NAPI cache feeding point.
+ static void
+ e1000_unmap_and_free_tx_resource(struct e1000_adapter *adapter,
+-				 struct e1000_tx_buffer *buffer_info)
++				 struct e1000_tx_buffer *buffer_info,
++				 int budget)
+ {
+ 	if (buffer_info->dma) {
+ 		if (buffer_info->mapped_as_page)
+@@ -1966,7 +1967,7 @@ e1000_unmap_and_free_tx_resource(struct e1000_adapter *adapter,
+ 		buffer_info->dma = 0;
+ 	}
+ 	if (buffer_info->skb) {
+-		dev_kfree_skb_any(buffer_info->skb);
++		napi_consume_skb(buffer_info->skb, budget);
+ 		buffer_info->skb = NULL;
+ 	}
+ 	buffer_info->time_stamp = 0;
+@@ -1990,7 +1991,7 @@ static void e1000_clean_tx_ring(struct e1000_adapter *adapter,
 
-[0] https://lore.kernel.org/all/20210213141021.87840-1-alobakin@pm.me
+ 	for (i = 0; i < tx_ring->count; i++) {
+ 		buffer_info = &tx_ring->buffer_info[i];
+-		e1000_unmap_and_free_tx_resource(adapter, buffer_info);
++		e1000_unmap_and_free_tx_resource(adapter, buffer_info, 0);
+ 	}
 
-Alexander Lobakin (9):
-  e1000: switch to napi_consume_skb()
-  e1000: switch to napi_build_skb()
-  i40e: switch to napi_build_skb()
-  iavf: switch to napi_build_skb()
-  ice: switch to napi_build_skb()
-  igb: switch to napi_build_skb()
-  igc: switch to napi_build_skb()
-  ixgbe: switch to napi_build_skb()
-  ixgbevf: switch to napi_build_skb()
+ 	netdev_reset_queue(adapter->netdev);
+@@ -2958,7 +2959,7 @@ static int e1000_tx_map(struct e1000_adapter *adapter,
+ 			i += tx_ring->count;
+ 		i--;
+ 		buffer_info = &tx_ring->buffer_info[i];
+-		e1000_unmap_and_free_tx_resource(adapter, buffer_info);
++		e1000_unmap_and_free_tx_resource(adapter, buffer_info, 0);
+ 	}
 
- drivers/net/ethernet/intel/e1000/e1000_main.c     | 14 ++++++++------
- drivers/net/ethernet/intel/i40e/i40e_txrx.c       |  2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c       |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx.c         |  2 +-
- drivers/net/ethernet/intel/igb/igb_main.c         |  2 +-
- drivers/net/ethernet/intel/igc/igc_main.c         |  2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c     |  2 +-
- drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c |  2 +-
- 8 files changed, 15 insertions(+), 13 deletions(-)
+ 	return 0;
+@@ -3856,7 +3857,8 @@ static bool e1000_clean_tx_irq(struct e1000_adapter *adapter,
+ 				}
 
+ 			}
+-			e1000_unmap_and_free_tx_resource(adapter, buffer_info);
++			e1000_unmap_and_free_tx_resource(adapter, buffer_info,
++							 64);
+ 			tx_desc->upper.data = 0;
+
+ 			if (unlikely(++i == tx_ring->count))
 --
 2.33.1
 
