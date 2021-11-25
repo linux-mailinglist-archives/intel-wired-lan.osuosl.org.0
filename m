@@ -1,57 +1,134 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93C0445D5D5
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Nov 2021 08:57:41 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6539845D5EB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Nov 2021 09:01:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B61714024C;
-	Thu, 25 Nov 2021 07:57:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F1EA8605FA;
+	Thu, 25 Nov 2021 08:01:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id REpkfX-6uobK; Thu, 25 Nov 2021 07:57:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kpuWopHDIJyR; Thu, 25 Nov 2021 08:01:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5D9CF40018;
-	Thu, 25 Nov 2021 07:57:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BDA6A608D3;
+	Thu, 25 Nov 2021 08:01:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0FAF31BF36C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 07:57:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EBB0C1BF36C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EC635405F0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 07:57:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D8F274019B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w5Fes4o8N_PY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Nov 2021 07:57:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 07DF8405EE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 07:57:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10178"; a="321701059"
-X-IronPort-AV: E=Sophos;i="5.87,262,1631602800"; d="scan'208";a="321701059"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2021 23:57:30 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,262,1631602800"; d="scan'208";a="457312152"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 24 Nov 2021 23:57:27 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mq9dG-000600-Pr; Thu, 25 Nov 2021 07:57:26 +0000
-Date: Thu, 25 Nov 2021 15:57:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <202111251527.xSdxs2Xm-lkp@intel.com>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=nvidia.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oRHwhR99fGNr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Nov 2021 08:01:42 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com
+ (mail-dm3nam07on2078.outbound.protection.outlook.com [40.107.95.78])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 165AA40018
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:41 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=h26hYrB1spGqOtfPbPYzpZ7BTj373GbrcaZR+HJ3lVafqdRRlH5wsEGUDjZTjoYuM7Z8vJ6Pul+Mhyxjnn+TaDWW2ez+PPMxKYpQJw+0rb+moTdkttpRFe8D8sSW/Lz0ImOZbqCkZ3yRGo/PYrZ6FG+wq3enPR40LjV8Z+JehDy/1mpawQaicpelxjVWP9UsJXr0n3vI+ouf690Tb3e5K7tFwvhEjCVGIf0rWZEDQ+uMQrtm36z5Cg+FTJWKlVUob6Dq1HRiK07cxpAbfmC4t3e+nZKQ/bWJc/dcOk+Vnk5pAA51Conr+7phQSxUj3T15fI2+lRYSmTV2yvJppmr2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6XuQwlqgYdyOD6F+14rbnImSH4sx7ixxpMoB99UyAkM=;
+ b=SrYA/O49K3/KzO2t5Mes+OaOhVYtkC75lU4K1uv8XKEMj2vQ5MpY9n3zpZLa9Uq6i0K8TUYq0lJyOgk4xP/LJjzHPIeyer7UGW2etzp62aEjY2u9L7czhh64pEl/nMuorHA7F/dZTt3Kkxf7q3gSkXHAHJDLaKzO5K7Wem5wPrVgPwpPe2BsftkDNVO5alcy6ItHqwi2Bu0EVBCdIE8KSKhikZzcBSXrVVDMnNZHKnnhSEh9zx8oaAitSyEtndcjsYZTTwI48Kc3KyFEg0jXzDYkQxzKDJHZdrP0Y8blD9oszEhZYAg8gRCcR3JURo3/fUwD9ujQf6eFytIEdQnv8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6XuQwlqgYdyOD6F+14rbnImSH4sx7ixxpMoB99UyAkM=;
+ b=kkduJs70n3FPqqQSMDl+wEvYOTUEvvxmDpl3Br8Ag9qK3mrwq8wDgcscHS4idN7O6neZrlWrdFwvNkywrf/iXx2joS9LDxvgnTmOOy47e55Muz9HCKwvtmBi32dhSIj/anIuum0by+jViXCkQHYZQoOEGf0Rgg6O0DYhByAGiCb4IKib/SAoAT9P4qj2I3ftuzeG9If/QQsJUX5jIX2/p5hNDOHzYt/kN8Ls38WyGYIEtO60iWfahDxyQLGs5SCSd3YyP23nu+DWa/OOg7BA4wA5wwqWYLhf+2rmEMJNpvrKO3lrGw+TC1EwEcX1JHnjL93FfxfA6m6hCLX7dzZz6Q==
+Received: from DM6PR12MB4516.namprd12.prod.outlook.com (2603:10b6:5:2ac::20)
+ by DM6PR12MB3178.namprd12.prod.outlook.com (2603:10b6:5:18d::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.20; Thu, 25 Nov
+ 2021 08:01:40 +0000
+Received: from DM6PR12MB4516.namprd12.prod.outlook.com
+ ([fe80::a5c1:7bee:503f:e0d0]) by DM6PR12MB4516.namprd12.prod.outlook.com
+ ([fe80::a5c1:7bee:503f:e0d0%8]) with mapi id 15.20.4734.021; Thu, 25 Nov 2021
+ 08:01:40 +0000
+From: Danielle Ratson <danieller@nvidia.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH net v2] igb: fix netpoll exit with traffic
+Thread-Index: AQHX4KpS8IRO8CTaPUObrYaieVzqnKwT3RWAgAAGp1A=
+Date: Thu, 25 Nov 2021 08:01:40 +0000
+Message-ID: <DM6PR12MB4516B65E19B294524570296FD8629@DM6PR12MB4516.namprd12.prod.outlook.com>
+References: <20211123204000.1597971-1-jesse.brandeburg@intel.com>
+ <DM6PR12MB451662EC02B77D17A9C27473D8629@DM6PR12MB4516.namprd12.prod.outlook.com>
+In-Reply-To: <DM6PR12MB451662EC02B77D17A9C27473D8629@DM6PR12MB4516.namprd12.prod.outlook.com>
+Accept-Language: he-IL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 48384791-a90e-4fa6-e09f-08d9afe9d037
+x-ms-traffictypediagnostic: DM6PR12MB3178:
+x-microsoft-antispam-prvs: <DM6PR12MB3178D3C1A35A81446B1A655DD8629@DM6PR12MB3178.namprd12.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: O+puwaVpb7Q78jMhONySFoTzCd4IqrHCoEVW+r1vRmFyPH+4exubCDdTNgvJ9qVW6qi11MsTAew5953fbv+JiNuNuy/DkLOTd/mMRSNVoiIjfxwBlTClfO6/apS9RWku2ZNIlne1MHbeNUES8AiPjqiAtzT51Hzsmn7PoU1JXFDnSOa7U6QagG73pU3ryfjUfg6ZIc2bD81/8LTu8uutNi5TtMjJSIH0nRpWH4mn+LMBIUuJOXEBCrV0/2ttg3d3WNY7DJF5AySxs6lJ623GHsb1nsBnYYkX9EQmXMIn0vOkBJxhw1RaPsVj5AJ/BOwaI+iY2BGOSTHI01aUMk3pRdk09GESGT/pMTu7hniJMLUtAl9dBbq+VHMrLVSC5Tpj8/9DBBFyqBX5ah5mHeS8vFuqcNfhE5OinLG9JeKXaHTfVFYLMjqpplTo+BW8N4hTsjUpx3ntjz39QepS6Dme4nbLmNzk2YI4143HEZGykAqOEyhBOJJrHFYA55d0zED2ULscg4VT5sCny9qgzA6uhFclF+kv9H/bqEg29DNWLs6kIy+OvLx+EmDYOXwS7wmoS6Z86SPwHGBaD2UfLvHLdsdrhFmzoyBPfeR7+g9318eKdnbIHPVCVqck4/UbLrLEcywVU9Dl0ayw64lC7P0KRO6xlWiZNSnRj7rwbl0r7YukD8txwTuQGi+04TKjkHsfJjR3Yq/O64Xapt9ipxZ+4w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR12MB4516.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(6506007)(53546011)(64756008)(83380400001)(66446008)(76116006)(66946007)(8936002)(7696005)(66556008)(8676002)(5660300002)(508600001)(2940100002)(86362001)(66476007)(122000001)(9686003)(110136005)(316002)(54906003)(2906002)(38100700002)(38070700005)(52536014)(26005)(186003)(55016003)(71200400001)(33656002)(4326008);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?slhACWv3dVL5pgR6l2clrHuGQEVTZBegy0AwoxO2oyLP6T95USqc0HnKFiLy?=
+ =?us-ascii?Q?JHVGMbnBwoY3GrgjaIcPzYVpOtErXOSHIQS00gJyA5cFwibG/0PkC8EIikIL?=
+ =?us-ascii?Q?nyNUlelFyIXFl45GSyeFjVp7g80ntVP4PK5UQScNx6JHJ9JYrkCbxdwSF/fh?=
+ =?us-ascii?Q?4SdkbVV1eBbxoOi/SdF7MK/zoASxGdw1V90wln5x6apOIPkzFd9nZp0nvH1m?=
+ =?us-ascii?Q?J1kxT8Lw8L3Rorz43926cPhsV5JuZ7LlLV3J2IPXZd6fjyKtfnSV8oiU1gnC?=
+ =?us-ascii?Q?mp+B8DFfIyC7B7DxObrYbTuKqNMbXfjTnYd9nk9ugtouirjM/pL8VY8CB6a4?=
+ =?us-ascii?Q?UT3FWEFBDb9LYxq1ZI6n8rfRJFHDqcHtbGW78oe7HppVoLN5c2JOHSddfikr?=
+ =?us-ascii?Q?zKUgqa/8XXnBVS0r0+K3j3QhQtZ1SD359+s5uMK3nqpJ6A8a8i60wrs3os73?=
+ =?us-ascii?Q?xsUJdQFrOP3NlPQrcmH3ZOr9LsIsLPjEjSGF6eHW+/1Hsv6eGTE/7FBTyrFv?=
+ =?us-ascii?Q?Ke5J9ReZNT6r7O5u8wkR1qWrpQEsYXyPbBFA2w5wcR2riP5Nio9IIeXn1FnJ?=
+ =?us-ascii?Q?C3GccriKSubTAmGADGAsK5vdvNqROyOPSSjwaIPtlmKuwzIrgCclLdGKpA70?=
+ =?us-ascii?Q?iGtveAxB93YQldy5rTaW/0/Nwy/COwSyiqXHH8aQV5+oM/B8Jbnau8LGNxDC?=
+ =?us-ascii?Q?CHKd3x4J7mONzqaJL9wZWUwGpNp/ZpGvHy6Szl4kHD3e/T449orcZ3xA+Hp8?=
+ =?us-ascii?Q?+SERgTqH7MO7HH4WtgRcZ2TjT0RkfLuGoIHZakCUADqkj2mUyfgYTyU79X94?=
+ =?us-ascii?Q?F3gI9vfj+mwvE+BYocSHeuqp0/wSRy5iDpsjxgu9TCrZ9zsGBJhXTsZaej00?=
+ =?us-ascii?Q?9xesLcNuk0/C4Uwck/Sd4XO5N3UXq6oZP9I8bNdO3Uh4L0/6VYiJmjPTTv+4?=
+ =?us-ascii?Q?Z/dzIeH8+J28Pi80heDOUoJU+Gk3I2JwTbbpyzvcLNeK+LCEqcuSrHdJjjRH?=
+ =?us-ascii?Q?xuEGA7fV/E44l3miyeCftlnK8BrTAT8Zm+1bsdOdWdgwNAhZ5qlOGni4msAF?=
+ =?us-ascii?Q?+wcGBUdzfsaCPve02qY4zcGRAp/UeYYuP0pSF47GCrbfHSswqX0H8EFQ0hex?=
+ =?us-ascii?Q?+eDSaMKy6Jhy5c0ksXfDfcjZcE3fz8WlnerLznS3K2SIM+W2i0ikBoE9qNU8?=
+ =?us-ascii?Q?j6IMZTpl7lGDKv3kYDf+Gt1guRZhOFXVw1rv2aG7iPJS5AnCTkU3CUlbqsps?=
+ =?us-ascii?Q?vn1RQ5hCFGDhTIOSZqwKeYlceudBd+pPjM1VqfOr0jdyWi9qg4ZzghxERV3x?=
+ =?us-ascii?Q?YPlNi37v5xgTsqohKhqx7bGkLIARSkBEN+Zcnof0hxTH9Bx09KC30aKjrw33?=
+ =?us-ascii?Q?oadOuAcXLIBW67a5bhbPdIWnVka6RsagcZQYdWmvKc/5VC5dd6l5c+SZ5RVT?=
+ =?us-ascii?Q?E/7UpG1w0u45Sm2COysbbUaNoy915UrcY7uSQBnDOKpRwPZansDeqMkPEk0Q?=
+ =?us-ascii?Q?eU1igGBl+CbVRkVigd9cC6MzkdHuSZImNE7hHSAD7B9xnWLU18/5hg8o88eF?=
+ =?us-ascii?Q?VvM3s144vFo5rGT9h/KNC5ucLZO9JDMTqSpfVUERi1VykyPRZbqhpmp7C8Fz?=
+ =?us-ascii?Q?YBRTMIjsMLHMQvhTqQzRxgw=3D?=
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 94/108]
- ice_gnss.c:undefined reference to `tty_buffer_request_room'
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB4516.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48384791-a90e-4fa6-e09f-08d9afe9d037
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2021 08:01:40.4701 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WxewlpWA9AXvABzZe55Ov2Q9g3Ta1r8Mx9PQ0TmTHb4m1ZWNzfIPVhXrrHJ+MZMQETdv34tSJxSMK9KZu0Vo9w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB3178
+Subject: Re: [Intel-wired-lan] [PATCH net v2] igb: fix netpoll exit with
+ traffic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,61 +141,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, kbuild-all@lists.01.org,
- linux-kernel@vger.kernel.org,
- Sudhansu Sekhar Mishra <sudhansu.mishra@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Oleksandr Natalenko <oleksandr@natalenko.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-head:   1bc0d12c31e7e35dcb167e62c8bcde3c7c09d95d
-commit: d837bf714865bcefbf83c3f4e7b886a50ecda8b1 [94/108] ice: add TTY for GNSS module for E810T device
-config: arm64-buildonly-randconfig-r003-20211125 (https://download.01.org/0day-ci/archive/20211125/202111251527.xSdxs2Xm-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=d837bf714865bcefbf83c3f4e7b886a50ecda8b1
-        git remote add tnguy-next-queue https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
-        git fetch --no-tags tnguy-next-queue dev-queue
-        git checkout d837bf714865bcefbf83c3f4e7b886a50ecda8b1
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm64 SHELL=/bin/bash
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
 
-All errors (new ones prefixed by >>):
+> -----Original Message-----
+> From: Danielle Ratson
+> Sent: Thursday, November 25, 2021 9:37 AM
+> To: Jesse Brandeburg <jesse.brandeburg@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Oleksandr Natalenko
+> <oleksandr@natalenko.name>; Alexander Duyck
+> <alexander.duyck@gmail.com>
+> Subject: RE: [PATCH net v2] igb: fix netpoll exit with traffic
+> 
+> 
+> 
+> > -----Original Message-----
+> > From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> > Sent: Tuesday, November 23, 2021 10:40 PM
+> > To: intel-wired-lan@lists.osuosl.org
+> > Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>;
+> > netdev@vger.kernel.org; Oleksandr Natalenko
+> > <oleksandr@natalenko.name>; Danielle Ratson <danieller@nvidia.com>;
+> > Alexander Duyck <alexander.duyck@gmail.com>
+> > Subject: [PATCH net v2] igb: fix netpoll exit with traffic
+> >
+> > Oleksandr brought a bug report where netpoll causes trace messages in
+> > the log on igb.
+> >
+> > Danielle brought this back up as still occuring, so we'll try again.
+> >
+> > [22038.710800] ------------[ cut here ]------------ [22038.710801]
+> > igb_poll+0x0/0x1440 [igb] exceeded budget in poll [22038.710802]
+> > WARNING: CPU: 12 PID: 40362 at net/core/netpoll.c:155
+> > netpoll_poll_dev+0x18a/0x1a0
+> >
+> > As Alex suggested, change the driver to return work_done at the exit
+> > of napi_poll, which should be safe to do in this driver because it is
+> > not polling multiple queues in this single napi context (multiple
+> > queues attached to one MSI-X vector). Several other drivers contain
+> > the same simple sequence, so I hope this will not create new problems.
+> >
+> > Fixes: 16eb8815c235 ("igb: Refactor clean_rx_irq to reduce overhead
+> > and improve performance")
+> > Reported-by: Oleksandr Natalenko <oleksandr@natalenko.name>
+> > Reported-by: Danielle Ratson <danieller@nvidia.com>
+> > Suggested-by: Alexander Duyck <alexander.duyck@gmail.com>
+> > Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> > ---
+> > COMPILE TESTED ONLY! I have no way to reproduce this even on a machine
+> > I have with igb. It works fine to load the igb driver and netconsole
+> > with no errors.
+> > ---
+> > v2: simplified patch with an attempt to make it work
+> > v1: original patch that apparently didn't work
+> > ---
+> >  drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
+> > b/drivers/net/ethernet/intel/igb/igb_main.c
+> > index e647cc89c239..5e24b7ce5a92 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > @@ -8104,7 +8104,7 @@ static int igb_poll(struct napi_struct *napi,
+> > int
+> > budget)
+> >  	if (likely(napi_complete_done(napi, work_done)))
+> >  		igb_ring_irq_enable(q_vector);
+> >
+> > -	return min(work_done, budget - 1);
+> > +	return work_done;
+> >  }
+> >
+> >  /**
+> > --
+> > 2.33.1
+> 
+> Tested and looks ok, thanks!
 
-   aarch64-linux-ld: Unexpected GOT/PLT entries detected!
-   aarch64-linux-ld: Unexpected run-time procedure linkages detected!
-   aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_gnss.o: in function `ice_gnss_read':
->> ice_gnss.c:(.text+0x204): undefined reference to `tty_buffer_request_room'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x270): undefined reference to `tty_insert_flip_string_fixed_flag'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x278): undefined reference to `tty_flip_buffer_push'
-   aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_gnss.o: in function `ice_gnss_create_tty_driver':
->> ice_gnss.c:(.text+0x300): undefined reference to `__tty_alloc_driver'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x3c0): undefined reference to `tty_std_termios'
-   aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_gnss.o: relocation R_AARCH64_ADR_PREL_PG_HI21 against symbol `tty_std_termios' which may bind externally can not be used when making a shared object; recompile with -fPIC
-   ice_gnss.c:(.text+0x3c0): dangerous relocation: unsupported relocation
-   aarch64-linux-ld: ice_gnss.c:(.text+0x3c4): undefined reference to `tty_std_termios'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x488): undefined reference to `tty_termios_encode_baud_rate'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x4b4): undefined reference to `tty_port_init'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x4c4): undefined reference to `tty_port_link_device'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x4cc): undefined reference to `tty_register_driver'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x4d8): undefined reference to `tty_port_destroy'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x4f4): undefined reference to `tty_driver_kref_put'
-   aarch64-linux-ld: drivers/net/ethernet/intel/ice/ice_gnss.o: in function `ice_gnss_exit':
->> ice_gnss.c:(.text+0x7b4): undefined reference to `tty_port_destroy'
->> aarch64-linux-ld: ice_gnss.c:(.text+0x7f0): undefined reference to `tty_unregister_driver'
-   aarch64-linux-ld: ice_gnss.c:(.text+0x81c): undefined reference to `tty_driver_kref_put'
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Tested-By: Danielle Ratson <danieller@nvidia.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
