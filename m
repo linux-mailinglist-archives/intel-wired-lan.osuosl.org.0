@@ -1,134 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6539845D5EB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Nov 2021 09:01:52 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A746945D6A6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Nov 2021 10:02:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F1EA8605FA;
-	Thu, 25 Nov 2021 08:01:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22F54408D3;
+	Thu, 25 Nov 2021 09:02:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kpuWopHDIJyR; Thu, 25 Nov 2021 08:01:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZLl7J5_wpQnQ; Thu, 25 Nov 2021 09:02:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BDA6A608D3;
-	Thu, 25 Nov 2021 08:01:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E0AA0408CF;
+	Thu, 25 Nov 2021 09:02:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EBB0C1BF36C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 609371BF33B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 09:02:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D8F274019B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 43081408CF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 09:02:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=nvidia.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oRHwhR99fGNr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Nov 2021 08:01:42 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com
- (mail-dm3nam07on2078.outbound.protection.outlook.com [40.107.95.78])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 165AA40018
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 08:01:41 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=h26hYrB1spGqOtfPbPYzpZ7BTj373GbrcaZR+HJ3lVafqdRRlH5wsEGUDjZTjoYuM7Z8vJ6Pul+Mhyxjnn+TaDWW2ez+PPMxKYpQJw+0rb+moTdkttpRFe8D8sSW/Lz0ImOZbqCkZ3yRGo/PYrZ6FG+wq3enPR40LjV8Z+JehDy/1mpawQaicpelxjVWP9UsJXr0n3vI+ouf690Tb3e5K7tFwvhEjCVGIf0rWZEDQ+uMQrtm36z5Cg+FTJWKlVUob6Dq1HRiK07cxpAbfmC4t3e+nZKQ/bWJc/dcOk+Vnk5pAA51Conr+7phQSxUj3T15fI2+lRYSmTV2yvJppmr2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6XuQwlqgYdyOD6F+14rbnImSH4sx7ixxpMoB99UyAkM=;
- b=SrYA/O49K3/KzO2t5Mes+OaOhVYtkC75lU4K1uv8XKEMj2vQ5MpY9n3zpZLa9Uq6i0K8TUYq0lJyOgk4xP/LJjzHPIeyer7UGW2etzp62aEjY2u9L7czhh64pEl/nMuorHA7F/dZTt3Kkxf7q3gSkXHAHJDLaKzO5K7Wem5wPrVgPwpPe2BsftkDNVO5alcy6ItHqwi2Bu0EVBCdIE8KSKhikZzcBSXrVVDMnNZHKnnhSEh9zx8oaAitSyEtndcjsYZTTwI48Kc3KyFEg0jXzDYkQxzKDJHZdrP0Y8blD9oszEhZYAg8gRCcR3JURo3/fUwD9ujQf6eFytIEdQnv8g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6XuQwlqgYdyOD6F+14rbnImSH4sx7ixxpMoB99UyAkM=;
- b=kkduJs70n3FPqqQSMDl+wEvYOTUEvvxmDpl3Br8Ag9qK3mrwq8wDgcscHS4idN7O6neZrlWrdFwvNkywrf/iXx2joS9LDxvgnTmOOy47e55Muz9HCKwvtmBi32dhSIj/anIuum0by+jViXCkQHYZQoOEGf0Rgg6O0DYhByAGiCb4IKib/SAoAT9P4qj2I3ftuzeG9If/QQsJUX5jIX2/p5hNDOHzYt/kN8Ls38WyGYIEtO60iWfahDxyQLGs5SCSd3YyP23nu+DWa/OOg7BA4wA5wwqWYLhf+2rmEMJNpvrKO3lrGw+TC1EwEcX1JHnjL93FfxfA6m6hCLX7dzZz6Q==
-Received: from DM6PR12MB4516.namprd12.prod.outlook.com (2603:10b6:5:2ac::20)
- by DM6PR12MB3178.namprd12.prod.outlook.com (2603:10b6:5:18d::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.20; Thu, 25 Nov
- 2021 08:01:40 +0000
-Received: from DM6PR12MB4516.namprd12.prod.outlook.com
- ([fe80::a5c1:7bee:503f:e0d0]) by DM6PR12MB4516.namprd12.prod.outlook.com
- ([fe80::a5c1:7bee:503f:e0d0%8]) with mapi id 15.20.4734.021; Thu, 25 Nov 2021
- 08:01:40 +0000
-From: Danielle Ratson <danieller@nvidia.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH net v2] igb: fix netpoll exit with traffic
-Thread-Index: AQHX4KpS8IRO8CTaPUObrYaieVzqnKwT3RWAgAAGp1A=
-Date: Thu, 25 Nov 2021 08:01:40 +0000
-Message-ID: <DM6PR12MB4516B65E19B294524570296FD8629@DM6PR12MB4516.namprd12.prod.outlook.com>
-References: <20211123204000.1597971-1-jesse.brandeburg@intel.com>
- <DM6PR12MB451662EC02B77D17A9C27473D8629@DM6PR12MB4516.namprd12.prod.outlook.com>
-In-Reply-To: <DM6PR12MB451662EC02B77D17A9C27473D8629@DM6PR12MB4516.namprd12.prod.outlook.com>
-Accept-Language: he-IL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 48384791-a90e-4fa6-e09f-08d9afe9d037
-x-ms-traffictypediagnostic: DM6PR12MB3178:
-x-microsoft-antispam-prvs: <DM6PR12MB3178D3C1A35A81446B1A655DD8629@DM6PR12MB3178.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: O+puwaVpb7Q78jMhONySFoTzCd4IqrHCoEVW+r1vRmFyPH+4exubCDdTNgvJ9qVW6qi11MsTAew5953fbv+JiNuNuy/DkLOTd/mMRSNVoiIjfxwBlTClfO6/apS9RWku2ZNIlne1MHbeNUES8AiPjqiAtzT51Hzsmn7PoU1JXFDnSOa7U6QagG73pU3ryfjUfg6ZIc2bD81/8LTu8uutNi5TtMjJSIH0nRpWH4mn+LMBIUuJOXEBCrV0/2ttg3d3WNY7DJF5AySxs6lJ623GHsb1nsBnYYkX9EQmXMIn0vOkBJxhw1RaPsVj5AJ/BOwaI+iY2BGOSTHI01aUMk3pRdk09GESGT/pMTu7hniJMLUtAl9dBbq+VHMrLVSC5Tpj8/9DBBFyqBX5ah5mHeS8vFuqcNfhE5OinLG9JeKXaHTfVFYLMjqpplTo+BW8N4hTsjUpx3ntjz39QepS6Dme4nbLmNzk2YI4143HEZGykAqOEyhBOJJrHFYA55d0zED2ULscg4VT5sCny9qgzA6uhFclF+kv9H/bqEg29DNWLs6kIy+OvLx+EmDYOXwS7wmoS6Z86SPwHGBaD2UfLvHLdsdrhFmzoyBPfeR7+g9318eKdnbIHPVCVqck4/UbLrLEcywVU9Dl0ayw64lC7P0KRO6xlWiZNSnRj7rwbl0r7YukD8txwTuQGi+04TKjkHsfJjR3Yq/O64Xapt9ipxZ+4w==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR12MB4516.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(6506007)(53546011)(64756008)(83380400001)(66446008)(76116006)(66946007)(8936002)(7696005)(66556008)(8676002)(5660300002)(508600001)(2940100002)(86362001)(66476007)(122000001)(9686003)(110136005)(316002)(54906003)(2906002)(38100700002)(38070700005)(52536014)(26005)(186003)(55016003)(71200400001)(33656002)(4326008);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?slhACWv3dVL5pgR6l2clrHuGQEVTZBegy0AwoxO2oyLP6T95USqc0HnKFiLy?=
- =?us-ascii?Q?JHVGMbnBwoY3GrgjaIcPzYVpOtErXOSHIQS00gJyA5cFwibG/0PkC8EIikIL?=
- =?us-ascii?Q?nyNUlelFyIXFl45GSyeFjVp7g80ntVP4PK5UQScNx6JHJ9JYrkCbxdwSF/fh?=
- =?us-ascii?Q?4SdkbVV1eBbxoOi/SdF7MK/zoASxGdw1V90wln5x6apOIPkzFd9nZp0nvH1m?=
- =?us-ascii?Q?J1kxT8Lw8L3Rorz43926cPhsV5JuZ7LlLV3J2IPXZd6fjyKtfnSV8oiU1gnC?=
- =?us-ascii?Q?mp+B8DFfIyC7B7DxObrYbTuKqNMbXfjTnYd9nk9ugtouirjM/pL8VY8CB6a4?=
- =?us-ascii?Q?UT3FWEFBDb9LYxq1ZI6n8rfRJFHDqcHtbGW78oe7HppVoLN5c2JOHSddfikr?=
- =?us-ascii?Q?zKUgqa/8XXnBVS0r0+K3j3QhQtZ1SD359+s5uMK3nqpJ6A8a8i60wrs3os73?=
- =?us-ascii?Q?xsUJdQFrOP3NlPQrcmH3ZOr9LsIsLPjEjSGF6eHW+/1Hsv6eGTE/7FBTyrFv?=
- =?us-ascii?Q?Ke5J9ReZNT6r7O5u8wkR1qWrpQEsYXyPbBFA2w5wcR2riP5Nio9IIeXn1FnJ?=
- =?us-ascii?Q?C3GccriKSubTAmGADGAsK5vdvNqROyOPSSjwaIPtlmKuwzIrgCclLdGKpA70?=
- =?us-ascii?Q?iGtveAxB93YQldy5rTaW/0/Nwy/COwSyiqXHH8aQV5+oM/B8Jbnau8LGNxDC?=
- =?us-ascii?Q?CHKd3x4J7mONzqaJL9wZWUwGpNp/ZpGvHy6Szl4kHD3e/T449orcZ3xA+Hp8?=
- =?us-ascii?Q?+SERgTqH7MO7HH4WtgRcZ2TjT0RkfLuGoIHZakCUADqkj2mUyfgYTyU79X94?=
- =?us-ascii?Q?F3gI9vfj+mwvE+BYocSHeuqp0/wSRy5iDpsjxgu9TCrZ9zsGBJhXTsZaej00?=
- =?us-ascii?Q?9xesLcNuk0/C4Uwck/Sd4XO5N3UXq6oZP9I8bNdO3Uh4L0/6VYiJmjPTTv+4?=
- =?us-ascii?Q?Z/dzIeH8+J28Pi80heDOUoJU+Gk3I2JwTbbpyzvcLNeK+LCEqcuSrHdJjjRH?=
- =?us-ascii?Q?xuEGA7fV/E44l3miyeCftlnK8BrTAT8Zm+1bsdOdWdgwNAhZ5qlOGni4msAF?=
- =?us-ascii?Q?+wcGBUdzfsaCPve02qY4zcGRAp/UeYYuP0pSF47GCrbfHSswqX0H8EFQ0hex?=
- =?us-ascii?Q?+eDSaMKy6Jhy5c0ksXfDfcjZcE3fz8WlnerLznS3K2SIM+W2i0ikBoE9qNU8?=
- =?us-ascii?Q?j6IMZTpl7lGDKv3kYDf+Gt1guRZhOFXVw1rv2aG7iPJS5AnCTkU3CUlbqsps?=
- =?us-ascii?Q?vn1RQ5hCFGDhTIOSZqwKeYlceudBd+pPjM1VqfOr0jdyWi9qg4ZzghxERV3x?=
- =?us-ascii?Q?YPlNi37v5xgTsqohKhqx7bGkLIARSkBEN+Zcnof0hxTH9Bx09KC30aKjrw33?=
- =?us-ascii?Q?oadOuAcXLIBW67a5bhbPdIWnVka6RsagcZQYdWmvKc/5VC5dd6l5c+SZ5RVT?=
- =?us-ascii?Q?E/7UpG1w0u45Sm2COysbbUaNoy915UrcY7uSQBnDOKpRwPZansDeqMkPEk0Q?=
- =?us-ascii?Q?eU1igGBl+CbVRkVigd9cC6MzkdHuSZImNE7hHSAD7B9xnWLU18/5hg8o88eF?=
- =?us-ascii?Q?VvM3s144vFo5rGT9h/KNC5ucLZO9JDMTqSpfVUERi1VykyPRZbqhpmp7C8Fz?=
- =?us-ascii?Q?YBRTMIjsMLHMQvhTqQzRxgw=3D?=
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FX-ETaNztWGG for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Nov 2021 09:02:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 56438408CD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Nov 2021 09:02:25 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 466C660E0B;
+ Thu, 25 Nov 2021 09:02:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637830944;
+ bh=V0wRQBAcYmUdNiotf98WOmDxtsRPBnPWu1gQjB+IIbU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=bTdWouWhrEHIX0DJQfJ9Jq7H74xB2MJMqDskA9RDtR+oIrDO7mb5bsO16af1I4wUC
+ 6Ct+YxcfkeHNRsZuvc9ACSEzq7IQPIB/3eFvowh/Et4z1a3VPLRHrAf9V4fZuOEPIC
+ ro6wcuNR04ImwOJNWigPT2lXmqWZuMaqipH7OzzrG4tnj23qMRUfIZIkq75BFW1Ktw
+ tr+l02VmKD754YsjNDWHhmJ6GchO2yNeUjC9XhXHV2j5pxtSVbSNERPdlJIymhVQLO
+ zqXaROjyy8oaLgnYFrA8M2Uj+f1G+/tZGxqYvOidPIUvbM1ShQmlFo+Sn5lIoizFIN
+ QEK+QQ7Zs+HpA==
+Date: Thu, 25 Nov 2021 11:02:21 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <YZ9RHX8CbIMbP55t@unreal>
+References: <6176a137a4ded48501e8a06fda0e305f9cfc787c.1637173517.git.leonro@nvidia.com>
+ <20211117204956.6a36963b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZYFvIK9mkP107tD@unreal>
+ <20211118174813.54c3731f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZfFDSnnjOG+wSyK@unreal>
+ <20211119081017.6676843b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZoHGKqLz6UBk2Sx@unreal>
+ <20211122182728.370889f2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <YZynSa6s8kBKtSYB@unreal>
+ <20211123153312.4eecb490@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB4516.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 48384791-a90e-4fa6-e09f-08d9afe9d037
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2021 08:01:40.4701 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WxewlpWA9AXvABzZe55Ov2Q9g3Ta1r8Mx9PQ0TmTHb4m1ZWNzfIPVhXrrHJ+MZMQETdv34tSJxSMK9KZu0Vo9w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB3178
-Subject: Re: [Intel-wired-lan] [PATCH net v2] igb: fix netpoll exit with
- traffic
+Content-Disposition: inline
+In-Reply-To: <20211123153312.4eecb490@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next 5/6] devlink: Reshuffle
+ resource registration logic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,92 +74,128 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Oleksandr Natalenko <oleksandr@natalenko.name>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Simon Horman <simon.horman@corigine.com>, oss-drivers@corigine.com,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, drivers@pensando.io,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-rdma@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Ido Schimmel <idosch@nvidia.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Jiri Pirko <jiri@nvidia.com>,
+ Michael Chan <michael.chan@broadcom.com>, Aya Levin <ayal@mellanox.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tariq Toukan <tariqt@nvidia.com>, UNGLinuxDriver@microchip.com,
+ Taras Chornyi <tchornyi@marvell.com>, Shannon Nelson <snelson@pensando.io>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, Nov 23, 2021 at 03:33:12PM -0800, Jakub Kicinski wrote:
+> On Tue, 23 Nov 2021 10:33:13 +0200 Leon Romanovsky wrote:
+> > > > You can do it with my approach too. We incremented reference counter
+> > > > of devlink instance when devlink_nl_cmd_port_split_doit() was called,
+> > > > and we can safely take devlink->port_list_lock lock before returning
+> > > > from pre_doit.  
+> > > 
+> > > Wait, I thought you'd hold devlink->lock around split/unsplit.  
+> > 
+> > I'm holding.
+> > 
+> >     519 static int devlink_nl_pre_doit(const struct genl_ops *ops,
+> >     520                                struct sk_buff *skb, struct genl_info *info)
+> >     521 {
+> >     ...
+> >     529
+> >     530         mutex_lock(&devlink->lock);
+> 
+> Then I'm confused why you said you need to hold a ref count on devlink.
 
+This was an example to your sentence "I can start passing a pointer
+to a devlink_port to split/unsplit functions, which is a great improvement
+to the devlink driver API."
+https://lore.kernel.org/all/20211119081017.6676843b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com/
 
-> -----Original Message-----
-> From: Danielle Ratson
-> Sent: Thursday, November 25, 2021 9:37 AM
-> To: Jesse Brandeburg <jesse.brandeburg@intel.com>; intel-wired-
-> lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; Oleksandr Natalenko
-> <oleksandr@natalenko.name>; Alexander Duyck
-> <alexander.duyck@gmail.com>
-> Subject: RE: [PATCH net v2] igb: fix netpoll exit with traffic
-> 
-> 
-> 
-> > -----Original Message-----
-> > From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> > Sent: Tuesday, November 23, 2021 10:40 PM
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>;
-> > netdev@vger.kernel.org; Oleksandr Natalenko
-> > <oleksandr@natalenko.name>; Danielle Ratson <danieller@nvidia.com>;
-> > Alexander Duyck <alexander.duyck@gmail.com>
-> > Subject: [PATCH net v2] igb: fix netpoll exit with traffic
-> >
-> > Oleksandr brought a bug report where netpoll causes trace messages in
-> > the log on igb.
-> >
-> > Danielle brought this back up as still occuring, so we'll try again.
-> >
-> > [22038.710800] ------------[ cut here ]------------ [22038.710801]
-> > igb_poll+0x0/0x1440 [igb] exceeded budget in poll [22038.710802]
-> > WARNING: CPU: 12 PID: 40362 at net/core/netpoll.c:155
-> > netpoll_poll_dev+0x18a/0x1a0
-> >
-> > As Alex suggested, change the driver to return work_done at the exit
-> > of napi_poll, which should be safe to do in this driver because it is
-> > not polling multiple queues in this single napi context (multiple
-> > queues attached to one MSI-X vector). Several other drivers contain
-> > the same simple sequence, so I hope this will not create new problems.
-> >
-> > Fixes: 16eb8815c235 ("igb: Refactor clean_rx_irq to reduce overhead
-> > and improve performance")
-> > Reported-by: Oleksandr Natalenko <oleksandr@natalenko.name>
-> > Reported-by: Danielle Ratson <danieller@nvidia.com>
-> > Suggested-by: Alexander Duyck <alexander.duyck@gmail.com>
-> > Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> > ---
-> > COMPILE TESTED ONLY! I have no way to reproduce this even on a machine
-> > I have with igb. It works fine to load the igb driver and netconsole
-> > with no errors.
-> > ---
-> > v2: simplified patch with an attempt to make it work
-> > v1: original patch that apparently didn't work
-> > ---
-> >  drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
-> > b/drivers/net/ethernet/intel/igb/igb_main.c
-> > index e647cc89c239..5e24b7ce5a92 100644
-> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> > @@ -8104,7 +8104,7 @@ static int igb_poll(struct napi_struct *napi,
-> > int
-> > budget)
-> >  	if (likely(napi_complete_done(napi, work_done)))
-> >  		igb_ring_irq_enable(q_vector);
-> >
-> > -	return min(work_done, budget - 1);
-> > +	return work_done;
-> >  }
-> >
-> >  /**
-> > --
-> > 2.33.1
-> 
-> Tested and looks ok, thanks!
+In my view, it is complete over-engineering and not needed at all. In
+current driver model, you can pass devlink_port pointer pretty safely
+without worries that "->devlink" disappear.
 
-Tested-By: Danielle Ratson <danieller@nvidia.com>
+> Is it devlink_unregister() that's not taking devlink->lock?
+
+Maybe, but my rationale for devlink_get in my example was slightly different.
+We need to use it when the ->devlink structure and sub-object are
+managed completely independent with different lifetimes and sub-object
+can over-live the devlink structure.
+
+All devlink_*_register() calls require valid devlink structure, so as I
+wrote above, devlink_get is not needed really needed.
+
+However you used that example so many times that I started to fear that
+I'm missing something very basic.
+
+> 
+> > > Please look at the port splitting case, mlx5 doesn't implement it
+> > > but it's an important feature.  
+> > 
+> > I'll, but please don't forget that it was RFC, just to present that
+> > devlink can be changed internally without exposing internals.
+> > 
+> > > Either way, IDK how ref count on devlink helps with lifetime of a
+> > > subobject. You must assume the sub-objects can only be created outside
+> > > of the time devlink instance is visible or under devlink->lock?  
+> > 
+> > The devlink lifetime is:
+> > stages:        I                   II                   III   
+> >  devlink_alloc -> devlink_register -> devlink_unregister -> devlink_free.
+> > 
+> > All sub-objects should be created between devlink_alloc and devlink_free.
+> > It will ensure that ->devlink pointer is always valid.
+> > 
+> > Stage I:
+> >  * There is no need to hold any devlink locks or increase reference counter.
+> >    If driver doesn't do anything crazy during its init, nothing in devlink
+> >    land will run in parallel. 
+> > Stage II:
+> >  * There is a need to hold devlink->lock and/or play with reference counter
+> >    and/or use fine-grained locks. Users can issue "devlink ..." commands.
+> 
+> So sub-objects can (dis)appear only in I/III or under devlink->lock.
+> Why did you add the per-sub object list locks, then?
+
+There are number of reasons and not all of them are technical.
+
+I wanted to do that, my initial plan was to cleanly separate user-visible
+API vs. in-kernel API and use one lock or no locks at all.
+
+But at some point of time, I recalculated my path, when I saw that
+I'm failing to explain even simple devlink lifetime model, together
+with warm feedback from the community and need to have this patch:
+
+[RFC PATCH 14/16] devlink: Require devlink lock during device reload
+https://lore.kernel.org/netdev/ad7f5f275bcda1ee058d7bd3020b7d85cd44b9f6.1636390483.git.leonro@nvidia.com/
+
+That patch is super-important in the devlink_reload puzzle, it closes the hack
+used in devlink_reload flow to allow to call to same devlink_*_register() calls
+without taking devlink->lock, so they can take it. In order to do it, I
+used list locks, because only for this that devlink->lock was needed in
+these calls.
+
+However, there is a way to avoid list locks. It can be achieved if we start
+to manage devlink state machine (at least for reload) internally and add
+something like that in devlink_*_register() calls:
+
+ if (devlink->not_in_reload)
+    mutex_lock(&devlink->lock);
+
+It doesn't look nice, and invites immediate question: "why don't we
+provide two APIs? locked and unlocked? Locked for reload, and unlocked
+for all other parts". Unfortunately, this will require major changes in
+the drivers and in offline conversation I was told "do whatever you need
+in devlink as long as it doesn't require change in the driver, we want
+same drver flow for probe and reload.".
+
+Thanks
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
