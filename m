@@ -2,61 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077C7461D40
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Nov 2021 19:00:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65CE9461D65
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Nov 2021 19:13:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8878760754;
-	Mon, 29 Nov 2021 17:59:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E49360A80;
+	Mon, 29 Nov 2021 18:13:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9HhJNQk4OwgQ; Mon, 29 Nov 2021 17:59:58 +0000 (UTC)
+	with ESMTP id TSo5A_QIDcDp; Mon, 29 Nov 2021 18:13:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7D14A60747;
-	Mon, 29 Nov 2021 17:59:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ED86C60A50;
+	Mon, 29 Nov 2021 18:13:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 961B31BF267
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 17:59:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 653AA1BF29D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 18:13:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 916F560747
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 17:59:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4F41840119
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 18:13:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XSLhtaJKvV0B for <intel-wired-lan@lists.osuosl.org>;
- Mon, 29 Nov 2021 17:59:54 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D3B136064A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 17:59:53 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 64887CE13A6;
- Mon, 29 Nov 2021 17:59:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64B30C53FAD;
- Mon, 29 Nov 2021 17:59:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638208789;
- bh=pumOr14SEPuRBt4uFWVYENXsSXCvMX8ziKVxmo5xBfQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ljWYAYQP39OtkEqvelwN4RGRumXcn8bIzjhIhdrQWo9PFETfjQSWyyqPfuOgwinsg
- 9RP2UD47S6P7EKbs7jVKEK9qo6B5kv6dPTco8vxVzjxmOFtcxmvv+0mbfEY/panLQ8
- tqg5agUhFatdwcgdpgvDu216qnVXXNWhlJ9f7f0PKC2c86FzdxUdAGFgkSMRLdKFhw
- OThRoaFL7/SE/xchi0tb+OXUaIFkqUQelCZoUi5aS1gyta3c1G5CA5FZGx0bbDX5d9
- doAtTFnUzv4ZPDTznPoRwqkAo49BiIWzyvnPruavGyeSVqPoZzjEmhc8CQE1zYEfTV
- KnEjlTfwtbwZQ==
-Date: Mon, 29 Nov 2021 09:59:47 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Hayes Wang <hayeswang@realtek.com>
-Message-ID: <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20211129101315.16372-381-nic_swsd@realtek.com>
-References: <20211129101315.16372-381-nic_swsd@realtek.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YLH2hK1nSxOH for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 29 Nov 2021 18:13:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 44D4C400DA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Nov 2021 18:13:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10183"; a="235865540"
+X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; d="scan'208";a="235865540"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Nov 2021 10:13:28 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; d="scan'208";a="743825853"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga006.fm.intel.com with ESMTP; 29 Nov 2021 10:13:25 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 1ATIDNO5018018; Mon, 29 Nov 2021 18:13:24 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Date: Mon, 29 Nov 2021 19:13:20 +0100
+Message-Id: <20211129181320.579477-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20211129145303.10507-1-alexandr.lobakin@intel.com>
+References: <163700856423.565980.10162564921347693758.stgit@firesoul>
+ <163700859087.565980.3578855072170209153.stgit@firesoul>
+ <20211126161649.151100-1-alexandr.lobakin@intel.com>
+ <6de05aea-9cf4-c938-eff2-9e3b138512a4@redhat.com>
+ <20211129145303.10507-1-alexandr.lobakin@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] igc: enable XDP metadata
+ in driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +70,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, nic_swsd@realtek.com,
- intel-wired-lan@lists.osuosl.org, hkallweit1@gmail.com
+Cc: intel-wired-lan@lists.osuosl.org, bjorn@kernel.org, netdev@vger.kernel.org,
+ brouer@redhat.com, Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ Daniel Borkmann <borkmann@iogearbox.net>,
+ "David S. Miller" <davem@davemloft.net>, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 29 Nov 2021 18:13:11 +0800 Hayes Wang wrote:
-> These patches are used to support dash for RTL8111EP and
-> RTL8111FP(RTL81117).
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+Date: Mon, 29 Nov 2021 15:53:03 +0100
 
-If I understand correctly DASH is a DMTF standard for remote control.
+> From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+> Date: Mon, 29 Nov 2021 15:39:04 +0100
+> 
+> > On 26/11/2021 17.16, Alexander Lobakin wrote:
+> > > From: Jesper Dangaard Brouer <brouer@redhat.com>
+> > > Date: Mon, 15 Nov 2021 21:36:30 +0100
+> > > 
+> > >> Enabling the XDP bpf_prog access to data_meta area is a very small
+> > >> change. Hint passing 'true' to xdp_prepare_buff().
 
-Since it's a standard I think we should have a common way of
-configuring it across drivers. Is enable/disable the only configuration
-that we will need?
+[ snip ]
 
-We don't use sysfs too much these days, can we move the knob to
-devlink, please? (If we only need an on/off switch generic devlink param
-should be fine).
+> > Prefetch works for "full" cachelines. Intel CPUs often prefect two 
+> > cache-lines, when doing this, thus I guess we still get xdp->data.
+> 
+> Sure. I mean, net_prefetch() prefetches 128 bytes in a row.
+> xdp->data is usually aligned to XDP_PACKET_HEADROOM (or two bytes
+> to the right). If our CL is 64 and the meta is present, then... ah
+> right, 64 to the left and 64 starting from data to the right.
+> 
+> > I don't mind prefetching xdp->data_meta, but (1) I tried to keep the 
+> > change minimal as current behavior was data area I kept that. (2) 
+> > xdp->data starts on a cacheline and we know NIC hardware have touched 
+> > that, it is not a full-cache-miss due to DDIO/DCA it is known to be in 
+> > L3 cache (gain is around 2-3 ns in my machine for data prefetch).
+> > Given this is only a 2.5 Gbit/s driver/HW I doubt this make any difference.
+> 
+> Code constistency at least. On 10+ Gbps we prefetch meta, and I plan
+> to continue doing this in my series.
+> 
+> > Tony is it worth resending a V2 of this patch?
+> 
+> Tony, you can take it as it is if you want, I'll correct it later in
+> mine. Up to you.
+
+My "fixup" looks like (in case of v2 needed or so):
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index b516f1b301b4..142c57b7a451 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1726,7 +1726,7 @@ static struct sk_buff *igc_build_skb(struct igc_ring *rx_ring,
+ 	struct sk_buff *skb;
+ 
+ 	/* prefetch first cache line of first page */
+-	net_prefetch(xdp->data);
++	net_prefetch(xdp->data_meta);
+ 
+ 	/* build an skb around the page buffer */
+ 	skb = build_skb(xdp->data_hard_start, truesize);
+@@ -1756,10 +1756,11 @@ static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
+ 	struct sk_buff *skb;
+ 
+ 	/* prefetch first cache line of first page */
+-	net_prefetch(va);
++	net_prefetch(xdp->data_meta);
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = napi_alloc_skb(&rx_ring->q_vector->napi, IGC_RX_HDR_LEN + metasize);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi,
++			     IGC_RX_HDR_LEN + metasize);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+@@ -2363,7 +2364,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		if (!skb) {
+ 			xdp_init_buff(&xdp, truesize, &rx_ring->xdp_rxq);
+ 			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
+-					 igc_rx_offset(rx_ring) + pkt_offset, size, true);
++					 igc_rx_offset(rx_ring) + pkt_offset,
++					 size, true);
+ 
+ 			skb = igc_xdp_run_prog(adapter, &xdp);
+ 		}
+
+> Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+> 
+> > >>   
+> > >>   	/* build an skb around the page buffer */
+> > >> -	skb = build_skb(va - IGC_SKB_PAD, truesize);
+> > >> +	skb = build_skb(xdp->data_hard_start, truesize);
+> > >>   	if (unlikely(!skb))
+> > >>   		return NULL;
+> > >>   
+> > >>   	/* update pointers within the skb to store the data */
+> > >> -	skb_reserve(skb, IGC_SKB_PAD);
+> > >> +	skb_reserve(skb, xdp->data - xdp->data_hard_start);
+> > >>   	__skb_put(skb, size);
+> > >> +	if (metasize)
+> > >> +		skb_metadata_set(skb, metasize);
+> > >>   
+> > >>   	igc_rx_buffer_flip(rx_buffer, truesize);
+> > >>   	return skb;
+> > >> @@ -1746,6 +1748,7 @@ static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
+> > >>   					 struct xdp_buff *xdp,
+> > >>   					 ktime_t timestamp)
+> > >>   {
+> > >> +	unsigned int metasize = xdp->data - xdp->data_meta;
+> > >>   	unsigned int size = xdp->data_end - xdp->data;
+> > >>   	unsigned int truesize = igc_get_rx_frame_truesize(rx_ring, size);
+> > >>   	void *va = xdp->data;
+> > >> @@ -1756,7 +1759,7 @@ static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
+> > >>   	net_prefetch(va);
+> > > 
+> > > ...here as well.
+> > >
+> 
+> Thanks,
+> Al
+
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
