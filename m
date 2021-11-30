@@ -1,53 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 146E74643A5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 00:53:47 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE2944643A1
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 00:53:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 851FD60635;
-	Tue, 30 Nov 2021 23:53:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 09A0240921;
+	Tue, 30 Nov 2021 23:53:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yjg5iz1x_IiT; Tue, 30 Nov 2021 23:53:44 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 18Bko3xSok0l; Tue, 30 Nov 2021 23:53:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3F04C60619;
-	Tue, 30 Nov 2021 23:53:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DDBDB40908;
+	Tue, 30 Nov 2021 23:53:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 445CC1BF995
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F261B1BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A1721401FC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DED2C401DE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id niuKG1dko3qf for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 0hJWWK8j6lFx for <intel-wired-lan@lists.osuosl.org>;
  Tue, 30 Nov 2021 23:53:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3BE86401D4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10184"; a="236164170"
-X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="236164170"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E65F540177
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10184"; a="236164171"
+X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="236164171"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  30 Nov 2021 15:53:00 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="511726083"
+X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="511726086"
 Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.133])
  by fmsmga007.fm.intel.com with ESMTP; 30 Nov 2021 15:53:00 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 30 Nov 2021 15:51:33 -0800
-Message-Id: <20211130235146.28731-1-anthony.l.nguyen@intel.com>
+Date: Tue, 30 Nov 2021 15:51:34 -0800
+Message-Id: <20211130235146.28731-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20211130235146.28731-1-anthony.l.nguyen@intel.com>
+References: <20211130235146.28731-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 01/14] ice: Refactor
- spoofcheck configuration functions
+Subject: [Intel-wired-lan] [PATCH net-next v2 02/14] ice: Add helper
+ function for adding VLAN 0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,250 +69,96 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Brett Creeley <brett.creeley@intel.com>
 
-Add functions to configure Tx VLAN antispoof based on iproute
-configuration and/or VLAN mode and VF driver support. This is needed
-later so the driver can control when it can be configured. Also, add
-functions that can be used to enable and disable MAC and VLAN
-spoofcheck. Move spoofchk configuration during VSI setup into the
-SR-IOV initialization path and into the post VSI rebuild flow for VF
-VSIs.
+There are multiple places where VLAN 0 is being added. Create a function
+to be called in order to minimize changes as the implementation is expanded
+to support double VLAN and avoid duplicated code.
 
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c      |  19 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 159 ++++++++++++++----
- 2 files changed, 128 insertions(+), 50 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_eswitch.c     |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_lib.c         | 11 ++++++++++-
+ drivers/net/ethernet/intel/ice/ice_lib.h         |  2 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  2 +-
+ 4 files changed, 14 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index a737c54c4895..291748553800 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -127,7 +127,7 @@ static int ice_eswitch_setup_env(struct ice_pf *pf)
+ 	__dev_mc_unsync(uplink_netdev, NULL);
+ 	netif_addr_unlock_bh(uplink_netdev);
+ 
+-	if (ice_vsi_add_vlan(uplink_vsi, 0, ICE_FWD_TO_VSI))
++	if (ice_vsi_add_vlan_zero(uplink_vsi))
+ 		goto err_def_rx;
+ 
+ 	if (!ice_is_dflt_vsi_in_use(uplink_vsi->vsw)) {
+@@ -231,7 +231,7 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 			goto err;
+ 		}
+ 
+-		if (ice_vsi_add_vlan(vsi, 0, ICE_FWD_TO_VSI)) {
++		if (ice_vsi_add_vlan_zero(vsi)) {
+ 			ice_fltr_add_mac_and_broadcast(vsi,
+ 						       vf->hw_lan_addr.addr,
+ 						       ICE_FWD_TO_VSI);
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 5ef959769104..2db3cd6d8907 100644
+index 2db3cd6d8907..cc135792834e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1125,25 +1125,6 @@ static int ice_vsi_init(struct ice_vsi *vsi, bool init_vsi)
- 				cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
- 	}
+@@ -2621,7 +2621,7 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
+ 		 * so this handles those cases (i.e. adding the PF to a bridge
+ 		 * without the 8021q module loaded).
+ 		 */
+-		ret = ice_vsi_add_vlan(vsi, 0, ICE_FWD_TO_VSI);
++		ret = ice_vsi_add_vlan_zero(vsi);
+ 		if (ret)
+ 			goto unroll_clear_rings;
  
--	/* enable/disable MAC and VLAN anti-spoof when spoofchk is on/off
--	 * respectively
--	 */
--	if (vsi->type == ICE_VSI_VF) {
--		ctxt->info.valid_sections |=
--			cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
--		if (pf->vf[vsi->vf_id].spoofchk) {
--			ctxt->info.sec_flags |=
--				ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
--				(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
--				 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
--		} else {
--			ctxt->info.sec_flags &=
--				~(ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
--				  (ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
--				   ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S));
--		}
--	}
--
- 	/* Allow control frames out of main VSI */
- 	if (vsi->type == ICE_VSI_PF) {
- 		ctxt->info.sec_flags |= ICE_AQ_VSI_SEC_FLAG_ALLOW_DEST_OVRD;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 8f2045b7c29f..f947d936def3 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -837,6 +837,114 @@ static int ice_vf_rebuild_host_vlan_cfg(struct ice_vf *vf)
+@@ -4069,6 +4069,15 @@ int ice_set_link(struct ice_vsi *vsi, bool ena)
  	return 0;
  }
  
-+static int ice_cfg_vlan_antispoof(struct ice_vsi *vsi, bool enable)
-+{
-+	struct ice_vsi_ctx *ctx;
-+	int err;
-+
-+	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
-+		return -ENOMEM;
-+
-+	ctx->info.sec_flags = vsi->info.sec_flags;
-+	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
-+
-+	if (enable)
-+		ctx->info.sec_flags |= ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
-+			ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S;
-+	else
-+		ctx->info.sec_flags &= ~(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
-+					 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
-+
-+	err = ice_update_vsi(&vsi->back->hw, vsi->idx, ctx, NULL);
-+	if (err)
-+		dev_err(ice_pf_to_dev(vsi->back), "Failed to configure Tx VLAN anti-spoof %s for VSI %d, error %d\n",
-+			enable ? "ON" : "OFF", vsi->vsi_num, err);
-+	else
-+		vsi->info.sec_flags = ctx->info.sec_flags;
-+
-+	kfree(ctx);
-+
-+	return err;
-+}
-+
-+static int ice_cfg_mac_antispoof(struct ice_vsi *vsi, bool enable)
-+{
-+	struct ice_vsi_ctx *ctx;
-+	int err;
-+
-+	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
-+		return -ENOMEM;
-+
-+	ctx->info.sec_flags = vsi->info.sec_flags;
-+	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
-+
-+	if (enable)
-+		ctx->info.sec_flags |= ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
-+	else
-+		ctx->info.sec_flags &= ~ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
-+
-+	err = ice_update_vsi(&vsi->back->hw, vsi->idx, ctx, NULL);
-+	if (err)
-+		dev_err(ice_pf_to_dev(vsi->back), "Failed to configure Tx MAC anti-spoof %s for VSI %d, error %d\n",
-+			enable ? "ON" : "OFF", vsi->vsi_num, err);
-+	else
-+		vsi->info.sec_flags = ctx->info.sec_flags;
-+
-+	kfree(ctx);
-+
-+	return err;
-+}
-+
 +/**
-+ * ice_vsi_ena_spoofchk - enable Tx spoof checking for this VSI
-+ * @vsi: VSI to enable Tx spoof checking for
++ * ice_vsi_add_vlan_zero - add VLAN 0 filter(s) for this VSI
++ * @vsi: VSI used to add VLAN filters
 + */
-+static int ice_vsi_ena_spoofchk(struct ice_vsi *vsi)
++int ice_vsi_add_vlan_zero(struct ice_vsi *vsi)
 +{
-+	int err;
-+
-+	err = ice_cfg_vlan_antispoof(vsi, true);
-+	if (err)
-+		return err;
-+
-+	return ice_cfg_mac_antispoof(vsi, true);
-+}
-+
-+/**
-+ * ice_vsi_dis_spoofchk - disable Tx spoof checking for this VSI
-+ * @vsi: VSI to disable Tx spoof checking for
-+ */
-+static int ice_vsi_dis_spoofchk(struct ice_vsi *vsi)
-+{
-+	int err;
-+
-+	err = ice_cfg_vlan_antispoof(vsi, false);
-+	if (err)
-+		return err;
-+
-+	return ice_cfg_mac_antispoof(vsi, false);
-+}
-+
-+/**
-+ * ice_vf_set_spoofchk_cfg - apply Tx spoof checking setting
-+ * @vf: VF set spoofchk for
-+ * @vsi: VSI associated to the VF
-+ */
-+static int
-+ice_vf_set_spoofchk_cfg(struct ice_vf *vf, struct ice_vsi *vsi)
-+{
-+	int err;
-+
-+	if (vf->spoofchk)
-+		err = ice_vsi_ena_spoofchk(vsi);
-+	else
-+		err = ice_vsi_dis_spoofchk(vsi);
-+
-+	return err;
++	return ice_vsi_add_vlan(vsi, 0, ICE_FWD_TO_VSI);
 +}
 +
  /**
-  * ice_vf_rebuild_host_mac_cfg - add broadcast and the VF's perm_addr/LAA
-  * @vf: VF to add MAC filters for
-@@ -1344,6 +1452,10 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
- 		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
- 			vf->vf_id);
+  * ice_is_feature_supported
+  * @pf: pointer to the struct ice_pf instance
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 9fdd95dd5a14..28e0f1147c82 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -133,7 +133,7 @@ void ice_vsi_ctx_clear_antispoof(struct ice_vsi_ctx *ctx);
+ void ice_vsi_ctx_set_allow_override(struct ice_vsi_ctx *ctx);
  
-+	if (ice_vf_set_spoofchk_cfg(vf, vsi))
-+		dev_err(dev, "failed to rebuild spoofchk configuration for VF %d\n",
-+			vf->vf_id);
-+
- 	/* rebuild aggregator node config for main VF VSI */
- 	ice_vf_rebuild_aggregator_node_cfg(vsi);
- }
-@@ -1758,6 +1870,13 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
- 		goto release_vsi;
- 	}
- 
-+	err = ice_vf_set_spoofchk_cfg(vf, vsi);
-+	if (err) {
-+		dev_warn(dev, "Failed to initialize spoofchk setting for VF %d\n",
-+			 vf->vf_id);
-+		goto release_vsi;
-+	}
-+
- 	vf->num_mac = 1;
- 
- 	return 0;
-@@ -2891,7 +3010,6 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_pf *pf = np->vsi->back;
--	struct ice_vsi_ctx *ctx;
- 	struct ice_vsi *vf_vsi;
- 	struct device *dev;
- 	struct ice_vf *vf;
-@@ -2924,37 +3042,16 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 		return 0;
- 	}
- 
--	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
--	if (!ctx)
--		return -ENOMEM;
+ void ice_vsi_ctx_clear_allow_override(struct ice_vsi_ctx *ctx);
 -
--	ctx->info.sec_flags = vf_vsi->info.sec_flags;
--	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
--	if (ena) {
--		ctx->info.sec_flags |=
--			ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
--			(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
--			 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
--	} else {
--		ctx->info.sec_flags &=
--			~(ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
--			  (ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
--			   ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S));
--	}
--
--	ret = ice_update_vsi(&pf->hw, vf_vsi->idx, ctx, NULL);
--	if (ret) {
--		dev_err(dev, "Failed to %sable spoofchk on VF %d VSI %d\n error %d\n",
--			ena ? "en" : "dis", vf->vf_id, vf_vsi->vsi_num, ret);
--		goto out;
--	}
--
--	/* only update spoofchk state and VSI context on success */
--	vf_vsi->info.sec_flags = ctx->info.sec_flags;
--	vf->spoofchk = ena;
-+	if (ena)
-+		ret = ice_vsi_ena_spoofchk(vf_vsi);
-+	else
-+		ret = ice_vsi_dis_spoofchk(vf_vsi);
-+	if (ret)
-+		dev_err(dev, "Failed to set spoofchk %s for VF %d VSI %d\n error %d\n",
-+			ena ? "ON" : "OFF", vf->vf_id, vf_vsi->vsi_num, ret);
-+	else
-+		vf->spoofchk = ena;
++int ice_vsi_add_vlan_zero(struct ice_vsi *vsi);
+ bool ice_is_feature_supported(struct ice_pf *pf, enum ice_feature f);
+ void ice_clear_feature_support(struct ice_pf *pf, enum ice_feature f);
+ void ice_init_feature_support(struct ice_pf *pf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index f947d936def3..ab03010c822d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1855,7 +1855,7 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
+ 	if (!vsi)
+ 		return -ENOMEM;
  
--out:
--	kfree(ctx);
- 	return ret;
- }
- 
+-	err = ice_vsi_add_vlan(vsi, 0, ICE_FWD_TO_VSI);
++	err = ice_vsi_add_vlan_zero(vsi);
+ 	if (err) {
+ 		dev_warn(dev, "Failed to add VLAN 0 filter for VF %d\n",
+ 			 vf->vf_id);
 -- 
 2.20.1
 
