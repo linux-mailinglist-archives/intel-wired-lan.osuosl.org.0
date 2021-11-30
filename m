@@ -1,53 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3922C462D86
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Nov 2021 08:31:37 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1579B462F3B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Nov 2021 10:05:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C2044047F;
-	Tue, 30 Nov 2021 07:31:34 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 80F5340251;
+	Tue, 30 Nov 2021 09:05:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cqDDnMFLrxH4; Tue, 30 Nov 2021 07:31:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zBHx69olal7I; Tue, 30 Nov 2021 09:05:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3284040477;
-	Tue, 30 Nov 2021 07:31:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 12FA340133;
+	Tue, 30 Nov 2021 09:05:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B405D1BF289
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 07:31:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C16341BF281
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 09:05:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AEB67606B1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 07:31:28 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BBA3640251
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 09:05:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2O5h0z1F_hxe for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Nov 2021 07:31:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Bx8fQ-bP4xuJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Nov 2021 09:05:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B62F76069B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 07:31:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10183"; a="236391885"
-X-IronPort-AV: E=Sophos;i="5.87,275,1631602800"; d="scan'208";a="236391885"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Nov 2021 23:31:25 -0800
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A027F40133
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 09:05:38 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10183"; a="260131522"
+X-IronPort-AV: E=Sophos;i="5.87,275,1631602800"; d="scan'208";a="260131522"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Nov 2021 01:05:37 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,275,1631602800"; d="scan'208";a="512062859"
-Received: from amlin-19-169.igk.intel.com ([10.102.19.169])
- by orsmga008.jf.intel.com with ESMTP; 29 Nov 2021 23:31:23 -0800
-From: "Sornek, Karen" <karen.sornek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 30 Nov 2021 08:32:11 +0100
-Message-Id: <20211130073211.1114232-1-karen.sornek@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.87,275,1631602800"; d="scan'208";a="459524259"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga006.jf.intel.com with ESMTP; 30 Nov 2021 01:05:36 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mrz4x-000D0t-Qx; Tue, 30 Nov 2021 09:05:35 +0000
+Date: Tue, 30 Nov 2021 17:05:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61a5e94a.rmrWxMtgNp3QKiMQ%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix for failed to init
- adminq while VF reset
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 008b13e86219f60cc0c4b490e4bb8ec098f375f9
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,130 +63,168 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Karen Sornek <karen.sornek@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 008b13e86219f60cc0c4b490e4bb8ec098f375f9  i40e: Fix queues reservation for XDP
 
-Fix for failed to init adminq: -53 while VF is resetting via MAC
-address changing procedure.
-Added sync module to avoid reading deadbeef value in reinit adminq
-during software reset.
-Without this patch it is possible to trigger VF reset procedure
-during reinit adminq. This resulted in an incorrect reading of
-value from the AQP registers and generated the -53 error.
+elapsed time: 727m
 
-Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Karen Sornek <karen.sornek@intel.com>
+configs tested: 139
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211128
+i386                 randconfig-c001-20211130
+powerpc                     tqm8555_defconfig
+arm                         mv78xx0_defconfig
+mips                       capcella_defconfig
+arm                        multi_v5_defconfig
+m68k                           sun3_defconfig
+powerpc                     tqm8540_defconfig
+um                                  defconfig
+powerpc                     akebono_defconfig
+powerpc                 xes_mpc85xx_defconfig
+powerpc                       ebony_defconfig
+mips                          rm200_defconfig
+sh                   sh7770_generic_defconfig
+arm                          lpd270_defconfig
+arm                        realview_defconfig
+powerpc                     taishan_defconfig
+arm                         palmz72_defconfig
+powerpc                         wii_defconfig
+mips                       rbtx49xx_defconfig
+sh                          rsk7201_defconfig
+mips                           ip28_defconfig
+arm                         bcm2835_defconfig
+sh                               j2_defconfig
+powerpc                     tqm8548_defconfig
+sh                  sh7785lcr_32bit_defconfig
+arm                          pcm027_defconfig
+mips                 decstation_r4k_defconfig
+openrisc                            defconfig
+powerpc                        warp_defconfig
+powerpc                 mpc834x_itx_defconfig
+m68k                          atari_defconfig
+arm                          ixp4xx_defconfig
+sh                           se7712_defconfig
+mips                           gcw0_defconfig
+powerpc                      ep88xc_defconfig
+powerpc                     redwood_defconfig
+i386                                defconfig
+arm                          simpad_defconfig
+arm                  randconfig-c002-20211129
+arm                  randconfig-c002-20211128
+ia64                                defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20211130
+x86_64               randconfig-a006-20211130
+x86_64               randconfig-a003-20211130
+x86_64               randconfig-a004-20211130
+x86_64               randconfig-a005-20211130
+x86_64               randconfig-a002-20211130
+i386                 randconfig-a001-20211129
+i386                 randconfig-a002-20211129
+i386                 randconfig-a006-20211129
+i386                 randconfig-a005-20211129
+i386                 randconfig-a004-20211129
+i386                 randconfig-a003-20211129
+x86_64               randconfig-a011-20211128
+x86_64               randconfig-a014-20211128
+x86_64               randconfig-a012-20211128
+x86_64               randconfig-a013-20211128
+x86_64               randconfig-a015-20211128
+x86_64               randconfig-a016-20211128
+i386                 randconfig-a015-20211128
+i386                 randconfig-a016-20211128
+i386                 randconfig-a013-20211128
+i386                 randconfig-a012-20211128
+i386                 randconfig-a014-20211128
+i386                 randconfig-a011-20211128
+arc                  randconfig-r043-20211128
+s390                 randconfig-r044-20211128
+riscv                randconfig-r042-20211128
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                              defconfig
+x86_64                                  kexec
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+
+clang tested configs:
+x86_64               randconfig-a001-20211128
+x86_64               randconfig-a006-20211128
+x86_64               randconfig-a003-20211128
+x86_64               randconfig-a005-20211128
+x86_64               randconfig-a004-20211128
+x86_64               randconfig-a002-20211128
+i386                 randconfig-a001-20211128
+i386                 randconfig-a002-20211128
+i386                 randconfig-a006-20211128
+i386                 randconfig-a005-20211128
+i386                 randconfig-a004-20211128
+i386                 randconfig-a003-20211128
+hexagon              randconfig-r045-20211129
+hexagon              randconfig-r041-20211129
+s390                 randconfig-r044-20211129
+riscv                randconfig-r042-20211129
+hexagon              randconfig-r045-20211128
+hexagon              randconfig-r041-20211128
+
 ---
- .../net/ethernet/intel/i40e/i40e_register.h   |  3 ++
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 44 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  1 +
- 3 files changed, 46 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
-index 8d0588a27a05..1908eed4fa5e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_register.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
-@@ -413,6 +413,9 @@
- #define I40E_VFINT_DYN_CTLN(_INTVF) (0x00024800 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: VFR */
- #define I40E_VFINT_DYN_CTLN_CLEARPBA_SHIFT 1
- #define I40E_VFINT_DYN_CTLN_CLEARPBA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_CLEARPBA_SHIFT)
-+#define I40E_VFINT_ICR0_ADMINQ_SHIFT 30
-+#define I40E_VFINT_ICR0_ADMINQ_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ADMINQ_SHIFT)
-+#define I40E_VFINT_ICR0_ENA(_VF) (0x0002C000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
- #define I40E_VPINT_AEQCTL(_VF) (0x0002B800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
- #define I40E_VPINT_AEQCTL_MSIX_INDX_SHIFT 0
- #define I40E_VPINT_AEQCTL_ITR_INDX_SHIFT 11
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 3efc6926d308..d4c6914d2347 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -1379,6 +1379,32 @@ static i40e_status i40e_config_vf_promiscuous_mode(struct i40e_vf *vf,
- 	return aq_ret;
- }
- 
-+/**
-+ * i40e_sync_vfr_reset
-+ * @hw: pointer to hw struct
-+ * @vf_id: VF identifier
-+ *
-+ * Before trigger hardware reset, we need to know if no other process has
-+ * reserved the hardware for any reset operations. This check is done by
-+ * examining the status of the RSTAT1 register used to signal the reset.
-+ **/
-+static int i40e_sync_vfr_reset(struct i40e_hw *hw, int vf_id)
-+{
-+	u32 reg;
-+	int i;
-+
-+	for (i = 0; i < I40E_VFR_WAIT_COUNT; i++) {
-+		reg = rd32(hw, I40E_VFINT_ICR0_ENA(vf_id)) &
-+			   I40E_VFINT_ICR0_ADMINQ_MASK;
-+		if (reg)
-+			return 0;
-+
-+		usleep_range(100, 200);
-+	}
-+
-+	return -EAGAIN;
-+}
-+
- /**
-  * i40e_trigger_vf_reset
-  * @vf: pointer to the VF structure
-@@ -1393,9 +1419,11 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
- 	struct i40e_pf *pf = vf->pf;
- 	struct i40e_hw *hw = &pf->hw;
- 	u32 reg, reg_idx, bit_idx;
-+	bool vf_active;
-+	u32 radq;
- 
- 	/* warn the VF */
--	clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
-+	vf_active = test_and_clear_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states);
- 
- 	/* Disable VF's configuration API during reset. The flag is re-enabled
- 	 * in i40e_alloc_vf_res(), when it's safe again to access VF's VSI.
-@@ -1409,7 +1437,19 @@ static void i40e_trigger_vf_reset(struct i40e_vf *vf, bool flr)
- 	 * just need to clean up, so don't hit the VFRTRIG register.
- 	 */
- 	if (!flr) {
--		/* reset VF using VPGEN_VFRTRIG reg */
-+		/* Sync VFR reset before trigger next one */
-+		radq = rd32(hw, I40E_VFINT_ICR0_ENA(vf->vf_id)) &
-+			    I40E_VFINT_ICR0_ADMINQ_MASK;
-+		if (vf_active && !radq)
-+			/* waiting for finish reset by virtual driver */
-+			if (i40e_sync_vfr_reset(hw, vf->vf_id))
-+				dev_info(&pf->pdev->dev,
-+					 "Reset VF %d never finished\n",
-+				vf->vf_id);
-+
-+		/* Reset VF using VPGEN_VFRTRIG reg. It is also setting
-+		 * in progress state in rstat1 register.
-+		 */
- 		reg = rd32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id));
- 		reg |= I40E_VPGEN_VFRTRIG_VFSWR_MASK;
- 		wr32(hw, I40E_VPGEN_VFRTRIG(vf->vf_id), reg);
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index 6aa35c8c9091..8135bd6a1c0a 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -19,6 +19,7 @@
- #define I40E_MAX_VF_PROMISC_FLAGS	3
- 
- #define I40E_VF_STATE_WAIT_COUNT	20
-+#define I40E_VFR_WAIT_COUNT		100
- #define I40E_VF_RESET_TIME_MIN		30000000	/* time in nsec */
- 
- /* Various queue ctrls */
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
