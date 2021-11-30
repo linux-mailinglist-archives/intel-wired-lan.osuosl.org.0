@@ -1,109 +1,190 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2438463257
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Nov 2021 12:25:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC7E7463AFA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Nov 2021 17:06:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 534BC40454;
-	Tue, 30 Nov 2021 11:25:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7F6844046D;
+	Tue, 30 Nov 2021 16:06:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Goe8Da0k7hBX; Tue, 30 Nov 2021 11:25:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DYQtMQLH-DB7; Tue, 30 Nov 2021 16:06:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6A0DE40390;
-	Tue, 30 Nov 2021 11:25:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24123400E8;
+	Tue, 30 Nov 2021 16:06:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A21E61BF302
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 11:25:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E1ECF1BF2F0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 16:06:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 90999817AD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 11:25:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D0EA68266C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 16:06:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
+ dkim=pass (2048-bit key) header.d=lenovo.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LP0EGDDxugI7 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Nov 2021 11:25:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F263F817AC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 11:25:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638271552;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nW4v0Dmvu3ppM84D0W/9hq/3S9zMfrsXcIrV1YMd8MM=;
- b=Noewhn56UFCnPRg8dbtCVxXqV6I3+wStSrsRzYYNkZrNLmaeA8LUE7RpIuYmL8rHidR6ZZ
- /nKjK7LrGE+DWoVFN/Ezf4uLhr5PWfF/9IBSxdg8UJocgro8uRC0pIhEv50A2WMen1sLYf
- ILZd6DHhZ1dVsxJhTxZmRwdTNFl751w=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-312-w6KecncpN1enibWe9gqneg-1; Tue, 30 Nov 2021 06:25:50 -0500
-X-MC-Unique: w6KecncpN1enibWe9gqneg-1
-Received: by mail-ed1-f71.google.com with SMTP id
- p4-20020aa7d304000000b003e7ef120a37so16588851edq.16
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 03:25:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:message-id:date:mime-version:user-agent:cc
- :subject:content-language:to:references:in-reply-to
- :content-transfer-encoding;
- bh=nW4v0Dmvu3ppM84D0W/9hq/3S9zMfrsXcIrV1YMd8MM=;
- b=ny0QOxM+ls3D8rT14mGOAJHKbUxcfhVELrm1I6NVvHHl54sMISmOxp+JlYr0lyml8g
- GI6x1h/b8rNzfnnfoHHbl5Z7OeblYLN84fqAk5D7HKwldIANmEI6ro3EE42fG2JAZssr
- H/lNySHH8UDboo8ccNXT/lDEYLLavAZ32EL+DyG5+IUYF0afle0w6Q4PrIbpx/RSUFZj
- JfrRPpoq8ur282Ud/jkn3jloij3A6QNk+Iqqd0EF1gZhrsSXcVQEY4jNQ2fUC76lSy7k
- MKgV4bAriFrYhp7zgCgy+8KT/xQpEXZ7PS3zQY22M6FujPHOpVfE8W6wgno5eUGdTIQb
- l6Ig==
-X-Gm-Message-State: AOAM532jhG/03GfQkkMuWq1C0FujX0lKuQbsYm3egAsOJcls0/w2wEWB
- e2gNkWMTDWoqnNxyI42v3KZXbQpsRTo2SsWj8P3bJ8YV7wiXhZIY7EbCqNe6rOpM+BS8wQDzXlX
- vVNN099EULxBrbBo5+Vn0sdZ+CgGPWw==
-X-Received: by 2002:a17:907:608f:: with SMTP id
- ht15mr31223518ejc.300.1638271549518; 
- Tue, 30 Nov 2021 03:25:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxbSaZ41fs8nEN31mLbWTtd1uwJu8NTP/2exa47vh3cgbBRaxniN1rAzmjNptegFE9pWOwHVQ==
-X-Received: by 2002:a17:907:608f:: with SMTP id
- ht15mr31223478ejc.300.1638271549268; 
- Tue, 30 Nov 2021 03:25:49 -0800 (PST)
-Received: from [192.168.2.13] (3-14-107-185.static.kviknet.dk. [185.107.14.3])
- by smtp.gmail.com with ESMTPSA id
- mp9sm9230930ejc.106.2021.11.30.03.25.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Nov 2021 03:25:48 -0800 (PST)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <e462ac19-0598-5b68-eab9-93358b7e7a57@redhat.com>
-Date: Tue, 30 Nov 2021 12:25:47 +0100
+ with ESMTP id YsUGJlu7ISdD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Nov 2021 16:06:03 +0000 (UTC)
+X-Greylist: delayed 00:13:00 by SQLgrey-1.8.0
+Received: from mail1.bemta31.messagelabs.com (mail1.bemta31.messagelabs.com
+ [67.219.246.114])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 39030824CE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 16:06:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lenovo.com;
+ s=Selector; t=1638287582; i=@lenovo.com;
+ bh=CekQchNTwF6mfOiROg+MDDjlUpZvHef15O7iGgCWumk=;
+ h=Message-ID:Date:MIME-Version:Subject:To:CC:References:From:
+ In-Reply-To:Content-Type:Content-Transfer-Encoding;
+ b=swlPmDAgQUykqRRvadS75VtJG2b0hs5kyF1wf/xDJRQdD/dT7lsIZOLF5vr4VtPjg
+ jUTjCyiC9HTULyBU5VeH4RpQzd6HdPPgDT0lS5gWhScdYWu7qLXAkxctMDCK7tOz8m
+ ZFZPWExTqUioets5D9M3hqxkAOBQCtF1RScxWY0vxm0oJxD9A3/s9DZ74Jzb7l35Kv
+ BWDmBtYzPTZzSKsT/gNr551/kK/kU5zsPuOCCTru5n7DyM/DGbGTd6QFW2M0VmrKHp
+ 9RElU3zfT3xMyw5NnPeurRkHEh7ffX2wBCC9ouAKdtRM4ljsDbuVvjuKQAodo4hS55
+ XBzgmMumaSyOA==
+Received: from [100.114.1.131] (using TLSv1.2 with cipher
+ DHE-RSA-AES256-GCM-SHA384 (256 bits))
+ by server-6.bemta.az-a.us-east-1.aws.ess.symcld.net id DA/27-00528-ED846A16;
+ Tue, 30 Nov 2021 15:53:02 +0000
+X-Brightmail-Tracker: H4sIAAAAAAAAA1WTa0xbZRjHec+Ngi07FBgvnSAp0SCzHRUkh5j
+ hNiX0g8Qaszg2EznIgTa2pekpCEa03rK1MGHFL+u6cS1uBbLIYGwD3NgmAwYWx4AA4gWrctkl
+ XIKwBvS0h0388uT3vP/neZ//k7yvABVXBUoETLGJMepprZQIxtR7JDrZtLKRTnTcTaAqvr2MU
+ qMdGNU5vIZQDvcXGLVWtopS/0x6ceqq9xRBbZY1EtTwxa9wauSKg6B6a3ZSnetVgJrr9oJ9Iq
+ XdfJxQtp2bQJT1XXOIstVlIZT9nxcql1tjVMRhXKPPKSjOxtWViw2oYTCkeHbxM9wMyoVWECw
+ ApBOFJ5y9gE/qcGitr8asIIhLjiFw8VaaTxCTZxB4sfcMwic3EHh7oxnxVUHyFoBlrgxesADY
+ 2b5G8EklAlctp3A+8QDo/NS2pcwA+NP6SqCvX0TuhefW7uA+xshnof3uPMafh8L+kx4/R5Bvw
+ yHXFOrjMJKBp9ub/IySkXDSU+03FU5+DWDLH1f9e6CkG4H3xlcBP84FoHf0LPC1EORu2Nb2iP
+ BxEDf65lIHxl/1PPyywxvI8zOw477DP0JMxsFHFW6UXzUWDrVcwXnOhuWbMwTPUXBsYjiQ52j
+ 4/ZAD4zkTnu/v3apJgIsPXVs1Wnhp0wx4fg5+N/IzWgnk9m1b27dtZ99mz77NXg3AXCA1x6jJ
+ V5t0tEYrUyQmyhSKZFmyLOUlOf2hjJYXsjKGZk0yhZz+gJUzLCtnS3TvaXPlesbUCrh3mGvE9
+ l8CDeXr8usgSoBII0RUSiMtDskpyC1R06z6XWOhlmGvg6cFAikUZb3CaaFGJp8pztNoudf8WI
+ YCoTRc5MjgZBFroHWsJp+XBkC6oHLudB0qsJbXcnF2tJ6L/T0NXLTd7OxAxZi+QM9IIkW3fc2
+ kr1ldqH9y9eO/cgdES8JEICAgQCw0MEadxvR/fR5ECoA0TBTNfSmxUKM3PXEwz5lDOHP3nfU+
+ cyb6P0liRpJ+kOjcXUF9SVPvpA2WZJ6oeD30wMCOvrRpc/83qp2ZA40V7//VHZCh/3M0e+mp5
+ I/35teyXW9eW0BByZ6imWwUvdd3KH5XU87IsdKiI6K3nKro1/5W7WJXEoQb7o9iDhqSZiwRGw
+ 2/9b3R2x5z9sfD8fvgg75Jc4TnWsvRrKMPYhmmZiV9RLhMpS6Mr8YtHF8+Mpf/u4UICSDGB7N
+ Km9ubG7sv7C59lXyhqSfW1n3h/C8HPC+i1UTeYtWYofayZ2I2WDV4qE6WgsdbcU3erzeS66Ji
+ eiaminTBrTbDkkWR0eM+eVA3llj5su0TWETHpXoi92ts4aZ073TkemDCwx1dUoxV04oE1MjS/
+ wIsDhVupgQAAA==
+X-Env-Sender: markpearson@lenovo.com
+X-Msg-Ref: server-13.tower-706.messagelabs.com!1638287579!9110!1
+X-Originating-IP: [104.47.26.109]
+X-SYMC-ESS-Client-Auth: mailfrom-relay-check=pass
+X-StarScan-Received: 
+X-StarScan-Version: 9.81.7; banners=-,-,-
+X-VirusChecked: Checked
+Received: (qmail 727 invoked from network); 30 Nov 2021 15:53:01 -0000
+Received: from mail-sgaapc01lp2109.outbound.protection.outlook.com (HELO
+ APC01-SG2-obe.outbound.protection.outlook.com) (104.47.26.109)
+ by server-13.tower-706.messagelabs.com with ECDHE-RSA-AES256-GCM-SHA384
+ encrypted SMTP; 30 Nov 2021 15:53:01 -0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ea+pAjlizwhWddD+mpSHUsbQwRFcRZlBHRPtCRmJXIAlt9VdDK1xvTXZUPJpdmsS8kZJgKunPqdcOQj6+wy5iCaWG2veWPs3CO7Q0JBYBCgYd/0+woSHVEdxDi2vouQBlx4BMrgrQnttAg8goNSZEB5YnaPbtV0vS318TfFu5sX4zOXxA/JrrkHkJ9DudBBtsf1molH9wBm0EjehxBkaXLTafPJi8I6ClX/F/vI7O3JcxBOsz2ur4p1two0ST3buBXY1FiQDMWveT5WC8bTHNVbGjenx+y+7tzhUMmcdqIDVad2jMKizokIKDVf3sGwR3+DFh++OCfy7JX9303o7Vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CekQchNTwF6mfOiROg+MDDjlUpZvHef15O7iGgCWumk=;
+ b=OWrnOLhLkHhqgSz/UjuaOzsDs+PGksT2tJ9qUXSYhp0vOfkf/9ZwKH2FpZKGw3NayGoQOz4QImOAAe1AKfHp6P5U8FYuhe3Yb9Wu+h8MCMH7Dy4HcGMmyeBs/2TK0ZJPdXdZO3BSeObGNq7JOlVkRqw3KLKGId/w1E9buVBZUfz9iweZyW4OY2sh4nUYxRDHoD0IKwRiivPxE5eRoEcsXrx1BeFOcy/eg5oh82tz+QI4o/52NcQHXXnztzvIPcpn37IXqoS9rDTgMRZBI1/QmmCSj2iWmIw2d/xvboskjQFYHPeZ+WOiiGP0tcs1yuRepKlmVgheo6gh/CbyY7YK4w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 104.232.225.6) smtp.rcpttodomain=intel.com smtp.mailfrom=lenovo.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=lenovo.com;
+ dkim=none (message not signed); arc=none
+Received: from PS2PR02CA0025.apcprd02.prod.outlook.com (2603:1096:300:59::13)
+ by TY2PR03MB4318.apcprd03.prod.outlook.com (2603:1096:404:f3::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4755.9; Tue, 30 Nov
+ 2021 15:52:58 +0000
+Received: from PSAAPC01FT052.eop-APC01.prod.protection.outlook.com
+ (2603:1096:300:59:cafe::f9) by PS2PR02CA0025.outlook.office365.com
+ (2603:1096:300:59::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.21 via Frontend
+ Transport; Tue, 30 Nov 2021 15:52:58 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
+ 104.232.225.6) smtp.mailfrom=lenovo.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=lenovo.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ lenovo.com discourages use of 104.232.225.6 as permitted sender)
+Received: from mail.lenovo.com (104.232.225.6) by
+ PSAAPC01FT052.mail.protection.outlook.com (10.13.38.166) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4734.20 via Frontend Transport; Tue, 30 Nov 2021 15:52:57 +0000
+Received: from reswpmail01.lenovo.com (10.62.32.20) by mail.lenovo.com
+ (10.62.123.116) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2308.20; Tue, 30 Nov
+ 2021 10:52:22 -0500
+Received: from [10.38.55.222] (10.38.55.222) by reswpmail01.lenovo.com
+ (10.62.32.20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2308.20; Tue, 30 Nov
+ 2021 10:52:21 -0500
+Message-ID: <3fad0b95-fe97-8c4a-3ca9-3ed2a9fa2134@lenovo.com>
+Date: Tue, 30 Nov 2021 10:52:20 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
- "jbrouer@redhat.com" <jbrouer@redhat.com>
-References: <163700856423.565980.10162564921347693758.stgit@firesoul>
- <163700859087.565980.3578855072170209153.stgit@firesoul>
- <20211126161649.151100-1-alexandr.lobakin@intel.com>
- <6de05aea-9cf4-c938-eff2-9e3b138512a4@redhat.com>
- <20211129145303.10507-1-alexandr.lobakin@intel.com>
- <20211129181320.579477-1-alexandr.lobakin@intel.com>
- <9948428f33d013105108872d51f7e6ebec21203c.camel@intel.com>
-In-Reply-To: <9948428f33d013105108872d51f7e6ebec21203c.camel@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/91.3.0
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] igc: enable XDP metadata
- in driver
+To: Sasha Neftin <sasha.neftin@intel.com>, Kai-Heng Feng
+ <kai.heng.feng@canonical.com>, <jesse.brandeburg@intel.com>,
+ <anthony.l.nguyen@intel.com>
+References: <20211122161927.874291-1-kai.heng.feng@canonical.com>
+ <20211122161927.874291-3-kai.heng.feng@canonical.com>
+ <0ba36a30-95d3-a5f4-93c2-443cf2259756@intel.com>
+From: Mark Pearson <markpearson@lenovo.com>
+In-Reply-To: <0ba36a30-95d3-a5f4-93c2-443cf2259756@intel.com>
+X-Originating-IP: [10.38.55.222]
+X-ClientProxiedBy: reswpmail04.lenovo.com (10.62.32.23) To
+ reswpmail01.lenovo.com (10.62.32.20)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 6dc23f45-fb2e-4535-73d5-08d9b4197acd
+X-MS-TrafficTypeDiagnostic: TY2PR03MB4318:
+X-Microsoft-Antispam-PRVS: <TY2PR03MB431864B97EA44188BED647B4C5679@TY2PR03MB4318.apcprd03.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eEdhNE44czhoWTdCbHBNOEF2VzdOZzBkU3FqbVRyRStDMnBlSnVFeGwvd0V3?=
+ =?utf-8?B?NUdtaklpbStIMUQ3YnVQdldYSVdYM21pdjZwMjVqTnRZYkxMOFpQdFhFaEpG?=
+ =?utf-8?B?VzFYbzJXTW9COWNLUE9LYmlaWU9EanFHVm1jazgzWmtidFRTUTJkSlNpTlRz?=
+ =?utf-8?B?M205SitFL1FPZW8vSHdtdTczNm9WYkdQMXJrb2E3RVpDWHVVdjVvWnByU2hK?=
+ =?utf-8?B?R3hqc0U2VnRlTG9ETVJJbjdzL29LT0JWWlJuOHcxYVJhL3NXRit6dEIrSk5I?=
+ =?utf-8?B?eUhvTnpMRkJFRDlMNjlKNzh4b3hLcDZBTnhITGMzdjhhbmxyeWpuNlRVdnFu?=
+ =?utf-8?B?aW5kZHlITDNDaE1nMmlQSGJycS8rd1g1THFnU25KT29SQjNwQXZvallPaTdy?=
+ =?utf-8?B?WmEycVlZWWE0U0R0c2ZQVWw4djZKMVl6cDNLZWtDTmpqNHVsTEU0d3BYOXlx?=
+ =?utf-8?B?M0hQcnF4TWlwS1lNeHcxTERTbnRWRnhZYzVJTFNEN0RTb3ZvWFRlNVJXT05S?=
+ =?utf-8?B?S0Y0VDZFdmtuZUw2V1g2NEJXQnJGZXNrU1hyMGYvSVdiTjRsTmhWMlZ1L1FH?=
+ =?utf-8?B?MFhmUzhleTc5T0QyVHQ2eVJwVnBkTFVUMFdicDFqRnhFUVVtK3h0NDJzcFp4?=
+ =?utf-8?B?NVJ4Q1JnMXhhSHV4VnY4SkxPb3h2T2psZVVGRGNnbHl3bzliRzJvTGtQVC9n?=
+ =?utf-8?B?S3dldllGbndNeFNPci9uNiswWEVxUldsbnlmRDhwME1kUkhUMHNMQkwwK1M1?=
+ =?utf-8?B?Rk9MaCtWMDVuSTVidXV0akNBOVZ6ck14WWM5OWIwRThMbHYxUStudk5tUW9M?=
+ =?utf-8?B?YXlvYmlVU2laUnZhNEZXOFpTRVo5M1ByT1JjVU84a2l6OWpKUy9CeThnWXIv?=
+ =?utf-8?B?NU56ZHdHS0hxcHdqdFQ0UFp6TFFnL202S0x2YkM2bmNMYTNvQStPUDNKcllP?=
+ =?utf-8?B?ZmI2aUs2SG0xTHlzbVZFY1Q5V1RhRmZsNStvcktxcjlZdUE2b3hldkpQNTd0?=
+ =?utf-8?B?UXBkdEIyMUFpeElqWDFQWU9RNFdEcUlMWXdlTFJ3Y3VxSXZCeXBvNVpsWGk0?=
+ =?utf-8?B?M1JoS0lSUERaa1cxU0s4WHg5dEtMbTRSRkJlTDFweWxCSmNVMkMxZEZlekRk?=
+ =?utf-8?B?aGdiSjR0cEZnTG4vUE5BTjF6eFk5TCtHN0dCc3hXdHdKMU9SeWNmOW9FQ0k3?=
+ =?utf-8?B?R3pkZElGZVdMRERiWmJQcVVYekFMVHRHdTRnTzR0ZHBWTmxOako0M21WaHUx?=
+ =?utf-8?B?VGRkNG9UUXdXVUROTFJ4cElMaW96OW9UekZiZXIxb0YzSW05STZZcG9PSnA5?=
+ =?utf-8?B?bWQxakl2RS9EUGR0emovWW9aekJkaE0rcitJUTZXUnhnQ0E0QUdFKyt4cGJ5?=
+ =?utf-8?B?ZWZKOGt6NEV5d0E9PQ==?=
+X-Forefront-Antispam-Report: CIP:104.232.225.6; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.lenovo.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(4636009)(36840700001)(46966006)(40470700001)(31696002)(86362001)(5660300002)(82960400001)(31686004)(966005)(70586007)(2616005)(40460700001)(47076005)(70206006)(110136005)(36756003)(186003)(356005)(336012)(426003)(26005)(82310400004)(4001150100001)(36860700001)(53546011)(316002)(36906005)(8936002)(7416002)(4326008)(8676002)(81166007)(16576012)(54906003)(2906002)(16526019)(508600001)(83380400001)(3940600001)(32563001)(36900700001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-OriginatorOrg: lenovo.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2021 15:52:57.2645 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6dc23f45-fb2e-4535-73d5-08d9b4197acd
+X-MS-Exchange-CrossTenant-Id: 5c7d0b28-bdf8-410c-aa93-4df372b16203
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5c7d0b28-bdf8-410c-aa93-4df372b16203; Ip=[104.232.225.6];
+ Helo=[mail.lenovo.com]
+X-MS-Exchange-CrossTenant-AuthSource: PSAAPC01FT052.eop-APC01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PR03MB4318
+Subject: Re: [Intel-wired-lan] [External] Re: [PATCH 3/3] Revert "e1000e:
+ Add handshake with the CSME to support S0ix"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,56 +197,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "bjorn@kernel.org" <bjorn@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- brouer@redhat.com, "kuba@kernel.org" <kuba@kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "borkmann@iogearbox.net" <borkmann@iogearbox.net>,
- "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, "Avivi,
+ Amir" <amir.avivi@intel.com>, intel-wired-lan@lists.osuosl.org,
+ acelan.kao@canonical.com, Jakub Kicinski <kuba@kernel.org>, "Ruinskiy,
+ Dima" <dima.ruinskiy@intel.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi Sasha
 
-
-On 29/11/2021 20.03, Nguyen, Anthony L wrote:
-> On Mon, 2021-11-29 at 19:13 +0100, Alexander Lobakin wrote:
->> From: Alexander Lobakin <alexandr.lobakin@intel.com>
->> Date: Mon, 29 Nov 2021 15:53:03 +0100
+On 2021-11-28 08:23, Sasha Neftin wrote:
+> On 11/22/2021 18:19, Kai-Heng Feng wrote:
+>> This reverts commit 3e55d231716ea361b1520b801c6778c4c48de102.
 >>
->>> From: Jesper Dangaard Brouer <jbrouer@redhat.com>
->>> Date: Mon, 29 Nov 2021 15:39:04 +0100
->>>
->>>> On 26/11/2021 17.16, Alexander Lobakin wrote:
->>>>> From: Jesper Dangaard Brouer <brouer@redhat.com>
->>>>> Date: Mon, 15 Nov 2021 21:36:30 +0100
->>>>>
->>>>>> Enabling the XDP bpf_prog access to data_meta area is a very
->>>>>> small
->>>>>> change. Hint passing 'true' to xdp_prepare_buff().
+>> Bugzilla:
+>> https://bugzilla.kernel.org/show_bug.cgi?id=214821>>>
+>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+>> ---
+<snip>
 >>
->> [ snip ]
-[ snip ]
->>
->>>
->>>> Tony is it worth resending a V2 of this patch?
->>>
->>> Tony, you can take it as it is if you want, I'll correct it later
->>> in
->>> mine. Up to you.
->>
->> My "fixup" looks like (in case of v2 needed or so):
+> Hello Kai-Heng,
+> I believe it is the wrong approach. Reverting this patch will put
+> corporate systems in an unpredictable state. SW will perform s0ix flow
+> independent to CSME. (The CSME firmware will continue run
+> independently.) LAN controller could be in an unknown state.
+> Please, afford us to continue to debug the problem (it is could be
+> incredible complexity)
 > 
-> Thanks Al. If Jesper is ok with this, I'll incorporate it in before
-> sending the pull request to netdev. Otherwise, you can do it as follow
-> on in the other series you previously referenced.
+> You always can skip the s0ix flow on problematic corporate systems by
+> using privilege flag: ethtool --set-priv-flags enp0s31f6 s0ix-enabled off
+> 
+> Also, there is no impact on consumer systems.
+> Sasha
 
-I'm fine with you incorporating this change. Thanks! :-)
---Jesper
+I know we've discussed this offline, and your team are working on the
+correct fix but I wanted to check based on your comments above that "it
+was complex". I thought, and maybe misunderstood, that it was going to
+be relatively simple to disable the change for older CPUs - which is the
+biggest problem caused by the patch.
 
+Right now it's breaking networking for folk who happen to have a vPro
+Tigerlake (and I believe even potentially Cometlake or older) system. I
+think the impact of that could potentially be quite severe.
+
+I understand not wanting to revert the change for the ADL platforms I
+believe this is targeting and to fix this instead - but your comment
+made me nervous that Linux users on older Intel based platforms are in
+for a long and painful wait - it is likely a lot of users....
+
+Can you or Dima confirm the fix for older platforms will be available
+soon? I appreciate the ADL platform might take a bit more work and time
+to get right.
+
+Thanks
+Mark
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
