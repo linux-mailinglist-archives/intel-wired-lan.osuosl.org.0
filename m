@@ -1,65 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18D68464546
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 04:09:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50A14464787
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 08:01:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6AAC9402B2;
-	Wed,  1 Dec 2021 03:09:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E58F2606A2;
+	Wed,  1 Dec 2021 07:01:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PslAOqsiWxbz; Wed,  1 Dec 2021 03:09:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qByOklOAN2C0; Wed,  1 Dec 2021 07:01:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 86ED4402A3;
-	Wed,  1 Dec 2021 03:09:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D04586061A;
+	Wed,  1 Dec 2021 07:01:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7202D1BF215
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 03:09:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9459D1BF873
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 07:01:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5F7CB605FA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 03:09:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8263C80F90
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 07:01:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zouu3AzSbhSr for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Dec 2021 03:09:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id euL3K-unwVCB for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Dec 2021 07:01:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C4BFB60591
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 03:09:31 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id DB23AB80D60;
- Wed,  1 Dec 2021 03:09:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69B04C53FCC;
- Wed,  1 Dec 2021 03:09:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638328167;
- bh=lwLCqyAnfFMpSY98Obo0M9K79bb8rX1EcoFWZxOrSK8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=DdkPMLmiU2x/t3ruorIwY+sAkdhYM1Gd2WtoJMaDVhKM/CxJm5ue2HDsrEEqFH+br
- 2/DN0UB83YCOiU+Brjlze6L2JvTYDvPqOKdLIKzs8NnhNMPO/4CcK2bLu9GlxgH9Bv
- iAIOvvQafkMG2ketjzGjyXlgtC7vsVTR6zOBgtUab7PldTWAzsrnkG5SBE4acJYTd1
- Al6U2FsHM+9FpTVtSDavQve0Bqz8F3lvUX1XPufv0vvMZFhLmZbqa59XF3HXy16Thx
- LPrUxCtIZv90IFqZHPGX05dHZZJFADEW258zT+uT0OlgRrQsUtMjnV1LrblnkXhQ9I
- KkpiDbPsOYKbA==
-Date: Tue, 30 Nov 2021 19:09:26 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Hayes Wang <hayeswang@realtek.com>
-Message-ID: <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
-References: <20211129101315.16372-381-nic_swsd@realtek.com>
- <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 85DB980F37
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 07:01:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10184"; a="233901867"
+X-IronPort-AV: E=Sophos;i="5.87,278,1631602800"; d="scan'208";a="233901867"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Nov 2021 23:01:10 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,278,1631602800"; d="scan'208";a="540709655"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 30 Nov 2021 23:01:09 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1msJc4-000EQo-QJ; Wed, 01 Dec 2021 07:01:08 +0000
+Date: Wed, 01 Dec 2021 15:00:29 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61a71d8d.E5+5nLAb2vvC3tFw%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
+Subject: [Intel-wired-lan] [tnguy-next-queue:40GbE] BUILD SUCCESS
+ 64430f70ba6fcd5872ac190f4ae3ddee3f48f00d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,60 +63,147 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- nic_swsd <nic_swsd@realtek.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 1 Dec 2021 02:57:00 +0000 Hayes Wang wrote:
-> Jakub Kicinski <kuba@kernel.org>
-> > Sent: Tuesday, November 30, 2021 2:00 AM
-> > Subject: Re: [RFC PATCH 0/4] r8169: support dash
-> > 
-> > On Mon, 29 Nov 2021 18:13:11 +0800 Hayes Wang wrote:  
-> > > These patches are used to support dash for RTL8111EP and
-> > > RTL8111FP(RTL81117).  
-> > 
-> > If I understand correctly DASH is a DMTF standard for remote control.
-> > 
-> > Since it's a standard I think we should have a common way of
-> > configuring it across drivers.  
-> 
-> Excuse me. I am not familiar with it.
-> What document or sample code could I start?
-> 
-> > Is enable/disable the only configuration
-> > that we will need?  
-> 
-> I don't think I could answer it before I understand the above way
-> you mentioned.
-> 
-> > We don't use sysfs too much these days, can we move the knob to
-> > devlink, please? (If we only need an on/off switch generic devlink param
-> > should be fine).  
-> 
-> Thanks. I would study devlink.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 40GbE
+branch HEAD: 64430f70ba6fcd5872ac190f4ae3ddee3f48f00d  iavf: Fix displaying queue statistics shown by ethtool
 
-I'm not sure how relevant it will be to you but this is the
-documentation we have:
+elapsed time: 725m
 
-https://www.kernel.org/doc/html/latest/networking/devlink/index.html
-https://www.kernel.org/doc/html/latest/networking/devlink/devlink-params.html
+configs tested: 118
+configs skipped: 3
 
-You'll need to add a generic parameter (define + a short description)
-like 325e0d0aa683 ("devlink: Add 'enable_iwarp' generic device param")
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-In terms of driver changes I think the most relevant example to you
-will be:
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm64                               defconfig
+i386                 randconfig-c001-20211130
+powerpc                       maple_defconfig
+sh                           se7722_defconfig
+sh                            titan_defconfig
+mips                    maltaup_xpa_defconfig
+arm                  colibri_pxa270_defconfig
+arm                    vt8500_v6_v7_defconfig
+mips                         rt305x_defconfig
+m68k                        mvme16x_defconfig
+arm                            xcep_defconfig
+powerpc                      ppc6xx_defconfig
+powerpc                        warp_defconfig
+powerpc                      bamboo_defconfig
+arc                              alldefconfig
+m68k                        m5272c3_defconfig
+arm                            qcom_defconfig
+sh                           se7712_defconfig
+arm                  randconfig-c002-20211129
+arm                  randconfig-c002-20211128
+ia64                                defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+parisc                              defconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+s390                             allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allmodconfig
+mips                             allyesconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a005-20211130
+i386                 randconfig-a002-20211130
+i386                 randconfig-a006-20211130
+i386                 randconfig-a004-20211130
+i386                 randconfig-a003-20211130
+i386                 randconfig-a001-20211130
+x86_64               randconfig-a011-20211128
+x86_64               randconfig-a014-20211128
+x86_64               randconfig-a012-20211128
+x86_64               randconfig-a016-20211128
+x86_64               randconfig-a013-20211128
+x86_64               randconfig-a015-20211128
+i386                 randconfig-a015-20211128
+i386                 randconfig-a016-20211128
+i386                 randconfig-a013-20211128
+i386                 randconfig-a012-20211128
+i386                 randconfig-a014-20211128
+i386                 randconfig-a011-20211128
+arc                  randconfig-r043-20211128
+s390                 randconfig-r044-20211128
+riscv                randconfig-r042-20211128
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                    rhel-8.3-kselftests
 
-drivers/net/ethernet/ti/cpsw_new.c
+clang tested configs:
+x86_64               randconfig-a001-20211128
+x86_64               randconfig-a006-20211128
+x86_64               randconfig-a003-20211128
+x86_64               randconfig-a005-20211128
+x86_64               randconfig-a004-20211128
+x86_64               randconfig-a002-20211128
+x86_64               randconfig-a014-20211130
+x86_64               randconfig-a013-20211130
+x86_64               randconfig-a012-20211130
+x86_64               randconfig-a011-20211130
+x86_64               randconfig-a016-20211130
+x86_64               randconfig-a015-20211130
+i386                 randconfig-a013-20211129
+i386                 randconfig-a012-20211129
+i386                 randconfig-a011-20211129
+i386                 randconfig-a015-20211129
+i386                 randconfig-a014-20211129
+i386                 randconfig-a016-20211129
+hexagon              randconfig-r045-20211129
+hexagon              randconfig-r041-20211129
+s390                 randconfig-r044-20211129
+riscv                randconfig-r042-20211129
+hexagon              randconfig-r045-20211128
+hexagon              randconfig-r041-20211128
 
-You need to call devlink_alloc(), devlink_register and
-devlink_params_register() (and the inverse functions).
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
