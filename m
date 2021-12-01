@@ -1,55 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4713E4643AA
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 00:54:05 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7BD3464442
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 01:51:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CE8A780C83;
-	Tue, 30 Nov 2021 23:54:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DE83060757;
+	Wed,  1 Dec 2021 00:51:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KL5r1VOvlDcJ; Tue, 30 Nov 2021 23:54:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FWNW89v7W6rk; Wed,  1 Dec 2021 00:51:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8A8780CE2;
-	Tue, 30 Nov 2021 23:54:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CD1186070A;
+	Wed,  1 Dec 2021 00:51:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D9B521BF23C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E1F9B1BF9B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 00:51:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2EBF340177
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:32 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CDA17400D1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 00:51:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Hhl0OMvEl6Mj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Nov 2021 23:53:30 +0000 (UTC)
+ with ESMTP id T8D6GSng-oa4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Dec 2021 00:51:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8A14F401DE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Nov 2021 23:53:30 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10184"; a="236164191"
-X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="236164191"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Nov 2021 15:53:02 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,277,1631602800"; d="scan'208";a="511726113"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.133])
- by fmsmga007.fm.intel.com with ESMTP; 30 Nov 2021 15:53:02 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 30 Nov 2021 15:51:46 -0800
-Message-Id: <20211130235146.28731-14-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20211130235146.28731-1-anthony.l.nguyen@intel.com>
-References: <20211130235146.28731-1-anthony.l.nguyen@intel.com>
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D40514012E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 00:51:19 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 94410CE1D64;
+ Wed,  1 Dec 2021 00:51:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A355C53FC7;
+ Wed,  1 Dec 2021 00:51:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638319872;
+ bh=603hQGx7M3Fo6rynDEeE7WkR9kjjmrt0v24vGZPo3qg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Mco++8171NAKa7VIuKVmGkcJSCV1AfBGEmFZec9Fomak+0VH24ySk9lWybztbfd6b
+ kILXl2DhHu1NV6CxmhUfn5Y8ykx3UVE5lbW4+LyrzYmokV4G/s5xrea18wHzwLno0Y
+ 5CMGcTtvhE+RQnKoaIe7kajKfhm1AvUGl5sff4a/IkW6npywtcvnfxtfhT/KTlQEKS
+ n9bjz3srrkxU++iob81zoUPMeHyHBA2VxeZfXP37/fzpjvguzFI52l/452zFqgzetz
+ VnPcm+0F85MsnnXkWCGldTq+8gwMGrviB7xMRBta/oETR64xM9sQYmpmmWX9QZK3HO
+ pqBHH6gzHOPYQ==
+Date: Tue, 30 Nov 2021 16:51:10 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Message-ID: <20211130165110.291af62a@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <c6f3caef-dac2-cc4a-b5b5-70e7fa54d73f@gmail.com>
+References: <6bb28d2f-4884-7696-0582-c26c35534bae@gmail.com>
+ <20211129171712.500e37cb@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <6edc23a1-5907-3a41-7b46-8d53c5664a56@gmail.com>
+ <20211130091206.488a541f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <c6f3caef-dac2-cc4a-b5b5-70e7fa54d73f@gmail.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v2 14/14] ice: Add ability for PF
- admin to enable VF VLAN pruning
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: fix deadlock caused by
+ taking RTNL in RPM resume path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,177 +76,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+On Tue, 30 Nov 2021 22:35:27 +0100 Heiner Kallweit wrote:
+> On 30.11.2021 18:12, Jakub Kicinski wrote:
+> >> Not sure whether igb uses RPM the same way as r8169. There the device
+> >> is runtime-suspended (D3hot) w/o link. Once cable is plugged in the PHY
+> >> triggers a PME, and PCI core runtime-resumes the device (MAC).
+> >> In this case RTNL isn't held by the caller. Therefore I don't think
+> >> it's safe to assume that all callers hold RTNL.  
+> > 
+> > No, no - I meant to leave the locking in but add ASSERT_RTNL() to catch
+> > if rpm == true && rtnl_held() == false.
+> >   
+> This is a valid case. Maybe it's not my day today, I still don't get
+> how we would benefit from adding an ASSERT_RTNL().
+> 
+> Based on the following I think that RPM resume and device open()
+> can't collide, because RPM resume is finished before open()
+> starts its actual work.
+> 
+> static int __igb_open(struct net_device *netdev, bool resuming)
+> {
+> ...
+> if (!resuming)
+> 		pm_runtime_get_sync(&pdev->dev);
 
-VFs by default are able to see all tagged traffic regardless of trust
-and VLAN filters. Based on legacy devices (i.e. ixgbe, i40e), customers
-expect VFs to receive all VLAN tagged traffic with a matching
-destination MAC.
-
-Add an ethtool private flag 'vf-vlan-pruning' and set the default to
-off so VFs will receive all VLAN traffic directed towards them. When
-the flag is turned on, VF will only be able to receive untagged
-traffic or traffic with VLAN tags it has created interfaces for.
-
-Also, the flag cannot be changed while any VFs are allocated. This was
-done to simplify the implementation. So, if this flag is needed, then
-the PF admin must enable it. If the user tries to enable the flag while
-VFs are active, then print an unsupported message with the
-vf-vlan-pruning flag included. In case multiple flags were specified, this
-makes it clear to the user which flag failed.
-
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h           |  1 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c   |  9 +++++++++
- .../ethernet/intel/ice/ice_vf_vsi_vlan_ops.c   | 18 ++++++++++++++++--
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c   | 14 ++++++++++++++
- 4 files changed, 40 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 14aaca8dbbb7..dc86f2562e0f 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -486,6 +486,7 @@ enum ice_pf_flags {
- 	ICE_FLAG_LEGACY_RX,
- 	ICE_FLAG_VF_TRUE_PROMISC_ENA,
- 	ICE_FLAG_MDD_AUTO_RESET_VF,
-+	ICE_FLAG_VF_VLAN_PRUNING,
- 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
- 	ICE_FLAG_GNSS,			/* GNSS successfully initialized */
- 	ICE_PF_FLAGS_NBITS		/* must be last */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index e2e3ef7fba7f..28ead0b4712f 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -164,6 +164,7 @@ static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
- 	ICE_PRIV_FLAG("vf-true-promisc-support",
- 		      ICE_FLAG_VF_TRUE_PROMISC_ENA),
- 	ICE_PRIV_FLAG("mdd-auto-reset-vf", ICE_FLAG_MDD_AUTO_RESET_VF),
-+	ICE_PRIV_FLAG("vf-vlan-pruning", ICE_FLAG_VF_VLAN_PRUNING),
- 	ICE_PRIV_FLAG("legacy-rx", ICE_FLAG_LEGACY_RX),
- };
- 
-@@ -1295,6 +1296,14 @@ static int ice_set_priv_flags(struct net_device *netdev, u32 flags)
- 		change_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags);
- 		ret = -EAGAIN;
- 	}
-+
-+	if (test_bit(ICE_FLAG_VF_VLAN_PRUNING, change_flags) &&
-+	    pf->num_alloc_vfs) {
-+		dev_err(dev, "vf-vlan-pruning: VLAN pruning cannot be changed while VFs are active.\n");
-+		/* toggle bit back to previous state */
-+		change_bit(ICE_FLAG_VF_VLAN_PRUNING, pf->flags);
-+		ret = -EOPNOTSUPP;
-+	}
- ethtool_exit:
- 	clear_bit(ICE_FLAG_ETHTOOL_CTXT, pf->flags);
- 	return ret;
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-index 4be29f97365c..39f2d36cabba 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-@@ -43,7 +43,6 @@ void ice_vf_vsi_init_vlan_ops(struct ice_vsi *vsi)
- 
- 		/* outer VLAN ops regardless of port VLAN config */
- 		vlan_ops->add_vlan = ice_vsi_add_vlan;
--		vlan_ops->ena_rx_filtering = ice_vsi_ena_rx_vlan_filtering;
- 		vlan_ops->dis_rx_filtering = ice_vsi_dis_rx_vlan_filtering;
- 		vlan_ops->ena_tx_filtering = ice_vsi_ena_tx_vlan_filtering;
- 		vlan_ops->dis_tx_filtering = ice_vsi_dis_tx_vlan_filtering;
-@@ -51,6 +50,8 @@ void ice_vf_vsi_init_vlan_ops(struct ice_vsi *vsi)
- 		if (ice_vf_is_port_vlan_ena(vf)) {
- 			/* setup outer VLAN ops */
- 			vlan_ops->set_port_vlan = ice_vsi_set_outer_port_vlan;
-+			vlan_ops->ena_rx_filtering =
-+				ice_vsi_ena_rx_vlan_filtering;
- 
- 			/* setup inner VLAN ops */
- 			vlan_ops = &vsi->inner_vlan_ops;
-@@ -61,6 +62,12 @@ void ice_vf_vsi_init_vlan_ops(struct ice_vsi *vsi)
- 			vlan_ops->ena_insertion = ice_vsi_ena_inner_insertion;
- 			vlan_ops->dis_insertion = ice_vsi_dis_inner_insertion;
- 		} else {
-+			if (!test_bit(ICE_FLAG_VF_VLAN_PRUNING, pf->flags))
-+				vlan_ops->ena_rx_filtering = noop_vlan;
-+			else
-+				vlan_ops->ena_rx_filtering =
-+					ice_vsi_ena_rx_vlan_filtering;
-+
- 			vlan_ops->del_vlan = ice_vsi_del_vlan;
- 			vlan_ops->ena_stripping = ice_vsi_ena_outer_stripping;
- 			vlan_ops->dis_stripping = ice_vsi_dis_outer_stripping;
-@@ -80,14 +87,21 @@ void ice_vf_vsi_init_vlan_ops(struct ice_vsi *vsi)
- 
- 		/* inner VLAN ops regardless of port VLAN config */
- 		vlan_ops->add_vlan = ice_vsi_add_vlan;
--		vlan_ops->ena_rx_filtering = ice_vsi_ena_rx_vlan_filtering;
- 		vlan_ops->dis_rx_filtering = ice_vsi_dis_rx_vlan_filtering;
- 		vlan_ops->ena_tx_filtering = ice_vsi_ena_tx_vlan_filtering;
- 		vlan_ops->dis_tx_filtering = ice_vsi_dis_tx_vlan_filtering;
- 
- 		if (ice_vf_is_port_vlan_ena(vf)) {
- 			vlan_ops->set_port_vlan = ice_vsi_set_inner_port_vlan;
-+			vlan_ops->ena_rx_filtering =
-+				ice_vsi_ena_rx_vlan_filtering;
- 		} else {
-+			if (!test_bit(ICE_FLAG_VF_VLAN_PRUNING, pf->flags))
-+				vlan_ops->ena_rx_filtering = noop_vlan;
-+			else
-+				vlan_ops->ena_rx_filtering =
-+					ice_vsi_ena_rx_vlan_filtering;
-+
- 			vlan_ops->del_vlan = ice_vsi_del_vlan;
- 			vlan_ops->ena_stripping = ice_vsi_ena_inner_stripping;
- 			vlan_ops->dis_stripping = ice_vsi_dis_inner_stripping;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index f1802de98b82..674d27c1a81d 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -807,6 +807,11 @@ static int ice_vf_rebuild_host_vlan_cfg(struct ice_vf *vf, struct ice_vsi *vsi)
- 		return err;
- 	}
- 
-+	err = vlan_ops->ena_rx_filtering(vsi);
-+	if (err)
-+		dev_warn(dev, "failed to enable Rx VLAN filtering for VF %d VSI %d during VF rebuild, error %d\n",
-+			 vf->vf_id, vsi->idx, err);
-+
- 	return 0;
- }
- 
-@@ -1791,6 +1796,7 @@ static void ice_vc_notify_vf_reset(struct ice_vf *vf)
-  */
- static int ice_init_vf_vsi_res(struct ice_vf *vf)
- {
-+	struct ice_vsi_vlan_ops *vlan_ops;
- 	struct ice_pf *pf = vf->pf;
- 	u8 broadcast[ETH_ALEN];
- 	struct ice_vsi *vsi;
-@@ -1811,6 +1817,14 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
- 		goto release_vsi;
- 	}
- 
-+	vlan_ops = ice_get_compat_vsi_vlan_ops(vsi);
-+	err = vlan_ops->ena_rx_filtering(vsi);
-+	if (err) {
-+		dev_warn(dev, "Failed to enable Rx VLAN filtering for VF %d\n",
-+			 vf->vf_id);
-+		goto release_vsi;
-+	}
-+
- 	eth_broadcast_addr(broadcast);
- 	err = ice_fltr_add_mac(vsi, broadcast, ICE_FWD_TO_VSI);
- 	if (err) {
--- 
-2.20.1
-
+Ah, thanks, gotta start looking at the code before I say things..
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
