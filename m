@@ -1,62 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3826C46543C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 18:48:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88A3A46550F
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Dec 2021 19:17:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C8BCB82B1B;
-	Wed,  1 Dec 2021 17:48:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1C5FB82F19;
+	Wed,  1 Dec 2021 18:17:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3TvWsHmO64we; Wed,  1 Dec 2021 17:48:01 +0000 (UTC)
+	with ESMTP id kzKv8SbxPlZg; Wed,  1 Dec 2021 18:17:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C699582AAA;
-	Wed,  1 Dec 2021 17:48:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2070A82CDD;
+	Wed,  1 Dec 2021 18:17:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0ECD41BF2A0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 17:47:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0EA6C1BF228
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 18:17:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id ED3BF4015B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 17:47:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF42E40343
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 18:17:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ADrAHgEwrJ5Q for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Dec 2021 17:47:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QJzX5NoZLcri for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Dec 2021 18:17:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EBF22400C6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 17:47:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10185"; a="236332809"
-X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; d="scan'208";a="236332809"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2021 09:47:54 -0800
-X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; d="scan'208";a="512129845"
-Received: from ammonk-mobl.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.212.205.220])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2021 09:47:53 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Thorsten Leemhuis <regressions@leemhuis.info>, Stefan Dietrich
- <roots@gmx.de>, Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <cd155eaf-8559-b7ad-d9da-818f59f21872@leemhuis.info>
-References: <924175a188159f4e03bd69908a91e606b574139b.camel@gmx.de>
- <YZ3q4OKhU2EPPttE@kroah.com>
- <8119066974f099aa11f08a4dad3653ac0ba32cd6.camel@gmx.de>
- <20211124153449.72c9cfcd@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <87a6htm4aj.fsf@intel.com>
- <227af6b0692a0a57f5fb349d4d9c914301753209.camel@gmx.de>
- <cd155eaf-8559-b7ad-d9da-818f59f21872@leemhuis.info>
-Date: Wed, 01 Dec 2021 09:47:52 -0800
-Message-ID: <87r1awtdx3.fsf@intel.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 233A44014C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Dec 2021 18:17:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10185"; a="223396650"
+X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; d="scan'208";a="223396650"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Dec 2021 10:17:06 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; d="scan'208";a="460124590"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
+ by orsmga006.jf.intel.com with ESMTP; 01 Dec 2021 10:17:02 -0800
+From: Maciej Machnikowski <maciej.machnikowski@intel.com>
+To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, arkadiusz.kubalewski@intel.com
+Date: Wed,  1 Dec 2021 19:02:04 +0100
+Message-Id: <20211201180208.640179-1-maciej.machnikowski@intel.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [REGRESSION] Kernel 5.15 reboots / freezes
- upon ifup/ifdown
+Subject: [Intel-wired-lan] [PATCH v4 net-next 0/4] Add ethtool interface for
+ SyncE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,109 +61,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: regressions@lists.linux.dev, Greg KH <greg@kroah.com>,
- stable@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: mkubecek@suse.cz, petrm@nvidia.com, abyagowi@fb.com, saeed@kernel.org,
+ richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
+ kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Synchronous Ethernet networks use a physical layer clock to syntonize
+the frequency across different network elements.
 
-Thorsten Leemhuis <regressions@leemhuis.info> writes:
+Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
+Equipment Clock (EEC) and have the ability to recover synchronization
+from the synchronization inputs - either traffic interfaces or external
+frequency sources.
+The EEC can synchronize its frequency (syntonize) to any of those sources.
+It is also able to select synchronization source through priority tables
+and synchronization status messaging. It also provides neccessary
+filtering and holdover capabilities
 
-> Hi, this is your Linux kernel regression tracker speaking.
->
-> On 25.11.21 09:41, Stefan Dietrich wrote:
->> 
->> thanks - this was spot-on: disabling CONFIG_PCIE_PTM resolves the issue
->> for latest 5.15.4 (stable from git) for both manual and network-manager
->> NIC configuration.
->> 
->> Let me know if I may assist in debugging this further.
->
-> What is the status here? There afaics hasn't been any progress since
-> nearly a week.
->
-> Vinicius, do you still have this on your radar? Or was there some progress?
->
-> Or is this really related to another issue, as Jakub suspected? Then it
-> might be solved by the patch here:
->
-> https://bugzilla.kernel.org/show_bug.cgi?id=215129
+This patch series introduces basic interface for reading and configuring
+recover clocks on a SyncE capable device
 
-What I am thinking right now is that we are facing a similar problem as
-the bug above, only in the igc driver. The difference is that it's the
-PCIe PTM messages (from the PCIe root) that are triggering the deadlock
-in the suspend/resume path in igc.
+v4:
+- Dropped EEC_STATE reporting (TBD: DPLL subsystem)
+- moved recovered clock configuration to ethtool netlink
 
-I will produce a patch in a few moments, very similar to the one in the
-bug report, let's see if it helps.
+v3:
+- remove RTM_GETRCLKRANGE
+- return state of all possible pins in the RTM_GETRCLKSTATE
+- clarify documentation
 
->
-> Ciao, Thorsten
->
->> On Wed, 2021-11-24 at 17:07 -0800, Vinicius Costa Gomes wrote:
->>> Hi Stefan,
->>>
->>> Jakub Kicinski <kuba@kernel.org> writes:
->>>
->>>> On Wed, 24 Nov 2021 18:20:40 +0100 Stefan Dietrich wrote:
->>>>> Hi all,
->>>>>
->>>>> six exciting hours and a lot of learning later, here it is.
->>>>> Symptomatically, the critical commit appears for me between
->>>>> 5.14.21-
->>>>> 051421-generic and 5.15.0-051500rc2-generic - I did not find an
->>>>> amd64
->>>>> build for rc1.
->>>>>
->>>>> Please see the git-bisect output below and let me know how I may
->>>>> further assist in debugging!
->>>>
->>>> Well, let's CC those involved, shall we? :)
->>>>
->>>> Thanks for working thru the bisection!
->>>>
->>>>> a90ec84837325df4b9a6798c2cc0df202b5680bd is the first bad commit
->>>>> commit a90ec84837325df4b9a6798c2cc0df202b5680bd
->>>>> Author: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->>>>> Date:   Mon Jul 26 20:36:57 2021 -0700
->>>>>
->>>>>     igc: Add support for PTP getcrosststamp()
->>>
->>> Oh! That's interesting.
->>>
->>> Can you try disabling CONFIG_PCIE_PTM in your kernel config? If it
->>> works, then it's a point in favor that this commit is indeed the
->>> problematic one.
->>>
->>> I am still trying to think of what could be causing the lockup you
->>> are
->>> seeing.
->>>
->>>
->
-> P.S.: As a Linux kernel regression tracker I'm getting a lot of reports
-> on my table. I can only look briefly into most of them. Unfortunately
-> therefore I sometimes will get things wrong or miss something important.
-> I hope that's not the case here; if you think it is, don't hesitate to
-> tell me about it in a public reply. That's in everyone's interest, as
-> what I wrote above might be misleading to everyone reading this; any
-> suggestion I gave they thus might sent someone reading this down the
-> wrong rabbit hole, which none of us wants.
->
-> BTW, I have no personal interest in this issue, which is tracked using
-> regzbot, my Linux kernel regression tracking bot
-> (https://linux-regtracking.leemhuis.info/regzbot/). I'm only posting
-> this mail to get things rolling again and hence don't need to be CC on
-> all further activities wrt to this regression.
->
-> #regzbot poke
+v2:
+- improved documentation
+- fixed kdoc warning
+
+RFC history:
+v2:
+- removed whitespace changes
+- fix issues reported by test robot
+v3:
+- Changed naming from SyncE to EEC
+- Clarify cover letter and commit message for patch 1
+v4:
+- Removed sync_source and pin_idx info
+- Changed one structure to attributes
+- Added EEC_SRC_PORT flag to indicate that the EEC is synchronized
+  to the recovered clock of a port that returns the state
+v5:
+- add EEC source as an optiona attribute
+- implement support for recovered clocks
+- align states returned by EEC to ITU-T G.781
+v6:
+- fix EEC clock state reporting
+- add documentation
+- fix descriptions in code comments
+
+Maciej Machnikowski (4):
+  ice: add support detecting features based on netlist
+  ethtool: Add ability to configure recovered clock for SyncE feature
+  ice: add support for monitoring SyncE DPLL state
+  ice: add support for SyncE recovered clocks
+
+ Documentation/networking/ethtool-netlink.rst  |  67 +++++
+ drivers/net/ethernet/intel/ice/ice.h          |   7 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  70 ++++-
+ drivers/net/ethernet/intel/ice/ice_common.c   | 224 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  20 +-
+ drivers/net/ethernet/intel/ice/ice_devids.h   |   3 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  97 +++++++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   6 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  35 +++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  49 ++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  36 +++
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ include/linux/ethtool.h                       |   9 +
+ include/uapi/linux/ethtool_netlink.h          |  21 ++
+ net/ethtool/Makefile                          |   3 +-
+ net/ethtool/netlink.c                         |  20 ++
+ net/ethtool/netlink.h                         |   4 +
+ net/ethtool/synce.c                           | 267 ++++++++++++++++++
+ 18 files changed, 935 insertions(+), 4 deletions(-)
+ create mode 100644 net/ethtool/synce.c
 
 -- 
-Vinicius
+2.26.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
