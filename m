@@ -1,84 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E8ED466870
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Dec 2021 17:36:00 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AAA6466878
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Dec 2021 17:40:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 031A883ED9;
-	Thu,  2 Dec 2021 16:35:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3F91F83F6A;
+	Thu,  2 Dec 2021 16:40:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ipuvYphQy-Dn; Thu,  2 Dec 2021 16:35:58 +0000 (UTC)
+	with ESMTP id AHmggLvKpTrb; Thu,  2 Dec 2021 16:40:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B651483EA1;
-	Thu,  2 Dec 2021 16:35:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BEC2483F85;
+	Thu,  2 Dec 2021 16:40:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8FA5B1BF5EA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:35:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 464B41BF5EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:40:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7DBBF83EA1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:35:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 357DF40A50
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:40:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KuXcOKpjZY7u for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Dec 2021 16:35:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from new1-smtp.messagingengine.com (new1-smtp.messagingengine.com
- [66.111.4.221])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5529283E3C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:35:52 +0000 (UTC)
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.nyi.internal (Postfix) with ESMTP id 57355580341;
- Thu,  2 Dec 2021 11:35:49 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Thu, 02 Dec 2021 11:35:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=qO5TWxz0VslvcOPL4PWFP816jxX9utC+/FimQIERU
- oE=; b=DvpkVY4eNf/ISg9YT7lCd2aobYCRqQiD7VaWgVEwTOrDLgJg/RsCVl9kR
- sgb2lmGWZIWsU8WfQnCJFATzzzT7Mu5CgGSonU7A561T7ib5noFGuAsTzmJl8kJL
- qpvdIv0prOhQ+6yzhnNz0ix7szhlWqY/3eeBNfFc1efjLljZwmuAx22XwnSgLHKl
- CRsYep934PXyCY7TblM5W1R8yMaFVDTUUIo5xYQY2PYZrJHcUsId8mKQL3M5srHp
- iT93plcXQd9iwwwOGL3qYCiTwrueTO+L+094r40oN6MHqds9AOMDqkHz4CwQMjO5
- jhboK8QuzfexHcuXSbeqN4r7tQLlA==
-X-ME-Sender: <xms:5PWoYXaqOPyybGbY5I3Zb_oCog9pe3AhEUUYReJn05L61kdPJwjGMA>
- <xme:5PWoYWa0BA4bjelgU2Se6lF9SZcP8i9FAowAKxH9MrlBgBl-Xvt0C7VsvuDdQ3ZlM
- rkIWSkk5LhFl7s>
-X-ME-Received: <xmr:5PWoYZ_LfOu10llXNK7sCW28cLN69Oo7pPcIHvL_YIcLTbMahD6kecWlHzYs-By_NrePUNShOfTG88NbnBh0mkgJGwmzRA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrieehgdeltdcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggugfgjsehtkeertddttdejnecuhfhrohhmpefkughoucfu
- tghhihhmmhgvlhcuoehiughoshgthhesihguohhstghhrdhorhhgqeenucggtffrrghtth
- gvrhhnpeefheethffhhfdvueevkeffffefjeejffefuedtfedvgfettdetkedtgfejtdeh
- udenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
- enucfrrghrrghmpehmrghilhhfrhhomhepihguohhstghhsehiughoshgthhdrohhrgh
-X-ME-Proxy: <xmx:5PWoYdr4ikClrFN0UvQNPm_Y5eE5-c5o_3QUTXh3XOSmAARhxRwZ5w>
- <xmx:5PWoYSqV-wd9DCF_9KQhJGiu1n2SybsYCB0K0-J5BeYIe5IriFRQeQ>
- <xmx:5PWoYTTbwN3opt7JNHRXOrIpWpeZpa2ES6EcOaAh8C_ZiSQShAYa7g>
- <xmx:5fWoYfQi1OGKqDll9M4pqZzdy6oYdmikVu9XJEgYTIpX_97nlRzK5Q>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 2 Dec 2021 11:35:47 -0500 (EST)
-Date: Thu, 2 Dec 2021 18:35:42 +0200
-From: Ido Schimmel <idosch@idosch.org>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-Message-ID: <Yaj13pwDKrG78W5Y@shredder>
-References: <20211201180208.640179-1-maciej.machnikowski@intel.com>
- <20211201180208.640179-3-maciej.machnikowski@intel.com>
- <Yai/e5jz3NZAg0pm@shredder>
- <MW5PR11MB5812455176BC656BABCFF1B0EA699@MW5PR11MB5812.namprd11.prod.outlook.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id v8rdyrVEbc1l for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Dec 2021 16:40:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6A5CE40A40
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Dec 2021 16:40:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10185"; a="297540771"
+X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="297540771"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2021 08:40:21 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="513256883"
+Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.244.133])
+ by orsmga008.jf.intel.com with ESMTP; 02 Dec 2021 08:40:21 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  2 Dec 2021 08:38:39 -0800
+Message-Id: <20211202163852.36436-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <MW5PR11MB5812455176BC656BABCFF1B0EA699@MW5PR11MB5812.namprd11.prod.outlook.com>
-Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 2/4] ethtool: Add ability
- to configure recovered clock for SyncE feature
+Subject: [Intel-wired-lan] [PATCH net-next v3 01/14] ice: Refactor
+ spoofcheck configuration functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,172 +60,261 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "petrm@nvidia.com" <petrm@nvidia.com>, "abyagowi@fb.com" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "saeed@kernel.org" <saeed@kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVGh1LCBEZWMgMDIsIDIwMjEgYXQgMDM6MTc6MDZQTSArMDAwMCwgTWFjaG5pa293c2tpLCBN
-YWNpZWogd3JvdGU6Cj4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+ID4gRnJvbTogSWRv
-IFNjaGltbWVsIDxpZG9zY2hAaWRvc2NoLm9yZz4KPiA+IFNlbnQ6IFRodXJzZGF5LCBEZWNlbWJl
-ciAyLCAyMDIxIDE6NDQgUE0KPiA+IFRvOiBNYWNobmlrb3dza2ksIE1hY2llaiA8bWFjaWVqLm1h
-Y2huaWtvd3NraUBpbnRlbC5jb20+Cj4gPiBTdWJqZWN0OiBSZTogW1BBVENIIHY0IG5ldC1uZXh0
-IDIvNF0gZXRodG9vbDogQWRkIGFiaWxpdHkgdG8gY29uZmlndXJlCj4gPiByZWNvdmVyZWQgY2xv
-Y2sgZm9yIFN5bmNFIGZlYXR1cmUKPiA+IAo+ID4gT24gV2VkLCBEZWMgMDEsIDIwMjEgYXQgMDc6
-MDI6MDZQTSArMDEwMCwgTWFjaWVqIE1hY2huaWtvd3NraSB3cm90ZToKPiA+ID4gK1JDTEtfR0VU
-Cj4gPiA+ICs9PT09PT09PQo+ID4gPiArCj4gPiA+ICtHZXQgc3RhdHVzIG9mIGFuIG91dHB1dCBw
-aW4gZm9yIFBIWSByZWNvdmVyZWQgZnJlcXVlbmN5IGNsb2NrLgo+ID4gPiArCj4gPiA+ICtSZXF1
-ZXN0IGNvbnRlbnRzOgo+ID4gPiArCj4gPiA+ICsgID09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09ICA9PT09PT0KPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPiA+
-ICsgIGBgRVRIVE9PTF9BX1JDTEtfSEVBREVSYGAgICAgICAgICAgICAgICBuZXN0ZWQgIHJlcXVl
-c3QgaGVhZGVyCj4gPiA+ICsgIGBgRVRIVE9PTF9BX1JDTEtfT1VUX1BJTl9JRFhgYCAgICAgICAg
-ICB1MzIgICAgIGluZGV4IG9mIGEgcGluCj4gPiA+ICsgID09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09ICA9PT09PT0KPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09Cj4g
-PiA+ICsKPiA+ID4gK0tlcm5lbCByZXNwb25zZSBjb250ZW50czoKPiA+ID4gKwo+ID4gPiArICA9
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAgPT09PT09Cj4gPiA9PT09PT09
-PT09PT09PT09PT09PT09PT09PQo+ID4gPiArICBgYEVUSFRPT0xfQV9SQ0xLX09VVF9QSU5fSURY
-YGAgICAgICAgICAgdTMyICAgICBpbmRleCBvZiBhIHBpbgo+ID4gPiArICBgYEVUSFRPT0xfQV9S
-Q0xLX1BJTl9GTEFHU2BgICAgICAgICAgICAgdTMyICAgICBzdGF0ZSBvZiBhIHBpbgo+ID4gPiAr
-ICBgYEVUSFRPT0xfQV9SQ0xLX1JBTkdFX01JTl9QSU5gYCAgICAgICAgdTMyICAgICBtaW4gaW5k
-ZXggb2YgUkNMSyBwaW5zCj4gPiA+ICsgIGBgRVRIVE9PTF9BX1JDTEtfUkFOR0VfTUFYX1BJTmBg
-ICAgICAgICB1MzIgICAgIG1heCBpbmRleCBvZiBSQ0xLCj4gPiBwaW5zCj4gPiA+ICsgID09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICA9PT09PT0KPiA+ID09PT09PT09PT09
-PT09PT09PT09PT09PT09Cj4gPiA+ICsKPiA+ID4gK1N1cHBvcnRlZCBkZXZpY2UgY2FuIGhhdmUg
-bXVsaXRwbGUgcmVmZXJlbmNlIHJlY292ZXIgY2xvY2sgcGlucyBhdmFpbGFibGUKPiA+IAo+ID4g
-cy9tdWxpdHBsZS9tdWx0aXBsZS8KPiA+IAo+ID4gPiArdG8gYmUgdXNlZCBhcyBzb3VyY2Ugb2Yg
-ZnJlcXVlbmN5IGZvciBhIERQTEwuCj4gPiA+ICtPbmNlIGEgcGluIG9uIGdpdmVuIHBvcnQgaXMg
-ZW5hYmxlZC4gVGhlIFBIWSByZWNvdmVyZWQgZnJlcXVlbmN5IGlzIGJlaW5nCj4gPiA+ICtmZWQg
-b250byB0aGF0IHBpbiwgYW5kIGNhbiBiZSB1c2VkIGJ5IERQTEwgdG8gc3luY2hvbml6ZSB3aXRo
-IGl0cyBzaWduYWwuCj4gPiAKPiA+IHMvc3luY2hvbml6ZS9zeW5jaHJvbml6ZS8KPiA+IAo+ID4g
-UGxlYXNlIHJ1biBhIHNwZWxsIGNoZWNrZXIgb24gZG9jdW1lbnRhdGlvbgo+ID4gCj4gPiA+ICtQ
-aW5zIGRvbid0IGhhdmUgdG8gc3RhcnQgd2l0aCBpbmRleCBlcXVhbCAwIC0gZGV2aWNlIGNhbiBh
-bHNvIGhhdmUgZGlmZmVyZW50Cj4gPiA+ICtleHRlcm5hbCBzb3VyY2VzIHBpbnMuCj4gPiA+ICsK
-PiA+ID4gK1RoZSBgYEVUSFRPT0xfQV9SQ0xLX09VVF9QSU5fSURYYGAgaXMgb3B0aW9uYWwgcGFy
-YW1ldGVyLiBJZiBwcmVzZW50Cj4gPiBpbgo+ID4gPiArdGhlIFJDTEtfR0VUIHJlcXVlc3QsIHRo
-ZSBgYEVUSFRPT0xfQV9SQ0xLX1BJTl9FTkFCTEVEYGAgaXMKPiA+IHByb3ZpZGVkIGluIGEKPiA+
-IAo+ID4gVGhlIGBFVEhUT09MX0FfUkNMS19QSU5fRU5BQkxFRGAgYXR0cmlidXRlIGlzIG5vIHdo
-ZXJlIHRvIGJlIGZvdW5kIGluCj4gPiB0aGlzIHN1Ym1pc3Npb24KPiA+IAo+ID4gPiArcmVzcG9u
-c2UsIGl0IGNvbnRhdGlucyBzdGF0ZSBvZiB0aGUgcGluIHBvaW50ZWQgYnkgdGhlIGluZGV4LiBW
-YWx1ZXMgYXJlOgo+ID4gCj4gPiBzL2NvbnRhdGlucy9jb250YWlucy8KPiA+IAo+ID4gPiArCj4g
-PiA+ICsuLiBrZXJuZWwtZG9jOjogaW5jbHVkZS91YXBpL2xpbnV4L2V0aHRvb2wuaAo+ID4gPiAr
-ICAgIDppZGVudGlmaWVyczogZXRodG9vbF9yY2xrX3Bpbl9zdGF0ZQo+ID4gCj4gPiBUaGlzIHN0
-cnVjdHVyZSBpcyBhbHNvIG5vIHdoZXJlIHRvIGJlIGZvdW5kCj4gPiAKPiA+ID4gKwo+ID4gPiAr
-SWYgYGBFVEhUT09MX0FfUkNMS19PVVRfUElOX0lEWGBgIGlzIG5vdCBwcmVzZW50IGluIHRoZSBS
-Q0xLX0dFVAo+ID4gcmVxdWVzdCwKPiA+ID4gK3RoZSByYW5nZSBvZiBhdmFpbGFibGUgcGlucyBp
-cyByZXR1cm5lZDoKPiA+ID4gK2BgRVRIVE9PTF9BX1JDTEtfUkFOR0VfTUlOX1BJTmBgIGlzIGxv
-d2VzdCBwb3NzaWJsZSBpbmRleCBvZiBhIHBpbgo+ID4gYXZhaWxhYmxlCj4gPiA+ICtmb3IgcmVj
-b3ZlcmluZyBmcmVxdWVuY3kgZnJvbSBQSFkuCj4gPiA+ICtgYEVUSFRPT0xfQV9SQ0xLX1JBTkdF
-X01BWF9QSU5gYCBpcyBoaWdoZXN0IHBvc3NpYmxlIGluZGV4IG9mIGEgcGluCj4gPiBhdmFpbGFi
-bGUKPiA+ID4gK2ZvciByZWNvdmVyaW5nIGZyZXF1ZW5jeSBmcm9tIFBIWS4KPiA+ID4gKwo+ID4g
-PiArUkNMS19TRVQKPiA+ID4gKz09PT09PT09PT0KPiA+ID4gKwo+ID4gPiArU2V0IHN0YXR1cyBv
-ZiBhbiBvdXRwdXQgcGluIGZvciBQSFkgcmVjb3ZlcmVkIGZyZXF1ZW5jeSBjbG9jay4KPiA+ID4g
-Kwo+ID4gPiArUmVxdWVzdCBjb250ZW50czoKPiA+ID4gKwo+ID4gPiArICA9PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PSAgPT09PT09Cj4gPiA9PT09PT09PT09PT09PT09PT09
-PT09PT0KPiA+ID4gKyAgYGBFVEhUT09MX0FfUkNMS19IRUFERVJgYCAgICAgICAgICAgICAgIG5l
-c3RlZCAgcmVxdWVzdCBoZWFkZXIKPiA+ID4gKyAgYGBFVEhUT09MX0FfUkNMS19PVVRfUElOX0lE
-WGBgICAgICAgICAgIHUzMiAgICAgaW5kZXggb2YgYSBwaW4KPiA+ID4gKyAgYGBFVEhUT09MX0Ff
-UkNMS19QSU5fRkxBR1NgYCAgICAgICAgICAgIHUzMiAgICAgIHJlcXVlc3RlZCBzdGF0ZQo+ID4g
-PiArICA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSAgPT09PT09Cj4gPiA9
-PT09PT09PT09PT09PT09PT09PT09PT0KPiA+ID4gKwo+ID4gPiArYGBFVEhUT09MX0FfUkNMS19P
-VVRfUElOX0lEWGBgIGlzIGEgaW5kZXggb2YgYSBwaW4gZm9yIHdoaWNoIHRoZQo+ID4gY2hhbmdl
-IG9mCj4gPiA+ICtzdGF0ZSBpcyByZXF1ZXN0ZWQuIFZhbHVlcyBvZiBgYEVUSFRPT0xfQV9SQ0xL
-X1BJTl9FTkFCTEVEYGAgYXJlOgo+ID4gPiArCj4gPiA+ICsuLiBrZXJuZWwtZG9jOjogaW5jbHVk
-ZS91YXBpL2xpbnV4L2V0aHRvb2wuaAo+ID4gPiArICAgIDppZGVudGlmaWVyczogZXRodG9vbF9y
-Y2xrX3Bpbl9zdGF0ZQo+ID4gCj4gPiBTYW1lLgo+IAo+IERvbmUgLSByZXdyaXR0ZW4gdGhlIG1h
-bnVhbAo+IAo+ID4gTG9va2luZyBhdCB0aGUgZGlhZ3JhbSBmcm9tIHRoZSBwcmV2aW91cyBzdWJt
-aXNzaW9uIFsxXToKPiA+IAo+ID4gICAgICAg4pSM4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSs4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCj4gPiAgICAgICDilIIgUlgg
-ICAgICAg4pSCIFRYICAgICAgIOKUggo+ID4gICAxICAg4pSCIHBvcnRzICAgIOKUgiBwb3J0cyAg
-ICDilIIgMQo+ID4gICDilIDilIDilIDilrrilJzilIDilIDilIDilIDilIDilJAgICAg4pSCICAg
-ICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugo+ID4gICAyICAg4pSCICAgICDilIIgICAg4pSC
-ICAgICAgICAgIOKUgiAyCj4gPiAgIOKUgOKUgOKUgOKWuuKUnOKUgOKUgOKUgOKUkCDilIIgICAg
-4pSCICAgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugo+ID4gICAzICAg4pSCICAg4pSCIOKU
-giAgICDilIIgICAgICAgICAg4pSCIDMKPiA+ICAg4pSA4pSA4pSA4pa64pSc4pSA4pSQIOKUgiDi
-lIIgICAg4pSCICAgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKWugo+ID4gICAgICAg4pSCIOKW
-vCDilrwg4pa8ICAgIOKUgiAgICAgICAgICDilIIKPiA+ICAgICAgIOKUgiDilIDilIDilIDilIDi
-lIDilIAgICDilIIgICAgICAgICAg4pSCCj4gPiAgICAgICDilIIgXF9fX18vICAg4pSCICAgICAg
-ICAgIOKUggo+ID4gICAgICAg4pSU4pSA4pSA4pS84pSA4pSA4pS84pSA4pSA4pSA4pSA4pS04pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCj4gPiAgICAgICAgIDHilIIgMuKUgiAgICAg
-ICAg4payCj4gPiAgUkNMSyBvdXTilIIgIOKUgiAgICAgICAg4pSCIFRYIENMSyBpbgo+ID4gICAg
-ICAgICAg4pa8ICDilrwgICAgICAgIOKUggo+ID4gICAgICAgIOKUjOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUtOKUgOKUgOKUgOKUkAo+ID4gICAgICAgIOKUgiAgICAg
-ICAgICAgICAgICAg4pSCCj4gPiAgICAgICAg4pSCICAgICAgIFNFQyAgICAgICDilIIKPiA+ICAg
-ICAgICDilIIgICAgICAgICAgICAgICAgIOKUggo+ID4gICAgICAgIOKUlOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAo+ID4gCj4gPiBHaXZlbiBh
-IG5ldGRldiAoMSwgMiBvciAzIGluIHRoZSBkaWFncmFtKSwgdGhlIFJDTEtfU0VUIG1lc3NhZ2Ug
-YWxsb3dzCj4gPiBtZSB0byByZWRpcmVjdCB0aGUgZnJlcXVlbmN5IHJlY292ZXJlZCBmcm9tIHRo
-aXMgbmV0ZGV2IHRvIHRoZSBFRUMgdmlhCj4gPiBlaXRoZXIgcGluIDEsIHBpbiAyIG9yIGJvdGgu
-Cj4gPiAKPiA+IEdpdmVuIGEgbmV0ZGV2LCB0aGUgUkNMS19HRVQgbWVzc2FnZSBhbGxvd3MgbWUg
-dG8gcXVlcnkgdGhlIHJhbmdlIG9mCj4gPiBwaW5zIChSQ0xLIG91dCAxLTIgaW4gdGhlIGRpYWdy
-YW0pIHRocm91Z2ggd2hpY2ggdGhlIGZyZXF1ZW5jeSBjYW4gYmUKPiA+IGZlZCBpbnRvIHRoZSBF
-RUMuCj4gPiAKPiA+IFF1ZXN0aW9uczoKPiA+IAo+ID4gMS4gVGhlIHF1ZXJ5IGZvciBhbGwgdGhl
-IGFib3ZlIG5ldGRldnMgd2lsbCByZXR1cm4gdGhlIHNhbWUgcmFuZ2Ugb2YKPiA+IHBpbnMuIEhv
-dyBkb2VzIHVzZXIgc3BhY2Uga25vdyB0aGF0IHRoZXNlIGFyZSB0aGUgc2FtZSBwaW5zPyBUaGF0
-IGlzLAo+ID4gaG93IGRvZXMgdXNlciBzcGFjZSBrbm93IHRoYXQgUkNMS19TRVQgbWVzc2FnZSB0
-byByZWRpcmVjdCB0aGUgZnJlcXVlbmN5Cj4gPiByZWNvdmVyZWQgZnJvbSBuZXRkZXYgMSB0byBw
-aW4gMSB3aWxsIGJlIG92ZXJyaWRkZW4gYnkgdGhlIHNhbWUgbWVzc2FnZQo+ID4gYnV0IGZvciBu
-ZXRkZXYgMj8KPiAKPiBXZSBkb24ndCBoYXZlIGEgd2F5IHRvIGRvIHNvIHJpZ2h0IG5vdy4gV2hl
-biB3ZSBoYXZlIEVFQyBzdWJzeXN0ZW0gaW4gcGxhY2UKPiB0aGUgcmlnaHQgdGhpbmcgdG8gZG8g
-d2lsbCBiZSB0byBhZGQgRUVDIGlucHV0IGluZGV4IGFuZCBFRUMgaW5kZXggYXMgYWRkaXRpb25h
-bAo+IGFyZ3VtZW50cwo+IAo+ID4gMi4gSG93IGRvZXMgdXNlciBzcGFjZSBrbm93IHRoZSBtYXBw
-aW5nIGJldHdlZW4gYSBuZXRkZXYgYW5kIGFuIEVFQz8KPiA+IFRoYXQgaXMsIGhvdyBkb2VzIHVz
-ZXIgc3BhY2Uga25vdyB0aGF0IFJDTEtfU0VUIG1lc3NhZ2UgZm9yIG5ldGRldiAxCj4gPiB3aWxs
-IGNhdXNlIHRoZSBUeCBmcmVxdWVuY3kgb2YgbmV0ZGV2IDIgdG8gY2hhbmdlIGFjY29yZGluZyB0
-byB0aGUKPiA+IGZyZXF1ZW5jeSByZWNvdmVyZWQgZnJvbSBuZXRkZXYgMT8KPiAKPiBEaXR0byAt
-IGN1cnJlbnRseSB3ZSBkb24ndCBoYXZlIGFueSBlbnRpdHkgdG8gbGluayB0aGUgcGlucyB0byBB
-VE0sCj4gYnV0IHdlIGNhbiBhZGRyZXNzIHRoYXQgaW4gdXNlcnNwYWNlIGp1c3QgbGlrZSBQVFAg
-cGlucyBhcmUgdXNlZCBub3cKPiAKPiA+IDMuIElmIHVzZXIgc3BhY2Ugc2VuZHMgdHdvIFJDTEtf
-U0VUIG1lc3NhZ2VzIHRvIHJlZGlyZWN0IHRoZSBmcmVxdWVuY3kKPiA+IHJlY292ZXJlZCBmcm9t
-IG5ldGRldiAxIHRvIFJDTEsgb3V0IDEgYW5kIGZyb20gbmV0ZGV2IDIgdG8gUkNMSyBvdXQgMiwK
-PiA+IGhvdyBkb2VzIGl0IGtub3cgd2hpY2ggcmVjb3ZlcmVkIGZyZXF1ZW5jeSBpcyBhY3R1YWxs
-eSB1c2VkIGFuIGlucHV0IHRvCj4gPiB0aGUgRUVDPwoKVXNlciBzcGFjZSBkb2Vzbid0IGtub3cg
-dGhpcyBhcyB3ZWxsPwoKPiA+Cj4gPiA0LiBXaHkgdGhlc2UgcGlucyBhcmUgcmVwcmVzZW50ZWQg
-YXMgYXR0cmlidXRlcyBvZiBhIG5ldGRldiBhbmQgbm90IGFzCj4gPiBhdHRyaWJ1dGVzIG9mIHRo
-ZSBFRUM/IFRoYXQgaXMsIHdoeSBhcmUgdGhleSByZXByZXNlbnRlZCBhcyBvdXRwdXQgcGlucwo+
-ID4gb2YgdGhlIFBIWSBhcyBvcHBvc2VkIHRvIGlucHV0IHBpbnMgb2YgdGhlIEVFQz8KPiAKPiBU
-aGV5IGFyZSAyIHNlcGFyYXRlIGJlaW5ncy4gUmVjb3ZlcmVkIGNsb2NrIG91dHB1dHMgYXJlIGNv
-bnRyb2xsZWQKPiBzZXBhcmF0ZWx5IGZyb20gRUVDIGlucHV0cy4gCgpTZXBhcmF0ZSBob3c/IFdo
-YXQgZG9lcyBpdCBtZWFuIHRoYXQgdGhleSBhcmUgY29udHJvbGxlZCBzZXBhcmF0ZWx5PyBJbgp3
-aGljaCBzZW5zZT8gVGhhdCByZWRpcmVjdGlvbiBvZiByZWNvdmVyZWQgZnJlcXVlbmN5IHRvIHBp
-biBpcwpjb250cm9sbGVkIHZpYSBQSFkgcmVnaXN0ZXJzIHdoZXJlYXMgcHJpb3JpdHkgc2V0dGlu
-ZyBiZXR3ZWVuIEVFQyBpbnB1dHMKaXMgY29udHJvbGxlZCB2aWEgRUVDIHJlZ2lzdGVycz8gSWYg
-c28sIHRoaXMgaXMgYW4gaW1wbGVtZW50YXRpb24gZGV0YWlsCm9mIGEgc3BlY2lmaWMgZGVzaWdu
-LiBJdCBpcyBub3Qgb2YgYW55IGltcG9ydGFuY2UgdG8gdXNlciBzcGFjZS4KCj4gSWYgd2UgbWl4
-IHRoZW0gaXQnbGwgYmUgaGFyZCB0byBjb250cm9sIGV2ZXJ5dGhpbmcgZXNwZWNpYWxseSB0aGF0
-IGEKPiBzaW5nbGUgRUVDIGNhbiBzdXBwb3J0IG11bHRpcGxlIGRldmljZXMuCgpIYXJkIGhvdz8g
-UGxlYXNlIHByb3ZpZGUgY29uY3JldGUgZXhhbXBsZXMuCgpXaGF0IGRvIHlvdSBtZWFuIGJ5ICJt
-dWx0aXBsZSBkZXZpY2VzIj8gQSBtdWx0aS1wb3J0IGFkYXB0ZXIgd2l0aCBhCnNpbmdsZSBFRUMg
-b3Igc29tZXRoaW5nIGVsc2U/Cgo+IEFsc28gaWYgd2UgbWFrZSB0aG9zZSBwaW5zIGF0dHJpYnV0
-ZXMgb2YgdGhlIEVFQyBpdCdsbCBiZWNvbWUgZXh0cmVtYWxseSBoYXJkCj4gdG8gbWFwIHRoZW0g
-dG8gbmV0ZGV2cyBhbmQgY29udHJvbCB0aGVtIGZyb20gdGhlIHVzZXJzcGFjZSBhcHAgdGhhdCB3
-aWxsCj4gcmVjZWl2ZSB0aGUgRVNNQyBtZXNzYWdlIHdpdGggYSBnaXZlbiBRTCBsZXZlbCBvbiBu
-ZXRkZXYgWC4KCkhhcmQgaG93PyBXaGF0IGlzIHRoZSBwcm9ibGVtIHdpdGggc29tZXRoaW5nIGxp
-a2U6CgojIGVlYyBzZXQgc291cmNlIDEgdHlwZSBuZXRkZXYgZGV2IHN3cDEKClRoZSBFRUMgb2Jq
-ZWN0IHNob3VsZCBiZSByZWdpc3RlcmVkIGJ5IHRoZSBzYW1lIGVudGl0eSB0aGF0IHJlZ2lzdGVy
-cwp0aGUgbmV0ZGV2cyB3aG9zZSBUeCBmcmVxdWVuY3kgaXMgY29udHJvbGxlZCBieSB0aGUgRUVD
-LCB0aGUgTUFDIGRyaXZlci4KCj4gIAo+ID4gNS4gV2hhdCBpcyB0aGUgcHJvYmxlbSB3aXRoIHRo
-ZSBmb2xsb3dpbmcgbW9kZWw/Cj4gPiAKPiA+IC0gVGhlIEVFQyBpcyBhIHNlcGFyYXRlIG9iamVj
-dCB3aXRoIGZvbGxvd2luZyBhdHRyaWJ1dGVzOgo+ID4gICAqIFN0YXRlOiBJbnZhbGlkIC8gRnJl
-ZXJ1biAvIExvY2tlZCAvIGV0Ywo+ID4gICAqIFNvdXJjZXM6IE5ldGRldiAvIGV4dGVybmFsIC8g
-ZXRjCj4gPiAgICogUG90ZW50aWFsbHkgbW9yZQo+ID4gCj4gPiAtIE5vdGlmaWNhdGlvbnMgYXJl
-IGVtaXR0ZWQgdG8gdXNlciBzcGFjZSB3aGVuIHRoZSBzdGF0ZSBvZiB0aGUgRUVDCj4gPiAgIGNo
-YW5nZXMuIERyaXZlcnMgd2lsbCBlaXRoZXIgcG9sbCB0aGUgc3RhdGUgZnJvbSB0aGUgZGV2aWNl
-IG9yIGdldAo+ID4gICBpbnRlcnJ1cHRzCj4gPiAKPiA+IC0gVGhlIG1hcHBpbmcgZnJvbSBuZXRk
-ZXYgdG8gRUVDIGlzIHF1ZXJpZWQgdmlhIGV0aHRvb2wKPiAKPiBZZXAgLSB0aGF0IHdpbGwgYmUg
-cGFydCBvZiB0aGUgRUVDIChEUExMKSBzdWJzeXN0ZW0KClRoaXMgbW9kZWwgYXZvaWRzIGFsbCB0
-aGUgcHJvYmxlbXMgSSBwb2ludGVkIG91dCBpbiB0aGUgY3VycmVudApwcm9wb3NhbC4KCj4gCj4g
-PiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIwMjExMTEwMTE0NDQ4LjI3OTIz
-MTQtMS0KPiA+IG1hY2llai5tYWNobmlrb3dza2lAaW50ZWwuY29tLwpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
-aXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Brett Creeley <brett.creeley@intel.com>
+
+Add functions to configure Tx VLAN antispoof based on iproute
+configuration and/or VLAN mode and VF driver support. This is needed
+later so the driver can control when it can be configured. Also, add
+functions that can be used to enable and disable MAC and VLAN
+spoofcheck. Move spoofchk configuration during VSI setup into the
+SR-IOV initialization path and into the post VSI rebuild flow for VF
+VSIs.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  19 ---
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 159 ++++++++++++++----
+ 2 files changed, 128 insertions(+), 50 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 5ef959769104..2db3cd6d8907 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1125,25 +1125,6 @@ static int ice_vsi_init(struct ice_vsi *vsi, bool init_vsi)
+ 				cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
+ 	}
+ 
+-	/* enable/disable MAC and VLAN anti-spoof when spoofchk is on/off
+-	 * respectively
+-	 */
+-	if (vsi->type == ICE_VSI_VF) {
+-		ctxt->info.valid_sections |=
+-			cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
+-		if (pf->vf[vsi->vf_id].spoofchk) {
+-			ctxt->info.sec_flags |=
+-				ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
+-				(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
+-				 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
+-		} else {
+-			ctxt->info.sec_flags &=
+-				~(ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
+-				  (ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
+-				   ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S));
+-		}
+-	}
+-
+ 	/* Allow control frames out of main VSI */
+ 	if (vsi->type == ICE_VSI_PF) {
+ 		ctxt->info.sec_flags |= ICE_AQ_VSI_SEC_FLAG_ALLOW_DEST_OVRD;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 8f2045b7c29f..f947d936def3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -837,6 +837,114 @@ static int ice_vf_rebuild_host_vlan_cfg(struct ice_vf *vf)
+ 	return 0;
+ }
+ 
++static int ice_cfg_vlan_antispoof(struct ice_vsi *vsi, bool enable)
++{
++	struct ice_vsi_ctx *ctx;
++	int err;
++
++	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
++	if (!ctx)
++		return -ENOMEM;
++
++	ctx->info.sec_flags = vsi->info.sec_flags;
++	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
++
++	if (enable)
++		ctx->info.sec_flags |= ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
++			ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S;
++	else
++		ctx->info.sec_flags &= ~(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
++					 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
++
++	err = ice_update_vsi(&vsi->back->hw, vsi->idx, ctx, NULL);
++	if (err)
++		dev_err(ice_pf_to_dev(vsi->back), "Failed to configure Tx VLAN anti-spoof %s for VSI %d, error %d\n",
++			enable ? "ON" : "OFF", vsi->vsi_num, err);
++	else
++		vsi->info.sec_flags = ctx->info.sec_flags;
++
++	kfree(ctx);
++
++	return err;
++}
++
++static int ice_cfg_mac_antispoof(struct ice_vsi *vsi, bool enable)
++{
++	struct ice_vsi_ctx *ctx;
++	int err;
++
++	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
++	if (!ctx)
++		return -ENOMEM;
++
++	ctx->info.sec_flags = vsi->info.sec_flags;
++	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
++
++	if (enable)
++		ctx->info.sec_flags |= ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
++	else
++		ctx->info.sec_flags &= ~ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
++
++	err = ice_update_vsi(&vsi->back->hw, vsi->idx, ctx, NULL);
++	if (err)
++		dev_err(ice_pf_to_dev(vsi->back), "Failed to configure Tx MAC anti-spoof %s for VSI %d, error %d\n",
++			enable ? "ON" : "OFF", vsi->vsi_num, err);
++	else
++		vsi->info.sec_flags = ctx->info.sec_flags;
++
++	kfree(ctx);
++
++	return err;
++}
++
++/**
++ * ice_vsi_ena_spoofchk - enable Tx spoof checking for this VSI
++ * @vsi: VSI to enable Tx spoof checking for
++ */
++static int ice_vsi_ena_spoofchk(struct ice_vsi *vsi)
++{
++	int err;
++
++	err = ice_cfg_vlan_antispoof(vsi, true);
++	if (err)
++		return err;
++
++	return ice_cfg_mac_antispoof(vsi, true);
++}
++
++/**
++ * ice_vsi_dis_spoofchk - disable Tx spoof checking for this VSI
++ * @vsi: VSI to disable Tx spoof checking for
++ */
++static int ice_vsi_dis_spoofchk(struct ice_vsi *vsi)
++{
++	int err;
++
++	err = ice_cfg_vlan_antispoof(vsi, false);
++	if (err)
++		return err;
++
++	return ice_cfg_mac_antispoof(vsi, false);
++}
++
++/**
++ * ice_vf_set_spoofchk_cfg - apply Tx spoof checking setting
++ * @vf: VF set spoofchk for
++ * @vsi: VSI associated to the VF
++ */
++static int
++ice_vf_set_spoofchk_cfg(struct ice_vf *vf, struct ice_vsi *vsi)
++{
++	int err;
++
++	if (vf->spoofchk)
++		err = ice_vsi_ena_spoofchk(vsi);
++	else
++		err = ice_vsi_dis_spoofchk(vsi);
++
++	return err;
++}
++
+ /**
+  * ice_vf_rebuild_host_mac_cfg - add broadcast and the VF's perm_addr/LAA
+  * @vf: VF to add MAC filters for
+@@ -1344,6 +1452,10 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
+ 		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
+ 			vf->vf_id);
+ 
++	if (ice_vf_set_spoofchk_cfg(vf, vsi))
++		dev_err(dev, "failed to rebuild spoofchk configuration for VF %d\n",
++			vf->vf_id);
++
+ 	/* rebuild aggregator node config for main VF VSI */
+ 	ice_vf_rebuild_aggregator_node_cfg(vsi);
+ }
+@@ -1758,6 +1870,13 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
+ 		goto release_vsi;
+ 	}
+ 
++	err = ice_vf_set_spoofchk_cfg(vf, vsi);
++	if (err) {
++		dev_warn(dev, "Failed to initialize spoofchk setting for VF %d\n",
++			 vf->vf_id);
++		goto release_vsi;
++	}
++
+ 	vf->num_mac = 1;
+ 
+ 	return 0;
+@@ -2891,7 +3010,6 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+ 	struct ice_pf *pf = np->vsi->back;
+-	struct ice_vsi_ctx *ctx;
+ 	struct ice_vsi *vf_vsi;
+ 	struct device *dev;
+ 	struct ice_vf *vf;
+@@ -2924,37 +3042,16 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 		return 0;
+ 	}
+ 
+-	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+-	if (!ctx)
+-		return -ENOMEM;
+-
+-	ctx->info.sec_flags = vf_vsi->info.sec_flags;
+-	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
+-	if (ena) {
+-		ctx->info.sec_flags |=
+-			ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
+-			(ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
+-			 ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S);
+-	} else {
+-		ctx->info.sec_flags &=
+-			~(ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF |
+-			  (ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
+-			   ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S));
+-	}
+-
+-	ret = ice_update_vsi(&pf->hw, vf_vsi->idx, ctx, NULL);
+-	if (ret) {
+-		dev_err(dev, "Failed to %sable spoofchk on VF %d VSI %d\n error %d\n",
+-			ena ? "en" : "dis", vf->vf_id, vf_vsi->vsi_num, ret);
+-		goto out;
+-	}
+-
+-	/* only update spoofchk state and VSI context on success */
+-	vf_vsi->info.sec_flags = ctx->info.sec_flags;
+-	vf->spoofchk = ena;
++	if (ena)
++		ret = ice_vsi_ena_spoofchk(vf_vsi);
++	else
++		ret = ice_vsi_dis_spoofchk(vf_vsi);
++	if (ret)
++		dev_err(dev, "Failed to set spoofchk %s for VF %d VSI %d\n error %d\n",
++			ena ? "ON" : "OFF", vf->vf_id, vf_vsi->vsi_num, ret);
++	else
++		vf->spoofchk = ena;
+ 
+-out:
+-	kfree(ctx);
+ 	return ret;
+ }
+ 
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
