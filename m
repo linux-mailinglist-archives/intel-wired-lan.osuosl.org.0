@@ -1,82 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7C93467D76
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Dec 2021 19:45:21 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E84AF467DC0
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Dec 2021 20:07:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3796C60BFA;
-	Fri,  3 Dec 2021 18:45:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 31D5C83268;
+	Fri,  3 Dec 2021 19:07:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bHfGJOmeztHo; Fri,  3 Dec 2021 18:45:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1SypUq43641t; Fri,  3 Dec 2021 19:07:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D366560BC3;
-	Fri,  3 Dec 2021 18:45:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D4C61831C1;
+	Fri,  3 Dec 2021 19:07:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 59BEA1BF3CC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 18:45:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F55E1BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 19:07:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4894482B1A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 18:45:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 397B64092D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 19:07:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=nvidia.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PGeelnOoVnxR for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Dec 2021 18:45:08 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2050.outbound.protection.outlook.com [40.107.243.50])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CD3DF828F7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 18:45:08 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0Gq3b5fi-Otm for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Dec 2021 19:07:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 202CD4090F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Dec 2021 19:07:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10187"; a="223911310"
+X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="223911310"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Dec 2021 11:07:19 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="478428239"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by orsmga002.jf.intel.com with ESMTP; 03 Dec 2021 11:07:18 -0800
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Fri, 3 Dec 2021 11:07:18 -0800
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Fri, 3 Dec 2021 11:07:17 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Fri, 3 Dec 2021 11:07:17 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.109)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Fri, 3 Dec 2021 11:07:17 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jKKxROA6G8N8fWKJczFQhztE5qoetApLlsuMSl1VQGJMNqjLtl9qeQyl4D3q1X7VurYILjznRlDWVTU6RGefFPToL7IgL1Cv6cenH0z8YQU9deQ+cfrZLH2x5n6P1SuRdb6gG6B+J+kO7zFvR6wp9hUu8yeQVGSZf6H87S5Jwuv12M4qsaggFwPW1T61cJqQyp6iXtYl9Knh03t//gN/qVniSKPDKUDUSCt2iWLqFml2hqQ5GAyIGeR0BRuR8zKXWC4xDsm1okEXltsj9G46YTDr/bPL14Pdu4f/OJXKkRGEt7RXrw2Zvw1AJLaSA2MQE+LZVrMu3Bda4B1nYBZMoA==
+ b=ee5U0BqZgO/uQ549BJAvHHCbTLiyo3LlyyRpYo6iEXn6dJkN/Q+kvd32+4HWYjweg+rAR8Vo864JPcj99PMqZYFBubhA2GyAi2Hr8WrUJEWvxTVezE4FbWOqLw+HemYGYO3NFZGLe8PshPlD0EQwhLNwOr2hymhotie+mNKSQuN/95L9QjLNzNrLDqVjdCVBnl+yTfCtZj1q84qa9Fw7on+cLwtgeQ7bgvNlYSS1uHtijOmZrlyg1rorRUXbXTFOqgmEdu2ZsUgZVCgqCNgFmdiqk7Yrtu2Y6o3yQtrAN8tvRinVVa4z3xjCdQYDcADdIoulVSMe4We04zGq3+vtlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8mUC72Xw4PiEgi22f1i6MVaGN5WAFoXfO0HFHEVbdQc=;
- b=Q6HRsk1RkLh+KElXLoTPfICk9CYN2PtV2CgQZwTqattcJ4E8IYv+CyBMIIksrpGvm0QdfnWYwOfEe6VVgOHzJ1W/X0a/iI0tccu07nUTXZNW7FWVt3vVj/cpgfT7SaeW9IbouMOs54nmHd715cOQxWiX4X0/EXontMW7NDm+p4r1E8aGsnLqI//E9eOqP8vTel+z6V/IW4wS/ZpJWN9E7QGI7SSJjazrMqaNHoA3z3mRSemsEMji7DzqoCMoeVeOvwNPZeSkBxZNrWIuE7KU0wRYY/SJAqfMSXkejLTx/NVSTIglHUUT7+IV5yofS2nhpe7nHaYa6YazYpZjA41C8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
+ bh=fkfqEHOcwy+UdgD8bczw2lPUnPnrXhMuyxbc595cl3k=;
+ b=VZUkOue3Ps9zeuXn2waucLTtIION5iyqpTupzRyATObI3+AZBFSC3nuqpDqe7yen8/1Et2sqxxUy2GXrgFmtDt3MGMW15kN/Zc+EdTYCI7Np6v51c3Ps6zUy7uAzCVrw5qjVsng2apD6QeXez8IWWxDAJtNcIOe6EZCgKGfXg7z0jXPoCeKFFyYBzsyG3tEtXz5zJ/QGKwE87lkxciQQqr84/GC9NaHNnzLp/HmtOuCRtwCnSy0fIobzrhKyR3DOCZwIx7iHa3TPuMFjG9R0AvXMWMqTVDmJR30PnPWHllF6vX3EZnlwjsro7Sl77/WvdgoclAeMFBgXatrfRaObow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8mUC72Xw4PiEgi22f1i6MVaGN5WAFoXfO0HFHEVbdQc=;
- b=uLtp73cE8ia94ijemuLLByiJwwyWZNfLdxWi30cYV9ZvSJqE3jlQ1CcsPr3HCZfFI/0Js+0hfnEDafkd1OuoFWB7/KwbVsm+V16XT7v9n/kAn09cKigLDNc6YugTNIouz5+RIHrNg1eM6wYHEyqMpyLNx94R1kU0tZNL7O6PXreTdXhniNs9leNDiCQwfWv/Q38T9+0tyDo0835ra7totMk+X7wkijDYf2o84sFBdyyCPMEURx7L/heEWHLRLJyOmF6eWnPUnM9Em8breBXgoKb2y0oETnfMbHfewc7iHGngNgk0vBJyTWtqZYJwMEvyLIVfHxih+lfd8csJ/Vxmdg==
-Received: from CO2PR04CA0186.namprd04.prod.outlook.com (2603:10b6:104:5::16)
- by MWHPR1201MB0206.namprd12.prod.outlook.com (2603:10b6:301:55::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4755.11; Fri, 3 Dec
- 2021 18:45:05 +0000
-Received: from CO1NAM11FT028.eop-nam11.prod.protection.outlook.com
- (2603:10b6:104:5:cafe::41) by CO2PR04CA0186.outlook.office365.com
- (2603:10b6:104:5::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4755.14 via Frontend
- Transport; Fri, 3 Dec 2021 18:45:06 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- CO1NAM11FT028.mail.protection.outlook.com (10.13.175.214) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4755.13 via Frontend Transport; Fri, 3 Dec 2021 18:45:05 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.18; Fri, 3 Dec
- 2021 18:45:03 +0000
-Received: from yaviefel (172.20.187.6) by rnnvmail201.nvidia.com (10.129.68.8)
+ bh=fkfqEHOcwy+UdgD8bczw2lPUnPnrXhMuyxbc595cl3k=;
+ b=Hbm1ViDH4bEt2dbJub5qUBw4ASVfEzB557OVibv3x/pTvI/vYHwO2hhGCrjpmEVO5VTDzNyrI8ExsSASo7YW2iRMiNFIP7+eHgl0ymbEo8ecdOvWJdl4YBohjlku0FayQs2Sd5J9ydGn0VQHJ4/IwCki90kCpEYnS/ONLVSqpm8=
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com (2603:10b6:303:193::14)
+ by MWHPR1101MB2206.namprd11.prod.outlook.com (2603:10b6:301:51::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.986.9; Fri, 3 Dec 2021
- 10:44:59 -0800
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.23; Fri, 3 Dec
+ 2021 19:07:15 +0000
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::1127:5635:26df:eca9]) by MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::1127:5635:26df:eca9%8]) with mapi id 15.20.4755.016; Fri, 3 Dec 2021
+ 19:07:15 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Petr Machata <petrm@nvidia.com>
+Thread-Topic: [PATCH v4 net-next 2/4] ethtool: Add ability to configure
+ recovered clock for SyncE feature
+Thread-Index: AQHX5t+zHNhA4eAQzEyd+4hcIqumb6wfJraAgAAesICAACIlAIAACV/ggAFk6oCAAARAAIAAHSAAgAADU9CAACN2gIAAA8qw
+Date: Fri, 3 Dec 2021 19:07:15 +0000
+Message-ID: <MW5PR11MB5812AA2C625AC00616F94A2AEA6A9@MW5PR11MB5812.namprd11.prod.outlook.com>
 References: <20211201180208.640179-1-maciej.machnikowski@intel.com>
  <20211201180208.640179-3-maciej.machnikowski@intel.com>
  <Yai/e5jz3NZAg0pm@shredder>
@@ -87,40 +99,71 @@ References: <20211201180208.640179-1-maciej.machnikowski@intel.com>
  <MW5PR11MB581202E2A601D34E30F1E5AEEA6A9@MW5PR11MB5812.namprd11.prod.outlook.com>
  <87lf11odsv.fsf@nvidia.com>
  <MW5PR11MB5812A86416E3100444894879EA6A9@MW5PR11MB5812.namprd11.prod.outlook.com>
-User-agent: mu4e 1.4.15; emacs 27.2
-From: Petr Machata <petrm@nvidia.com>
-To: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-In-Reply-To: <MW5PR11MB5812A86416E3100444894879EA6A9@MW5PR11MB5812.namprd11.prod.outlook.com>
-Date: Fri, 3 Dec 2021 19:44:57 +0100
-Message-ID: <87fsr9o7di.fsf@nvidia.com>
+ <87fsr9o7di.fsf@nvidia.com>
+In-Reply-To: <87fsr9o7di.fsf@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 48403830-8d82-4f98-033d-08d9b6901e9e
+x-ms-traffictypediagnostic: MWHPR1101MB2206:
+x-microsoft-antispam-prvs: <MWHPR1101MB220654C3C82B683AE4AAB6B9EA6A9@MWHPR1101MB2206.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: vZJxaLpqgDMHBb2G+ggU0v3kvbPMU8unmdxzBWZOENxSSK7QuSop4QVNapK5vzBgoyn6vV3RHwMUM6iKhixnGRpS2/qxjSHMVr07jL5Wc2jsbom4HS97HOzqQv/MEOPcYuDmKvB3Nljv4Ipgrvg5p9Onzpah+NRS1hKn0vB6HpTMo5o3xImmx0XxU4KlaKTD3kJotDyV3APA2uvQbCjdwsxRENMBkOHfefnmD3kO03zwUX3hoG0PBML5PMgLv4jZVuwGICK6P+YTL/+ucDDTiWxigGIcbKLQLbX7Z0HG1QbjQQdmQNQJAbWHVC3ItOcexIOhPXjZkHeV39ijt9eH8xJnWCWNCgk79LuXjG/8GXvZbkH6wPsl/lEyXkSJVoXY/HU9VUBcmK9QEH+AQh2JQaqqWc0LYga9126wjKGTW4zfLD7Meiu38E/MnAl77wydVqri/Goe4hTycCMfPM2DkjHEOd3jp2zr9mtbfq7NLkZlfVw+WloAS56LyveH92BScAlX7xcpMeIAaHacyNNRRLhlfGcXpZHKrXyvznqKAbXfwyLYEXaoCp/PBQ27887CoLKVbDK77b4WRVmA/DR3vlE9a8ZHSsV3txbDYD0bUtSz5IUoMDsIyEUBfVmNptYRwzRrtNqhbTMY1aXaFNuzXv+0MbnUenGWShp+dAxsveg0F3Pt2PJLwlVkuA5w1lFCvUW9URsrcg94Jy3NXjViAQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW5PR11MB5812.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(83380400001)(7696005)(54906003)(66446008)(53546011)(508600001)(186003)(5660300002)(33656002)(52536014)(4326008)(82960400001)(26005)(66946007)(38100700002)(71200400001)(76116006)(316002)(38070700005)(6506007)(9686003)(7416002)(2906002)(86362001)(66556008)(122000001)(8936002)(55016003)(64756008)(8676002)(66476007)(6916009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?qAakty4hNOJ8Ps2qjeE0xqjQvpDgmLEILGWKUMPBQ3pVOqwqXqvOWlIgGGY6?=
+ =?us-ascii?Q?zp9Dn0yp38Uf73jcRcL5zHv8aVqnxE8Bhv4IA7YYqeoytvsnRtWTZ/3NVvdj?=
+ =?us-ascii?Q?c6xTJifTjUOSW3nK4Puzs9pX9I3Oiga1wUzspeIdAyiEOgDpVWn44dFSad4q?=
+ =?us-ascii?Q?MEfkYv36LNFExZvo5QQCfQ4fQi6iKnnkE2hTGSpcAYD2/F5NDLcvFwcxPA/f?=
+ =?us-ascii?Q?3t+2KIcude/gtEV/4GpZqep+9srz6iA/DPiafKXE644X6FsWTRQSqGATsuCL?=
+ =?us-ascii?Q?AmrPTTHUv9J22r40xkb+g+66+Sd8FGhXJChhlfVcCz2d8Tl8yLr0moPsof/g?=
+ =?us-ascii?Q?IvoFm5QAv/hmy28h+XMF9ta6Yi/qdRjqHcryJkSPlnKCLRm6Rz4I7HITpbuV?=
+ =?us-ascii?Q?US7eKXLsKqJYX3UhqjUI3WhPAWljziTrm+S6QesCuclScK060DQWpu8fqMVW?=
+ =?us-ascii?Q?fJBlJKnLByyRjNaLSyAtSCi2jif9w+imBtI6T3guGLF31kymih0oT8hOHN4E?=
+ =?us-ascii?Q?Sh8gEswP76htRNtwMg6KJgzgrcFBGApWw9k9KbLDYns4TUzbenGNW7bYDDQ9?=
+ =?us-ascii?Q?Tw+HxDeSzqY18AusOEo3PMUUARQ/MD6cyWj0V0+n06Not8NHgzdQqldfmTjA?=
+ =?us-ascii?Q?eNH+6OuX1v7kO5SInc0JtymqNHKKcymYa14qGyPXB+LaL9nHNIoKkKbMI5a3?=
+ =?us-ascii?Q?hkiTyOyry+8zFBJjzduryqUoB8ZamwNystIwtEmV10tYtMvQYNvgwEwgcZ+h?=
+ =?us-ascii?Q?Pw8kriE8+fj5W6pbaWT3QL5X2qK9E7dyyrdmu8EYm9T21rTGzrA3/mK/hHMY?=
+ =?us-ascii?Q?FmeGVbGzcrgmOkotD+zohWeD91haRAL98UG5YzSVIrxTsqC0b9POEaVbB3PA?=
+ =?us-ascii?Q?LVlRBePdMSqNtbQMxNrsfjSUjudZzZ6xK36VVaIeNbRiCyXsXCkBMWZObHgE?=
+ =?us-ascii?Q?kPIs+3ahwsTyC8yvElj00G/FxVaJDrPqxtXgt1bxBZAewzT2plKInNfYTwpb?=
+ =?us-ascii?Q?AYNue2F9Bqf4M/0vZY1ex/bZ8OFYhqFw8YUhXsFHUsfKioOqAF7/xFNNhdmr?=
+ =?us-ascii?Q?e2vv4GfqmavwbriPr5oqSh96nVJxKs1wwsjISKaGjKTi7sJyBJG+pxYhFi9k?=
+ =?us-ascii?Q?dSnpzQzcrP6CEXh8Lt/D+YOiF45GJ8LGTc2p65iHr+R6EA2ZgfnYtzLysTOW?=
+ =?us-ascii?Q?Kl2cdG5Uz+/Re9RSsIU8BPDICTSuf/9F8WBguNT9vPxEErU24XP8XgD67zZi?=
+ =?us-ascii?Q?wa7o1OxoHrUlaHztqNW5qU/lveZqivn3yNNesAksnFl1qylN5qjpl886MYdC?=
+ =?us-ascii?Q?dnAAwBWZ3MJyYEJyxeQmlLo/9tnp+SZhTskwmOY2965H4QD8LVmAFa+McLUX?=
+ =?us-ascii?Q?n1KssPgSwwrPboatdRZvhWLc2huSYZ78XhLZEw8bJy7jgPWVPa98gQ+XbeZA?=
+ =?us-ascii?Q?DKAhh8aDJ4VaF88NJgy8VVL+q2X++bP5Fzzo4LqZZ3WBvCj6TWM7jbsLat3+?=
+ =?us-ascii?Q?ABVyxrO+UpLns/G/DquvtO0utrasD1k1PMWJtY+A2XiIqgbjRjmZKt9iH+H7?=
+ =?us-ascii?Q?x6YB+JYYXiJt3Zu+2/2j9xFbJqMgfZetKpr/R8JeRgbVrMB5Zqieye2eSSUI?=
+ =?us-ascii?Q?Lxlf8qvBbgX4yhMxaQWuhx3SbP12gGZI3X6fX95ZUY5XYdW8B9V12YyaVKqB?=
+ =?us-ascii?Q?3K2sTw=3D=3D?=
 MIME-Version: 1.0
-X-Originating-IP: [172.20.187.6]
-X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ad63c61c-688e-4d18-b4b8-08d9b68d061d
-X-MS-TrafficTypeDiagnostic: MWHPR1201MB0206:
-X-Microsoft-Antispam-PRVS: <MWHPR1201MB0206B6DC63A2615B41138792D66A9@MWHPR1201MB0206.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: NxnlQ6hD20QJx62VYkxKLbbbsyOHviTahQ17bF6fPUTf7/gezgBYN8CUj/ITG0DSHxRpwlz7GTdbaxzebbhWagtB8d9HGu11eA5SsxaupIRWPGhT9QoLOcScUZqSZG87N94k4YPoR0/GMcztZH97T6aAZyY+rx9twwC9vxt0VDxT2NgcZ2wm5KeU5DL8YWjDfidXiQNkP+BsB5C0ooUZezKISK8K5XYwYzuNgzUGBFW8dF+GiULCLuPmKdAEMCcs6FwUz9oRp+VYA+33cDb5cOnT3G9WKycqarELZwtIlD8dYfxMJKTcc4CowpTEEKz+RZ1jajSyd3lBszMSI4F481C/037ZfAFDZxVLXjHqm6cjqh1SfR4kdo/AXIBtRCEeweD2HyWMr+/MLevqsi19lNkSybbddSvWC7eJQXwupSJAGn4odAZ+2Whg/J0093JZASfaR2Wf6p1p04yhrFTVcrM9klCHFNq8LNX6oE9ibhYZAkyoNwxKqbCX1uPPnxZjdzTIxr6atlaAZUdZsPG6ckSjWOufNqbzZfGLdKvaE2pKNjMp8IqBCD77AOcAUvc8qJz4amUHH044KkZSvsZ+262R2S+ERRBQTmeImBvKFK45rEiyDiJpfNdfGTmTcfE9mz3Ob7kui1FHeHhHjYGBH3a6T0Q4/pIomPf6LfvDzJKj7Qvo29YPxGi+yzeFuQMJ5jJ1WVwZWmlFw4dNONfVf8f0r9ZDxtHodDNNPPhpDwTZRW8hOuTvaPFCb9qjxf1ivfwLMosFiDpjteQ3T8oIaw==
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(46966006)(36840700001)(40470700001)(7636003)(40460700001)(7416002)(426003)(336012)(316002)(6916009)(356005)(2906002)(36860700001)(54906003)(2616005)(5660300002)(26005)(186003)(16526019)(8676002)(47076005)(4326008)(36756003)(508600001)(70206006)(70586007)(86362001)(83380400001)(8936002)(82310400004);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Dec 2021 18:45:05.7639 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad63c61c-688e-4d18-b4b8-08d9b68d061d
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT028.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1201MB0206
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5812.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48403830-8d82-4f98-033d-08d9b6901e9e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Dec 2021 19:07:15.3001 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Wt0G9KZUIZJoqcqY5rOF/xF2CGVv5qqZvMSDJDdwXB65NWtDlNdDrmwdgw/++pWgs0cLw5JM7Fa4dWEZKjc9GXIxGttfWJVC1d+IhR0uqQ8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2206
+X-OriginatorOrg: intel.com
 Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 2/4] ethtool: Add ability
  to configure recovered clock for SyncE feature
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -135,8 +178,8 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Petr Machata <petrm@nvidia.com>, "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "abyagowi@fb.com" <abyagowi@fb.com>, "saeed@kernel.org" <saeed@kernel.org>,
+Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>, "abyagowi@fb.com" <abyagowi@fb.com>,
+ "saeed@kernel.org" <saeed@kernel.org>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "richardcochran@gmail.com" <richardcochran@gmail.com>,
  Ido Schimmel <idosch@idosch.org>,
@@ -150,169 +193,197 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> -----Original Message-----
+> From: Petr Machata <petrm@nvidia.com>
+> Sent: Friday, December 3, 2021 7:45 PM
+> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> Subject: Re: [PATCH v4 net-next 2/4] ethtool: Add ability to configure
+> recovered clock for SyncE feature
+> 
+> 
+> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+> 
+> >> -----Original Message-----
+> >> From: Petr Machata <petrm@nvidia.com>
+> >>
+> >> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+> >>
+> >> >> -----Original Message-----
+> >> >> From: Petr Machata <petrm@nvidia.com>
+> >> >>
+> >> >> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+> >> >>
+> >> >> >> -----Original Message-----
+> >> >> >> From: Ido Schimmel <idosch@idosch.org>
+> >> >> >>
+> >> >> >> On Thu, Dec 02, 2021 at 03:17:06PM +0000, Machnikowski, Maciej
+> wrote:
+> >> >> >> > > -----Original Message-----
+> >> >> >> > > From: Ido Schimmel <idosch@idosch.org>
+> >> >> >> > >
+> >> >> >> > > 4. Why these pins are represented as attributes of a netdev
+> >> >> >> > > and not as attributes of the EEC? That is, why are they
+> >> >> >> > > represented as output pins of the PHY as opposed to input
+> >> >> >> > > pins of the EEC?
+> >> >> >> >
+> >> >> >> > They are 2 separate beings. Recovered clock outputs are
+> >> >> >> > controlled separately from EEC inputs.
+> >> >> >>
+> >> >> >> Separate how? What does it mean that they are controlled
+> >> >> >> separately? In which sense? That redirection of recovered
+> >> >> >> frequency to pin is controlled via PHY registers whereas
+> >> >> >> priority setting between EEC inputs is controlled via EEC
+> >> >> >> registers? If so, this is an implementation detail of a
+> >> >> >> specific design. It is not of any importance to user space.
+> >> >> >
+> >> >> > They belong to different devices. EEC registers are physically
+> >> >> > in the DPLL hanging over I2C and recovered clocks are in the
+> >> >> > PHY/integrated PHY in the MAC. Depending on system architecture
+> >> >> > you may have control over one piece only
+> >> >>
+> >> >> What does ETHTOOL_MSG_RCLK_SET actually configure, physically?
+> Say
+> >> >> I have this message:
+> >> >>
+> >> >> ETHTOOL_MSG_RCLK_SET dev = eth0
+> >> >> - ETHTOOL_A_RCLK_OUT_PIN_IDX = n
+> >> >> - ETHTOOL_A_RCLK_PIN_FLAGS |= ETHTOOL_RCLK_PIN_FLAGS_ENA
+> >> >>
+> >> >> Eventually this lands in ops->set_rclk_out(dev, out_idx,
+> >> >> new_state). What does the MAC driver do next?
+> >> >
+> >> > It goes to the PTY layer, enables the clock recovery from a given
+> >> > physical lane, optionally configure the clock divider and pin
+> >> > output muxes. This will be HW-specific though, but the general
+> >> > concept will look like that.
+> >>
+> >> The reason I am asking is that I suspect that by exposing this
+> >> functionality through netdev, you assume that the NIC driver will do
+> >> whatever EEC configuration necessary _anyway_. So why couldn't it just
+> >> instantiate the EEC object as well?
+> >
+> > Not necessarily. The EEC can be supported by totally different driver.
+> > I.e there are Renesas DPLL drivers available now in the ptp subsystem.
+> > The DPLL can be connected anywhere in the system.
+> >
+> >> >> >> > > 5. What is the problem with the following model?
+> >> >> >> > >
+> >> >> >> > > - The EEC is a separate object with following attributes:
+> >> >> >> > >   * State: Invalid / Freerun / Locked / etc
+> >> >> >> > >   * Sources: Netdev / external / etc
+> >> >> >> > >   * Potentially more
+> >> >> >> > >
+> >> >> >> > > - Notifications are emitted to user space when the state of
+> >> >> >> > >   the EEC changes. Drivers will either poll the state from
+> >> >> >> > >   the device or get interrupts
+> >> >> >> > >
+> >> >> >> > > - The mapping from netdev to EEC is queried via ethtool
+> >> >> >> >
+> >> >> >> > Yep - that will be part of the EEC (DPLL) subsystem
+> >> >> >>
+> >> >> >> This model avoids all the problems I pointed out in the current
+> >> >> >> proposal.
+> >> >> >
+> >> >> > That's the go-to model, but first we need control over the
+> >> >> > source as well :)
+> >> >>
+> >> >> Why is that? Can you illustrate a case that breaks with the above
+> >> >> model?
+> >> >
+> >> > If you have 32 port switch chip with 2 recovered clock outputs how
+> >> > will you tell the chip to get the 18th port to pin 0 and from port
+> >> > 20 to pin 1? That's the part those patches addresses. The further
+> >> > side of "which clock should the EEC use" belongs to the DPLL
+> >> > subsystem and I agree with that.
+> >>
+> >> So the claim is that in some cases the owner of the EEC does not know
+> >> about the netdevices?
+> >>
+> >> If that is the case, how do netdevices know about the EEC, like the
+> >> netdev-centric model assumes?
+> >>
+> >> Anyway, to answer the question, something like the following would
+> >> happen:
+> >>
+> >> - Ask EEC to enumerate all input pins it knows about
+> >> - Find the one that references swp18
+> >> - Ask EEC to forward that input pin to output pin 0
+> >> - Repeat for swp20 and output pin 1
+> >>
+> >> The switch driver (or multi-port NIC driver) just instantiates all of
+> >> netdevices, the EEC object, and pin objects, and therefore can set up
+> >> arbitrary linking between the three.
+> >
+> > This will end up with a model in which pin X of the EEC will link to
+> >dozens ports - userspace tool would need to find out the relation
+> >between them and EECs somehow.
+> 
+> Indeed. If you have EEC connected to a bunch of ports, the EEC object is
+> related to a bunch of netdevices. The UAPI needs to have tools to dump
+> these objects so that it is possible to discover what is connected
+> where.
+> 
+> This configuration will also not change during the lifetime of the EEC
+> object, so tools can cache it.
+> 
+> > It's far more convenient if a given netdev knows where it is connected
+> > to and which pin can it drive.
+> 
+> Yeah, it is of course possible to add references from the netdevice to
+> the EEC object directly, so that the tool just needs to ask a netdevice
+> what EEC / RCLK source ID it maps to.
+> 
+> This has mostly nothing to do with the model itself.
+> 
+> > I.e. send the netdev swp20 ETHTOOL_MSG_RCLK_GET and get the pin
+> > indexes of the EEC and send the future message to find which EEC that
+> > is (or even return EEC index in RCLK_GET?).
+> 
+> Since the pin index on its own is useless, it would make sense to return
+> both pieces of information at the same time.
+> 
+> > Set the recovered clock on that pin with the ETHTOOL_MSG_RCLK_SET.
+> 
+> Nope.
+> 
+> > Then go to the given EEC and configure it to use the pin that was
+> > returned before as a frequency source and monitor the EEC state.
+> 
+> Yep.
+> 
+> EEC will invoke a callback to set up the tracking. If something special
+> needs to be done to "set the recovered clock on that pin", the handler
+> of that callback will do it.
+> 
+> > Additionally, the EEC device may be instantiated by a totally
+> > different driver, in which case the relation between its pins and
+> > netdevs may not even be known.
+> 
+> Like an EEC, some PHYs, but the MAC driver does not know about both
+> pieces? Who sets up the connection between the two? The box admin
+> through some cabling? SoC designer?
+> 
+> Also, what does the external EEC actually do with the signal from the
+> PHY? Tune to it and forward to the other PHYs in the complex?
+Yes - it can also apply HW filters to it.
 
-Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
+The EEC model will not work when you have the following system:
+SoC with some ethernet ports with driver A
+Switch chip with N ports with driver B
+EEC/DPLL with driver C
+Both SoC and Switch ASIC can recover clock and use the cleaned
+clock from the DPLL.
 
->> -----Original Message-----
->> From: Petr Machata <petrm@nvidia.com>
->> 
->> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
->> 
->> >> -----Original Message-----
->> >> From: Petr Machata <petrm@nvidia.com>
->> >>
->> >> Machnikowski, Maciej <maciej.machnikowski@intel.com> writes:
->> >>
->> >> >> -----Original Message-----
->> >> >> From: Ido Schimmel <idosch@idosch.org>
->> >> >>
->> >> >> On Thu, Dec 02, 2021 at 03:17:06PM +0000, Machnikowski, Maciej wrote:
->> >> >> > > -----Original Message-----
->> >> >> > > From: Ido Schimmel <idosch@idosch.org>
->> >> >> > >
->> >> >> > > 4. Why these pins are represented as attributes of a netdev
->> >> >> > > and not as attributes of the EEC? That is, why are they
->> >> >> > > represented as output pins of the PHY as opposed to input
->> >> >> > > pins of the EEC?
->> >> >> >
->> >> >> > They are 2 separate beings. Recovered clock outputs are
->> >> >> > controlled separately from EEC inputs.
->> >> >>
->> >> >> Separate how? What does it mean that they are controlled
->> >> >> separately? In which sense? That redirection of recovered
->> >> >> frequency to pin is controlled via PHY registers whereas
->> >> >> priority setting between EEC inputs is controlled via EEC
->> >> >> registers? If so, this is an implementation detail of a
->> >> >> specific design. It is not of any importance to user space.
->> >> >
->> >> > They belong to different devices. EEC registers are physically
->> >> > in the DPLL hanging over I2C and recovered clocks are in the
->> >> > PHY/integrated PHY in the MAC. Depending on system architecture
->> >> > you may have control over one piece only
->> >>
->> >> What does ETHTOOL_MSG_RCLK_SET actually configure, physically? Say
->> >> I have this message:
->> >>
->> >> ETHTOOL_MSG_RCLK_SET dev = eth0
->> >> - ETHTOOL_A_RCLK_OUT_PIN_IDX = n
->> >> - ETHTOOL_A_RCLK_PIN_FLAGS |= ETHTOOL_RCLK_PIN_FLAGS_ENA
->> >>
->> >> Eventually this lands in ops->set_rclk_out(dev, out_idx,
->> >> new_state). What does the MAC driver do next?
->> >
->> > It goes to the PTY layer, enables the clock recovery from a given
->> > physical lane, optionally configure the clock divider and pin
->> > output muxes. This will be HW-specific though, but the general
->> > concept will look like that.
->> 
->> The reason I am asking is that I suspect that by exposing this
->> functionality through netdev, you assume that the NIC driver will do
->> whatever EEC configuration necessary _anyway_. So why couldn't it just
->> instantiate the EEC object as well?
->
-> Not necessarily. The EEC can be supported by totally different driver.
-> I.e there are Renesas DPLL drivers available now in the ptp subsystem.
-> The DPLL can be connected anywhere in the system.
->
->> >> >> > > 5. What is the problem with the following model?
->> >> >> > >
->> >> >> > > - The EEC is a separate object with following attributes:
->> >> >> > >   * State: Invalid / Freerun / Locked / etc
->> >> >> > >   * Sources: Netdev / external / etc
->> >> >> > >   * Potentially more
->> >> >> > >
->> >> >> > > - Notifications are emitted to user space when the state of
->> >> >> > >   the EEC changes. Drivers will either poll the state from
->> >> >> > >   the device or get interrupts
->> >> >> > >
->> >> >> > > - The mapping from netdev to EEC is queried via ethtool
->> >> >> >
->> >> >> > Yep - that will be part of the EEC (DPLL) subsystem
->> >> >>
->> >> >> This model avoids all the problems I pointed out in the current
->> >> >> proposal.
->> >> >
->> >> > That's the go-to model, but first we need control over the
->> >> > source as well :)
->> >>
->> >> Why is that? Can you illustrate a case that breaks with the above
->> >> model?
->> >
->> > If you have 32 port switch chip with 2 recovered clock outputs how
->> > will you tell the chip to get the 18th port to pin 0 and from port
->> > 20 to pin 1? That's the part those patches addresses. The further
->> > side of "which clock should the EEC use" belongs to the DPLL
->> > subsystem and I agree with that.
->> 
->> So the claim is that in some cases the owner of the EEC does not know
->> about the netdevices?
->> 
->> If that is the case, how do netdevices know about the EEC, like the
->> netdev-centric model assumes?
->> 
->> Anyway, to answer the question, something like the following would
->> happen:
->> 
->> - Ask EEC to enumerate all input pins it knows about
->> - Find the one that references swp18
->> - Ask EEC to forward that input pin to output pin 0
->> - Repeat for swp20 and output pin 1
->> 
->> The switch driver (or multi-port NIC driver) just instantiates all of
->> netdevices, the EEC object, and pin objects, and therefore can set up
->> arbitrary linking between the three.
->
-> This will end up with a model in which pin X of the EEC will link to
->dozens ports - userspace tool would need to find out the relation
->between them and EECs somehow.
+In that case you can't create any relation between EEC and recover
+clock pins that would enable the EEC subsystem to control
+recovered clocks, because you have 3 independent drivers.
 
-Indeed. If you have EEC connected to a bunch of ports, the EEC object is
-related to a bunch of netdevices. The UAPI needs to have tools to dump
-these objects so that it is possible to discover what is connected
-where.
-
-This configuration will also not change during the lifetime of the EEC
-object, so tools can cache it.
-
-> It's far more convenient if a given netdev knows where it is connected
-> to and which pin can it drive.
-
-Yeah, it is of course possible to add references from the netdevice to
-the EEC object directly, so that the tool just needs to ask a netdevice
-what EEC / RCLK source ID it maps to.
-
-This has mostly nothing to do with the model itself.
-
-> I.e. send the netdev swp20 ETHTOOL_MSG_RCLK_GET and get the pin
-> indexes of the EEC and send the future message to find which EEC that
-> is (or even return EEC index in RCLK_GET?).
-
-Since the pin index on its own is useless, it would make sense to return
-both pieces of information at the same time.
-
-> Set the recovered clock on that pin with the ETHTOOL_MSG_RCLK_SET.
-
-Nope.
-
-> Then go to the given EEC and configure it to use the pin that was
-> returned before as a frequency source and monitor the EEC state.
-
-Yep.
-
-EEC will invoke a callback to set up the tracking. If something special
-needs to be done to "set the recovered clock on that pin", the handler
-of that callback will do it.
-
-> Additionally, the EEC device may be instantiated by a totally
-> different driver, in which case the relation between its pins and
-> netdevs may not even be known.
-
-Like an EEC, some PHYs, but the MAC driver does not know about both
-pieces? Who sets up the connection between the two? The box admin
-through some cabling? SoC designer?
-
-Also, what does the external EEC actually do with the signal from the
-PHY? Tune to it and forward to the other PHYs in the complex?
+The model you proposed assumes that the MAC/Switch is in
+charge of the DPLL, but that's not always true. The model where
+recovered clock outputs are controlled independently can support
+both models and is more flexible. It can also address the mode where
+you want to use the recovered clock as a source for RF part of your
+system and don't have any EEC to control from the netdev side.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
