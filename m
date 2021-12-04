@@ -1,70 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A38B4681CF
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Dec 2021 02:32:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 940B2468201
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Dec 2021 03:37:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7CBC960769;
-	Sat,  4 Dec 2021 01:32:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1A05D60797;
+	Sat,  4 Dec 2021 02:37:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qjZM_NebX9bX; Sat,  4 Dec 2021 01:32:16 +0000 (UTC)
+	with ESMTP id IjAs4fnZIuc5; Sat,  4 Dec 2021 02:37:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 806BE60776;
-	Sat,  4 Dec 2021 01:32:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EA5DE60769;
+	Sat,  4 Dec 2021 02:37:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2CFDC1BF298
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 01:32:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B29C61BF3D1
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 02:37:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 104904109F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 01:32:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 94E7F410A8
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 02:37:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4puv6mOzoXTP for <intel-wired-lan@lists.osuosl.org>;
- Sat,  4 Dec 2021 01:32:08 +0000 (UTC)
+ with ESMTP id YBNIBEw5OnM7 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  4 Dec 2021 02:37:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B317440A04
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 01:32:08 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 9B548B828E8;
- Sat,  4 Dec 2021 01:32:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BC13C341C1;
- Sat,  4 Dec 2021 01:32:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638581524;
- bh=oLiw2+AvMLz5jRSwMHbfy8agi20mRg8gaLRcGjN5cAY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=PQqbOFPM3nU4dli1iTLWDau6kI2y+xYH4Qp5zg2SwqRLr00AdZU9E3+3pl2s+2a2Y
- wT0sfBlX3b+88vNSHnr6hJU3GnePhYX6+dBLFIqrnBsokWsBwn0xMdDEZevHl9KYbj
- 23GZrCYVF+/eDljFD9GsBxF//J/4B+XkUwqTI4qG6ulf3WMHfF1riznLP+wA+0aEob
- KCUZlgEqm+E5SFCsffH93qB4bBoBnmhhucFHksHWt/3J9XYprVMFAJdQwzbj2cI5rQ
- +VcNai3dmslhqN9GihFEtzYmHYRvkoRIHlAzikJCjK4kPQWEgv9pVPjWIg5L3afteX
- um1CZofEerpWw==
-Date: Fri, 3 Dec 2021 17:32:03 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Alexander Lobakin <alexandr.lobakin@intel.com>
-Message-ID: <20211203173203.285dc75f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20211204010829.7796-1-alexandr.lobakin@intel.com>
-References: <20211129101315.16372-381-nic_swsd@realtek.com>
- <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
- <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <d3a1e1c469844aa697d6d315c9549eda@realtek.com>
- <20211203070410.1b4abc4d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <20211204010829.7796-1-alexandr.lobakin@intel.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 94CF6410A6
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Dec 2021 02:37:30 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10187"; a="300474237"
+X-IronPort-AV: E=Sophos;i="5.87,286,1631602800"; d="scan'208";a="300474237"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Dec 2021 18:37:30 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,286,1631602800"; d="scan'208";a="598192355"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by FMSMGA003.fm.intel.com with ESMTP; 03 Dec 2021 18:37:29 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mtKvY-000IM5-Km; Sat, 04 Dec 2021 02:37:28 +0000
+Date: Sat, 04 Dec 2021 10:37:22 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61aad462.kbTs2qEgp7+JQ4C0%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 404189e29907502e06179af67790aea01d826f30
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,53 +63,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- nic_swsd <nic_swsd@realtek.com>, Hayes Wang <hayeswang@realtek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat,  4 Dec 2021 02:08:29 +0100 Alexander Lobakin wrote:
-> > Ah, I've only spotted the enable/disable knob in the patch. 
-> > If you're exchanging arbitrary binary data with the FW we 
-> > can't help you. It's not going to fly upstream.  
-> 
-> Uhm. I'm not saying sysfs is a proper way to do that, not at all,
-> buuut...
-> We have a ton of different subsystems providing a communication
-> channel between userspace and HW/FW. Chardevices all over the
-> tree, highly used rpmsg for remoteproc, uio. 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 404189e29907502e06179af67790aea01d826f30  ice: remove dead store on XSK hotpath
 
-Not in Ethernet.
+elapsed time: 1880m
 
-> We have register dump in Ethtool,
+configs tested: 164
+configs skipped: 3
 
-Read only.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> as well as get/set for EEPROM, I'd count them as well.
+gcc tested configs:
+arm                              allmodconfig
+arm                              allyesconfig
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+i386                 randconfig-c001-20211202
+i386                 randconfig-c001-20211203
+arm                         lubbock_defconfig
+xtensa                       common_defconfig
+sh                            migor_defconfig
+microblaze                          defconfig
+arm                        shmobile_defconfig
+arm                       imx_v6_v7_defconfig
+um                             i386_defconfig
+powerpc                     sequoia_defconfig
+arm                          ep93xx_defconfig
+arm                     davinci_all_defconfig
+h8300                     edosk2674_defconfig
+sh                           se7724_defconfig
+powerpc                      cm5200_defconfig
+powerpc                     ppa8548_defconfig
+nios2                               defconfig
+powerpc                  mpc866_ads_defconfig
+sh                          kfr2r09_defconfig
+mips                           mtx1_defconfig
+powerpc                     tqm8555_defconfig
+powerpc                     tqm8541_defconfig
+arm                        mini2440_defconfig
+sh                        apsh4ad0a_defconfig
+arm                             pxa_defconfig
+arm                         hackkit_defconfig
+parisc                              defconfig
+powerpc                     mpc83xx_defconfig
+powerpc                 mpc836x_rdk_defconfig
+arm                         at91_dt_defconfig
+powerpc                     powernv_defconfig
+um                           x86_64_defconfig
+arm                            qcom_defconfig
+arm                     eseries_pxa_defconfig
+ia64                          tiger_defconfig
+mips                         tb0226_defconfig
+arm                       multi_v4t_defconfig
+arm                          simpad_defconfig
+powerpc                 mpc832x_rdb_defconfig
+sh                         apsh4a3a_defconfig
+arm                            pleb_defconfig
+h8300                            alldefconfig
+arm                         socfpga_defconfig
+m68k                       m5208evb_defconfig
+powerpc                    mvme5100_defconfig
+arm                        multi_v7_defconfig
+sh                           se7751_defconfig
+sh                         microdev_defconfig
+powerpc                       eiger_defconfig
+sh                          sdk7786_defconfig
+m68k                             allmodconfig
+powerpc                    gamecube_defconfig
+arm                           h5000_defconfig
+m68k                                defconfig
+arm                  randconfig-c002-20211203
+arm                  randconfig-c002-20211202
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+s390                             allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allmodconfig
+mips                             allyesconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20211203
+x86_64               randconfig-a005-20211203
+x86_64               randconfig-a001-20211203
+x86_64               randconfig-a002-20211203
+x86_64               randconfig-a004-20211203
+x86_64               randconfig-a003-20211203
+i386                 randconfig-a001-20211203
+i386                 randconfig-a005-20211203
+i386                 randconfig-a002-20211203
+i386                 randconfig-a003-20211203
+i386                 randconfig-a006-20211203
+i386                 randconfig-a004-20211203
+x86_64               randconfig-a016-20211202
+x86_64               randconfig-a011-20211202
+x86_64               randconfig-a013-20211202
+x86_64               randconfig-a014-20211202
+x86_64               randconfig-a012-20211202
+x86_64               randconfig-a015-20211202
+i386                 randconfig-a016-20211202
+i386                 randconfig-a013-20211202
+i386                 randconfig-a011-20211202
+i386                 randconfig-a014-20211202
+i386                 randconfig-a012-20211202
+i386                 randconfig-a015-20211202
+arc                  randconfig-r043-20211202
+s390                 randconfig-r044-20211202
+riscv                randconfig-r042-20211202
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
 
-EEPROM writes are supposed to update FW images, not send random
-messages.
+clang tested configs:
+arm                  randconfig-c002-20211203
+x86_64               randconfig-c007-20211203
+riscv                randconfig-c006-20211203
+mips                 randconfig-c004-20211203
+i386                 randconfig-c001-20211203
+powerpc              randconfig-c003-20211203
+s390                 randconfig-c005-20211203
+x86_64               randconfig-a006-20211202
+x86_64               randconfig-a005-20211202
+x86_64               randconfig-a001-20211202
+x86_64               randconfig-a002-20211202
+x86_64               randconfig-a004-20211202
+x86_64               randconfig-a003-20211202
+i386                 randconfig-a001-20211202
+i386                 randconfig-a005-20211202
+i386                 randconfig-a002-20211202
+i386                 randconfig-a003-20211202
+i386                 randconfig-a006-20211202
+i386                 randconfig-a004-20211202
+x86_64               randconfig-a016-20211203
+x86_64               randconfig-a011-20211203
+x86_64               randconfig-a013-20211203
+x86_64               randconfig-a014-20211203
+x86_64               randconfig-a015-20211203
+x86_64               randconfig-a012-20211203
+i386                 randconfig-a016-20211203
+i386                 randconfig-a013-20211203
+i386                 randconfig-a011-20211203
+i386                 randconfig-a014-20211203
+i386                 randconfig-a012-20211203
+i386                 randconfig-a015-20211203
+hexagon              randconfig-r045-20211203
+s390                 randconfig-r044-20211203
+hexagon              randconfig-r041-20211203
+riscv                randconfig-r042-20211203
 
-> So it probably isn't a bad idea to provide some standard API for
-> network drivers to talk to HW/FW from userspace, like get/set or
-> rx/tx (when having enough caps for sure)? It could be Devlink ops
-> or Ethtool ops, the latter fits more to me.
-
-I'm not saying it's wrong to merge shim drivers into the kernel and
-let the user space talk to device FW. I'm saying it's counter to what
-netdev's policy has always been and counter to my personal interests.
-
-What is a standard API for custom, proprietary FW message interface?
-We want standards at a functional level. Once you open up a raw FW
-write interface there is no policing of what goes thru it.
-
-I CCed Intel since you also have the (infamous) ME, but I never heard
-of the need to communicate from the OS to the ME via the netdev
-driver... Not sure why things are different for Realtek.
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
