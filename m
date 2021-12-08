@@ -1,56 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B22F46D21A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 12:23:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D31E446D655
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 16:01:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D348460EB8;
-	Wed,  8 Dec 2021 11:23:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3C15D83E9B;
+	Wed,  8 Dec 2021 15:01:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gxlKefUN1XlJ; Wed,  8 Dec 2021 11:23:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LTETrjThKqXf; Wed,  8 Dec 2021 15:01:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C56E660E90;
-	Wed,  8 Dec 2021 11:23:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3EC0983E7D;
+	Wed,  8 Dec 2021 15:01:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5C8751BF32E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 11:23:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 514F21BF368
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 47FC760E90
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 11:23:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4BAA860EE8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Klex6l1UZVYt for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Dec 2021 11:23:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 22FC160705
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 11:23:44 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="238037879"
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="238037879"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2021 03:23:43 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="679855950"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga005.jf.intel.com with ESMTP; 08 Dec 2021 03:23:42 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1muv2z-0000Uk-3S; Wed, 08 Dec 2021 11:23:41 +0000
-Date: Wed, 08 Dec 2021 19:22:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61b09593.MZSMQ8JgrZvWwb04%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id uJxAfZ1dEu_m for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 07:53:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from rtits2.realtek.com.tw (rtits2.realtek.com [211.75.126.72])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C9A9560635
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:47 +0000 (UTC)
+Authenticated-By: 
+X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 1B87rTS21030330,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexh36505.realtek.com.tw[172.21.6.25])
+ by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 1B87rTS21030330
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Wed, 8 Dec 2021 15:53:29 +0800
+Received: from RTEXMBS02.realtek.com.tw (172.21.6.95) by
+ RTEXH36505.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.17; Wed, 8 Dec 2021 15:53:29 +0800
+Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
+ RTEXMBS02.realtek.com.tw (172.21.6.95) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.15; Wed, 8 Dec 2021 15:53:28 +0800
+Received: from RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01]) by
+ RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01%5]) with mapi id
+ 15.01.2308.020; Wed, 8 Dec 2021 15:53:28 +0800
+From: Hayes Wang <hayeswang@realtek.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Thread-Topic: [RFC PATCH 0/4] r8169: support dash
+Thread-Index: AQHX5QnDLn6ABzzmpEe3dMh4ox9UtKwaRZuAgAKrunD//4AsAIAD8ppQ///5wgCABkeCEIAA4HSAgADAA+A=
+Date: Wed, 8 Dec 2021 07:53:28 +0000
+Message-ID: <67d7f6f7b6e84af692bc0a7c4c48bb84@realtek.com>
+References: <20211129101315.16372-381-nic_swsd@realtek.com>
+ <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
+ <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <d3a1e1c469844aa697d6d315c9549eda@realtek.com>
+ <20211203070410.1b4abc4d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <e2fd429a489545e7a521283600cb7caa@realtek.com>
+ <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.21.177.203]
+x-kse-serverinfo: RTEXMBS02.realtek.com.tw, 9
+x-kse-attachmentfiltering-interceptor-info: no applicable attachment filtering
+ rules found
+x-kse-antivirus-interceptor-info: scan successful
+x-kse-antivirus-info: =?us-ascii?Q?Clean,_bases:_2021/12/8_=3F=3F_06:28:00?=
+x-kse-bulkmessagesfiltering-scan-result: protection disabled
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
- 2448af218710afe8a0407000316d0592884fd1c9
+X-KSE-ServerInfo: RTEXH36505.realtek.com.tw, 9
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
+X-Mailman-Approved-At: Wed, 08 Dec 2021 15:01:18 +0000
+Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,199 +94,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ nic_swsd <nic_swsd@realtek.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "hkallweit1@gmail.com" <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
-branch HEAD: 2448af218710afe8a0407000316d0592884fd1c9  ice: safer stats processing
+Jakub Kicinski <kuba@kernel.org>
+> Sent: Wednesday, December 8, 2021 12:21 PM
+[...]
+> > Could devlink param be used for more than 4 bytes settings?
+> > At least the IPv6 address is longer.
+> 
+> We can add a new devlink sub-command and driver callback in that case.
 
-elapsed time: 729m
+Excuse me. Do you mean someone will add it? Then, I could use it.
+Or, I have to add it.
 
-configs tested: 168
-configs skipped: 3
+> > Besides, we need the information of SMBIOS which could
+> > be 4K ~ 8K bytes data. Is there any way we could transmit
+> > it to firmware?
+> 
+> Is structure of that data defined by some DMTF standard?
+Yes.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Best Regards,
+Hayes
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211207
-arm                         axm55xx_defconfig
-sh                         microdev_defconfig
-mips                     loongson1c_defconfig
-sh                     sh7710voipgw_defconfig
-powerpc                  iss476-smp_defconfig
-m68k                             alldefconfig
-arc                           tb10x_defconfig
-arm                           tegra_defconfig
-powerpc                 mpc837x_rdb_defconfig
-m68k                          atari_defconfig
-arm                           sama7_defconfig
-arm                         s5pv210_defconfig
-arm                       spear13xx_defconfig
-h8300                            allyesconfig
-h8300                     edosk2674_defconfig
-mips                           rs90_defconfig
-mips                      maltasmvp_defconfig
-powerpc                 mpc8272_ads_defconfig
-arc                              alldefconfig
-powerpc                 mpc834x_mds_defconfig
-arc                          axs103_defconfig
-arm                         nhk8815_defconfig
-sh                           se7705_defconfig
-mips                           xway_defconfig
-powerpc                      cm5200_defconfig
-sparc64                             defconfig
-powerpc                         wii_defconfig
-sh                   sh7724_generic_defconfig
-mips                      pic32mzda_defconfig
-powerpc64                        alldefconfig
-powerpc                     kilauea_defconfig
-powerpc                   motionpro_defconfig
-parisc                           alldefconfig
-arm                           h3600_defconfig
-mips                      loongson3_defconfig
-sh                  sh7785lcr_32bit_defconfig
-mips                           ip22_defconfig
-arm                           omap1_defconfig
-powerpc                       holly_defconfig
-arm                      pxa255-idp_defconfig
-sh                   rts7751r2dplus_defconfig
-mips                        workpad_defconfig
-sh                             espt_defconfig
-arm                      footbridge_defconfig
-powerpc                      acadia_defconfig
-sh                           se7721_defconfig
-arm                        mvebu_v7_defconfig
-riscv             nommu_k210_sdcard_defconfig
-sh                         ecovec24_defconfig
-arm                         orion5x_defconfig
-sh                           se7780_defconfig
-nds32                            alldefconfig
-powerpc                    ge_imp3a_defconfig
-powerpc                   microwatt_defconfig
-mips                         tb0226_defconfig
-arm                          pxa910_defconfig
-i386                             allyesconfig
-mips                         db1xxx_defconfig
-sh                          sdk7786_defconfig
-arc                            hsdk_defconfig
-powerpc                      katmai_defconfig
-s390                                defconfig
-powerpc                    adder875_defconfig
-sh                          r7780mp_defconfig
-mips                        bcm47xx_defconfig
-riscv                             allnoconfig
-arm                            dove_defconfig
-sh                        sh7785lcr_defconfig
-m68k                            q40_defconfig
-nds32                             allnoconfig
-nios2                            allyesconfig
-powerpc                     tqm8548_defconfig
-sh                        sh7757lcr_defconfig
-mips                  maltasmvp_eva_defconfig
-arc                         haps_hs_defconfig
-arm                            pleb_defconfig
-arm                     am200epdkit_defconfig
-sh                     magicpanelr2_defconfig
-arm                  randconfig-c002-20211207
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-xtensa                           allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                   debian-10.3-kselftests
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20211207
-x86_64               randconfig-a005-20211207
-x86_64               randconfig-a001-20211207
-x86_64               randconfig-a002-20211207
-x86_64               randconfig-a004-20211207
-x86_64               randconfig-a003-20211207
-i386                 randconfig-a001-20211207
-i386                 randconfig-a005-20211207
-i386                 randconfig-a002-20211207
-i386                 randconfig-a003-20211207
-i386                 randconfig-a006-20211207
-i386                 randconfig-a004-20211207
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-
-clang tested configs:
-arm                  randconfig-c002-20211208
-x86_64               randconfig-c007-20211208
-riscv                randconfig-c006-20211208
-i386                 randconfig-c001-20211208
-mips                 randconfig-c004-20211208
-powerpc              randconfig-c003-20211208
-s390                 randconfig-c005-20211208
-x86_64               randconfig-c007-20211207
-arm                  randconfig-c002-20211207
-riscv                randconfig-c006-20211207
-mips                 randconfig-c004-20211207
-i386                 randconfig-c001-20211207
-powerpc              randconfig-c003-20211207
-s390                 randconfig-c005-20211207
-x86_64               randconfig-a016-20211207
-x86_64               randconfig-a011-20211207
-x86_64               randconfig-a013-20211207
-x86_64               randconfig-a014-20211207
-x86_64               randconfig-a015-20211207
-x86_64               randconfig-a012-20211207
-i386                 randconfig-a016-20211207
-i386                 randconfig-a013-20211207
-i386                 randconfig-a011-20211207
-i386                 randconfig-a014-20211207
-i386                 randconfig-a012-20211207
-i386                 randconfig-a015-20211207
-hexagon              randconfig-r045-20211207
-s390                 randconfig-r044-20211207
-riscv                randconfig-r042-20211207
-hexagon              randconfig-r041-20211207
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
