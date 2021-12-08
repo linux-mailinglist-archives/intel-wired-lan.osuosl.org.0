@@ -2,86 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D31E446D655
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 16:01:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA19646D458
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 14:22:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3C15D83E9B;
-	Wed,  8 Dec 2021 15:01:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4794D84C37;
+	Wed,  8 Dec 2021 13:22:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LTETrjThKqXf; Wed,  8 Dec 2021 15:01:22 +0000 (UTC)
+	with ESMTP id 7cEnFI032mlt; Wed,  8 Dec 2021 13:22:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3EC0983E7D;
-	Wed,  8 Dec 2021 15:01:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5486F84C3A;
+	Wed,  8 Dec 2021 13:22:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 514F21BF368
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CE551BF313
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:22:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4BAA860EE8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0A78440132
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:22:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uJxAfZ1dEu_m for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Dec 2021 07:53:48 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kXcQB2jlbJYC for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 13:22:00 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from rtits2.realtek.com.tw (rtits2.realtek.com [211.75.126.72])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C9A9560635
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 07:53:47 +0000 (UTC)
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 1B87rTS21030330,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexh36505.realtek.com.tw[172.21.6.25])
- by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 1B87rTS21030330
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 8 Dec 2021 15:53:29 +0800
-Received: from RTEXMBS02.realtek.com.tw (172.21.6.95) by
- RTEXH36505.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.17; Wed, 8 Dec 2021 15:53:29 +0800
-Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
- RTEXMBS02.realtek.com.tw (172.21.6.95) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.15; Wed, 8 Dec 2021 15:53:28 +0800
-Received: from RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01]) by
- RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01%5]) with mapi id
- 15.01.2308.020; Wed, 8 Dec 2021 15:53:28 +0800
-From: Hayes Wang <hayeswang@realtek.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Thread-Topic: [RFC PATCH 0/4] r8169: support dash
-Thread-Index: AQHX5QnDLn6ABzzmpEe3dMh4ox9UtKwaRZuAgAKrunD//4AsAIAD8ppQ///5wgCABkeCEIAA4HSAgADAA+A=
-Date: Wed, 8 Dec 2021 07:53:28 +0000
-Message-ID: <67d7f6f7b6e84af692bc0a7c4c48bb84@realtek.com>
-References: <20211129101315.16372-381-nic_swsd@realtek.com>
- <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
- <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <d3a1e1c469844aa697d6d315c9549eda@realtek.com>
- <20211203070410.1b4abc4d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <e2fd429a489545e7a521283600cb7caa@realtek.com>
- <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [172.21.177.203]
-x-kse-serverinfo: RTEXMBS02.realtek.com.tw, 9
-x-kse-attachmentfiltering-interceptor-info: no applicable attachment filtering
- rules found
-x-kse-antivirus-interceptor-info: scan successful
-x-kse-antivirus-info: =?us-ascii?Q?Clean,_bases:_2021/12/8_=3F=3F_06:28:00?=
-x-kse-bulkmessagesfiltering-scan-result: protection disabled
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 20746400D8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:21:59 +0000 (UTC)
+Received: from [192.168.0.3] (ip5f5aed2c.dynamic.kabel-deutschland.de
+ [95.90.237.44])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id E710361EA191E;
+ Wed,  8 Dec 2021 14:21:56 +0100 (CET)
+Message-ID: <b98e863b-8c64-4092-67ac-dbf84295acc1@molgen.mpg.de>
+Date: Wed, 8 Dec 2021 14:21:56 +0100
 MIME-Version: 1.0
-X-KSE-ServerInfo: RTEXH36505.realtek.com.tw, 9
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-Mailman-Approved-At: Wed, 08 Dec 2021 15:01:18 +0000
-Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Content-Language: en-US
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+References: <20211207132525.26458-1-mateusz.palczewski@intel.com>
+ <8e8f07cb-899a-b184-78ed-323d3b436b11@molgen.mpg.de>
+ <BL1PR11MB52886124AEE0A8C9E6679731876E9@BL1PR11MB5288.namprd11.prod.outlook.com>
+ <37f3e44a-cc8b-9632-2982-8b28ac98bbb1@molgen.mpg.de>
+ <BL1PR11MB528851994C2A9AF2CD976985876F9@BL1PR11MB5288.namprd11.prod.outlook.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <BL1PR11MB528851994C2A9AF2CD976985876F9@BL1PR11MB5288.namprd11.prod.outlook.com>
+Subject: Re: [Intel-wired-lan] [PATCH net v3] i40e: Fix for displaying
+ message regarding NVM version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,37 +66,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- nic_swsd <nic_swsd@realtek.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jakub Kicinski <kuba@kernel.org>
-> Sent: Wednesday, December 8, 2021 12:21 PM
-[...]
-> > Could devlink param be used for more than 4 bytes settings?
-> > At least the IPv6 address is longer.
-> 
-> We can add a new devlink sub-command and driver callback in that case.
-
-Excuse me. Do you mean someone will add it? Then, I could use it.
-Or, I have to add it.
-
-> > Besides, we need the information of SMBIOS which could
-> > be 4K ~ 8K bytes data. Is there any way we could transmit
-> > it to firmware?
-> 
-> Is structure of that data defined by some DMTF standard?
-Yes.
-
-Best Regards,
-Hayes
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBNYXRldXN6LAoKCkFtIDA4LjEyLjIxIHVtIDExOjEzIHNjaHJpZWIgUGFsY3pld3NraSwg
+TWF0ZXVzejoKCj4+Pj4gQW0gMDcuMTIuMjEgdW0gMTQ6MjUgc2NocmllYiBNYXRldXN6IFBhbGN6
+ZXdza2k6Cj4+Pj4+IFdoZW4gbG9hZGluZyB0aGUgaTQwZSBkcml2ZXIsIGl0IHByaW50cyBhIG1l
+c3NhZ2UgbGlrZTogJ1RoZSBkcml2ZXIgZm9yIHRoZQo+Pj4+PiBkZXZpY2UgZGV0ZWN0ZWQgYSBu
+ZXdlciB2ZXJzaW9uIG9mIHRoZSBOVk0gaW1hZ2UgdjEueCB0aGFuIGV4cGVjdGVkIHYxLnkuCj4+
+Pj4+IFBsZWFzZSBpbnN0YWxsIHRoZSBtb3N0IHJlY2VudCB2ZXJzaW9uIG9mIHRoZSBuZXR3b3Jr
+IGRyaXZlci4nIFRoaXMgaXMKPj4+Pj4gbWlzbGVhZGluZyBhcyB0aGUgZHJpdmVyIGlzIHdvcmtp
+bmcgYXMgZXhwZWN0ZWQuCj4+Pj4+Cj4+Pj4+IEZpeCB0aGF0IGJ5IHJlbW92aW5nIHRoZSBzZWNv
+bmQgcGFydCBvZiBtZXNzYWdlIGFuZCBjaGFuZ2luZyBpdCBmcm9tCj4+Pj4+IGRldl9pbmZvIHRv
+IGRldl9kZ2IuCj4+Pj4+Cj4+Pj4+IEZpeGVzOiA0ZmIyOWJkZGIgKCJpNDBlOiBUaGUgZHJpdmVy
+IG5vdyBwcmludHMgdGhlIEFQSSB2ZXJzaW9uIGluIGVycm9yIG1lc3NhZ2UiKQo+Pj4+PiBTaWdu
+ZWQtb2ZmLWJ5OiBNYXRldXN6IFBhbGN6ZXdza2kgPG1hdGV1c3oucGFsY3pld3NraUBpbnRlbC5j
+b20+Cj4+Pj4+IC0tLQo+Pj4+PiAgICAgdjM6IENoYW5nZWQgdGhlIHBhdGNoIGFmdGVyIGNvbW11
+bml0eSByZXZpZXcKPj4+Pj4gICAgIHYyOiBGaXhlZCB0aGUgZml4ZXMgdGFnIHRvIGJlIDEyIGRp
+Z2l0cyBsb25nCj4+Pj4+IC0tLQo+Pj4+PiAgICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aTQwZS9pNDBlX21haW4uYyB8IDQgKystLQo+Pj4+PiAgICAgMSBmaWxlIGNoYW5nZWQsIDIgaW5z
+ZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPj4+Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jCj4+Pj4+IGluZGV4IDQ2NjRkMDcuLmMwNzc0NmIg
+MTAwNjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9t
+YWluLmMKPj4+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21h
+aW4uYwo+Pj4+PiBAQCAtMTU0NjksOCArMTU0NjksOCBAQCBzdGF0aWMgaW50IGk0MGVfcHJvYmUo
+c3RydWN0IHBjaV9kZXYgKnBkZXYsIGNvbnN0IHN0cnVjdCBwY2lfZGV2aWNlX2lkICplbnQpCj4+
+Pj4+ICAgICAKPj4+Pj4gICAgIAlpZiAoaHctPmFxLmFwaV9tYWpfdmVyID09IEk0MEVfRldfQVBJ
+X1ZFUlNJT05fTUFKT1IgJiYKPj4+Pj4gICAgIAkgICAgaHctPmFxLmFwaV9taW5fdmVyID4gSTQw
+RV9GV19NSU5PUl9WRVJTSU9OKGh3KSkKPj4+Pj4gLQkJZGV2X2luZm8oJnBkZXYtPmRldiwKPj4+
+Pj4gLQkJCSAiVGhlIGRyaXZlciBmb3IgdGhlIGRldmljZSBkZXRlY3RlZCBhIG5ld2VyIHZlcnNp
+b24gb2YgdGhlIE5WTSBpbWFnZSB2JXUuJXUgdGhhbiBleHBlY3RlZCB2JXUuJXUuIFBsZWFzZSBp
+bnN0YWxsIHRoZSBtb3N0IHJlY2VudCB2ZXJzaW9uIG9mIHRoZSBuZXR3b3JrIGRyaXZlci5cbiIs
+Cj4+Pj4+ICsJCWRldl9kYmcoJnBkZXYtPmRldiwKPj4+Pj4gKwkJCSJUaGUgZHJpdmVyIGZvciB0
+aGUgZGV2aWNlIGRldGVjdGVkIGEgbmV3ZXIgdmVyc2lvbiBvZiB0aGUgTlZNIGltYWdlIHYldS4l
+dSB0aGFuIGV4cGVjdGVkIHYldS4ldS5cbiIsCj4+Pj4+ICAgICAJCQkgaHctPmFxLmFwaV9tYWpf
+dmVyLAo+Pj4+PiAgICAgCQkJIGh3LT5hcS5hcGlfbWluX3ZlciwKPj4+Pj4gICAgIAkJCSBJNDBF
+X0ZXX0FQSV9WRVJTSU9OX01BSk9SLAo+Pj4+Pgo+Pj4+Cj4+Pj4gSXTigJlzIGEgZGVidWcgbWVz
+c2FnZSBub3csIHNvIG9ubHkgYSBmZXcgcGVvcGxlIGFyZSBnb2luZyB0byBub3RpY2UsIGJ1dAo+
+Pj4+IGEgbm90ZSBvbiB3aGF0IHRvIGRvIHRvIGdldCByaWQgb2YgdGhlIG1lc3NhZ2UsIHdvdWxk
+IGJlIHN0aWxsIGJlIG5pY2UuCj4+Pj4KPj4+Pj4gVG8gZGlzYWJsZSB0aGlzIGluZm9ybWF0aW9u
+YWwgbWVzc2FnZSwgdXBkYXRlIHRvIGEgbmV3ZXIgZHJpdmVyIHZlcnNpb24uCj4+Pgo+Pj4gSSBi
+ZWxpZXZlIHRoYXQsIHNpbmNlIHRoZSBkcml2ZXIgaXMgd29ya2luZyBjb3JyZWN0bHksIHdlIHNo
+b3VsZG4ndAo+Pj4gcmVxdWVzdCBhbnkgYWN0aW9uIGZyb20gdGhlIHVzZXIgYnV0IGp1c3QgdG8g
+aW5mb3JtIGFib3V0IGEgTlZNIGJlaW5nCj4+PiBuZXdlciB2ZXJzaW9uIHRoYXQgZXhwZWN0ZWQu
+Cj4+Cj4+IFRoZW4g4oCcZXhwZWN0ZWTigJ0gc2hvdWxkIGFsc28gYmUgcmVtb3ZlZCBmcm9tIHRo
+ZSBtZXNzYWdlLgo+IEkgZG9uJ3QgYWdyZWUuIEkgYmVsaWV2ZSB0aGF0IG1lc3NhZ2Ugd2l0aG91
+dCB0aGUgaW5mb3JtYXRpb24gYWJvdXQKPiBleHBlY3RlZCBOVk0gdmVyc2lvbiB3aWxsIGJlIG1v
+cmUgY29uZnVzaW5nIHRoYW4gdGhlIG9uIHdpdGggaXQuCgpJIGp1c3QgbWVhbnQgdG8gcmVtb3Zl
+IHRoZSB3b3JkIOKAnGV4cGVjdGVk4oCdLiBJZiBzb21ldGhpbmcgZXhwZWN0ZWQgZmFpbHMgCnRv
+IGhhcHBlbiwgaXTigJlzIHVuZXhwZWN0ZWQsIHdoaWNoIHN1Z2dlc3RzIGEgcHJvYmxlbS4gSW4g
+dGhpcyBjYXNlIGl0IApzZWVtcyBleHBlY3RlZCwgdGhhdCBuZXdlciBOVk0gdmVyc2lvbnMgY2Fu
+IGJlIHByZXNlbnQuCgooSSBkbyBub3Qgd2FudCB0byBiaWtlc2hlZCwgYW5kIGp1c3Qgdm9pY2Vk
+IG15IHVzZXIgcG9pbnQgb2Ygdmlldy4pCgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
