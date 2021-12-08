@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 639AD46CEA7
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 09:07:53 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3AF646CEAA
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 09:08:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0561E60F02;
-	Wed,  8 Dec 2021 08:07:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 527E060F02;
+	Wed,  8 Dec 2021 08:08:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f4uAFSXIrZmN; Wed,  8 Dec 2021 08:07:51 +0000 (UTC)
+	with ESMTP id 8pwYRyCGU74Q; Wed,  8 Dec 2021 08:08:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EA43A606B3;
-	Wed,  8 Dec 2021 08:07:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3914B606B3;
+	Wed,  8 Dec 2021 08:08:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A32A11BF365
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:07:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 855681BF365
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:08:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8F8C3401CB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:07:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 74B104016F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:08:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=intel.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nKSHCiOw-wXE for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Dec 2021 08:07:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jcfg6VCNc64n for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 08:08:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 90A0B40147
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:07:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="237588047"
-X-IronPort-AV: E=Sophos;i="5.87,296,1631602800"; d="scan'208";a="237588047"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C1E124013D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 08:08:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="236519439"
+X-IronPort-AV: E=Sophos;i="5.87,296,1631602800"; d="scan'208";a="236519439"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2021 00:07:44 -0800
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Dec 2021 00:08:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,296,1631602800"; d="scan'208";a="606163266"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by fmsmga002.fm.intel.com with ESMTP; 08 Dec 2021 00:07:32 -0800
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.87,296,1631602800"; d="scan'208";a="606163810"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga002.fm.intel.com with ESMTP; 08 Dec 2021 00:08:14 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 8 Dec 2021 00:07:31 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ 15.1.2308.20; Wed, 8 Dec 2021 00:08:13 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 8 Dec 2021 00:07:31 -0800
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.102)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2308.20 via Frontend Transport; Wed, 8 Dec 2021 00:08:13 -0800
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.43) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 8 Dec 2021 00:07:31 -0800
+ 15.1.2308.20; Wed, 8 Dec 2021 00:08:07 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LfjAE88UmNcDMqwjHoJhEZyyOjIUw4W0RysifnzwhKjx99gEuVXlX7b/U1FakoJCWp3lk4wBuB9AEwEPNRAqrj3Y6Eh/wiT/0RVuBlvKZY4lRuBnPGkjZhpvDrSX2J/3yTsQk0kKLDQT8wD67D5NJM1dq0XP8+ZksOG+hyGLrVLYLKuQBPepL3l09lGgCML6VkrwxOqKJupcyjwo43s61y8NgA62zhPVB+TfnM6YEkKZmqoOBAB4rqbQrofv6vEnU5k7/Fge5/AVRzJH5TVNMuOdR6oumBTPGtzjbmqYN4UU+twC5+LP3wZQ+dFVeSefwtCtaOjb5JsmGQmTpCNG+g==
+ b=ih6E1fEDRLhNuFfYgfiLRaaV7ab3FMYjFbkIVKoxMQ9kzEKww19Zk13qrlqLYtliQSM/GSOQ0SkH044lTN84d+woz7A9ku13Qq9usBghQdR1jlVrG3uYzyqasY4Vm52FRYlxVAuwkceREubd+Mo32Yf2o69Abhme3lZ971LJG4A1SgHARCBk37OBD+N76Wh40Pwz6Oxi5sMn7DuWgzcOV+4nkbEbgQG43ntem0MWI7ZdcySuO+TmJcNb31lmphQAIk5IpmTqCkYljLRSNNkFnXcFyQfkn1xToi28AAvv6cBfEmf9fTHXquiFL3dL9c6Q/GTZWIgVIi6R98RTHZnQeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HjMS0hHM0Rrn1JwPaQ9NcyHNwXVpgg9zYIgkAqgFi7s=;
- b=a68pyc9s74ZxnXRSCcNff9jDU7pv8TKfgwXsb8YbtQT48iFBDAqJZyvZ7uOQ+t/D0KVIZe+ED8nixVyB/TDosS6KISQTy6yBKUaSno1D/LorjXOKRyCwK+frSRkdhKXZAuOkJjbEBfXG/ImXpc6GdhB0O+rvnv+NtKSZWNnFuWfoL8FuthCH8tPmrbO/w38ArymEKZJZQV6O2Or0al0qWXF617AVBkf6d5wCK/NT+hE4Fni48k8zixYGgzh54WKCypGtXYE1MjG/+4AwEkaQxWQrrHgzAPqWxuFa3b7tpSHV+5v4nIh04ailIBXE/sL4bqhxHmfqguEj1siQDOjsHg==
+ bh=MYz3qNLJcrLXC8saVUwl+ceZ1HCZ2DI6iHiiclDqJ7A=;
+ b=Rq5BZTuc95LjDOkk/H1OcNJLUHErc+H+gwBMjKrGzrS83TaB91xauEEULl0GbVupFFy8gEVdVegVgftGB8IrljixkQlp2zN/FRrUlRDOU4PweiuGmjkItETtVrikpZY7ddH+3JOmm3Sa/tVkk4F22/jO/ih2n2H99ZlYHOhKwLfKmHhesraJkj8IEBCmsmrCTnQIN7g8Z8G64x2nC3YvHpJ3GC1UdYEqzIGGnbxpez+1pfB6xegFv9R/Ncm4XBqbNdx+SZCAcbDChGZj4JHv69vNqwGG1ekzcu3f0Np+fT1HHOckHfJyfnHV30QBw+f3UBonazO8VOYg/dAwDTpd9g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HjMS0hHM0Rrn1JwPaQ9NcyHNwXVpgg9zYIgkAqgFi7s=;
- b=OAYLDpUnW72dFEzv0mfRnZicjFhjfGOU4naUvXDXnO85Bmlmo/aSqpHOS21JeOEa+FDyhyc/cFxZGyCti2REyta7yGT8ac2CKHxk42wAF19DW+PwEjhagUpvI0c/3l71FsWtK+Xl6wggBOliDsxwX+1+SEqgvAVAXBo6UEkM0sA=
+ bh=MYz3qNLJcrLXC8saVUwl+ceZ1HCZ2DI6iHiiclDqJ7A=;
+ b=rq0K0fO4uY+0edHoaDwBevjj0aYXLkEh/8ja9+Fl9oyuMLaIIQW7XJ9RDBsrU+2+VECSE/gYj8nZd33MhHb1AYoEVqjfGMsp+t/qOi/mNWmYJu2cjiIw9zI9e9MsEuCc22S0ZTdHATYw3E+UArCG2/SV2HLae46+DJzYtDoI4Eo=
 Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
- DM8PR11MB5672.namprd11.prod.outlook.com (2603:10b6:8:26::10) with
+ DM8PR11MB5638.namprd11.prod.outlook.com (2603:10b6:8:27::13) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4778.12; Wed, 8 Dec 2021 08:07:30 +0000
+ 15.20.4755.11; Wed, 8 Dec 2021 08:08:06 +0000
 Received: from DM8PR11MB5621.namprd11.prod.outlook.com
  ([fe80::3114:bfaa:f64d:684a]) by DM8PR11MB5621.namprd11.prod.outlook.com
  ([fe80::3114:bfaa:f64d:684a%4]) with mapi id 15.20.4778.012; Wed, 8 Dec 2021
- 08:07:30 +0000
+ 08:08:06 +0000
 From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
 To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v2 2/6] iavf: Add support for
- VIRTCHNL_VF_OFFLOAD_VLAN_V2 negotiation
-Thread-Index: AQHX5X++sYNUVeotF0i1Z4RbRoppDawoSi3A
-Date: Wed, 8 Dec 2021 08:07:30 +0000
-Message-ID: <DM8PR11MB56215ADA254276256B16172CAB6F9@DM8PR11MB5621.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next v2 1/6] virtchnl: Add support
+ for new VLAN capabilities
+Thread-Index: AQHX5X+8Z9avpF7fWEKMIZEccPNOLKwoSlxw
+Date: Wed, 8 Dec 2021 08:08:06 +0000
+Message-ID: <DM8PR11MB56212059F295026BBFF34300AB6F9@DM8PR11MB5621.namprd11.prod.outlook.com>
 References: <20211130001604.22112-1-anthony.l.nguyen@intel.com>
- <20211130001604.22112-3-anthony.l.nguyen@intel.com>
-In-Reply-To: <20211130001604.22112-3-anthony.l.nguyen@intel.com>
+ <20211130001604.22112-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20211130001604.22112-2-anthony.l.nguyen@intel.com>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -99,61 +99,61 @@ dlp-reaction: no-action
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 046105e7-c89b-4e4b-eed7-08d9ba21c82e
-x-ms-traffictypediagnostic: DM8PR11MB5672:EE_
-x-microsoft-antispam-prvs: <DM8PR11MB567282FC53329090C5C98391AB6F9@DM8PR11MB5672.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4502;
+x-ms-office365-filtering-correlation-id: 1cb8b00c-3c21-4e04-1baa-08d9ba21dde8
+x-ms-traffictypediagnostic: DM8PR11MB5638:EE_
+x-microsoft-antispam-prvs: <DM8PR11MB56386F63537E95B7364217BCAB6F9@DM8PR11MB5638.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nSmwCi7S4kJUGB/CBTV0lh+ANAHBf7Su0iz0aSS1cvvpKqdq37vdvTBoFlDsYbPIEL10MnCf393ycL0sKTkc5aPakBxAFhf055dYFSKQS3aUGFvh2neGU1LCKHNmpclsTbhJy1GC54G1xOCrmSiQj2nroxJyEcC2CZq3KhYTT7oGQ4j2sOGz28yJ3VLn6nhhlQYk5Qo3PC8LLkcu34Hz3X01r18NwjCYTZniPBn/0i7TzmAGsGSBznTpeu+JuX9bP7G6JErXO/2TDuJ41U9jaIzn+lAXpnRSIcNd9t6dgKCQy6DJ/MXiTNvuBx9aRio7kUhSpkfEdCoVpZ/hK1+rbSmlGP3AR/G90ssZDJGuM2qoGcnYcT6DuvasV+F5A2szIsmnQZ5EJMowFcdzGBiknhkVqlWx6J1coNLKFZyVuS8QP9bQVsgYiOSLrYWxa8AvMJbshvJnD3Li70cVsCO9FZmk4H6rFyspvy/5BAvXTFRFbowYRn/MvO62tp5km2JEe3QhVtbAs06S+zjRnAzb4piQlnPa/K2OaNsfINO5wdSKpn+cHXoaGR8sfvpf/7vZ7CbI6EoGCYYPFAT/dpwjXn2uQ/+XOa3Ra6eMjTQCsUBC7rDbyZ+jMBjqZCMJsRUYOzhw14nPAG3FZnXnxrFAsqxxGrvFq9O6US36dBxcMwf7qEkFv0k/4j/zGkKzrLAtTT3GmQF21muXkDW75QeB7A==
+x-microsoft-antispam-message-info: VJ8XeDdPulTNuZ5Dc9SdZhg/S2B2uJxw9DKU+BSO9xvNWvsu5eqAO9NMAd+N+iJH+iS2GH4817ym0BMW1kTyDGfHaHle3kXawgsdKEPzuonREAK6H11CLuubw6N8a/daYElibP7Q6DUwTVJ7ijfQ9WHqUMfBPLLsPCwj7Uadhkp4OqwR4+/Vs7JVIQCSRT0ioriTaWow1vH3Y/P7w0QjPsPiVnkbTvqV65uArqvxGvltD8c8qVqNjXrCxp7uFvPS9sXcXlXuSwOw87c+Rjw9hZZG0cnEUsHRNdoBdgyWMCVL8IWFPz3E8D0Xx2lUuHmC5b+aOq7p3dNpWj+YIe1Hn4entOlTNtajGFMLPvhITeQwZX0Bi2f94y6h0ZyW35AaxRvGWXf6ufjaeXgI/s3gSz0IXGh8xIwSBQrFwY2lkkvrz3mlmwZ+z/JnqIQ4izkBF8ODUXQ2lGdjgfis28I2EGlrr3LeRrrHa7ndYMge7KzGPT2oe5b1fskWlDHgkC8fE2ew8gGOMEgwjQAKGmDdxNG4h3yeC3LSqcdz0bPHZeaFXsWpA4qY0chj18xrg4FrtLHcsHvSB+W+vAllGh865E7YiWO7MqbBMO66vfsITp32xXYSEzYkm3lzT+ccJxfQDydQ9JOhamWGrRqZYQ4ZbSnoe7HNC63Wu14Vct1hivYn2qkfxwqVtNHJpvPZGvL+2oeLZQN5Jt2vrEdizeq8MQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(122000001)(66946007)(76116006)(9686003)(5660300002)(38100700002)(66476007)(52536014)(64756008)(66446008)(66556008)(8676002)(8936002)(71200400001)(508600001)(33656002)(55016003)(86362001)(83380400001)(38070700005)(316002)(82960400001)(186003)(2906002)(26005)(7696005)(6506007)(53546011)(110136005);
+ SFS:(366004)(38070700005)(5660300002)(110136005)(83380400001)(9686003)(186003)(26005)(7696005)(2906002)(55016003)(52536014)(38100700002)(122000001)(71200400001)(64756008)(66446008)(33656002)(82960400001)(53546011)(8936002)(8676002)(66946007)(86362001)(66556008)(316002)(508600001)(66476007)(6506007)(76116006);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ria3qLGzUGSc6GPppldyF+hixsDb7E2kOS296KR/cIwZ8ZsIzyloYK0irCzk?=
- =?us-ascii?Q?aGDQokV9YAdIN1QmS84qR0ghsoTWymPKtHGnkp9Oehxjyc/7G17X2dVlhaLl?=
- =?us-ascii?Q?fNulj82x2iWYEGT4cmxBX5r4ESca8N0+NqFtYJQoZZGygU6S5ZcSDSywFVm+?=
- =?us-ascii?Q?vYqAvkaddjAPMzzv7q/fZqtRf0IJU7lBca4yrGv8bc23H47nOVfGDfldMa14?=
- =?us-ascii?Q?3KW3tJJ6nXzy8oAr1xJiV8DiT96sVZcSrPkeH/KSElxQHMd1hYIy5yKjSGmk?=
- =?us-ascii?Q?GHicFpnDLvKl9Kv5hraXznzhaF321zkVU1YXoitoa8IFap5TA8HOi+GKdEuX?=
- =?us-ascii?Q?Z8CUY2QCWvoxqqg1pLE74skdwLV8DwDhf89TwgUADX2Kk4HrobK9ovQSBunh?=
- =?us-ascii?Q?8R89tqah+UT6poySR8mffMxLGnn/RhhNeFPFQ40Fe8i5xbYM3Z8707Da+T1Y?=
- =?us-ascii?Q?lu34lz0a2M7NyncFqZ7BAY1cndpdsa7Nlk1AcqsbxKZrU2u0TGdnKqaAFbV9?=
- =?us-ascii?Q?QM4ZWDKFbpqbMcm5/PWxoRktygdHL9/DVmoc6YFYol8X6VIj3vV6ChF65YOr?=
- =?us-ascii?Q?uSFnRaQOqnYsbbZGSRSYyLFGJmGaI7mZ3QVrJP4B9pInSRCH+Fn/alUXMCjJ?=
- =?us-ascii?Q?DAn4XFSDQj+Q9nzI1C2MXVqZNUsrP8w2zdilgDtyz7MZLOA5iInbaUHztFpP?=
- =?us-ascii?Q?AxBZ+bHuPyksOjr/uPNGG0mrkz2XiyXTGV5UX/RjKqPMINebERWIrVqTyW8b?=
- =?us-ascii?Q?b3PyQzyfF7+Y5sUoSRwvjBCznvyZIrm/L4kM9US3t+WylCFRLjj0LGHHb8fM?=
- =?us-ascii?Q?tk005Zp1EpbHgPTRnVtffsJcvl7XNWUY3MijBb7NBG7bNiKOqykDk6l8CJUX?=
- =?us-ascii?Q?Agi29Hwd2DWKNnUd+t4WGZJEZ29LYo5TpP3oI7+wYAjJ7+8gbs7vDvK9Ev2P?=
- =?us-ascii?Q?JrX0JXEj8/ZmAFOYgaiLZIR3e/zluZLZJ1duCnePlt3y+MeuqBeKMXlx/IRA?=
- =?us-ascii?Q?ZGkYW02xxAuHT9jd0s+wPRyJdTbj5Gaw92PjF0v+C3Ib5ypcLyyIoqmzi4gD?=
- =?us-ascii?Q?mcJBeuhASzbj3Qyd6vLOO/xrFFAmsKH9099xuF7EjFVFYUuNvHnjWVyUFchj?=
- =?us-ascii?Q?JuS0otlbqaaAkbI/bNN95W+ZNuxjrJtfR0dSChRw1cmAD3LKbuIgBGveRbuA?=
- =?us-ascii?Q?HBl7m7fzY4C6HUlarX4rkqU+b3iVmgx9bxDLajQnVb4473RQpm+lWyYQCSCt?=
- =?us-ascii?Q?qxVcZKKflIqZeFejXOgvwYMGMqw29JnmYsUrO52HMMmAwAsGQCbgbopfT9kW?=
- =?us-ascii?Q?nL58VU9lr+73WMN+/eAJ3UQxz7RLyXL9Wv3Uex0oqNmAGirH4Odqj8xvw+88?=
- =?us-ascii?Q?s+A5Kmfe6dIctNQsk0zPPAtVde5vyeqVIROT4Ln1wLvCj1cf8FvNGKfXcab9?=
- =?us-ascii?Q?E3UwxVbncK+40BrobITLfEvpSZvD82sqAjlQflWBlTPhvd+xr5YZaIjuOggo?=
- =?us-ascii?Q?SOv6oniODhXPZeQWGy/PupZG2ZBIPMDbBMf4hXxMSzWuVLxaBVK4HHjJNVzn?=
- =?us-ascii?Q?Rkn2464Cc9RGCN3cI/glYny3a85xV/+ddyofgCtGGUnP/IpV7N4Kq+S146tB?=
- =?us-ascii?Q?efdl2CyRCLzY9Zy0UUBYsRI2kG3VVF0X88qXwk/7iFALdsIpIDDc2Qw7QIkU?=
- =?us-ascii?Q?1lCe+A=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RaglNeEaDyCGKzAqWBlMq7mnSpLl+gUdsw1nwNmbYDJARKhh4KyLsQUU1PGx?=
+ =?us-ascii?Q?hZd44AF2ZCdcdRznPNxK9EupX7QebztBmmN1ixqAn872r/sgDXm+AXdAVSRO?=
+ =?us-ascii?Q?d0u+n4qlNr9l058KDHfO47U7IBuasvzAYTDYgdrVZlAQNA/vImZtFEH9fxIJ?=
+ =?us-ascii?Q?Vq7z7b1xRIbZjnrMXy1FM4Nu7EZiHnPLwtizyalYczXYmd2xYKNPV7kZ4N6U?=
+ =?us-ascii?Q?zkfIqK4r9fE0FjYcWLhfwrLUONjYTWAMVdPjdo1K2eZ0OcpFdOqqtfzx9TJo?=
+ =?us-ascii?Q?RQSjGe+oXzPnXS4moqA+0k4WUXMOdC8iCDbXZFAK2lUmL1+SUUzJ/rlQf6wJ?=
+ =?us-ascii?Q?df2yQmTcuBMApOEQ6bqSAZjUeszUj74e9kqb+2jTdkJTe82/ABEe3XNQpzzp?=
+ =?us-ascii?Q?8B1DGHORSibz13Etj9BAcf/34iIM+Zph+J0nTshQIY60FpPmsvy1fOHgNm9J?=
+ =?us-ascii?Q?8psiqIo/YDnaWvcd3J5R9eiIzVOTLsgF6Tbb1aZwrTr3jsVw49qpc+WGMglM?=
+ =?us-ascii?Q?6HSaiu3QsRc08AINyVuoj8gtMRS2fUwt/ohz/JqXCg0oQ5ySlhNcjb5y8/am?=
+ =?us-ascii?Q?n8fPJTHn3G6d/QoesUpCww+7Soz/0vUmwuo9lVj6kVCWIXRe1ZBSFSdMKwXi?=
+ =?us-ascii?Q?Pka6/vniqpQw8cZoFR+VdIhKwHbMtnFW9aFIHR8XxopDoNEzmP4qoVnt1Fzp?=
+ =?us-ascii?Q?k7eAipAdhTZhP0PEl5SUBebFbgFfl0l6rDDRfwFP5AkA8PtbuU/Kvvi6IXul?=
+ =?us-ascii?Q?wfOdXPliNtq2yAoDOQck1CIso5PaSXCQbbq4uWVZDUpk7vR3IpDwbgmlkY92?=
+ =?us-ascii?Q?hk+YjjmmFuOM3CW2lpcb88e/akc0QedTKoxQ48RqxbcftseXWoucOSGHL5Ld?=
+ =?us-ascii?Q?2WfSIGKv63fwLjnHYnZQmvRj3VfBat0wC/32oCuBvLSeyGbK3hHkBBz+QKPp?=
+ =?us-ascii?Q?vTYR+inOs5gIQ+95FPmZd3S8oM8fmyENaueu1D/Es2cR5PcMpIPZCx+vmjjw?=
+ =?us-ascii?Q?rMI3XB6eXpYsgmSKBI0MY7bXTTfV4YWeH+9VOON24SJeuJK/13svmypXc1Yt?=
+ =?us-ascii?Q?lRxPhH7sug2Hmv2zfisGcOmqcXk4KUqV26U17YcdwGz8Feq4xo8a39ecRVTX?=
+ =?us-ascii?Q?Np680Pua3MieEo4GynjM9uGUoJVYMPuV1gZU2XZ6DKLYHd1K2UZt3U+BUWAT?=
+ =?us-ascii?Q?p5VJWZVG0UUL4tHus1SJc1nbpnYMc0RS0qeurs7DkkA0hZeqMqSRYyZ5yqFA?=
+ =?us-ascii?Q?ENrOxn/a9zGG01GlFbE5oMOviGEpssAeeL+9OlL/T1nK+Od4bd7G9PM4Y9K5?=
+ =?us-ascii?Q?MLQgPUW7oS0hf0AhcFFkUVF4eohu32bnxjSgA20cV/crmYm79r8jD0ctm7WU?=
+ =?us-ascii?Q?YdK2tSDlm1q6J5XQqol073CtiWmIGDcfgJ0eDk2R6V/hEZwycFcbn+2/NYtV?=
+ =?us-ascii?Q?hn0pouR8SYIlFmVTw9mJwDuRvqSDxYdMMa4pvB2zh8AghTGJ+vrHruOaHddi?=
+ =?us-ascii?Q?obotqWH8AqSfAoeuEv/uf3Iw5AQ+uFZVGxwn5PtQEz9i+aNyNbOeB3Jeg0P8?=
+ =?us-ascii?Q?a92mSKV01MyDeTaQM8ZwHbZm8dYbM4M+uK/MD9R4uUbyoWCUNjxjPDKx7bSs?=
+ =?us-ascii?Q?vLb64BfCfondTKbLvj0IKicw1DP/PW1TbM3r4C5phG2swGvGBLSNv45TVTyo?=
+ =?us-ascii?Q?RAUpew=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 046105e7-c89b-4e4b-eed7-08d9ba21c82e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2021 08:07:30.3925 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1cb8b00c-3c21-4e04-1baa-08d9ba21dde8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2021 08:08:06.8174 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: anZqpyeyScgvuEDoT7Sito602EXFfDk6Yf5FBvcM8Fp47MKXUZyIdpVipzihAxmpCYKTcgAYnueZKYb9TLkypPjGToN1oXD6MMpZtZdm1Uw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR11MB5672
+X-MS-Exchange-CrossTenant-userprincipalname: RDzi6fH5CxJLvm5lAiWr9WvtgqSveSjte4zUlmcPrUJhoALxtK5Qlfa2VGv8ag/9Hk+na8G2vSk5PXfc2LiZkb4VstUEaFqEBUHvNvY6Ik8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR11MB5638
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/6] iavf: Add support for
- VIRTCHNL_VF_OFFLOAD_VLAN_V2 negotiation
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/6] virtchnl: Add support
+ for new VLAN capabilities
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -178,62 +178,64 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Tony Nguyen
 > Sent: wtorek, 30 listopada 2021 01:16
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net-next v2 2/6] iavf: Add support for
-> VIRTCHNL_VF_OFFLOAD_VLAN_V2 negotiation
+> Subject: [Intel-wired-lan] [PATCH net-next v2 1/6] virtchnl: Add support for
+> new VLAN capabilities
 > 
 > From: Brett Creeley <brett.creeley@intel.com>
 > 
-> In order to support the new VIRTCHNL_VF_OFFLOAD_VLAN_V2 capability
-> the VF driver needs to rework it's initialization state machine and reset flow.
-> This has to be done because successful negotiation of
-> VIRTCHNL_VF_OFFLOAD_VLAN_V2 requires the VF driver to perform a
-> second capability request via VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS
-> before configuring the adapter and its netdev.
+> Currently VIRTCHNL only allows for VLAN filtering and offloads to happen on
+> a single 802.1Q VLAN. Add support to filter and offload on inner, outer,
+> and/or inner + outer VLANs.
 > 
-> Add the VIRTCHNL_VF_OFFLOAD_VLAN_V2 bit when sending the
-> VIRTHCNL_OP_GET_VF_RESOURECES message. The underlying PF will either
-> support VIRTCHNL_VF_OFFLOAD_VLAN or
-> VIRTCHNL_VF_OFFLOAD_VLAN_V2 or neither. Both of these offloads should
-> never be supported together.
+> This is done by introducing the new capability
+> VIRTCHNL_VF_OFFLOAD_VLAN_V2. The flow to negotiate this new capability
+> is shown below.
 > 
-> Based on this, add 2 new states to the initialization state machine:
+> 1. VF - sets the VIRTCHNL_VF_OFFLOAD_VLAN_V2 bit in the
+>    virtchnl_vf_resource.vf_caps_flags during the
+>    VIRTCHNL_OP_GET_VF_RESOURCES request message. The VF should also
+> set
+>    the VIRTCHNL_VF_OFFLOAD_VLAN bit in case the PF driver doesn't support
+>    the new capability.
 > 
-> __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS
-> __IAVF_INIT_CONFIG_ADAPTER
+> 2. PF - sets the VLAN capability bit it supports in the
+>    VIRTCHNL_OP_GET_VF_RESOURCES response message. This will either be
+>    VIRTCHNL_VF_OFFLOAD_VLAN_V2, VIRTCHNL_VF_OFFLOAD_VLAN, or
+> none.
 > 
-> The __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS state is used to
-> request/store the new VLAN capabilities if and only if
-> VIRTCHNL_VLAN_OFFLOAD_VLAN_V2 was successfully negotiated in the
-> __IAVF_INIT_GET_RESOURCES state.
+> 3. VF - If the VIRTCHNL_VF_OFFLOAD_VLAN_V2 capability was ACK'd by the
+>    PF, then the VF needs to request the VLAN capabilities of the
+>    PF/Device by issuing a VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS
+> request.
+>    If the VIRTCHNL_VF_OFFLOAD_VLAN capability was ACK'd then the VF
+>    knows only single 802.1Q VLAN filtering/offloads are supported. If no
+>    VLAN capability is ACK'd then the PF/Device doesn't support hardware
+>    VLAN filtering/offloads for this VF.
 > 
-> The __IAVF_INIT_CONFIG_ADAPTER state is used to configure the
-> adapter/netdev after the resource requests have finished. The VF will move
-> into this state regardless of whether it successfully negotiated
-> VIRTCHNL_VF_OFFLOAD_VLAN or VIRTCHNL_VF_OFFLOAD_VLAN_V2.
+> 4. PF - Populates the virtchnl_vlan_caps structure based on what it
+>    allows/supports for that VF and sends that response via
+>    VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS.
 > 
-> Also, add a the new flag IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS
-> and set it during VF reset. If VIRTCHNL_VF_OFFLOAD_VLAN_V2 was
-> successfully negotiated then the VF will request its VLAN capabilities via
-> VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS during the reset. This is
-> needed because the PF may change/modify the VF's configuration during VF
-> reset (i.e. modifying the VF's port VLAN configuration).
+> After VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS is successfully
+> negotiated the VF driver needs to interpret the capabilities supported by the
+> underlying PF/Device. The VF will be allowed to filter/offload the inner
+> 802.1Q, outer (various ethertype), inner 802.1Q + outer (various ethertypes),
+> or none based on which fields are set.
 > 
-> This also, required the VF to call netdev_update_features() since its VLAN
-> features may change during VF reset. Make sure to call this under rtnl_lock().
+> The VF will also need to interpret where the VLAN tag should be inserted
+> and/or stripped based on the negotiated capabilities.
 > 
 > Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf.h        |   9 +
->  drivers/net/ethernet/intel/iavf/iavf_main.c   | 205 +++++++++++++-----
->  .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  78 ++++++-
->  3 files changed, 240 insertions(+), 52 deletions(-)
+>  include/linux/avf/virtchnl.h | 377
+> +++++++++++++++++++++++++++++++++++
+>  1 file changed, 377 insertions(+)
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf.h
-> b/drivers/net/ethernet/intel/iavf/iavf.h
-> index b5728bdbcf33..edb139834437 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf.h
-> @@ -181,6 +181,8 @@ enum iavf_state_t {
+> diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h index
+> b30a1bc74fc7..2ce27e8e4f19 100644
+> --- a/include/linux/avf/virtchnl.h
+> +++ b/include/linux/avf/virtchnl.h
+> @@ -141,6 +141,13 @@ enum virtchnl_ops {
 
 Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
