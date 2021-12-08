@@ -2,58 +2,68 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6524646C528
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Dec 2021 21:56:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C2E846CC4E
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 05:21:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0E58140958;
-	Tue,  7 Dec 2021 20:56:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CDF65409EE;
+	Wed,  8 Dec 2021 04:21:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tFfXUMPiPuPt; Tue,  7 Dec 2021 20:56:50 +0000 (UTC)
+	with ESMTP id Lph8kF4GL4Kq; Wed,  8 Dec 2021 04:21:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DFCC140955;
-	Tue,  7 Dec 2021 20:56:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 96D9140144;
+	Wed,  8 Dec 2021 04:21:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2B4371BF290
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Dec 2021 20:56:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F28D51BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 04:21:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 15FC48308D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Dec 2021 20:56:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EAFD860EFE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 04:21:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tHLtpI4HkmHE for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Dec 2021 20:56:27 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LB-Pv8nXnqBI for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 04:21:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 09CD382FC9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Dec 2021 20:56:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="298481454"
-X-IronPort-AV: E=Sophos;i="5.87,295,1631602800"; d="scan'208";a="298481454"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2021 12:56:26 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,295,1631602800"; d="scan'208";a="580160593"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga004.fm.intel.com with ESMTP; 07 Dec 2021 12:56:21 -0800
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1B7Ku9km018910; Tue, 7 Dec 2021 20:56:20 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  7 Dec 2021 21:55:36 +0100
-Message-Id: <20211207205536.563550-10-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211207205536.563550-1-alexandr.lobakin@intel.com>
-References: <20211207205536.563550-1-alexandr.lobakin@intel.com>
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9239B60F04
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 04:21:07 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id DC9F6B81113;
+ Wed,  8 Dec 2021 04:21:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58EB2C00446;
+ Wed,  8 Dec 2021 04:21:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638937263;
+ bh=cQVgvHDHPYJ56anN/8+yMuzVmF9obIn6/LddtUoqZX0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=DBlhztBI3vRhDIAIIYVEhesl9bCL1Pr1/phh7U07zOPv8knMr8TMCAVPztIfJtPys
+ 2D9ubWrx10u8w4Z7neWobqDbFkvrhTBxnMXJCNI6ZJbrRvhV46a29GYF7gXkEpXv0s
+ QQKO4A5Xl4qkKWXA5Qm7eSeH77HjU9dzA3uZy5v7LH9UnYib/9eEYpzns9j//tcWCC
+ IY0vXYJhrTumz+0Qmr5C/oAVZYm0XxUSKb/LfsoKJdzl3+HwrrGWdfFIhxOAgzc7CU
+ cc54ATSj1PyOIUwWzZchl99WKt3Qy5YCJGUe4ACd7El5JTzlZR/oqXxC91AYWFeDPl
+ Md80L5T32cmNA==
+Date: Tue, 7 Dec 2021 20:21:01 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Hayes Wang <hayeswang@realtek.com>
+Message-ID: <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <e2fd429a489545e7a521283600cb7caa@realtek.com>
+References: <20211129101315.16372-381-nic_swsd@realtek.com>
+ <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
+ <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <d3a1e1c469844aa697d6d315c9549eda@realtek.com>
+ <20211203070410.1b4abc4d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <e2fd429a489545e7a521283600cb7caa@realtek.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v3 net-next 9/9] i40e: respect metadata on
- XSK Rx to skb
+Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,75 +76,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>, bpf@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- Jesper Dangaard Brouer <brouer@redhat.com>,
- =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn@kernel.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
- Vedang Patel <vedang.patel@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ nic_swsd <nic_swsd@realtek.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "hkallweit1@gmail.com" <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-For now, if the XDP prog returns XDP_PASS on XSK, the metadata will
-be lost as it doesn't get copied to the skb.
-Copy it along with the frame headers. Account its size on skb
-allocation, and when copying just treat it as a part of the frame
-and do a pull after to "move" it to the "reserved" zone.
-net_prefetch() xdp->data_meta and align the copy size to speed-up
-memcpy() a little and better match ixgbee_costruct_skb().
+On Tue, 7 Dec 2021 07:28:02 +0000 Hayes Wang wrote:
+> Jakub Kicinski <kuba@kernel.org>
+> > Ah, I've only spotted the enable/disable knob in the patch.
+> > If you're exchanging arbitrary binary data with the FW we
+> > can't help you. It's not going to fly upstream.   
+> 
+> How is it that we only provide certain basic settings,
+> such as IPv4 address, IPv6 address, and so on? Then,
+> they are not the arbitrary binary data.
+> 
+> Could devlink param be used for more than 4 bytes settings?
+> At least the IPv6 address is longer.
 
-Fixes: d0bcacd0a130 ("ixgbe: add AF_XDP zero-copy Rx support")
-Suggested-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+We can add a new devlink sub-command and driver callback in that case.
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index db20dc4c2488..ec1e2da72676 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -209,19 +209,25 @@ bool ixgbe_alloc_rx_buffers_zc(struct ixgbe_ring *rx_ring, u16 count)
- static struct sk_buff *ixgbe_construct_skb_zc(struct ixgbe_ring *rx_ring,
- 					      const struct xdp_buff *xdp)
- {
-+	unsigned int totalsize = xdp->data_end - xdp->data_meta;
- 	unsigned int metasize = xdp->data - xdp->data_meta;
--	unsigned int datasize = xdp->data_end - xdp->data;
- 	struct sk_buff *skb;
- 
-+	net_prefetch(xdp->data_meta);
-+
- 	/* allocate a skb to store the frags */
--	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, datasize,
-+	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, totalsize,
- 			       GFP_ATOMIC | __GFP_NOWARN);
- 	if (unlikely(!skb))
- 		return NULL;
- 
--	memcpy(__skb_put(skb, datasize), xdp->data, datasize);
--	if (metasize)
-+	memcpy(__skb_put(skb, totalsize), xdp->data_meta,
-+	       ALIGN(totalsize, sizeof(long)));
-+
-+	if (metasize) {
- 		skb_metadata_set(skb, metasize);
-+		__skb_pull(skb, metasize);
-+	}
- 
- 	return skb;
- }
--- 
-2.33.1
+> Besides, we need the information of SMBIOS which could
+> be 4K ~ 8K bytes data. Is there any way we could transmit
+> it to firmware?
 
+Is structure of that data defined by some DMTF standard?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
