@@ -2,37 +2,37 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 555AE46D0EC
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 11:22:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 599FB46D0E9
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 11:22:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0C15884B95;
-	Wed,  8 Dec 2021 10:22:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C167484BC6;
+	Wed,  8 Dec 2021 10:22:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v8plRWA_DeCQ; Wed,  8 Dec 2021 10:22:11 +0000 (UTC)
+	with ESMTP id o2TI56sbivmg; Wed,  8 Dec 2021 10:22:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1735684B87;
-	Wed,  8 Dec 2021 10:22:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B9B0884B7B;
+	Wed,  8 Dec 2021 10:22:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7DEDB1BF362
- for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:22:02 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 05B7940A0B
+ by ash.osuosl.org (Postfix) with ESMTP id 0AC0F1BF362
  for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:22:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id BAC0240207
+ for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:22:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UNuIVwlV_OkZ for <intel-wired-lan@osuosl.org>;
+ with ESMTP id YqFU37JQTKX8 for <intel-wired-lan@osuosl.org>;
  Wed,  8 Dec 2021 10:21:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2AC8F4013A
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AEEA440A0D
  for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1638958918;
@@ -40,28 +40,28 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qpLbtZAIHQkdOoUaqak4eJ3LDwJuabFwzSNV4H4Dcr0=;
- b=FV/Ai4TvvaDggJIi6lsN1nxZG/Jcbg/k73xlomMU4ugo0CuV3doGi0ycYGulCC3eyoVS8B
- lXT57RKZG0R3jx4C2JnUHu0FgW/09u9ZDzn32pXxDXmF/M7mikNnU2S052r+iz+PCQ/vin
- EUPLdSpBiW5PsIxj5N6qB99t6D9eBL4=
+ bh=Moh21KzqZZG3lRmQ1GH0NS86dy5lC+lTKiR7rNxBPeE=;
+ b=Y7u5OmDUro7/aTiNF+vBTM9toSgA+Orq84Qc0kK+b02uXa4mmWJTZOUQxi4fNhVEKKzYR3
+ Xh1FQJZEj0oxSfJ1BEd2bw+rmFo3VCpmsITj/4v0exBxRU883uwJWIXM3YBOEpJnafcTXH
+ AAKxS134jX2YiV8cr8vxvALXtaTbnK8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-549-pH0--xATPOSKK6RsLYasKA-1; Wed, 08 Dec 2021 05:21:57 -0500
-X-MC-Unique: pH0--xATPOSKK6RsLYasKA-1
+ us-mta-373-1chVDaqWP_q7pPilVF7hTA-1; Wed, 08 Dec 2021 05:21:57 -0500
+X-MC-Unique: 1chVDaqWP_q7pPilVF7hTA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D288A81CCBA
- for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:21:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 677CB1006AA0
+ for <intel-wired-lan@osuosl.org>; Wed,  8 Dec 2021 10:21:56 +0000 (UTC)
 Received: from wideload.redhat.com (unknown [10.22.8.29])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 75E7D13A58;
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0A5B113A58;
  Wed,  8 Dec 2021 10:21:55 +0000 (UTC)
 From: Ken Cox <jkc@redhat.com>
 To: intel-wired-lan@osuosl.org
-Date: Wed,  8 Dec 2021 04:21:52 -0600
-Message-Id: <20211208102153.669338-2-jkc@redhat.com>
+Date: Wed,  8 Dec 2021 04:21:53 -0600
+Message-Id: <20211208102153.669338-3-jkc@redhat.com>
 In-Reply-To: <20211208102153.669338-1-jkc@redhat.com>
 References: <20211208102153.669338-1-jkc@redhat.com>
 MIME-Version: 1.0
@@ -70,7 +70,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jkc@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Subject: [Intel-wired-lan] [Patch 1/2] iavf: Fix panic in iavf_remove
+Subject: [Intel-wired-lan] [Patch 2/2] iavf: Prevent reset from being
+ scheduled while adapter is being removed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,51 +90,107 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It's possible for the client_task to get scheduled by the watchdog
-after cancel_delayed_work_sync(&adapter->client_task);  This can cause
-a panic because free_netdev() is called with the client_task still queued
-on the work queue.
+If a reset gets scheduled while the adapter is being removed it can
+cause a panic.
 
-The stack backtrace usually looks similar to:
-
-[  121.272963] Workqueue:  0x0 (iavf)
-[  121.272969] RIP: 0010:__list_del_entry_valid.cold.1+0x20/0x4c
-...
-[  121.272980] Call Trace:
-[  121.272985]  move_linked_works+0x49/0xa0
-[  121.272988]  pwq_activate_delayed_work+0x43/0x100
-[  121.272991]  pwq_dec_nr_in_flight+0x5d/0x90
-[  121.272993]  worker_thread+0x30/0x370
-[  121.272995]  ? process_one_work+0x420/0x420
-[  121.272998]  kthread+0x15d/0x180
-[  121.273000]  ? __kthread_parkme+0xa0/0xa0
-[  121.273003]  ret_from_fork+0x1f/0x40
+The work_struct for the reset_task is contained in the iavf_adapter
+structure.  iavf_remove() eventually frees the iavf_adapter structure
+so if there is active work scheduled it can cause a panic.
 
 Signed-off-by: Ken Cox <jkc@redhat.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/iavf/iavf_ethtool.c  |  7 +++++--
+ drivers/net/ethernet/intel/iavf/iavf_main.c     | 15 ++++++++++-----
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c |  4 +++-
+ 3 files changed, 18 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index af43fbd8cb75e..3cf1679153604 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -519,7 +519,9 @@ static int iavf_set_priv_flags(struct net_device *netdev, u32 flags)
+ 
+ 	/* issue a reset to force legacy-rx change to take effect */
+ 	if (changed_flags & IAVF_FLAG_LEGACY_RX) {
+-		if (netif_running(netdev)) {
++
++		if (netif_running(netdev) &&
++		    !test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section)) {
+ 			adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+ 			queue_work(iavf_wq, &adapter->reset_task);
+ 		}
+@@ -630,7 +632,8 @@ static int iavf_set_ringparam(struct net_device *netdev,
+ 	adapter->tx_desc_count = new_tx_count;
+ 	adapter->rx_desc_count = new_rx_count;
+ 
+-	if (netif_running(netdev)) {
++	if (netif_running(netdev) &&
++	    !test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section)) {
+ 		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+ 		queue_work(iavf_wq, &adapter->reset_task);
+ 	}
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 6c2afbc8acbcd..63eec7edbf60a 100644
+index 63eec7edbf60a..af2788c997ca2 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3940,7 +3940,6 @@ static void iavf_remove(struct pci_dev *pdev)
- 	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
- 	cancel_delayed_work_sync(&adapter->init_task);
- 	cancel_work_sync(&adapter->reset_task);
--	cancel_delayed_work_sync(&adapter->client_task);
- 	if (adapter->netdev_registered) {
- 		unregister_netdev(netdev);
- 		adapter->netdev_registered = false;
-@@ -3974,6 +3973,7 @@ static void iavf_remove(struct pci_dev *pdev)
- 	iavf_free_q_vectors(adapter);
+@@ -164,7 +164,8 @@ static int iavf_lock_timeout(struct iavf_adapter *adapter,
+ void iavf_schedule_reset(struct iavf_adapter *adapter)
+ {
+ 	if (!(adapter->flags &
+-	      (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED))) {
++	      (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) &&
++	    !test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section)) {
+ 		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+ 		queue_work(iavf_wq, &adapter->reset_task);
+ 	}
+@@ -2013,7 +2014,8 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+ 		dev_err(&adapter->pdev->dev, "Hardware reset detected\n");
+-		queue_work(iavf_wq, &adapter->reset_task);
++		if (!test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
++			queue_work(iavf_wq, &adapter->reset_task);
+ 		goto watchdog_done;
+ 	}
  
- 	cancel_delayed_work_sync(&adapter->watchdog_task);
-+	cancel_delayed_work_sync(&adapter->client_task);
+@@ -3348,8 +3350,10 @@ static int iavf_change_mtu(struct net_device *netdev, int new_mtu)
+ 		iavf_notify_client_l2_params(&adapter->vsi);
+ 		adapter->flags |= IAVF_FLAG_SERVICE_CLIENT_REQUESTED;
+ 	}
+-	adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+-	queue_work(iavf_wq, &adapter->reset_task);
++	if (!test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section)) {
++		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
++		queue_work(iavf_wq, &adapter->reset_task);
++	}
  
- 	cancel_work_sync(&adapter->adminq_task);
+ 	return 0;
+ }
+@@ -3909,7 +3913,8 @@ static int __maybe_unused iavf_resume(struct device *dev_d)
+ 		return err;
+ 	}
  
+-	queue_work(iavf_wq, &adapter->reset_task);
++	if (!test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
++		queue_work(iavf_wq, &adapter->reset_task);
+ 
+ 	netif_device_attach(netdev);
+ 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 0eab3c43bdc59..ba973b2ab0547 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1470,7 +1470,9 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			break;
+ 		case VIRTCHNL_EVENT_RESET_IMPENDING:
+ 			dev_info(&adapter->pdev->dev, "Reset warning received from the PF\n");
+-			if (!(adapter->flags & IAVF_FLAG_RESET_PENDING)) {
++			if (!(adapter->flags & IAVF_FLAG_RESET_PENDING) &&
++			    !test_bit(__IAVF_IN_REMOVE_TASK,
++				      &adapter->crit_section)) {
+ 				adapter->flags |= IAVF_FLAG_RESET_PENDING;
+ 				dev_info(&adapter->pdev->dev, "Scheduling reset task\n");
+ 				queue_work(iavf_wq, &adapter->reset_task);
 -- 
 2.31.1
 
