@@ -1,103 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A35E546D4BF
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 14:47:52 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 925D846D523
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 15:07:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1CB5283FAD;
-	Wed,  8 Dec 2021 13:47:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C7D760A46;
+	Wed,  8 Dec 2021 14:07:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5DhLGab4URoX; Wed,  8 Dec 2021 13:47:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id upYajjbHlzYy; Wed,  8 Dec 2021 14:07:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 28B3A83FA8;
-	Wed,  8 Dec 2021 13:47:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F34736070D;
+	Wed,  8 Dec 2021 14:07:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BE3841BF313
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:47:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 407FD1BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 14:07:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A849C4091E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:47:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3C79783E62
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 14:07:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nHfPGirBU0Mi for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Dec 2021 13:47:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uZ7kqVipaSIr for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 14:07:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6BB2740325
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 13:47:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638971263;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WgXBhT10uUPntd9D3XCgnudzdibRWkPr5w60jBLDpjI=;
- b=RZlZz526RAdPvXZyZqQfEWsnap/Xuz2QuJQZdFiBLemmbc3hTHGbZin262gURHK7GUf/On
- nuKFFkBmhfd64mblETd3TeTnqS1NVlLxVCuIlTZ+XIF09/3PIMso/WBhDy8rOKRL9Urgo9
- JGOgJ/OUc5MtZWZkLTTS0Jl1PVSI6ns=
-Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
- [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-177-pHncNfBPM92mQAopPQ4KXQ-1; Wed, 08 Dec 2021 08:47:40 -0500
-X-MC-Unique: pHncNfBPM92mQAopPQ4KXQ-1
-Received: by mail-lf1-f69.google.com with SMTP id
- d26-20020ac244da000000b00417e1d212a2so1141939lfm.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Dec 2021 05:47:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:message-id:date:mime-version:user-agent:cc
- :subject:content-language:to:references:in-reply-to
- :content-transfer-encoding;
- bh=WgXBhT10uUPntd9D3XCgnudzdibRWkPr5w60jBLDpjI=;
- b=TAzeZrt0YTts6iavdMN6XqkpTsPXDLUQUhL7nc9iIH5VDcxgIcCYEfuQIjyZFuVtm3
- lRUS8goiMYcvHrg9MpKJJIF/t3x+j8GvyruJP8tUkAF+Lx7rdike/OBAbm105MUEsy2s
- 1PqAsuiOmWoP7G7sqGgbtLnCPpqlJ7F6mOaSCAD7eJMeJiIyT2VUbMBfThUYby0uBLxT
- sfVm59sBnZ6KZ/5dC0P4evsaOboPltmAOWkI19eEGayh+3kxE11cbG81sls7QTyc1N0/
- UMUNMCZXluh6IZzrUcOA70aB1xnhETxVVrnKq1ktHPZdH+Ak4ar2m6Zcgccb5lr9aTvn
- NmCQ==
-X-Gm-Message-State: AOAM533Bm83v4es3ZYTIw/PsF+AvLg0jTegWXDERRr6d+Df45Pf/WLv7
- jfr7U/0DRzK9k4md8gQ7ZYY0hjlRkPtRgO1pBNhS10HidvqkGzbLVY7yTZdGJ26Y4KKf9zwajh7
- 6o6qELZU5D4TlDzWgGAPlqe9DCYoerg==
-X-Received: by 2002:a05:6512:33c4:: with SMTP id
- d4mr44446306lfg.182.1638971258582; 
- Wed, 08 Dec 2021 05:47:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyBhIOzFBLL6AjKxPyHM2J++Vww0G7j189KtWPTFzpPdI2id9zE+pRzYQH9ANJkJY/Y/JcAlA==
-X-Received: by 2002:a05:6512:33c4:: with SMTP id
- d4mr44446255lfg.182.1638971258261; 
- Wed, 08 Dec 2021 05:47:38 -0800 (PST)
-Received: from [192.168.0.50] (87-59-106-155-cable.dk.customer.tdc.net.
- [87.59.106.155])
- by smtp.gmail.com with ESMTPSA id k8sm259731lfv.179.2021.12.08.05.47.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Dec 2021 05:47:37 -0800 (PST)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <87463ddc-bf93-99cc-65d1-cbc215125ec3@redhat.com>
-Date: Wed, 8 Dec 2021 14:47:35 +0100
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 47A9F83E57
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 14:07:38 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="301218227"
+X-IronPort-AV: E=Sophos;i="5.88,189,1635231600"; d="scan'208";a="301218227"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Dec 2021 06:07:33 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,189,1635231600"; d="scan'208";a="479908986"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga002.jf.intel.com with ESMTP; 08 Dec 2021 06:07:28 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 1B8E7Quc009548; Wed, 8 Dec 2021 14:07:26 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  8 Dec 2021 15:06:53 +0100
+Message-Id: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-To: Alexander Lobakin <alexandr.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <20211207205536.563550-1-alexandr.lobakin@intel.com>
- <20211207205536.563550-10-alexandr.lobakin@intel.com>
-In-Reply-To: <20211207205536.563550-10-alexandr.lobakin@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 9/9] i40e: respect
- metadata on XSK Rx to skb
+Subject: [Intel-wired-lan] [PATCH v4 net-next 0/9] net: intel:
+ napi_alloc_skb() vs metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,43 +64,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>, bpf@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, brouer@redhat.com,
- Jakub Kicinski <kuba@kernel.org>, linux-kernel@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, Vedang Patel <vedang.patel@intel.com>
+Cc: Song Liu <songliubraving@fb.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Yonghong Song <yhs@fb.com>,
+ Martin KaFai Lau <kafai@fb.com>, John Fastabend <john.fastabend@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn@kernel.org>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ bpf@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This is an interpolation of [0] to other Intel Ethernet drivers
+(and is (re)based on its code).
+The main aim is to keep XDP metadata not only in case with
+build_skb(), but also when we do napi_alloc_skb() + memcpy().
 
-On 07/12/2021 21.55, Alexander Lobakin wrote:
-> For now, if the XDP prog returns XDP_PASS on XSK, the metadata will
-> be lost as it doesn't get copied to the skb.
-> Copy it along with the frame headers. Account its size on skb
-> allocation, and when copying just treat it as a part of the frame
-> and do a pull after to "move" it to the "reserved" zone.
-> net_prefetch() xdp->data_meta and align the copy size to speed-up
-> memcpy() a little and better match ixgbee_costruct_skb().
-                                      ^^^^^^^^^^^^^^^^^^^
-Misspelling function name.
+All Intel drivers suffers from the same here:
+ - metadata gets lost on XDP_PASS in legacy-rx;
+ - excessive headroom allocation on XSK Rx to skbs;
+ - metadata gets lost on XSK Rx to skbs.
 
-> 
-> Fixes: d0bcacd0a130 ("ixgbe: add AF_XDP zero-copy Rx support")
-> Suggested-by: Jesper Dangaard Brouer <brouer@redhat.com>
-> Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 14 ++++++++++----
->   1 file changed, 10 insertions(+), 4 deletions(-)
+Those get especially actual in XDP Hints upcoming.
+I couldn't have addressed the first one for all Intel drivers due to
+that they don't reserve any headroom for now in legacy-rx mode even
+with XDP enabled. This is hugely wrong, but requires quite a bunch
+of work and a separate series. Luckily, ice doesn't suffer from
+that.
+igc has 1 and 3 already fixed in [0].
 
-Wrong driver (i40e:) "tagged" in subject.
+From v3 ([1]):
+ - fix driver name and ixgbe_construct_skb() function name in the
+   commit message of #9 (Jesper);
+ - no functional changes.
+
+From v2 (unreleased upstream):
+ - tweaked 007 to pass bi->xdp directly and simplify code (Maciej);
+ - picked Michal's Reviewed-by.
+
+From v1 (unreleased upstream):
+ - drop "fixes" of legacy-rx for i40e, igb and ixgbe since they have
+   another flaw regarding headroom (see above);
+ - drop igc cosmetic fixes since they landed upstream incorporated
+   into Jesper's commits;
+ - picked one Acked-by from Maciej.
+
+[0] https://lore.kernel.org/netdev/163700856423.565980.10162564921347693758.stgit@firesoul
+[1] https://lore.kernel.org/netdev/20211207205536.563550-1-alexandr.lobakin@intel.com
+
+Alexander Lobakin (9):
+  i40e: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+  i40e: respect metadata on XSK Rx to skb
+  ice: respect metadata in legacy-rx/ice_construct_skb()
+  ice: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+  ice: respect metadata on XSK Rx to skb
+  igc: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+  ixgbe: pass bi->xdp to ixgbe_construct_skb_zc() directly
+  ixgbe: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+  ixgbe: respect metadata on XSK Rx to skb
+
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c   | 16 +++++++-----
+ drivers/net/ethernet/intel/ice/ice_txrx.c    | 15 ++++++++---
+ drivers/net/ethernet/intel/ice/ice_xsk.c     | 16 +++++++-----
+ drivers/net/ethernet/intel/igc/igc_main.c    | 13 +++++-----
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 27 ++++++++++++--------
+ 5 files changed, 54 insertions(+), 33 deletions(-)
+
+-- 
+Testing hints:
+
+Setup an XDP and AF_XDP program which will prepend metadata at the
+front of the frames and return XDP_PASS, then check that metadata
+is present after frames reach kernel network stack.
+--
+2.33.1
 
 _______________________________________________
 Intel-wired-lan mailing list
