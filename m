@@ -1,53 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E801746D015
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 10:28:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D465346D09A
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Dec 2021 11:07:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CF006401EA;
-	Wed,  8 Dec 2021 09:28:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B53E84B4F;
+	Wed,  8 Dec 2021 10:07:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fLScPKcPLKsT; Wed,  8 Dec 2021 09:28:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BDiz05-o6ti4; Wed,  8 Dec 2021 10:07:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 86574402DF;
-	Wed,  8 Dec 2021 09:28:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3912D84B37;
+	Wed,  8 Dec 2021 10:07:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4F4D31BF5A9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 09:28:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EF3FB1BF362
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 10:07:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 487EE40A08
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 09:28:15 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DBF6340207
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 10:07:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vL94QKa5I0Uv for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Dec 2021 09:28:13 +0000 (UTC)
+ with ESMTP id p6vcy3N4QVy0 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Dec 2021 10:07:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 35E0A409F1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 09:28:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="301179015"
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="301179015"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2021 01:28:10 -0800
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C98C8401BB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Dec 2021 10:07:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="225058818"
+X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="225058818"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Dec 2021 02:07:41 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="502983295"
-Received: from amlin-19-169.igk.intel.com ([10.102.19.169])
- by orsmga007.jf.intel.com with ESMTP; 08 Dec 2021 01:28:09 -0800
-From: "Sornek, Karen" <karen.sornek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Dec 2021 10:28:59 +0100
-Message-Id: <20211208092859.1876593-1-karen.sornek@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="515700424"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga008.jf.intel.com with ESMTP; 08 Dec 2021 02:07:40 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mutrP-0000PA-6j; Wed, 08 Dec 2021 10:07:39 +0000
+Date: Wed, 08 Dec 2021 18:06:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61b083c3.yOg1EmrggIfp+X15%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v3] iavf: Fix promiscuous mode
- configuration flow messages
+Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
+ d17b9737c2bc09b4ac6caf469826e5a7ce3ffab7
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,286 +63,232 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karen Sornek <karen.sornek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Karen Sornek <karen.sornek@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git master
+branch HEAD: d17b9737c2bc09b4ac6caf469826e5a7ce3ffab7  net/qla3xxx: fix an error code in ql_adapter_up()
 
-Currently when configuring promiscuous mode on the AVF we detect a
-change in the netdev->flags. We use IFF_PROMISC and IFF_ALLMULTI to
-determine whether or not we need to request/release promiscuous mode
-and/or multicast promiscuous mode. The problem is that the AQ calls for
-setting/clearing promiscuous/multicast mode are treated separately. This
-leads to a case where we can trigger two promiscuous mode AQ calls in
-a row with the incorrect state. To fix this make a few changes.
+elapsed time: 876m
 
-Use IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE instead of the previous
-IAVF_FLAG_AQ_[REQUEST|RELEASE]_[PROMISC|ALLMULTI] flags.
+configs tested: 201
+configs skipped: 3
 
-In iavf_set_rx_mode() detect if there is a change in the
-netdev->flags in comparison with adapter->flags and set the
-IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE aq_required bit. Then in
-iavf_process_aq_command() only check for IAVF_FLAG_CONFIGURE_PROMISC_MODE
-and call iavf_set_promiscuous() if it's set.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-In iavf_set_promiscuous() check again to see which (if any)
-promiscuous mode bits have changed when comparing the netdev->flags with
-the adapter->flags. Use this to set the flags which get sent to the PF
-driver.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211207
+arm                         axm55xx_defconfig
+sh                         microdev_defconfig
+mips                     loongson1c_defconfig
+sh                     sh7710voipgw_defconfig
+powerpc                  iss476-smp_defconfig
+m68k                             alldefconfig
+arc                           tb10x_defconfig
+arm                           tegra_defconfig
+powerpc                 mpc837x_rdb_defconfig
+csky                                defconfig
+xtensa                           allyesconfig
+arm                           stm32_defconfig
+powerpc                  storcenter_defconfig
+arm                          imote2_defconfig
+m68k                          atari_defconfig
+arm                           sama7_defconfig
+arm                         s5pv210_defconfig
+arm                       spear13xx_defconfig
+h8300                     edosk2674_defconfig
+mips                           rs90_defconfig
+mips                      maltasmvp_defconfig
+h8300                            allyesconfig
+nds32                            alldefconfig
+powerpc                     redwood_defconfig
+sh                          sdk7786_defconfig
+arm                           h5000_defconfig
+powerpc                mpc7448_hpc2_defconfig
+powerpc                     ppa8548_defconfig
+mips                         tb0287_defconfig
+sh                                  defconfig
+powerpc                    mvme5100_defconfig
+sh                            shmin_defconfig
+mips                        bcm63xx_defconfig
+powerpc                 mpc8272_ads_defconfig
+arc                              alldefconfig
+powerpc                 mpc834x_mds_defconfig
+arc                          axs103_defconfig
+arm                         nhk8815_defconfig
+sh                           se7705_defconfig
+mips                           xway_defconfig
+powerpc                      cm5200_defconfig
+sparc64                             defconfig
+powerpc                         wii_defconfig
+sh                   sh7724_generic_defconfig
+mips                      pic32mzda_defconfig
+powerpc64                        alldefconfig
+powerpc                     kilauea_defconfig
+powerpc                   motionpro_defconfig
+parisc                           alldefconfig
+arm                           h3600_defconfig
+mips                      loongson3_defconfig
+sh                  sh7785lcr_32bit_defconfig
+mips                           ip22_defconfig
+arm                           omap1_defconfig
+powerpc                       holly_defconfig
+arm                      pxa255-idp_defconfig
+sh                   rts7751r2dplus_defconfig
+mips                        workpad_defconfig
+sh                             espt_defconfig
+arm                      footbridge_defconfig
+powerpc                      acadia_defconfig
+sh                           se7721_defconfig
+arm                        mvebu_v7_defconfig
+riscv             nommu_k210_sdcard_defconfig
+sh                         ecovec24_defconfig
+arm                         orion5x_defconfig
+sh                           se7780_defconfig
+powerpc                    ge_imp3a_defconfig
+powerpc                   microwatt_defconfig
+mips                         tb0226_defconfig
+arm                          pxa910_defconfig
+i386                             allyesconfig
+mips                         db1xxx_defconfig
+arc                            hsdk_defconfig
+powerpc                      katmai_defconfig
+s390                                defconfig
+powerpc                      tqm8xx_defconfig
+parisc                generic-64bit_defconfig
+sparc64                          alldefconfig
+arm                         mv78xx0_defconfig
+mips                          ath79_defconfig
+arm                          pcm027_defconfig
+m68k                          sun3x_defconfig
+m68k                        m5272c3_defconfig
+powerpc                     powernv_defconfig
+arc                      axs103_smp_defconfig
+mips                     cu1000-neo_defconfig
+arm                        cerfcube_defconfig
+arm                  colibri_pxa270_defconfig
+m68k                            q40_defconfig
+nds32                             allnoconfig
+nios2                            allyesconfig
+powerpc                     tqm8548_defconfig
+sh                        sh7757lcr_defconfig
+sh                 kfr2r09-romimage_defconfig
+arm                         at91_dt_defconfig
+sparc                               defconfig
+mips                       rbtx49xx_defconfig
+xtensa                  nommu_kc705_defconfig
+mips                  maltasmvp_eva_defconfig
+arc                         haps_hs_defconfig
+arm                            pleb_defconfig
+arm                     am200epdkit_defconfig
+sh                     magicpanelr2_defconfig
+powerpc               mpc834x_itxgp_defconfig
+powerpc                      walnut_defconfig
+arm                   milbeaut_m10v_defconfig
+arm                  randconfig-c002-20211207
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20211207
+x86_64               randconfig-a005-20211207
+x86_64               randconfig-a001-20211207
+x86_64               randconfig-a002-20211207
+x86_64               randconfig-a004-20211207
+x86_64               randconfig-a003-20211207
+i386                 randconfig-a001-20211207
+i386                 randconfig-a005-20211207
+i386                 randconfig-a002-20211207
+i386                 randconfig-a003-20211207
+i386                 randconfig-a006-20211207
+i386                 randconfig-a004-20211207
+i386                 randconfig-a013-20211208
+i386                 randconfig-a016-20211208
+i386                 randconfig-a011-20211208
+i386                 randconfig-a014-20211208
+i386                 randconfig-a012-20211208
+i386                 randconfig-a015-20211208
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
 
-Add a spinlock that is used for updating current_netdev_promisc_flags
-and only allows one promiscuous mode AQ at a time.
+clang tested configs:
+arm                  randconfig-c002-20211208
+x86_64               randconfig-c007-20211208
+riscv                randconfig-c006-20211208
+i386                 randconfig-c001-20211208
+mips                 randconfig-c004-20211208
+powerpc              randconfig-c003-20211208
+s390                 randconfig-c005-20211208
+x86_64               randconfig-c007-20211207
+arm                  randconfig-c002-20211207
+riscv                randconfig-c006-20211207
+mips                 randconfig-c004-20211207
+i386                 randconfig-c001-20211207
+powerpc              randconfig-c003-20211207
+s390                 randconfig-c005-20211207
+x86_64               randconfig-a016-20211207
+x86_64               randconfig-a011-20211207
+x86_64               randconfig-a013-20211207
+x86_64               randconfig-a014-20211207
+x86_64               randconfig-a015-20211207
+x86_64               randconfig-a012-20211207
+i386                 randconfig-a016-20211207
+i386                 randconfig-a013-20211207
+i386                 randconfig-a011-20211207
+i386                 randconfig-a014-20211207
+i386                 randconfig-a012-20211207
+i386                 randconfig-a015-20211207
+hexagon              randconfig-r045-20211207
+s390                 randconfig-r044-20211207
+riscv                randconfig-r042-20211207
+hexagon              randconfig-r041-20211207
 
-[1] Fixes the fact that we will only have one AQ call in the aq_required
-queue at any one time.
-
-[2] Streamlines the change in promiscuous mode to only set one AQ
-required bit.
-
-[3] This allows us to keep track of the current state of the flags and
-also makes it so we can take the most recent netdev->flags promiscuous
-mode state.
-
-[4] This fixes the problem where a change in the netdev->flags can cause
-IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE to be set in iavf_set_rx_mode(),
-but cleared in iavf_set_promiscuous() before the change is ever made via
-AQ call.
-
-Fixes: 47d3483988f6 ("i40evf: Add driver support for promiscuous mode")
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Karen Sornek <karen.sornek@intel.com>
 ---
-v3: Previous version had applying issue
----
- drivers/net/ethernet/intel/iavf/iavf.h        | 16 +++--
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 45 +++++--------
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 66 ++++++++++++++-----
- 3 files changed, 75 insertions(+), 52 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 4d62231ec6b5..14e120a82b1c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -267,8 +267,6 @@ struct iavf_adapter {
- #define IAVF_FLAG_CLIENT_NEEDS_OPEN		BIT(10)
- #define IAVF_FLAG_CLIENT_NEEDS_CLOSE		BIT(11)
- #define IAVF_FLAG_CLIENT_NEEDS_L2_PARAMS	BIT(12)
--#define IAVF_FLAG_PROMISC_ON			BIT(13)
--#define IAVF_FLAG_ALLMULTI_ON			BIT(14)
- #define IAVF_FLAG_LEGACY_RX			BIT(15)
- #define IAVF_FLAG_REINIT_ITR_NEEDED		BIT(16)
- #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
-@@ -293,10 +291,7 @@ struct iavf_adapter {
- #define IAVF_FLAG_AQ_SET_HENA			BIT(12)
- #define IAVF_FLAG_AQ_SET_RSS_KEY		BIT(13)
- #define IAVF_FLAG_AQ_SET_RSS_LUT		BIT(14)
--#define IAVF_FLAG_AQ_REQUEST_PROMISC		BIT(15)
--#define IAVF_FLAG_AQ_RELEASE_PROMISC		BIT(16)
--#define IAVF_FLAG_AQ_REQUEST_ALLMULTI		BIT(17)
--#define IAVF_FLAG_AQ_RELEASE_ALLMULTI		BIT(18)
-+#define IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE	BIT(15)
- #define IAVF_FLAG_AQ_ENABLE_VLAN_STRIPPING	BIT(19)
- #define IAVF_FLAG_AQ_DISABLE_VLAN_STRIPPING	BIT(20)
- #define IAVF_FLAG_AQ_ENABLE_CHANNELS		BIT(21)
-@@ -309,6 +304,12 @@ struct iavf_adapter {
- #define IAVF_FLAG_AQ_DEL_ADV_RSS_CFG		BIT(28)
- #define IAVF_FLAG_AQ_REQUEST_STATS		BIT(29)
- 
-+	/* Lock to prevent possible clobbering of
-+	 * current_netdev_promisc_flags
-+	 */
-+	spinlock_t current_netdev_promisc_flags_lock;
-+	netdev_features_t current_netdev_promisc_flags;
-+
- 	/* OS defined structs */
- 	struct net_device *netdev;
- 	struct pci_dev *pdev;
-@@ -475,7 +476,8 @@ void iavf_add_ether_addrs(struct iavf_adapter *adapter);
- void iavf_del_ether_addrs(struct iavf_adapter *adapter);
- void iavf_add_vlans(struct iavf_adapter *adapter);
- void iavf_del_vlans(struct iavf_adapter *adapter);
--void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags);
-+void iavf_set_promiscuous(struct iavf_adapter *adapter);
-+bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter);
- void iavf_request_stats(struct iavf_adapter *adapter);
- void iavf_request_reset(struct iavf_adapter *adapter);
- void iavf_get_hena(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 40903b02b2a3..86fa2a1a5010 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -906,6 +906,16 @@ static int iavf_addr_unsync(struct net_device *netdev, const u8 *addr)
- 	return 0;
- }
- 
-+/**
-+ * iavf_promiscuous_mode_changed - check if promiscuous mode bits changed
-+ * @adapter: device specific adapter
-+ */
-+bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter)
-+{
-+	return (adapter->current_netdev_promisc_flags ^ adapter->netdev->flags)
-+		& (IFF_PROMISC | IFF_ALLMULTI);
-+}
-+
- /**
-  * iavf_set_rx_mode - NDO callback to set the netdev filters
-  * @netdev: network interface device structure
-@@ -919,19 +929,11 @@ static void iavf_set_rx_mode(struct net_device *netdev)
- 	__dev_mc_sync(netdev, iavf_addr_sync, iavf_addr_unsync);
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
--	if (netdev->flags & IFF_PROMISC &&
--	    !(adapter->flags & IAVF_FLAG_PROMISC_ON))
--		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_PROMISC;
--	else if (!(netdev->flags & IFF_PROMISC) &&
--		 adapter->flags & IAVF_FLAG_PROMISC_ON)
--		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_PROMISC;
--
--	if (netdev->flags & IFF_ALLMULTI &&
--	    !(adapter->flags & IAVF_FLAG_ALLMULTI_ON))
--		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_ALLMULTI;
--	else if (!(netdev->flags & IFF_ALLMULTI) &&
--		 adapter->flags & IAVF_FLAG_ALLMULTI_ON)
--		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_ALLMULTI;
-+	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
-+
-+	if (iavf_promiscuous_mode_changed(adapter))
-+		adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
- }
- 
- /**
-@@ -1659,22 +1661,10 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
- 		return 0;
- 	}
- 
--	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_PROMISC) {
--		iavf_set_promiscuous(adapter, FLAG_VF_UNICAST_PROMISC |
--				       FLAG_VF_MULTICAST_PROMISC);
-+	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE) {
-+		iavf_set_promiscuous(adapter);
- 		return 0;
- 	}
--
--	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_ALLMULTI) {
--		iavf_set_promiscuous(adapter, FLAG_VF_MULTICAST_PROMISC);
--		return 0;
--	}
--	if ((adapter->aq_required & IAVF_FLAG_AQ_RELEASE_PROMISC) ||
--	    (adapter->aq_required & IAVF_FLAG_AQ_RELEASE_ALLMULTI)) {
--		iavf_set_promiscuous(adapter, 0);
--		return 0;
--	}
--
- 	if (adapter->aq_required & IAVF_FLAG_AQ_ENABLE_CHANNELS) {
- 		iavf_enable_channels(adapter);
- 		return 0;
-@@ -3856,6 +3846,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	spin_lock_init(&adapter->mac_vlan_list_lock);
- 	spin_lock_init(&adapter->cloud_filter_list_lock);
-+	spin_lock_init(&adapter->current_netdev_promisc_flags_lock);
- 	spin_lock_init(&adapter->fdir_fltr_lock);
- 	spin_lock_init(&adapter->adv_rss_lock);
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 26ae289a0524..2d38d0c54523 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -739,10 +739,11 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
-  *
-  * Request that the PF enable promiscuous mode for our VSI.
-  **/
--void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags)
-+void iavf_set_promiscuous(struct iavf_adapter *adapter)
- {
-+	struct net_device *netdev = adapter->netdev;
- 	struct virtchnl_promisc_info vpi;
--	int promisc_all;
-+	unsigned int flags;
- 
- 	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
- 		/* bail because we already have a command pending */
-@@ -751,27 +752,56 @@ void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags)
- 		return;
- 	}
- 
--	promisc_all = FLAG_VF_UNICAST_PROMISC |
--		      FLAG_VF_MULTICAST_PROMISC;
--	if ((flags & promisc_all) == promisc_all) {
--		adapter->flags |= IAVF_FLAG_PROMISC_ON;
--		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_PROMISC;
--		dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
--	}
-+	/* prevent changes to promiscuous flags */
-+	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
- 
--	if (flags & FLAG_VF_MULTICAST_PROMISC) {
--		adapter->flags |= IAVF_FLAG_ALLMULTI_ON;
--		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_ALLMULTI;
--		dev_info(&adapter->pdev->dev, "Entering multicast promiscuous mode\n");
-+	/* sanity check to prevent duplicate AQ calls */
-+	if (!iavf_promiscuous_mode_changed(adapter)) {
-+		adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+		dev_dbg(&adapter->pdev->dev, "No change in promiscuous mode\n");
-+		/* allow changes to promiscuous flags */
-+		spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
-+		return;
- 	}
- 
--	if (!flags) {
--		adapter->flags &= ~(IAVF_FLAG_PROMISC_ON |
--				    IAVF_FLAG_ALLMULTI_ON);
--		adapter->aq_required &= ~(IAVF_FLAG_AQ_RELEASE_PROMISC |
--					  IAVF_FLAG_AQ_RELEASE_ALLMULTI);
-+	/* there are 2 bits, but only 3 states */
-+	if (!(netdev->flags & IFF_PROMISC) &&
-+	    netdev->flags & IFF_ALLMULTI) {
-+		/* State 1  - only multicast promiscuous mode enabled
-+		 * - !IFF_PROMISC && IFF_ALLMULTI
-+		 */
-+		flags = FLAG_VF_MULTICAST_PROMISC;
-+		adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
-+		adapter->current_netdev_promisc_flags &= ~IFF_PROMISC;
-+		dev_info(&adapter->pdev->dev,
-+			 "Entering multicast promiscuous mode\n");
-+	} else if (!(netdev->flags & IFF_PROMISC) &&
-+		   !(netdev->flags & IFF_ALLMULTI)) {
-+		/* State 2 - unicast/multicast promiscuous mode disabled
-+		 * - !IFF_PROMISC && !IFF_ALLMULTI
-+		 */
-+		flags = 0;
-+		adapter->current_netdev_promisc_flags &=
-+			~(IFF_PROMISC | IFF_ALLMULTI);
- 		dev_info(&adapter->pdev->dev, "Leaving promiscuous mode\n");
-+	} else {
-+		/* State 3 - unicast/multicast promiscuous mode enabled
-+		 * - IFF_PROMISC && IFF_ALLMULTI
-+		 * - IFF_PROMISC && !IFF_ALLMULTI
-+		 */
-+		flags = FLAG_VF_UNICAST_PROMISC | FLAG_VF_MULTICAST_PROMISC;
-+		adapter->current_netdev_promisc_flags |= IFF_PROMISC;
-+		if (netdev->flags & IFF_ALLMULTI)
-+			adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
-+		else
-+			adapter->current_netdev_promisc_flags &= ~IFF_ALLMULTI;
- 	}
-+	dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
-+
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+
-+	/* allow changes to promiscuous flags */
-+	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
- 
- 	adapter->current_op = VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE;
- 	vpi.vsi_id = adapter->vsi_res->vsi_id;
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
