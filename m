@@ -1,72 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA69046E60F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 10:59:35 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDB9B46E61F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 11:05:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 176456066D;
-	Thu,  9 Dec 2021 09:59:34 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5648640377;
+	Thu,  9 Dec 2021 10:05:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ICVNipTJ6i1B; Thu,  9 Dec 2021 09:59:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4FDZqurBushL; Thu,  9 Dec 2021 10:05:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10D3260658;
-	Thu,  9 Dec 2021 09:59:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F0B2140373;
+	Thu,  9 Dec 2021 10:05:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5B4C51BF2BF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C0C341BF40E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 10:05:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5665C40396
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AD446405E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 10:05:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eDKlsR9dwRnF for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Dec 2021 09:59:27 +0000 (UTC)
+ with ESMTP id UjJ7YP8ObKZ1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Dec 2021 10:05:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EAB95403FD
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:26 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 15686405BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 10:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639043967; x=1670579967;
+ t=1639044316; x=1670580316;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=hOwBxsMH4C03BppimmUOsnCYsCl/7cC8wz8baVYCMOU=;
- b=YiZ8RTsyOInfHSF9y3Us98Eg6eGZ24VLMr59q8WljCUlJzfzsIm0hhU1
- rU/qOLSiISO9Lh6qBA/hk1aANATzsfxl/LJ1Qgcng8NDkBuQysym7a8ZA
- fcn90YF+IcDSYa+2WAiMX9FdeW5zNyXKiH2hyXmqk3/hB8cb4xIuhjoGO
- dq4qMIWwXEfD35DeM5R5D6Fad7J+6UfHnU6p7WvibXqQ78UtEAOA5iPgf
- EgHNQxUdEdUMJsXxzSqls9ZPYQ6Qiq26yft5C9fsr1kSbNumY+quCDKln
- PQWsbH2tEBiljFKCnhBhzvcGi7Vuo1OCT4elQoEuPDmGQbOzZnkwIATCB w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10192"; a="224931741"
-X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="224931741"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Dec 2021 01:59:26 -0800
+ bh=zlHmC8c2AKuJMg+norpJo9OqTvl6lU5TOJNaHNp0JgI=;
+ b=DwANf1fNCcj92N3pYKHcoPKV6UI/EOBYkp4rm06vVZEogpHblCvq8YJt
+ oQ4SuUqy+Ir00N2Xi//xh1QFtXF32+psGQKqcM0RTMasmE1kS0DtkN9do
+ 5yHLyt8DMrDEXxaAmpUXwXhRvyEtCsvfNSPbT/wcwQGMO3+2CjeZtgleP
+ JECZxdvc5sxg+GqKKLwdqgwWvWDleIhlOCW/Yj23U2NrMvAegNWoKVaz8
+ 98RviBUWINVhNG82B+qJynnAhCVY4rqGfvk+vphG56UzszfrasdI5LJ9L
+ tWhcPMaKgsYTd8WQHA+J2y6UC9R5xqAlpmu1k2zxyhqHX4vesPWeC0z+g Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10192"; a="235576214"
+X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="235576214"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2021 02:05:13 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="462072591"
+X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="752371470"
 Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
  ([10.102.18.68])
- by orsmga003.jf.intel.com with ESMTP; 09 Dec 2021 01:59:25 -0800
+ by fmsmga005.fm.intel.com with ESMTP; 09 Dec 2021 02:05:12 -0800
 From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  9 Dec 2021 10:58:46 +0100
-Message-Id: <20211209095846.12221-1-mateusz.palczewski@intel.com>
+Date: Thu,  9 Dec 2021 11:04:35 +0100
+Message-Id: <20211209100435.14378-1-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v4] i40e: Fix for displaying message
- regarding NVM version When loading the i40e driver,
- it prints a message like: 'The driver for the device detected a newer
- version of the NVM image v1.x than expected v1.y. Please install the most
- recent version of the network driver.' This is misleading as the driver is
- working as expected.
+Subject: [Intel-wired-lan] [PATCH net v5] i40e: Fix for displaying message
+ regarding NVM version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,12 +81,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+When loading the i40e driver, it prints a message like: 'The driver for the
+device detected a newer version of the NVM image v1.x than expected v1.y.
+Please install the most recent version of the network driver.' This is
+misleading as the driver is working as expected.
+
 Fix that by removing the second part of message and changing it from
 dev_info to dev_dgb.
 
 Fixes: 4fb29bddb ("i40e: The driver now prints the API version in error message")
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
+ v5: Fixed wrong formatting
  v4: Removed the word "expected' as this might have been misleading
  v3: Changed the patch after community review
  v2: Fixed the fixes tag to be 12 digits long
