@@ -1,99 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F17BD46E42F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 09:27:51 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA69046E60F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 10:59:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 47F8C40394;
-	Thu,  9 Dec 2021 08:27:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 176456066D;
+	Thu,  9 Dec 2021 09:59:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2u7M8_R59gu5; Thu,  9 Dec 2021 08:27:49 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ICVNipTJ6i1B; Thu,  9 Dec 2021 09:59:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 00ABB40183;
-	Thu,  9 Dec 2021 08:27:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 10D3260658;
+	Thu,  9 Dec 2021 09:59:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8E9401BF578
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 08:27:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B4C51BF2BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 76CC640183
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 08:27:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5665C40396
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qMlFXvw2mUxd for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Dec 2021 08:27:43 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eDKlsR9dwRnF for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Dec 2021 09:59:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B0F664011B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 08:27:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639038462;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vI6c58+KogxxW+mn2T8IAIamTxq7omRdilnleuHfMf8=;
- b=XrjiLaDDdgTPjMwvLczD57/jRgNPUfOOAyJzWI9KqvwP+OZwp0OJ6qORnb+XtbpGd7mHIz
- pGGgOTbUKxOETVDJ/L4t/19nvyebf4AbVm6p/8sQ6thbjYtLme8+Nm/bs8U+mZ5+9gwmQ8
- H/EVIDP8zBcGeuuDWGJKEUOcVIT7gsI=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-221-gaF1fCBFNMK8_2SCiwfXjQ-1; Thu, 09 Dec 2021 03:27:41 -0500
-X-MC-Unique: gaF1fCBFNMK8_2SCiwfXjQ-1
-Received: by mail-lj1-f200.google.com with SMTP id
- b14-20020a05651c0b0e00b0021a1a39c481so1541664ljr.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 09 Dec 2021 00:27:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:message-id:date:mime-version:user-agent:cc
- :subject:content-language:to:references:in-reply-to
- :content-transfer-encoding;
- bh=vI6c58+KogxxW+mn2T8IAIamTxq7omRdilnleuHfMf8=;
- b=dxcQ7lGxcAEpPDJxsk6kN6JbIHD/7BOSTKCisRu09lGtRgWXDbhY346Jc/YRPVu0sg
- P+H+pMMvhK94SvPVesh5cQCOQJOiSLRUlwPuWVuOLMi1W+oZaBBcaTuiZfj8fuhImOmr
- sLSPRkd2zXc2W9YNoP+6l+frRc3JTOiMm6Olg3KE/lpngP7TnnA2SiMDXJI23KKwxgo3
- SlvRRXOiokmU06OzBWNbcc6otTMJ8hNXcg+u1bnPfeNpM6SO5oBZlcHGnuYgydbygRHo
- /ciowgavbYPhXxTn01DdGCfZdLJXOVJQYDnHrDW4bS4JVOZKfpT16zEamWLFqKF3+le7
- 8IZQ==
-X-Gm-Message-State: AOAM530eA4anypFQklQbgUkoN3VlKmSSyJGmCh03Ylk8q+EdBzfWFp6B
- GfJpCU0QrXzahrKgtYyVBsVGHfVW1DLopXRCNL+Tu2w8aVD1jMyKidA+Z+ITA3PPykxtkCgRYk1
- Ur8+WwaqfWUYs+J45PDu2KwrnmE/w9g==
-X-Received: by 2002:ac2:58c3:: with SMTP id u3mr4511467lfo.103.1639038460010; 
- Thu, 09 Dec 2021 00:27:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxKqCqbVpt51CaUwHpbqJX0HXKDsb6ux7hU+HGfDgbZtG4GXp/sOpGTWxlKjSvSjzEtXMq55A==
-X-Received: by 2002:ac2:58c3:: with SMTP id u3mr4511426lfo.103.1639038459683; 
- Thu, 09 Dec 2021 00:27:39 -0800 (PST)
-Received: from [192.168.0.50] (87-59-106-155-cable.dk.customer.tdc.net.
- [87.59.106.155])
- by smtp.gmail.com with ESMTPSA id i3sm462850lfu.156.2021.12.09.00.27.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Dec 2021 00:27:38 -0800 (PST)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <2811b35a-9179-88ce-d87a-e1f824851494@redhat.com>
-Date: Thu, 9 Dec 2021 09:27:37 +0100
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EAB95403FD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 09:59:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1639043967; x=1670579967;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=hOwBxsMH4C03BppimmUOsnCYsCl/7cC8wz8baVYCMOU=;
+ b=YiZ8RTsyOInfHSF9y3Us98Eg6eGZ24VLMr59q8WljCUlJzfzsIm0hhU1
+ rU/qOLSiISO9Lh6qBA/hk1aANATzsfxl/LJ1Qgcng8NDkBuQysym7a8ZA
+ fcn90YF+IcDSYa+2WAiMX9FdeW5zNyXKiH2hyXmqk3/hB8cb4xIuhjoGO
+ dq4qMIWwXEfD35DeM5R5D6Fad7J+6UfHnU6p7WvibXqQ78UtEAOA5iPgf
+ EgHNQxUdEdUMJsXxzSqls9ZPYQ6Qiq26yft5C9fsr1kSbNumY+quCDKln
+ PQWsbH2tEBiljFKCnhBhzvcGi7Vuo1OCT4elQoEuPDmGQbOzZnkwIATCB w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10192"; a="224931741"
+X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="224931741"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2021 01:59:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="462072591"
+Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.68])
+ by orsmga003.jf.intel.com with ESMTP; 09 Dec 2021 01:59:25 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  9 Dec 2021 10:58:46 +0100
+Message-Id: <20211209095846.12221-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-To: Alexander Lobakin <alexandr.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
- <20211208140702.642741-3-alexandr.lobakin@intel.com>
-In-Reply-To: <20211208140702.642741-3-alexandr.lobakin@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 2/9] i40e: respect
- metadata on XSK Rx to skb
+Subject: [Intel-wired-lan] [PATCH net v4] i40e: Fix for displaying message
+ regarding NVM version When loading the i40e driver,
+ it prints a message like: 'The driver for the device detected a newer
+ version of the NVM image v1.x than expected v1.y. Please install the most
+ recent version of the network driver.' This is misleading as the driver is
+ working as expected.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,43 +79,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Yonghong Song <yhs@fb.com>,
- Martin KaFai Lau <kafai@fb.com>, John Fastabend <john.fastabend@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, netdev@vger.kernel.org,
- brouer@redhat.com, KP Singh <kpsingh@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Fix that by removing the second part of message and changing it from
+dev_info to dev_dgb.
 
+Fixes: 4fb29bddb ("i40e: The driver now prints the API version in error message")
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ v4: Removed the word "expected' as this might have been misleading
+ v3: Changed the patch after community review
+ v2: Fixed the fixes tag to be 12 digits long
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 08/12/2021 15.06, Alexander Lobakin wrote:
-> For now, if the XDP prog returns XDP_PASS on XSK, the metadata will
-> be lost as it doesn't get copied to the skb.
-
-I have an urge to add a newline here, when reading this, as IMHO it is a 
-paragraph with the problem statement.
-
-> Copy it along with the frame headers. Account its size on skb
-> allocation, and when copying just treat it as a part of the frame
-> and do a pull after to "move" it to the "reserved" zone.
-
-Also newline here, as next paragraph are some extra details, you felt a 
-need to explain to the reader.
-
-> net_prefetch() xdp->data_meta and align the copy size to speed-up
-> memcpy() a little and better match i40e_costruct_skb().
-                                      ^^^^^^xx^^^^^^^^^
-
-You have a general misspelling of this function name in all of your 
-commit messages.
-
---Jesper
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 4664d07..1688e2d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15469,8 +15469,8 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	if (hw->aq.api_maj_ver == I40E_FW_API_VERSION_MAJOR &&
+ 	    hw->aq.api_min_ver > I40E_FW_MINOR_VERSION(hw))
+-		dev_info(&pdev->dev,
+-			 "The driver for the device detected a newer version of the NVM image v%u.%u than expected v%u.%u. Please install the most recent version of the network driver.\n",
++		dev_dbg(&pdev->dev,
++			"The driver for the device detected a newer version of the NVM image v%u.%u than v%u.%u.\n",
+ 			 hw->aq.api_maj_ver,
+ 			 hw->aq.api_min_ver,
+ 			 I40E_FW_API_VERSION_MAJOR,
+-- 
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
