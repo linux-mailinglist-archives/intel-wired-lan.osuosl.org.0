@@ -1,89 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5285446EA86
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 16:03:09 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EF6B46F20B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Dec 2021 18:34:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CA13280F34;
-	Thu,  9 Dec 2021 15:03:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B3BE842167;
+	Thu,  9 Dec 2021 17:34:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Az_BKpnTsCiz; Thu,  9 Dec 2021 15:03:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dxztV64CoMZG; Thu,  9 Dec 2021 17:34:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A941A80F4B;
-	Thu,  9 Dec 2021 15:03:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2E11F4215F;
+	Thu,  9 Dec 2021 17:34:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2D4391BF357
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 07:14:57 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 51CC01BF387
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 17:34:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 19E76825B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 07:14:57 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3D97C61510
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 17:34:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R7FQYDP3dhiO for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Dec 2021 07:14:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from rtits2.realtek.com.tw (rtits2.realtek.com [211.75.126.72])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CF1E982564
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 07:14:55 +0000 (UTC)
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 1B97Ehf66021297,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexh36505.realtek.com.tw[172.21.6.25])
- by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 1B97Ehf66021297
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 9 Dec 2021 15:14:43 +0800
-Received: from RTEXMBS06.realtek.com.tw (172.21.6.99) by
- RTEXH36505.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.17; Thu, 9 Dec 2021 15:14:42 +0800
-Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
- RTEXMBS06.realtek.com.tw (172.21.6.99) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Thu, 9 Dec 2021 15:14:42 +0800
-Received: from RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01]) by
- RTEXMBS04.realtek.com.tw ([fe80::65a3:1e23:d911:4b01%5]) with mapi id
- 15.01.2308.020; Thu, 9 Dec 2021 15:14:42 +0800
-From: Hayes Wang <hayeswang@realtek.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Thread-Topic: [RFC PATCH 0/4] r8169: support dash
-Thread-Index: AQHX5QnDLn6ABzzmpEe3dMh4ox9UtKwaRZuAgAKrunD//4AsAIAD8ppQ///5wgCABkeCEIAA4HSAgADAA+CAAGGxAIABJvBw
-Date: Thu, 9 Dec 2021 07:14:42 +0000
-Message-ID: <d130312aed444d9f8a9058f3695dc1ea@realtek.com>
-References: <20211129101315.16372-381-nic_swsd@realtek.com>
- <20211129095947.547a765f@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <918d75ea873a453ab2ba588a35d66ab6@realtek.com>
- <20211130190926.7c1d735d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <d3a1e1c469844aa697d6d315c9549eda@realtek.com>
- <20211203070410.1b4abc4d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <e2fd429a489545e7a521283600cb7caa@realtek.com>
- <20211207202101.3a3a93b0@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <67d7f6f7b6e84af692bc0a7c4c48bb84@realtek.com>
- <20211208133754.3809bb5e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20211208133754.3809bb5e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [172.21.177.203]
-x-kse-serverinfo: RTEXMBS06.realtek.com.tw, 9
-x-kse-attachmentfiltering-interceptor-info: no applicable attachment filtering
- rules found
-x-kse-antivirus-interceptor-info: scan successful
-x-kse-antivirus-info: =?us-ascii?Q?Clean,_bases:_2021/12/9_=3F=3F_06:00:00?=
-x-kse-bulkmessagesfiltering-scan-result: protection disabled
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ot0jLrwKvlgZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Dec 2021 17:34:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6DAEC614F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Dec 2021 17:34:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1639071246; x=1670607246;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=OYyTJBH2NAkzB8yRuWaFmgipZaneXGsYztwNU9Ombj0=;
+ b=DJ2kDjvCKQNaliUSfLs+AFFeilBrg1PUinp3NBVITSfutpTEzNjbe0j1
+ b2S2jRJRTxndfq0GzuHyNngfBJxax2L0SLxRDGuV9AM1mabOjJC8Lxzpz
+ kyTNWBQnNd8YnbayfPe+6VjEjcwl3BuSRqVH17R9pW9f9Mx2nlOViSgrE
+ 4sFUV2ZZ50/q3YVfYTY8OtVmmjSINB9OaLt6Fh62Fms1JCSHMzbt6GZLd
+ 0RyxIBovatRJw6m3P88ZOA2w5AvnSZjwTGKVqw3RZsFZsoCgjGuyR3Unn
+ pFmsgB1+m+nK8VCFuOjdW6Z0gwQdt8fWTIncMYJT79RapwcGrS0rRK5VH g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="218186377"
+X-IronPort-AV: E=Sophos;i="5.88,193,1635231600"; d="scan'208";a="218186377"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2021 09:33:48 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,193,1635231600"; d="scan'208";a="658829667"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga001.fm.intel.com with ESMTP; 09 Dec 2021 09:33:42 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 1B9HXeqB013050; Thu, 9 Dec 2021 17:33:40 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Date: Thu,  9 Dec 2021 18:33:07 +0100
+Message-Id: <20211209173307.5003-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.33.1
+In-Reply-To: <da317f39-8679-96f7-ec6f-309216b02f33@redhat.com>
+References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+ <20211208140702.642741-2-alexandr.lobakin@intel.com>
+ <da317f39-8679-96f7-ec6f-309216b02f33@redhat.com>
 MIME-Version: 1.0
-X-KSE-ServerInfo: RTEXH36505.realtek.com.tw, 9
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-Mailman-Approved-At: Thu, 09 Dec 2021 15:02:58 +0000
-Subject: Re: [Intel-wired-lan] [RFC PATCH 0/4] r8169: support dash
+Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 1/9] i40e: don't reserve
+ excessive XDP_PACKET_HEADROOM on XSK Rx to skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,28 +82,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- nic_swsd <nic_swsd@realtek.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>
+Cc: Song Liu <songliubraving@fb.com>, Alexei Starovoitov <ast@kernel.org>,
+ Andrii Nakryiko <andrii@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ brouer@redhat.com, Yonghong Song <yhs@fb.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, bpf@vger.kernel.org,
+ Martin KaFai Lau <kafai@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jakub Kicinski <kuba@kernel.org>
-> Sent: Thursday, December 9, 2021 5:38 AM
-[...]
-> > Excuse me. Do you mean someone will add it? Then, I could use it.
-> > Or, I have to add it.
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Date: Thu, 9 Dec 2021 09:19:46 +0100
+
+> On 08/12/2021 15.06, Alexander Lobakin wrote:
+> > {__,}napi_alloc_skb() allocates and reserves additional NET_SKB_PAD
+> > + NET_IP_ALIGN for any skb.
+> > OTOH, i40e_construct_skb_zc() currently allocates and reserves
+> > additional `xdp->data - xdp->data_hard_start`, which is
+> > XDP_PACKET_HEADROOM for XSK frames.
+> > There's no need for that at all as the frame is post-XDP and will
+> > go only to the networking stack core.
 > 
-> You'd need to write all the code.
-I need more time to think how to do.
-Thanks.
+> I disagree with this assumption, that headroom is not needed by netstack.
+> Why "no need for that at all" for netstack?
 
-Best Regards,
-Hayes
+napi_alloc_skb() in our particular case will reserve 64 bytes, it is
+sufficient for {TCP,UDP,SCTP,...}/IPv{4,6} etc.
 
+> 
+> Having headroom is important for netstack in general.  When packet will 
+> grow we avoid realloc of SKB.  Use-case could also be cpumap or veth 
+> redirect, or XDP-generic, that expect this headroom.
+
+Well, those are not common cases at all.
+Allocating 256 bytes more for some hypothetical usecases (and having
+320 in total) is more expensive than expanding headroom in-place.
+I don't know any other drivers or ifaces which reserve
+XDP_PACKET_HEADROOM just for the case of using both driver-side
+and generic XDP at the same time. To be more precise, I can't
+remember any driver which would check whether generic XDP is enabled
+for its netdev(s).
+
+As a second option, I was trying to get exactly XDP_PACKET_HEADROOM
+of headroom, but this involves either __alloc_skb() which is slower
+than napi_alloc_skb(), or
+
+	skb = napi_alloc_skb(napi, xdp->data_end -
+				   xdp->data_hard_start -
+				   NET_SKB_PAD);
+	skb_reserve(skb, xdp->data_meta - xdp->data_hard_start -
+			 NET_SKB_PAD);
+
+Doesn't look good for me.
+
+We could probably introduce a version of napi_alloc_skb() which
+wouldn't reserve any headroom for you to have more control over it,
+but that's more global material than these local fixes I'd say.
+
+> 
+> 
+> > Pass the size of the actual data only to __napi_alloc_skb() and
+> > don't reserve anything. This will give enough headroom for stack
+> > processing.
+> > 
+> > Fixes: 0a714186d3c0 ("i40e: add AF_XDP zero-copy Rx support")
+> > Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+> > Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > ---
+> >   drivers/net/ethernet/intel/i40e/i40e_xsk.c | 4 +---
+> >   1 file changed, 1 insertion(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > index f08d19b8c554..9564906b7da8 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > @@ -245,13 +245,11 @@ static struct sk_buff *i40e_construct_skb_zc(struct i40e_ring *rx_ring,
+> >   	struct sk_buff *skb;
+> >   
+> >   	/* allocate a skb to store the frags */
+> > -	skb = __napi_alloc_skb(&rx_ring->q_vector->napi,
+> > -			       xdp->data_end - xdp->data_hard_start,
+> > +	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, datasize,
+> >   			       GFP_ATOMIC | __GFP_NOWARN);
+> >   	if (unlikely(!skb))
+> >   		goto out;
+> >   
+> > -	skb_reserve(skb, xdp->data - xdp->data_hard_start);
+> >   	memcpy(__skb_put(skb, datasize), xdp->data, datasize);
+> >   	if (metasize)
+> >   		skb_metadata_set(skb, metasize);
+
+Thanks,
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
