@@ -1,74 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C5B9470DAE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 23:25:34 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18E81470E0E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 23:38:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F0848563D;
-	Fri, 10 Dec 2021 22:25:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9D3FD61B73;
+	Fri, 10 Dec 2021 22:38:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xZILe9-cO22I; Fri, 10 Dec 2021 22:25:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i3REhpkInRDc; Fri, 10 Dec 2021 22:38:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D13458557B;
-	Fri, 10 Dec 2021 22:25:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8471E613D7;
+	Fri, 10 Dec 2021 22:38:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 326271BF3D6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:25:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0DB331BF3D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 15739418DB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:25:27 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 04833418F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9a8Y_hidLR-i for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Dec 2021 22:25:25 +0000 (UTC)
+ with ESMTP id wALfA4PSQ7KD for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Dec 2021 22:38:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7C481418D7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:25:25 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E6B0F418F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639175125; x=1670711125;
+ t=1639175916; x=1670711916;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=K826OJzJv+UuStrd5FDItfpVrFf3oyQ4/Fl93N++Q2o=;
- b=fx88hKIkeW5XrhjL2NZ2vP+l3cq6TV1H7zJKuXQLseEeCx+Bxvzc5cJg
- slYk2ON0egfDYyiq71mzgmEh6gKafD8he5Yrmbd/fEOF3RIEiwGhDF3/o
- SX8eG3d59D8ERwtGgZeHmjDUaXgP4lVLxG6HoKQsZeH7Qz6oyvbwkfu7K
- XGPKMCNvflDCV4YMpZaL8FzckqNARtl3n/5hKaqBCBFJrNX0Yk+uTORCP
- 5Ovsl5n4J1+DBYg6DGiQ/lGouWECHWayapzV8j++OUJyS10CUrHAK3Mu3
- KczqEBU1pfElFqZlEoeG5SBW2ST8LYI/p8eZ8SeokOdjtRiqYnx7RNlI7 Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10194"; a="225727284"
-X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="225727284"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2021 14:25:23 -0800
+ bh=EChw1uRWq0lNEF6TDJdr1skqSRvDwgAWETiiubNQ/0M=;
+ b=gZjyIxxOA3DmeBgvxal9wYkTvDfnRoQr6Yw5JlVeRCRl8DvFUBiVPDTl
+ c95X2bq/ip4zhxLECLbR9sLtN7xyTg7TWSmyl1qGIxD7nvExS4MHTdTT/
+ 07aMVogmeAw7hKlhcUyg4Yz51ISJZpp4mkmcqjaVfQgnOa20nN9NGFXvi
+ 0G0McOs+XqUVtszHniKNCpoywoqDiL5lTqLviXmE4yOHIDrWiGRVhgOG2
+ +fBc2PMro4eERAw1KXy32kCE3h6xxRiKmwqc1b+eWm9/otjQelWAwlANg
+ ThoXhUE6qWDQQJszIH1mq2zF4Y90yUn9VUzmTnJBlHBXoSOaohVfuFMBS g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10194"; a="301844814"
+X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="301844814"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Dec 2021 14:38:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="659772660"
+X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="750969689"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga001.fm.intel.com with ESMTP; 10 Dec 2021 14:25:20 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 10 Dec 2021 14:38:23 -0800
 Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
  [10.102.20.203])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1BAMPJfn014400; Fri, 10 Dec 2021 22:25:20 GMT
+ 1BAMcMRC018566; Fri, 10 Dec 2021 22:38:22 GMT
 From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Fri, 10 Dec 2021 23:24:51 +0100
-Message-Id: <20211210222451.2711162-1-alexandr.lobakin@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Fri, 10 Dec 2021 23:37:46 +0100
+Message-Id: <20211210223746.2711444-1-alexandr.lobakin@intel.com>
 X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211210145941.5865-3-maciej.fijalkowski@intel.com>
+In-Reply-To: <20211210145941.5865-4-maciej.fijalkowski@intel.com>
 References: <20211210145941.5865-1-maciej.fijalkowski@intel.com>
- <20211210145941.5865-3-maciej.fijalkowski@intel.com>
+ <20211210145941.5865-4-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH intel-net 2/5] ice: xsk: allocate
- separate memory for XDP SW ring
+Subject: Re: [Intel-wired-lan] [PATCH intel-net 3/5] ice: xsk: do not clear
+ status_error0 for ntu + nb_buffs descriptor
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,243 +88,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Alexader Lobakin <alexandr.lobakin@intel.com>
-
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Fri, 10 Dec 2021 15:59:38 +0100
+Date: Fri, 10 Dec 2021 15:59:39 +0100
 
-> Currently, the zero-copy data path is reusing the memory region that was
-> initially allocated for an array of struct ice_rx_buf for its own
-> purposes. This is error prone as it is based on the ice_rx_buf struct
-> always being the same size or bigger than what the zero-copy path needs.
-> There can also be old values present in that array giving rise to errors
-> when the zero-copy path uses it.
+> The descriptor that ntu is pointing at when we exit
+> ice_alloc_rx_bufs_zc() should not have its corresponding DD bit cleared
+> as descriptor is not allocated in there and it is not valid for HW
+> usage.
 > 
-> Fix this by freeing the ice_rx_buf region and allocating a new array for
-> the zero-copy path that has the right length and is initialized to zero.
+> The allocation routine at the entry will fill the descriptor that ntu
+> points to after it was set to ntu + nb_buffs on previous call.
 > 
-> Fixes: 57f7f8b6bc0b ("ice: Use xdp_buf instead of rx_buf for xsk zero-copy")
+> Even the spec says:
+> "The tail pointer should be set to one descriptor beyond the last empty
+> descriptor in host descriptor ring."
+> 
+> Therefore, step away from clearing the status_error0 on ntu + nb_buffs
+> descriptor.
+> 
+> Fixes: db804cfc21e9 ("ice: Use the xsk batched rx allocation interface")
 > Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_base.c | 19 +++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_txrx.c | 19 ++++++++++-----
->  drivers/net/ethernet/intel/ice/ice_xsk.c  | 29 ++++++++++++-----------
->  3 files changed, 47 insertions(+), 20 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_xsk.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-> index 1efc635cc0f5..56606d477f05 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_base.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_base.c
-> @@ -6,6 +6,18 @@
->  #include "ice_lib.h"
->  #include "ice_dcb_lib.h"
->  
-> +static int ice_alloc_rx_buf_zc(struct ice_rx_ring *rx_ring)
-> +{
-> +	rx_ring->xdp_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->xdp_buf), GFP_KERNEL);
-> +	return rx_ring->xdp_buf ? 0 : -ENOMEM;
-> +}
-> +
-> +static int ice_alloc_rx_buf(struct ice_rx_ring *rx_ring)
-> +{
-> +	rx_ring->rx_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->rx_buf), GFP_KERNEL);
-> +	return rx_ring->rx_buf ? 0 : -ENOMEM;
-> +}
-> +
-
-Re that those functions can only return 0 or -ENOMEM, wouldn't it be
-more elegant to make them bool
-
-	return !!rx_ring->rx_buf; /* true on success,
-				     false otherwise */
-}
-
-	if (!ice_alloc_rx_buf(rx_ring))
-		return -ENOMEM;
-
-?
-
->  /**
->   * __ice_vsi_get_qs_contig - Assign a contiguous chunk of queues to VSI
->   * @qs_cfg: gathered variables needed for PF->VSI queues assignment
-> @@ -492,8 +504,12 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
->  			xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
->  					 ring->q_index, ring->q_vector->napi.napi_id);
->  
-> +		kfree(ring->rx_buf);
->  		ring->xsk_pool = ice_xsk_pool(ring);
->  		if (ring->xsk_pool) {
-> +			err = ice_alloc_rx_buf_zc(ring);
-> +			if (err)
-> +				return err;
->  			xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
->  
->  			ring->rx_buf_len =
-> @@ -508,6 +524,9 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
->  			dev_info(dev, "Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring %d\n",
->  				 ring->q_index);
->  		} else {
-> +			err = ice_alloc_rx_buf(ring);
-> +			if (err)
-> +				return err;
->  			if (!xdp_rxq_info_is_reg(&ring->xdp_rxq))
->  				/* coverity[check_return] */
->  				xdp_rxq_info_reg(&ring->xdp_rxq,
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> index bc3ba19dc88f..227513b687b9 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> @@ -419,7 +419,10 @@ void ice_clean_rx_ring(struct ice_rx_ring *rx_ring)
->  	}
->  
->  rx_skip_free:
-> -	memset(rx_ring->rx_buf, 0, sizeof(*rx_ring->rx_buf) * rx_ring->count);
-> +	if (rx_ring->xsk_pool)
-> +		memset(rx_ring->xdp_buf, 0, sizeof(*rx_ring->xdp_buf) * rx_ring->count);
-> +	else
-> +		memset(rx_ring->rx_buf, 0, sizeof(*rx_ring->rx_buf) * rx_ring->count);
-
-Consider using array_size() instead of a plain multiplication in
-both of these:
-
-	memset(s, 0, array_size(n, sizeof(*s));
-
-It has the same internals as kcalloc() for array multiplication and
-overflow checking.
-
->  
->  	/* Zero out the descriptor ring */
->  	size = ALIGN(rx_ring->count * sizeof(union ice_32byte_rx_desc),
-> @@ -446,8 +449,13 @@ void ice_free_rx_ring(struct ice_rx_ring *rx_ring)
->  		if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
->  			xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
->  	rx_ring->xdp_prog = NULL;
-> -	devm_kfree(rx_ring->dev, rx_ring->rx_buf);
-> -	rx_ring->rx_buf = NULL;
-> +	if (rx_ring->xsk_pool) {
-> +		kfree(rx_ring->xdp_buf);
-> +		rx_ring->xdp_buf = NULL;
-> +	} else {
-> +		kfree(rx_ring->rx_buf);
-> +		rx_ring->rx_buf = NULL;
-> +	}
->  
->  	if (rx_ring->desc) {
->  		size = ALIGN(rx_ring->count * sizeof(union ice_32byte_rx_desc),
-> @@ -475,8 +483,7 @@ int ice_setup_rx_ring(struct ice_rx_ring *rx_ring)
->  	/* warn if we are about to overwrite the pointer */
->  	WARN_ON(rx_ring->rx_buf);
->  	rx_ring->rx_buf =
-> -		devm_kcalloc(dev, sizeof(*rx_ring->rx_buf), rx_ring->count,
-> -			     GFP_KERNEL);
-> +		kcalloc(rx_ring->count, sizeof(*rx_ring->rx_buf), GFP_KERNEL);
->  	if (!rx_ring->rx_buf)
->  		return -ENOMEM;
->  
-> @@ -505,7 +512,7 @@ int ice_setup_rx_ring(struct ice_rx_ring *rx_ring)
->  	return 0;
->  
->  err:
-> -	devm_kfree(dev, rx_ring->rx_buf);
-> +	kfree(rx_ring->rx_buf);
->  	rx_ring->rx_buf = NULL;
->  	return -ENOMEM;
->  }
 > diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> index 75c3e98241e0..5cb61955c1f3 100644
+> index 5cb61955c1f3..874fce9fa1c3 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> @@ -12,6 +12,11 @@
->  #include "ice_txrx_lib.h"
->  #include "ice_lib.h"
->  
-> +static struct xdp_buff **ice_xdp_buf(struct ice_rx_ring *rx_ring, u32 idx)
-> +{
-> +	return &rx_ring->xdp_buf[idx];
-> +}
-> +
->  /**
->   * ice_qp_reset_stats - Resets all stats for rings of given index
->   * @vsi: VSI that contains rings of interest
-> @@ -372,7 +377,7 @@ bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->  	dma_addr_t dma;
->  
->  	rx_desc = ICE_RX_DESC(rx_ring, ntu);
-> -	xdp = &rx_ring->xdp_buf[ntu];
-> +	xdp = ice_xdp_buf(rx_ring, ntu);
->  
->  	nb_buffs = min_t(u16, count, rx_ring->count - ntu);
->  	nb_buffs = xsk_buff_alloc_batch(rx_ring->xsk_pool, xdp, nb_buffs);
-> @@ -425,9 +430,8 @@ static void ice_bump_ntc(struct ice_rx_ring *rx_ring)
->   * Returns the skb on success, NULL on failure.
->   */
->  static struct sk_buff *
-> -ice_construct_skb_zc(struct ice_rx_ring *rx_ring, struct xdp_buff **xdp_arr)
-> +ice_construct_skb_zc(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp)
->  {
-> -	struct xdp_buff *xdp = *xdp_arr;
-
-RCT army strikes back lol.
-
->  	unsigned int metasize = xdp->data - xdp->data_meta;
->  	unsigned int datasize = xdp->data_end - xdp->data;
->  	unsigned int datasize_hard = xdp->data_end - xdp->data_hard_start;
-> @@ -444,7 +448,6 @@ ice_construct_skb_zc(struct ice_rx_ring *rx_ring, struct xdp_buff **xdp_arr)
->  		skb_metadata_set(skb, metasize);
->  
->  	xsk_buff_free(xdp);
-> -	*xdp_arr = NULL;
->  	return skb;
->  }
->  
-> @@ -521,7 +524,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
->  	while (likely(total_rx_packets < (unsigned int)budget)) {
->  		union ice_32b_rx_flex_desc *rx_desc;
->  		unsigned int size, xdp_res = 0;
-> -		struct xdp_buff **xdp;
-> +		struct xdp_buff *xdp;
->  		struct sk_buff *skb;
->  		u16 stat_err_bits;
->  		u16 vlan_tag = 0;
-> @@ -544,18 +547,17 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
->  		if (!size)
->  			break;
->  
-> -		xdp = &rx_ring->xdp_buf[rx_ring->next_to_clean];
-> -		xsk_buff_set_size(*xdp, size);
-> -		xsk_buff_dma_sync_for_cpu(*xdp, rx_ring->xsk_pool);
-> +		xdp = *ice_xdp_buf(rx_ring, rx_ring->next_to_clean);
-> +		xsk_buff_set_size(xdp, size);
-> +		xsk_buff_dma_sync_for_cpu(xdp, rx_ring->xsk_pool);
->  
-> -		xdp_res = ice_run_xdp_zc(rx_ring, *xdp, xdp_prog, xdp_ring);
-> +		xdp_res = ice_run_xdp_zc(rx_ring, xdp, xdp_prog, xdp_ring);
->  		if (xdp_res) {
->  			if (xdp_res & (ICE_XDP_TX | ICE_XDP_REDIR))
->  				xdp_xmit |= xdp_res;
->  			else
-> -				xsk_buff_free(*xdp);
-> +				xsk_buff_free(xdp);
->  
-> -			*xdp = NULL;
->  			total_rx_bytes += size;
->  			total_rx_packets++;
->  			cleaned_count++;
-> @@ -815,10 +817,9 @@ void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring)
->  	u16 ntu = rx_ring->next_to_use;
->  
->  	for ( ; ntc != ntu; ntc = (ntc + 1) & count_mask) {
-> -		struct xdp_buff **xdp = &rx_ring->xdp_buf[ntc];
-> +		struct xdp_buff *xdp = *ice_xdp_buf(rx_ring, ntc);
->  
-> -		xsk_buff_free(*xdp);
-> -		*xdp = NULL;
-> +		xsk_buff_free(xdp);
+> @@ -394,14 +394,9 @@ bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
 >  	}
->  }
 >  
+>  	ntu += nb_buffs;
+> -	if (ntu == rx_ring->count) {
+> -		rx_desc = ICE_RX_DESC(rx_ring, 0);
+> -		xdp = rx_ring->xdp_buf;
+> +	if (ntu == rx_ring->count)
+
+Maybe use unlikely() here while at it? 1/512 (depending on ring
+size) chance is low enough.
+
+>  		ntu = 0;
+> -	}
+>  
+> -	/* clear the status bits for the next_to_use descriptor */
+> -	rx_desc->wb.status_error0 = 0;
+>  	ice_release_rx_desc(rx_ring, ntu);
+
+This interferes with my patch in next-queue ([0]) (well, supersedes
+it to be precise).
+Tony, what would be better to do with it, just drop mine or correct
+this one (it would become an oneliner removing status_error0
+assignment then)?
+
+>  
+>  	return count == nb_buffs;
 > -- 
 > 2.33.1
+
+[0] https://lore.kernel.org/netdev/20211130183649.1166842-2-alexandr.lobakin@intel.com
 
 Al
 _______________________________________________
