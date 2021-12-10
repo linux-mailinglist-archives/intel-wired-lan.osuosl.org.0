@@ -1,68 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A20EE46FFC6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 12:27:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96F5B4700BA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 13:33:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 187D7852B2;
-	Fri, 10 Dec 2021 11:27:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 208A56136D;
+	Fri, 10 Dec 2021 12:33:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WDCeByXDkXXf; Fri, 10 Dec 2021 11:27:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dxzk7e8a7Pzg; Fri, 10 Dec 2021 12:33:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E831C852AE;
-	Fri, 10 Dec 2021 11:27:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E8FE8612C4;
+	Fri, 10 Dec 2021 12:33:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 949D41BF59E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 11:27:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A53D81BF831
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 92A99852AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 11:27:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 91E24411AA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pCRHKN6RWc6d for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Dec 2021 11:27:22 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id L2CDy-IRGojK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Dec 2021 12:33:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B907383FA0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 11:27:22 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 460AD411A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639135642; x=1670671642;
+ t=1639139591; x=1670675591;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=2chfmUGzm4LJ9QP4FS0fBwL2MVymZdHHEOejvWjGv4c=;
- b=FMbM6MhWciwdK72XTUW83I3VOJSdb+6f6L4pS3oTCivoHTRib0vhTrtN
- Nb/Uq1fDVpAu6cBoCaBYhXv2UVppKYaHsCg+SMwXYUVUSY8rQqQNw1ByH
- JsowjpIO2gnWs+EC8H++nl4ropa42BNdApaw+w4MOQHWA+1w40DQuA+oO
- nV7T1uYYNvMI3paYe29+mrrvFPBt9CwciY+SUnS6U0RxIgA+L8sPUSc2j
- 8pWvLEmhMuujvgyJ+bc8rMw1RMBiSVFWpLaX4iif/Hi0jbsNOLe4QJr9v
- rdkEAbQBPVPAUkS46Bk8mssP7ElXVWV/ZXexXWasG6jnyovFTXr9nRkjw Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="219018268"
-X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="219018268"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2021 03:27:03 -0800
+ bh=tfpt+lE7le8pnPf8B2t2215iD6hbK+BwiUq0M5/pzE4=;
+ b=Cwpseh0UEF5bt1AYAUkcsxbAa0ikiAEjDjBw809sFMgOCr5cwpLVkZFv
+ 4Yt/k2GdrnjG8UOMIR/qQf3MxRybIs3yZeb3lTB4sssIT+o9TCP7XXNCt
+ JMZ8CVhZJ+E55Jmw4tmVJngBEFs0vwPhHENau9JvGHJ4sMbVL8vPBqy22
+ HLGxuACMUgB/sBhYEi1UoyNVMAJ3l7wEiH0wpudqGeipk3DB1ys1/Lvkq
+ f3I3HaIEgS7sptXguXyy3N1sekh/RE7Du1j6CyiPbpG4v62Aqt3cSCFlS
+ sZyA8Ji4JyZWSanj95DzJVriFRf+XQos0uY8fprWHoQ5wcbW/L8eKS8YX A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="299125451"
+X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="299125451"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Dec 2021 04:33:05 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="462511946"
+X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="565196695"
 Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 10 Dec 2021 03:27:02 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 10 Dec 2021 04:33:04 -0800
 Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mve3J-00037d-PP; Fri, 10 Dec 2021 11:27:01 +0000
-Date: Fri, 10 Dec 2021 19:26:41 +0800
+ id 1mvf5D-0003BW-Fh; Fri, 10 Dec 2021 12:33:03 +0000
+Date: Fri, 10 Dec 2021 20:32:15 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61b33971.+HQMiXEmfNevLoQ+%lkp@intel.com>
+Message-ID: <61b348cf.O3dyEhZqJet6rDvE%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
- 3150a73366b64e3109f0facbc98bcacbc14e81ba
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ ac735b4b67a1f60c143547daf93f47ccf8f7a979
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,12 +82,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
-branch HEAD: 3150a73366b64e3109f0facbc98bcacbc14e81ba  Merge git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: ac735b4b67a1f60c143547daf93f47ccf8f7a979  ixgbe: respect metadata on XSK Rx to skb
 
-elapsed time: 827m
+elapsed time: 723m
 
-configs tested: 127
+configs tested: 135
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -105,10 +107,18 @@ arm                         assabet_defconfig
 sh                        sh7785lcr_defconfig
 mips                      maltaaprp_defconfig
 powerpc                 mpc837x_rdb_defconfig
+sh                          sdk7780_defconfig
+arc                         haps_hs_defconfig
+powerpc                     tqm8548_defconfig
 powerpc                 mpc834x_mds_defconfig
 powerpc                     kilauea_defconfig
 powerpc                      makalu_defconfig
 sh                          lboxre2_defconfig
+arm                        spear6xx_defconfig
+parisc                generic-64bit_defconfig
+arm                          pxa168_defconfig
+arm                          pxa910_defconfig
+arm                         orion5x_defconfig
 sh                           se7712_defconfig
 arm                             rpc_defconfig
 sparc                       sparc32_defconfig
@@ -131,8 +141,8 @@ riscv             nommu_k210_sdcard_defconfig
 arm                           tegra_defconfig
 powerpc                 mpc836x_mds_defconfig
 arm                  randconfig-c002-20211210
-ia64                                defconfig
 ia64                             allmodconfig
+ia64                                defconfig
 ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
