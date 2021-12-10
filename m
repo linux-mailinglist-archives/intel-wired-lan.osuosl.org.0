@@ -1,105 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7C284701AE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 14:32:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 475BD470239
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 15:01:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BCB6425E9;
-	Fri, 10 Dec 2021 13:32:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C443B411F2;
+	Fri, 10 Dec 2021 14:01:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tqxlL9LNWqxP; Fri, 10 Dec 2021 13:32:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id q1vaR3-EpJjg; Fri, 10 Dec 2021 14:01:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 44CDF425E8;
-	Fri, 10 Dec 2021 13:32:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 71312401F5;
+	Fri, 10 Dec 2021 14:01:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D45E91BF573
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A83591BF573
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 14:00:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BCF0861431
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 94C07613E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 14:00:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3JvQ7RQ3oELy for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
+ with ESMTP id GWQoMqLr33W3 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Dec 2021 14:00:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1D64361426
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1639143113;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=l5sAoIuRwrqpOLkTWcO38tx+jvlOvty7121ooryZ460=;
- b=glhCH+AYly5DibW2jd0u8Q9AiwK7wUdGwzxieLknrjPwVCAoHSdYPSvp8/PvwN9Dad0H4D
- 90orDfIsj7Y1vV+htTONsb9wkbH2DvpW7BnFPJUCcTsrf+ZdNBBp58p1SxwZmEnrm0HIM1
- gwXSaHykVrqcnTnH1VMihp4zUmDutkY=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-532-LVrmsKvrOJa0V7B9H5G80A-1; Fri, 10 Dec 2021 08:31:51 -0500
-X-MC-Unique: LVrmsKvrOJa0V7B9H5G80A-1
-Received: by mail-lj1-f200.google.com with SMTP id
- b14-20020a05651c0b0e00b0021a1a39c481so2931815ljr.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 05:31:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:message-id:date:mime-version:user-agent:cc
- :subject:content-language:to:references:in-reply-to
- :content-transfer-encoding;
- bh=l5sAoIuRwrqpOLkTWcO38tx+jvlOvty7121ooryZ460=;
- b=14A8MzfY30Ic75JRa2LbNBC+TIpr4IGkjqI/yk7O+In+tOk2IRhc+LT9f/TAlhwjSn
- U9r5VJtoqgFuQ/lKfoibad8xw31EVBeasf0shiw816dosIW7YPUnTCW1EnUILzQ352gO
- WyyP5E9FUaoymEuRlo+KSojP5Sn9ETMSgy0VlYa0ow5lG6XZ7tWbebnjll/ZM5uKpGPC
- 1h8rbRkHD3zBEF5HKFR2uyWft+nHsyoDBj36d4smX0I0e63e+cf3gYTVH4R4aWedrjAV
- VrNyX76Owgrc/7f6agv6pbqxqzqZUJzlGCiWOHKAHpJgH4USReB7A0kI4cGHZ6dAGVOp
- jsUg==
-X-Gm-Message-State: AOAM530dtrCzXIm4MSvh40XktP1l+5Jvyj/xWtIz6mEtzeFpMQitLT3k
- NP1816NphqxuH2SOGFR5aYNF6npjsZoWFxbk9KpzTJcD5BXZMySKN79lymp8Q6MCDgWquCn1FYP
- U11WPOwyQrWgcVSducipgaHnOR8JHEA==
-X-Received: by 2002:a05:6512:2111:: with SMTP id
- q17mr12277318lfr.371.1639143109688; 
- Fri, 10 Dec 2021 05:31:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJysW1eZdvHlg7c/OsYcsKZD7z8jtHRQrASeKFQqWi/mEk65sVMMaWjbUnS35YwKQwYM7xjjAQ==
-X-Received: by 2002:a05:6512:2111:: with SMTP id
- q17mr12277281lfr.371.1639143109438; 
- Fri, 10 Dec 2021 05:31:49 -0800 (PST)
-Received: from [192.168.0.50] (87-59-106-155-cable.dk.customer.tdc.net.
- [87.59.106.155])
- by smtp.gmail.com with ESMTPSA id k3sm313809ljn.55.2021.12.10.05.31.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Dec 2021 05:31:48 -0800 (PST)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <ccd27f5f-31c4-603f-ea36-ad32b16325b9@redhat.com>
-Date: Fri, 10 Dec 2021 14:31:45 +0100
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4569060908
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 14:00:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1639144853; x=1670680853;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+3xcxnlr+0V9wAyeoMluAwgNokJlt0chsySF41otqNk=;
+ b=Yx/mLZwOunJXVLcrQdryHnClA896hKVBTb+5g92laiEIDxYFrj0vfJtp
+ b0D9YzxYE0hZeWh+h5gw1eUiOncGk08qwWyYyM+oBcYHUY77Di0kcaBh0
+ vhCjw5ceTLQBbYm0JGPhyfyMYPYIV4BSaHhrmxYWRtWgO5j5MjANiucMs
+ PpODX09yup3pxOOlfDD9WUpPISCzo6Sl/xo72MnME3RnTSGcMyV5S17wO
+ 400NVgYCnHkM3VeQw+fkY1acF6/In3u4QekPIiA4WyrE+E6zMF9xQ9gfw
+ Pzxc3fP46LQSAeTtg0E1Zgo8lkGiAEAjMite8QXSc8BkIDz0D0BhVawkx w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="238572006"
+X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="238572006"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Dec 2021 06:00:52 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="612934611"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.231])
+ by orsmga004.jf.intel.com with ESMTP; 10 Dec 2021 06:00:48 -0800
+From: Maciej Machnikowski <maciej.machnikowski@intel.com>
+To: maciej.machnikowski@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, arkadiusz.kubalewski@intel.com
+Date: Fri, 10 Dec 2021 14:45:46 +0100
+Message-Id: <20211210134550.1195182-1-maciej.machnikowski@intel.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-To: Alexander Lobakin <alexandr.lobakin@intel.com>,
- Jesper Dangaard Brouer <jbrouer@redhat.com>
-References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
- <20211208140702.642741-2-alexandr.lobakin@intel.com>
- <da317f39-8679-96f7-ec6f-309216b02f33@redhat.com>
- <20211209173307.5003-1-alexandr.lobakin@intel.com>
-In-Reply-To: <20211209173307.5003-1-alexandr.lobakin@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 1/9] i40e: don't reserve
- excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+Subject: [Intel-wired-lan] [PATCH v5 net-next 0/4] Add ethtool interface for
+ RClocks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,51 +75,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Alexei Starovoitov <ast@kernel.org>,
- Andrii Nakryiko <andrii@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>, intel-wired-lan@lists.osuosl.org,
- brouer@redhat.com, Yonghong Song <yhs@fb.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>, KP Singh <kpsingh@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, bpf@vger.kernel.org,
- Martin KaFai Lau <kafai@fb.com>
+Cc: mkubecek@suse.cz, petrm@nvidia.com, abyagowi@fb.com, saeed@kernel.org,
+ richardcochran@gmail.com, idosch@idosch.org, linux-kselftest@vger.kernel.org,
+ kuba@kernel.org, michael.chan@broadcom.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Synchronous Ethernet networks use a physical layer clock to syntonize
+the frequency across different network elements.
+
+Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
+Equipment Clock (EEC) and have the ability to synchronize to reference
+frequency sources.
+
+This patch series is a prerequisite for EEC object and adds ability
+to enable recovered clocks in the physical layer of the netdev object.
+Recovered clocks can be used as one of the reference signal by the EEC.
+
+Further work is required to add the DPLL subsystem, link it to the
+netdev object and create API to read the EEC DPLL state.
+
+v5:
+- rewritten the documentation
+- fixed doxygen headers
+
+v4:
+- Dropped EEC_STATE reporting (TBD: DPLL subsystem)
+- moved recovered clock configuration to ethtool netlink
+
+v3:
+- remove RTM_GETRCLKRANGE
+- return state of all possible pins in the RTM_GETRCLKSTATE
+- clarify documentation
+
+v2:
+- improved documentation
+- fixed kdoc warning
+
+RFC history:
+v2:
+- removed whitespace changes
+- fix issues reported by test robot
+v3:
+- Changed naming from SyncE to EEC
+- Clarify cover letter and commit message for patch 1
+v4:
+- Removed sync_source and pin_idx info
+- Changed one structure to attributes
+- Added EEC_SRC_PORT flag to indicate that the EEC is synchronized
+  to the recovered clock of a port that returns the state
+v5:
+- add EEC source as an optiona attribute
+- implement support for recovered clocks
+- align states returned by EEC to ITU-T G.781
+v6:
+- fix EEC clock state reporting
+- add documentation
+- fix descriptions in code comments
 
 
-On 09/12/2021 18.33, Alexander Lobakin wrote:
-> From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-> Date: Thu, 9 Dec 2021 09:19:46 +0100
-> 
->> On 08/12/2021 15.06, Alexander Lobakin wrote:
->>> {__,}napi_alloc_skb() allocates and reserves additional NET_SKB_PAD
->>> + NET_IP_ALIGN for any skb.
->>> OTOH, i40e_construct_skb_zc() currently allocates and reserves
->>> additional `xdp->data - xdp->data_hard_start`, which is
->>> XDP_PACKET_HEADROOM for XSK frames.
->>> There's no need for that at all as the frame is post-XDP and will
->>> go only to the networking stack core.
->>
->> I disagree with this assumption, that headroom is not needed by netstack.
->> Why "no need for that at all" for netstack?
-> 
-> napi_alloc_skb() in our particular case will reserve 64 bytes, it is
-> sufficient for {TCP,UDP,SCTP,...}/IPv{4,6} etc.
+Maciej Machnikowski (4):
+  ice: add support detecting features based on netlist
+  ethtool: Add ability to configure recovered clock for SyncE feature
+  ice: add support for monitoring SyncE DPLL state
+  ice: add support for recovered clocks
 
-My bad, I misunderstood you. I now see (looking at code) that (as you 
-say) 64 bytes of headroom *is* reserved (in bottom of __napi_alloc_skb).
-Thus, the SKB *do* have headroom, so this patch should be fine.
+ Documentation/networking/ethtool-netlink.rst  |  62 ++++
+ drivers/net/ethernet/intel/ice/ice.h          |   7 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  70 ++++-
+ drivers/net/ethernet/intel/ice/ice_common.c   | 224 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  20 +-
+ drivers/net/ethernet/intel/ice/ice_devids.h   |   3 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  96 +++++++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   6 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  35 +++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  49 ++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  36 +++
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ include/linux/ethtool.h                       |   9 +
+ include/uapi/linux/ethtool_netlink.h          |  21 ++
+ net/ethtool/Makefile                          |   3 +-
+ net/ethtool/netlink.c                         |  20 ++
+ net/ethtool/netlink.h                         |   4 +
+ net/ethtool/synce.c                           | 267 ++++++++++++++++++
+ 18 files changed, 929 insertions(+), 4 deletions(-)
+ create mode 100644 net/ethtool/synce.c
 
-Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
-
-Do watch out that 64 bytes is not always enough. Notice the define 
-LL_MAX_HEADER and MAX_HEADER in include/linux/netdevice.h (that tries to 
-determine worst-case header length) which is above 64 bytes. It is also 
-affected by HyperV and WiFi configs.
+-- 
+2.26.3
 
 _______________________________________________
 Intel-wired-lan mailing list
