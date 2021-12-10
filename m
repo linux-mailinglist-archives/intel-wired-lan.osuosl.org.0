@@ -1,70 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96F5B4700BA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 13:33:19 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7C284701AE
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 14:32:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 208A56136D;
-	Fri, 10 Dec 2021 12:33:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3BCB6425E9;
+	Fri, 10 Dec 2021 13:32:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dxzk7e8a7Pzg; Fri, 10 Dec 2021 12:33:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tqxlL9LNWqxP; Fri, 10 Dec 2021 13:32:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E8FE8612C4;
-	Fri, 10 Dec 2021 12:33:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 44CDF425E8;
+	Fri, 10 Dec 2021 13:32:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A53D81BF831
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D45E91BF573
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 91E24411AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BCF0861431
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L2CDy-IRGojK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Dec 2021 12:33:11 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3JvQ7RQ3oELy for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Dec 2021 13:31:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 460AD411A3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 12:33:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639139591; x=1670675591;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=tfpt+lE7le8pnPf8B2t2215iD6hbK+BwiUq0M5/pzE4=;
- b=Cwpseh0UEF5bt1AYAUkcsxbAa0ikiAEjDjBw809sFMgOCr5cwpLVkZFv
- 4Yt/k2GdrnjG8UOMIR/qQf3MxRybIs3yZeb3lTB4sssIT+o9TCP7XXNCt
- JMZ8CVhZJ+E55Jmw4tmVJngBEFs0vwPhHENau9JvGHJ4sMbVL8vPBqy22
- HLGxuACMUgB/sBhYEi1UoyNVMAJ3l7wEiH0wpudqGeipk3DB1ys1/Lvkq
- f3I3HaIEgS7sptXguXyy3N1sekh/RE7Du1j6CyiPbpG4v62Aqt3cSCFlS
- sZyA8Ji4JyZWSanj95DzJVriFRf+XQos0uY8fprWHoQ5wcbW/L8eKS8YX A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="299125451"
-X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="299125451"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2021 04:33:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,195,1635231600"; d="scan'208";a="565196695"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 10 Dec 2021 04:33:04 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mvf5D-0003BW-Fh; Fri, 10 Dec 2021 12:33:03 +0000
-Date: Fri, 10 Dec 2021 20:32:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61b348cf.O3dyEhZqJet6rDvE%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1D64361426
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 13:31:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1639143113;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=l5sAoIuRwrqpOLkTWcO38tx+jvlOvty7121ooryZ460=;
+ b=glhCH+AYly5DibW2jd0u8Q9AiwK7wUdGwzxieLknrjPwVCAoHSdYPSvp8/PvwN9Dad0H4D
+ 90orDfIsj7Y1vV+htTONsb9wkbH2DvpW7BnFPJUCcTsrf+ZdNBBp58p1SxwZmEnrm0HIM1
+ gwXSaHykVrqcnTnH1VMihp4zUmDutkY=
+Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
+ [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-532-LVrmsKvrOJa0V7B9H5G80A-1; Fri, 10 Dec 2021 08:31:51 -0500
+X-MC-Unique: LVrmsKvrOJa0V7B9H5G80A-1
+Received: by mail-lj1-f200.google.com with SMTP id
+ b14-20020a05651c0b0e00b0021a1a39c481so2931815ljr.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 05:31:50 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:message-id:date:mime-version:user-agent:cc
+ :subject:content-language:to:references:in-reply-to
+ :content-transfer-encoding;
+ bh=l5sAoIuRwrqpOLkTWcO38tx+jvlOvty7121ooryZ460=;
+ b=14A8MzfY30Ic75JRa2LbNBC+TIpr4IGkjqI/yk7O+In+tOk2IRhc+LT9f/TAlhwjSn
+ U9r5VJtoqgFuQ/lKfoibad8xw31EVBeasf0shiw816dosIW7YPUnTCW1EnUILzQ352gO
+ WyyP5E9FUaoymEuRlo+KSojP5Sn9ETMSgy0VlYa0ow5lG6XZ7tWbebnjll/ZM5uKpGPC
+ 1h8rbRkHD3zBEF5HKFR2uyWft+nHsyoDBj36d4smX0I0e63e+cf3gYTVH4R4aWedrjAV
+ VrNyX76Owgrc/7f6agv6pbqxqzqZUJzlGCiWOHKAHpJgH4USReB7A0kI4cGHZ6dAGVOp
+ jsUg==
+X-Gm-Message-State: AOAM530dtrCzXIm4MSvh40XktP1l+5Jvyj/xWtIz6mEtzeFpMQitLT3k
+ NP1816NphqxuH2SOGFR5aYNF6npjsZoWFxbk9KpzTJcD5BXZMySKN79lymp8Q6MCDgWquCn1FYP
+ U11WPOwyQrWgcVSducipgaHnOR8JHEA==
+X-Received: by 2002:a05:6512:2111:: with SMTP id
+ q17mr12277318lfr.371.1639143109688; 
+ Fri, 10 Dec 2021 05:31:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJysW1eZdvHlg7c/OsYcsKZD7z8jtHRQrASeKFQqWi/mEk65sVMMaWjbUnS35YwKQwYM7xjjAQ==
+X-Received: by 2002:a05:6512:2111:: with SMTP id
+ q17mr12277281lfr.371.1639143109438; 
+ Fri, 10 Dec 2021 05:31:49 -0800 (PST)
+Received: from [192.168.0.50] (87-59-106-155-cable.dk.customer.tdc.net.
+ [87.59.106.155])
+ by smtp.gmail.com with ESMTPSA id k3sm313809ljn.55.2021.12.10.05.31.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Dec 2021 05:31:48 -0800 (PST)
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
+Message-ID: <ccd27f5f-31c4-603f-ea36-ad32b16325b9@redhat.com>
+Date: Fri, 10 Dec 2021 14:31:45 +0100
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- ac735b4b67a1f60c143547daf93f47ccf8f7a979
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+To: Alexander Lobakin <alexandr.lobakin@intel.com>,
+ Jesper Dangaard Brouer <jbrouer@redhat.com>
+References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+ <20211208140702.642741-2-alexandr.lobakin@intel.com>
+ <da317f39-8679-96f7-ec6f-309216b02f33@redhat.com>
+ <20211209173307.5003-1-alexandr.lobakin@intel.com>
+In-Reply-To: <20211209173307.5003-1-alexandr.lobakin@intel.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jbrouer@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 1/9] i40e: don't reserve
+ excessive XDP_PACKET_HEADROOM on XSK Rx to skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,164 +112,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Song Liu <songliubraving@fb.com>, Alexei Starovoitov <ast@kernel.org>,
+ Andrii Nakryiko <andrii@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ brouer@redhat.com, Yonghong Song <yhs@fb.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, bpf@vger.kernel.org,
+ Martin KaFai Lau <kafai@fb.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: ac735b4b67a1f60c143547daf93f47ccf8f7a979  ixgbe: respect metadata on XSK Rx to skb
 
-elapsed time: 723m
 
-configs tested: 135
-configs skipped: 3
+On 09/12/2021 18.33, Alexander Lobakin wrote:
+> From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+> Date: Thu, 9 Dec 2021 09:19:46 +0100
+> 
+>> On 08/12/2021 15.06, Alexander Lobakin wrote:
+>>> {__,}napi_alloc_skb() allocates and reserves additional NET_SKB_PAD
+>>> + NET_IP_ALIGN for any skb.
+>>> OTOH, i40e_construct_skb_zc() currently allocates and reserves
+>>> additional `xdp->data - xdp->data_hard_start`, which is
+>>> XDP_PACKET_HEADROOM for XSK frames.
+>>> There's no need for that at all as the frame is post-XDP and will
+>>> go only to the networking stack core.
+>>
+>> I disagree with this assumption, that headroom is not needed by netstack.
+>> Why "no need for that at all" for netstack?
+> 
+> napi_alloc_skb() in our particular case will reserve 64 bytes, it is
+> sufficient for {TCP,UDP,SCTP,...}/IPv{4,6} etc.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+My bad, I misunderstood you. I now see (looking at code) that (as you 
+say) 64 bytes of headroom *is* reserved (in bottom of __napi_alloc_skb).
+Thus, the SKB *do* have headroom, so this patch should be fine.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211210
-mips                 randconfig-c004-20211210
-sh                          polaris_defconfig
-arm                           corgi_defconfig
-arm                         assabet_defconfig
-sh                        sh7785lcr_defconfig
-mips                      maltaaprp_defconfig
-powerpc                 mpc837x_rdb_defconfig
-sh                          sdk7780_defconfig
-arc                         haps_hs_defconfig
-powerpc                     tqm8548_defconfig
-powerpc                 mpc834x_mds_defconfig
-powerpc                     kilauea_defconfig
-powerpc                      makalu_defconfig
-sh                          lboxre2_defconfig
-arm                        spear6xx_defconfig
-parisc                generic-64bit_defconfig
-arm                          pxa168_defconfig
-arm                          pxa910_defconfig
-arm                         orion5x_defconfig
-sh                           se7712_defconfig
-arm                             rpc_defconfig
-sparc                       sparc32_defconfig
-sh                  sh7785lcr_32bit_defconfig
-nds32                               defconfig
-m68k                         apollo_defconfig
-sh                        sh7763rdp_defconfig
-arm                     am200epdkit_defconfig
-mips                         mpc30x_defconfig
-powerpc                 canyonlands_defconfig
-mips                           ip28_defconfig
-powerpc                      pcm030_defconfig
-arm                        keystone_defconfig
-xtensa                              defconfig
-powerpc                     ppa8548_defconfig
-arm                             pxa_defconfig
-m68k                        m5407c3_defconfig
-powerpc                        warp_defconfig
-riscv             nommu_k210_sdcard_defconfig
-arm                           tegra_defconfig
-powerpc                 mpc836x_mds_defconfig
-arm                  randconfig-c002-20211210
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20211210
-x86_64               randconfig-a005-20211210
-x86_64               randconfig-a001-20211210
-x86_64               randconfig-a002-20211210
-x86_64               randconfig-a003-20211210
-x86_64               randconfig-a004-20211210
-i386                 randconfig-a001-20211209
-i386                 randconfig-a005-20211209
-i386                 randconfig-a003-20211209
-i386                 randconfig-a002-20211209
-i386                 randconfig-a006-20211209
-i386                 randconfig-a004-20211209
-i386                 randconfig-a001-20211210
-i386                 randconfig-a002-20211210
-i386                 randconfig-a005-20211210
-i386                 randconfig-a003-20211210
-i386                 randconfig-a006-20211210
-i386                 randconfig-a004-20211210
-x86_64               randconfig-a006-20211209
-x86_64               randconfig-a005-20211209
-x86_64               randconfig-a001-20211209
-x86_64               randconfig-a002-20211209
-x86_64               randconfig-a004-20211209
-x86_64               randconfig-a003-20211209
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
+Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-clang tested configs:
-x86_64               randconfig-a011-20211210
-x86_64               randconfig-a012-20211210
-x86_64               randconfig-a014-20211210
-x86_64               randconfig-a013-20211210
-x86_64               randconfig-a016-20211210
-x86_64               randconfig-a015-20211210
-i386                 randconfig-a013-20211210
-i386                 randconfig-a011-20211210
-i386                 randconfig-a016-20211210
-i386                 randconfig-a014-20211210
-i386                 randconfig-a015-20211210
-i386                 randconfig-a012-20211210
-hexagon              randconfig-r045-20211210
-riscv                randconfig-r042-20211210
-s390                 randconfig-r044-20211210
-hexagon              randconfig-r041-20211210
+Do watch out that 64 bytes is not always enough. Notice the define 
+LL_MAX_HEADER and MAX_HEADER in include/linux/netdevice.h (that tries to 
+determine worst-case header length) which is above 64 bytes. It is also 
+affected by HyperV and WiFi configs.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
