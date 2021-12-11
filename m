@@ -1,75 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18E81470E0E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Dec 2021 23:38:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEBE7470F8E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 11 Dec 2021 01:41:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9D3FD61B73;
-	Fri, 10 Dec 2021 22:38:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D5B1142978;
+	Sat, 11 Dec 2021 00:41:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i3REhpkInRDc; Fri, 10 Dec 2021 22:38:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eY1rP-hI8Vnr; Sat, 11 Dec 2021 00:41:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8471E613D7;
-	Fri, 10 Dec 2021 22:38:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C2C0642966;
+	Sat, 11 Dec 2021 00:41:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0DB331BF3D6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 609201C1190
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Dec 2021 00:41:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 04833418F9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5B86B857CF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Dec 2021 00:41:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wALfA4PSQ7KD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Dec 2021 22:38:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ScpIkKICiOVf for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 11 Dec 2021 00:41:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E6B0F418F7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Dec 2021 22:38:35 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4F44A857CB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Dec 2021 00:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639175916; x=1670711916;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=EChw1uRWq0lNEF6TDJdr1skqSRvDwgAWETiiubNQ/0M=;
- b=gZjyIxxOA3DmeBgvxal9wYkTvDfnRoQr6Yw5JlVeRCRl8DvFUBiVPDTl
- c95X2bq/ip4zhxLECLbR9sLtN7xyTg7TWSmyl1qGIxD7nvExS4MHTdTT/
- 07aMVogmeAw7hKlhcUyg4Yz51ISJZpp4mkmcqjaVfQgnOa20nN9NGFXvi
- 0G0McOs+XqUVtszHniKNCpoywoqDiL5lTqLviXmE4yOHIDrWiGRVhgOG2
- +fBc2PMro4eERAw1KXy32kCE3h6xxRiKmwqc1b+eWm9/otjQelWAwlANg
- ThoXhUE6qWDQQJszIH1mq2zF4Y90yUn9VUzmTnJBlHBXoSOaohVfuFMBS g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10194"; a="301844814"
-X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="301844814"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2021 14:38:24 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,196,1635231600"; d="scan'208";a="750969689"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga006.fm.intel.com with ESMTP; 10 Dec 2021 14:38:23 -0800
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1BAMcMRC018566; Fri, 10 Dec 2021 22:38:22 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Fri, 10 Dec 2021 23:37:46 +0100
-Message-Id: <20211210223746.2711444-1-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211210145941.5865-4-maciej.fijalkowski@intel.com>
-References: <20211210145941.5865-1-maciej.fijalkowski@intel.com>
- <20211210145941.5865-4-maciej.fijalkowski@intel.com>
+ t=1639183294; x=1670719294;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=j+pEU2PK/unlZK6R1gJ5fO9x4s2w4KWtjX5taAKJMtY=;
+ b=QwjvILN89+nZx52q/oQJqldwhGeR12+ziVMyb/HDmW6l6eyfetsLLXdq
+ 5rT8D0Cb0oeIkcVC24cACdVCiSaUcYJ/zxfp0UG+/17H67PRwWF02zCma
+ SEST2Lf7h+4lPndRfm4gg5yHFP/LlkSwOTveMmX+Da39J34Yy+JWRxsN8
+ 5w15SD4lxLLSOjOSE11ZFmmqDp13OQn4N2VJ7a7LLFXQq0+Y8fzKufVAn
+ 849V1qZCb+lchdKcXOkJYk5aWlDZMlBxq4fpkY+EHqqfE0z1iSDg98f9T
+ 5hf4yl9UWR2NpAcxWFGsT4p8zTQe62p91ouTFMyLupCvLcVaZLwg/3som w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10194"; a="324757537"
+X-IronPort-AV: E=Sophos;i="5.88,197,1635231600"; 
+ d="scan'208,223";a="324757537"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Dec 2021 16:41:33 -0800
+X-IronPort-AV: E=Sophos;i="5.88,197,1635231600"; 
+ d="scan'208,223";a="504160187"
+Received: from mmcarty-mobl.amr.corp.intel.com (HELO vcostago-mobl3)
+ ([10.209.82.172])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Dec 2021 16:41:33 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Stefan Dietrich <roots@gmx.de>, Thorsten Leemhuis
+ <regressions@leemhuis.info>
+In-Reply-To: <d4c9bb101aa79c5acaaa6dd7b42159fb0c91a341.camel@gmx.de>
+References: <87r1awtdx3.fsf@intel.com>
+ <20211201185731.236130-1-vinicius.gomes@intel.com>
+ <5a4b31d43d9bf32e518188f3ef84c433df3a18b1.camel@gmx.de>
+ <87o85yljpu.fsf@intel.com>
+ <063995d8-acf3-9f33-5667-f284233c94b4@leemhuis.info>
+ <8e59b7d6b5d4674d5843bb45dde89e9881d0c741.camel@gmx.de>
+ <5c5b606a-4694-be1b-0d4b-80aad1999bd9@leemhuis.info>
+ <d4c9bb101aa79c5acaaa6dd7b42159fb0c91a341.camel@gmx.de>
+Date: Fri, 10 Dec 2021 16:41:32 -0800
+Message-ID: <87h7bgrn0j.fsf@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH intel-net 3/5] ice: xsk: do not clear
- status_error0 for ntu + nb_buffs descriptor
+Content-Type: multipart/mixed; boundary="=-=-="
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Avoid possible deadlock during
+ suspend/resume
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,74 +87,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: kuba@kernel.org, netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ regressions@lists.linux.dev, greg@kroah.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Fri, 10 Dec 2021 15:59:39 +0100
+--=-=-=
+Content-Type: text/plain
 
-> The descriptor that ntu is pointing at when we exit
-> ice_alloc_rx_bufs_zc() should not have its corresponding DD bit cleared
-> as descriptor is not allocated in there and it is not valid for HW
-> usage.
-> 
-> The allocation routine at the entry will fill the descriptor that ntu
-> points to after it was set to ntu + nb_buffs on previous call.
-> 
-> Even the spec says:
-> "The tail pointer should be set to one descriptor beyond the last empty
-> descriptor in host descriptor ring."
-> 
-> Therefore, step away from clearing the status_error0 on ntu + nb_buffs
-> descriptor.
-> 
-> Fixes: db804cfc21e9 ("ice: Use the xsk batched rx allocation interface")
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_xsk.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> index 5cb61955c1f3..874fce9fa1c3 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> @@ -394,14 +394,9 @@ bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->  	}
->  
->  	ntu += nb_buffs;
-> -	if (ntu == rx_ring->count) {
-> -		rx_desc = ICE_RX_DESC(rx_ring, 0);
-> -		xdp = rx_ring->xdp_buf;
-> +	if (ntu == rx_ring->count)
+Hi Stefan,
 
-Maybe use unlikely() here while at it? 1/512 (depending on ring
-size) chance is low enough.
+Stefan Dietrich <roots@gmx.de> writes:
 
->  		ntu = 0;
-> -	}
->  
-> -	/* clear the status bits for the next_to_use descriptor */
-> -	rx_desc->wb.status_error0 = 0;
->  	ice_release_rx_desc(rx_ring, ntu);
+> Agreed and thanks for the pointers; please see the log files and
+> .config attached as requested.
+>
 
-This interferes with my patch in next-queue ([0]) (well, supersedes
-it to be precise).
-Tony, what would be better to do with it, just drop mine or correct
-this one (it would become an oneliner removing status_error0
-assignment then)?
+Thanks for the logs.
 
->  
->  	return count == nb_buffs;
-> -- 
-> 2.33.1
+Very interesting that the initialization of the device is fine, so it's
+something that happens later.
 
-[0] https://lore.kernel.org/netdev/20211130183649.1166842-2-alexandr.lobakin@intel.com
+Can you test the attached patch?
 
-Al
+If the patch works, I would also be interested if you notice any loss of
+functionality with your NIC. (I wouldn't think so, as far as I know,
+i225-V models have PTM support but don't have any PTP support).
+
+>
+> Cheers,
+> Stefan
+>
+>
+> On Fri, 2021-12-10 at 15:01 +0100, Thorsten Leemhuis wrote:
+>> On 10.12.21 14:45, Stefan Dietrich wrote:
+>> > thanks for keeping an eye on the issue. I've sent the files in
+>> > private
+>> > because I did not want to spam the mailing lists with them. Please
+>> > let
+>> > me know if this is the correct procedure.
+>>
+
+Cheers,
+-- 
+Vinicius
+
+
+--=-=-=
+Content-Type: text/x-patch
+Content-Disposition: attachment;
+ filename=0001-igc-Do-not-enable-crosstimestamping-for-i225-V-model.patch
+Content-Description: test patch for deadlock in igc
+
+From bc78a215cd3a68375ec62a05080070876e31d733 Mon Sep 17 00:00:00 2001
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Date: Fri, 10 Dec 2021 16:23:42 -0800
+Subject: [TEST ONLY] igc: Do not enable crosstimestamping for i225-V models
+
+WIP WIP WIP
+
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 30568e3544cd..b525035a8a2b 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -768,7 +768,13 @@ int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr)
+  */
+ static bool igc_is_crosststamp_supported(struct igc_adapter *adapter)
+ {
+-	return IS_ENABLED(CONFIG_X86_TSC) ? pcie_ptm_enabled(adapter->pdev) : false;
++	if (!IS_ENABLED(CONFIG_X86_TSC))
++		return false;
++
++	if (adapter->pdev->device == IGC_DEV_ID_I225_V)
++		return false;
++
++	return pcie_ptm_enabled(adapter->pdev);
+ }
+ 
+ static struct system_counterval_t igc_device_tstamp_to_system(u64 tstamp)
+-- 
+2.33.1
+
+
+--=-=-=
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--=-=-=--
