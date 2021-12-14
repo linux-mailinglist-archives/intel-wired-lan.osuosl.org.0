@@ -1,73 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52E9D4742FF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Dec 2021 13:54:24 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6664C47434B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Dec 2021 14:19:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D19D84026F;
-	Tue, 14 Dec 2021 12:54:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C73EF40443;
+	Tue, 14 Dec 2021 13:19:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j0dwROisEPaB; Tue, 14 Dec 2021 12:54:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XyvwoUyTuBJr; Tue, 14 Dec 2021 13:19:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC7B040266;
-	Tue, 14 Dec 2021 12:54:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21D514053C;
+	Tue, 14 Dec 2021 13:19:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD96D1BF30C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 12:54:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F25131BF33F
+ for <intel-wired-lan@osuosl.org>; Tue, 14 Dec 2021 13:19:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CA9B46080B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 12:54:16 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D706360BA1
+ for <intel-wired-lan@osuosl.org>; Tue, 14 Dec 2021 13:19:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gw5ri6VgXXpd for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Dec 2021 12:54:16 +0000 (UTC)
+ with ESMTP id cM5pRFvw5R0a for <intel-wired-lan@osuosl.org>;
+ Tue, 14 Dec 2021 13:19:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2045C6066D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 12:54:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639486456; x=1671022456;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=pc8bGRxTA0vBWYsYScp20sLMBCpoYL3dlul4Oiv0nEY=;
- b=PRt4FpAQIa5WyC5706o+Q6VBuXB2hon62YDQQk5orKsWgZ4GMJ/6oC/P
- jB+PCocfNeXKaG4MKAx5eYRQQDN7+Pna6lCdPP2IdQi2UrgqEjn9XdpBU
- merlu9lYFmI7lP1WQbPFnAHDTRRh8z7Db4VEqI62cYK/03pIv6o2XiaMi
- GlOGtgGJ0bbCsR+LkI+zMwSD4xaY7kXvhfAoZuvi5QpO+eWNWssptN3GV
- D3Kk1V+SSH26Kw1khWHnNfakpfVsnQ78cZ8w02W2cTBA6dCBqyWXXzZ8p
- ZfUQQnsawPZ0HQbqEKQXbZUUJg/qehR76urDuMCon2uVXMuANiuVmRvgs Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10197"; a="238781370"
-X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="238781370"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2021 04:54:15 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="609766971"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga002.fm.intel.com with ESMTP; 14 Dec 2021 04:54:14 -0800
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1BECsDUR002209; Tue, 14 Dec 2021 12:54:13 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Date: Tue, 14 Dec 2021 13:53:25 +0100
-Message-Id: <20211214125325.1081251-1-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211214101016.5959-1-jedrzej.jagielski@intel.com>
-References: <20211214101016.5959-1-jedrzej.jagielski@intel.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A6BA460BA4
+ for <intel-wired-lan@osuosl.org>; Tue, 14 Dec 2021 13:19:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1639487941;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=c4eqNrgbYhzKT3BNT7O1ZxukBP8xtB9ukh5+qPOVcog=;
+ b=BUPneUvQbj47KCirQ5+Pz1HLgwJ4Flw80EnYIzaf5qLUFPamxBy70lElOOSns0fuEmSfUz
+ TvtgszssNbkv4s/GIZ3sHqAznEzh7/k+zjYY9BI0q5stx324cKdpSy94EDXxRV/MhdW+gE
+ i2CFlePhBhfrThVlPTu3oBF/wing4p8=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-494-RUHzPdZYPzKg7K7vES9j1w-1; Tue, 14 Dec 2021 08:18:59 -0500
+X-MC-Unique: RUHzPdZYPzKg7K7vES9j1w-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ jo4-20020a056214500400b003a5cb094fb8so26981647qvb.22
+ for <intel-wired-lan@osuosl.org>; Tue, 14 Dec 2021 05:18:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=c4eqNrgbYhzKT3BNT7O1ZxukBP8xtB9ukh5+qPOVcog=;
+ b=ssJcpTSZ28/0s/Ie5E+Uh5sl0txhGvqQmf1iqUCoe/Qec2B+7yH5rx783hRd2voiK4
+ eWcyDDXPQa/biJI4JDPr3f3IFACqRnpe8unX12DYm+O2RAN8+kRGlvlaOsq3GcHCe79b
+ wAgBg24qtFme05V1u+BS4kzE7chgPmKMBvt2D7HfgbeUibc9x28dmauWJdvWhJ7GYUhK
+ Vhxqnfxh87VjNNAfrC0MHz+1ij42ThBaU8VqXep247fHqmOdvpNVjKgfZo9EAodVuAy6
+ dOFLeJH+xIk2xOKuq3AVptNHhXqVb3L9H9TGDH1l7rL3eQ8H9HeoBiblQEtC1/IOtlYi
+ ll/A==
+X-Gm-Message-State: AOAM532B8c+u82mbHJnW9kCaomENNeD6Oz3Ytb9LxZizZLlefbnh542L
+ 5aKfnVEq53Ef/a2h6L0RXD44NJDUJcCVi9iR8TVubu5GmBh29ieyA6kYBj5H/3DoMQHTNu1pdAR
+ zOPOT5XaFUXCZuJvXba8Tdw==
+X-Received: by 2002:ac8:7d84:: with SMTP id c4mr5737501qtd.94.1639487938587;
+ Tue, 14 Dec 2021 05:18:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx5aPXGCO3iaR7HZV5k5m153dQNpI9qNCqC0IojeGo0AAjR10XzwAzbRpPOJRg5v9hx0s/I4w==
+X-Received: by 2002:ac8:7d84:: with SMTP id c4mr5737468qtd.94.1639487938261;
+ Tue, 14 Dec 2021 05:18:58 -0800 (PST)
+Received: from [192.168.1.121] ([69.73.103.33])
+ by smtp.gmail.com with ESMTPSA id p1sm7355220qke.109.2021.12.14.05.18.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Dec 2021 05:18:57 -0800 (PST)
+Message-ID: <50c30d0c-213d-dd2f-1346-40f92fd315bd@redhat.com>
+Date: Tue, 14 Dec 2021 07:18:57 -0600
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix incorrect netdev's
- real number of RX/TX queues
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
+References: <20211208102153.669338-1-jkc@redhat.com>
+ <20211208102153.669338-2-jkc@redhat.com>
+ <5da6e781833ce519a052754a68fde14d8477180b.camel@intel.com>
+From: Ken Cox <jkc@redhat.com>
+In-Reply-To: <5da6e781833ce519a052754a68fde14d8477180b.camel@intel.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jkc@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [Patch 1/2] iavf: Fix panic in iavf_remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,95 +106,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Date: Tue, 14 Dec 2021 10:10:16 +0000
-
-> There was a wrong queues representation in sysfs during
-> driver's reinitialization in case of online cpus number is
-> less than combined queues. It was caused by stopped
-> NetworkManager, which is responsible for calling vsi_open
-> function during driver's initialization.
-> In specific situation (ex. 12 cpus online) there were 16 queues
-> in /sys/class/net/<iface>/queues. In case of modifying queues with
-> value higher, than number of online cpus, then it caused write
-> errors and other errors.
-> Add updating of sysfs's queues representation during driver
-> initialization.
-> 
-> Fixes: 41c445ff0f48 ("i40e: main driver core")
-> Signed-off-by: Lukasz Cieplicki <lukaszx.cieplicki@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 22 +++++++++++++++++++++
->  1 file changed, 22 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 5322f44ed6ce..850264c4285b 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -14074,6 +14074,25 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
->  	return NULL;
->  }
->  
-> +/**
-> + * i40e_netif_set_realnum_tx_rx_queues - Update number of tx/rx queues
-> + * @vsi: vsi structure
-> + *
-> + * This updates netdev's number of tx/rx queues
-> + *
-> + * Returns status of setting tx/rx queues
-> + **/
-> +static int i40e_netif_set_realnum_tx_rx_queues(struct i40e_vsi *vsi)
-> +{
-> +	netif_set_real_num_rx_queues(
-> +		vsi->netdev,
-> +		vsi->num_queue_pairs);
-> +
-> +	return netif_set_real_num_tx_queues(
-> +		vsi->netdev,
-> +		vsi->num_queue_pairs);
-> +}
-
-CHECK: Lines should not end with a '('
-#393: FILE: drivers/net/ethernet/intel/i40e/i40e_main.c:14087:
-+	netif_set_real_num_rx_queues(
-
-CHECK: Lines should not end with a '('
-#397: FILE: drivers/net/ethernet/intel/i40e/i40e_main.c:14091:
-+	return netif_set_real_num_tx_queues(
-
-The first parameter (vsi->netdev) fits into 79/80 chars, so only
-the second one should be wrapped.
-
-Please run `checkpatch --codespell --strict` on every patch you
-create.
-
-> +
->  /**
->   * i40e_vsi_setup - Set up a VSI by a given type
->   * @pf: board private structure
-> @@ -14203,6 +14222,9 @@ struct i40e_vsi *i40e_vsi_setup(struct i40e_pf *pf, u8 type,
->  	case I40E_VSI_MAIN:
->  	case I40E_VSI_VMDQ2:
->  		ret = i40e_config_netdev(vsi);
-> +		if (ret)
-> +			goto err_netdev;
-> +		ret = i40e_netif_set_realnum_tx_rx_queues(vsi);
->  		if (ret)
->  			goto err_netdev;
->  		ret = register_netdev(vsi->netdev);
-> -- 
-> 2.27.0
-
-Thanks,
-Al
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CgpPbiAxMi8xMy8yMSAxMjoyNiwgTmd1eWVuLCBBbnRob255IEwgd3JvdGU6Cj4gT24gV2VkLCAy
+MDIxLTEyLTA4IGF0IDA0OjIxIC0wNjAwLCBLZW4gQ294IHdyb3RlOgo+PiBJdCdzIHBvc3NpYmxl
+IGZvciB0aGUgY2xpZW50X3Rhc2sgdG8gZ2V0IHNjaGVkdWxlZCBieSB0aGUgd2F0Y2hkb2cKPj4g
+YWZ0ZXIgY2FuY2VsX2RlbGF5ZWRfd29ya19zeW5jKCZhZGFwdGVyLT5jbGllbnRfdGFzayk7wqAg
+VGhpcyBjYW4KPj4gY2F1c2UKPj4gYSBwYW5pYyBiZWNhdXNlIGZyZWVfbmV0ZGV2KCkgaXMgY2Fs
+bGVkIHdpdGggdGhlIGNsaWVudF90YXNrIHN0aWxsCj4+IHF1ZXVlZAo+PiBvbiB0aGUgd29yayBx
+dWV1ZS4KPj4KPj4gVGhlIHN0YWNrIGJhY2t0cmFjZSB1c3VhbGx5IGxvb2tzIHNpbWlsYXIgdG86
+Cj4+Cj4+IFvCoCAxMjEuMjcyOTYzXSBXb3JrcXVldWU6wqAgMHgwIChpYXZmKQo+PiBbwqAgMTIx
+LjI3Mjk2OV0gUklQOiAwMDEwOl9fbGlzdF9kZWxfZW50cnlfdmFsaWQuY29sZC4xKzB4MjAvMHg0
+Ywo+PiAuLi4KPj4gW8KgIDEyMS4yNzI5ODBdIENhbGwgVHJhY2U6Cj4+IFvCoCAxMjEuMjcyOTg1
+XcKgIG1vdmVfbGlua2VkX3dvcmtzKzB4NDkvMHhhMAo+PiBbwqAgMTIxLjI3Mjk4OF3CoCBwd3Ff
+YWN0aXZhdGVfZGVsYXllZF93b3JrKzB4NDMvMHgxMDAKPj4gW8KgIDEyMS4yNzI5OTFdwqAgcHdx
+X2RlY19ucl9pbl9mbGlnaHQrMHg1ZC8weDkwCj4+IFvCoCAxMjEuMjcyOTkzXcKgIHdvcmtlcl90
+aHJlYWQrMHgzMC8weDM3MAo+PiBbwqAgMTIxLjI3Mjk5NV3CoCA/IHByb2Nlc3Nfb25lX3dvcmsr
+MHg0MjAvMHg0MjAKPj4gW8KgIDEyMS4yNzI5OThdwqAga3RocmVhZCsweDE1ZC8weDE4MAo+PiBb
+wqAgMTIxLjI3MzAwMF3CoCA/IF9fa3RocmVhZF9wYXJrbWUrMHhhMC8weGEwCj4+IFvCoCAxMjEu
+MjczMDAzXcKgIHJldF9mcm9tX2ZvcmsrMHgxZi8weDQwCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEtl
+biBDb3ggPGprY0ByZWRoYXQuY29tPgo+PiAtLS0KPj4gIMKgZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWF2Zi9pYXZmX21haW4uYyB8IDIgKy0KPj4gIMKgMSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfbWFpbi5jCj4+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWF2Zi9pYXZmX21haW4uYwo+PiBpbmRleCA2YzJhZmJjOGFjYmNkLi42M2VlYzdlZGJm
+NjBhIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZf
+bWFpbi5jCj4+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWlu
+LmMKPj4gQEAgLTM5NDAsNyArMzk0MCw2IEBAIHN0YXRpYyB2b2lkIGlhdmZfcmVtb3ZlKHN0cnVj
+dCBwY2lfZGV2ICpwZGV2KQo+PiAgwqDCoMKgwqDCoMKgwqDCoHNldF9iaXQoX19JQVZGX0lOX1JF
+TU9WRV9UQVNLLCAmYWRhcHRlci0+Y3JpdF9zZWN0aW9uKTsKPj4gIMKgwqDCoMKgwqDCoMKgwqBj
+YW5jZWxfZGVsYXllZF93b3JrX3N5bmMoJmFkYXB0ZXItPmluaXRfdGFzayk7Cj4+ICDCoMKgwqDC
+oMKgwqDCoMKgY2FuY2VsX3dvcmtfc3luYygmYWRhcHRlci0+cmVzZXRfdGFzayk7Cj4+IC3CoMKg
+wqDCoMKgwqDCoGNhbmNlbF9kZWxheWVkX3dvcmtfc3luYygmYWRhcHRlci0+Y2xpZW50X3Rhc2sp
+Owo+PiAgwqDCoMKgwqDCoMKgwqDCoGlmIChhZGFwdGVyLT5uZXRkZXZfcmVnaXN0ZXJlZCkgewo+
+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB1bnJlZ2lzdGVyX25ldGRldihuZXRk
+ZXYpOwo+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBhZGFwdGVyLT5uZXRkZXZf
+cmVnaXN0ZXJlZCA9IGZhbHNlOwo+PiBAQCAtMzk3NCw2ICszOTczLDcgQEAgc3RhdGljIHZvaWQg
+aWF2Zl9yZW1vdmUoc3RydWN0IHBjaV9kZXYgKnBkZXYpCj4+ICDCoMKgwqDCoMKgwqDCoMKgaWF2
+Zl9mcmVlX3FfdmVjdG9ycyhhZGFwdGVyKTsKPj4gICAKPj4gIMKgwqDCoMKgwqDCoMKgwqBjYW5j
+ZWxfZGVsYXllZF93b3JrX3N5bmMoJmFkYXB0ZXItPndhdGNoZG9nX3Rhc2spOwo+PiArwqDCoMKg
+wqDCoMKgwqBjYW5jZWxfZGVsYXllZF93b3JrX3N5bmMoJmFkYXB0ZXItPmNsaWVudF90YXNrKTsK
+Pj4gICAKPj4gIMKgwqDCoMKgwqDCoMKgwqBjYW5jZWxfd29ya19zeW5jKCZhZGFwdGVyLT5hZG1p
+bnFfdGFzayk7Cj4+ICAgCj4gCj4gSGkgS2VuLAo+IAo+IFdoYXQgdHJlZSBpcyB0aGlzIHBhdGNo
+IGJhc2VkIG9uPyBUaGlzIGRvZXNuJ3QgYXBwbHkgdG8gZWl0aGVyIG9mIHRoZQo+IElXTCB0cmVl
+cyBvciB0aGUgbmV0ZGV2IHRyZWVzLgpTb3JyeSwgSSB3YXMgaW4gdGhlIHdyb25nIGJyYW5jaCB3
+aGVuIEkgZ2VuZXJhdGVkIHRoZXNlIHBhdGNoZXMuICBQbGVhc2UgCmRpc3JlZ2FyZC4gIEkgd2ls
+bCByZS1ldmFsdWF0ZSBhbmQgcmVzZW5kIGlmIG5lY2Vzc2FyeS4KCj4gCj4gVGhlIG9yZGVyaW5n
+IGxvb2tzIGNvcnJlY3Qgb24gdGhlIGtlcm5lbCB0cmVlIHdpdGggd2F0Y2hkb2dfdGFzayBiZWlu
+Zwo+IGNhbmNlbGxlZCBiZWZvcmUgdGhlIGNsaWVudF90YXNrIFsxXS4gSG93ZXZlciwgd2UgZG8g
+aGF2ZSBhbiBleHRyYQo+ICdjYW5jZWxfZGVsYXllZF93b3JrX3N5bmMoJmFkYXB0ZXItPndhdGNo
+ZG9nX3Rhc2spJy4gSSdsbCBnZXQgYSBwYXRjaAo+IHRvZ2V0aGVyIHRvIHJlbW92ZSB0aGUgZXh0
+cmEgb25lLgo+IAo+IFRoYW5rcywKPiBUb255Cj4gCj4gCj4gWzFdIGh0dHBzOi8vZWxpeGlyLmJv
+b3RsaW4uY29tL2xpbnV4L3Y1LjE2LQo+IHJjNS9zb3VyY2UvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWF2Zi9pYXZmX21haW4uYyMzOTc5Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVs
+LXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
