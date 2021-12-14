@@ -1,65 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22BCE474019
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Dec 2021 11:08:38 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74E46474020
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Dec 2021 11:10:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C061640528;
-	Tue, 14 Dec 2021 10:08:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E6FB84011F;
+	Tue, 14 Dec 2021 10:10:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c22BPvkdwHmA; Tue, 14 Dec 2021 10:08:35 +0000 (UTC)
+	with ESMTP id fEokucHt04fg; Tue, 14 Dec 2021 10:10:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6967140502;
-	Tue, 14 Dec 2021 10:08:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5C07B40105;
+	Tue, 14 Dec 2021 10:10:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6C1571BF5DD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:08:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B94F71BF5DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:10:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4559540502
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:08:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A1D0360777
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:10:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zrph5VFlBj_q for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Dec 2021 10:08:27 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Z_iNfoJDqUFz for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Dec 2021 10:10:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D5C3B40467
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:08:27 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E737D6068F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Dec 2021 10:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639476507; x=1671012507;
+ t=1639476619; x=1671012619;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=9ZxXQNIhGYBq8W6InzLkzFyYlNvBDtBa9/Kbsouxkbo=;
- b=NFgRmEP0ShctotBjYHTq4afS0G45erCVUDcwPYq3SSCU9e3Iu/yK6s69
- a+Sdt545N5rQ22IRSUEBGnFu4bWmafiXcEDzShHu4klDjYZ8G9EYSwEhv
- VoLeRhKISlEeSb54YyZK9QRdGZGLwfTrZRWMgA3+AXe2a6vpGWsf7N1kV
- DrA3KZ/unZ4HhtBnWI2y93kSVNjKFW6T6Pk6PLFw4qTKWqi4DKIstR2Oa
- 49eN8dwEden3vMl45njHQOFgxzwKlz0YcX/PcT2nhlWl+BzT9MYMMkIey
- 7S+ClE20eGRjFLKyLZJkpO8fMss/5wEzSQCQ3B3wTHoXZrVPAIayZHWK2 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10197"; a="325221436"
-X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="325221436"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2021 02:08:27 -0800
+ bh=iH3yAhUjM31/j5EyunWi+DWPuIzMravwILZYNAReEks=;
+ b=LYgmtqP5ZmVPC0pEuB2iviVEGbp6j2p9LYyxtrKw4K0pVZRvGpzwJlKg
+ nCk/76DBIevp2VnijSJYiO0pMQpZlIrt++HIu5EMRqsrhzof+eDnSTLLI
+ OxQfJVOBeEiIUo+xUTcArGuBkXo7n2EdqCwfydLuEUVRgaO0p15hZI6H9
+ kX725/4vo/U146PotGFF7qjQdM5b3SKMOf+6gm9OeNGQMlKX/yrLeJyWO
+ 3XCM+gxD8nhQZjtXuUSZNJnG/msHC74FmGoUf27ByH8MDEFCk45VAZsaH
+ IZIVcC10RDkC4LJ7f7kEA6CuWc4sRcqfRuLZvC8RCPEcp/elz0wpduzc3 w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10197"; a="238892745"
+X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="238892745"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Dec 2021 02:10:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="465015651"
+X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="754773915"
 Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by orsmga006.jf.intel.com with ESMTP; 14 Dec 2021 02:08:25 -0800
+ by fmsmga005.fm.intel.com with ESMTP; 14 Dec 2021 02:10:17 -0800
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Dec 2021 10:08:22 +0000
-Message-Id: <20211214100822.5781-1-jedrzej.jagielski@intel.com>
+Date: Tue, 14 Dec 2021 10:10:16 +0000
+Message-Id: <20211214101016.5959-1-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix reset bw limit when DCB
- enabled with 1 TC
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix incorrect netdev's real
+ number of RX/TX queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,64 +74,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+Cc: Lukasz Cieplicki <lukaszx.cieplicki@intel.com>,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There was an AQ error I40E_AQ_RC_EINVAL when trying
-to reset bw limit as part of bw allocation setup.
-This was caused by trying to reset bw limit with
-DCB enabled. Bw limit should not be reset when
-DCB is enabled. The code was relying on the pf->flags
-to check if DCB is enabled but if only 1 TC is available
-this flag will not be set even though DCB is enabled.
-Add a check for number of TC and if it is 1
-don't try to reset bw limit even if pf->flags shows
-DCB as disabled.
+There was a wrong queues representation in sysfs during
+driver's reinitialization in case of online cpus number is
+less than combined queues. It was caused by stopped
+NetworkManager, which is responsible for calling vsi_open
+function during driver's initialization.
+In specific situation (ex. 12 cpus online) there were 16 queues
+in /sys/class/net/<iface>/queues. In case of modifying queues with
+value higher, than number of online cpus, then it caused write
+errors and other errors.
+Add updating of sysfs's queues representation during driver
+initialization.
 
-Fixes: fa38e30ac73f ("i40e: Fix for Tx timeouts when interface is brought up if DCB is enabled")
-Suggested-by: Alexander Lobakin <alexandr.lobakin@intel.com> # Flatten
-the condition
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Fixes: 41c445ff0f48 ("i40e: main driver core")
+Signed-off-by: Lukasz Cieplicki <lukaszx.cieplicki@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 22 +++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 4a6e7822b4ab..817513a744e1 100644
+index 5322f44ed6ce..850264c4285b 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -5404,7 +5404,15 @@ static int i40e_vsi_configure_bw_alloc(struct i40e_vsi *vsi, u8 enabled_tc,
- 	/* There is no need to reset BW when mqprio mode is on.  */
- 	if (pf->flags & I40E_FLAG_TC_MQPRIO)
- 		return 0;
--	if (!vsi->mqprio_qopt.qopt.hw && !(pf->flags & I40E_FLAG_DCB_ENABLED)) {
+@@ -14074,6 +14074,25 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
+ 	return NULL;
+ }
+ 
++/**
++ * i40e_netif_set_realnum_tx_rx_queues - Update number of tx/rx queues
++ * @vsi: vsi structure
++ *
++ * This updates netdev's number of tx/rx queues
++ *
++ * Returns status of setting tx/rx queues
++ **/
++static int i40e_netif_set_realnum_tx_rx_queues(struct i40e_vsi *vsi)
++{
++	netif_set_real_num_rx_queues(
++		vsi->netdev,
++		vsi->num_queue_pairs);
 +
-+	if (!vsi->mqprio_qopt.qopt.hw) {
-+		if (pf->flags & I40E_FLAG_DCB_ENABLED)
-+			goto skip_reset;
++	return netif_set_real_num_tx_queues(
++		vsi->netdev,
++		vsi->num_queue_pairs);
++}
 +
-+		if (IS_ENABLED(CONFIG_I40E_DCB) &&
-+		    i40e_dcb_hw_get_num_tc(&pf->hw) == 1)
-+			goto skip_reset;
-+
- 		ret = i40e_set_bw_limit(vsi, vsi->seid, 0);
+ /**
+  * i40e_vsi_setup - Set up a VSI by a given type
+  * @pf: board private structure
+@@ -14203,6 +14222,9 @@ struct i40e_vsi *i40e_vsi_setup(struct i40e_pf *pf, u8 type,
+ 	case I40E_VSI_MAIN:
+ 	case I40E_VSI_VMDQ2:
+ 		ret = i40e_config_netdev(vsi);
++		if (ret)
++			goto err_netdev;
++		ret = i40e_netif_set_realnum_tx_rx_queues(vsi);
  		if (ret)
- 			dev_info(&pf->pdev->dev,
-@@ -5412,6 +5420,8 @@ static int i40e_vsi_configure_bw_alloc(struct i40e_vsi *vsi, u8 enabled_tc,
- 				 vsi->seid);
- 		return ret;
- 	}
-+
-+skip_reset:
- 	memset(&bw_data, 0, sizeof(bw_data));
- 	bw_data.tc_valid_bits = enabled_tc;
- 	for (i = 0; i < I40E_MAX_TRAFFIC_CLASS; i++)
+ 			goto err_netdev;
+ 		ret = register_netdev(vsi->netdev);
 -- 
 2.27.0
 
