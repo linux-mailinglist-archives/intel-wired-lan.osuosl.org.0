@@ -2,63 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A123E477640
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Dec 2021 16:46:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D6C2477649
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Dec 2021 16:47:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0BC1983E5C;
-	Thu, 16 Dec 2021 15:45:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D6C9C831BD;
+	Thu, 16 Dec 2021 15:47:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WEr3XH2k63Hq; Thu, 16 Dec 2021 15:45:58 +0000 (UTC)
+	with ESMTP id mfQNXPB82wqh; Thu, 16 Dec 2021 15:47:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D13A983E39;
-	Thu, 16 Dec 2021 15:45:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DD79D82FA5;
+	Thu, 16 Dec 2021 15:47:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5E3D71BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:45:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AC4771BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:47:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4BFEA83E39
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:45:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9A29B82FA5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:47:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zE2ZZpqZP2WW for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Dec 2021 15:45:52 +0000 (UTC)
+ with ESMTP id GQYUt7rTR-Gg for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Dec 2021 15:47:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8D5AE83E29
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:45:52 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 16B5B82CDE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:47:42 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id CF251CE21BD;
- Thu, 16 Dec 2021 15:45:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95CF5C36AE0;
- Thu, 16 Dec 2021 15:45:46 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id C915961E73;
+ Thu, 16 Dec 2021 15:47:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EA95C36AE0;
+ Thu, 16 Dec 2021 15:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639669547;
- bh=swrQv+Dg77aT1ZBQsKFX507kKA/X+/gI+NK/C8bHL3M=;
+ s=k20201202; t=1639669661;
+ bh=x2qJMultYb0EWrkj82u15b9av/t2/rtSDjR4mn0u0Uk=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=iVqlQ79AOtCwa3CxXCdxHAOhfc/mxg6x15+hQuigsraTaU2ED2cCGv2vEdNvfG3HG
- HXjfa51ECAlnxqaPaOreh8AzwkmW7GcqPDjDW3s7p9MXgcu6cCvTDy81QS7cAlhtLi
- jr52vQ/sNgp3LCZ/+AGesQbaY6SbkKDyv4HwP7uiy6WTLcUwGZay4y03RBQZJTo3VO
- ykBu6Cj/WegJdIkAs2As2waMGMwIYeABQUIKR3DnmntjL0v/VYlKaLuA0oTDQx/eK0
- hOUXc4oKw9rP1Yg47CrwFe6UesW/fOagqU/Cziuc8mPtTDrEhhp9+R3IgiMJVm744+
- ArLUw87rFD0nA==
-Date: Thu, 16 Dec 2021 07:45:45 -0800
+ b=tunHtGHWos3bTThh5Ctm7Tnr85bWh2tRT8T3YDY/E3KY1YNVuKmnBI098hBcWxzpu
+ JMgwPzZBfgHNWYbZ5hjVfcROCeGPRCvETfoIOkUK3qbERdIqMxtv8zsDNEom0VbkPe
+ uniM32V0tVcCwk9g6eLkaYgWch4B4O3WtcrHgYsNWc3jZVO2jcpHzDex+aEeMJlvD9
+ 7dYxDc5prYcI4O34f+45vfWy9cXcDRG1EH+M1fJoRrIWCkC3//iXmPh/MUX1ylP++i
+ SoDobbtvH1oU0j7+4H89NcdyozkJXlABToKPJ8zihX+PEV0aDQW5NzMx6tkIlcbHcD
+ +mETeOr/eiGag==
+Date: Thu, 16 Dec 2021 07:47:39 -0800
 From: Jakub Kicinski <kuba@kernel.org>
 To: Joe Damato <jdamato@fastly.com>
-Message-ID: <20211216074545.036ab8e3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <1639521730-57226-2-git-send-email-jdamato@fastly.com>
+Message-ID: <20211216074739.7f71a01b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <1639521730-57226-1-git-send-email-jdamato@fastly.com>
 References: <1639521730-57226-1-git-send-email-jdamato@fastly.com>
- <1639521730-57226-2-git-send-email-jdamato@fastly.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-queue PATCH 1/5] i40e: Remove rx page
- reuse double count.
+Subject: Re: [Intel-wired-lan] [net-queue PATCH 0/5] i40e: stat counter
+ updates and additions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,17 +76,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 14 Dec 2021 14:42:06 -0800 Joe Damato wrote:
-> Page reuse was being tracked from two locations:
->   - i40e_reuse_rx_page (via 40e_clean_rx_irq), and
->   - i40e_alloc_mapped_page
+On Tue, 14 Dec 2021 14:42:05 -0800 Joe Damato wrote:
+> This patch set makes several updates to the i40e driver stats collection
+> and reporting code to help users of i40e get a better sense of how the
+> driver is performing and interacting with the rest of the kernel.
 > 
-> Remove the double count and only count reuse from i40e_alloc_mapped_page
-> when the page is about to be reused.
+> These patches include some new stats (like waived and busy) which were
+> inspired by other drivers that track stats using the same nomenclature.
 > 
-> Signed-off-by: Joe Damato <jdamato@fastly.com>
+> The new stats and an existing stat, rx_reuse, are now accessible with
+> ethtool to make harvesting this data more convenient for users.
 
-Possibly a fix, this one?
+Looks good overall, thanks.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
