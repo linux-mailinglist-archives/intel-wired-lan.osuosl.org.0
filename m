@@ -1,66 +1,143 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C2AC479390
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 19:09:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C8E5479391
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 19:09:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1E79F40C12;
-	Fri, 17 Dec 2021 18:09:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9EBDC61142;
+	Fri, 17 Dec 2021 18:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mrgLBJw-nlQW; Fri, 17 Dec 2021 18:08:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2IAZB9lQlkgO; Fri, 17 Dec 2021 18:09:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D7803400CE;
-	Fri, 17 Dec 2021 18:08:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9AE5961130;
+	Fri, 17 Dec 2021 18:09:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 198271BF44A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Dec 2021 22:35:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 711491BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:20:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 092C040A86
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Dec 2021 22:35:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5EEE441764
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:20:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8kIc51x3hs32 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Dec 2021 22:35:02 +0000 (UTC)
-X-Greylist: delayed 00:07:06 by SQLgrey-1.8.0
-Received: from novek.ru (novek.ru [213.148.174.62])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C013040A75
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Dec 2021 22:35:01 +0000 (UTC)
-Received: from [192.168.0.18] (unknown [37.228.234.253])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by novek.ru (Postfix) with ESMTPSA id 3B79D500BEE;
- Thu, 16 Dec 2021 01:22:56 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.11.0 novek.ru 3B79D500BEE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=novek.ru; s=mail;
- t=1639606979; bh=YkDbJkp27QqRkjGNY8MALJg6qOp+4IEyT1J+LvT8rrc=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=JfKble2SnD0FLtu/Tyno4t6cDZ+Fg4afY/Z+RSlQQAOFpA5TnSQnnOEzlKZLPsGuV
- mRAC1Yh11FIABB4TqJFyXVV0TxZ7i4gOjXg8kfbNMxT8t/5cGKkolb5vnnSvGglFtu
- IvSlbF2oDHsuiJ0/vV14pdMs5sH6ywc28Zl14GSM=
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>,
- "Machnikowski, Maciej" <maciej.machnikowski@intel.com>,
- Jakub Kicinski <kuba@kernel.org>
-References: <20211210134550.1195182-1-maciej.machnikowski@intel.com>
- <20211210081654.233a41b6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <MW5PR11MB58126A8F6466A8EAD1293D5EEA749@MW5PR11MB5812.namprd11.prod.outlook.com>
- <DM6PR11MB4657CE134223B65B5F2EF5F29B769@DM6PR11MB4657.namprd11.prod.outlook.com>
-From: Vadim Fedorenko <vfedorenko@novek.ru>
-Message-ID: <4d4f5c27-90a3-c411-ea2f-e6f44ec74148@novek.ru>
-Date: Wed, 15 Dec 2021 22:27:46 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
-MIME-Version: 1.0
-In-Reply-To: <DM6PR11MB4657CE134223B65B5F2EF5F29B769@DM6PR11MB4657.namprd11.prod.outlook.com>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=asocs.onmicrosoft.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sD_FiG7lPwHe for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Dec 2021 15:20:28 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from EUR05-AM6-obe.outbound.protection.outlook.com
+ (mail-am6eur05on2136.outbound.protection.outlook.com [40.107.22.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5B2144175D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Dec 2021 15:20:28 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LM3MLkOmKmYLxOKTPva9PSyVsPGvZko80fSjrGl4gV5wKqXcc96g0s0XZUCkFrjJqQkQ2xdRGI4NhENOM9s3LCoXgL08OHHkxoKSOqA1BkYjx9eNnHxL8POCf4DZlc3wm+cZRZhnhyAgGKj6WJaflMUvyDPcMvTQujy7eQAUqKOrGuTVVNctxBp1Tjwvf30sjSeTCeyVW509yh6MlkFrwUuuuhT4nc6hayXcF2ofO5Aujb/9pZ2kAM1MNDa4my5Z9TtPVx5ko/3mt9JjOVf5zqBcn5GMe/sDc56WNZolR0tYjrswqGGAS9FitRvuqG9MjQrsE7Q0p+DAmofvj974CQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PLBylyuV/OBPmmUEvwhSqjBCSUnhVgs1ek1yHsKk7Ic=;
+ b=UFu7/vNBTssS9T8vLNDm2CjUEiRv/5asorSGqSSzYv/5fp1nZIAzCxx5MqT8n/Cei0GMcIOfYt33ahkKT9QAX7BBw6Qj+5sucdBgBAftt8LhMBotQyzJVQhAt7XLb9BTEtxfG8BgEc9S25Dn9O0h2fkmW8rGXHl85V12BJAOZIse0bQcW0pMoGjjBONz7NKkAj/7Q8B8lxjVN9799B9/cU3PQWMnDPD8CDeBRfyKintobfA0jXgbSKXxHZJLp37Dm6aVfT4sfsX7Fews5RgbzYrt9LIP6sV6hzDJMrQw6pOjzkPgh3crUHvgsyxf5o8/w53DV0EsxRR1568KRllGMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=asocscloud.com; dmarc=pass action=none
+ header.from=asocscloud.com; dkim=pass header.d=asocscloud.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Asocs.onmicrosoft.com; 
+ s=selector2-Asocs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PLBylyuV/OBPmmUEvwhSqjBCSUnhVgs1ek1yHsKk7Ic=;
+ b=C0QBjDeg6kbKAwEwct15tIt/LxzdobXBREj+fmFNitbsq/K/XGl8v9GUbYqG98K+P24su826/NjTrwJHcTIHkMEBRXuRICOH6CdNcwCnApmJjlvnbnHP6mofCN3KNHd0TNL7wCuZF2tH9v3Xme3siSzOeK6laqWUGo23pVzKttY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=asocscloud.com;
+Received: from VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:800:16a::10)
+ by VI1PR1001MB1088.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:800:71::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4778.17; Thu, 16 Dec
+ 2021 15:20:24 +0000
+Received: from VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM
+ ([fe80::10cb:2d8a:d80c:8779]) by VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM
+ ([fe80::10cb:2d8a:d80c:8779%6]) with mapi id 15.20.4778.018; Thu, 16 Dec 2021
+ 15:20:24 +0000
+Message-ID: <dd7b69a4-f509-2712-78e6-53b74519b63d@asocscloud.com>
+Date: Thu, 16 Dec 2021 17:20:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
 Content-Language: en-US
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Stefan Assmann <sassmann@kpanic.de>
+From: Leonid Bloch <leonidb@asocscloud.com>
+X-ClientProxiedBy: AM0PR02CA0216.eurprd02.prod.outlook.com
+ (2603:10a6:20b:28f::23) To VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM
+ (2603:10a6:800:16a::10)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 35cdd4c4-a163-45e3-49c3-08d9c0a794d5
+X-MS-TrafficTypeDiagnostic: VI1PR1001MB1088:EE_
+X-Microsoft-Antispam-PRVS: <VI1PR1001MB1088D641C207E048067AD1E5CE779@VI1PR1001MB1088.EURPRD10.PROD.OUTLOOK.COM>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 1D6z+7lcQdbQFp4YhBQ3WF6HF1i9aF1tSuhU1IJw0OBYEz3nDYLN52oOP0AYZlRLGlCS4KF2G/ZqZXpl30l2eqXboFo0gyTjWUT3R3UPg/3MZOrIE2Nfq8sIk/ICuX60Hpo48vn1tXF1fGkN2vYWvU5WBDwd25eeaJI75JopMu5mzxoJCqeUAciQYI2j6c283A+jmv1al3a5uLbDiJRNy3C4LRvp20JJ+UqKhryvwDRJINxofVz/jgigUzT2U1NyG/AOTRBnz76Y49U+3bb3JkDtzpdHxe009FJS1VWKztwxeCkoMFaje2DmeE9JOq2SsKqElorwSTCGHJfj8rzn+EMR8q+T5znSYEqjwT3A5VAeOvWxuEHFWNjYXMSeaTybUzINFOhaPTg3k6rWuqEutvwuCr+wNvkULsHkSWGvk1nJWXXiGwqgc42zBr3hahNVj7yvt9cwW6/cjAjWcHhytXuHlF/BnYtwxGkQodxw//RJJ9kc7gC4s8O+SG/f0y82msbL1+7EEAkTstq6/COg7HJB/EHez+MeP7EXiVj/vadFcdtSqPza7GA3zWDwZWm+bMnTeaC6M5NzrwRX3/9Hqwfz3Pd7gQdXXf15fKndOv2bBFVbYJdQLsLZmnL+wZWpusfB4pXZooJVTncq7NNoQN9O/609zyQkbHmn1aygzCqFP9e8naTlj4erkvRjJIN9KeMq+hwhfVStJuCkQRmhwcjOEpTda9Ev7zzEIl0NhHE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(366004)(39840400004)(396003)(376002)(346002)(8936002)(31696002)(26005)(38100700002)(316002)(2906002)(6506007)(66476007)(66556008)(4326008)(6486002)(36756003)(110136005)(6666004)(66946007)(2616005)(86362001)(6512007)(5660300002)(508600001)(186003)(8676002)(31686004)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RHh5Tmg2cjJyWkF2TG5lQ0NhS05ITFdUY2g1UElHUHZGRlM1WG5qVVQzem1m?=
+ =?utf-8?B?cFVjTnZRTFRUSFpMQUJ2aW5aeVFTdkpONUNLOG9oS3VVdk5DN0NIcVVjRkkz?=
+ =?utf-8?B?N1dxVXpBYVBpdW8zQzlDbXcwRy9LL05XcGM5WEZhd29XbDU4THdjMG9SZTFz?=
+ =?utf-8?B?SmxlQzJLWmFFVjRHcStkUDRWQnJOenhOMWU3dzBEa3lrK1hicmUvazV2MjQx?=
+ =?utf-8?B?cWEzamJoaEo2am9mMWExanhLeVVGSFdWNkI3bHh6TC9wemdhK0hGYWtRNmE1?=
+ =?utf-8?B?RFJjZmdVUFIyZEYxL3pVb3g4QkFpVHlET2RNOFhCcmNFVXdYQ2ZJaGt6b0VE?=
+ =?utf-8?B?OFpENk5lSFowakt2dTc1Z2QyeGJrelJFMWQ2a0orTVJ0SHB6OTJPL2RydDM1?=
+ =?utf-8?B?bktDcnVYVit1NVZhKzdWdndkdHJoWWllbFlkUVYrS2o0bDV0aG1BbFNLa1gx?=
+ =?utf-8?B?RXZURlozSEx2NkRLMExGWWlLWHQxdGJnUHJvK1c0WGg4OTBPbXRqdW1aK0tZ?=
+ =?utf-8?B?M216Tm9ob3pKRWUrVVFMayt1R1h5aGlmVXJyRitpZ0NwWVVyMVVSekIvbFh0?=
+ =?utf-8?B?N0taRjgrSFNZdVREelRnU0RLMW1lbmsrcCsrU2NsUXlNdjJ6TFlZWkR0cW5O?=
+ =?utf-8?B?eHlFL0kyellDcUlTWEVyTmo2b05DSWdhcFRIU2cxRk5MUnRIUnU4cUZjdElU?=
+ =?utf-8?B?UyttNTBTT3k5WU93QnIrSzcrQ3VkSkNSdWN4TExQeXZUUHZMVmo1bU5BOG9s?=
+ =?utf-8?B?VzgyaDdFRW9BLzlqckNUZGJmR3dETTFibXpYalpJK1lVc0ZuTy9aZEg3Rzg2?=
+ =?utf-8?B?RGV6Um5iUWJ6cDhqYU1vZGl3Yi9XUk1qZktHRzBOWHAwZlhYYW5QVzV6UTV5?=
+ =?utf-8?B?YS8yYzl6VXR1QkxZUnZEMVE0dnk0YWxYRnhFZll5WEtQQ0JtckNENVdjNjAw?=
+ =?utf-8?B?MVlPTkpFMmhhOG0zMHVDKzQ4ZG5mOHJaZ2FPWDZOa2YrN3pUbDdyeS9TRkdL?=
+ =?utf-8?B?aEhvcVVDK1F2NzdZb29hcWk5cUREbGpLVUZZa1FVUGo3TnpKUnlmbTNTdHhl?=
+ =?utf-8?B?bko2RStlNU5BdFRjdGpXMTBUMlNrQ3pPckRFaDQxMlgrbWx6ZUd0NlRyNVRE?=
+ =?utf-8?B?NzFkQ1hWRHloSGdkYTJGMUxEWFM3QzdQTmJDTlB1UE9ZSU4rOVVzYzNLT3hs?=
+ =?utf-8?B?UlFrcHpHbmttNjdWU25DN0lxNjdmMGd1OVNnL1NHRDN3M1VYVWlRQkpkWEcy?=
+ =?utf-8?B?UU9GODNXTEpPMDhkSW4rbjNoTU1sOGQvc3FNV1hmOTZjdzE1UEt1OWtFOWlL?=
+ =?utf-8?B?Q0hWa1NyYVgwZzdzbk5kc3pGeXFoYzZGc3oyeTdTeGRabGQrQVNRWTZ2bWVH?=
+ =?utf-8?B?U0VKNXI0aFVYcE5ueFlSQUgvbk0wNmN4czV4N1JEOU1RaHdMWmVaejRTTERO?=
+ =?utf-8?B?bUc5Zlo2czQ0Q3ZpYXlIWWZ6WmdRZnh0ajAyejkveEM0R0xGQzkwcDFQREFx?=
+ =?utf-8?B?N0dtOFFJOFJwM2tTVXRORGc5d1orM1VsMG4zcVNOOE9KZkt4QUdObVdKb2Jv?=
+ =?utf-8?B?SFpWSHpLSXNXYTBib0lCMXhIY1l4bEtEYjVEdW9EOEFSVzY3NEVHK2VGYmxQ?=
+ =?utf-8?B?ZHBQaWtIZ0hOeHZzSFNaRzVhY0xiOGFmZkRnZ1BaWk1jZkZyNTgrb2J0dk40?=
+ =?utf-8?B?VzhvSDIxRDcrdW9CS0NYeUU2ZGYzakxudXJqYytmbXRoMUdNNE5SUUpoNmVv?=
+ =?utf-8?B?VE1LTVFMd0VWb3ZqODdyNCt5YTFRSHVUcDNVUzFnVGZIVzZSWSsyVWxiMUYv?=
+ =?utf-8?B?OEYvOHY4dTBEeXlPY3p0UlhJb1BnN09TOG1CV2xzVTRMVDlrWmtqMW9tdjhz?=
+ =?utf-8?B?bk0vcWRpYXF4N1ZHSU4zby9Oemtyc0c4dTI2V3Rqa0xRQmZNQ2lReU5Sdi9G?=
+ =?utf-8?B?d3FSMUZoN3h3QVh0dW1DOHBrc2RLSXVPa2tIVkljY0h6NGpLS01iL2YrbW5s?=
+ =?utf-8?B?ZTU2LzRWOThEbFpyVFV2TWlBY2JUZ3hVdU00a1lDZE82RTRTaUxxb01lZ0Fy?=
+ =?utf-8?B?RmpxUUQ2WnppK2NSNURPZlZzN1N5R1Z1WVowRWxSWnQ1WEI0MFJDaGxnNWNQ?=
+ =?utf-8?B?alYwKzNXeHJlOFlHc09hb05KT0ZuNHZCQmkySlQzUWg0MWlveHZZbndwcUx3?=
+ =?utf-8?Q?eLS79+n8Oi+7NN4/lRsO+PI=3D?=
+X-OriginatorOrg: asocscloud.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 35cdd4c4-a163-45e3-49c3-08d9c0a794d5
+X-MS-Exchange-CrossTenant-AuthSource: VE1PR10MB3936.EURPRD10.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2021 15:20:24.0515 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 09a71e5b-e130-419f-bde2-1e8422f00aaa
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Zn59m/neNanv3StEW7nL1VWiDQa0P+NlBaTnPYLii70q9wN/cZeX1XN30bnyPXp8wVL07NPsi8XZ6SRcdjrFzQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR1001MB1088
 X-Mailman-Approved-At: Fri, 17 Dec 2021 18:08:54 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 0/4] Add ethtool interface
- for RClocks
+Subject: [Intel-wired-lan] PROBLEM: iavf seems not to fully bind to all the
+ devices all the time
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,90 +150,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "petrm@nvidia.com" <petrm@nvidia.com>, "Byagowi, Ahmad" <abyagowi@fb.com>,
- "saeed@kernel.org" <saeed@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "idosch@idosch.org" <idosch@idosch.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-2"; Format="flowed"
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 15.12.2021 12:14, Kubalewski, Arkadiusz wrote:
->> -----Original Message-----
->> From: Machnikowski, Maciej <maciej.machnikowski@intel.com>
->> Sent: poniedzia=B3ek, 13 grudnia 2021 09:54
->> To: Jakub Kicinski <kuba@kernel.org>
->> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Kubalewski=
-, Arkadiusz <arkadiusz.kubalewski@intel.com>; richardcochran@gmail.com; Bya=
-gowi, Ahmad <abyagowi@fb.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.co=
-m>; davem@davemloft.net; linux-kselftest@vger.kernel.org; idosch@idosch.org=
-; mkubecek@suse.cz; saeed@kernel.org; michael.chan@broadcom.com; petrm@nvid=
-ia.com; Vadim Fedorenko <vfedorenko@novek.ru>
->> Subject: RE: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
->>
->>> -----Original Message-----
->>> From: Jakub Kicinski <kuba@kernel.org>
->>> Sent: Friday, December 10, 2021 5:17 PM
->>> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
->>> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
->>> Kubalewski, Arkadiusz <arkadiusz.kubalewski@intel.com>;
->>> richardcochran@gmail.com; Byagowi, Ahmad <abyagowi@fb.com>; Nguyen,
->>> Anthony L <anthony.l.nguyen@intel.com>; davem@davemloft.net; linux-
->>> kselftest@vger.kernel.org; idosch@idosch.org; mkubecek@suse.cz;
->>> saeed@kernel.org; michael.chan@broadcom.com; petrm@nvidia.com; Vadim
->>> Fedorenko <vfedorenko@novek.ru>
->>> Subject: Re: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
->>>
->>> On Fri, 10 Dec 2021 14:45:46 +0100 Maciej Machnikowski wrote:
->>>> Synchronous Ethernet networks use a physical layer clock to
->>>> syntonize the frequency across different network elements.
->>>>
->>>> Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
->>>> Equipment Clock (EEC) and have the ability to synchronize to
->>>> reference frequency sources.
->>>>
->>>> This patch series is a prerequisite for EEC object and adds ability
->>>> to enable recovered clocks in the physical layer of the netdev object.
->>>> Recovered clocks can be used as one of the reference signal by the EEC.
->>>>
->>>> Further work is required to add the DPLL subsystem, link it to the
->>>> netdev object and create API to read the EEC DPLL state.
->>>
->>> You missed CCing Vadim. I guess Ccing the right people may be right up
->>> there with naming things as the hardest things in SW development..
->>>
->>> Anyway, Vadim - do you have an ETA on the first chunk of the PLL work?
->>
->> Sounds about right :) thanks for adding Vadim!
->>
-> =
+Hi,
 
-> Good day Vadim,
-> =
+I have a VM with 3 Intel VF's attached:
 
-> Can we help on the new PLL interfaces?
-> I can start some works related to that, although would need a guidance
-> from the expert.
-> Where to place it?
-> What in-kernel interfaces to use?
-> Any other high level tips that could be useful?
-> Or if you already started some work, could you please share some
-> information?
-> =
+# lspci | grep Ethernet
+04:00.0 Ethernet controller: VMware VMXNET3 Ethernet Controller (rev 01)
+0b:00.0 Ethernet controller: Intel Corporation Ethernet Virtual Function 
+700 Series (rev 04)
+13:00.0 Ethernet controller: Intel Corporation Ethernet Virtual Function 
+700 Series (rev 04)
+1b:00.0 Ethernet controller: Intel Corporation Ethernet Virtual Function 
+700 Series (rev 04)
 
-Hi!
+But not on every boot or driver load/unload all the VFs are fully 
+initialized (some do not appear as network interfaces):
 
-I'm going to publish RFC till the end of the week and we will be able to
-continue discussion via this mailing list. I think that netlink is a good
-option for in-kernel interface and is easy to implement.
+# ip l | sed '/^[0-9]\+:/! d' | bc <<<"$(wc -l) - 2"
+3
+# rmmod iavf
+# modprobe iavf
+# ip l | sed '/^[0-9]\+:/! d' | bc <<<"$(wc -l) - 2"
+1
+# rmmod iavf
+# modprobe iavf
+# ip l | sed '/^[0-9]\+:/! d' | bc <<<"$(wc -l) - 2"
+3
 
+...etc (the number always varies between 3 - all the interfaces, and 1 - 
+only one interface, never 0).
+
+The PCI devices which do not appear as network interfaces however, still 
+appear as bound to iavf, but somehow not fully:
+
+When all the interfaces appear:
+# lshw | grep iavf
+configuration: autonegotiation=off broadcast=yes driver=iavf 
+driverversion=5.10.78.rt56-1 duplex=full firmware=N/A latency=64 link=no 
+multicast=yes
+configuration: autonegotiation=off broadcast=yes driver=iavf 
+driverversion=5.10.78.rt56-1 duplex=full firmware=N/A latency=64 link=no 
+multicast=yes
+configuration: autonegotiation=off broadcast=yes driver=iavf 
+driverversion=5.10.78.rt56-1 duplex=full firmware=N/A latency=64 link=no 
+multicast=yes
+
+When only 2/3 appear:
+# lshw | grep iavf
+configuration: autonegotiation=off broadcast=yes driver=iavf 
+driverversion=5.10.78.rt56-1 duplex=full firmware=N/A latency=64 link=no 
+multicast=yes
+configuration: driver=iavf latency=64
+configuration: autonegotiation=off broadcast=yes driver=iavf 
+driverversion=5.10.78.rt56-1 duplex=full firmware=N/A latency=64 link=no 
+multicast=yes
+
+There are no apparent errors in dmesg.
+
+The kernels used: 5.15.7, 5.15.3, 5.15.2, 5.10.78, 5.10.56 (the ones I 
+tried so far).
+
+Any suggestions?
+
+
+Thanks,
+Leonid.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
