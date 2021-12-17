@@ -1,72 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF1F6478A23
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 12:38:35 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C2CC478A3F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 12:41:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5A14C41805;
-	Fri, 17 Dec 2021 11:38:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 736B56108A;
+	Fri, 17 Dec 2021 11:41:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DEcTw5ug09nK; Fri, 17 Dec 2021 11:38:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ONEBJXPfkj6k; Fri, 17 Dec 2021 11:41:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 51712417B8;
-	Fri, 17 Dec 2021 11:38:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 72A8460E30;
+	Fri, 17 Dec 2021 11:41:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CFFD91BF289
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:38:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D16501BF289
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:41:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B927E61091
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:38:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B9EBE60E30
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:41:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bLVkoUNGa4Yy for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Dec 2021 11:38:27 +0000 (UTC)
+ with ESMTP id qWLysmUNsZEk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Dec 2021 11:41:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 21D366102F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:38:26 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DC5FB607CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639741107; x=1671277107;
- h=from:to:subject:date:message-id:mime-version:
+ t=1639741272; x=1671277272;
+ h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=wQE0LO9+jQYqiEeMtGdG9vV5NRrui1kz2UcVTnZHupo=;
- b=ToDnMrxKblDBgxw36Edj6N0EItHxVw4rO2OH9Gx8UVsReE080N6GmDi0
- 5rieu3mPzh2NRaWtJL/Xa2+utrrpeQxysYK1d9fnMriBhJJcMBekYgugT
- 03k7TS1+zHPrCd1KD5jeBhcPsCDzDYNe4uELHoJsEaQzOjwEhbHP/Z7C4
- G8titALPeCXD+EZXYTSS4Sj6Q4lBvDNtl+sTDX2WY7q9MLwLO/47JT3Zc
- j5n1A/Ws20nV/nrRUvXiVvCAbRsM+aJoFGWNJQFggVroTtJaYqIS5nqGA
- ESsvVdUeBYa0i2lueq8wIDAT0MBik9zBllm0prgHfFF//LhjqZ8/SENY2 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10200"; a="239547643"
-X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="239547643"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Dec 2021 03:38:25 -0800
+ bh=JYf68EFn6FFqnRdKzST0InPSOJ34DMkwcj6lVbCkudE=;
+ b=jyBeuStmkPYGTIMO+k19Lu+Mmj5IZNprDS3KpwYnePNoZ1bLVqhfSupE
+ rlhb+um9dH7xFz4SkYy0FgbG0pWb0IZmzbF+fIUtpZhUae3Uay+dDMyZd
+ P1ESe+KuRxWn8NdyedYyIvpJsX8nmT/7TieWLZNMrmkZoqoUGb7g//6UY
+ Eu/eKk50Lb9gMu2kum2Doh4jnDrZPiu9jSaKy+QKSb/GQuAPhPWz+/VP1
+ mH5P8vbxS1HmqEdsIeep4ZfdcdcCxkU2ZjNk4mFh+fasXtboq2tWpXS3v
+ IgDPMX/V+VPaam477Wn0dnvJ/MfWaU8E9C3raiHf96ldY5hq5M3YSGk2h w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10200"; a="300512344"
+X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="300512344"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2021 03:41:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="568997855"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga008.fm.intel.com with ESMTP; 17 Dec 2021 03:38:24 -0800
-Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
- [172.22.229.137])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 1BHBcNlo029413
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:38:23 GMT
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 17 Dec 2021 12:36:25 +0100
-Message-Id: <20211217113625.31128-1-wojciech.drewek@intel.com>
-X-Mailer: git-send-email 2.31.1
+X-IronPort-AV: E=Sophos;i="5.88,213,1635231600"; d="scan'208";a="615535255"
+Received: from lkp-server02.sh.intel.com (HELO 9f38c0981d9f) ([10.239.97.151])
+ by orsmga004.jf.intel.com with ESMTP; 17 Dec 2021 03:41:11 -0800
+Received: from kbuild by 9f38c0981d9f with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1myBbq-0004fd-Hy; Fri, 17 Dec 2021 11:41:10 +0000
+Date: Fri, 17 Dec 2021 19:40:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61bc7716.UY46rrAThX21VK5p%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Match on all profiles in
- slow-path
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ 0f473bb6ed2d0b8533a079ee133f625f83de5315
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,72 +80,166 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In switchdev mode, slow-path rules need to match all protocols, in order
-to correctly redirect unfiltered or missed packets to the uplink. To set
-this up for the virtual function to uplink flow, the rule that redirects
-packets to the control VSI must have the tunnel type set to
-ICE_SW_TUN_AND_NON_TUN. As a result of that new tunnel type being set,
-ice_get_compat_fv_bitmap will select ICE_PROF_ALL. At that point all
-profiles would be selected for this rule, resulting in the desired
-behavior. Without this change slow-path would not work with
-tunnel protocols.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
+branch HEAD: 0f473bb6ed2d0b8533a079ee133f625f83de5315  Merge branch 'fib-merge-nl-policies'
 
-Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+elapsed time: 1072m
+
+configs tested: 142
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211216
+m68k                       m5475evb_defconfig
+arm                         lubbock_defconfig
+arm                        magician_defconfig
+arm                         s3c2410_defconfig
+ia64                            zx1_defconfig
+sh                           se7712_defconfig
+sh                           se7724_defconfig
+m68k                       m5208evb_defconfig
+sparc                               defconfig
+mips                        vocore2_defconfig
+sh                   rts7751r2dplus_defconfig
+i386                             allyesconfig
+powerpc                 xes_mpc85xx_defconfig
+arm                            pleb_defconfig
+mips                         mpc30x_defconfig
+powerpc                   currituck_defconfig
+m68k                          atari_defconfig
+h8300                    h8300h-sim_defconfig
+sh                        dreamcast_defconfig
+arm                           sunxi_defconfig
+powerpc                     redwood_defconfig
+sh                          rsk7269_defconfig
+sh                               j2_defconfig
+powerpc                     tqm8560_defconfig
+powerpc                      walnut_defconfig
+mips                     loongson1b_defconfig
+powerpc                     rainier_defconfig
+sh                            hp6xx_defconfig
+powerpc                      pmac32_defconfig
+sh                           se7722_defconfig
+mips                           mtx1_defconfig
+arm                        mvebu_v7_defconfig
+sparc                       sparc32_defconfig
+powerpc                 mpc836x_mds_defconfig
+m68k                            q40_defconfig
+sh                         microdev_defconfig
+arm                       omap2plus_defconfig
+arm                           u8500_defconfig
+m68k                         amcore_defconfig
+arm                      integrator_defconfig
+s390                       zfcpdump_defconfig
+arm                       imx_v4_v5_defconfig
+arm                        mvebu_v5_defconfig
+sparc64                             defconfig
+mips                           ip32_defconfig
+mips                            e55_defconfig
+m68k                             alldefconfig
+mips                         bigsur_defconfig
+arc                    vdk_hs38_smp_defconfig
+mips                          ath25_defconfig
+arm                          lpd270_defconfig
+h8300                     edosk2674_defconfig
+arm                       mainstone_defconfig
+arm                          ixp4xx_defconfig
+mips                           ip22_defconfig
+arm                        trizeps4_defconfig
+sh                          lboxre2_defconfig
+h8300                            allyesconfig
+powerpc                    adder875_defconfig
+parisc                generic-32bit_defconfig
+arm                  randconfig-c002-20211216
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nds32                             allnoconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+xtensa                           allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20211216
+x86_64               randconfig-a005-20211216
+x86_64               randconfig-a001-20211216
+x86_64               randconfig-a002-20211216
+x86_64               randconfig-a003-20211216
+x86_64               randconfig-a004-20211216
+i386                 randconfig-a001-20211216
+i386                 randconfig-a002-20211216
+i386                 randconfig-a005-20211216
+i386                 randconfig-a003-20211216
+i386                 randconfig-a006-20211216
+i386                 randconfig-a004-20211216
+i386                 randconfig-a013-20211217
+i386                 randconfig-a011-20211217
+i386                 randconfig-a016-20211217
+i386                 randconfig-a014-20211217
+i386                 randconfig-a015-20211217
+i386                 randconfig-a012-20211217
+arc                  randconfig-r043-20211216
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a011-20211216
+x86_64               randconfig-a012-20211216
+x86_64               randconfig-a013-20211216
+x86_64               randconfig-a014-20211216
+x86_64               randconfig-a015-20211216
+x86_64               randconfig-a016-20211216
+hexagon              randconfig-r045-20211216
+s390                 randconfig-r044-20211216
+riscv                randconfig-r042-20211216
+hexagon              randconfig-r041-20211216
+
 ---
- drivers/net/ethernet/intel/ice/ice_eswitch.c       | 1 +
- drivers/net/ethernet/intel/ice/ice_protocol_type.h | 1 +
- drivers/net/ethernet/intel/ice/ice_switch.c        | 4 +++-
- 3 files changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-index 30a00fe59c52..f70eaf49b083 100644
---- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-@@ -44,6 +44,7 @@ int ice_eswitch_add_vf_mac_rule(struct ice_pf *pf, struct ice_vf *vf,
- 				       ctrl_vsi->rxq_map[vf->vf_id];
- 	rule_info.flags_info.act |= ICE_SINGLE_ACT_LB_ENABLE;
- 	rule_info.flags_info.act_valid = true;
-+	rule_info.tun_type = ICE_SW_TUN_AND_NON_TUN;
- 
- 	err = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info,
- 			       vf->repr->mac_rule);
-diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-index dc1b0e9e6df5..695b6dd61dc2 100644
---- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-@@ -47,6 +47,7 @@ enum ice_protocol_type {
- 
- enum ice_sw_tunnel_type {
- 	ICE_NON_TUN = 0,
-+	ICE_SW_TUN_AND_NON_TUN,
- 	ICE_SW_TUN_VXLAN,
- 	ICE_SW_TUN_GENEVE,
- 	ICE_SW_TUN_NVGRE,
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 4834debafcba..170c0a418cca 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -4618,6 +4618,7 @@ ice_get_compat_fv_bitmap(struct ice_hw *hw, struct ice_adv_rule_info *rinfo,
- 	case ICE_SW_TUN_NVGRE:
- 		prof_type = ICE_PROF_TUN_GRE;
- 		break;
-+	case ICE_SW_TUN_AND_NON_TUN:
- 	default:
- 		prof_type = ICE_PROF_ALL;
- 		break;
-@@ -5386,7 +5387,8 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	if (status)
- 		goto err_ice_add_adv_rule;
- 
--	if (rinfo->tun_type != ICE_NON_TUN) {
-+	if (rinfo->tun_type != ICE_NON_TUN &&
-+	    rinfo->tun_type != ICE_SW_TUN_AND_NON_TUN) {
- 		status = ice_fill_adv_packet_tun(hw, rinfo->tun_type,
- 						 s_rule->pdata.lkup_tx_rx.hdr,
- 						 pkt_offsets);
--- 
-2.31.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
