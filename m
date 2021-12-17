@@ -1,73 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57313479699
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 22:54:41 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F12E8479602
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 22:10:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F30BF60D87;
-	Fri, 17 Dec 2021 21:54:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9BF4640C30;
+	Fri, 17 Dec 2021 21:10:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-WImPtxmq6R; Fri, 17 Dec 2021 21:54:39 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s_ccXGmtqd1T; Fri, 17 Dec 2021 21:10:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1595A60EBA;
-	Fri, 17 Dec 2021 21:54:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6CA2940C2B;
+	Fri, 17 Dec 2021 21:10:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 682EE1BF2F0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 20:58:42 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E7C41BF358
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 21:10:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4C8CF84D34
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 20:58:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5C65A6117C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 21:10:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=qsc.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q7kil_DZYLys for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Dec 2021 20:58:41 +0000 (UTC)
-X-Greylist: delayed 00:05:06 by SQLgrey-1.8.0
-Received: from us-smtp-delivery-160.mimecast.com
- (us-smtp-delivery-160.mimecast.com [170.10.133.160])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0DD1C84D30
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 20:58:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qsc.com;
- s=mimecast20190503; t=1639774719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=slIJRz7wIeJV2ZUwXabputEjF6L/iFoFGOuxjfaTsTI=;
- b=EpJacqGxyF8fKp3XLhLIDIrcumirT9aynC8+3AavwkHqqQ0I2CcIMO9a2vlntjzeRMcT2M
- GPkZrD1fQw/ZFAFcZ7T+qQaGiRiRoQ1ttS3TMDgWOJpRbiX0y9PbzOSNYenU/sWVkK1YNA
- gjsia/tEXoIqb6ifjF/Og/EAqZV1Y4k=
-Received: from 1uslvexch01.qscaudio.com (209.170.222.241 [209.170.222.241])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- us-mta-475-X4jfqagqPZ6Mth2pWHaIjg-1; Fri, 17 Dec 2021 15:52:24 -0500
-X-MC-Unique: X4jfqagqPZ6Mth2pWHaIjg-1
-Received: from 1uslvexch01.qscaudio.com (10.105.30.125) by
- 1uslvexch01.qscaudio.com (10.105.30.125) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.17; Fri, 17 Dec 2021 12:52:22 -0800
-Received: from james-3700x.qscaudio.com (10.104.74.41) by smtp-relay.qsc.com
- (10.105.30.125) with Microsoft SMTP Server id 15.1.2375.17 via Frontend
- Transport; Fri, 17 Dec 2021 12:52:22 -0800
-From: James McLaughlin <james.mclaughlin@qsc.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <jesse.brandeburg@intel.com>,
- <anthony.l.nguyen@intel.com>
-Date: Fri, 17 Dec 2021 13:52:09 -0700
-Message-ID: <20211217205209.723782-1-james.mclaughlin@qsc.com>
-X-Mailer: git-send-email 2.25.1
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f6s_cGl0Zcsu for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Dec 2021 21:10:24 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CABFA60EBD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 21:10:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1639775424; x=1671311424;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=O12f+TMQKWnolv99gwa8aZJFVkB1WHaQSFmZwVbVwVg=;
+ b=nRdiUidHbl5PJYcH5o/Msz8Bfklg5SwBWz9xE9freaU07TJUP6VV/lvJ
+ qUCfwVlG/BAxZfMewmzdYrRUVo+32JWPFNSbKjdZ9cN1Izfhd1BK93CSC
+ d39Bu+cPbk9jCOQjR9WyyovtIJuQZTFv/OT+wr5pWO7dKQkdqs3UBTiDT
+ YsPH+6mwC6GCqVfasMe16Up+pgfMi+Q1O9yCaceiKVdm8lrAQpnBSf1Um
+ Q1XVtX7LL0G2NrVttqAIt8nFTAAuKhB4hWECPn5MvZsHqNxtyx+KnRPvN
+ CAZfSjsGweh5gj/4WNj5B5Dijz5s/IUuyOnrf7TEef1gcdso4G3KHwmIP g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10201"; a="240057465"
+X-IronPort-AV: E=Sophos;i="5.88,214,1635231600"; d="scan'208";a="240057465"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2021 13:10:24 -0800
+X-IronPort-AV: E=Sophos;i="5.88,214,1635231600"; d="scan'208";a="612255459"
+Received: from vcostago-desk1.jf.intel.com (HELO vcostago-desk1)
+ ([10.54.70.10])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2021 13:10:24 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: James McLaughlin <james.mclaughlin@qsc.com>, davem@davemloft.net,
+ kuba@kernel.org, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com
+In-Reply-To: <20211217205209.723782-1-james.mclaughlin@qsc.com>
+References: <20211217205209.723782-1-james.mclaughlin@qsc.com>
+Date: Fri, 17 Dec 2021 13:10:23 -0800
+Message-ID: <87mtkzym2o.fsf@intel.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA60A255 smtp.mailfrom=james.mclaughlin@qsc.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: qsc.com
-X-Mailman-Approved-At: Fri, 17 Dec 2021 21:54:35 +0000
-Subject: [Intel-wired-lan] [PATCH] igc: updated TX timestamp support for
+Subject: Re: [Intel-wired-lan] [PATCH] igc: updated TX timestamp support for
  non-MSI-X platforms
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -88,41 +84,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Time synchronization was not properly enabled on non-MSI-X platforms.
+Hi James,
 
-Signed-off-by: James McLaughlin <james.mclaughlin@qsc.com>
-Reviewed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+James McLaughlin <james.mclaughlin@qsc.com> writes:
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 8e448288ee26..d28a80a00953 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5467,6 +5467,9 @@ static irqreturn_t igc_intr_msi(int irq, void *data)
- 			mod_timer(&adapter->watchdog_timer, jiffies + 1);
- 	}
- 
-+	if (icr & IGC_ICR_TS)
-+		igc_tsync_interrupt(adapter);
-+
- 	napi_schedule(&q_vector->napi);
- 
- 	return IRQ_HANDLED;
-@@ -5510,6 +5513,9 @@ static irqreturn_t igc_intr(int irq, void *data)
- 			mod_timer(&adapter->watchdog_timer, jiffies + 1);
- 	}
- 
-+	if (icr & IGC_ICR_TS)
-+		igc_tsync_interrupt(adapter);
-+
- 	napi_schedule(&q_vector->napi);
- 
- 	return IRQ_HANDLED;
+> Time synchronization was not properly enabled on non-MSI-X platforms.
+>
+> Signed-off-by: James McLaughlin <james.mclaughlin@qsc.com>
+> Reviewed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+
+A couple of things that I should have pointed out earlier.
+
+The subject line would be better if it was: "PATCH net" (to indicate
+that the patch should be considered for the "net" tree, not "net-next").
+
+Also, it could be made clearer that it's a fix, so the full subject line
+could be like this:
+
+      "[PATCH net] igc: Fix TX timestamp support for non-MSI platforms"
+
+Adding a "fixes" tag to the commit message would help, something like this:
+
+       Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
+
+> ---
+>  drivers/net/ethernet/intel/igc/igc_main.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 8e448288ee26..d28a80a00953 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -5467,6 +5467,9 @@ static irqreturn_t igc_intr_msi(int irq, void *data)
+>  			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+>  	}
+>  
+> +	if (icr & IGC_ICR_TS)
+> +		igc_tsync_interrupt(adapter);
+> +
+>  	napi_schedule(&q_vector->napi);
+>  
+>  	return IRQ_HANDLED;
+> @@ -5510,6 +5513,9 @@ static irqreturn_t igc_intr(int irq, void *data)
+>  			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+>  	}
+>  
+> +	if (icr & IGC_ICR_TS)
+> +		igc_tsync_interrupt(adapter);
+> +
+>  	napi_schedule(&q_vector->napi);
+>  
+>  	return IRQ_HANDLED;
+> -- 
+> 2.25.1
+>
+
+Cheers,
 -- 
-2.25.1
-
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
