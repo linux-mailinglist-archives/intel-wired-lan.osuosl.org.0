@@ -1,78 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C4774794EC
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 20:38:51 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43F184794ED
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Dec 2021 20:38:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0E75584D5C;
-	Fri, 17 Dec 2021 19:38:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D696C421BB;
+	Fri, 17 Dec 2021 19:38:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E7gL2gR7PQl3; Fri, 17 Dec 2021 19:38:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kfp4lA3BPgrx; Fri, 17 Dec 2021 19:38:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1AE8384D56;
-	Fri, 17 Dec 2021 19:38:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC19342016;
+	Fri, 17 Dec 2021 19:38:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F2041BF35E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C83F1BF35E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F16D86115D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5B8FD41F63
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=fastly.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c4Dc08bbyT5z for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Dec 2021 19:37:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B_kdhWqqBAUN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Dec 2021 19:37:41 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
- [IPv6:2607:f8b0:4864:20::102b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6E49461158
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:40 +0000 (UTC)
-Received: by mail-pj1-x102b.google.com with SMTP id np3so3146257pjb.4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:37:40 -0800 (PST)
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
+ [IPv6:2607:f8b0:4864:20::62c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D60CD41F5D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 19:37:41 +0000 (UTC)
+Received: by mail-pl1-x62c.google.com with SMTP id c6so2723592plg.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Dec 2021 11:37:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastly.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=HcXTVa8Ah3NyeD2lrHvUOQ7B2HFr5W9HewR5WjhvTIs=;
- b=edtiw6CFnFTFS7IRqecR3BzYzFNGnKEv3M8dMmapYbxbK7q6x9kwQMdZ+X+/VP+a/q
- R7xuKOux8EB5N28Mhi3l1FSp8WrN1jsL/CUHwoojzFHAXAaXJfb5NvzP9YXLFQOgjkR6
- R9YaSx25dWPXm70UrcDhif6u4HfcgXTeXdMac=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=8Ll/megliBvnHirIhlfhf9sv9I4xbL9uGA2hDg8OW1A=;
+ b=TmvT+/sgG176ULevcaTCaQSKC/MIsri+Ce63wECSpDGjtrbIGrUKIGI93nNH1Q/eHL
+ Vy8yRQKJCPlVboWCHKjzxEWhI+PQA2itzHJDHsirkZQdihcgJSq3me152OPVKqzjNa/E
+ U+uNWJVeRz3sQ/+/9lhDd35/FptBhiYkWlGKE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=HcXTVa8Ah3NyeD2lrHvUOQ7B2HFr5W9HewR5WjhvTIs=;
- b=p8lGZUa1BOockcxByZU1CXw3eKhhWw6pkWSItj2spA+kYhRZHAy2ZcwDvSOPk5KqcL
- Dldc6NBhKM+iIqnA5hzANGy9SKsUWXXHy8MjgOpey77AhY1KMIY6JrdqETQ/D8gjgWab
- AkX/nbyhDe1xR54QoUwtEOOnI/gao/4fs8ZaC9z99vzD9gi8FBbjQPigyPzKPy5ygbrW
- +/dIhutVhK0Ff+byGPyw5C86AWqih1FEFwdnuzS6mk9pc6fwS5dfPt6OM4jCgVNCvMQc
- rkCINLhA1t3rsdpA2boLknMOun75DN55kDT86N/QlwZNqGZiP6b4fAC/OqhENbBA3nHT
- fPnQ==
-X-Gm-Message-State: AOAM53166d39EXg+TuvED+BejQvLhJYjul8APZ6ODBqgkmZaLt5GiF65
- i5AVZJngST9RpeTI59EE97cD8D27TL8Vihm0/mYazMG4k9IlilPx+fEhT9HVKTiB7/tuPbVQljH
- B45KQ+SHECG45sPoyY5y4InAQFP432MR9766PxzAOqnIb6JUiOk2/XjxX1gIDKNbPZHQiVbUkOB
- ttnTjQFXTg
-X-Google-Smtp-Source: ABdhPJz03JJOaanKfWHxo47+Mgk+GWSmtH4fX3ZCPt8AkAu45BzSuZRAZoq7HHjgyBnl9fwXN49Duw==
-X-Received: by 2002:a17:902:e54d:b0:148:a2e8:278a with SMTP id
- n13-20020a170902e54d00b00148a2e8278amr4602244plf.145.1639769859422; 
- Fri, 17 Dec 2021 11:37:39 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=8Ll/megliBvnHirIhlfhf9sv9I4xbL9uGA2hDg8OW1A=;
+ b=Tk2hWQrP6iGl1nfC+ZW4eP+HnTEXMWLewnvrkRsvwSvLtfzvYvO3qP6ciDWQZ2o3Aw
+ divEEQWFwJ9zio7j/MNgz1S9PVhGeB+1TBVB06SjSfeSdhO7r+55NUJ12LDMyOJLW6PA
+ lHlGeuoEQ1pOKaFU0y98sZbB4Gm2MfFIDAsDFnvTsJXam0FJnv2Oh7Wh6grvE2lGiWw/
+ 8RuQ4BqPcU3+kLP9mi9rV+ztewtPP5WODiVxpCcQ95gc7mA7YGcx5ewInHhuQmhKAVaD
+ iygpmHdjHKv1qdQ6iiuVDV8JktHrE8JccXoSJYZ69qfi/deSz7448kW1h3WFE2KX9t0P
+ Yg1Q==
+X-Gm-Message-State: AOAM530t8z9tyLDAniokgyInfD8EZg41x+PLUaVz4X9fxzRhJnQoRkgp
+ Er6+COaln4iO/rnOs1EXBRmeh2ym+jC+kyBx+RKB4s8gMHgCryTssoEtef95QoQzg5EFVUNMT3B
+ FgwomhnnfbCHtNt6MYAnTzbzWSybnA2sEyOksMAwmvkH78/HPbD1skbPThyENx13As6DHGLzQtg
+ wdtW2qqNOk
+X-Google-Smtp-Source: ABdhPJyNLB11PC9qokBMjL7Vnc9kxb8RmrsSSO81oUC2Jl5FNkjQa1Zj+tNLjbBJCm6SDn/3iABh9w==
+X-Received: by 2002:a17:90b:128b:: with SMTP id
+ fw11mr1483215pjb.146.1639769860870; 
+ Fri, 17 Dec 2021 11:37:40 -0800 (PST)
 Received: from localhost.localdomain (c-73-223-190-181.hsd1.ca.comcast.net.
  [73.223.190.181])
- by smtp.gmail.com with ESMTPSA id o17sm8783294pgb.42.2021.12.17.11.37.38
+ by smtp.gmail.com with ESMTPSA id o17sm8783294pgb.42.2021.12.17.11.37.39
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 Dec 2021 11:37:38 -0800 (PST)
+ Fri, 17 Dec 2021 11:37:40 -0800 (PST)
 From: Joe Damato <jdamato@fastly.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 17 Dec 2021 11:35:14 -0800
-Message-Id: <1639769719-81285-1-git-send-email-jdamato@fastly.com>
+Date: Fri, 17 Dec 2021 11:35:15 -0800
+Message-Id: <1639769719-81285-2-git-send-email-jdamato@fastly.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1639769719-81285-1-git-send-email-jdamato@fastly.com>
+References: <1639769719-81285-1-git-send-email-jdamato@fastly.com>
 X-Mailman-Approved-At: Fri, 17 Dec 2021 19:38:44 +0000
 Subject: [Intel-wired-lan] [net-queue, v2,
- 0/5] i40e: stat counter updates and additions
+ 1/5] i40e: Remove rx page reuse double count.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,40 +93,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Greetings:
+Page reuse was being tracked from two locations:
+  - i40e_reuse_rx_page (via 40e_clean_rx_irq), and
+  - i40e_alloc_mapped_page
 
-This patch set makes several updates to the i40e driver stats collection
-and reporting code to help users of i40e get a better sense of how the
-driver is performing and interacting with the rest of the kernel.
+Remove the double count and only count reuse from i40e_alloc_mapped_page
+when the page is about to be reused.
 
-These patches include some new stats (like waived and busy) which were
-inspired by other drivers that track stats using the same nomenclature.
-
-The new stats and an existing stat, rx_reuse, are now accessible with
-ethtool to make harvesting this data more convenient for users.
-
-These patches apply cleanly to the net-queue/devqueue branch.
-
+Signed-off-by: Joe Damato <jdamato@fastly.com>
 ---
-v1 -> v2: patch 3/5: - "rx_reuse" corrected to "rx_alloc".
-                     - Unnecessary else clause in i40e_alloc_mapped_page
-                       removed.
----
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Joe Damato (5):
-  i40e: Remove rx page reuse double count.
-  i40e: Aggregate and export RX page reuse stat.
-  i40e: Add a stat tracking new RX page allocations.
-  i40e: Add a stat for tracking pages waived.
-  i40e: Add a stat for tracking busy rx pages.
-
- drivers/net/ethernet/intel/i40e/i40e.h         |  4 ++++
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c |  4 ++++
- drivers/net/ethernet/intel/i40e/i40e_main.c    | 14 +++++++++++++-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c    | 25 ++++++++++++++++++-------
- drivers/net/ethernet/intel/i40e/i40e_txrx.h    |  3 +++
- 5 files changed, 42 insertions(+), 8 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 10a83e5..8b3ffb7 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -1382,8 +1382,6 @@ static void i40e_reuse_rx_page(struct i40e_ring *rx_ring,
+ 	new_buff->page_offset	= old_buff->page_offset;
+ 	new_buff->pagecnt_bias	= old_buff->pagecnt_bias;
+ 
+-	rx_ring->rx_stats.page_reuse_count++;
+-
+ 	/* clear contents of buffer_info */
+ 	old_buff->page = NULL;
+ }
 -- 
 2.7.4
 
