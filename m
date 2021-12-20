@@ -1,68 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 675F947C1B2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Dec 2021 15:42:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF8D047C391
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Dec 2021 17:13:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A437A4055F;
-	Tue, 21 Dec 2021 14:42:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 532E640278;
+	Tue, 21 Dec 2021 16:13:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rLPYu77XhxFM; Tue, 21 Dec 2021 14:42:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DEYq5WgBo0BK; Tue, 21 Dec 2021 16:13:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 28C504016B;
-	Tue, 21 Dec 2021 14:42:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 25DAD40281;
+	Tue, 21 Dec 2021 16:13:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8436F1BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 14:42:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E6891BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 23:31:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7017D4016B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 14:42:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A36F408A2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 23:31:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XByBMceB8-Qt for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Dec 2021 14:42:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0A490400C6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 14:42:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640097721; x=1671633721;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=itIZktKsdZt5o2EqIfqaGKCsyxkekZiQ610xNoEpqFs=;
- b=QeXPdbD/OncS2vWsBNHKCIaFMAHzgZQyDbqBQglXXZUN5eH9VmOhqF/t
- Q4ri6AYOXkbgHGvkkqEgYWN54B+9Iq/02OdRLcAeIss8UOk8LqEM/mfzJ
- 6cKNRI6WGOYyoccxJ6nsv7nNqzdixG3iYWqY9kq9mDW2x836UnAzKPisx
- t/PmNcFLmUX+odevuApKm67zD7Ii6E122FyEsdMzIAaXgfDmNnauJ742Y
- YBVb//DXFZkJ+hkGUCKZ6sqLi826NUr75pritT5ZCC4oFKhTISZnZtl9J
- O+pVuqNnKqDDDOz6k/arPr6cBA9LpZO6KGtbdLLC5Hmqdd+2eKFy8MaIK A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10204"; a="301172530"
-X-IronPort-AV: E=Sophos;i="5.88,223,1635231600"; d="scan'208";a="301172530"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2021 06:42:00 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,223,1635231600"; d="scan'208";a="508093793"
-Received: from lkp-server02.sh.intel.com (HELO 9f38c0981d9f) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 21 Dec 2021 06:41:58 -0800
-Received: from kbuild by 9f38c0981d9f with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mzgL0-00099J-6I; Tue, 21 Dec 2021 14:41:58 +0000
-Date: Tue, 21 Dec 2021 22:40:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61c1e778.UI00Ou7XH1zvrIff%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 59f29c548e824219f881e4c8954e432b8558a076
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lyUKxQOtJDZE for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Dec 2021 23:31:19 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com
+ [IPv6:2607:f8b0:4864:20::72f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D9E9C40868
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 23:31:18 +0000 (UTC)
+Received: by mail-qk1-x72f.google.com with SMTP id de30so11002422qkb.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 15:31:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastly.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=obS2zFMplgchY6r0d+2BwcrCyhPBeginQSAcswa/U7g=;
+ b=duBn/pSDG1yEFgh8iO14azA6xVUgY8iIu0GEEn0uZs38wKwC2B/8IBQt/aluoRCugU
+ aGMklfF2QiqTqscaaPP2l4bqONh5cXJYwdh8EgFS5BCZhEXbjLHndF+VQnv3ZkKNr1ZI
+ D7v22gNOVE5AK2yvb/ZKGGjUd4dquHD2B3BxA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=obS2zFMplgchY6r0d+2BwcrCyhPBeginQSAcswa/U7g=;
+ b=NIeyvUlz84fuZ7yKXYCc9b120E3lLKSjOAVXh4RlyUGZAb33IgmDX15d5N5weRJiYx
+ uQ8HDwZbLiASV4jxY5awEJmaF98aQ2iopATdev8eNHaqe5ZPs2hye67fil7e+GYHYtUE
+ 26Q1+QHCa69/1u1OXuA1OVPpMNueSmzcFX+/g1u3w5e8uPLOctWtG95rIfLIvOoFaCbX
+ JtTEznV69KSkuScWenkZGBpuAjLxRrdkqE5SQ6Nl+3JDMpIO7wevYD8F49aDNmNgX9bm
+ AePfPm8VFL6mIrMoS9p4ewjJXVPkNZ/ldiAXVDGWvKZugXJBpG7dWzAGo+ojbEOsWlKI
+ AR1g==
+X-Gm-Message-State: AOAM532INjpJ+91+Bdu0Is6R2plqOi8wJjk5z7UxyHUETFkupJ9+hmC6
+ Th42d6XlFJPLCopNKuDsLXvYpNywSYLnc7gWXp5pY3tWU5ru7dKu08a4lSEFwDHcqovtI6PeEQo
+ 4LoA8dQcTZupDhVKn8YXTRbPC951GmJUJD8ywTsja3Qk1opezcXaE09yxz4RVN6IZreT/ML4m1H
+ P2hKJKOQ==
+X-Google-Smtp-Source: ABdhPJxkGNH/H0moCwhey/lu9s2NJeICj+P2+FJs2aLN1AGB8076d18dusavvKWgfTyB/QKIJz3luQ==
+X-Received: by 2002:a37:6152:: with SMTP id v79mr417242qkb.188.1640043077316; 
+ Mon, 20 Dec 2021 15:31:17 -0800 (PST)
+Received: from localhost.localdomain ([205.220.129.17])
+ by smtp.gmail.com with ESMTPSA id a3sm16517634qtx.59.2021.12.20.15.31.06
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 20 Dec 2021 15:31:16 -0800 (PST)
+From: Joe Damato <jdamato@fastly.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 20 Dec 2021 15:29:58 -0800
+Message-Id: <1640042998-117712-1-git-send-email-jdamato@fastly.com>
+X-Mailer: git-send-email 2.7.4
+X-Mailman-Approved-At: Tue, 21 Dec 2021 16:13:11 +0000
+Subject: [Intel-wired-lan] [net-queue,
+ PATCH] i40e: Remove unused RX realloc stat
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,127 +81,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Joe Damato <jdamato@fastly.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 59f29c548e824219f881e4c8954e432b8558a076  igc: Fix TX timestamp support for non-MSI-X platforms
+rx_stats.realloc_count was not being incremented after 1a557afc4dd5, so
+remove it.
 
-elapsed time: 1046m
+The debugfs string was left but hardcoded to 0. This is intended to
+prevent breaking any existing code / scripts that are parsing debugfs
+for i40e.
 
-configs tested: 98
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                               defconfig
-arm64                            allyesconfig
-arc                     haps_hs_smp_defconfig
-sh                ecovec24-romimage_defconfig
-ia64                        generic_defconfig
-powerpc                 mpc837x_rdb_defconfig
-sh                      rts7751r2d1_defconfig
-arm                          moxart_defconfig
-mips                      pic32mzda_defconfig
-powerpc                      ppc40x_defconfig
-arm                        clps711x_defconfig
-arm                          pcm027_defconfig
-arm                         nhk8815_defconfig
-mips                 decstation_r4k_defconfig
-m68k                         apollo_defconfig
-parisc                generic-64bit_defconfig
-arm                  randconfig-c002-20211220
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nds32                             allnoconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-parisc                              defconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-s390                             allyesconfig
-i386                             allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                              debian-10.3
-sparc                            allyesconfig
-i386                   debian-10.3-kselftests
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-x86_64               randconfig-a001-20211220
-x86_64               randconfig-a003-20211220
-x86_64               randconfig-a005-20211220
-x86_64               randconfig-a006-20211220
-x86_64               randconfig-a004-20211220
-x86_64               randconfig-a002-20211220
-i386                 randconfig-a002-20211220
-i386                 randconfig-a003-20211220
-i386                 randconfig-a001-20211220
-i386                 randconfig-a004-20211220
-i386                 randconfig-a005-20211220
-i386                 randconfig-a006-20211220
-x86_64               randconfig-a013-20211221
-x86_64               randconfig-a015-20211221
-x86_64               randconfig-a014-20211221
-x86_64               randconfig-a011-20211221
-x86_64               randconfig-a012-20211221
-x86_64               randconfig-a016-20211221
-arc                  randconfig-r043-20211220
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-x86_64                    rhel-8.3-kselftests
-
-clang tested configs:
-i386                 randconfig-a012-20211220
-i386                 randconfig-a011-20211220
-i386                 randconfig-a013-20211220
-i386                 randconfig-a014-20211220
-i386                 randconfig-a016-20211220
-i386                 randconfig-a015-20211220
-hexagon              randconfig-r045-20211220
-riscv                randconfig-r042-20211220
-s390                 randconfig-r044-20211220
-hexagon              randconfig-r041-20211220
-
+Signed-off-by: Joe Damato <jdamato@fastly.com>
+Fixes: 1a557afc4dd5 ("i40e: Refactor receive routine")
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/i40e/i40e_debugfs.c | 3 +--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h    | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index 1e57cc8..90fff05 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -275,9 +275,8 @@ static void i40e_dbg_dump_vsi_seid(struct i40e_pf *pf, int seid)
+ 			 rx_ring->rx_stats.alloc_page_failed,
+ 			 rx_ring->rx_stats.alloc_buff_failed);
+ 		dev_info(&pf->pdev->dev,
+-			 "    rx_rings[%i]: rx_stats: realloc_count = %lld, page_reuse_count = %lld\n",
++			 "    rx_rings[%i]: rx_stats: realloc_count = 0, page_reuse_count = %lld\n",
+ 			 i,
+-			 rx_ring->rx_stats.realloc_count,
+ 			 rx_ring->rx_stats.page_reuse_count);
+ 		dev_info(&pf->pdev->dev,
+ 			 "    rx_rings[%i]: size = %i\n",
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index bfc2845..88387a6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -298,7 +298,6 @@ struct i40e_rx_queue_stats {
+ 	u64 alloc_page_failed;
+ 	u64 alloc_buff_failed;
+ 	u64 page_reuse_count;
+-	u64 realloc_count;
+ };
+ 
+ enum i40e_ring_state_t {
+-- 
+2.7.4
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
