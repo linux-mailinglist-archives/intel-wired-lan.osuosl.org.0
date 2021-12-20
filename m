@@ -1,60 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CE1647B085
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Dec 2021 16:44:19 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2416D47B086
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Dec 2021 16:44:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C9FD560E32;
-	Mon, 20 Dec 2021 15:44:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6CA73409BC;
+	Mon, 20 Dec 2021 15:44:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2ccoS8Z3zfzM; Mon, 20 Dec 2021 15:44:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ybt-UDYRRJcV; Mon, 20 Dec 2021 15:44:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 91CE760E1A;
-	Mon, 20 Dec 2021 15:44:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5A77340929;
+	Mon, 20 Dec 2021 15:44:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5DE9F1BF574
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Dec 2021 08:31:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 72A111BF977
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 00:19:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 496D260A46
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Dec 2021 08:31:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6DFD160BB3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 00:19:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bqaLL5wqHyes for <intel-wired-lan@lists.osuosl.org>;
- Sun, 19 Dec 2021 08:31:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
- [IPv6:2a01:488:42:1000:50ed:8234::])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4AFB3607FE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Dec 2021 08:31:10 +0000 (UTC)
-Received: from ip4d173d4a.dynamic.kabel-deutschland.de ([77.23.61.74]
- helo=[192.168.66.200]); authenticated
- by wp530.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- id 1myrav-0002Qa-Uo; Sun, 19 Dec 2021 09:31:02 +0100
-Message-ID: <edb8c052-9d20-d190-54e2-ed9bb03ba204@leemhuis.info>
-Date: Sun, 19 Dec 2021 09:31:01 +0100
+ with ESMTP id y0LtyenjlYcO for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Dec 2021 00:19:21 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
+ [209.85.166.70])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7EB1160B9B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Dec 2021 00:19:21 +0000 (UTC)
+Received: by mail-io1-f70.google.com with SMTP id
+ k125-20020a6bba83000000b005e7a312f86dso6192572iof.9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Dec 2021 16:19:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
+ :from:to;
+ bh=l9fTUvv2W/zZfQTMkIdtNjjZgc0Pa7tFnb0ccwxYLoA=;
+ b=kJ5JBUzxvR/TGjXa71JjtKS2Azh6BpeMnSZrGj7K0zdw4QMKuoS4YicC+Xbxa9DGD9
+ FdbaDVqHKxT0w+jChQ6oszFJQW9WX419Me2P9jX4MQAk5Gw9V8s8g77Vtv8CdbscDRa2
+ EyIIJvqZSei7syJfIAM3lVL3wKIjzPnztIdUfyrvZf7gt+OgfLyHRZfUQPFkRSVMcKI8
+ Ux99d3qn2K/u0g77SrPH9ZufdVkM2N273CdcnxGik/MqGFpmEodhR3rE3+7b1U3s98Ns
+ DohKf50RMJqoageGWZxxRgTzdqiQVDwFOYXkC7H5ebSgLbk34sQWABuepCG6/3vJZ+X8
+ Qa4A==
+X-Gm-Message-State: AOAM531rfcq6g25J0dxa1T/BqVY+akaHxqjn26CS7/gJgsMFccnWJsIg
+ zVSQseNayMzJb+cbNSsh5hn/kbydF77JWCPerGgCEynMa/ph
+X-Google-Smtp-Source: ABdhPJxOGXB3IQKkBe2reRag0j8Rq6ERvZTRV6O7cNbr6KdgPOxJTSTD94OCKIG8rQvT1ZC7/hOsET7H6pUU7GB6/ETyoHXoyvHP
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Content-Language: en-BW
-To: Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <6bb28d2f-4884-7696-0582-c26c35534bae@gmail.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-In-Reply-To: <6bb28d2f-4884-7696-0582-c26c35534bae@gmail.com>
-X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1639902670;
- 8ae3cc4c; 
-X-HE-SMSGID: 1myrav-0002Qa-Uo
+X-Received: by 2002:a92:c265:: with SMTP id h5mr1891529ild.36.1639959560697;
+ Sun, 19 Dec 2021 16:19:20 -0800 (PST)
+Date: Sun, 19 Dec 2021 16:19:20 -0800
+In-Reply-To: <0000000000007ea16705d0cfbb53@google.com>
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <0000000000000fbea205d388d749@google.com>
+From: syzbot <syzbot+4c63f36709a642f801c5@syzkaller.appspotmail.com>
+To: anthony.l.nguyen@intel.com, davem@davemloft.net, eric.dumazet@gmail.com, 
+ hawk@kernel.org, intel-wired-lan-owner@osuosl.org, 
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com, kuba@kernel.org, 
+ linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, mkl@pengutronix.de, 
+ netdev@vger.kernel.org, socketcan@hartkopp.net, 
+ syzkaller-bugs@googlegroups.com
 X-Mailman-Approved-At: Mon, 20 Dec 2021 15:44:04 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net] igb: fix deadlock caused by
- taking RTNL in RPM resume path
+Subject: Re: [Intel-wired-lan] [syzbot] kernel BUG in pskb_expand_head
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,173 +78,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Greg KH <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi, this is your Linux kernel regression tracker speaking.
+syzbot has found a reproducer for the following issue on:
 
-On 29.11.21 22:14, Heiner Kallweit wrote:
-> Recent net core changes caused an issue with few Intel drivers
-> (reportedly igb), where taking RTNL in RPM resume path results in a
-> deadlock. See [0] for a bug report. I don't think the core changes
-> are wrong, but taking RTNL in RPM resume path isn't needed.
-> The Intel drivers are the only ones doing this. See [1] for a
-> discussion on the issue. Following patch changes the RPM resume path
-> to not take RTNL.
-> 
-> [0] https://bugzilla.kernel.org/show_bug.cgi?id=215129
-> [1] https://lore.kernel.org/netdev/20211125074949.5f897431@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com/t/
-> 
-> Fixes: bd869245a3dc ("net: core: try to runtime-resume detached device in __dev_open")
-> Fixes: f32a21376573 ("ethtool: runtime-resume netdev parent before ethtool ioctl ops")
-> Tested-by: Martin Stolpe <martin.stolpe@gmail.com>
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+HEAD commit:    434ed2138994 Merge branch 'tc-action-offload'
+git tree:       net-next
+console output: https://syzkaller.appspot.com/x/log.txt?x=1722300db00000
+kernel config:  https://syzkaller.appspot.com/x/.config?x=7488eea316146357
+dashboard link: https://syzkaller.appspot.com/bug?extid=4c63f36709a642f801c5
+compiler:       gcc (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2
+syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=14141ca3b00000
 
-Long story short: what is taken this fix so long to get mainlined? It to
-me seems progressing unnecessary slow, especially as it's a regression
-that made it into v5.15 and thus for weeks now seems to bug more and
-more people.
+IMPORTANT: if you fix the issue, please add the following tag to the commit:
+Reported-by: syzbot+4c63f36709a642f801c5@syzkaller.appspotmail.com
 
-
-The long story, starting with the background details:
-
-The quoted patch fixes a regression among others caused by f32a21376573
-("ethtool: runtime-resume netdev parent before ethtool ioctl ops"),
-which got merged for v5.15-rc1.
-
-The regression ("kernel hangs during power down") was afaik first
-reported on Wed, 24 Nov (IOW: nearly a month ago) and forwarded to the
-list shortly afterwards:
-https://bugzilla.kernel.org/show_bug.cgi?id=215129
-https://lore.kernel.org/netdev/20211124144505.31e15716@hermes.local/
-
-The quoted patch to fix the regression was posted on Mon, 29 Nov (thx
-Heiner for providing it!). Obviously reviewing patches can take a few
-days when they are complicated, as the other messages in this thread
-show. But according to
-https://bugzilla.kernel.org/show_bug.cgi?id=215129#c8 the patch was
-ACKed by Thu, 7 Dec. To quote: ```The patch is on its way via the Intel
-network driver tree:
-https://kernel.googlesource.com/pub/scm/linux/kernel/git/tnguy/net-queue/+/refs/heads/dev-queue```
-
-And that's where the patch afaics still is. It hasn't even reached
-linux-next yet, unless I'm missing something. A merge into mainline thus
-is not even in sight; this seems especially bad with the holiday season
-coming up, as getting the fix mainlined is a prerequisite to get it
-backported to 5.15.y, as our latest stable kernel is affected by this.
-
-Due to the slow progress we have other users that stumble about the
-regression and have to deal with it; some of them even track it down and
-report it again. This happened yesterday (and made me write this mail):
-https://bugzilla.kernel.org/show_bug.cgi?id=215359
-
-
-Given the "no regression" rule all this to me looks a lot like 'this is
-taken way to long without an obvious reason", as the goal of the rule
-round about is: "People should basically always feel like they can
-update their kernel and simply not have to worry about it." (Linus wrote
-that in
-https://lore.kernel.org/lkml/CA+55aFxW7NMAMvYhkvz1UPbUTUJewRt6Yb51QAx5RtrWOwjebg@mail.gmail.com/
-). But here we still let them run into a issue known for weeks now;
-everyone additionally hit due to unnecessary delays will thus be one
-more person that next time will worry when updating, which the "no
-regression" rule tries to prevent. :-/
-
-
-BTW: this is not the only regression in the network subsystem where
-regression fixes IMHO linger quite long in some tree below net. Here is
-another recent example:
-https://lore.kernel.org/linux-wireless/87y24on9m2.fsf@tynnyri.adurom.net/
-Fortunately that fix got mainlined last week, after the fix sat in next
-for two and a half weeks.
-
-Ciao, Thorsten
-
-P.S.: for completeness: f32a21376573 causes a similar regression ("When
-attempting to rise or shut down a NIC manually or via network-manager
-under 5.15, the machine reboots or freezes.") in a different driver for
-Intel NICs, which is fixed by this patch:
-https://lore.kernel.org/netdev/20211214003949.666642-1-vinicius.gomes@intel.com/
-It's not that old yet, but also sitting in the dev-queue of the intel
-network driver developers and hasn't reached linux-next yet :-/
-
->  drivers/net/ethernet/intel/igb/igb_main.c | 19 +++++++++++++------
->  1 file changed, 13 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index dd208930f..8073cce73 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -9254,7 +9254,7 @@ static int __maybe_unused igb_suspend(struct device *dev)
->  	return __igb_shutdown(to_pci_dev(dev), NULL, 0);
->  }
->  
-> -static int __maybe_unused igb_resume(struct device *dev)
-> +static int __maybe_unused __igb_resume(struct device *dev, bool rpm)
->  {
->  	struct pci_dev *pdev = to_pci_dev(dev);
->  	struct net_device *netdev = pci_get_drvdata(pdev);
-> @@ -9297,17 +9297,24 @@ static int __maybe_unused igb_resume(struct device *dev)
->  
->  	wr32(E1000_WUS, ~0);
->  
-> -	rtnl_lock();
-> +	if (!rpm)
-> +		rtnl_lock();
->  	if (!err && netif_running(netdev))
->  		err = __igb_open(netdev, true);
->  
->  	if (!err)
->  		netif_device_attach(netdev);
-> -	rtnl_unlock();
-> +	if (!rpm)
-> +		rtnl_unlock();
->  
->  	return err;
->  }
->  
-> +static int __maybe_unused igb_resume(struct device *dev)
-> +{
-> +	return __igb_resume(dev, false);
-> +}
-> +
->  static int __maybe_unused igb_runtime_idle(struct device *dev)
->  {
->  	struct net_device *netdev = dev_get_drvdata(dev);
-> @@ -9326,7 +9333,7 @@ static int __maybe_unused igb_runtime_suspend(struct device *dev)
->  
->  static int __maybe_unused igb_runtime_resume(struct device *dev)
->  {
-> -	return igb_resume(dev);
-> +	return __igb_resume(dev, true);
->  }
->  
->  static void igb_shutdown(struct pci_dev *pdev)
-> @@ -9442,7 +9449,7 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
->   *  @pdev: Pointer to PCI device
->   *
->   *  Restart the card from scratch, as if from a cold-boot. Implementation
-> - *  resembles the first-half of the igb_resume routine.
-> + *  resembles the first-half of the __igb_resume routine.
->   **/
->  static pci_ers_result_t igb_io_slot_reset(struct pci_dev *pdev)
->  {
-> @@ -9482,7 +9489,7 @@ static pci_ers_result_t igb_io_slot_reset(struct pci_dev *pdev)
->   *
->   *  This callback is called when the error recovery driver tells us that
->   *  its OK to resume normal operation. Implementation resembles the
-> - *  second-half of the igb_resume routine.
-> + *  second-half of the __igb_resume routine.
->   */
->  static void igb_io_resume(struct pci_dev *pdev)
->  {
+skbuff: skb_over_panic: text:ffffffff88257728 len:4096 put:4096 head:ffff8880769c1400 data:ffff8880769c1400 tail:0x1000 end:0xc0 dev:<NULL>
+------------[ cut here ]------------
+kernel BUG at net/core/skbuff.c:113!
+invalid opcode: 0000 [#1] PREEMPT SMP KASAN
+CPU: 0 PID: 13 Comm: ksoftirqd/0 Not tainted 5.16.0-rc5-syzkaller #0
+Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
+RIP: 0010:skb_panic+0x16c/0x16e net/core/skbuff.c:113 net/core/skbuff.c:113
+Code: f8 4c 8b 4c 24 10 8b 4b 70 41 56 45 89 e8 4c 89 e2 41 57 48 89 ee 48 c7 c7 a0 82 ad 8a ff 74 24 10 ff 74 24 20 e8 13 20 c2 ff <0f> 0b e8 6c 3d 35 f8 4c 8b 64 24 18 e8 f2 9e 7c f8 48 c7 c1 40 8f
+RSP: 0018:ffffc90000d279e0 EFLAGS: 00010286
+RAX: 000000000000008b RBX: ffff88801c5b8640 RCX: 0000000000000000
+RDX: ffff888011938000 RSI: ffffffff815f21d8 RDI: fffff520001a4f2e
+RBP: ffffffff8aad8f80 R08: 000000000000008b R09: 0000000000000000
+R10: ffffffff815ebf7e R11: 0000000000000000 R12: ffffffff88257728
+R13: 0000000000001000 R14: ffffffff8aad8260 R15: 00000000000000c0
+FS:  0000000000000000(0000) GS:ffff8880b9c00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f14858bf718 CR3: 0000000072e5c000 CR4: 00000000003506f0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+Call Trace:
+ <TASK>
+ skb_over_panic net/core/skbuff.c:118 [inline]
+ skb_over_panic net/core/skbuff.c:118 [inline] net/core/skbuff.c:1986
+ skb_put.cold+0x24/0x24 net/core/skbuff.c:1986 net/core/skbuff.c:1986
+ isotp_rcv_cf net/can/isotp.c:570 [inline]
+ isotp_rcv_cf net/can/isotp.c:570 [inline] net/can/isotp.c:668
+ isotp_rcv+0xa38/0x1e30 net/can/isotp.c:668 net/can/isotp.c:668
+ deliver net/can/af_can.c:574 [inline]
+ deliver net/can/af_can.c:574 [inline] net/can/af_can.c:635
+ can_rcv_filter+0x445/0x8d0 net/can/af_can.c:635 net/can/af_can.c:635
+ can_receive+0x31d/0x580 net/can/af_can.c:665 net/can/af_can.c:665
+ can_rcv+0x120/0x1c0 net/can/af_can.c:696 net/can/af_can.c:696
+ __netif_receive_skb_one_core+0x114/0x180 net/core/dev.c:5350 net/core/dev.c:5350
+ __netif_receive_skb+0x24/0x1b0 net/core/dev.c:5464 net/core/dev.c:5464
+ process_backlog+0x2a5/0x6c0 net/core/dev.c:5796 net/core/dev.c:5796
+ __napi_poll+0xaf/0x440 net/core/dev.c:6364 net/core/dev.c:6364
+ napi_poll net/core/dev.c:6431 [inline]
+ napi_poll net/core/dev.c:6431 [inline] net/core/dev.c:6518
+ net_rx_action+0x801/0xb40 net/core/dev.c:6518 net/core/dev.c:6518
+ __do_softirq+0x29b/0x9c2 kernel/softirq.c:558 kernel/softirq.c:558
+ run_ksoftirqd kernel/softirq.c:921 [inline]
+ run_ksoftirqd kernel/softirq.c:921 [inline] kernel/softirq.c:913
+ run_ksoftirqd+0x2d/0x60 kernel/softirq.c:913 kernel/softirq.c:913
+ smpboot_thread_fn+0x645/0x9c0 kernel/smpboot.c:164 kernel/smpboot.c:164
+ kthread+0x405/0x4f0 kernel/kthread.c:327 kernel/kthread.c:327
+ ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:295 arch/x86/entry/entry_64.S:295
+ </TASK>
+Modules linked in:
+---[ end trace 076cfcb09686117c ]---
+RIP: 0010:skb_panic+0x16c/0x16e net/core/skbuff.c:113 net/core/skbuff.c:113
+Code: f8 4c 8b 4c 24 10 8b 4b 70 41 56 45 89 e8 4c 89 e2 41 57 48 89 ee 48 c7 c7 a0 82 ad 8a ff 74 24 10 ff 74 24 20 e8 13 20 c2 ff <0f> 0b e8 6c 3d 35 f8 4c 8b 64 24 18 e8 f2 9e 7c f8 48 c7 c1 40 8f
+RSP: 0018:ffffc90000d279e0 EFLAGS: 00010286
+RAX: 000000000000008b RBX: ffff88801c5b8640 RCX: 0000000000000000
+RDX: ffff888011938000 RSI: ffffffff815f21d8 RDI: fffff520001a4f2e
+RBP: ffffffff8aad8f80 R08: 000000000000008b R09: 0000000000000000
+R10: ffffffff815ebf7e R11: 0000000000000000 R12: ffffffff88257728
+R13: 0000000000001000 R14: ffffffff8aad8260 R15: 00000000000000c0
+FS:  0000000000000000(0000) GS:ffff8880b9c00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f14858bf718 CR3: 0000000072e5c000 CR4: 00000000003506f0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
 
 _______________________________________________
 Intel-wired-lan mailing list
