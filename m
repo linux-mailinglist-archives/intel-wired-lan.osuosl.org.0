@@ -1,64 +1,169 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CA7647C5A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Dec 2021 18:58:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C93847C919
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Dec 2021 23:13:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 066E282F37;
-	Tue, 21 Dec 2021 17:58:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9ED4140469;
+	Tue, 21 Dec 2021 22:12:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GoC_F6-6tgt2; Tue, 21 Dec 2021 17:58:31 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sorQHSLbe4MI; Tue, 21 Dec 2021 22:12:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CAEAB82DDE;
-	Tue, 21 Dec 2021 17:58:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F419D4044D;
+	Tue, 21 Dec 2021 22:12:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BD80B1BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 17:58:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6140F1BF42C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A157482DDE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 17:58:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4C7614044D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CdjrcdcWMeRJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Dec 2021 17:58:24 +0000 (UTC)
-X-Greylist: delayed 00:10:07 by SQLgrey-1.8.0
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2467682422
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 17:58:24 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 6EC8DCE188E;
- Tue, 21 Dec 2021 17:48:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7358CC36AE9;
- Tue, 21 Dec 2021 17:48:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640108890;
- bh=Et4mzk/+efM2dwP/TpKnvvWIhU8jDPgT0EfC9TuYSxg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=N2sPpZ0OZxgZIgHxP1V/XW+ZVEO8R60BzB2tjs8ac7kXXAWenJtle8hUhlocg9n7v
- 0F7p16avvrKIIi13V+Xnzs2rr31Nq5Nb3TJvUWIo5TqcvoqS1i5uD8wo5tyDCDaooK
- uFWgvDzetxXdmcVXeVQtkbQWL8X9prYi+tQbOWBCIASe9DDrj90uQh6a5Y7zr4N3Nn
- BoJ5jjxcoeBXY/xTZ2uR56eu+EfqGZl/+Gjh66vVZUgHAznqBZOgLrhZDgZrC6GOiH
- FSsQTR8MJBW1c+09cOEudxRX3Iq/37jQlUq8Kqvs5kJVVP9nNBSXAeN9K+sRe7gdc2
- zbLuvHy1Y560g==
-Date: Tue, 21 Dec 2021 11:48:08 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Michael Walle <michael@walle.cc>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <20211221174808.GA1094860@bhelgaas>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cVIE4KTK84-P for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Dec 2021 22:12:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7A2D740124
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1640124769; x=1671660769;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=PGpVodvSvN5Hx9lUskfr95r0t+L9Lp8asddDZFd2OBE=;
+ b=dVudgqQHxAO+EAPTiHjSki+auazmGaDFouyvmfLWEeoxNleLi9ubnf7i
+ koYgXS0wy4RVYcT/s0sYckadtVl0bDrquh+VRnvuu2uPs8ee/7+I7FT/3
+ xdqUjCGwT9cOT3BdkUcrhGFFDLMMW3EpBg0DmUeUO7osxqzl3gSQ1B349
+ zwboMMyT0rXH38pnUCOW5AHkWNJRYIekBAEDx9b6ilHPMed+cdvnNgQHN
+ cjG4meyisfMbp7iE+xJqIJ3BzwjiTaoVMv4G6ezLQHDDVxhlK+uJy99WG
+ vQFk95WrAhk4qhkR5LeP1USabnp3/qOa41ko/RmScOnQx3SJKYoc2NlCq A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10205"; a="301267834"
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="301267834"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2021 14:12:48 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="755994681"
+Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
+ by fmsmga006.fm.intel.com with ESMTP; 21 Dec 2021 14:12:47 -0800
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Tue, 21 Dec 2021 14:12:47 -0800
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Tue, 21 Dec 2021 14:12:47 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Tue, 21 Dec 2021 14:12:47 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Tue, 21 Dec 2021 14:12:46 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PGe2r9ZgWXpahqZgKZYcjx0mN3rM6KtDhMvOgQa4HIqZWcrIdXl4swiIg+7jAKWDAR0Gc7C/GQ9SUhUXm7adxPEFIiQFCgcYSHrprEziT0+trBRgnPq8qjHc9sGznYXDWF/WCl5EqKHtAwfjzg0oitScl38pZ9GybG2HG7g+XX5RWMG3mals7iFaPIlkuy6hbmEBMrQa+uVbGt/hIWZpHvQFxb3WMqOKqHmX65AsFsycsygqu+vDFnAPbzE3WC46PUUOAD0JT6nvKToHbJBjMN+oB4oyv4YXdpn/7i4onNzvnoqhFZTrWqaFDUjGaE4xJTucaCL6PMC3mDgqx7Pgtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EgTKrrq9V1C6sFng8Pzy3M3oV94uEZVCl7Z+qCEdbjA=;
+ b=Q3eGdtvXZvJqU6JdzON1grDDZ3DrpjPT5mUNaIVhbMk1ZoLFAHH6rh9/S5smzSfaJjeUiOyk3A/dQ7ZZVkfSV3pkOlggjytCiGXsu8CsPJxOwH734x1mBZz69VDZM/VfVCk4oARRIW5L8C/8IAlpnH04Luz/6t6dl2GlZSRguv2xK+nRBkdwRxfy3yKJFU0DNr1jxb0xwfSyE27J/S8vSNXVs+IVTvnuwiMNdTHqGrLkcZ4Qr/1D7nRm+Pr1jgGTbe5F4QwWfquVflTeYwYRAqel3Oi0h6Gg/KohsjhH1mOmO5l5mRlbt520Auv+Lqh7K6b+dIoOkqFOrt1h0KrJBg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com (2603:10b6:303:193::14)
+ by CO1PR11MB5090.namprd11.prod.outlook.com (2603:10b6:303:96::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4801.14; Tue, 21 Dec
+ 2021 22:12:44 +0000
+Received: from MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::1ca9:6778:2b2f:7de9]) by MW5PR11MB5812.namprd11.prod.outlook.com
+ ([fe80::1ca9:6778:2b2f:7de9%5]) with mapi id 15.20.4801.020; Tue, 21 Dec 2021
+ 22:12:44 +0000
+From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
+To: Ido Schimmel <idosch@idosch.org>
+Thread-Topic: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
+Thread-Index: AQHX7c5gIm8QXL1ZEECyYOKvL6PbZKwuwIcAgAFiCYCAC1L2AIACGiOw
+Date: Tue, 21 Dec 2021 22:12:44 +0000
+Message-ID: <MW5PR11MB58127387AC887DFF43140697EA7C9@MW5PR11MB5812.namprd11.prod.outlook.com>
+References: <20211210134550.1195182-1-maciej.machnikowski@intel.com>
+ <YbXhXstRpzpQRBR8@shredder>
+ <MW5PR11MB5812E5A30C05E2F1EAB2D9D5EA769@MW5PR11MB5812.namprd11.prod.outlook.com>
+ <YcCKLnrvbu9RBlR8@shredder>
+In-Reply-To: <YcCKLnrvbu9RBlR8@shredder>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d40f6213-3f13-4191-1227-08d9c4cf038b
+x-ms-traffictypediagnostic: CO1PR11MB5090:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <CO1PR11MB509077BB953F8E482EFAD758EA7C9@CO1PR11MB5090.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6108;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 7LPpaGamSOeBRqt/Mx4jQS4K1IK4U4jD4v2QjjHRtnL9/Ona0kpEW9n2l8udL1fe18BjzRCiuJJr8AzxIFTnd0h4jacyo5WnMZ5/iCyGRioNcDcnIUkk0buSivwSHk1170irTJX/OPH0MHC1RzM24JAx+nfgjR72gef9BJedEaW0Gp7WJogksv6IVpMawDAhFipzXycucF0/575PPNbt5YVYBPT96SGci0NORa8XIR5Phng/9+2/AZSOveFLDbIkypEyC/Mw+1rpUKQXX4RozMYD2MiE1+1puQj18GG/no+HpSqt+0QDz3tCSZ3gj42Qnngg5T5PEXgRh7fEZODFHChBnhR11OtuQs3dk3h5TUIF6VLFAS/ItgCOiK5GOwMfKRugGkYzntUVLOmz5ReORgo6jDij8JLdwSH1rwF63wXiaanzMp1D8MsVhKTdyXUiIDQVvjMas5I/2tfQos7ypLj+fD0REdYa/fxbygSON4jWEiHilJog41rNBwFXY8wHZoWEe5L59+KLj1Nm4ArbBfj4QZmO4ghgx8nrJL+2cCrkNy7qlOS+CSPwXgJ0NKkUxPRP1JEUJZ9p0XlzYBfbHWcyowlXlouJgL2Hjj9AiVhIfmNJTa0PYuSMIH0biVqsf6eiNDxP9CueQAsWkjzyrjEO09K1b735aLig8+I+Md41bNEL3SCFKkp15fmqw2Bnip0l61xOBLSeMsp9GxWiYQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW5PR11MB5812.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(4326008)(38070700005)(8936002)(82960400001)(7696005)(52536014)(66946007)(66556008)(508600001)(64756008)(316002)(54906003)(9686003)(76116006)(66446008)(55016003)(66476007)(5660300002)(71200400001)(86362001)(8676002)(7416002)(53546011)(6506007)(83380400001)(26005)(38100700002)(122000001)(2906002)(186003)(33656002)(6916009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?dHwVIh/fPyk/xfmIeXoPr6nyi9L7hVYQC9+Bi9lrIglUJgrnvsT51Ycf7ToG?=
+ =?us-ascii?Q?tazqWTLP02/+hNeoywu1TNgav4mwPkdhm3d/fIhVUdva1KN0NzQMHETEC+oT?=
+ =?us-ascii?Q?11mridI9lTndm016Lj8/Fo69JnhyrsRu03TjR1F4YegHq1Nhri/0uZ15UMCk?=
+ =?us-ascii?Q?sjsWWPk4eOR5Auarn39WvH4zcWJEo/iOlkXCKP/L0JlFHfK7i2dmjMZTO83z?=
+ =?us-ascii?Q?DsSlGWG6PsWcvKCAH+CtoQ84FA88poTZXdxVywUOe9Q02pk7SZIbTJgnQXUi?=
+ =?us-ascii?Q?0LJ/82bu7qn92v0wOS4gOBMIRWVtwppltqnDLfZ2T50zhf5VItKcLDfwBeJo?=
+ =?us-ascii?Q?4dv0GWMAqCY3go1V/xcFM7nDIEToZ1KLWUHOi0XkQ6y5A7jmYY2PA5WQ8z0s?=
+ =?us-ascii?Q?XCXc+70aN6C9JSDGkDuFKPYjfeOwpqmO1tksV1ymPwjv9Y7zBjVBSorZT8nU?=
+ =?us-ascii?Q?aY40zZLk4NfIw7YMqsLwiJmeTb4hZJSANdgyVTaHluglWfeM0CIzqeuvT+HK?=
+ =?us-ascii?Q?49qJQehWV5KuXBfsMikuYF6JzPGAuPaU2s9mZcPGKg4EXgXbPsnRt7PN7573?=
+ =?us-ascii?Q?MAeOkw9R/ltnvWjkTdvJVsiV0DZfL/MRh/NDiW1eW9qm2Eyj6oqekuLQA4b5?=
+ =?us-ascii?Q?SM9OlPMvZlDf8qQ2ypupTmGKa16ZvXxauQVpGVqdPwrSYT9MprwuNX8AfVoz?=
+ =?us-ascii?Q?dVQq2K+eRRGICVRYQlimOwMuSpezXuXl3mUpnT06DcWq8dh1OyDFkSnW0wew?=
+ =?us-ascii?Q?Ih5XPtLhhEfGcZaxV06LqJF9ZSZQtN2Jn+jb0n1CQhUtL24nl1RJOO2NphL+?=
+ =?us-ascii?Q?7qut3vYWLAZw7E4tKl4lANb3xtSAxHim7l+8LmfapLYoVbPuGyx8+Dzo6McU?=
+ =?us-ascii?Q?kljsfboo6PVrscCX19a3wBAHWxn6lZEmTMwhk2Qa63K04GygA+SPjRski5Lw?=
+ =?us-ascii?Q?fa56DGEQD5rm7kR64o8RwY6uzjX8xMSNBV9RctjGmUzSQFVidNukJGWwqsl9?=
+ =?us-ascii?Q?1h0O6BehwUwOh9zwczBWG9RJVM3ADsc3A120HqgYl+SRvk1cdcL2TqrNTyyj?=
+ =?us-ascii?Q?ZbiU3CQYeqwwvdUEexxyIGQVwNAzAw6a64a9hCVe2CnDXcAcQdA6dfw54YbV?=
+ =?us-ascii?Q?fW0BvPzUbokD5UZjQX2LxDe0cZhYNwqpCLjnU7Y7vTJ8amEL8EqbCkMv9Jra?=
+ =?us-ascii?Q?qzAoFCzgRpMh1DPOAMhu+TuG63qDjYxkdF/0O6OOJGGS5Yf6bg87e6xEHCoM?=
+ =?us-ascii?Q?bdUyr5O6nP0BSQXTpDZXrXvi/Q6VdGR5P3fwVVRaF4oatMWUvbJwunA/4Zap?=
+ =?us-ascii?Q?KkHU7cpVSzFPRTKoD9pjTkIak+fA/QHa56mIGx+wjeeTcBoCdZ3HM4S7WDFN?=
+ =?us-ascii?Q?IZN2NyWGmxOTniYk1BbHB9aKIfh97zKADbCfjL5Npfe0YRRH/rmOZEw9ARth?=
+ =?us-ascii?Q?2+DU76PlzduvOuQCLFQ57hRiV3W3aPHFrECBsQR50nDxZTK963D58zFE+OD0?=
+ =?us-ascii?Q?ePAoWmcyTBsTJgJN9nR7GGZofAoDdRkzo6B2xMvRcIkD4UsTmat4WofhMpJR?=
+ =?us-ascii?Q?ZpG7TELggd3OaQRyn7yCkzd/PGwM7Fp5g52ROun96IW4uX58/qAYk7C8iiDz?=
+ =?us-ascii?Q?+B2PLG8L4S5Zc/ZmYgg9up+Y5B24H+fkCe7ya5+Qn6F2+bLcwBBF/WU4Mzx7?=
+ =?us-ascii?Q?nbn0yg=3D=3D?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9303c33a8faa83597db807a8c418ef17@walle.cc>
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5812.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d40f6213-3f13-4191-1227-08d9c4cf038b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Dec 2021 22:12:44.4928 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Y11VOeVzI4bcvFOdLCnqiekMXv44hNDie2u57xKQWD9iyQ58t1ysxKLDZsNQ41wfxn0Q9s0FShg4zmZYoYcsZf8Vhp4cNCxV3wD/uUzvJ1E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5090
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 0/4] Add ethtool interface
+ for RClocks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,172 +176,204 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
+ "petrm@nvidia.com" <petrm@nvidia.com>, "Byagowi, Ahmad" <abyagowi@fb.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>, Vadim
+ Fedorenko <vfedorenko@novek.ru>, "saeed@kernel.org" <saeed@kernel.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[+to Jesse, Tony for Intel advice;
-beginning of thread: https://lore.kernel.org/all/20201230185317.30915-1-michael@walle.cc/]
-
-On Mon, Dec 20, 2021 at 06:43:03PM +0100, Michael Walle wrote:
-> ...
-> ping #4
+> -----Original Message-----
+> From: Ido Schimmel <idosch@idosch.org>
+> Sent: Monday, December 20, 2021 2:51 PM
+> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> Subject: Re: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
 > 
-> In a few days this is a year old. Please have a look at it and
-> either add my quirk patch or apply your patch. This is still
-> breaking i210 on my board.
+> On Wed, Dec 15, 2021 at 12:13:47PM +0000, Machnikowski, Maciej wrote:
+> > > -----Original Message-----
+> > > From: Ido Schimmel <idosch@idosch.org>
+> > > Sent: Sunday, December 12, 2021 12:48 PM
+> > > To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
+> > > Subject: Re: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
+> > >
+> > > On Fri, Dec 10, 2021 at 02:45:46PM +0100, Maciej Machnikowski wrote:
+> > > > Synchronous Ethernet networks use a physical layer clock to syntonize
+> > > > the frequency across different network elements.
+> > > >
+> > > > Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
+> > > > Equipment Clock (EEC) and have the ability to synchronize to reference
+> > > > frequency sources.
+> > > >
+> > > > This patch series is a prerequisite for EEC object and adds ability
+> > > > to enable recovered clocks in the physical layer of the netdev object.
+> > > > Recovered clocks can be used as one of the reference signal by the EEC.
+> > >
+> > > The dependency is the other way around. It doesn't make sense to add
+> > > APIs to configure the inputs of an object that doesn't exist. First add
+> > > the EEC object, then we can talk about APIs to configure its inputs from
+> > > netdevs.
+> >
+> > This API configures frequency outputs of the PTY layer of
+> > a PHY/integrated MAC. It does not configure any inputs nor it interacts
+> > with the EEC. The goal of it is to expose the clock to the piece that
+> > requires it as a reference one (a DPLL/FPGA/anything else).
 > 
-> TBH, this is really frustrating.
+> My fundamental issue with these patches is that instead of abstracting
+> the hardware from user space they give user space direct control over
+> it.
 
-You are right to be frustrated.  I'm very sorry that I have dropped
-the ball on this.  Thanks for reminding me *again*.
+Unfortunately, I don't see any other way to address the use cases that I listed
+otherwise. I'm a big fan of simple solutions, but only when they address
+all use cases that are known at the time of defining them.
 
-I think we agree that this looks like an I210 defect.  I210 should
-ignore the ROM BAR contents unless PCI_ROM_ADDRESS_ENABLE is set.  It
-would be great if an Intel person could confirm/deny this and supply
-an erratum reference and verify the affected device IDs.
+> This approach has the advantage of keeping the kernel relatively simple
+> and fitting more use cases than just EEC, but these are also its
+> disadvantages. Complexity needs to live somewhere and if this complexity
+> is related to the abstraction of hardware, then it should live in the
+> kernel and not in user space. We should strive to come up with an API
+> that does the same thing regardless of the underlying hardware
+> implementation.
+> 
+> Look at the proposed API, it basically says "Make the clock recovered
+> from eth0 available on pin 1". If user space issues this command on
+> different systems, it will mean different things, based on the
+> underlying design of the hardware and the connection of the pin: To
+> "DPLL/FPGA/anything else".
 
-It seems that when the BARs are programmed like this:
+The link to the right DPLL input can be easily added later by adding
+the new attribute to those commands. This has a big advantage
+over the other model, as it is scalable to multiple different devices
+serviced by different drivers, as it doesn't have the issue we have with
+linking objects in kernel...
 
-  BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
-  BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
-  ROM:   0x40200000 (disabled) [size=1M]
+> Contrast that with an API that says "Set the source of EEC X to the
+> clock recovered from eth0". This API is well defined and does the same
+> thing across different systems.
+> 
+> Lets assume that these patches are merged as-is and tomorrow we get
+> another implementation of these two ethtool operations in a different
+> driver. We can't tell if these are used to feed the recovered clock into
+> an EEC like ice does or enable some other use case that we never
+> intended to enable.
 
-networking doesn't work at all and the transmit queue times out.
+...that issue is caused by the randomness and scalability of that 
+infrastructure. At the time system boots it enumerates devices and
+initializes them in  "random" order depending on the current system 
+configuration which makes it impossible to code any co-driver 
+dependencies, as it's impossible to guess what identifier the kernel
+assigned to the other device that's connected to the same DPLL.
 
-Linux assigns non-overlapping address space to the ROM BAR, but
-pci_std_update_resource() currently doesn't update the BAR itself
-unless it is enabled.
+> Even if all the implementations use this API to feed the EEC, consider
+> how difficult it is going to be for user space to use it. Ideally, user
+> space should be able to query the state of the EEC and its source via an
+> EEC object in a single command. With the current approach in which we
+> have some amorphic object called "DPLL" that is only aware of pins and
+> not netdevs, it's going to be very hard. User space will see that the
+> DPLL is locked to the clock fed via pin 1. How user space is supposed to
+> understand what is the source of this clock? Issue RCLK_GET dump and
+> check for matching pin index that is enabled? User space has no reason
+> to do it given that it doesn't even know that the source is a netdev.
 
-My proposal [1] worked around the defect by always updating the BAR,
-but there's no clue that this covers up the I210 issue, so it remains
-as sort of a land mine.  A future change could re-expose the problem,
-so I don't think this was a good approach.
+Userspace tool will always know what ports it works with - it will come
+from the config file, as - even if you have a dozen ports linked to a single
+DPLL you may decide that you don't want to send ESMC messages
+on some of them - just like we do with ptp4l.
 
-Your original patch [2] makes it clear that it's an issue with I210,
-but there's an implicit connection between the normal BAR update path
-(which skips the actual BAR write) and the quirk that does the BAR
-write:
+The amorphic DPLL device has much more uses that a dedicated EEC
+object and if we know what pin the DPLL uses and what is the link
+between the RCLK output and the DPLL input it'll be very easy to
+figure out what's going on.
 
-  <enumeration resource assignment>
-    ...
-      pci_assign_resource
-        pci_update_resource
-          pci_std_update_resource
-            if (ROM && ROM-disabled)
-              return
-            pci_write_config_dword      # ROM BAR update (skipped)
+The dump will also not be needed, as we know who we set as the best
+source after receiving the ESMC packets from neighbors.
 
-  pci_fixup_write_rom_bar               # final fixup
-    pci_write_config_dword              # ROM BAR update
+> >
+> > I don't agree with the statement that we must have EEC object first,
+> > as we can already configure different frequency sources using different
+> > subsystems.
+> 
+> Regardless of all the above technical arguments, I think that these
+> patches should not be merged now based on common sense alone. Not only
+> these patches are of very limited use without an EEC object, they also
+> prevent us from making changes to the API when such an object is
+> introduced.
 
-In the boot-time resource assignment path, this works fine, but if
-pci_assign_resource() is called from pci_map_rom(), the fixup will not
-happen, so we could still have problem.
+And I see a big value of merging them in as that would enable upstreaming
+of the userspace tools that will explain a lot and close many gaps.
 
-If we tweaked pci_std_update_resource() to take account of this
-defect, I think we could cover that path, too.
+> > The source of signal should be separated from its consumer.
+> 
+> If it is completely separated (despite being hardwired on the board),
+> then user space does not know how the signal is used when it issues the
+> command. Is this signal fed into an EEC that controls that transmission
+> rate of other netdev? Is this signal fed into an FPGA that blinks a led?
 
-Can you try the patch below?
+It's the same thing with frequency pins of the PTP subsystem. Userspace
+tool can enable them, but has no idea what's on the other end of them.
 
-[1] https://lore.kernel.org/all/20210115235721.GA1862880@bjorn-Precision-5520/
-[2] https://lore.kernel.org/all/20201230185317.30915-1-michael@walle.cc/
+> >
+> > > With these four patches alone, user space doesn't know how many EECs
+> > > there are in the system, it doesn't know the mapping from netdev to EEC,
+> > > it doesn't know the state of the EEC, it doesn't know which source is
+> > > chosen in case more than one source is enabled. Patch #3 tries to work
+> > > around it by having ice print to kernel log, when the information should
+> > > really be exposed via the EEC object.
+> >
+> > The goal of them is to add API for recovered clocks - not for EECs.
+> 
+> What do you mean by "not for EECs"? The file is called
+> "net/ethtool/synce.c", if the signal is not being fed into an EEC then
+> into what? It is unclear what kind of back doors this API will open.
 
+Can be a DPLL of the radio part of the device, or different devices that
+expects frequency reference.
+If it makes it better we can move that to net/ethtool/rclk.c.
 
-commit 021481cfa576 ("PCI: Work around Intel I210 ROM BAR overlap defect")
-Author: Bjorn Helgaas <bhelgaas@google.com>
-Date:   Tue Dec 21 10:45:07 2021 -0600
+> > This part is there for observability and will still be there when EEC
+> > is in place.  Those will need to be addressed by the DPLL subsystem.
+> 
+> If it is it only meant for observability, then why these messages are
+> emitted as warnings to the kernel log? Regardless, the user API should
+> be designed with observability in mind so that you wouldn't need to rely
+> on prints to the kernel log.
 
-    PCI: Work around Intel I210 ROM BAR overlap defect
-    
-    Per PCIe r5, sec 7.5.1.2.4, a device must not claim accesses to its
-    Expansion ROM unless both the Memory Space Enable and the Expansion ROM
-    Enable bit are set.  But apparently some Intel I210 NICs don't work
-    correctly if the ROM BAR overlaps another BAR, even if the Expansion ROM is
-    disabled.
-    
-    Michael reported that on a Kontron SMARC-sAL28 ARM64 system with U-Boot
-    v2021.01-rc3, the ROM BAR overlaps BAR 3, and networking doesn't work at
-    all:
-    
-      BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
-      BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
-      ROM:   0x40200000 (disabled) [size=1M]
-    
-      NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
-      Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval 2.0 carrier (DT)
-      igb 0002:01:00.0 enP2p1s0: Reset adapter
-    
-    Previously, pci_std_update_resource() wrote the assigned ROM address to the
-    BAR only when the ROM was enabled.  This meant that the I210 ROM BAR could
-    be left with an address assigned by firmware, which might overlap with
-    other BARs.
-    
-    Quirk these I210 devices so we always write the assigned address to the ROM
-    BAR, whether or not the ROM is enabled.
-    
-    Link: https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
-    Link: https://bugzilla.kernel.org/show_bug.cgi?id=211105
-    Reported-by: Michael Walle <michael@walle.cc>
-    Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+You're right - need to change that to dev_info.
+And yes - in the final form userspace tools will pull EEC's info from the DPLL
+subsystem - this prints the state of 2 DPLLs and is designed for debuggability.
 
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 003950c738d2..c14ddbd9146d 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -5857,3 +5857,13 @@ static void nvidia_ion_ahci_fixup(struct pci_dev *pdev)
- 	pdev->dev_flags |= PCI_DEV_FLAGS_HAS_MSI_MASKING;
- }
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab8, nvidia_ion_ahci_fixup);
-+
-+static void intel_i210_rom_defect(struct pci_dev *dev)
-+{
-+	pci_info(dev, "working around ROM BAR overlap defect\n");
-+	dev->rom_bar_overlap = 1;
-+}
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1533, intel_i210_rom_defect);
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1536, intel_i210_rom_defect);
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1537, intel_i210_rom_defect);
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL, 0x1538, intel_i210_rom_defect);
-diff --git a/drivers/pci/setup-res.c b/drivers/pci/setup-res.c
-index 7f1acb3918d0..439ac5f5907a 100644
---- a/drivers/pci/setup-res.c
-+++ b/drivers/pci/setup-res.c
-@@ -75,12 +75,16 @@ static void pci_std_update_resource(struct pci_dev *dev, int resno)
- 		 * as zero when disabled, so don't update ROM BARs unless
- 		 * they're enabled.  See
- 		 * https://lore.kernel.org/r/43147B3D.1030309@vc.cvut.cz/
-+		 * But we must update ROM BAR for buggy devices where even a
-+		 * disabled ROM can conflict with other BARs.
- 		 */
--		if (!(res->flags & IORESOURCE_ROM_ENABLE))
-+		if (!(res->flags & IORESOURCE_ROM_ENABLE) &&
-+		    !dev->rom_bar_overlap)
- 			return;
- 
- 		reg = dev->rom_base_reg;
--		new |= PCI_ROM_ADDRESS_ENABLE;
-+		if (res->flags & IORESOURCE_ROM_ENABLE)
-+			new |= PCI_ROM_ADDRESS_ENABLE;
- 	} else
- 		return;
- 
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 18a75c8e615c..51c4a063f489 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -455,6 +455,7 @@ struct pci_dev {
- 	unsigned int	link_active_reporting:1;/* Device capable of reporting link active */
- 	unsigned int	no_vf_scan:1;		/* Don't scan for VFs after IOV enablement */
- 	unsigned int	no_command_memory:1;	/* No PCI_COMMAND_MEMORY */
-+	unsigned int	rom_bar_overlap:1;	/* ROM BAR disable broken */
- 	pci_dev_flags_t dev_flags;
- 	atomic_t	enable_cnt;	/* pci_enable_device has been called */
- 
+> >
+> > > +		dev_warn(ice_pf_to_dev(pf),
+> > > +			 "<DPLL%i> state changed to: %d, pin %d",
+> > > +			 ICE_CGU_DPLL_SYNCE,
+> > > +			 pf->synce_dpll_state,
+> > > +			 pin);
+> > >
+> > > >
+> > > > Further work is required to add the DPLL subsystem, link it to the
+> > > > netdev object and create API to read the EEC DPLL state.
+> > >
+> > > When the EEC object materializes, we might find out that this API needs
+> > > to be changed / reworked / removed, but we won't be able to do that
+> > > given it's uAPI. I don't know where the confidence that it won't happen
+> > > stems from when there are so many question marks around this new
+> > > object.
+> >
+> > This API follows the functionality of other frequency outputs that exist
+> > in the kernel, like PTP period file for frequency output of PTP clock
+> > or other GPIOs. I highly doubt it'll change - we may extend it to add
+> mapping
+> > between pins, but like I indicated - this will not always be known to SW.
+> >
+> > Regards
+> > Maciek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
