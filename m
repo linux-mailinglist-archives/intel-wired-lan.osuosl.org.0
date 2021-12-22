@@ -2,168 +2,165 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C93847C919
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Dec 2021 23:13:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F18047CBC5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Dec 2021 04:45:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9ED4140469;
-	Tue, 21 Dec 2021 22:12:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 18FEF40338;
+	Wed, 22 Dec 2021 03:45:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sorQHSLbe4MI; Tue, 21 Dec 2021 22:12:57 +0000 (UTC)
+	with ESMTP id hhGLU2T93mBh; Wed, 22 Dec 2021 03:45:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F419D4044D;
-	Tue, 21 Dec 2021 22:12:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C4EF640210;
+	Wed, 22 Dec 2021 03:45:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6140F1BF42C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:51 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 60AD11BF343
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Dec 2021 03:45:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4C7614044D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3D34441598
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Dec 2021 03:45:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cVIE4KTK84-P for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Dec 2021 22:12:49 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B3RTVvtGSy3T for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Dec 2021 03:45:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7A2D740124
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Dec 2021 22:12:49 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 81EEC4148B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Dec 2021 03:45:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640124769; x=1671660769;
+ t=1640144711; x=1671680711;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=PGpVodvSvN5Hx9lUskfr95r0t+L9Lp8asddDZFd2OBE=;
- b=dVudgqQHxAO+EAPTiHjSki+auazmGaDFouyvmfLWEeoxNleLi9ubnf7i
- koYgXS0wy4RVYcT/s0sYckadtVl0bDrquh+VRnvuu2uPs8ee/7+I7FT/3
- xdqUjCGwT9cOT3BdkUcrhGFFDLMMW3EpBg0DmUeUO7osxqzl3gSQ1B349
- zwboMMyT0rXH38pnUCOW5AHkWNJRYIekBAEDx9b6ilHPMed+cdvnNgQHN
- cjG4meyisfMbp7iE+xJqIJ3BzwjiTaoVMv4G6ezLQHDDVxhlK+uJy99WG
- vQFk95WrAhk4qhkR5LeP1USabnp3/qOa41ko/RmScOnQx3SJKYoc2NlCq A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10205"; a="301267834"
-X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="301267834"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2021 14:12:48 -0800
+ bh=saIcUe//lCU1D3gNelxnFcf14O73ngBeHUvXZ7TwtT4=;
+ b=S5bUAoIZJqCy2XkEpJK/tXj94EYgF3yJX2nJOgcUAWAgHcgFtAZW5yMC
+ VnMjcu+JoSbC3sMbRsXubJ8ULkxDmK/tQNv7ekWD+swsdi80cSd0Wa6hR
+ VDin5cvDgkyN4Fe5K16Y9dcByG7t4BXujhCf7MtWyJFWgQ0R9A9JI1MJJ
+ 7EU7AQ0KQnsELN8QEmFEg6hLGRQz6pnA/WMb8Q2QDCBHYXVkXJVPawE1L
+ AqAiCjavy2RHMiBgyIaoIVjYNjvtN4huCnPp90a7bar4GUL3NK+TOwqKX
+ 5LZvdRTcdvreoccpWMT9lkguoMifAZXTfbng3lgX3OixrXeEvRIggpbcx A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10205"; a="239289549"
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="239289549"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2021 19:45:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="755994681"
-Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
- by fmsmga006.fm.intel.com with ESMTP; 21 Dec 2021 14:12:47 -0800
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="521514438"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga008.jf.intel.com with ESMTP; 21 Dec 2021 19:45:10 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 21 Dec 2021 14:12:47 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ 15.1.2308.20; Tue, 21 Dec 2021 19:45:09 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Tue, 21 Dec 2021 14:12:47 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ 15.1.2308.20; Tue, 21 Dec 2021 19:45:09 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Tue, 21 Dec 2021 14:12:47 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2308.20 via Frontend Transport; Tue, 21 Dec 2021 19:45:09 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Tue, 21 Dec 2021 14:12:46 -0800
+ 15.1.2308.20; Tue, 21 Dec 2021 19:45:09 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PGe2r9ZgWXpahqZgKZYcjx0mN3rM6KtDhMvOgQa4HIqZWcrIdXl4swiIg+7jAKWDAR0Gc7C/GQ9SUhUXm7adxPEFIiQFCgcYSHrprEziT0+trBRgnPq8qjHc9sGznYXDWF/WCl5EqKHtAwfjzg0oitScl38pZ9GybG2HG7g+XX5RWMG3mals7iFaPIlkuy6hbmEBMrQa+uVbGt/hIWZpHvQFxb3WMqOKqHmX65AsFsycsygqu+vDFnAPbzE3WC46PUUOAD0JT6nvKToHbJBjMN+oB4oyv4YXdpn/7i4onNzvnoqhFZTrWqaFDUjGaE4xJTucaCL6PMC3mDgqx7Pgtw==
+ b=JRxT0g96I8fNdmT5hXIEqZQMpH9Pvvsus7pdZm2CTFEQpqid9prQu/x31Xz4EuyzEbt66DKNA72BmfQp9iupfZZ1YJ9yXmdATsP5PayFnXkanbE28EaoTUaQVaM2568Ehaoxb/BtLofRogfetMDkazZnr0EbDGqO/+P4geO3rb0Wqem1lCv37DOmpVRsMLan44Gt8wIwqP/a7wnWPxbEGFwsDLB5uY/GV5FK3PlbWxwkJyojz3qZk60fEzmSw2vbOEamGgO+AOMWn3KRLFlnNtGWvOSYeUq3K2OiW7hafH/2kOCR43BUQDxepnUCsIdZ5ppSBB4y6NNs0Pg3M4TY8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EgTKrrq9V1C6sFng8Pzy3M3oV94uEZVCl7Z+qCEdbjA=;
- b=Q3eGdtvXZvJqU6JdzON1grDDZ3DrpjPT5mUNaIVhbMk1ZoLFAHH6rh9/S5smzSfaJjeUiOyk3A/dQ7ZZVkfSV3pkOlggjytCiGXsu8CsPJxOwH734x1mBZz69VDZM/VfVCk4oARRIW5L8C/8IAlpnH04Luz/6t6dl2GlZSRguv2xK+nRBkdwRxfy3yKJFU0DNr1jxb0xwfSyE27J/S8vSNXVs+IVTvnuwiMNdTHqGrLkcZ4Qr/1D7nRm+Pr1jgGTbe5F4QwWfquVflTeYwYRAqel3Oi0h6Gg/KohsjhH1mOmO5l5mRlbt520Auv+Lqh7K6b+dIoOkqFOrt1h0KrJBg==
+ bh=JqP6P9yWEt21CWfKUgQWy4U02ScmywNzQXlbg+zRfCU=;
+ b=jSCRGl9Sx/rseCcr92rZpKDvxlJzuyYB/HQHceJuy9H/FpntIMew4FoT7n4Qy0r8ZKdmFV0z5l5j2kiL3Bet6wr1r23hXf+fBzxmPBtAczs3S8QJYd28DHWxieSlbj4a8IHWxCkk7EEwe0E5WJf3WzRFfWjsosxgLqYhNWDyQ7J4dwqA7sK+lXzl+8wcL/aCr39Qh0qD+k5zWuMoZ8hihkfVtXDQ2aBRn2hhgGK8yEmK/zLPL00elO+djh9FzHlx8p+Pfi7PA+M8qW21aklfr+UF57V9S39n4FPde92C0taSRMwTqfXli5Hfg1e8A4eaAgg4JDfnGsUccIqdzVJoTg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from MW5PR11MB5812.namprd11.prod.outlook.com (2603:10b6:303:193::14)
- by CO1PR11MB5090.namprd11.prod.outlook.com (2603:10b6:303:96::21)
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by BY5PR11MB4133.namprd11.prod.outlook.com (2603:10b6:a03:18f::21)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4801.14; Tue, 21 Dec
- 2021 22:12:44 +0000
-Received: from MW5PR11MB5812.namprd11.prod.outlook.com
- ([fe80::1ca9:6778:2b2f:7de9]) by MW5PR11MB5812.namprd11.prod.outlook.com
- ([fe80::1ca9:6778:2b2f:7de9%5]) with mapi id 15.20.4801.020; Tue, 21 Dec 2021
- 22:12:44 +0000
-From: "Machnikowski, Maciej" <maciej.machnikowski@intel.com>
-To: Ido Schimmel <idosch@idosch.org>
-Thread-Topic: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
-Thread-Index: AQHX7c5gIm8QXL1ZEECyYOKvL6PbZKwuwIcAgAFiCYCAC1L2AIACGiOw
-Date: Tue, 21 Dec 2021 22:12:44 +0000
-Message-ID: <MW5PR11MB58127387AC887DFF43140697EA7C9@MW5PR11MB5812.namprd11.prod.outlook.com>
-References: <20211210134550.1195182-1-maciej.machnikowski@intel.com>
- <YbXhXstRpzpQRBR8@shredder>
- <MW5PR11MB5812E5A30C05E2F1EAB2D9D5EA769@MW5PR11MB5812.namprd11.prod.outlook.com>
- <YcCKLnrvbu9RBlR8@shredder>
-In-Reply-To: <YcCKLnrvbu9RBlR8@shredder>
-Accept-Language: en-US
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4801.17; Wed, 22 Dec
+ 2021 03:45:07 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::bc02:db0b:b6b9:4b81]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::bc02:db0b:b6b9:4b81%5]) with mapi id 15.20.4801.020; Wed, 22 Dec 2021
+ 03:45:07 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next 6/9] igb: switch to
+ napi_build_skb()
+Thread-Index: AQHX4I+aMaLdP+/JLEujuufZFkeKvKw+C0Jg
+Date: Wed, 22 Dec 2021 03:45:07 +0000
+Message-ID: <BYAPR11MB3367C988566786D2DEBC4A90FC7D9@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20211123171840.157471-1-alexandr.lobakin@intel.com>
+ <20211123171840.157471-7-alexandr.lobakin@intel.com>
+In-Reply-To: <20211123171840.157471-7-alexandr.lobakin@intel.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-dlp-reaction: no-action
-dlp-version: 11.6.200.16
-dlp-product: dlpe-windows
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: d40f6213-3f13-4191-1227-08d9c4cf038b
-x-ms-traffictypediagnostic: CO1PR11MB5090:EE_
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <CO1PR11MB509077BB953F8E482EFAD758EA7C9@CO1PR11MB5090.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
+x-ms-office365-filtering-correlation-id: cdff7033-a282-405b-f0de-08d9c4fd7295
+x-ms-traffictypediagnostic: BY5PR11MB4133:EE_
+x-microsoft-antispam-prvs: <BY5PR11MB413324918D9CBDF7253C660AFC7D9@BY5PR11MB4133.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3826;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 7LPpaGamSOeBRqt/Mx4jQS4K1IK4U4jD4v2QjjHRtnL9/Ona0kpEW9n2l8udL1fe18BjzRCiuJJr8AzxIFTnd0h4jacyo5WnMZ5/iCyGRioNcDcnIUkk0buSivwSHk1170irTJX/OPH0MHC1RzM24JAx+nfgjR72gef9BJedEaW0Gp7WJogksv6IVpMawDAhFipzXycucF0/575PPNbt5YVYBPT96SGci0NORa8XIR5Phng/9+2/AZSOveFLDbIkypEyC/Mw+1rpUKQXX4RozMYD2MiE1+1puQj18GG/no+HpSqt+0QDz3tCSZ3gj42Qnngg5T5PEXgRh7fEZODFHChBnhR11OtuQs3dk3h5TUIF6VLFAS/ItgCOiK5GOwMfKRugGkYzntUVLOmz5ReORgo6jDij8JLdwSH1rwF63wXiaanzMp1D8MsVhKTdyXUiIDQVvjMas5I/2tfQos7ypLj+fD0REdYa/fxbygSON4jWEiHilJog41rNBwFXY8wHZoWEe5L59+KLj1Nm4ArbBfj4QZmO4ghgx8nrJL+2cCrkNy7qlOS+CSPwXgJ0NKkUxPRP1JEUJZ9p0XlzYBfbHWcyowlXlouJgL2Hjj9AiVhIfmNJTa0PYuSMIH0biVqsf6eiNDxP9CueQAsWkjzyrjEO09K1b735aLig8+I+Md41bNEL3SCFKkp15fmqw2Bnip0l61xOBLSeMsp9GxWiYQ==
+x-microsoft-antispam-message-info: mOJHucdHQX+0t0gzuWYUZzZ4V7jSnQoTHSkZ39ZoS1SgIO0r2j8HVo2l9tBvPyyg+5QwmuPcSF8/oSsPmvt6VCiQn24lAFUeIo2mPsb8wWg4SHywpln3Y86mHoYCM7OrTJZWl6PrVSlNuu9iLNpwZSG78IkgIumOo2+I1AlMMvQ19742Fv+aVaKXCs61TqmiCspx3TMHfw/Y67sgCfyEt8LJH8pkk5wTIVR0g/VVRkx7t0dD0NQhKi2sQqi8aWdzoo44oro+AcA5uOsFjvMt48XjXZxQuN3/MHaGaXtRZlOgbPozZogFSCjEkD7cCGi21gP7RQoMoCC676FYPR4bVPJ8Z7ON8AkgKAXcRe73Les948ZEoKZbVk9EESVn4IY+MLPo7XIQBjsAWM+oFIpwMS1+TTo5vJJaSk3ZFh1C9QYo77ik/neid9lBX8YxUb8Jy+WPdYtkb2J3gC75yzLsELcY71c6/CYwRszPqsJrG17gErM9SBUBU6lOWn/EMqAhxSJEJDQMFE5wI8v/aXVsjLrBYDSrq7V+UjKQ7cOcrGzDynx23jOpKPyVuVMARWALeG7P7p0WHZg6WQeUqyMob6VqIyaoSlbGBBoq78PCc2QoW70m/e0hOpRpz9Ije/UtFYK581pqvdXa3V8IGnW80vA7+1YRdq03pe+8U4JNrhDFSAxaNFw75U7Ab0wtRiHjszPrNUDlzJX98j9tR/sTTA==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW5PR11MB5812.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(4326008)(38070700005)(8936002)(82960400001)(7696005)(52536014)(66946007)(66556008)(508600001)(64756008)(316002)(54906003)(9686003)(76116006)(66446008)(55016003)(66476007)(5660300002)(71200400001)(86362001)(8676002)(7416002)(53546011)(6506007)(83380400001)(26005)(38100700002)(122000001)(2906002)(186003)(33656002)(6916009);
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(33656002)(316002)(52536014)(66946007)(76116006)(6506007)(66476007)(53546011)(8676002)(64756008)(5660300002)(110136005)(4326008)(7696005)(38070700005)(66446008)(55016003)(9686003)(86362001)(38100700002)(186003)(71200400001)(83380400001)(2906002)(122000001)(82960400001)(8936002)(508600001)(66556008)(54906003)(26005);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?dHwVIh/fPyk/xfmIeXoPr6nyi9L7hVYQC9+Bi9lrIglUJgrnvsT51Ycf7ToG?=
- =?us-ascii?Q?tazqWTLP02/+hNeoywu1TNgav4mwPkdhm3d/fIhVUdva1KN0NzQMHETEC+oT?=
- =?us-ascii?Q?11mridI9lTndm016Lj8/Fo69JnhyrsRu03TjR1F4YegHq1Nhri/0uZ15UMCk?=
- =?us-ascii?Q?sjsWWPk4eOR5Auarn39WvH4zcWJEo/iOlkXCKP/L0JlFHfK7i2dmjMZTO83z?=
- =?us-ascii?Q?DsSlGWG6PsWcvKCAH+CtoQ84FA88poTZXdxVywUOe9Q02pk7SZIbTJgnQXUi?=
- =?us-ascii?Q?0LJ/82bu7qn92v0wOS4gOBMIRWVtwppltqnDLfZ2T50zhf5VItKcLDfwBeJo?=
- =?us-ascii?Q?4dv0GWMAqCY3go1V/xcFM7nDIEToZ1KLWUHOi0XkQ6y5A7jmYY2PA5WQ8z0s?=
- =?us-ascii?Q?XCXc+70aN6C9JSDGkDuFKPYjfeOwpqmO1tksV1ymPwjv9Y7zBjVBSorZT8nU?=
- =?us-ascii?Q?aY40zZLk4NfIw7YMqsLwiJmeTb4hZJSANdgyVTaHluglWfeM0CIzqeuvT+HK?=
- =?us-ascii?Q?49qJQehWV5KuXBfsMikuYF6JzPGAuPaU2s9mZcPGKg4EXgXbPsnRt7PN7573?=
- =?us-ascii?Q?MAeOkw9R/ltnvWjkTdvJVsiV0DZfL/MRh/NDiW1eW9qm2Eyj6oqekuLQA4b5?=
- =?us-ascii?Q?SM9OlPMvZlDf8qQ2ypupTmGKa16ZvXxauQVpGVqdPwrSYT9MprwuNX8AfVoz?=
- =?us-ascii?Q?dVQq2K+eRRGICVRYQlimOwMuSpezXuXl3mUpnT06DcWq8dh1OyDFkSnW0wew?=
- =?us-ascii?Q?Ih5XPtLhhEfGcZaxV06LqJF9ZSZQtN2Jn+jb0n1CQhUtL24nl1RJOO2NphL+?=
- =?us-ascii?Q?7qut3vYWLAZw7E4tKl4lANb3xtSAxHim7l+8LmfapLYoVbPuGyx8+Dzo6McU?=
- =?us-ascii?Q?kljsfboo6PVrscCX19a3wBAHWxn6lZEmTMwhk2Qa63K04GygA+SPjRski5Lw?=
- =?us-ascii?Q?fa56DGEQD5rm7kR64o8RwY6uzjX8xMSNBV9RctjGmUzSQFVidNukJGWwqsl9?=
- =?us-ascii?Q?1h0O6BehwUwOh9zwczBWG9RJVM3ADsc3A120HqgYl+SRvk1cdcL2TqrNTyyj?=
- =?us-ascii?Q?ZbiU3CQYeqwwvdUEexxyIGQVwNAzAw6a64a9hCVe2CnDXcAcQdA6dfw54YbV?=
- =?us-ascii?Q?fW0BvPzUbokD5UZjQX2LxDe0cZhYNwqpCLjnU7Y7vTJ8amEL8EqbCkMv9Jra?=
- =?us-ascii?Q?qzAoFCzgRpMh1DPOAMhu+TuG63qDjYxkdF/0O6OOJGGS5Yf6bg87e6xEHCoM?=
- =?us-ascii?Q?bdUyr5O6nP0BSQXTpDZXrXvi/Q6VdGR5P3fwVVRaF4oatMWUvbJwunA/4Zap?=
- =?us-ascii?Q?KkHU7cpVSzFPRTKoD9pjTkIak+fA/QHa56mIGx+wjeeTcBoCdZ3HM4S7WDFN?=
- =?us-ascii?Q?IZN2NyWGmxOTniYk1BbHB9aKIfh97zKADbCfjL5Npfe0YRRH/rmOZEw9ARth?=
- =?us-ascii?Q?2+DU76PlzduvOuQCLFQ57hRiV3W3aPHFrECBsQR50nDxZTK963D58zFE+OD0?=
- =?us-ascii?Q?ePAoWmcyTBsTJgJN9nR7GGZofAoDdRkzo6B2xMvRcIkD4UsTmat4WofhMpJR?=
- =?us-ascii?Q?ZpG7TELggd3OaQRyn7yCkzd/PGwM7Fp5g52ROun96IW4uX58/qAYk7C8iiDz?=
- =?us-ascii?Q?+B2PLG8L4S5Zc/ZmYgg9up+Y5B24H+fkCe7ya5+Qn6F2+bLcwBBF/WU4Mzx7?=
- =?us-ascii?Q?nbn0yg=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?sB1u+eotdvUi+Wr8bn5evjtGP45PWrP+YA+TJLMbbkox2Y2kqi5nCb6uf9D8?=
+ =?us-ascii?Q?rYscHeg6JcpUPoXatpI0R6sDtLoOuIdsyMlmGugyU+/EGcO4aYU5M8idANg3?=
+ =?us-ascii?Q?FQj4HT5l/K4QNTghCfwKYLqeQ9sB477l1FcT5NrVa2Hf3gr+Juzs/vMcqr3/?=
+ =?us-ascii?Q?cqe6lfWI3ZxkybQPdjr1oRsjzprAooWP+aGpiL4s9Kop/13h/AMH6P6HX/JU?=
+ =?us-ascii?Q?fd2U5IWCanZh6Uls4ckOc0xj38PZjQLTs/CfVemay7FnZEx03dZNniWIqBJ6?=
+ =?us-ascii?Q?NIjbD9LmWSO79tpoQ4R1UmJYC8gGJy3BWv4+MzBS89ARDYRydzwAlc88uWEo?=
+ =?us-ascii?Q?C3QXBWKCMC93JFpe0BoWF8T682yGgC07jELvA2Pt5szt9UyRBoFFh52QPBwZ?=
+ =?us-ascii?Q?C811VbUXpsroUSKrqI07vkbW7Ng7/vlsJhd7Eo/eqKYFMkr1xzLihJiFgygW?=
+ =?us-ascii?Q?WNOqtwwxaQVz5KtnTcNf2McDjMx8SeO7gF/jYNFEzFJIvF6CwUwtq1ivmkQ1?=
+ =?us-ascii?Q?R3EE3kghotQava2FJf/Xh6WY97DpxxGWhE6VjkfpZa0JYZ9eMu9cG+VsKj2x?=
+ =?us-ascii?Q?9Zzblvq4L3qqDlJgdm4rbTP/YrJvwdKAQfQc9oBl2ExFfb3wFFGo7gCQk1qi?=
+ =?us-ascii?Q?PnMpj08KzKOSXuDxwnxjXyePs9PGEOfgB8fX3tctO3zJFsaeK34bQK1BO4Vc?=
+ =?us-ascii?Q?ea8szdMXyAPo7EXlJFZ8Rp/G2Lr242WwBBdTBIzXsB4Jq0++uFIc7GTcIk4y?=
+ =?us-ascii?Q?kXKoSj5IP9RcxV6gkwDeGECDXzIbs2r1EilTLsy8CS0Fw8vbmCZwAQP06xKn?=
+ =?us-ascii?Q?DRlzdVE1KnsNI+lS0Zlw615wHEgaQxuSyRUFAIBhDgh7uQVNwFp3tVQnvmds?=
+ =?us-ascii?Q?l5H/bWhFYEmwxX66tIlIBiPLSzVRKggkfeQWjK5tyy8wELotCqEfl8Ow3TAs?=
+ =?us-ascii?Q?QrDSoYuJmji34CFLh5DvZLuLHmmKN/xehHq4Al7LA8XtRIrfS9y3jp6ncAMA?=
+ =?us-ascii?Q?dsNtlqzmO8GWoBeqLfYCmPKADb7DiMwMlcTd3SU2WOQwavZ0sc+g6SYpCrhf?=
+ =?us-ascii?Q?1zjdRAKXjThmTChDLzGBRiQpYCLGbOTLk47q3h24HbMJ1ZweRLhV1hMuczjp?=
+ =?us-ascii?Q?AYqNGX7pYeC6MNbiwRxOHHPlHo5sjQ6rjBskgHUPOJ6OSofPIuUnmbqN97QX?=
+ =?us-ascii?Q?SLFyRs0kDW96c8l0Q5G+G99iUkyIXwhIF7/vb9/eJYrLkKt1B5NeG2vRuKKC?=
+ =?us-ascii?Q?V3gpqtX0mC6faNpDpHitHC3wbsc4cl9P8Lq2j+r4M3mUEDMcbi3VRKY5Fis7?=
+ =?us-ascii?Q?jNfYu91TDRsIOaMKBZTVRIuJGxHJrjynJlbMJNS4+2IUmpyx0GuVvL1P2Hra?=
+ =?us-ascii?Q?XqfQMT1KfbsNEvQwNt/IgUwkHQKntYrkOjXLU7NS7XLRKsldfu41Ql2lWlXl?=
+ =?us-ascii?Q?WsfSZcw7ZaillmAag9Yie8raTP6fqLmCIElnjFhGdPai3zIFtZZPSqIKVQSD?=
+ =?us-ascii?Q?Hd1cPQeSdEb6tDAdgTzBl2tunEduatR6q4USTvqUtcCnCDaf0cbLp2saONLB?=
+ =?us-ascii?Q?IlB8shqdguLCoPIyYr4SDgJA03oDFZVxIrqbVN/IBrmXrmFHHa5Oiqx1TcF5?=
+ =?us-ascii?Q?Aw=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5812.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d40f6213-3f13-4191-1227-08d9c4cf038b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Dec 2021 22:12:44.4928 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cdff7033-a282-405b-f0de-08d9c4fd7295
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Dec 2021 03:45:07.7210 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Y11VOeVzI4bcvFOdLCnqiekMXv44hNDie2u57xKQWD9iyQ58t1ysxKLDZsNQ41wfxn0Q9s0FShg4zmZYoYcsZf8Vhp4cNCxV3wD/uUzvJ1E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5090
+X-MS-Exchange-CrossTenant-userprincipalname: noCdBx37OqZ9xhuSobldcUCujD/fP4xa5H+EogFFNmmxVJz0JPWs+SNbwIU3ub3kYY0kZ0bSmRXAhDdUjGDomg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR11MB4133
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 0/4] Add ethtool interface
- for RClocks
+Subject: Re: [Intel-wired-lan] [PATCH net-next 6/9] igb: switch to
+ napi_build_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,204 +173,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "petrm@nvidia.com" <petrm@nvidia.com>, "Byagowi, Ahmad" <abyagowi@fb.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>, Vadim
- Fedorenko <vfedorenko@novek.ru>, "saeed@kernel.org" <saeed@kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+
+
 > -----Original Message-----
-> From: Ido Schimmel <idosch@idosch.org>
-> Sent: Monday, December 20, 2021 2:51 PM
-> To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
-> Subject: Re: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Alexander Lobakin
+> Sent: Tuesday, November 23, 2021 10:49 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Jakub Kicinski
+> <kuba@kernel.org>; David S. Miller <davem@davemloft.net>
+> Subject: [Intel-wired-lan] [PATCH net-next 6/9] igb: switch to napi_build_skb()
 > 
-> On Wed, Dec 15, 2021 at 12:13:47PM +0000, Machnikowski, Maciej wrote:
-> > > -----Original Message-----
-> > > From: Ido Schimmel <idosch@idosch.org>
-> > > Sent: Sunday, December 12, 2021 12:48 PM
-> > > To: Machnikowski, Maciej <maciej.machnikowski@intel.com>
-> > > Subject: Re: [PATCH v5 net-next 0/4] Add ethtool interface for RClocks
-> > >
-> > > On Fri, Dec 10, 2021 at 02:45:46PM +0100, Maciej Machnikowski wrote:
-> > > > Synchronous Ethernet networks use a physical layer clock to syntonize
-> > > > the frequency across different network elements.
-> > > >
-> > > > Basic SyncE node defined in the ITU-T G.8264 consist of an Ethernet
-> > > > Equipment Clock (EEC) and have the ability to synchronize to reference
-> > > > frequency sources.
-> > > >
-> > > > This patch series is a prerequisite for EEC object and adds ability
-> > > > to enable recovered clocks in the physical layer of the netdev object.
-> > > > Recovered clocks can be used as one of the reference signal by the EEC.
-> > >
-> > > The dependency is the other way around. It doesn't make sense to add
-> > > APIs to configure the inputs of an object that doesn't exist. First add
-> > > the EEC object, then we can talk about APIs to configure its inputs from
-> > > netdevs.
-> >
-> > This API configures frequency outputs of the PTY layer of
-> > a PHY/integrated MAC. It does not configure any inputs nor it interacts
-> > with the EEC. The goal of it is to expose the clock to the piece that
-> > requires it as a reference one (a DPLL/FPGA/anything else).
+> napi_build_skb() reuses per-cpu NAPI skbuff_head cache in order to save some
+> cycles on freeing/allocating skbuff_heads on every new Rx or completed Tx.
+> igb driver runs Tx completion polling cycle right before the Rx one and uses
+> napi_consume_skb() to feed the cache with skbuff_heads of completed entries,
+> so it's never empty and always warm at that moment. Switch to the
+> napi_build_skb() to relax mm pressure on heavy Rx.
 > 
-> My fundamental issue with these patches is that instead of abstracting
-> the hardware from user space they give user space direct control over
-> it.
-
-Unfortunately, I don't see any other way to address the use cases that I listed
-otherwise. I'm a big fan of simple solutions, but only when they address
-all use cases that are known at the time of defining them.
-
-> This approach has the advantage of keeping the kernel relatively simple
-> and fitting more use cases than just EEC, but these are also its
-> disadvantages. Complexity needs to live somewhere and if this complexity
-> is related to the abstraction of hardware, then it should live in the
-> kernel and not in user space. We should strive to come up with an API
-> that does the same thing regardless of the underlying hardware
-> implementation.
+> Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> ---
+>  drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Look at the proposed API, it basically says "Make the clock recovered
-> from eth0 available on pin 1". If user space issues this command on
-> different systems, it will mean different things, based on the
-> underlying design of the hardware and the connection of the pin: To
-> "DPLL/FPGA/anything else".
 
-The link to the right DPLL input can be easily added later by adding
-the new attribute to those commands. This has a big advantage
-over the other model, as it is scalable to multiple different devices
-serviced by different drivers, as it doesn't have the issue we have with
-linking objects in kernel...
-
-> Contrast that with an API that says "Set the source of EEC X to the
-> clock recovered from eth0". This API is well defined and does the same
-> thing across different systems.
-> 
-> Lets assume that these patches are merged as-is and tomorrow we get
-> another implementation of these two ethtool operations in a different
-> driver. We can't tell if these are used to feed the recovered clock into
-> an EEC like ice does or enable some other use case that we never
-> intended to enable.
-
-...that issue is caused by the randomness and scalability of that 
-infrastructure. At the time system boots it enumerates devices and
-initializes them in  "random" order depending on the current system 
-configuration which makes it impossible to code any co-driver 
-dependencies, as it's impossible to guess what identifier the kernel
-assigned to the other device that's connected to the same DPLL.
-
-> Even if all the implementations use this API to feed the EEC, consider
-> how difficult it is going to be for user space to use it. Ideally, user
-> space should be able to query the state of the EEC and its source via an
-> EEC object in a single command. With the current approach in which we
-> have some amorphic object called "DPLL" that is only aware of pins and
-> not netdevs, it's going to be very hard. User space will see that the
-> DPLL is locked to the clock fed via pin 1. How user space is supposed to
-> understand what is the source of this clock? Issue RCLK_GET dump and
-> check for matching pin index that is enabled? User space has no reason
-> to do it given that it doesn't even know that the source is a netdev.
-
-Userspace tool will always know what ports it works with - it will come
-from the config file, as - even if you have a dozen ports linked to a single
-DPLL you may decide that you don't want to send ESMC messages
-on some of them - just like we do with ptp4l.
-
-The amorphic DPLL device has much more uses that a dedicated EEC
-object and if we know what pin the DPLL uses and what is the link
-between the RCLK output and the DPLL input it'll be very easy to
-figure out what's going on.
-
-The dump will also not be needed, as we know who we set as the best
-source after receiving the ESMC packets from neighbors.
-
-> >
-> > I don't agree with the statement that we must have EEC object first,
-> > as we can already configure different frequency sources using different
-> > subsystems.
-> 
-> Regardless of all the above technical arguments, I think that these
-> patches should not be merged now based on common sense alone. Not only
-> these patches are of very limited use without an EEC object, they also
-> prevent us from making changes to the API when such an object is
-> introduced.
-
-And I see a big value of merging them in as that would enable upstreaming
-of the userspace tools that will explain a lot and close many gaps.
-
-> > The source of signal should be separated from its consumer.
-> 
-> If it is completely separated (despite being hardwired on the board),
-> then user space does not know how the signal is used when it issues the
-> command. Is this signal fed into an EEC that controls that transmission
-> rate of other netdev? Is this signal fed into an FPGA that blinks a led?
-
-It's the same thing with frequency pins of the PTP subsystem. Userspace
-tool can enable them, but has no idea what's on the other end of them.
-
-> >
-> > > With these four patches alone, user space doesn't know how many EECs
-> > > there are in the system, it doesn't know the mapping from netdev to EEC,
-> > > it doesn't know the state of the EEC, it doesn't know which source is
-> > > chosen in case more than one source is enabled. Patch #3 tries to work
-> > > around it by having ice print to kernel log, when the information should
-> > > really be exposed via the EEC object.
-> >
-> > The goal of them is to add API for recovered clocks - not for EECs.
-> 
-> What do you mean by "not for EECs"? The file is called
-> "net/ethtool/synce.c", if the signal is not being fed into an EEC then
-> into what? It is unclear what kind of back doors this API will open.
-
-Can be a DPLL of the radio part of the device, or different devices that
-expects frequency reference.
-If it makes it better we can move that to net/ethtool/rclk.c.
-
-> > This part is there for observability and will still be there when EEC
-> > is in place.  Those will need to be addressed by the DPLL subsystem.
-> 
-> If it is it only meant for observability, then why these messages are
-> emitted as warnings to the kernel log? Regardless, the user API should
-> be designed with observability in mind so that you wouldn't need to rely
-> on prints to the kernel log.
-
-You're right - need to change that to dev_info.
-And yes - in the final form userspace tools will pull EEC's info from the DPLL
-subsystem - this prints the state of 2 DPLLs and is designed for debuggability.
-
-> >
-> > > +		dev_warn(ice_pf_to_dev(pf),
-> > > +			 "<DPLL%i> state changed to: %d, pin %d",
-> > > +			 ICE_CGU_DPLL_SYNCE,
-> > > +			 pf->synce_dpll_state,
-> > > +			 pin);
-> > >
-> > > >
-> > > > Further work is required to add the DPLL subsystem, link it to the
-> > > > netdev object and create API to read the EEC DPLL state.
-> > >
-> > > When the EEC object materializes, we might find out that this API needs
-> > > to be changed / reworked / removed, but we won't be able to do that
-> > > given it's uAPI. I don't know where the confidence that it won't happen
-> > > stems from when there are so many question marks around this new
-> > > object.
-> >
-> > This API follows the functionality of other frequency outputs that exist
-> > in the kernel, like PTP period file for frequency output of PTP clock
-> > or other GPIOs. I highly doubt it'll change - we may extend it to add
-> mapping
-> > between pins, but like I indicated - this will not always be known to SW.
-> >
-> > Regards
-> > Maciek
+Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
