@@ -1,70 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0624E47E484
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Dec 2021 15:27:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0C3A47E67A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Dec 2021 17:38:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ECB2940922;
-	Thu, 23 Dec 2021 14:27:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CF80740AB1;
+	Thu, 23 Dec 2021 16:38:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Kc8Hu-DUTgPR; Thu, 23 Dec 2021 14:27:53 +0000 (UTC)
+	with ESMTP id DIdvzoZaSMMG; Thu, 23 Dec 2021 16:38:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8857040010;
-	Thu, 23 Dec 2021 14:27:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 287A140AB8;
+	Thu, 23 Dec 2021 16:38:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E9FC81BF44C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 14:27:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F08061BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:38:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D326D60F6A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 14:27:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D420A60F2E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:38:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ewPaFsBRDMra for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Dec 2021 14:27:48 +0000 (UTC)
+ with ESMTP id PcAqqIglV7Wx for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Dec 2021 16:38:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D792B60EE6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 14:27:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640269667; x=1671805667;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=wQfizwR6KbNCp3sfswEWFUN1KsGvr5B5Sjr6AdFdgx0=;
- b=kDgOebt7KdpgCj/jXUUAHH8Pq0e+HupjVhyVYzuN924aKqIQaltW/xwQ
- 5x1Dk+qaveTt2cbe/DmWwHA858VVdF7EsLvDo7jS1z7GiQD35ebD/tTHE
- EJEqFCbT5eSbmpble4zHssYzEZ/KQaMSNZnY+UP0B3MYZZ8lzyC5SxnE9
- VWCmykQDHYev/i77TE/ZPIkBYjhPuJaGVOQ5etd2z5tkSsefEb87l9AeY
- eFXF39BS6z5PJYckGCuGlimD131DPTztW7fcnOpP4TGHNJq9XFn5SeYfw
- FJwCPoZIfW+/mRd+luC2keXpw5kRv7vw7mP7TKIBL8Vo6QfSiElCn9KZy g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10206"; a="228129519"
-X-IronPort-AV: E=Sophos;i="5.88,229,1635231600"; d="scan'208";a="228129519"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2021 06:27:47 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,229,1635231600"; d="scan'208";a="468552496"
-Received: from lkp-server01.sh.intel.com (HELO e357b3ef1427) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 23 Dec 2021 06:27:46 -0800
-Received: from kbuild by e357b3ef1427 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1n0P4L-0001yC-F9; Thu, 23 Dec 2021 14:27:45 +0000
-Date: Thu, 23 Dec 2021 22:27:18 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61c48746.6t/AOfzXRWCElv0w%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5CAFA60F18
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:37:59 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 72F9BB81FC1;
+ Thu, 23 Dec 2021 16:37:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE709C36AE9;
+ Thu, 23 Dec 2021 16:37:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1640277476;
+ bh=I9a8MK1bhxraYlvGnDhWvhoRW/AU+35GD1j/Ku3yvJw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=D0sa+/eqq0bqcZINEkvF4aGoeNYXBZwW2h6cio461cdRY0uWRcqAE6o7Hd1PdLlkw
+ BzLxuIFaOJ2O2gCtWuuBk45VnicC+wjU7JWhfciRTWJQGaSvSzhAjoXMZ+CVvBOJOR
+ Cya3TNlSdW/GSyevnMB4aGVJiDI4HI6YGjjqA/8thS8A1K1k0yRbiWUdqcKU5Tuieo
+ J3/62yRBJuzfzWd/9d++bIiCS2zpa3sMY3NiUZGvRGA4TGR02F9QmfNDN4vEDgDE6D
+ xufritCx5bj+Fmsrby/BdVhzT4G+w3zNtE5EKb6fYYDedc8rN1P6kM0X3vVxFSks6I
+ Fvrpgjt4G1MwA==
+Date: Thu, 23 Dec 2021 10:37:54 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Michael Walle <michael@walle.cc>
+Message-ID: <20211223163754.GA1267351@bhelgaas>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- f92adae898276e0ece098931f863b977856b6ec8
+Content-Disposition: inline
+In-Reply-To: <39ecedffaf8e2ee931379de7e2f7924f@walle.cc>
+Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
+ overlapping of BARs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,149 +72,224 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Bjorn Helgaas <bhelgaas@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: f92adae898276e0ece098931f863b977856b6ec8  i40e: Add a stat for tracking busy rx pages
+On Thu, Dec 23, 2021 at 10:27:15AM +0100, Michael Walle wrote:
+> Am 2021-12-21 18:48, schrieb Bjorn Helgaas:
+> > [+to Jesse, Tony for Intel advice;
+> > beginning of thread:
+> > https://lore.kernel.org/all/20201230185317.30915-1-michael@walle.cc/]
+> > 
+> > On Mon, Dec 20, 2021 at 06:43:03PM +0100, Michael Walle wrote:
+> > > ...
+> > > ping #4
+> > > 
+> > > In a few days this is a year old. Please have a look at it and
+> > > either add my quirk patch or apply your patch. This is still
+> > > breaking i210 on my board.
+> > > 
+> > > TBH, this is really frustrating.
+> > 
+> > You are right to be frustrated.  I'm very sorry that I have dropped
+> > the ball on this.  Thanks for reminding me *again*.
+> > 
+> > I think we agree that this looks like an I210 defect.  I210 should
+> > ignore the ROM BAR contents unless PCI_ROM_ADDRESS_ENABLE is set.  It
+> > would be great if an Intel person could confirm/deny this and supply
+> > an erratum reference and verify the affected device IDs.
+> > 
+> > It seems that when the BARs are programmed like this:
+> > 
+> >   BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
+> >   BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
+> >   ROM:   0x40200000 (disabled) [size=1M]
+> > 
+> > networking doesn't work at all and the transmit queue times out.
+> > 
+> > Linux assigns non-overlapping address space to the ROM BAR, but
+> > pci_std_update_resource() currently doesn't update the BAR itself
+> > unless it is enabled.
+> > 
+> > My proposal [1] worked around the defect by always updating the BAR,
+> > but there's no clue that this covers up the I210 issue, so it remains
+> > as sort of a land mine.  A future change could re-expose the problem,
+> > so I don't think this was a good approach.
+> > 
+> > Your original patch [2] makes it clear that it's an issue with I210,
+> > but there's an implicit connection between the normal BAR update path
+> > (which skips the actual BAR write) and the quirk that does the BAR
+> > write:
+> > 
+> >   <enumeration resource assignment>
+> >     ...
+> >       pci_assign_resource
+> >         pci_update_resource
+> >           pci_std_update_resource
+> >             if (ROM && ROM-disabled)
+> >               return
+> >             pci_write_config_dword      # ROM BAR update (skipped)
+> > 
+> >   pci_fixup_write_rom_bar               # final fixup
+> >     pci_write_config_dword              # ROM BAR update
+> > 
+> > In the boot-time resource assignment path, this works fine, but if
+> > pci_assign_resource() is called from pci_map_rom(), the fixup will not
+> > happen, so we could still have problem.
+> 
+> I'm not sure I follow. pci_map_rom() should work fine. That was also
+> the workaround IIRC, that is, enable the rom via sysfs. pci_map_rom()
+> will call pci_enable_rom(), which should be the same as the fixup.
+> If memory serves correctly, that is where I shamelessly copied the
+> code from ;)
 
-elapsed time: 1311m
+Ah, you're right, I missed the fact that pci_enable_rom() would do the
+write.
 
-configs tested: 120
-configs skipped: 3
+> btw. the problem is not in pci_assign_resource() which assigns the
+> correct offsets, but that they are not written to the PCI card.
+> Eg. see lspci:
+> 
+> # lspci -s 2:1:0 -v
+> 0002:01:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
+> Connection (rev 03)
+> 	Subsystem: Hewlett-Packard Company Ethernet I210-T1 GbE NIC
+> 	Flags: bus master, fast devsel, latency 0, IRQ 34, IOMMU group 8
+> 	Memory at 8840000000 (32-bit, non-prefetchable) [size=1M]
+> 	Memory at 8840200000 (32-bit, non-prefetchable) [size=16K]
+> 	Expansion ROM at 8840100000 [disabled] [size=1M]
+> 	Capabilities: [40] Power Management version 3
+> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
+> 	Capabilities: [a0] Express Endpoint, MSI 00
+> 	Capabilities: [100] Advanced Error Reporting
+> 	Capabilities: [140] Device Serial Number 00-de-ad-ff-ff-be-ef-04
+> 	Capabilities: [1a0] Transaction Processing Hints
+> 	Kernel driver in use: igb
+> lspci: Unable to load libkmod resources: error -2
+> 
+> # lspci -s 2:1:0 -xx
+> 0002:01:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
+> Connection (rev 03)
+> 00: 86 80 33 15 06 04 10 00 03 00 00 02 08 00 00 00
+> 10: 00 00 00 40 00 00 00 00 00 00 00 00 00 00 20 40
+> 20: 00 00 00 00 00 00 00 00 00 00 00 00 3c 10 03 00
+> 30: 00 00 20 40 40 00 00 00 00 00 00 00 22 01 00 00
+> 
+> Note the difference between "Expansion ROM at 8840100000" (assigned
+> by pci_assign_resource() I guess) and the actual value at offset
+> 0x30: 0x40200000. The latter will be updated either by pci_enable_rom()
+> or my pci fixup quirk.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Yes, I understand that.  I think it's better to do the update in
+pci_std_update_resource() instead of relying on a future fixup or
+pci_enable_rom().  There's no explicit connection between the
+assignment and the BAR write, so it's fragile.
 
-gcc tested configs:
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm64                               defconfig
-arm64                            allyesconfig
-i386                 randconfig-c001-20211223
-arm                         shannon_defconfig
-m68k                         apollo_defconfig
-powerpc                      katmai_defconfig
-arm                        magician_defconfig
-powerpc64                        alldefconfig
-h8300                     edosk2674_defconfig
-arc                        vdk_hs38_defconfig
-m68k                       m5208evb_defconfig
-powerpc                     tqm8555_defconfig
-arm                         lpc32xx_defconfig
-mips                   sb1250_swarm_defconfig
-arm                       aspeed_g4_defconfig
-arm                          pxa3xx_defconfig
-sh                           se7722_defconfig
-mips                     cu1000-neo_defconfig
-mips                            e55_defconfig
-powerpc                         wii_defconfig
-sh                          sdk7786_defconfig
-sparc                       sparc64_defconfig
-arm                          pxa168_defconfig
-powerpc                      makalu_defconfig
-arm                        trizeps4_defconfig
-arc                          axs101_defconfig
-arm                          pcm027_defconfig
-openrisc                         alldefconfig
-powerpc                    adder875_defconfig
-arm                  randconfig-c002-20211222
-arm                  randconfig-c002-20211223
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-s390                             allyesconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-sparc                               defconfig
-sparc                            allyesconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a001-20211222
-x86_64               randconfig-a003-20211222
-x86_64               randconfig-a005-20211222
-x86_64               randconfig-a006-20211222
-x86_64               randconfig-a004-20211222
-x86_64               randconfig-a002-20211222
-i386                 randconfig-a006-20211222
-i386                 randconfig-a004-20211222
-i386                 randconfig-a002-20211222
-i386                 randconfig-a003-20211222
-i386                 randconfig-a005-20211222
-i386                 randconfig-a001-20211222
-x86_64               randconfig-a014-20211223
-x86_64               randconfig-a011-20211223
-x86_64               randconfig-a012-20211223
-x86_64               randconfig-a013-20211223
-x86_64               randconfig-a015-20211223
-x86_64               randconfig-a016-20211223
-i386                 randconfig-a012-20211223
-i386                 randconfig-a011-20211223
-i386                 randconfig-a014-20211223
-i386                 randconfig-a016-20211223
-i386                 randconfig-a015-20211223
-i386                 randconfig-a013-20211223
-arc                  randconfig-r043-20211223
-riscv                randconfig-r042-20211223
-s390                 randconfig-r044-20211223
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
+> > Can you try the patch below?
+> 
+> I tried, but it doesn't work because the fixup function is called
+> after pci_std_update_resource(), thus dev->rom_bar_overlap is still
+> 0.
 
-clang tested configs:
-x86_64               randconfig-a001-20211223
-x86_64               randconfig-a003-20211223
-x86_64               randconfig-a005-20211223
-x86_64               randconfig-a006-20211223
-x86_64               randconfig-a004-20211223
-x86_64               randconfig-a002-20211223
-hexagon              randconfig-r041-20211222
-hexagon              randconfig-r045-20211222
-riscv                randconfig-r042-20211222
-s390                 randconfig-r044-20211222
+I intended to change the quirk from FINAL to EARLY, but obviously
+forgot.  Here's the updated version:
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+commit bb5639b73a2d ("PCI: Work around Intel I210 ROM BAR overlap defect")
+Author: Bjorn Helgaas <bhelgaas@google.com>
+Date:   Tue Dec 21 10:45:07 2021 -0600
+
+    PCI: Work around Intel I210 ROM BAR overlap defect
+    
+    Per PCIe r5, sec 7.5.1.2.4, a device must not claim accesses to its
+    Expansion ROM unless both the Memory Space Enable and the Expansion ROM
+    Enable bit are set.  But apparently some Intel I210 NICs don't work
+    correctly if the ROM BAR overlaps another BAR, even if the Expansion ROM is
+    disabled.
+    
+    Michael reported that on a Kontron SMARC-sAL28 ARM64 system with U-Boot
+    v2021.01-rc3, the ROM BAR overlaps BAR 3, and networking doesn't work at
+    all:
+    
+      BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
+      BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
+      ROM:   0x40200000 (disabled) [size=1M]
+    
+      NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
+      Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval 2.0 carrier (DT)
+      igb 0002:01:00.0 enP2p1s0: Reset adapter
+    
+    Previously, pci_std_update_resource() wrote the assigned ROM address to the
+    BAR only when the ROM was enabled.  This meant that the I210 ROM BAR could
+    be left with an address assigned by firmware, which might overlap with
+    other BARs.
+    
+    Quirk these I210 devices so pci_std_update_resource() always writes the
+    assigned address to the ROM BAR, whether or not the ROM is enabled.
+    
+    Link: https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
+    Link: https://bugzilla.kernel.org/show_bug.cgi?id=211105
+    Reported-by: Michael Walle <michael@walle.cc>
+    Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 003950c738d2..46ff04091fa3 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -5857,3 +5857,13 @@ static void nvidia_ion_ahci_fixup(struct pci_dev *pdev)
+ 	pdev->dev_flags |= PCI_DEV_FLAGS_HAS_MSI_MASKING;
+ }
+ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab8, nvidia_ion_ahci_fixup);
++
++static void rom_bar_overlap_defect(struct pci_dev *dev)
++{
++	pci_info(dev, "working around ROM BAR overlap defect\n");
++	dev->rom_bar_overlap = 1;
++}
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1533, rom_bar_overlap_defect);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1536, rom_bar_overlap_defect);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1537, rom_bar_overlap_defect);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1538, rom_bar_overlap_defect);
+diff --git a/drivers/pci/setup-res.c b/drivers/pci/setup-res.c
+index 7f1acb3918d0..439ac5f5907a 100644
+--- a/drivers/pci/setup-res.c
++++ b/drivers/pci/setup-res.c
+@@ -75,12 +75,16 @@ static void pci_std_update_resource(struct pci_dev *dev, int resno)
+ 		 * as zero when disabled, so don't update ROM BARs unless
+ 		 * they're enabled.  See
+ 		 * https://lore.kernel.org/r/43147B3D.1030309@vc.cvut.cz/
++		 * But we must update ROM BAR for buggy devices where even a
++		 * disabled ROM can conflict with other BARs.
+ 		 */
+-		if (!(res->flags & IORESOURCE_ROM_ENABLE))
++		if (!(res->flags & IORESOURCE_ROM_ENABLE) &&
++		    !dev->rom_bar_overlap)
+ 			return;
+ 
+ 		reg = dev->rom_base_reg;
+-		new |= PCI_ROM_ADDRESS_ENABLE;
++		if (res->flags & IORESOURCE_ROM_ENABLE)
++			new |= PCI_ROM_ADDRESS_ENABLE;
+ 	} else
+ 		return;
+ 
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 18a75c8e615c..51c4a063f489 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -455,6 +455,7 @@ struct pci_dev {
+ 	unsigned int	link_active_reporting:1;/* Device capable of reporting link active */
+ 	unsigned int	no_vf_scan:1;		/* Don't scan for VFs after IOV enablement */
+ 	unsigned int	no_command_memory:1;	/* No PCI_COMMAND_MEMORY */
++	unsigned int	rom_bar_overlap:1;	/* ROM BAR disable broken */
+ 	pci_dev_flags_t dev_flags;
+ 	atomic_t	enable_cnt;	/* pci_enable_device has been called */
+ 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
