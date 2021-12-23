@@ -1,65 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0C3A47E67A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Dec 2021 17:38:09 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0027047E89A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Dec 2021 21:03:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CF80740AB1;
-	Thu, 23 Dec 2021 16:38:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A4E8F8330B;
+	Thu, 23 Dec 2021 20:03:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DIdvzoZaSMMG; Thu, 23 Dec 2021 16:38:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ae4Zun9DYvOs; Thu, 23 Dec 2021 20:03:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 287A140AB8;
-	Thu, 23 Dec 2021 16:38:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 95B4D830A7;
+	Thu, 23 Dec 2021 20:03:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F08061BF41C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:38:01 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A9C01BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 20:03:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D420A60F2E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:38:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 65BB683112
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 20:03:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PcAqqIglV7Wx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Dec 2021 16:38:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5CAFA60F18
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 16:37:59 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 72F9BB81FC1;
- Thu, 23 Dec 2021 16:37:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE709C36AE9;
- Thu, 23 Dec 2021 16:37:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640277476;
- bh=I9a8MK1bhxraYlvGnDhWvhoRW/AU+35GD1j/Ku3yvJw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=D0sa+/eqq0bqcZINEkvF4aGoeNYXBZwW2h6cio461cdRY0uWRcqAE6o7Hd1PdLlkw
- BzLxuIFaOJ2O2gCtWuuBk45VnicC+wjU7JWhfciRTWJQGaSvSzhAjoXMZ+CVvBOJOR
- Cya3TNlSdW/GSyevnMB4aGVJiDI4HI6YGjjqA/8thS8A1K1k0yRbiWUdqcKU5Tuieo
- J3/62yRBJuzfzWd/9d++bIiCS2zpa3sMY3NiUZGvRGA4TGR02F9QmfNDN4vEDgDE6D
- xufritCx5bj+Fmsrby/BdVhzT4G+w3zNtE5EKb6fYYDedc8rN1P6kM0X3vVxFSks6I
- Fvrpgjt4G1MwA==
-Date: Thu, 23 Dec 2021 10:37:54 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Michael Walle <michael@walle.cc>
-Message-ID: <20211223163754.GA1267351@bhelgaas>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nmi7pqa7E_an for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Dec 2021 20:03:23 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
+ [IPv6:2607:f8b0:4864:20::1033])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E0449830A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 20:03:23 +0000 (UTC)
+Received: by mail-pj1-x1033.google.com with SMTP id
+ x1-20020a17090a2b0100b001b103e48cfaso6874887pjc.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 12:03:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=gcq6QhZOGjt2BvPoa5butYmz3+sYb4kzZ7U5c4e3NkA=;
+ b=L0IIe8mjv8kvVSzF7NgDX7G/KmpyRCXVKM7g9a8dFsxbcjh6e2WP/GCZCQf15n+WdI
+ 15h2VHnWH3R7ggpGOrM1fxzdSe0tYhDOYGxH+lyQQ/nLRboZ6oEqh6fwlkBa/OLr9vou
+ eHGHLSBgFf+cAGBKbzz5KOwdnJQ2B9eZZsjIabkUGkv3rDwIOfOwidn7mCGZgRRe/O0/
+ 3sUZwOJFB7Vovin5tkdybhg147kBtOwf4gE0a/40Fnu+BbLBRkVJ0GSL8pf2BPYyqN90
+ pkVT+Oo45mviwqHQ2FPleAfpAu8Kdj1psUFDC76nHKZmeRIe61YexjtS7nVdwc7T+7ux
+ l0bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=gcq6QhZOGjt2BvPoa5butYmz3+sYb4kzZ7U5c4e3NkA=;
+ b=lebT7jAcVk9Muu2ML6xarsJXTb4yQdavtq2PRiF0zcb2Xaw0lqLW/DEY14KfD6mCGv
+ iNd+IDait06MokKCjPWviOWlPMfQhn0o59+3b5jMH+etH/OztWy1gPiS8HqFTcOdUWU3
+ gn5Xi3OPn4m+2wkQYu1w10x5fYbCrzLr6lyjxuc8mB0GIB3XARQsM+x+JjY9JDiiS/Fg
+ f0O4vcRmDGY/iCsVrl4y9vXtBaZ/PWiYP1RI3JeJdEmDVWtj1+giLyxw7yBgSU1CAOB1
+ DBI75pdKQhxOX/Ut6pQQrYwHjibbv+NmgM7L5zTT8e+c11WssjSvnrj33qOo4EaWQVNs
+ cOuw==
+X-Gm-Message-State: AOAM533adgLJ9k0QS7Jnu41jXD8N94Fchv08NND52U15jIREB5y29gFq
+ PtELq0T+BhYXrln3ka0GJeM=
+X-Google-Smtp-Source: ABdhPJxVMIe2MZt6v9it0MTX1wnua9DmtrAViKcXRPsJmht14ji7licaP5YYdGPX0CQ8Ctbb9Rhn/g==
+X-Received: by 2002:a17:90b:3810:: with SMTP id
+ mq16mr4490485pjb.190.1640289803385; 
+ Thu, 23 Dec 2021 12:03:23 -0800 (PST)
+Received: from hoboy.vegasvil.org ([2601:640:8200:33:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id c2sm7099410pfl.200.2021.12.23.12.03.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Dec 2021 12:03:22 -0800 (PST)
+Date: Thu, 23 Dec 2021 12:03:20 -0800
+From: Richard Cochran <richardcochran@gmail.com>
+To: Ruud Bos <kernel.hbk@gmail.com>
+Message-ID: <20211223200320.GA29492@hoboy.vegasvil.org>
+References: <20211028143459.903439-1-kernel.hbk@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <39ecedffaf8e2ee931379de7e2f7924f@walle.cc>
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+In-Reply-To: <20211028143459.903439-1-kernel.hbk@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 0/4] igb: support PEROUT
+ and EXTTS PTP pin functions on 82580/i354/i350
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,224 +89,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Bjorn Helgaas <bhelgaas@google.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 23, 2021 at 10:27:15AM +0100, Michael Walle wrote:
-> Am 2021-12-21 18:48, schrieb Bjorn Helgaas:
-> > [+to Jesse, Tony for Intel advice;
-> > beginning of thread:
-> > https://lore.kernel.org/all/20201230185317.30915-1-michael@walle.cc/]
-> > 
-> > On Mon, Dec 20, 2021 at 06:43:03PM +0100, Michael Walle wrote:
-> > > ...
-> > > ping #4
-> > > 
-> > > In a few days this is a year old. Please have a look at it and
-> > > either add my quirk patch or apply your patch. This is still
-> > > breaking i210 on my board.
-> > > 
-> > > TBH, this is really frustrating.
-> > 
-> > You are right to be frustrated.  I'm very sorry that I have dropped
-> > the ball on this.  Thanks for reminding me *again*.
-> > 
-> > I think we agree that this looks like an I210 defect.  I210 should
-> > ignore the ROM BAR contents unless PCI_ROM_ADDRESS_ENABLE is set.  It
-> > would be great if an Intel person could confirm/deny this and supply
-> > an erratum reference and verify the affected device IDs.
-> > 
-> > It seems that when the BARs are programmed like this:
-> > 
-> >   BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
-> >   BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
-> >   ROM:   0x40200000 (disabled) [size=1M]
-> > 
-> > networking doesn't work at all and the transmit queue times out.
-> > 
-> > Linux assigns non-overlapping address space to the ROM BAR, but
-> > pci_std_update_resource() currently doesn't update the BAR itself
-> > unless it is enabled.
-> > 
-> > My proposal [1] worked around the defect by always updating the BAR,
-> > but there's no clue that this covers up the I210 issue, so it remains
-> > as sort of a land mine.  A future change could re-expose the problem,
-> > so I don't think this was a good approach.
-> > 
-> > Your original patch [2] makes it clear that it's an issue with I210,
-> > but there's an implicit connection between the normal BAR update path
-> > (which skips the actual BAR write) and the quirk that does the BAR
-> > write:
-> > 
-> >   <enumeration resource assignment>
-> >     ...
-> >       pci_assign_resource
-> >         pci_update_resource
-> >           pci_std_update_resource
-> >             if (ROM && ROM-disabled)
-> >               return
-> >             pci_write_config_dword      # ROM BAR update (skipped)
-> > 
-> >   pci_fixup_write_rom_bar               # final fixup
-> >     pci_write_config_dword              # ROM BAR update
-> > 
-> > In the boot-time resource assignment path, this works fine, but if
-> > pci_assign_resource() is called from pci_map_rom(), the fixup will not
-> > happen, so we could still have problem.
+On Thu, Oct 28, 2021 at 04:34:55PM +0200, Ruud Bos wrote:
+
+> The added EXTTS function has not been tested. However, looking at the data
+> sheets, the layout of the registers involved match the i210 exactly except
+> for the time registers mentioned before. Hence the almost identical
+> implementation.
 > 
-> I'm not sure I follow. pci_map_rom() should work fine. That was also
-> the workaround IIRC, that is, enable the rom via sysfs. pci_map_rom()
-> will call pci_enable_rom(), which should be the same as the fixup.
-> If memory serves correctly, that is where I shamelessly copied the
-> code from ;)
-
-Ah, you're right, I missed the fact that pci_enable_rom() would do the
-write.
-
-> btw. the problem is not in pci_assign_resource() which assigns the
-> correct offsets, but that they are not written to the PCI card.
-> Eg. see lspci:
+> v2:
+>  - fix PEROUT on SDP2/SDP3
+>  - rename incorrectly named sdp function argument to tsintr_tt
+>  - fix white space issue
 > 
-> # lspci -s 2:1:0 -v
-> 0002:01:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
-> Connection (rev 03)
-> 	Subsystem: Hewlett-Packard Company Ethernet I210-T1 GbE NIC
-> 	Flags: bus master, fast devsel, latency 0, IRQ 34, IOMMU group 8
-> 	Memory at 8840000000 (32-bit, non-prefetchable) [size=1M]
-> 	Memory at 8840200000 (32-bit, non-prefetchable) [size=16K]
-> 	Expansion ROM at 8840100000 [disabled] [size=1M]
-> 	Capabilities: [40] Power Management version 3
-> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
-> 	Capabilities: [a0] Express Endpoint, MSI 00
-> 	Capabilities: [100] Advanced Error Reporting
-> 	Capabilities: [140] Device Serial Number 00-de-ad-ff-ff-be-ef-04
-> 	Capabilities: [1a0] Transaction Processing Hints
-> 	Kernel driver in use: igb
-> lspci: Unable to load libkmod resources: error -2
-> 
-> # lspci -s 2:1:0 -xx
-> 0002:01:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
-> Connection (rev 03)
-> 00: 86 80 33 15 06 04 10 00 03 00 00 02 08 00 00 00
-> 10: 00 00 00 40 00 00 00 00 00 00 00 00 00 00 20 40
-> 20: 00 00 00 00 00 00 00 00 00 00 00 00 3c 10 03 00
-> 30: 00 00 20 40 40 00 00 00 00 00 00 00 22 01 00 00
-> 
-> Note the difference between "Expansion ROM at 8840100000" (assigned
-> by pci_assign_resource() I guess) and the actual value at offset
-> 0x30: 0x40200000. The latter will be updated either by pci_enable_rom()
-> or my pci fixup quirk.
+> Ruud Bos (4):
+>   igb: move SDP config initialization to separate function
+>   igb: move PEROUT and EXTTS isr logic to separate functions
+>   igb: support PEROUT on 82580/i354/i350
+>   igb: support EXTTS on 82580/i354/i350
 
-Yes, I understand that.  I think it's better to do the update in
-pci_std_update_resource() instead of relying on a future fixup or
-pci_enable_rom().  There's no explicit connection between the
-assignment and the BAR write, so it's fragile.
+For the series:
 
-> > Can you try the patch below?
-> 
-> I tried, but it doesn't work because the fixup function is called
-> after pci_std_update_resource(), thus dev->rom_bar_overlap is still
-> 0.
-
-I intended to change the quirk from FINAL to EARLY, but obviously
-forgot.  Here's the updated version:
-
-commit bb5639b73a2d ("PCI: Work around Intel I210 ROM BAR overlap defect")
-Author: Bjorn Helgaas <bhelgaas@google.com>
-Date:   Tue Dec 21 10:45:07 2021 -0600
-
-    PCI: Work around Intel I210 ROM BAR overlap defect
-    
-    Per PCIe r5, sec 7.5.1.2.4, a device must not claim accesses to its
-    Expansion ROM unless both the Memory Space Enable and the Expansion ROM
-    Enable bit are set.  But apparently some Intel I210 NICs don't work
-    correctly if the ROM BAR overlaps another BAR, even if the Expansion ROM is
-    disabled.
-    
-    Michael reported that on a Kontron SMARC-sAL28 ARM64 system with U-Boot
-    v2021.01-rc3, the ROM BAR overlaps BAR 3, and networking doesn't work at
-    all:
-    
-      BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
-      BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
-      ROM:   0x40200000 (disabled) [size=1M]
-    
-      NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
-      Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval 2.0 carrier (DT)
-      igb 0002:01:00.0 enP2p1s0: Reset adapter
-    
-    Previously, pci_std_update_resource() wrote the assigned ROM address to the
-    BAR only when the ROM was enabled.  This meant that the I210 ROM BAR could
-    be left with an address assigned by firmware, which might overlap with
-    other BARs.
-    
-    Quirk these I210 devices so pci_std_update_resource() always writes the
-    assigned address to the ROM BAR, whether or not the ROM is enabled.
-    
-    Link: https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
-    Link: https://bugzilla.kernel.org/show_bug.cgi?id=211105
-    Reported-by: Michael Walle <michael@walle.cc>
-    Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 003950c738d2..46ff04091fa3 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -5857,3 +5857,13 @@ static void nvidia_ion_ahci_fixup(struct pci_dev *pdev)
- 	pdev->dev_flags |= PCI_DEV_FLAGS_HAS_MSI_MASKING;
- }
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab8, nvidia_ion_ahci_fixup);
-+
-+static void rom_bar_overlap_defect(struct pci_dev *dev)
-+{
-+	pci_info(dev, "working around ROM BAR overlap defect\n");
-+	dev->rom_bar_overlap = 1;
-+}
-+DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1533, rom_bar_overlap_defect);
-+DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1536, rom_bar_overlap_defect);
-+DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1537, rom_bar_overlap_defect);
-+DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x1538, rom_bar_overlap_defect);
-diff --git a/drivers/pci/setup-res.c b/drivers/pci/setup-res.c
-index 7f1acb3918d0..439ac5f5907a 100644
---- a/drivers/pci/setup-res.c
-+++ b/drivers/pci/setup-res.c
-@@ -75,12 +75,16 @@ static void pci_std_update_resource(struct pci_dev *dev, int resno)
- 		 * as zero when disabled, so don't update ROM BARs unless
- 		 * they're enabled.  See
- 		 * https://lore.kernel.org/r/43147B3D.1030309@vc.cvut.cz/
-+		 * But we must update ROM BAR for buggy devices where even a
-+		 * disabled ROM can conflict with other BARs.
- 		 */
--		if (!(res->flags & IORESOURCE_ROM_ENABLE))
-+		if (!(res->flags & IORESOURCE_ROM_ENABLE) &&
-+		    !dev->rom_bar_overlap)
- 			return;
- 
- 		reg = dev->rom_base_reg;
--		new |= PCI_ROM_ADDRESS_ENABLE;
-+		if (res->flags & IORESOURCE_ROM_ENABLE)
-+			new |= PCI_ROM_ADDRESS_ENABLE;
- 	} else
- 		return;
- 
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 18a75c8e615c..51c4a063f489 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -455,6 +455,7 @@ struct pci_dev {
- 	unsigned int	link_active_reporting:1;/* Device capable of reporting link active */
- 	unsigned int	no_vf_scan:1;		/* Don't scan for VFs after IOV enablement */
- 	unsigned int	no_command_memory:1;	/* No PCI_COMMAND_MEMORY */
-+	unsigned int	rom_bar_overlap:1;	/* ROM BAR disable broken */
- 	pci_dev_flags_t dev_flags;
- 	atomic_t	enable_cnt;	/* pci_enable_device has been called */
- 
+Acked-by: Richard Cochran <richardcochran@gmail.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
