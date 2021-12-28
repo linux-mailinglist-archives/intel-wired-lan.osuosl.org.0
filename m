@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BD34480B85
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 17:44:37 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19153480B86
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 17:44:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2A4A6813C0;
-	Tue, 28 Dec 2021 16:44:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 111AC60B0A;
+	Tue, 28 Dec 2021 16:44:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bd9F3UTZz5Dj; Tue, 28 Dec 2021 16:44:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dLVRI5Iqra9s; Tue, 28 Dec 2021 16:44:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 27C95813B6;
-	Tue, 28 Dec 2021 16:44:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E4CB3605AD;
+	Tue, 28 Dec 2021 16:44:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7BB531BF38D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1709E1BF5A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 09:15:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 68233607A4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 034184034D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 09:15:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6LPDCkq0VeyL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Dec 2021 02:10:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l8a-DYTtl3BB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Dec 2021 09:15:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 353BF6006A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:06 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0CDF440348
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 09:15:35 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 5464961152;
- Tue, 28 Dec 2021 02:10:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C19A8C36AEA;
- Tue, 28 Dec 2021 02:09:50 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 29CC6B80DB5;
+ Tue, 28 Dec 2021 09:15:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36527C36AE7;
+ Tue, 28 Dec 2021 09:15:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640657404;
- bh=SWYw07zmaaDNu+bU6UjWMUGttSEKl48ssAwYr917Irk=;
+ s=k20201202; t=1640682932;
+ bh=GhkQipbGlKDnWFYSWHR8QJ9jDw3XiA0zWUSH0TczCbE=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AP7PTZtlYcp1DDFFD9oOox44rlGILxnZhjrWGoppO9nx889cG994Anev93Fi8avnE
- QKDjPgXQd+0j5ryyJUZRF2fBwkLwO80XrnSF/7Fx+x50yneeRCMv+6NTewDTm+M3mY
- UmjlUI3lKpBa+eY+azArRNs2im3Ff4KiJ7Zi2yf5dhhdWeFi5sankCfKs3hH/NkcWY
- C3nDae4xyYfSY866Hl7iueZkbXg7sQjQFFHeioueEr+2zR+wkgXwGDiPuaIoio9xml
- rwSFGRLZ2Ry45efsPcHYEzY5Wj/FdpgdsOlVeG8/L54LBpew0o0F/pJgWb5CCAbMPX
- 5d9alQgd1Ngqw==
-Date: Tue, 28 Dec 2021 03:09:46 +0100
+ b=dYWghGQbT+zkKYVLv1Zhab/gyFy9VpZvbxpbFRNzp3Lo5J6P/Q+Wf9wZJ3oL1Y4nF
+ 96QRZWFgrpKChm6T6ENMeuTcDkoRMS//XW4vNdMJB4gLdNcNmX96GZTLdULruuieLb
+ emRGzvA33ANfq1HyCg7yWlEMSY81FT51jd/pZeMOMTkwWI2S8tmDueYyTyJr7hwGcG
+ yL5P+Au50kwMpsldooh4cVnB+oQkMDs7kWcv4culv3nNyxGHHdqsdStKVVXhf5e3AJ
+ K3RgIP6/xYabneVHyG9NqbWuq3dYLRaZSL3QAii2RDYrapQzGorXDljBWHF9TwGY4F
+ k139XXS0mA/xw==
+Date: Tue, 28 Dec 2021 10:15:16 +0100
 From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Message-ID: <20211228030946.65932d2e@coco.lan>
-In-Reply-To: <20211227164317.4146918-2-schnelle@linux.ibm.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <20211228101435.3a55b983@coco.lan>
+In-Reply-To: <YcrJAwsKIxxX18pW@kroah.com>
 References: <20211227164317.4146918-1-schnelle@linux.ibm.com>
  <20211227164317.4146918-2-schnelle@linux.ibm.com>
+ <YcrJAwsKIxxX18pW@kroah.com>
 X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 28 Dec 2021 16:44:24 +0000
@@ -96,7 +96,7 @@ Cc: linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
  Bottomley" <jejb@linux.ibm.com>, Guenter Roeck <linux@roeck-us.net>,
  linux-media@vger.kernel.org, linux-input@vger.kernel.org,
  Albert Ou <aou@eecs.berkeley.edu>, linux-watchdog@vger.kernel.org,
- Jouni Malinen <j@w1.fi>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Jouni Malinen <j@w1.fi>,
  Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
  Kalle Valo <kvalo@kernel.org>, John Garry <john.garry@huawei.com>,
  linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
@@ -110,77 +110,76 @@ Cc: linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
  "Martin K. Petersen" <martin.petersen@oracle.com>,
  Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
  Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-wireless@vger.kernel.org,
- Takashi Iwai <tiwai@suse.com>, "David S. Miller" <davem@davemloft.net>,
+ netdev@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-wireless@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ "David S. Miller" <davem@davemloft.net>,
  H Hartley Sweeten <hsweeten@visionengravers.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
- netdev@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Bartosz Golaszewski <brgl@bgdev.pl>
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Bartosz Golaszewski <brgl@bgdev.pl>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Em Mon, 27 Dec 2021 17:42:46 +0100
-Niklas Schnelle <schnelle@linux.ibm.com> escreveu:
+Em Tue, 28 Dec 2021 09:21:23 +0100
+Greg Kroah-Hartman <gregkh@linuxfoundation.org> escreveu:
 
-> Introduce a new LEGACY_PCI Kconfig option which gates support for legacy
-> PCI devices including those attached to a PCI-to-PCI Express bridge and
-> PCI Express devices using legacy I/O spaces. Note that this is different
-> from non PCI uses of I/O ports such as by ACPI.
+> On Mon, Dec 27, 2021 at 05:42:46PM +0100, Niklas Schnelle wrote:
+> > --- a/drivers/pci/Kconfig
+> > +++ b/drivers/pci/Kconfig
+> > @@ -23,6 +23,17 @@ menuconfig PCI
+> >  
+> >  if PCI
+> >  
+> > +config LEGACY_PCI
+> > +	bool "Enable support for legacy PCI devices"
+> > +	depends on HAVE_PCI
+> > +	help
+> > +	   This option enables support for legacy PCI devices. This includes
+> > +	   PCI devices attached directly or via a bridge on a PCI Express bus.
+> > +	   It also includes compatibility features on PCI Express devices which
+> > +	   make use of legacy I/O spaces.  
+
+This Kconfig doesn't seem what it is needed there, as this should be an 
+arch-dependent feature, and not something that the poor user should be
+aware if a given architecture supports it or not. Also, the above will keep
+causing warnings or errors with randconfigs.
+
+Also, the "depends on HAVE_CPI" is bogus, as PCI already depends on 
+HAVE_PCI:
+
+	menuconfig PCI
+	bool "PCI support"
+	depends on HAVE_PCI
+	help
+	  This option enables support for the PCI local bus, including
+	  support for PCI-X and the foundations for PCI Express support.
+	  Say 'Y' here unless you know what you are doing.
+
+So, instead, I would expect that a new HAVE_xxx option would be
+added at arch/*/Kconfig, like:
+
+	config X86
+		...
+		select HAVE_PCI_DIRECT_IO
+
+It would also make sense to document it at Documentation/features/.
+
 > 
-> Add dependencies on LEGACY_PCI for all PCI drivers which only target
-> legacy PCI devices and ifdef legacy PCI specific functions in ata
-> handling.
+> All you really care about is the "legacy" I/O spaces here, this isn't
+> tied to PCI specifically at all, right?
 > 
-> Co-developed-by: Arnd Bergmann <arnd@kernel.org>
-> Signed-off-by: Arnd Bergmann <arnd@kernel.org>
-> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
-> ---
->  drivers/ata/Kconfig                          | 34 ++++++++--------
->  drivers/ata/ata_generic.c                    |  3 +-
->  drivers/ata/libata-sff.c                     |  2 +
->  drivers/comedi/Kconfig                       | 42 +++++++++++++++++++
->  drivers/gpio/Kconfig                         |  2 +-
->  drivers/hwmon/Kconfig                        |  6 +--
->  drivers/i2c/busses/Kconfig                   | 24 +++++------
->  drivers/input/gameport/Kconfig               |  4 +-
->  drivers/isdn/hardware/mISDN/Kconfig          | 14 +++----
+> So why not just have a OLD_STYLE_IO config option or something like
+> that, to show that it's the i/o functions we care about here, not PCI at
+> all?
+> 
+> And maybe not call it "old" or "legacy" as time constantly goes forward,
+> just describe it as it is, "DIRECT_IO"?
 
->  drivers/media/cec/platform/Kconfig           |  2 +-
->  drivers/media/pci/dm1105/Kconfig             |  2 +-
->  drivers/media/radio/Kconfig                  |  2 +-
+Agreed. HAVE_PCI_DIRECT_IO (or something similar) seems a more appropriate
+name for it.
 
-Not sure what you meant by "legacy I/O spaces" on this patch. 
-I mean, I would expect non-PCIe devices - like bttv and other
-devices developed at the past millennium or so to be "legacy",
-but at least on media, it is touching some drivers that aren't
-that old, while keeping the really old ones untouched. Instead,
-it is touching a driver developed in 2017 plus two other ones
-that are a way newer than other drivers.
-
-The support for the Bt8xx chipset, in particular, is really 
-weird, as a sound driver for such chipset:
-
-> @@ -172,6 +177,7 @@ config SND_AZT3328
->  
->  config SND_BT87X
->  	tristate "Bt87x Audio Capture"
-> +	depends on LEGACY_PCI
->  	select SND_PCM
->  	help
->  	  If you want to record audio from TV cards based on
-
-was marked as dependent of LEGACY_PCI, while the DVB and V4L2 ones 
-weren't.
-
-Sounds confusing to me, as the PCI bridge used by a Bt87x device 
-should be the same for all three subdevices.
-
-I'm confused...
-
-Regards,
+Thanks,
 Mauro
 _______________________________________________
 Intel-wired-lan mailing list
