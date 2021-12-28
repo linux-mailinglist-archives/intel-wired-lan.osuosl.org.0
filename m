@@ -2,63 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E79C6480B84
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 17:44:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BD34480B85
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 17:44:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 68D0681398;
-	Tue, 28 Dec 2021 16:44:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2A4A6813C0;
+	Tue, 28 Dec 2021 16:44:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W_Bnj5fv12ni; Tue, 28 Dec 2021 16:44:31 +0000 (UTC)
+	with ESMTP id bd9F3UTZz5Dj; Tue, 28 Dec 2021 16:44:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4652A81355;
-	Tue, 28 Dec 2021 16:44:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 27C95813B6;
+	Tue, 28 Dec 2021 16:44:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AE2E41BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 18:12:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7BB531BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9C4C7818B5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 18:12:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 68233607A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hP8vRqxFrR6G for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Dec 2021 18:12:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ssl.serverraum.org (ssl.serverraum.org
- [IPv6:2a01:4f8:151:8464::1:2])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 53EEA81458
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Dec 2021 18:12:06 +0000 (UTC)
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6LPDCkq0VeyL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Dec 2021 02:10:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 353BF6006A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 02:10:06 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id 2103E223E9;
- Thu, 23 Dec 2021 19:12:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1640283123;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nRX7vAwWjeC+5mIHv2fkVxYbCFKHsJmLOBQYXaEnGoc=;
- b=t5jQaHjtifmYXk96YE3zxFBmUUzMx/fAG34lCURwpKTj6zE8naRnTr9HWUtdQmBTs0yM85
- rvUu9QbX1nivR0VyadbTes7pB7y4y7Pt+/TR1Xvk7pw8t+60iOcVXdlrFLWa1S/vSg6b7d
- vYI3aIPMNdYkbajHDCphv9r0N9ciqIk=
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5464961152;
+ Tue, 28 Dec 2021 02:10:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C19A8C36AEA;
+ Tue, 28 Dec 2021 02:09:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1640657404;
+ bh=SWYw07zmaaDNu+bU6UjWMUGttSEKl48ssAwYr917Irk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=AP7PTZtlYcp1DDFFD9oOox44rlGILxnZhjrWGoppO9nx889cG994Anev93Fi8avnE
+ QKDjPgXQd+0j5ryyJUZRF2fBwkLwO80XrnSF/7Fx+x50yneeRCMv+6NTewDTm+M3mY
+ UmjlUI3lKpBa+eY+azArRNs2im3Ff4KiJ7Zi2yf5dhhdWeFi5sankCfKs3hH/NkcWY
+ C3nDae4xyYfSY866Hl7iueZkbXg7sQjQFFHeioueEr+2zR+wkgXwGDiPuaIoio9xml
+ rwSFGRLZ2Ry45efsPcHYEzY5Wj/FdpgdsOlVeG8/L54LBpew0o0F/pJgWb5CCAbMPX
+ 5d9alQgd1Ngqw==
+Date: Tue, 28 Dec 2021 03:09:46 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Message-ID: <20211228030946.65932d2e@coco.lan>
+In-Reply-To: <20211227164317.4146918-2-schnelle@linux.ibm.com>
+References: <20211227164317.4146918-1-schnelle@linux.ibm.com>
+ <20211227164317.4146918-2-schnelle@linux.ibm.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Date: Thu, 23 Dec 2021 19:12:02 +0100
-From: Michael Walle <michael@walle.cc>
-To: Bjorn Helgaas <helgaas@kernel.org>
-In-Reply-To: <20211223163754.GA1267351@bhelgaas>
-References: <20211223163754.GA1267351@bhelgaas>
-User-Agent: Roundcube Webmail/1.4.12
-Message-ID: <9526698be0ced0f7a7ed00bd76538d16@walle.cc>
-X-Sender: michael@walle.cc
-X-Mailman-Approved-At: Tue, 28 Dec 2021 16:44:19 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+X-Mailman-Approved-At: Tue, 28 Dec 2021 16:44:24 +0000
+Subject: Re: [Intel-wired-lan] [RFC 01/32] Kconfig: introduce and depend on
+ LEGACY_PCI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,71 +75,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org,
+ Jaroslav Kysela <perex@perex.cz>, linux-ide@vger.kernel.org,
+ Jean Delvare <jdelvare@suse.com>, Guo Ren <guoren@kernel.org>,
+ linux-i2c@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org,
+ Hannes Reinecke <hare@suse.com>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>, linux-scsi@vger.kernel.org,
+ Sumit Saxena <sumit.saxena@broadcom.com>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Sathya Prakash <sathya.prakash@broadcom.com>, linux-csky@vger.kernel.org,
+ Kashyap Desai <kashyap.desai@broadcom.com>,
+ Nilesh Javali <njavali@marvell.com>, intel-wired-lan@lists.osuosl.org,
+ linux-serial@vger.kernel.org, GR-QLogic-Storage-Upstream@marvell.com,
+ Jakub Kicinski <kuba@kernel.org>, MPT-FusionLinux.pdl@broadcom.com,
+ "James E.J.
+ Bottomley" <jejb@linux.ibm.com>, Guenter Roeck <linux@roeck-us.net>,
+ linux-media@vger.kernel.org, linux-input@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, linux-watchdog@vger.kernel.org,
+ Jouni Malinen <j@w1.fi>,
+ Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
+ Kalle Valo <kvalo@kernel.org>, John Garry <john.garry@huawei.com>,
+ linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ Ian Abbott <abbotti@mev.co.uk>, Mark Brown <broonie@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ megaraidlinux.pdl@broadcom.com, Teddy Wang <teddy.wang@siliconmotion.com>,
+ linux-hwmon@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
+ Karsten Keil <isdn@linux-pingi.de>,
+ Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+ Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-wireless@vger.kernel.org,
+ Takashi Iwai <tiwai@suse.com>, "David S. Miller" <davem@davemloft.net>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
+ netdev@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Am 2021-12-23 17:37, schrieb Bjorn Helgaas:
+Em Mon, 27 Dec 2021 17:42:46 +0100
+Niklas Schnelle <schnelle@linux.ibm.com> escreveu:
 
-> I intended to change the quirk from FINAL to EARLY, but obviously
-> forgot.  Here's the updated version:
+> Introduce a new LEGACY_PCI Kconfig option which gates support for legacy
+> PCI devices including those attached to a PCI-to-PCI Express bridge and
+> PCI Express devices using legacy I/O spaces. Note that this is different
+> from non PCI uses of I/O ports such as by ACPI.
 > 
-> commit bb5639b73a2d ("PCI: Work around Intel I210 ROM BAR overlap 
-> defect")
-> Author: Bjorn Helgaas <bhelgaas@google.com>
-> Date:   Tue Dec 21 10:45:07 2021 -0600
+> Add dependencies on LEGACY_PCI for all PCI drivers which only target
+> legacy PCI devices and ifdef legacy PCI specific functions in ata
+> handling.
 > 
->     PCI: Work around Intel I210 ROM BAR overlap defect
-> 
->     Per PCIe r5, sec 7.5.1.2.4, a device must not claim accesses to its
->     Expansion ROM unless both the Memory Space Enable and the Expansion 
-> ROM
->     Enable bit are set.  But apparently some Intel I210 NICs don't work
->     correctly if the ROM BAR overlaps another BAR, even if the 
-> Expansion ROM is
->     disabled.
-> 
->     Michael reported that on a Kontron SMARC-sAL28 ARM64 system with 
-> U-Boot
->     v2021.01-rc3, the ROM BAR overlaps BAR 3, and networking doesn't 
-> work at
->     all:
-> 
->       BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
->       BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
->       ROM:   0x40200000 (disabled) [size=1M]
-> 
->       NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
->       Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval
-> 2.0 carrier (DT)
->       igb 0002:01:00.0 enP2p1s0: Reset adapter
-> 
->     Previously, pci_std_update_resource() wrote the assigned ROM 
-> address to the
->     BAR only when the ROM was enabled.  This meant that the I210 ROM 
-> BAR could
->     be left with an address assigned by firmware, which might overlap 
-> with
->     other BARs.
-> 
->     Quirk these I210 devices so pci_std_update_resource() always writes 
-> the
->     assigned address to the ROM BAR, whether or not the ROM is enabled.
-> 
->     Link: 
-> https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
->     Link: https://bugzilla.kernel.org/show_bug.cgi?id=211105
->     Reported-by: Michael Walle <michael@walle.cc>
->     Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+> Co-developed-by: Arnd Bergmann <arnd@kernel.org>
+> Signed-off-by: Arnd Bergmann <arnd@kernel.org>
+> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> ---
+>  drivers/ata/Kconfig                          | 34 ++++++++--------
+>  drivers/ata/ata_generic.c                    |  3 +-
+>  drivers/ata/libata-sff.c                     |  2 +
+>  drivers/comedi/Kconfig                       | 42 +++++++++++++++++++
+>  drivers/gpio/Kconfig                         |  2 +-
+>  drivers/hwmon/Kconfig                        |  6 +--
+>  drivers/i2c/busses/Kconfig                   | 24 +++++------
+>  drivers/input/gameport/Kconfig               |  4 +-
+>  drivers/isdn/hardware/mISDN/Kconfig          | 14 +++----
 
-Tested-by: Michael Walle <michael@walle.cc>
+>  drivers/media/cec/platform/Kconfig           |  2 +-
+>  drivers/media/pci/dm1105/Kconfig             |  2 +-
+>  drivers/media/radio/Kconfig                  |  2 +-
 
-Thanks,
--michael
+Not sure what you meant by "legacy I/O spaces" on this patch. 
+I mean, I would expect non-PCIe devices - like bttv and other
+devices developed at the past millennium or so to be "legacy",
+but at least on media, it is touching some drivers that aren't
+that old, while keeping the really old ones untouched. Instead,
+it is touching a driver developed in 2017 plus two other ones
+that are a way newer than other drivers.
+
+The support for the Bt8xx chipset, in particular, is really 
+weird, as a sound driver for such chipset:
+
+> @@ -172,6 +177,7 @@ config SND_AZT3328
+>  
+>  config SND_BT87X
+>  	tristate "Bt87x Audio Capture"
+> +	depends on LEGACY_PCI
+>  	select SND_PCM
+>  	help
+>  	  If you want to record audio from TV cards based on
+
+was marked as dependent of LEGACY_PCI, while the DVB and V4L2 ones 
+weren't.
+
+Sounds confusing to me, as the PCI bridge used by a Bt87x device 
+should be the same for all three subdevices.
+
+I'm confused...
+
+Regards,
+Mauro
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
