@@ -1,73 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AE7D480767
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 09:31:21 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71FBA48089A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 11:59:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E4B881C21;
-	Tue, 28 Dec 2021 08:31:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 13F7481389;
+	Tue, 28 Dec 2021 10:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EwijuCe3GY9x; Tue, 28 Dec 2021 08:31:18 +0000 (UTC)
+	with ESMTP id my9TnV17F1-l; Tue, 28 Dec 2021 10:59:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 788F18141F;
-	Tue, 28 Dec 2021 08:31:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E2BC981387;
+	Tue, 28 Dec 2021 10:59:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 55DF91BF28E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 08:31:13 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C44D1BF20F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 10:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 502E140122
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 08:31:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C895401CC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 10:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Suf-laYD_xAi for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Dec 2021 08:31:12 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=ibm.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id P2-KcJYWV3Uc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Dec 2021 10:59:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 89FDA400AF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 08:31:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640680272; x=1672216272;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=8Ssk9PkU1lCaW+X3QfKqSrqg8kbgcpFLOWTB2Ryx3Rk=;
- b=AVDJhQiDnQed0H13sM4PVb9nWVToFGd61SnWg4dYabaXTl2GXj46RUrc
- KalqfmNWENyK/IKxdFsGW2Q9y7e0PSirpUmz/KAkITjNhMbZ7Qe8fFTmR
- YE0Lily1uFuzkr61c/mPaPxu5pB5B1OopGF/NyywJxdk6IGg1ELhmV7E3
- BgaCNpmTi1A7h5dOk0mmAWrnkCDYm28jgFnGFQx7MJMMP83psBjnMawXi
- O5lqCyu/TxeT+zd2+cdEevgpvp+AogSXAqmx+UAEySNfGuGauqsgbHfL9
- 7cWsQiXZf3TCQ+v8WcfRS/dExc/st1CTheWKNt5UcKd5ATm+4qOtQMMPX Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10210"; a="241135724"
-X-IronPort-AV: E=Sophos;i="5.88,242,1635231600"; d="scan'208";a="241135724"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Dec 2021 00:31:11 -0800
-X-IronPort-AV: E=Sophos;i="5.88,242,1635231600"; d="scan'208";a="510113012"
-Received: from krausnex-mobl.ger.corp.intel.com (HELO [10.13.8.81])
- ([10.13.8.81])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Dec 2021 00:31:06 -0800
-Message-ID: <b9fdc714-ce83-23fc-cde4-b53e02565ae3@linux.intel.com>
-Date: Tue, 28 Dec 2021 10:31:03 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.1
-Content-Language: en-US
-To: James McLaughlin <james.mclaughlin@qsc.com>, davem@davemloft.net,
- kuba@kernel.org, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com
-References: <20211217234933.740942-1-james.mclaughlin@qsc.com>
-From: "Kraus, NechamaX" <nechamax.kraus@linux.intel.com>
-In-Reply-To: <20211217234933.740942-1-james.mclaughlin@qsc.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v3] igc: Fix TX timestamp support
- for non-MSI-X platforms
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 25178401B7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 10:59:27 +0000 (UTC)
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1BSA7EKX001769; 
+ Tue, 28 Dec 2021 10:59:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=+zyW5i6OI8A0c4K6evToxyfQjjczj9uw2pn4yk+SR7k=;
+ b=pcw/uW8v/HV23WBgD8ZjRm9IrGz2p+VZ7eZ+u7riAv1sjlkh+h/fLfwWDBmcM8Bo5Fmd
+ vn06o8uNPnUykpdvcIzJGCUcxbVusEFVGbGJCxOI2w3cVP8BgXdd+7rXgMWhLHd9tk4B
+ qaX3iPy47QzD/AksgaeEKLCOm5B0Od2H3vZiYm4Da/wXXuKa0wHf6VtFo3jZJ9tHo9bz
+ 4QM0w3Rfhwmg0FxtU5PvhecdlEqtQChCQN16voLmPq6XcU13mmExhXEotMvedJkJF+Ec
+ BhezmLDMTIJnFjaOZoFLVJ8+zBpMGhyEygXU3bI3M2yzXFyCgrPaoeiU4DHSP2gn+gHY /Q== 
+Received: from ppma04fra.de.ibm.com (6a.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.106])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3d7xdu3bv3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 28 Dec 2021 10:59:05 +0000
+Received: from pps.filterd (ppma04fra.de.ibm.com [127.0.0.1])
+ by ppma04fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 1BSAw4e4032318;
+ Tue, 28 Dec 2021 10:59:02 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma04fra.de.ibm.com with ESMTP id 3d5tx9xvnf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 28 Dec 2021 10:59:02 +0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 1BSAwxP843974984
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 28 Dec 2021 10:58:59 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 907CC42041;
+ Tue, 28 Dec 2021 10:58:59 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A8FF542042;
+ Tue, 28 Dec 2021 10:58:55 +0000 (GMT)
+Received: from sig-9-145-12-118.uk.ibm.com (unknown [9.145.12.118])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 28 Dec 2021 10:58:55 +0000 (GMT)
+Message-ID: <b1475f6aecb752a858941f44a957b2183cd68405.camel@linux.ibm.com>
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+Date: Tue, 28 Dec 2021 11:58:55 +0100
+In-Reply-To: <20211228101435.3a55b983@coco.lan>
+References: <20211227164317.4146918-1-schnelle@linux.ibm.com>
+ <20211227164317.4146918-2-schnelle@linux.ibm.com>
+ <YcrJAwsKIxxX18pW@kroah.com> <20211228101435.3a55b983@coco.lan>
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: HQH4aOLZAlr26uyO-kejW0wN9QQ_LAGG
+X-Proofpoint-ORIG-GUID: HQH4aOLZAlr26uyO-kejW0wN9QQ_LAGG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.11.62.513
+ definitions=2021-12-28_06,2021-12-28_01,2021-12-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 malwarescore=0
+ lowpriorityscore=0 impostorscore=0 mlxscore=0 suspectscore=0
+ mlxlogscore=999 spamscore=0 bulkscore=0 clxscore=1015 adultscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2110150000 definitions=main-2112280048
+Subject: Re: [Intel-wired-lan] [RFC 01/32] Kconfig: introduce and depend on
+ LEGACY_PCI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,29 +112,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+Cc: linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org,
+ Jaroslav Kysela <perex@perex.cz>, linux-ide@vger.kernel.org,
+ Jean Delvare <jdelvare@suse.com>, Guo Ren <guoren@kernel.org>,
+ linux-i2c@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org,
+ Hannes Reinecke <hare@suse.com>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>, linux-scsi@vger.kernel.org,
+ Sumit Saxena <sumit.saxena@broadcom.com>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Sathya Prakash <sathya.prakash@broadcom.com>, linux-csky@vger.kernel.org,
+ Kashyap Desai <kashyap.desai@broadcom.com>,
+ Nilesh Javali <njavali@marvell.com>, intel-wired-lan@lists.osuosl.org,
+ linux-serial@vger.kernel.org, GR-QLogic-Storage-Upstream@marvell.com,
+ Jakub Kicinski <kuba@kernel.org>, MPT-FusionLinux.pdl@broadcom.com,
+ "James E.J.
+ Bottomley" <jejb@linux.ibm.com>, Guenter Roeck <linux@roeck-us.net>,
+ linux-media@vger.kernel.org, linux-input@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, linux-watchdog@vger.kernel.org,
+ Jouni Malinen <j@w1.fi>,
+ Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
+ Kalle Valo <kvalo@kernel.org>, John Garry <john.garry@huawei.com>,
+ linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ Ian Abbott <abbotti@mev.co.uk>, Mark Brown <broonie@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ megaraidlinux.pdl@broadcom.com, Teddy Wang <teddy.wang@siliconmotion.com>,
+ linux-hwmon@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
+ Karsten Keil <isdn@linux-pingi.de>,
+ Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+ Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
+ netdev@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-wireless@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Bartosz Golaszewski <brgl@bgdev.pl>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/18/2021 01:49, James McLaughlin wrote:
-> Time synchronization was not properly enabled on non-MSI-X platforms.
+On Tue, 2021-12-28 at 10:15 +0100, Mauro Carvalho Chehab wrote:
+> Em Tue, 28 Dec 2021 09:21:23 +0100
+> Greg Kroah-Hartman <gregkh@linuxfoundation.org> escreveu:
 > 
-> Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
+> > On Mon, Dec 27, 2021 at 05:42:46PM +0100, Niklas Schnelle wrote:
+> > > --- a/drivers/pci/Kconfig
+> > > +++ b/drivers/pci/Kconfig
+> > > @@ -23,6 +23,17 @@ menuconfig PCI
+> > >  
+> > >  if PCI
+> > >  
+> > > +config LEGACY_PCI
+> > > +	bool "Enable support for legacy PCI devices"
+> > > +	depends on HAVE_PCI
+> > > +	help
+> > > +	   This option enables support for legacy PCI devices. This includes
+> > > +	   PCI devices attached directly or via a bridge on a PCI Express bus.
+> > > +	   It also includes compatibility features on PCI Express devices which
+> > > +	   make use of legacy I/O spaces.  
 > 
-> Signed-off-by: James McLaughlin <james.mclaughlin@qsc.com>
-> Reviewed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> ---
+> This Kconfig doesn't seem what it is needed there, as this should be an 
+> arch-dependent feature, and not something that the poor user should be
+> aware if a given architecture supports it or not. Also, the above will keep
+> causing warnings or errors with randconfigs.
 > 
-> Still same work email client issues.  Apologies, mis-titled it again.
-> v2->v3 fixed title
+> Also, the "depends on HAVE_CPI" is bogus, as PCI already depends on 
+> HAVE_PCI:
+
+Ah yes you're right.
+
 > 
->   drivers/net/ethernet/intel/igc/igc_main.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+> 	menuconfig PCI
+> 	bool "PCI support"
+> 	depends on HAVE_PCI
+> 	help
+> 	  This option enables support for the PCI local bus, including
+> 	  support for PCI-X and the foundations for PCI Express support.
+> 	  Say 'Y' here unless you know what you are doing.
 > 
-Tested-by: Nechama Kraus <nechamax.kraus@linux.intel.com>
+> So, instead, I would expect that a new HAVE_xxx option would be
+> added at arch/*/Kconfig, like:
+> 
+> 	config X86
+> 		...
+> 		select HAVE_PCI_DIRECT_IO
+> 
+> It would also make sense to document it at Documentation/features/.
+
+I'll look into that, thanks.
+
+> 
+> > All you really care about is the "legacy" I/O spaces here, this isn't
+> > tied to PCI specifically at all, right?
+> > 
+> > So why not just have a OLD_STYLE_IO config option or something like
+> > that, to show that it's the i/o functions we care about here, not PCI at
+> > all?
+> > 
+> > And maybe not call it "old" or "legacy" as time constantly goes forward,
+> > just describe it as it is, "DIRECT_IO"?
+> 
+> Agreed. HAVE_PCI_DIRECT_IO (or something similar) seems a more appropriate
+> name for it.
+> 
+> Thanks,
+> Mauro
+
+Hmm, I might be missing something here but that sounds a lot like the
+HAS_IOPORT option added in patch 02.
+
+We add both LEGACY_PCI and HAS_IOPORT to differentiate between two
+cases. HAS_IOPORT is for PC-style devices that are not on a PCI card
+while LEGACY_PCI is for PCI drivers that require port I/O. This
+includes pre-PCIe devices as well as PCIe devices which require
+features like I/O spaces. The "legacy" naming is comes from the PCIe
+spec which in section 2.1.1.2 says "PCI Express supports I/O Space for
+compatibility with legacy devices which require their use. Future
+revisions of this specification may deprecate the use of I/O Space."
+
+These two separate config options allow us to compile without support
+for these legacy PCI devices even on a system where inb()/outb() and
+friends are required for some PC style devices and for example ACPI.
 
 _______________________________________________
 Intel-wired-lan mailing list
