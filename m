@@ -1,64 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C056480CC7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Dec 2021 20:25:42 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57DC8480E60
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Dec 2021 01:49:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 106D460B5B;
-	Tue, 28 Dec 2021 19:25:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB33181D3D;
+	Wed, 29 Dec 2021 00:49:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qZwC-gBghl_L; Tue, 28 Dec 2021 19:25:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rnL9rhsc_Sv8; Wed, 29 Dec 2021 00:49:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BCCC560B5F;
-	Tue, 28 Dec 2021 19:25:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9EA6E819F6;
+	Wed, 29 Dec 2021 00:49:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7AC6D1BF3D8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 19:25:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 97BFB1BF9B2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 00:49:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 702E481C93
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 19:25:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7D59A819F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 00:49:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E0cg-g5pIvVc for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Dec 2021 19:25:32 +0000 (UTC)
+ with ESMTP id y5a6HRXF055M for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Dec 2021 00:49:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7146181B71
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Dec 2021 19:25:32 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0B0A1819BC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 00:49:22 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 37461611F0;
- Tue, 28 Dec 2021 19:25:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9CADC36AEC;
- Tue, 28 Dec 2021 19:25:27 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 8B808B817AB;
+ Wed, 29 Dec 2021 00:49:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D64DC36AEB;
+ Wed, 29 Dec 2021 00:49:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640719530;
- bh=OiUkchb5cjAHs/7wjwgee5V8uvmcMDpNzAiPy9t9pDs=;
+ s=k20201202; t=1640738959;
+ bh=Dhya06A0fsx6OYnJ8Pjm6y+72X0rTVqijoy15oG2628=;
  h=From:To:Cc:Subject:Date:From;
- b=OS6kekIbWoYJtLQ99sfUZtotdPiuG1fAxDRiQhUwCmrjG6NK5/ixB0D9tWkP0tsvX
- hGFDNCsk+QqWWJx2dNgsa9NI4Zk8IFpCikH1NRO1mmzEGc5mqrBUM8iyLCDWRDcRwa
- cMgqcyBDr8TadEv6ZYkbssKMEKlDgtq++au67/kWxvNT6/xR4XvXTmOxXnSCujPw4e
- 60CvMZVs+iI987teAxgIsijpd+TW/axRp+h909WvFaitxYF/vmCLjf452GN5dS5zDc
- ODZhAN1yxLJiPIgn5uii3i8PQGU4z0BF1HOz0D8Dszx6vfh1f8vbO6QPoXASUxQEnK
- vIL98jXdKJNKg==
+ b=Dch51jiREzZYD523mD7zioHHOComr1ilsab6W7ZGkrFBwWG0AuJoH5Jc+5mSAZ3bf
+ 9F6WwefnUarYiyfh8KnJSfn1SiHhDiy6Wf+kyGfNREEbhQUVbg7QoNd3JOHs1NsF95
+ BB7jmzOeGW1P6hCtZ8qj4BZA3YyljGiG9kMBYfuvDoeEK2LZZpErMnraqhKqYPvzPx
+ tmx3FO6askTKzUqfZzrqadeuupl/hkduOGCOUWK2d3Sto2/QLPrZ8VYlxlx4ykGi7p
+ BK4gSMUwI5tnThp1QBt7wlffSUIy1ufVXFFokrYblqtBv+bvmLyVWRU6DhRX1mn6Bh
+ iXWWVXMXEp0mg==
 From: Jakub Kicinski <kuba@kernel.org>
 To: ast@kernel.org,
 	daniel@iogearbox.net
-Date: Tue, 28 Dec 2021 11:25:19 -0800
-Message-Id: <20211228192519.386913-1-kuba@kernel.org>
+Date: Tue, 28 Dec 2021 16:49:13 -0800
+Message-Id: <20211229004913.513372-1-kuba@kernel.org>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH bpf-next] net: don't include filter.h from
- net/sock.h
+Subject: [Intel-wired-lan] [PATCH bpf-next v2] net: don't include filter.h
+ from net/sock.h
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,16 +81,16 @@ Cc: andrew@lunn.ch, mustafa.ismail@intel.com, linux-wireless@vger.kernel.org,
  coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org, nikolay@nvidia.com,
  Jakub Kicinski <kuba@kernel.org>, yzaikin@google.com, vivien.didelot@gmail.com,
  wg@grandegger.com, sgarzare@redhat.com, woojung.huh@microchip.com,
- johan.hedberg@gmail.com, arnd@arndb.de, marcel@holtmann.org,
- kgraul@linux.ibm.com, jhs@mojatatu.com, linux-can@vger.kernel.org,
- wenjia@linux.ibm.com, mkl@pengutronix.de, viro@zeniv.linux.org.uk,
+ johan.hedberg@gmail.com, arnd@arndb.de, marcel@holtmann.org, jhs@mojatatu.com,
+ linux-can@vger.kernel.org, wenjia@linux.ibm.com,
+ Marc Kleine-Budde <mkl@pengutronix.de>, viro@zeniv.linux.org.uk,
  luiz.dentz@gmail.com, habetsm.xilinx@gmail.com, xiyou.wangcong@gmail.com,
  michael.chan@broadcom.com, virtualization@lists.linux-foundation.org,
  shiraz.saleem@intel.com, trond.myklebust@hammerspace.com, kvalo@codeaurora.org,
  linux-nfs@vger.kernel.org, wintera@linux.ibm.com, keescook@chromium.org,
  netdev@vger.kernel.org, dsahern@kernel.org,
  linux-decnet-user@lists.sourceforge.net, fw@strlen.de, tariqt@nvidia.com,
- UNGLinuxDriver@microchip.com, ecree.xilinx@gmail.com, mcgrof@kernel.org,
+ kgraul@linux.ibm.com, ecree.xilinx@gmail.com, mcgrof@kernel.org,
  netfilter-devel@vger.kernel.org, jreuter@yaina.de,
  linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org, olteanv@gmail.com,
  saeedm@nvidia.com, anna.schumaker@netapp.com, ap420073@gmail.com,
@@ -110,8 +109,13 @@ is touched from ~5k to ~1k.
 There's a lot of missing includes this was masking. Primarily
 in networking tho, this time.
 
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
 Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 ---
+v2: https://lore.kernel.org/all/20211228192519.386913-1-kuba@kernel.org/
+ - fix build in bond on ia64
+ - fix build in ip6_fib with randconfig
+
 CC: marcel@holtmann.org
 CC: johan.hedberg@gmail.com
 CC: luiz.dentz@gmail.com
@@ -122,9 +126,7 @@ CC: shiraz.saleem@intel.com
 CC: leon@kernel.org
 CC: ap420073@gmail.com
 CC: wg@grandegger.com
-CC: mkl@pengutronix.de
 CC: woojung.huh@microchip.com
-CC: UNGLinuxDriver@microchip.com
 CC: andrew@lunn.ch
 CC: vivien.didelot@gmail.com
 CC: f.fainelli@gmail.com
@@ -192,6 +194,7 @@ CC: virtualization@lists.linux-foundation.org
  drivers/infiniband/hw/mlx5/qp.c                   | 1 +
  drivers/net/amt.c                                 | 1 +
  drivers/net/appletalk/ipddp.c                     | 1 +
+ drivers/net/bonding/bond_main.c                   | 1 +
  drivers/net/can/usb/peak_usb/pcan_usb.c           | 1 +
  drivers/net/dsa/microchip/ksz8795.c               | 1 +
  drivers/net/dsa/xrs700x/xrs700x.c                 | 1 +
@@ -236,6 +239,7 @@ CC: virtualization@lists.linux-foundation.org
  net/dsa/dsa_priv.h                                | 1 +
  net/ethtool/ioctl.c                               | 1 +
  net/ipv4/nexthop.c                                | 1 +
+ net/ipv6/ip6_fib.c                                | 1 +
  net/ipv6/seg6_local.c                             | 1 +
  net/iucv/af_iucv.c                                | 1 +
  net/kcm/kcmsock.c                                 | 1 +
@@ -252,7 +256,7 @@ CC: virtualization@lists.linux-foundation.org
  net/xdp/xskmap.c                                  | 1 +
  net/xfrm/xfrm_state.c                             | 1 +
  net/xfrm/xfrm_user.c                              | 1 +
- 68 files changed, 78 insertions(+), 1 deletion(-)
+ 70 files changed, 80 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/bluetooth/btqca.c b/drivers/bluetooth/btqca.c
 index be04d74037d2..f7bf311d7910 100644
@@ -350,6 +354,18 @@ index 5566daefbff4..d558535390f9 100644
  #include <linux/module.h>
  #include <linux/kernel.h>
  #include <linux/init.h>
+diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+index 0f39ad2af81c..d483f1102a9e 100644
+--- a/drivers/net/bonding/bond_main.c
++++ b/drivers/net/bonding/bond_main.c
+@@ -35,6 +35,7 @@
+ #include <linux/module.h>
+ #include <linux/types.h>
+ #include <linux/fcntl.h>
++#include <linux/filter.h>
+ #include <linux/interrupt.h>
+ #include <linux/ptrace.h>
+ #include <linux/ioport.h>
 diff --git a/drivers/net/can/usb/peak_usb/pcan_usb.c b/drivers/net/can/usb/peak_usb/pcan_usb.c
 index 876218752766..ac6772fe9746 100644
 --- a/drivers/net/can/usb/peak_usb/pcan_usb.c
@@ -890,6 +906,18 @@ index 1319d093cdda..eeafeccebb8d 100644
  #include <net/arp.h>
  #include <net/ipv6_stubs.h>
  #include <net/lwtunnel.h>
+diff --git a/net/ipv6/ip6_fib.c b/net/ipv6/ip6_fib.c
+index 0371d2c14145..463c37dea449 100644
+--- a/net/ipv6/ip6_fib.c
++++ b/net/ipv6/ip6_fib.c
+@@ -15,6 +15,7 @@
+ 
+ #define pr_fmt(fmt) "IPv6: " fmt
+ 
++#include <linux/bpf.h>
+ #include <linux/errno.h>
+ #include <linux/types.h>
+ #include <linux/net.h>
 diff --git a/net/ipv6/seg6_local.c b/net/ipv6/seg6_local.c
 index 2dc40b3f373e..a5eea182149d 100644
 --- a/net/ipv6/seg6_local.c
