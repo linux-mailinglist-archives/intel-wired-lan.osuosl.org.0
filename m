@@ -1,64 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D9CB4814D9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Dec 2021 17:03:31 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F1801481557
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Dec 2021 17:51:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D969340196;
-	Wed, 29 Dec 2021 16:03:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 81B174019F;
+	Wed, 29 Dec 2021 16:51:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 06ym1FrmAn_d; Wed, 29 Dec 2021 16:03:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r3wzTr3Igx38; Wed, 29 Dec 2021 16:51:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 780B74014D;
-	Wed, 29 Dec 2021 16:03:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9FF5E4011F;
+	Wed, 29 Dec 2021 16:51:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 953591BF393
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:03:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CB4231BF373
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:51:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 79524607EC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:03:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C4B7E606EB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:51:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XugrR8Tcw6LO for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Dec 2021 16:03:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 52C8A60777
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:03:21 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C5F876150C;
- Wed, 29 Dec 2021 16:03:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8504C36AE7;
- Wed, 29 Dec 2021 16:03:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640793799;
- bh=JjpeFlX1D08ft528esGQ/Dmp3d8gak2dGxLVU5277kI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=JpP2t1WEsiIyRq1md3yeDJqKD5b+v6vPK3dQL5KYtPRU6IzcCE2hfeoejuHeG11gd
- lC8IFpViEh+GNBkNBx4n5nW244Tql53dIjOETTsQ8i+5UfJvW9Ilc8EhjCT4Q4lOA4
- QM42sYWxI3kXC/do4dsN3O/F/5QTnKyWIH4D+TjWyd3Qv8ZelIjD6sZhRig841ypqR
- mTWsO71n3E7t2fJyuxqamjyrcVx+C0YBZwG9aCQStF11NC5RlZEPgKB5Mk28JwNuWp
- wwR/on9msDkJi5KBJfEq5mX9Wm2DfRpIzk3oUTTCtQJyiHOzO2W6s1m8x+iPToCIeX
- pL3LlEJMF3ouw==
-Date: Wed, 29 Dec 2021 10:03:17 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Message-ID: <20211229160317.GA1681139@bhelgaas>
+ with ESMTP id Q47uqKAgLmVr for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Dec 2021 16:51:35 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x632.google.com (mail-pl1-x632.google.com
+ [IPv6:2607:f8b0:4864:20::632])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 51222607B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 16:51:35 +0000 (UTC)
+Received: by mail-pl1-x632.google.com with SMTP id z3so16238890plg.8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Dec 2021 08:51:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eyiokD87yXLE7dKoF/rAesIX6IaZjzEtJI7+LN04FEk=;
+ b=jbps2qryj0Z0zQWn+lrBBlSxcDefe6KXi88QIlXKVc6Y7PKqWfUapjY8JxFcaIGigd
+ ft7+84WoQ0h4UhL3vyJ1DIBHIIiAm5llGYmfk4nVkAe+3GrrBf97zhKbWsvTPX6JejKF
+ 1dkXJo0UGl+pIxJTyh0L4R8V7cOazLao67YG1WvcCgMJUT7Zmhf0eicJkPKKBztKsk7v
+ D05fKDj1dOQc8zLv828bRzJys90kfBlRY+f583hLSA+S27xtYBrr/t46oqhBNzw2uXBi
+ meZ8HORQpYNqIJLSkK446oH4j64Ut5bibHP4XsZdHoPvyO6AnHzKO5rs+vK+c+HbGKip
+ 7LUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eyiokD87yXLE7dKoF/rAesIX6IaZjzEtJI7+LN04FEk=;
+ b=XDC2T31cm/Va7vNvgDIsK3jE3LCIiAbqpsm4kpSvmcK8gB5GOF/WZ1ER7aK6W61Mg3
+ Nck1mI9Y3Qzwi8vYAiU8tyPTxGFte0sMqa58kc8Jy0GLph9AXqQMjdywCd6tLT1fnrnm
+ KX3xS+j/pF8JBNGKPhpilxo3n5GKXpGCDF1Ojo9nM0jBLYylPhS1/lFZY3jgzGJCo/3o
+ +T5VSBj+T+XwvK8VVvk3aqnxw5diAidu+8xLdVVYac1oB4cOW6rjBTLj0Xab06lFYrx1
+ 3Tn/CF9ui0QYp9XhObFUG8fotC7SPWKCCvAjM7VoG+vX95pwk1T6DHAJHmfxg0vGRxcm
+ d6rg==
+X-Gm-Message-State: AOAM5318JvWSlPpXab8vhKgDutJFRuUa0VFlEKzQ0/Y46xne8kZSq1xp
+ 21Xpzh31DAwHS1a4hrRdWMyqCchK9ewDElANW8Y=
+X-Google-Smtp-Source: ABdhPJxws7iMiWFQ81pkeV1J6AYDjsQKCDaoIm81c0ZOXt5vTQ/CRD6VrIFy5sdtzv5w8UmX3Hk8KIPfWDSHxOMnNg4=
+X-Received: by 2002:a17:902:c443:b0:148:f689:d924 with SMTP id
+ m3-20020a170902c44300b00148f689d924mr27252809plm.78.1640796694708; Wed, 29
+ Dec 2021 08:51:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211229131207.1ac25424@coco.lan>
-Subject: Re: [Intel-wired-lan] [RFC 01/32] Kconfig: introduce and depend on
- LEGACY_PCI
+References: <20211229004913.513372-1-kuba@kernel.org>
+In-Reply-To: <20211229004913.513372-1-kuba@kernel.org>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Wed, 29 Dec 2021 08:51:23 -0800
+Message-ID: <CAADnVQLd2y_Cuqrn+cAQzCjpXM_Lub5_X6xEfZdMMC2a2Jq41A@mail.gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v2] net: don't include
+ filter.h from net/sock.h
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,102 +83,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
- Ettore Chimenti <ek5.chimenti@gmail.com>, linux-ide@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Guo Ren <guoren@kernel.org>,
- linux-i2c@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
- linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org,
- Hannes Reinecke <hare@suse.com>,
- Michael Grzeschik <m.grzeschik@pengutronix.de>, linux-scsi@vger.kernel.org,
- Sumit Saxena <sumit.saxena@broadcom.com>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Sathya Prakash <sathya.prakash@broadcom.com>, linux-csky@vger.kernel.org,
- Kashyap Desai <kashyap.desai@broadcom.com>,
- Nilesh Javali <njavali@marvell.com>, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, GR-QLogic-Storage-Upstream@marvell.com,
- Jakub Kicinski <kuba@kernel.org>, MPT-FusionLinux.pdl@broadcom.com,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
- linux-input@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>,
- Jean Delvare <jdelvare@suse.com>, linux-watchdog@vger.kernel.org,
- Niklas Schnelle <schnelle@linux.ibm.com>, Jouni Malinen <j@w1.fi>,
- Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
- Kalle Valo <kvalo@kernel.org>, John Garry <john.garry@huawei.com>,
- linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
- Ian Abbott <abbotti@mev.co.uk>, Mark Brown <broonie@kernel.org>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Wim Van Sebroeck <wim@linux-watchdog.org>,
- megaraidlinux.pdl@broadcom.com, Teddy Wang <teddy.wang@siliconmotion.com>,
- linux-hwmon@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
- Karsten Keil <isdn@linux-pingi.de>,
- Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
- Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-wireless@vger.kernel.org,
- Takashi Iwai <tiwai@suse.com>, "David S. Miller" <davem@davemloft.net>,
- H Hartley Sweeten <hsweeten@visionengravers.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
- netdev@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: wintera@linux.ibm.com, Andrew Lunn <andrew@lunn.ch>,
+ mustafa.ismail@intel.com, Pablo Neira Ayuso <pablo@netfilter.org>,
+ ath11k@lists.infradead.org, Alexei Starovoitov <ast@kernel.org>,
+ Andrii Nakryiko <andrii@kernel.org>, george.mccollister@gmail.com,
+ Ralf Baechle <ralf@linux-mips.org>, linux-hams@vger.kernel.org,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Steffen Klassert <steffen.klassert@secunet.com>,
+ linux-s390 <linux-s390@vger.kernel.org>, pkshih@realtek.com,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ Daniel Borkmann <daniel@iogearbox.net>, linux-bluetooth@vger.kernel.org,
+ linux-rdma@vger.kernel.org,
+ "moderated list:ETHERNET BRIDGE" <bridge@lists.linux-foundation.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Jozsef Kadlecsik <kadlec@netfilter.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ Doug Ledford <dledford@redhat.com>, coreteam@netfilter.org,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, nikolay@nvidia.com,
+ linux-wireless <linux-wireless@vger.kernel.org>, habetsm.xilinx@gmail.com,
+ Iurii Zaikin <yzaikin@google.com>, vivien.didelot@gmail.com, wg@grandegger.com,
+ sgarzare@redhat.com, woojung.huh@microchip.com, johan.hedberg@gmail.com,
+ Arnd Bergmann <arnd@arndb.de>, marcel@holtmann.org,
+ Jamal Hadi Salim <jhs@mojatatu.com>, linux-can@vger.kernel.org,
+ wenjia@linux.ibm.com, Marc Kleine-Budde <mkl@pengutronix.de>,
+ Alexander Viro <viro@zeniv.linux.org.uk>, luiz.dentz@gmail.com,
+ jiri@nvidia.com, Cong Wang <xiyou.wangcong@gmail.com>,
+ Michael Chan <michael.chan@broadcom.com>,
+ virtualization@lists.linux-foundation.org, shiraz.saleem@intel.com,
+ trond.myklebust@hammerspace.com, kvalo@codeaurora.org,
+ linux-nfs@vger.kernel.org, Leon Romanovsky <leon@kernel.org>,
+ Kees Cook <keescook@chromium.org>,
+ Network Development <netdev@vger.kernel.org>, David Ahern <dsahern@kernel.org>,
+ linux-decnet-user@lists.sourceforge.net, Florian Westphal <fw@strlen.de>,
+ Tariq Toukan <tariqt@nvidia.com>, kgraul@linux.ibm.com, ecree.xilinx@gmail.com,
+ "Luis R. Rodriguez" <mcgrof@kernel.org>,
+ netfilter-devel <netfilter-devel@vger.kernel.org>, jreuter@yaina.de,
+ Linux-Fsdevel <linux-fsdevel@vger.kernel.org>, bpf <bpf@vger.kernel.org>,
+ olteanv@gmail.com, saeedm@nvidia.com, anna.schumaker@netapp.com,
+ Taehee Yoo <ap420073@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 29, 2021 at 01:12:07PM +0100, Mauro Carvalho Chehab wrote:
-> Em Wed, 29 Dec 2021 12:45:38 +0100
-> Niklas Schnelle <schnelle@linux.ibm.com> escreveu:
-> > ...
+On Tue, Dec 28, 2021 at 4:49 PM Jakub Kicinski <kuba@kernel.org> wrote:
+>
+> sock.h is pretty heavily used (5k objects rebuilt on x86 after
+> it's touched). We can drop the include of filter.h from it and
+> add a forward declaration of struct sk_filter instead.
+> This decreases the number of rebuilt objects when bpf.h
+> is touched from ~5k to ~1k.
+>
+> There's a lot of missing includes this was masking. Primarily
+> in networking tho, this time.
+>
+> Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
+> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+> ---
+> v2: https://lore.kernel.org/all/20211228192519.386913-1-kuba@kernel.org/
+>  - fix build in bond on ia64
+>  - fix build in ip6_fib with randconfig
 
-> > I do think we agree that once done correctly there is value in
-> > such an option independent of HAS_IOPORT only gating inb() etc uses.
-
-I'm not sure I'm convinced about this.  For s390, you could do this
-patch series, where you don't define inb() at all, and you add new
-dependencies to prevent compile errors.  Or you could define inb() to
-return ~0, which is what happens on other platforms when the device is
-not present.
-
-> Personally, I don't see much value on a Kconfig var for legacy PCI I/O 
-> space. From maintenance PoV, bots won't be triggered if someone use
-> HAS_IOPORT instead of the PCI specific one - or vice-versa. So, we
-> could end having a mix of both at the wrong places, in long term.
-> 
-> Also, assuming that PCIe hardware will some day abandon support for 
-> "legacy" PCI I/O space, I guess some runtime logic would be needed, 
-> in order to work with both kinds of PCIe controllers. So, having a
-> Kconfig option won't help much, IMO.
-> 
-> So, my personal preference would be to have just one Kconfig var, but
-> I'm ok if the PCI maintainers decide otherwise.
-
-I don't really like the "LEGACY_PCI" Kconfig option.  "Legacy" just
-means something old and out of favor; it doesn't say *what* that
-something is.
-
-I think you're specifically interested in I/O port space usage, and it
-seems that you want all PCI drivers that *only* use I/O port space to
-depend on LEGACY_PCI?  Drivers that can use either I/O or memory
-space or both would not depend on LEGACY_PCI?  This seems a little
-murky and error-prone.
-
-What if you used the approach from [1] but just dropped the warning?
-The inb() would return ~0 if the platform doesn't support I/O port
-space.  Drivers should be prepared to handle that because that's what
-happens if the device doesn't exist.  
-
-HAS_IOPORT and LEGACY_PCI is a lot of Kconfiggery that basically just
-avoids building drivers that aren't useful on s390.  I'm not sure the
-benefit outweighs the complication.
-
-Bjorn
-
-[1] https://lore.kernel.org/lkml/CAHk-=wg80je=K7madF4e7WrRNp37e3qh6y10Svhdc7O8SZ_-8g@mail.gmail.com/
-
+Nice! Applied. Thanks
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
