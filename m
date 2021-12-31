@@ -1,67 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 125FC4823CC
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Dec 2021 12:45:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C6FA4823DB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Dec 2021 12:58:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 97DD5409BB;
-	Fri, 31 Dec 2021 11:45:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9431160BA5;
+	Fri, 31 Dec 2021 11:58:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id djw8YoZNwNBv; Fri, 31 Dec 2021 11:45:23 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ya6eBZKjEMFi; Fri, 31 Dec 2021 11:58:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 644E0409AB;
-	Fri, 31 Dec 2021 11:45:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 665BF60AAD;
+	Fri, 31 Dec 2021 11:58:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 074A31BF33C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:45:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5D3181BF33C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:58:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F3A43605A6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:45:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 495A360AAD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:58:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SDjLH8_s2PX5 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Dec 2021 11:45:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4CB0F6059E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:45:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640951116; x=1672487116;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=S/yCgGa7VgvJHcUrXTWJTAL+SZa+chaJ7Ht8wZlsXIU=;
- b=SWUrHghLIKYLwYUEm0WEfaOAEiPDKBkC5roreZtYSaSvKfH0bsbeG3E2
- eGYh5Jj8Dx7FFD5MI57VuMDvCwN6JERop/O7E6el82p/QcLfQbTetqO3C
- bwjfutNdiqZVhYNhMX5uX5kWjNwI39mXBD4CfuDlskdmXr9EtTgdGrhBh
- a+DYRm+X7/ZVmqPPRkSogOsXpIXxiU/KtOS0Ho5OWmiukUnvBrivaJh8B
- QLPK84C9M9wkB7ILyENB7ht9iR3GpIkacblgbmWO8JTpKCtDUlse46ovz
- vmLdblXXoG97DYeNzmPscepwPYoRA+vVP4xKiXXontXGsusua4Zrw0b18 Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10213"; a="240589824"
-X-IronPort-AV: E=Sophos;i="5.88,251,1635231600"; d="scan'208";a="240589824"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Dec 2021 03:45:15 -0800
-X-IronPort-AV: E=Sophos;i="5.88,251,1635231600"; d="scan'208";a="524719166"
-Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Dec 2021 03:45:14 -0800
-From: Piotr Skajewski <piotrx.skajewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 31 Dec 2021 12:42:08 +0100
-Message-Id: <20211231114208.9897-1-piotrx.skajewski@intel.com>
-X-Mailer: git-send-email 2.22.0.rc3
+ with ESMTP id Y-IVYtgIZpUc for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Dec 2021 11:58:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 68322605D8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Dec 2021 11:58:09 +0000 (UTC)
+Received: from [192.168.0.3] (ip5f5aea97.dynamic.kabel-deutschland.de
+ [95.90.234.151])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id BB68C61EA1922;
+ Fri, 31 Dec 2021 12:58:06 +0100 (CET)
+Message-ID: <01d882ac-42be-f4c3-b037-5ccc165462fd@molgen.mpg.de>
+Date: Fri, 31 Dec 2021 12:58:06 +0100
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Remove non-inclusive language from
- Intel code.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.1
+Content-Language: en-US
+To: Piotr Skajewski <piotrx.skajewski@intel.com>
+References: <20211231114208.9897-1-piotrx.skajewski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20211231114208.9897-1-piotrx.skajewski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Remove non-inclusive language
+ from Intel code.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,185 +62,157 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Piotr Skajewski <piotrx.skajewski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove non-inclusive language from Intel code.
-
-Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
----
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   | 36 +++++++++----------
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  4 +--
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h | 10 +++---
- 3 files changed, 25 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index e90b5047e695..4c26c4b92f07 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -30,7 +30,7 @@ static s32 ixgbe_write_eeprom_buffer_bit_bang(struct ixgbe_hw *hw, u16 offset,
- 					     u16 words, u16 *data);
- static s32 ixgbe_detect_eeprom_page_size_generic(struct ixgbe_hw *hw,
- 						 u16 offset);
--static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw);
-+static s32 ixgbe_disable_pcie_primary(struct ixgbe_hw *hw);
- 
- /* Base table for registers values that change by MAC */
- const u32 ixgbe_mvals_8259X[IXGBE_MVALS_IDX_LIMIT] = {
-@@ -746,10 +746,10 @@ s32 ixgbe_stop_adapter_generic(struct ixgbe_hw *hw)
- 	usleep_range(1000, 2000);
- 
- 	/*
--	 * Prevent the PCI-E bus from from hanging by disabling PCI-E master
-+	 * Prevent the PCI-E bus from hanging by disabling PCI-E primary
- 	 * access and verify no pending requests
- 	 */
--	return ixgbe_disable_pcie_master(hw);
-+	return ixgbe_disable_pcie_primary(hw);
- }
- 
- /**
-@@ -2506,15 +2506,15 @@ static u32 ixgbe_pcie_timeout_poll(struct ixgbe_hw *hw)
- }
- 
- /**
-- *  ixgbe_disable_pcie_master - Disable PCI-express master access
-+ *  ixgbe_disable_pcie_primary - Disable PCI-express primary access
-  *  @hw: pointer to hardware structure
-  *
-- *  Disables PCI-Express master access and verifies there are no pending
-- *  requests. IXGBE_ERR_MASTER_REQUESTS_PENDING is returned if master disable
-- *  bit hasn't caused the master requests to be disabled, else 0
-- *  is returned signifying master requests disabled.
-+ *  Disables PCI-Express primary access and verifies there are no pending
-+ *  requests. IXGBE_ERR_PRIMARY_REQUESTS_PENDING is returned if primary disable
-+ *  bit hasn't caused the primary requests to be disabled, else 0
-+ *  is returned signifying primary requests disabled.
-  **/
--static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
-+static s32 ixgbe_disable_pcie_primary(struct ixgbe_hw *hw)
- {
- 	u32 i, poll;
- 	u16 value;
-@@ -2523,23 +2523,23 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 	IXGBE_WRITE_REG(hw, IXGBE_CTRL, IXGBE_CTRL_GIO_DIS);
- 
- 	/* Poll for bit to read as set */
--	for (i = 0; i < IXGBE_PCI_MASTER_DISABLE_TIMEOUT; i++) {
-+	for (i = 0; i < IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT; i++) {
- 		if (IXGBE_READ_REG(hw, IXGBE_CTRL) & IXGBE_CTRL_GIO_DIS)
- 			break;
- 		usleep_range(100, 120);
- 	}
--	if (i >= IXGBE_PCI_MASTER_DISABLE_TIMEOUT) {
-+	if (i >= IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT) {
- 		hw_dbg(hw, "GIO disable did not set - requesting resets\n");
- 		goto gio_disable_fail;
- 	}
- 
--	/* Exit if master requests are blocked */
-+	/* Exit if primary requests are blocked */
- 	if (!(IXGBE_READ_REG(hw, IXGBE_STATUS) & IXGBE_STATUS_GIO) ||
- 	    ixgbe_removed(hw->hw_addr))
- 		return 0;
- 
--	/* Poll for master request bit to clear */
--	for (i = 0; i < IXGBE_PCI_MASTER_DISABLE_TIMEOUT; i++) {
-+	/* Poll for primary request bit to clear */
-+	for (i = 0; i < IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT; i++) {
- 		udelay(100);
- 		if (!(IXGBE_READ_REG(hw, IXGBE_STATUS) & IXGBE_STATUS_GIO))
- 			return 0;
-@@ -2547,13 +2547,13 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 
- 	/*
- 	 * Two consecutive resets are required via CTRL.RST per datasheet
--	 * 5.2.5.3.2 Master Disable.  We set a flag to inform the reset routine
--	 * of this need.  The first reset prevents new master requests from
-+	 * 5.2.5.3.2 Primary Disable.  We set a flag to inform the reset routine
-+	 * of this need.  The first reset prevents new primary requests from
- 	 * being issued by our device.  We then must wait 1usec or more for any
- 	 * remaining completions from the PCIe bus to trickle in, and then reset
- 	 * again to clear out any effects they may have had on our device.
- 	 */
--	hw_dbg(hw, "GIO Master Disable bit didn't clear - requesting resets\n");
-+	hw_dbg(hw, "GIO Primary Disable bit didn't clear - requesting resets\n");
- gio_disable_fail:
- 	hw->mac.flags |= IXGBE_FLAGS_DOUBLE_RESET_REQUIRED;
- 
-@@ -2575,7 +2575,7 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 	}
- 
- 	hw_dbg(hw, "PCIe transaction pending bit also did not clear.\n");
--	return IXGBE_ERR_MASTER_REQUESTS_PENDING;
-+	return IXGBE_ERR_PRIMARY_REQUESTS_PENDING;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 796b9895bc91..1cff14fc6c20 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -5948,8 +5948,8 @@ void ixgbe_reset(struct ixgbe_adapter *adapter)
- 	case IXGBE_ERR_SFP_NOT_PRESENT:
- 	case IXGBE_ERR_SFP_NOT_SUPPORTED:
- 		break;
--	case IXGBE_ERR_MASTER_REQUESTS_PENDING:
--		e_dev_err("master disable timed out\n");
-+	case IXGBE_ERR_PRIMARY_REQUESTS_PENDING:
-+		e_dev_err("primary disable timed out\n");
- 		break;
- 	case IXGBE_ERR_EEPROM_VERSION:
- 		/* We are running on a pre-production device, log a warning */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 2647937f7f4d..6da9880d766a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -1247,7 +1247,7 @@ struct ixgbe_nvm_version {
- #define IXGBE_PSRTYPE_RQPL_SHIFT    29
- 
- /* CTRL Bit Masks */
--#define IXGBE_CTRL_GIO_DIS      0x00000004 /* Global IO Master Disable bit */
-+#define IXGBE_CTRL_GIO_DIS      0x00000004 /* Global IO Primary Disable bit */
- #define IXGBE_CTRL_LNK_RST      0x00000008 /* Link Reset. Resets everything. */
- #define IXGBE_CTRL_RST          0x04000000 /* Reset (SW) */
- #define IXGBE_CTRL_RST_MASK     (IXGBE_CTRL_LNK_RST | IXGBE_CTRL_RST)
-@@ -1811,7 +1811,7 @@ enum {
- /* STATUS Bit Masks */
- #define IXGBE_STATUS_LAN_ID         0x0000000C /* LAN ID */
- #define IXGBE_STATUS_LAN_ID_SHIFT   2          /* LAN ID Shift*/
--#define IXGBE_STATUS_GIO            0x00080000 /* GIO Master Enable Status */
-+#define IXGBE_STATUS_GIO            0x00080000 /* GIO Primary Enable Status */
- 
- #define IXGBE_STATUS_LAN_ID_0   0x00000000 /* LAN ID 0 */
- #define IXGBE_STATUS_LAN_ID_1   0x00000004 /* LAN ID 1 */
-@@ -2193,8 +2193,8 @@ enum {
- #define IXGBE_PCIDEVCTRL2_4_8s		0xd
- #define IXGBE_PCIDEVCTRL2_17_34s	0xe
- 
--/* Number of 100 microseconds we wait for PCI Express master disable */
--#define IXGBE_PCI_MASTER_DISABLE_TIMEOUT	800
-+/* Number of 100 microseconds we wait for PCI Express primary disable */
-+#define IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT	800
- 
- /* RAH */
- #define IXGBE_RAH_VIND_MASK     0x003C0000
-@@ -3671,7 +3671,7 @@ struct ixgbe_info {
- #define IXGBE_ERR_ADAPTER_STOPPED               -9
- #define IXGBE_ERR_INVALID_MAC_ADDR              -10
- #define IXGBE_ERR_DEVICE_NOT_SUPPORTED          -11
--#define IXGBE_ERR_MASTER_REQUESTS_PENDING       -12
-+#define IXGBE_ERR_PRIMARY_REQUESTS_PENDING      -12
- #define IXGBE_ERR_INVALID_LINK_SETTINGS         -13
- #define IXGBE_ERR_AUTONEG_NOT_COMPLETE          -14
- #define IXGBE_ERR_RESET_FAILED                  -15
--- 
-2.22.0.rc3
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBQaW90ciwKCgpBbSAzMS4xMi4yMSB1bSAxMjo0MiBzY2hyaWViIFBpb3RyIFNrYWpld3Nr
+aToKPiBSZW1vdmUgbm9uLWluY2x1c2l2ZSBsYW5ndWFnZSBmcm9tIEludGVsIGNvZGUuCgpUaGFu
+ayB5b3UuIFRocmVlIG1pbm9yIHRoaW5nczoKCjEuICBQbGVhc2UgcmVtb3ZlIHRoZSB0cmFpbGlu
+ZyBkb3QvcGVyaW9kIGZyb20gdGhlIGdpdCBjb21taXQgbWVzc2FnZSAKc3VtbWFyeS4gKGdpdOKA
+mXMgZGVmYXVsdCBtZXNzYWdlcyBkbyBub3QgaGF2ZSBvbmUgZWl0aGVyLikKMi4gIFNvLCBiYXNp
+Y2FsbHksIOKAnG1hc3RlcuKAnSBpcyBjaGFuZ2VkIHRvIOKAnHByaW1hcnnigJ0/CjMuICBQbGVh
+c2UgbWVudGlvbiB0aGUgZml4IOKAnGZyb20gZnJvbeKAnSB0byDigJxmcm9t4oCdLCBvciBtYWtl
+IGl0IGEgc2VwYXJhdGUgCmNvbW1pdC4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKPiBTaWduZWQt
+b2ZmLWJ5OiBQaW90ciBTa2FqZXdza2kgPHBpb3RyeC5za2FqZXdza2lAaW50ZWwuY29tPgo+IC0t
+LQo+ICAgLi4uL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9jb21tb24uYyAgIHwgMzYg
+KysrKysrKysrLS0tLS0tLS0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUv
+aXhnYmVfbWFpbi5jIHwgIDQgKy0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdi
+ZS9peGdiZV90eXBlLmggfCAxMCArKystLS0KPiAgIDMgZmlsZXMgY2hhbmdlZCwgMjUgaW5zZXJ0
+aW9ucygrKSwgMjUgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2NvbW1vbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmMKPiBpbmRleCBlOTBiNTA0N2U2OTUuLjRjMjZjNGI5
+MmYwNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdi
+ZV9jb21tb24uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2Jl
+X2NvbW1vbi5jCj4gQEAgLTMwLDcgKzMwLDcgQEAgc3RhdGljIHMzMiBpeGdiZV93cml0ZV9lZXBy
+b21fYnVmZmVyX2JpdF9iYW5nKHN0cnVjdCBpeGdiZV9odyAqaHcsIHUxNiBvZmZzZXQsCj4gICAJ
+CQkJCSAgICAgdTE2IHdvcmRzLCB1MTYgKmRhdGEpOwo+ICAgc3RhdGljIHMzMiBpeGdiZV9kZXRl
+Y3RfZWVwcm9tX3BhZ2Vfc2l6ZV9nZW5lcmljKHN0cnVjdCBpeGdiZV9odyAqaHcsCj4gICAJCQkJ
+CQkgdTE2IG9mZnNldCk7Cj4gLXN0YXRpYyBzMzIgaXhnYmVfZGlzYWJsZV9wY2llX21hc3Rlcihz
+dHJ1Y3QgaXhnYmVfaHcgKmh3KTsKPiArc3RhdGljIHMzMiBpeGdiZV9kaXNhYmxlX3BjaWVfcHJp
+bWFyeShzdHJ1Y3QgaXhnYmVfaHcgKmh3KTsKPiAgIAo+ICAgLyogQmFzZSB0YWJsZSBmb3IgcmVn
+aXN0ZXJzIHZhbHVlcyB0aGF0IGNoYW5nZSBieSBNQUMgKi8KPiAgIGNvbnN0IHUzMiBpeGdiZV9t
+dmFsc184MjU5WFtJWEdCRV9NVkFMU19JRFhfTElNSVRdID0gewo+IEBAIC03NDYsMTAgKzc0Niwx
+MCBAQCBzMzIgaXhnYmVfc3RvcF9hZGFwdGVyX2dlbmVyaWMoc3RydWN0IGl4Z2JlX2h3ICpodykK
+PiAgIAl1c2xlZXBfcmFuZ2UoMTAwMCwgMjAwMCk7Cj4gICAKPiAgIAkvKgo+IC0JICogUHJldmVu
+dCB0aGUgUENJLUUgYnVzIGZyb20gZnJvbSBoYW5naW5nIGJ5IGRpc2FibGluZyBQQ0ktRSBtYXN0
+ZXIKPiArCSAqIFByZXZlbnQgdGhlIFBDSS1FIGJ1cyBmcm9tIGhhbmdpbmcgYnkgZGlzYWJsaW5n
+IFBDSS1FIHByaW1hcnkKPiAgIAkgKiBhY2Nlc3MgYW5kIHZlcmlmeSBubyBwZW5kaW5nIHJlcXVl
+c3RzCj4gICAJICovCj4gLQlyZXR1cm4gaXhnYmVfZGlzYWJsZV9wY2llX21hc3Rlcihodyk7Cj4g
+KwlyZXR1cm4gaXhnYmVfZGlzYWJsZV9wY2llX3ByaW1hcnkoaHcpOwo+ICAgfQo+ICAgCj4gICAv
+KioKPiBAQCAtMjUwNiwxNSArMjUwNiwxNSBAQCBzdGF0aWMgdTMyIGl4Z2JlX3BjaWVfdGltZW91
+dF9wb2xsKHN0cnVjdCBpeGdiZV9odyAqaHcpCj4gICB9Cj4gICAKPiAgIC8qKgo+IC0gKiAgaXhn
+YmVfZGlzYWJsZV9wY2llX21hc3RlciAtIERpc2FibGUgUENJLWV4cHJlc3MgbWFzdGVyIGFjY2Vz
+cwo+ICsgKiAgaXhnYmVfZGlzYWJsZV9wY2llX3ByaW1hcnkgLSBEaXNhYmxlIFBDSS1leHByZXNz
+IHByaW1hcnkgYWNjZXNzCj4gICAgKiAgQGh3OiBwb2ludGVyIHRvIGhhcmR3YXJlIHN0cnVjdHVy
+ZQo+ICAgICoKPiAtICogIERpc2FibGVzIFBDSS1FeHByZXNzIG1hc3RlciBhY2Nlc3MgYW5kIHZl
+cmlmaWVzIHRoZXJlIGFyZSBubyBwZW5kaW5nCj4gLSAqICByZXF1ZXN0cy4gSVhHQkVfRVJSX01B
+U1RFUl9SRVFVRVNUU19QRU5ESU5HIGlzIHJldHVybmVkIGlmIG1hc3RlciBkaXNhYmxlCj4gLSAq
+ICBiaXQgaGFzbid0IGNhdXNlZCB0aGUgbWFzdGVyIHJlcXVlc3RzIHRvIGJlIGRpc2FibGVkLCBl
+bHNlIDAKPiAtICogIGlzIHJldHVybmVkIHNpZ25pZnlpbmcgbWFzdGVyIHJlcXVlc3RzIGRpc2Fi
+bGVkLgo+ICsgKiAgRGlzYWJsZXMgUENJLUV4cHJlc3MgcHJpbWFyeSBhY2Nlc3MgYW5kIHZlcmlm
+aWVzIHRoZXJlIGFyZSBubyBwZW5kaW5nCj4gKyAqICByZXF1ZXN0cy4gSVhHQkVfRVJSX1BSSU1B
+UllfUkVRVUVTVFNfUEVORElORyBpcyByZXR1cm5lZCBpZiBwcmltYXJ5IGRpc2FibGUKPiArICog
+IGJpdCBoYXNuJ3QgY2F1c2VkIHRoZSBwcmltYXJ5IHJlcXVlc3RzIHRvIGJlIGRpc2FibGVkLCBl
+bHNlIDAKPiArICogIGlzIHJldHVybmVkIHNpZ25pZnlpbmcgcHJpbWFyeSByZXF1ZXN0cyBkaXNh
+YmxlZC4KPiAgICAqKi8KPiAtc3RhdGljIHMzMiBpeGdiZV9kaXNhYmxlX3BjaWVfbWFzdGVyKHN0
+cnVjdCBpeGdiZV9odyAqaHcpCj4gK3N0YXRpYyBzMzIgaXhnYmVfZGlzYWJsZV9wY2llX3ByaW1h
+cnkoc3RydWN0IGl4Z2JlX2h3ICpodykKPiAgIHsKPiAgIAl1MzIgaSwgcG9sbDsKPiAgIAl1MTYg
+dmFsdWU7Cj4gQEAgLTI1MjMsMjMgKzI1MjMsMjMgQEAgc3RhdGljIHMzMiBpeGdiZV9kaXNhYmxl
+X3BjaWVfbWFzdGVyKHN0cnVjdCBpeGdiZV9odyAqaHcpCj4gICAJSVhHQkVfV1JJVEVfUkVHKGh3
+LCBJWEdCRV9DVFJMLCBJWEdCRV9DVFJMX0dJT19ESVMpOwo+ICAgCj4gICAJLyogUG9sbCBmb3Ig
+Yml0IHRvIHJlYWQgYXMgc2V0ICovCj4gLQlmb3IgKGkgPSAwOyBpIDwgSVhHQkVfUENJX01BU1RF
+Ul9ESVNBQkxFX1RJTUVPVVQ7IGkrKykgewo+ICsJZm9yIChpID0gMDsgaSA8IElYR0JFX1BDSV9Q
+UklNQVJZX0RJU0FCTEVfVElNRU9VVDsgaSsrKSB7Cj4gICAJCWlmIChJWEdCRV9SRUFEX1JFRyho
+dywgSVhHQkVfQ1RSTCkgJiBJWEdCRV9DVFJMX0dJT19ESVMpCj4gICAJCQlicmVhazsKPiAgIAkJ
+dXNsZWVwX3JhbmdlKDEwMCwgMTIwKTsKPiAgIAl9Cj4gLQlpZiAoaSA+PSBJWEdCRV9QQ0lfTUFT
+VEVSX0RJU0FCTEVfVElNRU9VVCkgewo+ICsJaWYgKGkgPj0gSVhHQkVfUENJX1BSSU1BUllfRElT
+QUJMRV9USU1FT1VUKSB7Cj4gICAJCWh3X2RiZyhodywgIkdJTyBkaXNhYmxlIGRpZCBub3Qgc2V0
+IC0gcmVxdWVzdGluZyByZXNldHNcbiIpOwo+ICAgCQlnb3RvIGdpb19kaXNhYmxlX2ZhaWw7Cj4g
+ICAJfQo+ICAgCj4gLQkvKiBFeGl0IGlmIG1hc3RlciByZXF1ZXN0cyBhcmUgYmxvY2tlZCAqLwo+
+ICsJLyogRXhpdCBpZiBwcmltYXJ5IHJlcXVlc3RzIGFyZSBibG9ja2VkICovCj4gICAJaWYgKCEo
+SVhHQkVfUkVBRF9SRUcoaHcsIElYR0JFX1NUQVRVUykgJiBJWEdCRV9TVEFUVVNfR0lPKSB8fAo+
+ICAgCSAgICBpeGdiZV9yZW1vdmVkKGh3LT5od19hZGRyKSkKPiAgIAkJcmV0dXJuIDA7Cj4gICAK
+PiAtCS8qIFBvbGwgZm9yIG1hc3RlciByZXF1ZXN0IGJpdCB0byBjbGVhciAqLwo+IC0JZm9yIChp
+ID0gMDsgaSA8IElYR0JFX1BDSV9NQVNURVJfRElTQUJMRV9USU1FT1VUOyBpKyspIHsKPiArCS8q
+IFBvbGwgZm9yIHByaW1hcnkgcmVxdWVzdCBiaXQgdG8gY2xlYXIgKi8KPiArCWZvciAoaSA9IDA7
+IGkgPCBJWEdCRV9QQ0lfUFJJTUFSWV9ESVNBQkxFX1RJTUVPVVQ7IGkrKykgewo+ICAgCQl1ZGVs
+YXkoMTAwKTsKPiAgIAkJaWYgKCEoSVhHQkVfUkVBRF9SRUcoaHcsIElYR0JFX1NUQVRVUykgJiBJ
+WEdCRV9TVEFUVVNfR0lPKSkKPiAgIAkJCXJldHVybiAwOwo+IEBAIC0yNTQ3LDEzICsyNTQ3LDEz
+IEBAIHN0YXRpYyBzMzIgaXhnYmVfZGlzYWJsZV9wY2llX21hc3RlcihzdHJ1Y3QgaXhnYmVfaHcg
+Kmh3KQo+ICAgCj4gICAJLyoKPiAgIAkgKiBUd28gY29uc2VjdXRpdmUgcmVzZXRzIGFyZSByZXF1
+aXJlZCB2aWEgQ1RSTC5SU1QgcGVyIGRhdGFzaGVldAo+IC0JICogNS4yLjUuMy4yIE1hc3RlciBE
+aXNhYmxlLiAgV2Ugc2V0IGEgZmxhZyB0byBpbmZvcm0gdGhlIHJlc2V0IHJvdXRpbmUKPiAtCSAq
+IG9mIHRoaXMgbmVlZC4gIFRoZSBmaXJzdCByZXNldCBwcmV2ZW50cyBuZXcgbWFzdGVyIHJlcXVl
+c3RzIGZyb20KPiArCSAqIDUuMi41LjMuMiBQcmltYXJ5IERpc2FibGUuICBXZSBzZXQgYSBmbGFn
+IHRvIGluZm9ybSB0aGUgcmVzZXQgcm91dGluZQo+ICsJICogb2YgdGhpcyBuZWVkLiAgVGhlIGZp
+cnN0IHJlc2V0IHByZXZlbnRzIG5ldyBwcmltYXJ5IHJlcXVlc3RzIGZyb20KPiAgIAkgKiBiZWlu
+ZyBpc3N1ZWQgYnkgb3VyIGRldmljZS4gIFdlIHRoZW4gbXVzdCB3YWl0IDF1c2VjIG9yIG1vcmUg
+Zm9yIGFueQo+ICAgCSAqIHJlbWFpbmluZyBjb21wbGV0aW9ucyBmcm9tIHRoZSBQQ0llIGJ1cyB0
+byB0cmlja2xlIGluLCBhbmQgdGhlbiByZXNldAo+ICAgCSAqIGFnYWluIHRvIGNsZWFyIG91dCBh
+bnkgZWZmZWN0cyB0aGV5IG1heSBoYXZlIGhhZCBvbiBvdXIgZGV2aWNlLgo+ICAgCSAqLwo+IC0J
+aHdfZGJnKGh3LCAiR0lPIE1hc3RlciBEaXNhYmxlIGJpdCBkaWRuJ3QgY2xlYXIgLSByZXF1ZXN0
+aW5nIHJlc2V0c1xuIik7Cj4gKwlod19kYmcoaHcsICJHSU8gUHJpbWFyeSBEaXNhYmxlIGJpdCBk
+aWRuJ3QgY2xlYXIgLSByZXF1ZXN0aW5nIHJlc2V0c1xuIik7Cj4gICBnaW9fZGlzYWJsZV9mYWls
+Ogo+ICAgCWh3LT5tYWMuZmxhZ3MgfD0gSVhHQkVfRkxBR1NfRE9VQkxFX1JFU0VUX1JFUVVJUkVE
+Owo+ICAgCj4gQEAgLTI1NzUsNyArMjU3NSw3IEBAIHN0YXRpYyBzMzIgaXhnYmVfZGlzYWJsZV9w
+Y2llX21hc3RlcihzdHJ1Y3QgaXhnYmVfaHcgKmh3KQo+ICAgCX0KPiAgIAo+ICAgCWh3X2RiZyho
+dywgIlBDSWUgdHJhbnNhY3Rpb24gcGVuZGluZyBiaXQgYWxzbyBkaWQgbm90IGNsZWFyLlxuIik7
+Cj4gLQlyZXR1cm4gSVhHQkVfRVJSX01BU1RFUl9SRVFVRVNUU19QRU5ESU5HOwo+ICsJcmV0dXJu
+IElYR0JFX0VSUl9QUklNQVJZX1JFUVVFU1RTX1BFTkRJTkc7Cj4gICB9Cj4gICAKPiAgIC8qKgo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWlu
+LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKPiBpbmRl
+eCA3OTZiOTg5NWJjOTEuLjFjZmYxNGZjNmMyMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKPiBAQCAtNTk0OCw4ICs1OTQ4LDggQEAgdm9p
+ZCBpeGdiZV9yZXNldChzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlcikKPiAgIAljYXNlIElY
+R0JFX0VSUl9TRlBfTk9UX1BSRVNFTlQ6Cj4gICAJY2FzZSBJWEdCRV9FUlJfU0ZQX05PVF9TVVBQ
+T1JURUQ6Cj4gICAJCWJyZWFrOwo+IC0JY2FzZSBJWEdCRV9FUlJfTUFTVEVSX1JFUVVFU1RTX1BF
+TkRJTkc6Cj4gLQkJZV9kZXZfZXJyKCJtYXN0ZXIgZGlzYWJsZSB0aW1lZCBvdXRcbiIpOwo+ICsJ
+Y2FzZSBJWEdCRV9FUlJfUFJJTUFSWV9SRVFVRVNUU19QRU5ESU5HOgo+ICsJCWVfZGV2X2Vycigi
+cHJpbWFyeSBkaXNhYmxlIHRpbWVkIG91dFxuIik7Cj4gICAJCWJyZWFrOwo+ICAgCWNhc2UgSVhH
+QkVfRVJSX0VFUFJPTV9WRVJTSU9OOgo+ICAgCQkvKiBXZSBhcmUgcnVubmluZyBvbiBhIHByZS1w
+cm9kdWN0aW9uIGRldmljZSwgbG9nIGEgd2FybmluZyAqLwo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV90eXBlLmggYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9peGdiZS9peGdiZV90eXBlLmgKPiBpbmRleCAyNjQ3OTM3ZjdmNGQuLjZkYTk4
+ODBkNzY2YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9p
+eGdiZV90eXBlLmgKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdi
+ZV90eXBlLmgKPiBAQCAtMTI0Nyw3ICsxMjQ3LDcgQEAgc3RydWN0IGl4Z2JlX252bV92ZXJzaW9u
+IHsKPiAgICNkZWZpbmUgSVhHQkVfUFNSVFlQRV9SUVBMX1NISUZUICAgIDI5Cj4gICAKPiAgIC8q
+IENUUkwgQml0IE1hc2tzICovCj4gLSNkZWZpbmUgSVhHQkVfQ1RSTF9HSU9fRElTICAgICAgMHgw
+MDAwMDAwNCAvKiBHbG9iYWwgSU8gTWFzdGVyIERpc2FibGUgYml0ICovCj4gKyNkZWZpbmUgSVhH
+QkVfQ1RSTF9HSU9fRElTICAgICAgMHgwMDAwMDAwNCAvKiBHbG9iYWwgSU8gUHJpbWFyeSBEaXNh
+YmxlIGJpdCAqLwo+ICAgI2RlZmluZSBJWEdCRV9DVFJMX0xOS19SU1QgICAgICAweDAwMDAwMDA4
+IC8qIExpbmsgUmVzZXQuIFJlc2V0cyBldmVyeXRoaW5nLiAqLwo+ICAgI2RlZmluZSBJWEdCRV9D
+VFJMX1JTVCAgICAgICAgICAweDA0MDAwMDAwIC8qIFJlc2V0IChTVykgKi8KPiAgICNkZWZpbmUg
+SVhHQkVfQ1RSTF9SU1RfTUFTSyAgICAgKElYR0JFX0NUUkxfTE5LX1JTVCB8IElYR0JFX0NUUkxf
+UlNUKQo+IEBAIC0xODExLDcgKzE4MTEsNyBAQCBlbnVtIHsKPiAgIC8qIFNUQVRVUyBCaXQgTWFz
+a3MgKi8KPiAgICNkZWZpbmUgSVhHQkVfU1RBVFVTX0xBTl9JRCAgICAgICAgIDB4MDAwMDAwMEMg
+LyogTEFOIElEICovCj4gICAjZGVmaW5lIElYR0JFX1NUQVRVU19MQU5fSURfU0hJRlQgICAyICAg
+ICAgICAgIC8qIExBTiBJRCBTaGlmdCovCj4gLSNkZWZpbmUgSVhHQkVfU1RBVFVTX0dJTyAgICAg
+ICAgICAgIDB4MDAwODAwMDAgLyogR0lPIE1hc3RlciBFbmFibGUgU3RhdHVzICovCj4gKyNkZWZp
+bmUgSVhHQkVfU1RBVFVTX0dJTyAgICAgICAgICAgIDB4MDAwODAwMDAgLyogR0lPIFByaW1hcnkg
+RW5hYmxlIFN0YXR1cyAqLwo+ICAgCj4gICAjZGVmaW5lIElYR0JFX1NUQVRVU19MQU5fSURfMCAg
+IDB4MDAwMDAwMDAgLyogTEFOIElEIDAgKi8KPiAgICNkZWZpbmUgSVhHQkVfU1RBVFVTX0xBTl9J
+RF8xICAgMHgwMDAwMDAwNCAvKiBMQU4gSUQgMSAqLwo+IEBAIC0yMTkzLDggKzIxOTMsOCBAQCBl
+bnVtIHsKPiAgICNkZWZpbmUgSVhHQkVfUENJREVWQ1RSTDJfNF84cwkJMHhkCj4gICAjZGVmaW5l
+IElYR0JFX1BDSURFVkNUUkwyXzE3XzM0cwkweGUKPiAgIAo+IC0vKiBOdW1iZXIgb2YgMTAwIG1p
+Y3Jvc2Vjb25kcyB3ZSB3YWl0IGZvciBQQ0kgRXhwcmVzcyBtYXN0ZXIgZGlzYWJsZSAqLwo+IC0j
+ZGVmaW5lIElYR0JFX1BDSV9NQVNURVJfRElTQUJMRV9USU1FT1VUCTgwMAo+ICsvKiBOdW1iZXIg
+b2YgMTAwIG1pY3Jvc2Vjb25kcyB3ZSB3YWl0IGZvciBQQ0kgRXhwcmVzcyBwcmltYXJ5IGRpc2Fi
+bGUgKi8KPiArI2RlZmluZSBJWEdCRV9QQ0lfUFJJTUFSWV9ESVNBQkxFX1RJTUVPVVQJODAwCj4g
+ICAKPiAgIC8qIFJBSCAqLwo+ICAgI2RlZmluZSBJWEdCRV9SQUhfVklORF9NQVNLICAgICAweDAw
+M0MwMDAwCj4gQEAgLTM2NzEsNyArMzY3MSw3IEBAIHN0cnVjdCBpeGdiZV9pbmZvIHsKPiAgICNk
+ZWZpbmUgSVhHQkVfRVJSX0FEQVBURVJfU1RPUFBFRCAgICAgICAgICAgICAgIC05Cj4gICAjZGVm
+aW5lIElYR0JFX0VSUl9JTlZBTElEX01BQ19BRERSICAgICAgICAgICAgICAtMTAKPiAgICNkZWZp
+bmUgSVhHQkVfRVJSX0RFVklDRV9OT1RfU1VQUE9SVEVEICAgICAgICAgIC0xMQo+IC0jZGVmaW5l
+IElYR0JFX0VSUl9NQVNURVJfUkVRVUVTVFNfUEVORElORyAgICAgICAtMTIKPiArI2RlZmluZSBJ
+WEdCRV9FUlJfUFJJTUFSWV9SRVFVRVNUU19QRU5ESU5HICAgICAgLTEyCj4gICAjZGVmaW5lIElY
+R0JFX0VSUl9JTlZBTElEX0xJTktfU0VUVElOR1MgICAgICAgICAtMTMKPiAgICNkZWZpbmUgSVhH
+QkVfRVJSX0FVVE9ORUdfTk9UX0NPTVBMRVRFICAgICAgICAgIC0xNAo+ICAgI2RlZmluZSBJWEdC
+RV9FUlJfUkVTRVRfRkFJTEVEICAgICAgICAgICAgICAgICAgLTE1Cl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxp
+c3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21h
+aWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
