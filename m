@@ -1,72 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED1C5485573
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jan 2022 16:08:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 88C554163A;
-	Wed,  5 Jan 2022 15:08:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zHBxQ2NhSIUN; Wed,  5 Jan 2022 15:08:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7269B41614;
-	Wed,  5 Jan 2022 15:08:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F1C321BF575
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 11:20:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B740485574
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jan 2022 16:09:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EC83E60BA6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 11:20:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 41A286FB82;
+	Wed,  5 Jan 2022 15:09:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DcUnKqbRCc8I for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Jan 2022 11:20:27 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
- [209.85.166.71])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 27E6B60AC5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 11:20:26 +0000 (UTC)
-Received: by mail-io1-f71.google.com with SMTP id
- k6-20020a0566022d8600b005e6ff1b6bbaso21947081iow.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Jan 2022 03:20:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
- :from:to;
- bh=V68sfoNxZdTodjvbLf8yyxMv294L7ESP0hArLZD7o74=;
- b=XJZ74I/DjNVs+71/Heb5bSduHZoaNPkNCOajkD1+C3/YYIh+bXyLqqwCjV9TDqFHr9
- +kr3PEpbn0SFgGd4Fn4Rl8GD/j8mkuAFP5NUnuN8B7o2+bv2U5qLefFvkPRIKTh7dksY
- I4RBrFN+xwgRr+XyQSs90WSRQKZYDBhJ/H4QdrpEd8Ofsn00iKz81VlLms216zT49GkN
- zp4CQMqLKCmsQi6zQm3nUJ0rs9gjx3nLV4NiR648uvWWzqNGpDFQKqqC5S+I6lIAYHHQ
- Shxj3u/PdGz6ZRhG2XnHWwzYuHppGSG8rK3L9k1HM6In2lMsF+g8AGgq7M1YeUx7BwI0
- p00Q==
-X-Gm-Message-State: AOAM531mZ0bXFGTSOD7FZ+VPBYqA99aXWQ4df+dwsyfe6V+T1Aav7r0/
- jPyW2pYmVqxn7Ma8Tkya2pZhGSTd13nbwu1BAvu+QDMN4wt+
-X-Google-Smtp-Source: ABdhPJzDqSYr7M4I3MlKGdtYeZtqI1DD3gKHt2IDSbbIwXVPyJ9zyNKIBETlaLBOK0a9seWxyNUx10UUue9ZVjelQfdqYsMS9Cvu
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TpvplSvLrP63; Wed,  5 Jan 2022 15:09:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 201A36FB7D;
+	Wed,  5 Jan 2022 15:09:01 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 439BB1BF575
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 12:00:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3CB9E40502
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 12:00:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4N7KGcRqN-zY for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Jan 2022 12:00:23 +0000 (UTC)
+X-Greylist: delayed 00:15:54 by SQLgrey-1.8.0
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BF4BF400E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 12:00:23 +0000 (UTC)
+Received: from gallifrey.ext.pengutronix.de
+ ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=bjornoya.blackshift.org)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mkl@pengutronix.de>)
+ id 1n54iF-0003Vf-RG; Wed, 05 Jan 2022 12:44:15 +0100
+Received: from pengutronix.de
+ (2a03-f580-87bc-d400-7899-4998-133d-b4b9.ip6.dokom21.de
+ [IPv6:2a03:f580:87bc:d400:7899:4998:133d:b4b9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (Client did not present a certificate)
+ (Authenticated sender: mkl-all@blackshift.org)
+ by smtp.blackshift.org (Postfix) with ESMTPSA id 6D7DF6D18F8;
+ Wed,  5 Jan 2022 11:44:11 +0000 (UTC)
+Date: Wed, 5 Jan 2022 12:44:10 +0100
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: syzbot <syzbot+4c63f36709a642f801c5@syzkaller.appspotmail.com>
+Message-ID: <20220105114410.brzea3f5flgn5nl2@pengutronix.de>
+References: <0000000000007ea16705d0cfbb53@google.com>
+ <0000000000000fbea205d388d749@google.com>
 MIME-Version: 1.0
-X-Received: by 2002:a05:6e02:501:: with SMTP id
- d1mr24461933ils.285.1641381626346; 
- Wed, 05 Jan 2022 03:20:26 -0800 (PST)
-Date: Wed, 05 Jan 2022 03:20:26 -0800
-In-Reply-To: <0000000000007ea16705d0cfbb53@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000c7845605d4d3f0a0@google.com>
-From: syzbot <syzbot+4c63f36709a642f801c5@syzkaller.appspotmail.com>
-To: anthony.l.nguyen@intel.com, changbin.du@intel.com, 
- christian.brauner@ubuntu.com, davem@davemloft.net, edumazet@google.com, 
- eric.dumazet@gmail.com, hawk@kernel.org, hkallweit1@gmail.com, 
- intel-wired-lan-owner@osuosl.org, intel-wired-lan@lists.osuosl.org, 
- jesse.brandeburg@intel.com, kuba@kernel.org, linux-can@vger.kernel.org, 
- linux-kernel@vger.kernel.org, mkl@pengutronix.de, netdev@vger.kernel.org, 
- socketcan@hartkopp.net, syzkaller-bugs@googlegroups.com, yajun.deng@linux.dev
-X-Mailman-Approved-At: Wed, 05 Jan 2022 15:08:52 +0000
+In-Reply-To: <0000000000000fbea205d388d749@google.com>
+X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+X-Mailman-Approved-At: Wed, 05 Jan 2022 15:08:53 +0000
 Subject: Re: [Intel-wired-lan] [syzbot] kernel BUG in pskb_expand_head
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -80,97 +74,178 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: socketcan@hartkopp.net, hawk@kernel.org, eric.dumazet@gmail.com,
+ linux-kernel@vger.kernel.org, syzkaller-bugs@googlegroups.com,
+ davem@davemloft.net, netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ kuba@kernel.org, linux-can@vger.kernel.org, intel-wired-lan-owner@osuosl.org
+Content-Type: multipart/mixed; boundary="===============7135321652895433316=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-syzbot has found a reproducer for the following issue on:
 
-HEAD commit:    c9e6606c7fe9 Linux 5.16-rc8
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=148351c3b00000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=32f9fa260d7413b4
-dashboard link: https://syzkaller.appspot.com/bug?extid=4c63f36709a642f801c5
-compiler:       gcc (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=15435e2bb00000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=12f4508db00000
+--===============7135321652895433316==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pvmbkuebz5fmhav3"
+Content-Disposition: inline
 
-The issue was bisected to:
 
-commit e4b8954074f6d0db01c8c97d338a67f9389c042f
-Author: Eric Dumazet <edumazet@google.com>
-Date:   Tue Dec 7 01:30:37 2021 +0000
+--pvmbkuebz5fmhav3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-    netlink: add net device refcount tracker to struct ethnl_req_info
+On 19.12.2021 16:19:20, syzbot wrote:
+>  skb_over_panic net/core/skbuff.c:118 [inline]
+>  skb_over_panic net/core/skbuff.c:118 [inline] net/core/skbuff.c:1986
+>  skb_put.cold+0x24/0x24 net/core/skbuff.c:1986 net/core/skbuff.c:1986
+>  isotp_rcv_cf net/can/isotp.c:570 [inline]
+>  isotp_rcv_cf net/can/isotp.c:570 [inline] net/can/isotp.c:668
+>  isotp_rcv+0xa38/0x1e30 net/can/isotp.c:668 net/can/isotp.c:668
 
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=109e6fcbb00000
-final oops:     https://syzkaller.appspot.com/x/report.txt?x=129e6fcbb00000
-console output: https://syzkaller.appspot.com/x/log.txt?x=149e6fcbb00000
+> struct tpcon {
+> 	int idx;
+> 	int len;
+        ^^^
+> 	u32 state;
+> 	u8 bs;
+> 	u8 sn;
+> 	u8 ll_dl;
+> 	u8 buf[MAX_MSG_LENGTH + 1];
+> };
+>=20
+> static int isotp_rcv_ff(struct sock *sk, struct canfd_frame *cf, int ae)
+> {
 
-IMPORTANT: if you fix the issue, please add the following tag to the commit:
-Reported-by: syzbot+4c63f36709a642f801c5@syzkaller.appspotmail.com
-Fixes: e4b8954074f6 ("netlink: add net device refcount tracker to struct ethnl_req_info")
+[...]
 
-skbuff: skb_over_panic: text:ffffffff88235fb8 len:4096 put:4096 head:ffff888021cb8400 data:ffff888021cb8400 tail:0x1000 end:0xc0 dev:<NULL>
-------------[ cut here ]------------
-kernel BUG at net/core/skbuff.c:113!
-invalid opcode: 0000 [#1] PREEMPT SMP KASAN
-CPU: 1 PID: 19 Comm: ksoftirqd/1 Not tainted 5.16.0-rc8-syzkaller #0
-Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
-RIP: 0010:skb_panic+0x16c/0x16e net/core/skbuff.c:113
-Code: f8 4c 8b 4c 24 10 8b 4b 70 41 56 45 89 e8 4c 89 e2 41 57 48 89 ee 48 c7 c7 e0 4b ad 8a ff 74 24 10 ff 74 24 20 e8 6e 24 c2 ff <0f> 0b e8 74 92 38 f8 4c 8b 64 24 18 e8 da 47 7f f8 48 c7 c1 80 58
-RSP: 0018:ffffc90000d979e0 EFLAGS: 00010286
-RAX: 000000000000008b RBX: ffff888021ccb500 RCX: 0000000000000000
-RDX: ffff88801196d700 RSI: ffffffff815f0948 RDI: fffff520001b2f2e
-RBP: ffffffff8aad58c0 R08: 000000000000008b R09: 0000000000000000
-R10: ffffffff815ea6ee R11: 0000000000000000 R12: ffffffff88235fb8
-R13: 0000000000001000 R14: ffffffff8aad4ba0 R15: 00000000000000c0
-FS:  0000000000000000(0000) GS:ffff8880b9d00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007f886c8cc718 CR3: 000000007ad6d000 CR4: 00000000003506e0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-Call Trace:
- <TASK>
- skb_over_panic net/core/skbuff.c:118 [inline]
- skb_put.cold+0x24/0x24 net/core/skbuff.c:1990
- isotp_rcv_cf net/can/isotp.c:570 [inline]
- isotp_rcv+0xa38/0x1e30 net/can/isotp.c:668
- deliver net/can/af_can.c:574 [inline]
- can_rcv_filter+0x445/0x8d0 net/can/af_can.c:635
- can_receive+0x31d/0x580 net/can/af_can.c:665
- can_rcv+0x120/0x1c0 net/can/af_can.c:696
- __netif_receive_skb_one_core+0x114/0x180 net/core/dev.c:5465
- __netif_receive_skb+0x24/0x1b0 net/core/dev.c:5579
- process_backlog+0x2a5/0x6c0 net/core/dev.c:6455
- __napi_poll+0xaf/0x440 net/core/dev.c:7023
- napi_poll net/core/dev.c:7090 [inline]
- net_rx_action+0x801/0xb40 net/core/dev.c:7177
- __do_softirq+0x29b/0x9c2 kernel/softirq.c:558
- run_ksoftirqd kernel/softirq.c:921 [inline]
- run_ksoftirqd+0x2d/0x60 kernel/softirq.c:913
- smpboot_thread_fn+0x645/0x9c0 kernel/smpboot.c:164
- kthread+0x405/0x4f0 kernel/kthread.c:327
- ret_from_fork+0x1f/0x30 arch/x86/entry/entry_64.S:295
- </TASK>
-Modules linked in:
----[ end trace 9f06028ec4daf4be ]---
-RIP: 0010:skb_panic+0x16c/0x16e net/core/skbuff.c:113
-Code: f8 4c 8b 4c 24 10 8b 4b 70 41 56 45 89 e8 4c 89 e2 41 57 48 89 ee 48 c7 c7 e0 4b ad 8a ff 74 24 10 ff 74 24 20 e8 6e 24 c2 ff <0f> 0b e8 74 92 38 f8 4c 8b 64 24 18 e8 da 47 7f f8 48 c7 c1 80 58
-RSP: 0018:ffffc90000d979e0 EFLAGS: 00010286
-RAX: 000000000000008b RBX: ffff888021ccb500 RCX: 0000000000000000
-RDX: ffff88801196d700 RSI: ffffffff815f0948 RDI: fffff520001b2f2e
-RBP: ffffffff8aad58c0 R08: 000000000000008b R09: 0000000000000000
-R10: ffffffff815ea6ee R11: 0000000000000000 R12: ffffffff88235fb8
-R13: 0000000000001000 R14: ffffffff8aad4ba0 R15: 00000000000000c0
-FS:  0000000000000000(0000) GS:ffff8880b9d00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007f886c8cc718 CR3: 000000007ad6d000 CR4: 00000000003506e0
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> 	/* Check for FF_DL escape sequence supporting 32 bit PDU length */
+> 	if (so->rx.len) {
+> 		ff_pci_sz =3D FF_PCI_SZ12;
+> 	} else {
+> 		/* FF_DL =3D 0 =3D> get real length from next 4 bytes */
+> 		so->rx.len =3D cf->data[ae + 2] << 24;
+> 		so->rx.len +=3D cf->data[ae + 3] << 16;
+> 		so->rx.len +=3D cf->data[ae + 4] << 8;
+> 		so->rx.len +=3D cf->data[ae + 5];
+> 		ff_pci_sz =3D FF_PCI_SZ32;
+> 	}
+
+Full 32 Bit PDUs don't work with struct tpcon::len being an "int". I
+think converting it to "unsigned int" should be done.
+
+[...]
+
+> }
+>=20
+> static int isotp_rcv_cf(struct sock *sk, struct canfd_frame *cf, int ae,
+> 			struct sk_buff *skb)
+> {
+> 	struct isotp_sock *so =3D isotp_sk(sk);
+> 	struct sk_buff *nskb;
+> 	int i;
+>=20
+> 	if (so->rx.state !=3D ISOTP_WAIT_DATA)
+> 		return 0;
+>=20
+> 	/* drop if timestamp gap is less than force_rx_stmin nano secs */
+> 	if (so->opt.flags & CAN_ISOTP_FORCE_RXSTMIN) {
+> 		if (ktime_to_ns(ktime_sub(skb->tstamp, so->lastrxcf_tstamp)) <
+> 		    so->force_rx_stmin)
+> 			return 0;
+>=20
+> 		so->lastrxcf_tstamp =3D skb->tstamp;
+> 	}
+>=20
+> 	hrtimer_cancel(&so->rxtimer);
+>=20
+> 	/* CFs are never longer than the FF */
+> 	if (cf->len > so->rx.ll_dl)
+> 		return 1;
+>=20
+> 	/* CFs have usually the LL_DL length */
+> 	if (cf->len < so->rx.ll_dl) {
+> 		/* this is only allowed for the last CF */
+> 		if (so->rx.len - so->rx.idx > so->rx.ll_dl - ae - N_PCI_SZ)
+> 			return 1;
+> 	}
+>=20
+> 	if ((cf->data[ae] & 0x0F) !=3D so->rx.sn) {
+> 		/* wrong sn detected - report 'illegal byte sequence' */
+> 		sk->sk_err =3D EILSEQ;
+> 		if (!sock_flag(sk, SOCK_DEAD))
+> 			sk_error_report(sk);
+>=20
+> 		/* reset rx state */
+> 		so->rx.state =3D ISOTP_IDLE;
+> 		return 1;
+> 	}
+> 	so->rx.sn++;
+> 	so->rx.sn %=3D 16;
+>=20
+> 	for (i =3D ae + N_PCI_SZ; i < cf->len; i++) {
+> 		so->rx.buf[so->rx.idx++] =3D cf->data[i];
+> 		if (so->rx.idx >=3D so->rx.len)
+> 			break;
+> 	}
+>=20
+> 	if (so->rx.idx >=3D so->rx.len) {
+> 		/* we are done */
+> 		so->rx.state =3D ISOTP_IDLE;
+>=20
+> 		if ((so->opt.flags & ISOTP_CHECK_PADDING) &&
+> 		    check_pad(so, cf, i + 1, so->opt.rxpad_content)) {
+> 			/* malformed PDU - report 'not a data message' */
+> 			sk->sk_err =3D EBADMSG;
+> 			if (!sock_flag(sk, SOCK_DEAD))
+> 				sk_error_report(sk);
+> 			return 1;
+> 		}
+>=20
+> 		nskb =3D alloc_skb(so->rx.len, gfp_any());
+> 		if (!nskb)
+> 			return 1;
+>=20
+> 		memcpy(skb_put(nskb, so->rx.len), so->rx.buf,
+                       ^^^^^^^
+> 		       so->rx.len);
+
+This is where the skb_over_panic() happens.
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde           |
+Embedded Linux                   | https://www.pengutronix.de  |
+Vertretung West/Dortmund         | Phone: +49-231-2826-924     |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-5555 |
+
+--pvmbkuebz5fmhav3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEK3kIWJt9yTYMP3ehqclaivrt76kFAmHVhIcACgkQqclaivrt
+76mBngf7Bm/34wnau/lFJUMXxyFtcxMVjizZum0kCMtMp2ZnYDP1z1vz0vQLYwfL
++QMi7i4lNu2Be7FLZrB4Vqh0wDrtw5nv67Bff3UnWoMlyZCr6Oq1rbEdWue+F1uk
+SE/TideImjzKVlcYze/p3dCTYPhnu2h2nvjQ7iRfApiOrGEYyRDawCG2rhcOO2ke
+og60OLmP4bv7sfGLzpGZtnAzR+GxnLFC4pa7I1QH4ry62uzBTlDHE8g1ebM2bwfB
+q/jcxK28uPZ7pU30y3DF/obRvJ1PUPBKfYr461VNHPLxg2CVh/3JJDfNAr6VcdvS
+uTcgP18dcs5u2hMK2yWlmT6Yfi4Qow==
+=30q3
+-----END PGP SIGNATURE-----
+
+--pvmbkuebz5fmhav3--
+
+--===============7135321652895433316==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============7135321652895433316==--
