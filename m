@@ -1,169 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22E8F485900
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jan 2022 20:15:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB84748596C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jan 2022 20:48:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B6410429B0;
-	Wed,  5 Jan 2022 19:15:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6176D6FB98;
+	Wed,  5 Jan 2022 19:47:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T6_4u-ThmkRZ; Wed,  5 Jan 2022 19:15:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oFFWF-57QrHA; Wed,  5 Jan 2022 19:47:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BBBBB428B7;
-	Wed,  5 Jan 2022 19:15:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42C3060BA3;
+	Wed,  5 Jan 2022 19:47:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 518F91BF3CE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:15:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6378C1BF3CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:47:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4C10F6FC2B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:15:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 567D082778
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:47:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id riLRzSvmo6Dh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Jan 2022 19:15:51 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zONWGy2S3V95 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Jan 2022 19:47:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 362E26FBEB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:15:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641410151; x=1672946151;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=hJ5N1YDm4f/xfbt8EYJe2AIXku5FCY7RR0MtP2DixQw=;
- b=eBaUsEeKD7BYPYSdpdV+HdpzJbqEs7lEHUF8wQZNuFDfQXkWfB8xxni8
- uoXxHWzeCbMVqEnZMrXxOrtn8u8f6/IXAJxZDLqMO/b4lkmmRbbmcIehk
- NJ6DhQ0Ia67gN65ijeBMONxrCchDG9OmyUUG6NzUVL+FMelzYeK/OAcs3
- EG9frv/S/QkYPcsePfogTuGEVLgxPDSFeL/ZDk/mjICvEUfLNNFJ8AxlX
- A75PMr3gQaRqpiEbaoHBq+xuYixkjg4XIJCiJezWBItY8f1+UsVIA8qZk
- YpLVJi3dfMGryc2Eu/cy8ixfOF4l/moteIM03ndCxB0mxTxXziLP11gDv w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10217"; a="223202532"
-X-IronPort-AV: E=Sophos;i="5.88,264,1635231600"; d="scan'208";a="223202532"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2022 11:15:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,264,1635231600"; d="scan'208";a="470681430"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga003.jf.intel.com with ESMTP; 05 Jan 2022 11:15:50 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 5 Jan 2022 11:15:49 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 5 Jan 2022 11:15:49 -0800
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.104)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 5 Jan 2022 11:15:49 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZSB0YPjP8KUQikaM0Ir3NVAX6KytyWVUpp1JbjVvqmfiiBS0ZkTKFZNAheh8jN/9NXp1guNpyWCpKWcJndWTALPu3dP5DViaWVpmTdKg+IKYThcGIzzEZF7g0E7W0B1R79Bos+la/CcafQo8Q4Diuzr7wItOCkGh/kXZ49+u2HhJc+U8usL7pVJvJa7M+sGCK2cEnHr0TW472Ku+ff87d52F45yDcuRBZxrFWB/CPcX0fxyo57iWJW3XyeBBtXiMoN5hRzcd0UeWv1ZDH4lphH4Ks2kaUuwbCUYxvggBSVT5ApQWGGG10AzWifNYGyt27tFawQuO396lN/U+J6cQVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UzVCtauhKdeBrhPyxDDgwSXIBT66WfzUPpisvbbPAx0=;
- b=ciEE+rc4DNptOV43cmtvzwn5rXosxaBEufs05GKjxLc9kwZzSxV8sb0fEejpg3O36nRWpr8MX1kXsOeg4zMSFq+n5ilR+6HJrVopGBSJDjT9l4z/dq7TjDHRl7hP6KP1ym7363m+TzWwgkImCwUbVArW39FZhQMePr52CjBuxiVVpY2zfv2IkN/VOtjnCReCldS6Td5s/YNu9Ow9+aLzuPao0cW/DhEtkY5OFwZ9iH9BIv76bdL1URmErTvhhTMztdJUVbZC3vZcG5DETRekxhi4saaem1LNEyyS2YDACRgvURIj1rK363ZFefGJyAHmASdjAiCOjO7ZnaqTy8g3sQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com (2603:10b6:303:90::24)
- by MWHPR1101MB2319.namprd11.prod.outlook.com (2603:10b6:301:52::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4844.15; Wed, 5 Jan
- 2022 19:15:48 +0000
-Received: from CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::b0d7:d746:481b:103a]) by CO1PR11MB4914.namprd11.prod.outlook.com
- ([fe80::b0d7:d746:481b:103a%9]) with mapi id 15.20.4844.016; Wed, 5 Jan 2022
- 19:15:48 +0000
-Message-ID: <3b256624-b68f-3105-ca7a-7a8a2e95e0dc@intel.com>
-Date: Wed, 5 Jan 2022 11:15:45 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Content-Language: en-US
-To: Joe Damato <jdamato@fastly.com>, <intel-wired-lan@lists.osuosl.org>
-References: <1641397753-121138-1-git-send-email-jdamato@fastly.com>
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-In-Reply-To: <1641397753-121138-1-git-send-email-jdamato@fastly.com>
-X-ClientProxiedBy: MW4PR03CA0233.namprd03.prod.outlook.com
- (2603:10b6:303:b9::28) To CO1PR11MB4914.namprd11.prod.outlook.com
- (2603:10b6:303:90::24)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6EEB381570
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jan 2022 19:47:51 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 27F5261859;
+ Wed,  5 Jan 2022 19:47:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F8F0C36AE0;
+ Wed,  5 Jan 2022 19:47:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1641412069;
+ bh=t/Luv/nk2DzaSNkJU//u39w5XVRhppoSx5pKsM3k/v4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=VUv9O2qdqKxA+jG4CFc2u3LsBBtVCfotavPXFO/fA1pTVEWrxgynepfFoNwDmpPe3
+ gm6mzSwrf0Mu9v8LI0ep1L8d0gF07n+txTEieNZIGWxOqW9SiL4CAOcvJbfSVMhQ+3
+ AXwKESLwYk/C/VLxQ9B09ONeiabtURx+gn19Ju8IEKSa/0hYllteATy6HWhv5F/Jtp
+ 78FWTCTutn0mw70OCHpRgC8L6tBrcnnp3ILK1zuW9o6rgJRHSCKyS7qdLXCdCEZ3Sf
+ pZgJlDurZwMThwqJkqgUgnGVT16YwqrnJM1KhaMG1e1LQ7K8PhR9cgiSRWv4dC4Mip
+ cFT1uhvBqjObQ==
+Date: Wed, 5 Jan 2022 13:47:48 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: John Garry <john.garry@huawei.com>
+Message-ID: <20220105194748.GA215560@bhelgaas>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 80b576c7-760b-4116-7ffb-08d9d07fc7c7
-X-MS-TrafficTypeDiagnostic: MWHPR1101MB2319:EE_
-X-Microsoft-Antispam-PRVS: <MWHPR1101MB2319369C654249C086422D61974B9@MWHPR1101MB2319.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:221;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: XdTfduOVOjYvGFYboiw6nKmVV835qw0fZuSZ+BcD6A/hol7ZvW5PdhOt3vPtW9BPXLALqD4fNFh2RtK0YrRzwShD/RGu40YivCx1TBYd3OwgGB7eehVdh/vLxWKgrmLlVWHXR4nT/UszOb/GCQ+4iNfwXKb7y2A8Mqxz6aUQ0Uj+EboojNKoXjF6lb3kYIr25cXb0Z1WfzA5yDwyM7CQD3Z1+8CKPMzxTmv9oj2jnalMZ3amBwrB+56nOPcf7ZCxRSZ4sIN4QOK182NqQxDYvAzsU4MOxS0TP1FrZAVTqI96ZmowdZEC+kIGuRJNEKlfRNHeyUkYD/bcsgIxw00hbgGG05NwonEL2I1qXyFgdFofPgem7yL0mMUhNeidXsxgYFHZld3bplSgu18Edl79YniEj34iFAZEINi+sc86p2pvjvgl8VFef0VCvgwUj0qFkxckHMb3LaxnlQSEzGp07Z+YfAlX2UBTuxBENDmaJ9tleNKSLYo3+iPYdEnRa2NV6oCUTDBEctDd23b0VImeqo7MulrKEmMHsbt0I0B1Rccq5p3xwZMgH6R3nV9eFW6QKyVDCLW/lM/NZjX/55eiSe+lnbXMpdDLfrZU4SJdWZHCVvG9MRLQFrZ6TgPcSUlb/H8WoKsBR8efc3hWVaOC3davh2S4X54POclYNXCTOmrki30MHYYvWKiZVIi9ugI4jstbLLQk6PcliBbCxpbys3ydCui0EuQtaaa2YclSqa8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB4914.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(316002)(6486002)(38100700002)(186003)(36756003)(107886003)(66556008)(44832011)(66946007)(26005)(6506007)(6512007)(8936002)(2616005)(8676002)(4326008)(2906002)(6666004)(31696002)(82960400001)(508600001)(83380400001)(66476007)(31686004)(5660300002)(86362001)(4744005)(53546011)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R0lOV2VUN0FZYUZrVm94QVlGNkYyTml6S1BoaGRYNi9Sa3ljNkZveXhLSEQ0?=
- =?utf-8?B?d1lKeDk2UlVEQzJNQzdaMXVuc01rb29iOGIrWUlQSXBKcUtyZGZFUDdyeEFt?=
- =?utf-8?B?dmlQdTVaYk15NHFwSk1OaWJWdGJVUURxWjVldHFyRnhRMGlidCtNTnlyankx?=
- =?utf-8?B?TkRLLzF3YUI5TndZdXRhMFhtbUdZQXRPYjZkUG1TczlVcnJwYWUydTVRbFV0?=
- =?utf-8?B?STlwYUpzUDFEb1kyeXhnTG40dUtnMGxiUHVGc00xOG9RMVhPRTIxUkFUTXNJ?=
- =?utf-8?B?Y3hSd2xBK1Jwdmg2T084b09lamhJVk9RRlFMcEVjNVRVaGZMaTllTUdacWxx?=
- =?utf-8?B?RVFld1hnYmhSYlkzelpYbXNEdnB0Y3hEQlNhOC9XMzEzZkNRYnoxS21WTWY1?=
- =?utf-8?B?emNra2dlRUg5dzZkbE1kNTFkZzVOZjQ3TDY5ZnYxWWgzdVNXZ2RtK2hCeXEx?=
- =?utf-8?B?cDdJQVRKdXpXSGRGcFdENFczTnBMTmFDdjhERlRjRjdJMWh0UWVSSlVUV202?=
- =?utf-8?B?R1BMTk5qRXJoSW9rL0g4SmF2TzFOMkczRTdVMU4xZUloNVdSSTJMQmZmVXNm?=
- =?utf-8?B?NFlSUzcrQ2tpci94WDZ0eDNaQnk5cGZYcUQxSnFtZklZUHJJakFXa1UrcGNw?=
- =?utf-8?B?alBnVFlFRGZzU2ZwU2g4RGdSbTRkcThvWnY5Mk55b1NaT3JSVmErbDVrRWMy?=
- =?utf-8?B?ODg1REtWZGFFRVRpNkEyQnVGblExa3VlMTRXOTM3SjdTdzllR1ptcTJ0NnhP?=
- =?utf-8?B?cTVxVzRYUjM2MnFyc2ZWbGlvZE1OVEd4bDJlWXBhci9XbGZhK2swVWNaUlhC?=
- =?utf-8?B?YUl3YWxRV1NEUE1iKzBqNWV3YXBVSGdwV21EV3JsSjBCbDYzODlBSTVOS3VW?=
- =?utf-8?B?SUxQdklDeHlRNVl0Mi91M1o2YkVFNGxyekpTSkUxaXppNVRWT3M0TnZGUWl4?=
- =?utf-8?B?dkpCdnZsN1pBakVyRXR4aGx0ZGZPbVc2TzdwdXdyS3BBYzdMYVdTS3dWL0Ur?=
- =?utf-8?B?YkxnRWMrdnpWWDVrMFVJTmNMMzhxaFZqbWN6NVFhZVFDOEw3SlQyOVM5SE4y?=
- =?utf-8?B?REt3WHBlbUFiWTJKMm1HMHRaMnN5cUtDVnBTMFF2T2hoSHFpa04wcW1BRk0x?=
- =?utf-8?B?MmxiejFHdnJpcTZwRFZ5cFVQdU1ZeUM1YWlYZlArRzN5amtvc3NreitDdldQ?=
- =?utf-8?B?RnZmY1VRR250TEhOUHFPZTNLSDhjeUk5ZDBUUENuSVdaV3ZKWkN6aGp2ZjVB?=
- =?utf-8?B?TjcrQ1orTFdPeEM0WG9OWS9HRk5HTEJNVFV0ZHBSaWp4cXh1REllV0EvdjFK?=
- =?utf-8?B?S2RSQTVGRmNYeWIybVYra1M4N24vd3MxL210Qk9YME0veThrQi8vU3lVUDhJ?=
- =?utf-8?B?N1NNK2Q3aUVXT1FhdDd5VnlZY0haTW90SFd1U3RJL0VubjhuNlQyenNwdnEw?=
- =?utf-8?B?QlhZdllEN0YxY1ZSZ0RFT055OWdHTnRNTDN5LzZTN3VqYTE3dUFjWXUwekxE?=
- =?utf-8?B?dDlVQndRamhHQU50UUdIVjY5WWV0Y3ZyTlBYbU95dnl3dktmSU5jc3d6Y29w?=
- =?utf-8?B?eXNuSHNkQndqSmNleGdYb1Y2UE13bjhUbXpXdmVhWk5KWGJ4UlVGdzkwZFJ2?=
- =?utf-8?B?MVh6MGI4YzJwZFI2TEg2ZyswbGY2REZzYVVqVjE1TE1CUjZEdmZDNkRXS3Mz?=
- =?utf-8?B?WFNlZnkrbnVJcktPQUM3VGU0bWxiQVFKL3NNeitNSlo5TFBqVGNFbU0wczE5?=
- =?utf-8?B?SURlWGFJZmgvRzM3U3ZpcmZ3UUUxdVlqalBRcnVpVlhHck1yNEo1anV5NG1j?=
- =?utf-8?B?OTlPUWs3aFhMWSs1WkEybzNhTWRGSG5uMFBELzhPRjYxd2d2K0JPenkxaEZG?=
- =?utf-8?B?MzlQZVdXVEczamcydnRVYmwwMzEwUlhqMDRMRWkvM0pZTWU2VmI3MDRSamY5?=
- =?utf-8?B?L1A2TFpZM3N5LzA1a1pzYU5OY2VRMUI1NmR1OVZMUDRkNFBEV1RYZDZjMVdF?=
- =?utf-8?B?QTg4K2VoS1c4U2lUTjJ1ZnhNT0wwdFFxKzJWOWJiVVJNQ1ArMXdOc0ZJM25p?=
- =?utf-8?B?T0RralBxZ0cyMGNRU0dKZTZZWlc3NnRoNEZFMW9xT1pLT3VQbkRzV0MwWC9u?=
- =?utf-8?B?NmtWczZ3eThMZlUyMmxTUndMd3VnWEtyV05Nb2l2WHkwRTVWZ0tsckpkb25p?=
- =?utf-8?B?TVFsWm5YenJNT0VLR2prVWFYbm5ZZ0Jwa1Q0N1lLbUpFb2NORVV6c3VhOWox?=
- =?utf-8?B?T0RvUUNaR2FtU3d4ck5Pcjl6MFJRPT0=?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80b576c7-760b-4116-7ffb-08d9d07fc7c7
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB4914.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jan 2022 19:15:48.2871 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2A/l5+GrlhfwnfX3YFyIXRM1RQblJGyHFy/2G6e0ex+uCfqOtPG9wWmmTYoUM2SDMSAUVY/wgLSb6LtW+8MPABcuerGc8WuHZKwydbnJsfY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2319
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [next-queue,
- v2] i40e: Remove unused RX realloc stat
+Content-Disposition: inline
+In-Reply-To: <3f39d8a2-2e57-a671-2926-eb4f2bf20c76@huawei.com>
+Subject: Re: [Intel-wired-lan] [RFC 01/32] Kconfig: introduce and depend on
+ LEGACY_PCI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,27 +71,126 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-fbdev@vger.kernel.org, linux-pci@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Ettore Chimenti <ek5.chimenti@gmail.com>, linux-ide@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, Guo Ren <guoren@kernel.org>,
+ linux-i2c@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org,
+ Hannes Reinecke <hare@suse.com>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>, linux-scsi@vger.kernel.org,
+ Sumit Saxena <sumit.saxena@broadcom.com>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Sathya Prakash <sathya.prakash@broadcom.com>, linux-csky@vger.kernel.org,
+ Kashyap Desai <kashyap.desai@broadcom.com>,
+ Nilesh Javali <njavali@marvell.com>, intel-wired-lan@lists.osuosl.org,
+ linux-serial@vger.kernel.org, GR-QLogic-Storage-Upstream@marvell.com,
+ Jakub Kicinski <kuba@kernel.org>, MPT-FusionLinux.pdl@broadcom.com,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ Jaroslav Kysela <perex@perex.cz>, Jean Delvare <jdelvare@suse.com>,
+ linux-watchdog@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, Jouni Malinen <j@w1.fi>,
+ Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
+ Kalle Valo <kvalo@kernel.org>, linux-input@vger.kernel.org,
+ linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
+ Ian Abbott <abbotti@mev.co.uk>, Mark Brown <broonie@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, megaraidlinux.pdl@broadcom.com,
+ Teddy Wang <teddy.wang@siliconmotion.com>, linux-hwmon@vger.kernel.org,
+ Arnd Bergmann <arnd@kernel.org>, Karsten Keil <isdn@linux-pingi.de>,
+ Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+ Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-wireless@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
+ netdev@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/5/2022 7:49 AM, Joe Damato wrote:
-> After commit 1a557afc4dd5 ("i40e: Refactor receive routine"),
-> rx_stats.realloc_count is no longer being incremented, so remove it.
-> 
-> The debugfs string was left, but hardcoded to 0. This is intended to
-> prevent breaking any existing code / scripts that are parsing debugfs
-> for i40e.
-> 
-> Fixes: 1a557afc4dd5 ("i40e: Refactor receive routine")
-> Signed-off-by: Joe Damato <jdamato@fastly.com>
-> 
-> ---
-> v1 -> v2: Fix commit message to include one-line SHA summary. Patch is now
->            based on next-queue.
+On Wed, Jan 05, 2022 at 05:42:16PM +0000, John Garry wrote:
+> On 29/12/2021 16:55, Niklas Schnelle wrote:
+> > On Wed, 2021-12-29 at 10:03 -0600, Bjorn Helgaas wrote:
+> > > On Wed, Dec 29, 2021 at 01:12:07PM +0100, Mauro Carvalho Chehab wrote:
+> > > > Em Wed, 29 Dec 2021 12:45:38 +0100
+> > > > Niklas Schnelle<schnelle@linux.ibm.com>  escreveu:
+> > > > > ...
+> > > > > I do think we agree that once done correctly there is value in
+> > > > > such an option independent of HAS_IOPORT only gating inb() etc uses.
+> > > I'm not sure I'm convinced about this.  For s390, you could do this
+> > > patch series, where you don't define inb() at all, and you add new
+> > > dependencies to prevent compile errors.  Or you could define inb() to
+> > > return ~0, which is what happens on other platforms when the device is
+> > > not present.
+> > > 
+> > > > Personally, I don't see much value on a Kconfig var for legacy PCI I/O
+> > > > space. From maintenance PoV, bots won't be triggered if someone use
+> > > > HAS_IOPORT instead of the PCI specific one - or vice-versa. So, we
+> > > > could end having a mix of both at the wrong places, in long term.
+> > > > 
+> > > > Also, assuming that PCIe hardware will some day abandon support for
+> > > > "legacy" PCI I/O space, I guess some runtime logic would be needed,
+> > > > in order to work with both kinds of PCIe controllers. So, having a
+> > > > Kconfig option won't help much, IMO.
+> > > > 
+> > > > So, my personal preference would be to have just one Kconfig var, but
+> > > > I'm ok if the PCI maintainers decide otherwise.
+> > > I don't really like the "LEGACY_PCI" Kconfig option.  "Legacy" just
+> > > means something old and out of favor; it doesn't say*what*  that
+> > > something is.
+> > > 
+> > > I think you're specifically interested in I/O port space usage, and it
+> > > seems that you want all PCI drivers that *only* use I/O port space to
+> > > depend on LEGACY_PCI?  Drivers that can use either I/O or memory
+> > > space or both would not depend on LEGACY_PCI?  This seems a little
+> > > murky and error-prone.
+> > I'd like to hear Arnd's opinion on this but you're the PCI maintainer
+> > so of course your buy-in would be quite important for such an option.
 
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+I'd like to hear Arnd's opinion, too.  If we do add LEGACY_PCI, I
+think we need a clear guide for when to use it, e.g., "a PCI driver
+that uses inb() must depend on LEGACY_PCI" or whatever it is.
+
+I must be missing something because I don't see what we gain from
+this.  We have PCI drivers, e.g., megaraid [1], for devices that have
+either MEM or I/O BARs.  I think we want to build drivers like that on
+any arch that supports PCI.
+
+If the arch doesn't support I/O port space, devices that only have I/O
+BARs won't work, of course, and hopefully the PCI core and driver can
+figure that out and gracefully fail the probe.
+
+But that same driver should still work with devices that have MEM
+BARs.  If inb() isn't always present, I guess we could litter these
+drivers with #ifdefs, but that would be pretty ugly.  IMO inb() should
+be present but do something innocuous like return ~0, as it would if
+I/O port space is supported but there's no device at that address.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/scsi/megaraid.c?id=v5.15#n4210
+
+> I can't see the value in the LEGACY_PCI config - however I don't really
+> understand Arnd's original intention.
+> 
+> It was written that it would allow us to control "whether we have any
+> pre-PCIe devices or those PCIe drivers that need PIO accessors other than
+> ioport_map()/pci_iomap()".
+> 
+> However I just don't see why CONFIG_PCI=y and CONFIG_HAS_IOPORT=y aren't
+> always the gating factor here. Arnd?
+> 
+> Thanks,
+> John
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
