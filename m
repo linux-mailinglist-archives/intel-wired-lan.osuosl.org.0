@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DADC2488AE0
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jan 2022 18:15:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E548F488AEC
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jan 2022 18:19:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 762A960BB5;
-	Sun,  9 Jan 2022 17:15:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2CF23401FB;
+	Sun,  9 Jan 2022 17:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nZOe7sjneoS6; Sun,  9 Jan 2022 17:15:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AqqDfqL0da2O; Sun,  9 Jan 2022 17:19:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 82B0660B27;
-	Sun,  9 Jan 2022 17:15:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id ED06D4046D;
+	Sun,  9 Jan 2022 17:19:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3F8D11BF475
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:15:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1E90D1BF475
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:19:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 682884046D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:15:52 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 132224046D
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:19:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pLbKrm5BtGrR for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Jan 2022 17:15:51 +0000 (UTC)
+ with ESMTP id BhOJReuJD4B8 for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Jan 2022 17:19:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from smtp.smtpout.orange.fr (smtp04.smtpout.orange.fr
  [80.12.242.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CA9A6401FB
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:15:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D7099401FB
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 17:19:32 +0000 (UTC)
 Received: from pop-os.home ([90.11.185.88]) by smtp.orange.fr with ESMTPA
- id 6bnFnvX8hsoWh6bnFnvwgJ; Sun, 09 Jan 2022 18:15:48 +0100
+ id 6bqsnvYJRsoWh6bqsnvx01; Sun, 09 Jan 2022 18:19:31 +0100
 X-ME-Helo: pop-os.home
 X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Sun, 09 Jan 2022 18:15:48 +0100
+X-ME-Date: Sun, 09 Jan 2022 18:19:31 +0100
 X-ME-IP: 90.11.185.88
 From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun,  9 Jan 2022 18:14:40 +0100
-Message-Id: <5549ec8837b3a6fab83e92c5206cc100ffd23d85.1641748468.git.christophe.jaillet@wanadoo.fr>
+Date: Sun,  9 Jan 2022 18:19:22 +0100
+Message-Id: <a56f72c090866c11a0c091e561dbfc69d826cd0e.1641748751.git.christophe.jaillet@wanadoo.fr>
 X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] i40e: Remove useless DMA-32 fallback
+Subject: [Intel-wired-lan] [PATCH] ixgb: Remove useless DMA-32 fallback
  configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -84,25 +84,22 @@ Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 22 +++++++---------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
+ drivers/net/ethernet/intel/ixgb/ixgb_main.c | 19 +++++--------------
+ 1 file changed, 5 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 635a95927e93..4f6ee5c44f75 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -7385,9 +7385,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	resource_size_t flash_start, flash_len;
- 	static int cards_found;
- 	u16 aspm_disable_flag = 0;
--	int bars, i, err, pci_using_dac;
- 	u16 eeprom_data = 0;
- 	u16 eeprom_apme_mask = E1000_EEPROM_APME;
-+	int bars, i, err;
- 	s32 ret_val = 0;
- 
- 	if (ei->flags2 & FLAG2_DISABLE_ASPM_L0S)
-@@ -7401,17 +7401,11 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+diff --git a/drivers/net/ethernet/intel/ixgb/ixgb_main.c b/drivers/net/ethernet/intel/ixgb/ixgb_main.c
+index 99d481904ce6..affdefcca7e3 100644
+--- a/drivers/net/ethernet/intel/ixgb/ixgb_main.c
++++ b/drivers/net/ethernet/intel/ixgb/ixgb_main.c
+@@ -361,7 +361,6 @@ ixgb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	struct net_device *netdev = NULL;
+ 	struct ixgb_adapter *adapter;
+ 	static int cards_found = 0;
+-	int pci_using_dac;
+ 	u8 addr[ETH_ALEN];
+ 	int i;
+ 	int err;
+@@ -370,16 +369,10 @@ ixgb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  	if (err)
  		return err;
  
@@ -113,20 +110,18 @@ index 635a95927e93..4f6ee5c44f75 100644
 -	} else {
 -		err = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(32));
 -		if (err) {
--			dev_err(&pdev->dev,
--				"No usable DMA configuration, aborting\n");
--			goto err_dma;
+-			pr_err("No usable DMA configuration, aborting\n");
+-			goto err_dma_mask;
 -		}
 +	if (err) {
-+		dev_err(&pdev->dev,
-+			"No usable DMA configuration, aborting\n");
-+		goto err_dma;
++		pr_err("No usable DMA configuration, aborting\n");
++		goto err_dma_mask;
  	}
  
- 	bars = pci_select_bars(pdev, IORESOURCE_MEM);
-@@ -7547,10 +7541,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	netdev->priv_flags |= IFF_UNICAST_FLT;
+ 	err = pci_request_regions(pdev, ixgb_driver_name);
+@@ -444,10 +437,8 @@ ixgb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 			   NETIF_F_HW_VLAN_CTAG_FILTER;
+ 	netdev->hw_features |= NETIF_F_RXCSUM;
  
 -	if (pci_using_dac) {
 -		netdev->features |= NETIF_F_HIGHDMA;
@@ -135,7 +130,7 @@ index 635a95927e93..4f6ee5c44f75 100644
 +	netdev->features |= NETIF_F_HIGHDMA;
 +	netdev->vlan_features |= NETIF_F_HIGHDMA;
  
- 	/* MTU range: 68 - max_hw_frame_size */
+ 	/* MTU range: 68 - 16114 */
  	netdev->min_mtu = ETH_MIN_MTU;
 -- 
 2.32.0
