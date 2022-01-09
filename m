@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E65F0488BB1
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jan 2022 19:41:41 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9656488BBA
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jan 2022 19:43:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6DCD160BD0;
-	Sun,  9 Jan 2022 18:41:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 498A54042F;
+	Sun,  9 Jan 2022 18:43:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8qXqY4leb9Uf; Sun,  9 Jan 2022 18:41:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y1oOYCcqnKjk; Sun,  9 Jan 2022 18:43:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 65E2D60BC9;
-	Sun,  9 Jan 2022 18:41:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4761F40359;
+	Sun,  9 Jan 2022 18:43:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 122261BF291
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:41:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 31F2E1BF291
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:43:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F377E8139E
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:41:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1F40581B72
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:43:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8WblFTb-H8xo for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Jan 2022 18:41:34 +0000 (UTC)
+ with ESMTP id RHL15YmCQl0X for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Jan 2022 18:43:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from smtp.smtpout.orange.fr (smtp04.smtpout.orange.fr
  [80.12.242.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 05DDA81386
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:41:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 022BE81B71
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jan 2022 18:43:47 +0000 (UTC)
 Received: from pop-os.home ([90.11.185.88]) by smtp.orange.fr with ESMTPA
- id 6d8Fnvxm5soWh6d8Fnw4Qn; Sun, 09 Jan 2022 19:41:32 +0100
+ id 6dAPnvyS6soWh6dAQnw4cz; Sun, 09 Jan 2022 19:43:46 +0100
 X-ME-Helo: pop-os.home
 X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Sun, 09 Jan 2022 19:41:32 +0100
+X-ME-Date: Sun, 09 Jan 2022 19:43:46 +0100
 X-ME-IP: 90.11.185.88
 From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Sun,  9 Jan 2022 19:41:30 +0100
-Message-Id: <abb2371cc7fabfa26d96abc1ff1b80ac038448b1.1641753678.git.christophe.jaillet@wanadoo.fr>
+Date: Sun,  9 Jan 2022 19:43:40 +0100
+Message-Id: <dc75b24883381a060eaad21cb0deffb5a027b05f.1641753812.git.christophe.jaillet@wanadoo.fr>
 X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] igb: Remove useless DMA-32 fallback
+Subject: [Intel-wired-lan] [PATCH] igbvf: Remove useless DMA-32 fallback
  configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -84,24 +84,23 @@ Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 This patch was not part of the 1st serie I've sent. So there is no
 Reviewed-by tag.
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 19 ++++++-------------
- 1 file changed, 6 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/intel/igbvf/netdev.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 38ba92022cd4..bfa321e4003f 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3164,8 +3164,8 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	s32 ret_val;
- 	static int global_quad_port_a; /* global quad port a indication */
- 	const struct e1000_info *ei = igb_info_tbl[ent->driver_data];
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index b78407289741..43ced78c3a2e 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -2684,25 +2684,18 @@ static int igbvf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	struct igbvf_adapter *adapter;
+ 	struct e1000_hw *hw;
+ 	const struct igbvf_info *ei = igbvf_info_tbl[ent->driver_data];
+-
+ 	static int cards_found;
 -	int err, pci_using_dac;
- 	u8 part_str[E1000_PBANUM_LENGTH];
 +	int err;
  
- 	/* Catch broken hardware that put the wrong VF device ID in
- 	 * the PCIe SR-IOV capability.
-@@ -3180,17 +3180,11 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	err = pci_enable_device_mem(pdev);
  	if (err)
  		return err;
  
@@ -122,14 +121,16 @@ index 38ba92022cd4..bfa321e4003f 100644
 +		goto err_dma;
  	}
  
- 	err = pci_request_mem_regions(pdev, igb_driver_name);
-@@ -3306,8 +3300,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (hw->mac.type >= e1000_i350)
- 		netdev->hw_features |= NETIF_F_NTUPLE;
+ 	err = pci_request_regions(pdev, igbvf_driver_name);
+@@ -2783,10 +2776,7 @@ static int igbvf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	netdev->hw_features |= NETIF_F_GSO_PARTIAL |
+ 			       IGBVF_GSO_PARTIAL_FEATURES;
  
+-	netdev->features = netdev->hw_features;
+-
 -	if (pci_using_dac)
 -		netdev->features |= NETIF_F_HIGHDMA;
-+	netdev->features |= NETIF_F_HIGHDMA;
++	netdev->features = netdev->hw_features | NETIF_F_HIGHDMA;
  
  	netdev->vlan_features |= netdev->features | NETIF_F_TSO_MANGLEID;
  	netdev->mpls_features |= NETIF_F_HW_CSUM;
