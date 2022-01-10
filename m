@@ -1,66 +1,46 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23F5E489BD0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 16:07:49 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CEB0489D38
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 17:12:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B78E160D95;
-	Mon, 10 Jan 2022 15:07:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0A3B04042F;
+	Mon, 10 Jan 2022 16:12:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZE8A0gyFz4pO; Mon, 10 Jan 2022 15:07:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XHM69Hx-MH3y; Mon, 10 Jan 2022 16:12:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A3FC860C02;
-	Mon, 10 Jan 2022 15:07:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 818AF1BF372
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 15:07:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1DEB2401C0;
+	Mon, 10 Jan 2022 16:12:36 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 689481BF369
+ for <intel-wired-lan@osuosl.org>; Mon, 10 Jan 2022 16:12:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6E31260C02
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 15:07:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 648A0401E7
+ for <intel-wired-lan@osuosl.org>; Mon, 10 Jan 2022 16:12:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NrY9UrncHYKb for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Jan 2022 15:07:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6B50260B7D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 15:07:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641827261; x=1673363261;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ZRpPC7iLpFu1TMkDtH0X3HpzCGOg8a3oSCLcTs2aqUQ=;
- b=Hm33H+4hamaOBQiwKQ77gu5rZrpMJW9Z7banNNEvLQN40f6wYrbVqJID
- jT5EG7+EPJblVTul1p5RJyEZ/Ens1tkRB3uNz69/pOeltBKlSPQvtLGIY
- I5kYeCXSfhR7/PSvwROHe5eqPl7rPsTWroKJOYlz4cSyQcBKu1EZpexZp
- Njwa+gq1NL0V8DM4EKMcgemNFecCsedM+P/5aH4oY4E/OIHQTXQSFG0tW
- I29slkNy9LrrEZ6VDOX1TGJUBCAc7mbVzRaddXNtiE+JaFEJEPi5L6mfA
- aYXQDHcfbiWrA/NlDaCsBbCFbSTjA/QIn29S9TUUYzdtSgO9vvCla38Tl w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10222"; a="267572493"
-X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="267572493"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jan 2022 07:07:40 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="514701747"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by orsmga007.jf.intel.com with ESMTP; 10 Jan 2022 07:07:38 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 10 Jan 2022 16:06:38 +0100
-Message-Id: <20220110150638.24305-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YWWdXDCg2sBo for <intel-wired-lan@osuosl.org>;
+ Mon, 10 Jan 2022 16:12:30 +0000 (UTC)
+X-Greylist: delayed 00:05:17 by SQLgrey-1.8.0
+Received: from mail.wantstofly.org (hmm.wantstofly.org [213.239.204.108])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7A8B44031F
+ for <intel-wired-lan@osuosl.org>; Mon, 10 Jan 2022 16:12:30 +0000 (UTC)
+Received: by mail.wantstofly.org (Postfix, from userid 1000)
+ id 07A207F5A2; Mon, 10 Jan 2022 18:07:11 +0200 (EET)
+Date: Mon, 10 Jan 2022 18:07:11 +0200
+From: Lennert Buytenhek <buytenh@wantstofly.org>
+To: intel-wired-lan@osuosl.org
+Message-ID: <YdxZr0wMxvsDCpbV@wantstofly.org>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v3] iavf: Add support for
- 50G/100G in AIM algorithm
+Content-Disposition: inline
+Subject: [Intel-wired-lan] "Missing unregister,
+ handled but fix driver" when changing ring settings on igc interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,122 +53,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Advanced link speed support was added long back, but adding AIM support was
-missed. This patch adds AIM support for advanced link speed support, which
-allows the algorithm to take into account 50G/100G link speeds. Also, other
-previous speeds are taken into consideration when advanced link speeds are
-supported.
+Hi,
 
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
----
- v3: Fixed checkpatch errors
- v2: Removed build issues
----
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 62 ++++++++++++++++-----
- 1 file changed, 47 insertions(+), 15 deletions(-)
+I didn't see this reported yet.  When doing e.g. this on an igc
+interface (I225-V):
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 8cbe7ad..978f651 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -374,29 +374,60 @@ static inline bool iavf_container_is_rx(struct iavf_q_vector *q_vector,
- 	return &q_vector->rx == rc;
- }
- 
--static inline unsigned int iavf_itr_divisor(struct iavf_q_vector *q_vector)
-+#define IAVF_AIM_MULTIPLIER_100G	2560
-+#define IAVF_AIM_MULTIPLIER_50G		1280
-+#define IAVF_AIM_MULTIPLIER_40G		1024
-+#define IAVF_AIM_MULTIPLIER_20G		512
-+#define IAVF_AIM_MULTIPLIER_10G		256
-+#define IAVF_AIM_MULTIPLIER_1G		32
-+
-+static unsigned int iavf_mbps_itr_multiplier(u32 speed_mbps)
- {
--	unsigned int divisor;
-+	switch (speed_mbps) {
-+	case SPEED_100000:
-+		return IAVF_AIM_MULTIPLIER_100G;
-+	case SPEED_50000:
-+		return IAVF_AIM_MULTIPLIER_50G;
-+	case SPEED_40000:
-+		return IAVF_AIM_MULTIPLIER_40G;
-+	case SPEED_25000:
-+	case SPEED_20000:
-+		return IAVF_AIM_MULTIPLIER_20G;
-+	case SPEED_10000:
-+	default:
-+		return IAVF_AIM_MULTIPLIER_10G;
-+	case SPEED_1000:
-+	case SPEED_100:
-+		return IAVF_AIM_MULTIPLIER_1G;
-+	}
-+}
- 
--	switch (q_vector->adapter->link_speed) {
-+static unsigned int
-+iavf_virtchnl_itr_multiplier(enum virtchnl_link_speed speed_virtchnl)
-+{
-+	switch (speed_virtchnl) {
- 	case VIRTCHNL_LINK_SPEED_40GB:
--		divisor = IAVF_ITR_ADAPTIVE_MIN_INC * 1024;
--		break;
-+		return IAVF_AIM_MULTIPLIER_40G;
- 	case VIRTCHNL_LINK_SPEED_25GB:
- 	case VIRTCHNL_LINK_SPEED_20GB:
--		divisor = IAVF_ITR_ADAPTIVE_MIN_INC * 512;
--		break;
--	default:
-+		return IAVF_AIM_MULTIPLIER_20G;
- 	case VIRTCHNL_LINK_SPEED_10GB:
--		divisor = IAVF_ITR_ADAPTIVE_MIN_INC * 256;
--		break;
-+	default:
-+		return IAVF_AIM_MULTIPLIER_10G;
- 	case VIRTCHNL_LINK_SPEED_1GB:
- 	case VIRTCHNL_LINK_SPEED_100MB:
--		divisor = IAVF_ITR_ADAPTIVE_MIN_INC * 32;
--		break;
-+		return IAVF_AIM_MULTIPLIER_1G;
- 	}
-+}
- 
--	return divisor;
-+static unsigned int iavf_itr_divisor(struct iavf_adapter *adapter)
-+{
-+	if (ADV_LINK_SUPPORT(adapter))
-+		return IAVF_ITR_ADAPTIVE_MIN_INC *
-+			iavf_mbps_itr_multiplier(adapter->link_speed_mbps);
-+	else
-+		return IAVF_ITR_ADAPTIVE_MIN_INC *
-+			iavf_virtchnl_itr_multiplier(adapter->link_speed);
- }
- 
- /**
-@@ -586,8 +617,9 @@ static void iavf_update_itr(struct iavf_q_vector *q_vector,
- 	 * Use addition as we have already recorded the new latency flag
- 	 * for the ITR value.
- 	 */
--	itr += DIV_ROUND_UP(avg_wire_size, iavf_itr_divisor(q_vector)) *
--	       IAVF_ITR_ADAPTIVE_MIN_INC;
-+	itr += DIV_ROUND_UP(avg_wire_size,
-+			    iavf_itr_divisor(q_vector->adapter)) *
-+		IAVF_ITR_ADAPTIVE_MIN_INC;
- 
- 	if ((itr & IAVF_ITR_MASK) > IAVF_ITR_ADAPTIVE_MAX_USECS) {
- 		itr &= IAVF_ITR_ADAPTIVE_LATENCY;
--- 
-2.27.0
+	# ethtool -G enp3s0 rx 512
 
+I get a few warnings like the following:
+
+[  225.198467] ------------[ cut here ]------------
+[  225.198473] Missing unregister, handled but fix driver
+[  225.198485] WARNING: CPU: 7 PID: 959 at net/core/xdp.c:168 xdp_rxq_info_reg+0x79/0xd0
+[...]
+[  225.198601] Call Trace:
+[  225.198604]  <TASK>
+[  225.198609]  igc_setup_rx_resources+0x3f/0xe0 [igc]
+[  225.198617]  igc_ethtool_set_ringparam+0x30e/0x450 [igc]
+[  225.198626]  ethnl_set_rings+0x18a/0x250
+[  225.198631]  genl_family_rcv_msg_doit+0xca/0x110
+[  225.198637]  genl_rcv_msg+0xce/0x1c0
+[  225.198640]  ? rings_prepare_data+0x60/0x60
+[  225.198644]  ? genl_get_cmd+0xd0/0xd0
+[  225.198647]  netlink_rcv_skb+0x4e/0xf0
+[  225.198652]  genl_rcv+0x24/0x40
+[  225.198655]  netlink_unicast+0x20e/0x330
+[  225.198659]  netlink_sendmsg+0x23f/0x480
+[  225.198663]  sock_sendmsg+0x5b/0x60
+[  225.198667]  __sys_sendto+0xf0/0x160
+[  225.198671]  ? handle_mm_fault+0xb2/0x280
+[  225.198676]  ? do_user_addr_fault+0x1eb/0x690
+[  225.198680]  __x64_sys_sendto+0x20/0x30
+[  225.198683]  do_syscall_64+0x38/0x90
+[  225.198687]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  225.198693] RIP: 0033:0x7f7ae38ac3aa
+
+This is on vanilla 5.16.
+
+
+Thanks,
+Lennert
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
