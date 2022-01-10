@@ -1,69 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 627CD48997B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 14:12:06 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AFD7489989
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 14:12:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1AF46401EC;
-	Mon, 10 Jan 2022 13:12:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4187C40603;
+	Mon, 10 Jan 2022 13:12:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DtFCQdJjWYPC; Mon, 10 Jan 2022 13:12:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zy7ra5iL3w71; Mon, 10 Jan 2022 13:12:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 885F6401F0;
-	Mon, 10 Jan 2022 13:12:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0B2B4405F5;
+	Mon, 10 Jan 2022 13:12:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8B2641BF3EA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C5FC51BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 782E4404ED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 89548405F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AMWRJv4YMN34 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Jan 2022 13:11:53 +0000 (UTC)
+ with ESMTP id keYodSMSwWSs for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Jan 2022 13:11:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EB43D405F5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:52 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E92B7405F5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 13:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641820312; x=1673356312;
+ t=1641820314; x=1673356314;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=unh7yceVDF/NpU0OnlWQchCEsNWlX77R4K74hdupfVg=;
- b=Mu0e6Df129yhCX3SA3VWD/Vi/SHPnEyY8Dq5WkVprhyqqGKloA+hSBP9
- M7/9/kJfeQ0FlR5OH7jFJyK4xJjcnSVVrxbqYfd13W/pGIwygzAIIOf+G
- wOWNGaBF6ZXGLs7muKN9/+WkZie3aYTuysXviqPAbfCbYYP9t7a3Qatlh
- Tg6eZupSwGS1MU/ttgQSKhASd7KsBhx5Y6exAJnOnoLvH8of7iEiZLuSU
- PYk7HxuQp/gjQQHLAwF0bkrOmGw37fQ5mWyyDTbeYMC5MWB939M67maxv
- 0ZZkBSYhk4tf9iRe4qPkIEUwwdX/sQKKbGvH93NsBzBLsYzMzaemI6oAY w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10222"; a="240771008"
-X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="240771008"
+ bh=1+Pc/yvMxWbIRSqKOiJ58AYDjtimVHdjfTb3FdSHo2c=;
+ b=OP+myZYBNvdFyBx4M0IvF3pkil+4T1UXyrPTin86TX8OWw92PQ/fCHt4
+ g1m5RpfqFL/vuL1w88xvgZD8gno122AipKjcpYhQovS0/Q9tmJJJpAIxV
+ WUOZCwEMlE7bd25bPpwS6kzxF06TTeJk5X6lzMRVHTvBpDGCh3/CUDlIN
+ hsxxoFWTRiyYYuSsk2ecmVmWL2rsrSgJBqmnlye2YRZr5tLUUF1oiIB+u
+ 4Y8m8Ye3vfQYqJzhha+4vW890MiGQ73GfCoPAQnhSYm/Tn+j3UJzmnb26
+ UXZ/DCwzYgI/Y25218miBHg9Cc0AuYpj0pX0qklBFwzet0goYcTHV+KIP w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10222"; a="240771023"
+X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="240771023"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jan 2022 05:11:52 -0800
+ 10 Jan 2022 05:11:54 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="575811990"
+X-IronPort-AV: E=Sophos;i="5.88,277,1635231600"; d="scan'208";a="575811998"
 Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by fmsmga008.fm.intel.com with ESMTP; 10 Jan 2022 05:11:51 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 10 Jan 2022 05:11:53 -0800
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 10 Jan 2022 13:11:41 +0000
-Message-Id: <20220110131142.8481-4-jedrzej.jagielski@intel.com>
+Date: Mon, 10 Jan 2022 13:11:42 +0000
+Message-Id: <20220110131142.8481-5-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20220110131142.8481-1-jedrzej.jagielski@intel.com>
 References: <20220110131142.8481-1-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 3/4] i40e: Fix race condition
- while adding/deleting MAC/VLAN filters
+Subject: [Intel-wired-lan] [PATCH net-next v1 4/4] i40e: Add sending
+ commands in atomic context
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,95 +74,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+Cc: Witold Fijalkowski <witoldx.fijalkowski@intel.com>,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There was a race condition in access to hw->aq.asq_last_status
-while adding and deleting  MAC/VLAN filters causing
-incorrect error status to be printed as ERROR OK instead of
-the correct error.
+Change functions:
+- i40e_aq_add_macvlan
+- i40e_aq_remove_macvlan
+- i40e_aq_delete_element
+- i40e_aq_add_vsi
+- i40e_aq_update_vsi_params
+to explicitly use i40e_asq_send_command_atomic(..., true)
+instead of i40e_asq_send_command, as they use mutexes and do some
+work in an atomic context.
+Without this change setting vlan via netdev will fail with
+call trace cased by bug "BUG: scheduling while atomic".
 
-Change calls to i40e_aq_add_macvlan in i40e_aqc_add_filters
-and i40e_aq_remove_macvlan in i40e_aqc_del_filters
-to  _v2 versions that return Admin Queue status on the stack
-to avoid race conditions in access to hw->aq.asq_last_status.
-
-Fixes: 0093631966aa ("i40e: remove duplicate add/delete adminq command code for filters")
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Witold Fijalkowski <witoldx.fijalkowski@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 24 +++++++++++----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 21 +++++++++++--------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index d80b758a1423..304d7f1296ed 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -2187,19 +2187,19 @@ void i40e_aqc_del_filters(struct i40e_vsi *vsi, const char *vsi_name,
- 			  int num_del, int *retval)
- {
- 	struct i40e_hw *hw = &vsi->back->hw;
-+	enum i40e_admin_queue_err aq_status;
- 	i40e_status aq_ret;
--	int aq_err;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index a15b09b39979..214400623dd9 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -1899,8 +1899,9 @@ i40e_status i40e_aq_add_vsi(struct i40e_hw *hw,
  
--	aq_ret = i40e_aq_remove_macvlan(hw, vsi->seid, list, num_del, NULL);
--	aq_err = hw->aq.asq_last_status;
-+	aq_ret = i40e_aq_remove_macvlan_v2(hw, vsi->seid, list, num_del, NULL,
-+					   &aq_status);
+ 	desc.flags |= cpu_to_le16((u16)(I40E_AQ_FLAG_BUF | I40E_AQ_FLAG_RD));
  
- 	/* Explicitly ignore and do not report when firmware returns ENOENT */
--	if (aq_ret && !(aq_err == I40E_AQ_RC_ENOENT)) {
-+	if (aq_ret && !(aq_status == I40E_AQ_RC_ENOENT)) {
- 		*retval = -EIO;
- 		dev_info(&vsi->back->pdev->dev,
- 			 "ignoring delete macvlan error on %s, err %s, aq_err %s\n",
- 			 vsi_name, i40e_stat_str(hw, aq_ret),
--			 i40e_aq_str(hw, aq_err));
-+			 i40e_aq_str(hw, aq_status));
- 	}
+-	status = i40e_asq_send_command(hw, &desc, &vsi_ctx->info,
+-				    sizeof(vsi_ctx->info), cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, &vsi_ctx->info,
++					      sizeof(vsi_ctx->info),
++					      cmd_details, true);
+ 
+ 	if (status)
+ 		goto aq_add_vsi_exit;
+@@ -2287,8 +2288,9 @@ i40e_status i40e_aq_update_vsi_params(struct i40e_hw *hw,
+ 
+ 	desc.flags |= cpu_to_le16((u16)(I40E_AQ_FLAG_BUF | I40E_AQ_FLAG_RD));
+ 
+-	status = i40e_asq_send_command(hw, &desc, &vsi_ctx->info,
+-				    sizeof(vsi_ctx->info), cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, &vsi_ctx->info,
++					      sizeof(vsi_ctx->info),
++					      cmd_details, true);
+ 
+ 	vsi_ctx->vsis_allocated = le16_to_cpu(resp->vsi_used);
+ 	vsi_ctx->vsis_unallocated = le16_to_cpu(resp->vsi_free);
+@@ -2695,8 +2697,8 @@ i40e_aq_add_macvlan(struct i40e_hw *hw, u16 seid,
+ 
+ 	buf_size = i40e_prepare_add_macvlan(mv_list, &desc, count, seid);
+ 
+-	status = i40e_asq_send_command(hw, &desc, mv_list, buf_size,
+-				       cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, mv_list, buf_size,
++					      cmd_details, true);
+ 
+ 	return status;
  }
+@@ -2773,8 +2775,8 @@ i40e_status i40e_aq_remove_macvlan(struct i40e_hw *hw, u16 seid,
+ 	if (buf_size > I40E_AQ_LARGE_BUF)
+ 		desc.flags |= cpu_to_le16((u16)I40E_AQ_FLAG_LB);
  
-@@ -2222,10 +2222,10 @@ void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name,
- 			  int num_add)
- {
- 	struct i40e_hw *hw = &vsi->back->hw;
--	int aq_err, fcnt;
-+	enum i40e_admin_queue_err aq_status;
-+	int fcnt;
+-	status = i40e_asq_send_command(hw, &desc, mv_list, buf_size,
+-				       cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, mv_list, buf_size,
++					      cmd_details, true);
  
--	i40e_aq_add_macvlan(hw, vsi->seid, list, num_add, NULL);
--	aq_err = hw->aq.asq_last_status;
-+	i40e_aq_add_macvlan_v2(hw, vsi->seid, list, num_add, NULL, &aq_status);
- 	fcnt = i40e_update_filter_state(num_add, list, add_head);
+ 	return status;
+ }
+@@ -3975,7 +3977,8 @@ i40e_status i40e_aq_delete_element(struct i40e_hw *hw, u16 seid,
  
- 	if (fcnt != num_add) {
-@@ -2233,17 +2233,19 @@ void i40e_aqc_add_filters(struct i40e_vsi *vsi, const char *vsi_name,
- 			set_bit(__I40E_VSI_OVERFLOW_PROMISC, vsi->state);
- 			dev_warn(&vsi->back->pdev->dev,
- 				 "Error %s adding RX filters on %s, promiscuous mode forced on\n",
--				 i40e_aq_str(hw, aq_err), vsi_name);
-+				 i40e_aq_str(hw, aq_status), vsi_name);
- 		} else if (vsi->type == I40E_VSI_SRIOV ||
- 			   vsi->type == I40E_VSI_VMDQ1 ||
- 			   vsi->type == I40E_VSI_VMDQ2) {
- 			dev_warn(&vsi->back->pdev->dev,
- 				 "Error %s adding RX filters on %s, please set promiscuous on manually for %s\n",
--				 i40e_aq_str(hw, aq_err), vsi_name, vsi_name);
-+				 i40e_aq_str(hw, aq_status), vsi_name,
-+					     vsi_name);
- 		} else {
- 			dev_warn(&vsi->back->pdev->dev,
- 				 "Error %s adding RX filters on %s, incorrect VSI type: %i.\n",
--				 i40e_aq_str(hw, aq_err), vsi_name, vsi->type);
-+				 i40e_aq_str(hw, aq_status), vsi_name,
-+					     vsi->type);
- 		}
- 	}
+ 	cmd->seid = cpu_to_le16(seid);
+ 
+-	status = i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, NULL, 0,
++					      cmd_details, true);
+ 
+ 	return status;
  }
 -- 
 2.27.0
