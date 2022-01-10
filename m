@@ -1,103 +1,170 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFB71489547
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 10:35:21 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98BD148960A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jan 2022 11:11:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 548AC827A0;
-	Mon, 10 Jan 2022 09:35:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 434674052B;
+	Mon, 10 Jan 2022 10:11:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xqNRdnOydqy3; Mon, 10 Jan 2022 09:35:14 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Xlzy5pJFBHGf; Mon, 10 Jan 2022 10:11:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B860827A8;
-	Mon, 10 Jan 2022 09:35:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA85A404BE;
+	Mon, 10 Jan 2022 10:11:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 97FF61BF3D0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 09:35:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A3921BF40A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 10:11:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 83CFC605EA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 09:35:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 241CC812E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 10:11:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=ibm.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wdzag9mh6oC8 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Jan 2022 09:35:02 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C2JrhNtuNqzV for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Jan 2022 10:11:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CEBBA600D4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 09:35:01 +0000 (UTC)
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 20A8SpK3001224; 
- Mon, 10 Jan 2022 09:34:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- mime-version : content-transfer-encoding; s=pp1;
- bh=LTgj9BMo0PeVOTmHS425bgS3Erf/sk7QZhpGDMjgyhM=;
- b=ZeBWbN0MuX3/AcZ5RKWxlntTjtiYf7I8s1BDSqtpXcjWdKYreu00C0yIuS54bslUb+Qr
- i8eYw95JaW/kRkoSt2zAHTinIjB+A7CPiMdtyB681hPeHcfgnzR85uHf321nrRQFc1lp
- la9fqV0TOWpjT+vO0xEhhgF1o49lWVqwByJ8qBn2XaRUDR7r5LiwvirD3oVxz1l/G8aA
- GGCXA11FLJGWT7f5iLejA1BYwhyVqSkuX7XlV9iM6xmQILJKk4eoCpwa9+QQDTpFWY9O
- RafQfotY4ReY1g/9giu+qtTtTZzWY7egugKozzrEpyohVjle6LQRR+kd516WluIEvvXn Gw== 
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.72])
- by mx0b-001b2d01.pphosted.com with ESMTP id 3dfm1hp8jh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 10 Jan 2022 09:34:44 +0000
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
- by ppma06fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 20A9Rlj5003316;
- Mon, 10 Jan 2022 09:34:41 GMT
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
- (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
- by ppma06fra.de.ibm.com with ESMTP id 3df1vj2baj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 10 Jan 2022 09:34:41 +0000
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 20A9Ydft44106206
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 10 Jan 2022 09:34:39 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CCEA2A405B;
- Mon, 10 Jan 2022 09:34:38 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F191AA4065;
- Mon, 10 Jan 2022 09:34:34 +0000 (GMT)
-Received: from sig-9-145-16-13.uk.ibm.com (unknown [9.145.16.13])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Mon, 10 Jan 2022 09:34:34 +0000 (GMT)
-Message-ID: <822ad0da702f0953b7aae1febd2c4dfcc4707864.camel@linux.ibm.com>
-From: Niklas Schnelle <schnelle@linux.ibm.com>
-To: John Garry <john.garry@huawei.com>, Bjorn Helgaas <helgaas@kernel.org>
-Date: Mon, 10 Jan 2022 10:34:34 +0100
-In-Reply-To: <74bf4fde-3972-1c36-ca04-58089da0d82b@huawei.com>
-References: <20220105194748.GA215560@bhelgaas>
- <74bf4fde-3972-1c36-ca04-58089da0d82b@huawei.com>
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-Mime-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: RBwht8yqbe4Zp6W3roxBtkr5zQL4IA2M
-X-Proofpoint-ORIG-GUID: RBwht8yqbe4Zp6W3roxBtkr5zQL4IA2M
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.790,Hydra:6.0.425,FMLib:17.11.62.513
- definitions=2022-01-10_04,2022-01-07_01,2021-12-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 bulkscore=0
- impostorscore=0 malwarescore=0 mlxlogscore=999 lowpriorityscore=0
- phishscore=0 adultscore=0 spamscore=0 clxscore=1015 mlxscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2110150000 definitions=main-2201100067
-Subject: Re: [Intel-wired-lan] [RFC 01/32] Kconfig: introduce and depend on
- LEGACY_PCI
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 05A79812CD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jan 2022 10:11:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1641809508; x=1673345508;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=J/CbEYxNybnfOKuDAvU+TsR13YSEuxbeYjtZ0ln5S/E=;
+ b=eDefIc0QoltKnQxJ5y6Vh2SIWMNNSJSJUNRylNTpZ9YBy23uw4z0ayOm
+ AuX1toFXgZN5sYhw82F07LZjK0XkX3oZQOF47Gnxtngkgik5ddxXkbTpY
+ 6YU569VvkvwgDKAKZ/ZC3tzvdVxPmumZHWovIcuJ+9PMvnHpyKeCAzrsV
+ ZDilZ/+aAR4aUiDzulLNc+1e+/4pykaFRGT4Do9CKqcIhR5IAeAmFKJ3t
+ VSnbTuk+qQ2IdjlNEsPHIjgfZsGA0o0RerlT4YO2r1n5fj2m0KqX/6RF/
+ ohuQ9IvkodgugrKbsG8xWjPGCFQe0PAzN/U4lVioRjemdxUe+P2XOmKIQ A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10222"; a="303936887"
+X-IronPort-AV: E=Sophos;i="5.88,276,1635231600"; d="scan'208";a="303936887"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jan 2022 02:11:47 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,276,1635231600"; d="scan'208";a="514624302"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by orsmga007.jf.intel.com with ESMTP; 10 Jan 2022 02:11:46 -0800
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Mon, 10 Jan 2022 02:11:46 -0800
+Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Mon, 10 Jan 2022 02:11:45 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Mon, 10 Jan 2022 02:11:45 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Mon, 10 Jan 2022 02:11:45 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BqUlA+PdP8ml89tD5eASZywWz66k27BQ2lFDA5n7To7WEt8SibnINVl8nAU20FC3ngHVft6XvxrBFfJ0zYHEp4U4J0vOhynYJts647d/e1jMQdggIsN5sjpooqk7JnVnu0As4JpxyRLBxGJYb4pczkJg4WE3vUFs7v4I/Kx1VM3d5EKoNW8tKTGCd+8E4UF6UlcQfiZTH4v5bDsde7UPDmqMK/bDmvSpVPK+EnRUPhmk73I8KqsXvRykdTdBytvdlbL2hO8J7qGIybpE5OtA1OrV9eOOtTBhgl31pcV7Kyb2yZtytEdFEgQlxflvUfAN0xQNN0z3Q+XMedotXIx8lg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TAjC8xF7EJSVR/TutHRhUBNBOBcRqScvBb8bYg86R9A=;
+ b=Q+os5Gr8XL6+on/opMnfcjW8iXB05F5xwoOcaIYRvQboyRELDk7q6QexpMbxqptDtlEii7ndnamX4isvrbhj8d/cEvGAqUUCoHfCDCDYlu+i/z80Bf29B0N5Y7riJobyTNNbSVVHmYd22fwtgNq+eIuqL4IvGUnPjKwNvW0r4Z8kFY1Yl6th1MeGAtlVc185LhK3lRp9zpfcIySrb7J562Bdoaug5x8YkBhPJRmiNeacAlZBmQjAGbaEhSgORQRFFqbcVLdZPiJIjk+TEbtyxJeduao0dsDgagNnHk051+Cz58t5R9Kr0I8uFrR2veUKvZRhgg8HbOKu6GszCc8htA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3292.namprd11.prod.outlook.com (2603:10b6:5:5a::21) by
+ DM6PR11MB4153.namprd11.prod.outlook.com (2603:10b6:5:19f::24) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4867.9; Mon, 10 Jan 2022 10:11:44 +0000
+Received: from DM6PR11MB3292.namprd11.prod.outlook.com
+ ([fe80::84b0:d849:dadf:e47f]) by DM6PR11MB3292.namprd11.prod.outlook.com
+ ([fe80::84b0:d849:dadf:e47f%3]) with mapi id 15.20.4867.011; Mon, 10 Jan 2022
+ 10:11:43 +0000
+From: "Bhandare, KiranX" <kiranx.bhandare@intel.com>
+To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v4 net-next 0/9] net: intel:
+ napi_alloc_skb() vs metadata
+Thread-Index: AQHX7D0GBStG13BisUmYcc0eBW8cqqxcPCkA
+Date: Mon, 10 Jan 2022 10:11:43 +0000
+Message-ID: <DM6PR11MB3292AA2C0D33C635FE9D068BF1509@DM6PR11MB3292.namprd11.prod.outlook.com>
+References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+In-Reply-To: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bac306f0-975c-4230-86c7-08d9d4219a61
+x-ms-traffictypediagnostic: DM6PR11MB4153:EE_
+x-microsoft-antispam-prvs: <DM6PR11MB4153653116920ECA292F91A5F1509@DM6PR11MB4153.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:608;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: e2vcC+0iqKzBs4+X0xtOHWx1E9h9bhlO8GNOzqm9OtSXvoaAvz2howwgvgj5U5mTBfeTRZBMoJKmnr/6MPXsKEl2U6eD2z/KG2oTflzLRU6NhmjeaGmYQ3rfrqLfJh8VXT1pB4HoNpauiivWMBKTMx46LKFAvUcI6PZbfgT0fVj3xGpYMMl4ajOOK/HJ6PFRpNRIrPpTrnKYuXmPrZiUz5jMliN/pVKuD7BzsdRslvv0HbGX5nT6A+Ws663+bdYxgc9hyFZEpym9AYM+jR3BIX6VXtwVKH5yxiQhF43Vu7Q6Cws7dHEaZ2tSg6k4OgAREGSRz3t98xAvzG5vW06W1kSTsd2QFCwCS/qLoJ71lJu6rTWp4EKihExH7Oo3/UHGydtrZFHOBNvvJBAHGbTteFSL/pbWemCz/dNn9FBewP2Dlu++dSa5F9tYjC++I7GbLr8xFimPGa3R8hnhGOmRK/ATjAEqkAHANnbBB1vkwgDytMdeE7hBl+K5fy+DTqS4463ssXYq/s3ByRITETIX+fBw7wCNMxb/94Ji9Xq0VNztAXhTBZMunTWNokVxA5KB76GJ9qEaI3XXLVIsU+pjaZJ2v+gApJCFk2/HRBPXV1T+f3eXp9/JoS+voiuPvIl4hmY0m7q22zjFruqeUvHn9Xql3HcFlu2dE/JA5ZDBQ3zaBapEMb9MHry8+JmCUS3is7SSG3TGiQpbNwW6DiMacGnDz82FTFdDLS439IqJnaiJrVW8BBd68Y4Tt2anwuO/0cQmF6Nyk6vmYqn6VYh9D9L0k4XaXjq2aI/V+DwQrT0CA1SH3b9ESjwa3OAsX0jRYk8UDXml1JV3xiolnuSYVA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3292.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(8936002)(7696005)(316002)(8676002)(508600001)(4326008)(71200400001)(54906003)(110136005)(38070700005)(38100700002)(122000001)(186003)(76116006)(52536014)(26005)(82960400001)(66946007)(2906002)(66476007)(9686003)(66446008)(64756008)(66556008)(7416002)(86362001)(5660300002)(33656002)(53546011)(55016003)(6506007)(66574015)(966005)(83380400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?bB+DWYPCNu+OGKfEt/RCuKZ8BJCZaDMhqLzRC6ME6QFkm9rAPfiliGRjgF?=
+ =?iso-8859-1?Q?aw2hRbz9b1O1aMEf9Z6fFfsrDkOwcqdPqOw4KfxYHkMywKgLjf0g8ZQ6db?=
+ =?iso-8859-1?Q?85iYiov3KSv/9a9MlL3nxo9qfWtlPvVeSJiTmdKhDB5t/w8U4jGYL6cccN?=
+ =?iso-8859-1?Q?TYiYaoe5Gtj7dOC789Ub91Edxs5nAmaqjHPY+dR5NdUtnvWHYXba67IaUp?=
+ =?iso-8859-1?Q?HI+XoD3q9zucPGphfbt5WadzmaHojsESCeZx+UoHHhb4UXuocQnb9ior2T?=
+ =?iso-8859-1?Q?ZGS5R3nVAO+EknFRTc5j7MDpkj1XSj7JufdqzhZQA4EWlwLzFRDU2fqfLg?=
+ =?iso-8859-1?Q?G1bamMwhyYh7q+4iZdBlJZLFQdcqSGFGoZgKb+Clbj9y5vkYMOeSliraeO?=
+ =?iso-8859-1?Q?GaftfXkcINj6VAYbLSJnozyZk/3cuCCoIgKzkLH1iKZ5U2Bc4i9XF9k6ox?=
+ =?iso-8859-1?Q?navqQ8VEDsMa8JMCfraAu4mwoidiOKthScorVhheZF6sJDtHRMlmIJyIEK?=
+ =?iso-8859-1?Q?nwRr0aak9PTj2eh3slMsa+rB2FmbNemzmD1Glts/alYu/OQuQU7ksGfKeX?=
+ =?iso-8859-1?Q?VDgfwEDibSByTWMF5zGaL7dFfDQrcWJ6TLkkQ1TCduEaT985QxM4CuO/90?=
+ =?iso-8859-1?Q?eUL8pyyVv4qh+iO+SbnYqv3JxXerCSbDKrqEg5QfA2NQPd9Y+9Y2udsAGG?=
+ =?iso-8859-1?Q?cVS6MbajUDOtBOo+QEE09kl4VfIwX5QaWJGS9eaU0ukBT0qONNGMyEIjPZ?=
+ =?iso-8859-1?Q?OASiIp//VuxmtSnmyqk8wYWJ9sMBCJ05gEJGdSNxuBpJjPyQIG24hUwILj?=
+ =?iso-8859-1?Q?joAiPGN8nnRD76QKo/byOY0+uLOKeWJHeY1JCgO4UJz4Gfkbeb2FIoBXP4?=
+ =?iso-8859-1?Q?3pKLirfBBMXzG+1RG++bP6Ev2VsxC6ZvBbC1d/5rraL0ARFqY4gJz4q7Ky?=
+ =?iso-8859-1?Q?rUsQr7KkbYOKgNRLQbuac6HfOz3sJMsbWgHcyFgOf76qPwOEdMDqk0HCn9?=
+ =?iso-8859-1?Q?8NBBJI74by5IESW1sLF6zJ18fU7ReK33ISubWM8W1h6MVsun1ZD57b4W4A?=
+ =?iso-8859-1?Q?QuJFRTfDoljCsQhVUn3DSvR+GJGUc+OVII312W3Ab9ckzpFiDbB9YCcYem?=
+ =?iso-8859-1?Q?zrxA2UpqPPjR1ETxpy3kCH0kJUnND4XD3otYLQhfTS/Ny4x3AkLYBiLVzi?=
+ =?iso-8859-1?Q?Sn0ha7WJUxyMdKkwFOWOhnJBm+Ibb+Z7BS0evkxDhPQ1XRMfruc2h4V58d?=
+ =?iso-8859-1?Q?ABc+v6obATfiXlbVO3HTCeC/3Ux+xWb3PxHcr/ni+UGEVRvSN8Stk3ZFAe?=
+ =?iso-8859-1?Q?ggPZJqiDtfiX7QhVgC44C41rhJykKyqeUP/yIXqQ6zJ9HKKjbBTipy/eyw?=
+ =?iso-8859-1?Q?21n+CJHV1CUcrIHHfdk/NkzV5tzKdPorYp1t12i3SS84b0w32A44+ZccwO?=
+ =?iso-8859-1?Q?AaehCHPEBYSfPniAW/p4n9I001HVN9seSlI3vnhie401chIXCyzGU/5zxc?=
+ =?iso-8859-1?Q?2BzYWAjmvBH5mxakVq7S7yJl5qFLPJ/f4pkvU6LD6U93Gkna12TTmHo3oy?=
+ =?iso-8859-1?Q?dCl5Srqfdp0hkz/8QUZuZf9L2aEgH/AOZoMU1GXrpzbTScG8KhyQ0MRgd/?=
+ =?iso-8859-1?Q?2zkXutcAjoHQMuYxLbQf4kHStE0dT0o+IFzjsEUABGGXBggIJLTCtC8WPL?=
+ =?iso-8859-1?Q?gZfNiXMCdoTGlbW+vU6k1NIs1mqb/5iQriPSunks/yd/m62Oo0FyujA/qu?=
+ =?iso-8859-1?Q?thdQ=3D=3D?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3292.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bac306f0-975c-4230-86c7-08d9d4219a61
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jan 2022 10:11:43.8102 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: GdExyaBiYwy+jgf3g4gumVHT8rbhRpj4DJ32D8xsCnBxxjWf9TWP+DogXjWPWW3MgF18Vy4/3bx2mO5gV7ZZ4to5gjOaNlFWwqLOlLJXJzY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4153
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 0/9] net: intel:
+ napi_alloc_skb() vs metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,117 +177,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Ettore Chimenti <ek5.chimenti@gmail.com>, linux-ide@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Guo Ren <guoren@kernel.org>,
- linux-i2c@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
- linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org,
- Hannes Reinecke <hare@suse.com>,
- Michael Grzeschik <m.grzeschik@pengutronix.de>, linux-scsi@vger.kernel.org,
- Sumit Saxena <sumit.saxena@broadcom.com>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Sathya Prakash <sathya.prakash@broadcom.com>, linux-csky@vger.kernel.org,
- Kashyap Desai <kashyap.desai@broadcom.com>,
- Nilesh Javali <njavali@marvell.com>, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, GR-QLogic-Storage-Upstream@marvell.com,
- Jakub Kicinski <kuba@kernel.org>, MPT-FusionLinux.pdl@broadcom.com,
- "James E.J.
- Bottomley" <jejb@linux.ibm.com>, Guenter Roeck <linux@roeck-us.net>,
- linux-media@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>,
- Jean Delvare <jdelvare@suse.com>, linux-watchdog@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>, Jouni Malinen <j@w1.fi>,
- Suganath Prabu Subramani <suganath-prabu.subramani@broadcom.com>,
- Kalle Valo <kvalo@kernel.org>, linux-input@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-gpio@vger.kernel.org,
- Ian Abbott <abbotti@mev.co.uk>, Mark Brown <broonie@kernel.org>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, megaraidlinux.pdl@broadcom.com,
- Teddy Wang <teddy.wang@siliconmotion.com>, linux-hwmon@vger.kernel.org,
- Arnd Bergmann <arnd@kernel.org>, Karsten Keil <isdn@linux-pingi.de>,
- Sreekanth Reddy <sreekanth.reddy@broadcom.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Nick Hu <nickhu@andestech.com>, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
- Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- dri-devel@lists.freedesktop.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-wireless@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+Cc: Song Liu <songliubraving@fb.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
  "David S. Miller" <davem@davemloft.net>,
- H Hartley Sweeten <hsweeten@visionengravers.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Forest Bond <forest@alittletooquiet.net>,
- netdev@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Bartosz Golaszewski <brgl@bgdev.pl>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Andrii Nakryiko <andrii@kernel.org>,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, Jakub
+ Kicinski <kuba@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ Yonghong Song <yhs@fb.com>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ Martin KaFai Lau <kafai@fb.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 2022-01-06 at 17:41 +0000, John Garry wrote:
-> On 05/01/2022 19:47, Bjorn Helgaas wrote:
-> > > > > >   ok if the PCI maintainers decide otherwise.
-> > > > > I don't really like the "LEGACY_PCI" Kconfig option.  "Legacy" just
-> > > > > means something old and out of favor; it doesn't say*what*  that
-> > > > > something is.
-> > > > > 
-> > > > > I think you're specifically interested in I/O port space usage, and it
-> > > > > seems that you want all PCI drivers that*only*  use I/O port space to
-> > > > > depend on LEGACY_PCI?  Drivers that can use either I/O or memory
-> > > > > space or both would not depend on LEGACY_PCI?  This seems a little
-> > > > > murky and error-prone.
-> > > > I'd like to hear Arnd's opinion on this but you're the PCI maintainer
-> > > > so of course your buy-in would be quite important for such an option.
-> > I'd like to hear Arnd's opinion, too.  If we do add LEGACY_PCI, I
-> > think we need a clear guide for when to use it, e.g., "a PCI driver
-> > that uses inb() must depend on LEGACY_PCI" or whatever it is.
-> > 
-> > I must be missing something because I don't see what we gain from
-> > this.  We have PCI drivers, e.g., megaraid [1], for devices that have
-> > either MEM or I/O BARs.  I think we want to build drivers like that on
-> > any arch that supports PCI.
-> > 
-> > If the arch doesn't support I/O port space, devices that only have I/O
-> > BARs won't work, of course, and hopefully the PCI core and driver can
-> > figure that out and gracefully fail the probe.
-> > 
-> > But that same driver should still work with devices that have MEM
-> > BARs.  If inb() isn't always present, I guess we could litter these
-> > drivers with #ifdefs, but that would be pretty ugly.
 
-I think this is the big question here. If we do go with a compile-time
-solution as requested by Linus we will either get a lot of #ifdeffery,
-coarse driver dependencies or as proposed by Alan Stern for the USB
-#ifdefs might end up turning inb() into a compile-time nop.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Alexander Lobakin
+> Sent: Wednesday, December 8, 2021 7:37 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Song Liu <songliubraving@fb.com>; Jesper Dangaard Brouer
+> <hawk@kernel.org>; Daniel Borkmann <daniel@iogearbox.net>; Yonghong
+> Song <yhs@fb.com>; Martin KaFai Lau <kafai@fb.com>; John Fastabend
+> <john.fastabend@gmail.com>; Alexei Starovoitov <ast@kernel.org>; Andrii
+> Nakryiko <andrii@kernel.org>; Bj=F6rn T=F6pel <bjorn@kernel.org>;
+> netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>; KP Singh
+> <kpsingh@kernel.org>; bpf@vger.kernel.org; David S. Miller
+> <davem@davemloft.net>; linux-kernel@vger.kernel.org
+> Subject: [Intel-wired-lan] [PATCH v4 net-next 0/9] net: intel: napi_alloc=
+_skb()
+> vs metadata
+> =
 
-The originally proposed change that returned ~0 from inb() and printed
-a warning clearly is the simpler change and sure we could also drop the
-warning. I'm honestly torn, I do agree with Linus that we shouldn't
-have run-time things that we know at compile-time will not work but I
-also dislike all the #ifdeffery a compile-time solution requires. Sadly
-C really doesn't give us any better tools here.
+> This is an interpolation of [0] to other Intel Ethernet drivers (and is (=
+re)based
+> on its code).
+> The main aim is to keep XDP metadata not only in case with build_skb(), b=
+ut
+> also when we do napi_alloc_skb() + memcpy().
+> =
 
-Also I 100% agree with you Bjorn how likely it is to see a device on a
-platform really shouldn't matter. Without going into details, on s390
-we have already beneffited from PCI drivers working with 0 changes to
-support devices we previously didn't have on the platform or
-anticipated we would get in the future. Consequently drivers that could
-work in principle should be built.
+> All Intel drivers suffers from the same here:
+>  - metadata gets lost on XDP_PASS in legacy-rx;
+>  - excessive headroom allocation on XSK Rx to skbs;
+>  - metadata gets lost on XSK Rx to skbs.
+> =
 
-> >  
-> 
-> There were some ifdefs added to the 8250 drivers in Arnd's original 
-> patch [0], but it does not seem included here.
-> 
-> Niklas, what happened to the 8250 and the other driver changes?
+> Those get especially actual in XDP Hints upcoming.
+> I couldn't have addressed the first one for all Intel drivers due to that=
+ they
+> don't reserve any headroom for now in legacy-rx mode even with XDP
+> enabled. This is hugely wrong, but requires quite a bunch of work and a
+> separate series. Luckily, ice doesn't suffer from that.
+> igc has 1 and 3 already fixed in [0].
+> =
 
-I missed it during the rebase, likely because the changed files compile
-depend on !S390 via config SERIAL_8250 and thus didn't cause any errors
-for my allyesconfig. That !S390 dependency is of course not really what
-we want if the driver can use MEM BARs.
+> From v3 ([1]):
+>  - fix driver name and ixgbe_construct_skb() function name in the
+>    commit message of #9 (Jesper);
+>  - no functional changes.
+> =
+
+> From v2 (unreleased upstream):
+>  - tweaked 007 to pass bi->xdp directly and simplify code (Maciej);
+>  - picked Michal's Reviewed-by.
+> =
+
+> From v1 (unreleased upstream):
+>  - drop "fixes" of legacy-rx for i40e, igb and ixgbe since they have
+>    another flaw regarding headroom (see above);
+>  - drop igc cosmetic fixes since they landed upstream incorporated
+>    into Jesper's commits;
+>  - picked one Acked-by from Maciej.
+> =
+
+> [0]
+> https://lore.kernel.org/netdev/163700856423.565980.101625649213476937
+> 58.stgit@firesoul
+> [1] https://lore.kernel.org/netdev/20211207205536.563550-1-
+> alexandr.lobakin@intel.com
+> =
+
+> Alexander Lobakin (9):
+>   i40e: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+>   i40e: respect metadata on XSK Rx to skb
+>   ice: respect metadata in legacy-rx/ice_construct_skb()
+>   ice: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+>   ice: respect metadata on XSK Rx to skb
+>   igc: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+>   ixgbe: pass bi->xdp to ixgbe_construct_skb_zc() directly
+>   ixgbe: don't reserve excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+>   ixgbe: respect metadata on XSK Rx to skb
+> =
+
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c   | 16 +++++++-----
+>  drivers/net/ethernet/intel/ice/ice_txrx.c    | 15 ++++++++---
+>  drivers/net/ethernet/intel/ice/ice_xsk.c     | 16 +++++++-----
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 13 +++++-----
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 27 ++++++++++++--------
+>  5 files changed, 54 insertions(+), 33 deletions(-)
+> =
 
 
+Tested-by: Kiran Bhandare <kiranx.bhandare@intel.com>  A Contingent Worker =
+at Intel
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
