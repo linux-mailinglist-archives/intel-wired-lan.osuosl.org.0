@@ -1,68 +1,165 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DE2C48AB64
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jan 2022 11:30:31 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AD0A48AD00
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jan 2022 12:51:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0D3A860AB1;
-	Tue, 11 Jan 2022 10:30:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CB4ED4019A;
+	Tue, 11 Jan 2022 11:51:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jqtd0O0xOKBE; Tue, 11 Jan 2022 10:30:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PcSrIN0tKMJf; Tue, 11 Jan 2022 11:51:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF7A060A77;
-	Tue, 11 Jan 2022 10:30:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 834144013E;
+	Tue, 11 Jan 2022 11:51:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 137B01BF271
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 10:30:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B3A8D1BF276
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 11:51:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F30FD83E1F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 10:30:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A5F834013E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 11:51:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m_VxDxcj2Dex for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Jan 2022 10:30:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6JslX_ZYPKpu for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Jan 2022 11:51:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 55A6183DF8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 10:30:22 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2BBCA40133
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jan 2022 11:51:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641897022; x=1673433022;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=G4V5HgZm3kxx/3EEDebqhWAti/NnT3MUZCVaI46MZog=;
- b=Hg5awJQK9tqnoO0xSURioMGea7TGmrZDSHovppW4bcaoZ+iPrnMbyIKo
- 3uIouZkWnGZSZzoS8oPr45R2UF8h9BOizfl965H/zgn7kvwtdtWZUEVab
- vEA97Lxerx0sK2Afqi2KG1hInntqBQiHevcKG1310Ct1hxy+AhZGZRRjI
- Hl9ZiFnhR9NR8MQelo2PkREvhEp9GBuAH+Z2/YLsH1Ewn/+SR8ou4id3T
- XBbYS4wawEiSAZj2tFI4BQgFmaXBlEcmqCLELiqmRGhDFKgi8XpQm0Z6q
- vIqGe0KuYH7JZfFJHb0m6tdI/7l2Ds8UxOpBfdXi5jBdaFArLEOrNk7ws Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10223"; a="306805796"
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="306805796"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 02:30:21 -0800
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="515047551"
-Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 02:30:20 -0800
-From: Piotr Skajewski <piotrx.skajewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	pmenzel@molgen.mpg.de
-Date: Tue, 11 Jan 2022 11:27:23 +0100
-Message-Id: <20220111102723.3546-1-piotrx.skajewski@intel.com>
-X-Mailer: git-send-email 2.35.0.rc0
+ t=1641901909; x=1673437909;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8p/BiT7fhF+HtgqDZZgXe/Us+1u20PPykP2hq75gbNI=;
+ b=FnO6SKNfLdyjjAi1iZh/ZfRHZS/lOiouEBmxUALCM2lhM4OR/iRnERa5
+ cxbQZOtSezriabu0U8x8U4/sRbDh313KtTKequBfC7qrCjDGMFmQ7eNn3
+ 0TBEeBwrY7OYZtlZS10uGzfTZTr/SlT5uwS/yCW1N12ew2DNNN5EpAQ5l
+ Ym7MgH9/0YczYCuBf+Xu8U0KsVcmWVXoixdAXLeI4M0ra9ij3uwbLYv32
+ I11nBpfgH2VBvwnRMj4bUyrvNvSyBe1wu1vtCfd8uhZd29XrBvN/MKTku
+ qzE1COzsO7rd/250e1seAhwjanB8JgqvxT/EgEanKsg4PxhCdx+w/l7Lp A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10223"; a="223450318"
+X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="223450318"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2022 03:51:48 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="576182250"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by fmsmga008.fm.intel.com with ESMTP; 11 Jan 2022 03:51:48 -0800
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Tue, 11 Jan 2022 03:51:48 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Tue, 11 Jan 2022 03:51:47 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.109)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Tue, 11 Jan 2022 03:51:47 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MHwpLrlxXCuy5AWATcxtMeK6otNcFaZEBuXLsjFI7Hh1d5rBrmY66GliQpTjfftPqV/vY9i3UnAZlO/tpjBTgNY0ABsTO0sZPDbr43FtnKcT97OLiyLkIzF9T8tJ7J6avG10fOvW/yDPMCTy2ZKhk5WZUgLhNEhq2mnUwzBKN1j3MImpfJ+0GD3TRfs39X62Sg9i2oQj8xRI7kRTu99/zw/hLv3k7wX6/l4bhBlr5YCAORFcoE4UhLqryYwYS29UiWc1BajfXyy8kNOUTxZM814cb6Liu/0AwRzS58IJ+mpFWSRnspl9YFh9MgXSPrEVRwezLJ3EM/cAvzosDXkn5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8p/BiT7fhF+HtgqDZZgXe/Us+1u20PPykP2hq75gbNI=;
+ b=hhPxYjM81lEcSBw57B3JK7kmMmHS2s/S2OqubqEwQLpg6mqT390kSI2toKm6XS4SdyYA6B6nV8rBEmLb9g2HCRjtyEXuWtp8qM2lkK9SkzFan4t56WJTIxOEZrXzW9Ayez4CE48S2exLhfd59n/dPDnBTSN3zL4rU5DcjsnvoomCD8dEvTXn7KSZm0nBcjtCKgcAYaZTHrEe0VZEpTe7UiIcTj013DpA1LIhZ+Y/jo/fM2UcQfYiA20E4LJabT8f/7fTgwa795L7bnx0l4mxBRdb+x3xES4tAriSFF4s/dCgvDjFG2p+hKsea+AumwqaUtXk17QZzHntEK56Nf69jA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com (2603:10b6:303:5d::7)
+ by MW4PR11MB5934.namprd11.prod.outlook.com (2603:10b6:303:189::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.9; Tue, 11 Jan
+ 2022 11:51:47 +0000
+Received: from MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::42f:73e3:ecb1:3b75]) by MW3PR11MB4554.namprd11.prod.outlook.com
+ ([fe80::42f:73e3:ecb1:3b75%8]) with mapi id 15.20.4867.012; Tue, 11 Jan 2022
+ 11:51:46 +0000
+From: "Penigalapati, Sandeep" <sandeep.penigalapati@intel.com>
+To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v4 net-next 8/9] ixgbe: don't reserve
+ excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+Thread-Index: AQHX7D0V/4WGMGM6NEelJP0aKGyShKxd6pWA
+Date: Tue, 11 Jan 2022 11:51:46 +0000
+Message-ID: <MW3PR11MB45546CBEB4E1427EA5CD65C99C519@MW3PR11MB4554.namprd11.prod.outlook.com>
+References: <20211208140702.642741-1-alexandr.lobakin@intel.com>
+ <20211208140702.642741-9-alexandr.lobakin@intel.com>
+In-Reply-To: <20211208140702.642741-9-alexandr.lobakin@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 5b9194d0-58db-4978-9d0c-08d9d4f8beef
+x-ms-traffictypediagnostic: MW4PR11MB5934:EE_
+x-microsoft-antispam-prvs: <MW4PR11MB5934054BF4B04FF43640DB4F9C519@MW4PR11MB5934.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7219;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: sirVFWBrtRWLI76zUDNZTHp3Zy5COuCH13qWM1eMXVA1RJAB6EXnIaUGlgC28D2p+WJ2UA8tMH9iv53m2dcMldgkUDqbyGKOloj7tHYflRbDInbpIKH/GYEIX1y+pK5emt9As1eSkDdlZeSLfrlsgV9NrVOADwpc97+ni8pKEZdoePJKaTc8qVtQ9lCdnL3kV2i0W0bTUfYgmvBf2w5xVdYd5edwg9GoOGEGLT5wfXkTKozLBnyC4Cq5zpNXXI4rBdXiwgRLOnU5ZT/2cpyQx2VE/n43oy/tsuclENmnt7h35MLqfUtpreeyHOPdaJtiiBMtmbn5hr/jVobrjxMjld0DrDiz88O9FpQFVZrmmxwBA9SpymG8rA3Hnd/JL2UpPU70z3oSA5j3uOJE8OXFT1xMYKcgILmZ5Z+3zrLXLsRuljo3LLb4IMV74Rp8wPHRmjCim32E3ywBqLCMkQeVq2wLMA9cE/8LHDtshq5Vw2jIKztPBwgbilVayN3VSYi5kGPQTLZCV7jx6d3BnNXd0TYOPNYL38TI9Opb6TLmVWeULJ0KrA1MhVaapyXEmolAKsUPAiyDLhv9G+iK5c901H9DURxibnc5MSa8yDRX0Ww1Y1IYCzfSkbJ8A8haO32Zb8248tRbDSGmr4+2qvZ1/7NGmHQNBCosSNgpOIhDXJuhahckEZiJi/RNZoDIxlC1sZk2K9ocWJHf6UOhzAacKg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW3PR11MB4554.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(26005)(6506007)(122000001)(186003)(38100700002)(83380400001)(82960400001)(7416002)(2906002)(52536014)(33656002)(38070700005)(508600001)(9686003)(76116006)(5660300002)(71200400001)(8936002)(66556008)(7696005)(55016003)(86362001)(110136005)(54906003)(316002)(4326008)(66446008)(64756008)(66946007)(66476007)(8676002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?N1yjlsJDSCC42MAe1nrMskKizRelt+YNpc8JIjBqABpjffbnsmTzkdl7yN?=
+ =?iso-8859-1?Q?2/rotwoWEHeyiScgpcmsuscvfxFnA/n4v5VD9M8ZIFq6qmHwAn5F/JhDyl?=
+ =?iso-8859-1?Q?evLHH2VGXAVA+tT9EOmNKdRjMr/4GDJlG4k/VjMKSii5YOUekQYjGv/g21?=
+ =?iso-8859-1?Q?FgkkvUGJokqHkqU5f+EvGaeYsTP8ju20wab+kqrEFODGu6r/pVCZXj1BIC?=
+ =?iso-8859-1?Q?hcyzRlmqj+fh64IUpmh2rPHqCJmjITrCkmusEzqV+KaBUoa2i0dv9dKUS6?=
+ =?iso-8859-1?Q?nq7N5kjKdRWVOHaQ9vlpGivB2elFqoFS9n336NnitlZmeSRQ8sl3yArABR?=
+ =?iso-8859-1?Q?v+dQEz+ux8SEFIwd3rmHOt95nh/l+dfTl4CfWujqP9QJBA4crgONEhRErN?=
+ =?iso-8859-1?Q?Zxzr5iYfKQWshCzRgn/xIuXk3izFyz3Z0OQTjnMtknVxONutDsPHiSiqIg?=
+ =?iso-8859-1?Q?7mUd8WIWoAwDfBjJPlRzYIAK4wOJryPH/4BjE74C3UqqcYlXNyTctSMNx5?=
+ =?iso-8859-1?Q?rgjpYIhMcxRJIgmdwVBmIW7rMU3ceAx5J9PJVrxgr3O3tL+R+bhtUEWkDd?=
+ =?iso-8859-1?Q?424Sg8YHlgiTcz1q2X8iRm4bD+3EWkcAgqnFF27dOyI1Twc47+brjfT0la?=
+ =?iso-8859-1?Q?w/6PbUXiqm2ey2t77yIP08XyipEVzxfXtqSsqMJZQhqDsxeB3CiA1PW4mJ?=
+ =?iso-8859-1?Q?SJquEcfrCbj2g0CaaoE5Kz10T46jh5LMnRt8XQssGmHwW3uI7/FGl8YjYI?=
+ =?iso-8859-1?Q?5FmR6up5yOW56YYq1ZNDytR3lcdhCyXoKF1NP2AkSvT0Yek6mydG9pY7F2?=
+ =?iso-8859-1?Q?iX5YZPH6AgytiPWhtVVAk2iRDwvveFK0nGGHaJ0modt7RthkkkYYYS9aNN?=
+ =?iso-8859-1?Q?rz+zKrBmLHS2M4Jm9HHeAR+zQ3898BL7ei3L6KWAQvEWa3oOT9jgoKPf+Y?=
+ =?iso-8859-1?Q?U0IiX9lNwC42Uqa8c8pIWmI10vXpsFScSJIOIfSKbxunZSENvX8c2/wcpW?=
+ =?iso-8859-1?Q?CwU5OzMGzsF5WQMQZlli1xRk7XYSkinbzbgg+dOACmP465QbqsqgiAlKIV?=
+ =?iso-8859-1?Q?8rP0R7dozsn44OqrLe1balIapH4NmVtISPBcxwJmW80V0Gtryqa2wZz7T4?=
+ =?iso-8859-1?Q?OXRK/CYfBE4H524NJbe+ZUi9hJOLFq++XJhW0flA/AUdoGa6upIDfNNFUd?=
+ =?iso-8859-1?Q?4PB4jZt4GZ5o+Zcahr6Sb/N8pwsySyTReM+JiBFnKWIcCQkI2ycEpyRNV3?=
+ =?iso-8859-1?Q?57Q0YiBPAeAR9Ea1gjYNlDZb8WHAtbx5RBWVtwjHDwVOUb7xyYYOgdZCPp?=
+ =?iso-8859-1?Q?FQ59S1t8MqY432wuRCPZ+EWMLGiU7qgCWum1A6fccSQUxwg/EQAG6dHnLa?=
+ =?iso-8859-1?Q?jP5WVQuSwqj1fEf/57t27TcWr0L11x6zSLVeEcDIJobkYI8DJg/q6mSpDO?=
+ =?iso-8859-1?Q?tNHkOgOf3p9KTbcH1ihAQq9NWMOn5FWREVUBnS62ufbsYHwSPX+PP6e5ko?=
+ =?iso-8859-1?Q?EmqPT9N5mCRO+TZ+quzZy2LyDB+lgJkSlLFd9/Wzs379rHcEN+MMm+CI+E?=
+ =?iso-8859-1?Q?nUehHRjX10sSpn72bHyIn6FWFXc5Duf2fbTVeJ2S4ED5iZxibocrW06YAR?=
+ =?iso-8859-1?Q?BhKvS7EF1CQDiqtP9f6NAqaKpIRqlmAf3JcGmZbmlczTGooNOktLlPna3L?=
+ =?iso-8859-1?Q?THIOJnN28hxXjWhtgkIMps9+lTT5+gotCGCyGW6hqqQYuYQcdWPZneQyvQ?=
+ =?iso-8859-1?Q?p9lQ=3D=3D?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] ixgbe: Remove non-inclusive language
- from Intel code
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4554.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b9194d0-58db-4978-9d0c-08d9d4f8beef
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jan 2022 11:51:46.8894 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OnE0PvWf1F66Pvmeekcfqeg+/iClwAt9ZpbNXxDUo8PBk/x8/4ICaXEVt51m+Gn9nNN4lC2m2FG6PGYBHmmpKSFXKwxpxOa0t9qX1tdi+RE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB5934
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 8/9] ixgbe: don't reserve
+ excessive XDP_PACKET_HEADROOM on XSK Rx to skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,193 +172,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Piotr Skajewski <piotrx.skajewski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Song Liu <songliubraving@fb.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ "David S. Miller" <davem@davemloft.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Andrii Nakryiko <andrii@kernel.org>,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, Jakub
+ Kicinski <kuba@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ Yonghong Song <yhs@fb.com>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ Martin KaFai Lau <kafai@fb.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove non-inclusive language from Intel code
-as our entire industry removes non-inclusive language
-from our documentation, user-interfaces and code.
-
-Additionally correct the duplication "from from"
-reported by checkpatch after the changes above.
-
-Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
----
-v2:
- - removed dot/period from commit message summary
- - commit message updated with word duplication
----
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   | 36 +++++++++----------
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  4 +--
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h | 10 +++---
- 3 files changed, 25 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index e90b5047e695..4c26c4b92f07 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -30,7 +30,7 @@ static s32 ixgbe_write_eeprom_buffer_bit_bang(struct ixgbe_hw *hw, u16 offset,
- 					     u16 words, u16 *data);
- static s32 ixgbe_detect_eeprom_page_size_generic(struct ixgbe_hw *hw,
- 						 u16 offset);
--static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw);
-+static s32 ixgbe_disable_pcie_primary(struct ixgbe_hw *hw);
- 
- /* Base table for registers values that change by MAC */
- const u32 ixgbe_mvals_8259X[IXGBE_MVALS_IDX_LIMIT] = {
-@@ -746,10 +746,10 @@ s32 ixgbe_stop_adapter_generic(struct ixgbe_hw *hw)
- 	usleep_range(1000, 2000);
- 
- 	/*
--	 * Prevent the PCI-E bus from from hanging by disabling PCI-E master
-+	 * Prevent the PCI-E bus from hanging by disabling PCI-E primary
- 	 * access and verify no pending requests
- 	 */
--	return ixgbe_disable_pcie_master(hw);
-+	return ixgbe_disable_pcie_primary(hw);
- }
- 
- /**
-@@ -2506,15 +2506,15 @@ static u32 ixgbe_pcie_timeout_poll(struct ixgbe_hw *hw)
- }
- 
- /**
-- *  ixgbe_disable_pcie_master - Disable PCI-express master access
-+ *  ixgbe_disable_pcie_primary - Disable PCI-express primary access
-  *  @hw: pointer to hardware structure
-  *
-- *  Disables PCI-Express master access and verifies there are no pending
-- *  requests. IXGBE_ERR_MASTER_REQUESTS_PENDING is returned if master disable
-- *  bit hasn't caused the master requests to be disabled, else 0
-- *  is returned signifying master requests disabled.
-+ *  Disables PCI-Express primary access and verifies there are no pending
-+ *  requests. IXGBE_ERR_PRIMARY_REQUESTS_PENDING is returned if primary disable
-+ *  bit hasn't caused the primary requests to be disabled, else 0
-+ *  is returned signifying primary requests disabled.
-  **/
--static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
-+static s32 ixgbe_disable_pcie_primary(struct ixgbe_hw *hw)
- {
- 	u32 i, poll;
- 	u16 value;
-@@ -2523,23 +2523,23 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 	IXGBE_WRITE_REG(hw, IXGBE_CTRL, IXGBE_CTRL_GIO_DIS);
- 
- 	/* Poll for bit to read as set */
--	for (i = 0; i < IXGBE_PCI_MASTER_DISABLE_TIMEOUT; i++) {
-+	for (i = 0; i < IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT; i++) {
- 		if (IXGBE_READ_REG(hw, IXGBE_CTRL) & IXGBE_CTRL_GIO_DIS)
- 			break;
- 		usleep_range(100, 120);
- 	}
--	if (i >= IXGBE_PCI_MASTER_DISABLE_TIMEOUT) {
-+	if (i >= IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT) {
- 		hw_dbg(hw, "GIO disable did not set - requesting resets\n");
- 		goto gio_disable_fail;
- 	}
- 
--	/* Exit if master requests are blocked */
-+	/* Exit if primary requests are blocked */
- 	if (!(IXGBE_READ_REG(hw, IXGBE_STATUS) & IXGBE_STATUS_GIO) ||
- 	    ixgbe_removed(hw->hw_addr))
- 		return 0;
- 
--	/* Poll for master request bit to clear */
--	for (i = 0; i < IXGBE_PCI_MASTER_DISABLE_TIMEOUT; i++) {
-+	/* Poll for primary request bit to clear */
-+	for (i = 0; i < IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT; i++) {
- 		udelay(100);
- 		if (!(IXGBE_READ_REG(hw, IXGBE_STATUS) & IXGBE_STATUS_GIO))
- 			return 0;
-@@ -2547,13 +2547,13 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 
- 	/*
- 	 * Two consecutive resets are required via CTRL.RST per datasheet
--	 * 5.2.5.3.2 Master Disable.  We set a flag to inform the reset routine
--	 * of this need.  The first reset prevents new master requests from
-+	 * 5.2.5.3.2 Primary Disable.  We set a flag to inform the reset routine
-+	 * of this need.  The first reset prevents new primary requests from
- 	 * being issued by our device.  We then must wait 1usec or more for any
- 	 * remaining completions from the PCIe bus to trickle in, and then reset
- 	 * again to clear out any effects they may have had on our device.
- 	 */
--	hw_dbg(hw, "GIO Master Disable bit didn't clear - requesting resets\n");
-+	hw_dbg(hw, "GIO Primary Disable bit didn't clear - requesting resets\n");
- gio_disable_fail:
- 	hw->mac.flags |= IXGBE_FLAGS_DOUBLE_RESET_REQUIRED;
- 
-@@ -2575,7 +2575,7 @@ static s32 ixgbe_disable_pcie_master(struct ixgbe_hw *hw)
- 	}
- 
- 	hw_dbg(hw, "PCIe transaction pending bit also did not clear.\n");
--	return IXGBE_ERR_MASTER_REQUESTS_PENDING;
-+	return IXGBE_ERR_PRIMARY_REQUESTS_PENDING;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 796b9895bc91..1cff14fc6c20 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -5948,8 +5948,8 @@ void ixgbe_reset(struct ixgbe_adapter *adapter)
- 	case IXGBE_ERR_SFP_NOT_PRESENT:
- 	case IXGBE_ERR_SFP_NOT_SUPPORTED:
- 		break;
--	case IXGBE_ERR_MASTER_REQUESTS_PENDING:
--		e_dev_err("master disable timed out\n");
-+	case IXGBE_ERR_PRIMARY_REQUESTS_PENDING:
-+		e_dev_err("primary disable timed out\n");
- 		break;
- 	case IXGBE_ERR_EEPROM_VERSION:
- 		/* We are running on a pre-production device, log a warning */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 2647937f7f4d..6da9880d766a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -1247,7 +1247,7 @@ struct ixgbe_nvm_version {
- #define IXGBE_PSRTYPE_RQPL_SHIFT    29
- 
- /* CTRL Bit Masks */
--#define IXGBE_CTRL_GIO_DIS      0x00000004 /* Global IO Master Disable bit */
-+#define IXGBE_CTRL_GIO_DIS      0x00000004 /* Global IO Primary Disable bit */
- #define IXGBE_CTRL_LNK_RST      0x00000008 /* Link Reset. Resets everything. */
- #define IXGBE_CTRL_RST          0x04000000 /* Reset (SW) */
- #define IXGBE_CTRL_RST_MASK     (IXGBE_CTRL_LNK_RST | IXGBE_CTRL_RST)
-@@ -1811,7 +1811,7 @@ enum {
- /* STATUS Bit Masks */
- #define IXGBE_STATUS_LAN_ID         0x0000000C /* LAN ID */
- #define IXGBE_STATUS_LAN_ID_SHIFT   2          /* LAN ID Shift*/
--#define IXGBE_STATUS_GIO            0x00080000 /* GIO Master Enable Status */
-+#define IXGBE_STATUS_GIO            0x00080000 /* GIO Primary Enable Status */
- 
- #define IXGBE_STATUS_LAN_ID_0   0x00000000 /* LAN ID 0 */
- #define IXGBE_STATUS_LAN_ID_1   0x00000004 /* LAN ID 1 */
-@@ -2193,8 +2193,8 @@ enum {
- #define IXGBE_PCIDEVCTRL2_4_8s		0xd
- #define IXGBE_PCIDEVCTRL2_17_34s	0xe
- 
--/* Number of 100 microseconds we wait for PCI Express master disable */
--#define IXGBE_PCI_MASTER_DISABLE_TIMEOUT	800
-+/* Number of 100 microseconds we wait for PCI Express primary disable */
-+#define IXGBE_PCI_PRIMARY_DISABLE_TIMEOUT	800
- 
- /* RAH */
- #define IXGBE_RAH_VIND_MASK     0x003C0000
-@@ -3671,7 +3671,7 @@ struct ixgbe_info {
- #define IXGBE_ERR_ADAPTER_STOPPED               -9
- #define IXGBE_ERR_INVALID_MAC_ADDR              -10
- #define IXGBE_ERR_DEVICE_NOT_SUPPORTED          -11
--#define IXGBE_ERR_MASTER_REQUESTS_PENDING       -12
-+#define IXGBE_ERR_PRIMARY_REQUESTS_PENDING      -12
- #define IXGBE_ERR_INVALID_LINK_SETTINGS         -13
- #define IXGBE_ERR_AUTONEG_NOT_COMPLETE          -14
- #define IXGBE_ERR_RESET_FAILED                  -15
--- 
-2.35.0.rc0
-
+>-----Original Message-----
+>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>Alexander Lobakin
+>Sent: Wednesday, December 8, 2021 7:37 PM
+>To: intel-wired-lan@lists.osuosl.org
+>Cc: Song Liu <songliubraving@fb.com>; Jesper Dangaard Brouer
+><hawk@kernel.org>; Daniel Borkmann <daniel@iogearbox.net>; Yonghong
+>Song <yhs@fb.com>; Martin KaFai Lau <kafai@fb.com>; John Fastabend
+><john.fastabend@gmail.com>; Alexei Starovoitov <ast@kernel.org>; Andrii
+>Nakryiko <andrii@kernel.org>; Bj=F6rn T=F6pel <bjorn@kernel.org>;
+>netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>; KP Singh
+><kpsingh@kernel.org>; bpf@vger.kernel.org; David S. Miller
+><davem@davemloft.net>; linux-kernel@vger.kernel.org
+>Subject: [Intel-wired-lan] [PATCH v4 net-next 8/9] ixgbe: don't reserve
+>excessive XDP_PACKET_HEADROOM on XSK Rx to skb
+>
+>{__,}napi_alloc_skb() allocates and reserves additional NET_SKB_PAD
+>+ NET_IP_ALIGN for any skb.
+>OTOH, ixgbe_construct_skb_zc() currently allocates and reserves additional
+>`xdp->data - xdp->data_hard_start`, which is XDP_PACKET_HEADROOM for
+>XSK frames.
+>There's no need for that at all as the frame is post-XDP and will go only =
+to the
+>networking stack core.
+>Pass the size of the actual data only to __napi_alloc_skb() and don't rese=
+rve
+>anything. This will give enough headroom for stack processing.
+>
+>Fixes: d0bcacd0a130 ("ixgbe: add AF_XDP zero-copy Rx support")
+>Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+>Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+>---
+> drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 +---
+> 1 file changed, 1 insertion(+), 3 deletions(-)
+>
+Tested-by: Sandeep Penigalapati <sandeep.penigalapati@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
