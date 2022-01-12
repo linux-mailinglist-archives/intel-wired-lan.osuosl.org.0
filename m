@@ -2,61 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9477B48C67B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jan 2022 15:51:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1571C48C70A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jan 2022 16:20:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0718740A28;
-	Wed, 12 Jan 2022 14:51:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 07E20403C8;
+	Wed, 12 Jan 2022 15:20:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Po-N6lfJ0-L1; Wed, 12 Jan 2022 14:51:07 +0000 (UTC)
+	with ESMTP id gHQvS2Du7D-p; Wed, 12 Jan 2022 15:20:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B4C0E400B5;
-	Wed, 12 Jan 2022 14:51:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C26ED400B5;
+	Wed, 12 Jan 2022 15:20:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0B60E1BF2F6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 14:51:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 46CC21BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 15:19:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EB8E2405D0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 14:51:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 310EB400B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 15:19:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PZZNGrfbkhdy for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Jan 2022 14:50:59 +0000 (UTC)
+ with ESMTP id nDrRbjToU7hn for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Jan 2022 15:19:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2F273400B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 14:50:59 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 78C11B81F45;
- Wed, 12 Jan 2022 14:50:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2145C36AE5;
- Wed, 12 Jan 2022 14:50:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641999055;
- bh=ZYIhQu0CJmEYqQPsxX+F20R/7TLgNCmuzU7RtO1+uBU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=TXQxe4XlT38nugbWRKDdxBY1KByqJNOv/XOXpZvLebOZ9mcEi/Uvcpz3dY0ztwTJa
- 31sW3/JElg+npzFZ1JCgqG1CywPvdfrxwbIIeebzyAcX96Dm5aY2ox8kce6thXtQty
- lXJweipz0XlaCSlNN3NyKg2BCTVRBxDi+1uUqVJOcvg3to99k4HHQtL1CtXTYmb2FT
- 1c/ELnOzN0FXUxAo5Btp4avLKJa/gvHEQU55udjSCtYrDChsyhtz82vpA5qr1+pyvf
- nDWPzMqKsE+vdyJwT+NYjm9enW3FGmAGiw/43NgBhbbMq8mB1E8JMzTf8Nqk/qx7sP
- iUoY9ndVvBQWQ==
-Date: Wed, 12 Jan 2022 08:50:53 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Michael Walle <michael@walle.cc>
-Message-ID: <20220112145053.GA254177@bhelgaas>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0132F40017
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jan 2022 15:19:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642000797; x=1673536797;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=S+rJdW5jzfzFGPppaZpsdiZ23qurFAcU4sSdu9DhNyw=;
+ b=H/Ca4GhvOhpSrq1uPMYa1MImCjOq0J7HUnXWJwptv5NbH2fp/9BfXcMn
+ 0E5iBXz374dRN/6/3V4JXx61aZnBVxMOuQi28+nevSQuMt7TdYVJvAY29
+ 1pAjpI0YRx4eO5RtTDj108jJb/NPiVu8gI1SeJIaUebUo74mX+gEj14FK
+ FYvbKB0w6Nz5dw5+vNbdFGYv0m7u17jbQkKDQDt0xyY3T7yCYlmKnMB/F
+ TLWvkSaxEMs/Jr/FIjmI7IqEynkLFT3HgRoOw1cklWOpBF/H4UiN52C91
+ ZLdQ3Tq6QYzEzDDDSQ5/x6+q2QaDQV6pWYiCL7aPxlrmpr5UQr2GJuC2Y g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10224"; a="223736431"
+X-IronPort-AV: E=Sophos;i="5.88,282,1635231600"; d="scan'208";a="223736431"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2022 07:19:56 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,282,1635231600"; d="scan'208";a="670178459"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by fmsmga001.fm.intel.com with ESMTP; 12 Jan 2022 07:19:55 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1n7fPm-00060D-PT; Wed, 12 Jan 2022 15:19:54 +0000
+Date: Wed, 12 Jan 2022 23:19:40 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61def18c.+igfjUUHr1jkeBdH%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9526698be0ced0f7a7ed00bd76538d16@walle.cc>
-Subject: Re: [Intel-wired-lan] [PATCH v2] PCI: Fix Intel i210 by avoiding
- overlapping of BARs
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 61a0b1ca2485ddfe549cde9eccd93b06b53188e8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,71 +75,175 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Bjorn Helgaas <bhelgaas@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 23, 2021 at 07:12:02PM +0100, Michael Walle wrote:
-> Am 2021-12-23 17:37, schrieb Bjorn Helgaas:
-> 
-> > I intended to change the quirk from FINAL to EARLY, but obviously
-> > forgot.  Here's the updated version:
-> > 
-> > commit bb5639b73a2d ("PCI: Work around Intel I210 ROM BAR overlap
-> > defect")
-> > Author: Bjorn Helgaas <bhelgaas@google.com>
-> > Date:   Tue Dec 21 10:45:07 2021 -0600
-> > 
-> >     PCI: Work around Intel I210 ROM BAR overlap defect
-> > 
-> >     Per PCIe r5, sec 7.5.1.2.4, a device must not claim accesses to its
-> >     Expansion ROM unless both the Memory Space Enable and the Expansion
-> > ROM
-> >     Enable bit are set.  But apparently some Intel I210 NICs don't work
-> >     correctly if the ROM BAR overlaps another BAR, even if the Expansion
-> > ROM is
-> >     disabled.
-> > 
-> >     Michael reported that on a Kontron SMARC-sAL28 ARM64 system with
-> > U-Boot
-> >     v2021.01-rc3, the ROM BAR overlaps BAR 3, and networking doesn't
-> > work at
-> >     all:
-> > 
-> >       BAR 0: 0x40000000 (32-bit, non-prefetchable) [size=1M]
-> >       BAR 3: 0x40200000 (32-bit, non-prefetchable) [size=16K]
-> >       ROM:   0x40200000 (disabled) [size=1M]
-> > 
-> >       NETDEV WATCHDOG: enP2p1s0 (igb): transmit queue 0 timed out
-> >       Hardware name: Kontron SMARC-sAL28 (Single PHY) on SMARC Eval
-> > 2.0 carrier (DT)
-> >       igb 0002:01:00.0 enP2p1s0: Reset adapter
-> > 
-> >     Previously, pci_std_update_resource() wrote the assigned ROM address
-> > to the
-> >     BAR only when the ROM was enabled.  This meant that the I210 ROM BAR
-> > could
-> >     be left with an address assigned by firmware, which might overlap
-> > with
-> >     other BARs.
-> > 
-> >     Quirk these I210 devices so pci_std_update_resource() always writes
-> > the
-> >     assigned address to the ROM BAR, whether or not the ROM is enabled.
-> > 
-> >     Link:
-> > https://lore.kernel.org/r/20201230185317.30915-1-michael@walle.cc
-> >     Link: https://bugzilla.kernel.org/show_bug.cgi?id=211105
-> >     Reported-by: Michael Walle <michael@walle.cc>
-> >     Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-> 
-> Tested-by: Michael Walle <michael@walle.cc>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 61a0b1ca2485ddfe549cde9eccd93b06b53188e8  iavf: Add support for 50G/100G in AIM algorithm
 
-Applied to pci/resource for v5.17, thanks!
+elapsed time: 805m
+
+configs tested: 141
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                          randconfig-c001
+mips                 randconfig-c004-20220111
+mips                 randconfig-c004-20220112
+arc                                 defconfig
+s390                             allmodconfig
+arm                         cm_x300_defconfig
+csky                             alldefconfig
+powerpc                      ppc6xx_defconfig
+powerpc                         wii_defconfig
+arm                           u8500_defconfig
+h8300                     edosk2674_defconfig
+sh                           se7724_defconfig
+m68k                           sun3_defconfig
+arc                     haps_hs_smp_defconfig
+sh                         microdev_defconfig
+powerpc                     rainier_defconfig
+sparc                            alldefconfig
+sh                          rsk7203_defconfig
+m68k                       m5275evb_defconfig
+sh                        edosk7705_defconfig
+arm                        realview_defconfig
+powerpc                       holly_defconfig
+powerpc                  storcenter_defconfig
+arm                         assabet_defconfig
+arm                            pleb_defconfig
+sh                            hp6xx_defconfig
+sh                            shmin_defconfig
+h8300                       h8s-sim_defconfig
+sh                           se7751_defconfig
+microblaze                          defconfig
+powerpc                    adder875_defconfig
+sh                             shx3_defconfig
+m68k                        stmark2_defconfig
+arm                        trizeps4_defconfig
+powerpc                 mpc834x_itx_defconfig
+microblaze                      mmu_defconfig
+sh                           se7721_defconfig
+sh                          polaris_defconfig
+arm                        mini2440_defconfig
+m68k                            q40_defconfig
+sh                          sdk7780_defconfig
+sh                        edosk7760_defconfig
+mips                        jmr3927_defconfig
+xtensa                           alldefconfig
+h8300                            alldefconfig
+arm                  randconfig-c002-20220111
+arm                  randconfig-c002-20220112
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                          randconfig-a003
+i386                          randconfig-a001
+i386                          randconfig-a005
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a011
+x86_64                        randconfig-a013
+x86_64                        randconfig-a015
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                randconfig-r042-20220111
+arc                  randconfig-r043-20220112
+arc                  randconfig-r043-20220111
+s390                 randconfig-r044-20220111
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+arm                  randconfig-c002-20220111
+x86_64                        randconfig-c007
+riscv                randconfig-c006-20220111
+powerpc              randconfig-c003-20220111
+i386                          randconfig-c001
+mips                 randconfig-c004-20220111
+arm                  randconfig-c002-20220112
+riscv                randconfig-c006-20220112
+powerpc              randconfig-c003-20220112
+mips                 randconfig-c004-20220112
+arm                      tct_hammer_defconfig
+arm                    vt8500_v6_v7_defconfig
+arm                       cns3420vb_defconfig
+arm                     davinci_all_defconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                 mpc836x_mds_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+hexagon              randconfig-r045-20220112
+riscv                randconfig-r042-20220112
+s390                 randconfig-r044-20220112
+hexagon              randconfig-r041-20220112
+hexagon              randconfig-r045-20220111
+hexagon              randconfig-r041-20220111
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
