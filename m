@@ -1,84 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A739548EEB9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 17:51:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0F9448F049
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 20:10:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44921812ED;
-	Fri, 14 Jan 2022 16:51:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C69EA83466;
+	Fri, 14 Jan 2022 19:10:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l5yLrNMH5Ck2; Fri, 14 Jan 2022 16:51:45 +0000 (UTC)
+	with ESMTP id RgRKAkoApT6P; Fri, 14 Jan 2022 19:10:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C29580E17;
-	Fri, 14 Jan 2022 16:51:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D330083396;
+	Fri, 14 Jan 2022 19:10:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 655861BF362
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 16:51:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D73091BF363
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:10:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 528E9401C5
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 16:51:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C3FB783396
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:10:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MaOQm6qa5jug for <intel-wired-lan@osuosl.org>;
- Fri, 14 Jan 2022 16:51:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eJthbBu6BKRd for <intel-wired-lan@osuosl.org>;
+ Fri, 14 Jan 2022 19:10:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9010A40176
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 16:51:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642179099;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=912e1eTIK4JPbQHZk/1krckW0H7nOEZ7D/D65ylc5E0=;
- b=T5iujN4nliGAm9LAk5ydN1engBPHEGujnV3ibGvBbDmcgad1t+FVlL5Oo3m+Fg9OBYiaSi
- V0K8E7CPkk8LAhV+fZoaPh51CjrEElJ4sUwfIicvTGjkOJGq5DutpB7EA8/pjgnK5Ufnpr
- eP9qkA95OrqGVan8uHcEVqh2HwrE8Ac=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-664-J63XQOwXNQKM6UpdvpEpJQ-1; Fri, 14 Jan 2022 11:51:38 -0500
-X-MC-Unique: J63XQOwXNQKM6UpdvpEpJQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EDA17185303B;
- Fri, 14 Jan 2022 16:51:36 +0000 (UTC)
-Received: from calimero.vinschen.de (ovpn-112-14.ams2.redhat.com
- [10.36.112.14])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E3852DE79;
- Fri, 14 Jan 2022 16:51:36 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 06027A80ED6; Fri, 14 Jan 2022 17:51:35 +0100 (CET)
-Date: Fri, 14 Jan 2022 17:51:34 +0100
-From: Corinna Vinschen <vinschen@redhat.com>
-To: Denis Kirjanov <dkirjanov@suse.de>
-Message-ID: <YeGqFq2oJqIzar53@calimero.vinschen.de>
-Mail-Followup-To: Denis Kirjanov <dkirjanov@suse.de>,
- intel-wired-lan@osuosl.org, netdev@vger.kernel.org,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Lennert Buytenhek <buytenh@wantstofly.org>,
- Alexander Lobakin <alexandr.lobakin@intel.com>
-References: <20220114114354.1071776-1-vinschen@redhat.com>
- <20220114114354.1071776-3-vinschen@redhat.com>
- <5521e35f-3adf-2949-f360-12e2f7946480@suse.de>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E0806831AE
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:10:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642187432; x=1673723432;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=lBQUQX7/jobF6RXbmZGC7t7PVSfbGHd/eB+wc+NLBf0=;
+ b=diUYgPflnnhHZg3LWvIcRVrBc9pMNXvmmYZSYLOHuK/V9IAdHh6g5Sq1
+ BBx2u6Rl/5qwqW23de4h2qBq4jKqhMLabW4lWDpxo8WogQLVUNeRKP1iJ
+ S57SiBgMwZaIYHeggd6yTqBw/m9/Kp+SzVgAwaIFiCM+WfM/bdxbau/ap
+ Y4fWVAcB+sAtUzIGOmRNEwkwTkAYXgZojh0BEyc7CaP74bm+wU4l3guVR
+ bKjOu+m2Wof8Ov6Qp4V9A/RIi2xKdaBOV55AkTYGyi4++pCQ6NhQ0oe4J
+ heJD+mf3KwWNJwIVx5u5x5WuUrS4bHdmtTJ8Cxooxyz9pVC6BiKFdLoII g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10227"; a="305041989"
+X-IronPort-AV: E=Sophos;i="5.88,289,1635231600"; d="scan'208";a="305041989"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2022 11:10:31 -0800
+X-IronPort-AV: E=Sophos;i="5.88,289,1635231600"; d="scan'208";a="766009415"
+Received: from ombarre-mobl2.amr.corp.intel.com (HELO vcostago-mobl3)
+ ([10.209.114.118])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2022 11:10:31 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Corinna Vinschen <vinschen@redhat.com>, intel-wired-lan@osuosl.org,
+ netdev@vger.kernel.org
+In-Reply-To: <20220114165106.1085474-2-vinschen@redhat.com>
+References: <20220114165106.1085474-1-vinschen@redhat.com>
+ <20220114165106.1085474-2-vinschen@redhat.com>
+Date: Fri, 14 Jan 2022 11:10:29 -0800
+Message-ID: <87czku6sm2.fsf@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5521e35f-3adf-2949-f360-12e2f7946480@suse.de>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Subject: Re: [Intel-wired-lan] [PATCH 2/2 net-next v2] igb: refactor XDP
- registration
+Subject: Re: [Intel-wired-lan] [PATCH 1/2 net-next v3] igc: avoid kernel
+ warning when changing RX ring parameters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,29 +76,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org, netdev@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gSmFuIDE0IDE3OjEzLCBEZW5pcyBLaXJqYW5vdiB3cm90ZToKPiAxLzE0LzIyIDE0OjQzLCBD
-b3Jpbm5hIFZpbnNjaGVuINC/0LjRiNC10YI6Cj4gPiBPbiBjaGFuZ2luZyB0aGUgUlggcmluZyBw
-YXJhbWV0ZXJzIGlnYiB1c2VzIGEgaGFjayB0byBhdm9pZCBhIHdhcm5pbmcKPiA+IHdoZW4gY2Fs
-bGluZyB4ZHBfcnhxX2luZm9fcmVnIHZpYSBpZ2Jfc2V0dXBfcnhfcmVzb3VyY2VzLiAgSXQganVz
-dAo+ID4gY2xlYXJzIHRoZSBzdHJ1Y3QgeGRwX3J4cV9pbmZvIGNvbnRlbnQuCj4gPiAKPiA+IENo
-YW5nZSB0aGlzIHRvIHVucmVnaXN0ZXIgaWYgd2UncmUgYWxyZWFkeSByZWdpc3RlcmVkIGluc3Rl
-YWQuICBBTGlnbgo+ID4gY29kZSB0byB0aGUgaWdjIGNvZGUuCj4gPiAKPiA+IEZpeGVzOiA5Y2Jj
-OTQ4YjVhMjBjICgiaWdiOiBhZGQgWERQIHN1cHBvcnQiKQo+ID4gU2lnbmVkLW9mZi1ieTogQ29y
-aW5uYSBWaW5zY2hlbiA8dmluc2NoZW5AcmVkaGF0LmNvbT4KPiA+IC0tLQo+ID4gICBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX2V0aHRvb2wuYyB8ICA0IC0tLS0KPiA+ICAgZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgICAgfCAxNSArKysrKysrKysr
-Ky0tLS0KPiA+ICAgMiBmaWxlcyBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9u
-cygtKQo+ID4gWy4uLl0KPiA+ICsJaWYgKHJlcyA8IDApIHsKPiA+ICsJCW5ldGRldl9lcnIocnhf
-cmluZy0+bmV0ZGV2LAo+ID4gKwkJCSAgICJGYWlsZWQgdG8gcmVnaXN0ZXIgeGRwX3J4cSBpbmRl
-eCAldVxuIiwKPiA+ICsJCQkgICByeF9yaW5nLT5xdWV1ZV9pbmRleCk7Cj4gbml0OiB3b3VsZCBi
-ZSBuaWNlIHRvIGhhdmUgdGhlIHNhbWUgcHJpbnRpbmcgZnVuY3Rpb25zIGxpa2UgZGV2X2Vycigp
-Cj4gaW4gdGhlIGVycm9yIGNhc2UKClRoYW5rcywgSSBwdXNoZWQgYSB2My4KCgpDb3Jpbm5hCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
-ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
-dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Corinna Vinschen <vinschen@redhat.com> writes:
+
+> Calling ethtool changing the RX ring parameters like this:
+>
+>   $ ethtool -G eth0 rx 1024
+>
+> on igc triggers the "Missing unregister, handled but fix driver" warning in
+> xdp_rxq_info_reg().
+>
+> igc_ethtool_set_ringparam() copies the igc_ring structure but neglects to
+> reset the xdp_rxq_info member before calling igc_setup_rx_resources().
+> This in turn calls xdp_rxq_info_reg() with an already registered xdp_rxq_info.
+>
+> Make sure to unregister the xdp_rxq_info structure first in
+> igc_setup_rx_resources.  Move xdp_rxq_info handling down to bethe last
+> action, thus allowing to remove the xdp_rxq_info_unreg call in the error path.
+>
+> Fixes: 73f1071c1d29 ("igc: Add support for XDP_TX action")
+> Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_main.c | 20 +++++++++++---------
+>  1 file changed, 11 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 2f17f36e94fd..97144f6db36e 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -505,14 +505,6 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
+>  	u8 index = rx_ring->queue_index;
+>  	int size, desc_len, res;
+>  
+> -	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, index,
+> -			       rx_ring->q_vector->napi.napi_id);
+> -	if (res < 0) {
+> -		netdev_err(ndev, "Failed to register xdp_rxq index %u\n",
+> -			   index);
+> -		return res;
+> -	}
+> -
+>  	size = sizeof(struct igc_rx_buffer) * rx_ring->count;
+>  	rx_ring->rx_buffer_info = vzalloc(size);
+>  	if (!rx_ring->rx_buffer_info)
+> @@ -534,10 +526,20 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
+>  	rx_ring->next_to_clean = 0;
+>  	rx_ring->next_to_use = 0;
+>  
+> +	/* XDP RX-queue info */
+> +	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
+> +		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+> +	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, index,
+> +			       rx_ring->q_vector->napi.napi_id);
+> +	if (res < 0) {
+> +		netdev_err(ndev, "Failed to register xdp_rxq index %u\n",
+> +			   index);
+> +		return res;
+
+Here and in the igb patch, it should be 'goto err', no?
+
+Another suggestion is to add the warning that Lennert reported in the
+commit message (the comment from Maciej in that other thread).
+
+Apart from that, I think this is cleaner than what I had proposed.
+
+
+Cheers,
+-- 
+Vinicius
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
