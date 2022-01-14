@@ -1,165 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A488B48E326
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 05:08:13 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BB0E48E79B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 10:37:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2BE2984B1C;
-	Fri, 14 Jan 2022 04:08:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AB21D405AE;
+	Fri, 14 Jan 2022 09:37:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tHEFrDkPFRPR; Fri, 14 Jan 2022 04:08:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RjifY_sHaYD0; Fri, 14 Jan 2022 09:37:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1480983F21;
-	Fri, 14 Jan 2022 04:08:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 60014405E7;
+	Fri, 14 Jan 2022 09:37:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 091B21BF2B7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 04:08:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 71ED31BF3DF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 09:37:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 01DB660AD6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 04:08:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5B91E403A7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 09:37:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qh6lPkpDxQtr for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Jan 2022 04:08:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E_Ip9zXMT22s for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Jan 2022 09:37:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1E34D60AD2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 04:08:06 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0AE98403FC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jan 2022 09:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642133286; x=1673669286;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=VA6xpRpMhgK2IKZvXRMDKxMJfILHshJRmVSxuySLhZ8=;
- b=QtBnnSzEL8xsREW6WlBAmb7FVhCbD3IKdu5bohRn184Wuu5l8NdoxaNd
- wAcr8Rqmi4lnqzJHX15r2Zlp8vVOLJPrVqlxluxSERp7atlLU/mCEjs1f
- qx63SANjoN7eejJU79klxWpxlwdA4nrsye6g4eNZEARi6ayolF5yscluI
- MKG8QoYoZblys2kFUOWZBpEKJDLCmwZAHTKkvBJxTWhq0ji7Q0hzpwbkw
- WLnisZuHouJu2tesuhtotaw9PTNoHL6euRr3z8Ip+SY6cEupsjCrPaHVE
- LfRNZ1qUxg/xM3o0QPfAgM4Ca1SDj284plU0ADrYNRXaUHEpR38TpHts8 Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10226"; a="244134517"
-X-IronPort-AV: E=Sophos;i="5.88,287,1635231600"; d="scan'208";a="244134517"
+ t=1642153049; x=1673689049;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=JLZ3xYPlszV1ocMKL2gYtNQaUs2eI9x+iA3gg/g3gbE=;
+ b=ODcPzJpsvNIpH0OAF/wT4TnbPCCiIaGtICWxL5LwQZR60a64ZQQ+bz5C
+ 8v70YN8cQ5zbUw34iptHHE+Y+xwuCMYJ9eW10U7DOWOa7HQbzIMU82uXJ
+ ciAg4cqdGPFNgyjQ8CziODFyYITe+ZgSi8aPN+fK3Xv1spmGDmIkYMzKQ
+ SHBrZlkcT8+AeUmi+9ZvrWgZJPGaJBVdno1EqKadfGjKmSHSh1scXpfx5
+ Q/5eXGoobpuJNvvBtsAk3DYVO0Bi6GafwbuuGW6ENuY44C8HMWr9XWsbY
+ wazPjvcTtmBEM3ErGOdlocaY430KGEKs6Ip/UkSzqKvytTl0kvWK+PkmH w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10226"; a="231565313"
+X-IronPort-AV: E=Sophos;i="5.88,288,1635231600"; d="scan'208";a="231565313"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2022 20:08:05 -0800
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2022 01:37:28 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,287,1635231600"; d="scan'208";a="516212220"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga007.jf.intel.com with ESMTP; 13 Jan 2022 20:08:05 -0800
-Received: from orsmsx604.amr.corp.intel.com (10.22.229.17) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Thu, 13 Jan 2022 20:08:04 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Thu, 13 Jan 2022 20:08:04 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Thu, 13 Jan 2022 20:08:04 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=agoj9s3KuJtNnl6AQyR3Jkjorcw/wVyw1ijb09KEpSMH9gWL464uxU2tpAxMammW4gbkX7zaDwmQVNm9S9pqq7WIN3Iu7y8lMJzc83FReKtbV2YF0j52kLPzdvcL2ZY4Mznxnw4xDw0EXjlWNS8utbjc1hnXHczG4OOQUVgc+2HRK61Cx1feagN8Kvg5u+xLvgBR2LWU/hYVShSR0Tr9smucToKp0HZWyQ76LX3ACpbKYkO1LfnOek6Qs7O1uMUAMoMHOTfsKQ+TDw+L4EueMiWedhrYg5145a2xJkAhmVlTvQGdvY/r/rDrwJtzJCPGL4VRLwiroviTkAie/uhd8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gx+3ULj5Q+hhfkfOfxLVhIypSHq8w+2uJR824CzOpmM=;
- b=GEeoPi9AYydQCoYrX9mux6IxZwygnXhXF38K5d6do7Z4gb/zIUmZsFETbIJBNDHptV0tVjmustugEu0TTcG0kGAJJO1iU5fhLEXwI2wvUk9fl+7nD1RwV9hAJO53IGGMwrLvjN5L+b5oQDSBKzTxjJCjJhEatgSkprck84EohhJTd5n/ccyB6IoqS58z170IP6NwL9ATDSnWzJdIJPf5C2QkP+Yk2j2wEloFKfxVq833hdDDKawXgXgy9PzUm1KEVit23SBRUgk8YHcaH4klisCh/nnxFyGoa6dhNiS8DT59US1yepERXRjK+9aNHgRqmXPJnq4jLTt62GPJvBG7SQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by BN7PR11MB2722.namprd11.prod.outlook.com (2603:10b6:406:b8::30)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.11; Fri, 14 Jan
- 2022 04:08:02 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::3162:31b:8e9c:173b]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::3162:31b:8e9c:173b%4]) with mapi id 15.20.4888.011; Fri, 14 Jan 2022
- 04:08:02 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Jakub
- Kicinski" <kuba@kernel.org>
-Thread-Topic: [PATCH] i40e: Remove useless DMA-32 fallback configuration
-Thread-Index: AQHYCPxSNQKagERYUEe91lZJIIAT8A==
-Date: Fri, 14 Jan 2022 04:08:02 +0000
-Message-ID: <BYAPR11MB3367C34AB2311D81468B457DFC549@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <869bbf806431086683c64ad32594ff96e85b6aa2.1641749374.git.christophe.jaillet@wanadoo.fr>
-In-Reply-To: <869bbf806431086683c64ad32594ff96e85b6aa2.1641749374.git.christophe.jaillet@wanadoo.fr>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-reaction: no-action
-dlp-version: 11.6.200.16
-dlp-product: dlpe-windows
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 947f87af-ad8f-42f4-86ce-08d9d7137558
-x-ms-traffictypediagnostic: BN7PR11MB2722:EE_
-x-microsoft-antispam-prvs: <BN7PR11MB2722D28389DC67A4064957ABFC549@BN7PR11MB2722.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5236;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: zuxTuQIjK+sjYUssVDY9Jyu3CouoGopLWPoLkfCkFshWBUDlQzFrpgmOBdPWuOXRfOTJhW8pffh/VeEpondtOjEtuLIGGgOY4nMn7DuGe7qXjHZJngz6EetQaCrobypbm35CjgJ7OOu5fnoMe+yIOqnQ/dxT4HtzG+IFPPVThw69Vm7inSJo/bcikG+AqnodMJagh5s9deOfslsTK2h7y8ao0y4nkiBPPWPg5MCHsXqSmI0MukpxUbmSTRw5MQNIpmg3AIcM3aYTPujSmCUKUnDwVrH8NhmNgwiYHFkIKllErVDNvV+1AgeDUGzZs3EepOJyu7DbiKKycdPk0YLJ5NTd/8NZOdwa+oAwos4i1AU85UmCC7gu3tdu8gObIy673L/ZvnPzes/bo8WTYw9eihl5Ik5z9Ju+SaUQujyTpMd0+65ivCOSKxdNi768x6M+QEgQKgAeIyWbMoTwXqzotB55EnSQvYmD6aoOV+FVLMs0ogkOdkv9vikpZbhnIQgtLzdEd7UjTlJzS3Mxl6ju4Jg1D2BzFxNDGChpwhgo4yXJLXSD+eDg2mXJZMtTneD2pmXHOCBU/JZQvM9gsZfyhZWUxo4fKSoqtwlVu9ti8zVI4bSQzfkHtx0LmmQsBvLJddUCy1O4uWowNO832HExZoZemeKx8H4BYMfiv1UKd8QavKLusU10XuWynB5HIOndKxDE8iQNonvwTb0PRAZPI3ZaDbDXqP+SlS/ZdJ4kHDUQhMScRYoiy3wd2cICWwy9nwIuI9g9vDoLF+nkH1Bw4jAf8TI1LGiljNLouFl9h7k=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(2906002)(38100700002)(316002)(9686003)(71200400001)(26005)(38070700005)(186003)(122000001)(54906003)(33656002)(52536014)(110136005)(66946007)(82960400001)(6506007)(76116006)(7696005)(966005)(5660300002)(83380400001)(508600001)(86362001)(66556008)(4326008)(4744005)(8936002)(53546011)(55236004)(64756008)(55016003)(66446008)(66476007)(8676002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?cavcF0hq6Ko490Sd53KGpNcMcMzJ/wBplL6ZEHCriP87JgefnKCLqu+DPfKa?=
- =?us-ascii?Q?wptBbUtxM+2T18n5MhQ6tWh69/ioOFyUIdouYy7E8w73wlCuojs0QGeqGSpZ?=
- =?us-ascii?Q?PrOzBIwPKreTJgD8WUz5gXMOLZnh1AgUaFDXnLQ1/C3oT9I2pt9zFURZBTbe?=
- =?us-ascii?Q?OXZp5kf5IlpGstwN35deKeAZzTjJO4bP4Ucjh4GSH84CqVU6xIHhVDANdN7h?=
- =?us-ascii?Q?PomZue3/TdN/JxiLfhYYK4ovayJR2atU4xZv3D1ynKgS4ZRumoPOM4lKbs2L?=
- =?us-ascii?Q?aGxARXCAaEqS6Jpx5Ns2pN58HtFn1LdLH2Q8icYA+7TqrvNSJf8+aA6dqgBY?=
- =?us-ascii?Q?ULOvo4GnDo6ydTEnEZQE3Ek/BhukSQ/G4iIo1hBdCO6eThDS5kcMmqR3Mzln?=
- =?us-ascii?Q?+/dYLa+j01vOWL4C4toGgwqZvVpXDN1coMb5/wiez7qt87jmgbcTL32i8TK8?=
- =?us-ascii?Q?xqpSq+Y1jsqncWs3sLhgsGZz7ayBnGnRzsX0seVfbg+uVluDyIqZxbAL5BgS?=
- =?us-ascii?Q?bxtA6XjIFBEaM6r0ETMNJyxzTGh89wcky2e51SOlLM3js/Xolifzy9oimE/0?=
- =?us-ascii?Q?uP60ryMgnEu1BVfGvb59gvDKTbop0MMCT/S4zUjHoExFVpeYVRbD7BKRMRay?=
- =?us-ascii?Q?6UhNdTpDYxCunIKoBVE3w45BDJIHyx4nVFD2UsqcGbMbDJDapFmLNb23MD+X?=
- =?us-ascii?Q?6aeTew8pJNvi3hCdhu4IsBwaXC/qD8eeMsDRu6m+TQhPyRoJF6uvu6NduaV0?=
- =?us-ascii?Q?KzSbQZ4nSpedT8lTfKhUYfhEM2sP7QO5cB3duJRIA1oFtib+hOteH9PNhYVs?=
- =?us-ascii?Q?Eamu/cXFtGCrYcHQby9UoKwN59/JuQEaR/RhLH0+5chzMlJnL5TrVPOYzWuc?=
- =?us-ascii?Q?n8wo5R99aCd7epVp2S5mmJqn5+Eh2BRW9IFnTeyB5kz3+a30dDCApVQPUOvB?=
- =?us-ascii?Q?+tvy8IfoD02uLd+SmDLNETHr4rVvNj/tPLg9A7/VbMV6MZ6U28ItvsZh/1by?=
- =?us-ascii?Q?0sBbIkUgvJrFIb3dkolFW5ssAL96Eyjs5f0pLzH/1GV+9A7/agvJRxbHokT9?=
- =?us-ascii?Q?6IPmNb2kPiuoHBCJyrk4Yq8Lfuk0M7kS7tAzRa0V+MFM3nAMqpjfkkMO9UJN?=
- =?us-ascii?Q?nb1hhqmwMyNjEPcfLSStFITtjPGvI7HEBQo3K+3TI7aquvVY6qYF3d1RE8gg?=
- =?us-ascii?Q?FZosou8HCZ3lw77xbth6KY0yzA0l0RGXDlE8HCjEaGHYtsgQrpbgfpXBcyrQ?=
- =?us-ascii?Q?R+F8Exy4uFG6HK5jozC/IsiJjgVh4fhPvXbRToKsn4ZWx75vvBzD5mixdbbe?=
- =?us-ascii?Q?6tX0gkrdMNsWSITP3OoF0/I67vNb7GyAGQU3VRVvWkto/fqQ0Z2+J3pcUvMo?=
- =?us-ascii?Q?fSIocMuCFUHk0rN+ibOCJzMH55cqrTOEp5GG64TJmQ7LaiLQt7cU7FjpErvO?=
- =?us-ascii?Q?qPvx488Bv3LTKhUyN4pJMttNInY3g3B0ie1Bjz4nRc6Fcft+UUKJBIKh5ciQ?=
- =?us-ascii?Q?PqsKUzIAyN3MWIaj2+KE3PgtYM09eIPMGVLlJpi4iG1eLV/QTIOPUfWRha0j?=
- =?us-ascii?Q?wJ3tnGHJECWarM4ZF9xTaZ9oy3DqS8HWfRpoQ0CQ2fXGuh2IC+b+lKhA4ROm?=
- =?us-ascii?Q?QQ=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.88,288,1635231600"; d="scan'208";a="516318771"
+Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.68])
+ by orsmga007.jf.intel.com with ESMTP; 14 Jan 2022 01:37:27 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 14 Jan 2022 10:36:36 +0100
+Message-Id: <20220114093636.20848-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 947f87af-ad8f-42f4-86ce-08d9d7137558
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jan 2022 04:08:02.1941 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zu6t8uPODj5+Tj0W4xX8Egrr1257m0TxlNSx2GnRtOB7btdCdiDUyoAHDtdZYZFYqzEMqqCmU8RQ6BTqkUWQQA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2722
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: Remove useless DMA-32 fallback
- configuration
+Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: refactor processing of
+ VLAN V2 capability message
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,47 +75,248 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Christoph Hellwig <hch@lst.de>
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+In order to handle the capability exchange necessary for
+VIRTCHNL_VF_OFFLOAD_VLAN_V2, the driver must send
+a VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS message. This must occur prior to
+__IAVF_CONFIG_ADAPTER, and the driver must wait for the response from
+the PF.
 
+To handle this, the __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS state was
+introduced. This state is intended to process the response from the VLAN
+V2 caps message. This works ok, but is difficult to extend to adding
+more extended capability exchange.
 
-> -----Original Message-----
-> From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Sent: Sunday, January 9, 2022 11:00 PM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
-> Jakub Kicinski <kuba@kernel.org>
-> Cc: linux-kernel@vger.kernel.org; kernel-janitors@vger.kernel.org;
-> Christophe JAILLET <christophe.jaillet@wanadoo.fr>; Christoph Hellwig
-> <hch@lst.de>; Lobakin, Alexandr <alexandr.lobakin@intel.com>; intel-wired-
-> lan@lists.osuosl.org; netdev@vger.kernel.org
-> Subject: [PATCH] i40e: Remove useless DMA-32 fallback configuration
-> 
-> As stated in [1], dma_set_mask() with a 64-bit mask never fails if
-> dev->dma_mask is non-NULL.
-> So, if it fails, the 32 bits case will also fail for the same reason.
-> 
-> Simplify code and remove some dead code accordingly.
-> 
-> [1]: https://lkml.org/lkml/2021/6/7/398
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> Reviewed-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
-> 
+Existing (and future) AVF features are relying more and more on these
+sort of extended ops for processing additional capabilities. Just like
+VLAN V2, this exchange must happen prior to __IAVF_CONFIG_ADPATER.
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Since we only send one outstanding AQ message at a time during init, it
+is not clear where to place this state. Adding more capability specific
+states becomes a mess. Instead of having the "previous" state send
+a message and then transition into a capability-specific state,
+introduce __IAVF_EXTENDED_CAPS state. This state will use a list of
+extended_caps that determines what messages to send and receive. As long
+as there are extended_caps bits still set, the driver will remain in
+this state performing one send or one receive per state machine loop.
+
+Refactor the VLAN V2 negotiation to use this new state, and remove the
+capability-specific state. This makes it significantly easier to add
+a new similar capability exchange going forward.
+
+Extended capabilities are processed by having an associated SEND and
+RECV extended capability bit. During __IAVF_EXTENDED_CAPS, the
+driver checks these bits in order by feature, first the send bit for
+a feature, then the recv bit for a feature. Each send flag will call
+a function that sends the necessary response, while each receive flag
+will wait for the response from the PF. If a given feature can't be
+negotiated with the PF, the associated flags will be cleared in
+order to skip processing of that feature.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h      |  17 ++-
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 109 ++++++++++++++------
+ 2 files changed, 95 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 59806d1..16cd06f 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -188,7 +188,7 @@ enum iavf_state_t {
+ 	__IAVF_REMOVE,		/* driver is being unloaded */
+ 	__IAVF_INIT_VERSION_CHECK,	/* aq msg sent, awaiting reply */
+ 	__IAVF_INIT_GET_RESOURCES,	/* aq msg sent, awaiting reply */
+-	__IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS,
++	__IAVF_INIT_EXTENDED_CAPS,	/* process extended caps which require aq msg exchange */
+ 	__IAVF_INIT_CONFIG_ADAPTER,
+ 	__IAVF_INIT_SW,		/* got resources, setting up structs */
+ 	__IAVF_INIT_FAILED,	/* init failed, restarting procedure */
+@@ -329,6 +329,21 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_ENABLE_STAG_VLAN_INSERTION		BIT_ULL(37)
+ #define IAVF_FLAG_AQ_DISABLE_STAG_VLAN_INSERTION	BIT_ULL(38)
+ 
++	/* flags for processing extended capability messages during
++	 * __IAVF_INIT_EXTENDED_CAPS. Each capability exchange requires
++	 * both a SEND and a RECV step, which must be processed in sequence.
++	 *
++	 * During the __IAVF_INIT_EXTENDED_CAPS state, the driver will
++	 * process one flag at a time during each state loop.
++	 */
++	u64 extended_caps;
++#define IAVF_EXTENDED_CAP_SEND_VLAN_V2			BIT_ULL(0)
++#define IAVF_EXTENDED_CAP_RECV_VLAN_V2			BIT_ULL(1)
++
++#define IAVF_EXTENDED_CAPS				\
++	(IAVF_EXTENDED_CAP_SEND_VLAN_V2 |		\
++	 IAVF_EXTENDED_CAP_RECV_VLAN_V2)
++
+ 	/* OS defined structs */
+ 	struct net_device *netdev;
+ 	struct pci_dev *pdev;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 7802f8f..ec4f85a 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -2187,26 +2187,17 @@ static void iavf_init_get_resources(struct iavf_adapter *adapter)
+ 	}
+ 
+ 	err = iavf_parse_vf_resource_msg(adapter);
+-	if (err)
+-		goto err_alloc;
+-
+-	err = iavf_send_vf_offload_vlan_v2_msg(adapter);
+-	if (err == -EOPNOTSUPP) {
+-		/* underlying PF doesn't support VIRTCHNL_VF_OFFLOAD_VLAN_V2, so
+-		 * go directly to finishing initialization
+-		 */
+-		iavf_change_state(adapter, __IAVF_INIT_CONFIG_ADAPTER);
+-		return;
+-	} else if (err) {
+-		dev_err(&pdev->dev, "Unable to send offload vlan v2 request (%d)\n",
+-			err);
++	if (err) {
++		dev_err(&pdev->dev, "Failed to parse VF resource message from PF (%d)\n", err);
+ 		goto err_alloc;
+ 	}
+-
+-	/* underlying PF supports VIRTCHNL_VF_OFFLOAD_VLAN_V2, so update the
+-	 * state accordingly
++	/* Some features require additional messages to negotiate extended
++	 * capabilities. These are processed in sequence by the
++	 * __IAVF_INIT_EXTENDED_CAPS driver state.
+ 	 */
+-	iavf_change_state(adapter, __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS);
++	adapter->extended_caps = IAVF_EXTENDED_CAPS;
++
++	iavf_change_state(adapter, __IAVF_INIT_EXTENDED_CAPS);
+ 	return;
+ 
+ err_alloc:
+@@ -2217,34 +2208,92 @@ static void iavf_init_get_resources(struct iavf_adapter *adapter)
+ }
+ 
+ /**
+- * iavf_init_get_offload_vlan_v2_caps - part of driver startup
++ * iavf_init_send_offload_vlan_v2_caps - part of initializing VLAN V2 caps
+  * @adapter: board private structure
+  *
+- * Function processes __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS driver state if the
+- * VF negotiates VIRTCHNL_VF_OFFLOAD_VLAN_V2. If VIRTCHNL_VF_OFFLOAD_VLAN_V2 is
+- * not negotiated, then this state will never be entered.
++ * Function processes send of the extended VLAN V2 capability message to the
++ * PF. Must clear IAVF_EXTENDED_CAP_RECV_VLAN_V2 if the message is not sent,
++ * e.g. due to PF not negotiating VIRTCHNL_VF_OFFLOAD_VLAN_V2.
++ */
++static void iavf_init_send_offload_vlan_v2_caps(struct iavf_adapter *adapter)
++{
++	int ret;
++
++	WARN_ON(!(adapter->extended_caps & IAVF_EXTENDED_CAP_SEND_VLAN_V2));
++
++	ret = iavf_send_vf_offload_vlan_v2_msg(adapter);
++	if (ret && ret == -EOPNOTSUPP) {
++		/* PF does not support VIRTCHNL_VF_OFFLOAD_V2. In this case,
++		 * we did not send the capability exchange message and do not
++		 * expect a response.
++		 */
++		adapter->extended_caps &= ~IAVF_EXTENDED_CAP_RECV_VLAN_V2;
++	}
++
++	/* We sent the message, so move on to the next step */
++	adapter->extended_caps &= ~IAVF_EXTENDED_CAP_SEND_VLAN_V2;
++}
++
++/**
++ * iavf_init_recv_offload_vlan_v2_caps - part of initializing VLAN V2 caps
++ * @adapter: board private structure
++ *
++ * Function processes receipt of the extended VLAN V2 capability message from
++ * the PF.
+  **/
+-static void iavf_init_get_offload_vlan_v2_caps(struct iavf_adapter *adapter)
++static void iavf_init_recv_offload_vlan_v2_caps(struct iavf_adapter *adapter)
+ {
+ 	int ret;
+ 
+-	WARN_ON(adapter->state != __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS);
++	WARN_ON(!(adapter->extended_caps & IAVF_EXTENDED_CAP_RECV_VLAN_V2));
+ 
+ 	memset(&adapter->vlan_v2_caps, 0, sizeof(adapter->vlan_v2_caps));
+ 
+ 	ret = iavf_get_vf_vlan_v2_caps(adapter);
+-	if (ret) {
+-		if (ret == IAVF_ERR_ADMIN_QUEUE_NO_WORK)
+-			iavf_send_vf_offload_vlan_v2_msg(adapter);
++	if (ret)
+ 		goto err;
+-	}
+ 
+-	iavf_change_state(adapter, __IAVF_INIT_CONFIG_ADAPTER);
++	/* We've processed receipt of the VLAN V2 caps message */
++	adapter->extended_caps &= ~IAVF_EXTENDED_CAP_RECV_VLAN_V2;
+ 	return;
+ err:
++	/* We didn't receive a reply. Make sure we try sending again when
++	 * __IAVF_INIT_FAILED attempts to recover.
++	 */
++	adapter->extended_caps |= IAVF_EXTENDED_CAP_SEND_VLAN_V2;
+ 	iavf_change_state(adapter, __IAVF_INIT_FAILED);
+ }
+ 
++/**
++ * iavf_init_process_extended_caps - Part of driver startup
++ * @adapter: board private structure
++ *
++ * Function processes __IAVF_INIT_EXTENDED_CAPS driver state. This state
++ * handles negotiating capabilities for features which require an additional
++ * message.
++ *
++ * Once all extended capabilities exchanges are finished, the driver will
++ * transition into __IAVF_INIT_CONFIG_ADAPTER.
++ */
++static void iavf_init_process_extended_caps(struct iavf_adapter *adapter)
++{
++	WARN_ON(adapter->state != __IAVF_INIT_EXTENDED_CAPS);
++
++	/* Process capability exchange for VLAN V2 */
++	if (adapter->extended_caps & IAVF_EXTENDED_CAP_SEND_VLAN_V2) {
++		iavf_init_send_offload_vlan_v2_caps(adapter);
++		return;
++	} else if (adapter->extended_caps & IAVF_EXTENDED_CAP_RECV_VLAN_V2) {
++		iavf_init_recv_offload_vlan_v2_caps(adapter);
++		return;
++	}
++
++	/* When we reach here, no further extended capabilities exchanges are
++	 * necessary, so we finally transition into __IAVF_INIT_CONFIG_ADAPTER
++	 */
++	iavf_change_state(adapter, __IAVF_INIT_CONFIG_ADAPTER);
++}
++
+ /**
+  * iavf_init_config_adapter - last part of driver startup
+  * @adapter: board private structure
+@@ -2404,8 +2453,8 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
+ 				   msecs_to_jiffies(1));
+ 		return;
+-	case __IAVF_INIT_GET_OFFLOAD_VLAN_V2_CAPS:
+-		iavf_init_get_offload_vlan_v2_caps(adapter);
++	case __IAVF_INIT_EXTENDED_CAPS:
++		iavf_init_process_extended_caps(adapter);
+ 		mutex_unlock(&adapter->crit_lock);
+ 		queue_delayed_work(iavf_wq, &adapter->watchdog_task,
+ 				   msecs_to_jiffies(1));
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
