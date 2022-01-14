@@ -1,77 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40F9548F09C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 20:45:35 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22B3448F09F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jan 2022 20:45:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D598D40474;
-	Fri, 14 Jan 2022 19:45:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9196960F1B;
+	Fri, 14 Jan 2022 19:45:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7I5LBxhOru-0; Fri, 14 Jan 2022 19:45:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tZJSGQaWzYO3; Fri, 14 Jan 2022 19:45:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D508540874;
-	Fri, 14 Jan 2022 19:45:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 96C4060AC2;
+	Fri, 14 Jan 2022 19:45:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DC9BB1BF363
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FABC1BF363
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C881D4011C
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F0AF94087D
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ACYmi0tJtlTa for <intel-wired-lan@osuosl.org>;
- Fri, 14 Jan 2022 19:45:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id paWNHnCha8Xb for <intel-wired-lan@osuosl.org>;
+ Fri, 14 Jan 2022 19:45:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DB79940118
- for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:27 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 202124033B
+ for <intel-wired-lan@osuosl.org>; Fri, 14 Jan 2022 19:45:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642189526;
+ s=mimecast20190719; t=1642189527;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=q/t1Dg35LoOVsZDej/t+QtbWBTndc5BPT8YHSfXCqTA=;
- b=PnhrRjn/nH8UpYvoWApM/jGEfzolSkypEL7UE+CXv3GCsxiSKpxb4gpe/4AtLup8yet4u1
- seiXHherQbQQXVilnxbsw3pFxtWpk1fsqvWbAI8f3DMqpx1pTMP/G8lOETwFJV3biWI8TL
- fANkcroFn1GMmFoCnohOG50aG+IQkKk=
+ bh=cv6sltPUkJtlMZoFEjr9r3hY/JFy9Ol9gLxXn9Aa8qw=;
+ b=b5YGB6mWaVfpKoNT0g1KOuG57Ozvo1xx0ArAbVfejOL7XS7HAwpznnkwCIe4Dl1/lxwBrQ
+ UsMBUM0nYGiXybhYV11fcze40qvPCBjTn1BXOHObxLSf5zbIqrj6MnehkCtjsO8vIcwiCI
+ pv3wiSsTbTt+wtcvCMIvxXL39LRbArE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-488-JN6-rdNtPhmd6947A6wJbQ-1; Fri, 14 Jan 2022 14:45:23 -0500
-X-MC-Unique: JN6-rdNtPhmd6947A6wJbQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-9-f6MhAsJVOS2CFhD8RS4fBg-1; Fri, 14 Jan 2022 14:45:23 -0500
+X-MC-Unique: f6MhAsJVOS2CFhD8RS4fBg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B9BF83DEA7;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3723F92500;
  Fri, 14 Jan 2022 19:45:22 +0000 (UTC)
 Received: from calimero.vinschen.de (ovpn-112-14.ams2.redhat.com
  [10.36.112.14])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 03C1C5DB81;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 03E8460FDD;
  Fri, 14 Jan 2022 19:45:22 +0000 (UTC)
 Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 89EF3A81052; Fri, 14 Jan 2022 20:45:20 +0100 (CET)
+ id 8ED5AA81472; Fri, 14 Jan 2022 20:45:20 +0100 (CET)
 From: Corinna Vinschen <vinschen@redhat.com>
 To: intel-wired-lan@osuosl.org, netdev@vger.kernel.org,
  Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Date: Fri, 14 Jan 2022 20:45:19 +0100
-Message-Id: <20220114194520.1092894-2-vinschen@redhat.com>
+Date: Fri, 14 Jan 2022 20:45:20 +0100
+Message-Id: <20220114194520.1092894-3-vinschen@redhat.com>
 In-Reply-To: <20220114194520.1092894-1-vinschen@redhat.com>
 References: <20220114194520.1092894-1-vinschen@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Subject: [Intel-wired-lan] [PATCH 1/2 net-next v4] igc: avoid kernel warning
- when changing RX ring parameters
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Subject: [Intel-wired-lan] [PATCH 2/2 net-next v4] igb: refactor XDP
+ registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,95 +89,66 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Calling ethtool changing the RX ring parameters like this:
+On changing the RX ring parameters igb uses a hack to avoid a warning
+when calling xdp_rxq_info_reg via igb_setup_rx_resources.  It just
+clears the struct xdp_rxq_info content.
 
-  $ ethtool -G eth0 rx 1024
+Change this to unregister if we're already registered instead.  Align
+code to the igc code.
 
-on igc triggers kernel warnings like this:
-
-[  225.198467] ------------[ cut here ]------------
-[  225.198473] Missing unregister, handled but fix driver
-[  225.198485] WARNING: CPU: 7 PID: 959 at net/core/xdp.c:168
-xdp_rxq_info_reg+0x79/0xd0
-[...]
-[  225.198601] Call Trace:
-[  225.198604]  <TASK>
-[  225.198609]  igc_setup_rx_resources+0x3f/0xe0 [igc]
-[  225.198617]  igc_ethtool_set_ringparam+0x30e/0x450 [igc]
-[  225.198626]  ethnl_set_rings+0x18a/0x250
-[  225.198631]  genl_family_rcv_msg_doit+0xca/0x110
-[  225.198637]  genl_rcv_msg+0xce/0x1c0
-[  225.198640]  ? rings_prepare_data+0x60/0x60
-[  225.198644]  ? genl_get_cmd+0xd0/0xd0
-[  225.198647]  netlink_rcv_skb+0x4e/0xf0
-[  225.198652]  genl_rcv+0x24/0x40
-[  225.198655]  netlink_unicast+0x20e/0x330
-[  225.198659]  netlink_sendmsg+0x23f/0x480
-[  225.198663]  sock_sendmsg+0x5b/0x60
-[  225.198667]  __sys_sendto+0xf0/0x160
-[  225.198671]  ? handle_mm_fault+0xb2/0x280
-[  225.198676]  ? do_user_addr_fault+0x1eb/0x690
-[  225.198680]  __x64_sys_sendto+0x20/0x30
-[  225.198683]  do_syscall_64+0x38/0x90
-[  225.198687]  entry_SYSCALL_64_after_hwframe+0x44/0xae
-[  225.198693] RIP: 0033:0x7f7ae38ac3aa
-
-igc_ethtool_set_ringparam() copies the igc_ring structure but neglects to
-reset the xdp_rxq_info member before calling igc_setup_rx_resources().
-This in turn calls xdp_rxq_info_reg() with an already registered xdp_rxq_info.
-
-Make sure to unregister the xdp_rxq_info structure first in
-igc_setup_rx_resources.  Move xdp_rxq_info handling down to be the last
-action, thus allowing to remove the xdp_rxq_info_unreg call in the error path.
-
-Fixes: 73f1071c1d29 ("igc: Add support for XDP_TX action")
-Reported-by: Lennert Buytenhek <buytenh@arista.com>
+Fixes: 9cbc948b5a20c ("igb: add XDP support")
 Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/igb/igb_ethtool.c |  4 ----
+ drivers/net/ethernet/intel/igb/igb_main.c    | 12 +++++++++---
+ 2 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 2f17f36e94fd..56ed0f1463e5 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -505,14 +505,6 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
- 	u8 index = rx_ring->queue_index;
- 	int size, desc_len, res;
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 51a2dcaf553d..2a5782063f4c 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -965,10 +965,6 @@ static int igb_set_ringparam(struct net_device *netdev,
+ 			memcpy(&temp_ring[i], adapter->rx_ring[i],
+ 			       sizeof(struct igb_ring));
  
--	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, index,
--			       rx_ring->q_vector->napi.napi_id);
--	if (res < 0) {
--		netdev_err(ndev, "Failed to register xdp_rxq index %u\n",
--			   index);
--		return res;
--	}
+-			/* Clear copied XDP RX-queue info */
+-			memset(&temp_ring[i].xdp_rxq, 0,
+-			       sizeof(temp_ring[i].xdp_rxq));
 -
- 	size = sizeof(struct igc_rx_buffer) * rx_ring->count;
- 	rx_ring->rx_buffer_info = vzalloc(size);
- 	if (!rx_ring->rx_buffer_info)
-@@ -534,10 +526,20 @@ int igc_setup_rx_resources(struct igc_ring *rx_ring)
- 	rx_ring->next_to_clean = 0;
- 	rx_ring->next_to_use = 0;
+ 			temp_ring[i].count = new_rx_count;
+ 			err = igb_setup_rx_resources(&temp_ring[i]);
+ 			if (err) {
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 38ba92022cd4..cea89d301bfd 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4352,7 +4352,7 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
+ {
+ 	struct igb_adapter *adapter = netdev_priv(rx_ring->netdev);
+ 	struct device *dev = rx_ring->dev;
+-	int size;
++	int size, res;
  
-+	/* XDP RX-queue info */
+ 	size = sizeof(struct igb_rx_buffer) * rx_ring->count;
+ 
+@@ -4376,9 +4376,15 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
+ 	rx_ring->xdp_prog = adapter->xdp_prog;
+ 
+ 	/* XDP RX-queue info */
+-	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
+-			     rx_ring->queue_index, 0) < 0)
 +	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
 +		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
-+	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, ndev, index,
-+			       rx_ring->q_vector->napi.napi_id);
++	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
++			       rx_ring->queue_index, 0);
 +	if (res < 0) {
-+		netdev_err(ndev, "Failed to register xdp_rxq index %u\n",
-+			   index);
-+		goto err;
++		dev_err(dev, "Failed to register xdp_rxq index %u\n",
++			rx_ring->queue_index);
+ 		goto err;
 +	}
-+
+ 
  	return 0;
  
- err:
--	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
- 	vfree(rx_ring->rx_buffer_info);
- 	rx_ring->rx_buffer_info = NULL;
- 	netdev_err(ndev, "Unable to allocate memory for Rx descriptor ring\n");
 -- 
 2.27.0
 
