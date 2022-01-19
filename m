@@ -1,71 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EF2E493D09
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jan 2022 16:23:44 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF6FE494083
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jan 2022 20:14:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9A340828EF;
-	Wed, 19 Jan 2022 15:23:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2D2BC415AB;
+	Wed, 19 Jan 2022 19:14:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yz39W6H8fnNR; Wed, 19 Jan 2022 15:23:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pwizPlFqrXnA; Wed, 19 Jan 2022 19:14:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5E7D482864;
-	Wed, 19 Jan 2022 15:23:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E097041579;
+	Wed, 19 Jan 2022 19:14:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3C3671BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C529C1BF955
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 19:14:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3745182864
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AE9F641579
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 19:14:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MzoXNgJ4rcah for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Jan 2022 15:23:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 609Cb_VdGYXK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Jan 2022 19:14:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 50FC6827E0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:36 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B947E41578
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 19:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642605816; x=1674141816;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+2mw8jU8az3Hit3Up7V95AFFN4R81wOpC8jod9UaCxU=;
- b=M1Reymr1KNVVYdyRoEwCQ6JbQS10zZygGILfT51AEiirKt1n0y/Qq0r6
- kYm2n8mkFufn4w14KWng4f7Y2dja4gbeFmy2/c28qs/5CihC4HRvROh3E
- AyDCgIxRlaDaVm0VphGS8PuS5B+fTjfgVS1XgEBWKdDwxPKIUkwuJsfMf
- TItg1/Xz3zNMgOUjUaUQk9GLzQhiIhfdDfD5VurSiCRfnC8zRpgY1p7k5
- LE2mGDz3bUU132ixeDvDYhgXTQMgPXme8mxk8n7fBaVD2uAf0YDg3Uo6p
- 5KHC5O/if3Q/X41jzFhUCJpGw1e6XZ6zS+S5uijPICK4UcTVR7EH77pOr w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="305819949"
-X-IronPort-AV: E=Sophos;i="5.88,299,1635231600"; d="scan'208";a="305819949"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2022 07:23:14 -0800
+ t=1642619654; x=1674155654;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=iFLtLR6XTEUZxzepKTdy/w2RU3Qdrg8zG5ztZHl0rE4=;
+ b=JdEBY7XOcy5vQ4ThlT+zKYavKDhIIpUowzdmt/isecxM9pYZIOXN5X/m
+ TGaKEUiB4QxetTHpMQFmOkMc4MrDtK40OZZay1Qm1OxHaCTJnoB5MC0ZH
+ 0jEH6pElvBezqWfRlulDnKMsQ6Er9LYgIfnAUSNRqiRIVRQ75Uyja3iKW
+ CyfbpQSqWofAnYh/AI1B+feBywxsMbjUE9tWwed37SfA1t5fsJKai8q3H
+ 7BbhF5ghz780y58Jrm6Lxy0uccWNmJQ7HoBwE0PN7wlSjXu3TyXoSCRkD
+ pMxGwAHgh8ZKtoiSqakrniwhvYhemTBBlFooEZsWEKrd1N6yXpJBqfNX8 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="243983519"
+X-IronPort-AV: E=Sophos;i="5.88,300,1635231600"; d="scan'208";a="243983519"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2022 10:35:08 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,299,1635231600"; d="scan'208";a="578843574"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga008.fm.intel.com with ESMTP; 19 Jan 2022 07:23:12 -0800
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 20JFNB0H019131; Wed, 19 Jan 2022 15:23:11 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Date: Wed, 19 Jan 2022 16:21:39 +0100
-Message-Id: <20220119152139.20746-1-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220119101521.1212-1-mateusz.palczewski@intel.com>
-References: <20220119101521.1212-1-mateusz.palczewski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.88,300,1635231600"; d="scan'208";a="477479947"
+Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
+ by orsmga006.jf.intel.com with ESMTP; 19 Jan 2022 10:35:06 -0800
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 19 Jan 2022 19:23:25 +0100
+Message-Id: <20220119182325.32133-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] iavf: Add usage of new
- virtchnl format to set default MAC
+Subject: [Intel-wired-lan] [PATCH net-next] iavf: Add reset to watchdog task
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,118 +71,272 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Jakub Pawlak <jakub.pawlak@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Date: Wed, 19 Jan 2022 11:15:21 +0100
+Remove the reset as separate task and implement
+the reset procedure inside the watchdog state machine.
+This allows to avoid additional overhead for processes
+synchronization. The reset flags are still used to mark
+reset progress for asynchonous invoked callback functions.
 
-> Use new type field of VIRTCHNL_OP_ADD_ETH_ADDR and
-> VIRTCHNL_OP_DEL_ETH_ADDR requests to indicate that
-> VF wants to change its default MAC address.
-> 
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Signed-off-by: Jakub Pawlak <jakub.pawlak@intel.com>
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h        |  1 -
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 12 ++--
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 71 ++++++-------------
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  4 +-
+ 4 files changed, 29 insertions(+), 59 deletions(-)
 
-Reviwed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 16cd06f..a746f44 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -237,7 +237,6 @@ struct iavf_cloud_filter {
+ 
+ /* board specific private data structure */
+ struct iavf_adapter {
+-	struct work_struct reset_task;
+ 	struct work_struct adminq_task;
+ 	struct delayed_work client_task;
+ 	wait_queue_head_t down_waitqueue;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 3bb5671..e55c532 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -530,10 +530,8 @@ static int iavf_set_priv_flags(struct net_device *netdev, u32 flags)
+ 
+ 	/* issue a reset to force legacy-rx change to take effect */
+ 	if (changed_flags & IAVF_FLAG_LEGACY_RX) {
+-		if (netif_running(netdev)) {
+-			adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+-			queue_work(iavf_wq, &adapter->reset_task);
+-		}
++		if (netif_running(netdev))
++			iavf_schedule_reset(adapter);
+ 	}
+ 
+ 	return 0;
+@@ -670,10 +668,8 @@ static int iavf_set_ringparam(struct net_device *netdev,
+ 		adapter->rx_desc_count = new_rx_count;
+ 	}
+ 
+-	if (netif_running(netdev)) {
+-		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+-		queue_work(iavf_wq, &adapter->reset_task);
+-	}
++	if (netif_running(netdev))
++		iavf_schedule_reset(adapter);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index ec4f85a..5f658d2 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -16,6 +16,7 @@ static int iavf_setup_all_rx_resources(struct iavf_adapter *adapter);
+ static int iavf_close(struct net_device *netdev);
+ static void iavf_init_get_resources(struct iavf_adapter *adapter);
+ static int iavf_check_reset_complete(struct iavf_hw *hw);
++static void iavf_handle_hw_reset(struct iavf_adapter *adapter);
+ 
+ char iavf_driver_name[] = "iavf";
+ static const char iavf_driver_string[] =
+@@ -167,11 +168,8 @@ int iavf_lock_timeout(struct mutex *lock, unsigned int msecs)
+  **/
+ void iavf_schedule_reset(struct iavf_adapter *adapter)
+ {
+-	if (!(adapter->flags &
+-	      (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED))) {
+-		adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+-		queue_work(iavf_wq, &adapter->reset_task);
+-	}
++	adapter->flags |= IAVF_FLAG_RESET_NEEDED;
++	mod_delayed_work(iavf_wq, &adapter->watchdog_task, 0);
+ }
+ 
+ /**
+@@ -2504,8 +2502,11 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 				   msecs_to_jiffies(10));
+ 		return;
+ 	case __IAVF_RESETTING:
++		iavf_handle_hw_reset(adapter);
+ 		mutex_unlock(&adapter->crit_lock);
+-		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ * 2);
++		queue_delayed_work(iavf_wq,
++				   &adapter->watchdog_task,
++				   msecs_to_jiffies(2));
+ 		return;
+ 	case __IAVF_DOWN:
+ 	case __IAVF_DOWN_PENDING:
+@@ -2540,14 +2541,12 @@ static void iavf_watchdog_task(struct work_struct *work)
+ 	/* check for hw reset */
+ 	reg_val = rd32(hw, IAVF_VF_ARQLEN1) & IAVF_VF_ARQLEN1_ARQENABLE_MASK;
+ 	if (!reg_val) {
+-		adapter->flags |= IAVF_FLAG_RESET_PENDING;
++		iavf_schedule_reset(adapter);
+ 		adapter->aq_required = 0;
+ 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
+ 		dev_err(&adapter->pdev->dev, "Hardware reset detected\n");
+-		queue_work(iavf_wq, &adapter->reset_task);
+ 		mutex_unlock(&adapter->crit_lock);
+-		queue_delayed_work(iavf_wq,
+-				   &adapter->watchdog_task, HZ * 2);
++		queue_work(iavf_wq, &adapter->watchdog_task.work);
+ 		return;
+ 	}
+ 
+@@ -2624,18 +2623,15 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
+ }
+ 
+ /**
+- * iavf_reset_task - Call-back task to handle hardware reset
+- * @work: pointer to work_struct
++ * iavf_handle_hw_reset - Handle hardware reset
++ * @adapter: pointer to iavf_adapter
+  *
+  * During reset we need to shut down and reinitialize the admin queue
+  * before we can use it to communicate with the PF again. We also clear
+  * and reinit the rings because that context is lost as well.
+  **/
+-static void iavf_reset_task(struct work_struct *work)
++static void iavf_handle_hw_reset(struct iavf_adapter *adapter)
+ {
+-	struct iavf_adapter *adapter = container_of(work,
+-						      struct iavf_adapter,
+-						      reset_task);
+ 	struct virtchnl_vf_resource *vfres = adapter->vf_res;
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct iavf_hw *hw = &adapter->hw;
+@@ -2645,18 +2641,9 @@ static void iavf_reset_task(struct work_struct *work)
+ 	int i = 0, err;
+ 	bool running;
+ 
+-	/* When device is being removed it doesn't make sense to run the reset
+-	 * task, just return in such a case.
+-	 */
+-	if (mutex_is_locked(&adapter->remove_lock))
+-		return;
++	adapter->flags |= IAVF_FLAG_RESET_PENDING;
++	adapter->flags &= ~IAVF_FLAG_RESET_NEEDED;
+ 
+-	if (iavf_lock_timeout(&adapter->crit_lock, 200)) {
+-		schedule_work(&adapter->reset_task);
+-		return;
+-	}
+-	while (!mutex_trylock(&adapter->client_lock))
+-		usleep_range(500, 1000);
+ 	if (CLIENT_ENABLED(adapter)) {
+ 		adapter->flags &= ~(IAVF_FLAG_CLIENT_NEEDS_OPEN |
+ 				    IAVF_FLAG_CLIENT_NEEDS_CLOSE |
+@@ -2665,17 +2652,14 @@ static void iavf_reset_task(struct work_struct *work)
+ 		cancel_delayed_work_sync(&adapter->client_task);
+ 		iavf_notify_client_close(&adapter->vsi, true);
+ 	}
++
++	/* Restart the AQ here. If we have been reset but didn't
++	 * detect it, or if the PF had to reinit, our AQ will be hosed.
++	 */
+ 	iavf_misc_irq_disable(adapter);
+-	if (adapter->flags & IAVF_FLAG_RESET_NEEDED) {
+-		adapter->flags &= ~IAVF_FLAG_RESET_NEEDED;
+-		/* Restart the AQ here. If we have been reset but didn't
+-		 * detect it, or if the PF had to reinit, our AQ will be hosed.
+-		 */
+-		iavf_shutdown_adminq(hw);
+-		iavf_init_adminq(hw);
+-		iavf_request_reset(adapter);
+-	}
+-	adapter->flags |= IAVF_FLAG_RESET_PENDING;
++	iavf_shutdown_adminq(hw);
++	iavf_init_adminq(hw);
++	iavf_request_reset(adapter);
+ 
+ 	/* poll until we see the reset actually happen */
+ 	for (i = 0; i < IAVF_RESET_WAIT_DETECTED_COUNT; i++) {
+@@ -2804,8 +2788,6 @@ static void iavf_reset_task(struct work_struct *work)
+ 	adapter->aq_required |= IAVF_FLAG_AQ_ADD_CLOUD_FILTER;
+ 	iavf_misc_irq_enable(adapter);
+ 
+-	mod_delayed_work(iavf_wq, &adapter->watchdog_task, 2);
+-
+ 	/* We were running when the reset started, so we need to restore some
+ 	 * state here.
+ 	 */
+@@ -2841,12 +2823,9 @@ static void iavf_reset_task(struct work_struct *work)
+ 		wake_up(&adapter->down_waitqueue);
+ 	}
+ 	mutex_unlock(&adapter->client_lock);
+-	mutex_unlock(&adapter->crit_lock);
+-
+ 	return;
+ reset_err:
+ 	mutex_unlock(&adapter->client_lock);
+-	mutex_unlock(&adapter->crit_lock);
+ 	if (running) {
+ 		iavf_change_state(adapter, __IAVF_RUNNING);
+ 		netdev->flags |= IFF_UP;
+@@ -3900,8 +3879,7 @@ static int iavf_change_mtu(struct net_device *netdev, int new_mtu)
+ 		iavf_notify_client_l2_params(&adapter->vsi);
+ 		adapter->flags |= IAVF_FLAG_SERVICE_CLIENT_REQUESTED;
+ 	}
+-	adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+-	queue_work(iavf_wq, &adapter->reset_task);
++	iavf_schedule_reset(adapter);
+ 
+ 	return 0;
+ }
+@@ -4490,7 +4468,6 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	INIT_LIST_HEAD(&adapter->fdir_list_head);
+ 	INIT_LIST_HEAD(&adapter->adv_rss_list_head);
+ 
+-	INIT_WORK(&adapter->reset_task, iavf_reset_task);
+ 	INIT_WORK(&adapter->adminq_task, iavf_adminq_task);
+ 	INIT_DELAYED_WORK(&adapter->watchdog_task, iavf_watchdog_task);
+ 	INIT_DELAYED_WORK(&adapter->client_task, iavf_client_task);
+@@ -4572,8 +4549,7 @@ static int __maybe_unused iavf_resume(struct device *dev_d)
+ 		return err;
+ 	}
+ 
+-	queue_work(iavf_wq, &adapter->reset_task);
+-
++	iavf_schedule_reset(adapter);
+ 	netif_device_attach(adapter->netdev);
+ 
+ 	return err;
+@@ -4602,7 +4578,6 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	int err;
+ 	/* Indicate we are in remove and not to run reset_task */
+ 	mutex_lock(&adapter->remove_lock);
+-	cancel_work_sync(&adapter->reset_task);
+ 	cancel_delayed_work_sync(&adapter->watchdog_task);
+ 	cancel_delayed_work_sync(&adapter->client_task);
+ 	if (adapter->netdev_registered) {
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 5ee1d11..115c1b1 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1899,8 +1899,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			dev_info(&adapter->pdev->dev, "Reset indication received from the PF\n");
+ 			if (!(adapter->flags & IAVF_FLAG_RESET_PENDING)) {
+ 				adapter->flags |= IAVF_FLAG_RESET_PENDING;
+-				dev_info(&adapter->pdev->dev, "Scheduling reset task\n");
+-				queue_work(iavf_wq, &adapter->reset_task);
++				dev_info(&adapter->pdev->dev, "Scheduling reset\n");
++				iavf_schedule_reset(adapter);
+ 			}
+ 			break;
+ 		default:
+-- 
+2.32.0
 
-> ---
->  v2: Fixed function description to fit in 80 characters per line limit
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c     | 12 +++++++++---
->  drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 16 ++++++++++++++++
->  2 files changed, 25 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index ec4f85a..7fa29a8 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -876,6 +876,7 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
->  		list_add_tail(&f->list, &adapter->mac_filter_list);
->  		f->add = true;
->  		f->is_new_mac = true;
-> +		f->is_primary = false;
->  		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
->  	} else {
->  		f->remove = false;
-> @@ -909,17 +910,22 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
->  	f = iavf_find_filter(adapter, hw->mac.addr);
->  	if (f) {
->  		f->remove = true;
-> +		f->is_primary = true;
->  		adapter->aq_required |= IAVF_FLAG_AQ_DEL_MAC_FILTER;
->  	}
->  
->  	f = iavf_add_filter(adapter, addr->sa_data);
-> -
-> -	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-> -
->  	if (f) {
-> +		f->is_primary = true;
->  		ether_addr_copy(hw->mac.addr, addr->sa_data);
->  	}
->  
-> +	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-> +
-> +	/* schedule the watchdog task to immediately process the request */
-> +	if (f)
-> +		queue_work(iavf_wq, &adapter->watchdog_task.work);
-> +
->  	return (f == NULL) ? -ENOMEM : 0;
->  }
->  
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-> index 5ee1d11..8d53228 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-> @@ -453,6 +453,20 @@ void iavf_map_queues(struct iavf_adapter *adapter)
->  	kfree(vimi);
->  }
->  
-> +/**
-> + * iavf_set_mac_addr_type - Set the correct request type from the filter type
-> + * @virtchnl_ether_addr: pointer to requested list element
-> + * @filter: pointer to requested filter
-> + **/
-> +static void
-> +iavf_set_mac_addr_type(struct virtchnl_ether_addr *virtchnl_ether_addr,
-> +		       const struct iavf_mac_filter *filter)
-> +{
-> +	virtchnl_ether_addr->type = filter->is_primary ?
-> +		VIRTCHNL_ETHER_ADDR_PRIMARY :
-> +		VIRTCHNL_ETHER_ADDR_EXTRA;
-> +}
-> +
->  /**
->   * iavf_add_ether_addrs
->   * @adapter: adapter structure
-> @@ -508,6 +522,7 @@ void iavf_add_ether_addrs(struct iavf_adapter *adapter)
->  	list_for_each_entry(f, &adapter->mac_filter_list, list) {
->  		if (f->add) {
->  			ether_addr_copy(veal->list[i].addr, f->macaddr);
-> +			iavf_set_mac_addr_type(&veal->list[i], f);
->  			i++;
->  			f->add = false;
->  			if (i == count)
-> @@ -577,6 +592,7 @@ void iavf_del_ether_addrs(struct iavf_adapter *adapter)
->  	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
->  		if (f->remove) {
->  			ether_addr_copy(veal->list[i].addr, f->macaddr);
-> +			iavf_set_mac_addr_type(&veal->list[i], f);
->  			i++;
->  			list_del(&f->list);
->  			kfree(f);
-> -- 
-> 2.27.0
-
-Thanks!
-Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
