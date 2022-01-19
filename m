@@ -1,74 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B46AD493C3D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jan 2022 15:53:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EF2E493D09
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jan 2022 16:23:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3BB5D60F2C;
-	Wed, 19 Jan 2022 14:53:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A340828EF;
+	Wed, 19 Jan 2022 15:23:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cFFUlYP_nAYE; Wed, 19 Jan 2022 14:53:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Yz39W6H8fnNR; Wed, 19 Jan 2022 15:23:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21E5060F1F;
-	Wed, 19 Jan 2022 14:53:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7088B1BF39E
- for <intel-wired-lan@osuosl.org>; Wed, 19 Jan 2022 14:53:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5E7D482864;
+	Wed, 19 Jan 2022 15:23:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C3671BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5C46B60F00
- for <intel-wired-lan@osuosl.org>; Wed, 19 Jan 2022 14:53:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3745182864
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DLYwYMRjtmmm for <intel-wired-lan@osuosl.org>;
- Wed, 19 Jan 2022 14:53:05 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MzoXNgJ4rcah for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Jan 2022 15:23:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9998F60C29
- for <intel-wired-lan@osuosl.org>; Wed, 19 Jan 2022 14:53:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1642603984;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WYpFN6jD3NddkSrlHA/3O9g9jz5Y6MIz520Okk741Oo=;
- b=Gh5tUI7QaTZxXVO18UKTVJYQP5oyowZCrzezf9B9iRngTG90F1gqd+LqMvgB+Ob8NOUQo9
- 0c0nW9j1gII7uR695tDTDrq8/DmpbwfWNX4oJZnjkNMyiODVNM3psDpNa+m51zwVWRDFzY
- rvdNLWGe/eGwLk2YDExYpb3OnVy9KxA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-315-JmE8UmHUPUmUtLQLIdyb5Q-1; Wed, 19 Jan 2022 09:53:02 -0500
-X-MC-Unique: JmE8UmHUPUmUtLQLIdyb5Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3A72918B613D;
- Wed, 19 Jan 2022 14:53:01 +0000 (UTC)
-Received: from calimero.vinschen.de (ovpn-112-9.ams2.redhat.com [10.36.112.9])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C311084D1A;
- Wed, 19 Jan 2022 14:53:00 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 6713BA80D85; Wed, 19 Jan 2022 15:52:59 +0100 (CET)
-From: Corinna Vinschen <vinschen@redhat.com>
-To: intel-wired-lan@osuosl.org, netdev@vger.kernel.org,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Date: Wed, 19 Jan 2022 15:52:59 +0100
-Message-Id: <20220119145259.1790015-3-vinschen@redhat.com>
-In-Reply-To: <20220119145259.1790015-1-vinschen@redhat.com>
-References: <20220119145259.1790015-1-vinschen@redhat.com>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 50FC6827E0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jan 2022 15:23:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642605816; x=1674141816;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=+2mw8jU8az3Hit3Up7V95AFFN4R81wOpC8jod9UaCxU=;
+ b=M1Reymr1KNVVYdyRoEwCQ6JbQS10zZygGILfT51AEiirKt1n0y/Qq0r6
+ kYm2n8mkFufn4w14KWng4f7Y2dja4gbeFmy2/c28qs/5CihC4HRvROh3E
+ AyDCgIxRlaDaVm0VphGS8PuS5B+fTjfgVS1XgEBWKdDwxPKIUkwuJsfMf
+ TItg1/Xz3zNMgOUjUaUQk9GLzQhiIhfdDfD5VurSiCRfnC8zRpgY1p7k5
+ LE2mGDz3bUU132ixeDvDYhgXTQMgPXme8mxk8n7fBaVD2uAf0YDg3Uo6p
+ 5KHC5O/if3Q/X41jzFhUCJpGw1e6XZ6zS+S5uijPICK4UcTVR7EH77pOr w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="305819949"
+X-IronPort-AV: E=Sophos;i="5.88,299,1635231600"; d="scan'208";a="305819949"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2022 07:23:14 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,299,1635231600"; d="scan'208";a="578843574"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga008.fm.intel.com with ESMTP; 19 Jan 2022 07:23:12 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 20JFNB0H019131; Wed, 19 Jan 2022 15:23:11 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Date: Wed, 19 Jan 2022 16:21:39 +0100
+Message-Id: <20220119152139.20746-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220119101521.1212-1-mateusz.palczewski@intel.com>
+References: <20220119101521.1212-1-mateusz.palczewski@intel.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Subject: [Intel-wired-lan] [PATCH 2/2 net-next v6] igb: refactor XDP
- registration
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2] iavf: Add usage of new
+ virtchnl format to set default MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,83 +78,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan@lists.osuosl.org,
+ Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On changing the RX ring parameters igb uses a hack to avoid a warning
-when calling xdp_rxq_info_reg via igb_setup_rx_resources.  It just
-clears the struct xdp_rxq_info content.
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Date: Wed, 19 Jan 2022 11:15:21 +0100
 
-Instead, change this to unregister if we're already registered.  Align
-code to the igc code.
+> Use new type field of VIRTCHNL_OP_ADD_ETH_ADDR and
+> VIRTCHNL_OP_DEL_ETH_ADDR requests to indicate that
+> VF wants to change its default MAC address.
+> 
+> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 
-Fixes: 9cbc948b5a20c ("igb: add XDP support")
-Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
----
- drivers/net/ethernet/intel/igb/igb_ethtool.c |  4 ----
- drivers/net/ethernet/intel/igb/igb_main.c    | 19 +++++++++++++------
- 2 files changed, 13 insertions(+), 10 deletions(-)
+Reviwed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 51a2dcaf553d..2a5782063f4c 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -965,10 +965,6 @@ static int igb_set_ringparam(struct net_device *netdev,
- 			memcpy(&temp_ring[i], adapter->rx_ring[i],
- 			       sizeof(struct igb_ring));
- 
--			/* Clear copied XDP RX-queue info */
--			memset(&temp_ring[i].xdp_rxq, 0,
--			       sizeof(temp_ring[i].xdp_rxq));
--
- 			temp_ring[i].count = new_rx_count;
- 			err = igb_setup_rx_resources(&temp_ring[i]);
- 			if (err) {
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 38ba92022cd4..c1e4ad65b02d 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -4352,7 +4352,18 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
- {
- 	struct igb_adapter *adapter = netdev_priv(rx_ring->netdev);
- 	struct device *dev = rx_ring->dev;
--	int size;
-+	int size, res;
-+
-+	/* XDP RX-queue info */
-+	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
-+		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
-+	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
-+			       rx_ring->queue_index, 0);
-+	if (res < 0) {
-+		dev_err(dev, "Failed to register xdp_rxq index %u\n",
-+			rx_ring->queue_index);
-+		return res;
-+	}
- 
- 	size = sizeof(struct igb_rx_buffer) * rx_ring->count;
- 
-@@ -4375,14 +4386,10 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
- 
- 	rx_ring->xdp_prog = adapter->xdp_prog;
- 
--	/* XDP RX-queue info */
--	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
--			     rx_ring->queue_index, 0) < 0)
--		goto err;
--
- 	return 0;
- 
- err:
-+	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
- 	vfree(rx_ring->rx_buffer_info);
- 	rx_ring->rx_buffer_info = NULL;
- 	dev_err(dev, "Unable to allocate memory for the Rx descriptor ring\n");
--- 
-2.27.0
+> ---
+>  v2: Fixed function description to fit in 80 characters per line limit
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c     | 12 +++++++++---
+>  drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 16 ++++++++++++++++
+>  2 files changed, 25 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index ec4f85a..7fa29a8 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -876,6 +876,7 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
+>  		list_add_tail(&f->list, &adapter->mac_filter_list);
+>  		f->add = true;
+>  		f->is_new_mac = true;
+> +		f->is_primary = false;
+>  		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
+>  	} else {
+>  		f->remove = false;
+> @@ -909,17 +910,22 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
+>  	f = iavf_find_filter(adapter, hw->mac.addr);
+>  	if (f) {
+>  		f->remove = true;
+> +		f->is_primary = true;
+>  		adapter->aq_required |= IAVF_FLAG_AQ_DEL_MAC_FILTER;
+>  	}
+>  
+>  	f = iavf_add_filter(adapter, addr->sa_data);
+> -
+> -	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+> -
+>  	if (f) {
+> +		f->is_primary = true;
+>  		ether_addr_copy(hw->mac.addr, addr->sa_data);
+>  	}
+>  
+> +	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+> +
+> +	/* schedule the watchdog task to immediately process the request */
+> +	if (f)
+> +		queue_work(iavf_wq, &adapter->watchdog_task.work);
+> +
+>  	return (f == NULL) ? -ENOMEM : 0;
+>  }
+>  
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> index 5ee1d11..8d53228 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> @@ -453,6 +453,20 @@ void iavf_map_queues(struct iavf_adapter *adapter)
+>  	kfree(vimi);
+>  }
+>  
+> +/**
+> + * iavf_set_mac_addr_type - Set the correct request type from the filter type
+> + * @virtchnl_ether_addr: pointer to requested list element
+> + * @filter: pointer to requested filter
+> + **/
+> +static void
+> +iavf_set_mac_addr_type(struct virtchnl_ether_addr *virtchnl_ether_addr,
+> +		       const struct iavf_mac_filter *filter)
+> +{
+> +	virtchnl_ether_addr->type = filter->is_primary ?
+> +		VIRTCHNL_ETHER_ADDR_PRIMARY :
+> +		VIRTCHNL_ETHER_ADDR_EXTRA;
+> +}
+> +
+>  /**
+>   * iavf_add_ether_addrs
+>   * @adapter: adapter structure
+> @@ -508,6 +522,7 @@ void iavf_add_ether_addrs(struct iavf_adapter *adapter)
+>  	list_for_each_entry(f, &adapter->mac_filter_list, list) {
+>  		if (f->add) {
+>  			ether_addr_copy(veal->list[i].addr, f->macaddr);
+> +			iavf_set_mac_addr_type(&veal->list[i], f);
+>  			i++;
+>  			f->add = false;
+>  			if (i == count)
+> @@ -577,6 +592,7 @@ void iavf_del_ether_addrs(struct iavf_adapter *adapter)
+>  	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
+>  		if (f->remove) {
+>  			ether_addr_copy(veal->list[i].addr, f->macaddr);
+> +			iavf_set_mac_addr_type(&veal->list[i], f);
+>  			i++;
+>  			list_del(&f->list);
+>  			kfree(f);
+> -- 
+> 2.27.0
 
+Thanks!
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
