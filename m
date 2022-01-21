@@ -1,68 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67C14495D1E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jan 2022 10:56:16 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1E61495DD8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jan 2022 11:38:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E82D760F8E;
-	Fri, 21 Jan 2022 09:56:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5C26C80DAD;
+	Fri, 21 Jan 2022 10:38:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OBcXrM6k9YEz; Fri, 21 Jan 2022 09:56:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EcX0Zbv-WJb5; Fri, 21 Jan 2022 10:38:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B13E660F84;
-	Fri, 21 Jan 2022 09:56:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52E1D80DF9;
+	Fri, 21 Jan 2022 10:38:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 71D3C1BF31E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 09E471BF2FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 10:38:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6CBEF8336F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id DFA6F405BB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 10:38:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v4HEdGCc4Gps for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jan 2022 09:56:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VzfPd1TfbM4K for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jan 2022 10:38:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6885F83386
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:06 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9C4C340592
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 10:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642758966; x=1674294966;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1642761524; x=1674297524;
+ h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=liJyOWRpROmRlca9QKgpgiskESxQjRBxeC+ru42Iod0=;
- b=QvJboY/cRaBZ/Bss2pFSgY5oiziqUJV5PPatgYzOVOSMI9XeRH5TRiqv
- C60dSjPkRTog2AImp9d0QnOGjoat2Btd/PMSLZtW7EDt1nuCAaHXiRVTW
- bSA/Hvzf7ZVBOoaH8/KIZu0+EzhuzSdkGAKbHI9nysjlYdexzacecsIML
- 76eTbFj+WN0SmiAybnV93JqSTeqaPK9bazsw0klfvfu3ffn/Zb4ncyYbP
- N6Jt4oam8XvEIrE4hnjGiXLV01XnB6IjvcRwdTfqyoQeZOuXXAno2EjVq
- mQU03d7PD87uoz8j2Zks2a08D92y75ud2JUx6DV4JqV9BtnDu4Nfnm382 w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10233"; a="244436928"
-X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="244436928"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2022 01:56:05 -0800
+ bh=Ao10LIu6GuZ8+d/X6yGvNb6fEyJMdDt3WSG0MPCHgb0=;
+ b=GfQ+/egcNtVBi8628JGdOkZdpG+tEgoyNHGW+N8WnXvkyLxoeMsQwEyf
+ xBMHSmbQcDcYWFiwa5ogwQStqTqWabbqIaw/7Hjkobt8G0Qb+a96k3562
+ 0yfD8giSr0HMmmK4CJl0AsiT/rBKpqnQVzBo7WM0ruxbfE1ulNv/kHo9R
+ dcW6uW0nbuMnZM2+XmGJRmAAhjB9NhO1POp3UmzHPUN9CEmFwGDlMQIhr
+ +97/X5RZteH4kD8/yUXb3WOtSXVMpJqEhHelCSABkaiVXg+eicjlK5chR
+ g9dzp05i+YDHhb25/LC3xBuhqkshg+zHKDdTvW/xOTE1pU7pamdq2UNsM g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10233"; a="270046828"
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="270046828"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2022 02:38:44 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="478191432"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by orsmga006.jf.intel.com with ESMTP; 21 Jan 2022 01:56:04 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 21 Jan 2022 10:55:12 +0100
-Message-Id: <20220121095512.20266-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="519027093"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 21 Jan 2022 02:38:42 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nArJa-000FCX-50; Fri, 21 Jan 2022 10:38:42 +0000
+Date: Fri, 21 Jan 2022 18:38:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61ea8d16./Z5J2OI/b3Rt39Pc%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: Fix incorrect use of
- assigning iavf_status to int
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 5bddda2492bd866e96440929e821a01867449235
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,249 +77,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently there are functions in iavf_virtchnl.c for polling specific
-virtchnl receive events. These are all assigning iavf_status values to
-int values. Fix this and explicitly assign int values if iavf_status
-is not IAVF_SUCCESS.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 5bddda2492bd866e96440929e821a01867449235  iavf: Add reset to watchdog task
 
-Also, refactor a small amount of duplicated code that can be reused by
-all of the previously mentioned functions.
+elapsed time: 726m
 
-Finally, fix some spacing errors for variable assignment and get rid of
-all the goto statements in the refactored functions for clarity.
+configs tested: 122
+configs skipped: 3
 
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm64                               defconfig
+i386                          randconfig-c001
+mips                 randconfig-c004-20220120
+sh                          urquell_defconfig
+sh                          sdk7780_defconfig
+sh                               j2_defconfig
+arm                           stm32_defconfig
+arm                     eseries_pxa_defconfig
+m68k                        m5307c3_defconfig
+powerpc                     mpc83xx_defconfig
+mips                            gpr_defconfig
+ia64                             alldefconfig
+m68k                       m5208evb_defconfig
+powerpc                     rainier_defconfig
+arm                           h5000_defconfig
+mips                     decstation_defconfig
+mips                        bcm47xx_defconfig
+mips                 decstation_r4k_defconfig
+sh                           se7721_defconfig
+xtensa                generic_kc705_defconfig
+sh                          polaris_defconfig
+arm                       imx_v6_v7_defconfig
+m68k                          sun3x_defconfig
+sparc                       sparc32_defconfig
+m68k                       m5475evb_defconfig
+powerpc                         wii_defconfig
+sh                           se7724_defconfig
+powerpc                mpc7448_hpc2_defconfig
+s390                          debug_defconfig
+sh                         ap325rxa_defconfig
+arm                           tegra_defconfig
+ia64                      gensparse_defconfig
+powerpc                 mpc834x_mds_defconfig
+arm                  randconfig-c002-20220120
+arm                  randconfig-c002-20220121
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+x86_64                        randconfig-c007
+arm                  randconfig-c002-20220120
+riscv                randconfig-c006-20220120
+powerpc              randconfig-c003-20220120
+mips                 randconfig-c004-20220120
+i386                          randconfig-c001
+powerpc                     ppa8548_defconfig
+powerpc                      walnut_defconfig
+powerpc                 mpc8313_rdb_defconfig
+x86_64                           allyesconfig
+arm                      tct_hammer_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+x86_64               randconfig-a005-20220117
+x86_64               randconfig-a004-20220117
+x86_64               randconfig-a001-20220117
+x86_64               randconfig-a006-20220117
+x86_64               randconfig-a002-20220117
+x86_64               randconfig-a003-20220117
+i386                 randconfig-a005-20220117
+i386                 randconfig-a001-20220117
+i386                 randconfig-a006-20220117
+i386                 randconfig-a004-20220117
+i386                 randconfig-a002-20220117
+i386                 randconfig-a003-20220117
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+riscv                randconfig-r042-20220120
+hexagon              randconfig-r045-20220120
+hexagon              randconfig-r041-20220120
+
 ---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 158 ++++++++----------
- 1 file changed, 66 insertions(+), 92 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 60ee462..81ee40c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -54,6 +54,39 @@ int iavf_send_api_ver(struct iavf_adapter *adapter)
- 				sizeof(vvi));
- }
- 
-+/**
-+ * iavf_poll_virtchnl_msg
-+ * @hw: HW configuration structure
-+ * @event: event to populate on success
-+ * @op_to_poll: requested virtchnl op to poll for
-+ *
-+ * Initialize poll for virtchnl msg matching the requested_op. Returns 0
-+ * if a message of the correct opcode is in the queue or an error code
-+ * if no message matching the op code is waiting and other failures.
-+ */
-+static enum iavf_status
-+iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
-+		       enum virtchnl_ops op_to_poll)
-+{
-+	enum virtchnl_ops received_op;
-+	enum iavf_status status;
-+
-+	while (1) {
-+		/* When the AQ is empty, iavf_clean_arq_element will return
-+		 * nonzero and this loop will terminate.
-+		 */
-+		status = iavf_clean_arq_element(hw, event, NULL);
-+		if (status != IAVF_SUCCESS)
-+			return status;
-+		received_op =
-+		    (enum virtchnl_ops)le32_to_cpu(event->desc.cookie_high);
-+		if (op_to_poll == received_op)
-+			break;
-+	}
-+
-+	return (enum iavf_status)le32_to_cpu(event->desc.cookie_low);
-+}
-+
- /**
-  * iavf_verify_api_ver
-  * @adapter: adapter structure
-@@ -65,55 +98,28 @@ int iavf_send_api_ver(struct iavf_adapter *adapter)
-  **/
- int iavf_verify_api_ver(struct iavf_adapter *adapter)
- {
--	struct virtchnl_version_info *pf_vvi;
--	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_arq_event_info event;
--	enum virtchnl_ops op;
--	enum iavf_status err;
-+	int err;
- 
- 	event.buf_len = IAVF_MAX_AQ_BUF_SIZE;
--	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
--	if (!event.msg_buf) {
--		err = -ENOMEM;
--		goto out;
--	}
--
--	while (1) {
--		err = iavf_clean_arq_element(hw, &event, NULL);
--		/* When the AQ is empty, iavf_clean_arq_element will return
--		 * nonzero and this loop will terminate.
--		 */
--		if (err)
--			goto out_alloc;
--		op =
--		    (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
--		if (op == VIRTCHNL_OP_VERSION)
--			break;
--	}
-+	event.msg_buf = kzalloc(IAVF_MAX_AQ_BUF_SIZE, GFP_KERNEL);
-+	if (!event.msg_buf)
-+		return -ENOMEM;
- 
-+	err = iavf_poll_virtchnl_msg(&adapter->hw, &event, VIRTCHNL_OP_VERSION);
-+	if (!err) {
-+		struct virtchnl_version_info *pf_vvi =
-+			(struct virtchnl_version_info *)event.msg_buf;
-+		adapter->pf_version = *pf_vvi;
- 
--	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
--	if (err)
--		goto out_alloc;
--
--	if (op != VIRTCHNL_OP_VERSION) {
--		dev_info(&adapter->pdev->dev, "Invalid reply type %d from PF\n",
--			op);
--		err = -EIO;
--		goto out_alloc;
-+		if (pf_vvi->major > VIRTCHNL_VERSION_MAJOR ||
-+		    (pf_vvi->major == VIRTCHNL_VERSION_MAJOR &&
-+		     pf_vvi->minor > VIRTCHNL_VERSION_MINOR))
-+			err = -EIO;
- 	}
- 
--	pf_vvi = (struct virtchnl_version_info *)event.msg_buf;
--	adapter->pf_version = *pf_vvi;
--
--	if ((pf_vvi->major > VIRTCHNL_VERSION_MAJOR) ||
--	    ((pf_vvi->major == VIRTCHNL_VERSION_MAJOR) &&
--	     (pf_vvi->minor > VIRTCHNL_VERSION_MINOR)))
--		err = -EIO;
--
--out_alloc:
- 	kfree(event.msg_buf);
--out:
-+
- 	return err;
- }
- 
-@@ -208,33 +214,17 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
- {
- 	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_arq_event_info event;
--	enum virtchnl_ops op;
--	enum iavf_status err;
- 	u16 len;
-+	int err;
- 
--	len =  sizeof(struct virtchnl_vf_resource) +
-+	len = sizeof(struct virtchnl_vf_resource) +
- 		IAVF_MAX_VF_VSI * sizeof(struct virtchnl_vsi_resource);
- 	event.buf_len = len;
--	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
--	if (!event.msg_buf) {
--		err = -ENOMEM;
--		goto out;
--	}
-+	event.msg_buf = kzalloc(len, GFP_KERNEL);
-+	if (!event.msg_buf)
-+		return -ENOMEM;
- 
--	while (1) {
--		/* When the AQ is empty, iavf_clean_arq_element will return
--		 * nonzero and this loop will terminate.
--		 */
--		err = iavf_clean_arq_element(hw, &event, NULL);
--		if (err)
--			goto out_alloc;
--		op =
--		    (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
--		if (op == VIRTCHNL_OP_GET_VF_RESOURCES)
--			break;
--	}
--
--	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
-+	err = iavf_poll_virtchnl_msg(hw, &event, VIRTCHNL_OP_GET_VF_RESOURCES);
- 	memcpy(adapter->vf_res, event.msg_buf, min(event.msg_len, len));
- 
- 	/* some PFs send more queues than we should have so validate that
-@@ -243,48 +233,32 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
- 	if (!err)
- 		iavf_validate_num_queues(adapter);
- 	iavf_vf_parse_hw_config(hw, adapter->vf_res);
--out_alloc:
-+
- 	kfree(event.msg_buf);
--out:
-+
- 	return err;
- }
- 
- int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
- {
--	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_arq_event_info event;
--	enum virtchnl_ops op;
--	enum iavf_status err;
-+	int err;
- 	u16 len;
- 
--	len =  sizeof(struct virtchnl_vlan_caps);
-+	len = sizeof(struct virtchnl_vlan_caps);
- 	event.buf_len = len;
--	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
--	if (!event.msg_buf) {
--		err = -ENOMEM;
--		goto out;
--	}
-+	event.msg_buf = kzalloc(len, GFP_KERNEL);
-+	if (!event.msg_buf)
-+		return -ENOMEM;
- 
--	while (1) {
--		/* When the AQ is empty, iavf_clean_arq_element will return
--		 * nonzero and this loop will terminate.
--		 */
--		err = iavf_clean_arq_element(hw, &event, NULL);
--		if (err)
--			goto out_alloc;
--		op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
--		if (op == VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS)
--			break;
--	}
--
--	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
--	if (err)
--		goto out_alloc;
-+	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
-+				     VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS);
-+	if (!err)
-+		memcpy(&adapter->vlan_v2_caps, event.msg_buf,
-+		       min(event.msg_len, len));
- 
--	memcpy(&adapter->vlan_v2_caps, event.msg_buf, min(event.msg_len, len));
--out_alloc:
- 	kfree(event.msg_buf);
--out:
-+
- 	return err;
- }
- 
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
