@@ -1,161 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA83D495C9A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jan 2022 10:16:07 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67C14495D1E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jan 2022 10:56:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4D2B640977;
-	Fri, 21 Jan 2022 09:16:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E82D760F8E;
+	Fri, 21 Jan 2022 09:56:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v61obnhXZZIf; Fri, 21 Jan 2022 09:16:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OBcXrM6k9YEz; Fri, 21 Jan 2022 09:56:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A702040949;
-	Fri, 21 Jan 2022 09:16:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B13E660F84;
+	Fri, 21 Jan 2022 09:56:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A13F81BF31E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:15:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 71D3C1BF31E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 989F541651
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:15:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6CBEF8336F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a_cpzoTZFi6s for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jan 2022 09:15:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id v4HEdGCc4Gps for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jan 2022 09:56:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3D02441608
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:15:58 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6885F83386
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jan 2022 09:56:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642756558; x=1674292558;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=eSK9WRQPCiDUUDbnOrvOrNH/0aeA4VAa6kFZia9s8kE=;
- b=CisMf8AEbfs/p2sq71uHZkZmAsTEQCDukRJu4SRX3dXf0NsbPvk0T40V
- kU/kMweZf9Wuph/j+1r3vIhKnViOT+G+Qx0ebdHSOGBoCni8vbk0eosTj
- yEGBmSEPxf32608UYvr3yNtU93B8hlY+kFBl3FX1ANmt3g/3XvKtjsSnt
- oPp5/DpFVZ8oermWpw4A4gINFV2mV8YGmxakHrwWuJuLGDL8SxBjwz6oc
- uGRLKmkoiPBLWCLwiYMsqy8P8Lm9hw0MxRDEeUyWFWRkajN6qjLVPHKj/
- JoMgoezZbavGu7R7/XGzcegOFwIhJjbw0lZA0SvXAe30dpGlyFGeaBac5 Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10233"; a="243203891"
-X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="243203891"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2022 01:15:56 -0800
+ t=1642758966; x=1674294966;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=liJyOWRpROmRlca9QKgpgiskESxQjRBxeC+ru42Iod0=;
+ b=QvJboY/cRaBZ/Bss2pFSgY5oiziqUJV5PPatgYzOVOSMI9XeRH5TRiqv
+ C60dSjPkRTog2AImp9d0QnOGjoat2Btd/PMSLZtW7EDt1nuCAaHXiRVTW
+ bSA/Hvzf7ZVBOoaH8/KIZu0+EzhuzSdkGAKbHI9nysjlYdexzacecsIML
+ 76eTbFj+WN0SmiAybnV93JqSTeqaPK9bazsw0klfvfu3ffn/Zb4ncyYbP
+ N6Jt4oam8XvEIrE4hnjGiXLV01XnB6IjvcRwdTfqyoQeZOuXXAno2EjVq
+ mQU03d7PD87uoz8j2Zks2a08D92y75ud2JUx6DV4JqV9BtnDu4Nfnm382 w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10233"; a="244436928"
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="244436928"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2022 01:56:05 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="519000117"
-Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
- by orsmga007.jf.intel.com with ESMTP; 21 Jan 2022 01:15:55 -0800
-Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Fri, 21 Jan 2022 01:15:55 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Fri, 21 Jan 2022 01:15:55 -0800
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.168)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Fri, 21 Jan 2022 01:15:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DGTJwMXtIdmHlUIIN+kuaXZhAaeOqOLf2KSDCDKeJqbxeAMKRiR0yFoJGxEnCYZ15YulBr0dBIiOzp9rJ2/deFcQEiVdf9NbpnlyKp1SErW75kLnmvbYj7Pqj4W4bPl02GEgt3QBw/MT7sVKgdv66V41uzAC/SeYzfC7Hcy8Q1HlSjNIboijsFyYv2axITMm4zK/5vnHPw/bHuwTXXmwtFzJl4e6lql5ztAPO7XZjHE6oX/IykWH72lESh79TGnAvfMYGEzka3rLJ/oOBANZY+suzagboazZsX3UVwgOlAP5RQELQccJK9j/H928CDcs5ZCrb6yCBH+LBl3K0W1F+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ai83oJHcrlDip+M9V/Bhlytacj4Wj/lkXV4L5gwZuZQ=;
- b=A7kE4lnkT1edyUC7HIJpEgrDgTle1HxDgnsRRN/lqF8LUCxpNBZB5CiCVEI+CMgBXpwOy1cNal+HJhzVC4vnzUZopmg9mcSmUk/KkhbeqgMSx8BvEMKd4srZUfkYKzTzZbjOB9WKjtuxM5+cc62sc1lYuEdxU937Tx+C67sua3hyHx5wh9AIg5k/Zbu0y4VwpO9Bn//giaoagd1QNEkoLbc2OkrVw8Go2HnuZr9FUQhQMpwz/SrqrcA3G+v+r8SeoCpRYlQgPep5YWQ5Een0Oe5B6zKOx/q91KemPBNC0HeA5+dfEaXd6JrwYv15eoGvlGstZoqS8O6CvBsRZUPU8w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by MN2PR11MB3630.namprd11.prod.outlook.com (2603:10b6:208:f4::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4909.10; Fri, 21 Jan
- 2022 09:15:52 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::3162:31b:8e9c:173b]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::3162:31b:8e9c:173b%4]) with mapi id 15.20.4909.010; Fri, 21 Jan 2022
- 09:15:52 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v2 2/4] i40e: Add new versions
- of send ASQ command functions
-Thread-Index: AQHYCUl3oFAGYqvAGEOALMEn09f8naxtPEDw
-Date: Fri, 21 Jan 2022 09:15:52 +0000
-Message-ID: <BYAPR11MB3367556C56A9C79CCC190384FC5B9@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20220114131931.346687-1-jedrzej.jagielski@intel.com>
- <20220114131931.346687-3-jedrzej.jagielski@intel.com>
-In-Reply-To: <20220114131931.346687-3-jedrzej.jagielski@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 432b2e00-f1af-4a66-c273-08d9dcbe9f65
-x-ms-traffictypediagnostic: MN2PR11MB3630:EE_
-x-microsoft-antispam-prvs: <MN2PR11MB3630DE0B2FB71F13681FB6E5FC5B9@MN2PR11MB3630.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UQUy6csDmOeSL5epcQGihaJxKZQHhtYfGGWYicXIg5df6vXmZVIOMmE5SsitQqYGLw2Gpgr/qfS75RbSCgctmMYv295vbojcQUy3QVaebRpk1GcMIsv4Wl1ZpanKpBRmAvFG/M01pzPQt7J9tGgFfVZywWJJmN8eBO0c2+TKgcnwgvy1GxIJ3h+72OJrB8xUEGmt5kQP6EvOFpsga4dCKQeINM358YbVhIBkBxo06tprqzUHZLIuwyDgFADZ6KuxYkCiFU7Pi2ApnRrAfO+Qg6fuWzwqEm4eg1fFL4ztfwx3uP53sK+Oo2eAefYZqE8uGpnaXwsECP/XDS41Li3Iyntlp+q5l5lVk2cDCcSt1yvSmh5GBxUksn8qR2a1nFJANpG6o9h5sBwXBifIZGAQsr3xgj2zQdxZvCaGXUflmSd8L8qSOZUA8Dw6nuQMsGfzyb247lxsAcHkWIuAUCvNdIujv1jeceieWAgXH0ZgkvukfJ9DIkh7fraLujwSqx/ImeO33ZE6Y7R/KCrnGf2lPSCeyd2N5ql2Q7R6SyBoXN7siR4LW0YCpVE307Kzcfyjx9ldA4T1+l8b6TusSCcDO8TR+njDDVqm1Lhi33RVH+6WiR3iVJDKAW7j0CeP64ZZ+hTbuk3r/uytsOehhzcztiuennsX8A7hK1bIGwax80QCIhIkBtAu4RmjrOdrxss7qc6lFcqypXn8t++blinOJw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(8676002)(2906002)(86362001)(71200400001)(76116006)(54906003)(110136005)(316002)(107886003)(508600001)(8936002)(33656002)(186003)(6506007)(7696005)(53546011)(5660300002)(66446008)(64756008)(66556008)(66476007)(66946007)(26005)(122000001)(38100700002)(4326008)(82960400001)(9686003)(52536014)(55016003)(83380400001)(38070700005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rm5MAA4IBGTctzcVnYwVcamsALIiPh4p/8wG2YkMGcGi/CooHOs3ja79mXJV?=
- =?us-ascii?Q?DGnWbvYeimZa2N/wXc9Makl9qV86ZpizF4d3EGfYjI8N8MCIT6cr6W51wTFe?=
- =?us-ascii?Q?hCX7kBlwRIPwnEnpwD3vTxHsHI43TS7fNQQLY9JMIGnBYACqM39E6sdRPKzV?=
- =?us-ascii?Q?TZFX9YCEl24jRpYVJ0zmUCiBmhbliONST9tf1vrnYnmcnBvqJeD2nvwMEano?=
- =?us-ascii?Q?pTMJdmAXAf5+voRGeI+b2On7MvT6zxlRUlXvoP64PHMiG/lQGIGlzkh/QXM9?=
- =?us-ascii?Q?UM9fcChtrVaeAV1BZiEl9Jek8CzcYF9R0flZOauOLuJ0xgxUiKXayR/EGvPn?=
- =?us-ascii?Q?5Qp5MVPEQiJ+m19rDvGeOYYWx7znzkWp3FYwXboyaM58LqcrpBBwVrCwLNDD?=
- =?us-ascii?Q?mtnAK2DO3STMdHpe21dkyvZ3LBLu2IcB+uo19N5cSC9qVdkAa+u6BxLpjnv4?=
- =?us-ascii?Q?5bLyJR65g4OEP6GnjfEn8/e+A/QZKPSNI7A3RDmw5h8GZujzseNu6QNCORgg?=
- =?us-ascii?Q?/3dvKGq/B3QI4ivJmPmZisCeNna7CA2aAt3fmIVPF2sl8aegASJRW3B58UwE?=
- =?us-ascii?Q?99pNGTixUKKgnrw9Zlk64qIFYm6SaGr0BXCLlkUNSKyuILI1Ycw0EAVTAzYq?=
- =?us-ascii?Q?8PsYeqazEslRODnkGSaF4CN0Vk1fqUKCBY6d5+66Aas3sPLsj495piDfk+lB?=
- =?us-ascii?Q?EZUFxV227LYonoqd7GbrCXT9LOTVY5XvbSw1J979j0FLbqRfFRlyZBjVRCEQ?=
- =?us-ascii?Q?tpSrlUft0I1oSFjK77THs9M9SuAiQEMZ8Su+qaFrdPulTpghYjptqkrE/t65?=
- =?us-ascii?Q?6AeltREvwO8QDTWLjgldf2ijEyr7x3uSQ8av8P0oP69Sm09AJy8Qvuww/RzX?=
- =?us-ascii?Q?4/MtRmB7w50gtFH5sF4+kaUpEPXFiYRkkG50q6fincdpm28V79kWoNtgleyx?=
- =?us-ascii?Q?MqIASbjiEtw6dIRhDB5bvGEKbRgiFi+cKAllFnScPV++G/InrS5lZ8tdJHZk?=
- =?us-ascii?Q?mL12hJuOPiI2EHRF9IijSz2AiI/C5j/lnPFrHk+b4r0YpdrrXEBXhawf3vFB?=
- =?us-ascii?Q?solAapMVxPYSX1YQNl3hjQXm7xuRioN+MoxMgHUHu9xU76vw/pu4DRWWvle1?=
- =?us-ascii?Q?/zVAp5V9CwnqgFmGTD6Ox9+9jthpxwT4r6wFFFJbf/AYRBQgEOyf827FO/It?=
- =?us-ascii?Q?ECjVLuDoXMAI1r8TUErvVMsTJKFcrh0KyJ6KVA8BqmcxoW//lG/cWagXGih2?=
- =?us-ascii?Q?H757okneEJZXpIsd85E7Ei+hqS65pZcQBTBR3Th9+Z6txbvv2pWid9CJpYIy?=
- =?us-ascii?Q?wckiOmEefR7MueJc+qL/VrI8d6P2MnsUI1WozBxbmNS9eBZUu1qfosKXCnYD?=
- =?us-ascii?Q?iN6gHVqiw1CPNLiA9yPKcjNlhBsQFofgjx8une6qLUh6qr1zu61a3lXMNsR8?=
- =?us-ascii?Q?i6iWBfHxSkk38mtuTZ311ctSvOhuaXsaeQA/47/H5r5F1YwbmphvibpjwZRQ?=
- =?us-ascii?Q?oFHSYISucuX4uzKP/nqFlpOyjdvmfgm2SwoYKhbqcBqxETd6iErX1hYQ61tF?=
- =?us-ascii?Q?r1Jb8p6Iy2BNIECwyQzxUiVqz1X0VzhtZ1BCbMmA2Q4qVMajyipqAsYayYxR?=
- =?us-ascii?Q?U91RVnE7RLwXE217+W0SOcw=3D?=
+X-IronPort-AV: E=Sophos;i="5.88,304,1635231600"; d="scan'208";a="478191432"
+Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.68])
+ by orsmga006.jf.intel.com with ESMTP; 21 Jan 2022 01:56:04 -0800
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 21 Jan 2022 10:55:12 +0100
+Message-Id: <20220121095512.20266-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 432b2e00-f1af-4a66-c273-08d9dcbe9f65
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jan 2022 09:15:52.4997 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Vi4ia2w7Cxqa/iQIpmjeookZPKoxPLrqO/XgE3olwiFB6O5cwzOBoMAd8HK+8JmzRe+3ud9i4Y++cGY6727nsw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3630
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/4] i40e: Add new
- versions of send ASQ command functions
+Subject: [Intel-wired-lan] [PATCH net-next v1] iavf: Fix incorrect use of
+ assigning iavf_status to int
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,51 +75,249 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>, "Jagielski,
- Jedrzej" <jedrzej.jagielski@intel.com>
+Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Currently there are functions in iavf_virtchnl.c for polling specific
+virtchnl receive events. These are all assigning iavf_status values to
+int values. Fix this and explicitly assign int values if iavf_status
+is not IAVF_SUCCESS.
 
+Also, refactor a small amount of duplicated code that can be reused by
+all of the previously mentioned functions.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Jagielski, Jedrzej
-> Sent: Friday, January 14, 2022 6:49 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>; Jagielski,
-> Jedrzej <jedrzej.jagielski@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next v2 2/4] i40e: Add new versions of
-> send ASQ command functions
-> 
-> From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> 
-> ASQ send command functions are returning only i40e status codes yet some
-> calling functions also need Admin Queue status that is stored in hw-
-> >aq.asq_last_status. Since hw object is stored on a heap it introduces a
-> possibility for a race condition in access to hw if calling function is not fast
-> enough to read hw->aq.asq_last_status before next send ASQ command is
-> executed.
-> 
-> Add new versions of send ASQ command functions that return Admin Queue
-> status on the stack to avoid race conditions in access to hw-
-> >aq.asq_last_status.
-> Add new _v2 version of i40e_aq_remove_macvlan that is using new _v2
-> versions of ASQ send command functions and returns the Admin Queue
-> status on the stack.
-> 
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_adminq.c | 92 +++++++++++++++++--
-> drivers/net/ethernet/intel/i40e/i40e_common.c | 46 ++++++++++
-> .../net/ethernet/intel/i40e/i40e_prototype.h  | 20 ++++
->  3 files changed, 150 insertions(+), 8 deletions(-)
-> 
+Finally, fix some spacing errors for variable assignment and get rid of
+all the goto statements in the refactored functions for clarity.
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 158 ++++++++----------
+ 1 file changed, 66 insertions(+), 92 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 60ee462..81ee40c 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -54,6 +54,39 @@ int iavf_send_api_ver(struct iavf_adapter *adapter)
+ 				sizeof(vvi));
+ }
+ 
++/**
++ * iavf_poll_virtchnl_msg
++ * @hw: HW configuration structure
++ * @event: event to populate on success
++ * @op_to_poll: requested virtchnl op to poll for
++ *
++ * Initialize poll for virtchnl msg matching the requested_op. Returns 0
++ * if a message of the correct opcode is in the queue or an error code
++ * if no message matching the op code is waiting and other failures.
++ */
++static enum iavf_status
++iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
++		       enum virtchnl_ops op_to_poll)
++{
++	enum virtchnl_ops received_op;
++	enum iavf_status status;
++
++	while (1) {
++		/* When the AQ is empty, iavf_clean_arq_element will return
++		 * nonzero and this loop will terminate.
++		 */
++		status = iavf_clean_arq_element(hw, event, NULL);
++		if (status != IAVF_SUCCESS)
++			return status;
++		received_op =
++		    (enum virtchnl_ops)le32_to_cpu(event->desc.cookie_high);
++		if (op_to_poll == received_op)
++			break;
++	}
++
++	return (enum iavf_status)le32_to_cpu(event->desc.cookie_low);
++}
++
+ /**
+  * iavf_verify_api_ver
+  * @adapter: adapter structure
+@@ -65,55 +98,28 @@ int iavf_send_api_ver(struct iavf_adapter *adapter)
+  **/
+ int iavf_verify_api_ver(struct iavf_adapter *adapter)
+ {
+-	struct virtchnl_version_info *pf_vvi;
+-	struct iavf_hw *hw = &adapter->hw;
+ 	struct iavf_arq_event_info event;
+-	enum virtchnl_ops op;
+-	enum iavf_status err;
++	int err;
+ 
+ 	event.buf_len = IAVF_MAX_AQ_BUF_SIZE;
+-	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
+-	if (!event.msg_buf) {
+-		err = -ENOMEM;
+-		goto out;
+-	}
+-
+-	while (1) {
+-		err = iavf_clean_arq_element(hw, &event, NULL);
+-		/* When the AQ is empty, iavf_clean_arq_element will return
+-		 * nonzero and this loop will terminate.
+-		 */
+-		if (err)
+-			goto out_alloc;
+-		op =
+-		    (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+-		if (op == VIRTCHNL_OP_VERSION)
+-			break;
+-	}
++	event.msg_buf = kzalloc(IAVF_MAX_AQ_BUF_SIZE, GFP_KERNEL);
++	if (!event.msg_buf)
++		return -ENOMEM;
+ 
++	err = iavf_poll_virtchnl_msg(&adapter->hw, &event, VIRTCHNL_OP_VERSION);
++	if (!err) {
++		struct virtchnl_version_info *pf_vvi =
++			(struct virtchnl_version_info *)event.msg_buf;
++		adapter->pf_version = *pf_vvi;
+ 
+-	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
+-	if (err)
+-		goto out_alloc;
+-
+-	if (op != VIRTCHNL_OP_VERSION) {
+-		dev_info(&adapter->pdev->dev, "Invalid reply type %d from PF\n",
+-			op);
+-		err = -EIO;
+-		goto out_alloc;
++		if (pf_vvi->major > VIRTCHNL_VERSION_MAJOR ||
++		    (pf_vvi->major == VIRTCHNL_VERSION_MAJOR &&
++		     pf_vvi->minor > VIRTCHNL_VERSION_MINOR))
++			err = -EIO;
+ 	}
+ 
+-	pf_vvi = (struct virtchnl_version_info *)event.msg_buf;
+-	adapter->pf_version = *pf_vvi;
+-
+-	if ((pf_vvi->major > VIRTCHNL_VERSION_MAJOR) ||
+-	    ((pf_vvi->major == VIRTCHNL_VERSION_MAJOR) &&
+-	     (pf_vvi->minor > VIRTCHNL_VERSION_MINOR)))
+-		err = -EIO;
+-
+-out_alloc:
+ 	kfree(event.msg_buf);
+-out:
++
+ 	return err;
+ }
+ 
+@@ -208,33 +214,17 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
+ {
+ 	struct iavf_hw *hw = &adapter->hw;
+ 	struct iavf_arq_event_info event;
+-	enum virtchnl_ops op;
+-	enum iavf_status err;
+ 	u16 len;
++	int err;
+ 
+-	len =  sizeof(struct virtchnl_vf_resource) +
++	len = sizeof(struct virtchnl_vf_resource) +
+ 		IAVF_MAX_VF_VSI * sizeof(struct virtchnl_vsi_resource);
+ 	event.buf_len = len;
+-	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
+-	if (!event.msg_buf) {
+-		err = -ENOMEM;
+-		goto out;
+-	}
++	event.msg_buf = kzalloc(len, GFP_KERNEL);
++	if (!event.msg_buf)
++		return -ENOMEM;
+ 
+-	while (1) {
+-		/* When the AQ is empty, iavf_clean_arq_element will return
+-		 * nonzero and this loop will terminate.
+-		 */
+-		err = iavf_clean_arq_element(hw, &event, NULL);
+-		if (err)
+-			goto out_alloc;
+-		op =
+-		    (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+-		if (op == VIRTCHNL_OP_GET_VF_RESOURCES)
+-			break;
+-	}
+-
+-	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
++	err = iavf_poll_virtchnl_msg(hw, &event, VIRTCHNL_OP_GET_VF_RESOURCES);
+ 	memcpy(adapter->vf_res, event.msg_buf, min(event.msg_len, len));
+ 
+ 	/* some PFs send more queues than we should have so validate that
+@@ -243,48 +233,32 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
+ 	if (!err)
+ 		iavf_validate_num_queues(adapter);
+ 	iavf_vf_parse_hw_config(hw, adapter->vf_res);
+-out_alloc:
++
+ 	kfree(event.msg_buf);
+-out:
++
+ 	return err;
+ }
+ 
+ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
+ {
+-	struct iavf_hw *hw = &adapter->hw;
+ 	struct iavf_arq_event_info event;
+-	enum virtchnl_ops op;
+-	enum iavf_status err;
++	int err;
+ 	u16 len;
+ 
+-	len =  sizeof(struct virtchnl_vlan_caps);
++	len = sizeof(struct virtchnl_vlan_caps);
+ 	event.buf_len = len;
+-	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
+-	if (!event.msg_buf) {
+-		err = -ENOMEM;
+-		goto out;
+-	}
++	event.msg_buf = kzalloc(len, GFP_KERNEL);
++	if (!event.msg_buf)
++		return -ENOMEM;
+ 
+-	while (1) {
+-		/* When the AQ is empty, iavf_clean_arq_element will return
+-		 * nonzero and this loop will terminate.
+-		 */
+-		err = iavf_clean_arq_element(hw, &event, NULL);
+-		if (err)
+-			goto out_alloc;
+-		op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+-		if (op == VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS)
+-			break;
+-	}
+-
+-	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
+-	if (err)
+-		goto out_alloc;
++	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
++				     VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS);
++	if (!err)
++		memcpy(&adapter->vlan_v2_caps, event.msg_buf,
++		       min(event.msg_len, len));
+ 
+-	memcpy(&adapter->vlan_v2_caps, event.msg_buf, min(event.msg_len, len));
+-out_alloc:
+ 	kfree(event.msg_buf);
+-out:
++
+ 	return err;
+ }
+ 
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
