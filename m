@@ -1,70 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B58549B8FA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jan 2022 17:48:28 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7FD049B8F8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jan 2022 17:48:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0593E41545;
-	Tue, 25 Jan 2022 16:48:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3527740242;
+	Tue, 25 Jan 2022 16:48:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F4sCmRv3bvZx; Tue, 25 Jan 2022 16:48:26 +0000 (UTC)
+	with ESMTP id URGMA68baaL9; Tue, 25 Jan 2022 16:48:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E581C401C3;
-	Tue, 25 Jan 2022 16:48:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 201C1401C3;
+	Tue, 25 Jan 2022 16:48:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0EF191BF34E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 60ECB1BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0A5CC600BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4AB8B82660
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MrcclJ5rI4C6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Jan 2022 16:48:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fwvk40vuLkSx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Jan 2022 16:48:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0953360807
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:20 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4CA0D82656
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jan 2022 16:48:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643129301; x=1674665301;
+ t=1643129292; x=1674665292;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=CNOeM4YzJq3bRfsRrk/Oc6B5rAL9kt7SJSo2RE1l02A=;
- b=BS0K9JcyBNI4Ye6jkKyWnxZE20cK0t838UgPbS5YHfwk73gqeN9SuGFt
- ScnOA12SNRg9N5H3EnjyWcGg+Y/2324A5deq9SyIhlsVA+iX9fzzwwDKL
- WcXeoa/RXHgR/ZicYhCDix0nVcRBUQyX1X0IA9MBsqsRtEX9XbbUU8tR/
- KWxwZjYKn/GKTcDKNWcXbE7XITX/2nLUHRKL9lk8GUEWShbqw/krzvpJu
- n5u+hABzjSXNuad8Bv3VX/7e/KnIotW5g83qcxWphHEPn8eA8mgUvykjI
- Wi9qSG17I3XRru+Lq8q7LcIQuESMEKuCHIGFQBM19/le7RQTltmLxJnLJ A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10237"; a="243946041"
-X-IronPort-AV: E=Sophos;i="5.88,315,1635231600"; d="scan'208";a="243946041"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jan 2022 08:48:14 -0800
+ bh=TYHyC7rqiBSCZUoheuTxMtRd/pktV2F9zTkdvRfLTls=;
+ b=lvVlyK/BzVu5ZTVeIvQdTmRagw9q2w/zK2TW/1STN+ZcMe3j1JTa8MVp
+ D2D9Y5Ve93TobhNlOcminMFes2Tlx3fw6OaTuWHPyyWuyVyDsaPraF0Vt
+ jdguFfSBeiNqp2ui4FdDwRIwEbIO1tVhB8qETLPsDJKLnl3LIM97IB7KO
+ QXT2a2bhrUnIet/tgGmrGgmJgjzy5oOu5mdx5JVKCOBGHiIlMVcR/of0B
+ 0yvP+xejJJ9iVlDTlAkoBeNZLLteX5EuZ6yEAjQELcvT49crCaO87wnCF
+ VQ8AIz8Gpeyg/66p1Kjb1pDg2+G3yERusMLg4oZ24AW6nCJ6/B8hcb+Nw w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10237"; a="227021545"
+X-IronPort-AV: E=Sophos;i="5.88,315,1635231600"; d="scan'208";a="227021545"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jan 2022 08:48:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,315,1635231600"; d="scan'208";a="534803949"
+X-IronPort-AV: E=Sophos;i="5.88,315,1635231600"; d="scan'208";a="624522223"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 25 Jan 2022 08:48:10 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 25 Jan 2022 08:48:10 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nCOzK-000KBt-1X; Tue, 25 Jan 2022 16:48:10 +0000
-Date: Wed, 26 Jan 2022 00:47:26 +0800
+ id 1nCOzJ-000KBn-VT; Tue, 25 Jan 2022 16:48:09 +0000
+Date: Wed, 26 Jan 2022 00:47:33 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61f0299e.Vqau7Xq1pd41AebT%lkp@intel.com>
+Message-ID: <61f029a5.58npfwu2Wl9+MSNm%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
- e52984be9a522fb55c8f3e3df860d464d6658585
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ 6e667749271e58d34238cf700e543beabdbe6184
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,12 +82,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git master
-branch HEAD: e52984be9a522fb55c8f3e3df860d464d6658585  Merge tag 'linux-can-fixes-for-5.17-20220124' of git://git.kernel.org/pub/scm/linux/kernel/git/mkl/linux-can
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
+branch HEAD: 6e667749271e58d34238cf700e543beabdbe6184  net: fec_ptp: remove redundant initialization of variable val
 
-elapsed time: 1179m
+elapsed time: 724m
 
-configs tested: 182
+configs tested: 164
 configs skipped: 4
 
 The following configs have been built successfully.
@@ -120,36 +120,26 @@ sh                          kfr2r09_defconfig
 nios2                         10m50_defconfig
 powerpc                     sequoia_defconfig
 arm                           h5000_defconfig
-riscv                    nommu_k210_defconfig
 m68k                          atari_defconfig
-powerpc                     tqm8548_defconfig
 openrisc                            defconfig
+powerpc                     tqm8548_defconfig
+riscv                    nommu_k210_defconfig
 csky                                defconfig
 sh                           se7206_defconfig
-ia64                          tiger_defconfig
-arm                       multi_v4t_defconfig
-arm                        trizeps4_defconfig
 arm                        mvebu_v7_defconfig
 arm                           viper_defconfig
-sh                   sh7724_generic_defconfig
-ia64                        generic_defconfig
-sh                           sh2007_defconfig
-arm                          simpad_defconfig
 powerpc                 mpc8540_ads_defconfig
 sh                         microdev_defconfig
 arm                             ezx_defconfig
 mips                       bmips_be_defconfig
 xtensa                generic_kc705_defconfig
 openrisc                         alldefconfig
+sh                           sh2007_defconfig
 sh                          r7780mp_defconfig
 mips                  maltasmvp_eva_defconfig
 sh                             shx3_defconfig
 powerpc                           allnoconfig
 parisc                generic-32bit_defconfig
-riscv                            allmodconfig
-arm                           corgi_defconfig
-m68k                         apollo_defconfig
-powerpc                 mpc837x_mds_defconfig
 openrisc                  or1klitex_defconfig
 riscv             nommu_k210_sdcard_defconfig
 m68k                        m5272c3_defconfig
@@ -221,6 +211,7 @@ riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                          rv32_defconfig
+riscv                            allmodconfig
 x86_64                    rhel-8.3-kselftests
 um                           x86_64_defconfig
 um                             i386_defconfig
@@ -237,19 +228,12 @@ i386                 randconfig-c001-20220124
 powerpc              randconfig-c003-20220124
 mips                 randconfig-c004-20220124
 x86_64               randconfig-c007-20220124
-mips                        workpad_defconfig
-mips                     loongson2k_defconfig
-mips                     cu1000-neo_defconfig
 mips                  cavium_octeon_defconfig
 mips                        omega2p_defconfig
 powerpc                    mvme5100_defconfig
 arm                         lpc32xx_defconfig
 riscv                          rv32_defconfig
-arm                           sama7_defconfig
-powerpc                     kmeter1_defconfig
 mips                        bcm63xx_defconfig
-powerpc                          g5_defconfig
-arm                          imote2_defconfig
 powerpc                     tqm5200_defconfig
 mips                       lemote2f_defconfig
 powerpc                        icon_defconfig
@@ -259,13 +243,11 @@ mips                     cu1830-neo_defconfig
 arm                        neponset_defconfig
 mips                           ip22_defconfig
 arm                     davinci_all_defconfig
+mips                     cu1000-neo_defconfig
 powerpc                      ppc44x_defconfig
 arm                              alldefconfig
 mips                           ip28_defconfig
 riscv                    nommu_virt_defconfig
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
 x86_64               randconfig-a011-20220124
 x86_64               randconfig-a013-20220124
 x86_64               randconfig-a015-20220124
