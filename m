@@ -1,178 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7350949D4A3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jan 2022 22:39:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0944949DFDD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jan 2022 11:51:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 633FD40AB6;
-	Wed, 26 Jan 2022 21:39:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 62C7984F36;
+	Thu, 27 Jan 2022 10:51:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AQsBtewLbjJM; Wed, 26 Jan 2022 21:39:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ArWT-37kLeGv; Thu, 27 Jan 2022 10:51:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 25F0340AB1;
-	Wed, 26 Jan 2022 21:39:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 38D5884F35;
+	Thu, 27 Jan 2022 10:51:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D41E41BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jan 2022 21:39:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D19B1BF421
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jan 2022 10:50:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C049260FF2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jan 2022 21:39:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 66DEE60F3D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jan 2022 10:50:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XRABYvGcAXWr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 Jan 2022 21:39:44 +0000 (UTC)
+ with ESMTP id XoPX_wmnmYQw for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Jan 2022 10:50:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 165DB60FF1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jan 2022 21:39:43 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 885F360EF4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jan 2022 10:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643233184; x=1674769184;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=iEK5+0srBFU680aOW6ei/TfkyNx/5rWU7XXZywJK6yo=;
- b=bU4l6pbTHI+a7VwOILv9W8D99dsZhwcsyQ1y3E7OxofAXwgwJ0V0wroa
- lWANrcFI3qxJ1oxP7g5PVtZLfZhTPAn9lLTcIKSC+Cu526UerXZ8kE2sV
- SzAxKkbAaUNgFV/oae+RXOUrX2X2WEEXFHnBJSWLIjyCGb8DI2hqsBfXO
- Qh1/MR2JaVPX5GcWjdZf5DArzipsRXznT5c3cVeDPRWBcY5jRxcCNs0Kb
- kuNU31HZUYADJV+EOgn4lT7htcLW+EUFCEtSSyLHA8KYhL4RFg8YjCmSU
- JPYwFLoysxxq6b64jfSgiPbEen9QtDMHLyWr/UvtV205uH23t1CgO/zqu A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="271110573"
-X-IronPort-AV: E=Sophos;i="5.88,319,1635231600"; d="scan'208";a="271110573"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jan 2022 13:39:42 -0800
+ t=1643280655; x=1674816655;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=7ockC8NoqC4XCOSpEJv9QxhDucAR/Vm1ezahfIHpa08=;
+ b=EChS7XtcDRxFEyakNQ+clANWxVkrBVI4xCbBi+agkXS56AieWj/sI4JI
+ 5HirpvgqfLyeLntpZJIUuSPd8Emv3lRQVnwZX6HAeC8br6K4ZjvBJ4PfN
+ /CyNSeWwwNaYCN2JkHkjVcxXiEV0G6nrrD4dnm9TpR3UErvIF2kdQMuV2
+ 3nGyIFUNXq6wTKUHh1zg1TvEAeu2F2uauEcnGLlLB3eYc1XRycwO8wwQ/
+ xqDpueM/9VZ2goHr/RKZ0jrUPVKHEiTCmCw6VBjcVQ19Vpkz5ScV0WH2w
+ bJgbOEfVaknA3Ia7XOxNyyX/VkpNCKax9aVjgJmbeudK6bp8EiU5BKQLf Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="227488520"
+X-IronPort-AV: E=Sophos;i="5.88,320,1635231600"; d="scan'208";a="227488520"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2022 02:50:54 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,319,1635231600"; d="scan'208";a="769499339"
-Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
- by fmsmga005.fm.intel.com with ESMTP; 26 Jan 2022 13:39:42 -0800
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 26 Jan 2022 13:39:42 -0800
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 26 Jan 2022 13:39:41 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 26 Jan 2022 13:39:41 -0800
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 26 Jan 2022 13:39:41 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=L6Vw+pGHTZk6jtsMtmx881ZgHCmBqNASXE/jYGXkk9B3LqKNBipPsCE61IIhj+Dg561XMlXDVJudr83zCZf3ocnrK7H33iNXXVeVyt/27hkfIegA+gK+eyfIk/d+04wqvIzsLWgfobbVGbLcS6+pRT3JlEbqu608rTG2uX9lInkVn7wEKtpJlNijT5GGD+bYvKIEbLbAm/EibyWKo4veNRmRHnJwCb8bIhs+e4jpFljxHD25bDHgLeJ3s/fmtZpjUiDfEFlW4Srysv5Gt/c0aUDee+fkMebym9lAV8NWNNLPf2a9eC34Yc43KxgxJ26T5hWq15CHEaPvdF6APGFhIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iEK5+0srBFU680aOW6ei/TfkyNx/5rWU7XXZywJK6yo=;
- b=hYH9EhA9+6+fKqfzYwO8hD4isTeKuNOkQ8RjaLW8Xbu8zRjpBQB5U7+2KEZ9q0Iu3qjZNlwi+uvT7zt8y7RwT7Azp88Fa2Dy3qe5annopPitUoBGup7fJJUEFukema2Llpl8l5z0O/2dq3fuo1tQJ8ZTl8OU0WIZqITHJj9adutR4lLdjJ11zFRGlBQrfUKXN2K39k8+ygP0ICtaonNRTutbPCQ/Wj0GFt6CrADB36BOmlZQZXbwc8vKQ3GnzrTfpri1ug4kh6U+HrJLRy29MbKcuhOmVW/hjl/bCVrCWcZBXpKRzYmQXk8ZhHcyWbfOjwnE2vK4Mpea5brrie069w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from BYAPR11MB3224.namprd11.prod.outlook.com (2603:10b6:a03:77::24)
- by DM4PR11MB5536.namprd11.prod.outlook.com (2603:10b6:5:39b::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4909.10; Wed, 26 Jan
- 2022 21:39:39 +0000
-Received: from BYAPR11MB3224.namprd11.prod.outlook.com
- ([fe80::39fc:1b8e:f6b8:89e4]) by BYAPR11MB3224.namprd11.prod.outlook.com
- ([fe80::39fc:1b8e:f6b8:89e4%7]) with mapi id 15.20.4909.017; Wed, 26 Jan 2022
- 21:39:38 +0000
-From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH net-next 3/4] ice: switch: use a struct to pass packet
- template params
-Thread-Index: AQHYEUh93Nf+6AhoZEGW2tQUnrEoGKx118yA
-Date: Wed, 26 Jan 2022 21:39:38 +0000
-Message-ID: <6375d82b976f18eb085859082c548b35b168cf14.camel@intel.com>
-References: <20220124173116.739083-1-alexandr.lobakin@intel.com>
- <20220124173116.739083-4-alexandr.lobakin@intel.com>
-In-Reply-To: <20220124173116.739083-4-alexandr.lobakin@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.40.4 (3.40.4-1.fc34) 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4ce7f9b0-13f5-45d8-7eb9-08d9e1145a93
-x-ms-traffictypediagnostic: DM4PR11MB5536:EE_
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <DM4PR11MB5536E42D58BA08D1998266B9C6209@DM4PR11MB5536.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: K0cxwKTdu8bEMgPJfOAMeeDMPNlKiO+u+OTyP5aaYIVbcWBeRz3F75NshxdiOSxFN3twikkdLJYlZbnjp7Vemv2B0xnANONpZ1uP7wra6XFo+HAVGfS5lZyOl2VowJvgllNinMicy4YjE8WWSHF29zcV00I0EEPcpJ5pg2A3Bb2qRDQrcSxWr2mbsd2rkZujtD6J/CRL64IqjIICvojEmxGJmaAeDDRMLMBcntBi/lJ1jUZIkVCr00ye3F/+AKJtfyP7fGifWBgiCg9IjAvJD7pD9zbgl6+KNmabexp0OGwHm69AllSEX+8MbRft4iDvrZlfka5TQ05U7qH4lC7QVuvfWJdJ6t35obFC6PRQV4nVLYMxIO9KFP4Ckav3ZAypxv1aiSKMGpghAvxK0YLpYSiYajJQzZYVLxy6BgAUU2ZoQ1tdz+rCOP/72iBOuavCso/L73KWeFaeLouO/aQd2lOpg0q4vFFGo562pNvSNNEpyMtc5o54G6VVnoWZUUGXNcebkJ8YS2MjjNL/AzcY9fXAT1A+E+3gW+rLPM4i8jB3xC6CFV56dOOTV/C2EFxWmApNDFcflXgdD6UpfmyVApRtYegcpWC9ysf/QNpWW43HADa9QAb2gB5j+6WT4/9N0+2Faf5ppy1M21fOLC5kMj6hS0uPJEDnqIzjsiEIstXYm6CPHuTdn60KRUpSiJnz7NKYhqmE+/Ue1Unvd3/3BA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3224.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(508600001)(6512007)(26005)(2616005)(110136005)(54906003)(316002)(186003)(5660300002)(6486002)(36756003)(8676002)(122000001)(86362001)(38100700002)(6506007)(2906002)(8936002)(66946007)(64756008)(66446008)(66476007)(66556008)(83380400001)(91956017)(4326008)(82960400001)(71200400001)(76116006)(38070700005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NnljOW96MXF1aWxVQW9WVHU1NUVMSFR0aUZwdmhKMzlUWllzWUtQRm1VM2VG?=
- =?utf-8?B?SE9tUlI2RDZ1N0ZXRXNjRWw0bzNEbjA2aTQ4NUp2akVReG82ZXlCWjB4ZEpR?=
- =?utf-8?B?dDVvN3BTeEE4NUh6V2FTdmI0WFdodHI1ZUROeVNiL1pCUWY4V24vUHVwQkN4?=
- =?utf-8?B?cldKQ1g5dk4vRThkTDI3bEFUbXBRNm5jQm96WGtuSWU3STlzd0E3cmZ5U2Rh?=
- =?utf-8?B?eVN3YktUWTBRWW9iWG1DNHl0UDhUSUFpeGxGTzZnNDFaUVgrV3d4REZWT3Vy?=
- =?utf-8?B?THFKZWhVUXdEWEhQc0RzUk85WHc3bGtDdmJqN3lCWmVZWUEzT2tpUUY1dHdi?=
- =?utf-8?B?Wld6clduNlpOT1hzb21PVUJsVU5oaHZuSGZZNkxpaFBCR0d3SXE4dGEyYVUv?=
- =?utf-8?B?SGp6MytPV29FeGk3ZTJobnlTUFVnZlkwaWNIUVdXakh1QTVTM1lPaHZiMnIv?=
- =?utf-8?B?bGhzV2p6TktrNnRCNUIzVnJMd2Z2ak5PSmFkbEtVK3B5ZVFEVEQxa29lQ1ZJ?=
- =?utf-8?B?bGloSEkxU3hYeUM3eU1FVVJsWk9jNEJrZTF4Y1cxV2hjek9JMHhaVDc1UHRS?=
- =?utf-8?B?Y2daSTJXRlowVWdnc21vVUw0UDBKQnBWbHlha0RvSzY5NHN4NHJQRklLNlZV?=
- =?utf-8?B?a0hmMzh3T09YMVpLTU4vMTBPcGNwMnYwQktnYm94TllPc2tUTHhVRDNsNlQz?=
- =?utf-8?B?MTVMQkwyUEhNU0thNkp6T3E4V3gwUTlDVTZCL0ZPWHBDQzNnRDdSZlcvLzgx?=
- =?utf-8?B?ejFtUjlTOGUxam8yQnNNNUtsa3dSMTB0N3Q1a054cHRocGxMSG5tcThjbnBi?=
- =?utf-8?B?OWszK09ucXZGczN5VFVOYlVNV0hzeW1NMzRIeHlmOWdSamp4aGZ5WUxhZXVa?=
- =?utf-8?B?andwTlBJRW1rT3pJNkk5ckVIUjFlalRNakNaZnVNenRwNWlpc1U2L1lOSGsx?=
- =?utf-8?B?b0kvS0FKdXY1RHorMGVmd0FFcDJHTXFCNzNjVUdpaUIwdGZwWGFzYTBBQzdy?=
- =?utf-8?B?Qk5sVi8yRmRGdDMralU5cXBpS0tUaElPVEw0ODBhK1JNdG83Q2RrY1Z6b0Zm?=
- =?utf-8?B?MlErSzEvSDBKUWhWOXRDbFFtMEVPUWhZaWJaU0tZdldRa2gzVHhLc1VndGJj?=
- =?utf-8?B?cEFNWkpGVjNLTTFZWm4zc0QzTVJCM2RycmJHTWdQV2Njd2tRQ3dycHFYRjE5?=
- =?utf-8?B?ZE9PSFBrcWUzdVd6VmU2NlNSTkVCN2htc1BBUDVQTjhGWlJwa0ZnRU54RjlN?=
- =?utf-8?B?RytBa0w0Q1lxQ0toMzg1ZEhOUkZSODZkT1dmRU5NQVE4Nk1ReHVRdEpWbHhr?=
- =?utf-8?B?WTJ6T28rM3N6Qm9VeGlSTnpmN2lDQTc2RDFFR3R1SllVbUVEMkR0WFVXUDVi?=
- =?utf-8?B?VllZQmFXWlN2YjgxcXhtSVdCNTdHekthY2tjc0FhM3hRa21xandzL2RFK3JK?=
- =?utf-8?B?NitFTHZnbjU2OGpvTXpFWmFCT1JkeGZ3eTBYanZwZGNnMnJhQzJlYW9NNFEx?=
- =?utf-8?B?WXFYRC9QYUkvUjhqa0s3OWplK0N1bitrbFNtSS9YWEVuYlM4Y3hCOTMwaTFp?=
- =?utf-8?B?Nllib0tDVVZaOFZBYktBVVArZ0RaRHdFRzRwVEF0RWJHU2RqOWJPMjFNbTIv?=
- =?utf-8?B?Z0RvMHFFajd1a2ltKzdXK0QyNFZxd0RkZGVVa2dra1RVc3pkbHUxOS9RUGhq?=
- =?utf-8?B?QmQzL1NQRkFPaEREampScGx5aThlWXd6eGcrU0U1ZGRtNjlLVWgvWjRmSEtn?=
- =?utf-8?B?UGVLcENLY3VueGcrK1AyNENZYkQrVVNvdjZlam1WMUtGc0Z4dHorWFBMZE5O?=
- =?utf-8?B?WlRYY1UxeG1Id0twb0EzYXVkZzlpVTNaZlZ3NHNBL3cwR3FsR3VqU1hSbWYr?=
- =?utf-8?B?dm92Y3hsMXJHQzUvY0YzUkloTkJDT2RLemRyRmlQZTdIdEp1MEFLTzhtTHFZ?=
- =?utf-8?B?RzMxWGJmMldiK0ViVFdSemJkMHRzVGNtMGY4aFpTNVBzRWtGUDFEQm80RGQ3?=
- =?utf-8?B?a0JHTkN4a3FuMWExZnRER2NtcXMybHBaSGcxVE82bEZHbEFtUXJzWmt5U0RQ?=
- =?utf-8?B?L3dISlE1SVBUWTJEcmhrdmNmVUJua0x6blRLSThLNURrbXhqdzEvdThPYU9m?=
- =?utf-8?B?RFhwYUFiNzZTd3hVcXJrN093UGtPeGdoUGVsWHQ2ZHpQOWc0S1RjejVVbG9R?=
- =?utf-8?B?amIwVnloRDY5dWRMVUdhVUxFaW5WS3hHcVNBOUJBNnNBanpIWGRFWUd2YW5W?=
- =?utf-8?Q?FMs3Xolj7x2L1fTcFkbniSynkMCHcuufgTduOjin7Y=3D?=
-Content-ID: <4EB25B1F275C6343AAA6F6C8AA2B9B04@namprd11.prod.outlook.com>
+X-IronPort-AV: E=Sophos;i="5.88,320,1635231600"; d="scan'208";a="495686898"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 27 Jan 2022 02:50:53 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nD2Mf-000MVC-1F; Thu, 27 Jan 2022 10:50:53 +0000
+Date: Thu, 27 Jan 2022 18:50:00 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <61f278d8.EE12FVyETstZi9Oi%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3224.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ce7f9b0-13f5-45d8-7eb9-08d9e1145a93
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2022 21:39:38.3128 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: prDzV9OPan5eO+jtbiJweNAmwJdu7V3RZS1/9NCiJf2ufZcpnK3xKFGFT3TI0cazMOL3VBISh6oGZgfwj/q2rTX5EMoTaFJyXZl93ATolzk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5536
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/4] ice: switch: use a
- struct to pass packet template params
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ a95038a6ad455878e99ee43cd6e616b358564d94
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,51 +77,182 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gTW9uLCAyMDIyLTAxLTI0IGF0IDE4OjMxICswMTAwLCBBbGV4YW5kZXIgTG9iYWtpbiB3cm90
-ZToKPiBpY2VfZmluZF9kdW1teV9wYWNrZXQoKSBjb250YWlucyBhIGxvdCBvZiBib2lsZXJwbGF0
-ZSBjb2RlIGFuZCBhCj4gbmljZSByb29tIGZvciBjb3B5LXBhc3RlIG1pc3Rha2VzLgo+IEluc3Rl
-YWQgb2YgcGFzc2luZyAzIHNlcGFyYXRlIHBvaW50ZXJzIGJhY2sgYW5kIGZvcnRoIHRvIGdldCBw
-YWNrZXQKPiB0ZW1wbGF0ZSAoZHVtbXkpIHBhcmFtcywgZGlyZWN0bHkgcmV0dXJuIGEgc3RydWN0
-dXJlIGNvbnRhaW5pbmcKPiB0aGVtLiBUaGVuLCB1c2UgYSBtYWNybyB0byBjb21wb3NlIGNvbXBv
-dW5kIGxpdGVyYWxzIGFuZCBhdm9pZCBjb2RlCj4gZHVwbGljYXRpb24gb24gcmV0dXJuIHBhdGgu
-Cj4gTm93LCBkdW1teSBwYWNrZXQgdHlwZS9uYW1lIGlzIG5lZWRlZCBvbmx5IG9uY2UgdG8gcmV0
-dXJuIGEgZnVsbAo+IGNvcnJlY3QgdHJpcGxlIHBrdC1wa3RfbGVuLW9mZnNldHMsIGFuZCB0aG9z
-ZSBhcmUgYWxsIG9uZS1saW5lcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQWxleGFuZGVyIExvYmFr
-aW4gPGFsZXhhbmRyLmxvYmFraW5AaW50ZWwuY29tPgoKVGhpcyBpc24ndCBhcHBseWluZyB0byBu
-ZXh0LXF1ZXVlLgoKPHNuaXA+Cj4gQEAgLTQ5NjAsMTEgKzQ5NzQsOSBAQCBpY2VfYWRkX2Fkdl9y
-ZWNpcGUoc3RydWN0IGljZV9odyAqaHcsIHN0cnVjdAo+IGljZV9hZHZfbGt1cF9lbGVtICpsa3Vw
-cywKPiDCoCAqIEBwa3RfbGVuOiBwYWNrZXQgbGVuZ3RoIG9mIGR1bW15IHBhY2tldAo+IMKgICog
-QG9mZnNldHM6IHBvaW50ZXIgdG8gcmVjZWl2ZSB0aGUgcG9pbnRlciB0byB0aGUgb2Zmc2V0cyBm
-b3IgdGhlCj4gcGFja2V0Cj4gwqAgKi8KPiAtc3RhdGljIHZvaWQKPiArc3RhdGljIHN0cnVjdCBp
-Y2VfZHVtbXlfcGt0X3Byb2ZpbGUKPiDCoGljZV9maW5kX2R1bW15X3BhY2tldChzdHJ1Y3QgaWNl
-X2Fkdl9sa3VwX2VsZW0gKmxrdXBzLCB1MTYKPiBsa3Vwc19jbnQsCj4gLcKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZW51bSBpY2Vfc3dfdHVubmVsX3R5cGUgdHVuX3R5
-cGUsCj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29uc3QgdTgg
-Kipwa3QsIHUxNiAqcGt0X2xlbiwKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBjb25zdCBzdHJ1Y3QgaWNlX2R1bW15X3BrdF9vZmZzZXRzICoqb2Zmc2V0cykKPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlbnVtIGljZV9zd190dW5u
-ZWxfdHlwZSB0dW5fdHlwZSkKCmtkb2MgbmVlZHMgdG8gYmUgdXBkYXRlZCBoZXJlLgoKPHNuaXA+
-Cgo+IMKgLyoqCj4gQEAgLTUxMDQsOCArNTA2NSw3IEBAIGljZV9maW5kX2R1bW15X3BhY2tldChz
-dHJ1Y3QgaWNlX2Fkdl9sa3VwX2VsZW0KPiAqbGt1cHMsIHUxNiBsa3Vwc19jbnQsCj4gwqBzdGF0
-aWMgaW50Cj4gwqBpY2VfZmlsbF9hZHZfZHVtbXlfcGFja2V0KHN0cnVjdCBpY2VfYWR2X2xrdXBf
-ZWxlbSAqbGt1cHMsIHUxNgo+IGxrdXBzX2NudCwKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaWNlX2FxY19zd19ydWxlc19lbGVtICpz
-X3J1bGUsCj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBjb25zdCB1OCAqZHVtbXlfcGt0LCB1MTYgcGt0X2xlbiwKPiAtwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbnN0IHN0cnVjdCBpY2VfZHVtbXlfcGt0
-X29mZnNldHMKPiAqb2Zmc2V0cykKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIGNvbnN0IHN0cnVjdCBpY2VfZHVtbXlfcGt0X3Byb2ZpbGUKPiAqcHJv
-ZmlsZSkKCkhlcmUgYXMgd2VsbC4KClRoYW5rcywKVG9ueQpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cklu
-dGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: a95038a6ad455878e99ee43cd6e616b358564d94  iavf: Fix handling of vlan strip virtual channel messages
+
+elapsed time: 722m
+
+configs tested: 148
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20220124
+powerpc              randconfig-c003-20220124
+m68k                            q40_defconfig
+powerpc                 linkstation_defconfig
+arm                         s3c6400_defconfig
+m68k                           sun3_defconfig
+arm                        oxnas_v6_defconfig
+m68k                          multi_defconfig
+sparc                            allyesconfig
+powerpc                       ppc64_defconfig
+m68k                        stmark2_defconfig
+xtensa                  nommu_kc705_defconfig
+mips                         rt305x_defconfig
+arm                            zeus_defconfig
+nios2                         10m50_defconfig
+xtensa                              defconfig
+arc                        vdk_hs38_defconfig
+sh                          rsk7269_defconfig
+ia64                        generic_defconfig
+sh                           sh2007_defconfig
+um                                  defconfig
+sh                ecovec24-romimage_defconfig
+mips                       capcella_defconfig
+arm                          pxa910_defconfig
+arm                          simpad_defconfig
+m68k                          hp300_defconfig
+m68k                       m5249evb_defconfig
+arm                             rpc_defconfig
+mips                        bcm47xx_defconfig
+xtensa                  audio_kc705_defconfig
+mips                         cobalt_defconfig
+powerpc                      makalu_defconfig
+arm                         lubbock_defconfig
+sparc64                          alldefconfig
+sh                            migor_defconfig
+openrisc                 simple_smp_defconfig
+arm                           corgi_defconfig
+powerpc                  iss476-smp_defconfig
+arm                  randconfig-c002-20220127
+arm                  randconfig-c002-20220124
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20220124
+x86_64               randconfig-a003-20220124
+x86_64               randconfig-a001-20220124
+x86_64               randconfig-a004-20220124
+x86_64               randconfig-a005-20220124
+x86_64               randconfig-a006-20220124
+i386                 randconfig-a002-20220124
+i386                 randconfig-a005-20220124
+i386                 randconfig-a003-20220124
+i386                 randconfig-a004-20220124
+i386                 randconfig-a001-20220124
+i386                 randconfig-a006-20220124
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+arc                  randconfig-r043-20220126
+arc                  randconfig-r043-20220124
+riscv                randconfig-r042-20220125
+arc                  randconfig-r043-20220125
+s390                 randconfig-r044-20220125
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+arm                  randconfig-c002-20220124
+riscv                randconfig-c006-20220124
+i386                 randconfig-c001-20220124
+powerpc              randconfig-c003-20220124
+mips                 randconfig-c004-20220124
+x86_64               randconfig-c007-20220124
+arm                  colibri_pxa300_defconfig
+mips                     loongson2k_defconfig
+arm                        neponset_defconfig
+powerpc                     kmeter1_defconfig
+i386                             allyesconfig
+powerpc                      walnut_defconfig
+arm                          ixp4xx_defconfig
+powerpc                     kilauea_defconfig
+x86_64               randconfig-a011-20220124
+x86_64               randconfig-a013-20220124
+x86_64               randconfig-a015-20220124
+x86_64               randconfig-a016-20220124
+x86_64               randconfig-a014-20220124
+x86_64               randconfig-a012-20220124
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                 randconfig-a011-20220124
+i386                 randconfig-a016-20220124
+i386                 randconfig-a013-20220124
+i386                 randconfig-a014-20220124
+i386                 randconfig-a015-20220124
+i386                 randconfig-a012-20220124
+riscv                randconfig-r042-20220124
+hexagon              randconfig-r045-20220124
+hexagon              randconfig-r045-20220126
+hexagon              randconfig-r041-20220124
+hexagon              randconfig-r041-20220126
+riscv                randconfig-r042-20220126
+s390                 randconfig-r044-20220126
+s390                 randconfig-r044-20220124
+hexagon              randconfig-r045-20220125
+hexagon              randconfig-r041-20220125
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
