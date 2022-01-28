@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76CF749EFC9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 01:34:58 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4158A49EFD0
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 01:35:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B17BA403A2;
-	Fri, 28 Jan 2022 00:34:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DD25B60F81;
+	Fri, 28 Jan 2022 00:35:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3lB8wS7xkDoH; Fri, 28 Jan 2022 00:34:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Nh9UqpZQxxN8; Fri, 28 Jan 2022 00:35:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A8E44019A;
-	Fri, 28 Jan 2022 00:34:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19E8560F80;
+	Fri, 28 Jan 2022 00:35:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EFEB91C113E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 580A41C113E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CE11B84DAA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 067B4400E5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cP7_VywvmZfJ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jan 2022 00:34:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YOOdkI6fD_fn for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jan 2022 00:34:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 70D7184D6B
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E450940515
  for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643330078; x=1674866078;
+ t=1643330079; x=1674866079;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=FBrDYuOe2XtVZl8dOfG/B8Xor5dWZQlTKvsDZasKb7M=;
- b=Qh9c5QtlGOfNvi9oatTtLyyIXIAh8eQyOYsp44LHM419TF/LWheFp9j1
- QVv0g/45MMgFmsBBusVRMubLTCGI/cSoTZYRnOdUmWGxXy7xX/lctYekW
- NuH7muHCN9ygzP4M7brI5qcuKHVRA1zIalCPyQW0vd27b4PQD1Z8NTxr7
- 8WNgVQr5YwUqBYrBs2HpKB36uMuJsV2qL0FIshMLvTuf1T/lpuEpTGbRP
- /yglXt3IgI7Duwr+xoFP+IkydqnTvkEPyZl3OmzyjK02xRAPmoiaMQJfZ
- q4YYTxBeN5kcczGgYFgjIQlSzWy1wlWGH5s9xlEg6gm5PRk9+6Libhclp w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="234380426"
-X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="234380426"
+ bh=0FNhs0feFtDTn8HT1NE9QQM4QPJnY+OK06JPvBCJ09c=;
+ b=HwhT2nTCg5pPTK4elrbpaIdKpOLzSqCOP+rjqIDG86YGbG1eaUlLNSLs
+ npzV3S2eOcExn9SAE7diwlB/KggvIkYJDyfMMd5TBHEz8vFxBHZPD/+X2
+ CXyIJATjv49xOw4ICbttTe/Xl22/yskmTsJH3m9PSeCnoLCTRkadACQPd
+ NQk795FUk3u04uPV0gRNmdieGrhVIOF3Yet5eGW4QEnm6R3RuXdgpgm72
+ v+8ZLRwo/mgtuuetQZF1/Z1AJfgE5o9dSVozbNm80X/YGYUz5XOcwfmek
+ rGiEoHYmS4fWltDaEz7ohOfKH2WqeciFxZ5INjb/4CQGHOnRYdww0tEyn g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="234380427"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="234380427"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 Jan 2022 16:34:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="563999719"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="563999724"
 Received: from dev1-atbrady.jf.intel.com ([10.166.244.128])
  by orsmga001.jf.intel.com with ESMTP; 27 Jan 2022 16:34:26 -0800
 From: Alan Brady <alan.brady@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 Jan 2022 16:09:58 -0800
-Message-Id: <20220128001009.721392-9-alan.brady@intel.com>
+Date: Thu, 27 Jan 2022 16:09:59 -0800
+Message-Id: <20220128001009.721392-10-alan.brady@intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20220128001009.721392-1-alan.brady@intel.com>
 References: <20220128001009.721392-1-alan.brady@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 08/19] iecm: add interrupts and
- configure netdev
+Subject: [Intel-wired-lan] [PATCH net-next 09/19] iecm: alloc vport TX
+ resources
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,922 +76,1087 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>, Phani Burra <phani.r.burra@intel.com>
+Cc: Phani Burra <phani.r.burra@intel.com>,
+ Madhu Chittim <madhu.chittim@intel.com>,
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This finishes implementing init_task by adding everything we need to
-configure the netdevice for the vport and setup its interrupts.
+With init_task out of the way, we can start implementing open and data
+path. During open we'll allocate queue resources for vport. This only
+includes what's needed to get the TX resources. The next patch will get RX
+resources.
+
+The splitq model is unique in that it introduces the concept of "queue
+groups" where, for TX, we have some number of descriptor queues being
+serviced by one completion queue in a given group association. By
+'splitting' a normal queue into two queues, one context is just handling
+descriptors and one context handling buffers, we can more effeciently deal
+with both and configure asymmetric setups (multiple descriptor queues to
+one completion queue).
 
 Signed-off-by: Phani Burra <phani.r.burra@intel.com>
 Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
 Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
 Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Signed-off-by: Alice Michael <alice.michael@intel.com>
 Signed-off-by: Alan Brady <alan.brady@intel.com>
 ---
- drivers/net/ethernet/intel/iecm/iecm_lib.c    | 813 +++++++++++++++++-
- drivers/net/ethernet/intel/iecm/iecm_txrx.c   |  17 +
- .../net/ethernet/intel/iecm/iecm_virtchnl.c   | 165 ++++
- drivers/net/ethernet/intel/include/iecm.h     | 112 ++-
- .../net/ethernet/intel/include/iecm_txrx.h    |   2 +
- 5 files changed, 1104 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/iecm/Makefile      |    1 +
+ drivers/net/ethernet/intel/iecm/iecm_lib.c    |  369 ++++-
+ .../ethernet/intel/iecm/iecm_singleq_txrx.c   |   29 +
+ drivers/net/ethernet/intel/iecm/iecm_txrx.c   | 1282 ++++++++++++++++-
+ .../net/ethernet/intel/iecm/iecm_virtchnl.c   |   29 +
+ drivers/net/ethernet/intel/include/iecm.h     |   28 +
+ .../ethernet/intel/include/iecm_lan_txrx.h    |  394 +++++
+ .../net/ethernet/intel/include/iecm_txrx.h    |   96 ++
+ 8 files changed, 2214 insertions(+), 14 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/include/iecm_lan_txrx.h
 
+diff --git a/drivers/net/ethernet/intel/iecm/Makefile b/drivers/net/ethernet/intel/iecm/Makefile
+index fcb49402334f..205d6f2b436a 100644
+--- a/drivers/net/ethernet/intel/iecm/Makefile
++++ b/drivers/net/ethernet/intel/iecm/Makefile
+@@ -14,6 +14,7 @@ iecm-y := \
+ 	iecm_lib.o \
+ 	iecm_virtchnl.o \
+ 	iecm_txrx.o \
++	iecm_singleq_txrx.o \
+ 	iecm_controlq.o \
+ 	iecm_controlq_setup.o \
+ 	iecm_main.o
 diff --git a/drivers/net/ethernet/intel/iecm/iecm_lib.c b/drivers/net/ethernet/intel/iecm/iecm_lib.c
-index aab8ee40424e..255b04c25683 100644
+index 255b04c25683..037a0e06bb7b 100644
 --- a/drivers/net/ethernet/intel/iecm/iecm_lib.c
 +++ b/drivers/net/ethernet/intel/iecm/iecm_lib.c
-@@ -5,11 +5,35 @@
- 
- #include "iecm.h"
- 
-+static const struct net_device_ops iecm_netdev_ops_splitq;
-+static const struct net_device_ops iecm_netdev_ops_singleq;
-+
- const char * const iecm_vport_vc_state_str[] = {
- 	IECM_FOREACH_VPORT_VC_STATE(IECM_GEN_STRING)
- };
- EXPORT_SYMBOL(iecm_vport_vc_state_str);
- 
-+/**
-+ * iecm_get_vport_index - Get the vport index
-+ * @adapter: adapter structure to get the vports array
-+ * @vport: vport pointer for which the index to find
-+ */
-+static int iecm_get_vport_index(struct iecm_adapter *adapter,
-+				struct iecm_vport *vport)
-+{
-+	int i, err = -EINVAL;
-+
-+	if (!adapter->vports)
-+		return err;
-+
-+	for (i = 0; i < adapter->num_alloc_vport; i++) {
-+		if (adapter->vports[i] != vport)
-+			continue;
-+		return i;
-+	}
-+	return err;
-+}
-+
- /**
-  * iecm_is_feature_ena - Determine if a particular feature is enabled
-  * @vport: vport to check
-@@ -29,6 +53,595 @@ bool iecm_is_feature_ena(struct iecm_vport *vport, netdev_features_t feature)
- 	return ena;
+@@ -480,6 +480,54 @@ static struct iecm_mac_filter *iecm_add_mac_filter(struct iecm_vport *vport,
+ 	return f;
  }
  
 +/**
-+ * iecm_is_vlan_cap_ena - Check if VLAN capability is enabled
-+ * @adapter: pointer to adapter
-+ * @vcaps: VLAN capability bit
++ * iecm_set_all_filters - Re-add all MAC filters in list
++ * @vport: main vport struct
 + *
-+ * Returns true if VLAN capability is set, false otherwise
++ * Takes mac_filter_list_lock spinlock.  Sets add field to true for filters to
++ * resync filters back to HW.
 + */
-+static bool iecm_is_vlan_cap_ena(struct iecm_adapter *adapter,
-+				 enum iecm_vlan_caps vcaps)
-+{
-+	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_VLAN)) {
-+		struct virtchnl_vlan_supported_caps *offload;
-+
-+		if (!adapter->vlan_caps)
-+			return false;
-+
-+		switch (vcaps) {
-+		case IECM_CAP_VLAN_CTAG_INSERT:
-+			offload =
-+			&adapter->vlan_caps->offloads.insertion_support;
-+			if ((offload->outer & IECM_VLAN_8100) == IECM_VLAN_8100 ||
-+			    (offload->inner & IECM_VLAN_8100) == IECM_VLAN_8100)
-+				return true;
-+			break;
-+		case IECM_CAP_VLAN_STAG_INSERT:
-+			offload =
-+			&adapter->vlan_caps->offloads.insertion_support;
-+			if ((offload->outer & IECM_VLAN_88A8) == IECM_VLAN_88A8)
-+				return true;
-+			break;
-+		case IECM_CAP_VLAN_CTAG_STRIP:
-+			offload =
-+			&adapter->vlan_caps->offloads.stripping_support;
-+			if ((offload->outer & IECM_VLAN_8100) == IECM_VLAN_8100 ||
-+			    (offload->inner & IECM_VLAN_8100) == IECM_VLAN_8100)
-+				return true;
-+			break;
-+		case IECM_CAP_VLAN_STAG_STRIP:
-+			offload =
-+			&adapter->vlan_caps->offloads.stripping_support;
-+			if ((offload->outer & IECM_VLAN_88A8) == IECM_VLAN_88A8)
-+				return true;
-+			break;
-+		case IECM_CAP_VLAN_CTAG_ADD_DEL:
-+			offload =
-+			&adapter->vlan_caps->filtering.filtering_support;
-+			if ((offload->outer & VIRTCHNL_VLAN_ETHERTYPE_8100) ||
-+			    (offload->inner & VIRTCHNL_VLAN_ETHERTYPE_8100))
-+				return true;
-+			break;
-+		case IECM_CAP_VLAN_STAG_ADD_DEL:
-+			offload =
-+			&adapter->vlan_caps->filtering.filtering_support;
-+			if ((offload->outer & VIRTCHNL_VLAN_ETHERTYPE_88A8) ||
-+			    (offload->inner & VIRTCHNL_VLAN_ETHERTYPE_88A8))
-+				return true;
-+			break;
-+		default:
-+			dev_err(&adapter->pdev->dev, "Invalid VLAN capability %d\n",
-+				vcaps);
-+			return false;
-+		}
-+	} else if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS,
-+				   VIRTCHNL2_CAP_VLAN)) {
-+		switch (vcaps) {
-+		case IECM_CAP_VLAN_CTAG_INSERT:
-+		case IECM_CAP_VLAN_CTAG_STRIP:
-+		case IECM_CAP_VLAN_CTAG_ADD_DEL:
-+			return true;
-+		default:
-+			return false;
-+		}
-+	}
-+
-+	return false;
-+}
-+
-+/**
-+ * iecm_netdev_to_vport - get a vport handle from a netdev
-+ * @netdev: network interface device structure
-+ */
-+struct iecm_vport *iecm_netdev_to_vport(struct net_device *netdev)
-+{
-+	struct iecm_netdev_priv *np = netdev_priv(netdev);
-+
-+	return np->vport;
-+}
-+
-+/**
-+ * iecm_mb_intr_rel_irq - Free the IRQ association with the OS
-+ * @adapter: adapter structure
-+ */
-+static void iecm_mb_intr_rel_irq(struct iecm_adapter *adapter)
-+{
-+	int irq_num;
-+
-+	irq_num = adapter->msix_entries[0].vector;
-+	free_irq(irq_num, adapter);
-+}
-+
-+/**
-+ * iecm_intr_rel - Release interrupt capabilities and free memory
-+ * @adapter: adapter to disable interrupts on
-+ */
-+static void iecm_intr_rel(struct iecm_adapter *adapter)
-+{
-+	if (!adapter->msix_entries)
-+		return;
-+	clear_bit(__IECM_MB_INTR_MODE, adapter->flags);
-+	clear_bit(__IECM_MB_INTR_TRIGGER, adapter->flags);
-+	iecm_mb_intr_rel_irq(adapter);
-+
-+	pci_free_irq_vectors(adapter->pdev);
-+	if (adapter->dev_ops.vc_ops.dealloc_vectors) {
-+		int err;
-+
-+		err = adapter->dev_ops.vc_ops.dealloc_vectors(adapter);
-+		if (err) {
-+			dev_err(&adapter->pdev->dev,
-+				"Failed to deallocate vectors: %d\n", err);
-+		}
-+	}
-+	kfree(adapter->msix_entries);
-+	adapter->msix_entries = NULL;
-+	kfree(adapter->req_vec_chunks);
-+	adapter->req_vec_chunks = NULL;
-+}
-+
-+/**
-+ * iecm_mb_intr_clean - Interrupt handler for the mailbox
-+ * @irq: interrupt number
-+ * @data: pointer to the adapter structure
-+ */
-+static irqreturn_t iecm_mb_intr_clean(int __always_unused irq, void *data)
-+{
-+	struct iecm_adapter *adapter = (struct iecm_adapter *)data;
-+
-+	set_bit(__IECM_MB_INTR_TRIGGER, adapter->flags);
-+	queue_delayed_work(adapter->serv_wq, &adapter->serv_task,
-+			   msecs_to_jiffies(0));
-+	return IRQ_HANDLED;
-+}
-+
-+/**
-+ * iecm_mb_irq_enable - Enable MSIX interrupt for the mailbox
-+ * @adapter: adapter to get the hardware address for register write
-+ */
-+static void iecm_mb_irq_enable(struct iecm_adapter *adapter)
-+{
-+	struct iecm_hw *hw = &adapter->hw;
-+	struct iecm_intr_reg *intr = &adapter->mb_vector.intr_reg;
-+	u32 val;
-+
-+	val = intr->dyn_ctl_intena_m | intr->dyn_ctl_itridx_m;
-+	wr32(hw, intr->dyn_ctl, val);
-+	wr32(hw, intr->icr_ena, intr->icr_ena_ctlq_m);
-+}
-+
-+/**
-+ * iecm_mb_intr_req_irq - Request irq for the mailbox interrupt
-+ * @adapter: adapter structure to pass to the mailbox irq handler
-+ */
-+static int iecm_mb_intr_req_irq(struct iecm_adapter *adapter)
-+{
-+	struct iecm_q_vector *mb_vector = &adapter->mb_vector;
-+	int irq_num, mb_vidx = 0, err;
-+
-+	irq_num = adapter->msix_entries[mb_vidx].vector;
-+	snprintf(mb_vector->name, sizeof(mb_vector->name) - 1,
-+		 "%s-%s-%d", dev_driver_string(&adapter->pdev->dev),
-+		 "Mailbox", mb_vidx);
-+	err = request_irq(irq_num, adapter->irq_mb_handler, 0,
-+			  mb_vector->name, adapter);
-+	if (err) {
-+		dev_err(&adapter->pdev->dev,
-+			"Request_irq for mailbox failed, error: %d\n", err);
-+		return err;
-+	}
-+	set_bit(__IECM_MB_INTR_MODE, adapter->flags);
-+	return 0;
-+}
-+
-+/**
-+ * iecm_get_mb_vec_id - Get vector index for mailbox
-+ * @adapter: adapter structure to access the vector chunks
-+ *
-+ * The first vector id in the requested vector chunks from the CP is for
-+ * the mailbox
-+ */
-+static void iecm_get_mb_vec_id(struct iecm_adapter *adapter)
-+{
-+	if (adapter->req_vec_chunks) {
-+		struct virtchnl2_get_capabilities *caps;
-+
-+		caps = (struct virtchnl2_get_capabilities *)adapter->caps;
-+		adapter->mb_vector.v_idx = le16_to_cpu(caps->mailbox_vector_id);
-+	} else {
-+		adapter->mb_vector.v_idx = 0;
-+	}
-+}
-+
-+/**
-+ * iecm_mb_intr_init - Initialize the mailbox interrupt
-+ * @adapter: adapter structure to store the mailbox vector
-+ */
-+static int iecm_mb_intr_init(struct iecm_adapter *adapter)
-+{
-+	adapter->dev_ops.reg_ops.mb_intr_reg_init(adapter);
-+	adapter->irq_mb_handler = iecm_mb_intr_clean;
-+	return iecm_mb_intr_req_irq(adapter);
-+}
-+
-+/**
-+ * iecm_intr_distribute - Distribute MSIX vectors
-+ * @adapter: adapter structure to get the vports
-+ * @pre_req: before or after msi request
-+ *
-+ * Distribute the MSIX vectors acquired from the OS to the vports based on the
-+ * num of vectors requested by each vport
-+ */
-+static int
-+iecm_intr_distribute(struct iecm_adapter *adapter, bool pre_req)
-+{
-+	struct iecm_vport *vport = adapter->vports[0];
-+	int err = 0;
-+
-+	if (pre_req) {
-+		u16 vecs_avail;
-+
-+		vecs_avail = iecm_get_reserved_vecs(adapter);
-+		if (vecs_avail < IECM_MIN_VEC) {
-+			return -EAGAIN;
-+		} else if (vecs_avail == IECM_MIN_VEC) {
-+			vport->num_q_vectors = IECM_MIN_Q_VEC;
-+		} else {
-+			vport->num_q_vectors = vecs_avail - IECM_NONQ_VEC -
-+						IECM_MAX_RDMA_VEC;
-+		}
-+	} else {
-+		if (adapter->num_msix_entries != adapter->num_req_msix)
-+			vport->num_q_vectors = adapter->num_msix_entries -
-+					       IECM_NONQ_VEC;
-+	}
-+
-+	return err;
-+}
-+
-+/**
-+ * iecm_intr_req - Request interrupt capabilities
-+ * @adapter: adapter to enable interrupts on
-+ *
-+ * Returns 0 on success, negative on failure
-+ */
-+static int iecm_intr_req(struct iecm_adapter *adapter)
-+{
-+	int min_vectors, max_vectors, err = 0;
-+	int num_q_vecs, total_num_vecs;
-+	u16 vecids[IECM_MAX_VECIDS];
-+	unsigned int vector;
-+	int v_actual;
-+
-+	err = iecm_intr_distribute(adapter, true);
-+	if (err)
-+		return err;
-+
-+	num_q_vecs = adapter->vports[0]->num_q_vectors;
-+
-+	total_num_vecs = num_q_vecs + IECM_NONQ_VEC;
-+
-+	if (adapter->dev_ops.vc_ops.alloc_vectors) {
-+		err = adapter->dev_ops.vc_ops.alloc_vectors(adapter,
-+							    num_q_vecs);
-+		if (err) {
-+			dev_err(&adapter->pdev->dev,
-+				"Failed to allocate vectors: %d\n", err);
-+			return -EAGAIN;
-+		}
-+	}
-+
-+	min_vectors = IECM_MIN_VEC;
-+	max_vectors = total_num_vecs;
-+	v_actual = pci_alloc_irq_vectors(adapter->pdev, min_vectors,
-+					 max_vectors, PCI_IRQ_MSIX);
-+	if (v_actual < 0) {
-+		dev_err(&adapter->pdev->dev, "Failed to allocate MSIX vectors: %d\n",
-+			v_actual);
-+		if (adapter->dev_ops.vc_ops.dealloc_vectors)
-+			adapter->dev_ops.vc_ops.dealloc_vectors(adapter);
-+		return -EAGAIN;
-+	}
-+
-+	adapter->msix_entries = kcalloc(v_actual, sizeof(struct msix_entry),
-+					GFP_KERNEL);
-+
-+	if (!adapter->msix_entries) {
-+		pci_free_irq_vectors(adapter->pdev);
-+		if (adapter->dev_ops.vc_ops.dealloc_vectors)
-+			adapter->dev_ops.vc_ops.dealloc_vectors(adapter);
-+		return -ENOMEM;
-+	}
-+
-+	iecm_get_mb_vec_id(adapter);
-+
-+	if (adapter->req_vec_chunks) {
-+		struct virtchnl2_vector_chunks *vchunks;
-+		struct virtchnl2_alloc_vectors *ac;
-+
-+		ac = adapter->req_vec_chunks;
-+		vchunks = &ac->vchunks;
-+
-+		iecm_get_vec_ids(adapter, vecids, IECM_MAX_VECIDS, vchunks);
-+	} else {
-+		int i = 0;
-+
-+		for (i = 0; i < v_actual; i++)
-+			vecids[i] = i;
-+	}
-+
-+	for (vector = 0; vector < v_actual; vector++) {
-+		adapter->msix_entries[vector].entry = vecids[vector];
-+		adapter->msix_entries[vector].vector =
-+			pci_irq_vector(adapter->pdev, vector);
-+	}
-+	adapter->num_msix_entries = v_actual;
-+	adapter->num_req_msix = total_num_vecs;
-+
-+	iecm_intr_distribute(adapter, false);
-+
-+	err = iecm_mb_intr_init(adapter);
-+	if (err)
-+		goto intr_rel;
-+	iecm_mb_irq_enable(adapter);
-+	return err;
-+
-+intr_rel:
-+	iecm_intr_rel(adapter);
-+	return err;
-+}
-+
-+/**
-+ * iecm_find_mac_filter - Search filter list for specific mac filter
-+ * @vport: main vport structure
-+ * @macaddr: the MAC address
-+ *
-+ * Returns ptr to the filter object or NULL. Must be called while holding the
-+ * mac_filter_list_lock.
-+ **/
-+static struct
-+iecm_mac_filter *iecm_find_mac_filter(struct iecm_vport *vport,
-+				      const u8 *macaddr)
++static void iecm_set_all_filters(struct iecm_vport *vport)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
 +	struct iecm_mac_filter *f;
-+
-+	if (!macaddr)
-+		return NULL;
-+
-+	list_for_each_entry(f, &adapter->config_data.mac_filter_list, list) {
-+		if (ether_addr_equal(macaddr, f->macaddr))
-+			return f;
-+	}
-+	return NULL;
-+}
-+
-+/**
-+ * __iecm_add_mac_filter - Add mac filter helper function
-+ * @vport: main vport struct
-+ * @macaddr: address to add
-+ *
-+ * Takes mac_filter_list_lock spinlock to add new filter to list.
-+ */
-+static struct
-+iecm_mac_filter *__iecm_add_mac_filter(struct iecm_vport *vport,
-+				       const u8 *macaddr)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_mac_filter *f = NULL;
 +
 +	spin_lock_bh(&adapter->mac_filter_list_lock);
-+	f = iecm_find_mac_filter(vport, macaddr);
-+	if (!f) {
-+		f = kzalloc(sizeof(*f), GFP_ATOMIC);
-+		if (!f) {
-+			dev_err(&adapter->pdev->dev, "Failed to allocate filter: %pM",
-+				macaddr);
-+			goto error;
-+		}
-+
-+		ether_addr_copy(f->macaddr, macaddr);
-+
-+		list_add_tail(&f->list, &adapter->config_data.mac_filter_list);
-+		f->add = true;
-+	} else {
-+		f->remove = false;
++	list_for_each_entry(f, &adapter->config_data.mac_filter_list, list) {
++		if (!f->remove)
++			f->add = true;
 +	}
-+error:
 +	spin_unlock_bh(&adapter->mac_filter_list_lock);
 +
-+	return f;
++	iecm_add_del_ether_addrs(vport, true, false);
 +}
 +
 +/**
-+ * iecm_add_mac_filter - Add a mac filter to the filter list
-+ * @vport: main vport structure
-+ * @macaddr: the MAC address
++ * iecm_set_all_vlans - Re-add all VLANs in list
++ * @vport: main vport struct
 + *
-+ * Returns ptr to the filter or NULL on error. If interface is up, we'll also
-+ * send the virtchnl message to tell hardware about the filter.
-+ **/
-+static struct iecm_mac_filter *iecm_add_mac_filter(struct iecm_vport *vport,
-+						   const u8 *macaddr)
-+{
-+	struct iecm_mac_filter *f;
-+
-+	if (!macaddr)
-+		return NULL;
-+
-+	f = __iecm_add_mac_filter(vport, macaddr);
-+	if (!f)
-+		return NULL;
-+
-+	if (vport->adapter->state == __IECM_UP)
-+		iecm_add_del_ether_addrs(vport, true, false);
-+
-+	return f;
-+}
-+
-+/**
-+ * iecm_init_mac_addr - initialize mac address for vport
-+ * @vport: main vport structure
-+ * @netdev: pointer to netdev struct associated with this vport
++ * Takes vlan_list_lock spinlock.  Sets add field to true for vlan filters and
++ * resyncs vlans back to HW.
 + */
-+static int iecm_init_mac_addr(struct iecm_vport *vport,
-+			      struct net_device *netdev)
++static void iecm_set_all_vlans(struct iecm_vport *vport)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_vlan_filter *f;
 +
-+	if (!is_valid_ether_addr(vport->default_mac_addr)) {
-+		if (!iecm_is_cap_ena(vport->adapter, IECM_OTHER_CAPS,
-+				     VIRTCHNL2_CAP_MACFILTER)) {
-+			dev_err(&adapter->pdev->dev,
-+				"MAC address not provided and capability is not set\n");
-+			return -EINVAL;
-+		}
-+
-+		dev_info(&adapter->pdev->dev, "Invalid MAC address %pM, using random\n",
-+			 vport->default_mac_addr);
-+		eth_hw_addr_random(netdev);
-+
-+		if (!iecm_add_mac_filter(vport, netdev->dev_addr))
-+			return -ENOMEM;
-+
-+		ether_addr_copy(vport->default_mac_addr, netdev->dev_addr);
-+	} else {
-+		dev_addr_mod(netdev, 0, vport->default_mac_addr, ETH_ALEN);
-+		ether_addr_copy(netdev->perm_addr, vport->default_mac_addr);
++	spin_lock_bh(&adapter->vlan_list_lock);
++	list_for_each_entry(f, &adapter->config_data.vlan_filter_list, list) {
++		if (!f->remove)
++			f->add = true;
 +	}
++	spin_unlock_bh(&adapter->vlan_list_lock);
 +
-+	return 0;
-+}
-+
-+/**
-+ * iecm_cfg_netdev - Allocate, configure and register a netdev
-+ * @vport: main vport structure
-+ *
-+ * Returns 0 on success, negative value on failure.
-+ */
-+static int iecm_cfg_netdev(struct iecm_vport *vport)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	netdev_features_t dflt_features;
-+	netdev_features_t offloads = 0;
-+	struct iecm_netdev_priv *np;
-+	struct net_device *netdev;
-+	u16 max_q;
-+	int err;
-+
-+	lockdep_assert_held(&adapter->sw_mutex);
-+
-+	/* It's possible we already have a netdev allocated and registered for
-+	 * this vport
++	/* Do both add and remove to make sure list is in sync in the case
++	 * filters were added and removed before up.
 +	 */
-+	if (adapter->netdevs[vport->idx]) {
-+		netdev = adapter->netdevs[vport->idx];
-+		np = netdev_priv(netdev);
-+		np->vport = vport;
-+		vport->netdev = netdev;
-+
-+		return iecm_init_mac_addr(vport, netdev);
-+	}
-+
-+	max_q = adapter->max_queue_limit;
-+
-+	netdev = alloc_etherdev_mqs(sizeof(struct iecm_netdev_priv),
-+				    max_q, max_q);
-+	if (!netdev)
-+		return -ENOMEM;
-+	vport->netdev = netdev;
-+	np = netdev_priv(netdev);
-+	np->vport = vport;
-+
-+	err = iecm_init_mac_addr(vport, netdev);
-+	if (err)
-+		goto err;
-+
-+	/* assign netdev_ops */
-+	if (iecm_is_queue_model_split(vport->txq_model))
-+		netdev->netdev_ops = &iecm_netdev_ops_splitq;
-+	else
-+		netdev->netdev_ops = &iecm_netdev_ops_singleq;
-+
-+	/* setup watchdog timeout value to be 5 second */
-+	netdev->watchdog_timeo = 5 * HZ;
-+
-+	/* configure default MTU size */
-+	netdev->min_mtu = ETH_MIN_MTU;
-+	netdev->max_mtu = vport->max_mtu;
-+
-+	dflt_features = NETIF_F_SG	|
-+			NETIF_F_HIGHDMA;
-+
-+	if (iecm_is_cap_ena_all(adapter, IECM_RSS_CAPS, IECM_CAP_RSS))
-+		dflt_features |= NETIF_F_RXHASH;
-+	if (iecm_is_cap_ena_all(adapter, IECM_CSUM_CAPS, IECM_CAP_RX_CSUM_L4V4))
-+		dflt_features |= NETIF_F_IP_CSUM;
-+	if (iecm_is_cap_ena_all(adapter, IECM_CSUM_CAPS, IECM_CAP_RX_CSUM_L4V6))
-+		dflt_features |= NETIF_F_IPV6_CSUM;
-+	if (iecm_is_cap_ena(adapter, IECM_CSUM_CAPS, IECM_CAP_RX_CSUM))
-+		dflt_features |= NETIF_F_RXCSUM;
-+	if (iecm_is_cap_ena_all(adapter, IECM_CSUM_CAPS, IECM_CAP_SCTP_CSUM))
-+		dflt_features |= NETIF_F_SCTP_CRC;
-+
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_CTAG_INSERT))
-+		dflt_features |= IECM_F_HW_VLAN_CTAG_TX;
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_CTAG_STRIP))
-+		dflt_features |= IECM_F_HW_VLAN_CTAG_RX;
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_CTAG_ADD_DEL))
-+		dflt_features |= IECM_F_HW_VLAN_CTAG_FILTER;
-+
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_STAG_INSERT))
-+		dflt_features |= NETIF_F_HW_VLAN_STAG_TX;
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_STAG_STRIP))
-+		dflt_features |= NETIF_F_HW_VLAN_STAG_RX;
-+	if (iecm_is_vlan_cap_ena(adapter, IECM_CAP_VLAN_STAG_ADD_DEL))
-+		dflt_features |= NETIF_F_HW_VLAN_STAG_FILTER;
-+	/* Enable cloud filter if ADQ is supported */
-+	if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS, VIRTCHNL2_CAP_ADQ) ||
-+	    iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADQ))
-+		dflt_features |= NETIF_F_HW_TC;
-+	if (iecm_is_cap_ena(adapter, IECM_SEG_CAPS, VIRTCHNL2_CAP_SEG_IPV4_TCP))
-+		dflt_features |= NETIF_F_TSO;
-+	if (iecm_is_cap_ena(adapter, IECM_SEG_CAPS, VIRTCHNL2_CAP_SEG_IPV6_TCP))
-+		dflt_features |= NETIF_F_TSO6;
-+	if (iecm_is_cap_ena_all(adapter, IECM_SEG_CAPS,
-+				VIRTCHNL2_CAP_SEG_IPV4_UDP |
-+				VIRTCHNL2_CAP_SEG_IPV6_UDP))
-+		dflt_features |= NETIF_F_GSO_UDP_L4;
-+	if (iecm_is_cap_ena_all(adapter, IECM_RSC_CAPS, IECM_CAP_RSC))
-+		offloads |= NETIF_F_GRO_HW;
-+	netdev->features |= dflt_features;
-+	netdev->hw_features |= dflt_features | offloads;
-+	netdev->hw_enc_features |= dflt_features | offloads;
-+
-+	SET_NETDEV_DEV(netdev, &adapter->pdev->dev);
-+
-+	/* carrier off on init to avoid Tx hangs */
-+	netif_carrier_off(netdev);
-+
-+	/* make sure transmit queues start off as stopped */
-+	netif_tx_stop_all_queues(netdev);
-+
-+	/* register last */
-+	err = register_netdev(netdev);
-+	if (err)
-+		goto err;
-+
-+	/* The vport can be arbitrarily released so we need to also track
-+	 * netdevs in the adapter struct
-+	 */
-+	adapter->netdevs[vport->idx] = netdev;
-+
-+	return 0;
-+err:
-+	free_netdev(vport->netdev);
-+	vport->netdev = NULL;
-+
-+	return err;
++	adapter->dev_ops.vc_ops.add_del_vlans(vport, false);
++	adapter->dev_ops.vc_ops.add_del_vlans(vport, true);
 +}
 +
  /**
-  * iecm_cfg_hw - Initialize HW struct
-  * @adapter: adapter to setup hw struct for
-@@ -77,6 +690,24 @@ static int iecm_get_free_slot(void *array, int size, int curr)
+  * iecm_init_mac_addr - initialize mac address for vport
+  * @vport: main vport structure
+@@ -690,6 +738,63 @@ static int iecm_get_free_slot(void *array, int size, int curr)
  	return next;
  }
  
 +/**
-+ * iecm_decfg_netdev - Unregister the netdev
-+ * @vport: vport for which netdev to be unregistred
++ * iecm_vport_stop - Disable a vport
++ * @vport: vport to disable
 + */
-+static void iecm_decfg_netdev(struct iecm_vport *vport)
++static void iecm_vport_stop(struct iecm_vport *vport)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
 +
-+	if (!vport->netdev)
-+		return;
++	mutex_lock(&vport->stop_mutex);
++	if (adapter->state <= __IECM_DOWN)
++		goto stop_unlock;
 +
-+	unregister_netdev(vport->netdev);
-+	free_netdev(vport->netdev);
-+	vport->netdev = NULL;
++	netif_tx_stop_all_queues(vport->netdev);
++	netif_carrier_off(vport->netdev);
++	netif_tx_disable(vport->netdev);
 +
-+	adapter->netdevs[vport->idx] = NULL;
++	if (adapter->dev_ops.vc_ops.disable_vport)
++		adapter->dev_ops.vc_ops.disable_vport(vport);
++	adapter->dev_ops.vc_ops.disable_queues(vport);
++	adapter->dev_ops.vc_ops.irq_map_unmap(vport, false);
++	/* Normally we ask for queues in create_vport, but if we're changing
++	 * number of requested queues we do a delete then add instead of
++	 * deleting and reallocating the vport.
++	 */
++	if (test_and_clear_bit(__IECM_DEL_QUEUES,
++			       vport->adapter->flags))
++		iecm_send_delete_queues_msg(vport);
++
++	adapter->link_up = false;
++	iecm_vport_intr_deinit(vport);
++	iecm_vport_intr_rel(vport);
++	iecm_vport_queues_rel(vport);
++	adapter->state = __IECM_DOWN;
++
++stop_unlock:
++	mutex_unlock(&vport->stop_mutex);
++}
++
++/**
++ * iecm_stop - Disables a network interface
++ * @netdev: network interface device structure
++ *
++ * The stop entry point is called when an interface is de-activated by the OS,
++ * and the netdevice enters the DOWN state.  The hardware is still under the
++ * driver's control, but the netdev interface is disabled.
++ *
++ * Returns success only - not allowed to fail
++ */
++static int iecm_stop(struct net_device *netdev)
++{
++	struct iecm_netdev_priv *np = netdev_priv(netdev);
++
++	iecm_vport_stop(np->vport);
++
++	return 0;
 +}
 +
  /**
-  * iecm_vport_rel - Delete a vport and free its resources
-  * @vport: the vport being removed
-@@ -102,6 +733,8 @@ static void iecm_vport_rel_all(struct iecm_adapter *adapter)
+  * iecm_decfg_netdev - Unregister the netdev
+  * @vport: vport for which netdev to be unregistred
+@@ -714,6 +819,11 @@ static void iecm_decfg_netdev(struct iecm_vport *vport)
+  */
+ static void iecm_vport_rel(struct iecm_vport *vport)
+ {
++	struct iecm_adapter *adapter = vport->adapter;
++
++	iecm_deinit_rss(vport);
++	if (adapter->dev_ops.vc_ops.destroy_vport)
++		adapter->dev_ops.vc_ops.destroy_vport(vport);
+ 	mutex_destroy(&vport->stop_mutex);
+ 	kfree(vport);
+ }
+@@ -733,6 +843,7 @@ static void iecm_vport_rel_all(struct iecm_adapter *adapter)
  		if (!adapter->vports[i])
  			continue;
  
-+		if (!test_bit(__IECM_HR_RESET_IN_PROG, adapter->flags))
-+			iecm_decfg_netdev(adapter->vports[i]);
++		iecm_vport_stop(adapter->vports[i]);
+ 		if (!test_bit(__IECM_HR_RESET_IN_PROG, adapter->flags))
+ 			iecm_decfg_netdev(adapter->vports[i]);
  		iecm_vport_rel(adapter->vports[i]);
- 		adapter->vports[i] = NULL;
- 		adapter->next_vport = 0;
-@@ -151,7 +784,7 @@ iecm_vport_alloc(struct iecm_adapter *adapter, int vport_id)
+@@ -782,6 +893,7 @@ iecm_vport_alloc(struct iecm_adapter *adapter, int vport_id)
+ 	vport->idx = adapter->next_vport;
+ 	vport->compln_clean_budget = IECM_TX_COMPLQ_CLEAN_BUDGET;
  	adapter->num_alloc_vport++;
++	adapter->dev_ops.vc_ops.vport_init(vport, vport_id);
  
  	/* Setup default MSIX irq handler for the vport */
--	vport->irq_q_handler = NULL;
-+	vport->irq_q_handler = iecm_vport_intr_clean_queues;
- 	vport->q_vector_base = IECM_NONQ_VEC;
+ 	vport->irq_q_handler = iecm_vport_intr_clean_queues;
+@@ -845,6 +957,117 @@ static void iecm_service_task(struct work_struct *work)
+ 			   msecs_to_jiffies(300));
+ }
  
- 	mutex_init(&vport->stop_mutex);
-@@ -184,8 +817,94 @@ static void iecm_statistics_task(struct work_struct *work)
-  *
-  */
- static void iecm_service_task(struct work_struct *work)
++/**
++ * iecm_restore_vlans - Restore vlan filters/vlan stripping/insert config
++ * @vport: virtual port structure
++ */
++static void iecm_restore_vlans(struct iecm_vport *vport)
 +{
-+	struct iecm_adapter *adapter = container_of(work,
-+						    struct iecm_adapter,
-+						    serv_task.work);
-+
-+	if (test_bit(__IECM_MB_INTR_MODE, adapter->flags)) {
-+		if (test_and_clear_bit(__IECM_MB_INTR_TRIGGER,
-+				       adapter->flags)) {
-+			iecm_recv_mb_msg(adapter, VIRTCHNL_OP_UNKNOWN, NULL, 0);
-+			iecm_mb_irq_enable(adapter);
-+		}
-+	} else {
-+		iecm_recv_mb_msg(adapter, VIRTCHNL_OP_UNKNOWN, NULL, 0);
-+	}
-+
-+	if (iecm_is_reset_detected(adapter) &&
-+	    !iecm_is_reset_in_prog(adapter)) {
-+		dev_info(&adapter->pdev->dev, "HW reset detected\n");
-+		set_bit(__IECM_HR_FUNC_RESET, adapter->flags);
-+		queue_delayed_work(adapter->vc_event_wq,
-+				   &adapter->vc_event_task,
-+				   msecs_to_jiffies(10));
-+	}
-+
-+	queue_delayed_work(adapter->serv_wq, &adapter->serv_task,
-+			   msecs_to_jiffies(300));
++	if (iecm_is_feature_ena(vport, NETIF_F_HW_VLAN_CTAG_FILTER))
++		iecm_set_all_vlans(vport);
 +}
 +
-+/* iecm_set_vlan_offload_features - set vlan offload features
-+ * @netdev: netdev structure
-+ * @prev_features: previously set features
-+ * @features: current features received from user
-+ *
-+ * Returns 0 on success, error value on failure
++/**
++ * iecm_restore_features - Restore feature configs
++ * @vport: virtual port structure
 + */
-+static int
-+iecm_set_vlan_offload_features(struct net_device *netdev,
-+			       netdev_features_t prev_features,
-+			       netdev_features_t features)
++static void iecm_restore_features(struct iecm_vport *vport)
 +{
-+	struct iecm_vport *vport = iecm_netdev_to_vport(netdev);
-+	bool stripping_ena = true, insertion_ena = true;
-+	struct iecm_virtchnl_ops *vc_ops;
-+	u16 vlan_ethertype = 0;
++	struct iecm_adapter *adapter = vport->adapter;
 +
-+	vc_ops = &vport->adapter->dev_ops.vc_ops;
-+	/* keep cases separate because one ethertype for offloads can be
-+	 * disabled at the same time as another is disabled, so check for an
-+	 * enabled ethertype first, then check for disabled. Default to
-+	 * ETH_P_8021Q so an ethertype is specified if disabling insertion
-+	 * and stripping.
++	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_MACFILTER))
++		iecm_set_all_filters(vport);
++
++	if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS, VIRTCHNL2_CAP_VLAN) ||
++	    iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_VLAN))
++		iecm_restore_vlans(vport);
++
++	if ((iecm_is_user_flag_ena(adapter, __IECM_PROMISC_UC) ||
++	     iecm_is_user_flag_ena(adapter, __IECM_PROMISC_MC)) &&
++	    test_and_clear_bit(__IECM_VPORT_INIT_PROMISC, vport->flags)) {
++		if (iecm_set_promiscuous(adapter))
++			dev_info(&adapter->pdev->dev, "Failed to restore promiscuous settings\n");
++	}
++}
++
++/**
++ * iecm_set_real_num_queues - set number of queues for netdev
++ * @vport: virtual port structure
++ *
++ * Returns 0 on success, negative on failure.
++ */
++static int iecm_set_real_num_queues(struct iecm_vport *vport)
++{
++	int err;
++
++	/* If we're in normal up path, the stack already takes the rtnl_lock
++	 * for us, however, if we're doing up as a part of a hard reset, we'll
++	 * need to take the lock ourself before touching the netdev.
 +	 */
-+	if (features & (NETIF_F_HW_VLAN_STAG_RX | NETIF_F_HW_VLAN_STAG_TX))
-+		vlan_ethertype = ETH_P_8021AD;
-+	else if (features & (NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_CTAG_TX))
-+		vlan_ethertype = ETH_P_8021Q;
-+	else if (prev_features & (NETIF_F_HW_VLAN_STAG_RX |
-+				  NETIF_F_HW_VLAN_STAG_TX))
-+		vlan_ethertype = ETH_P_8021AD;
-+	else if (prev_features & (NETIF_F_HW_VLAN_CTAG_RX |
-+				  NETIF_F_HW_VLAN_CTAG_TX))
-+		vlan_ethertype = ETH_P_8021Q;
++	if (test_bit(__IECM_HR_RESET_IN_PROG, vport->adapter->flags))
++		rtnl_lock();
++	err = netif_set_real_num_rx_queues(vport->netdev, vport->num_rxq);
++	if (err)
++		goto error;
++	err = netif_set_real_num_tx_queues(vport->netdev, vport->num_txq);
++error:
++	if (test_bit(__IECM_HR_RESET_IN_PROG, vport->adapter->flags))
++		rtnl_unlock();
++	return err;
++}
++
++/**
++ * iecm_up_complete - Complete interface up sequence
++ * @vport: virtual port strucutre
++ *
++ * Returns 0 on success, negative on failure.
++ */
++static int iecm_up_complete(struct iecm_vport *vport)
++{
++	int err;
++
++	err = iecm_set_real_num_queues(vport);
++	if (err)
++		return err;
++
++	if (vport->adapter->link_up && !netif_carrier_ok(vport->netdev)) {
++		netif_carrier_on(vport->netdev);
++		netif_tx_start_all_queues(vport->netdev);
++	}
++
++	vport->adapter->state = __IECM_UP;
++	return 0;
++}
++
++/**
++ * iecm_rx_init_buf_tail - Write initial buffer ring tail value
++ * @vport: virtual port struct
++ */
++static void iecm_rx_init_buf_tail(struct iecm_vport *vport)
++{
++	int i, j;
++
++	for (i = 0; i < vport->num_rxq_grp; i++) {
++		struct iecm_rxq_group *grp = &vport->rxq_grps[i];
++
++		if (iecm_is_queue_model_split(vport->rxq_model)) {
++			for (j = 0; j < vport->num_bufqs_per_qgrp; j++) {
++				struct iecm_queue *q =
++					&grp->splitq.bufq_sets[j].bufq;
++
++				writel(q->next_to_alloc, q->tail);
++			}
++		} else {
++			for (j = 0; j < grp->singleq.num_rxq; j++) {
++				struct iecm_queue *q =
++					grp->singleq.rxqs[j];
++
++				writel(q->next_to_alloc, q->tail);
++			}
++		}
++	}
++}
++
+ /* iecm_set_vlan_offload_features - set vlan offload features
+  * @netdev: netdev structure
+  * @prev_features: previously set features
+@@ -903,8 +1126,110 @@ iecm_set_vlan_offload_features(struct net_device *netdev,
+  */
+ static int iecm_vport_open(struct iecm_vport *vport, bool alloc_res)
+ {
+-	/* stub */
++	struct iecm_adapter *adapter = vport->adapter;
++	int err;
++
++	if (vport->adapter->state != __IECM_DOWN)
++		return -EBUSY;
++
++	/* we do not allow interface up just yet */
++	netif_carrier_off(vport->netdev);
++
++	if (alloc_res) {
++		err = iecm_vport_queues_alloc(vport);
++		if (err)
++			return err;
++	}
++
++	err = iecm_vport_intr_alloc(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Call to interrupt alloc returned %d\n",
++			err);
++		goto unroll_queues_alloc;
++	}
++
++	err = adapter->dev_ops.vc_ops.vport_queue_ids_init(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Call to queue ids init returned %d\n",
++			err);
++		goto unroll_intr_alloc;
++	}
++
++	err = adapter->dev_ops.vc_ops.vportq_reg_init(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Call to queue reg init returned %d\n",
++			err);
++		goto unroll_intr_alloc;
++	}
++	iecm_rx_init_buf_tail(vport);
++
++	err = iecm_vport_intr_init(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Call to vport interrupt init returned %d\n",
++			err);
++		goto unroll_intr_alloc;
++	}
++	err = adapter->dev_ops.vc_ops.config_queues(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Failed to config queues\n");
++		goto unroll_config_queues;
++	}
++	err = adapter->dev_ops.vc_ops.irq_map_unmap(vport, true);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Call to irq_map_unmap returned %d\n",
++			err);
++		goto unroll_config_queues;
++	}
++	err = adapter->dev_ops.vc_ops.enable_queues(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Failed to enable queues\n");
++		goto unroll_enable_queues;
++	}
++
++	if (adapter->dev_ops.vc_ops.enable_vport) {
++		err = adapter->dev_ops.vc_ops.enable_vport(vport);
++		if (err) {
++			dev_err(&adapter->pdev->dev, "Failed to enable vport\n");
++			err = -EAGAIN;
++			goto unroll_vport_enable;
++		}
++	}
++
++	iecm_restore_features(vport);
++
++	if (adapter->rss_data.rss_lut)
++		err = iecm_config_rss(vport);
 +	else
-+		vlan_ethertype = ETH_P_8021Q;
++		err = iecm_init_rss(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Failed to init RSS\n");
++		goto unroll_init_rss;
++	}
++	err = iecm_up_complete(vport);
++	if (err) {
++		dev_err(&adapter->pdev->dev, "Failed to complete up\n");
++		goto unroll_up_comp;
++	}
 +
-+	if (!(features & (NETIF_F_HW_VLAN_STAG_RX | NETIF_F_HW_VLAN_CTAG_RX)))
-+		stripping_ena = false;
-+	if (!(features & (NETIF_F_HW_VLAN_STAG_TX | NETIF_F_HW_VLAN_CTAG_TX)))
-+		insertion_ena = false;
+ 	return 0;
 +
-+	vport->adapter->config_data.vlan_ethertype = vlan_ethertype;
++unroll_up_comp:
++	iecm_deinit_rss(vport);
++unroll_init_rss:
++	adapter->dev_ops.vc_ops.disable_vport(vport);
++unroll_vport_enable:
++	adapter->dev_ops.vc_ops.disable_queues(vport);
++unroll_enable_queues:
++	adapter->dev_ops.vc_ops.irq_map_unmap(vport, false);
++unroll_config_queues:
++	iecm_vport_intr_deinit(vport);
++unroll_intr_alloc:
++	iecm_vport_intr_rel(vport);
++unroll_queues_alloc:
++	if (alloc_res)
++		iecm_vport_queues_rel(vport);
 +
-+	vc_ops->strip_vlan_msg(vport, stripping_ena);
-+	if (vc_ops->insert_vlan_msg)
-+		vc_ops->insert_vlan_msg(vport, insertion_ena);
++	return err;
+ }
+ 
+ /**
+@@ -1060,6 +1385,8 @@ static int iecm_api_init(struct iecm_adapter *adapter)
+  */
+ static void iecm_deinit_task(struct iecm_adapter *adapter)
+ {
++	int i;
++
+ 	set_bit(__IECM_REL_RES_IN_PROG, adapter->flags);
+ 	/* Wait until the init_task is done else this thread might release
+ 	 * the resources first and the other thread might end up in a bad state
+@@ -1067,8 +1394,21 @@ static void iecm_deinit_task(struct iecm_adapter *adapter)
+ 	cancel_delayed_work_sync(&adapter->init_task);
+ 	iecm_vport_rel_all(adapter);
+ 
++	/* Set all bits as we dont know on which vc_state the vhnl_wq is
++	 * waiting on and wakeup the virtchnl workqueue even if it is waiting
++	 * for the response as we are going down
++	 */
++	for (i = 0; i < IECM_VC_NBITS; i++)
++		set_bit(i, adapter->vc_state);
++	wake_up(&adapter->vchnl_wq);
++
+ 	cancel_delayed_work_sync(&adapter->serv_task);
+ 	cancel_delayed_work_sync(&adapter->stats_task);
++	iecm_intr_rel(adapter);
++	/* Clear all the bits */
++	for (i = 0; i < IECM_VC_NBITS; i++)
++		clear_bit(i, adapter->vc_state);
++	clear_bit(__IECM_REL_RES_IN_PROG, adapter->flags);
+ }
+ 
+ /**
+@@ -1371,6 +1711,25 @@ void iecm_remove(struct pci_dev *pdev)
+ }
+ EXPORT_SYMBOL(iecm_remove);
+ 
++/**
++ * iecm_open - Called when a network interface becomes active
++ * @netdev: network interface device structure
++ *
++ * The open entry point is called when a network interface is made
++ * active by the system (IFF_UP).  At this point all resources needed
++ * for transmit and receive operations are allocated, the interrupt
++ * handler is registered with the OS, the netdev watchdog is enabled,
++ * and the stack is notified that the interface is ready.
++ *
++ * Returns 0 on success, negative value on failure
++ */
++static int iecm_open(struct net_device *netdev)
++{
++	struct iecm_netdev_priv *np = netdev_priv(netdev);
++
++	return iecm_vport_open(np->vport, true);
++}
++
+ void *iecm_alloc_dma_mem(struct iecm_hw *hw, struct iecm_dma_mem *mem, u64 size)
+ {
+ 	struct iecm_adapter *adapter = (struct iecm_adapter *)hw->back;
+@@ -1395,8 +1754,8 @@ void iecm_free_dma_mem(struct iecm_hw *hw, struct iecm_dma_mem *mem)
+ }
+ 
+ static const struct net_device_ops iecm_netdev_ops_splitq = {
+-	.ndo_open = NULL,
+-	.ndo_stop = NULL,
++	.ndo_open = iecm_open,
++	.ndo_stop = iecm_stop,
+ 	.ndo_start_xmit = NULL,
+ 	.ndo_set_rx_mode = NULL,
+ 	.ndo_validate_addr = eth_validate_addr,
+@@ -1411,8 +1770,8 @@ static const struct net_device_ops iecm_netdev_ops_splitq = {
+ };
+ 
+ static const struct net_device_ops iecm_netdev_ops_singleq = {
+-	.ndo_open = NULL,
+-	.ndo_stop = NULL,
++	.ndo_open = iecm_open,
++	.ndo_stop = iecm_stop,
+ 	.ndo_start_xmit = NULL,
+ 	.ndo_set_rx_mode = NULL,
+ 	.ndo_validate_addr = eth_validate_addr,
+diff --git a/drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c b/drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+new file mode 100644
+index 000000000000..d6c47cb84249
+--- /dev/null
++++ b/drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+@@ -0,0 +1,29 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright (C) 2019 Intel Corporation */
++
++#include "iecm.h"
++
++/**
++ * iecm_rx_singleq_buf_hw_alloc_all - Replace used receive buffers
++ * @rx_q: queue for which the hw buffers are allocated
++ * @cleaned_count: number of buffers to replace
++ *
++ * Returns false if all allocations were successful, true if any fail
++ */
++bool iecm_rx_singleq_buf_hw_alloc_all(struct iecm_queue *rx_q,
++				      u16 cleaned_count)
++{
++	/* stub */
++	return true;
++}
++
++/**
++ * iecm_vport_singleq_napi_poll - NAPI handler
++ * @napi: struct from which you get q_vector
++ * @budget: budget provided by stack
++ */
++int iecm_vport_singleq_napi_poll(struct napi_struct *napi, int budget)
++{
++	/* stub */
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/iecm/iecm_txrx.c b/drivers/net/ethernet/intel/iecm/iecm_txrx.c
+index bb7f5830cffb..85e88a30370d 100644
+--- a/drivers/net/ethernet/intel/iecm/iecm_txrx.c
++++ b/drivers/net/ethernet/intel/iecm/iecm_txrx.c
+@@ -219,20 +219,318 @@ const struct iecm_rx_ptype_decoded iecm_ptype_lookup[IECM_RX_MAX_PTYPE] = {
+ EXPORT_SYMBOL(iecm_ptype_lookup);
+ 
+ /**
+- * iecm_vport_intr_clean_queues - MSIX mode Interrupt Handler
+- * @irq: interrupt number
+- * @data: pointer to a q_vector
++ * iecm_tx_buf_rel - Release a Tx buffer
++ * @tx_q: the queue that owns the buffer
++ * @tx_buf: the buffer to free
++ */
++void iecm_tx_buf_rel(struct iecm_queue *tx_q, struct iecm_tx_buf *tx_buf)
++{
++	if (tx_buf->skb) {
++		if (dma_unmap_len(tx_buf, len))
++			dma_unmap_single(tx_q->dev,
++					 dma_unmap_addr(tx_buf, dma),
++					 dma_unmap_len(tx_buf, len),
++					 DMA_TO_DEVICE);
++		dev_kfree_skb_any(tx_buf->skb);
++	} else if (dma_unmap_len(tx_buf, len)) {
++		dma_unmap_page(tx_q->dev,
++			       dma_unmap_addr(tx_buf, dma),
++			       dma_unmap_len(tx_buf, len),
++			       DMA_TO_DEVICE);
++	}
++
++	tx_buf->next_to_watch = NULL;
++	tx_buf->skb = NULL;
++	dma_unmap_len_set(tx_buf, len, 0);
++}
++
++/**
++ * iecm_tx_buf_rel_all - Free any empty Tx buffers
++ * @txq: queue to be cleaned
++ */
++static void iecm_tx_buf_rel_all(struct iecm_queue *txq)
++{
++	u16 i;
++
++	/* Buffers already cleared, nothing to do */
++	if (!txq->tx_buf)
++		return;
++
++	/* Free all the Tx buffer sk_buffs */
++	for (i = 0; i < txq->desc_count; i++)
++		iecm_tx_buf_rel(txq, &txq->tx_buf[i]);
++
++	kfree(txq->tx_buf);
++	txq->tx_buf = NULL;
++
++	if (txq->buf_stack.bufs) {
++		for (i = 0; i < txq->buf_stack.size; i++) {
++			iecm_tx_buf_rel(txq, txq->buf_stack.bufs[i]);
++			kfree(txq->buf_stack.bufs[i]);
++		}
++		kfree(txq->buf_stack.bufs);
++		txq->buf_stack.bufs = NULL;
++	}
++}
++
++/**
++ * iecm_tx_desc_rel - Free Tx resources per queue
++ * @txq: Tx descriptor ring for a specific queue
++ * @bufq: buffer q or completion q
+  *
++ * Free all transmit software resources
+  */
+-irqreturn_t
+-iecm_vport_intr_clean_queues(int __always_unused irq, void *data)
++static void iecm_tx_desc_rel(struct iecm_queue *txq, bool bufq)
+ {
+-	struct iecm_q_vector *q_vector = (struct iecm_q_vector *)data;
++	if (bufq) {
++		iecm_tx_buf_rel_all(txq);
++		netdev_tx_reset_queue(netdev_get_tx_queue(txq->vport->netdev,
++							  txq->idx));
++	}
+ 
+-	q_vector->total_events++;
+-	napi_schedule(&q_vector->napi);
++	if (txq->desc_ring) {
++		dmam_free_coherent(txq->dev, txq->size,
++				   txq->desc_ring, txq->dma);
++		txq->desc_ring = NULL;
++		txq->next_to_alloc = 0;
++		txq->next_to_use = 0;
++		txq->next_to_clean = 0;
++	}
++}
+ 
+-	return IRQ_HANDLED;
++/**
++ * iecm_tx_desc_rel_all - Free Tx Resources for All Queues
++ * @vport: virtual port structure
++ *
++ * Free all transmit software resources
++ */
++static void iecm_tx_desc_rel_all(struct iecm_vport *vport)
++{
++	int i, j;
++
++	if (!vport->txq_grps)
++		return;
++
++	for (i = 0; i < vport->num_txq_grp; i++) {
++		struct iecm_txq_group *txq_grp = &vport->txq_grps[i];
++
++		for (j = 0; j < txq_grp->num_txq; j++)
++			iecm_tx_desc_rel(txq_grp->txqs[j], true);
++		if (iecm_is_queue_model_split(vport->txq_model))
++			iecm_tx_desc_rel(txq_grp->complq, false);
++	}
++}
++
++/**
++ * iecm_tx_buf_alloc_all - Allocate memory for all buffer resources
++ * @tx_q: queue for which the buffers are allocated
++ *
++ * Returns 0 on success, negative on failure
++ */
++static int iecm_tx_buf_alloc_all(struct iecm_queue *tx_q)
++{
++	int buf_size;
++	int i = 0;
++
++	/* Allocate book keeping buffers only. Buffers to be supplied to HW
++	 * are allocated by kernel network stack and received as part of skb
++	 */
++	buf_size = sizeof(struct iecm_tx_buf) * tx_q->desc_count;
++	tx_q->tx_buf = kzalloc(buf_size, GFP_KERNEL);
++	if (!tx_q->tx_buf)
++		return -ENOMEM;
++
++	/* Initialize tx buf stack for out-of-order completions if
++	 * flow scheduling offload is enabled
++	 */
++	tx_q->buf_stack.bufs =
++		kcalloc(tx_q->desc_count, sizeof(struct iecm_tx_buf *),
++			GFP_KERNEL);
++	if (!tx_q->buf_stack.bufs)
++		return -ENOMEM;
++
++	tx_q->buf_stack.size = tx_q->desc_count;
++	tx_q->buf_stack.top = tx_q->desc_count;
++
++	for (i = 0; i < tx_q->desc_count; i++) {
++		tx_q->buf_stack.bufs[i] = kzalloc(sizeof(*tx_q->buf_stack.bufs[i]),
++						  GFP_KERNEL);
++		if (!tx_q->buf_stack.bufs[i])
++			return -ENOMEM;
++	}
 +
 +	return 0;
 +}
 +
 +/**
-+ * iecm_vport_open - Bring up a vport
-+ * @vport: vport to bring up
-+ * @alloc_res: allocate queue resources
++ * iecm_tx_desc_alloc - Allocate the Tx descriptors
++ * @tx_q: the tx ring to set up
++ * @bufq: buffer or completion queue
++ *
++ * Returns 0 on success, negative on failure
 + */
-+static int iecm_vport_open(struct iecm_vport *vport, bool alloc_res)
- {
- 	/* stub */
++static int iecm_tx_desc_alloc(struct iecm_queue *tx_q, bool bufq)
++{
++	struct device *dev = tx_q->dev;
++	int err = 0;
++
++	if (bufq) {
++		err = iecm_tx_buf_alloc_all(tx_q);
++		if (err)
++			goto err_alloc;
++		tx_q->size = tx_q->desc_count *
++				sizeof(struct iecm_base_tx_desc);
++	} else {
++		tx_q->size = tx_q->desc_count *
++				sizeof(struct iecm_splitq_tx_compl_desc);
++	}
++
++	/* Allocate descriptors also round up to nearest 4K */
++	tx_q->size = ALIGN(tx_q->size, 4096);
++	tx_q->desc_ring = dmam_alloc_coherent(dev, tx_q->size, &tx_q->dma,
++					      GFP_KERNEL);
++	if (!tx_q->desc_ring) {
++		dev_info(dev, "Unable to allocate memory for the Tx descriptor ring, size=%d\n",
++			 tx_q->size);
++		err = -ENOMEM;
++		goto err_alloc;
++	}
++
++	tx_q->next_to_alloc = 0;
++	tx_q->next_to_use = 0;
++	tx_q->next_to_clean = 0;
++	set_bit(__IECM_Q_GEN_CHK, tx_q->flags);
++
++err_alloc:
++	if (err)
++		iecm_tx_desc_rel(tx_q, bufq);
++	return err;
++}
++
++/**
++ * iecm_tx_desc_alloc_all - allocate all queues Tx resources
++ * @vport: virtual port private structure
++ *
++ * Returns 0 on success, negative on failure
++ */
++static int iecm_tx_desc_alloc_all(struct iecm_vport *vport)
++{
++	struct pci_dev *pdev = vport->adapter->pdev;
++	int err = 0;
++	int i, j;
++
++	/* Setup buffer queues. In single queue model buffer queues and
++	 * completion queues will be same
++	 */
++	for (i = 0; i < vport->num_txq_grp; i++) {
++		for (j = 0; j < vport->txq_grps[i].num_txq; j++) {
++			err = iecm_tx_desc_alloc(vport->txq_grps[i].txqs[j],
++						 true);
++			if (err) {
++				dev_err(&pdev->dev,
++					"Allocation for Tx Queue %u failed\n",
++					i);
++				goto err_out;
++			}
++		}
++
++		if (iecm_is_queue_model_split(vport->txq_model)) {
++			/* Setup completion queues */
++			err = iecm_tx_desc_alloc(vport->txq_grps[i].complq,
++						 false);
++			if (err) {
++				dev_err(&pdev->dev,
++					"Allocation for Tx Completion Queue %u failed\n",
++					i);
++				goto err_out;
++			}
++		}
++	}
++err_out:
++	if (err)
++		iecm_tx_desc_rel_all(vport);
++	return err;
++}
++
++/**
++ * iecm_txq_group_rel - Release all resources for txq groups
++ * @vport: vport to release txq groups on
++ */
++static void iecm_txq_group_rel(struct iecm_vport *vport)
++{
++	struct iecm_txq_group *txq_grp;
++	int i, j, num_txq;
++
++	if (vport->txq_grps) {
++		for (i = 0; i < vport->num_txq_grp; i++) {
++			txq_grp = &vport->txq_grps[i];
++			num_txq = txq_grp->num_txq;
++
++			for (j = 0; j < num_txq; j++) {
++				kfree(txq_grp->txqs[j]);
++				txq_grp->txqs[j] = NULL;
++			}
++			kfree(txq_grp->complq);
++			txq_grp->complq = NULL;
++		}
++		kfree(vport->txq_grps);
++		vport->txq_grps = NULL;
++	}
++}
++
++/**
++ * iecm_vport_queue_grp_rel_all - Release all queue groups
++ * @vport: vport to release queue groups for
++ */
++static void iecm_vport_queue_grp_rel_all(struct iecm_vport *vport)
++{
++	iecm_txq_group_rel(vport);
++}
++
++/**
++ * iecm_vport_queues_rel - Free memory for all queues
++ * @vport: virtual port
++ *
++ * Free the memory allocated for queues associated to a vport
++ */
++void iecm_vport_queues_rel(struct iecm_vport *vport)
++{
++	iecm_tx_desc_rel_all(vport);
++	iecm_vport_queue_grp_rel_all(vport);
++
++	kfree(vport->txqs);
++	vport->txqs = NULL;
++}
++
++/**
++ * iecm_vport_init_fast_path_txqs - Initialize fast path txq array
++ * @vport: vport to init txqs on
++ *
++ * We get a queue index from skb->queue_mapping and we need a fast way to
++ * dereference the queue from queue groups.  This allows us to quickly pull a
++ * txq based on a queue index.
++ *
++ * Returns 0 on success, negative on failure
++ */
++static int iecm_vport_init_fast_path_txqs(struct iecm_vport *vport)
++{
++	int i, j, k = 0;
++
++	vport->txqs = kcalloc(vport->num_txq, sizeof(struct iecm_queue *),
++			      GFP_KERNEL);
++
++	if (!vport->txqs)
++		return -ENOMEM;
++
++	for (i = 0; i < vport->num_txq_grp; i++) {
++		struct iecm_txq_group *tx_grp = &vport->txq_grps[i];
++
++		for (j = 0; j < tx_grp->num_txq; j++, k++) {
++			vport->txqs[k] = tx_grp->txqs[j];
++			vport->txqs[k]->idx = k;
++		}
++	}
 +	return 0;
  }
  
  /**
-@@ -206,6 +925,7 @@ static void iecm_init_task(struct work_struct *work)
- 	struct iecm_vport *vport;
- 	struct pci_dev *pdev;
- 	int vport_id, err;
-+	int index;
- 
- 	err = adapter->dev_ops.vc_ops.core_init(adapter, &vport_id);
- 	if (err)
-@@ -219,6 +939,65 @@ static void iecm_init_task(struct work_struct *work)
- 			err);
- 		return;
- 	}
-+	/* Start the service task before requesting vectors. This will ensure
-+	 * vector information response from mailbox is handled
-+	 */
-+	queue_delayed_work(adapter->serv_wq, &adapter->serv_task,
-+			   msecs_to_jiffies(5 * (pdev->devfn & 0x07)));
-+	err = iecm_intr_req(adapter);
-+	if (err) {
-+		dev_err(&pdev->dev, "failed to enable interrupt vectors: %d\n",
-+			err);
-+		goto intr_req_err;
-+	}
-+	err = iecm_send_vlan_v2_caps_msg(adapter);
-+	if (err)
-+		goto vlan_v2_caps_failed;
-+
-+	err = adapter->dev_ops.vc_ops.get_supported_desc_ids(vport);
-+	if (err) {
-+		dev_err(&pdev->dev, "failed to get required descriptor ids\n");
-+		goto rxdids_failed;
-+	}
-+
-+	if (iecm_cfg_netdev(vport))
-+		goto cfg_netdev_err;
-+
-+	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_VLAN) ||
-+	    iecm_is_cap_ena(adapter, IECM_BASE_CAPS, VIRTCHNL2_CAP_VLAN)) {
-+		err = iecm_set_vlan_offload_features(vport->netdev, 0,
-+						     vport->netdev->features);
-+		if (err)
-+			goto cfg_netdev_err;
-+	}
-+
-+	err = adapter->dev_ops.vc_ops.get_ptype(vport);
-+	if (err)
-+		goto cfg_netdev_err;
-+	queue_delayed_work(adapter->stats_wq, &adapter->stats_task,
-+			   msecs_to_jiffies(10 * (pdev->devfn & 0x07)));
-+	set_bit(__IECM_VPORT_INIT_PROMISC, vport->flags);
-+	/* Once state is put into DOWN, driver is ready for dev_open */
-+	adapter->state = __IECM_DOWN;
-+	if (test_and_clear_bit(__IECM_UP_REQUESTED, adapter->flags))
-+		iecm_vport_open(vport, true);
-+
-+	/* Clear the reset flag unconditionally here in case we were in reset
-+	 * and the link was down
-+	 */
-+	clear_bit(__IECM_HR_RESET_IN_PROG, vport->adapter->flags);
-+
-+	return;
-+
-+vlan_v2_caps_failed:
-+rxdids_failed:
-+cfg_netdev_err:
-+	iecm_intr_rel(adapter);
-+intr_req_err:
-+	index = iecm_get_vport_index(adapter, vport);
-+	if (index >= 0)
-+		adapter->vports[index] = NULL;
-+	iecm_vport_rel(vport);
+@@ -382,6 +680,26 @@ void iecm_vport_calc_num_q_groups(struct iecm_vport *vport)
  }
+ EXPORT_SYMBOL(iecm_vport_calc_num_q_groups);
  
++/**
++ * iecm_vport_calc_numq_per_grp - Calculate number of queues per group
++ * @vport: vport to calculate queues for
++ * @num_txq: int return parameter
++ * @num_rxq: int return parameter
++ */
++static void iecm_vport_calc_numq_per_grp(struct iecm_vport *vport,
++					 int *num_txq, int *num_rxq)
++{
++	if (iecm_is_queue_model_split(vport->txq_model))
++		*num_txq = IECM_DFLT_SPLITQ_TXQ_PER_GROUP;
++	else
++		*num_txq = vport->num_txq;
++
++	if (iecm_is_queue_model_split(vport->rxq_model))
++		*num_rxq = IECM_DFLT_SPLITQ_RXQ_PER_GROUP;
++	else
++		*num_rxq = vport->num_rxq;
++}
++
  /**
-@@ -614,3 +1393,35 @@ void iecm_free_dma_mem(struct iecm_hw *hw, struct iecm_dma_mem *mem)
- 	mem->va = NULL;
- 	mem->pa = 0;
+  * iecm_vport_calc_num_q_vec - Calculate total number of vectors required for
+  * this vport
+@@ -396,3 +714,949 @@ void iecm_vport_calc_num_q_vec(struct iecm_vport *vport)
+ 		vport->num_q_vectors = vport->num_txq;
  }
+ EXPORT_SYMBOL(iecm_vport_calc_num_q_vec);
 +
-+static const struct net_device_ops iecm_netdev_ops_splitq = {
-+	.ndo_open = NULL,
-+	.ndo_stop = NULL,
-+	.ndo_start_xmit = NULL,
-+	.ndo_set_rx_mode = NULL,
-+	.ndo_validate_addr = eth_validate_addr,
-+	.ndo_set_mac_address = NULL,
-+	.ndo_change_mtu = NULL,
-+	.ndo_get_stats64 = NULL,
-+	.ndo_fix_features = NULL,
-+	.ndo_set_features = NULL,
-+	.ndo_vlan_rx_add_vid = NULL,
-+	.ndo_vlan_rx_kill_vid = NULL,
-+	.ndo_setup_tc = NULL,
-+};
++/**
++ * iecm_set_vlan_tag_loc - set the tag location for a tx/rx queue
++ * @adapter: adapter structure
++ * @q: tx/rx queue to set tag location for
++ *
++ */
++static void iecm_set_vlan_tag_loc(struct iecm_adapter *adapter,
++				  struct iecm_queue *q)
++{
++	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_VLAN)) {
++		struct virtchnl_vlan_supported_caps *insertion_support;
 +
-+static const struct net_device_ops iecm_netdev_ops_singleq = {
-+	.ndo_open = NULL,
-+	.ndo_stop = NULL,
-+	.ndo_start_xmit = NULL,
-+	.ndo_set_rx_mode = NULL,
-+	.ndo_validate_addr = eth_validate_addr,
-+	.ndo_set_mac_address = NULL,
-+	.ndo_change_mtu = NULL,
-+	.ndo_get_stats64 = NULL,
-+	.ndo_fix_features = NULL,
-+	.ndo_set_features = NULL,
-+	.ndo_vlan_rx_add_vid = NULL,
-+	.ndo_vlan_rx_kill_vid = NULL,
-+	.ndo_setup_tc           = NULL,
-+};
-diff --git a/drivers/net/ethernet/intel/iecm/iecm_txrx.c b/drivers/net/ethernet/intel/iecm/iecm_txrx.c
-index bd0cfd89bf03..bb7f5830cffb 100644
---- a/drivers/net/ethernet/intel/iecm/iecm_txrx.c
-+++ b/drivers/net/ethernet/intel/iecm/iecm_txrx.c
-@@ -218,6 +218,23 @@ const struct iecm_rx_ptype_decoded iecm_ptype_lookup[IECM_RX_MAX_PTYPE] = {
- };
- EXPORT_SYMBOL(iecm_ptype_lookup);
- 
++		insertion_support =
++				&adapter->vlan_caps->offloads.insertion_support;
++		if (insertion_support->outer) {
++			if (insertion_support->outer &
++			    VIRTCHNL_VLAN_TAG_LOCATION_L2TAG1)
++				set_bit(__IECM_Q_VLAN_TAG_LOC_L2TAG1,
++					q->flags);
++			else if (insertion_support->outer &
++				 VIRTCHNL_VLAN_TAG_LOCATION_L2TAG2)
++				set_bit(__IECM_Q_VLAN_TAG_LOC_L2TAG2,
++					q->flags);
++		} else if (insertion_support->inner) {
++			if (insertion_support->inner &
++			    VIRTCHNL_VLAN_TAG_LOCATION_L2TAG1)
++				set_bit(__IECM_Q_VLAN_TAG_LOC_L2TAG1,
++					q->flags);
++			else if (insertion_support->inner &
++				 VIRTCHNL_VLAN_TAG_LOCATION_L2TAG2)
++				set_bit(__IECM_Q_VLAN_TAG_LOC_L2TAG2,
++					q->flags);
++		}
++	} else if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS,
++				   VIRTCHNL2_CAP_VLAN)) {
++		set_bit(__IECM_Q_VLAN_TAG_LOC_L2TAG1, q->flags);
++	}
++}
++
++/**
++ * iecm_txq_group_alloc - Allocate all txq group resources
++ * @vport: vport to allocate txq groups for
++ * @num_txq: number of txqs to allocate for each group
++ *
++ * Returns 0 on success, negative on failure
++ */
++static int iecm_txq_group_alloc(struct iecm_vport *vport, int num_txq)
++{
++	int err = 0, i;
++
++	vport->txq_grps = kcalloc(vport->num_txq_grp,
++				  sizeof(*vport->txq_grps), GFP_KERNEL);
++	if (!vport->txq_grps)
++		return -ENOMEM;
++
++	for (i = 0; i < vport->num_txq_grp; i++) {
++		struct iecm_txq_group *tx_qgrp = &vport->txq_grps[i];
++		int j;
++
++		tx_qgrp->vport = vport;
++		tx_qgrp->num_txq = num_txq;
++
++		for (j = 0; j < tx_qgrp->num_txq; j++) {
++			tx_qgrp->txqs[j] = kzalloc(sizeof(*tx_qgrp->txqs[j]),
++						   GFP_KERNEL);
++			if (!tx_qgrp->txqs[j]) {
++				err = -ENOMEM;
++				goto err_alloc;
++			}
++		}
++
++		for (j = 0; j < tx_qgrp->num_txq; j++) {
++			struct iecm_queue *q = tx_qgrp->txqs[j];
++
++			q->dev = &vport->adapter->pdev->dev;
++			q->desc_count = vport->txq_desc_count;
++			q->tx_max_bufs =
++				vport->adapter->dev_ops.vc_ops.get_max_tx_bufs(vport->adapter);
++			q->vport = vport;
++			q->txq_grp = tx_qgrp;
++			hash_init(q->sched_buf_hash);
++
++			if (!iecm_is_cap_ena(vport->adapter,
++					     IECM_OTHER_CAPS,
++					     VIRTCHNL2_CAP_SPLITQ_QSCHED))
++				set_bit(__IECM_Q_FLOW_SCH_EN, q->flags);
++			iecm_set_vlan_tag_loc(vport->adapter, q);
++		}
++
++		if (!iecm_is_queue_model_split(vport->txq_model))
++			continue;
++
++		tx_qgrp->complq = kcalloc(IECM_COMPLQ_PER_GROUP,
++					  sizeof(*tx_qgrp->complq),
++					  GFP_KERNEL);
++		if (!tx_qgrp->complq) {
++			err = -ENOMEM;
++			goto err_alloc;
++		}
++
++		tx_qgrp->complq->dev = &vport->adapter->pdev->dev;
++		tx_qgrp->complq->desc_count = vport->complq_desc_count;
++		tx_qgrp->complq->vport = vport;
++		tx_qgrp->complq->txq_grp = tx_qgrp;
++	}
++
++err_alloc:
++	if (err)
++		iecm_txq_group_rel(vport);
++	return err;
++}
++
++/**
++ * iecm_vport_queue_grp_alloc_all - Allocate all queue groups/resources
++ * @vport: vport with qgrps to allocate
++ *
++ * Returns 0 on success, negative on failure
++ */
++static int iecm_vport_queue_grp_alloc_all(struct iecm_vport *vport)
++{
++	int num_txq, num_rxq;
++	int err;
++
++	iecm_vport_calc_numq_per_grp(vport, &num_txq, &num_rxq);
++
++	err = iecm_txq_group_alloc(vport, num_txq);
++	if (err)
++		iecm_vport_queue_grp_rel_all(vport);
++	return err;
++}
++
++/**
++ * iecm_vport_queues_alloc - Allocate memory for all queues
++ * @vport: virtual port
++ *
++ * Allocate memory for queues associated with a vport.  Returns 0 on success,
++ * negative on failure.
++ */
++int iecm_vport_queues_alloc(struct iecm_vport *vport)
++{
++	int err;
++	int i;
++
++	err = iecm_vport_queue_grp_alloc_all(vport);
++	if (err)
++		goto err_out;
++
++	err = iecm_tx_desc_alloc_all(vport);
++	if (err)
++		goto err_out;
++
++	err = iecm_vport_init_fast_path_txqs(vport);
++	if (err)
++		goto err_out;
++
++	/* Initialize flow scheduling for queues that were requested
++	 * before the interface was brought up
++	 */
++	for (i = 0; i < vport->num_txq; i++) {
++		if (test_bit(i, vport->adapter->config_data.etf_qenable)) {
++			set_bit(__IECM_Q_FLOW_SCH_EN, vport->txqs[i]->flags);
++			set_bit(__IECM_Q_ETF_EN, vport->txqs[i]->flags);
++		}
++	}
++
++	return 0;
++err_out:
++	iecm_vport_queues_rel(vport);
++	return err;
++}
++
 +/**
 + * iecm_vport_intr_clean_queues - MSIX mode Interrupt Handler
 + * @irq: interrupt number
@@ -1009,383 +1174,1410 @@ index bd0cfd89bf03..bb7f5830cffb 100644
 +	return IRQ_HANDLED;
 +}
 +
- /**
-  * iecm_vport_init_num_qs - Initialize number of queues
-  * @vport: vport to initialize queues
-diff --git a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-index c4ae56897d1b..b91716aeef6f 100644
---- a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-@@ -2731,6 +2731,45 @@ static int iecm_send_insert_vlan_msg(struct iecm_vport *vport, bool ena)
- 	return err;
- }
- 
 +/**
-+ * iecm_send_vlan_v2_caps_msg - send virtchnl get offload VLAN V2 caps message
-+ * @adapter: adapter info struct
++ * iecm_vport_intr_napi_del_all - Unregister napi for all q_vectors in vport
++ * @vport: virtual port structure
 + *
-+ * Returns 0 on success and if VLAN V1 capability is set`, negative on failure.
 + */
-+int iecm_send_vlan_v2_caps_msg(struct iecm_adapter *adapter)
++static void iecm_vport_intr_napi_del_all(struct iecm_vport *vport)
 +{
++	u16 v_idx;
++
++	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[v_idx];
++
++		netif_napi_del(&q_vector->napi);
++	}
++}
++
++/**
++ * iecm_vport_intr_napi_dis_all - Disable NAPI for all q_vectors in the vport
++ * @vport: main vport structure
++ */
++static void iecm_vport_intr_napi_dis_all(struct iecm_vport *vport)
++{
++	int q_idx;
++
++	if (!vport->netdev)
++		return;
++
++	for (q_idx = 0; q_idx < vport->num_q_vectors; q_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[q_idx];
++
++		napi_disable(&q_vector->napi);
++	}
++}
++
++/**
++ * iecm_vport_intr_rel - Free memory allocated for interrupt vectors
++ * @vport: virtual port
++ *
++ * Free the memory allocated for interrupt vectors  associated to a vport
++ */
++void iecm_vport_intr_rel(struct iecm_vport *vport)
++{
++	int i, j, v_idx;
++
++	if (!vport->netdev)
++		return;
++
++	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[v_idx];
++
++		kfree(q_vector->bufq);
++		q_vector->bufq = NULL;
++		kfree(q_vector->tx);
++		q_vector->tx = NULL;
++		kfree(q_vector->rx);
++		q_vector->rx = NULL;
++	}
++
++	/* Clean up the mapping of queues to vectors */
++	for (i = 0; i < vport->num_rxq_grp; i++) {
++		struct iecm_rxq_group *rx_qgrp = &vport->rxq_grps[i];
++
++		if (iecm_is_queue_model_split(vport->rxq_model)) {
++			for (j = 0; j < rx_qgrp->splitq.num_rxq_sets; j++)
++				rx_qgrp->splitq.rxq_sets[j]->rxq.q_vector =
++									   NULL;
++		} else {
++			for (j = 0; j < rx_qgrp->singleq.num_rxq; j++)
++				rx_qgrp->singleq.rxqs[j]->q_vector = NULL;
++		}
++	}
++
++	if (iecm_is_queue_model_split(vport->txq_model)) {
++		for (i = 0; i < vport->num_txq_grp; i++)
++			vport->txq_grps[i].complq->q_vector = NULL;
++	} else {
++		for (i = 0; i < vport->num_txq_grp; i++) {
++			for (j = 0; j < vport->txq_grps[i].num_txq; j++)
++				vport->txq_grps[i].txqs[j]->q_vector = NULL;
++		}
++	}
++
++	kfree(vport->q_vectors);
++	vport->q_vectors = NULL;
++}
++
++/**
++ * iecm_vport_intr_rel_irq - Free the IRQ association with the OS
++ * @vport: main vport structure
++ */
++static void iecm_vport_intr_rel_irq(struct iecm_vport *vport)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	int vector;
++
++	for (vector = 0; vector < vport->num_q_vectors; vector++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[vector];
++		int irq_num, vidx;
++
++		/* free only the irqs that were actually requested */
++		if (!q_vector)
++			continue;
++
++		vidx = vector + vport->q_vector_base;
++		irq_num = adapter->msix_entries[vidx].vector;
++
++		/* clear the affinity_mask in the IRQ descriptor */
++		irq_set_affinity_hint(irq_num, NULL);
++		free_irq(irq_num, q_vector);
++	}
++}
++
++/**
++ * iecm_vport_intr_dis_irq_all - Disable each interrupt
++ * @vport: main vport structure
++ */
++void iecm_vport_intr_dis_irq_all(struct iecm_vport *vport)
++{
++	struct iecm_q_vector *q_vector = vport->q_vectors;
++	struct iecm_hw *hw = &vport->adapter->hw;
++	int q_idx;
++
++	for (q_idx = 0; q_idx < vport->num_q_vectors; q_idx++)
++		wr32(hw, q_vector[q_idx].intr_reg.dyn_ctl, 0);
++}
++
++/**
++ * iecm_vport_intr_buildreg_itr - Enable default interrupt generation settings
++ * @q_vector: pointer to q_vector
++ * @type: itr index
++ * @itr: itr value
++ */
++static u32 iecm_vport_intr_buildreg_itr(struct iecm_q_vector *q_vector,
++					const int type, u16 itr)
++{
++	u32 itr_val;
++
++	itr &= IECM_ITR_MASK;
++	/* Don't clear PBA because that can cause lost interrupts that
++	 * came in while we were cleaning/polling
++	 */
++	itr_val = q_vector->intr_reg.dyn_ctl_intena_m |
++		  (type << q_vector->intr_reg.dyn_ctl_itridx_s) |
++		  (itr << (q_vector->intr_reg.dyn_ctl_intrvl_s - 1));
++
++	return itr_val;
++}
++
++/**
++ * iecm_net_dim - Update net DIM algorithm
++ * @q_vector: the vector associated with the interrupt
++ *
++ * Create a DIM sample and notify net_dim() so that it can possibly decide
++ * a new ITR value based on incoming packets, bytes, and interrupts.
++ *
++ * This function is a no-op if the queue is not configured to dynamic ITR.
++ */
++static void iecm_net_dim(struct iecm_q_vector *q_vector)
++{
++	if (IECM_ITR_IS_DYNAMIC(q_vector->tx_intr_mode)) {
++		struct dim_sample dim_sample = {};
++		u64 packets = 0, bytes = 0;
++		int i;
++
++		for (i = 0; i < q_vector->num_txq; i++) {
++			packets += q_vector->tx[i]->q_stats.tx.packets;
++			bytes += q_vector->tx[i]->q_stats.tx.bytes;
++		}
++
++		dim_update_sample(q_vector->total_events, packets, bytes,
++				  &dim_sample);
++		net_dim(&q_vector->tx_dim, dim_sample);
++	}
++
++	if (IECM_ITR_IS_DYNAMIC(q_vector->rx_intr_mode)) {
++		struct dim_sample dim_sample = {};
++		u64 packets = 0, bytes = 0;
++		int i;
++
++		for (i = 0; i < q_vector->num_rxq; i++) {
++			packets += q_vector->rx[i]->q_stats.rx.packets;
++			bytes += q_vector->rx[i]->q_stats.rx.bytes;
++		}
++
++		dim_update_sample(q_vector->total_events, packets, bytes,
++				  &dim_sample);
++		net_dim(&q_vector->rx_dim, dim_sample);
++	}
++}
++
++/**
++ * iecm_vport_intr_update_itr_ena_irq - Update itr and re-enable MSIX interrupt
++ * @q_vector: q_vector for which itr is being updated and interrupt enabled
++ *
++ * Update the net_dim() algorithm and re-enable the interrupt associated with
++ * this vector.
++ */
++void iecm_vport_intr_update_itr_ena_irq(struct iecm_q_vector *q_vector)
++{
++	struct iecm_hw *hw = &q_vector->vport->adapter->hw;
++	u32 intval;
++
++	/* net_dim() updates ITR out-of-band using a work item */
++	iecm_net_dim(q_vector);
++
++	intval = iecm_vport_intr_buildreg_itr(q_vector,
++					      VIRTCHNL2_ITR_IDX_NO_ITR, 0);
++
++	wr32(hw, q_vector->intr_reg.dyn_ctl, intval);
++}
++
++/**
++ * iecm_vport_intr_req_irq - get MSI-X vectors from the OS for the vport
++ * @vport: main vport structure
++ * @basename: name for the vector
++ */
++static int
++iecm_vport_intr_req_irq(struct iecm_vport *vport, char *basename)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	int vector, err, irq_num, vidx;
++
++	for (vector = 0; vector < vport->num_q_vectors; vector++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[vector];
++
++		vidx = vector + vport->q_vector_base;
++		irq_num = adapter->msix_entries[vidx].vector;
++
++		snprintf(q_vector->name, sizeof(q_vector->name) - 1,
++			 "%s-%s-%d", basename, "TxRx", vidx);
++
++		err = request_irq(irq_num, vport->irq_q_handler, 0,
++				  q_vector->name, q_vector);
++		if (err) {
++			netdev_err(vport->netdev,
++				   "Request_irq failed, error: %d\n", err);
++			goto free_q_irqs;
++		}
++		/* assign the mask for this irq */
++		irq_set_affinity_hint(irq_num, &q_vector->affinity_mask);
++	}
++
++	return 0;
++
++free_q_irqs:
++	while (vector) {
++		vector--;
++		vidx = vector + vport->q_vector_base;
++		irq_num = adapter->msix_entries[vidx].vector;
++		free_irq(irq_num, &vport->q_vectors[vector]);
++	}
++	return err;
++}
++
++/**
++ * iecm_vport_intr_write_itr - Write ITR value to the ITR register
++ * @q_vector: q_vector structure
++ * @itr: Interrupt throttling rate
++ * @tx: Tx or Rx ITR
++ */
++void iecm_vport_intr_write_itr(struct iecm_q_vector *q_vector, u16 itr, bool tx)
++{
++	struct iecm_hw *hw = &q_vector->vport->adapter->hw;
++	struct iecm_intr_reg *intr_reg;
++
++	if (tx && !q_vector->tx)
++		return;
++	else if (!tx && !q_vector->rx)
++		return;
++
++	intr_reg = &q_vector->intr_reg;
++	wr32(hw, tx ? intr_reg->tx_itr : intr_reg->rx_itr,
++	     ITR_REG_ALIGN(itr) >> IECM_ITR_GRAN_S);
++}
++
++/**
++ * iecm_vport_intr_ena_irq_all - Enable IRQ for the given vport
++ * @vport: main vport structure
++ */
++void iecm_vport_intr_ena_irq_all(struct iecm_vport *vport)
++{
++	int q_idx;
++
++	for (q_idx = 0; q_idx < vport->num_q_vectors; q_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[q_idx];
++
++		if (q_vector->num_txq || q_vector->num_rxq) {
++			/* Write the default ITR values */
++			iecm_vport_intr_write_itr(q_vector,
++						  q_vector->rx_itr_value,
++						  false);
++			iecm_vport_intr_write_itr(q_vector,
++						  q_vector->tx_itr_value,
++						  true);
++			iecm_vport_intr_update_itr_ena_irq(q_vector);
++		}
++	}
++}
++
++/**
++ * iecm_vport_intr_deinit - Release all vector associations for the vport
++ * @vport: main vport structure
++ */
++void iecm_vport_intr_deinit(struct iecm_vport *vport)
++{
++	iecm_vport_intr_napi_dis_all(vport);
++	iecm_vport_intr_napi_del_all(vport);
++	iecm_vport_intr_dis_irq_all(vport);
++	iecm_vport_intr_rel_irq(vport);
++}
++
++/**
++ * iecm_tx_dim_work - Call back from the stack
++ * @work: work queue structure
++ */
++static void iecm_tx_dim_work(struct work_struct *work)
++{
++	struct iecm_q_vector *q_vector;
++	struct iecm_vport *vport;
++	struct dim *dim;
++	u16 itr;
++
++	dim = container_of(work, struct dim, work);
++	q_vector = container_of(dim, struct iecm_q_vector, tx_dim);
++	vport = q_vector->vport;
++
++	if (dim->profile_ix >= ARRAY_SIZE(vport->tx_itr_profile))
++		dim->profile_ix = ARRAY_SIZE(vport->tx_itr_profile) - 1;
++
++	/* look up the values in our local table */
++	itr = vport->tx_itr_profile[dim->profile_ix];
++
++	iecm_vport_intr_write_itr(q_vector, itr, true);
++
++	dim->state = DIM_START_MEASURE;
++}
++
++/**
++ * iecm_rx_dim_work - Call back from the stack
++ * @work: work queue structure
++ */
++static void iecm_rx_dim_work(struct work_struct *work)
++{
++	struct iecm_q_vector *q_vector;
++	struct iecm_vport *vport;
++	struct dim *dim;
++	u16 itr;
++
++	dim = container_of(work, struct dim, work);
++	q_vector = container_of(dim, struct iecm_q_vector, rx_dim);
++	vport = q_vector->vport;
++
++	if (dim->profile_ix >= ARRAY_SIZE(vport->rx_itr_profile))
++		dim->profile_ix = ARRAY_SIZE(vport->rx_itr_profile) - 1;
++
++	/* look up the values in our local table */
++	itr = vport->rx_itr_profile[dim->profile_ix];
++
++	iecm_vport_intr_write_itr(q_vector, itr, false);
++
++	dim->state = DIM_START_MEASURE;
++}
++
++/**
++ * iecm_vport_intr_napi_ena_all - Enable NAPI for all q_vectors in the vport
++ * @vport: main vport structure
++ */
++static void
++iecm_vport_intr_napi_ena_all(struct iecm_vport *vport)
++{
++	int q_idx;
++
++	if (!vport->netdev)
++		return;
++
++	for (q_idx = 0; q_idx < vport->num_q_vectors; q_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[q_idx];
++
++		INIT_WORK(&q_vector->tx_dim.work, iecm_tx_dim_work);
++		q_vector->tx_dim.mode = DIM_CQ_PERIOD_MODE_START_FROM_EQE;
++
++		INIT_WORK(&q_vector->rx_dim.work, iecm_rx_dim_work);
++		q_vector->rx_dim.mode = DIM_CQ_PERIOD_MODE_START_FROM_EQE;
++
++		napi_enable(&q_vector->napi);
++	}
++}
++
++/**
++ * iecm_vport_splitq_napi_poll - NAPI handler
++ * @napi: struct from which you get q_vector
++ * @budget: budget provided by stack
++ */
++static int iecm_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
++{
++	/* stub */
++	return 0;
++}
++
++/**
++ * iecm_vport_intr_map_vector_to_qs - Map vectors to queues
++ * @vport: virtual port
++ *
++ * Mapping for vectors to queues
++ */
++static void iecm_vport_intr_map_vector_to_qs(struct iecm_vport *vport)
++{
++	int num_txq_grp = vport->num_txq_grp, bufq_vidx = 0;
++	int i, j, qv_idx = 0, num_rxq, num_txq, q_index;
++	struct iecm_rxq_group *rx_qgrp;
++	struct iecm_txq_group *tx_qgrp;
++	struct iecm_queue *q, *bufq;
++
++	for (i = 0; i < vport->num_rxq_grp; i++) {
++		rx_qgrp = &vport->rxq_grps[i];
++		if (iecm_is_queue_model_split(vport->rxq_model))
++			num_rxq = rx_qgrp->splitq.num_rxq_sets;
++		else
++			num_rxq = rx_qgrp->singleq.num_rxq;
++
++		for (j = 0; j < num_rxq; j++) {
++			if (qv_idx >= vport->num_q_vectors)
++				qv_idx = 0;
++
++			if (iecm_is_queue_model_split(vport->rxq_model))
++				q = &rx_qgrp->splitq.rxq_sets[j]->rxq;
++			else
++				q = rx_qgrp->singleq.rxqs[j];
++			q->q_vector = &vport->q_vectors[qv_idx];
++			q_index = q->q_vector->num_rxq;
++			q->q_vector->rx[q_index] = q;
++			q->q_vector->num_rxq++;
++			qv_idx++;
++		}
++
++		if (iecm_is_queue_model_split(vport->rxq_model)) {
++			for (j = 0; j < vport->num_bufqs_per_qgrp; j++) {
++				bufq = &rx_qgrp->splitq.bufq_sets[j].bufq;
++				bufq->q_vector = &vport->q_vectors[bufq_vidx];
++				q_index = bufq->q_vector->num_bufq;
++				bufq->q_vector->bufq[q_index] = bufq;
++				bufq->q_vector->num_bufq++;
++			}
++			if (++bufq_vidx >= vport->num_q_vectors)
++				bufq_vidx = 0;
++		}
++	}
++	qv_idx = 0;
++	for (i = 0; i < num_txq_grp; i++) {
++		tx_qgrp = &vport->txq_grps[i];
++		num_txq = tx_qgrp->num_txq;
++
++		if (iecm_is_queue_model_split(vport->txq_model)) {
++			if (qv_idx >= vport->num_q_vectors)
++				qv_idx = 0;
++
++			q = tx_qgrp->complq;
++			q->q_vector = &vport->q_vectors[qv_idx];
++			q_index = q->q_vector->num_txq;
++			q->q_vector->tx[q_index] = q;
++			q->q_vector->num_txq++;
++			qv_idx++;
++		} else {
++			for (j = 0; j < num_txq; j++) {
++				if (qv_idx >= vport->num_q_vectors)
++					qv_idx = 0;
++
++				q = tx_qgrp->txqs[j];
++				q->q_vector = &vport->q_vectors[qv_idx];
++				q_index = q->q_vector->num_txq;
++				q->q_vector->tx[q_index] = q;
++				q->q_vector->num_txq++;
++
++				qv_idx++;
++			}
++		}
++	}
++}
++
++/**
++ * iecm_vport_intr_init_vec_idx - Initialize the vector indexes
++ * @vport: virtual port
++ *
++ * Initialize vector indexes with values returened over mailbox
++ */
++static int iecm_vport_intr_init_vec_idx(struct iecm_vport *vport)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_q_vector *q_vector;
++	int i;
++
++	if (adapter->req_vec_chunks) {
++		struct virtchnl2_vector_chunks *vchunks;
++		struct virtchnl2_alloc_vectors *ac;
++		u16 vecids[IECM_MAX_VECIDS];
++		int num_ids;
++
++		ac = adapter->req_vec_chunks;
++		vchunks = &ac->vchunks;
++
++		num_ids = iecm_get_vec_ids(adapter, vecids, IECM_MAX_VECIDS,
++					   vchunks);
++
++		if (num_ids < adapter->num_msix_entries)
++			return -EFAULT;
++
++		for (i = 0; i < vport->num_q_vectors; i++) {
++			q_vector = &vport->q_vectors[i];
++			q_vector->v_idx = vecids[i + vport->q_vector_base];
++		}
++	} else {
++		for (i = 0; i < vport->num_q_vectors; i++) {
++			q_vector = &vport->q_vectors[i];
++			q_vector->v_idx = i + vport->q_vector_base;
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * iecm_vport_intr_napi_add_all- Register napi handler for all qvectors
++ * @vport: virtual port structure
++ */
++static void iecm_vport_intr_napi_add_all(struct iecm_vport *vport)
++{
++	u16 v_idx;
++
++	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[v_idx];
++
++		if (vport->netdev) {
++			if (iecm_is_queue_model_split(vport->txq_model))
++				netif_napi_add(vport->netdev, &q_vector->napi,
++					       iecm_vport_splitq_napi_poll,
++					       NAPI_POLL_WEIGHT);
++			else
++				netif_napi_add(vport->netdev, &q_vector->napi,
++					       iecm_vport_singleq_napi_poll,
++					       NAPI_POLL_WEIGHT);
++		}
++
++		/* only set affinity_mask if the CPU is online */
++		if (cpu_online(v_idx))
++			cpumask_set_cpu(v_idx, &q_vector->affinity_mask);
++	}
++}
++
++/**
++ * iecm_vport_intr_alloc - Allocate memory for interrupt vectors
++ * @vport: virtual port
++ *
++ * We allocate one q_vector per queue interrupt. If allocation fails we
++ * return -ENOMEM.
++ */
++int iecm_vport_intr_alloc(struct iecm_vport *vport)
++{
++	int txqs_per_vector, rxqs_per_vector, bufqs_per_vector;
++	struct iecm_q_vector *q_vector;
++	int v_idx, err;
++
++	vport->q_vectors = kcalloc(vport->num_q_vectors,
++				   sizeof(struct iecm_q_vector), GFP_KERNEL);
++
++	if (!vport->q_vectors)
++		return -ENOMEM;
++
++	txqs_per_vector = DIV_ROUND_UP(vport->num_txq, vport->num_q_vectors);
++	rxqs_per_vector = DIV_ROUND_UP(vport->num_rxq, vport->num_q_vectors);
++	bufqs_per_vector = DIV_ROUND_UP(vport->num_bufqs_per_qgrp *
++					vport->num_rxq_grp,
++					vport->num_q_vectors);
++
++	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
++		q_vector = &vport->q_vectors[v_idx];
++		q_vector->vport = vport;
++
++		q_vector->tx_itr_value = IECM_ITR_TX_DEF;
++		q_vector->tx_intr_mode = IECM_ITR_DYNAMIC;
++		q_vector->tx_itr_idx = VIRTCHNL2_ITR_IDX_1;
++
++		q_vector->rx_itr_value = IECM_ITR_RX_DEF;
++		q_vector->rx_intr_mode = IECM_ITR_DYNAMIC;
++		q_vector->rx_itr_idx = VIRTCHNL2_ITR_IDX_0;
++
++		q_vector->tx = kcalloc(txqs_per_vector,
++				       sizeof(struct iecm_queue *),
++				       GFP_KERNEL);
++		if (!q_vector->tx) {
++			err = -ENOMEM;
++			goto error;
++		}
++
++		q_vector->rx = kcalloc(rxqs_per_vector,
++				       sizeof(struct iecm_queue *),
++				       GFP_KERNEL);
++		if (!q_vector->rx) {
++			err = -ENOMEM;
++			goto error;
++		}
++
++		if (iecm_is_queue_model_split(vport->rxq_model)) {
++			q_vector->bufq = kcalloc(bufqs_per_vector,
++						 sizeof(struct iecm_queue *),
++						 GFP_KERNEL);
++			if (!q_vector->bufq) {
++				err = -ENOMEM;
++				goto error;
++			}
++		}
++	}
++
++	return 0;
++
++error:
++	iecm_vport_intr_rel(vport);
++	return err;
++}
++
++/**
++ * iecm_vport_intr_init - Setup all vectors for the given vport
++ * @vport: virtual port
++ *
++ * Returns 0 on success or negative on failure
++ */
++int iecm_vport_intr_init(struct iecm_vport *vport)
++{
++	char int_name[IECM_INT_NAME_STR_LEN];
 +	int err = 0;
 +
-+	if (!iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_VLAN))
-+		return err;
-+
-+	err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
-+			       0, NULL);
++	err = iecm_vport_intr_init_vec_idx(vport);
 +	if (err)
-+		return err;
++		goto handle_err;
 +
-+	err = iecm_min_wait_for_event(adapter, IECM_VC_OFFLOAD_VLAN_V2_CAPS,
-+				      IECM_VC_OFFLOAD_VLAN_V2_CAPS_ERR);
++	iecm_vport_intr_map_vector_to_qs(vport);
++	iecm_vport_intr_napi_add_all(vport);
++	iecm_vport_intr_napi_ena_all(vport);
 +
-+	if (err) {
-+		dev_err(&adapter->pdev->dev, "Failed to recv get caps");
-+		return err;
-+	}
++	err = vport->adapter->dev_ops.reg_ops.intr_reg_init(vport);
++	if (err)
++		goto unroll_vectors_alloc;
 +
-+	if (!adapter->vlan_caps) {
-+		adapter->vlan_caps =
-+		  kzalloc(sizeof(*adapter->vlan_caps), GFP_KERNEL);
-+		if (!adapter->vlan_caps)
-+			return -ENOMEM;
-+	}
++	snprintf(int_name, sizeof(int_name) - 1, "%s-%s",
++		 dev_driver_string(&vport->adapter->pdev->dev),
++		 vport->netdev->name);
 +
-+	memcpy(adapter->vlan_caps,
-+	       adapter->vc_msg, sizeof(*adapter->vlan_caps));
++	err = iecm_vport_intr_req_irq(vport, int_name);
++	if (err)
++		goto unroll_vectors_alloc;
++
++	iecm_vport_intr_ena_irq_all(vport);
++	goto handle_err;
++unroll_vectors_alloc:
++	iecm_vport_intr_napi_dis_all(vport);
++	iecm_vport_intr_napi_del_all(vport);
++handle_err:
++	return err;
++}
++
++/**
++ * iecm_config_rss - Prepare for RSS
++ * @vport: virtual port
++ *
++ * Return 0 on success, negative on failure
++ */
++int iecm_config_rss(struct iecm_vport *vport)
++{
++	int err;
++
++	err = vport->adapter->dev_ops.vc_ops.get_set_rss_key(vport, false);
++	if (!err)
++		err = vport->adapter->dev_ops.vc_ops.get_set_rss_lut(vport,
++								     false);
 +
 +	return err;
 +}
 +
- /**
-  * iecm_fill_ptype_lookup - Fill L3 specific fields in ptype lookup table
-  * @ptype: ptype lookup table
-@@ -3580,6 +3619,132 @@ static unsigned int iecm_get_max_tx_bufs(struct iecm_adapter *adapter)
- 	return ((struct virtchnl2_get_capabilities *)adapter->caps)->max_sg_bufs_per_tx_pkt;
++/**
++ * iecm_fill_dflt_rss_lut - Fill the indirection table with the default values
++ * @vport: virtual port structure
++ */
++void iecm_fill_dflt_rss_lut(struct iecm_vport *vport)
++{
++	u16 num_active_rxq = vport->num_rxq;
++	int i;
++
++	for (i = 0; i < vport->adapter->rss_data.rss_lut_size; i++)
++		vport->adapter->rss_data.rss_lut[i] = i % num_active_rxq;
++}
++
++/**
++ * iecm_init_rss - Prepare for RSS
++ * @vport: virtual port
++ *
++ * Return 0 on success, negative on failure
++ */
++int iecm_init_rss(struct iecm_vport *vport)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	u32 lut_size;
++
++	adapter->rss_data.rss_key = kzalloc(adapter->rss_data.rss_key_size,
++					    GFP_KERNEL);
++	if (!adapter->rss_data.rss_key)
++		return -ENOMEM;
++
++	lut_size = adapter->rss_data.rss_lut_size * sizeof(u32);
++	adapter->rss_data.rss_lut = kzalloc(lut_size, GFP_KERNEL);
++	if (!adapter->rss_data.rss_lut) {
++		kfree(adapter->rss_data.rss_key);
++		adapter->rss_data.rss_key = NULL;
++		return -ENOMEM;
++	}
++
++	/* Initialize default rss key */
++	netdev_rss_key_fill((void *)adapter->rss_data.rss_key,
++			    adapter->rss_data.rss_key_size);
++
++	/* Initialize default rss lut */
++	if (adapter->rss_data.rss_lut_size % vport->num_rxq) {
++		u32 dflt_qid;
++		int i;
++
++		/* Set all entries to a default RX queue if the algorithm below
++		 * won't fill all entries
++		 */
++		if (iecm_is_queue_model_split(vport->rxq_model))
++			dflt_qid =
++				vport->rxq_grps[0].splitq.rxq_sets[0]->rxq.q_id;
++		else
++			dflt_qid =
++				vport->rxq_grps[0].singleq.rxqs[0]->q_id;
++
++		for (i = 0; i < adapter->rss_data.rss_lut_size; i++)
++			adapter->rss_data.rss_lut[i] = dflt_qid;
++	}
++
++	/* Fill the default RSS lut values*/
++	iecm_fill_dflt_rss_lut(vport);
++
++	return iecm_config_rss(vport);
++}
++
++/**
++ * iecm_deinit_rss - Prepare for RSS
++ * @vport: virtual port
++ *
++ */
++void iecm_deinit_rss(struct iecm_vport *vport)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++
++	kfree(adapter->rss_data.rss_key);
++	adapter->rss_data.rss_key = NULL;
++	kfree(adapter->rss_data.rss_lut);
++	adapter->rss_data.rss_lut = NULL;
++}
+diff --git a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+index b91716aeef6f..919fb3958cf8 100644
+--- a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
++++ b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+@@ -3745,6 +3745,35 @@ void iecm_add_del_ether_addrs(struct iecm_vport *vport, bool add, bool async)
+ 		dev_err(&pdev->dev, "Failed to add or del mac filters %d", err);
  }
  
 +/**
-+ * iecm_add_del_ether_addrs
-+ * @vport: virtual port data structure
-+ * @add: Add or delete flag
-+ * @async: Don't wait for return message
++ * iecm_set_promiscuous - set promiscuous and send message to mailbox
++ * @adapter: Driver specific private structure
 + *
-+ * Request that the PF add or delete one or more addresses to our filters.
-+ **/
-+void iecm_add_del_ether_addrs(struct iecm_vport *vport, bool add, bool async)
++ * Request that the PF enable promiscuous mode for our VSI.  Message is sent
++ * asynchronously and won't wait for response.  Returns 0 on success, negative
++ * on failure;
++ */
++int iecm_set_promiscuous(struct iecm_adapter *adapter)
 +{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct virtchnl_ether_addr_list *veal = NULL;
-+	int num_entries, num_msgs, total_filters = 0;
-+	struct pci_dev *pdev = adapter->pdev;
-+	enum iecm_vport_vc_state vc, vc_err;
-+	struct virtchnl_ether_addr *eal;
-+	struct iecm_mac_filter *f, *tmp;
-+	int i = 0, k = 0, err = 0;
-+	enum virtchnl_ops vop;
++	struct iecm_vport *vport = adapter->vports[0];
++	struct virtchnl_promisc_info vpi;
++	u16 flags = 0;
++	int err = 0;
 +
-+	spin_lock_bh(&adapter->mac_filter_list_lock);
++	if (test_bit(__IECM_PROMISC_UC, adapter->config_data.user_flags))
++		flags |= FLAG_VF_UNICAST_PROMISC;
++	if (test_bit(__IECM_PROMISC_MC,
++		     adapter->config_data.user_flags))
++		flags |= FLAG_VF_MULTICAST_PROMISC;
 +
-+	/* Find the number of newly added filters */
-+	list_for_each_entry(f, &adapter->config_data.mac_filter_list, list) {
-+		if (add && f->add)
-+			total_filters++;
-+		else if (!add && f->remove)
-+			total_filters++;
-+	}
-+	if (!total_filters) {
-+		spin_unlock_bh(&adapter->mac_filter_list_lock);
-+		goto error;
-+	}
-+
-+	/* Fill all the new filters into virtchannel message */
-+	eal = kcalloc(total_filters, sizeof(struct virtchnl_ether_addr),
-+		      GFP_ATOMIC);
-+	if (!eal) {
-+		err = -ENOMEM;
-+		spin_unlock_bh(&adapter->mac_filter_list_lock);
-+		goto error;
-+	}
-+	list_for_each_entry_safe(f, tmp, &adapter->config_data.mac_filter_list,
-+				 list) {
-+		if (add && f->add) {
-+			ether_addr_copy(eal[i].addr, f->macaddr);
-+			i++;
-+			f->add = false;
-+			if (i == total_filters)
-+				break;
-+		}
-+		if (!add && f->remove) {
-+			ether_addr_copy(eal[i].addr, f->macaddr);
-+			i++;
-+			list_del(&f->list);
-+			kfree(f);
-+			if (i == total_filters)
-+				break;
-+		}
-+	}
-+
-+	spin_unlock_bh(&adapter->mac_filter_list_lock);
-+
-+	/* Chunk up the filters into multiple messages to avoid
-+	 * sending a control queue message buffer that is too large
-+	 */
-+	if (total_filters < IECM_NUM_FILTERS_PER_MSG)
-+		num_entries = total_filters;
-+	else
-+		num_entries = IECM_NUM_FILTERS_PER_MSG;
-+
-+	num_msgs = DIV_ROUND_UP(total_filters, IECM_NUM_FILTERS_PER_MSG);
-+
-+	for (i = 0, k = 0; i < num_msgs || num_entries; i++) {
-+		int buf_size = sizeof(struct virtchnl_ether_addr_list) +
-+			(sizeof(struct virtchnl_ether_addr) * num_entries);
-+		if (!veal || num_entries != IECM_NUM_FILTERS_PER_MSG) {
-+			kfree(veal);
-+			veal = kzalloc(buf_size, GFP_KERNEL);
-+			if (!veal) {
-+				err = -ENOMEM;
-+				goto list_prep_error;
-+			}
-+		} else {
-+			memset(veal, 0, buf_size);
-+		}
-+
-+		veal->vsi_id = vport->vport_id;
-+		veal->num_elements = num_entries;
-+		memcpy(veal->list, &eal[k],
-+		       sizeof(struct virtchnl_ether_addr) * num_entries);
-+
-+		if (add) {
-+			vop = VIRTCHNL_OP_ADD_ETH_ADDR;
-+			vc = IECM_VC_ADD_ETH_ADDR;
-+			vc_err = IECM_VC_ADD_ETH_ADDR_ERR;
-+		} else  {
-+			vop = VIRTCHNL_OP_DEL_ETH_ADDR;
-+			vc = IECM_VC_DEL_ETH_ADDR;
-+			vc_err = IECM_VC_DEL_ETH_ADDR_ERR;
-+		}
-+		err = iecm_send_mb_msg(vport->adapter, vop, buf_size,
-+				       (u8 *)veal);
-+		if (err)
-+			goto mbx_error;
-+
-+		if (!async) {
-+			err = iecm_wait_for_event(vport->adapter, vc, vc_err);
-+			if (err)
-+				goto mbx_error;
-+		}
-+
-+		k += num_entries;
-+		total_filters -= num_entries;
-+		if (total_filters < IECM_NUM_FILTERS_PER_MSG)
-+			num_entries = total_filters;
-+	}
-+mbx_error:
-+	kfree(veal);
-+list_prep_error:
-+	kfree(eal);
-+error:
-+	if (err)
-+		dev_err(&pdev->dev, "Failed to add or del mac filters %d", err);
++	vpi.vsi_id = vport->vport_id;
++	vpi.flags = flags;
++	err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
++			       sizeof(struct virtchnl_promisc_info),
++			       (u8 *)&vpi);
++	return err;
 +}
 +
  /**
   * iecm_add_del_vlans - Add or delete vlan filter
   * @vport: vport structure
 diff --git a/drivers/net/ethernet/intel/include/iecm.h b/drivers/net/ethernet/intel/include/iecm.h
-index d736db65da06..b5bd73be2855 100644
+index b5bd73be2855..4304256f7010 100644
 --- a/drivers/net/ethernet/intel/include/iecm.h
 +++ b/drivers/net/ethernet/intel/include/iecm.h
-@@ -33,6 +33,11 @@
- #define IECM_MB_MAX_ERR			20
- #define IECM_NUM_CHUNKS_PER_MSG(a, b)	((IECM_DFLT_MBX_BUF_SIZE - (a)) / (b))
+@@ -13,6 +13,7 @@
+ #include <linux/version.h>
+ #include <linux/dim.h>
  
-+/* 2K is the real maximum, but the driver should not be using more than the
-+ * below limit
-+ */
-+#define IECM_MAX_VECIDS			256
-+
- #define IECM_MAX_NUM_VPORTS		1
++#include "iecm_lan_txrx.h"
+ #include "virtchnl_2.h"
+ #include "iecm_txrx.h"
+ #include "iecm_controlq.h"
+@@ -621,6 +622,17 @@ enum iecm_vlan_caps {
+ 	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_SCTP	|\
+ 	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_SCTP)
  
- /* available message levels */
-@@ -135,6 +140,10 @@ enum iecm_cap_field {
- 	IECM_CAP_FIELD_LAST,
- };
- 
-+struct iecm_netdev_priv {
-+	struct iecm_vport *vport;
-+};
-+
- struct iecm_reset_reg {
- 	u32 rstat;
- 	u32 rstat_m;
-@@ -450,6 +459,8 @@ struct iecm_adapter {
- 	struct msix_entry *msix_entries;
- 	struct virtchnl2_alloc_vectors *req_vec_chunks;
- 	struct iecm_q_vector mb_vector;
-+	/* handler for hard interrupt for mailbox*/
-+	irqreturn_t (*irq_mb_handler)(int irq, void *data);
- 
- 	/* vport structs */
- 	struct iecm_vport **vports;	/* vports created by the driver */
-@@ -537,12 +548,88 @@ static inline bool __iecm_is_cap_ena(struct iecm_adapter *adapter, bool all,
- 	return adapter->dev_ops.vc_ops.is_cap_ena(adapter, all, field, flag);
- }
- 
--#define IECM_CAP_HSPLIT (\
--	VIRTCHNL2_CAP_RX_HSPLIT_AT_L2   |\
--	VIRTCHNL2_CAP_RX_HSPLIT_AT_L3   |\
--	VIRTCHNL2_CAP_RX_HSPLIT_AT_L4V4 |\
-+/* enum used to distinguish vlan capabilities */
-+enum iecm_vlan_caps {
-+	IECM_CAP_VLAN_CTAG_INSERT,
-+	IECM_CAP_VLAN_STAG_INSERT,
-+	IECM_CAP_VLAN_CTAG_STRIP,
-+	IECM_CAP_VLAN_STAG_STRIP,
-+	IECM_CAP_VLAN_CTAG_ADD_DEL,
-+	IECM_CAP_VLAN_STAG_ADD_DEL,
-+	IECM_CAP_VLAN_LAST,
-+};
-+
-+#define IECM_VLAN_8100 (VIRTCHNL_VLAN_TOGGLE | VIRTCHNL_VLAN_ETHERTYPE_8100)
-+#define IECM_VLAN_88A8 (VIRTCHNL_VLAN_TOGGLE | VIRTCHNL_VLAN_ETHERTYPE_88A8)
-+
-+#define IECM_F_HW_VLAN_CTAG_TX NETIF_F_HW_VLAN_CTAG_TX
-+
-+#define IECM_F_HW_VLAN_CTAG_RX NETIF_F_HW_VLAN_CTAG_RX
-+
-+#define IECM_F_HW_VLAN_CTAG_FILTER NETIF_F_HW_VLAN_CTAG_FILTER
-+
-+#define IECM_CAP_RSS (\
-+	VIRTCHNL2_CAP_RSS_IPV4_TCP	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_TCP	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_UDP	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_SCTP	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_OTHER	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_AH	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_ESP	|\
-+	VIRTCHNL2_CAP_RSS_IPV4_AH_ESP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_TCP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_TCP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_UDP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_SCTP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_OTHER	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_AH	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_ESP	|\
-+	VIRTCHNL2_CAP_RSS_IPV6_AH_ESP)
-+
-+#define IECM_CAP_RSC (\
-+	VIRTCHNL2_CAP_RSC_IPV4_TCP	|\
-+	VIRTCHNL2_CAP_RSC_IPV4_SCTP	|\
-+	VIRTCHNL2_CAP_RSC_IPV6_TCP	|\
-+	VIRTCHNL2_CAP_RSC_IPV6_SCTP)
-+
-+#define IECM_CAP_HSPLIT	(\
-+	VIRTCHNL2_CAP_RX_HSPLIT_AT_L2	|\
-+	VIRTCHNL2_CAP_RX_HSPLIT_AT_L3	|\
-+	VIRTCHNL2_CAP_RX_HSPLIT_AT_L4V4	|\
- 	VIRTCHNL2_CAP_RX_HSPLIT_AT_L4V6)
- 
-+#define IECM_CAP_RX_CSUM_L4V4 (\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_TCP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_UDP)
-+
-+#define IECM_CAP_RX_CSUM_L4V6 (\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_TCP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_UDP)
-+
-+#define IECM_CAP_RX_CSUM (\
-+	VIRTCHNL2_CAP_RX_CSUM_L3_IPV4		|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_TCP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_UDP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_SCTP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_TCP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_UDP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_SCTP)
-+
-+#define IECM_CAP_SCTP_CSUM (\
-+	VIRTCHNL2_CAP_TX_CSUM_L4_IPV4_SCTP	|\
-+	VIRTCHNL2_CAP_TX_CSUM_L4_IPV6_SCTP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV4_SCTP	|\
-+	VIRTCHNL2_CAP_RX_CSUM_L4_IPV6_SCTP)
-+
 +/**
-+ * iecm_get_reserved_vecs - Get reserved vectors
-+ * @adapter: private data struct
++ * iecm_restore_features - Restore feature configs
++ * @adapter: driver specific private structure
++ * @flag: User settings flag to check
 + */
-+static inline u16 iecm_get_reserved_vecs(struct iecm_adapter *adapter)
++static inline bool iecm_is_user_flag_ena(struct iecm_adapter *adapter,
++					 enum iecm_user_flags flag)
 +{
-+	return adapter->dev_ops.vc_ops.get_reserved_vecs(adapter);
++	return test_bit(flag, adapter->config_data.user_flags);
 +}
 +
  /**
-  * iecm_is_reset_detected - check if we were reset at some point
-  * @adapter: driver specific private structure
-@@ -555,6 +642,20 @@ static inline bool iecm_is_reset_detected(struct iecm_adapter *adapter)
- 		 adapter->hw.arq->reg.len_ena_mask);
+  * iecm_get_reserved_vecs - Get reserved vectors
+  * @adapter: private data struct
+@@ -656,6 +668,19 @@ static inline bool iecm_is_reset_in_prog(struct iecm_adapter *adapter)
+ 		test_bit(__IECM_HR_DRV_LOAD, adapter->flags));
  }
  
 +/**
-+ * iecm_is_reset_in_prog - check if reset is in progress
-+ * @adapter: driver specific private structure
++ * iecm_rx_offset - Return expected offset into page to access data
++ * @rx_q: queue we are requesting offset of
 + *
-+ * Returns true if hard reset is in progress, false otherwise
++ * Returns the offset value for queue into the data buffer.
 + */
-+static inline bool iecm_is_reset_in_prog(struct iecm_adapter *adapter)
++static inline unsigned int
++iecm_rx_offset(struct iecm_queue __maybe_unused *rx_q)
 +{
-+	return (test_bit(__IECM_HR_RESET_IN_PROG, adapter->flags) ||
-+		test_bit(__IECM_HR_FUNC_RESET, adapter->flags) ||
-+		test_bit(__IECM_HR_CORE_RESET, adapter->flags) ||
-+		test_bit(__IECM_HR_DRV_LOAD, adapter->flags));
++	/* could be non-zero if xdp is enabled */
++	return 0;
 +}
 +
  int iecm_probe(struct pci_dev *pdev,
  	       const struct pci_device_id __always_unused *ent,
  	       struct iecm_adapter *adapter);
-@@ -576,6 +677,7 @@ int iecm_send_get_caps_msg(struct iecm_adapter *adapter);
- int iecm_send_delete_queues_msg(struct iecm_vport *vport);
- int iecm_send_add_queues_msg(struct iecm_vport *vport, u16 num_tx_q,
- 			     u16 num_complq, u16 num_rx_q, u16 num_rx_bufq);
-+int iecm_send_vlan_v2_caps_msg(struct iecm_adapter *adapter);
- int iecm_send_config_tx_queues_msg(struct iecm_vport *vport);
- int iecm_send_config_rx_queues_msg(struct iecm_vport *vport);
- int iecm_send_enable_vport_msg(struct iecm_vport *vport);
-@@ -589,6 +691,7 @@ int iecm_send_dealloc_vectors_msg(struct iecm_adapter *adapter);
- int iecm_send_alloc_vectors_msg(struct iecm_adapter *adapter, u16 num_vectors);
- int iecm_vport_params_buf_alloc(struct iecm_adapter *adapter);
- void iecm_vport_params_buf_rel(struct iecm_adapter *adapter);
-+struct iecm_vport *iecm_netdev_to_vport(struct net_device *netdev);
- int iecm_send_get_stats_msg(struct iecm_vport *vport);
- int iecm_get_vec_ids(struct iecm_adapter *adapter,
- 		     u16 *vecids, int num_vecids,
-@@ -598,6 +701,7 @@ int iecm_recv_mb_msg(struct iecm_adapter *adapter, enum virtchnl_ops op,
- int iecm_send_mb_msg(struct iecm_adapter *adapter, enum virtchnl_ops op,
+@@ -702,6 +727,7 @@ int iecm_send_mb_msg(struct iecm_adapter *adapter, enum virtchnl_ops op,
  		     u16 msg_size, u8 *msg);
  void iecm_vport_set_hsplit(struct iecm_vport *vport, bool ena);
-+void iecm_add_del_ether_addrs(struct iecm_vport *vport, bool add, bool async);
+ void iecm_add_del_ether_addrs(struct iecm_vport *vport, bool add, bool async);
++int iecm_set_promiscuous(struct iecm_adapter *adapter);
  int iecm_send_enable_channels_msg(struct iecm_vport *vport);
  int iecm_send_disable_channels_msg(struct iecm_vport *vport);
  bool iecm_is_feature_ena(struct iecm_vport *vport, netdev_features_t feature);
+@@ -710,5 +736,7 @@ int iecm_check_descs(struct iecm_vport *vport, u64 rx_desc_ids,
+ int iecm_set_msg_pending(struct iecm_adapter *adapter,
+ 			 struct iecm_ctlq_msg *ctlq_msg,
+ 			 enum iecm_vport_vc_state err_enum);
++void iecm_vport_intr_write_itr(struct iecm_q_vector *q_vector,
++			       u16 itr, bool tx);
+ int iecm_send_map_unmap_queue_vector_msg(struct iecm_vport *vport, bool map);
+ #endif /* !_IECM_H_ */
+diff --git a/drivers/net/ethernet/intel/include/iecm_lan_txrx.h b/drivers/net/ethernet/intel/include/iecm_lan_txrx.h
+new file mode 100644
+index 000000000000..967308036eba
+--- /dev/null
++++ b/drivers/net/ethernet/intel/include/iecm_lan_txrx.h
+@@ -0,0 +1,394 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright (c) 2020, Intel Corporation. */
++
++#ifndef _IECM_LAN_TXRX_H_
++#define _IECM_LAN_TXRX_H_
++
++enum iecm_rss_hash {
++	/* Values 0 - 28 are reserved for future use */
++	IECM_HASH_INVALID		= 0,
++	IECM_HASH_NONF_UNICAST_IPV4_UDP	= 29,
++	IECM_HASH_NONF_MULTICAST_IPV4_UDP,
++	IECM_HASH_NONF_IPV4_UDP,
++	IECM_HASH_NONF_IPV4_TCP_SYN_NO_ACK,
++	IECM_HASH_NONF_IPV4_TCP,
++	IECM_HASH_NONF_IPV4_SCTP,
++	IECM_HASH_NONF_IPV4_OTHER,
++	IECM_HASH_FRAG_IPV4,
++	/* Values 37-38 are reserved */
++	IECM_HASH_NONF_UNICAST_IPV6_UDP	= 39,
++	IECM_HASH_NONF_MULTICAST_IPV6_UDP,
++	IECM_HASH_NONF_IPV6_UDP,
++	IECM_HASH_NONF_IPV6_TCP_SYN_NO_ACK,
++	IECM_HASH_NONF_IPV6_TCP,
++	IECM_HASH_NONF_IPV6_SCTP,
++	IECM_HASH_NONF_IPV6_OTHER,
++	IECM_HASH_FRAG_IPV6,
++	IECM_HASH_NONF_RSVD47,
++	IECM_HASH_NONF_FCOE_OX,
++	IECM_HASH_NONF_FCOE_RX,
++	IECM_HASH_NONF_FCOE_OTHER,
++	/* Values 51-62 are reserved */
++	IECM_HASH_L2_PAYLOAD		= 63,
++	IECM_HASH_MAX
++};
++
++/* Supported RSS offloads */
++#define IECM_DEFAULT_RSS_HASH ( \
++	BIT_ULL(IECM_HASH_NONF_IPV4_UDP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV4_SCTP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV4_TCP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV4_OTHER) | \
++	BIT_ULL(IECM_HASH_FRAG_IPV4) | \
++	BIT_ULL(IECM_HASH_NONF_IPV6_UDP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV6_TCP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV6_SCTP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV6_OTHER) | \
++	BIT_ULL(IECM_HASH_FRAG_IPV6) | \
++	BIT_ULL(IECM_HASH_L2_PAYLOAD))
++
++	/* TODO: Wrap belwo comment under internal flag
++	 * Below 6 pcktypes are not supported by FVL or older products
++	 * They are supported by FPK and future products
++	 */
++#define IECM_DEFAULT_RSS_HASH_EXPANDED (IECM_DEFAULT_RSS_HASH | \
++	BIT_ULL(IECM_HASH_NONF_IPV4_TCP_SYN_NO_ACK) | \
++	BIT_ULL(IECM_HASH_NONF_UNICAST_IPV4_UDP) | \
++	BIT_ULL(IECM_HASH_NONF_MULTICAST_IPV4_UDP) | \
++	BIT_ULL(IECM_HASH_NONF_IPV6_TCP_SYN_NO_ACK) | \
++	BIT_ULL(IECM_HASH_NONF_UNICAST_IPV6_UDP) | \
++	BIT_ULL(IECM_HASH_NONF_MULTICAST_IPV6_UDP))
++
++/* For iecm_splitq_base_tx_compl_desc */
++#define IECM_TXD_COMPLQ_GEN_S	15
++#define IECM_TXD_COMPLQ_GEN_M		BIT_ULL(IECM_TXD_COMPLQ_GEN_S)
++#define IECM_TXD_COMPLQ_COMPL_TYPE_S	11
++#define IECM_TXD_COMPLQ_COMPL_TYPE_M	\
++	MAKEMASK(0x7UL, IECM_TXD_COMPLQ_COMPL_TYPE_S)
++#define IECM_TXD_COMPLQ_QID_S	0
++#define IECM_TXD_COMPLQ_QID_M		MAKEMASK(0x3FFUL, IECM_TXD_COMPLQ_QID_S)
++
++/* For base mode TX descriptors */
++#define IECM_TXD_CTX_QW1_MSS_S		50
++#define IECM_TXD_CTX_QW1_MSS_M		\
++	MAKEMASK(0x3FFFULL, IECM_TXD_CTX_QW1_MSS_S)
++#define IECM_TXD_CTX_QW1_TSO_LEN_S	30
++#define IECM_TXD_CTX_QW1_TSO_LEN_M	\
++	MAKEMASK(0x3FFFFULL, IECM_TXD_CTX_QW1_TSO_LEN_S)
++#define IECM_TXD_CTX_QW1_CMD_S		4
++#define IECM_TXD_CTX_QW1_CMD_M		\
++	MAKEMASK(0xFFFUL, IECM_TXD_CTX_QW1_CMD_S)
++#define IECM_TXD_CTX_QW1_DTYPE_S	0
++#define IECM_TXD_CTX_QW1_DTYPE_M	\
++	MAKEMASK(0xFUL, IECM_TXD_CTX_QW1_DTYPE_S)
++#define IECM_TXD_QW1_L2TAG1_S		48
++#define IECM_TXD_QW1_L2TAG1_M		\
++	MAKEMASK(0xFFFFULL, IECM_TXD_QW1_L2TAG1_S)
++#define IECM_TXD_QW1_TX_BUF_SZ_S	34
++#define IECM_TXD_QW1_TX_BUF_SZ_M	\
++	MAKEMASK(0x3FFFULL, IECM_TXD_QW1_TX_BUF_SZ_S)
++#define IECM_TXD_QW1_OFFSET_S		16
++#define IECM_TXD_QW1_OFFSET_M		\
++	MAKEMASK(0x3FFFFULL, IECM_TXD_QW1_OFFSET_S)
++#define IECM_TXD_QW1_CMD_S		4
++#define IECM_TXD_QW1_CMD_M		MAKEMASK(0xFFFUL, IECM_TXD_QW1_CMD_S)
++#define IECM_TXD_QW1_DTYPE_S		0
++#define IECM_TXD_QW1_DTYPE_M		MAKEMASK(0xFUL, IECM_TXD_QW1_DTYPE_S)
++
++/* TX Completion Descriptor Completion Types */
++#define IECM_TXD_COMPLT_ITR_FLUSH	0
++#define IECM_TXD_COMPLT_RULE_MISS	1
++#define IECM_TXD_COMPLT_RS		2
++#define IECM_TXD_COMPLT_REINJECTED	3
++#define IECM_TXD_COMPLT_RE		4
++#define IECM_TXD_COMPLT_SW_MARKER	5
++
++enum iecm_tx_desc_dtype_value {
++	IECM_TX_DESC_DTYPE_DATA				= 0,
++	IECM_TX_DESC_DTYPE_CTX				= 1,
++	IECM_TX_DESC_DTYPE_REINJECT_CTX			= 2,
++	IECM_TX_DESC_DTYPE_FLEX_DATA			= 3,
++	IECM_TX_DESC_DTYPE_FLEX_CTX			= 4,
++	IECM_TX_DESC_DTYPE_FLEX_TSO_CTX			= 5,
++	IECM_TX_DESC_DTYPE_FLEX_TSYN_L2TAG1		= 6,
++	IECM_TX_DESC_DTYPE_FLEX_L2TAG1_L2TAG2		= 7,
++	IECM_TX_DESC_DTYPE_FLEX_TSO_L2TAG2_PARSTAG_CTX	= 8,
++	IECM_TX_DESC_DTYPE_FLEX_HOSTSPLIT_SA_TSO_CTX	= 9,
++	IECM_TX_DESC_DTYPE_FLEX_HOSTSPLIT_SA_CTX	= 10,
++	IECM_TX_DESC_DTYPE_FLEX_L2TAG2_CTX		= 11,
++	IECM_TX_DESC_DTYPE_FLEX_FLOW_SCHE		= 12,
++	IECM_TX_DESC_DTYPE_FLEX_HOSTSPLIT_TSO_CTX	= 13,
++	IECM_TX_DESC_DTYPE_FLEX_HOSTSPLIT_CTX		= 14,
++	/* DESC_DONE - HW has completed write-back of descriptor */
++	IECM_TX_DESC_DTYPE_DESC_DONE			= 15,
++};
++
++enum iecm_tx_ctx_desc_cmd_bits {
++	IECM_TX_CTX_DESC_TSO		= 0x01,
++	IECM_TX_CTX_DESC_TSYN		= 0x02,
++	IECM_TX_CTX_DESC_IL2TAG2	= 0x04,
++	IECM_TX_CTX_DESC_RSVD		= 0x08,
++	IECM_TX_CTX_DESC_SWTCH_NOTAG	= 0x00,
++	IECM_TX_CTX_DESC_SWTCH_UPLINK	= 0x10,
++	IECM_TX_CTX_DESC_SWTCH_LOCAL	= 0x20,
++	IECM_TX_CTX_DESC_SWTCH_VSI	= 0x30,
++	IECM_TX_CTX_DESC_FILT_AU_EN	= 0x40,
++	IECM_TX_CTX_DESC_FILT_AU_EVICT	= 0x80,
++	IECM_TX_CTX_DESC_RSVD1		= 0xF00
++};
++
++enum iecm_tx_desc_len_fields {
++	/* Note: These are predefined bit offsets */
++	IECM_TX_DESC_LEN_MACLEN_S	= 0, /* 7 BITS */
++	IECM_TX_DESC_LEN_IPLEN_S	= 7, /* 7 BITS */
++	IECM_TX_DESC_LEN_L4_LEN_S	= 14 /* 4 BITS */
++};
++
++enum iecm_tx_base_desc_cmd_bits {
++	IECM_TX_DESC_CMD_EOP			= 0x0001,
++	IECM_TX_DESC_CMD_RS			= 0x0002,
++	 /* only on VFs else RSVD */
++	IECM_TX_DESC_CMD_ICRC			= 0x0004,
++	IECM_TX_DESC_CMD_IL2TAG1		= 0x0008,
++	IECM_TX_DESC_CMD_RSVD1			= 0x0010,
++	IECM_TX_DESC_CMD_IIPT_NONIP		= 0x0000, /* 2 BITS */
++	IECM_TX_DESC_CMD_IIPT_IPV6		= 0x0020, /* 2 BITS */
++	IECM_TX_DESC_CMD_IIPT_IPV4		= 0x0040, /* 2 BITS */
++	IECM_TX_DESC_CMD_IIPT_IPV4_CSUM		= 0x0060, /* 2 BITS */
++	IECM_TX_DESC_CMD_RSVD2			= 0x0080,
++	IECM_TX_DESC_CMD_L4T_EOFT_UNK		= 0x0000, /* 2 BITS */
++	IECM_TX_DESC_CMD_L4T_EOFT_TCP		= 0x0100, /* 2 BITS */
++	IECM_TX_DESC_CMD_L4T_EOFT_SCTP		= 0x0200, /* 2 BITS */
++	IECM_TX_DESC_CMD_L4T_EOFT_UDP		= 0x0300, /* 2 BITS */
++	IECM_TX_DESC_CMD_RSVD3			= 0x0400,
++	IECM_TX_DESC_CMD_RSVD4			= 0x0800,
++};
++
++/* Transmit descriptors  */
++/* splitq tx buf, singleq tx buf and singleq compl desc */
++struct iecm_base_tx_desc {
++	__le64 buf_addr; /* Address of descriptor's data buf */
++	__le64 qw1; /* type_cmd_offset_bsz_l2tag1 */
++};/* read used with buffer queues*/
++
++struct iecm_splitq_tx_compl_desc {
++	/* qid=[10:0] comptype=[13:11] rsvd=[14] gen=[15] */
++	__le16 qid_comptype_gen;
++	union {
++		__le16 q_head; /* Queue head */
++		__le16 compl_tag; /* Completion tag */
++	} q_head_compl_tag;
++	u32 rsvd;
++
++};/* writeback used with completion queues*/
++
++/* Context descriptors */
++struct iecm_base_tx_ctx_desc {
++	struct {
++		__le32 rsvd0;
++		__le16 l2tag2;
++		__le16 rsvd1;
++	} qw0;
++	__le64 qw1; /* type_cmd_tlen_mss/rt_hint */
++};
++
++/* Common cmd field defines for all desc except Flex Flow Scheduler (0x0C) */
++enum iecm_tx_flex_desc_cmd_bits {
++	IECM_TX_FLEX_DESC_CMD_EOP			= 0x01,
++	IECM_TX_FLEX_DESC_CMD_RS			= 0x02,
++	IECM_TX_FLEX_DESC_CMD_RE			= 0x04,
++	IECM_TX_FLEX_DESC_CMD_IL2TAG1			= 0x08,
++	IECM_TX_FLEX_DESC_CMD_DUMMY			= 0x10,
++	IECM_TX_FLEX_DESC_CMD_CS_EN			= 0x20,
++	IECM_TX_FLEX_DESC_CMD_FILT_AU_EN		= 0x40,
++	IECM_TX_FLEX_DESC_CMD_FILT_AU_EVICT		= 0x80,
++};
++
++struct iecm_flex_tx_desc {
++	__le64 buf_addr;	/* Packet buffer address */
++	struct {
++		__le16 cmd_dtype;
++#define IECM_FLEX_TXD_QW1_DTYPE_S		0
++#define IECM_FLEX_TXD_QW1_DTYPE_M		\
++		MAKEMASK(0x1FUL, IECM_FLEX_TXD_QW1_DTYPE_S)
++#define IECM_FLEX_TXD_QW1_CMD_S		5
++#define IECM_FLEX_TXD_QW1_CMD_M		MAKEMASK(0x7FFUL, IECM_TXD_QW1_CMD_S)
++		union {
++			/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_DATA_(0x03) */
++			u8 raw[4];
++
++			/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_TSYN_L2TAG1 (0x06) */
++			struct {
++				__le16 l2tag1;
++				u8 flex;
++				u8 tsync;
++			} tsync;
++
++			/* DTYPE=IECM_TX_DESC_DTYPE_FLEX_L2TAG1_L2TAG2 (0x07) */
++			struct {
++				__le16 l2tag1;
++				__le16 l2tag2;
++			} l2tags;
++		} flex;
++		__le16 buf_size;
++	} qw1;
++};
++
++struct iecm_flex_tx_sched_desc {
++	__le64 buf_addr;	/* Packet buffer address */
++
++	/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_FLOW_SCHE_16B (0x0C) */
++	struct {
++		u8 cmd_dtype;
++#define IECM_TXD_FLEX_FLOW_DTYPE_M	0x1F
++#define IECM_TXD_FLEX_FLOW_CMD_EOP	0x20
++#define IECM_TXD_FLEX_FLOW_CMD_CS_EN	0x40
++#define IECM_TXD_FLEX_FLOW_CMD_RE	0x80
++
++		u8 rsvd[3];
++
++		__le16 compl_tag;
++		__le16 rxr_bufsize;
++#define IECM_TXD_FLEX_FLOW_RXR		0x4000
++#define IECM_TXD_FLEX_FLOW_BUFSIZE_M	0x3FFF
++	} qw1;
++};
++
++/* Common cmd fields for all flex context descriptors
++ * Note: these defines already account for the 5 bit dtype in the cmd_dtype
++ * field
++ */
++enum iecm_tx_flex_ctx_desc_cmd_bits {
++	IECM_TX_FLEX_CTX_DESC_CMD_TSO			= 0x0020,
++	IECM_TX_FLEX_CTX_DESC_CMD_TSYN_EN		= 0x0040,
++	IECM_TX_FLEX_CTX_DESC_CMD_L2TAG2		= 0x0080,
++	IECM_TX_FLEX_CTX_DESC_CMD_SWTCH_UPLNK		= 0x0200, /* 2 bits */
++	IECM_TX_FLEX_CTX_DESC_CMD_SWTCH_LOCAL		= 0x0400, /* 2 bits */
++	IECM_TX_FLEX_CTX_DESC_CMD_SWTCH_TARGETVSI	= 0x0600, /* 2 bits */
++};
++
++/* Standard flex descriptor TSO context quad word */
++struct iecm_flex_tx_tso_ctx_qw {
++	__le32 flex_tlen;
++#define IECM_TXD_FLEX_CTX_TLEN_M	0x1FFFF
++#define IECM_TXD_FLEX_TSO_CTX_FLEX_S	24
++	__le16 mss_rt;
++#define IECM_TXD_FLEX_CTX_MSS_RT_M	0x3FFF
++	u8 hdr_len;
++	u8 flex;
++};
++
++union iecm_flex_tx_ctx_desc {
++	/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_CTX (0x04) */
++	struct {
++		u8 qw0_flex[8];
++		struct {
++			__le16 cmd_dtype;
++			__le16 l2tag1;
++			u8 qw1_flex[4];
++		} qw1;
++	} gen;
++
++	/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_TSO_CTX (0x05) */
++	struct {
++		struct iecm_flex_tx_tso_ctx_qw qw0;
++		struct {
++			__le16 cmd_dtype;
++			u8 flex[6];
++		} qw1;
++	} tso;
++
++	/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_TSO_L2TAG2_PARSTAG_CTX (0x08) */
++	struct {
++		struct iecm_flex_tx_tso_ctx_qw qw0;
++		struct {
++			__le16 cmd_dtype;
++			__le16 l2tag2;
++			u8 flex0;
++			u8 ptag;
++			u8 flex1[2];
++		} qw1;
++	} tso_l2tag2_ptag;
++
++	/* DTYPE = IECM_TX_DESC_DTYPE_FLEX_L2TAG2_CTX (0x0B) */
++	struct {
++		u8 qw0_flex[8];
++		struct {
++			__le16 cmd_dtype;
++			__le16 l2tag2;
++			u8 flex[4];
++		} qw1;
++	} l2tag2;
++
++	/* DTYPE = IECM_TX_DESC_DTYPE_REINJECT_CTX (0x02) */
++	struct {
++		struct {
++			__le32 sa_domain;
++#define IECM_TXD_FLEX_CTX_SA_DOM_M	0xFFFF
++#define IECM_TXD_FLEX_CTX_SA_DOM_VAL	0x10000
++			__le32 sa_idx;
++#define IECM_TXD_FLEX_CTX_SAIDX_M	0x1FFFFF
++		} qw0;
++		struct {
++			__le16 cmd_dtype;
++			__le16 txr2comp;
++#define IECM_TXD_FLEX_CTX_TXR2COMP	0x1
++			__le16 miss_txq_comp_tag;
++			__le16 miss_txq_id;
++		} qw1;
++	} reinjection_pkt;
++};
++
++/* Host Split Context Descriptors */
++struct iecm_flex_tx_hs_ctx_desc {
++	union {
++		struct {
++			__le32 host_fnum_tlen;
++#define IECM_TXD_FLEX_CTX_TLEN_S	0
++#define IECM_TXD_FLEX_CTX_TLEN_M	0x1FFFF
++#define IECM_TXD_FLEX_CTX_FNUM_S	18
++#define IECM_TXD_FLEX_CTX_FNUM_M	0x7FF
++#define IECM_TXD_FLEX_CTX_HOST_S	29
++#define IECM_TXD_FLEX_CTX_HOST_M	0x7
++			__le16 ftype_mss_rt;
++#define IECM_TXD_FLEX_CTX_MSS_RT_0	0
++#define IECM_TXD_FLEX_CTX_MSS_RT_M	0x3FFF
++#define IECM_TXD_FLEX_CTX_FTYPE_S	14
++#define IECM_TXD_FLEX_CTX_FTYPE_VF	MAKEMASK(0x0, IECM_TXD_FLEX_CTX_FTYPE_S)
++#define IECM_TXD_FLEX_CTX_FTYPE_VDEV	MAKEMASK(0x1, IECM_TXD_FLEX_CTX_FTYPE_S)
++#define IECM_TXD_FLEX_CTX_FTYPE_PF	MAKEMASK(0x2, IECM_TXD_FLEX_CTX_FTYPE_S)
++			u8 hdr_len;
++			u8 ptag;
++		} tso;
++		struct {
++			u8 flex0[2];
++			__le16 host_fnum_ftype;
++			u8 flex1[3];
++			u8 ptag;
++		} no_tso;
++	} qw0;
++
++	__le64 qw1_cmd_dtype;
++#define IECM_TXD_FLEX_CTX_QW1_PASID_S		16
++#define IECM_TXD_FLEX_CTX_QW1_PASID_M		0xFFFFF
++#define IECM_TXD_FLEX_CTX_QW1_PASID_VALID_S	36
++#define IECM_TXD_FLEX_CTX_QW1_PASID_VALID	\
++		MAKEMASK(0x1, IECM_TXD_FLEX_CTX_PASID_VALID_S)
++#define IECM_TXD_FLEX_CTX_QW1_TPH_S		37
++#define IECM_TXD_FLEX_CTX_QW1_TPH \
++		MAKEMASK(0x1, IECM_TXD_FLEX_CTX_TPH_S)
++#define IECM_TXD_FLEX_CTX_QW1_PFNUM_S		38
++#define IECM_TXD_FLEX_CTX_QW1_PFNUM_M		0xF
++/* The following are only valid for DTYPE = 0x09 and DTYPE = 0x0A */
++#define IECM_TXD_FLEX_CTX_QW1_SAIDX_S		42
++#define IECM_TXD_FLEX_CTX_QW1_SAIDX_M		0x1FFFFF
++#define IECM_TXD_FLEX_CTX_QW1_SAIDX_VAL_S	63
++#define IECM_TXD_FLEX_CTX_QW1_SAIDX_VALID	\
++		MAKEMASK(0x1, IECM_TXD_FLEX_CTX_QW1_SAIDX_VAL_S)
++/* The following are only valid for DTYPE = 0x0D and DTYPE = 0x0E */
++#define IECM_TXD_FLEX_CTX_QW1_FLEX0_S		48
++#define IECM_TXD_FLEX_CTX_QW1_FLEX0_M		0xFF
++#define IECM_TXD_FLEX_CTX_QW1_FLEX1_S		56
++#define IECM_TXD_FLEX_CTX_QW1_FLEX1_M		0xFF
++};
++#endif /* _IECM_LAN_TXRX_H_ */
 diff --git a/drivers/net/ethernet/intel/include/iecm_txrx.h b/drivers/net/ethernet/intel/include/iecm_txrx.h
-index 9f3086bfe575..0aa1eac70e7c 100644
+index 0aa1eac70e7c..44c20f8a2039 100644
 --- a/drivers/net/ethernet/intel/include/iecm_txrx.h
 +++ b/drivers/net/ethernet/intel/include/iecm_txrx.h
-@@ -512,4 +512,6 @@ void iecm_vport_calc_total_qs(struct iecm_adapter *adapter,
+@@ -81,8 +81,70 @@
+ #define IECM_MAX_MTU		\
+ 	(IECM_MAX_RXBUFFER - IECM_PACKET_HDR_PAD)
+ 
++#define IECM_RX_BI_BUFID_S		0
++#define IECM_RX_BI_BUFID_M		MAKEMASK(0x7FFF, IECM_RX_BI_BUFID_S)
++#define IECM_RX_BI_GEN_S		15
++#define IECM_RX_BI_GEN_M		BIT(IECM_RX_BI_GEN_S)
++
++#define IECM_SINGLEQ_RX_BUF_DESC(R, i)	\
++	(&(((struct virtchnl2_singleq_rx_buf_desc *)((R)->desc_ring))[i]))
++#define IECM_SPLITQ_RX_BUF_DESC(R, i)	\
++	(&(((struct virtchnl2_splitq_rx_buf_desc *)((R)->desc_ring))[i]))
++#define IECM_SPLITQ_RX_BI_DESC(R, i)	\
++	(&(((u16 *)((R)->ring))[i]))
++
++#define IECM_BASE_TX_DESC(R, i)	\
++	(&(((struct iecm_base_tx_desc *)((R)->desc_ring))[i]))
++#define IECM_BASE_TX_CTX_DESC(R, i) \
++	(&(((struct iecm_base_tx_ctx_desc *)((R)->desc_ring))[i]))
++#define IECM_SPLITQ_TX_COMPLQ_DESC(R, i)	\
++	(&(((struct iecm_splitq_tx_compl_desc *)((R)->desc_ring))[i]))
++
++#define IECM_FLEX_TX_DESC(R, i)	\
++	(&(((union iecm_tx_flex_desc *)((R)->desc_ring))[i]))
++#define IECM_FLEX_TX_CTX_DESC(R, i)	\
++	(&(((union iecm_flex_tx_ctx_desc *)((R)->desc_ring))[i]))
++
++#define IECM_DESC_UNUSED(R)	\
++	((((R)->next_to_clean > (R)->next_to_use) ? 0 : (R)->desc_count) + \
++	(R)->next_to_clean - (R)->next_to_use - 1)
++
++#define IECM_TX_BUF_UNUSED(R)	((R)->buf_stack.top)
++
++#define IECM_TXD_LAST_DESC_CMD (IECM_TX_DESC_CMD_EOP | IECM_TX_DESC_CMD_RS)
++
+ #define MAKEMASK(m, s)	((m) << (s))
+ 
++struct iecm_tx_buf {
++	struct hlist_node hlist;
++	void *next_to_watch;
++	union {
++		struct sk_buff *skb;
++		struct xdp_frame *xdpf;
++	};
++	unsigned int bytecount;
++	unsigned short gso_segs;
++#define IECM_TX_FLAGS_TSO			BIT(0)
++#define IECM_TX_FLAGS_VLAN_TAG			BIT(1)
++#define IECM_TX_FLAGS_HW_VLAN			BIT(2)
++#define IECM_TX_FLAGS_HW_OUTER_SINGLE_VLAN	BIT(3)
++#define IECM_TX_FLAGS_VLAN_SHIFT		16
++#define IECM_TX_FLAGS_VLAN_MASK			0xFFFF0000
++	u32 tx_flags;
++	DEFINE_DMA_UNMAP_ADDR(dma);
++	DEFINE_DMA_UNMAP_LEN(len);
++	u16 compl_tag;		/* Unique identifier for buffer; used to
++				 * compare with completion tag returned
++				 * in buffer completion event
++				 */
++};
++
++struct iecm_buf_lifo {
++	u16 top;
++	u16 size;
++	struct iecm_tx_buf **bufs;
++};
++
+ /* Checksum offload bits decoded from the receive descriptor. */
+ struct iecm_rx_csum_decoded {
+ 	u8 l3l4p : 1;
+@@ -349,6 +411,16 @@ union iecm_queue_stats {
+ 	struct iecm_tx_queue_stats tx;
+ };
+ 
++#define IECM_ITR_DYNAMIC	1
++#define IECM_ITR_MAX		0x1FE0
++#define IECM_ITR_20K		0x0032
++#define IECM_ITR_GRAN_S		1	/* Assume ITR granularity is 2us */
++#define IECM_ITR_MASK		0x1FFE	/* ITR register value alignment mask */
++#define ITR_REG_ALIGN(setting)	((setting) & IECM_ITR_MASK)
++#define IECM_ITR_IS_DYNAMIC(itr_mode) (itr_mode)
++#define IECM_ITR_TX_DEF		IECM_ITR_20K
++#define IECM_ITR_RX_DEF		IECM_ITR_20K
++
+ /* queue associated with a vport */
+ struct iecm_queue {
+ 	struct device *dev;		/* Used for DMA mapping */
+@@ -414,6 +486,10 @@ struct iecm_queue {
+ 	dma_addr_t dma;			/* physical address of ring */
+ 	void *desc_ring;		/* Descriptor ring memory */
+ 
++	struct iecm_buf_lifo buf_stack; /* Stack of empty buffers to store
++					 * buffer info for out of order
++					 * buffer completions
++					 */
+ 	u16 tx_buf_key;			/* 16 bit unique "identifier" (index)
+ 					 * to be used as the completion tag when
+ 					 * queue is using flow based scheduling
+@@ -505,13 +581,33 @@ struct iecm_txq_group {
+ 
+ struct iecm_adapter;
+ 
++int iecm_vport_singleq_napi_poll(struct napi_struct *napi, int budget);
+ void iecm_vport_init_num_qs(struct iecm_vport *vport,
+ 			    struct virtchnl2_create_vport *vport_msg);
+ void iecm_vport_calc_num_q_desc(struct iecm_vport *vport);
+ void iecm_vport_calc_total_qs(struct iecm_adapter *adapter,
  			      struct virtchnl2_create_vport *vport_msg);
  void iecm_vport_calc_num_q_groups(struct iecm_vport *vport);
++int iecm_vport_queues_alloc(struct iecm_vport *vport);
++void iecm_vport_queues_rel(struct iecm_vport *vport);
  void iecm_vport_calc_num_q_vec(struct iecm_vport *vport);
-+irqreturn_t
-+iecm_vport_intr_clean_queues(int __always_unused irq, void *data);
++void iecm_vport_intr_rel(struct iecm_vport *vport);
++int iecm_vport_intr_alloc(struct iecm_vport *vport);
++void iecm_vport_intr_dis_irq_all(struct iecm_vport *vport);
++void iecm_vport_intr_clear_dflt_itr(struct iecm_vport *vport);
++void iecm_vport_intr_update_itr_ena_irq(struct iecm_q_vector *q_vector);
++void iecm_vport_intr_deinit(struct iecm_vport *vport);
++int iecm_vport_intr_init(struct iecm_vport *vport);
+ irqreturn_t
+ iecm_vport_intr_clean_queues(int __always_unused irq, void *data);
++void iecm_vport_intr_ena_irq_all(struct iecm_vport *vport);
++int iecm_config_rss(struct iecm_vport *vport);
++void iecm_fill_dflt_rss_lut(struct iecm_vport *vport);
++int iecm_init_rss(struct iecm_vport *vport);
++void iecm_deinit_rss(struct iecm_vport *vport);
++bool iecm_init_rx_buf_hw_alloc(struct iecm_queue *rxq, struct iecm_rx_buf *buf);
++void iecm_rx_buf_hw_update(struct iecm_queue *rxq, u32 val);
++void iecm_tx_buf_rel(struct iecm_queue *tx_q, struct iecm_tx_buf *tx_buf);
++bool iecm_rx_singleq_buf_hw_alloc_all(struct iecm_queue *rxq,
++				      u16 cleaned_count);
  #endif /* !_IECM_TXRX_H_ */
 -- 
 2.33.0
-
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
