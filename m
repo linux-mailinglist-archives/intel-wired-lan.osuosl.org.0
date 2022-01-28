@@ -1,95 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E22A49FC5D
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 16:02:40 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEC5A49FCD8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 16:31:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D5D2883410;
-	Fri, 28 Jan 2022 15:02:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 755106101F;
+	Fri, 28 Jan 2022 15:31:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dDKgOrXCNe5u; Fri, 28 Jan 2022 15:02:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Y72_szmJW5ci; Fri, 28 Jan 2022 15:31:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D19D08340C;
-	Fri, 28 Jan 2022 15:02:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 704DB6104A;
+	Fri, 28 Jan 2022 15:31:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C49B61BF860
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:02:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DA4F1BF271
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:31:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C00DC8340C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:02:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 43AEE40544
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:31:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HaGqAjwUwD5j for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jan 2022 15:02:33 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TQGIzerQustO for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jan 2022 15:31:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0F594833FB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:02:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1643382151;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zvXNnO1II998WHVJTgogjU4n5JPMfa4zhSxjVH0yezw=;
- b=DmnEUgwbAibIuf8MMtIv0QUl/08iMsKrTGUvhMUssH0Is08O1+kdowx88rlQVQL67Hv2Um
- gdE3xTV9gunG4zOjvfqjPwU4tuL2wPolJkPwfELXzKqipqgaOjhZBcOX5rE/lW8+xXaIOS
- uUYXWO0z6OoAhKjWsYmSwIp0YW7IQpc=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-427-EucvjnnbMhK1uRX6ExSz4A-1; Fri, 28 Jan 2022 10:02:30 -0500
-X-MC-Unique: EucvjnnbMhK1uRX6ExSz4A-1
-Received: by mail-qv1-f70.google.com with SMTP id
- x2-20020ad44622000000b0042555fbc04fso6253519qvv.18
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 07:02:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:references:from:in-reply-to
- :content-transfer-encoding;
- bh=zvXNnO1II998WHVJTgogjU4n5JPMfa4zhSxjVH0yezw=;
- b=r8dlLCXK81/KcdBaFLImr91ph5Zw9JTAkaWsXSvL7CUtUrBs9wW2FGlbUF70wQvMZQ
- CaXtY5++4vX5VXd+YYJ47mXh32XHRl8IIDyBYObBF2e2EXXDSICIeg99ePGUJdGWTbtT
- Xp9WcAULHR8XoE38r+fTdAM41YRImgryww7VgD04hBVrAdsddi9mvi8GXc1rahAAiyab
- cGEix+bYx8jh1/ZbZzae9pRtrdG53KqHMbdDTd3MktF8qkrP4AuN18BP9vgDGsrut4FA
- rrf/0GsRzrsY8/V1FaLldK4IbzYep8Es/8HTsUKyWf0Wklh/EGvtC3EB33COidWVWDld
- 22UQ==
-X-Gm-Message-State: AOAM531PBkxZby+flq3TwGSlvILFU6lYEH2dqHDqoL8UDYuARdxILsAl
- V3E/T5hLAKkiqN8Y/36FNAHB4DET9nhPuyBHVg8FFsF2t7INmZ9dDeBuTAPa2K+B6MHMobK5+Rx
- /EtUdjxM4K13SRceSDJaos4tWbmpVcA==
-X-Received: by 2002:ad4:4ea6:: with SMTP id ed6mr7765722qvb.113.1643382149819; 
- Fri, 28 Jan 2022 07:02:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwuREax7iep1axMj9WhujAxSCCSHVjeT59xjkFk9ekzCZUpNi51scXI7rysj8X+i9pitUdggQ==
-X-Received: by 2002:ad4:4ea6:: with SMTP id ed6mr7765678qvb.113.1643382149544; 
- Fri, 28 Jan 2022 07:02:29 -0800 (PST)
-Received: from [192.168.98.18] ([107.15.110.69])
- by smtp.gmail.com with ESMTPSA id h9sm450906qkn.121.2022.01.28.07.02.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Jan 2022 07:02:29 -0800 (PST)
-Message-ID: <97261624-d64f-4b82-2c11-a2dd5934c6f8@redhat.com>
-Date: Fri, 28 Jan 2022 10:02:27 -0500
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5E8734019E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 15:31:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643383876; x=1674919876;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=qKfdRlbgRRkrQqDhWpRoGV1t4Jcb2HrJkvZo0CYDXSc=;
+ b=TwI5gT53LFPuTV8sICfyQV3o+WqigwSZIwDtLye/vx72vRQOhpmS1HEH
+ 6r67cXCspg1xAh/FvLcVwrLdYCP590qkM8Y+y07Dt1+HIZIdRUb07T7MZ
+ 3hDP1az55HenLG+G/ZOmCIAM08pme6uUXQoyYzVjasbeTb3ANlDTlE37+
+ vr1NgYQunfrKXarUNX5R+Q+lHQ1ZbcbDqrpEIVTdBFO4IiKEFUXlpIMnO
+ wcW8achW8OY8l31f4k5MKfg8BfvXBEo0+i+VsPOMArmf3PZAEmeuPlU+Y
+ 1d/s+5xqsDawy6AEKP6F7DLnI1ri+s72iuyOrL8XoUxTCvDRQ+nscmbSR w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10240"; a="230716488"
+X-IronPort-AV: E=Sophos;i="5.88,324,1635231600"; d="scan'208";a="230716488"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jan 2022 07:31:15 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,324,1635231600"; d="scan'208";a="697121006"
+Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
+ by orsmga005.jf.intel.com with ESMTP; 28 Jan 2022 07:31:14 -0800
+Date: Fri, 28 Jan 2022 16:31:13 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: "Maurice Baijens (Ellips B.V.)" <maurice.baijens@ellips.com>
+Message-ID: <YfQMQWsFqCIPBBqO@boxer>
+References: <VI1PR02MB4142A638EC38107B262DB32F885A9@VI1PR02MB4142.eurprd02.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-To: Dave Ertman <david.m.ertman@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20220118210820.1055792-1-david.m.ertman@intel.com>
-From: Jonathan Toppins <jtoppins@redhat.com>
-In-Reply-To: <20220118210820.1055792-1-david.m.ertman@intel.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jtoppins@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix KASAN error in LAG
- NETDEV_UNREGISTER handler
+Content-Disposition: inline
+In-Reply-To: <VI1PR02MB4142A638EC38107B262DB32F885A9@VI1PR02MB4142.eurprd02.prod.outlook.com>
+Subject: Re: [Intel-wired-lan] ixgbe driver link down causes 100% load in
+ ksoftirqd/x
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,97 +76,101 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/18/22 16:08, Dave Ertman wrote:
-> Currently, the same handler is called for both a NETDEV_BONDING_INFO
-> LAG unlink notification as for a NETDEV_UNREGISTER call.  This is
-> causing a problem though, since the netdev_notifier_info passed has
-> a different structure depending on which event is passed.  The problem
-> manifests as a call trace from a BUG: KASAN stack-out-of-bounds error.
+On Thu, Jan 20, 2022 at 09:23:06AM +0000, Maurice Baijens (Ellips B.V.) wrote:
+> Hello,
 > 
-> Fix this by creating a handler specific to NETDEV_UNREGISTER that only
-> is passed valid elements in the netdev_notifier_info struct for the
-> NETDEV_UNREGISTER event.
 > 
-> Also included is the removal of an unbalanced dev_put on the peer_netdev
-> and related braces.
-> 
-> Fixes: 6a8b357278f5 ("ice: Respond to a NETDEV_UNREGISTER event for LAG")
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> I have an issue with the ixgbe driver and X550Tx network adapter.
+> When I disconnect the network cable I end up with 100% load in ksoftirqd/x. I am running the adapter in
+> xdp mode (XDP_FLAGS_DRV_MODE). Problem seen in linux kernel 5.15.x and also 5.16.0+ (head).
 
-Acked-by: Jonathan Toppins <jtoppins@redhat.com>
+Hello,
+
+a stupid question - why do you disconnect the cable when running traffic? :)
+If you plug this back in then what happens?
 
 > 
-> ---
+> I traced the problem down to function ixgbe_xmit_zc in ixgbe_xsk.c:
 > 
-> v2: also remove unneeded if block
-> ---
->   drivers/net/ethernet/intel/ice/ice_lag.c | 34 +++++++++++++++++++-----
->   1 file changed, 28 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-> index e375ac849aec..4f954db01b92 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lag.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-> @@ -204,17 +204,39 @@ ice_lag_unlink(struct ice_lag *lag,
->   		lag->upper_netdev = NULL;
->   	}
->   
-> -	if (lag->peer_netdev) {
-> -		dev_put(lag->peer_netdev);
-> -		lag->peer_netdev = NULL;
-> -	}
-> -
-> +	lag->peer_netdev = NULL;
->   	ice_set_sriov_cap(pf);
->   	ice_set_rdma_cap(pf);
->   	lag->bonded = false;
->   	lag->role = ICE_LAG_NONE;
->   }
->   
-> +/**
-> + * ice_lag_unregister - handle netdev unregister events
-> + * @lag: LAG info struct
-> + * @netdev: netdev reporting the event
-> + */
-> +static void ice_lag_unregister(struct ice_lag *lag, struct net_device *netdev)
-> +{
-> +	struct ice_pf *pf = lag->pf;
-> +
-> +	/* check to see if this event is for this netdev
-> +	 * check that we are in an aggregate
-> +	 */
-> +	if (netdev != lag->netdev || !lag->bonded)
-> +		return;
-> +
-> +	if (lag->upper_netdev) {
-> +		dev_put(lag->upper_netdev);
-> +		lag->upper_netdev = NULL;
-> +		ice_set_sriov_cap(pf);
-> +		ice_set_rdma_cap(pf);
-> +	}
-> +	/* perform some cleanup in case we come back */
-> +	lag->bonded = false;
-> +	lag->role = ICE_LAG_NONE;
-> +}
-> +
->   /**
->    * ice_lag_changeupper_event - handle LAG changeupper event
->    * @lag: LAG info struct
-> @@ -307,7 +329,7 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
->   		ice_lag_info_event(lag, ptr);
->   		break;
->   	case NETDEV_UNREGISTER:
-> -		ice_lag_unlink(lag, ptr);
-> +		ice_lag_unregister(lag, netdev);
->   		break;
->   	default:
->   		break;
+> if (unlikely(!ixgbe_desc_unused(xdp_ring)) ||
+>     !netif_carrier_ok(xdp_ring->netdev)) {
+>             work_done = false;
+>             break;
+> }
 
+This was done in commit c685c69fba71 ("ixgbe: don't do any AF_XDP
+zero-copy transmit if netif is not OK") - it was addressing the transient
+state when configuring the xsk pool on particular queue pair.
+
+> 
+> This function is called from ixgbe_poll() function via ixgbe_clean_xdp_tx_irq(). It sets
+> work_done to false if netif_carrier_ok() returns false (so if link is down). Because work_done
+> is always false, ixgbe_poll keeps on polling forever.
+> 
+> I made a fix by checking link in ixgbe_poll() function and if no link exiting polling mode:
+> 
+> /* If all work not completed, return budget and keep polling */
+> if ((!clean_complete) && netif_carrier_ok(adapter->netdev))
+>             return budget;
+
+Not sure about the correctness of this. Question is how should we act for
+link down - should we say that we are done with processing or should we
+wait until the link gets back?
+
+Instead of setting the work_done to false immediately for
+!netif_carrier_ok(), I'd rather break out the checks that are currently
+combined into the single statement, something like this:
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index b3fd8e5cd85b..6a5e9cf6b5da 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -390,12 +390,14 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+ 	u32 cmd_type;
+ 
+ 	while (budget-- > 0) {
+-		if (unlikely(!ixgbe_desc_unused(xdp_ring)) ||
+-		    !netif_carrier_ok(xdp_ring->netdev)) {
++		if (unlikely(!ixgbe_desc_unused(xdp_ring))) {
+ 			work_done = false;
+ 			break;
+ 		}
+ 
++		if (!netif_carrier_ok(xdp_ring->netdev))
++			break;
++
+ 		if (!xsk_tx_peek_desc(pool, &desc))
+ 			break;
+
+
+> 
+> This is probably fine for our application as we only run in xdpdrv mode, however I am not sure this
+
+By xdpdrv I would understand that you're running XDP in standard native
+mode, however you refer to the AF_XDP Zero Copy implementation in the
+driver. But I don't think it changes anything in this thread.
+
+In the end I see some outstanding issues with ixgbe_xmit_zc(), so this
+probably might need some attention.
+
+Thanks!
+Maciej
+
+> is the correct way to fix this issue and the behaviour of the normal skb mode operation is 
+> also affected by my fix.
+> 
+> So hopefully my observations are correct and someone here can fix the issue and push it upstream.
+> 
+> 
+> Best regards,
+> 	Maurice Baijens
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
