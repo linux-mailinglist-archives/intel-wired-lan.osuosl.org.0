@@ -2,66 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD48849EFD2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 01:35:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44FEE49EFCC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jan 2022 01:35:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7436784D6B;
-	Fri, 28 Jan 2022 00:35:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D053784DAA;
+	Fri, 28 Jan 2022 00:35:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oKXp53SrFCiF; Fri, 28 Jan 2022 00:35:25 +0000 (UTC)
+	with ESMTP id 3h0UoNgjoBC9; Fri, 28 Jan 2022 00:35:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EFA6684D8A;
-	Fri, 28 Jan 2022 00:35:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB96584D8A;
+	Fri, 28 Jan 2022 00:35:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 192EF1C113E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:45 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 52FC584D92
+ by ash.osuosl.org (Postfix) with ESMTP id 104EC1C113E
  for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C78B284D92
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id II7GJ_4vJjQK for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id vDHzbzAVyEpM for <intel-wired-lan@lists.osuosl.org>;
  Fri, 28 Jan 2022 00:34:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B5DF284D8A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2903284D98
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jan 2022 00:34:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643330079; x=1674866079;
+ t=1643330080; x=1674866080;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=eSMY8Ehb62gsXVz5PFZ3zJYXf38HeoMCg+JdfqPabwU=;
- b=GJWTfWAEcuaq+AccuImRd0uGCH6EY+Emju9v/5FnDkayIKRC6hHbBViJ
- snbVkxpK1xyMovF/Ot4I+8eTvoGJlQU/d9GECX2POiWM+/drPtBLpcY1R
- F11Gz39ivJ2OlDLwBRmTsdaz2GWZdobn1ZztSW6KvJHxgxAG9So9Brf1J
- 1koz352UaYt2+4w2zjLCtDydUqIBZwIgLiyor3DnVCcGMIylHf3cAGDDc
- Uc2UDKR0QZ/fVDGs776r5AFGk4kARiDqRRUQT3QtMogicUOdirL0wVpfJ
- z4BuxXWqHO1BYs2THP9RBnMAc5TzqDU4bEtR3tFt2Z91xXmDZe0xAplhL w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="234380436"
-X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="234380436"
+ bh=FD6rJJSePq2j8kKH01ML6ozIuRmwyHE8bw2mZ6ouNCY=;
+ b=mUNaJC6ux+VWenp4F4DO6mFCwfioJ9WkSdgv293pBZp4so7DhYCK7EmN
+ mHIViqH8SF9rOqGX0bi+O5rD7osZk2JhC5tUz3DEMP9jxegQx1zBfvvPY
+ UMghu7+i4hucJQfysUGBvAU0yVxKAu8RLDuntw+VzUI6EDE5RHJD9Qfjz
+ 5zuF+8SkfKN0N2YE51pPAknEGO4Q92z7PTBPWHfxdGO7tldQJSyrfTyqo
+ B7DK5WBvLsBNemU876gXkbmDfrf23GjPjbfarfFoXpBwKdQ5LDHzePfm+
+ 27QQ7WUrhDP54n2A9ImC3vVNDZOrognFTztYy+6t9nAQR+CQ1EXB55T4G w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="234380438"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="234380438"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 Jan 2022 16:34:27 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="563999750"
+X-IronPort-AV: E=Sophos;i="5.88,322,1635231600"; d="scan'208";a="563999755"
 Received: from dev1-atbrady.jf.intel.com ([10.166.244.128])
  by orsmga001.jf.intel.com with ESMTP; 27 Jan 2022 16:34:27 -0800
 From: Alan Brady <alan.brady@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 Jan 2022 16:10:07 -0800
-Message-Id: <20220128001009.721392-18-alan.brady@intel.com>
+Date: Thu, 27 Jan 2022 16:10:08 -0800
+Message-Id: <20220128001009.721392-19-alan.brady@intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20220128001009.721392-1-alan.brady@intel.com>
 References: <20220128001009.721392-1-alan.brady@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 17/19] iecm: implement cloud
- filters
+Subject: [Intel-wired-lan] [PATCH net-next 18/19] iecm: add advanced rss
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,1088 +73,692 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Phani Burra <phani.r.burra@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>,
- Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This gives iecm the ability to deal with cloud filters and other traffic
-classes.
+From: Haiyue Wang <haiyue.wang@intel.com>
 
-Signed-off-by: Phani Burra <phani.r.burra@intel.com>
-Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
-Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Signed-off-by: Alan Brady <alan.brady@intel.com>
+Continuing with advanced features this implements what's needed to do
+advanced rss.
+
+Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/iecm/iecm_lib.c    | 900 +++++++++++++++++-
- .../net/ethernet/intel/iecm/iecm_virtchnl.c   |  68 ++
- drivers/net/ethernet/intel/include/iecm.h     |  25 +
- 3 files changed, 992 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/iecm/iecm_lib.c    | 547 ++++++++++++++++++
+ .../net/ethernet/intel/iecm/iecm_virtchnl.c   |  71 +++
+ drivers/net/ethernet/intel/include/iecm.h     |  73 +++
+ 3 files changed, 691 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/iecm/iecm_lib.c b/drivers/net/ethernet/intel/iecm/iecm_lib.c
-index 35c0cbc42ebe..d11413cb438c 100644
+index d11413cb438c..baa1e312652a 100644
 --- a/drivers/net/ethernet/intel/iecm/iecm_lib.c
 +++ b/drivers/net/ethernet/intel/iecm/iecm_lib.c
-@@ -43,9 +43,16 @@ static int iecm_get_vport_index(struct iecm_adapter *adapter,
-  */
- bool iecm_is_feature_ena(struct iecm_vport *vport, netdev_features_t feature)
- {
-+	struct iecm_channel_config *ch_config;
- 	bool ena;
- 
- 	switch (feature) {
-+	case NETIF_F_HW_TC:
-+		ch_config = &vport->adapter->config_data.ch_config;
-+		ena = (vport->netdev->features & feature) &&
-+			(ch_config->num_tc > IECM_START_CHNL_TC) &&
-+			(ch_config->tc_running);
-+		break;
- 	default:
- 		ena = vport->netdev->features & feature;
- 		break;
-@@ -53,6 +60,23 @@ bool iecm_is_feature_ena(struct iecm_vport *vport, netdev_features_t feature)
- 	return ena;
+@@ -1013,6 +1013,52 @@ static void iecm_remove_vlan_filters(struct iecm_vport *vport)
+ 	}
  }
  
 +/**
-+ * iecm_is_adq_v2_ena - Determine whether ADQ V2 is enabled
-+ * @vport: virtual port struct
-+ *
-+ * This function returns true based on negotiated capability ADQ_V2
-+ * if set and ADQ enabled
-+ */
-+static bool iecm_is_adq_v2_ena(struct iecm_vport *vport)
-+{
-+	/* iecm_is_feature_ena tells if the netdev flag is set and adq is
-+	 * enabled
-+	 */
-+	return (iecm_is_feature_ena(vport, NETIF_F_HW_TC) &&
-+		iecm_is_cap_ena(vport->adapter, IECM_OTHER_CAPS,
-+				VIRTCHNL2_CAP_ADQ));
-+}
-+
- /**
-  * iecm_is_vlan_cap_ena - Check if VLAN capability is enabled
-  * @adapter: pointer to adapter
-@@ -946,6 +970,28 @@ static int iecm_get_free_slot(void *array, int size, int curr)
- 	return next;
- }
- 
-+/**
-+ * iecm_remove_cloud_filters - Remove all cloud filters
++ * iecm_remove_adv_rss_cfgs - Remove all RSS configuration
 + * @vport: vport structure
 + */
-+static void iecm_remove_cloud_filters(struct iecm_vport *vport)
++static void iecm_remove_adv_rss_cfgs(struct iecm_vport *vport)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter_config *cf_config;
 +
-+	cf_config = &adapter->config_data.cf_config;
-+	if (!list_empty(&cf_config->cloud_filter_list)) {
-+		struct iecm_cloud_filter *cf;
++	if (!iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADV_RSS))
++		return;
 +
-+		spin_lock_bh(&adapter->cloud_filter_list_lock);
-+		list_for_each_entry(cf, &cf_config->cloud_filter_list, list) {
-+			cf->remove = true;
++	if (!list_empty(&adapter->config_data.adv_rss_list)) {
++		struct iecm_adv_rss *rss;
++
++		spin_lock_bh(&adapter->adv_rss_list_lock);
++		list_for_each_entry(rss, &adapter->config_data.adv_rss_list,
++				    list) {
++			rss->remove = true;
 +		}
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+		iecm_send_add_del_cloud_filter_msg(vport, false);
++		spin_unlock_bh(&adapter->adv_rss_list_lock);
++		iecm_send_add_del_adv_rss_cfg_msg(vport, false);
 +	}
 +}
 +
- /**
-  * iecm_remove_vlan_filters - Remove all vlan filters
-  * @vport: vport structure
-@@ -1044,8 +1090,14 @@ static void iecm_vport_stop(struct iecm_vport *vport)
- 	if (test_and_clear_bit(__IECM_DEL_QUEUES,
- 			       vport->adapter->flags))
- 		iecm_send_delete_queues_msg(vport);
--	if (!test_bit(__IECM_REL_RES_IN_PROG, adapter->flags))
-+	/* In function reset/rmmod path we call unregister_netdev which
-+	 * internally calls delete cloud filters. We remove cloud filters only
-+	 * when the interface goes down
-+	 */
-+	if (!test_bit(__IECM_REL_RES_IN_PROG, adapter->flags)) {
-+		iecm_remove_cloud_filters(vport);
- 		iecm_remove_vlan_filters(vport);
++/**
++ * iecm_del_all_adv_rss_cfgs - delete all RSS configuration
++ * @vport: vport structure
++ *
++ * This function will loop through the list of RSS configuration and deletes
++ * them.
++ **/
++static void iecm_del_all_adv_rss_cfgs(struct iecm_vport *vport)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_adv_rss *rss, *rss_tmp;
++
++	spin_lock_bh(&adapter->adv_rss_list_lock);
++	list_for_each_entry_safe(rss, rss_tmp,
++				 &adapter->config_data.adv_rss_list,
++				 list) {
++		list_del(&rss->list);
++		kfree(rss);
 +	}
++	spin_unlock_bh(&adapter->adv_rss_list_lock);
++}
++
+ /**
+  * iecm_remove_fdir_filters - Remove all Flow Director filters
+  * @vport: vport structure
+@@ -1099,6 +1145,7 @@ static void iecm_vport_stop(struct iecm_vport *vport)
+ 		iecm_remove_vlan_filters(vport);
+ 	}
  
++	iecm_remove_adv_rss_cfgs(vport);
  	iecm_remove_fdir_filters(vport);
  
-@@ -1258,6 +1310,28 @@ static void iecm_restore_vlans(struct iecm_vport *vport)
- 		iecm_set_all_vlans(vport);
+ 	adapter->link_up = false;
+@@ -1332,6 +1379,27 @@ static void iecm_restore_cloud_filters(struct iecm_vport *vport)
+ 	}
  }
  
 +/**
-+ * iecm_restore_cloud_filters - Restore cloud filters
++ * iecm_restore_adv_rss_cfgs - Restore all RSS configuration
 + * @vport: vport structure
 + */
-+static void iecm_restore_cloud_filters(struct iecm_vport *vport)
++static void iecm_restore_adv_rss_cfgs(struct iecm_vport *vport)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter_config *cf_config;
 +
-+	cf_config = &adapter->config_data.cf_config;
-+	if (!list_empty(&cf_config->cloud_filter_list)) {
-+		struct iecm_cloud_filter *cf;
++	if (!list_empty(&adapter->config_data.adv_rss_list)) {
++		struct iecm_adv_rss *rss;
 +
-+		spin_lock_bh(&adapter->cloud_filter_list_lock);
-+		list_for_each_entry(cf, &cf_config->cloud_filter_list, list) {
-+			cf->add = true;
++		spin_lock_bh(&adapter->adv_rss_list_lock);
++		list_for_each_entry(rss, &adapter->config_data.adv_rss_list,
++				    list) {
++			rss->add = true;
 +		}
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+		iecm_send_add_del_cloud_filter_msg(vport, true);
++		spin_unlock_bh(&adapter->adv_rss_list_lock);
++		iecm_send_add_del_adv_rss_cfg_msg(vport, true);
 +	}
 +}
 +
  /**
   * iecm_restore_fdir_filters - Restore all Flow Director filters
   * @vport: vport structure
-@@ -1302,6 +1376,10 @@ static void iecm_restore_features(struct iecm_vport *vport)
- 			dev_info(&adapter->pdev->dev, "Failed to restore promiscuous settings\n");
- 	}
+@@ -1380,6 +1448,9 @@ static void iecm_restore_features(struct iecm_vport *vport)
+ 	if (iecm_is_feature_ena(vport, NETIF_F_HW_TC))
+ 		iecm_restore_cloud_filters(vport);
  
-+	/* Restore cloud filters if ADQ is enabled */
-+	if (iecm_is_feature_ena(vport, NETIF_F_HW_TC))
-+		iecm_restore_cloud_filters(vport);
++	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADV_RSS))
++		iecm_restore_adv_rss_cfgs(vport);
 +
  	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_FDIR))
  		iecm_restore_fdir_filters(vport);
  }
-@@ -2088,6 +2166,8 @@ int iecm_probe(struct pci_dev *pdev,
- 	spin_lock_init(&adapter->vlan_list_lock);
- 	spin_lock_init(&adapter->adv_rss_list_lock);
- 	spin_lock_init(&adapter->fdir_fltr_list_lock);
-+	INIT_LIST_HEAD(&adapter->config_data.cf_config.cloud_filter_list);
-+	INIT_LIST_HEAD(&adapter->config_data.cf_config.block_cb_list);
- 	INIT_LIST_HEAD(&adapter->config_data.mac_filter_list);
- 	INIT_LIST_HEAD(&adapter->config_data.vlan_filter_list);
- 	INIT_LIST_HEAD(&adapter->config_data.adv_rss_list);
-@@ -2389,6 +2469,810 @@ static int iecm_offload_txtime(struct iecm_vport *vport,
- 	return -EOPNOTSUPP;
+@@ -2219,6 +2290,7 @@ static void iecm_del_user_cfg_data(struct iecm_adapter *adapter)
+ 		if (!adapter->vports[i])
+ 			continue;
+ 
++		iecm_del_all_adv_rss_cfgs(adapter->vports[i]);
+ 		iecm_del_all_fdir_filters(adapter->vports[i]);
+ 	}
  }
- 
-+/**
-+ * iecm_is_vlan_tc_filter_allowed - allowed to add tc-filter using VLAN
-+ * @vport: vport structure
-+ * @vlan: VLAN to verify
-+ *
-+ * Using specified "vlan" ID, there must be active VLAN filter in VF's
-+ * MAC-VLAN filter list.
-+ */
-+static bool
-+iecm_is_vlan_tc_filter_allowed(struct iecm_vport *vport,
-+			       struct iecm_vlan *vlan)
-+{
-+	struct iecm_vlan_filter *f;
-+	bool allowed;
-+
-+	spin_lock_bh(&vport->adapter->vlan_list_lock);
-+	f = iecm_find_vlan(vport, vlan);
-+	allowed = (f && !f->add && !f->remove);
-+	spin_unlock_bh(&vport->adapter->vlan_list_lock);
-+	return allowed;
-+}
-+
-+/**
-+ * iecm_is_mac_tc_filter_allowed - allowed to add tc-filter using MAC addr
-+ * @vport: vport structure
-+ * @macaddr: MAC address
-+ *
-+ * Using specified MAC address, there must be active MAC filter in
-+ * MAC filter list.
-+ */
-+static bool
-+iecm_is_mac_tc_filter_allowed(struct iecm_vport *vport, const u8 *macaddr)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_mac_filter *f;
-+	bool allowed;
-+
-+	spin_lock_bh(&adapter->mac_filter_list_lock);
-+	f = iecm_find_mac_filter(vport, macaddr);
-+	allowed = (f && !f->add && !f->remove);
-+	spin_unlock_bh(&adapter->mac_filter_list_lock);
-+	return allowed;
-+}
-+
-+/**
-+ * iecm_parse_keyid - Parse keyid
-+ * @rule: Flow rule structure
-+ * @field_flags: Cloud filter flags
-+ */
-+static void  iecm_parse_keyid(struct flow_rule *rule, u8 *field_flags)
-+{
-+	struct flow_match_enc_keyid match;
-+
-+	flow_rule_match_enc_keyid(rule, &match);
-+
-+	if (match.mask->keyid != 0)
-+		*field_flags |= IECM_CLOUD_FIELD_TEN_ID;
-+}
-+
-+/**
-+ * iecm_parse_flow_type - Parse flow type based on L2 and L3 protocols
-+ * @vport: vport structure
-+ * @rule: rule from user
-+ * @cf: Structure for the virtchnl filter
-+ * @filter: Structure for the cloud filter
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_flow_type(struct iecm_vport *vport,
-+		     struct flow_rule *rule, struct virtchnl_filter *cf,
-+		     struct iecm_cloud_filter *filter)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	enum virtchnl_flow_type flow_type;
-+	struct flow_match_basic match;
-+	u16 n_proto_mask = 0;
-+	u16 n_proto_key = 0;
-+	u16 n_proto = 0;
-+	u8 ip_proto = 0;
-+
-+	flow_rule_match_basic(rule, &match);
-+
-+	n_proto_key = ntohs(match.key->n_proto);
-+	n_proto_mask = ntohs(match.mask->n_proto);
-+
-+	if (n_proto_key == ETH_P_ALL) {
-+		n_proto_key = 0;
-+		n_proto_mask = 0;
-+	}
-+	n_proto = n_proto_key & n_proto_mask;
-+	if (n_proto != ETH_P_IP && n_proto != ETH_P_IPV6)
-+		return -EINVAL;
-+
-+	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADQ)) {
-+		if (match.key->ip_proto != IPPROTO_TCP &&
-+		    match.key->ip_proto != IPPROTO_UDP) {
-+			dev_err(&adapter->pdev->dev,
-+				"Only TCP or UDP transport is supported\n");
-+			return -EINVAL;
-+		}
-+	} else if (match.key->ip_proto != IPPROTO_TCP) {
-+		dev_err(&adapter->pdev->dev,
-+			"Only TCP transport is supported\n");
-+		return -EINVAL;
-+	}
-+	ip_proto = match.key->ip_proto;
-+
-+	/* determine VIRTCHNL flow_type based on L3 and L4 protocol */
-+	if (n_proto == ETH_P_IP)
-+		flow_type = (ip_proto == IPPROTO_TCP) ?
-+			     VIRTCHNL_TCP_V4_FLOW :
-+			     VIRTCHNL_UDP_V4_FLOW;
-+	else
-+		flow_type = (ip_proto == IPPROTO_TCP) ?
-+			     VIRTCHNL_TCP_V6_FLOW :
-+			     VIRTCHNL_UDP_V6_FLOW;
-+	cf->flow_type = flow_type;
-+	filter->f.flow_type = flow_type;
-+
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_ether_header - Parse ethernet header fields
-+ * @vport: vport structure
-+ * @field_flags: Cloud filter flags
-+ * @d_spec: Virtchnl structure for L4 specs
-+ * @m_spec: Virtchnl structure for L4 specs
-+ * @rule: Flow rule structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_ether_header(struct iecm_vport *vport, u8 *field_flags,
-+			struct virtchnl_l4_spec *d_spec,
-+			struct virtchnl_l4_spec *m_spec,
-+			struct flow_rule *rule)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct flow_match_eth_addrs match;
-+	bool adv_adq_ena;
-+
-+	adv_adq_ena = iecm_is_cap_ena(adapter, IECM_OTHER_CAPS,
-+				      VIRTCHNL2_CAP_ADQ);
-+
-+	flow_rule_match_eth_addrs(rule, &match);
-+
-+	/* use is_broadcast and is_zero to check for all 0xf or 0 */
-+	if (!is_zero_ether_addr(match.mask->dst)) {
-+		if (adv_adq_ena || is_broadcast_ether_addr(match.mask->dst)) {
-+			*field_flags |= IECM_CLOUD_FIELD_OMAC;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad ether dest mask %pM\n",
-+				match.mask->dst);
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(match.mask->src)) {
-+		if (adv_adq_ena || is_broadcast_ether_addr(match.mask->src)) {
-+			*field_flags |= IECM_CLOUD_FIELD_IMAC;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad ether src mask %pM\n",
-+				match.mask->src);
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(match.key->dst)) {
-+		if (!iecm_is_mac_tc_filter_allowed(adapter->vports[0],
-+						   match.key->dst)) {
-+			dev_err(&adapter->pdev->dev,
-+				"Dest MAC %pM doesn't belong to this device\n",
-+				match.key->dst);
-+			return -EINVAL;
-+		}
-+
-+		if (is_valid_ether_addr(match.key->dst) ||
-+		    is_multicast_ether_addr(match.key->dst)) {
-+			/* set the mask if a valid dst_mac address */
-+			if (adv_adq_ena)
-+				ether_addr_copy(m_spec->dst_mac,
-+						match.mask->dst);
-+			else
-+				eth_broadcast_addr(m_spec->dst_mac);
-+			ether_addr_copy(d_spec->dst_mac,
-+					match.key->dst);
-+		}
-+	}
-+
-+	if (!is_zero_ether_addr(match.key->src))
-+		if (is_valid_ether_addr(match.key->src) ||
-+		    is_multicast_ether_addr(match.key->src)) {
-+			/* set the mask if a valid src_mac address */
-+			if (adv_adq_ena) {
-+				ether_addr_copy(m_spec->src_mac,
-+						match.mask->src);
-+			} else {
-+				eth_broadcast_addr(m_spec->src_mac);
-+			}
-+			ether_addr_copy(d_spec->src_mac,
-+					match.key->src);
-+		}
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_vlan_header - Parse vlan header fields
-+ * @vport: vport structure
-+ * @field_flags: Cloud filter flags
-+ * @d_spec: Virtchnl structure for L4 specs
-+ * @m_spec: Virtchnl structure for L4 specs
-+ * @rule: Flow rule structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_vlan_header(struct iecm_vport *vport, u8 *field_flags,
-+		       struct virtchnl_l4_spec *d_spec,
-+		       struct virtchnl_l4_spec *m_spec,
-+		       struct flow_rule *rule)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct flow_match_vlan match;
-+
-+	flow_rule_match_vlan(rule, &match);
-+	if (match.mask->vlan_id) {
-+		u16 vid = match.key->vlan_id & VLAN_VID_MASK;
-+		struct iecm_vlan vlan;
-+
-+		vlan = IECM_VLAN(vid, ETH_P_8021Q);
-+
-+		if (match.mask->vlan_id != VLAN_VID_MASK) {
-+			dev_err(&adapter->pdev->dev, "Bad vlan mask %u\n",
-+				match.mask->vlan_id);
-+			return -EINVAL;
-+		}
-+		if (!iecm_is_vlan_tc_filter_allowed(vport, &vlan)) {
-+			dev_err(&adapter->pdev->dev,
-+				"VLAN %u doesn't belong to this VF\n",
-+				vid);
-+			return -EINVAL;
-+		}
-+		*field_flags |= IECM_CLOUD_FIELD_IVLAN;
-+		m_spec->vlan_id = cpu_to_be16(match.mask->vlan_id);
-+		d_spec->vlan_id = cpu_to_be16(match.key->vlan_id);
-+	}
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_ipv4_header - Parse ipv4 header fields
-+ * @vport: vport structure
-+ * @field_flags: Cloud filter flags
-+ * @d_spec: Virtchnl structure for L4 specs
-+ * @m_spec: Virtchnl structure for L4 specs
-+ * @rule: Flow rule structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_ipv4_header(struct iecm_vport *vport, u8 *field_flags,
-+		       struct virtchnl_l4_spec *d_spec,
-+		       struct virtchnl_l4_spec *m_spec,
-+		       struct flow_rule *rule)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct flow_match_ipv4_addrs match;
-+	bool adv_adq_ena;
-+
-+	adv_adq_ena = iecm_is_cap_ena(adapter, IECM_OTHER_CAPS,
-+				      VIRTCHNL2_CAP_ADQ);
-+
-+	flow_rule_match_ipv4_addrs(rule, &match);
-+
-+	if (*field_flags & IECM_CLOUD_FIELD_TEN_ID) {
-+		dev_info(&adapter->pdev->dev,
-+			 "Tenant id not allowed for ip filter\n");
-+		return -EINVAL;
-+	}
-+
-+	if (match.mask->dst) {
-+		if (adv_adq_ena || match.mask->dst == cpu_to_be32(0xffffffff)) {
-+			*field_flags |= IECM_CLOUD_FIELD_IIP;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad ip dst mask 0x%08x\n",
-+				be32_to_cpu(match.mask->dst));
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (match.mask->src) {
-+		if (adv_adq_ena || match.mask->src == cpu_to_be32(0xffffffff)) {
-+			*field_flags |= IECM_CLOUD_FIELD_IIP;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad ip src mask 0x%08x\n",
-+				be32_to_cpu(match.mask->dst));
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (match.key->dst) {
-+		if (adv_adq_ena)
-+			m_spec->dst_ip[0] = match.mask->dst;
-+		else
-+			m_spec->dst_ip[0] = cpu_to_be32(0xffffffff);
-+		d_spec->dst_ip[0] = match.key->dst;
-+	}
-+
-+	if (match.key->src) {
-+		if (adv_adq_ena)
-+			m_spec->src_ip[0] = match.mask->src;
-+		else
-+			m_spec->src_ip[0] = cpu_to_be32(0xffffffff);
-+		d_spec->src_ip[0] = match.key->src;
-+	}
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_ipv6_header - Parse ipv6 header fields
-+ * @vport: vport structure
-+ * @field_flags: Cloud filter flags
-+ * @d_spec: Virtchnl structure for L4 specs
-+ * @m_spec: Virtchnl structure for L4 specs
-+ * @rule: Flow rule structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_ipv6_header(struct iecm_vport *vport, u8 *field_flags,
-+		       struct virtchnl_l4_spec *d_spec,
-+		       struct virtchnl_l4_spec *m_spec,
-+		       struct flow_rule *rule)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct flow_match_ipv6_addrs match;
-+	int i;
-+
-+	flow_rule_match_ipv6_addrs(rule, &match);
-+
-+	/* validate mask, make sure it is not IPV6_ADDR_ANY */
-+	if (ipv6_addr_any(&match.mask->dst)) {
-+		dev_err(&adapter->pdev->dev, "Bad ipv6 dst mask 0x%02x\n",
-+			IPV6_ADDR_ANY);
-+		return -EINVAL;
-+	}
-+
-+	/* src and dest IPv6 address should not be LOOPBACK
-+	 * (0:0:0:0:0:0:0:1) which can be represented as ::1
-+	 */
-+	if (ipv6_addr_loopback(&match.key->dst) ||
-+	    ipv6_addr_loopback(&match.key->src)) {
-+		dev_err(&adapter->pdev->dev,
-+			"ipv6 addr should not be loopback\n");
-+		return -EINVAL;
-+	}
-+
-+	if (!ipv6_addr_any(&match.mask->dst) ||
-+	    !ipv6_addr_any(&match.mask->src))
-+		*field_flags |= IECM_CLOUD_FIELD_IIP;
-+
-+	/* copy dest IPv6 mask and address */
-+	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADQ)) {
-+		memcpy(&m_spec->dst_ip, &match.mask->dst.s6_addr32,
-+		       sizeof(m_spec->dst_ip));
-+	} else {
-+		for (i = 0; i < 4; i++)
-+			m_spec->dst_ip[i] = cpu_to_be32(0xffffffff);
-+	}
-+	memcpy(&d_spec->dst_ip, &match.key->dst.s6_addr32,
-+	       sizeof(d_spec->dst_ip));
-+
-+	/* copy source IPv6 mask and address */
-+	if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADQ)) {
-+		memcpy(&m_spec->src_ip, &match.mask->src.s6_addr32,
-+		       sizeof(m_spec->src_ip));
-+	} else {
-+		for (i = 0; i < 4; i++)
-+			m_spec->src_ip[i] = cpu_to_be32(0xffffffff);
-+	}
-+	memcpy(&d_spec->src_ip, &match.key->src.s6_addr32,
-+	       sizeof(d_spec->src_ip));
-+
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_l4_header - Parse l4 header fields
-+ * @vport: vport structure
-+ * @d_spec: Virtchnl structure for L4 specs
-+ * @m_spec: Virtchnl structure for L4 specs
-+ * @rule: Flow rule structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int
-+iecm_parse_l4_header(struct iecm_vport *vport,
-+		     struct virtchnl_l4_spec *d_spec,
-+		     struct virtchnl_l4_spec *m_spec,
-+		     struct flow_rule *rule)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct flow_match_ports match;
-+
-+	flow_rule_match_ports(rule, &match);
-+
-+	if (match.key->dst) {
-+		if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS,
-+				    VIRTCHNL2_CAP_ADQ) ||
-+		    match.mask->dst == cpu_to_be16(0xffff)) {
-+			m_spec->dst_port = match.mask->dst;
-+			d_spec->dst_port = match.key->dst;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad dst port mask %u\n",
-+				be16_to_cpu(match.mask->dst));
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (match.key->src) {
-+		if (iecm_is_cap_ena(adapter, IECM_OTHER_CAPS,
-+				    VIRTCHNL2_CAP_ADQ) ||
-+		    match.mask->src == cpu_to_be16(0xffff)) {
-+			m_spec->src_port = match.mask->src;
-+			d_spec->src_port = match.key->src;
-+		} else {
-+			dev_err(&adapter->pdev->dev, "Bad src port mask %u\n",
-+				be16_to_cpu(match.mask->src));
-+			return -EINVAL;
-+		}
-+	}
-+	return 0;
-+}
-+
-+/**
-+ * iecm_parse_cls_flower - Parse tc flower filters provided by kernel
-+ * @vport: vport structure
-+ * @f: pointer to struct flow_cls_offload
-+ * @filter: pointer to cloud filter structure
-+ */
-+static int iecm_parse_cls_flower(struct iecm_vport *vport,
-+				 struct flow_cls_offload *f,
-+				 struct iecm_cloud_filter *filter)
-+{
-+	struct flow_rule *rule = flow_cls_offload_flow_rule(f);
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct virtchnl_l4_spec *d_spec, *m_spec;
-+	struct virtchnl_filter *cf = &filter->f;
-+	struct flow_dissector *dissector;
-+	u8 field_flags = 0;
-+	u16 addr_type = 0;
-+	int err;
-+
-+	dissector = rule->match.dissector;
-+	if (dissector->used_keys &
-+	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
-+	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
-+	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
-+	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
-+	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
-+	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
-+	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
-+	      BIT(FLOW_DISSECTOR_KEY_PORTS))) {
-+		dev_err(&adapter->pdev->dev, "Unsupported key used: 0x%x\n",
-+			dissector->used_keys);
-+		return -EOPNOTSUPP;
-+	}
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_KEYID))
-+		iecm_parse_keyid(rule, &field_flags);
-+
-+	/* even though following code refers as "tcp_sec", it is not
-+	 * just for TCP but a generic struct representing
-+	 * L2, L3 + L4 fields if specified
-+	 */
-+	m_spec = &cf->mask.tcp_spec;
-+	d_spec = &cf->data.tcp_spec;
-+
-+	/* determine flow type, TCP/UDP_V4[6]_FLOW based on
-+	 * L2 proto (aka ETH proto) and L3 proto (aka IP_PROTO)
-+	 */
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_BASIC)) {
-+		err = iecm_parse_flow_type(vport, rule, cf, filter);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* process Ethernet header fields */
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
-+		err = iecm_parse_ether_header(vport, &field_flags,
-+					      d_spec, m_spec, rule);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* process VLAN header for single VLAN (type could be S/C-tag) */
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_VLAN)) {
-+		err = iecm_parse_vlan_header(vport, &field_flags,
-+					     d_spec, m_spec, rule);
-+		if (err)
-+			return err;
-+	}
-+
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_CONTROL)) {
-+		struct flow_match_control match;
-+
-+		flow_rule_match_control(rule, &match);
-+		addr_type = match.key->addr_type;
-+	}
-+
-+	/* process IPv4 header */
-+	if (addr_type == FLOW_DISSECTOR_KEY_IPV4_ADDRS) {
-+		err = iecm_parse_ipv4_header(vport, &field_flags,
-+					     d_spec, m_spec, rule);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* process IPv6 header */
-+	if (addr_type == FLOW_DISSECTOR_KEY_IPV6_ADDRS) {
-+		err = iecm_parse_ipv6_header(vport, &field_flags,
-+					     d_spec, m_spec, rule);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* process L4 header, supported L4 protocols are TCP and UDP */
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_PORTS)) {
-+		err = iecm_parse_l4_header(vport, d_spec, m_spec, rule);
-+		if (err)
-+			return err;
-+	}
-+	cf->field_flags = field_flags;
-+
-+	return 0;
-+}
-+
-+/**
-+ * iecm_handle_tclass - Forward to a traffic class on the device
-+ * @vport: vport structure
-+ * @tc: traffic class index on the device
-+ * @filter: pointer to cloud filter structure
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int iecm_handle_tclass(struct iecm_vport *vport, int tc,
-+			      struct iecm_cloud_filter *filter)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+
-+	if (tc == 0)
-+		return 0;
-+	if ((!iecm_is_adq_v2_ena(vport)) &&
-+	    !filter->f.data.tcp_spec.dst_port) {
-+		dev_err(&adapter->pdev->dev,
-+			"Specify destination port to redirect to traffic class other than TC0\n");
-+		return -EINVAL;
-+	}
-+	/* redirect to a traffic class on the same device */
-+	filter->f.action = VIRTCHNL_ACTION_TC_REDIRECT;
-+	filter->f.action_meta = tc;
-+	return 0;
-+}
-+
-+/* iecm_find_cf - Find the cloud filter in the list
-+ * @vport: vport structure
-+ * @cookie: filter specific cookie
-+ *
-+ * Returns pointer to the filter object or NULL. Must be called while holding
-+ * cloud_filter_list_lock.
-+ */
-+static struct iecm_cloud_filter *iecm_find_cf(struct iecm_vport *vport,
-+					      unsigned long *cookie)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter *filter = NULL;
-+
-+	if (!cookie)
-+		return NULL;
-+
-+	list_for_each_entry(filter,
-+			    &adapter->config_data.cf_config.cloud_filter_list,
-+			    list) {
-+		if (!memcmp(cookie, &filter->cookie, sizeof(filter->cookie)))
-+			return filter;
-+	}
-+	return NULL;
-+}
-+
-+/**
-+ * iecm_configure_clsflower - Add tc flower filters
-+ * @vport: vport structure
-+ * @cls_flower: Pointer to struct flow_cls_offload
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int iecm_configure_clsflower(struct iecm_vport *vport,
-+				    struct flow_cls_offload *cls_flower)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_user_config_data *config_data;
-+	struct iecm_cloud_filter *filter = NULL;
-+	int err;
-+	int tc;
-+
-+	config_data = &adapter->config_data;
-+	tc = tc_classid_to_hwtc(vport->netdev, cls_flower->classid);
-+	if (tc < 0) {
-+		dev_err(&adapter->pdev->dev, "Invalid traffic class\n");
-+		return -EINVAL;
-+	}
-+
-+#define IECM_MAX_CLOUD_ADQ_FILTERS	128
-+
-+	if (config_data->cf_config.num_cloud_filters >=
-+						IECM_MAX_CLOUD_ADQ_FILTERS) {
-+		dev_err(&adapter->pdev->dev,
-+			"Unable to add filter (action is forward to TC), reached max allowed filters (%u)\n",
-+			IECM_MAX_CLOUD_ADQ_FILTERS);
-+		return -ENOSPC;
-+	}
-+
-+	/* bail out here if filter already exists */
-+	spin_lock_bh(&adapter->cloud_filter_list_lock);
-+	filter = iecm_find_cf(vport, &cls_flower->cookie);
-+	if (filter) {
-+		filter->remove = false;
-+		dev_err(&adapter->pdev->dev, "Failed to add TC Flower filter, it already exists\n");
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+		return -EEXIST;
-+	}
-+	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+
-+	filter = kzalloc(sizeof(*filter), GFP_KERNEL);
-+	if (!filter)
-+		return -ENOMEM;
-+
-+	filter->cookie = cls_flower->cookie;
-+
-+	/* set the mask to all zeroes to begin with */
-+	memset(&filter->f.mask.tcp_spec, 0, sizeof(struct virtchnl_l4_spec));
-+
-+	/* start out with flow type and eth type IPv4 to begin with */
-+	filter->f.flow_type = VIRTCHNL_TCP_V4_FLOW;
-+	err = iecm_parse_cls_flower(vport, cls_flower, filter);
-+	if (err)
-+		goto error;
-+
-+	err = iecm_handle_tclass(vport, tc, filter);
-+	if (err)
-+		goto error;
-+
-+	/* add filter to the list */
-+	spin_lock_bh(&adapter->cloud_filter_list_lock);
-+	list_add_tail(&filter->list, &config_data->cf_config.cloud_filter_list);
-+	filter->add = true;
-+	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+	err = iecm_send_add_del_cloud_filter_msg(vport, true);
-+	spin_lock_bh(&adapter->cloud_filter_list_lock);
-+	/* We have to find it again in case another thread has already
-+	 * deleted and kfreed it.
-+	 */
-+	filter = iecm_find_cf(vport, &cls_flower->cookie);
-+	if (filter && err) {
-+		list_del(&filter->list);
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+		goto error;
-+	}
-+	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+
-+	config_data->cf_config.num_cloud_filters++;
-+error:
-+	if (err)
-+		kfree(filter);
-+	return err;
-+}
-+
-+/**
-+ * iecm_delete_clsflower - Remove tc flower filters
-+ * @vport: vport structure
-+ * @cls_flower: Pointer to struct flow_cls_offload
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int iecm_delete_clsflower(struct iecm_vport *vport,
-+				 struct flow_cls_offload *cls_flower)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter *filter = NULL;
-+	int err = 0;
-+
-+	spin_lock_bh(&adapter->cloud_filter_list_lock);
-+	filter = iecm_find_cf(vport, &cls_flower->cookie);
-+	if (filter) {
-+		filter->remove = true;
-+		adapter->config_data.cf_config.num_cloud_filters--;
-+	} else if (adapter->config_data.cf_config.num_cloud_filters) {
-+		/* "num_cloud_filters" can become zero if egress qdisc is
-+		 * detached as per design, driver deletes related filters
-+		 * when qdisc is detached to avoid stale filters, hence
-+		 * num_cloud_filters can become zero. But since netdev
-+		 * layer doesn't know that filters are deleted by driver
-+		 * implictly when egress qdisc is deleted, it sees filters
-+		 * being present and "in_hw". User can request delete
-+		 * of specific filter of detach ingress qdisc - in either of
-+		 * those operation, filter(s) won't be found in driver cache,
-+		 * hence instead of returning, let this function return SUCCESS
-+		 * Returning of err as -EINVAL is only applicable when
-+		 * unable to find filter and num_cloud_filters is non-zero
-+		 */
-+		err = -EINVAL;
-+	}
-+	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+
-+	if (filter) {
-+		err = iecm_send_add_del_cloud_filter_msg(vport, false);
-+		spin_lock_bh(&adapter->cloud_filter_list_lock);
-+		/* It can happen that asynchronously the filter was already
-+		 * deleted from the list. Make sure it's still there and marked
-+		 * for remove under spinlock before actually trying to delete
-+		 * from list.
-+		 */
-+		filter = iecm_find_cf(vport, &cls_flower->cookie);
-+		if (filter) {
-+			list_del(&filter->list);
-+			kfree(filter);
-+		}
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+	}
-+	return err;
-+}
-+
-+/**
-+ * iecm_setup_tc_cls_flower - flower classifier offloads
-+ * @vport: vport structure
-+ * @cls_flower: pointer to struct flow_cls_offload
-+ *
-+ * Return 0 on success, negative on failure
-+ */
-+static int iecm_setup_tc_cls_flower(struct iecm_vport *vport,
-+				    struct flow_cls_offload *cls_flower)
-+{
-+	if (cls_flower->common.chain_index)
-+		return -EOPNOTSUPP;
-+
-+	switch (cls_flower->command) {
-+	case FLOW_CLS_REPLACE:
-+		return iecm_configure_clsflower(vport, cls_flower);
-+	case FLOW_CLS_DESTROY:
-+		return iecm_delete_clsflower(vport, cls_flower);
-+	case FLOW_CLS_STATS:
-+		return -EOPNOTSUPP;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+/**
-+ * iecm_setup_tc_block_cb - block callback for tc
-+ * @type: type of offload
-+ * @type_data: offload data
-+ * @cb_priv: Private adapter structure
-+ *
-+ * This function is the block callback for traffic classes
-+ * Return 0 on success, negative on failure
-+ **/
-+static int iecm_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
-+				  void *cb_priv)
-+{
-+	switch (type) {
-+	case TC_SETUP_CLSFLOWER:
-+		return iecm_setup_tc_cls_flower((struct iecm_vport *)cb_priv,
-+						(struct flow_cls_offload *)
-+						 type_data);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+/**
-+ * iecm_del_all_cloud_filters - delete all cloud filters on the traffic classes
-+ * @vport: vport structure
-+ *
-+ * This function will loop through the list of cloud filters and deletes them.
-+ **/
-+static void iecm_del_all_cloud_filters(struct iecm_vport *vport)
-+{
-+	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter_config *cf_config;
-+	struct iecm_cloud_filter *cf, *cftmp;
-+
-+	cf_config = &adapter->config_data.cf_config;
-+	spin_lock_bh(&adapter->cloud_filter_list_lock);
-+	list_for_each_entry_safe(cf, cftmp,
-+				 &cf_config->cloud_filter_list,
-+				 list) {
-+		list_del(&cf->list);
-+		kfree(cf);
-+		cf_config->num_cloud_filters--;
-+	}
-+	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+}
-+
- /**
-  * iecm_validate_tx_bandwidth - validate the max Tx bandwidth
-  * @vport: vport structure
-@@ -2596,6 +3480,7 @@ static int __iecm_setup_tc(struct iecm_vport *vport, void *type_data)
- 			netif_tx_stop_all_queues(netdev);
- 			netif_tx_disable(netdev);
- 			ret = iecm_send_disable_channels_msg(vport);
-+			iecm_del_all_cloud_filters(vport);
- 			netif_tx_start_all_queues(netdev);
- 			if (!test_bit(__IECM_REL_RES_IN_PROG, adapter->flags) &&
- 			    !ret) {
-@@ -2709,8 +3594,10 @@ static int iecm_setup_tc(struct net_device *netdev, enum tc_setup_type type,
- {
- 	struct iecm_vport *vport = iecm_netdev_to_vport(netdev);
- 	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter_config *cf_config;
- 	int err = 0;
- 
-+	cf_config = &adapter->config_data.cf_config;
- 	switch (type) {
- 	case TC_SETUP_QDISC_ETF:
- 		if (iecm_is_queue_model_split(vport->txq_model))
-@@ -2720,6 +3607,17 @@ static int iecm_setup_tc(struct net_device *netdev, enum tc_setup_type type,
- 					     type_data);
- 		break;
- 	case TC_SETUP_BLOCK:
-+		if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS,
-+				    VIRTCHNL2_CAP_ADQ) ||
-+		    iecm_is_cap_ena(adapter, IECM_OTHER_CAPS,
-+				    VIRTCHNL2_CAP_ADQ)) {
-+			err =
-+			flow_block_cb_setup_simple((struct flow_block_offload *)
-+						    type_data,
-+						   &cf_config->block_cb_list,
-+						   iecm_setup_tc_block_cb,
-+						   vport, vport, true);
-+		}
- 		break;
- 	case TC_SETUP_QDISC_MQPRIO:
- 		if (iecm_is_cap_ena(adapter, IECM_BASE_CAPS,
-diff --git a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-index 5601846b4674..94af45c36866 100644
---- a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
-@@ -2731,6 +2731,74 @@ static int iecm_send_insert_vlan_msg(struct iecm_vport *vport, bool ena)
+@@ -3633,6 +3705,481 @@ static int iecm_setup_tc(struct net_device *netdev, enum tc_setup_type type,
  	return err;
  }
  
 +/**
-+ * iecm_send_add_del_cloud_filter_msg: Send add/del cloud filter message
-+ * @vport: vport structure
-+ * @add: True to add, false to delete cloud filter
++ * iecm_fill_adv_rss_ip4_hdr - fill the IPv4 RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iecm_fill_adv_rss_ip4_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, IPV4);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_IPV4_SA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, SRC);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_IPV4_DA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, DST);
++}
++
++/**
++ * iecm_fill_adv_rss_ip6_hdr - fill the IPv6 RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iecm_fill_adv_rss_ip6_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, IPV6);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_IPV6_SA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, SRC);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_IPV6_DA)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, DST);
++}
++
++/**
++ * iecm_fill_adv_rss_tcp_hdr - fill the TCP RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iecm_fill_adv_rss_tcp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, TCP);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_TCP_SRC_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, TCP, SRC_PORT);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_TCP_DST_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, TCP, DST_PORT);
++}
++
++/**
++ * iecm_fill_adv_rss_udp_hdr - fill the UDP RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iecm_fill_adv_rss_udp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, UDP);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_UDP_SRC_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, UDP, SRC_PORT);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_UDP_DST_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, UDP, DST_PORT);
++}
++
++/**
++ * iecm_fill_adv_rss_sctp_hdr - fill the SCTP RSS protocol header
++ * @hdr: the virtchnl message protocol header data structure
++ * @hash_flds: the RSS configuration protocol hash fields
++ */
++static void
++iecm_fill_adv_rss_sctp_hdr(struct virtchnl_proto_hdr *hdr, s64 hash_flds)
++{
++	VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, SCTP);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_SCTP_SRC_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, SCTP, SRC_PORT);
++
++	if (hash_flds & IECM_ADV_RSS_HASH_FLD_SCTP_DST_PORT)
++		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, SCTP, DST_PORT);
++}
++
++/**
++ * iecm_fill_adv_rss_cfg_msg - fill the RSS configuration into virtchnl message
++ * @rss_cfg: the virtchnl message to be filled with RSS configuration setting
++ * @packet_hdrs: the RSS configuration protocol header types
++ * @hash_flds: the RSS configuration protocol hash fields
 + *
-+ * Request the CP/PF to add/del cloud filters as specified by the user via
-+ * tc tool
++ * Returns 0 if the RSS configuration virtchnl message is filled successfully
++ */
++static int
++iecm_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
++			  u32 packet_hdrs, u64 hash_flds)
++{
++	struct virtchnl_proto_hdrs *proto_hdrs = &rss_cfg->proto_hdrs;
++	struct virtchnl_proto_hdr *hdr;
++
++	rss_cfg->rss_algorithm = VIRTCHNL_RSS_ALG_TOEPLITZ_ASYMMETRIC;
++
++	proto_hdrs->tunnel_level = 0;	/* always outer layer */
++
++	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
++	switch (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_L3) {
++	case IECM_ADV_RSS_FLOW_SEG_HDR_IPV4:
++		iecm_fill_adv_rss_ip4_hdr(hdr, hash_flds);
++		break;
++	case IECM_ADV_RSS_FLOW_SEG_HDR_IPV6:
++		iecm_fill_adv_rss_ip6_hdr(hdr, hash_flds);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
++	switch (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_L4) {
++	case IECM_ADV_RSS_FLOW_SEG_HDR_TCP:
++		iecm_fill_adv_rss_tcp_hdr(hdr, hash_flds);
++		break;
++	case IECM_ADV_RSS_FLOW_SEG_HDR_UDP:
++		iecm_fill_adv_rss_udp_hdr(hdr, hash_flds);
++		break;
++	case IECM_ADV_RSS_FLOW_SEG_HDR_SCTP:
++		iecm_fill_adv_rss_sctp_hdr(hdr, hash_flds);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++/**
++ * iecm_find_adv_rss_cfg_by_hdrs - find RSS configuration with header type
++ * @vport: vport structure
++ * @packet_hdrs: protocol header type to find.
++ *
++ * Returns pointer to advance RSS configuration if found or null
++ */
++static struct iecm_adv_rss *
++iecm_find_adv_rss_cfg_by_hdrs(struct iecm_vport *vport, u32 packet_hdrs)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_adv_rss *rss;
++
++	list_for_each_entry(rss, &adapter->config_data.adv_rss_list, list)
++		if (rss->packet_hdrs == packet_hdrs)
++			return rss;
++
++	return NULL;
++}
++
++/**
++ * iecm_dump_adv_rss_cfg_info
++ * @vport: vport structure
++ * @packet_hdrs: The protocol headers for RSS configuration
++ * @hash_flds: The protocol hash fields for RSS configuration
++ * @prefix: the prefix string description to dump the RSS
++ * @postfix: the postfix string description to dump the RSS
++ *
++ * Dump the advance RSS configuration
++ **/
++static void
++iecm_dump_adv_rss_cfg_info(struct iecm_vport *vport,
++			   u32 packet_hdrs, u64 hash_flds,
++			   const char *prefix, const char *postfix)
++{
++	static char hash_opt[300];
++	const char *proto;
++
++	if (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_TCP)
++		proto = "TCP";
++	else if (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_UDP)
++		proto = "UDP";
++	else if (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_SCTP)
++		proto = "SCTP";
++	else
++		return;
++
++	memset(hash_opt, 0, sizeof(hash_opt));
++
++	strcat(hash_opt, proto);
++	if (packet_hdrs & IECM_ADV_RSS_FLOW_SEG_HDR_IPV4)
++		strcat(hash_opt, "v4 ");
++	else
++		strcat(hash_opt, "v6 ");
++
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_IPV4_SA |
++			 IECM_ADV_RSS_HASH_FLD_IPV6_SA))
++		strcat(hash_opt, "[IP SA] ");
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_IPV4_DA |
++			 IECM_ADV_RSS_HASH_FLD_IPV6_DA))
++		strcat(hash_opt, "[IP DA] ");
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_TCP_SRC_PORT |
++			 IECM_ADV_RSS_HASH_FLD_UDP_SRC_PORT |
++			 IECM_ADV_RSS_HASH_FLD_SCTP_SRC_PORT))
++		strcat(hash_opt, "[src port] ");
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_TCP_DST_PORT |
++			 IECM_ADV_RSS_HASH_FLD_UDP_DST_PORT |
++			 IECM_ADV_RSS_HASH_FLD_SCTP_DST_PORT))
++		strcat(hash_opt, "[dst port] ");
++
++	if (!prefix)
++		prefix = "";
++
++	if (!postfix)
++		postfix = "";
++
++	dev_info(&vport->adapter->pdev->dev, "%s %s %s\n",
++		 prefix, hash_opt, postfix);
++}
++
++/**
++ * iecm_adv_rss_parse_hdrs - parses headers from RSS hash input
++ * @cmd: ethtool rxnfc command
++ *
++ * This function parses the rxnfc command and returns intended
++ * header types for RSS configuration
++ */
++static u32 iecm_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
++{
++	u32 hdrs = IECM_ADV_RSS_FLOW_SEG_HDR_NONE;
++
++	switch (cmd->flow_type) {
++	case TCP_V4_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_TCP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV4;
++		break;
++	case UDP_V4_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_UDP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV4;
++		break;
++	case SCTP_V4_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_SCTP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV4;
++		break;
++	case TCP_V6_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_TCP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV6;
++		break;
++	case UDP_V6_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_UDP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV6;
++		break;
++	case SCTP_V6_FLOW:
++		hdrs |= IECM_ADV_RSS_FLOW_SEG_HDR_SCTP |
++			IECM_ADV_RSS_FLOW_SEG_HDR_IPV6;
++		break;
++	default:
++		break;
++	}
++
++	return hdrs;
++}
++
++/**
++ * iecm_adv_rss_parse_hash_flds - parses hash fields from RSS hash input
++ * @cmd: ethtool rxnfc command
++ *
++ * This function parses the rxnfc command and returns intended hash fields for
++ * RSS configuration
++ */
++static u64 iecm_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd)
++{
++	u64 hfld = IECM_ADV_RSS_HASH_INVALID;
++
++	if (cmd->data & RXH_IP_SRC || cmd->data & RXH_IP_DST) {
++		switch (cmd->flow_type) {
++		case TCP_V4_FLOW:
++		case UDP_V4_FLOW:
++		case SCTP_V4_FLOW:
++			if (cmd->data & RXH_IP_SRC)
++				hfld |= IECM_ADV_RSS_HASH_FLD_IPV4_SA;
++			if (cmd->data & RXH_IP_DST)
++				hfld |= IECM_ADV_RSS_HASH_FLD_IPV4_DA;
++			break;
++		case TCP_V6_FLOW:
++		case UDP_V6_FLOW:
++		case SCTP_V6_FLOW:
++			if (cmd->data & RXH_IP_SRC)
++				hfld |= IECM_ADV_RSS_HASH_FLD_IPV6_SA;
++			if (cmd->data & RXH_IP_DST)
++				hfld |= IECM_ADV_RSS_HASH_FLD_IPV6_DA;
++			break;
++		default:
++			break;
++		}
++	}
++
++	if (cmd->data & RXH_L4_B_0_1 || cmd->data & RXH_L4_B_2_3) {
++		switch (cmd->flow_type) {
++		case TCP_V4_FLOW:
++		case TCP_V6_FLOW:
++			if (cmd->data & RXH_L4_B_0_1)
++				hfld |= IECM_ADV_RSS_HASH_FLD_TCP_SRC_PORT;
++			if (cmd->data & RXH_L4_B_2_3)
++				hfld |= IECM_ADV_RSS_HASH_FLD_TCP_DST_PORT;
++			break;
++		case UDP_V4_FLOW:
++		case UDP_V6_FLOW:
++			if (cmd->data & RXH_L4_B_0_1)
++				hfld |= IECM_ADV_RSS_HASH_FLD_UDP_SRC_PORT;
++			if (cmd->data & RXH_L4_B_2_3)
++				hfld |= IECM_ADV_RSS_HASH_FLD_UDP_DST_PORT;
++			break;
++		case SCTP_V4_FLOW:
++		case SCTP_V6_FLOW:
++			if (cmd->data & RXH_L4_B_0_1)
++				hfld |= IECM_ADV_RSS_HASH_FLD_SCTP_SRC_PORT;
++			if (cmd->data & RXH_L4_B_2_3)
++				hfld |= IECM_ADV_RSS_HASH_FLD_SCTP_DST_PORT;
++			break;
++		default:
++			break;
++		}
++	}
++
++	return hfld;
++}
++
++/**
++ * iecm_set_adv_rss_hash_opt - Enable/Disable flow types for RSS hash
++ * @vport: vport structure
++ * @cmd: ethtool rxnfc command
++ *
++ * Returns Success if the flow input set is supported.
++ */
++int
++iecm_set_adv_rss_hash_opt(struct iecm_vport *vport, struct ethtool_rxnfc *cmd)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_adv_rss *rss, *rss_new;
++	u64 hash_flds;
++	u32 hdrs;
++	int err;
++
++	if (adapter->state != __IECM_UP)
++		return -EIO;
++
++	if (!iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADV_RSS))
++		return -EOPNOTSUPP;
++
++	hdrs = iecm_adv_rss_parse_hdrs(cmd);
++	if (hdrs == IECM_ADV_RSS_FLOW_SEG_HDR_NONE)
++		return -EINVAL;
++
++	hash_flds = iecm_adv_rss_parse_hash_flds(cmd);
++	if (hash_flds == IECM_ADV_RSS_HASH_INVALID)
++		return -EINVAL;
++
++	rss_new = kzalloc(sizeof(*rss_new), GFP_KERNEL);
++	if (!rss_new)
++		return -ENOMEM;
++
++	/* Since this can fail, do it now to avoid dirtying the list, we'll
++	 * copy it from rss_new if it turns out we're updating an existing
++	 * filter instead of adding a new one.
++	 */
++	if (iecm_fill_adv_rss_cfg_msg(&rss_new->cfg_msg, hdrs, hash_flds)) {
++		kfree(rss_new);
++		return -EINVAL;
++	}
++
++	iecm_dump_adv_rss_cfg_info(vport, hdrs, hash_flds,
++				   "Input set change for", "is pending");
++
++	spin_lock_bh(&adapter->adv_rss_list_lock);
++	rss = iecm_find_adv_rss_cfg_by_hdrs(vport, hdrs);
++	if (rss) {
++		if (rss->hash_flds != hash_flds) {
++			rss->remove = false;
++			memcpy(&rss->cfg_msg, &rss_new->cfg_msg,
++			       sizeof(rss_new->cfg_msg));
++			kfree(rss_new);
++		} else {
++			kfree(rss_new);
++			spin_unlock_bh(&adapter->adv_rss_list_lock);
++			return -EEXIST;
++		}
++	} else {
++		rss = rss_new;
++		rss->packet_hdrs = hdrs;
++		list_add_tail(&rss->list, &adapter->config_data.adv_rss_list);
++	}
++	rss->add = true;
++	rss->hash_flds = hash_flds;
++	spin_unlock_bh(&adapter->adv_rss_list_lock);
++
++	err = iecm_send_add_del_adv_rss_cfg_msg(vport, true);
++	if (err) {
++		spin_lock_bh(&adapter->adv_rss_list_lock);
++		/* We have to find it again to make sure another thread hasn't
++		 * already deleted and kfreed it.
++		 */
++		rss = iecm_find_adv_rss_cfg_by_hdrs(vport, hdrs);
++		if (rss) {
++			list_del(&rss->list);
++			kfree(rss);
++		}
++		spin_unlock_bh(&adapter->adv_rss_list_lock);
++	}
++
++	if (!err)
++		iecm_dump_adv_rss_cfg_info(vport, hdrs, hash_flds,
++					   "Input set change for",
++					   "successful");
++	else
++		iecm_dump_adv_rss_cfg_info(vport, hdrs, hash_flds,
++					   "Failed to change the input set for",
++					   NULL);
++
++	return err;
++}
++
++/**
++ * iecm_get_adv_rss_hash_opt - Retrieve hash fields for a given flow-type
++ * @vport: vport structure
++ * @cmd: ethtool rxnfc command
++ *
++ * Returns Success if the flow input set is supported.
++ */
++int
++iecm_get_adv_rss_hash_opt(struct iecm_vport *vport, struct ethtool_rxnfc *cmd)
++{
++	struct iecm_adapter *adapter = vport->adapter;
++	struct iecm_adv_rss *rss;
++	u64 hash_flds;
++	u32 hdrs;
++
++	if (adapter->state != __IECM_UP)
++		return -EIO;
++
++	if (!iecm_is_cap_ena(adapter, IECM_OTHER_CAPS, VIRTCHNL2_CAP_ADV_RSS))
++		return -EOPNOTSUPP;
++
++	cmd->data = 0;
++
++	hdrs = iecm_adv_rss_parse_hdrs(cmd);
++	if (hdrs == IECM_ADV_RSS_FLOW_SEG_HDR_NONE)
++		return -EINVAL;
++
++	spin_lock_bh(&adapter->adv_rss_list_lock);
++	rss = iecm_find_adv_rss_cfg_by_hdrs(vport, hdrs);
++	if (rss)
++		hash_flds = rss->hash_flds;
++	else
++		hash_flds = IECM_ADV_RSS_HASH_INVALID;
++	spin_unlock_bh(&adapter->adv_rss_list_lock);
++
++	if (hash_flds == IECM_ADV_RSS_HASH_INVALID)
++		return -EINVAL;
++
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_IPV4_SA |
++			 IECM_ADV_RSS_HASH_FLD_IPV6_SA))
++		cmd->data |= (u64)RXH_IP_SRC;
++
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_IPV4_DA |
++			 IECM_ADV_RSS_HASH_FLD_IPV6_DA))
++		cmd->data |= (u64)RXH_IP_DST;
++
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_TCP_SRC_PORT |
++			 IECM_ADV_RSS_HASH_FLD_UDP_SRC_PORT |
++			 IECM_ADV_RSS_HASH_FLD_SCTP_SRC_PORT))
++		cmd->data |= (u64)RXH_L4_B_0_1;
++
++	if (hash_flds & (IECM_ADV_RSS_HASH_FLD_TCP_DST_PORT |
++			 IECM_ADV_RSS_HASH_FLD_UDP_DST_PORT |
++			 IECM_ADV_RSS_HASH_FLD_SCTP_DST_PORT))
++		cmd->data |= (u64)RXH_L4_B_2_3;
++
++	return 0;
++}
++
+ /**
+  * iecm_pkt_udp_no_pay_len - the length of UDP packet without payload
+  * @fltr: Flow Director filter data structure
+diff --git a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+index 94af45c36866..c05baf12515c 100644
+--- a/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
++++ b/drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+@@ -2799,6 +2799,77 @@ int iecm_send_add_del_cloud_filter_msg(struct iecm_vport *vport, bool add)
+ 	return err;
+ }
+ 
++/**
++ * iecm_send_add_del_adv_rss_cfg_msg: Send add/del RSS configuration message
++ * @vport: vport structure
++ * @add: True to add, false to delete RSS configuration
++ *
++ * Request the CP/PF to add/del RSS configuration as specified by the user via
++ * ethtool
 + *
 + * Return 0 on success, negative on failure
 + **/
-+int iecm_send_add_del_cloud_filter_msg(struct iecm_vport *vport, bool add)
++int iecm_send_add_del_adv_rss_cfg_msg(struct iecm_vport *vport, bool add)
 +{
 +	struct iecm_adapter *adapter = vport->adapter;
-+	struct iecm_cloud_filter_config *cf_config;
-+	struct iecm_cloud_filter *cf;
-+	struct virtchnl_filter f;
-+	int len = 0, err = 0;
++	struct virtchnl_rss_cfg *rss_cfg;
++	struct iecm_adv_rss *rss;
++	int len, err = -ENXIO;
 +
-+	cf_config = &adapter->config_data.cf_config;
++	len = sizeof(struct virtchnl_rss_cfg);
++	rss_cfg = kzalloc(len, GFP_KERNEL);
++	if (!rss_cfg)
++		return -ENOMEM;
 +
 +	while (true) {
-+		bool process_fltr = false;
++		bool process_rss = false;
 +
-+		spin_lock_bh(&adapter->cloud_filter_list_lock);
-+		list_for_each_entry(cf, &cf_config->cloud_filter_list, list) {
-+			if (add && cf->add) {
-+				process_fltr = true;
-+				cf->add = false;
-+				f = cf->f;
++		spin_lock_bh(&adapter->adv_rss_list_lock);
++		list_for_each_entry(rss, &adapter->config_data.adv_rss_list, list) {
++			if (add && rss->add) {
++				/* Only add needs print the RSS information */
++				process_rss = true;
++				rss->add = false;
++				memcpy(rss_cfg, &rss->cfg_msg, len);
 +				break;
-+			} else if (!add && cf->remove) {
-+				process_fltr = true;
-+				cf->remove = false;
-+				f = cf->f;
++			} else if (!add && rss->remove) {
++				process_rss = true;
++				rss->remove = false;
++				memcpy(rss_cfg, &rss->cfg_msg, len);
 +				break;
 +			}
 +		}
-+		spin_unlock_bh(&adapter->cloud_filter_list_lock);
++		spin_unlock_bh(&adapter->adv_rss_list_lock);
 +
-+		/* Don't send mailbox message when there are no filters to add/del */
-+		if (!process_fltr)
-+			goto error;
++		/* Don't send mailbox message when there are no RSS to add/del */
++		if (!process_rss)
++			break;
 +
 +		if (add) {
-+			err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_ADD_CLOUD_FILTER,
-+					       len, (u8 *)&f);
++			err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_ADD_RSS_CFG,
++					       len, (u8 *)rss_cfg);
 +			if (err)
-+				goto error;
++				break;
 +
-+			err = iecm_wait_for_event(adapter, IECM_VC_ADD_CLOUD_FILTER,
-+						  IECM_VC_ADD_CLOUD_FILTER_ERR);
++			err = iecm_wait_for_event(adapter, IECM_VC_ADD_RSS_CFG,
++						  IECM_VC_ADD_RSS_CFG_ERR);
 +		} else {
-+			err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_DEL_CLOUD_FILTER,
-+					       len, (u8 *)&f);
++			err = iecm_send_mb_msg(adapter, VIRTCHNL_OP_DEL_RSS_CFG,
++					       len, (u8 *)rss_cfg);
 +			if (err)
-+				goto error;
++				break;
 +
-+			err =
-+			iecm_min_wait_for_event(adapter, IECM_VC_DEL_CLOUD_FILTER,
-+						IECM_VC_DEL_CLOUD_FILTER_ERR);
++			err = iecm_min_wait_for_event(adapter, IECM_VC_DEL_RSS_CFG,
++						      IECM_VC_DEL_RSS_CFG_ERR);
 +		}
 +		if (err)
 +			break;
 +	}
-+error:
++
++	kfree(rss_cfg);
 +	return err;
 +}
 +
@@ -1163,59 +766,93 @@ index 5601846b4674..94af45c36866 100644
   * iecm_send_add_fdir_filter_msg: Send add Flow Director filter message
   * @vport: vport structure
 diff --git a/drivers/net/ethernet/intel/include/iecm.h b/drivers/net/ethernet/intel/include/iecm.h
-index b0785684cc63..0aab41cf982c 100644
+index 0aab41cf982c..c7be8c88f9b3 100644
 --- a/drivers/net/ethernet/intel/include/iecm.h
 +++ b/drivers/net/ethernet/intel/include/iecm.h
-@@ -403,6 +403,28 @@ enum iecm_user_flags {
- 	__IECM_USER_FLAGS_NBITS,
+@@ -432,6 +432,74 @@ struct iecm_channel_config {
+ 	u8 num_tc;
  };
  
-+#define IECM_CLOUD_FIELD_OMAC		BIT(0)
-+#define IECM_CLOUD_FIELD_IMAC		BIT(1)
-+#define IECM_CLOUD_FIELD_IVLAN		BIT(2)
-+#define IECM_CLOUD_FIELD_TEN_ID		BIT(3)
-+#define IECM_CLOUD_FIELD_IIP		BIT(4)
++enum iecm_adv_rss_flow_seg_hdr {
++	IECM_ADV_RSS_FLOW_SEG_HDR_NONE	= 0x00000000,
++	IECM_ADV_RSS_FLOW_SEG_HDR_IPV4	= 0x00000001,
++	IECM_ADV_RSS_FLOW_SEG_HDR_IPV6	= 0x00000002,
++	IECM_ADV_RSS_FLOW_SEG_HDR_TCP	= 0x00000004,
++	IECM_ADV_RSS_FLOW_SEG_HDR_UDP	= 0x00000008,
++	IECM_ADV_RSS_FLOW_SEG_HDR_SCTP	= 0x00000010,
++};
 +
-+#define IECM_START_CHNL_TC		1
++#define IECM_ADV_RSS_FLOW_SEG_HDR_L3		\
++	(IECM_ADV_RSS_FLOW_SEG_HDR_IPV4	|	\
++	 IECM_ADV_RSS_FLOW_SEG_HDR_IPV6)
 +
-+struct iecm_cloud_filter {
++#define IECM_ADV_RSS_FLOW_SEG_HDR_L4		\
++	(IECM_ADV_RSS_FLOW_SEG_HDR_TCP |	\
++	 IECM_ADV_RSS_FLOW_SEG_HDR_UDP |	\
++	 IECM_ADV_RSS_FLOW_SEG_HDR_SCTP)
++
++enum iecm_adv_rss_flow_field {
++	/* L3 */
++	IECM_ADV_RSS_FLOW_FIELD_IDX_IPV4_SA,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_IPV4_DA,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_IPV6_SA,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_IPV6_DA,
++	/* L4 */
++	IECM_ADV_RSS_FLOW_FIELD_IDX_TCP_SRC_PORT,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_TCP_DST_PORT,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_UDP_SRC_PORT,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_UDP_DST_PORT,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT,
++	IECM_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT,
++
++	/* The total number of enums must not exceed 64 */
++	IECM_ADV_RSS_FLOW_FIELD_IDX_MAX
++};
++
++#define IECM_ADV_RSS_HASH_INVALID	0
++#define IECM_ADV_RSS_HASH_FLD_IPV4_SA	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_IPV4_SA)
++#define IECM_ADV_RSS_HASH_FLD_IPV6_SA	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_IPV6_SA)
++#define IECM_ADV_RSS_HASH_FLD_IPV4_DA	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_IPV4_DA)
++#define IECM_ADV_RSS_HASH_FLD_IPV6_DA	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_IPV6_DA)
++#define IECM_ADV_RSS_HASH_FLD_TCP_SRC_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_TCP_SRC_PORT)
++#define IECM_ADV_RSS_HASH_FLD_TCP_DST_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_TCP_DST_PORT)
++#define IECM_ADV_RSS_HASH_FLD_UDP_SRC_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_UDP_SRC_PORT)
++#define IECM_ADV_RSS_HASH_FLD_UDP_DST_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_UDP_DST_PORT)
++#define IECM_ADV_RSS_HASH_FLD_SCTP_SRC_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT)
++#define IECM_ADV_RSS_HASH_FLD_SCTP_DST_PORT	\
++	BIT_ULL(IECM_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT)
++
++/* bookkeeping of advanced RSS configuration */
++struct iecm_adv_rss {
 +	struct list_head list;
-+	struct virtchnl_filter f;
-+	unsigned long cookie;
-+	bool remove;		/* filter needs to be deleted */
-+	bool add;		/* filter needs to be added */
++	u32 packet_hdrs;
++	u64 hash_flds;
++	struct virtchnl_rss_cfg cfg_msg;
++	bool remove;	/* RSS filter needs to be deleted */
++	bool add;	/* RSS filter needs to be added */
 +};
 +
-+struct iecm_cloud_filter_config {
-+	struct list_head block_cb_list;		/* need to pass this to stack */
-+	struct list_head cloud_filter_list;
-+	u16 num_cloud_filters;
-+};
-+
- struct iecm_channel_config {
- 	struct virtchnl_channel_info ch_info[VIRTCHNL_MAX_ADQ_V2_CHANNELS];
- 	bool tc_running;
-@@ -536,6 +558,7 @@ struct iecm_ptype_state {
- 	bool outer_frag;
- 	u8 tunnel_state;
- };
-+
- /* User defined configuration values */
- struct iecm_user_config_data {
- 	u32 num_req_tx_qs; /* user requested TX queues through ethtool */
-@@ -550,6 +573,7 @@ struct iecm_user_config_data {
- 	struct list_head vlan_filter_list;
- 	struct list_head adv_rss_list;
- 	struct iecm_fdir_fltr_config fdir_config;
-+	struct iecm_cloud_filter_config cf_config;
- 	struct iecm_channel_config ch_config;
- };
- 
-@@ -853,6 +877,7 @@ void iecm_set_ethtool_ops(struct net_device *netdev);
- void iecm_vport_set_hsplit(struct iecm_vport *vport, bool ena);
+ enum iecm_fdir_flow_type {
+ 	/* NONE - used for undef/error */
+ 	IECM_FDIR_FLOW_NONE = 0,
+@@ -878,6 +946,11 @@ void iecm_vport_set_hsplit(struct iecm_vport *vport, bool ena);
  void iecm_add_del_ether_addrs(struct iecm_vport *vport, bool add, bool async);
  int iecm_set_promiscuous(struct iecm_adapter *adapter);
-+int iecm_send_add_del_cloud_filter_msg(struct iecm_vport *vport, bool add);
+ int iecm_send_add_del_cloud_filter_msg(struct iecm_vport *vport, bool add);
++int iecm_send_add_del_adv_rss_cfg_msg(struct iecm_vport *vport, bool add);
++int iecm_set_adv_rss_hash_opt(struct iecm_vport *vport,
++			      struct ethtool_rxnfc *cmd);
++int iecm_get_adv_rss_hash_opt(struct iecm_vport *vport,
++			      struct ethtool_rxnfc *cmd);
  int iecm_send_add_fdir_filter_msg(struct iecm_vport *vport);
  int iecm_send_del_fdir_filter_msg(struct iecm_vport *vport);
  int iecm_get_fdir_fltr_entry(struct iecm_vport *vport,
