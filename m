@@ -1,82 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F1FA4A4DA8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jan 2022 18:59:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B72E74A4DB5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jan 2022 19:04:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2A95B8266C;
-	Mon, 31 Jan 2022 17:59:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 688D882883;
+	Mon, 31 Jan 2022 18:04:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pV9ULPNDVFUA; Mon, 31 Jan 2022 17:59:16 +0000 (UTC)
+	with ESMTP id 8NhadulSuChT; Mon, 31 Jan 2022 18:04:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0163E82438;
-	Mon, 31 Jan 2022 17:59:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7989E827AA;
+	Mon, 31 Jan 2022 18:04:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7C3011BF20B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 17:59:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 747A31BF2B7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 18:04:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6E1944092F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 17:59:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6014360EA4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 18:04:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key)
- header.d=networkplumber-org.20210112.gappssmtp.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rnWxlBCSlIle for <intel-wired-lan@lists.osuosl.org>;
- Mon, 31 Jan 2022 17:59:10 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new); dkim=neutral
+ reason="invalid (public key: invalid data)" header.d=pensando.io
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7arfMkYWHwmF for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 31 Jan 2022 18:04:50 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1034.google.com (mail-pj1-x1034.google.com
- [IPv6:2607:f8b0:4864:20::1034])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 92760408F0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 17:59:10 +0000 (UTC)
-Received: by mail-pj1-x1034.google.com with SMTP id h12so14714910pjq.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 09:59:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=GTfk5dtnofD+DwQSBTggrf944TpHjURpGaUt6sHxP1Q=;
- b=zo7PV8Zd2Z7HIVMtmOiMcabS1N6sxBbjo3wwW81zQa4IENFd+3e1qlBJHlUZq9ntz+
- XqfG3FiwQvk7BkMKzEkrTK8KhKl8bZCQp61R1xdJf1S9wF/56YoXbTILPq45QQEx1fSh
- qDbMCmpmLx42v5eiBQi+snTnumsDFMmyNi7p2J7qmEpf/Q0W+tWRSYxd7R6rXO23yKNp
- eMGd4RXtD6PUL8AwbxNTR7tmpDMAYcRkYwTmmCgt3rFO3CXoS8g4hf8QkYIQwr1yPT2W
- YKmY+awyasNFLlw+dtDGpSReBp1a0X8b4c5W4Zbb1H5Li7iemUtlEkg083LPRVdpWVvw
- ce3Q==
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3CED660C22
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 18:04:50 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ l24-20020a17090aec1800b001b55738f633so90269pjy.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 10:04:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=c4Q5GbHlG477GDu8eKVa3wxvGBbayrQI0q4Ora6UJKM=;
+ b=tqRPGJPSBTirucVoZRcW3Pfn8BwsifiN/2zFudpAcytP87mX6mRx+Z2+R8wpSJO6rJ
+ E21sG6i5x1UJi7SIERlnMvo8Jw0MLeFM6mvgDhxTj45ED5x+ylbmR3r1yaZ8mJx2fzpx
+ udWsOYVxp3K/E4/g+A1Uv/ovIRjY7g5AdBlMS01qOGp/RnNoU+KHggkPTU0eVD0DU8s9
+ 0BeQOAnHzHWADyIK4Vu+WAIlTn0apQDnBPfgCcsWeZOXKK9/5IWZ2oh4MKVGtqnRvPWe
+ 5941r9GmvDJ9BaTRBHT9nHnwJ9e+INLC12aBfS+Ob2isiRQG967ObJegi9wJYUDWinQX
+ qgZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=GTfk5dtnofD+DwQSBTggrf944TpHjURpGaUt6sHxP1Q=;
- b=TCwoi8TaYDzTlEUOjQErSam3Xj7pGCsyYac/T6fzvc2VIUckNlS1w9EH9ba6lGEy7u
- nxbAyId5J62MhFcsu+xyoJQ6vbE28kM9t+tRDPUQe8MJPPbUZnNLad8Y820BEhiW8WrM
- R8xCroRqGT80ewi7/D3qNXmrLkhCfBtg3dO7n6sHl2GBFuEEV9i5B0uFzgeZLXpGIsaO
- 3qmf0dSJsc3yZwtzTZkDTYHOF1bGIVmx2sLMnJrgdeMhXat2oj8SGX2AeTyo3FJn27V4
- CwSv/jvzKGFL4lttuFJrq2qtvnGMRBnU9VMmU6Z/RK2hpv6SILpeGXdi1DmtEwKqKhYN
- zCIQ==
-X-Gm-Message-State: AOAM532pY2akc+LgtE5xbJrwILyY6PmN1VFqFjWOQF01X24xVo6kF1N2
- EYYpyBHuy8vJmt+J+Pjlyj5Ssg==
-X-Google-Smtp-Source: ABdhPJwUpbKpp1BF/RE/P7pFaFs95WxKDdCWSlLhnXYDb8ikckCTeUYHjKtVxjHYzKFZsy5bOe8h5g==
-X-Received: by 2002:a17:90b:1d8d:: with SMTP id
- pf13mr35398210pjb.232.1643651949935; 
- Mon, 31 Jan 2022 09:59:09 -0800 (PST)
-Received: from hermes.local (204-195-112-199.wavecable.com. [204.195.112.199])
- by smtp.gmail.com with ESMTPSA id
- o1sm20431282pfu.88.2022.01.31.09.59.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Jan 2022 09:59:09 -0800 (PST)
-Date: Mon, 31 Jan 2022 09:59:05 -0800
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: Saeed Mahameed <saeed@kernel.org>
-Message-ID: <20220131095905.08722670@hermes.local>
-In-Reply-To: <20220131172450.4905-1-saeed@kernel.org>
-References: <20220131172450.4905-1-saeed@kernel.org>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=c4Q5GbHlG477GDu8eKVa3wxvGBbayrQI0q4Ora6UJKM=;
+ b=QuWqWlSTLqBhozcMk8Izw4h7qK0KfZZxGfJg9dK+ZNnqE3GDgRQXTFf6jyIdWQilaZ
+ u5Gi4OaD5vTXCq6nA1M4a+/VXv1kvqfisj/TvZKlpgBvCkHWLvA7ivBgToTp6JrCvYlD
+ YWt6cNscluFKYXp/3Zhhz4i5mHQpBNL0qQ64dbd7Y2qnxsJXO/VqBot89p7KOmCvWpEt
+ Mf7X1wfEmGLAhvdaqv+5BAGcagCZOaoCM48ZmaQemqmauSMvn18w8CQ8/voUhPye540t
+ W53TRYrhngS/jwTn1A1i1lpLr0vfXWIgP4TqZEmShZX+SEididyo5s0SKf3SVRc603GQ
+ qung==
+X-Gm-Message-State: AOAM5335pIA2pr9MKq7fE7m3D3nmHfvvLhkFY0WxTtOgiwKrP6MzxYFR
+ LkbflhS8Q1EmhRA7bWkvo0yRvw==
+X-Google-Smtp-Source: ABdhPJwiCZ3y7ls9K5IfS1T6T0ClceNUAK7SZtIbNYVDQUzoxeIbETevQnD06wi4x9WLSkmqa1d5tw==
+X-Received: by 2002:a17:902:d2c3:: with SMTP id
+ n3mr21984876plc.45.1643652289541; 
+ Mon, 31 Jan 2022 10:04:49 -0800 (PST)
+Received: from [192.168.0.2] ([50.53.47.17])
+ by smtp.gmail.com with ESMTPSA id y42sm19810173pfa.5.2022.01.31.10.04.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Jan 2022 10:04:49 -0800 (PST)
+Message-ID: <e9e124b0-4ea0-e84c-cd8e-1c6ad4df9d74@pensando.io>
+Date: Mon, 31 Jan 2022 10:04:40 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.5.0
+Content-Language: en-US
+To: Saeed Mahameed <saeed@kernel.org>, "David S. Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+References: <20220131172450.4905-1-saeed@kernel.org>
+From: Shannon Nelson <snelson@pensando.io>
+In-Reply-To: <20220131172450.4905-1-saeed@kernel.org>
 Subject: Re: [Intel-wired-lan] [PATCH net-next] net: kbuild: Don't default
  net vendor configs to y
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -101,7 +104,6 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Jiri Pirko <jiri@resnulli.us>, l.stelmach@samsung.com,
  Shay Agroskin <shayagr@amazon.com>, Randy Dunlap <rdunlap@infradead.org>,
  linux-kernel@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
- Shannon Nelson <snelson@pensando.io>,
  Claudiu Beznea <claudiu.beznea@microchip.com>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Chris Snook <chris.snook@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
@@ -129,44 +131,33 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Salil Mehta <salil.mehta@huawei.com>, Sergey Shtylyov <s.shtylyov@omp.ru>,
  Oleksij Rempel <linux@rempel-privat.de>, Edward Cree <ecree.xilinx@gmail.com>,
  Saeed Bishara <saeedb@amazon.com>, Mark Einon <mark.einon@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
  Vladimir Oltean <vladimir.oltean@nxp.com>,
  Alexandre Torgue <alexandre.torgue@foss.st.com>,
  Slark Xiao <slark_xiao@163.com>, Gary Guo <gary@garyguo.net>,
  Gerhard Engleder <gerhard@engleder-embedded.com>,
  Jeroen de Borst <jeroendb@google.com>, Lino Sanfilippo <LinoSanfilippo@gmx.de>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Prabhakar Kushwaha <pkushwaha@marvell.com>,
+ intel-wired-lan@lists.osuosl.org, Prabhakar Kushwaha <pkushwaha@marvell.com>,
  Hans Ulli Kroll <ulli.kroll@googlemail.com>,
  Richard Cochran <richardcochran@gmail.com>, Marcin Wojtas <mw@semihalf.com>,
  David Thompson <davthompson@nvidia.com>,
  Lars Povlsen <lars.povlsen@microchip.com>, netdev@vger.kernel.org,
  Nicolas Ferre <nicolas.ferre@microchip.com>,
  Saeed Mahameed <saeedm@nvidia.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 31 Jan 2022 09:24:50 -0800
-Saeed Mahameed <saeed@kernel.org> wrote:
-
-> From: Saeed Mahameed <saeedm@nvidia.com>
-> 
-> NET_VENDOR_XYZ were defaulted to 'y' for no technical reason.
-> 
-> Since all drivers belonging to a vendor are supposed to default to 'n',
-> defaulting all vendors to 'n' shouldn't be an issue, and aligns well
-> with the 'no new drivers' by default mentality.
-> 
-> Signed-off-by: Saeed Mahameed <saeedm@nvidia.com>
-
-This was done back when vendors were introduced in the network drivers tree.
-The default of Y allowed older configurations to just work.
-
-So there was a reason, not sure if it matters anymore.
-But it seems like useless repainting to change it now.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMS8zMS8yMiA5OjI0IEFNLCBTYWVlZCBNYWhhbWVlZCB3cm90ZToKPiBGcm9tOiBTYWVlZCBN
+YWhhbWVlZCA8c2FlZWRtQG52aWRpYS5jb20+Cj4KPiBORVRfVkVORE9SX1hZWiB3ZXJlIGRlZmF1
+bHRlZCB0byAneScgZm9yIG5vIHRlY2huaWNhbCByZWFzb24uCj4KPiBTaW5jZSBhbGwgZHJpdmVy
+cyBiZWxvbmdpbmcgdG8gYSB2ZW5kb3IgYXJlIHN1cHBvc2VkIHRvIGRlZmF1bHQgdG8gJ24nLAo+
+IGRlZmF1bHRpbmcgYWxsIHZlbmRvcnMgdG8gJ24nIHNob3VsZG4ndCBiZSBhbiBpc3N1ZSwgYW5k
+IGFsaWducyB3ZWxsCj4gd2l0aCB0aGUgJ25vIG5ldyBkcml2ZXJzJyBieSBkZWZhdWx0IG1lbnRh
+bGl0eS4KPgo+IFNpZ25lZC1vZmYtYnk6IFNhZWVkIE1haGFtZWVkIDxzYWVlZG1AbnZpZGlhLmNv
+bT4KPgoKSXMgdGhlcmUgYSBwYXJ0aWN1bGFyIHJlYXNvbiB0byBjaGFuZ2UgdGhpcz8KQnJva2Vu
+IGNvbXBpbGVzP8KgIEJhZCBkcml2ZXJzP8KgIE92ZXItc2l6ZWQgb3V0cHV0PwoKc2xuCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
