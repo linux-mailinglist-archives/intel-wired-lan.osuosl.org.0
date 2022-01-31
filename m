@@ -1,52 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ADC84A4F2E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jan 2022 20:06:56 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C40E84A4F3C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jan 2022 20:13:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9018183E91;
-	Mon, 31 Jan 2022 19:06:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4808B817AD;
+	Mon, 31 Jan 2022 19:13:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L1aY8soV5Fmg; Mon, 31 Jan 2022 19:06:52 +0000 (UTC)
+	with ESMTP id JWBMzIjx4443; Mon, 31 Jan 2022 19:13:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7BA4183E37;
-	Mon, 31 Jan 2022 19:06:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 45CEA817AA;
+	Mon, 31 Jan 2022 19:13:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 242DC1BF379
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:06:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 423191BF379
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:13:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0F38883E37
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:06:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 26D614046D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:13:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id grcgN_07x2P7 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 31 Jan 2022 19:06:46 +0000 (UTC)
-X-Greylist: delayed 00:11:31 by SQLgrey-1.8.0
-Received: from chris.i8u.org (mail.i8u.org [75.148.87.25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5366283E2A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:06:46 +0000 (UTC)
-Received: by chris.i8u.org (Postfix, from userid 1000)
- id B353F16C9535; Mon, 31 Jan 2022 10:55:14 -0800 (PST)
-Received: from localhost (localhost [127.0.0.1])
- by chris.i8u.org (Postfix) with ESMTP id AE22316C92D6;
- Mon, 31 Jan 2022 10:55:14 -0800 (PST)
-Date: Mon, 31 Jan 2022 10:55:14 -0800 (PST)
-From: Hisashi T Fujinaka <htodd@twofifty.com>
-To: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <30ed8220-e24d-4b40-c7a6-4b09c84f9a1f@gmail.com>
-Message-ID: <09c97169-5f9a-fc8f-dea5-5423e7bfef34@twofifty.com>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ghwZPpTQp0ZN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 31 Jan 2022 19:13:34 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x102c.google.com (mail-pj1-x102c.google.com
+ [IPv6:2607:f8b0:4864:20::102c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0E59D404EF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 19:13:33 +0000 (UTC)
+Received: by mail-pj1-x102c.google.com with SMTP id
+ h20-20020a17090adb9400b001b518bf99ffso102704pjv.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jan 2022 11:13:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=YZVTL02trY93bXBvFab8GWC4SGTBEHx7xoM5zz31pOg=;
+ b=eI59J5vvr0A8RKxUqyE9NUAu6vFBo9JLnOmw0puMQZUEm4dF2MWwJqfR/ZL08CAxWZ
+ BnWoSz1sTio7BAV9whmwWT6xUhgWC6Lo5BK4+b2sM6VIImC2/K/OnoTgvKSA94C7mdon
+ itSGEALfsQg4ZMdAZ+hZz6HnPPJcZllFKFyICnD2+E8AyYxfPrqC9UOqTS0CeUtdusV1
+ D4fD1+rjOl4c4TOP+xFamd2c429GVwsIuvmsUAgjkAklhb5p0GonFbMhGG1gbEVHUG3W
+ T9o9E6puaKCHgmEkfQ64cDBJQP0R4HnPSY65B2EhBCUypXC4/lvWzE2EgRcc1SWQbOpz
+ 19og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=YZVTL02trY93bXBvFab8GWC4SGTBEHx7xoM5zz31pOg=;
+ b=7eNyEK3DsYzXUDtJc1dR3du0QaPzJEQaSV4huTqf62L1fDtFQBM4llKfqfPw2z+PMM
+ rCD47jLtJeR3cdzST8JGtcz8G88Y6Uwpse7g/OSvSSt4QbtSOXwreZxnVr8tnx6BxZrM
+ SVq+DBzwNIeatb6wK7DwIxpkcbEHF+3H5cqRbIbyWf48hxYZj8dWgZpGo/3J5p/p2GRM
+ iwqHyBntb+hZjBM/M+iq6G54eWgcNRWNbDBPcqFkPYfmLKLxEGZ2F7pXc1jwOrsSTCKt
+ jlukKkXrghZMbZ2vsR6Nj9WVsTp5dndG41xHeRlBfkscFekKa0UrXkO4aBP8NhOSAClm
+ /L3w==
+X-Gm-Message-State: AOAM530ijcPQxCoyQREGA7kGro2k20zBERzGM1tyeDbyvnJnnWJK+oOb
+ T4GoIza8zVsa+MVEqy8hCzM=
+X-Google-Smtp-Source: ABdhPJxZc+Bj3ecmVnKia223vAFW8JsKNa9KxQkDpM9AJ8KxEqdBZ0FJgWcicwws5wLqU29X67c1ZA==
+X-Received: by 2002:a17:902:e885:: with SMTP id
+ w5mr22303795plg.155.1643656413464; 
+ Mon, 31 Jan 2022 11:13:33 -0800 (PST)
+Received: from hoboy.vegasvil.org ([2601:640:8200:33:e2d5:5eff:fea5:802f])
+ by smtp.gmail.com with ESMTPSA id mj23sm95941pjb.54.2022.01.31.11.13.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 31 Jan 2022 11:13:32 -0800 (PST)
+Date: Mon, 31 Jan 2022 11:13:20 -0800
+From: Richard Cochran <richardcochran@gmail.com>
+To: Shannon Nelson <snelson@pensando.io>
+Message-ID: <20220131191320.GA24296@hoboy.vegasvil.org>
 References: <20220131172450.4905-1-saeed@kernel.org>
- <20220131095905.08722670@hermes.local>
- <CAMuHMdU17cBzivFm9q-VwF9EG5MX75Qct=is=F2h+Kc+VddZ4g@mail.gmail.com>
- <20220131183540.6ekn3z7tudy5ocdl@sx1>
- <30ed8220-e24d-4b40-c7a6-4b09c84f9a1f@gmail.com>
+ <e9e124b0-4ea0-e84c-cd8e-1c6ad4df9d74@pensando.io>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <e9e124b0-4ea0-e84c-cd8e-1c6ad4df9d74@pensando.io>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 Subject: Re: [Intel-wired-lan] [PATCH net-next] net: kbuild: Don't default
  net vendor configs to y
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -67,12 +99,10 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Horatiu Vultur <horatiu.vultur@microchip.com>,
  Andy Gospodarek <andy@greyhouse.net>, Edwin Peer <edwin.peer@broadcom.com>,
  Wei Liu <wei.liu@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Geert Uytterhoeven <geert@linux-m68k.org>, linux-sunxi@lists.linux.dev,
+ Christophe Leroy <christophe.leroy@csgroup.eu>, linux-sunxi@lists.linux.dev,
  Jiri Pirko <jiri@resnulli.us>, l.stelmach@samsung.com,
  Shay Agroskin <shayagr@amazon.com>, Randy Dunlap <rdunlap@infradead.org>,
  linux-kernel@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
- Shannon Nelson <snelson@pensando.io>,
  Claudiu Beznea <claudiu.beznea@microchip.com>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Chris Snook <chris.snook@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
@@ -86,15 +116,16 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Claudiu Manoil <claudiu.manoil@nxp.com>, drivers@pensando.io,
  Omkar Kulkarni <okulkarni@marvell.com>, linux-arm-kernel@lists.infradead.org,
  Vegard Nossum <vegard.nossum@oracle.com>, David Arinzon <darinzon@amazon.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- linux-renesas-soc@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ UNGLinuxDriver@microchip.com, linux-renesas-soc@vger.kernel.org,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
  Catherine Sullivan <csully@google.com>, linux-hyperv@vger.kernel.org,
  oss-drivers@corigine.com, Noam Dagan <ndagan@amazon.com>,
- Rob Herring <robh@kernel.org>, Steen Hegelund <steen.hegelund@microchip.com>,
+ Rob Herring <robh@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>,
+ Steen Hegelund <steen.hegelund@microchip.com>,
  Dexuan Cui <decui@microsoft.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Chen-Yu Tsai <wens@csie.org>, Joel Stanley <joel@jms.id.au>,
  Simon Horman <simon.horman@corigine.com>, Asmaa Mnebhi <asmaa@nvidia.com>,
- Arnd Bergmann <arnd@arndb.de>, Hans Ulli Kroll <ulli.kroll@googlemail.com>,
+ Arnd Bergmann <arnd@arndb.de>, Haiyang Zhang <haiyangz@microsoft.com>,
  Saeed Mahameed <saeed@kernel.org>, Liming Sun <limings@nvidia.com>,
  Michael Chan <michael.chan@broadcom.com>, Salil Mehta <salil.mehta@huawei.com>,
  Sergey Shtylyov <s.shtylyov@omp.ru>, Oleksij Rempel <linux@rempel-privat.de>,
@@ -108,77 +139,26 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Jeroen de Borst <jeroendb@google.com>, Lino Sanfilippo <LinoSanfilippo@gmx.de>,
  intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
  Prabhakar Kushwaha <pkushwaha@marvell.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Richard Cochran <richardcochran@gmail.com>, Marcin Wojtas <mw@semihalf.com>,
+ Hans Ulli Kroll <ulli.kroll@googlemail.com>, Marcin Wojtas <mw@semihalf.com>,
  David Thompson <davthompson@nvidia.com>,
  Lars Povlsen <lars.povlsen@microchip.com>, netdev@vger.kernel.org,
  Nicolas Ferre <nicolas.ferre@microchip.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
  Saeed Mahameed <saeedm@nvidia.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 31 Jan 2022, Florian Fainelli wrote:
+On Mon, Jan 31, 2022 at 10:04:40AM -0800, Shannon Nelson wrote:
+> Is there a particular reason to change this?
+> Broken compiles?=A0 Bad drivers?=A0 Over-sized output?
 
-> On 1/31/2022 10:35 AM, Saeed Mahameed wrote:
->> On 31 Jan 19:30, Geert Uytterhoeven wrote:
->>> On Mon, Jan 31, 2022 at 6:59 PM Stephen Hemminger
->>> <stephen@networkplumber.org> wrote:
->>>> On Mon, 31 Jan 2022 09:24:50 -0800
->>>> Saeed Mahameed <saeed@kernel.org> wrote:
->>>> 
->>>> > From: Saeed Mahameed <saeedm@nvidia.com>
->>>> >
->>>> > NET_VENDOR_XYZ were defaulted to 'y' for no technical reason.
->>>> >
->>>> > Since all drivers belonging to a vendor are supposed to default to 'n',
->>>> > defaulting all vendors to 'n' shouldn't be an issue, and aligns well
->>>> > with the 'no new drivers' by default mentality.
->>>> >
->>>> > Signed-off-by: Saeed Mahameed <saeedm@nvidia.com>
->>>> 
->>>> This was done back when vendors were introduced in the network drivers 
->>>> tree.
->>>> The default of Y allowed older configurations to just work.
->>> 
->>> And changing the defaults means all defconfigs must be updated first,
->>> else the user's configs will end up without drivers needed.
->>> 
->> 
->> As I understand correctly, at least for most common net drivers, having 
->> NET_VENDOR_XYZ=y doesn't actually build anything, we have flags per
->> module for each vendor and those are defaulted to N.
->
-> Right, but once you start hiding NET_VENDOR_DRIVER_XYZ under a NET_VENDOR_XYZ 
-> Kconfig symbol dependency, if NET_VENDOR_XYZ is not set to Y, then you have 
-> no way to select NET_VENDOR_DRIVER_XYZ and so your old defconfig breaks.
->
->> 
->>>> So there was a reason, not sure if it matters anymore.
->>>> But it seems like useless repainting to change it now.
->>> 
->>> It might make sense to tune some of the defaults (i.e. change to
->>> "default y if ARCH_*") for drivers with clear platform dependencies.
->>> 
->> 
->> either set hard default to 'n' or just keep it as is, anything else is just
->> more confusion.
->
-> Maybe the rule should go like this: any new driver vendor defaults to n, and 
-> existing ones remain set to y, until we deprecate doing that and switching 
-> them all off to n by 5.18?
+Having default Y is a PITA to people working on an embedded design
+that has just one working MAC.  It means having to scroll through tons
+of empty stuff when doing `make menuconfig`
 
-Forgive my ignorance, but isn't it a regression if things quit working
-even if it's just a configuration change?
-
-From a user perspective I like having everything turned on initially so
-it just works. Pruning things down is a lot easier than trying to figure
-out what all to turn on. Especially in graphics.
-
--- 
-Hisashi T Fujinaka - htodd@twofifty.com
+Thanks,
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
