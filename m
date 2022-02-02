@@ -1,163 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 194DC4A78C9
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 20:34:46 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD5174A799C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 21:39:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7C74740499;
-	Wed,  2 Feb 2022 19:34:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C0EF402DC;
+	Wed,  2 Feb 2022 20:39:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HQ3f6ttlj3Az; Wed,  2 Feb 2022 19:34:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OEzAiAbBEX_u; Wed,  2 Feb 2022 20:39:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E585F4040C;
-	Wed,  2 Feb 2022 19:34:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 754BE40265;
+	Wed,  2 Feb 2022 20:39:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9E4C91BF364
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A64661BF346
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 20:39:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 81E994040C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A114160745
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 20:39:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kg_7go6b1qD5 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Feb 2022 19:34:37 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DRyobNFrG9NZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Feb 2022 20:39:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1A81940179
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643830477; x=1675366477;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=nzxyXDDz9qgVuuDzP7aKXtLeZab23R+D3sjfpgvcl9Q=;
- b=jtC1r7mfMFk21VpgscD6zfK6ADvlJBUVU/tYhfWVvW13OuVQP1xUZjgL
- ucjxTQ7Wc2jEcp1OQ+Bn04Thu4VtJep4Mp8rkXFymfM1ceLitG6ipL3RR
- wqnkNwnalf5e81d+gdJxgDDyP6t5B9o7ZyOn1dblEbEeitet/RHNMRgUb
- uFnnGwIoihaPWaLLE2VSWSe/cdKGDUV9XXh0UCPQS85Fz5EQYN5SIvYPI
- 6MqSsiV3dkoHcVWJkmELLqR+4gpxCidp8Af7y1XtGKHggPp6aOgdw/vOR
- 3n2PLZ7+PWYmaTJVRHdJbGiLT0ajFy3DqTC8R5XRfwi5Ui4HJ2mJPCILk A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="334364226"
-X-IronPort-AV: E=Sophos;i="5.88,337,1635231600"; d="scan'208";a="334364226"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2022 11:34:36 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,337,1635231600"; d="scan'208";a="771548458"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga005.fm.intel.com with ESMTP; 02 Feb 2022 11:34:36 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 2 Feb 2022 11:34:35 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 11:34:35 -0800
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.40) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 2 Feb 2022 11:34:35 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YIwZoZrxhiriBaII16Nhymdso9dL1qE+7+237hIhVgR2801C9HB4MaIZknUbGgM+5DG41ypwqP0T9S2qc4O6TxZ+JefDQBMDtahFVf/cNveiMVpbmK1x0+cTbKMUwELIX6EdvErTEDdFZNYsPN2SyOvpxCaos77iNKdDbX7wqFp9hoEpwNDNj8LMr+G26JZNZpaoQJRnHo8cCbUDpRGEx5C0lADSqx/Sk+TzJSsGEXsLxd9fc6TREjoZrmtANjJQXwt+qbzw79R9QHnJ8jXcDIXcXOnc6bUIMgKC2J+xXlcRgHg+QyktAv4wETwktHKcW/l/R597aSPjufJPyalxZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4v+akhOXy2hrQIgAW1tKkHaFeqHFs+MOuaoGIBbl4m4=;
- b=Y9OWrI5k0GxTLMdtDXIJ7Ptw7GVbWiwxyAf6GgXgNEEdwj7b6sLCHc53XO5fO8sU3JxFKjBf6XcnBOV7Uc+m8zU+np5y/M6ZlXofAVYSFbaSc0BstfYgRVNFGkAaTlNagnDz58skMO4+OU+Xnlr9mZ+pvTvHb9kZt2dgsL5aE8bHo+PGZcQbs/MGAQDwdS540Dk2LjGYrUkiVCWWjRU94/e4/7gXg2UHRfuHDjKX/lblK4LcpxruVcdYxkC12tL0oH+9CcE3JvmMj8oJxhy5aN6rdmlfDyU5hKZAs44U3DQWy7OZpYxVQkyhlQds4TuduBO3VvOIBd3GH35oDwTN3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
- DM6PR11MB4009.namprd11.prod.outlook.com (2603:10b6:5:193::14) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4951.12; Wed, 2 Feb 2022 19:34:33 +0000
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::fcc9:90bb:b249:e2e9]) by DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::fcc9:90bb:b249:e2e9%7]) with mapi id 15.20.4930.022; Wed, 2 Feb 2022
- 19:34:33 +0000
-From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: Samuel Mendoza-Jonas <samjonas@amazon.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH net] ixgbevf: Require large buffers for build_skb on
- 82599VF
-Thread-Index: AQHYCAzJTdC6rocnTUaIwyNO+ZIFB6yAx5hA
-Date: Wed, 2 Feb 2022 19:34:33 +0000
-Message-ID: <DM8PR11MB56216C0BF94DFA7D96DF1C98AB279@DM8PR11MB5621.namprd11.prod.outlook.com>
-References: <20220112233231.317259-1-samjonas@amazon.com>
-In-Reply-To: <20220112233231.317259-1-samjonas@amazon.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.200.16
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6aa1d980-51e0-4e8e-70cf-08d9e6830a47
-x-ms-traffictypediagnostic: DM6PR11MB4009:EE_
-x-microsoft-antispam-prvs: <DM6PR11MB4009AA6D5B793EC9338801C9AB279@DM6PR11MB4009.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MeUiva25c+7IHm77hxu0CsBN1/1vZ3wb/PtyBa1TdUHREMkwqjfhhkzy8PCt+CzqAu7rxC2iWUL0iN0SAYkLeVzpgMJZwiuGtOFEhvPFG8LX7Z3+5ntkqAvyUbx115fjrBrJ/xPXBCBPW1JXtX2eEI1PAIsfG6swat0kFBdPalDIybxKx0VB8xr+H4sI8st/pKASDyDziIqSNtsb9pIbScaFtFHmsa6Hm4iND2X076LzqEmTkxWzELFF6aryWdDl3W115OxZRwGbRAmfzgTS3TLKvEEpwBER/Lfs3tCji/HmXbKfSxjH79BIbMbPEy3QmvOWUWntm+8BW8YuSkpragP6/hp/7vt2wD2XxzlkhPGPnExzOUD4bUSixRr0MyQHtriWFMG77Ipl5u5l3dxoS0X3pJASuYskvl8n3qRWUCNO21tfVbHgxDzZiQr5fRHVWkaI2AJnbRrdPvSTepZevr9MMwVbx+Ll7SrubLjgB3vTl+Ff8iYPnUVmKv5HLPASmU0Caj4ceGCA6+Ofryj0Ez2kKx0mUcW2QnBl4BnC3/C11Z6xqyIXRjBtXOUiRZ4BqaN9mSzBh3ZafDLl6bO+3gorqkURaSwvgbK8hc8wEMZm4i/el6+Eok5mzs/Y7ic7hpbXZzP6JcSGcGSWpgIiLxaPa1kaqK4XI2vjDiCjqhjubiGT+VKnw3zzyiohja4gmyprGNDFYr+hM4EVQwBARQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(86362001)(316002)(66476007)(66446008)(64756008)(5660300002)(82960400001)(122000001)(110136005)(66556008)(54906003)(4326008)(38070700005)(8676002)(8936002)(52536014)(66946007)(76116006)(38100700002)(53546011)(2906002)(186003)(26005)(83380400001)(508600001)(7696005)(55016003)(6506007)(9686003)(71200400001)(33656002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?N2jXqJPGfPd992gjH1bEmYyUt+d/okpbysP+PUCYiP6izws9ppVpqFjIVhCL?=
- =?us-ascii?Q?EG811r5BIPxkW9sVE+VkDJcUTRsP3Inw5XkebOw9U7Kcic6MyQA8o/BVYXMX?=
- =?us-ascii?Q?DEW3S8IoLjaj57F9bAMcn+Ca+74DZQ5xjon8auiMvVioC71gEO60Bv7gOPoi?=
- =?us-ascii?Q?O4GgcM2rPYRJM/bgHLrsnOBl1RvJflNo8vThDoYHMPQzfWyllO0MSKYybB0f?=
- =?us-ascii?Q?l7uwCt4lD2P52ooMNLbvHERmjuNpu0Ww8mRVe0t9T/1jibCRb16p+TSv1eX3?=
- =?us-ascii?Q?sL/qTm1+Sj9hZ18PVoh7no3DyIJlghUCVHuiygNEig9tJQMoDlh3HzPmiodk?=
- =?us-ascii?Q?9mkCHZGSMXb2gIn5+QFh6U3LNfpXpx0u75zhByKqw+LoRaJHzTKuSWALxJeh?=
- =?us-ascii?Q?kMLIUT/7rwXBTnZAGfDhxgFMcWllTZmGfdg40Nw7rQhI+Fq0BHyfd3FDtyN4?=
- =?us-ascii?Q?1SCdF/PhjMQa7TBNUvJJBMywpJbHGDv0UYjcBCsLHg5IUXbhd1nnHPD2YaOw?=
- =?us-ascii?Q?i8l6TieBwAlAdRzKsKOwWG1bYuEKwoEMBHdCYNQH2Kcfh4dw0I9CAmlHR78p?=
- =?us-ascii?Q?/du/PngzleddPcB6k4b7xyxJ3z+pB+ndy6Hvi9EOwllJu94omZAH11L7wzYN?=
- =?us-ascii?Q?iQt4xQmDzhSUyVVmMyfSNBCFb47HCSjq+At0WYMPNlAsYtZmQ9T6sr6QI8YM?=
- =?us-ascii?Q?I4Bqcsva9sbaPmqIYEQ6w5jS5xWeO7YLPwUpD6DqZ1v9tN2vLoVxnkHJYnuY?=
- =?us-ascii?Q?F1ScEsa+/DPAzGXS1nYWDkzfvFtNfZhkzbNp0ful7GoWReAI4JXoOP8Pyohi?=
- =?us-ascii?Q?0+Y+ITno4XZRHh7AqNrtG0wWu5EYPto0V221uOgIz4smSWFsyFGDtVj1vnIg?=
- =?us-ascii?Q?QkCqYAUBLjt1G/sKWjtpR009xiebuaNQ/CkBJGGulyRXTG7aBlkpH+OFPdFz?=
- =?us-ascii?Q?21dYS/FrgSm1o/DtI9M1EqkvxUAgmsMd2W0ZZ2yNj+tb45PbUml6cioggmcE?=
- =?us-ascii?Q?mCGBAXHTU+AjUDMorZS/TRuZ7kEutdX/IhBzanNSscsc5NcM1prz3BUn4l5C?=
- =?us-ascii?Q?GgLheZ0E/HYBImDO5bsf9LME+H3Rn9cU4nLBpd4CH6e/k+dPx4f9SCJRD5lp?=
- =?us-ascii?Q?l7lPtsCLGNgLlv8gG7FtRnnShEcl8ZsbkQ4dtzvDpXmHSrPxB4wopkmqylr4?=
- =?us-ascii?Q?iZ/1VbhqsMM6LiBSog9U9LmMDqOarlS/0eavAx/KyHuygX0Frc90ijlE8d/j?=
- =?us-ascii?Q?JtNrR/dJhbt2kk3k8ZX6BAv0epgb84woudt/z3IAPH5J/QOVMhZWwLHMiYdg?=
- =?us-ascii?Q?jFSFj0X8t9loQf38JbICiMqmZCvZ1Y/QNkk7STS4Et2O1B0jTUau/kkFvxIl?=
- =?us-ascii?Q?lzmZxxi70xU1grrUyiIJLpre0Q0hOTNHxpBnmJngQ0V2UhoSkSa7UKCUQ4lV?=
- =?us-ascii?Q?D0Dx73xGDJfWKu1P0KT+7gQt/A0ey/eEbPLv6FxW2oZLD1pslTdGGRzoaySH?=
- =?us-ascii?Q?D0X6rFKePVDexQc6L96brjYpJteXsd3eoN4968MWg/3tMArxwVIaKyjubztz?=
- =?us-ascii?Q?ZyeaPBvr2xDKRjReD0GN9l77azEpOai9serXEU072GmBZ0ZWp+EJqZx1rd6z?=
- =?us-ascii?Q?XYUR6Gmf1gFwZE1ZETgyI2gBCkadwXSUH9AqTL1vIG/t3jz9koXyewsWp2Qm?=
- =?us-ascii?Q?K8OR0A=3D=3D?=
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C570D60585
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 20:39:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1643834339;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=S9TZGGpkY8ClrJIAqOZuOM+ORZH1aSNITt2XNgVBP98=;
+ b=VXgoRQihhlYCQL59KD9VLYLj9AcKn0LIEmqlpYcMJCOGo0qAs/kfCYlUw+evOUvh/OSVqe
+ sc1wahaqIutotE9/GMPPtJ1/WtKqyivPx9b6ekVuZLYENsJc7hffLYVRegVfPvMfYJtukP
+ Dhbh9/44ly79Mw08aHmL08cB2/im9AU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-584-RBE7rWeDNaKCSpXrFXqccQ-1; Wed, 02 Feb 2022 15:38:56 -0500
+X-MC-Unique: RBE7rWeDNaKCSpXrFXqccQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C9733835B66;
+ Wed,  2 Feb 2022 20:38:54 +0000 (UTC)
+Received: from jtoppins.rdu.csb (unknown [10.22.19.99])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C693D56F66;
+ Wed,  2 Feb 2022 20:38:53 +0000 (UTC)
+From: Jonathan Toppins <jtoppins@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed,  2 Feb 2022 15:38:49 -0500
+Message-Id: <b25f9e524c404820b310c73012507c8e65a2ef97.1643834329.git.jtoppins@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6aa1d980-51e0-4e8e-70cf-08d9e6830a47
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2022 19:34:33.5944 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GowbB0hzmdNscO6oq9pPjOodrTTQT7way0wUcIEEgHEV5EkxJb/l5ANNmAtE+WYMPVTRRO5sD7LFrJOUn7jt2M+hbHmL0vBlPa0gNcKSDzk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4009
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net] ixgbevf: Require large buffers
- for build_skb on 82599VF
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Subject: [Intel-wired-lan] [PATCH] ice: change "can't set link" message to
+ dbg level
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -170,64 +77,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <kuba@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "David S . Miller" <davem@davemloft.net>
+Cc: linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+In the case where the link is owned by manageability, the firmware is
+not allowed to set the link state, so an error code is returned.
+This however is non-fatal and there is nothing the operator can do,
+so instead of confusing the operator with messages they can do nothing
+about hide this message behind the debug log level.
 
+Signed-off-by: Jonathan Toppins <jtoppins@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> -----Original Message-----
-> From: Samuel Mendoza-Jonas <samjonas@amazon.com>
-> Sent: Thursday, January 13, 2022 12:33 AM
-> To: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org
-> Cc: Samuel Mendoza-Jonas <samjonas@amazon.com>; Brandeburg, Jesse
-> <jesse.brandeburg@intel.com>; David S . Miller <davem@davemloft.net>;
-> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Jakub Kicinski
-> <kuba@kernel.org>; linux-kernel@vger.kernel.org
-> Subject: [PATCH net] ixgbevf: Require large buffers for build_skb on 82599VF
-> 
-> From 4.17 onwards the ixgbevf driver uses build_skb() to build an skb around
-> new data in the page buffer shared with the ixgbe PF.
-> This uses either a 2K or 3K buffer, and offsets the DMA mapping by
-> NET_SKB_PAD + NET_IP_ALIGN. When using a smaller buffer RXDCTL is set
-> to ensure the PF does not write a full 2K bytes into the buffer, which is
-> actually 2K minus the offset.
-> 
-> However on the 82599 virtual function, the RXDCTL mechanism is not
-> available. The driver attempts to work around this by using the SET_LPE
-> mailbox method to lower the maximm frame size, but the ixgbe PF driver
-> ignores this in order to keep the PF and all VFs in sync[0].
-> 
-> This means the PF will write up to the full 2K set in SRRCTL, causing it to write
-> NET_SKB_PAD + NET_IP_ALIGN bytes past the end of the buffer.
-> With 4K pages split into two buffers, this means it either writes
-> NET_SKB_PAD + NET_IP_ALIGN bytes past the first buffer (and into the
-> second), or NET_SKB_PAD + NET_IP_ALIGN bytes past the end of the DMA
-> mapping.
-> 
-> Avoid this by only enabling build_skb when using "large" buffers (3K).
-> These are placed in each half of an order-1 page, preventing the PF from
-> writing past the end of the mapping.
-> 
-> [0]: Technically it only ever raises the max frame size, see
-> ixgbe_set_vf_lpe() in ixgbe_sriov.c
-> 
-> Signed-off-by: Samuel Mendoza-Jonas <samjonas@amazon.com>
-> ---
->  drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> index 0015fcf1df2b..0f293acd17e8 100644
-> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 0c187cf04fcf..2c6dad56a48d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -4117,7 +4117,7 @@ int ice_set_link(struct ice_vsi *vsi, bool ena)
+ 	 */
+ 	if (status == -EIO) {
+ 		if (hw->adminq.sq_last_status == ICE_AQ_RC_EMODE)
+-			dev_warn(dev, "can't set link to %s, err %d aq_err %s. not fatal, continuing\n",
++			dev_dbg(dev, "can't set link to %s, err %d aq_err %s. not fatal, continuing\n",
+ 				 (ena ? "ON" : "OFF"), status,
+ 				 ice_aq_str(hw->adminq.sq_last_status));
+ 	} else if (status) {
+-- 
+2.27.0
 
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
