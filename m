@@ -1,85 +1,163 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3E374A76B5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 18:20:38 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 194DC4A78C9
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 20:34:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A9CF405A4;
-	Wed,  2 Feb 2022 17:20:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C74740499;
+	Wed,  2 Feb 2022 19:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xZnk3Clsgxrl; Wed,  2 Feb 2022 17:20:36 +0000 (UTC)
+	with ESMTP id HQ3f6ttlj3Az; Wed,  2 Feb 2022 19:34:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3872040535;
-	Wed,  2 Feb 2022 17:20:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E585F4040C;
+	Wed,  2 Feb 2022 19:34:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5D5471BF573
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E4C91BF364
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 533D440535
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 81E994040C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rVDh6U5AX98U for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Feb 2022 17:20:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CE8BD40439
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:29 +0000 (UTC)
-Received: from mail-yb1-f175.google.com ([209.85.219.175]) by
- mrelayeu.kundenserver.de (mreue010 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MG9Pg-1n0wlj0up2-00GctU for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb
- 2022 18:20:27 +0100
-Received: by mail-yb1-f175.google.com with SMTP id 23so670653ybf.7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb 2022 09:20:26 -0800 (PST)
-X-Gm-Message-State: AOAM531KDU5T6fohRasJxNeT8v0/3owJpz8UA73f3uFlqBR7SFn2ydGZ
- q6unOZounhnSXL5Thkvm9U+ZmnaiMiI+sg+FeCE=
-X-Google-Smtp-Source: ABdhPJz2O/9Dqb43FQaFEs2fgdQ11r4WChyB6XAjTgMFNwZoBX1IgqEBVLSxxOha4gVbBN3Qpzy/vvWlFqfDO4Fo+i8=
-X-Received: by 2002:a05:6830:33c2:: with SMTP id
- q2mr16651474ott.368.1643815893880; 
- Wed, 02 Feb 2022 07:31:33 -0800 (PST)
+ with ESMTP id Kg_7go6b1qD5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Feb 2022 19:34:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1A81940179
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 19:34:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643830477; x=1675366477;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=nzxyXDDz9qgVuuDzP7aKXtLeZab23R+D3sjfpgvcl9Q=;
+ b=jtC1r7mfMFk21VpgscD6zfK6ADvlJBUVU/tYhfWVvW13OuVQP1xUZjgL
+ ucjxTQ7Wc2jEcp1OQ+Bn04Thu4VtJep4Mp8rkXFymfM1ceLitG6ipL3RR
+ wqnkNwnalf5e81d+gdJxgDDyP6t5B9o7ZyOn1dblEbEeitet/RHNMRgUb
+ uFnnGwIoihaPWaLLE2VSWSe/cdKGDUV9XXh0UCPQS85Fz5EQYN5SIvYPI
+ 6MqSsiV3dkoHcVWJkmELLqR+4gpxCidp8Af7y1XtGKHggPp6aOgdw/vOR
+ 3n2PLZ7+PWYmaTJVRHdJbGiLT0ajFy3DqTC8R5XRfwi5Ui4HJ2mJPCILk A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="334364226"
+X-IronPort-AV: E=Sophos;i="5.88,337,1635231600"; d="scan'208";a="334364226"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2022 11:34:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,337,1635231600"; d="scan'208";a="771548458"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga005.fm.intel.com with ESMTP; 02 Feb 2022 11:34:36 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Wed, 2 Feb 2022 11:34:35 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 11:34:35 -0800
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.40) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Wed, 2 Feb 2022 11:34:35 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YIwZoZrxhiriBaII16Nhymdso9dL1qE+7+237hIhVgR2801C9HB4MaIZknUbGgM+5DG41ypwqP0T9S2qc4O6TxZ+JefDQBMDtahFVf/cNveiMVpbmK1x0+cTbKMUwELIX6EdvErTEDdFZNYsPN2SyOvpxCaos77iNKdDbX7wqFp9hoEpwNDNj8LMr+G26JZNZpaoQJRnHo8cCbUDpRGEx5C0lADSqx/Sk+TzJSsGEXsLxd9fc6TREjoZrmtANjJQXwt+qbzw79R9QHnJ8jXcDIXcXOnc6bUIMgKC2J+xXlcRgHg+QyktAv4wETwktHKcW/l/R597aSPjufJPyalxZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4v+akhOXy2hrQIgAW1tKkHaFeqHFs+MOuaoGIBbl4m4=;
+ b=Y9OWrI5k0GxTLMdtDXIJ7Ptw7GVbWiwxyAf6GgXgNEEdwj7b6sLCHc53XO5fO8sU3JxFKjBf6XcnBOV7Uc+m8zU+np5y/M6ZlXofAVYSFbaSc0BstfYgRVNFGkAaTlNagnDz58skMO4+OU+Xnlr9mZ+pvTvHb9kZt2dgsL5aE8bHo+PGZcQbs/MGAQDwdS540Dk2LjGYrUkiVCWWjRU94/e4/7gXg2UHRfuHDjKX/lblK4LcpxruVcdYxkC12tL0oH+9CcE3JvmMj8oJxhy5aN6rdmlfDyU5hKZAs44U3DQWy7OZpYxVQkyhlQds4TuduBO3VvOIBd3GH35oDwTN3g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
+ DM6PR11MB4009.namprd11.prod.outlook.com (2603:10b6:5:193::14) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4951.12; Wed, 2 Feb 2022 19:34:33 +0000
+Received: from DM8PR11MB5621.namprd11.prod.outlook.com
+ ([fe80::fcc9:90bb:b249:e2e9]) by DM8PR11MB5621.namprd11.prod.outlook.com
+ ([fe80::fcc9:90bb:b249:e2e9%7]) with mapi id 15.20.4930.022; Wed, 2 Feb 2022
+ 19:34:33 +0000
+From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
+To: Samuel Mendoza-Jonas <samjonas@amazon.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH net] ixgbevf: Require large buffers for build_skb on
+ 82599VF
+Thread-Index: AQHYCAzJTdC6rocnTUaIwyNO+ZIFB6yAx5hA
+Date: Wed, 2 Feb 2022 19:34:33 +0000
+Message-ID: <DM8PR11MB56216C0BF94DFA7D96DF1C98AB279@DM8PR11MB5621.namprd11.prod.outlook.com>
+References: <20220112233231.317259-1-samjonas@amazon.com>
+In-Reply-To: <20220112233231.317259-1-samjonas@amazon.com>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6aa1d980-51e0-4e8e-70cf-08d9e6830a47
+x-ms-traffictypediagnostic: DM6PR11MB4009:EE_
+x-microsoft-antispam-prvs: <DM6PR11MB4009AA6D5B793EC9338801C9AB279@DM6PR11MB4009.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6108;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: MeUiva25c+7IHm77hxu0CsBN1/1vZ3wb/PtyBa1TdUHREMkwqjfhhkzy8PCt+CzqAu7rxC2iWUL0iN0SAYkLeVzpgMJZwiuGtOFEhvPFG8LX7Z3+5ntkqAvyUbx115fjrBrJ/xPXBCBPW1JXtX2eEI1PAIsfG6swat0kFBdPalDIybxKx0VB8xr+H4sI8st/pKASDyDziIqSNtsb9pIbScaFtFHmsa6Hm4iND2X076LzqEmTkxWzELFF6aryWdDl3W115OxZRwGbRAmfzgTS3TLKvEEpwBER/Lfs3tCji/HmXbKfSxjH79BIbMbPEy3QmvOWUWntm+8BW8YuSkpragP6/hp/7vt2wD2XxzlkhPGPnExzOUD4bUSixRr0MyQHtriWFMG77Ipl5u5l3dxoS0X3pJASuYskvl8n3qRWUCNO21tfVbHgxDzZiQr5fRHVWkaI2AJnbRrdPvSTepZevr9MMwVbx+Ll7SrubLjgB3vTl+Ff8iYPnUVmKv5HLPASmU0Caj4ceGCA6+Ofryj0Ez2kKx0mUcW2QnBl4BnC3/C11Z6xqyIXRjBtXOUiRZ4BqaN9mSzBh3ZafDLl6bO+3gorqkURaSwvgbK8hc8wEMZm4i/el6+Eok5mzs/Y7ic7hpbXZzP6JcSGcGSWpgIiLxaPa1kaqK4XI2vjDiCjqhjubiGT+VKnw3zzyiohja4gmyprGNDFYr+hM4EVQwBARQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(86362001)(316002)(66476007)(66446008)(64756008)(5660300002)(82960400001)(122000001)(110136005)(66556008)(54906003)(4326008)(38070700005)(8676002)(8936002)(52536014)(66946007)(76116006)(38100700002)(53546011)(2906002)(186003)(26005)(83380400001)(508600001)(7696005)(55016003)(6506007)(9686003)(71200400001)(33656002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?N2jXqJPGfPd992gjH1bEmYyUt+d/okpbysP+PUCYiP6izws9ppVpqFjIVhCL?=
+ =?us-ascii?Q?EG811r5BIPxkW9sVE+VkDJcUTRsP3Inw5XkebOw9U7Kcic6MyQA8o/BVYXMX?=
+ =?us-ascii?Q?DEW3S8IoLjaj57F9bAMcn+Ca+74DZQ5xjon8auiMvVioC71gEO60Bv7gOPoi?=
+ =?us-ascii?Q?O4GgcM2rPYRJM/bgHLrsnOBl1RvJflNo8vThDoYHMPQzfWyllO0MSKYybB0f?=
+ =?us-ascii?Q?l7uwCt4lD2P52ooMNLbvHERmjuNpu0Ww8mRVe0t9T/1jibCRb16p+TSv1eX3?=
+ =?us-ascii?Q?sL/qTm1+Sj9hZ18PVoh7no3DyIJlghUCVHuiygNEig9tJQMoDlh3HzPmiodk?=
+ =?us-ascii?Q?9mkCHZGSMXb2gIn5+QFh6U3LNfpXpx0u75zhByKqw+LoRaJHzTKuSWALxJeh?=
+ =?us-ascii?Q?kMLIUT/7rwXBTnZAGfDhxgFMcWllTZmGfdg40Nw7rQhI+Fq0BHyfd3FDtyN4?=
+ =?us-ascii?Q?1SCdF/PhjMQa7TBNUvJJBMywpJbHGDv0UYjcBCsLHg5IUXbhd1nnHPD2YaOw?=
+ =?us-ascii?Q?i8l6TieBwAlAdRzKsKOwWG1bYuEKwoEMBHdCYNQH2Kcfh4dw0I9CAmlHR78p?=
+ =?us-ascii?Q?/du/PngzleddPcB6k4b7xyxJ3z+pB+ndy6Hvi9EOwllJu94omZAH11L7wzYN?=
+ =?us-ascii?Q?iQt4xQmDzhSUyVVmMyfSNBCFb47HCSjq+At0WYMPNlAsYtZmQ9T6sr6QI8YM?=
+ =?us-ascii?Q?I4Bqcsva9sbaPmqIYEQ6w5jS5xWeO7YLPwUpD6DqZ1v9tN2vLoVxnkHJYnuY?=
+ =?us-ascii?Q?F1ScEsa+/DPAzGXS1nYWDkzfvFtNfZhkzbNp0ful7GoWReAI4JXoOP8Pyohi?=
+ =?us-ascii?Q?0+Y+ITno4XZRHh7AqNrtG0wWu5EYPto0V221uOgIz4smSWFsyFGDtVj1vnIg?=
+ =?us-ascii?Q?QkCqYAUBLjt1G/sKWjtpR009xiebuaNQ/CkBJGGulyRXTG7aBlkpH+OFPdFz?=
+ =?us-ascii?Q?21dYS/FrgSm1o/DtI9M1EqkvxUAgmsMd2W0ZZ2yNj+tb45PbUml6cioggmcE?=
+ =?us-ascii?Q?mCGBAXHTU+AjUDMorZS/TRuZ7kEutdX/IhBzanNSscsc5NcM1prz3BUn4l5C?=
+ =?us-ascii?Q?GgLheZ0E/HYBImDO5bsf9LME+H3Rn9cU4nLBpd4CH6e/k+dPx4f9SCJRD5lp?=
+ =?us-ascii?Q?l7lPtsCLGNgLlv8gG7FtRnnShEcl8ZsbkQ4dtzvDpXmHSrPxB4wopkmqylr4?=
+ =?us-ascii?Q?iZ/1VbhqsMM6LiBSog9U9LmMDqOarlS/0eavAx/KyHuygX0Frc90ijlE8d/j?=
+ =?us-ascii?Q?JtNrR/dJhbt2kk3k8ZX6BAv0epgb84woudt/z3IAPH5J/QOVMhZWwLHMiYdg?=
+ =?us-ascii?Q?jFSFj0X8t9loQf38JbICiMqmZCvZ1Y/QNkk7STS4Et2O1B0jTUau/kkFvxIl?=
+ =?us-ascii?Q?lzmZxxi70xU1grrUyiIJLpre0Q0hOTNHxpBnmJngQ0V2UhoSkSa7UKCUQ4lV?=
+ =?us-ascii?Q?D0Dx73xGDJfWKu1P0KT+7gQt/A0ey/eEbPLv6FxW2oZLD1pslTdGGRzoaySH?=
+ =?us-ascii?Q?D0X6rFKePVDexQc6L96brjYpJteXsd3eoN4968MWg/3tMArxwVIaKyjubztz?=
+ =?us-ascii?Q?ZyeaPBvr2xDKRjReD0GN9l77azEpOai9serXEU072GmBZ0ZWp+EJqZx1rd6z?=
+ =?us-ascii?Q?XYUR6Gmf1gFwZE1ZETgyI2gBCkadwXSUH9AqTL1vIG/t3jz9koXyewsWp2Qm?=
+ =?us-ascii?Q?K8OR0A=3D=3D?=
 MIME-Version: 1.0
-References: <30ed8220-e24d-4b40-c7a6-4b09c84f9a1f@gmail.com>
- <20220131121027.4fe3e8dc@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <7dc930c6-4ffc-0dd0-8385-d7956e7d16ff@gmail.com>
- <20220131151315.4ec5f2d3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <dd1497ca-b1da-311a-e5fc-7c7265eb3ddf@gmail.com>
- <20220202044603.tuchbk72iujdyxi4@sx1>
- <20220201205818.2f28cfe5@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <20220202051609.h55eto4rdbfhw5t7@sx1>
- <8566b1e3-2c99-1e63-5606-aad8525a5378@csgroup.eu>
- <20220202064950.qyomo7ns27mbedds@sx1>
- <20220202151707.GA2365@hoboy.vegasvil.org>
-In-Reply-To: <20220202151707.GA2365@hoboy.vegasvil.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 2 Feb 2022 16:31:17 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a3ZGFBmxUWm5-DT_QfvU0k8HViEbV4zhwwC8FJLMKZTYg@mail.gmail.com>
-Message-ID: <CAK8P3a3ZGFBmxUWm5-DT_QfvU0k8HViEbV4zhwwC8FJLMKZTYg@mail.gmail.com>
-To: Richard Cochran <richardcochran@gmail.com>
-X-Provags-ID: V03:K1:TMBskkeW4xTpIDn/dnn8DwfJJ07xUCvu8uxNdRPryJUFGTWl6GS
- MUbPIMvsBsQRD3D69dkBlGNwz0YpnMiEf9NKcl8Nuw2HJJNJRdrDiPhrj+pigQwzwABNShf
- B2xGBLVv/8o7ZfMnu3rh8/pZhq6ueAbZnge5ipAoh2wQWK4vGNL4ZI2+IKEdmAXDC0mR8eR
- TyjDZ/FLTbxizGM/Ac2+A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JBcLNwohTs0=:4BqIT41/ImPTZkXO3brnRI
- 8ZeyDMizTl2b9Uab9by5tRc5NZ7Sm75u9ZDHECp1I6gr5dkLAVSwCD2B8+S1cT8f3UK5/5GD/
- yZbYNqVvvbjx60mOShR1CiiMeq1MbIEMeP7Wx8Z0QRqewI2eYkk9MgzAvfi5kCbc6j3ceww7w
- RZHmBjG2tvdHaYBZNtK85tOz7nwbAqfMDu+YHx66KtMpk/T+lu2U8tog9FP3d/6UUXa8ZsFHh
- h7uxMU8D+ZjpH6VYV2pvA5G0ovKJZpQ+R773el8P/zP3LT17Qa+akbf/IB47164EJON5snD9Y
- n/WAXjszOwcw+UBqifoz1JxGCWVf+jS8TVDHivCqIG5wcQSC6bWuACZ7RHiTC84XxKaRnQ/Xt
- 4ykCFm0zSS5ZsA5mbuOgz94rfJ+SKR7GHi1PwQmk4NL/r4FRyPLT93+iYEOLQy6XU/EF2JbtS
- gKXRfFyuR4ckfF/IqQ4bsKOcAlaBKWmQf7ehLCVqArWkCLcelhdYik1GJ4OzmmCYsrx17FKJz
- 7sXXJDV5TMc47fYlJOLKBtiOS5xcw4a5AJJj/qToGPO2n8wTTtfMZx8jvwjU1qFqMkvsV4f8a
- BJZNeDw2+loKU5sRHos/WRxzvBkJMWbvi4d+d9q+DJD3zQXbEEwLw5+2UennDPdVtbkqRY65c
- fniMaP+DYn/zf+k6ipTfObMS9yjPDlA7jIEiUnPvn0BxCi3vd6+ZK6VLCUTQhr4VeFCbZP2dP
- BlYwDPdrHrrJrgrZ6IhsHuw6v0at9m6L4DVwJcIWJKDy0z0X8z8gUMzmO27tEnOphVRtKV7Kv
- xl3i1lNKvrt5ZHmjuXDGy+QViP+Cd2VeqSQx4aZsbS7myb6KiTw8Ris1XpXRfiaS3JVkHFm
-Subject: Re: [Intel-wired-lan] [PATCH net-next] net: kbuild: Don't default
- net vendor configs to y
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6aa1d980-51e0-4e8e-70cf-08d9e6830a47
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2022 19:34:33.5944 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: GowbB0hzmdNscO6oq9pPjOodrTTQT7way0wUcIEEgHEV5EkxJb/l5ANNmAtE+WYMPVTRRO5sD7LFrJOUn7jt2M+hbHmL0vBlPa0gNcKSDzk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4009
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net] ixgbevf: Require large buffers
+ for build_skb on 82599VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,95 +170,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
- David Awogbemila <awogbemila@google.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- "rafal@milecki.pl" <rafal@milecki.pl>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- Andy Gospodarek <andy@greyhouse.net>, Edwin Peer <edwin.peer@broadcom.com>,
- Wei Liu <wei.liu@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- "linux-sunxi@lists.linux.dev" <linux-sunxi@lists.linux.dev>,
- Jiri Pirko <jiri@resnulli.us>,
- "l.stelmach@samsung.com" <l.stelmach@samsung.com>,
- Shay Agroskin <shayagr@amazon.com>, Randy Dunlap <rdunlap@infradead.org>,
+Cc: Jakub Kicinski <kuba@kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jon Mason <jdmason@kudzu.us>, Shannon Nelson <snelson@pensando.io>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Chris Snook <chris.snook@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
- Arthur Kiyanovski <akiyano@amazon.com>, Stefan Wahren <stefan.wahren@i2se.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>, Gabriel Somlo <gsomlo@gmail.com>,
- Rain River <rain.1986.08.12@gmail.com>,
- Martin Habets <habetsm.xilinx@gmail.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Jose Abreu <Jose.Abreu@synopsys.com>,
- Shai Malin <smalin@marvell.com>, Maxime Ripard <mripard@kernel.org>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- "drivers@pensando.io" <drivers@pensando.io>,
- Omkar Kulkarni <okulkarni@marvell.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Vegard Nossum <vegard.nossum@oracle.com>, David Arinzon <darinzon@amazon.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Catherine Sullivan <csully@google.com>,
- "linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
- "oss-drivers@corigine.com" <oss-drivers@corigine.com>,
- Noam Dagan <ndagan@amazon.com>, Rob Herring <robh@kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Steen Hegelund <steen.hegelund@microchip.com>,
- Dexuan Cui <decui@microsoft.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Joel Stanley <joel@jms.id.au>,
- Simon Horman <simon.horman@corigine.com>, Asmaa Mnebhi <asmaa@nvidia.com>,
- Arnd Bergmann <arnd@arndb.de>, Haiyang Zhang <haiyangz@microsoft.com>,
- Saeed Mahameed <saeed@kernel.org>, Liming Sun <limings@nvidia.com>,
- Michael Chan <michael.chan@broadcom.com>, Salil Mehta <salil.mehta@huawei.com>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Oleksij Rempel <linux@rempel-privat.de>,
- Edward Cree <ecree.xilinx@gmail.com>, Saeed Bishara <saeedb@amazon.com>,
- Mark Einon <mark.einon@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Vignesh Raghavendra <vigneshr@ti.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Slark Xiao <slark_xiao@163.com>, Gary Guo <gary@garyguo.net>,
- Gerhard Engleder <gerhard@engleder-embedded.com>,
- Jeroen de Borst <jeroendb@google.com>, Lino Sanfilippo <LinoSanfilippo@gmx.de>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Prabhakar Kushwaha <pkushwaha@marvell.com>,
- Hans Ulli Kroll <ulli.kroll@googlemail.com>, Marcin Wojtas <mw@semihalf.com>,
- David Thompson <davthompson@nvidia.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- Saeed Mahameed <saeedm@nvidia.com>
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 2, 2022 at 4:17 PM Richard Cochran <richardcochran@gmail.com> wrote:
->
-> On Tue, Feb 01, 2022 at 10:49:50PM -0800, Saeed Mahameed wrote:
-> > I can't think of a clever easily verifiable way to map boards to their VENDORS.
-> > Add to that dispersing the VENDORS configs accurately.
->
-> Just an idea...
->
-> 1. make foo_defconfig
-> 2. for each vendor, do scripts/config --disable vendor
-> 3. make savedefconfig
-> 4. compare defconfig with foo_defconfig
->    difference means some MAC was removed
 
-This needs an extra 'savedefconfig' step in the beginning, as a lot of
-the defconfig
-files are already different from what you get after savedefconfig, both in the
-order of options, and in options that got renamed or removed over time.
 
-         Arnd
+> -----Original Message-----
+> From: Samuel Mendoza-Jonas <samjonas@amazon.com>
+> Sent: Thursday, January 13, 2022 12:33 AM
+> To: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org
+> Cc: Samuel Mendoza-Jonas <samjonas@amazon.com>; Brandeburg, Jesse
+> <jesse.brandeburg@intel.com>; David S . Miller <davem@davemloft.net>;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Jakub Kicinski
+> <kuba@kernel.org>; linux-kernel@vger.kernel.org
+> Subject: [PATCH net] ixgbevf: Require large buffers for build_skb on 82599VF
+> 
+> From 4.17 onwards the ixgbevf driver uses build_skb() to build an skb around
+> new data in the page buffer shared with the ixgbe PF.
+> This uses either a 2K or 3K buffer, and offsets the DMA mapping by
+> NET_SKB_PAD + NET_IP_ALIGN. When using a smaller buffer RXDCTL is set
+> to ensure the PF does not write a full 2K bytes into the buffer, which is
+> actually 2K minus the offset.
+> 
+> However on the 82599 virtual function, the RXDCTL mechanism is not
+> available. The driver attempts to work around this by using the SET_LPE
+> mailbox method to lower the maximm frame size, but the ixgbe PF driver
+> ignores this in order to keep the PF and all VFs in sync[0].
+> 
+> This means the PF will write up to the full 2K set in SRRCTL, causing it to write
+> NET_SKB_PAD + NET_IP_ALIGN bytes past the end of the buffer.
+> With 4K pages split into two buffers, this means it either writes
+> NET_SKB_PAD + NET_IP_ALIGN bytes past the first buffer (and into the
+> second), or NET_SKB_PAD + NET_IP_ALIGN bytes past the end of the DMA
+> mapping.
+> 
+> Avoid this by only enabling build_skb when using "large" buffers (3K).
+> These are placed in each half of an order-1 page, preventing the PF from
+> writing past the end of the mapping.
+> 
+> [0]: Technically it only ever raises the max frame size, see
+> ixgbe_set_vf_lpe() in ixgbe_sriov.c
+> 
+> Signed-off-by: Samuel Mendoza-Jonas <samjonas@amazon.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> index 0015fcf1df2b..0f293acd17e8 100644
+> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+
+Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
