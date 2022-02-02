@@ -2,74 +2,48 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 036CF4A7472
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 16:17:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3E374A76B5
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Feb 2022 18:20:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6DD264058E;
-	Wed,  2 Feb 2022 15:17:27 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A9CF405A4;
+	Wed,  2 Feb 2022 17:20:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MhRfZS0r07xi; Wed,  2 Feb 2022 15:17:26 +0000 (UTC)
+	with ESMTP id xZnk3Clsgxrl; Wed,  2 Feb 2022 17:20:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 03BBA4058C;
-	Wed,  2 Feb 2022 15:17:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3872040535;
+	Wed,  2 Feb 2022 17:20:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6ACCF1BF426
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 15:17:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D5471BF573
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5AEE360B5D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 15:17:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 533D440535
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EuQGlDAxHnEY for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Feb 2022 15:17:20 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com
- [IPv6:2607:f8b0:4864:20::430])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B62C360BF7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 15:17:20 +0000 (UTC)
-Received: by mail-pf1-x430.google.com with SMTP id n32so19048305pfv.11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb 2022 07:17:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=gjQNFw/Fp3MO2yyuXpW642AA94J7qHf7TT53TRKjI7Y=;
- b=qnCHM5SY/YCvlEKbicyw5bEBLDVCcxSTc3cpUOS3mnpX9g+wGvBeEoDy0ZZ7sSLGrX
- W0wPMIX1wfs3UKEgk4Ys3ZjoQFYgi6BYzE5YSGh3rcWwyDOKJ/h7sDWh/Vl5bYcmkGqL
- amCWnBg10PPx9oZP3w5X6KJwTHGFuqwKqWGf+GwUsrrBlniZLbqySYaXdD8YL+LdPnwv
- 5tbLs+p6PmAw5L7Y0CsezUd5kCqEUFJtoLAuqdmoZ7jsYzVtVE3AFLBbqHeaGuSP2vGy
- tXJbq5Gf2GdUD02aDhKZJyCYFGR0hhEE3zq31L68Wq49WW9FLW7GxfmnykbmMBlieMF9
- XaUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=gjQNFw/Fp3MO2yyuXpW642AA94J7qHf7TT53TRKjI7Y=;
- b=exNTSCYz3Mxiiiz9g3hw/bb6Uv8/MyKmdGjd6vXcE4agq3f8kDF4vWot/AFrsJWSWT
- Y3E29UJ3EARL0BrKPDqWM0C8xYP85Gl6ac3CupCGUQiknw+FyJCOPaNsEklObGrLGyfQ
- Phs2aUqzp9EN6QzldSwyLNuDO+ZJJ9zr+lD71c4jZObwttALu6KFJnkgMBn7FAYRtU2q
- oU3u0+uBE9nDx6wByImCw8RYedvp/bH7vQZgyl5jP2KAcNypHr/TqKgW67ZXrv7J2qho
- 8DCwjdzwyRve5mIzgEITF1c01qUr+38dWp3irsIn3xvw81PFlvg5JbuS+Q0lxwG5boUY
- tmnA==
-X-Gm-Message-State: AOAM532mw3hYD7mPQ2EaB+0qM3THnubXNJengTedUz3qzcy73umnNtK8
- vkZec06B+w9ofkezT3ePdqA=
-X-Google-Smtp-Source: ABdhPJyXTrBYN22CJnV1AiS1a3klGMo9MFYNpVzHW8Jr8yAJkP4fXxNhmbqwlGMH/GxhG7ABXi2bmw==
-X-Received: by 2002:a63:5b58:: with SMTP id l24mr24861240pgm.418.1643815040089; 
- Wed, 02 Feb 2022 07:17:20 -0800 (PST)
-Received: from hoboy.vegasvil.org ([2601:640:8200:33:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id h18sm26265177pfh.51.2022.02.02.07.17.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Feb 2022 07:17:19 -0800 (PST)
-Date: Wed, 2 Feb 2022 07:17:07 -0800
-From: Richard Cochran <richardcochran@gmail.com>
-To: Saeed Mahameed <saeedm@nvidia.com>
-Message-ID: <20220202151707.GA2365@hoboy.vegasvil.org>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rVDh6U5AX98U for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Feb 2022 17:20:30 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.187])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CE8BD40439
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Feb 2022 17:20:29 +0000 (UTC)
+Received: from mail-yb1-f175.google.com ([209.85.219.175]) by
+ mrelayeu.kundenserver.de (mreue010 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1MG9Pg-1n0wlj0up2-00GctU for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb
+ 2022 18:20:27 +0100
+Received: by mail-yb1-f175.google.com with SMTP id 23so670653ybf.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb 2022 09:20:26 -0800 (PST)
+X-Gm-Message-State: AOAM531KDU5T6fohRasJxNeT8v0/3owJpz8UA73f3uFlqBR7SFn2ydGZ
+ q6unOZounhnSXL5Thkvm9U+ZmnaiMiI+sg+FeCE=
+X-Google-Smtp-Source: ABdhPJz2O/9Dqb43FQaFEs2fgdQ11r4WChyB6XAjTgMFNwZoBX1IgqEBVLSxxOha4gVbBN3Qpzy/vvWlFqfDO4Fo+i8=
+X-Received: by 2002:a05:6830:33c2:: with SMTP id
+ q2mr16651474ott.368.1643815893880; 
+ Wed, 02 Feb 2022 07:31:33 -0800 (PST)
+MIME-Version: 1.0
 References: <30ed8220-e24d-4b40-c7a6-4b09c84f9a1f@gmail.com>
  <20220131121027.4fe3e8dc@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <7dc930c6-4ffc-0dd0-8385-d7956e7d16ff@gmail.com>
@@ -80,10 +54,30 @@ References: <30ed8220-e24d-4b40-c7a6-4b09c84f9a1f@gmail.com>
  <20220202051609.h55eto4rdbfhw5t7@sx1>
  <8566b1e3-2c99-1e63-5606-aad8525a5378@csgroup.eu>
  <20220202064950.qyomo7ns27mbedds@sx1>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220202064950.qyomo7ns27mbedds@sx1>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ <20220202151707.GA2365@hoboy.vegasvil.org>
+In-Reply-To: <20220202151707.GA2365@hoboy.vegasvil.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Wed, 2 Feb 2022 16:31:17 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a3ZGFBmxUWm5-DT_QfvU0k8HViEbV4zhwwC8FJLMKZTYg@mail.gmail.com>
+Message-ID: <CAK8P3a3ZGFBmxUWm5-DT_QfvU0k8HViEbV4zhwwC8FJLMKZTYg@mail.gmail.com>
+To: Richard Cochran <richardcochran@gmail.com>
+X-Provags-ID: V03:K1:TMBskkeW4xTpIDn/dnn8DwfJJ07xUCvu8uxNdRPryJUFGTWl6GS
+ MUbPIMvsBsQRD3D69dkBlGNwz0YpnMiEf9NKcl8Nuw2HJJNJRdrDiPhrj+pigQwzwABNShf
+ B2xGBLVv/8o7ZfMnu3rh8/pZhq6ueAbZnge5ipAoh2wQWK4vGNL4ZI2+IKEdmAXDC0mR8eR
+ TyjDZ/FLTbxizGM/Ac2+A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JBcLNwohTs0=:4BqIT41/ImPTZkXO3brnRI
+ 8ZeyDMizTl2b9Uab9by5tRc5NZ7Sm75u9ZDHECp1I6gr5dkLAVSwCD2B8+S1cT8f3UK5/5GD/
+ yZbYNqVvvbjx60mOShR1CiiMeq1MbIEMeP7Wx8Z0QRqewI2eYkk9MgzAvfi5kCbc6j3ceww7w
+ RZHmBjG2tvdHaYBZNtK85tOz7nwbAqfMDu+YHx66KtMpk/T+lu2U8tog9FP3d/6UUXa8ZsFHh
+ h7uxMU8D+ZjpH6VYV2pvA5G0ovKJZpQ+R773el8P/zP3LT17Qa+akbf/IB47164EJON5snD9Y
+ n/WAXjszOwcw+UBqifoz1JxGCWVf+jS8TVDHivCqIG5wcQSC6bWuACZ7RHiTC84XxKaRnQ/Xt
+ 4ykCFm0zSS5ZsA5mbuOgz94rfJ+SKR7GHi1PwQmk4NL/r4FRyPLT93+iYEOLQy6XU/EF2JbtS
+ gKXRfFyuR4ckfF/IqQ4bsKOcAlaBKWmQf7ehLCVqArWkCLcelhdYik1GJ4OzmmCYsrx17FKJz
+ 7sXXJDV5TMc47fYlJOLKBtiOS5xcw4a5AJJj/qToGPO2n8wTTtfMZx8jvwjU1qFqMkvsV4f8a
+ BJZNeDw2+loKU5sRHos/WRxzvBkJMWbvi4d+d9q+DJD3zQXbEEwLw5+2UennDPdVtbkqRY65c
+ fniMaP+DYn/zf+k6ipTfObMS9yjPDlA7jIEiUnPvn0BxCi3vd6+ZK6VLCUTQhr4VeFCbZP2dP
+ BlYwDPdrHrrJrgrZ6IhsHuw6v0at9m6L4DVwJcIWJKDy0z0X8z8gUMzmO27tEnOphVRtKV7Kv
+ xl3i1lNKvrt5ZHmjuXDGy+QViP+Cd2VeqSQx4aZsbS7myb6KiTw8Ris1XpXRfiaS3JVkHFm
 Subject: Re: [Intel-wired-lan] [PATCH net-next] net: kbuild: Don't default
  net vendor configs to y
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -160,26 +154,33 @@ Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
  Lars Povlsen <lars.povlsen@microchip.com>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  Nicolas Ferre <nicolas.ferre@microchip.com>,
- Stephen Hemminger <stephen@networkplumber.org>
+ Stephen Hemminger <stephen@networkplumber.org>,
+ Saeed Mahameed <saeedm@nvidia.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 01, 2022 at 10:49:50PM -0800, Saeed Mahameed wrote:
-> I can't think of a clever easily verifiable way to map boards to their VENDORS.
-> Add to that dispersing the VENDORS configs accurately.
+On Wed, Feb 2, 2022 at 4:17 PM Richard Cochran <richardcochran@gmail.com> wrote:
+>
+> On Tue, Feb 01, 2022 at 10:49:50PM -0800, Saeed Mahameed wrote:
+> > I can't think of a clever easily verifiable way to map boards to their VENDORS.
+> > Add to that dispersing the VENDORS configs accurately.
+>
+> Just an idea...
+>
+> 1. make foo_defconfig
+> 2. for each vendor, do scripts/config --disable vendor
+> 3. make savedefconfig
+> 4. compare defconfig with foo_defconfig
+>    difference means some MAC was removed
 
-Just an idea...
+This needs an extra 'savedefconfig' step in the beginning, as a lot of
+the defconfig
+files are already different from what you get after savedefconfig, both in the
+order of options, and in options that got renamed or removed over time.
 
-1. make foo_defconfig
-2. for each vendor, do scripts/config --disable vendor
-3. make savedefconfig
-4. compare defconfig with foo_defconfig
-   difference means some MAC was removed
-
-HTH,
-Richard
+         Arnd
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
