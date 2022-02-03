@@ -1,100 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AC9D4A7E38
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 04:07:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E4C34A7E39
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 04:08:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 153E781452;
-	Thu,  3 Feb 2022 03:07:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DE6D1402D8;
+	Thu,  3 Feb 2022 03:08:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z8MpuXnZ1n7k; Thu,  3 Feb 2022 03:07:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9SrrSDMYOCst; Thu,  3 Feb 2022 03:08:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04BFA81447;
-	Thu,  3 Feb 2022 03:07:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BE3D9401F9;
+	Thu,  3 Feb 2022 03:08:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9D1721BF47A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:07:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 469161BF47A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7E3C7400E9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:07:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 40A60402D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uSEvPAzLoXOU for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Feb 2022 03:07:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eantkvnq5ri1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Feb 2022 03:08:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4702A400A9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:07:14 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2AC02401F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643857634; x=1675393634;
+ t=1643857717; x=1675393717;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=4wDe7KAeMRC2BaZwjOgQtt9aArfNQa84wXfLhc4NoTo=;
- b=Y9Xv075XptYvKmGN2TK2mHJ103qnVAFk8efD6VEylxCSb+Pc9mx8rjg1
- OwigeEAJG0j9ceB5xuVXOFtCWm4Kkw7APiKy1TccTwyLFZMalan7/8LEq
- 208ZWlviRNB5UFYdoL5DqYa+8WTCOXQhgAoiXWZAZwlJ8w7eMIIrV3pIo
- 6B9+b8fUqGpJ1SaZcZcmDlC25v2adNhoA8ZXr7Jq97KEL6om2+Thlc6bs
- GKMSagB7zrAYbnsLONqcpciz+TBoUNAjPTpAV/wCqPBDHRaXFFXAhI348
- dEFTE/zFKAIOe+yTrRyXpU39hdE8gE/d5tYSKbRj80QT+VodR62bR2fMI Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="246900678"
-X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="246900678"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2022 19:07:13 -0800
+ bh=zqlJ84IEIb5l0i4ANAoL1X7VNY/SMt8W5G1G/6dS9AQ=;
+ b=X1TAnuz8vo5E+JZarSkN3vdVAwmNAR7wL2zEg9jIDQOym+/xOHvfEw24
+ TtDEXDE7KLPK0yHKMbkc48Mh4ZinoGFF+P8GJfxEPKw70TDNxRsiSXLaI
+ 17cTNVNb2XCQPffAv4f6v5kHebDVWJeR8TDaosWxz6PtYSwtUkhCXx0Sp
+ B/yUQ8ZJMBtqnY4l3zh2KE3SftLx06Cqr1nj4BvXDnAOFrmk7wkagE9CF
+ CpR1oq22QZpcvCwqT47iWZIgQjWYUtiTsRt5S7Hinl49oJ5/IB7V/76lG
+ ww9ZVWY9ZE9ifOeZ3lAhWB6bwyrKGx9Y5OXXBL1hxIZpfZYuU5H6nsqEL A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="231632652"
+X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="231632652"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2022 19:08:36 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="631203492"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga004.jf.intel.com with ESMTP; 02 Feb 2022 19:07:13 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="769489712"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga006.fm.intel.com with ESMTP; 02 Feb 2022 19:08:35 -0800
+Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 2 Feb 2022 19:07:12 -0800
+ 15.1.2308.20; Wed, 2 Feb 2022 19:08:35 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Wed, 2 Feb 2022 19:08:34 -0800
 Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
  orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 19:07:12 -0800
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.175)
+ 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 19:08:34 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
  by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 2 Feb 2022 19:07:12 -0800
+ 15.1.2308.20; Wed, 2 Feb 2022 19:08:34 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eJxxg3jAmi7/rwb1zWT8T+Y5FdX0+zmv8YfbKHtGiGizSq+3fnzJMp6NxdbKCdjPdyIv+OtONLdZYoFQXgqRyFq/UYHhnmEdpUWkYTIrbOvDI2xXR9UqAusE/saB56M8retYRXZ9LP/XxGdv0mr0SoFli2RBN8yBzEu+BVLbuy7t64on3OG8LGdzjSJ+MKh/p0XqcI38HG01zOUITVVEiNduov0mYob5jMP3cBemMRWCg9o8Xpc45wO1mu20xsHOeVZChRk0mRB25DRLUKGjLek4Jtm6E0/ys5CT++znfgqgsP6sX4hFVOAXpE996t97nqbjphwREgpS7fp2d8E2BA==
+ b=RgyMIXIGpF0Z5AMzJVOeHuyMH2fYPCVGNCEg9msI801NuGrQ0CGoZRVCKzNnc1nNgEFCdlfCiMQIStGYNjXkFrE81HNBvg9ZBLyCelk2VT0md+YaABUVugDq5QcUvNMaDJ2Hb6TtZT4RPcF4OOsu7dyf2cXXradHWcQ2gKAEFh5/2nPJBPN4w9Jsfyw8sQMGpcVEgo94/zfDnnG0iMHXFSJs/AUtrn3a4lJMJs1Bzh/5Ws4PMPEO7CexaQv4zHffW+SbcollGkePSpNZwDfgXZBb57BL1FS4jV8HN5nKUPlvt3fgYh/+aq6PwlBiH4xP+RpAswquxLOg9GvyxgKfpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DYy/r0MTOc4hekNwSL6abPLqqvnrj2K+N+riw5HcGgY=;
- b=h0kmBc5cx7EWRjH5U0AYiQbERkLrTjkuQMu3xWs7Lw75B2WLzzpuBcK4IEe2NFH3BSs9Y2FfkcMMIViZhJxDPP6JYmeFDXCh5vPJgfs5HqAA75WV1MphTYbmNnDc16ShiyT3rAWncFXBBJW+0ACQAaGYGBJq1ihbZPo3fspLODHLToFT2nLMwmq6t4vOyEDUnkw3xTch7SJRVl1Qu5BpXTMqThm7Sl1hDRYjJdqLqkcJucIR0jqofu7sj5/A9KxJbbRUllhZSMNfzFfFPZuv4/+iUTchdYAsGv2+1RVPKCS1gW0BK3UMN4k9k2DF0xxGGYm6eXoTMZP9j6FMKvnoIQ==
+ bh=zqlJ84IEIb5l0i4ANAoL1X7VNY/SMt8W5G1G/6dS9AQ=;
+ b=Ml00H26ID36mJ6FYe22JaFWnERhAvKyGvhOM/hoQB709XNmVuJiPRnt4KkgpW6F+us01UQApxLsjma2SD1ynOoY8azTJ+SHbZBCWl+Pm2HWgr4EA3eS2DqxMwwTD5EqPxHHxOQTtUEW69dtOALahNHm3gIDCGw9Y0uybToLucb8RmqoIYPC9TFoVv1Bt2XzNi9OTw5AKEGPMopdG+X5jXB1RlEidEKPlQSrkwnwzjXcYBo1yWy22+x1t/27nR1easOg02hI4RMmW4eZMUOAsECSpylXiHheAsRawIFn+jpzHWOj22gS4PeN8YZzNBE977W24eFgjw2jM/iWygmYlAg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 Received: from CO1PR11MB5186.namprd11.prod.outlook.com (2603:10b6:303:95::14)
  by CO1PR11MB4850.namprd11.prod.outlook.com (2603:10b6:303:9c::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.11; Thu, 3 Feb
- 2022 03:07:10 +0000
+ 2022 03:08:33 +0000
 Received: from CO1PR11MB5186.namprd11.prod.outlook.com
  ([fe80::3d01:b3b2:d2f0:5be1]) by CO1PR11MB5186.namprd11.prod.outlook.com
  ([fe80::3d01:b3b2:d2f0:5be1%5]) with mapi id 15.20.4951.012; Thu, 3 Feb 2022
- 03:07:10 +0000
+ 03:08:33 +0000
 From: "Brady, Alan" <alan.brady@intel.com>
-To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 19/19] idpf: introduce idpf
- driver
-Thread-Index: AQHYE97ZgsWHIAdO9k+XsQ5nBXsT5ax43diAgAhNkRA=
-Date: Thu, 3 Feb 2022 03:07:10 +0000
-Message-ID: <CO1PR11MB51868C7F24F8C0EE3F243C2E8F289@CO1PR11MB5186.namprd11.prod.outlook.com>
+To: Shannon Nelson <shannon.lee.nelson@gmail.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic module
+ init and documentation
+Thread-Index: AQHYE97P+xgP0L96iEuzkw7w8eI81ax/IJcAgAIOAkA=
+Date: Thu, 3 Feb 2022 03:08:33 +0000
+Message-ID: <CO1PR11MB51860674D2077D6CDEDB7D778F289@CO1PR11MB5186.namprd11.prod.outlook.com>
 References: <20220128001009.721392-1-alan.brady@intel.com>
- <20220128001009.721392-20-alan.brady@intel.com>
- <20220128200819.31570-1-alexandr.lobakin@intel.com>
-In-Reply-To: <20220128200819.31570-1-alexandr.lobakin@intel.com>
+ <20220128001009.721392-3-alan.brady@intel.com>
+ <CAP-MU4OwDLJ623dDX7kJhXaTQqBM0coyLxAL06C3pKB_EO8Caw@mail.gmail.com>
+In-Reply-To: <CAP-MU4OwDLJ623dDX7kJhXaTQqBM0coyLxAL06C3pKB_EO8Caw@mail.gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -105,60 +107,69 @@ dlp-version: 11.6.200.16
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 248cae56-e21b-403e-7adb-08d9e6c2450b
+x-ms-office365-filtering-correlation-id: a300322d-2ffa-4991-a2d3-08d9e6c2767c
 x-ms-traffictypediagnostic: CO1PR11MB4850:EE_
-x-microsoft-antispam-prvs: <CO1PR11MB4850D16E09397FAFD25D4B808F289@CO1PR11MB4850.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:549;
+x-microsoft-antispam-prvs: <CO1PR11MB4850F825498A47BD66396EDD8F289@CO1PR11MB4850.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:935;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: JqBSRoLbzNZhtDM7xOe8/0T4P+M5+gnoamlwxykSBPtJcxk9ZXSAoiPrpxFAixk4vqvH1nTXI6pJUH7Vym183ix755bKIy71KoSNxv/iRy0ASN/JsZI7eKqtDiaToMwOdSqjmFGpQuSJ/MJW15PC05du6kUkRMaCv7lzTgicoNtdFcEuasLQ/CKxZFbYQJrc0AstZlKw1HiTliFlgVUkVDfUpX1/Hr8T1WFsDTpKBo6+n0OfHDgoa0vAZekh1w7iIY84432iLem+PWOfh2Tw/iyizsUv1czjT8uzwNgN9uPhyhcWsM/XRn6oaku0v+lWqX0y/WeNTnbQjln3MdRpxRB/jggyY3cEzNfvLnwVI5MQCbUIOtJ7VKUb41Cz6fJvpfb+iQ4n7T5A7QbQFsP/peuc4jx4SDmQe9Gd2P+8daXW91/AX2nmq7dFLnpPbGRyf73Bfzp7Bet5M96SKeovosW/FOfsaHdWQA3YAGOIXYw2GvphK9sMR4y7X+QCPpT2yN9vQW8ds+LPHXfdjL6zJTkRxOLE2S4M21SbAJkODYuXORmk6X2CTyarbqEjNM0VUXdau3r+R0lTudIAWVlEqQDEYJAP91x31473BP/cXpC9OlsiZGSbSKVtPu70m/X93az+lkkqLgl0f+wIYI2G5rTbBolbkn/7OYIh6XlgSR68dN+7hvFCg88ekhymU37gND6xpc+v7m+ZQ/JpcSNlZec/PY9HKyCgVFbGj2AaXNO7w5wErj815QW+Wmudo6t7VEnRT6NW8zAatJ7gg1BAjRo/cjhuhMM65rtf6RMjyB89x65Xti1drkeOtrAVFT9HjYCvlHA5dW1M+A5GnoiTGg==
+x-microsoft-antispam-message-info: iJh21pivAauRSgvDvUJHQI4Cf1ArbeEIWXpgfDs7cwWCvlpHCqdvWX3W5hG6tImHlbF8k0iCTyTbKXZC8Jpl7X2XJiXZILjmJXfYHj0ZhoSFRNrLMO4WrjMJuWkeBz8wTp26HmOuZS8R5HwjOrc7BuRaOUi1+tOVZk1HwTPd45Vt1F+/9A2LI4bvG6+3XzeolrFrugj58PujTOl74m+eEPy+S3VzASu0IouViHT2TJ6vWSBkrfhzTD0a1ZFImKstSf4+3m47VY1udh/lBD8MZZi2gOoqfXTBHFlktFkb5p3YdMnjojRDHwVM34GTOugZOIy6SiDNuxYZ0tAew9NIWtv41BPTWjTlHNYS4XIcCVatPQptF1vSnXmkZGN2Dlj9M5Ed50Iyk0oDDizYZhiPeRxI09ez7NoqAGxV+BlEkUDMKCWduSU/nTkMmyzFR5kkOE0r4ezzRz2h/q+K9pVP4LWS9HFXR0u3vjVNXx3ieMe6fM2EKRvN07hnNz2rVAWJTk5t9KmBrzBfyi3kLTXerwv7TrniL6UIJansUTsC5NCr+yzeo6kN4lBALbvlTck7ojJCN9Ed5bOPKnghmDmb3wl5RF3fpKptfBiZdsbwlAoTBWhH9jD/JrOEEIb1KvBswXkUaW4YrN0x8OTi8RsAum9PV44cBhxDWsTWymr64lOMZzWQkGbyq+N9pZXpfBmzxWawu2uymOwN3N5qhzQzWQJqKYcKz2xLyskOX1TWRyfa/XxwlFfGchbxBiNQrRx+9j54GiHFcH4XKWGiJjw8ecA6WaGlX9/fuV7dHDh61Xc=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CO1PR11MB5186.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(6636002)(38100700002)(107886003)(54906003)(38070700005)(33656002)(316002)(9686003)(7696005)(6506007)(71200400001)(53546011)(86362001)(186003)(122000001)(66946007)(8676002)(508600001)(82960400001)(26005)(83380400001)(5660300002)(8936002)(30864003)(66556008)(66446008)(66476007)(76116006)(64756008)(52536014)(966005)(2906002)(4326008)(55016003)(6862004)(559001)(579004);
+ SFS:(13230001)(366004)(38100700002)(107886003)(54906003)(6916009)(38070700005)(33656002)(316002)(9686003)(7696005)(6506007)(71200400001)(53546011)(86362001)(186003)(122000001)(66946007)(8676002)(508600001)(82960400001)(26005)(83380400001)(5660300002)(8936002)(66556008)(66446008)(66476007)(76116006)(64756008)(52536014)(966005)(2906002)(4326008)(55016003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?wh7UgsZTdf0IGwMpa9spnjbXrooUsUJfSn8WYDGsySnd2ZthUriEKSBqbSBk?=
- =?us-ascii?Q?bPaxEWlA4nFY+JSHZ/MrAVgRvPtlsdDh2sPzfvdJQYwFCbxpp9lQBUP7Byd2?=
- =?us-ascii?Q?fz3KMqTdWYKfPyRBlIhsS2gnVjBdO/KZOrbJPovT4OCpAGoCYrNcZCBI44CP?=
- =?us-ascii?Q?78mydQpSe8SVvIAhzbwwW0zT0s+3O7N7Ci+0OKtdcXEvIUAZlx7xwMFKXSC0?=
- =?us-ascii?Q?kRVPi3cKleCV5SrTltOEoJzUsW5Z1TfkIQ5yG5AlfCY7WPrUEucpXTpltyj2?=
- =?us-ascii?Q?LOcOnT/zWxfx2kEPxKnAcEl18HIHLs1L3WgPF/BIkBJu05+Y0O2uty4Byyty?=
- =?us-ascii?Q?9Lj0SJ3XQA5ioT6S0BIvOM9oFpVx59gIDl97ZoUw9ZIYirG91Y3JE1qxoCcr?=
- =?us-ascii?Q?e8Swy40e/OlXx7J6lUfpXIc8P9oFQda8VUOfp5hkpTovSHEXjbphxsTmD5Eu?=
- =?us-ascii?Q?RF1DZnHHxSQ2q7L0YXdGNf71FlFqyCw3LAEMRX4WqAOdpIzNLA2jL21vep3a?=
- =?us-ascii?Q?W/8OErt+pHIwDvoxmaB011t78GVDv8piXZ40UVPNEj5KcV1cYIdhEKTChyH9?=
- =?us-ascii?Q?OREV0bt/RihpQ04oo7gXi3cOmDl92t1zs32Df1+4mEqgCmDYi42BGD3SqgV2?=
- =?us-ascii?Q?VtmktnfXojKKnSx8hRGPPdOm7VtRqRwW6PjSaNTbzgm71BoAr9uoV7Ufmv5Z?=
- =?us-ascii?Q?p4ozhJDok9+othieK+3iHHFKdYMydRZzIZ/hyObtZGzzrcNwUT9hDtpBzlQV?=
- =?us-ascii?Q?ydlAn0ka/ppMCKUYdagf/zQathbu8ZBuQOJUCnPG2dBepPIX94mQOC5TsAlD?=
- =?us-ascii?Q?S9sS1o0mP4ctmUogQbGPy9CAzgC1w5rXDfI04htoyHSB9uMPcFrYRKnj+v+7?=
- =?us-ascii?Q?EnuYt6xRleeB/jyNhslwvZMSDodwCzf0SJ/9nzH0QWTzNKMRxWnwtQ696IHS?=
- =?us-ascii?Q?2JGi13mOq21cdTtI7DNnnJlZSs6S8M16UNi4JvolReI/W/403meQIaWG4W7d?=
- =?us-ascii?Q?b6GZ7jN6s9+I9kjdN9IEvk1c+pvGcuO4+mLYK2HBFgLYoa9qyIqSM5auV+/q?=
- =?us-ascii?Q?snq2rs9TlFYDw/fpl/gqVmgEAaWYfeKze0DOi7eIq5tL8BQ89UtQRIWkYdXD?=
- =?us-ascii?Q?IkCnxtjFbhppmrGhKiuQ99AWlLNG2McqOGmiXiHQXpmrvQilip5fCcFQ1FoM?=
- =?us-ascii?Q?1orbft95CWr4rHGRA8FR+OJxuSl9VUvX5HnM6swORHVxlccbUiCUjiMSaTpM?=
- =?us-ascii?Q?BbdbGsVblE1Ly0DiuoNBpeROHVOoX1QpKHv15G3KCvZaoWJi25dwvedpD+NH?=
- =?us-ascii?Q?kPhjN2+SfTtmqYmxLPo1Hj+mtNvOmo0DJ0pa0+OC+gAgcx+2R91XttR4cF/8?=
- =?us-ascii?Q?A1cDT4EMFMAf8kjbrayAM8nCc9XVg46vTLEeIFHVUA3tB3yNx4//nNBskiuT?=
- =?us-ascii?Q?1DMZyRv9ouD/IM+k6oCUbNwW/tzyYZ/n+AkLRi2XEmqQgdrxkf54HOFhxT2n?=
- =?us-ascii?Q?ILI6fVRfworMlZRfYvm+Wu0D/K3A9/v7soebwSG2yyiDRdM0T6uPdiK3wTZQ?=
- =?us-ascii?Q?osc4da2U6+vaJOdd5IUZeK8jYNCsbnYnq2VGQIN7WGMoyhOIWJEgvslj2AZf?=
- =?us-ascii?Q?gST47pgC9u15iXQFOcgpy7k=3D?=
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UFlsdVZJOGdBZUNPSDJ2ZXhSeEVOMHB2VG1zNTVRU0xnbU9tb05JVHZYNFRF?=
+ =?utf-8?B?MGZMeE9SUHMxQnRwRjdYeDdVcDRTS3U3cVB2ZUlmdndITnI0WHVMSExxN25O?=
+ =?utf-8?B?RU5TTG45S1RYcm9LejFPWEFJMkJpK3ppdjU1ZjVRdWh4dWVzcm1RU2hsNnQ3?=
+ =?utf-8?B?WGljekpzVHArZGRBYkFFNGJFbndBeGkwWkE2dzFrVDVTSkFUdE5JN3pTWmQr?=
+ =?utf-8?B?ZSttVFJvRDd4dEY1dW9PbkJsYjh3SU9FQjZFK1RzN0xUQU5lSkZoRmtjcXdK?=
+ =?utf-8?B?RDJpSUEzNHc5UUhpVmFXQ21sZFVxZ0tyd2E0Q2tGNHBnanpJK0ZnTkgrZFU3?=
+ =?utf-8?B?cGZoMjlhdURqL1huWE8rWDJoeUxQemZ2V3pOcjd3bDAwVGE3SXEwNzV5ZVZX?=
+ =?utf-8?B?TGkwR0FhWmJ2MFNCS281VTJrY1ZPcVhKcUs2NTNHKzlkNlR0Ui9Gb09NZy84?=
+ =?utf-8?B?R3pRK0MrRFR4bHlKYTBSNHVXc2hydS9BelFWMFRHVE12US91MHp1YjUzditD?=
+ =?utf-8?B?RVM0cFMyb2R1bHRRaGFyQTRlWTBjaVFBS0xqbUhleDByMnZsdFNKYk1oeEk1?=
+ =?utf-8?B?ZHdlQmRWMndOTHkvYlByVVo4K0FQNkw0MjRWRFBjTkpraXk1aUttMmdxODdJ?=
+ =?utf-8?B?NUxxcGgxUnUvMWNCZ29rbmdXdTRINEZCVFRvRlJGVFpwcnRmUHdsaW80WkdC?=
+ =?utf-8?B?Qmlvcmd6Z0pWMVJSUDhCbnhPS2F2NWxYWXV4em9sdGsyTG9QVDFraWZ6MmVF?=
+ =?utf-8?B?c1Avd1pKNUJqZllqb0pKQm5zTDBtQnoreE9zelM5U2Rhclh0TkgzUGNuUDlB?=
+ =?utf-8?B?S2laV1VaWVhGTFZqaEJBU0tsOXNWU1UyWmhpQ1J2UVJDeHdDVjlhemxsRW80?=
+ =?utf-8?B?MUVOWUF4YlQzeTFmUDR5amNidURpVGo2VVdPckZoeFZ6Z0V5eWxlQXl1NFJs?=
+ =?utf-8?B?akRzSmZDQm5zV3plSkcyZHFWZlB4VUJqQ2U0bGQyckFGSzY2eHJNSkZURlor?=
+ =?utf-8?B?YS9aZzFqR0pibUV6UXRZOVRDREY2OC9xL0ZxMk9ydnNQclVyN1I4VTIzaWl4?=
+ =?utf-8?B?VkpEQnNLYmdGdk5GZ3RjOU9iTlVvb29MRFNTTCtpZ1dCQ2I2blN5UUl4VHpZ?=
+ =?utf-8?B?OC82R2lmOUE2cGlLQlRMZ1JIaUpyTWEwZDFwZGhqUlJnY3IrekpLVktydENp?=
+ =?utf-8?B?djhrdDBrV2ZXR1ZDMTZXUktSSTdibmU3SDRnVGtJeHVRbG1HNU1VcjFEbCs1?=
+ =?utf-8?B?ZHhmUk9lbHNlWTZ6UVZOV3VCdFpBV3JQMERwRDdqeGlRdVZYYzVpWEg2OEln?=
+ =?utf-8?B?cmIrMER4TndwbTVrRUVUNjJYRHNmanM1S3huZEk1dUVnQWVmMVdhclZRNStN?=
+ =?utf-8?B?U2tLZUJhOTU5M1FyRVlQZU02N2hWZ3JIT0pQMjJ4WGRDV0pjdXRDaE5SY1NB?=
+ =?utf-8?B?VGIrVlRJbm5vdDRqckMxcmYzMytITGt6SmttcW0yQUFOWHZERTFrUDR5dTda?=
+ =?utf-8?B?SG1PTDJ2ZUJFcHF6YUVqb1hYTkhPbERSUWd2YXcwWVV3RlQ0Q3JhY25RNmdJ?=
+ =?utf-8?B?TUR2cm5UbGZrZWhsTlNEaW9kSGxKekxKMzVyNXFTcGlIQVFKeUFlOVhIRitp?=
+ =?utf-8?B?RkZJODFtUUJVdE5Cb25JenBESlRrbitlWVVUN1lQQkVuNzRDeVJCb21LelRD?=
+ =?utf-8?B?ek51Y0FhNDlLbHZtTXh5dUl1TSsrcXprc3NCNlFxQ0hSWjRYWDNxc2RmbTRt?=
+ =?utf-8?B?eUJiTnoxdldDbzlmWldDWDJtakF6SzBJUHFORDFLNllvbXQ1a0JuUitreU82?=
+ =?utf-8?B?RXl5QUZkdnRJb1VyK29VVWpaMFZ2YXgxYnhSZEttTEdteUh5NWh3WWhvMlFy?=
+ =?utf-8?B?VndSSUI5MFVqODcyOWdLSGVOVHJveDVkQm1Bc2piWStVRkg0TUVReUhRWWFp?=
+ =?utf-8?B?LzBWODZPL3ZEdEFqRFR6eDN0SHpCZUY1TG9MUDdVUklYTjlsTkp1emNudnpj?=
+ =?utf-8?B?MHovZHgxWDMzL2VzYmFDYTVRSHJGSVFPWE53bkx5QWV3LzhqdTBFcVNhZzM2?=
+ =?utf-8?B?QUNoVlhIR1VORzJROUdBMDRMY3pNZUx1U00zSFhKZW5UemVQeFRqL01DR2M1?=
+ =?utf-8?B?WUFraXZMTGhGZnN3UXA0K2p5M0NKTXlSL29hRXowbDFBelcyODQ4Q3A1a3B4?=
+ =?utf-8?Q?Ih39QkRm/MjheQJ6JGmSQOU=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5186.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 248cae56-e21b-403e-7adb-08d9e6c2450b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 03:07:10.5435 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a300322d-2ffa-4991-a2d3-08d9e6c2767c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 03:08:33.4778 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HnB80lF7WROQR36bItcSWLGzzLxt49U1vBybpUxwHb3fBqqwy2gOd8xEN/zsPg6w3yDMdtLZVBerfOxxdVClGA==
+X-MS-Exchange-CrossTenant-userprincipalname: s5ttuLzw2sjK6dMewBvZMKpfBbEpsjSC9kmz7cBHhdbBtYedvs4kPs1wObhD9JioCsoVRKmFvuvLMUVlDAxL7A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4850
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next 19/19] idpf: introduce idpf
- driver
+Subject: Re: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic module
+ init and documentation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,7 +184,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "Burra, Phani R" <phani.r.burra@intel.com>, "Chittim,
  Madhu" <madhu.chittim@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Linga,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, "Linga,
  Pavan Kumar" <pavan.kumar.linga@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -181,700 +192,127 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
-> From: Lobakin, Alexandr <alexandr.lobakin@intel.com>
-> Sent: Friday, January 28, 2022 12:08 PM
+> From: Shannon Nelson <shannon.lee.nelson@gmail.com>
+> Sent: Tuesday, February 1, 2022 11:45 AM
 > To: Brady, Alan <alan.brady@intel.com>
-> Cc: Lobakin, Alexandr <alexandr.lobakin@intel.com>; intel-wired-
-> lan@lists.osuosl.org; Burra, Phani R <phani.r.burra@intel.com>; Chittim,
-> Madhu <madhu.chittim@intel.com>; Linga, Pavan Kumar
-> <pavan.kumar.linga@intel.com>
-> Subject: Re: [Intel-wired-lan] [PATCH net-next 19/19] idpf: introduce idpf
-> driver
+> Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Burra, Phani R
+> <phani.r.burra@intel.com>; Chittim, Madhu <madhu.chittim@intel.com>;
+> Linga, Pavan Kumar <pavan.kumar.linga@intel.com>
+> Subject: Re: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic
+> module init and documentation
 > 
-> From: Alan Brady <alan.brady@intel.com>
-> Date: Thu, 27 Jan 2022 16:10:09 -0800
-> 
-> > This adds the idpf driver which uses the iecm module to provide common
-> > functionality. Device specific behavior and registers are defined here
-> > and handed off to iecm which takes over the rest of the flow.
-> 
-> Ok I missed that before, so I say it now.
-> Multi-function networking devices (Ethernet, SFs, VF representors, RDMA,
-> storage offload etc.) nowadays kinda *must* be based on top of auxiliary
-> bus. Otherwise, maintaining of hundreds a direct call with recursive
-> dependencies between modules and stuff will become a burden.
-> All of the mentioned functionality will be added to the driver(s), that's a
-> fact, and as these are new drivers, it's way better to start off the right way
-> now than to bug your mind on how to refactor this later.
-> 
-
-I suspect a refactor now will actually be more painful than later for other reasons and I believe we have other motivations for not using aux bus in this. It is however worth considering but we need some time to discuss. Will reply with something firm after some internal discussion.
-
+> On Thu, Jan 27, 2022 at 4:34 PM Alan Brady <alan.brady@intel.com>
+> wrote:
 > >
-> > Signed-off-by: Phani Burra <phani.r.burra@intel.com>
-> > Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-> > Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
-> > Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> > Signed-off-by: Alan Brady <alan.brady@intel.com>
-> > ---
-> >  .../device_drivers/ethernet/intel/idpf.rst    |  47 ++++++
-> >  drivers/net/ethernet/intel/Kconfig            |  16 ++
-> >  drivers/net/ethernet/intel/Makefile           |   1 +
-> >  drivers/net/ethernet/intel/idpf/Makefile      |  15 ++
-> >  drivers/net/ethernet/intel/idpf/idpf_dev.h    |  17 +++
-> >  drivers/net/ethernet/intel/idpf/idpf_devids.h |  10 ++
-> >  drivers/net/ethernet/intel/idpf/idpf_main.c   | 140
-> ++++++++++++++++++
-> >  drivers/net/ethernet/intel/idpf/idpf_reg.c    | 130 ++++++++++++++++
-> >  .../ethernet/intel/include/iecm_lan_pf_regs.h | 131 ++++++++++++++++
-> >  9 files changed, 507 insertions(+)
-> >  create mode 100644
-> > Documentation/networking/device_drivers/ethernet/intel/idpf.rst
-> >  create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
-> >  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.h
-> >  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
-> >  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
-> >  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_reg.c
-> >  create mode 100644
-> > drivers/net/ethernet/intel/include/iecm_lan_pf_regs.h
+> > This adds the basics needed to make a kernel module and documentation
+> > needed to use iecm module.
 > >
-> > diff --git
-> > a/Documentation/networking/device_drivers/ethernet/intel/idpf.rst
-> > b/Documentation/networking/device_drivers/ethernet/intel/idpf.rst
+> 
+> [ snip ]
+> 
+> > diff --git a/drivers/net/ethernet/intel/iecm/Makefile
+> > b/drivers/net/ethernet/intel/iecm/Makefile
 > > new file mode 100644
-> > index 000000000000..973fa9613428
+> > index 000000000000..d2d087ac71e9
 > > --- /dev/null
-> > +++ b/Documentation/networking/device_drivers/ethernet/intel/idpf.rst
-> > @@ -0,0 +1,47 @@
-> > +.. SPDX-License-Identifier: GPL-2.0
-> > +
-> >
-> +=========================================================
-> =========
-> > +Linux Base Driver for the Intel(R) Smart Network Adapter Family
-> > +Series
-> >
-> +=========================================================
-> =========
-> > +
-> > +Intel idpf Linux driver.
-> > +Copyright(c) 2020 Intel Corporation.
-> > +
-> > +Contents
-> > +========
-> > +
-> > +- Enabling the driver
-> > +- Support
-> > +
-> > +The driver in this release supports Intel's Smart Network Adapter
-> > +Family Series of products. For more information, visit Intel's
-> > +support page at https://support.intel.com.
-> > +
-> > +Enabling the driver
-> > +===================
-> > +The driver is enabled via the standard kernel configuration system,
-> > +using the make command::
-> > +
-> > +  make oldconfig/menuconfig/etc.
-> > +
-> > +The driver is located in the menu structure at:
-> > +
-> > +  -> Device Drivers
-> > +    -> Network device support (NETDEVICES [=y])
-> > +      -> Ethernet driver support
-> > +        -> Intel devices
-> > +          -> Intel(R) Smart Network Adapter Family Series Support
-> > +
-> > +Support
-> > +=======
-> > +For general information, go to the Intel support website at:
-> > +
-> > +https://www.intel.com/support/
-> > +
-> > +or the Intel Wired Networking project hosted by Sourceforge at:
-> > +
-> > +https://sourceforge.net/projects/e1000
-> > +
-> > +If an issue is identified with the released source code on a
-> > +supported kernel with a supported adapter, email the specific
-> > +information related to the issue to e1000-devel@lists.sf.net.
-> > diff --git a/drivers/net/ethernet/intel/Kconfig
-> > b/drivers/net/ethernet/intel/Kconfig
-> > index 754dc7677ad5..93c8883c22ad 100644
-> > --- a/drivers/net/ethernet/intel/Kconfig
-> > +++ b/drivers/net/ethernet/intel/Kconfig
-> > @@ -387,4 +387,20 @@ config IECM
-> >        To compile this as a module, choose M here. The module will be called
-> >        iecm.
-> >
-> > +config IDPF
-> > +	tristate "Intel(R) Data Plane Function Support"
-> > +	default n
-> > +	depends on IECM
-> > +	help
-> > +	  For more information on how to identify your adapter, go
-> > +	  to the Adapter & Driver ID Guide that can be located at:
-> > +
-> > +	  <http://support.intel.com>
-> > +
-> > +	  More specific information on configuring the driver is in
-> > +
-> <file:Documentation/networking/device_drivers/ethernet/intel/idpf.rst>.
-> > +
-> > +	  To compile this driver as a module, choose M here. The module
-> > +	  will be called idpf.
-> > +
-> >  endif # NET_VENDOR_INTEL
-> > diff --git a/drivers/net/ethernet/intel/Makefile
-> > b/drivers/net/ethernet/intel/Makefile
-> > index c9eba9cc5087..3786c2269f3d 100644
-> > --- a/drivers/net/ethernet/intel/Makefile
-> > +++ b/drivers/net/ethernet/intel/Makefile
-> > @@ -17,3 +17,4 @@ obj-$(CONFIG_IAVF) += iavf/
-> >  obj-$(CONFIG_FM10K) += fm10k/
-> >  obj-$(CONFIG_ICE) += ice/
-> >  obj-$(CONFIG_IECM) += iecm/
-> > +obj-$(CONFIG_IDPF) += idpf/
-> > diff --git a/drivers/net/ethernet/intel/idpf/Makefile
-> > b/drivers/net/ethernet/intel/idpf/Makefile
-> > new file mode 100644
-> > index 000000000000..85846620bc9f
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/idpf/Makefile
-> > @@ -0,0 +1,15 @@
+> > +++ b/drivers/net/ethernet/intel/iecm/Makefile
+> > @@ -0,0 +1,13 @@
 > > +# SPDX-License-Identifier: GPL-2.0-only # Copyright (C) 2019 Intel
 > > +Corporation
 > > +
 > > +#
-> > +# Makefile for the Intel(R) Data Plane Function Linux Driver #
+> > +# Makefile for the Intel(R) Data Plane Function Linux Driver
+> 
+> Maybe the iecm here rather than idpf?
+> 
+
+Woops.  Thanks, will fix.
+
+> > +#
 > > +
-> > +obj-$(CONFIG_IDPF) += idpf.o
+> > +obj-$(CONFIG_IECM) += iecm.o
 > > +
-> > +ccflags-y += -I$(srctree)/drivers/net/ethernet/intel/include \
-> > +			 -I$(srctree)/include/linux/avf
+> > +ccflags-y += -I$(srctree)/drivers/net/ethernet/intel/include
 > > +
-> > +idpf-y := \
-> > +	idpf_main.o \
-> > +	idpf_reg.o
-> > diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.h
-> > b/drivers/net/ethernet/intel/idpf/idpf_dev.h
+> > +iecm-y := \
+> > +       iecm_main.o
+> > diff --git a/drivers/net/ethernet/intel/iecm/iecm_main.c
+> > b/drivers/net/ethernet/intel/iecm/iecm_main.c
 > > new file mode 100644
-> > index 000000000000..dc146161f884
+> > index 000000000000..7c09403c6918
 > > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/idpf/idpf_dev.h
-> > @@ -0,0 +1,17 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/* Copyright (C) 2019 Intel Corporation */
-> > +
-> > +#ifndef _IDPF_DEV_H_
-> > +#define _IDPF_DEV_H_
-> > +
-> > +#include "iecm.h"
-> > +
-> > +int idpf_intr_reg_init(struct iecm_vport *vport); void
-> > +idpf_mb_intr_reg_init(struct iecm_adapter *adapter); void
-> > +idpf_reset_reg_init(struct iecm_reset_reg *reset_reg); void
-> > +idpf_trigger_reset(struct iecm_adapter *adapter,
-> > +			enum iecm_flags trig_cause);
-> > +void idpf_vportq_reg_init(struct iecm_vport *vport); void
-> > +idpf_ctlq_reg_init(struct iecm_ctlq_create_info *cq);
-> > +
-> > +#endif /* _IDPF_DEV_H_ */
-> > diff --git a/drivers/net/ethernet/intel/idpf/idpf_devids.h
-> > b/drivers/net/ethernet/intel/idpf/idpf_devids.h
-> > new file mode 100644
-> > index 000000000000..7bf8eb64b76a
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/idpf/idpf_devids.h
-> > @@ -0,0 +1,10 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/* Copyright (C) 2019 Intel Corporation */
-> > +
-> > +#ifndef _IDPF_DEVIDS_H_
-> > +#define _IDPF_DEVIDS_H_
-> > +
-> > +/* Device IDs */
-> > +#define IDPF_DEV_ID_PF			0x1452
-> > +
-> > +#endif /* _IDPF_DEVIDS_H_ */
-> > diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c
-> > b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> > new file mode 100644
-> > index 000000000000..da5e668beabf
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> > @@ -0,0 +1,140 @@
+> > +++ b/drivers/net/ethernet/intel/iecm/iecm_main.c
+> > @@ -0,0 +1,40 @@
 > > +// SPDX-License-Identifier: GPL-2.0-only
 > > +/* Copyright (C) 2019 Intel Corporation */
 > > +
 > > +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 > > +
-> > +#include "idpf_dev.h"
-> > +#include "idpf_devids.h"
+> > +#include "iecm.h"
 > > +
-> > +#define DRV_SUMMARY	"Intel(R) Data Plane Function Linux Driver"
-> > +static const char idpf_driver_string[] = DRV_SUMMARY; static const
-> > +char idpf_copyright[] = "Copyright (c) 2020, Intel Corporation.";
+> > +#define DRV_SUMMARY    "Intel(R) Ethernet Common Module"
+> > +static const char iecm_driver_string[] = DRV_SUMMARY; static const
+> > +char iecm_copyright[] = "Copyright (c) 2020, Intel Corporation.";
+> 
+> Do you want this copyright string "2020" to match the top of the file
+> "2019"?
+> 
+
+Hmm yes we should probably fix that.  Thanks!
+
 > > +
 > > +MODULE_DESCRIPTION(DRV_SUMMARY);
-> > +MODULE_LICENSE("GPL");
+> > +MODULE_LICENSE("GPL v2");
 > > +
 > > +/**
-> > + * idpf_reg_ops_init - Initialize register API function pointers
-> > + * @adapter: Driver specific private structure  */ static void
-> > +idpf_reg_ops_init(struct iecm_adapter *adapter) {
-> > +	adapter->dev_ops.reg_ops.ctlq_reg_init = idpf_ctlq_reg_init;
-> > +	adapter->dev_ops.reg_ops.intr_reg_init = idpf_intr_reg_init;
-> > +	adapter->dev_ops.reg_ops.mb_intr_reg_init =
-> idpf_mb_intr_reg_init;
-> > +	adapter->dev_ops.reg_ops.reset_reg_init = idpf_reset_reg_init;
-> > +	adapter->dev_ops.reg_ops.trigger_reset = idpf_trigger_reset;
-> 
-> Why not define static const reg_ops for idpf and assigning it?
-> Filling plenty of callbacks inside functions are generally discouraged.
-> 
-
-Seems reasonable, will check.
-
-> > +}
-> > +
-> > +/**
-> > + * idpf_probe - Device initialization routine
-> > + * @pdev: PCI device information struct
-> > + * @ent: entry in idpf_pci_tbl
+> > + * iecm_module_init - Driver registration routine
 > > + *
-> > + * Returns 0 on success, negative on failure  */ static int
-> > +idpf_probe(struct pci_dev *pdev,
-> > +		      const struct pci_device_id __always_unused *ent)
-> 
-> Again, no __always_unused for function parameters.
-> 
-
-Will not fix.
-
-> > +{
-> > +	struct iecm_adapter *adapter = NULL;
-> > +	int err;
-> > +
-> > +	adapter = kzalloc(sizeof(*adapter), GFP_KERNEL);
-> > +	if (!adapter)
-> > +		return -ENOMEM;
-> > +
-> > +	adapter->dev_ops.reg_ops_init = idpf_reg_ops_init;
-> 
-> Why not just directly assign callbacks here? Callback for filling more
-> callbacks?
-> 
-
-It was mostly following the pattern we had initially established for setting up vc_ops, which does have a good excuse to be callback to assign callbacks, but you're right I can't justify doing this for reg_ops, will fix.
-
-> > +	set_bit(__IECM_REQ_TX_SPLITQ, adapter->flags);
-> > +	set_bit(__IECM_REQ_RX_SPLITQ, adapter->flags);
-> > +
-> > +	err = iecm_probe(pdev, ent, adapter);
-> > +	if (err)
-> > +		kfree(adapter);
-> > +
-> > +	return err;
-> > +}
-> > +
-> > +/**
-> > + * idpf_remove - Device removal routine
-> > + * @pdev: PCI device information struct  */ static void
-> > +idpf_remove(struct pci_dev *pdev) {
-> > +	struct iecm_adapter *adapter = pci_get_drvdata(pdev);
-> > +
-> > +	if (!adapter)
-> > +		return;
-> > +
-> > +	iecm_remove(pdev);
-> > +	pci_set_drvdata(pdev, NULL);
-> > +	kfree(adapter);
-> > +}
-> > +
-> > +/**
-> > + * idpf_shutdown - PCI callback for shutting down device
-> > + * @pdev: PCI device information struct  */ static void
-> > +idpf_shutdown(struct pci_dev *pdev) {
-> > +	idpf_remove(pdev);
-> > +
-> > +	if (system_state == SYSTEM_POWER_OFF)
-> > +		pci_set_power_state(pdev, PCI_D3hot); }
-> > +
-> > +/* idpf_pci_tbl - PCI Dev iapf ID Table
-> > + *
-> > + * Wildcard entries (PCI_ANY_ID) should come last
-> > + * Last entry must be all 0s
-> > + *
-> > + * { Vendor ID, Device ID, SubVendor ID, SubDevice ID,
-> > + *   Class, Class Mask, private data (not used) }
-> > + */
-> > +static const struct pci_device_id idpf_pci_tbl[] = {
-> > +	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_PF), 0 },
-> > +	/* required last entry */
-> > +	{ 0, }
-> > +};
-> > +MODULE_DEVICE_TABLE(pci, idpf_pci_tbl);
-> > +
-> > +static struct pci_driver idpf_driver = {
-> > +	.name = KBUILD_MODNAME,
-> > +	.id_table = idpf_pci_tbl,
-> > +	.probe = idpf_probe,
-> > +	.remove = idpf_remove,
-> > +	.shutdown = idpf_shutdown,
-> > +};
-> > +
-> > +/**
-> > + * idpf_module_init - Driver registration routine
-> > + *
-> > + * idpf_module_init is the first routine called when the driver is
+> > + * iecm_module_init is the first routine called when the driver is
 > > + * loaded. All it does is register with the PCI subsystem.
 > > + */
-> > +static int __init idpf_module_init(void) {
-> > +	int status;
-> > +
-> > +	pr_info("%s - version %d\n", idpf_driver_string,
+> > +static int __init iecm_module_init(void) {
+> > +       pr_info("%s - version %d\n", iecm_driver_string,
 > LINUX_VERSION_CODE);
-> > +	pr_info("%s\n", idpf_copyright);
+> > +       pr_info("%s\n", iecm_copyright);
 > > +
-> > +	status = pci_register_driver(&idpf_driver);
-> > +	if (status)
-> > +		pr_err("failed to register pci driver, err %d\n", status);
-> > +
-> > +	return status;
+> > +       return 0;
 > > +}
-> > +module_init(idpf_module_init);
+> > +module_init(iecm_module_init);
 > > +
 > > +/**
-> > + * idpf_module_exit - Driver exit cleanup routine
+> > + * iecm_module_exit - Driver exit cleanup routine
 > > + *
-> > + * idpf_module_exit is called just before the driver is removed
+> > + * iecm_module_exit is called just before the driver is removed
 > > + * from memory.
 > > + */
-> > +static void __exit idpf_module_exit(void) {
-> > +	pci_unregister_driver(&idpf_driver);
-> > +	pr_info("module unloaded\n");
+> > +static void __exit iecm_module_exit(void) {
+> > +       pr_info("module unloaded\n");
 > > +}
-> > +module_exit(idpf_module_exit);
-> > diff --git a/drivers/net/ethernet/intel/idpf/idpf_reg.c
-> > b/drivers/net/ethernet/intel/idpf/idpf_reg.c
+> > +module_exit(iecm_module_exit);
+> > diff --git a/drivers/net/ethernet/intel/include/iecm.h
+> > b/drivers/net/ethernet/intel/include/iecm.h
 > > new file mode 100644
-> > index 000000000000..d0ea6c495c62
+> > index 000000000000..f66f0d7db8e7
 > > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/idpf/idpf_reg.c
-> > @@ -0,0 +1,130 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +++ b/drivers/net/ethernet/intel/include/iecm.h
+> > @@ -0,0 +1,10 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-only */
 > > +/* Copyright (C) 2019 Intel Corporation */
 > > +
-> > +#include "idpf_dev.h"
-> > +#include "iecm_lan_pf_regs.h"
+> > +#ifndef _IECM_H_
+> > +#define _IECM_H_
 > > +
-> > +/**
-> > + * idpf_ctlq_reg_init - initialize default mailbox registers
-> > + * @cq: pointer to the array of create control queues  */ void
-> > +idpf_ctlq_reg_init(struct iecm_ctlq_create_info *cq) {
-> > +	int i;
+> > +#include <linux/etherdevice.h>
+> > +#include <linux/version.h>
 > > +
-> > +#define NUM_Q 2
-> 
-> I'd like to see it defined outside the function and with a bit of explanation of
-> what that is.
-> 
-
-Sure will fix.
-
-> > +	for (i = 0; i < NUM_Q; i++) {
-> > +		struct iecm_ctlq_create_info *ccq = cq + i;
-> > +
-> > +		switch (ccq->type) {
-> > +		case IECM_CTLQ_TYPE_MAILBOX_TX:
-> > +			/* set head and tail registers in our local struct */
-> > +			ccq->reg.head = PF_FW_ATQH;
-> > +			ccq->reg.tail = PF_FW_ATQT;
-> > +			ccq->reg.len = PF_FW_ATQLEN;
-> > +			ccq->reg.bah = PF_FW_ATQBAH;
-> > +			ccq->reg.bal = PF_FW_ATQBAL;
-> > +			ccq->reg.len_mask = PF_FW_ATQLEN_ATQLEN_M;
-> > +			ccq->reg.len_ena_mask =
-> PF_FW_ATQLEN_ATQENABLE_M;
-> > +			ccq->reg.head_mask = PF_FW_ATQH_ATQH_M;
-> > +			break;
-> > +		case IECM_CTLQ_TYPE_MAILBOX_RX:
-> > +			/* set head and tail registers in our local struct */
-> > +			ccq->reg.head = PF_FW_ARQH;
-> > +			ccq->reg.tail = PF_FW_ARQT;
-> > +			ccq->reg.len = PF_FW_ARQLEN;
-> > +			ccq->reg.bah = PF_FW_ARQBAH;
-> > +			ccq->reg.bal = PF_FW_ARQBAL;
-> > +			ccq->reg.len_mask = PF_FW_ARQLEN_ARQLEN_M;
-> > +			ccq->reg.len_ena_mask =
-> PF_FW_ARQLEN_ARQENABLE_M;
-> > +			ccq->reg.head_mask = PF_FW_ARQH_ARQH_M;
-> > +			break;
-> > +		default:
-> > +			break;
-> > +		}
-> > +	}
-> > +}
-> > +
-> > +/**
-> > + * idpf_mb_intr_reg_init - Initialize mailbox interrupt register
-> > + * @adapter: adapter structure
-> > + */
-> > +void idpf_mb_intr_reg_init(struct iecm_adapter *adapter) {
-> > +	struct iecm_intr_reg *intr = &adapter->mb_vector.intr_reg;
-> > +	struct virtchnl2_get_capabilities *caps;
-> > +
-> > +	caps = (struct virtchnl2_get_capabilities *)adapter->caps;
-> > +	intr->dyn_ctl = le32_to_cpu(caps->mailbox_dyn_ctl);
-> > +	intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
-> > +	intr->dyn_ctl_itridx_m = PF_GLINT_DYN_CTL_ITR_INDX_M;
-> > +	intr->icr_ena = PF_INT_DIR_OICR_ENA;
-> > +	intr->icr_ena_ctlq_m = PF_INT_DIR_OICR_ENA_M; }
-> > +
-> > +/**
-> > + * idpf_intr_reg_init - Initialize interrupt registers
-> > + * @vport: virtual port structure
-> > + */
-> > +int idpf_intr_reg_init(struct iecm_vport *vport) {
-> > +	int num_vecs = vport->num_q_vectors;
-> > +	struct iecm_vec_regs *reg_vals;
-> > +	int num_regs, i, err = 0;
-> > +
-> > +	reg_vals = kmalloc(sizeof(void *) * IECM_LARGE_MAX_Q,
-> > +			   GFP_KERNEL);
-> 
-> 	array_size(IECM_LARGE_MAX_Q, sizeof(void *));
-> 
-> > +	if (!reg_vals)
-> > +		return -ENOMEM;
-> > +
-> > +	num_regs = iecm_get_reg_intr_vecs(vport, reg_vals, num_vecs);
-> > +	if (num_regs != num_vecs) {
-> > +		err = -EINVAL;
-> > +		goto free_reg_vals;
-> > +	}
-> > +
-> > +	for (i = 0; i < num_regs; i++) {
-> > +		struct iecm_q_vector *q_vector = &vport->q_vectors[i];
-> > +		struct iecm_intr_reg *intr = &q_vector->intr_reg;
-> > +
-> > +		intr->dyn_ctl = reg_vals[i].dyn_ctl_reg;
-> > +		intr->dyn_ctl_clrpba_m =
-> PF_GLINT_DYN_CTL_CLEARPBA_M;
-> > +		intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
-> > +		intr->dyn_ctl_itridx_s = PF_GLINT_DYN_CTL_ITR_INDX_S;
-> > +		intr->dyn_ctl_intrvl_s = PF_GLINT_DYN_CTL_INTERVAL_S;
-> > +
-> > +		intr->rx_itr = PF_GLINT_ITR_V2(VIRTCHNL2_ITR_IDX_0,
-> > +					       reg_vals[i].itrn_reg);
-> > +		intr->tx_itr = PF_GLINT_ITR_V2(VIRTCHNL2_ITR_IDX_1,
-> > +					       reg_vals[i].itrn_reg);
-> > +	}
-> > +
-> > +free_reg_vals:
-> > +	kfree(reg_vals);
-> > +	return err;
-> > +}
-> > +
-> > +/**
-> > + * idpf_reset_reg_init - Initialize reset registers
-> > + * @reset_reg: struct to be filled in with reset registers  */ void
-> > +idpf_reset_reg_init(struct iecm_reset_reg *reset_reg) {
-> > +	reset_reg->rstat = PFGEN_RSTAT;
-> > +	reset_reg->rstat_m = PFGEN_RSTAT_PFR_STATE_M; }
-> > +
-> > +/**
-> > + * idpf_trigger_reset - trigger reset
-> > + * @adapter: Driver specific private structure
-> > + * @trig_cause: Reason to trigger a reset  */ void
-> > +idpf_trigger_reset(struct iecm_adapter *adapter,
-> > +			enum iecm_flags __always_unused trig_cause) {
-> > +	u32 reset_reg;
-> > +
-> > +	reset_reg = rd32(&adapter->hw, PFGEN_CTRL);
-> > +	wr32(&adapter->hw, PFGEN_CTRL, (reset_reg |
-> PFGEN_CTRL_PFSWR)); }
-> > +
-> > diff --git a/drivers/net/ethernet/intel/include/iecm_lan_pf_regs.h
-> > b/drivers/net/ethernet/intel/include/iecm_lan_pf_regs.h
-> > new file mode 100644
-> > index 000000000000..52ffe5c4a7ca
-> > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/include/iecm_lan_pf_regs.h
-> > @@ -0,0 +1,131 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/* Copyright (c) 2020, Intel Corporation. */
-> > +
-> > +#ifndef _IECM_LAN_PF_REGS_H_
-> > +#define _IECM_LAN_PF_REGS_H_
-> > +
-> > +/* Receive queues */
-> > +#define PF_QRX_BASE			0x00000000
-> > +#define PF_QRX_TAIL(_QRX)		(PF_QRX_BASE + (((_QRX) *
-> 0x1000)))
-> > +#define PF_QRX_BUFFQ_BASE		0x03000000
-> > +#define PF_QRX_BUFFQ_TAIL(_QRX)
-> 	(PF_QRX_BUFFQ_BASE + (((_QRX) * 0x1000)))
-> > +
-> > +/* Transmit queues */
-> > +#define PF_QTX_BASE			0x05000000
-> > +#define PF_QTX_COMM_DBELL(_DBQM)	(PF_QTX_BASE + ((_DBQM) *
-> 0x1000))
-> > +
-> > +/* Control(PF Mailbox) Queue */
-> > +#define PF_FW_BASE			0x08400000
-> > +
-> > +#define PF_FW_ARQBAL			(PF_FW_BASE)
-> > +#define PF_FW_ARQBAH			(PF_FW_BASE + 0x4)
-> > +#define PF_FW_ARQLEN			(PF_FW_BASE + 0x8)
-> > +#define PF_FW_ARQLEN_ARQLEN_S		0
-> > +#define PF_FW_ARQLEN_ARQLEN_M		MAKEMASK(0x1FFF,
-> PF_FW_ARQLEN_ARQLEN_S)
-> > +#define PF_FW_ARQLEN_ARQVFE_S		28
-> > +#define PF_FW_ARQLEN_ARQVFE_M
-> 	BIT(PF_FW_ARQLEN_ARQVFE_S)
-> > +#define PF_FW_ARQLEN_ARQOVFL_S		29
-> > +#define PF_FW_ARQLEN_ARQOVFL_M
-> 	BIT(PF_FW_ARQLEN_ARQOVFL_S)
-> > +#define PF_FW_ARQLEN_ARQCRIT_S		30
-> > +#define PF_FW_ARQLEN_ARQCRIT_M
-> 	BIT(PF_FW_ARQLEN_ARQCRIT_S)
-> > +#define PF_FW_ARQLEN_ARQENABLE_S	31
-> > +#define PF_FW_ARQLEN_ARQENABLE_M
-> 	BIT(PF_FW_ARQLEN_ARQENABLE_S)
-> > +#define PF_FW_ARQH			(PF_FW_BASE + 0xC)
-> > +#define PF_FW_ARQH_ARQH_S		0
-> > +#define PF_FW_ARQH_ARQH_M		MAKEMASK(0x1FFF,
-> PF_FW_ARQH_ARQH_S)
-> > +#define PF_FW_ARQT			(PF_FW_BASE + 0x10)
-> > +
-> > +#define PF_FW_ATQBAL			(PF_FW_BASE + 0x14)
-> > +#define PF_FW_ATQBAH			(PF_FW_BASE + 0x18)
-> > +#define PF_FW_ATQLEN			(PF_FW_BASE + 0x1C)
-> > +#define PF_FW_ATQLEN_ATQLEN_S		0
-> > +#define PF_FW_ATQLEN_ATQLEN_M		MAKEMASK(0x3FF,
-> PF_FW_ATQLEN_ATQLEN_S)
-> > +#define PF_FW_ATQLEN_ATQVFE_S		28
-> > +#define PF_FW_ATQLEN_ATQVFE_M
-> 	BIT(PF_FW_ATQLEN_ATQVFE_S)
-> > +#define PF_FW_ATQLEN_ATQOVFL_S		29
-> > +#define PF_FW_ATQLEN_ATQOVFL_M
-> 	BIT(PF_FW_ATQLEN_ATQOVFL_S)
-> > +#define PF_FW_ATQLEN_ATQCRIT_S		30
-> > +#define PF_FW_ATQLEN_ATQCRIT_M
-> 	BIT(PF_FW_ATQLEN_ATQCRIT_S)
-> > +#define PF_FW_ATQLEN_ATQENABLE_S	31
-> > +#define PF_FW_ATQLEN_ATQENABLE_M
-> 	BIT(PF_FW_ATQLEN_ATQENABLE_S)
-> > +#define PF_FW_ATQH			(PF_FW_BASE + 0x20)
-> > +#define PF_FW_ATQH_ATQH_S		0
-> > +#define PF_FW_ATQH_ATQH_M		MAKEMASK(0x3FF,
-> PF_FW_ATQH_ATQH_S)
-> > +#define PF_FW_ATQT			(PF_FW_BASE + 0x24)
-> > +
-> > +/* Interrupts */
-> > +#define PF_GLINT_BASE			0x08900000
-> > +#define PF_GLINT_DYN_CTL(_INT)		(PF_GLINT_BASE + ((_INT) *
-> 0x1000))
-> > +#define PF_GLINT_DYN_CTL_INTENA_S	0
-> > +#define PF_GLINT_DYN_CTL_INTENA_M
-> 	BIT(PF_GLINT_DYN_CTL_INTENA_S)
-> > +#define PF_GLINT_DYN_CTL_CLEARPBA_S	1
-> > +#define PF_GLINT_DYN_CTL_CLEARPBA_M
-> 	BIT(PF_GLINT_DYN_CTL_CLEARPBA_S)
-> > +#define PF_GLINT_DYN_CTL_SWINT_TRIG_S	2
-> > +#define PF_GLINT_DYN_CTL_SWINT_TRIG_M
-> 	BIT(PF_GLINT_DYN_CTL_SWINT_TRIG_S)
-> > +#define PF_GLINT_DYN_CTL_ITR_INDX_S	3
-> > +#define PF_GLINT_DYN_CTL_ITR_INDX_M	MAKEMASK(0x3,
-> PF_GLINT_DYN_CTL_ITR_INDX_S)
-> > +#define PF_GLINT_DYN_CTL_INTERVAL_S	5
-> > +#define PF_GLINT_DYN_CTL_INTERVAL_M
-> 	BIT(PF_GLINT_DYN_CTL_INTERVAL_S)
-> > +#define PF_GLINT_DYN_CTL_SW_ITR_INDX_ENA_S	24
-> > +#define PF_GLINT_DYN_CTL_SW_ITR_INDX_ENA_M
-> BIT(PF_GLINT_DYN_CTL_SW_ITR_INDX_ENA_S)
-> > +#define PF_GLINT_DYN_CTL_SW_ITR_INDX_S	25
-> > +#define PF_GLINT_DYN_CTL_SW_ITR_INDX_M
-> 	BIT(PF_GLINT_DYN_CTL_SW_ITR_INDX_S)
-> > +#define PF_GLINT_DYN_CTL_WB_ON_ITR_S	30
-> > +#define PF_GLINT_DYN_CTL_WB_ON_ITR_M
-> 	BIT(PF_GLINT_DYN_CTL_WB_ON_ITR_S)
-> > +#define PF_GLINT_DYN_CTL_INTENA_MSK_S	31
-> > +#define PF_GLINT_DYN_CTL_INTENA_MSK_M
-> 	BIT(PF_GLINT_DYN_CTL_INTENA_MSK_S)
-> > +#define PF_GLINT_ITR_V2(_i, _reg_start) (((_i) * 4) + (_reg_start))
-> > +#define PF_GLINT_ITR(_i, _INT) (PF_GLINT_BASE + (((_i) + 1) * 4) +
-> ((_INT) * 0x1000))
-> > +#define PF_GLINT_ITR_MAX_INDEX		2
-> > +#define PF_GLINT_ITR_INTERVAL_S		0
-> > +#define PF_GLINT_ITR_INTERVAL_M		MAKEMASK(0xFFF,
-> PF_GLINT_ITR_INTERVAL_S)
-> > +
-> > +/* Timesync registers */
-> > +#define PF_TIMESYNC_BASE		0x08404000
-> > +#define PF_GLTSYN_CMD_SYNC		(PF_TIMESYNC_BASE)
-> > +#define PF_GLTSYN_CMD_SYNC_EXEC_CMD_S	0
-> > +#define PF_GLTSYN_CMD_SYNC_EXEC_CMD_M	MAKEMASK(0x3,
-> PF_GLTSYN_CMD_SYNC_EXEC_CMD_S)
-> > +#define PF_GLTSYN_CMD_SYNC_SHTIME_EN_S	2
-> > +#define PF_GLTSYN_CMD_SYNC_SHTIME_EN_M
-> 	BIT(PF_GLTSYN_CMD_SYNC_SHTIME_EN_S)
-> > +#define PF_GLTSYN_SHTIME_0		(PF_TIMESYNC_BASE + 0x4)
-> > +#define PF_GLTSYN_SHTIME_L		(PF_TIMESYNC_BASE + 0x8)
-> > +#define PF_GLTSYN_SHTIME_H		(PF_TIMESYNC_BASE + 0xC)
-> > +#define PF_GLTSYN_ART_L			(PF_TIMESYNC_BASE + 0x10)
-> > +#define PF_GLTSYN_ART_H			(PF_TIMESYNC_BASE + 0x14)
-> > +
-> > +/* Generic registers */
-> > +#define PF_INT_DIR_OICR_ENA		0x08406000
-> > +#define PF_INT_DIR_OICR_ENA_S		0
-> > +#define PF_INT_DIR_OICR_ENA_M	MAKEMASK(0xFFFFFFFF,
-> PF_INT_DIR_OICR_ENA_S)
-> > +#define PF_INT_DIR_OICR			0x08406004
-> > +#define PF_INT_DIR_OICR_TSYN_EVNT	0
-> > +#define PF_INT_DIR_OICR_PHY_TS_0	BIT(1)
-> > +#define PF_INT_DIR_OICR_PHY_TS_1	BIT(2)
-> > +#define PF_INT_DIR_OICR_CAUSE		0x08406008
-> > +#define PF_INT_DIR_OICR_CAUSE_CAUSE_S	0
-> > +#define PF_INT_DIR_OICR_CAUSE_CAUSE_M
-> 	MAKEMASK(0xFFFFFFFF, PF_INT_DIR_OICR_CAUSE_CAUSE_S)
-> > +#define PF_INT_PBA_CLEAR		0x0840600C
-> > +
-> > +#define PF_FUNC_RID			0x08406010
-> > +#define PF_FUNC_RID_FUNCTION_NUMBER_S	0
-> > +#define PF_FUNC_RID_FUNCTION_NUMBER_M	MAKEMASK(0x7,
-> PF_FUNC_RID_FUNCTION_NUMBER_S)
-> > +#define PF_FUNC_RID_DEVICE_NUMBER_S	3
-> > +#define PF_FUNC_RID_DEVICE_NUMBER_M	MAKEMASK(0x1F,
-> PF_FUNC_RID_DEVICE_NUMBER_S)
-> > +#define PF_FUNC_RID_BUS_NUMBER_S	8
-> > +#define PF_FUNC_RID_BUS_NUMBER_M	MAKEMASK(0xFF,
-> PF_FUNC_RID_BUS_NUMBER_S)
-> > +
-> > +/* Reset registers */
-> > +#define PFGEN_RTRIG			0x08407000
-> > +#define PFGEN_RTRIG_CORER_S		0
-> > +#define PFGEN_RTRIG_CORER_M		BIT(0)
-> > +#define PFGEN_RTRIG_LINKR_S		1
-> > +#define PFGEN_RTRIG_LINKR_M		BIT(1)
-> > +#define PFGEN_RTRIG_IMCR_S		2
-> > +#define PFGEN_RTRIG_IMCR_M		BIT(2)
-> > +#define PFGEN_RSTAT			0x08407008 /* PFR Status
-> */
-> > +#define PFGEN_RSTAT_PFR_STATE_S		0
-> > +#define PFGEN_RSTAT_PFR_STATE_M		MAKEMASK(0x3,
-> PFGEN_RSTAT_PFR_STATE_S)
-> > +#define PFGEN_CTRL			0x0840700C
-> > +#define PFGEN_CTRL_PFSWR		BIT(0)
-> > +
-> > +#endif
+> > +#endif /* !_IECM_H_ */
 > > --
 > > 2.33.0
-> 
-> Thanks,
-> Al
+> >
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
