@@ -1,80 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 430114A7F13
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 06:26:34 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46EAC4A80CA
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 10:00:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E3F8660D59;
-	Thu,  3 Feb 2022 05:26:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D626283F59;
+	Thu,  3 Feb 2022 09:00:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3lFjNuPrgP20; Thu,  3 Feb 2022 05:26:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6Pjsacqz8Rj9; Thu,  3 Feb 2022 09:00:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9AEE560745;
-	Thu,  3 Feb 2022 05:26:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1F99E1BF870
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 05:26:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C830983F47;
+	Thu,  3 Feb 2022 09:00:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 95A651BF403
+ for <intel-wired-lan@osuosl.org>; Thu,  3 Feb 2022 09:00:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 184774011B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 05:26:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8248A81498
+ for <intel-wired-lan@osuosl.org>; Thu,  3 Feb 2022 09:00:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D-m6BF1_mo2c for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Feb 2022 05:26:25 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x133.google.com (mail-lf1-x133.google.com
- [IPv6:2a00:1450:4864:20::133])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B4035400A9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 05:26:24 +0000 (UTC)
-Received: by mail-lf1-x133.google.com with SMTP id z4so3609952lft.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Feb 2022 21:26:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ddfFznydds3zNOCqJrwlGUSV/emehWuiRdAQynCn8ms=;
- b=SInswz34Wde2kRH6ghsyFwhOzmBe2zhHRsmWfn7vOg8PbsCgFYsyiZG/XSnSgOPSM6
- rr7cRpRhsp9uBbZGlZKJFMJoB2In9I37B2oMeHrLqpA/g7sKwgcmsrnfxhfoXduucbEd
- kuXjJn4DsdZLWDPOt5ivmHyxtDECgpaNtkEYdpkM566h9s5eNTifTAllTa5AQdHL7Zh1
- 8+1rG1BXiLIwCnT6A9PpX2EqcmGF2CCpN9WVKXAWXg3nYrv0bWKxtDXRdnRDPKSJLDQL
- Xxp6FLqatvZUq5KZiJmXNEqwegzt1FrItI4L0Dk0ecNbMTsbzIODTtACZ9RKtFbXeCua
- dVCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ddfFznydds3zNOCqJrwlGUSV/emehWuiRdAQynCn8ms=;
- b=Dgo1gTcvBXN9++Xfzc788KINv/XZVw/n5OpXAfsnwi210mNbl3zBbj7W2Uit/QhQIS
- ftDQlPN02FEZ8bsdVwDoOuM0Oj9RJs4+S1QlgmaM728SgCAFOaut9emEG6LowFkONXeP
- nIPopctmd5opOC08IjkRELG2H+rLBg6Egl7kxyaf6aYBK+Em7dUdTpGKihxdn6VybG2k
- yDCBpi7hdTbXB5EfWJo36RRWpMMZhsGkhXY72PgTD5r/OqFIfbXkYKrdTx/NL8oVXETs
- ARpudbPfiGkOy14R+F9QRq5ThjzKXGvSrsbAvuZawHxPxD+dcQDwdMh/FtDiBDaMgPc0
- gMNw==
-X-Gm-Message-State: AOAM533V6040zVPIS8jT76X64PtALcnToFMpEhBcta+g+2srEmYqo6v2
- IPeNB0qgE2BikFQgu2IeBdpbtAUXeJK5Z5hc4lA=
-X-Google-Smtp-Source: ABdhPJzhnigo7Q/0FtAV3Nx+d2Zv4B6dEtKR7zuBIpG3Y5LgIuTAFtA5h8wOFfwxi7Rowypd8PtPJWFhK5ExuX2K3kE=
-X-Received: by 2002:a05:6512:398d:: with SMTP id
- j13mr25657298lfu.251.1643865982439; 
- Wed, 02 Feb 2022 21:26:22 -0800 (PST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5z0vUaVrMlZ6 for <intel-wired-lan@osuosl.org>;
+ Thu,  3 Feb 2022 09:00:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B16E08148D
+ for <intel-wired-lan@osuosl.org>; Thu,  3 Feb 2022 09:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643878823; x=1675414823;
+ h=subject:to:references:from:message-id:date:mime-version:
+ in-reply-to; bh=SyZ0EZ/Yv+g7eFgZYGEcWef687L01DclxmeHaur4Qr4=;
+ b=K6yj8Su5q/zz7vr3x8Fo1lJEpmfo7xe691jq4gqle8u0QxqOPbU63wQm
+ jen0nFgh/fCKINi4RG6LO0dOuPArOifQnVRJ4k+nu3PbYtOB10J5euDS2
+ NG+2x6lwpY+9kkUgxdM1adJwmepFa/PnPGZeBfwWg1pbIWutNwDbwsYeH
+ HaAlSqzgcHVZOmOie5jve3pZ+0UBOBKiwSie9mYoB8I9go+l4V2tM+44r
+ lgtLcejqf6SNlQ0xQbL2M4l5e35DP21Az5rKaMmKolXGWV20UQiSqVaIG
+ GARyeD6RQxmA7oyc0M/dp6J6zS2cYmnftD3PWcDh+eiO8GtT7qxpkv0tu g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="245697651"
+X-IronPort-AV: E=Sophos;i="5.88,339,1635231600"; 
+ d="scan'208,217";a="245697651"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2022 01:00:21 -0800
+X-IronPort-AV: E=Sophos;i="5.88,339,1635231600"; 
+ d="scan'208,217";a="523821555"
+Received: from dfuxbrum-desk.ger.corp.intel.com (HELO [10.12.48.255])
+ ([10.12.48.255])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2022 01:00:20 -0800
+To: Corinna Vinschen <vinschen@redhat.com>, intel-wired-lan@osuosl.org,
+ netdev@vger.kernel.org, Vinicius Costa Gomes <vinicius.gomes@intel.com>
+References: <20220119145259.1790015-1-vinschen@redhat.com>
+ <20220119145259.1790015-2-vinschen@redhat.com>
+From: "Fuxbrumer, Devora" <dvorax.fuxbrumer@linux.intel.com>
+Message-ID: <ffe614b0-1f7b-8225-16a7-3a7a42867599@linux.intel.com>
+Date: Thu, 3 Feb 2022 11:00:17 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20220128001009.721392-1-alan.brady@intel.com>
- <20220128001009.721392-5-alan.brady@intel.com>
- <CAP-MU4MB=vAFb7B92yhx+CfX+NnRSJNzA3HH_X9geMaR6p4RTg@mail.gmail.com>
- <CO1PR11MB518657515DD2AEBF539B9B768F289@CO1PR11MB5186.namprd11.prod.outlook.com>
- <CO1PR11MB518632ED417B553A3CF06F2C8F289@CO1PR11MB5186.namprd11.prod.outlook.com>
-In-Reply-To: <CO1PR11MB518632ED417B553A3CF06F2C8F289@CO1PR11MB5186.namprd11.prod.outlook.com>
-From: Shannon Nelson <shannon.lee.nelson@gmail.com>
-Date: Wed, 2 Feb 2022 21:26:10 -0800
-Message-ID: <CAP-MU4N1b1Dj6LT=hunEapMscS_+QxttF5ehv8DAdqU=DkbM6A@mail.gmail.com>
-To: "Brady, Alan" <alan.brady@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next 04/19] iecm: add api_init and
- controlq init
+In-Reply-To: <20220119145259.1790015-2-vinschen@redhat.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH 1/2 net-next v6] igc: avoid kernel
+ warning when changing RX ring parameters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,189 +80,154 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Burra, Phani R" <phani.r.burra@intel.com>, "Chittim,
- Madhu" <madhu.chittim@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, "Linga,
- Pavan Kumar" <pavan.kumar.linga@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2712177919884662010=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 2, 2022 at 7:40 PM Brady, Alan <alan.brady@intel.com> wrote:
+This is a multi-part message in MIME format.
+--===============2712177919884662010==
+Content-Type: multipart/alternative;
+ boundary="------------C263BB9630B4D2867EDA463E"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------C263BB9630B4D2867EDA463E
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+On 1/19/2022 16:52, Corinna Vinschen wrote:
+> Calling ethtool changing the RX ring parameters like this:
 >
-> > -----Original Message-----
-> > From: Brady, Alan
-> > Sent: Wednesday, February 2, 2022 7:25 PM
-> > To: Shannon Nelson <shannon.lee.nelson@gmail.com>
-> > Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Burra, Phani R
-> > <phani.r.burra@intel.com>; Chittim, Madhu <madhu.chittim@intel.com>;
-> > Linga, Pavan Kumar <Pavan.Kumar.Linga@intel.com>
-> > Subject: RE: [Intel-wired-lan] [PATCH net-next 04/19] iecm: add api_init and
-> > controlq init
-> >
-> > > -----Original Message-----
-> > > From: Shannon Nelson <shannon.lee.nelson@gmail.com>
-> > > Sent: Tuesday, February 1, 2022 1:27 PM
-> > > To: Brady, Alan <alan.brady@intel.com>
-> > > Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Burra, Phani R
-> > > <phani.r.burra@intel.com>; Chittim, Madhu
-> > <madhu.chittim@intel.com>;
-> > > Linga, Pavan Kumar <pavan.kumar.linga@intel.com>
-> > > Subject: Re: [Intel-wired-lan] [PATCH net-next 04/19] iecm: add api_init
-> > and
-> > > controlq init
-> > >
-> > > On Thu, Jan 27, 2022 at 4:35 PM Alan Brady <alan.brady@intel.com>
-> > > wrote:
-> > > >
-> > > > Initializing device registers is offloaded into function pointers given
-> > > > to iecm from the dependent device driver for a given device, as offsets
-> > > > can vary wildly. This also adds everything needed to setup and use a
-> > > > controlq which uses some of those registers.
-> > > >
-> > > > At the end of probe we kicked off a hard reset and this implements
-> > what's
-> > > > needed to handle that reset and continue init.
-> > > >
-> > > > Signed-off-by: Phani Burra <phani.r.burra@intel.com>
-> > > > Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-> > > > Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
-> > > > Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> > > > Signed-off-by: Alan Brady <alan.brady@intel.com>
-> > > > ---
+>    $ ethtool -G eth0 rx 1024
 >
-> <snip/>
+> on igc triggers kernel warnings like this:
 >
-> > > > +/**
-> > > > + * iecm_ctlq_add - add one control queue
-> > > > + * @hw: pointer to hardware struct
-> > > > + * @qinfo: info for queue to be created
-> > > > + * @cq_out: (output) double pointer to control queue to be created
-> > > > + *
-> > > > + * Allocate and initialize a control queue and add it to the control
-> > queue
-> > > list.
-> > > > + * The cq parameter will be allocated/initialized and passed back to the
-> > > caller
-> > > > + * if no errors occur.
-> > > > + *
-> > > > + * Note: iecm_ctlq_init must be called prior to any calls to
-> > > iecm_ctlq_add
-> > > > + */
-> > > > +int iecm_ctlq_add(struct iecm_hw *hw,
-> > > > +                 struct iecm_ctlq_create_info *qinfo,
-> > > > +                 struct iecm_ctlq_info **cq_out)
-> > > > +{
-> > > > +       bool is_rxq = false;
-> > > > +       int status = 0;
-> > > > +
-> > > > +       if (!qinfo->len || !qinfo->buf_size ||
-> > > > +           qinfo->len > IECM_CTLQ_MAX_RING_SIZE ||
-> > > > +           qinfo->buf_size > IECM_CTLQ_MAX_BUF_LEN)
-> > > > +               return -EINVAL;
-> > > > +
-> > > > +       *cq_out = kcalloc(1, sizeof(struct iecm_ctlq_info), GFP_KERNEL);
-> > > > +       if (!(*cq_out))
-> > > > +               return -ENOMEM;
-> > >
-> > > You might keep this as a local variable until you get to a successful
-> > > end, then set *cq_out when done.
-> > > Else, you need to be sure to clear it back to NULL on error return to
-> > > be sure no one uses a bogus value.
-> > >
-> >
-> > This one I'm not sure I follow.  If it's NULL we fall into the if(!*cq_out) and
-> > don't need to set it to NULL (it already is?). If it's not NULL then we go on to
-> > use it like a valid memory address so I hope it's valid.
-> >
-> > > > +
-> > > > +       (*cq_out)->cq_type = qinfo->type;
-> > > > +       (*cq_out)->q_id = qinfo->id;
-> > > > +       (*cq_out)->buf_size = qinfo->buf_size;
-> > > > +       (*cq_out)->ring_size = qinfo->len;
-> > > > +
-> > > > +       (*cq_out)->next_to_use = 0;
-> > > > +       (*cq_out)->next_to_clean = 0;
-> > > > +       (*cq_out)->next_to_post = (*cq_out)->ring_size - 1;
-> > > > +
-> > > > +       switch (qinfo->type) {
-> > > > +       case IECM_CTLQ_TYPE_MAILBOX_RX:
-> > > > +               is_rxq = true;
-> > > > +               fallthrough;
-> > > > +       case IECM_CTLQ_TYPE_MAILBOX_TX:
-> > > > +               status = iecm_ctlq_alloc_ring_res(hw, *cq_out);
-> > > > +               break;
-> > > > +       default:
-> > > > +               status = -EBADR;
-> > > > +               break;
+> [  225.198467] ------------[ cut here ]------------
+> [  225.198473] Missing unregister, handled but fix driver
+> [  225.198485] WARNING: CPU: 7 PID: 959 at net/core/xdp.c:168
+> xdp_rxq_info_reg+0x79/0xd0
+> [...]
+> [  225.198601] Call Trace:
+> [  225.198604]  <TASK>
+> [  225.198609]  igc_setup_rx_resources+0x3f/0xe0 [igc]
+> [  225.198617]  igc_ethtool_set_ringparam+0x30e/0x450 [igc]
+> [  225.198626]  ethnl_set_rings+0x18a/0x250
+> [  225.198631]  genl_family_rcv_msg_doit+0xca/0x110
+> [  225.198637]  genl_rcv_msg+0xce/0x1c0
+> [  225.198640]  ? rings_prepare_data+0x60/0x60
+> [  225.198644]  ? genl_get_cmd+0xd0/0xd0
+> [  225.198647]  netlink_rcv_skb+0x4e/0xf0
+> [  225.198652]  genl_rcv+0x24/0x40
+> [  225.198655]  netlink_unicast+0x20e/0x330
+> [  225.198659]  netlink_sendmsg+0x23f/0x480
+> [  225.198663]  sock_sendmsg+0x5b/0x60
+> [  225.198667]  __sys_sendto+0xf0/0x160
+> [  225.198671]  ? handle_mm_fault+0xb2/0x280
+> [  225.198676]  ? do_user_addr_fault+0x1eb/0x690
+> [  225.198680]  __x64_sys_sendto+0x20/0x30
+> [  225.198683]  do_syscall_64+0x38/0x90
+> [  225.198687]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+> [  225.198693] RIP: 0033:0x7f7ae38ac3aa
 >
-> Ah wait I think I understand, if we end up in error state later in the function like here we probably shouldn't be giving the memory back to the caller.  Will fix.
-
-Right.  If you store the pointer in a local variable first, then you
-can do the final assignment to *cq_out at the end once you know that
-all is done and safe.
-
-Some folks might thinik that at the end they could just set *cq_out
-back to NULL if there was an error, but I think it is safer and less
-of a surprise to leave the caller's data alone until we have a happy
-answer.
-
-
+> igc_ethtool_set_ringparam() copies the igc_ring structure but neglects to
+> reset the xdp_rxq_info member before calling igc_setup_rx_resources().
+> This in turn calls xdp_rxq_info_reg() with an already registered xdp_rxq_info.
 >
-> > > > +       }
-> > > > +
-> > > > +       if (status)
-> > > > +               goto init_free_q;
-> > > > +
-> > > > +       if (is_rxq) {
-> > > > +               iecm_ctlq_init_rxq_bufs(*cq_out);
-> > > > +       } else {
-> > > > +               /* Allocate the array of msg pointers for TX queues */
-> > > > +               (*cq_out)->bi.tx_msg = kcalloc(qinfo->len,
-> > > > +                                              sizeof(struct iecm_ctlq_msg *),
-> > > > +                                              GFP_KERNEL);
-> > > > +               if (!(*cq_out)->bi.tx_msg) {
-> > > > +                       status = -ENOMEM;
-> > > > +                       goto init_dealloc_q_mem;
-> > > > +               }
-> > > > +       }
-> > > > +
-> > > > +       iecm_ctlq_setup_regs(*cq_out, qinfo);
-> > > > +
-> > > > +       iecm_ctlq_init_regs(hw, *cq_out, is_rxq);
-> > > > +
-> > > > +       mutex_init(&(*cq_out)->cq_lock);
-> > > > +
-> > > > +       list_add(&(*cq_out)->cq_list, &hw->cq_list_head);
-> > > > +
-
-Here you can set *cq_out = local_ptr;
-
-> > > > +       return status;
-> > > > +
-> > > > +init_dealloc_q_mem:
-> > > > +       /* free ring buffers and the ring itself */
-> > > > +       iecm_ctlq_dealloc_ring_res(hw, *cq_out);
-> > > > +init_free_q:
-> > > > +       kfree(*cq_out);
-
-Here you would kfree() your local pointer
-
-sln
-
-> .
-> > >
-> >
-> > Will fix.
-> >
-> > > > +
-> > > > +       return status;
-> > > > +}
-> > > > +
+> Make sure to unregister the xdp_rxq_info structure first in
+> igc_setup_rx_resources.
 >
-> <snip/>
+> Fixes: 73f1071c1d29 ("igc: Add support for XDP_TX action")
+> Reported-by: Lennert Buytenhek <buytenh@arista.com>
+> Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+>   1 file changed, 3 insertions(+)
+>
+Tested-by: Dvora Fuxbrumer <dvorax.fuxbrumer@linux.intel.com 
+<mailto:dvorax.fuxbrumer@linux.intel.com>>
+
+--------------C263BB9630B4D2867EDA463E
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div class="moz-cite-prefix">On 1/19/2022 16:52, Corinna Vinschen
+      wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:20220119145259.1790015-2-vinschen@redhat.com">
+      <pre class="moz-quote-pre" wrap="">Calling ethtool changing the RX ring parameters like this:
+
+  $ ethtool -G eth0 rx 1024
+
+on igc triggers kernel warnings like this:
+
+[  225.198467] ------------[ cut here ]------------
+[  225.198473] Missing unregister, handled but fix driver
+[  225.198485] WARNING: CPU: 7 PID: 959 at net/core/xdp.c:168
+xdp_rxq_info_reg+0x79/0xd0
+[...]
+[  225.198601] Call Trace:
+[  225.198604]  &lt;TASK&gt;
+[  225.198609]  igc_setup_rx_resources+0x3f/0xe0 [igc]
+[  225.198617]  igc_ethtool_set_ringparam+0x30e/0x450 [igc]
+[  225.198626]  ethnl_set_rings+0x18a/0x250
+[  225.198631]  genl_family_rcv_msg_doit+0xca/0x110
+[  225.198637]  genl_rcv_msg+0xce/0x1c0
+[  225.198640]  ? rings_prepare_data+0x60/0x60
+[  225.198644]  ? genl_get_cmd+0xd0/0xd0
+[  225.198647]  netlink_rcv_skb+0x4e/0xf0
+[  225.198652]  genl_rcv+0x24/0x40
+[  225.198655]  netlink_unicast+0x20e/0x330
+[  225.198659]  netlink_sendmsg+0x23f/0x480
+[  225.198663]  sock_sendmsg+0x5b/0x60
+[  225.198667]  __sys_sendto+0xf0/0x160
+[  225.198671]  ? handle_mm_fault+0xb2/0x280
+[  225.198676]  ? do_user_addr_fault+0x1eb/0x690
+[  225.198680]  __x64_sys_sendto+0x20/0x30
+[  225.198683]  do_syscall_64+0x38/0x90
+[  225.198687]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  225.198693] RIP: 0033:0x7f7ae38ac3aa
+
+igc_ethtool_set_ringparam() copies the igc_ring structure but neglects to
+reset the xdp_rxq_info member before calling igc_setup_rx_resources().
+This in turn calls xdp_rxq_info_reg() with an already registered xdp_rxq_info.
+
+Make sure to unregister the xdp_rxq_info structure first in
+igc_setup_rx_resources.
+
+Fixes: 73f1071c1d29 ("igc: Add support for XDP_TX action")
+Reported-by: Lennert Buytenhek <a class="moz-txt-link-rfc2396E" href="mailto:buytenh@arista.com">&lt;buytenh@arista.com&gt;</a>
+Signed-off-by: Corinna Vinschen <a class="moz-txt-link-rfc2396E" href="mailto:vinschen@redhat.com">&lt;vinschen@redhat.com&gt;</a>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+</pre>
+    </blockquote>
+    <span style="direction:ltr;unicode-bidi:embed" lang="en-US">Tested-by:
+      Dvora Fuxbrumer
+      &lt;</span><a href="mailto:dvorax.fuxbrumer@linux.intel.com"><span
+        style="direction:ltr;unicode-bidi:embed" lang="en-US">dvorax.fuxbrumer@linux.intel.com</span></a><span
+      style="direction:ltr;unicode-bidi:embed" lang="en-US">&gt;</span>
+  </body>
+</html>
+
+--------------C263BB9630B4D2867EDA463E--
+
+--===============2712177919884662010==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2712177919884662010==--
