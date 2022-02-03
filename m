@@ -2,101 +2,103 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E4C34A7E39
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 04:08:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 098E74A7E42
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Feb 2022 04:13:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DE6D1402D8;
-	Thu,  3 Feb 2022 03:08:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C9AA409A6;
+	Thu,  3 Feb 2022 03:13:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9SrrSDMYOCst; Thu,  3 Feb 2022 03:08:43 +0000 (UTC)
+	with ESMTP id 9JA0m90gxrd9; Thu,  3 Feb 2022 03:13:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE3D9401F9;
-	Thu,  3 Feb 2022 03:08:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A60140997;
+	Thu,  3 Feb 2022 03:13:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 469161BF47A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E7F41BF97D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:13:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 40A60402D8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8A9F9400E9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:13:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eantkvnq5ri1 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Feb 2022 03:08:37 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mYF9PPBV9oIn for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Feb 2022 03:13:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2AC02401F9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:08:37 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 838A0400A9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Feb 2022 03:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643857717; x=1675393717;
+ t=1643858007; x=1675394007;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=zqlJ84IEIb5l0i4ANAoL1X7VNY/SMt8W5G1G/6dS9AQ=;
- b=X1TAnuz8vo5E+JZarSkN3vdVAwmNAR7wL2zEg9jIDQOym+/xOHvfEw24
- TtDEXDE7KLPK0yHKMbkc48Mh4ZinoGFF+P8GJfxEPKw70TDNxRsiSXLaI
- 17cTNVNb2XCQPffAv4f6v5kHebDVWJeR8TDaosWxz6PtYSwtUkhCXx0Sp
- B/yUQ8ZJMBtqnY4l3zh2KE3SftLx06Cqr1nj4BvXDnAOFrmk7wkagE9CF
- CpR1oq22QZpcvCwqT47iWZIgQjWYUtiTsRt5S7Hinl49oJ5/IB7V/76lG
- ww9ZVWY9ZE9ifOeZ3lAhWB6bwyrKGx9Y5OXXBL1hxIZpfZYuU5H6nsqEL A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="231632652"
-X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="231632652"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2022 19:08:36 -0800
+ bh=HMtawKVbpt+NyUn1dQtOwf+iS5bcW1tfQldx5Ojl2gg=;
+ b=h8LMwqrTus/Twk8HLDvMBnAc8KSB1lSsUQnhpRpgA2vd24UEZw2O7HB+
+ GOtXwckTrqH4w9/TnCHw8y0yjW/GqWNpG7n3VU2ck+tp6lFxv11LbAzf+
+ 2tkYVk161xoAtrb5lrdP5FOdaN0q1aIRY69yrz4S5QRlkMqGWCFd5jzLf
+ N9rY9V5iwV/Vet2lCxqFoUI1r2NPrDToVbfurEz9USlEVeTiMumDSlcZ2
+ n/zuVzvZ9h7lskpvxQb2Gl58EkYLnKxvv4exYGn5PLy0hJLIqiTFSLj6P
+ oozetlffx5lxRXSrb4oHkYUOQcST6h/gJn0jeVUHOOvDeeeSfB1/bMI9b g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10246"; a="235467408"
+X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="235467408"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2022 19:13:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="769489712"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga006.fm.intel.com with ESMTP; 02 Feb 2022 19:08:35 -0800
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.88,338,1635231600"; d="scan'208";a="620368417"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by FMSMGA003.fm.intel.com with ESMTP; 02 Feb 2022 19:13:26 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 2 Feb 2022 19:08:35 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
+ 15.1.2308.20; Wed, 2 Feb 2022 19:13:26 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Wed, 2 Feb 2022 19:08:34 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2308.20; Wed, 2 Feb 2022 19:13:25 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 19:08:34 -0800
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2308.20 via Frontend Transport; Wed, 2 Feb 2022 19:13:25 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.174)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.20; Wed, 2 Feb 2022 19:08:34 -0800
+ 15.1.2308.20; Wed, 2 Feb 2022 19:13:25 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RgyMIXIGpF0Z5AMzJVOeHuyMH2fYPCVGNCEg9msI801NuGrQ0CGoZRVCKzNnc1nNgEFCdlfCiMQIStGYNjXkFrE81HNBvg9ZBLyCelk2VT0md+YaABUVugDq5QcUvNMaDJ2Hb6TtZT4RPcF4OOsu7dyf2cXXradHWcQ2gKAEFh5/2nPJBPN4w9Jsfyw8sQMGpcVEgo94/zfDnnG0iMHXFSJs/AUtrn3a4lJMJs1Bzh/5Ws4PMPEO7CexaQv4zHffW+SbcollGkePSpNZwDfgXZBb57BL1FS4jV8HN5nKUPlvt3fgYh/+aq6PwlBiH4xP+RpAswquxLOg9GvyxgKfpg==
+ b=BjpCEn9soMr9Re9U9RxPfgt8PDsVz1E1nUbThsH/vd7dyQiIav7gA7jIs5wN7QP89994wwngt/HJVsoYJA+DkVklHsU9XiQQ6nzB2e50/KryS1DsZ4EnEPgzvqsaG5xbTV+VldgWDPoQNAfLYKcT1ntUZP6eUG/k49sGtxO2FcogBJzS538II1pwPu5zW+tCULSo5u76tRE/+la3DB/jb2zvQ1y+k+OS2d6Qmkrhw8vJhboyPuhLpJDCvTvB8+STieaXyZM6amlNdjZNKziQce+eLmzTFsG/vtvtVX/7ByyCEZNpKf52yVtr0lTzDn36XCYSZDJxOYEdP0R2+RfIXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zqlJ84IEIb5l0i4ANAoL1X7VNY/SMt8W5G1G/6dS9AQ=;
- b=Ml00H26ID36mJ6FYe22JaFWnERhAvKyGvhOM/hoQB709XNmVuJiPRnt4KkgpW6F+us01UQApxLsjma2SD1ynOoY8azTJ+SHbZBCWl+Pm2HWgr4EA3eS2DqxMwwTD5EqPxHHxOQTtUEW69dtOALahNHm3gIDCGw9Y0uybToLucb8RmqoIYPC9TFoVv1Bt2XzNi9OTw5AKEGPMopdG+X5jXB1RlEidEKPlQSrkwnwzjXcYBo1yWy22+x1t/27nR1easOg02hI4RMmW4eZMUOAsECSpylXiHheAsRawIFn+jpzHWOj22gS4PeN8YZzNBE977W24eFgjw2jM/iWygmYlAg==
+ bh=HMtawKVbpt+NyUn1dQtOwf+iS5bcW1tfQldx5Ojl2gg=;
+ b=Nfq64Fvyv00JZcfF0/2I4nRvFIgpoos7dCUDZXyi9jxWBsOU23FdwgKTmdU+9L/13KWFilnM030bDbJIL+QTpb5EaZ890pRmT0e5gFTG6D8qtKMrKdMsl3DlSeFbtaGlyX/92u/vqQL3DI2pZZnoPymRewE8mPA1RUU+blCn9OrbzEL6OGXpjvXO/WCOPGA+QAsSncT2v70qI0apG2CkZQr6zMia9kWAosp7mcgsH7d3HwuQD3tyM/4Da6B8wCdSTArobP5Jlj7lYaTs6j2aYxraRvj1XLRVaLeb7Ad0JcMvKl2jemwc3z4m7C3dKWOZoHnv8tgS9am+98HA5ib/Yw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 Received: from CO1PR11MB5186.namprd11.prod.outlook.com (2603:10b6:303:95::14)
- by CO1PR11MB4850.namprd11.prod.outlook.com (2603:10b6:303:9c::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.11; Thu, 3 Feb
- 2022 03:08:33 +0000
+ by CY4PR11MB0055.namprd11.prod.outlook.com (2603:10b6:910:76::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.19; Thu, 3 Feb
+ 2022 03:13:05 +0000
 Received: from CO1PR11MB5186.namprd11.prod.outlook.com
  ([fe80::3d01:b3b2:d2f0:5be1]) by CO1PR11MB5186.namprd11.prod.outlook.com
  ([fe80::3d01:b3b2:d2f0:5be1%5]) with mapi id 15.20.4951.012; Thu, 3 Feb 2022
- 03:08:33 +0000
+ 03:13:05 +0000
 From: "Brady, Alan" <alan.brady@intel.com>
 To: Shannon Nelson <shannon.lee.nelson@gmail.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic module
- init and documentation
-Thread-Index: AQHYE97P+xgP0L96iEuzkw7w8eI81ax/IJcAgAIOAkA=
-Date: Thu, 3 Feb 2022 03:08:33 +0000
-Message-ID: <CO1PR11MB51860674D2077D6CDEDB7D778F289@CO1PR11MB5186.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next 03/19] iecm: add probe and
+ remove
+Thread-Index: AQHYE97YUqZut7iGPkK2mjTDfNsvKKx/JXMAgAIJeiA=
+Date: Thu, 3 Feb 2022 03:13:05 +0000
+Message-ID: <CO1PR11MB51863D7008BB8ECB918F7FD98F289@CO1PR11MB5186.namprd11.prod.outlook.com>
 References: <20220128001009.721392-1-alan.brady@intel.com>
- <20220128001009.721392-3-alan.brady@intel.com>
- <CAP-MU4OwDLJ623dDX7kJhXaTQqBM0coyLxAL06C3pKB_EO8Caw@mail.gmail.com>
-In-Reply-To: <CAP-MU4OwDLJ623dDX7kJhXaTQqBM0coyLxAL06C3pKB_EO8Caw@mail.gmail.com>
+ <20220128001009.721392-4-alan.brady@intel.com>
+ <CAP-MU4ND_ELU3QJj4R42ngc=iDyjchAHp8qudbUii2s8BmCs6A@mail.gmail.com>
+In-Reply-To: <CAP-MU4ND_ELU3QJj4R42ngc=iDyjchAHp8qudbUii2s8BmCs6A@mail.gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -107,69 +109,69 @@ dlp-version: 11.6.200.16
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a300322d-2ffa-4991-a2d3-08d9e6c2767c
-x-ms-traffictypediagnostic: CO1PR11MB4850:EE_
-x-microsoft-antispam-prvs: <CO1PR11MB4850F825498A47BD66396EDD8F289@CO1PR11MB4850.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:935;
+x-ms-office365-filtering-correlation-id: a4b6b4ac-2657-4e04-c192-08d9e6c3189f
+x-ms-traffictypediagnostic: CY4PR11MB0055:EE_
+x-microsoft-antispam-prvs: <CY4PR11MB0055F8443181A7E91430DEE08F289@CY4PR11MB0055.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:590;
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iJh21pivAauRSgvDvUJHQI4Cf1ArbeEIWXpgfDs7cwWCvlpHCqdvWX3W5hG6tImHlbF8k0iCTyTbKXZC8Jpl7X2XJiXZILjmJXfYHj0ZhoSFRNrLMO4WrjMJuWkeBz8wTp26HmOuZS8R5HwjOrc7BuRaOUi1+tOVZk1HwTPd45Vt1F+/9A2LI4bvG6+3XzeolrFrugj58PujTOl74m+eEPy+S3VzASu0IouViHT2TJ6vWSBkrfhzTD0a1ZFImKstSf4+3m47VY1udh/lBD8MZZi2gOoqfXTBHFlktFkb5p3YdMnjojRDHwVM34GTOugZOIy6SiDNuxYZ0tAew9NIWtv41BPTWjTlHNYS4XIcCVatPQptF1vSnXmkZGN2Dlj9M5Ed50Iyk0oDDizYZhiPeRxI09ez7NoqAGxV+BlEkUDMKCWduSU/nTkMmyzFR5kkOE0r4ezzRz2h/q+K9pVP4LWS9HFXR0u3vjVNXx3ieMe6fM2EKRvN07hnNz2rVAWJTk5t9KmBrzBfyi3kLTXerwv7TrniL6UIJansUTsC5NCr+yzeo6kN4lBALbvlTck7ojJCN9Ed5bOPKnghmDmb3wl5RF3fpKptfBiZdsbwlAoTBWhH9jD/JrOEEIb1KvBswXkUaW4YrN0x8OTi8RsAum9PV44cBhxDWsTWymr64lOMZzWQkGbyq+N9pZXpfBmzxWawu2uymOwN3N5qhzQzWQJqKYcKz2xLyskOX1TWRyfa/XxwlFfGchbxBiNQrRx+9j54GiHFcH4XKWGiJjw8ecA6WaGlX9/fuV7dHDh61Xc=
+x-microsoft-antispam-message-info: TJHUHYbEAGMZGlxKbC/g3OMZdCEgcFIaDa2IzCpmI7UJwXQDT8BohhyoMQxabaqiTkF/iaazqxcOx6e0ErKnu+BzIyF9g3YH8YxxiVDvyv4YxMpzeP7OF5ZLCqVTuIijiCc80oGWvxFEoHdJ9EnUnQL1MV/tHG83D3s0yv+QOL1bXIVX8aPsVSou7t8BwGtduKB/41hYD8g5+mwCMuVdqp+CAsBxAfiNprL5G+vy/6b/HxuXVBm91gATQAR9tC3qfA8X1AmlrVd8EX6OnavmAMnLchGhSiHWB50rGKeAqa92qA56HFWSKwdLzpBgpNlrYWA5zmvZnOKiv05oYD1x8MnfqbT9j/lClJFj75IzBiEuPQcWppKqerIQxjajetn66fkm/MEcTwW0eAiWbeVPJu4D/0bgbJ7wTVMu3g4rpacVqm+vlF+joP835LZ8L0KWQeYbg7gwHHqvdVIN6EgA9hb4Ibg0qXbKwDtLc1C77M3ulbHR8jYdYB0CxBvHBr01sXtpT46kl2zXbA7JAFaYfSJp3hjguNdOe9lR73elex2xHmEsWTKu9UgmvGKX2Sy3McG0I+kkBBpjC8EY6TXEjbiLMDZjYILDv8S8D149Qm1HHcO8X3JKvkAHR0UOtVIU/Dgz5ZKW/b8movia/mbiO1AYB5QdJ/Nb9mqUeds/wxcs7/R1dhfNGWbFXGSwBlqF0g5upTgcLtX7YMWWdPz6fK19GUkkUXmo2Fq28GBtJsrYBuAVu2G7iKiNOD9bCVTSz1OSZtTwJ9cNRRu9zK51JMhpAghWWPkDG1pe/VOAEL4=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CO1PR11MB5186.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(38100700002)(107886003)(54906003)(6916009)(38070700005)(33656002)(316002)(9686003)(7696005)(6506007)(71200400001)(53546011)(86362001)(186003)(122000001)(66946007)(8676002)(508600001)(82960400001)(26005)(83380400001)(5660300002)(8936002)(66556008)(66446008)(66476007)(76116006)(64756008)(52536014)(966005)(2906002)(4326008)(55016003);
+ SFS:(13230001)(366004)(66476007)(66446008)(64756008)(66556008)(52536014)(30864003)(76116006)(107886003)(186003)(508600001)(86362001)(6916009)(66946007)(54906003)(5660300002)(966005)(55016003)(316002)(33656002)(8936002)(38100700002)(8676002)(9686003)(122000001)(83380400001)(2906002)(7696005)(4326008)(6506007)(82960400001)(26005)(71200400001)(53546011)(38070700005)(579004);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UFlsdVZJOGdBZUNPSDJ2ZXhSeEVOMHB2VG1zNTVRU0xnbU9tb05JVHZYNFRF?=
- =?utf-8?B?MGZMeE9SUHMxQnRwRjdYeDdVcDRTS3U3cVB2ZUlmdndITnI0WHVMSExxN25O?=
- =?utf-8?B?RU5TTG45S1RYcm9LejFPWEFJMkJpK3ppdjU1ZjVRdWh4dWVzcm1RU2hsNnQ3?=
- =?utf-8?B?WGljekpzVHArZGRBYkFFNGJFbndBeGkwWkE2dzFrVDVTSkFUdE5JN3pTWmQr?=
- =?utf-8?B?ZSttVFJvRDd4dEY1dW9PbkJsYjh3SU9FQjZFK1RzN0xUQU5lSkZoRmtjcXdK?=
- =?utf-8?B?RDJpSUEzNHc5UUhpVmFXQ21sZFVxZ0tyd2E0Q2tGNHBnanpJK0ZnTkgrZFU3?=
- =?utf-8?B?cGZoMjlhdURqL1huWE8rWDJoeUxQemZ2V3pOcjd3bDAwVGE3SXEwNzV5ZVZX?=
- =?utf-8?B?TGkwR0FhWmJ2MFNCS281VTJrY1ZPcVhKcUs2NTNHKzlkNlR0Ui9Gb09NZy84?=
- =?utf-8?B?R3pRK0MrRFR4bHlKYTBSNHVXc2hydS9BelFWMFRHVE12US91MHp1YjUzditD?=
- =?utf-8?B?RVM0cFMyb2R1bHRRaGFyQTRlWTBjaVFBS0xqbUhleDByMnZsdFNKYk1oeEk1?=
- =?utf-8?B?ZHdlQmRWMndOTHkvYlByVVo4K0FQNkw0MjRWRFBjTkpraXk1aUttMmdxODdJ?=
- =?utf-8?B?NUxxcGgxUnUvMWNCZ29rbmdXdTRINEZCVFRvRlJGVFpwcnRmUHdsaW80WkdC?=
- =?utf-8?B?Qmlvcmd6Z0pWMVJSUDhCbnhPS2F2NWxYWXV4em9sdGsyTG9QVDFraWZ6MmVF?=
- =?utf-8?B?c1Avd1pKNUJqZllqb0pKQm5zTDBtQnoreE9zelM5U2Rhclh0TkgzUGNuUDlB?=
- =?utf-8?B?S2laV1VaWVhGTFZqaEJBU0tsOXNWU1UyWmhpQ1J2UVJDeHdDVjlhemxsRW80?=
- =?utf-8?B?MUVOWUF4YlQzeTFmUDR5amNidURpVGo2VVdPckZoeFZ6Z0V5eWxlQXl1NFJs?=
- =?utf-8?B?akRzSmZDQm5zV3plSkcyZHFWZlB4VUJqQ2U0bGQyckFGSzY2eHJNSkZURlor?=
- =?utf-8?B?YS9aZzFqR0pibUV6UXRZOVRDREY2OC9xL0ZxMk9ydnNQclVyN1I4VTIzaWl4?=
- =?utf-8?B?VkpEQnNLYmdGdk5GZ3RjOU9iTlVvb29MRFNTTCtpZ1dCQ2I2blN5UUl4VHpZ?=
- =?utf-8?B?OC82R2lmOUE2cGlLQlRMZ1JIaUpyTWEwZDFwZGhqUlJnY3IrekpLVktydENp?=
- =?utf-8?B?djhrdDBrV2ZXR1ZDMTZXUktSSTdibmU3SDRnVGtJeHVRbG1HNU1VcjFEbCs1?=
- =?utf-8?B?ZHhmUk9lbHNlWTZ6UVZOV3VCdFpBV3JQMERwRDdqeGlRdVZYYzVpWEg2OEln?=
- =?utf-8?B?cmIrMER4TndwbTVrRUVUNjJYRHNmanM1S3huZEk1dUVnQWVmMVdhclZRNStN?=
- =?utf-8?B?U2tLZUJhOTU5M1FyRVlQZU02N2hWZ3JIT0pQMjJ4WGRDV0pjdXRDaE5SY1NB?=
- =?utf-8?B?VGIrVlRJbm5vdDRqckMxcmYzMytITGt6SmttcW0yQUFOWHZERTFrUDR5dTda?=
- =?utf-8?B?SG1PTDJ2ZUJFcHF6YUVqb1hYTkhPbERSUWd2YXcwWVV3RlQ0Q3JhY25RNmdJ?=
- =?utf-8?B?TUR2cm5UbGZrZWhsTlNEaW9kSGxKekxKMzVyNXFTcGlIQVFKeUFlOVhIRitp?=
- =?utf-8?B?RkZJODFtUUJVdE5Cb25JenBESlRrbitlWVVUN1lQQkVuNzRDeVJCb21LelRD?=
- =?utf-8?B?ek51Y0FhNDlLbHZtTXh5dUl1TSsrcXprc3NCNlFxQ0hSWjRYWDNxc2RmbTRt?=
- =?utf-8?B?eUJiTnoxdldDbzlmWldDWDJtakF6SzBJUHFORDFLNllvbXQ1a0JuUitreU82?=
- =?utf-8?B?RXl5QUZkdnRJb1VyK29VVWpaMFZ2YXgxYnhSZEttTEdteUh5NWh3WWhvMlFy?=
- =?utf-8?B?VndSSUI5MFVqODcyOWdLSGVOVHJveDVkQm1Bc2piWStVRkg0TUVReUhRWWFp?=
- =?utf-8?B?LzBWODZPL3ZEdEFqRFR6eDN0SHpCZUY1TG9MUDdVUklYTjlsTkp1emNudnpj?=
- =?utf-8?B?MHovZHgxWDMzL2VzYmFDYTVRSHJGSVFPWE53bkx5QWV3LzhqdTBFcVNhZzM2?=
- =?utf-8?B?QUNoVlhIR1VORzJROUdBMDRMY3pNZUx1U00zSFhKZW5UemVQeFRqL01DR2M1?=
- =?utf-8?B?WUFraXZMTGhGZnN3UXA0K2p5M0NKTXlSL29hRXowbDFBelcyODQ4Q3A1a3B4?=
- =?utf-8?Q?Ih39QkRm/MjheQJ6JGmSQOU=3D?=
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NFlaRHl6d2NwSU92d0dWY1FFYVlHSDJNV3Y0MCtEL3VtR3ZCTmltbis1TEJT?=
+ =?utf-8?B?N2V6OGtyZEQwKzJvWkNVSy9veGYxM29raFg5Q3NCWWpmSVFrWHlJMWxWT2Jw?=
+ =?utf-8?B?RFNxbnl6VXNSbnBhME5nd2pQc2tpWWhFbEJ0cGJZOC83YS9rZC9STHZBbzlw?=
+ =?utf-8?B?RW1sMVZUNlBra1p6K1gwd0FvcmUwb2tJUWdQdDhZdERiUnBjdGp5OGNoTUNN?=
+ =?utf-8?B?Wi80ZStKZzczUXU4bzl4bTZGNnlJa2ZFbUZVY3B5ayt5TVhsdnhKSzhQUnZF?=
+ =?utf-8?B?ekJWNWtSUWpGZXg0RHF6TzlBVFY5d1VDY0k3bGxGb0FXNnVWMWxZdDAyZnNF?=
+ =?utf-8?B?RWNXc1IremZsL2JBMHhXWVlORFlKdG1nMk5rQWp4UHBSaWFxRlJTcm5YNFU0?=
+ =?utf-8?B?cEFtWVBkaGdTaEtERWVCMncvTjJndkFvbys3ZGtqcGtlZUlrOEdJSEVmampt?=
+ =?utf-8?B?a25EUyt1MWVRcVhrTFZQK2tORTB1czdVZVVYWUt1SUZvUzEybzZBblN2RndM?=
+ =?utf-8?B?Nk5oeVBTbHpXaFlyc2FIZ2dTQnhpU2MyMDBWaTRJd0R6K3pLWXJtYVcxVlZk?=
+ =?utf-8?B?a25MVzNydEsrZUIwN3dSVHRmSERuVTNTVnc0YU9UN3VaOG05anQyYmI3Q2c5?=
+ =?utf-8?B?TE0reG43eFVBNG1JQTN1YytZeGFZeDhpWXZZanFSeENZUUZwL0tHdjVkYTVm?=
+ =?utf-8?B?MnllRXA1SnloL1dEN2NJQWExWUJBSUdCRXFFbk5NaXVtY0lIN1I3TjhVRmF3?=
+ =?utf-8?B?cE80TEZaTVJaVTlLY0k5aEt5UlkrdXNuZnhHSnpqdy9PRzRSV3BIbC8wbmcx?=
+ =?utf-8?B?ZThtL2lYRUdpL2U5OTFPZHJQV013TXIwTTB3YS85RkFyenJUQUVpMExpeDlG?=
+ =?utf-8?B?REdrOGtIaktRaGh2RUJxbFc1SzFVVHdKVHptcHg5TENXMzBld2taZWtMMVdn?=
+ =?utf-8?B?TkpaZWxiZlo0LytnZXo0bVhsMzJXd2l5OFVLc3dPdldLWmhOZStKcWtxeXZN?=
+ =?utf-8?B?dkwxcGxHV2xvTnFHMlIvaStoMzNNQ2xtS1dsUUhMK0Y2aHFaR2NWU0tvKzlt?=
+ =?utf-8?B?L1VmNGdMVFE0ZmFKMmpZdW56QktpeWpyVVN6RExEZXpDWlpCeVV2cEFmcFpG?=
+ =?utf-8?B?SlNYTHNhK2ZkbEtuWTMwSUNWbXFnMzlxOHk3YkMrQ2t4Y0owNGJtVUZnY3FS?=
+ =?utf-8?B?b1ByZExkSklmenloZ3owQU5YZTRzSFIxWXRDMno0M25Ic0JoTjdwNC9OZ1J5?=
+ =?utf-8?B?a1pvMkdPYjF2aytPbkhJNWVOOWM0MGJlcWNpRHlRZVZVcDJjRlBUc04wZ1Y0?=
+ =?utf-8?B?STYyRWRLVmROYTMraXZQbzUrZ0VvOExKbEVYOWNVbllTM1VHTGJhbDVrVUlT?=
+ =?utf-8?B?cGhhczBlbWFJdzlidXEyOUJ6bkVVRm5xWnlTUllhcGpRSVRBQjA0TVF1Q05m?=
+ =?utf-8?B?WGRyNS85NEFJSDFsRlFWRmhoRVp1SFpUc2tYbXo3NjJXd1dRSjFITkM0WkYz?=
+ =?utf-8?B?a1NsZXM2bFdGR3ZqZTgybUxtNzFmSlEybDBja2Z6ZUpFZ3hlYlpiS2tySlha?=
+ =?utf-8?B?T3dKY3NHRU15NWd4d1dHVzlGcVVpZXpjd2pleFUwYlk2UFRCYlN4TlVsODNr?=
+ =?utf-8?B?S0RtVkVPUWREMHJWek5rbit2bmNkOVU3dks3eFM5cDNNVzc3ZWNtRUZLdURi?=
+ =?utf-8?B?b2dic1pDRGVXTVBSc1ZaRXlkdTQxUjlmVyt0ZlErcno4ZjJHZU5KUGZwa1Fm?=
+ =?utf-8?B?cWRRenJVbzZiZWFhQlU3ampIMmtwMWF6N3hWV1Fvb05NVGN0WTdabmNmeXg1?=
+ =?utf-8?B?T083NjhmOHpjOUs5QUw4VkpGR2JZdGV6YWhSTVIzZ004ZnVOZVBGL1dmcXJu?=
+ =?utf-8?B?clFEaDdBSDZqcGNQN3JCaDM0K1kyMHhScVBLbkwyT2MvNU0xQnZxVll5eGpG?=
+ =?utf-8?B?ZmNOM1ZkZVRIMXloMzVoanJGVEg4anBxYU1oVWFNVmpiNUhDMU9aMUVqZzRO?=
+ =?utf-8?B?WDY3YUFQTDVNc1RCVmRYaEtmVEhIMjhQaUZxZjNPVk1XY3dEcEdFU0NVakFm?=
+ =?utf-8?B?MGMxNVc5a0ZxTnh1OWZJQU13V0U4UTFuYWhqRGFmNlZVMVNpT1g3OU1YNVFl?=
+ =?utf-8?B?OU5vblQ0YitwdDNITFBmdHY1TUo0MlBubHJhNmUzN2x0ekVzTE1uc1VyT01Q?=
+ =?utf-8?Q?WcR1Z7r+Y6OZ+JVb7odkIHU=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5186.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a300322d-2ffa-4991-a2d3-08d9e6c2767c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 03:08:33.4778 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a4b6b4ac-2657-4e04-c192-08d9e6c3189f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2022 03:13:05.4832 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: s5ttuLzw2sjK6dMewBvZMKpfBbEpsjSC9kmz7cBHhdbBtYedvs4kPs1wObhD9JioCsoVRKmFvuvLMUVlDAxL7A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4850
+X-MS-Exchange-CrossTenant-userprincipalname: MHE33m2Fv1GBK27XgJecXahmxD7+tUeB1WxSZioIkmMoe0tAjCENoGIJHw8Dxizo5OmjOCnzVuUuFvUN46U9CA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR11MB0055
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic module
- init and documentation
+Subject: Re: [Intel-wired-lan] [PATCH net-next 03/19] iecm: add probe and
+ remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -193,56 +195,54 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Shannon Nelson <shannon.lee.nelson@gmail.com>
-> Sent: Tuesday, February 1, 2022 11:45 AM
+> Sent: Tuesday, February 1, 2022 12:02 PM
 > To: Brady, Alan <alan.brady@intel.com>
 > Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Burra, Phani R
 > <phani.r.burra@intel.com>; Chittim, Madhu <madhu.chittim@intel.com>;
 > Linga, Pavan Kumar <pavan.kumar.linga@intel.com>
-> Subject: Re: [Intel-wired-lan] [PATCH net-next 02/19] iecm: add basic
-> module init and documentation
+> Subject: Re: [Intel-wired-lan] [PATCH net-next 03/19] iecm: add probe and
+> remove
 > 
 > On Thu, Jan 27, 2022 at 4:34 PM Alan Brady <alan.brady@intel.com>
 > wrote:
 > >
-> > This adds the basics needed to make a kernel module and documentation
-> > needed to use iecm module.
+> > This adds everything we need in probe and remove as well as a few
+> > stubs which will kick off the next step in the init process of device
+> > driver coming up.
 > >
-> 
-> [ snip ]
-> 
+> > Signed-off-by: Phani Burra <phani.r.burra@intel.com>
+> > Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> > Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
+> > Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> > Signed-off-by: Alan Brady <alan.brady@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/iecm/Makefile      |   1 +
+> >  drivers/net/ethernet/intel/iecm/iecm_lib.c    | 231
+> ++++++++++++++++++
+> >  drivers/net/ethernet/intel/include/iecm.h     | 178 +++++++++++++-
+> >  .../net/ethernet/intel/include/iecm_txrx.h    |  33 +++
+> >  4 files changed, 442 insertions(+), 1 deletion(-)  create mode 100644
+> > drivers/net/ethernet/intel/iecm/iecm_lib.c
+> >  create mode 100644 drivers/net/ethernet/intel/include/iecm_txrx.h
+> >
 > > diff --git a/drivers/net/ethernet/intel/iecm/Makefile
 > > b/drivers/net/ethernet/intel/iecm/Makefile
-> > new file mode 100644
-> > index 000000000000..d2d087ac71e9
-> > --- /dev/null
+> > index d2d087ac71e9..4f497723419d 100644
+> > --- a/drivers/net/ethernet/intel/iecm/Makefile
 > > +++ b/drivers/net/ethernet/intel/iecm/Makefile
-> > @@ -0,0 +1,13 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only # Copyright (C) 2019 Intel
-> > +Corporation
-> > +
-> > +#
-> > +# Makefile for the Intel(R) Data Plane Function Linux Driver
-> 
-> Maybe the iecm here rather than idpf?
-> 
-
-Woops.  Thanks, will fix.
-
-> > +#
-> > +
-> > +obj-$(CONFIG_IECM) += iecm.o
-> > +
-> > +ccflags-y += -I$(srctree)/drivers/net/ethernet/intel/include
-> > +
-> > +iecm-y := \
-> > +       iecm_main.o
-> > diff --git a/drivers/net/ethernet/intel/iecm/iecm_main.c
-> > b/drivers/net/ethernet/intel/iecm/iecm_main.c
+> > @@ -10,4 +10,5 @@ obj-$(CONFIG_IECM) += iecm.o  ccflags-y +=
+> > -I$(srctree)/drivers/net/ethernet/intel/include
+> >
+> >  iecm-y := \
+> > +       iecm_lib.o \
+> >         iecm_main.o
+> > diff --git a/drivers/net/ethernet/intel/iecm/iecm_lib.c
+> > b/drivers/net/ethernet/intel/iecm/iecm_lib.c
 > > new file mode 100644
-> > index 000000000000..7c09403c6918
+> > index 000000000000..e6d0b418a27f
 > > --- /dev/null
-> > +++ b/drivers/net/ethernet/intel/iecm/iecm_main.c
-> > @@ -0,0 +1,40 @@
+> > +++ b/drivers/net/ethernet/intel/iecm/iecm_lib.c
+> > @@ -0,0 +1,231 @@
 > > +// SPDX-License-Identifier: GPL-2.0-only
 > > +/* Copyright (C) 2019 Intel Corporation */
 > > +
@@ -250,62 +250,494 @@ Woops.  Thanks, will fix.
 > > +
 > > +#include "iecm.h"
 > > +
-> > +#define DRV_SUMMARY    "Intel(R) Ethernet Common Module"
-> > +static const char iecm_driver_string[] = DRV_SUMMARY; static const
-> > +char iecm_copyright[] = "Copyright (c) 2020, Intel Corporation.";
-> 
-> Do you want this copyright string "2020" to match the top of the file
-> "2019"?
-> 
-
-Hmm yes we should probably fix that.  Thanks!
-
-> > +
-> > +MODULE_DESCRIPTION(DRV_SUMMARY);
-> > +MODULE_LICENSE("GPL v2");
+> > +/**
+> > + * iecm_statistics_task - Delayed task to get statistics over mailbox
+> > + * @work: work_struct handle to our data  */ static void
+> > +iecm_statistics_task(struct work_struct *work) {
+> > +       /* stub */
+> > +}
 > > +
 > > +/**
-> > + * iecm_module_init - Driver registration routine
+> > + * iecm_service_task - Delayed task for handling mailbox responses
+> > + * @work: work_struct handle to our data
 > > + *
-> > + * iecm_module_init is the first routine called when the driver is
-> > + * loaded. All it does is register with the PCI subsystem.
 > > + */
-> > +static int __init iecm_module_init(void) {
-> > +       pr_info("%s - version %d\n", iecm_driver_string,
-> LINUX_VERSION_CODE);
-> > +       pr_info("%s\n", iecm_copyright);
+> > +static void iecm_service_task(struct work_struct *work) {
+> > +       /* stub */
+> > +}
+> > +
+> > +/**
+> > + * iecm_init_task - Delayed initialization task
+> > + * @work: work_struct handle to our data
+> > + *
+> > + * Init task finishes up pending work started in probe.  Due to the
+> > +asynchronous
+> > + * nature in which the device communicates with hardware, we may
+> have
+> > +to wait
+> > + * several milliseconds to get a response.  Instead of busy polling
+> > +in probe,
+> > + * pulling it out into a delayed work task prevents us from bogging
+> > +down the
+> > + * whole system waiting for a response from hardware.
+> > + */
+> > +static void iecm_init_task(struct work_struct *work) {
+> > +       /* stub */
+> > +}
+> > +
+> > +/**
+> > + * iecm_deinit_task - Device deinit routine
+> > + * @adapter: Driver specific private structue
+> > + *
+> > + * Extended remove logic which will be used for
+> > + * hard reset as well
+> > + */
+> > +static void iecm_deinit_task(struct iecm_adapter *adapter) {
+> > +       /* stub */
+> > +}
+> > +
+> > +/**
+> > + * iecm_vc_event_task - Handle virtchannel event logic
+> > + * @work: work queue struct
+> > + */
+> > +static void iecm_vc_event_task(struct work_struct *work) {
+> > +       /* stub */
+> > +}
+> > +
+> > +/**
+> > + * iecm_probe - Device initialization routine
+> > + * @pdev: PCI device information struct
+> > + * @ent: entry in iecm_pci_tbl
+> > + * @adapter: driver specific private structure
+> > + *
+> > + * Returns 0 on success, negative on failure  */ int
+> > +iecm_probe(struct pci_dev *pdev,
+> > +              const struct pci_device_id __always_unused *ent,
+> > +              struct iecm_adapter *adapter) {
+> > +       int err;
+> > +
+> > +       adapter->pdev = pdev;
+> > +
+> > +       err = pcim_enable_device(pdev);
+> > +       if (err)
+> > +               return err;
+> > +
+> > +       err = pcim_iomap_regions(pdev, BIT(IECM_BAR0), pci_name(pdev));
+> > +       if (err) {
+> > +               dev_err(&pdev->dev, "BAR0 I/O map error %d\n", err);
+> > +               return err;
+> > +       }
+> > +
+> > +       /* set up for high or low dma */
+> > +       err = dma_set_mask_and_coherent(&pdev->dev,
+> DMA_BIT_MASK(64));
+> > +       if (err)
+> > +               err = dma_set_mask_and_coherent(&pdev->dev,
+> DMA_BIT_MASK(32));
+> > +       if (err) {
+> > +               dev_err(&pdev->dev, "DMA configuration failed: 0x%x\n", err);
+> > +               return err;
+> > +       }
+> > +
+> > +       pci_enable_pcie_error_reporting(pdev);
+> > +       pci_set_master(pdev);
+> > +       pci_set_drvdata(pdev, adapter);
+> > +
+> > +       adapter->init_wq =
+> > +               alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
+> KBUILD_MODNAME);
+> > +       if (!adapter->init_wq) {
+> > +               dev_err(&pdev->dev, "Failed to allocate workqueue\n");
+> 
+> checkpatch usually complains about these kinds of messages, but if you're
+> going to put them in anyway, you might make them more useful and add a
+> bit to each that can tell you which is the one that broke.
+> For example, in this one, you might write it as "Failed to allocate init
+> workqueue"
+> 
+
+I agree it seems excessive, will remove.
+
+> > +               err = -ENOMEM;
+> > +               goto err_wq_alloc;
+> > +       }
+> > +
+> > +       adapter->serv_wq =
+> > +               alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
+> KBUILD_MODNAME);
+> > +       if (!adapter->serv_wq) {
+> > +               dev_err(&pdev->dev, "Failed to allocate workqueue\n");
+> > +               err = -ENOMEM;
+> > +               goto err_mbx_wq_alloc;
+> > +       }
+> > +
+> > +       adapter->stats_wq =
+> > +               alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
+> KBUILD_MODNAME);
+> > +       if (!adapter->stats_wq) {
+> > +               dev_err(&pdev->dev, "Failed to allocate workqueue\n");
+> > +               err = -ENOMEM;
+> > +               goto err_stats_wq_alloc;
+> > +       }
+> > +       adapter->vc_event_wq =
+> > +               alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
+> KBUILD_MODNAME);
+> > +       if (!adapter->vc_event_wq) {
+> > +               dev_err(&pdev->dev, "Failed to allocate workqueue\n");
+> > +               err = -ENOMEM;
+> > +               goto err_vc_event_wq_alloc;
+> > +       }
+> > +
+> > +       /* setup msglvl */
+> > +       adapter->msg_enable = netif_msg_init(-1, IECM_AVAIL_NETIF_M);
+> > +
+> > +       adapter->vports = kcalloc(IECM_MAX_NUM_VPORTS,
+> > +                                 sizeof(*adapter->vports), GFP_KERNEL);
+> > +       if (!adapter->vports) {
+> 
+> With error messages on all the above allocations, is there any reason they
+> aren't here and in the next one?
+> 
+
+Probably not a good reason no. Will fix.
+
+> > +               err = -ENOMEM;
+> > +               goto err_vport_alloc;
+> > +       }
+> > +
+> > +       adapter->netdevs = kcalloc(IECM_MAX_NUM_VPORTS,
+> > +                                  sizeof(struct net_device *), GFP_KERNEL);
+> > +       if (!adapter->netdevs) {
+> > +               err = -ENOMEM;
+> > +               goto err_netdev_alloc;
+> > +       }
+> > +
+> > +       mutex_init(&adapter->sw_mutex);
+> > +       mutex_init(&adapter->reset_lock);
+> > +       init_waitqueue_head(&adapter->vchnl_wq);
+> > +       init_waitqueue_head(&adapter->sw_marker_wq);
+> > +
+> > +       spin_lock_init(&adapter->cloud_filter_list_lock);
+> > +       spin_lock_init(&adapter->mac_filter_list_lock);
+> > +       spin_lock_init(&adapter->vlan_list_lock);
+> > +       spin_lock_init(&adapter->adv_rss_list_lock);
+> > +       spin_lock_init(&adapter->fdir_fltr_list_lock);
+> > +       INIT_LIST_HEAD(&adapter->config_data.mac_filter_list);
+> > +       INIT_LIST_HEAD(&adapter->config_data.vlan_filter_list);
+> > +       INIT_LIST_HEAD(&adapter->config_data.adv_rss_list);
+> > +
+> > +       INIT_DELAYED_WORK(&adapter->stats_task, iecm_statistics_task);
+> > +       INIT_DELAYED_WORK(&adapter->serv_task, iecm_service_task);
+> > +       INIT_DELAYED_WORK(&adapter->init_task, iecm_init_task);
+> > +       INIT_DELAYED_WORK(&adapter->vc_event_task,
+> > + iecm_vc_event_task);
+> > +
+> > +       set_bit(__IECM_HR_DRV_LOAD, adapter->flags);
+> > +       queue_delayed_work(adapter->vc_event_wq, &adapter-
+> >vc_event_task,
+> > +                          msecs_to_jiffies(10 * (pdev->devfn &
+> > + 0x07)));
 > > +
 > > +       return 0;
+> > +err_netdev_alloc:
+> > +       kfree(adapter->vports);
+> > +err_vport_alloc:
+> > +       destroy_workqueue(adapter->vc_event_wq);
+> > +err_vc_event_wq_alloc:
+> > +       destroy_workqueue(adapter->stats_wq);
+> > +err_stats_wq_alloc:
+> > +       destroy_workqueue(adapter->serv_wq);
+> > +err_mbx_wq_alloc:
+> > +       destroy_workqueue(adapter->init_wq);
+> > +err_wq_alloc:
+> > +       pci_disable_pcie_error_reporting(pdev);
+> > +       return err;
 > > +}
-> > +module_init(iecm_module_init);
+> > +EXPORT_SYMBOL(iecm_probe);
 > > +
 > > +/**
-> > + * iecm_module_exit - Driver exit cleanup routine
-> > + *
-> > + * iecm_module_exit is called just before the driver is removed
-> > + * from memory.
-> > + */
-> > +static void __exit iecm_module_exit(void) {
-> > +       pr_info("module unloaded\n");
+> > + * iecm_del_user_cfg_data - delete all user configuration data
+> > + * @adapter: Driver specific private structue  */ static void
+> > +iecm_del_user_cfg_data(struct iecm_adapter *adapter) {
+> > +       /* stub */
 > > +}
-> > +module_exit(iecm_module_exit);
+> > +
+> > +/**
+> > + * iecm_remove - Device removal routine
+> > + * @pdev: PCI device information struct  */ void iecm_remove(struct
+> > +pci_dev *pdev) {
+> > +       struct iecm_adapter *adapter = pci_get_drvdata(pdev);
+> > +
+> > +       if (!adapter)
+> > +               return;
+> > +       /* Wait until vc_event_task is done to consider if any hard reset is
+> > +        * in progress else we may go ahead and release the resources but
+> the
+> > +        * thread doing the hard reset might continue the init path and
+> > +        * end up in bad state.
+> > +        */
+> > +       cancel_delayed_work_sync(&adapter->vc_event_task);
+> > +       iecm_deinit_task(adapter);
+> > +       iecm_del_user_cfg_data(adapter);
+> > +       msleep(20);
+> > +       destroy_workqueue(adapter->serv_wq);
+> > +       destroy_workqueue(adapter->vc_event_wq);
+> > +       destroy_workqueue(adapter->stats_wq);
+> > +       destroy_workqueue(adapter->init_wq);
+> > +       kfree(adapter->vports);
+> > +       kfree(adapter->netdevs);
+> > +       kfree(adapter->vlan_caps);
+> 
+> Where did vlan_caps get allocated?
+> 
+
+This probably leaked into this patch as I was breaking down the code into patches. i.e. it doesn't get allocated until a later patch.  Will fix.  Thanks!
+
+> > +       mutex_destroy(&adapter->sw_mutex);
+> > +       mutex_destroy(&adapter->reset_lock);
+> > +       pci_disable_pcie_error_reporting(pdev);
+> > +       pcim_iounmap_regions(pdev, BIT(IECM_BAR0));
+> > +       pci_disable_device(pdev);
+> > +}
+> > +EXPORT_SYMBOL(iecm_remove);
 > > diff --git a/drivers/net/ethernet/intel/include/iecm.h
 > > b/drivers/net/ethernet/intel/include/iecm.h
-> > new file mode 100644
-> > index 000000000000..f66f0d7db8e7
-> > --- /dev/null
+> > index f66f0d7db8e7..e19e014e9817 100644
+> > --- a/drivers/net/ethernet/intel/include/iecm.h
 > > +++ b/drivers/net/ethernet/intel/include/iecm.h
-> > @@ -0,0 +1,10 @@
+> > @@ -4,7 +4,183 @@
+> >  #ifndef _IECM_H_
+> >  #define _IECM_H_
+> >
+> > -#include <linux/etherdevice.h>
+> > +#include <linux/aer.h>
+> > +#include <linux/pci.h>
+> > +#include <linux/netdevice.h>
+> > +#include <linux/ethtool.h>
+> >  #include <linux/version.h>
+> > +#include <linux/dim.h>
+> >
+> > +#include "iecm_txrx.h"
+> > +
+> > +#define IECM_BAR0                      0
+> > +#define IECM_NO_FREE_SLOT              0xffff
+> > +
+> > +#define IECM_MAX_NUM_VPORTS            1
+> > +
+> > +/* available message levels */
+> > +#define IECM_AVAIL_NETIF_M (NETIF_MSG_DRV | NETIF_MSG_PROBE
+> |
+> > +NETIF_MSG_LINK)
+> > +
+> > +enum iecm_state {
+> > +       __IECM_STARTUP,
+> > +       __IECM_VER_CHECK,
+> > +       __IECM_GET_CAPS,
+> > +       __IECM_GET_DFLT_VPORT_PARAMS,
+> > +       __IECM_INIT_SW,
+> > +       __IECM_DOWN,
+> > +       __IECM_UP,
+> > +       __IECM_STATE_LAST /* this member MUST be last */ };
+> > +
+> > +enum iecm_flags {
+> > +       /* Soft reset causes */
+> > +       __IECM_SR_Q_CHANGE, /* Soft reset to do queue change */
+> > +       __IECM_SR_Q_DESC_CHANGE,
+> > +       __IECM_SR_Q_SCH_CHANGE, /* Scheduling mode change in queue
+> context */
+> > +       __IECM_SR_MTU_CHANGE,
+> > +       __IECM_SR_TC_CHANGE,
+> > +       __IECM_SR_RSC_CHANGE,
+> > +       __IECM_SR_HSPLIT_CHANGE,
+> > +       /* Hard reset causes */
+> > +       __IECM_HR_FUNC_RESET, /* Hard reset when txrx timeout */
+> > +       __IECM_HR_CORE_RESET, /* when reset event is received on
+> virtchannel */
+> > +       __IECM_HR_DRV_LOAD, /* Set on driver load for a clean HW */
+> > +       /* Reset in progress */
+> > +       __IECM_HR_RESET_IN_PROG,
+> > +       /* Resources release in progress*/
+> > +       __IECM_REL_RES_IN_PROG,
+> > +       /* Generic bits to share a message */
+> > +       __IECM_DEL_QUEUES,
+> > +       __IECM_UP_REQUESTED, /* Set if open to be called explicitly by
+> driver */
+> > +       /* Mailbox interrupt event */
+> > +       __IECM_MB_INTR_MODE,
+> > +       __IECM_MB_INTR_TRIGGER,
+> > +       /* Stats message pending on mailbox */
+> > +       __IECM_MB_STATS_PENDING,
+> > +       /* Device specific bits */
+> > +       /* Request split queue model when creating vport */
+> > +       __IECM_REQ_TX_SPLITQ,
+> > +       __IECM_REQ_RX_SPLITQ,
+> > +       /* Asynchronous add/del ether address in flight */
+> > +       __IECM_ADD_ETH_REQ,
+> > +       __IECM_DEL_ETH_REQ,
+> > +       /* Virtchnl message buffer received needs to be processed */
+> > +       __IECM_VC_MSG_PENDING,
+> > +       /* To process software marker packets */
+> > +       __IECM_SW_MARKER,
+> > +       /* must be last */
+> > +       __IECM_FLAGS_NBITS,
+> > +};
+> > +
+> > +struct iecm_reset_reg {
+> > +       u32 rstat;
+> > +       u32 rstat_m;
+> > +};
+> > +
+> > +/* stub */
+> > +struct iecm_vport {
+> > +};
+> > +
+> > +enum iecm_user_flags {
+> > +       __IECM_PRIV_FLAGS_HDR_SPLIT = 0,
+> > +       __IECM_PROMISC_UC = 32,
+> > +       __IECM_PROMISC_MC,
+> > +       __IECM_USER_FLAGS_NBITS,
+> > +};
+> > +
+> > +/* User defined configuration values */ struct iecm_user_config_data
+> > +{
+> > +       u32 num_req_tx_qs; /* user requested TX queues through ethtool
+> */
+> > +       u32 num_req_rx_qs; /* user requested RX queues through ethtool
+> */
+> > +       u32 num_req_txq_desc;
+> > +       u32 num_req_rxq_desc;
+> > +       u16 vlan_ethertype;
+> > +       void *req_qs_chunks;
+> > +       DECLARE_BITMAP(user_flags, __IECM_USER_FLAGS_NBITS);
+> > +       DECLARE_BITMAP(etf_qenable, IECM_LARGE_MAX_Q);
+> > +       struct list_head mac_filter_list;
+> > +       struct list_head vlan_filter_list;
+> > +       struct list_head adv_rss_list; };
+> > +
+> > +struct iecm_rss_data {
+> > +       u64 rss_hash;
+> > +       u16 rss_key_size;
+> > +       u8 *rss_key;
+> > +       u16 rss_lut_size;
+> > +       u32 *rss_lut;
+> > +};
+> > +
+> > +struct iecm_adapter {
+> > +       struct pci_dev *pdev;
+> > +       const char *drv_name;
+> > +       const char *drv_ver;
+> > +       u32 virt_ver_maj;
+> > +       u32 virt_ver_min;
+> > +
+> > +       u32 tx_timeout_count;
+> > +       u32 msg_enable;
+> > +       enum iecm_state state;
+> > +       DECLARE_BITMAP(flags, __IECM_FLAGS_NBITS);
+> > +       struct mutex reset_lock; /* lock to protect reset flows */
+> > +       struct iecm_reset_reg reset_reg;
+> > +
+> > +       u16 num_req_msix;
+> > +       u16 num_msix_entries;
+> > +       struct msix_entry *msix_entries;
+> > +       struct virtchnl2_alloc_vectors *req_vec_chunks;
+> > +
+> > +       /* vport structs */
+> > +       struct iecm_vport **vports;     /* vports created by the driver */
+> > +       struct net_device **netdevs;    /* associated vport netdevs */
+> > +       u16 num_alloc_vport;
+> > +       u16 next_vport;         /* Next free slot in pf->vport[] - 0-based! */
+> > +
+> > +       struct delayed_work init_task; /* delayed init task */
+> > +       struct workqueue_struct *init_wq;
+> > +       u32 mb_wait_count;
+> > +       struct delayed_work serv_task; /* delayed service task */
+> > +       struct workqueue_struct *serv_wq;
+> > +       struct delayed_work stats_task; /* delayed statistics task */
+> > +       struct workqueue_struct *stats_wq;
+> > +       struct delayed_work vc_event_task; /* delayed virtchannel event
+> task */
+> > +       struct workqueue_struct *vc_event_wq;
+> > +       /* Store the resources data received from control plane */
+> > +       void **vport_params_reqd;
+> > +       void **vport_params_recvd;
+> > +       /* User set parameters */
+> > +       struct iecm_user_config_data config_data;
+> > +       void *caps;
+> > +       struct virtchnl_vlan_caps *vlan_caps;
+> > +
+> > +       wait_queue_head_t vchnl_wq;
+> > +       wait_queue_head_t sw_marker_wq;
+> > +       struct iecm_rss_data rss_data;
+> > +       s32 link_speed;
+> > +       /* This is only populated if the
+> VIRTCHNL_VF_CAP_ADV_LINK_SPEED is set
+> > +        * in vf_res->vf_cap_flags. This field should be used going forward
+> and
+> > +        * the enum virtchnl_link_speed above should be considered the
+> legacy
+> > +        * way of storing/communicating link speeds.
+> > +        */
+> > +       u32 link_speed_mbps;
+> > +       bool link_up;
+> > +       int num_vfs;
+> > +
+> > +       struct mutex sw_mutex;          /* lock to protect vport alloc flow */
+> > +       /* lock to protect cloud filters*/
+> > +       spinlock_t cloud_filter_list_lock;
+> > +       /* lock to protect mac filters */
+> > +       spinlock_t mac_filter_list_lock;
+> > +       /* lock to protect vlan filters */
+> > +       spinlock_t vlan_list_lock;
+> > +       /* lock to protect advanced RSS filters */
+> > +       spinlock_t adv_rss_list_lock;
+> > +       /* lock to protect the Flow Director filters */
+> > +       spinlock_t fdir_fltr_list_lock; };
+> > +
+> > +int iecm_probe(struct pci_dev *pdev,
+> > +              const struct pci_device_id __always_unused *ent,
+> > +              struct iecm_adapter *adapter); void iecm_remove(struct
+> > +pci_dev *pdev);
+> >  #endif /* !_IECM_H_ */
+> > diff --git a/drivers/net/ethernet/intel/include/iecm_txrx.h
+> > b/drivers/net/ethernet/intel/include/iecm_txrx.h
+> > new file mode 100644
+> > index 000000000000..602d3b3b19dd
+> > --- /dev/null
+> > +++ b/drivers/net/ethernet/intel/include/iecm_txrx.h
+> > @@ -0,0 +1,33 @@
 > > +/* SPDX-License-Identifier: GPL-2.0-only */
 > > +/* Copyright (C) 2019 Intel Corporation */
 > > +
-> > +#ifndef _IECM_H_
-> > +#define _IECM_H_
+> > +#ifndef _IECM_TXRX_H_
+> > +#define _IECM_TXRX_H_
 > > +
-> > +#include <linux/etherdevice.h>
-> > +#include <linux/version.h>
+> > +#define IECM_LARGE_MAX_Q                       256
+> > +#define IECM_MAX_Q                             16
+> > +/* Mailbox Queue */
+> > +#define IECM_MAX_NONQ                          1
+> > +#define IECM_MAX_TXQ_DESC                      4096
+> > +#define IECM_MAX_RXQ_DESC                      4096
+> > +#define IECM_MIN_TXQ_DESC                      32
+> > +#define IECM_MIN_TXQ_COMPLQ_DESC               64
+> > +#define IECM_MIN_RXQ_DESC                      32
+> > +#define IECM_REQ_DESC_MULTIPLE                 32
+> > +#define IECM_REQ_SPLITQ_RXQ_DESC_MULTIPLE      64
+> > +#define IECM_MIN_TX_DESC_NEEDED (MAX_SKB_FRAGS + 6) #define
+> > +IECM_TX_WAKE_THRESH ((s16)IECM_MIN_TX_DESC_NEEDED * 2)
 > > +
-> > +#endif /* !_IECM_H_ */
+> > +#define IECM_DFLT_SINGLEQ_TX_Q_GROUPS          1
+> > +#define IECM_DFLT_SINGLEQ_RX_Q_GROUPS          1
+> > +#define IECM_DFLT_SINGLEQ_TXQ_PER_GROUP                4
+> > +#define IECM_DFLT_SINGLEQ_RXQ_PER_GROUP                4
+> > +
+> > +#define IECM_COMPLQ_PER_GROUP                  1
+> > +#define IECM_MAX_BUFQS_PER_RXQ_GRP             2
+> > +
+> > +#define IECM_DFLT_SPLITQ_TX_Q_GROUPS           4
+> > +#define IECM_DFLT_SPLITQ_RX_Q_GROUPS           4
+> > +#define IECM_DFLT_SPLITQ_TXQ_PER_GROUP         1
+> > +#define IECM_DFLT_SPLITQ_RXQ_PER_GROUP         1
+> > +#endif /* !_IECM_TXRX_H_ */
 > > --
 > > 2.33.0
 > >
