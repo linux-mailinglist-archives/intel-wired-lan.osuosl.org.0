@@ -1,68 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1EDF4A9C37
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Feb 2022 16:49:24 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DFC04A9D2F
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Feb 2022 17:54:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 65BA960B27;
-	Fri,  4 Feb 2022 15:49:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CBE40404CC;
+	Fri,  4 Feb 2022 16:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aqK3tCivx5IW; Fri,  4 Feb 2022 15:49:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qtGJERmhTNI0; Fri,  4 Feb 2022 16:54:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5A5E860A8C;
-	Fri,  4 Feb 2022 15:49:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 514FC4024B;
+	Fri,  4 Feb 2022 16:54:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 58B191BF2A6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 15:48:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E5D51BF5A8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 16:54:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 466F460A8C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 15:48:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6B475404CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 16:54:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2M9aLhJc840E for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Feb 2022 15:48:33 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cFR1yPBnipDc for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Feb 2022 16:54:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 668FB600B4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 15:48:33 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A894D40448
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Feb 2022 16:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643989713; x=1675525713;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=2mpI7aLva2HGpEKXVggf+woQlrALhgdNnxw3It5/euY=;
- b=ZVbs12nTGBO4pIc9cr4qpfbtJVyUOA81XLmwk6A3jydvTsMornAipPFH
- m9ZjT8uDx6oH9x4AI2/lan4y62znBkSRhzzBoRIK0Nt+t2Z47xgTP112w
- p28a5Dakcx2rYfwDA5HXOavwHE4nuj1GvpH1HFEF5snud3/rV7EB2dcdU
- i+Ah/P52Gi4c+iRVNwH3466mrvjobiBfVFKKXjq6m9KVYpADQcHYvj8Pk
- R6BTAShR51KgoKKodPan6VGqiYcSZzjlN23OiEIR3g6F40o/SknfRCu7M
- XMroK3zO6jKGBZ9+MeF3VygQNzEcNPmYuWz7CAotQc8A+wOPDHuFMFmJ+ g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10247"; a="248601556"
-X-IronPort-AV: E=Sophos;i="5.88,343,1635231600"; d="scan'208";a="248601556"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2022 07:48:32 -0800
+ t=1643993650; x=1675529650;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ynISfQGFkE0Pd3v8j9hwtGZ3p4Vm3qAMrOtfMEbwy3k=;
+ b=S77KSuFNSvf3/CaGWoc94ifWsYnL1Xl2pOM09zBcNjj+lKIE3+mfE2e2
+ 6jmg31Rche+ZvIXX5pfLQvK04OwI056pQP+hRscdl+h3FQvhKWf8wHWiK
+ PP8axs1KynHR/bxx/z7R+UX0p8D7g5JR1utJnTNYU11vUNLYRLlrwgnJY
+ kkh+u5nxL3sv/EFc3iOYG342vUYxmV/b9gQJt8Q86Uuk7IMGgVEmJGgb9
+ c9f2eGhI/aTNpRWfrgzfo0L0/rKXAmjrypKd8aM92nihWYm9XEBBv8//W
+ LJaLoxZPmfhUJdWRnmYIZBWJOdiDq4cmp3nBOGktZe7m2Fs7VUMVMhGhm w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10247"; a="334794504"
+X-IronPort-AV: E=Sophos;i="5.88,343,1635231600"; d="scan'208";a="334794504"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2022 08:54:09 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,343,1635231600"; d="scan'208";a="584166859"
-Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 04 Feb 2022 07:48:32 -0800
-Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nG0p5-000XpA-De; Fri, 04 Feb 2022 15:48:31 +0000
-Date: Fri, 04 Feb 2022 23:48:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <61fd4ab0.iPqIBhDzjHmFvaMd%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.88,343,1635231600"; d="scan'208";a="539224231"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga008.jf.intel.com with ESMTP; 04 Feb 2022 08:54:06 -0800
+Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
+ [172.22.229.137])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 214Gs5h8026700; Fri, 4 Feb 2022 16:54:05 GMT
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: netdev@vger.kernel.org
+Date: Fri,  4 Feb 2022 17:51:03 +0100
+Message-Id: <20220204165103.10722-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20220204164929.10356-1-marcin.szycik@linux.intel.com>
+References: <20220204164929.10356-1-marcin.szycik@linux.intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 411e14d3a28645a4e1022ce3c4607255315d754e
+Subject: [Intel-wired-lan] [RFC PATCH net-next v4 5/6] ice: Fix FV offset
+ searching
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,137 +80,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: laforge@gnumonks.org, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ davem@davemloft.net, pablo@netfilter.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 411e14d3a28645a4e1022ce3c4607255315d754e  iavf: Fix adopting new combined setting
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-elapsed time: 839m
+Checking only protocol ids while searching for correct FVs can lead to a
+situation, when incorrect FV will be added to the list. Incorrect means
+that FV has correct protocol id but incorrect offset.
 
-configs tested: 108
-configs skipped: 3
+Call ice_get_sw_fv_list with ice_prot_lkup_ext struct which contains all
+protocol ids with offsets.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+With this modification allocating and collecting protocol ids list is
+not longer needed.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20220131
-m68k                        m5307c3_defconfig
-s390                             allmodconfig
-sh                   secureedge5410_defconfig
-arc                        nsim_700_defconfig
-mips                           ci20_defconfig
-sh                           se7750_defconfig
-sh                         microdev_defconfig
-arc                            hsdk_defconfig
-arm                         vf610m4_defconfig
-parisc                           allyesconfig
-powerpc                     rainier_defconfig
-mips                    maltaup_xpa_defconfig
-openrisc                 simple_smp_defconfig
-arm                  randconfig-c002-20220130
-arm                  randconfig-c002-20220131
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                                defconfig
-s390                             allyesconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a003-20220131
-i386                 randconfig-a002-20220131
-i386                 randconfig-a001-20220131
-i386                 randconfig-a004-20220131
-i386                 randconfig-a006-20220131
-i386                 randconfig-a005-20220131
-x86_64               randconfig-a004-20220131
-x86_64               randconfig-a003-20220131
-x86_64               randconfig-a001-20220131
-x86_64               randconfig-a006-20220131
-x86_64               randconfig-a005-20220131
-x86_64               randconfig-a002-20220131
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-riscv                randconfig-r042-20220130
-arc                  randconfig-r043-20220130
-arc                  randconfig-r043-20220131
-s390                 randconfig-r044-20220130
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-x86_64                    rhel-8.3-kselftests
-
-clang tested configs:
-powerpc                      obs600_defconfig
-powerpc                     ppa8548_defconfig
-arm                         socfpga_defconfig
-powerpc                 mpc832x_mds_defconfig
-arm                          pcm027_defconfig
-arm                           spitz_defconfig
-x86_64               randconfig-a013-20220131
-x86_64               randconfig-a015-20220131
-x86_64               randconfig-a014-20220131
-x86_64               randconfig-a016-20220131
-x86_64               randconfig-a011-20220131
-x86_64               randconfig-a012-20220131
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-riscv                randconfig-r042-20220131
-hexagon              randconfig-r045-20220130
-hexagon              randconfig-r045-20220131
-hexagon              randconfig-r041-20220130
-hexagon              randconfig-r041-20220131
-s390                 randconfig-r044-20220131
-
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    | 16 +++-----
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |  2 +-
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 39 +------------------
+ 3 files changed, 9 insertions(+), 48 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index 4deb2c9446ec..22072709cc4e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -1781,7 +1781,7 @@ ice_get_sw_fv_bitmap(struct ice_hw *hw, enum ice_prof_type req_profs,
+  * allocated for every list entry.
+  */
+ int
+-ice_get_sw_fv_list(struct ice_hw *hw, u8 *prot_ids, u16 ids_cnt,
++ice_get_sw_fv_list(struct ice_hw *hw, struct ice_prot_lkup_ext *lkups,
+ 		   unsigned long *bm, struct list_head *fv_list)
+ {
+ 	struct ice_sw_fv_list_entry *fvl;
+@@ -1793,7 +1793,7 @@ ice_get_sw_fv_list(struct ice_hw *hw, u8 *prot_ids, u16 ids_cnt,
+ 
+ 	memset(&state, 0, sizeof(state));
+ 
+-	if (!ids_cnt || !hw->seg)
++	if (!lkups->n_val_words || !hw->seg)
+ 		return -EINVAL;
+ 
+ 	ice_seg = hw->seg;
+@@ -1812,20 +1812,16 @@ ice_get_sw_fv_list(struct ice_hw *hw, u8 *prot_ids, u16 ids_cnt,
+ 		if (!test_bit((u16)offset, bm))
+ 			continue;
+ 
+-		for (i = 0; i < ids_cnt; i++) {
++		for (i = 0; i < lkups->n_val_words; i++) {
+ 			int j;
+ 
+-			/* This code assumes that if a switch field vector line
+-			 * has a matching protocol, then this line will contain
+-			 * the entries necessary to represent every field in
+-			 * that protocol header.
+-			 */
+ 			for (j = 0; j < hw->blk[ICE_BLK_SW].es.fvw; j++)
+-				if (fv->ew[j].prot_id == prot_ids[i])
++				if (fv->ew[j].prot_id == lkups->fv_words[i].prot_id &&
++				    fv->ew[j].off == lkups->fv_words[i].off)
+ 					break;
+ 			if (j >= hw->blk[ICE_BLK_SW].es.fvw)
+ 				break;
+-			if (i + 1 == ids_cnt) {
++			if (i + 1 == lkups->n_val_words) {
+ 				fvl = devm_kzalloc(ice_hw_to_dev(hw),
+ 						   sizeof(*fvl), GFP_KERNEL);
+ 				if (!fvl)
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+index 6cbc29bcb02f..c266655089f2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+@@ -87,7 +87,7 @@ ice_get_sw_fv_bitmap(struct ice_hw *hw, enum ice_prof_type type,
+ void
+ ice_init_prof_result_bm(struct ice_hw *hw);
+ int
+-ice_get_sw_fv_list(struct ice_hw *hw, u8 *prot_ids, u16 ids_cnt,
++ice_get_sw_fv_list(struct ice_hw *hw, struct ice_prot_lkup_ext *lkups,
+ 		   unsigned long *bm, struct list_head *fv_list);
+ bool
+ ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port,
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 11ae0bee3590..49308a22a92c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -4426,41 +4426,6 @@ ice_create_recipe_group(struct ice_hw *hw, struct ice_sw_recipe *rm,
+ 	return status;
+ }
+ 
+-/**
+- * ice_get_fv - get field vectors/extraction sequences for spec. lookup types
+- * @hw: pointer to hardware structure
+- * @lkups: lookup elements or match criteria for the advanced recipe, one
+- *	   structure per protocol header
+- * @lkups_cnt: number of protocols
+- * @bm: bitmap of field vectors to consider
+- * @fv_list: pointer to a list that holds the returned field vectors
+- */
+-static int
+-ice_get_fv(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+-	   unsigned long *bm, struct list_head *fv_list)
+-{
+-	u8 *prot_ids;
+-	int status;
+-	u16 i;
+-
+-	prot_ids = kcalloc(lkups_cnt, sizeof(*prot_ids), GFP_KERNEL);
+-	if (!prot_ids)
+-		return -ENOMEM;
+-
+-	for (i = 0; i < lkups_cnt; i++)
+-		if (!ice_prot_type_to_id(lkups[i].type, &prot_ids[i])) {
+-			status = -EIO;
+-			goto free_mem;
+-		}
+-
+-	/* Find field vectors that include all specified protocol types */
+-	status = ice_get_sw_fv_list(hw, prot_ids, lkups_cnt, bm, fv_list);
+-
+-free_mem:
+-	kfree(prot_ids);
+-	return status;
+-}
+-
+ /**
+  * ice_tun_type_match_word - determine if tun type needs a match mask
+  * @tun_type: tunnel type
+@@ -4608,11 +4573,11 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 
+ 	/* Get bitmap of field vectors (profiles) that are compatible with the
+ 	 * rule request; only these will be searched in the subsequent call to
+-	 * ice_get_fv.
++	 * ice_get_sw_fv_list.
+ 	 */
+ 	ice_get_compat_fv_bitmap(hw, rinfo, fv_bitmap);
+ 
+-	status = ice_get_fv(hw, lkups, lkups_cnt, fv_bitmap, &rm->fv_list);
++	status = ice_get_sw_fv_list(hw, lkup_exts, fv_bitmap, &rm->fv_list);
+ 	if (status)
+ 		goto err_unroll;
+ 
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
