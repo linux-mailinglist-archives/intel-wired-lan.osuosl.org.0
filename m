@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 120BF4B257B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Feb 2022 13:19:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F57B4B257F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Feb 2022 13:20:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D878840438;
-	Fri, 11 Feb 2022 12:19:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1457340474;
+	Fri, 11 Feb 2022 12:19:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C_ZpMkNLM9WH; Fri, 11 Feb 2022 12:19:20 +0000 (UTC)
+	with ESMTP id S4mKHHXHeW4U; Fri, 11 Feb 2022 12:19:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D1CA7403D8;
-	Fri, 11 Feb 2022 12:19:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E012140438;
+	Fri, 11 Feb 2022 12:19:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C901D1BF2CE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:18:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 177011BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:19:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C46134035F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:18:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 043D8403D8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:19:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XrhZScTdo-dA for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Feb 2022 12:18:51 +0000 (UTC)
+ with ESMTP id xLRzfmLNz1zA for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Feb 2022 12:19:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 80792401F0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:18:51 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0493F4035F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Feb 2022 12:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1644581931; x=1676117931;
+ t=1644581991; x=1676117991;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=E3lEJT1dUbJetoHwP+G5PKbSmTnNdpMEgq8tyEoiH7I=;
- b=MkUj+Ng3mH8E00p/+0bPVVAPfcuDOgM5JIYtXUTNpzK+s5bHwciB7UNV
- qHddf2gGdoqv2KBLGbZPEMkaN0NBIHUsadLO0gq1CVvphOgIk1QXwKuwM
- v/hY8/DOSKgJwfeep6wJNyInlL/cmrRFeWKstQh39B/OZPCVdNe9jFDKp
- O1WRO2GBi8bHksz2SIXiILFlJSCbDN38Xc1R0A4Esl9KRDVsOnD0mHyJ7
- dHIewDTnYV52shlZ1ddOaExu9Bylh7pMhepLefQEkxrJngup9YLRXvdxB
- QTFDv4OgjPqGAyrBXlX/i/2Usvz8p8Jb42p/ko+a/5yVmWkhU2rQ3rgaO A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10254"; a="230363931"
-X-IronPort-AV: E=Sophos;i="5.88,360,1635231600"; d="scan'208";a="230363931"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2022 04:18:50 -0800
+ bh=1GuYWQTPxIrVqj8Lj+0/Rgj9DNhqJfx3kt1A4ys8WWs=;
+ b=hIPGBRY8WESV8clVwCcbdnlVbv4h8GboFPow6inwtkHeFX1hR4aO7vqb
+ w7lCJkIaIh18tU1Q2tOpDdW5nUdondArVotS6TC1hPEm3YorBP0M0ov/v
+ 9+5tUEcJvTeqvTY78kIjVnNPKJbTXYEu6LdJGKy85MWnyQnknqXwOKejJ
+ ubfdzKSh2dCYXhIE6nsjbsAuPNXvimc23vAc0BEFN6TXxBiQ1qrKfof17
+ o1V2UEJZ1BEFE82ELkI8zynMM2d1fHttDr3xIzoSUWw5lkDlBd9KwBdm3
+ rIm4Dh3W5P9RNWMfudfRbmq1K547Frt2+tp60U4laFwaqpp9ndroR8XyT g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10254"; a="313003177"
+X-IronPort-AV: E=Sophos;i="5.88,360,1635231600"; d="scan'208";a="313003177"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2022 04:19:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,360,1635231600"; d="scan'208";a="702099163"
+X-IronPort-AV: E=Sophos;i="5.88,360,1635231600"; d="scan'208";a="634075721"
 Received: from lkp-server01.sh.intel.com (HELO d95dc2dabeb1) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 11 Feb 2022 04:18:49 -0800
+ by orsmga004.jf.intel.com with ESMTP; 11 Feb 2022 04:19:49 -0800
 Received: from kbuild by d95dc2dabeb1 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nIUsy-0004Yk-JE; Fri, 11 Feb 2022 12:18:48 +0000
-Date: Fri, 11 Feb 2022 20:18:39 +0800
+ id 1nIUtw-0004Z3-Me; Fri, 11 Feb 2022 12:19:48 +0000
+Date: Fri, 11 Feb 2022 20:18:56 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6206541f.5KE2OdvHJH7KS9Oq%lkp@intel.com>
+Message-ID: <62065430.+rfLvfPDZiYPSYfl%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
- 51a04ebf21122d5c76a716ecd9bfc33ea44b2b39
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 5919de805027b27c9256458ae07d22c79bf69ae0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,10 +80,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git master
-branch HEAD: 51a04ebf21122d5c76a716ecd9bfc33ea44b2b39  net: dsa: mv88e6xxx: fix use-after-free in mv88e6xxx_mdios_unregister
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 5919de805027b27c9256458ae07d22c79bf69ae0  ice: fix concurrent reset and removal of VFs
 
-elapsed time: 731m
+elapsed time: 730m
 
 configs tested: 140
 configs skipped: 3
