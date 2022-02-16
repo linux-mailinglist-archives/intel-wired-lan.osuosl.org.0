@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0C14B9341
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 22:38:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 109AC4B933F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 22:37:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D6F8960BE5;
-	Wed, 16 Feb 2022 21:38:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21166409F9;
+	Wed, 16 Feb 2022 21:37:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Go0ORMEDmU_P; Wed, 16 Feb 2022 21:38:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7qX2MrmY9jcs; Wed, 16 Feb 2022 21:37:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C686160B6A;
-	Wed, 16 Feb 2022 21:37:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A8DEB404F4;
+	Wed, 16 Feb 2022 21:37:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 193541BF5A9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AB4041BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 67B8040270
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 94B66409FC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dGwI6t4kSVwB for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id sq3amn4NgIQY for <intel-wired-lan@lists.osuosl.org>;
  Wed, 16 Feb 2022 21:37:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3E37440157
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5B31E40164
  for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645047465; x=1676583465;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=mSA4P5Zkur/XYT4yAWarJQBbojeVVT7J8Vb8s2Zhysg=;
- b=itDvrAiEm6k75BwxNeJ2iLfpSndqgo9uxyepAT4Kp3a/PWIqKVyuJKfq
- hbONH4VnQdBz0+CwsfamcInXJThN2YZJB+bb3mNMAsmjm1DAPWe6E6rLq
- EEdtlKkV6XhlJpecK1hJDf/3xrECBH7pwu6Z/KgCXjPacAw/kKr8c6GpF
- dJj7WPH9DJfZT5lh/6WnH+P4S3J9RHGkkCB40ekZXRwVZ2pB3RhQCcYaA
- TcCUrh2NsXSWTzjsYSVgdK/Bb97lhaJ6/woAklvM2t5ONBiFkiN4A0pTl
- yv4BFCOoMJvvaYNR1K//WSSQXm4Ra5dMie5bt/aC6Fj5pSttIawOWETn0 g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10260"; a="248328454"
-X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="248328454"
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=c/6xdOOsqgb2Uv+i9E4RB+fUit7GENAa3pwbP0V0G2c=;
+ b=FwiCxKmGExI8x2cx6vHQXo8VWqHIgleN6DGvWtj+hASuCqJ035Q6ZT1i
+ qHheQRppWdsdk5IrAk/LHgxGjgu3JSn7l6H/co5YqUkozUgwF1u/quPA9
+ jyX/0pUeysIQLdpUZohhGSUzBCE6qA5Hrq2z9up7AefqZjO0eHcvMBAnB
+ +5rVINRUefVVSu0Zu1JWx4SQaxQRVNsJFy6dBSn4AqI2W/45qTOQeO1RA
+ I+fCcewEWK1c5A4wy6kf5HwLV20+BNI5ojyeZC8H1tLtPrATUot6oMJ1s
+ cGOjdmKFH9WC31MkJ7Un47JWF1GEklFPBlPHNQ5TXW8XdRhwQs/yoOSl6 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10260"; a="248328455"
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="248328455"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Feb 2022 13:37:44 -0800
-X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="774249122"
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="774249125"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Feb 2022 13:37:44 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 16 Feb 2022 13:37:27 -0800
-Message-Id: <20220216213738.3826664-1-jacob.e.keller@intel.com>
+Date: Wed, 16 Feb 2022 13:37:28 -0800
+Message-Id: <20220216213738.3826664-2-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
+In-Reply-To: <20220216213738.3826664-1-jacob.e.keller@intel.com>
+References: <20220216213738.3826664-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 00/11] ice: convert VF storage
- to hash table
+Subject: [Intel-wired-lan] [net-next PATCH v2 01/11] ice: refactor unwind
+ cleanup in eswitch mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,63 +79,240 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series refactors the ice networking driver VF storage from a simple
-static array to a hash table. It also introduces krefs and proper locking
-and protection to prevent common use-after-free and concurrency issues.
+The code for supporting eswitch mode and port representors on VFs uses
+an unwind based cleanup flow when handling errors.
 
-There are two motivations for this work. First is to make the ice driver
-more resilient by preventing a whole class of use-after-free bugs that can
-occur around concurrent access to VF structures while removing VFs.
+These flows are used to cleanup and get everything back to the state
+prior to attempting to switch from legacy to representor mode or back.
 
-The second is to prepare the ice driver for future virtualization work to
-support Scalable IOV, an alternative VF implementation compared to Single
-Root IOV. The new VF implementation will allow for more dynamic VF creation
-and removal, necessitating a more robust implementation for VF storage that
-can't rely on the existing mechanisms to prevent concurrent access
-violations.
+The unwind iterations make sense, but complicate a plan to refactor the
+VF array structure. In the future we won't have a clean method of
+reversing an iteration of the VFs.
 
-The first few patches are cleanup and preparatory work needed to make the
-conversion to the hash table safe. Following this preparatory work is a
-patch to migrate the VF structures and variables to a new sub-structure for
-code clarity. Next introduce new interface functions to abstract the VF
-storage. Finally, the driver is actually converted to the hash table and
-kref implementation.
+Instead, we can change the cleanup flow to just iterate over all VF
+structures and clean up appropriately.
 
-Changes since v1:
-* Add missing ice_put_vf in ice_vc_process_vf_msg, fixing memory leak of VF
-* Fix a few checkpatch.pl complaints reported by NIPA
+First notice that ice_repr_add_for_all_vfs and ice_repr_rem_from_all_vfs
+have an additional step of re-assigning the VC ops. There is no good
+reason to do this outside of ice_repr_add and ice_repr_rem. It can
+simply be done as the last step of these functions.
 
+Second, make sure ice_repr_rem is safe to call on a VF which does not
+have a representor. Check if vf->repr is NULL first and exit early if
+so.
 
-Jacob Keller (11):
-  ice: refactor unwind cleanup in eswitch mode
-  ice: store VF pointer instead of VF ID
-  ice: pass num_vfs to ice_set_per_vf_res()
-  ice: move clear_malvf call in ice_free_vfs
-  ice: move VFLR acknowledge during ice_free_vfs
-  ice: remove checks in ice_vc_send_msg_to_vf
-  ice: use ice_for_each_vf for iteration during removal
-  ice: convert ice_for_each_vf to include VF entry iterator
-  ice: factor VF variables to separate structure
-  ice: introduce VF accessor functions
-  ice: convert VF storage to hash table with krefs and RCU
+Move ice_repr_rem_from_all_vfs above ice_repr_add_for_all_vfs so that we
+can call it from the cleanup function.
 
- drivers/net/ethernet/intel/ice/ice.h          |  13 +-
- drivers/net/ethernet/intel/ice/ice_base.c     |   4 +-
- drivers/net/ethernet/intel/ice/ice_eswitch.c  | 161 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c  |  20 +-
- drivers/net/ethernet/intel/ice/ice_lib.c      | 203 +++--
- drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +-
- drivers/net/ethernet/intel/ice/ice_main.c     |  64 +-
- drivers/net/ethernet/intel/ice/ice_repr.c     |  70 +-
- drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
- .../ethernet/intel/ice/ice_vf_vsi_vlan_ops.c  |  19 +-
- .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  13 +-
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 784 +++++++++++-------
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  83 +-
- 13 files changed, 879 insertions(+), 560 deletions(-)
+In ice_eswitch.c, replace the unwind iteration with a call to
+ice_eswitch_release_reprs. This will go through all of the VFs and
+revert the VF back to the standard model without the eswitch mode.
 
+To make this safe, ensure this function checks whether or not the
+represent or has been moved. Rely on the metadata destination in
+vf->repr->dst. This must be NULL if the representor has not been moved
+to eswitch mode.
 
-base-commit: 477606a501d0705cb1bb86fe7aa86f553861ae7f
+Ensure that we always re-assign this value back to NULL after freeing
+it, and move the ice_eswitch_release_reprs so that it can be called from
+the setup function.
+
+With these changes, eswitch cleanup no longer uses an unwind flow that
+is problematic for the planned VF data structure change.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_eswitch.c | 63 ++++++++++----------
+ drivers/net/ethernet/intel/ice/ice_repr.c    | 47 +++++++--------
+ 2 files changed, 54 insertions(+), 56 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index 95c81fc9ec9f..22babf59d40b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -202,6 +202,34 @@ static void ice_eswitch_remap_rings_to_vectors(struct ice_pf *pf)
+ 	}
+ }
+ 
++/**
++ * ice_eswitch_release_reprs - clear PR VSIs configuration
++ * @pf: poiner to PF struct
++ * @ctrl_vsi: pointer to switchdev control VSI
++ */
++static void
++ice_eswitch_release_reprs(struct ice_pf *pf, struct ice_vsi *ctrl_vsi)
++{
++	int i;
++
++	ice_for_each_vf(pf, i) {
++		struct ice_vsi *vsi = pf->vf[i].repr->src_vsi;
++		struct ice_vf *vf = &pf->vf[i];
++
++		/* Skip VFs that aren't configured */
++		if (!vf->repr->dst)
++			continue;
++
++		ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
++		metadata_dst_free(vf->repr->dst);
++		vf->repr->dst = NULL;
++		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr.addr,
++					       ICE_FWD_TO_VSI);
++
++		netif_napi_del(&vf->repr->q_vector->napi);
++	}
++}
++
+ /**
+  * ice_eswitch_setup_reprs - configure port reprs to run in switchdev mode
+  * @pf: pointer to PF struct
+@@ -231,6 +259,7 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 						       vf->hw_lan_addr.addr,
+ 						       ICE_FWD_TO_VSI);
+ 			metadata_dst_free(vf->repr->dst);
++			vf->repr->dst = NULL;
+ 			goto err;
+ 		}
+ 
+@@ -239,6 +268,7 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 						       vf->hw_lan_addr.addr,
+ 						       ICE_FWD_TO_VSI);
+ 			metadata_dst_free(vf->repr->dst);
++			vf->repr->dst = NULL;
+ 			ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
+ 			goto err;
+ 		}
+@@ -266,42 +296,11 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 	return 0;
+ 
+ err:
+-	for (i = i - 1; i >= 0; i--) {
+-		struct ice_vsi *vsi = pf->vf[i].repr->src_vsi;
+-		struct ice_vf *vf = &pf->vf[i];
+-
+-		ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
+-		metadata_dst_free(vf->repr->dst);
+-		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr.addr,
+-					       ICE_FWD_TO_VSI);
+-	}
++	ice_eswitch_release_reprs(pf, ctrl_vsi);
+ 
+ 	return -ENODEV;
+ }
+ 
+-/**
+- * ice_eswitch_release_reprs - clear PR VSIs configuration
+- * @pf: poiner to PF struct
+- * @ctrl_vsi: pointer to switchdev control VSI
+- */
+-static void
+-ice_eswitch_release_reprs(struct ice_pf *pf, struct ice_vsi *ctrl_vsi)
+-{
+-	int i;
+-
+-	ice_for_each_vf(pf, i) {
+-		struct ice_vsi *vsi = pf->vf[i].repr->src_vsi;
+-		struct ice_vf *vf = &pf->vf[i];
+-
+-		ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
+-		metadata_dst_free(vf->repr->dst);
+-		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr.addr,
+-					       ICE_FWD_TO_VSI);
+-
+-		netif_napi_del(&vf->repr->q_vector->napi);
+-	}
+-}
+-
+ /**
+  * ice_eswitch_update_repr - reconfigure VF port representor
+  * @vsi: VF VSI for which port representor is configured
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+index 3f4af6a168d5..0f9826e89381 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.c
++++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+@@ -339,6 +339,8 @@ static int ice_repr_add(struct ice_vf *vf)
+ 
+ 	devlink_port_type_eth_set(&vf->devlink_port, repr->netdev);
+ 
++	ice_vc_change_ops_to_repr(&vf->vc_ops);
++
+ 	return 0;
+ 
+ err_netdev:
+@@ -366,6 +368,9 @@ static int ice_repr_add(struct ice_vf *vf)
+  */
+ static void ice_repr_rem(struct ice_vf *vf)
+ {
++	if (!vf->repr)
++		return;
++
+ 	ice_devlink_destroy_vf_port(vf);
+ 	kfree(vf->repr->q_vector);
+ 	vf->repr->q_vector = NULL;
+@@ -378,6 +383,23 @@ static void ice_repr_rem(struct ice_vf *vf)
+ #endif
+ 	kfree(vf->repr);
+ 	vf->repr = NULL;
++
++	ice_vc_set_dflt_vf_ops(&vf->vc_ops);
++}
++
++/**
++ * ice_repr_rem_from_all_vfs - remove port representor for all VFs
++ * @pf: pointer to PF structure
++ */
++void ice_repr_rem_from_all_vfs(struct ice_pf *pf)
++{
++	int i;
++
++	ice_for_each_vf(pf, i) {
++		struct ice_vf *vf = &pf->vf[i];
++
++		ice_repr_rem(vf);
++	}
+ }
+ 
+ /**
+@@ -395,39 +417,16 @@ int ice_repr_add_for_all_vfs(struct ice_pf *pf)
+ 		err = ice_repr_add(vf);
+ 		if (err)
+ 			goto err;
+-
+-		ice_vc_change_ops_to_repr(&vf->vc_ops);
+ 	}
+ 
+ 	return 0;
+ 
+ err:
+-	for (i = i - 1; i >= 0; i--) {
+-		struct ice_vf *vf = &pf->vf[i];
+-
+-		ice_repr_rem(vf);
+-		ice_vc_set_dflt_vf_ops(&vf->vc_ops);
+-	}
++	ice_repr_rem_from_all_vfs(pf);
+ 
+ 	return err;
+ }
+ 
+-/**
+- * ice_repr_rem_from_all_vfs - remove port representor for all VFs
+- * @pf: pointer to PF structure
+- */
+-void ice_repr_rem_from_all_vfs(struct ice_pf *pf)
+-{
+-	int i;
+-
+-	ice_for_each_vf(pf, i) {
+-		struct ice_vf *vf = &pf->vf[i];
+-
+-		ice_repr_rem(vf);
+-		ice_vc_set_dflt_vf_ops(&vf->vc_ops);
+-	}
+-}
+-
+ /**
+  * ice_repr_start_tx_queues - start Tx queues of port representor
+  * @repr: pointer to repr structure
 -- 
 2.35.1.129.gb80121027d12
 
