@@ -1,74 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8A5E4B8A1D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 14:31:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E0C14B9341
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 22:38:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 25DF840448;
-	Wed, 16 Feb 2022 13:31:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6F8960BE5;
+	Wed, 16 Feb 2022 21:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3KoJlaRxjn6c; Wed, 16 Feb 2022 13:31:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Go0ORMEDmU_P; Wed, 16 Feb 2022 21:38:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E81CF402D0;
-	Wed, 16 Feb 2022 13:31:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C686160B6A;
+	Wed, 16 Feb 2022 21:37:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4C1AF1BF5A6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 13:31:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 193541BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3F632833AE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 13:31:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 67B8040270
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B4bkx4EKDY36 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Feb 2022 13:31:41 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dGwI6t4kSVwB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Feb 2022 21:37:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A6DB3833A7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 13:31:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1645018300;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=0QIjHuV7hJqhtsH9M6EByQtK4s+qxfURN8i666BCzAQ=;
- b=WPs0LEhdYU5vxUVQ6c+gLCY8uUNB7UXj+3eDF3upln/4eyQv6iq23fvSpFLiBQnUwFqphx
- Gn5hnThgvOo1GneEpPeRJgD2Hm6R3GiaJBRY50U5cMi03e19Pww7aqNM8jlXrlBMq7XVw4
- dzHbnmTZpKFipeFG4VCVzunvDX7jeX4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-520-zZwk04vbNjy6hsQqevgSnw-1; Wed, 16 Feb 2022 08:31:39 -0500
-X-MC-Unique: zZwk04vbNjy6hsQqevgSnw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE6741091DA2;
- Wed, 16 Feb 2022 13:31:37 +0000 (UTC)
-Received: from calimero.vinschen.de (unknown [10.36.112.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ACA02654E5;
- Wed, 16 Feb 2022 13:31:37 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 0692FA80D35; Wed, 16 Feb 2022 14:31:36 +0100 (CET)
-From: Corinna Vinschen <vinschen@redhat.com>
-To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Sasha Neftin <sasha.neftin@intel.com>
-Date: Wed, 16 Feb 2022 14:31:35 +0100
-Message-Id: <20220216133135.356870-1-vinschen@redhat.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3E37440157
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1645047465; x=1676583465;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=mSA4P5Zkur/XYT4yAWarJQBbojeVVT7J8Vb8s2Zhysg=;
+ b=itDvrAiEm6k75BwxNeJ2iLfpSndqgo9uxyepAT4Kp3a/PWIqKVyuJKfq
+ hbONH4VnQdBz0+CwsfamcInXJThN2YZJB+bb3mNMAsmjm1DAPWe6E6rLq
+ EEdtlKkV6XhlJpecK1hJDf/3xrECBH7pwu6Z/KgCXjPacAw/kKr8c6GpF
+ dJj7WPH9DJfZT5lh/6WnH+P4S3J9RHGkkCB40ekZXRwVZ2pB3RhQCcYaA
+ TcCUrh2NsXSWTzjsYSVgdK/Bb97lhaJ6/woAklvM2t5ONBiFkiN4A0pTl
+ yv4BFCOoMJvvaYNR1K//WSSQXm4Ra5dMie5bt/aC6Fj5pSttIawOWETn0 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10260"; a="248328454"
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="248328454"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2022 13:37:44 -0800
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="774249122"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2022 13:37:44 -0800
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Wed, 16 Feb 2022 13:37:27 -0800
+Message-Id: <20220216213738.3826664-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Subject: [Intel-wired-lan] [PATCH net v2] igc: igc_read_phy_reg_gpy: drop
- premature return
+Subject: [Intel-wired-lan] [net-next PATCH v2 00/11] ice: convert VF storage
+ to hash table
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,37 +79,65 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-igc_read_phy_reg_gpy checks the return value from igc_read_phy_reg_mdic
-and if it's not 0, returns immediately. By doing this, it leaves the HW
-semaphore in the acquired state.
+This series refactors the ice networking driver VF storage from a simple
+static array to a hash table. It also introduces krefs and proper locking
+and protection to prevent common use-after-free and concurrency issues.
 
-Drop this premature return statement, the function returns after
-releasing the semaphore immediately anyway.
+There are two motivations for this work. First is to make the ice driver
+more resilient by preventing a whole class of use-after-free bugs that can
+occur around concurrent access to VF structures while removing VFs.
 
-Fixes: 5586838fe9ce ("igc: Add code for PHY support")
-Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
----
+The second is to prepare the ice driver for future virtualization work to
+support Scalable IOV, an alternative VF implementation compared to Single
+Root IOV. The new VF implementation will allow for more dynamic VF creation
+and removal, necessitating a more robust implementation for VF storage that
+can't rely on the existing mechanisms to prevent concurrent access
+violations.
 
-v2: Add "Fixes:" tag
+The first few patches are cleanup and preparatory work needed to make the
+conversion to the hash table safe. Following this preparatory work is a
+patch to migrate the VF structures and variables to a new sub-structure for
+code clarity. Next introduce new interface functions to abstract the VF
+storage. Finally, the driver is actually converted to the hash table and
+kref implementation.
 
- drivers/net/ethernet/intel/igc/igc_phy.c | 2 --
- 1 file changed, 2 deletions(-)
+Changes since v1:
+* Add missing ice_put_vf in ice_vc_process_vf_msg, fixing memory leak of VF
+* Fix a few checkpatch.pl complaints reported by NIPA
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_phy.c b/drivers/net/ethernet/intel/igc/igc_phy.c
-index 5cad31c3c7b0..df91d07ce82a 100644
---- a/drivers/net/ethernet/intel/igc/igc_phy.c
-+++ b/drivers/net/ethernet/intel/igc/igc_phy.c
-@@ -779,8 +779,6 @@ s32 igc_read_phy_reg_gpy(struct igc_hw *hw, u32 offset, u16 *data)
- 		if (ret_val)
- 			return ret_val;
- 		ret_val = igc_read_phy_reg_mdic(hw, offset, data);
--		if (ret_val)
--			return ret_val;
- 		hw->phy.ops.release(hw);
- 	} else {
- 		ret_val = igc_read_xmdio_reg(hw, (u16)offset, dev_addr,
+
+Jacob Keller (11):
+  ice: refactor unwind cleanup in eswitch mode
+  ice: store VF pointer instead of VF ID
+  ice: pass num_vfs to ice_set_per_vf_res()
+  ice: move clear_malvf call in ice_free_vfs
+  ice: move VFLR acknowledge during ice_free_vfs
+  ice: remove checks in ice_vc_send_msg_to_vf
+  ice: use ice_for_each_vf for iteration during removal
+  ice: convert ice_for_each_vf to include VF entry iterator
+  ice: factor VF variables to separate structure
+  ice: introduce VF accessor functions
+  ice: convert VF storage to hash table with krefs and RCU
+
+ drivers/net/ethernet/intel/ice/ice.h          |  13 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |   4 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 161 ++--
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  20 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 203 +++--
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  64 +-
+ drivers/net/ethernet/intel/ice/ice_repr.c     |  70 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
+ .../ethernet/intel/ice/ice_vf_vsi_vlan_ops.c  |  19 +-
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  13 +-
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 784 +++++++++++-------
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  83 +-
+ 13 files changed, 879 insertions(+), 560 deletions(-)
+
+
+base-commit: 477606a501d0705cb1bb86fe7aa86f553861ae7f
 -- 
-2.35.1
+2.35.1.129.gb80121027d12
 
 _______________________________________________
 Intel-wired-lan mailing list
