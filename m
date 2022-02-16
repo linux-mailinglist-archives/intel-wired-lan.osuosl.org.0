@@ -1,67 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 425854B9343
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 22:38:11 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 672344B9349
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Feb 2022 22:38:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CC41C40A10;
-	Wed, 16 Feb 2022 21:38:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 12A1E813C1;
+	Wed, 16 Feb 2022 21:38:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RWT_8v6wRw7G; Wed, 16 Feb 2022 21:38:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ulKK6EYzzMTO; Wed, 16 Feb 2022 21:38:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 68E3441DFA;
-	Wed, 16 Feb 2022 21:38:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 09C5C81382;
+	Wed, 16 Feb 2022 21:38:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3D6491BF5A9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 30D881BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9633C403C4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2A08A409FC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sUk35ti0XnmO for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 2YOgvsRiFo3L for <intel-wired-lan@lists.osuosl.org>;
  Wed, 16 Feb 2022 21:37:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4514C4046B
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 56FE1404F4
  for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Feb 2022 21:37:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645047466; x=1676583466;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=C826hnLTbwqQg3f+sUpfxkmxAXd07naBHs1IOL3delw=;
- b=BtRH0ZWsr95F3DI5t+M/NpHVa8GaSusRnW/Ji+YGhaZLyP5PmelKywA6
- 1HxO+XtDkisr3KdH7AHwO1N2llIBWVKbZLFnKR453grlPW3cfjB18xPBL
- eote9BGTdBwBdUU8ox6+Uhwux6W+8VPEdodvEiqA4nhZWesvvTt9uffrq
- UrPmhqjPGFQ3hD41XzaxCB1B4MbmEC0V8AkPrDjIWycYs+7q8zkYVczBW
- 2fPINb8dSApsBXF3vVG4L4hBRm8GmvlQ+3++OS5BuXS1BU4N5C7u3paV/
- zrOoIb3ezXfBI+vbROKQt/6n9dYasm/EqrIZZ5YgfM6IuNQhmhHDS91DL A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10260"; a="248328461"
-X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="248328461"
+ bh=fyTwlqnOtYjlVn774bYjznElc77kpSRBO01Lpgcp6rY=;
+ b=Y1zfdkvplX0n+db/eH9MqjKY+AepN0Fpf76o4/hcr1xjY5GaAnmAxCsc
+ 7A7auBfEEZdNgIN/E1UQmCUrsoGIBAswRQpf1qzAIGPKfqjwJD5nmYHna
+ wjL0ukCbj5nskbmZ7fZRMEf8x5Za/bPzbU7riozyE0E5PTJe3OJC1deSM
+ kwnazsm+WsUpVNVF2cO01Bu16GzaXvbZXAS8a+zlwzIbAf8sixaiiwBoN
+ JvXzS5f0GUPE3P8F1yv2F6TbWUOqPH/sf7zVRAkctJVLNZ9XNhJ/PlOGU
+ f8nN2r/umwbdGOs2HtyyBae9FEC/oy+0/1O8VeuWKvtGdTu2nm7rzSuPH w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10260"; a="248328462"
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="248328462"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Feb 2022 13:37:45 -0800
-X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="774249141"
+X-IronPort-AV: E=Sophos;i="5.88,374,1635231600"; d="scan'208";a="774249144"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Feb 2022 13:37:44 -0800
+ 16 Feb 2022 13:37:45 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 16 Feb 2022 13:37:32 -0800
-Message-Id: <20220216213738.3826664-6-jacob.e.keller@intel.com>
+Date: Wed, 16 Feb 2022 13:37:33 -0800
+Message-Id: <20220216213738.3826664-7-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 In-Reply-To: <20220216213738.3826664-1-jacob.e.keller@intel.com>
 References: <20220216213738.3826664-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH v2 05/11] ice: move VFLR
- acknowledge during ice_free_vfs
+Subject: [Intel-wired-lan] [net-next PATCH v2 06/11] ice: remove checks in
+ ice_vc_send_msg_to_vf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,84 +81,99 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After removing all VFs, the driver clears the VFLR indication for VFs.
-This has been in ice since the beginning of SR-IOV support in the ice
-driver.
+The ice_vc_send_msg_to_vf function is used by the PF to send a response
+to a VF. This function has overzealous checks to ensure its not passed a
+NULL VF pointer and to ensure that the passed in struct ice_vf has a
+valid vf_id sub-member.
 
-The implementation was copied from i40e, and the motivation for the VFLR
-indication clearing is described in the commit f7414531a0cf ("i40e:
-acknowledge VFLR when disabling SR-IOV")
+These checks have existed since commit 1071a8358a28 ("ice: Implement
+virtchnl commands for AVF support") and function as simple sanity
+checks.
 
-The commit explains that we need to clear the VFLR indication because
-the virtual function undergoes a VFLR event. If we don't indicate that
-it is complete it can cause an issue when VFs are re-enabled due to
-a "phantom" VFLR.
+We are planning to refactor the ice driver to use a hash table along
+with appropriate locks in a future refactor. This change will modify how
+the ice_validate_vf_id function works. Instead of a simple >= check to
+ensure the VF ID is between some range, it will check the hash table to
+see if the specified VF ID is actually in the table. This requires that
+the function properly lock the table to prevent race conditions.
 
-The register block read was added under a pci_vfs_assigned check
-originally. This was done because we added the check after calling
-pci_disable_sriov. This was later moved to disable SRIOV earlier in the
-flow so that the VF drivers could be torn down before we removed
-functionality.
+The checks may seem ok at first glance, but they don't really provide
+much benefit.
 
-Move the VFLR acknowledge into the main loop that tears down VF
-resources. This avoids using the tmp value for iterating over VFs
-multiple times. The result will make it easier to refactor the VF array
-in a future change.
+In order for ice_vc_send_msg_to_vf to have these checks fail, the
+callers must either (1) pass NULL as the VF, (2) construct an invalid VF
+pointer manually, or (3) be using a VF pointer which becomes invalid
+after they obtain it properly using ice_get_vf_by_id.
 
-It's possible we might want to modify this flow to also stop checking
-pci_vfs_assigned. However, it seems reasonable to keep this change: we
-should only clear the VFLR if we actually disabled SR-IOV.
+For (1), a cursory glance over callers of ice_vc_send_msg_to_vf can show
+that in most cases the functions already operate assuming their VF
+pointer is valid, such as by derferencing vf->pf or other members.
+
+They obtain the VF pointer by accessing the VF array using the VF ID,
+which can never produce a NULL value (since its a simple address
+operation on the array it will not be NULL.
+
+The sole exception for (1) is that ice_vc_process_vf_msg will forward a
+NULL VF pointer to this function as part of its goto error handler
+logic. This requires some minor cleanup to simply exit immediately when
+an invalid VF ID is detected (Rather than use the same error flow as
+the rest of the function).
+
+For (2), it is unexpected for a flow to construct a VF pointer manually
+instead of accessing the VF array. Defending against this is likely to
+just hide bad programming.
+
+For (3), it is definitely true that VF pointers could become invalid,
+for example if a thread is processing a VF message while the VF gets
+removed. However, the correct solution is not to add additional checks
+like this which do not guarantee to prevent the race. Instead we plan to
+solve the root of the problem by preventing the possibility entirely.
+
+This solution will require the change to a hash table with proper
+locking and reference counts of the VF structures. When this is done,
+ice_validate_vf_id will require locking of the hash table. This will be
+problematic because all of the callers of ice_vc_send_msg_to_vf will
+already have to take the lock to obtain the VF pointer anyways. With a
+mutex, this leads to a double lock that could hang the kernel thread.
+
+Avoid this by removing the checks which don't provide much value, so
+that we can safely add the necessary protections properly.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 27 ++++++-------------
- 1 file changed, 8 insertions(+), 19 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index c469b32f665b..7ab4e7d4cfb7 100644
+index 7ab4e7d4cfb7..6351af58f74e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -536,6 +536,14 @@ void ice_free_vfs(struct ice_pf *pf)
- 			ice_free_vf_res(vf);
- 		}
+@@ -2206,13 +2206,7 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+ 	struct ice_pf *pf;
+ 	int aq_ret;
  
-+		if (!pci_vfs_assigned(pf->pdev)) {
-+			u32 reg_idx, bit_idx;
-+
-+			reg_idx = (hw->func_caps.vf_base_id + vf->vf_id) / 32;
-+			bit_idx = (hw->func_caps.vf_base_id + vf->vf_id) % 32;
-+			wr32(hw, GLGEN_VFLRSTAT(reg_idx), BIT(bit_idx));
-+		}
-+
- 		/* clear malicious info since the VF is getting released */
- 		if (ice_mbx_clear_malvf(&hw->mbx_snapshot, pf->malvfs,
- 					ICE_MAX_VF_COUNT, vf->vf_id))
-@@ -553,25 +561,6 @@ void ice_free_vfs(struct ice_pf *pf)
- 	devm_kfree(dev, pf->vf);
- 	pf->vf = NULL;
+-	if (!vf)
+-		return -EINVAL;
+-
+ 	pf = vf->pf;
+-	if (ice_validate_vf_id(pf, vf->vf_id))
+-		return -EINVAL;
+-
+ 	dev = ice_pf_to_dev(pf);
  
--	/* This check is for when the driver is unloaded while VFs are
--	 * assigned. Setting the number of VFs to 0 through sysfs is caught
--	 * before this function ever gets called.
--	 */
--	if (!pci_vfs_assigned(pf->pdev)) {
--		unsigned int vf_id;
--
--		/* Acknowledge VFLR for all VFs. Without this, VFs will fail to
--		 * work correctly when SR-IOV gets re-enabled.
--		 */
--		for (vf_id = 0; vf_id < tmp; vf_id++) {
--			u32 reg_idx, bit_idx;
--
--			reg_idx = (hw->func_caps.vf_base_id + vf_id) / 32;
--			bit_idx = (hw->func_caps.vf_base_id + vf_id) % 32;
--			wr32(hw, GLGEN_VFLRSTAT(reg_idx), BIT(bit_idx));
--		}
--	}
--
- 	clear_bit(ICE_VF_DIS, pf->state);
- 	clear_bit(ICE_FLAG_SRIOV_ENA, pf->flags);
- }
+ 	/* single place to detect unsuccessful return values */
+@@ -5724,8 +5718,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id)) {
+-		err = -EINVAL;
+-		goto error_handler;
++		dev_err(dev, "Unable to locate VF for message from VF ID %d, opcode %d, len %d\n",
++			vf_id, v_opcode, msglen);
++		return;
+ 	}
+ 
+ 	vf = &pf->vf[vf_id];
 -- 
 2.35.1.129.gb80121027d12
 
