@@ -2,66 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34BE54BC01B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Feb 2022 20:09:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1599A4BC115
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Feb 2022 21:18:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AF4D4832FF;
-	Fri, 18 Feb 2022 19:09:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 72B8F81297;
+	Fri, 18 Feb 2022 20:18:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mmeq7BXMhZoh; Fri, 18 Feb 2022 19:09:10 +0000 (UTC)
+	with ESMTP id vDeOhzHG-vAj; Fri, 18 Feb 2022 20:18:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A581E81BB4;
-	Fri, 18 Feb 2022 19:09:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E92981285;
+	Fri, 18 Feb 2022 20:18:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D4EFE1BF328
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 19:09:05 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A36E31BF34B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 20:18:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B926441DCF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 19:09:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8D4F081002
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 20:18:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kQhSLwR_0uIc for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Feb 2022 19:09:05 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5iaa9ALcjh8z for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Feb 2022 20:18:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EBE7341D07
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 19:09:04 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D9D3880F48
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Feb 2022 20:18:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1645211344; x=1676747344;
+ t=1645215525; x=1676751525;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=RJQctZNKL3o1Q714tuHFFrdQKcrzrwOc/zy7tortI90=;
- b=KzB+nY6zIqtkTGbVL/DIp/o0oVOT92F2vw1srs15EJAqTfgeza+K7KTD
- CziM4OVQM7sRXpn1TRU9oIwcOj1aD1MA5lxQOqBhHt/cQyk5D5KAQDqrf
- PPJe6w1wK1kqzPzelGBjDkpcOQt82u8FenNfaJuOs+Bd736XAArB2X05t
- +DjV7BNFFr4eB+s7ermq3tukqtq898wZE5pkVvrHqyiwH86z1sUZDqYfP
- 4u25zZ3jK3QCfx1lvgAE9VKkVKoK/0+SduwTIwG5gEVYiHDTIfjgYCKnZ
- KO0nGzl9X8wrf2VA7FN20P82SVtuXEjA1KGO2BL2joKNLLrMCYTykmaNb Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10262"; a="234729280"
-X-IronPort-AV: E=Sophos;i="5.88,379,1635231600"; d="scan'208";a="234729280"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2022 11:09:04 -0800
-X-IronPort-AV: E=Sophos;i="5.88,379,1635231600"; d="scan'208";a="541993776"
-Received: from dmert-dev.jf.intel.com ([10.166.241.5])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2022 11:09:03 -0800
-From: Dave Ertman <david.m.ertman@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 18 Feb 2022 11:06:04 -0800
-Message-Id: <20220218190604.1888716-1-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.33.1
+ bh=cbRi7q0mFjMOJrEVFLrZ0MNYlKj+81tdg24OHAPa5zU=;
+ b=lWLCUEB7Uw6WqFNku/vSVwdFN9+K+OapB3bmf31pnJ1GL8vxkGKN73UA
+ fHJqpJA8EJuHg2DZtAQSfPklTnw1TrJ4SI74VCsVTIIMdXZrySs9BBLW0
+ rxpbPfy7BcZ3Wdj0fwUlHMs8W8SjV2tfOESS1RNRa06pGdyXV1xe1rAfV
+ Jzsq5eFaeDLuDAlPV+f5RZSLNOmeOlblctb9DZOzY5i/YycY/UgvDQzWF
+ lyMti+MCH6R6vqhBcr2nTLuvZcba3aGOzrR5MVyF/rhz2T6BkKeKoI0Ai
+ W7bcQLSNzO1ZG/gyOwYskRE1YzUSROvI5V+dZJS1O1N2Atmkemif/BfzF A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10262"; a="250964858"
+X-IronPort-AV: E=Sophos;i="5.88,379,1635231600"; d="scan'208";a="250964858"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Feb 2022 12:18:44 -0800
+X-IronPort-AV: E=Sophos;i="5.88,379,1635231600"; d="scan'208";a="546449387"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Feb 2022 12:15:44 -0800
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Fri, 18 Feb 2022 12:15:38 -0800
+Message-Id: <20220218201538.818568-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix error with handling of
- bonding MTU
+Subject: [Intel-wired-lan] [PATCH] fixup! ice: convert VF storage to hash
+ table with krefs and RCU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,108 +77,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When a bonded interface is destroyed, .ndo_change_mtu can be called
-during the tear-down process while the RTNL lock is held.  This is a
-problem since the auxiliary driver linked to the LAN driver needs to be
-notified of the MTU change, and this requires grabbing a device_lock on
-the auxiliary_device's dev.  Currently this is being attempted in the
-same execution context as the call to .ndo_change_mtu which is causing a
-dead-lock.
+Add a missing ice_put_vf in ice_vf_lan_overflow_event, since otherwise
+we'll leak the VF structure here.
 
-Move the notification of the changed MTU to a separate execution context
-(watchdog service task) and eliminate the "before" notification.
-
-Fixes: 348048e724a0e ("ice: Implement iidc operations")
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h      |  1 +
- drivers/net/ethernet/intel/ice/ice_main.c | 29 +++++++++++------------
- 2 files changed, 15 insertions(+), 15 deletions(-)
+Noticed another missing ice_put_vf() in ice_vf_lan_overflow_event. Tony, can
+you squash this into the mentioned commit?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 8f40f6f9b8eb..219b7c9d230e 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -487,6 +487,7 @@ enum ice_pf_flags {
- 	ICE_FLAG_VF_VLAN_PRUNING,
- 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
- 	ICE_FLAG_PLUG_AUX_DEV,
-+	ICE_FLAG_MTU_CHANGED,
- 	ICE_PF_FLAGS_NBITS		/* must be last */
- };
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 537cdc7a1653..0541db39964e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -2340,6 +2340,7 @@ ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 		return;
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index cff476f735ef..f81b4732b8b2 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2259,6 +2259,17 @@ static void ice_service_task(struct work_struct *work)
- 	if (test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
- 		ice_plug_aux_dev(pf);
- 
-+	if (test_and_clear_bit(ICE_FLAG_MTU_CHANGED, pf->flags)) {
-+		struct iidc_event *event;
-+
-+		event = kzalloc(sizeof(*event), GFP_KERNEL);
-+		if (event) {
-+			set_bit(IIDC_EVENT_AFTER_MTU_CHANGE, event->type);
-+			ice_send_event_to_aux(pf, event);
-+			kfree(event);
-+		}
-+	}
-+
- 	ice_clean_adminq_subtask(pf);
- 	ice_check_media_subtask(pf);
- 	ice_check_for_hang_subtask(pf);
-@@ -7016,7 +7027,6 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_vsi *vsi = np->vsi;
- 	struct ice_pf *pf = vsi->back;
--	struct iidc_event *event;
- 	u8 count = 0;
- 	int err = 0;
- 
-@@ -7051,14 +7061,6 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
- 		return -EBUSY;
- 	}
- 
--	event = kzalloc(sizeof(*event), GFP_KERNEL);
--	if (!event)
--		return -ENOMEM;
--
--	set_bit(IIDC_EVENT_BEFORE_MTU_CHANGE, event->type);
--	ice_send_event_to_aux(pf, event);
--	clear_bit(IIDC_EVENT_BEFORE_MTU_CHANGE, event->type);
--
- 	netdev->mtu = (unsigned int)new_mtu;
- 
- 	/* if VSI is up, bring it down and then back up */
-@@ -7066,21 +7068,18 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
- 		err = ice_down(vsi);
- 		if (err) {
- 			netdev_err(netdev, "change MTU if_down err %d\n", err);
--			goto event_after;
-+			return err;
- 		}
- 
- 		err = ice_up(vsi);
- 		if (err) {
- 			netdev_err(netdev, "change MTU if_up err %d\n", err);
--			goto event_after;
-+			return err;
- 		}
- 	}
- 
- 	netdev_dbg(netdev, "changed MTU to %d\n", new_mtu);
--event_after:
--	set_bit(IIDC_EVENT_AFTER_MTU_CHANGE, event->type);
--	ice_send_event_to_aux(pf, event);
--	kfree(event);
-+	set_bit(ICE_FLAG_MTU_CHANGED, pf->flags);
- 
- 	return err;
+ 	ice_vc_reset_vf(vf);
++	ice_put_vf(vf);
  }
+ 
+ /**
+
+base-commit: 477606a501d0705cb1bb86fe7aa86f553861ae7f
+prerequisite-patch-id: 52d10a04856713e454419d1fab93a8eb8fc8b46b
+prerequisite-patch-id: 5e147a8595d06a154c4d4bd96a00123b9d7aeff3
+prerequisite-patch-id: 219a2374784bc332860587188fff3b52875bf75b
+prerequisite-patch-id: 9c0a3c2a0f103f375d154874cb2f6c05460fce4f
+prerequisite-patch-id: 0d93364319183aa07095f318faa1ab04818a0122
+prerequisite-patch-id: f6646bb747160540b8aad64bc8bf6eec2f8a0751
+prerequisite-patch-id: 30b94ac0dc91fa628dac13700d71b1dbcb466207
+prerequisite-patch-id: 7d2e698ae3bc185dfb1d622219774cb3eaf2747b
+prerequisite-patch-id: c323612611a89bb6c6fd39c16c2cbec947eac0be
+prerequisite-patch-id: 9c0e97be6504c4ebb3ad317cf7a58983369f852d
+prerequisite-patch-id: 9d8a69cab472a9920a226840cf9ba0e664b2d48a
 -- 
-2.33.1
+2.35.1.129.gb80121027d12
 
 _______________________________________________
 Intel-wired-lan mailing list
