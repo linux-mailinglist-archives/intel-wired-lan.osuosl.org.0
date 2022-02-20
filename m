@@ -1,70 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BE864BD1DC
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Feb 2022 22:23:08 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F256F4BD1DB
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Feb 2022 22:23:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2F2BF81490;
-	Sun, 20 Feb 2022 21:23:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1AEBC401AF;
+	Sun, 20 Feb 2022 21:23:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N7YDpLNMACrC; Sun, 20 Feb 2022 21:23:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gTmADvQHAslX; Sun, 20 Feb 2022 21:23:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 148AC813FC;
-	Sun, 20 Feb 2022 21:23:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 04F4C401A0;
+	Sun, 20 Feb 2022 21:23:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4638B1BF3D7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 21:22:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F3171BF3D7
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 21:22:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 42A51401A0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 21:22:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 14B944019D
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 21:22:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0yGswp0C7FFI for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id Iae_SuCgcuAr for <intel-wired-lan@lists.osuosl.org>;
  Sun, 20 Feb 2022 21:22:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 62C7B400F9
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7A51740149
  for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 21:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645392175; x=1676928175;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=zn5Z8BQWtIYGambTeKWSUaJZgeeXLnvyFRw1SqOEiAs=;
- b=WsH7htgxB8q7ntyBF/Rmaq61+sS+exmMfYQArZBpnh4dUFy7YuxFtAlK
- L0EhbQLgRZLwKxnzx0Rt0CmzFrPPA8N/HTSEeptjrQTLYwhM/sX5G5rv2
- M+QDh39eGzxRc1dOEX96pPPL1yeP5YPfMl7rQFwpeVrHzbYGFIpMqgeov
- 4ju+c59fymkz6lr/T+631odIiN/QhENcFI6ECoiFr0o3QLVdzRM71Ow7J
- AS7BYfhzOheWB9LHpORLOsH0hX+wN5W2l2yALqR9rdQXHdoTLVosCZeHT
- jUyGxRK5Cvyvm2E7QG1EjPqscd9T3g14CwOZS/re7nRwCHp+alw8fYlqw w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10264"; a="250222434"
-X-IronPort-AV: E=Sophos;i="5.88,384,1635231600"; d="scan'208";a="250222434"
+ bh=qY464QRAgxfXwZ2dO+8poNh444fQperW3C7gRJDBkAo=;
+ b=D0wslFKHnSBz4vX17YuMjh1oVDEP3DvoKiMUvbkl3Dj11RlE3JHsxN1O
+ G0Ijh49GgxmVibYPBnrkRpV91MiuM7cfSIVTjLTRHqlDriS+VfgM9QgRW
+ HDn8GFJsn2bspK7pWXUHcy/pvfA1ioqXHgpBoQz4c99Lnt2Rn2OaR33CM
+ u60fWMvY/t+sX6FqStU3fVwFnd/1OVOTj28ecv4jX31vERNjucdbrsIaf
+ VdNnd8FwX6hkeZPmh5wcKW0KeOpCJcMND0sSk5HJj2LgOqtfYRV+v+AWN
+ O+JAi1HX9RZMgk2v7Hvir8PGSPmAhWd5mf5zKUrnBxoVMfEjAvKwgq4HF g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10264"; a="250222436"
+X-IronPort-AV: E=Sophos;i="5.88,384,1635231600"; d="scan'208";a="250222436"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2022 13:22:54 -0800
+ 20 Feb 2022 13:22:55 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,384,1635231600"; d="scan'208";a="778517533"
+X-IronPort-AV: E=Sophos;i="5.88,384,1635231600"; d="scan'208";a="778517534"
 Received: from lkp-server01.sh.intel.com (HELO da3212ac2f54) ([10.239.97.150])
  by fmsmga005.fm.intel.com with ESMTP; 20 Feb 2022 13:22:53 -0800
 Received: from kbuild by da3212ac2f54 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nLtfQ-0000pu-TR; Sun, 20 Feb 2022 21:22:52 +0000
-Date: Mon, 21 Feb 2022 05:22:07 +0800
+ id 1nLtfR-0000qG-5A; Sun, 20 Feb 2022 21:22:53 +0000
+Date: Mon, 21 Feb 2022 05:22:32 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6212b0ff.aNWIQeB9ImQTgrRl%lkp@intel.com>
+Message-ID: <6212b118.7/vey7uf1HnYeiva%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 98b1f1d6a184646cb70760676f70ec5c6bedda24
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ 5950bdc88dd1d158f2845fdff8fb1de86476806c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,12 +80,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 98b1f1d6a184646cb70760676f70ec5c6bedda24  Revert "i40e: Fix reset bw limit when DCB enabled with 1 TC"
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: 5950bdc88dd1d158f2845fdff8fb1de86476806c  ice: initialize local variable 'tlv'
 
-elapsed time: 732m
+elapsed time: 733m
 
-configs tested: 106
+configs tested: 109
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -111,6 +109,7 @@ powerpc                      ppc40x_defconfig
 powerpc                    klondike_defconfig
 m68k                        m5272c3_defconfig
 xtensa                              defconfig
+alpha                               defconfig
 powerpc                      pcm030_defconfig
 mips                       bmips_be_defconfig
 h8300                            alldefconfig
@@ -133,12 +132,11 @@ ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                                defconfig
 m68k                             allyesconfig
-nds32                             allnoconfig
 nios2                               defconfig
 arc                              allyesconfig
+nds32                             allnoconfig
 nios2                            allyesconfig
 csky                                defconfig
-alpha                               defconfig
 alpha                            allyesconfig
 xtensa                           allyesconfig
 h8300                            allyesconfig
@@ -160,6 +158,9 @@ mips                             allmodconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
 riscv                    nommu_k210_defconfig
 riscv                            allyesconfig
 riscv                    nommu_virt_defconfig
@@ -168,8 +169,8 @@ riscv                               defconfig
 riscv                          rv32_defconfig
 riscv                            allmodconfig
 x86_64                    rhel-8.3-kselftests
-um                             i386_defconfig
 um                           x86_64_defconfig
+um                             i386_defconfig
 x86_64                           allyesconfig
 x86_64                              defconfig
 x86_64                               rhel-8.3
