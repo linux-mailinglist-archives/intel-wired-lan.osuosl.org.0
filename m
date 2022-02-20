@@ -1,45 +1,167 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A1394BCE05
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Feb 2022 11:45:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C93094BCE3D
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Feb 2022 12:41:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0E2D3817D3;
-	Sun, 20 Feb 2022 10:45:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 66DF24059D;
+	Sun, 20 Feb 2022 11:41:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5SQ1xW_5QyC9; Sun, 20 Feb 2022 10:45:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NwDXh5QWec0w; Sun, 20 Feb 2022 11:41:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9A0A9817AD;
-	Sun, 20 Feb 2022 10:45:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5DC1D40598;
+	Sun, 20 Feb 2022 11:41:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D03DF1BF59D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 10:45:36 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DB0131BF2F7
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 11:41:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BB1E340184
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 10:45:36 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C719F40598
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 11:41:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0C_3sSIthlLp for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Feb 2022 10:45:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.wantstofly.org (hmm.wantstofly.org [213.239.204.108])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D9E1B4000B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 10:45:34 +0000 (UTC)
-Received: by mail.wantstofly.org (Postfix, from userid 1000)
- id CE1B17F51E; Sun, 20 Feb 2022 12:45:30 +0200 (EET)
-Date: Sun, 20 Feb 2022 12:45:30 +0200
-From: Lennert Buytenhek <buytenh@wantstofly.org>
-To: intel-wired-lan@lists.osuosl.org
-Message-ID: <YhIbyiPCKzDDLUIr@wantstofly.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Gru6SbeHg9zN for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 20 Feb 2022 11:41:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1B03740591
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Feb 2022 11:41:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1645357293; x=1676893293;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=L+8kQw45vlFnuwkYerfK39r5iqOHXOCVUrupzryphMc=;
+ b=bYEI838DYt5nN8STCYbKlNbMmyxbnjaowd/RueMckm9KIMmlj/AyheM1
+ OfqzEKBp1WvLnsutpbguqSN5G8gwH4nQDkVxkBRpqnBLEW4O496+er3qJ
+ GaYltyf61ZlEU85tuu/Qgd4koxxohrzDZ/cO4wUXfKFLNDzbeE+CrY8Sa
+ cPtM9AdOG7yNXIwrrlsflJ6kubNopr0m5fDHpHh9BrljFA8kqDZYrikjD
+ L2NOUIHY636HQ9zQmfGlSQFTop4I8zPH02FQ3AhDtZY28TkjPdhwV8qwF
+ ikAF147VPBDVrWYuHd2Nx44/27YM8rYppJmtFwgYRvefbyg1/YsP6aDM2 A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10263"; a="314628218"
+X-IronPort-AV: E=Sophos;i="5.88,383,1635231600"; d="scan'208";a="314628218"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2022 03:41:32 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,383,1635231600"; d="scan'208";a="636358495"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmsmga002.fm.intel.com with ESMTP; 20 Feb 2022 03:41:31 -0800
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Sun, 20 Feb 2022 03:41:31 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Sun, 20 Feb 2022 03:41:30 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Sun, 20 Feb 2022 03:41:30 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.177)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Sun, 20 Feb 2022 03:41:30 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lAhJqzo/VD5rQHZSMbBo4WbqoEUsSUTlpJ63ABSe0ZpKXv9krWG0tK8x+buMf1fe6VJ3Hq9EgyudGe6iHyNZ7ZUgo6vUcBb6aUOEoNvkMk4unAII+SYejVEs6bfOaEVfC9vg8yoshFTU3I1IzVNLb0/JhUy/QaYawBBcxSRnKPFqYOVpcNQzNPzfbr9WO3pxJ1SLBMTng6xpHBizMQGh82O5IQwzl1eBYh2CrCpLe84EFA5yPgghVddaEHYMXj73hzisDji9JBHU05pHW453L2c5fGewVcLv7NYeWz7phR4UgzH/IftR6XSuOBn1vY+PlP7yZpBJKej+ets5YYnDcw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=spCRrkp0iZxlQfnRq/TLBIkPg0AgW67z0+kVWiWPOy8=;
+ b=KTu3qkDvAZK6cQsWoLyhAo98Nw2bvVm/LV7DoO4TJ5F8S5pO16whLPV/vFAQV9JT3lHI5IDW1ci4r94pWVb+lfIe64QaUiT425kTLPGWaMBHsN51B/J7tfzujfCBQagyrF2HP1xqKPOy6ZJLohHU0NG3QEpjGQuYXuxNUc3o1zX/rg+zpTga0WiWlhSWJEoK9f05JclUMX+AMM32ADHlOXOEsSfBWZDKgHFakFeoiSnRkrfYKdUX+QQRSGMMdroxiVIRkN7cwTE8WAL9UHlZ0IB7OeNAt21Eox0Mjy6kfF4mgBxNk+UfhJKbxML+co3fxzdhzI9mcTbejWiFLB2olw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CY4PR11MB1797.namprd11.prod.outlook.com (2603:10b6:903:126::19)
+ by MWHPR11MB1264.namprd11.prod.outlook.com (2603:10b6:300:27::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.16; Sun, 20 Feb
+ 2022 11:41:27 +0000
+Received: from CY4PR11MB1797.namprd11.prod.outlook.com
+ ([fe80::c8b4:a66e:3224:1515]) by CY4PR11MB1797.namprd11.prod.outlook.com
+ ([fe80::c8b4:a66e:3224:1515%12]) with mapi id 15.20.4995.026; Sun, 20 Feb
+ 2022 11:41:27 +0000
+From: "Bhandare, KiranX" <kiranx.bhandare@intel.com>
+To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v2 intel-net] ice: avoid XDP checks in
+ ice_clean_tx_irq()
+Thread-Index: AQHYGPf++d0RHT8M3kKVpdYCtUqpiqyca2ng
+Date: Sun, 20 Feb 2022 11:41:26 +0000
+Message-ID: <CY4PR11MB179787D32441208BE9D4B5D9F1399@CY4PR11MB1797.namprd11.prod.outlook.com>
+References: <20220203121651.18937-1-maciej.fijalkowski@intel.com>
+In-Reply-To: <20220203121651.18937-1-maciej.fijalkowski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.200.16
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 9f1d51cd-4abf-4362-db11-08d9f465ede9
+x-ms-traffictypediagnostic: MWHPR11MB1264:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <MWHPR11MB1264CFBD4630E093DDCFCAEAF1399@MWHPR11MB1264.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: llYpTiyCLmpZzs9q28hui8kFclxSRaehdHx4y6IrhJtRngFTrC+EuM+jbT4VLil2ne2NEb1aHRNKZP82MTpAkYAUEqZ5OOSMFG9UfEs111dvYqiGpTpMiqLHFp5wetMyToqJLTGTJg4dT2WlwP4qawKZEHoC3hwIxhHiItU5PKgfK1zfyZDlmQHs0lZA5SkU9TPMKtjo3kiEFHFgkChUoCbtpsgRk0AuNGUSjkazBnJq+a9pv1hDn8RhyVtfAFE9dM5JprtSL9g0z+Q6pOHbijqQBkpj7vWDcjvO6Z5jMJsW0ZPxB7uks8VR9JNdbNdEQyIUcTvQV15J811KX7XESELhI8p6hg8rgFfk8XkVEnohn8AoXNFJzYf/7o76JzpHWQO3gMSXak+941qnmVfO/w6krER2p9kQ4wZieqWfB9J+ojixyzvXorCt/8Ye5/A3fpoUJeNtUtf3azM6qRwAdTqTeYXgpkwPY8VJU7lngORI5lBcq/hUYtUxYlXN4tdIps4pHH7p25HcEt09A0QDxwtJ3LrXx5iOaPUvQ2jKNbLo6V6G8Wo4lJpjZE22XAk7H6mTaznFIh14hahNXkjyohLhSB7Yy8iPQJpsxulV9Oc/7lpaT7/GnBkmMDehqHmst1V+//kMGOoN19oR4GaOGKxsUrnOLjwXwrRkTdQIg2IrxKqmkBwh9uPMWg4Mnbw1R0zHTMuDE4c4NWJsCVtJGA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY4PR11MB1797.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(71200400001)(33656002)(82960400001)(38100700002)(6506007)(7696005)(9686003)(53546011)(107886003)(186003)(26005)(83380400001)(76116006)(110136005)(55016003)(122000001)(508600001)(8936002)(38070700005)(54906003)(86362001)(2906002)(316002)(52536014)(8676002)(4326008)(64756008)(66446008)(66476007)(66946007)(66556008)(5660300002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?P7cvV2y/uFrIavvd7L5esIvBsvbgu/TYsdftqVHCwHSmZjoP1pgDfeUaoRpD?=
+ =?us-ascii?Q?JLIkXkpt+jhe2+2dbwc4CZejKw9l/rhC2eIasvA1AjFRPB+2aC1Od1qDH9Gb?=
+ =?us-ascii?Q?Yjdjc00g4d5kl3UJbj5BvO+yp6+CUJw9e8cqVCuEISZhvN9lpdnZ3aoO5jrU?=
+ =?us-ascii?Q?ILunIFGL5IunUYiRjRDPy57aHNGt9zWxUtsaJpQGE5lN7Tg4Dvg11qeBPsBp?=
+ =?us-ascii?Q?n7OlZiRDxEwElkKEQD8dSZxSWvxH3Bkv7wxK96fqaPubPWT4Q0A11Qkw7WyZ?=
+ =?us-ascii?Q?v3Yed6krhW2r2jNxdorMnvIUm6RePiPpMP9Kb/uXGxpkh6gOYvss+edIJccr?=
+ =?us-ascii?Q?Mp3JtMdYCoh6A4dejUzrCyg4wGg5VemlJDfw4KyNTKj4YDx8bV9C0nYmeC7U?=
+ =?us-ascii?Q?I8JVbtLNKYPj+4+geqhOFaZdqVjkIvUNzwWMTAMbcRq4rasnQdfBjjvWC2mv?=
+ =?us-ascii?Q?QTSkNA3dJRxriD2VDuadJRWWyin42lH3RU93D5gVoiTdaroUjyCXAc5CaYyA?=
+ =?us-ascii?Q?sd1M/6qsJGv6/gZpPp9WIGe7QEfvPPlcgd6CO9E3OhXttqs7oVl85Y3YZ3mL?=
+ =?us-ascii?Q?BSVDqGF6KSE6HvCG5URSVlbtiQTNjx6LqWNTei1MPtQ1aqZWKG1F6TITBu5c?=
+ =?us-ascii?Q?6vzypD4zAymL7hjn23s2ld3KvLGlqqLI2jcMTok4U9yVvYdwpN9t2ryqgnuZ?=
+ =?us-ascii?Q?V2vA01SbNnKk5tWWg2vQrSK/3J/OFZQpPF3RdZhrN+BNKgZ3AASXOrsbWgN+?=
+ =?us-ascii?Q?J3hW2HR0TxSzz1l00PFzw4LdF6KOPtpq+YxEWkfuNnYghTD0Ec8nJHeleuFm?=
+ =?us-ascii?Q?bCelaaO4kQmAi0sTaH8sL3JkPOM1Jjc9Fz3ncoUQsh7V8UuShZEHpsLGWnPv?=
+ =?us-ascii?Q?TvEEVZDH/v4e4ZcEghP+UqcWDOzVtpiLlT2BE1IMvj+tvLSildwPDRPwdC0j?=
+ =?us-ascii?Q?CvX7UFZH+3HMNtqNw3E+yvWLCX0aUgGUpINIpUHBFqhhXDOZkV7iFU+EWF8q?=
+ =?us-ascii?Q?6M5baYRhazcLsnz7lob+3FiR457keE5EXeBY0SSXoIUOGlJzDbL8cRtnJMtO?=
+ =?us-ascii?Q?/fuZhpv0u/pOnjqmW1Jgq3Pwkxzl0gMPaB6h60wf/tSOxxVneaRQH734hwo8?=
+ =?us-ascii?Q?02h4gqHO3BdX/XW2WQqV0NWw9cZ7xGGI/gRMoA4gu0UkFr9qRZfV59qlCLEf?=
+ =?us-ascii?Q?QIKHZ/7zUmlcr8EEaQNrUD7fcCYjobYF91FuuT279skixnHAcKfeJ4ERwPLm?=
+ =?us-ascii?Q?ne3GJMnzAbXo0kWuuZYnUgjo7WBfCD1bUyb0eHSOKPKK5k5shM2CTxVqirHI?=
+ =?us-ascii?Q?glRo5quXdaJGZoDchsLKCXo8a6oWs/gXJ/pEp8bT9FGPfIEWsEbWP9dDcZ2o?=
+ =?us-ascii?Q?/t6ghb+wQXA+HodEbYIzulMDNNt1UY8ra1h/HL1PDgMG+XAdPEfRZNbE0c8X?=
+ =?us-ascii?Q?8f33kruMwSTYRpLuZCcCz8buCMTvFtlqwBVuXm982bd6zNxpfwdxyQlSJptW?=
+ =?us-ascii?Q?KHSx0UkmfDTT0qczPGQaRqnMRjN9Uti5RTnvalb9Clg88jXEZAHnBQJlSRx8?=
+ =?us-ascii?Q?2mgRzMml3LzRrkF6W9I0G5eAlVS58ADAbgIKFgvkqsd646OtZOkjAE8Yg032?=
+ =?us-ascii?Q?hrPTQG0fgpdohOydP1at+8iWPWj+xflVUdMBhBuUFdBcjvPX0Y21f8EKpVs/?=
+ =?us-ascii?Q?JC0O5g=3D=3D?=
 MIME-Version: 1.0
-Content-Disposition: inline
-Subject: [Intel-wired-lan] igc_rd32() oopses on reboot / PCIe link flap
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1797.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9f1d51cd-4abf-4362-db11-08d9f465ede9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Feb 2022 11:41:26.6599 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: gkjBOIkvrLsLF1Jvi5BNnRE7XUFqLIxoXaelDn/i6VRGu/kGiCDeldlHkd9iP76FYZvENOexO8rC19turEdmIJS4MYQ8UmQf+vKEsE+xeQQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1264
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v2 intel-net] ice: avoid XDP checks in
+ ice_clean_tx_irq()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,250 +174,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>, "kuba@kernel.org" <kuba@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
 
-When rebooting one of my machines that has an I225 NIC in it, I hit a
-NULL pointer deref in device_shutdown() -> pci_device_shutdown() ->
-igc_shutdown() -> __igc_shutdown() -> igc_setup_rctl() -> igc_rd32().
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Maciej Fijalkowski
+> Sent: Thursday, February 3, 2022 5:47 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; kuba@kernel.org; bpf@vger.kernel.org;
+> davem@davemloft.net; Karlsson, Magnus <magnus.karlsson@intel.com>
+> Subject: [Intel-wired-lan] [PATCH v2 intel-net] ice: avoid XDP checks in
+> ice_clean_tx_irq()
+> 
+> Commit 9610bd988df9 ("ice: optimize XDP_TX workloads") introduced Tx IRQ
+> cleaning routine dedicated for XDP rings. Currently it is impossible to call
+> ice_clean_tx_irq() against XDP ring, so it is safe to drop
+> ice_ring_is_xdp() calls in there.
+> 
+> Fixes: 1c96c16858ba ("ice: update to newer kernel API")
+> Fixes: cc14db11c8a4 ("ice: use prefetch methods")
+> Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> ---
+> 
+> v2: fix commit msg and collect ack (Alex)
+> 
+>  drivers/net/ethernet/intel/ice/ice_txrx.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+> 
 
-That was on a custom 4.19 kernel with a backported igc driver, but I
-can reproduce similar oopses on 5.16 by flapping the I225's PCIe link,
-by toggling the "Secondary Bus Reset" bit in the upstream bridge's
-"Bridge Control" register.  See the oopses at the end of this email.
-
-It seems that there is some code in the igc driver for handling PCI
-hot removal, but it doesn't seem to be working as intended.
-
-	u32 igc_rd32(struct igc_hw *hw, u32 reg)
-	{
-		struct igc_adapter *igc = container_of(hw, struct igc_adapter, hw);
-		u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
-		u32 value = 0;
-
-		value = readl(&hw_addr[reg]);
-
-		/* reads should not return all F's */
-		if (!(~value) && (!reg || !(~readl(hw_addr)))) {
-			struct net_device *netdev = igc->netdev;
-
-			hw->hw_addr = NULL;
-			netif_device_detach(netdev);
-			netdev_err(netdev, "PCIe link lost, device now detached\n");
-			WARN(pci_device_is_present(igc->pdev),
-			     "igc: Failed to read reg 0x%x!\n", reg);
-		}
-
-		return value;
-	}
-
-igc_rd32() can be invoked again after it detects hot removal, and the
-next invocation will then see hw->hw_addr being NULL, and
-'value = readl(&hw_addr[reg]);' will dereference a NULL pointer.
-
-This can be trivially reproduced on any machine using a variant of the
-setpci command below.
-
-I tried adding this:
-
-	diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-	index 2f17f36e94fd..cf29c700e9f2 100644
-	--- a/drivers/net/ethernet/intel/igc/igc_main.c
-	+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-	@@ -6167,6 +6167,9 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
-		u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
-		u32 value = 0;
-	  
-	+	if (hw_addr == NULL)
-	+		return 0xffffffff;
-	+
-		value = readl(&hw_addr[reg]);
-	  
-		/* reads should not return all F's */
-
-Which then makes it oops instead in process_one_work() ->
-igc_watchdog_task() -> igc_update_stats():
-
-	[  102.882047] igc 0000:08:00.0 enp8s0: PCIe link lost, device now detached
-	[  102.882062] BUG: unable to handle page fault for address: 000000000000c030
-	[  102.882065] #PF: supervisor write access in kernel mode
-	[  102.882067] #PF: error_code(0x0002) - not-present page
-
-0xc030 is IGC_RQDPC(0), so this is due to:
-
-	void igc_update_stats(struct igc_adapter *adapter)
-	{
-		struct rtnl_link_stats64 *net_stats = &adapter->stats64;
-		struct pci_dev *pdev = adapter->pdev;
-		struct igc_hw *hw = &adapter->hw;
-	[...]
-			if (hw->mac.type >= igc_i225)
-				wr32(IGC_RQDPC(i), 0);		<====
-
-As igc_rd32() has a hw_addr NULL check now but wr32() doesn't.  Adding
-a similar check there:
-
-	diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-	index e197a33d93a0..5d8825d4a8f5 100644
-	--- a/drivers/net/ethernet/intel/igc/igc_regs.h
-	+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-	@@ -306,7 +306,8 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg);
-	 #define wr32(reg, val) \
-	 do { \
-		u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
-	-       writel((val), &hw_addr[(reg)]); \
-	+       if (hw_addr != NULL) \
-	+               writel((val), &hw_addr[(reg)]); \
-	 } while (0)
-	 
-	 #define rd32(reg) (igc_rd32(hw, reg))
-
-With these changes it seems to survive a PCIe link flap.  (But you may
-want to fix this differently.  Let me know what you think.)
-
-
-Thanks,
-Lennert
-
-
-# lspci | grep I225
-08:00.0 Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)
-# lspci -t -s 00:03.1
-0000:00:03.1-[08]----00.0
-#
-
-Doing this on the upstream bridge:
-
-# setpci -v -s 00:03.1 3E.w=0052; sleep 0.5; setpci -v -s 00:03.1 3E.w=0012
-
-gives me e.g. (when the ethernet link is up):
-
-igc 0000:08:00.0 enp8s0: PCIe link lost, device now detached
-------------[ cut here ]------------
-igc: Failed to read reg 0xc030!
-WARNING: CPU: 12 PID: 467 at drivers/net/ethernet/intel/igc/igc_main.c:6168 igc_rd32+0x7c/0x80 [igc]
-Modules linked in: ib_core iwlmvm mac80211 bnep libarc4 snd_hda_codec_realtek snd_hda_codec_generic snd_hda_codec_hdmi ledtrig_audio snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi intel_rapl_msr snd_hda_codec intel_rapl_common amd64_edac edac_mce_amd iwlwifi btusb bridge snd_hda_core btrtl nct6775 snd_hwdep kvm_amd btbcm hwmon_vid btintel snd_pcm stp llc jc42 bluetooth cfg80211 kvm atlantic snd_timer snd ecdh_generic irqbypass igc rapl r8169 k10temp wmi_bmof i2c_piix4 macsec soundcore rfkill gpio_amdpt gpio_generic acpi_cpufreq vfat fat fuse zram ip_tables nouveau video drm_ttm_helper ttm i2c_algo_bit mxm_wmi drm_kms_helper cec drm crct10dif_pclmul crc32_pclmul crc32c_intel nvme ghash_clmulni_intel ccp nvme_core sp5100_tco wmi i2c_dev ipmi_devintf ipmi_msghandler
-CPU: 12 PID: 467 Comm: kworker/12:3 Not tainted 5.16.9-200.fc35.x86_64 #1
-Hardware name: ASUS System Product Name/TUF GAMING B550M-PLUS (WI-FI), BIOS 1401 12/03/2020
-Workqueue: events igc_watchdog_task [igc]
-RIP: 0010:igc_rd32+0x7c/0x80 [igc]
-Code: 48 c7 c6 b8 43 90 c0 e8 4e 62 3a dc 48 8b bb 30 ff ff ff e8 66 53 e2 db 84 c0 74 b2 89 ee 48 c7 c7 e0 43 90 c0 e8 20 53 34 dc <0f> 0b eb a0 0f 1f 44 00 00 41 56 41 55 41 54 55 48 89 f5 53 80 7e
-RSP: 0018:ffffbea2407c7df0 EFLAGS: 00010286
-RAX: 000000000000001f RBX: ffff98ce471a4c10 RCX: 0000000000000000
-RDX: 0000000000000002 RSI: ffffffff9d634ddd RDI: 00000000ffffffff
-RBP: 000000000000c030 R08: 0000000000000000 R09: ffffbea2407c7c30
-R10: ffffbea2407c7c28 R11: ffffffff9df462a8 R12: 00000000ffffffff
-R13: ffff98ce471a4000 R14: ffff98ce46148d40 R15: 000000000000c030
-FS:  0000000000000000(0000) GS:ffff98eceed00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007f3114b61570 CR3: 000000010137e000 CR4: 0000000000350ee0
-Call Trace:
- <TASK>
- igc_update_stats+0x82/0x6a0 [igc]
- igc_watchdog_task+0x83/0x290 [igc]
- ? psi_avgs_work+0x96/0xa0
- process_one_work+0x1e5/0x3c0
- worker_thread+0x50/0x3b0
- ? rescuer_thread+0x350/0x350
- kthread+0x169/0x190
- ? set_kthread_struct+0x40/0x40
- ret_from_fork+0x1f/0x30
- </TASK>
----[ end trace cd5c2c421a507777 ]---
-BUG: unable to handle page fault for address: 000000000000c030
-#PF: supervisor write access in kernel mode
-#PF: error_code(0x0002) - not-present page
-
-
-Or if I do it while the ethernet link is down:
-
-igc 0000:08:00.0 enp8s0: PCIe link lost, device now detached
-BUG: unable to handle page fault for address: 000000000000c030
-#PF: supervisor write access in kernel mode
-#PF: error_code(0x0002) - not-present page
-PGD 0 P4D 0 
-Oops: 0002 [#1] PREEMPT SMP NOPTI
-CPU: 0 PID: 120 Comm: kworker/0:3 Not tainted 5.16.9-200.fc35.x86_64 #1
-Hardware name: ASUS System Product Name/TUF GAMING B550M-PLUS (WI-FI), BIOS 1401 12/03/2020
-Workqueue: events igc_watchdog_task [igc]
-RIP: 0010:igc_update_stats+0x9c/0x6a0 [igc]
-Code: 89 0c 24 4e 8b b4 eb 88 00 00 00 e8 9e f1 ff ff 8b 93 fc 02 00 00 48 8b 0c 24 85 d2 74 0e 48 8b b3 98 02 00 00 31 d2 4c 01 fe <89> 16 85 c0 74 10 89 c0 49 01 86 80 00 00 00 48 01 83 40 02 00 00
-RSP: 0018:ffffa64240657e18 EFLAGS: 00010206
-RAX: 00000000ffffffff RBX: ffff8b064f3f4980 RCX: 0000000000000000
-RDX: 0000000000000000 RSI: 000000000000c030 RDI: 00000000ffffffff
-RBP: ffff8b064f3f4c10 R08: 0000000000000004 R09: ffffa64240657d8c
-R10: ffffa64240657ae8 R11: 0000000000000008 R12: 0000000000000000
-R13: 0000000000000000 R14: ffff8b064b836d40 R15: 000000000000c030
-FS:  0000000000000000(0000) GS:ffff8b24eea00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 000000000000c030 CR3: 00000001064ee000 CR4: 0000000000350ef0
-Call Trace:
- <TASK>
- igc_watchdog_task+0x83/0x290 [igc]
- process_one_work+0x1e5/0x3c0
- worker_thread+0x50/0x3b0
- ? rescuer_thread+0x350/0x350
- kthread+0x169/0x190
- ? set_kthread_struct+0x40/0x40
- ret_from_fork+0x1f/0x30
- </TASK>
-Modules linked in: bridge stp llc iwlmvm intel_rapl_msr intel_rapl_common amd64_edac edac_mce_amd mac80211 bnep nct6775 hwmon_vid libarc4 snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_codec_hdmi jc42 snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec btusb btrtl snd_hda_core kvm_amd btbcm iwlwifi snd_hwdep btintel snd_pcm bluetooth kvm cfg80211 atlantic snd_timer snd irqbypass ecdh_generic igc rapl r8169 wmi_bmof k10temp i2c_piix4 macsec soundcore rfkill gpio_amdpt acpi_cpufreq gpio_generic vfat fat fuse zram ip_tables nouveau video drm_ttm_helper ttm i2c_algo_bit mxm_wmi drm_kms_helper cec drm crct10dif_pclmul crc32_pclmul crc32c_intel nvme ghash_clmulni_intel nvme_core ccp sp5100_tco wmi i2c_dev ipmi_devintf ipmi_msghandler
-CR2: 000000000000c030
----[ end trace 85448a0de210328a ]---
-RIP: 0010:igc_update_stats+0x9c/0x6a0 [igc]
-Code: 89 0c 24 4e 8b b4 eb 88 00 00 00 e8 9e f1 ff ff 8b 93 fc 02 00 00 48 8b 0c 24 85 d2 74 0e 48 8b b3 98 02 00 00 31 d2 4c 01 fe <89> 16 85 c0 74 10 89 c0 49 01 86 80 00 00 00 48 01 83 40 02 00 00
-RSP: 0018:ffffa64240657e18 EFLAGS: 00010206
-RAX: 00000000ffffffff RBX: ffff8b064f3f4980 RCX: 0000000000000000
-RDX: 0000000000000000 RSI: 000000000000c030 RDI: 00000000ffffffff
-RBP: ffff8b064f3f4c10 R08: 0000000000000004 R09: ffffa64240657d8c
-R10: ffffa64240657ae8 R11: 0000000000000008 R12: 0000000000000000
-R13: 0000000000000000 R14: ffff8b064b836d40 R15: 000000000000c030
-FS:  0000000000000000(0000) GS:ffff8b24eea00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 000000000000c030 CR3: 00000001064ee000 CR4: 0000000000350ef0
-note: kworker/0:3[120] exited with preempt_count 1
-
-
-Or:
-
-igc 0000:08:00.0 enp8s0: PCIe link lost, device now detached
-------------[ cut here ]------------
-igc: Failed to read reg 0xc030!
-WARNING: CPU: 0 PID: 95 at drivers/net/ethernet/intel/igc/igc_main.c:6168 igc_rd32+0x7c/0x80 [igc]
-Modules linked in: intel_rapl_msr intel_rapl_common amd64_edac edac_mce_amd iwlmvm bridge stp llc mac80211 bnep snd_hda_codec_realtek snd_hda_codec_generic libarc4 ledtrig_audio snd_hda_codec_hdmi snd_hda_intel btusb snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec btrtl nct6775 btbcm hwmon_vid iwlwifi btintel snd_hda_core jc42 kvm_amd snd_hwdep bluetooth kvm snd_pcm cfg80211 atlantic snd_timer snd irqbypass rapl ecdh_generic igc r8169 wmi_bmof k10temp i2c_piix4 macsec soundcore rfkill acpi_cpufreq gpio_amdpt gpio_generic vfat fat fuse zram ip_tables nouveau video drm_ttm_helper ttm i2c_algo_bit mxm_wmi drm_kms_helper cec crct10dif_pclmul drm crc32_pclmul crc32c_intel nvme ghash_clmulni_intel ccp nvme_core sp5100_tco wmi i2c_dev ipmi_devintf ipmi_msghandler
-CPU: 0 PID: 95 Comm: kworker/0:2 Not tainted 5.16.9-200.fc35.x86_64 #1
-Hardware name: ASUS System Product Name/TUF GAMING B550M-PLUS (WI-FI), BIOS 1401 12/03/2020
-Workqueue: events igc_watchdog_task [igc]
-RIP: 0010:igc_rd32+0x7c/0x80 [igc]
-Code: 48 c7 c6 b8 43 77 c0 e8 4e 62 53 cb 48 8b bb 30 ff ff ff e8 66 53 fb ca 84 c0 74 b2 89 ee 48 c7 c7 e0 43 77 c0 e8 20 53 4d cb <0f> 0b eb a0 0f 1f 44 00 00 41 56 41 55 41 54 55 48 89 f5 53 80 7e
-RSP: 0018:ffffa3ed404fbdf0 EFLAGS: 00010286
-RAX: 000000000000001f RBX: ffff8e2a86476c10 RCX: 0000000000000000
-RDX: 0000000000000002 RSI: ffffffff8c634ddd RDI: 00000000ffffffff
-RBP: 000000000000c030 R08: 0000000000000000 R09: ffffa3ed404fbc30
-R10: ffffa3ed404fbc28 R11: ffffffff8cf462a8 R12: 00000000ffffffff
-R13: ffff8e2a86476000 R14: ffff8e2a8b3e6d40 R15: 000000000000c030
-FS:  0000000000000000(0000) GS:ffff8e492ea00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 000055979d1e4020 CR3: 0000001a01e10000 CR4: 0000000000350ef0
-Call Trace:
- <TASK>
- igc_update_stats+0x82/0x6a0 [igc]
- igc_watchdog_task+0x83/0x290 [igc]
- process_one_work+0x1e5/0x3c0
- worker_thread+0x50/0x3b0
- ? rescuer_thread+0x350/0x350
- kthread+0x169/0x190
- ? set_kthread_struct+0x40/0x40
- ret_from_fork+0x1f/0x30
- </TASK>
----[ end trace 42ae6356ab0377be ]---
-BUG: unable to handle page fault for address: 000000000000c030
-#PF: supervisor write access in kernel mode
-#PF: error_code(0x0002) - not-present page
+Tested-by: Kiran Bhandare <kiranx.bhandare@intel.com>  A Contingent Worker at Intel
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
