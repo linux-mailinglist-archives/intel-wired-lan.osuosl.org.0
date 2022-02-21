@@ -2,54 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A70444BDAB0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Feb 2022 16:53:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 593E24BDB2E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Feb 2022 18:19:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2F3D440236;
-	Mon, 21 Feb 2022 15:53:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E6E4F40912;
+	Mon, 21 Feb 2022 17:19:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z9A7IuOfL_QY; Mon, 21 Feb 2022 15:53:51 +0000 (UTC)
+	with ESMTP id 3Ev_hKuNM85s; Mon, 21 Feb 2022 17:19:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0CE6A40268;
-	Mon, 21 Feb 2022 15:53:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D738F402C1;
+	Mon, 21 Feb 2022 17:19:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 63A1A1BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 15:53:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3CCDA1BF339
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 17:19:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5DC0140268
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 15:53:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 29B2360D6E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 17:19:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JjkG_0PSgQYj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Feb 2022 15:53:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9CCF540236
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 15:53:44 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5aee3b.dynamic.kabel-deutschland.de
- [95.90.238.59])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3760161E64846;
- Mon, 21 Feb 2022 16:53:41 +0100 (CET)
-Message-ID: <770c2232-b19c-a831-1e37-69b9c1271493@molgen.mpg.de>
-Date: Mon, 21 Feb 2022 16:53:40 +0100
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Fhyg_9b7subN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Feb 2022 17:19:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 413076059F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Feb 2022 17:19:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1645463963; x=1676999963;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=tUhXvk+LFkLoswi++f9XcpeeaQoJBVXpSjX5dbLbTgU=;
+ b=aabvCQ2ADIVcypQf+lsvWcpXO/9Azn4QUipJwQcaIjWV1Fr0xhNKBvmw
+ e4AuRNM18i+Fdsn8YN4OeQU9WDXue8sAUyCnY4XTneu9x6cvbPiXuMpQa
+ M4K1M72y7O7LGmifI6iMR4iVgsIVFaAaC+GRjT+dUV7AtYQcEsxH3bTi+
+ Muc9hi4TpoMHva3lt0h+hSSy+0Ix4rje6MPZkeOWvyn+H60SqHD8LDxhI
+ CQuy5Q+h7Sfm0D8FX1ijQ+iceRn8a6VJia1ihxcHJt+7wOQr15JgyCEZk
+ E48L6lKBSQseh4g1kzOOpAIFb/+MTVKx5XI3Hcd2WIGAyiac03Zjwvlyu Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10265"; a="251302746"
+X-IronPort-AV: E=Sophos;i="5.88,386,1635231600"; d="scan'208";a="251302746"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Feb 2022 09:19:15 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,386,1635231600"; d="scan'208";a="490502351"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga003.jf.intel.com with ESMTP; 21 Feb 2022 09:19:12 -0800
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 21LHJBnN010069; Mon, 21 Feb 2022 17:19:11 GMT
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: netdev@vger.kernel.org
+Date: Mon, 21 Feb 2022 11:14:18 +0100
+Message-Id: <20220221101425.19776-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Content-Language: en-US
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>
-References: <20220221151329.27346-1-mateusz.palczewski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220221151329.27346-1-mateusz.palczewski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Add restoration of VF
- MSI-X state during PCI reset
+Subject: [Intel-wired-lan] [PATCH net-next v7 0/7] ice: GTP support in
+ switchdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,131 +77,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Slawomir Laba <slawomirx.laba@intel.com>, intel-wired-lan@lists.osuosl.org,
- Karen Sornek <karen.sornek@intel.com>
+Cc: jiri@resnulli.us, osmocom-net-gprs@lists.osmocom.org, laforge@gnumonks.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net,
+ pablo@netfilter.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Slawomir, dear Mateusz,
+Add support for adding GTP-C and GTP-U filters in switchdev mode.
 
+To create a filter for GTP, create a GTP-type netdev with ip tool, enable
+hardware offload, add qdisc and add a filter in tc:
 
-Am 21.02.22 um 16:13 schrieb Mateusz Palczewski:
-> From: Slawomir Laba <slawomirx.laba@intel.com>
+ip link add $GTP0 type gtp role <sgsn/ggsn> hsize <hsize>
+ethtool -K $PF0 hw-tc-offload on
+tc qdisc add dev $GTP0 ingress
+tc filter add dev $GTP0 ingress prio 1 flower enc_key_id 1337 \
+action mirred egress redirect dev $VF1_PR
 
-Thank you for your patch. To shorten the commit message summary, maybe 
-just use: i40e Restore VF MSI-X state during PCI reset
+By default, a filter for GTP-U will be added. To add a filter for GTP-C,
+specify enc_dst_port = 2123, e.g.:
 
-> During a PCI FLR the MSI-X Enable flag in the VF PCI MSI-X capability
-> register will be cleared. This can lead to issues when a VF is
-> assigned to a VM because in these cases the VF driver receives no
-> indication of the PF PCI error/reset and additionally it is incapable
-> of restoring the cleared flag in the hypervisor configuration space
-> without fully reinitializing the driver interrupt functionality.
+tc filter add dev $GTP0 ingress prio 1 flower enc_key_id 1337 \
+enc_dst_port 2123 action mirred egress redirect dev $VF1_PR
 
-For the record, can you please document the exact test environment to 
-reproduce the issue, and what error is seen.
+Note: outer IPv6 offload is not supported yet.
+Note: GTP-U with no payload offload is not supported yet.
 
-> Since the VF driver is unable to easily resolve this condition on its own,
-> restore the VF MSI-X flag during the PF PCI reset handling.
-> 
-> Fixes: 19b7960b2da1 ("i40e: implement split PCI error reset handler")
-> Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
-> Signed-off-by: Karen Sornek <karen.sornek@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->   v2: Fixed compilation error
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_main.c   |  2 ++
->   .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 32 +++++++++++++++++++
->   .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  1 +
->   3 files changed, 35 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index 2f8ddfa..442b68a 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -16151,6 +16151,8 @@ static void i40e_pci_error_reset_done(struct pci_dev *pdev)
->   		return;
->   
->   	i40e_reset_and_rebuild(pf, false, false);
-> +
-> +	i40e_restore_all_vfs_msi_state(pdev);
->   }
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> index 2606e8f..5aaa669 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> @@ -152,6 +152,38 @@ void i40e_vc_notify_reset(struct i40e_pf *pf)
->   			     (u8 *)&pfe, sizeof(struct virtchnl_pf_event));
->   }
->   
-> +/**
-> + * i40e_restore_all_vfs_msi_state - restore VF MSI state after PF FLR
-> + * @pdev: pointer to a pci_dev structure
-> + *
-> + * Called when recovering from a PF FLR to restore interrupt capability to
-> + * the VFs.
-> + */
-> +void i40e_restore_all_vfs_msi_state(struct pci_dev *pdev)
-> +{
-> +	struct pci_dev *vfdev;
-> +	u16 vf_id;
-> +	int pos;
+ICE COMMS package is required to create a filter as it contains GTP
+profiles.
 
-Use u16 to match pci_find_ext_capability() signature?
+Changes in iproute2 [1] are required to be able to add GTP netdev and use
+GTP-specific options (QFI and PDU type).
 
-> +
-> +	/* Continue only if this is a PF */
-> +	if (!pdev->is_physfn)
-> +		return;
-> +
-> +	if (!pci_num_vf(pdev))
-> +		return;
-> +
-> +	pos = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_SRIOV);
-> +	if (pos) {
-> +		pci_read_config_word(pdev, pos + PCI_SRIOV_VF_DID, &vf_id);
-> +		vfdev = pci_get_device(pdev->vendor, vf_id, NULL);
-> +		while (vfdev) {
-> +			if (vfdev->is_virtfn && vfdev->physfn == pdev)
-> +				pci_restore_msi_state(vfdev);
-> +			vfdev = pci_get_device(pdev->vendor, vf_id, vfdev);
+[1] https://lore.kernel.org/netdev/20220211182902.11542-1-wojciech.drewek@intel.com/T
+---
+v2: Adding more CC
+v3: Fixed mail thread, sorry for spam
+v4: Added GTP echo response in gtp module
+v5: Change patch order
+v6: Added GTP echo request in gtp module
+v7: Fix kernel-docs in ice
 
-Move that in the while condition (and initialize vfdev with NULL to 
-follow the pattern in `Documentation/PCI/pci.rst`?
+Marcin Szycik (1):
+  ice: Support GTP-U and GTP-C offload in switchdev
 
-     struct pci_dev *dev = NULL;
-     while (dev = pci_get_device(VENDOR_ID, DEVICE_ID, dev))
-     	configure_device(dev);
+Michal Swiatkowski (1):
+  ice: Fix FV offset searching
 
-> +		}
-> +	}
-> +}
-> +
->   /**
->    * i40e_vc_notify_vf_reset
->    * @vf: pointer to the VF structure
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-> index a554d0a..7c5f166 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-> @@ -134,6 +134,7 @@ int i40e_ndo_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool enable);
->   
->   void i40e_vc_notify_link_state(struct i40e_pf *pf);
->   void i40e_vc_notify_reset(struct i40e_pf *pf);
-> +void i40e_restore_all_vfs_msi_state(struct pci_dev *pdev);
->   int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
->   		      struct ifla_vf_stats *vf_stats);
->   
+Wojciech Drewek (5):
+  gtp: Allow to create GTP device without FDs
+  gtp: Implement GTP echo response
+  gtp: Implement GTP echo request
+  net/sched: Allow flower to match on GTP options
+  gtp: Add support for checking GTP device type
 
+ drivers/net/ethernet/intel/ice/ice.h          |   1 +
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  52 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |   2 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   6 +-
+ .../ethernet/intel/ice/ice_protocol_type.h    |  19 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 630 +++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   9 +
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 105 ++-
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   3 +
+ drivers/net/gtp.c                             | 661 +++++++++++++++++-
+ include/net/gtp.h                             |  42 ++
+ include/uapi/linux/gtp.h                      |   2 +
+ include/uapi/linux/if_link.h                  |   2 +
+ include/uapi/linux/if_tunnel.h                |   4 +-
+ include/uapi/linux/pkt_cls.h                  |  15 +
+ net/sched/cls_flower.c                        | 116 +++
+ 16 files changed, 1565 insertions(+), 104 deletions(-)
 
-Kind regards,
+-- 
+2.35.1
 
-Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
