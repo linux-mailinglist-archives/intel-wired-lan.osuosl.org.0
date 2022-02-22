@@ -1,55 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49C754BFA62
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Feb 2022 15:08:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9320A4C01A6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Feb 2022 19:53:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BD4C040268;
-	Tue, 22 Feb 2022 14:08:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E81681BC6;
+	Tue, 22 Feb 2022 18:53:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w6MFE9-9lQji; Tue, 22 Feb 2022 14:08:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ML3aPFTdkekJ; Tue, 22 Feb 2022 18:53:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 17E5440224;
-	Tue, 22 Feb 2022 14:08:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3AE1981B9D;
+	Tue, 22 Feb 2022 18:53:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A1371BF33A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 06:55:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6B7521BF376
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 18:53:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8732460E91
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 06:55:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 58A9A60EF4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 18:53:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dLGBdhEODmVW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Feb 2022 06:55:44 +0000 (UTC)
-X-Greylist: delayed 00:15:32 by SQLgrey-1.8.0
-Received: from ganesha.gnumonks.org (ganesha.gnumonks.org
- [IPv6:2001:780:45:1d:225:90ff:fe52:c662])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6D1BA60E5A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 06:55:44 +0000 (UTC)
-Received: from uucp by ganesha.gnumonks.org with local-bsmtp (Exim 4.94.2)
- (envelope-from <laforge@gnumonks.org>)
- id 1nMOqC-00Ecoj-5p; Tue, 22 Feb 2022 07:40:04 +0100
-Received: from laforge by localhost.localdomain with local (Exim 4.95)
- (envelope-from <laforge@gnumonks.org>) id 1nMOis-001s9w-Dn;
- Tue, 22 Feb 2022 07:32:30 +0100
-Date: Tue, 22 Feb 2022 07:32:30 +0100
-From: Harald Welte <laforge@gnumonks.org>
-To: Marcin Szycik <marcin.szycik@linux.intel.com>
-Message-ID: <YhSDfvQoNDyoAaV9@nataraja>
-References: <20220221101425.19776-1-marcin.szycik@linux.intel.com>
- <20220221101425.19776-4-marcin.szycik@linux.intel.com>
+ with ESMTP id Z2BebOXy9Ekm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Feb 2022 18:53:13 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7694760EEF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 18:53:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1645555992;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ijeBSHIMh+RHWCSvVnH6w3l49XqjDhOH6DVMUM2J8WM=;
+ b=cKoLpCwyZxNhjk2KbwFYOgKQXTU3BF3nIFGzQ2357AQApnrapB9e43yQyZAQK2nyWc/2ij
+ cqTMNzh/sZ0Ucxe6v4LDTjUmpjONPPqrFuNjPzItlApsm9l4zFMdPu/b+CS62l7gLzwxuo
+ Bpz57FQ4BWH9lNEB2DmaH9B2y7jEEFc=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-345-Qb3KoPuvN1u5o5FfIjD-1Q-1; Tue, 22 Feb 2022 13:53:11 -0500
+X-MC-Unique: Qb3KoPuvN1u5o5FfIjD-1Q-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ jr12-20020a0562142a8c00b0042d7901650cso614862qvb.17
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Feb 2022 10:53:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=ijeBSHIMh+RHWCSvVnH6w3l49XqjDhOH6DVMUM2J8WM=;
+ b=3I3yGKGeFKRPuoWg6cA2dQSR6Khx6J+xhmJCHdRP1tBMliX7/Vj2BcgfCKmT0Fl2x9
+ Czrn6oouoAIlxBJu5N0kd3gBbXmz7qeJs1RZG76E/QhNRJ+q6FmGfFnsfvuZhcfnSLBO
+ W6v5zKj3dPOu8tiFsTcDf4C4ETqQ8/rqCV79gisO8lezxMlMq1l/PCKumQ4GtM/2aRgy
+ eYcS68k2kd96tvS1smBEEeBJkQMFjEAibDmoZcrGhK0oW74c4yd7Ra6pV4q77x82Q0li
+ G9O9VmHbVhMSBoHM3rMPeTfX/mTXRYzSDIIDoPy7T8xeK3zJoD7rFebIL7mLixKQzyDy
+ 7D5w==
+X-Gm-Message-State: AOAM531QZjzRBnyJbezOkgDEn1RRlexScs64gz5cmfBeZrY3nlKUhcr/
+ uYrpcwjzPUuIo6zew1PHri0ZdkTHDQigqceizan7MQWtRKDdePLO7ZdGWN4hVUl5wmMJrjK+SKQ
+ reiSMEnOt8iRmgIabZkHjz2D58M8z+Q==
+X-Received: by 2002:a05:6214:e6e:b0:42c:47ae:3fc6 with SMTP id
+ jz14-20020a0562140e6e00b0042c47ae3fc6mr20471671qvb.17.1645555990500; 
+ Tue, 22 Feb 2022 10:53:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzD7Vy/63OlWTUQtWu541hqsNqVP+hLI0QDHsk3RFZCRL9Antb192fmGYCCfERhDYrSqNU2/A==
+X-Received: by 2002:a05:6214:e6e:b0:42c:47ae:3fc6 with SMTP id
+ jz14-20020a0562140e6e00b0042c47ae3fc6mr20471657qvb.17.1645555990215; 
+ Tue, 22 Feb 2022 10:53:10 -0800 (PST)
+Received: from [192.168.98.18] ([107.15.110.69])
+ by smtp.gmail.com with ESMTPSA id y15sm237249qki.15.2022.02.22.10.53.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Feb 2022 10:53:09 -0800 (PST)
+Message-ID: <02eb2ff7-5e59-7aa8-cb4a-b3efa36a4a7d@redhat.com>
+Date: Tue, 22 Feb 2022 13:53:08 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220221101425.19776-4-marcin.szycik@linux.intel.com>
-X-Mailman-Approved-At: Tue, 22 Feb 2022 14:08:10 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next v7 3/7] gtp: Implement GTP
- echo request
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+To: Dave Ertman <david.m.ertman@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20220218203925.1890573-1-david.m.ertman@intel.com>
+From: Jonathan Toppins <jtoppins@redhat.com>
+In-Reply-To: <20220218203925.1890573-1-david.m.ertman@intel.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jtoppins@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix error with handling
+ of bonding MTU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,657 +106,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, netdev@vger.kernel.org,
- osmocom-net-gprs@lists.osmocom.org, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, davem@davemloft.net, pablo@netfilter.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Marcin, Wojciech,
-
-thanks for adding this feature.
-
-On Mon, Feb 21, 2022 at 11:14:21AM +0100, Marcin Szycik wrote:
-> All echo requests are stored in echo_hash table with the flag
-> (replied) which indicates if GTP echo response was recived in
-> response to this request. Userspace can see all echo requests
-> using GTP_CMD_ECHOREQ dumpit callback.
-
-Is there any reason to complicate the kernel with this?  Echo requests
-are sent rately (certainly not more frequent than some seconds of timeout)
-and userspace needs to keep track of which peers there are and their state
-anyway.  So I would have expected it to handle also the receiving of
-the echo request.
-
-I wouldn't have added the related state table.  From what I  can tell,
-there is no benefit for the kernel to have this information itself, i.e.
-there are no in-kernel users of this information?
-
-It's not super critical, I just thought we should unburden the kernel
-with anything not performance critical and that it doesn't have to do
-by itself.
-
-Also, from an "orthogonality" point of view, it is a bit unusual that
-userspace explicitly requests sending of an ECHO_REQ but then doesn't
-process the response?
-
-I think either the Tx and the Rx ard triggered by / notified to userspace,
-or you would also do periodic triggering of Tx in the kernel autonomously,
-and process the responses.  But at that point then you also need to think
-about further consequences, such as counting the number of missed ECHO RESP,
-and then notify userspace if that condition "N out of M last responses missed".
-
-Regards,
-	Harald
-
+On 2/18/22 15:39, Dave Ertman wrote:
+> When a bonded interface is destroyed, .ndo_change_mtu can be called
+> during the tear-down process while the RTNL lock is held.  This is a
+> problem since the auxiliary driver linked to the LAN driver needs to be
+> notified of the MTU change, and this requires grabbing a device_lock on
+> the auxiliary_device's dev.  Currently this is being attempted in the
+> same execution context as the call to .ndo_change_mtu which is causing a
+> dead-lock.
 > 
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Suggested-by: Harald Welte <laforge@gnumonks.org>
+> Move the notification of the changed MTU to a separate execution context
+> (watchdog service task) and eliminate the "before" notification.
+> 
+> Fixes: 348048e724a0e ("ice: Implement iidc operations")
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+
+I no longer see the process hang with this patch applied.
+
+Tested-by: Jonathan Toppins <jtoppins@redhat.com>
+
 > ---
->  drivers/net/gtp.c        | 402 ++++++++++++++++++++++++++++++++++++---
->  include/uapi/linux/gtp.h |   2 +
->  2 files changed, 376 insertions(+), 28 deletions(-)
+> v2: target change from net-next to net
+> ---
+>   drivers/net/ethernet/intel/ice/ice.h      |  1 +
+>   drivers/net/ethernet/intel/ice/ice_main.c | 29 +++++++++++------------
+>   2 files changed, 15 insertions(+), 15 deletions(-)
 > 
-> diff --git a/drivers/net/gtp.c b/drivers/net/gtp.c
-> index 5ed24fa9d5b2..14e9f8053d71 100644
-> --- a/drivers/net/gtp.c
-> +++ b/drivers/net/gtp.c
-> @@ -60,6 +60,19 @@ struct pdp_ctx {
->  	struct rcu_head		rcu_head;
->  };
->  
-> +struct gtp_echo {
-> +	struct hlist_node	hlist;
-> +
-> +	struct in_addr		ms_addr_ip4;
-> +	struct in_addr		peer_addr_ip4;
-> +
-> +	u8			replied;
-> +	u8			version;
-> +	int			ifindex;
-> +
-> +	struct rcu_head		rcu_head;
-> +};
-> +
->  /* One instance of the GTP device. */
->  struct gtp_dev {
->  	struct list_head	list;
-> @@ -75,6 +88,7 @@ struct gtp_dev {
->  	unsigned int		hash_size;
->  	struct hlist_head	*tid_hash;
->  	struct hlist_head	*addr_hash;
-> +	struct hlist_head	*echo_hash;
->  
->  	u8			restart_count;
->  };
-> @@ -89,6 +103,19 @@ static u32 gtp_h_initval;
->  
->  static void pdp_context_delete(struct pdp_ctx *pctx);
->  
-> +static void gtp_echo_context_free(struct rcu_head *head)
-> +{
-> +	struct gtp_echo *echo = container_of(head, struct gtp_echo, rcu_head);
-> +
-> +	kfree(echo);
-> +}
-> +
-> +static void gtp_echo_delete(struct gtp_echo *echo)
-> +{
-> +	hlist_del_rcu(&echo->hlist);
-> +	call_rcu(&echo->rcu_head, gtp_echo_context_free);
-> +}
-> +
->  static inline u32 gtp0_hashfn(u64 tid)
->  {
->  	u32 *tid32 = (u32 *) &tid;
-> @@ -154,6 +181,24 @@ static struct pdp_ctx *ipv4_pdp_find(struct gtp_dev *gtp, __be32 ms_addr)
->  	return NULL;
->  }
->  
-> +static struct gtp_echo *gtp_find_echo(struct gtp_dev *gtp, __be32 ms_addr,
-> +				      __be32 peer_addr, unsigned int version)
-> +{
-> +	struct hlist_head *head;
-> +	struct gtp_echo *echo;
-> +
-> +	head = &gtp->echo_hash[ipv4_hashfn(ms_addr) % gtp->hash_size];
-> +
-> +	hlist_for_each_entry_rcu(echo, head, hlist) {
-> +		if (echo->ms_addr_ip4.s_addr == ms_addr &&
-> +		    echo->peer_addr_ip4.s_addr == peer_addr &&
-> +		    echo->version == version)
-> +			return echo;
-> +	}
-> +
-> +	return NULL;
-> +}
-> +
->  static bool gtp_check_ms_ipv4(struct sk_buff *skb, struct pdp_ctx *pctx,
->  				  unsigned int hdrlen, unsigned int role)
->  {
-> @@ -243,12 +288,34 @@ static struct rtable *ip4_route_output_gtp(struct flowi4 *fl4,
->   *   by the receiver
->   * Returns true if the echo req was correct, false otherwise.
->   */
-> -static bool gtp0_validate_echo_req(struct gtp0_header *gtp0)
-> +static bool gtp0_validate_echo_hdr(struct gtp0_header *gtp0)
->  {
->  	return !(gtp0->tid || (gtp0->flags ^ 0x1e) ||
->  		gtp0->number != 0xff || gtp0->flow);
->  }
->  
-> +/* msg_type has to be GTP_ECHO_REQ or GTP_ECHO_RSP */
-> +static void gtp0_build_echo_msg(struct gtp0_header *hdr, __u8 msg_type)
-> +{
-> +	hdr->flags = 0x1e; /* v0, GTP-non-prime. */
-> +	hdr->type = msg_type;
-> +	/* GSM TS 09.60. 7.3 In all Path Management Flow Label and TID
-> +	 * are not used and shall be set to 0.
-> +	 */
-> +	hdr->flow = 0;
-> +	hdr->tid = 0;
-> +	hdr->number = 0xff;
-> +	hdr->spare[0] = 0xff;
-> +	hdr->spare[1] = 0xff;
-> +	hdr->spare[2] = 0xff;
-> +
-> +	if (msg_type == GTP_ECHO_RSP)
-> +		hdr->length =
-> +			htons(sizeof(struct gtp0_packet) - sizeof(struct gtp0_header));
-> +	else
-> +		hdr->length = 0;
-> +}
-> +
->  static int gtp0_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  {
->  	struct gtp0_packet *gtp_pkt;
-> @@ -260,7 +327,7 @@ static int gtp0_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  
->  	gtp0 = (struct gtp0_header *)(skb->data + sizeof(struct udphdr));
->  
-> -	if (!gtp0_validate_echo_req(gtp0))
-> +	if (!gtp0_validate_echo_hdr(gtp0))
->  		return -1;
->  
->  	seq = gtp0->seq;
-> @@ -271,10 +338,7 @@ static int gtp0_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  	gtp_pkt = skb_push(skb, sizeof(struct gtp0_packet));
->  	memset(gtp_pkt, 0, sizeof(struct gtp0_packet));
->  
-> -	gtp_pkt->gtp0_h.flags = 0x1e; /* v0, GTP-non-prime. */
-> -	gtp_pkt->gtp0_h.type = GTP_ECHO_RSP;
-> -	gtp_pkt->gtp0_h.length =
-> -		htons(sizeof(struct gtp0_packet) - sizeof(struct gtp0_header));
-> +	gtp0_build_echo_msg(&gtp_pkt->gtp0_h, GTP_ECHO_RSP);
->  
->  	/* GSM TS 09.60. 7.3 The Sequence Number in a signalling response
->  	 * message shall be copied from the signalling request message
-> @@ -282,16 +346,6 @@ static int gtp0_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  	 */
->  	gtp_pkt->gtp0_h.seq = seq;
->  
-> -	/* GSM TS 09.60. 7.3 In all Path Management Flow Label and TID
-> -	 * are not used and shall be set to 0.
-> -	 */
-> -	gtp_pkt->gtp0_h.flow = 0;
-> -	gtp_pkt->gtp0_h.tid = 0;
-> -	gtp_pkt->gtp0_h.number = 0xff;
-> -	gtp_pkt->gtp0_h.spare[0] = 0xff;
-> -	gtp_pkt->gtp0_h.spare[1] = 0xff;
-> -	gtp_pkt->gtp0_h.spare[2] = 0xff;
-> -
->  	gtp_pkt->ie.tag = GTPIE_RECOVERY;
->  	gtp_pkt->ie.val = gtp->restart_count;
->  
-> @@ -319,6 +373,31 @@ static int gtp0_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  	return 0;
->  }
->  
-> +static int gtp0_handle_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
-> +{
-> +	struct gtp0_header *gtp0;
-> +	struct gtp_echo *echo;
-> +	struct iphdr *iph;
-> +
-> +	gtp0 = (struct gtp0_header *)(skb->data + sizeof(struct udphdr));
-> +
-> +	if (!gtp0_validate_echo_hdr(gtp0))
-> +		return -1;
-> +
-> +	iph = ip_hdr(skb);
-> +
-> +	echo = gtp_find_echo(gtp, iph->daddr, iph->saddr, GTP_V0);
-> +	if (!echo) {
-> +		netdev_dbg(gtp->dev, "No echo request was send to %pI4, version: %u\n",
-> +			   &iph->saddr, GTP_V0);
-> +		return -1;
-> +	}
-> +
-> +	echo->replied = true;
-> +
-> +	return 0;
-> +}
-> +
->  /* 1 means pass up to the stack, -1 means drop and 0 means decapsulated. */
->  static int gtp0_udp_encap_recv(struct gtp_dev *gtp, struct sk_buff *skb)
->  {
-> @@ -342,6 +421,9 @@ static int gtp0_udp_encap_recv(struct gtp_dev *gtp, struct sk_buff *skb)
->  	if (gtp0->type == GTP_ECHO_REQ && gtp->sk_created)
->  		return gtp0_send_echo_resp(gtp, skb);
->  
-> +	if (gtp0->type == GTP_ECHO_RSP && gtp->sk_created)
-> +		return gtp0_handle_echo_resp(gtp, skb);
-> +
->  	if (gtp0->type != GTP_TPDU)
->  		return 1;
->  
-> @@ -354,6 +436,27 @@ static int gtp0_udp_encap_recv(struct gtp_dev *gtp, struct sk_buff *skb)
->  	return gtp_rx(pctx, skb, hdrlen, gtp->role);
->  }
->  
-> +/* msg_type has to be GTP_ECHO_REQ or GTP_ECHO_RSP */
-> +static void gtp1u_build_echo_msg(struct gtp1_header_long *hdr, __u8 msg_type)
-> +{
-> +	/* S flag must be set to 1 */
-> +	hdr->flags = 0x32; /* v1, GTP-non-prime. */
-> +	hdr->type = msg_type;
-> +	/* 3GPP TS 29.281 5.1 - TEID has to be set to 0 */
-> +	hdr->tid = 0;
-> +
-> +	/* seq, npdu and next should be counted to the length of the GTP packet
-> +	 * that's why szie of gtp1_header should be subtracted,
-> +	 * not size of gtp1_header_long.
-> +	 */
-> +	if (msg_type == GTP_ECHO_RSP)
-> +		hdr->length =
-> +			htons(sizeof(struct gtp1u_packet) - sizeof(struct gtp1_header));
-> +	else
-> +		hdr->length =
-> +			htons(sizeof(struct gtp1_header_long) - sizeof(struct gtp1_header));
-> +}
-> +
->  static int gtp1u_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  {
->  	struct gtp1_header_long *gtp1u;
-> @@ -377,17 +480,7 @@ static int gtp1u_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  	gtp_pkt = skb_push(skb, sizeof(struct gtp1u_packet));
->  	memset(gtp_pkt, 0, sizeof(struct gtp1u_packet));
->  
-> -	/* S flag must be set to 1 */
-> -	gtp_pkt->gtp1u_h.flags = 0x32;
-> -	gtp_pkt->gtp1u_h.type = GTP_ECHO_RSP;
-> -	/* seq, npdu and next should be counted to the length of the GTP packet
-> -	 * that's why szie of gtp1_header should be subtracted,
-> -	 * not why szie of gtp1_header_long.
-> -	 */
-> -	gtp_pkt->gtp1u_h.length =
-> -		htons(sizeof(struct gtp1u_packet) - sizeof(struct gtp1_header));
-> -	/* 3GPP TS 29.281 5.1 - TEID has to be set to 0 */
-> -	gtp_pkt->gtp1u_h.tid = 0;
-> +	gtp1u_build_echo_msg(&gtp_pkt->gtp1u_h, GTP_ECHO_RSP);
->  
->  	/* 3GPP TS 29.281 7.7.2 - The Restart Counter value in the
->  	 * Recovery information element shall not be used, i.e. it shall
-> @@ -422,6 +515,35 @@ static int gtp1u_send_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
->  	return 0;
->  }
->  
-> +static int gtp1u_handle_echo_resp(struct gtp_dev *gtp, struct sk_buff *skb)
-> +{
-> +	struct gtp1_header_long *gtp1u;
-> +	struct gtp_echo *echo;
-> +	struct iphdr *iph;
-> +
-> +	gtp1u = (struct gtp1_header_long *)(skb->data + sizeof(struct udphdr));
-> +
-> +	/* 3GPP TS 29.281 5.1 - For the Echo Request, Echo Response,
-> +	 * Error Indication and Supported Extension Headers Notification
-> +	 * messages, the S flag shall be set to 1 and TEID shall be set to 0.
-> +	 */
-> +	if (!(gtp1u->flags & GTP1_F_SEQ) || gtp1u->tid)
-> +		return -1;
-> +
-> +	iph = ip_hdr(skb);
-> +
-> +	echo = gtp_find_echo(gtp, iph->daddr, iph->saddr, GTP_V1);
-> +	if (!echo) {
-> +		netdev_dbg(gtp->dev, "No echo request was send to %pI4, version: %u\n",
-> +			   &iph->saddr, GTP_V1);
-> +		return -1;
-> +	}
-> +
-> +	echo->replied = true;
-> +
-> +	return 0;
-> +}
-> +
->  static int gtp1u_udp_encap_recv(struct gtp_dev *gtp, struct sk_buff *skb)
->  {
->  	unsigned int hdrlen = sizeof(struct udphdr) +
-> @@ -444,6 +566,9 @@ static int gtp1u_udp_encap_recv(struct gtp_dev *gtp, struct sk_buff *skb)
->  	if (gtp1->type == GTP_ECHO_REQ && gtp->sk_created)
->  		return gtp1u_send_echo_resp(gtp, skb);
->  
-> +	if (gtp1->type == GTP_ECHO_RSP && gtp->sk_created)
-> +		return gtp1u_handle_echo_resp(gtp, skb);
-> +
->  	if (gtp1->type != GTP_TPDU)
->  		return 1;
->  
-> @@ -835,6 +960,7 @@ static void gtp_destructor(struct net_device *dev)
->  
->  	kfree(gtp->addr_hash);
->  	kfree(gtp->tid_hash);
-> +	kfree(gtp->echo_hash);
->  }
->  
->  static struct sock *gtp_create_sock(int type, struct gtp_dev *gtp)
-> @@ -954,18 +1080,23 @@ static int gtp_newlink(struct net *src_net, struct net_device *dev,
->  out_hashtable:
->  	kfree(gtp->addr_hash);
->  	kfree(gtp->tid_hash);
-> +	kfree(gtp->echo_hash);
->  	return err;
->  }
->  
->  static void gtp_dellink(struct net_device *dev, struct list_head *head)
->  {
->  	struct gtp_dev *gtp = netdev_priv(dev);
-> +	struct gtp_echo *echo;
->  	struct pdp_ctx *pctx;
->  	int i;
->  
-> -	for (i = 0; i < gtp->hash_size; i++)
-> +	for (i = 0; i < gtp->hash_size; i++) {
->  		hlist_for_each_entry_rcu(pctx, &gtp->tid_hash[i], hlist_tid)
->  			pdp_context_delete(pctx);
-> +		hlist_for_each_entry_rcu(echo, &gtp->echo_hash[i], hlist)
-> +			gtp_echo_delete(echo);
-> +	}
->  
->  	list_del_rcu(&gtp->list);
->  	unregister_netdevice_queue(dev, head);
-> @@ -1040,13 +1171,21 @@ static int gtp_hashtable_new(struct gtp_dev *gtp, int hsize)
->  	if (gtp->tid_hash == NULL)
->  		goto err1;
->  
-> +	gtp->echo_hash = kmalloc_array(hsize, sizeof(struct hlist_head),
-> +				       GFP_KERNEL | __GFP_NOWARN);
-> +	if (!gtp->echo_hash)
-> +		goto err2;
-> +
->  	gtp->hash_size = hsize;
->  
->  	for (i = 0; i < hsize; i++) {
->  		INIT_HLIST_HEAD(&gtp->addr_hash[i]);
->  		INIT_HLIST_HEAD(&gtp->tid_hash[i]);
-> +		INIT_HLIST_HEAD(&gtp->echo_hash[i]);
->  	}
->  	return 0;
-> +err2:
-> +	kfree(gtp->tid_hash);
->  err1:
->  	kfree(gtp->addr_hash);
->  	return -ENOMEM;
-> @@ -1583,6 +1722,205 @@ static int gtp_genl_dump_pdp(struct sk_buff *skb,
->  	return skb->len;
->  }
->  
-> +static int gtp_add_echo(struct gtp_dev *gtp, __be32 src_ip, __be32 dst_ip,
-> +			unsigned int version)
-> +{
-> +	struct gtp_echo *echo;
-> +	bool found = false;
-> +
-> +	rcu_read_lock();
-> +	echo = gtp_find_echo(gtp, src_ip, dst_ip, version);
-> +	rcu_read_unlock();
-> +
-> +	if (!echo) {
-> +		echo = kmalloc(sizeof(*echo), GFP_ATOMIC);
-> +		if (!echo)
-> +			return -ENOMEM;
-> +	} else {
-> +		found = true;
-> +	}
-> +
-> +	echo->ms_addr_ip4.s_addr = src_ip;
-> +	echo->peer_addr_ip4.s_addr = dst_ip;
-> +	echo->replied = false;
-> +	echo->version = version;
-> +	echo->ifindex = gtp->dev->ifindex;
-> +
-> +	if (!found) {
-> +		u32 hash_ms;
-> +
-> +		hash_ms = ipv4_hashfn(src_ip) % gtp->hash_size;
-> +		hlist_add_head_rcu(&echo->hlist, &gtp->echo_hash[hash_ms]);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int gtp_genl_send_echo_req(struct sk_buff *skb, struct genl_info *info)
-> +{
-> +	struct sk_buff *skb_to_send;
-> +	__be32 src_ip, dst_ip;
-> +	unsigned int version;
-> +	struct gtp_dev *gtp;
-> +	struct flowi4 fl4;
-> +	struct rtable *rt;
-> +	struct sock *sk;
-> +	__be16 port;
-> +	int len;
-> +	int err;
-> +
-> +	if (!info->attrs[GTPA_VERSION] ||
-> +	    !info->attrs[GTPA_LINK] ||
-> +	    !info->attrs[GTPA_PEER_ADDRESS] ||
-> +	    !info->attrs[GTPA_MS_ADDRESS])
-> +		return -EINVAL;
-> +
-> +	version = nla_get_u32(info->attrs[GTPA_VERSION]);
-> +	dst_ip = nla_get_be32(info->attrs[GTPA_PEER_ADDRESS]);
-> +	src_ip = nla_get_be32(info->attrs[GTPA_MS_ADDRESS]);
-> +
-> +	gtp = gtp_find_dev(sock_net(skb->sk), info->attrs);
-> +	if (!gtp)
-> +		return -ENODEV;
-> +
-> +	if (!gtp->sk_created)
-> +		return -EOPNOTSUPP;
-> +	if (!(gtp->dev->flags & IFF_UP))
-> +		return -ENETDOWN;
-> +
-> +	if (version == GTP_V0) {
-> +		struct gtp0_header *gtp0_h;
-> +
-> +		len = LL_RESERVED_SPACE(gtp->dev) + sizeof(struct gtp0_header) +
-> +			sizeof(struct iphdr) + sizeof(struct udphdr);
-> +
-> +		skb_to_send = netdev_alloc_skb_ip_align(gtp->dev, len);
-> +		if (!skb_to_send)
-> +			return -ENOMEM;
-> +
-> +		sk = gtp->sk0;
-> +		port = htons(GTP0_PORT);
-> +
-> +		gtp0_h = skb_push(skb_to_send, sizeof(struct gtp0_header));
-> +		memset(gtp0_h, 0, sizeof(struct gtp0_header));
-> +		gtp0_build_echo_msg(gtp0_h, GTP_ECHO_REQ);
-> +	} else if (version == GTP_V1) {
-> +		struct gtp1_header_long *gtp1u_h;
-> +
-> +		len = LL_RESERVED_SPACE(gtp->dev) + sizeof(struct gtp1_header_long) +
-> +			sizeof(struct iphdr) + sizeof(struct udphdr);
-> +
-> +		skb_to_send = netdev_alloc_skb_ip_align(gtp->dev, len);
-> +		if (!skb_to_send)
-> +			return -ENOMEM;
-> +
-> +		sk = gtp->sk1u;
-> +		port = htons(GTP1U_PORT);
-> +
-> +		gtp1u_h = skb_push(skb_to_send, sizeof(struct gtp1_header_long));
-> +		memset(gtp1u_h, 0, sizeof(struct gtp1_header_long));
-> +		gtp1u_build_echo_msg(gtp1u_h, GTP_ECHO_REQ);
-> +	} else {
-> +		return -ENODEV;
-> +	}
-> +
-> +	rt = ip4_route_output_gtp(&fl4, sk, dst_ip, src_ip);
-> +	if (IS_ERR(rt)) {
-> +		netdev_dbg(gtp->dev, "no route for echo request to %pI4\n",
-> +			   &dst_ip);
-> +			   kfree_skb(skb_to_send);
-> +		return -ENODEV;
-> +	}
-> +
-> +	err = gtp_add_echo(gtp, src_ip, dst_ip, version);
-> +	if (err)
-> +		return err;
-> +
-> +	udp_tunnel_xmit_skb(rt, sk, skb_to_send,
-> +			    fl4.saddr, fl4.daddr,
-> +			    fl4.flowi4_tos,
-> +			    ip4_dst_hoplimit(&rt->dst),
-> +			    0,
-> +			    port, port,
-> +			    !net_eq(sock_net(sk),
-> +				    dev_net(gtp->dev)),
-> +			    false);
-> +	return 0;
-> +}
-> +
-> +static int gtp_genl_fill_echo_info(struct sk_buff *skb, u32 snd_portid, u32 snd_seq,
-> +				   int flags, u32 type, struct gtp_echo *echo)
-> +{
-> +	void *genlh;
-> +
-> +	genlh = genlmsg_put(skb, snd_portid, snd_seq, &gtp_genl_family, flags,
-> +			    type);
-> +	if (!genlh)
-> +		goto err;
-> +
-> +	if (nla_put_u32(skb, GTPA_VERSION, echo->version) ||
-> +	    nla_put_u32(skb, GTPA_LINK, echo->ifindex) ||
-> +	    nla_put_be32(skb, GTPA_PEER_ADDRESS, echo->peer_addr_ip4.s_addr) ||
-> +	    nla_put_be32(skb, GTPA_MS_ADDRESS, echo->ms_addr_ip4.s_addr) ||
-> +	    nla_put_u8(skb, GTPA_ECHO_REPLIED, echo->replied))
-> +		goto err;
-> +
-> +	genlmsg_end(skb, genlh);
-> +	return 0;
-> +
-> +err:
-> +	genlmsg_cancel(skb, genlh);
-> +	return -EMSGSIZE;
-> +}
-> +
-> +static int gtp_genl_dump_echo(struct sk_buff *skb,
-> +			      struct netlink_callback *cb)
-> +{
-> +	struct gtp_dev *last_gtp = (struct gtp_dev *)cb->args[2], *gtp;
-> +	int i, j, bucket = cb->args[0], skip = cb->args[1];
-> +	struct net *net = sock_net(skb->sk);
-> +	struct gtp_echo *echo;
-> +	struct gtp_net *gn;
-> +
-> +	gn = net_generic(net, gtp_net_id);
-> +
-> +	if (cb->args[4])
-> +		return 0;
-> +
-> +	rcu_read_lock();
-> +	list_for_each_entry_rcu(gtp, &gn->gtp_dev_list, list) {
-> +		if (last_gtp && last_gtp != gtp)
-> +			continue;
-> +		else
-> +			last_gtp = NULL;
-> +
-> +		for (i = bucket; i < gtp->hash_size; i++) {
-> +			j = 0;
-> +			hlist_for_each_entry_rcu(echo, &gtp->echo_hash[i],
-> +						 hlist) {
-> +				int ret = gtp_genl_fill_echo_info(skb,
-> +								  NETLINK_CB(cb->skb).portid,
-> +								  cb->nlh->nlmsg_seq,
-> +								  NLM_F_MULTI,
-> +								  cb->nlh->nlmsg_type, echo);
-> +				if (j >= skip && ret) {
-> +					cb->args[0] = i;
-> +					cb->args[1] = j;
-> +					cb->args[2] = (unsigned long)gtp;
-> +					goto out;
-> +				}
-> +				j++;
-> +			}
-> +			skip = 0;
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index a9fa701aaa95..058334db37a9 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -484,6 +484,7 @@ enum ice_pf_flags {
+>   	ICE_FLAG_MDD_AUTO_RESET_VF,
+>   	ICE_FLAG_LINK_LENIENT_MODE_ENA,
+>   	ICE_FLAG_PLUG_AUX_DEV,
+> +	ICE_FLAG_MTU_CHANGED,
+>   	ICE_PF_FLAGS_NBITS		/* must be last */
+>   };
+>   
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index 17a9bb461dc3..d47d00c5b456 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -2256,6 +2256,17 @@ static void ice_service_task(struct work_struct *work)
+>   	if (test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+>   		ice_plug_aux_dev(pf);
+>   
+> +	if (test_and_clear_bit(ICE_FLAG_MTU_CHANGED, pf->flags)) {
+> +		struct iidc_event *event;
+> +
+> +		event = kzalloc(sizeof(*event), GFP_KERNEL);
+> +		if (event) {
+> +			set_bit(IIDC_EVENT_AFTER_MTU_CHANGE, event->type);
+> +			ice_send_event_to_aux(pf, event);
+> +			kfree(event);
 > +		}
-> +		bucket = 0;
 > +	}
-> +	cb->args[4] = 1;
-> +out:
-> +	rcu_read_unlock();
-> +	return skb->len;
-> +}
 > +
->  static const struct nla_policy gtp_genl_policy[GTPA_MAX + 1] = {
->  	[GTPA_LINK]		= { .type = NLA_U32, },
->  	[GTPA_VERSION]		= { .type = NLA_U32, },
-> @@ -1593,6 +1931,7 @@ static const struct nla_policy gtp_genl_policy[GTPA_MAX + 1] = {
->  	[GTPA_NET_NS_FD]	= { .type = NLA_U32, },
->  	[GTPA_I_TEI]		= { .type = NLA_U32, },
->  	[GTPA_O_TEI]		= { .type = NLA_U32, },
-> +	[GTPA_ECHO_REPLIED]	= { .type = NLA_U8, },
->  };
->  
->  static const struct genl_small_ops gtp_genl_ops[] = {
-> @@ -1615,6 +1954,13 @@ static const struct genl_small_ops gtp_genl_ops[] = {
->  		.dumpit = gtp_genl_dump_pdp,
->  		.flags = GENL_ADMIN_PERM,
->  	},
-> +	{
-> +		.cmd = GTP_CMD_ECHOREQ,
-> +		.validate = GENL_DONT_VALIDATE_STRICT | GENL_DONT_VALIDATE_DUMP,
-> +		.doit = gtp_genl_send_echo_req,
-> +		.dumpit = gtp_genl_dump_echo,
-> +		.flags = GENL_ADMIN_PERM,
-> +	},
->  };
->  
->  static struct genl_family gtp_genl_family __ro_after_init = {
-> diff --git a/include/uapi/linux/gtp.h b/include/uapi/linux/gtp.h
-> index 79f9191bbb24..63bb60f1e4e3 100644
-> --- a/include/uapi/linux/gtp.h
-> +++ b/include/uapi/linux/gtp.h
-> @@ -8,6 +8,7 @@ enum gtp_genl_cmds {
->  	GTP_CMD_NEWPDP,
->  	GTP_CMD_DELPDP,
->  	GTP_CMD_GETPDP,
-> +	GTP_CMD_ECHOREQ,
->  
->  	GTP_CMD_MAX,
->  };
-> @@ -29,6 +30,7 @@ enum gtp_attrs {
->  	GTPA_NET_NS_FD,
->  	GTPA_I_TEI,	/* for GTPv1 only */
->  	GTPA_O_TEI,	/* for GTPv1 only */
-> +	GTPA_ECHO_REPLIED,
->  	GTPA_PAD,
->  	__GTPA_MAX,
->  };
-> -- 
-> 2.35.1
-> 
+>   	ice_clean_adminq_subtask(pf);
+>   	ice_check_media_subtask(pf);
+>   	ice_check_for_hang_subtask(pf);
+> @@ -6820,7 +6831,6 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
+>   	struct ice_netdev_priv *np = netdev_priv(netdev);
+>   	struct ice_vsi *vsi = np->vsi;
+>   	struct ice_pf *pf = vsi->back;
+> -	struct iidc_event *event;
+>   	u8 count = 0;
+>   	int err = 0;
+>   
+> @@ -6855,14 +6865,6 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
+>   		return -EBUSY;
+>   	}
+>   
+> -	event = kzalloc(sizeof(*event), GFP_KERNEL);
+> -	if (!event)
+> -		return -ENOMEM;
+> -
+> -	set_bit(IIDC_EVENT_BEFORE_MTU_CHANGE, event->type);
+> -	ice_send_event_to_aux(pf, event);
+> -	clear_bit(IIDC_EVENT_BEFORE_MTU_CHANGE, event->type);
+> -
+>   	netdev->mtu = (unsigned int)new_mtu;
+>   
+>   	/* if VSI is up, bring it down and then back up */
+> @@ -6870,21 +6872,18 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
+>   		err = ice_down(vsi);
+>   		if (err) {
+>   			netdev_err(netdev, "change MTU if_down err %d\n", err);
+> -			goto event_after;
+> +			return err;
+>   		}
+>   
+>   		err = ice_up(vsi);
+>   		if (err) {
+>   			netdev_err(netdev, "change MTU if_up err %d\n", err);
+> -			goto event_after;
+> +			return err;
+>   		}
+>   	}
+>   
+>   	netdev_dbg(netdev, "changed MTU to %d\n", new_mtu);
+> -event_after:
+> -	set_bit(IIDC_EVENT_AFTER_MTU_CHANGE, event->type);
+> -	ice_send_event_to_aux(pf, event);
+> -	kfree(event);
+> +	set_bit(ICE_FLAG_MTU_CHANGED, pf->flags);
+>   
+>   	return err;
+>   }
 
--- 
-- Harald Welte <laforge@gnumonks.org>           http://laforge.gnumonks.org/
-============================================================================
-"Privacy in residential applications is a desirable marketing option."
-                                                  (ETSI EN 300 175-7 Ch. A6)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
