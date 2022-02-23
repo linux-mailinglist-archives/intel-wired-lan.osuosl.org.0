@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0B784C05F0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:27:35 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6E434C05F4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:27:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 614A160F1A;
-	Wed, 23 Feb 2022 00:27:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D4FF408F4;
+	Wed, 23 Feb 2022 00:27:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y5nBDAVbaUc5; Wed, 23 Feb 2022 00:27:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rkS-B-61FBhO; Wed, 23 Feb 2022 00:27:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 30D7F60BAD;
-	Wed, 23 Feb 2022 00:27:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 340DA408D5;
+	Wed, 23 Feb 2022 00:27:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 338831BF9BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 945E01BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 20EDE405EF
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5884B60BAD
  for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O5dJSwd_Jiv1 for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nH02pZ-WopUd for <intel-wired-lan@lists.osuosl.org>;
  Wed, 23 Feb 2022 00:27:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 058B74026A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 321DB60625
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645576040; x=1677112040;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=IACmYh+PQZm4XllzIbNX+347HtR5IsZ0T3CAysUxSnM=;
- b=mRYv49Jv3RRYDqeyK25+mPMa8OA1hto1oZ56FX3yPOT2+H2/KUGYYqLw
- 8120dOWXh5K5JXwucNka6Q9Yh86Kmb3KAXNRsHXKvYECbq5p7p1iPuZ3g
- 5zcj4Ybh/TGyAvmcQ7vGUibp/OIi+jktQ00BK9JLN/ftRbZzX3nrogWX4
- doCCpe0A9Rz+uoUjXNfQQQdwGLFdGozA3L7+Nf6eP2K3iwhicdhvn+e4L
- wRkAPeqpF5PX4p7Dn7SzORPtq3loeZkrDQKTeG4GdMkBnTZloQPa69kU9
- wmqrJO3UGsVXoYcF/418NWwvuHXHFzRAYbgeNgRwFnREIFm0dLHnNaZ9u Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="232468966"
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="232468966"
+ bh=qvBtiupVt6UfEDzhQ5KTu7RdwEJe6Rv8IMBPl931TZ0=;
+ b=CmOktcJSGxOfC5aO6xcDWFoK6Cs7ZUYJGdrKWcIYf8XNFk/xcISqX8Ly
+ /nIK8WO18PnOYBUx5LCdIGtC8fLxG5Ep+Y/fcv+JYWQk1GEgL0uqAzSap
+ CkBkBzcJ909RURih6oPLaWrDX/xoGQtVvLwfMhHlkYW+b2QvJpcqfxe2C
+ RU25pA84bB5ziSeoYeONUyjwfmvmuzR9gtgvQDyAdld80YmbGahOwDyoe
+ ESwGBjyJqWU+wZjI3Xir7+DCfieP8R4zYFwMFCvbSdhbnteFGS3g+Scg/
+ vzDWZ9xrh612eVjY7wjZ938XjNefLW27FphpxvIQJ3hG+2wQKIZTBdhFK A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="232468967"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="232468967"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:18 -0800
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505727998"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728002"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:18 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 22 Feb 2022 16:26:49 -0800
-Message-Id: <20220223002712.2771809-3-jacob.e.keller@intel.com>
+Date: Tue, 22 Feb 2022 16:26:50 -0800
+Message-Id: <20220223002712.2771809-4-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 In-Reply-To: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 References: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 02/25] ice: rename
- ice_virtchnl_pf.c to ice_sriov.c
+Subject: [Intel-wired-lan] [net-next PATCH 03/25] ice: remove circular
+ header dependencies on ice.h
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,153 +81,293 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_virtchnl_pf.c and ice_virtchnl_pf.h files are where most of the
-code for implementing Single Root IOV virtualization resides. This code
-includes support for bringing up and tearing down VFs, hooks into the
-kernel SR-IOV netdev operations, and for handling virtchnl messages from
-VFs.
+Several headers in the ice driver include ice.h even though they are
+themselves included by that header. The most notable of these is
+ice_common.h, but several other headers also do this.
 
-In the future, we plan to support Scalable IOV in addition to Single
-Root IOV as an alternative virtualization scheme. This implementation
-will re-use some but not all of the code in ice_virtchnl_pf.c
+Such a recursive inclusion is problematic as it forces headers to be
+included in a strict order, otherwise compilation errors can result. The
+circular inclusions do not trigger an endless loop due to standard
+header inclusion guards, however other errors can occur.
 
-To prepare for this future, we want to refactor and split up the code in
-ice_virtchnl_pf.c into the following scheme:
+For example, ice_flow.h defines ice_rss_hash_cfg, which is used by
+ice_sriov.h as part of the definition of ice_vf_hash_ip_ctx.
 
- * ice_vf_lib.[ch]
+ice_flow.h includes ice_acl.h, which includes ice_common.h, and which
+finally includes ice.h. Since ice.h itself includes ice_sriov.h, this
+creates a circular dependency.
 
-   Basic VF structures and accessors. This is where scheme-independent
-   code will reside.
+The definition in ice_sriov.h requires things from ice_flow.h, but
+ice_flow.h itself will lead to trying to load ice_sriov.h as part of its
+process for expanding ice.h. The current code avoids this issue by
+having an implicit dependency without the include of ice_flow.h.
 
- * ice_virtchnl.[ch]
+If we were to fix that so that ice_sriov.h explicitly depends on
+ice_flow.h the following pattern would occur:
 
-   Virtchnl message handling. This is where the bulk of the logic for
-   processing messages from VFs using the virtchnl messaging scheme will
-   reside. This is separated from ice_vf_lib.c because it is distinct
-   and has a bulk of the processing code.
+  ice_flow.h -> ice_acl.h -> ice_common.h -> ice.h -> ice_sriov.h
 
- * ice_sriov.[ch]
+At this point, during the expansion of, the header guard for ice_flow.h
+is already set, so when ice_sriov.h attempts to load the ice_flow.h
+header it is skipped. Then, we go on to begin including the rest of
+ice_sriov.h, including structure definitions which depend on
+ice_rss_hash_cfg. This produces a compiler warning because
+ice_rss_hash_cfg hasn't yet been included. Remember, we're just at the
+start of ice_flow.h!
 
-   Single Root IOV implementation, including initialization and the
-   routines for interacting with SR-IOV based netdev operations.
+If the order of headers is incorrect (ice_flow.h is not implicitly
+loaded first in all files which include ice_sriov.h) then we get the
+same failure.
 
- * (future) ice_siov.[ch]
+Removing this recursive inclusion requires fixing a few cases where some
+headers depended on the header inclusions from ice.h. In addition, a few
+other changes are also required.
 
-   Scalable IOV implementation.
+Most notably, ice_hw_to_dev is implemented as a macro in ice_osdep.h,
+which is the likely reason that ice_common.h includes ice.h at all. This
+macro implementation requires the full definition of ice_pf in order to
+properly compile.
 
-As a first step, lets assume that all of the code in
-ice_virtchnl_pf.[ch] is for Single Root IOV. Rename this file to
-ice_sriov.c and its header to ice_sriov.h
+Fix this by moving it to a function declared in ice_main.c, so that we
+do not require all files to depend on the layout of the ice_pf
+structure.
 
-Future changes will further split out the code in these files following
-the plan outlined here.
+Note that this change only fixes circular dependencies, but it does not
+fully resolve all implicit dependencies where one header may depend on
+the inclusion of another. I tried to fix as many of the implicit
+dependencies as I noticed, but fixing them all requires a somewhat
+tedious analysis of each header and attempting to compile it separately.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/Makefile                     | 2 +-
- drivers/net/ethernet/intel/ice/ice.h                        | 2 +-
- drivers/net/ethernet/intel/ice/ice_base.c                   | 2 +-
- drivers/net/ethernet/intel/ice/ice_repr.c                   | 2 +-
- .../ethernet/intel/ice/{ice_virtchnl_pf.c => ice_sriov.c}   | 0
- .../ethernet/intel/ice/{ice_virtchnl_pf.h => ice_sriov.h}   | 6 +++---
- drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c        | 2 +-
- 7 files changed, 8 insertions(+), 8 deletions(-)
- rename drivers/net/ethernet/intel/ice/{ice_virtchnl_pf.c => ice_sriov.c} (100%)
- rename drivers/net/ethernet/intel/ice/{ice_virtchnl_pf.h => ice_sriov.h} (99%)
+ drivers/net/ethernet/intel/ice/ice.h           |  3 ---
+ drivers/net/ethernet/intel/ice/ice_arfs.h      |  3 +++
+ drivers/net/ethernet/intel/ice/ice_common.h    |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_dcb.h       |  1 +
+ drivers/net/ethernet/intel/ice/ice_flex_pipe.c |  1 +
+ drivers/net/ethernet/intel/ice/ice_flow.c      |  1 +
+ drivers/net/ethernet/intel/ice/ice_flow.h      |  2 ++
+ drivers/net/ethernet/intel/ice/ice_idc_int.h   |  1 -
+ drivers/net/ethernet/intel/ice/ice_main.c      | 15 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_osdep.h     | 11 +++++++++--
+ drivers/net/ethernet/intel/ice/ice_repr.h      |  1 -
+ drivers/net/ethernet/intel/ice/ice_sriov.h     |  1 -
+ drivers/net/ethernet/intel/ice/ice_type.h      |  1 +
+ drivers/net/ethernet/intel/ice/ice_xsk.h       |  1 -
+ 14 files changed, 35 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 451098e25023..816e81832b7f 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -38,7 +38,7 @@ ice-$(CONFIG_PCI_IOV) +=	\
- 	ice_virtchnl_fdir.o	\
- 	ice_vf_mbx.o		\
- 	ice_vf_vsi_vlan_ops.o	\
--	ice_virtchnl_pf.o
-+	ice_sriov.o
- ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o
- ice-$(CONFIG_TTY) += ice_gnss.o
- ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
 diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 6c41edd99410..0fd15b45ce23 100644
+index 0fd15b45ce23..a30fe86b1a14 100644
 --- a/drivers/net/ethernet/intel/ice/ice.h
 +++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -66,7 +66,7 @@
+@@ -54,9 +54,6 @@
+ #include <net/gre.h>
+ #include <net/udp_tunnel.h>
+ #include <net/vxlan.h>
+-#if IS_ENABLED(CONFIG_DCB)
+-#include <scsi/iscsi_proto.h>
+-#endif /* CONFIG_DCB */
+ #include "ice_devids.h"
+ #include "ice_type.h"
+ #include "ice_txrx.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_arfs.h b/drivers/net/ethernet/intel/ice/ice_arfs.h
+index 80ed76f0cace..9669ad9bf7b5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_arfs.h
++++ b/drivers/net/ethernet/intel/ice/ice_arfs.h
+@@ -3,6 +3,9 @@
+ 
+ #ifndef _ICE_ARFS_H_
+ #define _ICE_ARFS_H_
++
++#include "ice_fdir.h"
++
+ enum ice_arfs_fltr_state {
+ 	ICE_ARFS_INACTIVE,
+ 	ICE_ARFS_ACTIVE,
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 893333b8b738..fe71b67e05a8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -4,12 +4,12 @@
+ #ifndef _ICE_COMMON_H_
+ #define _ICE_COMMON_H_
+ 
+-#include "ice.h"
+ #include "ice_type.h"
+ #include "ice_nvm.h"
+ #include "ice_flex_pipe.h"
+-#include "ice_switch.h"
+ #include <linux/avf/virtchnl.h>
++#include "ice_switch.h"
++#include "ice_fdir.h"
+ 
+ #define ICE_SQ_SEND_DELAY_TIME_MS	10
+ #define ICE_SQ_SEND_MAX_EXECUTE		3
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.h b/drivers/net/ethernet/intel/ice/ice_dcb.h
+index d73348f279f7..6abf28a14291 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb.h
++++ b/drivers/net/ethernet/intel/ice/ice_dcb.h
+@@ -5,6 +5,7 @@
+ #define _ICE_DCB_H_
+ 
+ #include "ice_type.h"
++#include <scsi/iscsi_proto.h>
+ 
+ #define ICE_DCBX_STATUS_NOT_STARTED	0
+ #define ICE_DCBX_STATUS_IN_PROGRESS	1
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index 38fe0a7e6975..015806e388e2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -4,6 +4,7 @@
+ #include "ice_common.h"
+ #include "ice_flex_pipe.h"
  #include "ice_flow.h"
- #include "ice_sched.h"
- #include "ice_idc_int.h"
--#include "ice_virtchnl_pf.h"
-+#include "ice_sriov.h"
- #include "ice_vf_mbx.h"
- #include "ice_ptp.h"
- #include "ice_fdir.h"
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index a3094470d31d..136d7911adb4 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -5,7 +5,7 @@
- #include "ice_base.h"
- #include "ice_lib.h"
- #include "ice_dcb_lib.h"
--#include "ice_virtchnl_pf.h"
-+#include "ice_sriov.h"
++#include "ice.h"
  
- static bool ice_alloc_rx_buf_zc(struct ice_rx_ring *rx_ring)
- {
-diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index f8db3ca521da..e0be27657569 100644
---- a/drivers/net/ethernet/intel/ice/ice_repr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -4,7 +4,7 @@
- #include "ice.h"
- #include "ice_eswitch.h"
- #include "ice_devlink.h"
--#include "ice_virtchnl_pf.h"
-+#include "ice_sriov.h"
- #include "ice_tc_lib.h"
+ /* For supporting double VLAN mode, it is necessary to enable or disable certain
+  * boost tcam entries. The metadata labels names that match the following
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index beed4838dcbe..ef103e47a8dc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -3,6 +3,7 @@
  
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-similarity index 100%
-rename from drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-rename to drivers/net/ethernet/intel/ice/ice_sriov.c
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-similarity index 99%
-rename from drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-rename to drivers/net/ethernet/intel/ice/ice_sriov.h
-index 3938204feeaf..18a2dd537f9f 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+ #include "ice_common.h"
+ #include "ice_flow.h"
++#include <net/gre.h>
+ 
+ /* Describe properties of a protocol header field */
+ struct ice_flow_field_info {
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index 84b6e4464a21..b465d27d9b80 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -4,6 +4,8 @@
+ #ifndef _ICE_FLOW_H_
+ #define _ICE_FLOW_H_
+ 
++#include "ice_flex_type.h"
++
+ #define ICE_FLOW_ENTRY_HANDLE_INVAL	0
+ #define ICE_FLOW_FLD_OFF_INVAL		0xffff
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_idc_int.h b/drivers/net/ethernet/intel/ice/ice_idc_int.h
+index b7796b8aecbd..4b0c86757df9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_idc_int.h
++++ b/drivers/net/ethernet/intel/ice/ice_idc_int.h
+@@ -5,7 +5,6 @@
+ #define _ICE_IDC_INT_H_
+ 
+ #include <linux/net/intel/iidc.h>
+-#include "ice.h"
+ 
+ struct ice_pf;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 2d736c375836..133860071174 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -48,6 +48,21 @@ static DEFINE_IDA(ice_aux_ida);
+ DEFINE_STATIC_KEY_FALSE(ice_xdp_locking_key);
+ EXPORT_SYMBOL(ice_xdp_locking_key);
+ 
++/**
++ * ice_hw_to_dev - Get device pointer from the hardware structure
++ * @hw: pointer to the device HW structure
++ *
++ * Used to access the device pointer from compilation units which can't easily
++ * include the definition of struct ice_pf without leading to circular header
++ * dependencies.
++ */
++struct device *ice_hw_to_dev(struct ice_hw *hw)
++{
++	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
++
++	return &pf->pdev->dev;
++}
++
+ static struct workqueue_struct *ice_wq;
+ static const struct net_device_ops ice_netdev_safe_mode_ops;
+ static const struct net_device_ops ice_netdev_ops;
+diff --git a/drivers/net/ethernet/intel/ice/ice_osdep.h b/drivers/net/ethernet/intel/ice/ice_osdep.h
+index 380e8ae94fc9..82bc54fec7f3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_osdep.h
++++ b/drivers/net/ethernet/intel/ice/ice_osdep.h
+@@ -5,7 +5,14 @@
+ #define _ICE_OSDEP_H_
+ 
+ #include <linux/types.h>
++#include <linux/ctype.h>
++#include <linux/delay.h>
+ #include <linux/io.h>
++#include <linux/bitops.h>
++#include <linux/ethtool.h>
++#include <linux/etherdevice.h>
++#include <linux/if_ether.h>
++#include <linux/pci_ids.h>
+ #ifndef CONFIG_64BIT
+ #include <linux/io-64-nonatomic-lo-hi.h>
+ #endif
+@@ -25,8 +32,8 @@ struct ice_dma_mem {
+ 	size_t size;
+ };
+ 
+-#define ice_hw_to_dev(ptr)	\
+-	(&(container_of((ptr), struct ice_pf, hw))->pdev->dev)
++struct ice_hw;
++struct device *ice_hw_to_dev(struct ice_hw *hw);
+ 
+ #ifdef CONFIG_DYNAMIC_DEBUG
+ #define ice_debug(hw, type, fmt, args...) \
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.h b/drivers/net/ethernet/intel/ice/ice_repr.h
+index 0c77ff050d15..378a45bfa256 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.h
++++ b/drivers/net/ethernet/intel/ice/ice_repr.h
+@@ -5,7 +5,6 @@
+ #define _ICE_REPR_H_
+ 
+ #include <net/dst_metadata.h>
+-#include "ice.h"
+ 
+ struct ice_repr {
+ 	struct ice_vsi *src_vsi;
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
+index 18a2dd537f9f..de5ee9db13fe 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.h
 +++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-@@ -1,8 +1,8 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- /* Copyright (c) 2018, Intel Corporation. */
+@@ -3,7 +3,6 @@
  
--#ifndef _ICE_VIRTCHNL_PF_H_
--#define _ICE_VIRTCHNL_PF_H_
-+#ifndef _ICE_SRIOV_H_
-+#define _ICE_SRIOV_H_
- #include "ice.h"
+ #ifndef _ICE_SRIOV_H_
+ #define _ICE_SRIOV_H_
+-#include "ice.h"
  #include "ice_virtchnl_fdir.h"
  #include "ice_vsi_vlan_ops.h"
-@@ -434,4 +434,4 @@ static inline bool ice_vf_is_port_vlan_ena(struct ice_vf __always_unused *vf)
- 	return false;
- }
- #endif /* CONFIG_PCI_IOV */
--#endif /* _ICE_VIRTCHNL_PF_H_ */
-+#endif /* _ICE_SRIOV_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-index b16f946185f2..5ecc0ee9a78e 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-@@ -6,7 +6,7 @@
- #include "ice_vlan_mode.h"
- #include "ice.h"
- #include "ice_vf_vsi_vlan_ops.h"
--#include "ice_virtchnl_pf.h"
-+#include "ice_sriov.h"
  
- static int
- noop_vlan_arg(struct ice_vsi __always_unused *vsi,
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index e82d23b3bc96..7a3e620457e4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -9,6 +9,7 @@
+ #define ICE_CHNL_MAX_TC		16
+ 
+ #include "ice_hw_autogen.h"
++#include "ice_devids.h"
+ #include "ice_osdep.h"
+ #include "ice_controlq.h"
+ #include "ice_lan_tx_rx.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
+index 0cbb5793b5b8..335d2976942e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.h
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
+@@ -4,7 +4,6 @@
+ #ifndef _ICE_XSK_H_
+ #define _ICE_XSK_H_
+ #include "ice_txrx.h"
+-#include "ice.h"
+ 
+ #define PKTS_PER_BATCH 8
+ 
 -- 
 2.35.1.129.gb80121027d12
 
