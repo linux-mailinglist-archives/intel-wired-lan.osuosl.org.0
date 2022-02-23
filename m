@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57FFF4C12DE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 13:39:35 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 425B34C12E3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 13:40:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 45B9A813A0;
-	Wed, 23 Feb 2022 12:39:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D91EE4155D;
+	Wed, 23 Feb 2022 12:40:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 97RKMTWzUREu; Wed, 23 Feb 2022 12:39:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AHT__NPIZX45; Wed, 23 Feb 2022 12:40:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 40296813B5;
-	Wed, 23 Feb 2022 12:39:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CF0E8403C7;
+	Wed, 23 Feb 2022 12:40:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F8511BF83C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 56AD41BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0ABB660F4C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 45067813A0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FiYEWj774yAD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Feb 2022 12:39:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NELXn7i8q4Ll for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Feb 2022 12:39:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4E02460BBC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:26 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 94C0781398
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1645619966; x=1677155966;
+ t=1645619995; x=1677155995;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=mE2Aka3hbT/PrUMu6FrvTuzzg1OO9ZBL3SQmvYnf9gs=;
- b=WQaM3ExyR4PZshF2DWrVrlvG674r55BFI6T5f8+eHsKy6JBSGr3P+goL
- EGxszCIto/5QsUkjcNOtqtEs+SJc3sC31feBzJhu0TD63XpmoNSeowgW7
- rCKvh/WI1j0AJeOtCRAUJSeBScoUtn9Y0s6wLDuAjuGwfR0RwLfxfINpP
- ojuBntKLZ5in9Tw9+Rv2ID99fYi3ZbgqsGXNKI/VjAX8dYDu+hqInFeJH
- U9//YV21zf6xBckYj81G1mK891CwQSqlhdBk/Q48OBEMHfKb27nzUlwHf
- /B5g9bGJKDQdpvkoHSqE3o9agMrSqKK53vc9k+wH+R6KX1JhsUIWGs396 Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="276571599"
-X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="276571599"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2022 04:39:25 -0800
+ bh=9KkO0nLLQpiEUbDBkhY9ZFp+K0CZa+yyy0ZZS8AkcO4=;
+ b=mEkO2bKDiwkF8boBxN35Jd7yY46nB4pFB8IiMKykXTIpDO44z+qLk0XF
+ EVJWTrdwm963BfvQhMLHXw225SmrVnfKdAqF57MbQOE5wqIq7Xt2rp0er
+ BbK5Px1hq9h73Mzvp8EQQZTaFp/Tmf5nt8CEwt8BqiuHeGd2ttxAtE5AP
+ xpm0t5mypQ3zw47BgtbwVpaJYGCiDUBZ/pRvt1YYBER5MbshSFTzP8Dpx
+ R+pOTZGeceUrDqYMsQplFarqRnfw5vU9qoYf3iNcMDEYQIF8QGo3Ry6BH
+ NPFUGIiPVx1ViD6PPxCMcN8KvcEIx6bFMntqOKMEIvba06OXe0bTKdX23 Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="231926521"
+X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="231926521"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2022 04:39:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="491180898"
+X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="781858392"
 Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
  ([10.102.18.68])
- by orsmga003.jf.intel.com with ESMTP; 23 Feb 2022 04:39:23 -0800
+ by fmsmga005.fm.intel.com with ESMTP; 23 Feb 2022 04:39:38 -0800
 From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 23 Feb 2022 13:37:10 +0100
-Message-Id: <20220223123710.29979-1-mateusz.palczewski@intel.com>
+Date: Wed, 23 Feb 2022 13:37:50 +0100
+Message-Id: <20220223123750.30266-1-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1 3/8] iavf: Fix init state closure
- on remove
+Subject: [Intel-wired-lan] [PATCH net v1 4/8] iavf: Fix locking for
+ VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,111 +85,130 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: SlawomirX Laba <slawomirx.laba@intel.com>
 
-When init states of the adapter work, the errors like lack
-of communication with the PF might hop in. If such events
-occur the driver restores previous states in order to retry
-initialization in a proper way. When remove task kicks in,
-this situation could lead to races with unregistering the
-netdevice as well as resources cleanup. With the commit
-introducing the waiting in remove for init to complete,
-this problem turns into an endless waiting if init never
-recovers from errors.
+iavf_virtchnl_completion is called under crit_lock but when
+the code for VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS is called,
+this lock is released in order to obtain rtnl_lock to avoid
+ABBA deadlock with unregister_netdev.
 
-Introduce __IAVF_IN_REMOVE_TASK bit to indicate that the
-remove thread has started.
+Along with the new way iavf_remove behaves, there exist
+many risks related to the lock release and attmepts to regrab
+it. The driver faces crashes related to races between
+unregister_netdev and netdev_update_features. Yet another
+risk is that the driver could already obtain the crit_lock
+in order to destroy it and iavf_virtchnl_completion could
+crash or block forever.
 
-Make __IAVF_COMM_FAILED adapter state respect the
-__IAVF_IN_REMOVE_TASK bit and set the __IAVF_INIT_FAILED
-state and return without any action instead of trying to
-recover.
+Make iavf_virtchnl_completion never relock crit_lock in it's
+call paths.
 
-Make __IAVF_INIT_FAILED adapter state respect the
-__IAVF_IN_REMOVE_TASK bit and return without any further
-actions.
+Extract rtnl_lock locking logic to the driver for
+unregister_netdev in order to set the netdev_registered flag
+inside the lock.
 
-Make the loop in the remove handler break when adapter has
-__IAVF_INIT_FAILED state set.
+Introduce a new flag that will inform adminq_task to perform
+the code from VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS right after
+it finishes processing messages. Guard this code with remove
+flags so it's never called when the driver is in remove state.
 
-Fixes: 898ef1cb1cb2 ("iavf: Combine init and watchdog state machines")
+Fixes: 5951a2b9812d ("iavf: Fix VLAN feature flags after VFR")
 Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
 Signed-off-by: Phani Burra <phani.r.burra@intel.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h      |  4 ++++
- drivers/net/ethernet/intel/iavf/iavf_main.c | 24 ++++++++++++++++++++-
- 2 files changed, 27 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/iavf/iavf.h        |  1 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 22 ++++++++++++++++-
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 24 +------------------
+ 3 files changed, 23 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 44f83e0..f259fd5 100644
+index f259fd5..8942394 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf.h
 +++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -201,6 +201,10 @@ enum iavf_state_t {
- 	__IAVF_RUNNING,		/* opened, working */
- };
- 
-+enum iavf_critical_section_t {
-+	__IAVF_IN_REMOVE_TASK,	/* device being removed */
-+};
-+
- #define IAVF_CLOUD_FIELD_OMAC		0x01
- #define IAVF_CLOUD_FIELD_IMAC		0x02
- #define IAVF_CLOUD_FIELD_IVLAN	0x04
+@@ -287,6 +287,7 @@ struct iavf_adapter {
+ #define IAVF_FLAG_LEGACY_RX			BIT(15)
+ #define IAVF_FLAG_REINIT_ITR_NEEDED		BIT(16)
+ #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
++#define IAVF_FLAG_SETUP_NETDEV_FEATURES		BIT(18)
+ /* duplicates for common code */
+ #define IAVF_FLAG_DCB_ENABLED			0
+ 	/* flags for admin queue service task */
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 5e71b38e..be51da9 100644
+index be51da9..67349d2 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2424,6 +2424,15 @@ static void iavf_watchdog_task(struct work_struct *work)
- 				   msecs_to_jiffies(1));
- 		return;
- 	case __IAVF_INIT_FAILED:
-+		if (test_bit(__IAVF_IN_REMOVE_TASK,
-+			     &adapter->crit_section)) {
-+			/* Do not update the state and do not reschedule
-+			 * watchdog task, iavf_remove should handle this state
-+			 * as it can loop forever
-+			 */
-+			mutex_unlock(&adapter->crit_lock);
-+			return;
-+		}
- 		if (++adapter->aq_wait_count > IAVF_AQ_MAX_ERR) {
- 			dev_err(&adapter->pdev->dev,
- 				"Failed to communicate with PF; waiting before retry\n");
-@@ -2440,6 +2449,17 @@ static void iavf_watchdog_task(struct work_struct *work)
- 		queue_delayed_work(iavf_wq, &adapter->watchdog_task, HZ);
- 		return;
- 	case __IAVF_COMM_FAILED:
-+		if (test_bit(__IAVF_IN_REMOVE_TASK,
-+			     &adapter->crit_section)) {
-+			/* Set state to __IAVF_INIT_FAILED and perform remove
-+			 * steps. Remove IAVF_FLAG_PF_COMMS_FAILED so the task
-+			 * doesn't bring the state back to __IAVF_COMM_FAILED.
-+			 */
-+			iavf_change_state(adapter, __IAVF_INIT_FAILED);
-+			adapter->flags &= ~IAVF_FLAG_PF_COMMS_FAILED;
-+			mutex_unlock(&adapter->crit_lock);
-+			return;
-+		}
- 		reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
- 			  IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
- 		if (reg_val == VIRTCHNL_VFR_VFACTIVE ||
-@@ -4567,13 +4587,15 @@ static void iavf_remove(struct pci_dev *pdev)
- 	struct iavf_hw *hw = &adapter->hw;
- 	int err;
+@@ -2879,6 +2879,24 @@ static void iavf_adminq_task(struct work_struct *work)
+ 	} while (pending);
+ 	mutex_unlock(&adapter->crit_lock);
  
-+	set_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section);
- 	/* Wait until port initialization is complete.
- 	 * There are flows where register/unregister netdev may race.
- 	 */
- 	while (1) {
- 		mutex_lock(&adapter->crit_lock);
- 		if (adapter->state == __IAVF_RUNNING ||
--		    adapter->state == __IAVF_DOWN) {
-+		    adapter->state == __IAVF_DOWN ||
-+		    adapter->state == __IAVF_INIT_FAILED) {
- 			mutex_unlock(&adapter->crit_lock);
- 			break;
++	if ((adapter->flags & IAVF_FLAG_SETUP_NETDEV_FEATURES)) {
++		if (adapter->netdev_registered ||
++		    !test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section)) {
++			struct net_device *netdev = adapter->netdev;
++
++			rtnl_lock();
++			netdev_update_features(netdev);
++			rtnl_unlock();
++			/* Request VLAN offload settings */
++			if (VLAN_V2_ALLOWED(adapter))
++				iavf_set_vlan_offload_features
++					(adapter, 0, netdev->features);
++
++			iavf_set_queue_vlan_tag_loc(adapter);
++		}
++
++		adapter->flags &= ~IAVF_FLAG_SETUP_NETDEV_FEATURES;
++	}
+ 	if ((adapter->flags &
+ 	     (IAVF_FLAG_RESET_PENDING | IAVF_FLAG_RESET_NEEDED)) ||
+ 	    adapter->state == __IAVF_RESETTING)
+@@ -4606,8 +4624,10 @@ static void iavf_remove(struct pci_dev *pdev)
+ 	cancel_delayed_work_sync(&adapter->watchdog_task);
+ 
+ 	if (adapter->netdev_registered) {
+-		unregister_netdev(netdev);
++		rtnl_lock();
++		unregister_netdevice(netdev);
+ 		adapter->netdev_registered = false;
++		rtnl_unlock();
+ 	}
+ 	if (CLIENT_ALLOWED(adapter)) {
+ 		err = iavf_lan_del_device(adapter);
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 5ee1d11..88844d6 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -2146,29 +2146,7 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 				     sizeof(adapter->vlan_v2_caps)));
+ 
+ 		iavf_process_config(adapter);
+-
+-		/* unlock crit_lock before acquiring rtnl_lock as other
+-		 * processes holding rtnl_lock could be waiting for the same
+-		 * crit_lock
+-		 */
+-		mutex_unlock(&adapter->crit_lock);
+-		/* VLAN capabilities can change during VFR, so make sure to
+-		 * update the netdev features with the new capabilities
+-		 */
+-		rtnl_lock();
+-		netdev_update_features(netdev);
+-		rtnl_unlock();
+-		if (iavf_lock_timeout(&adapter->crit_lock, 10000))
+-			dev_warn(&adapter->pdev->dev, "failed to acquire crit_lock in %s\n",
+-				 __FUNCTION__);
+-
+-		/* Request VLAN offload settings */
+-		if (VLAN_V2_ALLOWED(adapter))
+-			iavf_set_vlan_offload_features(adapter, 0,
+-						       netdev->features);
+-
+-		iavf_set_queue_vlan_tag_loc(adapter);
+-
++		adapter->flags |= IAVF_FLAG_SETUP_NETDEV_FEATURES;
  		}
+ 		break;
+ 	case VIRTCHNL_OP_ENABLE_QUEUES:
 -- 
 2.27.0
 
