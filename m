@@ -1,67 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 403FE4C0618
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:28:48 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05FC44C061B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:29:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CEFFB401FF;
-	Wed, 23 Feb 2022 00:28:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9532660B6A;
+	Wed, 23 Feb 2022 00:28:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aVxhxYLuRRoP; Wed, 23 Feb 2022 00:28:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Fl1-MufqyhAU; Wed, 23 Feb 2022 00:28:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B8186401B1;
-	Wed, 23 Feb 2022 00:28:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F1EB60625;
+	Wed, 23 Feb 2022 00:28:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D06A1BF9B4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A47401BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1D95E40994
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:26 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1135240911
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wxADV28a9-rj for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id EDHXMWRpRoVW for <intel-wired-lan@lists.osuosl.org>;
  Wed, 23 Feb 2022 00:27:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4181A408D5
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8FEBC40901
  for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645576045; x=1677112045;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=msXeZj18Os57j3gKiiQoQGX+d/0tPgzfZwsenxEy3Is=;
- b=j+ie7jgCPjDS0W2z0Cq3G4vaWMtGBCgBrQPOS+YTTUuloaRwdyvhd1Nk
- AnmKYjoNhh0bsT1f5lzCcmhBZGO0MWjoRCyIJKgA7vSB3D8OfR3O1dEtT
- Qk+hgJOaeTCtTQrdAJYV+o35aeEz07Wi5+dFFMNKhPLBn2TLy7LoI0kg2
- eh5AsYpHjQIKjH7RYDms04Tc+/gg0hNl8eCqxK29tZmj6uPXjiyPSLtRj
- uzxoLEnz6waNnQTuqDYMRnJKWsVSZ03RqKlNZlR+Dx95R6NLo2PlmEyTi
- TQAQBl6iR8XB2QIOTLkWa3dmO/NigYP+vCSXkavPXL7xN0Q5UlfNsFsML A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="239235842"
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="239235842"
+ bh=xWffBxJsU7TI91qRRoWD1PcBQLLJ0tQbJhBxDw1yuv0=;
+ b=ggHdTE1yulxBtg4ZRWPq1exDJGegEFpeYJHtOFutcXIfWU9DkthsPRc8
+ NNNsK44Un9ypPnjD6zfvhDAZgjJaj+58fpnpVg0urfG7IebhDixSH2U7a
+ 7FkVGAS4FQKlWfvgMLg7iAWcpDuKnpqJenJ6WAOOQAGPmIlpYTqW+Nii5
+ DssZb0pDgiKmxiwzn1BcuiaOJNyOugT7hvVxTTqaB6zw9aBZEsAEDpojw
+ t06i0P424TB4s3mahsQHVLa8utkDynLIdFY+wb9Kh8MAKHhsR7Q03aq7Q
+ oPmHQAINywdRziXTEpxoJ57hGyBGP2Lwd+H7YTuZasuT3y+KmA/X4/y/A Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="239235843"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="239235843"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:20 -0800
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728061"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728064"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:19 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 22 Feb 2022 16:27:09 -0800
-Message-Id: <20220223002712.2771809-23-jacob.e.keller@intel.com>
+Date: Tue, 22 Feb 2022 16:27:10 -0800
+Message-Id: <20220223002712.2771809-24-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 In-Reply-To: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 References: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 22/25] ice: introduce
- ICE_VF_RESET_LOCK flag
+Subject: [Intel-wired-lan] [net-next PATCH 23/25] ice: cleanup long longs in
+ ice_sriov.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,137 +81,123 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_reset_vf function performs actions which must be taken only
-while holding the VF configuration lock. Some flows already acquired the
-lock, while other flows must acquire it just for the reset function. Add
-the ICE_VF_RESET_LOCK flag to the function so that it can handle taking
-and releasing the lock instead at the appropriate scope.
+Before we move the virtchnl message handling from ice_sriov.c into
+ice_virtchnl.c, cleanup some long line warnings to avoid checkpatch.pl
+complaints.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c   |  4 +---
- drivers/net/ethernet/intel/ice/ice_sriov.c  | 12 +++---------
- drivers/net/ethernet/intel/ice/ice_vf_lib.c | 18 ++++++++++++++----
- drivers/net/ethernet/intel/ice/ice_vf_lib.h |  1 +
- 4 files changed, 19 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 39 +++++++++++++++-------
+ 1 file changed, 27 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 9d5fa9840004..4f35eb039d9f 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1957,9 +1957,7 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
- 				 * reset, so print the event prior to reset.
- 				 */
- 				ice_print_vf_rx_mdd_event(vf);
--				mutex_lock(&vf->cfg_lock);
--				ice_reset_vf(vf, 0);
--				mutex_unlock(&vf->cfg_lock);
-+				ice_reset_vf(vf, ICE_VF_RESET_LOCK);
- 			}
- 		}
- 	}
 diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 46d656d385c4..f74474f8af99 100644
+index f74474f8af99..4f3d25ed68c9 100644
 --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
 +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -1366,12 +1366,9 @@ void ice_process_vflr_event(struct ice_pf *pf)
- 		bit_idx = (hw->func_caps.vf_base_id + vf->vf_id) % 32;
- 		/* read GLGEN_VFLRSTAT register to find out the flr VFs */
- 		reg = rd32(hw, GLGEN_VFLRSTAT(reg_idx));
--		if (reg & BIT(bit_idx)) {
-+		if (reg & BIT(bit_idx))
- 			/* GLGEN_VFLRSTAT bit will be cleared in ice_reset_vf */
--			mutex_lock(&vf->cfg_lock);
--			ice_reset_vf(vf, ICE_VF_RESET_VFLR);
--			mutex_unlock(&vf->cfg_lock);
--		}
-+			ice_reset_vf(vf, ICE_VF_RESET_VFLR | ICE_VF_RESET_LOCK);
- 	}
- 	mutex_unlock(&pf->vfs.table_lock);
- }
-@@ -1453,10 +1450,7 @@ ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	if (!vf)
- 		return;
- 
--	mutex_lock(&vf->cfg_lock);
--	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
--	mutex_unlock(&vf->cfg_lock);
--
-+	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY | ICE_VF_RESET_LOCK);
- 	ice_put_vf(vf);
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index dce32bc194a0..c584f5123ba7 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -473,6 +473,7 @@ static void ice_notify_vf_reset(struct ice_vf *vf)
-  * Flags:
-  *   ICE_VF_RESET_VFLR - Indicates a reset is due to VFLR event
-  *   ICE_VF_RESET_NOTIFY - Send VF a notification prior to reset
-+ *   ICE_VF_RESET_LOCK - Acquire VF cfg_lock before resetting
-  *
-  * Returns 0 if the VF is currently in reset, if the resets are disabled, or
-  * if the VF resets successfully. Returns an error code if the VF fails to
-@@ -485,10 +486,9 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	struct device *dev;
- 	struct ice_hw *hw;
- 	u8 promisc_m;
-+	int err = 0;
- 	bool rsd;
- 
--	lockdep_assert_held(&vf->cfg_lock);
--
- 	dev = ice_pf_to_dev(pf);
- 	hw = &pf->hw;
- 
-@@ -507,6 +507,11 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 		return 0;
+@@ -2325,16 +2325,21 @@ static int ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
+ 		    !test_and_set_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))
+ 			dev_info(dev, "VF %u successfully set multicast promiscuous mode\n",
+ 				 vf->vf_id);
+-		else if (!allmulti && test_and_clear_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))
++		else if (!allmulti &&
++			 test_and_clear_bit(ICE_VF_STATE_MC_PROMISC,
++					    vf->vf_states))
+ 			dev_info(dev, "VF %u successfully unset multicast promiscuous mode\n",
+ 				 vf->vf_id);
  	}
  
-+	if (flags & ICE_VF_RESET_LOCK)
-+		mutex_lock(&vf->cfg_lock);
-+	else
-+		lockdep_assert_held(&vf->cfg_lock);
-+
- 	/* Set VF disable bit state here, before triggering reset */
- 	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
- 	ice_trigger_vf_reset(vf, flags & ICE_VF_RESET_VFLR, false);
-@@ -564,7 +569,8 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	if (vf->vf_ops->vsi_rebuild(vf)) {
- 		dev_err(dev, "Failed to release and setup the VF%u's VSI\n",
- 			vf->vf_id);
--		return -EFAULT;
-+		err = -EFAULT;
-+		goto out_unlock;
+ 	if (!ucast_err) {
+-		if (alluni && !test_and_set_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states))
++		if (alluni &&
++		    !test_and_set_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states))
+ 			dev_info(dev, "VF %u successfully set unicast promiscuous mode\n",
+ 				 vf->vf_id);
+-		else if (!alluni && test_and_clear_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states))
++		else if (!alluni &&
++			 test_and_clear_bit(ICE_VF_STATE_UC_PROMISC,
++					    vf->vf_states))
+ 			dev_info(dev, "VF %u successfully unset unicast promiscuous mode\n",
+ 				 vf->vf_id);
  	}
+@@ -2878,8 +2883,9 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+ 			}
  
- 	vf->vf_ops->post_vsi_rebuild(vf);
-@@ -578,7 +584,11 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 		dev_dbg(dev, "failed to clear malicious VF state for VF %u\n",
- 			vf->vf_id);
- 
--	return 0;
-+out_unlock:
-+	if (flags & ICE_VF_RESET_LOCK)
-+		mutex_unlock(&vf->cfg_lock);
-+
-+	return err;
+ 			vsi->max_frame = qpi->rxq.max_pkt_size;
+-			/* add space for the port VLAN since the VF driver is not
+-			 * expected to account for it in the MTU calculation
++			/* add space for the port VLAN since the VF driver is
++			 * not expected to account for it in the MTU
++			 * calculation
+ 			 */
+ 			if (ice_vf_is_port_vlan_ena(vf))
+ 				vsi->max_frame += VLAN_HLEN;
+@@ -3665,8 +3671,11 @@ static u16 ice_vc_get_max_vlan_fltrs(struct ice_vf *vf)
  }
  
  /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index 9155c0d2f998..758e37295942 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -137,6 +137,7 @@ struct ice_vf {
- enum ice_vf_reset_flags {
- 	ICE_VF_RESET_VFLR = BIT(0), /* Indicate a VFLR reset */
- 	ICE_VF_RESET_NOTIFY = BIT(1), /* Notify VF prior to reset */
-+	ICE_VF_RESET_LOCK = BIT(2), /* Acquire the VF cfg_lock */
- };
+- * ice_vf_outer_vlan_not_allowed - check outer VLAN can be used when the device is in DVM
++ * ice_vf_outer_vlan_not_allowed - check if outer VLAN can be used
+  * @vf: VF that being checked for
++ *
++ * When the device is in double VLAN mode, check whether or not the outer VLAN
++ * is allowed.
+  */
+ static bool ice_vf_outer_vlan_not_allowed(struct ice_vf *vf)
+ {
+@@ -3944,9 +3953,11 @@ ice_vc_validate_vlan_filter_list(struct virtchnl_vlan_filtering_caps *vfc,
+ 			return false;
  
- static inline u16 ice_vf_get_port_vlan_id(struct ice_vf *vf)
+ 		if ((ice_vc_is_valid_vlan(outer) &&
+-		     !ice_vc_validate_vlan_tpid(filtering_support->outer, outer->tpid)) ||
++		     !ice_vc_validate_vlan_tpid(filtering_support->outer,
++						outer->tpid)) ||
+ 		    (ice_vc_is_valid_vlan(inner) &&
+-		     !ice_vc_validate_vlan_tpid(filtering_support->inner, inner->tpid)))
++		     !ice_vc_validate_vlan_tpid(filtering_support->inner,
++						inner->tpid)))
+ 			return false;
+ 	}
+ 
+@@ -4421,7 +4432,8 @@ static int ice_vc_ena_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
+ 	}
+ 
+ out:
+-	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2, v_ret, NULL, 0);
++	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2,
++				     v_ret, NULL, 0);
+ }
+ 
+ /**
+@@ -4490,7 +4502,8 @@ static int ice_vc_dis_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
+ 	}
+ 
+ out:
+-	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2, v_ret, NULL, 0);
++	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2,
++				     v_ret, NULL, 0);
+ }
+ 
+ /**
+@@ -4548,7 +4561,8 @@ static int ice_vc_ena_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
+ 	}
+ 
+ out:
+-	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2, v_ret, NULL, 0);
++	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2,
++				     v_ret, NULL, 0);
+ }
+ 
+ /**
+@@ -4602,7 +4616,8 @@ static int ice_vc_dis_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
+ 	}
+ 
+ out:
+-	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2, v_ret, NULL, 0);
++	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2,
++				     v_ret, NULL, 0);
+ }
+ 
+ static const struct ice_virtchnl_ops ice_virtchnl_dflt_ops = {
 -- 
 2.35.1.129.gb80121027d12
 
