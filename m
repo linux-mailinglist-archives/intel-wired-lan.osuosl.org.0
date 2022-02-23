@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82A8F4C0611
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:28:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36EB64C05F1
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:27:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 343D14061F;
-	Wed, 23 Feb 2022 00:28:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D378860F1D;
+	Wed, 23 Feb 2022 00:27:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IykoP8Gezaw4; Wed, 23 Feb 2022 00:28:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2fJLuoDvorCW; Wed, 23 Feb 2022 00:27:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C25CE405EF;
-	Wed, 23 Feb 2022 00:28:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D127460BAD;
+	Wed, 23 Feb 2022 00:27:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2ED7D1BF9C8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5EDC74026A
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 141C71BF9B4
  for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3255960B6A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 09dzDJUt5eIt for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id m-TT2tlpUkc8 for <intel-wired-lan@lists.osuosl.org>;
  Wed, 23 Feb 2022 00:27:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9333240608
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 96AEB60BAD
  for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645576040; x=1677112040;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=x0tjlXotgGUN/yvjsSs8sY/lk11GK8FXZ9dqJQO40Ms=;
- b=U6EIpDWXQe6MoaMDOIwO7ibZ2BJyEs1K12jo8nzH8oiq9LxIWrQt4ceQ
- Oe3OtyQ4rU15ZSKKY0aSAvqWpmPc2CV804kMo7Vtzdps2VJ1y/ECode1+
- x6q1nut7X3C/1zamCnAQnwdjNlicMNMkvJ5IxbP+C0mrEmW/HeK/I0Ery
- 2IO0vP4DKrwpiO/WbV7SWmScme245B3GDPfj8nwFLYB/Ir8mJf1bI/f4i
- GJhKaXZHTeyIc1g+JMl39ZqHGo5YYPAQiCO2HZwYN4RA7joKY5qCrYlOF
- PBtPyAmlLExTA5Xjp4XXh7EzQfjnRrPtg6TP4oUHahCYA3fHfmgduZEAF A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="232468970"
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="232468970"
+ bh=aM+1SDIjM9AOw2l1bSnIQZ2vxPo/yI2R9PndcjbhK4s=;
+ b=NPlYGmUod09ylA+ZwUG8oXDQf5ZzVRViwxH1lpyIPkYWw7/aNbpKpqfU
+ GbWP55mBF+t7JyKMxixYsmCmOj9vw1BcuSu3N38GNu2wh+apIn4995lSS
+ ruEh+JxGM3SFjLYvkyv9B237/rpirZapBxYMJOguHgOCK64T/AEQTnyzd
+ wYGDp4EXdt5TuZnIY2apTuQMv6HAqtYH0y1a2jBGsU8usybOpKQfx37L5
+ CTJr3Rd4UVg0/QTZECyjKe3ouBe/E+oKoJ1r1xOgFz7QYUxkddgOfvtVC
+ k7DEMXeRGGudshtJPETVSho3Id4LyPOtIY3t3trYSN7wByU76sVqrJxfP Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="232468971"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="232468971"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:19 -0800
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728011"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728014"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:18 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 22 Feb 2022 16:26:53 -0800
-Message-Id: <20220223002712.2771809-7-jacob.e.keller@intel.com>
+Date: Tue, 22 Feb 2022 16:26:54 -0800
+Message-Id: <20220223002712.2771809-8-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 In-Reply-To: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 References: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 06/25] ice: rename
- ICE_MAX_VF_COUNT to avoid confusion
+Subject: [Intel-wired-lan] [net-next PATCH 07/25] ice: refactor spoofchk
+ control code in ice_sriov.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,94 +79,84 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ICE_MAX_VF_COUNT field is defined in ice_sriov.h. This count is true
-for SR-IOV but will not be true for all VF implementations, such as when
-the ice driver supports Scalable IOV.
+The API to control the VSI spoof checking for a VF VSI has three
+functions: enable, disable, and set. The set function takes the VSI and
+the VF and decides whether to call enable or disable based on the
+vf->spoofchk field.
 
-Rename this definition to clearly indicate ICE_MAX_SRIOV_VFS.
+In some flows, vf->spoofchk is not yet set, such as the function used to
+control the setting for a VF. (vf->spoofchk is only updated after a
+success).
+
+Simplify this API by refactoring ice_vf_set_spoofchk_cfg to be
+"ice_vsi_apply_spoofchk" which takes the boolean and allows all callers
+to avoid having to determine whether to call enable or disable
+themselves.
+
+This matches the expected callers better, and will prevent the need to
+export more than one function when this code must be called from another
+file.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c  | 2 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c | 8 ++++----
- drivers/net/ethernet/intel/ice/ice_sriov.h | 4 ++--
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 133860071174..a628fa9f1442 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3868,7 +3868,7 @@ static void ice_set_pf_caps(struct ice_pf *pf)
- 	if (func_caps->common_cap.sr_iov_1_1) {
- 		set_bit(ICE_FLAG_SRIOV_CAPABLE, pf->flags);
- 		pf->vfs.num_supported = min_t(int, func_caps->num_allocd_vfs,
--					      ICE_MAX_VF_COUNT);
-+					      ICE_MAX_SRIOV_VFS);
- 	}
- 	clear_bit(ICE_FLAG_RSS_ENA, pf->flags);
- 	if (func_caps->common_cap.rss_table_size)
 diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 205d7e5003d8..7cd910bb7a7a 100644
+index 7cd910bb7a7a..8d22b5d94706 100644
 --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
 +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -661,7 +661,7 @@ void ice_free_vfs(struct ice_pf *pf)
+@@ -985,16 +985,15 @@ static int ice_vsi_dis_spoofchk(struct ice_vsi *vsi)
+ }
  
- 		/* clear malicious info since the VF is getting released */
- 		if (ice_mbx_clear_malvf(&hw->mbx_snapshot, pf->vfs.malvfs,
--					ICE_MAX_VF_COUNT, vf->vf_id))
-+					ICE_MAX_SRIOV_VFS, vf->vf_id))
- 			dev_dbg(dev, "failed to clear malicious VF state for VF %u\n",
- 				vf->vf_id);
+ /**
+- * ice_vf_set_spoofchk_cfg - apply Tx spoof checking setting
+- * @vf: VF set spoofchk for
++ * ice_vsi_apply_spoofchk - Apply Tx spoof checking setting to a VSI
+  * @vsi: VSI associated to the VF
++ * @enable: whether to enable or disable the spoof checking
+  */
+-static int
+-ice_vf_set_spoofchk_cfg(struct ice_vf *vf, struct ice_vsi *vsi)
++static int ice_vsi_apply_spoofchk(struct ice_vsi *vsi, bool enable)
+ {
+ 	int err;
  
-@@ -1591,7 +1591,7 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	/* clear all malicious info if the VFs are getting reset */
- 	ice_for_each_vf(pf, bkt, vf)
- 		if (ice_mbx_clear_malvf(&hw->mbx_snapshot, pf->vfs.malvfs,
--					ICE_MAX_VF_COUNT, vf->vf_id))
-+					ICE_MAX_SRIOV_VFS, vf->vf_id))
- 			dev_dbg(dev, "failed to clear malicious VF state for VF %u\n",
- 				vf->vf_id);
+-	if (vf->spoofchk)
++	if (enable)
+ 		err = ice_vsi_ena_spoofchk(vsi);
+ 	else
+ 		err = ice_vsi_dis_spoofchk(vsi);
+@@ -1478,7 +1477,7 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
+ 		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
+ 			vf->vf_id);
  
-@@ -1805,7 +1805,7 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+-	if (ice_vf_set_spoofchk_cfg(vf, vsi))
++	if (ice_vsi_apply_spoofchk(vsi, vf->spoofchk))
+ 		dev_err(dev, "failed to rebuild spoofchk configuration for VF %d\n",
+ 			vf->vf_id);
  
- 	/* if the VF has been reset allow it to come up again */
- 	if (ice_mbx_clear_malvf(&hw->mbx_snapshot, pf->vfs.malvfs,
--				ICE_MAX_VF_COUNT, vf->vf_id))
-+				ICE_MAX_SRIOV_VFS, vf->vf_id))
- 		dev_dbg(dev, "failed to clear malicious VF state for VF %u\n", i);
+@@ -1915,7 +1914,7 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
+ 		goto release_vsi;
+ 	}
  
- 	return true;
-@@ -6624,7 +6624,7 @@ ice_is_malicious_vf(struct ice_pf *pf, struct ice_rq_event_info *event,
- 		 * know about it, then let them know now
- 		 */
- 		status = ice_mbx_report_malvf(&pf->hw, pf->vfs.malvfs,
--					      ICE_MAX_VF_COUNT, vf_id,
-+					      ICE_MAX_SRIOV_VFS, vf_id,
- 					      &report_vf);
- 		if (status)
- 			dev_dbg(dev, "Error reporting malicious VF\n");
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-index 525e3f0819e8..28a544c09894 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-@@ -22,7 +22,7 @@
- #define ICE_PCI_CIAD_WAIT_DELAY_US	1
+-	err = ice_vf_set_spoofchk_cfg(vf, vsi);
++	err = ice_vsi_apply_spoofchk(vsi, vf->spoofchk);
+ 	if (err) {
+ 		dev_warn(dev, "Failed to initialize spoofchk setting for VF %d\n",
+ 			 vf->vf_id);
+@@ -3129,10 +3128,7 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 		goto out_put_vf;
+ 	}
  
- /* VF resource constraints */
--#define ICE_MAX_VF_COUNT		256
-+#define ICE_MAX_SRIOV_VFS		256
- #define ICE_MIN_QS_PER_VF		1
- #define ICE_NONQ_VECS_VF		1
- #define ICE_MAX_RSS_QS_PER_VF		16
-@@ -147,7 +147,7 @@ struct ice_vfs {
- 	u16 num_qps_per;		/* number of queue pairs per VF */
- 	u16 num_msix_per;		/* number of MSi-X vectors per VF */
- 	unsigned long last_printed_mdd_jiffies;	/* MDD message rate limit */
--	DECLARE_BITMAP(malvfs, ICE_MAX_VF_COUNT); /* malicious VF indicator */
-+	DECLARE_BITMAP(malvfs, ICE_MAX_SRIOV_VFS); /* malicious VF indicator */
- };
- 
- /* VF information structure */
+-	if (ena)
+-		ret = ice_vsi_ena_spoofchk(vf_vsi);
+-	else
+-		ret = ice_vsi_dis_spoofchk(vf_vsi);
++	ret = ice_vsi_apply_spoofchk(vf_vsi, ena);
+ 	if (ret)
+ 		dev_err(dev, "Failed to set spoofchk %s for VF %d VSI %d\n error %d\n",
+ 			ena ? "ON" : "OFF", vf->vf_id, vf_vsi->vsi_num, ret);
 -- 
 2.35.1.129.gb80121027d12
 
