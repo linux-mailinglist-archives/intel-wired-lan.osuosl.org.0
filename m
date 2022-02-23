@@ -1,67 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FA8C4C0613
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:28:30 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AE564C061A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 01:28:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A908F402BB;
-	Wed, 23 Feb 2022 00:28:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E3B4860BE8;
+	Wed, 23 Feb 2022 00:28:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2O1lb7WUyxDp; Wed, 23 Feb 2022 00:28:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id djF6K0Xkl5Ar; Wed, 23 Feb 2022 00:28:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A12494018B;
-	Wed, 23 Feb 2022 00:28:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D002C600D1;
+	Wed, 23 Feb 2022 00:28:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 145DF1BF9BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 91BA41BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AB1FC40917
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C2AC408D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KFRAR_QsyDs9 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id cXgJ8idTWH5k for <intel-wired-lan@lists.osuosl.org>;
  Wed, 23 Feb 2022 00:27:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D4E81408F4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D750340988
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 00:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645576045; x=1677112045;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=EDSVHXya5Yf7OhQoIB75ZWi3w1b+rY9qG8u9uO+sWjY=;
- b=Zje7Fm7oxq9jdMU3ZWiGL7etoDPheTseNOAxVowfZfk5l337iYv5jAOD
- 9QFgS8EvnX5yKWofa7ik4/ZSGBKnRU7/xAfCB7/iYaHgGpOQrqtfyW/Js
- Qpc+t8Af5bSAZzuCet3+lAHoIf+TEcje7KD3D10NPQJlYk+pRL1a3RpzE
- uZIZvb3gQCnvdQGLMXp8bhEsHesbamxGxwnEpB0KtcaBO+nf63A6vS7Rp
- wP8we42k1EPLYItw5Q/ZMH5PQTghQmBpFkWthg8ECQfEYLAGntHeyszd9
- 07NPcilaunGEnkq8m/Pa6/wrzZw6Ddw98pXpF/P/LcGQul6GhuOqbSesA Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="239235838"
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="239235838"
+ bh=oxRqMCmDvNmPvosG0BqDY/NIFpAnpFKB92tOcBd+qd0=;
+ b=WRs7pUELgA4AgJ8wTLyEQxzz56/3L9qAOy2exX2UU7hdo2DrYPlr7A8O
+ 6ebCttBqC6YWS3XH7B4S4BfUrgD5oGvWEMxeJ7V/r37kKVtOq4CJyqkep
+ txXsT0UCf7keGCxDPbVk9l/i3qr7FPa+a1xqcHT7BdAilTB1vNIZZmNER
+ wLBf1fIhnW6py2IKm72m2fOt1fmEXuCwmaHSYUovaYq8yagNusw7e3GNF
+ h5vhgBP45FpMVFdyc7QM3aDlkP85mWB0irFe1EiuidN58ujtdzsQQBAkZ
+ 1cK45kVqWDFQNx2RJitz5PA2PFLH6eZLVoIqndx7YX/0FlMrbHHUcfO8L Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="239235839"
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="239235839"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2022 16:27:19 -0800
-X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728048"
+ 22 Feb 2022 16:27:20 -0800
+X-IronPort-AV: E=Sophos;i="5.88,389,1635231600"; d="scan'208";a="505728051"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.10])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Feb 2022 16:27:19 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 22 Feb 2022 16:27:05 -0800
-Message-Id: <20220223002712.2771809-19-jacob.e.keller@intel.com>
+Date: Tue, 22 Feb 2022 16:27:06 -0800
+Message-Id: <20220223002712.2771809-20-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.35.1.129.gb80121027d12
 In-Reply-To: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 References: <20220223002712.2771809-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next PATCH 18/25] ice: make
- ice_reset_all_vfs void
+Subject: [Intel-wired-lan] [net-next PATCH 19/25] ice: convert ice_reset_vf
+ to standard error codes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,82 +81,104 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_reset_all_vfs function returns true if any VFs were reset, and
-false otherwise. However, no callers check the return value.
+The ice_reset_vf function returns a boolean value indicating whether or
+not the VF reset. This is a bit confusing since it means that callers
+need to know how to interpret the return value when needing to indicate
+an error.
 
-Drop this return value and make the function void since the callers do
-not care about this.
+Refactor the function and call sites to report a regular error code. We
+still report success (i.e. return 0) in cases where the reset is in
+progress or is disabled.
+
+Existing callers don't care because they do not check the return value.
+We keep the error code anyways instead of a void return because we
+expect future code which may care about or at least report the error
+value.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_vf_lib.c | 8 +++-----
- drivers/net/ethernet/intel/ice/ice_vf_lib.h | 5 ++---
- 2 files changed, 5 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c | 15 ++++++++-------
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h |  6 +++---
+ 2 files changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index 996d84a3303d..6f9e8383c69b 100644
+index 6f9e8383c69b..d37232197bde 100644
 --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -364,7 +364,7 @@ ice_vf_clear_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m)
+@@ -446,10 +446,11 @@ void ice_reset_all_vfs(struct ice_pf *pf)
+  * @vf: pointer to the VF structure
+  * @is_vflr: true if VFLR was issued, false if not
   *
-  * Returns true if any VFs were reset, and false otherwise.
+- * Returns true if the VF is currently in reset, resets successfully, or resets
+- * are disabled and false otherwise.
++ * Returns 0 if the VF is currently in reset, if the resets are disabled, or
++ * if the VF resets successfully. Returns an error code if the VF fails to
++ * rebuild.
   */
--bool ice_reset_all_vfs(struct ice_pf *pf)
-+void ice_reset_all_vfs(struct ice_pf *pf)
+-bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
++int ice_reset_vf(struct ice_vf *vf, bool is_vflr)
  {
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw *hw = &pf->hw;
-@@ -373,7 +373,7 @@ bool ice_reset_all_vfs(struct ice_pf *pf)
- 
- 	/* If we don't have any VFs, then there is nothing to reset */
- 	if (!ice_has_vfs(pf))
--		return false;
-+		return;
- 
- 	mutex_lock(&pf->vfs.table_lock);
- 
-@@ -387,7 +387,7 @@ bool ice_reset_all_vfs(struct ice_pf *pf)
- 	/* If VFs have been disabled, there is no need to reset */
- 	if (test_and_set_bit(ICE_VF_DIS, pf->state)) {
- 		mutex_unlock(&pf->vfs.table_lock);
--		return false;
-+		return;
+ 	struct ice_pf *pf = vf->pf;
+ 	struct ice_vsi *vsi;
+@@ -466,13 +467,13 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 	if (test_bit(ICE_VF_RESETS_DISABLED, pf->state)) {
+ 		dev_dbg(dev, "Trying to reset VF %d, but all VF resets are disabled\n",
+ 			vf->vf_id);
+-		return true;
++		return 0;
  	}
  
- 	/* Begin reset on all VFs at once */
-@@ -439,8 +439,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf)
- 	clear_bit(ICE_VF_DIS, pf->state);
+ 	if (ice_is_vf_disabled(vf)) {
+ 		dev_dbg(dev, "VF is already disabled, there is no need for resetting it, telling VM, all is fine %d\n",
+ 			vf->vf_id);
+-		return true;
++		return 0;
+ 	}
  
- 	mutex_unlock(&pf->vfs.table_lock);
--
+ 	/* Set VF disable bit state here, before triggering reset */
+@@ -532,7 +533,7 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 	if (vf->vf_ops->vsi_rebuild(vf)) {
+ 		dev_err(dev, "Failed to release and setup the VF%u's VSI\n",
+ 			vf->vf_id);
+-		return false;
++		return -EFAULT;
+ 	}
+ 
+ 	vf->vf_ops->post_vsi_rebuild(vf);
+@@ -546,7 +547,7 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 		dev_dbg(dev, "failed to clear malicious VF state for VF %u\n",
+ 			vf->vf_id);
+ 
 -	return true;
++	return 0;
  }
  
  /**
 diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index 3ed8a56189d3..fa40d607d1c7 100644
+index fa40d607d1c7..b569186b248b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
 +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -213,7 +213,7 @@ ice_vf_set_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m);
+@@ -212,7 +212,7 @@ int
+ ice_vf_set_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m);
  int
  ice_vf_clear_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m);
- bool ice_reset_vf(struct ice_vf *vf, bool is_vflr);
--bool ice_reset_all_vfs(struct ice_pf *pf);
-+void ice_reset_all_vfs(struct ice_pf *pf);
+-bool ice_reset_vf(struct ice_vf *vf, bool is_vflr);
++int ice_reset_vf(struct ice_vf *vf, bool is_vflr);
+ void ice_reset_all_vfs(struct ice_pf *pf);
  #else /* CONFIG_PCI_IOV */
  static inline struct ice_vf *ice_get_vf_by_id(struct ice_pf *pf, u16 vf_id)
- {
-@@ -275,9 +275,8 @@ static inline bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 	return true;
+@@ -270,9 +270,9 @@ ice_vf_clear_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m)
+ 	return -EOPNOTSUPP;
  }
  
--static inline bool ice_reset_all_vfs(struct ice_pf *pf)
-+static inline void ice_reset_all_vfs(struct ice_pf *pf)
+-static inline bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
++static inline int ice_reset_vf(struct ice_vf *vf, bool is_vflr)
  {
 -	return true;
++	return 0;
  }
- #endif /* !CONFIG_PCI_IOV */
  
+ static inline void ice_reset_all_vfs(struct ice_pf *pf)
 -- 
 2.35.1.129.gb80121027d12
 
