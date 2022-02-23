@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2D2E4C12F1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 13:40:54 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BA3E4C1377
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 13:59:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 52C85403A2;
-	Wed, 23 Feb 2022 12:40:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2E0BA81C2F;
+	Wed, 23 Feb 2022 12:59:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hx3phaskot4T; Wed, 23 Feb 2022 12:40:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XT7xr-Urepho; Wed, 23 Feb 2022 12:59:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 080CC4012F;
-	Wed, 23 Feb 2022 12:40:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1FD52817A9;
+	Wed, 23 Feb 2022 12:59:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EF6041BF83C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:40:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D693C1BF20F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:59:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DCAE460B9A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:40:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C371F817A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:59:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IEhUV1-ekzaB for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Feb 2022 12:40:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I9CuC468W7ar for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Feb 2022 12:59:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 41ABF60B34
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:40:46 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DD73D81404
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 12:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1645620046; x=1677156046;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1645621172; x=1677157172;
+ h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=th0r7vOOrg9MnaB3yIit8Mx24ekjPwiBvLhw2bSMIF8=;
- b=S7YcSbBwCqTWZSLXd9AKfO9/WcthovdHFFnMOWKTniR8Fqlk/LSHVLfh
- PJMGwicy1SWyf3BNp8PIvnWdGhoOJ2Q6fgW2BGcqdHt3jyuMQfe9dN6x7
- 1Fniw8nP5HwM2V5ujWBWnuB0rmxLtFO66Ns9LJV3xvPVety4o0iFRryyA
- 9LsSdtYeyA2mV+WaZBR2OZgzTzAQCFEzRHYgB3Kxb7M7YuoRACsx6nmwe
- kXjfui+V9B+Mxn0QOAVxLozA6soL3/kZz3ouNvLlZesj+Sql2M+IYcGs4
- fqQchyv8WO3kx3heAvWh6D3gF7zupl8ryiDxrRqDeaDfiYIaHV3aEqzUB Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="239342988"
-X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="239342988"
+ bh=c16ajsE0Aa8qn1MpU/yXXWw/65+N3Z03TWcQpmybNtA=;
+ b=H0u/cNzGBOJgrApZqq1JochtnBh2OAeqDq4gbooi5hYNMEW51OrdwLsX
+ KsuroB/bk01hY19ohTkQ4KA3NGE6PsSynlMaulWL0COQy2ijt/wuWylZs
+ WF4Tewi4XhiphhEf15OyhjtnGlkRXsX5UUfUh/HlLWJVkfm4p1m4Fjei/
+ Dn8yV49J7K5ogj3aPXnupRCRfLKaKTCvMsrx3O+8dABMhX14gLayjQrvK
+ z/wcQyPb2b9EufIrXvUMpSUKHsv2PQAFfAKIV1YxbT8tCZp12t7K6jq07
+ VJktMYLMjZMw/ZTmd6kgSgNZYSDVEGNTEi91n4MxRg8Zjj5kr1QcPVz54 A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="276574112"
+X-IronPort-AV: E=Sophos;i="5.88,391,1635231600"; d="scan'208";a="276574112"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2022 04:40:45 -0800
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2022 04:59:32 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; d="scan'208";a="607039497"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by fmsmga004.fm.intel.com with ESMTP; 23 Feb 2022 04:40:43 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 23 Feb 2022 13:38:55 +0100
-Message-Id: <20220223123855.30862-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.88,391,1635231600"; d="scan'208";a="607044178"
+Received: from lkp-server01.sh.intel.com (HELO 788b1cd46f0d) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 23 Feb 2022 04:59:31 -0800
+Received: from kbuild by 788b1cd46f0d with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nMrEw-0001S5-Jo; Wed, 23 Feb 2022 12:59:30 +0000
+Date: Wed, 23 Feb 2022 20:58:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62162f7e.5p1ZEuz5pyw87LNU%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1 8/8] iavf: Fix __IAVF_RESETTING
- state usage
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 71282c6324f467ae8c318d1f790a1f85e011a038
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,79 +75,163 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: SlawomirX Laba <slawomirx.laba@intel.com>,
- Phani Burra <phani.r.burra@intel.com>,
- Mateusz Palczewski <mateusz.palczewski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: SlawomirX Laba <slawomirx.laba@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 71282c6324f467ae8c318d1f790a1f85e011a038  Revert "i40e: Fix reset bw limit when DCB enabled with 1 TC"
 
-The setup of __IAVF_RESETTING state in watchdog task had no
-effect and could lead to slow resets in the driver as
-the task for __IAVF_RESETTING state only requeues watchdog.
-Till now the __IAVF_RESETTING was interpreted by reset task
-as running state which could lead to errors with allocating
-and resources disposal.
+elapsed time: 739m
 
-Make watchdog_task queue the reset task when it's necessary.
-Do not update the state to __IAVF_RESETTING so the reset task
-knows exactly what is the current state of the adapter.
+configs tested: 131
+configs skipped: 4
 
-Fixes: 898ef1cb1cb2 ("iavf: Combine init and watchdog state machines")
-Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
-Signed-off-by: Phani Burra <phani.r.burra@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                          randconfig-c001
+i386                 randconfig-c001-20220221
+sh                 kfr2r09-romimage_defconfig
+powerpc                     asp8347_defconfig
+powerpc                     stx_gp3_defconfig
+powerpc                         wii_defconfig
+powerpc                      ep88xc_defconfig
+m68k                            q40_defconfig
+powerpc                     sequoia_defconfig
+powerpc                         ps3_defconfig
+m68k                        m5307c3_defconfig
+mips                         db1xxx_defconfig
+sparc                               defconfig
+arm                          pxa910_defconfig
+arm                          exynos_defconfig
+arm                             ezx_defconfig
+powerpc                     redwood_defconfig
+powerpc                      makalu_defconfig
+arm                        shmobile_defconfig
+x86_64                           alldefconfig
+arm                  randconfig-c002-20220221
+arm                  randconfig-c002-20220222
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                          allyesconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                 randconfig-a002-20220221
+i386                 randconfig-a001-20220221
+i386                 randconfig-a005-20220221
+i386                 randconfig-a003-20220221
+i386                 randconfig-a006-20220221
+i386                 randconfig-a004-20220221
+x86_64               randconfig-a003-20220221
+x86_64               randconfig-a002-20220221
+x86_64               randconfig-a005-20220221
+x86_64               randconfig-a006-20220221
+x86_64               randconfig-a001-20220221
+x86_64               randconfig-a004-20220221
+arc                  randconfig-r043-20220221
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                                  kexec
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+
+clang tested configs:
+powerpc              randconfig-c003-20220221
+x86_64               randconfig-c007-20220221
+arm                  randconfig-c002-20220221
+mips                 randconfig-c004-20220221
+i386                 randconfig-c001-20220221
+riscv                randconfig-c006-20220221
+mips                malta_qemu_32r6_defconfig
+arm                           omap1_defconfig
+arm                      pxa255-idp_defconfig
+arm                     am200epdkit_defconfig
+arm                          pxa168_defconfig
+powerpc                          g5_defconfig
+powerpc                      obs600_defconfig
+arm                          imote2_defconfig
+mips                       rbtx49xx_defconfig
+arm                        multi_v5_defconfig
+powerpc               mpc834x_itxgp_defconfig
+arm                            dove_defconfig
+arm64                            allyesconfig
+powerpc                     tqm8540_defconfig
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+x86_64               randconfig-a011-20220221
+x86_64               randconfig-a015-20220221
+x86_64               randconfig-a014-20220221
+x86_64               randconfig-a016-20220221
+x86_64               randconfig-a013-20220221
+x86_64               randconfig-a012-20220221
+i386                 randconfig-a016-20220221
+i386                 randconfig-a012-20220221
+i386                 randconfig-a015-20220221
+i386                 randconfig-a011-20220221
+i386                 randconfig-a014-20220221
+i386                 randconfig-a013-20220221
+hexagon              randconfig-r045-20220221
+hexagon              randconfig-r041-20220221
+riscv                randconfig-r042-20220221
+s390                 randconfig-r044-20220221
+
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index be97ac2..dcf2426 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1137,8 +1137,7 @@ void iavf_down(struct iavf_adapter *adapter)
- 		rss->state = IAVF_ADV_RSS_DEL_REQUEST;
- 	spin_unlock_bh(&adapter->adv_rss_lock);
- 
--	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) &&
--	    adapter->state != __IAVF_RESETTING) {
-+	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)) {
- 		/* cancel any current operation */
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- 		/* Schedule operations to close down the HW. Don't wait
-@@ -2385,11 +2384,12 @@ static void iavf_watchdog_task(struct work_struct *work)
- 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
- 		iavf_change_state(adapter, __IAVF_COMM_FAILED);
- 
--	if (adapter->flags & IAVF_FLAG_RESET_NEEDED &&
--	    adapter->state != __IAVF_RESETTING) {
--		iavf_change_state(adapter, __IAVF_RESETTING);
-+	if (adapter->flags & IAVF_FLAG_RESET_NEEDED) {
- 		adapter->aq_required = 0;
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
-+		mutex_unlock(&adapter->crit_lock);
-+		queue_work(iavf_wq, &adapter->reset_task);
-+		return;
- 	}
- 
- 	switch (adapter->state) {
-@@ -2697,8 +2697,7 @@ static void iavf_reset_task(struct work_struct *work)
- 	 * ndo_open() returning, so we can't assume it means all our open
- 	 * tasks have finished, since we're not holding the rtnl_lock here.
- 	 */
--	running = ((adapter->state == __IAVF_RUNNING) ||
--		   (adapter->state == __IAVF_RESETTING));
-+	running = adapter->state == __IAVF_RUNNING;
- 
- 	if (running) {
- 		netdev->flags &= ~IFF_UP;
--- 
-2.27.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
