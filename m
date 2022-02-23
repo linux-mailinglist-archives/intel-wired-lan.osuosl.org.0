@@ -1,75 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06E614C0CEA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 08:01:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 410174C0CEB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Feb 2022 08:01:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8DFE5414C0;
-	Wed, 23 Feb 2022 07:01:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A925D414C7;
+	Wed, 23 Feb 2022 07:01:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xCo5D0OMHfKH; Wed, 23 Feb 2022 07:01:08 +0000 (UTC)
+	with ESMTP id QisUpO_pF9Ko; Wed, 23 Feb 2022 07:01:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8133E4149D;
-	Wed, 23 Feb 2022 07:01:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9984B4136C;
+	Wed, 23 Feb 2022 07:01:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3CDE21BF861
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A0F5F1BF861
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 35435825C6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 952FD4074E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id irJM2Pw3iSpz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Feb 2022 07:01:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YewDUDU53hjn for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Feb 2022 07:01:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DEF1782542
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:01 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 653B44061D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Feb 2022 07:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1645599661; x=1677135661;
- h=message-id:date:mime-version:subject:to:references:from:
- in-reply-to; bh=fP6zYmXejAtzYe9P+aYVJOhprpmDNikHiCxmaPqxP04=;
- b=f3GVmvwxkAl/hrgSDW+2Qmk/9MUPxSv7B4awbyw44pA4Lxerh9ocEcQv
- Em7NKjw31woV6LWPnc6kjdwJQ7ADHjae+tb7UhJ3/7OLCNXxRjwHuJnck
- XuYCBe7IHI2cqCIa1qDU9QCX7429GJGKMG2bOkbbuZIv7lkc+rdyaH/te
- aGFI+sp+8YQbE91Y05PKs3zU8bxgyaAHlFluuodu2khcmfmRv8WFqcARJ
- mu6K8As0HmQ6uDBrqSyMMk7txnljCLE7CXiImyLRqw0DNHd/jNY8EjGIp
- jnqaSO5fUrTnnHCneQlVMubhVST3HnXs+XZErUd9EBf8IoI24JH4gZTHD A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="252089711"
+ t=1645599702; x=1677135702;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to;
+ bh=Misa9WL1t1dxy/g5T/BoQtMKzwFiy3+TIRfc+EZflXI=;
+ b=Ck3aknnA3r1Sx/3jizn+WA4XfL1YKq2Pjt0XwHXcbdqFjBaeE+TcVMUI
+ 0+9sWlW3SQZQqTIcl/KkqXwjVWls6WvcUsLdBWB86aMFCqkpFqMOm10JO
+ NN+z21ahVyYSUStKHEEtD84Ae0cV5ThfjPwmmu0lS0GdHS0eGxGhAccEK
+ NBBuDQi1uYFa17+YZP9cRgzAK1vHDzx/9c9K8a6Cxpt75er18ZJ5du1Oo
+ 67kjO9ASil0Q1HyRFAO8gMpu+1wh6KwFdgNiD+0gLXvBpchaU3zytzQ98
+ sGdn4LuGzkv7I/w3dFOz5j2nfuo4lR8PsSd9wddVnSONAgqfX2vJBio5A Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10266"; a="312614152"
 X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; 
- d="scan'208,217";a="252089711"
+ d="scan'208,217";a="312614152"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2022 23:01:01 -0800
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2022 23:01:41 -0800
 X-IronPort-AV: E=Sophos;i="5.88,390,1635231600"; 
- d="scan'208,217";a="532561574"
+ d="scan'208,217";a="532561775"
 Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.197])
  ([10.13.12.197])
  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2022 23:00:58 -0800
-Message-ID: <a0c2e828-438d-b5a4-5026-c700a7694ba3@linux.intel.com>
-Date: Wed, 23 Feb 2022 09:00:56 +0200
+ 22 Feb 2022 23:01:39 -0800
+Message-ID: <c2fa57e5-7955-6268-9fb7-ea05183f80f1@linux.intel.com>
+Date: Wed, 23 Feb 2022 09:01:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.1
 Content-Language: en-US
-To: Corinna Vinschen <vinschen@redhat.com>, intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Sasha Neftin <sasha.neftin@intel.com>
-References: <20220216133135.356870-1-vinschen@redhat.com>
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20220203122149.3298840-1-sasha.neftin@intel.com>
 From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20220216133135.356870-1-vinschen@redhat.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v2] igc: igc_read_phy_reg_gpy:
- drop premature return
+In-Reply-To: <20220203122149.3298840-1-sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Correct NVM checksum
+ verification flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,40 +81,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6754585187271448059=="
+Cc: Thomas Bogendoerfer <tbogendoerfer@suse.de>
+Content-Type: multipart/mixed; boundary="===============3649542357069528069=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 This is a multi-part message in MIME format.
---===============6754585187271448059==
+--===============3649542357069528069==
 Content-Type: multipart/alternative;
- boundary="------------n0AgSSW5zuXee5K7h0lZl0KM"
+ boundary="------------WafgnU8OgeIR7Gx98ZLy00kq"
 Content-Language: en-US
 
 This is a multi-part message in MIME format.
---------------n0AgSSW5zuXee5K7h0lZl0KM
+--------------WafgnU8OgeIR7Gx98ZLy00kq
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 
-On 2/16/2022 15:31, Corinna Vinschen wrote:
-> igc_read_phy_reg_gpy checks the return value from igc_read_phy_reg_mdic
-> and if it's not 0, returns immediately. By doing this, it leaves the HW
-> semaphore in the acquired state.
+On 2/3/2022 14:21, Sasha Neftin wrote:
+> Update MAC type check e1000_pch_tgp because for e1000_pch_cnp,
+> NVM checksum update is still possible.
+> Emit a more detailed warning message.
 >
-> Drop this premature return statement, the function returns after
-> releasing the semaphore immediately anyway.
->
-> Fixes: 5586838fe9ce ("igc: Add code for PHY support")
-> Signed-off-by: Corinna Vinschen<vinschen@redhat.com>
-> Acked-by: Sasha Neftin<sasha.neftin@intel.com>
+> Bugzilla:https://bugzilla.opensuse.org/show_bug.cgi?id=1191663
+> Fixes: 4051f68318ca ("e1000e: Do not take care about recovery NVM checksum")
+> Reported-by: Thomas Bogendoerfer<tbogendoerfer@suse.de>
+> Signed-off-by: Sasha Neftin<sasha.neftin@intel.com>
 > ---
->
-> v2: Add "Fixes:" tag
->
->   drivers/net/ethernet/intel/igc/igc_phy.c | 2 --
->   1 file changed, 2 deletions(-)
+>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 Tested-by: Naama Meir <naamax.meir@linux.intel.com>
---------------n0AgSSW5zuXee5K7h0lZl0KM
+--------------WafgnU8OgeIR7Gx98ZLy00kq
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
@@ -124,27 +119,21 @@ Content-Transfer-Encoding: 7bit
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   </head>
   <body>
-    <div class="moz-cite-prefix">On 2/16/2022 15:31, Corinna Vinschen
-      wrote:<br>
+    <div class="moz-cite-prefix">On 2/3/2022 14:21, Sasha Neftin wrote:<br>
     </div>
     <blockquote type="cite"
-      cite="mid:20220216133135.356870-1-vinschen@redhat.com">
-      <pre class="moz-quote-pre" wrap="">igc_read_phy_reg_gpy checks the return value from igc_read_phy_reg_mdic
-and if it's not 0, returns immediately. By doing this, it leaves the HW
-semaphore in the acquired state.
+      cite="mid:20220203122149.3298840-1-sasha.neftin@intel.com">
+      <pre class="moz-quote-pre" wrap="">Update MAC type check e1000_pch_tgp because for e1000_pch_cnp,
+NVM checksum update is still possible.
+Emit a more detailed warning message.
 
-Drop this premature return statement, the function returns after
-releasing the semaphore immediately anyway.
-
-Fixes: 5586838fe9ce ("igc: Add code for PHY support")
-Signed-off-by: Corinna Vinschen <a class="moz-txt-link-rfc2396E" href="mailto:vinschen@redhat.com">&lt;vinschen@redhat.com&gt;</a>
-Acked-by: Sasha Neftin <a class="moz-txt-link-rfc2396E" href="mailto:sasha.neftin@intel.com">&lt;sasha.neftin@intel.com&gt;</a>
+Bugzilla: <a class="moz-txt-link-freetext" href="https://bugzilla.opensuse.org/show_bug.cgi?id=1191663">https://bugzilla.opensuse.org/show_bug.cgi?id=1191663</a>
+Fixes: 4051f68318ca ("e1000e: Do not take care about recovery NVM checksum")
+Reported-by: Thomas Bogendoerfer <a class="moz-txt-link-rfc2396E" href="mailto:tbogendoerfer@suse.de">&lt;tbogendoerfer@suse.de&gt;</a>
+Signed-off-by: Sasha Neftin <a class="moz-txt-link-rfc2396E" href="mailto:sasha.neftin@intel.com">&lt;sasha.neftin@intel.com&gt;</a>
 ---
-
-v2: Add "Fixes:" tag
-
- drivers/net/ethernet/intel/igc/igc_phy.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 </pre>
     </blockquote>
     <span style="font-size:11.0pt;font-family:&quot;Segoe
@@ -800,10 +789,10 @@ mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:HE">&gt;</s
   </body>
 </html>
 
---------------n0AgSSW5zuXee5K7h0lZl0KM--
+--------------WafgnU8OgeIR7Gx98ZLy00kq--
 
 
---===============6754585187271448059==
+--===============3649542357069528069==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -814,6 +803,6 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============6754585187271448059==--
+--===============3649542357069528069==--
 
 
