@@ -1,70 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE2D4C2BDC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Feb 2022 13:38:32 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D8FF74C2D43
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Feb 2022 14:37:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 641B680BE8;
-	Thu, 24 Feb 2022 12:38:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5DCE440477;
+	Thu, 24 Feb 2022 13:37:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 09-xtPYY29tr; Thu, 24 Feb 2022 12:38:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dIc208yKW1Az; Thu, 24 Feb 2022 13:37:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 417E482A29;
-	Thu, 24 Feb 2022 12:38:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E52AA4046D;
+	Thu, 24 Feb 2022 13:37:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 17F4B1BF2A5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 12:38:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CF10B1BF5F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 13:37:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1002561035
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 12:38:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BC153610DF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 13:37:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8Y6oasSviZNP for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Feb 2022 12:38:24 +0000 (UTC)
+ with ESMTP id hKc-lviTrpIG for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Feb 2022 13:36:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 14EA96102E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 12:38:23 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B391161085
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Feb 2022 13:36:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1645706304; x=1677242304;
- h=date:from:to:subject:message-id:mime-version:
+ t=1645709818; x=1677245818;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=uOL6ghg0mxirRByLYaPk0j/Us+9WGtsBAe7rrgbjVV8=;
- b=jGVfaMdpomjezjdMQwEXuCjLNPPQdskMNFPJygeiGWc+M19rw7tMqjzg
- 6ro+YJxGh5Bjatr66c43Lsd69AxIQhYqrIR5dKEAg/eD1V4BC6PhKDyRp
- 2RmCUjLm3bn2q175bYWNFvOBK2nGiHAF+s/+wFMQ8X3YBXJG3RIpyfbSh
- 7xawseZoq9kw8L0a3R4hBBUSyk/0E7jm9Ed/7Bc6wguYFYZ0X8hARlQNp
- axYiGplmX/fnOuvBoZdsdI4QaHwEabuZmIynxPcxBXksOw/Ps6UubsEfG
- eisiKlJWxrEQZO2NhJva4pfsTgp6E7JCqkrOkyHMVT46DqLVH+nWrHCtQ A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10267"; a="239619956"
-X-IronPort-AV: E=Sophos;i="5.90,133,1643702400"; d="scan'208";a="239619956"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2022 04:38:23 -0800
+ bh=7qQimGJu3LRwPzQnxTXzyuahWEYB6hsLouJpqZyFmFk=;
+ b=cejdtNO0ykXKxfsiGirGOSSkkZFzb33C7dVU/ct/4lD21zxO2loGeLb6
+ mleoOJ4JXzfXOK1lLzY0cDFWkEvS3EEKFCIIrigmLCqTyuBZJdB4qWt7f
+ HiXi9S66J5xP5eYXCn4mZsNJy66GFEfhdc45LzXPATldD3nMFj5MVYaWO
+ ycSqYIBJhXM0md79Ci1cNkX89bFtJ7yX9ThTOCxqsK69PKxRWM24qTR71
+ LZDy84ofVwn+HmY7vJyqqJ1eM83Pvzg2Jcagv3jAmw5BwjNq1LAApXAQQ
+ f1Pm3YnfzqXiSc6WiTqag8JR3oUb+mFrAqBwtK2dT75YdwaDxrX0QWr4M g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10267"; a="251062378"
+X-IronPort-AV: E=Sophos;i="5.90,134,1643702400"; d="scan'208";a="251062378"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2022 05:36:57 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,133,1643702400"; d="scan'208";a="543691402"
-Received: from lkp-server01.sh.intel.com (HELO 788b1cd46f0d) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 24 Feb 2022 04:38:22 -0800
-Received: from kbuild by 788b1cd46f0d with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nNDO1-000350-CW; Thu, 24 Feb 2022 12:38:21 +0000
-Date: Thu, 24 Feb 2022 20:37:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62177c18.QcA7HuJGSNq1myKc%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.90,134,1643702400"; d="scan'208";a="508872268"
+Received: from amlin-018-218.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.218])
+ by orsmga006.jf.intel.com with ESMTP; 24 Feb 2022 05:36:56 -0800
+From: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 24 Feb 2022 13:36:14 +0000
+Message-Id: <20220224133614.179091-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 859ca48e6262e340023ac5cdbe1e6c8763243bc1
+Subject: [Intel-wired-lan] [PATCH net v1] ice: Fix re-enablement of FW
+ logging after reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,164 +75,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ben Shelton <benjamin.h.shelton@intel.com>, "Jagielski,
+ Jedrzej" <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 859ca48e6262e340023ac5cdbe1e6c8763243bc1  ice: remove PF pointer from ice_check_vf_init
+Device resets such as a CORER disable FW logging, and currently, it is
+not re-enabled by the driver after the reset. This means that FW log
+messages are not captured even though FW logging was enabled at driver
+load time.
 
-elapsed time: 724m
+To fix the issue, call ice_cfg_fw_log() from ice_rebuild() to re-enable
+the FW logging after a reset.
 
-configs tested: 131
-configs skipped: 4
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                          randconfig-c001
-mips                 randconfig-c004-20220223
-sh                             sh03_defconfig
-sh                          sdk7780_defconfig
-arm                            pleb_defconfig
-powerpc                      bamboo_defconfig
-sh                             espt_defconfig
-arc                              alldefconfig
-sh                          rsk7201_defconfig
-sh                          r7780mp_defconfig
-sh                           se7724_defconfig
-mips                           xway_defconfig
-arm                            hisi_defconfig
-sh                        sh7757lcr_defconfig
-sh                          rsk7269_defconfig
-mips                           jazz_defconfig
-sh                        sh7763rdp_defconfig
-sh                            migor_defconfig
-powerpc                      makalu_defconfig
-arm                       aspeed_g5_defconfig
-powerpc                     tqm8555_defconfig
-powerpc                     redwood_defconfig
-powerpc                      pasemi_defconfig
-sh                     magicpanelr2_defconfig
-powerpc                      ep88xc_defconfig
-ia64                             alldefconfig
-arm                           viper_defconfig
-sh                        sh7785lcr_defconfig
-nios2                               defconfig
-csky                                defconfig
-arm                           tegra_defconfig
-arm                  randconfig-c002-20220224
-arm                  randconfig-c002-20220223
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                             allnoconfig
-arc                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-s390                 randconfig-r044-20220224
-arc                  randconfig-r043-20220224
-riscv                randconfig-r042-20220224
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-
-clang tested configs:
-powerpc              randconfig-c003-20220224
-powerpc              randconfig-c003-20220223
-x86_64                        randconfig-c007
-arm                  randconfig-c002-20220224
-arm                  randconfig-c002-20220223
-mips                 randconfig-c004-20220224
-mips                 randconfig-c004-20220223
-i386                          randconfig-c001
-riscv                randconfig-c006-20220223
-riscv                randconfig-c006-20220224
-powerpc                      walnut_defconfig
-arm                           omap1_defconfig
-powerpc                        icon_defconfig
-powerpc                      obs600_defconfig
-powerpc                     ppa8548_defconfig
-arm                          imote2_defconfig
-arm                         bcm2835_defconfig
-arm                           spitz_defconfig
-powerpc                      ppc44x_defconfig
-powerpc                      katmai_defconfig
-powerpc                     mpc5200_defconfig
-powerpc                 mpc8313_rdb_defconfig
-arm                        neponset_defconfig
-arm                          moxart_defconfig
-mips                        maltaup_defconfig
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-hexagon              randconfig-r045-20220223
-hexagon              randconfig-r041-20220223
-riscv                randconfig-r042-20220223
-
+Fixes: 8b97ceb1dc0f ("ice: Enable firmware logging during device initialization.")
+Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
+ drivers/net/ethernet/intel/ice/ice_common.h | 1 +
+ drivers/net/ethernet/intel/ice/ice_main.c   | 5 +++++
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index e2af99a763ed..e0e20ad80199 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -737,7 +737,7 @@ static int ice_get_fw_log_cfg(struct ice_hw *hw)
+  * messages from FW to SW. Interrupts are typically disabled during the device's
+  * initialization phase.
+  */
+-static int ice_cfg_fw_log(struct ice_hw *hw, bool enable)
++int ice_cfg_fw_log(struct ice_hw *hw, bool enable)
+ {
+ 	struct ice_aqc_fw_logging *cmd;
+ 	u16 i, chgs = 0, len = 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 1c57097ddf0b..2d3743a3638e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -174,6 +174,7 @@ ice_ena_vsi_txq(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u16 q_handle,
+ int ice_replay_vsi(struct ice_hw *hw, u16 vsi_handle);
+ void ice_replay_post(struct ice_hw *hw);
+ void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf);
++int ice_cfg_fw_log(struct ice_hw *hw, bool enable);
+ struct ice_q_ctx *
+ ice_get_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 q_handle);
+ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index d72d5d147c75..9c36851d1401 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -6646,6 +6646,11 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 		goto err_init_ctrlq;
+ 	}
+ 
++	/* Re-enable FW logging. Not fatal if this fails. */
++	err = ice_cfg_fw_log(hw, true);
++	if (err)
++		dev_dbg(dev, "Failed to re-enable FW logging\n");
++
+ 	/* if DDP was previously loaded successfully */
+ 	if (!ice_is_safe_mode(pf)) {
+ 		/* reload the SW DB of filter tables */
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
