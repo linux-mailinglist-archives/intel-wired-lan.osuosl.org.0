@@ -1,82 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34C524C7AB8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 21:43:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A10D14C7B98
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 22:14:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 930B6405F5;
-	Mon, 28 Feb 2022 20:43:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 54A7760E6C;
+	Mon, 28 Feb 2022 21:14:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kvaxnlKG4Aki; Mon, 28 Feb 2022 20:43:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1Ph1KvcDJFdc; Mon, 28 Feb 2022 21:14:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 16E9A403A5;
-	Mon, 28 Feb 2022 20:43:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4A41D60E66;
+	Mon, 28 Feb 2022 21:14:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EEDB51BF255
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 20:43:00 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CA0691BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 21:13:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DAE8481D4F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 20:43:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C2C8B405E8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 21:13:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=hansenpartnership.com
- header.b="ujxiIgy0"; dkim=pass (1024-bit key)
- header.d=hansenpartnership.com header.b="ujxiIgy0"
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZvaOyXVuFmvk for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Feb 2022 20:43:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
- [IPv6:2607:fcd0:100:8a00::2])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 44A7181D3A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 20:43:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1646080979;
- bh=syYpb/xpUEM74XaWkn+xK6Z1vfQJZQo/NwVp9EVw5rs=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=ujxiIgy0T+0bXa5l/GTOdjcngh6b85JmDA0WyHri0Bbh2a93S9iJ0SxWyDfl/MyPo
- LfSkwtJLqYe+MRa0ZrGntCtSGoW1hjohSGvPcqjksKBYaUrg8Aw3UwyQBazEu7CyPQ
- sHqUpBIAmzvzOB+1XNyd+aN4TkXOB/egoLerum4w=
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 4748C1280EAE;
- Mon, 28 Feb 2022 15:42:59 -0500 (EST)
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id i-njNjm3Pi4q; Mon, 28 Feb 2022 15:42:59 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=hansenpartnership.com; s=20151216; t=1646080979;
- bh=syYpb/xpUEM74XaWkn+xK6Z1vfQJZQo/NwVp9EVw5rs=;
- h=Message-ID:Subject:From:To:Date:In-Reply-To:References:From;
- b=ujxiIgy0T+0bXa5l/GTOdjcngh6b85JmDA0WyHri0Bbh2a93S9iJ0SxWyDfl/MyPo
- LfSkwtJLqYe+MRa0ZrGntCtSGoW1hjohSGvPcqjksKBYaUrg8Aw3UwyQBazEu7CyPQ
- sHqUpBIAmzvzOB+1XNyd+aN4TkXOB/egoLerum4w=
-Received: from jarvis.int.hansenpartnership.com (unknown
- [IPv6:2601:5c4:4300:c551::527])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id DDA6D12806A6;
- Mon, 28 Feb 2022 15:42:54 -0500 (EST)
-Message-ID: <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Linus
- Torvalds <torvalds@linux-foundation.org>
-Date: Mon, 28 Feb 2022 15:42:53 -0500
-In-Reply-To: <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=sipsolutions.net
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MH-fx8ARUIOu for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Feb 2022 21:13:29 +0000 (UTC)
+X-Greylist: delayed 00:45:09 by SQLgrey-1.8.0
+Received: from sipsolutions.net (s3.sipsolutions.net
+ [IPv6:2a01:4f8:191:4433::2])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CAABD403A5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 21:13:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=uTSgVBk5w89AJnv82I9bqMWvwbVIn7Apzl6uMNeIbWY=; 
+ t=1646082808; x=1647292408; b=PVabXjpHXtawKc/3N6KvH4R5ZfS//ZUVf34KX/SBbyhUadL
+ XGa21U/xrnyXpWb2zD1AMch05GtC6IsG7khQFz0NmlikzxW2itOBSY47E3zQHHjRP5cJ1grrm44LG
+ 89FKdLuHiFsJ5b+vhGHga+i538lExY9BLOU43L7dXpFEOuLDXRo7rh5MUZEm6oP/iogzvll+YgzQ0
+ ng4NMOeAwoDw6UznR8ciXkyffHQdUGodbyKxx2NrXw9WUEfJF56S/gJKb/63BUGgZHy4apWfpGqsq
+ fo3APYqKP6cWCGntSPHnwLHd04nnlaIJu4PoyhKgQ/h84bFstBbAqMU94q13lmyw==;
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.95) (envelope-from <johannes@sipsolutions.net>)
+ id 1nOmc1-00716Q-Dh; Mon, 28 Feb 2022 21:27:17 +0100
+Message-ID: <e3bb7d0632f8ef60f18c19976d57330e1ef00584.camel@sipsolutions.net>
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Matthew Wilcox <willy@infradead.org>, Linus Torvalds
+ <torvalds@linux-foundation.org>
+Date: Mon, 28 Feb 2022 21:27:13 +0100
+In-Reply-To: <Yh0tl3Lni4weIMkl@casper.infradead.org>
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <20220228110822.491923-3-jakobkoschel@gmail.com>
  <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
  <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
-User-Agent: Evolution 3.34.4 
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <Yh0tl3Lni4weIMkl@casper.infradead.org>
+User-Agent: Evolution 3.42.4 (3.42.4-1.fc35) 
 MIME-Version: 1.0
+X-malware-bazaar: not-scanned
+X-Mailman-Approved-At: Mon, 28 Feb 2022 21:14:19 +0000
 Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
  iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -125,58 +113,38 @@ Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
  linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Mike Rapoport <rppt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ Mike Rapoport <rppt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gTW9uLCAyMDIyLTAyLTI4IGF0IDIxOjA3ICswMTAwLCBDaHJpc3RpYW4gS8O2bmlnIHdyb3Rl
-Ogo+IEFtIDI4LjAyLjIyIHVtIDIwOjU2IHNjaHJpZWIgTGludXMgVG9ydmFsZHM6Cj4gPiBPbiBN
-b24sIEZlYiAyOCwgMjAyMiBhdCA0OjE5IEFNIENocmlzdGlhbiBLw7ZuaWcKPiA+IDxjaHJpc3Rp
-YW4ua29lbmlnQGFtZC5jb20+IHdyb3RlOgo+ID4gPiBJIGRvbid0IHRoaW5rIHRoYXQgdXNpbmcg
-dGhlIGV4dHJhIHZhcmlhYmxlIG1ha2VzIHRoZSBjb2RlIGluIGFueQo+ID4gPiB3YXkKPiA+ID4g
-bW9yZSByZWxpYWJsZSBvciBlYXNpZXIgdG8gcmVhZC4KPiA+IFNvIEkgdGhpbmsgdGhlIG5leHQg
-c3RlcCBpcyB0byBkbyB0aGUgYXR0YWNoZWQgcGF0Y2ggKHdoaWNoCj4gPiByZXF1aXJlcwo+ID4g
-dGhhdCAiLXN0ZD1nbnUxMSIgdGhhdCB3YXMgZGlzY3Vzc2VkIGluIHRoZSBvcmlnaW5hbCB0aHJl
-YWQpLgo+ID4gCj4gPiBUaGF0IHdpbGwgZ3VhcmFudGVlIHRoYXQgdGhlICdwb3MnIHBhcmFtZXRl
-ciBvZgo+ID4gbGlzdF9mb3JfZWFjaF9lbnRyeSgpCj4gPiBpcyBvbmx5IHVwZGF0ZWQgSU5TSURF
-IHRoZSBmb3JfZWFjaF9saXN0X2VudHJ5KCkgbG9vcCwgYW5kIGNhbgo+ID4gbmV2ZXIKPiA+IHBv
-aW50IHRvIHRoZSAod3JvbmdseSB0eXBlZCkgaGVhZCBlbnRyeS4KPiA+IAo+ID4gQW5kIEkgd291
-bGQgYWN0dWFsbHkgaG9wZSB0aGF0IGl0IHNob3VsZCBhY3R1YWxseSBjYXVzZSBjb21waWxlcgo+
-ID4gd2FybmluZ3MgYWJvdXQgcG9zc2libHkgdW5pbml0aWFsaXplZCB2YXJpYWJsZXMgaWYgcGVv
-cGxlIHRoZW4gdXNlCj4gPiB0aGUKPiA+ICdwb3MnIHBvaW50ZXIgb3V0c2lkZSB0aGUgbG9vcC4g
-RXhjZXB0Cj4gPiAKPiA+ICAgKGEpIHRoYXQgY29kZSBpbiBzZ3gvZW5jbC5jIGN1cnJlbnRseSBp
-bml0aWFsaXplcyAndG1wJyB0byBOVUxMCj4gPiBmb3IKPiA+IGluZXhwbGljYWJsZSByZWFzb25z
-IC0gcG9zc2libHkgYmVjYXVzZSBpdCBhbHJlYWR5IGV4cGVjdGVkIHRoaXMKPiA+IGJlaGF2aW9y
-Cj4gPiAKPiA+ICAgKGIpIHdoZW4gSSByZW1vdmUgdGhhdCBOVUxMIGluaXRpYWxpemVyLCBJIHN0
-aWxsIGRvbid0IGdldCBhCj4gPiB3YXJuaW5nLAo+ID4gYmVjYXVzZSB3ZSd2ZSBkaXNhYmxlZCAt
-V25vLW1heWJlLXVuaW5pdGlhbGl6ZWQgc2luY2UgaXQgcmVzdWx0cyBpbgo+ID4gc28KPiA+IG1h
-bnkgZmFsc2UgcG9zaXRpdmVzLgo+ID4gCj4gPiBPaCB3ZWxsLgo+ID4gCj4gPiBBbnl3YXksIGdp
-dmUgdGhpcyBwYXRjaCBhIGxvb2ssIGFuZCBhdCBsZWFzdCBpZiBpdCdzIGV4cGFuZGVkIHRvIGRv
-Cj4gPiAiKHBvcykgPSBOVUxMIiBpbiB0aGUgZW50cnkgc3RhdGVtZW50IGZvciB0aGUgZm9yLWxv
-b3AsIGl0IHdpbGwKPiA+IGF2b2lkIHRoZSBIRUFEIHR5cGUgY29uZnVzaW9uIHRoYXQgSmFrb2Ig
-aXMgd29ya2luZyBvbi4gQW5kIEkgdGhpbmsKPiA+IGluIGEgY2xlYW5lciB3YXkgdGhhbiB0aGUg
-aG9ycmlkIGdhbWVzIGhlIHBsYXlzLgo+ID4gCj4gPiAoQnV0IGl0IHdvbid0IGF2b2lkIHBvc3Np
-YmxlIENQVSBzcGVjdWxhdGlvbiBvZiBzdWNoIHR5cGUKPiA+IGNvbmZ1c2lvbi4gVGhhdCwgaW4g
-bXkgb3BpbmlvbiwgaXMgYSBjb21wbGV0ZWx5IGRpZmZlcmVudCBpc3N1ZSkKPiAKPiBZZXMsIGNv
-bXBsZXRlbHkgYWdyZWUuCj4gCj4gPiBJIGRvIHdpc2ggd2UgY291bGQgYWN0dWFsbHkgcG9pc29u
-IHRoZSAncG9zJyB2YWx1ZSBhZnRlciB0aGUgbG9vcAo+ID4gc29tZWhvdyAtIGJ1dCBjbGVhcmx5
-IHRoZSAibWlnaHQgYmUgdW5pbml0aWFsaXplZCIgSSB3YXMgaG9waW5nIGZvcgo+ID4gaXNuJ3Qg
-dGhlIHdheSB0byBkbyBpdC4KPiA+IAo+ID4gQW55Ym9keSBoYXZlIGFueSBpZGVhcz8KPiAKPiBJ
-IHRoaW5rIHdlIHNob3VsZCBsb29rIGF0IHRoZSB1c2UgY2FzZXMgd2h5IGNvZGUgaXMgdG91Y2hp
-bmcgKHBvcykKPiBhZnRlciB0aGUgbG9vcC4KPiAKPiBKdXN0IGZyb20gc2tpbW1pbmcgb3ZlciB0
-aGUgcGF0Y2hlcyB0byBjaGFuZ2UgdGhpcyBhbmQgZXhwZXJpZW5jZQo+IHdpdGggdGhlIGRyaXZl
-cnMvc3Vic3lzdGVtcyBJIGhlbHAgdG8gbWFpbnRhaW4gSSB0aGluayB0aGUgcHJpbWFyeQo+IHBh
-dHRlcm4gbG9va3Mgc29tZXRoaW5nIGxpa2UgdGhpczoKPiAKPiBsaXN0X2Zvcl9lYWNoX2VudHJ5
-KGVudHJ5LCBoZWFkLCBtZW1iZXIpIHsKPiAgICAgIGlmIChzb21lX2NvbmRpdGlvbl9jaGVja2lu
-ZyhlbnRyeSkpCj4gICAgICAgICAgYnJlYWs7Cj4gfQo+IGRvX3NvbWV0aGluZ193aXRoKGVudHJ5
-KTsKCgpBY3R1YWxseSwgd2UgdXN1YWxseSBoYXZlIGEgY2hlY2sgdG8gc2VlIGlmIHRoZSBsb29w
-IGZvdW5kIGFueXRoaW5nLApidXQgaW4gdGhhdCBjYXNlIGl0IHNob3VsZCBzb21ldGhpbmcgbGlr
-ZQoKaWYgKGxpc3RfZW50cnlfaXNfaGVhZChlbnRyeSwgaGVhZCwgbWVtYmVyKSkgewogICAgcmV0
-dXJuIHdpdGggZXJyb3I7Cn0KZG9fc29tZXRoaW5fd2l0aChlbnRyeSk7CgpTdWZmaWNlPyAgVGhl
-IGxpc3RfZW50cnlfaXNfaGVhZCgpIG1hY3JvIGlzIGRlc2lnbmVkIHRvIGNvcGUgd2l0aCB0aGUK
-Ym9ndXMgZW50cnkgb24gaGVhZCBwcm9ibGVtLgoKSmFtZXMKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
-CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+On Mon, 2022-02-28 at 20:16 +0000, Matthew Wilcox wrote:
+> On Mon, Feb 28, 2022 at 12:10:24PM -0800, Linus Torvalds wrote:
+> > We can do
+> > 
+> >         typeof(pos) pos
+> > 
+> > in the 'for ()' loop, and never use __iter at all.
+> > 
+> > That means that inside the for-loop, we use a _different_ 'pos' than outside.
+> 
+> Then we can never use -Wshadow ;-(  I'd love to be able to turn it on;
+> it catches real bugs.
+> 
+
+I was just going to say the same thing...
+
+If we're willing to change the API for the macro, we could do
+
+  list_for_each_entry(type, pos, head, member)
+
+and then actually take advantage of -Wshadow?
+
+johannes
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
