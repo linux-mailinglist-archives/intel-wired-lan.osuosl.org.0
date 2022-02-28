@@ -1,87 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C19E14C6FF2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 15:48:29 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7AB84C6FF3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 15:48:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 49C9882433;
-	Mon, 28 Feb 2022 14:48:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A1CF3405C7;
+	Mon, 28 Feb 2022 14:48:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yDzWbmuXb6_C; Mon, 28 Feb 2022 14:48:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tYCu1zJp4x7f; Mon, 28 Feb 2022 14:48:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 132DE81BFA;
-	Mon, 28 Feb 2022 14:48:27 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0513440407;
+	Mon, 28 Feb 2022 14:48:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D24E11BF2F9
- for <intel-wired-lan@osuosl.org>; Sun, 27 Feb 2022 10:45:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1FB5A1BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:08:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B810060AAE
- for <intel-wired-lan@osuosl.org>; Sun, 27 Feb 2022 10:45:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1996560B10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:08:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mxBlOBg2vHIL for <intel-wired-lan@osuosl.org>;
- Sun, 27 Feb 2022 10:45:57 +0000 (UTC)
+ with ESMTP id ZuoAmpvzCO3J for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Feb 2022 11:08:55 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qk1-x729.google.com (mail-qk1-x729.google.com
- [IPv6:2607:f8b0:4864:20::729])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8E3CA607C9
- for <intel-wired-lan@osuosl.org>; Sun, 27 Feb 2022 10:45:57 +0000 (UTC)
-Received: by mail-qk1-x729.google.com with SMTP id v5so8254205qkj.4
- for <intel-wired-lan@osuosl.org>; Sun, 27 Feb 2022 02:45:57 -0800 (PST)
+Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
+ [IPv6:2a00:1450:4864:20::629])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DECE6600C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:08:54 +0000 (UTC)
+Received: by mail-ej1-x629.google.com with SMTP id p15so23995800ejc.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 03:08:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:subject:message-id:mime-version:content-disposition
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=hOVvEl7E07M5pQvIKJYzb9NrueBhf/G4HDSmEPiOKDE=;
- b=hQTFrykqmvQtPfWLPxOlhg/+9h6q+u/zZKOqGEPqvyCPrkNtQoAOC2ApGISFn+SVII
- h4RyX2rGlpRmXetVEdff3Zw1+qA+O9wEukXG1BqWD1FfyZUrAg3mjECcpL30uSNNZ0ka
- E6qjKaR0kqqPcqcKXuxomHK2kq/A2LyCMnobGyFHIjF8qBFU/b0f4sSlV/RRVw4Cd+Dn
- 7Puvrn93nrb5m1yB+zKwBA9+ykux7tkaoQHwDk0Vx4DjUmxKFSmjJyP5TP554d8maTfu
- tmhk4v1TZLh5zn0heqju4TEKXeDB8iwNrjwDUWI+LTDyqcACkFwpxn9o3n7TiOkcME0a
- SW2A==
+ bh=DGHuYFjchXbmgUIZ1SnPPgINXW2r1tGfV7LKxanZ5rw=;
+ b=mx6+xil8F/OwTucWDkjx4s8oWe9qKYEvq+lRSteVfL7qHoHjMYzOaON1c2kL9OYiTX
+ db1Mykp/ffS9il6Fqi76pAlN/G5rXNdswBXj/5Gig3gkxoatbBHPRDADsVd/P2bKgern
+ FiNaHDXHNfiQkUQdDT0QxGTuel99Vo9xYQqWbNfVZEfqWt3+vAZeTOc1QbByn6ecNGa6
+ S2BlhLxmBqy/aCRkfkMxvBR+4RMiFfh+//eOhtERGL+8TdWCfHba+zdrYCDUyKUpjEKv
+ GoJF4WvvVQmT7fMcDismFLp5shdM79FKyOLpnEpulQji7R6fg8Aw9kXLsIi9eJ28dAK+
+ e6Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:content-transfer-encoding;
- bh=hOVvEl7E07M5pQvIKJYzb9NrueBhf/G4HDSmEPiOKDE=;
- b=aMrUSNIilOWTRk1ibMaobSk4hPvxDO+3jBBKL+MeJcNsDF5a1GYUuzeGlm9QtbGw4g
- 8NqFVUljrlYQTqirxYQvGGSxmKlhuj3OOKQAs9C5MaTSEnY9KFyIsGejwvMMq6sSmETv
- dhrBQIfL3PqdXejq+a/qvvVbFI8/Ogj7/tQ+BmkVckZ/1LIEHQStietRMq6TZTdKMB7y
- F7zDZp/UJh4OtZ9i1MmePfkUGQwtqZxSY/5qzXXMWKSXf6cTe/KO+3oxnBUClFgd2coR
- 6YKLt+MwRcqSU2PzXRunz2Yi9tOTAQ0JrZItptAXjghAJBaih1PFBraVW+MsmnCxva0w
- AT6A==
-X-Gm-Message-State: AOAM531rVL6NWVTChiIvWBHodWIOcmq33OY0pJ5mtvIuXQ6XiNmQmbuk
- vKZWrpvz+scKMzrGURUIvVb1r6vPtMs=
-X-Google-Smtp-Source: ABdhPJzYuA6XIhR9XuGLJf35IxXq/yBNatdSRm3VBkpLLZDZMSGmlv3dLdxIIeFjEAzZdQCuzrvngQ==
-X-Received: by 2002:a05:620a:1913:b0:649:3650:bf65 with SMTP id
- bj19-20020a05620a191300b006493650bf65mr8975343qkb.643.1645958755806; 
- Sun, 27 Feb 2022 02:45:55 -0800 (PST)
-Received: from vps.qemfd.net (vps.qemfd.net. [173.230.130.29])
- by smtp.gmail.com with ESMTPSA id
- f19-20020ac859d3000000b002de4d014733sm4880351qtf.13.2022.02.27.02.45.54
- for <intel-wired-lan@osuosl.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DGHuYFjchXbmgUIZ1SnPPgINXW2r1tGfV7LKxanZ5rw=;
+ b=pXmg/Ki+AdOKH88AJyjI2O6RkGnXlS/N0A9gHeBigLv8EttRk1sTiNB1pvb20i49hO
+ 0DZEFftA8D3UJ1M6LFXuDCNT/QliYYZdCm7J4mtnCm3YcYjKQZQxjF2k1qss4P9YZFZ+
+ 30a5okLnLKsKFv4Nd0HYVK5r5o4d1yUcEWA/0PSvdPBjOULz3C83LawhTexKPZGfn5XH
+ 9XBgTVHrLL3WxK4m099J+Cwmc17W9pMMOvkUTFzSjUhQ0bVcqGR5ikhGXcdt+4ewWC89
+ AMRo0nhoi5a5Mj/UJEkakog1ZWrNSdmSArNLYr+1oZQ67IcauQE2sYvwz8Mf0NGblbuH
+ i27Q==
+X-Gm-Message-State: AOAM533/WuAAB0YsODJW+6H3oooHmpPqNWvhBFj1K3jS7ZnLNr3pDMTJ
+ +UfiCpqlj7kMzXql27fRqm8=
+X-Google-Smtp-Source: ABdhPJzNctGRxtGORumk8xJxhLEhhYPBXw3MCY4PM4mZEwTJgQgzAy87Z2fgE8nw5jOtXDmEFeeNlg==
+X-Received: by 2002:a17:906:32d8:b0:6ce:d850:f79 with SMTP id
+ k24-20020a17090632d800b006ced8500f79mr14260258ejk.414.1646046532887; 
+ Mon, 28 Feb 2022 03:08:52 -0800 (PST)
+Received: from localhost.localdomain (dhcp-077-250-038-153.chello.nl.
+ [77.250.38.153]) by smtp.googlemail.com with ESMTPSA id
+ z22-20020a17090655d600b006d229436793sm4209049ejp.223.2022.02.28.03.08.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Feb 2022 02:45:55 -0800 (PST)
-Received: from schwarzgerat.orthanc (schwarzgerat.danknet [192.168.128.2])
- by vps.qemfd.net (Postfix) with ESMTP id 8B2CD2B4F3
- for <intel-wired-lan@osuosl.org>; Sun, 27 Feb 2022 05:45:54 -0500 (EST)
-Received: by schwarzgerat.orthanc (Postfix, from userid 1000)
- id 786D66013ED; Sun, 27 Feb 2022 05:45:54 -0500 (EST)
-Date: Sun, 27 Feb 2022 05:45:54 -0500
-From: nick black <dankamongmen@gmail.com>
-To: intel-wired-lan@osuosl.org
-Message-ID: <YhtWYuTYkIdBL7+o@schwarzgerat.orthanc>
+ Mon, 28 Feb 2022 03:08:52 -0800 (PST)
+From: Jakob Koschel <jakobkoschel@gmail.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Mon, 28 Feb 2022 12:08:16 +0100
+Message-Id: <20220228110822.491923-1-jakobkoschel@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
 X-Mailman-Approved-At: Mon, 28 Feb 2022 14:48:22 +0000
-Subject: [Intel-wired-lan] igb oops in __igb_open, possibly pm related
+Subject: [Intel-wired-lan] [PATCH 0/6] Remove usage of list iterator past
+ the loop body
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,105 +89,190 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
+ linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>, dri-devel@lists.freedesktop.org,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>, amd-gfx@lists.freedesktop.org,
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
+ drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>,
+ linux-cifs@vger.kernel.org, kvm@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev, "Bos,
+ H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
+ intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>, linux-fsdevel@vger.kernel.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ Jakob Koschel <jakobkoschel@gmail.com>, v9fs-developer@lists.sourceforge.net,
+ linux-tegra@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-sgx@vger.kernel.org,
+ linux-block@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-f2fs-devel@lists.sourceforge.net, tipc-discussion@lists.sourceforge.net,
+ linux-crypto@vger.kernel.org, dmaengine@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, Mike Rapoport <rppt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hey there! I've got a Gigabyte Aorus Master TRX40 motherboard
-with an onboard I211 (rev 03). It's worked beautifully up until
-recently, when I overhauled the containing machine (this
-included installing a monoblock onto the motherboard). I'm now
-getting this oops reliably on startup:
+This is the first patch removing several categories of use cases of
+the list iterator variable past the loop.
+This is follow up to the discussion in:
+https://lore.kernel.org/all/20220217184829.1991035-1-jakobkoschel@gmail.com/
 
-[   78.205687] RTNL: assertion failed at net/core/dev.c (2968)
-[   78.206255] WARNING: CPU: 0 PID: 7 at net/core/dev.c:2968 netif_set_real_num_rx_queues+0x73/0x90
-[   78.206818] Modules linked in: ctr(E) ccm(E) wireguard(E) libchacha20poly1305(E) chacha_x86_64(E) poly1305_x86_64(E) ip6_udp_tunnel(E) udp_tunnel(E) libblake2s(E) blake2s_x86_64(E) libblake2s_generic(E) curve25519_x86_64(E) libcurve25519_generic(E) libchacha(E) nvme_fabrics(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) bnep(E) cpufreq_userspace(E) cpufreq_conservative(E) cpufreq_powersave(E) ip6table_filter(E) xt_state(E) ip6table_nat(E) xt_conntrack(E) ip6_tables(E) iptable_nat(E) xt_MASQUERADE(E) nf_nat(E) nf_conntrack(E) iptable_filter(E) nf_defrag_ipv6(E) xt_multiport(E) nf_defrag_ipv4(E) btusb(E) iwlmvm(E) btrtl(E) btbcm(E) btintel(E) cdc_acm(E) mac80211(E) libarc4(E) bluetooth(E) iwlwifi(E) ecdh_generic(E) joydev(E) cfg80211(E) rfkill(E) intel_rapl_msr(E) edac_mce_amd(E) edac_core(E) intel_rapl_common(E) iosf_mbi(E) wmi_bmof(E) mxm_wmi(E) snd_usb_audio(E) kvm_amd(E) snd_usbmidi_lib(E) snd_hwdep(E) snd_rawmidi(E) snd_seq_device(E) evdev(E) kvm(E) mc(E) irqbypass(E)
-[   78.206838]  crct10dif_pclmul(E) ghash_clmulni_intel(E) aesni_intel(E) libaes(E) crypto_simd(E) zfs(POE) cryptd(E) snd_pcm_oss(E) snd_mixer_oss(E) snd_pcm(E) snd_timer(E) snd(E) zunicode(POE) soundcore(E) pcspkr(E) efi_pstore(E) zzstd(OE) nls_ascii(E) zlua(OE) nls_cp437(E) zavl(POE) vfat(E) tcp_bbr(E) icp(POE) fat(E) sch_fq(E) zcommon(POE) znvpair(POE) pkcs8_key_parser(E) spl(OE) nvidia_drm(POE) ccp(E) sp5100_tco(E) watchdog(E) sg(E) tpm_crb(E) drm_kms_helper(E) cec(E) tpm_tis(E) tpm_tis_core(E) nvidia_modeset(POE) tpm(E) wmi(E) rng_core(E) button(E) acpi_cpufreq(E) nvidia(POE) drivetemp(E) k10temp(E) it87(E) hwmon_vid(E) cpuid(E) ipmi_devintf(E) ipmi_msghandler(E) msr(E) i2c_dev(E) fuse(E) drm(E) configfs(E) ip_tables(E) x_tables(E) autofs4(E) ext4(E) crc32c_generic(E) crc16(E) mbcache(E) jbd2(E) btrfs(E) zstd_compress(E) efivarfs(E) raid10(E) raid456(E) async_raid6_recov(E) async_memcpy(E) async_pq(E) async_xor(E) async_tx(E) xor(E) raid6_pq(E) libcrc32c(E) raid0(E)
-[   78.211382]  hid_logitech_hidpp(E) hid_logitech_dj(E) hid_generic(E) usbhid(E) hid(E) igb(E) crc32_pclmul(E) atlantic(E) xhci_pci(E) i2c_algo_bit(E) crc32c_intel(E) dca(E) macsec(E) xhci_hcd(E) ptp(E) pps_core(E) usbcore(E) usb_common(E) nvme(E) nvme_core(E)
-[   78.217976] CPU: 0 PID: 7 Comm: kworker/0:1 Tainted: P        W  OE     5.16.9nlb2 #1
-[   78.218621] Hardware name: Gigabyte Technology Co., Ltd. TRX40 AORUS MASTER/TRX40 AORUS MASTER, BIOS F6 11/23/2021
-[   78.219281] Workqueue: pm pm_runtime_work
-[   78.219936] RIP: 0010:netif_set_real_num_rx_queues+0x73/0x90
-[   78.220595] Code: eb de 80 3d c7 f6 ec 00 00 75 e1 ba 98 0b 00 00 48 c7 c6 ec 71 57 ae 48 c7 c7 10 e4 4e ae c6 05 ab f6 ec 00 01 e8 1a 47 1b 00 <0f> 0b eb be b8 ea ff ff ff c3 b8 ea ff ff ff eb a5 66 66 2e 0f 1f
-[   78.221941] RSP: 0018:ffffc242000a7cc8 EFLAGS: 00010282
-[   78.222622] RAX: 0000000000000000 RBX: ffff9f8069808000 RCX: 0000000000000027
-[   78.223309] RDX: ffff9fbe4d01c708 RSI: 0000000000000001 RDI: ffff9fbe4d01c700
-[   78.224000] RBP: 0000000000000002 R08: 0000000000000000 R09: ffffc242000a7af0
-[   78.224697] R10: ffffc242000a7ae8 R11: ffff9fbf4f0c09a8 R12: ffff9f8069808000
-[   78.225391] R13: ffff9f8069808e90 R14: ffff9f8069808000 R15: 0000000000000000
-[   78.226090] FS:  0000000000000000(0000) GS:ffff9fbe4d000000(0000) knlGS:0000000000000000
-[   78.226797] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   78.227508] CR2: 00007f248407cb60 CR3: 0000001875e0a000 CR4: 0000000000350ef0
-[   78.228231] Call Trace:
-[   78.228946]  <TASK>
-[   78.229654]  __igb_open+0x439/0x690 [igb]
-[   78.230373]  __igb_resume+0x1d8/0x200 [igb]
-[   78.231092]  pci_pm_runtime_resume+0xaa/0xc0
-[   78.231807]  ? pci_pm_restore+0xe0/0xe0
-[   78.232523]  __rpm_callback+0x46/0x150
-[   78.233236]  rpm_callback+0x35/0x70
-[   78.233946]  ? pci_pm_restore+0xe0/0xe0
-[   78.234658]  rpm_resume+0x4f8/0x790
-[   78.235366]  ? process_one_work+0x1e8/0x390
-[   78.236081]  pm_runtime_work+0x6c/0xa0
-[   78.236787]  process_one_work+0x1e8/0x390
-[   78.237489]  worker_thread+0x53/0x3c0
-[   78.238176]  ? process_one_work+0x390/0x390
-[   78.238847]  kthread+0x143/0x160
-[   78.239500]  ? set_kthread_struct+0x40/0x40
-[   78.240143]  ret_from_fork+0x22/0x30
-[   78.240764]  </TASK>
-[   78.241366] ---[ end trace aef746301a0d8746 ]---
+As concluded in:
+https://lore.kernel.org/all/YhdfEIwI4EdtHdym@kroah.com/
+the correct use should be using a separate variable after the loop
+and using a 'tmp' variable as the list iterator.
+The list iterator will not point to a valid structure after the loop
+if no break/goto was hit. Invalid uses of the list iterator variable
+can be avoided altogether by simply using a separate pointer to
+iterate the list.
 
-this immediately follows another oops, one which doesn't point
-at igb, but i'll include for completeness:
+Linus and Greg agreed on the following pattern:
 
-[   78.167184] ------------[ cut here ]------------
-[   78.167638] RTNL: assertion failed at net/core/dev.c (2920)
-[   78.168094] WARNING: CPU: 0 PID: 7 at net/core/dev.c:2920 netif_set_real_num_tx_queues+0x1a8/0x1c0
-[   78.168547] Modules linked in: ctr(E) ccm(E) wireguard(E) libchacha20poly1305(E) chacha_x86_64(E) poly1305_x86_64(E) ip6_udp_tunnel(E) udp_tunnel(E) libblake2s(E) blake2s_x86_64(E) libblake2s_generic(E) curve25519_x86_64(E) libcurve25519_generic(E) libchacha(E) nvme_fabrics(E) cmac(E) algif_hash(E) algif_skcipher(E) af_alg(E) bnep(E) cpufreq_userspace(E) cpufreq_conservative(E) cpufreq_powersave(E) ip6table_filter(E) xt_state(E) ip6table_nat(E) xt_conntrack(E) ip6_tables(E) iptable_nat(E) xt_MASQUERADE(E) nf_nat(E) nf_conntrack(E) iptable_filter(E) nf_defrag_ipv6(E) xt_multiport(E) nf_defrag_ipv4(E) btusb(E) iwlmvm(E) btrtl(E) btbcm(E) btintel(E) cdc_acm(E) mac80211(E) libarc4(E) bluetooth(E) iwlwifi(E) ecdh_generic(E) joydev(E) cfg80211(E) rfkill(E) intel_rapl_msr(E) edac_mce_amd(E) edac_core(E) intel_rapl_common(E) iosf_mbi(E) wmi_bmof(E) mxm_wmi(E) snd_usb_audio(E) kvm_amd(E) snd_usbmidi_lib(E) snd_hwdep(E) snd_rawmidi(E) snd_seq_device(E) evdev(E) kvm(E) mc(E) irqbypass(E)id45
- 6(E) async_raid6_recov(E) async_memcpy(E) async_pq(E) async_xor(E) async_tx(E) xor(E) raid6_pq(E) libcrc32c(E) raid0(E) fe ff ff 66 0f 1f 44
-[   78.197106]  ? pci_pm_restore+0xe0/0xe0
-[   78.197824]  rpm_resume+0x4f8/0x790
-[   78.198536]  ? process_one_work+0x1e8/0x390
-[   78.199247]  pm_runtime_work+0x6c/0xa0
-[   78.199951]  process_one_work+0x1e8/0x390
-[   78.200655]  worker_thread+0x53/0x3c0
-[   78.201340]  ? process_one_work+0x390/0x390
-[   78.202009]  kthread+0x143/0x160
-[   78.202660]  ? set_kthread_struct+0x40/0x40
-[   78.203297]  ret_from_fork+0x22/0x30
-[   78.203918]  </TASK>
-[   78.204521] ---[ end trace aef746301a0d8745 ]---
+-	struct gr_request *req;
++	struct gr_request *req = NULL;
++	struct gr_request *tmp;
+	struct gr_ep *ep;
+	int ret = 0;
 
-the interface no longer seems to see any incoming packets. has
-anyone ever seen an I211 fail in this fashion (i.e., it can be
-detected just fine, but then can't see frames)? is it likely
-that i damaged it, or that some new hardware is somehow
-conflicting with it, or is there simply a kernel bug i've
-suddenly started tripping?
+-	list_for_each_entry(req, &ep->queue, queue) {
+-		if (&req->req == _req)
++	list_for_each_entry(tmp, &ep->queue, queue) {
++		if (&tmp->req == _req) {
++			req = tmp;
+			break;
++		}
+	}
+-	if (&req->req != _req) {
++	if (!req) {
+		ret = -EINVAL;
+		goto out;
+	}
 
-i'm happy to compile and test any experiments you'd like. please
-cc me, as i am not subscribed to this list.
 
-[schwarzgerat](0) $ ethtool -i igb
-driver: igb
-version: 5.16.9nlb2
-firmware-version:  0. 6-1
-expansion-rom-version:
-bus-info: 0000:44:00.0
-supports-statistics: yes
-supports-test: yes
-supports-eeprom-access: yes
-supports-register-dump: yes
-supports-priv-flags: yes
-[schwarzgerat](0) $
+With gnu89 the list iterator variable cannot yet be declared
+within the for loop of the list iterator.
+Moving to a more modern version of C would allow defining
+the list iterator variable within the macro, limiting
+the scope to the loop.
+This avoids any incorrect usage past the loop altogether.
 
--- 
-nick black -=- https://www.nick-black.com
-to make an apple pie from scratch,
-you need first invent a universe.
+This are around 30% of the cases where the iterator
+variable is used past the loop (identified with a slightly
+modified version of use_after_iter.cocci).
+I've decided to split it into at a few patches separated
+by similar use cases.
+
+Because the output of get_maintainer.pl was too big,
+I included all the found lists and everyone from the
+previous discussion.
+
+Jakob Koschel (6):
+  drivers: usb: remove usage of list iterator past the loop body
+  treewide: remove using list iterator after loop body as a ptr
+  treewide: fix incorrect use to determine if list is empty
+  drivers: remove unnecessary use of list iterator variable
+  treewide: remove dereference of list iterator after loop body
+  treewide: remove check of list iterator against head past the loop
+    body
+
+ arch/arm/mach-mmp/sram.c                      |  9 ++--
+ arch/arm/plat-pxa/ssp.c                       | 28 +++++-------
+ arch/powerpc/sysdev/fsl_gtm.c                 |  4 +-
+ arch/x86/kernel/cpu/sgx/encl.c                |  6 ++-
+ drivers/block/drbd/drbd_req.c                 | 45 ++++++++++++-------
+ drivers/counter/counter-chrdev.c              | 26 ++++++-----
+ drivers/crypto/cavium/nitrox/nitrox_main.c    | 11 +++--
+ drivers/dma/dw-edma/dw-edma-core.c            |  4 +-
+ drivers/dma/ppc4xx/adma.c                     | 11 +++--
+ drivers/firewire/core-transaction.c           | 32 +++++++------
+ drivers/firewire/sbp2.c                       | 14 +++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c        | 19 +++++---
+ drivers/gpu/drm/drm_memory.c                  | 15 ++++---
+ drivers/gpu/drm/drm_mm.c                      | 17 ++++---
+ drivers/gpu/drm/drm_vm.c                      | 13 +++---
+ drivers/gpu/drm/gma500/oaktrail_lvds.c        |  9 ++--
+ drivers/gpu/drm/i915/gem/i915_gem_context.c   | 14 +++---
+ .../gpu/drm/i915/gem/i915_gem_execbuffer.c    | 15 ++++---
+ drivers/gpu/drm/i915/gt/intel_ring.c          | 15 ++++---
+ .../gpu/drm/nouveau/nvkm/subdev/clk/base.c    | 11 +++--
+ .../gpu/drm/nouveau/nvkm/subdev/fb/ramgk104.c | 13 +++---
+ drivers/gpu/drm/scheduler/sched_main.c        | 14 +++---
+ drivers/gpu/drm/ttm/ttm_bo.c                  | 19 ++++----
+ drivers/gpu/drm/vmwgfx/vmwgfx_kms.c           | 22 +++++----
+ drivers/infiniband/hw/hfi1/tid_rdma.c         | 16 ++++---
+ drivers/infiniband/hw/mlx4/main.c             | 12 ++---
+ drivers/media/dvb-frontends/mxl5xx.c          | 11 +++--
+ drivers/media/pci/saa7134/saa7134-alsa.c      |  4 +-
+ drivers/media/v4l2-core/v4l2-ctrls-api.c      | 31 +++++++------
+ drivers/misc/mei/interrupt.c                  | 12 ++---
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  3 +-
+ .../net/ethernet/qlogic/qede/qede_filter.c    | 11 +++--
+ drivers/net/wireless/ath/ath6kl/htc_mbox.c    |  2 +-
+ .../net/wireless/intel/ipw2x00/libipw_rx.c    | 15 ++++---
+ drivers/perf/xgene_pmu.c                      | 13 +++---
+ drivers/power/supply/cpcap-battery.c          | 11 +++--
+ drivers/scsi/lpfc/lpfc_bsg.c                  | 16 ++++---
+ drivers/scsi/scsi_transport_sas.c             | 17 ++++---
+ drivers/scsi/wd719x.c                         | 12 +++--
+ drivers/staging/rtl8192e/rtl819x_TSProc.c     | 17 +++----
+ drivers/staging/rtl8192e/rtllib_rx.c          | 17 ++++---
+ .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 15 ++++---
+ .../rtl8192u/ieee80211/rtl819x_TSProc.c       | 19 ++++----
+ drivers/thermal/thermal_core.c                | 38 ++++++++++------
+ drivers/usb/gadget/composite.c                |  9 ++--
+ drivers/usb/gadget/configfs.c                 | 22 +++++----
+ drivers/usb/gadget/udc/aspeed-vhub/epn.c      | 11 +++--
+ drivers/usb/gadget/udc/at91_udc.c             | 26 ++++++-----
+ drivers/usb/gadget/udc/atmel_usba_udc.c       | 11 +++--
+ drivers/usb/gadget/udc/bdc/bdc_ep.c           | 11 +++--
+ drivers/usb/gadget/udc/fsl_qe_udc.c           | 11 +++--
+ drivers/usb/gadget/udc/fsl_udc_core.c         | 11 +++--
+ drivers/usb/gadget/udc/goku_udc.c             | 11 +++--
+ drivers/usb/gadget/udc/gr_udc.c               | 11 +++--
+ drivers/usb/gadget/udc/lpc32xx_udc.c          | 11 +++--
+ drivers/usb/gadget/udc/max3420_udc.c          | 11 +++--
+ drivers/usb/gadget/udc/mv_u3d_core.c          | 11 +++--
+ drivers/usb/gadget/udc/mv_udc_core.c          | 11 +++--
+ drivers/usb/gadget/udc/net2272.c              | 12 ++---
+ drivers/usb/gadget/udc/net2280.c              | 11 +++--
+ drivers/usb/gadget/udc/omap_udc.c             | 11 +++--
+ drivers/usb/gadget/udc/pxa25x_udc.c           | 11 +++--
+ drivers/usb/gadget/udc/s3c-hsudc.c            | 11 +++--
+ drivers/usb/gadget/udc/tegra-xudc.c           | 11 +++--
+ drivers/usb/gadget/udc/udc-xilinx.c           | 11 +++--
+ drivers/usb/mtu3/mtu3_gadget.c                | 11 +++--
+ drivers/usb/musb/musb_gadget.c                | 11 +++--
+ drivers/vfio/mdev/mdev_core.c                 | 11 +++--
+ fs/cifs/smb2misc.c                            | 10 +++--
+ fs/f2fs/segment.c                             |  9 ++--
+ fs/proc/kcore.c                               | 13 +++---
+ kernel/debug/kdb/kdb_main.c                   | 36 +++++++++------
+ kernel/power/snapshot.c                       | 10 +++--
+ kernel/trace/ftrace.c                         | 22 +++++----
+ kernel/trace/trace_eprobe.c                   | 15 ++++---
+ kernel/trace/trace_events.c                   | 11 ++---
+ net/9p/trans_xen.c                            | 11 +++--
+ net/ipv4/udp_tunnel_nic.c                     | 10 +++--
+ net/tipc/name_table.c                         | 11 +++--
+ net/tipc/socket.c                             | 11 +++--
+ net/xfrm/xfrm_ipcomp.c                        | 11 +++--
+ sound/soc/intel/catpt/pcm.c                   | 13 +++---
+ sound/soc/sprd/sprd-mcdt.c                    | 13 +++---
+ 83 files changed, 708 insertions(+), 465 deletions(-)
+
+
+base-commit: 7ee022567bf9e2e0b3cd92461a2f4986ecc99673
+--
+2.25.1
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
