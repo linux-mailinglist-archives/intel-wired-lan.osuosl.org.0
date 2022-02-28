@@ -1,168 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE7D44C6DDF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 14:20:11 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CF654C6FFF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Feb 2022 15:49:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6CA9D4087A;
-	Mon, 28 Feb 2022 13:20:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F04281D67;
+	Mon, 28 Feb 2022 14:49:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QMd-rsqUAkag; Mon, 28 Feb 2022 13:20:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 015HbTkrk7sF; Mon, 28 Feb 2022 14:49:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 707FB409BE;
-	Mon, 28 Feb 2022 13:20:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8968D81B69;
+	Mon, 28 Feb 2022 14:49:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 955F31BF343
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 13:20:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 441421BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:32:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9095F60ACD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 13:20:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3AA8740195
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:32:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com header.b="EnhnqTm4";
- dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com
- header.b="hs1jQOzg"
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oeattKjwSNCn for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Feb 2022 13:20:03 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Y1eDwBzNaEmk for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Feb 2022 11:32:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
- [205.220.177.32])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C47AF60601
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 13:20:03 +0000 (UTC)
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 21S9tlXj030174; 
- Mon, 28 Feb 2022 13:19:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=EnhnqTm4q0MKHVuEI6U1DJ2boZvsKA3UCLT41/j+tiRk5dEgMD/Llvjm87V3MxNffieY
- HkvOxt9Se4EkbSGMXV+7e5wHnJxgIAIpYl0aEZsWRobms+FxjtA5D7arEreNS/9qVWfB
- ZoSMkRDDkS+e23PQYcFfjtEB9O/M30+k/m0F159hNSjU2qPkI3MRiC6/JtOAMHM83S7c
- Vui73gKfPfrs0qC750qmEkLv/Ex+hHiEq00Dw/1kCEnMFe2ZzQt6FpPr9IE3ESL/XPIW
- b8HvfgXKRZXLQBRQofKp6ARLQ9Dp3Z7NsEM0Guz9TjMYh59qrCcoCSQMPvzu3Dt3/eiV 6Q== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by mx0b-00069f02.pphosted.com with ESMTP id 3efamcc5ge-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Feb 2022 13:19:32 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 21SCtsAS165736;
- Mon, 28 Feb 2022 13:19:30 GMT
-Received: from nam12-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam12lp2174.outbound.protection.outlook.com [104.47.55.174])
- by userp3030.oracle.com with ESMTP id 3ef9avg2xs-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Feb 2022 13:19:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hbuQs9i0n96DInX3/LGiPsRvJK7KMUFc8d42jQoJn4T54r89xaCXYE9Fry5o8kD5TqL9iqKYmkQ9PnUEV2PnL81UCG8M6Wg6/HAoUq9MmLg4RvO4O/UzQIr3dPtYzaitTaPQoCNfxGAqF5oKR8LoiwUajHNBOjXjzHZz5lZH+DCI7WlvAuuTnZhgDdnQR3O6ZR3psHyVAI6ULNYtH2OzfHY/Oe9uxEyCSGJToqCB8KYzrHPtgliPjNFp9zOjLdh0T0OxJIWSJtCSxa0HZG/L37i6mj1KNOfUoCW5kzhFfqpO5ZPWm8R5/YMODcX/dMG+gb6yfsFIz0dOUc0+jtTkEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=b9c5UZVgcH3UVg+V/9l4tpIL1XGV2Af0Jyg2Vi7GsboJNGsOXPqR1ZfJ/bnTaO1xEkPiP21ssQm79t6PuQ0Lw71+CjaoeHREL7YAuvdyNBNBu4s8SibeoxW+2LCDrRzmJhBWlOg6UpdnazDdfNFeKQm/x7ZswT/eGSFn92JGrDKXxyLPWT02iciv1xHIY8TcbvvjgtyRwAMeekj1cLlte5tWV6b0LcQINCcuG3EAGF2jd6VepfXLCWCwAiJ7IYe8s7ZyarMT5nZ2ts03YfKE2nyaQxehCu25wOqnp1nBzg3Fx+ljnV3gwuYW8FJgvXCu+JTFEaCzcqaEkL3psTlkyQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BpCpFRWadI3hcdW4WO/cYAAjPiz3iVG024rjbP9fhjU=;
- b=hs1jQOzgSS9R9uO5OVGNeJK8c//w2LBWBpZDKq/FmikY7dr5bRKkpm6/g7sa5xINqp1HY3K9rRa54D79sxZYgWztI+Zy73apvOpGPDycjZfq6St8wZ/lZsEmUaEVQsP8P8xijwrZ6iI3qD6JgZqCuHALA+bjbC2NC9apxQsevQ8=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by DM6PR10MB2572.namprd10.prod.outlook.com
- (2603:10b6:5:b3::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Mon, 28 Feb
- 2022 13:19:26 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5017.027; Mon, 28 Feb 2022
- 13:19:26 +0000
-Date: Mon, 28 Feb 2022 16:18:44 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jakob Koschel <jakobkoschel@gmail.com>
-Message-ID: <20220228131844.GD2812@kadam>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-2-jakobkoschel@gmail.com>
- <20220228112413.GA2812@kadam>
- <E31E215E-C409-40B8-8452-57E70C91484C@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <E31E215E-C409-40B8-8452-57E70C91484C@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: CTXP275CA0011.ZAFP275.PROD.OUTLOOK.COM (2603:1086:100::23)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e8cfe4de-c3f8-4e34-8a93-08d9fabcf163
-X-MS-TrafficTypeDiagnostic: DM6PR10MB2572:EE_
-X-Microsoft-Antispam-PRVS: <DM6PR10MB25729C5A6710473BFE9938598E019@DM6PR10MB2572.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: l/7Gjr4hc9UR3UILFFCevCzRFccoBYUL3t/RwWvXOz3DK+azLgEu94qZg3pCfJZ7vXJypoTb2iBBqvHUSLWbPny1NUYdjnqJjCmNc+kX1m8iMETw2tX2Duanns/sRhTwjF5+FzSi/7iLgvydxCUTKKH3wzTi4EetCYfX5jEKn+XcWom9zySyjobGg/HwhlkMTUgGXAQKr6nHPuKrUbF4oJRbe4+RZog87FC6sg9QDWU9GpMKOqdWgopZdA0qyRp0D5RmlB1UmFbHRTka8sICTUtKVNSe+BNyhh1KofW3EpNC2W6yXIsKt+XZ2meR43B0gs7OIET3gYTp1t6iCUEwN1Cj4YD1U7/MC5pZcYKzoIPRDSj+FGnKvTOdSquJzDVXWmOaoCvVB6T6xRvW4OqAJ+OPKd0Kuvq8J+RQAWlm3J7N1rZEFIEMF8KL5gnPmg6AmYik3JfxsHEm8arbWnfH6jdXJyo1Wzmhyry8fq1sEhdO+cXvJk1Tx24SVxrksJln5ybIhopXHJ5Io6pPZhM8Ywyr6fhk9BScyyJpQh3B32CVyunfsCaCuIAjrMPj1ZDi2ibb5jxRQNof4TqAB9bzjkhrjXkkh3PD8RXcR3J/fXQBTtc9AEhpuVac9YuWLU99Zy8qo1wJjvLX2Q00L2iVtqeXcF2fu7E12Wi/TLz1WaMAN6T0e1h4pwM0GIRw4aQiQjLbbfkkC+JcFfsTPKZBuQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(83380400001)(38100700002)(38350700002)(86362001)(9686003)(6512007)(316002)(6506007)(52116002)(26005)(186003)(1076003)(6666004)(54906003)(508600001)(6916009)(6486002)(44832011)(8936002)(7416002)(7406005)(7366002)(5660300002)(33716001)(2906002)(4326008)(8676002)(66946007)(66556008)(66476007)(33656002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XA8iGyh6ctCkhMfSlkfeEgOv/3Uj9MpVZhYEQ+jbT3g1fRRLGDSael/lFx1r?=
- =?us-ascii?Q?tBZT/BaSLcLUq30E/u4Q+WjZpdZ1p/Kg+yG+5G/0mWVcacr+63Ukwge9ofl8?=
- =?us-ascii?Q?ecclUH8cz9+0b/oN6g6YSjGHGL5aU0i8lq3aeufaxdWce2sCAxIRBi34ppfu?=
- =?us-ascii?Q?1/aEJEtRM40TsNlF7gWblDnq4kh/3FiW6YT4SY5/RnSTkWo1WUzTvdl5VIsq?=
- =?us-ascii?Q?F2j+ft1yyXj+Pj5t1/6ImQfmK44X2KDv6h40b7u/k1udppLKMl6vbjfKdlmb?=
- =?us-ascii?Q?JmgzcpJWXwtTkWkqOGUnAWgRCryZvpeSx6nl3Aym+TMNI87gDzILT5vsDwZN?=
- =?us-ascii?Q?E+wwcUdPXTnBH23JMSUSVbzrrBR7QgbDoWm7sXGw+LViP2ggH57D+4PDoPD0?=
- =?us-ascii?Q?uu4d4Uiq7BueHnwqcI0FXuWCZSvBDZM56cnUsoobVkDPNirz+gXUQlKgKREi?=
- =?us-ascii?Q?eGzYtiU4RcyMA2enWSu9yNVxgNzAsH4h92A6gRR9Fl59x8mIj2mN3pseONA1?=
- =?us-ascii?Q?jYI07ty3g4jwSMXBeyM8MkCuHWZ8tF12hK3pUy8znhWZOl0GJ4dNHkHqbFsd?=
- =?us-ascii?Q?AWU+Exc6X3ad5eVG1WzuKMozN4TQyWXiTLBM8ElsqiND1frB83zfSLPmb0RV?=
- =?us-ascii?Q?vG6YSf4A6Sd0vn0QTDous9eT4NGvbHVEfJaUs4LHuWAKQOt7q7EYiwyXHsSb?=
- =?us-ascii?Q?ilHtrOp70+Houefscn/JJ8tBzHZmLVOBbnMYM7dg7taj3Mqy9SWbTUEso2Fv?=
- =?us-ascii?Q?HOUfDY3m7Ht8W1ZfN0r/6g2bJ/sUA7YqA2992b7KPx+PS4tXeFc6XFKs7ymN?=
- =?us-ascii?Q?B2fT8khNzLhcgnzNOAYGvBACVztSatg1jhQsbvco+UciFgHITgepubNEiAOk?=
- =?us-ascii?Q?ZLnZZvY4re99d9kEGNel7Ar5kWMSNxLqb93hFr6STooFohKrCJSRSgW5MD3b?=
- =?us-ascii?Q?dtK6P0QgSCILTbWMXfjj8aDpgkWuQdwcOG1+5RYJH8h1bIj1ueCLBdCBMfEA?=
- =?us-ascii?Q?mPmy1jlWtA0ke+63+3gFhOWcPTOKl29UFKWvfTQUPuKt2Sc7dXoEUvupTure?=
- =?us-ascii?Q?tPeMkqqMmdnLFQlz8dRlUlq0Md5Oks6XHhb9ahElB9yd3DKAuDCMcCqMTFAx?=
- =?us-ascii?Q?uKXHGHVUkdYcHFzZvo0kRzvVrTdbNMJLtPfsipJyfvNRRToOybbEJ8FxrAHN?=
- =?us-ascii?Q?Gw3i1CgnlP7TieIgs7vky3J5fRveKQR1jBWJ0gfQk014c8UPFkdLYnR+yQPM?=
- =?us-ascii?Q?vMV8vYh3kq9Z9E/pYYYtqyGBmXheA1RYIFC1ebSVXzqgT2d2JiWu0PvokMXB?=
- =?us-ascii?Q?cQiavwrvLRIvY3JP5q1L3F1bPQlQmPY8aZNnrRWIVtfmKJ0ZGyGeeFxQsAZm?=
- =?us-ascii?Q?ySPFMyhuINNdoyn0nDFVa+aVx5TycWtI/w8n9Duycaf3ZjTFMGIsVxCr00FP?=
- =?us-ascii?Q?oHhNnIA4CVkxhuXL5xpSsKw1+a34EeoF/vIj6dJMAx2jBcGw0z2mXzqsIpzP?=
- =?us-ascii?Q?ldFdm4Fk8wngq5JKeoMnaefDZiWgdpo8cmWg7as6Ad34QhcWpSuJUa8+61/A?=
- =?us-ascii?Q?XnsNquEXMqUFtaKLVfoCRCzi+jaNZ71XgNoOkC6sAi5W1Cb0zmdfVHus5CuM?=
- =?us-ascii?Q?j+k5G8i8m4sNWIFv9VqREoOlB/K3kQMWEyUms1gt1Y8cxSN1KrNdpW/9Yxm4?=
- =?us-ascii?Q?YPXRiA=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8cfe4de-c3f8-4e34-8a93-08d9fabcf163
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2022 13:19:26.6669 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 43pc79CPg8R2zP2VJ4LtI09T6KvZwz3YFpsJUYrvND6zokSjoBlun3Siw+0lPXveHyUaeHTAe4hI63NGUcTb1Pv7nDh4i36bc95x758oFiI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR10MB2572
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10271
- signatures=684655
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- bulkscore=0 malwarescore=0
- mlxscore=0 phishscore=0 suspectscore=0 adultscore=0 mlxlogscore=842
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2201110000
- definitions=main-2202280070
-X-Proofpoint-ORIG-GUID: 5JfUEnwyGXyDQ72snBWDP1R4gU5BgE8f
-X-Proofpoint-GUID: 5JfUEnwyGXyDQ72snBWDP1R4gU5BgE8f
-Subject: Re: [Intel-wired-lan] [PATCH 1/6] drivers: usb: remove usage of
- list iterator past the loop body
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 838DA40012
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 11:32:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1646047921; x=1677583921;
+ h=from:to:cc:subject:date:message-id;
+ bh=kngWTAelMSuSxaqBefohxPQJftxsSVxQwsCeq0qg9Ts=;
+ b=oEbrUS+X9/EsqffCrmB9igNXa61Ym+V3T3+7BgDb9VIAW68M/7xVhrij
+ /I8tOr2/K4puf7tyqEgmSH68pKGI/oFqBl5BpDf0w8r7gL4+lGLWON99D
+ jOqsl3h9DpDoT9EGMMzm04Hx1D4p1CNI5kJdTG9BVIuleUfKKwJ4ZXlM4
+ zLf0M3UAzBNO526ppGiFiVUq3otvDGPs7pIKbu8ew65xLzcxeg68oSy9b
+ 5uq3Qq2eGuQqsfXypodiPBwoi144RPQejepk3onTGOuZ2PzNxgty32qjR
+ KDWHuqnQaorxCosA2LqEELd5A8jvHfiRTYsb5/Whiu1e35wlralvDv9Nd A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10271"; a="313579735"
+X-IronPort-AV: E=Sophos;i="5.90,142,1643702400"; d="scan'208";a="313579735"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2022 03:32:00 -0800
+X-IronPort-AV: E=Sophos;i="5.90,142,1643702400"; d="scan'208";a="550202087"
+Received: from unknown (HELO slawomir.imu.intel.com) ([10.237.94.16])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2022 03:31:59 -0800
+From: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 28 Feb 2022 13:27:50 +0000
+Message-Id: <20220228132752.17522-1-slawomirx.mrozowicz@intel.com>
+X-Mailer: git-send-email 2.17.1
+X-Mailman-Approved-At: Mon, 28 Feb 2022 14:48:22 +0000
+Subject: [Intel-wired-lan] [PATCH net 1/3] ixgbe: add the ability for the PF
+ to disable VF link state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,71 +73,391 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-aspeed@lists.ozlabs.org,
- linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>, dri-devel@lists.freedesktop.org,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, amd-gfx@lists.freedesktop.org,
- samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
- drbd-dev@lists.linbit.com, linux-arch <linux-arch@vger.kernel.org>,
- linux-cifs@vger.kernel.org, kvm@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev, "Bos,
- H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
- intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
- bcm-kernel-feedback-list@broadcom.com, linux-media@vger.kernel.org,
- Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
- linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>, linux-block@vger.kernel.org,
- linux-fsdevel@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- v9fs-developer@lists.sourceforge.net, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-sgx@vger.kernel.org,
- Nathan Chancellor <nathan@kernel.org>,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-f2fs-devel@lists.sourceforge.net, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, netdev@vger.kernel.org,
- dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- Mike Rapoport <rppt@kernel.org>
+Cc: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 28, 2022 at 01:03:36PM +0100, Jakob Koschel wrote:
-> >> @@ -954,7 +957,6 @@ net2272_dequeue(struct usb_ep *_ep, struct usb_request *_req)
-> >> 		dev_dbg(ep->dev->dev, "unlink (%s) pio\n", _ep->name);
-> >> 		net2272_done(ep, req, -ECONNRESET);
-> >> 	}
-> >> -	req = NULL;
-> > 
-> > Another unrelated change.  These are all good changes but send them as
-> > separate patches.
-> 
-> You are referring to the req = NULL, right?
+Add support for ndo_set_vf_link_state the Network Device Option that
+allows the PF driver to control the virtual link state of the VF devices.
+Without this change a VF cannot be disabled/enabled by the administrator.
+In the implementation the auto state takes over PF link state to
+VF link setting, the enable state is not supported, the disable state
+shut off the VF link regardless of the PF setting.
 
-Yes.
+Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   2 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  11 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h  |   2 +
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    | 207 ++++++++++++++----
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.h    |   4 +-
+ 5 files changed, 182 insertions(+), 44 deletions(-)
 
-> 
-> I've changed the use of 'req' in the same function and assumed that I can
-> just remove the unnecessary statement. But if it's better to do separately
-> I'll do that.
-> 
-
-These are all changes which made me pause during my review to figure out
-why they were necessary.  The line between what is a related part of a
-patch is a bit vague and some maintainers will ask you to add or subtract
-from a patch depending on their individual tastes.  I don't really have
-an exact answer, but I felt like this patch needs to be subtracted from.
-
-Especially if there is a whole chunk of the patch which can be removed,
-then to me, that obviously should be in a different patch.
-
-regards,
-dan carpenter
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index 4a69823e6abd..c9bf18086d9c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -177,6 +177,8 @@ struct vf_data_storage {
+ 	u16 pf_vlan; /* When set, guest VLAN config not allowed. */
+ 	u16 pf_qos;
+ 	u16 tx_rate;
++	int link_enable;
++	int link_state;
+ 	u8 spoofchk_enabled;
+ 	bool rss_query_enabled;
+ 	u8 trusted;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 89b467006291..e553b1c18ee7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -5687,6 +5687,9 @@ static void ixgbe_up_complete(struct ixgbe_adapter *adapter)
+ 	ctrl_ext = IXGBE_READ_REG(hw, IXGBE_CTRL_EXT);
+ 	ctrl_ext |= IXGBE_CTRL_EXT_PFRSTD;
+ 	IXGBE_WRITE_REG(hw, IXGBE_CTRL_EXT, ctrl_ext);
++
++	/* update setting rx tx for all active vfs */
++	ixgbe_set_all_vfs(adapter);
+ }
+ 
+ void ixgbe_reinit_locked(struct ixgbe_adapter *adapter)
+@@ -6144,11 +6147,8 @@ void ixgbe_down(struct ixgbe_adapter *adapter)
+ 		for (i = 0 ; i < adapter->num_vfs; i++)
+ 			adapter->vfinfo[i].clear_to_send = false;
+ 
+-		/* ping all the active vfs to let them know we are going down */
+-		ixgbe_ping_all_vfs(adapter);
+-
+-		/* Disable all VFTE/VFRE TX/RX */
+-		ixgbe_disable_tx_rx(adapter);
++		/* update setting rx tx for all active vfs */
++		ixgbe_set_all_vfs(adapter);
+ 	}
+ 
+ 	/* disable transmits in the hardware now that interrupts are off */
+@@ -10284,6 +10284,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
+ 	.ndo_set_vf_vlan	= ixgbe_ndo_set_vf_vlan,
+ 	.ndo_set_vf_rate	= ixgbe_ndo_set_vf_bw,
+ 	.ndo_set_vf_spoofchk	= ixgbe_ndo_set_vf_spoofchk,
++	.ndo_set_vf_link_state	= ixgbe_ndo_set_vf_link_state,
+ 	.ndo_set_vf_rss_query_en = ixgbe_ndo_set_vf_rss_query_en,
+ 	.ndo_set_vf_trust	= ixgbe_ndo_set_vf_trust,
+ 	.ndo_get_vf_config	= ixgbe_ndo_get_vf_config,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+index a148534d7256..8f4316b19278 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+@@ -85,6 +85,8 @@ enum ixgbe_pfvf_api_rev {
+ #define IXGBE_VF_IPSEC_ADD	0x0d
+ #define IXGBE_VF_IPSEC_DEL	0x0e
+ 
++#define IXGBE_VF_GET_LINK_STATE 0x10 /* get vf link state */
++
+ /* length of permanent address message returned from PF */
+ #define IXGBE_VF_PERMADDR_MSG_LEN 4
+ /* word in permanent address message with the current multicast type */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index 214a38de3f41..7f11c0a8e7a9 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -96,6 +96,7 @@ static int __ixgbe_enable_sriov(struct ixgbe_adapter *adapter,
+ 	for (i = 0; i < num_vfs; i++) {
+ 		/* enable spoof checking for all VFs */
+ 		adapter->vfinfo[i].spoofchk_enabled = true;
++		adapter->vfinfo[i].link_enable = true;
+ 
+ 		/* We support VF RSS querying only for 82599 and x540
+ 		 * devices at the moment. These devices share RSS
+@@ -820,6 +821,57 @@ static inline void ixgbe_write_qde(struct ixgbe_adapter *adapter, u32 vf,
+ 	}
+ }
+ 
++/**
++ * ixgbe_set_vf_rx_tx - Set VF rx tx
++ * @adapter: Pointer to adapter struct
++ * @vf: VF identifier
++ *
++ * Set or reset correct transmit and receive for vf
++ **/
++static void ixgbe_set_vf_rx_tx(struct ixgbe_adapter *adapter, int vf)
++{
++	u32 reg_cur_tx, reg_cur_rx, reg_req_tx, reg_req_rx;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 reg_offset, vf_shift;
++
++	vf_shift = vf % 32;
++	reg_offset = vf / 32;
++
++	reg_cur_tx = IXGBE_READ_REG(hw, IXGBE_VFTE(reg_offset));
++	reg_cur_rx = IXGBE_READ_REG(hw, IXGBE_VFRE(reg_offset));
++
++	if (adapter->vfinfo[vf].link_enable) {
++		reg_req_tx = reg_cur_tx | 1 << vf_shift;
++		reg_req_rx = reg_cur_rx | 1 << vf_shift;
++	} else {
++		reg_req_tx = reg_cur_tx & ~(1 << vf_shift);
++		reg_req_rx = reg_cur_rx & ~(1 << vf_shift);
++	}
++
++	/* The 82599 cannot support a mix of jumbo and non-jumbo PF/VFs.
++	 * For more info take a look at ixgbe_set_vf_lpe
++	 */
++	if (adapter->hw.mac.type == ixgbe_mac_82599EB) {
++		struct net_device *dev = adapter->netdev;
++		int pf_max_frame = dev->mtu + ETH_HLEN;
++
++#if IS_ENABLED(CONFIG_FCOE)
++		if (dev->features & NETIF_F_FCOE_MTU)
++			pf_max_frame = max_t(int, pf_max_frame,
++					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
++#endif /* CONFIG_FCOE */
++
++		if (pf_max_frame > ETH_FRAME_LEN)
++			reg_req_rx = reg_cur_rx & ~(1 << vf_shift);
++	}
++
++	/* Enable/Disable particular VF */
++	if (reg_cur_tx != reg_req_tx)
++		IXGBE_WRITE_REG(hw, IXGBE_VFTE(reg_offset), reg_req_tx);
++	if (reg_cur_rx != reg_req_rx)
++		IXGBE_WRITE_REG(hw, IXGBE_VFRE(reg_offset), reg_req_rx);
++}
++
+ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ {
+ 	struct ixgbe_ring_feature *vmdq = &adapter->ring_feature[RING_F_VMDQ];
+@@ -845,11 +897,6 @@ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ 	vf_shift = vf % 32;
+ 	reg_offset = vf / 32;
+ 
+-	/* enable transmit for vf */
+-	reg = IXGBE_READ_REG(hw, IXGBE_VFTE(reg_offset));
+-	reg |= BIT(vf_shift);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(reg_offset), reg);
+-
+ 	/* force drop enable for all VF Rx queues */
+ 	reg = IXGBE_QDE_ENABLE;
+ 	if (adapter->vfinfo[vf].pf_vlan)
+@@ -857,27 +904,7 @@ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ 
+ 	ixgbe_write_qde(adapter, vf, reg);
+ 
+-	/* enable receive for vf */
+-	reg = IXGBE_READ_REG(hw, IXGBE_VFRE(reg_offset));
+-	reg |= BIT(vf_shift);
+-	/*
+-	 * The 82599 cannot support a mix of jumbo and non-jumbo PF/VFs.
+-	 * For more info take a look at ixgbe_set_vf_lpe
+-	 */
+-	if (adapter->hw.mac.type == ixgbe_mac_82599EB) {
+-		struct net_device *dev = adapter->netdev;
+-		int pf_max_frame = dev->mtu + ETH_HLEN;
+-
+-#ifdef CONFIG_FCOE
+-		if (dev->features & NETIF_F_FCOE_MTU)
+-			pf_max_frame = max_t(int, pf_max_frame,
+-					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
+-
+-#endif /* CONFIG_FCOE */
+-		if (pf_max_frame > ETH_FRAME_LEN)
+-			reg &= ~BIT(vf_shift);
+-	}
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(reg_offset), reg);
++	ixgbe_set_vf_rx_tx(adapter, vf);
+ 
+ 	/* enable VF mailbox for further messages */
+ 	adapter->vfinfo[vf].clear_to_send = true;
+@@ -1202,6 +1229,26 @@ static int ixgbe_update_vf_xcast_mode(struct ixgbe_adapter *adapter,
+ 	return 0;
+ }
+ 
++static int ixgbe_get_vf_link_state(struct ixgbe_adapter *adapter,
++				   u32 *msgbuf, u32 vf)
++{
++	u32 *link_state = &msgbuf[1];
++
++	/* verify the PF is supporting the correct API */
++	switch (adapter->vfinfo[vf].vf_api) {
++	case ixgbe_mbox_api_12:
++	case ixgbe_mbox_api_13:
++	case ixgbe_mbox_api_14:
++		break;
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	*link_state = adapter->vfinfo[vf].link_enable;
++
++	return 0;
++}
++
+ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ {
+ 	u32 mbx_size = IXGBE_VFMAILBOX_SIZE;
+@@ -1267,6 +1314,9 @@ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ 	case IXGBE_VF_UPDATE_XCAST_MODE:
+ 		retval = ixgbe_update_vf_xcast_mode(adapter, msgbuf, vf);
+ 		break;
++	case IXGBE_VF_GET_LINK_STATE:
++		retval = ixgbe_get_vf_link_state(adapter, msgbuf, vf);
++		break;
+ 	case IXGBE_VF_IPSEC_ADD:
+ 		retval = ixgbe_ipsec_vf_add_sa(adapter, msgbuf, vf);
+ 		break;
+@@ -1322,18 +1372,6 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
+ 	}
+ }
+ 
+-void ixgbe_disable_tx_rx(struct ixgbe_adapter *adapter)
+-{
+-	struct ixgbe_hw *hw = &adapter->hw;
+-
+-	/* disable transmit and receive for all vfs */
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(0), 0);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(1), 0);
+-
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(0), 0);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(1), 0);
+-}
+-
+ static inline void ixgbe_ping_vf(struct ixgbe_adapter *adapter, int vf)
+ {
+ 	struct ixgbe_hw *hw = &adapter->hw;
+@@ -1359,6 +1397,21 @@ void ixgbe_ping_all_vfs(struct ixgbe_adapter *adapter)
+ 	}
+ }
+ 
++/**
++ * ixgbe_set_all_vfs - update vfs queues
++ * @adapter: Pointer to adapter struct
++ *
++ * Update setting transmit and receive queues for all vfs
++ **/
++void ixgbe_set_all_vfs(struct ixgbe_adapter *adapter)
++{
++	int i;
++
++	for (i = 0 ; i < adapter->num_vfs; i++)
++		ixgbe_set_vf_link_state(adapter, i,
++					adapter->vfinfo[i].link_state);
++}
++
+ int ixgbe_ndo_set_vf_mac(struct net_device *netdev, int vf, u8 *mac)
+ {
+ 	struct ixgbe_adapter *adapter = netdev_priv(netdev);
+@@ -1656,6 +1709,84 @@ int ixgbe_ndo_set_vf_spoofchk(struct net_device *netdev, int vf, bool setting)
+ 	return 0;
+ }
+ 
++/**
++ * ixgbe_set_vf_link_state - Set link state
++ * @adapter: Pointer to adapter struct
++ * @vf: VF identifier
++ * @state: required link state
++ *
++ * Set a link force state on/off a single vf
++ **/
++void ixgbe_set_vf_link_state(struct ixgbe_adapter *adapter, int vf, int state)
++{
++	adapter->vfinfo[vf].link_state = state;
++
++	switch (state) {
++	case IFLA_VF_LINK_STATE_AUTO:
++		if (test_bit(__IXGBE_DOWN, &adapter->state))
++			adapter->vfinfo[vf].link_enable = false;
++		else
++			adapter->vfinfo[vf].link_enable = true;
++		break;
++	case IFLA_VF_LINK_STATE_ENABLE:
++		adapter->vfinfo[vf].link_enable = true;
++		break;
++	case IFLA_VF_LINK_STATE_DISABLE:
++		adapter->vfinfo[vf].link_enable = false;
++		break;
++	}
++
++	ixgbe_set_vf_rx_tx(adapter, vf);
++
++	/* restart the VF */
++	adapter->vfinfo[vf].clear_to_send = false;
++	ixgbe_ping_vf(adapter, vf);
++}
++
++/**
++ * ixgbe_ndo_set_vf_link_state - Set link state
++ * @netdev: network interface device structure
++ * @vf: VF identifier
++ * @state: required link state
++ *
++ * Set the link state of a specified VF, regardless of physical link state
++ **/
++int ixgbe_ndo_set_vf_link_state(struct net_device *netdev, int vf, int state)
++{
++	struct ixgbe_adapter *adapter = netdev_priv(netdev);
++	int ret = 0;
++
++	if (vf < 0 || vf >= adapter->num_vfs) {
++		dev_err(&adapter->pdev->dev,
++			"NDO set VF link - invalid VF identifier %d\n", vf);
++		return -EINVAL;
++	}
++
++	switch (state) {
++	case IFLA_VF_LINK_STATE_ENABLE:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state %d - not supported\n",
++			vf, state);
++		break;
++	case IFLA_VF_LINK_STATE_DISABLE:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state disable\n", vf);
++		ixgbe_set_vf_link_state(adapter, vf, state);
++		break;
++	case IFLA_VF_LINK_STATE_AUTO:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state auto\n", vf);
++		ixgbe_set_vf_link_state(adapter, vf, state);
++		break;
++	default:
++		dev_err(&adapter->pdev->dev,
++			"NDO set VF %d - invalid link state %d\n", vf, state);
++		ret = -EINVAL;
++	}
++
++	return ret;
++}
++
+ int ixgbe_ndo_set_vf_rss_query_en(struct net_device *netdev, int vf,
+ 				  bool setting)
+ {
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
+index 3ec21923c89c..0690ecb8dfa3 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
+@@ -17,8 +17,8 @@ void ixgbe_restore_vf_multicasts(struct ixgbe_adapter *adapter);
+ #endif
+ void ixgbe_msg_task(struct ixgbe_adapter *adapter);
+ int ixgbe_vf_configuration(struct pci_dev *pdev, unsigned int event_mask);
+-void ixgbe_disable_tx_rx(struct ixgbe_adapter *adapter);
+ void ixgbe_ping_all_vfs(struct ixgbe_adapter *adapter);
++void ixgbe_set_all_vfs(struct ixgbe_adapter *adapter);
+ int ixgbe_ndo_set_vf_mac(struct net_device *netdev, int queue, u8 *mac);
+ int ixgbe_ndo_set_vf_vlan(struct net_device *netdev, int queue, u16 vlan,
+ 			   u8 qos, __be16 vlan_proto);
+@@ -31,7 +31,9 @@ int ixgbe_ndo_set_vf_rss_query_en(struct net_device *netdev, int vf,
+ int ixgbe_ndo_set_vf_trust(struct net_device *netdev, int vf, bool setting);
+ int ixgbe_ndo_get_vf_config(struct net_device *netdev,
+ 			    int vf, struct ifla_vf_info *ivi);
++int ixgbe_ndo_set_vf_link_state(struct net_device *netdev, int vf, int state);
+ void ixgbe_check_vf_rate_limit(struct ixgbe_adapter *adapter);
++void ixgbe_set_vf_link_state(struct ixgbe_adapter *adapter, int vf, int state);
+ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter);
+ #ifdef CONFIG_PCI_IOV
+ void ixgbe_enable_sriov(struct ixgbe_adapter *adapter, unsigned int max_vfs);
+-- 
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
