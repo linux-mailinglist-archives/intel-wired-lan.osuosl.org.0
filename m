@@ -1,63 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC0024C7EA9
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 00:45:10 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 769554C7E5F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 00:27:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5FB9F40241;
-	Mon, 28 Feb 2022 23:45:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D7C9481D5A;
+	Mon, 28 Feb 2022 23:27:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mcgsMJYA9jFa; Mon, 28 Feb 2022 23:45:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9kSW8Ta1lykE; Mon, 28 Feb 2022 23:27:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0ACD6400E4;
-	Mon, 28 Feb 2022 23:45:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DAF4481D3A;
+	Mon, 28 Feb 2022 23:27:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 704071BF304
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 22:50:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D352B1BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 23:27:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5A4D34014D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 22:50:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CC8E581D02
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 23:27:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GwfY8t8rk_e5 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Feb 2022 22:50:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TfYB6dQETW5M for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Feb 2022 23:27:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-4316.protonmail.ch (mail-4316.protonmail.ch [185.70.43.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C97EC40127
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 22:50:12 +0000 (UTC)
-Date: Mon, 28 Feb 2022 22:50:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
- s=protonmail3; t=1646088609;
- bh=EcotLxkQaYgY6ajZYic/GfxM/AoG16BTcQ37oNetF9g=;
- h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
- References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID;
- b=cBGwkD0dY6C6UZ8ZjhjHcbwM06BMDKF9S/uxRi+rS2UvdSsFLFOG1HSm6qlJyiCUO
- uC1XgssvVNSFSsxdHJ1aOl5NwIA18vjg17jCvCkv13dOUO+5hOt3OCcfXLX2AxvryX
- lsXEg4vAoBljMT4ewAP2cK1EUDuyezakLW8pnSEAczd9xFJNkZ4Y3ZLxhFb22yslY3
- 3xdTS3cTZ9GeOv+wrf2xTPfY4Kamc1tDDmDy3yCaRm+7b1f1xP0Y+5xR0FjORV+5kM
- cK85iRo45YcxaJSZ64KqeuDyrCIZDsEiDwE78vJR0ycrL/ZWpMTXDPzJnBHTv4Qo8t
- TiTx0AcdTLM/g==
-To: James Bottomley <James.Bottomley@HansenPartnership.com>
-From: =?utf-8?Q?Barnab=C3=A1s_P=C5=91cze?= <pobrn@protonmail.com>
-Message-ID: <Ax76nlte5gO6McgVlkdlM8SHBdfYoG0hb6pFO3MJ6iEg3VCk3kzPWFQ6HS2uVDB8eeyLSr4ku62pXF-FrsROsQvF_VDAW1I5lXTFZTkkMfk=@protonmail.com>
-In-Reply-To: <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AD62881A4E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Feb 2022 23:27:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=kySnWHttTi8Odl1WzgGLjQ1pb3b/AWH5qnYZSwnte50=; b=nt03mWtTaEB9qwsFMTflxzDbvW
+ aPSsVBeLr8i8UFwA1l3fNavsuYE231uUwb0yDTUi43cd3zIwbEaMZqro2u+rXbOt0KZriPQpyGi5J
+ +pW6oqM84XOoVppIQh3QNnM4ANpt9aIP3ShEwC0IGa2NKI/m2xxapQAyHhJG42Bevn7SuMSAnyA27
+ 7+3DFdmFFllbJzk1MHudhAJj7GPo/5RsA7npxrePVRbtGBQKbJeOUSye2chevgvDMrFkod2y0FmL7
+ JW29U+rs2LR5a0WX3s04bvbvXotX/UjRCpaaxaXPYROyoDfpDk5Wuy418QovroPX+qbpGelik5Tc/
+ I0FC9RZw==;
+Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red
+ Hat Linux)) id 1nOpPe-0090gL-Ex; Mon, 28 Feb 2022 23:26:42 +0000
+Date: Mon, 28 Feb 2022 23:26:42 +0000
+From: Matthew Wilcox <willy@infradead.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <Yh1aMm3hFe/j9ZbI@casper.infradead.org>
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <20220228110822.491923-3-jakobkoschel@gmail.com>
  <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
  <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
- <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
- <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
- <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <Yh0tl3Lni4weIMkl@casper.infradead.org>
+ <CAHk-=wgBfJ1-cPA2LTvFyyy8owpfmtCuyiZi4+um8DhFNe+CyA@mail.gmail.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 28 Feb 2022 23:45:04 +0000
+Content-Disposition: inline
+In-Reply-To: <CAHk-=wgBfJ1-cPA2LTvFyyy8owpfmtCuyiZi4+um8DhFNe+CyA@mail.gmail.com>
 Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
  iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -72,7 +73,6 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: =?utf-8?Q?Barnab=C3=A1s_P=C5=91cze?= <pobrn@protonmail.com>
 Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  alsa-devel@alsa-project.org, KVM list <kvm@vger.kernel.org>,
  linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
@@ -91,7 +91,6 @@ Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
  Linux PM <linux-pm@vger.kernel.org>,
  intel-gfx <intel-gfx@lists.freedesktop.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
  Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
  Nathan Chancellor <nathan@kernel.org>, dma <dmaengine@vger.kernel.org>,
  Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
@@ -108,29 +107,59 @@ Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
  linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- =?utf-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
  Mike Rapoport <rppt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGkKCgoyMDIyLiBmZWJydcOhciAyOC4sIGjDqXRmxZEgMjM6Mjgga2VsdGV6w6lzc2VsLCBKYW1l
-cyBCb3R0b21sZXkgw61ydGE6Cj4gWy4uLl0KPiBXZWxsLCB5ZXMsIGJ1dCBteSBvYmplY3Rpb24g
-aXMgbW9yZSB0byB0aGUgc2l6ZSBvZiBjaHVybiB0aGFuIHRoZQo+IGRlc2lyZSB0byBkbyBsb29w
-IGxvY2FsLiAgSSdtIG5vdCBldmVuIHN1cmUgbG9vcCBsb2NhbCBpcyBwb3NzaWJsZSwKPiBiZWNh
-dXNlIGl0J3MgYWx3YXlzIGFubm95ZWQgbWUgdGhhdCBmb3IgKGludCBpID0gMDsgLi4uICBpbiBD
-KysgZGVmaW5lcwo+IGkgaW4gdGhlIG91dGVyIHNjb3BlIG5vdCB0aGUgbG9vcCBzY29wZSwgd2hp
-Y2ggaXMgd2h5IEkgbmV2ZXIgdXNlIGl0LgoKSXQgaXMgYXJndWFibHkgb2ZmLXRvcGljIHRvIHRo
-ZSBkaXNjdXNzaW9uIGF0IGhhbmQsIGJ1dCBJIHRoaW5rIHlvdSBtaWdodCBiZQp0aGlua2luZyBv
-ZiBzb21ldGhpbmcgZWxzZSAob3IgbWF5YmUgaXQgd2FzIHRoZSBjYXNlIGluIGFuIGFuY2llbnQg
-dmVyc2lvbiBvZiBDKyspCmJlY2F1c2UgdGhhdCBkb2VzIG5vdCBhcHBlYXIgdG8gYmUgY2FzZS4g
-SWYgaXQgd2VyZSwKCiAgZm9yIChpbnQgaSAuLi4pIHsgLi4uIH0KICBmb3IgKGludCBpIC4uLikg
-eyAuLi4gfQoKd291bGQgaGF2ZSB0byB0cmlnZ2VyIGEgcmVkZWNsYXJhdGlvbiBlcnJvciwgYnV0
-IHRoYXQgaGFwcGVucyBuZWl0aGVyIGluIEMrKyBub3IgaW4gQy4KVGhlIHZhcmlhYmxlIGlzIGFs
-c28gaW5hY2Nlc3NpYmxlIG91dHNpZGUgdGhlIGxvb3AuCgoKPiBbLi4uXQoKClJlZ2FyZHMsCkJh
-cm5hYsOhcyBQxZFjemUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3Ns
-Lm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJl
-ZC1sYW4K
+On Mon, Feb 28, 2022 at 12:37:15PM -0800, Linus Torvalds wrote:
+> On Mon, Feb 28, 2022 at 12:16 PM Matthew Wilcox <willy@infradead.org> wrote:
+> >
+> > Then we can never use -Wshadow ;-(  I'd love to be able to turn it on;
+> > it catches real bugs.
+> 
+> Oh, we already can never use -Wshadow regardless of things like this.
+> That bridge hasn't just been burned, it never existed in the first
+> place.
+> 
+> The whole '-Wshadow' thing simply cannot work with local variables in
+> macros - something that we've used since day 1.
+> 
+> Try this (as a "p.c" file):
+> 
+>         #define min(a,b) ({                     \
+>                 typeof(a) __a = (a);            \
+>                 typeof(b) __b = (b);            \
+>                 __a < __b ? __a : __b; })
+> 
+>         int min3(int a, int b, int c)
+>         {
+>                 return min(a,min(b,c));
+>         }
+> 
+> and now do "gcc -O2 -S t.c".
+> 
+> Then try it with -Wshadow.
+
+#define ___PASTE(a, b)	a##b
+#define __PASTE(a, b) ___PASTE(a, b)
+#define _min(a, b, u) ({         \
+        typeof(a) __PASTE(__a,u) = (a);            \
+        typeof(b) __PASTE(__b,u) = (b);            \
+        __PASTE(__a,u) < __PASTE(__b,u) ? __PASTE(__a,u) : __PASTE(__b,u); })
+
+#define min(a, b) _min(a, b, __COUNTER__)
+
+int min3(int a, int b, int c)
+{
+        return min(a,min(b,c));
+}
+
+(probably there's a more elegant way to do this)
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
