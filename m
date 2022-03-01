@@ -1,70 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C81A4C8814
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 10:35:20 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 489C44C8856
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 10:44:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C1C6741477;
-	Tue,  1 Mar 2022 09:35:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B46A48254D;
+	Tue,  1 Mar 2022 09:44:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NtfDsPIlbZLl; Tue,  1 Mar 2022 09:35:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JUe94yuNPf-M; Tue,  1 Mar 2022 09:44:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A59144146F;
-	Tue,  1 Mar 2022 09:35:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 456A382444;
+	Tue,  1 Mar 2022 09:44:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C23031BF23C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:35:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EE4E21BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:44:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AFB5860ACD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:35:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E4C02400F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:44:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hg2zQOuxSRmk for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Mar 2022 09:35:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AP3CVvNLBKNs for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Mar 2022 09:44:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4074A60784
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:35:11 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2568A400AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 09:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646127311; x=1677663311;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=UDthlyeILS2vdh5vuqP1cN+B9TAqUXGy8M1rpuyMzNM=;
- b=gWcCPW+vXjv+4lVnK+Vfw7TanFhpHVdvKZqlPtJfbJBf8BEQwHcOTSiM
- uFuorFWM8Q4w5X1wxOrPLnxaTFweSg6bFjYu2uMRpb9XowWVp9RLUiVeq
- uYLl/Tze82Da1Zjk9Bp2zqSh4MTKzF8qpiu2gTXcmsVis9smlQ3+yfZcR
- MJq3PqiU2zLM4suDbkV21+tfK1GLYakh786hswgk32L3R9OCc6Xm3furm
- wwp9lTMhKpFXHUXQtJpDqsB87v6v7PExM+a77PqOKQF+8lSNHdwpOuPTD
- +OmK4sZMMDG7sZXWscd2yzMGP1t/o38ougZf/uU4tFUnOEnKWbCh81zw0 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10272"; a="277762349"
-X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="277762349"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2022 01:35:10 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="575637536"
-Received: from lkp-server01.sh.intel.com (HELO 2146afe809fb) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 01 Mar 2022 01:35:09 -0800
-Received: from kbuild by 2146afe809fb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nOyuS-0000F8-GT; Tue, 01 Mar 2022 09:35:08 +0000
-Date: Tue, 01 Mar 2022 17:34:07 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <621de88f.2WKmSA3piH2prP6W%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- d2858ee4eeb024a0b45c8159b979512e11ccceb6
+ t=1646127859; x=1677663859;
+ h=from:to:cc:subject:date:message-id;
+ bh=kngWTAelMSuSxaqBefohxPQJftxsSVxQwsCeq0qg9Ts=;
+ b=iWKS1e41wTd/L51716eZ6yEYOFoT3Kt33H2PYdEri9Mq8ahYmHQd2u5V
+ cICBqA8w9vLdF7RNykaPAgnH4GOaFXH+43+RZWiHu4tT+cfmWCS1dCOpP
+ +eEMK5VIGNkWPtXZwH9c+o6IGpBATAStrO7DG8SvQCn7GkG4/WEE3WZDj
+ urrhqvBEmkbJOALLJwxqS0nvzv7TOeiRymCFEgtDcl+Vv+T+FkMtepqvk
+ 3Dmi2bA7mPipu92AVP4Ci8F4Uu8b4EG4CRqvvuzLj42vPYuy5c8k4z8Mj
+ xBxBJVbHm/RK4kya8O0v69dflJFTOuaI/QLYOdaMykzmXw1g7fw9RWZUG g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10272"; a="240511246"
+X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="240511246"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Mar 2022 01:44:18 -0800
+X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="685664226"
+Received: from unknown (HELO slawomir.imu.intel.com) ([10.237.94.16])
+ by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Mar 2022 01:44:17 -0800
+From: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  1 Mar 2022 11:40:08 +0000
+Message-Id: <20220301114010.2676-1-slawomirx.mrozowicz@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v2 1/3] ixgbe: add the ability for the
+ PF to disable VF link state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,192 +72,392 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: d2858ee4eeb024a0b45c8159b979512e11ccceb6  ice: add TTY for GNSS module for E810T device
+Add support for ndo_set_vf_link_state the Network Device Option that
+allows the PF driver to control the virtual link state of the VF devices.
+Without this change a VF cannot be disabled/enabled by the administrator.
+In the implementation the auto state takes over PF link state to
+VF link setting, the enable state is not supported, the disable state
+shut off the VF link regardless of the PF setting.
 
-elapsed time: 730m
-
-configs tested: 161
-configs skipped: 4
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                          randconfig-c001
-arc                        vdk_hs38_defconfig
-powerpc                      pasemi_defconfig
-m68k                       m5249evb_defconfig
-powerpc                        cell_defconfig
-s390                                defconfig
-h8300                       h8s-sim_defconfig
-nios2                         10m50_defconfig
-mips                           jazz_defconfig
-powerpc                      bamboo_defconfig
-arc                        nsim_700_defconfig
-arm                        keystone_defconfig
-mips                            gpr_defconfig
-arm                       omap2plus_defconfig
-powerpc                     tqm8555_defconfig
-mips                         mpc30x_defconfig
-arm                        cerfcube_defconfig
-mips                       bmips_be_defconfig
-sh                          landisk_defconfig
-sh                          r7785rp_defconfig
-arc                            hsdk_defconfig
-powerpc                   motionpro_defconfig
-sh                               alldefconfig
-um                           x86_64_defconfig
-s390                       zfcpdump_defconfig
-powerpc                     taishan_defconfig
-openrisc                    or1ksim_defconfig
-arm                         axm55xx_defconfig
-powerpc                     sequoia_defconfig
-m68k                       m5275evb_defconfig
-arm                        mini2440_defconfig
-sparc64                          alldefconfig
-sh                           se7619_defconfig
-powerpc                      ppc6xx_defconfig
-arc                          axs103_defconfig
-openrisc                         alldefconfig
-sh                           se7751_defconfig
-powerpc                 linkstation_defconfig
-arm                          badge4_defconfig
-m68k                         apollo_defconfig
-arm                        spear6xx_defconfig
-m68k                          amiga_defconfig
-arm                           viper_defconfig
-arm                  randconfig-c002-20220228
-arm                  randconfig-c002-20220227
-ia64                                defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64               randconfig-a011-20220228
-x86_64               randconfig-a015-20220228
-x86_64               randconfig-a014-20220228
-x86_64               randconfig-a013-20220228
-x86_64               randconfig-a016-20220228
-x86_64               randconfig-a012-20220228
-i386                 randconfig-a016-20220228
-i386                 randconfig-a012-20220228
-i386                 randconfig-a015-20220228
-i386                 randconfig-a011-20220228
-i386                 randconfig-a013-20220228
-i386                 randconfig-a014-20220228
-s390                 randconfig-r044-20220228
-arc                  randconfig-r043-20220228
-arc                  randconfig-r043-20220227
-riscv                randconfig-r042-20220228
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-x86_64                         rhel-8.3-kunit
-
-clang tested configs:
-powerpc              randconfig-c003-20220227
-x86_64                        randconfig-c007
-arm                  randconfig-c002-20220227
-mips                 randconfig-c004-20220227
-s390                 randconfig-c005-20220227
-i386                          randconfig-c001
-riscv                randconfig-c006-20220227
-powerpc                     powernv_defconfig
-mips                           rs90_defconfig
-arm                         hackkit_defconfig
-arm                      pxa255-idp_defconfig
-powerpc                     tqm8540_defconfig
-mips                           mtx1_defconfig
-powerpc                     pseries_defconfig
-powerpc                     tqm8560_defconfig
-arm                       imx_v4_v5_defconfig
-mips                      bmips_stb_defconfig
-powerpc                      pmac32_defconfig
-arm                    vt8500_v6_v7_defconfig
-powerpc                     mpc5200_defconfig
-arm                           sama7_defconfig
-mips                           ip28_defconfig
-arm                        mvebu_v5_defconfig
-arm                          imote2_defconfig
-x86_64               randconfig-a003-20220228
-x86_64               randconfig-a005-20220228
-x86_64               randconfig-a002-20220228
-x86_64               randconfig-a006-20220228
-x86_64               randconfig-a001-20220228
-x86_64               randconfig-a004-20220228
-i386                 randconfig-a002-20220228
-i386                 randconfig-a001-20220228
-i386                 randconfig-a005-20220228
-i386                 randconfig-a003-20220228
-i386                 randconfig-a006-20220228
-i386                 randconfig-a004-20220228
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-hexagon              randconfig-r045-20220227
-hexagon              randconfig-r041-20220227
-riscv                randconfig-r042-20220227
-
+Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   2 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  11 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h  |   2 +
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    | 207 ++++++++++++++----
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.h    |   4 +-
+ 5 files changed, 182 insertions(+), 44 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index 4a69823e6abd..c9bf18086d9c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -177,6 +177,8 @@ struct vf_data_storage {
+ 	u16 pf_vlan; /* When set, guest VLAN config not allowed. */
+ 	u16 pf_qos;
+ 	u16 tx_rate;
++	int link_enable;
++	int link_state;
+ 	u8 spoofchk_enabled;
+ 	bool rss_query_enabled;
+ 	u8 trusted;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 89b467006291..e553b1c18ee7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -5687,6 +5687,9 @@ static void ixgbe_up_complete(struct ixgbe_adapter *adapter)
+ 	ctrl_ext = IXGBE_READ_REG(hw, IXGBE_CTRL_EXT);
+ 	ctrl_ext |= IXGBE_CTRL_EXT_PFRSTD;
+ 	IXGBE_WRITE_REG(hw, IXGBE_CTRL_EXT, ctrl_ext);
++
++	/* update setting rx tx for all active vfs */
++	ixgbe_set_all_vfs(adapter);
+ }
+ 
+ void ixgbe_reinit_locked(struct ixgbe_adapter *adapter)
+@@ -6144,11 +6147,8 @@ void ixgbe_down(struct ixgbe_adapter *adapter)
+ 		for (i = 0 ; i < adapter->num_vfs; i++)
+ 			adapter->vfinfo[i].clear_to_send = false;
+ 
+-		/* ping all the active vfs to let them know we are going down */
+-		ixgbe_ping_all_vfs(adapter);
+-
+-		/* Disable all VFTE/VFRE TX/RX */
+-		ixgbe_disable_tx_rx(adapter);
++		/* update setting rx tx for all active vfs */
++		ixgbe_set_all_vfs(adapter);
+ 	}
+ 
+ 	/* disable transmits in the hardware now that interrupts are off */
+@@ -10284,6 +10284,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
+ 	.ndo_set_vf_vlan	= ixgbe_ndo_set_vf_vlan,
+ 	.ndo_set_vf_rate	= ixgbe_ndo_set_vf_bw,
+ 	.ndo_set_vf_spoofchk	= ixgbe_ndo_set_vf_spoofchk,
++	.ndo_set_vf_link_state	= ixgbe_ndo_set_vf_link_state,
+ 	.ndo_set_vf_rss_query_en = ixgbe_ndo_set_vf_rss_query_en,
+ 	.ndo_set_vf_trust	= ixgbe_ndo_set_vf_trust,
+ 	.ndo_get_vf_config	= ixgbe_ndo_get_vf_config,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+index a148534d7256..8f4316b19278 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+@@ -85,6 +85,8 @@ enum ixgbe_pfvf_api_rev {
+ #define IXGBE_VF_IPSEC_ADD	0x0d
+ #define IXGBE_VF_IPSEC_DEL	0x0e
+ 
++#define IXGBE_VF_GET_LINK_STATE 0x10 /* get vf link state */
++
+ /* length of permanent address message returned from PF */
+ #define IXGBE_VF_PERMADDR_MSG_LEN 4
+ /* word in permanent address message with the current multicast type */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index 214a38de3f41..7f11c0a8e7a9 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -96,6 +96,7 @@ static int __ixgbe_enable_sriov(struct ixgbe_adapter *adapter,
+ 	for (i = 0; i < num_vfs; i++) {
+ 		/* enable spoof checking for all VFs */
+ 		adapter->vfinfo[i].spoofchk_enabled = true;
++		adapter->vfinfo[i].link_enable = true;
+ 
+ 		/* We support VF RSS querying only for 82599 and x540
+ 		 * devices at the moment. These devices share RSS
+@@ -820,6 +821,57 @@ static inline void ixgbe_write_qde(struct ixgbe_adapter *adapter, u32 vf,
+ 	}
+ }
+ 
++/**
++ * ixgbe_set_vf_rx_tx - Set VF rx tx
++ * @adapter: Pointer to adapter struct
++ * @vf: VF identifier
++ *
++ * Set or reset correct transmit and receive for vf
++ **/
++static void ixgbe_set_vf_rx_tx(struct ixgbe_adapter *adapter, int vf)
++{
++	u32 reg_cur_tx, reg_cur_rx, reg_req_tx, reg_req_rx;
++	struct ixgbe_hw *hw = &adapter->hw;
++	u32 reg_offset, vf_shift;
++
++	vf_shift = vf % 32;
++	reg_offset = vf / 32;
++
++	reg_cur_tx = IXGBE_READ_REG(hw, IXGBE_VFTE(reg_offset));
++	reg_cur_rx = IXGBE_READ_REG(hw, IXGBE_VFRE(reg_offset));
++
++	if (adapter->vfinfo[vf].link_enable) {
++		reg_req_tx = reg_cur_tx | 1 << vf_shift;
++		reg_req_rx = reg_cur_rx | 1 << vf_shift;
++	} else {
++		reg_req_tx = reg_cur_tx & ~(1 << vf_shift);
++		reg_req_rx = reg_cur_rx & ~(1 << vf_shift);
++	}
++
++	/* The 82599 cannot support a mix of jumbo and non-jumbo PF/VFs.
++	 * For more info take a look at ixgbe_set_vf_lpe
++	 */
++	if (adapter->hw.mac.type == ixgbe_mac_82599EB) {
++		struct net_device *dev = adapter->netdev;
++		int pf_max_frame = dev->mtu + ETH_HLEN;
++
++#if IS_ENABLED(CONFIG_FCOE)
++		if (dev->features & NETIF_F_FCOE_MTU)
++			pf_max_frame = max_t(int, pf_max_frame,
++					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
++#endif /* CONFIG_FCOE */
++
++		if (pf_max_frame > ETH_FRAME_LEN)
++			reg_req_rx = reg_cur_rx & ~(1 << vf_shift);
++	}
++
++	/* Enable/Disable particular VF */
++	if (reg_cur_tx != reg_req_tx)
++		IXGBE_WRITE_REG(hw, IXGBE_VFTE(reg_offset), reg_req_tx);
++	if (reg_cur_rx != reg_req_rx)
++		IXGBE_WRITE_REG(hw, IXGBE_VFRE(reg_offset), reg_req_rx);
++}
++
+ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ {
+ 	struct ixgbe_ring_feature *vmdq = &adapter->ring_feature[RING_F_VMDQ];
+@@ -845,11 +897,6 @@ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ 	vf_shift = vf % 32;
+ 	reg_offset = vf / 32;
+ 
+-	/* enable transmit for vf */
+-	reg = IXGBE_READ_REG(hw, IXGBE_VFTE(reg_offset));
+-	reg |= BIT(vf_shift);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(reg_offset), reg);
+-
+ 	/* force drop enable for all VF Rx queues */
+ 	reg = IXGBE_QDE_ENABLE;
+ 	if (adapter->vfinfo[vf].pf_vlan)
+@@ -857,27 +904,7 @@ static int ixgbe_vf_reset_msg(struct ixgbe_adapter *adapter, u32 vf)
+ 
+ 	ixgbe_write_qde(adapter, vf, reg);
+ 
+-	/* enable receive for vf */
+-	reg = IXGBE_READ_REG(hw, IXGBE_VFRE(reg_offset));
+-	reg |= BIT(vf_shift);
+-	/*
+-	 * The 82599 cannot support a mix of jumbo and non-jumbo PF/VFs.
+-	 * For more info take a look at ixgbe_set_vf_lpe
+-	 */
+-	if (adapter->hw.mac.type == ixgbe_mac_82599EB) {
+-		struct net_device *dev = adapter->netdev;
+-		int pf_max_frame = dev->mtu + ETH_HLEN;
+-
+-#ifdef CONFIG_FCOE
+-		if (dev->features & NETIF_F_FCOE_MTU)
+-			pf_max_frame = max_t(int, pf_max_frame,
+-					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
+-
+-#endif /* CONFIG_FCOE */
+-		if (pf_max_frame > ETH_FRAME_LEN)
+-			reg &= ~BIT(vf_shift);
+-	}
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(reg_offset), reg);
++	ixgbe_set_vf_rx_tx(adapter, vf);
+ 
+ 	/* enable VF mailbox for further messages */
+ 	adapter->vfinfo[vf].clear_to_send = true;
+@@ -1202,6 +1229,26 @@ static int ixgbe_update_vf_xcast_mode(struct ixgbe_adapter *adapter,
+ 	return 0;
+ }
+ 
++static int ixgbe_get_vf_link_state(struct ixgbe_adapter *adapter,
++				   u32 *msgbuf, u32 vf)
++{
++	u32 *link_state = &msgbuf[1];
++
++	/* verify the PF is supporting the correct API */
++	switch (adapter->vfinfo[vf].vf_api) {
++	case ixgbe_mbox_api_12:
++	case ixgbe_mbox_api_13:
++	case ixgbe_mbox_api_14:
++		break;
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	*link_state = adapter->vfinfo[vf].link_enable;
++
++	return 0;
++}
++
+ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ {
+ 	u32 mbx_size = IXGBE_VFMAILBOX_SIZE;
+@@ -1267,6 +1314,9 @@ static int ixgbe_rcv_msg_from_vf(struct ixgbe_adapter *adapter, u32 vf)
+ 	case IXGBE_VF_UPDATE_XCAST_MODE:
+ 		retval = ixgbe_update_vf_xcast_mode(adapter, msgbuf, vf);
+ 		break;
++	case IXGBE_VF_GET_LINK_STATE:
++		retval = ixgbe_get_vf_link_state(adapter, msgbuf, vf);
++		break;
+ 	case IXGBE_VF_IPSEC_ADD:
+ 		retval = ixgbe_ipsec_vf_add_sa(adapter, msgbuf, vf);
+ 		break;
+@@ -1322,18 +1372,6 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
+ 	}
+ }
+ 
+-void ixgbe_disable_tx_rx(struct ixgbe_adapter *adapter)
+-{
+-	struct ixgbe_hw *hw = &adapter->hw;
+-
+-	/* disable transmit and receive for all vfs */
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(0), 0);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFTE(1), 0);
+-
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(0), 0);
+-	IXGBE_WRITE_REG(hw, IXGBE_VFRE(1), 0);
+-}
+-
+ static inline void ixgbe_ping_vf(struct ixgbe_adapter *adapter, int vf)
+ {
+ 	struct ixgbe_hw *hw = &adapter->hw;
+@@ -1359,6 +1397,21 @@ void ixgbe_ping_all_vfs(struct ixgbe_adapter *adapter)
+ 	}
+ }
+ 
++/**
++ * ixgbe_set_all_vfs - update vfs queues
++ * @adapter: Pointer to adapter struct
++ *
++ * Update setting transmit and receive queues for all vfs
++ **/
++void ixgbe_set_all_vfs(struct ixgbe_adapter *adapter)
++{
++	int i;
++
++	for (i = 0 ; i < adapter->num_vfs; i++)
++		ixgbe_set_vf_link_state(adapter, i,
++					adapter->vfinfo[i].link_state);
++}
++
+ int ixgbe_ndo_set_vf_mac(struct net_device *netdev, int vf, u8 *mac)
+ {
+ 	struct ixgbe_adapter *adapter = netdev_priv(netdev);
+@@ -1656,6 +1709,84 @@ int ixgbe_ndo_set_vf_spoofchk(struct net_device *netdev, int vf, bool setting)
+ 	return 0;
+ }
+ 
++/**
++ * ixgbe_set_vf_link_state - Set link state
++ * @adapter: Pointer to adapter struct
++ * @vf: VF identifier
++ * @state: required link state
++ *
++ * Set a link force state on/off a single vf
++ **/
++void ixgbe_set_vf_link_state(struct ixgbe_adapter *adapter, int vf, int state)
++{
++	adapter->vfinfo[vf].link_state = state;
++
++	switch (state) {
++	case IFLA_VF_LINK_STATE_AUTO:
++		if (test_bit(__IXGBE_DOWN, &adapter->state))
++			adapter->vfinfo[vf].link_enable = false;
++		else
++			adapter->vfinfo[vf].link_enable = true;
++		break;
++	case IFLA_VF_LINK_STATE_ENABLE:
++		adapter->vfinfo[vf].link_enable = true;
++		break;
++	case IFLA_VF_LINK_STATE_DISABLE:
++		adapter->vfinfo[vf].link_enable = false;
++		break;
++	}
++
++	ixgbe_set_vf_rx_tx(adapter, vf);
++
++	/* restart the VF */
++	adapter->vfinfo[vf].clear_to_send = false;
++	ixgbe_ping_vf(adapter, vf);
++}
++
++/**
++ * ixgbe_ndo_set_vf_link_state - Set link state
++ * @netdev: network interface device structure
++ * @vf: VF identifier
++ * @state: required link state
++ *
++ * Set the link state of a specified VF, regardless of physical link state
++ **/
++int ixgbe_ndo_set_vf_link_state(struct net_device *netdev, int vf, int state)
++{
++	struct ixgbe_adapter *adapter = netdev_priv(netdev);
++	int ret = 0;
++
++	if (vf < 0 || vf >= adapter->num_vfs) {
++		dev_err(&adapter->pdev->dev,
++			"NDO set VF link - invalid VF identifier %d\n", vf);
++		return -EINVAL;
++	}
++
++	switch (state) {
++	case IFLA_VF_LINK_STATE_ENABLE:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state %d - not supported\n",
++			vf, state);
++		break;
++	case IFLA_VF_LINK_STATE_DISABLE:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state disable\n", vf);
++		ixgbe_set_vf_link_state(adapter, vf, state);
++		break;
++	case IFLA_VF_LINK_STATE_AUTO:
++		dev_info(&adapter->pdev->dev,
++			 "NDO set VF %d link state auto\n", vf);
++		ixgbe_set_vf_link_state(adapter, vf, state);
++		break;
++	default:
++		dev_err(&adapter->pdev->dev,
++			"NDO set VF %d - invalid link state %d\n", vf, state);
++		ret = -EINVAL;
++	}
++
++	return ret;
++}
++
+ int ixgbe_ndo_set_vf_rss_query_en(struct net_device *netdev, int vf,
+ 				  bool setting)
+ {
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
+index 3ec21923c89c..0690ecb8dfa3 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.h
+@@ -17,8 +17,8 @@ void ixgbe_restore_vf_multicasts(struct ixgbe_adapter *adapter);
+ #endif
+ void ixgbe_msg_task(struct ixgbe_adapter *adapter);
+ int ixgbe_vf_configuration(struct pci_dev *pdev, unsigned int event_mask);
+-void ixgbe_disable_tx_rx(struct ixgbe_adapter *adapter);
+ void ixgbe_ping_all_vfs(struct ixgbe_adapter *adapter);
++void ixgbe_set_all_vfs(struct ixgbe_adapter *adapter);
+ int ixgbe_ndo_set_vf_mac(struct net_device *netdev, int queue, u8 *mac);
+ int ixgbe_ndo_set_vf_vlan(struct net_device *netdev, int queue, u16 vlan,
+ 			   u8 qos, __be16 vlan_proto);
+@@ -31,7 +31,9 @@ int ixgbe_ndo_set_vf_rss_query_en(struct net_device *netdev, int vf,
+ int ixgbe_ndo_set_vf_trust(struct net_device *netdev, int vf, bool setting);
+ int ixgbe_ndo_get_vf_config(struct net_device *netdev,
+ 			    int vf, struct ifla_vf_info *ivi);
++int ixgbe_ndo_set_vf_link_state(struct net_device *netdev, int vf, int state);
+ void ixgbe_check_vf_rate_limit(struct ixgbe_adapter *adapter);
++void ixgbe_set_vf_link_state(struct ixgbe_adapter *adapter, int vf, int state);
+ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter);
+ #ifdef CONFIG_PCI_IOV
+ void ixgbe_enable_sriov(struct ixgbe_adapter *adapter, unsigned int max_vfs);
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
