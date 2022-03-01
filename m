@@ -2,69 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE8094C8E34
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 15:49:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 326A84C91B4
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 18:36:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EABCB404C3;
-	Tue,  1 Mar 2022 14:49:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1DC864017E;
+	Tue,  1 Mar 2022 17:36:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yAH8lE_7mLZf; Tue,  1 Mar 2022 14:49:05 +0000 (UTC)
+	with ESMTP id fwMdK4GxVxEL; Tue,  1 Mar 2022 17:36:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B97A540122;
-	Tue,  1 Mar 2022 14:49:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9FB5440128;
+	Tue,  1 Mar 2022 17:36:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 898A21BF2C6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 14:48:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9ED191BF867
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 17:36:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 734BA402A2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 14:48:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 981B9409C0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 17:36:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
+ dkim=pass (2048-bit key) header.d=kroah.com header.b="PuP2Nuoq";
+ dkim=pass (2048-bit key) header.d=messagingengine.com
+ header.b="EDVGv6yE"
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9Q4Mj-JDMtSC for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Mar 2022 14:48:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4C7214029A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 14:48:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1646146137;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ET15GgI57duVbTvcVtFigSD+iRUjJs12PG+P2LL5kB0=;
- b=ZcWfRAUzagOn/p3YTbiDy36cmVzURh8oTvneVhD0rOzakFNtWtwEabkXSCRayqpZTKR6nz
- rM2M04va89+SvOjnBHIBGZ5OtfGP4axSLcG9QoDhWAH0GgRvQ2/jl7a9v6P1ap0dFKsRq3
- FNHhYD06uW+OtyPWGTCkxefscjuLZVU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-281-z7946cAUOFeUJBROxtD_Rw-1; Tue, 01 Mar 2022 09:48:53 -0500
-X-MC-Unique: z7946cAUOFeUJBROxtD_Rw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1EE821854E21;
- Tue,  1 Mar 2022 14:48:52 +0000 (UTC)
-Received: from jtoppins.rdu.csb (unknown [10.22.34.174])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F90D838BC;
- Tue,  1 Mar 2022 14:48:49 +0000 (UTC)
-From: Jonathan Toppins <jtoppins@redhat.com>
-To: intel-wired-lan@lists.osuosl.org,
-	lihong.yang@intel.com
-Date: Tue,  1 Mar 2022 09:48:45 -0500
-Message-Id: <370e9909d8e00d4a1c8abcd405c321fc41646478.1646146125.git.jtoppins@redhat.com>
+ with ESMTP id c19gq_MGzHCk for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Mar 2022 17:36:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from new3-smtp.messagingengine.com (new3-smtp.messagingengine.com
+ [66.111.4.229])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B3E27409A7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 17:36:35 +0000 (UTC)
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 668835801CF;
+ Tue,  1 Mar 2022 12:36:34 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Tue, 01 Mar 2022 12:36:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+ :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to; s=fm3; bh=5OE8xr6GO9X7MbNpDAcWFGeEO3b3B/8LX5WMVM
+ 23luQ=; b=PuP2NuoqB9WepsjY0Uqokte1F02OSePW/KnqWPOHGfC62jDMQy8d6J
+ jihmHY7jaxPeYmV/brYSLMo2rdd0E65RFIbVZNaw+d6hF5TlV5h/HTFiyyQeuhEh
+ tTvMohVc8vJzz2F3uGXDhJ11n60AMBcwryX0OIQ4h4vBoJz9sXnQjtTWmMBfJvV8
+ ASNImP/JJmHc6aQngUkaR/9ejN6V67gkY3Ss3hOhMxZ05fa2rytR+8neryd7GnHR
+ NnoILjHkJCXbghnuIwO3WAIr0wjFgm+H99CgrlgjXtrJoB87p0eZTz8QaQ9jXLS7
+ eUmDU4ThQ2iD/GAcK9q8FPfYZ3dj5Siw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=5OE8xr6GO9X7MbNpD
+ AcWFGeEO3b3B/8LX5WMVM23luQ=; b=EDVGv6yEMy7PTbky8OfXVA9jYKh0oiM5+
+ sk6xt1CX3smAZYI0P9oaKzOCIkwMemVmh9foKoLwOV/IyVUBTTJc+ljLrovpUDdP
+ pIA4BCkMgcGpU96mM/8o9zjz4bY87GlxWmxlUETAhWUvR7QqjYOuAQqLjAz9vvM2
+ 9w41DE+muRcTBgXgq7R5mX2xPAK9bu7QEmldC6d/UhIWw84PgZEMMUkVZDfimvGr
+ 9rb1WTZ4HmbXffSgmjvpYAD0fz3a3kb/jxO9vzcKzkIUx9MDQUxolnVJ5gWPPm0P
+ 3SACLLdt3Ji3p4//lVUF9os4MIANF8EQiUgikZ8An4R/ZWSxaE7Og==
+X-ME-Sender: <xms:oFkeYrv0LJt2Pjt0ZOYMYd1jCK6G-Z0GZXtRlOiCbijoVlbqDToesg>
+ <xme:oFkeYsdRXoRXAxTjhPFWtM5JX8rU2-dsIwxZfpFocA89gDBFD4vx9xsWmcbxEuUyQ
+ lpRakwPpYLi7A>
+X-ME-Received: <xmr:oFkeYuzzdQb5kL72Vvj74Xn0xRRyhzff8uvNHTyUqFsrLF_56anw9-ykyIbZGqAzSj0KTqXLBgC1Qf0KKdPZ7IM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddruddtvddguddttdcutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+ necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+ enucfjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
+ ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepveeuhe
+ ejgfffgfeivddukedvkedtleelleeghfeljeeiueeggeevueduudekvdetnecuvehluhhs
+ thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorg
+ hhrdgtohhm
+X-ME-Proxy: <xmx:oFkeYqNP0oPgoNRpau1EsmnsGvsi8MuHt5Oau7Uh5DcasQw65k9YTg>
+ <xmx:oFkeYr8eoBRonSMDQgE0d2CdwAX12XsrowbLGxOxF_rvtS3YwiTEgg>
+ <xmx:oFkeYqVNxx7WBcYUGhcHc73BR9KI7xEAuh9FjZrqFDwJGYsF_7MqUw>
+ <xmx:olkeYkWtK93reuC1fg-f2X2RrUvR780eGtvCg6vOtajRgdiJ73bSmQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 1 Mar 2022 12:36:31 -0500 (EST)
+Date: Tue, 1 Mar 2022 18:36:27 +0100
+From: Greg KH <greg@kroah.com>
+To: Jakob Koschel <jakobkoschel@gmail.com>
+Message-ID: <Yh5ZmwiH5AxtQ69K@kroah.com>
+References: <20220228110822.491923-1-jakobkoschel@gmail.com>
+ <20220228110822.491923-3-jakobkoschel@gmail.com>
+ <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
+ <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
+ <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
+ <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
+ <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
+ <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+ <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Subject: [Intel-wired-lan] [PATCH] ice: use msleep instead of mdelay
+Content-Disposition: inline
+In-Reply-To: <CEDAD0D9-56EE-4105-9107-72C2EAD940B0@gmail.com>
+Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
+ iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,47 +110,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jocelyn Falempe <jfalempe@redhat.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ alsa-devel@alsa-project.org, KVM list <kvm@vger.kernel.org>,
+ linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Cristiano Giuffrida <c.giuffrida@vu.nl>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ linux1394-devel@lists.sourceforge.net, drbd-dev@lists.linbit.com,
+ linux-arch <linux-arch@vger.kernel.org>, CIFS <linux-cifs@vger.kernel.org>,
+ linux-aspeed@lists.ozlabs.org, linux-scsi <linux-scsi@vger.kernel.org>,
+ linux-rdma <linux-rdma@vger.kernel.org>, linux-staging@lists.linux.dev, "Bos,
+ H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
+ intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
+ bcm-kernel-feedback-list@broadcom.com,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ intel-gfx <intel-gfx@lists.freedesktop.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>, dma <dmaengine@vger.kernel.org>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ v9fs-developer@lists.sourceforge.net,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-sgx@vger.kernel.org,
+ linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ linux-usb@vger.kernel.org, samba-technical@lists.samba.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
+ tipc-discussion@lists.sourceforge.net,
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
+ linux-fsdevel <linux-fsdevel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ Mike Rapoport <rppt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use msleep for long delays instead of spinning in the driver.
+On Tue, Mar 01, 2022 at 12:28:15PM +0100, Jakob Koschel wrote:
+> 
+> 
+> > On 1. Mar 2022, at 01:41, Linus Torvalds <torvalds@linux-foundation.org> wrote:
+> > 
+> > On Mon, Feb 28, 2022 at 1:47 PM Jakob Koschel <jakobkoschel@gmail.com> wrote:
+> >> 
+> >> The goal of this is to get compiler warnings right? This would indeed be great.
+> > 
+> > Yes, so I don't mind having a one-time patch that has been gathered
+> > using some automated checker tool, but I don't think that works from a
+> > long-term maintenance perspective.
+> > 
+> > So if we have the basic rule being "don't use the loop iterator after
+> > the loop has finished, because it can cause all kinds of subtle
+> > issues", then in _addition_ to fixing the existing code paths that
+> > have this issue, I really would want to (a) get a compiler warning for
+> > future cases and (b) make it not actually _work_ for future cases.
+> > 
+> > Because otherwise it will just happen again.
+> > 
+> >> Changing the list_for_each_entry() macro first will break all of those cases
+> >> (e.g. the ones using 'list_entry_is_head()).
+> > 
+> > So I have no problems with breaking cases that we basically already
+> > have a patch for due to  your automated tool. There were certainly
+> > more than a handful, but it didn't look _too_ bad to just make the
+> > rule be "don't use the iterator after the loop".
+> > 
+> > Of course, that's just based on that patch of yours. Maybe there are a
+> > ton of other cases that your patch didn't change, because they didn't
+> > match your trigger case, so I may just be overly optimistic here.
+> 
+> Based on the coccinelle script there are ~480 cases that need fixing
+> in total. I'll now finish all of them and then split them by
+> submodules as Greg suggested and repost a patch set per submodule.
+> Sounds good?
 
-Suggested-by: Jocelyn Falempe <jfalempe@redhat.com>
-Signed-off-by: Jonathan Toppins <jtoppins@redhat.com>
----
- drivers/net/ethernet/intel/ice/ice_common.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Sounds good to me!
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 0e4434e3c290..75860259c6d7 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1107,7 +1107,7 @@ int ice_check_reset(struct ice_hw *hw)
- 			GLGEN_RSTCTL_GRSTDEL_S) + 10;
- 
- 	for (cnt = 0; cnt < grst_timeout; cnt++) {
--		mdelay(100);
-+		msleep(100);
- 		reg = rd32(hw, GLGEN_RSTAT);
- 		if (!(reg & GLGEN_RSTAT_DEVSTATE_M))
- 			break;
-@@ -3235,7 +3235,7 @@ ice_set_fc(struct ice_port_info *pi, u8 *aq_failures, bool ena_auto_link_update)
- 			if (!status)
- 				break;
- 
--			mdelay(100);
-+			msleep(100);
- 		}
- 
- 		if (status)
--- 
-2.27.0
+If you need help carving these up and maintaining them over time as
+different subsystem maintainers accept/ignore them, just let me know.
+Doing large patchsets like this can be tough without a lot of
+experience.
 
+thanks,
+
+greg k-h
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
