@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1274C4C93EE
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 20:07:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF78B4C94A1
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 20:43:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 95EED402AF;
-	Tue,  1 Mar 2022 19:07:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5242F826B0;
+	Tue,  1 Mar 2022 19:43:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p7Wu0xnqmrRT; Tue,  1 Mar 2022 19:07:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1gFWknzcIbab; Tue,  1 Mar 2022 19:43:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8AC5D410E0;
-	Tue,  1 Mar 2022 19:07:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 561CB812DF;
+	Tue,  1 Mar 2022 19:43:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A1C721BF283
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:07:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CA4FB1BF283
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:42:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9C24960BE7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:07:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B397540436
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:42:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=linux-foundation.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2EnHDwXllJbi for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Mar 2022 19:07:20 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EmLRu5UILUWJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Mar 2022 19:42:56 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x22a.google.com (mail-lj1-x22a.google.com
- [IPv6:2a00:1450:4864:20::22a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6EBF360B7C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:07:20 +0000 (UTC)
-Received: by mail-lj1-x22a.google.com with SMTP id bn33so23182880ljb.6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Mar 2022 11:07:20 -0800 (PST)
+Received: from mail-ed1-x533.google.com (mail-ed1-x533.google.com
+ [IPv6:2a00:1450:4864:20::533])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 684574012E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 19:42:56 +0000 (UTC)
+Received: by mail-ed1-x533.google.com with SMTP id p4so8345500edi.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Mar 2022 11:42:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linux-foundation.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+FYbGAw6yxU17iUDUp61Ry7f+ZSO9wN0ehJ+hGfk2DQ=;
- b=NEmpYuhxkY3jphhiKwB9rL7CFHETV0OarciDwH/Y25b8gogpFDGLbcsm2Hp5JlhbRM
- fgLdNaX0z1k1bpDTdAa2T+xhPoQGBlkWInAyVtxomjmoWydKKz6S1Vw5P8QyPxUNcXPG
- O8s4ZVUjpR1ZVkG2oqZOMI9ApgRXI/RsyC5iE=
+ :cc; bh=PzY8tILS7/J5BzJfiKLdBDXy8/s4RAHqODI+UdY57jc=;
+ b=MSgmT6lRet0jPev3NhT8poLSNE2IuVKHhTmnMdindDPsxNrbDdzPrkBSaT4BauMeD+
+ LWq3ALR2NImH9IAbyg/9Mpz0DLX1H3V94a1gLKACC1HvSqM9EwtH2Km4ZUYlkqLoZgsQ
+ ZV7jqWBOB7cCGsim0JopuTtvt6tgng/ReKRwg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+FYbGAw6yxU17iUDUp61Ry7f+ZSO9wN0ehJ+hGfk2DQ=;
- b=1xPhBUanvhuXC0eBGTEEVgcvzYsvibZRxSCUCOoR7MDE2nkpP9InSLK4RKjnPtd+vK
- dhKdRX0svg+UIIjXCDm+S0NR3sElpEgsxtSpC4lXTzDvqU02Ny/KerVtP79yG+52su3d
- zPLrVS4sjx0vL/ZZIPEPXJ95lVmeRscxZ38irncqbSMAujZa/wW0dOnN0DSt9tflhivU
- N989hBQUk4R6kS4j9CgW0wIM1I+sNRIa6GErembLSbsuio4G3cZe5gox08W3zI8SWyx4
- t4i59LhF/cqalFbCPrqCt0DL8VxsGM7u5h/6vTCInh9KXeBp8DC1WJQkXMw3hcFZPM9a
- ZZPg==
-X-Gm-Message-State: AOAM5334ScmvYghVNAuQIycJCz/O2q44IGrT79oixL8pOqCDGUoEJ78H
- jkGBpmKxyk199NYggOv4Q750/j8j90tWxoscUrs=
-X-Google-Smtp-Source: ABdhPJx+8UnbUIj7ceuauNkD2kSGhiNkiHMN5ujd4+fRbz/V3w3vELHYi5uRtERJkKNjEqjkf4H3Pg==
-X-Received: by 2002:a05:651c:1718:b0:246:2ab4:6d55 with SMTP id
- be24-20020a05651c171800b002462ab46d55mr18934124ljb.395.1646161637858; 
- Tue, 01 Mar 2022 11:07:17 -0800 (PST)
-Received: from mail-lj1-f171.google.com (mail-lj1-f171.google.com.
- [209.85.208.171]) by smtp.gmail.com with ESMTPSA id
- z3-20020a05651c11c300b002463b855b67sm2132992ljo.54.2022.03.01.11.07.13
+ bh=PzY8tILS7/J5BzJfiKLdBDXy8/s4RAHqODI+UdY57jc=;
+ b=ynsgy3svuLiCHviv36Emtoy6ANkTNm71IZIfSueiuOrnvmmArqJkGwgE0k2MVTFyZb
+ mpDskak5D/y7SSL6z199Hn95lfzwTfcLtM+6mONn9I7HLxEDm74vEI9pRs5JEpEtaAdD
+ EZguEK0lOTmzTOqSi2W+YqmDNeJ/KYNW1Ny5W9uwMwlGUQQHE56+uaA0Sm6UmTI6IsSs
+ wAH5oyAGNVy2J5FSLg2xES8EwpAE6oJvE/HvtHCGcBd7B8wsVSJvpCBcX0FTwMJ/5aiZ
+ mQWNZv+lzjmYDJ0L6rKp1pFvD+YjbA6CtvKniDw/p4TPkkAd+HQPIR8iWtPY2T/esX8u
+ 2wlQ==
+X-Gm-Message-State: AOAM531DnsQjpIlUqVJ/5tuWFT4ND5fqdz74X8Y3dcIRZGQBotGK8VMl
+ mKaykEbWw92Z3/0jGigKhEvPcUMJjnraXBXZ5NQ=
+X-Google-Smtp-Source: ABdhPJyn4PuY2lZzuLR67iaqxDI8fv8S3s7zKB9dDZEnIbHbYFLjOKZUgCyjfSKdWazZL6QIQfAOyw==
+X-Received: by 2002:a50:fc05:0:b0:408:4d18:5070 with SMTP id
+ i5-20020a50fc05000000b004084d185070mr26148061edr.365.1646163774484; 
+ Tue, 01 Mar 2022 11:42:54 -0800 (PST)
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com.
+ [209.85.218.44]) by smtp.gmail.com with ESMTPSA id
+ q16-20020a170906145000b006bdaf981589sm5623850ejc.81.2022.03.01.11.42.53
  for <intel-wired-lan@lists.osuosl.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Mar 2022 11:07:15 -0800 (PST)
-Received: by mail-lj1-f171.google.com with SMTP id o6so23164097ljp.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Mar 2022 11:07:13 -0800 (PST)
+ Tue, 01 Mar 2022 11:42:54 -0800 (PST)
+Received: by mail-ej1-f44.google.com with SMTP id p14so33567175ejf.11
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Mar 2022 11:42:53 -0800 (PST)
 X-Received: by 2002:a2e:3013:0:b0:246:2ca9:365e with SMTP id
- w19-20020a2e3013000000b002462ca9365emr17902580ljw.291.1646161622598; Tue, 01
- Mar 2022 11:07:02 -0800 (PST)
+ w19-20020a2e3013000000b002462ca9365emr17983151ljw.291.1646163763108; Tue, 01
+ Mar 2022 11:42:43 -0800 (PST)
 MIME-Version: 1.0
 References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <20220228110822.491923-3-jakobkoschel@gmail.com>
@@ -80,11 +80,12 @@ References: <20220228110822.491923-1-jakobkoschel@gmail.com>
  <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
  <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
  <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
-In-Reply-To: <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
+ <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+In-Reply-To: <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
 From: Linus Torvalds <torvalds@linux-foundation.org>
-Date: Tue, 1 Mar 2022 11:06:45 -0800
-X-Gmail-Original-Message-ID: <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
-Message-ID: <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
+Date: Tue, 1 Mar 2022 11:42:26 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wghQygmASNUWj=LZn5FR5wsce2osyR6EXcfEB_FaX_6Og@mail.gmail.com>
+Message-ID: <CAHk-=wghQygmASNUWj=LZn5FR5wsce2osyR6EXcfEB_FaX_6Og@mail.gmail.com>
 To: James Bottomley <James.Bottomley@hansenpartnership.com>
 Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
  iterator after loop body as a ptr
@@ -142,57 +143,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 28, 2022 at 2:29 PM James Bottomley
-<James.Bottomley@hansenpartnership.com> wrote:
+On Tue, Mar 1, 2022 at 11:06 AM Linus Torvalds
+<torvalds@linux-foundation.org> wrote:
 >
-> However, if the desire is really to poison the loop variable then we
-> can do
->
-> #define list_for_each_entry(pos, head, member)                          \
->         for (pos = list_first_entry(head, typeof(*pos), member);        \
->              !list_entry_is_head(pos, head, member) && ((pos = NULL) == NULL;                   \
->              pos = list_next_entry(pos, member))
->
-> Which would at least set pos to NULL when the loop completes.
+> So instead of that simple "if (!entry)", we'd effectively have to
+> continue to use something that still works with the old world order
+> (ie that "if (list_entry_is_head())" model).
 
-That would actually have been excellent if we had done that
-originally. It would not only avoid the stale and incorrectly typed
-head entry left-over turd, it would also have made it very easy to
-test for "did I find an entry in the loop".
+Just to prove my point about how this is painful, that doesn't work at all.
 
-But I don't much like it in the situation we are now.
+If the loop iterator at the end is NULL (good, in theory), we can't
+use "list_entry_is_head()" to check whether we ended. We'd have to use
+a new thing entirely, to handle the "list_for_each_entry() has the
+old/new semantics" cases.
 
-Why? Mainly because it basically changes the semantics of the loop
-_without_ any warnings about it.  And we don't actually get the
-advantage of the nicer semantics, because we can't actually make code
-do
+That's largely why I was pushing for the "let's make it impossible to
+use the loop iterator at all outside the loop". It avoids the
+confusing case, and the patches to move to that stricter semantic can
+be merged independently (and before) doing the actual semantic change.
 
-        list_for_each_entry(entry, ....) {
-                ..
-        }
-        if (!entry)
-                return -ESRCH;
-        .. use the entry we found ..
+I'm not saying my suggested approach is wonderful either. Honestly,
+it's painful that we have so nasty semantics for the end-of-loop case
+for list_for_each_entry().
 
-because that would be a disaster for back-porting, plus it would be a
-flag-day issue (ie we'd have to change the semantics of the loop at
-the same time we change every single user).
+The minimal patch would clearly be to keep those broken semantics, and
+just force everybody to use the list_entry_is_head() case. That's the
+"we know we messed up, we are too lazy to fix it, we'll just work
+around it and people need to be careful" approach.
 
-So instead of that simple "if (!entry)", we'd effectively have to
-continue to use something that still works with the old world order
-(ie that "if (list_entry_is_head())" model).
+And laziness is a virtue. But bad semantics are bad semantics. So it's
+a question of balancing those two issues.
 
-So we couldn't really take _advantage_ of the nicer semantics, and
-we'd not even get a warning if somebody does it wrong - the code would
-just silently do the wrong thing.
-
-IOW: I don't think you are wrong about that patch: it would solve the
-problem that Jakob wants to solve, and it would have absolutely been
-much better if we had done this from the beginning. But I think that
-in our current situation, it's actually a really fragile solution to
-the "don't do that then" problem we have.
-
-              Linus
+               Linus
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
