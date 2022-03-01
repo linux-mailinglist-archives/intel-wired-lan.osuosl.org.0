@@ -1,72 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AC984C8424
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 07:32:45 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A49A4C8433
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Mar 2022 07:36:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6EDB24061C;
-	Tue,  1 Mar 2022 06:32:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 831A382419;
+	Tue,  1 Mar 2022 06:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dJeBkmvTPjdT; Tue,  1 Mar 2022 06:32:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M9u3V6uhb5h2; Tue,  1 Mar 2022 06:36:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1ED204033F;
-	Tue,  1 Mar 2022 06:32:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 60A2C823E0;
+	Tue,  1 Mar 2022 06:36:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 57E151BF294
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:32:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id ECE7F1BF294
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:36:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 413F541296
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:32:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CB78740614
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:36:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6lbWaL3GE_UV for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Mar 2022 06:32:36 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jqEgwP2w_P76 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Mar 2022 06:36:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 47C15410E9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:32:36 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 2F0DDB816AD;
- Tue,  1 Mar 2022 06:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDB1BC340F0;
- Tue,  1 Mar 2022 06:32:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646116351;
- bh=/Yg/Wtj2qqC5DtZph9xh9a5I6i9ac63I49JjnGAnbz0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=VNHL/rpf4xC8OfR4t6vo9UDhccraY87hqDEaB5+IcVN4t3xSDpu027UghrvvyPQSS
- 4QuUBVLbP+fb/wau99bJi4r7o82Cq8bpmARbff3Kmy/AtDhoQCnd/xuFpD/mZTaTLe
- NB4lRdgymAA7RGUyYzHE9lasNH7iZMQkKEkyzKBO3tOdshLibbcwpXFMt0/8PjfBOI
- eBOAlJkJQ4cQoPLzxj+EO1bIuaMcgSLjX7K2SicEKpT/LLsGPP1i6N98tAlqdrYU3i
- Kp9mElgbXeQQFbCmQa35pv8BJ12s3DBVkk5Xbz9WcUOYNg9YRr2X/a7+Y15htjkLBQ
- B1WsfW9PNeplw==
-Date: Mon, 28 Feb 2022 22:32:28 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>
-Message-ID: <20220228223228.24cf3fd4@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-In-Reply-To: <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-3-jakobkoschel@gmail.com>
- <2e4e95d6-f6c9-a188-e1cd-b1eae465562a@amd.com>
- <CAHk-=wgQps58DPEOe4y5cTh5oE9EdNTWRLXzgMiETc+mFX7jzw@mail.gmail.com>
- <CAHk-=wj8fkosQ7=bps5K+DDazBXk=ypfn49A0sEq+7-nZnyfXA@mail.gmail.com>
- <CAHk-=wiTCvLQkHcJ3y0hpqH7FEk9D28LDvZZogC6OVLk7naBww@mail.gmail.com>
- <FC710A1A-524E-481B-A668-FC258F529A2E@gmail.com>
- <CAHk-=whLK11HyvpUtEftOjc3Gup2V77KpAQ2fycj3uai=qceHw@mail.gmail.com>
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 65A154033F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Mar 2022 06:36:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1646116590; x=1677652590;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=WxGzIpovWXf0M+QICu4oJrnzZXAalcC5PJ/Oifc4KYs=;
+ b=j4YS627061paVwn4QIL5uSnKNzpGDSRFr569GC12XrtrHIPLRKog93Bj
+ Yu9uQ4uWrEd/meqSojS5/kkFsHQjn1NPoWU/Ddy2mpa3wj5e0uyUs7FrV
+ RxJTUpgV9d2UQsunB+H+/RbZ/vLq9h3TyvFcMdvB6xNHSod+RTVyjqygh
+ NcDwDBAv4IDDrHYCIJ3CRvkjFqnykQtojwIu5bbQpjn0JEnc7sJF/Jndg
+ yE0vmuIOmuKTNAnpXdEuWeCD9+QGc4bFB3GV6gjr+YlWS+1M0ZpBnqv44
+ CU7u0KrV6SeJSlon94V02l21yoaDwbOgYL1eyjxfgTFUlocoipD/E7Hq8 Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10272"; a="240482167"
+X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="240482167"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2022 22:36:29 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,145,1643702400"; d="scan'208";a="641152352"
+Received: from lkp-server01.sh.intel.com (HELO 2146afe809fb) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 28 Feb 2022 22:36:28 -0800
+Received: from kbuild by 2146afe809fb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nOw7X-00003B-RL; Tue, 01 Mar 2022 06:36:27 +0000
+Date: Tue, 01 Mar 2022 14:35:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <621dbec4.kWX04W+x2FUV6H3a%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
- iterator after loop body as a ptr
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ bd0e0b94f31752eabd41c7f8119ed14eade74902
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,116 +77,231 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- alsa-devel@alsa-project.org, KVM list <kvm@vger.kernel.org>,
- linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
- linux1394-devel@lists.sourceforge.net, drbd-dev@lists.linbit.com,
- linux-arch <linux-arch@vger.kernel.org>, CIFS <linux-cifs@vger.kernel.org>,
- linux-aspeed@lists.ozlabs.org, linux-scsi <linux-scsi@vger.kernel.org>,
- linux-rdma <linux-rdma@vger.kernel.org>, linux-staging@lists.linux.dev,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
- bcm-kernel-feedback-list@broadcom.com,
- Dan Carpenter <dan.carpenter@oracle.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
- Linux PM <linux-pm@vger.kernel.org>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Nathan Chancellor <nathan@kernel.org>, dma <dmaengine@vger.kernel.org>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Jakob Koschel <jakobkoschel@gmail.com>, v9fs-developer@lists.sourceforge.net,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-sgx@vger.kernel.org,
- linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
- linux-usb@vger.kernel.org, samba-technical@lists.samba.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
- tipc-discussion@lists.sourceforge.net,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Mike Rapoport <rppt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 28 Feb 2022 16:41:04 -0800 Linus Torvalds wrote:
-> So yes, initially my idea had been to just move the iterator entirely
-> inside the macro. But specifying the type got so ugly that I think
-> that
-> 
->         typeof (pos) pos
-> 
-> trick inside the macro really ends up giving us the best of all worlds:
-> 
->  (a) let's us keep the existing syntax and code for all the nice cases
-> that did everything inside the loop anyway
-> 
->  (b) gives us a nice warning for any normal use-after-loop case
-> (unless you explicitly initialized it like that
-> sgx_mmu_notifier_release() function did for no good reason
-> 
->  (c) also guarantees that even if you don't get a warning,
-> non-converted (or newly written) bad code won't actually _work_
-> 
-> so you end up getting the new rules without any ambiguity or mistaken
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: bd0e0b94f31752eabd41c7f8119ed14eade74902  ice: Fix error with handling of bonding MTU
 
-I presume the goal is that we can do this without changing existing
-code? Otherwise actually moving the iterator into the loop body would
-be an option, by creating a different hidden variable:
+elapsed time: 824m
 
-#define list_iter(head)						\
-	for (struct list head *_l = (head)->next; _l != (head); _l = _l->next)
+configs tested: 200
+configs skipped: 5
 
-#define list_iter_entry(var, member)		\
-	list_entry(_l, typeof(*var), member)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                          randconfig-c001
+i386                 randconfig-c001-20220228
+arm                            lart_defconfig
+arm                         assabet_defconfig
+arm                          simpad_defconfig
+sh                           se7780_defconfig
+arc                 nsimosci_hs_smp_defconfig
+powerpc                        cell_defconfig
+mips                         db1xxx_defconfig
+sh                ecovec24-romimage_defconfig
+m68k                            mac_defconfig
+sh                     sh7710voipgw_defconfig
+powerpc                      bamboo_defconfig
+parisc                generic-32bit_defconfig
+powerpc                      tqm8xx_defconfig
+xtensa                    xip_kc705_defconfig
+nds32                               defconfig
+mips                     loongson1b_defconfig
+powerpc                     tqm8548_defconfig
+sh                        sh7757lcr_defconfig
+sh                               alldefconfig
+mips                         tb0226_defconfig
+powerpc                  iss476-smp_defconfig
+m68k                          atari_defconfig
+s390                             allyesconfig
+arm                        keystone_defconfig
+arm                       omap2plus_defconfig
+powerpc                     tqm8555_defconfig
+mips                         mpc30x_defconfig
+arm                        cerfcube_defconfig
+mips                       bmips_be_defconfig
+mips                         rt305x_defconfig
+sh                          rsk7269_defconfig
+sh                        sh7785lcr_defconfig
+sh                         ecovec24_defconfig
+arm                        multi_v7_defconfig
+arc                              allyesconfig
+arm                          badge4_defconfig
+arc                     nsimosci_hs_defconfig
+sh                          r7780mp_defconfig
+sh                           se7724_defconfig
+sh                          sdk7780_defconfig
+arm                            pleb_defconfig
+microblaze                      mmu_defconfig
+arm                          pxa3xx_defconfig
+m68k                        m5307c3_defconfig
+m68k                          multi_defconfig
+arm                          gemini_defconfig
+powerpc                      makalu_defconfig
+m68k                        mvme16x_defconfig
+sh                           se7619_defconfig
+sh                                  defconfig
+powerpc                   motionpro_defconfig
+um                           x86_64_defconfig
+s390                       zfcpdump_defconfig
+ia64                                defconfig
+powerpc                     taishan_defconfig
+openrisc                    or1ksim_defconfig
+arm                         axm55xx_defconfig
+powerpc                     sequoia_defconfig
+m68k                       m5275evb_defconfig
+arm                        mini2440_defconfig
+sparc64                          alldefconfig
+openrisc                         alldefconfig
+sh                           se7751_defconfig
+powerpc                 linkstation_defconfig
+arm                            qcom_defconfig
+arm                       aspeed_g5_defconfig
+arc                        nsimosci_defconfig
+ia64                             allmodconfig
+arc                        vdk_hs38_defconfig
+m68k                         apollo_defconfig
+arm                        spear6xx_defconfig
+m68k                          amiga_defconfig
+arm                           viper_defconfig
+arm                  randconfig-c002-20220228
+arm                  randconfig-c002-20220227
+arm                  randconfig-c002-20220301
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                             allnoconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allmodconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a011-20220228
+x86_64               randconfig-a015-20220228
+x86_64               randconfig-a014-20220228
+x86_64               randconfig-a013-20220228
+x86_64               randconfig-a016-20220228
+x86_64               randconfig-a012-20220228
+i386                 randconfig-a016-20220228
+i386                 randconfig-a012-20220228
+i386                 randconfig-a015-20220228
+i386                 randconfig-a011-20220228
+i386                 randconfig-a013-20220228
+i386                 randconfig-a014-20220228
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+s390                 randconfig-r044-20220228
+arc                  randconfig-r043-20220228
+arc                  randconfig-r043-20220227
+riscv                randconfig-r042-20220228
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                         rhel-8.3-kunit
 
-	list_iter(&p->a_head) {
-		struct entry *e = list_iter_entry(e, a_member);
+clang tested configs:
+powerpc              randconfig-c003-20220227
+x86_64                        randconfig-c007
+arm                  randconfig-c002-20220227
+mips                 randconfig-c004-20220227
+s390                 randconfig-c005-20220227
+i386                          randconfig-c001
+riscv                randconfig-c006-20220227
+powerpc                    ge_imp3a_defconfig
+powerpc                     powernv_defconfig
+mips                           rs90_defconfig
+mips                           mtx1_defconfig
+powerpc                     pseries_defconfig
+powerpc                     tqm8560_defconfig
+arm                       cns3420vb_defconfig
+arm                        neponset_defconfig
+arm                        vexpress_defconfig
+powerpc                      pmac32_defconfig
+arm                       imx_v4_v5_defconfig
+mips                      bmips_stb_defconfig
+arm                    vt8500_v6_v7_defconfig
+powerpc                     mpc5200_defconfig
+arm                           sama7_defconfig
+mips                           ip28_defconfig
+arm                        mvebu_v5_defconfig
+arm                          imote2_defconfig
+arm                     davinci_all_defconfig
+mips                     cu1830-neo_defconfig
+x86_64               randconfig-a003-20220228
+x86_64               randconfig-a005-20220228
+x86_64               randconfig-a002-20220228
+x86_64               randconfig-a006-20220228
+x86_64               randconfig-a001-20220228
+x86_64               randconfig-a004-20220228
+i386                 randconfig-a002-20220228
+i386                 randconfig-a001-20220228
+i386                 randconfig-a005-20220228
+i386                 randconfig-a003-20220228
+i386                 randconfig-a006-20220228
+i386                 randconfig-a004-20220228
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+hexagon              randconfig-r045-20220227
+hexagon              randconfig-r041-20220227
+riscv                randconfig-r042-20220227
+hexagon              randconfig-r045-20220301
 
-		/* use e->... */
-	}
-
-
-Or we can slide into soft insanity and exploit one of Kees'es tricks
-to encode the type of the entries "next to" the head:
-
-#define LIST_HEAD_MEM(name, type)			\
-	union {						\
-		struct list_head name;			\
-		type *name ## _entry;			\
-	}
-
-struct entry {
-	struct list_head a_member;
-};
-
-struct parent {
-	LIST_HEAD_MEM(a_head, struct entry);
-};
-
-#define list_for_each_magic(pos, head, member)				\
-	for (typeof(**(head ## _entry)) *pos = list_first_entry(head, typeof(**(head ## _entry)), member); \
-	     &pos->member != (head);					\
-	     pos = list_next_entry(pos, member))
-
-
-	list_for_each_magic(e, &p->a_head, a_member) {
-		/* use e->... */
-	}
-
-
-I'll show myself out...
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
