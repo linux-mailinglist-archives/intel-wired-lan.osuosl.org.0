@@ -1,75 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9D244CAF57
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Mar 2022 21:07:14 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE9124CAFB6
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Mar 2022 21:27:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D54D60C06;
-	Wed,  2 Mar 2022 20:07:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 83FA24099F;
+	Wed,  2 Mar 2022 20:27:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WnqJbOTpCZ3w; Wed,  2 Mar 2022 20:07:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZXP8T8Jg708Z; Wed,  2 Mar 2022 20:27:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5196360F29;
-	Wed,  2 Mar 2022 20:07:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A4D6404CA;
+	Wed,  2 Mar 2022 20:27:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 986911BF841
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:07:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EAFF91BF307
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:27:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 846ED81865
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:07:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D6D1481A58
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:27:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=chromium.org
+ dkim=pass (1024-bit key) header.d=linux-foundation.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BkoD8Y7t-4lJ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Mar 2022 20:07:06 +0000 (UTC)
+ with ESMTP id AW1tGF_AbOoN for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Mar 2022 20:27:34 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
- [IPv6:2607:f8b0:4864:20::1033])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 590A38149C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:07:06 +0000 (UTC)
-Received: by mail-pj1-x1033.google.com with SMTP id
- m11-20020a17090a7f8b00b001beef6143a8so2798562pjl.4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Mar 2022 12:07:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=9llME+iRL2iH9L07jwvbWbmbHLr47Rbz7WJ4fOgTlZc=;
- b=IvpJRwG7ynxkReEE85KaN5rJUYtD4xKNHA+hy6TwBmoQ8B3uYeJI+QViQcnaGiWq86
- F88M3HTERkoil1v4VBpPtCvYuei+/tfueI2kCXzM7ddvcotxLyWZwiewhTHLUCy28lRK
- BraqPBOXvwYRthhpbxTgJWS9pGCc3zSZJBqHk=
+Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
+ [IPv6:2a00:1450:4864:20::62c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E440081865
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 20:27:33 +0000 (UTC)
+Received: by mail-ej1-x62c.google.com with SMTP id dr20so6194178ejc.6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Mar 2022 12:27:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Uy+qIY61mUv01aVZ77KYqcI4VQ6CnEr5ehBFaIlKwdg=;
+ b=Be+smD91jIehBxsphVP8GxPmG9fZ7UzsziFVI8sCcayH4ghcjVwFadN69qX3SSZZfA
+ w/nKcppYscRVDTynDM99u+3Int1mDvzuW1vHPoDdJ+8JxYLDdH7+xaY9DZL7COnmW4q3
+ yEVm7FisHcBkdW7xwzBny/SyDipBoZU1ONqUc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=9llME+iRL2iH9L07jwvbWbmbHLr47Rbz7WJ4fOgTlZc=;
- b=g7P4fU0BnmWkVVL5XM9wWd62hx+XL/1bZp2R+OxsO3QD5sgbueMNoB6+/OIgWetdCt
- sXmqupNtRWiJo59BIAtDr7BHUTscg1rFTsCDTlTSc4Djf5tLTjDcx0IXIhyaSOmV8ZPu
- 1e2C5/mUn40/XuoG35T+BwrqqRk60EBvFyD8z2RBrzWib+tV3dy6PW8SPGJS3DGWGpLf
- osUXG0V1IRO6L3x1julOcNq+tYml3h5yvyN3+9EIPSJvApYXkNDW458iEkGxvMjGyMUF
- 0+KzmDc/Lj8cR/8gt319KyfBfB+FMuEVDbl4Lt47g+yMkGlK93l138UbvEIPgW/3EFsm
- Pr0Q==
-X-Gm-Message-State: AOAM533Dt2T5VxN14FaFapsdR/dQnGHzuP8EPrqsbv00NpgD6JRpG977
- BEGJC2aeBPsknWpU7OSGbQbH7g==
-X-Google-Smtp-Source: ABdhPJyalZw/yElDAQSdRYusWOxjkvZUrvn+e5j/jboS/+hXUtUpvVb6mMnbBbqlv1j/a0ygzQBPkQ==
-X-Received: by 2002:a17:90b:94e:b0:1bc:c99f:ede1 with SMTP id
- dw14-20020a17090b094e00b001bcc99fede1mr1518926pjb.49.1646251625762; 
- Wed, 02 Mar 2022 12:07:05 -0800 (PST)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id
- d25-20020a637359000000b0037843afb785sm6664pgn.25.2022.03.02.12.07.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 12:07:05 -0800 (PST)
-Date: Wed, 2 Mar 2022 12:07:04 -0800
-From: Kees Cook <keescook@chromium.org>
-To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Message-ID: <202203021158.DB5204A0@keescook>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Uy+qIY61mUv01aVZ77KYqcI4VQ6CnEr5ehBFaIlKwdg=;
+ b=CzIKqLaFWNcD5XvwrCzAD/sIG2hDWLvoBbzm6AyHWM46ZxoskIUrxoss1j7KW+uNw5
+ Ay+mvszKqk8zJaUBRtYLfX+EoRJCG5QFcrBy3dRTrILwpciyNRfFSvSfboyuT+8BRcpw
+ PyXlqvcaYiW7XBwDPTJpcg6JJWQ0s+9YQFBeQ7xY7pTJ65picyXukL++nujdRuFv+mXa
+ M8pljSSTwvEAC1z6eC93ORl1go5uEqmqicLPjCE/IBSXoZulfxiPeIYOSfownKQbxUn7
+ UEWeSrMJmfPJl8K8neOkfHry7DtM/Zk+LKPzVOehmVGLvJSLO7EsALnj2map0iKCAaSr
+ SBUw==
+X-Gm-Message-State: AOAM533//ivwHJl5CK9j7zNYBLlyQgU0XyIp13yHDIxCdAH9tvX+nE/9
+ f8uuoz0wQ5XRzkbe6OFdThKQr+QhwvK5BxtKazI=
+X-Google-Smtp-Source: ABdhPJzFdDiQmepgt/I16UTpuydb52jp9kIkJfBejdp2SpReiOIIRzviy37+lFzUvo2bFRvVniokQg==
+X-Received: by 2002:a17:906:1613:b0:6cf:1161:eab6 with SMTP id
+ m19-20020a170906161300b006cf1161eab6mr23778909ejd.315.1646252851600; 
+ Wed, 02 Mar 2022 12:27:31 -0800 (PST)
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com.
+ [209.85.208.42]) by smtp.gmail.com with ESMTPSA id
+ q9-20020a17090609a900b006cd30a3c4f0sm6758564eje.147.2022.03.02.12.27.31
+ for <intel-wired-lan@lists.osuosl.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Mar 2022 12:27:31 -0800 (PST)
+Received: by mail-ed1-f42.google.com with SMTP id s14so3933771edw.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Mar 2022 12:27:31 -0800 (PST)
+X-Received: by 2002:a2e:3013:0:b0:246:2ca9:365e with SMTP id
+ w19-20020a2e3013000000b002462ca9365emr21092331ljw.291.1646252342192; Wed, 02
+ Mar 2022 12:19:02 -0800 (PST)
+MIME-Version: 1.0
 References: <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
  <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
  <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
@@ -80,9 +82,13 @@ References: <282f0f8d-f491-26fc-6ae0-604b367a5a1a@amd.com>
  <0ced2b155b984882b39e895f0211037c@AcuMS.aculab.com>
  <CAHk-=wix0HLCBs5sxAeW3uckg0YncXbTjMsE-Tv8WzmkOgLAXQ@mail.gmail.com>
  <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
+ <202203021158.DB5204A0@keescook>
+In-Reply-To: <202203021158.DB5204A0@keescook>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Wed, 2 Mar 2022 12:18:45 -0800
+X-Gmail-Original-Message-ID: <CAHk-=wikKPC0LUqZ8++EC5JOvGdBqVH9uUaTX=DvBioDoReYww@mail.gmail.com>
+Message-ID: <CAHk-=wikKPC0LUqZ8++EC5JOvGdBqVH9uUaTX=DvBioDoReYww@mail.gmail.com>
+To: Kees Cook <keescook@chromium.org>
 Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
  iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -101,6 +107,7 @@ Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
  "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
  "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
  "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
  dri-devel <dri-devel@lists.freedesktop.org>,
  James Bottomley <James.Bottomley@hansenpartnership.com>,
  Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
@@ -121,7 +128,6 @@ Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
  Linux Media Mailing List <linux-media@vger.kernel.org>,
  Arnd Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>,
  intel-gfx <intel-gfx@lists.freedesktop.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
  Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
  Nathan Chancellor <nathan@kernel.org>,
  linux-fsdevel <linux-fsdevel@vger.kernel.org>,
@@ -145,67 +151,35 @@ Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
  dma <dmaengine@vger.kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
  Mike Rapoport <rppt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 02, 2022 at 10:29:31AM +0100, Rasmus Villemoes wrote:
-> This won't help the current issue (because it doesn't exist and might
-> never), but just in case some compiler people are listening, I'd like to
-> have some sort of way to tell the compiler "treat this variable as
-> uninitialized from here on". So one could do
-> 
-> #define kfree(p) do { __kfree(p); __magic_uninit(p); } while (0)
-> 
-> with __magic_uninit being a magic no-op that doesn't affect the
-> semantics of the code, but could be used by the compiler's "[is/may be]
-> used uninitialized" machinery to flag e.g. double frees on some odd
-> error path etc. It would probably only work for local automatic
-> variables, but it should be possible to just ignore the hint if p is
-> some expression like foo->bar or has side effects. If we had that, the
-> end-of-loop test could include that to "uninitialize" the iterator.
+On Wed, Mar 2, 2022 at 12:07 PM Kees Cook <keescook@chromium.org> wrote:
+>
+> I've long wanted to change kfree() to explicitly set pointers to NULL on
+> free. https://github.com/KSPP/linux/issues/87
 
-I've long wanted to change kfree() to explicitly set pointers to NULL on
-free. https://github.com/KSPP/linux/issues/87
+We've had this discussion with the gcc people in the past, and gcc
+actually has some support for it, but it's sadly tied to the actual
+function name (ie gcc has some special-casing for "free()")
 
-The thing stopping a trivial transformation of kfree() is:
+See
 
-	kfree(get_some_pointer());
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94527
 
-I would argue, though, that the above is poor form: the thing holding
-the pointer should be the thing freeing it, so these cases should be
-refactored and kfree() could do the NULLing by default.
+for some of that discussion.
 
-Quoting myself in the above issue:
+Oh, and I see some patch actually got merged since I looked there last
+so that you can mark "deallocator" functions, but I think it's only
+for the context matching, not for actually killing accesses to the
+pointer afterwards.
 
-
-Without doing massive tree-wide changes, I think we need compiler
-support. If we had something like __builtin_is_lvalue(), we could
-distinguish function returns from lvalues. For example, right now a
-common case are things like:
-
-	kfree(get_some_ptr());
-
-But if we could at least gain coverage of the lvalue cases, and detect
-them statically at compile-time, we could do:
-
-#define __kfree_and_null(x) do { __kfree(*x); *x = NULL; } while (0)
-#define kfree(x) __builtin_choose_expr(__builtin_is_lvalue(x),
-			__kfree_and_null(&(x)), __kfree(x))
-
-Alternatively, we could do a tree-wide change of the former case (findable
-with Coccinelle) and change them into something like kfree_no_null()
-and redefine kfree() itself:
-
-#define kfree_no_null(x) do { void *__ptr = (x); __kfree(__ptr); } while (0)
-#define kfree(x) do { __kfree(x); x = NULL; } while (0)
-
--- 
-Kees Cook
+               Linus
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
