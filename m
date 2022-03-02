@@ -1,76 +1,169 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1339B4CAB6C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Mar 2022 18:21:43 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B4114CAEDE
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Mar 2022 20:41:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7ED7C815CA;
-	Wed,  2 Mar 2022 17:21:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A93C60F05;
+	Wed,  2 Mar 2022 19:41:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DPU9_v10Kv5b; Wed,  2 Mar 2022 17:21:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id a-9lmOyYLJUO; Wed,  2 Mar 2022 19:41:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 577D681391;
-	Wed,  2 Mar 2022 17:21:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A9F8260F1C;
+	Wed,  2 Mar 2022 19:41:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2D4E41BF842
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 17:15:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D7B41BF2F2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 19:41:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 15DA74048E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 17:15:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 295C6408F1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 19:41:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RirDfgh-ZNU0 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Mar 2022 17:15:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pt1bqi0oDdDA for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Mar 2022 19:41:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3EFA54012E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 17:15:08 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 659C8408D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 19:41:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646241308; x=1677777308;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=quZJORXDoBJnmtXWeY1UEG0LMErZNbKWG4uR8GxuM8A=;
- b=Ji4xeN8+0PpbM3gvsn5FPEuortbq0cFB9BLXFsPEiE270qkhI1iaUN/+
- sS6umfpIQ/eMUBPm23fhyOlTrTR+Zk5O048xTs9DoJSQVNWQAz3gpKS7T
- BPvlqWbB+QeYQTM/HAGZE0TQhqWdyLNzpaLmzCKvTusAFNkoAt4+4P6JM
- jFOIVUn5vdHmtIFflurV/b6E8mI0nVWWCgh7VIbRSn18s7h0gShKjn2l7
- QnrNAnFwY32+3+8DRLnQZy9vRl9r2rgPsj3UUSorV7jAAeii+mpI0gKMg
- jCX2JsWfkgcqn/J+I+XnAfbvh/YaxKzQc2igisRE87QN8dJAZB7IgUKfQ A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10274"; a="240871442"
-X-IronPort-AV: E=Sophos;i="5.90,149,1643702400"; d="scan'208";a="240871442"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2022 09:15:05 -0800
-X-IronPort-AV: E=Sophos;i="5.90,149,1643702400"; d="scan'208";a="551343768"
-Received: from jbuller-mobl1.ger.corp.intel.com (HELO [10.213.194.231])
- ([10.213.194.231])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2022 09:14:53 -0800
-Message-ID: <ed52ce3c-0f4a-a1e8-4176-543657d6228d@linux.intel.com>
-Date: Wed, 2 Mar 2022 17:14:50 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
+ t=1646250062; x=1677786062;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=h2/7nmi/LsZRaK6d6qvre+kSi0WhJjeItZ7kalClWhc=;
+ b=WpYozeyn8+QfHsTVHso1cu9Yf87FzZR7dfT1rhEwHaoXEEdex8Eg2i0d
+ bERC+9yj/AxYW4ePpErB9RKYlHjH1jlD9w2TzgC13KwBcD3RsapytZ1iZ
+ M3EV1WT/OKmkUZaylI5gHbCKOnN7F6gf+fr4G2LXNy8AMk7qippDXR2w7
+ dTuvRFW0Z1Xf3SdpRQt0NiZrD6kx9zVM6qVc7LmnuaZzw0/ffFTTKcUZX
+ DnteCEMGAMy4+tPK44WTdtXh16bWz/D5Qys1bqTAtQnJ9WKHcjB0vGWW8
+ O2v/UEtee2lzeqL3yKLl6UL4Q1VkYfytYecZWG+kuPNooCeG+wY+w8lHu w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10274"; a="253220228"
+X-IronPort-AV: E=Sophos;i="5.90,150,1643702400"; d="scan'208";a="253220228"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2022 11:41:01 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,150,1643702400"; d="scan'208";a="686239952"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga001.fm.intel.com with ESMTP; 02 Mar 2022 11:41:01 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.21; Wed, 2 Mar 2022 11:41:00 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.21; Wed, 2 Mar 2022 11:41:00 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.21 via Frontend Transport; Wed, 2 Mar 2022 11:41:00 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.21; Wed, 2 Mar 2022 11:40:59 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=f846+TfVKPU3DMTE66Pb6p+SH7NeOEDgzuqiwPeI5eV/o/fSlbP4DgMpRO7kc4NmNt2kt2Tx44wo2PIys3paBvInFDoBJWmwI6YMU/h5i1X1t3QiAkUegtsFLsfMqj7UeIa5j3Gm/e3WVEtonQNmRiN8z/YoYVK5EsXUpUq00ECNJcC5hWj14Vhtu3r5RdZsNP8RCSQVcBC7BApt3yzXuy+LubB0bOj2242rBCJlhHMX9n0MJb6U4F4MmCs8gyjGRYA84FCP4KqhR2YoCU8CyQsqwCjgkw0zAdJrdHvNd9Lt+Mqi6l5fKigqVIJGfsoBQgkB5yNZ/wW4ynyyiQx4Qw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6FG468GVsJWFIkuiryH11bBKQKqkBb49uIfT+tTrr0I=;
+ b=XTeO69TEysU/G8EAIjQtouf3ur2r17/u4RNePs2sqYa6Szc/fBVHjK/21a2Lao04uhNjYLwuk/uD9mjqckDmYkip2SVvBw8BoksFThBWKbNaVj8bUW6ADqcmPLrIOwSiUeMO2Ija4Hp14NP2EtlQJU7K7sNuMtNyWNXo5c1H1TC9QajZ6e2t7dTBl9316712Alrj7bs3QSNIVyd6vhbgu5xsveHFy59zxgguPB2QGtzs+TePEQ+3iZJCO4b1Mpy5O0ACicjG+TH1BMUbIRAqGPmRrIfOWCrfqKvQXzle2nQnpRJpLbL7v1Tc5Nr6WLjAi5iicgERk7ZoyeUDgWpMxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB5629.namprd11.prod.outlook.com (2603:10b6:a03:3ab::13)
+ by BL0PR11MB3426.namprd11.prod.outlook.com (2603:10b6:208:32::29)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.24; Wed, 2 Mar
+ 2022 19:40:57 +0000
+Received: from SJ0PR11MB5629.namprd11.prod.outlook.com
+ ([fe80::c194:9f26:88a2:b9c0]) by SJ0PR11MB5629.namprd11.prod.outlook.com
+ ([fe80::c194:9f26:88a2:b9c0%8]) with mapi id 15.20.5017.027; Wed, 2 Mar 2022
+ 19:40:56 +0000
+From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, Intel Wired LAN
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [net-next PATCH 25/25] ice: remove PF pointer
+ from ice_check_vf_init
+Thread-Index: AQHYKExkA182E1Q3sEy+jzIdemN0qqysii8g
+Date: Wed, 2 Mar 2022 19:40:55 +0000
+Message-ID: <SJ0PR11MB56298202A99227B1133B1457AB039@SJ0PR11MB5629.namprd11.prod.outlook.com>
+References: <20220223002712.2771809-1-jacob.e.keller@intel.com>
+ <20220223002712.2771809-26-jacob.e.keller@intel.com>
+In-Reply-To: <20220223002712.2771809-26-jacob.e.keller@intel.com>
+Accept-Language: pl-PL, en-US
 Content-Language: en-US
-To: Jakob Koschel <jakobkoschel@gmail.com>,
- Linus Torvalds <torvalds@linux-foundation.org>
-References: <20220228110822.491923-1-jakobkoschel@gmail.com>
- <20220228110822.491923-7-jakobkoschel@gmail.com>
-From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-Organization: Intel Corporation UK Plc
-In-Reply-To: <20220228110822.491923-7-jakobkoschel@gmail.com>
-X-Mailman-Approved-At: Wed, 02 Mar 2022 17:21:35 +0000
-Subject: Re: [Intel-wired-lan] [Intel-gfx] [PATCH 6/6] treewide: remove
- check of list iterator against head past the loop body
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.401.20
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7bb624a2-4cfe-4af7-7f31-08d9fc8491c7
+x-ms-traffictypediagnostic: BL0PR11MB3426:EE_
+x-microsoft-antispam-prvs: <BL0PR11MB3426960A04358E20E3CA04B7AB039@BL0PR11MB3426.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aEmpoYB4imc0zZDNLGkxguT+KZhP4c4f9wbDmOQnr6V5ewFd3LVfGc0ow6se8zYrBTCMP9jQ/n5z/H51qH/joKrPlfp5CaKSZuaKNUcS2stJPSFTPnSjDTN6WOb/UB3qmUTeUJp6dg3igo0YIrneyQ7RNJp8qySPQC+iNdpNXjBMEry9jktDevgA/ZKgpn20fjtS47PLmc6+cH38cIvDp6CQtLcnUoi/7jU+c/jdnqQ4NiWytgpO6CFnr2gMDAhvaue1D14q0I3ZrmNCnGfxPR9vM3WfgwZd8Yw1AxpQqTCT7OtaCJymOT4i029X/esRoWaEOgYVk9I1UwFeB1sY4o0mxQ8oewLGTe9qbF95IP4/i8RGhQui/TBa4jZ8R1jGypKZD0Jn3kjscuQmXUd7+njihbt67m97uuSCXkhOs748JPYUraHlRUuwSZyFbwRZwTA6TtNO8CiUKKiQGNqBzR3bXaI/U9VncUoPs1lFbiNwR5fW1mVducJOaO3OFEOHiBSfe74k3xfw+9ge93pegY9L5kf6e93S3/rxWIoRHYx9QpNvl3bCghNslRoyQX3W0w9hxZr9K7Op1ScB1vyDbEtT5mqP6oySI0ZBCltoK4UV1Cky9xKi3uarrI1MivhH+UUau5NUyPaLdH+TBKhDmMelk1NyW/2ChPOI4NVnGVxAPDgOdT4IB/ub4rLPXxvSGPF3APGFzNLjTrEJQwHMjQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB5629.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(9686003)(53546011)(82960400001)(122000001)(38100700002)(6506007)(7696005)(71200400001)(2906002)(33656002)(186003)(26005)(5660300002)(76116006)(66946007)(66446008)(66556008)(52536014)(8676002)(55016003)(66476007)(64756008)(86362001)(508600001)(38070700005)(8936002)(83380400001)(110136005)(316002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oRThTk++1q5zvb4OLxZ2fMATfzzelwivTsaLBPaMV1tfSpgmQwJsuNn3ZYMX?=
+ =?us-ascii?Q?bja+NpGkzdutQL30qDgQXUM/6Yme8gGkXJ9k2Z0C5QrwHU75CIBtA1t+b70H?=
+ =?us-ascii?Q?uEp5aWLPEoMQvQo+BitM9Vk2xaJAAHunKROAXYhWeDfWZ/rnC7gUOKkaBL3M?=
+ =?us-ascii?Q?pmDTU8rEGt28iduUEtkBR6tiZoOvWDZUtx26syDDNrPpaeaFnR/oD0+pVpco?=
+ =?us-ascii?Q?/gtOvgKlIpsP9JjpddYIhkBRK46eGjz5bxFj2pBRyR/i4+Q1I0PrlihsZqc6?=
+ =?us-ascii?Q?zfKNtdlc8NlXtWjCcLDixjhGMDupg/iCVEN4uyMvQH3fDjBQcY0jcEkWhFQi?=
+ =?us-ascii?Q?55r5SoW6okDZeBSzl6RPOiB+Otnmt2Ud2KhSmLmuhwjk6vezMt8Gew8ueQu8?=
+ =?us-ascii?Q?v8GaKrm1JIQBXH3xn+cpp8HBLsVo9q1p0lq+NuWuGa+bxJB2bmUf3xWLjTM9?=
+ =?us-ascii?Q?7sbVYA727AcCfhgqtuutqrSLs3cseIjdAFB/78KsZM6X5gbBS92ogdc/kOo6?=
+ =?us-ascii?Q?p0HN0bG+hER+0Ky6pM5HneRD/xpGCQHslcuk9y+IH8ORrRpQ0HqkTpUFvd7E?=
+ =?us-ascii?Q?oTDk17lAurgSePdqXIe6cZ6FjYYu6NqHN0pdvAqyaZ5qMAJ3qVU8KUADfPp7?=
+ =?us-ascii?Q?TwtZzer6sqNsudBdC281BteDYvCOtTaqw3Acp2qocj5ZmoMBYuEOM00vAsIF?=
+ =?us-ascii?Q?w9capCGCk8gGKPfUbV34jH+YZegsBbPQsVRWqWusZ52A5XBkHi33/gYM7ctC?=
+ =?us-ascii?Q?tc0FYUd6VeI8/47TmPrOh0z8WEUKulm+sf4aeOvWrd7gLtqZSTeJFD9SEFad?=
+ =?us-ascii?Q?vC5HrJy7lsESexPd/oKdeYnl9Owvtt+TUdBqyLXDeTogASIUUSvoD2Np+u8Y?=
+ =?us-ascii?Q?dKLTvoo4dP/Zrex/AXEDUeK9sC9S18PgQcmJ1BDqjlif568LF5Rc7+COm1Sm?=
+ =?us-ascii?Q?w56VzTE5Dy5yE6VeSNNwO83gbdnmG+lq5lPGK0ZNEWWcDrN1vyj0z2BZuas1?=
+ =?us-ascii?Q?31hxDF8/DMlRy9uecBbVUGzMGmpLSSEChA7z18/pEFaSxuu80Q/VaGMmzEjT?=
+ =?us-ascii?Q?3FP+sQjpIjrUeUVaSYnwkinVcHrBgXrZlycfhkLPWQFGRC2Zd5YP9jl0zvz7?=
+ =?us-ascii?Q?XXM/XRy8bINedNS/+uh+zz9fWgkyUJbFVowoef/LfV8vwpIm6VL9QN5EN6Nl?=
+ =?us-ascii?Q?g0UyCs9fvedF0SvG0zESjQLiOB4/PsuLc15hDaNfFmCokqV//EcncKF00D5l?=
+ =?us-ascii?Q?AWbCiMYwGbBZ2u331Td8WFA4GBEgjKfb+q4Cuzhi5Jr1yhzD7x5EyTNV3rX2?=
+ =?us-ascii?Q?HkkyyIpGcciNbHoUMx5PNNQyzR/e0SJFKSNf+DnXL5UTiCV++uiWD65cw0sV?=
+ =?us-ascii?Q?ZiG/q22Flc8b5ouyo10XAGTKu9/fs6b3S0TiaKcgXAscDYyGFRA9exveLENq?=
+ =?us-ascii?Q?01WCWC62vnBCWOgSks31yqIguQPIRc/8ffgErkz3Qip5NiYzLmhTjOgQk+mW?=
+ =?us-ascii?Q?isbWgfWglGtDx+YKnm9q9G5c6wD+XHZKpk0WgClg6bPfWJGfH0p7TZFUgTC0?=
+ =?us-ascii?Q?odFeTaEimcP5Vjs4B5Nn5RytFD7d2tCdV6VnBPj4dgH+crgSAw5b5lhELyMV?=
+ =?us-ascii?Q?V/ksx4MLhWw98no8HMxXNfgvTXunJGwAM1zNWo8VXrdmCf0K+0tQX8MwcqFP?=
+ =?us-ascii?Q?klVhaw=3D=3D?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5629.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7bb624a2-4cfe-4af7-7f31-08d9fc8491c7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2022 19:40:56.0195 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: gS74wMm4ejhGMG+8POTVooTAj02SItR2IuOdyrCcuflDIqIu7Qja06seWIkIT3CWd/CWQS3NxaF6HqKklrfsc937AZH94FXMJ0W4qrExGvs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR11MB3426
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [net-next PATCH 25/25] ice: remove PF pointer
+ from ice_check_vf_init
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,203 +176,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, alsa-devel@alsa-project.org,
- kvm@vger.kernel.org, linux-iio@vger.kernel.org, nouveau@lists.freedesktop.org,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>, dri-devel@lists.freedesktop.org,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, amd-gfx@lists.freedesktop.org,
- linux1394-devel@lists.sourceforge.net, drbd-dev@lists.linbit.com,
- linux-arch <linux-arch@vger.kernel.org>, linux-cifs@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-scsi@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev, "Bos,
- H.J." <h.j.bos@vu.nl>, Jason Gunthorpe <jgg@ziepe.ca>,
- intel-wired-lan@lists.osuosl.org, kgdb-bugreport@lists.sourceforge.net,
- bcm-kernel-feedback-list@broadcom.com,
- Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org,
- Kees Cook <keescook@chromium.org>, Arnd Bergman <arnd@arndb.de>,
- linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Nathan Chancellor <nathan@kernel.org>, dmaengine@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- v9fs-developer@lists.sourceforge.net, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-sgx@vger.kernel.org,
- linux-block@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- samba-technical@lists.samba.org, linux-kernel@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, Mike Rapoport <rppt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-On 28/02/2022 11:08, Jakob Koschel wrote:
-> When list_for_each_entry() completes the iteration over the whole list
-> without breaking the loop, the iterator value will be a bogus pointer
-> computed based on the head element.
-> 
-> While it is safe to use the pointer to determine if it was computed
-> based on the head element, either with list_entry_is_head() or
-> &pos->member == head, using the iterator variable after the loop should
-> be avoided.
-> 
-> In preparation to limiting the scope of a list iterator to the list
-> traversal loop, use a dedicated pointer to point to the found element.
-> 
-> Signed-off-by: Jakob Koschel <jakobkoschel@gmail.com>
 
-[snip until i915 parts]
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Jacob Keller
+> Sent: Wednesday, February 23, 2022 1:27 AM
+> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+> Subject: [Intel-wired-lan] [net-next PATCH 25/25] ice: remove PF pointer
+> from ice_check_vf_init
+> 
+> The ice_check_vf_init function takes both a PF and a VF pointer. Every caller
+> looks up the PF pointer from the VF structure. Some callers only use of the
+> PF pointer is call this function. Move the lookup inside ice_check_vf_init and
+> drop the unnecessary argument.
+> 
+> Cleanup the callers to drop the now unnecessary local variables. In particular,
+> replace the local PF pointer with a HW structure pointer in
+> ice_vc_get_vf_res_msg which simplifies a few accesses to the HW structure
+> in that function.
+> 
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c      | 16 +++++++---------
+>  .../net/ethernet/intel/ice/ice_vf_lib_private.h  |  2 +-
+>  drivers/net/ethernet/intel/ice/ice_virtchnl.c    | 12 ++++++------
+>  3 files changed, 14 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> index c584f5123ba7..6578059d9479 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> @@ -174,15 +174,12 @@ static void ice_wait_on_vf_reset(struct ice_vf *vf)
 
->   drivers/gpu/drm/i915/gem/i915_gem_context.c   | 14 +++---
->   .../gpu/drm/i915/gem/i915_gem_execbuffer.c    | 15 ++++---
->   drivers/gpu/drm/i915/gt/intel_ring.c          | 15 ++++---
-
-[snip]
-
-> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_context.c b/drivers/gpu/drm/i915/gem/i915_gem_context.c
-> index 00327b750fbb..80c79028901a 100644
-> --- a/drivers/gpu/drm/i915/gem/i915_gem_context.c
-> +++ b/drivers/gpu/drm/i915/gem/i915_gem_context.c
-> @@ -107,25 +107,27 @@ static void lut_close(struct i915_gem_context *ctx)
->   	radix_tree_for_each_slot(slot, &ctx->handles_vma, &iter, 0) {
->   		struct i915_vma *vma = rcu_dereference_raw(*slot);
->   		struct drm_i915_gem_object *obj = vma->obj;
-> -		struct i915_lut_handle *lut;
-> +		struct i915_lut_handle *lut = NULL;
-> +		struct i915_lut_handle *tmp;
-> 
->   		if (!kref_get_unless_zero(&obj->base.refcount))
->   			continue;
-> 
->   		spin_lock(&obj->lut_lock);
-> -		list_for_each_entry(lut, &obj->lut_list, obj_link) {
-> -			if (lut->ctx != ctx)
-> +		list_for_each_entry(tmp, &obj->lut_list, obj_link) {
-> +			if (tmp->ctx != ctx)
->   				continue;
-> 
-> -			if (lut->handle != iter.index)
-> +			if (tmp->handle != iter.index)
->   				continue;
-> 
-> -			list_del(&lut->obj_link);
-> +			list_del(&tmp->obj_link);
-> +			lut = tmp;
->   			break;
->   		}
->   		spin_unlock(&obj->lut_lock);
-> 
-> -		if (&lut->obj_link != &obj->lut_list) {
-> +		if (lut) {
->   			i915_lut_handle_free(lut);
->   			radix_tree_iter_delete(&ctx->handles_vma, &iter, slot);
-
-Looks okay although personally I would have left lut as is for a smaller 
-diff and introduced a new local like 'found' or 'unlinked'.
-
->   			i915_vma_close(vma);
-> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c b/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
-> index 1736efa43339..fda9e3685ad2 100644
-> --- a/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
-> +++ b/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
-> @@ -2444,7 +2444,8 @@ static struct i915_request *eb_throttle(struct i915_execbuffer *eb, struct intel
->   {
->   	struct intel_ring *ring = ce->ring;
->   	struct intel_timeline *tl = ce->timeline;
-> -	struct i915_request *rq;
-> +	struct i915_request *rq = NULL;
-> +	struct i915_request *tmp;
-> 
->   	/*
->   	 * Completely unscientific finger-in-the-air estimates for suitable
-> @@ -2460,15 +2461,17 @@ static struct i915_request *eb_throttle(struct i915_execbuffer *eb, struct intel
->   	 * claiming our resources, but not so long that the ring completely
->   	 * drains before we can submit our next request.
->   	 */
-> -	list_for_each_entry(rq, &tl->requests, link) {
-> -		if (rq->ring != ring)
-> +	list_for_each_entry(tmp, &tl->requests, link) {
-> +		if (tmp->ring != ring)
->   			continue;
-> 
-> -		if (__intel_ring_space(rq->postfix,
-> -				       ring->emit, ring->size) > ring->size / 2)
-> +		if (__intel_ring_space(tmp->postfix,
-> +				       ring->emit, ring->size) > ring->size / 2) {
-> +			rq = tmp;
->   			break;
-> +		}
->   	}
-> -	if (&rq->link == &tl->requests)
-> +	if (!rq)
->   		return NULL; /* weird, we will check again later for real */
-
-Alternatively, instead of break could simply do "return 
-i915_request_get(rq);" and replace the end of the function after the 
-loop with "return NULL;". A bit smaller diff, or at least less "spread 
-out" over the function, so might be easier to backport stuff touching 
-this area in the future. But looks correct as is.
-
-> 
->   	return i915_request_get(rq);
-> diff --git a/drivers/gpu/drm/i915/gt/intel_ring.c b/drivers/gpu/drm/i915/gt/intel_ring.c
-> index 2fdd52b62092..4881c4e0c407 100644
-> --- a/drivers/gpu/drm/i915/gt/intel_ring.c
-> +++ b/drivers/gpu/drm/i915/gt/intel_ring.c
-> @@ -191,24 +191,27 @@ wait_for_space(struct intel_ring *ring,
->   	       struct intel_timeline *tl,
->   	       unsigned int bytes)
->   {
-> -	struct i915_request *target;
-> +	struct i915_request *target = NULL;
-> +	struct i915_request *tmp;
->   	long timeout;
-> 
->   	if (intel_ring_update_space(ring) >= bytes)
->   		return 0;
-> 
->   	GEM_BUG_ON(list_empty(&tl->requests));
-> -	list_for_each_entry(target, &tl->requests, link) {
-> -		if (target->ring != ring)
-> +	list_for_each_entry(tmp, &tl->requests, link) {
-> +		if (tmp->ring != ring)
->   			continue;
-> 
->   		/* Would completion of this request free enough space? */
-> -		if (bytes <= __intel_ring_space(target->postfix,
-> -						ring->emit, ring->size))
-> +		if (bytes <= __intel_ring_space(tmp->postfix,
-> +						ring->emit, ring->size)) {
-> +			target = tmp;
->   			break;
-> +		}
->   	}
-> 
-> -	if (GEM_WARN_ON(&target->link == &tl->requests))
-> +	if (GEM_WARN_ON(!target))
->   		return -ENOSPC;
-> 
->   	timeout = i915_request_wait(target,
-
-Looks okay as well. Less clear here if there is a clean solution to make 
-the diff smaller so no suggestions. I mean do I dare mention "goto 
-found;" from inside the loop, where the break is, instead of the 
-variable renames.. risky.. :) (And ofc "return -ENOSPC" immediately 
-after the loop.)
-
-As a summary changes looks okay, up to you if you want to try to make 
-the diffs smaller or not. It doesn't matter hugely really, all I have is 
-a vague and uncertain "maybe it makes backporting of something, someday 
-easier". So for i915 it is good either way.
-
-Reviewed-by: Tvrtko Ursulin <tvrtko.ursulin@intel.com> # i915 bits only
-
-Regards,
-
-Tvrtko
+Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
