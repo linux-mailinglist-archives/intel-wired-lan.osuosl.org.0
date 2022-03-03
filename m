@@ -1,172 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C72024CB938
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Mar 2022 09:38:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FB014CBA3A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Mar 2022 10:30:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5249F60F39;
-	Thu,  3 Mar 2022 08:38:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3921813D9;
+	Thu,  3 Mar 2022 09:30:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OafyMv2FLhp7; Thu,  3 Mar 2022 08:38:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uTsxbUNLKh21; Thu,  3 Mar 2022 09:30:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 42B0A606FF;
-	Thu,  3 Mar 2022 08:38:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B71A3813B4;
+	Thu,  3 Mar 2022 09:30:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D1BD11BF317
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 08:38:15 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 676B91BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 09:30:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CABEA8414B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 08:38:15 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4CFC540114
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 09:30:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com header.b="TwiaHjmL";
- dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com
- header.b="qCXaoZ4p"
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3vt5tL-p2m0l for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Mar 2022 08:38:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
- [205.220.177.32])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AB13884147
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 08:38:13 +0000 (UTC)
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 2238TofU009255; 
- Thu, 3 Mar 2022 08:38:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=lls2oJlCde/5R4vs9dRM9IyPdTO59+WWaANIJcDvMog=;
- b=TwiaHjmLOoWruAgaTisRyaVgzpTJ18J16Luz/lBi8sBMc45clrc8w7FK+KvyonabKdt0
- iDBkAxKDOrNYtqlSO4sTzmRRwZMAg9/T86fLLVFdKa/ca2kTf1kuxBCZWwzMmf9WTMI3
- B68nQ9rflcrKhyvfN4R7WkOIrqL+ppWiFTi8SZi9t4kJhntS9Z4Oe490ig9+oD0yy73V
- /HWnoYxgAafN5F1aQsqxiM6u13y+eBH+WwYBMiJ0TJ/GbjQkm89DaZ7yEIVRnnpxuzxQ
- 5PLApn5G/bnMD8h1v9Hh4YcuNHIyOOhPugV3A8CDL0cCe8mX4RAdvK7OJ+nMqNAnSeIn qA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by mx0b-00069f02.pphosted.com with ESMTP id 3ehbk9eq6x-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Mar 2022 08:38:03 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 2238Lvg8087473;
- Thu, 3 Mar 2022 08:38:02 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam10lp2101.outbound.protection.outlook.com [104.47.55.101])
- by userp3020.oracle.com with ESMTP id 3efdns2d6d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 03 Mar 2022 08:38:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UV9Y8GSVmHICI0sKged5C6L9zYN/E1gtry/+lYCbPdWZCiIyFG86pLb8V1Jb94NknoVljPLkpml0ajmpg/LFM2H91thMGGmiL+Zw9pqvNCzavUxVuR/x9OLR0FXN+boWfnNtEaU3XacIvFyt2a58OvaAb7Zzwb3hDLRAf5s8kGMZkBmQFc/Iel9jcY0UaJaX3sewnONiwuqKcZ2QU+AoAgozK+oUmXAblm31YMnASIMbvihxWoHrQA2yktQe2CkY8O66DqEPlCHI3xFylq/lhhvjqpB7rx/L2DWT8fbJ0WU0IlUybbIvuW+w/ROqhPz4aeW3EYw8mWguU3dyfmroXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lls2oJlCde/5R4vs9dRM9IyPdTO59+WWaANIJcDvMog=;
- b=iM+uZL/jc+h/4yrQiGJaBq/nvYxq1A757w1WYfK786zC0e9835ePsdetp/7tI7r5JmuxpzI+h6ZimVpU3wJDmMA3ASvxzZ7u10jhqG3pbL4R1CrJRhT7jCl3cjcy47D/tMixzhb/3MmerswF5dLa+M9FPk0bnPl/rl+RE3oj6wA+TcvtE4excLOZ6Czf7L/HYFz5m8+grkJ/SmmH83g76p7ozt3ICq2ey3H/Q67ZyvUC5JmCHrW+aDOHbEJVdCWCUo5URMTkGWIsXJ1pYz/+3DGvOdFkn/iS26I4HuQW7/nJRVZP12RMnAprUGVsaehhhJuE3yBHO1KR1uY2RGqXcQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lls2oJlCde/5R4vs9dRM9IyPdTO59+WWaANIJcDvMog=;
- b=qCXaoZ4pGtqG8WMQ2MyrGEKChh+1bId7B3xNrBBaNNSazfHD4PVEO2VShd4YgpSYXKQHJaUKATwyLDOoCiS1HwKsIU48WYuDwtISoMm7GNril0RaaMT/OKDkbWAFInyHJ5QY3IJjN9eZrmgECKCG2P1xZoLPAJsaJgxtEcugMuM=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by PH0PR10MB5626.namprd10.prod.outlook.com
- (2603:10b6:510:f9::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Thu, 3 Mar
- 2022 08:37:58 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5017.027; Thu, 3 Mar 2022
- 08:37:57 +0000
-Date: Thu, 3 Mar 2022 11:37:16 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kees Cook <keescook@chromium.org>
-Message-ID: <20220303083716.GL2812@kadam>
-References: <b2d20961dbb7533f380827a7fcc313ff849875c1.camel@HansenPartnership.com>
- <7D0C2A5D-500E-4F38-AD0C-A76E132A390E@kernel.org>
- <73fa82a20910c06784be2352a655acc59e9942ea.camel@HansenPartnership.com>
- <CAHk-=wiT5HX6Kp0Qv4ZYK_rkq9t5fZ5zZ7vzvi6pub9kgp=72g@mail.gmail.com>
- <7dc860874d434d2288f36730d8ea3312@AcuMS.aculab.com>
- <CAHk-=whKqg89zu4T95+ctY-hocR6kDArpo2qO14-kV40Ga7ufw@mail.gmail.com>
- <0ced2b155b984882b39e895f0211037c@AcuMS.aculab.com>
- <CAHk-=wix0HLCBs5sxAeW3uckg0YncXbTjMsE-Tv8WzmkOgLAXQ@mail.gmail.com>
- <78ccb184-405e-da93-1e02-078f90d2b9bc@rasmusvillemoes.dk>
- <202203021158.DB5204A0@keescook>
-Content-Disposition: inline
-In-Reply-To: <202203021158.DB5204A0@keescook>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JN2P275CA0023.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::35)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UaRUYAExNhX5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Mar 2022 09:30:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [185.58.85.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D1DC5400D7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 09:30:19 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ uk-mta-318-HvTdrMxlM1W3jsGT6It_3A-1; Thu, 03 Mar 2022 09:30:16 +0000
+X-MC-Unique: HvTdrMxlM1W3jsGT6It_3A-1
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.28; Thu, 3 Mar 2022 09:30:14 +0000
+Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
+ AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
+ 15.00.1497.028; Thu, 3 Mar 2022 09:30:14 +0000
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Xiaomeng Tong' <xiam0nd.tong@gmail.com>
+Thread-Topic: [PATCH 2/6] treewide: remove using list iterator after loop body
+ as a ptr
+Thread-Index: AQHYLhg9+DU/OogLf0+tiSFmjztyUKysHu+QgADRVYCAACVtoIAALj+AgAAE1XA=
+Date: Thu, 3 Mar 2022 09:30:14 +0000
+Message-ID: <2d208771c50b4c6db4f43039e9d62851@AcuMS.aculab.com>
+References: <39404befad5b44b385698ff65465abe5@AcuMS.aculab.com>
+ <20220303072657.11124-1-xiam0nd.tong@gmail.com>
+In-Reply-To: <20220303072657.11124-1-xiam0nd.tong@gmail.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 18773b71-726f-4184-c06c-08d9fcf11e33
-X-MS-TrafficTypeDiagnostic: PH0PR10MB5626:EE_
-X-Microsoft-Antispam-PRVS: <PH0PR10MB5626D166F5452DEF0D0861088E049@PH0PR10MB5626.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2brEhtGABjpCwIWqj/IXRycHcKXzZGnFjNhAcpGsfszkZcHwMN6tj63L2OpiMuCXDr/vijUPpGbQxtr85QjodG/Ub1ztkkQLFxecO2u6Sc5dub89EqyYNFqbQ9zxI0bIRWh7xo4binfWSUsanHrX714ZK5VrHsdbMDKjwbLN+rAazS+obqXK275K8K8hhsrfXvlC1+/YAT9ChxH0YP1wapsTU+DtwbthIYWZu2Bkz3O1d0S0oPHbhNo7GHB7lCD5gDV+Mu3sJFDGdIhg/onUWz1J6cD+y7Y8vHVpQ0d9gD5qhYSZy73viYF9lqYYZDtimvrbn23EFNFXhByeh80HZHw87r7HmMPOdgZIZHokPhaRuk4mxsLbO9YtLM7W+Ip3GuS8Y6QhCegdJTExl+EJQN1oBxnsVoQL2U8mJKbz4W5OV5EAHGS6N+tXgbSoBQ/6WSpznBHR48Nn9iKsTB/qLmxsn0kMQ9oT1pC0LfqDSH+/P44RNj4lftjGLW55d4eMY4ezopZRvITnl80BkIBSCDOGcKhQ4+tHKFP9kyJE5lzTQkZCLIWvPkZErT85OpVY6XhmWjntQNwtFoP+VpAt2aZlKUeVWyWKyBA6bKiV7F4dZ+gK99hk3qgycT2BZdL3M3i8V+kvAhM3czn32zc7Wy7BY3fTDTZ1k+1A7/G1m+0qgrFI75UfsgHWyRNH6GvSkzyNqP292jpe+lItymvB61Tx6OMD6EmQr38gSmPvB17zwo+Fu3AgeDQn0Ijr4Y0ejjpA58yappp8fRbNb85Cjj/IaiWL7QD6xSFVUfeEAq8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(26005)(1076003)(6666004)(54906003)(186003)(38350700002)(86362001)(9686003)(38100700002)(33716001)(7406005)(6916009)(66556008)(7366002)(66946007)(44832011)(66476007)(4326008)(33656002)(8676002)(508600001)(5660300002)(2906002)(6486002)(7416002)(8936002)(6512007)(52116002)(6506007)(316002)(966005);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AghzP5rPGKA+tL0gt3Ojr2pTlpDyjFT65pyg7K/z0s1+AQH5rpyEKvmh6lYq?=
- =?us-ascii?Q?fda6PBRGLyWGH+xQACLW+8Vuz11WBSt7Cmvkc9IvLRdI/kKeUo2zOQCqwji6?=
- =?us-ascii?Q?Ejypue0Qb1EDBbkNC6uwCdkonNmwo8Uvev6wdmtfgKnPE868zCnkwnhbQOXj?=
- =?us-ascii?Q?1Zu/0OKqrmh7XwTRDjh7ac70M4s27Gu2a9UjZSszmqxy2RO0PiuzPGpYsApY?=
- =?us-ascii?Q?I4hd/cK8hW3xPsD2zmadP10bM52A14CIiCfQA8s29iC5D4pqrIKkJkPJbBun?=
- =?us-ascii?Q?vCZlEqDHkvk8m/ccq+lSW7ApRHe9+G0yJo9mkJsXbz8OtFBGzpWO3JW7Uw+c?=
- =?us-ascii?Q?oYqHrHDNyZkMsZNp2S40S662CmnxOkgaAiRnpsIPCDs2nQ8uNkHRUpbXbCtF?=
- =?us-ascii?Q?amUMbZXSwuxys1Izs9/9Coy6/XNuoIf18ZM7a7CiVefQoqyYldSXb/p3dJ3q?=
- =?us-ascii?Q?wM0o3NUwVTaV5LArxwtyBYany6ip3IwQsTyrNMNOCyTKVHGtiTWxsnRle/4s?=
- =?us-ascii?Q?HT/UHL6E9GC8OOc+E1JKivqynq4mdb4KrPZngSTXvtM7i0B9dpNrr+jH3dsT?=
- =?us-ascii?Q?lRyrVXksl+a0sOQwe87sTAMTpuL+H5rkWzq33Ixj4pjLSHaXAGzmLMr4C5Di?=
- =?us-ascii?Q?CMsePBcN0a3ozMiDLrq42sqBV3U4gVLhbodh3EKn0i0dNJ9Waw4n1fRVOlvL?=
- =?us-ascii?Q?v86DCTIB1qnRs0fxKCEh3TnPSlTSMcw5twfMjbjC4o4Gvecz+6Qhf/avYMst?=
- =?us-ascii?Q?jVzO0V+U8fIQXaohH7gKl7NRiGFzxJvn2DyceMOTISckIs0VEGoA9S7E4JXO?=
- =?us-ascii?Q?7eNYSaU+aiszgpb1vWbsF1w1Sch70PSKl5GpXct+6hHovcHaqwfzpI8FmB6C?=
- =?us-ascii?Q?/8Zgt8KMYOSNg8TfjEWq5jxfCLjldMzjmdvBuymg/z2lDuHviO1Q+T3FkpYo?=
- =?us-ascii?Q?/Z+3W/1WolbXgYQChicmTGJLJGIJIP5an/O5ruF5Q1l96Yqq8poaPc5ZpMoi?=
- =?us-ascii?Q?LyZ81fNJ8y9C0c5sliFm+mKg5k5x1tTYlRsFGlJqhsqlkNlvkaGRB/xog9Gz?=
- =?us-ascii?Q?2PmZRjuteHSIEqyBCHM7bnvFTNg0ReCxzkWukua1w5djd+fBm6BwtN/3d7+G?=
- =?us-ascii?Q?JBvTRx3144svJI0DiOW0Pd9vZi4q6/Ou6DFxx5C8xBJZYiT3dLZ2c/sY74ub?=
- =?us-ascii?Q?wn5owCQJ9K+RaBMU1mn9pyEXi+IbQYOxDVQQG4/AZshuBBMFM9k42PMvueTY?=
- =?us-ascii?Q?mU0l/ADbD4dLXqliR3DJ6v2GKxYEZZCl5iUWBjhMgpsnKBp+/2VzImjLILIZ?=
- =?us-ascii?Q?EE7mM2lzPryAjQGS2uqc3n/8Fmd0siQPBX4eyf2r9O1QBrjxWVDUBDi28m7M?=
- =?us-ascii?Q?Qo4Qb8pOoUM/EZXZw3FoEomEmfDNwDOU+kG6H7R6T4Je0illNp8OY3s3DFOR?=
- =?us-ascii?Q?YBpnvj5l5diRt8E+iSvqR3BkNQT7DZXpqSuNhgJR0UspyZGN4T/pbWd1zvXr?=
- =?us-ascii?Q?oWeCe3k426wejAXadBAoyOWSv6gkfCDyqTib6Aarzz/nRXkuYgcK9KriFBk9?=
- =?us-ascii?Q?Vo1satNN6O3cLG/i8zQdPGfY5r68Oy2lEZSc9svR0YaJ/eke/mHId68OAIIU?=
- =?us-ascii?Q?X5XDIbT+1b/5Zp7BTJDdMZin2Vdp4BiZhcVH57Hp+Qtiibi4Kj+qA3mVwFWJ?=
- =?us-ascii?Q?VI2aWQ=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 18773b71-726f-4184-c06c-08d9fcf11e33
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2022 08:37:57.7411 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: aKxIp+p4F9hnnIo0dwYofCNEAdrz5Qf9O3g1iTQwxRGCCrzhHeG47yAaGAx6nCUGVywW0ackQXSWmml7dq1afFelKX+3HTk0rRw9KXUEbZE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB5626
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10274
- signatures=686787
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- bulkscore=0
- adultscore=0 phishscore=0 spamscore=0 suspectscore=0 malwarescore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2201110000 definitions=main-2203030040
-X-Proofpoint-GUID: OUqz7vHcF_RKuEf6kF18w1DGpZWXMkpv
-X-Proofpoint-ORIG-GUID: OUqz7vHcF_RKuEf6kF18w1DGpZWXMkpv
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
  iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -182,102 +79,138 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- James Bottomley <James.Bottomley@hansenpartnership.com>,
- Cristiano Giuffrida <c.giuffrida@vu.nl>, "Bos, H.J." <h.j.bos@vu.nl>,
+ "kgdb-bugreport@lists.sourceforge.net" <kgdb-bugreport@lists.sourceforge.net>,
+ "linux@rasmusvillemoes.dk" <linux@rasmusvillemoes.dk>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "c.giuffrida@vu.nl" <c.giuffrida@vu.nl>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "torvalds@linux-foundation.org" <torvalds@linux-foundation.org>,
  "samba-technical@lists.samba.org" <samba-technical@lists.samba.org>,
  "linux1394-devel@lists.sourceforge.net"
  <linux1394-devel@lists.sourceforge.net>,
  "drbd-dev@lists.linbit.com" <drbd-dev@lists.linbit.com>,
- linux-arch <linux-arch@vger.kernel.org>, CIFS <linux-cifs@vger.kernel.org>,
- KVM list <kvm@vger.kernel.org>, linux-scsi <linux-scsi@vger.kernel.org>,
- linux-rdma <linux-rdma@vger.kernel.org>,
+ "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
+ "linux-cifs@vger.kernel.org" <linux-cifs@vger.kernel.org>,
+ "linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
  "linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, Jason Gunthorpe <jgg@ziepe.ca>,
+ "h.j.bos@vu.nl" <h.j.bos@vu.nl>, "jgg@ziepe.ca" <jgg@ziepe.ca>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kgdb-bugreport@lists.sourceforge.net" <kgdb-bugreport@lists.sourceforge.net>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
  "bcm-kernel-feedback-list@broadcom.com"
  <bcm-kernel-feedback-list@broadcom.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Arnd Bergman <arnd@arndb.de>, Linux PM <linux-pm@vger.kernel.org>,
- intel-gfx <intel-gfx@lists.freedesktop.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- Brian Johannesmeyer <bjohannesmeyer@gmail.com>,
- Nathan Chancellor <nathan@kernel.org>,
- linux-fsdevel <linux-fsdevel@vger.kernel.org>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Jakob Koschel <jakobkoschel@gmail.com>,
+ "dan.carpenter@oracle.com" <dan.carpenter@oracle.com>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "keescook@chromium.org" <keescook@chromium.org>,
+ "arnd@arndb.de" <arnd@arndb.de>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "bjohannesmeyer@gmail.com" <bjohannesmeyer@gmail.com>,
+ "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+ "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
+ "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+ "jakobkoschel@gmail.com" <jakobkoschel@gmail.com>,
  "v9fs-developer@lists.sourceforge.net" <v9fs-developer@lists.sourceforge.net>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "linux-sgx@vger.kernel.org" <linux-sgx@vger.kernel.org>,
- linux-block <linux-block@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ "nathan@kernel.org" <nathan@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux F2FS Dev Mailing List <linux-f2fs-devel@lists.sourceforge.net>,
- David Laight <David.Laight@aculab.com>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-f2fs-devel@lists.sourceforge.net"
+ <linux-f2fs-devel@lists.sourceforge.net>,
  "tipc-discussion@lists.sourceforge.net"
  <tipc-discussion@lists.sourceforge.net>,
- Linux Crypto Mailing List <linux-crypto@vger.kernel.org>,
- dma <dmaengine@vger.kernel.org>,
+ "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>,
+ "dmaengine@vger.kernel.org" <dmaengine@vger.kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- Mike Rapoport <rppt@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "rppt@kernel.org" <rppt@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 02, 2022 at 12:07:04PM -0800, Kees Cook wrote:
-> On Wed, Mar 02, 2022 at 10:29:31AM +0100, Rasmus Villemoes wrote:
-> > This won't help the current issue (because it doesn't exist and might
-> > never), but just in case some compiler people are listening, I'd like to
-> > have some sort of way to tell the compiler "treat this variable as
-> > uninitialized from here on". So one could do
-> > 
-> > #define kfree(p) do { __kfree(p); __magic_uninit(p); } while (0)
-> > 
-> > with __magic_uninit being a magic no-op that doesn't affect the
-> > semantics of the code, but could be used by the compiler's "[is/may be]
-> > used uninitialized" machinery to flag e.g. double frees on some odd
-> > error path etc. It would probably only work for local automatic
-> > variables, but it should be possible to just ignore the hint if p is
-> > some expression like foo->bar or has side effects. If we had that, the
-> > end-of-loop test could include that to "uninitialize" the iterator.
-> 
-> I've long wanted to change kfree() to explicitly set pointers to NULL on
-> free. https://github.com/KSPP/linux/issues/87 
-
-You also need to be a bit careful with existing code because there are
-places which do things like:
-
-drivers/usb/host/r8a66597-hcd.c
-   424          kfree(dev);
-                      ^^^
-   425  
-   426          for (port = 0; port < r8a66597->max_root_hub; port++) {
-   427                  if (r8a66597->root_hub[port].dev == dev) {
-                                                            ^^^
-   428                          r8a66597->root_hub[port].dev = NULL;
-   429                          break;
-   430                  }
-   431          }
-
-Printing the freed pointer in debug code is another thing people do.
-
-regards,
-dan carpenter
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogWGlhb21lbmcgVG9uZw0KPiBTZW50OiAwMyBNYXJjaCAyMDIyIDA3OjI3DQo+IA0KPiBP
+biBUaHUsIDMgTWFyIDIwMjIgMDQ6NTg6MjMgKzAwMDAsIERhdmlkIExhaWdodCB3cm90ZToNCj4g
+PiBvbiAzIE1hciAyMDIyIDEwOjI3OjI5ICswODAwLCBYaWFvbWVuZyBUb25nIHdyb3RlOg0KPiA+
+ID4gVGhlIHByb2JsZW0gaXMgdGhlIG1pcy11c2Ugb2YgaXRlcmF0b3Igb3V0c2lkZSB0aGUgbG9v
+cCBvbiBleGl0LCBhbmQNCj4gPiA+IHRoZSBpdGVyYXRvciB3aWxsIGJlIHRoZSBIRUFEJ3MgY29u
+dGFpbmVyX29mIHBvaW50ZXIgd2hpY2ggcG9pbnRlcnMNCj4gPiA+IHRvIGEgdHlwZS1jb25mdXNl
+ZCBzdHJ1Y3QuIFNpZGVub3RlOiBUaGUgKm1pcy11c2UqIGhlcmUgcmVmZXJzIHRvDQo+ID4gPiBt
+aXN0YWtlbHkgYWNjZXNzIHRvIG90aGVyIG1lbWJlcnMgb2YgdGhlIHN0cnVjdCwgaW5zdGVhZCBv
+ZiB0aGUNCj4gPiA+IGxpc3RfaGVhZCBtZW1iZXIgd2hpY2ggYWN1dGFsbHkgaXMgdGhlIHZhbGlk
+IEhFQUQuDQo+ID4NCj4gPiBUaGUgcHJvYmxlbSBpcyB0aGF0IHRoZSBIRUFEJ3MgY29udGFpbmVy
+X29mIHBvaW50ZXIgc2hvdWxkIG5ldmVyDQo+ID4gYmUgY2FsY3VsYXRlZCBhdCBhbGwuDQo+ID4g
+VGhpcyBpcyB3aGF0IGlzIGZ1bmRhbWVudGFsbHkgYnJva2VuIGFib3V0IHRoZSBjdXJyZW50IGRl
+ZmluaXRpb24uDQo+IA0KPiBZZXMsIHRoZSBydWxlIGlzICJ0aGUgSEVBRCdzIGNvbnRhaW5lcl9v
+ZiBwb2ludGVyIHNob3VsZCBuZXZlciBiZQ0KPiBjYWxjdWxhdGVkIGF0IGFsbCBvdXRzaWRlIHRo
+ZSBsb29wIiwgYnV0IGhvdyBkbyB5b3UgbWFrZSBzdXJlIGV2ZXJ5b25lDQo+IGZvbGxvd3MgdGhp
+cyBydWxlPw0KPiBFdmVyeW9uZSBtYWtlcyBtaXN0YWtlcywgYnV0IHdlIGNhbiBlbGltaW5hdGUg
+dGhlbSBhbGwgZnJvbSB0aGUgYmVnaW5uaW5nDQo+IHdpdGggdGhlIGhlbHAgb2YgY29tcGlsZXIg
+d2hpY2ggY2FuIGNhdGNoIHN1Y2ggdXNlLWFmdGVyLWxvb3AgdGhpbmdzLg0KPiANCj4gPiA+IElP
+VywgeW91IHdvdWxkIGRlcmVmZXJlbmNlIGEgKE5VTEwgKyBvZmZzZXRfb2ZfbWVtYmVyKSBhZGRy
+ZXNzIGhlcmUuDQo+ID4NCj4gPldoZXJlPw0KPiANCj4gSW4gdGhlIGNhc2Ugd2hlcmUgYSBkZXZl
+bG9wZXIgZG8gbm90IGZvbGxvd3MgdGhlIGFib3ZlIHJ1bGUsIGFuZCBtaXN0YWtlbHkNCj4gYWNj
+ZXNzIGEgbm9uLWxpc3QtaGVhZCBtZW1iZXIgb2YgdGhlIEhFQUQncyBjb250YWluZXJfb2YgcG9p
+bnRlciBvdXRzaWRlDQo+IHRoZSBsb29wLiBGb3IgZXhhbXBsZToNCj4gICAgIHN0cnVjdCByZXF7
+DQo+ICAgICAgIGludCBhOw0KPiAgICAgICBzdHJ1Y3QgbGlzdF9oZWFkIGg7DQo+ICAgICB9DQo+
+ICAgICBzdHJ1Y3QgcmVxICpyOw0KPiAgICAgbGlzdF9mb3JfZWFjaF9lbnRyeShyLCBIRUFELCBo
+KSB7DQo+ICAgICAgIGlmIChyLT5hID09IDB4MTApDQo+ICAgICAgICAgYnJlYWs7DQo+ICAgICB9
+DQo+ICAgICAvLyB0aGUgZGV2ZWxvcGVyIG1hZGUgYSBtaXN0YWtlOiBoZSBkaWRuJ3QgdGFrZSB0
+aGlzIHNpdHVhdGlvbiBpbnRvDQo+ICAgICAvLyBhY2NvdW50IHdoZXJlIGFsbCBlbnRyaWVzIGlu
+IHRoZSBsaXN0IGFyZSAqci0+YSAhPSAweDEwKiwgYW5kIG5vdw0KPiAgICAgLy8gdGhlIHIgaXMg
+dGhlIEhFQUQncyBjb250YWluZXJfb2YgcG9pbnRlci4NCj4gICAgIHItPmEgPSAweDIwOw0KPiBU
+aHVzIHRoZSAici0+YSA9IDB4MjAiIHdvdWxkIGRlcmVmZXJlbmNlIGEgKE5VTEwgKyBvZmZzZXRf
+b2ZfbWVtYmVyKQ0KPiBhZGRyZXNzIGhlcmUuDQoNClRoYXQgaXMganVzdCBhIGJ1Zy4NCk5vIGRp
+ZmZlcmVudCB0byBmYWlsaW5nIHRvIGNoZWNrIGFueXRoaW5nIGVsc2UgbWlnaHQgJ3JldHVybicN
+CmEgTlVMTCBwb2ludGVyLg0KQmVjYXVzZSBpdCBpcyBhIE5VTEwgZGVyZWZlcmVuY2UgeW91IGZp
+bmQgb3V0IHByZXR0eSBxdWlja2x5Lg0KVGhlIGV4aXN0aW5nIGxvb3AgbGVhdmVzIHlvdSB3aXRo
+IGEgdmFsaWQgcG9pbnRlciB0byBzb21ldGhpbmcNCnRoYXQgaXNuJ3QgYSBsaXN0IGl0ZW0uDQoN
+Cj4gPiA+IFBsZWFzZSByZW1pbmQgbWUgaWYgaSBtaXNzZWQgc29tZXRoaW5nLCB0aGFua3MuDQo+
+ID4gPg0KPiA+ID4gQ2FuIHlvdSBzaGFyZSB5b3VyICJhbHRlcm5hdGl2ZSBkZWZpbml0aW9ucyIg
+ZGV0YWlscz8gdGhhbmtzIQ0KPiA+DQo+ID4gVGhlIGxvb3Agc2hvdWxkIHByb2JhYmx5IHVzZSBh
+cyBleHRyYSB2YXJpYWJsZSB0aGF0IHBvaW50cw0KPiA+IHRvIHRoZSAnbGlzdCBub2RlJyBpbiB0
+aGUgbmV4dCBzdHJ1Y3R1cmUuDQo+ID4gU29tZXRoaW5nIGxpa2U6DQo+ID4gCWZvciAoeHh4ICpp
+dGVyID0gaGVhZC0+bmV4dDsNCj4gPiAJCWl0ZXIgPT0gJmhlYWQgPyAoKGl0ZW0gPSBOVUxMKSww
+KSA6ICgoaXRlbSA9IGxpc3RfaXRlbShpdGVyKSwxKSk7DQo+ID4gCQlpdGVyID0gaXRlbS0+bWVt
+YmVyLT5uZXh0KSB7DQo+ID4gCSAgIC4uLg0KPiA+IFdpdGggYSBiaXQgb2YgY2FzdGluZyB5b3Ug
+Y2FuIHVzZSAnaXRlbScgdG8gaG9sZCAnaXRlcicuDQo+IA0KPiB5b3Ugc3RpbGwgY2FuIG5vdCBt
+YWtlIHN1cmUgZXZlcnlvbmUgZm9sbG93cyB0aGlzIHJ1bGU6DQo+ICJkbyBub3QgdXNlIGl0ZXJh
+dG9yIG91dHNpZGUgdGhlIGxvb3AiIHdpdGhvdXQgdGhlIGhlbHAgb2YgY29tcGlsZXIsDQo+IGJl
+Y2F1c2UgaXRlbSBpcyBkZWNsYXJlZCBvdXRzaWRlIHRoZSBsb29wLg0KDQpUaGF0IG9uZSBoYXMg
+J2l0ZXInIGRlZmluZWQgaW4gdGhlIGxvb3AuDQoNCj4gQlRXLCB0byBhdm9pZCBhbWJpZ3VpdHnv
+vIx0aGUgImFsdGVybmF0aXZlIGRlZmluaXRpb25zIiBoZXJlIGkgYXNrZWQgaXMNCj4gc29tZXRo
+aW5nIGZyb20geW91IGluIHRoaXMgY29udGV4dDoNCj4gIk9UT0ggdGhlcmUgbWF5IGJlIGFsdGVy
+bmF0aXZlIGRlZmluaXRpb25zIHRoYXQgY2FuIGJlIHVzZWQgdG8gZ2V0DQo+IHRoZSBjb21waWxl
+ciAob3Igb3RoZXIgY29tcGlsZXItbGlrZSB0b29scykgdG8gZGV0ZWN0IGJyb2tlbiBjb2RlLg0K
+PiBFdmVuIGlmIHRoZSBkZWZpbml0aW9uIGNhbid0IHBvc3NpYmx5IGdlbmVyYXRlIGEgd29ya2lu
+ZyBrZXJybmVsLiINCg0KSSB3YXMgdGhpbmtpbmcgb2Ygc29tZXRoaW5nIGxpa2U6DQoJaWYgKChw
+b3MgPSBsaXN0X2ZpcnN0KSksIDEpIHBvcyA9IE5VTEwgZWxzZQ0Kc28gdGhhdCB1bmNoZWNrZWQg
+ZGVyZWZlcmVuY2VzIGFmdGVyIHRoZSBsb29wIHdpbGwgYmUgZGV0ZWN0YWJsZQ0KYXMgTlVMTCBw
+b2ludGVyIG9mZnNldHMgLSBidXQgdGhhdCBpbiBpdHNlbGYgaXNuJ3QgZW5vdWdoIHRvIGF2b2lk
+DQpvdGhlciB3YXJuaW5ncy4NCg0KPiA+ID4gVGhlICJsaXN0X2Zvcl9lYWNoX2VudHJ5X2luc2lk
+ZShwb3MsIHR5cGUsIGhlYWQsIG1lbWJlcikiIHdheSBtYWtlcw0KPiA+ID4gdGhlIGl0ZXJhdG9y
+IGludmlzaWFibGUgb3V0c2lkZSB0aGUgbG9vcCwgYW5kIHdvdWxkIGJlIGNhdGNoZWQgYnkNCj4g
+PiA+IGNvbXBpbGVyIGlmIHVzZS1hZnRlci1sb29wIHRoaW5ncyBoYXBwZW5lZC4NCj4gDQo+ID4g
+SXQgaXMgYWxzbyBhIGNvbXBldGUgUElUQSBmb3IgYW55dGhpbmcgZG9pbmcgYSBzZWFyY2guDQo+
+IA0KPiBZb3UgbWVhbiBpdCB3b3VsZCBiZSBhIGJ1cmRlbiBvbiBzZWFyY2g/IGNhbiB5b3Ugc2hv
+dyBtZSBzb21lIGV4YW1wbGVzPw0KDQpUaGUgd2hvbGUgYnVzaW5lc3Mgb2YgaGF2aW5nIHRvIHNh
+dmUgdGhlIHBvaW50ZXIgdG8gdGhlIGxvY2F0ZWQgaXRlbQ0KYmVmb3JlIGJyZWFraW5nIHRoZSBs
+b29wLCByZW1lbWJlcmluZyB0byBoYXZlIHNldCBpdCB0byBOVUxMIGVhcmxpZXIgZXRjLg0KDQpJ
+dCBpcyBzbyBtdWNoIGJldHRlciBpZiB5b3UgY2FuIGp1c3QgZG86DQoJCWlmIChmb3VuZCkNCgkJ
+CWJyZWFrOw0KDQoJRGF2aWQNCg0KLQ0KUmVnaXN0ZXJlZCBBZGRyZXNzIExha2VzaWRlLCBCcmFt
+bGV5IFJvYWQsIE1vdW50IEZhcm0sIE1pbHRvbiBLZXluZXMsIE1LMSAxUFQsIFVLDQpSZWdpc3Ry
+YXRpb24gTm86IDEzOTczODYgKFdhbGVzKQ0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
+ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC13aXJlZC1sYW4K
