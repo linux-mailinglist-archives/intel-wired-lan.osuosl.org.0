@@ -1,77 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A54F4CB27B
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Mar 2022 23:46:12 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 65B934CB446
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Mar 2022 02:30:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8A6E81462;
-	Wed,  2 Mar 2022 22:46:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 841C4404C8;
+	Thu,  3 Mar 2022 01:30:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lM8QQilgJ3qF; Wed,  2 Mar 2022 22:46:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mGOH_tl5gnQb; Thu,  3 Mar 2022 01:30:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 75E7081435;
-	Wed,  2 Mar 2022 22:46:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F23F8400FE;
+	Thu,  3 Mar 2022 01:30:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2EB041BF421
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 22:46:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 868771C11A9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 01:30:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 185BF408E9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 22:46:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7079440156
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 01:30:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=fastly.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 81wxoWPYPlDw for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Mar 2022 22:46:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f5OsONsNyjnK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Mar 2022 01:30:16 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1032.google.com (mail-pj1-x1032.google.com
- [IPv6:2607:f8b0:4864:20::1032])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 20A11403C7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Mar 2022 22:46:01 +0000 (UTC)
-Received: by mail-pj1-x1032.google.com with SMTP id
- 15-20020a17090a098f00b001bef0376d5cso3156556pjo.5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Mar 2022 14:46:01 -0800 (PST)
+Received: from mail-pj1-x102c.google.com (mail-pj1-x102c.google.com
+ [IPv6:2607:f8b0:4864:20::102c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 65A11400FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Mar 2022 01:30:16 +0000 (UTC)
+Received: by mail-pj1-x102c.google.com with SMTP id
+ em10-20020a17090b014a00b001bc3071f921so6348446pjb.5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Mar 2022 17:30:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastly.com; s=google;
- h=from:to:subject:date:message-id;
- bh=NIbIcWPLu1WQs0h/YDh1gBro4dlIy8KQS9MhRK1W+tw=;
- b=tnOQ2CNVO/QxA2c/FWZaKm9lMhs73bhTHdJACWDJubL+WUZwZe1hqKC7hXHI32hhD3
- wiW05vkb6eVXT3pj3aaRsdf5q9I1VD9cZ/imwEWgDUWS6iPwWc1Y8SZCg5Hp1KdUTUkY
- GH4ewyW5pxm2H++3/YNsTaBV4YRXQ1O9rSeU0=
+ h=from:to:cc:subject:date:message-id;
+ bh=sZ+ERq+nDsjduxq2NEoMyLXNq8dDrLeShLXOk/c6frU=;
+ b=Y+vEESd/CUmY6bRx11NOO6KZ2feOgHw1VC+o7gd0J22ZedBSK8vqMvwHb5kPVhqpBb
+ d8e8x+mkcMz/NsJpg4X8fKd7uPkmaM3TAvrceMDFdawhJAt0rbWPPT2XGEscAEPOeX+C
+ CQGZ+07LHwLBM/2sMZa1MrotVJ4gL+j6gtLaI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:subject:date:message-id;
- bh=NIbIcWPLu1WQs0h/YDh1gBro4dlIy8KQS9MhRK1W+tw=;
- b=5Lf2+DgMFQCXbRHvHF1yiqaHiKL3zhVT27EyNpa0fab5Lp6Tm0LU2Mpur6SpSo75Mc
- ++HIUYquDnacgGSWGO8KuZbJDxwRVyZu24ROMUORLwAu/plXwQX4RT/WAhKUqCmydwQ6
- 005LmfrywExX3dW+eX0fViFlU55JUErA19Q6h9UbA+x+8pJZ8hEXYJgxcqhtJKZfGOnV
- +JTRhTp+XMrAGgr0k6lahN6fk09uk7zMwV918ACpPoaNAlCncrZSs9R7hpNWSAgK5O9V
- 51Q2N4mdn/5j9T+onUA0Z3xs/OIi+aMW2TPoHX08fOteDA6/ktObqlujS6ppEVPPcUwm
- yx5A==
-X-Gm-Message-State: AOAM5322yG36ls6xjMAjsivTVEtcZ+JAEcqtavYd/ZomInFLwkPxAE/R
- kLix1VSQJlFRVnJSbvrOkdD1EnMDcPy7WQ==
-X-Google-Smtp-Source: ABdhPJxLVLXp2+CZ1j7jvKjwWxqgFGPLQB49cN077amWcihdc0fpbQyxa2dJzNlEVrOun3NTG/zl4Q==
-X-Received: by 2002:a17:90b:3b50:b0:1bf:b9b:df59 with SMTP id
- ot16-20020a17090b3b5000b001bf0b9bdf59mr637094pjb.11.1646261161477; 
- Wed, 02 Mar 2022 14:46:01 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=sZ+ERq+nDsjduxq2NEoMyLXNq8dDrLeShLXOk/c6frU=;
+ b=3zquicAIqbZfaXQLC9L1gJENbL38OV3ENYCySWbvfk/lmAPp5a3Jh8TJrJANInd7yd
+ BYnIUVLntn+ZqgQW1cvJ0pb4iXVlnKGGPIfRAmKVbJes5MKsuV/GQfeTZc7adclfn05p
+ No7/SGjFwbJvgTUUT5+PFnhbslx6En+LEQ8e8hNaLQl87JAOKPcdPzBFQ4EoVZCtBqUu
+ aC3w6NHvXJmKmT1yLtlJ3OM1lOz6z9EOD8KpTZf5DmtaY+kj6qu6AZjQzur/8AG6/fnw
+ aoGMPo+6g6avssNAWBEO3TR/1wCOrSEscCBtmt91f9iOAt/fO4/nzE/llzQc+u/zp9lR
+ qo7w==
+X-Gm-Message-State: AOAM5313Ovedz4lwMB2TkWwlf4Mt3dHuTdiwX9lOj35SofiLYM9NfuWi
+ 4cpzM16WAuY9RewsbUtQd1ut2A==
+X-Google-Smtp-Source: ABdhPJzK0esLuGD8fZ/QjjjQE+l2oq282IPeitXJGuQlhIjVlZXznF6qnxQ4mf8rDm8rfH1blr6PSA==
+X-Received: by 2002:a17:90a:6a8a:b0:1bc:2953:75ed with SMTP id
+ u10-20020a17090a6a8a00b001bc295375edmr2711257pjj.130.1646271015813; 
+ Wed, 02 Mar 2022 17:30:15 -0800 (PST)
 Received: from localhost.localdomain (c-73-223-190-181.hsd1.ca.comcast.net.
  [73.223.190.181]) by smtp.gmail.com with ESMTPSA id
- v22-20020a17090ad59600b001b7deb42251sm5934640pju.15.2022.03.02.14.45.59
+ bo10-20020a17090b090a00b001bc8405bd55sm6278982pjb.30.2022.03.02.17.30.14
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 02 Mar 2022 14:46:00 -0800 (PST)
+ Wed, 02 Mar 2022 17:30:15 -0800 (PST)
 From: Joe Damato <jdamato@fastly.com>
-To: jdamato@fastly.com, mgallo@fastly.com, intel-wired-lan@lists.osuosl.org,
- anthony.l.nguyen@intel.com, jesse.brandeburg@intel.com,
- netdev@vger.kernel.org, arkadiusz.kubalewski@intel.com
-Date: Wed,  2 Mar 2022 14:45:02 -0800
-Message-Id: <1646261102-84208-1-git-send-email-jdamato@fastly.com>
+To: jdamato@fastly.com, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ arkadiusz.kubalewski@intel.com, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Date: Wed,  2 Mar 2022 17:29:07 -0800
+Message-Id: <1646270947-92954-1-git-send-email-jdamato@fastly.com>
 X-Mailer: git-send-email 2.7.4
-Subject: [Intel-wired-lan] [next-queue] i40e: Add support for MPLS + TSO
+Subject: [Intel-wired-lan] [next-queue v2] i40e: Add support for MPLS + TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,6 +82,7 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Mike Gallo <mgallo@fastly.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -124,13 +123,16 @@ IP dstip.1234 > srcip.50086: Flags [.], ack 653345, win 8,
 IP dstip.1234 > srcip.50086: Flags [.], ack 655953, win 3,
   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 
+v1 -> v2:
+	- Restore erroneously deleted code from i40e_tso.
+
 Signed-off-by: Joe Damato <jdamato@fastly.com>
 Co-developed-by: Mike Gallo <mgallo@fastly.com>
 Signed-off-by: Mike Gallo <mgallo@fastly.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 20 +++++++++--
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 51 +++++++++++++++++------------
- 2 files changed, 48 insertions(+), 23 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 20 ++++++++++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c | 47 ++++++++++++++++++-----------
+ 2 files changed, 48 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
 index 1145a6e..f4730cc 100644
@@ -171,17 +173,17 @@ index 1145a6e..f4730cc 100644
  	netdev->hw_features |= NETIF_F_HW_L2FW_DOFFLOAD;
  
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 0eae585..fadf84a 100644
+index 0eae585..8b844ad 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -9,6 +9,7 @@
- #include "i40e_prototype.h"
- #include "i40e_txrx_common.h"
- #include "i40e_xsk.h"
-+#include <net/mpls.h>
+@@ -3,6 +3,7 @@
  
- #define I40E_TXD_CMD (I40E_TX_DESC_CMD_EOP | I40E_TX_DESC_CMD_RS)
- /**
+ #include <linux/prefetch.h>
+ #include <linux/bpf_trace.h>
++#include <net/mpls.h>
+ #include <net/xdp.h>
+ #include "i40e.h"
+ #include "i40e_trace.h"
 @@ -3015,6 +3016,7 @@ static int i40e_tso(struct i40e_tx_buffer *first, u8 *hdr_len,
  {
  	struct sk_buff *skb = first->skb;
@@ -225,18 +227,7 @@ index 0eae585..fadf84a 100644
  	}
  
  	if (skb_shinfo(skb)->gso_type & (SKB_GSO_GRE |
-@@ -3069,10 +3079,6 @@ static int i40e_tso(struct i40e_tx_buffer *first, u8 *hdr_len,
- 					     (__force __wsum)htonl(paylen));
- 		}
- 
--		/* reset pointers to inner headers */
--		ip.hdr = skb_inner_network_header(skb);
--		l4.hdr = skb_inner_transport_header(skb);
--
- 		/* initialize inner IP header fields */
- 		if (ip.v4->version == 4) {
- 			ip.v4->tot_len = 0;
-@@ -3100,10 +3106,9 @@ static int i40e_tso(struct i40e_tx_buffer *first, u8 *hdr_len,
+@@ -3100,10 +3110,9 @@ static int i40e_tso(struct i40e_tx_buffer *first, u8 *hdr_len,
  
  	/* pull values out of skb_shinfo */
  	gso_size = skb_shinfo(skb)->gso_size;
@@ -248,7 +239,7 @@ index 0eae585..fadf84a 100644
  	first->bytecount += (first->gso_segs - 1) * *hdr_len;
  
  	/* find the field values */
-@@ -3187,13 +3192,27 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
+@@ -3187,13 +3196,27 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
  	unsigned char *exthdr;
  	u32 offset, cmd = 0;
  	__be16 frag_off;
@@ -278,7 +269,7 @@ index 0eae585..fadf84a 100644
  
  	/* compute outer L2 header size */
  	offset = ((ip.hdr - skb->data) / 2) << I40E_TX_DESC_LENGTH_MACLEN_SHIFT;
-@@ -3749,7 +3768,6 @@ static netdev_tx_t i40e_xmit_frame_ring(struct sk_buff *skb,
+@@ -3749,7 +3772,6 @@ static netdev_tx_t i40e_xmit_frame_ring(struct sk_buff *skb,
  	struct i40e_tx_buffer *first;
  	u32 td_offset = 0;
  	u32 tx_flags = 0;
@@ -286,7 +277,7 @@ index 0eae585..fadf84a 100644
  	u32 td_cmd = 0;
  	u8 hdr_len = 0;
  	int tso, count;
-@@ -3791,15 +3809,6 @@ static netdev_tx_t i40e_xmit_frame_ring(struct sk_buff *skb,
+@@ -3791,15 +3813,6 @@ static netdev_tx_t i40e_xmit_frame_ring(struct sk_buff *skb,
  	if (i40e_tx_prepare_vlan_flags(skb, tx_ring, &tx_flags))
  		goto out_drop;
  
