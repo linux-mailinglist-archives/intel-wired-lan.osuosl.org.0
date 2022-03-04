@@ -1,157 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 158214CD3CF
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Mar 2022 12:53:29 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFB014CD6BD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Mar 2022 15:49:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5AF8B401F4;
-	Fri,  4 Mar 2022 11:53:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 473B060F88;
+	Fri,  4 Mar 2022 14:49:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QT4864IJ4Plj; Fri,  4 Mar 2022 11:53:26 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o2gxGPlbLkeZ; Fri,  4 Mar 2022 14:49:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3367F401E5;
-	Fri,  4 Mar 2022 11:53:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 295B1607C1;
+	Fri,  4 Mar 2022 14:49:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4AAF41BF2A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ABE001BF860
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 07:00:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 38896401E5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:21 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 94FF160C0F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 07:00:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2a4j1ypfWTFL for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Mar 2022 11:53:20 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
- [205.220.177.32])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2161B401B6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:19 +0000 (UTC)
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 224AOcFr014127; 
- Fri, 4 Mar 2022 11:53:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
- b=JJt1K4sVK2VCR4l/ymF1Jy2ZOOrSQDxjGgxrkDKvWyvJV5eoXZqkRx+MFCtvWzz8rVy1
- KIktWSDqqZIiPcVeYpIzH9Foj0VAfAj4IABcMvfdLB59s1/uPcT9SNXlbpM9gTKpwoJQ
- neG7yKRXwFJiBS+gyZ1oYw5o/eN3wmqQ9aRScAN/iM9c3KYt2RrE0Knx+jMc8/cjymk0
- ZYnDbywKEWE6yomSSIDlRP9DhRohsTF41VtiFxPsedL3rNphpZ4LMYckC40326tdHdXM
- LUUagkx7FozMh16E7xQh61WXB1ynbDQlDYTze5yYvA2VvWmbUpXaAqtRPLCD1Fgo/8Dz sw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 3ek4hv9k3m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 04 Mar 2022 11:53:15 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 224Bowjs094481;
- Fri, 4 Mar 2022 11:53:14 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam10lp2102.outbound.protection.outlook.com [104.47.58.102])
- by aserp3020.oracle.com with ESMTP id 3ek4j8s632-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 04 Mar 2022 11:53:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RAxQooy3v++mo3HSN3Eu96AVBz9DCOjlVNiFdKYEPypJmgJ05XDVMx8Szxn24HGK/xeY45TK8lMBpX03GF3h/rQ3r4qtpkqqNnKEY/2puR6Kp1LGa2nfBaaCXVJg2rEgby36TkWfoNLHIvkPOTWaoklGWSULwVGYxBv6s5gMVIDTYQ0fdPP2hXacAcO6YZspDOQuz7W7okfD/Ld2pHuuU41rSKDYsoUeOV0ZbtMtRscGb/k11UFHtBbiFpvewx5mAUvCtVTyiO5xzTdY/fjcC2bWLlAOPAswxMv63t+Pwdt4aYg9NWROjNN9n6zN8T/ZcnsAGZKdgFJRun2ne7HlxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
- b=CFqRpTNGZvdR0axRUWElyK54R6TKeXlyC7TUOQIdlSkihVLXNX/RSz64M9KvX90cIO+lR/Ae4A+YNf5dNQGP8f8Ou8KMxQPtiOkVtcA5OgUAyUpW8KU2IpcWTW8OwyETeBdYL1u3E4TvPuezVOL8Et720NSGfQRkJyxg1Ks6vjaQu77tcvxj1zRIXRl9qgsG1b4QZ69mQ7B17ZNHd6VxbUs1RS4ndbhiSgIv0ilhvn2RgHGR368DSu1YoEjlUhTtLruNOMD3bCZ42jJCodpHgVcw1U17IeteB7s2/VKDDXjwk5LxbpLpPeOT8c9RGZsrzGtjP66qf6SxIF4exnU1RA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
- b=UuU0mmPsdw20YDa5L+cKFA4GaypGQ5xxyq1isJJ8oQzZHmoiMjKKAPP/i+e3ureYmrrhWS6QWFoT/CbEx6a9c4n9UZTZBqVdk/lvC/y/ma3Y2/AD6sEBZofktkSonngbuekpIYqjYeWGE0tnvxS/kuo1G5sEY4Je7ZtxUCTptIk=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by BY5PR10MB3826.namprd10.prod.outlook.com
- (2603:10b6:a03:1ff::30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Fri, 4 Mar
- 2022 11:53:13 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5017.027; Fri, 4 Mar 2022
- 11:53:12 +0000
-Date: Fri, 4 Mar 2022 14:53:00 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: slawomirx.laba@intel.com, sassmann@kpanic.de
-Message-ID: <20220304115300.GA7106@kili>
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0154.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:41::9) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e0175be7-9358-4a22-06fa-08d9fdd58f61
-X-MS-TrafficTypeDiagnostic: BY5PR10MB3826:EE_
-X-Microsoft-Antispam-PRVS: <BY5PR10MB3826D58FD72D4A97ACB009AE8E059@BY5PR10MB3826.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8MKeJ8FccvjpLP/zGKJHbRtUWljH1o02NQ7QnDFEnz3rUdUHsDR2PUgAiIQDRk5GPrkSWb2lv/zpLg/0BWH7a12hV9RJZdaj/jiA5RrKPPlVwLdiguaNsAJHQDhVOo1zfb1K4PJMvEZmeu1TJkGzKMhjkVG30Zmk609YEvDVqdVj1FQHM9Q2EqUgAhIJ0uWbKmhTutFtaF7iHvPAt7rYIYzcLzG0UcgRAZbE5SixcB41a/Xow4GDnsceF9AswDaNwWMjFqfJUE0YU0VOeQSxg+7Vkvq301Xug6llobtQV+2oPxIKM7AGPMenzeHAd129y6a1YqJQTRCeY9P9VWzmZJMT8l5ICCFWJRuq1XKGLuru7Tzu5HxYbEsOtcyjuJNnKWh1OvXQPCPia7ICLjejgKk+eh1Kqa57svmpWSXd/XYiUlA86/w/hqyHxqYHwc5oA5Re9h+ANEMcolDOSbFvmXUqttApOHaiuQEpgWSv56OCap1LEGdagB9WchAuFTKMDJXYOenKbriSXpguGv5rAQD5jkaMtKmrupPZ3gpQS7aSQ9vaSY0Dt+ueXV1YlqqZiGYHkQgT4OhO37jReNWD4kH3PNkw0OK3oXCK1u7M+TXpuZptfXFlW9tuEyd3MZelm3NwxW2BSEFulHmhYTNd9yi6Xhzwt3X3S1WcKKDG6VvDDvhgXlEbA8+grZZN/7Xw0B4szfLMeNZVqrash3Wfbg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(33716001)(186003)(4326008)(83380400001)(33656002)(44832011)(26005)(2906002)(1076003)(52116002)(9686003)(6512007)(8936002)(6506007)(6666004)(38350700002)(38100700002)(5660300002)(508600001)(66946007)(8676002)(6486002)(66556008)(66476007)(86362001)(316002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?B7kx2sPN20sxZsc18FB+9qZPSdVr2L5oBbHXfCrsbVPYhf9mnz+wNO8llCWp?=
- =?us-ascii?Q?8BnNPiyxye+WsbCNeQyaCjTYbaBCgCjii0M2XP831Gq9cgdnqIV1kblgv1ko?=
- =?us-ascii?Q?PXGWCJghJGUc9tFitxXhZmYO/lpDoZCNfQZH711mMb3+J9qN4ro0Faxq4NS5?=
- =?us-ascii?Q?fg4j60RTXuFp2nbNlD7nhS+pZIRnVkewqXoySBUwHqLE4y0hroFx/T0TOq14?=
- =?us-ascii?Q?cSph09osf7mhjZ/7T4GoNMOKV2QY9yYAX6ij2tU9YCocfdE9HvAyLSQkLfMP?=
- =?us-ascii?Q?cX3FTjwfeik1h2tUSWjCg21fE7N6s0C3DcdxEdc2BOLtyGJwoTal9sHJJ3sk?=
- =?us-ascii?Q?2yvHzLP1H5apvJlVUSe3QV7jNUu4hpNiHdk8KaxXab2EIzv0UPm0bH21Fpi8?=
- =?us-ascii?Q?CZ6AS7ZXebyiqLGE//mk/PKHDaGANpvcg3r247NnbTzWUB7rWHxtyb6Qwm2G?=
- =?us-ascii?Q?sPsM/Cl4xfSyea8+R4R5f52vWDqaoE5G8lt0szcTUJb+WSzj28LrmvPNKASn?=
- =?us-ascii?Q?6MonREvD2MHjNZWTIJ+htAQ6OX3JVEfw7qD/8oU1nwdTMCmpSG7Dcr/msZAz?=
- =?us-ascii?Q?L31LtjAgjCG+HL5j047pLAPYK7tG78j77mUPyctI8u+Scw/5nqsY+5BZOYs+?=
- =?us-ascii?Q?RlKT6TCw/RWfZPMi0OmUc8I3Pedk5XjFY7nF3BpXKJWNUitU3uomU1bYoySJ?=
- =?us-ascii?Q?me9oCJw9rbLtM/wK8wq/c/OIe5oirXYghzF8Sz3+VWUO8D0JmGBVsxAaKMv0?=
- =?us-ascii?Q?5la0cPI+vn6he1QC642WxCVYzLMFaeAr2sRY3q/Rm4Vb6P9TPEXbPw4GT45V?=
- =?us-ascii?Q?ZovlsvMijAwgupwq3W4j6h6Rpz3c1gW5E99v4aoX+87C6zKngVD0DV6EEr3G?=
- =?us-ascii?Q?nwQF/RXULWCBVrJh5oXEftrMdtP7ozT4PIVJ0sz1fR0Q3fCyAaDCyB81xxzM?=
- =?us-ascii?Q?sDHgHSNR6BUYQGXQE+LIdvryFif4qmTMSCVomaG1eKT/TL5kphnUKkN/VYBR?=
- =?us-ascii?Q?B4E9OynDZSI6VtDBhVW4yULJcE5B1rJ2MWJXMwyh+CW32Gsx/iCkS80G43+P?=
- =?us-ascii?Q?Apr7eLNqUizfjLhi6/480+TAmHAo/RiQPFMJfipWHUlda9yF1wyXaECelzyj?=
- =?us-ascii?Q?K1tnmaFefi+1OVfPhOv/2E1YWTO7UqVFnhFzFdRQnOurQBN1VngKiqCCg/1p?=
- =?us-ascii?Q?uA33kxXpOc8FOO7SlRtIbej0+UT0oRevqc2Qe8Co+1kvXsshjbpLYTjpjUAk?=
- =?us-ascii?Q?5wse7jMMoRXLj5cUp4iK155fHgzOdQF/8gdS+e2NbmY949Wy5Di2mrNJwlKP?=
- =?us-ascii?Q?gXcIbPLdk9MFUzCVNxtsFmu37yfHK4ZZOQufMis/Qkst4wmi8e7dt2GP1Ao4?=
- =?us-ascii?Q?VRBd/HSQuhW8olRDomtOW3vl9xOZJEjFM/nOrmuMcmzX9l79hPSFoTEpD4eC?=
- =?us-ascii?Q?T3AvmRHN9UJuydIxgr0cwmgunc/hAFh46B2ez2OeSlQTCk5wM35t3GjSWNIO?=
- =?us-ascii?Q?Qn5BWbm4OUlH+FP+/51I7VpqY/WkZVdjltzG5KgYettYYoQooBrIBvHHSlZ1?=
- =?us-ascii?Q?9NurYv90YUGqPMM2IfxeiEJ8SWywMcUPtOWlFTWeGcyOWiWsSl0jYhja913w?=
- =?us-ascii?Q?ftoXMKp6rS0ITLe74vR22GceJnqV4bxdyF+eFlx3xIX7ku7fmIxxMkOb9bRJ?=
- =?us-ascii?Q?F8tVEw=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e0175be7-9358-4a22-06fa-08d9fdd58f61
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2022 11:53:12.9060 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QNpeOyGZbjpr31ORFFYW++s5u2K0OVNk6e6dySB3B1pTj5PgSK/cxm9gq1ic8v6Za9DjJBQhvBwz5m3ODZb6aH1XPCSszTiR5Ge+4JHvMy4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB3826
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10275
- signatures=686983
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 bulkscore=0
- malwarescore=0 mlxscore=0 spamscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2203040064
-X-Proofpoint-GUID: 4VG_GfcfL0OkKaF-QPO3-9Y6Dj8Cp5DR
-X-Proofpoint-ORIG-GUID: 4VG_GfcfL0OkKaF-QPO3-9Y6Dj8Cp5DR
-Subject: [Intel-wired-lan] [bug report] iavf: Fix deadlock in iavf_reset_task
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jMkkdzmzIO0e for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Mar 2022 07:00:21 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
+ [IPv6:2607:f8b0:4864:20::429])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C72F760BE5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 07:00:21 +0000 (UTC)
+Received: by mail-pf1-x429.google.com with SMTP id p8so6880234pfh.8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Mar 2022 23:00:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=0a+oQu3LYTAbOOyoILb+F/zkApGIum0yjd+xPCLEHo4=;
+ b=UcHSzcmMAevEFsqxc8gimvoSIew96LrW3UYvjfgkcaeLb/Edql9668oTELTgMdhcyh
+ uwTLYgNgPfuwuQfZCbkLtuIX59UkP2xXrD0mK6eOfNdOu/KSihdjQUFHL7gwAFzgpb4Z
+ PeSQfhLMwS3uLkuXfSSL1QQyblGTA4kTyWBkcty1viz6EkWmIbbGn99xu95lY6jAsJ0c
+ CbisDo/RPFGn8gAJnKluj00ht4OQ80XaXmCEvGalnXTnvAWrV5UWFfWh6kgUBnLZJvSQ
+ W0PYU136vUwP4grvjJEIhDxHc0WM1lPQ2cysIXPjh+breTQ07tU9AM0RgZ3Jr4UsSFjT
+ NaGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=0a+oQu3LYTAbOOyoILb+F/zkApGIum0yjd+xPCLEHo4=;
+ b=5xo77Xm65VK/coIvGlvf4Cu/WUS7M2ccQzClmWDEI/xIoUVlAKYJL7NmRYozN0FM19
+ hliPBMx6tZJJWYAAkdpH3Qv6o1R6CO7QBsu7aEdKKRWzJkceUgyn0F6FjH1d9q4zMi3S
+ lNn68zY9tqW49xeQ3R7xz9ElMBCG9tX0Jf4Y3nIUgObNPbAt33Vvt8khnJ2s615q/Wao
+ 8EkEY53MzhLYEJyGHEvz+3wpPuv0WoePtsUb7BBzPaOYt7FP4lRMv0BR+IwaMTqQ26xi
+ 3KGGCAijK/b4PfWQoMmkDQUNU8XarcBm1Bo5p/NbCjLNIm4moBFNX3xk/9SDFWNOctKg
+ facw==
+X-Gm-Message-State: AOAM5331sqJ3ym0JxWXbptzdN1dl1sfigte4OQQVbnINT4GEObY++PKO
+ CpIU3uj0+30d0uxM9f58VGo=
+X-Google-Smtp-Source: ABdhPJxBFOb3A6C/RlDh1uHGrWM51HjSkR68cXfNAhNGErUbSC2hd/FilwMHkJmidt1eEHAWD7GVrA==
+X-Received: by 2002:a05:6a00:cc7:b0:4ec:c6f3:ad29 with SMTP id
+ b7-20020a056a000cc700b004ecc6f3ad29mr41958698pfv.66.1646377221067; 
+ Thu, 03 Mar 2022 23:00:21 -0800 (PST)
+Received: from ubuntu.huawei.com ([119.3.119.19])
+ by smtp.googlemail.com with ESMTPSA id
+ f6-20020a654006000000b00346193b405fsm3665134pgp.44.2022.03.03.23.00.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Mar 2022 23:00:20 -0800 (PST)
+From: Xiaomeng Tong <xiam0nd.tong@gmail.com>
+To: daniel.thompson@linaro.org
+Date: Fri,  4 Mar 2022 14:59:57 +0800
+Message-Id: <20220304065957.16799-1-xiam0nd.tong@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220303121824.qdyrognluik74iph@maple.lan>
+References: <20220303121824.qdyrognluik74iph@maple.lan>
+X-Mailman-Approved-At: Fri, 04 Mar 2022 14:49:01 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 2/6] treewide: remove using list
+ iterator after loop body as a ptr
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -164,122 +87,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: alsa-devel@alsa-project.org, kvm@vger.kernel.org, linux-iio@vger.kernel.org,
+ kgdb-bugreport@lists.sourceforge.net, linux@rasmusvillemoes.dk,
+ dri-devel@lists.freedesktop.org, c.giuffrida@vu.nl,
+ amd-gfx@lists.freedesktop.org, torvalds@linux-foundation.org,
+ samba-technical@lists.samba.org, linux1394-devel@lists.sourceforge.net,
+ drbd-dev@lists.linbit.com, linux-arch@vger.kernel.org,
+ linux-cifs@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ linux-staging@lists.linux.dev, h.j.bos@vu.nl, jgg@ziepe.ca,
+ intel-wired-lan@lists.osuosl.org, nouveau@lists.freedesktop.org,
+ bcm-kernel-feedback-list@broadcom.com, dan.carpenter@oracle.com,
+ linux-media@vger.kernel.org, keescook@chromium.org, arnd@arndb.de,
+ linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ bjohannesmeyer@gmail.com, linux-block@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, christophe.jaillet@wanadoo.fr,
+ jakobkoschel@gmail.com, v9fs-developer@lists.sourceforge.net,
+ linux-tegra@vger.kernel.org, tglx@linutronix.de,
+ andriy.shevchenko@linux.intel.com, linux-arm-kernel@lists.infradead.org,
+ linux-sgx@vger.kernel.org, nathan@kernel.org, netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ xiam0nd.tong@gmail.com, david.laight@aculab.com,
+ tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ akpm@linux-foundation.org, linuxppc-dev@lists.ozlabs.org,
+ christian.koenig@amd.com, rppt@kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Slawomir Laba,
+On Thu, 3 Mar 2022 12:18:24 +0000, Daniel Thompson wrote:
+> On Thu, Mar 03, 2022 at 03:26:57PM +0800, Xiaomeng Tong wrote:
+> > On Thu, 3 Mar 2022 04:58:23 +0000, David Laight wrote:
+> > > on 3 Mar 2022 10:27:29 +0800, Xiaomeng Tong wrote:
+> > > > The problem is the mis-use of iterator outside the loop on exit, and
+> > > > the iterator will be the HEAD's container_of pointer which pointers
+> > > > to a type-confused struct. Sidenote: The *mis-use* here refers to
+> > > > mistakely access to other members of the struct, instead of the
+> > > > list_head member which acutally is the valid HEAD.
+> > >
+> > > The problem is that the HEAD's container_of pointer should never
+> > > be calculated at all.
+> > > This is what is fundamentally broken about the current definition.
+> > 
+> > Yes, the rule is "the HEAD's container_of pointer should never be
+> > calculated at all outside the loop", but how do you make sure everyone
+> > follows this rule?
+> 
+> Your formulation of the rule is correct: never run container_of() on HEAD
+> pointer.
 
-The patch e85ff9c631e1: "iavf: Fix deadlock in iavf_reset_task" from
-Feb 23, 2022, leads to the following Smatch static checker warning:
+Actually, it is not my rule. My rule is that never access other members
+of the struct except for the list_head member after the loop, because
+this is a invalid member after loop exit, but valid for the list_head
+member which just is HEAD and the lately caculation (&pos->head) seems
+harmless.
 
-	drivers/net/ethernet/intel/iavf/iavf_main.c:2691 iavf_reset_task()
-	error: double unlocked '&adapter->crit_lock' (orig line 2689)
+I have considered the case that the HEAD's container "pos" is layouted
+across the max and the min address boundary, which means the address of
+HEAD is likely 0x60, and the address of pos is likely 0xffffffe0.
+It seems ok to caculate pos with:
+((type *)(__mptr - offsetof(type, member)));
+and it seems ok to caculate head outside the loop with:
+if (&pos->head == &HEAD)
+    return NULL;
 
-drivers/net/ethernet/intel/iavf/iavf_main.c
-    2613 static void iavf_reset_task(struct work_struct *work)
-    2614 {
-    2615         struct iavf_adapter *adapter = container_of(work,
-    2616                                                       struct iavf_adapter,
-    2617                                                       reset_task);
-    2618         struct virtchnl_vf_resource *vfres = adapter->vf_res;
-    2619         struct net_device *netdev = adapter->netdev;
-    2620         struct iavf_hw *hw = &adapter->hw;
-    2621         struct iavf_mac_filter *f, *ftmp;
-    2622         struct iavf_cloud_filter *cf;
-    2623         u32 reg_val;
-    2624         int i = 0, err;
-    2625         bool running;
-    2626 
-    2627         /* When device is being removed it doesn't make sense to run the reset
-    2628          * task, just return in such a case.
-    2629          */
-    2630         if (!mutex_trylock(&adapter->crit_lock)) {
-    2631                 if (adapter->state != __IAVF_REMOVE)
-    2632                         queue_work(iavf_wq, &adapter->reset_task);
-    2633 
-    2634                 return;
-    2635         }
-    2636 
-    2637         while (!mutex_trylock(&adapter->client_lock))
-    2638                 usleep_range(500, 1000);
-    2639         if (CLIENT_ENABLED(adapter)) {
-    2640                 adapter->flags &= ~(IAVF_FLAG_CLIENT_NEEDS_OPEN |
-    2641                                     IAVF_FLAG_CLIENT_NEEDS_CLOSE |
-    2642                                     IAVF_FLAG_CLIENT_NEEDS_L2_PARAMS |
-    2643                                     IAVF_FLAG_SERVICE_CLIENT_REQUESTED);
-    2644                 cancel_delayed_work_sync(&adapter->client_task);
-    2645                 iavf_notify_client_close(&adapter->vsi, true);
-    2646         }
-    2647         iavf_misc_irq_disable(adapter);
-    2648         if (adapter->flags & IAVF_FLAG_RESET_NEEDED) {
-    2649                 adapter->flags &= ~IAVF_FLAG_RESET_NEEDED;
-    2650                 /* Restart the AQ here. If we have been reset but didn't
-    2651                  * detect it, or if the PF had to reinit, our AQ will be hosed.
-    2652                  */
-    2653                 iavf_shutdown_adminq(hw);
-    2654                 iavf_init_adminq(hw);
-    2655                 iavf_request_reset(adapter);
-    2656         }
-    2657         adapter->flags |= IAVF_FLAG_RESET_PENDING;
-    2658 
-    2659         /* poll until we see the reset actually happen */
-    2660         for (i = 0; i < IAVF_RESET_WAIT_DETECTED_COUNT; i++) {
-    2661                 reg_val = rd32(hw, IAVF_VF_ARQLEN1) &
-    2662                           IAVF_VF_ARQLEN1_ARQENABLE_MASK;
-    2663                 if (!reg_val)
-    2664                         break;
-    2665                 usleep_range(5000, 10000);
-    2666         }
-    2667         if (i == IAVF_RESET_WAIT_DETECTED_COUNT) {
-    2668                 dev_info(&adapter->pdev->dev, "Never saw reset\n");
-    2669                 goto continue_reset; /* act like the reset happened */
-    2670         }
-    2671 
-    2672         /* wait until the reset is complete and the PF is responding to us */
-    2673         for (i = 0; i < IAVF_RESET_WAIT_COMPLETE_COUNT; i++) {
-    2674                 /* sleep first to make sure a minimum wait time is met */
-    2675                 msleep(IAVF_RESET_WAIT_MS);
-    2676 
-    2677                 reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
-    2678                           IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
-    2679                 if (reg_val == VIRTCHNL_VFR_VFACTIVE)
-    2680                         break;
-    2681         }
-    2682 
-    2683         pci_set_master(adapter->pdev);
-    2684         pci_restore_msi_state(adapter->pdev);
-    2685 
-    2686         if (i == IAVF_RESET_WAIT_COMPLETE_COUNT) {
-    2687                 dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
-    2688                         reg_val);
-    2689                 iavf_disable_vf(adapter);
+The only case I can think of with the rule "never run container_of()
+on HEAD" must be followed is when the first argument (which is &HEAD)
+passing to container_of() is NULL + some offset, it may lead to the
+resulting "pos->member" access being a NULL dereference. But maybe
+the caller can take the responsibility to check if it is NULL, not
+container_of() itself.
 
-The proble is that iavf_disable_vf() calls mutex_unlock(&adapter->crit_lock);
+Please remind me if i missed somthing, thanks.
 
-    2690                 mutex_unlock(&adapter->client_lock);
---> 2691                 mutex_unlock(&adapter->crit_lock);
+> 
+> However the rule that is introduced by list_for_each_entry_inside() is
+> *not* this rule. The rule it introduces is: never access the iterator
+> variable outside the loop.
 
-so calling it again here is a bug.
+Sorry for the confusion, indeed, that is two *different* rule.
 
-I feel like I owe you an apology on this one because I asked you to add
-the mutex_unlock() here via the kbuild-bot...  It is confusing though.
-Does the unlock really need to be done inside iavf_disable_vf() are
-can we move that to the callers?
+> 
+> Making the iterator NULL on loop exit does follow the rule you proposed
+> but using a different technique: do not allow HEAD to be stored in the
+> iterator variable after loop exit. This also makes it impossible to run
+> container_of() on the HEAD pointer.
+> 
 
-    2692                 return; /* Do not attempt to reinit. It's dead, Jim. */
-    2693         }
-    2694 
-    2695 continue_reset:
-    2696         /* We don't use netif_running() because it may be true prior to
-    2697          * ndo_open() returning, so we can't assume it means all our open
-    2698          * tasks have finished, since we're not holding the rtnl_lock here.
-    2699          */
+It does not. My rule is: never access the iterator variable outside the loop.
+The "Making the iterator NULL on loop exit" way still leak the pos with NULL
+outside the loop, may lead to a NULL deference.
 
-regards,
-dan carpenter
+> 
+> > Everyone makes mistakes, but we can eliminate them all from the beginning
+> > with the help of compiler which can catch such use-after-loop things.
+> 
+> Indeed but if we introduce new interfaces then we don't have to worry
+> about existing usages and silent regressions. Code will have been
+> written knowing the loop can exit with the iterator set to NULL.
+
+Yes, it is more simple and compatible with existing interfaces. Howerver,
+you should make every developers to remember that "pos will be set NULL on
+loop exit", which is unreasonable and impossible for *every* single person.
+Otherwise the mis-use-after-loop will lead to a NULL dereference.
+But we can kill this problem by declaring iterator inside the loop and the
+complier will catch it if somebody mis-use-after-loop.
+
+> 
+> Sure it is still possible for programmers to make mistakes and
+> dereference the NULL pointer but C programmers are well training w.r.t.
+> NULL pointer checking so such mistakes are much less likely than with
+> the current list_for_each_entry() macro. This risk must be offset
+> against the way a NULLify approach can lead to more elegant code when we
+> are doing a list search.
+> 
+
+Yes, the NULLify approach is better than the current list_for_each_entry()
+macro, but i stick with that the list_for_each_entry_inside() way is best
+and perfect _technically_.
+
+Thus, my idea is *better a finger off than always aching*, let's settle this
+damn problem once and for all, with list_for_each_entry_inside().
+
+--
+Xiaomeng Tong
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
