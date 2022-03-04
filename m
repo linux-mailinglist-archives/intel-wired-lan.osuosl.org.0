@@ -1,162 +1,157 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C6054CD093
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Mar 2022 09:59:31 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 158214CD3CF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Mar 2022 12:53:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 233B54161A;
-	Fri,  4 Mar 2022 08:59:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5AF8B401F4;
+	Fri,  4 Mar 2022 11:53:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vg68ReVtBR-4; Fri,  4 Mar 2022 08:59:29 +0000 (UTC)
+	with ESMTP id QT4864IJ4Plj; Fri,  4 Mar 2022 11:53:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 02B7E415F4;
-	Fri,  4 Mar 2022 08:59:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3367F401E5;
+	Fri,  4 Mar 2022 11:53:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6EE4C1BF20F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 08:59:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4AAF41BF2A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 56C4A83E47
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 08:59:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 38896401E5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com header.b="1BnPtwns";
- dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com
- header.b="LsbCiYK/"
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ONX5aGCJqyr6 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Mar 2022 08:59:20 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2a4j1ypfWTFL for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Mar 2022 11:53:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
  [205.220.177.32])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A4B4C825FE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 08:59:20 +0000 (UTC)
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 2246aBMA019468; 
- Fri, 4 Mar 2022 08:59:16 GMT
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2161B401B6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Mar 2022 11:53:19 +0000 (UTC)
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 224AOcFr014127; 
+ Fri, 4 Mar 2022 11:53:15 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=xwu1WX+KF6nQc8/HKgH9Mbn5jUawW+gEcIqqiAus67M=;
- b=1BnPtwns+r7zYRIZdV/6Z8MkKFV5+Ligh1F/tZ+MxbKedSA0rw2RZ8epiK3c7HbwiZ/T
- xudttGcoiVyAClb1aZDXj57x+iTEMuq4kvS6HM3cGueeFs/AAd8TelmIzWE4/22ZaYmS
- +vk6p45DzLCdZUMup6MyXJlIU5WoRu0Ap8SnXxSD2A/7qTHpkq3HreQtAg4I63MatKaM
- g3JmXVLhW3unpcnPPweBFGftlPuj5CDIM9YVMhZO2QedniLDsD+p1DGSuutOYB/EydLF
- ZnwotyyuOrytodFsXrCHiu06jhhhCiBbE6L6h+Zm7fC4aDnn6MdYrSXtbH8vAok432/o fw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by mx0b-00069f02.pphosted.com with ESMTP id 3ek4hrs78s-1
+ bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
+ b=JJt1K4sVK2VCR4l/ymF1Jy2ZOOrSQDxjGgxrkDKvWyvJV5eoXZqkRx+MFCtvWzz8rVy1
+ KIktWSDqqZIiPcVeYpIzH9Foj0VAfAj4IABcMvfdLB59s1/uPcT9SNXlbpM9gTKpwoJQ
+ neG7yKRXwFJiBS+gyZ1oYw5o/eN3wmqQ9aRScAN/iM9c3KYt2RrE0Knx+jMc8/cjymk0
+ ZYnDbywKEWE6yomSSIDlRP9DhRohsTF41VtiFxPsedL3rNphpZ4LMYckC40326tdHdXM
+ LUUagkx7FozMh16E7xQh61WXB1ynbDQlDYTze5yYvA2VvWmbUpXaAqtRPLCD1Fgo/8Dz sw== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3ek4hv9k3m-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 04 Mar 2022 08:59:16 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 2248sgKR072043;
- Fri, 4 Mar 2022 08:59:15 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam10lp2106.outbound.protection.outlook.com [104.47.55.106])
- by aserp3030.oracle.com with ESMTP id 3ek4jgmx98-1
+ Fri, 04 Mar 2022 11:53:15 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 224Bowjs094481;
+ Fri, 4 Mar 2022 11:53:14 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10lp2102.outbound.protection.outlook.com [104.47.58.102])
+ by aserp3020.oracle.com with ESMTP id 3ek4j8s632-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 04 Mar 2022 08:59:15 +0000
+ Fri, 04 Mar 2022 11:53:14 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q5LdfpEviluwCvBhG5Z0Sn0W1sr1lSsCS8LcIHEFyZTRX1vBF46ImBQdsmIABb9cyI8NRKV3HyfrAVAjyXk7AW/4NZKwzaKivyGA8CyIzRtkvHbepSPX+XHU47ZxgizR5AkLnxqrXHNrDuTaiMZ5ZmG2KYI5uZsYIBtFQCzvo6Brtpoac0yMvXHwEenWSWMrXMgd4geTfRefN9+dWQ4aWiS8T0bVif42q5551xO+w254vKoTO6RfQvsHgxpaiuQC+F22ALydMxRxwGyZbvMusSjtHotomPh9IXJO+STMJFRxqPRQ6MclVeYL3oMvFFLUmtpazppRVCkoyideYnCgmQ==
+ b=RAxQooy3v++mo3HSN3Eu96AVBz9DCOjlVNiFdKYEPypJmgJ05XDVMx8Szxn24HGK/xeY45TK8lMBpX03GF3h/rQ3r4qtpkqqNnKEY/2puR6Kp1LGa2nfBaaCXVJg2rEgby36TkWfoNLHIvkPOTWaoklGWSULwVGYxBv6s5gMVIDTYQ0fdPP2hXacAcO6YZspDOQuz7W7okfD/Ld2pHuuU41rSKDYsoUeOV0ZbtMtRscGb/k11UFHtBbiFpvewx5mAUvCtVTyiO5xzTdY/fjcC2bWLlAOPAswxMv63t+Pwdt4aYg9NWROjNN9n6zN8T/ZcnsAGZKdgFJRun2ne7HlxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xwu1WX+KF6nQc8/HKgH9Mbn5jUawW+gEcIqqiAus67M=;
- b=D/HTIL3HPxFE4F3TxR6Fm2cPkzi51t2tNBiebTGzLkLTdTwdyHKAHO7T7lfU+ZuIRlZOeBQztQNsp4bos6evVGt9DvNOERZ5Yeu0wsOpfGbXYaaEdXFsVSONcMB5O632z7qKSabfYTu+F64gK7W6UerEK/BNLiBMESgBl8U9LCiAzW4Od+ePuBcU7vxCx5IEdMVfeVG8KN1zEbFDCt7dBvuo0o72mBZjfhIgVZ/lBDNzHEA6mIXVLn+RSOmDSn+dkV6WSk55ue1rcT8udKYaXEs7qP9DBdDWvSh5sa7jgElMjfOOVY30z+a4qU5vnVPIUzIIKopFYrL3Zn4rx2OilQ==
+ bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
+ b=CFqRpTNGZvdR0axRUWElyK54R6TKeXlyC7TUOQIdlSkihVLXNX/RSz64M9KvX90cIO+lR/Ae4A+YNf5dNQGP8f8Ou8KMxQPtiOkVtcA5OgUAyUpW8KU2IpcWTW8OwyETeBdYL1u3E4TvPuezVOL8Et720NSGfQRkJyxg1Ks6vjaQu77tcvxj1zRIXRl9qgsG1b4QZ69mQ7B17ZNHd6VxbUs1RS4ndbhiSgIv0ilhvn2RgHGR368DSu1YoEjlUhTtLruNOMD3bCZ42jJCodpHgVcw1U17IeteB7s2/VKDDXjwk5LxbpLpPeOT8c9RGZsrzGtjP66qf6SxIF4exnU1RA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
  dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xwu1WX+KF6nQc8/HKgH9Mbn5jUawW+gEcIqqiAus67M=;
- b=LsbCiYK/wLUDCRkoVIZZiZcIMVKXBus0A6m164BJH+NAKwf9FK5hNgjrFSJv5tBmSUn96xZqsdPmBEF1LOIzv3tFW/EeVs+YVZnTgptPXLW7v1Khq41R8o0LDyGwbO0y+uhPyl2QHaeGYXQ/jR+5Gghwdd3HSHRU7l15z7F6Ddk=
+ bh=9qbVHuHQcFmkiqyxUaSsz/zJ9eFN5kEtmsBAt39BvBo=;
+ b=UuU0mmPsdw20YDa5L+cKFA4GaypGQ5xxyq1isJJ8oQzZHmoiMjKKAPP/i+e3ureYmrrhWS6QWFoT/CbEx6a9c4n9UZTZBqVdk/lvC/y/ma3Y2/AD6sEBZofktkSonngbuekpIYqjYeWGE0tnvxS/kuo1G5sEY4Je7ZtxUCTptIk=
 Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MW4PR10MB5882.namprd10.prod.outlook.com
- (2603:10b6:303:18f::8) with Microsoft SMTP Server (version=TLS1_2,
+ (2603:10b6:301:2d::28) by BY5PR10MB3826.namprd10.prod.outlook.com
+ (2603:10b6:a03:1ff::30) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Fri, 4 Mar
- 2022 08:59:13 +0000
+ 2022 11:53:13 +0000
 Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
  ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
  ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5017.027; Fri, 4 Mar 2022
- 08:59:13 +0000
-Date: Fri, 4 Mar 2022 11:58:58 +0300
+ 11:53:12 +0000
+Date: Fri, 4 Mar 2022 14:53:00 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
-To: kbuild@lists.01.org, Vladimir Oltean <vladimir.oltean@nxp.com>
-Message-ID: <202203041527.OdG5EuV4-lkp@intel.com>
+To: slawomirx.laba@intel.com, sassmann@kpanic.de
+Message-ID: <20220304115300.GA7106@kili>
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: MR1P264CA0026.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:501:2f::13) To MWHPR1001MB2365.namprd10.prod.outlook.com
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ClientProxiedBy: ZR0P278CA0154.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:41::9) To MWHPR1001MB2365.namprd10.prod.outlook.com
  (2603:10b6:301:2d::28)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 554851f7-4fa9-4791-cc64-08d9fdbd4067
-X-MS-TrafficTypeDiagnostic: MW4PR10MB5882:EE_
-X-Microsoft-Antispam-PRVS: <MW4PR10MB5882D7BF0CE16AFED1D664678E059@MW4PR10MB5882.namprd10.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: e0175be7-9358-4a22-06fa-08d9fdd58f61
+X-MS-TrafficTypeDiagnostic: BY5PR10MB3826:EE_
+X-Microsoft-Antispam-PRVS: <BY5PR10MB3826D58FD72D4A97ACB009AE8E059@BY5PR10MB3826.namprd10.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: wcG+BWLwylR7vi2gY4bL9+SMzoPkk0rGsKQgIH1xqtmZB09m7ddrtzL1A7hRXs8AEtYCQl3l03Ef4kBSIEp8p2MhIqT4PKcQERPFg9tEIJg9niI/I0NcPWsapS93EFCWuVTKDTSogGVSPnl8ZcKFShloIZIfaQuU9L5t2Q+7xp3z0LY9M8VgzZEg/l83fVTgVRAmTG4peihfhq6nSFB7BKBVjB81P0+HCo13+bZ+cNd3GR1dUUHx84KePgxA1xkw/BCHVt/kdeXDgRQVzHhgwuFRhBLpSoF33YBZ3DWzeeC5SbRVlWQHZQvZk/vQ/eCLUXjwENJ8ULeJ0jgAqR2M0Hugu+Xuthj5OfFfNdoJ02dAHxOc//hea+JYHLy5789ZaFb4TlWkxtrmfKaBqtlB15lp8iENXxcaQYXlmK+BnYa6qld2RCYGXyGB/MpFHKxo2a2bZMTIptl7erZv+r+CLRFy/r1QseNupiBRlxXXvHPaXqK6Me5yKb/6w/qvdqC9k2L7EBxGeDpzOBw1F7JY4evcOHsaDENaL9fjgDXAXAJOFN1WAfW+/EANnUI0soWggk7lNdpCSC7dbf1YLRR3IiKH0jMF5CIN1xGskuHnLBfzNt+Jgy8ZJ04JX4gHwm3Gz2O7NmsrPnSx6ekHdHQWfhqq5cXmZlCAUbEZFDoBIfchbfo0Blgls2bDhIDyJwlHTrJY5FY4pJZzo9qYcIq1BwvhvkXmj2Eu6eyAtjFHvFxPh84Q6Ams5b1fAJztscB998If+oXzky9qX6Nisi6Q3fwwx5QmpLy1chDpAfiOP3JbkaEbXsVcaDL79P3KnI+qzYVp28d3dUpMUEvC4AGgQQ==
+X-Microsoft-Antispam-Message-Info: 8MKeJ8FccvjpLP/zGKJHbRtUWljH1o02NQ7QnDFEnz3rUdUHsDR2PUgAiIQDRk5GPrkSWb2lv/zpLg/0BWH7a12hV9RJZdaj/jiA5RrKPPlVwLdiguaNsAJHQDhVOo1zfb1K4PJMvEZmeu1TJkGzKMhjkVG30Zmk609YEvDVqdVj1FQHM9Q2EqUgAhIJ0uWbKmhTutFtaF7iHvPAt7rYIYzcLzG0UcgRAZbE5SixcB41a/Xow4GDnsceF9AswDaNwWMjFqfJUE0YU0VOeQSxg+7Vkvq301Xug6llobtQV+2oPxIKM7AGPMenzeHAd129y6a1YqJQTRCeY9P9VWzmZJMT8l5ICCFWJRuq1XKGLuru7Tzu5HxYbEsOtcyjuJNnKWh1OvXQPCPia7ICLjejgKk+eh1Kqa57svmpWSXd/XYiUlA86/w/hqyHxqYHwc5oA5Re9h+ANEMcolDOSbFvmXUqttApOHaiuQEpgWSv56OCap1LEGdagB9WchAuFTKMDJXYOenKbriSXpguGv5rAQD5jkaMtKmrupPZ3gpQS7aSQ9vaSY0Dt+ueXV1YlqqZiGYHkQgT4OhO37jReNWD4kH3PNkw0OK3oXCK1u7M+TXpuZptfXFlW9tuEyd3MZelm3NwxW2BSEFulHmhYTNd9yi6Xhzwt3X3S1WcKKDG6VvDDvhgXlEbA8+grZZN/7Xw0B4szfLMeNZVqrash3Wfbg==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(6666004)(86362001)(316002)(6916009)(6506007)(6486002)(966005)(83380400001)(6512007)(9686003)(508600001)(44832011)(52116002)(8936002)(5660300002)(2906002)(26005)(66946007)(66476007)(66556008)(186003)(38350700002)(36756003)(38100700002)(4326008)(8676002)(1076003);
+ SFS:(13230001)(7916004)(366004)(33716001)(186003)(4326008)(83380400001)(33656002)(44832011)(26005)(2906002)(1076003)(52116002)(9686003)(6512007)(8936002)(6506007)(6666004)(38350700002)(38100700002)(5660300002)(508600001)(66946007)(8676002)(6486002)(66556008)(66476007)(86362001)(316002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?VmkH0kKbedP1dr4Lsz35fn4r29+r5qXTiS4YmMVZ1YLwD4bl2NtmHiNfqzFh?=
- =?us-ascii?Q?QbJb0S84v5p3IUpKMh4Rq1Jd0B8LizySDvqj3mQ7huVKST9dUqBaymeGXFi1?=
- =?us-ascii?Q?Iao1nIRFyDHC66wgLgqBEf1LZpdHPWDxmnJtEt9HQkCSAB8HXpUvBLYle9qc?=
- =?us-ascii?Q?1TTd3vrVNzY8p9EY5OUKaB5VMevS2EAiH/x6xBHX7MZ+DtdcXlIkVUAQyARW?=
- =?us-ascii?Q?gwp83EWQCdVYBCW8riYUDvatzn7aPSZaSmfXVLU0ojlyamU9U4Kfd1Bhl+oT?=
- =?us-ascii?Q?TzJSBvs8n2odQez/Zkxu9WSCzPsOMpDzAu8Q83UGkGNvcacDvFM+s6oO0D3t?=
- =?us-ascii?Q?g0kVQ3aQ+zlJO3lzrAQf/YuUF45nQesUWuwav1gv5GmpQYWm+cg9i5tgWmYn?=
- =?us-ascii?Q?GkGxE2i3ysRJGUDyiAkYW2Xkuw0XeslNiw4QRcFmDzhC6g60uYH1sYQvPx7Z?=
- =?us-ascii?Q?uBAyOwsUxTbSXmyLmUr1raShHvqMWUAPrKbnm5MFXF6L8Jfws7DQcYJ9ZSVe?=
- =?us-ascii?Q?pcqY9mvIFO5sJlz72D8orCAj5GbgKZJRRNf2ZWVhMpP6MMF72JZXYfGFzW7p?=
- =?us-ascii?Q?ZmONe2wN1AJVIg17EI4ZnFQ0MSg88SsAo1FaXFVvpXj261xaKzdQxSVcqtAH?=
- =?us-ascii?Q?ri+SeZQIic++T0jCoT3mWoQDEu0vaIJXqg9gdDkFsqe3urvgDO5wmPE8Ry2S?=
- =?us-ascii?Q?hpQvwa3zxHIB+Ugy2ymz0tTxV51oi/kohi50gnvWImqi0P7Zq3vYkpelid0Y?=
- =?us-ascii?Q?pus1W+XU2pEYq200qsQRYGpiyOmDdishYNUR3PbI9TKEG6UvLraIvf2Ajiil?=
- =?us-ascii?Q?QIS3vuEYkO7pzx32wqQPcjOTA1mmSAyqxiDz2oYcRRp9H9Y+h0ZtNcLiuyQQ?=
- =?us-ascii?Q?5lj1r1fGOfMWhXGGBAI8jGHM7gZTH1j859E714HxKnmw/Ee8yz+AxpiDe0z5?=
- =?us-ascii?Q?7krDEVrSDbDvnMLUSg2q4ZQhjRWNwpcro62h3kfLVCcbpePT2yV2hhpBme5p?=
- =?us-ascii?Q?4f6jgYrBmcwUufWF8pyreg04/lu0HIftM8qBjA5aHg1qAEC576nbBMnw+2HA?=
- =?us-ascii?Q?NDU5Hu6NX+eG548c/6NduT/3mhXRzmVTtFQo5Qanl7yYK8pBS8tTpiwBzAe4?=
- =?us-ascii?Q?QVQt8vF2niwf4xA2ZZrMaXKiGDGLfa7jxhFj5zDuciQET8HcFSGDo15iJlI8?=
- =?us-ascii?Q?hVnSxDJLBgohEdW5G87VvV0yOrkzBJooTVo/vqB+xsEkU8NqLAFnegBDi0Ui?=
- =?us-ascii?Q?E8jPr+K+/+vuHcRHCeTDSD53szbiuqcBBMqYn4vv8K6sXfKRHjORwexQ6qrG?=
- =?us-ascii?Q?B91Kc4vsL4hC2UfF+3FiLFTgcZHz/IWM5GJqjz98U0Ia6hqzD8ORjJB50tnC?=
- =?us-ascii?Q?n68evHQ7VmFSUG4oyo9E9ifqZ1s+ijxzYr7qcYAsNCZ9XgaUSdpo9jBSBEyS?=
- =?us-ascii?Q?uVKVztyHk9CQHzSVQ+N0cRFJMqeTr8egvELPcd16UwAvlk12tRkgF+M4oBZR?=
- =?us-ascii?Q?M/AYHEmDcAZRdoVLirE28hLlWxOp13cmg42Hjms4cBhVal1XDufHnGiWvPAU?=
- =?us-ascii?Q?+70qzYpyPXReOh4y/egL63GmJfcBJgd9EpeXg+algc749d5WdJJn5sTYJXsU?=
- =?us-ascii?Q?E0G0FMgh/AewLpux5D1wnjvg/oUcA/jkzYSKXIZn3WnfhTA60aL9DHv3I2g/?=
- =?us-ascii?Q?4mmnBQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?B7kx2sPN20sxZsc18FB+9qZPSdVr2L5oBbHXfCrsbVPYhf9mnz+wNO8llCWp?=
+ =?us-ascii?Q?8BnNPiyxye+WsbCNeQyaCjTYbaBCgCjii0M2XP831Gq9cgdnqIV1kblgv1ko?=
+ =?us-ascii?Q?PXGWCJghJGUc9tFitxXhZmYO/lpDoZCNfQZH711mMb3+J9qN4ro0Faxq4NS5?=
+ =?us-ascii?Q?fg4j60RTXuFp2nbNlD7nhS+pZIRnVkewqXoySBUwHqLE4y0hroFx/T0TOq14?=
+ =?us-ascii?Q?cSph09osf7mhjZ/7T4GoNMOKV2QY9yYAX6ij2tU9YCocfdE9HvAyLSQkLfMP?=
+ =?us-ascii?Q?cX3FTjwfeik1h2tUSWjCg21fE7N6s0C3DcdxEdc2BOLtyGJwoTal9sHJJ3sk?=
+ =?us-ascii?Q?2yvHzLP1H5apvJlVUSe3QV7jNUu4hpNiHdk8KaxXab2EIzv0UPm0bH21Fpi8?=
+ =?us-ascii?Q?CZ6AS7ZXebyiqLGE//mk/PKHDaGANpvcg3r247NnbTzWUB7rWHxtyb6Qwm2G?=
+ =?us-ascii?Q?sPsM/Cl4xfSyea8+R4R5f52vWDqaoE5G8lt0szcTUJb+WSzj28LrmvPNKASn?=
+ =?us-ascii?Q?6MonREvD2MHjNZWTIJ+htAQ6OX3JVEfw7qD/8oU1nwdTMCmpSG7Dcr/msZAz?=
+ =?us-ascii?Q?L31LtjAgjCG+HL5j047pLAPYK7tG78j77mUPyctI8u+Scw/5nqsY+5BZOYs+?=
+ =?us-ascii?Q?RlKT6TCw/RWfZPMi0OmUc8I3Pedk5XjFY7nF3BpXKJWNUitU3uomU1bYoySJ?=
+ =?us-ascii?Q?me9oCJw9rbLtM/wK8wq/c/OIe5oirXYghzF8Sz3+VWUO8D0JmGBVsxAaKMv0?=
+ =?us-ascii?Q?5la0cPI+vn6he1QC642WxCVYzLMFaeAr2sRY3q/Rm4Vb6P9TPEXbPw4GT45V?=
+ =?us-ascii?Q?ZovlsvMijAwgupwq3W4j6h6Rpz3c1gW5E99v4aoX+87C6zKngVD0DV6EEr3G?=
+ =?us-ascii?Q?nwQF/RXULWCBVrJh5oXEftrMdtP7ozT4PIVJ0sz1fR0Q3fCyAaDCyB81xxzM?=
+ =?us-ascii?Q?sDHgHSNR6BUYQGXQE+LIdvryFif4qmTMSCVomaG1eKT/TL5kphnUKkN/VYBR?=
+ =?us-ascii?Q?B4E9OynDZSI6VtDBhVW4yULJcE5B1rJ2MWJXMwyh+CW32Gsx/iCkS80G43+P?=
+ =?us-ascii?Q?Apr7eLNqUizfjLhi6/480+TAmHAo/RiQPFMJfipWHUlda9yF1wyXaECelzyj?=
+ =?us-ascii?Q?K1tnmaFefi+1OVfPhOv/2E1YWTO7UqVFnhFzFdRQnOurQBN1VngKiqCCg/1p?=
+ =?us-ascii?Q?uA33kxXpOc8FOO7SlRtIbej0+UT0oRevqc2Qe8Co+1kvXsshjbpLYTjpjUAk?=
+ =?us-ascii?Q?5wse7jMMoRXLj5cUp4iK155fHgzOdQF/8gdS+e2NbmY949Wy5Di2mrNJwlKP?=
+ =?us-ascii?Q?gXcIbPLdk9MFUzCVNxtsFmu37yfHK4ZZOQufMis/Qkst4wmi8e7dt2GP1Ao4?=
+ =?us-ascii?Q?VRBd/HSQuhW8olRDomtOW3vl9xOZJEjFM/nOrmuMcmzX9l79hPSFoTEpD4eC?=
+ =?us-ascii?Q?T3AvmRHN9UJuydIxgr0cwmgunc/hAFh46B2ez2OeSlQTCk5wM35t3GjSWNIO?=
+ =?us-ascii?Q?Qn5BWbm4OUlH+FP+/51I7VpqY/WkZVdjltzG5KgYettYYoQooBrIBvHHSlZ1?=
+ =?us-ascii?Q?9NurYv90YUGqPMM2IfxeiEJ8SWywMcUPtOWlFTWeGcyOWiWsSl0jYhja913w?=
+ =?us-ascii?Q?ftoXMKp6rS0ITLe74vR22GceJnqV4bxdyF+eFlx3xIX7ku7fmIxxMkOb9bRJ?=
+ =?us-ascii?Q?F8tVEw=3D=3D?=
 X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 554851f7-4fa9-4791-cc64-08d9fdbd4067
+X-MS-Exchange-CrossTenant-Network-Message-Id: e0175be7-9358-4a22-06fa-08d9fdd58f61
 X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2022 08:59:12.4732 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2022 11:53:12.9060 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IollHBkYBKeFgOmD2y6tMzt2EKK3d1bJYNWFo01RNS6neeyxkbBmuwp/ms+Ab+Pu+eBIuRtZOlmQFIqwVaUiuSnZsfL/W51NLULkOF8s14k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR10MB5882
+X-MS-Exchange-CrossTenant-UserPrincipalName: QNpeOyGZbjpr31ORFFYW++s5u2K0OVNk6e6dySB3B1pTj5PgSK/cxm9gq1ic8v6Za9DjJBQhvBwz5m3ODZb6aH1XPCSszTiR5Ge+4JHvMy4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB3826
 X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10275
  signatures=686983
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- adultscore=0 mlxscore=0
- malwarescore=0 bulkscore=0 suspectscore=0 mlxlogscore=999 spamscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0 bulkscore=0
+ malwarescore=0 mlxscore=0 spamscore=0 suspectscore=0 mlxlogscore=999
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2203040046
-X-Proofpoint-GUID: QGMxMixOgdcN9TES8WveBB6KDb6H7aEY
-X-Proofpoint-ORIG-GUID: QGMxMixOgdcN9TES8WveBB6KDb6H7aEY
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE 179/215]
- net/dsa/dsa.c:486 dsa_port_walk_fdbs() error: uninitialized symbol 'err'.
+ definitions=main-2203040064
+X-Proofpoint-GUID: 4VG_GfcfL0OkKaF-QPO3-9Y6Dj8Cp5DR
+X-Proofpoint-ORIG-GUID: 4VG_GfcfL0OkKaF-QPO3-9Y6Dj8Cp5DR
+Subject: [Intel-wired-lan] [bug report] iavf: Fix deadlock in iavf_reset_task
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,76 +164,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, kbuild-all@lists.01.org,
- linux-kernel@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-head:   3d5985a185e6abfc0b38ed187819016a79eca864
-commit: f9cef64fa23f6c1ff177be5082113c5a94e34e5d [179/215] net: dsa: felix: migrate host FDB and MDB entries when changing tag proto
-config: m68k-randconfig-m031-20220304 (https://download.01.org/0day-ci/archive/20220304/202203041527.OdG5EuV4-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 11.2.0
+Hello Slawomir Laba,
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+The patch e85ff9c631e1: "iavf: Fix deadlock in iavf_reset_task" from
+Feb 23, 2022, leads to the following Smatch static checker warning:
 
-smatch warnings:
-net/dsa/dsa.c:486 dsa_port_walk_fdbs() error: uninitialized symbol 'err'.
-net/dsa/dsa.c:506 dsa_port_walk_mdbs() error: uninitialized symbol 'err'.
+	drivers/net/ethernet/intel/iavf/iavf_main.c:2691 iavf_reset_task()
+	error: double unlocked '&adapter->crit_lock' (orig line 2689)
 
-vim +/err +486 net/dsa/dsa.c
+drivers/net/ethernet/intel/iavf/iavf_main.c
+    2613 static void iavf_reset_task(struct work_struct *work)
+    2614 {
+    2615         struct iavf_adapter *adapter = container_of(work,
+    2616                                                       struct iavf_adapter,
+    2617                                                       reset_task);
+    2618         struct virtchnl_vf_resource *vfres = adapter->vf_res;
+    2619         struct net_device *netdev = adapter->netdev;
+    2620         struct iavf_hw *hw = &adapter->hw;
+    2621         struct iavf_mac_filter *f, *ftmp;
+    2622         struct iavf_cloud_filter *cf;
+    2623         u32 reg_val;
+    2624         int i = 0, err;
+    2625         bool running;
+    2626 
+    2627         /* When device is being removed it doesn't make sense to run the reset
+    2628          * task, just return in such a case.
+    2629          */
+    2630         if (!mutex_trylock(&adapter->crit_lock)) {
+    2631                 if (adapter->state != __IAVF_REMOVE)
+    2632                         queue_work(iavf_wq, &adapter->reset_task);
+    2633 
+    2634                 return;
+    2635         }
+    2636 
+    2637         while (!mutex_trylock(&adapter->client_lock))
+    2638                 usleep_range(500, 1000);
+    2639         if (CLIENT_ENABLED(adapter)) {
+    2640                 adapter->flags &= ~(IAVF_FLAG_CLIENT_NEEDS_OPEN |
+    2641                                     IAVF_FLAG_CLIENT_NEEDS_CLOSE |
+    2642                                     IAVF_FLAG_CLIENT_NEEDS_L2_PARAMS |
+    2643                                     IAVF_FLAG_SERVICE_CLIENT_REQUESTED);
+    2644                 cancel_delayed_work_sync(&adapter->client_task);
+    2645                 iavf_notify_client_close(&adapter->vsi, true);
+    2646         }
+    2647         iavf_misc_irq_disable(adapter);
+    2648         if (adapter->flags & IAVF_FLAG_RESET_NEEDED) {
+    2649                 adapter->flags &= ~IAVF_FLAG_RESET_NEEDED;
+    2650                 /* Restart the AQ here. If we have been reset but didn't
+    2651                  * detect it, or if the PF had to reinit, our AQ will be hosed.
+    2652                  */
+    2653                 iavf_shutdown_adminq(hw);
+    2654                 iavf_init_adminq(hw);
+    2655                 iavf_request_reset(adapter);
+    2656         }
+    2657         adapter->flags |= IAVF_FLAG_RESET_PENDING;
+    2658 
+    2659         /* poll until we see the reset actually happen */
+    2660         for (i = 0; i < IAVF_RESET_WAIT_DETECTED_COUNT; i++) {
+    2661                 reg_val = rd32(hw, IAVF_VF_ARQLEN1) &
+    2662                           IAVF_VF_ARQLEN1_ARQENABLE_MASK;
+    2663                 if (!reg_val)
+    2664                         break;
+    2665                 usleep_range(5000, 10000);
+    2666         }
+    2667         if (i == IAVF_RESET_WAIT_DETECTED_COUNT) {
+    2668                 dev_info(&adapter->pdev->dev, "Never saw reset\n");
+    2669                 goto continue_reset; /* act like the reset happened */
+    2670         }
+    2671 
+    2672         /* wait until the reset is complete and the PF is responding to us */
+    2673         for (i = 0; i < IAVF_RESET_WAIT_COMPLETE_COUNT; i++) {
+    2674                 /* sleep first to make sure a minimum wait time is met */
+    2675                 msleep(IAVF_RESET_WAIT_MS);
+    2676 
+    2677                 reg_val = rd32(hw, IAVF_VFGEN_RSTAT) &
+    2678                           IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
+    2679                 if (reg_val == VIRTCHNL_VFR_VFACTIVE)
+    2680                         break;
+    2681         }
+    2682 
+    2683         pci_set_master(adapter->pdev);
+    2684         pci_restore_msi_state(adapter->pdev);
+    2685 
+    2686         if (i == IAVF_RESET_WAIT_COMPLETE_COUNT) {
+    2687                 dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
+    2688                         reg_val);
+    2689                 iavf_disable_vf(adapter);
 
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  470  int dsa_port_walk_fdbs(struct dsa_switch *ds, int port, dsa_fdb_walk_cb_t cb)
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  471  {
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  472  	struct dsa_port *dp = dsa_to_port(ds, port);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  473  	struct dsa_mac_addr *a;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  474  	int err;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  475  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  476  	mutex_lock(&dp->addr_lists_lock);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  477  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  478  	list_for_each_entry(a, &dp->fdbs, list) {
+The proble is that iavf_disable_vf() calls mutex_unlock(&adapter->crit_lock);
 
-Can the list be empty?  Smatch might be able to figure this out with
-cross function analysis but it's not feasible for the kbuild-bot.
+    2690                 mutex_unlock(&adapter->client_lock);
+--> 2691                 mutex_unlock(&adapter->crit_lock);
 
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  479  		err = cb(ds, port, a->addr, a->vid, a->db);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  480  		if (err)
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  481  			break;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  482  	}
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  483  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  484  	mutex_unlock(&dp->addr_lists_lock);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  485  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02 @486  	return err;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  487  }
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  488  EXPORT_SYMBOL_GPL(dsa_port_walk_fdbs);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  489  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  490  int dsa_port_walk_mdbs(struct dsa_switch *ds, int port, dsa_fdb_walk_cb_t cb)
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  491  {
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  492  	struct dsa_port *dp = dsa_to_port(ds, port);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  493  	struct dsa_mac_addr *a;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  494  	int err;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  495  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  496  	mutex_lock(&dp->addr_lists_lock);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  497  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  498  	list_for_each_entry(a, &dp->mdbs, list) {
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  499  		err = cb(ds, port, a->addr, a->vid, a->db);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  500  		if (err)
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  501  			break;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  502  	}
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  503  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  504  	mutex_unlock(&dp->addr_lists_lock);
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  505  
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02 @506  	return err;
-f9cef64fa23f6c1 Vladimir Oltean 2022-03-02  507  }
+so calling it again here is a bug.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+I feel like I owe you an apology on this one because I asked you to add
+the mutex_unlock() here via the kbuild-bot...  It is confusing though.
+Does the unlock really need to be done inside iavf_disable_vf() are
+can we move that to the callers?
 
+    2692                 return; /* Do not attempt to reinit. It's dead, Jim. */
+    2693         }
+    2694 
+    2695 continue_reset:
+    2696         /* We don't use netif_running() because it may be true prior to
+    2697          * ndo_open() returning, so we can't assume it means all our open
+    2698          * tasks have finished, since we're not holding the rtnl_lock here.
+    2699          */
+
+regards,
+dan carpenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
