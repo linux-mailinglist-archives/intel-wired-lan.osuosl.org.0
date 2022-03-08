@@ -1,166 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D85194D1862
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Mar 2022 13:55:06 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B6AD84D1C4C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Mar 2022 16:50:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4DD6484161;
-	Tue,  8 Mar 2022 12:55:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 12D944090E;
+	Tue,  8 Mar 2022 15:50:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ulRxtDZCSrHI; Tue,  8 Mar 2022 12:55:04 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Lku0n20Yj4iv; Tue,  8 Mar 2022 15:50:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 54BF884120;
-	Tue,  8 Mar 2022 12:55:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D559C402F3;
+	Tue,  8 Mar 2022 15:50:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0F3201BF3E9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 12:54:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E1D8C1BF380
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 15:49:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0B9D8415E2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 12:54:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CF04B400D7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 15:49:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RHQ0Q9vLMl6I for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Mar 2022 12:54:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wOy5pAI-5vDx for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Mar 2022 15:49:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E0084415D5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 12:54:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646744097; x=1678280097;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=kdnmKZjKO5VRAIwMntb/gulIExnwu9u0Td0Peo7UhkY=;
- b=VnTYyKM2OmttfGKZ5byLrb2UvQci1XBKztsQ54U5MTOyyjeoisUGYU11
- KWg+SPYFTO5pVWSoNP68tyRIcuR9HeI+3LOTBBzE7ut9rNJR0yjN3oCZT
- vrx2ALfmd1cQLDPgrOhsCU2hJ1gg3m7wCh0zZV+CJSBCwftH31Rxolq/d
- K2xoNBmA8Yun4F1TImGPOnX8h5ZVmBaWuUrUQ7/UtRMT7O0Of6CBf8Y+R
- f6kVLqLdGcZQ6mT7SDSM2aPEn1pNrqNNAYhdsUNoD4LeXfvnbqm+4D5tz
- bJfV9OsP0dwoUodt7jHFvNLKLtES+1or/bc9P4Ex7UbQ/M2hYiiMz5uQF g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10279"; a="242113058"
-X-IronPort-AV: E=Sophos;i="5.90,164,1643702400"; d="scan'208";a="242113058"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2022 04:54:57 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,164,1643702400"; d="scan'208";a="513095643"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga006.jf.intel.com with ESMTP; 08 Mar 2022 04:54:57 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.21; Tue, 8 Mar 2022 04:54:56 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.21; Tue, 8 Mar 2022 04:54:56 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.21 via Frontend Transport; Tue, 8 Mar 2022 04:54:56 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.107)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.21; Tue, 8 Mar 2022 04:54:55 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QqSFn1Yc432YLIztKAsPXleRYw28sdXky0iB75ihuohzOfNT/fa7w7rfBsRnuzDspbJpC49H5NOtjhyl3jVWY1O2vpY+m6mYCJDOt/X0wTwTHYii1jykyBtFLf4HBpVcToottumVMhixqhIQZBVx6Ca1XZQ/5dkG3wUkJHoTamJ5DgNqdzDtpwU4QGiXZhRq345asZYEl7XcIiOR58bV5Z/f3RUixnNQMatNCQN5XoyZmQikQodFkP4VGdCs7rudKJGr8lV3hMk5RHm5GA5FTia0i7akJCnjH6GKdLx2SFxAKL66/0HrlVSTimeO0ggXF8JF423vhaUtXE7OJ42vaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hbuv2BQ1ozSDP9FU5tmSOgnvrCr/C596rEUgZDgg1co=;
- b=Low/16sIX9pf+anE2hr9Grt3ID0TercIklaGPpHnHTY+KqkkKnjEfIPR2z+Dzk7g9pcv5Kryf4D+EG+26FVf2vGgFTC0B0ufDwD20DblQgGTt9BcVfxDsTF+i7XTNvnxBm1vn1lu2A7fbxBPOgfcLjv6VVYPu/NW7dyyR8xfB94r9dNhxHbUgELwoX1+H0oboKYU66TiGva5YBazuvqzUYY3/2cVg+mu1vMwtZ8+SGOGUFc49Otc7wlrhW9FB9d5RlwzE8xgyoyqbRJDAO3RN0vSX/hTbMO0Bh9BuRGXVDmeKj+WeXJSrrAzFpzXIkE3+eiuRJHHFciNZSFemCLPHw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by MN2PR11MB4477.namprd11.prod.outlook.com (2603:10b6:208:17a::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Tue, 8 Mar
- 2022 12:54:52 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::44af:c21:2bed:47b5]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::44af:c21:2bed:47b5%6]) with mapi id 15.20.5038.023; Tue, 8 Mar 2022
- 12:54:52 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "trix@redhat.com" <trix@redhat.com>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "kuba@kernel.org" <kuba@kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] i40e: little endian only valid
- checksums
-Thread-Index: AQHYLjUcRh1Npl6lGUO4UA1iqVy98Ky1es2g
-Date: Tue, 8 Mar 2022 12:54:52 +0000
-Message-ID: <BYAPR11MB33679CF5EBB178871DBB63BAFC099@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20220302125702.358999-1-trix@redhat.com>
-In-Reply-To: <20220302125702.358999-1-trix@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 07085e7d-eed7-4232-44c4-08da0102d684
-x-ms-traffictypediagnostic: MN2PR11MB4477:EE_
-x-microsoft-antispam-prvs: <MN2PR11MB4477548816C07540B75F7400FC099@MN2PR11MB4477.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 92yjt4vk94SwsrowmX2Q86WFPj5rAr4Fmot9xEMMLcn/vKVnvCIro9aLZJT/8wxG+hLdup1CoFOpap5TzWQZyOhBQyryuOXkDtrZeiNRMcqJcAl7M2NTEq4/uVaK5GceNkCLGVibMixXn04RiTn25lESV28TBPd9Bt/fkM0sUChr/XlH7nNuMWOZsBQZgVrVStbwQMW/qO/0ly9G4A0/e5SwF75aeN+NvUAnJq3gANzNjhgglqAdAiC61C9PabPORBd26r/hKdaW6F02mPOXvzcbz1EKrwlVgNgd4c11VfkrxvjxHL9ZWGGo0VRAwt7tj48UWi84QrO4EtohmQyZXMzox/T01qh1eVZw0FL3WrwWZBtOLYx6IIjlAJhF7DsisUA+dk6yuDVs37vW1YStcz6IWw8KBmabjSuodK1h3k/F0kCGGwGmJDxYsehFfeMV0tkGy4tx279Ubc8fQ3MFfpw0lO61RSkTC/3gR4TlCCE8h3ulyZwbSxDQ5yHXgQ34CDcwWF1MmvEUG++4xyFy1KulKadWjf9CG3g4kNROpalt+HRJaQbnAToiqiDajHaJKZS8+w76R69xmyEKtaNu+Ub75Wqyrv4gImqgnmMLFqdxKnaTLqDkQpM+PtOChjyUE/eYsrLZR+FsjViZOw8T2sZt8O5ceH51EX017WopHCnoa9PQveQ9j++kk3jA1aJMhMK2eJ1JgyJbUzLaDJeAZw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(66446008)(6506007)(7696005)(55236004)(53546011)(86362001)(33656002)(52536014)(8936002)(5660300002)(508600001)(4744005)(9686003)(66556008)(2906002)(26005)(186003)(4326008)(8676002)(66476007)(64756008)(76116006)(66946007)(38100700002)(110136005)(38070700005)(55016003)(122000001)(82960400001)(316002)(71200400001)(54906003)(83380400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?TL8Y5XwtSZz+INANjJd3liJgzSJc8TwbeAgrRWuei3IXfNrZrXsLHre7YGyP?=
- =?us-ascii?Q?l36IC66fURgNowWYXbOm1KglOZVfMgQyDPPkc8owLW+zUzi0CC9NPCM9NVrJ?=
- =?us-ascii?Q?i2L82qA2YRl82mlYJcKc3THoSEjwES0+eeer8uty6srMOvJbqFMhv/ZHMryS?=
- =?us-ascii?Q?cCB/VqurKoLa5Gj1zwi8Pqg8bkCgsym00GPaZ2j3vLBgetwSuJ8HdbScTE/w?=
- =?us-ascii?Q?rvTboW3CntxxETpw1B4h6N1Q454b8xFPeFtrihPXONCThKr+YqdMaH6FA20v?=
- =?us-ascii?Q?xgHcQehENe3oaBraLLkyhKJ91lOoNThPp92ze2aR0xrS8qS3grjnD/bn4vAZ?=
- =?us-ascii?Q?bHWcfurkasG2WFv6OR89uDxPv+6c1k/O0vNLimx5Xz5TaRDq040DKcsLNtao?=
- =?us-ascii?Q?Z+ZlpD/sy10aSnEwTvmmFfTE4Ckjpy29o4XNCTH8ml8KnJ4hytz0MHEgqkbr?=
- =?us-ascii?Q?xg9SmLCKiCUx8tlBhVCSVOUyF5F8BxvQUa9ddwjeJUxht6MaZmSNbv2Ni4Ny?=
- =?us-ascii?Q?n3f7Rwxw6xX443Wv8c2fYsB5W5ONUK2pUEmRfQduY69WCutPercHw47EKbXe?=
- =?us-ascii?Q?QtQo6/VX5HMog6ixEh4OkhOtxcJue++UEm244sg5vTvb/ecVAVwgYTmkute9?=
- =?us-ascii?Q?1JUZw8T/7Kf77BoygaFW1xTgPITnIcqklDtoJpw/zsbhIz0NPn8v5YQmgFQe?=
- =?us-ascii?Q?MDXyGyB2CCLcwcOhsU36gVWKNXFqcw1FZbj4Fr9LINovKj87uX1ym9CVT4bX?=
- =?us-ascii?Q?6AKegovfXzdlRlD/DbnvhgBWYWmPKy8TIJvyzB7QXcHV56qeeetOnfkicTgm?=
- =?us-ascii?Q?Pnhlf7sPmkuxMp4K2KMziZ39mH1JfrG4fQFOV3WDJ5rMGkQbcrTXqlO8Oxg/?=
- =?us-ascii?Q?8xHkcfkbYLtCOzRNU0tdQw2JMYvApsLqiXo3KG/OKPKujrCG81fPCxNFlDG6?=
- =?us-ascii?Q?vPPSLqjpqy5Dy8OhPgSt7DmYVkbd7OS3SVoCJr/R9tRultUtowao+3eIp/EP?=
- =?us-ascii?Q?kiHaaIrWZGOP02CL2RXivGjQlSRiDx/Pv0hpxyvt0Y8uzXEhbNK20JNsHhtM?=
- =?us-ascii?Q?OZNeudwastGyUkImXPTV4Kp6ofz8RQgV2xtFKscPdge2W56yTXd0cBzSlSgO?=
- =?us-ascii?Q?cx0ck1g8mkIki7wgKqfBNTzWM7vhQbxyu81oTnYO5NrnAKWMffWbhLNhcgTz?=
- =?us-ascii?Q?isTeaIJVDIFyh6L6STLJ6qEe6fbpPZg1fzUN/OcJe1Yr31tJWefV+nAVRavN?=
- =?us-ascii?Q?1wS0+lU5S0LbpHZntEBq4dkyR7JvaOg4B6cUFszm/HIBiUET9glPaVuoDVA7?=
- =?us-ascii?Q?kbmbYU2/2shik4LoWUmZWAr0PbDjTYzNp3oIQ6OunYQQpYv1NmgyyOXvqc/n?=
- =?us-ascii?Q?pXvg3rX6dwVLpDKLZxbWpbEoURVvpydc+Sc8yGkRNkfBvEulkY1HdbO2Cd1w?=
- =?us-ascii?Q?bKGQKFwTmdP6BmN2XP1ogzDv0KyZ04OjRu6ucpOo8qYQ4T1v6KXirpTzYmoL?=
- =?us-ascii?Q?xz02uJ1huApuqySqzwzaQZPIsjsezjEGkgE0D4ZKwwK8lu+YPXmKO0d4HiG7?=
- =?us-ascii?Q?k4btVTlU8qoky3Vb5D6i3EW+QYmYvzI95Me86VO8toCLxXQJDjzF6qXhgYfI?=
- =?us-ascii?Q?Qg=3D=3D?=
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 93C0A402F3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Mar 2022 15:49:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1646754595;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=R6WaNRSHSX+0RU3BegpHhOCG4TsVZDgfukQA8TYB/xg=;
+ b=B4mxav9lI+Ju0DHmWDxL6RHPclFx9W249RzLwtzN3Jo02x2OhlpgknfKTkFZ7mr7YLHUEc
+ p7jU2zUI61ooodAFRx641V+/8qatyg23oTQabEHonkp1IHgban+60/vwaoUuFf6Mkh2HpS
+ ErdD3KHjoo93Xcr7BFXDXccSRyirNfs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-298-NiXtlvnaNXCexCtxWxOOYg-1; Tue, 08 Mar 2022 10:49:51 -0500
+X-MC-Unique: NiXtlvnaNXCexCtxWxOOYg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B5BBE18766D0;
+ Tue,  8 Mar 2022 15:49:50 +0000 (UTC)
+Received: from calimero.vinschen.de (unknown [10.36.112.5])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 74DC383780;
+ Tue,  8 Mar 2022 15:49:50 +0000 (UTC)
+Received: by calimero.vinschen.de (Postfix, from userid 500)
+ id E80B0A80C06; Tue,  8 Mar 2022 16:49:48 +0100 (CET)
+Date: Tue, 8 Mar 2022 16:49:48 +0100
+From: Corinna Vinschen <vinschen@redhat.com>
+To: Sasha Neftin <sasha.neftin@intel.com>
+Message-ID: <Yid7HCwekP1IsMN3@calimero.vinschen.de>
+Mail-Followup-To: Sasha Neftin <sasha.neftin@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Dima Ruinskiy <dima.ruinskiy@intel.com>
+References: <20220308092422.2971655-1-sasha.neftin@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 07085e7d-eed7-4232-44c4-08da0102d684
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Mar 2022 12:54:52.5495 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0gSa/vl+cNWklJhMMa49WdlcX7tw0CBm4rqDGffH+r+m2+mx2LWNfPq6UwCjtu/p+bYCH16E8ey7u7qA2HzqSw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4477
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: little endian only valid
- checksums
+In-Reply-To: <20220308092422.2971655-1-sasha.neftin@intel.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=vinschen@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Fix BUG: scheduling while
+ atomic: kworker/u64:0/9/0x00000002
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,39 +87,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi Sasha,
 
+On Mar  8 11:24, Sasha Neftin wrote:
+> Replace usleep_range() method with udelay() method to allow atomic contects
+> in low-level MDIO access functions.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> trix@redhat.com
-> Sent: Wednesday, March 2, 2022 6:27 PM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; davem@davemloft.net; kuba@kernel.org
-> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; linux-
-> kernel@vger.kernel.org; Tom Rix <trix@redhat.com>
-> Subject: [Intel-wired-lan] [PATCH] i40e: little endian only valid checksums
-> 
-> From: Tom Rix <trix@redhat.com>
-> 
-> The calculation of the checksum can fail.
-> So move converting the checksum to little endian
-> to inside the return status check.
-> 
-> Signed-off-by: Tom Rix <trix@redhat.com>
+The commit message is a bit on the short end.  It should probably quote
+the reproducer from the below Bugzilla, rather than just pointing to the
+Bugzilla, i.e.,
+
+$ modprobe -r bonding
+$ modprobe -v bonding max_bonds=1 mode=1 miimon=100 use_carrier=0
+$ ip link set bond0 up
+$ ifenslave bond0 eth0 eth1
+
+leads to the following [shortened] kernel log:
+
+[  120.198086] Voluntary context switch within RCU read-side critical section!
+[  120.198093] WARNING: CPU: 3 PID: 10 at kernel/rcu/tree_plugin.h:318 rcu_note_context_switch+0x4ea/0x580
+[  120.207310] bond0: (slave ens5f0): Enslaving as a backup interface with a down link
+[  120.229488] [...]
+[  120.754723] Workqueue: bond0 bond_mii_monitor [bonding]
+[  120.779106] RIP: 0010:rcu_note_context_switch+0x4ea/0x580
+[  120.803880] Code: 08 49 89 8e 40 08 00 00 4d 89 be 48 08 00 00 4d 89 07 e9 98 fe ff ff 48 c7 c7 48 83 94 b6 c6 05 74 3b e1 01 01 e8 35 fd 8a 00 <0f> 0b e9 67 fb ff ff 45 85 f6 0f 84 9e fe ff ff 4c 89 85 a8 00 00
+[  120.890778] RSP: 0018:ffffa2f5c01bbbc8 EFLAGS: 00010082
+[  120.915218] RAX: 0000000000000000 RBX: ffff938d6f8f1740 RCX: 0000000000000027
+[  120.948713] RDX: 0000000000000027 RSI: ffff938d6f8dfcc0 RDI: ffff938d6f8dfcc8
+[  120.982368] RBP: ffffa2f5c01bbc50 R08: 0000000000000000 R09: c0000000ffff7fff
+[  121.016065] R10: 0000000000000001 R11: ffffa2f5c01bb9e0 R12: ffff938a022a9980
+[  121.049504] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000001
+[  121.082870] FS:  0000000000000000(0000) GS:ffff938d6f8c0000(0000) knlGS:0000000000000000
+[  121.121993] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  121.151532] CR2: 0000556901ea4f28 CR3: 0000000482810001 CR4: 00000000001706e0
+[  121.186337] Call Trace:
+[  121.197543]  <TASK>
+[  121.207444]  __schedule+0x9a/0x7b0
+[  121.223316]  ? hrtimer_start_range_ns+0x11d/0x300
+[  121.245293]  schedule+0x41/0xc0
+[  121.259860]  schedule_hrtimeout_range_clock+0x83/0x100
+[  121.283548]  ? hrtimer_init_sleeper+0x80/0x80
+[  121.303830]  usleep_range_state+0x5b/0x80
+[  121.322747]  igc_read_phy_reg_gpy+0x90/0x180 [igc]
+[  121.345249]  igc_phy_has_link+0x7d/0x170 [igc]
+[  121.365980]  igc_check_for_copper_link+0x60/0xd0 [igc]
+[  121.390260]  igc_has_link+0x2a/0x80 [igc]
+[  121.409093]  igc_ethtool_get_link+0x24/0x30 [igc]
+[  121.431248]  bond_check_dev_link.isra.49+0x5a/0x120 [bonding]
+[  121.458271]  ? pick_next_task_fair+0x3e/0x3b0
+[  121.478749]  ? put_prev_entity+0x22/0xe0
+[  121.497154]  ? put_prev_task_fair+0x1b/0x30
+[  121.516903]  bond_mii_monitor+0x107/0x540 [bonding]
+[...]
+
+> Fixes: 5586838fe9ce ("igc: Add code for PHY support")
+> Reported-by: Corinna Vinschen <vinschen@redhat.com>
+> Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_nvm.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_phy.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_phy.c b/drivers/net/ethernet/intel/igc/igc_phy.c
+> index 40dbf4b43234..6961f65d36b9 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_phy.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_phy.c
+> @@ -581,7 +581,7 @@ static s32 igc_read_phy_reg_mdic(struct igc_hw *hw, u32 offset, u16 *data)
+>  	 * the lower time out
+>  	 */
+>  	for (i = 0; i < IGC_GEN_POLL_TIMEOUT; i++) {
+> -		usleep_range(500, 1000);
+> +		udelay(50);
+>  		mdic = rd32(IGC_MDIC);
+>  		if (mdic & IGC_MDIC_READY)
+>  			break;
+> @@ -638,7 +638,7 @@ static s32 igc_write_phy_reg_mdic(struct igc_hw *hw, u32 offset, u16 data)
+>  	 * the lower time out
+>  	 */
+>  	for (i = 0; i < IGC_GEN_POLL_TIMEOUT; i++) {
+> -		usleep_range(500, 1000);
+> +		udelay(50);
+>  		mdic = rd32(IGC_MDIC);
+>  		if (mdic & IGC_MDIC_READY)
+>  			break;
+> -- 
+> 2.30.2
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Tested-by: Corinna Vinschen <vinschen@redhat.com>
+
+
+Thanks,
+Corinna
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
