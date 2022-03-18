@@ -1,71 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FD3B4DDE50
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Mar 2022 17:18:38 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4731C4DDE5C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Mar 2022 17:18:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 92CCC60806;
-	Fri, 18 Mar 2022 16:18:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E1A0A418BD;
+	Fri, 18 Mar 2022 16:18:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZOpX3InqSlHE; Fri, 18 Mar 2022 16:18:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jyFbaqfZIAFP; Fri, 18 Mar 2022 16:18:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 924606080B;
-	Fri, 18 Mar 2022 16:18:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2988D418A1;
+	Fri, 18 Mar 2022 16:18:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0B99A1BF21A
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D4221C1148
  for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Mar 2022 16:18:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 078E780DC8
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0BAF560806
  for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Mar 2022 16:18:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eN6zcYE_w6Wl for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DR7pmbOyEMNX for <intel-wired-lan@lists.osuosl.org>;
  Fri, 18 Mar 2022 16:18:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BE8D880BD6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Mar 2022 16:18:29 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 590AE60590
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Mar 2022 16:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647620309; x=1679156309;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=K35+NJn4cb9SB2tUyATnivg4yiRvcwab/IpVO7uv9zs=;
- b=QY1ML/nA5AUkDDfaiQOTPqVcuT9lhp3l2iyOq71xFqd16WpMDdplk9RD
- HDMFdr0WP+A1DMiq4ShJYmPGUCfP3eZBVoGzAdQhb+/BVXz0Eu9VzbHjy
- KuCRpVT5IvQhTra2u3d8E1stC4D5fkP3dtF+iavaQPY2Q17aJqMBxe1nn
- FyZIHTnT2wzqBjLhkvwm+0AlkBZaFoQBBWEfiXPaI1neVCdaBXhPR09T7
- 5ItS8EVpct7haYhqIzdqmnwrygLdcOMdsPobQGlHInJDiY7NG/OUqn4Qq
- aDXfz2He6LtyfZJK8gtSl3qjeQdMQUA82r2zZGSMlQrqO8GDZj1mCQsuf w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10290"; a="239328707"
-X-IronPort-AV: E=Sophos;i="5.90,192,1643702400"; d="scan'208";a="239328707"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2022 09:18:28 -0700
+ t=1647620310; x=1679156310;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=HZ/6PoiG7H+z+0tPIdkEquUj6/sBoIg3k6UoDOJklXk=;
+ b=i6WwdcXz9j6cHLSMvFWNKkmVsRVJREHBo7HM9P0FOJ5ZkDksoEOl7o/5
+ CnLmROug4DKXdwKprkxDGXo8benA5CGo216whSL8OW1jAuYaWnbTvXkBI
+ ZqPY2btZd8lh5RECHUtZZ21tkU0PZ+y+mqYd65UcDqwHvZDUE5899e5FM
+ qF36iCTwCdPp7NuQQBxNfbIeDrm/xyHyhKJyQ2Gttzen1zE90sX9Fv/ly
+ Nh23ZN64vfRzNtbEXw1YlyZqjgJUyJjlw10a+VjLt2jJkoZzGsqZD+NfE
+ vB4nY4g6JmNVGPKiNNT58urGKla9+Q7vhjI6Fi4gKjPTRGi7A7Jnd08fL Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10290"; a="257354605"
+X-IronPort-AV: E=Sophos;i="5.90,192,1643702400"; d="scan'208";a="257354605"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2022 09:18:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,192,1643702400"; d="scan'208";a="784286416"
+X-IronPort-AV: E=Sophos;i="5.90,192,1643702400"; d="scan'208";a="558518557"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga006.fm.intel.com with ESMTP; 18 Mar 2022 09:18:25 -0700
+ by orsmga008.jf.intel.com with ESMTP; 18 Mar 2022 09:18:26 -0700
 Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
  [10.102.20.203])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 22IGIOmC024113; Fri, 18 Mar 2022 16:18:24 GMT
+ 22IGIOmD024113; Fri, 18 Mar 2022 16:18:25 GMT
 From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 18 Mar 2022 17:17:08 +0100
-Message-Id: <20220318161713.680436-1-alexandr.lobakin@intel.com>
+Date: Fri, 18 Mar 2022 17:17:09 +0100
+Message-Id: <20220318161713.680436-2-alexandr.lobakin@intel.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220318161713.680436-1-alexandr.lobakin@intel.com>
+References: <20220318161713.680436-1-alexandr.lobakin@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v3 net-next 0/5] ice: switch: debloat
- packet templates code
+Subject: [Intel-wired-lan] [PATCH v3 net-next 1/5] ice: switch: add and use
+ u16[] aliases to ice_adv_lkup_elem::{h, m}_u
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,56 +89,87 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This hunts down several places around packet templates/dummies for
-switch rules which are either repetitive, fragile or just not
-really readable code.
-It's a common need to add new packet templates and to review such
-changes as well, try to simplify both with the help of a pair
-macros and aliases.
+ice_adv_lkup_elem fields h_u and m_u are being accessed as raw u16
+arrays in several places.
+To reduce cast and braces burden, add permanent array-of-u16 aliases
+with the same size as the `union ice_prot_hdr` itself via anonymous
+unions to the actual struct declaration, and just access them
+directly.
 
-bloat-o-meter is happy about that (built w/ LLVM 13):
+This:
+ - removes the need to cast the union to u16[] and then dereference
+   it each time -> reduces the horizon for potential bugs;
+ - improves -Warray-bounds coverage -- the array size is now known
+   at compilation time;
+ - addresses cppcheck complaints.
 
-add/remove: 0/1 grow/shrink: 1/1 up/down: 2/-1045 (-1043)
-Function                                     old     new   delta
-ice_fill_adv_dummy_packet                    289     291      +2
-ice_adv_add_update_vsi_list                  201       -    -201
-ice_add_adv_rule                            2950    2106    -844
-Total: Before=413901, After=412858, chg -0.25%
-add/remove: 53/52 grow/shrink: 0/0 up/down: 4660/-3988 (672)
-RO Data                                      old     new   delta
-ice_dummy_pkt_profiles                         -     672    +672
+Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Tested-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_switch.c | 15 +++++++--------
+ drivers/net/ethernet/intel/ice/ice_switch.h | 12 ++++++++++--
+ 2 files changed, 17 insertions(+), 10 deletions(-)
 
-Diffstat also looks nice, and adding new packet templates now takes
-less lines.
-
-We'll probably come out with dynamic template crafting in a while,
-but for now let's improve what we have currently.
-
-From v2[0]:
- - rebase on top of the GTP changes;
- - new: convert template search code to a rodata array (-1000 bytes
-   from .text, -400 bytes from ice.ko);
- - collect Reviewed-by and Tested-by (Marcin, Michal).
-
-From v1[1]:
- - rebase on top of the latest next-queue (to fix #3 not applying);
- - adjust the kdoc accordingly to the function proto changes in #3;
- - no functional changes.
-
-[0] https://lore.kernel.org/netdev/20220127154009.623304-1-alexandr.lobakin@intel.com
-[1] https://lore.kernel.org/netdev/20220124173116.739083-1-alexandr.lobakin@intel.com
-
-Alexander Lobakin (5):
-  ice: switch: add and use u16[] aliases to ice_adv_lkup_elem::{h,m}_u
-  ice: switch: unobscurify bitops loop in ice_fill_adv_dummy_packet()
-  ice: switch: use a struct to pass packet template params
-  ice: switch: use convenience macros to declare dummy pkt templates
-  ice: switch: convert packet template match code to rodata
-
- drivers/net/ethernet/intel/ice/ice_switch.c | 489 ++++++++------------
- drivers/net/ethernet/intel/ice/ice_switch.h |  12 +-
- 2 files changed, 211 insertions(+), 290 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 25b8f6f726eb..075df2474688 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -5811,12 +5811,12 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 		 * over any significant packet data.
+ 		 */
+ 		for (j = 0; j < len / sizeof(u16); j++)
+-			if (((u16 *)&lkups[i].m_u)[j])
++			if (lkups[i].m_raw[j])
+ 				((u16 *)(pkt + offset))[j] =
+ 					(((u16 *)(pkt + offset))[j] &
+-					 ~((u16 *)&lkups[i].m_u)[j]) |
+-					(((u16 *)&lkups[i].h_u)[j] &
+-					 ((u16 *)&lkups[i].m_u)[j]);
++					 ~lkups[i].m_raw[j]) |
++					(lkups[i].h_raw[j] &
++					 lkups[i].m_raw[j]);
+ 	}
+ 
+ 	s_rule->pdata.lkup_tx_rx.hdr_len = cpu_to_le16(pkt_len);
+@@ -6065,11 +6065,10 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	/* get # of words we need to match */
+ 	word_cnt = 0;
+ 	for (i = 0; i < lkups_cnt; i++) {
+-		u16 j, *ptr;
++		u16 j;
+ 
+-		ptr = (u16 *)&lkups[i].m_u;
+-		for (j = 0; j < sizeof(lkups->m_u) / sizeof(u16); j++)
+-			if (ptr[j] != 0)
++		for (j = 0; j < ARRAY_SIZE(lkups->m_raw); j++)
++			if (lkups[i].m_raw[j])
+ 				word_cnt++;
+ 	}
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index ed3d1d03befa..ecac75e71395 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -138,8 +138,16 @@ struct ice_update_recipe_lkup_idx_params {
+ 
+ struct ice_adv_lkup_elem {
+ 	enum ice_protocol_type type;
+-	union ice_prot_hdr h_u;	/* Header values */
+-	union ice_prot_hdr m_u;	/* Mask of header values to match */
++	union {
++		union ice_prot_hdr h_u;	/* Header values */
++		/* Used to iterate over the headers */
++		u16 h_raw[sizeof(union ice_prot_hdr) / sizeof(u16)];
++	};
++	union {
++		union ice_prot_hdr m_u;	/* Mask of header values to match */
++		/* Used to iterate over header mask */
++		u16 m_raw[sizeof(union ice_prot_hdr) / sizeof(u16)];
++	};
+ };
+ 
+ struct ice_sw_act_ctrl {
 -- 
 2.35.1
 
