@@ -1,66 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D81C54E206F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 07:05:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C4914E24DA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 12:01:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7C954409E6;
-	Mon, 21 Mar 2022 06:05:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D1727410DC;
+	Mon, 21 Mar 2022 11:01:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ymfsYk3Di0f5; Mon, 21 Mar 2022 06:05:21 +0000 (UTC)
+	with ESMTP id 5TxYMLig0hgl; Mon, 21 Mar 2022 11:01:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 81FA0409BE;
-	Mon, 21 Mar 2022 06:05:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF7CF40207;
+	Mon, 21 Mar 2022 11:01:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8AC431BF417
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 06:05:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2EC4F1BF312
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7199682451
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 06:05:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C363F826EA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I4mxykdF3Jme for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Mar 2022 06:05:15 +0000 (UTC)
+ with ESMTP id wvd8-6mhTRxx for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Mar 2022 11:01:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B756082446
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 06:05:15 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B50E5826E7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647842715; x=1679378715;
+ t=1647860482; x=1679396482;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=uYyHK5IE3NatGycvfZjnsE/XZSHG0IjDT7UQWWXbFeM=;
- b=QI3u1zspCQv5qtetB/L5eNdagUGnFKWPgl9BcFkZfZFDlNUXxPNLOTN4
- kaOjnc9F8cp6cGz1/lfgmd3SQCt2P5v8N7Jl4zSr8FhsFyPWEptoNxfFj
- DGjV2L8yHeJXStk+EkmdU5T2VuRmI4tI+xLfolfwXc5KfDQd4vAdAFVw9
- 2Yqr608VsOjD8LlBm/kaRfb+fMoBjRurzqM6Y+QdjEfQBGsUMQ1JcQYD2
- dJrUqgCiAhdByDjwSxugASU+Tce/SgaMYAwPSSfXyEv0TOM7xc34R6eSn
- 8CETt5i7+ROMBdcPysQ2n++lFpQIM4+zTFvK0E5tIqaer4Tu7JsifxHp9 w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10292"; a="237419290"
-X-IronPort-AV: E=Sophos;i="5.90,197,1643702400"; d="scan'208";a="237419290"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2022 23:05:15 -0700
+ bh=NmyGAg3H5qIjkqj2AgtDJJmkpqDu2Ml32OAol27OBlQ=;
+ b=kWAXkfkboK1nta59NAn90l70QkBhe9LZ3NjQUNkyaDDznbFSPw/evk8n
+ SP73qy8bo9Nc7DZJLYqlydpQLJxzrn/Kyc4akSYftYHZr6PNG1wKbftgH
+ oHbD49xKI8eIPstLc0FUYV4+5Of/nJjAZlxj5fZ6HuIXgEQOPEPO9Pf1V
+ R8P9SVrFOZ3f59mpO58ksMiZKkGtHz8jwZRUdfx456Nvev6t1YeRr8XZq
+ eTunQI2VMZ+Vau2WEmXK16+QgP24+RcgDNQL6MNZlYZD7H3A4PqNB3Cp9
+ tQMnr2wW8myy4p2ETqCE/CeHioUZCzFqIUar6LxNzK56rZaw2fuJMKL/C g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10292"; a="255089037"
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="255089037"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Mar 2022 04:01:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,197,1643702400"; d="scan'208";a="500054794"
-Received: from ccdlinuxdev12.iil.intel.com ([143.185.162.56])
- by orsmga003.jf.intel.com with ESMTP; 20 Mar 2022 23:05:13 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="543173127"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga007.jf.intel.com with ESMTP; 21 Mar 2022 04:01:18 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 22LB1HaB031880; Mon, 21 Mar 2022 11:01:17 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 21 Mar 2022 08:05:10 +0200
-Message-Id: <20220321060510.1862932-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.30.2
+Date: Mon, 21 Mar 2022 11:59:49 +0100
+Message-Id: <20220321105954.843154-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove igc_set_spd_dplx method
+Subject: [Intel-wired-lan] [PATCH v4 net-next 0/5] ice: switch: debloat
+ packet templates code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,97 +78,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-igc_set_spd_dplx method not in use. This patch comes to tidy up
-the driver code.
+This hunts down several places around packet templates/dummies for
+switch rules which are either repetitive, fragile or just not
+really readable code.
+It's a common need to add new packet templates and to review such
+changes as well, try to simplify both with the help of a pair
+macros and aliases.
+ice_find_dummy_packet() became very complex at this point with tons
+of nested if-elses. It clearly showed this approach does not scale,
+so convert its logics to the simple mask-match + static const array.
 
-Reported-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      |  1 -
- drivers/net/ethernet/intel/igc/igc_main.c | 50 -----------------------
- 2 files changed, 51 deletions(-)
+bloat-o-meter is happy about that (built w/ LLVM 13):
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 3e386c38d016..1e7e7071f64d 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -264,7 +264,6 @@ int igc_reinit_queues(struct igc_adapter *adapter);
- void igc_write_rss_indir_tbl(struct igc_adapter *adapter);
- bool igc_has_link(struct igc_adapter *adapter);
- void igc_reset(struct igc_adapter *adapter);
--int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx);
- void igc_update_stats(struct igc_adapter *adapter);
- void igc_disable_rx_ring(struct igc_ring *ring);
- void igc_enable_rx_ring(struct igc_ring *ring);
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 3f193a33d1a9..d0ab915bb31b 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6190,56 +6190,6 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
- 	return value;
- }
- 
--int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx)
--{
--	struct igc_mac_info *mac = &adapter->hw.mac;
--
--	mac->autoneg = false;
--
--	/* Make sure dplx is at most 1 bit and lsb of speed is not set
--	 * for the switch() below to work
--	 */
--	if ((spd & 1) || (dplx & ~1))
--		goto err_inval;
--
--	switch (spd + dplx) {
--	case SPEED_10 + DUPLEX_HALF:
--		mac->forced_speed_duplex = ADVERTISE_10_HALF;
--		break;
--	case SPEED_10 + DUPLEX_FULL:
--		mac->forced_speed_duplex = ADVERTISE_10_FULL;
--		break;
--	case SPEED_100 + DUPLEX_HALF:
--		mac->forced_speed_duplex = ADVERTISE_100_HALF;
--		break;
--	case SPEED_100 + DUPLEX_FULL:
--		mac->forced_speed_duplex = ADVERTISE_100_FULL;
--		break;
--	case SPEED_1000 + DUPLEX_FULL:
--		mac->autoneg = true;
--		adapter->hw.phy.autoneg_advertised = ADVERTISE_1000_FULL;
--		break;
--	case SPEED_1000 + DUPLEX_HALF: /* not supported */
--		goto err_inval;
--	case SPEED_2500 + DUPLEX_FULL:
--		mac->autoneg = true;
--		adapter->hw.phy.autoneg_advertised = ADVERTISE_2500_FULL;
--		break;
--	case SPEED_2500 + DUPLEX_HALF: /* not supported */
--	default:
--		goto err_inval;
--	}
--
--	/* clear MDI, MDI(-X) override is only allowed when autoneg enabled */
--	adapter->hw.phy.mdix = AUTO_ALL_MODES;
--
--	return 0;
--
--err_inval:
--	netdev_err(adapter->netdev, "Unsupported Speed/Duplex configuration\n");
--	return -EINVAL;
--}
--
- /**
-  * igc_probe - Device Initialization Routine
-  * @pdev: PCI device information struct
+add/remove: 0/1 grow/shrink: 1/1 up/down: 2/-1058 (-1056)
+Function                                     old     new   delta
+ice_fill_adv_dummy_packet                    289     291      +2
+ice_adv_add_update_vsi_list                  201       -    -201
+ice_add_adv_rule                            2950    2093    -857
+Total: Before=414512, After=413456, chg -0.25%
+add/remove: 53/52 grow/shrink: 0/0 up/down: 4660/-3988 (672)
+RO Data                                      old     new   delta
+ice_dummy_pkt_profiles                         -     672    +672
+Total: Before=37895, After=38567, chg +1.77%
+
+Diffstat also looks nice, and adding new packet templates now takes
+less lines.
+
+We'll probably come out with dynamic template crafting in a while,
+but for now let's improve what we have currently.
+
+From v3[0]:
+ - change u64:48 + u64:16 -> u32 + u16 to fix issues on 32-bit
+   platforms (and make object code a bit simpler);
+ - mention ice_find_dummy_packet() conversion in the cover letter.
+
+From v2[1]:
+ - rebase on top of the GTP changes;
+ - new: convert template search code to a rodata array (-1000 bytes
+   from .text, -400 bytes from ice.ko);
+ - collect Reviewed-by and Tested-by (Marcin, Michal).
+
+From v1[2]:
+ - rebase on top of the latest next-queue (to fix #3 not applying);
+ - adjust the kdoc accordingly to the function proto changes in #3;
+ - no functional changes.
+
+[0] https://lore.kernel.org/netdev/20220318161713.680436-1-alexandr.lobakin@intel.com
+[1] https://lore.kernel.org/netdev/20220127154009.623304-1-alexandr.lobakin@intel.com
+[2] https://lore.kernel.org/netdev/20220124173116.739083-1-alexandr.lobakin@intel.com
+
+Alexander Lobakin (5):
+  ice: switch: add and use u16[] aliases to ice_adv_lkup_elem::{h,m}_u
+  ice: switch: unobscurify bitops loop in ice_fill_adv_dummy_packet()
+  ice: switch: use a struct to pass packet template params
+  ice: switch: use convenience macros to declare dummy pkt templates
+  ice: switch: convert packet template match code to rodata
+
+ drivers/net/ethernet/intel/ice/ice_switch.c | 489 ++++++++------------
+ drivers/net/ethernet/intel/ice/ice_switch.h |  12 +-
+ 2 files changed, 211 insertions(+), 290 deletions(-)
+
 -- 
-2.30.2
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
