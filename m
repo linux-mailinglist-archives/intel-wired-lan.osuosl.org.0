@@ -2,72 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E5DD4E24DC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 12:01:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6178B4E24DD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 12:01:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3F65A408D2;
-	Mon, 21 Mar 2022 11:01:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0D02440643;
+	Mon, 21 Mar 2022 11:01:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UmdSHBMq9hDN; Mon, 21 Mar 2022 11:01:46 +0000 (UTC)
+	with ESMTP id EBkd000_Q6tp; Mon, 21 Mar 2022 11:01:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0234F40535;
-	Mon, 21 Mar 2022 11:01:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3E6E740535;
+	Mon, 21 Mar 2022 11:01:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 172581BF312
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:29 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D91E21BF312
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 013C4410C4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D5B3782B1A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yHjJlqQPZSEg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Mar 2022 11:01:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2-1WUhLcquX7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Mar 2022 11:01:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4AEC740207
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:28 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BFBB1826E7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 11:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647860488; x=1679396488;
+ t=1647860498; x=1679396498;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=HZ/6PoiG7H+z+0tPIdkEquUj6/sBoIg3k6UoDOJklXk=;
- b=cGgWC05N4A/ui/xqo164iPorp3tC+SjiKJWemuAo3UJTotxYI/NV9Gi9
- e1ni7ajazx3fa1U6GG/58eZvOckZ2VBAqiSzxac+E2uZPrAcTTKV6WR04
- NkVZIhtO8S94xy1KrWx7kLHp28epIDlEyz9OOt1QU1QHP8Aa2tMUR57V5
- 9V9yL12wPrQXhw43lNmjXkrvCWcWFSvv3EWdawNl0ElQqhowJnoxOoJ+8
- FTP13UIUPk75lrEf0H1q6/EwALjzVEURWrjQWStnAoDeouSzqPqGF61p8
- abmPfAHRDZfnS/T6s66vz3YpshIjRGHY/8yuIAjnfEGNYp5mPQxYTWpd9 w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10292"; a="239681086"
-X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="239681086"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Mar 2022 04:01:22 -0700
+ bh=VGK2tf/WMVRRuyd2IcAcZNLjAWSYfn++70ETfZeMG2E=;
+ b=UsYt7KAstKxuPDjF5l2pfvcIxqDJcCrlSaKCryf81QraVX5U70g+Ljv9
+ RxU99TnB+HPSTGY9rDOEjPMVxQdQay1olLzOJGxethVxya6iN9PVLJTra
+ 9tBKgpn1Rr7K6EfXf6UFbsQhr4Gm8rhiP3MFmZB7HljBc740zIL874+Il
+ iPolvqbtcTUDalGP11QhffdlafOaQBofzaMiFAGthp+AR0t9HSYJLmytW
+ pkTZZ8+K/BJAEI0ukXwthehnLNFPSawSLM88GE3Ol/IvYlgweNcE+JJIF
+ JvwOToeKh5Mm7ufYPB8qHfWWqm5w/RmsB5EhsmMyL2fhCEZ/KGZa1qXx4 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10292"; a="320727741"
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="320727741"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Mar 2022 04:01:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="784957665"
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="716454487"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga006.fm.intel.com with ESMTP; 21 Mar 2022 04:01:19 -0700
+ by orsmga005.jf.intel.com with ESMTP; 21 Mar 2022 04:01:22 -0700
 Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
  [10.102.20.203])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 22LB1HaC031880; Mon, 21 Mar 2022 11:01:18 GMT
+ 22LB1HaG031880; Mon, 21 Mar 2022 11:01:21 GMT
 From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 21 Mar 2022 11:59:50 +0100
-Message-Id: <20220321105954.843154-2-alexandr.lobakin@intel.com>
+Date: Mon, 21 Mar 2022 11:59:54 +0100
+Message-Id: <20220321105954.843154-6-alexandr.lobakin@intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220321105954.843154-1-alexandr.lobakin@intel.com>
 References: <20220321105954.843154-1-alexandr.lobakin@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v4 net-next 1/5] ice: switch: add and use
- u16[] aliases to ice_adv_lkup_elem::{h, m}_u
+Subject: [Intel-wired-lan] [PATCH v4 net-next 5/5] ice: switch: convert
+ packet template match code to rodata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,87 +89,341 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ice_adv_lkup_elem fields h_u and m_u are being accessed as raw u16
-arrays in several places.
-To reduce cast and braces burden, add permanent array-of-u16 aliases
-with the same size as the `union ice_prot_hdr` itself via anonymous
-unions to the actual struct declaration, and just access them
-directly.
+Trade text size for rodata size and replace tons of nested if-elses
+to the const mask match based structs. The almost entire
+ice_find_dummy_packet() now becomes just one plain while-increment
+loop. The order in ice_dummy_pkt_profiles[] should be same with the
+if-elses order previously, as masks become less and less strict
+through the array to follow the original code flow.
+Apart from removing 80 locs of 4-level if-elses, it brings a solid
+text size optimization:
 
-This:
- - removes the need to cast the union to u16[] and then dereference
-   it each time -> reduces the horizon for potential bugs;
- - improves -Warray-bounds coverage -- the array size is now known
-   at compilation time;
- - addresses cppcheck complaints.
+add/remove: 0/1 grow/shrink: 1/1 up/down: 2/-1058 (-1056)
+Function                                     old     new   delta
+ice_fill_adv_dummy_packet                    289     291      +2
+ice_adv_add_update_vsi_list                  201       -    -201
+ice_add_adv_rule                            2950    2093    -857
+Total: Before=414512, After=413456, chg -0.25%
+add/remove: 53/52 grow/shrink: 0/0 up/down: 4660/-3988 (672)
+RO Data                                      old     new   delta
+ice_dummy_pkt_profiles                         -     672    +672
+Total: Before=37895, After=38567, chg +1.77%
 
 Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Tested-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_switch.c | 15 +++++++--------
- drivers/net/ethernet/intel/ice/ice_switch.h | 12 ++++++++++--
- 2 files changed, 17 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_switch.c | 215 ++++++++++----------
+ 1 file changed, 108 insertions(+), 107 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 25b8f6f726eb..075df2474688 100644
+index cde9e480ea89..ed7130b7abfe 100644
 --- a/drivers/net/ethernet/intel/ice/ice_switch.c
 +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -5811,12 +5811,12 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 		 * over any significant packet data.
- 		 */
- 		for (j = 0; j < len / sizeof(u16); j++)
--			if (((u16 *)&lkups[i].m_u)[j])
-+			if (lkups[i].m_raw[j])
- 				((u16 *)(pkt + offset))[j] =
- 					(((u16 *)(pkt + offset))[j] &
--					 ~((u16 *)&lkups[i].m_u)[j]) |
--					(((u16 *)&lkups[i].h_u)[j] &
--					 ((u16 *)&lkups[i].m_u)[j]);
-+					 ~lkups[i].m_raw[j]) |
-+					(lkups[i].h_raw[j] &
-+					 lkups[i].m_raw[j]);
- 	}
+@@ -30,6 +30,19 @@ static const u8 dummy_eth_header[DUMMY_ETH_HDR_LEN] = { 0x2, 0, 0, 0, 0, 0,
+ 							0x2, 0, 0, 0, 0, 0,
+ 							0x81, 0, 0, 0};
  
- 	s_rule->pdata.lkup_tx_rx.hdr_len = cpu_to_le16(pkt_len);
-@@ -6065,11 +6065,10 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	/* get # of words we need to match */
- 	word_cnt = 0;
- 	for (i = 0; i < lkups_cnt; i++) {
--		u16 j, *ptr;
-+		u16 j;
- 
--		ptr = (u16 *)&lkups[i].m_u;
--		for (j = 0; j < sizeof(lkups->m_u) / sizeof(u16); j++)
--			if (ptr[j] != 0)
-+		for (j = 0; j < ARRAY_SIZE(lkups->m_raw); j++)
-+			if (lkups[i].m_raw[j])
- 				word_cnt++;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index ed3d1d03befa..ecac75e71395 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -138,8 +138,16 @@ struct ice_update_recipe_lkup_idx_params {
- 
- struct ice_adv_lkup_elem {
++enum {
++	ICE_PKT_VLAN		= BIT(0),
++	ICE_PKT_OUTER_IPV6	= BIT(1),
++	ICE_PKT_TUN_GTPC	= BIT(2),
++	ICE_PKT_TUN_GTPU	= BIT(3),
++	ICE_PKT_TUN_NVGRE	= BIT(4),
++	ICE_PKT_TUN_UDP		= BIT(5),
++	ICE_PKT_INNER_IPV6	= BIT(6),
++	ICE_PKT_INNER_TCP	= BIT(7),
++	ICE_PKT_INNER_UDP	= BIT(8),
++	ICE_PKT_GTP_NOPAY	= BIT(9),
++};
++
+ struct ice_dummy_pkt_offsets {
  	enum ice_protocol_type type;
--	union ice_prot_hdr h_u;	/* Header values */
--	union ice_prot_hdr m_u;	/* Mask of header values to match */
-+	union {
-+		union ice_prot_hdr h_u;	/* Header values */
-+		/* Used to iterate over the headers */
-+		u16 h_raw[sizeof(union ice_prot_hdr) / sizeof(u16)];
-+	};
-+	union {
-+		union ice_prot_hdr m_u;	/* Mask of header values to match */
-+		/* Used to iterate over header mask */
-+		u16 m_raw[sizeof(union ice_prot_hdr) / sizeof(u16)];
-+	};
+ 	u16 offset; /* ICE_PROTOCOL_LAST indicates end of list */
+@@ -38,23 +51,23 @@ struct ice_dummy_pkt_offsets {
+ struct ice_dummy_pkt_profile {
+ 	const struct ice_dummy_pkt_offsets *offsets;
+ 	const u8 *pkt;
++	u32 match;
+ 	u16 pkt_len;
  };
  
- struct ice_sw_act_ctrl {
+-#define ICE_DECLARE_PKT_OFFSETS(type)					\
+-	static const struct ice_dummy_pkt_offsets			\
++#define ICE_DECLARE_PKT_OFFSETS(type)				\
++	static const struct ice_dummy_pkt_offsets		\
+ 	ice_dummy_##type##_packet_offsets[]
+ 
+-#define ICE_DECLARE_PKT_TEMPLATE(type)					\
++#define ICE_DECLARE_PKT_TEMPLATE(type)				\
+ 	static const u8 ice_dummy_##type##_packet[]
+ 
+-#define ICE_PKT_PROFILE(type) ({					\
+-	(struct ice_dummy_pkt_profile){					\
+-		.pkt		= ice_dummy_##type##_packet,		\
+-		.pkt_len	= sizeof(ice_dummy_##type##_packet),	\
+-		.offsets	= ice_dummy_##type##_packet_offsets,	\
+-	};								\
+-})
++#define ICE_PKT_PROFILE(type, m) {				\
++	.match		= (m),					\
++	.pkt		= ice_dummy_##type##_packet,		\
++	.pkt_len	= sizeof(ice_dummy_##type##_packet),	\
++	.offsets	= ice_dummy_##type##_packet_offsets,	\
++}
+ 
+ ICE_DECLARE_PKT_OFFSETS(gre_tcp) = {
+ 	{ ICE_MAC_OFOS,		0 },
+@@ -1220,6 +1233,55 @@ ICE_DECLARE_PKT_TEMPLATE(ipv6_gtp) = {
+ 	0x00, 0x00,
+ };
+ 
++static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
++	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPU | ICE_PKT_OUTER_IPV6 |
++				  ICE_PKT_GTP_NOPAY),
++	ICE_PKT_PROFILE(ipv6_gtpu_ipv6_udp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_OUTER_IPV6 |
++					    ICE_PKT_INNER_IPV6 |
++					    ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(ipv6_gtpu_ipv6_tcp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_OUTER_IPV6 |
++					    ICE_PKT_INNER_IPV6),
++	ICE_PKT_PROFILE(ipv6_gtpu_ipv4_udp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_OUTER_IPV6 |
++					    ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(ipv6_gtpu_ipv4_tcp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_OUTER_IPV6),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv4, ICE_PKT_TUN_GTPU | ICE_PKT_GTP_NOPAY),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv6_udp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_INNER_IPV6 |
++					    ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv6_tcp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_INNER_IPV6),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv4_udp, ICE_PKT_TUN_GTPU |
++					    ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv4_tcp, ICE_PKT_TUN_GTPU),
++	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPC | ICE_PKT_OUTER_IPV6),
++	ICE_PKT_PROFILE(ipv4_gtpu_ipv4, ICE_PKT_TUN_GTPC),
++	ICE_PKT_PROFILE(gre_ipv6_tcp, ICE_PKT_TUN_NVGRE | ICE_PKT_INNER_IPV6 |
++				      ICE_PKT_INNER_TCP),
++	ICE_PKT_PROFILE(gre_tcp, ICE_PKT_TUN_NVGRE | ICE_PKT_INNER_TCP),
++	ICE_PKT_PROFILE(gre_ipv6_udp, ICE_PKT_TUN_NVGRE | ICE_PKT_INNER_IPV6),
++	ICE_PKT_PROFILE(gre_udp, ICE_PKT_TUN_NVGRE),
++	ICE_PKT_PROFILE(udp_tun_ipv6_tcp, ICE_PKT_TUN_UDP |
++					  ICE_PKT_INNER_IPV6 |
++					  ICE_PKT_INNER_TCP),
++	ICE_PKT_PROFILE(udp_tun_tcp, ICE_PKT_TUN_UDP | ICE_PKT_INNER_TCP),
++	ICE_PKT_PROFILE(udp_tun_ipv6_udp, ICE_PKT_TUN_UDP |
++					  ICE_PKT_INNER_IPV6),
++	ICE_PKT_PROFILE(udp_tun_udp, ICE_PKT_TUN_UDP),
++	ICE_PKT_PROFILE(vlan_udp_ipv6, ICE_PKT_OUTER_IPV6 | ICE_PKT_INNER_UDP |
++				       ICE_PKT_VLAN),
++	ICE_PKT_PROFILE(udp_ipv6, ICE_PKT_OUTER_IPV6 | ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(vlan_udp, ICE_PKT_INNER_UDP | ICE_PKT_VLAN),
++	ICE_PKT_PROFILE(udp, ICE_PKT_INNER_UDP),
++	ICE_PKT_PROFILE(vlan_tcp_ipv6, ICE_PKT_INNER_IPV6 | ICE_PKT_VLAN),
++	ICE_PKT_PROFILE(tcp_ipv6, ICE_PKT_INNER_IPV6),
++	ICE_PKT_PROFILE(vlan_tcp, ICE_PKT_VLAN),
++	ICE_PKT_PROFILE(tcp, 0),
++};
++
+ #define ICE_SW_RULE_RX_TX_ETH_HDR_SIZE \
+ 	(offsetof(struct ice_aqc_sw_rules_elem, pdata.lkup_tx_rx.hdr) + \
+ 	 (DUMMY_ETH_HDR_LEN * \
+@@ -5509,124 +5571,63 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+  *
+  * Returns the &ice_dummy_pkt_profile corresponding to these lookup params.
+  */
+-static struct ice_dummy_pkt_profile
++static const struct ice_dummy_pkt_profile *
+ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 		      enum ice_sw_tunnel_type tun_type)
+ {
+-	bool inner_tcp = false, inner_udp = false, outer_ipv6 = false;
+-	bool vlan = false, inner_ipv6 = false, gtp_no_pay = false;
++	const struct ice_dummy_pkt_profile *ret = ice_dummy_pkt_profiles;
++	u32 match = 0;
+ 	u16 i;
+ 
++	switch (tun_type) {
++	case ICE_SW_TUN_GTPC:
++		match |= ICE_PKT_TUN_GTPC;
++		break;
++	case ICE_SW_TUN_GTPU:
++		match |= ICE_PKT_TUN_GTPU;
++		break;
++	case ICE_SW_TUN_NVGRE:
++		match |= ICE_PKT_TUN_NVGRE;
++		break;
++	case ICE_SW_TUN_GENEVE:
++	case ICE_SW_TUN_VXLAN:
++		match |= ICE_PKT_TUN_UDP;
++		break;
++	default:
++		break;
++	}
++
+ 	for (i = 0; i < lkups_cnt; i++) {
+ 		if (lkups[i].type == ICE_UDP_ILOS)
+-			inner_udp = true;
++			match |= ICE_PKT_INNER_UDP;
+ 		else if (lkups[i].type == ICE_TCP_IL)
+-			inner_tcp = true;
++			match |= ICE_PKT_INNER_TCP;
+ 		else if (lkups[i].type == ICE_IPV6_OFOS)
+-			outer_ipv6 = true;
++			match |= ICE_PKT_OUTER_IPV6;
+ 		else if (lkups[i].type == ICE_VLAN_OFOS)
+-			vlan = true;
++			match |= ICE_PKT_VLAN;
+ 		else if (lkups[i].type == ICE_ETYPE_OL &&
+ 			 lkups[i].h_u.ethertype.ethtype_id ==
+ 				cpu_to_be16(ICE_IPV6_ETHER_ID) &&
+ 			 lkups[i].m_u.ethertype.ethtype_id ==
+ 				cpu_to_be16(0xFFFF))
+-			outer_ipv6 = true;
++			match |= ICE_PKT_OUTER_IPV6;
+ 		else if (lkups[i].type == ICE_ETYPE_IL &&
+ 			 lkups[i].h_u.ethertype.ethtype_id ==
+ 				cpu_to_be16(ICE_IPV6_ETHER_ID) &&
+ 			 lkups[i].m_u.ethertype.ethtype_id ==
+ 				cpu_to_be16(0xFFFF))
+-			inner_ipv6 = true;
++			match |= ICE_PKT_INNER_IPV6;
+ 		else if (lkups[i].type == ICE_IPV6_IL)
+-			inner_ipv6 = true;
++			match |= ICE_PKT_INNER_IPV6;
+ 		else if (lkups[i].type == ICE_GTP_NO_PAY)
+-			gtp_no_pay = true;
+-	}
+-
+-	if (tun_type == ICE_SW_TUN_GTPU) {
+-		if (outer_ipv6) {
+-			if (gtp_no_pay) {
+-				return ICE_PKT_PROFILE(ipv6_gtp);
+-			} else if (inner_ipv6) {
+-				if (inner_udp)
+-					return ICE_PKT_PROFILE(ipv6_gtpu_ipv6_udp);
+-				else
+-					return ICE_PKT_PROFILE(ipv6_gtpu_ipv6_tcp);
+-			} else {
+-				if (inner_udp)
+-					return ICE_PKT_PROFILE(ipv6_gtpu_ipv4_udp);
+-				else
+-					return ICE_PKT_PROFILE(ipv6_gtpu_ipv4_tcp);
+-			}
+-		} else {
+-			if (gtp_no_pay) {
+-				return ICE_PKT_PROFILE(ipv4_gtpu_ipv4);
+-			} else if (inner_ipv6) {
+-				if (inner_udp)
+-					return ICE_PKT_PROFILE(ipv4_gtpu_ipv6_udp);
+-				else
+-					return ICE_PKT_PROFILE(ipv4_gtpu_ipv6_tcp);
+-			} else {
+-				if (inner_udp)
+-					return ICE_PKT_PROFILE(ipv4_gtpu_ipv4_udp);
+-				else
+-					return ICE_PKT_PROFILE(ipv4_gtpu_ipv4_tcp);
+-			}
+-		}
++			match |= ICE_PKT_GTP_NOPAY;
+ 	}
+ 
+-	if (tun_type == ICE_SW_TUN_GTPC) {
+-		if (outer_ipv6)
+-			return ICE_PKT_PROFILE(ipv6_gtp);
+-		else
+-			return ICE_PKT_PROFILE(ipv4_gtpu_ipv4);
+-	}
+-
+-	if (tun_type == ICE_SW_TUN_NVGRE) {
+-		if (inner_tcp && inner_ipv6)
+-			return ICE_PKT_PROFILE(gre_ipv6_tcp);
+-		else if (inner_tcp)
+-			return ICE_PKT_PROFILE(gre_tcp);
+-		else if (inner_ipv6)
+-			return ICE_PKT_PROFILE(gre_ipv6_udp);
+-		else
+-			return ICE_PKT_PROFILE(gre_udp);
+-	}
++	while (ret->match && (match & ret->match) != ret->match)
++		ret++;
+ 
+-	if (tun_type == ICE_SW_TUN_VXLAN ||
+-	    tun_type == ICE_SW_TUN_GENEVE) {
+-		if (inner_tcp && inner_ipv6)
+-			return ICE_PKT_PROFILE(udp_tun_ipv6_tcp);
+-		else if (inner_tcp)
+-			return ICE_PKT_PROFILE(udp_tun_tcp);
+-		else if (inner_ipv6)
+-			return ICE_PKT_PROFILE(udp_tun_ipv6_udp);
+-		else
+-			return ICE_PKT_PROFILE(udp_tun_udp);
+-	}
+-
+-	if (inner_udp && !outer_ipv6) {
+-		if (vlan)
+-			return ICE_PKT_PROFILE(vlan_udp);
+-		else
+-			return ICE_PKT_PROFILE(udp);
+-	} else if (inner_udp && outer_ipv6) {
+-		if (vlan)
+-			return ICE_PKT_PROFILE(vlan_udp_ipv6);
+-		else
+-			return ICE_PKT_PROFILE(udp_ipv6);
+-	} else if ((inner_tcp && outer_ipv6) || outer_ipv6) {
+-		if (vlan)
+-			return ICE_PKT_PROFILE(vlan_tcp_ipv6);
+-		else
+-			return ICE_PKT_PROFILE(tcp_ipv6);
+-	}
+-
+-	if (vlan)
+-		return ICE_PKT_PROFILE(vlan_tcp);
+-
+-	return ICE_PKT_PROFILE(tcp);
++	return ret;
+ }
+ 
+ /**
+@@ -5963,8 +5964,8 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ {
+ 	struct ice_adv_fltr_mgmt_list_entry *m_entry, *adv_fltr = NULL;
+ 	struct ice_aqc_sw_rules_elem *s_rule = NULL;
++	const struct ice_dummy_pkt_profile *profile;
+ 	u16 rid = 0, i, rule_buf_sz, vsi_handle;
+-	struct ice_dummy_pkt_profile profile;
+ 	struct list_head *rule_head;
+ 	struct ice_switch_info *sw;
+ 	u16 word_cnt;
+@@ -6036,7 +6037,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 		}
+ 		return status;
+ 	}
+-	rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE + profile.pkt_len;
++	rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE + profile->pkt_len;
+ 	s_rule = kzalloc(rule_buf_sz, GFP_KERNEL);
+ 	if (!s_rule)
+ 		return -ENOMEM;
+@@ -6096,7 +6097,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	s_rule->pdata.lkup_tx_rx.recipe_id = cpu_to_le16(rid);
+ 	s_rule->pdata.lkup_tx_rx.act = cpu_to_le32(act);
+ 
+-	status = ice_fill_adv_dummy_packet(lkups, lkups_cnt, s_rule, &profile);
++	status = ice_fill_adv_dummy_packet(lkups, lkups_cnt, s_rule, profile);
+ 	if (status)
+ 		goto err_ice_add_adv_rule;
+ 
+@@ -6104,7 +6105,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	    rinfo->tun_type != ICE_SW_TUN_AND_NON_TUN) {
+ 		status = ice_fill_adv_packet_tun(hw, rinfo->tun_type,
+ 						 s_rule->pdata.lkup_tx_rx.hdr,
+-						 profile.offsets);
++						 profile->offsets);
+ 		if (status)
+ 			goto err_ice_add_adv_rule;
+ 	}
 -- 
 2.35.1
 
