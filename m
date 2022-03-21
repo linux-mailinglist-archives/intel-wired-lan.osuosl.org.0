@@ -1,55 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 214A24E2B59
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 15:57:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCF434E2CC5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Mar 2022 16:47:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C9AEA408F6;
-	Mon, 21 Mar 2022 14:57:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5A78E41477;
+	Mon, 21 Mar 2022 15:47:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nCRydrc7Ab95; Mon, 21 Mar 2022 14:57:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9175Np-WeZwo; Mon, 21 Mar 2022 15:47:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9600F408ED;
-	Mon, 21 Mar 2022 14:57:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6737440939;
+	Mon, 21 Mar 2022 15:47:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7E9581BF324
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 14:57:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 60C961BF3B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 15:47:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6A8B3408ED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 14:57:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5CB4940939
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 15:47:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1TJ4AYko587e for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Mar 2022 14:57:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FMStD4uG9rC7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Mar 2022 15:47:38 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 506D540106
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 14:57:35 +0000 (UTC)
-Received: from [192.168.0.7] (ip5f5aef4e.dynamic.kabel-deutschland.de
- [95.90.239.78])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id CD05761E6478B;
- Mon, 21 Mar 2022 15:57:31 +0100 (CET)
-Message-ID: <a7dcc837-e24e-86d6-059c-416ad3357fe0@molgen.mpg.de>
-Date: Mon, 21 Mar 2022 15:57:31 +0100
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [185.58.85.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 42301408C6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Mar 2022 15:47:37 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ uk-mta-246-Ub5TnyEPOam9cnZmzS-F3A-2; Mon, 21 Mar 2022 15:47:34 +0000
+X-MC-Unique: Ub5TnyEPOam9cnZmzS-F3A-2
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.32; Mon, 21 Mar 2022 15:47:28 +0000
+Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
+ AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
+ 15.00.1497.033; Mon, 21 Mar 2022 15:47:28 +0000
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Alexander Lobakin' <alexandr.lobakin@intel.com>, Wan Jiabing
+ <wanjiabing@vivo.com>
+Thread-Topic: [Intel-wired-lan] [PATCH] ice: use min() to make code cleaner in
+ ice_gnss
+Thread-Index: AQHYPRqWSkYKaVGfxkysTLMqXUCuZazJ+yGQ
+Date: Mon, 21 Mar 2022 15:47:28 +0000
+Message-ID: <ff90ebe7eed741829dc03b2bf92a41f7@AcuMS.aculab.com>
+References: <20220318094629.526321-1-wanjiabing@vivo.com>
+ <8822dfa2-bdb8-fceb-e920-94afb50881e8@intel.com>
+ <20220321115412.844440-1-alexandr.lobakin@intel.com>
+In-Reply-To: <20220321115412.844440-1-alexandr.lobakin@intel.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
 Content-Language: en-US
-To: Marcin Szycik <marcin.szycik@linux.intel.com>
-References: <20220321144731.3935-1-marcin.szycik@linux.intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220321144731.3935-1-marcin.szycik@linux.intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next] Revert "ice: Hide bus-info
- in ethtool for PRs in switchdev mode"
+Subject: Re: [Intel-wired-lan] [PATCH] ice: use min() to make code cleaner
+ in ice_gnss
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,47 +80,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBNYXJjaW4sCgoKQW0gMjEuMDMuMjIgdW0gMTU6NDcgc2NocmllYiBNYXJjaW4gU3p5Y2lr
-Ogo+IFRoaXMgcmV2ZXJ0cyBjb21taXQgYmZhYWJhOTllNjgwYmY4MmJmMmNiZjY5ODY2YzNmMzc0
-MzRmZjc2Ni4KPiAKPiBDb21taXQgYmZhYWJhOTllNjgwICgiaWNlOiBIaWRlIGJ1cy1pbmZvIGlu
-IGV0aHRvb2wgZm9yIFBScyBpbiBzd2l0Y2hkZXYKPiBtb2RlIikgd2FzIGEgd29ya2Fyb3VuZCBm
-b3IgbHNodyB0b29sIGRpc3BsYXlpbmcgaW5jb3JyZWN0Cj4gZGVzY3JpcHRpb25zIGZvciBwb3J0
-IHJlcHJlc2VudG9ycyBhbmQgUEYgaW4gc3dpdGNoZGV2IG1vZGUuIE5vdyB0aGUgaXNzdWUKPiBo
-YXMgYmVlbiBmaXhlZCBpbiB0aGUgbHNodyB0b29sIGl0c2VsZiBbMV0uCj4gCj4gWzFdIGh0dHBz
-Oi8vZXppeC5vcmcvc3JjL3BrZy9sc2h3L2NvbW1pdC85YmY0ZTRjOWMxCgpBcyB5b3UgY2Fubm90
-IGtub3cgd2hhdCBsc2h3IHZlcnNpb24gdXNlcnMgaGF2ZSBpbnN0YWxsZWQsIEkgYW0gYWZyYWlk
-IAp0aGUgd29ya2Fyb3VuZCAocGFydCBvZiBMaW51eCA1LjE2LiBhbmQgNS4xNykgaGFzIHRvIHN0
-YXkgaW4gdGhlIExpbnV4IAprZXJuZWwgdG8gbm90IHZpb2xhdGUgTGludXjigJkgbm8tcmVncmVz
-c2lvbiBwb2xpY3kuCgpXaGF0IGFyZSB0aGUgZG93bnNpZGVzIG9mIGtlZXBpbmcgdGhlIHdvcmth
-cm91bmQgYXJvdW5kPwoKCktpbmQgcmVnYXJkcywKClBhdWwKCgo+IFNpZ25lZC1vZmYtYnk6IE1h
-cmNpbiBTenljaWsgPG1hcmNpbi5zenljaWtAbGludXguaW50ZWwuY29tPgo+IC0tLQo+ICAgZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0b29sLmMgfCA4ICsrKy0tLS0tCj4g
-ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wuYyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXRodG9vbC5jCj4gaW5kZXggMjRj
-ZGE3ZTFmOTE2Li40NzZiZDFjODNjODcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaWNlL2ljZV9ldGh0b29sLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pY2UvaWNlX2V0aHRvb2wuYwo+IEBAIC0xOTAsMTkgKzE5MCwxNyBAQCBfX2ljZV9nZXRf
-ZHJ2aW5mbyhzdHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2LCBzdHJ1Y3QgZXRodG9vbF9kcnZpbmZv
-ICpkcnZpbmZvLAo+ICAgCXNucHJpbnRmKGRydmluZm8tPmZ3X3ZlcnNpb24sIHNpemVvZihkcnZp
-bmZvLT5md192ZXJzaW9uKSwKPiAgIAkJICIleC4lMDJ4IDB4JXggJWQuJWQuJWQiLCBudm0tPm1h
-am9yLCBudm0tPm1pbm9yLAo+ICAgCQkgbnZtLT5lZXRyYWNrLCBvcm9tLT5tYWpvciwgb3JvbS0+
-YnVpbGQsIG9yb20tPnBhdGNoKTsKPiArCj4gKwlzdHJzY3B5KGRydmluZm8tPmJ1c19pbmZvLCBw
-Y2lfbmFtZShwZi0+cGRldiksCj4gKwkJc2l6ZW9mKGRydmluZm8tPmJ1c19pbmZvKSk7Cj4gICB9
-Cj4gICAKPiAgIHN0YXRpYyB2b2lkCj4gICBpY2VfZ2V0X2RydmluZm8oc3RydWN0IG5ldF9kZXZp
-Y2UgKm5ldGRldiwgc3RydWN0IGV0aHRvb2xfZHJ2aW5mbyAqZHJ2aW5mbykKPiAgIHsKPiAgIAlz
-dHJ1Y3QgaWNlX25ldGRldl9wcml2ICpucCA9IG5ldGRldl9wcml2KG5ldGRldik7Cj4gLQlzdHJ1
-Y3QgaWNlX3BmICpwZiA9IG5wLT52c2ktPmJhY2s7Cj4gICAKPiAgIAlfX2ljZV9nZXRfZHJ2aW5m
-byhuZXRkZXYsIGRydmluZm8sIG5wLT52c2kpOwo+IC0KPiAtCXN0cnNjcHkoZHJ2aW5mby0+YnVz
-X2luZm8sIHBjaV9uYW1lKHBmLT5wZGV2KSwKPiAtCQlzaXplb2YoZHJ2aW5mby0+YnVzX2luZm8p
-KTsKPiAtCj4gICAJZHJ2aW5mby0+bl9wcml2X2ZsYWdzID0gSUNFX1BSSVZfRkxBR19BUlJBWV9T
-SVpFOwo+ICAgfQo+ICAgCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9z
-bC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2ly
-ZWQtbGFuCg==
+> Use `min_t(typeof(bytes_left), ICE_MAX_I2C_DATA_SIZE)` to avoid
+> this. Plain definitions are usually treated as `unsigned long`
+> unless there's a suffix (u, ull etc.).
+
+I suspect they are 'int'.
+And the compiler will convert to 'unsigned int' in any
+arithmetic.
+And the 'signed v unsigned' compare warning is supressed
+to integer constants.
+
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
