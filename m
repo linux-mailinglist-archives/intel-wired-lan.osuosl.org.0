@@ -1,70 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35F7B4E4120
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Mar 2022 15:26:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFFC04E4588
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Mar 2022 18:52:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DBCFE8473E;
-	Tue, 22 Mar 2022 14:26:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 67D118477F;
+	Tue, 22 Mar 2022 17:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Lu7t7dY6M0qk; Tue, 22 Mar 2022 14:26:13 +0000 (UTC)
+	with ESMTP id i4dE8-CQnkdH; Tue, 22 Mar 2022 17:52:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A66758473A;
-	Tue, 22 Mar 2022 14:26:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 67B4584771;
+	Tue, 22 Mar 2022 17:52:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 46D901BF5DF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 14:26:08 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 673C21BF5DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 17:52:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4232740259
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 14:26:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5401C6127C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 17:52:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uINfoxY7kXF6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Mar 2022 14:26:02 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qw72jVz7JWaS for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Mar 2022 17:52:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5FA5E417C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 14:26:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1647959161;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=hqOWJCnDPaU9YtCPm5hIfU7CxXILHB/YTsG839ir6VA=;
- b=hVK8l8sBFoLgjADQ5NQRLCQZu24J0WMrwZ4dEVqXh8GOyBianWoRpnjeR9wst/C5qKbtRn
- km0FauUFJ1OUoE9wMHI6iM9th0Fa7nbGV02NCtKA/JKiq0C6Iiwh3F09wl9jFH8ILy5R/F
- RVZtazmWuUNhtRc2Mt3ohyTIEDnt6jc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-47-59TpEC-7OW-vBG5qJ6mEjQ-1; Tue, 22 Mar 2022 10:25:57 -0400
-X-MC-Unique: 59TpEC-7OW-vBG5qJ6mEjQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3C08985A5BE;
- Tue, 22 Mar 2022 14:25:57 +0000 (UTC)
-Received: from ceranb.redhat.com (unknown [10.40.192.65])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25A1E40CF905;
- Tue, 22 Mar 2022 14:25:55 +0000 (UTC)
-From: Ivan Vecera <ivecera@redhat.com>
-To: netdev@vger.kernel.org
-Date: Tue, 22 Mar 2022 15:25:54 +0100
-Message-Id: <20220322142554.3253428-1-ivecera@redhat.com>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8EF26605A3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Mar 2022 17:52:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647971524; x=1679507524;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=GOSyCMT3Bo8pMPfvKQ6OUb28JkU8aRwvgc6c1E/p/HM=;
+ b=ZiYbB/PrZ2l9NEnIFPUCsMsbUvhiy9PdcsOjgSi5HO+TmbqUEnEu8wyu
+ q9+x1QHAgIOWot+BXhl7Nwnb4pQoDsMOrV6Of7iyDBTs9ejMAkv5I5Zlz
+ ic6/rJ/R/DjH2TWKPz9Onumrkjq6kYgtABTdyeY/HJKwvaoJbSMhZ4hOC
+ MZQ+IMiZ8OGICProMLnVGibpzUzeouXGU/t3BwvQThFhtPyhfp3pKaWJw
+ nShKhvPGSc7Zx1Nvh9j9FkIQQ45HTiJeflB/oIrzB19js0TKCZ6YDyzRB
+ kif7sdm2wVKd8rAfztqX+A3xdt/aopvh8mz0ctgcBRNTigkc7ngbvAfgX A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10294"; a="257851085"
+X-IronPort-AV: E=Sophos;i="5.90,202,1643702400"; d="scan'208";a="257851085"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2022 10:52:01 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,202,1643702400"; d="scan'208";a="692645180"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga001.fm.intel.com with ESMTP; 22 Mar 2022 10:51:58 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 22MHpvJb002184; Tue, 22 Mar 2022 17:51:57 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: David Laight <David.Laight@ACULAB.COM>
+Date: Tue, 22 Mar 2022 18:50:38 +0100
+Message-Id: <20220322175038.2691665-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <f888e3cf09944f9aa63532c9f59e69fb@AcuMS.aculab.com>
+References: <20220321135947.378250-1-wanjiabing@vivo.com>
+ <f888e3cf09944f9aa63532c9f59e69fb@AcuMS.aculab.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
-Subject: [Intel-wired-lan] [PATCH net] ice: Clear default forwarding VSI
- during VSI release
+Subject: Re: [Intel-wired-lan] [PATCH v2] ice: use min_t() to make code
+ cleaner in ice_gnss
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,67 +81,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- mschmidt@redhat.com, Brett Creeley <brett.creeley@intel.com>,
- open list <linux-kernel@vger.kernel.org>, poros@redhat.com,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: 'Wan Jiabing' <wanjiabing@vivo.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VSI is set as default forwarding one when promisc mode is set for
-PF interface, when PF is switched to switchdev mode or when VF
-driver asks to enable allmulticast or promisc mode for the VF
-interface (when vf-true-promisc-support priv flag is off).
-The third case is buggy because in that case VSI associated with
-VF remains as default one after VF removal.
+From: David Laight <David.Laight@ACULAB.COM>
+Date: Mon, 21 Mar 2022 16:02:20 +0000
 
-Reproducer:
-1. Create VF
-   echo 1 > sys/class/net/ens7f0/device/sriov_numvfs
-2. Enable allmulticast or promisc mode on VF
-   ip link set ens7f0v0 allmulticast on
-   ip link set ens7f0v0 promisc on
-3. Delete VF
-   echo 0 > sys/class/net/ens7f0/device/sriov_numvfs
-4. Try to enable promisc mode on PF
-   ip link set ens7f0 promisc on
+> From: Wan Jiabing
+> > Sent: 21 March 2022 14:00
+> >
+> > Fix the following coccicheck warning:
+> > ./drivers/net/ethernet/intel/ice/ice_gnss.c:79:26-27: WARNING opportunity for min()
+> >
+> > Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
+> > ---
+> > Changelog:
+> > v2:
+> > - Use typeof(bytes_left) instead of u8.
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_gnss.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+> > index 35579cf4283f..57586a2e6dec 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_gnss.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+> > @@ -76,8 +76,7 @@ static void ice_gnss_read(struct kthread_work *work)
+> >  	for (i = 0; i < data_len; i += bytes_read) {
+> >  		u16 bytes_left = data_len - i;
+> 
+> Oh FFS why is that u16?
+> Don't do arithmetic on anything smaller than 'int'
 
-Although it looks that promisc mode on PF is enabled the opposite
-is true because ice_vsi_sync_fltr() responsible for IFF_PROMISC
-handling first checks if any other VSI is set as default forwarding
-one and if so the function does not do anything. At this point
-it is not possible to enable promisc mode on PF without re-probe
-device.
+Any reasoning? I don't say it's good or bad, just want to hear your
+arguments (disasms, perf and object code measurements) etc.
 
-To resolve the issue this patch clear default forwarding VSI
-during ice_vsi_release() when the VSI to be released is the default
-one.
+> 
+> 	David
+> 
+> >
+> > -		bytes_read = bytes_left < ICE_MAX_I2C_DATA_SIZE ? bytes_left :
+> > -					  ICE_MAX_I2C_DATA_SIZE;
+> > +		bytes_read = min_t(typeof(bytes_left), bytes_left, ICE_MAX_I2C_DATA_SIZE);
+> >
+> >  		err = ice_aq_read_i2c(hw, link_topo, ICE_GNSS_UBX_I2C_BUS_ADDR,
+> >  				      cpu_to_le16(ICE_GNSS_UBX_EMPTY_DATA),
+> > --
+> > 2.35.1
+> 
+> -
+> Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+> Registration No: 1397386 (Wales)
 
-Fixes: 01b5e89aab49 ("ice: Add VF promiscuous support")
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
----
- drivers/net/ethernet/intel/ice/ice_lib.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 53256aca27c7..20d755822d43 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3147,6 +3147,8 @@ int ice_vsi_release(struct ice_vsi *vsi)
- 		}
- 	}
- 
-+	if (ice_is_vsi_dflt_vsi(pf->first_sw, vsi))
-+		ice_clear_dflt_vsi(pf->first_sw);
- 	ice_fltr_remove_all(vsi);
- 	ice_rm_vsi_lan_cfg(vsi->port_info, vsi->idx);
- 	err = ice_rm_vsi_rdma_cfg(vsi->port_info, vsi->idx);
--- 
-2.34.1
-
+Thanks,
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
