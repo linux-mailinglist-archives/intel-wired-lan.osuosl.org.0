@@ -1,163 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C59544E5917
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Mar 2022 20:26:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 888E14E5985
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Mar 2022 21:05:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5043260FF2;
-	Wed, 23 Mar 2022 19:26:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1EB1C84A88;
+	Wed, 23 Mar 2022 20:05:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cq2OxwvOY13h; Wed, 23 Mar 2022 19:26:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1_GeRAxGa947; Wed, 23 Mar 2022 20:05:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B8E0F60F46;
-	Wed, 23 Mar 2022 19:26:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D2631BF48C
- for <intel-wired-lan@osuosl.org>; Wed, 23 Mar 2022 19:26:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79D1A84A86;
+	Wed, 23 Mar 2022 20:05:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FEEB1BF48C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 46A7D60F46
- for <intel-wired-lan@osuosl.org>; Wed, 23 Mar 2022 19:26:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 099288474E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WF9CxLGjSfu0 for <intel-wired-lan@osuosl.org>;
- Wed, 23 Mar 2022 19:26:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Wg6bh0TZWYeq for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Mar 2022 20:05:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D3C2860A97
- for <intel-wired-lan@osuosl.org>; Wed, 23 Mar 2022 19:26:29 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BF5AD84737
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648063589; x=1679599589;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-id:content-transfer-encoding:mime-version;
- bh=kOrAkiNGKOoPQDvxfuaVzioP0YWePo7iHW4Em10dwcw=;
- b=HTS36SZxTaLJAynAvxV8Ruz+ll8UWlM2cHjNlBfYZqznqo4dP45tNXtz
- qtRMlcsYYdAiuAHvVgJzMy3sZ87mf15EXdkX2DFwIn3rUxUtb631AEKch
- Y4N6IV+wz3eQqQCNfN4tM1vUimzkOcLL6qSpG5rrHm00WFE2slSGu9LH4
- OMxnzlDuR8UrlUua4vWswiFNbuZk0QSmJIYqOrsnzN4E/KGMOy4PFYwP9
- 691js1/A67fmsohcfwyF71HmXwnhQtTUWRo4oDm2ozzm8PxLNu6AHN6fu
- iemVkhXcQjIbshnEwj+G1qnWGlXwy5y2qH5C3C/gCBf8tP5oEtSmAHV13 g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="240369265"
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="240369265"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2022 12:26:28 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="519492110"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga006.jf.intel.com with ESMTP; 23 Mar 2022 12:26:28 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Wed, 23 Mar 2022 12:26:28 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.21 via Frontend Transport; Wed, 23 Mar 2022 12:26:28 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.169)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.21; Wed, 23 Mar 2022 12:26:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=a6J/f7cMEemvy7zjUolLpHfXrJWGWgJS0KYRLbI4QAxZzrIVIPpqJS6t7pU/LmhuxGLbqtD7TlsdN6ljFRuoXnd3L/jbKHRC3qoFXu2019OEUVaHmXVyIV8ADygD3L3OAhQ869Gv3+6xtqBXBE2zEdDHLv3z5IWg4zpNhHlOCsN45iteTfcIIvr8+fq9kUTpzUOFwGsLL3bBAULKV/AeCk7PWJf0BKAbnC7FBzQkWhiwQ4arHDJhBzfiYfMyEfCosK1sZ80s6b3YYAV3LbhYe4tpp3dOBM23F2GfV/n4SPzV/JzZ+t+l5uSvfMGMxhn+DXNrzHSxfH/K/PD9/6cmXg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kOrAkiNGKOoPQDvxfuaVzioP0YWePo7iHW4Em10dwcw=;
- b=Ob9s6WATHPMefvGd61tb6MzCxWgB7AFtLpIwcQXeEcRLaheIxA066SM0Xdn2o0N/12NfjIeMW1FYEpSaRWme8IY47r3vkB7JjUVsxcJJdz8okPSh7aEjqFgp0BX5q6jDuCDOWg4+F7Oj3MkDK9CDynTO5eiMvMjiMhish+AyvdXBM+de8WTcN3o1OrtAe7InH1TMP6gfvghjrXdQHtuB5ozSA+lMUQsIqjdqaNnKBCUp7UUFzHLJ6/N+JqVy3ute8XOFN9lWnMa/K2qQdrMxbXPQUfgEYN7m213qAO+x1Q3vH+ubcbkgI4mYju04Yn8eOtg86/XDiQ7Pwu3QPU6Tqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by BN6PR11MB1251.namprd11.prod.outlook.com (2603:10b6:404:48::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5081.18; Wed, 23 Mar
- 2022 19:26:25 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::8441:e1ac:f3ae:12b8]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::8441:e1ac:f3ae:12b8%8]) with mapi id 15.20.5102.017; Wed, 23 Mar 2022
- 19:26:25 +0000
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net] ice: Fix broken IFF_ALLMULTI
- handling
-Thread-Index: AQHYPVhxFQxoYA/xG0OjB2XURFfgCazNXRMA
-Date: Wed, 23 Mar 2022 19:26:25 +0000
-Message-ID: <05d80b4c-c4a4-8f77-bbef-c5273aab613b@intel.com>
-References: <20220321191731.2596414-1-ivecera@redhat.com>
-In-Reply-To: <20220321191731.2596414-1-ivecera@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c09a0787-9467-404d-e657-08da0d030549
-x-ms-traffictypediagnostic: BN6PR11MB1251:EE_
-x-microsoft-antispam-prvs: <BN6PR11MB12513E24ACA9124D8ABA7A37D6189@BN6PR11MB1251.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Yt0VPDGBCeIkVYKHvDkCZtSzHhWzWXbENlc0BRO5gVJvRKu1Inz3h9rBxH5djOB/9gFSl9/CaD4HlM2qta75KR8R/6q0pDPSab32UQye40lr2JCcFFE7S1u5S75Rv9ZxPbnAkMfPYejl5Sp/GAQnV1PeCOgdsV/ulpHpw2afThUSrVHqAxbWvlA2Vh6lxEQDAIIdZvGgMfKpqaaOKs4ObI8LysOyVenfFNYkt12h4RrLPCMCHfiN7lsEoOT0D3sE1VZsRBTWSbIsunaMHcGGbMEQrEzcX8maHOHT+nLv/AUQ6yI7f/G4MwwH91Lzz1n5KPTCvH9i6iZjU8ai/VfVtPUGMZPr3dUUgeCsv7preIRgS5rXKg0N4IdHlGY7lXthRlqCGgfHFkaUFF2Fb+2uU7L/QSxgpCzMqG0CxAOcHttkbOUBZWkFN+kOkk8d2jwIMjkXE+2gPKqewUDdLtrGd86uFEGOM4vsh9QdCWC6WTRLbNS3FEtJuJv29F26wtCcQOshgQP2JGKUngC62uOIg82dWkwMsBwRWnDHLdEhCL11SU3f2JJyUO1uPjWjcjof8rZQxOkGYbZse+CDZGYP2dOubcEI+DvMDbm0aPo+Dhg7LSK2U6ZwARkYSJ/5P240cj7oeZlj8CLJ5701z8Tu/AKdQx92cTQRHWiwgp1VmHea4FCB5UfVaNa8YCy0W+xPMKlNEK8iVYSOiMm5yvMmnp6yMIGX4+XsRLKIb7OooDHBtBsDqa3V2J1SqXw0jHga3zyNK9E9vDX2oTi4799KRg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(2906002)(53546011)(6512007)(6506007)(71200400001)(508600001)(38070700005)(122000001)(6486002)(36756003)(30864003)(8936002)(38100700002)(64756008)(82960400001)(66556008)(66476007)(66446008)(83380400001)(86362001)(6916009)(316002)(76116006)(66946007)(31686004)(8676002)(2616005)(31696002)(26005)(186003)(5660300002)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bFFCT1FRUU9rRllhL3BnZDZ2WVpaMG9Ec1h2dG84b1YwWlVqbnIxT3RjWWEv?=
- =?utf-8?B?ckNGU3VFMGM5bm5kZzhxMXVWUlo2cGxJK3p4MVRXVUE2MzZYTm5jVjhQL2po?=
- =?utf-8?B?cFF1Y0VKMmRmRnRIeklQM1lDWHMyWVlnTzJibVJaSk93MFdnRmJibUpKQlBl?=
- =?utf-8?B?ckFBTTJFWmZVUnB3cTBmY2puSHh2bk5uTDZ2dUVGY0NHLy90WE9RWTRGVFZa?=
- =?utf-8?B?djlLVjBBdkI1VW5WVVZaNkxhdzMxZXQyRmRvZCtjRlcvVVlKOUFqbjlHbnQr?=
- =?utf-8?B?WEQyVWh0S0E2c080MXBvaTZ6aTVQbmJMSU5TTkFIZnVpeHlXc1VhZHFURnZQ?=
- =?utf-8?B?cEIwMFp6MVJpZ3RpZVZjTUlxS3dlWTVvbVMxdzA0U1RLZjBKKzBSYUIzWTFU?=
- =?utf-8?B?N04xOEtzVSs2K2JHRG50QlZyQzlvdTFvZjVub1hPUGgvOGowTTlIcEJIOEJM?=
- =?utf-8?B?U2pyaGhlRkJJcmQya3g4YmZKVDFOcXBMYVNxem54K2RSUHRJTXlKdUhDNnd5?=
- =?utf-8?B?bTduQjlWVTA4d0o0UkQ5cVlwRlpuOGIwc0NBV2NYaTN5TXIwVWV4NnNoaWNX?=
- =?utf-8?B?cW55eEtiTjR0b2xwNzBUV1FReWZzL1BBbE5OQm16RFlQQUZyT0lqaENrR1Y5?=
- =?utf-8?B?MVU3NWczM0Y3TElsc0E5WllXT0t5Y3pHWXdCTlo5UGFJb29Nc1E2Smlvd0pr?=
- =?utf-8?B?Z0pOTmNDbE45eTRVYzNRbHhydUFhSnBIOUc2NFl1QXdsL0daNFFXQVZSNFlE?=
- =?utf-8?B?NFRnbC83Y1F6Q3pZamVPdmN3aVVqeG14OHZQK0RmYVlPVTdTa05teU9pRi8y?=
- =?utf-8?B?QUJKakUyMHVaVU5wb2pYb3dISHBRcmRxeGdkV2VHM1pnY2J2aWVPNHg0SnEz?=
- =?utf-8?B?dkVTMU1UQzRRTHdOaVk5dTNvQmFLSS93djNsVmpJNDg3bUFDcC9MWi9xaDFx?=
- =?utf-8?B?eVZCTHpUYThqVDluZVFLNTJlNFVrTndhQVg4aUNRY0krcEJKZmVMNnVFNzB3?=
- =?utf-8?B?eGkzMGtjdXVHa0xCMUhsejBLRlBteEFnK1BuVUV1cW4zVXU4YllyM3hCQTFr?=
- =?utf-8?B?YjBXZ2V3cHNBQ2k3elp0dzgxU1NTWHVQcVAzb0xMNE1NVHd1U3VNMlFnM2JR?=
- =?utf-8?B?SkJLZHJVc0RqaHN2MG1jRklFY0I4RTVLZFB0YUkvRTIySWY3aVNhQ1dnWEdj?=
- =?utf-8?B?K3paSGF3ZEkweHlwRUxtMjVVenVBUndVcWtWTXFTdlExWTA1VGF4RDlNZlZj?=
- =?utf-8?B?dnpUdjNEMFliY3hQK2NoQm50aXRwZFVKeDlac3NPQWl0cjFMSlFwQ0pNQU42?=
- =?utf-8?B?dkNSQ0F1MG5YSkgyRkVGbEljN3FZSUtIekNYZG1qYk5Nc25lSnNidmZZTG8r?=
- =?utf-8?B?eFdqNjJYSFRsV0lrWUdxY0J2Y0JxSTNJSWh6ZmVsenI2V1EyOHh3UGZzQnVv?=
- =?utf-8?B?a2YwTU51TXVUYlBQUFFKUFE4VXNrTlpSME9ZVC9lT1RZRGNueXZjcVFQcDJx?=
- =?utf-8?B?R0J4UUdVRGl6R2lJVlVOVzloOW5VUWdwMko4LzBjbmdUMjN1dVlka08yTjlL?=
- =?utf-8?B?aHkrYlZ3OEtsN3lVQ0JsVk81TVlsWHN1RmhQY0l1SVM0SlRYaktLNXVKNU1j?=
- =?utf-8?B?K2diMEVmeDFpYjhzdTJ4ZzNsT1VybUtqWC9EM3c2QXYrVWdHdEFXRG1NdFZL?=
- =?utf-8?B?WExQV2lVa2ZSL25UUXlWKzBKcVVoN05OQjJla29oNG5kVFNsa3duR3hCang3?=
- =?utf-8?B?WlpTVHJDOW1vVU1BUWxYTFcxSG1yNUtsVmw2OFN5Q1RvN1daSWk3UjB2WEJE?=
- =?utf-8?B?ZWJ6T1MxK3lGTkZrYkJIaUNtcDIwWThQZTNhc1ZXbHJET2k5VGF2Y3RpTDhp?=
- =?utf-8?B?Mmdobmd5MXZ2L01tNUg1OVhnQlNxSXViSFQ2RnBMbW1xT1h5NUZNYkJaTU9y?=
- =?utf-8?Q?A5DB5wE/9j33BFkyJaDNOsycm9qW45gN?=
-Content-ID: <1A23754957B6DD468DD22F239EFDD7A4@namprd11.prod.outlook.com>
+ t=1648065927; x=1679601927;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=nSgKm/aUFHPKNlr3V9fjF16/jnH0t5gAjdmxsskSuPc=;
+ b=MsjqXCdyOOeJ9scD+vLywKRyuK56crVsLo7H/SDXmFUf/XPRP8qpc42g
+ eEWN75Xyr2NUkdMQCT7fLM1SgBXyrE/eKeToy3//s5n6MN20efR61yiX9
+ MCvZ+3LXogg0LjesMOZplMJRNOFHbb8R9qxBMPWKQnNUVsSHiTy2gbRg9
+ FkcyYLjTLN4s12/ulxQYNnBbxmqLAahoXkS2wdOKmXw02JOOk3xgcW41+
+ 5NgzsPdsrr+eFCqLBkUN0HZf5XHnxNr5AySMe11Yoce6RMj80Uap1W9a2
+ N9g3Q2D9SJ2V9NbIM4oUWtsQLKqPdS0IS4CexXm1ITUsib0X3wFGHUlpR w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="255778200"
+X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="255778200"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Mar 2022 13:05:26 -0700
+X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="561066269"
+Received: from mszycik-mobl.ger.corp.intel.com (HELO [10.249.137.148])
+ ([10.249.137.148])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Mar 2022 13:05:22 -0700
+Message-ID: <eb6538d9-4667-f1f5-492c-e1e113a6da35@linux.intel.com>
+Date: Wed, 23 Mar 2022 21:05:20 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c09a0787-9467-404d-e657-08da0d030549
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Mar 2022 19:26:25.0345 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: eIHAGOWabxeAmeFC66imFSAxauOP1m9lFWQgLGP+Uqq5ogi6r03O9ECjm17uiik9hj2Q5tC1w43JnFIH15Dt3V9FBR2grzHvGJhQb5PXJBk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1251
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Content-Language: en-US
+To: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org
+References: <20220321191731.2596414-1-ivecera@redhat.com>
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20220321191731.2596414-1-ivecera@redhat.com>
 Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix broken IFF_ALLMULTI
  handling
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -172,12 +77,20 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ mschmidt@redhat.com, open list <linux-kernel@vger.kernel.org>,
+ poros@redhat.com, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Akeem G Abodunrin <akeem.g.abodunrin@intel.com>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/21/2022 12:17 PM, Ivan Vecera wrote:
+
+
+On 21-Mar-22 20:17, Ivan Vecera wrote:
 > Handling of all-multicast flag and associated multicast promiscuous
 > mode is broken in ice driver. When a user switches allmulticast
 > flag on or off the driver checks whether any VLANs are configured
@@ -323,16 +236,6 @@ On 3/21/2022 12:17 PM, Ivan Vecera wrote:
 > +		"Error setting promisc mode on VSI %i (rc=%d)\n", vsi->vsi_num,
 > +		result);
 > +
-
-Our typical style here would be to do:
-
-result = <function>;
-if (result) {
-	dev_err(...);
-}
-
-I find that much more readable than "if (!result) return;
-
 > +	return result;
 >  }
 >  
@@ -408,9 +311,6 @@ I find that much more readable than "if (!result) return;
 > -	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state) ||
 > -	       test_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
 > +	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state);
-
-Ok, so we now handle VLAN filters seprately without these states.
-
 >  }
 >  
 >  /**
@@ -426,11 +326,6 @@ Ok, so we now handle VLAN filters seprately without these states.
 > +		promisc_m |= (ICE_PROMISC_VLAN_RX | ICE_PROMISC_VLAN_TX);
 > +		status = ice_fltr_set_vlan_vsi_promisc(&vsi->back->hw, vsi,
 > +						       promisc_m);
-
-Ok so if we're in >1 filter, we add the VLAN_RX and VLAN_TX flags. Right.
-
-And we know that changes only from another ndo op to add VLANs?
-
 > +	} else {
 > +		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
 > +						  promisc_m, 0);
@@ -483,10 +378,12 @@ And we know that changes only from another ndo op to add VLANs?
 > -				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
 > -			else
 > -				promisc_m = ICE_MCAST_PROMISC_BITS;
+
+Because `ice_{set,clear}_promisc()` are now always called with the same second argument (ICE_MCAST_PROMISC_BITS), wouldn't it be better to remove the arg and instead call `ice_fltr_{clear,set}_{vlan,vsi}_vsi_promisc()` with either ICE_MCAST_VLAN_PROMISC_BITS or ICE_MCAST_PROMISC_BITS inside the function?
+
 > -
 > -			err = ice_set_promisc(vsi, promisc_m);
-> +			err = ice_set_promisc(vsi, ICE_MCAST_PROMISC_BITS);
->  			if (err) {
+> +			err = ice_set_promisc(vsi, ICE_MCAST_PROMISC_BITS);>  			if (err) {
 > -				netdev_err(netdev, "Error setting Multicast promiscuous mode on VSI %i\n",
 > -					   vsi->vsi_num);
 >  				vsi->current_netdev_flags &= ~IFF_ALLMULTI;
@@ -514,10 +411,6 @@ And we know that changes only from another ndo op to add VLANs?
 > +	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state))
 > +		usleep_range(1000, 2000);
 > +
-
-Not your fault, but every time I see this I think about why not just
-making this a mutex...
-
 >  	/* Enable VLAN pruning when a VLAN other than 0 is added */
 >  	if (!ice_vsi_is_vlan_pruning_ena(vsi)) {
 >  		ret = ice_cfg_vlan_pruning(vsi, true);
@@ -536,13 +429,6 @@ making this a mutex...
 > +		if (ret)
 > +			goto finish;
 >  	}
-
-If we're not in multicast mode (or if multicast mode gets disabled) when
-do we clear these bits?
-
-I would have expected some sort of loop to iterate over VLANs?
-
-
 >  
 >  	/* Add a switch rule for this VLAN ID so its corresponding VLAN tagged
 >  	 * packets aren't pruned by the device's internal switch on Rx
@@ -598,6 +484,9 @@ I would have expected some sort of loop to iterate over VLANs?
 > +		/* Disable pruning when VLAN 0 is the only VLAN rule */
 > +		if (ice_vsi_is_vlan_pruning_ena(vsi))
 > +			ice_cfg_vlan_pruning(vsi, false);
+
+Why was `ret = ...` removed here?
+
 > +
 > +		/* Update look-up type of multicast promisc rule for VLAN 0
 > +		 * from ICE_SW_LKUP_PROMISC_VLAN to ICE_SW_LKUP_PROMISC when
@@ -620,6 +509,9 @@ I would have expected some sort of loop to iterate over VLANs?
 >  }
 >  
 
+Otherwise LGTM (though my experience in this area is rather limited).
+
+Marcin
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
