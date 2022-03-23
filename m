@@ -1,72 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4ED374E526B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Mar 2022 13:45:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B6C544E53B9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Mar 2022 14:58:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF5C661370;
-	Wed, 23 Mar 2022 12:45:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 036E34060B;
+	Wed, 23 Mar 2022 13:58:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iUg7oNNDDe_Y; Wed, 23 Mar 2022 12:45:56 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ppbSy56zXRBu; Wed, 23 Mar 2022 13:58:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C2BBA613A2;
-	Wed, 23 Mar 2022 12:45:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9FE1B40545;
+	Wed, 23 Mar 2022 13:58:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CA8411BF2A9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 12:45:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2FC6F1BF57B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 13:58:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C62D660A87
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 12:45:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1CBEE81398
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 13:58:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZY8SkG-rJ-CB for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Mar 2022 12:45:47 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=redhat.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3SDBveEBmyi5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Mar 2022 13:58:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3EE8E60808
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 12:45:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648039547; x=1679575547;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=GyXNqf4GNLod3cqKTITvf8LiaDU11jwMImeBJOPCznE=;
- b=Qqk8B2ELOoesTpK/imtY5oZPB0ysAIDMbDdhAfhbTEwvD8TTVAecK3JH
- qUx1Q/iOqNP2RSlezeqyFvrheKIJzPzYuXudMe0dnIia2iNB2wnW2yLvg
- 6EYat3pwH2MXHEbxAst7Eox9W6gWAi5Zdm2vABlg36JQfkEeEb+an+3mM
- tLJZhUH/KoRYSSSYf4H75vRPjHyyTxP0a18RNozNp16FUO1Hzw4PtRkuQ
- MXl0hx2OuK/At2YqkdqCk/IWDYWi+gvmpWK4GLjPpl7C3M2riWSrTSQs7
- AFXum0f3WKTVYiwvgVM8+BU4qc91ygikbdTjyPJo5JMxEIsgsX9JxqdYd A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10294"; a="238042378"
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="238042378"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2022 05:45:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="785776616"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga006.fm.intel.com with ESMTP; 23 Mar 2022 05:45:44 -0700
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 22NCjeuE017350; Wed, 23 Mar 2022 12:45:42 GMT
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 23 Mar 2022 13:43:53 +0100
-Message-Id: <20220323124353.2762181-3-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220323124353.2762181-1-alexandr.lobakin@intel.com>
-References: <20220323124353.2762181-1-alexandr.lobakin@intel.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 699A581384
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 13:58:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1648043916;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NPsFKWBDc285bGf4fkPtm66sH099xvtiav0N2gh4FPU=;
+ b=GaL2dwQWRT2fRFMWvcDzObQji9OoNdcP3Q4lAchoT9CoYVn++Ch0l5SuvkTyIN4CbzGoOA
+ //kerV4lhnLxQhzz4X/lBHWUXk6RGL4M9zhmKZkvnDudaGZ7lVi697Xn52z1aInh6Ld8bx
+ jqT3xuKZFxMnnDwk84pbYy+Aje0PA40=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-587-99w9fyUfPM-3XaVeV6T16Q-1; Wed, 23 Mar 2022 09:58:33 -0400
+X-MC-Unique: 99w9fyUfPM-3XaVeV6T16Q-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7A075106655B;
+ Wed, 23 Mar 2022 13:58:32 +0000 (UTC)
+Received: from ceranb.redhat.com (unknown [10.40.192.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A6C2B403D1A3;
+ Wed, 23 Mar 2022 13:58:30 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed, 23 Mar 2022 14:58:29 +0100
+Message-Id: <20220323135829.4015645-1-ivecera@redhat.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 2/2] ice: don't allow to run
- ice_send_event_to_aux() in atomic ctx
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.2
+Subject: [Intel-wired-lan] [PATCH net] ice: Fix MAC address setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,49 +76,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- Shiraz Saleem <shiraz.saleem@intel.com>
+Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ mschmidt@redhat.com, open list <linux-kernel@vger.kernel.org>,
+ poros@redhat.com, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ice_send_event_to_aux() eventually descends to mutex_lock()
-(-> might_sched()), so it must not be called under non-task
-context. However, at least two fixes have happened already for the
-bug splats occurred due to this function being called from atomic
-context.
-To make the emergency landings softer, bail out early when executed
-in non-task context emitting a warn splat only once. This way we
-trade some events being potentially lost for system stability and
-avoid any related hangs and crashes.
+Commit 2ccc1c1ccc671b ("ice: Remove excess error variables") merged
+the usage of 'status' and 'err' variables into single one in
+function ice_set_mac_address(). Unfortunately this causes
+a regression when call of ice_fltr_add_mac() returns -EEXIST because
+this return value does not indicate an error in this case but
+value of 'err' value remains to be -EEXIST till the end of
+the function and is returned to caller.
 
-Fixes: 348048e724a0e ("ice: Implement iidc operations")
-Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-Tested-by: Michal Kubiak <michal.kubiak@intel.com>
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Acked-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Prior this commit this does not happen because return value of
+ice_fltr_add_mac() was stored to 'status' variable first and
+if it was -EEXIST then 'err' remains to be zero.
+
+The patch fixes the problem by reset 'err' to zero when
+ice_fltr_add_mac() returns -EEXIST.
+
+Fixes: 2ccc1c1ccc671b ("ice: Remove excess error variables")
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 ---
- drivers/net/ethernet/intel/ice/ice_idc.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_main.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index fc3580167e7b..5559230eff8b 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -34,6 +34,9 @@ void ice_send_event_to_aux(struct ice_pf *pf, struct iidc_event *event)
- {
- 	struct iidc_auxiliary_drv *iadrv;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 168a41ea37b8..420558d1cd21 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5474,14 +5474,15 @@ static int ice_set_mac_address(struct net_device *netdev, void *pi)
  
-+	if (WARN_ON_ONCE(!in_task()))
-+		return;
-+
- 	if (!pf->adev)
- 		return;
+ 	/* Add filter for new MAC. If filter exists, return success */
+ 	err = ice_fltr_add_mac(vsi, mac, ICE_FWD_TO_VSI);
+-	if (err == -EEXIST)
++	if (err == -EEXIST) {
+ 		/* Although this MAC filter is already present in hardware it's
+ 		 * possible in some cases (e.g. bonding) that dev_addr was
+ 		 * modified outside of the driver and needs to be restored back
+ 		 * to this value.
+ 		 */
+ 		netdev_dbg(netdev, "filter for MAC %pM already exists\n", mac);
+-	else if (err)
++		err = 0;
++	} else if (err)
+ 		/* error if the new filter addition failed */
+ 		err = -EADDRNOTAVAIL;
  
 -- 
-2.35.1
+2.34.1
 
 _______________________________________________
 Intel-wired-lan mailing list
