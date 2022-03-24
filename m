@@ -1,70 +1,163 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 888E14E5985
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Mar 2022 21:05:36 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43AA34E6060
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Mar 2022 09:33:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1EB1C84A88;
-	Wed, 23 Mar 2022 20:05:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8C7EF405CE;
+	Thu, 24 Mar 2022 08:33:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1_GeRAxGa947; Wed, 23 Mar 2022 20:05:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Or1bjI6KjbB7; Thu, 24 Mar 2022 08:33:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 79D1A84A86;
-	Wed, 23 Mar 2022 20:05:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 25229405CD;
+	Thu, 24 Mar 2022 08:33:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0FEEB1BF48C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:29 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 216C11BF3B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 08:33:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 099288474E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0EF5C40345
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 08:33:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wg6bh0TZWYeq for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Mar 2022 20:05:27 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RfiOhsQ7hC7a for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Mar 2022 08:33:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BF5AD84737
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Mar 2022 20:05:27 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 116DB40336
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 08:33:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648065927; x=1679601927;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=nSgKm/aUFHPKNlr3V9fjF16/jnH0t5gAjdmxsskSuPc=;
- b=MsjqXCdyOOeJ9scD+vLywKRyuK56crVsLo7H/SDXmFUf/XPRP8qpc42g
- eEWN75Xyr2NUkdMQCT7fLM1SgBXyrE/eKeToy3//s5n6MN20efR61yiX9
- MCvZ+3LXogg0LjesMOZplMJRNOFHbb8R9qxBMPWKQnNUVsSHiTy2gbRg9
- FkcyYLjTLN4s12/ulxQYNnBbxmqLAahoXkS2wdOKmXw02JOOk3xgcW41+
- 5NgzsPdsrr+eFCqLBkUN0HZf5XHnxNr5AySMe11Yoce6RMj80Uap1W9a2
- N9g3Q2D9SJ2V9NbIM4oUWtsQLKqPdS0IS4CexXm1ITUsib0X3wFGHUlpR w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="255778200"
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="255778200"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2022 13:05:26 -0700
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="561066269"
-Received: from mszycik-mobl.ger.corp.intel.com (HELO [10.249.137.148])
- ([10.249.137.148])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2022 13:05:22 -0700
-Message-ID: <eb6538d9-4667-f1f5-492c-e1e113a6da35@linux.intel.com>
-Date: Wed, 23 Mar 2022 21:05:20 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
+ t=1648110799; x=1679646799;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=g/VWNcRgMndWRYXZJaePgZ5ygx4UIE3EsMXP2uTsrQE=;
+ b=iZXzyL5Ipu60gUmQYTcVkJtZ98ctQLXT4NaCXoDX4HYM95c2MHhYh6w4
+ UQ/n2Zt3oxkTaj1h7V6PXVRIJAMkW/LEB29GcwCMo5gN9FKja7gB/dnH0
+ ntdIYrMaRwP4rbaYeu5Lhq03I9kRhODTnNFOMvE00eQu19k/TiMmRuFRY
+ safYV6kG7+6/6a/SfpAl583IBZVudVcpPdycmJujkatXV7Nm9loBPpb1Y
+ WsFcGJQfTrWCREENBLAhpbiYs4LwnX70CUQMZ7MsjwVvnH/kquJuz5QsJ
+ zb6GUbnImDxzQLkdrtYU1yszsEAgagolnXLGg5evJSBTlJl66iodf0Wgl g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="240476919"
+X-IronPort-AV: E=Sophos;i="5.90,206,1643702400"; d="scan'208";a="240476919"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2022 01:33:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,206,1643702400"; d="scan'208";a="825607870"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga005.fm.intel.com with ESMTP; 24 Mar 2022 01:33:17 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Thu, 24 Mar 2022 01:33:17 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Thu, 24 Mar 2022 01:33:17 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Thu, 24 Mar 2022 01:33:17 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.21; Thu, 24 Mar 2022 01:33:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mpiD98j7f19V3uIqwLvm6pF8JsGRcRYsnQoiKNpODAPjWCL9ORXiQnAYE1gXucr/pNi0sGzHn6RToL5CZ4wEFR1yrB2kpcRIn/sIaRoq5U0F6AfAF94svHOqNwzOLIGB7A8+lR1aasUDVPklmWalKQx4PKCtOIrzUSwwWSNUklLN0djaX5nP79u3R3qERQSgrCWr75eXcYO0mm6EqGqWYmGuFY4vXLCS4gNeN3FNmMFCynNiK8XHrpMAIRy5Bh5RMfFR0tjyd86rsQb6yRGNhalXVM7EtQ4xhjrd6ZC4JMo9Gikmz6qtzgxIvhQpfEpM590MTzqGU3WMQ4AxIL2wvQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rp87dkhuKdT6rasuJv6oaSq6IQzGvw1shnpTpHzimUA=;
+ b=bU3nYf1+QO0uypupzw1IimW9Xoo3f7Ye1Sqz8uL0dNZixiFi3mNDTbmNJAdiYwLqP5ZQT+/kxEKwKgAgPzC7U0geEvCyOf9Vpuvg83gYBgIHL7avnrILQfwFNSLsfakrPsDkeVLr5FYuVZMchnVQXACKABnuCuWV8ef+zIKxIVQQ4ZnYnsLEz7ALOfPWS11bVH6DgE9onmCSkc+1CR1a+16DDBEhH7IqfdEjsMzU/Qm012fj+8f50vJ4yKyAGCH8oJ1DTeG8QbBn/CPAAKVDwFUwad5qR2uuHjvAVnO/wEQA93gLqIzFBa7gL1vJ9djOPL0Kv46RGAX1VEH1bsfHrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by CH0PR11MB5233.namprd11.prod.outlook.com (2603:10b6:610:e0::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5102.17; Thu, 24 Mar
+ 2022 08:33:15 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::8113:f21a:30e7:26db]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::8113:f21a:30e7:26db%4]) with mapi id 15.20.5081.022; Thu, 24 Mar 2022
+ 08:33:14 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: Joe Damato <jdamato@fastly.com>, "Brandeburg, Jesse"
+ <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kubalewski, Arkadiusz"
+ <arkadiusz.kubalewski@intel.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [next-queue v2] i40e: Add support for MPLS + TSO
+Thread-Index: AQHYLp5KMSlYtozp00q7JPKA0uoZM6zOVjIQ
+Date: Thu, 24 Mar 2022 08:33:14 +0000
+Message-ID: <BYAPR11MB3367A2FF3FE31B56602F16F6FC199@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <1646270947-92954-1-git-send-email-jdamato@fastly.com>
+In-Reply-To: <1646270947-92954-1-git-send-email-jdamato@fastly.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-To: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org
-References: <20220321191731.2596414-1-ivecera@redhat.com>
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <20220321191731.2596414-1-ivecera@redhat.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix broken IFF_ALLMULTI
- handling
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 59ca083b-f986-423f-3175-08da0d70f03d
+x-ms-traffictypediagnostic: CH0PR11MB5233:EE_
+x-microsoft-antispam-prvs: <CH0PR11MB523316C1A70A6B1028655E07FC199@CH0PR11MB5233.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: BPMqbv/mkUcY5VdVCeCb66Ist/q/2qVjafTUUjEu2qfkgfrqT3/LgtsnpSqbT70Fflf80sUti9Sqi9paaiUthNZ24UwM+bfICuY0m5XVcmQSRJO9FGH0Jp2eQVVH5ROZV6/SnJqxvVUs5g4Etw7/tKYQ6gW9gwU967gRfIs/XZBNS2PTQwJjb5/ffJHI2DDlEjmTGZufQdZhxEDo3sDcwLEzyP8femWchC6sMeDgN2ejngVRMPjJBgX2njlcf0bXeeyIJB6Luw14oAnHL9YsAM5D7WeW++euL+xyigVPW611Fh5OYpNeu1SYEbIzbworNfvcUG7sBTuSEaJS/u+j33g6Nfb2RRRJnruqmZbeq8aKBlyOTuhM/QyXan5+uZ5jinuMhNQ+wxlSt4GusMhCazAbSaQCDnW4hSv2nKeemSRceb8G9r+UKzKFo6SewP+oZRqh1rmbirdk/aRia4stDsiB785edWD1FRSsroL8kk4oHpvWP2+9Npk+/vmuSsBaURu18NVGLaB50yb5aO7me8m7uQpsx8GYuXh/hIBG5R6/Ypv8dY0MwEmsCCbLYtGdr+tAGKRcl38zkaWm2e2YHPBF8ZnyDs1UTXkmoHtKm/UjedZgtzaHbhUe3X0aba0LJ/ANvI857TgH528DYRrhug1ANS8VhXoiGuRnHTk1bf0hczNl31iKVyXNnauTeGuuKrNuAsFaTQUyUORMq9pBRQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(52536014)(316002)(64756008)(8936002)(76116006)(55016003)(66476007)(66556008)(8676002)(66446008)(5660300002)(2906002)(83380400001)(110136005)(38100700002)(66946007)(38070700005)(33656002)(122000001)(7696005)(82960400001)(6506007)(86362001)(71200400001)(53546011)(9686003)(508600001)(186003)(26005)(4326008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?/2Ut4okdbe37b16wJj2MgqPq7azNcsD63wxu+QxtY4/B9zi3xR207wHddmg8?=
+ =?us-ascii?Q?mh7lCR62Apiedbq7Vo6/PXjI5Yu5sv/anUcrfM2l5ACA9xuqD4tYaPau1wWF?=
+ =?us-ascii?Q?uTaCVSLLw1L8CvEn2TLz/Bvphz0QnTo8sAQKionI/gMzVjoASYCRrEALvATe?=
+ =?us-ascii?Q?J0oI6hERq+O3J3GLqh8zypjvRv0YTac6W1faxJTOoB2Fz5giWnHgN96RczpO?=
+ =?us-ascii?Q?GzXWB/tvM0DMJC5p1R0GqS1ur8gn9IJ5kdns1Mh1kTAib8kZJB1N2fNd3ppy?=
+ =?us-ascii?Q?4udQEIRJArTBjS0QcOmLYqqarq2ULZZMZG7zr78QhmpLOqj5lqeMt/aY7+EC?=
+ =?us-ascii?Q?qkgWfBgixuYx51gXFkkixyfOgZ936nu3xnFf4NEQ84HbqWft63QVm1/tBvWY?=
+ =?us-ascii?Q?tW0z6wm62ctGG9STMpJMxCGjdw80FkY4o9jIeQVUb2LvMO/mdx38pcMZeM0Z?=
+ =?us-ascii?Q?pCowikr1uO+3GIjJKz77xwPRw2x1b+UVLX5vvPl6tALMrRhJejTE4zTQecQ4?=
+ =?us-ascii?Q?3JGD1aJ/5IraStfbQZZ48o/5L2fUa0HvbS8jtSZDNeJ8Ef2j1povQ9G53eZy?=
+ =?us-ascii?Q?bNylT238j/AzrbFOcHWNEnDDHXg3mNhltYgXc5duOq9JyO05xU+2EivSYfrQ?=
+ =?us-ascii?Q?f4Yy6NxQWqBObChfzDCrur0XVaEXo401JhNcQKwepDk8AO7EhnA3xRYVU3EN?=
+ =?us-ascii?Q?3BYStk3gw1Yq29n0DQE5AWWrOCyLYPXSLZaJKy+DDmn4URm/9kHJ4bliYXqa?=
+ =?us-ascii?Q?P+dW2RcRYUpdtgPbnaA8XXOk7vjpfUh7qVTySY0MRYR3ScrrX5SjwbvapWBD?=
+ =?us-ascii?Q?fiWbweyo/yxBoKn3r9XPQaHAEnY6irmDszDdOOYUdoLi6eot0yultjNzVM9u?=
+ =?us-ascii?Q?Qg5GN+S7tgz01HHFcjirFjPNEAXlkxBKfMoWIeXT9mbHbqLXusUa9pvYU/Qs?=
+ =?us-ascii?Q?owDbBNHfRqxv2hUVh2TqpYeShYrBDUHvgZ0xIcqVPWfGkG7Y0eiI1UvKgavu?=
+ =?us-ascii?Q?QS7vxpOFs18Aohy5keVn7PnnPps7stvh0tcL4gGu8C3iSzfqB+jIV1vCkEyK?=
+ =?us-ascii?Q?32GFzx3ezdixnVMywmp2Q7ceHnqC3SyXJwyV/99DjYDZer8A9xWb8YrUG8RY?=
+ =?us-ascii?Q?bbmRBI4H211bgaZ+6w7Allk9YFIXrBvUyJi9rW4Sinbq1u+XKTe5h218IP7E?=
+ =?us-ascii?Q?AxmLUuv+lV9CgOW8dxk6BWlvEKquPf/0EjnJrhILYeYUNvIs76mY40uE1hBz?=
+ =?us-ascii?Q?mjhyfkHsKKgUJ60XI6V+I6B9PnwsGsU9paShciYutLc9RcLj5XkxEVCTCYGh?=
+ =?us-ascii?Q?/5/hgWsfydycjn/FxzGOJIkVKcZXaB+WB9xhHCGf+aD9Z7Eqglt102tsAwRO?=
+ =?us-ascii?Q?a2KK7xa77jCX0f5wY2p5ibd6HOFCpXljMWHbh+OSrIGzX0gbovUG2IhwaWbv?=
+ =?us-ascii?Q?kcTZuwJXE25EwZKS8xcmQvobCPn7mChD?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59ca083b-f986-423f-3175-08da0d70f03d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Mar 2022 08:33:14.0324 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rKrjCgeYLVOTFQTHHZJPaXR9ml8qmTMlAzHUqEqNZW4DKEUXwvJZsYcSrmgY2Ez6UABh+NMLH/HNMp+Ow11v0A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5233
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [next-queue v2] i40e: Add support for MPLS +
+ TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,12 +170,7 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- mschmidt@redhat.com, open list <linux-kernel@vger.kernel.org>,
- poros@redhat.com, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Akeem G Abodunrin <akeem.g.abodunrin@intel.com>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Mike Gallo <mgallo@fastly.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -90,428 +178,64 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-On 21-Mar-22 20:17, Ivan Vecera wrote:
-> Handling of all-multicast flag and associated multicast promiscuous
-> mode is broken in ice driver. When a user switches allmulticast
-> flag on or off the driver checks whether any VLANs are configured
-> over the interface (except default VLAN 0).
+> -----Original Message-----
+> From: Joe Damato <jdamato@fastly.com>
+> Sent: Thursday, March 3, 2022 6:59 AM
+> To: jdamato@fastly.com; Brandeburg, Jesse <jesse.brandeburg@intel.com>;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kubalewski, Arkadiusz
+> <arkadiusz.kubalewski@intel.com>; kuba@kernel.org; intel-wired-
+> lan@lists.osuosl.org
+> Cc: Mike Gallo <mgallo@fastly.com>
+> Subject: [next-queue v2] i40e: Add support for MPLS + TSO
 > 
-> If any extra VLANs are registered it enables multicast promiscuous
-> mode for all these VLANs (including default VLAN 0) using
-> ICE_SW_LKUP_PROMISC_VLAN look-up type. In this situation all
-> multicast packets tagged with known VLAN ID or untagged are received
-> and multicast packets tagged with unknown VLAN ID ignored.
+> This change adds support for TSO of MPLS packets.
 > 
-> If no extra VLANs are registered (so only VLAN 0 exists) it enables
-> multicast promiscuous mode for VLAN 0 and uses ICE_SW_LKUP_PROMISC
-> look-up type. In this situation any multicast packets including
-> tagged ones are received.
+> In my tests with tcpdump it seems to work. Note this test setup has a 9000
+> byte MTU:
 > 
-> The driver handles IFF_ALLMULTI in ice_vsi_sync_fltr() this way:
+> MPLS (label 100, exp 0, [S], ttl 64) IP srcip.50086 > dstip.1234:
+>   Flags [P.], seq 593345:644401, ack 0, win 420,
+>   options [nop,nop,TS val 45022534 ecr 1722291395], length 51056
 > 
-> ice_vsi_sync_fltr() {
->   ...
->   if (changed_flags & IFF_ALLMULTI) {
->     if (netdev->flags & IFF_ALLMULTI) {
->       if (vsi->num_vlans > 1)
->         ice_set_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS);
->       else
->         ice_set_promisc(..., ICE_MCAST_PROMISC_BITS);
->     } else {
->       if (vsi->num_vlans > 1)
->         ice_clear_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS);
->       else
->         ice_clear_promisc(..., ICE_MCAST_PROMISC_BITS);
->     }
->   }
->   ...
-> }
+> IP dstip.1234 > srcip.50086: Flags [.], ack 593345, win 122,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> The code above depends on value vsi->num_vlan that specifies number
-> of VLANs configured over the interface (including VLAN 0) and
-> this is problem because that value is modified in NDO callbacks
-> ice_vlan_rx_add_vid() and ice_vlan_rx_kill_vid().
+> IP dstip.1234 > srcip.50086: Flags [.], ack 602289, win 105,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> Scenario 1:
-> 1. ip link set ens7f0 allmulticast on
-> 2. ip link add vlan10 link ens7f0 type vlan id 10
-> 3. ip link set ens7f0 allmulticast off
-> 4. ip link set ens7f0 allmulticast on
+> IP dstip.1234 > srcip.50086: Flags [.], ack 620177, win 71,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> [1] In this scenario IFF_ALLMULTI is enabled and the driver calls
->     ice_set_promisc(..., ICE_MCAST_PROMISC_BITS) that installs
->     multicast promisc rule with non-VLAN look-up type.
-> [2] Then VLAN with ID 10 is added and vsi->num_vlan incremented to 2
-> [3] Command switches IFF_ALLMULTI off and the driver calls
->     ice_clear_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS) but this
->     call is effectively NOP because it looks for multicast promisc
->     rules for VLAN 0 and VLAN 10 with VLAN look-up type but no such
->     rules exist. So the all-multicast remains enabled silently
->     in hardware.
-> [4] Command tries to switch IFF_ALLMULTI on and the driver calls
->     ice_clear_promisc(..., ICE_MCAST_PROMISC_BITS) but this call
->     fails (-EEXIST) because non-VLAN multicast promisc rule already
->     exists.
+> MPLS (label 100, exp 0, [S], ttl 64) IP srcip.50086 > dstip.1234:
+>   Flags [P.], seq 644401:655953, ack 0, win 420,
+>   options [nop,nop,TS val 45022534 ecr 1722291395], length 11552
 > 
-> Scenario 2:
-> 1. ip link add vlan10 link ens7f0 type vlan id 10
-> 2. ip link set ens7f0 allmulticast on
-> 3. ip link add vlan20 link ens7f0 type vlan id 20
-> 4. ip link del vlan10 ; ip link del vlan20
-> 5. ip link set ens7f0 allmulticast off
+> IP dstip.1234 > srcip.50086: Flags [.], ack 638065, win 37,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> [1] VLAN with ID 10 is added and vsi->num_vlan==2
-> [2] Command switches IFF_ALLMULTI on and driver installs multicast
->     promisc rules with VLAN look-up type for VLAN 0 and 10
-> [3] VLAN with ID 20 is added and vsi->num_vlan==3 but no multicast
->     promisc rules is added for this new VLAN so the interface does
->     not receive MC packets from VLAN 20
-> [4] Both VLANs are removed but multicast rule for VLAN 10 remains
->     installed so interface receives multicast packets from VLAN 10
-> [5] Command switches IFF_ALLMULTI off and because vsi->num_vlan is 1
->     the driver tries to remove multicast promisc rule for VLAN 0
->     with non-VLAN look-up that does not exist.
->     All-multicast looks disabled from user point of view but it
->     is partially enabled in HW (interface receives all multicast
->     packets either untagged or tagged with VLAN ID 10)
+> IP dstip.1234 > srcip.50086: Flags [.], ack 644401, win 25,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> To resolve these issues the patch introduces these changes:
-> 1. Adds handling for IFF_ALLMULTI to ice_vlan_rx_add_vid() and
->    ice_vlan_rx_kill_vid() callbacks. So when VLAN is added/removed
->    and IFF_ALLMULTI is enabled an appropriate multicast promisc
->    rule for that VLAN ID is added/removed.
-> 2. In ice_vlan_rx_add_vid() when first VLAN besides VLAN 0 is added
->    so (vsi->num_vlan == 2) and IFF_ALLMULTI is enabled then look-up
->    type for existing multicast promisc rule for VLAN 0 is updated
->    to ICE_MCAST_VLAN_PROMISC_BITS.
-> 3. In ice_vlan_rx_kill_vid() when last VLAN besides VLAN 0 is removed
->    so (vsi->num_vlan == 1) and IFF_ALLMULTI is enabled then look-up
->    type for existing multicast promisc rule for VLAN 0 is updated
->    to ICE_MCAST_PROMISC_BITS.
-> 4. Both ice_vlan_rx_{add,kill}_vid() have to run under ICE_CFG_BUSY
->    bit protection to avoid races with ice_vsi_sync_fltr() that runs
->    in ice_service_task() context.
-> 5. Bit ICE_VSI_VLAN_FLTR_CHANGED is use-less and can be removed.
-> 6. Error messages added to ice_fltr_*_vsi_promisc() helper functions
->    to avoid them in their callers
-> 7. Small improvements to increase readability
+> IP dstip.1234 > srcip.50086: Flags [.], ack 653345, win 8,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
 > 
-> Fixes: 5eda8afd6bcc ("ice: Add support for PF/VF promiscuous mode")
-> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> IP dstip.1234 > srcip.50086: Flags [.], ack 655953, win 3,
+>   options [nop,nop,TS val 1722291395 ecr 45022534], length 0
+> 
+> v1 -> v2:
+> 	- Restore erroneously deleted code from i40e_tso.
+> 
+> Signed-off-by: Joe Damato <jdamato@fastly.com>
+> Co-developed-by: Mike Gallo <mgallo@fastly.com>
+> Signed-off-by: Mike Gallo <mgallo@fastly.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h      |   1 -
->  drivers/net/ethernet/intel/ice/ice_fltr.c |  52 +++++++++-
->  drivers/net/ethernet/intel/ice/ice_main.c | 119 +++++++++++++++-------
->  3 files changed, 131 insertions(+), 41 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 20 ++++++++++--
+> drivers/net/ethernet/intel/i40e/i40e_txrx.c | 47 ++++++++++++++++++-----
+> ------
+>  2 files changed, 48 insertions(+), 19 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index bea1d1e39fa2..717542e49d65 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -300,7 +300,6 @@ enum ice_vsi_state {
->  	ICE_VSI_NETDEV_REGISTERED,
->  	ICE_VSI_UMAC_FLTR_CHANGED,
->  	ICE_VSI_MMAC_FLTR_CHANGED,
-> -	ICE_VSI_VLAN_FLTR_CHANGED,
->  	ICE_VSI_PROMISC_CHANGED,
->  	ICE_VSI_STATE_NBITS		/* must be last */
->  };
-> diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.c b/drivers/net/ethernet/intel/ice/ice_fltr.c
-> index c29177c6bb9d..8ed87b43a367 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_fltr.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_fltr.c
-> @@ -58,7 +58,18 @@ int
->  ice_fltr_set_vlan_vsi_promisc(struct ice_hw *hw, struct ice_vsi *vsi,
->  			      u8 promisc_mask)
->  {
-> -	return ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, false);
-> +	struct ice_pf *pf = hw->back;
-> +	int result;
-> +
-> +	result = ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, false);
-> +	if (!result)
-> +		return result;
-> +
-> +	dev_err(ice_pf_to_dev(pf),
-> +		"Error setting promisc mode on VSI %i (rc=%d)\n", vsi->vsi_num,
-> +		result);
-> +
-> +	return result;
->  }
->  
->  /**
-> @@ -73,7 +84,18 @@ int
->  ice_fltr_clear_vlan_vsi_promisc(struct ice_hw *hw, struct ice_vsi *vsi,
->  				u8 promisc_mask)
->  {
-> -	return ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, true);
-> +	struct ice_pf *pf = hw->back;
-> +	int result;
-> +
-> +	result = ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, true);
-> +	if (!result)
-> +		return result;
-> +
-> +	dev_err(ice_pf_to_dev(pf),
-> +		"Error clearing promisc mode on VSI %i (rc=%d)\n",
-> +		vsi->vsi_num, result);
-> +
-> +	return result;
->  }
->  
->  /**
-> @@ -87,7 +109,18 @@ int
->  ice_fltr_clear_vsi_promisc(struct ice_hw *hw, u16 vsi_handle, u8 promisc_mask,
->  			   u16 vid)
->  {
-> -	return ice_clear_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
-> +	struct ice_pf *pf = hw->back;
-> +	int result;
-> +
-> +	result = ice_clear_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
-> +	if (!result)
-> +		return result;
-> +
-> +	dev_err(ice_pf_to_dev(pf),
-> +		"Error clearing promisc mode on VSI %i for VID %u (rc=%d)\n",
-> +		ice_get_hw_vsi_num(hw, vsi_handle), vid, result);
-> +
-> +	return result;
->  }
->  
->  /**
-> @@ -101,7 +134,18 @@ int
->  ice_fltr_set_vsi_promisc(struct ice_hw *hw, u16 vsi_handle, u8 promisc_mask,
->  			 u16 vid)
->  {
-> -	return ice_set_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
-> +	struct ice_pf *pf = hw->back;
-> +	int result;
-> +
-> +	result = ice_set_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
-> +	if (!result)
-> +		return result;
-> +
-> +	dev_err(ice_pf_to_dev(pf),
-> +		"Error setting promisc mode on VSI %i for VID %u (rc=%d)\n",
-> +		ice_get_hw_vsi_num(hw, vsi_handle), vid, result);
-> +
-> +	return result;
->  }
->  
->  /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index b7e8744b0c0a..168a41ea37b8 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -227,8 +227,7 @@ static int ice_add_mac_to_unsync_list(struct net_device *netdev, const u8 *addr)
->  static bool ice_vsi_fltr_changed(struct ice_vsi *vsi)
->  {
->  	return test_bit(ICE_VSI_UMAC_FLTR_CHANGED, vsi->state) ||
-> -	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state) ||
-> -	       test_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
-> +	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state);
->  }
->  
->  /**
-> @@ -244,10 +243,15 @@ static int ice_set_promisc(struct ice_vsi *vsi, u8 promisc_m)
->  	if (vsi->type != ICE_VSI_PF)
->  		return 0;
->  
-> -	if (vsi->num_vlan > 1)
-> -		status = ice_fltr_set_vlan_vsi_promisc(&vsi->back->hw, vsi, promisc_m);
-> -	else
-> -		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m, 0);
-> +	if (vsi->num_vlan > 1) {
-> +		promisc_m |= (ICE_PROMISC_VLAN_RX | ICE_PROMISC_VLAN_TX);
-> +		status = ice_fltr_set_vlan_vsi_promisc(&vsi->back->hw, vsi,
-> +						       promisc_m);
-> +	} else {
-> +		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +						  promisc_m, 0);
-> +	}
-> +
->  	return status;
->  }
->  
-> @@ -264,10 +268,15 @@ static int ice_clear_promisc(struct ice_vsi *vsi, u8 promisc_m)
->  	if (vsi->type != ICE_VSI_PF)
->  		return 0;
->  
-> -	if (vsi->num_vlan > 1)
-> -		status = ice_fltr_clear_vlan_vsi_promisc(&vsi->back->hw, vsi, promisc_m);
-> -	else
-> -		status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m, 0);
-> +	if (vsi->num_vlan > 1) {
-> +		promisc_m |= (ICE_PROMISC_VLAN_RX | ICE_PROMISC_VLAN_TX);
-> +		status = ice_fltr_clear_vlan_vsi_promisc(&vsi->back->hw, vsi,
-> +							 promisc_m);
-> +	} else {
-> +		status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +						    promisc_m, 0);
-> +	}
-> +
->  	return status;
->  }
->  
-> @@ -285,7 +294,6 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
->  	struct ice_pf *pf = vsi->back;
->  	struct ice_hw *hw = &pf->hw;
->  	u32 changed_flags = 0;
-> -	u8 promisc_m;
->  	int err;
->  
->  	if (!vsi->netdev)
-> @@ -303,7 +311,6 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
->  	if (ice_vsi_fltr_changed(vsi)) {
->  		clear_bit(ICE_VSI_UMAC_FLTR_CHANGED, vsi->state);
->  		clear_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state);
-> -		clear_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
->  
->  		/* grab the netdev's addr_list_lock */
->  		netif_addr_lock_bh(netdev);
-> @@ -352,29 +359,15 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
->  	/* check for changes in promiscuous modes */
->  	if (changed_flags & IFF_ALLMULTI) {
->  		if (vsi->current_netdev_flags & IFF_ALLMULTI) {
-> -			if (vsi->num_vlan > 1)
-> -				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
-> -			else
-> -				promisc_m = ICE_MCAST_PROMISC_BITS;
 
-Because `ice_{set,clear}_promisc()` are now always called with the same second argument (ICE_MCAST_PROMISC_BITS), wouldn't it be better to remove the arg and instead call `ice_fltr_{clear,set}_{vlan,vsi}_vsi_promisc()` with either ICE_MCAST_VLAN_PROMISC_BITS or ICE_MCAST_PROMISC_BITS inside the function?
-
-> -
-> -			err = ice_set_promisc(vsi, promisc_m);
-> +			err = ice_set_promisc(vsi, ICE_MCAST_PROMISC_BITS);>  			if (err) {
-> -				netdev_err(netdev, "Error setting Multicast promiscuous mode on VSI %i\n",
-> -					   vsi->vsi_num);
->  				vsi->current_netdev_flags &= ~IFF_ALLMULTI;
->  				goto out_promisc;
->  			}
->  		} else {
->  			/* !(vsi->current_netdev_flags & IFF_ALLMULTI) */
-> -			if (vsi->num_vlan > 1)
-> -				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
-> -			else
-> -				promisc_m = ICE_MCAST_PROMISC_BITS;
-> -
-> -			err = ice_clear_promisc(vsi, promisc_m);
-> +			err = ice_clear_promisc(vsi, ICE_MCAST_PROMISC_BITS);
->  			if (err) {
-> -				netdev_err(netdev, "Error clearing Multicast promiscuous mode on VSI %i\n",
-> -					   vsi->vsi_num);
->  				vsi->current_netdev_flags |= IFF_ALLMULTI;
->  				goto out_promisc;
->  			}
-> @@ -3445,19 +3438,47 @@ ice_vlan_rx_add_vid(struct net_device *netdev, __always_unused __be16 proto,
->  	if (!vid)
->  		return 0;
->  
-> +	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state))
-> +		usleep_range(1000, 2000);
-> +
->  	/* Enable VLAN pruning when a VLAN other than 0 is added */
->  	if (!ice_vsi_is_vlan_pruning_ena(vsi)) {
->  		ret = ice_cfg_vlan_pruning(vsi, true);
->  		if (ret)
-> -			return ret;
-> +			goto finish;
-> +	}
-> +
-> +	/* Add multicast promisc rule for the VLAN ID to be added if
-> +	 * all-multicast is currently enabled.
-> +	 */
-> +	if (vsi->current_netdev_flags & IFF_ALLMULTI) {
-> +		ret = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +					       ICE_MCAST_VLAN_PROMISC_BITS,
-> +					       vid);
-> +		if (ret)
-> +			goto finish;
->  	}
->  
->  	/* Add a switch rule for this VLAN ID so its corresponding VLAN tagged
->  	 * packets aren't pruned by the device's internal switch on Rx
->  	 */
->  	ret = ice_vsi_add_vlan(vsi, vid, ICE_FWD_TO_VSI);
-> -	if (!ret)
-> -		set_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
-> +	if (ret)
-> +		goto finish;
-> +
-> +	/* If all-multicast is currently enabled and this VLAN ID is only one
-> +	 * besides VLAN-0 we have to update look-up type of multicast promisc
-> +	 * rule for VLAN-0 from ICE_SW_LKUP_PROMISC to ICE_SW_LKUP_PROMISC_VLAN.
-> +	 */
-> +	if ((vsi->current_netdev_flags & IFF_ALLMULTI) && vsi->num_vlan == 2) {
-> +		ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +					   ICE_MCAST_PROMISC_BITS, 0);
-> +		ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +					 ICE_MCAST_VLAN_PROMISC_BITS, 0);
-> +	}
-> +
-> +finish:
-> +	clear_bit(ICE_CFG_BUSY, vsi->state);
->  
->  	return ret;
->  }
-> @@ -3482,18 +3503,44 @@ ice_vlan_rx_kill_vid(struct net_device *netdev, __always_unused __be16 proto,
->  	if (!vid)
->  		return 0;
->  
-> +	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state))
-> +		usleep_range(1000, 2000);
-> +
->  	/* Make sure ice_vsi_kill_vlan is successful before updating VLAN
->  	 * information
->  	 */
->  	ret = ice_vsi_kill_vlan(vsi, vid);
->  	if (ret)
-> -		return ret;
-> +		goto finish;
->  
-> -	/* Disable pruning when VLAN 0 is the only VLAN rule */
-> -	if (vsi->num_vlan == 1 && ice_vsi_is_vlan_pruning_ena(vsi))
-> -		ret = ice_cfg_vlan_pruning(vsi, false);
-> +	/* Remove multicast promisc rule for the removed VLAN ID if
-> +	 * all-multicast is enabled.
-> +	 */
-> +	if (vsi->current_netdev_flags & IFF_ALLMULTI)
-> +		ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +					   ICE_MCAST_VLAN_PROMISC_BITS, vid);
-> +
-> +	if (vsi->num_vlan == 1) {
-> +		/* Disable pruning when VLAN 0 is the only VLAN rule */
-> +		if (ice_vsi_is_vlan_pruning_ena(vsi))
-> +			ice_cfg_vlan_pruning(vsi, false);
-
-Why was `ret = ...` removed here?
-
-> +
-> +		/* Update look-up type of multicast promisc rule for VLAN 0
-> +		 * from ICE_SW_LKUP_PROMISC_VLAN to ICE_SW_LKUP_PROMISC when
-> +		 * all-multicast is enabled and VLAN 0 is the only VLAN rule.
-> +		 */
-> +		if (vsi->current_netdev_flags & IFF_ALLMULTI) {
-> +			ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +						   ICE_MCAST_VLAN_PROMISC_BITS,
-> +						   0);
-> +			ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
-> +						 ICE_MCAST_PROMISC_BITS, 0);
-> +		}
-> +	}
-> +
-> +finish:
-> +	clear_bit(ICE_CFG_BUSY, vsi->state);
->  
-> -	set_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
->  	return ret;
->  }
->  
-
-Otherwise LGTM (though my experience in this area is rather limited).
-
-Marcin
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
