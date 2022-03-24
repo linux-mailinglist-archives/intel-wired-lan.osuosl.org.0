@@ -1,70 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA2224E6227
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Mar 2022 12:11:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 383F04E6271
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Mar 2022 12:26:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2302484323;
-	Thu, 24 Mar 2022 11:11:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D7442843DE;
+	Thu, 24 Mar 2022 11:26:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T_SF8QRvYuI3; Thu, 24 Mar 2022 11:11:01 +0000 (UTC)
+	with ESMTP id Pl6nC7S6dUGy; Thu, 24 Mar 2022 11:26:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E9FB884221;
-	Thu, 24 Mar 2022 11:11:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CE0AA843D8;
+	Thu, 24 Mar 2022 11:26:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 14EDB1BF410
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1851E1BF410
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:26:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0188C84221
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 053BD843D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:26:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7KUXciqYSF4t for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Mar 2022 11:10:55 +0000 (UTC)
+ with ESMTP id WIovNT5Y_6Ox for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Mar 2022 11:26:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B0A978421F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:55 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5412E843CD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648120255; x=1679656255;
+ t=1648121166; x=1679657166;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=mKNGXFCV4Kp8qwJN+GNi3JImHKbQI1aeqMv/NpYMBAU=;
- b=H2iU3EecJU2mI5sKw673Q3N9VvUA0bgwsMBlvgaTv8fbbWw3QcOSijHI
- 4PjG+vLzpYFaeGqg92fjy+Lga0MT9sbAbrilE0hAnnNo9bLVgOSxVFl6e
- phoYZ54ycW3WXHAPpuRPxMH462mYK+SyWKXHVVgPhTxb4rwzs4BV+Q12r
- y7/Nv6skBQd7cgazBXRwOxwb+4XWEeB0jlZr0AxwOwxW0P9FEFRAp0Swb
- UDj0S7BOqZ+qYzKQz5c5+H//11K53tuOVtD0FD9t3cM4OcFdIJA/wQt8f
- fl6K9b+pB2pvGGD2Jf7A9PQWgQ44dR9nvsnSmtWcTKNsr6ndEcVJh+vTB Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="258301977"
-X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="258301977"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2022 04:10:55 -0700
+ bh=TKRStjgNvvvrYB1tQ/Y0SqCKUerOWglVcd2B3O7GaC4=;
+ b=H4R3iqfrdP7heI8azrAdG3btaLaz168yLSnX3p1d+rgYjavOC+p+e4ZE
+ n+xKBUdJJMZc9nLXQPuX0KfSXptg0Ca5s13cHU/t0JC1MGl15smTy1ppV
+ Ph0IYry4Aj6yxooiHpIlDS2gfY+p1V/7MgGK5ubzKsInF7npjwzE3mE36
+ Y4/F7QnJ6Ho9IGD4z1a3T17cZuRsTmi2H5cdY1fi39obIUU+CRMaKTYxP
+ hxNRdKunJoZj+ihTARKo7ZaJsYKFhYv77ZgdxxIrijF5Ho4tnXRjDA2G8
+ F3PK98mh2CBCkd5JN+oNUo8bU9k7h6W9+IFQDyWpu4fFAQP773SUsnLse A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="258062562"
+X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="258062562"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2022 04:26:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="501354888"
+X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="561333561"
 Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
- by orsmga003.jf.intel.com with ESMTP; 24 Mar 2022 04:10:51 -0700
-Date: Thu, 24 Mar 2022 12:10:51 +0100
+ by orsmga008.jf.intel.com with ESMTP; 24 Mar 2022 04:25:59 -0700
+Date: Thu, 24 Mar 2022 12:25:58 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Marcin Szycik <marcin.szycik@linux.intel.com>
-Message-ID: <YjxRu8hnNnuYCrcd@boxer>
-References: <20220322142554.3253428-1-ivecera@redhat.com>
- <45b155ff-8e26-fa96-f89e-6a561de01abb@linux.intel.com>
- <20220323185426.33c66892@ceranb>
- <287f2247-2c58-497d-f7b1-ae1e24a88da8@linux.intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>
+Message-ID: <YjxVRqTppQeYKb1h@boxer>
+References: <20220323135829.4015645-1-ivecera@redhat.com>
+ <CO1PR11MB508946CC906E8B851D69D31AD6189@CO1PR11MB5089.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <287f2247-2c58-497d-f7b1-ae1e24a88da8@linux.intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Clear default forwarding VSI
- during VSI release
+In-Reply-To: <CO1PR11MB508946CC906E8B851D69D31AD6189@CO1PR11MB5089.namprd11.prod.outlook.com>
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix MAC address setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,11 +74,12 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org,
- mschmidt@redhat.com, Brett Creeley <brett.creeley@intel.com>,
- open list <linux-kernel@vger.kernel.org>, poros@redhat.com,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "moderated list:INTEL ETHERNET DRIVERS\"" <intel-wired-lan@lists.osuosl.org>,
+Cc: Ivan Vecera <ivecera@redhat.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "mschmidt@redhat.com" <mschmidt@redhat.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "poros@redhat.com" <poros@redhat.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
@@ -89,83 +87,89 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 23, 2022 at 07:19:55PM +0100, Marcin Szycik wrote:
+On Wed, Mar 23, 2022 at 05:28:02PM +0000, Keller, Jacob E wrote:
 > 
 > 
-> On 23-Mar-22 18:54, Ivan Vecera wrote:
-> > On Wed, 23 Mar 2022 18:39:11 +0100
-> > Marcin Szycik <marcin.szycik@linux.intel.com> wrote:
+> > -----Original Message-----
+> > From: Ivan Vecera <ivecera@redhat.com>
+> > Sent: Wednesday, March 23, 2022 6:58 AM
+> > To: netdev@vger.kernel.org
+> > Cc: poros@redhat.com; mschmidt@redhat.com; Brandeburg, Jesse
+> > <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub
+> > Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; moderated
+> > list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>; open list <linux-
+> > kernel@vger.kernel.org>
+> > Subject: [PATCH net] ice: Fix MAC address setting
 > > 
-> >> On 22-Mar-22 15:25, Ivan Vecera wrote:
-> >>> VSI is set as default forwarding one when promisc mode is set for
-> >>> PF interface, when PF is switched to switchdev mode or when VF
-> >>> driver asks to enable allmulticast or promisc mode for the VF
-> >>> interface (when vf-true-promisc-support priv flag is off).
-> >>> The third case is buggy because in that case VSI associated with
-> >>> VF remains as default one after VF removal.
-> >>>
-> >>> Reproducer:
-> >>> 1. Create VF
-> >>>    echo 1 > sys/class/net/ens7f0/device/sriov_numvfs
-> >>> 2. Enable allmulticast or promisc mode on VF
-> >>>    ip link set ens7f0v0 allmulticast on
-> >>>    ip link set ens7f0v0 promisc on
-> >>> 3. Delete VF
-> >>>    echo 0 > sys/class/net/ens7f0/device/sriov_numvfs
-> >>> 4. Try to enable promisc mode on PF
-> >>>    ip link set ens7f0 promisc on
-> >>>
-> >>> Although it looks that promisc mode on PF is enabled the opposite
-> >>> is true because ice_vsi_sync_fltr() responsible for IFF_PROMISC
-> >>> handling first checks if any other VSI is set as default forwarding
-> >>> one and if so the function does not do anything. At this point
-> >>> it is not possible to enable promisc mode on PF without re-probe
-> >>> device.
-> >>>
-> >>> To resolve the issue this patch clear default forwarding VSI
+> > Commit 2ccc1c1ccc671b ("ice: Remove excess error variables") merged
+> > the usage of 'status' and 'err' variables into single one in
+> > function ice_set_mac_address(). Unfortunately this causes
+> > a regression when call of ice_fltr_add_mac() returns -EEXIST because
+> > this return value does not indicate an error in this case but
+> > value of 'err' value remains to be -EEXIST till the end of
 
-tiny nit:
-s/clear/clears
+s/'err' value/'err'
 
-Also it's more welcome to use imperative mood.
-
-> >>> during ice_vsi_release() when the VSI to be released is the default
-> >>> one.
-> >>>
-> >>> Fixes: 01b5e89aab49 ("ice: Add VF promiscuous support")
-> >>> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-> >>> ---
-> >>>  drivers/net/ethernet/intel/ice/ice_lib.c | 2 ++
-> >>>  1 file changed, 2 insertions(+)
-> >>>
-> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> index 53256aca27c7..20d755822d43 100644
-> >>> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> @@ -3147,6 +3147,8 @@ int ice_vsi_release(struct ice_vsi *vsi)
-> >>>  		}
-> >>>  	}
-> >>>  
-> >>> +	if (ice_is_vsi_dflt_vsi(pf->first_sw, vsi))
-> >>> +		ice_clear_dflt_vsi(pf->first_sw);  
-> >>
-> >> It would probably be good to check `ice_clear_dflt_vsi` return code.
+> > the function and is returned to caller.
 > > 
-> > Check and report potential warning when error occurs? because we are in ice_vsi_release() so
-> > any rollback does not make sense.
+> > Prior this commit this does not happen because return value of
 
-I believe that comment wouldn't hurt that it's ok to ignore the retval,
-but then again i'm fine with what it is currently :)
+s/this/mentioned ?
 
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> > ice_fltr_add_mac() was stored to 'status' variable first and
+> > if it was -EEXIST then 'err' remains to be zero.
+> > 
+> > The patch fixes the problem by reset 'err' to zero when
+> > ice_fltr_add_mac() returns -EEXIST.
+
+Again, i'd recommend imperative mood. Besides, good catch!
+
+> > 
+> > Fixes: 2ccc1c1ccc671b ("ice: Remove excess error variables")
+> > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_main.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
+> > b/drivers/net/ethernet/intel/ice/ice_main.c
+> > index 168a41ea37b8..420558d1cd21 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> > @@ -5474,14 +5474,15 @@ static int ice_set_mac_address(struct net_device
+> > *netdev, void *pi)
+> > 
+> >  	/* Add filter for new MAC. If filter exists, return success */
+> >  	err = ice_fltr_add_mac(vsi, mac, ICE_FWD_TO_VSI);
+> > -	if (err == -EEXIST)
+> > +	if (err == -EEXIST) {
+> >  		/* Although this MAC filter is already present in hardware it's
+> >  		 * possible in some cases (e.g. bonding) that dev_addr was
+> >  		 * modified outside of the driver and needs to be restored back
+> >  		 * to this value.
+> >  		 */
+> >  		netdev_dbg(netdev, "filter for MAC %pM already exists\n", mac);
+> > -	else if (err)
+> > +		err = 0;
+> > +	} else if (err)
+> >  		/* error if the new filter addition failed */
+> >  		err = -EADDRNOTAVAIL;
+> > 
+> 
+> Style wise, don't we typically use {} for all branches if its needed on one?
+
++1, please add braces around second branch as well.
 
 > 
-> Right. ice_clear_dflt_vsi already reports errors so it should be good as is.
-> LGTM, thanks!
+> I'm ok takin this fix as-is now and doing the {} fix up afterwards if we want to avoid delay.
 > 
-> > 
-> > Ivan
-> > 
+> Thanks,
+> Jake
+> 
+> > --
+> > 2.34.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
