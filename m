@@ -1,72 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 571774E61AA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Mar 2022 11:23:20 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA2224E6227
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Mar 2022 12:11:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 01149605BE;
-	Thu, 24 Mar 2022 10:23:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2302484323;
+	Thu, 24 Mar 2022 11:11:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yNd7v9-hmtGm; Thu, 24 Mar 2022 10:23:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T_SF8QRvYuI3; Thu, 24 Mar 2022 11:11:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1D19F60ACC;
-	Thu, 24 Mar 2022 10:23:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E9FB884221;
+	Thu, 24 Mar 2022 11:11:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3E3001BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 10:23:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 14EDB1BF410
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 382814102A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 10:23:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0188C84221
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qIzibrf6WuPh for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Mar 2022 10:23:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7KUXciqYSF4t for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Mar 2022 11:10:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 24A74400A8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 10:23:11 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B0A978421F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Mar 2022 11:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648117392; x=1679653392;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=rJhX9IRu2SF1p0u6dC6ejmt8OObHUJDP4rpvxYAQnpU=;
- b=QsJJWe5vUPd7CqnfZOKMR6JbZP9FBUfZRPKPrfsILgOGOR1zSRJD7Yrc
- M2OElmAwq0rQIqvIhMlm0XUYbNtXKZHXXPSVa2FTjg/CybWoKarl1lNwo
- f9fNSu/4oSKIfV5I7b4BpwWm99br5xF+fgK0o8EOR9dIm5KBKA5/ytnMm
- lpIMtzeDlhp1dgXnXdzr+DxPaL4U65HwjhrtsJ1qk2U6Xbgrub1Hu0aGn
- B84sAjSjt9l1kXq7YEooXpPZL1Q0wkaBIc3aR9z/MaHcaapvN+ZJwSV6+
- VNuQ1/Zvmt3gVqE1sDPe220lmUwnlHXpXW4+KbtCChxAzT8gRhiPrmn03 w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="238941975"
-X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="238941975"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2022 03:23:10 -0700
-X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="519728152"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.11.253])
- ([10.13.11.253])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2022 03:23:08 -0700
-Message-ID: <66d6caf7-3524-690f-e0af-d2642517bee1@linux.intel.com>
-Date: Thu, 24 Mar 2022 12:23:06 +0200
+ t=1648120255; x=1679656255;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=mKNGXFCV4Kp8qwJN+GNi3JImHKbQI1aeqMv/NpYMBAU=;
+ b=H2iU3EecJU2mI5sKw673Q3N9VvUA0bgwsMBlvgaTv8fbbWw3QcOSijHI
+ 4PjG+vLzpYFaeGqg92fjy+Lga0MT9sbAbrilE0hAnnNo9bLVgOSxVFl6e
+ phoYZ54ycW3WXHAPpuRPxMH462mYK+SyWKXHVVgPhTxb4rwzs4BV+Q12r
+ y7/Nv6skBQd7cgazBXRwOxwb+4XWEeB0jlZr0AxwOwxW0P9FEFRAp0Swb
+ UDj0S7BOqZ+qYzKQz5c5+H//11K53tuOVtD0FD9t3cM4OcFdIJA/wQt8f
+ fl6K9b+pB2pvGGD2Jf7A9PQWgQ44dR9nvsnSmtWcTKNsr6ndEcVJh+vTB Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="258301977"
+X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="258301977"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2022 04:10:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,207,1643702400"; d="scan'208";a="501354888"
+Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
+ by orsmga003.jf.intel.com with ESMTP; 24 Mar 2022 04:10:51 -0700
+Date: Thu, 24 Mar 2022 12:10:51 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Marcin Szycik <marcin.szycik@linux.intel.com>
+Message-ID: <YjxRu8hnNnuYCrcd@boxer>
+References: <20220322142554.3253428-1-ivecera@redhat.com>
+ <45b155ff-8e26-fa96-f89e-6a561de01abb@linux.intel.com>
+ <20220323185426.33c66892@ceranb>
+ <287f2247-2c58-497d-f7b1-ae1e24a88da8@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Content-Language: en-US
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20220308092422.2971655-1-sasha.neftin@intel.com>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20220308092422.2971655-1-sasha.neftin@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Fix BUG: scheduling while
- atomic: kworker/u64:0/9/0x00000002
+Content-Disposition: inline
+In-Reply-To: <287f2247-2c58-497d-f7b1-ae1e24a88da8@linux.intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Clear default forwarding VSI
+ during VSI release
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,26 +77,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>,
- Corinna Vinschen <vinschen@redhat.com>
+Cc: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org,
+ mschmidt@redhat.com, Brett Creeley <brett.creeley@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, poros@redhat.com,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "moderated list:INTEL ETHERNET DRIVERS\"" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/8/2022 11:24, Sasha Neftin wrote:
-> Replace usleep_range() method with udelay() method to allow atomic contects
-> in low-level MDIO access functions.
+On Wed, Mar 23, 2022 at 07:19:55PM +0100, Marcin Szycik wrote:
 > 
-> Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2014971
-> Fixes: 5586838fe9ce ("igc: Add code for PHY support")
-> Reported-by: Corinna Vinschen <vinschen@redhat.com>
-> Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_phy.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+> 
+> On 23-Mar-22 18:54, Ivan Vecera wrote:
+> > On Wed, 23 Mar 2022 18:39:11 +0100
+> > Marcin Szycik <marcin.szycik@linux.intel.com> wrote:
+> > 
+> >> On 22-Mar-22 15:25, Ivan Vecera wrote:
+> >>> VSI is set as default forwarding one when promisc mode is set for
+> >>> PF interface, when PF is switched to switchdev mode or when VF
+> >>> driver asks to enable allmulticast or promisc mode for the VF
+> >>> interface (when vf-true-promisc-support priv flag is off).
+> >>> The third case is buggy because in that case VSI associated with
+> >>> VF remains as default one after VF removal.
+> >>>
+> >>> Reproducer:
+> >>> 1. Create VF
+> >>>    echo 1 > sys/class/net/ens7f0/device/sriov_numvfs
+> >>> 2. Enable allmulticast or promisc mode on VF
+> >>>    ip link set ens7f0v0 allmulticast on
+> >>>    ip link set ens7f0v0 promisc on
+> >>> 3. Delete VF
+> >>>    echo 0 > sys/class/net/ens7f0/device/sriov_numvfs
+> >>> 4. Try to enable promisc mode on PF
+> >>>    ip link set ens7f0 promisc on
+> >>>
+> >>> Although it looks that promisc mode on PF is enabled the opposite
+> >>> is true because ice_vsi_sync_fltr() responsible for IFF_PROMISC
+> >>> handling first checks if any other VSI is set as default forwarding
+> >>> one and if so the function does not do anything. At this point
+> >>> it is not possible to enable promisc mode on PF without re-probe
+> >>> device.
+> >>>
+> >>> To resolve the issue this patch clear default forwarding VSI
+
+tiny nit:
+s/clear/clears
+
+Also it's more welcome to use imperative mood.
+
+> >>> during ice_vsi_release() when the VSI to be released is the default
+> >>> one.
+> >>>
+> >>> Fixes: 01b5e89aab49 ("ice: Add VF promiscuous support")
+> >>> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> >>> ---
+> >>>  drivers/net/ethernet/intel/ice/ice_lib.c | 2 ++
+> >>>  1 file changed, 2 insertions(+)
+> >>>
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+> >>> index 53256aca27c7..20d755822d43 100644
+> >>> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> >>> @@ -3147,6 +3147,8 @@ int ice_vsi_release(struct ice_vsi *vsi)
+> >>>  		}
+> >>>  	}
+> >>>  
+> >>> +	if (ice_is_vsi_dflt_vsi(pf->first_sw, vsi))
+> >>> +		ice_clear_dflt_vsi(pf->first_sw);  
+> >>
+> >> It would probably be good to check `ice_clear_dflt_vsi` return code.
+> > 
+> > Check and report potential warning when error occurs? because we are in ice_vsi_release() so
+> > any rollback does not make sense.
+
+I believe that comment wouldn't hurt that it's ok to ignore the retval,
+but then again i'm fine with what it is currently :)
+
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+
+> 
+> Right. ice_clear_dflt_vsi already reports errors so it should be good as is.
+> LGTM, thanks!
+> 
+> > 
+> > Ivan
+> > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
