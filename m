@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38B534E7130
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Mar 2022 11:30:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F0D54E7137
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Mar 2022 11:31:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CEBB241CB1;
-	Fri, 25 Mar 2022 10:30:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B4E0F60AE8;
+	Fri, 25 Mar 2022 10:31:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jiLwDnj5W66N; Fri, 25 Mar 2022 10:30:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1lxcuAsdF5L1; Fri, 25 Mar 2022 10:31:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7737E41CB4;
-	Fri, 25 Mar 2022 10:30:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6BC6761074;
+	Fri, 25 Mar 2022 10:31:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CD9C81BF2E4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:30:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 162261BF2E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:31:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C79B0843C3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:30:34 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 02F504038B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:31:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hveWvc8HMipD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Mar 2022 10:30:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5IpP0-Eti95v for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Mar 2022 10:31:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C66A0843BA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:30:33 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CCA9440320
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Mar 2022 10:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648204233; x=1679740233;
+ t=1648204292; x=1679740292;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=b319MMRZglrXjozM+fxhIOcK0uI20R+uR15Ulp3X4DU=;
- b=LnVSJ6vgMoJuzxFFvj/Gzh/XqotJnAQyrMlT69ehnSfK6GwEID/wH6ux
- PfI1qkZZLylpRegPyWQ1hdDRcdxEsWUQtAIlxpnzVVsAZ9BQDnZbE7O2Y
- dAGy6YrDPZzi0i4DJuVxuTYUhGE/uaZbuTztawj+um2fehOnbjDn4MV+M
- ZnBP/Dkr8n71vlXjuu/cBXIETDuSPHnPfzW1d+CV6TBv4qufibW13hI4J
- dmbirEDoOaVEXHps88uur2hC1PD4zpAGx7D4pbyNiH9nJErus5mgZovfd
- b8Ij7yaCHFTxKrB/+ZLI/dITfkzUIqfp3TZgGww9ZqxgrcIEt704+aKog Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10296"; a="258573591"
-X-IronPort-AV: E=Sophos;i="5.90,209,1643702400"; d="scan'208";a="258573591"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Mar 2022 03:30:33 -0700
+ bh=LD2724wOdBqXrmyqyUm1yHKiJvydGLhUjDR1wWbCT2s=;
+ b=OdJBftXL+4qMlgO2D06iRfNPD8KOFHYh9VME2jQ3auKNSIpigQYC6aEC
+ afVhsUNVabSvN3S5m38q5Gkgc6xbgFtYYGQytzUx4obSe/D/bHcc4t78Y
+ b+T+bOVaFtr30NL0Lj2N/u2Ah9WIPEna+kU3Hw0/VKZo8noIJWb+xtmzd
+ sd6AKmEy3kRsFi7aFmmpjGMTrplNgvUzJNsmGYMoxR6/+2VzGI1MjIKz9
+ 7J216SvGa+p2qMQY6vb6Gu01krAheOvFB/VyQwpgov02ryCUwWc0QEXPx
+ cPrVZ8TiCnX2REISju1USLkc18nO1rsTHltBJABl0d6deZezl9Fwk5wp0 w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10296"; a="321801226"
+X-IronPort-AV: E=Sophos;i="5.90,209,1643702400"; d="scan'208";a="321801226"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Mar 2022 03:31:32 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,209,1643702400"; d="scan'208";a="650196053"
+X-IronPort-AV: E=Sophos;i="5.90,209,1643702400"; d="scan'208";a="553189128"
 Received: from enterprise.igk.intel.com ([10.102.20.175])
- by orsmga004.jf.intel.com with ESMTP; 25 Mar 2022 03:30:31 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 25 Mar 2022 03:31:30 -0700
 From: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 25 Mar 2022 11:29:23 +0100
-Message-Id: <20220325102922.3320-1-martyna.szapar-mudlaw@intel.com>
+Date: Fri, 25 Mar 2022 11:30:49 +0100
+Message-Id: <20220325103048.3371-1-martyna.szapar-mudlaw@intel.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 net-next] ice: Add support for double
- vlan in switchdev
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Add support for vlan tpid
+ filters in switchdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,420 +74,255 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>,
- Wiktor Pilarczyk <wiktor.pilarczyk@intel.com>
+Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Enable support for adding TC rules with both C-tag and S-tag that can
-filter on the inner and outer VLAN in QinQ for basic packets (not
-tunneled cases).
+Enable support for adding TC rules that filter on the VLAN tag type
+in switchdev mode.
 
-v2: Rebased. No functional changes.
-
-Signed-off-by: Wiktor Pilarczyk <wiktor.pilarczyk@intel.com>
 Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
-Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 ---
- .../ethernet/intel/ice/ice_protocol_type.h    |   2 +
- drivers/net/ethernet/intel/ice/ice_switch.c   | 230 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_tc_lib.c   |  43 +++-
- drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   2 +
- 4 files changed, 275 insertions(+), 2 deletions(-)
+ .../ethernet/intel/ice/ice_protocol_type.h    |  7 ++-
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 59 ++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 21 +++++++
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h   |  1 +
+ .../net/ethernet/intel/ice/ice_vlan_mode.c    |  1 -
+ 6 files changed, 85 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-index 3f64300b0e14..f8bd0990641b 100644
+index f8bd0990641b..6773599c5c55 100644
 --- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
 +++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-@@ -43,6 +43,8 @@ enum ice_protocol_type {
- 	ICE_NVGRE,
- 	ICE_GTP,
- 	ICE_GTP_NO_PAY,
-+	ICE_VLAN_EX,
-+	ICE_VLAN_IN,
- 	ICE_VXLAN_GPE,
- 	ICE_SCTP_IL,
- 	ICE_PROTOCOL_LAST
+@@ -111,13 +111,18 @@ enum ice_prot_id {
+ #define ICE_GRE_OF_HW		64
+ 
+ #define ICE_UDP_OF_HW	52 /* UDP Tunnels */
+-#define ICE_META_DATA_ID_HW 255 /* this is used for tunnel type */
++#define ICE_META_DATA_ID_HW 255 /* this is used for tunnel and vlan type */
+ 
+ #define ICE_MDID_SIZE 2
++
+ #define ICE_TUN_FLAG_MDID 21
+ #define ICE_TUN_FLAG_MDID_OFF (ICE_MDID_SIZE * ICE_TUN_FLAG_MDID)
+ #define ICE_TUN_FLAG_MASK 0xFF
+ 
++#define ICE_VLAN_FLAG_MDID 20
++#define ICE_VLAN_FLAG_MDID_OFF (ICE_MDID_SIZE * ICE_VLAN_FLAG_MDID)
++#define ICE_PKT_FLAGS_0_TO_15_VLAN_FLAGS_MASK 0xD000
++
+ #define ICE_TUN_FLAG_FV_IND 2
+ 
+ /* Mapping of software defined protocol ID to hardware defined protocol ID */
 diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index ed7130b7abfe..f047137294a9 100644
+index f047137294a9..9de623332bb7 100644
 --- a/drivers/net/ethernet/intel/ice/ice_switch.c
 +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -41,6 +41,7 @@ enum {
- 	ICE_PKT_INNER_TCP	= BIT(7),
- 	ICE_PKT_INNER_UDP	= BIT(8),
- 	ICE_PKT_GTP_NOPAY	= BIT(9),
-+	ICE_PKT_CVLAN		= BIT(10),
- };
+@@ -5543,10 +5543,11 @@ static bool ice_tun_type_match_word(enum ice_sw_tunnel_type tun_type, u16 *mask)
+  * ice_add_special_words - Add words that are not protocols, such as metadata
+  * @rinfo: other information regarding the rule e.g. priority and action info
+  * @lkup_exts: lookup word structure
++ * @dvm_ena: is double VLAN mode enabled
+  */
+ static int
+ ice_add_special_words(struct ice_adv_rule_info *rinfo,
+-		      struct ice_prot_lkup_ext *lkup_exts)
++		      struct ice_prot_lkup_ext *lkup_exts, bool dvm_ena)
+ {
+ 	u16 mask;
  
- struct ice_dummy_pkt_offsets {
-@@ -1233,7 +1234,225 @@ ICE_DECLARE_PKT_TEMPLATE(ipv6_gtp) = {
- 	0x00, 0x00,
- };
+@@ -5565,6 +5566,19 @@ ice_add_special_words(struct ice_adv_rule_info *rinfo,
+ 		}
+ 	}
  
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv4) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV4_OFOS,	22 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
++	if (rinfo->vlan_type != 0 && dvm_ena) {
++		if (lkup_exts->n_val_words < ICE_MAX_CHAIN_WORDS) {
++			u8 word = lkup_exts->n_val_words++;
 +
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++			lkup_exts->fv_words[word].prot_id = ICE_META_DATA_ID_HW;
++			lkup_exts->fv_words[word].off = ICE_VLAN_FLAG_MDID_OFF;
++			lkup_exts->field_mask[word] =
++					ICE_PKT_FLAGS_0_TO_15_VLAN_FLAGS_MASK;
++		} else {
++			return -ENOSPC;
++		}
++	}
 +
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
-+
-+	0x45, 0x00, 0x00, 0x14, /* ICE_IPV4_OFOS 22 */
-+	0x00, 0x01, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv4_udp) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV4_OFOS,	22 },
-+	{ ICE_UDP_ILOS,		42 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4_udp) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
-+
-+	0x45, 0x00, 0x00, 0x1c, /* ICE_IPV4_OFOS 22 */
-+	0x00, 0x01, 0x00, 0x00,
-+	0x00, 0x11, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 42 */
-+	0x00, 0x08, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv4_tcp) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV4_OFOS,	22 },
-+	{ ICE_TCP_IL,		42 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4_tcp) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
-+
-+	0x45, 0x00, 0x00, 0x28, /* ICE_IPV4_OFOS 22 */
-+	0x00, 0x01, 0x00, 0x00,
-+	0x00, 0x06, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 42 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x50, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv6) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV6_OFOS,	22 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
-+
-+	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
-+	0x00, 0x00, 0x3b, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv6_udp) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV6_OFOS,	22 },
-+	{ ICE_UDP_ILOS,		62 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6_udp) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
-+
-+	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
-+	0x00, 0x08, 0x11, 0x00, /* Next header UDP */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 62 */
-+	0x00, 0x08, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(qinq_ipv6_tcp) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_VLAN_EX,		12 },
-+	{ ICE_VLAN_IN,		16 },
-+	{ ICE_ETYPE_OL,		20 },
-+	{ ICE_IPV6_OFOS,	22 },
-+	{ ICE_TCP_IL,		62 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6_tcp) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
-+	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
-+	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
-+
-+	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
-+	0x00, 0x14, 0x06, 0x00, /* Next header TCP */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 62 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x50, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
- static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
-+	ICE_PKT_PROFILE(qinq_ipv6_tcp, ICE_PKT_CVLAN |
-+				       ICE_PKT_VLAN |
-+				       ICE_PKT_OUTER_IPV6 |
-+				       ICE_PKT_INNER_TCP),
-+	ICE_PKT_PROFILE(qinq_ipv6_udp, ICE_PKT_CVLAN |
-+				       ICE_PKT_VLAN |
-+				       ICE_PKT_OUTER_IPV6 |
-+				       ICE_PKT_INNER_UDP),
-+	ICE_PKT_PROFILE(qinq_ipv6, ICE_PKT_CVLAN |
-+			           ICE_PKT_VLAN |
-+				   ICE_PKT_OUTER_IPV6),
-+	ICE_PKT_PROFILE(qinq_ipv4_tcp, ICE_PKT_CVLAN |
-+				       ICE_PKT_VLAN |
-+				       ICE_PKT_INNER_TCP),
-+	ICE_PKT_PROFILE(qinq_ipv4_udp, ICE_PKT_CVLAN |
-+				       ICE_PKT_VLAN |
-+				       ICE_PKT_INNER_UDP),
-+	ICE_PKT_PROFILE(qinq_ipv4, ICE_PKT_CVLAN |
-+				   ICE_PKT_VLAN),
- 	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPU | ICE_PKT_OUTER_IPV6 |
- 				  ICE_PKT_GTP_NOPAY),
- 	ICE_PKT_PROFILE(ipv6_gtpu_ipv6_udp, ICE_PKT_TUN_GTPU |
-@@ -4616,6 +4835,8 @@ static const struct ice_prot_ext_tbl_entry ice_prot_ext[ICE_PROTOCOL_LAST] = {
- 	{ ICE_NVGRE,		{ 0, 2, 4, 6 } },
- 	{ ICE_GTP,		{ 8, 10, 12, 14, 16, 18, 20, 22 } },
- 	{ ICE_GTP_NO_PAY,	{ 8, 10, 12, 14 } },
-+	{ ICE_VLAN_EX,          { 2, 0 } },
-+	{ ICE_VLAN_IN,          { 2, 0 } },
- };
+ 	return 0;
+ }
  
- static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
-@@ -4636,6 +4857,8 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
- 	{ ICE_NVGRE,		ICE_GRE_OF_HW },
- 	{ ICE_GTP,		ICE_UDP_OF_HW },
- 	{ ICE_GTP_NO_PAY,	ICE_UDP_ILOS_HW },
-+	{ ICE_VLAN_EX,          ICE_VLAN_OF_HW },
-+	{ ICE_VLAN_IN,          ICE_VLAN_OL_HW },
- };
+@@ -5684,7 +5698,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	/* Create any special protocol/offset pairs, such as looking at tunnel
+ 	 * bits by extracting metadata
+ 	 */
+-	status = ice_add_special_words(rinfo, lkup_exts);
++	status = ice_add_special_words(rinfo, lkup_exts, ice_is_dvm_ena(hw));
+ 	if (status)
+ 		goto err_free_lkup_exts;
  
+@@ -6017,6 +6031,36 @@ ice_fill_adv_packet_tun(struct ice_hw *hw, enum ice_sw_tunnel_type tun_type,
+ 	return -EIO;
+ }
+ 
++/**
++ * ice_fill_adv_packet_vlan - fill dummy packet with vlan tag type
++ * @vlan_type: vlan tag type
++ * @pkt: dummy packet to fill in
++ * @offsets: offset info for the dummy packet
++ */
++static int
++ice_fill_adv_packet_vlan(u16 vlan_type, u8 *pkt,
++			 const struct ice_dummy_pkt_offsets *offsets)
++{
++	u16 i;
++
++	/* Find VLAN header and insert vlan tpid */
++	for (i = 0; offsets[i].type != ICE_PROTOCOL_LAST; i++) {
++		if (offsets[i].type == ICE_VLAN_OFOS ||
++		    offsets[i].type == ICE_VLAN_EX) {
++			struct ice_vlan_hdr *hdr;
++			u16 offset;
++
++			offset = offsets[i].offset;
++			hdr = (struct ice_vlan_hdr *)&pkt[offset];
++			hdr->type = cpu_to_be16(vlan_type);
++
++			return 0;
++		}
++	}
++
++	return -EIO;
++}
++
  /**
-@@ -5604,8 +5827,11 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 			match |= ICE_PKT_INNER_TCP;
- 		else if (lkups[i].type == ICE_IPV6_OFOS)
- 			match |= ICE_PKT_OUTER_IPV6;
--		else if (lkups[i].type == ICE_VLAN_OFOS)
-+		else if (lkups[i].type == ICE_VLAN_OFOS ||
-+			 lkups[i].type == ICE_VLAN_EX)
- 			match |= ICE_PKT_VLAN;
-+		else if (lkups[i].type == ICE_VLAN_IN)
-+			match |= ICE_PKT_CVLAN;
- 		else if (lkups[i].type == ICE_ETYPE_OL &&
- 			 lkups[i].h_u.ethertype.ethtype_id ==
- 				cpu_to_be16(ICE_IPV6_ETHER_ID) &&
-@@ -5685,6 +5911,8 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 			len = sizeof(struct ice_ethtype_hdr);
- 			break;
- 		case ICE_VLAN_OFOS:
-+		case ICE_VLAN_EX:
-+		case ICE_VLAN_IN:
- 			len = sizeof(struct ice_vlan_hdr);
- 			break;
- 		case ICE_IPV4_OFOS:
+  * ice_find_adv_rule_entry - Search a rule entry
+  * @hw: pointer to the hardware structure
+@@ -6052,6 +6096,7 @@ ice_find_adv_rule_entry(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 			}
+ 		if (rinfo->sw_act.flag == list_itr->rule_info.sw_act.flag &&
+ 		    rinfo->tun_type == list_itr->rule_info.tun_type &&
++		    rinfo->vlan_type == list_itr->rule_info.vlan_type &&
+ 		    lkups_matched)
+ 			return list_itr;
+ 	}
+@@ -6338,6 +6383,14 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 			goto err_ice_add_adv_rule;
+ 	}
+ 
++	if (rinfo->vlan_type != 0 && ice_is_dvm_ena(hw)) {
++		status = ice_fill_adv_packet_vlan(rinfo->vlan_type,
++						  s_rule->pdata.lkup_tx_rx.hdr,
++						  profile->offsets);
++		if (status)
++			goto err_ice_add_adv_rule;
++	}
++
+ 	status = ice_aq_sw_rules(hw, (struct ice_aqc_sw_rules *)s_rule,
+ 				 rule_buf_sz, 1, ice_aqc_opc_add_sw_rules,
+ 				 NULL);
+@@ -6576,7 +6629,7 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	/* Create any special protocol/offset pairs, such as looking at tunnel
+ 	 * bits by extracting metadata
+ 	 */
+-	status = ice_add_special_words(rinfo, &lkup_exts);
++	status = ice_add_special_words(rinfo, &lkup_exts, ice_is_dvm_ena(hw));
+ 	if (status)
+ 		return status;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index ecac75e71395..a7eacf45a89d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -195,6 +195,7 @@ struct ice_adv_rule_info {
+ 	u32 priority;
+ 	u8 rx; /* true means LOOKUP_RX otherwise LOOKUP_TX */
+ 	u16 fltr_rule_id;
++	u16 vlan_type;
+ 	struct ice_adv_rule_flags_info flags_info;
+ };
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 3acd9f921c44..9efc089b30fe 100644
+index 9efc089b30fe..9221049898ac 100644
 --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -50,6 +50,10 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 	if (flags & ICE_TC_FLWR_FIELD_VLAN)
- 		lkups_cnt++;
+@@ -138,6 +138,18 @@ ice_sw_type_from_tunnel(enum ice_tunnel_type type)
+ 	}
+ }
  
-+	/* is CVLAN specified? */
-+	if (flags & ICE_TC_FLWR_FIELD_CVLAN)
-+		lkups_cnt++;
++static u16 ice_check_supported_vlan_tpid(u16 vlan_tpid)
++{
++	switch (vlan_tpid) {
++	case ETH_P_8021Q:
++	case ETH_P_8021AD:
++	case ETH_P_QINQ1:
++		return vlan_tpid;
++	default:
++		return 0;
++	}
++}
 +
- 	/* are IPv[4|6] fields specified? */
- 	if (flags & (ICE_TC_FLWR_FIELD_DEST_IPV4 | ICE_TC_FLWR_FIELD_SRC_IPV4 |
- 		     ICE_TC_FLWR_FIELD_DEST_IPV6 | ICE_TC_FLWR_FIELD_SRC_IPV6))
-@@ -311,12 +315,22 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
+ static int
+ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
+ 			 struct ice_adv_lkup_elem *list)
+@@ -273,8 +285,11 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
+ {
+ 	struct ice_tc_flower_lyr_2_4_hdrs *headers = &tc_fltr->outer_headers;
+ 	bool inner = false;
++	u16 vlan_tpid = 0;
+ 	int i = 0;
+ 
++	rule_info->vlan_type = vlan_tpid;
++
+ 	rule_info->tun_type = ice_sw_type_from_tunnel(tc_fltr->tunnel_type);
+ 	if (tc_fltr->tunnel_type != TNL_LAST) {
+ 		i = ice_tc_fill_tunnel_outer(flags, tc_fltr, list);
+@@ -315,6 +330,10 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
  
  	/* copy VLAN info */
  	if (flags & ICE_TC_FLWR_FIELD_VLAN) {
--		list[i].type = ICE_VLAN_OFOS;
-+		if (flags & ICE_TC_FLWR_FIELD_CVLAN)
-+			list[i].type = ICE_VLAN_EX;
-+		else
-+			list[i].type = ICE_VLAN_OFOS;
- 		list[i].h_u.vlan_hdr.vlan = headers->vlan_hdr.vlan_id;
- 		list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xFFFF);
- 		i++;
- 	}
- 
-+	if (flags & ICE_TC_FLWR_FIELD_CVLAN) {
-+		list[i].type = ICE_VLAN_IN;
-+		list[i].h_u.vlan_hdr.vlan = headers->cvlan_hdr.vlan_id;
-+		list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xFFFF);
-+		i++;
-+	}
++		vlan_tpid = be16_to_cpu(headers->vlan_hdr.vlan_tpid);
++		rule_info->vlan_type =
++				ice_check_supported_vlan_tpid(vlan_tpid);
 +
- 	/* copy L3 (IPv[4|6]: src, dest) address */
- 	if (flags & (ICE_TC_FLWR_FIELD_DEST_IPV4 |
- 		     ICE_TC_FLWR_FIELD_SRC_IPV4)) {
-@@ -945,6 +959,7 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
- 	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
- 	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
-+	      BIT(FLOW_DISSECTOR_KEY_CVLAN) |
- 	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
- 	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
- 	      BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
-@@ -1060,6 +1075,32 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 		if (flags & ICE_TC_FLWR_FIELD_CVLAN)
+ 			list[i].type = ICE_VLAN_EX;
+ 		else
+@@ -1073,6 +1092,8 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 				cpu_to_be16(match.key->vlan_id & VLAN_VID_MASK);
+ 		if (match.mask->vlan_priority)
  			headers->vlan_hdr.vlan_prio = match.key->vlan_priority;
++		if (match.mask->vlan_tpid)
++			headers->vlan_hdr.vlan_tpid = match.key->vlan_tpid;
  	}
  
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_CVLAN)) {
-+		struct flow_match_vlan match;
-+
-+		if (!ice_is_dvm_ena(&vsi->back->hw)) {
-+			NL_SET_ERR_MSG_MOD(fltr->extack, "Double VLAN mode is not enabled");
-+			return -EINVAL;
-+		}
-+
-+		flow_rule_match_cvlan(rule, &match);
-+
-+		if (match.mask->vlan_id) {
-+			if (match.mask->vlan_id == VLAN_VID_MASK) {
-+				fltr->flags |= ICE_TC_FLWR_FIELD_CVLAN;
-+			} else {
-+				NL_SET_ERR_MSG_MOD(fltr->extack,
-+						   "Bad CVLAN mask");
-+				return -EINVAL;
-+			}
-+		}
-+
-+		headers->cvlan_hdr.vlan_id =
-+				cpu_to_be16(match.key->vlan_id & VLAN_VID_MASK);
-+		if (match.mask->vlan_priority)
-+			headers->cvlan_hdr.vlan_prio = match.key->vlan_priority;
-+	}
-+
- 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_CONTROL)) {
- 		struct flow_match_control match;
- 
+ 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_CVLAN)) {
 diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index e25e958f4396..87acfe5b0e4d 100644
+index 87acfe5b0e4d..0193874cd203 100644
 --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
 +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -23,6 +23,7 @@
- #define ICE_TC_FLWR_FIELD_ENC_DST_MAC		BIT(16)
- #define ICE_TC_FLWR_FIELD_ETH_TYPE_ID		BIT(17)
- #define ICE_TC_FLWR_FIELD_ENC_OPTS		BIT(18)
-+#define ICE_TC_FLWR_FIELD_CVLAN			BIT(19)
+@@ -41,6 +41,7 @@ struct ice_tc_flower_action {
+ struct ice_tc_vlan_hdr {
+ 	__be16 vlan_id; /* Only last 12 bits valid */
+ 	u16 vlan_prio; /* Only last 3 bits valid (valid values: 0..7) */
++	__be16 vlan_tpid;
+ };
  
- #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
- 
-@@ -81,6 +82,7 @@ struct ice_tc_flower_lyr_2_4_hdrs {
- 	struct ice_tc_l2_hdr l2_key;
- 	struct ice_tc_l2_hdr l2_mask;
- 	struct ice_tc_vlan_hdr vlan_hdr;
-+	struct ice_tc_vlan_hdr cvlan_hdr;
- 	/* L3 (IPv4[6]) layer fields with their mask */
- 	struct ice_tc_l3_hdr l3_key;
- 	struct ice_tc_l3_hdr l3_mask;
+ struct ice_tc_l2_hdr {
+diff --git a/drivers/net/ethernet/intel/ice/ice_vlan_mode.c b/drivers/net/ethernet/intel/ice/ice_vlan_mode.c
+index 1b618de592b7..bcda2e004807 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vlan_mode.c
++++ b/drivers/net/ethernet/intel/ice/ice_vlan_mode.c
+@@ -199,7 +199,6 @@ static bool ice_is_dvm_supported(struct ice_hw *hw)
+ #define ICE_SW_LKUP_VLAN_PKT_FLAGS_LKUP_IDX		2
+ #define ICE_SW_LKUP_PROMISC_VLAN_LOC_LKUP_IDX		2
+ #define ICE_PKT_FLAGS_0_TO_15_FV_IDX			1
+-#define ICE_PKT_FLAGS_0_TO_15_VLAN_FLAGS_MASK		0xD000
+ static struct ice_update_recipe_lkup_idx_params ice_dvm_dflt_recipes[] = {
+ 	{
+ 		/* Update recipe ICE_SW_LKUP_VLAN to filter based on the
 -- 
 2.31.1
 
