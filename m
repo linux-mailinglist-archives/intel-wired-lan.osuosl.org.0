@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A2764E98C3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 15:53:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 630514E98C4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 15:54:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1228080D41;
-	Mon, 28 Mar 2022 13:53:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D5CA180F16;
+	Mon, 28 Mar 2022 13:53:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aFA6J803Bu4t; Mon, 28 Mar 2022 13:53:55 +0000 (UTC)
+	with ESMTP id ZrisM-qoGMNq; Mon, 28 Mar 2022 13:53:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1867580D69;
-	Mon, 28 Mar 2022 13:53:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D65E980D69;
+	Mon, 28 Mar 2022 13:53:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 016941BF426
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:37:00 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 96C011BF426
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EF69D60736
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:37:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7F5C540998
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:43:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bmau23Iw7EsO for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Mar 2022 06:36:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nlchvXPjOZ-X for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Mar 2022 06:43:53 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
- [IPv6:2607:f8b0:4864:20::102e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DD478606F5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:36:59 +0000 (UTC)
-Received: by mail-pj1-x102e.google.com with SMTP id jx9so11187265pjb.5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Mar 2022 23:36:59 -0700 (PDT)
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6D80140992
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Mar 2022 06:43:53 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id x2so12165085plm.7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Mar 2022 23:43:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id;
- bh=Vxquc0x82lOVnxgO9GG3bLoj2bnOAjB9KKaly9b71eI=;
- b=Zacfa65VYT45Ed3HvNxEa/zSfJxhASFzdSnFgNAFfl2zaCIHVw7FfZuC2I8CM2rP5z
- Dck4y+sMWcDcoTnqjgDrzLVR4cW35Pf/iJMzWQGSYO3VGkfZuvNPIYMPeS2Za6lqpk+W
- Ojd1GvY20KgJ7HbeKe7kbOEtbtl0QbntQQEOA9FuLHPbcdh5rkQBE6+06UqA6VA6fCsD
- sqRWpUgH6vTTfRggawqLnMsYit5TB6/bwci2nsO3ysp9uW+vEiN+odgd7H6upDiwF2yN
- ySwAachEwUY7o9c47dRqWyhBBJXtnpub3k2M3V7NLJpY7qd2Lq0Tzfn6gbe+Dv0uP/mZ
- SAtA==
+ bh=e8S/Lyqv6Pi/Bg7S559e3B2rX5AZSz5Qk3MEM2LeHrM=;
+ b=qLUZbUcbpG+h9aKNF+ZR827zt7SoWtsAEtJHVhRIUvlby5kZQQ2hwh1DV1e2WH/xb6
+ Y4uccsA0hdFPel5mZuwbeOoOANygi67MsN8dP2qX4ynJoCxSmtlUT14Z5Inp+M6SNRBR
+ oGAG4/gej0/fTo8pW652BYzPLCCL9TdV3kiP8HCTLtOcMyK5FWQdx1AFDvSjSQm2vrTf
+ NnvsTLFrMf63Uk57hwv6mFfvjPbxVySLESi/lXDen6mRAMMM/+ybUUev8rFd0dG0RTod
+ eS4bdP2WKkPYlmSdOnrag+vfJonraIzaaTVQYpgv0Y7BGSHN1xxkcsRUR765XvEH7OqL
+ jCMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=Vxquc0x82lOVnxgO9GG3bLoj2bnOAjB9KKaly9b71eI=;
- b=wlFiQDFQaCc0nqzaY6uQN6TnyYivEMW4PdF69QcbzYZBB3VdsARpId7iwC3gkQDxsD
- 5hC66Z7fhOB5UnQkDFUQ5RDf5FM1k1bMGXvso7L3MCkxdh1PYGEvWtBzvLunRtppxEYp
- 1dP0mFOzsmSjX73xKbeS/wW95gQcftAaOerEqLNbePIkuPA+cVgf1+X102Vp9tYIy5Y9
- EFEMRR4xVZ8uGkKmTpDLf1Lucz+P0fRlqH7r8RQI3Y2LWFO9zGi2VS5SgZ7IlWxUO9B+
- xnwU9CfHSC15qDHcp8nj+LCs/1xjc7+qqVTtRMxy0gSl+fyMQjtWbklTynUVheA1Bl1t
- 3yUA==
-X-Gm-Message-State: AOAM531laEYkR8+7O3j9O0AdDwAWT9lfl56cJw6jxrm/I4P4Q9PLyblQ
- xG89zN0eF+7EPfH9Wkidw7M=
-X-Google-Smtp-Source: ABdhPJyaSjWXyZ/ieaqh8L/e97HlAPr2TIJNMayS2xqJXyF8IYR/UDytE58G5d57fMqS8Xl9dMSxag==
-X-Received: by 2002:a17:902:e949:b0:14d:8ab1:919 with SMTP id
- b9-20020a170902e94900b0014d8ab10919mr20127331pll.122.1648363019396; 
- Sat, 26 Mar 2022 23:36:59 -0700 (PDT)
+ bh=e8S/Lyqv6Pi/Bg7S559e3B2rX5AZSz5Qk3MEM2LeHrM=;
+ b=vlCFQnEsfpC2rk3TZw+V6s+0OBNVGEO7uV+niYgvKh89Kh935zjuGATqkWtWXaxKn2
+ 1W8t7YsaH2Se7V7ijrK0+aKcf76zzJEvzPpwpFovJaG8LtDwQMsKHbJJTZsaViRTXlXk
+ nkCuG+E3BxtLi/UegQsoNF3vx3McbmUMeM/hHi4SvQsNcHm7NKFQZbc+bpaln94m32Ot
+ jczyYAuZS/E737Xnir9QwjCkCS81iJde9SHObHcCccBjwhvZg6xT7BxalnMGGaXSQ4Dd
+ SSUVXfSrQGJlXLCB6QIn7zaYtnCWXKQ1LZJSXJUbLvwKo5WHgQDL70LyYhASVLUjBSSg
+ KdiA==
+X-Gm-Message-State: AOAM530PYAmi/G0tmJXLsDmxbMEOg+0KmpE2OjgYegG/Ec/yRepyRwoE
+ gQNKhTFtKr9YU3y7yvTGSg0=
+X-Google-Smtp-Source: ABdhPJwxW+jGQuknVXQY++N1loHtcJ440DIqeuetFmg2lQ2R9iXwPAi/1v/mkY2Ctju2+R3boNuF3A==
+X-Received: by 2002:a17:903:192:b0:151:8df9:6cdb with SMTP id
+ z18-20020a170903019200b001518df96cdbmr20778157plg.20.1648363432913; 
+ Sat, 26 Mar 2022 23:43:52 -0700 (PDT)
 Received: from localhost ([115.220.243.108]) by smtp.gmail.com with ESMTPSA id
- b7-20020a056a00114700b004f7be3231d6sm11408373pfm.7.2022.03.26.23.36.58
+ l20-20020a056a00141400b004f65cedfb09sm11451945pfu.48.2022.03.26.23.43.51
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 26 Mar 2022 23:36:58 -0700 (PDT)
+ Sat, 26 Mar 2022 23:43:52 -0700 (PDT)
 From: Xiaomeng Tong <xiam0nd.tong@gmail.com>
 To: jesse.brandeburg@intel.com
-Date: Sun, 27 Mar 2022 14:36:06 +0800
-Message-Id: <20220327063606.7315-1-xiam0nd.tong@gmail.com>
+Date: Sun, 27 Mar 2022 14:43:44 +0800
+Message-Id: <20220327064344.7573-1-xiam0nd.tong@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-Mailman-Approved-At: Mon, 28 Mar 2022 13:53:50 +0000
-Subject: [Intel-wired-lan] [PATCH] i40e: i40e_main: fix a missing check on
- list iterator
+Subject: [Intel-wired-lan] [PATCH] ice: ice_sched: fix an incorrect NULL
+ check on list iterator
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,95 +85,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Xiaomeng Tong <xiam0nd.tong@gmail.com>, jeffrey.t.kirsher@intel.com,
- netdev@vger.kernel.org, kuba@kernel.org, davem@davemloft.net
+Cc: netdev@vger.kernel.org, victor.raj@intel.com, stable@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Xiaomeng Tong <xiam0nd.tong@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The bug is here:
-	ret = i40e_add_macvlan_filter(hw, ch->seid, vdev->dev_addr, &aq_err);
+The bugs are here:
+	if (old_agg_vsi_info)
+	if (old_agg_vsi_info && !old_agg_vsi_info->tc_bitmap[0]) {
 
-The list iterator 'ch' will point to a bogus position containing
-HEAD if the list is empty or no element is found. This case must
-be checked before any use of the iterator, otherwise it will
-lead to a invalid memory access.
+The list iterator value 'old_agg_vsi_info' will *always* be set
+and non-NULL by list_for_each_entry_safe(), so it is incorrect
+to assume that the iterator value will be NULL if the list is
+empty or no element found (in this case, the check
+'if (old_agg_vsi_info)' will always be true unexpectly).
 
-To fix this bug, use a new variable 'iter' as the list iterator,
-while use the origin variable 'ch' as a dedicated pointer to
-point to the found element.
+To fix the bug, use a new variable 'iter' as the list iterator,
+while use the original variable 'old_agg_vsi_info' as a dedicated
+pointer to point to the found element.
 
 Cc: stable@vger.kernel.org
-Fixes: 1d8d80b4e4ff6 ("i40e: Add macvlan support on i40e")
+Fixes: 37c592062b16d ("ice: remove the VSI info from previous agg")
 Signed-off-by: Xiaomeng Tong <xiam0nd.tong@gmail.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 27 +++++++++++----------
- 1 file changed, 14 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sched.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 31b03fe78d3b..6224c98d275f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -7536,41 +7536,42 @@ static int i40e_fwd_ring_up(struct i40e_vsi *vsi, struct net_device *vdev,
- 			    struct i40e_fwd_adapter *fwd)
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
+index 7947223536e3..fba524148a09 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.c
++++ b/drivers/net/ethernet/intel/ice/ice_sched.c
+@@ -2757,6 +2757,7 @@ ice_sched_assoc_vsi_to_agg(struct ice_port_info *pi, u32 agg_id,
+ 			   u16 vsi_handle, unsigned long *tc_bitmap)
  {
- 	int ret = 0, num_tc = 1,  i, aq_err;
--	struct i40e_channel *ch, *ch_tmp;
-+	struct i40e_channel *ch = NULL, *ch_tmp, *iter;
- 	struct i40e_pf *pf = vsi->back;
- 	struct i40e_hw *hw = &pf->hw;
+ 	struct ice_sched_agg_vsi_info *agg_vsi_info, *old_agg_vsi_info = NULL;
++	struct ice_sched_agg_vsi_info *iter;
+ 	struct ice_sched_agg_info *agg_info, *old_agg_info;
+ 	struct ice_hw *hw = pi->hw;
+ 	int status = 0;
+@@ -2774,11 +2775,13 @@ ice_sched_assoc_vsi_to_agg(struct ice_port_info *pi, u32 agg_id,
+ 	if (old_agg_info && old_agg_info != agg_info) {
+ 		struct ice_sched_agg_vsi_info *vtmp;
  
--	if (list_empty(&vsi->macvlan_list))
--		return -EINVAL;
--
- 	/* Go through the list and find an available channel */
--	list_for_each_entry_safe(ch, ch_tmp, &vsi->macvlan_list, list) {
--		if (!i40e_is_channel_macvlan(ch)) {
--			ch->fwd = fwd;
-+	list_for_each_entry_safe(iter, ch_tmp, &vsi->macvlan_list, list) {
-+		if (!i40e_is_channel_macvlan(iter)) {
-+			iter->fwd = fwd;
- 			/* record configuration for macvlan interface in vdev */
- 			for (i = 0; i < num_tc; i++)
- 				netdev_bind_sb_channel_queue(vsi->netdev, vdev,
- 							     i,
--							     ch->num_queue_pairs,
--							     ch->base_queue);
--			for (i = 0; i < ch->num_queue_pairs; i++) {
-+							     iter->num_queue_pairs,
-+							     iter->base_queue);
-+			for (i = 0; i < iter->num_queue_pairs; i++) {
- 				struct i40e_ring *tx_ring, *rx_ring;
- 				u16 pf_q;
- 
--				pf_q = ch->base_queue + i;
-+				pf_q = iter->base_queue + i;
- 
- 				/* Get to TX ring ptr */
- 				tx_ring = vsi->tx_rings[pf_q];
--				tx_ring->ch = ch;
-+				tx_ring->ch = iter;
- 
- 				/* Get the RX ring ptr */
- 				rx_ring = vsi->rx_rings[pf_q];
--				rx_ring->ch = ch;
-+				rx_ring->ch = iter;
- 			}
-+			ch = iter;
- 			break;
- 		}
+-		list_for_each_entry_safe(old_agg_vsi_info, vtmp,
++		list_for_each_entry_safe(iter, vtmp,
+ 					 &old_agg_info->agg_vsi_list,
+ 					 list_entry)
+-			if (old_agg_vsi_info->vsi_handle == vsi_handle)
++			if (iter->vsi_handle == vsi_handle) {
++				old_agg_vsi_info = iter;
+ 				break;
++			}
  	}
  
-+	if (!ch)
-+		return -EINVAL;
-+
- 	/* Guarantee all rings are updated before we update the
- 	 * MAC address filter.
- 	 */
+ 	/* check if entry already exist */
 -- 
 2.17.1
 
