@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E8434E9A44
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 16:59:19 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B0B24E9A41
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 16:59:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B381F400D0;
-	Mon, 28 Mar 2022 14:59:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7991C81846;
+	Mon, 28 Mar 2022 14:59:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zSykLI1Mvn8q; Mon, 28 Mar 2022 14:59:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kKJj6jCtnnGh; Mon, 28 Mar 2022 14:59:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6DD124042B;
-	Mon, 28 Mar 2022 14:59:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 73EB581463;
+	Mon, 28 Mar 2022 14:59:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 612A11BF20B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:59:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5387A1BF393
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:58:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4FD5E4091D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:59:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 409A04091D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:58:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DMIQhN-7n9Lt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Mar 2022 14:59:10 +0000 (UTC)
+ with ESMTP id Df1k4hCjnLnc for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Mar 2022 14:58:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A4B8E4067F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:59:10 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5D21B4067F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 14:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648479550; x=1680015550;
+ t=1648479534; x=1680015534;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=HcCYnixe90jH0GR7s+9nALNGTtearJlDzMspSeZcRFY=;
- b=EFXzm0ALrtWIOqnHkkXvmfNkKF6n1v/3fqxg67rA6crjadVmX23QPgw5
- jGNlR/wfSBA4XX+0G6A0WDO0KfG7uDl9sbgf5MtNdvqpYfjFib5iec/DW
- hy8ps2RQCa1lCmCi/SdW/70/QTLNznC/nuAPLHgwYrpk+X9EjU6b/7BLu
- K89JhQnF7UuxgVTmjdgASAot079XMaTHcSs3s/vQLiacxB6DlMn7xuHC+
- NrhyVJlWj9engzCa3qUiDgC6HcZHr0ijmwHKADK2f+P1+H9gDg4e4/IIL
- V/oz1TaLMBSbKUd3N7+k0hQRJbzozEuowWaxIG3AB0cNO0ZpYOd3dyE31 g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="258731773"
-X-IronPort-AV: E=Sophos;i="5.90,217,1643702400"; d="scan'208";a="258731773"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ bh=ni9lHfr2P4H8Ke1eEBykgdIysYHyZMFWUi9my8JMkW4=;
+ b=kIowcM9UOOziHMzEI/W99nbxrDpZ5/CDpgd97OSwi7yRP8cdgBher/9C
+ jf6pHkAR8ZvSjs/VdZxmi4lgz4bnpijS9MVkMNOLzngf8Va2oqyU/BBf4
+ 1L/FHyzhMX2zHYcNMUvHILHv6qoNQBtkPwNPo1xSE+pzmGgZRstGZIjDn
+ lKcuv9i5LILO+KreYQAA2U0YMCqbFb+1jBQ9VDtVp02S2MlJG+ZCS8/+Y
+ /n93aYj0Kn/MIBKWm+7HZ4564MXKJNy7KXbLmNEG9xc8HzxX9BfEXkAgv
+ taQn+Ia/EA3DGd2KzRvOhHgzHedjh26GmQ7SKEYWCL5kTB5F/pXRah25T g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="239612174"
+X-IronPort-AV: E=Sophos;i="5.90,217,1643702400"; d="scan'208";a="239612174"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  28 Mar 2022 07:58:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,217,1643702400"; d="scan'208";a="521046256"
+X-IronPort-AV: E=Sophos;i="5.90,217,1643702400"; d="scan'208";a="585218780"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga006.jf.intel.com with ESMTP; 28 Mar 2022 07:58:51 -0700
+ by orsmga001.jf.intel.com with ESMTP; 28 Mar 2022 07:58:51 -0700
 Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 22SEwnLH015696; Mon, 28 Mar 2022 15:58:50 +0100
+ 22SEwnLI015696; Mon, 28 Mar 2022 15:58:50 +0100
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 28 Mar 2022 16:58:27 +0200
-Message-Id: <20220328145828.10097-2-marcin.szycik@linux.intel.com>
+Date: Mon, 28 Mar 2022 16:58:28 +0200
+Message-Id: <20220328145828.10097-3-marcin.szycik@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220328145828.10097-1-marcin.szycik@linux.intel.com>
 References: <20220328145828.10097-1-marcin.szycik@linux.intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next 1/2] ice: link representors to
- PCI device
+Subject: [Intel-wired-lan] [PATCH net-next 2/2] Revert "ice: Hide bus-info
+ in ethtool for PRs in switchdev mode"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,38 +84,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+This reverts commit bfaaba99e680bf82bf2cbf69866c3f37434ff766.
 
-Link port representors to parent PCI device to benefit from
-systemd defined naming scheme.
+Commit bfaaba99e680 ("ice: Hide bus-info in ethtool for PRs in switchdev
+mode") was a workaround for lshw tool displaying incorrect
+descriptions for port representors and PF in switchdev mode. Now the issue
+has been fixed in the lshw tool itself [1].
 
-Example from ip tool:
- - without linking:
-  eth0 ...
- - with linking:
-  eth0 ...
-  altname enp24s0f0npf0vf0
+Removing the workaround can be considered a regression, as the user might
+be running older, unpatched lshw version. However, another important change
+(ice: link representors to PCI device, which improves port representor
+netdev naming with SET_NETDEV_DEV) also causes the same "regression" as
+removing the workaround, i.e. unpatched lshw is able to access bus-info
+information (this time not via ethtool) and the bug can occur. Therefore,
+the workaround no longer prevents the bug and can be removed.
 
-The port representor name is being shown in altname, because the name is
-longer than IFNAMSIZ (16) limit. Altname can be used in ip tool.
+[1] https://ezix.org/src/pkg/lshw/commit/9bf4e4c9c1
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_repr.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index 848f2adea563..78ee82511329 100644
---- a/drivers/net/ethernet/intel/ice/ice_repr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -333,6 +333,7 @@ static int ice_repr_add(struct ice_vf *vf)
- 	repr->netdev->min_mtu = ETH_MIN_MTU;
- 	repr->netdev->max_mtu = ICE_MAX_MTU;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 24cda7e1f916..476bd1c83c87 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -190,19 +190,17 @@ __ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo,
+ 	snprintf(drvinfo->fw_version, sizeof(drvinfo->fw_version),
+ 		 "%x.%02x 0x%x %d.%d.%d", nvm->major, nvm->minor,
+ 		 nvm->eetrack, orom->major, orom->build, orom->patch);
++
++	strscpy(drvinfo->bus_info, pci_name(pf->pdev),
++		sizeof(drvinfo->bus_info));
+ }
  
-+	SET_NETDEV_DEV(repr->netdev, ice_pf_to_dev(vf->pf));
- 	err = ice_repr_reg_netdev(repr->netdev);
- 	if (err)
- 		goto err_netdev;
+ static void
+ ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	struct ice_pf *pf = np->vsi->back;
+ 
+ 	__ice_get_drvinfo(netdev, drvinfo, np->vsi);
+-
+-	strscpy(drvinfo->bus_info, pci_name(pf->pdev),
+-		sizeof(drvinfo->bus_info));
+-
+ 	drvinfo->n_priv_flags = ICE_PRIV_FLAG_ARRAY_SIZE;
+ }
+ 
 -- 
 2.35.1
 
