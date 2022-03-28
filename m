@@ -1,103 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 628294E9DEE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 19:53:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD5834E9E83
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Mar 2022 19:58:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1CFBC80C3F;
-	Mon, 28 Mar 2022 17:53:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EED3E401A4;
+	Mon, 28 Mar 2022 17:58:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pTJkwrUc533g; Mon, 28 Mar 2022 17:53:31 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tLlexw8Rjyfh; Mon, 28 Mar 2022 17:58:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1124380BFE;
-	Mon, 28 Mar 2022 17:53:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 006BB40121;
+	Mon, 28 Mar 2022 17:58:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 371161BF37F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:53:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4A9691BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:58:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 18EFF40121
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:53:26 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 43D8C40121
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:58:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zc7Xc0dK1ogB for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Mar 2022 17:53:25 +0000 (UTC)
+ with ESMTP id 0EZBZPM0SJ0n for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Mar 2022 17:58:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F305A400FD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:53:24 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5DE9F400FD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Mar 2022 17:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648490004; x=1680026004;
+ t=1648490302; x=1680026302;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=6hVE3nZR2DLTvfxhy4j476v0qbisDLvHHSVhVKrRkz4=;
- b=ODHOLLTMDFntNnpQBR4v7qz+Kzquer8GwtcqNO+uiqP3sN0vr5dY0MQ2
- v2Wcu82UwkB+6DndxrvW2BRfe3Hx16SPfcuy5Pam5vUPlsYMdaaOqip99
- 7RyMASxOli5kbjLw3HVvoK0MkEybUykfmw1El8G4abDtNe+kHXrkuCcJZ
- d25WsQQIwzYHSJ9qtqe3/Fdc1PhjeHGnpyqUqATVerxQOAyfU1uR58pSa
- avrhXBvk8SEoBlT8tIvoOm8Q0CuqHrB0D7nB83tXqEi8nR49zmuvBc2PA
- 75G5tHNxI8ZW7M0Xvh8GIs4qsBex879HJEdfUQGeksX2sLcfSNp6Bg1fu A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="319767285"
-X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; d="scan'208";a="319767285"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Mar 2022 10:53:24 -0700
+ bh=K5Klvp2E2DyTI+73obw1coFuE3sYaxVk7zRXcCJh+5w=;
+ b=mkijL23Tsah9OgOTm4Jcgr79Hk2ljyczkghUND+L5umC9udUb9lEsexJ
+ o9uHXMmvC7fQfdpcDNWjvXztW2OGHSFdeXtLmVxdfUy2jrPhMKMhOqCyz
+ XCLnvyWh435V3PNF7YZ3k/wzaE59lt6xZ1P5OvW+fpbLMZKV+4jhfzBSd
+ 5QQZT/BL3Ef9PukI0Fdccnwfa1JKWVM+LTtYioW+HHdGod8kHB0GbyPBd
+ QjMesxTFSpyu/WAmxFnGJd5aCQtwn6LNfukMozNrWSQHRenx9MKecgRow
+ xFa8FQ3Nt0G7S3RAn+//2ubDVO06kBEv2Zw9oWwd27gy/D984n8yJ9/IE A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="239664547"
+X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; d="scan'208";a="239664547"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Mar 2022 10:58:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; d="scan'208";a="553995138"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by fmsmga007.fm.intel.com with ESMTP; 28 Mar 2022 10:53:23 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; d="scan'208";a="518307450"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga002.jf.intel.com with ESMTP; 28 Mar 2022 10:58:21 -0700
+Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Mon, 28 Mar 2022 10:53:22 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
+ 15.1.2308.27; Mon, 28 Mar 2022 10:58:20 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Mon, 28 Mar 2022 10:53:22 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Mon, 28 Mar 2022 10:53:22 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.172)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2308.27 via Frontend Transport; Mon, 28 Mar 2022 10:58:20 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.21; Mon, 28 Mar 2022 10:53:22 -0700
+ 15.1.2308.21; Mon, 28 Mar 2022 10:58:20 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=llsHT7k06Hc/v1RTjRPBTG24WHOE2Da9qQCgFx1+T8A1Squ6+n0IKRjrITle/RgY4G/45sJy5wW+ZgKwfoQOT8/XNebHVOVmfSZ68o3sENhz/j+M6PXSAzKmo1icp8euBk1SM8DvJLu0CedYHRjhfe3VCEzrF+6pS5sKwHI+7+odVeBW2W0JMNEkU6TskhfOHsvH9Okw+C+sQcz41ixeAQ2QdN0WWSX5zIrHJu8cbq6iKxiuRXMmQ4plnF8Wi9UlcTNrgi2NEWi37aXglU5FRkN4AaOLVyV7BiFDW7DJd9YMQMHlcYqkqa3sq34l2gD5GrJPX2KGUkM85Ch0SzQFuQ==
+ b=Ikv5WEyvbRdHM0pHcH5eFO8r0183isL04MWt0wXEeOFNMe3LhaRguPcQdra4G6itGxrujAT4ELG6xhPAktORIpUBNy17gtSkKBh6yoc3GDegJKyBTm5v0huwE9pwGAE9Wrumqv9QjgDhjstBJvcfqH4qx30N/sjZGQrCgiATbhb8KcEoSyETbAMUogJtAUCGzdGOdZgwJkGqfuJnNIR7M0cH7hlNLn5pSHW3efRcKa7vLcL9aRmaj25b4g4jJpRSQGPLCUUH9ZMnlZB5tGxW8CEm5OFmK9xzDtStnzjrBZrVEsM090F+ZA4GxjTFKFncg/R9rcE2ostUtsSXo00NCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ogvLTv7LPt3AO9AcgNUUwYPpRAPJe+rC4nANTJ+kE/s=;
- b=MkbB0+ozyeo/jrZB99zfwnTjS0/fuhLU/MWe9N0dLu9OhbkRSdTCEYq9aAmZhCt5kTEy4jEB1oiZG8hXXDlVzb1aq/0U7Q4K8j+qpP3kmezj2W5DDqh/YoX1n7kW96qE/P1jy4mK295TqEAljPTQeEvSe14Qs81giAqJ4KwSMJk91Ay1+M90YrX5+0nCKeYI2qRZibtESWI/N51Wq2NFsu0i65brJ3niN6OO03f05a9RGuJzpIp6cUaxii45cA9aOeixMOEuylO+E2ZbSB6AEPOCZ4eWwabJF6QOyu7Lye2e55i5v0MyBjLTE/HSWc+O7IDhtUjV5RKQ+bBHNVmYrA==
+ bh=OFBJ/9RnhCPn/6FTEHksQcb5Up9eiTjcDEmsxEGwYFc=;
+ b=klAr3mw5lE1V3vdtFfJspV5Gh8eM6MDdebbwp7GTOG93FyhpPITtmqh803MQolvqucpRavn5zFvWOw/Nh8vwpw2NANI8E8/ZNGssn2rzGraiwxnmt5+xhXNOwunVLpGMEuknpS7duMNM2e3ikhbQ3w39SAtYLjA915srUaHdtRODCQ8BklevpVDtEaxE4vh5hQ4dTDPWyf0Aarx0QeJB8/tryO0nFggKlv5/OFdBncd9hO4jE2lymcIVzwGk9ZWo0XKIiv51nzSbtOHt+WRj31cuOF1cZih0bGjzzhKupC0Ix2llHjfVFb1pOPGB6ukzQRN0oCw1YnRtV/R0sP7Krg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by MWHPR11MB2062.namprd11.prod.outlook.com (2603:10b6:300:2a::16)
+ by BN9PR11MB5417.namprd11.prod.outlook.com (2603:10b6:408:11e::7)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5102.21; Mon, 28 Mar
- 2022 17:53:19 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5102.19; Mon, 28 Mar
+ 2022 17:58:17 +0000
 Received: from CO1PR11MB5089.namprd11.prod.outlook.com
  ([fe80::8441:e1ac:f3ae:12b8]) by CO1PR11MB5089.namprd11.prod.outlook.com
  ([fe80::8441:e1ac:f3ae:12b8%8]) with mapi id 15.20.5102.023; Mon, 28 Mar 2022
- 17:53:19 +0000
+ 17:58:17 +0000
 From: "Keller, Jacob E" <jacob.e.keller@intel.com>
 To: ivecera <ivecera@redhat.com>, "netdev@vger.kernel.org"
  <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net v2] ice: Fix MAC address setting
-Thread-Index: AQHYQEvWKQE7B4Gt4EeDyRfKN/Jn4KzVGJjQ
-Date: Mon, 28 Mar 2022 17:53:19 +0000
-Message-ID: <CO1PR11MB508954503C974FD6D9E162FCD61D9@CO1PR11MB5089.namprd11.prod.outlook.com>
-References: <20220325132524.1765342-1-ivecera@redhat.com>
-In-Reply-To: <20220325132524.1765342-1-ivecera@redhat.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] ice: Fix broken IFF_ALLMULTI
+ handling
+Thread-Index: AQHYQEw/k4hplRWYEE2HL3IQn8T+3KzVGglA
+Date: Mon, 28 Mar 2022 17:58:17 +0000
+Message-ID: <CO1PR11MB5089929953C72CC1075D673CD61D9@CO1PR11MB5089.namprd11.prod.outlook.com>
+References: <20220325132819.1767050-1-ivecera@redhat.com>
+In-Reply-To: <20220325132819.1767050-1-ivecera@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -105,61 +100,62 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0f423707-53ac-4be0-2c2e-08da10e3d81e
-x-ms-traffictypediagnostic: MWHPR11MB2062:EE_
+x-ms-office365-filtering-correlation-id: 7991c282-3c9e-4d43-0483-08da10e489b5
+x-ms-traffictypediagnostic: BN9PR11MB5417:EE_
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <MWHPR11MB2062BAD3CE36F8087BC6E481D61D9@MWHPR11MB2062.namprd11.prod.outlook.com>
+x-microsoft-antispam-prvs: <BN9PR11MB54178CC1EA9FAB4EDEF85317D61D9@BN9PR11MB5417.namprd11.prod.outlook.com>
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: XHl6HuCLpqeof+TPzJWi5rRJrO4RtkjO/2iYxh7F5coWVcd+eckVBH2Eh647xugS9xk0MPauuhuvYad4ko8N7Lni8bV0dOV60D9XCzJ7EIz6WLYoiDUdmilBHywq2SCwp+287iOW148sVwAZOsWRA7U7DeOBpTYmCvcQjMh63PLDLjHCbNi1w+hhwPhDWpmNgE7egFshKice16HS+5yJI8foBK7QdBxLaphmhNZxy2DtSfLl4mYLyAlMjmGCR1x0dPsMj2IxqumE3FKSlO4m+ZZZ7NeRAP1dmKo2je+0DbdZZb2P03z79TaGiJEPfVWFsOW3hb2nVBxTEeFVRBcuWiC2baVh2FHIssdV8/XozSBG6jCKsABVcZhe4aNOXYUUwzG38LrWMvHtiPbe3+4vinVMUFck1kDAsD+i2uXKph8+dK4PbF4CJSv6n1zeiSfYtSTKhBB4chIxRnB/WFQsaG+xIC2apIQoE4dyFza597X0mKioKGK+Zb8yw7lyuM1V9jD8XCcLn2lrGQlFmRO6j4devGGZFyOu4wy+gWrrOymawexiOMf/d5fnhiHtyP3LbPo0Ogn9hN/IV6TZp+t+XuLjlVAaQP2tFKBtWE/8MAcLm0+Z5IWKowz88GJqzgT0QpPbFrjmIttLbGBVy7m37wK3ZYed926yeiAgj8a2tiBq8hCsntU6SL/SwfedNIzkWf2u9TViuPFjnBJguK24Cg==
+x-microsoft-antispam-message-info: 0G7wSELJMRZz/6y6WFVf2f9aUwmH1P5wy5M3IaciYIYtJkm/VR/j5jiwjmaupNGwpy/aRKtJFEOGCJnKp5lN9BDpV635bCpq24VsIOm962W4a66rj5+5qU9waqm9GUHFw3enJpcTgS2EAt2mSK2xapw21g/Xa8EekGNTr0Ai6BMPChGV7cOoXYQQbxnJPl/+F7oKbR7GBT6x6cL31Hho+vqG34HSyCGnNpp4NPphYkpwV3WLk/vxsV7yMlQc7WiAHwHXx3P2LrruXs0cwkI97iT8XlzIl4da2wMGfzhNeTSt2MH8OMWoMIUYlmsatcFI6O9e+uDrPWnZgXvohl98ESf6WAhmC3yOOBWzLbvaeP2M35W4rVlKfXB8dpdRTNhVY1+2EW+OC1dnedWWdBrXEikgbvWzFhwB9QUoqJ0Vl/ghbrEGojCuDimCHrnkEq2eL2iLcNJTrkDkM8NRyvd9K9upMQylkvuba4JMj1v6l44yxp3A7MfBWkKYlvwI/VB/2xSZrKaJ972rD3Cw8ZQwt374OAy19taBhGwW37CkhY7YrilBHeomfY0F5daINkPf7fimbK1V74CbcaUTJvcG0Nwh5GhdDPVAVQ1I4UjAwvrk99j0t25YSdA5P3RJKbR6zzmYRNWEJ8GigV72hxFHQeq5+1B/pbH37shvX7jbSmkUbyYFVe4BPZwLvDfVkSyl67Uge+63WLCVAn1i/YiZi1SK6rw/4GD3whJaRVp2aBaw/Oa2XBVKiRL1xys5AZzY39k0XR6pa8iqgPh80/axGS2j85GQKD+l4nAFxh1P5ak=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(4326008)(8676002)(76116006)(508600001)(66946007)(83380400001)(26005)(66476007)(55016003)(2906002)(53546011)(9686003)(64756008)(66556008)(52536014)(86362001)(8936002)(6506007)(33656002)(7696005)(66446008)(186003)(110136005)(71200400001)(5660300002)(54906003)(316002)(122000001)(38100700002)(38070700005)(82960400001);
+ SFS:(13230001)(366004)(76116006)(66556008)(186003)(83380400001)(66946007)(33656002)(66446008)(64756008)(38070700005)(966005)(4326008)(53546011)(5660300002)(86362001)(8676002)(110136005)(508600001)(316002)(9686003)(54906003)(55016003)(66476007)(26005)(30864003)(7696005)(71200400001)(8936002)(38100700002)(122000001)(6506007)(82960400001)(52536014)(2906002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?dyKd8rZ4PpzD+Jc/2mJyd7S5nV4Fkrcgmyd0XD/V0bx3UjMP64lWwKES8TLE?=
- =?us-ascii?Q?u5voF71XLv8wVtGblKswq/QHkjkFZ8ZdpfM4l8lx9PIRQ4/M2u81l6UMOy+i?=
- =?us-ascii?Q?a9seQN6INxev/Y1N96mL+ts4JhQsGXNVQZUDjss2aAzRBbavLhpCwY8KL0TQ?=
- =?us-ascii?Q?Rr8Q7xanfdyIrR0JcHKKvOY5R8hgmoZbhy2nzzbYk4ty6J2uPFOOkbAxwn7f?=
- =?us-ascii?Q?dg5fe1ofbeW4vQMC0TRj/VNZaRF2GA9y5USiZTJCQ5qsYLIev1J890KZ+rKV?=
- =?us-ascii?Q?/DAkn7zN/QPwkZziQoyqlaK+sLt/Z/PDO4Ih4h+VuEhvlKVO54Zop+GyVpdB?=
- =?us-ascii?Q?R7jlebsKW5RJlbJdWWTcDysWTAgbg/dVxaqNUPJwSIFj5nCrDkeUkJ83f5oH?=
- =?us-ascii?Q?xv19QLS02xbVLnZaTHLUDvrR6439xM87NJw7Ndbxbw/2Q8ouEpUcmaHT0kXs?=
- =?us-ascii?Q?2dVvUJYbJQNnvvSE4pBQHBLmpA2JQ+4gdEpOx4azo6xCfDRD8mPEcD+2d4Zq?=
- =?us-ascii?Q?Q9VR9F9Mea0cST7fb+XusundGza7dJtIuBYZFmHGmRqHbxfCCkdfb0snyHTE?=
- =?us-ascii?Q?SSFtMkwEYii7N88dyTWDbh2EFywvNApn87/1/iXSJ6VA9IW3iLGAqLlhP9EH?=
- =?us-ascii?Q?o+dRRffdibLc0+k1uR1nfEEWdtSH2elBmOhd5O1ilH7klG21jA9ranogQx+2?=
- =?us-ascii?Q?3jzyTmiXWMfd4hwSqdvELwltNO5A/CHMrG6kzh6h0sG2A37htgUKJmrABAp9?=
- =?us-ascii?Q?Fts1yS0lDWq5aUqiD+xuPsCIUK6QyIj7tHfN2I8Om9cuYv2zgh1uTH6WxtzP?=
- =?us-ascii?Q?d5h2o9/iBQn/p6xSuorL1hKVN0PhJkFmMk4kxrjlzgnYmngsu8xkYt+0sB3x?=
- =?us-ascii?Q?V15eWyUU88Fxrb1Oqt59LV6GM1VF1/VFhjiSizmpujkeZQk4qzLx8OPGO7LK?=
- =?us-ascii?Q?W47kYQ3xgkc/qVSEa7BqPCAFSS8YCHggd8/9szr/82tufdACtu6DacAxT2bh?=
- =?us-ascii?Q?Ne9OWc/aAOJ3hWEF59Mdi3MBcQnClgc1QFl3YGlYNExU+faCQvDKSuhjhSU7?=
- =?us-ascii?Q?hK7gcpeDPMSQUbah5tdviqnHDO3/fMkaYlom8+sbzMfOqb9nYW4SYBtEfGkl?=
- =?us-ascii?Q?baiqYk4ovNNqs2GR2um75y7IfxJF9KB1Qj3nNP62jRM8fZnkF4DVL8C+TN+C?=
- =?us-ascii?Q?W4uvqAOUfCCQ4yiuXx+LVyMFcSGvn3lEoIHeLQlhEds5EhuxQ3xZF8IvWNsi?=
- =?us-ascii?Q?r4m1/CPiOrGdRVPtB4a1s4Zlcx+6Y5PAOfguow54I1nwDkmoWv8f+jyXe2TO?=
- =?us-ascii?Q?3ZGw3BlFUYHr8kSoFogu7kUxQ3OiTx67AZ9UmwEHnht2OksPhoqwDhh1hLdh?=
- =?us-ascii?Q?WkqaPE7t6I8Z5HZ3ZqRAfAsyC1dg8HPifkoXADI2cPtwxAX8Dp7+QYRzsAof?=
- =?us-ascii?Q?xAwZfr7jmq+m+dOmBSO/ltL5r9rFnw9jBV5ymV/9DpcQtVBoiBetKGqGCPs7?=
- =?us-ascii?Q?TGPVDBCAje0S/9lqpzA2GtnsdlGXDUXZoHnvyu9Qgo/HiycfXhJY7NgWVktG?=
- =?us-ascii?Q?wwTrP8kx/+IKTzPW9sFMtGVT2inF2btEfHb57QZlpoa1VyIMdr33urK6+vHX?=
- =?us-ascii?Q?4iu4nGSwkwS4x0DC4oUIaUGPrpHlirEE43zPXh6lLnw924FbjPm+ATSmxABK?=
- =?us-ascii?Q?1qeBsS5DIXbngMlUQPDx+WGFvWYHiMH035yi1Y0qrirWq3bA4avEw9KfIHBH?=
- =?us-ascii?Q?hIcPOMOGBg=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Gp8ezzYOgj17bduUd5jLmbV/bXf7tV6aI+lkYNk0oDK+GMVW/Q2NIDfhvU5c?=
+ =?us-ascii?Q?xQzLa4WgmAXbT1gicEyV00qu9ffWP/pm54mjS4jZTntGeW425Yeelmdz985Q?=
+ =?us-ascii?Q?5LLZxGAUPXwg3sGy1CKbcijEJxWoEYPLWSd4wERYq5va+rPevMQkzBwS87Kc?=
+ =?us-ascii?Q?hTWB6HhwZc1IuuwAKws62XXdtQszmZ7ui0tjzVHoSTyvw0+8+bU5DqvLj/Fd?=
+ =?us-ascii?Q?GMUu3eETuTvSVI3l6SZdDqhiHe1OqiRx/I2Rn0+Qh29/k3eomLKY4S+6GBSa?=
+ =?us-ascii?Q?b/YPpOtGvXUCZA/Sdo3wDznpef2z7Caa/2egbYqM/oObHc3Wft+ffeluCINH?=
+ =?us-ascii?Q?GzsrkvhhbEZiBIlD17vPg57so12/mOs8ipCRK7VDu+BwPL6Ywzjavgnzi6mw?=
+ =?us-ascii?Q?TZDu7T3BXnvO7Do4U4XaRxAjZvdOJUMMJoGuklt5hpuUvomASepxARgVcpQe?=
+ =?us-ascii?Q?+skwQr8LcKURYdSNEBJhveyyJCYBPZuX0eIn/IeMmaZreHH9haJMXOoCKS0w?=
+ =?us-ascii?Q?FYXouh6ZLshLyq2aORcxJyW097LIID4JqOpiv+BQ4asJrMyT3SlkMwtFTUPK?=
+ =?us-ascii?Q?7Uww7SY+d/m7mCmmxvdJACVLZR2OTG7tPwxvZ4qAV71g/0/VUtL3UEmgBNnV?=
+ =?us-ascii?Q?s3AjA6draYaf8RqvxQ90alCbbsM1v5i0/OvT+1ENxqi+6uN1jUpCltIxYh7j?=
+ =?us-ascii?Q?uGkFeSjzFVlg0ICBULpogU7qCSCNnoRpNTOElrM6WzvjvBmd7mGZH4XstzZw?=
+ =?us-ascii?Q?9HwrX8ifxEG7Q61osD1btyzAmaGIpHdWes0zSJ18y7dv6yho/5xERB0kgj5h?=
+ =?us-ascii?Q?QZMVO2DkfPt+MP9qDlsQhzztaNKTY7pLkIlcsBPzS9LJ+NXA7EhsCxo4JrxD?=
+ =?us-ascii?Q?POi+UbbGrQcNSXMRCCoJ91Hh3swJlsveEHAWyiz9TUmyHc6ExRjUWNh5nadw?=
+ =?us-ascii?Q?FUqX4iCP0gfWIha1vxXKdwBRK+jYEvP92JXdv15FZagO7iBfJgnfKTLbxkpC?=
+ =?us-ascii?Q?/XeHgYe5ZBfFER2nO8tA2M92YYkK3QrpZxTQG/CKzq8wFOpOK56p78YddF0I?=
+ =?us-ascii?Q?CO5Cv6YjMYHBnuuWc0JEyKMdqQoo/P+r/Wl7Bp9Sq1YpuU2v8lGUYEsp5Egc?=
+ =?us-ascii?Q?jK7K7x65gWtNpk0PpZb+k4YhCkD6GMvvGuvFA1UXvUvFhI2E/VPaTBmiIta1?=
+ =?us-ascii?Q?jTDF84Dzh1lUyS5pI0AaQirDCnq4b1Xe5wTQ6OnJwAY/BbeCcvtjGX4daBPN?=
+ =?us-ascii?Q?8m6O+asRKe2sVqxczVasvDTDgomTqa77GMogcN+LEDW5p1n2WOWcV+gkcTk4?=
+ =?us-ascii?Q?zTojncUTJ9h8ckmgeP5ot7cYNjoFd9kntvIxA4ysm6ya2UXxT8n6l/mNlPrV?=
+ =?us-ascii?Q?3yK6oE2b5apwiohduiTP9ASKFM6S93dXtaaA5jsb0AVZnYfxjeQAi6zTqhXl?=
+ =?us-ascii?Q?lx8H3F8xZ+5nH1XVE4RTTmXzQB3j3IiGlvj3pfEAyQoYTcbzGg+gQJ0y0Gng?=
+ =?us-ascii?Q?ei/TAJQYzfVpxtxO3ACE0Sy4HxCiBH3uz/5ZlIdnzOpO3s55YylaXmao5/q4?=
+ =?us-ascii?Q?YK8PkqDH6lwdrEtY2wjaDIoVD+KT055NoUXXRCGUhqiuwwPvP/8lhx0DVl4U?=
+ =?us-ascii?Q?FVmgc40YOwdyr0AmrqYWq6oAto81eXYyuwyacfRLXomcPxh6DBgIwh16N1XN?=
+ =?us-ascii?Q?zP1dHMZOVRKDB8eWJVfoAkBZz1VhDOy3PKp83yWpmDz797YjfNFUymGWi3uC?=
+ =?us-ascii?Q?+lH/YawYcw=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0f423707-53ac-4be0-2c2e-08da10e3d81e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Mar 2022 17:53:19.4417 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7991c282-3c9e-4d43-0483-08da10e489b5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Mar 2022 17:58:17.3870 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: s6eP65fEiSnuZWsBuiz19RmzGafI3GSv0J+7fvBRmQQBBCNje7SfE9YwhoQ2DhevzRQLcriu9+Ll/aC1xdFAAnYQ68/AGCw2vBncJ2gj/Kk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB2062
+X-MS-Exchange-CrossTenant-userprincipalname: MK8LEBSmb2X47vhsFOaK99y8xAQzJGB4FYT6t0+L5VabRV5ny7lDbgYbGs+agiOj/1WAv1n0Ydt0nYDhpjUrKKqRX+bAB0BvcU9lgx26yEE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR11MB5417
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix MAC address setting
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix broken IFF_ALLMULTI
+ handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,10 +168,12 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- mschmidt <mschmidt@redhat.com>, open list <linux-kernel@vger.kernel.org>,
- poros <poros@redhat.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+Cc: mschmidt <mschmidt@redhat.com>, open list <linux-kernel@vger.kernel.org>,
+ poros <poros@redhat.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ "Abodunrin, 
+ Akeem G" <akeem.g.abodunrin@intel.com>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -185,74 +183,450 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 > -----Original Message-----
-> From: Ivan Vecera <ivecera@redhat.com>
-> Sent: Friday, March 25, 2022 6:25 AM
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Ivan
+> Vecera
+> Sent: Friday, March 25, 2022 6:28 AM
 > To: netdev@vger.kernel.org
-> Cc: poros <poros@redhat.com>; mschmidt <mschmidt@redhat.com>;
-> Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub
-> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; moderated
-> list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>; open list <linux-
-> kernel@vger.kernel.org>
-> Subject: [PATCH net v2] ice: Fix MAC address setting
+> Cc: moderated list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>;
+> mschmidt <mschmidt@redhat.com>; open list <linux-kernel@vger.kernel.org>;
+> poros <poros@redhat.com>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>; Jakub
+> Kicinski <kuba@kernel.org>; Abodunrin, Akeem G
+> <akeem.g.abodunrin@intel.com>; Paolo Abeni <pabeni@redhat.com>; David S.
+> Miller <davem@davemloft.net>
+> Subject: [Intel-wired-lan] [PATCH net v2] ice: Fix broken IFF_ALLMULTI handling
 > 
-> Commit 2ccc1c1ccc671b ("ice: Remove excess error variables") merged
-> the usage of 'status' and 'err' variables into single one in
-> function ice_set_mac_address(). Unfortunately this causes
-> a regression when call of ice_fltr_add_mac() returns -EEXIST because
-> this return value does not indicate an error in this case but
-> value of 'err' remains to be -EEXIST till the end of the function
-> and is returned to caller.
-> 
-> Prior mentioned commit this does not happen because return value of
-> ice_fltr_add_mac() was stored to 'status' variable first and
-> if it was -EEXIST then 'err' remains to be zero.
-> 
-> Fix the problem by reset 'err' to zero when ice_fltr_add_mac()
-> returns -EEXIST.
-> 
-> Fixes: 2ccc1c1ccc671b ("ice: Remove excess error variables")
-> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-> ---
 
-Thanks for the v2. This looks great. Good analysis of how this happened in the commit message, I appreciate that.
+This version reads how I expected. Thanks for cleaning it up for v2!
 
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 
->  drivers/net/ethernet/intel/ice/ice_main.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+> Handling of all-multicast flag and associated multicast promiscuous
+> mode is broken in ice driver. When an user switches allmulticast
+> flag on or off the driver checks whether any VLANs are configured
+> over the interface (except default VLAN 0).
 > 
+> If any extra VLANs are registered it enables multicast promiscuous
+> mode for all these VLANs (including default VLAN 0) using
+> ICE_SW_LKUP_PROMISC_VLAN look-up type. In this situation all
+> multicast packets tagged with known VLAN ID or untagged are received
+> and multicast packets tagged with unknown VLAN ID ignored.
+> 
+> If no extra VLANs are registered (so only VLAN 0 exists) it enables
+> multicast promiscuous mode for VLAN 0 and uses ICE_SW_LKUP_PROMISC
+> look-up type. In this situation any multicast packets including
+> tagged ones are received.
+> 
+> The driver handles IFF_ALLMULTI in ice_vsi_sync_fltr() this way:
+> 
+> ice_vsi_sync_fltr() {
+>   ...
+>   if (changed_flags & IFF_ALLMULTI) {
+>     if (netdev->flags & IFF_ALLMULTI) {
+>       if (vsi->num_vlans > 1)
+>         ice_set_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS);
+>       else
+>         ice_set_promisc(..., ICE_MCAST_PROMISC_BITS);
+>     } else {
+>       if (vsi->num_vlans > 1)
+>         ice_clear_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS);
+>       else
+>         ice_clear_promisc(..., ICE_MCAST_PROMISC_BITS);
+>     }
+>   }
+>   ...
+> }
+> 
+> The code above depends on value vsi->num_vlan that specifies number
+> of VLANs configured over the interface (including VLAN 0) and
+> this is problem because that value is modified in NDO callbacks
+> ice_vlan_rx_add_vid() and ice_vlan_rx_kill_vid().
+> 
+> Scenario 1:
+> 1. ip link set ens7f0 allmulticast on
+> 2. ip link add vlan10 link ens7f0 type vlan id 10
+> 3. ip link set ens7f0 allmulticast off
+> 4. ip link set ens7f0 allmulticast on
+> 
+> [1] In this scenario IFF_ALLMULTI is enabled and the driver calls
+>     ice_set_promisc(..., ICE_MCAST_PROMISC_BITS) that installs
+>     multicast promisc rule with non-VLAN look-up type.
+> [2] Then VLAN with ID 10 is added and vsi->num_vlan incremented to 2
+> [3] Command switches IFF_ALLMULTI off and the driver calls
+>     ice_clear_promisc(..., ICE_MCAST_VLAN_PROMISC_BITS) but this
+>     call is effectively NOP because it looks for multicast promisc
+>     rules for VLAN 0 and VLAN 10 with VLAN look-up type but no such
+>     rules exist. So the all-multicast remains enabled silently
+>     in hardware.
+> [4] Command tries to switch IFF_ALLMULTI on and the driver calls
+>     ice_clear_promisc(..., ICE_MCAST_PROMISC_BITS) but this call
+>     fails (-EEXIST) because non-VLAN multicast promisc rule already
+>     exists.
+> 
+> Scenario 2:
+> 1. ip link add vlan10 link ens7f0 type vlan id 10
+> 2. ip link set ens7f0 allmulticast on
+> 3. ip link add vlan20 link ens7f0 type vlan id 20
+> 4. ip link del vlan10 ; ip link del vlan20
+> 5. ip link set ens7f0 allmulticast off
+> 
+> [1] VLAN with ID 10 is added and vsi->num_vlan==2
+> [2] Command switches IFF_ALLMULTI on and driver installs multicast
+>     promisc rules with VLAN look-up type for VLAN 0 and 10
+> [3] VLAN with ID 20 is added and vsi->num_vlan==3 but no multicast
+>     promisc rules is added for this new VLAN so the interface does
+>     not receive MC packets from VLAN 20
+> [4] Both VLANs are removed but multicast rule for VLAN 10 remains
+>     installed so interface receives multicast packets from VLAN 10
+> [5] Command switches IFF_ALLMULTI off and because vsi->num_vlan is 1
+>     the driver tries to remove multicast promisc rule for VLAN 0
+>     with non-VLAN look-up that does not exist.
+>     All-multicast looks disabled from user point of view but it
+>     is partially enabled in HW (interface receives all multicast
+>     packets either untagged or tagged with VLAN ID 10)
+> 
+> To resolve these issues the patch introduces these changes:
+> 1. Adds handling for IFF_ALLMULTI to ice_vlan_rx_add_vid() and
+>    ice_vlan_rx_kill_vid() callbacks. So when VLAN is added/removed
+>    and IFF_ALLMULTI is enabled an appropriate multicast promisc
+>    rule for that VLAN ID is added/removed.
+> 2. In ice_vlan_rx_add_vid() when first VLAN besides VLAN 0 is added
+>    so (vsi->num_vlan == 2) and IFF_ALLMULTI is enabled then look-up
+>    type for existing multicast promisc rule for VLAN 0 is updated
+>    to ICE_MCAST_VLAN_PROMISC_BITS.
+> 3. In ice_vlan_rx_kill_vid() when last VLAN besides VLAN 0 is removed
+>    so (vsi->num_vlan == 1) and IFF_ALLMULTI is enabled then look-up
+>    type for existing multicast promisc rule for VLAN 0 is updated
+>    to ICE_MCAST_PROMISC_BITS.
+> 4. Both ice_vlan_rx_{add,kill}_vid() have to run under ICE_CFG_BUSY
+>    bit protection to avoid races with ice_vsi_sync_fltr() that runs
+>    in ice_service_task() context.
+> 5. Bit ICE_VSI_VLAN_FLTR_CHANGED is use-less and can be removed.
+> 6. Error messages added to ice_fltr_*_vsi_promisc() helper functions
+>    to avoid them in their callers
+> 7. Small improvements to increase readability
+> 
+> Fixes: 5eda8afd6bcc ("ice: Add support for PF/VF promiscuous mode")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h      |   1 -
+>  drivers/net/ethernet/intel/ice/ice_fltr.c |  44 ++++++++-
+>  drivers/net/ethernet/intel/ice/ice_main.c | 114 +++++++++++++++-------
+>  3 files changed, 121 insertions(+), 38 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h
+> b/drivers/net/ethernet/intel/ice/ice.h
+> index b0b27bfcd7a2..27d1b61e097c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -301,7 +301,6 @@ enum ice_vsi_state {
+>  	ICE_VSI_NETDEV_REGISTERED,
+>  	ICE_VSI_UMAC_FLTR_CHANGED,
+>  	ICE_VSI_MMAC_FLTR_CHANGED,
+> -	ICE_VSI_VLAN_FLTR_CHANGED,
+>  	ICE_VSI_PROMISC_CHANGED,
+>  	ICE_VSI_STATE_NBITS		/* must be last */
+>  };
+> diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.c
+> b/drivers/net/ethernet/intel/ice/ice_fltr.c
+> index af57eb114966..85a94483c2ed 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_fltr.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_fltr.c
+> @@ -58,7 +58,16 @@ int
+>  ice_fltr_set_vlan_vsi_promisc(struct ice_hw *hw, struct ice_vsi *vsi,
+>  			      u8 promisc_mask)
+>  {
+> -	return ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, false);
+> +	struct ice_pf *pf = hw->back;
+> +	int result;
+> +
+> +	result = ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, false);
+> +	if (result)
+> +		dev_err(ice_pf_to_dev(pf),
+> +			"Error setting promisc mode on VSI %i (rc=%d)\n",
+> +			vsi->vsi_num, result);
+> +
+> +	return result;
+>  }
+> 
+>  /**
+> @@ -73,7 +82,16 @@ int
+>  ice_fltr_clear_vlan_vsi_promisc(struct ice_hw *hw, struct ice_vsi *vsi,
+>  				u8 promisc_mask)
+>  {
+> -	return ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, true);
+> +	struct ice_pf *pf = hw->back;
+> +	int result;
+> +
+> +	result = ice_set_vlan_vsi_promisc(hw, vsi->idx, promisc_mask, true);
+> +	if (result)
+> +		dev_err(ice_pf_to_dev(pf),
+> +			"Error clearing promisc mode on VSI %i (rc=%d)\n",
+> +			vsi->vsi_num, result);
+> +
+> +	return result;
+>  }
+> 
+>  /**
+> @@ -87,7 +105,16 @@ int
+>  ice_fltr_clear_vsi_promisc(struct ice_hw *hw, u16 vsi_handle, u8 promisc_mask,
+>  			   u16 vid)
+>  {
+> -	return ice_clear_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
+> +	struct ice_pf *pf = hw->back;
+> +	int result;
+> +
+> +	result = ice_clear_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
+> +	if (result)
+> +		dev_err(ice_pf_to_dev(pf),
+> +			"Error clearing promisc mode on VSI %i for VID %u
+> (rc=%d)\n",
+> +			ice_get_hw_vsi_num(hw, vsi_handle), vid, result);
+> +
+> +	return result;
+>  }
+> 
+>  /**
+> @@ -101,7 +128,16 @@ int
+>  ice_fltr_set_vsi_promisc(struct ice_hw *hw, u16 vsi_handle, u8 promisc_mask,
+>  			 u16 vid)
+>  {
+> -	return ice_set_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
+> +	struct ice_pf *pf = hw->back;
+> +	int result;
+> +
+> +	result = ice_set_vsi_promisc(hw, vsi_handle, promisc_mask, vid);
+> +	if (result)
+> +		dev_err(ice_pf_to_dev(pf),
+> +			"Error setting promisc mode on VSI %i for VID %u
+> (rc=%d)\n",
+> +			ice_get_hw_vsi_num(hw, vsi_handle), vid, result);
+> +
+> +	return result;
+>  }
+> 
+>  /**
 > diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
 > b/drivers/net/ethernet/intel/ice/ice_main.c
-> index b588d7995631..d755ce07869f 100644
+> index b588d7995631..cafff82593df 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_main.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5475,16 +5475,19 @@ static int ice_set_mac_address(struct net_device
-> *netdev, void *pi)
+> @@ -243,8 +243,7 @@ static int ice_add_mac_to_unsync_list(struct net_device
+> *netdev, const u8 *addr)
+>  static bool ice_vsi_fltr_changed(struct ice_vsi *vsi)
+>  {
+>  	return test_bit(ICE_VSI_UMAC_FLTR_CHANGED, vsi->state) ||
+> -	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state) ||
+> -	       test_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
+> +	       test_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state);
+>  }
 > 
->  	/* Add filter for new MAC. If filter exists, return success */
->  	err = ice_fltr_add_mac(vsi, mac, ICE_FWD_TO_VSI);
-> -	if (err == -EEXIST)
-> +	if (err == -EEXIST) {
->  		/* Although this MAC filter is already present in hardware it's
->  		 * possible in some cases (e.g. bonding) that dev_addr was
->  		 * modified outside of the driver and needs to be restored back
->  		 * to this value.
->  		 */
->  		netdev_dbg(netdev, "filter for MAC %pM already exists\n", mac);
-> -	else if (err)
-> +
-> +		return 0;
-> +	} else if (err) {
->  		/* error if the new filter addition failed */
->  		err = -EADDRNOTAVAIL;
+>  /**
+> @@ -260,10 +259,15 @@ static int ice_set_promisc(struct ice_vsi *vsi, u8
+> promisc_m)
+>  	if (vsi->type != ICE_VSI_PF)
+>  		return 0;
+> 
+> -	if (ice_vsi_has_non_zero_vlans(vsi))
+> -		status = ice_fltr_set_vlan_vsi_promisc(&vsi->back->hw, vsi,
+> promisc_m);
+> -	else
+> -		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
+> promisc_m, 0);
+> +	if (ice_vsi_has_non_zero_vlans(vsi)) {
+> +		promisc_m |= (ICE_PROMISC_VLAN_RX |
+> ICE_PROMISC_VLAN_TX);
+> +		status = ice_fltr_set_vlan_vsi_promisc(&vsi->back->hw, vsi,
+> +						       promisc_m);
+> +	} else {
+> +		status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +						  promisc_m, 0);
 > +	}
+> +
+>  	return status;
+>  }
 > 
->  err_update_filters:
->  	if (err) {
+> @@ -280,10 +284,15 @@ static int ice_clear_promisc(struct ice_vsi *vsi, u8
+> promisc_m)
+>  	if (vsi->type != ICE_VSI_PF)
+>  		return 0;
+> 
+> -	if (ice_vsi_has_non_zero_vlans(vsi))
+> -		status = ice_fltr_clear_vlan_vsi_promisc(&vsi->back->hw, vsi,
+> promisc_m);
+> -	else
+> -		status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
+> promisc_m, 0);
+> +	if (ice_vsi_has_non_zero_vlans(vsi)) {
+> +		promisc_m |= (ICE_PROMISC_VLAN_RX |
+> ICE_PROMISC_VLAN_TX);
+> +		status = ice_fltr_clear_vlan_vsi_promisc(&vsi->back->hw, vsi,
+> +							 promisc_m);
+> +	} else {
+> +		status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +						    promisc_m, 0);
+> +	}
+> +
+>  	return status;
+>  }
+> 
+> @@ -302,7 +311,6 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
+>  	struct ice_pf *pf = vsi->back;
+>  	struct ice_hw *hw = &pf->hw;
+>  	u32 changed_flags = 0;
+> -	u8 promisc_m;
+>  	int err;
+> 
+>  	if (!vsi->netdev)
+> @@ -320,7 +328,6 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
+>  	if (ice_vsi_fltr_changed(vsi)) {
+>  		clear_bit(ICE_VSI_UMAC_FLTR_CHANGED, vsi->state);
+>  		clear_bit(ICE_VSI_MMAC_FLTR_CHANGED, vsi->state);
+> -		clear_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
+> 
+>  		/* grab the netdev's addr_list_lock */
+>  		netif_addr_lock_bh(netdev);
+> @@ -369,29 +376,15 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
+>  	/* check for changes in promiscuous modes */
+>  	if (changed_flags & IFF_ALLMULTI) {
+>  		if (vsi->current_netdev_flags & IFF_ALLMULTI) {
+> -			if (ice_vsi_has_non_zero_vlans(vsi))
+> -				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
+> -			else
+> -				promisc_m = ICE_MCAST_PROMISC_BITS;
+> -
+> -			err = ice_set_promisc(vsi, promisc_m);
+> +			err = ice_set_promisc(vsi, ICE_MCAST_PROMISC_BITS);
+>  			if (err) {
+> -				netdev_err(netdev, "Error setting Multicast
+> promiscuous mode on VSI %i\n",
+> -					   vsi->vsi_num);
+>  				vsi->current_netdev_flags &= ~IFF_ALLMULTI;
+>  				goto out_promisc;
+>  			}
+>  		} else {
+>  			/* !(vsi->current_netdev_flags & IFF_ALLMULTI) */
+> -			if (ice_vsi_has_non_zero_vlans(vsi))
+> -				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
+> -			else
+> -				promisc_m = ICE_MCAST_PROMISC_BITS;
+> -
+> -			err = ice_clear_promisc(vsi, promisc_m);
+> +			err = ice_clear_promisc(vsi, ICE_MCAST_PROMISC_BITS);
+>  			if (err) {
+> -				netdev_err(netdev, "Error clearing Multicast
+> promiscuous mode on VSI %i\n",
+> -					   vsi->vsi_num);
+>  				vsi->current_netdev_flags |= IFF_ALLMULTI;
+>  				goto out_promisc;
+>  			}
+> @@ -3488,6 +3481,20 @@ ice_vlan_rx_add_vid(struct net_device *netdev,
+> __be16 proto, u16 vid)
+>  	if (!vid)
+>  		return 0;
+> 
+> +	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state))
+> +		usleep_range(1000, 2000);
+> +
+> +	/* Add multicast promisc rule for the VLAN ID to be added if
+> +	 * all-multicast is currently enabled.
+> +	 */
+> +	if (vsi->current_netdev_flags & IFF_ALLMULTI) {
+> +		ret = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +					       ICE_MCAST_VLAN_PROMISC_BITS,
+> +					       vid);
+> +		if (ret)
+> +			goto finish;
+> +	}
+> +
+>  	vlan_ops = ice_get_compat_vsi_vlan_ops(vsi);
+> 
+>  	/* Add a switch rule for this VLAN ID so its corresponding VLAN tagged
+> @@ -3495,8 +3502,23 @@ ice_vlan_rx_add_vid(struct net_device *netdev,
+> __be16 proto, u16 vid)
+>  	 */
+>  	vlan = ICE_VLAN(be16_to_cpu(proto), vid, 0);
+>  	ret = vlan_ops->add_vlan(vsi, &vlan);
+> -	if (!ret)
+> -		set_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
+> +	if (ret)
+> +		goto finish;
+> +
+> +	/* If all-multicast is currently enabled and this VLAN ID is only one
+> +	 * besides VLAN-0 we have to update look-up type of multicast promisc
+> +	 * rule for VLAN-0 from ICE_SW_LKUP_PROMISC to
+> ICE_SW_LKUP_PROMISC_VLAN.
+> +	 */
+> +	if ((vsi->current_netdev_flags & IFF_ALLMULTI) &&
+> +	    ice_vsi_num_non_zero_vlans(vsi) == 1) {
+> +		ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +					   ICE_MCAST_PROMISC_BITS, 0);
+> +		ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +					 ICE_MCAST_VLAN_PROMISC_BITS, 0);
+> +	}
+> +
+> +finish:
+> +	clear_bit(ICE_CFG_BUSY, vsi->state);
+> 
+>  	return ret;
+>  }
+> @@ -3522,6 +3544,9 @@ ice_vlan_rx_kill_vid(struct net_device *netdev, __be16
+> proto, u16 vid)
+>  	if (!vid)
+>  		return 0;
+> 
+> +	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state))
+> +		usleep_range(1000, 2000);
+> +
+>  	vlan_ops = ice_get_compat_vsi_vlan_ops(vsi);
+> 
+>  	/* Make sure VLAN delete is successful before updating VLAN
+> @@ -3530,10 +3555,33 @@ ice_vlan_rx_kill_vid(struct net_device *netdev,
+> __be16 proto, u16 vid)
+>  	vlan = ICE_VLAN(be16_to_cpu(proto), vid, 0);
+>  	ret = vlan_ops->del_vlan(vsi, &vlan);
+>  	if (ret)
+> -		return ret;
+> +		goto finish;
+> 
+> -	set_bit(ICE_VSI_VLAN_FLTR_CHANGED, vsi->state);
+> -	return 0;
+> +	/* Remove multicast promisc rule for the removed VLAN ID if
+> +	 * all-multicast is enabled.
+> +	 */
+> +	if (vsi->current_netdev_flags & IFF_ALLMULTI)
+> +		ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +					   ICE_MCAST_VLAN_PROMISC_BITS, vid);
+> +
+> +	if (!ice_vsi_has_non_zero_vlans(vsi)) {
+> +		/* Update look-up type of multicast promisc rule for VLAN 0
+> +		 * from ICE_SW_LKUP_PROMISC_VLAN to
+> ICE_SW_LKUP_PROMISC when
+> +		 * all-multicast is enabled and VLAN 0 is the only VLAN rule.
+> +		 */
+> +		if (vsi->current_netdev_flags & IFF_ALLMULTI) {
+> +			ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +
+> ICE_MCAST_VLAN_PROMISC_BITS,
+> +						   0);
+> +			ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx,
+> +						 ICE_MCAST_PROMISC_BITS, 0);
+> +		}
+> +	}
+> +
+> +finish:
+> +	clear_bit(ICE_CFG_BUSY, vsi->state);
+> +
+> +	return ret;
+>  }
+> 
+>  /**
 > --
 > 2.34.1
-
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
