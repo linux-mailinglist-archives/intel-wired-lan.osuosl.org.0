@@ -1,63 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC3CC4EBF74
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Mar 2022 13:02:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02DDC4EC310
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Mar 2022 14:21:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 69ED5611D5;
-	Wed, 30 Mar 2022 11:02:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9F75584562;
+	Wed, 30 Mar 2022 12:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id olkeS16Ge2GL; Wed, 30 Mar 2022 11:01:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ecl02lzMp7vZ; Wed, 30 Mar 2022 12:21:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5BD41611CD;
-	Wed, 30 Mar 2022 11:01:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 871C78455F;
+	Wed, 30 Mar 2022 12:21:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7C1A01BF5A5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 11:01:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 79C061BF59F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 12:21:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 67F4384727
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 11:01:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6B27E4049A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 12:21:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IsTmvF0F0-X9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Mar 2022 11:01:53 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j4JFl-5KV34l for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Mar 2022 12:21:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C6DCF84567
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 11:01:53 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A3F0361550;
- Wed, 30 Mar 2022 11:01:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12FB6C340F3;
- Wed, 30 Mar 2022 11:01:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648638110;
- bh=gRh7a2BgCxKwCeVP5kBE5nBoHRn+C0n8pARpFClb7lQ=;
- h=From:To:Cc:Subject:Date:From;
- b=WY7KW85Y2qFWDx4IbqQU+VuevwpOmv44CqfPSUv7DR3MtCbY+k8/Z9YTV2WLzPI8L
- esmVPq9ixBeb7fUC9W50wQw0LKT7T1upySft8Fw8s1G5eueRuikinYYymYnT6ckZ9d
- LUKCQIwO+0kW3G7NVpdC7tsvzGdNfy4GSMGGYySJGi/b9xq4u4SMsZ/j/Rry3FVfL0
- RhQrDueZqK9zEfxQRQIyqa+Dfs+Geg2MJYg7iQ1yz9dglKNSNKhVdUf3K0M/XUDQim
- r7LzyCD5yJhlzAew9Mf+XR7MnN8MbDsgui5r8opgwRBLMCm6bH+3dk98Q1biB31/9O
- Q9fyFwmHxFQhA==
-From: Leon Romanovsky <leon@kernel.org>
-To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Date: Wed, 30 Mar 2022 14:01:44 +0300
-Message-Id: <3702fad8a016170947da5f3c521a9251cf0f4a22.1648637865.git.leonro@nvidia.com>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7880F4048F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 12:21:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1648642879; x=1680178879;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=OXzBCDD0s+U+ac+j1S8pe7nAWp2yh4vu1aPuuDcA/hE=;
+ b=TeX347iJfS9Zl5lKX9MdaxZ0H0e6r6VHu063sInqHD3yDJienfX9oNA8
+ NTo4hZR5Q4p1pyU6qMJyQVDCiFClA8oJWDIFVQCax6PUybs1O+ajF3Bqs
+ 0IKBKLrzqBCgEjKnl4/p/RQkM9nhJu9RBz+asfuCamc69oHybTwO6XibY
+ jid64oeYvTRhrOu7P4qpRV1nR4KpTx5REJMoVXdV/6TkhHmtnlOUR96Ss
+ Bbtme6bhmm8DD5WaosYXk+Ga6r1iJqUwVgd8b123Zid+TBX9yS9ivexUe
+ A2kN+gQO/RbFwaHYnpcGwS3tDqLSUUhLcTxbufwk4zO8LeR4kbsxFheFs w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="239458949"
+X-IronPort-AV: E=Sophos;i="5.90,222,1643702400"; d="scan'208";a="239458949"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Mar 2022 05:21:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,222,1643702400"; d="scan'208";a="837252293"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga005.fm.intel.com with ESMTP; 30 Mar 2022 05:21:15 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 22UCLE8c019312; Wed, 30 Mar 2022 13:21:14 +0100
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: "David S. Miller" <davem@davemloft.net>,
+ "Jakub Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Date: Wed, 30 Mar 2022 14:18:35 +0200
+Message-Id: <20220330121835.2737360-1-alexandr.lobakin@intel.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <CO1PR11MB508954503C974FD6D9E162FCD61D9@CO1PR11MB5089.namprd11.prod.outlook.com>
+References: <20220325132524.1765342-1-ivecera@redhat.com>
+ <CO1PR11MB508954503C974FD6D9E162FCD61D9@CO1PR11MB5089.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] ixgbe: ensure IPsec VF<->PF
- compatibility
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix MAC address setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,53 +81,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Steffen Klassert <steffen.klassert@secunet.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Raed Salem <raeds@nvidia.com>,
- Shannon Nelson <shannon.nelson@oracle.com>, Paolo Abeni <pabeni@redhat.com>,
- Leon Romanovsky <leonro@nvidia.com>
+Cc: ivecera <ivecera@redhat.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ mschmidt <mschmidt@redhat.com>, open list <linux-kernel@vger.kernel.org>,
+ poros <poros@redhat.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Leon Romanovsky <leonro@nvidia.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+Date: Mon, 28 Mar 2022 17:53:19 +0000
 
-The VF driver can forward any IPsec flags and such makes the function
-is not extendable and prone to backward/forward incompatibility.
+Hey netdev maintainers,
 
-If new software runs on VF, it won't know that PF configured something
-completely different as it "knows" only XFRM_OFFLOAD_INBOUND flag.
+> > -----Original Message-----
+> > From: Ivan Vecera <ivecera@redhat.com>
+> > Sent: Friday, March 25, 2022 6:25 AM
+> > To: netdev@vger.kernel.org
+> > Cc: poros <poros@redhat.com>; mschmidt <mschmidt@redhat.com>;
+> > Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub
+> > Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; moderated
+> > list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>; open list <linux-
+> > kernel@vger.kernel.org>
+> > Subject: [PATCH net v2] ice: Fix MAC address setting
+> > 
+> > Commit 2ccc1c1ccc671b ("ice: Remove excess error variables") merged
+> > the usage of 'status' and 'err' variables into single one in
+> > function ice_set_mac_address(). Unfortunately this causes
+> > a regression when call of ice_fltr_add_mac() returns -EEXIST because
+> > this return value does not indicate an error in this case but
+> > value of 'err' remains to be -EEXIST till the end of the function
+> > and is returned to caller.
+> > 
+> > Prior mentioned commit this does not happen because return value of
+> > ice_fltr_add_mac() was stored to 'status' variable first and
+> > if it was -EEXIST then 'err' remains to be zero.
+> > 
+> > Fix the problem by reset 'err' to zero when ice_fltr_add_mac()
+> > returns -EEXIST.
+> > 
+> > Fixes: 2ccc1c1ccc671b ("ice: Remove excess error variables")
+> > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> > ---
+> 
+> Thanks for the v2. This looks great. Good analysis of how this happened in the commit message, I appreciate that.
+> 
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 
-Fixes: eda0333ac293 ("ixgbe: add VF IPsec management")
-Reviewed-by: Raed Salem <raeds@nvidia.com>
-Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
----
-There is no simple fix for this VF/PF incompatibility as long as FW
-doesn't filter/decline unsupported options when convey mailbox from VF
-to PF.
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+This is an urgent fix, so we would like it to go through -net, not
+IWL.
+It has this Reviewed-by, and also
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-index e596e1a9fc75..236f244e3f65 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-@@ -903,7 +903,9 @@ int ixgbe_ipsec_vf_add_sa(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
- 	/* Tx IPsec offload doesn't seem to work on this
- 	 * device, so block these requests for now.
- 	 */
--	if (!(sam->flags & XFRM_OFFLOAD_INBOUND)) {
-+	sam->flags = sam->flags & ~XFRM_OFFLOAD_IPV6;
-+	if (!(sam->flags & XFRM_OFFLOAD_INBOUND) ||
-+	    sam->flags & ~XFRM_OFFLOAD_INBOUND) {
- 		err = -EOPNOTSUPP;
- 		goto err_out;
- 	}
--- 
-2.35.1
+Acked-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 
+> 
+> >  drivers/net/ethernet/intel/ice/ice_main.c | 7 +++++--
+> >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > 
+
+--- 8< ---
+
+> > --
+> > 2.34.1
+
+Thanks,
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
