@@ -1,168 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E49B44ECEDD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Mar 2022 23:31:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57D084ECF94
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Mar 2022 00:23:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 12ECA408A6;
-	Wed, 30 Mar 2022 21:31:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B3D7F60F1C;
+	Wed, 30 Mar 2022 22:23:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bqF96ipK-wEm; Wed, 30 Mar 2022 21:31:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M-u5Hw1u835j; Wed, 30 Mar 2022 22:23:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 68CC74086D;
-	Wed, 30 Mar 2022 21:31:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7048260F1A;
+	Wed, 30 Mar 2022 22:23:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A81981BF392
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 21:31:29 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 100B31BF300
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 22:23:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9460884917
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 21:31:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 09B5140FD4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 22:23:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gvcqVYPuueVZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Mar 2022 21:31:28 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9Ys54SRAqDTU for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Mar 2022 22:23:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2FB7984915
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 21:31:28 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3E91040B10
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Mar 2022 22:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648675888; x=1680211888;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=M/5XCLqf46K3oHB+f5q6Qko6prYLCpGREegnvRMln1s=;
- b=KPnmBKCzdrjIpt1HdrNv+QGxJZ22UQp2LbM9rYMo/yxc2H8Vv5gJ/L+L
- vjZuU6Y4PylQwa0S01HmUrMZ50P14B+hNJGJlIM8eVUBmsv7R7c83iScU
- iDfbcDVTl0Tx3TjBLhWPXB9Ww5SAabJSkpnr+DO8MMRa22qM9fVgLVm6S
- AE/rCnj6USS9Mr8p9XYH49urtJOdMI55kYcB0Bd5chp4dFijOFJkfx4jL
- FtiDbM3c+JeQT2wpn8kftMZ8v/6hKK0EVOwz5ZWO/GtiJEKfSyocr6VPf
- 6H1IV92bbnQlw0y7E2OjyPjG4TbpypUXu/1GJqSBRnFB9++pg1GUv9Lg+ w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="284563682"
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; d="scan'208";a="284563682"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ t=1648679027; x=1680215027;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Dn16n6iKAMyO9UBg2tB3la8YJRFc/vQRtYDTTZdsylA=;
+ b=S6wtzdsEaciNeSfCZyPSSkYQhIiqetC/U18SsAdcMXQsd11ajEMMXrJD
+ mCVJzWNvtt2xgI6CQ6egjxpo3/UBosha7UXvM/WPCO7EpoQEZS4WJogL8
+ b2YQ0KoBmuA3nm2IoFJIUmnq5GdX8fkSIbFb1PjGK58r2AFH2nLI5QK/7
+ lnkf+crwXXrxx9C8fQxovqQ3vdZHh0lNQW4O8QzMY+UGgxxrGDUOQD9jO
+ m0V4Hod38aOSatfIfPGpmPPlHxsFbbZjpjaJPOsCmOjTzTvBO5IUhHCgr
+ crUIZVxbNlzoZnE/RnkLnIlFzMfNqbtB8AzS6XEgdAPpzYggVNVnL8P5H A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="284572440"
+X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; d="scan'208";a="284572440"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Mar 2022 14:30:40 -0700
+ 30 Mar 2022 15:23:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; d="scan'208";a="654125723"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga004.jf.intel.com with ESMTP; 30 Mar 2022 14:30:40 -0700
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Wed, 30 Mar 2022 14:30:40 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Wed, 30 Mar 2022 14:30:40 -0700
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.42) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.21; Wed, 30 Mar 2022 14:30:39 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D9uS7BsKIFI9CTXTZnAwZGw1Vl/jRD+piVW5xEtgPGU+apkwE3Zg8cnqmsBijI4r6i5U++oNHm36pw9Vd88KGtPUOU+wV1vPtmV4A8r4LloDGksah2xJCXmo0S2YQ9opmgU6a2RQpC9RQoWbTqaRZn64IrgQYeRwrPYvIneAeIVqmZrcPDEqu2VEXWfZk1hKUgMyUrKzWQ42HoupSt54UbSHptFvvlPikL+E2PCrI7MFY2wUbcGvX0j7ZYEcyvb5CseS0xCxLv+4sn2yWdKoYkpTFlP24SNZnIjVFeiy/otjkvxRj6btqfz360lQa0uO4ZqWZu8d1vXdHl+8qwUqWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZNyEnPWOFDFEeXESDs4qNQIVUtAt16aro5TjBBszYYI=;
- b=kqqs+XMJHwoQQbE2BvTPjeJvGlUM26kikMhBmqxQ0tU+OCQcSeMhMhT6Z1bLn6V/V3x9SDunTRkJYtTXtrph3qH91cYyaWNK/QrZEBVeqJ+AuHWXDVkU2JcznHL1sjlNqfGKyZNzEjAOhtq0UvVpr+kmFSxLmbiOuaqCQsNDnTWulE+OTK3wbiiCeclAhF0tSYZ7PfSeaBIJPfRdm4jYAJuVO6AOpMnNaFYFkef02+qncnrDwpe4AAgemm1AJsO2nfYXXL9/6pC6rH/Cp6SnJz/V/nbvgViv/VWdylOwgeU303yIDfZUGlEoV1Ejsm7GGcB29s1Xj+7NIgf3KQGRqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MWHPR11MB0062.namprd11.prod.outlook.com (2603:10b6:301:67::34)
- by DM6PR11MB3131.namprd11.prod.outlook.com (2603:10b6:5:6d::32) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5102.19; Wed, 30 Mar
- 2022 21:30:35 +0000
-Received: from MWHPR11MB0062.namprd11.prod.outlook.com
- ([fe80::c3c:359:d9c4:3a54]) by MWHPR11MB0062.namprd11.prod.outlook.com
- ([fe80::c3c:359:d9c4:3a54%4]) with mapi id 15.20.5123.020; Wed, 30 Mar 2022
- 21:30:35 +0000
-From: "Michael, Alice" <alice.michael@intel.com>
-To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>
-Thread-Topic: [PATCH net] ice: Fix logic of getting XSK pool associated with
- Tx queue
-Thread-Index: AQHYQ1fKeNKey7PBdUWcO1Lt83Ut1qzWQlmAgABjSQCAAX0xkIAABeMAgABKi2A=
-Date: Wed, 30 Mar 2022 21:30:35 +0000
-Message-ID: <MWHPR11MB0062E501377693B8E2E9FCDAE41F9@MWHPR11MB0062.namprd11.prod.outlook.com>
-References: <20220329102752.1481125-1-ivecera@redhat.com>
- <YkL0wfgyCq5s8vdu@boxer> <20220329195522.63d332fb@ceranb>
- <MWHPR11MB0062B06CAE27C58EEE54F162E41F9@MWHPR11MB0062.namprd11.prod.outlook.com>
- <20220330170046.3604787-1-alexandr.lobakin@intel.com>
-In-Reply-To: <20220330170046.3604787-1-alexandr.lobakin@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.401.20
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: aec65396-5f55-4c72-e582-08da12948706
-x-ms-traffictypediagnostic: DM6PR11MB3131:EE_
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-microsoft-antispam-prvs: <DM6PR11MB31310CE6D31DA5AB996C16D8E41F9@DM6PR11MB3131.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: yItEtCIYvUD5GbldGUuzicQBrLV+DMwhYKYJbOF26q4IRZuhPEIO1GSsC9LlmezrXopx1i/1XFIz3+g57qXAtPEs3PehCItUbA95UBYBS4xouo4Ftou18x7NCZLZT+iSRNQQs6IWWcK7wNzDrgMK8K7UcAEqK7g22YzW2bikgcfAvjHpSrBPJzf2TkqreL8ZcDPTuOkDxlcwWywvq+X6EZOjaG7SMITlN9Bgf28WMUrJM5rAGcNwDwATeMhwvP7L69NxWgDeCAC/JdDnPISXomesEbjPLkuyFpIoEO8wNQfvUEiJrImoLHQJb23PQ6cf+syxSaQzavcKMUqNSYU4ioDyDHJdqoVq0EUAfBRC2qX0JQww0aOTMN+CzMx2CEEesO0NkkIiqww4o2jhyzWlUyIKIetnvlzWTiiy3AG19vpY0qpmDk2TilPrrAG3KGpGRgvZfINO323XHjHxx2r6jPQEkVxC8LwzqOAGh3/J4z5ruk9sccdQ9DAJpt/+yb0wMZ10LCkpGc3WbUAaDmvkWLT5ojGR34M1h+TdOrK90oz6hJw591oD+e7gBzyyhvruNE5QSJFhDFxsTH3yL8PgaGFyt0nffRa7q0ki240EIk0BxA2FT2Q/X4ruTIoA+4UTGn+yKqal3YEMLQT2v1XPSxr+bhi0mgAHlP0AdG7yhMhK/rPiDY2HHZvZfEZfO6hE/C3G5deS9H4sQIGGohBuxVyu0pwtm/taW0BIEV4mE6+M7/ikZKmDwlAOrfXHBqG2WZL63JF6arNAZDs/u/GjkIO74HnYgRDPEHuV+8jr2tApGP0/0V8a5yEnaq8IzwWRcmV04Xa+1lLxroN4oWbU9g==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR11MB0062.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(508600001)(2906002)(38100700002)(7696005)(5660300002)(86362001)(966005)(316002)(71200400001)(6862004)(76116006)(83380400001)(26005)(66946007)(186003)(122000001)(82960400001)(66556008)(66446008)(54906003)(33656002)(55016003)(52536014)(6506007)(6636002)(38070700005)(8676002)(4326008)(53546011)(8936002)(9686003)(66476007)(7416002)(64756008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?LpOGTxPsC/iDEc5DUDK2XhoEN7TaIoA5CMCbJcPZFMu93XuUmisDfIywIRyZ?=
- =?us-ascii?Q?mofTHiFdgEVzyR/vfk4j0mkE4SLAKU+AwNFgs0opvF9+g10+OAqkW08O6jJV?=
- =?us-ascii?Q?0jIHalcewSxreY4pP99eZfhAIPQGg7xc1UfYE8lb2Tnnj20HP0u/9/QnxCBg?=
- =?us-ascii?Q?of4v+QlK9gN7gWflslKpy4yEhxOgBpoL3Jer/DcI5UhFUuTsAwwiFMm/BqQ6?=
- =?us-ascii?Q?+NK3TGH/TocZI9eEwaaGfsAb10s2Qwf/nvq7ef5Oa1foayuDSqxzQmhftiMZ?=
- =?us-ascii?Q?fG6jgMynWSwBTyOaOibvOpp6VUQW22NtY7WT2RBvyAC3dL0jbM/TuDdCkCZh?=
- =?us-ascii?Q?wfQwiyMZigBvm3LBYAwC3RT+Y/XBdWql+A4qz7OmqQpKIeknq7rKslRDwdZR?=
- =?us-ascii?Q?guZQtgfutJsLv4WtHzt+DUmhWtoTk70vviC3lHEICz2j3milVGDaFUwY0Nse?=
- =?us-ascii?Q?D+F0kX6myBHcwJB5f/WXfuXck76gDyBwOYfycDaWPISQDtPkR+ww/go46h4l?=
- =?us-ascii?Q?VDkK6ybksRqyXjGMH/kkpHKWLurI0tr5uCbc8Wl4ynuoKCp/HNA/FS42fu6+?=
- =?us-ascii?Q?uIKh6QisZmJ8ol+KTM4YNpycT5tuEK0Pxony6bFOawPwWDOu4vivwCIj1oLT?=
- =?us-ascii?Q?5KfKGnlAfZZka1sJnz6LUWfqc2qhSDku+yjx01VHGOjoQtNEhHkJUO+RgWnj?=
- =?us-ascii?Q?WjMkwWdFNliPYjZCB0QQn83uyrRfEC6T1mhq22m2t7Sch8ycpGCOISxhuq/R?=
- =?us-ascii?Q?oKDp2MSG4rTYAH0aBl7V33YK637rs5YFRCRXRx1qodoPjs2zsDgBJKZfIeK9?=
- =?us-ascii?Q?CfEDwx+1yHae0C5JkRSXVShMZk3CtEC8vC/EDABC1Dl2bBVX79B26NLK3P4z?=
- =?us-ascii?Q?TLTZdkbDOW1OCfLBhRKQZr7aMrpWfdR1XtmDnJdQKUw7kYINiUBDiR38vmDW?=
- =?us-ascii?Q?17QUNNGa9/XdiTES00Nhz3D4oCzz+SsHmxtxGgZ+2ibfWVi7Epl7bdgie5Oc?=
- =?us-ascii?Q?66j3/p4dfgyhI7wE2qATkkmEZmqJsmRxok8AaKNWL4SHYJoPdfr83Pb0B2TP?=
- =?us-ascii?Q?ON/28WmVs9JYnOCp62BlGC8HK7CpZ1KHy8GKe2kcn2ck/hX0C7UiLwKamtOa?=
- =?us-ascii?Q?w2PFHi34+PNVQBqp40P1wD1hA+rKE6/SawTvpsQ1Qe7vVjFcl8jFDPcNDtP2?=
- =?us-ascii?Q?mXAyqm3EUrPWzM3/lZ5KqyeRzf0CuXHU6cgRfAqkH6t9JbhgYVF5DSuVbfA1?=
- =?us-ascii?Q?FyCZS7ecap0mcstrq4V/ti5lKI/1FpE9K6aHAFGsBVHvTdst18oZAzWJk/Nk?=
- =?us-ascii?Q?GMhnvAb27uhTRVVNwGAHmbmzzbFcGcZEh8EPlFkSI0GQu8wkuz7h5CYvGoPZ?=
- =?us-ascii?Q?lAI29UKBYxsCk1LdK4QX9+jMKB+GYjUnhuatDf7biZ7kRB3dR1fxydocgIgM?=
- =?us-ascii?Q?N/YitEqLYTiqzyiG9G9t+KAmsAs/wbNJkc7oKg6mRACUigjnLA2mfgXOFBQO?=
- =?us-ascii?Q?uh7JY3RO7nXfYm++WcFryZR5YaK0d9fTkCD4YEcK0DYm1Wmavs9VWxb9CvrR?=
- =?us-ascii?Q?7WIZpwZJgl7OsApmNz/6HzQfiQy5aNSrDmiMXxyaHuZnE1WgL7qFAC/nO8Kp?=
- =?us-ascii?Q?bn4Z14JvEwd0WLLZPCDNkaLHAc6YqamgDFtmzfYf5ZBHFtZd0WiFlMBhEimH?=
- =?us-ascii?Q?0EetZOv2LLjaV/YKTTBx+bVc1kepwNAE8zsqigkFpybyOYDdabCXGNdYkWCF?=
- =?us-ascii?Q?KfKK2K22PA=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; d="scan'208";a="522082569"
+Received: from lkp-server02.sh.intel.com (HELO 56431612eabd) ([10.239.97.151])
+ by orsmga006.jf.intel.com with ESMTP; 30 Mar 2022 15:23:44 -0700
+Received: from kbuild by 56431612eabd with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nZgj9-0000Zk-Kc;
+ Wed, 30 Mar 2022 22:23:43 +0000
+Date: Thu, 31 Mar 2022 06:23:02 +0800
+From: kernel test robot <lkp@intel.com>
+To: Michal Maloszewski <michal.maloszewski@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <202203310630.dWNnf9Ol-lkp@intel.com>
+References: <20220330200551.1319989-1-michal.maloszewski@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR11MB0062.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aec65396-5f55-4c72-e582-08da12948706
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Mar 2022 21:30:35.5244 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: fGGeKFPg3aMXTYSm8c/g82+b6nT/nFtxFHQRCHJ+VwfkCYI3UmdAP1J1TF+2TbvUy8JH1cv0y9rcr5fnWPa/fA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3131
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix logic of getting XSK
- pool associated with Tx queue
+Content-Disposition: inline
+In-Reply-To: <20220330200551.1319989-1-michal.maloszewski@intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix error when changing
+ ring parameters on ice PF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,125 +81,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Alexei Starovoitov <ast@kernel.org>,
- Andrii Nakryiko <andrii@kernel.org>, ivecera <ivecera@redhat.com>,
- Daniel Borkmann <daniel@iogearbox.net>, John
- Fastabend <john.fastabend@gmail.com>, "moderated list:INTEL
- ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>, Yonghong
- Song <yhs@fb.com>, Paolo Abeni <pabeni@redhat.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>, mschmidt <mschmidt@redhat.com>,
- KP Singh <kpsingh@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>, poros <poros@redhat.com>,
- "open list:XDP \(eXpress Data Path\)" <bpf@vger.kernel.org>,
- Martin KaFai Lau <kafai@fb.com>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Michal Maloszewski <michal.maloszewski@intel.com>, llvm@lists.linux.dev,
+ kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Lobakin, Alexandr <alexandr.lobakin@intel.com>
-> Sent: Wednesday, March 30, 2022 10:01 AM
-> To: Michael, Alice <alice.michael@intel.com>
-> Cc: Lobakin, Alexandr <alexandr.lobakin@intel.com>; ivecera
-> <ivecera@redhat.com>; Fijalkowski, Maciej <maciej.fijalkowski@intel.com>;
-> netdev@vger.kernel.org; poros <poros@redhat.com>; mschmidt
-> <mschmidt@redhat.com>; Brandeburg, Jesse
-> <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
-> Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>;
-> Alexei Starovoitov <ast@kernel.org>; Daniel Borkmann
-> <daniel@iogearbox.net>; Jesper Dangaard Brouer <hawk@kernel.org>; John
-> Fastabend <john.fastabend@gmail.com>; Andrii Nakryiko
-> <andrii@kernel.org>; Martin KaFai Lau <kafai@fb.com>; Song Liu
-> <songliubraving@fb.com>; Yonghong Song <yhs@fb.com>; KP Singh
-> <kpsingh@kernel.org>; moderated list:INTEL ETHERNET DRIVERS <intel-
-> wired-lan@lists.osuosl.org>; open list <linux-kernel@vger.kernel.org>; open
-> list:XDP (eXpress Data Path) <bpf@vger.kernel.org>
-> Subject: Re: [PATCH net] ice: Fix logic of getting XSK pool associated with Tx
-> queue
-> 
-> From: Alice Michael <alice.michael@intel.com>
-> Date: Wed, 30 Mar 2022 16:47:18 +0000
-> 
-> > > -----Original Message-----
-> > > From: Ivan Vecera <ivecera@redhat.com>
-> > > Sent: Tuesday, March 29, 2022 10:55 AM
-> > > To: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
-> > > Cc: netdev@vger.kernel.org; poros <poros@redhat.com>; mschmidt
-> > > <mschmidt@redhat.com>; Brandeburg, Jesse
-> > > <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> > > <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
-> > > Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>;
-> > > Alexei Starovoitov <ast@kernel.org>; Daniel Borkmann
-> > > <daniel@iogearbox.net>; Jesper Dangaard Brouer <hawk@kernel.org>;
-> > > John Fastabend <john.fastabend@gmail.com>; Andrii Nakryiko
-> > > <andrii@kernel.org>; Martin KaFai Lau <kafai@fb.com>; Song Liu
-> > > <songliubraving@fb.com>; Yonghong Song <yhs@fb.com>; KP Singh
-> > > <kpsingh@kernel.org>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>;
-> > > Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>; Lobakin,
-> > > Alexandr <alexandr.lobakin@intel.com>; moderated list:INTEL ETHERNET
-> > > DRIVERS <intel-wired-lan@lists.osuosl.org>; open list
-> > > <linux-kernel@vger.kernel.org>; open list:XDP (eXpress Data Path)
-> > > <bpf@vger.kernel.org>
-> > > Subject: Re: [PATCH net] ice: Fix logic of getting XSK pool
-> > > associated with Tx queue
-> > >
-> > > On Tue, 29 Mar 2022 14:00:01 +0200
-> > > Maciej Fijalkowski <maciej.fijalkowski@intel.com> wrote:
-> > >
-> > > > Thanks for this fix! I did exactly the same patch yesterday and
-> > > > it's already applied to bpf tree:
-> > > >
-> > > > https://lore.kernel.org/bpf/20220328142123.170157-5-maciej.fijalko
-> > > > wski
-> > > > @intel.com/T/#u
-> > > >
-> > > > Maciej
-> > >
-> > > Thanks for info... Nice human race condition ;-)
-> > >
-> > > I.
-> >
-> > I'm covering for Tony this week maintaining this tree.  He let me know there
-> were a few patches you had to send Ivan and I was waiting on this one.  If
-> I'm following correctly, this one will be dropped and the other ones are ready
-> to be sent now to net then?
-> 
-> Yes, this one is beaten and the net tree already contains it[0].
-> There are still 3 Ivan's fixes not applied yet:
->  * [1]
->  * [2]
->  * [3]
-> 
-> I'm wondering if it's worth to pass them through dev-queue since they're
-> urgent and have been tested already in 2 companies? They could go directly
-> to -net and make it into RC1.
-> 
-> >
-> > Alice.
-> 
-> [0]
-> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=
-> 1ac2524de7b366633fc336db6c94062768d0ab03
-> [1] https://lore.kernel.org/netdev/20220322142554.3253428-1-
-> ivecera@redhat.com
-> [2] https://lore.kernel.org/netdev/20220325132524.1765342-1-
-> ivecera@redhat.com
-> [3] https://lore.kernel.org/netdev/20220325132819.1767050-1-
-> ivecera@redhat.com
-> 
-> Thanks,
-> Al
+Hi Michal,
 
-Yes, if you read my original message, I said to net =) I am the
-one that takes it from here and sends to net.  I was asserting
-that his changes were done now and ready to be sent to net or
-if I was missing another patch he is working on before putting
-it up.
-Alice
+Thank you for the patch! Perhaps something to improve:
+
+[auto build test WARNING on net/master]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Michal-Maloszewski/iavf-Fix-error-when-changing-ring-parameters-on-ice-PF/20220331-020106
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git 77c9387c0c5bd496fba3200024e3618356b2fd34
+config: s390-randconfig-r033-20220330 (https://download.01.org/0day-ci/archive/20220331/202203310630.dWNnf9Ol-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 0f6d9501cf49ce02937099350d08f20c4af86f3d)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install s390 cross compiling tool for clang build
+        # apt-get install binutils-s390x-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/a8068b9657399592e287db78ed570816d1bda796
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Michal-Maloszewski/iavf-Fix-error-when-changing-ring-parameters-on-ice-PF/20220331-020106
+        git checkout a8068b9657399592e287db78ed570816d1bda796
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash drivers/net/ethernet/intel/iavf/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   In file included from drivers/net/ethernet/intel/iavf/iavf_ethtool.c:5:
+   In file included from drivers/net/ethernet/intel/iavf/iavf.h:8:
+   In file included from include/linux/pci.h:39:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:464:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __raw_readb(PCI_IOBASE + addr);
+                             ~~~~~~~~~~ ^
+   include/asm-generic/io.h:477:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:37:59: note: expanded from macro '__le16_to_cpu'
+   #define __le16_to_cpu(x) __swab16((__force __u16)(__le16)(x))
+                                                             ^
+   include/uapi/linux/swab.h:102:54: note: expanded from macro '__swab16'
+   #define __swab16(x) (__u16)__builtin_bswap16((__u16)(x))
+                                                        ^
+   In file included from drivers/net/ethernet/intel/iavf/iavf_ethtool.c:5:
+   In file included from drivers/net/ethernet/intel/iavf/iavf.h:8:
+   In file included from include/linux/pci.h:39:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:490:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:35:59: note: expanded from macro '__le32_to_cpu'
+   #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
+                                                             ^
+   include/uapi/linux/swab.h:115:54: note: expanded from macro '__swab32'
+   #define __swab32(x) (__u32)__builtin_bswap32((__u32)(x))
+                                                        ^
+   In file included from drivers/net/ethernet/intel/iavf/iavf_ethtool.c:5:
+   In file included from drivers/net/ethernet/intel/iavf/iavf.h:8:
+   In file included from include/linux/pci.h:39:
+   In file included from include/linux/io.h:13:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:501:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writeb(value, PCI_IOBASE + addr);
+                               ~~~~~~~~~~ ^
+   include/asm-generic/io.h:511:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:521:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:609:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsb(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:617:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsw(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:625:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsl(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:634:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesb(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:643:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesw(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:652:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesl(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+>> drivers/net/ethernet/intel/iavf/iavf_ethtool.c:635:39: warning: '&&' within '||' [-Wlogical-op-parentheses]
+               adapter->state == __IAVF_RUNNING &&
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+   drivers/net/ethernet/intel/iavf/iavf_ethtool.c:635:39: note: place parentheses around the '&&' expression to silence this warning
+               adapter->state == __IAVF_RUNNING &&
+                                                ^
+               (
+   13 warnings generated.
+
+
+vim +635 drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+
+   612	
+   613	/**
+   614	 * iavf_set_ringparam - Set ring parameters
+   615	 * @netdev: network interface device structure
+   616	 * @ring: ethtool ringparam structure
+   617	 * @kernel_ring: ethtool external ringparam structure
+   618	 * @extack: netlink extended ACK report struct
+   619	 *
+   620	 * Sets ring parameters. TX and RX rings are controlled separately, but the
+   621	 * number of rings is not specified, so all rings get the same settings.
+   622	 **/
+   623	static int iavf_set_ringparam(struct net_device *netdev,
+   624				      struct ethtool_ringparam *ring,
+   625				      struct kernel_ethtool_ringparam *kernel_ring,
+   626				      struct netlink_ext_ack *extack)
+   627	{
+   628		struct iavf_adapter *adapter = netdev_priv(netdev);
+   629		u32 new_rx_count, new_tx_count;
+   630	
+   631		if ((ring->rx_mini_pending) || (ring->rx_jumbo_pending))
+   632			return -EINVAL;
+   633	
+   634		if (adapter->state == __IAVF_RESETTING ||
+ > 635		    adapter->state == __IAVF_RUNNING &&
+   636		    (adapter->flags & IAVF_FLAG_QUEUES_DISABLED))
+   637			return -EAGAIN;
+   638	
+   639		if (ring->tx_pending > IAVF_MAX_TXD ||
+   640		    ring->tx_pending < IAVF_MIN_TXD ||
+   641		    ring->rx_pending > IAVF_MAX_RXD ||
+   642		    ring->rx_pending < IAVF_MIN_RXD) {
+   643			netdev_err(netdev, "Descriptors requested (Tx: %d / Rx: %d) out of range [%d-%d] (increment %d)\n",
+   644				   ring->tx_pending, ring->rx_pending, IAVF_MIN_TXD,
+   645				   IAVF_MAX_RXD, IAVF_REQ_DESCRIPTOR_MULTIPLE);
+   646			return -EINVAL;
+   647		}
+   648	
+   649		new_tx_count = ALIGN(ring->tx_pending, IAVF_REQ_DESCRIPTOR_MULTIPLE);
+   650		if (new_tx_count != ring->tx_pending)
+   651			netdev_info(netdev, "Requested Tx descriptor count rounded up to %d\n",
+   652				    new_tx_count);
+   653	
+   654		new_rx_count = ALIGN(ring->rx_pending, IAVF_REQ_DESCRIPTOR_MULTIPLE);
+   655		if (new_rx_count != ring->rx_pending)
+   656			netdev_info(netdev, "Requested Rx descriptor count rounded up to %d\n",
+   657				    new_rx_count);
+   658	
+   659		/* if nothing to do return success */
+   660		if ((new_tx_count == adapter->tx_desc_count) &&
+   661		    (new_rx_count == adapter->rx_desc_count)) {
+   662			netdev_dbg(netdev, "Nothing to change, descriptor count is same as requested\n");
+   663			return 0;
+   664		}
+   665	
+   666		if (new_tx_count != adapter->tx_desc_count) {
+   667			netdev_dbg(netdev, "Changing Tx descriptor count from %d to %d\n",
+   668				   adapter->tx_desc_count, new_tx_count);
+   669			adapter->tx_desc_count = new_tx_count;
+   670		}
+   671	
+   672		if (new_rx_count != adapter->rx_desc_count) {
+   673			netdev_dbg(netdev, "Changing Rx descriptor count from %d to %d\n",
+   674				   adapter->rx_desc_count, new_rx_count);
+   675			adapter->rx_desc_count = new_rx_count;
+   676		}
+   677	
+   678		if (netif_running(netdev)) {
+   679			adapter->flags |= IAVF_FLAG_RESET_NEEDED;
+   680			queue_work(iavf_wq, &adapter->reset_task);
+   681		}
+   682	
+   683		return 0;
+   684	}
+   685	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
