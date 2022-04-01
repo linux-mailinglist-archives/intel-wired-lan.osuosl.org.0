@@ -1,66 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E7B44EEEA8
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 15:58:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A045F4EF227
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 17:01:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD56A60D4F;
-	Fri,  1 Apr 2022 13:58:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 16F8360ED7;
+	Fri,  1 Apr 2022 15:01:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zmvroUo8hW6x; Fri,  1 Apr 2022 13:58:26 +0000 (UTC)
+	with ESMTP id 9qL-qlgGXpR4; Fri,  1 Apr 2022 15:01:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A6DC660674;
-	Fri,  1 Apr 2022 13:58:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1BF0260ECA;
+	Fri,  1 Apr 2022 15:01:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 198681BF308
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:51:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 974951BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 07BA660E43
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:51:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 73F4560ED4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VMzMqda-Ms6a for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Apr 2022 12:51:27 +0000 (UTC)
+ with ESMTP id 0ZkNkPeWQ-ZY for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Apr 2022 15:00:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2B1B260AAE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:51:27 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 46E2B60E95
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648817487; x=1680353487;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=o8qsm5XJyB00FzTXyPNmmsd8sv6LD8bNLcCHO3WWdPs=;
- b=A/TNttwT3c2V+sNZxyazsd4Wh5uygdWrWqX0a1LQj9F/ZD8ESLmbAc4/
- Nj1xvRmOmEKxkHakEw82yMFv9KZ04o7JndzcLsKX2mRqmbClE+wxmBAp3
- rr/4vRqgMMJHVo5BTpiiqkAlt2B1gQpG+5enM4WZ0sr4I74y8WFgSU4Aq
- LYciXGVosBsZYT6wJeCgBaVuHDqKmMeUSNaiXr2RvgqqJA3rp+n1vcmoa
- VRCmk3x+HGpzTQ0stvIsZKefW6MRN4oTfyb8QJToBP/vx0cU5OKr1teQp
- 16vUd8w1zSbUc2gqUzgykOQIxCxA9va7S1NtIPHvKxxd5rhjuGa9b7jy6 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10303"; a="285060073"
-X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="285060073"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2022 05:51:26 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="843432620"
-Received: from propan.igk.intel.com ([10.211.8.82])
- by fmsmga005.fm.intel.com with ESMTP; 01 Apr 2022 05:51:25 -0700
-From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  1 Apr 2022 13:48:52 +0000
-Message-Id: <20220401134852.627643-1-anatolii.gerasymenko@intel.com>
-X-Mailer: git-send-email 2.25.1
+ t=1648825255; x=1680361255;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=ZRXaOn2jWbKpXeNbzuRQna4zQhf11QVXubsI9+3NyPE=;
+ b=iwI9BqEGz16MB2MLi8twvazdBMrAyO4fOZSBsTLhd58l2+IroCTD8VPb
+ 9i9UrsHpukBaek4AVO6AFwg7ZdK1rVMXeLCqztJn6MYzUQ7bgj6UJLHNn
+ ujJB3dexfLi/ccQKYgzM6m8Ed8NulK348Oskn2lBeY1t4PVVKZDsoeODd
+ CR6QD5FoR767jJcxjEPLWyBTJw2/40ScVUXkvJRwEdtd87GzJ+nCWB93l
+ z+j1RNzKhhJf2WqE6hPchWQi8Shb2OFErvqigDA1UBK/z/IybybpGP70G
+ zn+//bR50S0FKfN6p7bTsUhacsQnGOCxPiqN6UJ1FO6fiRBPuU7Vxv2yr A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="323324424"
+X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="323324424"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2022 08:00:54 -0700
+X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="547825824"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2022 08:00:52 -0700
+Date: Fri, 1 Apr 2022 08:02:29 -0400
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <Ykbp1W3uBgcCtIYv@localhost.localdomain>
+References: <20220401125438.292649-1-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 01 Apr 2022 13:58:08 +0000
-Subject: [Intel-wired-lan] [PATCH net v1] ice: Set txq_teid to
- ICE_INVAL_TEID on ring creation
+Content-Disposition: inline
+In-Reply-To: <20220401125438.292649-1-maciej.fijalkowski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH intel-net] ice: allow creating VFs for
+ !CONFIG_NET_SWITCHDEV
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,75 +74,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
+Cc: Michal Swiatkowski <michal.swiatkowski@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When VF is freshly created, but not brought up, ring->txq_teid
-value is by default set to 0.
-But 0 is a valid TEID. On some platforms the Root Node of
-Tx scheduler has a TEID = 0. This can cause issues as shown below.
+On Fri, Apr 01, 2022 at 02:54:38PM +0200, Maciej Fijalkowski wrote:
+> Currently for !CONFIG_NET_SWITCHDEV kernel builds it is not possible to
+> create VFs properly as call to ice_eswitch_configure() returns
+> -EOPNOTSUPP for us. This is because CONFIG_ICE_SWITCHDEV depends on
+> CONFIG_NET_SWITCHDEV.
+> 
+> Change the ice_eswitch_configure() implementation for
+> !CONFIG_ICE_SWITCHDEV to return 0 instead -EOPNOTSUPP and let
+> ice_ena_vfs() finish its work properly.
+> 
+> CC: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> Fixes: 1a1c40df2e80 ("ice: set and release switchdev environment")
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_eswitch.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.h b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+> index bd58d9d2e565..6a413331572b 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_eswitch.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+> @@ -52,7 +52,7 @@ static inline void ice_eswitch_update_repr(struct ice_vsi *vsi) { }
+>  
+>  static inline int ice_eswitch_configure(struct ice_pf *pf)
+>  {
+> -	return -EOPNOTSUPP;
+> +	return 0;
+>  }
+>  
+>  static inline int ice_eswitch_rebuild(struct ice_pf *pf)
+> -- 
+> 2.27.0
+> 
+Thanks for this fix!
 
-The proper way is to set ring->txq_teid to ICE_INVAL_TEID (0xFFFFFFFF).
-
-Testing Hints:
-echo 1 > /sys/class/net/ens785f0/device/sriov_numvfs
-ip link set dev ens785f0v0 up
-ip link set dev ens785f0v0 down
-
-If we have freshly created VF and quickly turn it on and off, so there
-would be no time to reach VIRTCHNL_OP_CONFIG_VSI_QUEUES stage, then
-VIRTCHNL_OP_DISABLE_QUEUES stage will fail with error:
-[  639.531454] disable queue 89 failed 14
-[  639.532233] Failed to disable LAN Tx queues, error: ICE_ERR_AQ_ERROR
-[  639.533107] ice 0000:02:00.0: Failed to stop Tx ring 0 on VSI 5
-
-The reason for the fail is that we are trying to send AQ command to
-delete queue 89, which has never been created and receive an "invalid
-argument" error from firmware.
-
-As this queue has never been created, it's teid and ring->txq_teid
-have default value 0.
-ice_dis_vsi_txq has a check against non-existent queues:
-
-node = ice_sched_find_node_by_teid(pi->root, q_teids[i]);
-if (!node)
-	continue;
-
-But on some platforms the Root Node of Tx scheduler has a teid = 0.
-Hence, ice_sched_find_node_by_teid finds a node with teid = 0 (it is
-pi->root), and we go further to submit an erroneous request to firmware.
-
-Fixes: 37bb83901286 ("ice: Move common functions out of ice_main.c part 7/7")
-
-Signed-off-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
----
-This is an urgent fix for
-https://bugzilla.redhat.com/show_bug.cgi?id=1997012
-Send it, please, directly to net. Thanks!
----
- drivers/net/ethernet/intel/ice/ice_lib.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 6d6233204388..2774cbd5b12a 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1480,6 +1480,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 		ring->tx_tstamps = &pf->ptp.port.tx;
- 		ring->dev = dev;
- 		ring->count = vsi->num_tx_desc;
-+		ring->txq_teid = ICE_INVAL_TEID;
- 		if (dvm_ena)
- 			ring->flags |= ICE_TX_FLAGS_RING_VLAN_L2TAG2;
- 		else
--- 
-2.25.1
-
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
