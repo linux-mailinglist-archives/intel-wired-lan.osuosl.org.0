@@ -1,67 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A045F4EF227
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 17:01:04 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5A354EEFA6
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 16:28:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 16F8360ED7;
-	Fri,  1 Apr 2022 15:01:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 36F1C41EB4;
+	Fri,  1 Apr 2022 14:27:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9qL-qlgGXpR4; Fri,  1 Apr 2022 15:01:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PwpvK92tmCX4; Fri,  1 Apr 2022 14:27:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1BF0260ECA;
-	Fri,  1 Apr 2022 15:01:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D380B41EAE;
+	Fri,  1 Apr 2022 14:27:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 974951BF3A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 974B41BF2A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 14:27:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 73F4560ED4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 811C741EAE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 14:27:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ZkNkPeWQ-ZY for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Apr 2022 15:00:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id W0kpYXOZEvoP for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Apr 2022 14:27:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 46E2B60E95
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 15:00:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648825255; x=1680361255;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=ZRXaOn2jWbKpXeNbzuRQna4zQhf11QVXubsI9+3NyPE=;
- b=iwI9BqEGz16MB2MLi8twvazdBMrAyO4fOZSBsTLhd58l2+IroCTD8VPb
- 9i9UrsHpukBaek4AVO6AFwg7ZdK1rVMXeLCqztJn6MYzUQ7bgj6UJLHNn
- ujJB3dexfLi/ccQKYgzM6m8Ed8NulK348Oskn2lBeY1t4PVVKZDsoeODd
- CR6QD5FoR767jJcxjEPLWyBTJw2/40ScVUXkvJRwEdtd87GzJ+nCWB93l
- z+j1RNzKhhJf2WqE6hPchWQi8Shb2OFErvqigDA1UBK/z/IybybpGP70G
- zn+//bR50S0FKfN6p7bTsUhacsQnGOCxPiqN6UJ1FO6fiRBPuU7Vxv2yr A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="323324424"
-X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="323324424"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2022 08:00:54 -0700
-X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="547825824"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2022 08:00:52 -0700
-Date: Fri, 1 Apr 2022 08:02:29 -0400
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Message-ID: <Ykbp1W3uBgcCtIYv@localhost.localdomain>
-References: <20220401125438.292649-1-maciej.fijalkowski@intel.com>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 31B7841EA7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 14:27:51 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 08EA661C4A;
+ Fri,  1 Apr 2022 14:27:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D93D8C36AE7;
+ Fri,  1 Apr 2022 14:27:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648823269;
+ bh=QsEnBO8My2ETVS8CVQvoiz31u6hCY6YY0ugyJqmKCUs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=eoOqwg9CwdGTfoshtAKgCUs4sT5p3BJbYMz/JDeJTdwPXjgopIOY/n+FLqT+SlyMd
+ eLEIyNk1ZDq7FqdP3nzo32P/wGo1lvlRzuI+rOCVBuiPotCDEhlIeGiDllaFCgUu3Z
+ 6erRh8tNuNLKdjqouJ8Pgzck5Djqgh5UaFjXHsXVUu/3u7LBmM3ed8kPdwnYyss6ow
+ tA2S1gKW6Uo2rc9jc/1ve24VgG+t/ZGATBfWRM9m4xVg5d6FSdiHVs/97oZDrG1dGs
+ BZp1QaEZODjX9oXh2dHgJK9gGg87/1MxIJ56L7L7kmpCTQVfJqwivBfDqweOpy47sa
+ tce+AtxRMsEPg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Fri,  1 Apr 2022 10:23:48 -0400
+Message-Id: <20220401142536.1948161-41-sashal@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220401142536.1948161-1-sashal@kernel.org>
+References: <20220401142536.1948161-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220401125438.292649-1-maciej.fijalkowski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH intel-net] ice: allow creating VFs for
- !CONFIG_NET_SWITCHDEV
+X-stable: review
+X-Patchwork-Hint: Ignore
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.17 041/149] i40e: Add sending
+ commands in atomic context
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,55 +73,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Swiatkowski <michal.swiatkowski@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net,
- magnus.karlsson@intel.com
+Cc: Sasha Levin <sashal@kernel.org>, pabeni@redhat.com,
+ intel-wired-lan@lists.osuosl.org,
+ Witold Fijalkowski <witoldx.fijalkowski@intel.com>, netdev@vger.kernel.org,
+ kuba@kernel.org, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 01, 2022 at 02:54:38PM +0200, Maciej Fijalkowski wrote:
-> Currently for !CONFIG_NET_SWITCHDEV kernel builds it is not possible to
-> create VFs properly as call to ice_eswitch_configure() returns
-> -EOPNOTSUPP for us. This is because CONFIG_ICE_SWITCHDEV depends on
-> CONFIG_NET_SWITCHDEV.
-> 
-> Change the ice_eswitch_configure() implementation for
-> !CONFIG_ICE_SWITCHDEV to return 0 instead -EOPNOTSUPP and let
-> ice_ena_vfs() finish its work properly.
-> 
-> CC: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> Fixes: 1a1c40df2e80 ("ice: set and release switchdev environment")
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_eswitch.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.h b/drivers/net/ethernet/intel/ice/ice_eswitch.h
-> index bd58d9d2e565..6a413331572b 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_eswitch.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch.h
-> @@ -52,7 +52,7 @@ static inline void ice_eswitch_update_repr(struct ice_vsi *vsi) { }
->  
->  static inline int ice_eswitch_configure(struct ice_pf *pf)
->  {
-> -	return -EOPNOTSUPP;
-> +	return 0;
->  }
->  
->  static inline int ice_eswitch_rebuild(struct ice_pf *pf)
-> -- 
-> 2.27.0
-> 
-Thanks for this fix!
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+[ Upstream commit 59b3d7350ff35c939b8e173eb2eecac80a5ee046 ]
+
+Change functions:
+- i40e_aq_add_macvlan
+- i40e_aq_remove_macvlan
+- i40e_aq_delete_element
+- i40e_aq_add_vsi
+- i40e_aq_update_vsi_params
+to explicitly use i40e_asq_send_command_atomic(..., true)
+instead of i40e_asq_send_command, as they use mutexes and do some
+work in an atomic context.
+Without this change setting vlan via netdev will fail with
+call trace cased by bug "BUG: scheduling while atomic".
+
+Signed-off-by: Witold Fijalkowski <witoldx.fijalkowski@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Tested-by: Gurucharan G <gurucharanx.g@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 21 +++++++++++--------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index 9ddeb015eb7e..e830987a8c6d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -1899,8 +1899,9 @@ i40e_status i40e_aq_add_vsi(struct i40e_hw *hw,
+ 
+ 	desc.flags |= cpu_to_le16((u16)(I40E_AQ_FLAG_BUF | I40E_AQ_FLAG_RD));
+ 
+-	status = i40e_asq_send_command(hw, &desc, &vsi_ctx->info,
+-				    sizeof(vsi_ctx->info), cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, &vsi_ctx->info,
++					      sizeof(vsi_ctx->info),
++					      cmd_details, true);
+ 
+ 	if (status)
+ 		goto aq_add_vsi_exit;
+@@ -2287,8 +2288,9 @@ i40e_status i40e_aq_update_vsi_params(struct i40e_hw *hw,
+ 
+ 	desc.flags |= cpu_to_le16((u16)(I40E_AQ_FLAG_BUF | I40E_AQ_FLAG_RD));
+ 
+-	status = i40e_asq_send_command(hw, &desc, &vsi_ctx->info,
+-				    sizeof(vsi_ctx->info), cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, &vsi_ctx->info,
++					      sizeof(vsi_ctx->info),
++					      cmd_details, true);
+ 
+ 	vsi_ctx->vsis_allocated = le16_to_cpu(resp->vsi_used);
+ 	vsi_ctx->vsis_unallocated = le16_to_cpu(resp->vsi_free);
+@@ -2673,8 +2675,8 @@ i40e_status i40e_aq_add_macvlan(struct i40e_hw *hw, u16 seid,
+ 	if (buf_size > I40E_AQ_LARGE_BUF)
+ 		desc.flags |= cpu_to_le16((u16)I40E_AQ_FLAG_LB);
+ 
+-	status = i40e_asq_send_command(hw, &desc, mv_list, buf_size,
+-				       cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, mv_list, buf_size,
++					      cmd_details, true);
+ 
+ 	return status;
+ }
+@@ -2715,8 +2717,8 @@ i40e_status i40e_aq_remove_macvlan(struct i40e_hw *hw, u16 seid,
+ 	if (buf_size > I40E_AQ_LARGE_BUF)
+ 		desc.flags |= cpu_to_le16((u16)I40E_AQ_FLAG_LB);
+ 
+-	status = i40e_asq_send_command(hw, &desc, mv_list, buf_size,
+-				       cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, mv_list, buf_size,
++					      cmd_details, true);
+ 
+ 	return status;
+ }
+@@ -3868,7 +3870,8 @@ i40e_status i40e_aq_delete_element(struct i40e_hw *hw, u16 seid,
+ 
+ 	cmd->seid = cpu_to_le16(seid);
+ 
+-	status = i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
++	status = i40e_asq_send_command_atomic(hw, &desc, NULL, 0,
++					      cmd_details, true);
+ 
+ 	return status;
+ }
+-- 
+2.34.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
