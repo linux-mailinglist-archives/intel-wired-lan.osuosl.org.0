@@ -1,64 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 989A64EEEA5
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 15:58:21 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 751AE4EED85
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Apr 2022 14:55:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C56A4024E;
-	Fri,  1 Apr 2022 13:58:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EACCF60E93;
+	Fri,  1 Apr 2022 12:55:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6FGAGZMucgq4; Fri,  1 Apr 2022 13:58:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rFRBN9e99j72; Fri,  1 Apr 2022 12:55:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E9AB44091C;
-	Fri,  1 Apr 2022 13:58:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F2B4960E63;
+	Fri,  1 Apr 2022 12:55:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A34C1BF378
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 08:01:27 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 771061BF308
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:55:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 87F0460E94
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 08:01:27 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 64891419AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:55:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=163.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7VyxGBmjhplR for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Apr 2022 08:01:26 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ymm5cX-xvxPv for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Apr 2022 12:55:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail-m971.mail.163.com (mail-m971.mail.163.com [123.126.97.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 268E060E73
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 08:01:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=JUc46
- HYuLiqd9LVyi4hFXB41fWVvcsco2nwyplr06aY=; b=csG42RSPrqWtd1oel1QRR
- zKmpHz7cN2eYLXAN5Y+PQ2/eurmSwZHUO3t7ocST0HBaOykqfhoxdeXeKZ1eb3Pb
- PLORxWU9vE1qnG8nN4U5e+pbfHyefNi7P895pxGe762uqFAfPLyKL+m8dYwLvjLs
- 0Y6LZxSfrLn7x72WKcRF6A=
-Received: from localhost.localdomain (unknown [218.106.182.227])
- by smtp1 (Coremail) with SMTP id GdxpCgB3NWo1sUZiKRQTAA--.3770S4;
- Fri, 01 Apr 2022 16:01:09 +0800 (CST)
-From: Jianglei Nie <niejianglei2021@163.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, kuba@kernel.org
-Date: Fri,  1 Apr 2022 16:00:51 +0800
-Message-Id: <20220401080051.16846-1-niejianglei2021@163.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8EAD441977
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Apr 2022 12:55:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1648817701; x=1680353701;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=NIxxOF4X+NBZXmFKmeG0AwAoyQKtEKclmBIOxgqHrFk=;
+ b=A25/5ytzzck0iRPG/fNv7U/ThqaHVgJtbyAAMHbkzzLzRP1O72Hpmsym
+ BRN70Jpo8d4xqQ5l9A/Uau+qnwx5M7Sn+5X3D+wxoJHGrv4j5Rbqc1kjs
+ RPb5cumjheaZkQ/f/59HqD5QCgTBsL6+20vrbcaURQ3yyMlTXz+DN/3gR
+ 1koueQk8dhs929+mACOKVfjR6i6mKJ8WJdiSE2nhFnmUfgdFiwxLC0RUp
+ 9Moshulz0rWZX56WXWiLJqJHiRKz7ZLeNV4tDFpHK91wInQm6iLse15i8
+ EaF6CDrpDoioMxqxKAepJEWA1Lt8X4CjTSjZe/2W/DrPGs4g8a7FJPAvG w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10303"; a="258962266"
+X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="258962266"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2022 05:55:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,227,1643702400"; d="scan'208";a="547791709"
+Received: from boxer.igk.intel.com ([10.102.20.173])
+ by orsmga007.jf.intel.com with ESMTP; 01 Apr 2022 05:54:57 -0700
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  1 Apr 2022 14:54:38 +0200
+Message-Id: <20220401125438.292649-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-X-CM-TRANSID: GdxpCgB3NWo1sUZiKRQTAA--.3770S4
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZFWUWw4kZFW5JryDAr1UZFb_yoWDWFXE9w
- 42qryxJrW5W3WFy3y5tayfu34Fvr1DXr95Za13tayfX345Cr9FqasYvrWxXr40gr1UAF17
- Ar43ta43C345tjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRtOJeJUUUUU==
-X-Originating-IP: [218.106.182.227]
-X-CM-SenderInfo: xqlhyxxdqjzvrlsqjii6rwjhhfrp/1tbiDw7VjFUMcc6wYwAAst
-X-Mailman-Approved-At: Fri, 01 Apr 2022 13:58:08 +0000
-Subject: [Intel-wired-lan] [PATCH] ice: Fix memory leak in
- ice_get_orom_civd_data()
+Subject: [Intel-wired-lan] [PATCH intel-net] ice: allow creating VFs for
+ !CONFIG_NET_SWITCHDEV
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,38 +74,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Jianglei Nie <niejianglei2021@163.com>
+Cc: Michal Swiatkowski <michal.swiatkowski@intel.com>, netdev@vger.kernel.org,
+ kuba@kernel.org, davem@davemloft.net, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Line 637 allocates a memory chunk for orom_data by vzmalloc(). But
-when ice_read_flash_module() fails, the allocated memory is not freed,
-which will lead to a memory leak.
+Currently for !CONFIG_NET_SWITCHDEV kernel builds it is not possible to
+create VFs properly as call to ice_eswitch_configure() returns
+-EOPNOTSUPP for us. This is because CONFIG_ICE_SWITCHDEV depends on
+CONFIG_NET_SWITCHDEV.
 
-We can fix it by freeing the orom_data when ce_read_flash_module() fails.
+Change the ice_eswitch_configure() implementation for
+!CONFIG_ICE_SWITCHDEV to return 0 instead -EOPNOTSUPP and let
+ice_ena_vfs() finish its work properly.
 
-Signed-off-by: Jianglei Nie <niejianglei2021@163.com>
+CC: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Fixes: 1a1c40df2e80 ("ice: set and release switchdev environment")
+Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_nvm.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/ethernet/intel/ice/ice_eswitch.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 4eb0599714f4..13cdb5ea594d 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -641,6 +641,7 @@ ice_get_orom_civd_data(struct ice_hw *hw, enum ice_bank_select bank,
- 	status = ice_read_flash_module(hw, bank, ICE_SR_1ST_OROM_BANK_PTR, 0,
- 				       orom_data, hw->flash.banks.orom_size);
- 	if (status) {
-+		vfree(orom_data);
- 		ice_debug(hw, ICE_DBG_NVM, "Unable to read Option ROM data\n");
- 		return status;
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.h b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+index bd58d9d2e565..6a413331572b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.h
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+@@ -52,7 +52,7 @@ static inline void ice_eswitch_update_repr(struct ice_vsi *vsi) { }
+ 
+ static inline int ice_eswitch_configure(struct ice_pf *pf)
+ {
+-	return -EOPNOTSUPP;
++	return 0;
+ }
+ 
+ static inline int ice_eswitch_rebuild(struct ice_pf *pf)
 -- 
-2.25.1
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
