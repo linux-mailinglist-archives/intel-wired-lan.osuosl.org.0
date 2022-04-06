@@ -1,70 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E07C4F5A12
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Apr 2022 11:34:07 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A9FE4F5A4B
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Apr 2022 11:53:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AD93940B2A;
-	Wed,  6 Apr 2022 09:34:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9C2CF823CF;
+	Wed,  6 Apr 2022 09:53:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DT0vVDfibebe; Wed,  6 Apr 2022 09:34:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iS7qRlzg01bb; Wed,  6 Apr 2022 09:53:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 650474060C;
-	Wed,  6 Apr 2022 09:34:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9235E81D5A;
+	Wed,  6 Apr 2022 09:53:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2F57D1BF95F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Apr 2022 09:34:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3B1481BF95F
+ for <intel-wired-lan@osuosl.org>; Wed,  6 Apr 2022 09:53:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2640A81323
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Apr 2022 09:34:00 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 28CEC81D65
+ for <intel-wired-lan@osuosl.org>; Wed,  6 Apr 2022 09:53:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tsKh4XCEwn8x for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Apr 2022 09:33:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 921FA812D6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Apr 2022 09:33:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649237638; x=1680773638;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=2MPCx9C2XDFB2iwxu1So3hFi+S752/24cCm1DUmAkA0=;
- b=VIbV9ePlUgK7xJ7qTIDB+c05WyZLMLMORdtnIQB+RjaTB3llcMSce5C6
- pDBH0S6IUWdua/PI6269s2cvL1Wls/S0zvkmrwLRSwWNLp0EJqMzfrhhx
- QsBZob9H8Bf5wqCTcjKBGwwGAEuPMg7buXP8MjTSCTmH7/WQ+4RbgU4vN
- zOBRPMyjJqn1IPfo6pzVEfYCrAeNIzxLhSNRdI/KD8uoY+jwh3lUczoCY
- zFUFa4GGV04oIAPzUyz2fyl/ZxSTE8skoI3F68/ItacWdxeiGVHAaw1Ra
- LQUGHwwxZtsI/ovgGwkNVMOHn+qchhOG2EMuvDI6jOkzUOQAZMWuZPx+s A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10308"; a="260991590"
-X-IronPort-AV: E=Sophos;i="5.90,239,1643702400"; d="scan'208";a="260991590"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Apr 2022 02:33:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,239,1643702400"; d="scan'208";a="524393751"
-Received: from lkp-server02.sh.intel.com (HELO a44fdfb70b94) ([10.239.97.151])
- by orsmga006.jf.intel.com with ESMTP; 06 Apr 2022 02:33:56 -0700
-Received: from kbuild by a44fdfb70b94 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nc232-0004Gv-31;
- Wed, 06 Apr 2022 09:33:56 +0000
-Date: Wed, 06 Apr 2022 17:33:33 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <624d5e6d.datvXdVf/Z8T7AGV%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id Rk7zXErx2_KB for <intel-wired-lan@osuosl.org>;
+ Wed,  6 Apr 2022 09:53:04 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
+ [IPv6:2a00:1450:4864:20::430])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2DF6D81D5A
+ for <intel-wired-lan@osuosl.org>; Wed,  6 Apr 2022 09:53:04 +0000 (UTC)
+Received: by mail-wr1-x430.google.com with SMTP id b19so2330273wrh.11
+ for <intel-wired-lan@osuosl.org>; Wed, 06 Apr 2022 02:53:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=6wind.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HDhSTbbW7xXt8kqWzs+odsHOCgWSTvr/1d4TircSL8c=;
+ b=Cglbp+8erWtMAybQPfgniVDgULgXV1FIx2lWhh+ndRv6/yVS1vEfPpBl1540hb/ZWx
+ ed2pDH3hC5bVypVktwiakQhNiKHQq8dVv+7UoHSlHGU/9bzBRq6UsxCefVE0M4M0PG8U
+ q/2MChgohk86gzizfoe/v7QpjKiUkUK1NNtkgyfBCnIHLuibobUhp3WGWx3bdS9/+AZc
+ LPVb6ZbTZT2dYgRYioRlZybpIWfu14pv3YDHgvre2kiYFmGgFfO7l/6gb6oJPvi0r+E+
+ zi5DAQYDN8H/dsOz7Ej/3iRoUmUi/Vr7MZytFGPK6NYsgnK7XcCqSTaFiocpVW9OMGS3
+ wrlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HDhSTbbW7xXt8kqWzs+odsHOCgWSTvr/1d4TircSL8c=;
+ b=YljFsycgWuM9NimB8QoQQ733NDRIslUc5jxhHpGpUcP7nMAt9JZUV/w819+y8stdEs
+ sLagbyz5rqkKjMV3zy/wOFBk7DgODK8s23WzZVoQatI2FNXOKW5V0JnctN5D7UQtbSsq
+ L59QW+qCvJlVQXa8U9yP5CbTT9SzHKR3Bs/ZZ9bZr9geSH7iNOL9u6wRcdliEZw4AncK
+ f6eaaNrls5IYCrl23xydN/vFfbpu0Ic/PVK/yW9X6aUCxAMI0Lc8F2f36cWSCr3EEHSU
+ 3v8FiAKI5c+Cgi2uu/W7ifaunxlWrGt0JGu9KpdILkZ3/ooujfVrwcdv76q42vhHq+yx
+ JikA==
+X-Gm-Message-State: AOAM533DpZcpeQM5UfH1e+h4FWzoSWKIAaGWrhZ/ci5K3L01z19RFhQ6
+ ozBRdJwpkBHP6eRM6vmjTHxSxg==
+X-Google-Smtp-Source: ABdhPJzVecx24aeX/XIXr3Kiz4wmki4YASU5CCzxkxqXdEV7PZeWLJ04FsCtb5yIhRTgAPsBatD8pQ==
+X-Received: by 2002:a5d:64c4:0:b0:206:10e0:d73b with SMTP id
+ f4-20020a5d64c4000000b0020610e0d73bmr5787095wri.412.1649238782416; 
+ Wed, 06 Apr 2022 02:53:02 -0700 (PDT)
+Received: from gojira.dev.6wind.com ([185.13.181.2])
+ by smtp.gmail.com with ESMTPSA id
+ f18-20020a5d6652000000b001e669ebd528sm13874604wrw.91.2022.04.06.02.53.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Apr 2022 02:53:01 -0700 (PDT)
+From: Olivier Matz <olivier.matz@6wind.com>
+To: netdev@vger.kernel.org
+Date: Wed,  6 Apr 2022 11:52:50 +0200
+Message-Id: <20220406095252.22338-1-olivier.matz@6wind.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- fb4f0492fef6adc1bbf935650d7fa1f59fe76e52
+Subject: [Intel-wired-lan] [PATCH net v2 0/2] ixgbe: fix promiscuous mode on
+ VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,133 +86,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, intel-wired-lan@osuosl.org,
+ stable@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Nicolas Dichtel <nicolas.dichtel@6wind.com>, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: fb4f0492fef6adc1bbf935650d7fa1f59fe76e52  ice: return proper error code in ice_add_adv_rule
+These 2 patches fix issues related to the promiscuous mode on VF.
 
-elapsed time: 2035m
+Comments are welcome,
+Olivier
 
-configs tested: 104
-configs skipped: 5
+Cc: stable@vger.kernel.org
+Cc: Nicolas Dichtel <nicolas.dichtel@6wind.com>
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Changes since v1:
+- resend with CC intel-wired-lan
+- remove CC Hiroshi Shimamoto (address does not exist anymore)
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-arm                              allyesconfig
-arm64                               defconfig
-i386                          randconfig-c001
-m68k                        m5407c3_defconfig
-sparc64                          alldefconfig
-powerpc                     pq2fads_defconfig
-arm                       imx_v6_v7_defconfig
-openrisc                  or1klitex_defconfig
-mips                        vocore2_defconfig
-sh                     magicpanelr2_defconfig
-ia64                        generic_defconfig
-m68k                       m5249evb_defconfig
-arm                           viper_defconfig
-arm                          iop32x_defconfig
-riscv             nommu_k210_sdcard_defconfig
-sparc                       sparc64_defconfig
-x86_64                        randconfig-c001
-arm                  randconfig-c002-20220405
-ia64                                defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-nios2                               defconfig
-arc                              allyesconfig
-alpha                               defconfig
-csky                                defconfig
-nios2                            allyesconfig
-alpha                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-parisc                              defconfig
-parisc64                            defconfig
-s390                             allmodconfig
-s390                                defconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-i386                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arc                  randconfig-r043-20220405
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                                  kexec
-x86_64                          rhel-8.3-func
-x86_64                               rhel-8.3
-x86_64                         rhel-8.3-kunit
+Olivier Matz (2):
+  ixgbe: fix bcast packets Rx on VF after promisc removal
+  ixgbe: fix unexpected VLAN Rx in promisc mode on VF
 
-clang tested configs:
-arm                           sama7_defconfig
-powerpc                 mpc836x_rdk_defconfig
-mips                          malta_defconfig
-mips                          ath79_defconfig
-powerpc                      obs600_defconfig
-x86_64                        randconfig-a005
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-hexagon              randconfig-r041-20220405
-hexagon              randconfig-r045-20220405
-s390                 randconfig-r044-20220405
-riscv                randconfig-r042-20220405
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
