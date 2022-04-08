@@ -1,70 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F1814F90D6
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Apr 2022 10:32:20 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90A714F95DA
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Apr 2022 14:33:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AFA71612DA;
-	Fri,  8 Apr 2022 08:32:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1E13D60AD5;
+	Fri,  8 Apr 2022 12:33:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RNjUgJ47u2uA; Fri,  8 Apr 2022 08:32:17 +0000 (UTC)
+	with ESMTP id gr1wCBcdE51P; Fri,  8 Apr 2022 12:33:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C3A560BA8;
-	Fri,  8 Apr 2022 08:32:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 04EA2607C0;
+	Fri,  8 Apr 2022 12:33:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D55981BF32B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 08:32:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 730811BF292
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 12:33:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B8EF740207
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 08:32:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6F46E84393
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 12:33:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CMoLGZltU9_x for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Apr 2022 08:32:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DPYcwK-2pvbt for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Apr 2022 12:33:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A0E7E40181
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 08:32:11 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 22FDC84392
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Apr 2022 12:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649406731; x=1680942731;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=ox5oIkI0Ou43wruJQuZSMgRQnV+8YetzBjubrrDlxCI=;
- b=M5eh/l78KP2WRhguyPjW23iVKENdoYlgrK9W4lQP0IOL2TR6sCvx0A5r
- xt4Uh5+dZ/KL+HIyJSoHpr/uH8hwojYCZ17gsEPfEbFRv3XCJ/yHJaU1m
- aOekhoZIKO6SHBXpiRbxM3aADVZ7BJssaZB/pMBj3fS31CaXtmTWED8qH
- rSOjhWgohlS91CuAEPSMX3iM2CiqHM/gTXMoNA7iF1Ub9jZ3CqCGF9kDE
- 8Qnr13T1brrhgQTK27siKDgYApTPWDzI5N0cmw+pUzNOAdY2RIvaANrzj
- mLwpLLlZgxOPqRB8ey7wqou487zGC73CZ3uCfwMvgE4RTFmTXjgOfHPmR Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="261538141"
-X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="261538141"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 01:32:11 -0700
+ t=1649421203; x=1680957203;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=XRRTHcC3vib6U8pYsXScDVRRZguO7b/FSE9Su8vSm/M=;
+ b=E6xFt5HHWsmdzSNjav+7vfLxy8KeKkzDCtwzYTLgbDImT3j8EcSsnFRZ
+ vdODmIjeLs39allXXCsSYe/0s4oHC0qcCSJ8Q+Z9lnscKt1c0H7ssMPaj
+ No3j9LO2RY0IUf5CEjYHp3z5WhrlWlyunwKUVfkzFKRGY4Ndc+mIFA1Us
+ 2AgQ9MlwHZ33ilYXHLSZNLUeRoJv/nlSo6RudhIgwOYlumXZ1buC5MTpn
+ yBGsaBK50/UIWRbUgLSqqJZBWdr4OhRQsqTA3dZ1ipXpOgeo+fCf2+3XZ
+ xj4riZyqndBoeXZzNPszlzVNuTdxdUYZ3UTv1MBoVOZIzr1dMHtjqbzt5 Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="286571733"
+X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="286571733"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2022 05:33:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="589149520"
-Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 08 Apr 2022 01:32:09 -0700
-Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nck2K-000047-Tb;
- Fri, 08 Apr 2022 08:32:08 +0000
-Date: Fri, 08 Apr 2022 16:31:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <624ff2fa.Xf8Fi35w2JI3lL63%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.90,245,1643702400"; d="scan'208";a="525361097"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga006.jf.intel.com with ESMTP; 08 Apr 2022 05:33:19 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 238CXHcv017340; Fri, 8 Apr 2022 13:33:17 +0100
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Fri,  8 Apr 2022 14:31:20 +0200
+Message-Id: <20220408123120.1829671-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220404161509.3489310-1-alexandr.lobakin@intel.com>
+References: <20220404161509.3489310-1-alexandr.lobakin@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 2a72fc8153cfba9ecb0e2933af9879654269b13a
+Subject: Re: [Intel-wired-lan] [PATCH v2 net] ice: arfs: fix use-after-free
+ when freeing @rx_cpu_rmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,209 +80,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ivan Vecera <ivecera@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ Brett Creeley <brett@pensando.io>, linux-kernel@vger.kernel.org,
+ Madhu Chittim <madhu.chittim@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 2a72fc8153cfba9ecb0e2933af9879654269b13a  igc: Fix suspending when PTM is active
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+Date: Mon, 4 Apr 2022 18:15:09 +0200
 
-elapsed time: 727m
+> The CI testing bots triggered the following splat:
+> 
+> [  718.203054] BUG: KASAN: use-after-free in free_irq_cpu_rmap+0x53/0x80
+> [  718.206349] Read of size 4 at addr ffff8881bd127e00 by task sh/20834
+> [  718.212852] CPU: 28 PID: 20834 Comm: sh Kdump: loaded Tainted: G S      W IOE     5.17.0-rc8_nextqueue-devqueue-02643-g23f3121aca93 #1
+> [  718.219695] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.02.01.0012.070720200218 07/07/2020
+> [  718.223418] Call Trace:
+> [  718.227139]
+> [  718.230783]  dump_stack_lvl+0x33/0x42
+> [  718.234431]  print_address_description.constprop.9+0x21/0x170
+> [  718.238177]  ? free_irq_cpu_rmap+0x53/0x80
+> [  718.241885]  ? free_irq_cpu_rmap+0x53/0x80
+> [  718.245539]  kasan_report.cold.18+0x7f/0x11b
+> [  718.249197]  ? free_irq_cpu_rmap+0x53/0x80
+> [  718.252852]  free_irq_cpu_rmap+0x53/0x80
+> [  718.256471]  ice_free_cpu_rx_rmap.part.11+0x37/0x50 [ice]
+> [  718.260174]  ice_remove_arfs+0x5f/0x70 [ice]
+> [  718.263810]  ice_rebuild_arfs+0x3b/0x70 [ice]
+> [  718.267419]  ice_rebuild+0x39c/0xb60 [ice]
+> [  718.270974]  ? asm_sysvec_apic_timer_interrupt+0x12/0x20
+> [  718.274472]  ? ice_init_phy_user_cfg+0x360/0x360 [ice]
+> [  718.278033]  ? delay_tsc+0x4a/0xb0
+> [  718.281513]  ? preempt_count_sub+0x14/0xc0
+> [  718.284984]  ? delay_tsc+0x8f/0xb0
+> [  718.288463]  ice_do_reset+0x92/0xf0 [ice]
+> [  718.292014]  ice_pci_err_resume+0x91/0xf0 [ice]
+> [  718.295561]  pci_reset_function+0x53/0x80
+> <...>
+> [  718.393035] Allocated by task 690:
+> [  718.433497] Freed by task 20834:
+> [  718.495688] Last potentially related work creation:
+> [  718.568966] The buggy address belongs to the object at ffff8881bd127e00
+>                 which belongs to the cache kmalloc-96 of size 96
+> [  718.574085] The buggy address is located 0 bytes inside of
+>                 96-byte region [ffff8881bd127e00, ffff8881bd127e60)
+> [  718.579265] The buggy address belongs to the page:
+> [  718.598905] Memory state around the buggy address:
+> [  718.601809]  ffff8881bd127d00: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+> [  718.604796]  ffff8881bd127d80: 00 00 00 00 00 00 00 00 00 00 fc fc fc fc fc fc
+> [  718.607794] >ffff8881bd127e00: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+> [  718.610811]                    ^
+> [  718.613819]  ffff8881bd127e80: 00 00 00 00 00 00 00 00 00 00 00 00 fc fc fc fc
+> [  718.617107]  ffff8881bd127f00: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+> 
+> This is due to that free_irq_cpu_rmap() is always being called
+> *after* (devm_)free_irq() and thus it tries to work with IRQ descs
+> already freed. For example, on device reset the driver frees the
+> rmap right before allocating a new one (the splat above).
+> Make rmap creation and freeing function symmetrical with
+> {request,free}_irq() calls i.e. do that on ifup/ifdown instead
+> of device probe/remove/resume. These operations can be performed
+> independently from the actual device aRFS configuration.
+> Also, make sure ice_vsi_free_irq() clears IRQ affinity notifiers
+> only when aRFS is disabled -- otherwise, CPU rmap sets and clears
+> its own and they must not be touched manually.
+> 
+> Fixes: 28bf26724fdb0 ("ice: Implement aRFS")
+> Co-developed-by: Ivan Vecera <ivecera@redhat.com>
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 
-configs tested: 175
-configs skipped: 4
+Bah, forgot to mention in v2 that it's an urgent fix. Tony, are you
+okay with posting it to netdev or allowing it to go directly to
+-net? It's been tested by Ivan already (I had also asked Konrad, but
+he hasn't replied yet).
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> ---
+> From v1[0]:
+>  - remove the obsolete `!vsi->arfs_fltr_list` check from
+>    ice_free_cpu_rx_rmap() leading to a leak and trace (Ivan).
+> 
+> [0] https://lore.kernel.org/netdev/20220404132832.1936529-1-alexandr.lobakin@intel.com
+> ---
 
-gcc tested configs:
-arm64                               defconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                          randconfig-c001
-arc                        nsim_700_defconfig
-arm                        mvebu_v7_defconfig
-arm                      integrator_defconfig
-powerpc                     taishan_defconfig
-sh                          polaris_defconfig
-arm                          iop32x_defconfig
-sh                           se7722_defconfig
-arc                            hsdk_defconfig
-powerpc                      bamboo_defconfig
-sh                        apsh4ad0a_defconfig
-arm                         axm55xx_defconfig
-arm                             rpc_defconfig
-mips                  maltasmvp_eva_defconfig
-powerpc                      ep88xc_defconfig
-powerpc                      ppc6xx_defconfig
-sh                           se7780_defconfig
-sparc64                          alldefconfig
-mips                     decstation_defconfig
-arm                            hisi_defconfig
-arm                           h5000_defconfig
-arm                         lubbock_defconfig
-sh                              ul2_defconfig
-arm                        cerfcube_defconfig
-ia64                      gensparse_defconfig
-arm                          gemini_defconfig
-sh                     sh7710voipgw_defconfig
-openrisc                    or1ksim_defconfig
-arm                       imx_v6_v7_defconfig
-m68k                        mvme16x_defconfig
-sh                        sh7757lcr_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                      tqm8xx_defconfig
-powerpc                  iss476-smp_defconfig
-powerpc                    sam440ep_defconfig
-powerpc                 mpc8540_ads_defconfig
-mips                            ar7_defconfig
-arm                         nhk8815_defconfig
-sh                   secureedge5410_defconfig
-sh                   rts7751r2dplus_defconfig
-arm                             pxa_defconfig
-sparc                               defconfig
-powerpc                      pcm030_defconfig
-powerpc64                           defconfig
-powerpc                       ppc64_defconfig
-ia64                        generic_defconfig
-arm                       multi_v4t_defconfig
-ia64                         bigsur_defconfig
-arm                        multi_v7_defconfig
-arc                        vdk_hs38_defconfig
-m68k                          multi_defconfig
-xtensa                           alldefconfig
-sh                          sdk7780_defconfig
-i386                             alldefconfig
-mips                        vocore2_defconfig
-x86_64                        randconfig-c001
-arm                  randconfig-c002-20220408
-arm                  randconfig-c002-20220406
-arm                  randconfig-c002-20220407
-ia64                                defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-csky                                defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-s390                                defconfig
-s390                             allmodconfig
-parisc                              defconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a011
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-arc                  randconfig-r043-20220408
-s390                 randconfig-r044-20220408
-riscv                randconfig-r042-20220408
-arc                  randconfig-r043-20220406
-arc                  randconfig-r043-20220407
-s390                 randconfig-r044-20220406
-riscv                randconfig-r042-20220406
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-x86_64                    rhel-8.3-kselftests
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                         rhel-8.3-kunit
-x86_64                               rhel-8.3
+--- 8< ---
 
-clang tested configs:
-x86_64                        randconfig-c007
-i386                          randconfig-c001
-powerpc              randconfig-c003-20220408
-riscv                randconfig-c006-20220408
-mips                 randconfig-c004-20220408
-arm                  randconfig-c002-20220408
-powerpc              randconfig-c003-20220406
-riscv                randconfig-c006-20220406
-mips                 randconfig-c004-20220406
-arm                  randconfig-c002-20220406
-powerpc                      pasemi_defconfig
-arm                            mps2_defconfig
-powerpc                   bluestone_defconfig
-mips                        qi_lb60_defconfig
-mips                           ip28_defconfig
-arm                          ep93xx_defconfig
-arm                     am200epdkit_defconfig
-powerpc                      ppc64e_defconfig
-powerpc                     skiroot_defconfig
-arm                        magician_defconfig
-powerpc                       ebony_defconfig
-powerpc                   microwatt_defconfig
-powerpc                    socrates_defconfig
-mips                     loongson1c_defconfig
-powerpc                  mpc885_ads_defconfig
-mips                     cu1000-neo_defconfig
-arm                          pcm027_defconfig
-riscv                             allnoconfig
-arm                          collie_defconfig
-arm                       mainstone_defconfig
-riscv                            alldefconfig
-powerpc                     powernv_defconfig
-mips                           rs90_defconfig
-arm                                 defconfig
-arm                         socfpga_defconfig
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-hexagon              randconfig-r045-20220408
-hexagon              randconfig-r041-20220408
+> -- 
+> 2.35.1
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Thanks,
+Al
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
