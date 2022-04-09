@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3A8A4FA556
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Apr 2022 08:10:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B11424FA552
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Apr 2022 08:10:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 46960408D5;
-	Sat,  9 Apr 2022 06:10:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2FEE6401B1;
+	Sat,  9 Apr 2022 06:10:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v_Y9tJJxEJQD; Sat,  9 Apr 2022 06:10:17 +0000 (UTC)
+	with ESMTP id ort7jAkQO0Q1; Sat,  9 Apr 2022 06:10:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 323EF404B9;
-	Sat,  9 Apr 2022 06:10:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 074C9401E1;
+	Sat,  9 Apr 2022 06:10:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 83F6F1BF951
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Apr 2022 06:10:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BB0771BF951
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Apr 2022 06:10:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B4BBC4011A
+ by smtp2.osuosl.org (Postfix) with ESMTP id A75C94015F
  for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Apr 2022 06:10:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8cBQ8hWDoIiW for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id BEKufGajgejM for <intel-wired-lan@lists.osuosl.org>;
  Sat,  9 Apr 2022 06:10:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D2B2A401B1
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A9C104011A
  for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Apr 2022 06:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1649484600; x=1681020600;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=mNrZiK8dnjMtpjjXxMekwgR7K7gpKCr7c0k0UXGAqXU=;
- b=mKpT/rZmNA5CwJDED6+EVRxt3ueKDVrXLKW/LD11TSinEhKVGXoRHpEa
- P4R/VJM3DD51W6Ru1ebUexMSSigB8YnlhmZep9etdZC7h4fCteIu/oueD
- a0XwUiOcWaJ0olr6LH6m5VbhFCeZcwBrWLiG4b61b+dP4KRy8B+R3p4tf
- RmvnB7jJSWg00/tS0m9txmJjsfboZEF/RKqnzOkF8UgGRQ7gRDhrWuU+3
- Na+2XkNF8iJn/icVureHQHXg83ZWiBuCvXlOs9VSt7wLSLxuARfMgjvvr
- SgfbT3j3iiZ6mEZm8V1WIUGS4FW31HdiluxPOKhgqpYgcFnYqItKgSkY4 g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="259362378"
-X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="259362378"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ bh=pL6LjUpv2UCEOSVxmOA0EovWLak9PEvTcwZOouxY9gI=;
+ b=Bsdk5Uey/r/pOTXVgjM/ViMU1EkwEqpWO5AmVAbdsC5inM3nVPmHDN0x
+ fXwGeGKH+lslfl9BV+WjKY6zNVEg3cZbsDjKwhUH00B+YVKv6JyGkj5Fi
+ lSs+vsrfDmG6nKIHAAWWDUknOEkEM/2fzabBg9+EdEHqqxNA/k69vYs58
+ uRl0xbtfE8N4hDlRRlWgg6noEX7F+vCHlOayfqRu7Y5Bke0A69SXFd5mb
+ o45unIS3NvSzERLjUidq9+L/RuIuZRlu2L5qDfY1cWS7cDN0uMMbbSkPu
+ Fv+t/6ljYfC5CeH64moL3vgcn9uZ68OUCevwQANyRB3joxuEhf61pD5V7 g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10311"; a="259362377"
+X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="259362377"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  08 Apr 2022 23:09:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="852431353"
+X-IronPort-AV: E=Sophos;i="5.90,247,1643702400"; d="scan'208";a="643241903"
 Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by fmsmga005.fm.intel.com with ESMTP; 08 Apr 2022 23:09:58 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 08 Apr 2022 23:09:58 -0700
 Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nd4IH-0000x1-OP;
+ (envelope-from <lkp@intel.com>) id 1nd4IH-0000wd-GF;
  Sat, 09 Apr 2022 06:09:57 +0000
-Date: Sat, 09 Apr 2022 14:09:12 +0800
+Date: Sat, 09 Apr 2022 14:09:19 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62512308.PgmFyOs7hNuCGtSn%lkp@intel.com>
+Message-ID: <6251230f.qTZmvONgU7K7XsuE%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 1731f2c097fda8fab2cbcd16ff2e8a6ff81981ee
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ 7d59706dbef8de83b3662026766507bc494223d7
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,12 +80,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 1731f2c097fda8fab2cbcd16ff2e8a6ff81981ee  ice: Fix incorrect locking in ice_vc_process_vf_msg()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: 7d59706dbef8de83b3662026766507bc494223d7  Revert "iavf: Fix deadlock occurrence during resetting VF interface"
 
 elapsed time: 722m
 
-configs tested: 130
+configs tested: 135
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -98,6 +98,10 @@ arm                              allmodconfig
 arm                                 defconfig
 arm                              allyesconfig
 i386                          randconfig-c001
+mips                  maltasmvp_eva_defconfig
+mips                 decstation_r4k_defconfig
+arm                       aspeed_g5_defconfig
+mips                      loongson3_defconfig
 m68k                             allyesconfig
 microblaze                      mmu_defconfig
 powerpc                    sam440ep_defconfig
@@ -128,8 +132,8 @@ powerpc64                           defconfig
 ia64                          tiger_defconfig
 powerpc                 mpc8540_ads_defconfig
 arm                          gemini_defconfig
-xtensa                generic_kc705_defconfig
 ia64                             allmodconfig
+xtensa                generic_kc705_defconfig
 arc                     haps_hs_smp_defconfig
 riscv             nommu_k210_sdcard_defconfig
 xtensa                  nommu_kc705_defconfig
@@ -174,9 +178,9 @@ x86_64                        randconfig-a015
 i386                          randconfig-a012
 i386                          randconfig-a014
 i386                          randconfig-a016
+x86_64                        randconfig-a004
 x86_64                        randconfig-a002
 x86_64                        randconfig-a006
-x86_64                        randconfig-a004
 arc                  randconfig-r043-20220408
 s390                 randconfig-r044-20220408
 riscv                randconfig-r042-20220408
@@ -209,6 +213,7 @@ mips                      pic32mzda_defconfig
 powerpc                     pseries_defconfig
 powerpc                   bluestone_defconfig
 powerpc                      obs600_defconfig
+powerpc               mpc834x_itxgp_defconfig
 mips                        qi_lb60_defconfig
 mips                     cu1000-neo_defconfig
 riscv                             allnoconfig
