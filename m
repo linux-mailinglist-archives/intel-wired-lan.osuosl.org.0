@@ -1,52 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 616C14FE268
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Apr 2022 15:28:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AF9F4FE5C3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Apr 2022 18:24:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F419240AD1;
-	Tue, 12 Apr 2022 13:28:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7DB7740B0F;
+	Tue, 12 Apr 2022 16:24:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eFk398gURB-R; Tue, 12 Apr 2022 13:28:30 +0000 (UTC)
+	with ESMTP id EpM1w5zpj96R; Tue, 12 Apr 2022 16:24:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A5FFD40AD0;
-	Tue, 12 Apr 2022 13:28:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6E3D340B0A;
+	Tue, 12 Apr 2022 16:24:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5614C1BF859
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 13:28:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4C5D01BF3FD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 16:24:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 43FFE83EAC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 13:28:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 32E4C40B0A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 16:24:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vv8m1CQWS4S8 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Apr 2022 13:28:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4BEF783EA6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 13:28:18 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id AA5E961EA1923;
- Tue, 12 Apr 2022 15:28:14 +0200 (CEST)
-Message-ID: <bc534155-e5bc-b9d2-24b4-e7559a7c5fb5@molgen.mpg.de>
-Date: Tue, 12 Apr 2022 15:28:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Content-Language: en-US
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7MjR4Qt-PRT8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Apr 2022 16:24:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9CD0C40B09
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Apr 2022 16:24:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1649780683; x=1681316683;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=UeSHKiFD9MWQD9/lwoZzgM1WMiX/Uf+MCYGmOWbS/MQ=;
+ b=nYKRMkcudgEnH+DD2KoMZlx1CaE1ay/zwU/7jeTQZtaPx5v+VxlEBWCi
+ J2E0Umo0Yq0bKUiOPg+M8Ax5eiha77IGtxUFO2Anu1VvBNmf9UHffIV+A
+ Dz7VL/nlJ6gZS9fnuozSIMs9jk/s9mQnPKuoeWdci1LFv/+dw1k1Tj1JC
+ 9spkjIYiU/Eb4p+HQPESmwszUNjLNtTLVoSXjoMcaeP4aQweWELX3a3Ho
+ 04hotbu+8VGfyJaqPhpMdpYkx/vup6E/nTe/bHpTricuSmcCK0WVDj69z
+ TkprZu8vZwo+BJhJLdJgdy9Eo56iILSuxjEI6RvRqKDNHkRZxwgulc2g6 Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="242362657"
+X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; d="scan'208";a="242362657"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2022 09:11:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; d="scan'208";a="655174943"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga002.fm.intel.com with ESMTP; 12 Apr 2022 09:11:21 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 23CGBKdH010632; Tue, 12 Apr 2022 17:11:20 +0100
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: Petr Oros <poros@redhat.com>
-References: <20220412102753.670867-1-poros@redhat.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue, 12 Apr 2022 18:08:56 +0200
+Message-Id: <20220412160856.1027597-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220412102753.670867-1-poros@redhat.com>
+References: <20220412102753.670867-1-poros@redhat.com>
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH] ice: wait for EMP reset after
  firmware flash
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -61,99 +78,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ivecera@redhat.com, regressions@lists.linux.dev, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: ivecera@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-W0NjOiArSmFrb2IsICtyZWdyZXNzaW9uc0BsaXN0cy5saW51eC5kZXZdCgoKRGVhciBQZXRyLAoK
-ClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaCBmb3IgdGhlIHJlZ3Jlc3Npb24uCgojcmVnemJvdCBe
-aW50cm9kdWNlZCAzOTllMjdkYmJkOWU5NAoKCkFtIDEyLjA0LjIyIHVtIDEyOjI3IHNjaHJpZWIg
-UGV0ciBPcm9zOgoKUGxlYXNlIG1lbnRpb24gdGhlIHRpbWUgaW4gdGhlIGNvbW1pdCBtZXNzYWdl
-IHN1bW1hcnk6CgppY2U6IFdhaXQgNSBzIGZvciBFTVAgcmVzZXQgYWZ0ZXIgZmlybXdhcmUgZmxh
-c2gKCj4gV2UgbmVlZCB0byB3YWl0IGZvciBFTVAgcmVzZXQgYWZ0ZXIgZmlybXdhcmUgZmxhc2gu
-Cj4gQ29kZSB3YXMgZXh0cmFjdGVkIGZyb20gT09UIGRyaXZlciBhbmQgd2l0aG91dCB0aGlzIHdh
-aXQgZndfYWN0aXZhdGUgbGV0CgpXaGljaCBPT1QgZHJpdmVyIGV4YWN0bHk/Cgo+IGNhcmQgaW4g
-aW5jb25zaXN0ZW50IHN0YXRlIHJlY292ZXJhYmxlIG9ubHkgYnkgc2Vjb25kIGZsYXNoL2FjdGl2
-YXRlCgpQbGVhc2UgcmVmbG93IGZvciA3NSBjaGFyYWN0ZXJzIHBlciBsaW5lLCBhbmQgYWRkIGEg
-ZG90L3BlcmlvZCB0byB0aGUgCmVuZCBvZiBzZW50ZW5jZXMuCgo+IFJlcHJvZHVjZXI6Cj4gW3Jv
-b3RAaG9zdCB+XSMgZGV2bGluayBkZXYgZmxhc2ggcGNpLzAwMDA6Y2E6MDAuMCBmaWxlIEU4MTBf
-WFhWREE0X0ZIX09fU0VDX0ZXXzFwNnAxcDlfTlZNXzNwMTBfUExETW9NQ1RQXzAuMTFfODAwMEFE
-N0IuYmluCj4gUHJlcGFyaW5nIHRvIGZsYXNoCj4gW2Z3Lm1nbXRdIEVyYXNpbmcKPiBbZncubWdt
-dF0gRXJhc2luZyBkb25lCj4gW2Z3Lm1nbXRdIEZsYXNoaW5nIDEwMCUKPiBbZncubWdtdF0gRmxh
-c2hpbmcgZG9uZSAxMDAlCj4gW2Z3LnVuZGldIEVyYXNpbmcKPiBbZncudW5kaV0gRXJhc2luZyBk
-b25lCj4gW2Z3LnVuZGldIEZsYXNoaW5nIDEwMCUKPiBbZncudW5kaV0gRmxhc2hpbmcgZG9uZSAx
-MDAlCj4gW2Z3Lm5ldGxpc3RdIEVyYXNpbmcKPiBbZncubmV0bGlzdF0gRXJhc2luZyBkb25lCj4g
-W2Z3Lm5ldGxpc3RdIEZsYXNoaW5nIDEwMCUKPiBbZncubmV0bGlzdF0gRmxhc2hpbmcgZG9uZSAx
-MDAlCj4gQWN0aXZhdGUgbmV3IGZpcm13YXJlIGJ5IGRldmxpbmsgcmVsb2FkCj4gW3Jvb3RAaG9z
-dCB+XSMgZGV2bGluayBkZXYgcmVsb2FkIHBjaS8wMDAwOmNhOjAwLjAgYWN0aW9uIGZ3X2FjdGl2
-YXRlCj4gcmVsb2FkX2FjdGlvbnNfcGVyZm9ybWVkOgo+ICAgICAgZndfYWN0aXZhdGUKPiBbcm9v
-dEBob3N0IH5dIyBpcCBsaW5rIHNob3cgZW5zN2YwCj4gNzE6IGVuczdmMDogPE5PLUNBUlJJRVIs
-QlJPQURDQVNULE1VTFRJQ0FTVCxVUD4gbXR1IDE1MDAgcWRpc2MgbXEgc3RhdGUgRE9XTiBtb2Rl
-IERFRkFVTFQgZ3JvdXAgZGVmYXVsdCBxbGVuIDEwMDAKPiAgICAgIGxpbmsvZXRoZXIgYjQ6OTY6
-OTE6ZGM6NzI6ZTAgYnJkIGZmOmZmOmZmOmZmOmZmOmZmCj4gICAgICBhbHRuYW1lIGVucDIwMnMw
-ZjAKPiAKPiBkbWVzZyBhZnRlciBmbGFzaDoKPiBbICAgNTUuMTIwNzg4XSBpY2U6IENvcHlyaWdo
-dCAoYykgMjAxOCwgSW50ZWwgQ29ycG9yYXRpb24uCj4gWyAgIDU1LjI3NDczNF0gaWNlIDAwMDA6
-Y2E6MDAuMDogR2V0IFBIWSBjYXBhYmlsaXRpZXMgZmFpbGVkIHN0YXR1cyA9IC01LCBjb250aW51
-aW5nIGFueXdheQo+IFsgICA1NS41Njk3OTddIGljZSAwMDAwOmNhOjAwLjA6IFRoZSBERFAgcGFj
-a2FnZSB3YXMgc3VjY2Vzc2Z1bGx5IGxvYWRlZDogSUNFIE9TIERlZmF1bHQgUGFja2FnZSB2ZXJz
-aW9uIDEuMy4yOC4wCj4gWyAgIDU1LjYwMzYyOV0gaWNlIDAwMDA6Y2E6MDAuMDogR2V0IFBIWSBj
-YXBhYmlsaXR5IGZhaWxlZC4KPiBbICAgNTUuNjA4OTUxXSBpY2UgMDAwMDpjYTowMC4wOiBpY2Vf
-aW5pdF9udm1fcGh5X3R5cGUgZmFpbGVkOiAtNQo+IFsgICA1NS42NDczNDhdIGljZSAwMDAwOmNh
-OjAwLjA6IFBUUCBpbml0IHN1Y2Nlc3NmdWwKPiBbICAgNTUuNjc1NTM2XSBpY2UgMDAwMDpjYTow
-MC4wOiBEQ0IgaXMgZW5hYmxlZCBpbiB0aGUgaGFyZHdhcmUsIG1heCBudW1iZXIgb2YgVENzIHN1
-cHBvcnRlZCBvbiB0aGlzIHBvcnQgYXJlIDgKPiBbICAgNTUuNjg1MzY1XSBpY2UgMDAwMDpjYTow
-MC4wOiBGVyBMTERQIGlzIGRpc2FibGVkLCBEQ0J4L0xMRFAgaW4gU1cgbW9kZS4KPiBbICAgNTUu
-NjkyMTc5XSBpY2UgMDAwMDpjYTowMC4wOiBDb21taXQgRENCIENvbmZpZ3VyYXRpb24gdG8gdGhl
-IGhhcmR3YXJlCj4gWyAgIDU1LjcwMTM4Ml0gaWNlIDAwMDA6Y2E6MDAuMDogMTI2LjAyNCBHYi9z
-IGF2YWlsYWJsZSBQQ0llIGJhbmR3aWR0aCwgbGltaXRlZCBieSAxNi4wIEdUL3MgUENJZSB4OCBs
-aW5rIGF0IDAwMDA6Yzk6MDIuMCAoY2FwYWJsZSBvZiAyNTIuMDQ4IEdiL3Mgd2l0aCAxNi4wIEdU
-L3MgUENJZSB4MTYgbGluaykKClNvLCB3aGF0IGlzIHRoZSBlcnJvcj8gYEdldCBQSFkgY2FwYWJp
-bGl0aWVzIGZhaWxlZCBzdGF0dXMgPSAtNWA/CgpXaGF0IGZpcm13YXJlIHZlcnNpb24gZGlkIHRo
-ZSBuZXR3b3JrIGNhcmQgaGF2ZSBiZWZvcmUgYW5kIGFmdGVyIHRoZSB1cGRhdGU/Cgo+IFJlYm9v
-dCBkb24ndCBoZWxwLCBvbmx5IHNlY29uZCBmbGFzaC9hY3RpdmF0ZSB3aXRoIE9PVCBvciBwYXRj
-aGVkIGRyaXZlciBwdXQgY2FyZCBiYWNrIGluIGNvbnNpc3RlbnQgc3RhdGUKCnMvZG9uJ3QvZG9l
-c27igJl0LwoKPiBBZnRlciBwYXRjaDoKPiBbcm9vdEBob3N0IH5dIyBkZXZsaW5rIGRldiBmbGFz
-aCBwY2kvMDAwMDpjYTowMC4wIGZpbGUgRTgxMF9YWFZEQTRfRkhfT19TRUNfRldfMXA2cDFwOV9O
-Vk1fM3AxMF9QTERNb01DVFBfMC4xMV84MDAwQUQ3Qi5iaW4KPiBQcmVwYXJpbmcgdG8gZmxhc2gK
-PiBbZncubWdtdF0gRXJhc2luZwo+IFtmdy5tZ210XSBFcmFzaW5nIGRvbmUKPiBbZncubWdtdF0g
-Rmxhc2hpbmcgMTAwJQo+IFtmdy5tZ210XSBGbGFzaGluZyBkb25lIDEwMCUKPiBbZncudW5kaV0g
-RXJhc2luZwo+IFtmdy51bmRpXSBFcmFzaW5nIGRvbmUKPiBbZncudW5kaV0gRmxhc2hpbmcgMTAw
-JQo+IFtmdy51bmRpXSBGbGFzaGluZyBkb25lIDEwMCUKPiBbZncubmV0bGlzdF0gRXJhc2luZwo+
-IFtmdy5uZXRsaXN0XSBFcmFzaW5nIGRvbmUKPiBbZncubmV0bGlzdF0gRmxhc2hpbmcgMTAwJQo+
-IFtmdy5uZXRsaXN0XSBGbGFzaGluZyBkb25lIDEwMCUKPiBBY3RpdmF0ZSBuZXcgZmlybXdhcmUg
-YnkgZGV2bGluayByZWxvYWQKPiBbcm9vdEBob3N0IH5dIyBkZXZsaW5rIGRldiByZWxvYWQgcGNp
-LzAwMDA6Y2E6MDAuMCBhY3Rpb24gZndfYWN0aXZhdGUKPiByZWxvYWRfYWN0aW9uc19wZXJmb3Jt
-ZWQ6Cj4gICAgICBmd19hY3RpdmF0ZQo+IFtyb290QGhvc3Qgfl0jIGlwIGxpbmsgc2hvdyBlbnM3
-ZjAKPiAxOTogZW5zN2YwOiA8QlJPQURDQVNULE1VTFRJQ0FTVCxVUCxMT1dFUl9VUD4gbXR1IDE1
-MDAgcWRpc2MgbXEgc3RhdGUgVVAgbW9kZSBERUZBVUxUIGdyb3VwIGRlZmF1bHQgcWxlbiAxMDAw
-Cj4gICAgICBsaW5rL2V0aGVyIGI0Ojk2OjkxOmRjOjcyOmUwIGJyZCBmZjpmZjpmZjpmZjpmZjpm
-Zgo+ICAgICAgYWx0bmFtZSBlbnAyMDJzMGYwCgpEaWQgeW91IHRyeSBhbnl0aGluZyBsZXNzIHRo
-YW4gZml2ZSBzZWNvbmRzPyBpNDBlIHVzZXMgb25lIHNlY29uZCwgY2YuIApjb21taXQgOWIxM2Jk
-NTMxMzRjIChpNDBlOiBJbmNyZWFzZSBkZWxheSB0byAxIHMgYWZ0ZXIgZ2xvYmFsIEVNUCByZXNl
-dCkuCgo+IEZpeGVzOiAzOTllMjdkYmJkOWU5NCAoImljZTogc3VwcG9ydCBpbW1lZGlhdGUgZmly
-bXdhcmUgYWN0aXZhdGlvbiB2aWEgZGV2bGluayByZWxvYWQiKQo+IFNpZ25lZC1vZmYtYnk6IFBl
-dHIgT3JvcyA8cG9yb3NAcmVkaGF0LmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbWFpbi5jIHwgMyArKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2Vy
-dGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYwo+
-IGluZGV4IGQ3Njg5MjU3ODVjYTc5Li45MGVhMjIwM2NkYzc2MyAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYwo+ICsrKyBiL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jCj4gQEAgLTY5MzEsMTIgKzY5MzEsMTUgQEAg
-c3RhdGljIHZvaWQgaWNlX3JlYnVpbGQoc3RydWN0IGljZV9wZiAqcGYsIGVudW0gaWNlX3Jlc2V0
-X3JlcSByZXNldF90eXBlKQo+ICAgCj4gICAJZGV2X2RiZyhkZXYsICJyZWJ1aWxkaW5nIFBGIGFm
-dGVyIHJlc2V0X3R5cGU9JWRcbiIsIHJlc2V0X3R5cGUpOwo+ICAgCj4gKyNkZWZpbmUgSUNFX0VN
-UF9SRVNFVF9TTEVFUCA1MDAwCgpQbGVhc2UgYXBwZW5kIHRoZSB1bml0IHRvIHRoZSBtYWNybyBu
-YW1lLgoKPiAgIAlpZiAocmVzZXRfdHlwZSA9PSBJQ0VfUkVTRVRfRU1QUikgewo+ICAgCQkvKiBJ
-ZiBhbiBFTVAgcmVzZXQgaGFzIG9jY3VycmVkLCBhbnkgcHJldmlvdXNseSBwZW5kaW5nIGZsYXNo
-Cj4gICAJCSAqIHVwZGF0ZSB3aWxsIGhhdmUgY29tcGxldGVkLiBXZSBubyBsb25nZXIga25vdyB3
-aGV0aGVyIG9yCj4gICAJCSAqIG5vdCB0aGUgTlZNIHVwZGF0ZSBFTVAgcmVzZXQgaXMgcmVzdHJp
-Y3RlZC4KPiAgIAkJICovCj4gICAJCXBmLT5md19lbXBfcmVzZXRfZGlzYWJsZWQgPSBmYWxzZTsK
-PiArCj4gKwkJbXNsZWVwKElDRV9FTVBfUkVTRVRfU0xFRVApOwo+ICAgCX0KPiAgIAo+ICAgCWVy
-ciA9IGljZV9pbml0X2FsbF9jdHJscShodyk7CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4g
-bWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1
-b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Petr Oros <poros@redhat.com>
+Date: Tue, 12 Apr 2022 12:27:53 +0200
+
+> We need to wait for EMP reset after firmware flash.
+> Code was extracted from OOT driver and without this wait fw_activate let
+> card in inconsistent state recoverable only by second flash/activate
+> 
+> Reproducer:
+> [root@host ~]# devlink dev flash pci/0000:ca:00.0 file E810_XXVDA4_FH_O_SEC_FW_1p6p1p9_NVM_3p10_PLDMoMCTP_0.11_8000AD7B.bin
+> Preparing to flash
+> [fw.mgmt] Erasing
+> [fw.mgmt] Erasing done
+> [fw.mgmt] Flashing 100%
+> [fw.mgmt] Flashing done 100%
+> [fw.undi] Erasing
+> [fw.undi] Erasing done
+> [fw.undi] Flashing 100%
+> [fw.undi] Flashing done 100%
+> [fw.netlist] Erasing
+> [fw.netlist] Erasing done
+> [fw.netlist] Flashing 100%
+> [fw.netlist] Flashing done 100%
+> Activate new firmware by devlink reload
+> [root@host ~]# devlink dev reload pci/0000:ca:00.0 action fw_activate
+> reload_actions_performed:
+>     fw_activate
+> [root@host ~]# ip link show ens7f0
+> 71: ens7f0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
+>     link/ether b4:96:91:dc:72:e0 brd ff:ff:ff:ff:ff:ff
+>     altname enp202s0f0
+> 
+> dmesg after flash:
+> [   55.120788] ice: Copyright (c) 2018, Intel Corporation.
+> [   55.274734] ice 0000:ca:00.0: Get PHY capabilities failed status = -5, continuing anyway
+> [   55.569797] ice 0000:ca:00.0: The DDP package was successfully loaded: ICE OS Default Package version 1.3.28.0
+> [   55.603629] ice 0000:ca:00.0: Get PHY capability failed.
+> [   55.608951] ice 0000:ca:00.0: ice_init_nvm_phy_type failed: -5
+> [   55.647348] ice 0000:ca:00.0: PTP init successful
+> [   55.675536] ice 0000:ca:00.0: DCB is enabled in the hardware, max number of TCs supported on this port are 8
+> [   55.685365] ice 0000:ca:00.0: FW LLDP is disabled, DCBx/LLDP in SW mode.
+> [   55.692179] ice 0000:ca:00.0: Commit DCB Configuration to the hardware
+> [   55.701382] ice 0000:ca:00.0: 126.024 Gb/s available PCIe bandwidth, limited by 16.0 GT/s PCIe x8 link at 0000:c9:02.0 (capable of 252.048 Gb/s with 16.0 GT/s PCIe x16 link)
+> Reboot don't help, only second flash/activate with OOT or patched driver put card back in consistent state
+> 
+> After patch:
+> [root@host ~]# devlink dev flash pci/0000:ca:00.0 file E810_XXVDA4_FH_O_SEC_FW_1p6p1p9_NVM_3p10_PLDMoMCTP_0.11_8000AD7B.bin
+> Preparing to flash
+> [fw.mgmt] Erasing
+> [fw.mgmt] Erasing done
+> [fw.mgmt] Flashing 100%
+> [fw.mgmt] Flashing done 100%
+> [fw.undi] Erasing
+> [fw.undi] Erasing done
+> [fw.undi] Flashing 100%
+> [fw.undi] Flashing done 100%
+> [fw.netlist] Erasing
+> [fw.netlist] Erasing done
+> [fw.netlist] Flashing 100%
+> [fw.netlist] Flashing done 100%
+> Activate new firmware by devlink reload
+> [root@host ~]# devlink dev reload pci/0000:ca:00.0 action fw_activate
+> reload_actions_performed:
+>     fw_activate
+> [root@host ~]# ip link show ens7f0
+> 19: ens7f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+>     link/ether b4:96:91:dc:72:e0 brd ff:ff:ff:ff:ff:ff
+>     altname enp202s0f0
+> 
+> Fixes: 399e27dbbd9e94 ("ice: support immediate firmware activation via devlink reload")
+> Signed-off-by: Petr Oros <poros@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index d768925785ca79..90ea2203cdc763 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -6931,12 +6931,15 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+>  
+>  	dev_dbg(dev, "rebuilding PF after reset_type=%d\n", reset_type);
+>  
+> +#define ICE_EMP_RESET_SLEEP 5000
+
+Ooof, 5 sec is a lot! Is there any way to poll the device readiness?
+Does it really need the whole 5 sec?
+
+>  	if (reset_type == ICE_RESET_EMPR) {
+>  		/* If an EMP reset has occurred, any previously pending flash
+>  		 * update will have completed. We no longer know whether or
+>  		 * not the NVM update EMP reset is restricted.
+>  		 */
+>  		pf->fw_emp_reset_disabled = false;
+> +
+> +		msleep(ICE_EMP_RESET_SLEEP);
+>  	}
+>  
+>  	err = ice_init_all_ctrlq(hw);
+> -- 
+> 2.35.1
+
+Thanks,
+Al
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
