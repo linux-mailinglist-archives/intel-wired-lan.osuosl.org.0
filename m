@@ -1,56 +1,142 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 084AF502B55
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Apr 2022 15:55:06 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECACE502B71
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Apr 2022 16:05:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C9F060C0C;
-	Fri, 15 Apr 2022 13:55:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 747B4404EE;
+	Fri, 15 Apr 2022 14:05:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MhnTRhYJDNZQ; Fri, 15 Apr 2022 13:55:03 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id X1EVusA4uYxY; Fri, 15 Apr 2022 14:05:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4DE1360AD7;
-	Fri, 15 Apr 2022 13:55:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6F462400D1;
+	Fri, 15 Apr 2022 14:05:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 78C251BF30C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 13:54:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2EBEE1BF8C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 06:10:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6604960AD7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 13:54:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1BFD281440
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 06:10:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k2HTKr1D2__O for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Apr 2022 13:54:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C002F60A77
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 13:54:56 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5ae925.dynamic.kabel-deutschland.de
- [95.90.233.37])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3984E61EA1928;
- Fri, 15 Apr 2022 15:54:54 +0200 (CEST)
-Message-ID: <76921ca9-07dc-3c26-cf48-a74274a795d0@molgen.mpg.de>
-Date: Fri, 15 Apr 2022 15:54:53 +0200
-MIME-Version: 1.0
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=t2datacom.onmicrosoft.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Hr8iw0fYoStK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Apr 2022 06:10:54 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from EUR04-VI1-obe.outbound.protection.outlook.com
+ (mail-eopbgr80077.outbound.protection.outlook.com [40.107.8.77])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0CCE98141E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 06:10:53 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=a/wz9XmKXX2pYzJuDWKZmrkhKC+Z8scMcNIf9sOWbb4gLakwS2xWFuthqgq0CglTE7Dv+0SjTOeBObQroy9fEX7ocTqq/nrPbZgP0xilj+0NquG75IYXTyA/pIuPaL+JEoMFkM8i9ShPmEhzCIlCa9jsLqTAF74fHkYwcrEbDJMDP2OB8wkdbEYTHi2OW9Brm2KOU8eXDX+81elgtoRlshC4I7jaDBijKx75f1bGvxIjxE6ah7QrnINEZTEju7Qm/kAQCVkHNl8seBe4nujKYd6vT+HypAYqU/GntJbDixKKzvNED8+RW1tF947b2a3yESg4rcJ5Zw4ER24O3LJx5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A8YNmlIoPSASeLJoq74E1xOGdIz5kEDK0lGZmksFfGQ=;
+ b=cIdwdGRtr4dWingQ6J10EtM0bqzun3c3s68q5qws+R6staOX2s+pZHyUTNsBvQQPT74VYLgYatNivfsVPMHnYWeVgnwNfkmQ22SfD9DX+Dnw0pppQDQ4TS6uAUM3q/RvrK9sEmOEijbB+sJuTtAY0g+V0iV+n29SYolgvfPUElWMSED5oOw1KvvREIyN45eKWflUASWA3Ocz5WFSNBlzzB4ieR2pPGnylHxWk73f5TLIoPTotQUitqZwsiwq/HbUuX+JnphcCpTJAeKR/lUBAWyvipPed91Un5qZnYyJS+JLbf7E5LvGWk2sufNfUxcPB7xmid8HN2TsORSu5HsAFg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=t2data.com; dmarc=pass action=none header.from=t2data.com;
+ dkim=pass header.d=t2data.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=t2datacom.onmicrosoft.com; s=selector1-t2datacom-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A8YNmlIoPSASeLJoq74E1xOGdIz5kEDK0lGZmksFfGQ=;
+ b=ShpPa2xJFHHBY/K3wX+8e1pvDblsuTBv7ltiu5JUeI62GWWe0yvmQeJlg4QIt1HuiD8B4NWVjfhn6sMcvl+2AY3M8YfhNxDy4ayEWPcNQ59B/5wQqCLwxbQv59i1Ix6Th+WEz+F3SX8FP53EU4cqCl6HZplX8OISxGX16gjUpF0=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=t2data.com;
+Received: from DB9P251MB0618.EURP251.PROD.OUTLOOK.COM (2603:10a6:10:334::22)
+ by AS4P251MB0821.EURP251.PROD.OUTLOOK.COM (2603:10a6:20b:511::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.19; Wed, 13 Apr
+ 2022 06:10:50 +0000
+Received: from DB9P251MB0618.EURP251.PROD.OUTLOOK.COM
+ ([fe80::3ded:58a4:e21d:33db]) by DB9P251MB0618.EURP251.PROD.OUTLOOK.COM
+ ([fe80::3ded:58a4:e21d:33db%3]) with mapi id 15.20.5164.020; Wed, 13 Apr 2022
+ 06:10:50 +0000
+Message-ID: <3438c789-d4c2-1b41-79d2-d2fb9ff6f089@t2data.com>
+Date: Wed, 13 Apr 2022 08:10:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
+ Thunderbird/91.7.0
 Content-Language: en-US
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-References: <20220415103139.794790-1-karol.kolacinski@intel.com>
- <20220415103139.794790-2-karol.kolacinski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220415103139.794790-2-karol.kolacinski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH intel-next 2/3] ice: add i2c write
- command
+To: intel-wired-lan@lists.osuosl.org
+From: Christian Melki <christian.melki@t2data.com>
+X-ClientProxiedBy: GV3P280CA0005.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:b::19) To DB9P251MB0618.EURP251.PROD.OUTLOOK.COM
+ (2603:10a6:10:334::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 7a9627be-42d3-4f03-6bc9-08da1d145b98
+X-MS-TrafficTypeDiagnostic: AS4P251MB0821:EE_
+X-Microsoft-Antispam-PRVS: <AS4P251MB082159F72FB82FDC396A1604DAEC9@AS4P251MB0821.EURP251.PROD.OUTLOOK.COM>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: S8M5JbFX5X6GGsS390XT20W/5uzEBPxz/qY00MeGXRis0+ABsgzRkKu/e0KtOXNXrzJFYmPU4DqhJTLOZNybrkFKG9nu4gjaHcvpoiRBEEZGlwmEACzMqGLhchTs5PuzPBvG5S3WKIfirQ0iXIt7M/x5DQLejStIqJc6wN0lYO5fVOWz04nKhuTYr9sdtUh2mmfIrBXRkZwueL5ruE7OTZtgYlS/KiXqBxldxuUrTlDvk4bmiPR4aI8gvw0B4r9FyYYoxlx5ooA9SoNhVX44mzYhWCz+bUZldZ4LZ69ZU7JQUurn3SnPh5C2ytddHGaMi9sv7NNilclVIir29OcLzxJN5jqSCiOE3oM+olImFyF216gVOgaJuftfuTADd7u17sbOVo1n2wHoGm7m/TsPshoSGWN67K9lseGVufBJciKmz25MVtondB2pekBPmsJPqvFH7U++JKnBUuKqox5ivnQGhlRitTCqB6Y/ZCgVgh2CvSHEsr/LbOXx4gUZ2Faykvb7DVGdiCSckG640Aoh+n4rD9XqOihrMuywVj/HaCEfhzxOLce8iEx4JYw7s0qettrDdfga6EUbFptp1eaz+yKXr9eRDZ7p9WPiY99Suk2n1DzVu4aeW3EPvS6DguNvuYFLDEuHvjy3p/aX5EOmX+PWqDxmK8fdiST2EQvwESUk3vmSgyAz48wfGheVgWNbk2Njyg6p2VhqRkN/wbd09j1FcDBZMVFdmU+Lz81XbeD0MTuXl1epdbU75mh9VzK27Zieezcngwvf3APv0ta8Rw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DB9P251MB0618.EURP251.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230001)(376002)(136003)(366004)(396003)(39830400003)(346002)(31696002)(2906002)(186003)(52116002)(6666004)(38350700002)(5660300002)(44832011)(6506007)(4744005)(6916009)(508600001)(36756003)(38100700002)(8936002)(6486002)(316002)(8676002)(66476007)(66946007)(66556008)(26005)(86362001)(2616005)(31686004)(6512007)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WFR4dDVjbW1nWWJjY0x1MEozMkxIaUVQbitJTk13RjNZeEVFU0kzLzFtZDNH?=
+ =?utf-8?B?dExOdjRNa3Y3elErcmNzM1p1OVVUTlZ6NStJZXpNbkxhaHBoQVpkMGlEK2kx?=
+ =?utf-8?B?UnZLSElIU1A0RlVkQWRFdUt3WGI1M2VndEpEMVEvSTBuWE03dndnRzhDNUdX?=
+ =?utf-8?B?YW5RTHppbkcvOHF4VXpaa3ZyQmNKUjR0WWFxckt2ZXVYbllIT1o0MGtORjZD?=
+ =?utf-8?B?UGM3M1pSV1Jsd3Z3ZlRwNHpZY1hKNmx0MEJsclAxOGEwcUVvaWpqalNlcFhi?=
+ =?utf-8?B?NGtFc3o2TENxSWVFRURuQ3pKYWhCWmlidHZnTVVvNzZwQUdTNmMvOTJCcWYr?=
+ =?utf-8?B?cnpVa1Ayb09RbjRqZjR2MmNaNUZnRU5Lem1VUTE3VCtLdU9jRXVjOFluRDF3?=
+ =?utf-8?B?ZmdUa0o4dFlsT0JMTFZFUkpCRE80c2xaN0MyM2gvdlhRZ3dHbzN4ZE5NMFhh?=
+ =?utf-8?B?RkZFajRBRVJyLzV4eGpJenczS3dFTVJnOE5yOE10ektWWU5VT1lTTVVrRlcx?=
+ =?utf-8?B?UUR0d0tPaFg2TGlEVklobitPN0t0NEtwcFVGdGcrcmNEdmZCMlhlZ04wWjRo?=
+ =?utf-8?B?M2Uyc2dCV01yWHBqdTVoeWMwSXlNL2RhWmVnMS93eDMwRVl4K00zcTdsdTEr?=
+ =?utf-8?B?UjFBVTRwQS83YmVveFpacXVobjJYWjc2Zk9YNE9hMzN0U1E2Z0g3OHV4NWpG?=
+ =?utf-8?B?azBZMlp5ZGVPSVNta0dEU29INE53TkJHODhScXBGWGlQV21tOXNsd1dLQjgy?=
+ =?utf-8?B?VkJKWWNzVS9zVzJubm9KSkpCQ3lLejAvUk5uYnhQU05lTk1odUtkOUFXVUtv?=
+ =?utf-8?B?eUtmR1VKTjRsSDhMWS9QOU1mRjJhWndyVlJwRzl3cjdQV0htc3Q2dlZKWmJM?=
+ =?utf-8?B?TmpRaGFtelUrcm1rQk5LMEppVFFWUjJuV1RidE9BSVZXNHovdDBzUCs4OHVJ?=
+ =?utf-8?B?Vi9zMFowUis5Mk9qckp4MHN2OE96N1hOczRtTnYzVy9GMXlEbS96YkxmYVM2?=
+ =?utf-8?B?VjRGNjNPRDdJbHhFNCt2eWIyOERSMGVSSDVIUFZoTmRsdVE0WEJCOStZd1Er?=
+ =?utf-8?B?c2tMTXlhM0ZGSmhrSXpXRHdGNEdiVURPTUhpQTlNMC9LZVZoSG9idkxYVEZM?=
+ =?utf-8?B?M0RqZERrOFkvUkpyMVNSQTk5Q0QrTUVNS3NDa05SRDgydm1wemt6OTg0bXNz?=
+ =?utf-8?B?VWRhZHhsVks0YXhwVXc3MDNqNFZibkZiQllTYmd1K2FMeFpEam54SHJvVTJP?=
+ =?utf-8?B?dzBWRHVmODk4dkh0cXN4VVlFV0ZWOVZka0QxZ2MydmtyMWFpU2NHQWFuMDcx?=
+ =?utf-8?B?M3JwOEhpSmJqV3Q2MkxNdXgzMkszS1RaTk41UmVVMGx3UG0raExtWEFCaE8y?=
+ =?utf-8?B?dzhtczhvWVlNSFFLQWcvNnl4Vjc1MjhGQm9TaE1oVTBOM2NyV2ptTzM0VzUz?=
+ =?utf-8?B?Q1BUQ1J2S2JvQ2JlWVkxWU8va3ZqN2ExZFpEVmUvWll5Tkl1TlFTREpMUHlp?=
+ =?utf-8?B?OW1BVVFZbnNMbUF5NnZORzhBaXRmYU9XNTB0L2pSejM3Zkpra1RLOGdHb0Qx?=
+ =?utf-8?B?YjJQUjBmUWNuSEMvM0hMTmUxVjNGYlRhOXZTQmx4c1cwOHdvUGF0UVI4WG1I?=
+ =?utf-8?B?bHI1RnVwRk5IcDFENmUwOWN1UHJDVW9UR2lpVUk2Q1JESGo1dytlUXRiRm9q?=
+ =?utf-8?B?YXlpTnQyekdmNno3T3QrdlBiTVduVjZMTHdoUEtNUFlQbHZrQ2dXbG9vSXRi?=
+ =?utf-8?B?UUh5RHdGVitpeUhzeTlHK3FockNrTEFkdC9xcEhNVVhDQ0FEUWIvMDhTc05j?=
+ =?utf-8?B?QkwzYXYrYmZCNVRYTmF5bFJSOVlhbDBRVkRwMUsyZ1lnMTdScnJJUzNaN3NV?=
+ =?utf-8?B?dFI5aThUVTJQQ3VIYUlRMUM2U0lKdkRzZm15Q3pJT2JXbldPQ3BrWEczcGNY?=
+ =?utf-8?B?ZGdjYytLc241ZTZiZGRtaFMwaFNFQ040aXBuWnNOYy9nbGdubFFBK2tZNVZN?=
+ =?utf-8?B?ajJYb1ZwakoxMU1MREhWZklUNVlkMlB6VFYxalpKQVFNTFpraEhzYk9OM0RF?=
+ =?utf-8?B?SmlYQlN2cDc4c2ZWWUxpOTFVcjcyVDZkOXpsMkdEa0N4MnY2cmdQMElVZm5j?=
+ =?utf-8?B?a3dneHlRejlUTTY4V0tDV1JOVWlMTG1VeEFWSVJoT2NXaWkrN2o5bmNac0dy?=
+ =?utf-8?B?NC8rUm5xM3RNczBEaHlrZUs5UUFuK2YydTNSbStGS3BPLy9QL0w2RFo2eUZH?=
+ =?utf-8?B?c2gzaXFjZFNRM0dsN0ZHM0hYM0JjYklCRzFkU2NIcG5uaXBaVDBWRDB0NDB6?=
+ =?utf-8?B?OVFhayt4ajJaYnFxUGZYTkNHc2lVNzhZVjM1K0FrRXY5ZjNxZ0JDM1RYU3kx?=
+ =?utf-8?Q?7jcftG7dtfHyJLI8=3D?=
+X-OriginatorOrg: t2data.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7a9627be-42d3-4f03-6bc9-08da1d145b98
+X-MS-Exchange-CrossTenant-AuthSource: DB9P251MB0618.EURP251.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Apr 2022 06:10:50.1643 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 27928da5-aacd-4ba1-9566-c748a6863e6c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ip9FwnX1qJ4Bt7KxnxXNuKm95Dpymx61l7s0X39TQK/FPQEZqn6VAZvZ4fk4RaLW3LodcGRr22K3yWVjrGeQJHzU8YMDupmkThSkmzswh5o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS4P251MB0821
+X-Mailman-Approved-At: Fri, 15 Apr 2022 14:05:48 +0000
+Subject: [Intel-wired-lan] No link up before IFF_UP? (early link
+ optimization)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,158 +149,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Karol,
+I have a optimization task for a time constrained boot process.
+The system in question is an AMD Ryzen from the R1000 family with an 
+Intel I211 running igb in 5.17.1.
 
+The current kernel and driver behavior:
+UEFI (link up) -> Kernel starts, driver is probed (link down) -> link 
+stays down until userspace IFF_UP -> after an extra +6-7 seconds the 
+link comes up.
 
-Thank you for your patch.
+This means that the userspace can't start communication after 6-7 
+seconds after device open. Moving the interface initialization earlier 
+won't help much as IFF_UP is about 0.5 away from jumping to initramfs.
 
-Am 15.04.22 um 12:31 schrieb Karol Kolacinski:
-> Add the possibility to write to connected i2c devices. FW may reject
-> the write if the device is not on allowlist.
+So the question is: Can I get the interface to stop powering down after 
+probe? If reset is needed, then take up the interface again. Of course 
+the kernel won't start forwarding until netif_carrier transitions.
+But I'd like to move the resets and powerups as early as possible.
+I guess that also means no resets if no settings have changed.
 
-Did you use a datasheet for implementing this. If so, please mention the 
-name and revision.
-
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> ---
->   .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  7 +--
->   drivers/net/ethernet/intel/ice/ice_common.c   | 45 ++++++++++++++++++-
->   drivers/net/ethernet/intel/ice/ice_common.h   |  4 ++
->   3 files changed, 52 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-> index b25e27c4d887..bedc19f12cbd 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-> @@ -1401,7 +1401,7 @@ struct ice_aqc_get_link_topo {
->   	u8 rsvd[9];
->   };
->   
-> -/* Read I2C (direct, 0x06E2) */
-> +/* Read/Write I2C (direct, 0x06E2/0x06E3) */
->   struct ice_aqc_i2c {
->   	struct ice_aqc_link_topo_addr topo_addr;
->   	__le16 i2c_addr;
-> @@ -1411,7 +1411,7 @@ struct ice_aqc_i2c {
->   
->   	u8 rsvd;
->   	__le16 i2c_bus_addr;
-> -	u8 rsvd2[4];
-> +	u8 i2c_data[4]; /* Used only by write command, reserved in read. */
->   };
->   
->   /* Read I2C Response (direct, 0x06E2) */
-> @@ -2130,7 +2130,7 @@ struct ice_aq_desc {
->   		struct ice_aqc_get_link_status get_link_status;
->   		struct ice_aqc_event_lan_overflow lan_overflow;
->   		struct ice_aqc_get_link_topo get_link_topo;
-> -		struct ice_aqc_i2c read_i2c;
-> +		struct ice_aqc_i2c read_write_i2c;
->   		struct ice_aqc_read_i2c_resp read_i2c_resp;
->   	} params;
->   };
-> @@ -2247,6 +2247,7 @@ enum ice_adminq_opc {
->   	ice_aqc_opc_set_mac_lb				= 0x0620,
->   	ice_aqc_opc_get_link_topo			= 0x06E0,
->   	ice_aqc_opc_read_i2c				= 0x06E2,
-> +	ice_aqc_opc_write_i2c				= 0x06E3,
->   	ice_aqc_opc_set_port_id_led			= 0x06E9,
->   	ice_aqc_opc_set_gpio				= 0x06EC,
->   	ice_aqc_opc_get_gpio				= 0x06ED,
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-> index 9619bdb9e49a..85dd30f99814 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -4823,7 +4823,7 @@ ice_aq_read_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
->   	int status;
->   
->   	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_read_i2c);
-> -	cmd = &desc.params.read_i2c;
-> +	cmd = &desc.params.read_write_i2c;
->   
->   	if (!data)
->   		return -EINVAL;
-> @@ -4850,6 +4850,49 @@ ice_aq_read_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
->   	return status;
->   }
->   
-> +/**
-> + * ice_aq_write_i2c
-> + * @hw: pointer to the hw struct
-> + * @topo_addr: topology address for a device to communicate with
-> + * @bus_addr: 7-bit I2C bus address
-> + * @addr: I2C memory address (I2C offset) with up to 16 bits
-> + * @params: I2C parameters: bit [4] - I2C address type, bits [3:0] - data size to write (0-7 bytes)
-> + * @data: pointer to data (0 to 4 bytes) to be written to the I2C device
-> + * @cd: pointer to command details structure or NULL
-
-Also document the return value?
-
-> + *
-> + * Write I2C (0x06E3)
-> + */
-> +int
-> +ice_aq_write_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
-> +		 u16 bus_addr, __le16 addr, u8 params, u8 *data,
-> +		 struct ice_sq_cd *cd)
-> +{
-> +	struct ice_aq_desc desc = { 0 };
-> +	struct ice_aqc_i2c *cmd;
-> +	u8 i, data_size;
-
-The loop variable should be a native type.
-
-> +
-> +	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_write_i2c);
-> +	cmd = &desc.params.read_write_i2c;
-> +
-> +	data_size = FIELD_GET(ICE_AQC_I2C_DATA_SIZE_M, params);
-> +
-> +	/* data_size limited to 4 */
-> +	if (data_size > 4)
-> +		return -EINVAL;
-> +
-> +	cmd->i2c_bus_addr = cpu_to_le16(bus_addr);
-> +	cmd->topo_addr = topo_addr;
-> +	cmd->i2c_params = params;
-> +	cmd->i2c_addr = addr;
-> +
-> +	for (i = 0; i < data_size; i++) {
-> +		cmd->i2c_data[i] = *data;
-> +		data++;
-> +	}
-> +
-> +	return ice_aq_send_cmd(hw, &desc, NULL, 0, cd);
-> +}
-> +
->   /**
->    * ice_aq_set_driver_param - Set driver parameter to share via firmware
->    * @hw: pointer to the HW struct
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-> index 872ea7d2332d..61b7c60db689 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.h
-> @@ -214,5 +214,9 @@ int
->   ice_aq_read_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
->   		u16 bus_addr, __le16 addr, u8 params, u8 *data,
->   		struct ice_sq_cd *cd);
-> +int
-> +ice_aq_write_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
-> +		 u16 bus_addr, __le16 addr, u8 params, u8 *data,
-> +		 struct ice_sq_cd *cd);
->   bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw);
->   #endif /* _ICE_COMMON_H_ */
-
-
-Kind regards,
-
-Paul
+Regards,
+Christian
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
