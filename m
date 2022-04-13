@@ -1,101 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5B004FFA70
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Apr 2022 17:39:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35D214FFB6B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Apr 2022 18:36:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 872F983E12;
-	Wed, 13 Apr 2022 15:39:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CD78561128;
+	Wed, 13 Apr 2022 16:36:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zMDjMo9oLC5I; Wed, 13 Apr 2022 15:39:09 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ySjf0SrfCE7k; Wed, 13 Apr 2022 16:36:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5FB3C81373;
-	Wed, 13 Apr 2022 15:39:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9F74A6111C;
+	Wed, 13 Apr 2022 16:36:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D72BD1BF41F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 15:39:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E7B691BF9A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 16:36:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CE8A141838
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 15:39:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D1E5F409A8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 16:36:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=redhat.com
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2bH5NWyULepn for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Apr 2022 15:39:03 +0000 (UTC)
+ with ESMTP id O7HKfCjPTAES for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Apr 2022 16:36:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 68A5941836
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 15:39:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1649864342;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DTng1VBQBG1w5ddfOZndBpJ6F/sDE1kAEyXenf5ppGY=;
- b=d0DGnVkUBpW2MSmLJ/tmXzAKN46azZN5D9zEqj1k9MgFmpyyaqUsDp7QDrUgcGIGVJN1Pb
- P5HU9pAZexsKIYWa9IUrhMcAqRo8QgyqTrdnGlpjhzM945GXUfi9OAMVurOoshejYxyIra
- 22H1Q63jV7m6RKJO+R6QqDHcdby+tfE=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-664-9LnLWUTMNaC5AQA_c8lGyg-1; Wed, 13 Apr 2022 11:39:00 -0400
-X-MC-Unique: 9LnLWUTMNaC5AQA_c8lGyg-1
-Received: by mail-ed1-f72.google.com with SMTP id
- dn26-20020a05640222fa00b0041d85c7a190so1262526edb.22
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 08:39:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:reply-to:to:cc:date
- :in-reply-to:references:organization:user-agent:mime-version
- :content-transfer-encoding;
- bh=DTng1VBQBG1w5ddfOZndBpJ6F/sDE1kAEyXenf5ppGY=;
- b=moowkRz7p6ZokS0Hy6IrUTtNzUc7mCGrilHh2/q9uiwJWlDfyNuQczISgmSJYOQfOu
- 36nT/HQ/nkHrbOKCOlBQzJhfZfVFRq7kbRT8t79mG9NK1V8nfrl+IzVfudPghtGti/hj
- iHDwBw8X8pD0hMc0byokMt53SGg49A/gY9tIchop7Xj3ZyVeieZVWYt/HsKL6TBaNtob
- SVDRNpZB3968XmBEJ/gGFTIL6jX0M853uWEGotREalUaHDX6q5w5UkR2zZ0UcLhTVGBm
- rH7hzM1cTh9dqNKiw9QA0Vke/kduswN574g5QF+l1kxDuqkqJFzHJUMZH+yS9TwUPoIY
- 2itA==
-X-Gm-Message-State: AOAM531B9fD1I94LYKhIp++ExzT4RdhTdzTOu0fYa/rkoAmJCDhNwRL8
- 2I/46MYcmW3o+syFS5/4IJemMW/8/PEp50uxCoYUbDoal3q98vC1HZlFwZ4scY12i+Zr3V3AsZg
- tVtKw3s1skCFJGwxEXcscpD6OdNQ0Qg==
-X-Received: by 2002:a17:907:eaa:b0:6e8:9105:b3c7 with SMTP id
- ho42-20020a1709070eaa00b006e89105b3c7mr13907609ejc.26.1649864339355; 
- Wed, 13 Apr 2022 08:38:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyS4emMuGiZkqPvPLYDGoWTninw7nHNjPU9LlyGy1tPOzLfzqSeEApClSgyutyj3qg6/dRukg==
-X-Received: by 2002:a17:907:eaa:b0:6e8:9105:b3c7 with SMTP id
- ho42-20020a1709070eaa00b006e89105b3c7mr13907582ejc.26.1649864339020; 
- Wed, 13 Apr 2022 08:38:59 -0700 (PDT)
-Received: from [192.168.2.36] (ip4-46-175-183-46.net.iconn.cz. [46.175.183.46])
- by smtp.gmail.com with ESMTPSA id
- z22-20020a1709063ad600b006e8867caa5dsm102643ejd.72.2022.04.13.08.38.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 08:38:58 -0700 (PDT)
-Message-ID: <8106efcab543ada95ac7ea9e56c47889f7b44f3d.camel@redhat.com>
-From: Petr Oros <poros@redhat.com>
-To: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org
-Date: Wed, 13 Apr 2022 17:38:56 +0200
-In-Reply-To: <092c941b-a057-5cf0-97d8-0c061768dae7@intel.com>
-References: <20220412102753.670867-1-poros@redhat.com>
- <092c941b-a057-5cf0-97d8-0c061768dae7@intel.com>
-Organization: Red Hat
-User-Agent: Evolution 3.42.4
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4F081408C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Apr 2022 16:36:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1649867790; x=1681403790;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=ViHeCkeKpNZGlo114iscAHmNaZFgMUpDP6ZO2tliJZQ=;
+ b=DC8hAG9EQxIE9DXw/F/7gMa3nW/jRjE5SwC0KrmKUlAhO40kgoETEXCh
+ POpbvkJ9vUTNhNgNBYlo4/AY4LyM1QDY0xrPJdKKoDfGLsVwtVgmU6Bzi
+ B/WEKQ3uC0Swrioi9nFbxwQFjZsrvQd7tVWTpz5zQMfFb0ZnSS66hbvg0
+ qHPcYGn0csuXOD5DlftZHajCJOS47Q+Of0f0jiOsxEtnHP68aNHlvmCQy
+ 4AafZWHpdxb8WNXU6aLXGozEWz/xps6bcau4mNnnStPQfrltYQGe6F7tm
+ vn6jNa0ZUTdrhoRadbVIC2/sxA5+rNYsfFJ7d7AEq+NDDUuBoD+wvu3gy A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10316"; a="349150119"
+X-IronPort-AV: E=Sophos;i="5.90,257,1643702400"; d="scan'208";a="349150119"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Apr 2022 09:36:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,257,1643702400"; d="scan'208";a="645235364"
+Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 13 Apr 2022 09:36:28 -0700
+Received: from kbuild by 3abc53900bec with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nefyl-0000SQ-L5;
+ Wed, 13 Apr 2022 16:36:27 +0000
+Date: Thu, 14 Apr 2022 00:35:51 +0800
+From: kernel test robot <lkp@intel.com>
+To: Joe Damato <jdamato@fastly.com>
+Message-ID: <202204140015.MRcE3hbT-lkp@intel.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=poros@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Subject: Re: [Intel-wired-lan] [PATCH] ice: wait for EMP reset after
- firmware flash
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 235/256]
+ drivers/net/ethernet/intel/ice/ice_txrx.c:1971:16: error: redeclaration of
+ 'protocol' with no linkage
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,108 +78,180 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: poros@redhat.com
-Cc: ivecera@redhat.com, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, kbuild-all@lists.01.org,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SmFjb2IgS2VsbGVyIHDDrcWhZSB2IMOadCAxMi4gMDQuIDIwMjIgdiAwOTo1OCAtMDcwMDoKPiAK
-PiAKPiBPbiA0LzEyLzIwMjIgMzoyNyBBTSwgUGV0ciBPcm9zIHdyb3RlOgo+ID4gV2UgbmVlZCB0
-byB3YWl0IGZvciBFTVAgcmVzZXQgYWZ0ZXIgZmlybXdhcmUgZmxhc2guCj4gPiBDb2RlIHdhcyBl
-eHRyYWN0ZWQgZnJvbSBPT1QgZHJpdmVyIGFuZCB3aXRob3V0IHRoaXMgd2FpdAo+ID4gZndfYWN0
-aXZhdGUgbGV0Cj4gPiBjYXJkIGluIGluY29uc2lzdGVudCBzdGF0ZSByZWNvdmVyYWJsZSBvbmx5
-IGJ5IHNlY29uZAo+ID4gZmxhc2gvYWN0aXZhdGUKPiA+IAo+ID4gUmVwcm9kdWNlcjoKPiA+IFty
-b290QGhvc3Qgfl0jIGRldmxpbmsgZGV2IGZsYXNoIHBjaS8wMDAwOmNhOjAwLjAgZmlsZQo+ID4g
-RTgxMF9YWFZEQTRfRkhfT19TRUNfRldfMXA2cDFwOV9OVk1fM3AxMF9QTERNb01DVFBfMC4xMV84
-MDAwQUQ3Qi5iaQo+ID4gbgo+ID4gUHJlcGFyaW5nIHRvIGZsYXNoCj4gPiBbZncubWdtdF0gRXJh
-c2luZwo+ID4gW2Z3Lm1nbXRdIEVyYXNpbmcgZG9uZQo+ID4gW2Z3Lm1nbXRdIEZsYXNoaW5nIDEw
-MCUKPiA+IFtmdy5tZ210XSBGbGFzaGluZyBkb25lIDEwMCUKPiA+IFtmdy51bmRpXSBFcmFzaW5n
-Cj4gPiBbZncudW5kaV0gRXJhc2luZyBkb25lCj4gPiBbZncudW5kaV0gRmxhc2hpbmcgMTAwJQo+
-ID4gW2Z3LnVuZGldIEZsYXNoaW5nIGRvbmUgMTAwJQo+ID4gW2Z3Lm5ldGxpc3RdIEVyYXNpbmcK
-PiA+IFtmdy5uZXRsaXN0XSBFcmFzaW5nIGRvbmUKPiA+IFtmdy5uZXRsaXN0XSBGbGFzaGluZyAx
-MDAlCj4gPiBbZncubmV0bGlzdF0gRmxhc2hpbmcgZG9uZSAxMDAlCj4gPiBBY3RpdmF0ZSBuZXcg
-ZmlybXdhcmUgYnkgZGV2bGluayByZWxvYWQKPiA+IFtyb290QGhvc3Qgfl0jIGRldmxpbmsgZGV2
-IHJlbG9hZCBwY2kvMDAwMDpjYTowMC4wIGFjdGlvbgo+ID4gZndfYWN0aXZhdGUKPiA+IHJlbG9h
-ZF9hY3Rpb25zX3BlcmZvcm1lZDoKPiA+IMKgwqDCoCBmd19hY3RpdmF0ZQo+ID4gW3Jvb3RAaG9z
-dCB+XSMgaXAgbGluayBzaG93IGVuczdmMAo+ID4gNzE6IGVuczdmMDogPE5PLUNBUlJJRVIsQlJP
-QURDQVNULE1VTFRJQ0FTVCxVUD4gbXR1IDE1MDAgcWRpc2MgbXEKPiA+IHN0YXRlIERPV04gbW9k
-ZSBERUZBVUxUIGdyb3VwIGRlZmF1bHQgcWxlbiAxMDAwCj4gPiDCoMKgwqAgbGluay9ldGhlciBi
-NDo5Njo5MTpkYzo3MjplMCBicmQgZmY6ZmY6ZmY6ZmY6ZmY6ZmYKPiA+IMKgwqDCoCBhbHRuYW1l
-IGVucDIwMnMwZjAKPiA+IAo+ID4gZG1lc2cgYWZ0ZXIgZmxhc2g6Cj4gPiBbwqDCoCA1NS4xMjA3
-ODhdIGljZTogQ29weXJpZ2h0IChjKSAyMDE4LCBJbnRlbCBDb3Jwb3JhdGlvbi4KPiA+IFvCoMKg
-IDU1LjI3NDczNF0gaWNlIDAwMDA6Y2E6MDAuMDogR2V0IFBIWSBjYXBhYmlsaXRpZXMgZmFpbGVk
-IHN0YXR1cwo+ID4gPSAtNSwgY29udGludWluZyBhbnl3YXkKPiA+IFvCoMKgIDU1LjU2OTc5N10g
-aWNlIDAwMDA6Y2E6MDAuMDogVGhlIEREUCBwYWNrYWdlIHdhcyBzdWNjZXNzZnVsbHkKPiA+IGxv
-YWRlZDogSUNFIE9TIERlZmF1bHQgUGFja2FnZSB2ZXJzaW9uIDEuMy4yOC4wCj4gPiBbwqDCoCA1
-NS42MDM2MjldIGljZSAwMDAwOmNhOjAwLjA6IEdldCBQSFkgY2FwYWJpbGl0eSBmYWlsZWQuCj4g
-PiBbwqDCoCA1NS42MDg5NTFdIGljZSAwMDAwOmNhOjAwLjA6IGljZV9pbml0X252bV9waHlfdHlw
-ZSBmYWlsZWQ6IC01Cj4gPiBbwqDCoCA1NS42NDczNDhdIGljZSAwMDAwOmNhOjAwLjA6IFBUUCBp
-bml0IHN1Y2Nlc3NmdWwKPiA+IFvCoMKgIDU1LjY3NTUzNl0gaWNlIDAwMDA6Y2E6MDAuMDogRENC
-IGlzIGVuYWJsZWQgaW4gdGhlIGhhcmR3YXJlLAo+ID4gbWF4IG51bWJlciBvZiBUQ3Mgc3VwcG9y
-dGVkIG9uIHRoaXMgcG9ydCBhcmUgOAo+ID4gW8KgwqAgNTUuNjg1MzY1XSBpY2UgMDAwMDpjYTow
-MC4wOiBGVyBMTERQIGlzIGRpc2FibGVkLCBEQ0J4L0xMRFAgaW4KPiA+IFNXIG1vZGUuCj4gPiBb
-wqDCoCA1NS42OTIxNzldIGljZSAwMDAwOmNhOjAwLjA6IENvbW1pdCBEQ0IgQ29uZmlndXJhdGlv
-biB0byB0aGUKPiA+IGhhcmR3YXJlCj4gPiBbwqDCoCA1NS43MDEzODJdIGljZSAwMDAwOmNhOjAw
-LjA6IDEyNi4wMjQgR2IvcyBhdmFpbGFibGUgUENJZQo+ID4gYmFuZHdpZHRoLCBsaW1pdGVkIGJ5
-IDE2LjAgR1QvcyBQQ0llIHg4IGxpbmsgYXQgMDAwMDpjOTowMi4wCj4gPiAoY2FwYWJsZSBvZiAy
-NTIuMDQ4IEdiL3Mgd2l0aCAxNi4wIEdUL3MgUENJZSB4MTYgbGluaykKPiA+IFJlYm9vdCBkb24n
-dCBoZWxwLCBvbmx5IHNlY29uZCBmbGFzaC9hY3RpdmF0ZSB3aXRoIE9PVCBvciBwYXRjaGVkCj4g
-PiBkcml2ZXIgcHV0IGNhcmQgYmFjayBpbiBjb25zaXN0ZW50IHN0YXRlCj4gPiAKPiA+IEFmdGVy
-IHBhdGNoOgo+ID4gW3Jvb3RAaG9zdCB+XSMgZGV2bGluayBkZXYgZmxhc2ggcGNpLzAwMDA6Y2E6
-MDAuMCBmaWxlCj4gPiBFODEwX1hYVkRBNF9GSF9PX1NFQ19GV18xcDZwMXA5X05WTV8zcDEwX1BM
-RE1vTUNUUF8wLjExXzgwMDBBRDdCLmJpCj4gPiBuCj4gPiBQcmVwYXJpbmcgdG8gZmxhc2gKPiA+
-IFtmdy5tZ210XSBFcmFzaW5nCj4gPiBbZncubWdtdF0gRXJhc2luZyBkb25lCj4gPiBbZncubWdt
-dF0gRmxhc2hpbmcgMTAwJQo+ID4gW2Z3Lm1nbXRdIEZsYXNoaW5nIGRvbmUgMTAwJQo+ID4gW2Z3
-LnVuZGldIEVyYXNpbmcKPiA+IFtmdy51bmRpXSBFcmFzaW5nIGRvbmUKPiA+IFtmdy51bmRpXSBG
-bGFzaGluZyAxMDAlCj4gPiBbZncudW5kaV0gRmxhc2hpbmcgZG9uZSAxMDAlCj4gPiBbZncubmV0
-bGlzdF0gRXJhc2luZwo+ID4gW2Z3Lm5ldGxpc3RdIEVyYXNpbmcgZG9uZQo+ID4gW2Z3Lm5ldGxp
-c3RdIEZsYXNoaW5nIDEwMCUKPiA+IFtmdy5uZXRsaXN0XSBGbGFzaGluZyBkb25lIDEwMCUKPiA+
-IEFjdGl2YXRlIG5ldyBmaXJtd2FyZSBieSBkZXZsaW5rIHJlbG9hZAo+ID4gW3Jvb3RAaG9zdCB+
-XSMgZGV2bGluayBkZXYgcmVsb2FkIHBjaS8wMDAwOmNhOjAwLjAgYWN0aW9uCj4gPiBmd19hY3Rp
-dmF0ZQo+ID4gcmVsb2FkX2FjdGlvbnNfcGVyZm9ybWVkOgo+ID4gwqDCoMKgIGZ3X2FjdGl2YXRl
-Cj4gPiBbcm9vdEBob3N0IH5dIyBpcCBsaW5rIHNob3cgZW5zN2YwCj4gPiAxOTogZW5zN2YwOiA8
-QlJPQURDQVNULE1VTFRJQ0FTVCxVUCxMT1dFUl9VUD4gbXR1IDE1MDAgcWRpc2MgbXEKPiA+IHN0
-YXRlIFVQIG1vZGUgREVGQVVMVCBncm91cCBkZWZhdWx0IHFsZW4gMTAwMAo+ID4gwqDCoMKgIGxp
-bmsvZXRoZXIgYjQ6OTY6OTE6ZGM6NzI6ZTAgYnJkIGZmOmZmOmZmOmZmOmZmOmZmCj4gPiDCoMKg
-wqAgYWx0bmFtZSBlbnAyMDJzMGYwCj4gPiAKPiAKPiBBaGguLiBnb29kIGZpbmQuIEkgY2hlY2tl
-ZCBhIGJ1bmNoIG9mIHBsYWNlcywgYnV0IGRpZG4ndCBjaGVjayBoZXJlCj4gZm9yCj4gZGlmZmVy
-ZW5jZXMuIDooCj4gCj4gRm9yIHdoYXQgaXRzIHdvcnRoLCBJIGNoZWNrZWQgdGhlIHNvdXJjZSBo
-aXN0b3J5IG9mIHRoZSBvdXQtb2YtdHJlZQo+IGRyaXZlciB0aGlzIGNhbWUgZnJvbS4gSXQgYXBw
-ZWFycyB0byBiZSBhIHdvcmthcm91bmQgYWRkZWQgZm9yIGZpeGluZwo+IGEKPiBzaW1pbGFyIGlz
-c3VlLgo+IAo+IEkgaGF2ZW4ndCBiZWVuIGFibGUgdG8gZGlnIHVwIHRoZSBmdWxsIGRldGFpbHMg
-eWV0LiBJdCBhcHBlYXJlcyB0byBiZQo+IGEKPiBjb2xsaXNpb24gd2l0aCBmaXJtd2FyZSBmaW5h
-bGl6aW5nIHJlY292ZXJ5IGFmdGVyIHRoZSBFTVAgcmVzZXQuCj4gCj4gU3RpbGwgdHJ5aW5nIHRv
-IGRpZyBmb3IgYW55IG1vcmUgaW5mb3JtYXRpb24gSSBjYW4gZmluZC4KCkludGVyZXN0aW5nIHRp
-bWUgZnJhbWUgY291bGQgYmUgYXJvdW5kIHRoaXMgY29tbWl0OgowODc3MWJjZTMzMDAzNiAoImlj
-ZTogQ29udGludWUgcHJvYmUgb24gbGluay9QSFkgZXJyb3JzIikKClBldHIKCj4gCj4gPiBGaXhl
-czogMzk5ZTI3ZGJiZDllOTQgKCJpY2U6IHN1cHBvcnQgaW1tZWRpYXRlIGZpcm13YXJlIGFjdGl2
-YXRpb24KPiA+IHZpYSBkZXZsaW5rIHJlbG9hZCIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBQZXRyIE9y
-b3MgPHBvcm9zQHJlZGhhdC5jb20+Cj4gPiAtLS0KPiA+IMKgZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9tYWluLmMgfCAzICsrKwo+ID4gwqAxIGZpbGUgY2hhbmdlZCwgMyBpbnNl
-cnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvaWNlX21haW4uYwo+ID4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X21haW4uYwo+ID4gaW5kZXggZDc2ODkyNTc4NWNhNzkuLjkwZWEyMjAzY2RjNzYzIDEwMDY0NAo+
-ID4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9tYWluLmMKPiA+ICsr
-KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jCj4gPiBAQCAtNjkz
-MSwxMiArNjkzMSwxNSBAQCBzdGF0aWMgdm9pZCBpY2VfcmVidWlsZChzdHJ1Y3QgaWNlX3BmICpw
-ZiwKPiA+IGVudW0gaWNlX3Jlc2V0X3JlcSByZXNldF90eXBlKQo+ID4gwqAKPiA+IMKgwqDCoMKg
-wqDCoMKgwqBkZXZfZGJnKGRldiwgInJlYnVpbGRpbmcgUEYgYWZ0ZXIgcmVzZXRfdHlwZT0lZFxu
-IiwKPiA+IHJlc2V0X3R5cGUpOwo+ID4gwqAKPiA+ICsjZGVmaW5lIElDRV9FTVBfUkVTRVRfU0xF
-RVAgNTAwMAo+ID4gwqDCoMKgwqDCoMKgwqDCoGlmIChyZXNldF90eXBlID09IElDRV9SRVNFVF9F
-TVBSKSB7Cj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC8qIElmIGFuIEVNUCBy
-ZXNldCBoYXMgb2NjdXJyZWQsIGFueSBwcmV2aW91c2x5Cj4gPiBwZW5kaW5nIGZsYXNoCj4gPiDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIHVwZGF0ZSB3aWxsIGhhdmUgY29tcGxl
-dGVkLiBXZSBubyBsb25nZXIga25vdwo+ID4gd2hldGhlciBvcgo+ID4gwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgKiBub3QgdGhlIE5WTSB1cGRhdGUgRU1QIHJlc2V0IGlzIHJlc3Ry
-aWN0ZWQuCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqLwo+ID4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwZi0+ZndfZW1wX3Jlc2V0X2Rpc2FibGVkID0gZmFs
-c2U7Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgbXNsZWVwKElDRV9F
-TVBfUkVTRVRfU0xFRVApOwo+ID4gwqDCoMKgwqDCoMKgwqDCoH0KPiA+IMKgCj4gPiDCoMKgwqDC
-oMKgwqDCoMKgZXJyID0gaWNlX2luaXRfYWxsX2N0cmxxKGh3KTsKPiAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5n
-IGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3Jn
-L21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+head:   faadd15618a12d7b11208f11c54d6ac0f2776486
+commit: 5d4c82c60dd05a844ff582c2c6d4e8c3c3020ebc [235/256] ice: Add mpls+tso support
+config: powerpc-buildonly-randconfig-r003-20220413 (https://download.01.org/0day-ci/archive/20220414/202204140015.MRcE3hbT-lkp@intel.com/config)
+compiler: powerpc-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=5d4c82c60dd05a844ff582c2c6d4e8c3c3020ebc
+        git remote add tnguy-next-queue https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
+        git fetch --no-tags tnguy-next-queue dev-queue
+        git checkout 5d4c82c60dd05a844ff582c2c6d4e8c3c3020ebc
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=powerpc SHELL=/bin/bash drivers/net/ethernet/intel/ice/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   drivers/net/ethernet/intel/ice/ice_txrx.c: In function 'ice_tso':
+>> drivers/net/ethernet/intel/ice/ice_txrx.c:1971:16: error: redeclaration of 'protocol' with no linkage
+    1971 |         __be16 protocol;
+         |                ^~~~~~~~
+   drivers/net/ethernet/intel/ice/ice_txrx.c:1967:16: note: previous declaration of 'protocol' with type '__be16' {aka 'short unsigned int'}
+    1967 |         __be16 protocol;
+         |                ^~~~~~~~
+
+Kconfig warnings: (for reference only)
+   WARNING: unmet direct dependencies detected for HOTPLUG_CPU
+   Depends on SMP && (PPC_PSERIES || PPC_PMAC || PPC_POWERNV || FSL_SOC_BOOKE
+   Selected by
+   - PM_SLEEP_SMP && SMP && (ARCH_SUSPEND_POSSIBLE || ARCH_HIBERNATION_POSSIBLE && PM_SLEEP
+
+
+vim +/protocol +1971 drivers/net/ethernet/intel/ice/ice_txrx.c
+
+  1944	
+  1945	/**
+  1946	 * ice_tso - computes mss and TSO length to prepare for TSO
+  1947	 * @first: pointer to struct ice_tx_buf
+  1948	 * @off: pointer to struct that holds offload parameters
+  1949	 *
+  1950	 * Returns 0 or error (negative) if TSO can't happen, 1 otherwise.
+  1951	 */
+  1952	static
+  1953	int ice_tso(struct ice_tx_buf *first, struct ice_tx_offload_params *off)
+  1954	{
+  1955		struct sk_buff *skb = first->skb;
+  1956		union {
+  1957			struct iphdr *v4;
+  1958			struct ipv6hdr *v6;
+  1959			unsigned char *hdr;
+  1960		} ip;
+  1961		union {
+  1962			struct tcphdr *tcp;
+  1963			struct udphdr *udp;
+  1964			unsigned char *hdr;
+  1965		} l4;
+  1966		u64 cd_mss, cd_tso_len;
+  1967		__be16 protocol;
+  1968		u32 paylen;
+  1969		u8 l4_start;
+  1970		int err;
+> 1971		__be16 protocol;
+  1972	
+  1973		if (skb->ip_summed != CHECKSUM_PARTIAL)
+  1974			return 0;
+  1975	
+  1976		if (!skb_is_gso(skb))
+  1977			return 0;
+  1978	
+  1979		err = skb_cow_head(skb, 0);
+  1980		if (err < 0)
+  1981			return err;
+  1982	
+  1983		/* cppcheck-suppress unreadVariable */
+  1984		protocol = vlan_get_protocol(skb);
+  1985	
+  1986		if (eth_p_mpls(protocol))
+  1987			ip.hdr = skb_inner_network_header(skb);
+  1988		else
+  1989			ip.hdr = skb_network_header(skb);
+  1990		l4.hdr = skb_checksum_start(skb);
+  1991	
+  1992		/* initialize outer IP header fields */
+  1993		if (ip.v4->version == 4) {
+  1994			ip.v4->tot_len = 0;
+  1995			ip.v4->check = 0;
+  1996		} else {
+  1997			ip.v6->payload_len = 0;
+  1998		}
+  1999	
+  2000		if (skb_shinfo(skb)->gso_type & (SKB_GSO_GRE |
+  2001						 SKB_GSO_GRE_CSUM |
+  2002						 SKB_GSO_IPXIP4 |
+  2003						 SKB_GSO_IPXIP6 |
+  2004						 SKB_GSO_UDP_TUNNEL |
+  2005						 SKB_GSO_UDP_TUNNEL_CSUM)) {
+  2006			if (!(skb_shinfo(skb)->gso_type & SKB_GSO_PARTIAL) &&
+  2007			    (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_TUNNEL_CSUM)) {
+  2008				l4.udp->len = 0;
+  2009	
+  2010				/* determine offset of outer transport header */
+  2011				l4_start = (u8)(l4.hdr - skb->data);
+  2012	
+  2013				/* remove payload length from outer checksum */
+  2014				paylen = skb->len - l4_start;
+  2015				csum_replace_by_diff(&l4.udp->check,
+  2016						     (__force __wsum)htonl(paylen));
+  2017			}
+  2018	
+  2019			/* reset pointers to inner headers */
+  2020	
+  2021			/* cppcheck-suppress unreadVariable */
+  2022			ip.hdr = skb_inner_network_header(skb);
+  2023			l4.hdr = skb_inner_transport_header(skb);
+  2024	
+  2025			/* initialize inner IP header fields */
+  2026			if (ip.v4->version == 4) {
+  2027				ip.v4->tot_len = 0;
+  2028				ip.v4->check = 0;
+  2029			} else {
+  2030				ip.v6->payload_len = 0;
+  2031			}
+  2032		}
+  2033	
+  2034		/* determine offset of transport header */
+  2035		l4_start = (u8)(l4.hdr - skb->data);
+  2036	
+  2037		/* remove payload length from checksum */
+  2038		paylen = skb->len - l4_start;
+  2039	
+  2040		if (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) {
+  2041			csum_replace_by_diff(&l4.udp->check,
+  2042					     (__force __wsum)htonl(paylen));
+  2043			/* compute length of UDP segmentation header */
+  2044			off->header_len = (u8)sizeof(l4.udp) + l4_start;
+  2045		} else {
+  2046			csum_replace_by_diff(&l4.tcp->check,
+  2047					     (__force __wsum)htonl(paylen));
+  2048			/* compute length of TCP segmentation header */
+  2049			off->header_len = (u8)((l4.tcp->doff * 4) + l4_start);
+  2050		}
+  2051	
+  2052		/* update gso_segs and bytecount */
+  2053		first->gso_segs = skb_shinfo(skb)->gso_segs;
+  2054		first->bytecount += (first->gso_segs - 1) * off->header_len;
+  2055	
+  2056		cd_tso_len = skb->len - off->header_len;
+  2057		cd_mss = skb_shinfo(skb)->gso_size;
+  2058	
+  2059		/* record cdesc_qw1 with TSO parameters */
+  2060		off->cd_qw1 |= (u64)(ICE_TX_DESC_DTYPE_CTX |
+  2061				     (ICE_TX_CTX_DESC_TSO << ICE_TXD_CTX_QW1_CMD_S) |
+  2062				     (cd_tso_len << ICE_TXD_CTX_QW1_TSO_LEN_S) |
+  2063				     (cd_mss << ICE_TXD_CTX_QW1_MSS_S));
+  2064		first->tx_flags |= ICE_TX_FLAGS_TSO;
+  2065		return 1;
+  2066	}
+  2067	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
