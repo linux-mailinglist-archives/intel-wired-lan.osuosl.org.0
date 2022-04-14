@@ -1,128 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0035019F1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Apr 2022 19:20:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B71C501AC7
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Apr 2022 20:06:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DCB9B82B49;
-	Thu, 14 Apr 2022 17:20:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EF61D408E8;
+	Thu, 14 Apr 2022 18:06:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id om1NU7tidgCw; Thu, 14 Apr 2022 17:20:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nMygFjDZANDc; Thu, 14 Apr 2022 18:06:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C5BF582B1E;
-	Thu, 14 Apr 2022 17:20:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B2E4E405AC;
+	Thu, 14 Apr 2022 18:06:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5B7BD1BF39C
- for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 17:20:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0813E1BF397
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 18:06:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 55FD660E51
- for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 17:20:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E85C5417A2
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 18:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silicomltd.onmicrosoft.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TWxC2igGGiVU for <intel-wired-lan@osuosl.org>;
- Thu, 14 Apr 2022 17:20:34 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from EUR03-AM5-obe.outbound.protection.outlook.com
- (mail-eopbgr30131.outbound.protection.outlook.com [40.107.3.131])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 858B560E50
- for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 17:20:34 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OITG4zf/JWDu4RrRPfnjfYO5TLJM2qOQyompa+jZaRiKuXUY4tW3dZjs1ws4xFx+lUlg0X0lRrZJp9CoIZ2Na/S1J1fAcu5nPyJ8YgR57YdBUAJEFVm/rSqAEH8U4rCyCDR0azd6+T0543YecSVKO2IDHhtwo1Zmgd9iiylEhVNCu6zCzC/w5hv7dbVF8kyLyqLo3XEPhZfKr1boYuv/ZiO+MH4t08ZA5UBFpsU57cQ5gYzXbntAD0GHzHy82wy64N3HVUQokziMWOBbgeUKG1uuImMyzH6yOSR/0MdjwqPClSb+h9o0LbzsRwk261nls87+BgesBwwedrRdltsFJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/+Ru3FKE69Cq4GmFwwDP2OatSnQznOfsv1jmfh/kt6g=;
- b=LiXHMIyw1IdcQ6TZDV84yrh8nwKvy+JIS85HOEVnxqZlR2dH819Ds0UkycC9zw3XsUos5JDzCljTiy+VuhFoNBJZ7rgPzhZ1NsK+dihQ0zymHOZu5500ZIO8694nj92lAQagHlwpL/Wnp+AN1eTrYyE6JtnCsRHzipl+aXr5bhliUJKqXxUp3bmDAFgVFgzU9W4M6Gxm8me+1sVm6ua46zC3nV2buG7I8ysLVxCvLoXjJLhQrFvPUa9r8uiz7sWpXkzhkS82uljjPPWvrO5ptCB8N450cqvh2PRnoGQQEK9HjkGa0OgdZ/lc4Tb31ZIRWq1HL/ZisdiuBSzuqZzzXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silicom-usa.com; dmarc=pass action=none
- header.from=silicom-usa.com; dkim=pass header.d=silicom-usa.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=SILICOMLTD.onmicrosoft.com; s=selector2-SILICOMLTD-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/+Ru3FKE69Cq4GmFwwDP2OatSnQznOfsv1jmfh/kt6g=;
- b=qDOrzpZiD3pZEe5xiE7ip3r4BSzjaHjnmIDfnXPi/RiE8B5OhkG3WZDktMuJmLb3/jzZznQCcwxg5JF11B3i+Lsjhs16UkDs1wI/au9UcfVakt6gn+o6dvfXGZSOjRz4TXZh/2VPaPSJEkWmpcX9i0CqX9NdhDID1Jfy39jeLtk=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=silicom-usa.com;
-Received: from AM0PR0402MB3506.eurprd04.prod.outlook.com
- (2603:10a6:208:17::29) by AS8PR04MB8724.eurprd04.prod.outlook.com
- (2603:10a6:20b:42b::6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Thu, 14 Apr
- 2022 17:20:31 +0000
-Received: from AM0PR0402MB3506.eurprd04.prod.outlook.com
- ([fe80::193e:c83e:7e13:ddb]) by AM0PR0402MB3506.eurprd04.prod.outlook.com
- ([fe80::193e:c83e:7e13:ddb%6]) with mapi id 15.20.5144.030; Thu, 14 Apr 2022
- 17:20:31 +0000
-From: Jeff Daly <jeffd@silicom-usa.com>
-To: intel-wired-lan@osuosl.org
-Date: Thu, 14 Apr 2022 13:20:20 -0400
-Message-Id: <20220414172020.22396-1-jeffd@silicom-usa.com>
-X-Mailer: git-send-email 2.25.1
-X-ClientProxiedBy: BL0PR0102CA0017.prod.exchangelabs.com
- (2603:10b6:207:18::30) To AM0PR0402MB3506.eurprd04.prod.outlook.com
- (2603:10a6:208:17::29)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id M8ZRNKbLCmqT for <intel-wired-lan@osuosl.org>;
+ Thu, 14 Apr 2022 18:06:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D23514177C
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 18:06:23 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5ae92a.dynamic.kabel-deutschland.de
+ [95.90.233.42])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 60F5261EA1928;
+ Thu, 14 Apr 2022 20:06:20 +0200 (CEST)
+Message-ID: <093c4b1f-087e-40c3-5096-2f3a9cb05aa7@molgen.mpg.de>
+Date: Thu, 14 Apr 2022 20:06:19 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c0b71002-2e80-4236-8ebb-08da1e3b13d2
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8724:EE_
-X-Microsoft-Antispam-PRVS: <AS8PR04MB87245A351F2265B1E53CD7E1EAEF9@AS8PR04MB8724.eurprd04.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Aznwj04jK0QQGWF1fKkbb2ExFF3+7c1euXiGLikXIfXS/iAXLPvMioYknn3myRqYP8YnZZdPd+omn3qeS4jDvQv3BtRSmpAXsHhfJKU2+xo8iypU5Fwfr82K4+sCU9s7/v+X+kP847qsvKRTGVnDcl2y+QNi1Z6pI5pwOpsOjDL95Uq6SJqbylWtq9TlclBFtRiSF4bbbtOJCn/pBjXT9XIb/artvFnAb9KJAISeEAeQmN4RxvkWBQD5htZhASGOkrBnheeZ3smXO0gKlIKWu2s0XKUm5vBeU0zjr6sOcYIWDHMbfP/FGVU2u7MXf24iS7hvKeRRL7LMdyW0NMdZJkIUlvFtJBjqH2+WN/j/G21krgCf/l958L/M7z5xM7G+nE85TfRULiR25sQY3RJ0kCkig0auI8p5lcMbO+hgfEXa6yla0fHOBVvfarOG/bN+ZOKYlReZXVkTg75liA5rVL3VD1BNs0jkC8CmcHFGra9BgWWV5J4ejXO16t90tFjep4dND/fj3BxtsMttNRG1iP6RPX9xTDAY+ApRXON7DyjNhKA2agP3HyD9BPPZNaLZpZUYcUTgZMSwtFH6g/I80uJUgRwF5fj1bQer17hXcApId4QtHA67eUGqOUYk3sqVdwdkessZne0TBAfpOc2P+ght87sG+mYnhgtt1ZMaarFi3R4MS2ZoFObYVwuIIFBcmP91VBaeGmohpKlPDASRFQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM0PR0402MB3506.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(8676002)(26005)(83380400001)(36756003)(6512007)(5660300002)(38100700002)(38350700002)(186003)(66556008)(66476007)(66946007)(2616005)(8936002)(2906002)(1076003)(6506007)(316002)(52116002)(86362001)(6666004)(6916009)(508600001)(6486002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?N70ABBVCmgSvXi3Cr5J3cQ4g1GDGCF8EjFCFdDiTlZFQlpkNY/l8T56Dfe/l?=
- =?us-ascii?Q?bNO1bhkmf2NDCC6c/2Iz/iRHi918sBJ9Vi+MrZcdKMjPRoXLYjTWQudHgWRB?=
- =?us-ascii?Q?lttTJrpk6DgPgICn7wWQwjb2dFZvgOqAPfFQE4z9TZlpIkeQmDouYbjT0+0F?=
- =?us-ascii?Q?+NGxyLYZCbF6o3iWgR0/jDF906EZPzEtkg/nBJEUC5xh6TiX19kZtLnJz2Lg?=
- =?us-ascii?Q?Rxm7LpPFzt0vLHP1GrPJlNwLjbQXux0KO1uACdL+qWMZO9QxEfNwjLTqc+vK?=
- =?us-ascii?Q?Nbd/LZGQafaMVVGK2jlkLC+k6sVW71KupaqQv2LMMGV6ZpIT2CZ7O7JWP9Q7?=
- =?us-ascii?Q?YykP9NpRBTsFfQnLcdUtZAnbZEzwHeqyc0RyPVa7Q2JIQ058r1E70KoXuHsM?=
- =?us-ascii?Q?4HAeMK5EYLvJmw+aF2HguO5M5Dsr5AdF4lYhY4L3M43RWGYeCliyuH2ZwoQj?=
- =?us-ascii?Q?f7PXiLaG3S7cV7Je9hJIppLf/h8fWHCZTV6RptlwonnJ7YIkFwHXvVW7A/LD?=
- =?us-ascii?Q?ZUv/hkjp/wj8/q4fDLHwdu9bjLey8NXi3fNShkT//qajgQTFbRTJrvOmMaM0?=
- =?us-ascii?Q?sDJHjpA+WYnHlHem3IAq0NtY3Yo3vbKa9Cc3CLJ1eeMcO6KMcAxn5XE+Oq0z?=
- =?us-ascii?Q?nR8ZF84qgqSWbT7nQg//PfYSAH+tXLfvRiCfaOrbI1MhGcWLXTnNadmIMfzo?=
- =?us-ascii?Q?mytuZj3mkgczhm87nowLf7JPG5SglbRFVnIZfoDGcsdn7fVwgTjLRkP+kLyS?=
- =?us-ascii?Q?yoKzJiiy0JWSnrlXDliN5Gtyw1s7E0OvESbGChV4v6CU5oqiCToZXzywa8JO?=
- =?us-ascii?Q?wPZVjEA49fmlgoIy3ZP4ETWZFF/CYuph1GEkmN6KHAHUutK6DZswsvDVBV5i?=
- =?us-ascii?Q?beu0bZWNCznKT3Tntm7DXeYaO340Kx56uD4wq6gfIYodD/vIvrzCnvjgdddb?=
- =?us-ascii?Q?fJOu4dxiaWHeFXFpukXd/mBLPydGXIlgBxjcdhQwRCJGG77DYkLnPrFcXdw/?=
- =?us-ascii?Q?OX5oEfROrLTRJy+F+B8EWwuPPL0ID/3DJ6VxUOUmEfsbc4rPjHh8G2pFP2PP?=
- =?us-ascii?Q?v+uqSE8CBK+hkKE4xYaS40e5bLHTy1NhLk66bJvqDelsvhNY4Jtir5mZsNHe?=
- =?us-ascii?Q?0EqKn4CQHsJzzF1z9lxzXjPsGXPeUzMf/saMahvUG/QumkggC1aTAfK8f0BW?=
- =?us-ascii?Q?kfkXwYLTBnnYf0p01u7tu4YSPMfxwDtg73CFVK+gFJqal1Sf+99wK+0aabSP?=
- =?us-ascii?Q?v2K0Jc/7grYy0oYToUULwtypb2YGrlJQTv+9E0NaVwqGVBqLqw6bSxXQjO+G?=
- =?us-ascii?Q?VoQdr9W6IM2JbJH6Wip0ncBLwAW2YnO9xCKezWC217/b2jm/bEy0FAA/AiMA?=
- =?us-ascii?Q?jLCkHQUdtnyC+zcQAQGMgyT27/VjX5ugOZ2ihmxXY4EhSedi1YSNn6s98BtC?=
- =?us-ascii?Q?rGG7o1NHXKXnR6grrSaAQJ2UynviTunUhyJit9Mk8JIaoKVVO/Y60475wq03?=
- =?us-ascii?Q?Qz5zuR3PQBOBDJ57tySIjTkoTwcCzm7z1Qksrk29Td/gqufcP5aoXXLiY+/p?=
- =?us-ascii?Q?pG0V0X3eZYlCJZ/liedWbArrCIoz1nmN12xLas9ECDhDCM4LY3nR/Pf7KB4v?=
- =?us-ascii?Q?pChqPyfSq61YNDZbFRYqJe6ZUlM7rnHH3vvGJ7kdxBaTe3Gd/2yW8IJ+KbDS?=
- =?us-ascii?Q?4cW0i8YMI33Pxq5mYbh6AeU1WZFbNiK9fqZa/+JxZQzYVy62X4b62u3jylNL?=
- =?us-ascii?Q?5gYVft9d5Q=3D=3D?=
-X-OriginatorOrg: silicom-usa.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c0b71002-2e80-4236-8ebb-08da1e3b13d2
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR0402MB3506.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Apr 2022 17:20:31.1910 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: c9e326d8-ce47-4930-8612-cc99d3c87ad1
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: D7AZv3KFTNNo78nhlf/HTGrQ+HgfoZEYTqtPQYUXOpas6DoSWNQRZfnj5hULrADxaYq0pXt+Vu2ZhmrrWMGXzw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8724
-Subject: [Intel-wired-lan] [PATCH] Treat 1G Cu SFPs as 1G SX for X550EM
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Content-Language: en-US
+To: Jeff Daly <jeffd@silicom-usa.com>
+References: <20220414172020.22396-1-jeffd@silicom-usa.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20220414172020.22396-1-jeffd@silicom-usa.com>
+Subject: Re: [Intel-wired-lan] [PATCH] Treat 1G Cu SFPs as 1G SX for X550EM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,101 +61,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-X550EM NICs do not support 1G Cu SFPs by default from Intel, this
-patch enables treating these SFPs as 1G SX SFPs via a module
-parameter similar to the parameter that allows the driver to be
-able to recognize unsupported (by Intel) SFPs.
-
-Signed-off-by: Jeff Daly <jeffd@silicom-usa.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  8 ++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 16 +++++++++++++++-
- 3 files changed, 24 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index c4a4954aa317..0d638e4bbc60 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -156,6 +156,11 @@ module_param(allow_unsupported_sfp, uint, 0);
- MODULE_PARM_DESC(allow_unsupported_sfp,
- 		 "Allow unsupported and untested SFP+ modules on 82599-based adapters");
- 
-+static unsigned int cu_sfp_as_sx;
-+module_param(cu_sfp_as_sx, uint, 0);
-+MODULE_PARM_DESC(cu_sfp_as_sx,
-+		 "Allow treating 1G Cu SFP modules as 1G SX modules on X550-based adapters");
-+
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
- module_param(debug, int, 0);
-@@ -10814,6 +10819,9 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (allow_unsupported_sfp)
- 		hw->allow_unsupported_sfp = allow_unsupported_sfp;
- 
-+	if (cu_sfp_as_sx)
-+		hw->cu_sfp_as_sx = cu_sfp_as_sx;
-+
- 	/* reset_hw fills in the perm_addr as well */
- 	hw->phy.reset_if_overtemp = true;
- 	err = hw->mac.ops.reset_hw(hw);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 6da9880d766a..0ffe09c0d5a8 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3645,6 +3645,7 @@ struct ixgbe_hw {
- 	bool				allow_unsupported_sfp;
- 	bool				wol_enabled;
- 	bool				need_crosstalk_fix;
-+	bool				cu_sfp_as_sx;
- };
- 
- struct ixgbe_info {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-index e4b50c7781ff..aa12d589c39b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-@@ -1609,6 +1609,8 @@ static s32 ixgbe_setup_ixfi_x550em(struct ixgbe_hw *hw, ixgbe_link_speed *speed)
-  */
- static s32 ixgbe_supported_sfp_modules_X550em(struct ixgbe_hw *hw, bool *linear)
- {
-+	struct ixgbe_adapter *adapter = hw->back;
-+
- 	switch (hw->phy.sfp_type) {
- 	case ixgbe_sfp_type_not_present:
- 		return IXGBE_ERR_SFP_NOT_PRESENT;
-@@ -1626,9 +1628,21 @@ static s32 ixgbe_supported_sfp_modules_X550em(struct ixgbe_hw *hw, bool *linear)
- 	case ixgbe_sfp_type_1g_lx_core1:
- 		*linear = false;
- 		break;
--	case ixgbe_sfp_type_unknown:
- 	case ixgbe_sfp_type_1g_cu_core0:
-+		if (hw->cu_sfp_as_sx) {
-+			e_warn(drv, "WARNING: Treating Cu SFP modules as SX modules is unsupported by Intel and may cause unstable operation or damage to the module or the adapter.  Intel Corporation is not responsible for any harm caused by using Cu modules in this way with this adapter.\n");
-+			*linear = false;
-+			hw->phy.sfp_type = ixgbe_sfp_type_1g_sx_core0;
-+			break;
-+		}
- 	case ixgbe_sfp_type_1g_cu_core1:
-+		if (hw->cu_sfp_as_sx) {
-+			e_warn(drv, "WARNING: Treating Cu SFP modules as SX modules is unsupported by Intel and may cause unstable operation or damage to the module or the adapter.  Intel Corporation is not responsible for any harm caused by using Cu modules in this way with this adapter.\n");
-+			*linear = false;
-+			hw->phy.sfp_type = ixgbe_sfp_type_1g_sx_core1;
-+			break;
-+		}
-+	case ixgbe_sfp_type_unknown:
- 	default:
- 		return IXGBE_ERR_SFP_NOT_SUPPORTED;
- 	}
--- 
-2.25.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKZWZmLAoKClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KCkFtIDE0LjA0LjIyIHVtIDE5
+OjIwIHNjaHJpZWIgSmVmZiBEYWx5OgoKUGxlYXNlIGFkZCBzb21lIHByZWZpeCB0byB0aGUgY29t
+bWl0IG1lc3NhZ2Ugc3VtbWFyeS4gQWxzbywgSSB0aGluaywgeW91IApzaG91bGQgY2FyYm9uLWNv
+cHkgdGhlIG1haW50YWluZXJzLgoKPiBYNTUwRU0gTklDcyBkbyBub3Qgc3VwcG9ydCAxRyBDdSBT
+RlBzIGJ5IGRlZmF1bHQgZnJvbSBJbnRlbCwgdGhpcwo+IHBhdGNoIGVuYWJsZXMgdHJlYXRpbmcg
+dGhlc2UgU0ZQcyBhcyAxRyBTWCBTRlBzIHZpYSBhIG1vZHVsZQo+IHBhcmFtZXRlciBzaW1pbGFy
+IHRvIHRoZSBwYXJhbWV0ZXIgdGhhdCBhbGxvd3MgdGhlIGRyaXZlciB0byBiZQo+IGFibGUgdG8g
+cmVjb2duaXplIHVuc3VwcG9ydGVkIChieSBJbnRlbCkgU0ZQcy4KCihQbGVhc2UgdXNlIGF0IGxl
+YXN0IDcyIGNoYXJhY3RlcnMgcGVyIGxpbmUg4oCTIGNoZWNrcGF0Y2gucGwgY2hlY2tzIGZvciA3
+NS4pCgo+IFNpZ25lZC1vZmYtYnk6IEplZmYgRGFseSA8amVmZmRAc2lsaWNvbS11c2EuY29tPgo+
+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jIHwg
+IDggKysrKysrKysKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3R5
+cGUuaCB8ICAxICsKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1
+NTAuYyB8IDE2ICsrKysrKysrKysrKysrKy0KPiAgIDMgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0
+aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9peGdiZS9peGdiZV9tYWluLmMKPiBpbmRleCBjNGE0OTU0YWEzMTcuLjBkNjM4ZTRiYmM2MCAx
+MDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWlu
+LmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMK
+PiBAQCAtMTU2LDYgKzE1NiwxMSBAQCBtb2R1bGVfcGFyYW0oYWxsb3dfdW5zdXBwb3J0ZWRfc2Zw
+LCB1aW50LCAwKTsKPiAgIE1PRFVMRV9QQVJNX0RFU0MoYWxsb3dfdW5zdXBwb3J0ZWRfc2ZwLAo+
+ICAgCQkgIkFsbG93IHVuc3VwcG9ydGVkIGFuZCB1bnRlc3RlZCBTRlArIG1vZHVsZXMgb24gODI1
+OTktYmFzZWQgYWRhcHRlcnMiKTsKPiAgIAo+ICtzdGF0aWMgdW5zaWduZWQgaW50IGN1X3NmcF9h
+c19zeDsKPiArbW9kdWxlX3BhcmFtKGN1X3NmcF9hc19zeCwgdWludCwgMCk7CgpQbGVhc2UgdXNl
+IGEgYm9vbGVhbi4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKPiArTU9EVUxFX1BBUk1fREVTQyhj
+dV9zZnBfYXNfc3gsCj4gKwkJICJBbGxvdyB0cmVhdGluZyAxRyBDdSBTRlAgbW9kdWxlcyBhcyAx
+RyBTWCBtb2R1bGVzIG9uIFg1NTAtYmFzZWQgYWRhcHRlcnMiKTsKPiArCj4gICAjZGVmaW5lIERF
+RkFVTFRfTVNHX0VOQUJMRSAoTkVUSUZfTVNHX0RSVnxORVRJRl9NU0dfUFJPQkV8TkVUSUZfTVNH
+X0xJTkspCj4gICBzdGF0aWMgaW50IGRlYnVnID0gLTE7Cj4gICBtb2R1bGVfcGFyYW0oZGVidWcs
+IGludCwgMCk7Cj4gQEAgLTEwODE0LDYgKzEwODE5LDkgQEAgc3RhdGljIGludCBpeGdiZV9wcm9i
+ZShzdHJ1Y3QgcGNpX2RldiAqcGRldiwgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmVudCkK
+PiAgIAlpZiAoYWxsb3dfdW5zdXBwb3J0ZWRfc2ZwKQo+ICAgCQlody0+YWxsb3dfdW5zdXBwb3J0
+ZWRfc2ZwID0gYWxsb3dfdW5zdXBwb3J0ZWRfc2ZwOwo+ICAgCj4gKwlpZiAoY3Vfc2ZwX2FzX3N4
+KQo+ICsJCWh3LT5jdV9zZnBfYXNfc3ggPSBjdV9zZnBfYXNfc3g7Cj4gKwo+ICAgCS8qIHJlc2V0
+X2h3IGZpbGxzIGluIHRoZSBwZXJtX2FkZHIgYXMgd2VsbCAqLwo+ICAgCWh3LT5waHkucmVzZXRf
+aWZfb3ZlcnRlbXAgPSB0cnVlOwo+ICAgCWVyciA9IGh3LT5tYWMub3BzLnJlc2V0X2h3KGh3KTsK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHlw
+ZS5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHlwZS5oCj4gaW5k
+ZXggNmRhOTg4MGQ3NjZhLi4wZmZlMDljMGQ1YTggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHlwZS5oCj4gKysrIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHlwZS5oCj4gQEAgLTM2NDUsNiArMzY0NSw3IEBAIHN0
+cnVjdCBpeGdiZV9odyB7Cj4gICAJYm9vbAkJCQlhbGxvd191bnN1cHBvcnRlZF9zZnA7Cj4gICAJ
+Ym9vbAkJCQl3b2xfZW5hYmxlZDsKPiAgIAlib29sCQkJCW5lZWRfY3Jvc3N0YWxrX2ZpeDsKPiAr
+CWJvb2wJCQkJY3Vfc2ZwX2FzX3N4Owo+ICAgfTsKPiAgIAo+ICAgc3RydWN0IGl4Z2JlX2luZm8g
+ewo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94
+NTUwLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94NTUwLmMKPiBp
+bmRleCBlNGI1MGM3NzgxZmYuLmFhMTJkNTg5YzM5YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94NTUwLmMKPiArKysgYi9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94NTUwLmMKPiBAQCAtMTYwOSw2ICsxNjA5LDggQEAg
+c3RhdGljIHMzMiBpeGdiZV9zZXR1cF9peGZpX3g1NTBlbShzdHJ1Y3QgaXhnYmVfaHcgKmh3LCBp
+eGdiZV9saW5rX3NwZWVkICpzcGVlZCkKPiAgICAqLwo+ICAgc3RhdGljIHMzMiBpeGdiZV9zdXBw
+b3J0ZWRfc2ZwX21vZHVsZXNfWDU1MGVtKHN0cnVjdCBpeGdiZV9odyAqaHcsIGJvb2wgKmxpbmVh
+cikKPiAgIHsKPiArCXN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVyID0gaHctPmJhY2s7Cj4g
+Kwo+ICAgCXN3aXRjaCAoaHctPnBoeS5zZnBfdHlwZSkgewo+ICAgCWNhc2UgaXhnYmVfc2ZwX3R5
+cGVfbm90X3ByZXNlbnQ6Cj4gICAJCXJldHVybiBJWEdCRV9FUlJfU0ZQX05PVF9QUkVTRU5UOwo+
+IEBAIC0xNjI2LDkgKzE2MjgsMjEgQEAgc3RhdGljIHMzMiBpeGdiZV9zdXBwb3J0ZWRfc2ZwX21v
+ZHVsZXNfWDU1MGVtKHN0cnVjdCBpeGdiZV9odyAqaHcsIGJvb2wgKmxpbmVhcikKPiAgIAljYXNl
+IGl4Z2JlX3NmcF90eXBlXzFnX2x4X2NvcmUxOgo+ICAgCQkqbGluZWFyID0gZmFsc2U7Cj4gICAJ
+CWJyZWFrOwo+IC0JY2FzZSBpeGdiZV9zZnBfdHlwZV91bmtub3duOgo+ICAgCWNhc2UgaXhnYmVf
+c2ZwX3R5cGVfMWdfY3VfY29yZTA6Cj4gKwkJaWYgKGh3LT5jdV9zZnBfYXNfc3gpIHsKPiArCQkJ
+ZV93YXJuKGRydiwgIldBUk5JTkc6IFRyZWF0aW5nIEN1IFNGUCBtb2R1bGVzIGFzIFNYIG1vZHVs
+ZXMgaXMgdW5zdXBwb3J0ZWQgYnkgSW50ZWwgYW5kIG1heSBjYXVzZSB1bnN0YWJsZSBvcGVyYXRp
+b24gb3IgZGFtYWdlIHRvIHRoZSBtb2R1bGUgb3IgdGhlIGFkYXB0ZXIuICBJbnRlbCBDb3Jwb3Jh
+dGlvbiBpcyBub3QgcmVzcG9uc2libGUgZm9yIGFueSBoYXJtIGNhdXNlZCBieSB1c2luZyBDdSBt
+b2R1bGVzIGluIHRoaXMgd2F5IHdpdGggdGhpcyBhZGFwdGVyLlxuIik7Cj4gKwkJCSpsaW5lYXIg
+PSBmYWxzZTsKPiArCQkJaHctPnBoeS5zZnBfdHlwZSA9IGl4Z2JlX3NmcF90eXBlXzFnX3N4X2Nv
+cmUwOwo+ICsJCQlicmVhazsKPiArCQl9Cj4gICAJY2FzZSBpeGdiZV9zZnBfdHlwZV8xZ19jdV9j
+b3JlMToKPiArCQlpZiAoaHctPmN1X3NmcF9hc19zeCkgewo+ICsJCQllX3dhcm4oZHJ2LCAiV0FS
+TklORzogVHJlYXRpbmcgQ3UgU0ZQIG1vZHVsZXMgYXMgU1ggbW9kdWxlcyBpcyB1bnN1cHBvcnRl
+ZCBieSBJbnRlbCBhbmQgbWF5IGNhdXNlIHVuc3RhYmxlIG9wZXJhdGlvbiBvciBkYW1hZ2UgdG8g
+dGhlIG1vZHVsZSBvciB0aGUgYWRhcHRlci4gIEludGVsIENvcnBvcmF0aW9uIGlzIG5vdCByZXNw
+b25zaWJsZSBmb3IgYW55IGhhcm0gY2F1c2VkIGJ5IHVzaW5nIEN1IG1vZHVsZXMgaW4gdGhpcyB3
+YXkgd2l0aCB0aGlzIGFkYXB0ZXIuXG4iKTsKPiArCQkJKmxpbmVhciA9IGZhbHNlOwo+ICsJCQlo
+dy0+cGh5LnNmcF90eXBlID0gaXhnYmVfc2ZwX3R5cGVfMWdfc3hfY29yZTE7Cj4gKwkJCWJyZWFr
+Owo+ICsJCX0KPiArCWNhc2UgaXhnYmVfc2ZwX3R5cGVfdW5rbm93bjoKPiAgIAlkZWZhdWx0Ogo+
+ICAgCQlyZXR1cm4gSVhHQkVfRVJSX1NGUF9OT1RfU1VQUE9SVEVEOwo+ICAgCX0KX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1h
+aWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9z
+bC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
