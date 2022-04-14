@@ -1,39 +1,39 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABD30501C90
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Apr 2022 22:21:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D9EE501C8F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Apr 2022 22:21:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5F73D40A65;
-	Thu, 14 Apr 2022 20:21:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 168F540B42;
+	Thu, 14 Apr 2022 20:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0ybVlG1wO7n2; Thu, 14 Apr 2022 20:21:30 +0000 (UTC)
+	with ESMTP id reD2gi-1Mniq; Thu, 14 Apr 2022 20:21:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 67C7240142;
-	Thu, 14 Apr 2022 20:21:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9EDA51BF393
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Apr 2022 20:21:21 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2D6C440A65;
+	Thu, 14 Apr 2022 20:21:26 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 350E41BF393
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 20:21:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9996141926
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Apr 2022 20:21:21 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2FE5160FA5
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 20:21:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=silicomltd.onmicrosoft.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id biiM_mrt77Fe for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4i8hQK7j44jd for <intel-wired-lan@osuosl.org>;
  Thu, 14 Apr 2022 20:21:20 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
 Received: from EUR04-VI1-obe.outbound.protection.outlook.com
- (mail-eopbgr80094.outbound.protection.outlook.com [40.107.8.94])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B3A9E41925
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Apr 2022 20:21:20 +0000 (UTC)
+ (mail-eopbgr80102.outbound.protection.outlook.com [40.107.8.102])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 74A8760FA1
+ for <intel-wired-lan@osuosl.org>; Thu, 14 Apr 2022 20:21:20 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
  b=AyEhBdOYEbM0yRhI5+nr1MGyPyhnxRJiIDnZuJfBLedTlRh6VvPVQ9kpDF6Yn6VJoc3yGiw8YpWCDElkla2FQmxTg8Qo/whT+DPf4HUC+inK48z2iVH2KMoZyx5za58bbR4GBYlqlyWspalZ6Hi3k0jc49ObWR3MzklAUcCrnS7Z8tOd7jVjO0DtEBtMj9KuoP8slv533/SmkiV6B8c91wStChmR6uEWefMCmf2K42nbEX63plml86fMY6aNn5rJoi7HaMhsGGfnbe7Wy2YnaweVGeLB+oG/ZeejQhTyLgXsQG1j8wTYBWtylgScnwkMFQTJXMtuLlhCH7t8bJV2xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
