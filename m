@@ -2,54 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C82F502DC9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Apr 2022 18:36:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A2D4502DCC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Apr 2022 18:39:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 44C4A60D4C;
-	Fri, 15 Apr 2022 16:36:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 47E2460D61;
+	Fri, 15 Apr 2022 16:39:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dcULEAnm2jyI; Fri, 15 Apr 2022 16:36:42 +0000 (UTC)
+	with ESMTP id GzAaoNkvrfx9; Fri, 15 Apr 2022 16:39:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4667360D55;
-	Fri, 15 Apr 2022 16:36:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5CE0C60D4C;
+	Fri, 15 Apr 2022 16:39:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6D9761BF33A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:36:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A31041BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:38:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 688F060D4C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:36:37 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9DDF360D4C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:38:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TPikWsMyeEC9 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Apr 2022 16:36:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B0B75607A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:36:35 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5ae925.dynamic.kabel-deutschland.de
- [95.90.233.37])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2EF9C61EA192D;
- Fri, 15 Apr 2022 18:36:32 +0200 (CEST)
-Message-ID: <280c31b8-9f70-a0b5-2450-510903bd0d4e@molgen.mpg.de>
-Date: Fri, 15 Apr 2022 18:36:31 +0200
+ with ESMTP id 3BRbnPqZm9zb for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Apr 2022 16:38:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7FE65607A1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 16:38:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1650040732;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yY1XpQLOJF8SRfLRiRImiId98yLUwf4ACq4UfHXrlTM=;
+ b=Ep+eRWJyXssOITUA3LT57x5CP/a77KNcLAJHgr0Q6fwjN1geFQAw9Em4rJ/ZSGSro/zEyX
+ ODtkLjqPkhsSTnOCkdZ/jaeBQ9UAGfpHQ29xDDSzJ6TzlxkMyBwM8wRdUjyDNOUnUMlzDX
+ BD/agJb5N1ri8C/7UhbKa4792xmrGcw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-448-nA3M0pSZOp6RRNd-FabZnw-1; Fri, 15 Apr 2022 12:38:48 -0400
+X-MC-Unique: nA3M0pSZOp6RRNd-FabZnw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3CA6C811E7A;
+ Fri, 15 Apr 2022 16:38:48 +0000 (UTC)
+Received: from ceranb (unknown [10.40.194.169])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9D74A2167D68;
+ Fri, 15 Apr 2022 16:38:46 +0000 (UTC)
+Date: Fri, 15 Apr 2022 18:38:45 +0200
+From: Ivan Vecera <ivecera@redhat.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <20220415183845.51a326fe@ceranb>
+In-Reply-To: <YlldFriBVkKEgbBs@boxer>
+References: <20220413072259.3189386-1-ivecera@redhat.com>
+ <YlldFriBVkKEgbBs@boxer>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Content-Language: en-US
-To: Michal Michalik <michal.michalik@intel.com>
-References: <20220414102358.13486-1-michal.michalik@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220414102358.13486-1-michal.michalik@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: fix PTP stale Tx
- timestamps cleanup
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Protect vf_state check by
+ cfg_lock in ice_vc_process_vf_msg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,67 +79,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Fei Liu <feliu@redhat.com>, netdev@vger.kernel.org, mschmidt@redhat.com,
+ Brett Creeley <brett.creeley@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, "moderated
+ list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBNaWNoYWwsCgoKVGhhbmsgeW91IGZvciB5b3VyIHBhdGNoLgoKQW0gMTQuMDQuMjIgdW0g
-MTI6MjMgc2NocmllYiBNaWNoYWwgTWljaGFsaWs6Cj4gUmVhZCBzdGFsZSBQVFAgVHggdGltZXN0
-YW1wcyBmcm9tIFBIWSBvbiBjbGVhbnVwLgo+IAo+IEFmdGVyIHJ1bm5pbmcgb3V0IG9mIFR4IHRp
-bWVzdGFtcHMgcmVxdWVzdCBoYW5kbGVycyBoYXJkd2FyZSAoSFcpIHN0b3BzCj4gcmVwb3J0aW5n
-IGZpbmlzaGVkIHJlcXVlc3RzLiBGdW5jdGlvbiBpY2VfcHRwX3R4X3RzdGFtcF9jbGVhbnVwKCkg
-dXNlZAo+IHRvIG9ubHkgY2xlYW51cCBzdGFsZSBoYW5kbGVycyBpbiBkcml2ZXIgYW5kIHdhcyBs
-ZWF2aW5nIHRoZSBoYXJkd2FyZQoKTml0OiBjbGVhbiB1cAoKPiByZWdpc3RlcnMgbm90IHJlYWQu
-IE5vdCByZWFkaW5nIHN0YWxlIFBUUCBUeCB0aW1lc3RhbXBzIHByZXZlbnRzIG5leHQKPiBpbnRl
-cnJ1cHRzIGZyb20gYXJyaXZpbmcgYW5kIG1ha2VzIHRpbWVzdGFtcGluZyBub3QgdXNhYmxlLgoK
-Tml0OiB1bnVzYWJsZQoKRG8geW91IGhhdmUgYSBtZXRob2QsIGhvdyB0byBmb3JjZSB0aGUgbmV0
-d29yayBkZXZpY2UgdG8gcnVuIG91dCBvZiAKdGltZXN0YW1wcyByZXF1ZXN0IGhhbmRsZXJzPwoK
-PiBGaXhlczogZWE5Yjg0N2NkYTY0ICgiaWNlOiBlbmFibGUgdHJhbnNtaXQgdGltZXN0YW1wcyBm
-b3IgRTgxMCBkZXZpY2VzIikKPiBTaWduZWQtb2ZmLWJ5OiBNaWNoYWwgTWljaGFsaWsgPG1pY2hh
-bC5taWNoYWxpa0BpbnRlbC5jb20+Cj4gUmV2aWV3ZWQtYnk6IEphY29iIEtlbGxlciA8amFjb2Iu
-ZS5rZWxsZXJAaW50ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlL2ljZV9wdHAuYyB8IDkgKysrKysrKy0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRp
-b25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pY2UvaWNlX3B0cC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV9wdHAuYwo+IGluZGV4IGExY2QzMzIuLjgyNmE1MDggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wdHAuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2ljZS9pY2VfcHRwLmMKPiBAQCAtMjI4Nyw2ICsyMjg3LDcgQEAgaWNlX3B0
-cF9pbml0X3R4X2U4MTAoc3RydWN0IGljZV9wZiAqcGYsIHN0cnVjdCBpY2VfcHRwX3R4ICp0eCkK
-PiAgIAo+ICAgLyoqCj4gICAgKiBpY2VfcHRwX3R4X3RzdGFtcF9jbGVhbnVwIC0gQ2xlYW51cCBv
-bGQgdGltZXN0YW1wIHJlcXVlc3RzIHRoYXQgZ290IGRyb3BwZWQKPiArICogQGh3OiBwb2ludGVy
-IHRvIHRoZSBodyBzdHJ1Y3QKPiAgICAqIEB0eDogUFRQIFR4IHRyYWNrZXIgdG8gY2xlYW4gdXAK
-PiAgICAqCj4gICAgKiBMb29wIHRocm91Z2ggdGhlIFR4IHRpbWVzdGFtcCByZXF1ZXN0cyBhbmQg
-c2VlIGlmIGFueSBvZiB0aGVtIGhhdmUgYmVlbgo+IEBAIC0yMjk1LDcgKzIyOTYsNyBAQCBpY2Vf
-cHRwX2luaXRfdHhfZTgxMChzdHJ1Y3QgaWNlX3BmICpwZiwgc3RydWN0IGljZV9wdHBfdHggKnR4
-KQo+ICAgICogdGltZXN0YW1wIHdpbGwgbmV2ZXIgYmUgY2FwdHVyZWQuIFRoaXMgbWlnaHQgaGFw
-cGVuIGlmIHRoZSBwYWNrZXQgZ2V0cwo+ICAgICogZGlzY2FyZGVkIGJlZm9yZSBpdCByZWFjaGVz
-IHRoZSBQSFkgdGltZXN0YW1waW5nIGJsb2NrLgo+ICAgICovCj4gLXN0YXRpYyB2b2lkIGljZV9w
-dHBfdHhfdHN0YW1wX2NsZWFudXAoc3RydWN0IGljZV9wdHBfdHggKnR4KQo+ICtzdGF0aWMgdm9p
-ZCBpY2VfcHRwX3R4X3RzdGFtcF9jbGVhbnVwKHN0cnVjdCBpY2VfaHcgKmh3LCBzdHJ1Y3QgaWNl
-X3B0cF90eCAqdHgpCj4gICB7Cj4gICAJdTggaWR4Owo+ICAgCj4gQEAgLTIzMDQsMTEgKzIzMDUs
-MTUgQEAgc3RhdGljIHZvaWQgaWNlX3B0cF90eF90c3RhbXBfY2xlYW51cChzdHJ1Y3QgaWNlX3B0
-cF90eCAqdHgpCj4gICAKPiAgIAlmb3JfZWFjaF9zZXRfYml0KGlkeCwgdHgtPmluX3VzZSwgdHgt
-Pmxlbikgewo+ICAgCQlzdHJ1Y3Qgc2tfYnVmZiAqc2tiOwo+ICsJCXU2NCByYXdfdHN0YW1wOwo+
-ICAgCj4gICAJCS8qIENoZWNrIGlmIHRoaXMgU0tCIGhhcyBiZWVuIHdhaXRpbmcgZm9yIHRvbyBs
-b25nICovCj4gICAJCWlmICh0aW1lX2lzX2FmdGVyX2ppZmZpZXModHgtPnRzdGFtcHNbaWR4XS5z
-dGFydCArIDIgKiBIWikpCj4gICAJCQljb250aW51ZTsKPiAgIAo+ICsJCWljZV9yZWFkX3BoeV90
-c3RhbXAoaHcsIHR4LT5xdWFkLCBpZHggKyB0eC0+cXVhZF9vZmZzZXQsCj4gKwkJCQkgICAgJnJh
-d190c3RhbXApOwo+ICsKCkFyZSBjb21waWxlcnMgb3IgY29kZSBhbmFseXplciBnb2luZyB0byBj
-b21wbGFpbiwgdGhhdCBub3RoaW5nIHdpbGwgYmUgCmRvbmUgd2l0aCBgcmF3X3RzdGFtcGA/IElz
-IHRoZXJlIHNvbWUgYXR0cmlidXRlLCB0aGF0IGl04oCZcyB1bnVzZWQ/IE1heWJlIAphbHNvIGFk
-ZCBhIGNvbW1lbnQsIHRoaXMgaXMganVzdCB0byByZWFkIHRoZSB2YWx1ZSwgYW5kIGl04oCZcyBu
-b3QgZ29pbmcgCnRvIGJlIHVzZWQuCgo+ICAgCQlzcGluX2xvY2soJnR4LT5sb2NrKTsKPiAgIAkJ
-c2tiID0gdHgtPnRzdGFtcHNbaWR4XS5za2I7Cj4gICAJCXR4LT50c3RhbXBzW2lkeF0uc2tiID0g
-TlVMTDsKPiBAQCAtMjMzMCw3ICsyMzM1LDcgQEAgc3RhdGljIHZvaWQgaWNlX3B0cF9wZXJpb2Rp
-Y193b3JrKHN0cnVjdCBrdGhyZWFkX3dvcmsgKndvcmspCj4gICAKPiAgIAlpY2VfcHRwX3VwZGF0
-ZV9jYWNoZWRfcGhjdGltZShwZik7Cj4gICAKPiAtCWljZV9wdHBfdHhfdHN0YW1wX2NsZWFudXAo
-JnBmLT5wdHAucG9ydC50eCk7Cj4gKwlpY2VfcHRwX3R4X3RzdGFtcF9jbGVhbnVwKCZwZi0+aHcs
-ICZwZi0+cHRwLnBvcnQudHgpOwo+ICAgCj4gICAJLyogUnVuIHR3aWNlIGEgc2Vjb25kICovCj4g
-ICAJa3RocmVhZF9xdWV1ZV9kZWxheWVkX3dvcmsocHRwLT5rd29ya2VyLCAmcHRwLT53b3JrLAoK
-UmV2aWV3ZWQtYnk6IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+CgoKS2luZCBy
-ZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
-b3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVk
-LWxhbgo=
+On Fri, 15 Apr 2022 13:55:02 +0200
+Maciej Fijalkowski <maciej.fijalkowski@intel.com> wrote:
+
+> On Wed, Apr 13, 2022 at 09:22:59AM +0200, Ivan Vecera wrote:
+> > Previous patch labelled "ice: Fix incorrect locking in
+> > ice_vc_process_vf_msg()"  fixed an issue with ignored messages  
+> 
+> tiny tiny nit: double space after "
+> Also, has mentioned patch landed onto some tree so that we could provide
+> SHA-1 of it? If not, then maybe squashing this one with the mentioned one
+> would make sense?
+
+Well, that commit were already tested and now it is present in Tony's queue
+but not in upstream yet. It is not problem to squash together but the first
+was about ignored VF messages and this one is about race and I didn't want
+to make single patch with huge description that cover both issues.
+But as I said, no problem to squash if needed.
+
+Thx,
+Ivan
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
